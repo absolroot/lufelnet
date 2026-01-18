@@ -470,7 +470,7 @@
                         if (enemy.adapt) {
                             const adaptDiv = document.createElement('div');
                             adaptDiv.style.cssText = `
-                                margin-bottom: 12px;
+                                margin-bottom: 0px;
                             `;
                             const adaptSprite = this.buildAdaptSprite(enemy.adapt);
                             adaptDiv.appendChild(adaptSprite);

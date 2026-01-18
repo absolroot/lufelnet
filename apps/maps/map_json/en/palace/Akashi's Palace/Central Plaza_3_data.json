@@ -1,0 +1,39 @@
+{
+    "tiles": [
+        {
+            "image": "kzzx_xc_03.png",
+            "position": [
+                0,
+                1
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "objects": [
+        {
+            "sn": 8538002,
+            "image": "yishijie-icon-box-hexin-new.png",
+            "position": [
+                40,
+                33
+            ],
+            "ratio": 0.041666666666666664,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        }
+    ],
+    "enemies": [],
+    "map_size": [
+        92,
+        72
+    ]
+}

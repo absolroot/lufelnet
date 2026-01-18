@@ -1,0 +1,81 @@
+{
+    "tiles": [
+        {
+            "image": "map_yx_final_shuniu.png",
+            "position": [
+                0,
+                0
+            ],
+            "ratio": 1,
+            "rotate": 0
+        }
+    ],
+    "objects": [
+        {
+            "sn": 8644003,
+            "image": "yishijie-icon-huaxiang-chuansong02-zi.png",
+            "position": [
+                125,
+                658
+            ],
+            "ratio": 0.55,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8644004,
+            "image": "yishijie-icon-huaxiang-chuansong02-zi.png",
+            "position": [
+                125,
+                182
+            ],
+            "ratio": 0.55,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8644005,
+            "image": "yishijie-icon-huaxiang-chuansong02-zi.png",
+            "position": [
+                883,
+                234
+            ],
+            "ratio": 0.55,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8644006,
+            "image": "yishijie-icon-huaxiang-chuansong02-zi.png",
+            "position": [
+                883,
+                658
+            ],
+            "ratio": 0.55,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        }
+    ],
+    "enemies": [],
+    "rotate": 0.0,
+    "map_size": [
+        1008,
+        892
+    ]
+}

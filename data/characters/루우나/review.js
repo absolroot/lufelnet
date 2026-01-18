@@ -10,7 +10,7 @@
 
 Using Skill 1, which supports AoE Fire attacks, or Skill 2, which boosts single-target Resonance attacks, unlocks Skill 3.
 
-To maximize the skill's **Defense Reduction effect**, it is recommended to **raise Effect Hit to the advised threshold**.`,
+To maximize the skill's **Defense Reduction effect**, it is recommended to **raise Ailment Accuracy to the advised threshold**.`,
         review_jp: `火炎属性ダメージ、または意識奏功ダメージを強化するデバッファー。
 
 全体火炎攻撃を補助するスキル1、もしくは単体の意識奏功攻撃を補助するスキル2を使用すると、スキル3が解禁される構造になっている。
@@ -21,8 +21,8 @@ To maximize the skill's **Defense Reduction effect**, it is recommended to **rai
         pros_en: ["Possesses a strong Defense Reduction debuff.", "Applies a healing reduction debuff."],
         pros_jp: ["高い防御力ダウン効果を持っている。",  "回復量ダウン効果も付与できる。"],
         cons: ["화염 속성과 추가 효과에 대미지 보너스가 한정된다.", "얼마 안 가 상위 호환의 디버퍼가 출시됐다."],
-        cons_en: ["Damage bonuses apply only to Fire and Resonance attacks.", "A stronger, more versatile debuffer was released shortly afterward."],
-        cons_jp: ["火炎属性と意識奏功に対するダメージボーナスが限定的である。", "ほどなくして上位互換のデバッファーが登場した。"],
+        cons_en: ["Damage bonuses apply only to Fire and Resonance attacks."],
+        cons_jp: ["火炎属性と意識奏功に対するダメージボーナスが限定的である。"],
     };
 })();
 

@@ -1,0 +1,4616 @@
+{
+    "tiles": [
+        {
+            "image": "xdt_ysc_tsg2F_b3_zhu_01.png",
+            "position": [
+                1034,
+                1147
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_b6_zhu_02.png",
+            "position": [
+                924,
+                1093
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_b1_zhu_01.png",
+            "position": [
+                1003,
+                985
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_b3_zhu_04.png",
+            "position": [
+                1094,
+                1092
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_a5_zhu_05.png",
+            "position": [
+                1020,
+                899
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_b2_zhu_06.png",
+            "position": [
+                950,
+                898
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_a5_zhu_07.png",
+            "position": [
+                874,
+                901
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_b9_zhu_08.png",
+            "position": [
+                884,
+                817
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_b1_zhu_09.png",
+            "position": [
+                864,
+                729
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_b5_zhu_10.png",
+            "position": [
+                808,
+                722
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_b3_zhu_11.png",
+            "position": [
+                789,
+                667
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_b3_zhu_12.png",
+            "position": [
+                735,
+                667
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhu_b5_13.png",
+            "position": [
+                882,
+                582
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_b9_zhu_14.png",
+            "position": [
+                952,
+                583
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_a3_zhu_15.png",
+            "position": [
+                1040,
+                563
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_b7_zhu_16.png",
+            "position": [
+                1044,
+                482
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_safehouse_zhu_17.png",
+            "position": [
+                1007,
+                506
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhu_b1_18.png",
+            "position": [
+                1044,
+                406
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_b3_zhu_19.png",
+            "position": [
+                1117,
+                426
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_a3_zhu_20.png",
+            "position": [
+                1178,
+                399
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_a3_zhu_21.png",
+            "position": [
+                1177,
+                492
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_b5_zhu_22.png",
+            "position": [
+                1282,
+                520
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_b1_zhu_23.png",
+            "position": [
+                1271,
+                575
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_b1_zhu_24.png",
+            "position": [
+                1349,
+                577
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_b1_zhu_25.png",
+            "position": [
+                1270,
+                664
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_b1_zhu_26.png",
+            "position": [
+                1347,
+                656
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_b1_zhu_27.png",
+            "position": [
+                1423,
+                658
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_b3_zhu_28.png",
+            "position": [
+                1446,
+                606
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_b3_zhu_29.png",
+            "position": [
+                1446,
+                736
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_b5_zhu_30.png",
+            "position": [
+                1520,
+                678
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_b9_zhu_31.png",
+            "position": [
+                1524,
+                730
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_a3_zhu_32.png",
+            "position": [
+                1462,
+                828
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_A3HOLE_zhu_34.png",
+            "position": [
+                1355,
+                836
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_b3_zhu_33.png",
+            "position": [
+                1449,
+                861
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_b9_zhu_35.png",
+            "position": [
+                1380,
+                921
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_b7_zhu_36.png",
+            "position": [
+                1380,
+                1032
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_safehouse_37.png",
+            "position": [
+                1441,
+                1029
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_b9_zhu_38.png",
+            "position": [
+                1381,
+                1082
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_b2_zhu_39.png",
+            "position": [
+                1380,
+                1204
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_c3_zhu_40.png",
+            "position": [
+                1442,
+                1156
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhu_b3_41.png",
+            "position": [
+                1308,
+                1208
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_a5_zhi01_1.png",
+            "position": [
+                1044,
+                322
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_b3_zhi01_2.png",
+            "position": [
+                985,
+                348
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_b7_zhi01_2.png",
+            "position": [
+                935,
+                329
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_safehouse_zhi01_3.png",
+            "position": [
+                936,
+                290
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_b3_zhi01_5.png",
+            "position": [
+                908,
+                347
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_b5_zhi01_6.png",
+            "position": [
+                852,
+                328
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi01_a9_01.png",
+            "position": [
+                830,
+                232
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi01_b5_08.png",
+            "position": [
+                774,
+                266
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi01_b3_17.png",
+            "position": [
+                774,
+                308
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi01_b5_06.png",
+            "position": [
+                753,
+                433
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi01_b2_05.png",
+            "position": [
+                681,
+                436
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi01_b3_16.png",
+            "position": [
+                698,
+                485
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi01_b5_010.png",
+            "position": [
+                677,
+                561
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi01_b2_04.png",
+            "position": [
+                608,
+                555
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi01_b3_12.png",
+            "position": [
+                531,
+                567
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi01_b2_03.png",
+            "position": [
+                469,
+                562
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi01_b3_15.png",
+            "position": [
+                480,
+                482
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi01_b5_05.png",
+            "position": [
+                480,
+                435
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi01_b3_14.png",
+            "position": [
+                531,
+                433
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi01_b1_03.png",
+            "position": [
+                607,
+                423
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi01_b3_010.png",
+            "position": [
+                599,
+                347
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi01_b3_13.png",
+            "position": [
+                613,
+                480
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi01_b3_011.png",
+            "position": [
+                369,
+                566
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi01_b1_01.png",
+            "position": [
+                301,
+                551
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi01_b5_04.png",
+            "position": [
+                234,
+                565
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi01_b3_08.png",
+            "position": [
+                234,
+                616
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi01_b1_02.png",
+            "position": [
+                212,
+                702
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi01_a3_04.png",
+            "position": [
+                121,
+                674
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi01_b3_09.png",
+            "position": [
+                228,
+                763
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi01_b2_02.png",
+            "position": [
+                291,
+                695
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi01_b6_04.png",
+            "position": [
+                357,
+                705
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi01_safehouse_01.png",
+            "position": [
+                426,
+                702
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi01_b6_011.png",
+            "position": [
+                311,
+                617
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi01_b3_07.png",
+            "position": [
+                307,
+                493
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi01_a5_02.png",
+            "position": [
+                279,
+                415
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi01_b5_03.png",
+            "position": [
+                381,
+                409
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi01_b2_01.png",
+            "position": [
+                387,
+                346
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi01_a7_012.png",
+            "position": [
+                449,
+                338
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi01_b3_06.png",
+            "position": [
+                388,
+                284
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi01_a3_03.png",
+            "position": [
+                363,
+                194
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi01_hole_a3_02.png",
+            "position": [
+                466,
+                192
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi01_b3_05.png",
+            "position": [
+                466,
+                219
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi01_b3_04.png",
+            "position": [
+                540,
+                126
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi01_b5_02.png",
+            "position": [
+                540,
+                77
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi01_a1_01.png",
+            "position": [
+                595,
+                33
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi01_a7_01.png",
+            "position": [
+                743,
+                98
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi01_b3_03.png",
+            "position": [
+                733,
+                51
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi01_a3_01.png",
+            "position": [
+                843,
+                21
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi01_hole_a9_02.png",
+            "position": [
+                831,
+                143
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_a1_01.png",
+            "position": [
+                1167,
+                1190
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_b4_01.png",
+            "position": [
+                1087,
+                1231
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_b7_01.png",
+            "position": [
+                1017,
+                1264
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_safehouse01.png",
+            "position": [
+                1023,
+                1320
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_b3_01.png",
+            "position": [
+                948,
+                1265
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_b5_01.png",
+            "position": [
+                893,
+                1265
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_a5_01.png",
+            "position": [
+                872,
+                1322
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_b3_02.png",
+            "position": [
+                759,
+                1337
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_b2_01.png",
+            "position": [
+                688,
+                1329
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_b5_02.png",
+            "position": [
+                671,
+                1257
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_b1_01.png",
+            "position": [
+                596,
+                1238
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_b1_04.png",
+            "position": [
+                523,
+                1240
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_b3_03.png",
+            "position": [
+                470,
+                1254
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_b1_03.png",
+            "position": [
+                531,
+                1168
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_b3_04.png",
+            "position": [
+                470,
+                1184
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_b3_05.png",
+            "position": [
+                546,
+                1106
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_b1_02.png",
+            "position": [
+                603,
+                1174
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_b6_01.png",
+            "position": [
+                626,
+                1103
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_b5_03.png",
+            "position": [
+                675,
+                1149
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_b2_02.png",
+            "position": [
+                695,
+                1105
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_a5_02.png",
+            "position": [
+                760,
+                1083
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_b4_02.png",
+            "position": [
+                752,
+                1006
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_b2_03.png",
+            "position": [
+                747,
+                935
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_a7_01.png",
+            "position": [
+                733,
+                858
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_b3_06.png",
+            "position": [
+                669,
+                949
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_b7_02.png",
+            "position": [
+                610,
+                925
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_safehouse02.png",
+            "position": [
+                613,
+                887
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_b4_03.png",
+            "position": [
+                511,
+                949
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_b2_04.png",
+            "position": [
+                447,
+                979
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_b3_07.png",
+            "position": [
+                453,
+                899
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_b2_05.png",
+            "position": [
+                452,
+                840
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_a3_01.png",
+            "position": [
+                506,
+                812
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_b3_08.png",
+            "position": [
+                452,
+                770
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_a9_02.png",
+            "position": [
+                343,
+                949
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_a3_02.png",
+            "position": [
+                340,
+                859
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_b3_09.png",
+            "position": [
+                368,
+                1043
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_b4_04.png",
+            "position": [
+                366,
+                1118
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_a5_03.png",
+            "position": [
+                377,
+                1180
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_b4_05.png",
+            "position": [
+                296,
+                1197
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_a1_02.png",
+            "position": [
+                157,
+                1211
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_b3_10.png",
+            "position": [
+                113,
+                1255
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_a6_01.png",
+            "position": [
+                30,
+                1226
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_b3_11.png",
+            "position": [
+                307,
+                1285
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_b5_04.png",
+            "position": [
+                369,
+                1282
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_a9_01.png",
+            "position": [
+                343,
+                1334
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_a3_03.png",
+            "position": [
+                520,
+                1372
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_b3_13.png",
+            "position": [
+                545,
+                1317
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_b5_06.png",
+            "position": [
+                627,
+                1312
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_b5_05.png",
+            "position": [
+                1319,
+                1258
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_b5_07.png",
+            "position": [
+                1328,
+                1326
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "xdt_ysc_tsg2F_zhi02_a6_02.png",
+            "position": [
+                1384,
+                1312
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "objects": [
+        {
+            "sn": 8450001,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                1143,
+                1118
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450007,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                918,
+                734
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450013,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                749,
+                698
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450023,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                1289,
+                538
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450025,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                1312,
+                734
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450027,
+            "image": "yishijie-icon-box-teshu-new.png",
+            "position": [
+                135,
+                729
+            ],
+            "ratio": 0.75,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450044,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                1468,
+                789
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450050,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                1473,
+                894
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450052,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                1523,
+                1273
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450053,
+            "image": "yishijie-icon-box-hexin-new.png",
+            "position": [
+                428,
+                1419
+            ],
+            "ratio": 0.75,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450073,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                497,
+                460
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450082,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                249,
+                793
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450087,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                506,
+                392
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450089,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                414,
+                214
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450128,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                781,
+                163
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450133,
+            "image": "yishijie-icon-box-hexin-new.png",
+            "position": [
+                850,
+                204
+            ],
+            "ratio": 0.75,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450137,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                1441,
+                1355
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450151,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                657,
+                1369
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450177,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                565,
+                1113
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450192,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                433,
+                944
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450194,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                171,
+                1245
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450197,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                84,
+                1309
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450199,
+            "image": "yishijie-icon-men-jinzhi.png",
+            "position": [
+                1147,
+                1122
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450200,
+            "image": "yishijie-icon-men-jinzhi.png",
+            "position": [
+                982,
+                912
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450201,
+            "image": "yishijie-icon-men-jinzhi.png",
+            "position": [
+                946,
+                780
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450202,
+            "image": "yishijie-icon-men-jinzhi.png",
+            "position": [
+                946,
+                702
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450203,
+            "image": "yishijie-icon-men-jinzhi.png",
+            "position": [
+                735,
+                698
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450204,
+            "image": "yishijie-icon-men-jinzhi.png",
+            "position": [
+                1047,
+                460
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450205,
+            "image": "yishijie-icon-men-jinzhi.png",
+            "position": [
+                258,
+                821
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450206,
+            "image": "yishijie-icon-men-jinzhi.png",
+            "position": [
+                891,
+                131
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450207,
+            "image": "yishijie-icon-men-jinzhi.png",
+            "position": [
+                171,
+                684
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450208,
+            "image": "yishijie-icon-men-jinzhi.png",
+            "position": [
+                923,
+                204
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450209,
+            "image": "yishijie-icon-men-jinzhi.png",
+            "position": [
+                877,
+                159
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450210,
+            "image": "yishijie-icon-men-jinzhi.png",
+            "position": [
+                1386,
+                588
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450211,
+            "image": "yishijie-icon-men-jinzhi.png",
+            "position": [
+                1464,
+                611
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450212,
+            "image": "yishijie-icon-men-jinzhi.png",
+            "position": [
+                1271,
+                629
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450213,
+            "image": "yishijie-icon-men-jinzhi.png",
+            "position": [
+                1271,
+                707
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450214,
+            "image": "yishijie-icon-men-jinzhi.png",
+            "position": [
+                1308,
+                743
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450215,
+            "image": "yishijie-icon-men-jinzhi.png",
+            "position": [
+                1386,
+                743
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450216,
+            "image": "yishijie-icon-men-jinzhi.png",
+            "position": [
+                1468,
+                798
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450217,
+            "image": "yishijie-icon-men-jinzhi.png",
+            "position": [
+                1427,
+                629
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450218,
+            "image": "yishijie-icon-men-jinzhi.png",
+            "position": [
+                474,
+                1204
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450219,
+            "image": "yishijie-icon-men-jinzhi.png",
+            "position": [
+                565,
+                1108
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450220,
+            "image": "yishijie-icon-men-jinzhi.png",
+            "position": [
+                474,
+                1282
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450221,
+            "image": "yishijie-icon-men-jinzhi.png",
+            "position": [
+                524,
+                1419
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450222,
+            "image": "yishijie-icon-men-jinzhi.png",
+            "position": [
+                350,
+                1387
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450223,
+            "image": "yishijie-icon-men-jinzhi.png",
+            "position": [
+                396,
+                1428
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450224,
+            "image": "yishijie-icon-men-jinzhi.png",
+            "position": [
+                350,
+                912
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450225,
+            "image": "yishijie-icon-men-jinzhi.png",
+            "position": [
+                478,
+                775
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450336,
+            "image": "yishijie-icon-box-teshu-new.png",
+            "position": [
+                598,
+                871
+            ],
+            "ratio": 0.75,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450341,
+            "image": "yishijie-icon-men-danxiang.png",
+            "position": [
+                570,
+                1373
+            ],
+            "ratio": 1.0588235294117647,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450346,
+            "image": "yishijie-icon-men-danxiang.png",
+            "position": [
+                877,
+                250
+            ],
+            "ratio": 1.0588235294117647,
+            "rotate": 180.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450376,
+            "image": "yishijie-icon-men-jinzhi.png",
+            "position": [
+                561,
+                917
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450507,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                772,
+                880
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450509,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                932,
+                90
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450511,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                611,
+                1451
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450514,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                882,
+                949
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450516,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                1051,
+                460
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450518,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                1129,
+                652
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450520,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                1555,
+                716
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450522,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                245,
+                602
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450523,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                625,
+                529
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450525,
+            "image": "yishijie-icon-box-hexin-new.png",
+            "position": [
+                304,
+                469
+            ],
+            "ratio": 0.75,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450526,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                772,
+                1058
+            ],
+            "ratio": 0.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450528,
+            "image": "yishijie-icon-box-hexin-new.png",
+            "position": [
+                478,
+                780
+            ],
+            "ratio": 0.75,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450607,
+            "image": "yishijie-icon-box-teshu-new.png",
+            "position": [
+                1189,
+                551
+            ],
+            "ratio": 0.75,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450701,
+            "image": "yishijie-icon-box-suo-new.png",
+            "position": [
+                1386,
+                743
+            ],
+            "ratio": 0.75,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8450703,
+            "image": "yishijie-icon-box-suo-new.png",
+            "position": [
+                1134,
+                1291
+            ],
+            "ratio": 0.75,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        }
+    ],
+    "enemies": [
+        {
+            "sn": "8450001",
+            "image": "yishijie-icon-boss01-2.png",
+            "position": [
+                909,
+                698
+            ],
+            "ratio": 0.5901639344262295,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": {
+                "instSn": 21610,
+                "enemies": [
+                    [
+                        {
+                            "sn": "216101",
+                            "name": "Anzu",
+                            "adapt": {
+                                "Weak": [
+                                    "Gun",
+                                    "Nuclear"
+                                ],
+                                "Resistant": [
+                                    "Electric"
+                                ],
+                                "Nullify": [],
+                                "Reflect": [
+                                    "Wind"
+                                ],
+                                "Absorb": []
+                            },
+                            "level": "48",
+                            "stat": {
+                                "HP": 16838.5068,
+                                "HP 계산식": "(8688.6 * (1 + 0.94) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 1334.406,
+                                "공격력 계산식": "(688.55 * (1 + 0.94) + 0) * (1 + 0)",
+                                "방어력": 525.551,
+                                "방어력 계산식": "(525.55 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.24,
+                                "효과 명중 계산식": "(0.24 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.204,
+                                "효과 저항 계산식": "(0.2 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 0,
+                                "다운 수치 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 75.933,
+                                "속도 계산식": "(75.93 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 0.625,
+                                "대미지 보너스 계산식": "(0.62 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": "402",
+                                    "name": "Garula",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Wind damage to 1 foe equal to 85.5% of Attack. 47.5% chance to inflict Windswept for 2 turns."
+                                    },
+                                    "cost": "SP 20"
+                                },
+                                {
+                                    "sn": "1005",
+                                    "name": "Assault Dive",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Physical damage to 1 foe equal to 106.4% of Attack."
+                                    },
+                                    "cost": "체력 8.0%"
+                                }
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "sn": "216102",
+                            "name": "Anzu",
+                            "adapt": {
+                                "Weak": [
+                                    "Gun",
+                                    "Nuclear"
+                                ],
+                                "Resistant": [
+                                    "Electric"
+                                ],
+                                "Nullify": [],
+                                "Reflect": [
+                                    "Wind"
+                                ],
+                                "Absorb": []
+                            },
+                            "level": "48",
+                            "stat": {
+                                "HP": 16838.5068,
+                                "HP 계산식": "(8688.6 * (1 + 0.94) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 1334.406,
+                                "공격력 계산식": "(688.55 * (1 + 0.94) + 0) * (1 + 0)",
+                                "방어력": 525.551,
+                                "방어력 계산식": "(525.55 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.24,
+                                "효과 명중 계산식": "(0.24 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.204,
+                                "효과 저항 계산식": "(0.2 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 0,
+                                "다운 수치 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 75.933,
+                                "속도 계산식": "(75.93 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 0.625,
+                                "대미지 보너스 계산식": "(0.62 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": "402",
+                                    "name": "Garula",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Wind damage to 1 foe equal to 85.5% of Attack. 47.5% chance to inflict Windswept for 2 turns."
+                                    },
+                                    "cost": "SP 20"
+                                },
+                                {
+                                    "sn": "1005",
+                                    "name": "Assault Dive",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Physical damage to 1 foe equal to 106.4% of Attack."
+                                    },
+                                    "cost": "체력 8.0%"
+                                }
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "sn": "216103",
+                            "name": "Ippon-Datara",
+                            "adapt": {
+                                "Weak": [
+                                    "Ice"
+                                ],
+                                "Resistant": [
+                                    "Fire",
+                                    "Bless",
+                                    "Curse"
+                                ],
+                                "Nullify": [],
+                                "Reflect": [
+                                    "Wind"
+                                ],
+                                "Absorb": []
+                            },
+                            "level": "48",
+                            "stat": {
+                                "HP": 15579.1944,
+                                "HP 계산식": "(8038.8 * (1 + 0.94) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 1226.2104,
+                                "공격력 계산식": "(632.72 * (1 + 0.94) + 0) * (1 + 0)",
+                                "방어력": 358.33,
+                                "방어력 계산식": "(358.33 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.24,
+                                "효과 명중 계산식": "(0.24 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.136,
+                                "효과 저항 계산식": "(0.14 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 0,
+                                "다운 수치 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 71.467,
+                                "속도 계산식": "(71.47 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 0.625,
+                                "대미지 보너스 계산식": "(0.62 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": "1031",
+                                    "name": "Sledgehammer",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Physical damage to 1 foe equal to 61.8% of Attack. 7.0% chance to inflict Dizzy for 2 turns."
+                                    },
+                                    "cost": "체력 7.0%"
+                                },
+                                {
+                                    "sn": "1403",
+                                    "name": "Tarukaja",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Increase 1 ally's Attack by 11.6%. For every 500 of the user's Attack, increase the target's Attack by 1.0% more, up to 7.8%. Lasts for 3 turns."
+                                    },
+                                    "cost": "SP 22"
+                                },
+                                {
+                                    "sn": "1038",
+                                    "name": "Rampage",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Physical damage to all foes equal to 22.5% of Attack (1 to 3 hits)."
+                                    },
+                                    "cost": "체력 6.0%"
+                                }
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "sn": "216104",
+                            "name": "Ippon-Datara",
+                            "adapt": {
+                                "Weak": [
+                                    "Ice"
+                                ],
+                                "Resistant": [
+                                    "Fire",
+                                    "Bless",
+                                    "Curse"
+                                ],
+                                "Nullify": [],
+                                "Reflect": [
+                                    "Wind"
+                                ],
+                                "Absorb": []
+                            },
+                            "level": "48",
+                            "stat": {
+                                "HP": 15579.1944,
+                                "HP 계산식": "(8038.8 * (1 + 0.94) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 1226.2104,
+                                "공격력 계산식": "(632.72 * (1 + 0.94) + 0) * (1 + 0)",
+                                "방어력": 358.33,
+                                "방어력 계산식": "(358.33 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.24,
+                                "효과 명중 계산식": "(0.24 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.136,
+                                "효과 저항 계산식": "(0.14 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 0,
+                                "다운 수치 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 71.467,
+                                "속도 계산식": "(71.47 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 0.625,
+                                "대미지 보너스 계산식": "(0.62 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": "1031",
+                                    "name": "Sledgehammer",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Physical damage to 1 foe equal to 61.8% of Attack. 7.0% chance to inflict Dizzy for 2 turns."
+                                    },
+                                    "cost": "체력 7.0%"
+                                },
+                                {
+                                    "sn": "1403",
+                                    "name": "Tarukaja",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Increase 1 ally's Attack by 11.6%. For every 500 of the user's Attack, increase the target's Attack by 1.0% more, up to 7.8%. Lasts for 3 turns."
+                                    },
+                                    "cost": "SP 22"
+                                },
+                                {
+                                    "sn": "1038",
+                                    "name": "Rampage",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Physical damage to all foes equal to 22.5% of Attack (1 to 3 hits)."
+                                    },
+                                    "cost": "체력 6.0%"
+                                }
+                            ]
+                        }
+                    ]
+                ],
+                "tutorial": {
+                    "sn": 0,
+                    "title": "",
+                    "content": ""
+                }
+            }
+        },
+        {
+            "sn": "8450002",
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                964,
+                1122
+            ],
+            "ratio": 0.4,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": "8450003",
+            "image": "yishijie-icon-persona-new.png",
+            "position": [
+                167,
+                729
+            ],
+            "ratio": 0.5,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": "8450005",
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                1436,
+                1058
+            ],
+            "ratio": 0.4,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": "8450006",
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                1047,
+                538
+            ],
+            "ratio": 0.4,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": "8450007",
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                955,
+                341
+            ],
+            "ratio": 0.4,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": "8450008",
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                428,
+                729
+            ],
+            "ratio": 0.4,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": "8450009",
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                1047,
+                1323
+            ],
+            "ratio": 0.4,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": "8450010",
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                639,
+                930
+            ],
+            "ratio": 0.4,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": "8450018",
+            "image": "yishijie-icon-boss01.png",
+            "position": [
+                488,
+                392
+            ],
+            "ratio": 0.5901639344262295,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": {
+                "instSn": 21815,
+                "enemies": [
+                    [
+                        {
+                            "sn": "218151",
+                            "name": "Zouchouten",
+                            "adapt": {
+                                "Weak": [
+                                    "Wind"
+                                ],
+                                "Resistant": [
+                                    "Phys"
+                                ],
+                                "Nullify": [],
+                                "Reflect": [],
+                                "Absorb": []
+                            },
+                            "level": "51",
+                            "stat": {
+                                "HP": 34062.465,
+                                "HP 계산식": "(16946.5 * (1 + 1.01) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 1724.702,
+                                "공격력 계산식": "(858.06 * (1 + 1.01) + 0) * (1 + 0)",
+                                "방어력": 768.109,
+                                "방어력 계산식": "(768.11 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.255,
+                                "효과 명중 계산식": "(0.26 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.355,
+                                "효과 저항 계산식": "(0.35 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 1.0,
+                                "다운 수치 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 81.3,
+                                "속도 계산식": "(81.3 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 0.673,
+                                "대미지 보너스 계산식": "(0.67 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": "302",
+                                    "name": "Zionga",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Electric damage to 1 foe equal to 85.5% of Attack. 47.5% chance to inflict Shock for 2 turns."
+                                    },
+                                    "cost": "SP 20"
+                                },
+                                {
+                                    "sn": "1025",
+                                    "name": "Swift Strike",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Physical damage to all foes equal to 11.4% of Attack (3 to 4 hits)."
+                                    },
+                                    "cost": "체력 6.0%"
+                                }
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "sn": "218152",
+                            "name": "Jack Frost",
+                            "adapt": {
+                                "Weak": [
+                                    "Fire"
+                                ],
+                                "Resistant": [],
+                                "Nullify": [
+                                    "Ice"
+                                ],
+                                "Reflect": [],
+                                "Absorb": []
+                            },
+                            "level": "51",
+                            "stat": {
+                                "HP": 39491.475,
+                                "HP 계산식": "(19647.5 * (1 + 1.01) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 1097.5384,
+                                "공격력 계산식": "(546.04 * (1 + 1.01) + 0) * (1 + 0)",
+                                "방어력": 621.891,
+                                "방어력 계산식": "(621.89 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.255,
+                                "효과 명중 계산식": "(0.26 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.284,
+                                "효과 저항 계산식": "(0.28 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 0,
+                                "다운 수치 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 81.3,
+                                "속도 계산식": "(81.3 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 0.673,
+                                "대미지 보너스 계산식": "(0.67 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": "201",
+                                    "name": "Bufu",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Ice damage to 1 foe equal to 79.6% of Attack. 44.2% chance to inflict Freeze for 2 turns."
+                                    },
+                                    "cost": "SP 19"
+                                },
+                                {
+                                    "sn": "205",
+                                    "name": "Mabufu",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Ice damage to all foes equal to 39.8% of Attack. 22.1% chance to inflict Freeze for 2 turns."
+                                    },
+                                    "cost": "SP 19"
+                                }
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "sn": "218152",
+                            "name": "Jack Frost",
+                            "adapt": {
+                                "Weak": [
+                                    "Fire"
+                                ],
+                                "Resistant": [],
+                                "Nullify": [
+                                    "Ice"
+                                ],
+                                "Reflect": [],
+                                "Absorb": []
+                            },
+                            "level": "51",
+                            "stat": {
+                                "HP": 39491.475,
+                                "HP 계산식": "(19647.5 * (1 + 1.01) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 1097.5384,
+                                "공격력 계산식": "(546.04 * (1 + 1.01) + 0) * (1 + 0)",
+                                "방어력": 621.891,
+                                "방어력 계산식": "(621.89 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.255,
+                                "효과 명중 계산식": "(0.26 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.284,
+                                "효과 저항 계산식": "(0.28 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 0,
+                                "다운 수치 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 81.3,
+                                "속도 계산식": "(81.3 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 0.673,
+                                "대미지 보너스 계산식": "(0.67 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": "201",
+                                    "name": "Bufu",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Ice damage to 1 foe equal to 79.6% of Attack. 44.2% chance to inflict Freeze for 2 turns."
+                                    },
+                                    "cost": "SP 19"
+                                },
+                                {
+                                    "sn": "205",
+                                    "name": "Mabufu",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Ice damage to all foes equal to 39.8% of Attack. 22.1% chance to inflict Freeze for 2 turns."
+                                    },
+                                    "cost": "SP 19"
+                                }
+                            ]
+                        }
+                    ]
+                ],
+                "tutorial": {
+                    "sn": 218151,
+                    "title": "Unique Shadow Abilities",
+                    "content": "1. Zouchouten has Growth of All Things, and each turn grants Growth to 1 Shadow.\n2. If Jack Frost receives Growth, it becomes King Frost. If King Frost receives Growth, it becomes <color=#FF423F>Black Frost</color>, and summons 1 Jack-o'-Lantern.\nWhen Jack-o'-Lantern is defeated, Black Frost reverts to Jack Frost."
+                }
+            }
+        },
+        {
+            "sn": "8450023",
+            "image": "yishijie-icon-boss01.png",
+            "position": [
+                891,
+                86
+            ],
+            "ratio": 0.5901639344262295,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": {
+                "instSn": 21816,
+                "enemies": [
+                    [
+                        {
+                            "sn": "218161",
+                            "name": "Zouchouten",
+                            "adapt": {
+                                "Weak": [
+                                    "Wind"
+                                ],
+                                "Resistant": [
+                                    "Phys"
+                                ],
+                                "Nullify": [],
+                                "Reflect": [],
+                                "Absorb": []
+                            },
+                            "level": "51",
+                            "stat": {
+                                "HP": 39491.475,
+                                "HP 계산식": "(19647.5 * (1 + 1.01) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 1207.2922,
+                                "공격력 계산식": "(600.64 * (1 + 1.01) + 0) * (1 + 0)",
+                                "방어력": 621.891,
+                                "방어력 계산식": "(621.89 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.255,
+                                "효과 명중 계산식": "(0.26 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.284,
+                                "효과 저항 계산식": "(0.28 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 1.0,
+                                "다운 수치 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 81.3,
+                                "속도 계산식": "(81.3 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 0.673,
+                                "대미지 보너스 계산식": "(0.67 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": "302",
+                                    "name": "Zionga",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Electric damage to 1 foe equal to 85.5% of Attack. 47.5% chance to inflict Shock for 2 turns."
+                                    },
+                                    "cost": "SP 20"
+                                },
+                                {
+                                    "sn": "1025",
+                                    "name": "Swift Strike",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Physical damage to all foes equal to 11.4% of Attack (3 to 4 hits)."
+                                    },
+                                    "cost": "체력 6.0%"
+                                },
+                                {
+                                    "sn": "2379",
+                                    "name": "Growth of All Things",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Grant 1 stack of Attack Growth to 2 random allies. For each, increase Attack by 30%."
+                                    }
+                                },
+                                {
+                                    "sn": "2380",
+                                    "name": "Drain",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Party absorbs Attack Growth. With enough stacks, activates Gigantomachia."
+                                    }
+                                },
+                                {
+                                    "sn": "1023",
+                                    "name": "Gigantomachia",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Physical damage to all foes equal to 57.2% of Attack."
+                                    },
+                                    "cost": "체력 9.0%"
+                                }
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "sn": "218162",
+                            "name": "Saki Mitama",
+                            "adapt": {
+                                "Weak": [
+                                    "Wind"
+                                ],
+                                "Resistant": [
+                                    "Ice"
+                                ],
+                                "Nullify": [],
+                                "Reflect": [],
+                                "Absorb": []
+                            },
+                            "level": "51",
+                            "stat": {
+                                "HP": 33035.355,
+                                "HP 계산식": "(16435.5 * (1 + 1.01) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 878.0307,
+                                "공격력 계산식": "(436.83 * (1 + 1.01) + 0) * (1 + 0)",
+                                "방어력": 356.291,
+                                "방어력 계산식": "(356.29 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.255,
+                                "효과 명중 계산식": "(0.26 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.142,
+                                "효과 저항 계산식": "(0.14 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 1.0,
+                                "다운 수치 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 76.783,
+                                "속도 계산식": "(76.78 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 0.673,
+                                "대미지 보너스 계산식": "(0.67 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": "201",
+                                    "name": "Bufu",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Ice damage to 1 foe equal to 79.6% of Attack. 44.2% chance to inflict Freeze for 2 turns."
+                                    },
+                                    "cost": "SP 19"
+                                },
+                                {
+                                    "sn": "1312",
+                                    "name": "Wind Wall",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Grant a Wind-resistant barrier for 2 turns."
+                                    },
+                                    "cost": "SP skillLv*-1+28"
+                                },
+                                {
+                                    "sn": "1407",
+                                    "name": "Rakukaja",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Increase 1 ally's Defense by 17.5%. For every 500 of the user's Defense, increase the target's Defense by 2.9% more, up to 11.7%. Lasts for 3 turns."
+                                    },
+                                    "cost": "SP 22"
+                                }
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "sn": "218163",
+                            "name": "Nigi Mitama",
+                            "adapt": {
+                                "Weak": [
+                                    "Electric"
+                                ],
+                                "Resistant": [
+                                    "Bless",
+                                    "Curse"
+                                ],
+                                "Nullify": [],
+                                "Reflect": [],
+                                "Absorb": []
+                            },
+                            "level": "51",
+                            "stat": {
+                                "HP": 33035.355,
+                                "HP 계산식": "(16435.5 * (1 + 1.01) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 878.0307,
+                                "공격력 계산식": "(436.83 * (1 + 1.01) + 0) * (1 + 0)",
+                                "방어력": 356.291,
+                                "방어력 계산식": "(356.29 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.255,
+                                "효과 명중 계산식": "(0.26 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.142,
+                                "효과 저항 계산식": "(0.14 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 1.0,
+                                "다운 수치 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 76.783,
+                                "속도 계산식": "(76.78 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 0.673,
+                                "대미지 보너스 계산식": "(0.67 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": "705",
+                                    "name": "Makouha",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Bless damage to all foes equal to 41.1% of Attack. Gain 0 to 1 Blessing stacks."
+                                    },
+                                    "cost": "SP 19"
+                                },
+                                {
+                                    "sn": "1502",
+                                    "name": "Diarama",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Restore 1 ally's HP by 26.7% of Attack + 87."
+                                    },
+                                    "cost": "SP 24"
+                                }
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "sn": "218164",
+                            "name": "Kushi Mitama",
+                            "adapt": {
+                                "Weak": [
+                                    "Fire"
+                                ],
+                                "Resistant": [
+                                    "Wind"
+                                ],
+                                "Nullify": [],
+                                "Reflect": [],
+                                "Absorb": []
+                            },
+                            "level": "51",
+                            "stat": {
+                                "HP": 33035.355,
+                                "HP 계산식": "(16435.5 * (1 + 1.01) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 878.0307,
+                                "공격력 계산식": "(436.83 * (1 + 1.01) + 0) * (1 + 0)",
+                                "방어력": 356.291,
+                                "방어력 계산식": "(356.29 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.255,
+                                "효과 명중 계산식": "(0.26 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.142,
+                                "효과 저항 계산식": "(0.14 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 1.0,
+                                "다운 수치 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 76.783,
+                                "속도 계산식": "(76.78 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 0.673,
+                                "대미지 보너스 계산식": "(0.67 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": "201",
+                                    "name": "Bufu",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Ice damage to 1 foe equal to 79.6% of Attack. 44.2% chance to inflict Freeze for 2 turns."
+                                    },
+                                    "cost": "SP 19"
+                                },
+                                {
+                                    "sn": "1505",
+                                    "name": "Media",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Restore party's HP by 12.5% of Attack + 40."
+                                    },
+                                    "cost": "SP 23"
+                                },
+                                {
+                                    "sn": "1305",
+                                    "name": "Makajama",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "48.8% chance to inflict Forget on 1 foe for 2 turns."
+                                    },
+                                    "cost": "SP 22"
+                                }
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "sn": "218165",
+                            "name": "Ara Mitama",
+                            "adapt": {
+                                "Weak": [
+                                    "Ice"
+                                ],
+                                "Resistant": [
+                                    "Phys"
+                                ],
+                                "Nullify": [],
+                                "Reflect": [],
+                                "Absorb": []
+                            },
+                            "level": "51",
+                            "stat": {
+                                "HP": 33035.355,
+                                "HP 계산식": "(16435.5 * (1 + 1.01) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 878.0307,
+                                "공격력 계산식": "(436.83 * (1 + 1.01) + 0) * (1 + 0)",
+                                "방어력": 356.291,
+                                "방어력 계산식": "(356.29 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.255,
+                                "효과 명중 계산식": "(0.26 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.142,
+                                "효과 저항 계산식": "(0.14 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 1.0,
+                                "다운 수치 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 76.783,
+                                "속도 계산식": "(76.78 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 0.673,
+                                "대미지 보너스 계산식": "(0.67 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": "602",
+                                    "name": "Freila",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Nuclear damage to 1 foe equal to 99.7% of Attack. Deal a Technical and increase damage by 18% for foes with an elemental ailment."
+                                    },
+                                    "cost": "SP 20"
+                                },
+                                {
+                                    "sn": "1013",
+                                    "name": "Miracle Punch",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Physical damage to 1 foe equal to 95.9%  of Attack. Increase critical rate by 30%, and decrease accuracy by 20%."
+                                    },
+                                    "cost": "체력 8.0%"
+                                },
+                                {
+                                    "sn": "1421",
+                                    "name": "Rakunda",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Decrease 1 foe's Defense by 29.1% for 3 turns."
+                                    },
+                                    "cost": "SP 22"
+                                }
+                            ]
+                        }
+                    ]
+                ],
+                "tutorial": {
+                    "sn": 218161,
+                    "title": "Unique Shadow Abilities",
+                    "content": "1. Zouchouten has <color=#FF423F>Growth of All Things</color>, which grants Growth to 2 random Shadows each turn.\nEach stack of Growth increases Attack by 30%.\n2. Zouchouten will absorb Growth from the Shadows every 3 turns. When it reaches 4 stacks of Growth, it will unleash a powerful attack.\n3. When a Shadow with Growth is defeated, its stack of Growth disappears."
+                }
+            }
+        },
+        {
+            "sn": "8450035",
+            "image": "yishijie-icon-boss01.png",
+            "position": [
+                772,
+                903
+            ],
+            "ratio": 0.5901639344262295,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": {
+                "instSn": 21817,
+                "enemies": [
+                    [
+                        {
+                            "sn": "218171",
+                            "name": "Zouchouten",
+                            "adapt": {
+                                "Weak": [
+                                    "Wind"
+                                ],
+                                "Resistant": [
+                                    "Phys"
+                                ],
+                                "Nullify": [],
+                                "Reflect": [],
+                                "Absorb": []
+                            },
+                            "level": "51",
+                            "stat": {
+                                "HP": 34062.465,
+                                "HP 계산식": "(16946.5 * (1 + 1.01) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 1724.702,
+                                "공격력 계산식": "(858.06 * (1 + 1.01) + 0) * (1 + 0)",
+                                "방어력": 768.109,
+                                "방어력 계산식": "(768.11 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.255,
+                                "효과 명중 계산식": "(0.26 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.355,
+                                "효과 저항 계산식": "(0.35 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 1.0,
+                                "다운 수치 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 81.3,
+                                "속도 계산식": "(81.3 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 0.673,
+                                "대미지 보너스 계산식": "(0.67 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": "302",
+                                    "name": "Zionga",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Electric damage to 1 foe equal to 85.5% of Attack. 47.5% chance to inflict Shock for 2 turns."
+                                    },
+                                    "cost": "SP 20"
+                                },
+                                {
+                                    "sn": "1025",
+                                    "name": "Swift Strike",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Physical damage to all foes equal to 11.4% of Attack (3 to 4 hits)."
+                                    },
+                                    "cost": "체력 6.0%"
+                                },
+                                {
+                                    "sn": "2385",
+                                    "name": "Growth of All Things",
+                                    "desc": null
+                                }
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "sn": "218172",
+                            "name": "Kin-Ki",
+                            "adapt": {
+                                "Weak": [
+                                    "Psychokinesis"
+                                ],
+                                "Resistant": [
+                                    "Phys",
+                                    "Gun"
+                                ],
+                                "Nullify": [],
+                                "Reflect": [],
+                                "Absorb": []
+                            },
+                            "level": "51",
+                            "stat": {
+                                "HP": 19002.942,
+                                "HP 계산식": "(9454.2 * (1 + 1.01) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 1191.6124,
+                                "공격력 계산식": "(592.84 * (1 + 1.01) + 0) * (1 + 0)",
+                                "방어력": 356.291,
+                                "방어력 계산식": "(356.29 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.255,
+                                "효과 명중 계산식": "(0.26 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.142,
+                                "효과 저항 계산식": "(0.14 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 0,
+                                "다운 수치 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 76.783,
+                                "속도 계산식": "(76.78 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 0.673,
+                                "대미지 보너스 계산식": "(0.67 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": "1019",
+                                    "name": "Vajra Blast",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Physical damage to all foes equal to 39.8% of Attack."
+                                    },
+                                    "cost": "체력 6.0%"
+                                },
+                                {
+                                    "sn": "1407",
+                                    "name": "Rakukaja",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Increase 1 ally's Defense by 17.5%. For every 500 of the user's Defense, increase the target's Defense by 2.9% more, up to 11.7%. Lasts for 3 turns."
+                                    },
+                                    "cost": "SP 22"
+                                }
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "sn": "218173",
+                            "name": "Sui-Ki",
+                            "adapt": {
+                                "Weak": [
+                                    "Nuclear"
+                                ],
+                                "Resistant": [
+                                    "Electric"
+                                ],
+                                "Nullify": [],
+                                "Reflect": [],
+                                "Absorb": [
+                                    "Ice"
+                                ]
+                            },
+                            "level": "51",
+                            "stat": {
+                                "HP": 19002.942,
+                                "HP 계산식": "(9454.2 * (1 + 1.01) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 1588.8166,
+                                "공격력 계산식": "(790.46 * (1 + 1.01) + 0) * (1 + 0)",
+                                "방어력": 356.291,
+                                "방어력 계산식": "(356.29 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.255,
+                                "효과 명중 계산식": "(0.26 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.142,
+                                "효과 저항 계산식": "(0.14 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 0,
+                                "다운 수치 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 76.783,
+                                "속도 계산식": "(76.78 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 0.673,
+                                "대미지 보너스 계산식": "(0.67 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": "202",
+                                    "name": "Bufula",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Ice damage to 1 foe equal to 85.5% of Attack. 47.5% chance to inflict Freeze for 2 turns."
+                                    },
+                                    "cost": "SP 20"
+                                },
+                                {
+                                    "sn": "206",
+                                    "name": "Mabufula",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Ice damage to all foes equal to 42.8% of Attack. 23.8% chance to inflict Freeze for 2 turns."
+                                    },
+                                    "cost": "SP 20"
+                                },
+                                {
+                                    "sn": "1031",
+                                    "name": "Sledgehammer",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Physical damage to 1 foe equal to 61.8% of Attack. 7.0% chance to inflict Dizzy for 2 turns."
+                                    },
+                                    "cost": "체력 7.0%"
+                                }
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "sn": "218174",
+                            "name": "Fuu-Ki",
+                            "adapt": {
+                                "Weak": [
+                                    "Electric"
+                                ],
+                                "Resistant": [],
+                                "Nullify": [],
+                                "Reflect": [],
+                                "Absorb": [
+                                    "Wind"
+                                ]
+                            },
+                            "level": "51",
+                            "stat": {
+                                "HP": 19002.942,
+                                "HP 계산식": "(9454.2 * (1 + 1.01) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 1390.2145,
+                                "공격력 계산식": "(691.65 * (1 + 1.01) + 0) * (1 + 0)",
+                                "방어력": 356.291,
+                                "방어력 계산식": "(356.29 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.255,
+                                "효과 명중 계산식": "(0.26 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.142,
+                                "효과 저항 계산식": "(0.14 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 0,
+                                "다운 수치 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 76.783,
+                                "속도 계산식": "(76.78 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 0.673,
+                                "대미지 보너스 계산식": "(0.67 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": "1403",
+                                    "name": "Tarukaja",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Increase 1 ally's Attack by 11.6%. For every 500 of the user's Attack, increase the target's Attack by 1.0% more, up to 7.8%. Lasts for 3 turns."
+                                    },
+                                    "cost": "SP 22"
+                                },
+                                {
+                                    "sn": "402",
+                                    "name": "Garula",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Wind damage to 1 foe equal to 85.5% of Attack. 47.5% chance to inflict Windswept for 2 turns."
+                                    },
+                                    "cost": "SP 20"
+                                },
+                                {
+                                    "sn": "406",
+                                    "name": "Magarula",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Wind damage to all foes equal to 42.8% of Attack. 23.8% chance to inflict Windswept for 2 turns."
+                                    },
+                                    "cost": "SP 20"
+                                }
+                            ]
+                        }
+                    ]
+                ],
+                "tutorial": {
+                    "sn": 218171,
+                    "title": "Unique Shadow Abilities",
+                    "content": "1. Zouchouten has <color=#FF423F>Growth of All Things</color>, and every turn grants Growth to 1 random Shadow and 1 random Phantom Thief.\nEach stack of Growth increases damage dealt by 30%, but also increases damage taken by 30%.\n2. When a target with Growth is defeated, the attacker takes their Growth."
+                }
+            }
+        },
+        {
+            "sn": "8450036",
+            "image": "yishijie-icon-persona-new.png",
+            "position": [
+                565,
+                871
+            ],
+            "ratio": 0.5,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": "8450042",
+            "image": "yishijie-icon-boss01.png",
+            "position": [
+                593,
+                1451
+            ],
+            "ratio": 0.5901639344262295,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": {
+                "instSn": 21818,
+                "enemies": [
+                    [
+                        {
+                            "sn": "218181",
+                            "name": "Zouchouten",
+                            "adapt": {
+                                "Weak": [
+                                    "Wind"
+                                ],
+                                "Resistant": [
+                                    "Phys"
+                                ],
+                                "Nullify": [],
+                                "Reflect": [],
+                                "Absorb": []
+                            },
+                            "level": "51",
+                            "stat": {
+                                "HP": 54745.365,
+                                "HP 계산식": "(27236.5 * (1 + 1.01) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 3104.4642,
+                                "공격력 계산식": "(1544.51 * (1 + 1.01) + 0) * (1 + 0)",
+                                "방어력": 1135.197,
+                                "방어력 계산식": "(1135.2 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.255,
+                                "효과 명중 계산식": "(0.26 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.355,
+                                "효과 저항 계산식": "(0.35 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 2.0,
+                                "다운 수치 계산식": "(2.0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 85.817,
+                                "속도 계산식": "(85.82 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 0.673,
+                                "대미지 보너스 계산식": "(0.67 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": "302",
+                                    "name": "Zionga",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Electric damage to 1 foe equal to 85.5% of Attack. 47.5% chance to inflict Shock for 2 turns."
+                                    },
+                                    "cost": "SP 20"
+                                },
+                                {
+                                    "sn": "1025",
+                                    "name": "Swift Strike",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Physical damage to all foes equal to 11.4% of Attack (3 to 4 hits)."
+                                    },
+                                    "cost": "체력 6.0%"
+                                },
+                                {
+                                    "sn": "2387",
+                                    "name": "Growth!",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Gain 5-8 Growth stacks (random)."
+                                    }
+                                },
+                                {
+                                    "sn": "2388",
+                                    "name": "Growth!",
+                                    "desc": null
+                                }
+                            ]
+                        }
+                    ]
+                ],
+                "tutorial": {
+                    "sn": 218181,
+                    "title": "Unique Shadow Abilities",
+                    "content": "1. Zouchouten has <color=#FF423F>Growth of All Things</color>. It starts with 10 stacks of Growth, and each turn gains 5-8 stacks of Growth, up to a maximum of 30.\n2. When Zouchouten takes damage, it loses 1 stack of Growth.\nIf its stacks of Growth fall below 8, it immediately grants itself 10 stacks of Growth.\n3. After 4 turns, or when Growth has reached 20 stacks, it transforms into <color=#FF423F>Asura</color>, greatly enhancing its abilities."
+                }
+            }
+        },
+        {
+            "sn": "8450043",
+            "image": "yishijie-icon-boss01-2.png",
+            "position": [
+                1505,
+                1291
+            ],
+            "ratio": 0.5901639344262295,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": {
+                "instSn": 21611,
+                "enemies": [
+                    [
+                        {
+                            "sn": "216111",
+                            "name": "Fuu-Ki",
+                            "adapt": {
+                                "Weak": [
+                                    "Electric"
+                                ],
+                                "Resistant": [],
+                                "Nullify": [],
+                                "Reflect": [],
+                                "Absorb": [
+                                    "Wind"
+                                ]
+                            },
+                            "level": "50",
+                            "stat": {
+                                "HP": 25223.9411,
+                                "HP 계산식": "(12681.72 * (1 + 0.99) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 1825.5213,
+                                "공격력 계산식": "(917.81 * (1 + 0.99) + 0) * (1 + 0)",
+                                "방어력": 741.928,
+                                "방어력 계산식": "(741.93 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.25,
+                                "효과 명중 계산식": "(0.25 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.35,
+                                "효과 저항 계산식": "(0.35 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 1.0,
+                                "다운 수치 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 81.0,
+                                "속도 계산식": "(81.0 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 0.659,
+                                "대미지 보너스 계산식": "(0.66 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": "1403",
+                                    "name": "Tarukaja",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Increase 1 ally's Attack by 11.6%. For every 500 of the user's Attack, increase the target's Attack by 1.0% more, up to 7.8%. Lasts for 3 turns."
+                                    },
+                                    "cost": "SP 22"
+                                },
+                                {
+                                    "sn": "402",
+                                    "name": "Garula",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Wind damage to 1 foe equal to 85.5% of Attack. 47.5% chance to inflict Windswept for 2 turns."
+                                    },
+                                    "cost": "SP 20"
+                                },
+                                {
+                                    "sn": "406",
+                                    "name": "Magarula",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Wind damage to all foes equal to 42.8% of Attack. 23.8% chance to inflict Windswept for 2 turns."
+                                    },
+                                    "cost": "SP 20"
+                                }
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "sn": "216112",
+                            "name": "Fuu-Ki",
+                            "adapt": {
+                                "Weak": [
+                                    "Electric"
+                                ],
+                                "Resistant": [],
+                                "Nullify": [],
+                                "Reflect": [],
+                                "Absorb": [
+                                    "Wind"
+                                ]
+                            },
+                            "level": "50",
+                            "stat": {
+                                "HP": 25223.9411,
+                                "HP 계산식": "(12681.72 * (1 + 0.99) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 1825.5213,
+                                "공격력 계산식": "(917.81 * (1 + 0.99) + 0) * (1 + 0)",
+                                "방어력": 741.928,
+                                "방어력 계산식": "(741.93 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.25,
+                                "효과 명중 계산식": "(0.25 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.35,
+                                "효과 저항 계산식": "(0.35 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 1.0,
+                                "다운 수치 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 81.0,
+                                "속도 계산식": "(81.0 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 0.659,
+                                "대미지 보너스 계산식": "(0.66 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": "1403",
+                                    "name": "Tarukaja",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Increase 1 ally's Attack by 11.6%. For every 500 of the user's Attack, increase the target's Attack by 1.0% more, up to 7.8%. Lasts for 3 turns."
+                                    },
+                                    "cost": "SP 22"
+                                },
+                                {
+                                    "sn": "402",
+                                    "name": "Garula",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Wind damage to 1 foe equal to 85.5% of Attack. 47.5% chance to inflict Windswept for 2 turns."
+                                    },
+                                    "cost": "SP 20"
+                                },
+                                {
+                                    "sn": "406",
+                                    "name": "Magarula",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Wind damage to all foes equal to 42.8% of Attack. 23.8% chance to inflict Windswept for 2 turns."
+                                    },
+                                    "cost": "SP 20"
+                                }
+                            ]
+                        }
+                    ]
+                ],
+                "tutorial": {
+                    "sn": 10000,
+                    "title": "Unique Shadow Abilities",
+                    "content": "Shadows gain the following abilities as turns progress.\nStarting on turn 3, Shadows gain 1 <color=#FF423F>Berserk</color> stack every turn.\nStarting on turn 5, Shadows gain 2 <color=#FF423F>Berserk</color> stack every turn.\nBerserk: Damage increases by 10%. Stacks up to 20 times."
+                }
+            }
+        }
+    ],
+    "map_size": [
+        1640,
+        1500
+    ]
+}

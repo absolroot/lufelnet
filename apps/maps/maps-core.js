@@ -14,10 +14,16 @@
     }
     
     // 경로 상수
-    const MAP_DATA_PATH = normalizePath(BASE_URL, 'apps/maps/map_json/');
+    const MAP_DATA_BASE_PATH = normalizePath(BASE_URL, 'apps/maps/map_json/');
     const TILE_PATH = normalizePath(BASE_URL, 'apps/maps/tiles/');
     const ICON_PATH = normalizePath(BASE_URL, 'apps/maps/yishijie-icon/');
     const MAPS_LIST_PATH = normalizePath(BASE_URL, 'apps/maps/maps_list.json');
+
+    // 언어별 맵 데이터 경로 반환
+    function getMapDataPath(lang) {
+        // lang: 'kr', 'en', 'jp'
+        return `${MAP_DATA_BASE_PATH}${lang}/`;
+    }
 
     // 현재 언어 감지
     function getCurrentLanguage() {
@@ -76,7 +82,8 @@
         getMapsListData: () => mapsListData,
         setMapsListData: (data) => { mapsListData = data; },
         getCurrentLanguage: getCurrentLanguage,
-        getPaths: () => ({ MAP_DATA_PATH, TILE_PATH, ICON_PATH, MAPS_LIST_PATH }),
+        getMapDataPath: getMapDataPath,
+        getPaths: () => ({ MAP_DATA_BASE_PATH, TILE_PATH, ICON_PATH, MAPS_LIST_PATH, getMapDataPath }),
         
         // PixiJS 초기화
         async initPixi() {
@@ -651,8 +658,8 @@
                             
                             sprite.rotation = 0;
                             // 확장된 캔버스의 좌상단에서 pivot까지의 거리를 계산
-                            sprite.x = tile.position[0] + px;
-                            sprite.y = tile.position[1] + py;
+                            sprite.x = tile.position[0] + paste_x + px;
+                            sprite.y = tile.position[1] + paste_y + py;
 
                             debugInfo.computed.branch = 'no-rotation';
                             debugInfo.computed.finalPos = [sprite.x, sprite.y];
@@ -772,10 +779,11 @@
                     const data = await response.json();
                     console.log('JSON 데이터:', data);
                     this.nonInteractiveIcons = data.non_interactive_icons || [];
-                    // 전역 변수에 non_countable_icons도 저장
+                    // 전역 변수에 카운트 관련 데이터도 저장
                     window.nonInteractiveIconsData = {
                         non_interactive_icons: data.non_interactive_icons || [],
-                        non_countable_icons: data.non_countable_icons || []
+                        non_countable_icons: data.non_countable_icons || [],
+                        have_to_count_icons: data.have_to_count_icons || []
                     };
                     // console.log('비대화형 아이콘 목록 로드됨:', this.nonInteractiveIcons);
                 } else {
@@ -791,124 +799,48 @@
             return this.nonInteractiveIcons.includes(imageName);
         },
 
-        // Python _draw_entities 함수를 정확히 재현
+        // 오브젝트 로드 및 배치
         async loadObjects(objects) {
             const loadingText = document.getElementById('loading-text');
             const total = objects.length;
             let loaded = 0;
-            const isMementosMap = currentMapFileName && currentMapFileName.includes('mementos');
 
             const self = this;
             const promises = objects.map(async (obj, objIndex) => {
                 try {
                     const texture = await this.loadTexture(`${ICON_PATH}${obj.image}`);
                     const sprite = new PIXI.Sprite(texture);
-                    
-                    // Python: image_scale = (minimap_size[0] // 45) / entity_img.width
-                    // 메멘토스 맵의 경우 Python 로직으로 위치 계산용 ratio 계산
-                    let positionRatio = obj.ratio || 1; // 위치 계산용 ratio
-                    if (isMementosMap && currentMapData && currentMapData.map_size) {
-                        // Python과 동일한 계산: (minimap_size[0] // 45) / entity_img.width
-                        // map_size는 [width, height] 배열 또는 {width, height} 객체
-                        const minimapWidth = Array.isArray(currentMapData.map_size) 
-                            ? currentMapData.map_size[0] 
-                            : (currentMapData.map_size.width || currentMapData.map_size[0] || 1);
-                        positionRatio = Math.floor(minimapWidth / 45) / texture.width;
-                    }
-                    
-                    // 최종 scale은 JSON의 obj.ratio 사용
+
+                    // JSON의 ratio를 scale로 사용
                     const finalRatio = obj.ratio || 1;
-                    
+                    const rot_deg = obj.rotate || 0;
+
                     // 디버그 정보 저장
                     const debugInfo = {
                         index: objIndex,
                         image: obj.image,
                         originalPosition: [...obj.position],
-                        rotate: obj.rotate || 0,
-                        rotate_pivot: obj.rotate_pivot || null,
+                        rotate: rot_deg,
                         ratio: finalRatio,
-                        positionRatio: positionRatio, // 위치 계산용
                         textureSize: [texture.width, texture.height],
                         scaledSize: [Math.round(texture.width * finalRatio), Math.round(texture.height * finalRatio)],
                         computed: {}
                     };
-                    
 
-                    const rot_deg = obj.rotate || 0;
-                    const rot_deg_rad = rot_deg * (Math.PI / 180);
-                    
-                    // 원본 이미지 크기 (텍스처 크기)
-                    const originalW = texture.width;
-                    const originalH = texture.height;
-                    
-                    // Python: rotate_pivot은 항상 [0.5, 0.5] (중심점)
-                    // Python PIL rotate(expand=True)는 중심점 기준으로 회전하고 expand
-                    // 회전 후 확장된 이미지 크기 계산 (원본 크기 기준)
-                    let rotatedW = originalW;
-                    let rotatedH = originalH;
-                    
-                    if (Math.abs(rot_deg) >= 0.01) {
-                        // PIL rotate(expand=True)는 회전 후 bounding box 크기
-                        // 중심점 기준 회전이므로, 네 모서리를 회전시켜 bounding box 구하기
-                        const corners = [
-                            [-originalW / 2, -originalH / 2],
-                            [originalW / 2, -originalH / 2],
-                            [originalW / 2, originalH / 2],
-                            [-originalW / 2, originalH / 2]
-                        ];
-                        
-                        const cos = Math.cos(rot_deg_rad);
-                        const sin = Math.sin(rot_deg_rad);
-                        
-                        const rotatedCorners = corners.map(([x, y]) => [
-                            x * cos - y * sin,
-                            x * sin + y * cos
-                        ]);
-                        
-                        const xs = rotatedCorners.map(c => c[0]);
-                        const ys = rotatedCorners.map(c => c[1]);
-                        rotatedW = Math.max(...xs) - Math.min(...xs);
-                        rotatedH = Math.max(...ys) - Math.min(...ys);
-                    }
-                    
-                    // Python: entity_img.resize((int(entity_img.width * image_scale), ...))
-                    // 회전 후 리사이즈된 최종 크기 (위치 계산용 - positionRatio 사용)
-                    const finalW = Math.round(rotatedW * positionRatio);
-                    const finalH = Math.round(rotatedH * positionRatio);
-                    
-                    // 디버그 정보 추가
-                    debugInfo.computed = {
-                        branch: 'standard',
-                        originalW, originalH,
-                        rotatedW, rotatedH,
-                        finalW, finalH,
-                        rot_deg
-                    };
-                    
-                    // Python: rotate_pivot = [0.5, 0.5] (항상 중심)
+                    // obj.position은 오브젝트 중앙 좌표
+                    // anchor를 중앙(0.5, 0.5)으로 설정하면 position이 곧 sprite 위치
                     sprite.anchor.set(0.5, 0.5);
-                    
-                    // Python: final_x = calc_x - entity_img.width // 2
-                    //         final_y = minimap_size[1] - calc_y - entity_img.height // 2
-                    // obj.position은 회전+리사이즈된 이미지의 좌상단 (Y축 반전 적용됨)
-                    // Unity Y축: 위로 증가, PixiJS Y축: 아래로 증가
-                    // Python의 minimap_size[1] - calc_y는 Y축 반전이므로
-                    // obj.position[1]은 이미 Y축 반전이 적용된 값
-                    // PixiJS anchor가 0.5, 0.5이므로 중심점은 좌상단 + (finalW/2, finalH/2)
-                    sprite.x = obj.position[0] + finalW / 2;
-                    sprite.y = obj.position[1] + finalH / 2;
-                    
-                    // Python: entity_img.rotate(rot_deg, expand=True)
-                    // PIL rotate는 양수 방향이 시계 방향
-                    // Unity는 음수 방향이 시계 방향이므로 부호 반대
-                    // 하지만 JSON의 rotate는 이미 Python에서 계산된 값이므로 그대로 사용
-                    // Python 코드를 보면 rot_deg를 그대로 rotate()에 전달하므로
-                    // Unity로 변환하려면 부호 반대 필요
+                    sprite.x = obj.position[0];
+                    sprite.y = obj.position[1];
+
+                    // 회전 적용 (중앙 기준이므로 위치 변경 없음)
                     sprite.rotation = -rot_deg * (Math.PI / 180);
-                    
-                    // 위치 계산 완료 후, JSON의 obj.ratio로 scale 재설정 (중앙 고정)
-                    // anchor가 0.5, 0.5이므로 중앙이 고정되어 위치는 그대로 유지됨
-                    
+
+                    debugInfo.computed = {
+                        rot_deg,
+                        finalPos: [sprite.x, sprite.y]
+                    };
+
                     // 특정 아이콘들의 ratio가 1.5보다 크면 1.5로 제한
                     const limitedIcons = [
                         'yishijie-icon-box-01-new.png',
@@ -923,8 +855,8 @@
                         adjustedRatio = 1.5;
                     }
                     
-                    // 최소 사이즈 16px 보장
-                    const minSize = 16;
+                    // 최소 사이즈 24px 보장
+                    const minSize = 24;
                     const scaledWidth = texture.width * adjustedRatio;
                     const scaledHeight = texture.height * adjustedRatio;
                     const minDimension = Math.min(scaledWidth, scaledHeight);
@@ -941,8 +873,6 @@
                     
                     sprite.scale.set(adjustedRatio);
                     
-                    debugInfo.computed.finalPos = [sprite.x, sprite.y];
-                    debugInfo.computed.positionRatio = positionRatio;
                     debugInfo.computed.finalRatio = finalRatio;
                     debugInfo.computed.adjustedRatio = adjustedRatio;
                     
@@ -965,16 +895,14 @@
                         window.MapsDebug.addObjectDebugInfo({
                             index: debugInfo.index,
                             image: debugInfo.image,
-                            originalPosition: debugInfo.originalPosition,
+                            position: debugInfo.originalPosition,
                             rotate: debugInfo.rotate,
-                            rotate_pivot: debugInfo.rotate_pivot,
                             ratio: debugInfo.ratio,
                             textureSize: debugInfo.textureSize,
                             scaledSize: debugInfo.scaledSize,
                             computed: debugInfo.computed,
-                            finalSpritePosition: [sprite.x, sprite.y],
+                            spritePosition: [sprite.x, sprite.y],
                             spriteRotationDeg: sprite.rotation * 180 / Math.PI,
-                            spritePivot: [sprite.pivot.x, sprite.pivot.y],
                             spriteAnchor: [sprite.anchor.x, sprite.anchor.y],
                             spriteScale: [sprite.scale.x, sprite.scale.y]
                         });
@@ -982,7 +910,7 @@
                     
                     // 저장된 클릭 상태 확인 및 적용 (비대화형 아이콘 제외)
                     const isNonInteractive = this.isNonInteractiveIcon(obj.image);
-                    console.log(`오브젝트: ${obj.image}, 비대화형: ${isNonInteractive}`);
+                    // console.log(`오브젝트: ${obj.image}, 비대화형: ${isNonInteractive}`);
                     
                     if (sprite.objectSn && window.ObjectClickHandler && !isNonInteractive) {
                         window.ObjectClickHandler.restoreClickedState(sprite);
@@ -1151,8 +1079,9 @@
                 objectSprites = [];
             }
 
-            // 단일 파일로 로드 (배열 재정렬 없이)
-            await this.loadMapInternal(versionFile, originalFileArray, version);
+            // 단일 파일로 로드 (배열 재정렬 없이, 폴백 배열 포함)
+            const fallbackArray = window.fallbackMapFileArray || null;
+            await this.loadMapInternal(versionFile, originalFileArray, version, fallbackArray);
 
             // 버전 선택 UI 업데이트
             const versions = originalFileArray.map((file, index) => ({
@@ -1202,7 +1131,8 @@
         },
 
         // 맵 데이터 로드 (file 배열 또는 단일 파일명 지원) - 외부 호출용
-        async loadMap(mapFileNameOrArray) {
+        // fallbackFiles: kr 파일 배열 (폴백용, 옵션)
+        async loadMap(mapFileNameOrArray, fallbackFiles = null) {
             // 배열인 경우 첫 번째 파일 사용
             let mapFileName;
             let fileArray = [];
@@ -1218,38 +1148,60 @@
                 fileArray = [mapFileName];
             }
 
+            // 폴백 파일 배열 정리
+            let fallbackArray = null;
+            if (fallbackFiles) {
+                fallbackArray = Array.isArray(fallbackFiles)
+                    ? fallbackFiles.filter(f => f && f.trim() !== '')
+                    : [fallbackFiles];
+            }
+
             // 원본 배열 저장 (버전 선택용 - 재정렬되지 않음)
             window.originalMapFileArray = fileArray;
             window.currentMapFileArray = fileArray;
+            window.fallbackMapFileArray = fallbackArray;
 
             // 내부 로드 함수 호출
-            await this.loadMapInternal(mapFileName, fileArray, 0);
+            await this.loadMapInternal(mapFileName, fileArray, 0, fallbackArray);
         },
 
         // 맵 데이터 로드 (내부용 - 버전 전환 시에도 사용)
-        async loadMapInternal(mapFileName, fileArray, versionIndex) {
+        // fallbackArray: kr 파일 배열 (폴백용, 옵션)
+        async loadMapInternal(mapFileName, fileArray, versionIndex, fallbackArray = null) {
             try {
                 const loadingEl = document.getElementById('loading');
                 const loadingText = document.getElementById('loading-text');
                 loadingEl.style.display = 'block';
 
+                const lang = getCurrentLanguage();
                 if (window.MapsI18n) {
-                    const lang = getCurrentLanguage();
                     loadingText.textContent = window.MapsI18n.getText(lang, 'loading');
                 }
 
-                let url;
-                if (mapFileName.includes('/')) {
-                    url = `${MAP_DATA_PATH}${mapFileName}`;
-                } else {
-                    url = `${MAP_DATA_PATH}${mapFileName}`;
-                }
+                // 현재 언어에 맞는 경로로 시도
+                let url = `${getMapDataPath(lang)}${mapFileName}`;
+                let response = await fetch(url);
+                let loadedLang = lang;
+                let actualFileName = mapFileName;
 
-                const response = await fetch(url);
+                // 해당 언어 파일이 없으면 kr로 폴백
+                if (!response.ok && lang !== 'kr') {
+                    // 폴백 파일이 있으면 kr 파일명 + kr 경로 사용
+                    const krFileName = fallbackArray && fallbackArray[versionIndex]
+                        ? fallbackArray[versionIndex]
+                        : mapFileName;
+                    console.log(`[Maps] ${lang.toUpperCase()} 맵 데이터 없음, KR로 폴백: ${krFileName}`);
+                    url = `${getMapDataPath('kr')}${krFileName}`;
+                    response = await fetch(url);
+                    loadedLang = 'kr';
+                    actualFileName = krFileName;
+                }
 
                 if (!response.ok) {
                     throw new Error(`HTTP ${response.status}: ${response.statusText}`);
                 }
+
+                console.log(`[Maps] 맵 데이터 로드됨 (${loadedLang.toUpperCase()}): ${actualFileName}`);
 
                 const contentType = response.headers.get('content-type');
                 if (!contentType || !contentType.includes('application/json')) {
@@ -1343,17 +1295,47 @@
 
         // 첫 번째 존재하는 서브맵 찾기
         async findFirstAvailableSubmap(submaps) {
+            const lang = getCurrentLanguage();
+
             for (const submap of submaps) {
-                if (submap.file) {
-                    // file이 배열인 경우 첫 번째 파일 확인
-                    const files = Array.isArray(submap.file) ? submap.file : [submap.file];
-                    for (const file of files) {
+                // 현재 언어에 맞는 파일 배열 선택
+                let files = null;
+                let usedLang = lang;
+
+                if (lang === 'en' && submap.file_en && submap.file_en.length > 0) {
+                    files = submap.file_en;
+                } else if (lang === 'jp' && submap.file_jp && submap.file_jp.length > 0) {
+                    files = submap.file_jp;
+                } else if (submap.file && submap.file.length > 0) {
+                    files = submap.file;
+                    usedLang = 'kr';
+                }
+
+                if (files) {
+                    const fileArray = Array.isArray(files) ? files : [files];
+                    for (let i = 0; i < fileArray.length; i++) {
+                        const file = fileArray[i];
                         if (file && file.trim() !== '') {
-                            const fileUrl = `${MAP_DATA_PATH}${file}`;
-                            const exists = await this.checkFileExists(fileUrl);
+                            // 현재 언어 경로로 확인
+                            let fileUrl = `${getMapDataPath(usedLang)}${file}`;
+                            let exists = await this.checkFileExists(fileUrl);
+
+                            // 없으면 kr 파일명 + kr 경로로 폴백
+                            if (!exists && usedLang !== 'kr' && submap.file && submap.file.length > 0) {
+                                const krFiles = Array.isArray(submap.file) ? submap.file : [submap.file];
+                                const krFile = krFiles[i] || krFiles[0];
+                                if (krFile && krFile.trim() !== '') {
+                                    fileUrl = `${getMapDataPath('kr')}${krFile}`;
+                                    exists = await this.checkFileExists(fileUrl);
+                                    if (exists) {
+                                        // kr 파일로 폴백 성공
+                                        return { ...submap, file: krFiles, _fallbackLang: 'kr' };
+                                    }
+                                }
+                            }
+
                             if (exists) {
-                                // 배열인 경우 첫 번째 파일을 사용하도록 submap 복사
-                                return { ...submap, file: files };
+                                return { ...submap, file: fileArray, _usedLang: usedLang };
                             }
                         }
                     }

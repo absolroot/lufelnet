@@ -15,11 +15,11 @@
             return false;
         },
 
-        // 개수 세지 않을 아이콘인지 확인
-        isNonCountableIcon(imageName) {
-            // non-interactive-icons.json에서 non_countable_icons 배열 가져오기
-            if (window.nonInteractiveIconsData && window.nonInteractiveIconsData.non_countable_icons) {
-                return window.nonInteractiveIconsData.non_countable_icons.includes(imageName);
+        // 개수를 세야 할 아이콘인지 확인 (화이트리스트 방식)
+        isCountableIcon(imageName) {
+            // non-interactive-icons.json에서 have_to_count_icons 배열 가져오기
+            if (window.nonInteractiveIconsData && window.nonInteractiveIconsData.have_to_count_icons) {
+                return window.nonInteractiveIconsData.have_to_count_icons.includes(imageName);
             }
             return false;
         },
@@ -30,6 +30,8 @@
             if (!container) return;
 
             container.innerHTML = '';
+
+            // 영어/일본어 사용자에게 안내 메시지 표시 - language-selector 뒤로 이동
 
             // 먼저 유효한 오브젝트만 필터링 (null이 아닌 것만)
             const validObjects = objects.filter(obj => obj && obj.image);
@@ -43,7 +45,7 @@
 
                 // 비대화형 아이콘 여부 확인
                 const isNonInteractive = this.isNonInteractiveIcon(obj.image);
-                const isNonCountable = this.isNonCountableIcon(obj.image);
+                const isCountable = this.isCountableIcon(obj.image);
 
                 // 오브젝트 타입 추출
                 let type = obj.image;
@@ -66,8 +68,8 @@
                     if (!objectsByType[type]) {
                         objectsByType[type] = [];
                     }
-                    // sn이 있고 개수 세지 않는 아이콘이 아닌 경우에만 저장
-                    if (obj.sn && !isNonInteractive && !isNonCountable) {
+                    // sn이 있고 카운트해야 할 아이콘인 경우에만 저장 (화이트리스트 방식)
+                    if (obj.sn && !isNonInteractive && isCountable) {
                         objectsByType[type].push(obj.sn);
                     }
                     // 비대화형 타입 기록
@@ -88,8 +90,8 @@
                 const total = snList.length;
                 const isNonInteractive = nonInteractiveTypes.has(type);
 
-                // 개수 세지 않는 아이콘인지 확인
-                let isNonCountable = false;
+                // 카운트해야 할 아이콘인지 확인 (화이트리스트 방식)
+                let isCountable = false;
                 // 해당 타입의 첫 번째 유효한 오브젝트 이미지로 확인
                 const firstObj = objects.find(obj => {
                     if (!obj || !obj.image) return false;
@@ -109,14 +111,14 @@
                     }
                     return objType === type;
                 });
-                
+
                 if (firstObj) {
-                    isNonCountable = this.isNonCountableIcon(firstObj.image);
+                    isCountable = this.isCountableIcon(firstObj.image);
                 }
 
-                // 비대화형이거나 개수 세지 않는 아이콘이 아닌 경우에만 클릭 상태 계산
+                // 비대화형이 아니고 카운트해야 할 아이콘인 경우에만 클릭 상태 계산
                 let clicked = 0;
-                if (!isNonInteractive && !isNonCountable && window.ObjectClickHandler) {
+                if (!isNonInteractive && isCountable && window.ObjectClickHandler) {
                     snList.forEach(sn => {
                         if (window.ObjectClickHandler.getObjectClickedState(sn)) {
                             clicked++;
@@ -129,7 +131,7 @@
                     remaining: total - clicked,
                     snList: snList,
                     isNonInteractive: isNonInteractive,
-                    isNonCountable: isNonCountable
+                    isCountable: isCountable
                 };
             });
 
@@ -143,8 +145,8 @@
             
             allTypes.forEach(type => {
                 const countInfo = objectCounts[type];
-                const hasCount = !countInfo.isNonInteractive && !countInfo.isNonCountable && countInfo.total > 0;
-                
+                const hasCount = !countInfo.isNonInteractive && countInfo.isCountable && countInfo.total > 0;
+
                 if (hasCount) {
                     typesWithCount.push(type);
                 } else {
@@ -192,10 +194,10 @@
 
                     const countInfo = objectCounts[type];
                     const isNonInteractive = countInfo.isNonInteractive;
-                    const isNonCountable = countInfo.isNonCountable;
+                    const isCountable = countInfo.isCountable;
 
-                    // 비대화형이거나 개수 세지 않는 아이콘은 padding-bottom 없이
-                    if (isNonInteractive || isNonCountable) {
+                    // 비대화형이거나 카운트하지 않는 아이콘은 padding-bottom 없이
+                    if (isNonInteractive || !isCountable) {
                         filterItem.style.paddingBottom = '8px';
                     }
 
@@ -236,21 +238,83 @@
                     filterItem.appendChild(icon);
                     filterItem.appendChild(checkMark);
 
-                    // 개수 표시 (비대화형이거나 개수 세지 않는 아이콘은 개수 표시 안 함)
-                    if (!isNonInteractive && !isNonCountable && countInfo.total > 0) {
+                    // 개수 표시 (비대화형이거나 카운트하지 않는 아이콘은 개수 표시 안 함)
+                    if (!isNonInteractive && isCountable && countInfo.total > 0) {
                         const countDiv = document.createElement('div');
                         countDiv.className = 'filter-count';
                         countDiv.dataset.type = type;
-                        if (countInfo.remaining === 0) {
+                        const collected = countInfo.total - countInfo.remaining;
+                        if (collected === countInfo.total) {
                             countDiv.classList.add('all-collected');
                         }
-                        countDiv.innerHTML = `<span class="remaining">${countInfo.remaining}</span>/${countInfo.total}`;
+                        countDiv.innerHTML = `<span class="collected">${collected}</span>/${countInfo.total}`;
                         filterItem.appendChild(countDiv);
                     }
 
                     container.appendChild(filterItem);
                 });
             }
+
+            // 맵 진행도 표시 UI 추가
+            this.updateProgressBar();
+        },
+
+        // 맵 진행도 프로그레스 바 업데이트
+        updateProgressBar() {
+            // 진행도 계산 (카운트 가능한 아이콘만)
+            let totalCountable = 0;
+            let collectedCountable = 0;
+
+            Object.keys(objectCounts).forEach(type => {
+                const countInfo = objectCounts[type];
+                if (!countInfo.isNonInteractive && countInfo.isCountable && countInfo.total > 0) {
+                    totalCountable += countInfo.total;
+                    collectedCountable += (countInfo.total - countInfo.remaining);
+                }
+            });
+
+            // 진행도 컨테이너 찾기 또는 생성
+            let progressContainer = document.getElementById('map-progress-container');
+            const filterContainer = document.getElementById('filter-container');
+
+            if (!filterContainer) return;
+
+            if (!progressContainer) {
+                progressContainer = document.createElement('div');
+                progressContainer.id = 'map-progress-container';
+                progressContainer.className = 'map-progress-container';
+                // filter-container 바로 다음에 삽입
+                filterContainer.parentNode.insertBefore(progressContainer, filterContainer.nextSibling);
+            }
+
+            // 카운트할 아이콘이 없으면 숨김
+            if (totalCountable === 0) {
+                progressContainer.style.display = 'none';
+                return;
+            }
+
+            progressContainer.style.display = 'block';
+
+            const percentage = Math.round((collectedCountable / totalCountable) * 100);
+            const isComplete = collectedCountable === totalCountable;
+
+            const lang = window.MapsI18n ? window.MapsI18n.getCurrentLanguage() : 'kr';
+            const progressLabels = {
+                kr: '진행도',
+                en: 'Progress',
+                jp: '進行度',
+                cn: '进度'
+            };
+
+            progressContainer.innerHTML = `
+                <div class="progress-label">
+                    <span class="progress-title">${progressLabels[lang] || progressLabels.kr}</span>
+                    <span class="progress-text ${isComplete ? 'complete' : ''}">${collectedCountable}/${totalCountable}</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar ${isComplete ? 'complete' : ''}" style="width: ${percentage}%"></div>
+                </div>
+            `;
         },
 
         // 특정 타입의 개수 업데이트 (오브젝트 클릭 시 호출)
@@ -268,14 +332,18 @@
             const countDiv = document.querySelector(`.filter-count[data-type="${type}"]`);
             if (countDiv) {
                 const countInfo = objectCounts[type];
-                countDiv.innerHTML = `<span class="remaining">${countInfo.remaining}</span>/${countInfo.total}`;
+                const collected = countInfo.total - countInfo.remaining;
+                countDiv.innerHTML = `<span class="collected">${collected}</span>/${countInfo.total}`;
 
-                if (countInfo.remaining === 0) {
+                if (collected === countInfo.total) {
                     countDiv.classList.add('all-collected');
                 } else {
                     countDiv.classList.remove('all-collected');
                 }
             }
+
+            // 진행도 바 업데이트
+            this.updateProgressBar();
         },
 
         // SN으로 타입 찾기
@@ -377,24 +445,14 @@
                 resetBtn.textContent = window.MapsI18n.getText(lang, 'reset');
             }
             
-            const dragMoveText = document.getElementById('drag-move-text');
-            if (dragMoveText) {
-                dragMoveText.textContent = window.MapsI18n.getText(lang, 'dragMove');
-            }
-            
-            const wheelZoomText = document.getElementById('wheel-zoom-text');
-            if (wheelZoomText) {
-                wheelZoomText.textContent = window.MapsI18n.getText(lang, 'wheelZoom');
+            const moveText = document.getElementById('move-text');
+            if (moveText) {
+                moveText.textContent = window.MapsI18n.getText(lang, 'moveControl');
             }
 
-            const keyboardMoveText = document.getElementById('keyboard-move-text');
-            if (keyboardMoveText) {
-                keyboardMoveText.textContent = window.MapsI18n.getText(lang, 'keyboardMove');
-            }
-
-            const keyboardZoomText = document.getElementById('keyboard-zoom-text');
-            if (keyboardZoomText) {
-                keyboardZoomText.textContent = window.MapsI18n.getText(lang, 'keyboardZoom');
+            const zoomText = document.getElementById('zoom-text');
+            if (zoomText) {
+                zoomText.textContent = window.MapsI18n.getText(lang, 'zoomControl');
             }
 
             // 백업/복원 UI 번역
@@ -480,6 +538,22 @@
                     option.setAttribute('data-event-bound', 'true');
                 }
             });
+            
+            // 영어/일본어/중국어 사용자에게 안내 메시지 표시 (language-selector 뒤에 추가)
+            if (currentLang === 'en' || currentLang === 'jp' || currentLang === 'cn') {
+                const noticeText = window.MapsI18n ? window.MapsI18n.getText(currentLang, 'localizationNotice') : '';
+                if (noticeText) {
+                    const notice = document.createElement('div');
+                    notice.className = 'localization-notice';
+                    notice.textContent = noticeText;
+                    
+                    // language-selector-container 뒤에 공지 추가
+                    const langSelectorContainer = document.querySelector('#object-filter-panel .language-selector-container');
+                    if (langSelectorContainer) {
+                        langSelectorContainer.parentNode.insertBefore(notice, langSelectorContainer.nextSibling);
+                    }
+                }
+            }
         },
         
         // 언어 선택 함수
@@ -781,11 +855,14 @@
             const panel = document.getElementById('object-filter-panel');
             if (!panel) return;
 
+            // 현재 언어 가져오기
+            const lang = window.MapsI18n ? window.MapsI18n.getCurrentLanguage() : 'kr';
+
             // 백업/복원 컨테이너 생성
             const container = document.createElement('div');
             container.className = 'backup-restore-container';
             container.innerHTML = `
-                <div class="backup-restore-title" id="backup-restore-title">데이터 관리</div>
+                <div class="backup-restore-title" id="backup-restore-title">${window.MapsI18n ? window.MapsI18n.getText(lang, 'dataManagement') : '데이터 관리'}</div>
                 <div class="backup-restore-buttons">
                     <button class="backup-btn" id="backup-btn" title="수집 데이터 백업">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -793,7 +870,7 @@
                             <polyline points="7 10 12 15 17 10"></polyline>
                             <line x1="12" y1="15" x2="12" y2="3"></line>
                         </svg>
-                        <span id="backup-btn-text">백업</span>
+                        <span id="backup-btn-text">${window.MapsI18n ? window.MapsI18n.getText(lang, 'backup') : '백업'}</span>
                     </button>
                     <button class="restore-btn" id="restore-btn" title="수집 데이터 복원">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -801,7 +878,7 @@
                             <polyline points="17 8 12 3 7 8"></polyline>
                             <line x1="12" y1="3" x2="12" y2="15"></line>
                         </svg>
-                        <span id="restore-btn-text">복원</span>
+                        <span id="restore-btn-text">${window.MapsI18n ? window.MapsI18n.getText(lang, 'restore') : '복원'}</span>
                     </button>
                 </div>
                 <input type="file" id="restore-file-input" accept=".json" style="display: none;">

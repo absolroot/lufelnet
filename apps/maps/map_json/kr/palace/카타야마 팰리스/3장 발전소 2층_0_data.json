@@ -1,0 +1,4553 @@
+{
+    "tiles": [
+        {
+            "image": "FDC_erceng_zhuxian_01.png",
+            "position": [
+                441,
+                0
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhuxian_02.png",
+            "position": [
+                368,
+                180
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhuxian_03.png",
+            "position": [
+                772,
+                313
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhuxian_04.png",
+            "position": [
+                1013,
+                285
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhuxian_05.png",
+            "position": [
+                1011,
+                164
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhuxian_06.png",
+            "position": [
+                1013,
+                521
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhuxian_07.png",
+            "position": [
+                1130,
+                646
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhuxian_08.png",
+            "position": [
+                1208,
+                646
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhuxian_09.png",
+            "position": [
+                1150,
+                768
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhuxian_10.png",
+            "position": [
+                1337,
+                707
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhuxian_11.png",
+            "position": [
+                975,
+                737
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhuxian_12.png",
+            "position": [
+                1012,
+                940
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhuxian_13.png",
+            "position": [
+                933,
+                957
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhuxian_14.png",
+            "position": [
+                1012,
+                1066
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhuxian_15.png",
+            "position": [
+                896,
+                1064
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhuxian_16.png",
+            "position": [
+                1254,
+                1067
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhuxian_17.png",
+            "position": [
+                1012,
+                1303
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhuxian_18.png",
+            "position": [
+                1252,
+                1366
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhuxian_19.png",
+            "position": [
+                1440,
+                1423
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhuxian_20.png",
+            "position": [
+                1408,
+                1666
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhuxian_21.png",
+            "position": [
+                1194,
+                1606
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhuxian_22.png",
+            "position": [
+                1070,
+                1544
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhuxian_23.png",
+            "position": [
+                1008,
+                1666
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhuxian_24.png",
+            "position": [
+                829,
+                1787
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhuxian_25.png",
+            "position": [
+                828,
+                1875
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhuxian_26.png",
+            "position": [
+                1194,
+                1784
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhuxian_27.png",
+            "position": [
+                1071,
+                1880
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhuxian_28.png",
+            "position": [
+                1374,
+                1873
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhuxian_29.png",
+            "position": [
+                1064,
+                2087
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhuxian_30.png",
+            "position": [
+                1332,
+                2091
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhuxian_31.png",
+            "position": [
+                1233,
+                2089
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhuxian_32.png",
+            "position": [
+                1376,
+                1616
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhuxian_33.png",
+            "position": [
+                1959,
+                1738
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhuxian_34.png",
+            "position": [
+                1972,
+                1659
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhuxian_35.png",
+            "position": [
+                2153,
+                1726
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhuxian_36.png",
+            "position": [
+                611,
+                466
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian1_01.png",
+            "position": [
+                371,
+                524
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian1_02.png",
+            "position": [
+                767,
+                609
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian1_03.png",
+            "position": [
+                295,
+                667
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian1_04.png",
+            "position": [
+                118,
+                670
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian1_05.png",
+            "position": [
+                1,
+                630
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian1_06.png",
+            "position": [
+                118,
+                521
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian1_07.png",
+            "position": [
+                325,
+                842
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian1_08.png",
+            "position": [
+                322,
+                964
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian1_09.png",
+            "position": [
+                203,
+                839
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian1_10.png",
+            "position": [
+                487,
+                971
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian1_11.png",
+            "position": [
+                483,
+                1136
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian1_12.png",
+            "position": [
+                447,
+                1305
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian1_13.png",
+            "position": [
+                448,
+                1302
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian1_14.png",
+            "position": [
+                656,
+                1425
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian1_15.png",
+            "position": [
+                772,
+                1309
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian1_16.png",
+            "position": [
+                743,
+                1548
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian1_17.png",
+            "position": [
+                595,
+                1543
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian1_18.png",
+            "position": [
+                82,
+                1257
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian1_19.png",
+            "position": [
+                212,
+                1259
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian1_20.png",
+            "position": [
+                83,
+                1498
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian1_21.png",
+            "position": [
+                339,
+                1500
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian1_22.png",
+            "position": [
+                315,
+                1675
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian1_23.png",
+            "position": [
+                424,
+                902
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian1_24.png",
+            "position": [
+                1493,
+                1302
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian1_25.png",
+            "position": [
+                1481,
+                1113
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian1_26.png",
+            "position": [
+                1569,
+                1007
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian2_01.png",
+            "position": [
+                2392,
+                404
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian2_02.png",
+            "position": [
+                2389,
+                583
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian2_03.png",
+            "position": [
+                2513,
+                642
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian2_04.png",
+            "position": [
+                2755,
+                644
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian2_05.png",
+            "position": [
+                2513,
+                765
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian2_06.png",
+            "position": [
+                2392,
+                760
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian2_07.png",
+            "position": [
+                2754,
+                761
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian2_08.png",
+            "position": [
+                2510,
+                1002
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian2_09.png",
+            "position": [
+                2688,
+                1126
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian2_10.png",
+            "position": [
+                2939,
+                1198
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian2_11.png",
+            "position": [
+                3117,
+                981
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian2_12.png",
+            "position": [
+                3115,
+                859
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian2_13.png",
+            "position": [
+                3118,
+                1459
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian2_14.png",
+            "position": [
+                3049,
+                1574
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian2_15.png",
+            "position": [
+                3208,
+                1379
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian2_16.png",
+            "position": [
+                3208,
+                1176
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian2_17.png",
+            "position": [
+                3207,
+                965
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian2_18.png",
+            "position": [
+                2736,
+                1409
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian2_19.png",
+            "position": [
+                2812,
+                1489
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian2_20.png",
+            "position": [
+                2698,
+                1490
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian2_21.png",
+            "position": [
+                2713,
+                1786
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian2_22.png",
+            "position": [
+                2447,
+                1491
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian2_23.png",
+            "position": [
+                2336,
+                1785
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian2_24.png",
+            "position": [
+                2510,
+                1847
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian2_25.png",
+            "position": [
+                2214,
+                1121
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian2_26.png",
+            "position": [
+                1975,
+                1243
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian2_27.png",
+            "position": [
+                2131,
+                1492
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian2_28.png",
+            "position": [
+                1786,
+                1325
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian2_29.png",
+            "position": [
+                1963,
+                1127
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian2_30.png",
+            "position": [
+                1788,
+                541
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian3_1.png",
+            "position": [
+                1263,
+                396
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian3_2.png",
+            "position": [
+                1499,
+                401
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian3_3.png",
+            "position": [
+                1676,
+                402
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "FDC_erceng_zhixian3_4.png",
+            "position": [
+                1495,
+                490
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "objects": [
+        {
+            "sn": 8522102,
+            "image": "yishijie-icon-men-danxiang.png",
+            "position": [
+                403,
+                525
+            ],
+            "ratio": 2.235294117647059,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522133,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                947,
+                434
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522155,
+            "image": "yishijie-icon-robot02-kong-new.png",
+            "position": [
+                1149,
+                586
+            ],
+            "ratio": 2.0,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522156,
+            "image": "yishijie-icon-robot02-kong-new.png",
+            "position": [
+                1189,
+                606
+            ],
+            "ratio": 2.0,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522221,
+            "image": "yishijie-icon-men-danxiang.png",
+            "position": [
+                1653,
+                505
+            ],
+            "ratio": 2.235294117647059,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522225,
+            "image": "yishijie-icon-robot02-kong-new.png",
+            "position": [
+                1622,
+                596
+            ],
+            "ratio": 2.0,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522226,
+            "image": "yishijie-icon-jiguan01-re-new.png",
+            "position": [
+                1673,
+                465
+            ],
+            "ratio": 1.853658536585366,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522253,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                1693,
+                485
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522271,
+            "image": "yishijie-icon-men-danxiang.png",
+            "position": [
+                1219,
+                677
+            ],
+            "ratio": 2.235294117647059,
+            "rotate": 90.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522272,
+            "image": "yishijie-icon-men-danxiang.png",
+            "position": [
+                1380,
+                737
+            ],
+            "ratio": 2.235294117647059,
+            "rotate": 90.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522279,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                1431,
+                929
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522281,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                1219,
+                869
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522282,
+            "image": "yishijie-icon-box-teshu-new.png",
+            "position": [
+                1340,
+                889
+            ],
+            "ratio": 1.5833333333333333,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522288,
+            "image": "yishijie-icon-jiguan01-re-new.png",
+            "position": [
+                1290,
+                818
+            ],
+            "ratio": 1.853658536585366,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522289,
+            "image": "yishijie-icon-power02-new.png",
+            "position": [
+                1330,
+                687
+            ],
+            "ratio": 1.853658536585366,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522293,
+            "image": "yishijie-icon-power02-new.png",
+            "position": [
+                1461,
+                788
+            ],
+            "ratio": 1.853658536585366,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522294,
+            "image": "yishijie-icon-robot02-kong-new.png",
+            "position": [
+                1461,
+                879
+            ],
+            "ratio": 2.0,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522306,
+            "image": "yishijie-icon-robot02-kong-new.png",
+            "position": [
+                1350,
+                869
+            ],
+            "ratio": 2.0,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522307,
+            "image": "yishijie-icon-jiguan01-re-new.png",
+            "position": [
+                1229,
+                768
+            ],
+            "ratio": 1.853658536585366,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522323,
+            "image": "yishijie-icon-men-danxiang.png",
+            "position": [
+                1018,
+                1293
+            ],
+            "ratio": 2.235294117647059,
+            "rotate": 270.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522329,
+            "image": "yishijie-icon-box-hexin-new.png",
+            "position": [
+                1249,
+                1363
+            ],
+            "ratio": 1.5833333333333333,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522331,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                1320,
+                1252
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522339,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                947,
+                1172
+            ],
+            "ratio": 2.814814814814815,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522342,
+            "image": "yishijie-icon-power02-new.png",
+            "position": [
+                927,
+                1293
+            ],
+            "ratio": 1.853658536585366,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522348,
+            "image": "yishijie-icon-power02-new.png",
+            "position": [
+                1229,
+                1293
+            ],
+            "ratio": 1.853658536585366,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522349,
+            "image": "yishijie-icon-robot02-kong-new.png",
+            "position": [
+                957,
+                1222
+            ],
+            "ratio": 2.0,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522350,
+            "image": "yishijie-icon-robot02-kong-new.png",
+            "position": [
+                1169,
+                1060
+            ],
+            "ratio": 2.0,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522351,
+            "image": "yishijie-icon-power02-new.png",
+            "position": [
+                1219,
+                1141
+            ],
+            "ratio": 1.853658536585366,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522354,
+            "image": "yishijie-icon-power02-new.png",
+            "position": [
+                1219,
+                1252
+            ],
+            "ratio": 1.853658536585366,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522355,
+            "image": "yishijie-icon-jiguan01-re-new.png",
+            "position": [
+                1169,
+                1303
+            ],
+            "ratio": 1.853658536585366,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522356,
+            "image": "yishijie-icon-jiguan01-re-new.png",
+            "position": [
+                1098,
+                1303
+            ],
+            "ratio": 1.853658536585366,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522444,
+            "image": "yishijie-icon-box-teshu-new.png",
+            "position": [
+                1642,
+                1485
+            ],
+            "ratio": 1.5833333333333333,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522524,
+            "image": "yishijie-icon-power02-new.png",
+            "position": [
+                1078,
+                1747
+            ],
+            "ratio": 1.853658536585366,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522528,
+            "image": "yishijie-icon-jiguan02-re-new.png",
+            "position": [
+                1199,
+                1828
+            ],
+            "ratio": 1.7272727272727273,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522529,
+            "image": "yishijie-icon-robot02-kong-new.png",
+            "position": [
+                1149,
+                1737
+            ],
+            "ratio": 2.0,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522555,
+            "image": "yishijie-icon-power02-new.png",
+            "position": [
+                957,
+                1990
+            ],
+            "ratio": 1.853658536585366,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522578,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                1290,
+                2212
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522587,
+            "image": "yishijie-icon-power02-new.png",
+            "position": [
+                1129,
+                1949
+            ],
+            "ratio": 1.853658536585366,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522591,
+            "image": "yishijie-icon-jiguan02-re-new.png",
+            "position": [
+                1219,
+                2101
+            ],
+            "ratio": 1.7272727272727273,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522592,
+            "image": "yishijie-icon-power02-new.png",
+            "position": [
+                1421,
+                1939
+            ],
+            "ratio": 1.853658536585366,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522596,
+            "image": "yishijie-icon-jiguan02-re-new.png",
+            "position": [
+                1360,
+                2101
+            ],
+            "ratio": 1.7272727272727273,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522597,
+            "image": "yishijie-icon-robot02-kong-new.png",
+            "position": [
+                1431,
+                2171
+            ],
+            "ratio": 2.0,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522623,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                1461,
+                1818
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522625,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                1773,
+                1656
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522637,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                1653,
+                1899
+            ],
+            "ratio": 2.814814814814815,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522638,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                1884,
+                1808
+            ],
+            "ratio": 2.814814814814815,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522639,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                1663,
+                1788
+            ],
+            "ratio": 2.814814814814815,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522640,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                1804,
+                1697
+            ],
+            "ratio": 2.814814814814815,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522662,
+            "image": "yishijie-icon-box-hexin-new.png",
+            "position": [
+                2176,
+                1868
+            ],
+            "ratio": 1.5833333333333333,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522701,
+            "image": "yishijie-icon-men-danxiang.png",
+            "position": [
+                2348,
+                1838
+            ],
+            "ratio": 2.235294117647059,
+            "rotate": 90.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522742,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                2539,
+                1939
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522765,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                2539,
+                1252
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522823,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                1814,
+                1414
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522862,
+            "image": "yishijie-icon-box-hexin-new.png",
+            "position": [
+                1965,
+                566
+            ],
+            "ratio": 1.5833333333333333,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522873,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                1894,
+                848
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522923,
+            "image": "yishijie-icon-box-teshu-new.png",
+            "position": [
+                2811,
+                1949
+            ],
+            "ratio": 1.5833333333333333,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522945,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                2721,
+                1262
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522949,
+            "image": "yishijie-icon-jiguan01-re-new.png",
+            "position": [
+                2942,
+                1313
+            ],
+            "ratio": 1.853658536585366,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522950,
+            "image": "yishijie-icon-robot02-kong-new.png",
+            "position": [
+                2872,
+                1444
+            ],
+            "ratio": 2.0,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522973,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                3023,
+                1212
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221004,
+            "image": "yishijie-icon-men-danxiang.png",
+            "position": [
+                3255,
+                1182
+            ],
+            "ratio": 2.235294117647059,
+            "rotate": 180.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221018,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                3245,
+                1121
+            ],
+            "ratio": 2.814814814814815,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221021,
+            "image": "yishijie-icon-robot02-kong-new.png",
+            "position": [
+                3355,
+                1121
+            ],
+            "ratio": 2.0,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221024,
+            "image": "yishijie-icon-power02-new.png",
+            "position": [
+                3265,
+                1303
+            ],
+            "ratio": 1.853658536585366,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221025,
+            "image": "yishijie-icon-power02-new.png",
+            "position": [
+                3164,
+                1545
+            ],
+            "ratio": 1.853658536585366,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221031,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                3315,
+                1586
+            ],
+            "ratio": 2.814814814814815,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221032,
+            "image": "yishijie-icon-men-jinzhi.png",
+            "position": [
+                3164,
+                1464
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221033,
+            "image": "yishijie-icon-robot02-kong-new.png",
+            "position": [
+                3154,
+                1636
+            ],
+            "ratio": 2.0,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221062,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                3144,
+                919
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221102,
+            "image": "yishijie-icon-men-danxiang.png",
+            "position": [
+                2519,
+                990
+            ],
+            "ratio": 2.235294117647059,
+            "rotate": 270.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221103,
+            "image": "yishijie-icon-men-danxiang.png",
+            "position": [
+                2519,
+                808
+            ],
+            "ratio": 2.235294117647059,
+            "rotate": 270.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221104,
+            "image": "yishijie-icon-men-danxiang.png",
+            "position": [
+                2771,
+                808
+            ],
+            "ratio": 2.235294117647059,
+            "rotate": 90.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221105,
+            "image": "yishijie-icon-men-danxiang.png",
+            "position": [
+                2771,
+                990
+            ],
+            "ratio": 2.235294117647059,
+            "rotate": 90.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221109,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                2831,
+                858
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221113,
+            "image": "yishijie-icon-power02-new.png",
+            "position": [
+                2660,
+                1071
+            ],
+            "ratio": 1.853658536585366,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221114,
+            "image": "yishijie-icon-power02-new.png",
+            "position": [
+                2489,
+                879
+            ],
+            "ratio": 1.853658536585366,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221120,
+            "image": "yishijie-icon-jiguan01-re-new.png",
+            "position": [
+                2711,
+                1131
+            ],
+            "ratio": 1.853658536585366,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221121,
+            "image": "yishijie-icon-robot02-kong-new.png",
+            "position": [
+                2721,
+                1040
+            ],
+            "ratio": 2.0,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221124,
+            "image": "yishijie-icon-robot02-kong-new.png",
+            "position": [
+                2590,
+                970
+            ],
+            "ratio": 2.0,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221125,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                2459,
+                889
+            ],
+            "ratio": 2.814814814814815,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221128,
+            "image": "yishijie-icon-robot02-kong-new.png",
+            "position": [
+                2811,
+                869
+            ],
+            "ratio": 2.0,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221202,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                846,
+                717
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221225,
+            "image": "yishijie-icon-robot02-kong-new.png",
+            "position": [
+                242,
+                596
+            ],
+            "ratio": 2.0,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221226,
+            "image": "yishijie-icon-jiguan01-re-new.png",
+            "position": [
+                131,
+                707
+            ],
+            "ratio": 1.853658536585366,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221251,
+            "image": "yishijie-icon-box-hexin-new.png",
+            "position": [
+                40,
+                757
+            ],
+            "ratio": 1.5833333333333333,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221261,
+            "image": "yishijie-icon-men-danxiang.png",
+            "position": [
+                322,
+                1071
+            ],
+            "ratio": 2.235294117647059,
+            "rotate": 90.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221269,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                353,
+                929
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221275,
+            "image": "yishijie-icon-jiguan01-re-new.png",
+            "position": [
+                423,
+                980
+            ],
+            "ratio": 1.853658536585366,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221276,
+            "image": "yishijie-icon-power02-new.png",
+            "position": [
+                262,
+                1020
+            ],
+            "ratio": 1.853658536585366,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221277,
+            "image": "yishijie-icon-power02-new.png",
+            "position": [
+                524,
+                1081
+            ],
+            "ratio": 1.853658536585366,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221287,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                232,
+                889
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221341,
+            "image": "yishijie-icon-robot02-kong-new.png",
+            "position": [
+                524,
+                1384
+            ],
+            "ratio": 2.0,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221361,
+            "image": "yishijie-icon-men-jinzhi.png",
+            "position": [
+                232,
+                1394
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221362,
+            "image": "yishijie-icon-men-danxiang.png",
+            "position": [
+                292,
+                1515
+            ],
+            "ratio": 2.235294117647059,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221364,
+            "image": "yishijie-icon-men-jinzhi.png",
+            "position": [
+                413,
+                1394
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221367,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                131,
+                1626
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221374,
+            "image": "yishijie-icon-power02-new.png",
+            "position": [
+                292,
+                1363
+            ],
+            "ratio": 1.853658536585366,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221381,
+            "image": "yishijie-icon-power02-new.png",
+            "position": [
+                413,
+                1606
+            ],
+            "ratio": 1.853658536585366,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221385,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                282,
+                1626
+            ],
+            "ratio": 2.814814814814815,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221424,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                484,
+                1737
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221425,
+            "image": "yishijie-icon-robot02-kong-new.png",
+            "position": [
+                453,
+                1646
+            ],
+            "ratio": 2.0,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221426,
+            "image": "yishijie-icon-jiguan01-re-new.png",
+            "position": [
+                433,
+                1687
+            ],
+            "ratio": 1.853658536585366,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221455,
+            "image": "yishijie-icon-jiguan01-re-new.png",
+            "position": [
+                786,
+                1505
+            ],
+            "ratio": 1.853658536585366,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221501,
+            "image": "yishijie-icon-men-danxiang.png",
+            "position": [
+                746,
+                1717
+            ],
+            "ratio": 2.235294117647059,
+            "rotate": 270.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221505,
+            "image": "yishijie-icon-robot02-kong-new.png",
+            "position": [
+                685,
+                1636
+            ],
+            "ratio": 2.0,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221801,
+            "image": "breakable.png",
+            "position": [
+                705,
+                404
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221802,
+            "image": "breakable.png",
+            "position": [
+                383,
+                667
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221803,
+            "image": "breakable.png",
+            "position": [
+                846,
+                667
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221804,
+            "image": "breakable.png",
+            "position": [
+                1068,
+                303
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221805,
+            "image": "breakable.png",
+            "position": [
+                1159,
+                788
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221806,
+            "image": "breakable.png",
+            "position": [
+                1008,
+                1091
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221807,
+            "image": "breakable.png",
+            "position": [
+                1330,
+                1303
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221808,
+            "image": "breakable.png",
+            "position": [
+                1380,
+                1384
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221809,
+            "image": "breakable.png",
+            "position": [
+                1129,
+                1565
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221810,
+            "image": "breakable.png",
+            "position": [
+                1260,
+                1818
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221811,
+            "image": "breakable.png",
+            "position": [
+                1693,
+                2010
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221812,
+            "image": "breakable.png",
+            "position": [
+                1925,
+                1727
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221813,
+            "image": "breakable.png",
+            "position": [
+                1542,
+                414
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221814,
+            "image": "breakable.png",
+            "position": [
+                1562,
+                586
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221815,
+            "image": "breakable.png",
+            "position": [
+                856,
+                1353
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221816,
+            "image": "breakable.png",
+            "position": [
+                816,
+                1666
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221817,
+            "image": "breakable.png",
+            "position": [
+                2449,
+                1858
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221818,
+            "image": "breakable.png",
+            "position": [
+                2539,
+                1889
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221819,
+            "image": "breakable.png",
+            "position": [
+                2449,
+                1808
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221820,
+            "image": "breakable.png",
+            "position": [
+                2348,
+                1404
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221821,
+            "image": "breakable.png",
+            "position": [
+                2539,
+                1151
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221822,
+            "image": "breakable.png",
+            "position": [
+                2126,
+                1475
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221823,
+            "image": "breakable.png",
+            "position": [
+                1894,
+                1485
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221824,
+            "image": "breakable.png",
+            "position": [
+                1995,
+                1131
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221825,
+            "image": "breakable.png",
+            "position": [
+                1985,
+                939
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221826,
+            "image": "breakable.png",
+            "position": [
+                2106,
+                596
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221827,
+            "image": "breakable.png",
+            "position": [
+                2922,
+                1626
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221828,
+            "image": "breakable.png",
+            "position": [
+                2952,
+                1959
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221829,
+            "image": "breakable.png",
+            "position": [
+                2771,
+                1909
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221830,
+            "image": "breakable.png",
+            "position": [
+                2892,
+                1273
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221831,
+            "image": "breakable.png",
+            "position": [
+                2973,
+                1353
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221832,
+            "image": "breakable.png",
+            "position": [
+                3134,
+                1202
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221833,
+            "image": "breakable.png",
+            "position": [
+                3204,
+                1343
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221834,
+            "image": "breakable.png",
+            "position": [
+                2771,
+                1081
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221835,
+            "image": "breakable.png",
+            "position": [
+                2539,
+                778
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221836,
+            "image": "breakable.png",
+            "position": [
+                2781,
+                1000
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221837,
+            "image": "breakable.png",
+            "position": [
+                2519,
+                656
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221838,
+            "image": "breakable.png",
+            "position": [
+                504,
+                1172
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221839,
+            "image": "breakable.png",
+            "position": [
+                564,
+                1384
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221840,
+            "image": "breakable.png",
+            "position": [
+                201,
+                1333
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221841,
+            "image": "breakable.png",
+            "position": [
+                151,
+                1384
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221842,
+            "image": "breakable.png",
+            "position": [
+                353,
+                1677
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221843,
+            "image": "breakable.png",
+            "position": [
+                484,
+                1101
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221844,
+            "image": "breakable.png",
+            "position": [
+                423,
+                869
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221845,
+            "image": "breakable.png",
+            "position": [
+                574,
+                768
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221846,
+            "image": "breakable.png",
+            "position": [
+                685,
+                889
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221847,
+            "image": "breakable.png",
+            "position": [
+                474,
+                707
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221848,
+            "image": "breakable.png",
+            "position": [
+                232,
+                525
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221849,
+            "image": "breakable.png",
+            "position": [
+                212,
+                586
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 85221850,
+            "image": "breakable.png",
+            "position": [
+                91,
+                656
+            ],
+            "ratio": 1.9,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        }
+    ],
+    "enemies": [
+        {
+            "sn": 8522201,
+            "image": "yishijie-icon-boss01.png",
+            "position": [
+                725,
+                1505
+            ],
+            "ratio": 1.2459016393442623,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": {
+                "instSn": 22812,
+                "enemies": [
+                    [
+                        {
+                            "sn": 228121,
+                            "name": "괴상한 벨페고르",
+                            "adapt": {
+                                "Weak": [
+                                    "Fire"
+                                ],
+                                "Resistant": [
+                                    "Ice",
+                                    "Nuclear"
+                                ],
+                                "Nullify": [],
+                                "Reflect": [],
+                                "Absorb": []
+                            },
+                            "level": "80",
+                            "stat": {
+                                "HP": 97499.118,
+                                "HP 계산식": "(37937.4 * (1 + 1.57) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 4079.4242,
+                                "공격력 계산식": "(1587.32 * (1 + 1.57) + 0) * (1 + 0)",
+                                "방어력": 810.636,
+                                "방어력 계산식": "(810.64 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.4,
+                                "효과 명중 계산식": "(0.4 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.5,
+                                "효과 저항 계산식": "(0.5 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 0,
+                                "다운 수치 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 90.0,
+                                "속도 계산식": "(90.0 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 1.046,
+                                "대미지 보너스 계산식": "(1.05 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": 203,
+                                    "name": "부흐다인",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "1명의 적에게 공격력 91.3%의 빙결 속성 대미지를 주고, 50.7%의 기본 확률로 적을 2턴 동안 동결 상태에 빠뜨린다."
+                                    },
+                                    "cost": "SP 21"
+                                },
+                                {
+                                    "sn": 206,
+                                    "name": "마하부흐라",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "모든 적에게 공격력 42.8%의 빙결 속성 대미지를 주고, 23.8%의 기본 확률로 적을 2턴 동안 동결 상태에 빠뜨린다."
+                                    },
+                                    "cost": "SP 20"
+                                }
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "sn": 228122,
+                            "name": "샌드맨",
+                            "adapt": {
+                                "Weak": [
+                                    "Electric"
+                                ],
+                                "Resistant": [
+                                    "Wind"
+                                ],
+                                "Nullify": [],
+                                "Reflect": [],
+                                "Absorb": []
+                            },
+                            "level": "80",
+                            "stat": {
+                                "HP": 24374.7795,
+                                "HP 계산식": "(9484.35 * (1 + 1.57) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 2039.7121,
+                                "공격력 계산식": "(793.66 * (1 + 1.57) + 0) * (1 + 0)",
+                                "방어력": 810.636,
+                                "방어력 계산식": "(810.64 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.4,
+                                "효과 명중 계산식": "(0.4 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.0,
+                                "효과 저항 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 0,
+                                "다운 수치 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 90.0,
+                                "속도 계산식": "(90.0 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 1.046,
+                                "대미지 보너스 계산식": "(1.05 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": 405,
+                                    "name": "마하갈",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "모든 적에게 공격력 39.8%의 질풍 속성 대미지를 주고, 22.1%의 기본 확률로 적을 풍습 상태에 빠뜨린다. 2턴 동안 지속된다."
+                                    },
+                                    "cost": "SP 19"
+                                },
+                                {
+                                    "sn": 402,
+                                    "name": "갈라",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "1명의 적에게 공격력 85.5%의 질풍 속성 대미지를 주고, 47.5%의 기본 확률로 적을 2턴 동안 풍습 상태에 빠뜨린다."
+                                    },
+                                    "cost": "SP 20"
+                                }
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "sn": 228123,
+                            "name": "샌드맨",
+                            "adapt": {
+                                "Weak": [
+                                    "Electric"
+                                ],
+                                "Resistant": [
+                                    "Wind"
+                                ],
+                                "Nullify": [],
+                                "Reflect": [],
+                                "Absorb": []
+                            },
+                            "level": "80",
+                            "stat": {
+                                "HP": 24374.7795,
+                                "HP 계산식": "(9484.35 * (1 + 1.57) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 2039.7121,
+                                "공격력 계산식": "(793.66 * (1 + 1.57) + 0) * (1 + 0)",
+                                "방어력": 810.636,
+                                "방어력 계산식": "(810.64 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.4,
+                                "효과 명중 계산식": "(0.4 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.0,
+                                "효과 저항 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 0,
+                                "다운 수치 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 90.0,
+                                "속도 계산식": "(90.0 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 1.046,
+                                "대미지 보너스 계산식": "(1.05 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": 405,
+                                    "name": "마하갈",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "모든 적에게 공격력 39.8%의 질풍 속성 대미지를 주고, 22.1%의 기본 확률로 적을 풍습 상태에 빠뜨린다. 2턴 동안 지속된다."
+                                    },
+                                    "cost": "SP 19"
+                                },
+                                {
+                                    "sn": 402,
+                                    "name": "갈라",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "1명의 적에게 공격력 85.5%의 질풍 속성 대미지를 주고, 47.5%의 기본 확률로 적을 2턴 동안 풍습 상태에 빠뜨린다."
+                                    },
+                                    "cost": "SP 20"
+                                }
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "sn": 228123,
+                            "name": "샌드맨",
+                            "adapt": {
+                                "Weak": [
+                                    "Electric"
+                                ],
+                                "Resistant": [
+                                    "Wind"
+                                ],
+                                "Nullify": [],
+                                "Reflect": [],
+                                "Absorb": []
+                            },
+                            "level": "80",
+                            "stat": {
+                                "HP": 24374.7795,
+                                "HP 계산식": "(9484.35 * (1 + 1.57) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 2039.7121,
+                                "공격력 계산식": "(793.66 * (1 + 1.57) + 0) * (1 + 0)",
+                                "방어력": 810.636,
+                                "방어력 계산식": "(810.64 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.4,
+                                "효과 명중 계산식": "(0.4 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.0,
+                                "효과 저항 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 0,
+                                "다운 수치 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 90.0,
+                                "속도 계산식": "(90.0 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 1.046,
+                                "대미지 보너스 계산식": "(1.05 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": 405,
+                                    "name": "마하갈",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "모든 적에게 공격력 39.8%의 질풍 속성 대미지를 주고, 22.1%의 기본 확률로 적을 풍습 상태에 빠뜨린다. 2턴 동안 지속된다."
+                                    },
+                                    "cost": "SP 19"
+                                },
+                                {
+                                    "sn": 402,
+                                    "name": "갈라",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "1명의 적에게 공격력 85.5%의 질풍 속성 대미지를 주고, 47.5%의 기본 확률로 적을 2턴 동안 풍습 상태에 빠뜨린다."
+                                    },
+                                    "cost": "SP 20"
+                                }
+                            ]
+                        }
+                    ]
+                ],
+                "tutorial": {
+                    "sn": 228121,
+                    "title": "엘리트 섀도 능력",
+                    "content": "1.  벨페고르는 계속 수면 상태에 빠져있다. 공격을 받으면 깨어나 행동 1회 후 다시 수면 상태에 들어간다.\n2. 벨페고르는 매 회 행동 후 「노여움」 1중첩을 획득해 자신의 대미지가 증가한다.\n3. 샌드맨이 처치되면 벨페고르는 수면 상태에 들어간다."
+                }
+            }
+        },
+        {
+            "sn": 8522202,
+            "image": "yishijie-icon-boss01.png",
+            "position": [
+                1683,
+                1161
+            ],
+            "ratio": 1.2459016393442623,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": {
+                "instSn": 22813,
+                "enemies": [
+                    [
+                        {
+                            "sn": 228131,
+                            "name": "괴상한 벨페고르",
+                            "adapt": {
+                                "Weak": [
+                                    "Fire"
+                                ],
+                                "Resistant": [
+                                    "Ice",
+                                    "Nuclear"
+                                ],
+                                "Nullify": [],
+                                "Reflect": [],
+                                "Absorb": []
+                            },
+                            "level": "80",
+                            "stat": {
+                                "HP": 121873.8975,
+                                "HP 계산식": "(47421.75 * (1 + 1.57) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 4079.4242,
+                                "공격력 계산식": "(1587.32 * (1 + 1.57) + 0) * (1 + 0)",
+                                "방어력": 810.636,
+                                "방어력 계산식": "(810.64 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.4,
+                                "효과 명중 계산식": "(0.4 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.5,
+                                "효과 저항 계산식": "(0.5 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 0,
+                                "다운 수치 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 90.0,
+                                "속도 계산식": "(90.0 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 1.046,
+                                "대미지 보너스 계산식": "(1.05 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": 203,
+                                    "name": "부흐다인",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "1명의 적에게 공격력 91.3%의 빙결 속성 대미지를 주고, 50.7%의 기본 확률로 적을 2턴 동안 동결 상태에 빠뜨린다."
+                                    },
+                                    "cost": "SP 21"
+                                },
+                                {
+                                    "sn": 206,
+                                    "name": "마하부흐라",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "모든 적에게 공격력 42.8%의 빙결 속성 대미지를 주고, 23.8%의 기본 확률로 적을 2턴 동안 동결 상태에 빠뜨린다."
+                                    },
+                                    "cost": "SP 20"
+                                }
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "sn": 228132,
+                            "name": "샌드맨",
+                            "adapt": {
+                                "Weak": [
+                                    "Electric"
+                                ],
+                                "Resistant": [
+                                    "Wind"
+                                ],
+                                "Nullify": [],
+                                "Reflect": [],
+                                "Absorb": []
+                            },
+                            "level": "80",
+                            "stat": {
+                                "HP": 24374.7795,
+                                "HP 계산식": "(9484.35 * (1 + 1.57) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 2039.7121,
+                                "공격력 계산식": "(793.66 * (1 + 1.57) + 0) * (1 + 0)",
+                                "방어력": 810.636,
+                                "방어력 계산식": "(810.64 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.4,
+                                "효과 명중 계산식": "(0.4 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.0,
+                                "효과 저항 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 0,
+                                "다운 수치 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 90.0,
+                                "속도 계산식": "(90.0 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 1.046,
+                                "대미지 보너스 계산식": "(1.05 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": 405,
+                                    "name": "마하갈",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "모든 적에게 공격력 39.8%의 질풍 속성 대미지를 주고, 22.1%의 기본 확률로 적을 풍습 상태에 빠뜨린다. 2턴 동안 지속된다."
+                                    },
+                                    "cost": "SP 19"
+                                },
+                                {
+                                    "sn": 402,
+                                    "name": "갈라",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "1명의 적에게 공격력 85.5%의 질풍 속성 대미지를 주고, 47.5%의 기본 확률로 적을 2턴 동안 풍습 상태에 빠뜨린다."
+                                    },
+                                    "cost": "SP 20"
+                                }
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "sn": 228133,
+                            "name": "샌드맨",
+                            "adapt": {
+                                "Weak": [
+                                    "Electric"
+                                ],
+                                "Resistant": [
+                                    "Wind"
+                                ],
+                                "Nullify": [],
+                                "Reflect": [],
+                                "Absorb": []
+                            },
+                            "level": "80",
+                            "stat": {
+                                "HP": 24374.7795,
+                                "HP 계산식": "(9484.35 * (1 + 1.57) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 2039.7121,
+                                "공격력 계산식": "(793.66 * (1 + 1.57) + 0) * (1 + 0)",
+                                "방어력": 810.636,
+                                "방어력 계산식": "(810.64 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.4,
+                                "효과 명중 계산식": "(0.4 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.0,
+                                "효과 저항 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 0,
+                                "다운 수치 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 90.0,
+                                "속도 계산식": "(90.0 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 1.046,
+                                "대미지 보너스 계산식": "(1.05 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": 405,
+                                    "name": "마하갈",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "모든 적에게 공격력 39.8%의 질풍 속성 대미지를 주고, 22.1%의 기본 확률로 적을 풍습 상태에 빠뜨린다. 2턴 동안 지속된다."
+                                    },
+                                    "cost": "SP 19"
+                                },
+                                {
+                                    "sn": 402,
+                                    "name": "갈라",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "1명의 적에게 공격력 85.5%의 질풍 속성 대미지를 주고, 47.5%의 기본 확률로 적을 2턴 동안 풍습 상태에 빠뜨린다."
+                                    },
+                                    "cost": "SP 20"
+                                }
+                            ]
+                        }
+                    ]
+                ],
+                "tutorial": {
+                    "sn": 228131,
+                    "title": "엘리트 섀도 능력",
+                    "content": "1.  벨페고르는 계속 수면 상태에 빠져있다. 공격을 받으면 깨어나 행동 1회 후 다시 수면 상태에 들어간다.\n2. 수면 시 받는 피해는 대폭 증가하고 2턴마다 샌드맨을 1마리 소환한다.\n3. 샌드맨이 처치되면 벨페고르는 수면 상태에 들어간다."
+                }
+            }
+        },
+        {
+            "sn": 8522203,
+            "image": "yishijie-icon-boss01.png",
+            "position": [
+                2015,
+                757
+            ],
+            "ratio": 1.2459016393442623,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": {
+                "instSn": 22814,
+                "enemies": [
+                    [
+                        {
+                            "sn": 228141,
+                            "name": "괴상한 벨페고르",
+                            "adapt": {
+                                "Weak": [
+                                    "Fire"
+                                ],
+                                "Resistant": [
+                                    "Ice",
+                                    "Nuclear"
+                                ],
+                                "Nullify": [],
+                                "Reflect": [],
+                                "Absorb": []
+                            },
+                            "level": "80",
+                            "stat": {
+                                "HP": 97499.118,
+                                "HP 계산식": "(37937.4 * (1 + 1.57) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 4079.4242,
+                                "공격력 계산식": "(1587.32 * (1 + 1.57) + 0) * (1 + 0)",
+                                "방어력": 810.636,
+                                "방어력 계산식": "(810.64 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.4,
+                                "효과 명중 계산식": "(0.4 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.5,
+                                "효과 저항 계산식": "(0.5 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 0,
+                                "다운 수치 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 90.0,
+                                "속도 계산식": "(90.0 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 1.046,
+                                "대미지 보너스 계산식": "(1.05 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": 203,
+                                    "name": "부흐다인",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "1명의 적에게 공격력 91.3%의 빙결 속성 대미지를 주고, 50.7%의 기본 확률로 적을 2턴 동안 동결 상태에 빠뜨린다."
+                                    },
+                                    "cost": "SP 21"
+                                },
+                                {
+                                    "sn": 206,
+                                    "name": "마하부흐라",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "모든 적에게 공격력 42.8%의 빙결 속성 대미지를 주고, 23.8%의 기본 확률로 적을 2턴 동안 동결 상태에 빠뜨린다."
+                                    },
+                                    "cost": "SP 20"
+                                }
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "sn": 228142,
+                            "name": "샌드맨",
+                            "adapt": {
+                                "Weak": [
+                                    "Electric"
+                                ],
+                                "Resistant": [
+                                    "Wind"
+                                ],
+                                "Nullify": [],
+                                "Reflect": [],
+                                "Absorb": []
+                            },
+                            "level": "80",
+                            "stat": {
+                                "HP": 32499.706,
+                                "HP 계산식": "(12645.8 * (1 + 1.57) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 2039.7121,
+                                "공격력 계산식": "(793.66 * (1 + 1.57) + 0) * (1 + 0)",
+                                "방어력": 810.636,
+                                "방어력 계산식": "(810.64 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.4,
+                                "효과 명중 계산식": "(0.4 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.0,
+                                "효과 저항 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 0,
+                                "다운 수치 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 90.0,
+                                "속도 계산식": "(90.0 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 1.046,
+                                "대미지 보너스 계산식": "(1.05 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": 1304,
+                                    "name": "슬립 송",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "16.4%의 기본 확률로 2턴 동안 모든 적을 수면 상태에 빠뜨린다."
+                                    },
+                                    "cost": "SP 22"
+                                },
+                                {
+                                    "sn": 402,
+                                    "name": "갈라",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "1명의 적에게 공격력 85.5%의 질풍 속성 대미지를 주고, 47.5%의 기본 확률로 적을 2턴 동안 풍습 상태에 빠뜨린다."
+                                    },
+                                    "cost": "SP 20"
+                                }
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "sn": 228143,
+                            "name": "샌드맨",
+                            "adapt": {
+                                "Weak": [
+                                    "Electric"
+                                ],
+                                "Resistant": [
+                                    "Wind"
+                                ],
+                                "Nullify": [],
+                                "Reflect": [],
+                                "Absorb": []
+                            },
+                            "level": "80",
+                            "stat": {
+                                "HP": 32499.706,
+                                "HP 계산식": "(12645.8 * (1 + 1.57) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 2039.7121,
+                                "공격력 계산식": "(793.66 * (1 + 1.57) + 0) * (1 + 0)",
+                                "방어력": 810.636,
+                                "방어력 계산식": "(810.64 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.4,
+                                "효과 명중 계산식": "(0.4 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.0,
+                                "효과 저항 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 0,
+                                "다운 수치 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 90.0,
+                                "속도 계산식": "(90.0 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 1.046,
+                                "대미지 보너스 계산식": "(1.05 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": 1304,
+                                    "name": "슬립 송",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "16.4%의 기본 확률로 2턴 동안 모든 적을 수면 상태에 빠뜨린다."
+                                    },
+                                    "cost": "SP 22"
+                                },
+                                {
+                                    "sn": 402,
+                                    "name": "갈라",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "1명의 적에게 공격력 85.5%의 질풍 속성 대미지를 주고, 47.5%의 기본 확률로 적을 2턴 동안 풍습 상태에 빠뜨린다."
+                                    },
+                                    "cost": "SP 20"
+                                }
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "sn": 228144,
+                            "name": "데카라비아",
+                            "adapt": {
+                                "Weak": [
+                                    "Phys"
+                                ],
+                                "Resistant": [
+                                    "Fire",
+                                    "Nuclear",
+                                    "Curse"
+                                ],
+                                "Nullify": [],
+                                "Reflect": [],
+                                "Absorb": []
+                            },
+                            "level": "80",
+                            "stat": {
+                                "HP": 57280.674,
+                                "HP 계산식": "(22288.2 * (1 + 1.57) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 1189.8319,
+                                "공격력 계산식": "(462.97 * (1 + 1.57) + 0) * (1 + 0)",
+                                "방어력": 360.282,
+                                "방어력 계산식": "(360.28 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.4,
+                                "효과 명중 계산식": "(0.4 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.2,
+                                "효과 저항 계산식": "(0.2 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 0,
+                                "다운 수치 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 80.0,
+                                "속도 계산식": "(80.0 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 1.046,
+                                "대미지 보너스 계산식": "(1.05 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": 902,
+                                    "name": "메기도라",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "1명의 적에게 공격력 65.2%의 만능 속성 대미지를 주고, 적의 방어력을 무시한다."
+                                    },
+                                    "cost": "SP 20"
+                                },
+                                {
+                                    "sn": 102,
+                                    "name": "아기라오",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "1명의 적에게 공격력 85.5%의 화염 속성 대미지를 주고, 47.5%의 기본 확률로 적을 2턴 동안 화상 상태에 빠뜨린다."
+                                    },
+                                    "cost": "SP 20"
+                                }
+                            ]
+                        }
+                    ]
+                ],
+                "tutorial": {
+                    "sn": 228141,
+                    "title": "엘리트 섀도 능력",
+                    "content": "1.  벨페고르는 계속 수면 상태에 빠져있다. 공격을 받으면 깨어나 행동 1회 후 다시 수면 상태에 들어간다.\n2. 벨페고르가 수명 상태의 아군에게 주는 대미지가 대폭 증가한다.\n3. 샌드맨은 1턴마다 아군 중 랜덤으로 1명의 캐릭터를 수면 상태에 빠뜨리고, 2턴 동안 지속된다.\n4. 데카라비아는 매 턴마다 처음으로 공격받으면 반격을 1회 진행해 아군 전체를 공격한다."
+                }
+            }
+        },
+        {
+            "sn": 8522701,
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                655,
+                475
+            ],
+            "ratio": 0.8444444444444444,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522702,
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                1018,
+                1010
+            ],
+            "ratio": 0.8444444444444444,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522703,
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                1471,
+                1677
+            ],
+            "ratio": 0.8444444444444444,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522704,
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                2015,
+                1757
+            ],
+            "ratio": 0.8444444444444444,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522705,
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                2761,
+                687
+            ],
+            "ratio": 0.8444444444444444,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522706,
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                2831,
+                1475
+            ],
+            "ratio": 0.8444444444444444,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522707,
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                2197,
+                1495
+            ],
+            "ratio": 0.8444444444444444,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8522708,
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                725,
+                1283
+            ],
+            "ratio": 0.8444444444444444,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        }
+    ],
+    "rotate": 0.0,
+    "map_size": [
+        3436,
+        2232
+    ]
+}

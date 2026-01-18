@@ -1,0 +1,40 @@
+{
+    "tiles": [
+        {
+            "image": "map_sb_qushuita02-dingceng-01.png",
+            "position": [
+                7,
+                -4
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "objects": [
+        {
+            "sn": 8546801,
+            "image": "breakable.png",
+            "position": [
+                440,
+                597
+            ],
+            "ratio": 0.5,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        }
+    ],
+    "enemies": [],
+    "rotate": 0.0,
+    "map_size": [
+        928,
+        840
+    ]
+}

@@ -1,0 +1,376 @@
+{
+    "tiles": [
+        {
+            "image": "map_sb_ZTGC_2F.png",
+            "position": [
+                0,
+                0
+            ],
+            "ratio": 1,
+            "rotate": 0
+        }
+    ],
+    "objects": [
+        {
+            "sn": 8535022,
+            "image": "yishijie-icon-xinpian.png",
+            "position": [
+                75,
+                522
+            ],
+            "ratio": 0.375,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8535026,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                637,
+                634
+            ],
+            "ratio": 0.375,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8535028,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                691,
+                839
+            ],
+            "ratio": 0.375,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8535030,
+            "image": "yishijie-icon-box-suo-new.png",
+            "position": [
+                32,
+                839
+            ],
+            "ratio": 0.3125,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8535031,
+            "image": "yishijie-icon-box-teshu-new.png",
+            "position": [
+                691,
+                471
+            ],
+            "ratio": 0.3125,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8535038,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                97,
+                634
+            ],
+            "ratio": 0.5555555555555556,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8535039,
+            "image": "yishijie-icon-robot02-kong-new.png",
+            "position": [
+                53,
+                594
+            ],
+            "ratio": 0.39473684210526316,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8535040,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                713,
+                757
+            ],
+            "ratio": 0.5555555555555556,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8535041,
+            "image": "yishijie-icon-robot02-kong-new.png",
+            "position": [
+                626,
+                747
+            ],
+            "ratio": 0.39473684210526316,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8535057,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                497,
+                890
+            ],
+            "ratio": 0.5555555555555556,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8535079,
+            "image": "yishijie-icon-men-danxiang.png",
+            "position": [
+                551,
+                675
+            ],
+            "ratio": 0.4411764705882353,
+            "rotate": 90.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8535085,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                194,
+                1013
+            ],
+            "ratio": 0.5555555555555556,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8535090,
+            "image": "yishijie-icon-robot02-kong-new.png",
+            "position": [
+                518,
+                788
+            ],
+            "ratio": 0.39473684210526316,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        }
+    ],
+    "enemies": [
+        {
+            "sn": "8535201",
+            "image": "yishijie-icon-boss01.png",
+            "position": [
+                691,
+                604
+            ],
+            "ratio": 0.2459016393442623,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": {
+                "instSn": 23808,
+                "enemies": [
+                    [
+                        {
+                            "sn": "238081",
+                            "name": "Byakko",
+                            "adapt": {
+                                "Weak": [
+                                    "Fire",
+                                    "Nuclear"
+                                ],
+                                "Resistant": [
+                                    "Curse"
+                                ],
+                                "Nullify": [],
+                                "Reflect": [],
+                                "Absorb": [
+                                    "Ice"
+                                ]
+                            },
+                            "level": "82",
+                            "stat": {
+                                "HP": 190289.8944,
+                                "HP 계산식": "(73641.6 * (1 + 1.58) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 7381.5048,
+                                "공격력 계산식": "(2856.62 * (1 + 1.58) + 0) * (1 + 0)",
+                                "방어력": 1279.851,
+                                "방어력 계산식": "(1279.85 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.41,
+                                "효과 명중 계산식": "(0.41 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.5,
+                                "효과 저항 계산식": "(0.5 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 0,
+                                "다운 수치 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 95.0,
+                                "속도 계산식": "(95.0 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 1.056,
+                                "대미지 보너스 계산식": "(1.06 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": "1025",
+                                    "name": "Swift Strike",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Physical damage to all foes equal to 11.4% of Attack (3 to 4 hits)."
+                                    },
+                                    "cost": "체력 6.0%"
+                                },
+                                {
+                                    "sn": "206",
+                                    "name": "Mabufula",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Ice damage to all foes equal to 42.8% of Attack. 23.8% chance to inflict Freeze for 2 turns."
+                                    },
+                                    "cost": "SP 20"
+                                },
+                                {
+                                    "sn": "203",
+                                    "name": "Bufudyne",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Ice damage to 1 foe equal to 91.3% of Attack. 50.7% chance to inflict Freeze for 2 turns."
+                                    },
+                                    "cost": "SP 21"
+                                },
+                                {
+                                    "sn": "1316",
+                                    "name": "Ice Break+",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Remove Ice resistance or barrier."
+                                    },
+                                    "cost": "SP skillLv*-1+28"
+                                },
+                                {
+                                    "sn": "6253",
+                                    "name": "Prey",
+                                    "desc": null
+                                },
+                                {
+                                    "sn": "6259",
+                                    "name": "Byakko's Claw",
+                                    "desc": null
+                                },
+                                {
+                                    "sn": "6260",
+                                    "name": "Byakko's Fang",
+                                    "desc": null
+                                }
+                            ]
+                        }
+                    ]
+                ],
+                "tutorial": {
+                    "sn": 238081,
+                    "title": "Unique Shadow Abilities",
+                    "content": "1. Byakko uses <color=#FF423F>Byakko's Claw</color> and <color=#FF423F>Byakko's Fang</color>.\n2. Byakko's Claw: Deals damage to 1 target and inflicts <color=#FF423F>Deep Wounds</color>.\nThis effect deals damage over time, and can be removed by inflicting an elemental or spiritual ailment.\n3. Byakko's Fang: Deals damage to all targets and inflicts <color=#FF423F>Bite Marks</color>.\nThis effect increases damage taken and can be removed by activating a Highlight or Resonance.\n4. At the start of each turn, if both Deep Wounds and Bite Marks have been inflicted, Byakko will activate <color=#FF423F>Prey</color>, dealing heavy damage and inflicting <color=#FF423F>Despair</color> on the target.\n5. Every two turns, 1 Byakko is summoned.\nThe summoned Byakko has lower HP and ailment resistance than the original Byakko, and also uses Byakko's Claw and Byakko's Fang."
+                }
+            }
+        },
+        {
+            "sn": "8535508",
+            "image": "yishijie-icon-jingshen-bai.png",
+            "position": [
+                75,
+                532
+            ],
+            "ratio": 0.23809523809523808,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": "8535516",
+            "image": "yishijie-icon-jingshen-bai.png",
+            "position": [
+                691,
+                819
+            ],
+            "ratio": 0.23809523809523808,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        }
+    ],
+    "map_size": [
+        712,
+        1228
+    ]
+}

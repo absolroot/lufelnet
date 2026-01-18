@@ -1,0 +1,19 @@
+{
+    "tiles": [
+        {
+            "image": "map_sb_rukou.png",
+            "position": [
+                0,
+                0
+            ],
+            "ratio": 1,
+            "rotate": 0
+        }
+    ],
+    "objects": [],
+    "enemies": [],
+    "map_size": [
+        856,
+        860
+    ]
+}

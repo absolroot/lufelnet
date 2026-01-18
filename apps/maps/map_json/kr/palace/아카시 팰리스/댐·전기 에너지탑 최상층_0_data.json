@@ -1,0 +1,141 @@
+{
+    "tiles": [
+        {
+            "image": "map_sb_qushuita03-dingceng.png",
+            "position": [
+                0,
+                0
+            ],
+            "ratio": 1,
+            "rotate": 0
+        }
+    ],
+    "objects": [
+        {
+            "sn": 8549114,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                171,
+                539
+            ],
+            "ratio": 0.7407407407407407,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8549117,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                455,
+                55
+            ],
+            "ratio": 0.7407407407407407,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8549152,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                291,
+                128
+            ],
+            "ratio": 0.5,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8549154,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                470,
+                671
+            ],
+            "ratio": 0.5,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8549156,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                739,
+                524
+            ],
+            "ratio": 0.5,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8549162,
+            "image": "yishijie-icon-xinpian.png",
+            "position": [
+                560,
+                69
+            ],
+            "ratio": 0.5,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8549801,
+            "image": "breakable.png",
+            "position": [
+                157,
+                260
+            ],
+            "ratio": 0.5,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8549802,
+            "image": "breakable.png",
+            "position": [
+                560,
+                392
+            ],
+            "ratio": 0.5,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        }
+    ],
+    "enemies": [],
+    "rotate": 0.0,
+    "map_size": [
+        928,
+        840
+    ]
+}

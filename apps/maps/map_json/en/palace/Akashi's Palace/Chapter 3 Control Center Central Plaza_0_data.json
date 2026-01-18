@@ -1,0 +1,96 @@
+{
+    "tiles": [
+        {
+            "image": "map_sb_ZTGC_1F.png",
+            "position": [
+                0,
+                0
+            ],
+            "ratio": 1,
+            "rotate": 0
+        }
+    ],
+    "objects": [
+        {
+            "sn": 8535024,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                349,
+                996
+            ],
+            "ratio": 0.375,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8535076,
+            "image": "yishijie-icon-robot02-kong-new.png",
+            "position": [
+                381,
+                791
+            ],
+            "ratio": 0.39473684210526316,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8535077,
+            "image": "yishijie-icon-robot02-kong-new.png",
+            "position": [
+                349,
+                720
+            ],
+            "ratio": 0.39473684210526316,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8535078,
+            "image": "yishijie-icon-robot02-kong-new.png",
+            "position": [
+                327,
+                791
+            ],
+            "ratio": 0.39473684210526316,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        }
+    ],
+    "enemies": [
+        {
+            "sn": "8535001",
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                165,
+                750
+            ],
+            "ratio": 0.16666666666666666,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        }
+    ],
+    "map_size": [
+        712,
+        1228
+    ]
+}

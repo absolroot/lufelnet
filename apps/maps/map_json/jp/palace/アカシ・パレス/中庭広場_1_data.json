@@ -1,0 +1,376 @@
+{
+    "tiles": [
+        {
+            "image": "map_sb_ZTGC_2F.png",
+            "position": [
+                0,
+                0
+            ],
+            "ratio": 1,
+            "rotate": 0
+        }
+    ],
+    "objects": [
+        {
+            "sn": 8535022,
+            "image": "yishijie-icon-xinpian.png",
+            "position": [
+                75,
+                522
+            ],
+            "ratio": 0.375,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8535026,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                637,
+                634
+            ],
+            "ratio": 0.375,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8535028,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                691,
+                839
+            ],
+            "ratio": 0.375,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8535030,
+            "image": "yishijie-icon-box-suo-new.png",
+            "position": [
+                32,
+                839
+            ],
+            "ratio": 0.3125,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8535031,
+            "image": "yishijie-icon-box-teshu-new.png",
+            "position": [
+                691,
+                471
+            ],
+            "ratio": 0.3125,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8535038,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                97,
+                634
+            ],
+            "ratio": 0.5555555555555556,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8535039,
+            "image": "yishijie-icon-robot02-kong-new.png",
+            "position": [
+                53,
+                594
+            ],
+            "ratio": 0.39473684210526316,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8535040,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                713,
+                757
+            ],
+            "ratio": 0.5555555555555556,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8535041,
+            "image": "yishijie-icon-robot02-kong-new.png",
+            "position": [
+                626,
+                747
+            ],
+            "ratio": 0.39473684210526316,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8535057,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                497,
+                890
+            ],
+            "ratio": 0.5555555555555556,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8535079,
+            "image": "yishijie-icon-men-danxiang.png",
+            "position": [
+                551,
+                675
+            ],
+            "ratio": 0.4411764705882353,
+            "rotate": 90.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8535085,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                194,
+                1013
+            ],
+            "ratio": 0.5555555555555556,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8535090,
+            "image": "yishijie-icon-robot02-kong-new.png",
+            "position": [
+                518,
+                788
+            ],
+            "ratio": 0.39473684210526316,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        }
+    ],
+    "enemies": [
+        {
+            "sn": "8535201",
+            "image": "yishijie-icon-boss01.png",
+            "position": [
+                691,
+                604
+            ],
+            "ratio": 0.2459016393442623,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": {
+                "instSn": 23808,
+                "enemies": [
+                    [
+                        {
+                            "sn": "238081",
+                            "name": "ビャッコ",
+                            "adapt": {
+                                "Weak": [
+                                    "Fire",
+                                    "Nuclear"
+                                ],
+                                "Resistant": [
+                                    "Curse"
+                                ],
+                                "Nullify": [],
+                                "Reflect": [],
+                                "Absorb": [
+                                    "Ice"
+                                ]
+                            },
+                            "level": "82",
+                            "stat": {
+                                "HP": 190289.8944,
+                                "HP 계산식": "(73641.6 * (1 + 1.58) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 7381.5048,
+                                "공격력 계산식": "(2856.62 * (1 + 1.58) + 0) * (1 + 0)",
+                                "방어력": 1279.851,
+                                "방어력 계산식": "(1279.85 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.41,
+                                "효과 명중 계산식": "(0.41 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.5,
+                                "효과 저항 계산식": "(0.5 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 0,
+                                "다운 수치 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 95.0,
+                                "속도 계산식": "(95.0 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 1.056,
+                                "대미지 보너스 계산식": "(1.06 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": "1025",
+                                    "name": "電光石火",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "敵全体に攻撃力11.4%の物理属性ダメージを３～４回与える。"
+                                    },
+                                    "cost": "체력 6.0%"
+                                },
+                                {
+                                    "sn": "206",
+                                    "name": "マハブフーラ",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "敵全体に攻撃力42.8%の氷結属性ダメージを与える。23.8%の確率で敵を２ターンの間、凍結状態にする。"
+                                    },
+                                    "cost": "SP 20"
+                                },
+                                {
+                                    "sn": "203",
+                                    "name": "ブフダイン",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "敵単体に攻撃力91.3%の氷結属性ダメージを与える。50.7%の確率で敵を２ターンの間、凍結状態にする。"
+                                    },
+                                    "cost": "SP 21"
+                                },
+                                {
+                                    "sn": "1316",
+                                    "name": "氷結ガードキル＋",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "氷結耐性・バリアを打ち消す。"
+                                    },
+                                    "cost": "SP skillLv*-1+28"
+                                },
+                                {
+                                    "sn": "6253",
+                                    "name": "捕食",
+                                    "desc": null
+                                },
+                                {
+                                    "sn": "6259",
+                                    "name": "ビャッコの爪",
+                                    "desc": null
+                                },
+                                {
+                                    "sn": "6260",
+                                    "name": "ビャッコの牙",
+                                    "desc": null
+                                }
+                            ]
+                        }
+                    ]
+                ],
+                "tutorial": {
+                    "sn": 238081,
+                    "title": "特異なシャドウ能力",
+                    "content": "１．ビャッコは『<color=#FF423F>ビャッコの爪</color>』と『<color=#FF423F>ビャッコの牙</color>』を使用します。\n２．『ビャッコの爪』：怪盗１人にダメージを与え、対象に『<color=#FF423F>裂傷</color>』を与えます。\n『裂傷』は継続的にダメージを与え、属性異常または行動異常が追加されると解除できます。\n３．『ビャッコの牙』：怪盗全員にダメージを与え、『<color=#FF423F>咬傷</color>』を与えます。\n『咬傷』は被ダメージを上昇させ、意識奏功またはハイライトを発動すると解除できます。\n４．ターン開始時に、『裂傷』と『咬傷』が同時に存在する場合、ビャッコは対象に『<color=#FF423F>捕食</color>』を発動し、大ダメージを与え『<color=#FF423F>絶望</color>』状態にします。\n５．２ターンごとに、ビャッコを１体召喚します。\n召喚されたビャッコは本体よりＨＰと状態異常抵抗が低く、同様に『ビャッコの爪』と『ビャッコの牙』を使用します。"
+                }
+            }
+        },
+        {
+            "sn": "8535508",
+            "image": "yishijie-icon-jingshen-bai.png",
+            "position": [
+                75,
+                532
+            ],
+            "ratio": 0.23809523809523808,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": "8535516",
+            "image": "yishijie-icon-jingshen-bai.png",
+            "position": [
+                691,
+                819
+            ],
+            "ratio": 0.23809523809523808,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        }
+    ],
+    "map_size": [
+        712,
+        1228
+    ]
+}

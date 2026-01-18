@@ -13,17 +13,23 @@
         {
           "id": "baseball_stadium",
           "name": "키우치 팰리스",
-          "name_en": "",
-          "name_jp": "",
+          "name_en": "Kiuchi's Palace",
+          "name_jp": "キウチ・パレス",
           "icon": "yishijie-icon-bangqiuguan-new.png",
           "submaps": [
             {
               "id": "baseball_gate",
               "name": "야구장 정문",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Main Stadium Entrance",
+              "name_jp": "野球場の正門",
               "file": [
                 "palace/키우치 팰리스/야구장·정문_0_data.json"
+              ],
+              "file_en": [
+                "palace/Kiuchi's Palace/Main Stadium Entrance_0_data.json"
+              ],
+              "file_jp": [
+                "palace/キウチ・パレス/野球場の正門_0_data.json"
               ],
               "description": "",
               "description_en": "",
@@ -32,8 +38,8 @@
             {
               "id": "exhibition_hall",
               "name": "전시관",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Exhibition Hall",
+              "name_jp": "展示場",
               "file": [],
               "description": "",
               "description_en": "",
@@ -42,10 +48,16 @@
                 {
                   "id": "exhibition_hall_1f",
                   "name": "전시홀 1층",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "Exhibition Hall 1F",
+                  "name_jp": "展示場１階",
                   "file": [
                     "palace/키우치 팰리스/야구장·전시관 동쪽_전시홀 1층_data.json"
+                  ],
+                  "file_en": [
+                    "palace/Kiuchi's Palace/Exhibition Hall_Exhibition Hall 1F_data.json"
+                  ],
+                  "file_jp": [
+                    "palace/キウチ・パレス/展示場_展示場１階_data.json"
                   ],
                   "description": "",
                   "description_en": "",
@@ -54,10 +66,16 @@
                 {
                   "id": "exhibition_hall_2f",
                   "name": "전시홀 2층",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "Exhibition Hall 2F",
+                  "name_jp": "展示場２階",
                   "file": [
                     "palace/키우치 팰리스/야구장·전시관 동쪽_ 전시홀 2층_data.json"
+                  ],
+                  "file_en": [
+                    "palace/Kiuchi's Palace/Exhibition Hall_Exhibition Hall 2F_data.json"
+                  ],
+                  "file_jp": [
+                    "palace/キウチ・パレス/展示場_展示場２階_data.json"
                   ],
                   "description": "",
                   "description_en": "",
@@ -68,10 +86,16 @@
             {
               "id": "training_hall",
               "name": "훈련관",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Training Hall",
+              "name_jp": "訓練場",
               "file": [
                 "palace/키우치 팰리스/야구장·훈련관_0_data.json"
+              ],
+              "file_en": [
+                "palace/Kiuchi's Palace/Training Hall_0_data.json"
+              ],
+              "file_jp": [
+                "palace/キウチ・パレス/訓練場_0_data.json"
               ],
               "description": "",
               "description_en": "",
@@ -80,10 +104,16 @@
             {
               "id": "rooftop",
               "name": "옥상",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Southern Rooftop",
+              "name_jp": "南側の屋上",
               "file": [
                 "palace/키우치 팰리스/야구장·옥상_0_data.json"
+              ],
+              "file_en": [
+                "palace/Kiuchi's Palace/Southern Rooftop_0_data.json"
+              ],
+              "file_jp": [
+                "palace/キウチ・パレス/南側の屋上_0_data.json"
               ],
               "description": "",
               "description_en": "",
@@ -92,8 +122,8 @@
             {
               "id": "club",
               "name": "클럽",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Club",
+              "name_jp": "クラブ",
               "file": [],
               "description": "",
               "description_en": "",
@@ -102,10 +132,16 @@
                 {
                   "id": "club_1f",
                   "name": "클럽 1층",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "Club 1F",
+                  "name_jp": "クラブ１階",
                   "file": [
                     "palace/키우치 팰리스/야구장·클럽 1층 01_클럽 1층_data.json"
+                  ],
+                  "file_en": [
+                    "palace/Kiuchi's Palace/Club_Club 1F_data.json"
+                  ],
+                  "file_jp": [
+                    "palace/キウチ・パレス/クラブ_クラブ１階_data.json"
                   ],
                   "description": "",
                   "description_en": "",
@@ -114,10 +150,16 @@
                 {
                   "id": "club_2f",
                   "name": "클럽 2층",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "Club 2F",
+                  "name_jp": "クラブ２階",
                   "file": [
                     "palace/키우치 팰리스/야구장·클럽 1층 01_ 클럽 2층_data.json"
+                  ],
+                  "file_en": [
+                    "palace/Kiuchi's Palace/Club_Club 2F_data.json"
+                  ],
+                  "file_jp": [
+                    "palace/キウチ・パレス/クラブ_クラブ２階_data.json"
                   ],
                   "description": "",
                   "description_en": "",
@@ -126,10 +168,16 @@
                 {
                   "id": "club_3f",
                   "name": "클럽 3층",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "Club 3F",
+                  "name_jp": "クラブ３階",
                   "file": [
                     "palace/키우치 팰리스/야구장·클럽 1층 01_ 클럽 3층_data.json"
+                  ],
+                  "file_en": [
+                    "palace/Kiuchi's Palace/Club_Club 3F_data.json"
+                  ],
+                  "file_jp": [
+                    "palace/キウチ・パレス/クラブ_クラブ３階_data.json"
                   ],
                   "description": "",
                   "description_en": "",
@@ -140,10 +188,16 @@
             {
               "id": "main_field",
               "name": "메인 필드",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Center Field",
+              "name_jp": "グラウンド",
               "file": [
                 "palace/키우치 팰리스/야구장·메인 필드_0_data.json"
+              ],
+              "file_en": [
+                "palace/Kiuchi's Palace/Center Field_0_data.json"
+              ],
+              "file_jp": [
+                "palace/キウチ・パレス/グラウンド_0_data.json"
               ],
               "description": "",
               "description_en": "",
@@ -154,17 +208,23 @@
         {
           "id": "set_location",
           "name": "미야자와 팰리스",
-          "name_en": "",
-          "name_jp": "",
+          "name_en": "Miyazawa's Palace",
+          "name_jp": "ミヤザワ・パレス",
           "icon": "yishijie-icon-gongzebomeng-new.png",
           "submaps": [
             {
               "id": "forest_outside_city",
               "name": "도시 밖 숲",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Castle Forest",
+              "name_jp": "城外の森",
               "file": [
                 "palace/미야자와 팰리스/세트장·팰리스 밖 숲_0_data.json"
+              ],
+              "file_en": [
+                "palace/Miyazawa's Palace/Castle Forest_0_data.json"
+              ],
+              "file_jp": [
+                "palace/ミヤザワ・パレス/城外の森_0_data.json"
               ],
               "description": "",
               "description_en": "",
@@ -173,10 +233,16 @@
             {
               "id": "studio",
               "name": "스튜디오",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Film Studio",
+              "name_jp": "撮影スタジオ",
               "file": [
                 "palace/미야자와 팰리스/세트장·스튜디오_0_data.json"
+              ],
+              "file_en": [
+                "palace/Miyazawa's Palace/Film Studio_0_data.json"
+              ],
+              "file_jp": [
+                "palace/ミヤザワ・パレス/撮影スタジオ_0_data.json"
               ],
               "description": "",
               "description_en": "",
@@ -185,10 +251,16 @@
             {
               "id": "sannomaru",
               "name": "산노마루",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Third Bailey",
+              "name_jp": "三の丸",
               "file": [
                 "palace/미야자와 팰리스/세트장·산노마루_0_data.json"
+              ],
+              "file_en": [
+                "palace/Miyazawa's Palace/Third Bailey_0_data.json"
+              ],
+              "file_jp": [
+                "palace/ミヤザワ・パレス/三の丸_0_data.json"
               ],
               "description": "",
               "description_en": "",
@@ -197,10 +269,16 @@
             {
               "id": "ninomaru",
               "name": "니노마루",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Second Bailey",
+              "name_jp": "二の丸",
               "file": [
                 "palace/미야자와 팰리스/세트장·니노마루_0_data.json"
+              ],
+              "file_en": [
+                "palace/Miyazawa's Palace/Second Bailey_0_data.json"
+              ],
+              "file_jp": [
+                "palace/ミヤザワ・パレス/二の丸_0_data.json"
               ],
               "description": "",
               "description_en": "",
@@ -209,10 +287,16 @@
             {
               "id": "honmaru",
               "name": "혼마루",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Main Bailey",
+              "name_jp": "本丸",
               "file": [
                 "palace/미야자와 팰리스/세트장·혼마루_0_data.json"
+              ],
+              "file_en": [
+                "palace/Miyazawa's Palace/Main Bailey_0_data.json"
+              ],
+              "file_jp": [
+                "palace/ミヤザワ・パレス/本丸_0_data.json"
               ],
               "description": "",
               "description_en": "",
@@ -221,10 +305,16 @@
             {
               "id": "tenshukaku_bottom",
               "name": "천수각 아래층",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Castle Keep Depths",
+              "name_jp": "天守閣の最下層",
               "file": [
                 "palace/미야자와 팰리스/세트장·천수각 아래층_0_data.json"
+              ],
+              "file_en": [
+                "palace/Miyazawa's Palace/Castle Keep Depths_0_data.json"
+              ],
+              "file_jp": [
+                "palace/ミヤザワ・パレス/天守閣の最下層_0_data.json"
               ],
               "description": "",
               "description_en": "",
@@ -233,10 +323,16 @@
             {
               "id": "tenshukaku_middle",
               "name": "천수각 중간층",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Central Castle Keep",
+              "name_jp": "天守閣の中層",
               "file": [
                 "palace/미야자와 팰리스/세트장·천수각 중간층_0_data.json"
+              ],
+              "file_en": [
+                "palace/Miyazawa's Palace/Central Castle Keep_0_data.json"
+              ],
+              "file_jp": [
+                "palace/ミヤザワ・パレス/天守閣の中層_0_data.json"
               ],
               "description": "",
               "description_en": "",
@@ -245,10 +341,16 @@
             {
               "id": "tenshukaku_top",
               "name": "천수각 맨 위층",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Upper Castle Keep",
+              "name_jp": "天守閣の最上層",
               "file": [
                 "palace/미야자와 팰리스/세트장·천수각 맨 위층_0_data.json"
+              ],
+              "file_en": [
+                "palace/Miyazawa's Palace/Upper Castle Keep_0_data.json"
+              ],
+              "file_jp": [
+                "palace/ミヤザワ・パレス/天守閣の最上階_0_data.json"
               ],
               "description": "",
               "description_en": "",
@@ -257,10 +359,16 @@
             {
               "id": "west_outdoor",
               "name": "서쪽 옥외",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Western Exterior",
+              "name_jp": "西側の屋外",
               "file": [
                 "palace/미야자와 팰리스/세트장·서쪽 옥외_0_data.json"
+              ],
+              "file_en": [
+                "palace/Miyazawa's Palace/Western Exterior_0_data.json"
+              ],
+              "file_jp": [
+                "palace/ミヤザワ・パレス/西側の屋外_0_data.json"
               ],
               "description": "",
               "description_en": "",
@@ -269,10 +377,16 @@
             {
               "id": "east_outdoor",
               "name": "동쪽 옥외",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Eastern Exterior",
+              "name_jp": "東側の屋外",
               "file": [
                 "palace/미야자와 팰리스/세트장·동쪽 옥외_0_data.json"
+              ],
+              "file_en": [
+                "palace/Miyazawa's Palace/Eastern Exterior_0_data.json"
+              ],
+              "file_jp": [
+                "palace/ミヤザワ・パレス/東側の屋外_0_data.json"
               ],
               "description": "",
               "description_en": "",
@@ -281,11 +395,19 @@
             {
               "id": "palace_main_gate",
               "name": "팰리스 대문",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Palace Gate",
+              "name_jp": "パレスの正門",
               "file": [
                 "palace/미야자와 팰리스/세트장·팰리스 대문_0_data.json",
                 "palace/미야자와 팰리스/세트장·팰리스 대문_1_data.json"
+              ],
+              "file_en": [
+                "palace/Miyazawa's Palace/Palace Gate_0_data.json",
+                "palace/Miyazawa's Palace/Palace Gate_1_data.json"
+              ],
+              "file_jp": [
+                "palace/ミヤザワ・パレス/パレスの正門_0_data.json",
+                "palace/ミヤザワ・パレス/パレスの正門_1_data.json"
               ],
               "description": "",
               "description_en": "",
@@ -296,17 +418,23 @@
         {
           "id": "dam_anger",
           "name": "카타야마 팰리스",
-          "name_en": "",
-          "name_jp": "",
+          "name_en": "Katayama's Palace",
+          "name_jp": "カタヤマ・パレス",
           "icon": "yishijie-icon-shuiba-new.png",
           "submaps": [
             {
               "id": "dam_entrance",
               "name": "댐 입구",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Entrance",
+              "name_jp": "入口",
               "file": [
                 "palace/카타야마 팰리스/댐·입구_0_data.json"
+              ],
+              "file_en": [
+                "palace/Katayama's Palace/Entrance_0_data.json"
+              ],
+              "file_jp": [
+                "palace/カタヤマ・パレス/入口_0_data.json"
               ],
               "description": "",
               "description_en": "",
@@ -315,10 +443,16 @@
             {
               "id": "memorial_plaza",
               "name": "기념 광장",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Memorial Plaza",
+              "name_jp": "記念広場",
               "file": [
                 "palace/카타야마 팰리스/댐·기념 광장_0_data.json"
+              ],
+              "file_en": [
+                "palace/Katayama's Palace/Memorial Plaza_0_data.json"
+              ],
+              "file_jp": [
+                "palace/カタヤマ・パレス/記念広場_0_data.json"
               ],
               "description": "",
               "description_en": "",
@@ -327,10 +461,16 @@
             {
               "id": "dam_top",
               "name": "댐 꼭대기",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Dam Summit",
+              "name_jp": "ダム頂上",
               "file": [
                 "palace/카타야마 팰리스/댐·댐마루_0_data.json"
+              ],
+              "file_en": [
+                "palace/Katayama's Palace/Dam Summit_0_data.json"
+              ],
+              "file_jp": [
+                "palace/カタヤマ・パレス/ダム頂上_0_data.json"
               ],
               "description": "",
               "description_en": "",
@@ -339,8 +479,8 @@
             {
               "id": "water_treatment_plant",
               "name": "수처리장",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Water Treatment Plant",
+              "name_jp": "水処理場",
               "file": [],
               "description": "",
               "description_en": "",
@@ -349,10 +489,16 @@
                 {
                   "id": "water_treatment_lower",
                   "name": "수처리장 저층",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "Lower Water Treatment Plant",
+                  "name_jp": "水処理場下層",
                   "file": [
                     "palace/카타야마 팰리스/댐·저층 생산 구역_0_data.json"
+                  ],
+                  "file_en": [
+                    "palace/Katayama's Palace/Lower Water Treatment Plant_0_data.json"
+                  ],
+                  "file_jp": [
+                    "palace/カタヤマ・パレス/水処理場下層_0_data.json"
                   ],
                   "description": "",
                   "description_en": "",
@@ -361,10 +507,16 @@
                 {
                   "id": "water_treatment_middle",
                   "name": "수처리장 중층",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "Central Water Treatment Plant",
+                  "name_jp": "水処理場中層",
                   "file": [
                     "palace/카타야마 팰리스/댐·중층 생산 구역_0_data.json"
+                  ],
+                  "file_en": [
+                    "palace/Katayama's Palace/Central Water Treatment Plant_0_data.json"
+                  ],
+                  "file_jp": [
+                    "palace/カタヤマ・パレス/水処理場中層_0_data.json"
                   ],
                   "description": "",
                   "description_en": "",
@@ -373,10 +525,16 @@
                 {
                   "id": "water_treatment_upper",
                   "name": "수처리장 상층",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "Upper Water Treatment Plant",
+                  "name_jp": "水処理場上層",
                   "file": [
                     "palace/카타야마 팰리스/댐·고층 생산 구역_0_data.json"
+                  ],
+                  "file_en": [
+                    "palace/Katayama's Palace/Upper Water Treatment Plant_0_data.json"
+                  ],
+                  "file_jp": [
+                    "palace/カタヤマ・パレス/水処理場上層_0_data.json"
                   ],
                   "description": "",
                   "description_en": "",
@@ -385,10 +543,16 @@
                 {
                   "id": "water_treatment_tunnel",
                   "name": "수처리장 터널",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "Water Treatment Plant Tunnel",
+                  "name_jp": "水処理場トンネル",
                   "file": [
                     "palace/카타야마 팰리스/댐·주행 터널_0_data.json"
+                  ],
+                  "file_en": [
+                    "palace/Katayama's Palace/Water Treatment Plant Tunnel_0_data.json"
+                  ],
+                  "file_jp": [
+                    "palace/カタヤマ・パレス/水処理場トンネル_0_data.json"
                   ],
                   "description": "",
                   "description_en": "",
@@ -399,8 +563,8 @@
             {
               "id": "power_plant",
               "name": "발전소",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Power Plant",
+              "name_jp": "発電所",
               "file": [],
               "description": "",
               "description_en": "",
@@ -409,10 +573,16 @@
                 {
                   "id": "power_plant_1f",
                   "name": "발전소 1층",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "Power Plant 1F",
+                  "name_jp": "発電所１階",
                   "file": [
                     "palace/카타야마 팰리스/3장 발전소 1층_0_data.json"
+                  ],
+                  "file_en": [
+                    "palace/Katayama's Palace/Power Plant 1F_0_data.json"
+                  ],
+                  "file_jp": [
+                    "palace/カタヤマ・パレス/発電所１階_0_data.json"
                   ],
                   "description": "",
                   "description_en": "",
@@ -421,10 +591,16 @@
                 {
                   "id": "power_plant_2f",
                   "name": "발전소 2층",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "Power Plant 2F",
+                  "name_jp": "発電所２階",
                   "file": [
                     "palace/카타야마 팰리스/3장 발전소 2층_0_data.json"
+                  ],
+                  "file_en": [
+                    "palace/Katayama's Palace/Power Plant 2F_0_data.json"
+                  ],
+                  "file_jp": [
+                    "palace/カタヤマ・パレス/発電所２階_0_data.json"
                   ],
                   "description": "",
                   "description_en": "",
@@ -433,12 +609,22 @@
                 {
                   "id": "power_plant_3f",
                   "name": "발전소 3층",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "Power Plant 3F",
+                  "name_jp": "発電所３階",
                   "file": [
                     "palace/카타야마 팰리스/3장 발전소 3층_0_data.json",
                     "palace/카타야마 팰리스/3장 발전소 3층_1_data.json",
                     "palace/카타야마 팰리스/3장 발전소 3층_2_data.json"
+                  ],
+                  "file_en": [
+                    "palace/Katayama's Palace/Power Plant 3F_0_data.json",
+                    "palace/Katayama's Palace/Power Plant 3F_1_data.json",
+                    "palace/Katayama's Palace/Power Plant 3F_2_data.json"
+                  ],
+                  "file_jp": [
+                    "palace/カタヤマ・パレス/発電所３階_0_data.json",
+                    "palace/カタヤマ・パレス/発電所３階_1_data.json",
+                    "palace/カタヤマ・パレス/発電所３階_2_data.json"
                   ],
                   "description": "",
                   "description_en": "",
@@ -449,11 +635,19 @@
             {
               "id": "opposite_side",
               "name": "건너편",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Opposite Shore",
+              "name_jp": "対岸",
               "file": [
                 "palace/카타야마 팰리스/댐·건너편_0_data.json",
                 "palace/카타야마 팰리스/댐·건너편_1_data.json"
+              ],
+              "file_en": [
+                "palace/Katayama's Palace/Opposite Shore_0_data.json",
+                "palace/Katayama's Palace/Opposite Shore_1_data.json"
+              ],
+              "file_jp": [
+                "palace/カタヤマ・パレス/対岸_0_data.json",
+                "palace/カタヤマ・パレス/対岸_1_data.json"
               ],
               "description": "",
               "description_en": "",
@@ -464,17 +658,23 @@
         {
           "id": "dam_gluttony",
           "name": "아카시 팰리스",
-          "name_en": "",
-          "name_jp": "",
+          "name_en": "Akashi's Palace",
+          "name_jp": "アカシ・パレス",
           "icon": "yishijie-icon-shuiba-new.png",
           "submaps": [
             {
               "id": "control_center",
               "name": "제어 중심",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Control Center",
+              "name_jp": "コントロールセンター",
               "file": [
                 "palace/아카시 팰리스/3장 컨트롤 센터 ____0_data.json"
+              ],
+              "file_en": [
+                "palace/Akashi's Palace/Control Center ____0_data.json"
+              ],
+              "file_jp": [
+                "palace/アカシ・パレス/コントロールセンター____0_data.json"
               ],
               "description": "",
               "description_en": "",
@@ -483,10 +683,16 @@
                 {
                   "id": "control_center_lower",
                   "name": "컨트롤 센터 하층",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "Lower Control Center",
+                  "name_jp": "コントロールセンター下層",
                   "file": [
                     "palace/아카시 팰리스/3장 컨트롤 센터 하층_0_data.json"
+                  ],
+                  "file_en": [
+                    "palace/Akashi's Palace/Lower Control Center_0_data.json"
+                  ],
+                  "file_jp": [
+                    "palace/アカシ・パレス/コントロールセンター下層_0_data.json"
                   ],
                   "description": "",
                   "description_en": "",
@@ -495,10 +701,16 @@
                 {
                   "id": "control_center_upper",
                   "name": "컨트롤 센터 상층",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "Upper Control Center",
+                  "name_jp": "コントロールセンター上層",
                   "file": [
                     "palace/아카시 팰리스/3장 컨트롤 센터 상층_0_data.json"
+                  ],
+                  "file_en": [
+                    "palace/Akashi's Palace/Upper Control Center_0_data.json"
+                  ],
+                  "file_jp": [
+                    "palace/アカシ・パレス/コントロールセンター上層_0_data.json"
                   ],
                   "description": "",
                   "description_en": "",
@@ -507,10 +719,16 @@
                 {
                   "id": "core_control_room",
                   "name": "핵심 통제실",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "Core Monitoring Room",
+                  "name_jp": "コアモニタールーム",
                   "file": [
                     "palace/아카시 팰리스/3장 컨트롤 센터 핵심 통제실_0_data.json"
+                  ],
+                  "file_en": [
+                    "palace/Akashi's Palace/Core Monitoring Room_0_data.json"
+                  ],
+                  "file_jp": [
+                    "palace/アカシ・パレス/コアモニタールーム_0_data.json"
                   ],
                   "description": "",
                   "description_en": "",
@@ -519,12 +737,22 @@
                 {
                   "id": "courtyard_plaza",
                   "name": "중정 광장",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "Central Plaza",
+                  "name_jp": "中庭広場",
                   "file": [
                     "palace/아카시 팰리스/3장 컨트롤 센터 중정 광장_0_data.json",
                     "palace/아카시 팰리스/3장 컨트롤 센터 중정 광장_1_data.json",
                     "palace/아카시 팰리스/3장 컨트롤 센터 중정 광장_2_data.json"
+                  ],
+                  "file_en": [
+                    "palace/Akashi's Palace/Central Plaza_0_data.json",
+                    "palace/Akashi's Palace/Central Plaza_1_data.json",
+                    "palace/Akashi's Palace/Central Plaza_2_data.json"
+                  ],
+                  "file_jp": [
+                    "palace/アカシ・パレス/中庭広場_0_data.json",
+                    "palace/アカシ・パレス/中庭広場_1_data.json",
+                    "palace/アカシ・パレス/中庭広場_2_data.json"
                   ],
                   "description": "",
                   "description_en": "",
@@ -913,7 +1141,7 @@
                   "name_en": "",
                   "name_jp": "",
                   "file": [
-                    "palace/시모츠나 팰리스/개미굴·프라이빗 중층_1_data.json"
+                    "palace/시모츠나 팰리스/개미굴·프라이빗 상층_0_data.json"
                   ],
                   "description": "",
                   "description_en": "",
@@ -1036,7 +1264,7 @@
     {
       "id": "mementoes",
       "name": "메멘토스",
-      "name_en": "",
+      "name_en": "Mementos",
       "name_jp": "",
       "icon": "",
       "description": "",
@@ -1046,17 +1274,23 @@
         {
           "id": "lost_thoughts",
           "name": "사상을 잃은길",
-          "name_en": "",
-          "name_jp": "",
+          "name_en": "Path of Qimranut",
+          "name_jp": "思想奪われし路",
           "icon": "yinxiangkongjian-ditu-1.png",
           "submaps": [
             {
               "id": "area1",
               "name": "에어리어1",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Area 1",
+              "name_jp": "エリア1",
               "file": [
                 "mementos/사상을 잃은 길/사상을 잃은 길 에어리어 1_data.json"
+              ],
+              "file_en": [
+                "mementos/Path of Qimranut/Path of Qimranut Area 1_data.json"
+              ],
+              "file_jp": [
+                "mementos/思想奪われし路/思想奪われし路エリア１_data.json"
               ],
               "description": "",
               "description_en": "",
@@ -1065,10 +1299,16 @@
             {
               "id": "area2",
               "name": "에어리어2",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Area 2",
+              "name_jp": "エリア2",
               "file": [
                 "mementos/사상을 잃은 길/사상을 잃은 길 에어리어 2_data.json"
+              ],
+              "file_en": [
+                "mementos/Path of Qimranut/Path of Qimranut Area 2_data.json"
+              ],
+              "file_jp": [
+                "mementos/思想奪われし路/思想奪われし路エリア２_data.json"
               ],
               "description": "",
               "description_en": "",
@@ -1077,10 +1317,16 @@
             {
               "id": "area3",
               "name": "에어리어3",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Area 3",
+              "name_jp": "エリア3",
               "file": [
                 "mementos/사상을 잃은 길/사상을 잃은 길 에어리어 3_data.json"
+              ],
+              "file_en": [
+                "mementos/Path of Qimranut/Path of Qimranut Area 3_data.json"
+              ],
+              "file_jp": [
+                "mementos/思想奪われし路/思想奪われし路エリア３_data.json"
               ],
               "description": "",
               "description_en": "",
@@ -1091,17 +1337,23 @@
         {
           "id": "lost_harmony",
           "name": "조화를 잃은길",
-          "name_en": "",
-          "name_jp": "",
+          "name_en": "Path of Aiyatsbus",
+          "name_jp": "調和奪われし路",
           "icon": "yinxiangkongjian-ditu-2.png",
           "submaps": [
             {
               "id": "area1",
               "name": "에어리어1",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Area 1",
+              "name_jp": "エリア1",
               "file": [
                 "mementos/조화를 잃은 길/조화를 잃은 길 에어리어 1_data.json"
+              ],
+              "file_en": [
+                "mementos/Path of Aiyatsbus/Path of Aiyatsbus Area 1_data.json"
+              ],
+              "file_jp": [
+                "mementos/調和奪われし路/調和奪われし路エリア１_data.json"
               ],
               "description": "",
               "description_en": "",
@@ -1110,10 +1362,16 @@
             {
               "id": "area2",
               "name": "에어리어2",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Area 2",
+              "name_jp": "エリア2",
               "file": [
                 "mementos/조화를 잃은 길/조화를 잃은 길 에어리어 2_data.json"
+              ],
+              "file_en": [
+                "mementos/Path of Aiyatsbus/Path of Aiyatsbus Area 2_data.json"
+              ],
+              "file_jp": [
+                "mementos/調和奪われし路/調和奪われし路エリア２_data.json"
               ],
               "description": "",
               "description_en": "",
@@ -1122,10 +1380,16 @@
             {
               "id": "area3",
               "name": "에어리어3",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Area 3",
+              "name_jp": "エリア3",
               "file": [
                 "mementos/조화를 잃은 길/조화를 잃은 길 에어리어 3_data.json"
+              ],
+              "file_en": [
+                "mementos/Path of Aiyatsbus/Path of Aiyatsbus Area 3_data.json"
+              ],
+              "file_jp": [
+                "mementos/調和奪われし路/調和奪われし路エリア３_data.json"
               ],
               "description": "",
               "description_en": "",
@@ -1134,10 +1398,16 @@
             {
               "id": "area4",
               "name": "에어리어4",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Area 4",
+              "name_jp": "エリア4",
               "file": [
                 "mementos/조화를 잃은 길/조화를 잃은 길 에어리어 4_data.json"
+              ],
+              "file_en": [
+                "mementos/Path of Aiyatsbus/Path of Aiyatsbus Area 4_data.json"
+              ],
+              "file_jp": [
+                "mementos/調和奪われし路/調和奪われし路エリア４_data.json"
               ],
               "description": "",
               "description_en": "",
@@ -1148,17 +1418,23 @@
         {
           "id": "lost_temperance",
           "name": "절제를 잃은길",
-          "name_en": "",
-          "name_jp": "",
+          "name_en": "Path of Chemdah",
+          "name_jp": "節制奪われし路",
           "icon": "yinxiangkongjian-ditu-3.png",
           "submaps": [
             {
               "id": "area1",
               "name": "에어리어1",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Area 1",
+              "name_jp": "エリア1",
               "file": [
                 "mementos/절제를 잃은 길/절제를 잃은 길 에어리어 1_data.json"
+              ],
+              "file_en": [
+                "mementos/Path of Chemdah/Path of Chemdah Area 1_data.json"
+              ],
+              "file_jp": [
+                "mementos/節制奪われし路/節制奪われし路エリア１_data.json"
               ],
               "description": "",
               "description_en": "",
@@ -1167,10 +1443,16 @@
             {
               "id": "area2",
               "name": "에어리어2",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Area 2",
+              "name_jp": "エリア2",
               "file": [
                 "mementos/절제를 잃은 길/절제를 잃은 길 에어리어 2_data.json"
+              ],
+              "file_en": [
+                "mementos/Path of Chemdah/Path of Chemdah Area 2_data.json"
+              ],
+              "file_jp": [
+                "mementos/節制奪われし路/節制奪われし路エリア２_data.json"
               ],
               "description": "",
               "description_en": "",
@@ -1179,10 +1461,16 @@
             {
               "id": "area3",
               "name": "에어리어3",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Area 3",
+              "name_jp": "エリア3",
               "file": [
                 "mementos/절제를 잃은 길/절제를 잃은 길 에어리어 3_data.json"
+              ],
+              "file_en": [
+                "mementos/Path of Chemdah/Path of Chemdah Area 3_data.json"
+              ],
+              "file_jp": [
+                "mementos/節制奪われし路/節制奪われし路エリア３_data.json"
               ],
               "description": "",
               "description_en": "",
@@ -1191,10 +1479,16 @@
             {
               "id": "area4",
               "name": "에어리어4",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Area 4",
+              "name_jp": "エリア4",
               "file": [
                 "mementos/절제를 잃은 길/절제를 잃은 길 에어리어 4_data.json"
+              ],
+              "file_en": [
+                "mementos/Path of Chemdah/Path of Chemdah Area 4_data.json"
+              ],
+              "file_jp": [
+                "mementos/節制奪われし路/節制奪われし路エリア４_data.json"
               ],
               "description": "",
               "description_en": "",
@@ -1203,10 +1497,16 @@
             {
               "id": "area5",
               "name": "에어리어5",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Area 5",
+              "name_jp": "エリア5",
               "file": [
                 "mementos/절제를 잃은 길/절제를 잃은 길 에어리어 5_data.json"
+              ],
+              "file_en": [
+                "mementos/Path of Chemdah/Path of Chemdah Area 5_data.json"
+              ],
+              "file_jp": [
+                "mementos/節制奪われし路/節制奪われし路エリア５_data.json"
               ],
               "description": "",
               "description_en": "",
@@ -1215,10 +1515,16 @@
             {
               "id": "area6",
               "name": "에어리어6",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Area 6",
+              "name_jp": "エリア6",
               "file": [
                 "mementos/절제를 잃은 길/절제를 잃은 길 에어리어 6_data.json"
+              ],
+              "file_en": [
+                "mementos/Path of Chemdah/Path of Chemdah Area 6_data.json"
+              ],
+              "file_jp": [
+                "mementos/節制奪われし路/節制奪われし路エリア６_data.json"
               ],
               "description": "",
               "description_en": "",

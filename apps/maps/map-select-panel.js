@@ -8,6 +8,16 @@
     let selectedMapItem = null;
 
     window.MapSelectPanel = {
+        // 언어에 따른 파일 배열 선택 (file_en, file_jp, 폴백은 file)
+        getFileForLang(submap, lang) {
+            if (lang === 'en' && submap.file_en && submap.file_en.length > 0) {
+                return submap.file_en;
+            } else if (lang === 'jp' && submap.file_jp && submap.file_jp.length > 0) {
+                return submap.file_jp;
+            }
+            return submap.file;
+        },
+
         // 탭 설정
         setupTabs() {
             const tabs = document.querySelectorAll('.map-tab');
@@ -338,22 +348,23 @@
         // 맵 아이템 렌더링 (재귀)
         renderMapItem(container, submap, lang) {
             const hasSubmaps = submap.submaps && submap.submaps.length > 0;
-            // file이 배열인 경우도 hasFile로 처리
-            const hasFile = !!(submap.file && (Array.isArray(submap.file) ? submap.file.length > 0 : submap.file.trim() !== ''));
-            
+            // 언어에 맞는 파일 배열 선택
+            const fileForLang = this.getFileForLang(submap, lang);
+            const hasFile = !!(fileForLang && (Array.isArray(fileForLang) ? fileForLang.length > 0 : fileForLang.trim() !== ''));
+
             if (!hasSubmaps && !hasFile) return;
-            
+
             const item = document.createElement('div');
             item.className = hasSubmaps ? 'map-item has-submaps' : 'map-item';
             item.dataset.submapId = submap.id;
             if (hasFile) {
                 // file이 배열인 경우 첫 번째 파일을 dataset.file에 저장하고, 전체 배열을 dataset.files에 JSON으로 저장
-                if (Array.isArray(submap.file)) {
-                    const firstFile = submap.file[0] || '';
+                if (Array.isArray(fileForLang)) {
+                    const firstFile = fileForLang[0] || '';
                     item.dataset.file = firstFile;
-                    item.dataset.files = JSON.stringify(submap.file);
+                    item.dataset.files = JSON.stringify(fileForLang);
                 } else {
-                    item.dataset.file = submap.file;
+                    item.dataset.file = fileForLang;
                 }
             }
             
@@ -414,7 +425,7 @@
                 container.appendChild(subList);
             } else if (hasFile) {
                 item.addEventListener('click', () => {
-                    this.selectMapItem(item, submap.file);
+                    this.selectMapItem(item, fileForLang, submap.file);
                 });
                 container.appendChild(item);
             }
@@ -423,22 +434,23 @@
         // 서브 맵 아이템 렌더링
         renderSubMapItem(container, submap, lang) {
             const hasSubmaps = submap.submaps && submap.submaps.length > 0;
-            // file이 배열인 경우도 hasFile로 처리
-            const hasFile = !!(submap.file && (Array.isArray(submap.file) ? submap.file.length > 0 : submap.file.trim() !== ''));
-            
+            // 언어에 맞는 파일 배열 선택
+            const fileForLang = this.getFileForLang(submap, lang);
+            const hasFile = !!(fileForLang && (Array.isArray(fileForLang) ? fileForLang.length > 0 : fileForLang.trim() !== ''));
+
             if (!hasSubmaps && !hasFile) return;
-            
+
             const item = document.createElement('div');
             item.className = hasSubmaps ? 'map-sub-item has-submaps' : 'map-sub-item';
             item.dataset.submapId = submap.id;
             if (hasFile) {
                 // file이 배열인 경우 첫 번째 파일을 dataset.file에 저장하고, 전체 배열을 dataset.files에 JSON으로 저장
-                if (Array.isArray(submap.file)) {
-                    const firstFile = submap.file[0] || '';
+                if (Array.isArray(fileForLang)) {
+                    const firstFile = fileForLang[0] || '';
                     item.dataset.file = firstFile;
-                    item.dataset.files = JSON.stringify(submap.file);
+                    item.dataset.files = JSON.stringify(fileForLang);
                 } else {
-                    item.dataset.file = submap.file;
+                    item.dataset.file = fileForLang;
                 }
             }
             
@@ -494,7 +506,7 @@
                 container.appendChild(subList);
             } else if (hasFile) {
                 item.addEventListener('click', () => {
-                    this.selectMapItem(item, submap.file);
+                    this.selectMapItem(item, fileForLang, submap.file);
                 });
                 container.appendChild(item);
             }
@@ -729,7 +741,8 @@
         },
 
         // 맵 아이템 선택
-        selectMapItem(item, file) {
+        // fallbackFile: kr 파일 배열 (폴백용, 옵션)
+        selectMapItem(item, file, fallbackFile = null) {
             // 모든 active 클래스 제거
             document.querySelectorAll('.map-item.active, .map-sub-item.active').forEach(activeItem => {
                 activeItem.classList.remove('active');
@@ -760,7 +773,8 @@
                     window.MapsCore.setCurrentMapId(mapId);
                 }
                 // file이 배열이면 배열 전체를 전달, 아니면 단일 파일명 전달
-                window.MapsCore.loadMap(file);
+                // fallbackFile: 폴백용 kr 파일 배열
+                window.MapsCore.loadMap(file, fallbackFile);
             }
         },
 

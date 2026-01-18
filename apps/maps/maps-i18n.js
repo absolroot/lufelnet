@@ -11,10 +11,8 @@
             objectFilter: '오브젝트 필터',
             zoom: '줌',
             reset: '리셋',
-            dragMove: '마우스 드래그: 이동',
-            wheelZoom: '마우스 휠: 줌',
-            keyboardMove: 'WASD / 방향키: 이동',
-            keyboardZoom: '+/-: 줌',
+            moveControl: '드래그 / WASD / 방향키: 이동',
+            zoomControl: '휠 / +/-: 줌',
             selectCategory: '카테고리를 선택하세요...',
             palace: '팰리스',
             mementoes: '메멘토스',
@@ -25,7 +23,9 @@
             filter: '필터',
             dataManagement: '데이터 관리',
             backup: '백업',
-            restore: '복원'
+            restore: '복원',
+            mapLoadError: '맵을 불러오는데 실패했습니다.',
+            localizationNotice: ''
         },
         en: {
             loading: 'Loading map...',
@@ -34,10 +34,8 @@
             objectFilter: 'Object Filter',
             zoom: 'Zoom',
             reset: 'Reset',
-            dragMove: 'Mouse drag: Move',
-            wheelZoom: 'Mouse wheel: Zoom',
-            keyboardMove: 'WASD / Arrow keys: Move',
-            keyboardZoom: '+/-: Zoom',
+            moveControl: 'Drag / WASD / Arrow: Move',
+            zoomControl: 'Wheel / +/-: Zoom',
             selectCategory: 'Select a category...',
             palace: 'Palace',
             mementoes: 'Mementos',
@@ -48,7 +46,9 @@
             filter: 'Filter',
             dataManagement: 'Data Management',
             backup: 'Backup',
-            restore: 'Restore'
+            restore: 'Restore',
+            mapLoadError: 'Failed to load the map.',
+            localizationNotice: 'Some unreleased content may be displayed in Korean. Manual updates may be delayed.'
         },
         jp: {
             loading: 'マップを読み込み中...',
@@ -57,10 +57,8 @@
             objectFilter: 'オブジェクトフィルター',
             zoom: 'ズーム',
             reset: 'リセット',
-            dragMove: 'マウスドラッグ: 移動',
-            wheelZoom: 'マウスホイール: ズーム',
-            keyboardMove: 'WASD / 矢印キー: 移動',
-            keyboardZoom: '+/-: ズーム',
+            moveControl: 'ドラッグ / WASD / 矢印: 移動',
+            zoomControl: 'ホイール / +/-: ズーム',
             selectCategory: 'カテゴリーを選択してください...',
             palace: 'パレス',
             mementoes: 'メメントス',
@@ -71,7 +69,9 @@
             filter: 'フィルター',
             dataManagement: 'データ管理',
             backup: 'バックアップ',
-            restore: '復元'
+            restore: '復元',
+            mapLoadError: 'マップの読み込みに失敗しました。',
+            localizationNotice: '一部の未公開コンテンツは韓国語で表示される場合があります。手動更新が遅れる場合があります。'
         }
     };
 

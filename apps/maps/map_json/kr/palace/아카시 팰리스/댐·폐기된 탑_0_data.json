@@ -1,0 +1,141 @@
+{
+    "tiles": [
+        {
+            "image": "map_sb_qushuita03-diceng.png",
+            "position": [
+                0,
+                0
+            ],
+            "ratio": 1,
+            "rotate": 0
+        }
+    ],
+    "objects": [
+        {
+            "sn": 8550151,
+            "image": "yishijie-icon-box-hexin-new.png",
+            "position": [
+                142,
+                407
+            ],
+            "ratio": 0.4166666666666667,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8550153,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                455,
+                509
+            ],
+            "ratio": 0.5,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8550155,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                784,
+                407
+            ],
+            "ratio": 0.5,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8550801,
+            "image": "breakable.png",
+            "position": [
+                515,
+                495
+            ],
+            "ratio": 0.5,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8550802,
+            "image": "breakable.png",
+            "position": [
+                545,
+                377
+            ],
+            "ratio": 0.5,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8550803,
+            "image": "breakable.png",
+            "position": [
+                679,
+                377
+            ],
+            "ratio": 0.5,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8550804,
+            "image": "breakable.png",
+            "position": [
+                336,
+                333
+            ],
+            "ratio": 0.5,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8550805,
+            "image": "breakable.png",
+            "position": [
+                336,
+                480
+            ],
+            "ratio": 0.5,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        }
+    ],
+    "enemies": [],
+    "rotate": 0.0,
+    "map_size": [
+        928,
+        840
+    ]
+}

@@ -203,8 +203,35 @@
         },
 
         // 적 데이터 모달 표시
-        showEnemyModal(enemyData) {
+        showEnemyModal(enemyData, sprite) {
             if (!enemyData) return;
+
+            // i18n 텍스트
+            const i18n = {
+                title: { kr: '적 정보', en: 'Enemy Info', jp: '敵情報', cn: '敌人信息', tw: '敵人資訊', sea: 'Enemy Info' },
+                defeated: { kr: '처치 완료', en: 'Defeated', jp: '討伐完了', cn: '击败完成', tw: '擊敗完成', sea: 'Defeated' },
+                undo: { kr: '되돌리기', en: 'Undo', jp: '元に戻す', cn: '撤销', tw: '復原', sea: 'Undo' }
+            };
+
+            // 언어 감지
+            function detectLang() {
+                try {
+                    const urlLang = new URLSearchParams(window.location.search).get('lang');
+                    if (urlLang && ['kr','en','jp','cn','tw','sea'].includes(urlLang)) return urlLang;
+                    const saved = localStorage.getItem('preferredLanguage');
+                    if (saved && ['kr','en','jp','cn','tw','sea'].includes(saved)) return saved;
+                    const nav = navigator.language || navigator.userLanguage;
+                    if (nav) {
+                        if (nav.startsWith('ko')) return 'kr';
+                        if (nav.startsWith('ja')) return 'jp';
+                        if (nav.startsWith('zh')) return 'cn';
+                        if (nav.startsWith('en')) return 'en';
+                    }
+                } catch (e) {}
+                return 'kr';
+            }
+            const lang = detectLang();
+            const getText = (key) => i18n[key][lang] || i18n[key]['en'];
 
             // 모달 오버레이 생성
             const overlay = document.createElement('div');
@@ -247,7 +274,7 @@
             `;
 
             const title = document.createElement('h3');
-            title.textContent = '적 정보';
+            title.textContent = getText('title');
             title.style.cssText = `
                 margin: 0;
                 font-size: 18px;
@@ -283,66 +310,93 @@
                 padding: 20px;
                 overflow-y: auto;
                 flex: 1;
+                display: flex;
+                flex-direction: column;
             `;
 
-            // 적 정보 렌더링
-            enemyData.enemies.forEach((enemyGroup, groupIndex) => {
-                if (Array.isArray(enemyGroup)) {
-                    enemyGroup.forEach(enemy => {
-                        const enemyDiv = document.createElement('div');
-                        enemyDiv.style.cssText = `
-                            margin-bottom: 20px;
-                            padding: 16px;
-                            background: #0f0f0f;
-                            border-radius: 8px;
-                        `;
+            // 버튼 영역 생성 (나중에 위치 조정)
+            let buttonArea = null;
+            if (sprite && sprite.objectSn) {
+                buttonArea = document.createElement('div');
 
-                        // 적 이름과 레벨
-                        const nameDiv = document.createElement('div');
-                        nameDiv.style.cssText = `
-                            font-size: 16px;
-                            font-weight: 600;
-                            color: #fff;
-                            margin-bottom: 8px;
-                        `;
-                        nameDiv.textContent = `${enemy.name} (Lv.${enemy.level})`;
-                        enemyDiv.appendChild(nameDiv);
+                const isClicked = this.getObjectClickedState(sprite.objectSn);
 
-                        // 체력
-                        const hpDiv = document.createElement('div');
-                        hpDiv.style.cssText = `
-                            font-size: 14px;
-                            color: #ccc;
-                            margin-bottom: 12px;
-                        `;
-                        hpDiv.textContent = `HP: ${Math.round(enemy.stat.HP).toLocaleString()}`;
-                        enemyDiv.appendChild(hpDiv);
+                const actionBtn = document.createElement('button');
+                actionBtn.style.cssText = `
+                    width: 100%;
+                    padding: 12px 16px;
+                    border: none;
+                    border-radius: 6px;
+                    font-size: 14px;
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: all 0.2s;
+                    background: ${isClicked ? '#444' : '#730000'};
+                    color: #fff;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 8px;
+                `;
 
-                        // 적합성
-                        if (enemy.adapt) {
-                            const adaptDiv = document.createElement('div');
-                            adaptDiv.style.cssText = `
-                                margin-bottom: 12px;
-                            `;
-                            const adaptSprite = this.buildAdaptSprite(enemy.adapt);
-                            adaptDiv.appendChild(adaptSprite);
-                            enemyDiv.appendChild(adaptDiv);
-                        }
-
-                        content.appendChild(enemyDiv);
-                    });
+                // 오브젝트 아이콘 추가
+                if (sprite.objectImage) {
+                    const iconImg = document.createElement('img');
+                    const BASE = (typeof window !== 'undefined' && (window.BASE_URL || window.SITE_BASEURL)) || '';
+                    iconImg.src = `${BASE}/apps/maps/yishijie-icon/${sprite.objectImage}`;
+                    iconImg.style.cssText = `
+                        width: 24px;
+                        height: 24px;
+                        object-fit: contain;
+                    `;
+                    iconImg.onerror = () => { iconImg.style.display = 'none'; };
+                    actionBtn.appendChild(iconImg);
                 }
-            });
 
-            // 튜토리얼 정보
+                const btnText = document.createElement('span');
+                btnText.textContent = isClicked ? getText('undo') : getText('defeated');
+                actionBtn.appendChild(btnText);
+
+                actionBtn.onmouseenter = () => {
+                    actionBtn.style.background = isClicked ? '#555' : '#8a0000';
+                };
+                actionBtn.onmouseleave = () => {
+                    actionBtn.style.background = isClicked ? '#444' : '#730000';
+                };
+
+                actionBtn.onclick = () => {
+                    const newState = !isClicked;
+                    this.setObjectClickedState(sprite.objectSn, newState);
+
+                    if (newState) {
+                        this.applyClickedEffect(sprite);
+                    } else {
+                        this.removeClickedEffect(sprite);
+                    }
+
+                    // 필터 패널 개수 업데이트
+                    const isNonCountable = this.isNonCountableIcon(sprite.objectImage || '');
+                    if (!isNonCountable && window.ObjectFilterPanel && sprite.objectType) {
+                        window.ObjectFilterPanel.updateTypeCount(sprite.objectType, sprite.objectSn, newState);
+                    }
+
+                    // 모달 닫기
+                    document.body.removeChild(overlay);
+                };
+
+                buttonArea.appendChild(actionBtn);
+            }
+
+            // 1. 튜토리얼 정보 (상단)
             if (enemyData.tutorial) {
                 const tutorialDiv = document.createElement('div');
                 tutorialDiv.style.cssText = `
-                    margin-top: 20px;
+                    order: 0;
+                    margin-bottom: 16px;
                     padding: 16px;
-                    background: #2a1a1a;
+                    background: rgb(15,15,15);
                     border-radius: 8px;
-                    border-left: 3px solid #730000;
+                    border-bottom: 3px solid #730000;
                 `;
 
                 const tutorialTitle = document.createElement('h4');
@@ -365,6 +419,78 @@
                 tutorialDiv.appendChild(tutorialContent);
 
                 content.appendChild(tutorialDiv);
+            }
+
+            // 2. 적 정보 렌더링
+            const enemiesWrapper = document.createElement('div');
+            enemiesWrapper.style.cssText = `
+                order: 1;
+            `;
+            enemyData.enemies.forEach((enemyGroup, groupIndex) => {
+                if (Array.isArray(enemyGroup)) {
+                    enemyGroup.forEach(enemy => {
+                        const enemyDiv = document.createElement('div');
+                        enemyDiv.style.cssText = `
+                            margin-bottom: 20px;
+                            padding: 16px;
+                            background: #0f0f0f;
+                            border-radius: 8px;
+                        `;
+
+                        // 적 이름, 레벨, HP (PC에서는 같은 행)
+                        const infoRow = document.createElement('div');
+                        infoRow.style.cssText = `
+                            display: flex;
+                            flex-wrap: wrap;
+                            align-items: baseline;
+                            gap: 8px 16px;
+                            margin-bottom: 12px;
+                        `;
+
+                        const nameSpan = document.createElement('span');
+                        nameSpan.style.cssText = `
+                            font-size: 16px;
+                            font-weight: 600;
+                            color: #fff;
+                        `;
+                        nameSpan.textContent = `${enemy.name} (Lv.${enemy.level})`;
+                        infoRow.appendChild(nameSpan);
+
+                        const hpSpan = document.createElement('span');
+                        hpSpan.style.cssText = `
+                            font-size: 14px;
+                            color: #ccc;
+                        `;
+                        hpSpan.textContent = `HP: ${Math.round(enemy.stat.HP).toLocaleString()}`;
+                        infoRow.appendChild(hpSpan);
+
+                        enemyDiv.appendChild(infoRow);
+
+                        // 적합성
+                        if (enemy.adapt) {
+                            const adaptDiv = document.createElement('div');
+                            adaptDiv.style.cssText = `
+                                margin-bottom: 12px;
+                            `;
+                            const adaptSprite = this.buildAdaptSprite(enemy.adapt);
+                            adaptDiv.appendChild(adaptSprite);
+                            enemyDiv.appendChild(adaptDiv);
+                        }
+
+                        enemiesWrapper.appendChild(enemyDiv);
+                    });
+                }
+            });
+            content.appendChild(enemiesWrapper);
+
+            // 3. 버튼 영역 추가 (PC: 맨 아래, 모바일: 맨 위)
+            if (buttonArea) {
+                // PC (768px 이상): order 2로 맨 아래, 모바일: order -1로 맨 위
+                const isMobile = window.innerWidth < 768;
+                buttonArea.style.order = isMobile ? '-1' : '2';
+                buttonArea.style.marginBottom = isMobile ? '16px' : '0';
+                buttonArea.style.marginTop = isMobile ? '0' : '16px';
+                content.appendChild(buttonArea);
             }
 
             // 조립
@@ -396,7 +522,7 @@
 
             // enemy_data가 있는 경우 모달 표시 (non_countable이어도 모달은 표시)
             if (sprite.debugInfo && sprite.debugInfo.enemyData) {
-                this.showEnemyModal(sprite.debugInfo.enemyData);
+                this.showEnemyModal(sprite.debugInfo.enemyData, sprite);
                 return;
             }
 

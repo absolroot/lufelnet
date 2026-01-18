@@ -159,72 +159,98 @@
             // 숫자가 있는 타입을 먼저, 그 다음 숫자가 없는 타입
             const sortedTypes = [...typesWithCount, ...typesWithoutCount];
             
-            sortedTypes.forEach(type => {
+            // 오브젝트가 없을 경우 haoyou-none.png 이미지 표시
+            if (sortedTypes.length === 0) {
+                const BASE_URL = typeof window.BASE_URL !== 'undefined' ? window.BASE_URL : '';
+                function normalizePath(base, path) {
+                    const cleanBase = base.replace(/\/+$/, '');
+                    const cleanPath = path.replace(/^\/+/, '');
+                    return cleanBase ? `${cleanBase}/${cleanPath}` : `/${cleanPath}`;
+                }
+                const noneImagePath = normalizePath(BASE_URL, 'apps/maps/haoyou-none.png');
+                
                 const filterItem = document.createElement('div');
                 filterItem.className = 'filter-item';
-                filterItem.dataset.type = type;
-                filterItem.dataset.checked = 'true';
+                filterItem.style.paddingBottom = '8px';
+                filterItem.style.cursor = 'default';
+                filterItem.style.pointerEvents = 'none';
 
-                const countInfo = objectCounts[type];
-                const isNonInteractive = countInfo.isNonInteractive;
-                const isNonCountable = countInfo.isNonCountable;
-
-                // 비대화형이거나 개수 세지 않는 아이콘은 padding-bottom 없이
-                if (isNonInteractive || isNonCountable) {
-                    filterItem.style.paddingBottom = '8px';
-                }
-
-                // 아이콘 이미지 (yishijie-icon- 또는 yishijie- 접두사 시도)
+                // 아이콘 이미지
                 const icon = document.createElement('img');
                 icon.className = 'filter-icon';
-                icon.src = `${ICON_PATH}yishijie-icon-${type}.png`;
-                icon.onerror = () => {
-                    // yishijie-icon- 실패 시 yishijie- 시도
-                    icon.src = `${ICON_PATH}yishijie-${type}.png`;
-                    icon.onerror = () => {
-                        icon.style.display = 'none';
-                    };
-                };
-
-                // 체크 표시 SVG (우측 상단 라벨 형식)
-                const checkMark = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-                checkMark.setAttribute('class', 'filter-checkmark');
-                checkMark.setAttribute('viewBox', '0 0 24 24');
-                checkMark.setAttribute('width', '12');
-                checkMark.setAttribute('height', '12');
-                checkMark.style.display = 'flex';
-
-                const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-                path.setAttribute('d', 'M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z');
-                path.setAttribute('fill', '#ffffff');
-                checkMark.appendChild(path);
-
-                // 클릭 이벤트
-                filterItem.addEventListener('click', () => {
-                    const isChecked = filterItem.dataset.checked === 'true';
-                    filterItem.dataset.checked = isChecked ? 'false' : 'true';
-                    checkMark.style.display = isChecked ? 'none' : 'flex';
-                    objectFilters[type] = !isChecked;
-                    this.updateObjectVisibility();
-                });
+                icon.src = noneImagePath;
+                icon.alt = 'No objects';
 
                 filterItem.appendChild(icon);
-                filterItem.appendChild(checkMark);
-
-                // 개수 표시 (비대화형이거나 개수 세지 않는 아이콘은 개수 표시 안 함)
-                if (!isNonInteractive && !isNonCountable && countInfo.total > 0) {
-                    const countDiv = document.createElement('div');
-                    countDiv.className = 'filter-count';
-                    countDiv.dataset.type = type;
-                    if (countInfo.remaining === 0) {
-                        countDiv.classList.add('all-collected');
-                    }
-                    countDiv.innerHTML = `<span class="remaining">${countInfo.remaining}</span>/${countInfo.total}`;
-                    filterItem.appendChild(countDiv);
-                }
-
                 container.appendChild(filterItem);
-            });
+            } else {
+                sortedTypes.forEach(type => {
+                    const filterItem = document.createElement('div');
+                    filterItem.className = 'filter-item';
+                    filterItem.dataset.type = type;
+                    filterItem.dataset.checked = 'true';
+
+                    const countInfo = objectCounts[type];
+                    const isNonInteractive = countInfo.isNonInteractive;
+                    const isNonCountable = countInfo.isNonCountable;
+
+                    // 비대화형이거나 개수 세지 않는 아이콘은 padding-bottom 없이
+                    if (isNonInteractive || isNonCountable) {
+                        filterItem.style.paddingBottom = '8px';
+                    }
+
+                    // 아이콘 이미지 (yishijie-icon- 또는 yishijie- 접두사 시도)
+                    const icon = document.createElement('img');
+                    icon.className = 'filter-icon';
+                    icon.src = `${ICON_PATH}yishijie-icon-${type}.png`;
+                    icon.onerror = () => {
+                        // yishijie-icon- 실패 시 yishijie- 시도
+                        icon.src = `${ICON_PATH}yishijie-${type}.png`;
+                        icon.onerror = () => {
+                            icon.style.display = 'none';
+                        };
+                    };
+
+                    // 체크 표시 SVG (우측 상단 라벨 형식)
+                    const checkMark = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                    checkMark.setAttribute('class', 'filter-checkmark');
+                    checkMark.setAttribute('viewBox', '0 0 24 24');
+                    checkMark.setAttribute('width', '12');
+                    checkMark.setAttribute('height', '12');
+                    checkMark.style.display = 'flex';
+
+                    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                    path.setAttribute('d', 'M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z');
+                    path.setAttribute('fill', '#ffffff');
+                    checkMark.appendChild(path);
+
+                    // 클릭 이벤트
+                    filterItem.addEventListener('click', () => {
+                        const isChecked = filterItem.dataset.checked === 'true';
+                        filterItem.dataset.checked = isChecked ? 'false' : 'true';
+                        checkMark.style.display = isChecked ? 'none' : 'flex';
+                        objectFilters[type] = !isChecked;
+                        this.updateObjectVisibility();
+                    });
+
+                    filterItem.appendChild(icon);
+                    filterItem.appendChild(checkMark);
+
+                    // 개수 표시 (비대화형이거나 개수 세지 않는 아이콘은 개수 표시 안 함)
+                    if (!isNonInteractive && !isNonCountable && countInfo.total > 0) {
+                        const countDiv = document.createElement('div');
+                        countDiv.className = 'filter-count';
+                        countDiv.dataset.type = type;
+                        if (countInfo.remaining === 0) {
+                            countDiv.classList.add('all-collected');
+                        }
+                        countDiv.innerHTML = `<span class="remaining">${countInfo.remaining}</span>/${countInfo.total}`;
+                        filterItem.appendChild(countDiv);
+                    }
+
+                    container.appendChild(filterItem);
+                });
+            }
         },
 
         // 특정 타입의 개수 업데이트 (오브젝트 클릭 시 호출)

@@ -867,7 +867,7 @@
 
         // 모바일 감지
         isMobile() {
-            return window.innerWidth <= 768;
+            return window.innerWidth <= 1200;
         },
 
         // 모바일 바텀시트 초기화
@@ -897,7 +897,7 @@
             }
 
             // 모바일 여부에 따라 클래스 토글 (뷰포트 크기만으로 판단)
-            const isMobileWidth = window.innerWidth <= 768;
+            const isMobileWidth = window.innerWidth <= 1200;
             if (isMobileWidth) {
                 panel.classList.add('mobile-bottomsheet');
             } else {
@@ -929,7 +929,7 @@
                     const panel = document.getElementById('map-select-panel');
                     if (!panel) return;
 
-                    const isMobileWidth = window.innerWidth <= 768;
+                    const isMobileWidth = window.innerWidth <= 1200;
                     if (isMobileWidth) {
                         panel.classList.add('mobile-bottomsheet');
                     } else {

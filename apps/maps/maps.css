@@ -352,8 +352,8 @@ body {
   background: rgba(255, 255, 255, 0.2);
 }
 
-/* 모바일 반응형 - 768px 이하 */
-@media screen and (max-width: 768px) {
+/* 모바일 반응형 - 1200px 이하 */
+@media screen and (max-width: 1200px) {
   /* 브레드크럼 표시 */
   .mobile-breadcrumb {
     display: flex;

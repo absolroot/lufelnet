@@ -47,7 +47,7 @@
   font-weight: 600;
 }
 
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 1201px) {
   #object-filter-panel h2 { display: none; }
 }
 
@@ -316,14 +316,8 @@
   margin-right: 8px;
 }
 
-/* 반응형 */
-@media screen and (max-width: 1024px) {
-  #object-filter-panel {
-    width: 250px;
-  }
-}
-
-@media screen and (max-width: 768px) {
+/* 반응형 - 1200px 이하에서 모바일 UI */
+@media screen and (max-width: 1200px) {
   /* 모바일에서 필터 패널 숨김 (바텀시트로만 동작) */
   #object-filter-panel {
     display: none;
@@ -482,7 +476,7 @@
 }
 
 /* 모바일 진행도 바 */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1200px) {
   #object-filter-panel.mobile-bottomsheet .map-progress-container {
     margin-bottom: 16px;
     padding: 10px;

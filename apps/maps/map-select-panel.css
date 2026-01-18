@@ -498,14 +498,8 @@
   100% { clip-path: polygon(0% 2%, 99% 7%, 94% 99%, 4% 94%);}
 }
 
-/* 반응형 */
-@media screen and (max-width: 1024px) {
-  #map-select-panel {
-    width: 280px;
-  }
-}
-
-@media screen and (max-width: 768px) {
+/* 반응형 - 1200px 이하에서 모바일 UI */
+@media screen and (max-width: 1200px) {
   /* 모바일에서 맵 선택 패널 숨김 (바텀시트로만 동작) */
   #map-select-panel {
     display: none;

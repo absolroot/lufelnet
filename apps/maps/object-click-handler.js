@@ -486,7 +486,7 @@
             // 3. 버튼 영역 추가 (PC: 맨 아래, 모바일: 맨 위)
             if (buttonArea) {
                 // PC (768px 이상): order 2로 맨 아래, 모바일: order -1로 맨 위
-                const isMobile = window.innerWidth < 768;
+                const isMobile = window.innerWidth < 1200;
                 buttonArea.style.order = isMobile ? '-1' : '2';
                 buttonArea.style.marginBottom = isMobile ? '16px' : '0';
                 buttonArea.style.marginTop = isMobile ? '0' : '16px';

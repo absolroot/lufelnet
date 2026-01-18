@@ -647,7 +647,7 @@
 
         // 모바일 감지
         isMobile() {
-            return window.innerWidth <= 768;
+            return window.innerWidth <= 1200;
         },
 
         // 모바일 바텀시트 초기화
@@ -677,7 +677,7 @@
             }
 
             // 모바일 여부에 따라 클래스 토글 (뷰포트 크기만으로 판단 - iPad 등 태블릿 대응)
-            const isMobileWidth = window.innerWidth <= 768;
+            const isMobileWidth = window.innerWidth <= 1200;
             if (isMobileWidth) {
                 panel.classList.add('mobile-bottomsheet');
             } else {
@@ -699,7 +699,7 @@
                     if (!panel) return;
 
                     // 리사이즈 시에는 뷰포트 크기만으로 판단 (device mode에서도 정상 동작)
-                    const isMobileWidth = window.innerWidth <= 768;
+                    const isMobileWidth = window.innerWidth <= 1200;
                     if (isMobileWidth) {
                         panel.classList.add('mobile-bottomsheet');
                     } else {
@@ -849,7 +849,7 @@
         // 모바일 환경 감지
         isMobile() {
             return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
-                || window.innerWidth <= 768;
+                || window.innerWidth <= 1200;
         },
 
         // 백업/복원 UI 초기화 (PC 전용)

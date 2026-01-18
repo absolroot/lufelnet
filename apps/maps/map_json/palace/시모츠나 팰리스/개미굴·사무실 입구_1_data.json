@@ -1,0 +1,35 @@
+{
+    "tiles": [
+        {
+            "image": "yx_zzs_bangongshi_2F.png",
+            "position": [
+                0,
+                0
+            ],
+            "ratio": 1,
+            "rotate": 0
+        }
+    ],
+    "objects": [
+        {
+            "sn": 8625006,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                183,
+                363
+            ],
+            "ratio": 0.325,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        }
+    ],
+    "enemies": [],
+    "map_size": [
+        588,
+        652
+    ]
+}

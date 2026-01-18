@@ -1,0 +1,1916 @@
+{
+    "tiles": [
+        {
+            "image": "map_bqg_sanlei1F_xiY1.png",
+            "position": [
+                1,
+                -72
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_bqg_sanlei1F_xiY2a.png",
+            "position": [
+                366,
+                164
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_bqg_sanlei1F_Y3.png",
+            "position": [
+                621,
+                238
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_bqg_sanlei1F_Y3_Z1.png",
+            "position": [
+                1138,
+                476
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_bqg_sanlei1F_beiY4.png",
+            "position": [
+                1056,
+                160
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_bqg_sanlei1F_beiZ2.png",
+            "position": [
+                663,
+                -138
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_bqg_sanlei1F_beiZ3_1.png",
+            "position": [
+                726,
+                -194
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_bqg_sanlei1F_beiZ3_2.png",
+            "position": [
+                473,
+                -198
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_bqg_sanlei1F_xiL1.png",
+            "position": [
+                166,
+                266
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_bqg_sanlei1F_xiY4.png",
+            "position": [
+                362,
+                416
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_bqg_sanlei1F_xiZ4.png",
+            "position": [
+                103,
+                494
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_bqg_sanlei1F_xiY2b.png",
+            "position": [
+                209,
+                858
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_bqg_sanlei1F_xiL2.png",
+            "position": [
+                537,
+                784
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_bqg_sanlei1F_xiZ5.png",
+            "position": [
+                748,
+                958
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_bqg_sanlei1F_xiZ1.png",
+            "position": [
+                675,
+                1356
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_bqg_sanlei1F_dongL1.png",
+            "position": [
+                1012,
+                722
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_bqg_sanlei1F_dongY4.png",
+            "position": [
+                919,
+                916
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_bqg_sanlei1F_dongZ2.png",
+            "position": [
+                1222,
+                952
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_bqg_sanlei1F_dongL3.png",
+            "position": [
+                1412,
+                912
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_bqg_sanlei1F_dongZ1.png",
+            "position": [
+                1504,
+                1066
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_bqg_sanlei1F_dongY2a.png",
+            "position": [
+                1381,
+                624
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_bqg_sanlei1F_dongL2.png",
+            "position": [
+                1427,
+                272
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_bqg_sanlei1F_dongZ5.png",
+            "position": [
+                1441,
+                34
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "objects": [
+        {
+            "sn": 8331101,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                218,
+                151
+            ],
+            "ratio": 1.4814814814814814,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8331104,
+            "image": "yishijie-icon-dianti01.png",
+            "position": [
+                207,
+                22
+            ],
+            "ratio": 1.0,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8331105,
+            "image": "yishijie-icon-dianti01.png",
+            "position": [
+                207,
+                92
+            ],
+            "ratio": 1.0,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8331120,
+            "image": "yishijie-icon-men-danxiang.png",
+            "position": [
+                403,
+                338
+            ],
+            "ratio": 1.1764705882352942,
+            "rotate": 270.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8331124,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                611,
+                408
+            ],
+            "ratio": 1.0,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8331147,
+            "image": "yishijie-icon-box-hexin-new.png",
+            "position": [
+                796,
+                116
+            ],
+            "ratio": 0.8333333333333334,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8331152,
+            "image": "yishijie-icon-box-hexin-new.png",
+            "position": [
+                565,
+                -1
+            ],
+            "ratio": 0.8333333333333334,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8331179,
+            "image": "yishijie-icon-men-level-a.png",
+            "position": [
+                230,
+                502
+            ],
+            "ratio": 1.25,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8331181,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                345,
+                291
+            ],
+            "ratio": 1.4814814814814814,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8331184,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                392,
+                537
+            ],
+            "ratio": 1.0,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8331206,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                207,
+                947
+            ],
+            "ratio": 1.0,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8331220,
+            "image": "yishijie-icon-men-jinzhi.png",
+            "position": [
+                403,
+                1087
+            ],
+            "ratio": 1.0,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8331223,
+            "image": "yishijie-icon-box-suo-new.png",
+            "position": [
+                288,
+                1251
+            ],
+            "ratio": 0.8333333333333334,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8331241,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                681,
+                900
+            ],
+            "ratio": 1.4814814814814814,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8331250,
+            "image": "yishijie-icon-suo-new.png",
+            "position": [
+                819,
+                958
+            ],
+            "ratio": 1.0526315789473684,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8331261,
+            "image": "yishijie-icon-men-level-s.png",
+            "position": [
+                819,
+                1368
+            ],
+            "ratio": 1.25,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8331264,
+            "image": "yishijie-icon-box-teshu-new.png",
+            "position": [
+                808,
+                1497
+            ],
+            "ratio": 0.8333333333333334,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8331281,
+            "image": "yishijie-icon-suo-new.png",
+            "position": [
+                1166,
+                958
+            ],
+            "ratio": 1.0526315789473684,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8331285,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                1189,
+                865
+            ],
+            "ratio": 1.0,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8331303,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                1085,
+                1028
+            ],
+            "ratio": 1.0,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8331321,
+            "image": "yishijie-icon-men-jinzhi.png",
+            "position": [
+                1363,
+                1263
+            ],
+            "ratio": 1.0,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8331323,
+            "image": "yishijie-icon-box-suo-new.png",
+            "position": [
+                1340,
+                1099
+            ],
+            "ratio": 0.8333333333333334,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8331341,
+            "image": "yishijie-icon-men-danxiang.png",
+            "position": [
+                1559,
+                923
+            ],
+            "ratio": 1.1764705882352942,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8331351,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                1629,
+                1192
+            ],
+            "ratio": 1.0,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8331352,
+            "image": "yishijie-icon-jiguan-yaoshi.png",
+            "position": [
+                1733,
+                1122
+            ],
+            "ratio": 1.0,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8331354,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                1525,
+                1122
+            ],
+            "ratio": 1.4814814814814814,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8331355,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                1548,
+                1274
+            ],
+            "ratio": 1.4814814814814814,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8331356,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                1698,
+                1274
+            ],
+            "ratio": 1.4814814814814814,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8331357,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                1686,
+                1099
+            ],
+            "ratio": 1.4814814814814814,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8331358,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                1594,
+                1204
+            ],
+            "ratio": 1.4814814814814814,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8331385,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                1432,
+                947
+            ],
+            "ratio": 1.0,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8331386,
+            "image": "yishijie-icon-jiguan-yaoshi.png",
+            "position": [
+                1501,
+                923
+            ],
+            "ratio": 1.0,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8331387,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                1409,
+                911
+            ],
+            "ratio": 1.4814814814814814,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8331395,
+            "image": "yishijie-icon-men-jinzhi.png",
+            "position": [
+                1432,
+                958
+            ],
+            "ratio": 1.0,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8331401,
+            "image": "yishijie-icon-men-jinzhi.png",
+            "position": [
+                1721,
+                373
+            ],
+            "ratio": 1.0,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8331402,
+            "image": "yishijie-icon-men-jinzhi.png",
+            "position": [
+                1790,
+                326
+            ],
+            "ratio": 1.0,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8331405,
+            "image": "yishijie-icon-jiguan-yaoshi.png",
+            "position": [
+                1767,
+                361
+            ],
+            "ratio": 1.0,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8331420,
+            "image": "yishijie-icon-men-jinzhi.png",
+            "position": [
+                1525,
+                45
+            ],
+            "ratio": 1.0,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8332022,
+            "image": "yishijie-icon-box-hexin-new.png",
+            "position": [
+                854,
+                841
+            ],
+            "ratio": 0.8333333333333334,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8332025,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                704,
+                748
+            ],
+            "ratio": 1.0,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8332026,
+            "image": "yishijie-icon-jiguan-yaoshi.png",
+            "position": [
+                750,
+                783
+            ],
+            "ratio": 1.0,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8332027,
+            "image": "yishijie-icon-men-level-a.png",
+            "position": [
+                1120,
+                736
+            ],
+            "ratio": 1.25,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8332105,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                1132,
+                443
+            ],
+            "ratio": 1.4814814814814814,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8332351,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                1293,
+                607
+            ],
+            "ratio": 1.0,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8332357,
+            "image": "yishijie-icon-men-jinzhi.png",
+            "position": [
+                1201,
+                595
+            ],
+            "ratio": 1.0,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8336103,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                1155,
+                233
+            ],
+            "ratio": 1.0,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8336106,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                1305,
+                174
+            ],
+            "ratio": 1.4814814814814814,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        }
+    ],
+    "enemies": [
+        {
+            "sn": 8331101,
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                114,
+                198
+            ],
+            "ratio": 0.4444444444444444,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8331102,
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                773,
+                162
+            ],
+            "ratio": 0.4444444444444444,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8331103,
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                611,
+                1052
+            ],
+            "ratio": 0.4444444444444444,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8331104,
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                1467,
+                1075
+            ],
+            "ratio": 0.4444444444444444,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8331215,
+            "image": "yishijie-icon-boss01-2.png",
+            "position": [
+                750,
+                -130
+            ],
+            "ratio": 0.6557377049180327,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": {
+                "instSn": 20612,
+                "enemies": [
+                    [
+                        {
+                            "sn": 203461,
+                            "name": "오로바스",
+                            "adapt": {
+                                "약": [],
+                                "내": [],
+                                "무": [],
+                                "반": [],
+                                "흡": []
+                            },
+                            "level": "25",
+                            "stat": {
+                                "HP": 2804.3346,
+                                "HP 계산식": "(2147.27 * (1 + 0.31) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 456.3523,
+                                "공격력 계산식": "(349.43 * (1 + 0.31) + 0) * (1 + 0)",
+                                "방어력": 811.844,
+                                "방어력 계산식": "(811.84 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.125,
+                                "효과 명중 계산식": "(0.12 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.0,
+                                "효과 저항 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 0,
+                                "다운 수치 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 73.5,
+                                "속도 계산식": "(73.5 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 0.204,
+                                "대미지 보너스 계산식": "(0.2 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": 105,
+                                    "name": "마하라기",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "모든 적에게 공격력 39.8%의 화염 속성 대미지를 주고, 22.1%의 기본 확률로 적을 2턴 동안 화상 상태에 빠뜨린다."
+                                    },
+                                    "cost": "SP 19"
+                                },
+                                {
+                                    "sn": 1405,
+                                    "name": "스쿠카쟈",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "동료 1명의 효과 명중, 효과 저항이 7.0% 증가하고, 자신의 효과 명중 25%마다 1.2% 추가 증가한다. 상한은 4.8%이며, 효과는 3턴 동안 지속된다."
+                                    },
+                                    "cost": "SP 22"
+                                },
+                                {
+                                    "sn": 1408,
+                                    "name": "마하라쿠카쟈",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "모든 동료의 방어력이 12.2% 증가하고, 자신의 방어력 500마다 2.0% 추가 증가한다. 상한은 8.1%이며, 효과는 3턴 동안 지속된다."
+                                    },
+                                    "cost": "SP 22"
+                                }
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "sn": 203462,
+                            "name": "엔젤",
+                            "adapt": {
+                                "약": [],
+                                "내": [],
+                                "무": [],
+                                "반": [],
+                                "흡": []
+                            },
+                            "level": "25",
+                            "stat": {
+                                "HP": 2399.3701,
+                                "HP 계산식": "(1837.19 * (1 + 0.31) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 346.8279,
+                                "공격력 계산식": "(265.56 * (1 + 0.31) + 0) * (1 + 0)",
+                                "방어력": 404.339,
+                                "방어력 계산식": "(404.34 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.125,
+                                "효과 명중 계산식": "(0.12 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.0,
+                                "효과 저항 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 0,
+                                "다운 수치 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 69.417,
+                                "속도 계산식": "(69.42 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 0.204,
+                                "대미지 보너스 계산식": "(0.2 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": 701,
+                                    "name": "코우하",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "1명의 적에게 공격력 82.3%의 축복 속성 대미지를 주고, 자신은 축복 효과 0~1개를 획득한다."
+                                    },
+                                    "cost": "SP 19"
+                                },
+                                {
+                                    "sn": 1501,
+                                    "name": "디아",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "동료 1명이 공격력 24.8%+81의 생명을 회복한다."
+                                    },
+                                    "cost": "SP 23"
+                                }
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "sn": 203463,
+                            "name": "엔젤",
+                            "adapt": {
+                                "약": [],
+                                "내": [],
+                                "무": [],
+                                "반": [],
+                                "흡": []
+                            },
+                            "level": "25",
+                            "stat": {
+                                "HP": 2399.3701,
+                                "HP 계산식": "(1837.19 * (1 + 0.31) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 346.8279,
+                                "공격력 계산식": "(265.56 * (1 + 0.31) + 0) * (1 + 0)",
+                                "방어력": 404.339,
+                                "방어력 계산식": "(404.34 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.125,
+                                "효과 명중 계산식": "(0.12 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.0,
+                                "효과 저항 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 0,
+                                "다운 수치 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 69.417,
+                                "속도 계산식": "(69.42 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 0.204,
+                                "대미지 보너스 계산식": "(0.2 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": 701,
+                                    "name": "코우하",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "1명의 적에게 공격력 82.3%의 축복 속성 대미지를 주고, 자신은 축복 효과 0~1개를 획득한다."
+                                    },
+                                    "cost": "SP 19"
+                                },
+                                {
+                                    "sn": 1501,
+                                    "name": "디아",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "동료 1명이 공격력 24.8%+81의 생명을 회복한다."
+                                    },
+                                    "cost": "SP 23"
+                                }
+                            ]
+                        }
+                    ]
+                ],
+                "tutorial": {
+                    "sn": 0,
+                    "title": "",
+                    "content": ""
+                }
+            }
+        },
+        {
+            "sn": 8331225,
+            "image": "yishijie-icon-boss01.png",
+            "position": [
+                819,
+                1251
+            ],
+            "ratio": 0.6557377049180327,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": {
+                "instSn": 20811,
+                "enemies": [
+                    [
+                        {
+                            "sn": 203871,
+                            "name": "괴상한 야크시니",
+                            "adapt": {
+                                "약": [],
+                                "내": [],
+                                "무": [],
+                                "반": [],
+                                "흡": []
+                            },
+                            "level": "28",
+                            "stat": {
+                                "HP": 7614.81,
+                                "HP 계산식": "(5670.0 * (1 + 0.34) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 418.092,
+                                "공격력 계산식": "(311.31 * (1 + 0.34) + 0) * (1 + 0)",
+                                "방어력": 831.029,
+                                "방어력 계산식": "(831.03 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.14,
+                                "효과 명중 계산식": "(0.14 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.24,
+                                "효과 저항 계산식": "(0.24 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 1.0,
+                                "다운 수치 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 74.4,
+                                "속도 계산식": "(74.4 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 0.228,
+                                "대미지 보너스 계산식": "(0.23 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": 2136,
+                                    "name": "진·히스테리 싸대기",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "단일 공격, 100% 확률로 목표물이 광노 상태가 된다."
+                                    },
+                                    "cost": "SP 24"
+                                },
+                                {
+                                    "sn": 2137,
+                                    "name": "진·귀신락",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "광역 공격, 20% 확률로 광노 상태가 된다."
+                                    },
+                                    "cost": "SP 24"
+                                },
+                                {
+                                    "sn": 2139,
+                                    "name": "진·선전 포고",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "광역, 100% 확률로 아군과 목표물 모두 광노 상태가 된다."
+                                    },
+                                    "cost": "SP 24"
+                                }
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "sn": 203872,
+                            "name": "네코마타",
+                            "adapt": {
+                                "약": [],
+                                "내": [],
+                                "무": [],
+                                "반": [],
+                                "흡": []
+                            },
+                            "level": "28",
+                            "stat": {
+                                "HP": 6575.328,
+                                "HP 계산식": "(4896.0 * (1 + 0.34) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 476.6251,
+                                "공격력 계산식": "(354.9 * (1 + 0.34) + 0) * (1 + 0)",
+                                "방어력": 409.359,
+                                "방어력 계산식": "(409.36 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.14,
+                                "효과 명중 계산식": "(0.14 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.096,
+                                "효과 저항 계산식": "(0.1 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 0,
+                                "다운 수치 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 70.267,
+                                "속도 계산식": "(70.27 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 0.228,
+                                "대미지 보너스 계산식": "(0.23 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": 1036,
+                                    "name": "히스테리 싸대기",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "1명의 적에게 공격력 61.8%의 물리 속성 대미지를 주고, 2턴 동안 9.3%의 기본 확률로 적을 광노 상태에 빠뜨린다."
+                                    },
+                                    "cost": "체력 7.0%"
+                                }
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "sn": 203873,
+                            "name": "네코마타",
+                            "adapt": {
+                                "약": [],
+                                "내": [],
+                                "무": [],
+                                "반": [],
+                                "흡": []
+                            },
+                            "level": "28",
+                            "stat": {
+                                "HP": 6575.328,
+                                "HP 계산식": "(4896.0 * (1 + 0.34) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 476.6251,
+                                "공격력 계산식": "(354.9 * (1 + 0.34) + 0) * (1 + 0)",
+                                "방어력": 409.359,
+                                "방어력 계산식": "(409.36 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.14,
+                                "효과 명중 계산식": "(0.14 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.096,
+                                "효과 저항 계산식": "(0.1 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 0,
+                                "다운 수치 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 70.267,
+                                "속도 계산식": "(70.27 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 0.228,
+                                "대미지 보너스 계산식": "(0.23 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": 1036,
+                                    "name": "히스테리 싸대기",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "1명의 적에게 공격력 61.8%의 물리 속성 대미지를 주고, 2턴 동안 9.3%의 기본 확률로 적을 광노 상태에 빠뜨린다."
+                                    },
+                                    "cost": "체력 7.0%"
+                                }
+                            ]
+                        }
+                    ]
+                ],
+                "tutorial": {
+                    "sn": 203871,
+                    "title": "엘리트 섀도 능력",
+                    "content": "1. 야크시니가 2턴마다 「진·선전 포고」를 시전합니다.\n「진·선전 포고」: 높은 확률로 모든 유닛을 <color=#ff3b37>「광노」</color> 상태에 진입시킵니다.\n<color=#ff3b37>「광노」</color>: 움직일 수 없으며, <color=#ff3b37>제어를 받지 않고 일반공격을 사용</color>합니다. 공격력이 비교적 큰 폭으로 증가하고, 방어력이 비교적 큰 폭으로 감소합니다."
+                }
+            }
+        },
+        {
+            "sn": 8331250,
+            "image": "yishijie-icon-boss01.png",
+            "position": [
+                1305,
+                1216
+            ],
+            "ratio": 0.6557377049180327,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": {
+                "instSn": 20812,
+                "enemies": [
+                    [
+                        {
+                            "sn": 203891,
+                            "name": "괴상한 야크시니",
+                            "adapt": {
+                                "약": [],
+                                "내": [],
+                                "무": [],
+                                "반": [],
+                                "흡": []
+                            },
+                            "level": "28",
+                            "stat": {
+                                "HP": 7614.81,
+                                "HP 계산식": "(5670.0 * (1 + 0.34) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 313.569,
+                                "공격력 계산식": "(233.48 * (1 + 0.34) + 0) * (1 + 0)",
+                                "방어력": 831.029,
+                                "방어력 계산식": "(831.03 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.14,
+                                "효과 명중 계산식": "(0.14 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.24,
+                                "효과 저항 계산식": "(0.24 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 1.0,
+                                "다운 수치 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 74.4,
+                                "속도 계산식": "(74.4 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 0.228,
+                                "대미지 보너스 계산식": "(0.23 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": 2136,
+                                    "name": "진·히스테리 싸대기",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "단일 공격, 100% 확률로 목표물이 광노 상태가 된다."
+                                    },
+                                    "cost": "SP 24"
+                                },
+                                {
+                                    "sn": 2137,
+                                    "name": "진·귀신락",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "광역 공격, 20% 확률로 광노 상태가 된다."
+                                    },
+                                    "cost": "SP 24"
+                                },
+                                {
+                                    "sn": 2138,
+                                    "name": "진·선전 포고",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "광역, 100% 확률로 모든 목표물이 광노 상태가 된다."
+                                    },
+                                    "cost": "SP 24"
+                                },
+                                {
+                                    "sn": 2140,
+                                    "name": "광노!",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "자신이 광노 상태가 된다."
+                                    },
+                                    "cost": "SP 24"
+                                }
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "sn": 203892,
+                            "name": "오로바스",
+                            "adapt": {
+                                "약": [],
+                                "내": [],
+                                "무": [],
+                                "반": [],
+                                "흡": []
+                            },
+                            "level": "28",
+                            "stat": {
+                                "HP": 6575.328,
+                                "HP 계산식": "(4896.0 * (1 + 0.34) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 476.6251,
+                                "공격력 계산식": "(354.9 * (1 + 0.34) + 0) * (1 + 0)",
+                                "방어력": 409.359,
+                                "방어력 계산식": "(409.36 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.14,
+                                "효과 명중 계산식": "(0.14 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.096,
+                                "효과 저항 계산식": "(0.1 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 0,
+                                "다운 수치 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 70.267,
+                                "속도 계산식": "(70.27 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 0.228,
+                                "대미지 보너스 계산식": "(0.23 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": 105,
+                                    "name": "마하라기",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "모든 적에게 공격력 39.8%의 화염 속성 대미지를 주고, 22.1%의 기본 확률로 적을 2턴 동안 화상 상태에 빠뜨린다."
+                                    },
+                                    "cost": "SP 19"
+                                }
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "sn": 203893,
+                            "name": "오로바스",
+                            "adapt": {
+                                "약": [],
+                                "내": [],
+                                "무": [],
+                                "반": [],
+                                "흡": []
+                            },
+                            "level": "28",
+                            "stat": {
+                                "HP": 6575.328,
+                                "HP 계산식": "(4896.0 * (1 + 0.34) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 476.6251,
+                                "공격력 계산식": "(354.9 * (1 + 0.34) + 0) * (1 + 0)",
+                                "방어력": 409.359,
+                                "방어력 계산식": "(409.36 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.14,
+                                "효과 명중 계산식": "(0.14 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.096,
+                                "효과 저항 계산식": "(0.1 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 0,
+                                "다운 수치 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 70.267,
+                                "속도 계산식": "(70.27 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 0.228,
+                                "대미지 보너스 계산식": "(0.23 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": 105,
+                                    "name": "마하라기",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "모든 적에게 공격력 39.8%의 화염 속성 대미지를 주고, 22.1%의 기본 확률로 적을 2턴 동안 화상 상태에 빠뜨린다."
+                                    },
+                                    "cost": "SP 19"
+                                },
+                                {
+                                    "sn": 1401,
+                                    "name": "데카쟈",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "모든 적의 속성 증가 효과 1개를 제거한다."
+                                    },
+                                    "cost": "SP skillLv*-1+28"
+                                }
+                            ]
+                        }
+                    ]
+                ],
+                "tutorial": {
+                    "sn": 203891,
+                    "title": "엘리트 섀도 능력",
+                    "content": "1. 야크시니는 2턴마다 자신을 <color=#ff3b37>「광노」</color> 상태에 진입하게 하고 임의의 괴도 1명을 선택합니다. 다음 턴에 선택한 괴도에게 추가 물리 대미지를 줍니다.\n<color=#ff3b37>「광노」</color>: 움직일 수 없으며, <color=#ff3b37>제어를 받지 않고 일반공격을 사용</color>합니다. 공격력이 비교적 큰 폭으로 증가하고, 방어력이 비교적 큰 폭으로 감소합니다."
+                }
+            }
+        },
+        {
+            "sn": 8331266,
+            "image": "yishijie-icon-boss01.png",
+            "position": [
+                1513,
+                162
+            ],
+            "ratio": 0.6557377049180327,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": {
+                "instSn": 20813,
+                "enemies": [
+                    [
+                        {
+                            "sn": 203911,
+                            "name": "괴상한 야크시니",
+                            "adapt": {
+                                "약": [],
+                                "내": [],
+                                "무": [],
+                                "반": [],
+                                "흡": []
+                            },
+                            "level": "28",
+                            "stat": {
+                                "HP": 8350.774,
+                                "HP 계산식": "(6218.0 * (1 + 0.34) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 501.7104,
+                                "공격력 계산식": "(373.57 * (1 + 0.34) + 0) * (1 + 0)",
+                                "방어력": 767.009,
+                                "방어력 계산식": "(767.01 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.14,
+                                "효과 명중 계산식": "(0.14 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.24,
+                                "효과 저항 계산식": "(0.24 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 1.0,
+                                "다운 수치 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 74.4,
+                                "속도 계산식": "(74.4 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 0.228,
+                                "대미지 보너스 계산식": "(0.23 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": 2136,
+                                    "name": "진·히스테리 싸대기",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "단일 공격, 100% 확률로 목표물이 광노 상태가 된다."
+                                    },
+                                    "cost": "SP 24"
+                                },
+                                {
+                                    "sn": 2137,
+                                    "name": "진·귀신락",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "광역 공격, 20% 확률로 광노 상태가 된다."
+                                    },
+                                    "cost": "SP 24"
+                                },
+                                {
+                                    "sn": 2138,
+                                    "name": "진·선전 포고",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "광역, 100% 확률로 모든 목표물이 광노 상태가 된다."
+                                    },
+                                    "cost": "SP 24"
+                                }
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "sn": 203912,
+                            "name": "엔젤",
+                            "adapt": {
+                                "약": [],
+                                "내": [],
+                                "무": [],
+                                "반": [],
+                                "흡": []
+                            },
+                            "level": "28",
+                            "stat": {
+                                "HP": 8350.774,
+                                "HP 계산식": "(6218.0 * (1 + 0.34) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 752.5656,
+                                "공격력 계산식": "(560.36 * (1 + 0.34) + 0) * (1 + 0)",
+                                "방어력": 767.009,
+                                "방어력 계산식": "(767.01 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.14,
+                                "효과 명중 계산식": "(0.14 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.24,
+                                "효과 저항 계산식": "(0.24 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 0,
+                                "다운 수치 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 74.4,
+                                "속도 계산식": "(74.4 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 0.228,
+                                "대미지 보너스 계산식": "(0.23 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": 701,
+                                    "name": "코우하",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "1명의 적에게 공격력 82.3%의 축복 속성 대미지를 주고, 자신은 축복 효과 0~1개를 획득한다."
+                                    },
+                                    "cost": "SP 19"
+                                },
+                                {
+                                    "sn": 1501,
+                                    "name": "디아",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "동료 1명이 공격력 24.8%+81의 생명을 회복한다."
+                                    },
+                                    "cost": "SP 23"
+                                }
+                            ]
+                        }
+                    ]
+                ],
+                "tutorial": {
+                    "sn": 203911,
+                    "title": "엘리트 섀도 능력",
+                    "content": "1. 야크시니의 HP가 50% 미만일 시 「진·선전 포고」를 시전하고 1턴 동안 「카운터 자세」에 진입합니다.\n「진·선전 포고」: 높은 확률로 괴도 측 전체를 <color=#ff3b37>「광노」</color> 상태에 진입시킵니다.\n「광노」: 움직일 수 없으며, <color=#ff3b37>제어를 받지 않고 일반공격을 사용</color>합니다. 공격력이 비교적 큰 폭으로 증가하고, 방어력이 비교적 큰 폭으로 감소합니다."
+                }
+            }
+        }
+    ],
+    "map_size": [
+        1810,
+        1781
+    ]
+}

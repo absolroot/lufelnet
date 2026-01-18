@@ -387,6 +387,16 @@
                 wheelZoomText.textContent = window.MapsI18n.getText(lang, 'wheelZoom');
             }
 
+            const keyboardMoveText = document.getElementById('keyboard-move-text');
+            if (keyboardMoveText) {
+                keyboardMoveText.textContent = window.MapsI18n.getText(lang, 'keyboardMove');
+            }
+
+            const keyboardZoomText = document.getElementById('keyboard-zoom-text');
+            if (keyboardZoomText) {
+                keyboardZoomText.textContent = window.MapsI18n.getText(lang, 'keyboardZoom');
+            }
+
             // 백업/복원 UI 번역
             const backupRestoreTitle = document.getElementById('backup-restore-title');
             if (backupRestoreTitle) {

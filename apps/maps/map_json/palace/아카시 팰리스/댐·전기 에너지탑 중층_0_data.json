@@ -1,0 +1,54 @@
+{
+    "tiles": [
+        {
+            "image": "map_sb_qushuita03-zhongceng-01.png",
+            "position": [
+                -27,
+                -25
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "objects": [
+        {
+            "sn": 8548102,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                798,
+                304
+            ],
+            "ratio": 0.7407407407407407,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8548154,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                455,
+                289
+            ],
+            "ratio": 0.5,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        }
+    ],
+    "enemies": [],
+    "map_size": [
+        928,
+        840
+    ]
+}

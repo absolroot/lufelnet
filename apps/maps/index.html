@@ -67,6 +67,27 @@ alternate_urls:
                 </svg>
                 <span id="wheel-zoom-text">마우스 휠: 줌</span>
             </div>
+            <div class="info-item">
+                <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="6" width="6" height="6" rx="1"></rect>
+                    <rect x="9" y="6" width="6" height="6" rx="1"></rect>
+                    <rect x="16" y="6" width="6" height="6" rx="1"></rect>
+                    <rect x="9" y="13" width="6" height="6" rx="1"></rect>
+                    <path d="M5 9h0M12 9h0M19 9h0M12 16h0"></path>
+                </svg>
+                <span id="keyboard-move-text">WASD / 방향키: 이동</span>
+            </div>
+            <div class="info-item">
+                <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="4" y="4" width="7" height="7" rx="1"></rect>
+                    <rect x="13" y="4" width="7" height="7" rx="1"></rect>
+                    <path d="M7.5 7.5h0M16.5 7.5h0"></path>
+                    <line x1="6" y1="7.5" x2="9" y2="7.5"></line>
+                    <line x1="15" y1="7.5" x2="18" y2="7.5"></line>
+                    <line x1="16.5" y1="6" x2="16.5" y2="9"></line>
+                </svg>
+                <span id="keyboard-zoom-text">+/-: 줌</span>
+            </div>
         </div>
         <!-- language selector -->
         <div class="language-selector-container">
@@ -113,17 +134,11 @@ alternate_urls:
     <!-- 모바일용 하단 플로팅 버튼 -->
     <div id="mobile-floating-buttons" class="mobile-floating-buttons">
         <button id="mobile-filter-btn" class="mobile-fab" aria-label="오브젝트 필터">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"></path>
-            </svg>
+            <img src="{{ site.baseurl }}/apps/maps/fenbaoxiazai-icon-tongyong-new.png" alt="필터" class="mobile-fab-icon">
             <span>필터</span>
         </button>
         <button id="mobile-map-btn" class="mobile-fab" aria-label="맵 선택">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
-                <line x1="8" y1="2" x2="8" y2="18"></line>
-                <line x1="16" y1="6" x2="16" y2="22"></line>
-            </svg>
+            <img src="{{ site.baseurl }}/apps/maps/fenbaoxiazai-icon-ditu-new.png" alt="맵" class="mobile-fab-icon">
             <span>맵</span>
         </button>
     </div>

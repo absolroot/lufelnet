@@ -1,0 +1,19 @@
+{
+    "tiles": [
+        {
+            "image": "map_ysc_shulin.png",
+            "position": [
+                0,
+                0
+            ],
+            "ratio": 1,
+            "rotate": 0
+        }
+    ],
+    "objects": [],
+    "enemies": [],
+    "map_size": [
+        604,
+        860
+    ]
+}

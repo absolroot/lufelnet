@@ -1,0 +1,65 @@
+{
+    "tiles": [
+        {
+            "image": "map_ysc_damen.png",
+            "position": [
+                0,
+                0
+            ],
+            "ratio": 1,
+            "rotate": 0
+        }
+    ],
+    "objects": [
+        {
+            "sn": 8401001,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                401,
+                717
+            ],
+            "ratio": 0.275,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8401007,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                369,
+                166
+            ],
+            "ratio": 0.275,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8401009,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                323,
+                145
+            ],
+            "ratio": 0.275,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        }
+    ],
+    "enemies": [],
+    "map_size": [
+        516,
+        864
+    ]
+}

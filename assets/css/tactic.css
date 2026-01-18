@@ -1,8 +1,6 @@
-html { overscroll-behavior-y: none; }
-
 body { /* background: url("{{ site.baseurl }}/assets/img/ui/insidebg.jpg") no-repeat center center;*/
-    background-size: cover; color: rgba(255, 255, 255, 0.9); margin: 0; padding: 0px; line-height: 1.5; overflow-x: hidden; /* 가로 스크롤 방지 */
-    overscroll-behavior-y: none; -webkit-overflow-scrolling: auto; }
+    background-size: cover; color: rgba(255, 255, 255, 0.9); margin: 0; padding: 0px; line-height: 1.5;
+}
 
   @media (max-width: 1200px) { .main-wrapper {   width: calc(100% - 32px); 
     }

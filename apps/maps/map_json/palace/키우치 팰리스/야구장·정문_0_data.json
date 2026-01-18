@@ -1,0 +1,23 @@
+{
+    "tiles": [
+        {
+            "image": "map_bqg_teshu02.png",
+            "position": [
+                0,
+                1
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "objects": [],
+    "enemies": [],
+    "map_size": [
+        769,
+        1338
+    ]
+}

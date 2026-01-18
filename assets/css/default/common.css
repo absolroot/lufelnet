@@ -232,8 +232,8 @@ body { background-color: #222222; color: #ffffff; margin: 0; padding: 0; line-he
 
 
 
-body { caret-color: transparent; 
-    user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; overflow-y: overlay; /* 모던 브라우저에서 콘텐츠 위에 스크롤바 표시 */
+body { caret-color: transparent;
+    user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; overflow-y: auto; /* overlay는 Chrome 114 이후 deprecated */
 }
 
 /* 입력이 필요한 요소들은 예외 처리 */

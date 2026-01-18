@@ -1,0 +1,50 @@
+{
+    "tiles": [
+        {
+            "image": "map_yx_pmk_kong04.png",
+            "position": [
+                0,
+                0
+            ],
+            "ratio": 1,
+            "rotate": 0
+        }
+    ],
+    "objects": [
+        {
+            "sn": 8618013,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                137,
+                234
+            ],
+            "ratio": 0.325,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8618014,
+            "image": "yishijie-icon-box-teshu-new.png",
+            "position": [
+                580,
+                493
+            ],
+            "ratio": 0.2708333333333333,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        }
+    ],
+    "enemies": [],
+    "map_size": [
+        628,
+        748
+    ]
+}

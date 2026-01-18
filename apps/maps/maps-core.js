@@ -49,6 +49,8 @@
     let currentMapFileName = null; // 현재 로드된 맵 파일명
     let mapVersions = []; // 사용 가능한 맵 버전 목록
     let currentMapVersion = 0; // 현재 선택된 버전
+    let currentMapId = null; // 현재 맵 ID (위치 저장용)
+    let positionSaveTimeout = null; // 위치 저장 디바운스용
 
     // 텍스처 메모리 캐시 (세션 동안 유지)
     const textureCache = new Map();
@@ -154,6 +156,7 @@
 
             app.view.addEventListener('mouseup', () => {
                 isDragging = false;
+                this.schedulePositionSave();
             });
 
             app.view.addEventListener('mouseleave', () => {
@@ -164,6 +167,7 @@
                 e.preventDefault();
                 const delta = e.deltaY > 0 ? 0.9 : 1.1;
                 this.zoomAtPoint(e.clientX, e.clientY, delta);
+                this.schedulePositionSave();
             });
 
             let touchStartDistance = 0;
@@ -211,6 +215,112 @@
             app.view.addEventListener('touchend', () => {
                 isDragging = false;
                 touchStartDistance = 0;
+                this.schedulePositionSave();
+            });
+
+            // 키보드 이벤트 설정
+            this.setupKeyboardEvents();
+        },
+
+        // 키보드 이벤트 설정
+        setupKeyboardEvents() {
+            const MOVE_SPEED = 40;
+            const ZOOM_FACTOR = 1.15;
+            const pressedKeys = new Set();
+            let animationId = null;
+
+            const handleMovement = () => {
+                let moved = false;
+
+                if (pressedKeys.has('w') || pressedKeys.has('arrowup')) {
+                    mapContainer.y += MOVE_SPEED;
+                    moved = true;
+                }
+                if (pressedKeys.has('s') || pressedKeys.has('arrowdown')) {
+                    mapContainer.y -= MOVE_SPEED;
+                    moved = true;
+                }
+                if (pressedKeys.has('a') || pressedKeys.has('arrowleft')) {
+                    mapContainer.x += MOVE_SPEED;
+                    moved = true;
+                }
+                if (pressedKeys.has('d') || pressedKeys.has('arrowright')) {
+                    mapContainer.x -= MOVE_SPEED;
+                    moved = true;
+                }
+
+                if (moved && pressedKeys.size > 0) {
+                    animationId = requestAnimationFrame(handleMovement);
+                }
+            };
+
+            document.addEventListener('keydown', (e) => {
+                // 입력 필드에 포커스가 있으면 무시
+                if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+                const key = e.key.toLowerCase();
+
+                // 이동 키
+                if (['w', 'a', 's', 'd', 'arrowup', 'arrowdown', 'arrowleft', 'arrowright'].includes(key)) {
+                    e.preventDefault();
+                    if (!pressedKeys.has(key)) {
+                        pressedKeys.add(key);
+                        if (!animationId) {
+                            animationId = requestAnimationFrame(handleMovement);
+                        }
+                    }
+                }
+
+                // 줌 키
+                if (key === '=' || key === '+' || key === 'numpadadd') {
+                    e.preventDefault();
+                    const centerX = window.innerWidth / 2;
+                    const centerY = window.innerHeight / 2;
+                    this.zoomAtPoint(centerX, centerY, ZOOM_FACTOR);
+                    this.schedulePositionSave();
+                }
+                if (key === '-' || key === 'numpadsubtract') {
+                    e.preventDefault();
+                    const centerX = window.innerWidth / 2;
+                    const centerY = window.innerHeight / 2;
+                    this.zoomAtPoint(centerX, centerY, 1 / ZOOM_FACTOR);
+                    this.schedulePositionSave();
+                }
+
+                // 리셋 키 (0 또는 Home)
+                if (key === '0' || key === 'home') {
+                    e.preventDefault();
+                    if (currentMapData && currentMapData.map_size) {
+                        zoomLevel = 1;
+                        this.centerMap(currentMapData.map_size);
+                        this.schedulePositionSave();
+                    }
+                }
+            });
+
+            document.addEventListener('keyup', (e) => {
+                const key = e.key.toLowerCase();
+                const wasMovementKey = ['w', 'a', 's', 'd', 'arrowup', 'arrowdown', 'arrowleft', 'arrowright'].includes(key);
+                pressedKeys.delete(key);
+
+                if (pressedKeys.size === 0 && animationId) {
+                    cancelAnimationFrame(animationId);
+                    animationId = null;
+                }
+
+                // 이동 키에서 손을 뗐을 때 위치 저장
+                if (wasMovementKey) {
+                    this.schedulePositionSave();
+                }
+            });
+
+            // 창 포커스 잃으면 키 초기화
+            window.addEventListener('blur', () => {
+                pressedKeys.clear();
+                if (animationId) {
+                    cancelAnimationFrame(animationId);
+                    animationId = null;
+                }
             });
         },
 
@@ -237,26 +347,100 @@
         centerMap(mapSize) {
             const centerX = window.innerWidth / 2;
             const centerY = window.innerHeight / 2;
-            
+
             // 맵의 가로세로 비율 확인
             const mapAspectRatio = mapSize[0] / mapSize[1];
             const isWideMap = mapAspectRatio >= 2.5; // 가로가 세로보다 2.5배 이상 큰 경우
-            
+
             // 맵 이미지가 화면 세로의 최소 비율을 채우도록 최소 줌 레벨 계산
             // 가로가 긴 맵(2.5배 이상)은 25%, 일반 맵은 50%
             const minHeightRatio = isWideMap ? 0.25 : 0.7;
             const screenHeight = window.innerHeight;
             const minRequiredHeight = screenHeight * minHeightRatio;
             const minZoomLevel = minRequiredHeight / mapSize[1];
-            
+
             // 이전 줌 레벨과 최소 줌 레벨 중 더 큰 값을 사용 (이전 확대를 기반으로 하되, 최소 비율은 채워야 함)
             if (zoomLevel < minZoomLevel) {
                 zoomLevel = minZoomLevel;
                 mapContainer.scale.set(zoomLevel);
             }
-            
+
             mapContainer.x = centerX - (mapSize[0] / 2) * zoomLevel;
             mapContainer.y = centerY - (mapSize[1] / 2) * zoomLevel;
+        },
+
+        // 현재 맵 ID 설정 (외부에서 호출)
+        setCurrentMapId(mapId) {
+            // 이전 맵의 위치 저장
+            if (currentMapId && currentMapId !== mapId) {
+                this.saveMapPosition(currentMapId);
+            }
+            currentMapId = mapId;
+        },
+
+        // 현재 맵 ID 조회
+        getCurrentMapId() {
+            return currentMapId;
+        },
+
+        // 맵 위치/줌 저장 (localStorage)
+        saveMapPosition(mapId) {
+            if (!mapId || !mapContainer) return;
+
+            try {
+                const positionData = {
+                    x: mapContainer.x,
+                    y: mapContainer.y,
+                    zoom: zoomLevel,
+                    timestamp: Date.now()
+                };
+                localStorage.setItem(`map_position_${mapId}`, JSON.stringify(positionData));
+            } catch (e) {
+                console.warn('맵 위치 저장 실패:', e);
+            }
+        },
+
+        // 맵 위치/줌 복원 (localStorage)
+        restoreMapPosition(mapId) {
+            if (!mapId || !mapContainer) return false;
+
+            try {
+                const saved = localStorage.getItem(`map_position_${mapId}`);
+                if (!saved) return false;
+
+                const positionData = JSON.parse(saved);
+
+                // 30일 이상 된 데이터는 무시
+                const maxAge = 30 * 24 * 60 * 60 * 1000;
+                if (Date.now() - positionData.timestamp > maxAge) {
+                    localStorage.removeItem(`map_position_${mapId}`);
+                    return false;
+                }
+
+                // 위치/줌 복원
+                mapContainer.x = positionData.x;
+                mapContainer.y = positionData.y;
+                zoomLevel = positionData.zoom;
+                mapContainer.scale.set(zoomLevel);
+
+                return true;
+            } catch (e) {
+                console.warn('맵 위치 복원 실패:', e);
+                return false;
+            }
+        },
+
+        // 위치 변경 시 디바운스로 자동 저장
+        schedulePositionSave() {
+            if (!currentMapId) return;
+
+            if (positionSaveTimeout) {
+                clearTimeout(positionSaveTimeout);
+            }
+
+            positionSaveTimeout = setTimeout(() => {
+                this.saveMapPosition(currentMapId);
+            }, 500);
         },
 
         // 텍스처 캐시 통계 조회
@@ -1102,7 +1286,10 @@
 
                 await this.loadObjects(allObjects);
 
-                this.centerMap(data.map_size);
+                // 저장된 위치가 있으면 복원, 없으면 중앙 정렬
+                if (!currentMapId || !this.restoreMapPosition(currentMapId)) {
+                    this.centerMap(data.map_size);
+                }
 
                 if (window.ObjectFilterPanel) {
                     // objectSprites에서 null이 아닌 유효한 스프라이트만 필터링

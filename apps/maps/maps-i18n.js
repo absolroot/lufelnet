@@ -20,7 +20,10 @@
             resetFilter: '초기화',
             mapSelect: '맵 선택',
             map: '맵',
-            filter: '필터'
+            filter: '필터',
+            dataManagement: '데이터 관리',
+            backup: '백업',
+            restore: '복원'
         },
         en: {
             loading: 'Loading map...',
@@ -38,7 +41,10 @@
             resetFilter: 'Reset',
             mapSelect: 'Map Select',
             map: 'Map',
-            filter: 'Filter'
+            filter: 'Filter',
+            dataManagement: 'Data Management',
+            backup: 'Backup',
+            restore: 'Restore'
         },
         jp: {
             loading: 'マップを読み込み中...',
@@ -56,7 +62,10 @@
             resetFilter: 'リセット',
             mapSelect: 'マップ選択',
             map: 'マップ',
-            filter: 'フィルター'
+            filter: 'フィルター',
+            dataManagement: 'データ管理',
+            backup: 'バックアップ',
+            restore: '復元'
         }
     };
 

@@ -755,6 +755,10 @@
             }
 
             if (window.MapsCore) {
+                // 맵 ID 설정 (위치 저장/복원용)
+                if (mapId) {
+                    window.MapsCore.setCurrentMapId(mapId);
+                }
                 // file이 배열이면 배열 전체를 전달, 아니면 단일 파일명 전달
                 window.MapsCore.loadMap(file);
             }

@@ -360,6 +360,22 @@
             if (wheelZoomText) {
                 wheelZoomText.textContent = window.MapsI18n.getText(lang, 'wheelZoom');
             }
+
+            // 백업/복원 UI 번역
+            const backupRestoreTitle = document.getElementById('backup-restore-title');
+            if (backupRestoreTitle) {
+                backupRestoreTitle.textContent = window.MapsI18n.getText(lang, 'dataManagement');
+            }
+
+            const backupBtnText = document.getElementById('backup-btn-text');
+            if (backupBtnText) {
+                backupBtnText.textContent = window.MapsI18n.getText(lang, 'backup');
+            }
+
+            const restoreBtnText = document.getElementById('restore-btn-text');
+            if (restoreBtnText) {
+                restoreBtnText.textContent = window.MapsI18n.getText(lang, 'restore');
+            }
         },
 
         // 언어 선택기 초기화
@@ -694,6 +710,7 @@
             this.initMobileBottomsheet();
             this.translateMobileUI();
             this.initRandomPolygon();
+            this.initBackupRestore();
         },
 
         // 랜덤 폴리곤 초기화
@@ -712,6 +729,191 @@
             Object.entries(randomValues).forEach(([key, value]) => {
                 panel.style.setProperty(key, value);
             });
+        },
+
+        // 모바일 환경 감지
+        isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+                || window.innerWidth <= 768;
+        },
+
+        // 백업/복원 UI 초기화 (PC 전용)
+        initBackupRestore() {
+            // 모바일에서는 비활성화
+            if (this.isMobile()) return;
+
+            const panel = document.getElementById('object-filter-panel');
+            if (!panel) return;
+
+            // 백업/복원 컨테이너 생성
+            const container = document.createElement('div');
+            container.className = 'backup-restore-container';
+            container.innerHTML = `
+                <div class="backup-restore-title" id="backup-restore-title">데이터 관리</div>
+                <div class="backup-restore-buttons">
+                    <button class="backup-btn" id="backup-btn" title="수집 데이터 백업">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        <span id="backup-btn-text">백업</span>
+                    </button>
+                    <button class="restore-btn" id="restore-btn" title="수집 데이터 복원">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                        <span id="restore-btn-text">복원</span>
+                    </button>
+                </div>
+                <input type="file" id="restore-file-input" accept=".json" style="display: none;">
+            `;
+
+            // 언어 선택기 앞에 삽입
+            const langSelector = panel.querySelector('.language-selector-container');
+            if (langSelector) {
+                panel.insertBefore(container, langSelector);
+            } else {
+                panel.appendChild(container);
+            }
+
+            // 이벤트 리스너 등록
+            document.getElementById('backup-btn').addEventListener('click', () => this.exportData());
+            document.getElementById('restore-btn').addEventListener('click', () => {
+                document.getElementById('restore-file-input').click();
+            });
+            document.getElementById('restore-file-input').addEventListener('change', (e) => this.importData(e));
+        },
+
+        // 데이터 내보내기 (백업)
+        exportData() {
+            try {
+                const exportData = {
+                    version: 1,
+                    exportDate: new Date().toISOString(),
+                    clickedObjects: {},
+                    mapPositions: {}
+                };
+
+                // 클릭 상태 데이터
+                const clickedObjects = localStorage.getItem('clickedObjects');
+                if (clickedObjects) {
+                    exportData.clickedObjects = JSON.parse(clickedObjects);
+                }
+
+                // 맵 위치 데이터
+                for (let i = 0; i < localStorage.length; i++) {
+                    const key = localStorage.key(i);
+                    if (key && key.startsWith('map_position_')) {
+                        const mapId = key.replace('map_position_', '');
+                        try {
+                            exportData.mapPositions[mapId] = JSON.parse(localStorage.getItem(key));
+                        } catch (e) {}
+                    }
+                }
+
+                // JSON 파일 다운로드
+                const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `p5x-maps-backup-${new Date().toISOString().slice(0, 10)}.json`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+
+                // 성공 메시지
+                this.showBackupMessage('success');
+            } catch (e) {
+                console.error('백업 실패:', e);
+                this.showBackupMessage('error');
+            }
+        },
+
+        // 데이터 가져오기 (복원)
+        importData(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                try {
+                    const importData = JSON.parse(e.target.result);
+
+                    // 버전 확인
+                    if (!importData.version || importData.version > 1) {
+                        throw new Error('지원하지 않는 백업 파일 버전');
+                    }
+
+                    // 클릭 상태 복원
+                    if (importData.clickedObjects && typeof importData.clickedObjects === 'object') {
+                        localStorage.setItem('clickedObjects', JSON.stringify(importData.clickedObjects));
+                    }
+
+                    // 맵 위치 복원
+                    if (importData.mapPositions && typeof importData.mapPositions === 'object') {
+                        Object.entries(importData.mapPositions).forEach(([mapId, posData]) => {
+                            localStorage.setItem(`map_position_${mapId}`, JSON.stringify(posData));
+                        });
+                    }
+
+                    // 성공 메시지 및 페이지 새로고침
+                    this.showBackupMessage('restore-success');
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1500);
+                } catch (err) {
+                    console.error('복원 실패:', err);
+                    this.showBackupMessage('restore-error');
+                }
+            };
+            reader.readAsText(file);
+
+            // 파일 입력 초기화
+            event.target.value = '';
+        },
+
+        // 백업/복원 메시지 표시
+        showBackupMessage(type) {
+            const lang = window.MapsI18n ? window.MapsI18n.getCurrentLanguage() : 'kr';
+            const messages = {
+                success: { kr: '백업 완료!', en: 'Backup complete!', jp: 'バックアップ完了!' },
+                error: { kr: '백업 실패', en: 'Backup failed', jp: 'バックアップ失敗' },
+                'restore-success': { kr: '복원 완료! 새로고침 중...', en: 'Restore complete! Refreshing...', jp: '復元完了！更新中...' },
+                'restore-error': { kr: '복원 실패', en: 'Restore failed', jp: '復元失敗' }
+            };
+
+            const message = messages[type][lang] || messages[type].kr;
+            const isError = type.includes('error');
+
+            // 토스트 메시지 생성
+            const toast = document.createElement('div');
+            toast.className = 'backup-toast';
+            toast.style.cssText = `
+                position: fixed;
+                bottom: 100px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: ${isError ? '#730000' : '#1a1a1a'};
+                color: #fff;
+                padding: 12px 24px;
+                border-radius: 8px;
+                border: 1px solid ${isError ? '#a00' : '#333'};
+                z-index: 10000;
+                font-size: 14px;
+                animation: fadeInUp 0.3s ease;
+            `;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+
+            // 3초 후 제거
+            setTimeout(() => {
+                toast.style.animation = 'fadeOutDown 0.3s ease';
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
         }
     };
 })();

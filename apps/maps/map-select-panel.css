@@ -608,25 +608,20 @@
     margin-left: 4%;
   }
 
-  /* 빨간 폴리곤 레이어 모바일 - 글씨 뒤로 */
-  #map-select-panel.mobile-bottomsheet .red-polygon-layer {
+  /* 모바일 z-index 순서: 배경(1) < 빨간 폴리곤(2) < 글씨(3) */
+  /* map-item에 z-index를 설정하면 stacking context가 생성되어 문제 발생 */
+
+  #map-select-panel.mobile-bottomsheet .map-item-bg {
     z-index: 1;
   }
 
-  /* 맵 아이템 글씨가 빨간 폴리곤 위로 */
-  #map-select-panel.mobile-bottomsheet .map-item {
-    position: relative;
+  #map-select-panel.mobile-bottomsheet .red-polygon-layer {
     z-index: 2;
   }
 
   #map-select-panel.mobile-bottomsheet .map-item span {
     position: relative;
     z-index: 3;
-  }
-
-  #map-select-panel.mobile-bottomsheet .map-sub-item {
-    position: relative;
-    z-index: 2;
   }
 
   #map-select-panel.mobile-bottomsheet .map-sub-item span {

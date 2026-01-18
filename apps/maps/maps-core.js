@@ -64,6 +64,9 @@
 
     // MapsCore 클래스
     window.MapsCore = {
+        // 디버그 모드 (콘솔에서 MapsCore.debugMode = true 로 활성화)
+        debugMode: false,
+
         // 공개 API
         getApp: () => app,
         getMapContainer: () => mapContainer,
@@ -732,32 +735,26 @@
                     // 디버그 정보를 sprite에 저장
                     sprite.debugInfo = debugInfo;
 
-                    // 클릭 이벤트 비활성화
-                    sprite.eventMode = 'none';
+                    // 타일 클릭 이벤트 (디버그 모드에서만 동작)
+                    sprite.eventMode = 'static';
                     sprite.cursor = 'default';
-                    /* 타일 디버그 모드 - 주석处理
-                    sprite.on('pointerdown', function() {
-                        console.log('=== TILE DEBUG INFO ===');
-                        console.log('Index:', this.debugInfo.index);
-                        console.log('Image:', this.debugInfo.image);
-                        console.log('Original Position (JSON):', this.debugInfo.originalPosition);
-                        console.log('Rotate:', this.debugInfo.rotate);
-                        console.log('Rotate Pivot:', this.debugInfo.rotate_pivot);
-                        console.log('Ratio:', this.debugInfo.ratio);
-                        console.log('Texture Size:', this.debugInfo.textureSize);
-                        console.log('Scaled Size:', this.debugInfo.scaledSize);
-                        console.log('Computed:', this.debugInfo.computed);
-                        console.log('Final Sprite Position:', [this.x, this.y]);
-                        console.log('Sprite Rotation (deg):', this.rotation * 180 / Math.PI);
-                        console.log('Sprite Pivot:', [this.pivot.x, this.pivot.y]);
-                        console.log('=======================');
-                        
-                        // 화면에 디버그 패널 표시
-                        if (window.MapsDebug) {
-                            window.MapsDebug.showDebugPanel(this.debugInfo, this);
+                    sprite.on('pointerup', function() {
+                        if (window.MapsCore && window.MapsCore.debugMode) {
+                            console.log('=== TILE DEBUG INFO ===');
+                            console.log('Index:', this.debugInfo.index);
+                            console.log('Image:', this.debugInfo.image);
+                            console.log('Position:', this.debugInfo.originalPosition);
+                            console.log('Rotate:', this.debugInfo.rotate);
+                            console.log('Rotate Pivot:', this.debugInfo.rotate_pivot);
+                            console.log('Computed:', this.debugInfo.computed);
+                            console.log('========================');
+
+                            // 화면에 디버그 패널 표시
+                            if (window.MapsDebug) {
+                                window.MapsDebug.showDebugPanel(this.debugInfo, this);
+                            }
                         }
                     });
-                    */
 
                     tilesContainer.addChild(sprite);
                     
@@ -951,32 +948,22 @@
                                 window.ObjectClickHandler.toggleObjectClicked(this);
                             }
 
-                            // 디버그: 파일 이름만 출력
-                            console.log('Object clicked:', this.debugInfo.image);
-                            
-                            // 상세 디버그 정보 (주석처리)
-                            // console.log('=== OBJECT DEBUG INFO (CLICKED) ===');
-                            // console.log('Index:', this.debugInfo.index);
-                            // console.log('Image:', this.debugInfo.image);
-                            // console.log('SN:', this.objectSn);
-                            // console.log('Original Position (JSON):', this.debugInfo.originalPosition);
-                            // console.log('Rotate:', this.debugInfo.rotate);
-                            // console.log('Rotate Pivot:', this.debugInfo.rotate_pivot);
-                            // console.log('Ratio:', this.debugInfo.ratio);
-                            // console.log('Texture Size:', this.debugInfo.textureSize);
-                            // console.log('Scaled Size:', this.debugInfo.scaledSize);
-                            // console.log('Computed:', this.debugInfo.computed);
-                            // console.log('Final Sprite Position:', [this.x, this.y]);
-                            // console.log('Sprite Rotation (deg):', this.rotation * 180 / Math.PI);
-                            // console.log('Sprite Pivot:', [this.pivot.x, this.pivot.y]);
-                            // console.log('Sprite Anchor:', [this.anchor.x, this.anchor.y]);
-                            // console.log('Sprite Scale:', [this.scale.x, this.scale.y]);
-                            // console.log('=======================');
-                            
-                            // 화면에 디버그 패널 표시
-                            // if (window.MapsDebug) {
-                            //     window.MapsDebug.showDebugPanel(this.debugInfo, this);
-                            // }
+                            // 디버그 모드일 때만 출력 (콘솔에서 MapsCore.debugMode = true 로 활성화)
+                            if (window.MapsCore && window.MapsCore.debugMode) {
+                                console.log('Object clicked:', this.debugInfo.image);
+                                console.log('=== OBJECT DEBUG INFO ===');
+                                console.log('Index:', this.debugInfo.index);
+                                console.log('SN:', this.objectSn);
+                                console.log('Position:', this.debugInfo.originalPosition);
+                                console.log('Rotate:', this.debugInfo.rotate);
+                                console.log('Computed:', this.debugInfo.computed);
+                                console.log('=========================');
+
+                                // 화면에 디버그 패널 표시
+                                if (window.MapsDebug) {
+                                    window.MapsDebug.showDebugPanel(this.debugInfo, this);
+                                }
+                            }
                         });
                     } else {
                         // 비대화형 아이콘은 클릭 이벤트 비활성화

@@ -8,7 +8,7 @@
   top: 20px;
   right: 20px;
   width: 280px;
-  max-height: calc(70vh - 40px);
+  max-height: calc(100vh - 40px);
   background: transparent;
   border-radius: 0;
   color: white;
@@ -17,6 +17,12 @@
   flex-direction: column;
   overflow: visible;
   gap: 10px;
+}
+
+@media screen and (max-width: 1200px) {
+  #map-select-panel {
+    max-height: calc(70vh - 40px);
+  }
 }
 
 

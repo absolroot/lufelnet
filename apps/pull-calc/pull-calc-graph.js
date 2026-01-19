@@ -50,8 +50,8 @@
             const ctx = chart.ctx;
             
             balanceHistory.forEach((h, i) => {
-                // Check if this history entry has character names and is a target
-                if (h.charNames && Array.isArray(h.charNames) && h.charNames.length > 0 && h.isTarget) {
+                // Check if this history entry has target info and is a target
+                if (h.targetInfo && Array.isArray(h.targetInfo) && h.targetInfo.length > 0 && h.isTarget) {
                     // Try to find point in the single dataset
                     let point = null;
                     const meta = chart.getDatasetMeta(0);
@@ -67,55 +67,145 @@
                     if (point) {
                         const x = point.x;
                         const y = point.y;
+                        const imgSize = 24;
+                        const spacing = 2;
                         
-                        // Draw each character image
-                        h.charNames.forEach((charName, idx) => {
+                        // Calculate total width needed for all targets (only character images)
+                        const totalTargets = h.targetInfo.length;
+                        const totalWidth = totalTargets * imgSize + (totalTargets - 1) * spacing;
+                        const startX = x - totalWidth / 2;
+                        let currentX = startX;
+                        
+                        // Draw each target (character + icons overlapping on top)
+                        h.targetInfo.forEach((target, targetIdx) => {
+                            const charName = target.charName;
                             if (!charName) return;
                             
-                            const img = imageCache.get(charName);
-                            if (img && img instanceof Image && img.complete && img.naturalWidth > 0 && img.naturalHeight > 0) {
-                                const imgSize = 24;
-                                const spacing = 2;
-                                const totalWidth = h.charNames.length * imgSize + (h.charNames.length - 1) * spacing;
-                                const startX = x - totalWidth / 2;
-                                const offsetX = startX + idx * (imgSize + spacing) + imgSize / 2;
-                                const offsetY = y - imgSize - 6;
+                            // Draw character image
+                            const charImg = imageCache.get(charName);
+                            if (charImg && charImg instanceof Image && charImg.complete && charImg.naturalWidth > 0 && charImg.naturalHeight > 0) {
+                                const charOffsetX = currentX + imgSize / 2;
+                                const charOffsetY = y - imgSize - 6;
                                 
                                 ctx.save();
                                 
-                                // Draw circle background
+                                // Draw circle background for character
                                 ctx.beginPath();
-                                ctx.arc(offsetX, offsetY, imgSize/2 + 2, 0, Math.PI * 2);
+                                ctx.arc(charOffsetX, charOffsetY, imgSize/2 + 2, 0, Math.PI * 2);
                                 ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
                                 ctx.fill();
                                 ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
                                 ctx.lineWidth = 1.5;
                                 ctx.stroke();
                                 
-                                // Draw image with aspect ratio preserved
+                                // Draw character image with aspect ratio preserved
                                 ctx.beginPath();
-                                ctx.arc(offsetX, offsetY, imgSize/2, 0, Math.PI * 2);
+                                ctx.arc(charOffsetX, charOffsetY, imgSize/2, 0, Math.PI * 2);
                                 ctx.clip();
                                 
                                 // Calculate image dimensions preserving aspect ratio
-                                const imgAspect = img.naturalWidth / img.naturalHeight;
+                                const imgAspect = charImg.naturalWidth / charImg.naturalHeight;
                                 let drawWidth = imgSize;
                                 let drawHeight = imgSize;
-                                let drawX = offsetX - imgSize/2;
-                                let drawY = offsetY - imgSize/2;
+                                let drawX = charOffsetX - imgSize/2;
+                                let drawY = charOffsetY - imgSize/2;
                                 
                                 if (imgAspect > 1) {
-                                    // Image is wider than tall
                                     drawHeight = imgSize / imgAspect;
-                                    drawY = offsetY - drawHeight / 2;
+                                    drawY = charOffsetY - drawHeight / 2;
                                 } else {
-                                    // Image is taller than wide
                                     drawWidth = imgSize * imgAspect;
-                                    drawX = offsetX - drawWidth / 2;
+                                    drawX = charOffsetX - drawWidth / 2;
                                 }
                                 
-                                ctx.drawImage(img, drawX, drawY, drawWidth, drawHeight);
+                                ctx.drawImage(charImg, drawX, drawY, drawWidth, drawHeight);
                                 ctx.restore();
+                                
+                                // Icon size (smaller than character)
+                                const iconSize = imgSize * 0.8;
+                                const iconSpacing = -4; // Reduced spacing between A and R icons
+                                
+                                // Draw awakening icon (A0~A6) if characterTarget is set - overlapping on top left
+                                if (target.characterTarget !== undefined) {
+                                    const awakeningLevel = target.characterTarget.replace('A', '').toLowerCase();
+                                    const awakeningImgKey = `a${awakeningLevel}`;
+                                    const awakeningImg = imageCache.get(awakeningImgKey);
+                                    
+                                    if (awakeningImg && awakeningImg instanceof Image && awakeningImg.complete && awakeningImg.naturalWidth > 0 && awakeningImg.naturalHeight > 0) {
+                                        // Position icon on top-left of character image, slightly to the right and lower
+                                        const iconOffsetX = charOffsetX - imgSize/2 + iconSize/2 + 12; // Left side, slightly more to the right
+                                        const iconOffsetY = charOffsetY - imgSize/2 + iconSize/2 + 8; // Top side, lower down
+ 
+                                        ctx.save();
+                                        
+                                        // No background for icons
+                                        
+                                        // Draw image with aspect ratio preserved
+                                        const iconAspect = awakeningImg.naturalWidth / awakeningImg.naturalHeight;
+                                        let iconDrawWidth = iconSize;
+                                        let iconDrawHeight = iconSize;
+                                        let iconDrawX = iconOffsetX - iconSize/2;
+                                        let iconDrawY = iconOffsetY - iconSize/2;
+                                        
+                                        if (iconAspect > 1) {
+                                            iconDrawHeight = iconSize / iconAspect;
+                                            iconDrawY = iconOffsetY - iconDrawHeight / 2;
+                                        } else {
+                                            iconDrawWidth = iconSize * iconAspect;
+                                            iconDrawX = iconOffsetX - iconDrawWidth / 2;
+                                        }
+                                        
+                                        ctx.drawImage(awakeningImg, iconDrawX, iconDrawY, iconDrawWidth, iconDrawHeight);
+                                        ctx.restore();
+                                    }
+                                }
+                                
+                                // Draw refinement icon (R0~R6) if weaponTarget is set and not None (-1) - overlapping next to awakening icon
+                                if (target.weaponTarget !== undefined && target.weaponTarget !== -1) {
+                                    const refinementLevel = target.weaponTarget.replace('R', '').toLowerCase();
+                                    const refinementImgKey = `r${refinementLevel}`;
+                                    const refinementImg = imageCache.get(refinementImgKey);
+                                    
+                                    if (refinementImg && refinementImg instanceof Image && refinementImg.complete && refinementImg.naturalWidth > 0 && refinementImg.naturalHeight > 0) {
+                                        // R icon size (smaller than A icon)
+                                        const rIconSize = imgSize * 0.63;
+                                        
+                                        // Position icon next to awakening icon (if exists) or on top-left
+                                        let iconOffsetX;
+                                        if (target.characterTarget !== undefined) {
+                                            // If awakening icon exists, place refinement icon next to it with smaller spacing
+                                            iconOffsetX = charOffsetX - imgSize/2 + iconSize/2 + 8 + iconSize + iconSpacing;
+                                        } else {
+                                            // Otherwise, place on top-left
+                                            iconOffsetX = charOffsetX - imgSize/2 + iconSize/2 + 8;
+                                        }
+                                        const iconOffsetY = charOffsetY - imgSize/2 + iconSize/2 + 8; // Top side, lower down (same as awakening icon)
+                                        
+                                        ctx.save();
+                                        
+                                        // No background for icons
+                                        
+                                        // Draw image with aspect ratio preserved
+                                        const iconAspect = refinementImg.naturalWidth / refinementImg.naturalHeight;
+                                        let iconDrawWidth = rIconSize;
+                                        let iconDrawHeight = rIconSize;
+                                        let iconDrawX = iconOffsetX - rIconSize/2;
+                                        let iconDrawY = iconOffsetY - rIconSize/2;
+                                        
+                                        if (iconAspect > 1) {
+                                            iconDrawHeight = rIconSize / iconAspect;
+                                            iconDrawY = iconOffsetY - iconDrawHeight / 2;
+                                        } else {
+                                            iconDrawWidth = rIconSize * iconAspect;
+                                            iconDrawX = iconOffsetX - iconDrawWidth / 2;
+                                        }
+                                        
+                                        ctx.drawImage(refinementImg, iconDrawX, iconDrawY, iconDrawWidth, iconDrawHeight);
+                                        ctx.restore();
+                                    }
+                                }
+                                
+                                currentX += imgSize + spacing;
                             }
                         });
                     }
@@ -205,7 +295,9 @@
                 type: 'expense', 
                 amount: target.cost - extraPurchase, 
                 label: this.getCharacterName(target.name),
-                charName: target.name
+                charName: target.name,
+                characterTarget: target.characterTarget,
+                weaponTarget: target.weaponTarget
             });
         });
 
@@ -230,6 +322,7 @@
             let hasEvent = false;
             let eventLabels = [];
             let charNames = [];
+            let targetInfo = []; // Store target info: { charName, characterTarget, weaponTarget }
             let hasTarget = false;
             while (eventIndex < events.length && events[eventIndex].date.getTime() === currentDate.getTime()) {
                 const event = events[eventIndex];
@@ -237,6 +330,14 @@
                 else if (event.type === 'expense') {
                     currentBalance -= event.amount;
                     hasTarget = true;
+                    // Store target info for graph pins
+                    if (event.charName) {
+                        targetInfo.push({
+                            charName: event.charName,
+                            characterTarget: event.characterTarget,
+                            weaponTarget: event.weaponTarget
+                        });
+                    }
                 }
                 eventLabels.push(event.label);
                 if (event.charName) {
@@ -256,6 +357,7 @@
                     balance: currentBalance,
                     label: uniqueLabels.join(', '),
                     charNames: uniqueCharNames,
+                    targetInfo: targetInfo, // Store target info for rendering pins
                     isTarget: hasTarget
                 });
             }
@@ -297,7 +399,7 @@
 
         if (this.chart) this.chart.destroy();
 
-        // Preload character images for pins
+        // Preload character and weapon images for pins
         const BASE_URL = (typeof window.BASE_URL !== 'undefined') ? window.BASE_URL : '';
         const imageCache = new Map();
         const loadImage = (charName) => {
@@ -329,22 +431,85 @@
                 img.src = `${BASE_URL}/assets/img/tier/${charName}.webp`;
             });
         };
+        
+        const loadAwakeningIcon = (level) => {
+            const iconKey = `a${level}`;
+            if (imageCache.has(iconKey)) {
+                return Promise.resolve(imageCache.get(iconKey));
+            }
+            return new Promise((resolve) => {
+                const img = new Image();
+                img.crossOrigin = 'anonymous';
+                img.onload = () => {
+                    imageCache.set(iconKey, img);
+                    resolve(img);
+                };
+                img.onerror = () => {
+                    imageCache.set(iconKey, null);
+                    resolve(null);
+                };
+                img.src = `${BASE_URL}/assets/img/ritual/a${level}.png`;
+            });
+        };
+        
+        const loadRefinementIcon = (level) => {
+            const iconKey = `r${level}`;
+            if (imageCache.has(iconKey)) {
+                return Promise.resolve(imageCache.get(iconKey));
+            }
+            return new Promise((resolve) => {
+                const img = new Image();
+                img.crossOrigin = 'anonymous';
+                img.onload = () => {
+                    imageCache.set(iconKey, img);
+                    resolve(img);
+                };
+                img.onerror = () => {
+                    imageCache.set(iconKey, null);
+                    resolve(null);
+                };
+                img.src = `${BASE_URL}/assets/img/ritual/r${level}.png`;
+            });
+        };
 
-        // Load all character images
+        // Collect all character names and icons that need to be loaded
         const charNamesToLoad = new Set();
+        const awakeningLevelsToLoad = new Set();
+        const refinementLevelsToLoad = new Set();
         this.balanceHistory.forEach(h => {
+            if (h.targetInfo && Array.isArray(h.targetInfo) && h.targetInfo.length > 0) {
+                h.targetInfo.forEach(target => {
+                    if (target.charName) {
+                        charNamesToLoad.add(target.charName);
+                    }
+                    // Load awakening icon (A0~A6)
+                    if (target.characterTarget !== undefined) {
+                        const awakeningLevel = target.characterTarget.replace('A', '').toLowerCase();
+                        awakeningLevelsToLoad.add(awakeningLevel);
+                    }
+                    // Load refinement icon (R0~R6) if weaponTarget is set and not None
+                    if (target.weaponTarget !== undefined && target.weaponTarget !== -1) {
+                        const refinementLevel = target.weaponTarget.replace('R', '').toLowerCase();
+                        refinementLevelsToLoad.add(refinementLevel);
+                    }
+                });
+            }
+            // Also load from charNames for backward compatibility
             if (h.charNames && h.charNames.length > 0) {
                 h.charNames.forEach(name => charNamesToLoad.add(name));
             }
         });
         
-        // If no characters to load, create chart immediately
-        if (charNamesToLoad.size === 0) {
+        // If no images to load, create chart immediately
+        if (charNamesToLoad.size === 0 && awakeningLevelsToLoad.size === 0 && refinementLevelsToLoad.size === 0) {
             console.log('[Graph] No images to load, creating chart immediately');
             this.createChartWithImages(ctx, labels, allData, imageCache, BASE_URL);
         } else {
-            console.log('[Graph] Loading', charNamesToLoad.size, 'character images');
-            Promise.all(Array.from(charNamesToLoad).map(name => loadImage(name))).then(() => {
+            console.log('[Graph] Loading', charNamesToLoad.size, 'character images,', awakeningLevelsToLoad.size, 'awakening icons, and', refinementLevelsToLoad.size, 'refinement icons');
+            const charPromises = Array.from(charNamesToLoad).map(name => loadImage(name));
+            const awakeningPromises = Array.from(awakeningLevelsToLoad).map(level => loadAwakeningIcon(level));
+            const refinementPromises = Array.from(refinementLevelsToLoad).map(level => loadRefinementIcon(level));
+            Promise.all([...charPromises, ...awakeningPromises, ...refinementPromises]).then(() => {
                 // Images loaded, continue with chart creation
                 console.log('[Graph] All images loaded, creating chart');
                 this.createChartWithImages(ctx, labels, allData, imageCache, BASE_URL);

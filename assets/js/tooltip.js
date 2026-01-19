@@ -31,7 +31,7 @@ function bindTooltipElement(el) {
             return el;
         })();
 
-        const showFloating = (el, content) => { if (!content) return; el.textContent = content; el.style.display = 'block'; };
+        const showFloating = (el, content) => { if (!content) return; el.innerHTML = content; el.style.display = 'block'; };
         const hideFloating = (el) => { el.style.display = 'none'; };
         const moveFloating = (el, e) => {
             const offset = 16;
@@ -75,7 +75,7 @@ function bindTooltipElement(el) {
                 if (existingBanner) existingBanner.remove();
                 const banner = document.createElement('div');
                 banner.className = 'tooltip-mobile-banner';
-                banner.textContent = tooltipText;
+                banner.innerHTML = tooltipText;
                 const closeButton = document.createElement('button');
                 closeButton.className = 'tooltip-banner-close';
                 closeButton.innerHTML = '×';

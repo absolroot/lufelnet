@@ -170,7 +170,7 @@
       '구원': 'Medic',
       '굴복': 'Saboteur',
       '반항': 'Assassin',
-      '방위': 'Defense',
+      '방위': 'Guardian',
       '우월': 'Strategist',
       '지배': 'Sweeper',
       '해명': 'Elucidator'

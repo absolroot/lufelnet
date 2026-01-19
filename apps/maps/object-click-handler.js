@@ -510,6 +510,25 @@
             document.body.appendChild(overlay);
         },
 
+        // 모든 적의 레벨이 1인지 확인
+        isAllEnemiesLevel1(enemyData) {
+            if (!enemyData || !enemyData.enemies || !Array.isArray(enemyData.enemies)) {
+                return false;
+            }
+
+            // enemies 배열의 모든 웨이브(그룹)를 순회
+            for (const wave of enemyData.enemies) {
+                if (!Array.isArray(wave)) continue;
+                for (const enemy of wave) {
+                    // 레벨이 "1"이 아니면 false 반환
+                    if (enemy.level !== "1" && enemy.level !== 1) {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        },
+
         // 오브젝트 클릭 토글 (수정)
         toggleObjectClicked(sprite) {
             if (!sprite || !sprite.objectSn) {
@@ -520,9 +539,32 @@
             // 개수 세지 않는 아이콘인지 확인
             const isNonCountable = this.isNonCountableIcon(sprite.objectImage || '');
 
-            // enemy_data가 있는 경우 모달 표시 (non_countable이어도 모달은 표시)
+            // enemy_data가 있는 경우 처리
             if (sprite.debugInfo && sprite.debugInfo.enemyData) {
-                this.showEnemyModal(sprite.debugInfo.enemyData, sprite);
+                const enemyData = sprite.debugInfo.enemyData;
+
+                // 모든 적의 레벨이 1이면 모달 없이 바로 토글
+                if (this.isAllEnemiesLevel1(enemyData)) {
+                    const isClicked = this.getObjectClickedState(sprite.objectSn);
+                    const newState = !isClicked;
+
+                    this.setObjectClickedState(sprite.objectSn, newState);
+
+                    if (newState) {
+                        this.applyClickedEffect(sprite);
+                    } else {
+                        this.removeClickedEffect(sprite);
+                    }
+
+                    // 필터 패널 개수 업데이트
+                    if (!isNonCountable && window.ObjectFilterPanel && sprite.objectType) {
+                        window.ObjectFilterPanel.updateTypeCount(sprite.objectType, sprite.objectSn, newState);
+                    }
+                    return;
+                }
+
+                // 레벨 1이 아닌 적이 있으면 모달 표시
+                this.showEnemyModal(enemyData, sprite);
                 return;
             }
 

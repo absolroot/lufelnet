@@ -121,7 +121,7 @@
     try { data = (typeof characterData !== 'undefined') ? characterData : (window.characterData || {}); } catch (_) { data = window.characterData || {}; }
     Object.keys(data || {}).forEach(topKey => {
       const item = data[topKey] || {};
-      const aliases = [topKey, item.name, item.name_en, item.name_jp, item.name_cn, item.name_tw];
+      const aliases = [topKey, item.name, item.name_en, item.name_jp, item.name_cn, item.name_tw, item.codename];
       aliases.forEach(alias => {
         if (!alias) return;
         index.set(normalizeName(alias), topKey);
@@ -130,17 +130,45 @@
     return index;
   }
 
-  const characterIndex = buildCharacterReverseIndex();
+  let characterIndex = buildCharacterReverseIndex();
 
   function getCharacterImageUrl(name) {
-    const key = characterIndex.get(normalizeName(name));
+    let key = characterIndex.get(normalizeName(name));
+    // Fallback: search characterData directly if index lookup fails
+    if (!key && window.characterData) {
+      const normalized = normalizeName(name);
+      for (const [k, v] of Object.entries(window.characterData)) {
+        if (normalizeName(k) === normalized ||
+            normalizeName(v.name) === normalized ||
+            normalizeName(v.name_en) === normalized ||
+            normalizeName(v.name_jp) === normalized ||
+            normalizeName(v.codename) === normalized) {
+          key = k;
+          break;
+        }
+      }
+    }
     if (key) return `${BASE}/assets/img/character-detail/${encodeURIComponent(key)}.webp`;
     // No match: hide by returning null
     return null;
   }
 
   function getCharacterTopKey(name) {
-    const key = characterIndex.get(normalizeName(name));
+    let key = characterIndex.get(normalizeName(name));
+    // Fallback: search characterData directly if index lookup fails
+    if (!key && window.characterData) {
+      const normalized = normalizeName(name);
+      for (const [k, v] of Object.entries(window.characterData)) {
+        if (normalizeName(k) === normalized ||
+            normalizeName(v.name) === normalized ||
+            normalizeName(v.name_en) === normalized ||
+            normalizeName(v.name_jp) === normalized ||
+            normalizeName(v.codename) === normalized) {
+          key = k;
+          break;
+        }
+      }
+    }
     return key || null;
   }
 
@@ -588,14 +616,10 @@
     wrap.appendChild(regionSelect);
     wrap.appendChild(utcSelect);
 
-    regionSelect.addEventListener('change', async () => {
+    regionSelect.addEventListener('change', () => {
       const newRegion = regionSelect.value;
-      state.region = newRegion;
       saveRegion(newRegion);
-      await reloadSlides();
-      // sync bosses section
-      try { if (window.reloadHomeBosses) window.reloadHomeBosses(); } catch (_) {}
-      try { if (window.reloadHomeSOS) window.reloadHomeSOS(); } catch (_) {}
+      window.location.reload();
     });
 
     utcSelect.addEventListener('change', () => {
@@ -624,10 +648,10 @@
     }
     const first = (slide.fiveStar || [])[0];
     if (!first) return null;
-    const key = characterIndex.get(normalizeName(first.name));
+    const key = getCharacterTopKey(first.name);
     if (!key) return null;
     try {
-      const item = (typeof characterData !== 'undefined' ? characterData : window.characterData || {})[key];
+      const item = (window.characterData || {})[key];
       if (item && item.color) return parseHexColor(item.color);
     } catch(_) {}
     return null;
@@ -1045,6 +1069,10 @@
   async function reloadSlides() {
     const root = document.getElementById(ROOT_ID);
     if (!root) return;
+
+    // Rebuild character index to ensure we have latest characterData
+    characterIndex = buildCharacterReverseIndex();
+
     root.innerHTML = '';
     const loading = document.createElement('div');
     loading.style.cssText = 'padding: 12px 8px; color: #999;';

@@ -114,6 +114,25 @@ class CriticalCalc {
         return 'kr';
     }
 
+    // 드롭다운 옵션 저장/로드
+    saveOptionSelection(itemId, selectedValue, isSelf) {
+        try {
+            const storageKey = isSelf ? 'criticalCalc_selfOptions' : 'criticalCalc_buffOptions';
+            const saved = JSON.parse(localStorage.getItem(storageKey) || '{}');
+            saved[itemId] = selectedValue;
+            localStorage.setItem(storageKey, JSON.stringify(saved));
+        } catch(_) {}
+    }
+
+    loadOptionSelection(itemId, isSelf) {
+        try {
+            const storageKey = isSelf ? 'criticalCalc_selfOptions' : 'criticalCalc_buffOptions';
+            const saved = JSON.parse(localStorage.getItem(storageKey) || '{}');
+            return saved[itemId] || null;
+        } catch(_) {}
+        return null;
+    }
+
     getGroupDisplayName(groupName) {
         const lang = this.getCurrentLang();
         try {
@@ -612,19 +631,37 @@ class CriticalCalc {
         if (data.options && data.options.length > 0) {
             const select = document.createElement('select');
             select.setAttribute('data-id', data.id);
+
+            // 저장된 옵션 로드
+            const savedOption = this.loadOptionSelection(data.id, isSelf);
+
             data.options.forEach(opt => {
                 const el = document.createElement('option');
                 el.value = opt;
                 el.textContent = this.normalizeTextForLang(opt);
-                if (data.defaultOption && data.defaultOption === opt) el.selected = true;
+                // 저장된 옵션이 있으면 우선 적용, 없으면 기본값
+                if (savedOption !== null && savedOption === opt) {
+                    el.selected = true;
+                } else if (savedOption === null && data.defaultOption && data.defaultOption === opt) {
+                    el.selected = true;
+                }
                 select.appendChild(el);
             });
-            
+
+            // 저장된 옵션이 있으면 data.value도 업데이트
+            if (savedOption !== null && data.values && data.values[savedOption] !== undefined) {
+                data.value = data.values[savedOption];
+            }
+
             select.onchange = () => {
                 const selectedOption = select.value;
+
+                // 옵션 저장
+                this.saveOptionSelection(data.id, selectedOption, isSelf);
+
                 if (data.values && data.values[selectedOption] != null) {
                     data.value = data.values[selectedOption];
-                    
+
                     const isJC = groupName === 'J&C' && typeof JCCalc !== 'undefined' && JCCalc.onOptionChanged;
                     if (isJC && data.id !== 'jc2') {
                         JCCalc.onOptionChanged(data, valueCell, false, this);

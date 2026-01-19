@@ -71,6 +71,25 @@ class DefenseCalc {
         return 'kr';
     }
 
+    // 드롭다운 옵션 저장/로드
+    saveOptionSelection(itemId, selectedValue, isPenetrate) {
+        try {
+            const storageKey = isPenetrate ? 'defenseCalc_penetrateOptions' : 'defenseCalc_reduceOptions';
+            const saved = JSON.parse(localStorage.getItem(storageKey) || '{}');
+            saved[itemId] = selectedValue;
+            localStorage.setItem(storageKey, JSON.stringify(saved));
+        } catch(_) {}
+    }
+
+    loadOptionSelection(itemId, isPenetrate) {
+        try {
+            const storageKey = isPenetrate ? 'defenseCalc_penetrateOptions' : 'defenseCalc_reduceOptions';
+            const saved = JSON.parse(localStorage.getItem(storageKey) || '{}');
+            return saved[itemId] || null;
+        } catch(_) {}
+        return null;
+    }
+
     getBossDisplayName(boss) {
         const lang = this.getCurrentLang();
         // 접두사 제거 (탭으로 분리하므로)
@@ -652,6 +671,9 @@ class DefenseCalc {
                                    : (lang === 'jp' && data.defaultOption_jp) ? data.defaultOption_jp
                                    : null;
 
+            // 저장된 옵션 로드
+            const savedOption = this.loadOptionSelection(data.id, isPenetrate);
+
             baseOptions.forEach((baseOpt, idx) => {
                 const label = labelOptions[idx] !== undefined ? labelOptions[idx] : baseOpt;
                 const optionElement = document.createElement('option');
@@ -659,16 +681,28 @@ class DefenseCalc {
                 optionElement.value = label;
                 optionElement.setAttribute('data-base', baseOpt);
                 optionElement.textContent = this.normalizeTextForLang(label);
-                // 기본 선택: 언어 기본값 → KR 기본값 순
-                if ((defaultLangOption && label === defaultLangOption) || (data.defaultOption && baseOpt === data.defaultOption)) {
+                // 저장된 옵션이 있으면 우선 적용, 없으면 기본값
+                if (savedOption !== null && baseOpt === savedOption) {
+                    optionElement.selected = true;
+                } else if (savedOption === null && ((defaultLangOption && label === defaultLangOption) || (data.defaultOption && baseOpt === data.defaultOption))) {
                     optionElement.selected = true;
                 }
                 select.appendChild(optionElement);
             });
+
+            // 저장된 옵션이 있으면 data.value도 업데이트
+            if (savedOption !== null && valuesBase && valuesBase[savedOption] !== undefined) {
+                data.value = valuesBase[savedOption];
+            }
+
             // 옵션 변경 시 수치 업데이트
             select.onchange = () => {
                 const selectedLabel = select.value;
                 const selectedBase = select.options[select.selectedIndex]?.getAttribute('data-base');
+
+                // 옵션 저장
+                this.saveOptionSelection(data.id, selectedBase, isPenetrate);
+
                 let nextValue = null;
                 if (valuesLang && Object.prototype.hasOwnProperty.call(valuesLang, selectedLabel)) {
                     nextValue = valuesLang[selectedLabel];
@@ -679,7 +713,7 @@ class DefenseCalc {
                     // J&C 전용: 기본값을 갱신한 뒤 Desire 보정 적용
                     // 예외 아이템은 Desire 보정 제외
                     const isExcluded = (String(data.id) === 'jc3');
-                    
+
                     if (!isExcluded && groupName === 'J&C' && typeof JCCalc !== 'undefined' && JCCalc.onOptionChanged) {
                         try {
                             data.__jcBaseValue = nextValue;

@@ -852,7 +852,27 @@
                 const tabTime = tab.dataset.characterTime || '';
                 const mapping = timeMapping[currentLanguage] || timeMapping['en'];
                 const normalizedTime = mapping[tabTime] || tabTime;
-                if (normalizedTime !== timeFilter) {
+                
+                // showSpoiler가 true이고, 언어 파일이 없는 캐릭터인 경우 kr 시간 값을 현재 언어로 변환
+                if (showSpoiler && tab.dataset.hasLanguageFile === 'false' && normalizedTime !== timeFilter) {
+                    // kr 언어 매핑으로 다시 확인
+                    const krMapping = timeMapping['kr'];
+                    const krNormalizedTime = krMapping[tabTime] || tabTime;
+                    // kr 시간 값을 현재 언어로 변환하여 다시 확인
+                    const krToCurrentMapping = {
+                        '방과 후': 'After School',
+                        '저녁': 'Evening', 
+                        '밤': 'Night',
+                        '오후': 'Afternoon'
+                    };
+                    const convertedTime = krToCurrentMapping[tabTime] || tabTime;
+                    if (convertedTime === timeFilter) {
+                        // 변환된 시간이 필터와 일치하면 통과
+                        shouldShow = true;
+                    } else {
+                        shouldShow = false;
+                    }
+                } else if (normalizedTime !== timeFilter) {
                     shouldShow = false;
                 }
             }

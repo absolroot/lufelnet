@@ -241,7 +241,7 @@ const enRevelationData = {
         },
         "Pleasure": { // 환희
             "set2": "Increase Psy DMG by 10%.",
-            "set4": "Increase ATK by 15% when dealing Psy damage. Additionally increase ATK by 15%.",
+            "set4": "Increase ATK by 15% when dealing Psy damage. If more than 3 foes are on the field, increase ATK by 15% more.",
             "type": ["염동"]
         },
         "Strife": { // 분쟁

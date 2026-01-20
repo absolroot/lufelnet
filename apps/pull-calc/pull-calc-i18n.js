@@ -120,7 +120,7 @@ const I18N = {
         tooltipVersionIncome: 'Income per version (patch). Sum of weekly content (NTMR, SoS, etc.) divided by version period + maintenance rewards, redeem codes, events, etc. After 4.0, 1.5x applied due to 3-week intervals.',
         tooltipMonthlySub: 'Meta Jewel obtained daily when purchasing monthly pass. Default 100.',
         tooltipBattlePass: 'Meta Jewel obtained per patch when purchasing battle pass. Default 1430 (5 limited tickets + 680 paid Meta Jewel).',
-        tooltipRecursive: 'Assumes all 4-star characters are at full awakening (A6). Cognigem obtained from pulling 4-star and 5-star characters is immediately converted to Meta Jewel (10 = 100 Meta Jewel) and used for more pulls.',
+        tooltipRecursive: 'Assumes all 4-star characters are at full awakening (A6). Cognigem obtained from pulling 4-star characters, 4&5-stars weapons is immediately converted to Meta Jewel (10 = 100 Meta Jewel) and used for more pulls.',
         tooltipCharPity: 'Number of pulls since last 5-star on character banner. 110 is hard pity (guaranteed ceiling).',
         tooltipWeaponPity: 'Number of pulls since last 5-star on weapon banner. 70 is hard pity (ceiling).',
         tooltipWeapon5050Failed: 'Whether you failed the 50% chance to get limited weapon on weapon banner. If failed, next 5-star is guaranteed pickup weapon.',

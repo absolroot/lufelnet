@@ -180,6 +180,9 @@ class PullSimulator {
             recursive: false
         };
 
+        // Schedule scenario (4.0 이후 간격 및 보상 배율)
+        this.scheduleScenario = '3weeks'; // '3weeks' or '2weeks'
+
         // Pity settings
         this.pity = {
             charPity: 0,
@@ -269,7 +272,7 @@ class PullSimulator {
             ['labelVersionIncome', 'versionIncome'], ['labelBattlePass', 'battlePass'],
             ['labelRecursive', 'recursive'], ['labelCharPity', 'charPity'],
             ['labelWeaponPity', 'weaponPity'], ['labelWeapon5050Failed', 'weapon5050Failed'],
-            ['labelWeaponScenario', 'weaponScenario']
+            ['labelWeaponScenario', 'weaponScenario'], ['labelScheduleScenario', 'scheduleScenario']
         ];
         labels.forEach(([id, key]) => {
             const el = document.getElementById(id);
@@ -321,6 +324,13 @@ class PullSimulator {
 
         const optionWorst = document.getElementById('optionWorst');
         if (optionWorst) optionWorst.textContent = this.t('weaponScenarioWorst');
+
+        // Schedule scenario options
+        const option3Weeks = document.getElementById('option3Weeks');
+        if (option3Weeks) option3Weeks.textContent = this.t('scheduleScenario3Weeks');
+
+        const option2Weeks = document.getElementById('option2Weeks');
+        if (option2Weeks) option2Weeks.textContent = this.t('scheduleScenario2Weeks');
 
         const pitySource = document.getElementById('pitySource');
         if (pitySource) pitySource.textContent = this.t('pitySource');
@@ -399,6 +409,11 @@ class PullSimulator {
 
             const savedTargets = localStorage.getItem('pullCalc_targets');
             if (savedTargets) this.targets = JSON.parse(savedTargets);
+
+            const savedScheduleScenario = localStorage.getItem('pullCalc_scheduleScenario');
+            if (savedScheduleScenario && ['3weeks', '2weeks'].includes(savedScheduleScenario)) {
+                this.scheduleScenario = savedScheduleScenario;
+            }
         } catch (e) {
             console.warn('Failed to load saved data:', e);
         }
@@ -410,6 +425,7 @@ class PullSimulator {
             localStorage.setItem('pullCalc_income', JSON.stringify(this.income));
             localStorage.setItem('pullCalc_pity', JSON.stringify(this.pity));
             localStorage.setItem('pullCalc_targets', JSON.stringify(this.targets));
+            localStorage.setItem('pullCalc_scheduleScenario', this.scheduleScenario);
         } catch (e) {
             console.warn('Failed to save data:', e);
         }
@@ -598,6 +614,13 @@ class PullSimulator {
             weaponScenarioEl.addEventListener('change', () => this.handlePityChange());
         }
 
+        // Schedule scenario dropdown
+        const scheduleScenarioEl = document.getElementById('inputScheduleScenario');
+        if (scheduleScenarioEl) {
+            scheduleScenarioEl.value = this.scheduleScenario || '3weeks';
+            scheduleScenarioEl.addEventListener('change', () => this.handleScheduleScenarioChange());
+        }
+
         // Tooltips
         if (typeof addTooltips === 'function') addTooltips();
     }
@@ -636,6 +659,42 @@ class PullSimulator {
         this.pity.weaponScenario = document.getElementById('inputWeaponScenario')?.value || 'average';
 
         this.saveData();
+        this.recalculate();
+    }
+
+    handleScheduleScenarioChange() {
+        const newValue = document.getElementById('inputScheduleScenario')?.value || '3weeks';
+        console.log('[ScheduleScenario] Changed to:', newValue);
+        this.scheduleScenario = newValue;
+        this.saveData();
+        this.buildSchedule();
+        
+        // Update target dates to match new schedule
+        // After buildSchedule(), scheduleReleases has new dates
+        if (this.targets.length > 0 && this.scheduleReleases.length > 0) {
+            this.targets.forEach(target => {
+                // Find matching release by version and character name
+                const matchingRelease = this.scheduleReleases.find(release => {
+                    return release.version === target.version && 
+                           release.characters && 
+                           release.characters.includes(target.name);
+                });
+                
+                if (matchingRelease && matchingRelease.date) {
+                    // Update target date to match new schedule
+                    target.date = matchingRelease.date;
+                    console.log(`[ScheduleScenario] Updated target ${target.name} (${target.version}) date to ${matchingRelease.date}`);
+                }
+            });
+            
+            // Re-sort targets by date
+            this.targets.sort((a, b) => new Date(a.date) - new Date(b.date));
+            this.saveData();
+            
+            // Update timeline selection after dates are updated
+            this.updateTimelineSelection();
+        }
+        
         this.recalculate();
     }
 
@@ -765,7 +824,12 @@ class PullSimulator {
 
     parseScheduleData(scheduleData) {
         const releases = [];
-        const intervalRules = scheduleData.intervalRules || { beforeV4: 14, afterV4: 21 };
+        // 동적으로 intervalRules 설정 (scheduleScenario에 따라)
+        const defaultIntervalRules = scheduleData.intervalRules || { beforeV4: 14, afterV4: 21 };
+        const intervalRules = {
+            beforeV4: defaultIntervalRules.beforeV4 || 14,
+            afterV4: this.scheduleScenario === '2weeks' ? 14 : 21
+        };
 
         (scheduleData.manualReleases || []).forEach(release => {
             releases.push({
@@ -783,7 +847,8 @@ class PullSimulator {
 
         (scheduleData.autoGenerateCharacters || []).forEach(release => {
             const version = parseFloat(release.version);
-            const interval = version >= 4.0 ? intervalRules.afterV4 : intervalRules.beforeV4;
+            // 4.0은 여전히 2주 간격, 4.0 이후(4.1, 4.2 등)부터 3주 간격
+            const interval = version > 4.0 ? intervalRules.afterV4 : intervalRules.beforeV4;
 
             if (lastDate) {
                 lastDate = new Date(lastDate);
@@ -958,6 +1023,12 @@ class PullSimulator {
     }
 
     recalculate() {
+        // Ensure scheduleScenario is up to date from dropdown
+        const dropdown = document.getElementById('inputScheduleScenario');
+        if (dropdown && dropdown.value) {
+            this.scheduleScenario = dropdown.value;
+        }
+        
         this.calculateTargetCosts();
         this.calculateRunningBalance();
         this.renderPlanList();
@@ -965,9 +1036,27 @@ class PullSimulator {
     }
 
     calculateTargetCosts() {
+        // Find first character (A0+) and first weapon (not None) to apply pity
+        let firstCharFound = false;
+        let firstWeaponFound = false;
+        
         this.targets.forEach(target => {
-            const charCost = this.calculateCharacterCost(target.characterTarget);
-            const weaponCost = this.calculateWeaponCost(target.weaponTarget);
+            // Check if this is the first character (A0+)
+            const isFirstChar = !firstCharFound && target.characterTarget !== undefined && 
+                                parseInt(target.characterTarget.replace('A', '')) >= 0;
+            if (isFirstChar) {
+                firstCharFound = true;
+            }
+            
+            // Check if this is the first weapon (not None)
+            const isFirstWeapon = !firstWeaponFound && target.weaponTarget !== undefined && 
+                                  target.weaponTarget !== 'None';
+            if (isFirstWeapon) {
+                firstWeaponFound = true;
+            }
+            
+            const charCost = this.calculateCharacterCost(target.characterTarget, isFirstChar);
+            const weaponCost = this.calculateWeaponCost(target.weaponTarget, isFirstWeapon);
             target.cost = charCost + weaponCost;
         });
     }
@@ -976,7 +1065,7 @@ class PullSimulator {
      * Simulate spending from a wallet for a specific target
      * Returns detailed breakdown of what was spent and any shortages
      */
-    simulateWalletSpend(wallet, target) {
+    simulateWalletSpend(wallet, target, isFirstChar = false, isFirstWeapon = false) {
         const testWallet = wallet.clone();
         const result = {
             success: true,
@@ -987,8 +1076,8 @@ class PullSimulator {
         };
 
         // Calculate individual costs
-        const charCost = this.calculateCharacterCost(target.characterTarget);
-        const weaponCost = this.calculateWeaponCost(target.weaponTarget);
+        const charCost = this.calculateCharacterCost(target.characterTarget, isFirstChar);
+        const weaponCost = this.calculateWeaponCost(target.weaponTarget, isFirstWeapon);
 
         result.character.cost = charCost;
         result.weapon.cost = weaponCost;
@@ -1047,14 +1136,15 @@ class PullSimulator {
         return (1 - paybackPerPull);
     }
 
-    calculateCharacterCost(targetLevel) {
+    calculateCharacterCost(targetLevel, usePity = false) {
         const level = parseInt(targetLevel.replace('A', '')) || 0;
         const copies = level + 1;
         const pullsPerCopy = this.charPityStats.median || 110;
 
         let totalPulls = 0;
         for (let i = 0; i < copies; i++) {
-            if (i === 0 && this.pity.charPity > 0) {
+            // Only apply pity to first character (A0+)
+            if (i === 0 && usePity && this.pity.charPity > 0) {
                 totalPulls += Math.max(0, pullsPerCopy - this.pity.charPity);
             } else {
                 totalPulls += pullsPerCopy;
@@ -1066,7 +1156,7 @@ class PullSimulator {
         return Math.ceil(baseCost * this.getRecursiveMultiplier('character'));
     }
 
-    calculateWeaponCost(targetLevel) {
+    calculateWeaponCost(targetLevel, usePity = false) {
         // Handle 'None' - user doesn't want to pull for weapon
         if (targetLevel === 'None') {
             return 0;
@@ -1090,10 +1180,11 @@ class PullSimulator {
             // Calculate cost for single limited weapon with 50:50 consideration
             let expectedPulls = 0;
 
-            if (this.pity.weapon5050Failed) {
+            // Only apply pity and 50:50 failed state to first weapon (not None)
+            if (usePity && this.pity.weapon5050Failed) {
                 // Failed state: Next 5-star is GUARANTEED pickup (100%)
                 expectedPulls = Math.max(0, medianPity - this.pity.weaponPity);
-            } else {
+            } else if (usePity) {
                 // Normal state: apply scenario multiplier
                 const remainingToPity = Math.max(0, medianPity - this.pity.weaponPity);
                 if (scenario === 'best') {
@@ -1105,6 +1196,15 @@ class PullSimulator {
                 } else {
                     // Average case: 50% chance need second pity
                     expectedPulls = remainingToPity + (medianPity * 0.5);
+                }
+            } else {
+                // No pity: calculate normally without considering current pity
+                if (scenario === 'best') {
+                    expectedPulls = medianPity;
+                } else if (scenario === 'worst') {
+                    expectedPulls = medianPity * 2;
+                } else {
+                    expectedPulls = medianPity * 1.5;
                 }
             }
 
@@ -1144,14 +1244,14 @@ class PullSimulator {
             expectedPityCycles = (req.limited * multiplier) + extraNeeded;
         }
 
-        // Adjust for existing pity
+        // Adjust for existing pity (only for first weapon)
         let totalPulls = expectedPityCycles * medianPity;
-        if (this.pity.weaponPity > 0 && expectedPityCycles > 0) {
+        if (usePity && this.pity.weaponPity > 0 && expectedPityCycles > 0) {
             totalPulls -= Math.min(this.pity.weaponPity, medianPity);
         }
 
-        // Adjust for guaranteed state (next pull is guaranteed limited)
-        if (this.pity.weapon5050Failed && req.limited > 0) {
+        // Adjust for guaranteed state (next pull is guaranteed limited) - only for first weapon
+        if (usePity && this.pity.weapon5050Failed && req.limited > 0) {
             // One less expected failure, saves 0.5 or 1.0 pity cycle depending on scenario
             if (scenario === 'worst') {
                 // In worst case, having a guaranteed means we skip a full failure (save 1.0 pity)

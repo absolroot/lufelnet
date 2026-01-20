@@ -68,6 +68,10 @@ const I18N = {
         incomeDaily: '일일',
         incomeVersion: '버전',
         incomeBattlePass: '패스',
+        scheduleScenario: '4.0 이후 스케줄 시나리오',
+        scheduleScenario3Weeks: '3주 간격 (보상 1.5배)',
+        scheduleScenario2Weeks: '2주 간격 (보상 1배)',
+        tooltipScheduleScenario: '4.0 이후 버전 간격과 보상 배율을 선택합니다.',
         mustReadTitle: '계산기 기준 및 안내'
     },
     en: {
@@ -133,6 +137,10 @@ const I18N = {
         incomeDaily: 'Daily',
         incomeVersion: 'Version',
         incomeBattlePass: 'Pass',
+        scheduleScenario: 'Post-4.0 Schedule Scenario',
+        scheduleScenario3Weeks: '3-week interval (1.5x reward)',
+        scheduleScenario2Weeks: '2-week interval (1x reward)',
+        tooltipScheduleScenario: 'Select version interval and reward multiplier after 4.0.',
         mustReadTitle: 'Calculator Criteria & Guide'
     },
     jp: {
@@ -198,6 +206,10 @@ const I18N = {
         incomeDaily: '日次',
         incomeVersion: 'バージョン',
         incomeBattlePass: 'パス',
+        scheduleScenario: '4.0以降スケジュールシナリオ',
+        scheduleScenario3Weeks: '3週間間隔 (報酬1.5倍)',
+        scheduleScenario2Weeks: '2週間間隔 (報酬1倍)',
+        tooltipScheduleScenario: '4.0以降のバージョン間隔と報酬倍率を選択します。',
         mustReadTitle: '計算機の基準と案内'
     }
 };

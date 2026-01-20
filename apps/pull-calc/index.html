@@ -309,6 +309,25 @@ redirect_from:
         </p>
     </div>
 
+    <!-- Schedule Scenario Selector -->
+    <div class="schedule-scenario-container">
+        <div class="input-group">
+            <label class="input-label">
+                <span id="labelScheduleScenario">4.0 이후 스케줄 시나리오</span>
+                <span class="tooltip-icon" data-i18n-tooltip="tooltipScheduleScenario" data-tooltip="4.0 이후 버전 간격과 보상 배율을 선택합니다.">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1" fill="rgba(255,255,255,0.05)"></circle>
+                        <path d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.3"></path>
+                    </svg>
+                </span>
+            </label>
+            <select id="inputScheduleScenario" class="modal-input">
+                <option value="3weeks" selected id="option3Weeks">3주 간격 (보상 1.5배)</option>
+                <option value="2weeks" id="option2Weeks">2주 간격 (보상 1배)</option>
+            </select>
+        </div>
+    </div>
+
     <!-- Timeline Section -->
     <section class="timeline-section">
         <div class="timeline-container" id="timelineContainer">

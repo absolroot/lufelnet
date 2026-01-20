@@ -40,7 +40,27 @@
 
         // Calculate version income and battle pass for this character's version
         const versionNum = parseFloat(charVersion);
-        const versionIncome = this.income.versionIncome * (versionNum >= 4.0 ? 1.5 : 1.0);
+        // scheduleScenario에 따라 4.0 이후(4.1, 4.2 등) 보상 배율 결정
+        // 4.0은 여전히 2주 간격이므로 4.0보다 큰 버전부터 적용
+        // this.scheduleScenario가 없으면 드롭다운에서 직접 가져오기
+        let scheduleScenario = this.scheduleScenario;
+        if (!scheduleScenario) {
+            const dropdown = document.getElementById('inputScheduleScenario');
+            scheduleScenario = dropdown ? dropdown.value : '3weeks';
+            // 드롭다운에서 가져온 값을 this.scheduleScenario에도 저장
+            if (scheduleScenario) {
+                this.scheduleScenario = scheduleScenario;
+            }
+        }
+        const versionMultiplier = versionNum > 4.0 
+            ? (scheduleScenario === '2weeks' ? 1.0 : 1.5)
+            : 1.0;
+        const versionIncome = this.income.versionIncome * versionMultiplier;
+        
+        // Debug log for version 4.1+
+        if (versionNum > 4.0) {
+            console.log(`[Income] Version ${charVersion}, scheduleScenario: ${scheduleScenario}, multiplier: ${versionMultiplier}, versionIncome: ${versionIncome} (base: ${this.income.versionIncome})`);
+        }
         // const battlePassIncome = this.income.battlePassEnabled ? this.income.battlePassAmount : 0;
         const battlePassIncome = 0; // DISABLED
 
@@ -81,10 +101,28 @@
         today.setHours(0, 0, 0, 0);
         let prevPlanDate = null;
 
+        // Find first character (A0+) and first weapon (not None) to apply pity
+        let firstCharFound = false;
+        let firstWeaponFound = false;
+        
         let html = '';
         this.targets.forEach((target, index) => {
             const targetDate = new Date(target.date);
             targetDate.setHours(0, 0, 0, 0);
+            
+            // Check if this is the first character (A0+)
+            const isFirstChar = !firstCharFound && target.characterTarget !== undefined && 
+                                parseInt(target.characterTarget.replace('A', '')) >= 0;
+            if (isFirstChar) {
+                firstCharFound = true;
+            }
+            
+            // Check if this is the first weapon (not None)
+            const isFirstWeapon = !firstWeaponFound && target.weaponTarget !== undefined && 
+                                  target.weaponTarget !== 'None';
+            if (isFirstWeapon) {
+                firstWeaponFound = true;
+            }
 
             // Use the same calculation logic as timeline cards
             // Find all characters between prevPlanDate (or today) and targetDate
@@ -150,7 +188,7 @@
             const walletBefore = currentWallet.clone();
 
             // Simulate spending with wallet system
-            const spendResult = this.simulateWalletSpend(currentWallet, target);
+            const spendResult = this.simulateWalletSpend(currentWallet, target, isFirstChar, isFirstWeapon);
             const isSafe = spendResult.success;
 
             // Update wallet to remaining state AFTER pull

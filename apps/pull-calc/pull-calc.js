@@ -51,7 +51,7 @@ class Wallet {
         let remaining = emberCost;
 
         // Priority 1: Use Platinum Tickets (150 ember each)
-        const ticketsNeeded = Math.min(this.ticket, Math.floor(remaining / 150));
+        const ticketsNeeded = Math.min(this.ticket, Math.ceil(remaining / 150));
         this.ticket -= ticketsNeeded;
         result.used.ticket = ticketsNeeded;
         remaining -= ticketsNeeded * 150;
@@ -110,7 +110,7 @@ class Wallet {
         let remaining = emberCost;
 
         // Priority 1: Use Weapon Tickets (100 ember each)
-        const weaponTicketsNeeded = Math.min(this.weaponTicket, Math.floor(remaining / 100));
+        const weaponTicketsNeeded = Math.min(this.weaponTicket, Math.ceil(remaining / 100));
         this.weaponTicket -= weaponTicketsNeeded;
         result.used.weaponTicket = weaponTicketsNeeded;
         remaining -= weaponTicketsNeeded * 100;

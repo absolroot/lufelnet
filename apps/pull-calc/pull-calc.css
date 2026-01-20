@@ -218,25 +218,18 @@
 .schedule-notice {
     background: var(--card-background, #232323);
     border-radius: 6px;
-    padding: 10px 14px;
+    padding: 16px;
     margin: 0 20px 16px 20px;
 }
 
 .notice-text {
-    margin: 0;
+    margin: 0 0 12px 0;
     font-size: 12px;
     color: rgba(255, 255, 255, 0.65);
     line-height: 1.5;
 }
 
-.schedule-scenario-container {
-    background: var(--card-background, #232323);
-    border-radius: 6px;
-    padding: 16px;
-    margin: 0 20px 16px 20px;
-}
-
-.schedule-scenario-container .input-group {
+.schedule-notice .input-group {
     margin-bottom: 0;
 }
 
@@ -1181,10 +1174,6 @@ img[src$="r6.png"] {
     }
 
     .schedule-notice {
-        margin: 0 0 12px 0;
-    }
-
-    .schedule-scenario-container {
         margin: 0 0 12px 0;
     }
 

@@ -20,6 +20,7 @@ redirect_from:
 <!-- Schedule Data -->
 <script src="{{ site.baseurl }}/apps/schedule/data.js?v={{ site.time | date: '%s' }}"></script>
 
+<!-- SEO Meta Tags -->
 {% if page.alternate_urls %}
 <link rel="alternate" hreflang="ko" href="{{ site.url }}/pull-calc/" />
 {% for lang in page.alternate_urls %}
@@ -364,7 +365,137 @@ redirect_from:
 <script src="{{ site.baseurl }}/apps/pull-calc/pull-calc-graph.js?v={{ site.time | date: '%s' }}"></script>
 
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
+(function() {
+    // SEO Meta Data
+    const seoData = {
+        kr: {
+            title: '가챠 플래너 - 페르소나5 더 팬텀 X 루페르넷',
+            description: '페르소나5 더 팬텀 X 가챠 계획 시뮬레이터. 향후 캐릭터 출시에 맞춰 필요한 재화를 계산하고 계약 계획을 수립할 수 있습니다.',
+            keywords: 'P5X, 페르소나5X, 가챠 플래너, 가챠 계산기, 가챠 시뮬레이터, P5X 계산기, 계약 계획',
+            ogLocale: 'ko_KR'
+        },
+        en: {
+            title: 'Pull Planner - Persona 5 The Phantom X | lufel.net',
+            description: 'Pull planning simulator for Persona 5 The Phantom X. Calculate required resources and plan your pulls for upcoming character releases.',
+            keywords: 'P5X, Persona 5X, Pull Planner, Gacha Calculator, Pull Simulator, Pull Calculator, Gacha Planning',
+            ogLocale: 'en_US'
+        },
+        jp: {
+            title: 'ガチャプランナー - ペルソナ5 ザ・ファントム X | lufel.net',
+            description: 'ペルソナ5 ザ・ファントム Xのガチャ計画シミュレーター。今後のキャラクターリリースに合わせて必要な資源を計算し、ガチャ計画を立てることができます。',
+            keywords: 'P5X, ペルソナ5X, ガチャプランナー, ガチャ計算機, ガチャシミュレーター, P5X計算機, ガチャ計画',
+            ogLocale: 'ja_JP'
+        }
+    };
+
+    function detectLang() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const lang = urlParams.get('lang');
+        if (lang && ['kr', 'en', 'jp'].includes(lang)) {
+            return lang;
+        }
+        // URL 경로에서 언어 확인
+        const pathLang = window.location.pathname.split('/')[1];
+        if (['kr', 'en', 'jp'].includes(pathLang)) {
+            return pathLang;
+        }
+        // 로컬 스토리지에서 언어 확인
+        const savedLang = localStorage.getItem('preferredLanguage');
+        if (savedLang && ['kr', 'en', 'jp'].includes(savedLang)) {
+            return savedLang;
+        }
+        // 브라우저 언어 감지
+        const browserLang = navigator.language.toLowerCase();
+        if (browserLang.startsWith('ko')) return 'kr';
+        if (browserLang.startsWith('ja')) return 'jp';
+        if (browserLang.startsWith('en')) return 'en';
+        return 'kr'; // 기본값
+    }
+
+    function updateSEOTags(lang) {
+        const seo = seoData[lang] || seoData.kr;
+        const baseUrl = 'https://lufel.net';
+        const currentUrl = `${baseUrl}/pull-calc/?lang=${lang}`;
+
+        // Update document title
+        document.title = seo.title;
+
+        // Update meta description
+        let metaDesc = document.querySelector('meta[name="description"]');
+        if (!metaDesc) {
+            metaDesc = document.createElement('meta');
+            metaDesc.setAttribute('name', 'description');
+            document.head.appendChild(metaDesc);
+        }
+        metaDesc.setAttribute('content', seo.description);
+
+        // Update meta keywords
+        let metaKeywords = document.querySelector('meta[name="keywords"]');
+        if (!metaKeywords) {
+            metaKeywords = document.createElement('meta');
+            metaKeywords.setAttribute('name', 'keywords');
+            document.head.appendChild(metaKeywords);
+        }
+        metaKeywords.setAttribute('content', seo.keywords);
+
+        // Update Open Graph tags
+        function updateOGTag(property, content) {
+            let tag = document.querySelector(`meta[property="${property}"]`);
+            if (!tag) {
+                tag = document.createElement('meta');
+                tag.setAttribute('property', property);
+                document.head.appendChild(tag);
+            }
+            tag.setAttribute('content', content);
+        }
+
+        updateOGTag('og:title', seo.title);
+        updateOGTag('og:description', seo.description);
+        updateOGTag('og:url', currentUrl);
+        updateOGTag('og:locale', seo.ogLocale);
+        updateOGTag('og:type', 'website');
+        updateOGTag('og:image', `${baseUrl}/assets/img/home/seo.png`);
+
+        // Update Twitter Card tags
+        function updateTwitterTag(name, content) {
+            let tag = document.querySelector(`meta[name="${name}"]`);
+            if (!tag) {
+                tag = document.createElement('meta');
+                tag.setAttribute('name', name);
+                document.head.appendChild(tag);
+            }
+            tag.setAttribute('content', content);
+        }
+
+        updateTwitterTag('twitter:card', 'summary_large_image');
+        updateTwitterTag('twitter:title', seo.title);
+        updateTwitterTag('twitter:description', seo.description);
+        updateTwitterTag('twitter:image', `${baseUrl}/assets/img/home/seo.png`);
+
+        // Update canonical URL
+        let canonical = document.querySelector('link[rel="canonical"]');
+        if (!canonical) {
+            canonical = document.createElement('link');
+            canonical.setAttribute('rel', 'canonical');
+            document.head.appendChild(canonical);
+        }
+        canonical.setAttribute('href', currentUrl);
+
+        // Update HTML lang attribute
+        document.documentElement.setAttribute('lang', lang === 'jp' ? 'ja' : lang === 'kr' ? 'ko' : 'en');
+    }
+
+    // Initialize on DOM ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+            const lang = detectLang();
+            Navigation.load('pull-calc');
+            updateSEOTags(lang);
+        });
+    } else {
+        const lang = detectLang();
         Navigation.load('pull-calc');
-    });
+        updateSEOTags(lang);
+    }
+})();
 </script>

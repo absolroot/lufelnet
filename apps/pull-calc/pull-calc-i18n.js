@@ -6,9 +6,9 @@
 // i18n Labels
 const I18N = {
     kr: {
-        pageTitle: '뽑기 계산기',
+        pageTitle: '가챠 플래너',
         navHome: '홈',
-        navCurrent: '뽑기 계산기',
+        navCurrent: '가챠 플래너',
         assetsTitle: '보유 자산',
         incomeTitle: '수입 설정',
         pityTitle: '피티 설정',
@@ -16,13 +16,13 @@ const I18N = {
         scheduleNotice: '이 스케줄은 예상 일정이며, 실제 출시 날짜와 다를 수 있습니다. 클릭하여 계획에 추가/제거하세요.',
         chartTitle: '재화 변화 그래프',
         chartEmpty: '타임라인에서 캐릭터를 선택하세요',
-        planTitle: '뽑기 계획',
+        planTitle: '가챠 계획',
         planDescription: '타임라인에서 캐릭터를 클릭하여 계획에 추가하세요.',
         ember: '이계 엠버',
         ticket: '계약 티켓',
         paidEmber: '유료 엠버',
         weaponTicket: '무기 티켓',
-        cognigem: '인지의 결정',
+        cognigem: '인지 단면',
         totalEmber: '총 엠버:',
         dailyMission: '일일 미션',
         monthlySub: '월정액',
@@ -85,8 +85,8 @@ const I18N = {
         planDescription: 'Click characters from the timeline to add to your plan.',
         ember: 'Meta Jewel',
         ticket: 'Platinum Ticket',
-        paidEmber: 'Paid Jewel',
-        weaponTicket: 'Weapon Ticket',
+        paidEmber: 'Hollow Stone',
+        weaponTicket: 'Platinum Milicoin',
         cognigem: 'Cognigem',
         totalEmber: 'Total Jewel:',
         dailyMission: 'Daily Mission',
@@ -136,9 +136,9 @@ const I18N = {
         mustReadTitle: 'Calculator Criteria & Guide'
     },
     jp: {
-        pageTitle: 'ガチャ計算機',
+        pageTitle: 'ガチャプランナー',
         navHome: 'ホーム',
-        navCurrent: 'ガチャ計算機',
+        navCurrent: 'ガチャプランナー',
         assetsTitle: '保有資産',
         incomeTitle: '収入設定',
         pityTitle: '契約 進捗度設定',
@@ -148,17 +148,17 @@ const I18N = {
         chartEmpty: 'タイムラインからキャラクターを選択してください',
         planTitle: 'ガチャ計画',
         planDescription: 'タイムラインからキャラクターをクリックして計画に追加してください。',
-        ember: '異界晶',
-        ticket: '契約チケット',
-        paidEmber: '有料異界晶',
-        weaponTicket: '武器チケット',
-        cognigem: '認知の結晶',
-        totalEmber: '異界晶合計:',
+        ember: '異界琥珀',
+        ticket: 'プラチナチケット',
+        paidEmber: '異界晶',
+        weaponTicket: 'プラチナミリコイン',
+        cognigem: '認知の欠片',
+        totalEmber: '異界琥珀合計:',
         dailyMission: 'デイリーミッション',
         monthlySub: '月額パス',
         versionIncome: 'バージョン別収入',
         battlePass: 'バトルパス',
-        recursive: '認知の結晶再帰的変換',
+        recursive: '認知の欠片再帰的変換',
         charPity: 'キャラクタ 進捗度',
         weaponPity: '武器 進捗度',
         weapon5050Failed: '武器50:50失敗',
@@ -178,18 +178,18 @@ const I18N = {
         tickets: '枚',
         extraPurchase: '追加購入',
         currentResources: 'この時点の資源',
-        tooltipTicket: '1枚 = 150異界晶',
-        tooltipWeaponTicket: '1枚 = 100異界晶',
-        tooltipCognigem: '10個 = 100異界晶 (グローバル版)',
-        tooltipDailyMission: '毎日獲得可能な異界晶。デフォルト80。',
+        tooltipTicket: '1枚 = 150異界琥珀',
+        tooltipWeaponTicket: '1枚 = 100異界琥珀',
+        tooltipCognigem: '10個 = 100異界琥珀 (グローバル版)',
+        tooltipDailyMission: '毎日獲得可能な異界琥珀。デフォルト80。',
         tooltipVersionIncome: '各バージョン(パッチ)ごとに支給される収入。悪夢(NTMR)、海(SoS)などの週間コンテンツ合計をバージョン期間で割った値 + メンテナンス報酬、リデムコード、イベントなど。4.0以降は3週間間隔のため1.5倍適用。',
-        tooltipMonthlySub: '月額パス購入時、毎日獲得する異界晶。デフォルト100。',
-        tooltipBattlePass: 'バトルパス購入時、各パッチごとに獲得する異界晶。デフォルト1430 (限定チケット5枚 + 有料異界晶680)。',
-        tooltipRecursive: 'すべての4星キャラクターがフル覚醒(A6)状態であることを想定します。4星、5星キャラクターを引く際に獲得する認知の結晶を即座に異界晶に変換(10個=100異界晶)して再度引くのに使用します。',
+        tooltipMonthlySub: '月額パス購入時、毎日獲得する異界琥珀。デフォルト100。',
+        tooltipBattlePass: 'バトルパス購入時、各パッチごとに獲得する異界琥珀。デフォルト1430 (限定チケット5枚 + 有料異界琥珀680)。',
+        tooltipRecursive: 'すべての4星キャラクターがフル覚醒(A6)状態であることを想定します。4星、5星キャラクターを引く際に獲得する認知の結晶を即座に異界琥珀に変換(10個=100異界琥珀)して再度引くのに使用します。',
         tooltipCharPity: 'キャラクターバナーで最後の5星を引いた後の経過した引く回数です。110回はハードピティ(天井確定)です。',
         tooltipWeaponPity: '武器バナーで最後の5星を引いた後の経過した引く回数です。70回はハードピティ(天井)です。',
         tooltipWeapon5050Failed: '武器バナーで50%の確率で限定武器を引けなかったかどうかです。失敗時、次の5星は必ずピックアップ武器です。',
-        tooltipWeaponScenario: '武器50:50の運を基準に必要異界晶量を計算します。最善: すべての50:50成功、平均: 半分成功、最悪: すべての50:50失敗',
+        tooltipWeaponScenario: '武器50:50の運を基準に必要異界琥珀量を計算します。最善: すべての50:50成功、平均: 半分成功、最悪: すべての50:50失敗',
         tooltipChart: '時間による資源変化を示します。赤い領域は資源が不足している区間です。',
         charPityProgress: 'キャラクター 進捗中',
         weaponPityProgress: '武器 進捗中',
@@ -236,8 +236,8 @@ const MUST_READ_CONTENT = {
 This calculator follows the **'Targeted Contract'** system for characters.
 
 **1. Currency & Cost**
-- Contract Ticket: Equivalent to 150 Meta Jewels.
-- Weapon Ticket: Equivalent to 100 Meta Jewels.
+- Platinum Ticket: Equivalent to 150 Meta Jewels.
+- Platinum Milicoin: Equivalent to 100 Meta Jewels.
 - Priority: Tickets are consumed first. When both Character and Weapon require Jewels, Jewels are prioritized for the Character first.
 
 **2. Character Banner (Targeted)**
@@ -263,13 +263,13 @@ This calculator follows the **'Targeted Contract'** system for characters.
 この計算機はキャラクターは**「TARGET契約」**システムに基づいており計算します。
 
 **1. 通貨換算とコスト**
-- 契約チケット: 1枚につき150 異界晶(エンバー)として計算されます。
-- 武器チケット: 1枚につき100 異界晶(エンバー)として計算されます。
-- 優先順位: チケットが優先的に消費されます。異界晶が必要な場合、キャラクターに優先的に割り当てられます。
+- プラチナチケット: 1枚につき150 異界琥珀(エンバー)として計算されます。
+- プラチナミリコイン: 1枚につき100 異界琥珀(エンバー)として計算されます。
+- 優先順位: チケットが優先的に消費されます。異界琥珀が必要な場合、キャラクターに優先的に割り当てられます。
 
 **2. キャラクターガチャ（TARGET契約）**
 - 110回ごとにピックアップキャラクターが100%確定で排出されます。
-- 運の要素を排除し、1体につき110回（約16,500 異界晶）が必要と仮定します。
+- 運の要素を排除し、1体につき110回（約16,500 異界琥珀）が必要と仮定します。
 
 **3. 武器ガチャ（シナリオ別）**
 - 70回ごとに★5確定ですが、ピックアップ確率は50%です。

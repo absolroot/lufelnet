@@ -10,7 +10,23 @@
             "rotate": 0
         }
     ],
-    "objects": [],
+    "objects": [
+        {
+            "sn": 8461016,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                87,
+                209
+            ],
+            "ratio": 0.7,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        }
+    ],
     "enemies": [],
     "rotate": 0.0,
     "map_size": [

@@ -1,0 +1,85 @@
+{
+    "tiles": [
+        {
+            "image": "map_bqg_tiantai01.png",
+            "position": [
+                1,
+                0
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "objects": [
+        {
+            "sn": 8350103,
+            "image": "yishijie-icon-dianti01.png",
+            "position": [
+                505,
+                548
+            ],
+            "ratio": 0.475,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8350900,
+            "image": "yishijie-icon-dianti01.png",
+            "position": [
+                306,
+                266
+            ],
+            "ratio": 0.475,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8350901,
+            "image": "yishijie-icon-dianti01.png",
+            "position": [
+                89,
+                988
+            ],
+            "ratio": 0.475,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8353902,
+            "image": "yishijie-icon-dianti01.png",
+            "position": [
+                827,
+                96
+            ],
+            "ratio": 0.475,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        }
+    ],
+    "enemies": [],
+    "rotate": -229.0,
+    "map_size": [
+        866,
+        1024
+    ]
+}

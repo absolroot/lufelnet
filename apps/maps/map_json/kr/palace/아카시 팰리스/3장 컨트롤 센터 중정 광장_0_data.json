@@ -7,7 +7,11 @@
                 356
             ],
             "ratio": 1,
-            "rotate": 0
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5028789,
+                0.71068525
+            ]
         }
     ],
     "objects": [
@@ -15,8 +19,8 @@
             "sn": 8535024,
             "image": "yishijie-icon-box-01-new.png",
             "position": [
-                356,
-                1003
+                357,
+                998
             ],
             "ratio": 0.375,
             "rotate": 0.0,
@@ -30,8 +34,8 @@
             "sn": 8535076,
             "image": "yishijie-icon-robot02-kong-new.png",
             "position": [
-                388,
-                798
+                384,
+                799
             ],
             "ratio": 0.39473684210526316,
             "rotate": 0.0,
@@ -45,8 +49,8 @@
             "sn": 8535077,
             "image": "yishijie-icon-robot02-kong-new.png",
             "position": [
-                356,
-                727
+                358,
+                722
             ],
             "ratio": 0.39473684210526316,
             "rotate": 0.0,
@@ -60,8 +64,8 @@
             "sn": 8535078,
             "image": "yishijie-icon-robot02-kong-new.png",
             "position": [
-                334,
-                798
+                332,
+                799
             ],
             "ratio": 0.39473684210526316,
             "rotate": 0.0,
@@ -77,8 +81,8 @@
             "sn": 8535001,
             "image": "yishijie-icon-anquanwu-new.png",
             "position": [
-                172,
-                757
+                171,
+                761
             ],
             "ratio": 0.16666666666666666,
             "rotate": 0,

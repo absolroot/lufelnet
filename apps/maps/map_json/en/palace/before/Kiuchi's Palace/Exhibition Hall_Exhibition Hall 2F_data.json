@@ -1,0 +1,363 @@
+{
+    "tiles": [
+        {
+            "image": "map_bqg_benlei1F.png",
+            "position": [
+                892,
+                330
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_bqg_benlei2F_E1_1.png",
+            "position": [
+                1254,
+                849
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_bqg_benlei2F_E1_2.png",
+            "position": [
+                1175,
+                521
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_bqg_benlei2F_D1.png",
+            "position": [
+                1633,
+                436
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "objects": [
+        {
+            "sn": 8304006,
+            "image": "yishijie-icon-box-suo-new.png",
+            "position": [
+                1630,
+                809
+            ],
+            "ratio": 1.2916666666666667,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8304020,
+            "image": "yishijie-icon-dianti01.png",
+            "position": [
+                1434,
+                971
+            ],
+            "ratio": 1.55,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8304501,
+            "image": "breakable.png",
+            "position": [
+                1639,
+                709
+            ],
+            "ratio": 1.55,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8304502,
+            "image": "breakable.png",
+            "position": [
+                1630,
+                547
+            ],
+            "ratio": 1.55,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8304503,
+            "image": "breakable.png",
+            "position": [
+                1191,
+                737
+            ],
+            "ratio": 1.55,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8304504,
+            "image": "breakable.png",
+            "position": [
+                1191,
+                619
+            ],
+            "ratio": 1.55,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        }
+    ],
+    "enemies": [
+        {
+            "sn": "8304001",
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                1350,
+                881
+            ],
+            "ratio": 0.6888888888888889,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": "8304011",
+            "image": "yishijie-icon-boss01.png",
+            "position": [
+                1732,
+                556
+            ],
+            "ratio": 1.0163934426229508,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": {
+                "instSn": 20803,
+                "enemies": [
+                    [
+                        {
+                            "sn": "201251",
+                            "name": "Genbu",
+                            "adapt": {
+                                "Weak": [
+                                    "Electric"
+                                ],
+                                "Resistant": [
+                                    "Psychokinesis"
+                                ],
+                                "Nullify": [
+                                    "Ice"
+                                ],
+                                "Reflect": [],
+                                "Absorb": []
+                            },
+                            "level": "19",
+                            "stat": {
+                                "HP": 3887.649,
+                                "HP 계산식": "(3153.0 * (1 + 0.23) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 316.2181,
+                                "공격력 계산식": "(256.46 * (1 + 0.23) + 0) * (1 + 0)",
+                                "방어력": 687.592,
+                                "방어력 계산식": "(687.59 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.095,
+                                "효과 명중 계산식": "(0.1 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.195,
+                                "효과 저항 계산식": "(0.2 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 0,
+                                "다운 수치 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 71.7,
+                                "속도 계산식": "(71.7 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 0.155,
+                                "대미지 보너스 계산식": "(0.15 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": "1407",
+                                    "name": "Rakukaja",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Increase 1 ally's Defense by 17.5%. For every 500 of the user's Defense, increase the target's Defense by 2.9% more, up to 11.7%. Lasts for 3 turns."
+                                    },
+                                    "cost": "SP 22"
+                                },
+                                {
+                                    "sn": "205",
+                                    "name": "Mabufu",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Ice damage to all foes equal to 39.8% of Attack. 22.1% chance to inflict Freeze for 2 turns."
+                                    },
+                                    "cost": "SP 19"
+                                },
+                                {
+                                    "sn": "202",
+                                    "name": "Bufula",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Ice damage to 1 foe equal to 85.5% of Attack. 47.5% chance to inflict Freeze for 2 turns."
+                                    },
+                                    "cost": "SP 20"
+                                },
+                                {
+                                    "sn": "201",
+                                    "name": "Bufu",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Ice damage to 1 foe equal to 79.6% of Attack. 44.2% chance to inflict Freeze for 2 turns."
+                                    },
+                                    "cost": "SP 19"
+                                }
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "sn": "201252",
+                            "name": "Apsaras",
+                            "adapt": {
+                                "Weak": [
+                                    "Electric"
+                                ],
+                                "Resistant": [
+                                    "Ice"
+                                ],
+                                "Nullify": [],
+                                "Reflect": [],
+                                "Absorb": []
+                            },
+                            "level": "19",
+                            "stat": {
+                                "HP": 3239.7075,
+                                "HP 계산식": "(2627.5 * (1 + 0.23) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 316.2181,
+                                "공격력 계산식": "(256.46 * (1 + 0.23) + 0) * (1 + 0)",
+                                "방어력": 687.592,
+                                "방어력 계산식": "(687.59 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.095,
+                                "효과 명중 계산식": "(0.1 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.195,
+                                "효과 저항 계산식": "(0.2 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 0,
+                                "다운 수치 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 71.7,
+                                "속도 계산식": "(71.7 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 0.155,
+                                "대미지 보너스 계산식": "(0.15 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": "1311",
+                                    "name": "Elec Wall",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Grant an Electric-resistant barrier for 2 turns."
+                                    },
+                                    "cost": "SP skillLv*-1+28"
+                                },
+                                {
+                                    "sn": "201",
+                                    "name": "Bufu",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Ice damage to 1 foe equal to 79.6% of Attack. 44.2% chance to inflict Freeze for 2 turns."
+                                    },
+                                    "cost": "SP 19"
+                                },
+                                {
+                                    "sn": "1505",
+                                    "name": "Media",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Restore party's HP by 12.5% of Attack + 40."
+                                    },
+                                    "cost": "SP 23"
+                                }
+                            ]
+                        }
+                    ]
+                ],
+                "tutorial": {
+                    "sn": 201251,
+                    "title": "Unique Shadow Abilities",
+                    "content": "1. At the start of battle, Genbu will gain <color=#FF423F>Black Tortoiseshell</color> stacks equal to its <color=#FF423F>Down Points</color>, and its Defense and damage reduction will increase with each stack.\n2. When Genbu is hit by an attack other than its weakness or a critical, it will gain 1 <color=#FF423F>Down Point</color> and <color=#FF423F>Black Tortoiseshell</color> stack.\nWhen hit by its weakness or a critical, it will lose 1 <color=#FF423F>Black Tortoiseshell</color> stack.\nWhen Genbu is knocked down, it becomes unable to act for 2 turns, and cannot recover Down Points or use skills."
+                }
+            }
+        }
+    ],
+    "rotate": 180.0,
+    "map_size": [
+        2808,
+        1000
+    ]
+}

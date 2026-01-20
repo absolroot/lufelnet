@@ -130,6 +130,13 @@
     font-size: 14px;
 }
 
+@media (max-width: 768px) {
+    .mustread-content {
+        padding: 0px;
+    }
+}
+
+
 .mustread-content h3 {
     font-size: 18px;
     font-weight: 700;
@@ -210,8 +217,6 @@
    ======================================== */
 .schedule-notice {
     background: var(--card-background, #232323);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-left: 3px solid rgba(255, 255, 255, 0.25);
     border-radius: 6px;
     padding: 10px 14px;
     margin: 0 20px 16px 20px;
@@ -780,12 +785,12 @@ img[src$="r6.png"] {
 /* status-column-before and status-column-required: border-left removed */
 
 .status-column-after.safe {
-    box-shadow: inset 3px 0 0 0 #7dda7d;
+    box-shadow: inset 0 0 0 1px #7dda7d;
     background: rgba(125, 218, 125, 0.05);
 }
 
 .status-column-after.warning {
-    box-shadow: inset 3px 0 0 0 #ff7777;
+    box-shadow: inset 0 0 0 1px #ff7777;
     background: rgba(255, 119, 119, 0.05);
 }
 

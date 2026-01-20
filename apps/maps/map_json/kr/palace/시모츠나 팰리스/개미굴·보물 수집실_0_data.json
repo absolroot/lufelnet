@@ -7,7 +7,11 @@
                 0
             ],
             "ratio": 1,
-            "rotate": 0
+            "rotate": 0,
+            "rotate_pivot": [
+                0.50005174,
+                0.49994713
+            ]
         }
     ],
     "objects": [
@@ -16,7 +20,7 @@
             "image": "yishijie-icon-box-01-new.png",
             "position": [
                 320,
-                431
+                430
             ],
             "ratio": 0.4,
             "rotate": 0.0,
@@ -45,8 +49,8 @@
             "sn": 8649003,
             "image": "yishijie-icon-box-01-new.png",
             "position": [
-                299,
-                411
+                296,
+                408
             ],
             "ratio": 0.4,
             "rotate": 0.0,
@@ -60,8 +64,8 @@
             "sn": 8649004,
             "image": "yishijie-icon-box-01-new.png",
             "position": [
-                299,
-                309
+                296,
+                311
             ],
             "ratio": 0.4,
             "rotate": 0.0,
@@ -75,8 +79,8 @@
             "sn": 8649005,
             "image": "yishijie-icon-box-hexin-new.png",
             "position": [
-                138,
-                360
+                137,
+                359
             ],
             "ratio": 0.3333333333333333,
             "rotate": 0.0,

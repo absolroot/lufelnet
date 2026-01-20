@@ -7,7 +7,11 @@
                 0
             ],
             "ratio": 1,
-            "rotate": 0
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
         }
     ],
     "objects": [
@@ -15,8 +19,8 @@
             "sn": 8625005,
             "image": "yishijie-icon-box-01-new.png",
             "position": [
-                452,
-                257
+                454,
+                254
             ],
             "ratio": 0.325,
             "rotate": 0.0,
@@ -30,8 +34,8 @@
             "sn": 8625007,
             "image": "yishijie-icon-box-01-new.png",
             "position": [
-                346,
-                29
+                343,
+                30
             ],
             "ratio": 0.325,
             "rotate": 0.0,
@@ -45,7 +49,7 @@
             "sn": 8625008,
             "image": "yishijie-icon-box-teshu-new.png",
             "position": [
-                444,
+                443,
                 97
             ],
             "ratio": 0.2708333333333333,

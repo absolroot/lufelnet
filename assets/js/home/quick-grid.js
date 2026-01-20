@@ -49,21 +49,21 @@
             materialCalc: '육성 계산기', defenseCalc: '방어력 계산기', criticalCalc: '크리티컬 계산기',
             tacticLibrary: '택틱 도서관', tacticMaker: '택틱 메이커',
             tier: '티어', guide: '가이드', gallery: '갤러리', synergy: '협력자', support: '서포트', schedule: '스케줄',
-            maps: '지도'
+            maps: '지도', pullCalc: '가챠 플래너'
         },
         en: {
             character: 'Character', persona: 'Persona', revelations: 'Revelations', wonderweapon: 'Wonder Daggers',
             pullTracker: 'Pull Tracker', pullTracker_global: 'Pull Global Stats',
             materialCalc: 'Progression Calc', defenseCalc: 'Defense Calc', criticalCalc: 'Critical Calc',
             tacticLibrary: 'Tactics Library', tacticMaker: 'Tactic Maker',
-            tier: 'Tiers', guide: 'Guides', gallery: 'Gallery', schedule: 'Schedule', synergy: 'Synergy', support: 'Support', maps: 'Maps'
+            tier: 'Tiers', guide: 'Guides', gallery: 'Gallery', schedule: 'Schedule', synergy: 'Synergy', support: 'Support', maps: 'Maps', pullCalc: 'Pull Planner'
         },
         jp: {
             character: '怪盗', persona: 'ペルソナ', revelations: '啓示', wonderweapon: 'ワンダー武器',
             pullTracker: 'ガチャ履歴', pullTracker_global: '全体統計',
             materialCalc: '育成計算機', defenseCalc: '防御力減少計算機', criticalCalc: 'クリティカル計算機',
             tacticLibrary: 'タクティクスライブラリー', tacticMaker: 'タクティクスメーカー',
-            tier: 'ティア', guide: 'ガイド', gallery: 'ギャラリー', schedule: 'スケジュール', synergy: 'シナジー', support: 'サポート', maps: '地図'
+            tier: 'ティア', guide: 'ガイド', gallery: 'ギャラリー', schedule: 'スケジュール', synergy: 'シナジー', support: 'サポート', maps: '地図', pullCalc: 'ガチャプランナー'  
         }
     };
 
@@ -85,7 +85,8 @@
         gallery: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/gallery.png`,
         schedule: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/schedule.png`,
         synergy: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/synergy.png`,
-        support: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/support.png`
+        support: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/support.png`,
+        pullCalc: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/pull-calc.png`
     };
 
     const pathMap = {
@@ -106,7 +107,8 @@
         gallery: '/gallery',
         schedule: '/schedule',
         synergy: '/synergy',
-        support: '/about'
+        support: '/about',
+        pullCalc: '/pull-calc'
     };
 
     const buildHref = (key, lang) => {
@@ -125,14 +127,14 @@
             return ['character','persona','revelations','synergy','wonderweapon','maps','pullTracker','pullTracker_global','materialCalc','defenseCalc','criticalCalc','tacticLibrary','tacticMaker','guide','tier','gallery','support'];
         }
         if (lang === 'jp' || lang === 'en') {
-            return ['character','persona','revelations','synergy','wonderweapon','maps','pullTracker','pullTracker_global','materialCalc','defenseCalc','criticalCalc','tacticLibrary','guide','tier','gallery','schedule','support'];
+            return ['character','persona','revelations','synergy','wonderweapon','maps','pullTracker','pullTracker_global','materialCalc','defenseCalc','criticalCalc','tacticLibrary','guide','tier','gallery','schedule','pullCalc','support'];
         }
         // default to KR set
-        return ['character','persona','revelations','synergy','wonderweapon','maps','pullTracker','pullTracker_global','materialCalc','defenseCalc','criticalCalc','tacticLibrary','guide','tier','gallery','support'];
+        return ['character','persona','revelations','synergy','wonderweapon','maps','pullTracker','pullTracker_global','materialCalc','defenseCalc','criticalCalc','tacticLibrary','guide','tier','gallery','schedule','pullCalc','support'];
     };
 
     // New 배지를 표시할 아이템 목록
-    const newItems = ['maps','synergy','defenseCalc','criticalCalc','schedule','wonderweapon'];
+    const newItems = ['maps','synergy','wonderweapon','pullCalc'];
 
     const render = () => {
         const root = document.getElementById('quick-grid');

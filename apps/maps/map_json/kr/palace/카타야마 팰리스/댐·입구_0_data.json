@@ -7,7 +7,11 @@
                 0
             ],
             "ratio": 1,
-            "rotate": 0
+            "rotate": 0,
+            "rotate_pivot": [
+                0.52095985,
+                0.5023518
+            ]
         }
     ],
     "objects": [],

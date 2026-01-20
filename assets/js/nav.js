@@ -52,6 +52,8 @@ class Navigation {
                 pullTracker_individual: '개인 통계',
                 pullTracker_global: '전체 통계',
                 schedule: '스케줄',
+                scheduleRelease: '출시 일정',
+                pullPlanner: '뽑기 플래너',
                 article: '가이드',
                 gallery: '갤러리',
                 about: 'about'
@@ -80,6 +82,8 @@ class Navigation {
                 pullTracker_individual: 'Individual Stats',
                 pullTracker_global: 'Global Stats',
                 schedule: 'Schedule',
+                scheduleRelease: 'Release Schedule',
+                pullPlanner: 'Pull Planner',
                 article: 'Guides',
                 gallery: 'Gallery',
                 about: 'About'
@@ -108,6 +112,8 @@ class Navigation {
                 pullTracker_individual: '個人統計',
                 pullTracker_global: '全体統計',
                 schedule: 'スケジュール',
+                scheduleRelease: 'リリース',
+                pullPlanner: 'ガチャプランナー',
                 article: 'ガイド',
                 gallery: 'ギャラリー',
                 about: '紹介'
@@ -277,13 +283,22 @@ class Navigation {
                     </div>
                 </div>
                 ` : ''}
-                ${ 
-                currentMenus.includes('schedule') ? `
-                <a href="${BASE_URL}/schedule/?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="schedule">
-                    <img src="${BASE_URL}/assets/img/nav/schedule.png" alt="schedule" style="width: 32px; height: 32px; object-fit: contain;" />
-                    <span data-text="${texts.schedule}">${texts.schedule}</span>
-                </a>
-                ` : '' }
+                ${currentMenus.includes('schedule') ? `
+                <div class="nav-item has-submenu" data-nav="schedule">
+                    <div class="nav-main-item">
+                        <img src="${BASE_URL}/assets/img/nav/schedule.png" alt="schedule" style="width: 32px; height: 32px; object-fit: contain;" />
+                        <span data-text="${texts.schedule}">${texts.schedule}</span>
+                    </div>
+                    <div class="submenu">
+                        <a href="${BASE_URL}/schedule/?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="schedule-release">
+                            <span data-text="${texts.scheduleRelease}">◈　${texts.scheduleRelease}</span>
+                        </a>
+                        <a href="${BASE_URL}/pull-calc/?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="pull-calc">
+                            <span data-text="${texts.pullPlanner}">◈　${texts.pullPlanner}</span>
+                        </a>
+                    </div>
+                </div>
+                ` : ''}
                 ${currentMenus.includes('gallery') ? `
                     <a href="${BASE_URL}/gallery/?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="gallery">
                         <img src="${BASE_URL}/assets/img/nav/gallery.png" alt="gallery" style="width: 32px; height: 32px; object-fit: contain;" />
@@ -435,6 +450,31 @@ class Navigation {
                     
                     // 현재 활성화된 서브메뉴 아이템 찾기
                     let activeSubItem = document.querySelector(`[data-nav="${activePage}"]`);
+                    
+                    if (activeSubItem) {
+                        // 다른 서브메뉴 아이템의 active 클래스 제거
+                        document.querySelectorAll('.nav-sub-item').forEach(item => {
+                            item.classList.remove('active');
+                        });
+                        // 현재 서브메뉴 아이템 활성화
+                        activeSubItem.classList.add('active');
+                    }
+                }
+            }
+
+            // 스케줄 관련 페이지인 경우 추가 처리
+            if (activePage === 'schedule' || activePage === 'schedule-release' || activePage === 'pull-calc') {
+                const scheduleMenu = document.querySelector('[data-nav="schedule"]');
+                if (scheduleMenu) {
+                    scheduleMenu.classList.add('active');
+                    
+                    // 현재 활성화된 서브메뉴 아이템 찾기
+                    let activeSubItem;
+                    if (activePage === 'schedule' || activePage === 'schedule-release') {
+                        activeSubItem = document.querySelector('[data-nav="schedule-release"]');
+                    } else if (activePage === 'pull-calc') {
+                        activeSubItem = document.querySelector('[data-nav="pull-calc"]');
+                    }
                     
                     if (activeSubItem) {
                         // 다른 서브메뉴 아이템의 active 클래스 제거

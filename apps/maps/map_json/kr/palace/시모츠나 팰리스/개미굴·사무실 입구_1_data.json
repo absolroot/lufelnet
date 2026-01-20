@@ -7,7 +7,11 @@
                 0
             ],
             "ratio": 1,
-            "rotate": 0
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
         }
     ],
     "objects": [
@@ -15,8 +19,8 @@
             "sn": 8625006,
             "image": "yishijie-icon-box-01-new.png",
             "position": [
-                183,
-                363
+                185,
+                360
             ],
             "ratio": 0.325,
             "rotate": 0.0,
@@ -30,8 +34,8 @@
             "sn": 8625013,
             "image": "breakable.png",
             "position": [
-                69,
-                181
+                71,
+                182
             ],
             "ratio": 0.325,
             "rotate": 0.0,
@@ -45,8 +49,8 @@
             "sn": 8625014,
             "image": "breakable.png",
             "position": [
-                69,
-                173
+                66,
+                176
             ],
             "ratio": 0.325,
             "rotate": 0.0,
@@ -61,7 +65,7 @@
             "image": "breakable.png",
             "position": [
                 77,
-                181
+                179
             ],
             "ratio": 0.325,
             "rotate": 0.0,
@@ -75,8 +79,8 @@
             "sn": 8625016,
             "image": "breakable.png",
             "position": [
-                134,
-                416
+                131,
+                413
             ],
             "ratio": 0.325,
             "rotate": 0.0,
@@ -90,8 +94,8 @@
             "sn": 8625017,
             "image": "breakable.png",
             "position": [
-                134,
-                409
+                131,
+                406
             ],
             "ratio": 0.325,
             "rotate": 0.0,
@@ -105,8 +109,8 @@
             "sn": 8625018,
             "image": "breakable.png",
             "position": [
-                395,
-                203
+                393,
+                201
             ],
             "ratio": 0.325,
             "rotate": 0.0,
@@ -120,8 +124,8 @@
             "sn": 8625019,
             "image": "breakable.png",
             "position": [
-                387,
-                203
+                386,
+                205
             ],
             "ratio": 0.325,
             "rotate": 0.0,

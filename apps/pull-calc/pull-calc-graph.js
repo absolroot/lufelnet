@@ -610,6 +610,11 @@
                 animation: {
                     duration: 0 // Disable animation to prevent flickering
                 },
+                layout: {
+                    padding: {
+                        top: 30 // Add padding at top for character images
+                    }
+                },
                 scales: {
                     x: {
                         grid: { color: 'rgba(255, 255, 255, 0.05)' },

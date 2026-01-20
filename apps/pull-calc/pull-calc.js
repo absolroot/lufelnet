@@ -548,12 +548,14 @@ class PullSimulator {
         const dailyInput = document.getElementById('inputDailyMission');
         if (dailyInput) {
             dailyInput.value = this.income.dailyMission || 80;
+            dailyInput.addEventListener('input', () => this.handleIncomeChange());
             dailyInput.addEventListener('change', () => this.handleIncomeChange());
         }
 
         const versionInput = document.getElementById('inputVersionIncome');
         if (versionInput) {
             versionInput.value = this.income.versionIncome || 1000;
+            versionInput.addEventListener('input', () => this.handleIncomeChange());
             versionInput.addEventListener('change', () => this.handleIncomeChange());
         }
 
@@ -567,6 +569,7 @@ class PullSimulator {
         const monthlySubAmountEl = document.getElementById('inputMonthlySubAmount');
         if (monthlySubAmountEl) {
             monthlySubAmountEl.value = this.income.monthlySubAmount || 100;
+            monthlySubAmountEl.addEventListener('input', () => this.handleIncomeChange());
             monthlySubAmountEl.addEventListener('change', () => this.handleIncomeChange());
         }
 
@@ -649,6 +652,8 @@ class PullSimulator {
         this.income.recursive = document.getElementById('inputRecursive')?.checked || false;
 
         this.saveData();
+        // Rebuild timeline to update income display on character cards
+        this.buildSchedule();
         this.recalculate();
     }
 

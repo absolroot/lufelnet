@@ -127,10 +127,10 @@
             return ['character','persona','revelations','synergy','wonderweapon','maps','pullTracker','pullTracker_global','materialCalc','defenseCalc','criticalCalc','tacticLibrary','tacticMaker','guide','tier','gallery','support'];
         }
         if (lang === 'jp' || lang === 'en') {
-            return ['character','persona','revelations','synergy','wonderweapon','maps','pullTracker','pullTracker_global','materialCalc','defenseCalc','criticalCalc','tacticLibrary','guide','tier','gallery','schedule','pullCalc','support'];
+            return ['character','persona','revelations','synergy','wonderweapon','maps','pullTracker','pullTracker_global','materialCalc','defenseCalc','criticalCalc','tacticLibrary','guide','tier','schedule','pullCalc','gallery','support'];
         }
         // default to KR set
-        return ['character','persona','revelations','synergy','wonderweapon','maps','pullTracker','pullTracker_global','materialCalc','defenseCalc','criticalCalc','tacticLibrary','guide','tier','gallery','schedule','pullCalc','support'];
+        return ['character','persona','revelations','synergy','wonderweapon','maps','pullTracker','pullTracker_global','materialCalc','defenseCalc','criticalCalc','tacticLibrary','guide','tier','schedule','pullCalc','gallery','support'];
     };
 
     // New 배지를 표시할 아이템 목록

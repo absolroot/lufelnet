@@ -6,12 +6,21 @@
 광역 화염 속성을 보조하는 1스킬 또는 단일 추가 효과 공격을 보조하는 2스킬을 사용하면 3스킬이 해금되는 구조다.
 
 스킬의 **방어력 감소 효과**를 최대치로 얻기 위해서는 **효과 명중 수치를 권장 수치**까지 올려주는 것이 좋다.`,
-        review_en: `A debuffer who enhances Fire damage or Resonance damage.
+        review_en: `This page has not been updated to reflect the global patch. It will be updated in the future.
+
+<br>
+
+A debuffer who enhances Fire damage or Resonance damage.
 
 Using Skill 1, which supports AoE Fire attacks, or Skill 2, which boosts single-target Resonance attacks, unlocks Skill 3.
 
 To maximize the skill's **Defense Reduction effect**, it is recommended to **raise Ailment Accuracy to the advised threshold**.`,
-        review_jp: `火炎属性ダメージ、または意識奏功ダメージを強化するデバッファー。
+        review_jp: `
+このページはグローバルパッチの反映を反映していません。将来的に更新されます。
+
+<br>
+
+火炎属性ダメージ、または意識奏功ダメージを強化するデバッファー。
 
 全体火炎攻撃を補助するスキル1、もしくは単体の意識奏功攻撃を補助するスキル2を使用すると、スキル3が解禁される構造になっている。
 

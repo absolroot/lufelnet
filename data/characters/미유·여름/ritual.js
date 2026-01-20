@@ -19,7 +19,7 @@ window.ritualData["미유·여름"] = {
   "r6_detail": "사하라 미유·여름의 SP 상한이 250포인트 추가 증가한다. 전투 시작 시 SP가 최대치까지 회복하며 자동으로 『바다의 영역』을 전개한다. 『파도의 노래』의 중첩 상한이 2회 추가 증가한다.\n『해월의 꿈』 시전 시 회복하는 SP가 50% 증가한다.\n『푸른 협주』 시전 후 『바다의 영역』에서 나가지 않으며, 『파도의 노래』 제거 시점은 턴 종료 후로 바뀐다. 제거 후 추가로 SP가 최대치만큼 회복한다."
 };
 window.enCharacterRitualData["미유·여름"] = {
-  "name": "Miyu Sahara·Summer",
+  "name": "Miyu·Summer",
   "r0": "Call of the Tide",
   "r0_detail": "During battle, Miyu can get on her surfboard to open [Ocean's Domain], spending SP to keep dealing damage to foes. Increase Miyu's max SP to 200. At the start of battle, set her SP to 0. At the start of each other ally's action, Miyu will restore 15 SP (this effect is affected by SP Recovery). \nMiyu will gain the following buffs based on the SP she restored (including SP over the cap):\nRestored 100 SP: Increase Attack by 10%;\nRestored 200 SP: Increase damage by 10%;\nRestored 300 SP: Increase critical rate by 12%;\nRestored 400 SP: Increase critical damage by 24%.",
   "r1": "Girl from the Sea",

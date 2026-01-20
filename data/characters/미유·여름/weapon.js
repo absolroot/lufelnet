@@ -22,7 +22,7 @@ window.WeaponData["미유·여름"] = {
   }
 };
 window.enCharacterWeaponData["미유·여름"] = {
-  "name": "Miyu Sahara Summer",
+  "name": "Miyu·Summer",
   "weapon4-1": {
     "name": "Clear Jellyfish Sky",
     "health": 1807,

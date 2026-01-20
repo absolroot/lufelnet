@@ -22,7 +22,7 @@ window.WeaponData["야오링·사자무"] = {
   }
 };
 window.enCharacterWeaponData["야오링·사자무"] = {
-  "name": "Yaoling Li·Lion Dance",
+  "name": "Yaoling·Lion Dance",
   "weapon4-1": {
     "name": "Timely Snow",
     "health": 1791,

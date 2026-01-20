@@ -19,7 +19,7 @@ window.ritualData["야오링·사자무"] = {
   "r6_detail": "『철꽃의 춤』상태의 지속 시간이 영구적으로 변하며, 『불꽃놀이 유성』이 『흐르는 별빛』으로 강화되어 주는 대미지가 80% 증가한다.\n『흐르는 별빛』 사용 시 『철꽃의 춤』상태는 계속 지속된다.\n『새해의 축복』의 『흐르는 별빛』에 대한 강화 상태와 크리티컬 확률 증가의 지속 시간이 영구적으로 변하고, 『폭죽의 노래』의 『흐르는 별빛』에 대한 강화 상태와 적이 보유한 화상 상태의 지속 시간이 1턴 연장한다."
 };
 window.enCharacterRitualData["야오링·사자무"] = {
-  "name": "Yaoling Li·Lion Dance",
+  "name": "Yaoling·Lion Dance",
   "r0": "Year Fire Farewell",
   "r0_detail": "Rin - Lion Dance can enchant your sword with flame, turning Melee Attack into [Fiery Shooting Star], dealing severe Fire TECHNICAL DMG. When triggering [Backdraft], increases TECHNICAL effects by 20%.\n\nFire TECHNICAL: Some Fire-type skills gain additional effects against enemies in certain conditions.\nWhen a Fire skill triggers a TECHNICAL on an enemy afflicted with Burn, it activates Backdraft, increasing skill damage by 2%.\nWhen a Fire skill triggers a TECHNICAL on an enemy afflicted with Freeze, it activates Flames of Ice, causing the target to take 5% increased Fire/Ice damage for 2 turns with a base probability of 50%.\nWhen a Fire skill triggers a TECHNICAL on an enemy afflicted with Wind Shear, it activates Flame Tempest, dealing additional Fire damage equal to 1% of the target’s max HP once.",
   "r1": "Booming Firecrackers",

@@ -47,7 +47,7 @@ window.characterSkillsData["미유·여름"] = {
   }
 };
 window.enCharacterSkillsData["미유·여름"] = {
-  "name": "Miyu Sahara Summer",
+  "name": "Miyu·Summer",
   "skill1": {
     "name": "Jellyfish Reverie",
     "element": "빙결광역",

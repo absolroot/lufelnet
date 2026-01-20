@@ -21,7 +21,7 @@ window.WeaponData["쇼키·암야"] = {
   }
 };
 window.enCharacterWeaponData["쇼키·암야"] = {
-  "name": "Shoki Ikenami·Notte",
+  "name": "Shoki·Notte",
   "weapon4-1": {
     "name": "Emperor's Will",
     "health": 1918,

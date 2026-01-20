@@ -1,6 +1,6 @@
 (function () {
     window.characterReview = window.characterReview || {};
-    window.characterReview["슌·프론티어"] = { name_en: "Shun Kano·Pioneer", name_jp: "加納 駿·フロンティア", codename: "SOY·Pioneer",
+    window.characterReview["슌·프론티어"] = { name_en: "Shun·Pioneer", name_jp: "加納 駿·フロンティア", codename: "SOY·Pioneer",
         review: `괴도단의 멤버로 각성 형태다. **아군에게 실드를 제공하고 한 명의 아군을 지정해 체력 소모 및 대미지를 대신하여 받는 탱커다.**
         
 같은 포지션인 다른 방위 속성의 괴도들에 비해 높은 수치의 버프를 보유하고 있어 안정성과 더불어 대미지 증가율을 함께 기대할 수 있다.

@@ -19,7 +19,7 @@ window.ritualData["쇼키·암야"] = {
   "r6_detail": "이케나미 쇼키·암야의 HP가 0이 되어도 사망하지 않으며, 최대 HP의 추가 100%까지 HP가 음수로 내려갈 수 있다. HP가 음수 상태가 되면 『암야군왕』 상태에 돌입하여, 주는 대미지가 30% 증가하고, 크리티컬 효과가 30% 증가하며, 『암야의 계약』이 『이 이름을 너의 몸에 새기노라』에 부여하는 스킬 대미지 증가 효과가 기존의 120%로 강화된다.\n또한 『암야의 계약』의 중첩 상한이 추가로 3 증가한다. 전투 시작 시 돌파 상한을 돌파하는 『암야의 축복』 5중첩이 부여되며, 지속 시간은 영구적이다."
 };
 window.enCharacterRitualData["쇼키·암야"] = {
-  "name": "Shoki Ikenami·Notte",
+  "name": "Shoki·Notte",
   "r0": "Star in the Night",
   "r0_detail": "When Shoki gains Blessing, convert it into [Night's Blessing]: This counts as Blessing, at the end of turn, gain a Shield equal to 2% of max HP for 2 turns. Stacks up to 10 times. Shield from this effect lasts for 2 turns.",
   "r1": "Shooting Star's Guidance",

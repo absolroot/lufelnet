@@ -46,7 +46,7 @@ window.characterSkillsData["미나미·여름"] = {
   }
 };
 window.enCharacterSkillsData["미나미·여름"] = {
-  "name": "Minami Miyashita Summer",
+  "name": "Minami·Summer",
   "skill1": {
     "name": "Summer Gift Basket",
     "element": "축복광역",

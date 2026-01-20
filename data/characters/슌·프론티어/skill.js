@@ -42,7 +42,7 @@ window.characterSkillsData["슌·프론티어"] = {
   }
 };
 window.enCharacterSkillsData["슌·프론티어"] = {
-  "name": "Shun Kano·Pioneer",
+  "name": "Shun·Pioneer",
 
   "skill1": {
     "name": "Justice Shot",

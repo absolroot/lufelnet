@@ -4,7 +4,7 @@ const enCharacterSkillsData = {
     },
 
     "쇼키·암야": {
-        "name": "Shoki Ikenami·Notte",
+        "name": "Shoki·Notte",
         "skill1": {
             "name": "Spada dell'Alba",
             "element": "축복광역",
@@ -227,7 +227,7 @@ const enCharacterSkillsData = {
     },
 
     "미유·여름": {
-        "name": "Miyu Sahara Summer",
+        "name": "Miyu·Summer",
         "skill1": {
             "name": "Jellyfish Reverie",
             "element": "빙결광역",
@@ -274,7 +274,7 @@ const enCharacterSkillsData = {
     },
 
     "미나미·여름": {
-        "name": "Minami Miyashita Summer",
+        "name": "Minami·Summer",
         "skill1": {
             "name": "Summer Gift Basket",
             "element": "축복광역",
@@ -1046,7 +1046,7 @@ const enCharacterSkillsData = {
     },
 
     "야오링·사자무": {
-        "name": "Yaoling Li·Lion Dance",
+        "name": "Yaoling·Lion Dance",
         "skill1": {
             "name": "Abundant World",
             "element": "화염광역",

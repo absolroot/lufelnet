@@ -20,7 +20,7 @@ window.WeaponData["슌·프론티어"] = {
   }
 };
 window.enCharacterWeaponData["슌·프론티어"] = {
-  "name": "Shun Kano·Pioneer",
+  "name": "Shun·Pioneer",
 
   "weapon4-1": {
     "name": "Wild Execution",

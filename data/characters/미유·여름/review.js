@@ -1,6 +1,6 @@
 (function () {
     window.characterReview = window.characterReview || {};
-    window.characterReview["미유·여름"] = { name_en: "Miyu Sahara Summer", name_jp: "佐原 海夕 夏", codename: "PUPPET·Summer",
+    window.characterReview["미유·여름"] = { name_en: "Miyu·Summer", name_jp: "佐原 海夕 夏", codename: "PUPPET·Summer",
         review: `
 바다의 영역 속에서 아군의 턴 종료마다 **공격할 때마다 강해지는 추가 효과**로 적을 지속적으로 공격한다.
 

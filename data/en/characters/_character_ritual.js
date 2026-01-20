@@ -4,7 +4,7 @@ const enCharacterRitualData = {
     },
 
     "쇼키·암야": {
-        "name": "Shoki Ikenami·Notte",
+        "name": "Shoki·Notte",
         "r0": "Star in the Night",
         "r0_detail": "When Shoki gains Blessing, convert it into [Night's Blessing]: This counts as Blessing, at the end of turn, gain a Shield equal to 2% of max HP for 2 turns. Stacks up to 10 times. Shield from this effect lasts for 2 turns.",
         "r1": "Shooting Star's Guidance",
@@ -95,7 +95,7 @@ const enCharacterRitualData = {
     },
 
     "미유·여름": {
-        "name": "Miyu Sahara·Summer",
+        "name": "Miyu·Summer",
         "r0": "Call of the Tide",
         "r0_detail": "During battle, Miyu can get on her surfboard to open [Ocean's Domain], spending SP to keep dealing damage to foes. Increase Miyu's max SP to 200. At the start of battle, set her SP to 0. At the start of each other ally's action, Miyu will restore 15 SP (this effect is affected by SP Recovery). \nMiyu will gain the following buffs based on the SP she restored (including SP over the cap):\nRestored 100 SP: Increase Attack by 10%;\nRestored 200 SP: Increase damage by 10%;\nRestored 300 SP: Increase critical rate by 12%;\nRestored 400 SP: Increase critical damage by 24%.",
         "r1": "Girl from the Sea",
@@ -113,7 +113,7 @@ const enCharacterRitualData = {
     },
 
     "미나미·여름": {
-        "name": "Minami Miyashita·Summer",
+        "name": "Minami·Summer",
         "r0": "Stopping Time for You",
         "r0_detail": "Minami has 3 unlimited Exclusive Buff Items only she can use. When using [Faraway Flower], gain 1 [Flower of Dream] stack. Stacks up to 1 time. At the start of Minami's turn, she can spend 1 [Flower of Dream] to gain [Memory Prescription]. [Memory Prescription]: Can use item without spending an action, extend Buff Item effect by 1 turn, lose this effect after using 1 item.",
         "r1": "Past Memories",
@@ -437,7 +437,7 @@ const enCharacterRitualData = {
     },
 
     "야오링·사자무": {
-        "name": "Yaoling Li·Lion Dance",
+        "name": "Yaoling·Lion Dance",
         "r0": "Year Fire Farewell",
         "r0_detail": "Rin - Lion Dance can enchant your sword with flame, turning Melee Attack into [Fiery Shooting Star], dealing severe Fire TECHNICAL DMG. When triggering [Backdraft], increases TECHNICAL effects by 20%.",
         "r1": "Booming Firecrackers",

@@ -1,6 +1,6 @@
 (function () {
     window.characterReview = window.characterReview || {};
-    window.characterReview["미나미·여름"] = { name_en: "Minami Miyashita Summer", name_jp: "宮下 美波 夏", codename: "MARIAN·Summer",
+    window.characterReview["미나미·여름"] = { name_en: "Minami·Summer", name_jp: "宮下 美波 夏", codename: "MARIAN·Summer",
         review: `
 대미지를 높이는 수치에 대한 거의 모든 버프를 보유하고 있고 수치 또한 높은 편으로 **모든 주력 딜러를 보조 가능**한 서포터.
 

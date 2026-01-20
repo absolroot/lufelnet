@@ -44,7 +44,7 @@ window.characterSkillsData["야오링·사자무"] = {
   }
 };
 window.enCharacterSkillsData["야오링·사자무"] = {
-  "name": "Yaoling Li·Lion Dance",
+  "name": "Yaoling·Lion Dance",
   "skill1": {
     "name": "Abundant World",
     "element": "화염광역",

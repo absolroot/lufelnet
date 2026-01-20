@@ -20,7 +20,7 @@ window.ritualData["슌·프론티어"] = {
 };
 
 window.enCharacterRitualData["슌·프론티어"] = {
-  "name": "Shun Kano·Pioneer",
+  "name": "Shun·Pioneer",
   
   "r0": "Adverse Sacrifice",
   "r0_detail": "In battle, Shun can grant allies [Sheriff Badge].\n[Sheriff Badge]: Ally with [Sheriff Badge] have Null Down, if that ally would take fatal damage or lacks HP to use a skill, Shun will take that HP loss or spend that HP cost instead, up to 80% of that ally's max HP.\nShun's Ranged Attack will deal Gun damage equal to 27.4% of Shun's max HP and is guaranteed to be a critical hit. When dealing damage, ignore all affinites and decrease Down Points by 1. Also, decrease target's Defense by 8% for 2 turns (up to 40% Defense Down at 20000 max HP). Stacks up to 2 times. After using a Ranged Attack, Shun can use other skills. Reload after Shun manually uses a Persona skill.",

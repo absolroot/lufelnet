@@ -19,7 +19,7 @@ window.ritualData["미나미·여름"] = {
   "r6_detail": "사용하는 약품이 실제로 소모되지 않는다. 모든 버프류 약품의 효과 지속 시간이 1턴 연장된다. 『추억의 처방』 상태에서 아군에게 약품을 사용하면, 메인 목표가 『빛에너지 강화』를 추가로 획득해 1턴 동안 총 대미지가 15% 증가한다."
 };
 window.enCharacterRitualData["미나미·여름"] = {
-  "name": "Minami Miyashita·Summer",
+  "name": "Minami·Summer",
   "r0": "Stopping Time for You",
   "r0_detail": "Minami has 3 unlimited Exclusive Buff Items only she can use. When using [Faraway Flower], gain 1 [Flower of Dream] stack. Stacks up to 1 time. At the start of Minami's turn, she can spend 1 [Flower of Dream] to gain [Memory Prescription]. [Memory Prescription]: Can use item without spending an action, extend Buff Item effect by 1 turn, lose this effect after using 1 item.",
   "r1": "Past Memories",

@@ -45,7 +45,7 @@ window.characterSkillsData["쇼키·암야"] = {
   }
 };
 window.enCharacterSkillsData["쇼키·암야"] = {
-  "name": "Shoki Ikenami·Notte",
+  "name": "Shoki·Notte",
   "skill1": {
     "name": "Spada dell'Alba",
     "element": "축복광역",

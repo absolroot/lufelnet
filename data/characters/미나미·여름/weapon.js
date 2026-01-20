@@ -22,7 +22,7 @@ window.WeaponData["미나미·여름"] = {
   }
 };
 window.enCharacterWeaponData["미나미·여름"] = {
-  "name": "Minami Miyashita Summer",
+  "name": "Minami·Summer",
   "weapon4-1": {
     "name": "Tea-Time Talk",
     "health": 2125,

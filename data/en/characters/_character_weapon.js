@@ -3,7 +3,7 @@ const enCharacterWeaponData = {
         "name": "Wonder"
     },
     "쇼키·암야": {
-        "name": "Shoki Ikenami·Notte",
+        "name": "Shoki·Notte",
         "weapon4-1": {
             "name": "Emperor's Will",
             "health": 1918,
@@ -107,7 +107,7 @@ const enCharacterWeaponData = {
         }
     },
     "미유·여름": {
-        "name": "Miyu Sahara Summer",
+        "name": "Miyu·Summer",
         "weapon4-1": {
             "name": "Clear Jellyfish Sky",
             "health": 1807,
@@ -126,7 +126,7 @@ const enCharacterWeaponData = {
         }
     },
     "미나미·여름": {
-        "name": "Minami Miyashita Summer",
+        "name": "Minami·Summer",
         "weapon4-1": {
             "name": "Tea-Time Talk",
             "health": 2125,
@@ -470,7 +470,7 @@ const enCharacterWeaponData = {
         }
     },
     "야오링·사자무": {
-        "name": "Yaoling Li·Lion Dance",
+        "name": "Yaoling·Lion Dance",
         "weapon4-1": {
             "name": "Timely Snow",
             "health": 1791,

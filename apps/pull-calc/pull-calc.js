@@ -1220,7 +1220,7 @@ class PullSimulator {
 
         const refinementReqs = {
             'R0': { limited: 1, additional: 0 },
-            'R1': { limited: 1, additional: 1 },
+            'R1': { limited: 2, additional: 0 },
             'R2': { limited: 2, additional: 1 },
             'R3': { limited: 3, additional: 1 },
             'R4': { limited: 3, additional: 2 },

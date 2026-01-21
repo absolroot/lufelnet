@@ -223,8 +223,9 @@
      * Calculate running balance history for the chart
      */
     PullSimulator.prototype.calculateRunningBalance = function() {
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
+        const today = (typeof this.normalizeDate === 'function') ? this.normalizeDate(new Date()) : (() => {
+            const t = new Date(); t.setHours(0,0,0,0); return t;
+        })();
 
         let currentBalance = this.calculateTotalEmberForGraph();
         const history = [];
@@ -244,51 +245,99 @@
             ? this.scheduleReleases 
             : (window.ReleaseScheduleData ? this.parseScheduleData(window.ReleaseScheduleData) : []);
 
+        const sortedReleases = [...allReleases]
+            .filter(r => r && r.date)
+            .sort((a, b) => new Date(a.date) - new Date(b.date));
+
+        // Determine current (ongoing) release: latest release whose date is <= today
+        const currentRelease = (() => {
+            let cur = null;
+            for (const r of sortedReleases) {
+                const d = new Date(r.date);
+                d.setHours(0, 0, 0, 0);
+                if (d <= today) cur = r;
+                else break;
+            }
+            return cur;
+        })();
+
         // Get all future character cards (same as timeline)
-        const futureReleases = allReleases.filter(r => {
-            const releaseDate = new Date(r.date);
+        const futureReleases = sortedReleases.filter(r => {
+            const releaseDate = (typeof this.parseYMD === 'function')
+                ? this.normalizeDate(this.parseYMD(r.date))
+                : (() => { const d = new Date(r.date); d.setHours(0,0,0,0); return d; })();
             return releaseDate >= today;
-        }).sort((a, b) => new Date(a.date) - new Date(b.date));
+        });
 
         // Get last target date
         const sortedTargets = [...this.targets].sort((a, b) => new Date(a.date) - new Date(b.date));
-        const lastTargetDate = sortedTargets.length > 0 ? new Date(sortedTargets[sortedTargets.length - 1].date) : today;
-        lastTargetDate.setHours(0, 0, 0, 0);
+        const lastTargetDate = sortedTargets.length > 0
+            ? ((typeof this.parseYMD === 'function')
+                ? this.normalizeDate(this.parseYMD(sortedTargets[sortedTargets.length - 1].date))
+                : (() => { const d = new Date(sortedTargets[sortedTargets.length - 1].date); d.setHours(0,0,0,0); return d; })())
+            : today;
 
-        // Collect all character cards up to last target
-        // Each character card adds its total income (daily + version + battle pass) on its release date
-        let prevFutureDate = null;
-        futureReleases.forEach(release => {
-            const releaseDate = new Date(release.date);
-            releaseDate.setHours(0, 0, 0, 0);
-            if (releaseDate <= lastTargetDate) {
-                // Filter out 4-star characters
-                const fiveStarChars = (release.characters || []).filter(charName => {
-                    const charData = window.characterData?.[charName];
-                    return charData && charData.rarity !== 4;
+        // Collect all banner-interval income events up to last target.
+        // Include the current ongoing version (so v3.0 -> v3.1 income is applied before the first selectable future target).
+        const releasesToProcess = [
+            ...(currentRelease ? [currentRelease] : []),
+            ...futureReleases
+        ];
+
+        // Interval income is granted at interval endDate, and Once income (if any) is granted at:
+        // - today for current ongoing version
+        // - banner start date for future versions
+        releasesToProcess.forEach(release => {
+            const releaseDate = (typeof this.parseYMD === 'function')
+                ? this.normalizeDate(this.parseYMD(release.date))
+                : (() => { const d = new Date(release.date); d.setHours(0,0,0,0); return d; })();
+            if (releaseDate > lastTargetDate) return;
+
+            // Filter out 4-star characters
+            const fiveStarChars = (release.characters || []).filter(charName => {
+                const charData = window.characterData?.[charName];
+                return charData && charData.rarity !== 4;
+            });
+            const firstCharName = fiveStarChars.length > 0 ? fiveStarChars[0] : null;
+            if (!firstCharName) return;
+
+            const income = this.calculateCharacterIncome(release.date, release.version, null, firstCharName);
+            if (!income || !income.interval || !income.interval.endDate) return;
+
+            // Once income at start date
+            if ((income.totalIncomeOnceEquivalent || 0) > 0) {
+                const onceDate = (currentRelease && release.date === currentRelease.date && String(release.version) === String(currentRelease.version))
+                    ? new Date(today)
+                    : new Date(releaseDate);
+                events.push({
+                    date: onceDate,
+                    type: 'income',
+                    amount: income.totalIncomeOnceEquivalent,
+                    label: this.getCharacterName(firstCharName),
+                    charName: firstCharName
                 });
+            }
 
-                fiveStarChars.forEach(charName => {
-                    const income = this.calculateCharacterIncome(release.date, release.version, prevFutureDate);
-                    const displayName = this.getCharacterName(charName);
-                    // Add income event on character release date (includes daily income for days between prev and current)
-                    events.push({ 
-                        date: new Date(releaseDate), 
-                        type: 'income', 
-                        amount: income.totalIncome, 
-                        label: displayName,
-                        charName: charName
-                    });
-                    // Update prevDate for next character
-                    prevFutureDate = release.date;
+            // Interval income at end date
+            const endDate = (typeof this.parseYMD === 'function')
+                ? this.normalizeDate(this.parseYMD(income.interval.endDate))
+                : (() => { const d = new Date(income.interval.endDate); d.setHours(0,0,0,0); return d; })();
+            if (endDate <= lastTargetDate) {
+                events.push({
+                    date: endDate,
+                    type: 'income',
+                    amount: income.totalIncomeRecurringEquivalent || income.totalIncome,
+                    label: this.getCharacterName(firstCharName),
+                    charName: firstCharName
                 });
             }
         });
 
         // Add all targets as expense events
         sortedTargets.forEach(target => {
-            const targetDate = new Date(target.date);
-            targetDate.setHours(0, 0, 0, 0);
+            const targetDate = (typeof this.parseYMD === 'function')
+                ? this.normalizeDate(this.parseYMD(target.date))
+                : (() => { const d = new Date(target.date); d.setHours(0,0,0,0); return d; })();
             const extraPurchase = (target.extraEmber || 0) + (target.extraTicket || 0) * 150 + (target.extraWeaponTicket || 0) * 100;
             events.push({ 
                 date: targetDate, 
@@ -310,8 +359,19 @@
         let currentDate = new Date(today);
         let eventIndex = 0;
 
+        // Apply events on "today" before pushing the starting point (so Once-on-today is reflected)
+        let todayLabels = [];
+        while (eventIndex < events.length && events[eventIndex].date.getTime() === currentDate.getTime()) {
+            const event = events[eventIndex];
+            if (event.type === 'income') currentBalance += event.amount;
+            else if (event.type === 'expense') currentBalance -= event.amount;
+            if (event.label) todayLabels.push(event.label);
+            eventIndex++;
+        }
+
         // Add starting point (today)
-        history.push({ date: new Date(currentDate), balance: currentBalance, label: this.t('today') });
+        const startLabel = todayLabels.length > 0 ? todayLabels.join(', ') : this.t('today');
+        history.push({ date: new Date(currentDate), balance: currentBalance, label: startLabel });
 
         // Process all future dates from today to last event
         // Note: Daily income is already included in character card income events, so we don't add it daily
@@ -347,8 +407,11 @@
                 eventIndex++;
             }
 
-            // Add only one history entry per date (combine all events on the same date)
-            if (hasEvent) {
+            // Only add one history entry per date, but keep the graph uncluttered:
+            // - Always keep today (starting point)
+            // - Only keep target (expense) dates afterwards
+            // This prevents extra nodes for "income-only" dates (interval ends).
+            if (hasEvent && hasTarget) {
                 // Deduplicate labels and charNames (same character can appear multiple times on same date)
                 const uniqueLabels = [...new Set(eventLabels)].filter(Boolean);
                 const uniqueCharNames = [...new Set(charNames)].filter(Boolean);

@@ -159,6 +159,9 @@ class Wallet {
 class PullSimulator {
     constructor() {
         this.lang = this.detectLang();
+        this.localTzOffsetMinutes = this.getLocalTzOffsetMinutes();
+        this.tzMode = this.loadTimezoneSetting(); // 'offset' (kept for backward compat)
+        this.tzOffsetMinutes = this.loadTimezoneOffsetMinutes(); // minutes east of UTC
 
         // Assets
         this.assets = {
@@ -201,6 +204,10 @@ class PullSimulator {
         // Schedule data cache
         this.scheduleReleases = [];
 
+        // Extra income manager
+        this.extraIncomeManager = null;
+        this.extraIncomeRows = [];
+
         // Chart instance
         this.chart = null;
 
@@ -210,7 +217,123 @@ class PullSimulator {
         this.applyI18n();
         this.initializeMustReadAccordion();
         this.bindEvents();
+        this.initializeExtraIncome();
         this.buildSchedule();
+    }
+
+    getLocalTzOffsetMinutes() {
+        // JS Date.getTimezoneOffset(): minutes WEST of UTC (e.g., KST => -540)
+        // We use minutes EAST of UTC for display (e.g., KST => +540)
+        const n = -new Date().getTimezoneOffset();
+        if (!Number.isFinite(n)) return 0;
+        return Math.max(-720, Math.min(840, n));
+    }
+
+    loadTimezoneSetting() {
+        try {
+            const v = localStorage.getItem('pullCalc_tzMode');
+            // Migration: old 'local' becomes offset with local minutes
+            return (v === 'offset') ? 'offset' : 'offset';
+        } catch (e) {
+            return 'offset';
+        }
+    }
+
+    loadTimezoneOffsetMinutes() {
+        try {
+            const raw = localStorage.getItem('pullCalc_tzOffsetMinutes');
+            const n = parseInt(raw, 10);
+            if (!Number.isFinite(n)) return this.localTzOffsetMinutes;
+            // Clamp to plausible range (-12:00 ~ +14:00)
+            return Math.max(-720, Math.min(840, n));
+        } catch (e) {
+            return this.localTzOffsetMinutes;
+        }
+    }
+
+    saveTimezoneSetting() {
+        try {
+            localStorage.setItem('pullCalc_tzMode', 'offset');
+            localStorage.setItem('pullCalc_tzOffsetMinutes', String(this.tzOffsetMinutes || 0));
+        } catch (e) {}
+    }
+
+    // Parse YYYY-MM-DD as midnight in either local time or UTC (no implicit timezone conversion).
+    parseYMD(ymd) {
+        const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(ymd || '').trim());
+        if (!m) return new Date(ymd);
+        const y = Number(m[1]);
+        const mo = Number(m[2]) - 1;
+        const d = Number(m[3]);
+        if (this.tzMode === 'offset') {
+            // Create a Date representing midnight at the selected UTC offset.
+            // Store as a real Date in UTC by subtracting the offset.
+            const utcMs = Date.UTC(y, mo, d);
+            return new Date(utcMs - (this.tzOffsetMinutes * 60 * 1000));
+        }
+        return new Date(y, mo, d);
+    }
+
+    normalizeDate(date) {
+        const d = (date instanceof Date) ? new Date(date) : new Date(date);
+        if (this.tzMode === 'offset') {
+            const offsetMs = (this.tzOffsetMinutes * 60 * 1000);
+            const shifted = new Date(d.getTime() + offsetMs);
+            const utcMidnight = Date.UTC(shifted.getUTCFullYear(), shifted.getUTCMonth(), shifted.getUTCDate());
+            return new Date(utcMidnight - offsetMs);
+        }
+        d.setHours(0, 0, 0, 0);
+        return d;
+    }
+
+    formatYMD(date) {
+        const d = this.normalizeDate(date);
+        let yyyy, mm, dd;
+        if (this.tzMode === 'offset') {
+            const offsetMs = (this.tzOffsetMinutes * 60 * 1000);
+            const shifted = new Date(d.getTime() + offsetMs);
+            yyyy = shifted.getUTCFullYear();
+            mm = String(shifted.getUTCMonth() + 1).padStart(2, '0');
+            dd = String(shifted.getUTCDate()).padStart(2, '0');
+        } else {
+            yyyy = d.getFullYear();
+            mm = String(d.getMonth() + 1).padStart(2, '0');
+            dd = String(d.getDate()).padStart(2, '0');
+        }
+        return `${yyyy}-${mm}-${dd}`;
+    }
+
+    addDays(date, days) {
+        const base = this.normalizeDate(date);
+        return this.normalizeDate(new Date(base.getTime() + (days * 24 * 60 * 60 * 1000)));
+    }
+
+    initializeExtraIncome() {
+        if (typeof ExtraIncomeManager === 'undefined') return;
+        const rootEl = document.getElementById('extraIncomeRoot');
+        if (!rootEl) return;
+
+        this.extraIncomeManager = new ExtraIncomeManager({
+            rootEl,
+            baseUrl: (typeof window.BASE_URL !== 'undefined') ? window.BASE_URL : '',
+            storageKey: 'pullCalc_extraIncome',
+            t: (key) => this.t(key),
+            onChange: () => {
+                this.extraIncomeRows = this.extraIncomeManager ? this.extraIncomeManager.getRows() : [];
+                this.buildSchedule();
+                this.recalculate();
+            }
+        });
+        this.extraIncomeRows = this.extraIncomeManager ? this.extraIncomeManager.getRows() : [];
+
+        const addBtn = document.getElementById('extraIncomeAddBtn');
+        if (addBtn) {
+            addBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                if (this.extraIncomeManager) this.extraIncomeManager.addRow();
+            });
+        }
     }
 
     detectLang() {
@@ -260,6 +383,12 @@ class PullSimulator {
 
         const loadingText = document.getElementById('loadingText');
         if (loadingText) loadingText.textContent = this.t('loading');
+
+        const extraIncomeTitle = document.getElementById('extraIncomeTitle');
+        if (extraIncomeTitle) extraIncomeTitle.textContent = this.t('extraIncomeTitle');
+
+        const extraIncomeAddBtn = document.getElementById('extraIncomeAddBtn');
+        if (extraIncomeAddBtn) extraIncomeAddBtn.textContent = this.t('extraIncomeAdd');
 
         const hudTotalLabel = document.getElementById('hudTotalLabel');
         if (hudTotalLabel) hudTotalLabel.textContent = this.t('totalEmber');
@@ -331,6 +460,9 @@ class PullSimulator {
 
         const option2Weeks = document.getElementById('option2Weeks');
         if (option2Weeks) option2Weeks.textContent = this.t('scheduleScenario2Weeks');
+
+        const tzLabel = document.getElementById('labelTimezone');
+        if (tzLabel) tzLabel.textContent = this.t('timezone');
 
         const pitySource = document.getElementById('pitySource');
         if (pitySource) pitySource.textContent = this.t('pitySource');
@@ -747,19 +879,17 @@ class PullSimulator {
         const releases = this.parseScheduleData(scheduleData);
         this.scheduleReleases = releases;
 
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
-        const thirtyDaysAgo = new Date(today);
-        thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+        const today = this.normalizeDate(new Date());
+        const thirtyDaysAgo = this.addDays(today, -30);
 
         // Separate past and future releases
         const pastReleases = releases.filter(r => {
-            const releaseDate = new Date(r.date);
+            const releaseDate = this.normalizeDate(this.parseYMD(r.date));
             return releaseDate < today && releaseDate >= thirtyDaysAgo;
         }).sort((a, b) => new Date(b.date) - new Date(a.date)); // Sort descending (most recent first)
         
         const futureReleases = releases.filter(r => {
-            const releaseDate = new Date(r.date);
+            const releaseDate = this.normalizeDate(this.parseYMD(r.date));
             return releaseDate >= today;
         });
 
@@ -769,7 +899,72 @@ class PullSimulator {
             ...futureReleases
         ].sort((a, b) => new Date(a.date) - new Date(b.date)); // Sort ascending by date
 
-        let html = '<div class="timeline-grid">';
+        // Header (notice + scenario selector) is inside timelineContainer because
+        // buildSchedule() replaces innerHTML entirely.
+        const scheduleScenarioLabel = this.t('scheduleScenario');
+        const scheduleNoticeText = this.t('scheduleNotice');
+        const scenarioTooltip = this.t('tooltipScheduleScenario');
+        const tzTooltip = this.t('tooltipTimezone');
+        const formatOffsetLabel = (minutesEast) => {
+            const sign = minutesEast >= 0 ? '+' : '-';
+            const abs = Math.abs(minutesEast);
+            const hh = String(Math.floor(abs / 60)).padStart(2, '0');
+            const mm = String(abs % 60).padStart(2, '0');
+            const base = (mm === '00') ? `UTC${sign}${parseInt(hh, 10)}` : `UTC${sign}${parseInt(hh, 10)}:${mm}`;
+            return minutesEast === this.localTzOffsetMinutes ? `${base} (Local)` : base;
+        };
+
+        const tzOptions = Array.from({ length: 27 }, (_, i) => {
+            const offsetHours = i - 12; // -12..+14
+            const minutes = offsetHours * 60;
+            return { label: formatOffsetLabel(minutes), value: String(minutes) };
+        });
+
+        // Ensure the current local offset exists as an option (for uncommon offsets like +5:30)
+        if (!tzOptions.some(o => Number(o.value) === this.localTzOffsetMinutes)) {
+            tzOptions.push({ label: formatOffsetLabel(this.localTzOffsetMinutes), value: String(this.localTzOffsetMinutes) });
+            tzOptions.sort((a, b) => Number(a.value) - Number(b.value));
+        }
+
+        const tzOptionHtml = tzOptions.map(opt => {
+            const selected = Number(opt.value) === (this.tzOffsetMinutes || this.localTzOffsetMinutes);
+            return `<option value="${opt.value}" ${selected ? 'selected' : ''}>${opt.label}</option>`;
+        }).join('');
+
+        const headerHtml = `
+            <div class="schedule-notice schedule-notice--in-timeline">
+                <p class="notice-text" id="scheduleNotice">${scheduleNoticeText}</p>
+                <div class="input-group schedule-scenario-inline">
+                    <div class="schedule-scenario-group">
+                        <label class="input-label">
+                            <span id="labelScheduleScenario">${scheduleScenarioLabel}</span>
+                            <span class="tooltip-icon" data-i18n-tooltip="tooltipScheduleScenario" data-tooltip="${scenarioTooltip}">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1" fill="rgba(255,255,255,0.05)"></circle>
+                                    <path d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.3"></path>
+                                </svg>
+                            </span>
+                        </label>
+                        <select id="inputScheduleScenario" class="modal-input modal-input--auto">
+                            <option value="3weeks" id="option3Weeks">${this.t('scheduleScenario3Weeks')}</option>
+                            <option value="2weeks" id="option2Weeks">${this.t('scheduleScenario2Weeks')}</option>
+                        </select>
+                    </div>
+                    <label class="input-label schedule-tz-select">
+                        <span id="labelTimezone">${this.t('timezone')}</span>
+                        <span class="tooltip-icon" data-i18n-tooltip="tooltipTimezone" data-tooltip="${tzTooltip}">
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1" fill="rgba(255,255,255,0.05)"></circle>
+                                <path d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.3"></path>
+                            </svg>
+                        </span>
+                        <select id="inputTimezone" class="modal-input modal-input--auto">${tzOptionHtml}</select>
+                    </label>
+                </div>
+            </div>
+        `;
+
+        let html = headerHtml + '<div class="timeline-grid">';
         // Daily income should accumulate only between future cards.
         // The first future card should use (today -> releaseDate),
         // and subsequent future cards should use (prevFutureDate -> releaseDate).
@@ -782,8 +977,7 @@ class PullSimulator {
             });
 
             if (fiveStarChars.length > 0) {
-                const releaseDateObj = new Date(release.date);
-                releaseDateObj.setHours(0, 0, 0, 0);
+                const releaseDateObj = this.normalizeDate(this.parseYMD(release.date));
                 const baselinePrev = releaseDateObj > today ? prevFutureDate : null;
 
                 html += this.renderVersionColumn({ ...release, characters: fiveStarChars }, baselinePrev);
@@ -796,6 +990,33 @@ class PullSimulator {
         });
         html += '</div>';
         container.innerHTML = html;
+
+        // Re-bind schedule scenario dropdown (it was re-created by innerHTML replacement)
+        const scheduleScenarioEl = container.querySelector('#inputScheduleScenario');
+        if (scheduleScenarioEl) {
+            scheduleScenarioEl.value = this.scheduleScenario || '3weeks';
+            scheduleScenarioEl.addEventListener('change', () => this.handleScheduleScenarioChange());
+        }
+
+        const tzEl = container.querySelector('#inputTimezone');
+        if (tzEl) {
+            tzEl.addEventListener('change', () => {
+                const v = String(tzEl.value);
+                const n = parseInt(v, 10);
+                this.tzMode = 'offset';
+                this.tzOffsetMinutes = Number.isFinite(n) ? n : this.localTzOffsetMinutes;
+                this.saveTimezoneSetting();
+                this.buildSchedule();
+                this.recalculate();
+            });
+        }
+
+        // Bind tooltip for schedule scenario icon
+        if (typeof bindTooltipElement !== 'undefined') {
+            container.querySelectorAll('.schedule-notice .tooltip-icon').forEach(el => {
+                bindTooltipElement(el);
+            });
+        }
 
         container.querySelectorAll('.char-card').forEach(card => {
             // Don't allow clicking on released (past) characters
@@ -878,9 +1099,8 @@ class PullSimulator {
     // calculateCharacterIncome is defined in pull-calc-plan.js
 
     renderVersionColumn(release, prevDate = null) {
-        const releaseDate = new Date(release.date);
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
+        const releaseDate = this.normalizeDate(this.parseYMD(release.date));
+        const today = this.normalizeDate(new Date());
         const diffDays = Math.ceil((releaseDate - today) / (1000 * 60 * 60 * 24));
 
         let daysText = '';
@@ -936,26 +1156,99 @@ class PullSimulator {
         else if (diffDays === 0) daysText = this.t('today');
         else daysText = `${Math.abs(diffDays)}${this.t('daysAgo')}`;
 
-        // Calculate expected income until character release
+        // Calculate expected income for this banner interval
         let incomeHtml = '';
-        if (diffDays >= 0) {
-            const income = this.calculateCharacterIncome(date, version, prevDate);
-            // Build tooltip content with i18n
-            const tooltipParts = [
-                `${this.t('incomeDaily')}: ${this.formatNumber(income.dailyIncome)}`,
-                `${this.t('incomeVersion')}: ${this.formatNumber(income.versionIncome)}`
-            ];
-            // if (this.income.battlePassEnabled) {
-            //     tooltipParts.push(`${this.t('incomeBattlePass')}: ${this.formatNumber(income.battlePassIncome)}`);
-            // }
-            const tooltipContent = tooltipParts.join('<br>');
-            
+        // Show income for:
+        // - future cards (diffDays >= 0)
+        // - current ongoing version card (most recent past release within interval)
+        const isOngoing = (() => {
+            if (diffDays >= 0) return true;
+            // If this is the most recent past release, it is the current ongoing version
+            try {
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+                const sorted = (Array.isArray(this.scheduleReleases) ? this.scheduleReleases : [])
+                    .filter(r => r && r.date)
+                    .sort((a, b) => new Date(a.date) - new Date(b.date));
+                let cur = null;
+                for (const r of sorted) {
+                    const d = new Date(r.date);
+                    d.setHours(0, 0, 0, 0);
+                    if (d <= today) cur = r;
+                    else break;
+                }
+                return !!cur && cur.date === date && String(cur.version) === String(version);
+            } catch (e) {
+                return false;
+            }
+        })();
+
+        if (isOngoing) {
+            const income = this.calculateCharacterIncome(date, version, prevDate, charName);
+
+            const ticket = income && income.extraIncome ? (income.extraIncome.ticket || 0) : 0;
+            const weaponTicket = income && income.extraIncome ? (income.extraIncome.weaponTicket || 0) : 0;
+            const ember = income && income.extraIncome ? (income.extraIncome.ember || 0) : 0;
+            const baseEmber = income && income.baseIncome ? income.baseIncome : 0;
+
+            const byFreq = income && income.extraByFreq ? income.extraByFreq : null;
+            const fmt = (n) => this.formatNumber(n || 0);
+
+            const tooltipHeader = (income && income.interval)
+                ? `${income.interval.startDate} → ${income.interval.endDate}`
+                : '';
+
+            const emberTooltipLines = [];
+            if (tooltipHeader) emberTooltipLines.push(tooltipHeader);
+            // Daily (ember): include both base daily income and extra-income daily ember
+            emberTooltipLines.push(`${this.t('incomeDaily')}: ${fmt((income && income.dailyIncome ? income.dailyIncome : 0) + (byFreq ? byFreq.daily.ember : 0))}`);
+            emberTooltipLines.push(`${this.t('incomeWeekly')}: ${fmt(byFreq ? byFreq.weekly.ember : 0)}`);
+            emberTooltipLines.push(`${this.t('incomeMonthly')}: ${fmt(byFreq ? byFreq.monthly.ember : 0)}`);
+            emberTooltipLines.push(`${this.t('incomeVersion')}: ${fmt((income && income.versionIncome ? income.versionIncome : 0) + (byFreq ? byFreq.version.ember : 0))}`);
+            emberTooltipLines.push(`${this.t('incomeOnce')}: ${fmt(byFreq ? byFreq.once.ember : 0)}`);
+
+            const ticketTooltipLines = [];
+            if (tooltipHeader) ticketTooltipLines.push(tooltipHeader);
+            ticketTooltipLines.push(`${this.t('incomeDaily')}: ${fmt(byFreq ? byFreq.daily.ticket : 0)}`);
+            ticketTooltipLines.push(`${this.t('incomeWeekly')}: ${fmt(byFreq ? byFreq.weekly.ticket : 0)}`);
+            ticketTooltipLines.push(`${this.t('incomeMonthly')}: ${fmt(byFreq ? byFreq.monthly.ticket : 0)}`);
+            ticketTooltipLines.push(`${this.t('incomeVersion')}: ${fmt(byFreq ? byFreq.version.ticket : 0)}`);
+            ticketTooltipLines.push(`${this.t('incomeOnce')}: ${fmt(byFreq ? byFreq.once.ticket : 0)}`);
+
+            const weaponTicketTooltipLines = [];
+            if (tooltipHeader) weaponTicketTooltipLines.push(tooltipHeader);
+            weaponTicketTooltipLines.push(`${this.t('incomeDaily')}: ${fmt(byFreq ? byFreq.daily.weaponTicket : 0)}`);
+            weaponTicketTooltipLines.push(`${this.t('incomeWeekly')}: ${fmt(byFreq ? byFreq.weekly.weaponTicket : 0)}`);
+            weaponTicketTooltipLines.push(`${this.t('incomeMonthly')}: ${fmt(byFreq ? byFreq.monthly.weaponTicket : 0)}`);
+            weaponTicketTooltipLines.push(`${this.t('incomeVersion')}: ${fmt(byFreq ? byFreq.version.weaponTicket : 0)}`);
+            weaponTicketTooltipLines.push(`${this.t('incomeOnce')}: ${fmt(byFreq ? byFreq.once.weaponTicket : 0)}`);
+
             incomeHtml = `
                 <div class="char-income">
-                    <div class="char-income-value">
+                    <div class="char-income-row">
                         <img src="${BASE_URL}/assets/img/pay/이계 엠버.png" class="char-income-icon" alt="">
-                        <span>+${this.formatNumber(income.totalIncome)}</span>
-                        <span class="tooltip-icon" data-tooltip="${tooltipContent}">
+                        <span>+${this.formatNumber(baseEmber + ember)}</span>
+                        <span class="tooltip-icon" data-tooltip="${emberTooltipLines.join('<br>')}">
+                            <svg width="14" height="14" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1" fill="rgba(255,255,255,0.05)"></circle>
+                                <path d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.3"></path>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="char-income-row">
+                        <img src="${BASE_URL}/assets/img/pay/정해진 운명.png" class="char-income-icon" alt="">
+                        <span>+${this.formatNumber(ticket)}</span>
+                        <span class="tooltip-icon" data-tooltip="${ticketTooltipLines.join('<br>')}">
+                            <svg width="14" height="14" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1" fill="rgba(255,255,255,0.05)"></circle>
+                                <path d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.3"></path>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="char-income-row">
+                        <img src="${BASE_URL}/assets/img/pay/정해진 코인.png" class="char-income-icon" alt="">
+                        <span>+${this.formatNumber(weaponTicket)}</span>
+                        <span class="tooltip-icon" data-tooltip="${weaponTicketTooltipLines.join('<br>')}">
                             <svg width="14" height="14" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1" fill="rgba(255,255,255,0.05)"></circle>
                                 <path d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.3"></path>
@@ -990,7 +1283,18 @@ class PullSimulator {
     }
 
     formatDateShort(date) {
-        return `${date.getMonth() + 1}/${date.getDate()}`;
+        const d = this.normalizeDate(date);
+        let m, dd;
+        if (this.tzMode === 'offset') {
+            const offsetMs = (this.tzOffsetMinutes * 60 * 1000);
+            const shifted = new Date(d.getTime() + offsetMs);
+            m = shifted.getUTCMonth() + 1;
+            dd = shifted.getUTCDate();
+        } else {
+            m = d.getMonth() + 1;
+            dd = d.getDate();
+        }
+        return `${m}/${dd}`;
     }
 
     toggleTarget(charName, version, date) {
@@ -1033,6 +1337,8 @@ class PullSimulator {
         if (dropdown && dropdown.value) {
             this.scheduleScenario = dropdown.value;
         }
+
+        this.extraIncomeRows = this.extraIncomeManager ? this.extraIncomeManager.getRows() : [];
         
         this.calculateTargetCosts();
         this.calculateRunningBalance();

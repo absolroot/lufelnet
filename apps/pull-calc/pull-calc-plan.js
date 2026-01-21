@@ -18,30 +18,103 @@
      * Calculate income for a character card (daily + version + battle pass)
      * This is used by both timeline cards and pull plan
      */
-    PullSimulator.prototype.calculateCharacterIncome = function(charDate, charVersion, prevDate = null) {
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
-        const releaseDate = new Date(charDate);
-        releaseDate.setHours(0, 0, 0, 0);
-        
-        // Calculate days difference: if prevDate exists, use it; otherwise use today (first card)
-        let daysDiff = 0;
-        if (prevDate) {
-            const prevDateObj = new Date(prevDate);
-            prevDateObj.setHours(0, 0, 0, 0);
-            daysDiff = Math.ceil((releaseDate - prevDateObj) / (1000 * 60 * 60 * 24));
+    PullSimulator.prototype.calculateCharacterIncome = function(charDate, charVersion, prevDate = null, charName = null) {
+        const today = (typeof this.normalizeDate === 'function') ? this.normalizeDate(new Date()) : (() => {
+            const t = new Date(); t.setHours(0,0,0,0); return t;
+        })();
+        const formatYMD = (d) => (typeof this.formatYMD === 'function')
+            ? this.formatYMD(d)
+            : d.toISOString().split('T')[0];
+
+        const startDate = (typeof this.parseYMD === 'function')
+            ? this.normalizeDate(this.parseYMD(charDate))
+            : (() => { const d = new Date(charDate); d.setHours(0,0,0,0); return d; })();
+
+        const allReleases = Array.isArray(this.scheduleReleases) ? this.scheduleReleases : [];
+        const sorted = [...allReleases]
+            .filter(r => r && r.date)
+            .sort((a, b) => new Date(a.date) - new Date(b.date));
+
+        // Determine "current" release: latest release whose date is <= today
+        const currentRelease = (() => {
+            let cur = null;
+            for (const r of sorted) {
+                const d = new Date(r.date);
+                d.setHours(0, 0, 0, 0);
+                if (d <= today) cur = r;
+                else break;
+            }
+            return cur;
+        })();
+
+        const idx = sorted.findIndex(r => r && r.date === charDate && String(r.version) === String(charVersion));
+        const nextRelease = idx >= 0 ? sorted[idx + 1] : null;
+        const prevRelease = idx >= 0 ? sorted[idx - 1] : null;
+
+        let endDate = null;
+        if (nextRelease && nextRelease.date) {
+            endDate = new Date(nextRelease.date);
+            endDate.setHours(0, 0, 0, 0);
         } else {
-            // First card: use days from today
-            daysDiff = Math.ceil((releaseDate - today) / (1000 * 60 * 60 * 24));
+            // Last card edge case: estimate duration using previous interval
+            if (prevRelease && prevRelease.date) {
+                const prevDateObj = new Date(prevRelease.date);
+                prevDateObj.setHours(0, 0, 0, 0);
+                const durationDays = Math.max(0, Math.round((startDate - prevDateObj) / (1000 * 60 * 60 * 24)));
+                endDate = new Date(startDate);
+                endDate.setDate(endDate.getDate() + durationDays);
+            } else {
+                endDate = new Date(startDate);
+            }
         }
 
+        // Income interval:
+        // - For the current (ongoing) version, count from today → next release
+        // - For future versions, count from its release date → next release
+        // - For old past versions, count nothing
+        const isCurrentRelease = !!currentRelease &&
+            currentRelease.date === charDate &&
+            String(currentRelease.version) === String(charVersion);
+
+        const calcStartDate = new Date(startDate);
+        if (isCurrentRelease) {
+            if (calcStartDate < today) calcStartDate.setTime(today.getTime());
+        } else {
+            // Not current: do NOT clamp to today (pre-release days should not be counted for future cards)
+            // If this is already in the past, dayCount will be 0 anyway.
+        }
+
+        const dayCount = Math.max(0, Math.round((endDate - calcStartDate) / (1000 * 60 * 60 * 24)));
+
+        const countMondays = () => {
+            let count = 0;
+            const cur = new Date(calcStartDate);
+            while (cur < endDate) {
+                if (cur.getDay() === 1) count++;
+                cur.setDate(cur.getDate() + 1);
+            }
+            return count;
+        };
+
+        const countMonthFirstDays = () => {
+            let count = 0;
+            const cur = new Date(calcStartDate);
+            while (cur < endDate) {
+                if (cur.getDate() === 1) count++;
+                cur.setDate(cur.getDate() + 1);
+            }
+            return count;
+        };
+
+        const mondayCount = countMondays();
+        const monthFirstCount = countMonthFirstDays();
+
         const dailyIncome = this.income.dailyMission + (this.income.monthlySubEnabled ? this.income.monthlySubAmount : 0);
-        const dailyIncomeTotal = Math.max(0, daysDiff) * dailyIncome;
+        const dailyIncomeTotal = Math.max(0, dayCount) * dailyIncome;
 
         // Calculate version income and battle pass for this character's version
         const versionNum = parseFloat(charVersion);
-        // scheduleScenario에 따라 4.0 이후(4.1, 4.2 등) 보상 배율 결정
-        // 4.0은 여전히 2주 간격이므로 4.0보다 큰 버전부터 적용
+        // scheduleScenario에 따라 4.0부터(4.0, 4.1, 4.2 등) 보상 배율 결정
         // this.scheduleScenario가 없으면 드롭다운에서 직접 가져오기
         let scheduleScenario = this.scheduleScenario;
         if (!scheduleScenario) {
@@ -52,25 +125,169 @@
                 this.scheduleScenario = scheduleScenario;
             }
         }
-        const versionMultiplier = versionNum > 4.0 
+        const versionMultiplier = versionNum >= 4.0 
             ? (scheduleScenario === '2weeks' ? 1.0 : 1.5)
             : 1.0;
-        const versionIncome = this.income.versionIncome * versionMultiplier;
+        // Version income should not be attributed to the current (already-started) version card.
+        // Apply it only when the version actually starts (future cards).
+        const versionIncome = (startDate >= today) ? (this.income.versionIncome * versionMultiplier) : 0;
         
-        // Debug log for version 4.1+
-        if (versionNum > 4.0) {
+        // Debug log for version 4.0+
+        if (versionNum >= 4.0) {
             console.log(`[Income] Version ${charVersion}, scheduleScenario: ${scheduleScenario}, multiplier: ${versionMultiplier}, versionIncome: ${versionIncome} (base: ${this.income.versionIncome})`);
         }
         // const battlePassIncome = this.income.battlePassEnabled ? this.income.battlePassAmount : 0;
         const battlePassIncome = 0; // DISABLED
 
-        const totalIncome = dailyIncomeTotal + versionIncome + battlePassIncome;
+        // Extra Income
+        const extraRows = Array.isArray(this.extraIncomeRows) ? this.extraIncomeRows : [];
+        let isNewVersion = false;
+        if (idx >= 0) {
+            if (!prevRelease || prevRelease.version == null) {
+                isNewVersion = true;
+            } else {
+                const pv = parseFloat(prevRelease.version);
+                const cv = parseFloat(charVersion);
+                if (Number.isFinite(pv) && Number.isFinite(cv)) {
+                    isNewVersion = cv !== pv;
+                }
+            }
+        } else {
+            // fallback: preserve prior behavior if we cannot locate current release
+            isNewVersion = !prevDate;
+            if (prevDate) {
+                const prevReleaseByDate = (Array.isArray(this.scheduleReleases) ? this.scheduleReleases : []).find(r => r && r.date === prevDate);
+                if (prevReleaseByDate && prevReleaseByDate.version != null) {
+                    const pv = parseFloat(prevReleaseByDate.version);
+                    const cv = parseFloat(charVersion);
+                    if (Number.isFinite(pv) && Number.isFinite(cv)) {
+                        isNewVersion = cv !== pv;
+                    }
+                } else {
+                    isNewVersion = false;
+                }
+            }
+        }
+
+        // Once: apply to the current (ongoing) version's first 5★ card
+        const isOnceRelease = !!currentRelease && currentRelease.date === charDate && String(currentRelease.version) === String(charVersion);
+        let isOnceTarget = false;
+        if (isOnceRelease && charName && currentRelease && Array.isArray(currentRelease.characters)) {
+            const firstFiveStar = currentRelease.characters.find(n => {
+                const cd = window.characterData?.[n];
+                return cd && cd.rarity !== 4;
+            });
+            isOnceTarget = !!firstFiveStar && firstFiveStar === charName;
+        }
+
+        // Extra Income - keep breakdown per frequency for tooltips
+        const extraByFreq = {
+            daily: { ticket: 0, weaponTicket: 0, ember: 0 },
+            weekly: { ticket: 0, weaponTicket: 0, ember: 0 },
+            monthly: { ticket: 0, weaponTicket: 0, ember: 0 },
+            version: { ticket: 0, weaponTicket: 0, ember: 0 },
+            once: { ticket: 0, weaponTicket: 0, ember: 0 }
+        };
+
+        extraRows.forEach(row => {
+            if (!row || !row.frequency) return;
+            const freq = String(row.frequency);
+            const t = parseInt(row.ticket, 10) || 0;
+            const w = parseInt(row.weaponTicket, 10) || 0;
+            const e = parseInt(row.ember, 10) || 0;
+
+            if (freq === 'daily') {
+                extraByFreq.daily.ticket += t * Math.max(0, dayCount);
+                extraByFreq.daily.weaponTicket += w * Math.max(0, dayCount);
+                extraByFreq.daily.ember += e * Math.max(0, dayCount);
+                return;
+            }
+
+            if (freq === 'weekly') {
+                extraByFreq.weekly.ticket += t * Math.max(0, mondayCount);
+                extraByFreq.weekly.weaponTicket += w * Math.max(0, mondayCount);
+                extraByFreq.weekly.ember += e * Math.max(0, mondayCount);
+                return;
+            }
+
+            if (freq === 'monthly') {
+                extraByFreq.monthly.ticket += t * Math.max(0, monthFirstCount);
+                extraByFreq.monthly.weaponTicket += w * Math.max(0, monthFirstCount);
+                extraByFreq.monthly.ember += e * Math.max(0, monthFirstCount);
+                return;
+            }
+
+            if (freq === 'version') {
+                if (isNewVersion) {
+                    extraByFreq.version.ticket += t;
+                    extraByFreq.version.weaponTicket += w;
+                    extraByFreq.version.ember += e;
+                }
+                return;
+            }
+
+            if (freq === 'once') {
+                if (isOnceTarget) {
+                    extraByFreq.once.ticket += t;
+                    extraByFreq.once.weaponTicket += w;
+                    extraByFreq.once.ember += e;
+                }
+            }
+        });
+
+        const extraRecurringTicket = extraByFreq.daily.ticket + extraByFreq.weekly.ticket + extraByFreq.monthly.ticket + extraByFreq.version.ticket;
+        const extraRecurringWeaponTicket = extraByFreq.daily.weaponTicket + extraByFreq.weekly.weaponTicket + extraByFreq.monthly.weaponTicket + extraByFreq.version.weaponTicket;
+        const extraRecurringEmber = extraByFreq.daily.ember + extraByFreq.weekly.ember + extraByFreq.monthly.ember + extraByFreq.version.ember;
+
+        const extraOnceTicket = extraByFreq.once.ticket;
+        const extraOnceWeaponTicket = extraByFreq.once.weaponTicket;
+        const extraOnceEmber = extraByFreq.once.ember;
+
+        const extraTicket = extraRecurringTicket + extraOnceTicket;
+        const extraWeaponTicket = extraRecurringWeaponTicket + extraOnceWeaponTicket;
+        const extraEmber = extraRecurringEmber + extraOnceEmber;
+
+        const extraRecurringEquivalent = extraRecurringEmber + (extraRecurringTicket * 150) + (extraRecurringWeaponTicket * 100);
+        const extraOnceEquivalent = extraOnceEmber + (extraOnceTicket * 150) + (extraOnceWeaponTicket * 100);
+        const extraEmberEquivalent = extraRecurringEquivalent + extraOnceEquivalent;
+        // Base income that affects wallet/graph/plan:
+        // include version income for future versions, but for the current (already-started) version
+        // versionIncome is already forced to 0 above.
+        const baseIncome = dailyIncomeTotal + battlePassIncome + versionIncome;
+        const totalIncome = baseIncome + extraEmberEquivalent;
 
         return {
             dailyIncome: dailyIncomeTotal,
             versionIncome: versionIncome,
             battlePassIncome: battlePassIncome,
-            totalIncome: totalIncome
+            interval: {
+                // Use local date string to avoid timezone (UTC) shifting by one day in tooltips
+                startDate: formatYMD(calcStartDate),
+                endDate: formatYMD(endDate),
+                days: dayCount,
+                mondays: mondayCount,
+                monthFirstDays: monthFirstCount
+            },
+            extraByFreq: extraByFreq,
+            extraIncomeRecurring: {
+                ticket: extraRecurringTicket,
+                weaponTicket: extraRecurringWeaponTicket,
+                ember: extraRecurringEmber
+            },
+            extraIncomeOnce: {
+                ticket: extraOnceTicket,
+                weaponTicket: extraOnceWeaponTicket,
+                ember: extraOnceEmber
+            },
+            extraIncome: {
+                ticket: extraTicket,
+                weaponTicket: extraWeaponTicket,
+                ember: extraEmber
+            },
+            baseIncome: baseIncome,
+            totalIncome: totalIncome,
+            totalIncomeRecurringEquivalent: baseIncome + extraRecurringEquivalent,
+            totalIncomeOnceEquivalent: extraOnceEquivalent
         };
     };
 
@@ -101,6 +318,76 @@
         today.setHours(0, 0, 0, 0);
         let prevPlanDate = null;
 
+        // Precompute income events:
+        // - interval income is granted at interval endDate
+        // - once income is granted at:
+        //   - today for current ongoing version
+        //   - banner startDate for future versions
+        const incomeEvents = [];
+        const allReleases = this.scheduleReleases.length > 0
+            ? this.scheduleReleases
+            : (window.ReleaseScheduleData ? this.parseScheduleData(window.ReleaseScheduleData) : []);
+        const sortedReleases = [...allReleases]
+            .filter(r => r && r.date)
+            .sort((a, b) => new Date(a.date) - new Date(b.date));
+        sortedReleases.forEach(release => {
+            const fiveStarChars = (release.characters || []).filter(n => {
+                const cd = window.characterData?.[n];
+                return cd && cd.rarity !== 4;
+            });
+
+            // Income is per-banner-interval. Avoid double counting when a banner has multiple 5-stars.
+            const firstCharName = fiveStarChars.length > 0 ? fiveStarChars[0] : null;
+            if (!firstCharName) return;
+
+            const income = this.calculateCharacterIncome(release.date, release.version, null, firstCharName);
+            if (!income || !income.interval || !income.interval.endDate) return;
+
+            const onceEq = income.totalIncomeOnceEquivalent || 0;
+            if (onceEq > 0 && income.extraIncomeOnce) {
+                // Find current ongoing release (latest release <= today)
+                const curRelease = (() => {
+                    let cur = null;
+                    for (const r of sortedReleases) {
+                        const d = new Date(r.date);
+                        d.setHours(0, 0, 0, 0);
+                        if (d <= today) cur = r;
+                        else break;
+                    }
+                    return cur;
+                })();
+
+                const isCurrent = !!curRelease && curRelease.date === release.date && String(curRelease.version) === String(release.version);
+                const onceDate = isCurrent ? new Date(today) : new Date(release.date);
+                onceDate.setHours(0, 0, 0, 0);
+                if (onceDate >= today) {
+                    incomeEvents.push({
+                        date: onceDate,
+                        baseIncome: 0,
+                        extraTicket: income.extraIncomeOnce.ticket || 0,
+                        extraWeaponTicket: income.extraIncomeOnce.weaponTicket || 0,
+                        extraEmber: income.extraIncomeOnce.ember || 0
+                    });
+                }
+            }
+
+            const endDate = new Date(income.interval.endDate);
+            endDate.setHours(0, 0, 0, 0);
+            // Include endDate === today so that "today -> next banner" income applies
+            // when the first target is also today.
+            if (endDate >= today) {
+                incomeEvents.push({
+                    date: endDate,
+                    baseIncome: income.baseIncome || 0,
+                    extraTicket: (income.extraIncomeRecurring && income.extraIncomeRecurring.ticket) ? income.extraIncomeRecurring.ticket : 0,
+                    extraWeaponTicket: (income.extraIncomeRecurring && income.extraIncomeRecurring.weaponTicket) ? income.extraIncomeRecurring.weaponTicket : 0,
+                    extraEmber: (income.extraIncomeRecurring && income.extraIncomeRecurring.ember) ? income.extraIncomeRecurring.ember : 0
+                });
+            }
+        });
+        incomeEvents.sort((a, b) => a.date - b.date);
+        let incomeEventIndex = 0;
+
         // Find first character (A0+) and first weapon (not None) to apply pity
         let firstCharFound = false;
         let firstWeaponFound = false;
@@ -124,52 +411,15 @@
                 firstWeaponFound = true;
             }
 
-            // Use the same calculation logic as timeline cards
-            // Find all characters between prevPlanDate (or today) and targetDate
-            let totalIncomeDelta = 0;
-            
-            if (targetDate > today) {
-                const baseline = prevPlanDate && prevPlanDate > today ? new Date(prevPlanDate) : today;
-                baseline.setHours(0, 0, 0, 0);
-                
-                // Use the same schedule releases as buildSchedule (parseScheduleData result)
-                // This ensures we use the same data structure and dates
-                const allReleases = this.scheduleReleases.length > 0 
-                    ? this.scheduleReleases 
-                    : (window.ReleaseScheduleData ? this.parseScheduleData(window.ReleaseScheduleData) : []);
-                
-                // Filter releases between baseline and targetDate
-                const relevantReleases = allReleases.filter(release => {
-                    if (!release.date) return false;
-                    const releaseDate = new Date(release.date);
-                    releaseDate.setHours(0, 0, 0, 0);
-                    return releaseDate > baseline && releaseDate <= targetDate;
-                });
-                
-                // Sort by date
-                relevantReleases.sort((a, b) => new Date(a.date) - new Date(b.date));
-                
-                // Calculate income for each character card in order
-                // First character uses baseline if it's after today, otherwise null (which means use today)
-                let currentPrevDate = baseline > today ? baseline.toISOString().split('T')[0] : null;
-                relevantReleases.forEach(release => {
-                    // Filter out 4-star characters (same as buildSchedule)
-                    const fiveStarChars = (release.characters || []).filter(charName => {
-                        const charData = window.characterData?.[charName];
-                        return charData && charData.rarity !== 4;
-                    });
-                    
-                    fiveStarChars.forEach(charName => {
-                        const income = this.calculateCharacterIncome(release.date, release.version, currentPrevDate);
-                        totalIncomeDelta += income.totalIncome;
-                        // Update prevDate for next character (use date string format)
-                        currentPrevDate = release.date;
-                    });
-                });
+            // Apply all income events up to this target date
+            while (incomeEventIndex < incomeEvents.length && incomeEvents[incomeEventIndex].date <= targetDate) {
+                const evt = incomeEvents[incomeEventIndex];
+                currentWallet.addIncome(evt.baseIncome || 0);
+                currentWallet.ticket += evt.extraTicket || 0;
+                currentWallet.weaponTicket += evt.extraWeaponTicket || 0;
+                currentWallet.ember += evt.extraEmber || 0;
+                incomeEventIndex++;
             }
-
-            // Add incremental income to wallet
-            currentWallet.addIncome(totalIncomeDelta);
 
             // Advance baseline only for future targets
             if (targetDate > today) {
@@ -334,7 +584,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="status-operator">−</div>
+                            <div class="status-operator status-operator-minus">−</div>
                             <div class="status-column status-column-required">
                                 <div class="status-column-label">Required</div>
                                 <div class="status-column-values">
@@ -348,7 +598,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="status-operator">=</div>
+                            <div class="status-operator status-operator-equal">=</div>
                             <div class="status-column status-column-after ${isSafe ? 'safe' : 'warning'}">
                                 <div class="status-column-label">
                                     After${!isSafe ? '<span class="shortage-label">: Shortage</span>' : ''}

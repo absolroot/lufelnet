@@ -61,7 +61,7 @@ redirect_from:
     </div>
 
     <!-- Settings Accordions -->
-    <div class="settings-container">
+    <div class="settings-container settings-grid">
         <!-- Assets Accordion -->
         <div class="accordion-section expanded" id="assetsAccordion">
             <div class="accordion-header" data-target="assetsContent">
@@ -88,6 +88,22 @@ redirect_from:
                     </div>
                     <div class="input-group">
                         <label class="input-label">
+                            <img src="{{ site.baseurl }}/assets/img/pay/인지 단면.png" alt="" class="input-icon">
+                            <span id="labelCognigem">인지 결정</span>
+                            <span class="tooltip-icon" data-i18n-tooltip="tooltipCognigem" data-tooltip="10개 = 100 엠버 (글로벌판)">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1" fill="rgba(255,255,255,0.05)"></circle>
+                                    <path d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.3"></path>
+                                </svg>
+                            </span>
+                        </label>
+                        <input type="number" id="inputCognigem" class="modal-input" value="0" min="0">
+                    </div>
+                </div>
+
+                <div class="input-row">
+                    <div class="input-group">
+                        <label class="input-label">
                             <img src="{{ site.baseurl }}/assets/img/pay/정해진 운명.png" alt="" class="input-icon">
                             <span id="labelTicket">계약 티켓</span>
                             <span class="tooltip-icon" data-i18n-tooltip="tooltipTicket" data-tooltip="1장 = 150 엠버">
@@ -112,105 +128,6 @@ redirect_from:
                             </span>
                         </label>
                         <input type="number" id="inputWeaponTicket" class="modal-input" value="0" min="0">
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label">
-                            <img src="{{ site.baseurl }}/assets/img/pay/인지 단면.png" alt="" class="input-icon">
-                            <span id="labelCognigem">인지 결정</span>
-                            <span class="tooltip-icon" data-i18n-tooltip="tooltipCognigem" data-tooltip="10개 = 100 엠버 (글로벌판)">
-                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1" fill="rgba(255,255,255,0.05)"></circle>
-                                    <path d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.3"></path>
-                                </svg>
-                            </span>
-                        </label>
-                        <input type="number" id="inputCognigem" class="modal-input" value="0" min="0">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Income Accordion -->
-        <div class="accordion-section expanded" id="incomeAccordion">
-            <div class="accordion-header" data-target="incomeContent">
-                <h3 id="incomeTitle">수입 설정</h3>
-                <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-            </div>
-            <div class="accordion-content" id="incomeContent">
-                <div class="input-row">
-                    <div class="input-group">
-                        <label class="input-label">
-                            <img src="{{ site.baseurl }}/assets/img/pay/패스.png" alt="" class="input-icon">
-                            <span id="labelDailyMission">일일 미션</span>
-                            <span class="tooltip-icon" data-i18n-tooltip="tooltipDailyMission" data-tooltip="매일 획득 가능한 엠버. 기본값 80.">
-                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1" fill="rgba(255,255,255,0.05)"></circle>
-                                    <path d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.3"></path>
-                                </svg>
-                            </span>
-                        </label>
-                        <input type="number" id="inputDailyMission" class="modal-input" value="80" min="0">
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label">
-                            <img src="{{ site.baseurl }}/assets/img/pay/이벤트.png" alt="" class="input-icon">
-                            <span id="labelVersionIncome">버전별 수입</span>
-                            <span class="tooltip-icon" data-i18n-tooltip="tooltipVersionIncome" data-tooltip="각 버전(패치)마다 지급되는 수입. 흉몽(NTMR), 바다(SoS) 등 주간 콘텐츠 합계를 버전 기간으로 나눈 값 + 점검 보상, 리딤 코드, 이벤트 등. 4.0 이후는 3주 간격이므로 1.5배 적용.">
-                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1" fill="rgba(255,255,255,0.05)"></circle>
-                                    <path d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.3"></path>
-                                </svg>
-                            </span>
-                        </label>
-                        <input type="number" id="inputVersionIncome" class="modal-input" value="6000" min="0">
-                    </div>
-                </div>
-                <div class="input-row">
-                    <div class="input-group">
-                        <label class="input-label">
-                            <input type="checkbox" id="inputMonthlySubEnabled">
-                            <img src="{{ site.baseurl }}/assets/img/pay/월정액.png" alt="" class="input-icon">
-                            <span id="labelMonthlySub">월정액 (엠버/일)</span>
-                            <span class="tooltip-icon" data-i18n-tooltip="tooltipMonthlySub" data-tooltip="월정액 구매 시 매일 획득하는 엠버. 기본값 100.">
-                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1" fill="rgba(255,255,255,0.05)"></circle>
-                                    <path d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.3"></path>
-                                </svg>
-                            </span>
-                        </label>
-                        <input type="number" id="inputMonthlySubAmount" class="modal-input" value="100" min="0">
-                    </div>
-                    <div class="input-group">
-                        <!-- Battle Pass - DISABLED -->
-                        <!-- <label class="input-label">
-                            <input type="checkbox" id="inputBattlePassEnabled">
-                            <img src="{{ site.baseurl }}/assets/img/pay/디럭스 패스.png" alt="" class="input-icon">
-                            <span id="labelBattlePass">배틀 패스 (엠버/패치)</span>
-                            <span class="tooltip-icon" data-i18n-tooltip="tooltipBattlePass" data-tooltip="배틀 패스 구매 시 각 패치마다 획득하는 엠버. 기본값 1430 (한정 티켓 5장 + 유료 엠버 680).">
-                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1" fill="rgba(255,255,255,0.05)"></circle>
-                                    <path d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.3"></path>
-                                </svg>
-                            </span>
-                        </label>
-                        <input type="number" id="inputBattlePassAmount" class="modal-input" value="1430" min="0"> -->
-                    </div>
-                </div>
-                <div class="checkbox-row">
-                    <div class="input-group checkbox-group">
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="inputRecursive">
-                            <img src="{{ site.baseurl }}/assets/img/pay/인지 단면.png" alt="" class="input-icon">
-                            <span id="labelRecursive">인지 단면 재귀적 변환</span>
-                            <span class="tooltip-icon" data-i18n-tooltip="tooltipRecursive" data-tooltip="모든 4성 캐릭터 풀돌(A6) 상태를 가정합니다. 4성, 5성 캐릭터를 뽑을 때 획득하는 인지 단면을 즉시 엠버로 변환(10개=100엠버)하여 다시 뽑기에 사용합니다.">
-                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1" fill="rgba(255,255,255,0.05)"></circle>
-                                    <path d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.3"></path>
-                                </svg>
-                            </span>
-                        </label>
                     </div>
                 </div>
             </div>
@@ -300,27 +217,113 @@ redirect_from:
                 -->
             </div>
         </div>
-    </div>
 
-    <!-- Schedule Notice and Scenario Selector -->
-    <div class="schedule-notice">
-        <p class="notice-text" id="scheduleNotice">
-            이 스케줄은 예상 일정이며, 실제 출시 날짜와 다를 수 있습니다. 클릭하여 계획에 추가/제거하세요.
-        </p>
-        <div class="input-group">
-            <label class="input-label">
-                <span id="labelScheduleScenario">4.0 이후 스케줄 시나리오</span>
-                <span class="tooltip-icon" data-i18n-tooltip="tooltipScheduleScenario" data-tooltip="4.0 이후 버전 간격과 보상 배율을 선택합니다.">
-                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1" fill="rgba(255,255,255,0.05)"></circle>
-                        <path d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.3"></path>
-                    </svg>
-                </span>
-            </label>
-            <select id="inputScheduleScenario" class="modal-input">
-                <option value="3weeks" selected id="option3Weeks">3주 간격 (보상 1.5배)</option>
-                <option value="2weeks" id="option2Weeks">2주 간격 (보상 1배)</option>
-            </select>
+        <!-- Income Accordion -->
+        <div class="accordion-section expanded" id="incomeAccordion">
+            <div class="accordion-header" data-target="incomeContent">
+                <h3 id="incomeTitle">수입 설정</h3>
+                <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </div>
+            <div class="accordion-content" id="incomeContent">
+                <div class="input-row">
+                    <div class="input-group">
+                        <label class="input-label">
+                            <img src="{{ site.baseurl }}/assets/img/pay/패스.png" alt="" class="input-icon">
+                            <span id="labelDailyMission">일일 미션</span>
+                            <span class="tooltip-icon" data-i18n-tooltip="tooltipDailyMission" data-tooltip="매일 획득 가능한 엠버. 기본값 80.">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1" fill="rgba(255,255,255,0.05)"></circle>
+                                    <path d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.3"></path>
+                                </svg>
+                            </span>
+                        </label>
+                        <input type="number" id="inputDailyMission" class="modal-input" value="80" min="0">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label">
+                            <img src="{{ site.baseurl }}/assets/img/pay/이벤트.png" alt="" class="input-icon">
+                            <span id="labelVersionIncome">버전별 수입</span>
+                            <span class="tooltip-icon" data-i18n-tooltip="tooltipVersionIncome" data-tooltip="각 버전(패치)마다 지급되는 수입. 흉몽(NTMR), 바다(SoS) 등 주간 콘텐츠 합계를 버전 기간으로 나눈 값 + 점검 보상, 리딤 코드, 이벤트 등. 4.0 이후는 3주 간격이므로 1.5배 적용.">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1" fill="rgba(255,255,255,0.05)"></circle>
+                                    <path d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.3"></path>
+                                </svg>
+                            </span>
+                        </label>
+                        <input type="number" id="inputVersionIncome" class="modal-input" value="6000" min="0">
+                    </div>
+                </div>
+                <div class="input-row">
+                    <div class="input-group">
+                        <label class="input-label">
+                            <input type="checkbox" id="inputMonthlySubEnabled">
+                            <img src="{{ site.baseurl }}/assets/img/pay/월정액.png" alt="" class="input-icon">
+                            <span id="labelMonthlySub">월정액 (엠버/일)</span>
+                            <span class="tooltip-icon" data-i18n-tooltip="tooltipMonthlySub" data-tooltip="월정액 구매 시 매일 획득하는 엠버. 기본값 100.">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1" fill="rgba(255,255,255,0.05)"></circle>
+                                    <path d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.3"></path>
+                                </svg>
+                            </span>
+                        </label>
+                        <input type="number" id="inputMonthlySubAmount" class="modal-input" value="100" min="0">
+                    </div>
+                    <div class="input-group">
+                        <!-- Battle Pass - DISABLED -->
+                        <!-- <label class="input-label">
+                            <input type="checkbox" id="inputBattlePassEnabled">
+                            <img src="{{ site.baseurl }}/assets/img/pay/디럭스 패스.png" alt="" class="input-icon">
+                            <span id="labelBattlePass">배틀 패스 (엠버/패치)</span>
+                            <span class="tooltip-icon" data-i18n-tooltip="tooltipBattlePass" data-tooltip="배틀 패스 구매 시 각 패치마다 획득하는 엠버. 기본값 1430 (한정 티켓 5장 + 유료 엠버 680).">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1" fill="rgba(255,255,255,0.05)"></circle>
+                                    <path d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.3"></path>
+                                </svg>
+                            </span>
+                        </label>
+                        <input type="number" id="inputBattlePassAmount" class="modal-input" value="1430" min="0"> -->
+                    </div>
+                </div>
+                <div class="checkbox-row">
+                    <div class="input-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="inputRecursive">
+                            <img src="{{ site.baseurl }}/assets/img/pay/인지 단면.png" alt="" class="input-icon">
+                            <span id="labelRecursive">인지 단면 재귀적 변환</span>
+                            <span class="tooltip-icon" data-i18n-tooltip="tooltipRecursive" data-tooltip="모든 4성 캐릭터 풀돌(A6) 상태를 가정합니다. 4성, 5성 캐릭터를 뽑을 때 획득하는 인지 단면을 즉시 엠버로 변환(10개=100엠버)하여 다시 뽑기에 사용합니다.">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1" fill="rgba(255,255,255,0.05)"></circle>
+                                    <path d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.3"></path>
+                                </svg>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Extra Income Accordion -->
+        <div class="accordion-section expanded" id="extraIncomeAccordion">
+            <div class="accordion-header" data-target="extraIncomeContent">
+                <h3>
+                    <span id="extraIncomeTitle">추가 수입</span>
+                    <button type="button" class="extra-income-add-inline" id="extraIncomeAddBtn">+</button>
+                    <span class="tooltip-icon" data-i18n-tooltip="tooltipExtraIncome" data-tooltip="Weekly income counts Mondays, and Monthly income counts the 1st day of the month between the current and next banner.">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1" fill="rgba(255,255,255,0.05)"></circle>
+                            <path d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.3"></path>
+                        </svg>
+                    </span>
+                </h3>
+                <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </div>
+            <div class="accordion-content" id="extraIncomeContent">
+                <div id="extraIncomeRoot"></div>
+            </div>
         </div>
     </div>
 
@@ -377,6 +380,7 @@ redirect_from:
 <!-- Pull Calc JS -->
 <script src="{{ site.baseurl }}/apps/pull-calc/pull-calc-i18n.js?v={{ site.time | date: '%s' }}"></script>
 <script src="{{ site.baseurl }}/apps/pull-calc/pull-calc.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/pull-calc/pull-calc-extra.js?v={{ site.time | date: '%s' }}"></script>
 <script src="{{ site.baseurl }}/apps/pull-calc/pull-calc-plan.js?v={{ site.time | date: '%s' }}"></script>
 <script src="{{ site.baseurl }}/apps/pull-calc/pull-calc-graph.js?v={{ site.time | date: '%s' }}"></script>
 

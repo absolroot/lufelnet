@@ -52,10 +52,22 @@
     gap: 16px;
 }
 
+/* Settings Grid Layout (2x2 on desktop) */
+.settings-container.settings-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
 @media (min-width: 769px) {
     .settings-container {
         flex-direction: row;
         flex-wrap: wrap;
+    }
+
+    .settings-container.settings-grid {
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
     }
 
     /* Assets section should take full row */
@@ -72,6 +84,138 @@
     .settings-container #pityAccordion {
         flex: 0 0 calc(50% - 8px);
     }
+
+    /* When using grid layout, rely on grid; ensure full width */
+    .settings-container.settings-grid #assetsAccordion,
+    .settings-container.settings-grid #incomeAccordion,
+    .settings-container.settings-grid #pityAccordion,
+    .settings-container.settings-grid #extraIncomeAccordion {
+        width: 100%;
+        flex: initial;
+    }
+}
+
+/* Extra Income Panel */
+.extra-income-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 12px;
+}
+
+.extra-income-add-inline {
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(0, 0, 0, 0.2);
+    color: rgba(255, 255, 255, 0.85);
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+    padding: 0;
+    margin-left: 8px;
+}
+
+.extra-income-add-inline:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.extra-income-add {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(0, 0, 0, 0.2);
+    color: rgba(255, 255, 255, 0.85);
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 1;
+}
+
+.extra-income-add:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.extra-income-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.extra-income-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0px;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.extra-income-frequency {
+    width: 140px;
+    padding: 8px 10px;
+    background: none;
+    border: none;
+    border-radius: 6px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 13px;
+}
+
+.extra-income-frequency option {
+    background: #1f1f1f;
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.extra-income-resources {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    min-width: 0;
+}
+
+.extra-income-resource {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.extra-income-icon {
+    width: auto;
+    height: 18px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.extra-income-resource input {
+    width: 76px;
+    padding: 6px 8px;
+    background: none;
+    border: none;
+    border-radius: 6px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 13px;
+    text-align: right;
+    box-sizing: border-box;
+}
+
+.extra-income-delete {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    border: none;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.45);
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 1;
+}
+
+.extra-income-delete:hover {
+    color: #ff7777;
 }
 
 .accordion-section {
@@ -102,6 +246,12 @@
     flex: 1;
 }
 
+.accordion-header h3 {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
 .accordion-chevron {
     color: rgba(255, 255, 255, 0.4);
     transition: transform 0.2s;
@@ -120,6 +270,7 @@
 
 .accordion-section.expanded .accordion-content {
     display: block;
+    min-height: 193.71px
 }
 
 /* Must Read Content */
@@ -133,6 +284,9 @@
 @media (max-width: 768px) {
     .mustread-content {
         padding: 0px;
+    }
+    .accordion-section.expanded .accordion-content {
+        min-height: auto;
     }
 }
 
@@ -220,6 +374,59 @@
     border-radius: 6px;
     padding: 16px;
     margin: 0 20px 16px 20px;
+}
+
+.schedule-notice--in-timeline {
+    margin: 0 0 12px 0;
+    padding: 0 0 12px 0;
+    background: transparent;
+    border-radius: 0;
+}
+
+.schedule-notice--in-timeline .notice-text {
+    margin-bottom: 10px;
+}
+
+.schedule-scenario-inline {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 0;
+}
+
+.schedule-scenario-group {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.schedule-scenario-inline .input-label {
+    margin: 0;
+}
+
+.modal-input--auto {
+    width: auto !important;
+    min-width: 0;
+    flex: 0 0 auto;
+    padding-right: 32px !important;
+    font-size: 12px !important;
+}
+
+.schedule-tz-select {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0;
+    white-space: nowrap;
+}
+
+.schedule-tz-select select {
+    margin-left: 6px;
+}
+
+.modal-input option {
+    background: #1f1f1f;
+    color: rgba(255, 255, 255, 0.92);
 }
 
 .notice-text {
@@ -389,6 +596,40 @@
     padding-top: 8px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     width: 100%;
+}
+
+.char-income-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(125, 218, 125, 0.9);
+    margin-bottom: 4px;
+}
+
+.char-income-row:last-child {
+    margin-bottom: 0;
+}
+
+.char-income-row .tooltip-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: help;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+
+.char-income-row .tooltip-icon:hover {
+    opacity: 1;
+}
+
+.char-income-row .tooltip-icon svg {
+    width: 14px;
+    height: 14px;
+    color: rgba(255, 255, 255, 0.5);
 }
 
 .char-income-value {
@@ -1098,6 +1339,29 @@ img[src$="r6.png"] {
     box-sizing: border-box;
 }
 
+/* Select chevron positioning (native arrows can ignore padding in some browsers) */
+select.modal-input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24'%3E%3Cpath fill='rgba(255,255,255,0.55)' d='M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 14px 14px;
+    background-position: calc(100% - 4px) 50%;
+    padding-right: 32px;
+}
+
+select.extra-income-frequency {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24'%3E%3Cpath fill='rgba(255,255,255,0.55)' d='M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 14px 14px;
+    background-position: calc(100% - 4px) 50%;
+    padding-right: 32px;
+}
+
 .modal-input:focus {
     outline: none;
     border-color: rgba(221, 132, 132, 0.5);
@@ -1164,9 +1428,13 @@ img[src$="r6.png"] {
 /* ========================================
    Mobile Responsive
    ======================================== */
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     .settings-container {
         margin: 0 0 12px 0;
+    }
+
+    .settings-container.settings-grid {
+        grid-template-columns: 1fr;
     }
 
     .accordion-section {
@@ -1226,11 +1494,71 @@ img[src$="r6.png"] {
         flex-direction: column;
         gap: 8px;
     }
+
+    .extra-income-row {
+        /* row1: frequency (full width)
+           row2: resources + delete (same row) */
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-areas:
+            "freq freq"
+            "resources delete";
+        align-items: center;
+        gap: 10px;
+    }
+
+    .extra-income-frequency {
+        grid-area: freq;
+        width: 100%;
+    }
+
+    .extra-income-resources {
+        grid-area: resources;
+        justify-content: space-between;
+        padding: 8px;
+    }
+
+    .extra-income-delete {
+        grid-area: delete;
+        justify-self: end;
+        align-self: center;
+        width: auto;
+    }
+
+    .extra-income-resource input {
+        width: 100%;
+        min-width: 0;
+    }
+
+    /* Timeline header: stack scenario + timezone on separate lines (left aligned) */
+    .schedule-scenario-inline {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .schedule-scenario-group,
+    .schedule-tz-select {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .schedule-scenario-group .modal-input--auto,
+    .schedule-tz-select .modal-input--auto {
+        max-width: 100%;
+    }
+
+    #labelScheduleScenario, #labelTimezone {
+        font-size: 12px;
+    }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
     .header-container {
         padding: 0 12px;
+    }
+
+    .plan-item-number{
+        display: none;
     }
 
     .plan-item-header {
@@ -1239,8 +1567,10 @@ img[src$="r6.png"] {
     }
 
     .plan-item-avatar {
-        width: auto;
-        height: 54px;
+        width: 48px;
+        height: 48px;
+        margin-right: 4px;
+        align-self: flex-start;
     }
 
     .plan-item-name {
@@ -1257,12 +1587,36 @@ img[src$="r6.png"] {
     }
 
     .plan-item-info {
-        flex-direction: column;
+        /* Layout:
+           plan-item-avatar | plan-item-info-col1
+           plan-item-info-col2 spans full width below */
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: flex-start;
         gap: 12px;
     }
 
     .plan-item-info-col2 {
         width: 100%;
+        flex: 0 0 100%;
+    }
+
+    .plan-item-info-col1 {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        flex: 1 1 auto;
+        min-width: 0;
+        gap: 8px;
+    }
+
+    .plan-resources-title{
+        display: none;
+    }
+
+    .plan-resources-section{
+        justify-content: flex-start;
     }
 
     .plan-resources-row {
@@ -1275,8 +1629,49 @@ img[src$="r6.png"] {
     }
 
     .status-row-container {
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        grid-template-areas:
+            "before minus required"
+            "equal equal equal"
+            "after after after";
+        align-items: center;
+        justify-items: center;
         gap: 8px;
+    }
+
+    .status-row-container > .status-column-before {
+        grid-area: before;
+        justify-self: stretch;
+        align-self: center;
+    }
+
+    /* '-' operator */
+    .status-row-container > .status-operator-minus {
+        grid-area: minus;
+        align-self: center;
+        justify-self: center;
+        padding: 0 4px;
+    }
+
+    .status-row-container > .status-column-required {
+        grid-area: required;
+        justify-self: stretch;
+        align-self: center;
+    }
+
+    /* '=' operator */
+    .status-row-container > .status-operator-equal {
+        grid-area: equal;
+        align-self: center;
+        justify-self: center;
+        padding: 0 4px;
+    }
+
+    .status-row-container > .status-column-after {
+        grid-area: after;
+        justify-self: center;
+        width: auto;
     }
 
     .status-operator {

@@ -18,17 +18,17 @@
 또한 스킬1의 크리티컬을 통해 DOWN 수치를 감소시키는 효과를 활용하려면 크리티컬 확률 또한 신경써주는 것이 중요하다.
 
 특이사항으로 하이라이트는 3턴으로 명시돼있지만 실질적으로는 3.1턴 지속시간으로, HL을 사용하는 시점에 행동을 대기하던 캐릭터는 해당 턴을 포함 총 4턴간 버프가 지속된다.`,
-        review_en: `A Physical-support buffer specialized in Pierce. He gains Velocity stacks whenever any Phantom Thief finishes their action.
+        review_en: `A Physical-support buffer specialized in Pierce. She gains Velocity stacks whenever any Phantom Thief finishes their action.
 
-When enough Velocity stacks are accumulated, he enters an Extra Action. After entering an Extra Action, his buffs become enhanced: Skill 1 gains guaranteed Critical hits, Skill 2 grants a shield, and Skill 3 provides amplified Piercing effects.
+When enough Velocity stacks are accumulated, she enters an Extra Action. After entering an Extra Action, her buffs become enhanced: Skill 1 gains guaranteed Critical hits, Skill 2 grants a shield, and Skill 3 provides amplified Piercing effects.
 
-With Resonance 1 or higher, Velocity generation becomes smoother, enabling him to enter an Extra Action roughly every two turns.
+With Resonance 1 or higher, Velocity generation becomes smoother, enabling her to enter an Extra Action roughly every two turns.
 
-Although he was released before the Pierce mechanic rework, the attribute received significant buffs afterward, causing his value to skyrocket.
+Although she was released before the Pierce mechanic rework, the attribute received significant buffs afterward, causing her value to skyrocket.
 
-Beyond Pierce itself, he provides highly useful buffs such as Attack, Damage Bonus, and even HIGHLIGHT, giving him **excellent versatility and strong overall performance**.
+Beyond Pierce itself, she provides highly useful buffs such as Attack, Damage Bonus, and even HIGHLIGHT, giving her **excellent versatility and strong overall performance**.
 
-To make full use of his kit, **his Speed stat must be raised significantly**, which can be challenging to achieve. 
+To make full use of her kit, **her Speed stat must be raised significantly**, which can be challenging to achieve. 
 
 Additionally, to utilize the effect of reducing DOWN values through Skill 1's Critical, it is important to pay attention to Critical Rate as well.
 

@@ -65,7 +65,8 @@
         if (!res) continue;
         if (!res.ok) throw new Error('HTTP ' + res.status);
         const j = await res.json().catch(e => { lastErr = e; return null; });
-        if (j && j.data) return j;
+        // Accept response even if data is null (e.g., "SOS not found" case)
+        if (j && typeof j === 'object' && 'status' in j) return j;
       } catch (e) {
         lastErr = e;
         // continue loop to try next attempt

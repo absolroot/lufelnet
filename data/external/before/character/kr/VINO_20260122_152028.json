@@ -1,0 +1,281 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "적에게 원소 이상 상태 부여 시, 2턴 동안 적이 『방사선』 상태를 획득한다. 『방사선』은 적이 받는 대미지를 15% 증가시키며 『방사선』은 1종의 원소 이상으로 간주한다.",
+        "name": "하! 이 성질머리",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 130140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『방사선』 효과가 있을 때, 화상, 감전, 동결, 풍습 상태인 적이 받는 아군 전체의 상응하는 화염, 전격, 빙결, 질풍 속성 대미지가 15% 증가한다.",
+        "name": "2인분",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 130141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『시그널 폭탄』, 『융단 폭격』의 스킬 레벨이 2레벨 증가하고, 최대 15레벨까지 증가한다.",
+        "name": "그래... 쏘자!",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 130142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "모든 동료가 원소 이상 효과를 1회 줄 때마다 2턴 동안 자신의 효과 명중이 10% 증가한다(3회 중첩 가능).",
+        "name": "대전략가",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 130143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『대지 집중 폭격』, 『전투 기술』의 스킬 레벨이 2레벨 증가하고, 최대 15레벨까지 증가한다.",
+        "name": "포효하는 엔진",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 130144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "HIGHLIGHT 효과 증가: 2턴 동안 받는 핵열 대미지가 35.2% 증가한다.",
+        "name": "운전 베테랑",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 130145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "동료가 『방사선』을 보유한 적 공격 시, 적이 보유한 원소 이상 수량에 따라 최대 아래 3개 효과를 활성화한다.\n수량이 1개 이상 시, 공격력 10% 증가,\n수량이 2개 이상 시, 핵열 대미지 10% 증가,\n수량이 3개 이상 시, 관통 8% 증가.",
+        "name": "BOOM！BOOM！",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 130146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on AAAAAA==)",
+      "cooldown": 4,
+      "cost": "",
+      "desc": "1명의 적에게 공격력 324.5%/357.8%/337.8%/371.1%의 핵열 속성 대미지를 주고, 75%의 기본 확률로 적이 보유하고 있지 않은 임의의 원소 이상 상태 2종에 빠지게 한다.",
+      "name": "HIGHLIGHT",
+      "nature": "Nuclear",
+      "skill_lv": "10/10/12/12",
+      "sn": 130152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": 1
+    },
+    "innate": {
+      "Ailment Acc.": "0.24",
+      "Attack": "0.2"
+    },
+    "innate_awake_skill": [],
+    "name": "나가오 치즈코",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 20",
+        "desc": "1명의 적에게 공격력 170.8%/188.3%/177.8%/195.3%의 핵열 속성 대미지를 주고 목표물의 방어력을 낮춘다. 그 값은 자신의 효과 명중의 22.5%이며, 2턴 동안 최대 37.3%/37.3%/38.8%/38.8%의 방어를 감소시킨다. 또한 100%의 기본 확률로 적에게 적이 가지지 않은 임의의 원소 이상 상태를 준다.",
+        "name": "시그널 폭탄",
+        "nature": "Nuclear",
+        "skill_lv": "10/10/12/12",
+        "sn": 130111,
+        "tags": [
+          "액티브",
+          "단일피해"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 22",
+        "desc": "모든 적에게 공격력 91.5%/100.9%/95.2%/104.6%의 핵열 속성 대미지를 준다. 40%의 기본 확률로 적에게 적이 보유하고 있지 않은 임의의 원소 이상 상태를 부여한다.",
+        "name": "융단 폭격",
+        "nature": "Nuclear",
+        "skill_lv": "10/10/12/12",
+        "sn": 130112,
+        "tags": [
+          "액티브",
+          "광역피해"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 1,
+        "cost": "SP 24",
+        "desc": "1명의 적에게 공격력 195.2%/215.2%/203.2%/223.2%의 핵열 속성 대미지를 준다. 목표가 원소 이상을 1종 보유할 때마다 목표가 받는 대미지가 자신의 효과 명중의 11.3%만큼 증가하며 최대 18.7%/20.7%/19.5%/21.4% 증가한다. 효과는 2턴 동안 지속되며 3회 중첩 가능하다.",
+        "name": "대지 집중 폭격",
+        "nature": "Nuclear",
+        "skill_lv": "10/10/12/12",
+        "sn": 130113,
+        "tags": [
+          "액티브",
+          "단일피해"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『방사선』을 보유하고 있는 적이 받는 핵열 속성 대미지가 15.0% 증가한다.",
+        "name": "섬멸",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 130131,
+        "tags": [
+          "잠재력"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "전투 중 자신의 효과 명중 45.0%에 해당하는 공격력 보너스를 획득한다.",
+        "name": "전술",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 130132,
+        "tags": [
+          "잠재력"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Ailment Acc.": 1.4,
+      "Attack": 3450.0,
+      "Damage Mult.": 0.09,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "26.0% / 26.0% / 26.0% / 26.0% / 26.0% / 26.0% / 26.0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "787.7 / 796.5 / 806.1 / 814.9 / 823.7 / 833.3 / 842.1",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "505.41 / 511.01 / 517.41 / 523.01 / 528.61 / 534.21 / 540.61",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "2475.37 / 2504.17 / 2532.17 / 2560.97 / 2589.77 / 2617.77 / 2646.57",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "103.0 / 103.0 / 103.0 / 103.0 / 103.0 / 103.0 / 103.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

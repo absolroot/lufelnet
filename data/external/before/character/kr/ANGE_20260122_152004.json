@@ -1,0 +1,267 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "각 괴도 턴 시작 시 나가오 마나카가 『성가』를 1중첩 획득한다(12회 중첩 가능).\n나가오 마나카는 임의의 괴도 행동 전에 『천계의 선율』을 시전할 수 있으며, 각 전투 초기에는 『천계의 선율』을 1회만 시전할 수 있다. 『천계의 선율』 사용 후 원더가 추가 턴이 아닌 일반 턴을 7회 진행하면 『천계의 선율』의 사용 횟수가 1회 회복되며, 해당 효과는 전투당 1회만 발동된다.\n『천계의 선율』: 동료 1명의 디버프 상태를 1종 정화하고, 해당 동료가 자신의 턴 종료 시 특수한 추가 턴 『천계의 선율』에 진입하게 한다. 『천계의 선율』 진입 시 해당 동료의 상태는 지난 턴에 스킬을 시전하기 전으로 복구된다. 복구 내용: 페르소나 스킬 쿨타임, 현재 상태, 현재 생명, 현재 SP.",
+        "name": "다시 시작하려는 희망",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 138140,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "전투 시작 시 나가오 마나카가 『성가』를 최대 중첩만큼 획득하며, 해명 괴도의 초기 준비 시간이 4회 행동만큼 감소한다.\n『시공의 윤회』 시전 시 2턴 동안 모든 동료의 크리티컬 확률이 추가로 12% 증가한다.",
+        "name": "시작의 멜로디",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 138141,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『천계의 선율』 상태인 동료는 12%의 총 대미지 증폭을 획득한다.\n동료 사망 시 즉시 부활시키고, 나가오 마나카의 공격력 20%+2,000의 생명을 회복시킨다. 해당 효과는 전투마다 1회만 발동된다.",
+        "name": "꿈꾸는 출항",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 138142,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『치유 빛의 노래』, 『시공의 윤회』의 스킬 레벨이 3레벨 증가하며, 최대 15레벨까지 증가한다.",
+        "name": "설렘의 연무",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 138143,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "임의의 괴도가 HIGHLIGHT/테우르기아 시전 및 전투 시작 시 나가오 마나카가 상한을 돌파할 수 있는 『성가』를 2중첩 획득한다(2회 중첩 가능).",
+        "name": "잔잔한 물결",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 138144,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『천공의 노래』의 스킬 레벨이 3레벨 증가하며, 최대 15레벨까지 증가한다.",
+        "name": "수호의 메아리",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 138145,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "나가오 마나카는 초기에 『천계의 선율』을 1회 추가로 시전할 수 있다.",
+        "name": "영원한 빛의 성가",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 138146,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": null,
+    "innate": {
+      "Attack": "0.2",
+      "HP": "0.2"
+    },
+    "innate_awake_skill": [],
+    "name": "나가오 마나카",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "준비 시간: 행동 4회\n모든 동료의 주는 대미지가 7.0%/7.7%/7.8%/8.5%+(나가오 마나카의 공격력 164포인트당 1%의 대미지 보너스 추가 제공, 최대 28.0%/30.8%/31.4%/34.2% 추가) 증가하며 2턴 동안 지속된다. 자신이 『성가』를 4중첩 획득한다.",
+        "name": "천공의 노래",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 138111,
+        "tags": [
+          "액티브",
+          "버프"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "AICondition",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "준비 시간: 8회 행동\n아군 전체가 공격력 10.0%/10.0%/11.2%/11.2%+681/816/989/1124의 생명을 회복하고, 아군 전체의 디버프 상태 1개를 정화한다. 『성가』 보유 시 『성가』를 1중첩 소모하여 해당 스킬 시전 후 필요한 준비 시간을 1회 행동만큼 감소시킨다. 이러한 방식으로 준비 시간을 최대 4회 행동만큼 감소시킬 수 있다. 해당 스킬을 액티브로 시전 시 치료량이 50% 증가한다.\n패시브: 전투 중 나가오 마나카가 『성가』를 12중첩 획득할 때마다 해당 스킬의 치료 효과를 자동으로 1회 시전한다.",
+        "name": "치유 빛의 노래",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 138112,
+        "tags": [
+          "액티브",
+          "정화"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "준비 시간: 행동 4회\n모든 동료의 공격력이 나가오 마나카 공격력의 11%+128/140/143/156만큼 증가한다. 모든 『성가』를 소모하며, 『성가』를 1중첩 소모할 때마다 2턴 동안 모든 동료의 관통이 증가하고(나가오 마나카의 공격력 460포인트마다 관통 0.1% 증가), 공격력이 증가한다(나가오 마나카의 공격력 460포인트마다 공격력 0.1% 증가). (해당 스킬은 최대 나가오 마나카의 공격력 4600/5060/5980/6440포인트까지 계산)",
+        "name": "시공의 윤회",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 138113,
+        "tags": [
+          "액티브",
+          "버프"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『천계의 선율』 상태인 동료의 공격력이 37.5% 증가한다.",
+        "name": "날갯짓",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 138131,
+        "tags": [
+          "잠재력"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "누적 획득한 『성가』 중첩 수에 따라 중첩당 모든 동료의 관통이 1.0% 증가한다(최대 12중첩 적용).",
+        "name": "결심",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 138132,
+        "tags": [
+          "잠재력"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "rating": {
+      "Attack": 4600.0,
+      "Defense": 1000.0,
+      "HP": 6160.0,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1150.02 / 1170.82 / 1191.62 / 1212.42 / 1233.22 / 1253.22 / 1274.02",
+      "Attack Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0%",
+      "Crit Rate": "0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "599.98 / 611.18 / 621.58 / 632.78 / 643.18 / 654.38 / 664.78",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3360.0 / 3420.8 / 3480.8 / 3541.6 / 3601.6 / 3662.4 / 3723.2",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

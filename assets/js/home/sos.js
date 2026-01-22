@@ -58,14 +58,20 @@
     const baseUrl = `${BASE}/data/external/sos/${region}.json${APP_VER ? `?v=${APP_VER}` : ''}`;
     const attempts = [baseUrl, `${baseUrl}${baseUrl.includes('?') ? '&' : '?'}_=${Date.now()}`];
     let lastErr;
+
     for (const u of attempts) {
       try {
-        const res = await fetch(u, { cache: 'no-store' });
+        const res = await fetch(u, { cache: 'no-store' }).catch(e => { lastErr = e; return null; });
+        if (!res) continue;
         if (!res.ok) throw new Error('HTTP ' + res.status);
-        const j = await res.json();
+        const j = await res.json().catch(e => { lastErr = e; return null; });
         if (j && j.data) return j;
-      } catch (e) { lastErr = e; }
+      } catch (e) {
+        lastErr = e;
+        // continue loop to try next attempt
+      }
     }
+    // If all failed, throw lastErr or new error
     throw lastErr || new Error('Failed to load sos: ' + region);
   }
 

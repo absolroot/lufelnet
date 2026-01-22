@@ -28,7 +28,7 @@ jobs:
         run: |
           set -euo pipefail
 
-          # 저장 루트(정적 서빙용)
+          # 저장 루트 설정
           ROOT_DIR="data/external"
           mkdir -p "$ROOT_DIR/gacha" "$ROOT_DIR/guildboss" "$ROOT_DIR/sos"
           mkdir -p "$ROOT_DIR/character" "$ROOT_DIR/weapon"
@@ -42,10 +42,11 @@ jobs:
 
           changed=0
 
-          # [핵심 수정] JSON 숫자 앞의 불필요한 0 제거 함수
-          # 콜론(:), 대괄호([), 콤마(,) 뒤에 공백이 있거나 없이 0이 오고 그 뒤에 1-9가 오면 0 제거
+          # [핵심 변경] Python을 사용한 강력한 JSON 정화 함수
+          # 1. UTF-8 인코딩을 안전하게 처리 (일본어/한글 깨짐 방지)
+          # 2. 정규식으로 숫자 앞의 불필요한 0 제거 (예: : 0123 -> : 123)
           clean_json() {
-            sed -E 's/([:\[,][[:space:]]*)0+([1-9])/\1\2/g'
+            python3 -c "import sys, re; content = sys.stdin.read(); sys.stdout.write(re.sub(r'([:\[,]\s*)0+([1-9])', r'\1\2', content))"
           }
 
           fetch_and_write () {
@@ -61,10 +62,13 @@ jobs:
 
             tmp_new="$(mktemp)"
             
-            # curl 결과를 clean_json으로 정화 후 저장
-            curl -sS "$url" | clean_json > "$tmp_new"
-            
-            # 유효성 체크
+            # Python 정화 함수를 거쳐서 저장
+            if ! curl -sS "$url" | clean_json > "$tmp_new"; then
+               echo "❌ Curl Failed: $url"
+               return
+            fi
+
+            # jq 유효성 검사
             if ! jq . "$tmp_new" > /dev/null 2>&1; then
                echo "❌ jq Error (Invalid JSON) on $url"
                echo "=== RAW CONTENT HEAD ==="
@@ -74,24 +78,20 @@ jobs:
             
             jq -S . "$tmp_new" > "${tmp_new}.sorted"
 
-            # 기존 파일과 비교해서 변경 있을 때만 갱신
+            # 변경 감지 및 저장
             if [ -f "$out" ]; then
               tmp_old="$(mktemp)"
               jq -S . "$out" > "$tmp_old"
               if diff -q "$tmp_old" "${tmp_new}.sorted" > /dev/null; then
                 echo "   No change: ${endpoint}/${region}.json"
               else
-                # 이전 버전 백업
                 cp "$out" "$backup_file"
                 echo "   Backup created: ${backup_file}"
-
-                # 새로운 파일 덮어쓰기
                 cp "${tmp_new}.sorted" "$out"
                 echo "   Updated: ${endpoint}/${region}.json"
                 changed=1
               fi
             else
-              # 파일이 없으면 새로운 파일로 저장하고 백업
               cp "${tmp_new}.sorted" "$out"
               echo "   Created: ${endpoint}/${region}.json"
               changed=1
@@ -112,17 +112,16 @@ jobs:
 
             tmp_new="$(mktemp)"
             
-            # 여기서도 clean_json 적용
             curl -sS "$url" | clean_json > "$tmp_new"
             
             # jq 유효성 검사
             if ! jq . "$tmp_new" > /dev/null 2>&1; then
-               # 캐릭터 없음 에러인지 확인 (status 100)
+               # 캐릭터 없음(status 100) 에러인지 텍스트로 확인
                if grep -q '"status": 100' "$tmp_new" || grep -q '"status":100' "$tmp_new"; then
                    if [ -f "$out" ]; then
-                      echo "   Error response (character not found). Keep existing."
+                      echo "   Character not found (status 100). Keeping existing file."
                    else
-                      echo "   Error response and no file. Skip."
+                      echo "   Character not found (status 100). No file created."
                    fi
                    return
                else
@@ -132,12 +131,12 @@ jobs:
                fi
             fi
 
-            # 정상적인 캐릭터 없음(null) 응답 처리
+            # 데이터가 null인 경우 처리
             if jq -e '.status == 100 and .data == null' "$tmp_new" > /dev/null 2>&1; then
               if [ -f "$out" ]; then
-                echo "   Error response (character not found). Keep existing: character/${region}/${local_codename}.json"
+                echo "   Error response (data null). Keep existing."
               else
-                echo "   Error response (character not found) and no existing file. Skip create: character/${region}/${local_codename}.json"
+                echo "   Error response (data null). Skip create."
               fi
               return
             fi
@@ -180,20 +179,18 @@ jobs:
 
             tmp_new="$(mktemp)"
             
-            # clean_json 적용
             curl -sS "$url" | clean_json > "$tmp_new"
             
             if ! jq . "$tmp_new" > /dev/null 2>&1; then
-               echo "❌ jq Error (Invalid JSON) on $url"
+               echo "❌ jq Error on $url"
                return
             fi
 
-            # 무기 에러(JSON 예: { "error": "Weapon not found." })
             if jq -e 'has("error")' "$tmp_new" > /dev/null 2>&1; then
               if [ -f "$out" ]; then
-                echo "   Error response (weapon not found). Keep existing: weapon/${region}/${local_codename}.json"
+                echo "   Weapon not found error. Keep existing."
               else
-                echo "   Error response (weapon not found) and no existing file. Skip create: weapon/${region}/${local_codename}.json"
+                echo "   Weapon not found error. Skip create."
               fi
               return
             fi
@@ -222,13 +219,13 @@ jobs:
             fi
           }
 
+          # 실행 루프
           for ep in "${ENDPOINTS[@]}"; do
             for rg in "${REGIONS[@]}"; do
               fetch_and_write "$ep" "$rg"
             done
           done
 
-          # character 데이터 수집 (codename 매핑 목록 기반)
           if [ -f "$CODENAME_FILE" ]; then
             echo "➡️  Loading codenames mapping from: $CODENAME_FILE"
             mapfile -t CN_API < <(jq -r '.[].api' "$CODENAME_FILE")
@@ -247,7 +244,7 @@ jobs:
             echo "⚠️  $CODENAME_FILE not found. Skip character fetch."
           fi
 
-          # 변경이 있으면 커밋
+          # 변경 사항 커밋
           if [ "$changed" -eq 1 ] || ! git diff --quiet; then
             git config user.name  "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

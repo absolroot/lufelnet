@@ -1145,7 +1145,7 @@
       // If no slides available, show maintenance slide
       if (slides.length === 0) {
         const lang = detectLang();
-        const maintenanceText = lang === 'en' ? 'Under Maintenance' : (lang === 'jp' ? 'メンテナンス中' : '점검 중');
+        const maintenanceText = lang === 'en' ? 'Under Maintenance' : (lang === 'jp' ? 'メンテナンス中' : '배너 점검 중');
         slides.push({
           kind: 'custom',
           name: maintenanceText,

@@ -1040,6 +1040,20 @@ class PullSimulator {
             });
         }
 
+        // Filter out past cards from saved targets
+        const initialTargetCount = this.targets.length;
+        this.targets = this.targets.filter(target => {
+            if (!target.date) return true; // Keep targets without date (shouldn't happen, but safe)
+            const targetDate = this.normalizeDate(this.parseYMD(target.date));
+            // Keep only future cards (targetDate >= today)
+            return targetDate >= today;
+        });
+        
+        // Save if any targets were removed
+        if (this.targets.length < initialTargetCount) {
+            this.saveData();
+        }
+
         this.updateTimelineSelection();
 
         // If there are saved targets, render the plan and chart

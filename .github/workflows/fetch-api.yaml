@@ -31,8 +31,8 @@ jobs:
           # 저장 루트(정적 서빙용)
           ROOT_DIR="data/external"
           mkdir -p "$ROOT_DIR/gacha" "$ROOT_DIR/guildboss" "$ROOT_DIR/sos"
-          mkdir -p "$ROOT_DIR/character" "$ROOT_DIR/weapon"  # character/weapon 저장 루트
-          mkdir -p "$ROOT_DIR/before"  # 이전 내용 백업용 디렉토리 추가
+          mkdir -p "$ROOT_DIR/character" "$ROOT_DIR/weapon"
+          mkdir -p "$ROOT_DIR/before"
           mkdir -p "$ROOT_DIR/before/character" "$ROOT_DIR/before/weapon"
 
           # 엔드포인트와 리전 정의
@@ -41,6 +41,12 @@ jobs:
           CODENAME_FILE="${ROOT_DIR}/character/codename.json"
 
           changed=0
+
+          # [수정됨] 잘못된 숫자 포맷(Leading Zero)을 고치는 함수
+          # 예: "sn": 0123 -> "sn": 123
+          clean_json() {
+            sed -E 's/:[[:space:]]*0+([1-9])/: \1/g'
+          }
 
           fetch_and_write () {
             local endpoint="$1"
@@ -53,10 +59,12 @@ jobs:
 
             echo "➡️  Fetching: ${url}"
 
-            # 가져오고 JSON 유효성/정렬 보장
+            # 가져오고 -> sed로 0 제거 -> 파일 저장
             tmp_new="$(mktemp)"
-            curl -sS "$url" -o "$tmp_new"
-            jq . "$tmp_new" > /dev/null  # 유효성 체크
+            curl -sS "$url" | clean_json > "$tmp_new"
+            
+            # 유효성 체크 (이제 에러 안 남)
+            jq . "$tmp_new" > /dev/null
             jq -S . "$tmp_new" > "${tmp_new}.sorted"
 
             # 기존 파일과 비교해서 변경 있을 때만 갱신
@@ -96,11 +104,13 @@ jobs:
             echo "➡️  Fetching: ${url}"
 
             tmp_new="$(mktemp)"
-            curl -sS "$url" -o "$tmp_new"
+            # 여기서도 sed로 청소 먼저 수행
+            curl -sS "$url" | clean_json > "$tmp_new"
+            
+            # 여기서 jq로 체크 (이제 0으로 시작하는 숫자 때문에 죽지 않음)
             jq . "$tmp_new" > /dev/null
 
-            # API에서 캐릭터를 찾지 못한 에러(JSON 예: { "data": null, "msg": "Character not found.", "status": 100 })
-            # 가 내려온 경우, 기존 파일이 있으면 유지하고 덮어쓰지 않는다.
+            # API에서 캐릭터를 찾지 못한 에러 처리
             if jq -e '.status == 100 and .data == null' "$tmp_new" > /dev/null 2>&1; then
               if [ -f "$out" ]; then
                 echo "   Error response (character not found). Keep existing: character/${region}/${local_codename}.json"
@@ -147,11 +157,12 @@ jobs:
             echo "➡️  Fetching: ${url}"
 
             tmp_new="$(mktemp)"
-            curl -sS "$url" -o "$tmp_new"
+            # sed로 청소 수행
+            curl -sS "$url" | clean_json > "$tmp_new"
+            
             jq . "$tmp_new" > /dev/null
 
-            # 무기 에러(JSON 예: { "error": "Weapon not found." })가 내려온 경우
-            # 기존 파일이 있으면 유지하고 덮어쓰지 않는다.
+            # 무기 에러 처리
             if jq -e 'has("error")' "$tmp_new" > /dev/null 2>&1; then
               if [ -f "$out" ]; then
                 echo "   Error response (weapon not found). Keep existing: weapon/${region}/${local_codename}.json"
@@ -191,7 +202,7 @@ jobs:
             done
           done
 
-          # character 데이터 수집 (codename 매핑 목록 기반)
+          # character 데이터 수집
           if [ -f "$CODENAME_FILE" ]; then
             echo "➡️  Loading codenames mapping from: $CODENAME_FILE"
             mapfile -t CN_API < <(jq -r '.[].api' "$CODENAME_FILE")
@@ -210,20 +221,16 @@ jobs:
             echo "⚠️  $CODENAME_FILE not found. Skip character fetch."
           fi
 
-          # 변경이 있으면 커밋
-          # 이중 가드: 변수 플래그 + 실제 git diff 확인
+          # 변경 커밋
           if [ "$changed" -eq 1 ] || ! git diff --quiet; then
             git config user.name  "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add -A || true
-            # 변경이 없으면 commit이 실패(exit 1)하므로, 실패 시에도 정상 진행
             git commit -m "chore(data): update /data/external JSONs [skip ci]" || echo "ℹ️ No new commits created."
-            # push 실패가 전체 스텝 실패로 이어지지 않도록 보호
             git push || echo "ℹ️ Nothing to push or push skipped."
             echo "✅ Commit/push step completed."
           else
             echo "✅ No changes to commit."
           fi
 
-          # 어떤 경우에도 스텝이 실패하지 않도록 명시적으로 성공 종료
           exit 0

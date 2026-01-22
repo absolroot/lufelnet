@@ -42,10 +42,10 @@ jobs:
 
           changed=0
 
-          # [수정됨] 잘못된 숫자 포맷(Leading Zero)을 고치는 함수
-          # 예: "sn": 0123 -> "sn": 123
+          # [핵심 수정] JSON 숫자 앞의 불필요한 0 제거 함수
+          # 콜론(:), 대괄호([), 콤마(,) 뒤에 공백이 있거나 없이 0이 오고 그 뒤에 1-9가 오면 0 제거
           clean_json() {
-            sed -E 's/:[[:space:]]*0+([1-9])/: \1/g'
+            sed -E 's/([:\[,][[:space:]]*)0+([1-9])/\1\2/g'
           }
 
           fetch_and_write () {
@@ -59,12 +59,19 @@ jobs:
 
             echo "➡️  Fetching: ${url}"
 
-            # 가져오고 -> sed로 0 제거 -> 파일 저장
             tmp_new="$(mktemp)"
+            
+            # curl 결과를 clean_json으로 정화 후 저장
             curl -sS "$url" | clean_json > "$tmp_new"
             
-            # 유효성 체크 (이제 에러 안 남)
-            jq . "$tmp_new" > /dev/null
+            # 유효성 체크
+            if ! jq . "$tmp_new" > /dev/null 2>&1; then
+               echo "❌ jq Error (Invalid JSON) on $url"
+               echo "=== RAW CONTENT HEAD ==="
+               head -n 20 "$tmp_new"
+               return
+            fi
+            
             jq -S . "$tmp_new" > "${tmp_new}.sorted"
 
             # 기존 파일과 비교해서 변경 있을 때만 갱신
@@ -104,13 +111,28 @@ jobs:
             echo "➡️  Fetching: ${url}"
 
             tmp_new="$(mktemp)"
-            # 여기서도 sed로 청소 먼저 수행
+            
+            # 여기서도 clean_json 적용
             curl -sS "$url" | clean_json > "$tmp_new"
             
-            # 여기서 jq로 체크 (이제 0으로 시작하는 숫자 때문에 죽지 않음)
-            jq . "$tmp_new" > /dev/null
+            # jq 유효성 검사
+            if ! jq . "$tmp_new" > /dev/null 2>&1; then
+               # 캐릭터 없음 에러인지 확인 (status 100)
+               if grep -q '"status": 100' "$tmp_new" || grep -q '"status":100' "$tmp_new"; then
+                   if [ -f "$out" ]; then
+                      echo "   Error response (character not found). Keep existing."
+                   else
+                      echo "   Error response and no file. Skip."
+                   fi
+                   return
+               else
+                   echo "❌ jq Error (Invalid JSON) on $url"
+                   head -n 20 "$tmp_new"
+                   return
+               fi
+            fi
 
-            # API에서 캐릭터를 찾지 못한 에러 처리
+            # 정상적인 캐릭터 없음(null) 응답 처리
             if jq -e '.status == 100 and .data == null' "$tmp_new" > /dev/null 2>&1; then
               if [ -f "$out" ]; then
                 echo "   Error response (character not found). Keep existing: character/${region}/${local_codename}.json"
@@ -157,12 +179,16 @@ jobs:
             echo "➡️  Fetching: ${url}"
 
             tmp_new="$(mktemp)"
-            # sed로 청소 수행
+            
+            # clean_json 적용
             curl -sS "$url" | clean_json > "$tmp_new"
             
-            jq . "$tmp_new" > /dev/null
+            if ! jq . "$tmp_new" > /dev/null 2>&1; then
+               echo "❌ jq Error (Invalid JSON) on $url"
+               return
+            fi
 
-            # 무기 에러 처리
+            # 무기 에러(JSON 예: { "error": "Weapon not found." })
             if jq -e 'has("error")' "$tmp_new" > /dev/null 2>&1; then
               if [ -f "$out" ]; then
                 echo "   Error response (weapon not found). Keep existing: weapon/${region}/${local_codename}.json"
@@ -202,7 +228,7 @@ jobs:
             done
           done
 
-          # character 데이터 수집
+          # character 데이터 수집 (codename 매핑 목록 기반)
           if [ -f "$CODENAME_FILE" ]; then
             echo "➡️  Loading codenames mapping from: $CODENAME_FILE"
             mapfile -t CN_API < <(jq -r '.[].api' "$CODENAME_FILE")
@@ -221,7 +247,7 @@ jobs:
             echo "⚠️  $CODENAME_FILE not found. Skip character fetch."
           fi
 
-          # 변경 커밋
+          # 변경이 있으면 커밋
           if [ "$changed" -eq 1 ] || ! git diff --quiet; then
             git config user.name  "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

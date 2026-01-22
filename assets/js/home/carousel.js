@@ -351,6 +351,7 @@
         const bgImage = bgImagePath ? toAbsUrl(bgImagePath) : null;
         // 언어별 링크 선택: link, link_en, link_jp 지원
         const link = pickLinkByLang(item, lang) ? toAbsUrl(pickLinkByLang(item, lang)) : '';
+        const linkTarget = item.link_target || '_self';
         const order = Number.isFinite(item.order) ? Number(item.order) : null;
         const bgOffsetCandidate = {
           top: toNumberOrNull(item.background_top),
@@ -386,6 +387,7 @@
           customBgOffsetMobile: hasBgOffsetMobile ? bgOffsetMobileCandidate : null,
           customImgOffset: hasImgOffset ? imgOffsetCandidate : null,
           customLink: link,
+          customLinkTarget: linkTarget,
           order,
         };
       }).filter(x => x.name || x.subtitle || x.body);
@@ -845,6 +847,7 @@
         link = document.createElement('a');
         link.className = 'slide-link';
         link.href = slide.customLink;
+        link.target = slide.customLinkTarget;
       }
     } else {
       const names = (slide.fiveStar || []).map(x => x.name).filter(Boolean);

@@ -1,11 +1,11 @@
 window.characterSetting = window.characterSetting || {};
 window.characterSetting["준페이"] = {
     "role": "화염 전용 방위 버퍼",
-    "video": ["wKGvjGC1bhc"],
+    "video": ["wKGvjGC1bhc","HrtGP63BJdw"],
     "video_en": [""],
     "video_jp": ["", ""],
-    "main_revelation": ["깨달음", "창조","진정성"],
-    "sub_revelation": ["주권", "화해", "고집"],
+    "main_revelation": ["깨달음", "창조","조화"],
+    "sub_revelation": ["주권", "화해", "힘"],
     "sub_revel2": ["생명", "대미지 보너스"],
     "sub_revel3": ["크리티컬 효과", "생명"],
     "sub_revel4": ["생명"],

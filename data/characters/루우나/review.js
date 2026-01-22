@@ -6,23 +6,16 @@
 광역 화염 속성을 보조하는 1스킬 또는 단일 추가 효과 공격을 보조하는 2스킬을 사용하면 3스킬이 해금되는 구조다.
 
 스킬의 **방어력 감소 효과**를 최대치로 얻기 위해서는 **효과 명중 수치를 권장 수치**까지 올려주는 것이 좋다.`,
-        review_en: `This page has not been updated to reflect the global patch. It will be updated in the future.
+        review_en: `
+A debuffer who enhances elemental(fire, ice, electric, wind) damage or Resonance damage.
 
-<br>
-
-A debuffer who enhances Fire damage or Resonance damage.
-
-Using Skill 1, which supports AoE Fire attacks, or Skill 2, which boosts single-target Resonance attacks, unlocks Skill 3.
+Using Skill 1, which supports AoE elemental(fire, ice, electric, wind) attacks, or Skill 2, which boosts single-target Resonance attacks, unlocks Skill 3.
 
 To maximize the skill's **Defense Reduction effect**, it is recommended to **raise Ailment Accuracy to the advised threshold**.`,
         review_jp: `
-このページはグローバルパッチの反映を反映していません。将来的に更新されます。
+火炎・氷結・電撃・疾風属性ダメージ、または意識奏功ダメージを強化するデバッファー。
 
-<br>
-
-火炎属性ダメージ、または意識奏功ダメージを強化するデバッファー。
-
-全体火炎攻撃を補助するスキル1、もしくは単体の意識奏功攻撃を補助するスキル2を使用すると、スキル3が解禁される構造になっている。
+全体火炎・氷結・電撃・疾風攻撃を補助するスキル1、もしくは単体の意識奏功攻撃を補助するスキル2を使用すると、スキル3が解禁される構造になっている。
 
 スキルの**防御力低下効果**を最大限に活かすためには、**効果命中を推奨値まで上げる**ことをお勧めする。
 `,
@@ -30,8 +23,8 @@ To maximize the skill's **Defense Reduction effect**, it is recommended to **rai
         pros_en: ["Possesses a strong Defense Reduction debuff.", "Applies a healing reduction debuff."],
         pros_jp: ["高い防御力ダウン効果を持っている。",  "回復量ダウン効果も付与できる。"],
         cons: ["화염 속성과 추가 효과에 대미지 보너스가 한정된다.", "얼마 안 가 상위 호환의 디버퍼가 출시됐다."],
-        cons_en: ["Damage bonuses apply only to Fire and Resonance attacks."],
-        cons_jp: ["火炎属性と意識奏功に対するダメージボーナスが限定的である。"],
+        cons_en: ["Damage bonuses apply only to elemental(fire, ice, electric, wind) and Resonance attacks."],
+        cons_jp: ["火炎・氷結・電撃・疾風属性と意識奏功に対するダメージボーナスが限定的である。"],
     };
 })();
 

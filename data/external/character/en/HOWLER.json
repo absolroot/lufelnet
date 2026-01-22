@@ -6,14 +6,12 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "At the start of battle, grant all allies 1 Knight's Protection shield equal to 12% of Ashiya's Defense + 120/240/360 (effect changes at Lv. 1/50/70, respectively).\nWhen an ally with Knight's Protection takes an attack, grant Ashiya 1 Heroism stack (up to 2 stacks in 1 turn). Heroism can stack up to 4 times.\nAt the start of the turn, if Heroism is at 4 stacks, spend 4 Heroism stacks to gain Garden of Promises and grant Knight's Protection again to all allies.",
-        "name": "Noble Knight of Flowers",
+        "desc": "When Big Welcome or Furrocious Follow-Up are active, Runa can use Woof Woof Blaze. When using Woof Woof Blaze, 60% chance to decrease target's healing received by 30%/40%/50%, and Defense by 6%/12%/18% (effect changes at Lv. 1/50/70, respectively) for 2 turns.",
+        "name": "Station Square Mascot",
         "nature": null,
         "skill_lv": "3",
-        "sn": 133140,
-        "tags": [
-          null
-        ],
+        "sn": 134140,
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       },
@@ -22,14 +20,12 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "At the start of battle, gain 3 Heroism stacks. Garden of Promises requires 3 Heroism stacks to activate.\nIncrease party's pierce rate by 20%.",
-        "name": "Floriography: Freesia",
+        "desc": "After using Woof Woof Blaze and activating the effects of Big Welcome, increase target's Fire, Ice, Electric and Wind damage taken by 36% for 2 turns. When activating the effects of Furrocious Follow-Up, increase target's Resonance damage taken by 50% for 2 turns.",
+        "name": "Legendary Devotion",
         "nature": null,
         "skill_lv": "3",
-        "sn": 133141,
-        "tags": [
-          null
-        ],
+        "sn": 134141,
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       },
@@ -38,14 +34,12 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "Increase Defense by 15%, damage dealt by 15%, and critical damage by 10% for every Knight's Protection shield. This effect can stack up to 2 times.\nWhen the effect of Knight's Protection ends, restore the targeted ally's HP by 20% of remaining shield.",
-        "name": "Floriography: Gerbera",
+        "desc": "When a foe has a debuff inflicted by Runa, increase target's critical damage taken by 36%, and decrease healing received by 20%.",
+        "name": "Trapped in Shibuya",
         "nature": null,
         "skill_lv": "3",
-        "sn": 133142,
-        "tags": [
-          null
-        ],
+        "sn": 134142,
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       },
@@ -54,14 +48,12 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "Increase the skill levels of Frost Vines and Winter Fortress by 3.",
-        "name": "Benevolent Iceheart Knight",
+        "desc": "Increase the skill levels of Woof Woof Blaze and Thief Tactics by 3.",
+        "name": "I ♥ Shichi-kun!",
         "nature": null,
         "skill_lv": "3",
-        "sn": 133143,
-        "tags": [
-          null
-        ],
+        "sn": 134143,
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       },
@@ -70,14 +62,12 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "Highlight Enhanced: Increase shield granted to party by 30% (lasts for 2 turns).",
-        "name": "Floriography: Chamomile",
+        "desc": "Highlight Enhanced: Increase number of Enthusiastic Fuse stacks inflicted on foes to 4, and increase the maximum number of stacks to 4.",
+        "name": "Welcome to Shibuya!",
         "nature": null,
         "skill_lv": "3",
-        "sn": 133144,
-        "tags": [
-          null
-        ],
+        "sn": 134144,
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       },
@@ -86,14 +76,12 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "Increase the skill levels of Hoarfrost Vow and Thief Tactics by 3.",
-        "name": "Floriography: Gentian",
+        "desc": "Increase the skill levels of Welcome Hug and Furrious Bark by 3.",
+        "name": "I ♥ Shibuya!",
         "nature": null,
         "skill_lv": "3",
-        "sn": 133145,
-        "tags": [
-          null
-        ],
+        "sn": 134145,
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       },
@@ -102,14 +90,12 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "When gaining Garden of Promises, gain Poise for 3 turns.\nPoise: Increase the party's critical rate by 15%.",
-        "name": "True-Hearted Friendship",
+        "desc": "At the start of battle, gain Big Welcome and Furrocious Follow-Up for 2 turns.\nExtend the duration of debuffs from Welcome Hug, Furrious Bark, and Woof Woof Blaze by 1 turn.\nWhen Big Welcome and Furrocious Follow-Up are both active, increase Woof Woof Blaze's Fire, Ice, Electric, and Wind damage taken effect on all foes by 25%, increase the Resonance damage taken effect on the main target by 60%, and the effects granted by Big Welcome and Furrocious Follow-Up will both activate (the damage taken increase effects do not stack, and the greater effect is applied).",
+        "name": "Station Square Superstar",
         "nature": null,
         "skill_lv": "3",
-        "sn": 133146,
-        "tags": [
-          null
-        ],
+        "sn": 134146,
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -118,23 +104,21 @@
     "final_innate": [],
     "highlight_skill": {
       "ascend": "0/5/0/5",
-      "auto_select": "Default",
+      "auto_select": "Weak",
       "cooldown": 4,
       "cost": "",
-      "desc": "Grant Knight's Resolve shield equal to 59.0%/59.0%/62.7%/62.7% of Ashiya's Defense + 1681/2044/2066/2429 to all allies and decrease damage taken by 31.9%/35.2%/33.9%/37.1% for 2 turns.",
+      "desc": "Deal Fire damage to all foes equal to 214.7%/236.7%/227.9%/249.9% of Attack.\nPermanently inflict 2 Enthusiastic Fuse stacks on foes. Stacks up to 2 times (remove as wave progresses).\nEnthusiastic Fuse: When any foe takes Fire, Ice, Electric, or Wind skill damage or Resonance damage, spend 1 Enthusiastic Fuse stack, and increase the damage by 22.9% of Runa's ailment accuracy (up to 53.7%/59.2%/57.0%/62.5%). If Runa's skills and Resonance activate this effect, Enthusiastic Fuse will not be spent.",
       "name": "Highlight",
-      "nature": "Heal",
+      "nature": "Fire",
       "skill_lv": "10/10/13/13",
-      "sn": 133152,
-      "tags": [
-        null
-      ],
-      "target": "Alive Ally",
+      "sn": 134152,
+      "tags": [null],
+      "target": "Alive Enemy",
       "target_count": "All"
     },
     "innate": {
-      "Ailment Resist.": "0.24",
-      "HP": "0.2"
+      "Ailment Acc.": "0.24",
+      "Damage Mult.": "0.16"
     },
     "innate_awake_skill": [],
     "name": "Runa Dogenzaka",
@@ -143,14 +127,14 @@
         "ascend": "0/5/0/5",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "SP 24",
-        "desc": "Deal Ice damage to the main target equal to 149.2%/164.5%/158.4%/173.7% of Ashiya's Defense, and deal Ice damage to other foes equal to 44.8%/49.4%/47.6%/52.1% of Ashiya's Defense.\n97.6%/97.6%/103.6%/103.6% chance to inflict Freeze on the main target, and gain 2 Heroism stacks.\nIf Garden of Promises is active, increase the main target's damage taken by 2% for every 600 points of Ashiya's Defense (up to 19.5%/21.5%/20.7%/22.7%), but gain only 1 Heroism stack.",
-        "name": "Frost Vines",
-        "nature": "Ice",
+        "cost": "SP 22",
+        "desc": "Deal Fire damage to all foes equal to 73.2%/80.7%/77.7%/85.2% of Attack.\nDecrease target's Defense by 15.4% of Runa's ailment accuracy for 2 turns (up to 26.4%/29.1%/28.0%/30.7%). Also, when the target of this effect takes Fire, Ice, Wind, or Electric skill damage, decrease Defense by 26.4%/26.4%/28.0%/28.0% more. The Defense decrease effects from this skill and Furrious Bark do not stack.\nAlso, 50% chance to inflict Burn on the target, and gain Big Welcome for 2 turns.",
+        "name": "Welcome Hug",
+        "nature": "Fire",
         "skill_lv": "10/10/13/13",
-        "sn": 133111,
+        "sn": 134111,
         "tags": [
-          "Multi-Target"
+          "Debuff"
         ],
         "target": "Alive Enemy",
         "target_count": "All"
@@ -159,32 +143,32 @@
         "ascend": "0/5/0/5",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "SP 26",
-        "desc": "Grant 1 Knight's Protection shield equal to 22.8%/22.8%/24.2%/24.2% of Ashiya's Defense + 650/790/799/939 to 1 ally. Also increase the ally's Defense by 20% of Ashiya's Defense (up to 1220/1345/1295/1420) for 2 turns. If the target granted this effect has more than 60% HP, increase rate to take attacks from foes by 50%.\nAt the start of Ashiya's next turn, grant 1 Knight's Protection again to the same target. If Garden of Promises is active, increase shield granted from Knight's Protection by 25% for 2 turns.",
-        "name": "Hoarfrost Vow",
-        "nature": "Heal",
+        "cost": "SP 22",
+        "desc": "Deal Fire damage to 1 foe equal to 170.8%/188.3%/181.3%/198.8% of Attack.\nDecrease target's Defense by 14.6%/14.6%/15.5%/15.5% + 31.4% of Runa's ailment accuracy (up to 53.7%/59.2%/57.0%/62.5%) for 2 turns. The Defense decrease effects from this skill and Welcome Hug do not stack.\nAlso, gain Furrocious Follow-Up for 2 turns.",
+        "name": "Furrious Bark",
+        "nature": "Fire",
         "skill_lv": "10/10/13/13",
-        "sn": 133112,
+        "sn": 134112,
         "tags": [
-          "Shield"
+          "Debuff"
         ],
-        "target": "Alive Ally",
+        "target": "Alive Enemy",
         "target_count": 1
       },
       {
         "ascend": "0/5/0/5",
         "auto_select": "Default",
-        "cooldown": 1,
-        "cost": "SP 30",
-        "desc": "Grant all allies 1 Knight's Protection shield equal to 12% of Ashiya's Defense + 120/240/360 (effect changes at Lv. 1/50/70, respectively) and Knight's Resolve shield equal to 49.2%/49.2%/52.2%/52.2% of Ashiya's Defense + 1400/1702/1721/2024.\nAlso increase all allies' Down Points by 1 and damage dealt by 2.9% for every 300 points of Ashiya's Defense (up to 56.6%/62.4%/60.1%/65.9%) for 2 turns.",
-        "name": "Winter Fortress",
-        "nature": "Heal",
+        "cooldown": 0,
+        "cost": "SP 26",
+        "desc": "Usable when Big Welcome or Furrocious Follow-Up are active, and activates various effects based on which is active. If both effects are active at the same time, prioritize Big Welcome.\nRemove Big Welcome and Furrocious Follow-Up after effect activates.\nBig Welcome: Deal Fire damage to all foes equal to 109.8%/109.8%/116.6%/116.6% of Attack. This skill's damage is counted as a Resonance.\nIncrease target's damage taken by 24% of Runa's ailment accuracy (up to 41.0%/45.2%/43.5%/47.7%), and Fire, Ice, Electric and Wind damage taken by 20.5%/22.6%/21.8%/23.9% for 2 turns.\nFurrocious Follow-Up: Deal Fire damage to 1 foe equal to 219.6%/219.6%/233.1%/233.1% of Attack. This skill's damage is counted as a Resonance.\nIncrease target's damage taken by 34.3% of Runa's ailment accuracy (up to 58.6%/64.6%/62.2%/68.2%), and Resonance damage taken by 39.0%/43.0%/41.4%/45.4% for 2 turns.",
+        "name": "Woof Woof Blaze",
+        "nature": "Fire",
         "skill_lv": "10/10/13/13",
-        "sn": 133113,
+        "sn": 134116,
         "tags": [
-          "Shield"
+          "Debuff"
         ],
-        "target": "Alive Ally",
+        "target": "Alive Enemy",
         "target_count": "All"
       }
     ],
@@ -194,11 +178,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "Increase Attack by 18.0% for each Will of Rebellion stack.",
-        "name": "Resistance",
+        "desc": "During battle, increase Runa's Attack by 60.0% of her ailment accuracy.",
+        "name": "Peppy Guard Dog",
         "nature": null,
         "skill_lv": "3",
-        "sn": 126131,
+        "sn": 134131,
         "tags": [
           "Talent"
         ],
@@ -210,11 +194,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "Increase damage on extra actions by 72.0%.",
-        "name": "Adverse Resolve",
+        "desc": "When Runa inflicts a debuff on a foe with a skill, increase her Attack by 33.0% for 1 turn. When an ally deals Fire, Ice, Electric or Wind damage or Resonance damage, grant them the same Attack increase effect.",
+        "name": "Faithful Dog",
         "nature": null,
         "skill_lv": "3",
-        "sn": 126132,
+        "sn": 134132,
         "tags": [
           "Talent"
         ],
@@ -224,14 +208,54 @@
     ],
     "rating": {
       "Ailment Acc.": 1.4,
-      "Attack": 3730.0,
+      "Attack": 3730,
       "Damage Mult.": 0.09,
-      "Unknown Attr": 0.0
+      "Unknown Attr": 0
     },
-    "stat": {},
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "35.0% / 35.0% / 35.0% / 35.0% / 35.0% / 35.0% / 35.0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1060.03 / 1079.23 / 1098.43 / 1117.63 / 1136.03 / 1155.23 / 1174.43",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "653.36 / 665.36 / 676.56 / 688.56 / 700.56 / 712.56 / 723.76",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3239.99 / 3298.39 / 3356.79 / 3415.19 / 3473.59 / 3531.99 / 3589.59",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "105.0 / 105.0 / 105.0 / 105.0 / 105.0 / 105.0 / 105.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
     "stat_100": null,
     "theurgia_skill": []
   },
-  "msg": "OK",
+  "msg": "TESTING",
   "status": 0
 }

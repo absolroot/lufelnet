@@ -26,6 +26,30 @@
 },
 
 
+{
+  "kind": "custom",
+  "order": 0,
+  "title": "베사 - 로보틱 챌린지 공략 링크",
+  "title_en": "Besa - Robotic Challenge Guide Link",
+  "title_jp": "ベサ - ロボティックチャレンジガイドリンク",
+  "subtitle": "",
+  "body": "EVENT",
+  "body_en": "EVENT",
+  "body_jp": "EVENT",
+  "image": "/assets/img/home/banner/besa.webp",
+  "background_image": "/assets/img/home/banner/besa-bg.jpg",
+  "background_bottom": 80,
+  "background_bottom_mobile": 0,
+  "background_right": 0,
+  "color": "#e91e63",
+  "link": "https://www.youtube.com/watch?v=uC3X6-kjbs4",
+  "link_target": "_blank",
+  "visible_langs": ["en","jp"],
+  "regions": ["en","jp",""]  
+},
+
+
+
   {
       "kind": "custom",
       "order": 1,

@@ -23,7 +23,7 @@ window.characterSkillsData["루우나"] = {
     "name": "GOGO 멍멍!",
     "element": "화염광역",
     "type": "디버프",
-    "sp": 24,
+    "sp": 26,
     "cool": 0,
     "description": "자신이 『열렬한 환영』 또는 『집요한 추격』을 보유하고 있는지에 따라 해당 스킬은 각각 다른 효과가 발동되며, 동시에 하나의 효과만 발동할 수 있다.\n『열렬한 환영』: 모든 적에게 공격력 109.8%/109.8%/116.6%/116.6%의 화염 속성 대미지를 주고, 2턴 동안 목표가 받는 대미지가 증가하며(자신의 효과 명중의 24%만큼, 상한 41.0%/45.2%/43.5%/47.7%), 받는 화염 속성 대미지가 20.5%/22.7%/21.7%/23.9% 증가한다.\n『집요한 추격』: 1명의 적에게 공격력 219.6%/219.6%/233.1%/233.1%의 화염 속성 대미지를 주고, 2턴 동안 목표가 받는 대미지가 증가하며(자신의 효과 명중의 34.3%만큼, 상한 58.6%/64.7%/62.1%/68.2%), 받는 추가 효과 대미지가 29.3%/31.6%/31.8%/34.1% 증가한다."
   },
@@ -44,86 +44,90 @@ window.characterSkillsData["루우나"] = {
   }
 };
 window.enCharacterSkillsData["루우나"] = {
-  "name": "Runa Dogenzaka",
   "skill1": {
-    "name": "Fiery Handshake",
+    "name": "Welcome Hug",
     "element": "화염광역",
     "type": "디버프",
     "sp": 22,
     "cool": 0,
-    "description": "Deals 73.2%/80.7%/77.7%/85.2% ATK as Fire DMG to all enemies, decreases the target's DEF based on 15.4% own EHR, up to 26.4%/29.2%/27.9%/30.7% for 2 turns, additionally decreases DEF by 26.4% when taking Fire DMG. There is a 50% base chance to inflict Burn. Howler gains [Warm Welcome]. (Cannot stack the DEF Down effect with [Intimidate Baddie].)"
+    "description": "Deal Fire damage to all foes equal to 73.2%/80.7%/77.7%/85.2% of Attack.\nDecrease target's Defense by 15.4% of Runa's ailment accuracy for 2 turns (up to 26.4%/29.1%/28.0%/30.7%). Also, when the target of this effect takes Fire, Ice, Wind, or Electric skill damage, decrease Defense by 26.4%/26.4%/28.0%/28.0% more. The Defense decrease effects from this skill and Furrious Bark do not stack.\nAlso, 50% chance to inflict Burn on the target, and gain Big Welcome for 2 turns."
   },
   "skill2": {
-    "name": "Intimidate Baddie",
+    "name": "Furrious Bark",
     "element": "화염",
     "type": "디버프",
     "sp": 22,
     "cool": 0,
-    "description": "Deals 170.8%/188.3%/181.3%/198.8% ATK as Fire DMG to 1 enemy, decreases the target's DEF by 14.6%/14.6%/15.5%/15.5% + 31.4% of own EHR (up to 53.7%/59.3%/56.9%/62.5% DEF Down) for 2 turns. You gain [Furious Pursue]. (Cannot stack the DEF Down effect with [Fiery Handshake].)"
+    "description": "Deal Fire damage to 1 foe equal to 170.8%/188.3%/181.3%/198.8% of Attack.\nDecrease target's Defense by 14.6%/14.6%/15.5%/15.5% + 31.4% of Runa's ailment accuracy (up to 53.7%/59.2%/57.0%/62.5%) for 2 turns. The Defense decrease effects from this skill and Welcome Hug do not stack.\nAlso, gain Furrocious Follow-Up for 2 turns."
   },
   "skill3": {
-    "name": "GOGO WOOF WOOF RU!",
+    "name": "Woof Woof Blaze",
     "element": "화염광역",
     "type": "디버프",
-    "sp": 24,
+    "sp": 26,
     "cool": 0,
-    "description": "Requirement: You have [Warm Welcome] or [Furious Pursue]. When you have [Warm Welcome] or [Furious Pursue], triggers their corresponding effect. Only one effect can be triggered.\n- [Warm Welcome]: Deals 109.8%/109.8%/116.6%/116.6% ATK as Fire DMG to all enemies, increases the target's DMG Taken based on 24% of own EHR, up to 41.0%/45.2%/43.5%/47.7%, increases their Fire DMG Taken by 20.5%/22.7%/21.7%/23.9% for 2 turns.\n- [Furious Pursue]: Deals 219.6%/219.6%/233.1%/233.1% ATK as Fire DMG to 1 enemy, increases the target's DMG Taken based on 34.3% of own EHR, up to 58.6%/64.7%/62.1%/68.2%, increases their Follow Up DMG Taken by 29.3%/31.6%/31.8%/34.1% for 2 turns."
+    "description": "Usable when Big Welcome or Furrocious Follow-Up are active, and activates various effects based on which is active. If both effects are active at the same time, prioritize Big Welcome.\nRemove Big Welcome and Furrocious Follow-Up after effect activates.\nBig Welcome: Deal Fire damage to all foes equal to 109.8%/109.8%/116.6%/116.6% of Attack. This skill's damage is counted as a Resonance.\nIncrease target's damage taken by 24% of Runa's ailment accuracy (up to 41.0%/45.2%/43.5%/47.7%), and Fire, Ice, Electric and Wind damage taken by 20.5%/22.6%/21.8%/23.9% for 2 turns.\nFurrocious Follow-Up: Deal Fire damage to 1 foe equal to 219.6%/219.6%/233.1%/233.1% of Attack. This skill's damage is counted as a Resonance.\nIncrease target's damage taken by 34.3% of Runa's ailment accuracy (up to 58.6%/64.6%/62.2%/68.2%), and Resonance damage taken by 39.0%/43.0%/41.4%/45.4% for 2 turns."
+  },
+  "passive1": {
+    "name": "Peppy Guard Dog",
+    "element": "패시브",
+    "cool": 0,
+    "description": "During battle, increase Runa's Attack by 60.0% of her ailment accuracy."
+  },
+  "passive2": {
+    "name": "Faithful Dog",
+    "element": "패시브",
+    "cool": 0,
+    "description": "When Runa inflicts a debuff on a foe with a skill, increase her Attack by 33.0% for 1 turn. When an ally deals Fire, Ice, Electric or Wind damage or Resonance damage, grant them the same Attack increase effect."
   },
   "skill_highlight": {
     "element": "화염광역",
     "type": "디버프",
-    "description": "Deals 214.7%/236.7%/227.9%/249.9% ATK as Fire DMG to all enemies, inflicts all enemies with 2 stacks of [Big Bad]: Consumes 1 stack when any enemy take Follow Up DMG or Fire DMG to increase that damage based on 22.9% own EHR, up to 39.0%/43.0%/41.4%/45.4% for 2 turns."
-  },
-  "passive1": {
-    "name": "Loyalty",
-    "element": "패시브",
-    "description": "Increase ATK by 60% of your EHR."
-  },
-  "passive2": {
-    "name": "Passion",
-    "element": "패시브",
-    "description": "After using skills to inflict debuffs, increase own ATK by 33.0%, allies gain the same amount of ATK when they deal Fire DMG or Follow Up DMG for 1 turn."
+    "cool": 4,
+    "description": "Deal Fire damage to all foes equal to 214.7%/236.7%/227.9%/249.9% of Attack.\nPermanently inflict 2 Enthusiastic Fuse stacks on foes. Stacks up to 2 times (remove as wave progresses).\nEnthusiastic Fuse: When any foe takes Fire, Ice, Electric, or Wind skill damage or Resonance damage, spend 1 Enthusiastic Fuse stack, and increase the damage by 22.9% of Runa's ailment accuracy (up to 53.7%/59.2%/57.0%/62.5%). If Runa's skills and Resonance activate this effect, Enthusiastic Fuse will not be spent."
   }
 };
 window.jpCharacterSkillsData["루우나"] = {
-  "name": "道玄坂 琉七",
   "skill1": {
-    "name": "熱き握手",
+    "name": "ウェルカム・ハグ",
     "element": "화염광역",
     "type": "디버프",
     "sp": 22,
     "cool": 0,
-    "description": "全ての敵に攻撃力の73.2%/80.7%/77.7%/85.2%の火炎属性ダメージを与える。対象の防御力を減少させ（自身の状態異常命中の15.4%分、上限26.4%/29.2%/27.9%/30.7%）、火炎属性スキルを受けた際に防御がさらに26.4%/26.4%/28.0%/28.0%減少し、2ターン持続する。また50%の基本確率で燃焼状態にする。自身が『熱烈な歓迎』を獲得する（防御減少効果は『悪党への警告』が同時に存在する場合、より高い数値が適用される）。"
+    "description": "敵全体に攻撃力73.2%/80.7%/77.7%/85.2%の火炎属性ダメージを与える。\n２ターンの間、対象の防御力が自身の状態異常命中の１５.４%分（最大26.4%/29.1%/28.0%/30.7%まで）低下し、さらにこの効果中の対象が火炎／氷結／疾風／電撃属性のスキルダメージを受ける時、追加で防御力が26.4%/26.4%/28.0%/28.0%低下する。このスキルと『フュリオス・バーク』の防御力低下効果は重複しない。\nまた、対象を５０%の確率で炎上状態にし、自身は２ターンの間『大歓迎』状態になる。"
   },
   "skill2": {
-    "name": "悪党への警告",
+    "name": "フュリオス・バーク",
     "element": "화염",
     "type": "디버프",
     "sp": 22,
     "cool": 0,
-    "description": "1体の敵に攻撃力の170.8%/188.3%/181.3%/198.8%の火炎属性ダメージを与え、2ターンの間、防御力を14.6%/14.6%/15.5%/15.5% +（自身の状態異常命中の31.4%、上限53.7%/59.3%/56.9%/62.5%）減少させる。自身が『執拗な追跡』を獲得する（防御減少効果は『熱き握手』が同時に存在する場合、より高い数値が適用される）。"
+    "description": "敵単体に攻撃力170.8%/188.3%/181.3%/198.8%の火炎属性ダメージを与える。\n２ターンの間、対象の防御力が14.6%/14.6%/15.5%/15.5%＋自身の状態異常命中の３１.４%分（最大53.7%/59.2%/57.0%/62.5%まで）低下する。このスキルと『ウェルカム・ハグ』の防御力低下効果は重複しない。\nさらに自身は２ターンの間、『猛追撃』状態になる。"
   },
   "skill3": {
-    "name": "GOGO ワンワン！",
+    "name": "わんダフル・ブレイズ",
     "element": "화염광역",
     "type": "디버프",
-    "sp": 24,
+    "sp": 26,
     "cool": 0,
-    "description": "『熱烈な歓迎』または『執拗な追跡』を所持しているかによって、スキルの効果が異なり、同時に1つの効果のみ発動可能。\n『熱烈な歓迎』：全ての敵に攻撃力の109.8%/109.8%/116.6%/116.6%の火炎属性ダメージを与え、2ターンの間、対象が受けるダメージが増加（自身の状態異常命中の24%、上限41.0%/45.2%/43.5%/47.7%）、受ける火炎属性ダメージが20.5%/22.7%/21.7%/23.9%増加する。\n『執拗な追跡』：1体の敵に攻撃力の219.6%/219.6%/233.1%/233.1%の火炎属性ダメージを与え、2ターンの間、対象が受けるダメージが増加（自身の状態異常命中の34.3%、上限58.6%/64.7%/62.1%/68.2%）、受ける追加効果ダメージが29.3%/31.6%/31.8%/34.1%増加する。"
+    "description": "『大歓迎』または『猛追撃』状態の時に使用可能となり、それぞれの状態に応じたスキルの効果が発動する。２つの効果は同時に発動せず、『大歓迎』状態の効果が優先して発動する。\n『大歓迎』『猛追撃』状態は効果発動後に解除される。\n『大歓迎』状態：敵全体に攻撃力109.8%/109.8%/116.6%/116.6%の火炎属性ダメージを与える。このスキルのダメージは意識奏功として扱う。\n２ターンの間、対象の被ダメージが自身の状態異常命中の２４%分（最大41.0%/45.2%/43.5%/47.7%まで）上昇し、対象の火炎／氷結／電撃／疾風属性の被ダメージが20.5%/22.6%/21.8%/23.9%上昇する。\n『猛追撃』状態：敵単体に攻撃力219.6%/219.6%/233.1%/233.1%の火炎属性ダメージを与える。このスキルのダメージは意識奏功として扱う。\n２ターンの間、対象の被ダメージが自身の状態異常命中の３４.３%分（最大58.6%/64.6%/62.2%/68.2%まで）上昇し、対象の意識奏功の被ダメージが39.0%/43.0%/41.4%/45.4%上昇する。"
+  },
+  "passive1": {
+    "name": "熱意の番犬",
+    "element": "패시브",
+    "cool": 0,
+    "description": "戦闘中、自身の攻撃力が自身の状態異常命中の60.0%分上昇する。"
+  },
+  "passive2": {
+    "name": "情熱の忠犬",
+    "element": "패시브",
+    "cool": 0,
+    "description": "自身がスキルで敵に弱体効果を付与した時、１ターンの間、自身の攻撃力が33.0%上昇する。味方が火炎／氷結／電撃／疾風属性または意識奏功でダメージを与えた時も同じ攻撃力上昇効果を得る。"
   },
   "skill_highlight": {
     "element": "화염광역",
     "type": "디버프",
-    "description": "全ての敵に攻撃力の214.7%/236.7%/227.9%/249.9%の火炎属性ダメージを与え、敵陣が『大悪党』2スタックを獲得する。\n『大悪党』：敵陣の任意の対象が追撃（追加効果）スキルまたは火炎属性スキルを受けると1スタックが消費され、2ターンの間、受けるダメージが増加する（自身の状態異常命中の22.9%、上限39.0%/43.0%/41.4%/45.4%）。"
-  },
-  "passive1": {
-    "name": "忠実",
-    "element": "패시브",
-    "description": "戦闘中、自身の状態異常命中60.0%分の攻撃力ボーナスを獲得する。"
-  },
-  "passive2": {
-    "name": "情熱",
-    "element": "패시브",
-    "description": "スキルで敵にデバフを付与した後、自身の攻撃力が33.0%上昇する。味方が火炎属性ダメージまたは追加効果ダメージを与えると、同じ攻撃力上昇効果を獲得し、1ターン持続する。"
+    "cool": 4,
+    "description": "敵全体に攻撃力214.7%/236.7%/227.9%/249.9%の火炎属性ダメージを与える。\n敵陣営に対して『激情の導火線』を永続的に２つ付与し、最大２つまで累積できる（Ｗａｖｅ進行時に解除される）。\n『激情の導火線』：いずれかの敵が火炎／氷結／電撃／疾風属性のスキルまたは意識奏功のダメージを受ける時、『激情の導火線』を１つ消費し、そのダメージを琉七の状態異常命中の２２.９%分（最大53.7%/59.2%/57.0%/62.5%まで）上昇させる。琉七のスキル／意識奏功でこの効果を発動させる場合は『激情の導火線』を消費しない。"
   }
 };

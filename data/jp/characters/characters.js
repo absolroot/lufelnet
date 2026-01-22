@@ -1,6 +1,6 @@
 window.characterList = window.characterList || {
     mainParty: [
-        "렌", "루페르", "레오", "류지", "마코토", "마사키", "모르가나",
+        "렌", "루페르", "레오", "루우나", "류지", "마코토", "마사키", "모르가나",
         "모토하", "모토하·여름", "몽타뉴", "몽타뉴·백조", "미나미", "슌",
         "세이지", "아야카", "안",  "야오링", 
         "원더", "유스케", "유키미", "YUI",
@@ -22,6 +22,9 @@ Object.assign(window.characterData, {
         "tag": "",
         "persona": "",
         "release_order": 0
+    },
+    "루우나": {
+        "release_order": 18
     },
     "몽타뉴·백조": {
         "release_order": 17

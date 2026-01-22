@@ -26,7 +26,9 @@ jobs:
         env:
           BASE_URL: https://iant.kr:5000/data
         run: |
-          set -euo pipefail
+          # set -e 제거: 에러가 나도 스크립트가 멈추지 않고 계속 진행됨
+          # set -u: 선언되지 않은 변수 사용 시에만 에러
+          set -u
 
           # 저장 루트 설정
           ROOT_DIR="data/external"
@@ -35,16 +37,13 @@ jobs:
           mkdir -p "$ROOT_DIR/before"
           mkdir -p "$ROOT_DIR/before/character" "$ROOT_DIR/before/weapon"
 
-          # 엔드포인트와 리전 정의
           ENDPOINTS=("gacha" "guildboss" "sos")
           REGIONS=("kr" "en" "cn" "tw" "jp" "sea")
           CODENAME_FILE="${ROOT_DIR}/character/codename.json"
 
           changed=0
 
-          # [핵심 변경] Python을 사용한 강력한 JSON 정화 함수
-          # 1. UTF-8 인코딩을 안전하게 처리 (일본어/한글 깨짐 방지)
-          # 2. 정규식으로 숫자 앞의 불필요한 0 제거 (예: : 0123 -> : 123)
+          # [에러 방지용] JSON 숫자 앞의 0을 제거하는 파이썬 함수
           clean_json() {
             python3 -c "import sys, re; content = sys.stdin.read(); sys.stdout.write(re.sub(r'([:\[,]\s*)0+([1-9])', r'\1\2', content))"
           }
@@ -60,40 +59,42 @@ jobs:
 
             echo "➡️  Fetching: ${url}"
 
-            tmp_new="$(mktemp)"
-            
-            # Python 정화 함수를 거쳐서 저장
-            if ! curl -sS "$url" | clean_json > "$tmp_new"; then
-               echo "❌ Curl Failed: $url"
+            tmp_raw="$(mktemp)"
+            tmp_clean="$(mktemp)"
+
+            # 1. 다운로드 시도 (실패하면 건너뜀)
+            if ! curl -sS "$url" -o "$tmp_raw"; then
+               echo "⚠️ Download failed. Skipping..."
                return
             fi
 
-            # jq 유효성 검사
-            if ! jq . "$tmp_new" > /dev/null 2>&1; then
-               echo "❌ jq Error (Invalid JSON) on $url"
-               echo "=== RAW CONTENT HEAD ==="
-               head -n 20 "$tmp_new"
+            # 2. 정화 작업 (숫자 0 제거)
+            cat "$tmp_raw" | clean_json > "$tmp_clean"
+
+            # 3. 유효성 검사 (실패하면 건너뜀)
+            if ! jq . "$tmp_clean" > /dev/null 2>&1; then
+               echo "⚠️ Invalid JSON detected. Skipping update for this file."
                return
             fi
             
-            jq -S . "$tmp_new" > "${tmp_new}.sorted"
+            # 4. 정렬
+            jq -S . "$tmp_clean" > "${tmp_clean}.sorted"
 
-            # 변경 감지 및 저장
+            # 5. 변경 확인 및 저장
             if [ -f "$out" ]; then
               tmp_old="$(mktemp)"
               jq -S . "$out" > "$tmp_old"
-              if diff -q "$tmp_old" "${tmp_new}.sorted" > /dev/null; then
-                echo "   No change: ${endpoint}/${region}.json"
+              if diff -q "$tmp_old" "${tmp_clean}.sorted" > /dev/null; then
+                echo "   No change."
               else
                 cp "$out" "$backup_file"
-                echo "   Backup created: ${backup_file}"
-                cp "${tmp_new}.sorted" "$out"
-                echo "   Updated: ${endpoint}/${region}.json"
+                cp "${tmp_clean}.sorted" "$out"
+                echo "   Updated."
                 changed=1
               fi
             else
-              cp "${tmp_new}.sorted" "$out"
-              echo "   Created: ${endpoint}/${region}.json"
+              cp "${tmp_clean}.sorted" "$out"
+              echo "   Created."
               changed=1
             fi
           }
@@ -110,38 +111,37 @@ jobs:
 
             echo "➡️  Fetching: ${url}"
 
-            tmp_new="$(mktemp)"
+            tmp_raw="$(mktemp)"
+            tmp_clean="$(mktemp)"
+
+            # 1. 다운로드
+            if ! curl -sS "$url" -o "$tmp_raw"; then
+               echo "⚠️ Download failed. Skipping..."
+               return
+            fi
             
-            curl -sS "$url" | clean_json > "$tmp_new"
-            
-            # jq 유효성 검사
-            if ! jq . "$tmp_new" > /dev/null 2>&1; then
-               # 캐릭터 없음(status 100) 에러인지 텍스트로 확인
-               if grep -q '"status": 100' "$tmp_new" || grep -q '"status":100' "$tmp_new"; then
-                   if [ -f "$out" ]; then
-                      echo "   Character not found (status 100). Keeping existing file."
-                   else
-                      echo "   Character not found (status 100). No file created."
-                   fi
-                   return
+            # 2. 정화
+            cat "$tmp_raw" | clean_json > "$tmp_clean"
+
+            # 3. 유효성 검사
+            if ! jq . "$tmp_clean" > /dev/null 2>&1; then
+               # 에러지만 '데이터 없음(status 100)'인 경우는 정상 처리로 간주하고 로그만 남김
+               if grep -q '"status": 100' "$tmp_clean" || grep -q '"status":100' "$tmp_clean"; then
+                   echo "   Character not found (API status 100). Skipping."
                else
-                   echo "❌ jq Error (Invalid JSON) on $url"
-                   head -n 20 "$tmp_new"
-                   return
+                   echo "⚠️ Invalid JSON detected. Skipping update for: $local_codename"
                fi
+               return
             fi
 
-            # 데이터가 null인 경우 처리
-            if jq -e '.status == 100 and .data == null' "$tmp_new" > /dev/null 2>&1; then
-              if [ -f "$out" ]; then
-                echo "   Error response (data null). Keep existing."
-              else
-                echo "   Error response (data null). Skip create."
-              fi
+            # 데이터 null 체크
+            if jq -e '.status == 100 and .data == null' "$tmp_clean" > /dev/null 2>&1; then
+              echo "   Data is null. Skipping."
               return
             fi
 
-            jq -S . "$tmp_new" > "${tmp_new}.sorted"
+            # 4. 정렬 및 저장
+            jq -S . "$tmp_clean" > "${tmp_clean}.sorted"
 
             mkdir -p "$(dirname "$out")"
             mkdir -p "$backup_dir"
@@ -149,18 +149,17 @@ jobs:
             if [ -f "$out" ]; then
               tmp_old="$(mktemp)"
               jq -S . "$out" > "$tmp_old"
-              if diff -q "$tmp_old" "${tmp_new}.sorted" > /dev/null; then
-                echo "   No change: character/${region}/${local_codename}.json"
+              if diff -q "$tmp_old" "${tmp_clean}.sorted" > /dev/null; then
+                echo "   No change."
               else
                 cp "$out" "$backup_file"
-                echo "   Backup created: ${backup_file}"
-                cp "${tmp_new}.sorted" "$out"
-                echo "   Updated: character/${region}/${local_codename}.json"
+                cp "${tmp_clean}.sorted" "$out"
+                echo "   Updated: $local_codename"
                 changed=1
               fi
             else
-              cp "${tmp_new}.sorted" "$out"
-              echo "   Created: character/${region}/${local_codename}.json"
+              cp "${tmp_clean}.sorted" "$out"
+              echo "   Created: $local_codename"
               changed=1
             fi
           }
@@ -177,25 +176,27 @@ jobs:
 
             echo "➡️  Fetching: ${url}"
 
-            tmp_new="$(mktemp)"
+            tmp_raw="$(mktemp)"
+            tmp_clean="$(mktemp)"
+
+            if ! curl -sS "$url" -o "$tmp_raw"; then
+               echo "⚠️ Download failed. Skipping..."
+               return
+            fi
             
-            curl -sS "$url" | clean_json > "$tmp_new"
-            
-            if ! jq . "$tmp_new" > /dev/null 2>&1; then
-               echo "❌ jq Error on $url"
+            cat "$tmp_raw" | clean_json > "$tmp_clean"
+
+            if ! jq . "$tmp_clean" > /dev/null 2>&1; then
+               echo "⚠️ Invalid JSON detected. Skipping update for weapon: $local_codename"
                return
             fi
 
-            if jq -e 'has("error")' "$tmp_new" > /dev/null 2>&1; then
-              if [ -f "$out" ]; then
-                echo "   Weapon not found error. Keep existing."
-              else
-                echo "   Weapon not found error. Skip create."
-              fi
+            if jq -e 'has("error")' "$tmp_clean" > /dev/null 2>&1; then
+              echo "   Weapon not found (API error). Skipping."
               return
             fi
 
-            jq -S . "$tmp_new" > "${tmp_new}.sorted"
+            jq -S . "$tmp_clean" > "${tmp_clean}.sorted"
 
             mkdir -p "$(dirname "$out")"
             mkdir -p "$backup_dir"
@@ -203,23 +204,22 @@ jobs:
             if [ -f "$out" ]; then
               tmp_old="$(mktemp)"
               jq -S . "$out" > "$tmp_old"
-              if diff -q "$tmp_old" "${tmp_new}.sorted" > /dev/null; then
-                echo "   No change: weapon/${region}/${local_codename}.json"
+              if diff -q "$tmp_old" "${tmp_clean}.sorted" > /dev/null; then
+                echo "   No change."
               else
                 cp "$out" "$backup_file"
-                echo "   Backup created: ${backup_file}"
-                cp "${tmp_new}.sorted" "$out"
-                echo "   Updated: weapon/${region}/${local_codename}.json"
+                cp "${tmp_clean}.sorted" "$out"
+                echo "   Updated: $local_codename"
                 changed=1
               fi
             else
-              cp "${tmp_new}.sorted" "$out"
-              echo "   Created: weapon/${region}/${local_codename}.json"
+              cp "${tmp_clean}.sorted" "$out"
+              echo "   Created: $local_codename"
               changed=1
             fi
           }
 
-          # 실행 루프
+          # 메인 실행 루프
           for ep in "${ENDPOINTS[@]}"; do
             for rg in "${REGIONS[@]}"; do
               fetch_and_write "$ep" "$rg"
@@ -228,18 +228,27 @@ jobs:
 
           if [ -f "$CODENAME_FILE" ]; then
             echo "➡️  Loading codenames mapping from: $CODENAME_FILE"
-            mapfile -t CN_API < <(jq -r '.[].api' "$CODENAME_FILE")
-            mapfile -t CN_LOCAL < <(jq -r '.[].local' "$CODENAME_FILE")
-            for rg in "${REGIONS[@]}"; do
-              mkdir -p "$ROOT_DIR/character/$rg" "$ROOT_DIR/weapon/$rg"
-              mkdir -p "$ROOT_DIR/before/character/$rg" "$ROOT_DIR/before/weapon/$rg"
-              for i in "${!CN_API[@]}"; do
-                api_code="${CN_API[$i]}"
-                local_code="${CN_LOCAL[$i]}"
-                fetch_and_write_character "$rg" "$api_code" "$local_code"
-                fetch_and_write_weapon "$rg" "$api_code" "$local_code"
-              done
-            done
+            # mapfile이 실패해도 멈추지 않도록 처리
+            mapfile -t CN_API < <(jq -r '.[].api' "$CODENAME_FILE" || echo "")
+            mapfile -t CN_LOCAL < <(jq -r '.[].local' "$CODENAME_FILE" || echo "")
+            
+            if [ ${#CN_API[@]} -eq 0 ]; then
+                echo "⚠️  Failed to parse codename file or empty. Skipping characters."
+            else
+                for rg in "${REGIONS[@]}"; do
+                  mkdir -p "$ROOT_DIR/character/$rg" "$ROOT_DIR/weapon/$rg"
+                  mkdir -p "$ROOT_DIR/before/character/$rg" "$ROOT_DIR/before/weapon/$rg"
+                  for i in "${!CN_API[@]}"; do
+                    api_code="${CN_API[$i]}"
+                    local_code="${CN_LOCAL[$i]}"
+                    # 빈 줄 체크
+                    if [ -n "$api_code" ]; then
+                        fetch_and_write_character "$rg" "$api_code" "$local_code"
+                        fetch_and_write_weapon "$rg" "$api_code" "$local_code"
+                    fi
+                  done
+                done
+            fi
           else
             echo "⚠️  $CODENAME_FILE not found. Skip character fetch."
           fi
@@ -255,5 +264,6 @@ jobs:
           else
             echo "✅ No changes to commit."
           fi
-
+          
+          # 마지막엔 항상 성공으로 종료
           exit 0

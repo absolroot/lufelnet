@@ -11,7 +11,9 @@
         "nature": null,
         "skill_lv": "3",
         "sn": 134140,
-        "tags": [null],
+        "tags": [
+          null
+        ],
         "target": "Myself",
         "target_count": 1
       },
@@ -25,7 +27,9 @@
         "nature": null,
         "skill_lv": "3",
         "sn": 134141,
-        "tags": [null],
+        "tags": [
+          null
+        ],
         "target": "Myself",
         "target_count": 1
       },
@@ -39,7 +43,9 @@
         "nature": null,
         "skill_lv": "3",
         "sn": 134142,
-        "tags": [null],
+        "tags": [
+          null
+        ],
         "target": "Myself",
         "target_count": 1
       },
@@ -53,7 +59,9 @@
         "nature": null,
         "skill_lv": "3",
         "sn": 134143,
-        "tags": [null],
+        "tags": [
+          null
+        ],
         "target": "Myself",
         "target_count": 1
       },
@@ -67,7 +75,9 @@
         "nature": null,
         "skill_lv": "3",
         "sn": 134144,
-        "tags": [null],
+        "tags": [
+          null
+        ],
         "target": "Myself",
         "target_count": 1
       },
@@ -81,7 +91,9 @@
         "nature": null,
         "skill_lv": "3",
         "sn": 134145,
-        "tags": [null],
+        "tags": [
+          null
+        ],
         "target": "Myself",
         "target_count": 1
       },
@@ -90,12 +102,14 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "At the start of battle, gain Big Welcome and Furrocious Follow-Up for 2 turns.\nExtend the duration of debuffs from Welcome Hug, Furrious Bark, and Woof Woof Blaze by 1 turn.\nWhen Big Welcome and Furrocious Follow-Up are both active, increase Woof Woof Blaze's Fire, Ice, Electric, and Wind damage taken effect on all foes by 25%, increase the Resonance damage taken effect on the main target by 60%, and the effects granted by Big Welcome and Furrocious Follow-Up will both activate (the damage taken increase effects do not stack, and the greater effect is applied).",
+        "desc": "At the start of battle, gain Big Welcome and Furrocious Follow-Up for 2 turns.\nExtend the duration of debuffs from Welcome Hug, Furrious Bark, and Woof Woof Blaze by 1 turn.\nWhen Big Welcome and Furrocious Follow-Up are both active, increase Woof Woof Blaze's Fire, Ice, Electric, and Wind damage taken effect on all foes by 30%, increase the Resonance damage taken effect on the main target by 60%, and the effects granted by Big Welcome and Furrocious Follow-Up will both activate (the damage taken increase effects do not stack, and the greater effect is applied).",
         "name": "Station Square Superstar",
         "nature": null,
         "skill_lv": "3",
         "sn": 134146,
-        "tags": [null],
+        "tags": [
+          null
+        ],
         "target": "Myself",
         "target_count": 1
       }
@@ -112,7 +126,9 @@
       "nature": "Fire",
       "skill_lv": "10/10/13/13",
       "sn": 134152,
-      "tags": [null],
+      "tags": [
+        null
+      ],
       "target": "Alive Enemy",
       "target_count": "All"
     },
@@ -128,7 +144,7 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "SP 22",
-        "desc": "Deal Fire damage to all foes equal to 73.2%/80.7%/77.7%/85.2% of Attack.\nDecrease target's Defense by 15.4% of Runa's ailment accuracy for 2 turns (up to 26.4%/29.1%/28.0%/30.7%). Also, when the target of this effect takes Fire, Ice, Wind, or Electric skill damage, decrease Defense by 26.4%/26.4%/28.0%/28.0% more. The Defense decrease effects from this skill and Furrious Bark do not stack.\nAlso, 50% chance to inflict Burn on the target, and gain Big Welcome for 2 turns.",
+        "desc": "Deal Fire damage to all foes equal to 73.2%/80.7%/77.7%/85.2% of Attack.\nDecrease target's Defense by 15.4% of Runa's ailment accuracy for 2 turns (up to 26.4%/29.1%/28.0%/30.7%). Also, when the target of this effect takes Fire, Ice, Electric, or Ice skill damage, decrease Defense by 26.4%/26.4%/28.0%/28.0% more. The Defense decrease effects from this skill and Furrious Bark do not stack.\nAlso, 50% chance to inflict Burn on the target, and gain Big Welcome for 2 turns.\n",
         "name": "Welcome Hug",
         "nature": "Fire",
         "skill_lv": "10/10/13/13",
@@ -208,9 +224,9 @@
     ],
     "rating": {
       "Ailment Acc.": 1.4,
-      "Attack": 3730,
+      "Attack": 3730.0,
       "Damage Mult.": 0.09,
-      "Unknown Attr": 0
+      "Unknown Attr": 0.0
     },
     "stat": {
       "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
@@ -256,6 +272,6 @@
     "stat_100": null,
     "theurgia_skill": []
   },
-  "msg": "TESTING",
+  "msg": "OK",
   "status": 0
 }

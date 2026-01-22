@@ -28,6 +28,62 @@
         "type": "Chance Most Wanted Idol Contracts"
       },
       {
+        "endTime": "2026-01-22 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Yumi Shiina",
+            "type": "thief"
+          },
+          {
+            "name": "Ren Amamiya",
+            "type": "thief"
+          },
+          {
+            "name": "Yui",
+            "type": "thief"
+          },
+          {
+            "name": "Makoto Niijima",
+            "type": "thief"
+          },
+          {
+            "name": "Yusuke Kitagawa",
+            "type": "thief"
+          }
+        ],
+        "name": "Phantom Idol Casting Call",
+        "startTime": "2025-12-29 11:30:00",
+        "type": "Chance Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-01-22 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Yumi Shiina",
+            "type": "thief"
+          },
+          {
+            "name": "Ren Amamiya",
+            "type": "thief"
+          },
+          {
+            "name": "Yui",
+            "type": "thief"
+          },
+          {
+            "name": "Makoto Niijima",
+            "type": "thief"
+          },
+          {
+            "name": "Yusuke Kitagawa",
+            "type": "thief"
+          }
+        ],
+        "name": "Phantom Idol Casting Call",
+        "startTime": "2025-12-29 11:30:00",
+        "type": "Targeted Most Wanted Idol Contracts"
+      },
+      {
         "endTime": "2026-02-05 10:59:59",
         "fiveStar": [
           {
@@ -80,10 +136,10 @@
         "type": "Chance Most Wanted Idol Contracts"
       },
       {
-        "endTime": "2026-02-13 10:59:59",
+        "endTime": "2026-01-22 10:59:59",
         "fiveStar": [
           {
-            "name": "Runa Dogenzaka",
+            "name": "Justine & Caroline",
             "type": "thief"
           }
         ],
@@ -93,7 +149,7 @@
             "type": "thief"
           },
           {
-            "name": "Leo Kamiyama",
+            "name": "Yukimi Fujikawa",
             "type": "thief"
           },
           {
@@ -101,15 +157,15 @@
             "type": "thief"
           }
         ],
-        "name": "Howdy Hey!",
-        "startTime": "2026-01-22 11:30:00",
+        "name": "Road to Rehabilitation",
+        "startTime": "2025-12-25 08:30:00",
         "type": "Targeted Most Wanted Idol Contracts"
       },
       {
-        "endTime": "2026-02-13 10:59:59",
+        "endTime": "2026-01-22 10:59:59",
         "fiveStar": [
           {
-            "name": "Runa Dogenzaka",
+            "name": "Justine & Caroline",
             "type": "thief"
           }
         ],
@@ -119,7 +175,7 @@
             "type": "thief"
           },
           {
-            "name": "Leo Kamiyama",
+            "name": "Yukimi Fujikawa",
             "type": "thief"
           },
           {
@@ -127,8 +183,8 @@
             "type": "thief"
           }
         ],
-        "name": "Howdy Hey!",
-        "startTime": "2026-01-22 11:30:00",
+        "name": "Road to Rehabilitation",
+        "startTime": "2025-12-25 08:30:00",
         "type": "Chance Most Wanted Idol Contracts"
       }
     ],
@@ -169,6 +225,61 @@
         "type": "Arms Deals"
       },
       {
+        "endTime": "2026-01-22 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Phoenix Dagger",
+            "type": "weapon",
+            "user": "Ren"
+          },
+          {
+            "name": "Cyber Jammers",
+            "type": "weapon",
+            "user": "Yui"
+          },
+          {
+            "name": "Shadowkiller",
+            "type": "weapon",
+            "user": "Yusuke"
+          },
+          {
+            "name": "Nuclear Finisher",
+            "type": "weapon",
+            "user": "Makoto"
+          },
+          {
+            "name": "Moonlit Feather",
+            "type": "weapon",
+            "user": "Yumi"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Meta Directors",
+            "type": "weapon",
+            "user": "Yui"
+          },
+          {
+            "name": "Omega Knuckle",
+            "type": "weapon",
+            "user": "Makoto"
+          },
+          {
+            "name": "Jagato",
+            "type": "weapon",
+            "user": "Yusuke"
+          },
+          {
+            "name": "Starrynight Soothsayer",
+            "type": "weapon",
+            "user": "Yumi"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2025-12-29 11:30:00",
+        "type": "Arms Deals"
+      },
+      {
         "endTime": "2026-02-05 10:59:59",
         "fiveStar": [
           {
@@ -204,12 +315,12 @@
         "type": "Arms Deals"
       },
       {
-        "endTime": "2026-02-13 10:59:59",
+        "endTime": "2026-01-22 10:59:59",
         "fiveStar": [
           {
-            "name": "Cerberus Claws",
+            "name": "Warden's Judgement",
             "type": "weapon",
-            "user": "Runa"
+            "user": "Justine & Caroline"
           }
         ],
         "fourStar": [
@@ -219,9 +330,9 @@
             "user": "Riko"
           },
           {
-            "name": "Justice Lance",
+            "name": "Heavy Metal Pain",
             "type": "weapon",
-            "user": "Kamiyama"
+            "user": "Yukimi"
           },
           {
             "name": "Scarlet Scepter",
@@ -229,13 +340,13 @@
             "user": "Sumi"
           },
           {
-            "name": "Hunting Hound Claws",
+            "name": "Deliverance of Strength",
             "type": "weapon",
-            "user": "Runa"
+            "user": "Justine & Caroline"
           }
         ],
         "name": "Silent Pistol",
-        "startTime": "2026-01-22 11:30:00",
+        "startTime": "2025-12-25 08:30:00",
         "type": "Arms Deals"
       }
     ]

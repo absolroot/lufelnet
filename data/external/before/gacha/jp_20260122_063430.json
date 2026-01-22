@@ -28,6 +28,62 @@
         "type": "PICKUP怪ドル契約・CHANCE"
       },
       {
+        "endTime": "2026-01-22 10:59:59",
+        "fiveStar": [
+          {
+            "name": "椎名 悠美",
+            "type": "thief"
+          },
+          {
+            "name": "雨宮 蓮",
+            "type": "thief"
+          },
+          {
+            "name": "ＹＵＩ",
+            "type": "thief"
+          },
+          {
+            "name": "新島 真",
+            "type": "thief"
+          },
+          {
+            "name": "喜多川 祐介",
+            "type": "thief"
+          }
+        ],
+        "name": "怪ドルセレクション",
+        "startTime": "2025-12-29 11:30:00",
+        "type": "PICKUP怪ドル契約・CHANCE"
+      },
+      {
+        "endTime": "2026-01-22 10:59:59",
+        "fiveStar": [
+          {
+            "name": "椎名 悠美",
+            "type": "thief"
+          },
+          {
+            "name": "雨宮 蓮",
+            "type": "thief"
+          },
+          {
+            "name": "ＹＵＩ",
+            "type": "thief"
+          },
+          {
+            "name": "新島 真",
+            "type": "thief"
+          },
+          {
+            "name": "喜多川 祐介",
+            "type": "thief"
+          }
+        ],
+        "name": "怪ドルセレクション",
+        "startTime": "2025-12-29 11:30:00",
+        "type": "PICKUP怪ドル契約・TARGET"
+      },
+      {
         "endTime": "2026-02-05 10:59:59",
         "fiveStar": [
           {
@@ -80,10 +136,10 @@
         "type": "PICKUP怪ドル契約・CHANCE"
       },
       {
-        "endTime": "2026-02-13 10:59:59",
+        "endTime": "2026-01-22 10:59:59",
         "fiveStar": [
           {
-            "name": "道玄坂 琉七",
+            "name": "ジュスティーヌ＆カロリーヌ",
             "type": "thief"
           }
         ],
@@ -93,7 +149,7 @@
             "type": "thief"
           },
           {
-            "name": "神山 嶺央",
+            "name": "藤川 雪実",
             "type": "thief"
           },
           {
@@ -101,15 +157,15 @@
             "type": "thief"
           }
         ],
-        "name": "わんわんるーな！",
-        "startTime": "2026-01-22 11:30:00",
+        "name": "更生への道のり",
+        "startTime": "2025-12-25 08:30:00",
         "type": "PICKUP怪ドル契約・TARGET"
       },
       {
-        "endTime": "2026-02-13 10:59:59",
+        "endTime": "2026-01-22 10:59:59",
         "fiveStar": [
           {
-            "name": "道玄坂 琉七",
+            "name": "ジュスティーヌ＆カロリーヌ",
             "type": "thief"
           }
         ],
@@ -119,7 +175,7 @@
             "type": "thief"
           },
           {
-            "name": "神山 嶺央",
+            "name": "藤川 雪実",
             "type": "thief"
           },
           {
@@ -127,8 +183,8 @@
             "type": "thief"
           }
         ],
-        "name": "わんわんるーな！",
-        "startTime": "2026-01-22 11:30:00",
+        "name": "更生への道のり",
+        "startTime": "2025-12-25 08:30:00",
         "type": "PICKUP怪ドル契約・CHANCE"
       }
     ],
@@ -169,6 +225,61 @@
         "type": "武器補給"
       },
       {
+        "endTime": "2026-01-22 10:59:59",
+        "fiveStar": [
+          {
+            "name": "フェニックスダガー",
+            "type": "weapon",
+            "user": "蓮"
+          },
+          {
+            "name": "サイバージャミンザー",
+            "type": "weapon",
+            "user": "ＹＵＩ"
+          },
+          {
+            "name": "影斬り",
+            "type": "weapon",
+            "user": "祐介"
+          },
+          {
+            "name": "核熱フィニッシャー",
+            "type": "weapon",
+            "user": "真"
+          },
+          {
+            "name": "ムーンライトフェザー",
+            "type": "weapon",
+            "user": "悠美"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "メタディレクター",
+            "type": "weapon",
+            "user": "ＹＵＩ"
+          },
+          {
+            "name": "オメガナックル",
+            "type": "weapon",
+            "user": "真"
+          },
+          {
+            "name": "蛇牙刀",
+            "type": "weapon",
+            "user": "祐介"
+          },
+          {
+            "name": "星夜の占い杖",
+            "type": "weapon",
+            "user": "悠美"
+          }
+        ],
+        "name": "無音の硝煙",
+        "startTime": "2025-12-29 11:30:00",
+        "type": "武器補給"
+      },
+      {
         "endTime": "2026-02-05 10:59:59",
         "fiveStar": [
           {
@@ -204,12 +315,12 @@
         "type": "武器補給"
       },
       {
-        "endTime": "2026-02-13 10:59:59",
+        "endTime": "2026-01-22 10:59:59",
         "fiveStar": [
           {
-            "name": "サーベラスクロー",
+            "name": "群青の審判",
             "type": "weapon",
-            "user": "琉七"
+            "user": "Ｊ＆Ｃ"
           }
         ],
         "fourStar": [
@@ -219,9 +330,9 @@
             "user": "理子"
           },
           {
-            "name": "ジャスティスランサー",
+            "name": "ヘビーメタルペイン",
             "type": "weapon",
-            "user": "神山"
+            "user": "雪実"
           },
           {
             "name": "スカーレットロッド",
@@ -229,13 +340,13 @@
             "user": "須見"
           },
           {
-            "name": "ハウンドクロー",
+            "name": "剛毅の御使い",
             "type": "weapon",
-            "user": "琉七"
+            "user": "Ｊ＆Ｃ"
           }
         ],
         "name": "無音の硝煙",
-        "startTime": "2026-01-22 11:30:00",
+        "startTime": "2025-12-25 08:30:00",
         "type": "武器補給"
       }
     ]

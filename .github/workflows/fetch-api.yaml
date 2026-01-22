@@ -26,8 +26,12 @@ jobs:
         env:
           BASE_URL: https://iant.kr:5000/data
         run: |
-          # set -e 제거: 에러가 나도 스크립트가 멈추지 않고 계속 진행됨
-          # set -u: 선언되지 않은 변수 사용 시에만 에러
+          # [중요] 에러가 발생해도 스크립트가 멈추지 않도록 설정 (set +e)
+          set +e
+          # 파이프라인 에러도 무시 (set +o pipefail)
+          set +o pipefail
+          
+          # 변수 미설정 시에만 에러 발생
           set -u
 
           # 저장 루트 설정
@@ -43,9 +47,10 @@ jobs:
 
           changed=0
 
-          # [에러 방지용] JSON 숫자 앞의 0을 제거하는 파이썬 함수
+          # [수정됨] 쉘 이스케이프 문제를 해결한 강력한 Python 정화 함수
+          # 홑따옴표(')를 사용하여 YAML/Shell이 역슬래시(\)를 먹어버리는 것을 방지
           clean_json() {
-            python3 -c "import sys, re; content = sys.stdin.read(); sys.stdout.write(re.sub(r'([:\[,]\s*)0+([1-9])', r'\1\2', content))"
+            python3 -c 'import sys, re; s = sys.stdin.read(); sys.stdout.write(re.sub(r"([:\[,]\s*)0+([1-9])", r"\1\2", s))'
           }
 
           fetch_and_write () {
@@ -62,18 +67,24 @@ jobs:
             tmp_raw="$(mktemp)"
             tmp_clean="$(mktemp)"
 
-            # 1. 다운로드 시도 (실패하면 건너뜀)
-            if ! curl -sS "$url" -o "$tmp_raw"; then
+            # 1. 다운로드 (실패 시 함수 종료, 스크립트는 계속)
+            curl -sS "$url" -o "$tmp_raw"
+            if [ $? -ne 0 ]; then
                echo "⚠️ Download failed. Skipping..."
                return
             fi
 
-            # 2. 정화 작업 (숫자 0 제거)
+            # 2. 정화 작업 (Python)
             cat "$tmp_raw" | clean_json > "$tmp_clean"
 
-            # 3. 유효성 검사 (실패하면 건너뜀)
-            if ! jq . "$tmp_clean" > /dev/null 2>&1; then
-               echo "⚠️ Invalid JSON detected. Skipping update for this file."
+            # 3. 유효성 검사 (에러나면 건너뜀)
+            jq . "$tmp_clean" > /dev/null 2>&1
+            if [ $? -ne 0 ]; then
+               echo "⚠️ Invalid JSON detected in ${endpoint}/${region}. Skipping update."
+               # 디버깅: 왜 에러났는지 앞부분만 출력해봄
+               echo "   --- Broken Content Snippet ---"
+               head -c 100 "$tmp_clean"
+               echo "   ------------------------------"
                return
             fi
             
@@ -115,7 +126,8 @@ jobs:
             tmp_clean="$(mktemp)"
 
             # 1. 다운로드
-            if ! curl -sS "$url" -o "$tmp_raw"; then
+            curl -sS "$url" -o "$tmp_raw"
+            if [ $? -ne 0 ]; then
                echo "⚠️ Download failed. Skipping..."
                return
             fi
@@ -124,7 +136,8 @@ jobs:
             cat "$tmp_raw" | clean_json > "$tmp_clean"
 
             # 3. 유효성 검사
-            if ! jq . "$tmp_clean" > /dev/null 2>&1; then
+            jq . "$tmp_clean" > /dev/null 2>&1
+            if [ $? -ne 0 ]; then
                # 에러지만 '데이터 없음(status 100)'인 경우는 정상 처리로 간주하고 로그만 남김
                if grep -q '"status": 100' "$tmp_clean" || grep -q '"status":100' "$tmp_clean"; then
                    echo "   Character not found (API status 100). Skipping."
@@ -179,14 +192,16 @@ jobs:
             tmp_raw="$(mktemp)"
             tmp_clean="$(mktemp)"
 
-            if ! curl -sS "$url" -o "$tmp_raw"; then
+            curl -sS "$url" -o "$tmp_raw"
+            if [ $? -ne 0 ]; then
                echo "⚠️ Download failed. Skipping..."
                return
             fi
             
             cat "$tmp_raw" | clean_json > "$tmp_clean"
 
-            if ! jq . "$tmp_clean" > /dev/null 2>&1; then
+            jq . "$tmp_clean" > /dev/null 2>&1
+            if [ $? -ne 0 ]; then
                echo "⚠️ Invalid JSON detected. Skipping update for weapon: $local_codename"
                return
             fi
@@ -265,5 +280,5 @@ jobs:
             echo "✅ No changes to commit."
           fi
           
-          # 마지막엔 항상 성공으로 종료
+          # [중요] 마지막엔 항상 성공 코드(0)로 종료하여 Actions이 빨간불 뜨지 않게 함
           exit 0

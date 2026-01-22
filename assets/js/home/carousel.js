@@ -1142,6 +1142,29 @@
         slides.unshift(withoutOrder[i]);
       }
 
+      // If no slides available, show maintenance slide
+      if (slides.length === 0) {
+        const lang = detectLang();
+        const maintenanceText = lang === 'en' ? 'Under Maintenance' : (lang === 'jp' ? 'メンテナンス中' : '점검 중');
+        slides.push({
+          kind: 'custom',
+          name: maintenanceText,
+          subtitle: '',
+          body: '불편을 드려 죄송합니다.',
+          body_en: 'We apologize for the inconvenience.',
+          body_jp: 'ご不便をおかけして申し訳ありません。',
+          customColor: null,
+          customImage: `${BASE}/assets/img/home/banner/under2.png`,
+          customBgImage: `${BASE}/assets/img/home/banner/under.png`,
+          customBgOffset: null,
+          customBgOffsetMobile: null,
+          customImgOffset: null,
+          customLink: '',
+          customLinkTarget: '_self',
+          order: null,
+        });
+      }
+
       state.slides = slides;
       state.currentIndex = 0;
       render(root);

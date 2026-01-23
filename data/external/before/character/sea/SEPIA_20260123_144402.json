@@ -6,11 +6,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "When an ally deals damage with a skill, there is a 35% chance to activate a Resonance , dealing Electric damage equal to 80% of Attack as a follow-up attack. After a follow-up, increase target's next Electric damage taken by 15% for 2 turns.",
-        "name": "Jolly Cooperation",
+        "desc": "Each time an ally deals damage, gain 1 Verse stack.\nAt 14+ Verse stacks, activate Resonance and spend 14 stacks of Verse to deal follow-up Curse damage to the last foe Sumi targeted, equal to 65%/98%/130% of Attack (effect changes at Lv. 1/50/70, respectively).\n*Verse of Hate, Verse of Healing, and Verse of Passion all also count as Verse stacks.",
+        "name": "Sonnet of Fate",
         "nature": null,
         "skill_lv": "3",
-        "sn": 111140,
+        "sn": 118140,
         "tags": [
           null
         ],
@@ -22,11 +22,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "Increase critical rate of follow-up attacks by 20%. Increase critical rate by 10% after landing a follow-up attack on Shocked foes.",
-        "name": "Payappa",
+        "desc": "After using a skill, increase damage of the next Sonnet of Fate by 40%.",
+        "name": "Fishing Pond Master",
         "nature": null,
         "skill_lv": "3",
-        "sn": 111141,
+        "sn": 118141,
         "tags": [
           null
         ],
@@ -38,11 +38,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "After performing a follow-up attack on a foe, increase Attack of Yui and allies with Player 2 by 10% for 2 turns. Stacks up to 3 times.",
-        "name": "Welcome Rain",
+        "desc": "Increase Attack of Sonnet of Fate by 50%, and inflict Curse on foes hit.",
+        "name": "Flight and Conflict",
         "nature": null,
         "skill_lv": "3",
-        "sn": 111142,
+        "sn": 118142,
         "tags": [
           null
         ],
@@ -54,11 +54,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "Increase the skill levels of Sparky Surprise and Thief Tactics by 3.",
-        "name": "Rainbow Maker",
+        "desc": "Increase the skill levels of Unexpected Tragedy and Absurd Comedy by 2.",
+        "name": "Passion for Creation",
         "nature": null,
         "skill_lv": "3",
-        "sn": 111143,
+        "sn": 118143,
         "tags": [
           null
         ],
@@ -70,11 +70,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "Highlight Enhanced: Increase critical damage of follow-up attacks by 40% for 2 turns.",
-        "name": "Virtual Fertilizer",
+        "desc": "Highlight Enhanced: Increase damage of Sonnet of Fate the next 4 times.",
+        "name": "Scream from the Soul",
         "nature": null,
         "skill_lv": "3",
-        "sn": 111144,
+        "sn": 118144,
         "tags": [
           null
         ],
@@ -86,11 +86,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "Increase the skill levels of Electric Bomb and Meta Dynamite by 3.",
-        "name": "Flower Garden",
+        "desc": "Increase the skill levels of Tragicomedy of Love and Thief Tactics by 2.",
+        "name": "Throes of Creation",
         "nature": null,
         "skill_lv": "3",
-        "sn": 111145,
+        "sn": 118145,
         "tags": [
           null
         ],
@@ -102,11 +102,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "If only 1 foe is present, increase Yui's follow-up attack by 110% of Attack. Follow-up attack deals damage equal to 25% of Attack to all other foes.",
-        "name": "Humongously Huge Harvest",
+        "desc": "After using a skill, the Verse of Hate, Verse of Healing, or Verse of Passion gained activates 3 more times next turn.\nIf 2 or more different types of Verses are stacked, increase Sonnet of Fate damage by 67%.",
+        "name": "Life Advice",
         "nature": null,
         "skill_lv": "3",
-        "sn": 111146,
+        "sn": 118146,
         "tags": [
           null
         ],
@@ -121,34 +121,34 @@
       "auto_select": "Weak",
       "cooldown": 4,
       "cost": "",
-      "desc": "Increase Attack by 34.2%/37.7%/36.3%/39.8% and follow-up damage by 24.4%/26.9%/25.9%/28.4% of Attack for 2 turns.\nActivate follow-up when allies deal damage to foes with skills for 2 turns.",
+      "desc": "Deal Curse damage to 1 foe equal to 96.8%/106.7%/100.8%/110.7% of Attack (3 hits). Increase Sumi's Attack for Sonnet of Fate by 50.6%/55.7%/52.6%/57.8% up to 2 times.",
       "name": "Highlight",
-      "nature": null,
-      "skill_lv": "10/10/13/13",
-      "sn": 111152,
+      "nature": "Curse",
+      "skill_lv": "10/10/12/12",
+      "sn": 118152,
       "tags": [
         null
       ],
-      "target": "Alive Ally",
-      "target_count": "All"
+      "target": "Alive Enemy",
+      "target_count": 1
     },
     "innate": {
-      "Attack": "0.2",
-      "Crit Mult.": "0.24"
+      "Crit Rate": "0.12",
+      "Damage Mult.": "0.16"
     },
     "innate_awake_skill": [],
-    "name": "Yui",
+    "name": "Toshiya Sumi",
     "normal_skill": [
       {
         "ascend": "0/5/0/5",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "SP 20",
-        "desc": "Deal Electric damage to 1 foe equal to 185.4%/204.4%/196.8%/215.8% of Attack. If the foe is not Shocked, there is a 68.3%/68.3%/72.5%/72.5% chance to inflict Shock for 2 turns. If the foe is already Shocked, increase damage by 30%.",
-        "name": "Electric Bomb",
-        "nature": "Electric",
-        "skill_lv": "10/10/13/13",
-        "sn": 111111,
+        "cost": "SP 22",
+        "desc": "Deal Curse damage to 1 foe equal to 58.6%/64.6%/61.0%/67.0% of Attack (3 hits), and gain 3 Verse of Hate stacks.\nThe next time Verse stacks are gained, 25% chance to change to Verse of Hate (max 2).\nWhen spending Verse of Hate stacks to deal damage with Sonnet of Fate, 30% chance to inflict Curse for each Verse of Hate spent.",
+        "name": "Unexpected Tragedy",
+        "nature": "Curse",
+        "skill_lv": "10/10/12/12",
+        "sn": 118111,
         "tags": [
           "Single-Target"
         ],
@@ -160,11 +160,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "SP 20",
-        "desc": "Deal Electric damage to all foes equal to 59.6%/65.7%/63.3%/69.4% of Attack. Increase damage to the main target by 25%.",
-        "name": "Meta Dynamite",
-        "nature": "Electric",
-        "skill_lv": "10/10/13/13",
-        "sn": 111112,
+        "desc": "Deal Curse damage to all foes equal to 35.7%/39.3%/37.1%/40.8% of Attack (2 hits), and gain 2 Verse of Healing stacks.\nThe next time Verse stacks are gained, 25% chance to change to Verse of Healing (max 2).\nWhen spending Verse of Healing stacks to deal damage with Sonnet of Fate, restore HP to the ally with the lowest remaining HP by 7.5% of Sumi's Attack for each Verse of Healing spent.",
+        "name": "Absurd Comedy",
+        "nature": "Curse",
+        "skill_lv": "10/10/12/12",
+        "sn": 118112,
         "tags": [
           "Multi-Target"
         ],
@@ -173,18 +173,18 @@
       },
       {
         "ascend": "0/5/0/5",
-        "auto_select": "AICondition (Based on GJ)",
-        "cooldown": 1,
-        "cost": "SP 25",
-        "desc": "Grant Player 2 to 1 ally for 2 turns, and increase Yui's Attack by 39.0%/43.0%/41.4%/45.4%.\nFor 2 turns, when an ally with Player 2 deals damage to a foe with a skill, perform a follow-up attack, dealing Electric damage equal to 132.9%/146.6%/141.1%/154.7% of Attack (max 2 times).\nIncrease chance to activate Jolly Cooperation by 10% for 2 turns.",
-        "name": "Sparky Surprise",
-        "nature": null,
-        "skill_lv": "10/10/13/13",
-        "sn": 111113,
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 22",
+        "desc": "Deal Curse damage to 1 foe equal to 41.5%/45.7%/43.2%/47.4% of Attack (5 hits), and gain 5 Verse of Passion stacks.\nThe next time Verse stacks are gained, 25% chance to change to Verse of Passion (max 2).\nWhen spending Verse of Passion stacks to deal damage with Sonnet of Fate, deal bonus Almighty damage equal to 7% of Attack for each Verse of Passion spent.",
+        "name": "Tragicomedy of Love",
+        "nature": "Curse",
+        "skill_lv": "10/10/12/12",
+        "sn": 118113,
         "tags": [
-          "Buff"
+          "Single-Target"
         ],
-        "target": "Ally excluding myself",
+        "target": "Alive Enemy",
         "target_count": 1
       }
     ],
@@ -194,11 +194,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "Increase follow-up damage to Shocked foes by 36.0%.",
-        "name": "Virtual Landowner",
+        "desc": "Increase damage of Sonnet of Fate on foes with Curse by 50.0%.",
+        "name": "The Other Prison",
         "nature": null,
         "skill_lv": "3",
-        "sn": 111131,
+        "sn": 118131,
         "tags": [
           "Talent"
         ],
@@ -210,11 +210,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "When an ally has Player 2, increase that ally and Yui's critical rate by 12.0% and Attack by 12.0%.",
-        "name": "Let's Go Together",
+        "desc": "For each Verse of Hate, Verse of Healing, or Verse of Passion stack spent, increase damage of Sonnet of Fate by 10.0%.",
+        "name": "This Beautiful Woman",
         "nature": null,
         "skill_lv": "3",
-        "sn": 111132,
+        "sn": 118132,
         "tags": [
           "Talent"
         ],
@@ -223,10 +223,10 @@
       }
     ],
     "rating": {
-      "Attack": 2970.0,
-      "Crit Mult.": 2.15,
-      "Crit Rate": 0.5,
-      "Damage Mult.": 0.18
+      "Attack": 2580.0,
+      "Crit Mult.": 1.77,
+      "Crit Rate": 0.37,
+      "Damage Mult.": 0.43
     },
     "stat": {
       "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
@@ -234,17 +234,18 @@
       "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
-      "Attack": "1150.02 / 1170.82 / 1191.62 / 1212.42 / 1233.22 / 1253.22 / 1274.02",
+      "Attack": "840.0 / 849.6 / 859.2 / 868.8 / 878.4 / 888.8 / 898.4",
+      "Attack Increase": "21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8%",
       "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
-      "Crit Rate": "22.0% / 22.0% / 22.0% / 22.0% / 22.0% / 22.0% / 22.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
       "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
-      "Defense": "566.66 / 577.06 / 587.46 / 597.06 / 607.46 / 617.86 / 628.26",
+      "Defense": "470.01 / 475.61 / 481.21 / 486.01 / 491.61 / 497.21 / 502.81",
       "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
       "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
@@ -252,7 +253,7 @@
       "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
-      "HP": "3419.97 / 3481.57 / 3543.17 / 3604.77 / 3666.37 / 3727.97 / 3789.57",
+      "HP": "2565.43 / 2595.03 / 2624.63 / 2654.23 / 2683.83 / 2713.43 / 2743.03",
       "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
@@ -265,7 +266,7 @@
       "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
       "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
-      "Speed": "103.0 / 103.0 / 103.0 / 103.0 / 103.0 / 103.0 / 103.0",
+      "Speed": "98.0 / 98.0 / 98.0 / 98.0 / 98.0 / 98.0 / 98.0",
       "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
     },

@@ -1,0 +1,245 @@
+{
+  "data": {
+    "thief": [
+      {
+        "endTime": "30",
+        "fiveStar": [
+          {
+            "name": "Ren Amamiya",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Lufel",
+            "type": "thief"
+          },
+          {
+            "name": "Tomoko Noge",
+            "type": "thief"
+          },
+          {
+            "name": "Seiji Shiratori",
+            "type": "thief"
+          }
+        ],
+        "name": "The Phantom Magician",
+        "startTime": "-1",
+        "type": "Chance Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-02-05 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Frostgale Kotone",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Lufel",
+            "type": "thief"
+          },
+          {
+            "name": "Kayo Tomiyama",
+            "type": "thief"
+          },
+          {
+            "name": "Chizuko Nagao",
+            "type": "thief"
+          }
+        ],
+        "name": "Ice Princess",
+        "startTime": "2026-01-08 11:30:00",
+        "type": "Targeted Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-02-05 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Frostgale Kotone",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Lufel",
+            "type": "thief"
+          },
+          {
+            "name": "Kayo Tomiyama",
+            "type": "thief"
+          },
+          {
+            "name": "Chizuko Nagao",
+            "type": "thief"
+          }
+        ],
+        "name": "Ice Princess",
+        "startTime": "2026-01-08 11:30:00",
+        "type": "Chance Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-02-13 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Runa Dogenzaka",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Riko Tanemura",
+            "type": "thief"
+          },
+          {
+            "name": "Leo Kamiyama",
+            "type": "thief"
+          },
+          {
+            "name": "Toshiya Sumi",
+            "type": "thief"
+          }
+        ],
+        "name": "Howdy Hey!",
+        "startTime": "2026-01-22 11:30:00",
+        "type": "Targeted Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-02-13 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Runa Dogenzaka",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Riko Tanemura",
+            "type": "thief"
+          },
+          {
+            "name": "Leo Kamiyama",
+            "type": "thief"
+          },
+          {
+            "name": "Toshiya Sumi",
+            "type": "thief"
+          }
+        ],
+        "name": "Howdy Hey!",
+        "startTime": "2026-01-22 11:30:00",
+        "type": "Chance Most Wanted Idol Contracts"
+      }
+    ],
+    "weapon": [
+      {
+        "endTime": "30",
+        "fiveStar": [
+          {
+            "name": "Phoenix Dagger",
+            "type": "weapon",
+            "user": "Ren"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Machete",
+            "type": "weapon",
+            "user": "Ren"
+          },
+          {
+            "name": "Lava Flame",
+            "type": "weapon",
+            "user": "Lufel"
+          },
+          {
+            "name": "Shadow Crowns",
+            "type": "weapon",
+            "user": "Tomoko"
+          },
+          {
+            "name": "Knight's Reward",
+            "type": "weapon",
+            "user": "Shiratori"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "-1",
+        "type": "Arms Deals"
+      },
+      {
+        "endTime": "2026-02-05 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Lame de l'Amour",
+            "type": "weapon",
+            "user": "Kotone"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Lava Flame",
+            "type": "weapon",
+            "user": "Lufel"
+          },
+          {
+            "name": "Emerald Charmer",
+            "type": "weapon",
+            "user": "Tomiyama"
+          },
+          {
+            "name": "Lame de l'Aube",
+            "type": "weapon",
+            "user": "Kotone"
+          },
+          {
+            "name": "Gravitational Force",
+            "type": "weapon",
+            "user": "Chizuko"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2026-01-08 11:30:00",
+        "type": "Arms Deals"
+      },
+      {
+        "endTime": "2026-02-13 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Cerberus Claws",
+            "type": "weapon",
+            "user": "Runa"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Moonlight Needle",
+            "type": "weapon",
+            "user": "Riko"
+          },
+          {
+            "name": "Justice Lance",
+            "type": "weapon",
+            "user": "Kamiyama"
+          },
+          {
+            "name": "Scarlet Scepter",
+            "type": "weapon",
+            "user": "Sumi"
+          },
+          {
+            "name": "Hunting Hound Claws",
+            "type": "weapon",
+            "user": "Runa"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2026-01-22 11:30:00",
+        "type": "Arms Deals"
+      }
+    ]
+  },
+  "msg": "OK",
+  "status": 0
+}

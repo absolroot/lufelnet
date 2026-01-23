@@ -1,70 +1,7 @@
 {
   "data": {
-    "thief": [
-      {
-        "endTime": "30",
-        "fiveStar": [
-          {
-            "name": "Ren Amamiya",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Lufel",
-            "type": "thief"
-          },
-          {
-            "name": "Tomoko Noge",
-            "type": "thief"
-          },
-          {
-            "name": "Seiji Shiratori",
-            "type": "thief"
-          }
-        ],
-        "name": "The Phantom Magician",
-        "startTime": "-1",
-        "type": "Chance Most Wanted Idol Contracts"
-      }
-    ],
-    "weapon": [
-      {
-        "endTime": "30",
-        "fiveStar": [
-          {
-            "name": "Phoenix Dagger",
-            "type": "weapon",
-            "user": "Ren"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Machete",
-            "type": "weapon",
-            "user": "Ren"
-          },
-          {
-            "name": "Lava Flame",
-            "type": "weapon",
-            "user": "Lufel"
-          },
-          {
-            "name": "Shadow Crowns",
-            "type": "weapon",
-            "user": "Tomoko"
-          },
-          {
-            "name": "Knight's Reward",
-            "type": "weapon",
-            "user": "Shiratori"
-          }
-        ],
-        "name": "Silent Pistol",
-        "startTime": "-1",
-        "type": "Arms Deals"
-      }
-    ]
+    "thief": [],
+    "weapon": []
   },
   "msg": "OK",
   "status": 0

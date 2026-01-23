@@ -2,32 +2,6 @@
   "data": {
     "thief": [
       {
-        "endTime": "30",
-        "fiveStar": [
-          {
-            "name": "雨宮 蓮",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "ルフェル",
-            "type": "thief"
-          },
-          {
-            "name": "野毛 朋子",
-            "type": "thief"
-          },
-          {
-            "name": "白鳥 誠司",
-            "type": "thief"
-          }
-        ],
-        "name": "アナザーワイルド",
-        "startTime": "-1",
-        "type": "PICKUP怪ドル契約・CHANCE"
-      },
-      {
         "endTime": "2026-02-05 10:59:59",
         "fiveStar": [
           {
@@ -133,41 +107,6 @@
       }
     ],
     "weapon": [
-      {
-        "endTime": "30",
-        "fiveStar": [
-          {
-            "name": "フェニックスダガー",
-            "type": "weapon",
-            "user": "蓮"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "マチェットナイフ",
-            "type": "weapon",
-            "user": "蓮"
-          },
-          {
-            "name": "ラヴァ・フレイム",
-            "type": "weapon",
-            "user": "ルフェル"
-          },
-          {
-            "name": "シャドークラウン",
-            "type": "weapon",
-            "user": "朋子"
-          },
-          {
-            "name": "ナイトアワード",
-            "type": "weapon",
-            "user": "白鳥"
-          }
-        ],
-        "name": "無音の硝煙",
-        "startTime": "-1",
-        "type": "武器補給"
-      },
       {
         "endTime": "2026-02-05 10:59:59",
         "fiveStar": [

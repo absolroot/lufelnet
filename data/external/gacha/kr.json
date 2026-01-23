@@ -1,0 +1,132 @@
+{
+  "data": {
+    "thief": [
+      {
+        "endTime": "2026-02-12 08:00:00",
+        "fiveStar": [
+          {
+            "name": "이오리 준페이",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "루페르",
+            "type": "thief"
+          },
+          {
+            "name": "카미야마 레오",
+            "type": "thief"
+          },
+          {
+            "name": "시라토리 세이지",
+            "type": "thief"
+          }
+        ],
+        "name": "역전의 강타자",
+        "startTime": "2026-01-22 08:00:00",
+        "type": "이벤트 계약·확정"
+      },
+      {
+        "endTime": "2026-02-12 08:00:00",
+        "fiveStar": [
+          {
+            "name": "이오리 준페이",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "루페르",
+            "type": "thief"
+          },
+          {
+            "name": "카미야마 레오",
+            "type": "thief"
+          },
+          {
+            "name": "시라토리 세이지",
+            "type": "thief"
+          }
+        ],
+        "name": "역전의 강타자",
+        "startTime": "2026-01-22 08:00:00",
+        "type": "이벤트 계약·운명"
+      }
+    ],
+    "weapon": [
+      {
+        "endTime": "2026-02-12 08:00:00",
+        "fiveStar": [
+          {
+            "name": "발뭉",
+            "type": "weapon",
+            "user": "이오리 준페이"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "용암의 불꽃",
+            "type": "weapon",
+            "user": "루페르"
+          },
+          {
+            "name": "최강 미늘창 X",
+            "type": "weapon",
+            "user": "카미야마 레오"
+          },
+          {
+            "name": "수훈의 증명",
+            "type": "weapon",
+            "user": "시라토리 세이지"
+          },
+          {
+            "name": "엘릭시르 소드",
+            "type": "weapon",
+            "user": "이오리 준페이"
+          }
+        ],
+        "name": "소리 없는 전쟁·확정",
+        "startTime": "2026-01-22 08:00:00",
+        "type": "무기 이벤트 보급·확정"
+      },
+      {
+        "endTime": "2026-02-12 08:00:00",
+        "fiveStar": [
+          {
+            "name": "발뭉",
+            "type": "weapon",
+            "user": "이오리 준페이"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "용암의 불꽃",
+            "type": "weapon",
+            "user": "루페르"
+          },
+          {
+            "name": "최강 미늘창 X",
+            "type": "weapon",
+            "user": "카미야마 레오"
+          },
+          {
+            "name": "수훈의 증명",
+            "type": "weapon",
+            "user": "시라토리 세이지"
+          },
+          {
+            "name": "엘릭시르 소드",
+            "type": "weapon",
+            "user": "이오리 준페이"
+          }
+        ],
+        "name": "소리 없는 전쟁·운명",
+        "startTime": "2026-01-22 08:00:00",
+        "type": "무기 이벤트 보급·운명"
+      }
+    ]
+  },
+  "msg": "OK",
+  "status": 0
+}

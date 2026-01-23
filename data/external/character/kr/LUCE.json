@@ -1,0 +1,280 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "자신이 『즉흥·침투』, 『즉흥·전복』, 『즉흥·공감』, 『즉흥·교감』, 총 4종의 『즉흥 공연』 상태를 보유하며, 턴 시작 시 전환할 수 있다. 자신이 페르소나 스킬을 사용해 대미지를 줄 시 75%의 기본 확률로 적 전체에 현재 『즉흥 공연』 상태에 해당하는 원소 이상 효과(순서대로 화상, 동결, 감전, 풍습 효과)를 추가한다.",
+        "name": "덧없는 인생",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 122140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "동료에게 페르소나 스킬을 사용한 후 목표가 축복 효과를 보유한 경우, 축복 중첩당 대미지가 3% 증가하고, 상한은 15%이다. 효과는 2턴 동안 지속된다.",
+        "name": "다시 만나요! 나를 기억해",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 122141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『낯선 공간』 사용 시 목표가 다음 스킬 대미지를 받을 때 35%의 최종 대미지 감면을 추가로 획득하며 1턴 동안 지속된다.",
+        "name": "잔혹한 운명의 화살",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 122142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『빛나는 독백』, 『낯선 공간』의 스킬 레벨이 2레벨 증가하며, 최대 15레벨까지 증가한다.",
+        "name": "끝없는 고난과의 싸움",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 122143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "HIGHLIGHT 효과 증가: 스킬 메인 목표의 공격력이 10% 증가하고, 모든 동료가 축복 효과를 2중첩 추가로 획득한다.",
+        "name": "미약하지만 부러지지 않는 의지",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 122144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『별들의 공연』, 『전투 기술』의 스킬 레벨이 2레벨 증가하고, 최대 15레벨까지 증가한다.",
+        "name": "참새의 생사를 가르는 운명",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 122145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『별들의 공연』을 사용해 『즉흥 공연』의 추가 효과 발동 시 효과 지속 시간이 4턴으로 연장된다.",
+        "name": "침묵 속에서 발견하는 또 다른 빛",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 122146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on Unknown)",
+      "cooldown": 4,
+      "cost": "",
+      "desc": "모든 동료의 공격력이 증가하고(증가 값은 자신의 공격력의 6.5%, 상한 284/314/296/325), 효과 저항이 82.0%/90.4%/85.3%/93.7% 증가한다. 효과는 2턴 동안 지속된다. 또한 모든 동료가 축복 효과를 1중첩 획득한다.",
+      "name": "HIGHLIGHT",
+      "nature": "Heal",
+      "skill_lv": "10/10/12/12",
+      "sn": 122152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Ally",
+      "target_count": "All"
+    },
+    "innate": {
+      "Ailment Acc.": "0.24",
+      "Attack": "0.2"
+    },
+    "innate_awake_skill": [],
+    "name": "이케나미 쇼키",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 20",
+        "desc": "1명의 적에게 공격력 151.8%/167.3%/158.0%/173.5%의 축복 속성 대미지를 주고 모든 동료가 축복 효과를 2중첩 획득한다. 또한 모든 동료의 대미지가 증가하며(이케나미 쇼키의 공격력 100포인트마다 대미지 0.8% 증가, 최대 35.1%/38.7%/36.6%/40.2%) 2턴 동안 지속된다.",
+        "name": "빛나는 독백",
+        "nature": "Bless",
+        "skill_lv": "10/10/12/12",
+        "sn": 122111,
+        "tags": [
+          "액티브",
+          "단일피해"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 2,
+        "cost": "SP 24",
+        "desc": "자신을 제외한 동료 1명의 방어력이 증가하고(이케나미 쇼키의 공격력 100포인트마다 방어력 0.83% 증가, 최대 36.6%/40.4%/38.1%/41.8%), 목표가 일부 정신 이상 효과(현기증, 수면, 혼란, 망각)에 면역되며 2턴 동안 지속된다.\n쿨타임: 2턴.",
+        "name": "낯선 공간",
+        "nature": "Heal",
+        "skill_lv": "10/10/12/12",
+        "sn": 122112,
+        "tags": [
+          "액티브",
+          "버프"
+        ],
+        "target": "Ally excluding myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 24",
+        "desc": "모든 동료의 공격력이 증가하며(증가 값은 자신의 공격력의 15%, 상한 569/627/592/650) 2턴 동안 지속된다.\n자신의 현재 『즉흥 공연』 상태에 따라 스킬 메인 목표가 추가 효과를 획득한다.\n『즉흥·침투』: 2턴 동안 스킬 메인 목표의 지속 대미지 효과가 14.0%/15.4%/14.5%/16.0% 증가하고, 효과 명중이 30% 증가한다.\n『즉흥·전복』: 2턴 동안 스킬 메인 목표의 스킬 마스터가 655/723/682/749 증가하고, TECHNICAL을 줄 시 공격력이 20% 증가한다.\n『즉흥·공감』: 2턴 동안 스킬 메인 목표의 크리티컬 효과가 24.4%/26.9%/25.4%/27.9% 증가한다.\n『즉흥·교감』: 2턴 동안 스킬 메인 목표의 관통이 12.0%/13.2%/12.5%/13.7% 증가한다.",
+        "name": "별들의 공연",
+        "nature": "Heal",
+        "skill_lv": "10/10/12/12",
+        "sn": 122113,
+        "tags": [
+          "액티브",
+          "버프"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "축복 효과를 보유한 아군 동료의 경우, 축복 중첩당 대미지가 5% 증가하고, 상한은 25.0%이다.",
+        "name": "본색",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 122131,
+        "tags": [
+          "잠재력"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "자신의 효과 명중 1%마다 공격력이 0.72% 증가하며, 상한은 72.0%이다.",
+        "name": "반전",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 122132,
+        "tags": [
+          "잠재력"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Ailment Acc.": 1.0,
+      "Attack": 4500.0,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "26.0% / 26.0% / 26.0% / 26.0% / 26.0% / 26.0% / 26.0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "765.42 / 774.22 / 783.02 / 791.82 / 800.62 / 809.42 / 818.22",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "495.38 / 500.98 / 506.58 / 512.18 / 518.58 / 524.18 / 529.78",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "2587.71 / 2617.31 / 2647.71 / 2677.31 / 2706.91 / 2737.31 / 2766.91",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "104.0 / 104.0 / 104.0 / 104.0 / 104.0 / 104.0 / 104.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

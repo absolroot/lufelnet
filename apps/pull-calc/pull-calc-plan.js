@@ -39,8 +39,11 @@
         const currentRelease = (() => {
             let cur = null;
             for (const r of sorted) {
-                const d = new Date(r.date);
-                d.setHours(0, 0, 0, 0);
+                // Use parseYMD and normalizeDate to use the configured timezone
+                const d = (typeof this.parseYMD === 'function')
+                    ? this.normalizeDate(this.parseYMD(r.date))
+                    : (() => { const _d = new Date(r.date); _d.setHours(0,0,0,0); return _d; })();
+                
                 if (d <= today) cur = r;
                 else break;
             }

@@ -1045,8 +1045,8 @@ class PullSimulator {
         this.targets = this.targets.filter(target => {
             if (!target.date) return true; // Keep targets without date (shouldn't happen, but safe)
             const targetDate = this.normalizeDate(this.parseYMD(target.date));
-            // Keep only future cards (targetDate >= today)
-            return targetDate >= today;
+            // Keep only future cards (targetDate > today) - exclude today as well
+            return targetDate > today;
         });
         
         // Save if any targets were removed
@@ -1123,6 +1123,7 @@ class PullSimulator {
             daysText = `D-${diffDays}`;
         } else if (diffDays === 0) {
             daysText = this.t('today');
+            daysClass = 'released';
         } else {
             daysText = `${Math.abs(diffDays)}${this.t('daysAgo')}`;
             daysClass = 'released';
@@ -1154,7 +1155,7 @@ class PullSimulator {
         const displayName = this.getCharacterName(charName);
         const position = charData.position || '';
         const element = charData.element || '';
-        const isReleased = diffDays < 0;
+        const isReleased = diffDays <= 0;
         const isSelected = this.targets.some(t => t.name === charName && t.date === date);
 
         let metaHtml = '';

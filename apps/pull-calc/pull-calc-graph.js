@@ -250,11 +250,25 @@
             .sort((a, b) => new Date(a.date) - new Date(b.date));
 
         // Determine current (ongoing) release: latest release whose date is <= today
+        /*
         const currentRelease = (() => {
             let cur = null;
             for (const r of sortedReleases) {
                 const d = new Date(r.date);
                 d.setHours(0, 0, 0, 0);
+                if (d <= today) cur = r;
+                else break;
+            }
+            return cur;
+        })();*/
+        const currentRelease = (() => {
+            let cur = null;
+            for (const r of sortedReleases) {
+                // parseYMD와 normalizeDate를 사용하여 설정된 시간대 기준으로 날짜 변환
+                const d = (typeof this.parseYMD === 'function')
+                    ? this.normalizeDate(this.parseYMD(r.date))
+                    : (() => { const _d = new Date(r.date); _d.setHours(0,0,0,0); return _d; })();
+                
                 if (d <= today) cur = r;
                 else break;
             }

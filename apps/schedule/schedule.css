@@ -110,15 +110,15 @@
         padding: 14px;
         gap: 16px;
     }
-    
+
     .banner-item {
         align-items: center;
     }
-    
+
     .next-release {
         text-align: center;
     }
-    
+
     .next-release .banner-character {
         flex-direction: row;
     }
@@ -159,10 +159,48 @@
     .filter-section {
         margin: 0 0 16px 0;
     }
-    
+
     .filter-btn {
         padding: 5px 10px;
         font-size: 12px;
+    }
+}
+
+/* SEA Server Toggle */
+.sea-server-toggle-container {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.sea-server-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.85);
+    cursor: pointer;
+    user-select: none;
+}
+
+.sea-server-label input[type="checkbox"] {
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+}
+
+.sea-server-label span {
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    .filter-section {
+        align-items: flex-start;
+    }
+
+    .sea-server-toggle-container {
+        margin-left: 0;
+        margin-top: 4px;
     }
 }
 
@@ -189,7 +227,7 @@
         margin: 0;
         padding-left: 28px;
     }
-    
+
     .timeline-container::before {
         left: 7px;
     }
@@ -836,8 +874,15 @@
 }
 
 @keyframes borderGlow {
-    0%, 100% { opacity: 0.6; }
-    50% { opacity: 1; }
+
+    0%,
+    100% {
+        opacity: 0.6;
+    }
+
+    50% {
+        opacity: 1;
+    }
 }
 
 /* Anniversary Event Styling */
@@ -911,84 +956,84 @@
     .year-divider {
         margin-left: -28px;
     }
-    
+
     .year-divider::before {
         left: 28px;
     }
-    
+
     .character-item {
         width: 100%;
         min-width: unset;
     }
-    
+
     /* 모바일에서 캐릭터 아이템, 페르소나 리스트, 뱃지들이 각각 다른 행에 위치 */
     .character-list-wrapper {
         flex-direction: column;
         align-items: flex-start;
         gap: 12px;
     }
-    
+
     .character-list {
         width: 100%;
     }
-    
+
     .persona-list {
         width: 100%;
     }
-    
+
     .content-badge {
         margin-left: 0;
         margin-top: 0;
         padding: 4px 8px;
         font-size: 11px;
     }
-    
+
     .content-icon {
         height: 20px;
     }
-    
+
     .content-label {
         font-size: 11px;
     }
-    
+
     .persona-list {
         gap: 6px;
     }
-    
+
     .persona-item {
         height: 56px;
         padding: 6px 10px;
         gap: 6px;
     }
-    
+
     .persona-item img {
         width: 40px;
         height: 40px;
     }
-    
+
     .persona-item .persona-name {
         font-size: 11px;
         max-width: 80px;
     }
-    
+
     .persona-grade-img {
         width: 14px !important;
         height: 14px !important;
     }
-    
+
     .persona-extra-info {
         gap: 3px;
     }
-    
+
     .persona-event-label {
         font-size: 9px;
     }
-    
+
     .persona-emblem-icon {
         width: 14px;
         height: 14px;
     }
-    
+
     .persona-emblem-num {
         font-size: 9px;
     }

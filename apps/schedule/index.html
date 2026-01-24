@@ -11,9 +11,9 @@ language: en
 title: Release Schedule - Persona 5 The Phantom X | lufel.net
 description: GLB Server Release schedule for Persona 5 The Phantom X characters
 alternate_urls:
-  en: /schedule/?lang=en
-  jp: /schedule/?lang=jp
-  kr: /schedule/?lang=kr
+en: /schedule/?lang=en
+jp: /schedule/?lang=jp
+kr: /schedule/?lang=kr
 ---
 
 <!-- SEO Meta Tags -->
@@ -45,25 +45,32 @@ alternate_urls:
     <div class="schedule-notice" id="schedule-notice">
         <p class="notice-text" id="notice-text-en">
             Be careful with spoilers.<br>
-            This schedule is for GLB/JP servers. For SEA server, add 8 days to each date.<br>
+            This schedule is for GLB/JP servers. For SEA server, add 7 days to each date.<br>
             Until version 4.0, new characters release every 2 weeks; after 4.0, the interval changes to 3 weeks. <br>
-            This schedule and character release order is based on previous Asia server releases, but may be subject to change at any time due to unexpected circumstances or events.<br>
+            This schedule and character release order is based on previous Asia server releases, but may be subject to
+            change at any time due to unexpected circumstances or events.<br>
             Character release order is not guaranteed to match Asia server or remain the same.<br>
-            For detailed patch history, see <a href="https://docs.google.com/spreadsheets/d/1KmLUs1Cpp2WuDQZYHCW1xzCVCThWCB6R2VR5pFuLixE/edit?usp=sharing" target="_blank">P5X Patch History by Sages</a>.
+            For detailed patch history, see <a
+                href="https://docs.google.com/spreadsheets/d/1KmLUs1Cpp2WuDQZYHCW1xzCVCThWCB6R2VR5pFuLixE/edit?usp=sharing"
+                target="_blank">P5X Patch History by Sages</a>.
         </p>
         <p class="notice-text" id="notice-text-jp" style="display: none;">
             スポイラーに注意してください。<br>
-            このスケジュールはGLB/JPサーバー用です。SEAサーバーは各日付に8日を追加してください。<br>
+            このスケジュールはGLB/JPサーバー用です。SEAサーバーは各日付に7日を追加してください。<br>
             バージョン4.0までは2週間ごと、4.0以降は3週間ごとのリリースです。
             イベント・祝日により変更される場合があります。<strong style="color:rgb(255, 255, 0);">キャラクターリリース順序は変更される場合があります。</strong><br>
-            詳細なパッチ履歴は<a href="https://docs.google.com/spreadsheets/d/1KmLUs1Cpp2WuDQZYHCW1xzCVCThWCB6R2VR5pFuLixE/edit?usp=sharing" target="_blank">P5X Patch History by Sages</a>をご覧ください。
+            詳細なパッチ履歴は<a
+                href="https://docs.google.com/spreadsheets/d/1KmLUs1Cpp2WuDQZYHCW1xzCVCThWCB6R2VR5pFuLixE/edit?usp=sharing"
+                target="_blank">P5X Patch History by Sages</a>をご覧ください。
         </p>
         <p class="notice-text" id="notice-text-kr" style="display: none;">
             스포일러에 주의하세요.<br>
-            이 스케줄은 GLB/JP 서버 기준입니다. SEA 서버는 각 날짜에 8일을 더해주세요.<br>
+            이 스케줄은 GLB/JP 서버 기준입니다. SEA 서버는 각 날짜에 7일을 더해주세요.<br>
             4.0 버전까지는 2주 간격, 이후는 3주 간격으로 출시됩니다.
             이벤트/휴일에 따라 변경될 수 있으며, <strong style="color:rgb(255, 255, 0);">출시 순서는 변경될 수 있습니다.</strong><br>
-            자세한 패치 히스토리는 <a href="https://docs.google.com/spreadsheets/d/1KmLUs1Cpp2WuDQZYHCW1xzCVCThWCB6R2VR5pFuLixE/edit?usp=sharing" target="_blank">P5X Patch History by Sages</a>를 참고하세요.
+            자세한 패치 히스토리는 <a
+                href="https://docs.google.com/spreadsheets/d/1KmLUs1Cpp2WuDQZYHCW1xzCVCThWCB6R2VR5pFuLixE/edit?usp=sharing"
+                target="_blank">P5X Patch History by Sages</a>를 참고하세요.
         </p>
     </div>
 
@@ -108,190 +115,190 @@ alternate_urls:
 <script src="{{ site.baseurl }}/apps/schedule/schedule.js?v={{ site.time | date: '%s' }}"></script>
 
 <script>
-(function() {
-    // i18n for Schedule Page
-    const translations = {
-        en: {
-            navHome: 'Home',
-            navCurrent: 'Schedule',
-            pageTitle: 'Release Schedule',
-            filterAll: 'All',
-            filterReleased: 'Released',
-            filterCurrent: 'Current',
-            filterUpcoming: 'Upcoming',
-            filterFuture: 'Future'
-        },
-        jp: {
-            navHome: 'ホーム',
-            navCurrent: 'スケジュール',
-            pageTitle: 'リリーススケジュール',
-            filterAll: '全て',
-            filterReleased: 'リリース済み',
-            filterCurrent: '現在',
-            filterUpcoming: '近日',
-            filterFuture: '予定'
-        },
-        kr: {
-            navHome: '홈',
-            navCurrent: '스케줄',
-            pageTitle: '출시 스케줄',
-            filterAll: '전체',
-            filterReleased: '출시됨',
-            filterCurrent: '현재',
-            filterUpcoming: '예정',
-            filterFuture: '미래'
-        }
-    };
-
-    function detectLang() {
-        const urlParams = new URLSearchParams(window.location.search);
-        return urlParams.get('lang') || 'en';
-    }
-
-    // SEO Meta Data
-    const seoData = {
-        en: {
-            title: 'Release Schedule - Persona 5 The Phantom X | lufel.net',
-            description: 'Release schedule for Persona 5 The Phantom X characters. Track upcoming character releases, current banners, and patch history.',
-            keywords: 'P5X, Persona 5X, Release Schedule, Character Release, Banner Schedule, P5X Schedule, GLB Server, JP Server',
-            ogLocale: 'en_US'
-        },
-        jp: {
-            title: 'リリーススケジュール - ペルソナ5 ザ・ファントム X | lufel.net',
-            description: 'ペルソナ5 ザ・ファントム Xキャラクターリリーススケジュール。今後のキャラクターリリース、現在のバナー、パッチ履歴を追跡できます。',
-            keywords: 'P5X, ペルソナ5X, リリーススケジュール, キャラクターリリース, バナースケジュール, P5Xスケジュール, GLBサーバー, JPサーバー',
-            ogLocale: 'ja_JP'
-        },
-        kr: {
-            title: '출시 스케줄 - 페르소나5 더 팬텀 X | lufel.net',
-            description: '페르소나5 더 팬텀 X 캐릭터 출시 스케줄. 향후 캐릭터 출시, 현재 배너, 패치 히스토리를 추적할 수 있습니다.',
-            keywords: 'P5X, 페르소나5X, 출시 스케줄, 캐릭터 출시, 배너 스케줄, P5X 스케줄, GLB 서버, JP 서버',
-            ogLocale: 'ko_KR'
-        }
-    };
-
-    function updateSEOTags(lang) {
-        const seo = seoData[lang] || seoData.en;
-        const baseUrl = 'https://lufel.net';
-        const currentUrl = `${baseUrl}/schedule/?lang=${lang}`;
-
-        // Update document title
-        document.title = seo.title;
-
-        // Update meta description
-        let metaDesc = document.querySelector('meta[name="description"]');
-        if (!metaDesc) {
-            metaDesc = document.createElement('meta');
-            metaDesc.setAttribute('name', 'description');
-            document.head.appendChild(metaDesc);
-        }
-        metaDesc.setAttribute('content', seo.description);
-
-        // Update meta keywords
-        let metaKeywords = document.querySelector('meta[name="keywords"]');
-        if (!metaKeywords) {
-            metaKeywords = document.createElement('meta');
-            metaKeywords.setAttribute('name', 'keywords');
-            document.head.appendChild(metaKeywords);
-        }
-        metaKeywords.setAttribute('content', seo.keywords);
-
-        // Update Open Graph tags
-        function updateOGTag(property, content) {
-            let tag = document.querySelector(`meta[property="${property}"]`);
-            if (!tag) {
-                tag = document.createElement('meta');
-                tag.setAttribute('property', property);
-                document.head.appendChild(tag);
+    (function () {
+        // i18n for Schedule Page
+        const translations = {
+            en: {
+                navHome: 'Home',
+                navCurrent: 'Schedule',
+                pageTitle: 'Release Schedule',
+                filterAll: 'All',
+                filterReleased: 'Released',
+                filterCurrent: 'Current',
+                filterUpcoming: 'Upcoming',
+                filterFuture: 'Future'
+            },
+            jp: {
+                navHome: 'ホーム',
+                navCurrent: 'スケジュール',
+                pageTitle: 'リリーススケジュール',
+                filterAll: '全て',
+                filterReleased: 'リリース済み',
+                filterCurrent: '現在',
+                filterUpcoming: '近日',
+                filterFuture: '予定'
+            },
+            kr: {
+                navHome: '홈',
+                navCurrent: '스케줄',
+                pageTitle: '출시 스케줄',
+                filterAll: '전체',
+                filterReleased: '출시됨',
+                filterCurrent: '현재',
+                filterUpcoming: '예정',
+                filterFuture: '미래'
             }
-            tag.setAttribute('content', content);
+        };
+
+        function detectLang() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('lang') || 'en';
         }
 
-        updateOGTag('og:title', seo.title);
-        updateOGTag('og:description', seo.description);
-        updateOGTag('og:url', currentUrl);
-        updateOGTag('og:locale', seo.ogLocale);
-        updateOGTag('og:type', 'website');
-        updateOGTag('og:image', `${baseUrl}/assets/img/home/seo.png`);
-
-        // Update Twitter Card tags
-        function updateTwitterTag(name, content) {
-            let tag = document.querySelector(`meta[name="${name}"]`);
-            if (!tag) {
-                tag = document.createElement('meta');
-                tag.setAttribute('name', name);
-                document.head.appendChild(tag);
+        // SEO Meta Data
+        const seoData = {
+            en: {
+                title: 'Release Schedule - Persona 5 The Phantom X | lufel.net',
+                description: 'Release schedule for Persona 5 The Phantom X characters. Track upcoming character releases, current banners, and patch history.',
+                keywords: 'P5X, Persona 5X, Release Schedule, Character Release, Banner Schedule, P5X Schedule, GLB Server, JP Server',
+                ogLocale: 'en_US'
+            },
+            jp: {
+                title: 'リリーススケジュール - ペルソナ5 ザ・ファントム X | lufel.net',
+                description: 'ペルソナ5 ザ・ファントム Xキャラクターリリーススケジュール。今後のキャラクターリリース、現在のバナー、パッチ履歴を追跡できます。',
+                keywords: 'P5X, ペルソナ5X, リリーススケジュール, キャラクターリリース, バナースケジュール, P5Xスケジュール, GLBサーバー, JPサーバー',
+                ogLocale: 'ja_JP'
+            },
+            kr: {
+                title: '출시 스케줄 - 페르소나5 더 팬텀 X | lufel.net',
+                description: '페르소나5 더 팬텀 X 캐릭터 출시 스케줄. 향후 캐릭터 출시, 현재 배너, 패치 히스토리를 추적할 수 있습니다.',
+                keywords: 'P5X, 페르소나5X, 출시 스케줄, 캐릭터 출시, 배너 스케줄, P5X 스케줄, GLB 서버, JP 서버',
+                ogLocale: 'ko_KR'
             }
-            tag.setAttribute('content', content);
+        };
+
+        function updateSEOTags(lang) {
+            const seo = seoData[lang] || seoData.en;
+            const baseUrl = 'https://lufel.net';
+            const currentUrl = `${baseUrl}/schedule/?lang=${lang}`;
+
+            // Update document title
+            document.title = seo.title;
+
+            // Update meta description
+            let metaDesc = document.querySelector('meta[name="description"]');
+            if (!metaDesc) {
+                metaDesc = document.createElement('meta');
+                metaDesc.setAttribute('name', 'description');
+                document.head.appendChild(metaDesc);
+            }
+            metaDesc.setAttribute('content', seo.description);
+
+            // Update meta keywords
+            let metaKeywords = document.querySelector('meta[name="keywords"]');
+            if (!metaKeywords) {
+                metaKeywords = document.createElement('meta');
+                metaKeywords.setAttribute('name', 'keywords');
+                document.head.appendChild(metaKeywords);
+            }
+            metaKeywords.setAttribute('content', seo.keywords);
+
+            // Update Open Graph tags
+            function updateOGTag(property, content) {
+                let tag = document.querySelector(`meta[property="${property}"]`);
+                if (!tag) {
+                    tag = document.createElement('meta');
+                    tag.setAttribute('property', property);
+                    document.head.appendChild(tag);
+                }
+                tag.setAttribute('content', content);
+            }
+
+            updateOGTag('og:title', seo.title);
+            updateOGTag('og:description', seo.description);
+            updateOGTag('og:url', currentUrl);
+            updateOGTag('og:locale', seo.ogLocale);
+            updateOGTag('og:type', 'website');
+            updateOGTag('og:image', `${baseUrl}/assets/img/home/seo.png`);
+
+            // Update Twitter Card tags
+            function updateTwitterTag(name, content) {
+                let tag = document.querySelector(`meta[name="${name}"]`);
+                if (!tag) {
+                    tag = document.createElement('meta');
+                    tag.setAttribute('name', name);
+                    document.head.appendChild(tag);
+                }
+                tag.setAttribute('content', content);
+            }
+
+            updateTwitterTag('twitter:card', 'summary_large_image');
+            updateTwitterTag('twitter:title', seo.title);
+            updateTwitterTag('twitter:description', seo.description);
+            updateTwitterTag('twitter:image', `${baseUrl}/assets/img/home/seo.png`);
+
+            // Update canonical URL
+            let canonical = document.querySelector('link[rel="canonical"]');
+            if (!canonical) {
+                canonical = document.createElement('link');
+                canonical.setAttribute('rel', 'canonical');
+                document.head.appendChild(canonical);
+            }
+            canonical.setAttribute('href', currentUrl);
+
+            // Update HTML lang attribute
+            document.documentElement.setAttribute('lang', lang === 'jp' ? 'ja' : lang);
         }
 
-        updateTwitterTag('twitter:card', 'summary_large_image');
-        updateTwitterTag('twitter:title', seo.title);
-        updateTwitterTag('twitter:description', seo.description);
-        updateTwitterTag('twitter:image', `${baseUrl}/assets/img/home/seo.png`);
+        function applyTranslations() {
+            const lang = detectLang();
+            const t = translations[lang] || translations.en;
 
-        // Update canonical URL
-        let canonical = document.querySelector('link[rel="canonical"]');
-        if (!canonical) {
-            canonical = document.createElement('link');
-            canonical.setAttribute('rel', 'canonical');
-            document.head.appendChild(canonical);
+            // Update SEO tags
+            updateSEOTags(lang);
+
+            // Navigation
+            const navHome = document.getElementById('nav-home');
+            if (navHome) navHome.textContent = t.navHome;
+
+            const navCurrent = document.getElementById('nav-current');
+            if (navCurrent) navCurrent.textContent = t.navCurrent;
+
+            const pageTitle = document.getElementById('page-title');
+            if (pageTitle) {
+                pageTitle.textContent = t.pageTitle;
+            }
+
+            const filterAll = document.getElementById('filter-all');
+            if (filterAll) filterAll.textContent = t.filterAll;
+
+            const filterReleased = document.getElementById('filter-released');
+            if (filterReleased) filterReleased.textContent = t.filterReleased;
+
+            const filterCurrent = document.getElementById('filter-current');
+            if (filterCurrent) filterCurrent.textContent = t.filterCurrent;
+
+            const filterUpcoming = document.getElementById('filter-upcoming');
+            if (filterUpcoming) filterUpcoming.textContent = t.filterUpcoming;
+
+            const filterFuture = document.getElementById('filter-future');
+            if (filterFuture) filterFuture.textContent = t.filterFuture;
+
+            // Notice text visibility
+            document.getElementById('notice-text-en').style.display = lang === 'en' ? 'block' : 'none';
+            document.getElementById('notice-text-jp').style.display = lang === 'jp' ? 'block' : 'none';
+            document.getElementById('notice-text-kr').style.display = lang === 'kr' ? 'block' : 'none';
         }
-        canonical.setAttribute('href', currentUrl);
 
-        // Update HTML lang attribute
-        document.documentElement.setAttribute('lang', lang === 'jp' ? 'ja' : lang);
-    }
-
-    function applyTranslations() {
-        const lang = detectLang();
-        const t = translations[lang] || translations.en;
-
-        // Update SEO tags
-        updateSEOTags(lang);
-
-        // Navigation
-        const navHome = document.getElementById('nav-home');
-        if (navHome) navHome.textContent = t.navHome;
-
-        const navCurrent = document.getElementById('nav-current');
-        if (navCurrent) navCurrent.textContent = t.navCurrent;
-
-        const pageTitle = document.getElementById('page-title');
-        if (pageTitle) {
-            pageTitle.textContent = t.pageTitle;
-        }
-
-        const filterAll = document.getElementById('filter-all');
-        if (filterAll) filterAll.textContent = t.filterAll;
-
-        const filterReleased = document.getElementById('filter-released');
-        if (filterReleased) filterReleased.textContent = t.filterReleased;
-
-        const filterCurrent = document.getElementById('filter-current');
-        if (filterCurrent) filterCurrent.textContent = t.filterCurrent;
-
-        const filterUpcoming = document.getElementById('filter-upcoming');
-        if (filterUpcoming) filterUpcoming.textContent = t.filterUpcoming;
-
-        const filterFuture = document.getElementById('filter-future');
-        if (filterFuture) filterFuture.textContent = t.filterFuture;
-
-        // Notice text visibility
-        document.getElementById('notice-text-en').style.display = lang === 'en' ? 'block' : 'none';
-        document.getElementById('notice-text-jp').style.display = lang === 'jp' ? 'block' : 'none';
-        document.getElementById('notice-text-kr').style.display = lang === 'kr' ? 'block' : 'none';
-    }
-
-    // Initialize on DOM ready
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => {
+        // Initialize on DOM ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                Navigation.load('schedule');
+                applyTranslations();
+            });
+        } else {
             Navigation.load('schedule');
             applyTranslations();
-        });
-    } else {
-        Navigation.load('schedule');
-        applyTranslations();
-    }
-})();
+        }
+    })();
 </script>

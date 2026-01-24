@@ -3,7 +3,7 @@
  * 그래프 렌더링 및 밸런스 계산 로직
  */
 
-(function() {
+(function () {
     'use strict';
 
     // PullSimulator 클래스가 이미 정의되어 있어야 함
@@ -18,14 +18,14 @@
     function getGradient(ctx, chartArea, scales) {
         const { top, bottom } = chartArea;
         const { y } = scales;
-        
+
         // Calculate Y-axis position of 0 value in pixels
         const zeroPixel = y.getPixelForValue(0);
         const zeroRatio = Math.min(Math.max((zeroPixel - top) / (bottom - top), 0), 1);
 
         // Create gradient (top to bottom)
         const gradient = ctx.createLinearGradient(0, top, 0, bottom);
-        
+
         // Color stops: green above 0, red below 0
         gradient.addColorStop(0, 'rgba(125, 218, 125, 1)');      // Top (Green)
         gradient.addColorStop(zeroRatio, 'rgba(125, 218, 125, 1)'); // Zero Line (Green)
@@ -41,21 +41,21 @@
         afterDatasetDraw(chart, args) {
             // Only draw on the single dataset
             if (args.index !== 0) return;
-            
+
             const pluginOptions = chart.options.plugins?.characterImagePlugin;
             if (!pluginOptions || !pluginOptions.balanceHistory || !pluginOptions.imageCache) return;
-            
+
             const balanceHistory = pluginOptions.balanceHistory;
             const imageCache = pluginOptions.imageCache;
             const ctx = chart.ctx;
-            
+
             balanceHistory.forEach((h, i) => {
                 // Check if this history entry has target info and is a target
                 if (h.targetInfo && Array.isArray(h.targetInfo) && h.targetInfo.length > 0 && h.isTarget) {
                     // Try to find point in the single dataset
                     let point = null;
                     const meta = chart.getDatasetMeta(0);
-                    
+
                     // Check the dataset for the point
                     if (i < meta.data.length && meta.data[i]) {
                         const p = meta.data[i];
@@ -63,53 +63,53 @@
                             point = p;
                         }
                     }
-                    
+
                     if (point) {
                         const x = point.x;
                         const y = point.y;
                         const imgSize = 24;
                         const spacing = 2;
-                        
+
                         // Calculate total width needed for all targets (only character images)
                         const totalTargets = h.targetInfo.length;
                         const totalWidth = totalTargets * imgSize + (totalTargets - 1) * spacing;
                         const startX = x - totalWidth / 2;
                         let currentX = startX;
-                        
+
                         // Draw each target (character + icons overlapping on top)
                         h.targetInfo.forEach((target, targetIdx) => {
                             const charName = target.charName;
                             if (!charName) return;
-                            
+
                             // Draw character image
                             const charImg = imageCache.get(charName);
                             if (charImg && charImg instanceof Image && charImg.complete && charImg.naturalWidth > 0 && charImg.naturalHeight > 0) {
                                 const charOffsetX = currentX + imgSize / 2;
                                 const charOffsetY = y - imgSize - 6;
-                                
+
                                 ctx.save();
-                                
+
                                 // Draw circle background for character
                                 ctx.beginPath();
-                                ctx.arc(charOffsetX, charOffsetY, imgSize/2 + 2, 0, Math.PI * 2);
+                                ctx.arc(charOffsetX, charOffsetY, imgSize / 2 + 2, 0, Math.PI * 2);
                                 ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
                                 ctx.fill();
                                 ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
                                 ctx.lineWidth = 1.5;
                                 ctx.stroke();
-                                
+
                                 // Draw character image with aspect ratio preserved
                                 ctx.beginPath();
-                                ctx.arc(charOffsetX, charOffsetY, imgSize/2, 0, Math.PI * 2);
+                                ctx.arc(charOffsetX, charOffsetY, imgSize / 2, 0, Math.PI * 2);
                                 ctx.clip();
-                                
+
                                 // Calculate image dimensions preserving aspect ratio
                                 const imgAspect = charImg.naturalWidth / charImg.naturalHeight;
                                 let drawWidth = imgSize;
                                 let drawHeight = imgSize;
-                                let drawX = charOffsetX - imgSize/2;
-                                let drawY = charOffsetY - imgSize/2;
-                                
+                                let drawX = charOffsetX - imgSize / 2;
+                                let drawY = charOffsetY - imgSize / 2;
+
                                 if (imgAspect > 1) {
                                     drawHeight = imgSize / imgAspect;
                                     drawY = charOffsetY - drawHeight / 2;
@@ -117,36 +117,36 @@
                                     drawWidth = imgSize * imgAspect;
                                     drawX = charOffsetX - drawWidth / 2;
                                 }
-                                
+
                                 ctx.drawImage(charImg, drawX, drawY, drawWidth, drawHeight);
                                 ctx.restore();
-                                
+
                                 // Icon size (smaller than character)
                                 const iconSize = imgSize * 0.8;
                                 const iconSpacing = -4; // Reduced spacing between A and R icons
-                                
+
                                 // Draw awakening icon (A0~A6) if characterTarget is set - overlapping on top left
                                 if (target.characterTarget !== undefined) {
                                     const awakeningLevel = target.characterTarget.replace('A', '').toLowerCase();
                                     const awakeningImgKey = `a${awakeningLevel}`;
                                     const awakeningImg = imageCache.get(awakeningImgKey);
-                                    
+
                                     if (awakeningImg && awakeningImg instanceof Image && awakeningImg.complete && awakeningImg.naturalWidth > 0 && awakeningImg.naturalHeight > 0) {
                                         // Position icon on top-left of character image, slightly to the right and lower
-                                        const iconOffsetX = charOffsetX - imgSize/2 + iconSize/2 + 12; // Left side, slightly more to the right
-                                        const iconOffsetY = charOffsetY - imgSize/2 + iconSize/2 + 8; // Top side, lower down
- 
+                                        const iconOffsetX = charOffsetX - imgSize / 2 + iconSize / 2 + 12; // Left side, slightly more to the right
+                                        const iconOffsetY = charOffsetY - imgSize / 2 + iconSize / 2 + 8; // Top side, lower down
+
                                         ctx.save();
-                                        
+
                                         // No background for icons
-                                        
+
                                         // Draw image with aspect ratio preserved
                                         const iconAspect = awakeningImg.naturalWidth / awakeningImg.naturalHeight;
                                         let iconDrawWidth = iconSize;
                                         let iconDrawHeight = iconSize;
-                                        let iconDrawX = iconOffsetX - iconSize/2;
-                                        let iconDrawY = iconOffsetY - iconSize/2;
-                                        
+                                        let iconDrawX = iconOffsetX - iconSize / 2;
+                                        let iconDrawY = iconOffsetY - iconSize / 2;
+
                                         if (iconAspect > 1) {
                                             iconDrawHeight = iconSize / iconAspect;
                                             iconDrawY = iconOffsetY - iconDrawHeight / 2;
@@ -154,44 +154,44 @@
                                             iconDrawWidth = iconSize * iconAspect;
                                             iconDrawX = iconOffsetX - iconDrawWidth / 2;
                                         }
-                                        
+
                                         ctx.drawImage(awakeningImg, iconDrawX, iconDrawY, iconDrawWidth, iconDrawHeight);
                                         ctx.restore();
                                     }
                                 }
-                                
+
                                 // Draw refinement icon (R0~R6) if weaponTarget is set and not None (-1) - overlapping next to awakening icon
                                 if (target.weaponTarget !== undefined && target.weaponTarget !== -1) {
                                     const refinementLevel = target.weaponTarget.replace('R', '').toLowerCase();
                                     const refinementImgKey = `r${refinementLevel}`;
                                     const refinementImg = imageCache.get(refinementImgKey);
-                                    
+
                                     if (refinementImg && refinementImg instanceof Image && refinementImg.complete && refinementImg.naturalWidth > 0 && refinementImg.naturalHeight > 0) {
                                         // R icon size (smaller than A icon)
                                         const rIconSize = imgSize * 0.63;
-                                        
+
                                         // Position icon next to awakening icon (if exists) or on top-left
                                         let iconOffsetX;
                                         if (target.characterTarget !== undefined) {
                                             // If awakening icon exists, place refinement icon next to it with smaller spacing
-                                            iconOffsetX = charOffsetX - imgSize/2 + iconSize/2 + 8 + iconSize + iconSpacing;
+                                            iconOffsetX = charOffsetX - imgSize / 2 + iconSize / 2 + 8 + iconSize + iconSpacing;
                                         } else {
                                             // Otherwise, place on top-left
-                                            iconOffsetX = charOffsetX - imgSize/2 + iconSize/2 + 8;
+                                            iconOffsetX = charOffsetX - imgSize / 2 + iconSize / 2 + 8;
                                         }
-                                        const iconOffsetY = charOffsetY - imgSize/2 + iconSize/2 + 8; // Top side, lower down (same as awakening icon)
-                                        
+                                        const iconOffsetY = charOffsetY - imgSize / 2 + iconSize / 2 + 8; // Top side, lower down (same as awakening icon)
+
                                         ctx.save();
-                                        
+
                                         // No background for icons
-                                        
+
                                         // Draw image with aspect ratio preserved
                                         const iconAspect = refinementImg.naturalWidth / refinementImg.naturalHeight;
                                         let iconDrawWidth = rIconSize;
                                         let iconDrawHeight = rIconSize;
-                                        let iconDrawX = iconOffsetX - rIconSize/2;
-                                        let iconDrawY = iconOffsetY - rIconSize/2;
-                                        
+                                        let iconDrawX = iconOffsetX - rIconSize / 2;
+                                        let iconDrawY = iconOffsetY - rIconSize / 2;
+
                                         if (iconAspect > 1) {
                                             iconDrawHeight = rIconSize / iconAspect;
                                             iconDrawY = iconOffsetY - iconDrawHeight / 2;
@@ -199,12 +199,12 @@
                                             iconDrawWidth = rIconSize * iconAspect;
                                             iconDrawX = iconOffsetX - iconDrawWidth / 2;
                                         }
-                                        
+
                                         ctx.drawImage(refinementImg, iconDrawX, iconDrawY, iconDrawWidth, iconDrawHeight);
                                         ctx.restore();
                                     }
                                 }
-                                
+
                                 currentX += imgSize + spacing;
                             }
                         });
@@ -213,7 +213,7 @@
             });
         }
     };
-    
+
     // Register the plugin
     if (typeof Chart !== 'undefined') {
         Chart.register(characterImagePlugin);
@@ -222,10 +222,8 @@
     /**
      * Calculate running balance history for the chart
      */
-    PullSimulator.prototype.calculateRunningBalance = function() {
-        const today = (typeof this.normalizeDate === 'function') ? this.normalizeDate(new Date()) : (() => {
-            const t = new Date(); t.setHours(0,0,0,0); return t;
-        })();
+    PullSimulator.prototype.calculateRunningBalance = function () {
+        const today = this.getKSTToday();
 
         let currentBalance = this.calculateTotalEmberForGraph();
         const history = [];
@@ -236,13 +234,13 @@
             console.log('[Graph] No targets, balanceHistory cleared');
             return;
         }
-        
+
         console.log('[Graph] calculateRunningBalance called with', this.targets.length, 'targets');
 
         // Use the same calculation logic as timeline cards and pull plan
         // Collect all character cards between today and last target, in order
-        const allReleases = this.scheduleReleases.length > 0 
-            ? this.scheduleReleases 
+        const allReleases = this.scheduleReleases.length > 0
+            ? this.scheduleReleases
             : (window.ReleaseScheduleData ? this.parseScheduleData(window.ReleaseScheduleData) : []);
 
         const sortedReleases = [...allReleases]
@@ -264,15 +262,8 @@
         const currentRelease = (() => {
             let cur = null;
             for (const r of sortedReleases) {
-                // [수정] Fallback 로직을 안전한 UTC 파싱으로 교체
-                const d = (typeof this.parseYMD === 'function')
-                    ? this.normalizeDate(this.parseYMD(r.date))
-                    : (() => { 
-                        // YYYY-MM-DD를 로컬 자정으로 직접 파싱하여 UTC 자동 변환 방지
-                        const parts = r.date.split('-');
-                        return new Date(parts[0], parts[1]-1, parts[2]); 
-                      })();
-                
+                const d = this.parseGameDate(r.date);
+
                 if (d <= today) cur = r;
                 else break;
             }
@@ -281,12 +272,7 @@
 
         // 2. futureReleases 필터링 교체
         const futureReleases = sortedReleases.filter(r => {
-            const releaseDate = (typeof this.parseYMD === 'function')
-                ? this.normalizeDate(this.parseYMD(r.date))
-                : (() => { 
-                    const parts = r.date.split('-');
-                    return new Date(parts[0], parts[1]-1, parts[2]); 
-                  })();
+            const releaseDate = this.parseGameDate(r.date);
             return releaseDate >= today;
         });
 
@@ -294,12 +280,7 @@
         const sortedTargets = [...this.targets].sort((a, b) => new Date(a.date) - new Date(b.date));
         // 3. lastTargetDate 구하는 부분 교체
         const lastTargetDate = sortedTargets.length > 0
-            ? ((typeof this.parseYMD === 'function')
-                ? this.normalizeDate(this.parseYMD(sortedTargets[sortedTargets.length - 1].date))
-                : (() => { 
-                    const parts = sortedTargets[sortedTargets.length - 1].date.split('-');
-                    return new Date(parts[0], parts[1]-1, parts[2]); 
-                  })())
+            ? this.parseGameDate(sortedTargets[sortedTargets.length - 1].date)
             : today;
 
         // Collect all banner-interval income events up to last target.
@@ -313,12 +294,7 @@
         // - today for current ongoing version
         // - banner start date for future versions
         releasesToProcess.forEach(release => {
-            const releaseDate = (typeof this.parseYMD === 'function')
-                ? this.normalizeDate(this.parseYMD(release.date))
-                : (() => { 
-                    const parts = release.date.split('-');
-                    return new Date(parts[0], parts[1]-1, parts[2]); 
-                  })();
+            const releaseDate = this.parseGameDate(release.date);
             if (releaseDate > lastTargetDate) return;
 
             // Filter out 4-star characters
@@ -347,9 +323,7 @@
             }
 
             // Interval income at end date
-            const endDate = (typeof this.parseYMD === 'function')
-                ? this.normalizeDate(this.parseYMD(income.interval.endDate))
-                : (() => { const d = new Date(income.interval.endDate); d.setHours(0,0,0,0); return d; })();
+            const endDate = this.parseGameDate(income.interval.endDate);
             if (endDate <= lastTargetDate) {
                 events.push({
                     date: endDate,
@@ -363,14 +337,12 @@
 
         // Add all targets as expense events
         sortedTargets.forEach(target => {
-            const targetDate = (typeof this.parseYMD === 'function')
-                ? this.normalizeDate(this.parseYMD(target.date))
-                : (() => { const d = new Date(target.date); d.setHours(0,0,0,0); return d; })();
+            const targetDate = this.parseGameDate(target.date);
             const extraPurchase = (target.extraEmber || 0) + (target.extraTicket || 0) * 150 + (target.extraWeaponTicket || 0) * 100;
-            events.push({ 
-                date: targetDate, 
-                type: 'expense', 
-                amount: target.cost - extraPurchase, 
+            events.push({
+                date: targetDate,
+                type: 'expense',
+                amount: target.cost - extraPurchase,
                 label: this.getCharacterName(target.name),
                 charName: target.name,
                 characterTarget: target.characterTarget,
@@ -404,7 +376,7 @@
         // Process all future dates from today to last event
         // Note: Daily income is already included in character card income events, so we don't add it daily
         while (currentDate < lastEvent.date) {
-            currentDate.setDate(currentDate.getDate() + 1);
+            currentDate.setUTCDate(currentDate.getUTCDate() + 1); // CRITICAL: Use setUTCDate()
 
             // Process all events on this date
             let hasEvent = false;
@@ -461,7 +433,7 @@
     /**
      * Render the balance chart
      */
-    PullSimulator.prototype.renderChart = function() {
+    PullSimulator.prototype.renderChart = function () {
         console.log('[Graph] renderChart called');
         const canvas = document.getElementById('balanceChart');
         const emptyEl = document.getElementById('chartEmpty');
@@ -476,14 +448,14 @@
             if (this.chart) { this.chart.destroy(); this.chart = null; }
             return;
         }
-        
+
         console.log('[Graph] Rendering chart with', this.balanceHistory.length, 'data points');
 
         if (emptyEl) emptyEl.style.display = 'none';
 
         const ctx = canvas.getContext('2d');
         const labels = this.balanceHistory.map(h => this.formatDateShort(h.date));
-        
+
         // Use single dataset instead of splitting into positive/negative
         // This ensures smooth curve connection and prevents connection bugs
         const allData = this.balanceHistory.map(h => h.balance);
@@ -522,7 +494,7 @@
                 img.src = `${BASE_URL}/assets/img/tier/${charName}.webp`;
             });
         };
-        
+
         const loadAwakeningIcon = (level) => {
             const iconKey = `a${level}`;
             if (imageCache.has(iconKey)) {
@@ -542,7 +514,7 @@
                 img.src = `${BASE_URL}/assets/img/ritual/a${level}.png`;
             });
         };
-        
+
         const loadRefinementIcon = (level) => {
             const iconKey = `r${level}`;
             if (imageCache.has(iconKey)) {
@@ -590,7 +562,7 @@
                 h.charNames.forEach(name => charNamesToLoad.add(name));
             }
         });
-        
+
         // If no images to load, create chart immediately
         if (charNamesToLoad.size === 0 && awakeningLevelsToLoad.size === 0 && refinementLevelsToLoad.size === 0) {
             console.log('[Graph] No images to load, creating chart immediately');
@@ -615,18 +587,18 @@
     /**
      * Create chart with character image pins using single dataset with gradient
      */
-    PullSimulator.prototype.createChartWithImages = function(ctx, labels, allData, imageCache, BASE_URL) {
+    PullSimulator.prototype.createChartWithImages = function (ctx, labels, allData, imageCache, BASE_URL) {
         const balanceHistory = this.balanceHistory; // Capture for closure
         const self = this; // Capture this for callbacks
-        
+
         // Debug: Check if balanceHistory is available
         if (!balanceHistory) {
             console.error('[Graph] balanceHistory is not available in createChartWithImages');
             return;
         }
-        
+
         console.log('[Graph] createChartWithImages called, creating Chart.js instance');
-        
+
         this.chart = new Chart(ctx, {
             type: 'line',
             data: {
@@ -649,7 +621,7 @@
                     }),
                     pointHoverRadius: 6,
                     // Border color using gradient function
-                    borderColor: function(context) {
+                    borderColor: function (context) {
                         const chart = context.chart;
                         const { chartArea, scales } = chart;
                         if (!chartArea) return 'rgba(125, 218, 125, 1)';
@@ -730,7 +702,7 @@
                 }
             }
         });
-        
+
         console.log('[Graph] Chart.js instance created, chart object:', this.chart);
     };
 

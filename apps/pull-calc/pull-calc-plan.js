@@ -3,7 +3,7 @@
  * Pull Plan 렌더링 및 관리 로직
  */
 
-(function() {
+(function () {
     'use strict';
 
     // PullSimulator 클래스가 이미 정의되어 있어야 함
@@ -18,20 +18,11 @@
      * Calculate income for a character card (daily + version + battle pass)
      * This is used by both timeline cards and pull plan
      */
-    PullSimulator.prototype.calculateCharacterIncome = function(charDate, charVersion, prevDate = null, charName = null) {
-        const today = (typeof this.normalizeDate === 'function') ? this.normalizeDate(new Date()) : (() => {
-            const t = new Date(); t.setHours(0,0,0,0); return t;
-        })();
-        const formatYMD = (d) => (typeof this.formatYMD === 'function')
-            ? this.formatYMD(d)
-            : d.toISOString().split('T')[0];
+    PullSimulator.prototype.calculateCharacterIncome = function (charDate, charVersion, prevDate = null, charName = null) {
+        const today = this.getKSTToday();
+        const formatYMD = (d) => this.formatGameDate(d);
 
-        const startDate = (typeof this.parseYMD === 'function')
-            ? this.normalizeDate(this.parseYMD(charDate))
-            : (() => { 
-                const parts = charDate.split('-');
-                return new Date(parts[0], parts[1]-1, parts[2]); 
-              })();
+        const startDate = this.parseGameDate(charDate);
 
         const allReleases = Array.isArray(this.scheduleReleases) ? this.scheduleReleases : [];
         const sorted = [...allReleases]
@@ -42,13 +33,8 @@
         const currentRelease = (() => {
             let cur = null;
             for (const r of sorted) {
-                const d = (typeof this.parseYMD === 'function')
-                    ? this.normalizeDate(this.parseYMD(r.date))
-                    : (() => { 
-                        const parts = r.date.split('-');
-                        return new Date(parts[0], parts[1]-1, parts[2]); 
-                      })();
-                
+                const d = this.parseGameDate(r.date);
+
                 if (d <= today) cur = r;
                 else break;
             }
@@ -61,16 +47,13 @@
 
         let endDate = null;
         if (nextRelease && nextRelease.date) {
-            endDate = new Date(nextRelease.date);
-            endDate.setHours(0, 0, 0, 0);
+            endDate = this.parseGameDate(nextRelease.date);
         } else {
             // Last card edge case: estimate duration using previous interval
             if (prevRelease && prevRelease.date) {
-                const prevDateObj = new Date(prevRelease.date);
-                prevDateObj.setHours(0, 0, 0, 0);
+                const prevDateObj = this.parseGameDate(prevRelease.date);
                 const durationDays = Math.max(0, Math.round((startDate - prevDateObj) / (1000 * 60 * 60 * 24)));
-                endDate = new Date(startDate);
-                endDate.setDate(endDate.getDate() + durationDays);
+                endDate = this.addDays(startDate, durationDays);
             } else {
                 endDate = new Date(startDate);
             }
@@ -98,8 +81,8 @@
             let count = 0;
             const cur = new Date(calcStartDate);
             while (cur < endDate) {
-                if (cur.getDay() === 1) count++;
-                cur.setDate(cur.getDate() + 1);
+                if (cur.getUTCDay() === 1) count++; // CRITICAL: Use getUTCDay()
+                cur.setUTCDate(cur.getUTCDate() + 1); // CRITICAL: Use setUTCDate()
             }
             return count;
         };
@@ -108,8 +91,8 @@
             let count = 0;
             const cur = new Date(calcStartDate);
             while (cur < endDate) {
-                if (cur.getDate() === 1) count++;
-                cur.setDate(cur.getDate() + 1);
+                if (cur.getUTCDate() === 1) count++; // CRITICAL: Use getUTCDate()
+                cur.setUTCDate(cur.getUTCDate() + 1); // CRITICAL: Use setUTCDate()
             }
             return count;
         };
@@ -133,13 +116,13 @@
                 this.scheduleScenario = scheduleScenario;
             }
         }
-        const versionMultiplier = versionNum >= 4.0 
+        const versionMultiplier = versionNum >= 4.0
             ? (scheduleScenario === '2weeks' ? 1.0 : 1.5)
             : 1.0;
         // Version income should not be attributed to the current (already-started) version card.
         // Apply it only when the version actually starts (future cards).
         const versionIncome = (startDate >= today) ? (this.income.versionIncome * versionMultiplier) : 0;
-        
+
         // Debug log for version 4.0+
         if (versionNum >= 4.0) {
             console.log(`[Income] Version ${charVersion}, scheduleScenario: ${scheduleScenario}, multiplier: ${versionMultiplier}, versionIncome: ${versionIncome} (base: ${this.income.versionIncome})`);
@@ -302,7 +285,7 @@
     /**
      * Render the pull plan list
      */
-    PullSimulator.prototype.renderPlanList = function() {
+    PullSimulator.prototype.renderPlanList = function () {
         const container = document.getElementById('planList');
         const countEl = document.getElementById('planCount');
 
@@ -322,8 +305,7 @@
             this.assets.weaponTicket,
             this.assets.cognigem
         );
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
+        const today = this.getKSTToday();
         let prevPlanDate = null;
 
         // Precompute income events:
@@ -357,8 +339,7 @@
                 const curRelease = (() => {
                     let cur = null;
                     for (const r of sortedReleases) {
-                        const d = new Date(r.date);
-                        d.setHours(0, 0, 0, 0);
+                        const d = this.parseGameDate(r.date);
                         if (d <= today) cur = r;
                         else break;
                     }
@@ -366,8 +347,7 @@
                 })();
 
                 const isCurrent = !!curRelease && curRelease.date === release.date && String(curRelease.version) === String(release.version);
-                const onceDate = isCurrent ? new Date(today) : new Date(release.date);
-                onceDate.setHours(0, 0, 0, 0);
+                const onceDate = isCurrent ? new Date(today) : this.parseGameDate(release.date);
                 if (onceDate >= today) {
                     incomeEvents.push({
                         date: onceDate,
@@ -379,8 +359,7 @@
                 }
             }
 
-            const endDate = new Date(income.interval.endDate);
-            endDate.setHours(0, 0, 0, 0);
+            const endDate = this.parseGameDate(income.interval.endDate);
             // Include endDate === today so that "today -> next banner" income applies
             // when the first target is also today.
             if (endDate >= today) {
@@ -399,22 +378,22 @@
         // Find first character (A0+) and first weapon (not None) to apply pity
         let firstCharFound = false;
         let firstWeaponFound = false;
-        
+
         let html = '';
         this.targets.forEach((target, index) => {
             const targetDate = new Date(target.date);
             targetDate.setHours(0, 0, 0, 0);
-            
+
             // Check if this is the first character (A0+)
-            const isFirstChar = !firstCharFound && target.characterTarget !== undefined && 
-                                parseInt(target.characterTarget.replace('A', '')) >= 0;
+            const isFirstChar = !firstCharFound && target.characterTarget !== undefined &&
+                parseInt(target.characterTarget.replace('A', '')) >= 0;
             if (isFirstChar) {
                 firstCharFound = true;
             }
-            
+
             // Check if this is the first weapon (not None)
-            const isFirstWeapon = !firstWeaponFound && target.weaponTarget !== undefined && 
-                                  target.weaponTarget !== 'None';
+            const isFirstWeapon = !firstWeaponFound && target.weaponTarget !== undefined &&
+                target.weaponTarget !== 'None';
             if (isFirstWeapon) {
                 firstWeaponFound = true;
             }
@@ -520,11 +499,11 @@
                                         </button>
                                         <div class="target-dropdown-menu">
                                             ${['A0', 'A1', 'A2', 'A3', 'A4', 'A5', 'A6'].map(opt =>
-                                                `<button class="target-dropdown-item ${target.characterTarget === opt ? 'selected' : ''}" data-value="${opt}">
+                `<button class="target-dropdown-item ${target.characterTarget === opt ? 'selected' : ''}" data-value="${opt}">
                                                     <img src="${BASE_URL}/assets/img/ritual/${opt.toLowerCase()}.png" alt="${opt}">
                                                     <span>${opt}</span>
                                                 </button>`
-                                            ).join('')}
+            ).join('')}
                                         </div>
                                     </div>
                                     <div class="target-dropdown" data-index="${index}" data-type="weapon">
@@ -540,11 +519,11 @@
                                                 <span>None</span>
                                             </button>
                                             ${['R0', 'R1', 'R2', 'R3', 'R4', 'R5', 'R6'].map(opt =>
-                                                `<button class="target-dropdown-item ${target.weaponTarget === opt ? 'selected' : ''}" data-value="${opt}">
+                `<button class="target-dropdown-item ${target.weaponTarget === opt ? 'selected' : ''}" data-value="${opt}">
                                                     <img src="${BASE_URL}/assets/img/ritual/${opt.toLowerCase()}.png" alt="${opt}">
                                                     <span>${opt}</span>
                                                 </button>`
-                                            ).join('')}
+            ).join('')}
                                         </div>
                                     </div>
                                 </div>

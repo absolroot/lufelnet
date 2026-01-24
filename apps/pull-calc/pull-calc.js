@@ -159,9 +159,6 @@ class Wallet {
 class PullSimulator {
     constructor() {
         this.lang = this.detectLang();
-        this.localTzOffsetMinutes = this.getLocalTzOffsetMinutes();
-        this.tzMode = this.loadTimezoneSetting(); // 'offset' (kept for backward compat)
-        this.tzOffsetMinutes = this.loadTimezoneOffsetMinutes(); // minutes east of UTC
 
         // Assets
         this.assets = {
@@ -221,91 +218,67 @@ class PullSimulator {
         this.buildSchedule();
     }
 
-    getLocalTzOffsetMinutes() {
-        // JS Date.getTimezoneOffset(): minutes WEST of UTC (e.g., KST => -540)
-        // We use minutes EAST of UTC for display (e.g., KST => +540)
-        const n = -new Date().getTimezoneOffset();
-        if (!Number.isFinite(n)) return 0;
-        return Math.max(-720, Math.min(840, n));
+    // ==================== KST (UTC+9) Date Helpers ====================
+    // All dates are stored as "Logical UTC" where UTC midnight represents KST midnight
+
+    /**
+     * Get "Today" in KST (UTC+9), normalized to midnight
+     * Returns a Date object representing KST today at 00:00:00, stored as UTC
+     */
+    getKSTToday() {
+        const now = new Date();
+        // 1. Get UTC time in ms
+        const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+        // 2. Add 9 hours for KST
+        const kstDate = new Date(utc + (9 * 60 * 60 * 1000));
+
+        // 3. Return as UTC midnight (Logical KST)
+        return new Date(Date.UTC(kstDate.getFullYear(), kstDate.getMonth(), kstDate.getDate()));
     }
 
-    loadTimezoneSetting() {
-        try {
-            const v = localStorage.getItem('pullCalc_tzMode');
-            // Migration: old 'local' becomes offset with local minutes
-            return (v === 'offset') ? 'offset' : 'offset';
-        } catch (e) {
-            return 'offset';
-        }
+    /**
+     * Parse "YYYY-MM-DD" string from data.js directly to Logical KST
+     * @param {string} ymd - Date string in YYYY-MM-DD format
+     * @returns {Date} Date object with UTC midnight representing KST date
+     */
+    parseGameDate(ymd) {
+        if (!ymd) return null;
+        const parts = ymd.split('-'); // Assumes YYYY-MM-DD format
+        // Create Date using UTC to avoid local timezone shifts
+        return new Date(Date.UTC(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2])));
     }
 
-    loadTimezoneOffsetMinutes() {
-        try {
-            const raw = localStorage.getItem('pullCalc_tzOffsetMinutes');
-            const n = parseInt(raw, 10);
-            if (!Number.isFinite(n)) return this.localTzOffsetMinutes;
-            // Clamp to plausible range (-12:00 ~ +14:00)
-            return Math.max(-720, Math.min(840, n));
-        } catch (e) {
-            return this.localTzOffsetMinutes;
-        }
+    /**
+     * Format Date object back to YYYY-MM-DD string
+     * @param {Date} dateObj - Date object (Logical UTC)
+     * @returns {string} Date string in YYYY-MM-DD format
+     */
+    formatGameDate(dateObj) {
+        if (!dateObj) return '';
+        const y = dateObj.getUTCFullYear();
+        const m = String(dateObj.getUTCMonth() + 1).padStart(2, '0');
+        const d = String(dateObj.getUTCDate()).padStart(2, '0');
+        return `${y}-${m}-${d}`;
     }
 
-    saveTimezoneSetting() {
-        try {
-            localStorage.setItem('pullCalc_tzMode', 'offset');
-            localStorage.setItem('pullCalc_tzOffsetMinutes', String(this.tzOffsetMinutes || 0));
-        } catch (e) {}
+    /**
+     * Format Date object to "M/D" (Short format)
+     * @param {Date} dateObj - Date object (Logical UTC)
+     * @returns {string} Date string in M/D format
+     */
+    formatDateShort(dateObj) {
+        if (!dateObj) return '';
+        return `${dateObj.getUTCMonth() + 1}/${dateObj.getUTCDate()}`;
     }
 
-    // Parse YYYY-MM-DD as midnight in either local time or UTC (no implicit timezone conversion).
-    parseYMD(ymd) {
-        const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(ymd || '').trim());
-        if (!m) return new Date(ymd);
-        const y = Number(m[1]);
-        const mo = Number(m[2]) - 1;
-        const d = Number(m[3]);
-        if (this.tzMode === 'offset') {
-            // Create a Date representing midnight at the selected UTC offset.
-            // Store as a real Date in UTC by subtracting the offset.
-            const utcMs = Date.UTC(y, mo, d);
-            return new Date(utcMs - (this.tzOffsetMinutes * 60 * 1000));
-        }
-        return new Date(y, mo, d);
-    }
-
-    normalizeDate(date) {
-        const d = (date instanceof Date) ? new Date(date) : new Date(date);
-        if (this.tzMode === 'offset') {
-            const offsetMs = (this.tzOffsetMinutes * 60 * 1000);
-            const shifted = new Date(d.getTime() + offsetMs);
-            const utcMidnight = Date.UTC(shifted.getUTCFullYear(), shifted.getUTCMonth(), shifted.getUTCDate());
-            return new Date(utcMidnight - offsetMs);
-        }
-        d.setHours(0, 0, 0, 0);
-        return d;
-    }
-
-    formatYMD(date) {
-        const d = this.normalizeDate(date);
-        let yyyy, mm, dd;
-        if (this.tzMode === 'offset') {
-            const offsetMs = (this.tzOffsetMinutes * 60 * 1000);
-            const shifted = new Date(d.getTime() + offsetMs);
-            yyyy = shifted.getUTCFullYear();
-            mm = String(shifted.getUTCMonth() + 1).padStart(2, '0');
-            dd = String(shifted.getUTCDate()).padStart(2, '0');
-        } else {
-            yyyy = d.getFullYear();
-            mm = String(d.getMonth() + 1).padStart(2, '0');
-            dd = String(d.getDate()).padStart(2, '0');
-        }
-        return `${yyyy}-${mm}-${dd}`;
-    }
-
-    addDays(date, days) {
-        const base = this.normalizeDate(date);
-        return this.normalizeDate(new Date(base.getTime() + (days * 24 * 60 * 60 * 1000)));
+    /**
+     * Add days helper (Pure UTC math)
+     * @param {Date} dateObj - Date object (Logical UTC)
+     * @param {number} days - Number of days to add
+     * @returns {Date} New Date object
+     */
+    addDays(dateObj, days) {
+        return new Date(dateObj.getTime() + (days * 86400000));
     }
 
     initializeExtraIncome() {
@@ -411,7 +384,7 @@ class PullSimulator {
         // Additional labels
         const labelCharPityEl = document.getElementById('labelCharPity');
         if (labelCharPityEl) labelCharPityEl.textContent = this.t('charPityProgress');
-        
+
         const labelWeaponPityEl = document.getElementById('labelWeaponPity');
         if (labelWeaponPityEl) labelWeaponPityEl.textContent = this.t('weaponPityProgress');
 
@@ -436,8 +409,8 @@ class PullSimulator {
                 }
                 // Use tooltip.js's bindTooltipElement function if available
                 // Check both global scope and window object
-                const bindFn = typeof bindTooltipElement !== 'undefined' ? bindTooltipElement : 
-                              (typeof window !== 'undefined' && typeof window.bindTooltipElement === 'function' ? window.bindTooltipElement : null);
+                const bindFn = typeof bindTooltipElement !== 'undefined' ? bindTooltipElement :
+                    (typeof window !== 'undefined' && typeof window.bindTooltipElement === 'function' ? window.bindTooltipElement : null);
                 if (bindFn) {
                     bindFn(el);
                 }
@@ -476,22 +449,22 @@ class PullSimulator {
             const content = MUST_READ_CONTENT[this.lang] || MUST_READ_CONTENT.kr;
             // Simple markdown to HTML conversion
             let html = content;
-            
+
             // Convert headers
             html = html.replace(/^### (.*)$/gm, '<h3>$1</h3>');
-            
+
             // Convert bold
             html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-            
+
             // Convert horizontal rule
             html = html.replace(/^---$/gm, '<hr>');
-            
+
             // Convert numbered sections (e.g., **1. 재화 환산 및 비용**)
             html = html.replace(/^\*\*(\d+)\. (.*?)\*\*$/gm, '<h4><strong>$1. $2</strong></h4>');
-            
+
             // Convert list items (e.g., * **계약 티켓:** 1장은...)
             html = html.replace(/^\* \*\*(.*?):\*\* (.*)$/gm, '<li><strong>$1:</strong> $2</li>');
-            
+
             // Split into paragraphs (double newlines)
             const paragraphs = html.split(/\n\n+/);
             html = paragraphs.map(para => {
@@ -508,7 +481,7 @@ class PullSimulator {
                 // Otherwise wrap in paragraph
                 return '<p>' + para.replace(/\n/g, '<br>') + '</p>';
             }).filter(p => p).join('');
-            
+
             mustReadText.innerHTML = html;
         }
     }
@@ -617,7 +590,7 @@ class PullSimulator {
 
         // Check if user has closed it before
         const hasClosedMustRead = localStorage.getItem('pullCalc_mustReadClosed');
-        
+
         if (!hasClosedMustRead) {
             // First visit: open it
             mustReadAccordion.classList.add('expanded');
@@ -632,7 +605,7 @@ class PullSimulator {
                 const section = header.closest('.accordion-section');
                 const isExpanded = section.classList.contains('expanded');
                 section.classList.toggle('expanded');
-                
+
                 // If mustRead accordion is being closed, save to localStorage
                 if (section.id === 'mustReadAccordion' && isExpanded) {
                     localStorage.setItem('pullCalc_mustReadClosed', 'true');
@@ -805,33 +778,33 @@ class PullSimulator {
         this.scheduleScenario = newValue;
         this.saveData();
         this.buildSchedule();
-        
+
         // Update target dates to match new schedule
         // After buildSchedule(), scheduleReleases has new dates
         if (this.targets.length > 0 && this.scheduleReleases.length > 0) {
             this.targets.forEach(target => {
                 // Find matching release by version and character name
                 const matchingRelease = this.scheduleReleases.find(release => {
-                    return release.version === target.version && 
-                           release.characters && 
-                           release.characters.includes(target.name);
+                    return release.version === target.version &&
+                        release.characters &&
+                        release.characters.includes(target.name);
                 });
-                
+
                 if (matchingRelease && matchingRelease.date) {
                     // Update target date to match new schedule
                     target.date = matchingRelease.date;
                     console.log(`[ScheduleScenario] Updated target ${target.name} (${target.version}) date to ${matchingRelease.date}`);
                 }
             });
-            
+
             // Re-sort targets by date
             this.targets.sort((a, b) => new Date(a.date) - new Date(b.date));
             this.saveData();
-            
+
             // Update timeline selection after dates are updated
             this.updateTimelineSelection();
         }
-        
+
         this.recalculate();
     }
 
@@ -848,7 +821,7 @@ class PullSimulator {
         let total = this.assets.ember;
         total += this.assets.ticket * 150;
         total += this.assets.paidEmber;
-        total += this.assets.weaponTicket * 100;  
+        total += this.assets.weaponTicket * 100;
         total += this.assets.cognigem * 10;
         return total;
     }
@@ -879,17 +852,17 @@ class PullSimulator {
         const releases = this.parseScheduleData(scheduleData);
         this.scheduleReleases = releases;
 
-        const today = this.normalizeDate(new Date());
+        const today = this.getKSTToday();
         const thirtyDaysAgo = this.addDays(today, -30);
 
         // Separate past and future releases
         const pastReleases = releases.filter(r => {
-            const releaseDate = this.normalizeDate(this.parseYMD(r.date));
+            const releaseDate = this.parseGameDate(r.date);
             return releaseDate < today && releaseDate >= thirtyDaysAgo;
         }).sort((a, b) => new Date(b.date) - new Date(a.date)); // Sort descending (most recent first)
-        
+
         const futureReleases = releases.filter(r => {
-            const releaseDate = this.normalizeDate(this.parseYMD(r.date));
+            const releaseDate = this.parseGameDate(r.date);
             return releaseDate >= today;
         });
 
@@ -904,32 +877,6 @@ class PullSimulator {
         const scheduleScenarioLabel = this.t('scheduleScenario');
         const scheduleNoticeText = this.t('scheduleNotice');
         const scenarioTooltip = this.t('tooltipScheduleScenario');
-        const tzTooltip = this.t('tooltipTimezone');
-        const formatOffsetLabel = (minutesEast) => {
-            const sign = minutesEast >= 0 ? '+' : '-';
-            const abs = Math.abs(minutesEast);
-            const hh = String(Math.floor(abs / 60)).padStart(2, '0');
-            const mm = String(abs % 60).padStart(2, '0');
-            const base = (mm === '00') ? `UTC${sign}${parseInt(hh, 10)}` : `UTC${sign}${parseInt(hh, 10)}:${mm}`;
-            return minutesEast === this.localTzOffsetMinutes ? `${base} (Local)` : base;
-        };
-
-        const tzOptions = Array.from({ length: 27 }, (_, i) => {
-            const offsetHours = i - 12; // -12..+14
-            const minutes = offsetHours * 60;
-            return { label: formatOffsetLabel(minutes), value: String(minutes) };
-        });
-
-        // Ensure the current local offset exists as an option (for uncommon offsets like +5:30)
-        if (!tzOptions.some(o => Number(o.value) === this.localTzOffsetMinutes)) {
-            tzOptions.push({ label: formatOffsetLabel(this.localTzOffsetMinutes), value: String(this.localTzOffsetMinutes) });
-            tzOptions.sort((a, b) => Number(a.value) - Number(b.value));
-        }
-
-        const tzOptionHtml = tzOptions.map(opt => {
-            const selected = Number(opt.value) === (this.tzOffsetMinutes || this.localTzOffsetMinutes);
-            return `<option value="${opt.value}" ${selected ? 'selected' : ''}>${opt.label}</option>`;
-        }).join('');
 
         const headerHtml = `
             <div class="schedule-notice schedule-notice--in-timeline">
@@ -950,16 +897,6 @@ class PullSimulator {
                             <option value="2weeks" id="option2Weeks">${this.t('scheduleScenario2Weeks')}</option>
                         </select>
                     </div>
-                    <label class="input-label schedule-tz-select">
-                        <span id="labelTimezone">${this.t('timezone')}</span>
-                        <span class="tooltip-icon" data-i18n-tooltip="tooltipTimezone" data-tooltip="${tzTooltip}">
-                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1" fill="rgba(255,255,255,0.05)"></circle>
-                                <path d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.3"></path>
-                            </svg>
-                        </span>
-                        <select id="inputTimezone" class="modal-input modal-input--auto">${tzOptionHtml}</select>
-                    </label>
                 </div>
             </div>
         `;
@@ -977,7 +914,7 @@ class PullSimulator {
             });
 
             if (fiveStarChars.length > 0) {
-                const releaseDateObj = this.normalizeDate(this.parseYMD(release.date));
+                const releaseDateObj = this.parseGameDate(release.date);
                 const baselinePrev = releaseDateObj > today ? prevFutureDate : null;
 
                 html += this.renderVersionColumn({ ...release, characters: fiveStarChars }, baselinePrev);
@@ -998,18 +935,7 @@ class PullSimulator {
             scheduleScenarioEl.addEventListener('change', () => this.handleScheduleScenarioChange());
         }
 
-        const tzEl = container.querySelector('#inputTimezone');
-        if (tzEl) {
-            tzEl.addEventListener('change', () => {
-                const v = String(tzEl.value);
-                const n = parseInt(v, 10);
-                this.tzMode = 'offset';
-                this.tzOffsetMinutes = Number.isFinite(n) ? n : this.localTzOffsetMinutes;
-                this.saveTimezoneSetting();
-                this.buildSchedule();
-                this.recalculate();
-            });
-        }
+        // Timezone selector removed - now using fixed KST timezone
 
         // Bind tooltip for schedule scenario icon
         if (typeof bindTooltipElement !== 'undefined') {
@@ -1044,11 +970,11 @@ class PullSimulator {
         const initialTargetCount = this.targets.length;
         this.targets = this.targets.filter(target => {
             if (!target.date) return true; // Keep targets without date (shouldn't happen, but safe)
-            const targetDate = this.normalizeDate(this.parseYMD(target.date));
+            const targetDate = this.parseGameDate(target.date);
             // Keep only future cards (targetDate > today) - exclude today as well
             return targetDate > today;
         });
-        
+
         // Save if any targets were removed
         if (this.targets.length < initialTargetCount) {
             this.saveData();
@@ -1116,8 +1042,8 @@ class PullSimulator {
     // calculateCharacterIncome is defined in pull-calc-plan.js
 
     renderVersionColumn(release, prevDate = null) {
-        const releaseDate = this.normalizeDate(this.parseYMD(release.date));
-        const today = this.normalizeDate(new Date());
+        const releaseDate = this.parseGameDate(release.date);
+        const today = this.getKSTToday();
         const diffDays = Math.ceil((releaseDate - today) / (1000 * 60 * 60 * 24));
 
         let daysText = '';
@@ -1300,20 +1226,6 @@ class PullSimulator {
         return charData.name || charName;
     }
 
-    formatDateShort(date) {
-        const d = this.normalizeDate(date);
-        let m, dd;
-        if (this.tzMode === 'offset') {
-            const offsetMs = (this.tzOffsetMinutes * 60 * 1000);
-            const shifted = new Date(d.getTime() + offsetMs);
-            m = shifted.getUTCMonth() + 1;
-            dd = shifted.getUTCDate();
-        } else {
-            m = d.getMonth() + 1;
-            dd = d.getDate();
-        }
-        return `${m}/${dd}`;
-    }
 
     toggleTarget(charName, version, date) {
         const index = this.targets.findIndex(t => t.name === charName && t.date === date);
@@ -1332,7 +1244,7 @@ class PullSimulator {
                 extraWeaponTicket: 0,
                 cost: 0
             });
-            this.targets.sort((a, b) => new Date(a.date) - new Date(b.date));
+            this.targets.sort((a, b) => this.parseGameDate(a.date) - this.parseGameDate(b.date));
         }
 
         this.saveData();
@@ -1357,7 +1269,7 @@ class PullSimulator {
         }
 
         this.extraIncomeRows = this.extraIncomeManager ? this.extraIncomeManager.getRows() : [];
-        
+
         this.calculateTargetCosts();
         this.calculateRunningBalance();
         this.renderPlanList();
@@ -1368,22 +1280,22 @@ class PullSimulator {
         // Find first character (A0+) and first weapon (not None) to apply pity
         let firstCharFound = false;
         let firstWeaponFound = false;
-        
+
         this.targets.forEach(target => {
             // Check if this is the first character (A0+)
-            const isFirstChar = !firstCharFound && target.characterTarget !== undefined && 
-                                parseInt(target.characterTarget.replace('A', '')) >= 0;
+            const isFirstChar = !firstCharFound && target.characterTarget !== undefined &&
+                parseInt(target.characterTarget.replace('A', '')) >= 0;
             if (isFirstChar) {
                 firstCharFound = true;
             }
-            
+
             // Check if this is the first weapon (not None)
-            const isFirstWeapon = !firstWeaponFound && target.weaponTarget !== undefined && 
-                                  target.weaponTarget !== 'None';
+            const isFirstWeapon = !firstWeaponFound && target.weaponTarget !== undefined &&
+                target.weaponTarget !== 'None';
             if (isFirstWeapon) {
                 firstWeaponFound = true;
             }
-            
+
             const charCost = this.calculateCharacterCost(target.characterTarget, isFirstChar);
             const weaponCost = this.calculateWeaponCost(target.weaponTarget, isFirstWeapon);
             target.cost = charCost + weaponCost;

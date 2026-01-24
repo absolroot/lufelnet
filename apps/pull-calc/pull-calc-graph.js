@@ -264,10 +264,14 @@
         const currentRelease = (() => {
             let cur = null;
             for (const r of sortedReleases) {
-                // parseYMD와 normalizeDate를 사용하여 설정된 시간대 기준으로 날짜 변환
+                // [수정] Fallback 로직을 안전한 UTC 파싱으로 교체
                 const d = (typeof this.parseYMD === 'function')
                     ? this.normalizeDate(this.parseYMD(r.date))
-                    : (() => { const _d = new Date(r.date); _d.setHours(0,0,0,0); return _d; })();
+                    : (() => { 
+                        // YYYY-MM-DD를 로컬 자정으로 직접 파싱하여 UTC 자동 변환 방지
+                        const parts = r.date.split('-');
+                        return new Date(parts[0], parts[1]-1, parts[2]); 
+                      })();
                 
                 if (d <= today) cur = r;
                 else break;
@@ -275,20 +279,27 @@
             return cur;
         })();
 
-        // Get all future character cards (same as timeline)
+        // 2. futureReleases 필터링 교체
         const futureReleases = sortedReleases.filter(r => {
             const releaseDate = (typeof this.parseYMD === 'function')
                 ? this.normalizeDate(this.parseYMD(r.date))
-                : (() => { const d = new Date(r.date); d.setHours(0,0,0,0); return d; })();
+                : (() => { 
+                    const parts = r.date.split('-');
+                    return new Date(parts[0], parts[1]-1, parts[2]); 
+                  })();
             return releaseDate >= today;
         });
 
         // Get last target date
         const sortedTargets = [...this.targets].sort((a, b) => new Date(a.date) - new Date(b.date));
+        // 3. lastTargetDate 구하는 부분 교체
         const lastTargetDate = sortedTargets.length > 0
             ? ((typeof this.parseYMD === 'function')
                 ? this.normalizeDate(this.parseYMD(sortedTargets[sortedTargets.length - 1].date))
-                : (() => { const d = new Date(sortedTargets[sortedTargets.length - 1].date); d.setHours(0,0,0,0); return d; })())
+                : (() => { 
+                    const parts = sortedTargets[sortedTargets.length - 1].date.split('-');
+                    return new Date(parts[0], parts[1]-1, parts[2]); 
+                  })())
             : today;
 
         // Collect all banner-interval income events up to last target.
@@ -304,7 +315,10 @@
         releasesToProcess.forEach(release => {
             const releaseDate = (typeof this.parseYMD === 'function')
                 ? this.normalizeDate(this.parseYMD(release.date))
-                : (() => { const d = new Date(release.date); d.setHours(0,0,0,0); return d; })();
+                : (() => { 
+                    const parts = release.date.split('-');
+                    return new Date(parts[0], parts[1]-1, parts[2]); 
+                  })();
             if (releaseDate > lastTargetDate) return;
 
             // Filter out 4-star characters

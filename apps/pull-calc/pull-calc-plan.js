@@ -28,7 +28,10 @@
 
         const startDate = (typeof this.parseYMD === 'function')
             ? this.normalizeDate(this.parseYMD(charDate))
-            : (() => { const d = new Date(charDate); d.setHours(0,0,0,0); return d; })();
+            : (() => { 
+                const parts = charDate.split('-');
+                return new Date(parts[0], parts[1]-1, parts[2]); 
+              })();
 
         const allReleases = Array.isArray(this.scheduleReleases) ? this.scheduleReleases : [];
         const sorted = [...allReleases]
@@ -39,10 +42,12 @@
         const currentRelease = (() => {
             let cur = null;
             for (const r of sorted) {
-                // Use parseYMD and normalizeDate to use the configured timezone
                 const d = (typeof this.parseYMD === 'function')
                     ? this.normalizeDate(this.parseYMD(r.date))
-                    : (() => { const _d = new Date(r.date); _d.setHours(0,0,0,0); return _d; })();
+                    : (() => { 
+                        const parts = r.date.split('-');
+                        return new Date(parts[0], parts[1]-1, parts[2]); 
+                      })();
                 
                 if (d <= today) cur = r;
                 else break;

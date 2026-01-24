@@ -1082,7 +1082,11 @@ class PullSimulator {
 
         let lastDate = null;
         if (releases.length > 0) {
-            lastDate = new Date(releases[releases.length - 1].date);
+            // 날짜 문자열(YYYY-MM-DD)을 쪼개서 UTC 자정 기준으로 명확하게 생성
+            const lastReleaseDate = releases[releases.length - 1].date;
+            const parts = lastReleaseDate.split('-');
+            // 월(Month)은 0부터 시작하므로 -1 처리
+            lastDate = new Date(Date.UTC(parts[0], parts[1] - 1, parts[2]));
         }
 
         (scheduleData.autoGenerateCharacters || []).forEach(release => {
@@ -1091,8 +1095,7 @@ class PullSimulator {
             const interval = version > 4.0 ? intervalRules.afterV4 : intervalRules.beforeV4;
 
             if (lastDate) {
-                lastDate = new Date(lastDate);
-                lastDate.setDate(lastDate.getDate() + interval);
+                lastDate.setUTCDate(lastDate.getUTCDate() + interval);
             }
 
             releases.push({

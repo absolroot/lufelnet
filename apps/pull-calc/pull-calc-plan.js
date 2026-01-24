@@ -381,8 +381,8 @@
 
         let html = '';
         this.targets.forEach((target, index) => {
-            const targetDate = new Date(target.date);
-            targetDate.setHours(0, 0, 0, 0);
+            // [FIX] Use parseGameDate to ensure UTC comparison matches income events
+            const targetDate = this.parseGameDate(target.date);
 
             // Check if this is the first character (A0+)
             const isFirstChar = !firstCharFound && target.characterTarget !== undefined &&

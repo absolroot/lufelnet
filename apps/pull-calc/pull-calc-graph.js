@@ -398,9 +398,12 @@
                             weaponTarget: event.weaponTarget
                         });
                     }
+                    // [FIX] Only add labels for actual targets (expenses) to avoid confusion with income events
+                    if (event.label) eventLabels.push(event.label);
                 }
-                eventLabels.push(event.label);
-                if (event.charName) {
+
+                // Keep charNames for backward compatibility, but only for expenses
+                if (event.charName && event.type === 'expense') {
                     charNames.push(event.charName);
                 }
                 hasEvent = true;

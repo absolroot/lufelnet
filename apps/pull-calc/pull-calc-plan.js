@@ -408,6 +408,47 @@
                 incomeEventIndex++;
             }
 
+            // =================================================================
+            // Wallet Normalization (Debt Repayment)
+            // Automatically use accumulated ember to pay off negative ticket balances.
+            // =================================================================
+            if (currentWallet.ember > 0) {
+                // 1. Pay off Character Ticket Debt (Rate: 150 Ember per ticket)
+                if (currentWallet.ticket < 0) {
+                    const debt = Math.abs(currentWallet.ticket);
+                    const costToClear = debt * 150;
+
+                    if (currentWallet.ember >= costToClear) {
+                        // Fully clear debt
+                        currentWallet.ember -= costToClear;
+                        currentWallet.ticket = 0;
+                    } else {
+                        // Partially clear debt
+                        const ticketsRestored = Math.floor(currentWallet.ember / 150);
+                        currentWallet.ticket += ticketsRestored;
+                        currentWallet.ember -= ticketsRestored * 150;
+                    }
+                }
+
+                // 2. Pay off Weapon Ticket Debt (Rate: 100 Ember per ticket)
+                if (currentWallet.weaponTicket < 0) {
+                    const debt = Math.abs(currentWallet.weaponTicket);
+                    const costToClear = debt * 100;
+
+                    if (currentWallet.ember >= costToClear) {
+                        // Fully clear debt
+                        currentWallet.ember -= costToClear;
+                        currentWallet.weaponTicket = 0;
+                    } else {
+                        // Partially clear debt
+                        const ticketsRestored = Math.floor(currentWallet.ember / 100);
+                        currentWallet.weaponTicket += ticketsRestored;
+                        currentWallet.ember -= ticketsRestored * 100;
+                    }
+                }
+            }
+            // =================================================================
+
             // Advance baseline only for future targets
             if (targetDate > today) {
                 prevPlanDate = new Date(targetDate);
@@ -420,6 +461,49 @@
             currentWallet.ember += (target.extraEmber || 0);
             currentWallet.ticket += (target.extraTicket || 0);
             currentWallet.weaponTicket += (target.extraWeaponTicket || 0);
+
+            // =================================================================
+            // Wallet Normalization (Debt Repayment)
+            // Automatically use accumulated ember to pay off negative ticket balances.
+            // Now runs AFTER extra purchases, so it can use both natural income
+            // and user-added extra ember to clear debt.
+            // =================================================================
+            if (currentWallet.ember > 0) {
+                // 1. Pay off Character Ticket Debt (Rate: 150 Ember per ticket)
+                if (currentWallet.ticket < 0) {
+                    const debt = Math.abs(currentWallet.ticket);
+                    const costToClear = debt * 150;
+
+                    if (currentWallet.ember >= costToClear) {
+                        // Fully clear debt
+                        currentWallet.ember -= costToClear;
+                        currentWallet.ticket = 0;
+                    } else {
+                        // Partially clear debt
+                        const ticketsRestored = Math.floor(currentWallet.ember / 150);
+                        currentWallet.ticket += ticketsRestored;
+                        currentWallet.ember -= ticketsRestored * 150;
+                    }
+                }
+
+                // 2. Pay off Weapon Ticket Debt (Rate: 100 Ember per ticket)
+                if (currentWallet.weaponTicket < 0) {
+                    const debt = Math.abs(currentWallet.weaponTicket);
+                    const costToClear = debt * 100;
+
+                    if (currentWallet.ember >= costToClear) {
+                        // Fully clear debt
+                        currentWallet.ember -= costToClear;
+                        currentWallet.weaponTicket = 0;
+                    } else {
+                        // Partially clear debt
+                        const ticketsRestored = Math.floor(currentWallet.ember / 100);
+                        currentWallet.weaponTicket += ticketsRestored;
+                        currentWallet.ember -= ticketsRestored * 100;
+                    }
+                }
+            }
+            // =================================================================
 
             // Capture wallet state BEFORE pull (with extra purchase)
             const walletBefore = currentWallet.clone();

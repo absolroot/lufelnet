@@ -49,7 +49,7 @@ const I18N = {
         extraPurchase: '추가 구매',
         currentResources: '해당 시점 보유 재화',
         tooltipTicket: '1장 = 150 엠버',
-        tooltipWeaponTicket: '1장 = 150 엠버',
+        tooltipWeaponTicket: '1장 = 100 엠버',
         tooltipCognigem: '10개 = 100 엠버 (글로벌판)',
         tooltipDailyMission: '매일 획득 가능한 엠버. 기본값 80.',
         tooltipVersionIncome: '각 버전(패치)마다 지급되는 수입. 흉몽(NTMR), 바다(SoS) 등 주간 콘텐츠 합계를 버전 기간으로 나눈 값 + 점검 보상, 리딤 코드, 이벤트 등. 보수적으로 설정된 값으로 개인이 알맞게 조정하세요. 현재 진행 중인 배너에는 해당 보상을 이미 수령한 것으로 간주하고 포함되지 않습니다.',

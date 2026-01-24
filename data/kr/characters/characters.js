@@ -29,13 +29,13 @@ window.characterList = window.characterList || {
 
 window.characterData = window.characterData || {};
 Object.assign(window.characterData, {
-    "나루루": {
+    "나루미": {
         "limit": true,
         "tag": "",
         "tag_en": "",
         "tag_jp": "",
         "color": "#d03b3b",
-        "element": "",
+        "element": "염동",
         "rarity": 5,
         "position": "",
         "release_order": 41,

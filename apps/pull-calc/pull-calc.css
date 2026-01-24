@@ -285,6 +285,7 @@
     .mustread-content {
         padding: 0px;
     }
+
     .accordion-section.expanded .accordion-content {
         min-height: auto;
     }
@@ -394,6 +395,41 @@
     margin: 0;
 }
 
+.schedule-controls-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.sea-server-checkbox-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.sea-server-checkbox-wrapper .checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.85);
+    cursor: pointer;
+}
+
+.sea-server-checkbox-wrapper input[type="checkbox"] {
+    cursor: pointer;
+}
+
+/* On mobile, stack vertically */
+@media (max-width: 600px) {
+    .schedule-controls-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+}
+
 .schedule-scenario-group {
     display: inline-flex;
     align-items: center;
@@ -439,6 +475,7 @@
 .schedule-notice .input-group {
     margin-bottom: 0;
 }
+
 
 /* ========================================
    Timeline Section
@@ -1547,7 +1584,8 @@ select.extra-income-frequency {
         max-width: 100%;
     }
 
-    #labelScheduleScenario, #labelTimezone {
+    #labelScheduleScenario,
+    #labelTimezone {
         font-size: 12px;
     }
 }
@@ -1557,7 +1595,7 @@ select.extra-income-frequency {
         padding: 0 12px;
     }
 
-    .plan-item-number{
+    .plan-item-number {
         display: none;
     }
 
@@ -1611,11 +1649,11 @@ select.extra-income-frequency {
         gap: 8px;
     }
 
-    .plan-resources-title{
+    .plan-resources-title {
         display: none;
     }
 
-    .plan-resources-section{
+    .plan-resources-section {
         justify-content: flex-start;
     }
 
@@ -1640,35 +1678,35 @@ select.extra-income-frequency {
         gap: 8px;
     }
 
-    .status-row-container > .status-column-before {
+    .status-row-container>.status-column-before {
         grid-area: before;
         justify-self: stretch;
         align-self: center;
     }
 
     /* '-' operator */
-    .status-row-container > .status-operator-minus {
+    .status-row-container>.status-operator-minus {
         grid-area: minus;
         align-self: center;
         justify-self: center;
         padding: 0 4px;
     }
 
-    .status-row-container > .status-column-required {
+    .status-row-container>.status-column-required {
         grid-area: required;
         justify-self: stretch;
         align-self: center;
     }
 
     /* '=' operator */
-    .status-row-container > .status-operator-equal {
+    .status-row-container>.status-operator-equal {
         grid-area: equal;
         align-self: center;
         justify-self: center;
         padding: 0 4px;
     }
 
-    .status-row-container > .status-column-after {
+    .status-row-container>.status-column-after {
         grid-area: after;
         justify-self: center;
         width: auto;

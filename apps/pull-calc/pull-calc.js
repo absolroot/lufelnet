@@ -156,7 +156,67 @@ class Wallet {
     }
 }
 
+/**
+ * Helper function: Add days to a date string (YYYY-MM-DD format)
+ * @param {string} dateStr - Date string in YYYY-MM-DD format
+ * @param {number} days - Number of days to add
+ * @returns {string} New date string in YYYY-MM-DD format
+ */
+function addDaysToDateString(dateStr, days) {
+    if (!dateStr) return dateStr;
+    const parts = dateStr.split('-');
+    const date = new Date(Date.UTC(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2])));
+    date.setUTCDate(date.getUTCDate() + days);
+    const y = date.getUTCFullYear();
+    const m = String(date.getUTCMonth() + 1).padStart(2, '0');
+    const d = String(date.getUTCDate()).padStart(2, '0');
+    return `${y}-${m}-${d}`;
+}
+
+/**
+ * Apply or remove SEA server delay to ReleaseScheduleData
+ * @param {boolean} isSea - If true, apply +7 days shift; if false, restore original
+ */
+function applyServerDelayToData(isSea) {
+    if (!window.ReleaseScheduleData) return;
+
+    // Backup original data on first run
+    if (!window.ReleaseScheduleData_Original) {
+        window.ReleaseScheduleData_Original = JSON.parse(JSON.stringify(window.ReleaseScheduleData));
+    }
+
+    // Always restore from original first
+    window.ReleaseScheduleData = JSON.parse(JSON.stringify(window.ReleaseScheduleData_Original));
+
+    // If SEA mode, shift all dates by +7 days
+    if (isSea) {
+        const shiftDays = 7;
+
+        // Shift manualReleases dates
+        if (window.ReleaseScheduleData.manualReleases) {
+            window.ReleaseScheduleData.manualReleases.forEach(release => {
+                if (release.date) {
+                    release.date = addDaysToDateString(release.date, shiftDays);
+                }
+            });
+        }
+
+        // Shift anniversaryEvents dates
+        if (window.ReleaseScheduleData.anniversaryEvents) {
+            window.ReleaseScheduleData.anniversaryEvents.forEach(event => {
+                if (event.date) {
+                    event.date = addDaysToDateString(event.date, shiftDays);
+                }
+            });
+        }
+
+        // Note: autoGenerateCharacters don't have dates - they're calculated from manualReleases
+        // So we don't need to shift them directly
+    }
+}
+
 class PullSimulator {
+
     constructor() {
         this.lang = this.detectLang();
 
@@ -182,6 +242,9 @@ class PullSimulator {
 
         // Schedule scenario (4.0 이후 간격 및 보상 배율)
         this.scheduleScenario = '3weeks'; // '3weeks' or '2weeks'
+
+        // SEA Server Mode (schedule +7 days)
+        this.isSeaServer = false;
 
         // Pity settings
         this.pity = {
@@ -215,6 +278,8 @@ class PullSimulator {
         this.initializeMustReadAccordion();
         this.bindEvents();
         this.initializeExtraIncome();
+        // Apply server delay before building schedule
+        applyServerDelayToData(this.isSeaServer);
         this.buildSchedule();
     }
 
@@ -372,7 +437,8 @@ class PullSimulator {
             ['labelWeaponTicket', 'weaponTicket'], ['labelCognigem', 'cognigem'],
             ['labelDailyMission', 'dailyMission'], ['labelMonthlySub', 'monthlySub'],
             ['labelVersionIncome', 'versionIncome'], ['labelBattlePass', 'battlePass'],
-            ['labelRecursive', 'recursive'], ['labelCharPity', 'charPity'],
+            ['labelRecursive', 'recursive'], ['labelSeaServer', 'labelSeaServer'],
+            ['labelCharPity', 'charPity'],
             ['labelWeaponPity', 'weaponPity'], ['labelWeapon5050Failed', 'weapon5050Failed'],
             ['labelWeaponScenario', 'weaponScenario'], ['labelScheduleScenario', 'scheduleScenario']
         ];
@@ -519,6 +585,11 @@ class PullSimulator {
             if (savedScheduleScenario && ['3weeks', '2weeks'].includes(savedScheduleScenario)) {
                 this.scheduleScenario = savedScheduleScenario;
             }
+
+            const savedIsSeaServer = localStorage.getItem('pullCalc_isSeaServer');
+            if (savedIsSeaServer !== null) {
+                this.isSeaServer = savedIsSeaServer === 'true';
+            }
         } catch (e) {
             console.warn('Failed to load saved data:', e);
         }
@@ -531,6 +602,7 @@ class PullSimulator {
             localStorage.setItem('pullCalc_pity', JSON.stringify(this.pity));
             localStorage.setItem('pullCalc_targets', JSON.stringify(this.targets));
             localStorage.setItem('pullCalc_scheduleScenario', this.scheduleScenario);
+            localStorage.setItem('pullCalc_isSeaServer', this.isSeaServer.toString());
         } catch (e) {
             console.warn('Failed to save data:', e);
         }
@@ -772,6 +844,44 @@ class PullSimulator {
         this.recalculate();
     }
 
+    handleServerChange() {
+        const seaServerEl = document.getElementById('inputSeaServer');
+        if (!seaServerEl) return;
+
+        const newValue = seaServerEl.checked;
+
+        // Confirm with user before changing
+        const confirmMessage = this.lang === 'kr'
+            ? '서버 설정을 변경하면 현재 계획/목표가 초기화됩니다. 계속하시겠습니까?'
+            : this.lang === 'jp'
+                ? 'サーバー設定を変更すると、現在の計画/目標がリセットされます。続けますか？'
+                : 'Changing server settings will reset your current plan/targets. Continue?';
+
+        if (!confirm(confirmMessage)) {
+            // User cancelled - revert checkbox state
+            seaServerEl.checked = !newValue;
+            return;
+        }
+
+        // User confirmed - apply changes
+        this.isSeaServer = newValue;
+
+        // Apply server delay to data
+        applyServerDelayToData(this.isSeaServer);
+
+        // Reset targets
+        this.targets = [];
+
+        // Save data
+        this.saveData();
+
+        // Rebuild schedule and recalculate
+        this.buildSchedule();
+        this.recalculate();
+        this.renderPlanList();
+    }
+
+
     handleScheduleScenarioChange() {
         const newValue = document.getElementById('inputScheduleScenario')?.value || '3weeks';
         console.log('[ScheduleScenario] Changed to:', newValue);
@@ -877,25 +987,41 @@ class PullSimulator {
         const scheduleScenarioLabel = this.t('scheduleScenario');
         const scheduleNoticeText = this.t('scheduleNotice');
         const scenarioTooltip = this.t('tooltipScheduleScenario');
+        const seaServerLabel = this.t('labelSeaServer');
+        const seaServerTooltip = this.t('tooltipSeaServer');
 
         const headerHtml = `
             <div class="schedule-notice schedule-notice--in-timeline">
                 <p class="notice-text" id="scheduleNotice">${scheduleNoticeText}</p>
-                <div class="input-group schedule-scenario-inline">
-                    <div class="schedule-scenario-group">
-                        <label class="input-label">
-                            <span id="labelScheduleScenario">${scheduleScenarioLabel}</span>
-                            <span class="tooltip-icon" data-i18n-tooltip="tooltipScheduleScenario" data-tooltip="${scenarioTooltip}">
+                <div class="schedule-controls-wrapper">
+                    <div class="input-group schedule-scenario-inline">
+                        <div class="schedule-scenario-group">
+                            <label class="input-label">
+                                <span id="labelScheduleScenario">${scheduleScenarioLabel}</span>
+                                <span class="tooltip-icon" data-i18n-tooltip="tooltipScheduleScenario" data-tooltip="${scenarioTooltip}">
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1" fill="rgba(255,255,255,0.05)"></circle>
+                                        <path d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.3"></path>
+                                    </svg>
+                                </span>
+                            </label>
+                            <select id="inputScheduleScenario" class="modal-input modal-input--auto">
+                                <option value="3weeks" id="option3Weeks">${this.t('scheduleScenario3Weeks')}</option>
+                                <option value="2weeks" id="option2Weeks">${this.t('scheduleScenario2Weeks')}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="sea-server-checkbox-wrapper">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="inputSeaServer">
+                            <span id="labelSeaServer">${seaServerLabel}</span>
+                            <span class="tooltip-icon" data-i18n-tooltip="tooltipSeaServer" data-tooltip="${seaServerTooltip}">
                                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1" fill="rgba(255,255,255,0.05)"></circle>
                                     <path d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.3"></path>
                                 </svg>
                             </span>
                         </label>
-                        <select id="inputScheduleScenario" class="modal-input modal-input--auto">
-                            <option value="3weeks" id="option3Weeks">${this.t('scheduleScenario3Weeks')}</option>
-                            <option value="2weeks" id="option2Weeks">${this.t('scheduleScenario2Weeks')}</option>
-                        </select>
                     </div>
                 </div>
             </div>
@@ -933,6 +1059,13 @@ class PullSimulator {
         if (scheduleScenarioEl) {
             scheduleScenarioEl.value = this.scheduleScenario || '3weeks';
             scheduleScenarioEl.addEventListener('change', () => this.handleScheduleScenarioChange());
+        }
+
+        // Re-bind SEA Server checkbox (it was re-created by innerHTML replacement)
+        const seaServerEl = container.querySelector('#inputSeaServer');
+        if (seaServerEl) {
+            seaServerEl.checked = this.isSeaServer;
+            seaServerEl.addEventListener('change', () => this.handleServerChange());
         }
 
         // Timezone selector removed - now using fixed KST timezone

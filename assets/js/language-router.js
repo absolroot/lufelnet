@@ -4,10 +4,10 @@ class LanguageRouter {
         try {
             // 즉시 리다이렉트 처리
             await this.handleImmediateRedirect();
-            
+
             // 첫 방문자의 경우 IP 기반 언어 감지
             await this.initializeLanguageDetection();
-            
+
             await this.handleLanguageRouting();
             await this.setupLanguageRedirection();
         } catch (error) {
@@ -24,11 +24,11 @@ class LanguageRouter {
         const hasLanguageDetected = localStorage.getItem('languageDetected');
         const urlParams = new URLSearchParams(window.location.search);
         const hasUrlLang = urlParams.get('lang');
-        
+
         if (!hasLanguagePreference && !hasLanguageDetected && !hasUrlLang) {
             //console.log('👋 First-time visitor detected, initializing language detection...');
             const detectedLang = await this.detectLanguageByIP();
-            
+
             // 감지된 언어로 자동 리다이렉트
             if (detectedLang) {
                 const newUrl = new URL(window.location);
@@ -50,33 +50,33 @@ class LanguageRouter {
     static handleImmediateRedirect() {
         const fullUrl = window.location.href;
         const path = window.location.pathname;
-        
+
         // /kr/, /en/, /jp/ 경로를 즉시 리다이렉트
         const langPrefixMatch = path.match(/^\/(kr|en|jp|cn)(\/.*)?$/);
         if (langPrefixMatch) {
             const [, langPrefix, remainingPath] = langPrefixMatch;
             let newPath = remainingPath || '/';
-            
+
             // 특별한 경로 매핑 처리
             const pathMappings = {
                 '/character/character.html': '/character.html',
                 '/tactic/tactic-share.html': '/tactic/tactic-share.html'
             };
-            
+
             if (pathMappings[newPath]) {
                 newPath = pathMappings[newPath];
             }
-            
+
             // URL 전체를 문자열로 처리
             let newUrl = fullUrl;
-            
+
             // 경로 부분 교체
             const oldPathPattern = new RegExp(`^(https?://[^/]+)/(kr|en|jp|cn)(/.*)?`);
             const match = newUrl.match(oldPathPattern);
             if (match) {
                 const [, protocol, , remainingPathFromUrl] = match;
                 newUrl = newUrl.replace(oldPathPattern, `${protocol}${newPath}`);
-                
+
                 // lang 파라미터 처리
                 if (newUrl.includes('?')) {
                     if (newUrl.includes('lang=')) {
@@ -90,7 +90,7 @@ class LanguageRouter {
                     // 쿼리 파라미터가 없는 경우
                     newUrl = newUrl + `?lang=${langPrefix}`;
                 }
-                
+
                 // 즉시 리다이렉트
                 //console.log('Redirecting from:', fullUrl);
                 //console.log('Redirecting to:', newUrl);
@@ -135,27 +135,27 @@ class LanguageRouter {
     static async detectLanguageByIP() {
         try {
             //console.log('🌍 Detecting user location for language setting...');
-            
+
             // 여러 IP 지역 감지 API를 시도 (폴백 지원)
             const apis = [
                 'https://ipapi.co/json/',
                 'https://ipinfo.io/json',
                 'https://api.ipgeolocation.io/ipgeo?apiKey=demo'
             ];
-            
+
             let locationData = null;
-            
+
             for (const api of apis) {
                 try {
                     const controller = new AbortController();
                     const timeoutId = setTimeout(() => controller.abort(), 3000);
-                    
+
                     const response = await fetch(api, {
                         signal: controller.signal
                     });
-                    
+
                     clearTimeout(timeoutId);
-                    
+
                     if (response.ok) {
                         locationData = await response.json();
                         break;
@@ -165,20 +165,20 @@ class LanguageRouter {
                     continue;
                 }
             }
-            
+
             if (!locationData) {
                 throw new Error('All IP geolocation APIs failed');
             }
-            
+
             // 다양한 API 응답 형식 처리
-            const countryCode = locationData.country_code || 
-                               locationData.country || 
-                               locationData.countryCode;
-            
+            const countryCode = locationData.country_code ||
+                locationData.country ||
+                locationData.countryCode;
+
             //console.log('🌍 Detected country:', countryCode);
-            
+
             let detectedLang = 'en'; // 기본값을 영어로 변경
-            
+
             // 국가 코드에 따른 언어 설정
             if (countryCode === 'KR') {
                 detectedLang = 'kr';
@@ -190,23 +190,23 @@ class LanguageRouter {
                 detectedLang = 'en';
                 //console.log('🌎 International user detected, setting English');
             }
-            
+
             // 자동 감지된 언어를 로컬 스토리지에 저장
             localStorage.setItem('preferredLanguage', detectedLang);
             localStorage.setItem('languageDetected', 'true');
             localStorage.setItem('detectedCountry', countryCode);
-            
+
             //console.log('✅ Auto-detected language saved:', detectedLang);
-            
+
             return detectedLang;
-            
+
         } catch (error) {
             //console.log('❌ Failed to detect language by IP:', error.message);
-            
+
             // IP 감지 실패 시 브라우저 언어로 폴백
             const browserLang = navigator.language.toLowerCase();
             let fallbackLang = 'en'; // 기본값을 영어로 변경
-            
+
             if (browserLang.startsWith('ko')) {
                 fallbackLang = 'kr';
                 //console.log('🇰🇷 Fallback to Korean (browser language)');
@@ -217,13 +217,13 @@ class LanguageRouter {
                 fallbackLang = 'en';
                 //console.log('🌎 Fallback to English (browser language)');
             }
-            
+
             localStorage.setItem('preferredLanguage', fallbackLang);
             localStorage.setItem('languageDetected', 'true');
             localStorage.setItem('detectionMethod', 'browser');
-            
+
             //console.log('✅ Fallback language saved:', fallbackLang);
-            
+
             return fallbackLang;
         }
     }
@@ -234,27 +234,27 @@ class LanguageRouter {
         if (window.routingInProgress) {
             return;
         }
-        
+
         const currentLang = this.getCurrentLanguage();
         const path = window.location.pathname;
         const search = window.location.search;
-        
+
         // 기존 언어 디렉토리 구조 (/kr/, /en/, /jp/)를 새로운 방식으로 리다이렉션
         const langPrefixMatch = path.match(/^\/(kr|en|jp|cn)(\/.*)?$/);
         if (langPrefixMatch) {
             const [, langPrefix, remainingPath] = langPrefixMatch;
             let newPath = remainingPath || '/';
-            
+
             // 특별한 경로 매핑 처리
             const pathMappings = {
                 '/character/character.html': '/character.html',
                 '/tactic/tactic-share.html': '/tactic/tactic-share.html'
             };
-            
+
             if (pathMappings[newPath]) {
                 newPath = pathMappings[newPath];
             }
-            
+
             // 쿼리 파라미터 처리 - 더 안전한 방법 사용
             let newSearch = search;
             if (search) {
@@ -270,7 +270,7 @@ class LanguageRouter {
                 // 쿼리 파라미터가 없는 경우
                 newSearch = `?lang=${langPrefix}`;
             }
-            
+
             // 현재 URL이 이미 올바른 형식이 아닌 경우에만 리다이렉션
             if (path !== newPath || search !== newSearch) {
                 window.routingInProgress = true;
@@ -279,7 +279,7 @@ class LanguageRouter {
                 return;
             }
         }
-        
+
         // URL 파라미터가 없는 경우 기본 언어 추가 (하지만 이미 올바른 페이지에 있다면 리다이렉션하지 않음)
         if (!search.includes('lang=') && !langPrefixMatch) {
             // 현재 페이지가 이미 올바른 페이지인지 확인
@@ -296,9 +296,9 @@ class LanguageRouter {
     // 언어 변경 시 리다이렉션 설정
     static setupLanguageRedirection() {
         // Navigation 클래스의 언어 선택 함수 오버라이드
-        window.addEventListener('DOMContentLoaded', function() {
+        window.addEventListener('DOMContentLoaded', function () {
             if (window.Navigation) {
-                window.Navigation.selectLanguage = async function(lang, event) {
+                window.Navigation.selectLanguage = async function (lang, event) {
                     if (event) {
                         event.preventDefault();
                         event.stopPropagation();
@@ -310,27 +310,27 @@ class LanguageRouter {
                     if (optionsContainer) {
                         optionsContainer.classList.remove('active');
                     }
-                    
+
                     // 로컬 스토리지에 언어 저장
                     localStorage.setItem('preferredLanguage', lang);
-                    
+
                     // 현재 경로 분석
                     let currentPath = window.location.pathname;
                     let currentParams = new URLSearchParams(window.location.search);
-                    
+
                     // 기존 언어 디렉토리 경로를 루트로 변경
                     const langPrefixMatch = currentPath.match(/^\/(kr|en|jp|cn)(\/.*)?$/);
                     if (langPrefixMatch) {
                         const [, , remainingPath] = langPrefixMatch;
                         currentPath = remainingPath || '/';
                     }
-                    
+
                     // 언어 파라미터 설정
                     currentParams.set('lang', lang);
-                    
+
                     // 새로운 URL 생성
                     const newUrl = `${currentPath}?${currentParams.toString()}`;
-                    
+
                     // 페이지 이동
                     window.location.href = newUrl;
                 };
@@ -344,15 +344,15 @@ class LanguageRouter {
         if (window.location.search.includes('lang=')) {
             return true;
         }
-        
+
         // 특정 페이지들은 직접 접근 허용 (리다이렉션 없이)
         const directAccessPages = ['/persona/', '/revelations/', '/character/', '/about/'];
         const normalizedPath = path.endsWith('/') ? path : path + '/';
-        
+
         if (directAccessPages.includes(normalizedPath)) {
             return true;
         }
-        
+
         return false;
     }
 
@@ -360,7 +360,7 @@ class LanguageRouter {
     static checkPageAvailability() {
         const currentLang = this.getCurrentLanguage();
         const path = window.location.pathname;
-        
+
         // 각 언어별 사용 가능한 페이지 정의
         const availablePages = {
             kr: ['/', '/character', '/persona', '/revelations', '/tactic', '/tier', '/about', '/pay-calc', '/defense-calc', '/critical-calc'],
@@ -371,7 +371,7 @@ class LanguageRouter {
 
         const currentPages = availablePages[currentLang] || availablePages.kr;
         const basePath = path.split('?')[0].replace(/\/$/, '') || '/';
-        
+
         // 현재 페이지가 해당 언어에서 사용 가능한지 확인
         if (!currentPages.includes(basePath) && currentLang !== 'kr') {
             // 사용할 수 없는 페이지인 경우 메인 페이지로 리다이렉션 (무한 루프 방지)
@@ -380,7 +380,7 @@ class LanguageRouter {
                 return false;
             }
         }
-        
+
         return true;
     }
 
@@ -388,7 +388,7 @@ class LanguageRouter {
     static loadLanguageContent(contentId, langTexts) {
         const currentLang = this.getCurrentLanguage();
         const texts = langTexts[currentLang] || langTexts.kr;
-        
+
         const element = document.getElementById(contentId);
         if (element && texts) {
             // 텍스트 내용 업데이트
@@ -431,12 +431,12 @@ LanguageRouter.handleImmediateRedirect();
 if (typeof window !== 'undefined') {
     // 즉시 초기화 시도
     LanguageRouter.init();
-    
+
     // DOMContentLoaded에서도 초기화 (이중 보장)
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', () => LanguageRouter.init());
     }
-    
+
     // 페이지 완전 로드 후에도 한 번 더 확인
     window.addEventListener('load', () => {
         // 첫 방문자이고 언어 설정이 없는 경우 강제 감지
@@ -444,7 +444,7 @@ if (typeof window !== 'undefined') {
         const hasLanguageDetected = localStorage.getItem('languageDetected');
         const urlParams = new URLSearchParams(window.location.search);
         const hasUrlLang = urlParams.get('lang');
-        
+
         if (!hasLanguagePreference && !hasLanguageDetected && !hasUrlLang) {
             //console.log('🔄 Forcing language detection on page load...');
             LanguageRouter.detectLanguageByIP().then(detectedLang => {
@@ -457,19 +457,31 @@ if (typeof window !== 'undefined') {
             });
         }
     });
+
+    // Safety Net: Ensure i18n-loading is removed even if i18n fails
+    // This prevents pages from being stuck in a skeleton state
+    window.addEventListener('load', () => {
+        // Short timeout to allow normal loading to finish
+        setTimeout(() => {
+            if (document.documentElement.classList.contains('i18n-loading')) {
+                console.warn('⚠️ i18n-loading class was not removed by i18n adapter. Force removing it.');
+                document.documentElement.classList.remove('i18n-loading');
+            }
+        }, 1000); // 1 second safety timeout
+    });
 }
 
 // 전역 함수로 현재 언어 제공
-window.getCurrentLanguage = LanguageRouter.getCurrentLanguage.bind(LanguageRouter); 
+window.getCurrentLanguage = LanguageRouter.getCurrentLanguage.bind(LanguageRouter);
 
 // LanguageRouter를 전역에서 접근 가능하도록 설정
 window.LanguageRouter = LanguageRouter;
 
 // 쉬운 디버깅을 위한 전역 함수들
-window.debugLanguage = function() {
+window.debugLanguage = function () {
     //console.log('🔍 Language Debug Info:');
     //console.table(LanguageRouter.getLanguageDebugInfo());
-    
+
     // IP 감지 테스트
     //console.log('🌍 Testing IP detection...');
     LanguageRouter.detectLanguageByIP().then(lang => {
@@ -479,19 +491,19 @@ window.debugLanguage = function() {
     });
 };
 
-window.resetLanguage = function() {
+window.resetLanguage = function () {
     LanguageRouter.resetLanguageSettings();
 };
 
-window.testIPDetection = async function() {
+window.testIPDetection = async function () {
     //console.log('🧪 Testing IP Detection APIs...');
-    
+
     const apis = [
         'https://ipapi.co/json/',
         'https://ipinfo.io/json',
         'https://api.ipgeolocation.io/ipgeo?apiKey=demo'
     ];
-    
+
     for (const api of apis) {
         try {
             //console.log(`Testing ${api}...`);

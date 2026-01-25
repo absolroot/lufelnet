@@ -7,10 +7,12 @@ gem "jekyll", "~> 4.3.2"
 gem "json"
 gem "mini_magick"
 
+group :jekyll_plugins do
 gem "jekyll-feed", "~> 0.12"
 gem "jekyll-seo-tag", "~> 2.7"
 gem "jekyll-sitemap"
 gem "jekyll-redirect-from"
+end
 
 gem "csv"
 gem "base64"

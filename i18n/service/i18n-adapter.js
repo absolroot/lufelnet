@@ -75,6 +75,7 @@
             console.error('[i18n-adapter] I18nService not available');
             window.I18N = { kr: {}, en: {}, jp: {} };
             window.MUST_READ_CONTENT = { kr: '', en: '', jp: '' };
+            document.documentElement.classList.remove('i18n-loading');
             return false;
         }
 

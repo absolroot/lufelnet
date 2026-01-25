@@ -9,23 +9,20 @@ title: 페르소나5 더 팬텀 X 루페르넷 - 티어 메이커
 description: 본인만의 P5X 티어를 만들어 보세요.
 ---
 
-<link
-rel="stylesheet"
-href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 
-<script type="module" src="tiers.js?v=${APP_VERSION}"></script>
+<script type="module" src="{{ site.baseurl }}/apps/tier/tiers.js?v=${APP_VERSION}"></script>
 
- <!-- Main content -->
+<!-- Main content -->
 <div class="main-wrapper">
     <!-- 언어 안내 메시지 -->
     <div id="language-notice" class="language-notice" style="display: none;">
         <p id="language-notice-text"></p>
     </div>
-    
+
     <!-- Navigation path -->
     <div class="navigation-path">
-        <script>document.write(`<a href="../../?v=${APP_VERSION}" id="nav-home">홈</a>`);</script>
+        <script>document.write(`<a href="{{ site.baseurl }}/?v=${APP_VERSION}" id="nav-home">홈</a>`);</script>
         <span class="separator">/</span>
         <span class="current-page" id="nav-current">티어 메이커</span>
     </div>
@@ -43,7 +40,7 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
                 <img src="{{ site.baseurl }}/assets/img/character-cards/reset.png" alt="초기화" />
             </button>
         </div>
-        
+
         <div class="filter-content" style="display: none;">
             <!-- Element filter -->
             <div class="filter-group">
@@ -106,7 +103,7 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
                     </label>
                 </div>
             </div>
-            
+
             <!-- Position filter -->
             <div class="filter-group">
                 <h3 id="filter-position-title">직업</h3>
@@ -141,7 +138,7 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
                     </label>
                 </div>
             </div>
-            
+
             <!-- Rarity filter -->
             <div class="filter-group">
                 <h3 id="filter-rarity-title">유형</h3>
@@ -196,34 +193,31 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
             <i class="bi bi-plus-circle"></i> 새 티어 추가
         </button>
     </div>
-    <div
-    class="tiers-container"
-    data-placeholder="Click on the title to add a new tier."
-    ></div>
+    <div class="tiers-container" data-placeholder="Click on the title to add a new tier."></div>
 
     <div class="cards container">
     </div>
 
     <dialog class="settings-modal">
-    <section>
-        <div class="colors"></div>
+        <section>
+            <div class="colors"></div>
 
-        <textarea class="tier-label" placeholder="Tier label"></textarea>
+            <textarea class="tier-label" placeholder="Tier label"></textarea>
 
-        <button id="delete">Delete Row</button>
-        <button id="clear">Clear Row</button>
-        <button id="prepend">Add a Row Above</button>
-        <button id="append">Add a Row Below</button>
-    </section>
+            <button id="delete">Delete Row</button>
+            <button id="clear">Clear Row</button>
+            <button id="prepend">Add a Row Above</button>
+            <button id="append">Add a Row Below</button>
+        </section>
     </dialog>
-    
+
 </div>
 
 <script>
     // 다국어 지원 함수
     async function updateLanguageContent() {
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
-        
+
         // Jekyll 다국어 데이터 사용
         const i18nData = {
             kr: {
@@ -260,10 +254,10 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
                 add_tier_button: "{{ site.data.i18n.jp.add_tier_button | default: '新規ティア追加' }}"
             }
         };
-        
+
         const data = i18nData[currentLang];
         if (!data) return;
-        
+
         // 언어 안내 메시지
         if (currentLang !== 'kr') {
             const notice = document.getElementById('language-notice');
@@ -273,23 +267,23 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
                 notice.style.display = 'block';
             }
         }
-        
+
         // 네비게이션 및 제목 업데이트
         const navHome = document.getElementById('nav-home');
         const navCurrent = document.getElementById('nav-current');
         const pageTitle = document.getElementById('page-title');
-        
+
         if (navHome) navHome.textContent = data.nav_home;
         if (navCurrent) navCurrent.textContent = data.nav_current;
         if (pageTitle) pageTitle.textContent = data.page_title;
-        
+
         // 필터 제목 업데이트
         const filterElementTitle = document.getElementById('filter-element-title');
         const filterPositionTitle = document.getElementById('filter-position-title');
         const filterRarityTitle = document.getElementById('filter-rarity-title');
         const filterTagTitle = document.getElementById('filter-tag-title');
         const addTierButton = document.getElementById('add-tier-button');
-        
+
         if (filterElementTitle) filterElementTitle.textContent = data.filter_element;
         if (filterPositionTitle) filterPositionTitle.textContent = data.filter_position;
         if (filterRarityTitle) filterRarityTitle.textContent = data.filter_rarity;
@@ -299,15 +293,15 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
             const buttonText = data.add_tier_button;
             addTierButton.innerHTML = `<i class="bi bi-plus-circle"></i> ${buttonText}`;
         }
-        
+
         // 태그 필터 번역
         await updateTagFilterTranslations(currentLang);
     }
-    
+
     // 태그 필터 번역 함수
     async function updateTagFilterTranslations(currentLang) {
         if (currentLang === 'kr') return;
-        
+
         const tagTranslations = {
             'en': {
                 'TECHNICAL': 'TECHNICAL',
@@ -336,10 +330,10 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
                 '동결': '凍結'
             }
         };
-        
+
         const translations = tagTranslations[currentLang];
         if (!translations) return;
-        
+
         // 태그 필터 옵션들의 텍스트 업데이트
         const tagOptions = document.querySelectorAll('.filter-group:last-child .filter-options label span');
         tagOptions.forEach(span => {
@@ -348,7 +342,7 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
                 span.textContent = translations[originalText];
             }
         });
-        
+
         // 영어/일본어일 때 태그 필터 숨기기
         if (currentLang === 'en' || currentLang === 'jp') {
             const tagFilterGroup = document.querySelector('.filter-group:last-child');
@@ -357,69 +351,69 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
             }
         }
     }
-    
+
     // 스크립트에서 데이터 추출하는 함수
     function extractDataFromScript(scriptText) {
         // characterData와 characterList를 추출하는 정규식
         const characterDataMatch = scriptText.match(/const characterData = ({[\s\S]*?});/);
         const characterListMatch = scriptText.match(/const characterList = ({[\s\S]*?});/);
-        
+
         if (!characterDataMatch || !characterListMatch) {
             throw new Error('Failed to extract data from script');
         }
-        
+
         // JSON으로 파싱하기 위해 Function 생성자 사용
         const characterData = new Function('return ' + characterDataMatch[1])();
         const characterList = new Function('return ' + characterListMatch[1])();
-        
+
         return { characterData, characterList };
     }
 
     // 언어별 캐릭터 데이터 로딩 및 병합
     async function loadCharacterData() {
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
-        
+
         try {
             // 1. 한국어 데이터 로딩 (기본 데이터)
             const krResponse = await fetch(`/data/kr/characters/characters.js?v=${APP_VERSION}`);
             if (!krResponse.ok) {
                 throw new Error('Failed to load KR character data');
             }
-            
+
             const krScriptText = await krResponse.text();
             const { characterData: krCharacterData, characterList: krCharacterList } = extractDataFromScript(krScriptText);
-            
+
             //console.log('KR character count:', Object.keys(krCharacterData).length);
             //console.log('KR character list:', krCharacterList);
-            
+
             // 2. 언어별 데이터 로딩 (한국어가 아닌 경우)
             if (currentLang !== 'kr') {
                 //console.log(`🔍 Attempting to load ${currentLang} data...`);
                 const langUrl = `/data/${currentLang}/characters/characters.js?v=${APP_VERSION}`;
                 //console.log('Language data URL:', langUrl);
-                
+
                 const langResponse = await fetch(langUrl);
                 //console.log('Language data response status:', langResponse.status);
-                
+
                 if (langResponse.ok) {
                     //console.log('✅ Language data loaded successfully');
                     const langScriptText = await langResponse.text();
                     //console.log('Language script text length:', langScriptText.length);
-                    
+
                     const { characterData: langCharacterData, characterList: langCharacterList } = extractDataFromScript(langScriptText);
-                    
+
                     //console.log(`${currentLang.toUpperCase()} character count:`, Object.keys(langCharacterData).length);
                     //console.log(`${currentLang.toUpperCase()} character list:`, langCharacterList);
-                    
+
                     // 3. 데이터 병합
                     //console.log('🔄 Starting data merge...');
                     const mergedData = mergeCharacterData(krCharacterData, langCharacterData);
                     //console.log('✅ Data merge completed');
-                    
+
                     // 전역 변수 설정
                     window.characterData = mergedData;
                     window.characterList = langCharacterList;
-                    
+
                 } else {
                     //console.log('❌ Language data not found, using KR data. Status:', langResponse.status);
                     // 언어별 데이터가 없으면 한국어 데이터 사용
@@ -432,29 +426,29 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
                 window.characterData = krCharacterData;
                 window.characterList = krCharacterList;
             }
-            
+
             return true;
-            
+
         } catch (error) {
             console.error('Failed to load character data:', error);
             return false;
         }
     }
-    
+
     // 캐릭터 데이터 병합 함수
     function mergeCharacterData(krData, langData) {
         const mergedData = {};
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
-        
+
         // 언어별 데이터에 있는 캐릭터만 포함
         for (const characterKey in langData) {
             if (krData[characterKey]) {
                 // 한국어 데이터를 기본으로 완전히 복사
                 mergedData[characterKey] = { ...krData[characterKey] };
-                
+
                 const langChar = langData[characterKey];
                 const krChar = krData[characterKey];
-                
+
                 // name 처리: 현재 언어에 따라 적절한 이름 사용
                 if (currentLang === 'en') {
                     if (krChar.name_en) {
@@ -469,7 +463,7 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
                         mergedData[characterKey].name = langChar.name;
                     }
                 }
-                
+
                 // 다른 필드들은 언어별 데이터에 값이 있고 빈 문자열이 아닐 때만 덮어쓰기
                 if (langChar.role && langChar.role !== '') {
                     mergedData[characterKey].role = langChar.role;
@@ -482,14 +476,14 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
                 }
             }
         }
-        
+
         return mergedData;
     }
-    
+
     // 언어별 SEO 설정 함수
     function updateSEOContent() {
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
-        
+
         const seoData = {
             'kr': {
                 title: '티어 메이커 - 페르소나5 더 팬텀 X 루페르넷',
@@ -504,22 +498,22 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
                 description: 'ペルソナ5 ザ・ファントム X ティアメーカー。自分だけのP5Xティアを作ってみましょう。'
             }
         };
-        
+
         const currentSEO = seoData[currentLang] || seoData['kr'];
-        
+
         // 타이틀 업데이트
         document.title = currentSEO.title;
-        
+
         // 메타 태그 업데이트
         const metaDescription = document.querySelector('meta[name="description"]');
         const ogTitle = document.querySelector('meta[property="og:title"]');
         const ogDescription = document.querySelector('meta[property="og:description"]');
-        
+
         if (metaDescription) metaDescription.setAttribute('content', currentSEO.description);
         if (ogTitle) ogTitle.setAttribute('content', currentSEO.title);
         if (ogDescription) ogDescription.setAttribute('content', currentSEO.description);
     }
-    
+
     // 중복 실행 방지를 위한 플래그
     let isInitializing = false;
     let isInitialized = false;
@@ -530,10 +524,10 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
             //console.log('initializePageContent already running or completed');
             return;
         }
-        
+
         isInitializing = true;
         //console.log('=== STARTING TIER MAKER PAGE INITIALIZATION ===');
-        
+
         // 캐릭터 데이터 로딩
         const dataLoaded = await loadCharacterData();
         if (!dataLoaded || typeof window.characterData === 'undefined') {
@@ -541,34 +535,34 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
             isInitializing = false;
             return;
         }
-        
+
         //console.log('Character data loaded successfully');
         //console.log('Available characters:', Object.keys(window.characterData).length);
         //console.log('Character list:', window.characterList);
-        
+
         // 티어 메이커 초기화 (tiers.js에서 정의된 함수)
         if (typeof window.initTierMaker === 'function') {
             window.initTierMaker();
         } else {
             console.error('initTierMaker function not found');
         }
-        
+
         // 초기화 완료
         isInitializing = false;
         isInitialized = true;
         //console.log('=== TIER MAKER PAGE INITIALIZATION COMPLETED ===');
     }
-    
+
     // 페이지 로드 시 초기화
     document.addEventListener('DOMContentLoaded', async () => {
         //console.log('DOMContentLoaded event fired');
-        
+
         // 기본 초기화 작업
         Navigation.load('tier-maker');
-        
+
         // SEO 설정 업데이트
         updateSEOContent();
-        
+
         // 언어 라우터 초기화 및 콘텐츠 업데이트
         if (typeof LanguageRouter !== 'undefined') {
             // 언어 파라미터 체크
@@ -582,7 +576,7 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
                 const currentUrl = new URL(window.location);
                 currentUrl.searchParams.set('lang', 'kr');
                 window.history.replaceState({}, '', currentUrl);
-                
+
                 await updateLanguageContent();
                 await initializePageContent();
             }
@@ -591,7 +585,7 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
             await initializePageContent();
         }
     });
-    
+
     // 추가 안전장치
     window.addEventListener('load', async () => {
         console.log('Window load event fired');

@@ -11,8 +11,8 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 
-<script type="module" src="../position-tiers.js?v=${APP_VERSION}"></script>
-<script type="module" src="../position-tier-qa.js?v=${APP_VERSION}"></script>
+<script type="module" src="{{ site.baseurl }}/apps/tier/position-tiers.js?v=${APP_VERSION}"></script>
+<script type="module" src="{{ site.baseurl }}/apps/tier/position-tier-qa.js?v=${APP_VERSION}"></script>
 
 <!-- Main content -->
 <div class="main-wrapper">
@@ -23,7 +23,7 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
 
     <!-- Navigation path -->
     <div class="navigation-path">
-        <script>document.write(`<a href="../../?v=${APP_VERSION}" id="nav-home">홈</a>`);</script>
+        <script>document.write(`<a href="{{ site.baseurl }}/?v=${APP_VERSION}" id="nav-home">홈</a>`);</script>
         <span class="separator">/</span>
         <span class="current-page" id="nav-current">티어 메이커</span>
     </div>
@@ -195,12 +195,14 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
     <!-- Tier Criteria Section (only shown in Tier List mode) -->
     <div id="tier-criteria-section" class="tier-criteria-section" style="display: none;">
         <!-- Disclaimer above Criteria -->
-        <div id="tier-disclaimer" class="tier-disclaimer" style="margin-bottom: 8px; padding: 0px 16px; font-size: 12px; color: rgba(255,255,255,0.8);">
+        <div id="tier-disclaimer" class="tier-disclaimer"
+            style="margin-bottom: 8px; padding: 0px 16px; font-size: 12px; color: rgba(255,255,255,0.8);">
             <p class="kr-text" style="font-weight: 700;">
                 주의: 본 티어는 주관적이며 참고 및 재미로만 봐주세요. 또한 P5X는 적의 속성 약점과 기믹에 따라 활용 가능한 파티가 크게 제한됩니다.
             </p>
             <p class="en-text" style="display:none; font-weight: 700;">
-                Note: This tier list is subjective; please use it for reference and entertainment only. In addition, in P5X, available parties can be heavily limited by enemy attribute weaknesses and mechanics.
+                Note: This tier list is subjective; please use it for reference and entertainment only. In addition, in
+                P5X, available parties can be heavily limited by enemy attribute weaknesses and mechanics.
             </p>
             <p class="jp-text" style="display:none; font-weight: 700;">
                 注意：本ティアリストは主観的なものであり、参考・娯楽目的でご覧ください。さらに、P5Xでは敵の属性弱点やギミックによって活用できるパーティが大きく制限される場合があります。
@@ -225,10 +227,13 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
             <div class="tier-criteria-text en-text" style="display: none;">
                 <ul>
                     <li>Assumes LV80, all skill levels, and all values are basically set except for Awareness.</li>
-                    <li>Written with competitive content in mind, tiers may continuously change with version updates.</li>
+                    <li>Written with competitive content in mind, tiers may continuously change with version updates.
+                    </li>
                     <li>Global servers may differ from KR tiers because characters are buffed.</li>
-                    <li>When some characters are labeled only as A1, it indicates that their operating mechanism or value changes significantly starting from A1, gaining versatility.</li>
-                    <li>J&C was created based solely on A1. J&C KR Tier is a tier with Mindscape Core(V4.7) effect applied in Korea servers.</li>
+                    <li>When some characters are labeled only as A1, it indicates that their operating mechanism or
+                        value changes significantly starting from A1, gaining versatility.</li>
+                    <li>J&C was created based solely on A1. J&C KR Tier is a tier with Mindscape Core(V4.7) effect
+                        applied in Korea servers.</li>
                 </ul>
             </div>
             <!-- Japanese -->
@@ -1033,7 +1038,7 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
             } else {
                 // 로더 지연 대비 재시도
                 setTimeout(() => {
-                    try { if (typeof window.setTierSource === 'function') window.setTierSource('global'); } catch (_) {}
+                    try { if (typeof window.setTierSource === 'function') window.setTierSource('global'); } catch (_) { }
                 }, 100);
             }
             btnGlobal.addEventListener('click', async () => {
@@ -1060,4 +1065,4 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
         }
     });
 </script>
-<script src="/tier/capture.js"></script>
+<script src="{{ site.baseurl }}/apps/tier/capture.js"></script>

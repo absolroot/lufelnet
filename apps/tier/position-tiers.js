@@ -22,10 +22,10 @@ const originalPositions = new Map();
 // 이미지와 wrapper에 클래스를 설정하는 공통 함수
 const applyCharacterClasses = (img, wrapper = null) => {
   if (!img || img.classList.contains('character-ritual-icon')) return;
-  
+
   // 이미지에 character-img 클래스 추가
   img.classList.add('character-img');
-  
+
   // rarity에 따라 이미지에 star4/star5 클래스 추가
   const rarity = parseInt(img.dataset.rarity, 10);
   if (rarity === 4) {
@@ -35,7 +35,7 @@ const applyCharacterClasses = (img, wrapper = null) => {
     img.classList.add('star5');
     img.classList.remove('star4');
   }
-  
+
   // wrapper가 있으면 wrapper에도 클래스 추가
   if (wrapper) {
     if (rarity === 4) {
@@ -84,13 +84,13 @@ const getCharacterContainer = (img) => {
 
 // 7개의 직업 포지션 정의
 const positions = [
-  { id: '지배', name: '', icon: '/assets/img/character-cards/직업_지배.png' },
-  { id: '반항', name: '', icon: '/assets/img/character-cards/직업_반항.png' },
-  { id: '우월', name: '', icon: '/assets/img/character-cards/직업_우월.png' },
-  { id: '굴복', name: '', icon: '/assets/img/character-cards/직업_굴복.png' },
-  { id: '방위', name: '', icon: '/assets/img/character-cards/직업_방위.png' },
-  { id: '구원', name: '', icon: '/assets/img/character-cards/직업_구원.png' },
-  { id: '해명', name: '', icon: '/assets/img/character-cards/직업_해명.png' }
+  { id: '지배', name: '', icon: `${BASE_URL}/assets/img/character-cards/직업_지배.png` },
+  { id: '반항', name: '', icon: `${BASE_URL}/assets/img/character-cards/직업_반항.png` },
+  { id: '우월', name: '', icon: `${BASE_URL}/assets/img/character-cards/직업_우월.png` },
+  { id: '굴복', name: '', icon: `${BASE_URL}/assets/img/character-cards/직업_굴복.png` },
+  { id: '방위', name: '', icon: `${BASE_URL}/assets/img/character-cards/직업_방위.png` },
+  { id: '구원', name: '', icon: `${BASE_URL}/assets/img/character-cards/직업_구원.png` },
+  { id: '해명', name: '', icon: `${BASE_URL}/assets/img/character-cards/직업_해명.png` }
 ];
 
 const resetTierImages = (tierRow) => {
@@ -103,7 +103,7 @@ const resetTierImages = (tierRow) => {
 const handleDeleteTier = () => {
   if (activeTier) {
     const isMobile = window.innerWidth <= 1200;
-    
+
     if (isMobile) {
       // Mobile layout: find and remove the entire mobile container
       const mobileContainer = activeTier.closest('.tier-mobile-container');
@@ -111,7 +111,7 @@ const handleDeleteTier = () => {
         // Move all images back to cards container
         const images = mobileContainer.querySelectorAll('img');
         images.forEach(img => cardsContainer.appendChild(img));
-        
+
         // Remove the entire mobile container
         mobileContainer.remove();
       }
@@ -120,19 +120,19 @@ const handleDeleteTier = () => {
       const tierLabelCell = activeTier;
       const allTierLabels = Array.from(positionTiersContainer.querySelectorAll('.tier-label-cell'));
       const currentTierIndex = allTierLabels.indexOf(tierLabelCell);
-      
+
       if (currentTierIndex >= 0) {
         // Calculate the positions of all elements in this tier row
         const elementsPerRow = 9; // 1 label + 7 positions + 1 settings
         const startPosition = (currentTierIndex + 1) * elementsPerRow; // +1 to account for header row
         const endPosition = startPosition + elementsPerRow;
-        
+
         // Get all elements in the container
         const allElements = Array.from(positionTiersContainer.children);
-        
+
         // Find all elements that belong to this tier row
         const tierRowElements = allElements.slice(startPosition, endPosition);
-        
+
         // Move all images from position cells back to cards container
         tierRowElements.forEach(element => {
           if (element && element.classList.contains('position-cell')) {
@@ -140,7 +140,7 @@ const handleDeleteTier = () => {
             images.forEach(img => cardsContainer.appendChild(img));
           }
         });
-        
+
         // Remove all elements of this tier row
         tierRowElements.forEach(element => {
           if (element) {
@@ -149,7 +149,7 @@ const handleDeleteTier = () => {
         });
       }
     }
-    
+
     settingsModal.close();
   }
 };
@@ -158,7 +158,7 @@ const handleClearTier = () => {
   if (activeTier) {
     // activeTier는 tierLabelCell이므로, 전체 티어 행의 모든 position-cell들을 찾아서 이미지 제거
     const tierLabelCell = activeTier;
-    
+
     // 같은 행의 모든 position-cell들을 찾기
     let nextElement = tierLabelCell.nextElementSibling;
     while (nextElement && !nextElement.classList.contains('tier-label-cell')) {
@@ -168,7 +168,7 @@ const handleClearTier = () => {
       }
       nextElement = nextElement.nextElementSibling;
     }
-    
+
     settingsModal.close();
   }
 };
@@ -178,26 +178,26 @@ const handlePrependTier = () => {
     // Find the index of the current tier row in the grid
     const allTierLabels = Array.from(positionTiersContainer.querySelectorAll('.tier-label-cell'));
     const currentTierIndex = allTierLabels.indexOf(activeTier);
-    
+
     if (currentTierIndex >= 0) {
       // Calculate the grid position (each tier row has 9 elements: 1 label + 7 positions + 1 settings)
       const elementsPerRow = 9;
       const insertPosition = (currentTierIndex + 1) * elementsPerRow; // +1 to account for header row
-      
+
       // Get all current elements
       const allElements = Array.from(positionTiersContainer.children);
-      
+
       // Create new tier row elements
       const tierColor = getTierColor("New");
       const isMobile = window.innerWidth <= 1200;
-      
+
       if (isMobile) {
         // For mobile, just create the mobile tier row normally
         createMobileTierRow("New", tierColor);
       } else {
         // For desktop, we need to insert elements at the correct positions
         const newElements = [];
-        
+
         // Create tier label cell
         const tierLabelCell = document.createElement("div");
         tierLabelCell.className = "tier-label-cell";
@@ -205,13 +205,13 @@ const handlePrependTier = () => {
         tierLabelCell.style.setProperty("--color", tierColor);
         tierLabelCell.innerHTML = `<span>New</span>`;
         newElements.push(tierLabelCell);
-        
+
         // Create position cells
         positions.forEach(position => {
           const positionCell = document.createElement("div");
           positionCell.className = "position-cell";
           positionCell.dataset.position = position.id;
-          
+
           // Add drag and drop event listeners
           positionCell.addEventListener("dragover", handleDragover);
           positionCell.addEventListener("drop", handleDrop);
@@ -223,10 +223,10 @@ const handlePrependTier = () => {
               highlightPositionMatch(draggedImage);
             }
           });
-          
+
           newElements.push(positionCell);
         });
-        
+
         // Create settings cell
         const settingsCell = document.createElement("div");
         settingsCell.className = "settings-cell";
@@ -235,14 +235,14 @@ const handlePrependTier = () => {
           <button class="moveup"><i class="bi bi-chevron-up"></i></button>
           <button class="movedown"><i class="bi bi-chevron-down"></i></button>
         `;
-        
+
         // Attach event listeners
         settingsCell.querySelector(".settings").addEventListener("click", () => handleSettingsClick(tierLabelCell));
         settingsCell.querySelector(".moveup").addEventListener("click", () => handleMoveTier(tierLabelCell, "up"));
         settingsCell.querySelector(".movedown").addEventListener("click", () => handleMoveTier(tierLabelCell, "down"));
-        
+
         newElements.push(settingsCell);
-        
+
         // Insert all new elements at the correct position
         const referenceElement = allElements[insertPosition];
         newElements.forEach(element => {
@@ -254,7 +254,7 @@ const handlePrependTier = () => {
         });
       }
     }
-    
+
     settingsModal.close();
   }
 };
@@ -264,26 +264,26 @@ const handleAppendTier = () => {
     // Find the index of the current tier row in the grid
     const allTierLabels = Array.from(positionTiersContainer.querySelectorAll('.tier-label-cell'));
     const currentTierIndex = allTierLabels.indexOf(activeTier);
-    
+
     if (currentTierIndex >= 0) {
       // Calculate the grid position (each tier row has 9 elements: 1 label + 7 positions + 1 settings)
       const elementsPerRow = 9;
       const insertPosition = (currentTierIndex + 2) * elementsPerRow; // +2 to insert after current row (+1 for header, +1 for after current)
-      
+
       // Get all current elements
       const allElements = Array.from(positionTiersContainer.children);
-      
+
       // Create new tier row elements
       const tierColor = getTierColor("New");
       const isMobile = window.innerWidth <= 1200;
-      
+
       if (isMobile) {
         // For mobile, just create the mobile tier row normally
         createMobileTierRow("New", tierColor);
       } else {
         // For desktop, we need to insert elements at the correct positions
         const newElements = [];
-        
+
         // Create tier label cell
         const tierLabelCell = document.createElement("div");
         tierLabelCell.className = "tier-label-cell";
@@ -291,13 +291,13 @@ const handleAppendTier = () => {
         tierLabelCell.style.setProperty("--color", tierColor);
         tierLabelCell.innerHTML = `<span>New</span>`;
         newElements.push(tierLabelCell);
-        
+
         // Create position cells
         positions.forEach(position => {
           const positionCell = document.createElement("div");
           positionCell.className = "position-cell";
           positionCell.dataset.position = position.id;
-          
+
           // Add drag and drop event listeners
           positionCell.addEventListener("dragover", handleDragover);
           positionCell.addEventListener("drop", handleDrop);
@@ -309,10 +309,10 @@ const handleAppendTier = () => {
               highlightPositionMatch(draggedImage);
             }
           });
-          
+
           newElements.push(positionCell);
         });
-        
+
         // Create settings cell
         const settingsCell = document.createElement("div");
         settingsCell.className = "settings-cell";
@@ -321,14 +321,14 @@ const handleAppendTier = () => {
           <button class="moveup"><i class="bi bi-chevron-up"></i></button>
           <button class="movedown"><i class="bi bi-chevron-down"></i></button>
         `;
-        
+
         // Attach event listeners
         settingsCell.querySelector(".settings").addEventListener("click", () => handleSettingsClick(tierLabelCell));
         settingsCell.querySelector(".moveup").addEventListener("click", () => handleMoveTier(tierLabelCell, "up"));
         settingsCell.querySelector(".movedown").addEventListener("click", () => handleMoveTier(tierLabelCell, "down"));
-        
+
         newElements.push(settingsCell);
-        
+
         // Insert all new elements at the correct position
         const referenceElement = allElements[insertPosition];
         newElements.forEach(element => {
@@ -340,7 +340,7 @@ const handleAppendTier = () => {
         });
       }
     }
-    
+
     settingsModal.close();
   }
 };
@@ -350,7 +350,7 @@ const handleSettingsClick = (tierLabelCell) => {
   if (isTierDataLoading || isTierListMode) {
     return;
   }
-  
+
   activeTier = tierLabelCell;
 
   // populate the textarea
@@ -369,9 +369,9 @@ const handleSettingsClick = (tierLabelCell) => {
 // Helper function to get the next tier label cell
 const getNextTierRow = (currentTierLabelCell) => {
   if (!currentTierLabelCell) return null;
-  
+
   const isMobile = window.innerWidth <= 1200;
-  
+
   if (isMobile) {
     // In mobile layout, find the next mobile container
     const currentContainer = currentTierLabelCell.closest('.tier-mobile-container');
@@ -399,9 +399,9 @@ const getTierRowFromElement = (tierLabelCell) => {
   if (!tierLabelCell || !tierLabelCell.classList.contains('tier-label-cell')) {
     return null;
   }
-  
+
   const isMobile = window.innerWidth <= 1200;
-  
+
   if (isMobile) {
     // In mobile layout, the tier container includes the label and positions container
     const mobileContainer = tierLabelCell.closest('.tier-mobile-container');
@@ -412,31 +412,31 @@ const getTierRowFromElement = (tierLabelCell) => {
     // Desktop layout: Get all elements from tier-label-cell until the next tier-label-cell
     const tierRowElements = [tierLabelCell];
     let currentElement = tierLabelCell.nextElementSibling;
-    
+
     while (currentElement && !currentElement.classList.contains('tier-label-cell')) {
       tierRowElements.push(currentElement);
       currentElement = currentElement.nextElementSibling;
     }
-    
+
     return tierRowElements;
   }
-  
+
   return null;
 };
 
 const handleMoveTier = (tierLabelCell, direction) => {
   const tierRowElements = getTierRowFromElement(tierLabelCell);
   if (!tierRowElements) return;
-  
-  const targetTierLabelCell = direction === "up" ? 
-    getPreviousTierRow(tierLabelCell) : 
+
+  const targetTierLabelCell = direction === "up" ?
+    getPreviousTierRow(tierLabelCell) :
     getNextTierRow(tierLabelCell);
-  
+
   if (targetTierLabelCell) {
     const targetElements = getTierRowFromElement(targetTierLabelCell);
     if (targetElements) {
       const insertPosition = direction === "up" ? targetElements[0] : targetElements[targetElements.length - 1].nextElementSibling;
-      
+
       // Move all elements of the tier row
       tierRowElements.forEach(element => {
         positionTiersContainer.insertBefore(element, insertPosition);
@@ -448,9 +448,9 @@ const handleMoveTier = (tierLabelCell, direction) => {
 // Helper function to get previous tier label cell
 const getPreviousTierRow = (tierLabelCell) => {
   if (!tierLabelCell) return null;
-  
+
   const isMobile = window.innerWidth <= 1200;
-  
+
   if (isMobile) {
     // In mobile layout, find the previous mobile container
     const currentContainer = tierLabelCell.closest('.tier-mobile-container');
@@ -478,31 +478,31 @@ let currentLayout = null;
 const handleResponsiveLayout = () => {
   const isMobile = window.innerWidth <= 1200;
   const newLayout = isMobile ? 'mobile' : 'desktop';
-  
+
   if (currentLayout !== newLayout) {
     //console.log(`Layout changed to: ${newLayout}`);
     currentLayout = newLayout;
-    
+
     // Store current tier data
     const tierData = [];
     const tierLabelCells = document.querySelectorAll('.tier-label-cell');
-    
+
     tierLabelCells.forEach(tierLabelCell => {
       const tierLabel = tierLabelCell.querySelector('span').textContent;
       const tierColor = getComputedStyle(tierLabelCell).getPropertyValue('--color');
-      
+
       const positionData = {};
-      
+
       // Find position cells for this tier
-      const positionCells = isMobile && currentLayout === 'mobile' 
+      const positionCells = isMobile && currentLayout === 'mobile'
         ? tierLabelCell.closest('.tier-mobile-container')?.querySelectorAll('.position-cell') || []
         : document.querySelectorAll('.position-cell');
-        
+
       positions.forEach(position => {
-        const positionCell = Array.from(positionCells).find(cell => 
+        const positionCell = Array.from(positionCells).find(cell =>
           cell.dataset.position === position.id
         );
-        
+
         if (positionCell) {
           const characters = [];
           const images = positionCell.querySelectorAll('img');
@@ -516,32 +516,32 @@ const handleResponsiveLayout = () => {
           positionData[position.id] = characters;
         }
       });
-      
+
       tierData.push({
         label: tierLabel,
         color: tierColor,
         positions: positionData
       });
     });
-    
+
     // Clear existing tiers
     positionTiersContainer.innerHTML = '';
-    
+
     // Rebuild layout
     initPositionTiers();
-    
+
     // Restore tier data
     tierData.forEach(tierInfo => {
       const tierLabelCell = createTierRow(tierInfo.label);
-      
+
       if (tierInfo.color) {
         tierLabelCell.style.setProperty('--color', tierInfo.color);
       }
-      
+
       // Restore characters to their positions
       Object.keys(tierInfo.positions).forEach(positionId => {
         const characters = tierInfo.positions[positionId];
-        
+
         // Find the position cell for this tier and position
         let positionCell;
         if (isMobile) {
@@ -558,7 +558,7 @@ const handleResponsiveLayout = () => {
             nextElement = nextElement.nextElementSibling;
           }
         }
-        
+
         if (positionCell && characters) {
           characters.forEach(charInfo => {
             if (charInfo.element) {
@@ -586,25 +586,25 @@ const handleDragover = (event) => {
     if (draggedImage.contains(target) || target.contains(draggedImage)) {
       return; // hierarchy 충돌 방지
     }
-    
+
     // Find the appropriate container to insert the dragged image
     // If target is inside a character-wrapper, use the wrapper as reference
     let referenceElement = target;
     const targetWrapper = target.closest('.character-wrapper');
-    
+
     if (targetWrapper) {
       // If target is inside a wrapper, use the wrapper as reference point
       referenceElement = targetWrapper;
     }
-    
+
     // Get the parent container (position-cell or cards container)
     const parentContainer = referenceElement.parentElement;
-    
+
     // Only proceed if we have a valid parent container
     if (!parentContainer) {
       return;
     }
-    
+
     const { left, width } = referenceElement.getBoundingClientRect();
     const midPoint = left + width / 2;
 
@@ -625,13 +625,13 @@ const handleDragover = (event) => {
 // 포지션 매칭 하이라이트 함수
 const highlightPositionMatch = (draggedImage) => {
   if (!draggedImage) return;
-  
+
   const characterPosition = draggedImage.dataset.position;
   const positionCells = document.querySelectorAll('.position-cell');
-  
+
   positionCells.forEach(cell => {
     const cellPosition = cell.dataset.position;
-    
+
     if (cellPosition === characterPosition) {
       cell.classList.add('highlight-match');
     } else {
@@ -649,7 +649,7 @@ const clearPositionHighlights = () => {
 
 const handleDrop = (event) => {
   event.preventDefault(); // prevent default browser handling
-  
+
   // Remove drag-over class and position highlights
   document.querySelectorAll('.position-cell').forEach(el => {
     el.classList.remove('drag-over');
@@ -669,7 +669,7 @@ const handleDragLeave = (event) => {
 const handleDragStart = (event) => {
   const draggedImage = event.target;
   draggedImage.classList.add("dragging");
-  
+
   // 포지션 매칭 하이라이트 시작
   highlightPositionMatch(draggedImage);
 };
@@ -684,7 +684,7 @@ const getTierColor = (label) => {
     'T3': '#4769ff',     // 파란색
     'T4': '#6b7280'      // 회색
   };
-  
+
   // 라벨에서 티어 이름 추출 (대소문자 구분 없이)
   const upperLabel = label.toUpperCase();
   for (const [tierName, color] of Object.entries(tierColors)) {
@@ -692,7 +692,7 @@ const getTierColor = (label) => {
       return color;
     }
   }
-  
+
   // 기본색상 (매칭되지 않는 경우)
   return colors[Math.floor(Math.random() * colors.length)];
 };
@@ -719,7 +719,7 @@ const createMobileTierRow = (label, tierColor) => {
   tierLabelCell.contentEditable = "plaintext-only";
   tierLabelCell.style.setProperty("--color", tierColor);
   tierLabelCell.innerHTML = `<span>${label}</span>`;
-  
+
   // Create positions container
   const positionsContainer = document.createElement("div");
   positionsContainer.className = "tier-mobile-positions";
@@ -729,7 +729,7 @@ const createMobileTierRow = (label, tierColor) => {
     const positionCell = document.createElement("div");
     positionCell.className = "position-cell";
     positionCell.dataset.position = position.id;
-    
+
     // Add drag and drop event listeners
     positionCell.addEventListener("dragover", handleDragover);
     positionCell.addEventListener("drop", handleDrop);
@@ -741,14 +741,14 @@ const createMobileTierRow = (label, tierColor) => {
         highlightPositionMatch(draggedImage);
       }
     });
-    
+
     positionsContainer.appendChild(positionCell);
   });
 
   // Assemble mobile container
   mobileContainer.appendChild(tierLabelCell);
   mobileContainer.appendChild(positionsContainer);
-  
+
   // Add to main container
   positionTiersContainer.appendChild(mobileContainer);
 
@@ -771,7 +771,7 @@ const createDesktopTierRow = (label, tierColor) => {
     const positionCell = document.createElement("div");
     positionCell.className = "position-cell";
     positionCell.dataset.position = position.id;
-    
+
     // Add drag and drop event listeners
     positionCell.addEventListener("dragover", handleDragover);
     positionCell.addEventListener("drop", handleDrop);
@@ -783,7 +783,7 @@ const createDesktopTierRow = (label, tierColor) => {
         highlightPositionMatch(draggedImage);
       }
     });
-    
+
     tierRowElements.push(positionCell);
   });
 
@@ -821,7 +821,7 @@ const initPositionTiers = () => {
   // Add position headers after tier header
   const tierHeaderCell = positionTiersContainer.querySelector('.tier-header-cell');
   const settingsHeaderCell = positionTiersContainer.querySelector('.settings-header-cell');
-  
+
   positions.forEach(position => {
     const positionHeader = document.createElement("div");
     positionHeader.className = `position-header ${position.id}`;
@@ -831,7 +831,7 @@ const initPositionTiers = () => {
       </div>
       <div>${position.name}</div>
     `;
-    
+
     // Insert before settings header
     positionTiersContainer.insertBefore(positionHeader, settingsHeaderCell);
   });
@@ -857,7 +857,7 @@ const loadCharacterImages = () => {
     console.error('Character data not loaded yet');
     return;
   }
-  
+
   // 정렬: release_order 내림차순, 같으면 rarity 내림차순
   const allCharacters = [...window.characterList.mainParty, ...window.characterList.supportParty]
     .filter(character => character !== "원더" && window.characterData[character]);
@@ -939,7 +939,7 @@ const ensurePoolHasCharacters = (characterNames) => {
       const wrapper = wrapCharacterImage(img);
       cardsContainer.appendChild(wrapper);
       attachDragListeners(wrapper);
-    } catch(_) { /* ignore single entry */ }
+    } catch (_) { /* ignore single entry */ }
   });
 };
 
@@ -955,7 +955,7 @@ const attachDragListeners = (element) => {
     // 부모가 없으면 그대로 사용
     newElement = element;
   }
-  
+
   // 티어 리스트 모드에서는 드래그 비활성화 및 클릭 스타일 적용
   if (isTierListMode) {
     newElement.draggable = false;
@@ -966,7 +966,7 @@ const attachDragListeners = (element) => {
     newElement.style.cursor = 'grab';
     newElement.classList.remove('clickable-character');
   }
-  
+
   // 새로운 이벤트 리스너 추가
   newElement.addEventListener("dragstart", (e) => {
     // 티어 데이터 로딩 중이거나 티어 리스트 모드일 때는 드래그를 막음
@@ -974,11 +974,11 @@ const attachDragListeners = (element) => {
       e.preventDefault();
       return;
     }
-    
+
     e.dataTransfer.setData("text/plain", "");
     e.dataTransfer.effectAllowed = "move";
     newElement.classList.add("dragging");
-    
+
     // 포지션 하이라이트 추가 (안전하게)
     setTimeout(() => {
       highlightPositionMatch(newElement);
@@ -993,7 +993,7 @@ const attachDragListeners = (element) => {
     });
     cardsContainer.classList.remove('drag-over');
     clearPositionHighlights();
-    
+
     // 드래그 완료 후 리스너 재확인
     setTimeout(() => {
       if (!newElement.dataset.dragListenersAttached) {
@@ -1011,14 +1011,14 @@ const attachDragListeners = (element) => {
       openRitualModal(targetImage);
     }
   });
-  
+
   // 캐릭터 클릭 시 상세 페이지로 이동 (티어 리스트 모드에서만)
   newElement.addEventListener("click", (e) => {
     // 티어 리스트 모드가 아니면 클릭 네비게이션 비활성화
     if (!isTierListMode) {
       return;
     }
-    
+
     // 드래그 중이거나 더블클릭 이벤트와 겹치지 않도록 처리
     if (e.detail === 1) { // 단일 클릭만 처리
       setTimeout(() => {
@@ -1026,11 +1026,11 @@ const attachDragListeners = (element) => {
           const targetImage = newElement.tagName === 'IMG' ? newElement : newElement.querySelector('img');
           if (targetImage && targetImage.alt) {
             const characterName = targetImage.alt;
-            
+
             // 현재 URL에서 언어 파라미터 추출
             const urlParams = new URLSearchParams(window.location.search);
             const currentLang = urlParams.get('lang') || 'kr'; // 기본값은 'kr'
-            
+
             // 언어 파라미터를 유지하며 캐릭터 상세 페이지로 이동
             window.location.href = `/character.html?name=${encodeURIComponent(characterName)}&lang=${currentLang}`;
           }
@@ -1038,10 +1038,10 @@ const attachDragListeners = (element) => {
       }, 200); // 더블클릭 감지를 위한 지연
     }
   });
-  
+
   // 이벤트 리스너 추가 완료 표시
   newElement.dataset.dragListenersAttached = 'true';
-  
+
   return newElement;
 };
 
@@ -1052,13 +1052,13 @@ const initDraggables = () => {
   const poolImages = Array.from(cardsContainer.querySelectorAll('img:not(.character-ritual-icon)'))
     .filter(img => !img.closest('.character-wrapper'));
   poolWrappers.concat(poolImages).forEach(attachDragListeners);
-  
+
   // 티어에 배치된 wrapper/이미지들
   const tierWrappers = Array.from(document.querySelectorAll('.position-cell .character-wrapper'));
   const tierImages = Array.from(document.querySelectorAll('.position-cell img:not(.character-ritual-icon)'))
     .filter(img => !img.closest('.character-wrapper'));
   tierWrappers.concat(tierImages).forEach(attachDragListeners);
-  
+
   // DOM 변화 감지 옵저버 초기화
   initDragListenerObserver();
 };
@@ -1072,7 +1072,7 @@ const refreshDragListeners = () => {
 const updateAllDragListenersForMode = () => {
   // 모든 캐릭터 이미지와 wrapper 찾기
   const allCharacters = document.querySelectorAll('.main-wrapper img, .character-wrapper');
-  
+
   allCharacters.forEach(element => {
     // 이미 드래그 리스너가 있는 요소만 업데이트
     if (element.dataset.dragListenersAttached === 'true') {
@@ -1088,32 +1088,32 @@ const initDragListenerObserver = () => {
   if (dragListenerObserver) {
     dragListenerObserver.disconnect();
   }
-  
+
   dragListenerObserver = new MutationObserver((mutations) => {
     let needsRefresh = false;
-    
+
     mutations.forEach((mutation) => {
       // 노드가 추가되거나 제거된 경우
       if (mutation.type === 'childList') {
         // 캐릭터 이미지가 포함된 변화인지 확인
-        const hasCharacterImages = 
-          Array.from(mutation.addedNodes).some(node => 
-            node.nodeType === Node.ELEMENT_NODE && 
-            (node.tagName === 'IMG' && node.dataset.character || 
-             node.querySelector && node.querySelector('img[data-character]'))
+        const hasCharacterImages =
+          Array.from(mutation.addedNodes).some(node =>
+            node.nodeType === Node.ELEMENT_NODE &&
+            (node.tagName === 'IMG' && node.dataset.character ||
+              node.querySelector && node.querySelector('img[data-character]'))
           ) ||
-          Array.from(mutation.removedNodes).some(node => 
-            node.nodeType === Node.ELEMENT_NODE && 
-            (node.tagName === 'IMG' && node.dataset.character || 
-             node.querySelector && node.querySelector('img[data-character]'))
+          Array.from(mutation.removedNodes).some(node =>
+            node.nodeType === Node.ELEMENT_NODE &&
+            (node.tagName === 'IMG' && node.dataset.character ||
+              node.querySelector && node.querySelector('img[data-character]'))
           );
-        
+
         if (hasCharacterImages) {
           needsRefresh = true;
         }
       }
     });
-    
+
     if (needsRefresh) {
       // 짧은 지연 후 리스너 새로고침 (DOM 변화가 완료된 후)
       setTimeout(() => {
@@ -1121,7 +1121,7 @@ const initDragListenerObserver = () => {
       }, 50);
     }
   });
-  
+
   // 캐릭터 풀과 티어 컨테이너를 모두 관찰
   const observeTargets = [cardsContainer, positionTiersContainer];
   observeTargets.forEach(target => {
@@ -1140,10 +1140,10 @@ const applyFilters = () => {
   const selectedPositions = Array.from(document.querySelectorAll('input[name="position"]:checked')).map(cb => cb.value);
   const selectedRarities = Array.from(document.querySelectorAll('input[name="rarity"]:checked')).map(cb => parseInt(cb.value));
   const selectedTags = Array.from(document.querySelectorAll('input[name="tag"]:checked')).map(cb => cb.value);
-  
+
   // 필터가 모두 해제된 경우, 원래 위치로 복원
   const hasActiveFilters = selectedElements.length > 0 || selectedPositions.length > 0 || selectedRarities.length > 0 || selectedTags.length > 0;
-  
+
   if (!hasActiveFilters) {
     // 모든 필터가 해제되면 원래 위치로 복원
     originalPositions.forEach((originalParent, img) => {
@@ -1152,7 +1152,7 @@ const applyFilters = () => {
       }
     });
     originalPositions.clear();
-    
+
     // 캐릭터 풀의 모든 이미지 표시
     const poolImages = cardsContainer.querySelectorAll('img');
     poolImages.forEach(img => {
@@ -1160,7 +1160,7 @@ const applyFilters = () => {
     });
     return;
   }
-  
+
   // 캐릭터 풀의 이미지들 필터링
   const poolItems = Array.from(cardsContainer.querySelectorAll('.character-wrapper, img:not(.character-ritual-icon)'))
     .filter(item => item.classList.contains('character-wrapper') || !item.closest('.character-wrapper'));
@@ -1168,23 +1168,23 @@ const applyFilters = () => {
     if (!item.closest('.cards') || item.closest('.cards') !== cardsContainer) return;
     const img = item.tagName === 'IMG' ? item : item.querySelector('img');
     if (!img) return;
-    
+
     const element = img.dataset.element;
     const position = img.dataset.position;
     const rarity = parseInt(img.dataset.rarity);
     const tags = img.dataset.tags;
-    
+
     // 속성 필터링 (질풍빙결 특수 처리)
-    const elementMatch = selectedElements.length === 0 || 
-      selectedElements.includes(element) || 
+    const elementMatch = selectedElements.length === 0 ||
+      selectedElements.includes(element) ||
       (element === "질풍빙결" && (selectedElements.includes("질풍") || selectedElements.includes("빙결")));
-    
+
     const positionMatch = selectedPositions.length === 0 || selectedPositions.includes(position);
     const rarityMatch = selectedRarities.length === 0 || selectedRarities.includes(rarity);
-    
+
     // 태그 필터링
     const tagMatch = selectedTags.length === 0 || selectedTags.every(tag => {
-      switch(tag) {
+      switch (tag) {
         case 'TECHNICAL':
           return tags.includes('TECHNICAL') || tags.includes('스킬마스터');
         case '추가효과':
@@ -1211,10 +1211,10 @@ const applyFilters = () => {
           return false;
       }
     });
-    
+
     item.style.display = elementMatch && positionMatch && rarityMatch && tagMatch ? 'block' : 'none';
   });
-  
+
   // 티어에 배치된 캐릭터들도 필터링
   const tierItems = Array.from(document.querySelectorAll('.position-cell .character-wrapper, .position-cell img:not(.character-ritual-icon)'))
     .filter(item => item.classList.contains('character-wrapper') || !item.closest('.character-wrapper'));
@@ -1225,18 +1225,18 @@ const applyFilters = () => {
     const position = img.dataset.position;
     const rarity = parseInt(img.dataset.rarity);
     const tags = img.dataset.tags;
-    
+
     // 속성 필터링 (질풍빙결 특수 처리)
-    const elementMatch = selectedElements.length === 0 || 
-      selectedElements.includes(element) || 
+    const elementMatch = selectedElements.length === 0 ||
+      selectedElements.includes(element) ||
       (element === "질풍빙결" && (selectedElements.includes("질풍") || selectedElements.includes("빙결")));
-    
+
     const positionMatch = selectedPositions.length === 0 || selectedPositions.includes(position);
     const rarityMatch = selectedRarities.length === 0 || selectedRarities.includes(rarity);
-    
+
     // 태그 필터링
     const tagMatch = selectedTags.length === 0 || selectedTags.every(tag => {
-      switch(tag) {
+      switch (tag) {
         case 'TECHNICAL':
           return tags.includes('TECHNICAL') || tags.includes('스킬마스터');
         case '추가효과':
@@ -1263,7 +1263,7 @@ const applyFilters = () => {
           return false;
       }
     });
-    
+
     // 필터에 맞지 않는 캐릭터는 캐릭터 풀로 되돌림
     if (!(elementMatch && positionMatch && rarityMatch && tagMatch)) {
       // 원래 위치를 저장 (아직 저장되지 않은 경우에만)
@@ -1281,18 +1281,18 @@ const initFilters = () => {
   const filterContent = document.querySelector('.filter-content');
   const filterResetBtn = document.querySelector('.filter-reset-btn');
   const checkboxes = document.querySelectorAll('.filter-options input[type="checkbox"]');
-  
+
   filterContent.style.display = 'block';
   filterToggleBtn.style.display = 'none';
   filterResetBtn.style.display = 'none';
-  
+
   // 체크박스 변경 감지
   checkboxes.forEach(checkbox => {
     checkbox.addEventListener('change', () => {
       applyFilters();
     });
   });
-  
+
   // 필터 초기화 버튼
   filterResetBtn.addEventListener('click', () => {
     checkboxes.forEach(cb => cb.checked = false);
@@ -1307,25 +1307,25 @@ const loadTierDataFromFile = async (useKROverride = false) => {
     // 현재 언어에 따라 파일 선택
     const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
     const fileName = (useKROverride || currentLang === 'kr') ? 'kr_tier.json' : 'global_tier.json';
-    const filePath = `../${fileName}`;
-    
+    const filePath = `${BASE_URL}/apps/tier/${fileName}`;
+
     //console.log('Loading tier data from file:', filePath);
-    
+
     const response = await fetch(filePath);
     if (!response.ok) {
       //console.log('Tier file not found:', filePath);
       return null;
     }
-    
+
     const jsonData = await response.text();
     if (!jsonData.trim()) {
       //console.log('Tier file is empty');
       return null;
     }
-    
+
     // 단순히 JSON 파싱
     const tierData = JSON.parse(jsonData);
-    
+
     //console.log('Tier data loaded from file:', tierData);
     return tierData;
   } catch (error) {
@@ -1376,7 +1376,7 @@ window.setTierSource = async (source) => {
           });
           ensurePoolHasCharacters(Array.from(new Set(names)));
         }
-      } catch(_) {}
+      } catch (_) { }
     }
   } catch (e) {
     console.error('Failed to switch tier source:', e);
@@ -1389,9 +1389,9 @@ window.setTierSource = async (source) => {
 const getTierDataFromURL = () => {
   const urlParams = new URLSearchParams(window.location.search);
   const encodedData = urlParams.get('data');
-  
+
   if (!encodedData) return null;
-  
+
   try {
     const decodedString = atob(encodedData);
     const jsonString = decodeURIComponent(decodedString);
@@ -1405,12 +1405,12 @@ const getTierDataFromURL = () => {
 // URL 파라미터의 티어 데이터로 티어를 구성하는 함수
 const loadTierDataFromURL = (tierData) => {
   if (!tierData || !Array.isArray(tierData)) return;
-  
+
   // 티어 데이터 로딩 시작
   isTierDataLoading = true;
-  
+
   const isMobile = window.innerWidth <= 1200;
-  
+
   // 기존 티어 행들을 모두 제거
   const existingTierLabels = document.querySelectorAll('.tier-label-cell');
   existingTierLabels.forEach(label => {
@@ -1419,24 +1419,24 @@ const loadTierDataFromURL = (tierData) => {
       tierRowElements.forEach(element => element.remove());
     }
   });
-  
+
   // URL 데이터로 티어 행들을 생성
   tierData.forEach(tierInfo => {
     const tierLabelCell = createTierRow(tierInfo.label);
-    
+
     // 색상 설정
     if (tierInfo.color) {
       tierLabelCell.style.setProperty('--color', tierInfo.color);
     }
-    
+
     // 각 포지션에 캐릭터 배치
     if (tierInfo.positions) {
       Object.keys(tierInfo.positions).forEach(positionId => {
         const characters = tierInfo.positions[positionId];
-        
+
         // 포지션 셀 찾기 (모바일과 데스크톱 구조가 다름)
         let positionCell;
-        
+
         if (isMobile) {
           // 모바일: tier-mobile-container 내에서 찾기
           const mobileContainer = tierLabelCell.closest('.tier-mobile-container');
@@ -1454,13 +1454,13 @@ const loadTierDataFromURL = (tierData) => {
             nextElement = nextElement.nextElementSibling;
           }
         }
-        
+
         if (positionCell && characters) {
           characters.forEach(charData => {
             // 캐릭터 데이터가 문자열인지 객체인지 확인 (하위 호환성)
             const charName = typeof charData === 'string' ? charData : charData.name;
             let ritualType = 'none';
-            
+
             if (typeof charData === 'object') {
               // 새로운 JSON 형식: { "name": "...", "Awareness": 1 }
               if (charData.Awareness) {
@@ -1474,21 +1474,21 @@ const loadTierDataFromURL = (tierData) => {
                 }
               }
             }
-            
+
             // 캐릭터 이미지를 찾아서(또는 생성해서) 해당 포지션 셀에 배치
             let charImage = null;
             // CSS 선택자에서 특수문자 이스케이프를 위한 헬퍼 함수
             const escapeCSSSelector = (str) => {
               return str.replace(/[!"#$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, '\\$&');
             };
-            
+
             // 1) 카드 풀에 남아있는 동일 이름 이미지 우선 사용
             // 특수문자가 포함된 이름을 안전하게 찾기 위해 모든 이미지를 순회
             const allImages = Array.from(document.querySelectorAll('img:not(.character-ritual-icon)'));
             const fromPool = allImages.find(img => {
               return img.alt === charName && img.closest('.cards') === cardsContainer;
             });
-            
+
             if (fromPool) {
               // fromPool이 wrapper인지 이미지인지 확인
               if (fromPool.tagName === 'IMG') {
@@ -1554,7 +1554,7 @@ const loadTierDataFromURL = (tierData) => {
               attachDragListeners(img);
               charImage = img;
             }
-            
+
             if (!charImage) return;
 
             // 이미지가 wrapper 안에 있는지 확인 (이미지가 wrapper 자체일 수도 있음)
@@ -1566,17 +1566,17 @@ const loadTierDataFromURL = (tierData) => {
                 existingWrapper.remove();
               }
             }
-            
+
             // rarity 정보가 없으면 characterData에서 가져오기
             let rarity = parseInt(charImage.dataset.rarity, 10);
             if (isNaN(rarity) && window.characterData && window.characterData[charName]) {
               rarity = parseInt(window.characterData[charName].rarity, 10);
               charImage.dataset.rarity = rarity;
             }
-            
+
             // 공통 함수로 클래스 적용 (list=false일 때와 동일한 방식)
             applyCharacterClasses(charImage, existingWrapper);
-            
+
             // ::after 가상 요소가 작동하려면 position: relative가 필요
             if (charImage.tagName === 'IMG') {
               charImage.style.position = 'relative';
@@ -1611,7 +1611,7 @@ const loadTierDataFromURL = (tierData) => {
 
               // 공통 함수로 클래스 적용 (list=false일 때와 동일한 방식)
               applyCharacterClasses(charImage, wrapper);
-              
+
               // 이미지에도 position: relative 설정
               charImage.style.position = 'relative';
 
@@ -1634,7 +1634,7 @@ const loadTierDataFromURL = (tierData) => {
       });
     }
   });
-  
+
   // 티어 데이터 로딩 완료
   isTierDataLoading = false;
 };
@@ -1642,29 +1642,29 @@ const loadTierDataFromURL = (tierData) => {
 // 포지션별 티어 메이커 초기화 함수 (전역에서 접근 가능하도록)
 window.initPositionTierMaker = () => {
   console.log('Initializing position tier maker...');
-  
+
   // URL 파라미터 확인 및 제목 설정
   const urlParams = new URLSearchParams(window.location.search);
   const shouldLoadList = urlParams.get('list') !== 'false';
-  
+
   // 티어 리스트 모드 설정 (list=false가 아니면 티어 리스트 모드)
   isTierListMode = shouldLoadList;
-  
+
   // 티어 리스트 모드에 따라 CSS 클래스 적용
   if (isTierListMode) {
     document.body.classList.add('tier-list-mode');
   } else {
     document.body.classList.remove('tier-list-mode');
   }
-  
+
   // 모드 변경 후 모든 드래그 리스너 업데이트 (초기화 완료 후 실행)
   setTimeout(() => {
     updateAllDragListenersForMode();
   }, 1000);
-  
+
   // 현재 언어 확인
   const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
-  
+
   // 언어별 제목 데이터
   const titleData = {
     'kr': {
@@ -1689,13 +1689,13 @@ window.initPositionTierMaker = () => {
       makerDesc: 'ポジション別にP5X怪盗ティアを作ってみましょう。'
     }
   };
-  
+
   const currentTitleData = titleData[currentLang] || titleData['kr'];
-  
+
   // 제목과 설명 동적 변경 (언어별 제목은 여기서 설정하지 않음 - updateLanguageContent에서 처리)
   const metaTitle = document.querySelector('title');
   const metaDescription = document.querySelector('meta[name="description"]');
-  
+
   if (shouldLoadList) {
     // 기본: 티어 리스트 모드
     if (metaTitle) metaTitle.textContent = currentTitleData.metaPrefix + currentTitleData.tierList;
@@ -1705,35 +1705,35 @@ window.initPositionTierMaker = () => {
     if (metaTitle) metaTitle.textContent = currentTitleData.metaPrefix + currentTitleData.tierMaker;
     if (metaDescription) metaDescription.setAttribute('content', currentTitleData.makerDesc);
   }
-  
+
   // 이미 초기화된 경우 중복 실행 방지
   if (document.querySelector('.position-header')) {
     //console.log('Position tier maker already initialized');
     return;
   }
-  
+
   loadCharacterImages();
   initDraggables();
   initPositionTiers();
   initColorOptions();
   initRitualModal();
   initFilters();
-  
+
   // Initialize responsive layout
   currentLayout = window.innerWidth <= 1200 ? 'mobile' : 'desktop';
-  
+
   // Add resize event listener for responsive layout
   window.addEventListener('resize', () => {
     clearTimeout(window.resizeTimeout);
     window.resizeTimeout = setTimeout(handleResponsiveLayout, 250);
   });
-  
+
   if (shouldLoadList) {
     // 티어 데이터 로드 (URL 파라미터 우선, 없으면 파일에서)
     const loadTierData = async () => {
       // 먼저 URL 파라미터 확인
       let tierData = getTierDataFromURL();
-      
+
       if (tierData) {
         //console.log('Loading tier data from URL...');
       } else {
@@ -1741,7 +1741,7 @@ window.initPositionTierMaker = () => {
         //console.log('No URL data, trying to load from file...');
         tierData = await loadTierDataFromFile(forceUseKRTierInGlobal);
       }
-      
+
       if (tierData) {
         // 캐릭터 이미지들이 로드된 후에 티어 데이터를 로드
         setTimeout(() => {
@@ -1749,12 +1749,12 @@ window.initPositionTierMaker = () => {
         }, 500);
       }
     };
-    
+
     loadTierData();
   } else {
     console.log('list=false parameter detected, skipping tier data loading');
   }
-  
+
   // 콘솔 명령어 등록
   window.shareTierList = () => {
     console.log('Share command executed!');
@@ -1767,7 +1767,7 @@ window.initPositionTierMaker = () => {
     console.log('Tier data:', tierData);
     return tierData;
   };
-  
+
   //console.log('🎮 Console commands available:');
   //console.log('  shareTierList() - Copy tier data to clipboard');
   //console.log('  exportTierList() - Show tier data in console');
@@ -1835,7 +1835,7 @@ cardsContainer.addEventListener("dragleave", (event) => {
   if (!cardsContainer.contains(event.relatedTarget)) {
     cardsContainer.classList.remove("drag-over");
   }
-}); 
+});
 
 // 리추얼 데이터를 JSON 형식으로 변환하는 함수
 const convertRitualToJSON = (ritualType) => {
@@ -1844,7 +1844,7 @@ const convertRitualToJSON = (ritualType) => {
   }
   const ritualMap = {
     'num1': { "Awareness": 1 },
-    'num2': { "Awareness": 2 }, 
+    'num2': { "Awareness": 2 },
     'num3': { "Awareness": 3 },
     'num4': { "Awareness": 4 },
     'num5': { "Awareness": 5 },
@@ -1867,47 +1867,47 @@ const convertRitualFromJSON = (ritualData) => {
 // 티어 리스트 결과를 JSON으로 내보내는 함수 (인코딩 없이)
 const exportTierListAsJSON = () => {
   //console.log('Exporting tier list as JSON...');
-  
+
   // 표준 티어 목록 (항상 포함되어야 함)
   const standardTiers = ['T0', 'T0.5', 'T1', 'T2', 'T3', 'T4'];
   const tierData = [];
-  
+
   // 각 표준 티어에 대해 데이터 수집
   standardTiers.forEach(tierLabel => {
     // 해당 티어가 DOM에 존재하는지 확인
     const tierLabelCell = Array.from(document.querySelectorAll('.tier-label-cell'))
       .find(cell => cell.querySelector('span').textContent.trim() === tierLabel);
-    
+
     let tierColor = getTierColor(tierLabel); // 기본 색상
     const positionData = {};
-    
+
     // 모든 포지션에 대해 빈 배열로 초기화
     positions.forEach(position => {
       positionData[position.id] = [];
     });
-    
+
     if (tierLabelCell) {
       // DOM에 존재하는 경우, 실제 색상과 캐릭터 데이터 수집
       tierColor = getComputedStyle(tierLabelCell).getPropertyValue('--color');
-      
+
       // 같은 행의 모든 position-cell들을 찾기
       let nextElement = tierLabelCell.nextElementSibling;
       while (nextElement && !nextElement.classList.contains('tier-label-cell')) {
         if (nextElement.classList.contains('position-cell')) {
           const positionId = nextElement.dataset.position;
           const characters = [];
-          
+
           // 해당 셀의 모든 캐릭터 이미지 수집 (이름만 저장)
           const wrappers = nextElement.querySelectorAll('.character-wrapper');
           const images = nextElement.querySelectorAll('img:not(.character-ritual-icon)');
-          
+
           // DOM 순서대로 모든 캐릭터 수집 (wrapper와 일반 이미지 순서 유지)
           const allElements = Array.from(nextElement.children);
-          
+
           allElements.forEach(element => {
             let img = null;
             let ritualType = 'none';
-            
+
             if (element.classList.contains('character-wrapper')) {
               // wrapper 안의 이미지 처리
               img = element.querySelector('img:not(.character-ritual-icon)');
@@ -1917,7 +1917,7 @@ const exportTierListAsJSON = () => {
               img = element;
               ritualType = element.dataset.ritual || 'none';
             }
-            
+
             if (img) {
               const characterData = {
                 name: img.alt
@@ -1929,53 +1929,53 @@ const exportTierListAsJSON = () => {
               characters.push(characterData);
             }
           });
-          
+
           positionData[positionId] = characters;
         }
         nextElement = nextElement.nextElementSibling;
       }
     }
-    
+
     tierData.push({
       label: tierLabel,
       color: tierColor,
       positions: positionData
     });
   });
-  
+
   // 추가로 DOM에만 존재하는 커스텀 티어들도 포함
   const tierLabelCells = document.querySelectorAll('.tier-label-cell');
   tierLabelCells.forEach(tierLabelCell => {
     const tierLabel = tierLabelCell.querySelector('span').textContent.trim();
-    
+
     // 표준 티어가 아닌 경우에만 추가
     if (!standardTiers.includes(tierLabel)) {
       const tierColor = getComputedStyle(tierLabelCell).getPropertyValue('--color');
       const positionData = {};
-      
+
       // 모든 포지션에 대해 빈 배열로 초기화
       positions.forEach(position => {
         positionData[position.id] = [];
       });
-      
+
       // 같은 행의 모든 position-cell들을 찾기
       let nextElement = tierLabelCell.nextElementSibling;
       while (nextElement && !nextElement.classList.contains('tier-label-cell')) {
         if (nextElement.classList.contains('position-cell')) {
           const positionId = nextElement.dataset.position;
           const characters = [];
-          
+
           // 해당 셀의 모든 캐릭터 이미지 수집 (이름만 저장)
           const wrappers = nextElement.querySelectorAll('.character-wrapper');
           const images = nextElement.querySelectorAll('img:not(.character-ritual-icon)');
-          
+
           // DOM 순서대로 모든 캐릭터 수집 (wrapper와 일반 이미지 순서 유지)
           const allElements = Array.from(nextElement.children);
-          
+
           allElements.forEach(element => {
             let img = null;
             let ritualType = 'none';
-            
+
             if (element.classList.contains('character-wrapper')) {
               // wrapper 안의 이미지 처리
               img = element.querySelector('img:not(.character-ritual-icon)');
@@ -1985,7 +1985,7 @@ const exportTierListAsJSON = () => {
               img = element;
               ritualType = element.dataset.ritual || 'none';
             }
-            
+
             if (img) {
               const characterData = {
                 name: img.alt
@@ -1997,12 +1997,12 @@ const exportTierListAsJSON = () => {
               characters.push(characterData);
             }
           });
-          
+
           positionData[positionId] = characters;
         }
         nextElement = nextElement.nextElementSibling;
       }
-      
+
       tierData.push({
         label: tierLabel,
         color: tierColor,
@@ -2010,11 +2010,11 @@ const exportTierListAsJSON = () => {
       });
     }
   });
-  
+
   // 단순한 JSON 문자열로 반환 (인코딩 없이)
   const jsonString = JSON.stringify(tierData, null, 2); // 예쁘게 포맷팅
   console.log('JSON string:', jsonString);
-  
+
   return jsonString;
 };
 
@@ -2033,10 +2033,10 @@ const decodeTierList = (encodedData) => {
 // 공유 버튼 클릭 핸들러
 const handleShareClick = () => {
   console.log('Share button clicked!');
-  
+
   const jsonData = exportTierListAsJSON();
   console.log('JSON data:', jsonData);
-  
+
   // 클립보드에 JSON 데이터 복사
   navigator.clipboard.writeText(jsonData).then(() => {
     alert('티어 리스트 데이터가 클립보드에 복사되었습니다!\n\n이 데이터를 tier 폴더의 kr_tier.json 또는 global_tier.json 파일에 저장하세요.');
@@ -2044,7 +2044,7 @@ const handleShareClick = () => {
     // 클립보드 복사 실패 시 데이터를 직접 표시
     prompt('티어 리스트 데이터 (이것을 파일에 저장하세요):', jsonData);
   });
-}; 
+};
 
 // Ritual Modal Functionality
 let currentRitualImage = null;
@@ -2053,7 +2053,7 @@ function getRitualModal() { return document.querySelector('.ritual-modal'); }
 // Open ritual modal for character image
 function openRitualModal(img) {
   currentRitualImage = img;
-  
+
   // Show current ritual selection
   const currentRitual = img.dataset.ritual || 'none';
   const modal = getRitualModal();
@@ -2065,7 +2065,7 @@ function openRitualModal(img) {
       option.classList.add('selected');
     }
   });
-  
+
   modal.showModal();
 }
 
@@ -2079,21 +2079,21 @@ function closeRitualModal() {
 // Set ritual for character
 function setCharacterRitual(ritualType) {
   if (!currentRitualImage) return;
-  
+
   // Check if image is already in a wrapper
   const existingWrapper = currentRitualImage.closest('.character-wrapper');
-  
+
   if (existingWrapper) {
     // Remove existing ritual icon from wrapper
     const existingIcon = existingWrapper.querySelector('.character-ritual-icon');
     if (existingIcon) {
       existingIcon.remove();
     }
-    
+
     // Update wrapper ritual data
     existingWrapper.dataset.ritual = ritualType;
     currentRitualImage.dataset.ritual = ritualType;
-    
+
     // Add new ritual icon if not 'none'
     if (ritualType !== 'none') {
       const ritualIcon = document.createElement('img');
@@ -2105,23 +2105,23 @@ function setCharacterRitual(ritualType) {
   } else {
     // wrapper가 없는 경우는 해당 이미지와 연결된 리추얼 아이콘이 없으므로 제거할 필요 없음
     // 다른 캐릭터의 리추얼 아이콘을 제거하지 않도록 주의
-    
+
     // Set ritual data on image
     currentRitualImage.dataset.ritual = ritualType;
-    
+
     // Add ritual icon if not 'none'
     if (ritualType !== 'none') {
       const ritualIcon = document.createElement('img');
       ritualIcon.src = `${BASE_URL}/assets/img/ritual/${ritualType}.png`;
       ritualIcon.className = 'character-ritual-icon';
       ritualIcon.alt = `Ritual ${ritualType}`;
-      
+
       // Create a wrapper for proper positioning
       const parent = currentRitualImage.parentElement;
       const wrapper = document.createElement('div');
       wrapper.className = 'character-wrapper';
       wrapper.draggable = true;
-      
+
       // Copy all attributes from image to wrapper for drag functionality
       wrapper.alt = currentRitualImage.alt;
       wrapper.dataset.element = currentRitualImage.dataset.element;
@@ -2130,20 +2130,20 @@ function setCharacterRitual(ritualType) {
       wrapper.dataset.tags = currentRitualImage.dataset.tags;
       wrapper.dataset.ritual = ritualType;
       wrapper.dataset.dragListenersAttached = 'true';
-      
+
       // Remove draggable from image since wrapper will handle it
       currentRitualImage.draggable = false;
-      
+
       // Insert wrapper and move image into it
       parent.insertBefore(wrapper, currentRitualImage);
       wrapper.appendChild(currentRitualImage);
       wrapper.appendChild(ritualIcon);
-      
+
       // Attach drag listeners to wrapper instead of image
       attachDragListeners(wrapper);
     }
   }
-  
+
   closeRitualModal();
 }
 
@@ -2151,13 +2151,13 @@ function setCharacterRitual(ritualType) {
 function initRitualModal() {
   const ritualModal = getRitualModal();
   if (!ritualModal) return;
-  
+
   // Close button
   const closeBtn = ritualModal.querySelector('.ritual-modal-close');
   if (closeBtn) {
     closeBtn.addEventListener('click', closeRitualModal);
   }
-  
+
   // Ritual option clicks
   const ritualOptions = ritualModal.querySelectorAll('.ritual-option');
   ritualOptions.forEach(option => {
@@ -2166,45 +2166,45 @@ function initRitualModal() {
       setCharacterRitual(ritualType);
     });
   });
-  
+
   // Copy character button
   const copyBtn = ritualModal.querySelector('.ritual-copy-button');
   if (copyBtn) {
     copyBtn.addEventListener('click', () => {
       if (!currentRitualImage) return;
-      
+
       // 현재 선택된 이미지 기준으로 복제 생성
       const sourceImg = currentRitualImage;
       const clone = document.createElement('img');
       clone.src = sourceImg.src;
       clone.alt = sourceImg.alt || '';
       clone.draggable = true;
-      
+
       // 데이터셋 복사
-      ['element','position','rarity','tags','ritual'].forEach(key => {
+      ['element', 'position', 'rarity', 'tags', 'ritual'].forEach(key => {
         if (sourceImg.dataset[key] !== undefined) {
           clone.dataset[key] = sourceImg.dataset[key];
         }
       });
-      
+
       // 등급별 클래스 유지
       const rarity = parseInt(clone.dataset.rarity);
       if (rarity === 4) clone.classList.add('star4');
       else if (rarity === 5) clone.classList.add('star5');
-      
+
       // 하단 카드 풀에 추가 후 드래그 리스너 연결
       cardsContainer.appendChild(clone);
       attachDragListeners(clone);
     });
   }
-  
+
   // Close on backdrop click
   ritualModal.addEventListener('click', (e) => {
     if (e.target === ritualModal) {
       closeRitualModal();
     }
   });
-  
+
   // Close on Escape key
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && ritualModal.open) {

@@ -16,10 +16,11 @@
 /* ===== Global Styles ===== */
 
 /* i18n Loading State - Prevent FOUC (Flash of Untranslated Content) */
-html.i18n-loading .main-wrapper {
+/* i18n Loading State - Prevent FOUC (Flash of Untranslated Content) */
+/* html.i18n-loading .main-wrapper {
     opacity: 0 !important;
     visibility: hidden !important;
-}
+} */
 
 /* Skeleton loading animation for i18n */
 @keyframes skeleton-loading {
@@ -35,7 +36,15 @@ html.i18n-loading .main-wrapper {
 html.i18n-loading h1,
 html.i18n-loading h2,
 html.i18n-loading h3,
-html.i18n-loading span:not(.separator):not(.accordion-chevron),
+html.i18n-loading h4,
+html.i18n-loading h5,
+html.i18n-loading p,
+html.i18n-loading li,
+html.i18n-loading td,
+html.i18n-loading th,
+html.i18n-loading a,
+html.i18n-loading button,
+html.i18n-loading span:not(.separator):not(.accordion-chevron):not(.material-symbols-outlined),
 html.i18n-loading label {
     background: linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0px, rgba(255, 255, 255, 0.15) 40px, rgba(255, 255, 255, 0.05) 80px);
     background-size: 600px;

@@ -14,14 +14,11 @@ collections:
 markdown: kramdown
 permalink: /article/:year/:month/:day/:title/
 future: true     # 미래 날짜 포스트 허용
+safe: false      # 개발 환경에서는 플러그인 리스트를 명확히 제어하기 위해 끕니다.
 
 # 플러그인 설정
-#safe: true
-#plugins:
-#  - jekyll-feed
-#  - jekyll-seo-tag
-#  - jekyll-sitemap
-#  - jekyll-redirect-from
+# 개발 환경에서는 무거운 플러그인을 끕니다.
+plugins: []
 
 # defaults 설정
 defaults:
@@ -81,25 +78,10 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - README.md
-
-# 빌드 성능 최적화
-exclude:
-  - .git
-  - .gitignore
-  - posts
-  - node_modules
-  - vendor
-  - Gemfile
-  - Gemfile.lock
-  - README.md
+  - data/external
 
 # 감시 제외 설정
 keep_files:
-  - assets
-  - _site/assets
-
-# Assets 처리 설정
-include:
   - assets
   - _site/assets
 

@@ -1,0 +1,165 @@
+﻿/**
+ * Global i18n Adapter
+ * 
+ * 湲곗〈 肄붾뱶媛 ?덈줈???듯빀 i18n ?쒕퉬?ㅻ? ?ъ슜?????덈룄濡??꾩뿭 ?대뙌?곕? ?쒓났?⑸땲??
+ * 紐⑤뱺 ?섏씠吏?먯꽌 ?ъ궗??媛?ν븯?꾨줉 ?ㅺ퀎?섏뿀?듬땲??
+ * 
+ * ?ъ슜踰?
+ * 1. i18n-service.js ?댄썑??濡쒕뱶
+ * 2. ?섏씠吏蹂꾨줈 window.initPageI18n(pageName)???몄텧?섏뿬 珥덇린??
+ * 
+ * ?덉떆:
+ * ```html
+ * <script type="module" src="/i18n/service/i18n-service.js"></script>
+ * <script defer src="/i18n/service/i18n-adapter.js"></script>
+ * <script>
+ *   // DOMContentLoaded ?댄썑
+ *   initPageI18n('pull-calc');
+ * </script>
+ * ```
+ * 
+ * ?쒓났?섎뒗 ?덇굅??API:
+ * - window.I18N[lang][key] : 湲곗〈 諛⑹떇 媛앹껜 ?묎렐
+ * - window.MUST_READ_CONTENT[lang] : ?섏씠吏蹂?湲??띿뒪??肄섑뀗痢?
+ * - window.getCurrentI18nLanguage() : ?꾩옱 ?몄뼱 諛섑솚
+ * - window.translateI18n(key) : ?꾩옱 ?몄뼱濡?踰덉뿭
+ */
+
+(function () {
+    'use strict';
+
+    // Wait for I18nService to be available
+    const waitForI18nService = () => {
+        return new Promise((resolve) => {
+            if (window.I18nService) {
+                resolve(window.I18nService);
+            } else {
+                const checkInterval = setInterval(() => {
+                    if (window.I18nService) {
+                        clearInterval(checkInterval);
+                        resolve(window.I18nService);
+                    }
+                }, 50);
+
+                // Timeout after 5 seconds
+                setTimeout(() => {
+                    clearInterval(checkInterval);
+                    console.error('[i18n-adapter] Failed to load I18nService');
+                    resolve(null);
+                }, 5000);
+            }
+        });
+    };
+
+    // Build I18N object from i18n service cache
+    const buildI18NObject = (i18nService, lang, pageName) => {
+        const cache = i18nService.cache[lang];
+        if (!cache) return {};
+
+        const result = { ...cache.common };
+
+        // Add page-specific translations if pageName is provided
+        if (pageName && cache.pages && cache.pages[pageName]) {
+            Object.assign(result, cache.pages[pageName]);
+        }
+
+        // Flatten nested objects for backward compatibility
+        // Example: tooltips.ticket -> tooltipTicket
+        const flattened = {};
+        for (const [key, value] of Object.entries(result)) {
+            if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+                // This is a nested object, flatten it
+                for (const [nestedKey, nestedValue] of Object.entries(value)) {
+                    const flattenedKey = key + nestedKey.charAt(0).toUpperCase() + nestedKey.slice(1);
+                    flattened[flattenedKey] = nestedValue;
+                }
+            }
+        }
+
+        return { ...result, ...flattened };
+    };
+
+    // Build MUST_READ_CONTENT object
+    const buildMustReadContent = (i18nService, lang, pageName) => {
+        if (!pageName) return '';
+        const cache = i18nService.cache[lang];
+        return cache?.pages?.[pageName]?.mustReadContent || '';
+    };
+
+    // Initialize i18n adapter for a specific page
+    window.initPageI18n = async function (pageName = null) {
+        const i18nService = await waitForI18nService();
+
+        if (!i18nService) {
+            console.error('[i18n-adapter] I18nService not available, falling back to empty objects');
+            window.I18N = { kr: {}, en: {}, jp: {} };
+            window.MUST_READ_CONTENT = { kr: '', en: '', jp: '' };
+            return false;
+        }
+
+        // Initialize i18n service if not already done
+        if (!i18nService.cache.kr?.common) {
+            await i18nService.init(pageName);
+        } else if (pageName && !i18nService.cache.kr?.pages?.[pageName]) {
+            // Load page translations if not loaded yet
+            await Promise.all([
+                i18nService.loadPageTranslations(pageName, 'kr'),
+                i18nService.loadPageTranslations(pageName, 'en'),
+                i18nService.loadPageTranslations(pageName, 'jp')
+            ]);
+        }
+
+        // Build I18N object compatible with existing code
+        window.I18N = {
+            kr: buildI18NObject(i18nService, 'kr', pageName),
+            en: buildI18NObject(i18nService, 'en', pageName),
+            jp: buildI18NObject(i18nService, 'jp', pageName)
+        };
+
+        // Build MUST_READ_CONTENT if page has it
+        window.MUST_READ_CONTENT = {
+            kr: buildMustReadContent(i18nService, 'kr', pageName),
+            en: buildMustReadContent(i18nService, 'en', pageName),
+            jp: buildMustReadContent(i18nService, 'jp', pageName)
+        };
+
+        // Log successful initialization
+        console.log('[i18n-adapter] Initialized successfully');
+        console.log('[i18n-adapter] Page:', pageName || 'common only');
+        console.log('[i18n-adapter] Current language:', i18nService.getCurrentLanguage());
+
+        // Expose global helper functions
+        window.getCurrentI18nLanguage = () => i18nService.getCurrentLanguage();
+
+        window.translateI18n = (key, defaultValue) => i18nService.t(key, defaultValue);
+
+        window.setI18nLanguage = async (lang) => {
+            await i18nService.setLanguage(lang);
+
+            // Rebuild I18N objects
+            window.I18N.kr = buildI18NObject(i18nService, 'kr', pageName);
+            window.I18N.en = buildI18NObject(i18nService, 'en', pageName);
+            window.I18N.jp = buildI18NObject(i18nService, 'jp', pageName);
+
+            // Rebuild MUST_READ_CONTENT
+            window.MUST_READ_CONTENT.kr = buildMustReadContent(i18nService, 'kr', pageName);
+            window.MUST_READ_CONTENT.en = buildMustReadContent(i18nService, 'en', pageName);
+            window.MUST_READ_CONTENT.jp = buildMustReadContent(i18nService, 'jp', pageName);
+        };
+
+        // Make i18nService accessible for advanced usage
+        window.__I18nService__ = i18nService;
+
+        return true;
+    };
+
+    // Auto-initialize if no page name needed (common only)
+    // Pages that need page-specific translations should call initPageI18n() manually
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+            // Don't auto-initialize, let pages call initPageI18n() with their page name
+        });
+    }
+
+})();
+

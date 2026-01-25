@@ -83,11 +83,13 @@ kr: /schedule/?lang=kr
 
     <!-- Filter Section -->
     <div class="filter-section">
-        <button class="filter-btn active" data-filter="all" id="filter-all">All</button>
-        <button class="filter-btn" data-filter="released" id="filter-released">Released</button>
-        <button class="filter-btn" data-filter="current" id="filter-current">Current</button>
-        <button class="filter-btn" data-filter="upcoming" id="filter-upcoming">Upcoming</button>
-        <button class="filter-btn" data-filter="future" id="filter-future">Future</button>
+        <button class="filter-btn active" data-filter="all" id="filter-all" data-i18n="filterAll">All</button>
+        <button class="filter-btn" data-filter="released" id="filter-released"
+            data-i18n="filterReleased">Released</button>
+        <button class="filter-btn" data-filter="current" id="filter-current" data-i18n="filterCurrent">Current</button>
+        <button class="filter-btn" data-filter="upcoming" id="filter-upcoming"
+            data-i18n="filterUpcoming">Upcoming</button>
+        <button class="filter-btn" data-filter="future" id="filter-future" data-i18n="filterFuture">Future</button>
     </div>
 
     <!-- Timeline -->
@@ -110,51 +112,16 @@ kr: /schedule/?lang=kr
     </div>
 </div>
 
+<!-- Load i18n Service (MUST be loaded before schedule.js) -->
+<script src="{{ site.baseurl }}/i18n/service/i18n-service.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
+
 <!-- Load Schedule Data & Renderer -->
 <script src="{{ site.baseurl }}/apps/schedule/data.js?v={{ site.time | date: '%s' }}"></script>
 <script src="{{ site.baseurl }}/apps/schedule/schedule.js?v={{ site.time | date: '%s' }}"></script>
 
 <script>
     (function () {
-        // i18n for Schedule Page
-        const translations = {
-            en: {
-                navHome: 'Home',
-                navCurrent: 'Schedule',
-                pageTitle: 'Release Schedule',
-                filterAll: 'All',
-                filterReleased: 'Released',
-                filterCurrent: 'Current',
-                filterUpcoming: 'Upcoming',
-                filterFuture: 'Future'
-            },
-            jp: {
-                navHome: 'ホーム',
-                navCurrent: 'スケジュール',
-                pageTitle: 'リリーススケジュール',
-                filterAll: '全て',
-                filterReleased: 'リリース済み',
-                filterCurrent: '現在',
-                filterUpcoming: '近日',
-                filterFuture: '予定'
-            },
-            kr: {
-                navHome: '홈',
-                navCurrent: '스케줄',
-                pageTitle: '출시 스케줄',
-                filterAll: '전체',
-                filterReleased: '출시됨',
-                filterCurrent: '현재',
-                filterUpcoming: '예정',
-                filterFuture: '미래'
-            }
-        };
-
-        function detectLang() {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get('lang') || 'en';
-        }
-
         // SEO Meta Data
         const seoData = {
             en: {
@@ -176,6 +143,11 @@ kr: /schedule/?lang=kr
                 ogLocale: 'ko_KR'
             }
         };
+
+        function detectLang() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('lang') || 'en';
+        }
 
         function updateSEOTags(lang) {
             const seo = seoData[lang] || seoData.en;
@@ -247,58 +219,33 @@ kr: /schedule/?lang=kr
             canonical.setAttribute('href', currentUrl);
 
             // Update HTML lang attribute
-            document.documentElement.setAttribute('lang', lang === 'jp' ? 'ja' : lang);
-        }
-
-        function applyTranslations() {
-            const lang = detectLang();
-            const t = translations[lang] || translations.en;
-
-            // Update SEO tags
-            updateSEOTags(lang);
-
-            // Navigation
-            const navHome = document.getElementById('nav-home');
-            if (navHome) navHome.textContent = t.navHome;
-
-            const navCurrent = document.getElementById('nav-current');
-            if (navCurrent) navCurrent.textContent = t.navCurrent;
-
-            const pageTitle = document.getElementById('page-title');
-            if (pageTitle) {
-                pageTitle.textContent = t.pageTitle;
-            }
-
-            const filterAll = document.getElementById('filter-all');
-            if (filterAll) filterAll.textContent = t.filterAll;
-
-            const filterReleased = document.getElementById('filter-released');
-            if (filterReleased) filterReleased.textContent = t.filterReleased;
-
-            const filterCurrent = document.getElementById('filter-current');
-            if (filterCurrent) filterCurrent.textContent = t.filterCurrent;
-
-            const filterUpcoming = document.getElementById('filter-upcoming');
-            if (filterUpcoming) filterUpcoming.textContent = t.filterUpcoming;
-
-            const filterFuture = document.getElementById('filter-future');
-            if (filterFuture) filterFuture.textContent = t.filterFuture;
-
-            // Notice text visibility
-            document.getElementById('notice-text-en').style.display = lang === 'en' ? 'block' : 'none';
-            document.getElementById('notice-text-jp').style.display = lang === 'jp' ? 'block' : 'none';
-            document.getElementById('notice-text-kr').style.display = lang === 'kr' ? 'block' : 'none';
+            document.documentElement.setAttribute('lang', lang === 'jp' ? 'ja' : lang === 'kr' ? 'ko' : 'en');
         }
 
         // Initialize on DOM ready
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => {
-                Navigation.load('schedule');
-                applyTranslations();
-            });
-        } else {
+        document.addEventListener('DOMContentLoaded', async function () {
+            const lang = detectLang();
+
+            // SEO update first (doesn't depend on i18n service)
+            updateSEOTags(lang);
+
+            // Initialize i18n
+            if (typeof initPageI18n === 'function') {
+                await initPageI18n('schedule');
+            }
+
+            // Then load navigation
             Navigation.load('schedule');
-            applyTranslations();
-        }
+
+            // Notice text visibility based on language
+            const noticeLang = (typeof getCurrentLang === 'function') ? getCurrentLang() : lang;
+            const noticeEn = document.getElementById('notice-text-en');
+            const noticeJp = document.getElementById('notice-text-jp');
+            const noticeKr = document.getElementById('notice-text-kr');
+
+            if (noticeEn) noticeEn.style.display = noticeLang === 'en' ? 'block' : 'none';
+            if (noticeJp) noticeJp.style.display = noticeLang === 'jp' ? 'block' : 'none';
+            if (noticeKr) noticeKr.style.display = noticeLang === 'kr' ? 'block' : 'none';
+        });
     })();
 </script>

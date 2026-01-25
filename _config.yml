@@ -90,24 +90,13 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - README.md
-
-# 빌드 성능 최적화
-exclude:
-  - .git
-  - .gitignore
-  - node_modules
-  - vendor
-  - Gemfile
-  - Gemfile.lock
-  - README.md
+  - package.json
+  - package-lock.json
+  - .jekyll-cache
+  - .jekyll-metadata
 
 # 감시 제외 설정
 keep_files:
-  - assets
-  - _site/assets
-
-# Assets 처리 설정
-include:
   - assets
   - _site/assets
 

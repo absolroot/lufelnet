@@ -231,11 +231,11 @@
 
         if (this.targets.length === 0) {
             this.balanceHistory = [];
-            console.log('[Graph] No targets, balanceHistory cleared');
+            //console.log('[Graph] No targets, balanceHistory cleared');
             return;
         }
 
-        console.log('[Graph] calculateRunningBalance called with', this.targets.length, 'targets');
+        //console.log('[Graph] calculateRunningBalance called with', this.targets.length, 'targets');
 
         // Use the same calculation logic as timeline cards and pull plan
         // Collect all character cards between today and last target, in order
@@ -430,14 +430,14 @@
         }
 
         this.balanceHistory = history;
-        console.log('[Graph] balanceHistory calculated:', history.length, 'entries');
+        //console.log('[Graph] balanceHistory calculated:', history.length, 'entries');
     };
 
     /**
      * Render the balance chart
      */
     PullSimulator.prototype.renderChart = function () {
-        console.log('[Graph] renderChart called');
+        //console.log('[Graph] renderChart called');
         const canvas = document.getElementById('balanceChart');
         const emptyEl = document.getElementById('chartEmpty');
         if (!canvas) {
@@ -452,7 +452,7 @@
             return;
         }
 
-        console.log('[Graph] Rendering chart with', this.balanceHistory.length, 'data points');
+        //console.log('[Graph] Rendering chart with', this.balanceHistory.length, 'data points');
 
         if (emptyEl) emptyEl.style.display = 'none';
 
@@ -571,17 +571,17 @@
             console.log('[Graph] No images to load, creating chart immediately');
             this.createChartWithImages(ctx, labels, allData, imageCache, BASE_URL);
         } else {
-            console.log('[Graph] Loading', charNamesToLoad.size, 'character images,', awakeningLevelsToLoad.size, 'awakening icons, and', refinementLevelsToLoad.size, 'refinement icons');
+            //console.log('[Graph] Loading', charNamesToLoad.size, 'character images,', awakeningLevelsToLoad.size, 'awakening icons, and', refinementLevelsToLoad.size, 'refinement icons');
             const charPromises = Array.from(charNamesToLoad).map(name => loadImage(name));
             const awakeningPromises = Array.from(awakeningLevelsToLoad).map(level => loadAwakeningIcon(level));
             const refinementPromises = Array.from(refinementLevelsToLoad).map(level => loadRefinementIcon(level));
             Promise.all([...charPromises, ...awakeningPromises, ...refinementPromises]).then(() => {
                 // Images loaded, continue with chart creation
-                console.log('[Graph] All images loaded, creating chart');
+                //console.log('[Graph] All images loaded, creating chart');
                 this.createChartWithImages(ctx, labels, allData, imageCache, BASE_URL);
             }).catch(() => {
                 // Even if some images fail, create chart anyway
-                console.log('[Graph] Some images failed to load, creating chart anyway');
+                //console.log('[Graph] Some images failed to load, creating chart anyway');
                 this.createChartWithImages(ctx, labels, allData, imageCache, BASE_URL);
             });
         }
@@ -600,7 +600,7 @@
             return;
         }
 
-        console.log('[Graph] createChartWithImages called, creating Chart.js instance');
+        //console.log('[Graph] createChartWithImages called, creating Chart.js instance');
 
         this.chart = new Chart(ctx, {
             type: 'line',
@@ -706,7 +706,7 @@
             }
         });
 
-        console.log('[Graph] Chart.js instance created, chart object:', this.chart);
+        //console.log('[Graph] Chart.js instance created, chart object:', this.chart);
     };
 
 })();

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="kr">
+<html lang="kr" class="i18n-loading">
 
 <head>
   <meta charset="UTF-8">
@@ -238,11 +238,14 @@
   </div>
 
   <!-- PWA 설치 프롬프트 -->
-  <div id="pwa-install-prompt" style="display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #7e1919; color: white; padding: 16px 24px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); z-index: 10000; max-width: 90%; text-align: center;">
+  <div id="pwa-install-prompt"
+    style="display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #7e1919; color: white; padding: 16px 24px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); z-index: 10000; max-width: 90%; text-align: center;">
     <p id="pwa-install-message" style="margin: 0 0 12px 0; font-size: 14px;">Add to home screen for faster access</p>
     <div style="display: flex; gap: 8px; justify-content: center;">
-      <button id="pwa-install-btn" style="background: white; color: #7e1919; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-weight: bold;">Install</button>
-      <button id="pwa-dismiss-btn" style="background: transparent; color: white; border: 1px solid white; padding: 8px 16px; border-radius: 4px; cursor: pointer;">Later</button>
+      <button id="pwa-install-btn"
+        style="background: white; color: #7e1919; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-weight: bold;">Install</button>
+      <button id="pwa-dismiss-btn"
+        style="background: transparent; color: white; border: 1px solid white; padding: 8px 16px; border-radius: 4px; cursor: pointer;">Later</button>
     </div>
   </div>
 
@@ -254,12 +257,12 @@
         navigator.serviceWorker.register('{{ site.baseurl }}/sw.js')
           .then((registration) => {
             console.log('[PWA] Service Worker 등록 성공:', registration.scope);
-            
+
             // 주기적으로 업데이트 확인 (개발 중)
             setInterval(() => {
               registration.update();
             }, 60000); // 1분마다 확인
-            
+
             // 업데이트 확인
             registration.addEventListener('updatefound', () => {
               const newWorker = registration.installing;
@@ -267,8 +270,8 @@
                 if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
                   console.log('[PWA] 새 버전이 사용 가능합니다. 페이지를 새로고침하세요.');
                   // 개발 환경에서는 자동 새로고침
-                  if (window.location.hostname === 'localhost' || 
-                      window.location.hostname === '127.0.0.1') {
+                  if (window.location.hostname === 'localhost' ||
+                    window.location.hostname === '127.0.0.1') {
                     window.location.reload();
                   }
                 }
@@ -305,7 +308,7 @@
     function getCurrentLanguage() {
       const urlParams = new URLSearchParams(window.location.search);
       const urlLang = urlParams.get('lang');
-      
+
       if (urlLang && ['kr', 'en', 'jp', 'cn'].includes(urlLang)) {
         return urlLang;
       } else if (typeof LanguageRouter !== 'undefined' && LanguageRouter.getCurrentLanguage) {
@@ -351,7 +354,7 @@
     function updatePWAInstallTexts() {
       const lang = getCurrentLanguage();
       const texts = pwaInstallTexts[lang] || pwaInstallTexts.en;
-      
+
       if (installMessage) {
         installMessage.textContent = texts.message;
       }
@@ -378,9 +381,9 @@
 
     // 설치 프롬프트가 표시되었는지 확인
     const installPromptShown = localStorage.getItem('pwa-install-prompt-shown');
-    const isInstalled = window.matchMedia('(display-mode: standalone)').matches || 
-                        window.navigator.standalone || 
-                        document.referrer.includes('android-app://');
+    const isInstalled = window.matchMedia('(display-mode: standalone)').matches ||
+      window.navigator.standalone ||
+      document.referrer.includes('android-app://');
 
     // 이미 설치되어 있으면 프롬프트 숨김
     if (isInstalled && installPrompt) {
@@ -413,13 +416,13 @@
             deferredPrompt.prompt();
             const { outcome } = await deferredPrompt.userChoice;
             console.log('[PWA] 사용자 선택:', outcome);
-            
+
             if (outcome === 'accepted') {
               console.log('[PWA] 사용자가 설치를 수락했습니다.');
             } else {
               console.log('[PWA] 사용자가 설치를 거부했습니다.');
             }
-            
+
             deferredPrompt = null;
             if (installPrompt) {
               installPrompt.style.display = 'none';

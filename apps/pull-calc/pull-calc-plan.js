@@ -124,9 +124,10 @@
         const versionIncome = (startDate >= today) ? (this.income.versionIncome * versionMultiplier) : 0;
 
         // Debug log for version 4.0+
+        /*
         if (versionNum >= 4.0) {
             console.log(`[Income] Version ${charVersion}, scheduleScenario: ${scheduleScenario}, multiplier: ${versionMultiplier}, versionIncome: ${versionIncome} (base: ${this.income.versionIncome})`);
-        }
+        }*/
         // const battlePassIncome = this.income.battlePassEnabled ? this.income.battlePassAmount : 0;
         const battlePassIncome = 0; // DISABLED
 

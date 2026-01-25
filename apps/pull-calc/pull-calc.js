@@ -1,4 +1,4 @@
-/**
+﻿/**
  * P5X Pull Calculator
  * 뽑기 계획 시뮬레이터 - 재화 및 수입 기반 다중 목표 계획 수립
  */
@@ -218,7 +218,8 @@ function applyServerDelayToData(isSea) {
 class PullSimulator {
 
     constructor() {
-        this.lang = this.detectLang();
+        // Use global getCurrentLang() instead of detectLang()
+        this.lang = typeof getCurrentLang === 'function' ? getCurrentLang() : 'kr';
 
         // Assets
         this.assets = {
@@ -355,7 +356,7 @@ class PullSimulator {
             rootEl,
             baseUrl: (typeof window.BASE_URL !== 'undefined') ? window.BASE_URL : '',
             storageKey: 'pullCalc_extraIncome',
-            t: (key) => this.t(key),
+            t: (key) => (typeof t === 'function' ? t(key) : key),
             onChange: () => {
                 this.extraIncomeRows = this.extraIncomeManager ? this.extraIncomeManager.getRows() : [];
                 this.buildSchedule();
@@ -387,49 +388,49 @@ class PullSimulator {
 
     applyI18n() {
         const pageTitleEl = document.getElementById('page-title');
-        if (pageTitleEl) pageTitleEl.textContent = this.t('pageTitle');
+        if (pageTitleEl) pageTitleEl.textContent = t('pageTitle');
 
         const navHome = document.getElementById('nav-home');
-        if (navHome) navHome.textContent = this.t('navHome');
+        if (navHome) navHome.textContent = t('navHome');
 
         const navCurrent = document.getElementById('nav-current');
-        if (navCurrent) navCurrent.textContent = this.t('navCurrent');
+        if (navCurrent) navCurrent.textContent = t('navCurrent');
 
         const assetsTitle = document.getElementById('assetsTitle');
-        if (assetsTitle) assetsTitle.textContent = this.t('assetsTitle');
+        if (assetsTitle) assetsTitle.textContent = t('assetsTitle');
 
         const incomeTitle = document.getElementById('incomeTitle');
-        if (incomeTitle) incomeTitle.textContent = this.t('incomeTitle');
+        if (incomeTitle) incomeTitle.textContent = t('incomeTitle');
 
         const pityTitle = document.getElementById('pityTitle');
-        if (pityTitle) pityTitle.textContent = this.t('pityTitle');
+        if (pityTitle) pityTitle.textContent = t('pityTitle');
 
         const scheduleNotice = document.getElementById('scheduleNotice');
-        if (scheduleNotice) scheduleNotice.textContent = this.t('scheduleNotice');
+        if (scheduleNotice) scheduleNotice.textContent = t('scheduleNotice');
 
         const chartTitle = document.getElementById('chartTitle');
-        if (chartTitle) chartTitle.textContent = this.t('chartTitle');
+        if (chartTitle) chartTitle.textContent = t('chartTitle');
 
         const chartEmptyText = document.getElementById('chartEmptyText');
-        if (chartEmptyText) chartEmptyText.textContent = this.t('chartEmpty');
+        if (chartEmptyText) chartEmptyText.textContent = t('chartEmpty');
 
         const planTitle = document.getElementById('planTitle');
-        if (planTitle) planTitle.textContent = this.t('planTitle');
+        if (planTitle) planTitle.textContent = t('planTitle');
 
         const planDescription = document.getElementById('planDescription');
-        if (planDescription) planDescription.textContent = this.t('planDescription');
+        if (planDescription) planDescription.textContent = t('planDescription');
 
         const loadingText = document.getElementById('loadingText');
-        if (loadingText) loadingText.textContent = this.t('loading');
+        if (loadingText) loadingText.textContent = t('loading');
 
         const extraIncomeTitle = document.getElementById('extraIncomeTitle');
-        if (extraIncomeTitle) extraIncomeTitle.textContent = this.t('extraIncomeTitle');
+        if (extraIncomeTitle) extraIncomeTitle.textContent = t('extraIncomeTitle');
 
         const extraIncomeAddBtn = document.getElementById('extraIncomeAddBtn');
-        if (extraIncomeAddBtn) extraIncomeAddBtn.textContent = this.t('extraIncomeAdd');
+        if (extraIncomeAddBtn) extraIncomeAddBtn.textContent = t('extraIncomeAdd');
 
         const hudTotalLabel = document.getElementById('hudTotalLabel');
-        if (hudTotalLabel) hudTotalLabel.textContent = this.t('totalEmber');
+        if (hudTotalLabel) hudTotalLabel.textContent = t('totalEmber');
 
         // Labels
         const labels = [
@@ -444,21 +445,21 @@ class PullSimulator {
         ];
         labels.forEach(([id, key]) => {
             const el = document.getElementById(id);
-            if (el) el.textContent = this.t(key);
+            if (el) el.textContent = t(key);
         });
 
         // Additional labels
         const labelCharPityEl = document.getElementById('labelCharPity');
-        if (labelCharPityEl) labelCharPityEl.textContent = this.t('charPityProgress');
+        if (labelCharPityEl) labelCharPityEl.textContent = t('charPityProgress');
 
         const labelWeaponPityEl = document.getElementById('labelWeaponPity');
-        if (labelWeaponPityEl) labelWeaponPityEl.textContent = this.t('weaponPityProgress');
+        if (labelWeaponPityEl) labelWeaponPityEl.textContent = t('weaponPityProgress');
 
         const labelMonthlySubEl = document.getElementById('labelMonthlySub');
-        if (labelMonthlySubEl) labelMonthlySubEl.textContent = this.t('monthlySubPerDay');
+        if (labelMonthlySubEl) labelMonthlySubEl.textContent = t('monthlySubPerDay');
 
         const labelBattlePassEl = document.getElementById('labelBattlePass');
-        if (labelBattlePassEl) labelBattlePassEl.textContent = this.t('battlePassPerPatch');
+        if (labelBattlePassEl) labelBattlePassEl.textContent = t('battlePassPerPatch');
 
         // Summary labels
 
@@ -466,7 +467,9 @@ class PullSimulator {
         document.querySelectorAll('[data-i18n-tooltip]').forEach(el => {
             const tooltipKey = el.getAttribute('data-i18n-tooltip');
             if (tooltipKey) {
-                el.setAttribute('data-tooltip', this.t(tooltipKey));
+                const tooltipValue = t(tooltipKey);
+                // console.log('[Tooltip Debug]', tooltipKey, '→', tooltipValue);
+                el.setAttribute('data-tooltip', tooltipValue);
                 // Re-bind tooltip after updating data-tooltip attribute
                 // Remove existing binding flag to allow re-binding
                 if (el.dataset.tooltipBound === '1') {
@@ -485,30 +488,30 @@ class PullSimulator {
 
         // Weapon scenario options
         const optionBest = document.getElementById('optionBest');
-        if (optionBest) optionBest.textContent = this.t('weaponScenarioBest');
+        if (optionBest) optionBest.textContent = t('weaponScenarioBest');
 
         const optionAverage = document.getElementById('optionAverage');
-        if (optionAverage) optionAverage.textContent = this.t('weaponScenarioAverage');
+        if (optionAverage) optionAverage.textContent = t('weaponScenarioAverage');
 
         const optionWorst = document.getElementById('optionWorst');
-        if (optionWorst) optionWorst.textContent = this.t('weaponScenarioWorst');
+        if (optionWorst) optionWorst.textContent = t('weaponScenarioWorst');
 
         // Schedule scenario options
         const option3Weeks = document.getElementById('option3Weeks');
-        if (option3Weeks) option3Weeks.textContent = this.t('scheduleScenario3Weeks');
+        if (option3Weeks) option3Weeks.textContent = t('scheduleScenario3Weeks');
 
         const option2Weeks = document.getElementById('option2Weeks');
-        if (option2Weeks) option2Weeks.textContent = this.t('scheduleScenario2Weeks');
+        if (option2Weeks) option2Weeks.textContent = t('scheduleScenario2Weeks');
 
         const tzLabel = document.getElementById('labelTimezone');
-        if (tzLabel) tzLabel.textContent = this.t('timezone');
+        if (tzLabel) tzLabel.textContent = t('timezone');
 
         const pitySource = document.getElementById('pitySource');
-        if (pitySource) pitySource.textContent = this.t('pitySource');
+        if (pitySource) pitySource.textContent = t('pitySource');
 
         // Update must read title and content
         const mustReadTitle = document.getElementById('mustReadTitle');
-        if (mustReadTitle) mustReadTitle.textContent = this.t('mustReadTitle');
+        if (mustReadTitle) mustReadTitle.textContent = t('mustReadTitle');
 
         const mustReadText = document.getElementById('mustReadText');
         if (mustReadText) {
@@ -650,10 +653,10 @@ class PullSimulator {
 
     updatePityDisplay() {
         const charMedianValue = document.getElementById('charMedianValue');
-        if (charMedianValue) charMedianValue.textContent = `${this.charPityStats.median}${this.t('pulls')}`;
+        if (charMedianValue) charMedianValue.textContent = `${this.charPityStats.median}${t('pulls')}`;
 
         const weaponMedianValue = document.getElementById('weaponMedianValue');
-        if (weaponMedianValue) weaponMedianValue.textContent = `${this.weaponPityStats.median}${this.t('pulls')}`;
+        if (weaponMedianValue) weaponMedianValue.textContent = `${this.weaponPityStats.median}${t('pulls')}`;
     }
 
     initializeMustReadAccordion() {
@@ -949,7 +952,7 @@ class PullSimulator {
 
         const scheduleData = window.ReleaseScheduleData;
         if (!scheduleData) {
-            container.innerHTML = `<div class="timeline-loading"><span>${this.t('loading')}</span></div>`;
+            container.innerHTML = `<div class="timeline-loading"><span>${t('loading')}</span></div>`;
             setTimeout(() => this.buildSchedule(), 500);
             return;
         }
@@ -984,11 +987,11 @@ class PullSimulator {
 
         // Header (notice + scenario selector) is inside timelineContainer because
         // buildSchedule() replaces innerHTML entirely.
-        const scheduleScenarioLabel = this.t('scheduleScenario');
-        const scheduleNoticeText = this.t('scheduleNotice');
-        const scenarioTooltip = this.t('tooltipScheduleScenario');
-        const seaServerLabel = this.t('labelSeaServer');
-        const seaServerTooltip = this.t('tooltipSeaServer');
+        const scheduleScenarioLabel = t('scheduleScenario');
+        const scheduleNoticeText = t('scheduleNotice');
+        const scenarioTooltip = t('tooltipScheduleScenario');
+        const seaServerLabel = t('labelSeaServer');
+        const seaServerTooltip = t('tooltipSeaServer');
 
         const headerHtml = `
             <div class="schedule-notice schedule-notice--in-timeline">
@@ -1006,8 +1009,8 @@ class PullSimulator {
                                 </span>
                             </label>
                             <select id="inputScheduleScenario" class="modal-input modal-input--auto">
-                                <option value="3weeks" id="option3Weeks">${this.t('scheduleScenario3Weeks')}</option>
-                                <option value="2weeks" id="option2Weeks">${this.t('scheduleScenario2Weeks')}</option>
+                                <option value="3weeks" id="option3Weeks">${t('scheduleScenario3Weeks')}</option>
+                                <option value="2weeks" id="option2Weeks">${t('scheduleScenario2Weeks')}</option>
                             </select>
                         </div>
                     </div>
@@ -1184,10 +1187,10 @@ class PullSimulator {
         if (diffDays > 0) {
             daysText = `D-${diffDays}`;
         } else if (diffDays === 0) {
-            daysText = this.t('today');
+            daysText = t('today');
             daysClass = 'released';
         } else {
-            daysText = `${Math.abs(diffDays)}${this.t('daysAgo')}`;
+            daysText = `${Math.abs(diffDays)}${t('daysAgo')}`;
             daysClass = 'released';
         }
 
@@ -1230,8 +1233,8 @@ class PullSimulator {
 
         let daysText = '';
         if (diffDays > 0) daysText = `D-${diffDays}`;
-        else if (diffDays === 0) daysText = this.t('today');
-        else daysText = `${Math.abs(diffDays)}${this.t('daysAgo')}`;
+        else if (diffDays === 0) daysText = t('today');
+        else daysText = `${Math.abs(diffDays)}${t('daysAgo')}`;
 
         // Calculate expected income for this banner interval
         let incomeHtml = '';
@@ -1278,27 +1281,27 @@ class PullSimulator {
             const emberTooltipLines = [];
             if (tooltipHeader) emberTooltipLines.push(tooltipHeader);
             // Daily (ember): include both base daily income and extra-income daily ember
-            emberTooltipLines.push(`${this.t('incomeDaily')}: ${fmt((income && income.dailyIncome ? income.dailyIncome : 0) + (byFreq ? byFreq.daily.ember : 0))}`);
-            emberTooltipLines.push(`${this.t('incomeWeekly')}: ${fmt(byFreq ? byFreq.weekly.ember : 0)}`);
-            emberTooltipLines.push(`${this.t('incomeMonthly')}: ${fmt(byFreq ? byFreq.monthly.ember : 0)}`);
-            emberTooltipLines.push(`${this.t('incomeVersion')}: ${fmt((income && income.versionIncome ? income.versionIncome : 0) + (byFreq ? byFreq.version.ember : 0))}`);
-            emberTooltipLines.push(`${this.t('incomeOnce')}: ${fmt(byFreq ? byFreq.once.ember : 0)}`);
+            emberTooltipLines.push(`${t('incomeDaily')}: ${fmt((income && income.dailyIncome ? income.dailyIncome : 0) + (byFreq ? byFreq.daily.ember : 0))}`);
+            emberTooltipLines.push(`${t('incomeWeekly')}: ${fmt(byFreq ? byFreq.weekly.ember : 0)}`);
+            emberTooltipLines.push(`${t('incomeMonthly')}: ${fmt(byFreq ? byFreq.monthly.ember : 0)}`);
+            emberTooltipLines.push(`${t('incomeVersion')}: ${fmt((income && income.versionIncome ? income.versionIncome : 0) + (byFreq ? byFreq.version.ember : 0))}`);
+            emberTooltipLines.push(`${t('incomeOnce')}: ${fmt(byFreq ? byFreq.once.ember : 0)}`);
 
             const ticketTooltipLines = [];
             if (tooltipHeader) ticketTooltipLines.push(tooltipHeader);
-            ticketTooltipLines.push(`${this.t('incomeDaily')}: ${fmt(byFreq ? byFreq.daily.ticket : 0)}`);
-            ticketTooltipLines.push(`${this.t('incomeWeekly')}: ${fmt(byFreq ? byFreq.weekly.ticket : 0)}`);
-            ticketTooltipLines.push(`${this.t('incomeMonthly')}: ${fmt(byFreq ? byFreq.monthly.ticket : 0)}`);
-            ticketTooltipLines.push(`${this.t('incomeVersion')}: ${fmt(byFreq ? byFreq.version.ticket : 0)}`);
-            ticketTooltipLines.push(`${this.t('incomeOnce')}: ${fmt(byFreq ? byFreq.once.ticket : 0)}`);
+            ticketTooltipLines.push(`${t('incomeDaily')}: ${fmt(byFreq ? byFreq.daily.ticket : 0)}`);
+            ticketTooltipLines.push(`${t('incomeWeekly')}: ${fmt(byFreq ? byFreq.weekly.ticket : 0)}`);
+            ticketTooltipLines.push(`${t('incomeMonthly')}: ${fmt(byFreq ? byFreq.monthly.ticket : 0)}`);
+            ticketTooltipLines.push(`${t('incomeVersion')}: ${fmt(byFreq ? byFreq.version.ticket : 0)}`);
+            ticketTooltipLines.push(`${t('incomeOnce')}: ${fmt(byFreq ? byFreq.once.ticket : 0)}`);
 
             const weaponTicketTooltipLines = [];
             if (tooltipHeader) weaponTicketTooltipLines.push(tooltipHeader);
-            weaponTicketTooltipLines.push(`${this.t('incomeDaily')}: ${fmt(byFreq ? byFreq.daily.weaponTicket : 0)}`);
-            weaponTicketTooltipLines.push(`${this.t('incomeWeekly')}: ${fmt(byFreq ? byFreq.weekly.weaponTicket : 0)}`);
-            weaponTicketTooltipLines.push(`${this.t('incomeMonthly')}: ${fmt(byFreq ? byFreq.monthly.weaponTicket : 0)}`);
-            weaponTicketTooltipLines.push(`${this.t('incomeVersion')}: ${fmt(byFreq ? byFreq.version.weaponTicket : 0)}`);
-            weaponTicketTooltipLines.push(`${this.t('incomeOnce')}: ${fmt(byFreq ? byFreq.once.weaponTicket : 0)}`);
+            weaponTicketTooltipLines.push(`${t('incomeDaily')}: ${fmt(byFreq ? byFreq.daily.weaponTicket : 0)}`);
+            weaponTicketTooltipLines.push(`${t('incomeWeekly')}: ${fmt(byFreq ? byFreq.weekly.weaponTicket : 0)}`);
+            weaponTicketTooltipLines.push(`${t('incomeMonthly')}: ${fmt(byFreq ? byFreq.monthly.weaponTicket : 0)}`);
+            weaponTicketTooltipLines.push(`${t('incomeVersion')}: ${fmt(byFreq ? byFreq.version.weaponTicket : 0)}`);
+            weaponTicketTooltipLines.push(`${t('incomeOnce')}: ${fmt(byFreq ? byFreq.once.weaponTicket : 0)}`);
 
             incomeHtml = `
                 <div class="char-income">
@@ -1659,7 +1662,12 @@ class PullSimulator {
 }
 
 // Initialize
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    // Initialize i18n first
+    if (typeof initPageI18n === 'function') {
+        await initPageI18n('pull-calc');
+    }
+
     const checkAndInit = () => {
         if (window.characterData && window.ReleaseScheduleData) {
             window.pullSimulator = new PullSimulator();

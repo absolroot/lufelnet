@@ -1,4 +1,4 @@
-/**
+﻿/**
  * P5X Release Schedule Renderer
  * Renders the character release timeline
  * 
@@ -88,17 +88,7 @@
         });
     }
 
-    // Get current language
-    function getLang() {
-        const urlParams = new URLSearchParams(window.location.search);
-        return urlParams.get('lang') || 'en';
-    }
-
-    // Get translation
-    function t(key) {
-        const lang = getLang();
-        return data.i18n[lang]?.[key] || data.i18n.en[key] || key;
-    }
+    // Use global getCurrentLang() and t() functions from i18n service
 
     // Persona CSV translation cache
     let personaCsvMap = null;
@@ -119,7 +109,9 @@
         if (revelationDataLoading) return revelationDataLoading;
 
         revelationDataLoading = new Promise((resolve) => {
-            const lang = getLang();
+            // Get language from URL directly (don't use getCurrentLang to avoid dependency)
+            const urlParams = new URLSearchParams(window.location.search);
+            const lang = urlParams.get('lang') || 'en';
 
             // Always load Korean data first for mapping
             let krDataLoaded = false;
@@ -209,7 +201,7 @@
     // Get localized revelation name
     // revelationName is always in Korean (from data.js)
     function getLocalizedRevelationName(revelationName) {
-        const lang = getLang();
+        const lang = getCurrentLang();
 
         // If Korean, return as is
         if (lang === 'kr') {
@@ -259,7 +251,7 @@
 
     // Get revelation tooltip data
     function getRevelationTooltipData(revelationName) {
-        const lang = getLang();
+        const lang = getCurrentLang();
         const koreanName = getKoreanRevelationName(revelationName);
 
         // Check if it's main or sub revelation
@@ -405,7 +397,7 @@
 
         // Get the effect text based on current language
         let effectText = 'No effect information available.';
-        const lang = getLang();
+        const lang = getCurrentLang();
 
         if (weaponsData && weaponsData[weaponId]) {
             const weapon = weaponsData[weaponId];
@@ -502,7 +494,7 @@
 
     // Get localized weapon name
     function getLocalizedWeaponName(weaponName) {
-        const lang = getLang();
+        const lang = getCurrentLang();
         if (!weaponsData || !weaponsData[weaponName]) {
             return weaponName;
         }
@@ -566,7 +558,7 @@
 
     // Get localized persona name from CSV
     function getLocalizedPersonaName(personaName) {
-        const lang = getLang();
+        const lang = getCurrentLang();
 
         // Try CSV first
         if (personaCsvMap && personaCsvMap[personaName]) {
@@ -602,7 +594,7 @@
     // Format date for display
     function formatDate(dateStr) {
         const date = parseDate(dateStr);
-        const lang = getLang();
+        const lang = getCurrentLang();
         const options = { year: 'numeric', month: 'short', day: 'numeric' };
 
         if (lang === 'jp') {
@@ -822,7 +814,7 @@
         const charData = window.characterData?.[charName];
         if (!charData) return charName;
 
-        const lang = getLang();
+        const lang = getCurrentLang();
         if (lang === 'en' && charData.name_en) return charData.name_en;
         if (lang === 'jp' && charData.name_jp) return charData.name_jp;
         return charData.name || charName;
@@ -851,7 +843,7 @@
         const isLimit = charData.limit || false;
         const position = charData.position;
         const element = charData.element;
-        const lang = getLang();
+        const lang = getCurrentLang();
 
         // Build rarity stars HTML
         const starHtml = rarity == 5 && isLimit
@@ -931,7 +923,7 @@
             });
 
             // 언어별 콜라보 설명 (출시 콘텐츠 명시)
-            const lang = getLang();
+            const lang = getCurrentLang();
             const collaboLabels = {
                 en: {
                     p5: { title: 'P5 Collaboration Release', desc: 'P5 Collaboration' },
@@ -979,7 +971,7 @@
         let mainStoryHtml = '';
         const mainStoryValue = release['main-story'] || release.main_story;
         if (mainStoryValue) {
-            const lang = getLang();
+            const lang = getCurrentLang();
             const mainStoryLabels = {
                 en: {
                     prefix: 'Main Story',
@@ -1006,7 +998,7 @@
         // Summer Event 표시 (summer 필드 사용)
         let summerHtml = '';
         if (release.summer === true) {
-            const lang = getLang();
+            const lang = getCurrentLang();
             const summerLabels = {
                 en: {
                     title: 'Summer Event Release',
@@ -1033,7 +1025,7 @@
         // Gold Ticket Unlock 표시 (goldTicketUnlocks 필드 사용)
         let goldTicketHtml = '';
         if (release.goldTicketUnlocks && Array.isArray(release.goldTicketUnlocks) && release.goldTicketUnlocks.length > 0) {
-            const lang = getLang();
+            const lang = getCurrentLang();
             const goldTicketLabels = {
                 en: {
                     title: 'Gold Ticket Unlock',
@@ -1297,7 +1289,7 @@
 
     // Render anniversary event
     function renderAnniversaryEvent(event) {
-        const lang = getLang();
+        const lang = getCurrentLang();
         const eventDate = parseDate(event.date);
         const daysText = getDaysText(event.date);
 
@@ -1654,14 +1646,25 @@
 
     // Main initialization
     async function init() {
+        // Wait for i18n service (window.t) to be ready
+        if (typeof window.t !== 'function') {
+            await new Promise(resolve => {
+                const checkI18n = setInterval(() => {
+                    if (typeof window.t === 'function') {
+                        clearInterval(checkI18n);
+                        resolve();
+                    }
+                }, 50);
+                // Fallback timeout after 3 seconds
+                setTimeout(() => {
+                    clearInterval(checkI18n);
+                    resolve();
+                }, 3000);
+            });
+        }
+
         try {
             // Load SEA Server Mode state from localStorage
-            const isSeaServer = localStorage.getItem('schedule_isSeaServer') === 'true';
-
-            // Apply server delay before any processing
-            applyServerDelayToData(isSeaServer);
-
-            // Wait for character data and load persona CSV, weapons data, and revelation data
             await Promise.all([
                 waitForCharacterData(),
                 loadPersonaCsv(),
@@ -1669,30 +1672,17 @@
                 loadRevelationData()
             ]);
 
-            // Generate full schedule
+            // Get SEA server preference
+            const urlParams = new URLSearchParams(window.location.search);
+            const isSea = urlParams.get('sea') === 'true';
+
+            // Apply SEA server delay if needed
+            applyServerDelayToData(isSea);
+
             const releases = generateFullSchedule();
-
-            // Render current banner
-            renderCurrentBanner(releases);
-
-            // Render timeline
             renderTimeline(releases);
-
-            // Initialize filters
+            renderCurrentBanner(releases);
             initFilters(releases);
-
-            // Initialize weapon modal and tooltip events
-            initWeaponModalEvents();
-
-            // Initialize tooltips after rendering (wait for tooltip.js to be ready)
-            setTimeout(() => {
-                if (typeof addTooltips === 'function') {
-                    addTooltips();
-                } else if (window.addTooltips) {
-                    window.addTooltips();
-                }
-            }, 500);
-
         } catch (error) {
             console.error('Schedule initialization failed:', error);
             const container = document.getElementById('timeline-container');

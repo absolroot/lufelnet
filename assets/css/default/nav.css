@@ -304,6 +304,20 @@
     object-fit: contain !important;
 }
 
+.nav-main-item img[src*="calculator.png"],
+.nav-link img[src*="calculator.png"],
+.nav-main-item img[src*="tactic.png"],
+.nav-link img[src*="tactic.png"],
+.nav-main-item img[src*="tier.png"],
+.nav-link img[src*="tier.png"],
+.nav-main-item img[src*="synergy.png"],
+.nav-link img[src*="synergy.png"] {
+    width: 26px !important;
+    height: 26px !important;
+    padding: 2px;
+    object-fit: contain !important;
+}
+
 .nav-item:hover {
     background-color: rgba(255, 255, 255, 0.05);
 }
@@ -520,7 +534,7 @@
 
     /* 메인 메뉴 아이템 (서브메뉴 있는 경우) - 고정 좌측 패딩 */
     .nav-main-item {
-        padding: 15px 12px 15px 26px;
+        padding: 15px 12px 15px 26px !important;
     }
 
     .nav-main-item img {

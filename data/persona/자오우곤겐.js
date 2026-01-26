@@ -12,6 +12,7 @@ window.personaFiles["자오우곤겐"] = {
   "event": false,
   "wild_emblem_rainbow": true,
   "best_persona": false,
+  "tier": "A",
   "added": "KR v4.1.1",
   "cost": null,
   "combination": null,

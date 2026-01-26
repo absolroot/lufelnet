@@ -12,6 +12,7 @@ window.personaFiles["유룽"] = {
   "event": false,
   "wild_emblem_rainbow": false,
   "best_persona": true,
+  "tier": "S",
   "added": "",
   "cost": null,
   "combination": null,

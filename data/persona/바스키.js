@@ -12,6 +12,7 @@ window.personaFiles["바스키"] = {
   "event": false,
   "wild_emblem_rainbow": true,
   "best_persona": false,
+  "tier": "A",
   "added": "KR v4.2.1",
   "cost": null,
   "combination": null,

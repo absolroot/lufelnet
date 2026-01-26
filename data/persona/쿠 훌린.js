@@ -12,6 +12,7 @@ window.personaFiles["쿠 훌린"] = {
   "event": true,
   "wild_emblem_rainbow": true,
   "best_persona": false,
+  "tier": "B",
   "added": "KR v2.2.0",
   "cost": null,
   "combination": null,

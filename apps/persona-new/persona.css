@@ -22,17 +22,9 @@
     box-sizing: border-box;
 }
 
-.persona-cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2vh 32px;
-    justify-content: left;
-    padding: 20px;
-}
-
 .card {
     position: relative;
-    width: 84px;
+    width: 90px;
     /* 카드의 가로:세로 비율을 고정 */
     aspect-ratio: 1/1.67;
     cursor: pointer;
@@ -127,7 +119,7 @@
 /* Wild Emblem badge (top-right) */
 .wild-emblem {
     position: absolute;
-    bottom: 8px;
+    bottom: 12px;
     left: 51%;
     transform: translateX(-50%);
     width: 18%;
@@ -146,7 +138,7 @@
 /* 필터 섹션 스타일 */
 .filter-section {
     /* background-color: #1a1919;*/
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     overflow: hidden;
 }
 
@@ -646,27 +638,27 @@ textarea {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: 6px;
+    gap: 10px;
 }
 
 .instinct-variant-buttons {
     display: inline-flex;
-    margin: 0px 0px 8px 4px;
+    margin: 0px 0px 10px 4px;
     gap: 4px;
 }
 
 .instinct-variant-btn {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.3);
     border: none;
     border-radius: 999px;
-    padding: 2px 8px;
-    font-size: 11px;
+    padding: 4px 8px;
+    font-size: 9px;
     color: rgba(255, 255, 255, 0.85);
     cursor: pointer;
 }
 
 .instinct-variant-btn.active {
-    background: rgba(255, 255, 255, 0.16);
+    background: rgba(0, 0, 0, 0.8);
     box-shadow: 0 0 0 1px #ffffff inset;
 }
 
@@ -680,6 +672,7 @@ textarea {
 .persona-unique-skill-info,
 .persona-highlight-info,
 .persona-recommended-skills,
+.persona-innate-skills,
 .persona-comment {
     background: rgba(0, 0, 0, 0.15);
     padding: 16px;
@@ -687,7 +680,7 @@ textarea {
 }
 
 .persona-info-section h3 {
-    margin: 0 0 8px 0;
+    margin: 0 0 10px 0;
     font-size: 13px;
     color: rgb(255, 255, 255, 0.9);
 }
@@ -724,7 +717,7 @@ textarea {
 }
 
 .skill-level-btn {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(0, 0, 0, 0.15);
     border: none;
     border-radius: 999px;
     padding: 4px 8px;
@@ -734,8 +727,8 @@ textarea {
 }
 
 .skill-level-btn.active {
-    box-shadow: 0 0 0 1px #ffffff inset;
-    background: rgba(255, 0, 0, 0.3);
+    box-shadow: 0 0 0 1px #eee inset;
+    background: rgba(0, 0, 0, 0.8);
 }
 
 .persona-grade-img {
@@ -760,7 +753,7 @@ textarea {
 
 .skill-highlight-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.617fr 1fr;
     gap: 10px;
 }
 
@@ -850,11 +843,13 @@ textarea {
 }
 
 .persona-recommended-skills li[data-priority="1"] .skill-name,
+.persona-innate-skills li[data-priority="1"] .skill-name,
 .priority-text.low {
     color: rgb(255, 255, 255, 0.8);
 }
 
 .persona-recommended-skills li[data-priority="0"] .skill-name,
+.persona-innate-skills li[data-priority="0"] .skill-name,
 .priority-text.extra-low {
     color: rgb(255, 255, 255, 0.4);
     /* 화이트 */
@@ -866,19 +861,21 @@ textarea {
 .persona-highlight-info[data-priority="0"] { border: 1px solid rgba(255, 255, 255, 0.1); }*/
 
 
-.persona-recommended-skills ul {
+.persona-recommended-skills ul,
+.persona-innate-skills ul {
     list-style: none;
     padding: 0;
     margin-bottom: 0px;
 }
 
-.persona-recommended-skills li {
-    margin: 8px 0;
+.persona-recommended-skills li,
+.persona-innate-skills li {
+    margin: 10px 0;
 }
 
 .skill-info {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 10px;
 }
 
@@ -891,12 +888,26 @@ textarea {
     flex: 0 0 auto;
 }
 
-/* Make the icon+name group look clickable */
+/* Shared container style (layout/box) */
+/* Shared container style (layout/box) */
 .persona-recommended-skills .skill-name-container {
-    padding: 2px 6px;
-    /* border: 1px solid rgba(255, 255, 255, 0.1); */
-    background: rgba(255, 255, 255, 0.05);
+    padding: 3px 8px 3px 0px;
+    /* background: rgba(255, 255, 255, 0.05);*/
     border-radius: 4px;
+}
+
+.persona-innate-skills .skill-name-container {
+    padding: 3px 8px 3px 0px;
+}
+
+.innate-level {
+    min-width: 24px;
+    font-size: 10px !important;
+    color: #888;
+}
+
+/* Interactive styles only for Recommended Skills */
+.persona-recommended-skills .skill-name-container {
     cursor: pointer;
     transition: background-color .15s ease, border-color .15s ease, box-shadow .15s ease;
 }
@@ -907,7 +918,9 @@ textarea {
 }
 
 @media (max-width: 1200px) {
-    .persona-recommended-skills .skill-name-container {
+
+    .persona-recommended-skills .skill-name-container,
+    .persona-innate-skills .skill-name-container {
         padding: 4px 6px;
     }
 }
@@ -923,6 +936,7 @@ textarea {
 }
 
 .skill-description {
+    margin-top: 3px;
     color: rgba(255, 255, 255, 0.8);
     font-size: 12px;
 }
@@ -958,7 +972,6 @@ textarea {
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    gap: 16px;
     flex-wrap: wrap;
 }
 
@@ -977,24 +990,21 @@ textarea {
 
 .search-icon {
     position: absolute;
-    left: 16px;
+    left: 0px;
     top: 50%;
-    transform: translateY(-45%);
+    transform: translateY(-40%);
     pointer-events: none;
 }
 
 #personaSearch {
     width: 100%;
-    padding: 10px 16px 10px 44px;
+    padding: 10px 16px 10px 32px;
     /* 왼쪽 패딩을 늘려서 아이콘 공간 확보 */
-    /* border: 1px solid rgba(255, 255, 255, 0.1); */
+    background: transparent;
     border: none;
-    border-radius: 32px;
-    background: var(--card-background);
     color: #fff;
     font-size: 14px;
     box-sizing: border-box;
-
 }
 
 #personaSearch:focus {
@@ -1020,7 +1030,8 @@ textarea {
 }
 
 .dropdown-item {
-    padding: 12px 16px;
+    padding: 10px 16px;
+    font-size: 12px;
     cursor: pointer;
     transition: background-color 0.2s;
 }
@@ -1206,17 +1217,18 @@ textarea {
     display: flex;
     gap: 20px;
     margin-top: 20px;
+    margin-bottom: 40px;
     align-items: flex-start;
 }
 
 .persona-list-panel {
-    flex: 0 0 354px;
+    flex: 0 0 390px;
     min-width: 0;
 
     /* User request: Box styling and Scrollable box showing approx 4 rows */
-    max-height: 720px;
+    max-height: 80vh;
     overflow-y: auto;
-    padding: 20px;
+    padding: 0 20px;
     /* Increased padding for box feel */
     background: #222;
     /* Box background */
@@ -1256,8 +1268,8 @@ textarea {
     border-radius: 8px;
 
     /* Match height with left panel */
-    height: 720px;
-    max-height: 720px;
+    height: 80vh;
+    max-height: 80vh;
     overflow-y: auto;
     box-sizing: border-box;
     /* padding handled by sticky content? or add here */
@@ -1265,7 +1277,7 @@ textarea {
 
 .sticky-content {
     top: 20px;
-    padding: 20px;
+    padding: 0 20px 20px 20px;
 }
 
 /* Update Grid for List Panel */
@@ -1274,9 +1286,7 @@ textarea {
     margin-top: 32px;
     display: grid;
     grid-template-columns: repeat(3, 1fr) !important;
-    gap: 8px !important;
-    padding: 0 4px;
-    /* Slight padding */
+    justify-content: space-between;
 }
 
 
@@ -1315,7 +1325,36 @@ textarea {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding-bottom: 10px;
     margin-bottom: 10px;
+    /* Sticky Header */
+    position: sticky;
+    top: -20px;
+    /* Offset to stick to the very edge of the container including padding area if desired, but 0 is safer inside content box. Let's try 0 and ensure background covers. */
+    top: 0;
+    background-color: #222;
+    /* Match panel background */
+    z-index: 100;
+    /* Higher Z to be safe */
+    padding-top: 20px;
+    /* margin-top removed to prevent jitter */
 }
+
+/* Sticky Header for List Panel */
+.persona-list-panel .filter-header-sticky {
+    position: sticky;
+    top: 0;
+    background-color: #222;
+    z-index: 100;
+    padding: 10px 0;
+    /* Vertical padding */
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Ensure controls fit well */
+.search-sort-container {
+    width: 100%;
+}
+
 
 .empty-state-message {
     display: flex;
@@ -1559,38 +1598,49 @@ textarea {
     color: #ffd54f;
 }
 
-/* Tier Label (top-right book-tag style) */
+/* Tier Label (Attached to the right side, upper part) */
 .tier-label {
     position: absolute;
-    top: -2px;
-    right: 4px;
+    top: 15px;
+    /* Slightly down from top */
+    right: 0;
     z-index: 6;
     background: #b71c1c;
-    /* Dark red background */
     color: #fff;
     font-size: 10px;
     font-weight: 800;
-    padding: 2px 6px;
-    border-radius: 0 0 4px 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 2px 6px 2px 8px;
+    /* Extra left padding */
+    border-radius: 4px 0 0 4px;
+    /* Rounded ONLY on left side */
+    box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.5);
+    /* Shadow to left/bottom */
     line-height: 1;
     font-family: sans-serif;
     letter-spacing: -0.5px;
 }
 
 .tier-label.tier-s {
-    background: linear-gradient(135deg, #ffd700, #ffb300);
-    /* Gold for Tier S */
+    background: linear-gradient(to left, #ffd700, #ffb300);
+    /* Gradient direction changed */
     color: #000;
     font-weight: 900;
     border: 1px solid #fff;
-    border-top: none;
+    border-right: none;
+    /* Removed right border to merge with edge */
 }
 
 .tier-label.tier-a {
-    background: #e0e0e0;
-    /* Silver/Grey for Tier A */
+    background: linear-gradient(to left, #e0e0e0, #9e9e9e);
     color: #000;
     border: 1px solid #fff;
-    border-top: none;
+    border-right: none;
+}
+
+.tier-label.tier-b {
+    background: linear-gradient(to left, #cd7f32, #8b4513);
+    /* Bronze */
+    color: #fff;
+    border: 1px solid #fff;
+    border-right: none;
 }

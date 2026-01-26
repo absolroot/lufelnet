@@ -12,6 +12,7 @@ window.personaFiles["아누비스"] = {
   "event": false,
   "wild_emblem_rainbow": false,
   "best_persona": false,
+  "tier": "B",
   "added": "",
   "cost": null,
   "combination": null,

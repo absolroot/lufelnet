@@ -12,6 +12,7 @@ window.personaFiles["마카브르"] = {
   "event": false,
   "wild_emblem_rainbow": true,
   "best_persona": true,
+  "tier": "S",
   "added": "KR v4.7.1",
   "cost": {
     "blue": 0,

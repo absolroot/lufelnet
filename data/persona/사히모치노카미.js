@@ -12,6 +12,7 @@ window.personaFiles["사히모치노카미"] = {
   "event": true,
   "wild_emblem_rainbow": true,
   "best_persona": false,
+  "tier": "A",
   "added": "KR v4.3.2",
   "cost": null,
   "combination": null,

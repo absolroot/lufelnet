@@ -12,6 +12,7 @@ window.personaFiles["산달폰"] = {
   "event": false,
   "wild_emblem_rainbow": true,
   "best_persona": false,
+  "tier": "A",
   "added": "KR v2.3.2",
   "cost": null,
   "combination": null,

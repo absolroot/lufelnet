@@ -12,6 +12,7 @@ window.personaFiles["비사문천"] = {
   "event": false,
   "wild_emblem_rainbow": true,
   "best_persona": false,
+  "tier": "A",
   "added": "KR v1.3.1",
   "cost": {
     "blue": false,

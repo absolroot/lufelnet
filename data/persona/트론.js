@@ -12,6 +12,7 @@ window.personaFiles["트론"] = {
   "event": false,
   "wild_emblem_rainbow": true,
   "best_persona": true,
+  "tier": "S",
   "added": "KR v3.4.2",
   "cost": null,
   "combination": null,

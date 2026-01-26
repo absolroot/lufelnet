@@ -12,6 +12,7 @@ window.personaFiles["비슈누"] = {
   "event": false,
   "wild_emblem_rainbow": true,
   "best_persona": true,
+  "tier": "S",
   "added": "KR v2.3.2",
   "cost": {
     "blue": 0,

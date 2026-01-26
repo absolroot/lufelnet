@@ -173,6 +173,9 @@
       const nameContainer = target.closest('.skill-name-container');
       if (!nameContainer) return;
 
+      // Exclude Innate Skills (획득 스킬) from being clickable
+      if (nameContainer.closest('.persona-innate-skills')) return;
+
       // Find the actual skill-name element within the container to read attributes/text
       const nameEl = nameContainer.querySelector('.skill-name');
       if (!nameEl) return;

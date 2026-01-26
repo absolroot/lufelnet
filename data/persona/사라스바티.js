@@ -13,6 +13,7 @@ window.personaFiles["사라스바티"] = {
   "wild_emblem_rainbow": false,
   "best_persona": false,
   "added": "",
+  "tier": "B",
   "cost": null,
   "combination": null,
   "recommendSkill": [

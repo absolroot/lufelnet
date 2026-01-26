@@ -12,6 +12,7 @@ window.personaFiles["디오니소스"] = {
   "event": false,
   "wild_emblem_rainbow": false,
   "best_persona": true,
+  "tier": "S",
   "added": "",
   "cost": {
     "blue": 0,

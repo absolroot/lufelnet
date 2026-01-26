@@ -12,6 +12,7 @@ window.personaFiles["멜키세덱"] = {
   "event": false,
   "wild_emblem_rainbow": true,
   "best_persona": false,
+  "tier": "A",
   "added": "KR v1.3.1",
   "cost": {
     "blue": 0,

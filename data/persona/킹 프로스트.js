@@ -12,6 +12,7 @@ window.personaFiles["킹 프로스트"] = {
   "event": false,
   "wild_emblem_rainbow": true,
   "best_persona": false,
+  "tier": "B",
   "added": "KR v1.3.1",
   "cost": null,
   "combination": null,

@@ -1,7 +1,7 @@
 // 스킬 목록
-const skillList = ["스킬1", "스킬2", "스킬3", "HIGHLIGHT","테우르기아", "총격", "근접", "방어", "특수 스킬", "ONE MORE", "아이템"];
-const skillList_en = ["Skill1", "Skill2", "Skill3", "HIGHLIGHT","Theurgy", "Gunshot", "Melee", "Defense", "Special Skill", "ONE MORE", "Item"];
-const skillList_jp = ["スキル1", "スキル2", "スキル3", "HIGHLIGHT","テウルギア", "銃撃", "近接攻撃", "ガード", "スペシャルスキル", "1more", "アイテム"];
+const skillList = ["스킬1", "스킬2", "스킬3", "HIGHLIGHT", "테우르기아", "총격", "근접", "방어", "특수 스킬", "ONE MORE", "아이템"];
+const skillList_en = ["Skill1", "Skill2", "Skill3", "HIGHLIGHT", "Theurgy", "Gunshot", "Melee", "Defense", "Special Skill", "ONE MORE", "Item"];
+const skillList_jp = ["スキル1", "スキル2", "スキル3", "HIGHLIGHT", "テウルギア", "銃撃", "近接攻撃", "ガード", "スペシャルスキル", "1more", "アイテム"];
 
 
 // 페르소나 액티브 스킬 리스트
@@ -420,6 +420,16 @@ const personaSkillList = {
         "target": "전체",
         "icon": "축복광역"
     },
+    "흑백무계": {
+        "name_jp": "生命欲の輝弾",
+        "name_en": "Seize the Day",
+        "description": "모든 적에게 공격력 78.8%/85.9%/93.0%의 축복 속성 대미지를 주고, 생명이 가장 낮은 동료 1명이 공격력 15.8%/17.2%/18.6%+478/614/765의 생명을 회복한다.",
+        "description_jp": "敵全体に攻撃力78.8%/85.9%/93.0%の祝福属性ダメージを与える。残りのＨＰが一番低い味方のＨＰを攻撃力15.8%/17.2%/18.6%＋478/614/765回復する。",
+        "description_en": "Deal Bless damage to all foes equal to 78.8%/85.9%/93.0% of Attack. Restore HP of the ally with the lowest remaining HP, equal to 15.8%/17.2%/18.6% of Attack + 478/614/765.",
+        "type": "공격",
+        "target": "전체",
+        "icon": "축복광역"
+    },
     "하마온": {
         "name_en": "Hamaon",
         "name_jp": "ハマオン",
@@ -526,6 +536,16 @@ const personaSkillList = {
         "description": "모든 적에게 공격력 39.9%/44.0%/48.1%의 주원 속성 대미지를 주고, 생명이 50% 이하인 적에게 낮은 확률의 주원 속성 즉사 효과를 추가하며 생명이 낮을수록 확률이 높아진다.",
         "description_en": "Deal Curse damage to all foes equal to 39.9%/44.0%/48.1% of Attack. Low chance to deal Curse insta-kill effect to foes with 50% or less HP. Increase chance based on foe's missing HP.",
         "description_jp": "敵全体に攻撃力39.9%/44.0%/48.1%の呪怨属性ダメージを与える。ＨＰ５０%以下の敵に低確率で呪怨属性の即死効果を与える。敵のＨＰが低いほど確率が上がる。",
+        "type": "공격",
+        "target": "전체",
+        "icon": "주원광역"
+    },
+    "마하무드온": {
+        "name_jp": "マハムドオン",
+        "name_en": "Mamudoon",
+        "description": "모든 적에게 공격력 44.4%/49.5%/54.6%의 주원 속성 대미지를 주고, 생명이 50% 이하인 적에게 낮은 확률의 주원 속성 즉사 효과를 추가하며 생명이 낮을수록 확률이 높아진다.",
+        "description_en": "Deal Curse damage to all foes equal to 44.4%/49.5%/54.6% of Attack. Low chance to deal Curse insta-kill effect to foes with 50% or less HP. Increase chance based on foe's missing HP.",
+        "description_jp": "敵全体に攻撃力44.4%/49.5%/54.6%の呪怨属性ダメージを与える。ＨＰ５０%以下の敵に低確率で呪怨属性の即死効果を与える。敵のＨＰが低いほど確率が上がる。",
         "type": "공격",
         "target": "전체",
         "icon": "주원광역"
@@ -859,6 +879,17 @@ const personaSkillList = {
         "type": "공격",
         "target": "전체",
         "icon": "총격광역"
+    },
+    "불렛 타임": {
+        "name_jp": "バレットタイム",
+        "name_en": "Bullet Time",
+        "description": "모든 적에게 공격력 23.4%/25.5%/27.7%의 3단 총격 속성 대미지를 주고, 『조준』을 보유한 적이 있을 경우 해당 스킬의 공격력이 30.0%/32.7%/35.4%, 크리티컬 효과가 36.0%/39.2%/42.5% 증가한다.",
+        "description_en": "Deal Gun damage to all foes equal to 23.4%/25.5%/27.7% of Attack (3 hits). If a foe is Marked, increase damage by 30.0%/32.7%/35.4% and critical damage by 36.0%/39.2%/42.5%.",
+        "description_jp": "敵全体に攻撃力23.4%/25.5%/27.7%の銃撃属性ダメージを３回与える。『標的』状態の敵がいる時、与ダメージが30.0%/32.7%/35.4%、クリティカルダメージが36.0%/39.2%/42.5%上昇する。",
+        "type": "공격",
+        "target": "전체",
+        "icon": "총격광역",
+        "cost": "체력 8.0%"
     },
     "디아": {
         "name_jp": "ディア",

@@ -12,6 +12,7 @@ window.personaFiles["토르"] = {
   "event": false,
   "wild_emblem_rainbow": false,
   "best_persona": false,
+  "tier": "A",
   "added": "",
   "cost": null,
   "combination": null,

@@ -12,6 +12,7 @@ window.personaFiles["체르노보그"] = {
   "event": false,
   "wild_emblem_rainbow": true,
   "best_persona": false,
+  "tier": "A",
   "added": "KR v2.1.1",
   "cost": null,
   "combination": null,

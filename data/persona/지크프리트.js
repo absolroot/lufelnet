@@ -12,6 +12,7 @@ window.personaFiles["지크프리트"] = {
   "event": true,
   "wild_emblem_rainbow": true,
   "best_persona": false,
+  "tier": "B",
   "added": "KR v3.2.0",
   "cost": null,
   "combination": null,

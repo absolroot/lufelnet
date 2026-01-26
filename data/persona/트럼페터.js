@@ -12,6 +12,7 @@ window.personaFiles["트럼페터"] = {
   "event": true,
   "wild_emblem_rainbow": true,
   "best_persona": false,
+  "tier": "B",
   "added": "KR v4.2.1",
   "cost": null,
   "combination": null,

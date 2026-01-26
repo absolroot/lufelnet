@@ -12,6 +12,7 @@ window.personaFiles["릴리스"] = {
   "event": false,
   "wild_emblem_rainbow": true,
   "best_persona": false,
+  "tier": "B",
   "added": "KR v2.1.1",
   "cost": null,
   "combination": null,

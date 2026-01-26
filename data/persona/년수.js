@@ -12,6 +12,7 @@ window.personaFiles["년수"] = {
   "event": true,
   "wild_emblem_rainbow": true,
   "best_persona": true,
+  "tier": "S",
   "added": "KR v3.3.1",
   "cost": {
     "blue": 0,

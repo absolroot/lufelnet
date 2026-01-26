@@ -12,6 +12,7 @@ window.personaFiles["스라오샤"] = {
   "event": false,
   "wild_emblem_rainbow": true,
   "best_persona": false,
+  "tier": "A",
   "added": "KR v3.1.0",
   "cost": null,
   "combination": null,

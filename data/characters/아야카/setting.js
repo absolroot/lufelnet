@@ -11,7 +11,7 @@ window.characterSetting["아야카"] = {
     "sub_revel4": ["공격력", "생명"],
     "sub_option1": ["공격력"],
     "sub_option2": ["크리티컬 확률", "크리티컬 효과", "대미지 보너스"],
-    "sub_option3": ["생명", "방어력"],
+    "sub_option3": ["효과명중", "생명", "방어력"],
     "minimum_stats": {
         "LV10": "공격력 4067",
         "LV10+5": "공격력 4484",

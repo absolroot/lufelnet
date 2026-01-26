@@ -53,22 +53,34 @@
     height: 114%;
     top: -9%;
     left: -7%;
-    
+
     transform: rotate(10deg);
     opacity: 1;
 }
 
 .container.is-jc {
-    background: linear-gradient(to bottom, rgb(0 0 0 / 0%), rgb(0 0 0 / 13%)), linear-gradient(45deg, transparent 48%, rgba(255, 255, 255, 0.03) 49%, rgba(255, 255, 255, 0.03) 51%, transparent 52%), linear-gradient(-45deg, transparent 48%, rgba(255, 255, 255, 0.03) 49%, rgba(255, 255, 255, 0.03) 51%, transparent 52%), #171940;;
+    background: linear-gradient(to bottom, rgb(0 0 0 / 0%), rgb(0 0 0 / 13%)), linear-gradient(45deg, transparent 48%, rgba(255, 255, 255, 0.03) 49%, rgba(255, 255, 255, 0.03) 51%, transparent 52%), linear-gradient(-45deg, transparent 48%, rgba(255, 255, 255, 0.03) 49%, rgba(255, 255, 255, 0.03) 51%, transparent 52%), #171940;
+    ;
     background-size: 100% 100%, 30px 30px, 30px 30px, 100% 100%;
     background-attachment: scroll, scroll, scroll, scroll;
     background-position: 0 0, 0 0, 0 0, center center;
 }
 
-.character-name.is-jc::before { background: #000000 !important;}
-.character-name.is-jc { color: #fffe79 !important;}
-.dot.active.is-jc { background-color: #fffd00 !important;}
-.card-style.is-jc {border-bottom: 3px solid #fffe79 !important;}
+.character-name.is-jc::before {
+    background: #000000 !important;
+}
+
+.character-name.is-jc {
+    color: #fffe79 !important;
+}
+
+.dot.active.is-jc {
+    background-color: #fffd00 !important;
+}
+
+.card-style.is-jc {
+    border-bottom: 3px solid #fffe79 !important;
+}
 
 
 
@@ -93,11 +105,50 @@
     object-fit: contain;
 }
 
-.thief-image:not([data-loaded="true"]),
-/* 이미지 로딩 전 숨김 처리 제거 (다국어 환경에서 이벤트 지연/누락시 보이도록) */
+/* 초기 상태: 로딩 전에는 숨김 */
+.thief-anim-wrapper {
+    opacity: 0;
+}
+
+/* 래퍼가 로드되면 애니메이션 시작 (투명도 + 위치 이동만) */
+.thief-anim-wrapper[data-loaded="true"] {
+    animation: slideInRight 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.thief-image {
+    /* 초기 스케일 1 (애니메이션 시작점) */
+    transform: scale(1);
+    /* 스케일 자연스럽게 전환 */
+    transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+}
+
+.thief-image[data-loaded="true"] {
+    transform: scale(var(--char-scale, 1));
+}
+
+/* 페르소나 이미지도 스케일 변수 적용 */
+.persona-image {
+    transform: scale(var(--char-scale, 1));
+}
+
+@keyframes slideInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(60px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* 기존의 강제 표시 로직 제거: JS의 타임아웃/에러 핸들러가 data-loaded를 보장하므로 초기 숨김이 안전함 */
+/* .thief-image:not([data-loaded="true"]),
 .persona-image:not([data-loaded="true"]) {
     visibility: visible;
-}
+} */
 
 /* 이미지 로딩 전 숨김 처리 제거 (다국어 환경에서 이벤트 지연/누락시 보이도록) */
 .carousel-dots {
@@ -190,18 +241,50 @@
 }
 
 @keyframes subtle-liquid-name {
-    0% { clip-path: polygon(0% 2%, 99% 2%, 94% 49%, 4% 54%);}
-    10% { clip-path: polygon(1% 1%, 98% 4%, 93% 50%, 5% 55%);}
-    20% { clip-path: polygon(-1% 3%, 100% 5%, 95% 48%, 3% 53%);}
-    30% { clip-path: polygon(0% 3%, 98% 2%, 93% 50%, 5% 55%);}
-    40% { clip-path: polygon(1% 1%, 99% -1%, 95% 48%, 4% 53%);}
-    50% { clip-path: polygon(0% 0%, 100% 2%, 93% 50%, 3% 55%);}
-    60% { clip-path: polygon(-1% 3%, 98% 1%, 94% 48%, 5% 54%);}
-    70% { clip-path: polygon(1% 2%, 99% -1%, 95% 50%, 4% 55%);}
-    80% { clip-path: polygon(0% 1%, 100% 2%, 93% 48%, 3% 53%);}
-    90% { clip-path: polygon(-1% 3%, 98% 4%, 94% 50%, 5% 55%);}
-    100% { clip-path: polygon(0% 2%, 99% 0%, 94% 49%, 4% 54%);}
-  }
+    0% {
+        clip-path: polygon(0% 2%, 99% 2%, 94% 49%, 4% 54%);
+    }
+
+    10% {
+        clip-path: polygon(1% 1%, 98% 4%, 93% 50%, 5% 55%);
+    }
+
+    20% {
+        clip-path: polygon(-1% 3%, 100% 5%, 95% 48%, 3% 53%);
+    }
+
+    30% {
+        clip-path: polygon(0% 3%, 98% 2%, 93% 50%, 5% 55%);
+    }
+
+    40% {
+        clip-path: polygon(1% 1%, 99% -1%, 95% 48%, 4% 53%);
+    }
+
+    50% {
+        clip-path: polygon(0% 0%, 100% 2%, 93% 50%, 3% 55%);
+    }
+
+    60% {
+        clip-path: polygon(-1% 3%, 98% 1%, 94% 48%, 5% 54%);
+    }
+
+    70% {
+        clip-path: polygon(1% 2%, 99% -1%, 95% 50%, 4% 55%);
+    }
+
+    80% {
+        clip-path: polygon(0% 1%, 100% 2%, 93% 48%, 3% 53%);
+    }
+
+    90% {
+        clip-path: polygon(-1% 3%, 98% 4%, 94% 50%, 5% 55%);
+    }
+
+    100% {
+        clip-path: polygon(0% 2%, 99% 0%, 94% 49%, 4% 54%);
+    }
+}
 
 h1.character-name::before {
     content: "";
@@ -299,7 +382,7 @@ h1.character-name::before {
     aspect-ratio: 16 / 9;
     border: 4px solid #101010;
     background-color: #000;
-    box-shadow: 4px 4px 0 rgba(0,0,0,0.5);
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.5);
     overflow: hidden;
     position: relative;
     margin-left: 4px;
@@ -357,7 +440,7 @@ h1.character-name::before {
 }
 
 .character-video-play-img {
-    width: 64px !important; 
+    width: 64px !important;
     height: 64px !important;
     object-fit: contain;
     display: block;
@@ -368,6 +451,7 @@ h1.character-name::before {
         width: 64px !important;
         height: 64px !important;
     }
+
     .character-video-play-img {
         width: 64px !important;
         height: 64px !important;
@@ -389,8 +473,8 @@ h1.character-name::before {
     width: 24px;
     height: 24px;
     border-radius: 999px;
-    border: 2px solid rgba(255,255,255,0.5);
-    background: rgba(0,0,0,0.45);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    background: rgba(0, 0, 0, 0.45);
     color: #fff;
     font-weight: 800;
     line-height: 1;
@@ -428,14 +512,14 @@ h1.character-name::before {
     width: 8px;
     height: 8px;
     border-radius: 999px;
-    border: 1px solid rgba(255,255,255,0.9);
-    background: rgba(0,0,0,0.35);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    background: rgba(0, 0, 0, 0.35);
     padding: 0;
     cursor: pointer;
 }
 
 .character-video-dot.active {
-    background: rgba(255,255,255,0.95);
+    background: rgba(255, 255, 255, 0.95);
 }
 
 @media (max-width: 1200px) {
@@ -1270,7 +1354,7 @@ h2 {
     }
 }
 
-@media(max-width: 768px){
+@media(max-width: 768px) {
     .skills-grid {
         grid-template-columns: 1fr;
     }
@@ -1649,6 +1733,7 @@ h2 {
     position: relative;
     cursor: pointer;
 }
+
 .friend-item.spoiler img,
 .friend-item.spoiler .friend-name,
 .friend-item.spoiler .friend-element-icon,
@@ -1658,6 +1743,7 @@ h2 {
     user-select: none;
     -webkit-user-select: none;
 }
+
 .friend-item.spoiler::after {
     content: 'SPOILER';
     position: absolute;
@@ -2099,19 +2185,24 @@ h2 {
     margin-right: 16px;
     min-width: 20px;
 }
+
 /* 순위별(1~4)로 점차 어두워지도록 색상 농도 조절 */
 .priority-badge.rank-1 {
     color: #ffffff;
 }
+
 .priority-badge.rank-2 {
     color: #e8e8e8;
 }
+
 .priority-badge.rank-3 {
     color: #cfcfcf;
 }
+
 .priority-badge.rank-4 {
     color: #a8a8a8;
 }
+
 /* Pros / Cons */
 .pros-cons-group {
     display: grid;
@@ -2119,29 +2210,44 @@ h2 {
     gap: 16px;
     margin-top: 24px;
 }
+
 .pros-cons-section {
     background: rgba(0, 0, 0, 0.15);
     border-radius: 8px;
     padding: 20px 16px 12px 16px;
 }
+
 .pros-cons-section h3.pros-cons-title {
     margin-top: 0;
     margin-bottom: 8px;
     font-size: 16px;
     line-height: 1.2;
 }
-.pros-title { color: #3aa0ff !important; font-weight: 700; } /* 파랑: 장점 */
-.cons-title { color: #ff6b6b !important; font-weight: 700; } /* 빨강: 단점 */
+
+.pros-title {
+    color: #3aa0ff !important;
+    font-weight: 700;
+}
+
+/* 파랑: 장점 */
+.cons-title {
+    color: #ff6b6b !important;
+    font-weight: 700;
+}
+
+/* 빨강: 단점 */
 .pros-cons-list ul {
     margin: 0;
     padding-left: 18px;
 }
+
 .pros-cons-list li {
     font-size: 14px;
     color: #cdcdcd;
     margin: 4px 0;
     line-height: 1.5;
 }
+
 @media (max-width: 1200px) {
     .pros-cons-group {
         grid-template-columns: 1fr;
@@ -2156,7 +2262,8 @@ h2 {
         gap: 16px;
         row-gap: 0px;
     }
-    #recommended-persona-content > .persona-attribute-section.span-full {
+
+    #recommended-persona-content>.persona-attribute-section.span-full {
         grid-column: 1 / -1;
     }
 }
@@ -2165,17 +2272,20 @@ h2 {
 .friends-lineup {
     margin-bottom: 40px;
 }
+
 .friends-title {
     margin: 0 0 16px;
     font-size: 16px;
     font-weight: 500;
     color: rgba(255, 255, 255, 0.8);
 }
+
 .friends-list {
     display: grid;
     grid-template-columns: 1fr;
     gap: 10px;
 }
+
 .friend-item {
     display: flex;
     align-items: flex-start;
@@ -2184,18 +2294,21 @@ h2 {
     background: rgba(0, 0, 0, 0.1);
     border-radius: 6px;
 }
+
 .friend-image-wrapper {
     position: relative;
     height: 40px;
     display: flex;
     align-items: center;
 }
+
 .friend-image-wrapper img {
     width: 40px;
     height: 40px;
     object-fit: cover;
     border-radius: 4px;
 }
+
 .friend-ritual-icon {
     position: absolute;
     right: -4px;
@@ -2205,21 +2318,25 @@ h2 {
     object-fit: contain !important;
     pointer-events: none;
 }
+
 .friend-text {
     display: flex;
     flex-direction: column;
     gap: 4px;
 }
+
 .friend-name-row {
     display: flex;
     align-items: center;
     gap: 6px;
 }
+
 .friend-name {
     font-size: 14px;
     font-weight: 600;
     margin-right: 4px;
 }
+
 .friend-element-icon,
 .friend-role-icon {
     width: 16px;
@@ -2227,18 +2344,22 @@ h2 {
     object-fit: contain;
     opacity: 1;
 }
+
 .friend-comment {
     font-size: 13px;
     color: #cdcdcd;
     line-height: 1.6;
-    cursor: text; /* 클릭 불가 느낌을 주고, 텍스트 드래그는 가능하게 */
+    cursor: text;
+    /* 클릭 불가 느낌을 주고, 텍스트 드래그는 가능하게 */
 }
+
 .party-label {
     margin: 0 0 0px;
     font-size: 16px;
     font-weight: 500;
     color: rgba(255, 255, 255, 0.8);
 }
+
 @media (min-width: 1201px) {
     .friends-list {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2251,29 +2372,39 @@ h2 {
     grid-template-columns: 1fr;
     gap: 16px;
 }
+
 #recommended-party-content.party-grid-layout .party-label {
     grid-column: 1 / -1;
 }
+
 #recommended-party-content.party-grid-layout .party-section {
     width: calc(100% - 20px);
 }
+
 /* 파티 리스트 폭을 카드 폭에 맞추기 (기존 min-width: 440px 무시) - 2열 모드에서만 */
 #recommended-party-content.party-grid-layout .party-list {
     min-width: 0;
     width: 100%;
 }
+
 /* 코멘트가 없는 파티: 간격은 동일, 카드 가로 폭만 늘리기 (2열 모드에서만) */
 #recommended-party-content.party-grid-layout .party-list.no-comment {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;            /* 기존과 동일한 간격 유지 */
+    gap: 15px;
+    /* 기존과 동일한 간격 유지 */
     justify-content: center;
 }
+
 #recommended-party-content.party-grid-layout .party-list.no-comment .party-member {
-    width: auto;          /* 기본 80px 폭 사용 */
-    flex: 1 1 0;          /* 행 안에서 가로 공간을 균등하게 나눠 차지 */
-    max-width: 200px;     /* 너무 넓어지지 않도록 상한선 */
+    width: auto;
+    /* 기본 80px 폭 사용 */
+    flex: 1 1 0;
+    /* 행 안에서 가로 공간을 균등하게 나눠 차지 */
+    max-width: 200px;
+    /* 너무 넓어지지 않도록 상한선 */
 }
+
 @media (min-width: 1201px) {
     #recommended-party-content.party-grid-layout {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2284,12 +2415,14 @@ h2 {
 .p5-layer-box {
     /* --- 1. 맨 위: 메인 텍스트 (검은색) --- */
     position: relative;
-    z-index: 1; /* 제일 위로 */
-    
+    z-index: 1;
+    /* 제일 위로 */
+
     /* 폰트 설정 (두꺼울수록 효과가 좋음) */
     font-weight: 700;
-    color: #ffffff;        /* 글자색 검정 */
-    
+    color: #ffffff;
+    /* 글자색 검정 */
+
     /* transform: skew(-10deg) rotate(-5deg);  */
 
 }
@@ -2298,11 +2431,13 @@ h2 {
 .p5-layer-box::before {
     content: attr(data-text);
     position: absolute;
-    top: 0; left: 0;
-    z-index: -1; /* 글자 바로 뒤 */
-    
+    top: 0;
+    left: 0;
+    z-index: -1;
+    /* 글자 바로 뒤 */
+
     /* 텍스트 속은 투명하게, 테두리는 흰색으로 */
-    color: transparent; 
+    color: transparent;
     -webkit-text-stroke: 10px black;
 }
 
@@ -2310,12 +2445,14 @@ h2 {
 .p5-layer-box::after {
     content: attr(data-text);
     position: absolute;
-    top: 0; left: 0;
-    z-index: -2; /* 맨 뒤 */
-    
+    top: 0;
+    left: 0;
+    z-index: -2;
+    /* 맨 뒤 */
+
     color: transparent;
     -webkit-text-stroke: 12px white;
-    
+
     /* 위치를 살짝 옮겨서 보라색 그림자처럼 보이게 */
     transform: translate(6px, 5px);
 }

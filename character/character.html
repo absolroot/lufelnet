@@ -15,9 +15,9 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
 <script src="{{ site.baseurl }}/data/persona/order.js?v={{ site.time | date: '%s' }}"></script>
 <script src="{{ site.baseurl }}/assets/js/persona-loader.js?v={{ site.time | date: '%s' }}"></script>
 <script>
-  if (typeof ensurePersonaFilesLoaded === 'function') {
-    ensurePersonaFilesLoaded();
-  }
+    if (typeof ensurePersonaFilesLoaded === 'function') {
+        ensurePersonaFilesLoaded();
+    }
 </script>
 
 <div class="main-wrapper">
@@ -107,7 +107,9 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             <div class="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="" alt="괴도 이미지" class="thief-image">
+                        <div class="thief-anim-wrapper">
+                            <img src="" alt="괴도 이미지" class="thief-image">
+                        </div>
                     </div>
                     <div class="carousel-item">
                         <img src="" alt="페르소나 이미지" class="persona-image">
@@ -433,15 +435,6 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                             <span class="label">속도</span>
                             <span class="value"></span>
                         </div>
-                        <!--
-                        <div class="stat-row">
-                            <span class="label">크리티컬 확률</span>
-                            <span class="value"></span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="label">크리티컬 효과</span>
-                            <span class="value"></span>
-                        </div>-->
                     </div>
                 </div>
             </div>
@@ -745,23 +738,37 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 try { imgEl.setAttribute('decoding', 'sync'); } catch (_) { }
                 try { imgEl.setAttribute('fetchpriority', 'high'); } catch (_) { }
                 imgEl.addEventListener('load', () => {
-                    try { imgEl.setAttribute('data-loaded', 'true'); } catch (_) { }
+                    try {
+                        imgEl.setAttribute('data-loaded', 'true');
+                        if (imgEl.parentElement && imgEl.parentElement.classList.contains('thief-anim-wrapper')) {
+                            imgEl.parentElement.setAttribute('data-loaded', 'true');
+                        }
+                    } catch (_) { }
                 });
                 imgEl.addEventListener('error', () => {
                     try {
                         // 실패 시 플레이스홀더 이미지로 대체하고 강제로 표시
                         imgEl.src = fallbackSrc;
                         imgEl.setAttribute('data-loaded', 'true');
+                        if (imgEl.parentElement && imgEl.parentElement.classList.contains('thief-anim-wrapper')) {
+                            imgEl.parentElement.setAttribute('data-loaded', 'true');
+                        }
                     } catch (_) { }
                 });
                 // 캐시된 이미지 즉시 처리
                 if (imgEl.complete && imgEl.naturalWidth > 0) {
                     imgEl.setAttribute('data-loaded', 'true');
+                    if (imgEl.parentElement && imgEl.parentElement.classList.contains('thief-anim-wrapper')) {
+                        imgEl.parentElement.setAttribute('data-loaded', 'true');
+                    }
                 } else {
                     // 일부 모바일 브라우저에서 load 이벤트 누락 대비 가드
                     setTimeout(() => {
                         if (!imgEl.hasAttribute('data-loaded')) {
                             imgEl.setAttribute('data-loaded', 'true');
+                            if (imgEl.parentElement && imgEl.parentElement.classList.contains('thief-anim-wrapper')) {
+                                imgEl.parentElement.setAttribute('data-loaded', 'true');
+                            }
                         }
                     }, 1500);
                 }
@@ -774,12 +781,18 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                                 try {
                                     imgEl.src = tmp.src;
                                     imgEl.setAttribute('data-loaded', 'true');
+                                    if (imgEl.parentElement && imgEl.parentElement.classList.contains('thief-anim-wrapper')) {
+                                        imgEl.parentElement.setAttribute('data-loaded', 'true');
+                                    }
                                 } catch (_) { }
                             };
                             tmp.onerror = () => {
                                 try {
                                     imgEl.src = fallbackSrc;
                                     imgEl.setAttribute('data-loaded', 'true');
+                                    if (imgEl.parentElement && imgEl.parentElement.classList.contains('thief-anim-wrapper')) {
+                                        imgEl.parentElement.setAttribute('data-loaded', 'true');
+                                    }
                                 } catch (_) { }
                             };
                             tmp.src = imgEl.currentSrc || imgEl.src;
@@ -833,7 +846,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                                 resolve(true);
                                 return;
                             }
-                            
+
                             // setting.js의 경우, characterSetting 객체의 모든 키를 확인하여 일치하는 키 찾기
                             if (fileBase === 'setting' && globalVarName === 'characterSetting') {
                                 if (window.characterSetting) {
@@ -846,9 +859,9 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                                     const keys = Object.keys(window.characterSetting);
                                     const matchedKey = keys.find(key => {
                                         // 정확히 일치하거나, 공백 정규화 후 일치
-                                        return key === name || 
-                                               key.trim() === name.trim() ||
-                                               key.replace(/\s+/g, ' ') === name.replace(/\s+/g, ' ');
+                                        return key === name ||
+                                            key.trim() === name.trim() ||
+                                            key.replace(/\s+/g, ' ') === name.replace(/\s+/g, ' ');
                                     });
                                     if (matchedKey) {
                                         // 매칭된 키로 데이터 복사 (원본 키는 유지)
@@ -858,7 +871,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                                     }
                                 }
                             }
-                            
+
                             // 변수명 프리픽스 스캔 (레거시 파일 지원)
                             try {
                                 if (Array.isArray(scanPrefixes) && scanPrefixes.length > 0) {
@@ -871,7 +884,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                                         }
                                     }
                                 }
-                            } catch (_) {}
+                            } catch (_) { }
                             resolve(!!(window[globalVarName] && window[globalVarName][name]));
                         };
                         s.onerror = () => resolve(false);
@@ -883,10 +896,10 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 });
                 const ok = await loadJs();
                 if (ok) return true;
-                
+
             } catch (e) {
                 console.warn('[SAFE:loadPerCharacterResource]', e);
-                                    }
+            }
             return false;
         }
 
@@ -963,9 +976,9 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     const key = labelEl.textContent.trim();
                     if (Object.prototype.hasOwnProperty.call(values, key)) {
                         valueEl.textContent = values[key];
-                        }
+                    }
                 });
-                } catch (e) {
+            } catch (e) {
                 console.warn('[SAFE:fillBasicStats]', e);
             }
         }
@@ -1189,7 +1202,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 // 리뷰 유무에 따라 pros/cons 상단 여백 조정
                 try {
                     pcGroup.style.marginTop = hasReview ? '24px' : '0px';
-                } catch (_) {}
+                } catch (_) { }
 
                 ReviewCard.appendChild(pcGroup);
                 ReviewCard.style.display = '';
@@ -1357,7 +1370,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 // 라벨
                 const getBadgeText = function (rank) {
                     var suffix = rank === 1 ? 'st' : rank === 2 ? 'nd' : rank === 3 ? 'rd' : 'th';
-                    return rank + suffix; 
+                    return rank + suffix;
                 };
                 const labels = document.querySelectorAll('.skill-level .label');
                 if (!labels || labels.length === 0) return;
@@ -1454,7 +1467,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     jp: 'マイパレス評価'
                 };
                 const ratingText = ratingTexts[currentLang] || ratingTexts.kr;
-                
+
                 // <b> 태그로 분할하여 각 섹션을 div로 래핑
                 const sections = battlePlusStats.textContent.split(/<b>/).filter(Boolean);
                 battlePlusStats.innerHTML = sections.map(section => {
@@ -1471,13 +1484,13 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     }
                     return `<div class="battle-stat-section"><b>${sectionWithBtn}</div>`;
                 }).join('');
-                
+
                 // 이벤트 위임을 사용하여 버튼 클릭 처리 (2열 레이아웃)
                 // 즉시 이벤트 리스너 등록 (QEVEL.js는 나중에 로드될 수 있음)
                 // 중복 등록 방지를 위해 한 번만 등록
                 if (!battlePlusStats.hasAttribute('data-qevel-listener')) {
                     battlePlusStats.setAttribute('data-qevel-listener', 'true');
-                    battlePlusStats.addEventListener('click', function(e) {
+                    battlePlusStats.addEventListener('click', function (e) {
                         const btn = e.target.closest('.qevel-btn');
                         if (btn) {
                             e.stopPropagation();
@@ -1485,7 +1498,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                             if (typeof window.showQEVELModal === 'function') {
                                 try {
                                     window.showQEVELModal();
-                                } catch(err) {
+                                } catch (err) {
                                     console.error('showQEVELModal 실행 오류:', err);
                                 }
                             } else {
@@ -1542,7 +1555,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                         // 심상 번역 처리
                         processedItem = processedItem.replace(/심상5/g, mindTexts[currentLang] || '심상5');
                         processedItem = processedItem.replace(/심상 5/g, mindTexts[currentLang] || '심상5');
-                        
+
                         // 마이팰리스 평점 텍스트 확인 및 버튼 추가
                         const ratingTexts = {
                             kr: '마이팰리스 평점',
@@ -1550,12 +1563,12 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                             jp: 'マイパレス評価'
                         };
                         const ratingText = ratingTexts[currentLang] || ratingTexts.kr;
-                        
+
                         // 모든 언어의 텍스트를 확인 (원본 텍스트가 다른 언어일 수 있음)
                         const allRatingTexts = Object.values(ratingTexts);
                         let hasRating = false;
                         let displayItem = processedItem;
-                        
+
                         for (const text of allRatingTexts) {
                             if (processedItem.includes(text) || processedItem.includes('· ' + text) || processedItem.includes('·' + text)) {
                                 hasRating = true;
@@ -1568,36 +1581,36 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                                 break;
                             }
                         }
-                        
+
                         if (hasRating) {
                             // 텍스트와 버튼을 span으로 감싸서 같은 줄에 유지
                             const wrapper = document.createElement('span');
                             wrapper.style.display = 'inline';
                             wrapper.style.whiteSpace = 'nowrap';
-                            
+
                             const textNode = document.createTextNode(displayItem);
                             wrapper.appendChild(textNode);
-                            
+
                             const qevelBtn = document.createElement('button');
                             qevelBtn.type = 'button';
                             qevelBtn.className = 'qevel-btn';
                             qevelBtn.style.cssText = 'display: inline-block; width: 18px; height: 18px; padding: 0; margin-left: 6px; background: transparent; border: none; cursor: pointer; vertical-align: middle; line-height: 1; white-space: nowrap;';
                             qevelBtn.title = currentLang === 'en' ? 'Open Qualia Lv Calculator' : (currentLang === 'jp' ? 'QEVEL計算機を開く' : 'QEVEL 계산기 열기');
-                            
+
                             // SVG 생성
                             const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
                             svg.setAttribute('width', '18'); svg.setAttribute('height', '18'); svg.setAttribute('viewBox', '0 0 18 18'); svg.setAttribute('fill', 'none'); svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-                            
+
                             const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
                             circle.setAttribute('cx', '9'); circle.setAttribute('cy', '9'); circle.setAttribute('r', '8.5'); circle.setAttribute('stroke', 'currentColor'); circle.setAttribute('stroke-opacity', '0.1'); circle.setAttribute('fill', 'rgba(255,255,255,0.05)');
-                            
+
                             const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
                             path.setAttribute('d', 'M5 9 L13 9 M9 5 L9 13'); path.setAttribute('stroke', 'currentColor'); path.setAttribute('stroke-width', '1.2'); path.setAttribute('stroke-linecap', 'round'); path.setAttribute('stroke-linejoin', 'round'); path.setAttribute('stroke-opacity', '0.3');
-                            
+
                             svg.appendChild(circle); svg.appendChild(path); qevelBtn.appendChild(svg);
-                            
+
                             // 직접 onclick 이벤트도 추가 (이중 보험)
-                            qevelBtn.onclick = function(e) {
+                            qevelBtn.onclick = function (e) {
                                 e.stopPropagation();
                                 e.preventDefault();
                                 if (typeof window.showQEVELModal === 'function') {
@@ -1606,7 +1619,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                                     console.warn('QEVEL.js not loaded yet');
                                 }
                             };
-                            
+
                             wrapper.appendChild(qevelBtn);
                             div.appendChild(wrapper);
                         } else {
@@ -1617,13 +1630,13 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 });
 
                 // console.log('Final items:', items);
-                
+
                 // 이벤트 위임을 사용하여 버튼 클릭 처리 (1열 레이아웃)
                 // 즉시 이벤트 리스너 등록 (QEVEL.js는 나중에 로드될 수 있음)
                 // 중복 등록 방지를 위해 한 번만 등록
                 if (!battlePlusStats.hasAttribute('data-qevel-listener')) {
                     battlePlusStats.setAttribute('data-qevel-listener', 'true');
-                    battlePlusStats.addEventListener('click', function(e) {
+                    battlePlusStats.addEventListener('click', function (e) {
                         const btn = e.target.closest('.qevel-btn');
                         if (btn) {
                             e.stopPropagation();
@@ -1631,7 +1644,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                             if (typeof window.showQEVELModal === 'function') {
                                 try {
                                     window.showQEVELModal();
-                                } catch(err) {
+                                } catch (err) {
                                     console.error('showQEVELModal 실행 오류:', err);
                                 }
                             } else {
@@ -2074,31 +2087,31 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         }
 
         // cha_detail.js 의 createRevelationValue 준비 전이면 재시도
-            if (typeof window.createRevelationValue !== 'function') {
-                setTimeout(refreshRevelationDisplay, 100);
-                return;
-            }
+        if (typeof window.createRevelationValue !== 'function') {
+            setTimeout(refreshRevelationDisplay, 100);
+            return;
+        }
 
-            const character = characterData[characterName];
+        const character = characterData[characterName];
 
-            // 계시 부분만 다시 렌더링
-            const mainRevelationValue = document.querySelector('.main-revelation .value');
-            const subRevelationValue = document.querySelector('.sub-revelation .value');
+        // 계시 부분만 다시 렌더링
+        const mainRevelationValue = document.querySelector('.main-revelation .value');
+        const subRevelationValue = document.querySelector('.sub-revelation .value');
 
-            // characterSetting에서 계시 데이터 병합
-            const setting = (characterName && window.characterSetting && window.characterSetting[characterName]) ? window.characterSetting[characterName] : {};
-            const mergedCharacter = { ...character, ...setting };
-            
-            // 메인 계시 설정
-            if (mergedCharacter.main_revelation && Array.isArray(mergedCharacter.main_revelation)) {
-                mainRevelationValue.textContent = '';
-                mainRevelationValue.appendChild(window.createRevelationValue(mergedCharacter.main_revelation, true));
-            }
+        // characterSetting에서 계시 데이터 병합
+        const setting = (characterName && window.characterSetting && window.characterSetting[characterName]) ? window.characterSetting[characterName] : {};
+        const mergedCharacter = { ...character, ...setting };
 
-            // 서브 계시 설정
-            if (mergedCharacter.sub_revelation && Array.isArray(mergedCharacter.sub_revelation)) {
-                subRevelationValue.textContent = '';
-                subRevelationValue.appendChild(window.createRevelationValue(mergedCharacter.sub_revelation, false));
+        // 메인 계시 설정
+        if (mergedCharacter.main_revelation && Array.isArray(mergedCharacter.main_revelation)) {
+            mainRevelationValue.textContent = '';
+            mainRevelationValue.appendChild(window.createRevelationValue(mergedCharacter.main_revelation, true));
+        }
+
+        // 서브 계시 설정
+        if (mergedCharacter.sub_revelation && Array.isArray(mergedCharacter.sub_revelation)) {
+            subRevelationValue.textContent = '';
+            subRevelationValue.appendChild(window.createRevelationValue(mergedCharacter.sub_revelation, false));
         }
     }
 
@@ -2513,7 +2526,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
     // 리사이즈 시에도 레이아웃 재보정
     try {
         window.addEventListener('resize', function () {
-            try { adjustRecommendedPersonaLayout(); } catch (_) {}
+            try { adjustRecommendedPersonaLayout(); } catch (_) { }
         });
     } catch (e) { console.warn('[SAFE:resize-listener]', e); }
 
@@ -2524,9 +2537,9 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         const characterListMatch = scriptText.match(/const characterList = ({[\s\S]*?});/);
 
         if (characterDataMatch && characterListMatch) {
-        // JSON으로 파싱하기 위해 Function 생성자 사용
-        const characterData = new Function('return ' + characterDataMatch[1])();
-        const characterList = new Function('return ' + characterListMatch[1])();
+            // JSON으로 파싱하기 위해 Function 생성자 사용
+            const characterData = new Function('return ' + characterDataMatch[1])();
+            const characterList = new Function('return ' + characterListMatch[1])();
             return { characterData, characterList };
         }
 
@@ -2537,7 +2550,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             const characterList = resultWin.characterList || resultWin.enCharacterList || resultWin.jpCharacterList || { mainParty: [], supportParty: [] };
             const characterData = resultWin.characterData || resultWin.enCharacterData || resultWin.jpCharacterData || {};
             if (!characterList || !characterData) throw new Error('missing keys');
-        return { characterData, characterList };
+            return { characterData, characterList };
         } catch (e) {
             throw new Error('Failed to extract data from script');
         }
@@ -3091,4 +3104,3 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         <div id="help-modal-description" class="help-description weapon-effect-description"></div>
     </div>
 </div>
-

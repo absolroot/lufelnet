@@ -626,6 +626,9 @@ jp: /revelations/?lang=jp
                 console.error('I18nService is not defined!');
             }
 
+            // 언어 콘텐츠 업데이트 (데이터 로드 전 UI 먼저 적용)
+            await updateLanguageContent();
+
             // SEO 설정 업데이트 (Excluded from i18n update per user request)
             if (typeof updateSEOContent === 'function') {
                 updateSEOContent();
@@ -639,9 +642,6 @@ jp: /revelations/?lang=jp
             await loadAllCharacterSettings();
             // Load external stats JSON (non-blocking for rest of page build)
             await loadRevStatsData();
-
-            // 언어 콘텐츠 업데이트
-            await updateLanguageContent();
 
             // 페이지 초기화
             initializePageContent();

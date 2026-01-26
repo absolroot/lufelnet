@@ -74,5 +74,51 @@ window.personaFiles["라미아"] = {
     "desc_en": "Deal Fire damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
     "desc_jp": "敵全体に攻撃力90.0%/96.3%/102.6%の火炎属性ダメージを与える。さらに２ターンの間、被ダメージが19.6%/21.0%/22.3%上昇する。",
     "priority": 1
-  }
+  },
+  "innate_skill": [
+    {
+      "name": "아기라오",
+      "name_en": "Agilao",
+      "name_jp": "アギラオ",
+      "desc": "1명의 적에게 공격력 114.0/119.7/125.4%의 화염 속성 대미지를 주고, 63.3/66.5/69.6%의 기본 확률로 적을 2턴 동안 화상 상태에 빠뜨린다.",
+      "desc_en": "Deal Fire damage to 1 foe equal to 114.0/119.7/125.4% of Attack. 63.3/66.5/69.6% chance to inflict Burn for 2 turns.",
+      "desc_jp": "敵単体に攻撃力114.0/119.7/125.4%の火炎属性ダメージを与える。63.3/66.5/69.6%の確率で敵を２ターンの間、炎上状態にする。",
+      "cost": "SP 20",
+      "level": "6/7/8",
+      "learn_level": "5"
+    },
+    {
+      "name": "마하라기온",
+      "name_en": "Maragion",
+      "name_jp": "マハラギオン",
+      "desc": "모든 적에게 공격력 57.0/59.8/62.7%의 화염 속성 대미지를 주고, 31.7/33.3/34.9%의 기본 확률로 적을 2턴 동안 화상 상태에 빠뜨린다.",
+      "desc_en": "Deal Fire damage to all foes equal to 57.0/59.8/62.7% of Attack. 31.7/33.3/34.9% chance to inflict Burn for 2 turns.",
+      "desc_jp": "敵全体に攻撃力57.0/59.8/62.7%の火炎属性ダメージを与える。31.7/33.3/34.9%の確率で敵を２ターンの間、炎上状態にする。",
+      "cost": "SP 20",
+      "level": "6/7/8",
+      "learn_level": "10"
+    },
+    {
+      "name": "화염 강화Ⅱ",
+      "name_en": "Fire Boost II",
+      "name_jp": "火炎ブースタⅡ",
+      "desc": "화염 속성 대미지가 6.7% 증가한다.",
+      "desc_en": "Increase Fire damage by 6.7%.",
+      "desc_jp": "火炎属性の与ダメージが６.７%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "15"
+    },
+    {
+      "name": "화염 간파Ⅱ",
+      "name_en": "Fire Reduction II",
+      "name_jp": "火炎レデュースⅡ",
+      "desc": "받는 화염 속성 대미지가 6.7% 감소한다.",
+      "desc_en": "Decrease Fire damage taken by 6.7%.",
+      "desc_jp": "火炎属性の被ダメージを６.７%低下させる。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "20"
+    }
+  ]
 };

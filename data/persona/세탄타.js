@@ -82,5 +82,51 @@ window.personaFiles["세탄타"] = {
     "desc_en": "Deal Physical damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
     "desc_jp": "敵全体に攻撃力180.0%/192.6%/205.2%の物理属性ダメージを与える。",
     "priority": 1
-  }
+  },
+  "innate_skill": [
+    {
+      "name": "공격의 마음가짐Ⅱ",
+      "name_en": "Attack Master II",
+      "name_jp": "攻撃の心得Ⅱ",
+      "desc": "전투 시작 시 2턴 동안 공격력이 12.1% 증가한다.",
+      "desc_en": "At the start of battle, increase Attack by 12.1% for 2 turns.",
+      "desc_jp": "戦闘開始時、２ターンの間、自身の攻撃力が１２.１%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "5"
+    },
+    {
+      "name": "수면율 UPⅡ",
+      "name_en": "Sleep Boost II",
+      "name_jp": "睡眠率ＵＰⅡ",
+      "desc": "수면 효과 부여 시 효과 명중이 12.5% 증가한다.",
+      "desc_en": "Increase Sleep accuracy by 12.5%.",
+      "desc_jp": "睡眠の命中率が１２.５%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "10"
+    },
+    {
+      "name": "도르민",
+      "name_en": "Dormina",
+      "name_jp": "ドルミナー",
+      "desc": "43.6/45.8/48.0%의 기본 확률로 2턴 동안 적 1명을 수면 상태에 빠뜨린다.",
+      "desc_en": "43.6/45.8/48.0% chance to inflict Sleep on 1 foe for 2 turns.",
+      "desc_jp": "43.6/45.8/48.0%の確率で敵単体を２ターンの間、睡眠状態にする。",
+      "cost": "SP 22",
+      "level": "6/7/8",
+      "learn_level": "15"
+    },
+    {
+      "name": "어드바이스Ⅱ",
+      "name_en": "Apt Pupil II",
+      "name_jp": "アドバイスⅡ",
+      "desc": "크리티컬 확률이 5% 증가한다.",
+      "desc_en": "Increase critical rate by 5%.",
+      "desc_jp": "クリティカル率が５%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "20"
+    }
+  ]
 };

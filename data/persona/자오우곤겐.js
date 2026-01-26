@@ -1,4 +1,3 @@
-// Auto-generated from data/kr/wonder/persona.js and data/external/persona/* by scripts/migrate-persona-to-files.mjs
 window.personaFiles = window.personaFiles || {};
 window.personaFiles["자오우곤겐"] = {
   "id": "263",
@@ -99,5 +98,35 @@ window.personaFiles["자오우곤겐"] = {
     "desc_en": "Deal 360.0%/385.2%/410.4% ATK as Fire dmg to 1 foe.",
     "desc_jp": "1体の敵に360.0%/385.2%/410.4% ATKの火炎属性ダメージを与える。",
     "priority": 0
-  }
+  },
+  "innate_skill": [
+    {
+      "name": "마하라기다인",
+      "desc": "모든 적에게 공격력 60.8/63.8/66.9%의 화염 속성 대미지를 주고, 33.8/35.5/37.2%의 기본 확률로 적을 2턴 동안 화상 상태에 빠뜨린다.",
+      "cost": "SP 21",
+      "level": "6/7/8",
+      "learn_level": "10"
+    },
+    {
+      "name": "정밀한 사격Ⅲ",
+      "desc": "총기 대미지가 8.7% 증가한다.",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "20"
+    },
+    {
+      "name": "화염 강화Ⅳ",
+      "desc": "화염 속성 대미지가 10.8% 증가한다.",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "30"
+    },
+    {
+      "name": "마도의 재능Ⅲ",
+      "desc": "주는 대미지가 8.7% 증가한다.",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "40"
+    }
+  ]
 };

@@ -1,4 +1,3 @@
-// Auto-generated from data/kr/wonder/persona.js and data/external/persona/* by scripts/migrate-persona-to-files.mjs
 window.personaFiles = window.personaFiles || {};
 window.personaFiles["체르노보그"] = {
   "id": "258",
@@ -103,5 +102,51 @@ window.personaFiles["체르노보그"] = {
     "desc_en": "Deal Physical damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
     "desc_jp": "敵全体に攻撃力90.0%/96.3%/102.6%の物理属性ダメージを与える。さらに２ターンの間、被ダメージが19.6%/21.0%/22.3%上昇する。",
     "priority": 1
-  }
+  },
+  "innate_skill": [
+    {
+      "name": "무드온",
+      "name_en": "Mudoon",
+      "name_jp": "ムドオン",
+      "desc": "1명의 적에게 공격력 90.6/99.3/108.0%의 주원 속성 대미지를 주고, 생명이 50% 이하인 적에게 낮은 확률로 주원 속성 즉사 효과를 추가하며 생명이 낮을수록 확률이 높아진다.",
+      "desc_en": "Deal Curse damage to 1 foe equal to 90.6/99.3/108.0% of Attack. Low chance to deal Curse insta-kill effect to foes with 50% or less HP. Increase chance based on foe's missing HP.",
+      "desc_jp": "敵単体に攻撃力90.6/99.3/108.0%の呪怨属性ダメージを与える。ＨＰ５０%以下の敵に低確率で呪怨属性の即死効果を与える。敵のＨＰが低いほど確率が上がる。",
+      "cost": "SP 20",
+      "level": "6/7/8",
+      "learn_level": "10"
+    },
+    {
+      "name": "피의 축제",
+      "name_en": "Bloodbath",
+      "name_jp": "血祭り",
+      "desc": "모든 적에게 공격력 40.8/42.8/44.9%의 물리 속성 대미지를 주고, 3턴 동안 2.6/2.7/2.9%의 기본 확률로 적을 공포 상태에 빠뜨린다.",
+      "desc_en": "Deal Physical damage to all foes equal to 40.8/42.8/44.9% of Attack. 2.6/2.7/2.9% chance to inflict Fear for 3 turns.",
+      "desc_jp": "敵全体に攻撃力40.8/42.8/44.9%の物理属性ダメージを与える。2.6/2.7/2.9%の確率で敵を３ターンの間、恐怖状態にする。",
+      "cost": "체력 8.0%",
+      "level": "6/7/8",
+      "learn_level": "20"
+    },
+    {
+      "name": "명중 강화Ⅲ",
+      "name_en": "Accuracy Boost III",
+      "name_jp": "異常命中ブースタⅢ",
+      "desc": "효과 명중이 13% 증가한다.",
+      "desc_en": "Increase ailment accuracy by 13%.",
+      "desc_jp": "状態異常命中が１３%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "30"
+    },
+    {
+      "name": "사망유희",
+      "name_en": "Deadly Fury",
+      "name_jp": "死亡遊戯",
+      "desc": "1명의 적에게 공격력 154.5/162.2/170.0%의 물리 속성 대미지를 준다.",
+      "desc_en": "Deal Physical damage to 1 foe equal to 154.5/162.2/170.0% of Attack.",
+      "desc_jp": "敵単体に攻撃力154.5/162.2/170.0%の物理属性ダメージを与える。",
+      "cost": "체력 9.0%",
+      "level": "6/7/8",
+      "learn_level": "40"
+    }
+  ]
 };

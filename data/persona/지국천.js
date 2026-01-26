@@ -1,4 +1,3 @@
-// Auto-generated from data/kr/wonder/persona.js and data/external/persona/* by scripts/migrate-persona-to-files.mjs
 window.personaFiles = window.personaFiles || {};
 window.personaFiles["지국천"] = {
   "id": "169",
@@ -71,5 +70,51 @@ window.personaFiles["지국천"] = {
     "desc_en": "Increase party's damage by 29.5%/31.6%/33.6% for 2 turns.",
     "desc_jp": "２ターンの間、味方全体の与ダメージが29.5%/31.6%/33.6%上昇する。",
     "priority": 1
-  }
+  },
+  "innate_skill": [
+    {
+      "name": "방어의 마음가짐Ⅱ",
+      "name_en": "Defense Master II",
+      "name_jp": "防御の心得Ⅱ",
+      "desc": "전투 시작 시 2턴 동안 방어력이 18.1% 증가한다.",
+      "desc_en": "At the start of battle, increase Defense by 18.1% for 2 turns.",
+      "desc_jp": "戦闘開始時、２ターンの間、自身の防御力が１８.１%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "5"
+    },
+    {
+      "name": "굳건한 산Ⅱ",
+      "name_en": "Ironclad Resolve II",
+      "name_jp": "堅守の覚悟Ⅱ",
+      "desc": "속도가 9포인트 감소하고, 생명이 22% 증가한다.",
+      "desc_en": "Decrease Speed by 9. Increase HP by 22%.",
+      "desc_jp": "速さが９低下し、ＨＰが２２%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "10"
+    },
+    {
+      "name": "역경의 각오Ⅱ",
+      "name_en": "Adverse Resolve II",
+      "name_jp": "逆境の覚悟Ⅱ",
+      "desc": "적에게 포위 시 크리티컬 확률이 6.5% 증가한다.",
+      "desc_en": "Increase critical rate by 6.5% when surrounded by enemies.",
+      "desc_jp": "ピンチエンカウント時のクリティカル率が６.５%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "15"
+    },
+    {
+      "name": "망살 러시",
+      "name_en": "Memory Blow",
+      "name_jp": "忘殺ラッシュ",
+      "desc": "모든 적에게 공격력 40.8/42.8/44.9%의 물리 속성 대미지를 주고, 2턴 동안 6.7/7.0/7.4%의 기본 확률로 적을 망각 상태에 빠뜨린다.",
+      "desc_en": "Deal Physical damage to all foes equal to 40.8/42.8/44.9% of Attack. 6.7/7.0/7.4% chance to inflict Forget for 2 turns.",
+      "desc_jp": "敵全体に攻撃力40.8/42.8/44.9%の物理属性ダメージを与える。6.7/7.0/7.4%の確率で敵を２ターンの間、忘却状態にする。",
+      "cost": "체력 8.0%",
+      "level": "6/7/8",
+      "learn_level": "20"
+    }
+  ]
 };

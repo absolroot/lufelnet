@@ -1,4 +1,3 @@
-// Auto-generated from data/kr/wonder/persona.js and data/external/persona/* by scripts/migrate-persona-to-files.mjs
 window.personaFiles = window.personaFiles || {};
 window.personaFiles["산달폰"] = {
   "id": "135",
@@ -87,5 +86,51 @@ window.personaFiles["산달폰"] = {
     "desc_en": "Grant a shield to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275 for 2 turns.",
     "desc_jp": "２ターンの間、味方全体に攻撃力48.6%/52.0%/55.4%＋1471/1854/2275のシールドを付与する。",
     "priority": 0
-  }
+  },
+  "innate_skill": [
+    {
+      "name": "검의 춤",
+      "name_en": "Sword Dance",
+      "name_jp": "剣の舞",
+      "desc": "1명의 적에게 공격력 154.5/162.2/170.0%의 물리 속성 대미지를 준다.",
+      "desc_en": "Deal Physical damage to 1 foe equal to 154.5/162.2/170.0% of Attack.",
+      "desc_jp": "敵単体に攻撃力154.5/162.2/170.0%の物理属性ダメージを与える。",
+      "cost": "체력 9.0%",
+      "level": "6/7/8",
+      "learn_level": "10"
+    },
+    {
+      "name": "마하라쿠카 오토Ⅲ",
+      "name_en": "Auto-Maraku III",
+      "name_jp": "マハラクカオートⅢ",
+      "desc": "전투 시작 시 전원의 방어력이 11.8% 증가하며, 이 효과는 2턴 동안 또는 페르소나를 전환할 때까지 지속된다.",
+      "desc_en": "At the start of battle, increase party's Defense by 11.8% for 2 turns or until user changes Personas.",
+      "desc_jp": "戦闘開始時、２ターンもしくはペルソナを切り替えるまでの間、味方全体の防御力が１１.８%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "20"
+    },
+    {
+      "name": "물리 강화Ⅳ",
+      "name_en": "Phys Boost IV",
+      "name_jp": "物理ブースタⅣ",
+      "desc": "물리 속성 대미지가 10.8% 증가한다.",
+      "desc_en": "Increase Physical damage by 10.8%.",
+      "desc_jp": "物理属性の与ダメージが１０.８%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "30"
+    },
+    {
+      "name": "실드 강화Ⅳ",
+      "name_en": "Shield Boost IV",
+      "name_jp": "シールドブースタⅣ",
+      "desc": "실드 효과가 9.7% 증가한다.",
+      "desc_en": "Increase shield effect by 9.7%.",
+      "desc_jp": "シールドが９.７%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "40"
+    }
+  ]
 };

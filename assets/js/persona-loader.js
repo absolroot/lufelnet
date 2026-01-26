@@ -31,7 +31,15 @@
     state.loading = true;
 
     const order = Array.isArray(w.personaOrder) ? w.personaOrder.slice() : [];
-    if (!order.length) {
+    const nonOrder = Array.isArray(w.personaNonOrder) ? w.personaNonOrder.slice() : [];
+
+    // Combine validation list
+    const allItems = [
+      ...order.map(name => ({ name, path: 'data/persona/' })),
+      ...nonOrder.map(name => ({ name, path: 'data/persona/nonorder/' }))
+    ];
+
+    if (!allItems.length) {
       state.loaded = true;
       state.loading = false;
       const cbs = state.callbacks.slice();
@@ -42,7 +50,7 @@
 
     const base = getBaseUrl();
     const ver = (typeof APP_VERSION !== 'undefined') ? APP_VERSION : (typeof SITE_VERSION !== 'undefined' ? SITE_VERSION : '');
-    let remaining = order.length;
+    let remaining = allItems.length;
 
     const done = () => {
       remaining--;
@@ -54,10 +62,10 @@
       cbs.forEach(cb => { try { cb(); } catch (_) { /* noop */ } });
     };
 
-    order.forEach(name => {
+    allItems.forEach(item => {
       try {
         const s = document.createElement('script');
-        s.src = `${base}/data/persona/${encodeURIComponent(name)}.js${ver ? `?v=${ver}` : ''}`;
+        s.src = `${base}/${item.path}${encodeURIComponent(item.name)}.js${ver ? `?v=${ver}` : ''}`;
         s.async = true;
         s.onload = done;
         s.onerror = done;

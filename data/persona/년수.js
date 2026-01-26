@@ -23,7 +23,7 @@ window.personaFiles["년수"] = {
     {
       "name": "음률의 침입",
       "priority": 3
-    }, 
+    },
     {
       "name": "마하라쿤다",
       "priority": 3
@@ -102,5 +102,35 @@ window.personaFiles["년수"] = {
     "desc_en": "Deals 90.0%/96.3%/102.6% ATK Curse dmg to all foes and increase their dmg taken by 19.6%/21.0%/22.3% for 2 turns.",
     "desc_jp": "全ての敵に90.0% ATKの呪怨属性ダメージを与え、敵が受けるダメージが19.6%増加する。効果は2ターンの間持続する。",
     "priority": 1
-  }
+  },
+  "innate_skill": [
+    {
+      "name": "에이가온",
+      "desc": "1명의 적에게 공격력 132.5/140.8/149.1%의 주원 속성 대미지를 주고, 적이 주원 효과 1~2개를 획득한다.",
+      "cost": "SP 21",
+      "level": "6/7/8",
+      "learn_level": "10"
+    },
+    {
+      "name": "세월의 재앙",
+      "desc": "주원 속성 대미지가 8.7% 증가한다.",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "20"
+    },
+    {
+      "name": "마하에이가온",
+      "desc": "모든 적에게 공격력 66.5/70.7/74.9%의 주원 속성 대미지를 주고, 일정 확률로 적이 주원 효과 1개를 획득한다.",
+      "cost": "SP 21",
+      "level": "6/7/8",
+      "learn_level": "30"
+    },
+    {
+      "name": "수면 내성Ⅳ",
+      "desc": "수면 효과를 받을 시 효과 저항이 20.3% 증가한다.",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "40"
+    }
+  ]
 };

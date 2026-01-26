@@ -101,5 +101,51 @@ window.personaFiles["광목천"] = {
     "desc_en": "Increase party's damage by 29.5%/31.6%/33.6% for 2 turns.",
     "desc_jp": "２ターンの間、味方全体の与ダメージが29.5%/31.6%/33.6%上昇する。",
     "priority": 1
-  }
+  },
+  "innate_skill": [
+    {
+      "name": "마하타루카 오토Ⅲ",
+      "name_en": "Auto-Mataru III",
+      "name_jp": "マハタルカオートⅢ",
+      "desc": "전투 시작 시 전원의 공격력이 7.9% 증가하며, 이 효과는 2턴 동안 또는 페르소나를 전환할 때까지 지속된다.",
+      "desc_en": "At the start of battle, increase party's Attack by 7.9% for 2 turns or until user changes Personas.",
+      "desc_jp": "戦闘開始時、２ターンもしくはペルソナを切り替えるまでの間、味方全体の攻撃力が７.９%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "6"
+    },
+    {
+      "name": "치료 촉진Ⅲ",
+      "name_en": "Regenerate III",
+      "name_jp": "治療促進Ⅲ",
+      "desc": "턴 시작 시 최대 생명 3.5%를 회복한다.",
+      "desc_en": "Restores 3.5% of max HP at the start of each turn.",
+      "desc_jp": "毎ターン開始時に最大ＨＰの３.５%を回復する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "12"
+    },
+    {
+      "name": "굳건한 산Ⅲ",
+      "name_en": "Ironclad Resolve III",
+      "name_jp": "堅守の覚悟Ⅲ",
+      "desc": "속도가 12포인트 감소하고, 생명이 29% 증가한다.",
+      "desc_en": "Decrease Speed by 12. Increase HP by 29%.",
+      "desc_jp": "速さが１２低下し、ＨＰが２９%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "18"
+    },
+    {
+      "name": "코칭Ⅲ",
+      "name_en": "Sharp Student III",
+      "name_jp": "コーチングⅢ",
+      "desc": "받는 크리티컬 확률이 6.5% 감소한다.",
+      "desc_en": "Decrease critical taken rate by 6.5%.",
+      "desc_jp": "被クリティカル率が６.５%低下させる。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "25"
+    }
+  ]
 };

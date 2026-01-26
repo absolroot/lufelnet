@@ -1,4 +1,3 @@
-// Auto-generated from data/kr/wonder/persona.js and data/external/persona/* by scripts/migrate-persona-to-files.mjs
 window.personaFiles = window.personaFiles || {};
 window.personaFiles["토르"] = {
   "id": "115",
@@ -99,5 +98,51 @@ window.personaFiles["토르"] = {
     "desc_en": "Deal Electric damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
     "desc_jp": "敵全体に攻撃力180.0%/192.6%/205.2%の電撃属性ダメージを与える。",
     "priority": 0
-  }
+  },
+  "innate_skill": [
+    {
+      "name": "어드바이스Ⅳ",
+      "name_en": "Apt Pupil IV",
+      "name_jp": "アドバイスⅣ",
+      "desc": "크리티컬 확률이 8.1% 증가한다.",
+      "desc_en": "Increase critical rate by 8.1%.",
+      "desc_jp": "クリティカル率が８.１%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "9"
+    },
+    {
+      "name": "감전율 UPⅣ",
+      "name_en": "Shock Boost IV",
+      "name_jp": "感電率ＵＰⅣ",
+      "desc": "감전 효과 부여 시 효과 명중이 20.3% 증가한다.",
+      "desc_en": "Increase Shock accuracy by 20.3%.",
+      "desc_jp": "感電の命中率が２０.３%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "18"
+    },
+    {
+      "name": "마술의 소양Ⅳ",
+      "name_en": "Spell Master IV",
+      "name_jp": "魔術の素養Ⅳ",
+      "desc": "스킬 사용 시 소모하는 SP가 6% 감소한다.",
+      "desc_en": "Decrease SP cost of skills by 6%.",
+      "desc_jp": "スキルのＳＰ消費量が６%低下する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "27"
+    },
+    {
+      "name": "엘 지하드",
+      "name_en": "Wild Thunder",
+      "name_jp": "エル・ジハード",
+      "desc": "모든 적에게 공격력 64.8/68.0/71.3%의 전격 속성 대미지를 주고, 36.0/37.8/39.6%의 기본 확률로 적을 2턴 동안 감전 상태에 빠뜨린다.",
+      "desc_en": "Deal Electric damage to all foes equal to 64.8/68.0/71.3% of Attack. 36.0/37.8/39.6% chance to inflict Shock for 2 turns.",
+      "desc_jp": "敵全体に攻撃力64.8/68.0/71.3%の電撃属性ダメージを与える。36.0/37.8/39.6%の確率で敵を２ターンの間、感電状態にする。",
+      "cost": "SP 22",
+      "level": "6/7/8",
+      "learn_level": "36"
+    }
+  ]
 };

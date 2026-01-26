@@ -1,4 +1,3 @@
-// Auto-generated from data/kr/wonder/persona.js and data/external/persona/* by scripts/migrate-persona-to-files.mjs
 window.personaFiles = window.personaFiles || {};
 window.personaFiles["자타유"] = {
   "id": "141",
@@ -66,5 +65,51 @@ window.personaFiles["자타유"] = {
     "desc_en": "Deal Wind damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
     "desc_jp": "敵全体に攻撃力90.0%/96.3%/102.6%の疾風属性ダメージを与える。さらに２ターンの間、被ダメージが19.6%/21.0%/22.3%上昇する。",
     "priority": 1
-  }
+  },
+  "innate_skill": [
+    {
+      "name": "갈라",
+      "name_en": "Garula",
+      "name_jp": "ガルーラ",
+      "desc": "1명의 적에게 공격력 114.0/119.7/125.4%의 질풍 속성 대미지를 주고, 63.3/66.5/69.6%의 기본 확률로 적을 2턴 동안 풍습 상태에 빠뜨린다.",
+      "desc_en": "Deal Wind damage to 1 foe equal to 114.0/119.7/125.4% of Attack. 63.3/66.5/69.6% chance to inflict Windswept for 2 turns.",
+      "desc_jp": "敵単体に攻撃力114.0/119.7/125.4%の疾風属性ダメージを与える。63.3/66.5/69.6%の確率で敵を２ターンの間、風襲状態にする。",
+      "cost": "SP 20",
+      "level": "6/7/8",
+      "learn_level": "5"
+    },
+    {
+      "name": "민첩의 마음가짐Ⅱ",
+      "name_en": "Agility Master II",
+      "name_jp": "敏捷の心得Ⅱ",
+      "desc": "속도가 9포인트 증가하고, 방어력이 4% 감소한다.",
+      "desc_en": "Increase Speed by 9. Decrease Defense by 4%.",
+      "desc_jp": "速さが９上昇し、防御力が４%低下する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "10"
+    },
+    {
+      "name": "마하갈라",
+      "name_en": "Magarula",
+      "name_jp": "マハガルーラ",
+      "desc": "모든 적에게 공격력 57.0/59.8/62.7%의 질풍 속성 대미지를 주고, 31.7/33.3/34.9%의 기본 확률로 적을 풍습 상태에 빠뜨린다. 2턴 동안 지속된다.",
+      "desc_en": "Deal Wind damage to all foes equal to 57.0/59.8/62.7% of Attack. 31.7/33.3/34.9% chance to inflict Windswept for 2 turns.",
+      "desc_jp": "敵全体に攻撃力57.0/59.8/62.7%の疾風属性ダメージを与える。31.7/33.3/34.9%の確率で敵を２ターンの間、風襲状態にする。",
+      "cost": "SP 20",
+      "level": "6/7/8",
+      "learn_level": "15"
+    },
+    {
+      "name": "질풍 강화Ⅱ",
+      "name_en": "Wind Boost II",
+      "name_jp": "疾風ブースタⅡ",
+      "desc": "질풍 속성 대미지가 6.7% 증가한다.",
+      "desc_en": "Increase Wind damage by 6.7%.",
+      "desc_jp": "疾風属性の与ダメージが６.７%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "20"
+    }
+  ]
 };

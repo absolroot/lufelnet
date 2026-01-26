@@ -1,4 +1,3 @@
-// Auto-generated from data/kr/wonder/persona.js and data/external/persona/* by scripts/migrate-persona-to-files.mjs
 window.personaFiles = window.personaFiles || {};
 window.personaFiles["황룡"] = {
   "id": "152",
@@ -74,5 +73,51 @@ window.personaFiles["황룡"] = {
     "desc_en": "Deal Psychokinesis damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
     "desc_jp": "敵全体に攻撃力180.0%/192.6%/205.2%の念動属性ダメージを与える。",
     "priority": 0
-  }
+  },
+  "innate_skill": [
+    {
+      "name": "사이코 포스",
+      "name_en": "Psycho Blast",
+      "name_jp": "サイコフォース",
+      "desc": "모든 적에게 공격력 77.1/80.6/84.1%의 염동 속성 대미지를 주고, 정신 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 50% 증가한다.",
+      "desc_en": "Deal Psy damage to all foes equal to 77.1/80.6/84.1% of Attack. Deal a Technical and increase damage by 50% for foes with a spiritual ailment.",
+      "desc_jp": "敵全体に攻撃力77.1/80.6/84.1%の念動属性ダメージを与える。行動異常の敵に対してテクニカルが発生しダメージが５０%上昇する。",
+      "cost": "SP 22",
+      "level": "6/7/8",
+      "learn_level": "10"
+    },
+    {
+      "name": "마도의 재능Ⅳ",
+      "name_en": "Battle Acumen IV",
+      "name_jp": "戦闘の才覚Ⅳ",
+      "desc": "주는 대미지가 10.8% 증가한다.",
+      "desc_en": "Increase damage by 10.8%.",
+      "desc_jp": "与ダメージが１０.８%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "20"
+    },
+    {
+      "name": "승리의 숨결Ⅳ",
+      "name_en": "Life Aid IV",
+      "name_jp": "勝利の息吹Ⅳ",
+      "desc": "전투 승리 후 최대 생명과 SP를 6.5% 회복한다.",
+      "desc_en": "Restore 6.5% of max HP and SP after winning a battle.",
+      "desc_jp": "戦闘勝利後に６.５%の最大ＨＰとＳＰを回復する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "30"
+    },
+    {
+      "name": "마술의 소양Ⅳ",
+      "name_en": "Spell Master IV",
+      "name_jp": "魔術の素養Ⅳ",
+      "desc": "스킬 사용 시 소모하는 SP가 6% 감소한다.",
+      "desc_en": "Decrease SP cost of skills by 6%.",
+      "desc_jp": "スキルのＳＰ消費量が６%低下する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "40"
+    }
+  ]
 };

@@ -82,5 +82,51 @@ window.personaFiles["아라하바키"] = {
     "desc_en": "Grant a shield to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275 for 2 turns.",
     "desc_jp": "２ターンの間、味方全体に攻撃力48.6%/52.0%/55.4%＋1471/1854/2275のシールドを付与する。",
     "priority": 0
-  }
+  },
+  "innate_skill": [
+    {
+      "name": "데쿤다",
+      "name_en": "Dekunda",
+      "name_jp": "デクンダ",
+      "desc": "모든 동료의 속성 감소 효과 1개를 제거한다.",
+      "desc_en": "Remove 1 stat debuff from all allies.",
+      "desc_jp": "味方全体のステータス低下効果を１つ打ち消す。",
+      "cost": "SP skillLv*-1+28",
+      "level": "6/7/8",
+      "learn_level": "5"
+    },
+    {
+      "name": "어설트 다이브",
+      "name_en": "Assault Dive",
+      "name_jp": "アサルトダイブ",
+      "desc": "1명의 적에게 공격력 141.8/148.9/156.0%의 물리 속성 대미지를 준다.",
+      "desc_en": "Deal Physical damage to 1 foe equal to 141.8/148.9/156.0% of Attack.",
+      "desc_jp": "敵単体に攻撃力141.8/148.9/156.0%の物理属性ダメージを与える。",
+      "cost": "체력 8.0%",
+      "level": "6/7/8",
+      "learn_level": "10"
+    },
+    {
+      "name": "방어의 마음가짐Ⅱ",
+      "name_en": "Defense Master II",
+      "name_jp": "防御の心得Ⅱ",
+      "desc": "전투 시작 시 2턴 동안 방어력이 18.1% 증가한다.",
+      "desc_en": "At the start of battle, increase Defense by 18.1% for 2 turns.",
+      "desc_jp": "戦闘開始時、２ターンの間、自身の防御力が１８.１%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "15"
+    },
+    {
+      "name": "방어 강화Ⅱ",
+      "name_en": "Protect Boost II",
+      "name_jp": "プロテクブースタⅡ",
+      "desc": "방어력이 12.5% 증가한다.",
+      "desc_en": "Increase Defense by 12.5%.",
+      "desc_jp": "防御力が１２.５%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "20"
+    }
+  ]
 };

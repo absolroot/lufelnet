@@ -1,4 +1,3 @@
-
 window.personaFiles = window.personaFiles || {};
 window.personaFiles["기리메칼라"] = {
   "id": "208",
@@ -66,5 +65,51 @@ window.personaFiles["기리메칼라"] = {
     "desc_en": "Grant a shield to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275 for 2 turns.",
     "desc_jp": "２ターンの間、味方全体に攻撃力48.6%/52.0%/55.4%＋1471/1854/2275のシールドを付与する。",
     "priority": 0
-  }
+  },
+  "innate_skill": [
+    {
+      "name": "물리 간파Ⅲ",
+      "name_en": "Physical Reduction III",
+      "name_jp": "物理レデュースⅢ",
+      "desc": "받는 물리 속성 대미지가 8.7% 감소한다.",
+      "desc_en": "Decrease Physical damage taken by 8.7%.",
+      "desc_jp": "物理属性の被ダメージを８.７%低下させる。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "6"
+    },
+    {
+      "name": "총격 간파Ⅲ",
+      "name_en": "Gun Reduction III",
+      "name_jp": "銃撃レデュースⅢ",
+      "desc": "받는 총격 속성 대미지가 8.7% 감소한다.",
+      "desc_en": "Decrease Gun damage taken by 8.7%.",
+      "desc_jp": "銃撃属性の被ダメージを８.７%低下させる。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "12"
+    },
+    {
+      "name": "화염 간파Ⅲ",
+      "name_en": "Fire Reduction III",
+      "name_jp": "火炎レデュースⅢ",
+      "desc": "받는 화염 속성 대미지가 8.7% 감소한다.",
+      "desc_en": "Decrease Fire damage taken by 8.7%.",
+      "desc_jp": "火炎属性の被ダメージを８.７%低下させる。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "18"
+    },
+    {
+      "name": "주원 간파Ⅲ",
+      "name_en": "Curse Reduction III",
+      "name_jp": "呪怨レデュースⅢ",
+      "desc": "받는 주원 속성 대미지가 8.7% 감소한다.",
+      "desc_en": "Decrease Curse damage taken by 8.7%.",
+      "desc_jp": "呪怨属性の被ダメージを８.７%低下させる。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "25"
+    }
+  ]
 };

@@ -75,5 +75,29 @@ window.personaFiles["서큐버스"] = {
     "desc_en": "Increase party's damage by 29.5%/31.6%/33.6% for 2 turns.",
     "desc_jp": "２ターンの間、味方全体の与ダメージが29.5%/31.6%/33.6%上昇する。",
     "priority": 1
-  }
+  },
+  "innate_skill": [
+    {
+      "name": "무드",
+      "name_en": "Mudo",
+      "name_jp": "ムド",
+      "desc": "1명의 적에게 공격력 79.2/87.3/95.4%의 주원 속성 대미지를 주고, 생명이 50% 이하인 적에게 낮은 확률로 주원 속성 즉사 효과를 추가하며 생명이 낮을수록 확률이 높아진다.",
+      "desc_en": "Deal Curse damage to 1 foe equal to 79.2/87.3/95.4% of Attack. Low chance to deal Curse insta-kill effect to foes with 50% or less HP. Increase chance based on foe's missing HP.",
+      "desc_jp": "敵単体に攻撃力79.2/87.3/95.4%の呪怨属性ダメージを与える。ＨＰ５０%以下の敵に低確率で呪怨属性の即死効果を与える。敵のＨＰが低いほど確率が上がる。",
+      "cost": "SP 19",
+      "level": "6/7/8",
+      "learn_level": "4"
+    },
+    {
+      "name": "주원 강화Ⅰ",
+      "name_en": "Curse Boost I",
+      "name_jp": "呪怨ブースタⅠ",
+      "desc": "주원 속성 대미지가 4.7% 증가한다.",
+      "desc_en": "Increase Curse damage by 4.7%.",
+      "desc_jp": "呪怨属性の与ダメージが４.７%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "8"
+    }
+  ]
 };

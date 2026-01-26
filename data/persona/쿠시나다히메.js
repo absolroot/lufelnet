@@ -1,4 +1,3 @@
-// Auto-generated from data/kr/wonder/persona.js and data/external/persona/* by scripts/migrate-persona-to-files.mjs
 window.personaFiles = window.personaFiles || {};
 window.personaFiles["쿠시나다히메"] = {
   "id": "237",
@@ -79,5 +78,51 @@ window.personaFiles["쿠시나다히메"] = {
     "desc_en": "Increase party's damage by 29.5%/31.6%/33.6% for 2 turns.",
     "desc_jp": "２ターンの間、味方全体の与ダメージが29.5%/31.6%/33.6%上昇する。",
     "priority": 1
-  }
+  },
+  "innate_skill": [
+    {
+      "name": "부흐다인",
+      "name_en": "Bufudyne",
+      "name_jp": "ブフダイン",
+      "desc": "1명의 적에게 공격력 121.7/127.8/133.9%의 빙결 속성 대미지를 주고, 67.6/71.0/74.4%의 기본 확률로 적을 2턴 동안 동결 상태에 빠뜨린다.",
+      "desc_en": "Deal Ice damage to 1 foe equal to 121.7/127.8/133.9% of Attack. 67.6/71.0/74.4% chance to inflict Freeze for 2 turns.",
+      "desc_jp": "敵単体に攻撃力121.7/127.8/133.9%の氷結属性ダメージを与える。67.6/71.0/74.4%の確率で敵を２ターンの間、凍結状態にする。",
+      "cost": "SP 21",
+      "level": "6/7/8",
+      "learn_level": "6"
+    },
+    {
+      "name": "빙결 간파Ⅲ",
+      "name_en": "Ice Reduction III",
+      "name_jp": "氷結レデュースⅢ",
+      "desc": "받는 빙결 속성 대미지가 8.7% 감소한다.",
+      "desc_en": "Decrease Ice damage taken by 8.7%.",
+      "desc_jp": "氷結属性の被ダメージを８.７%低下させる。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "12"
+    },
+    {
+      "name": "마도의 재능Ⅲ",
+      "name_en": "Battle Acumen III",
+      "name_jp": "戦闘の才覚Ⅲ",
+      "desc": "주는 대미지가 8.7% 증가한다.",
+      "desc_en": "Increase damage by 8.7%.",
+      "desc_jp": "与ダメージが８.７%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "18"
+    },
+    {
+      "name": "민첩의 마음가짐Ⅲ",
+      "name_en": "Agility Master III",
+      "name_jp": "敏捷の心得Ⅲ",
+      "desc": "속도가 12포인트 증가하고, 방어력이 8% 감소한다.",
+      "desc_en": "Increase Speed by 12. Decrease Defense by 8%.",
+      "desc_jp": "速さが１２上昇し、防御力が８%低下する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "25"
+    }
+  ]
 };

@@ -1,4 +1,3 @@
-// Auto-generated from data/kr/wonder/persona.js and data/external/persona/* by scripts/migrate-persona-to-files.mjs
 window.personaFiles = window.personaFiles || {};
 window.personaFiles["트럼페터"] = {
   "id": "256",
@@ -83,5 +82,47 @@ window.personaFiles["트럼페터"] = {
     "desc_en": "Deals 45.0%/48.2%/51.3% ATK Allmighty dmg to all foes and increase their dmg taken by 19.6%/21.0%/22.3% for 2 turns.",
     "desc_jp": "全ての敵に45.0%/48.2%/51.3% ATKの万能属性ダメージを与え、敵が受けるダメージが19.6%/21.0%/22.3%増加する。効果は2ターンの間持続する。",
     "priority": 1
-  }
+  },
+  "innate_skill": [
+    {
+      "name": "마하프레이다인",
+      "name_en": "Ironclad Resolve I",
+      "name_jp": "堅守の覚悟Ⅰ",
+      "desc": "모든 적에게 공격력 66.9/69.9/72.9%의 핵열 속성 대미지를 주고, 원소 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 20% 증가한다.",
+      "desc_en": "Decrease Speed by 6. Increase HP by 15%.",
+      "desc_jp": "速さが６低下し、ＨＰが１５%上昇する。",
+      "cost": "SP 21",
+      "level": "6/7/8",
+      "learn_level": "10"
+    },
+    {
+      "name": "명중 강화Ⅲ",
+      "name_en": "Mabufu",
+      "name_jp": "マハブフ",
+      "desc": "효과 명중이 13% 증가한다.",
+      "desc_en": "Deal Ice damage to all foes equal to 53.1/55.8/58.4% of Attack. 29.5/31.0/32.4% chance to inflict Freeze for 2 turns.",
+      "desc_jp": "敵全体に攻撃力53.1/55.8/58.4%の氷結属性ダメージを与える。29.5/31.0/32.4%の確率で敵を２ターンの間、凍結状態にする。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "20"
+    },
+    {
+      "name": "승리의 숨결Ⅳ",
+      "name_en": "Attack Boost I",
+      "name_jp": "アタックブースタⅠ",
+      "desc": "전투 승리 후 최대 생명과 SP를 6.5% 회복한다.",
+      "desc_en": "Increase Attack by 5.8%.",
+      "desc_jp": "攻撃力が５.８%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "30"
+    },
+    {
+      "name": "랜더마이저",
+      "desc": "3턴 동안 적군 1명의 공격, 방어, 효과 명중, 효과 저항이 7.8%/8.2%/8.6% 감소한다.",
+      "cost": "SP 22",
+      "level": "6/7/8",
+      "learn_level": "40"
+    }
+  ]
 };

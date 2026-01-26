@@ -1,4 +1,3 @@
-// Auto-generated from data/kr/wonder/persona.js and data/external/persona/* by scripts/migrate-persona-to-files.mjs
 window.personaFiles = window.personaFiles || {};
 window.personaFiles["지크프리트"] = {
   "id": "264",
@@ -79,5 +78,35 @@ window.personaFiles["지크프리트"] = {
     "desc_en": "Deals 180.0%/192.6%/205.2% ATK as Phys dmg to all foes.",
     "desc_jp": "すべての敵に攻撃力180.0%/192.6%/205.2%の物理属性ダメージを与える。",
     "priority": 0
-  }
+  },
+  "innate_skill": [
+    {
+      "name": "마하스쿠카쟈",
+      "desc": "모든 동료의 효과 명중, 효과 저항이 6.5%/6.8%/7.2% 증가하고, 자신의 효과 명중 25%마다 1.1%/1.2%/1.2% 추가 증가한다. 상한은 4.4%/4.6%/4.8%이며, 효과는 3턴 동안 지속된다.",
+      "cost": "SP 22",
+      "level": "6/7/8",
+      "learn_level": "10"
+    },
+    {
+      "name": "고압 전류Ⅳ",
+      "desc": "선제 공격 시 크리티컬 확률이 9.7% 증가한다.",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "20"
+    },
+    {
+      "name": "차지",
+      "desc": "1턴 동안 자신이 주는 다음 물리 속성 대미지가 52.1%/54.7%/57.3% 증가한다.",
+      "cost": "SP 22",
+      "level": "6/7/8",
+      "learn_level": "30"
+    },
+    {
+      "name": "어드바이스Ⅳ",
+      "desc": "크리티컬 확률이 8.1% 증가한다.",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "40"
+    }
+  ]
 };

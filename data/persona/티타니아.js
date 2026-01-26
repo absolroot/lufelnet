@@ -1,4 +1,3 @@
-// Auto-generated from data/kr/wonder/persona.js and data/external/persona/* by scripts/migrate-persona-to-files.mjs
 window.personaFiles = window.personaFiles || {};
 window.personaFiles["티타니아"] = {
   "id": "118",
@@ -95,5 +94,51 @@ window.personaFiles["티타니아"] = {
     "desc_en": "Restore HP to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275.",
     "desc_jp": "味方全体のＨＰを攻撃力48.6%/52.0%/55.4%＋1471/1854/2275回復する。",
     "priority": 1
-  }
+  },
+  "innate_skill": [
+    {
+      "name": "컨센트레이트",
+      "name_en": "Concentrate",
+      "name_jp": "コンセントレイト",
+      "desc": "자신의 다음 마법 속성 대미지가 52.1%/54.7%/57.3% 증가하며 1턴 동안 지속된다.",
+      "desc_en": "Increase next magic damage by 52.1%/54.7%/57.3%. Lasts for 1 turn.",
+      "desc_jp": "１ターンの間、自身が次に与える魔法属性ダメージが52.1%/54.7%/57.3%上昇する。",
+      "cost": "SP 22",
+      "level": "6/7/8",
+      "learn_level": "8"
+    },
+    {
+      "name": "기공Ⅲ",
+      "name_en": "Nurture III",
+      "name_jp": "養心Ⅲ",
+      "desc": "SP 회복 효율이 5.7% 증가한다.",
+      "desc_en": "Increase SP recovery rate by 5.7%.",
+      "desc_jp": "ＳＰ回復率が５.７%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "16"
+    },
+    {
+      "name": "신들의 비호Ⅲ",
+      "name_en": "Divine Grace III",
+      "name_jp": "神々の加護Ⅲ",
+      "desc": "받는 치료 효과가 4.3% 증가한다.",
+      "desc_en": "Increase healing received by 4.3%.",
+      "desc_jp": "被回復量が４.３%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "24"
+    },
+    {
+      "name": "핵열 강화Ⅲ",
+      "name_en": "Nuke Boost III",
+      "name_jp": "核熱ブースタⅢ",
+      "desc": "핵열 속성 대미지가 8.7% 증가한다.",
+      "desc_en": "Increase Nuclear damage by 8.7%.",
+      "desc_jp": "核熱属性の与ダメージが８.７%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "32"
+    }
+  ]
 };

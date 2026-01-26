@@ -86,5 +86,51 @@ window.personaFiles["앨리스"] = {
     "desc_en": "Deal Curse damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
     "desc_jp": "敵全体に攻撃力90.0%/96.3%/102.6%の呪怨属性ダメージを与える。さらに２ターンの間、被ダメージが19.6%/21.0%/22.3%上昇する。",
     "priority": 1
-  }
+  },
+  "innate_skill": [
+    {
+      "name": "무드 성공률 UPⅣ",
+      "name_en": "Call of the Abyss IV",
+      "name_jp": "深淵の呼び声Ⅳ",
+      "desc": "즉사 스킬 성공률이 6.8% 증가한다.",
+      "desc_en": "Increase the success rate of insta-kill skills by 6.8%.",
+      "desc_jp": "即死スキルの成功率が６.８%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "10"
+    },
+    {
+      "name": "주원 간파Ⅳ",
+      "name_en": "Curse Reduction IV",
+      "name_jp": "呪怨レデュースⅣ",
+      "desc": "받는 주원 속성 대미지가 10.8% 감소한다.",
+      "desc_en": "Decrease Curse damage taken by 10.8%.",
+      "desc_jp": "呪怨属性の被ダメージを１０.８%低下させる。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "20"
+    },
+    {
+      "name": "민첩의 마음가짐Ⅳ",
+      "name_en": "Agility Master IV",
+      "name_jp": "敏捷の心得Ⅳ",
+      "desc": "속도가 15포인트 증가하고, 방어력이 12% 감소한다.",
+      "desc_en": "Increase Speed by 15. Decrease Defense by 12%.",
+      "desc_jp": "速さが１５上昇し、防御力が１２%低下する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "30"
+    },
+    {
+      "name": "연옥의 날개",
+      "name_en": "Maeigaon",
+      "name_jp": "マハエイガオン",
+      "desc": "모든 적에게 공격력 71.0/75.6/80.2%의 주원 속성 대미지를 주고, 적이 주원 효과 1개를 획득한다.",
+      "desc_en": "Deal Curse damage to all foes equal to 66.5/70.7/74.9% of Attack. Chance to inflict 1 Curse stack on foes.",
+      "desc_jp": "敵全体に攻撃力66.5/70.7/74.9%の呪怨属性ダメージを与える。一定の確率で敵に１つの呪印を付与する。",
+      "cost": "SP 22",
+      "level": "6/7/8",
+      "learn_level": "40"
+    }
+  ]
 };

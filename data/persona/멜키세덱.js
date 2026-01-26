@@ -103,5 +103,40 @@ window.personaFiles["멜키세덱"] = {
     "desc_en": "Deal Bless damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
     "desc_jp": "敵全体に攻撃力180.0%/192.6%/205.2%の祝福属性ダメージを与える。",
     "priority": 0
-  }
+  },
+  "innate_skill": [
+    {
+      "name": "굳건한 산Ⅰ",
+      "name_en": "Megaton Raid",
+      "name_jp": "メガトンレイド",
+      "desc": "속도가 6포인트 감소하고, 생명이 15% 증가한다.",
+      "desc_en": "Deal Physical damage to 1 foe equal to 154.5/162.2/170.0% of Attack.",
+      "desc_jp": "敵単体に攻撃力154.5/162.2/170.0%の物理属性ダメージを与える。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "4"
+    },
+    {
+      "name": "마하부흐",
+      "name_en": "Hamaon",
+      "name_jp": "ハマオン",
+      "desc": "모든 적에게 공격력 53.1/55.8/58.4%의 빙결 속성 대미지를 주고, 29.5/31.0/32.4%의 기본 확률로 적을 2턴 동안 동결 상태에 빠뜨린다.",
+      "desc_en": "Deal Bless damage to 1 foe equal to 90.6/99.3/108.0% of Attack. Low chance to deal a Bless insta-kill effect to foes with 50% or less HP. Increase chance based on foe's missing HP.",
+      "desc_jp": "敵単体に攻撃力90.6/99.3/108.0%の祝福属性ダメージを与える。ＨＰ５０%以下の敵に低確率で祝福属性の即死効果を与える。敵のＨＰが低いほど確率が上がる。",
+      "cost": "SP 19",
+      "level": "6/7/8",
+      "learn_level": "8"
+    },
+    {
+      "name": "공격 강화Ⅰ",
+      "name_en": "Divine Guidance III",
+      "name_jp": "天上の導きⅢ",
+      "desc": "공격력이 5.8% 증가한다.",
+      "desc_en": "Increase the success rate of insta-kill skills by 5.4%.",
+      "desc_jp": "即死スキルの成功率が５.４%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "12"
+    }
+  ]
 };

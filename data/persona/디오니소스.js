@@ -119,5 +119,51 @@ window.personaFiles["디오니소스"] = {
     "desc_en": "Increase party's damage by 29.5%/31.6%/33.6% for 2 turns.",
     "desc_jp": "２ターンの間、味方全体の与ダメージが29.5%/31.6%/33.6%上昇する。",
     "priority": 1
-  }
+  },
+  "innate_skill": [
+    {
+      "name": "염동 강화Ⅳ",
+      "name_en": "Psy Boost IV",
+      "name_jp": "念動ブースタⅣ",
+      "desc": "염동 속성 대미지가 10.8% 증가한다.",
+      "desc_en": "Increase Psychokinesis damage by 10.8%.",
+      "desc_jp": "念動属性の与ダメージが１０.８%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "9"
+    },
+    {
+      "name": "사이코키네시스",
+      "name_en": "Psycho Force",
+      "name_jp": "サイコキネシス",
+      "desc": "1명의 적에게 공격력 138.9/145.9/152.9%의 염동 속성 대미지를 주고, 정신 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 50% 증가한다.",
+      "desc_en": "Deal Psy damage to 1 foe equal to 138.9/145.9/152.9% of Attack. Deal a Technical and increase damage by 50% for foes with a spiritual ailment.",
+      "desc_jp": "敵単体に攻撃力138.9/145.9/152.9%の念動属性ダメージを与える。行動異常の敵に対してテクニカルが発生しダメージが５０%上昇する。",
+      "cost": "SP 22",
+      "level": "6/7/8",
+      "learn_level": "18"
+    },
+    {
+      "name": "전격 간파Ⅳ",
+      "name_en": "Electric Reduction IV",
+      "name_jp": "電撃レデュースⅣ",
+      "desc": "받는 전격 속성 대미지가 10.8% 감소한다.",
+      "desc_en": "Decrease Electric damage taken by 10.8%.",
+      "desc_jp": "電撃属性の被ダメージを１０.８%低下させる。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "27"
+    },
+    {
+      "name": "명중 강화Ⅳ",
+      "name_en": "Accuracy Boost IV",
+      "name_jp": "異常命中ブースタⅣ",
+      "desc": "효과 명중이 16.2% 증가한다.",
+      "desc_en": "Increase ailment accuracy by 16.2%.",
+      "desc_jp": "状態異常命中が１６.２%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "36"
+    }
+  ]
 };

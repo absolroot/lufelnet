@@ -1,4 +1,3 @@
-// Auto-generated from data/kr/wonder/persona.js and data/external/persona/* by scripts/migrate-persona-to-files.mjs
 window.personaFiles = window.personaFiles || {};
 window.personaFiles["유룽"] = {
   "id": "207",
@@ -99,5 +98,51 @@ window.personaFiles["유룽"] = {
     "desc_en": "Deal Electric damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
     "desc_jp": "敵全体に攻撃力90.0%/96.3%/102.6%の電撃属性ダメージを与える。さらに２ターンの間、被ダメージが19.6%/21.0%/22.3%上昇する。",
     "priority": 1
-  }
+  },
+  "innate_skill": [
+    {
+      "name": "전격 강화Ⅲ",
+      "name_en": "Elec Boost III",
+      "name_jp": "電撃ブースタⅢ",
+      "desc": "전격 속성 대미지가 8.7% 증가한다.",
+      "desc_en": "Increase Electric damage by 8.7%.",
+      "desc_jp": "電撃属性の与ダメージが８.７%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "6"
+    },
+    {
+      "name": "감전율 UPⅢ",
+      "name_en": "Shock Boost III",
+      "name_jp": "感電率ＵＰⅢ",
+      "desc": "감전 효과 부여 시 효과 명중이 16.3% 증가한다.",
+      "desc_en": "Increase Shock accuracy by 16.3%.",
+      "desc_jp": "感電の命中率が１６.３%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "12"
+    },
+    {
+      "name": "마하지오다인",
+      "name_en": "Maziodyne",
+      "name_jp": "マハジオダイン",
+      "desc": "모든 적에게 공격력 60.8/63.8/66.9%의 전격 속성 대미지를 주고, 33.8/35.5/37.2%의 기본 확률로 적을 2턴 동안 감전 상태에 빠뜨린다.",
+      "desc_en": "Deal Electric damage to all foes equal to 60.8/63.8/66.9% of Attack. 33.8/35.5/37.2% chance to inflict Shock for 2 turns.",
+      "desc_jp": "敵全体に攻撃力60.8/63.8/66.9%の電撃属性ダメージを与える。33.8/35.5/37.2%の確率で敵を２ターンの間、感電状態にする。",
+      "cost": "SP 21",
+      "level": "6/7/8",
+      "learn_level": "18"
+    },
+    {
+      "name": "지오다인",
+      "name_en": "Ziodyne",
+      "name_jp": "ジオダイン",
+      "desc": "1명의 적에게 공격력 121.7/127.8/133.9%의 전격 속성 대미지를 주고, 67.6/71.0/74.4%의 기본 확률로 적을 2턴 동안 감전 상태에 빠뜨린다.",
+      "desc_en": "Deal Electric damage to 1 foe equal to 121.7/127.8/133.9% of Attack. 67.6/71.0/74.4% chance to inflict Shock for 2 turns.",
+      "desc_jp": "敵単体に攻撃力121.7/127.8/133.9%の電撃属性ダメージを与える。67.6/71.0/74.4%の確率で敵を２ターンの間、感電状態にする。",
+      "cost": "SP 21",
+      "level": "6/7/8",
+      "learn_level": "25"
+    }
+  ]
 };

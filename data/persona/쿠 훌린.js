@@ -1,4 +1,3 @@
-// Auto-generated from data/kr/wonder/persona.js and data/external/persona/* by scripts/migrate-persona-to-files.mjs
 window.personaFiles = window.personaFiles || {};
 window.personaFiles["쿠 훌린"] = {
   "id": "123",
@@ -95,5 +94,51 @@ window.personaFiles["쿠 훌린"] = {
     "desc_en": "Deal Physical damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
     "desc_jp": "敵単体に攻撃力360.0%/385.2%/410.4%の物理属性ダメージを与える。",
     "priority": 0
-  }
+  },
+  "innate_skill": [
+    {
+      "name": "원 샷 킬",
+      "name_en": "One-shot Kill",
+      "name_jp": "ワンショットキル",
+      "desc": "1명의 적에게 공격 포인트 107.5/112.9/118.3%의 총격 속성 대미지를 주고, 크리티컬 확률이 20% 증가한다.",
+      "desc_en": "Increase this skill's critical rate by 20%, and deal Gun damage to 1 foe equal to 107.5/112.9/118.3% of Attack.",
+      "desc_jp": "このスキルのクリティカル率を２０%上昇させ、敵単体に攻撃力107.5/112.9/118.3%の銃撃属性ダメージを与える。",
+      "cost": "체력 8.0%",
+      "level": "6/7/8",
+      "learn_level": "9"
+    },
+    {
+      "name": "고압 전류Ⅲ",
+      "name_en": "Fortified Moxy III",
+      "name_jp": "ハイボルテージⅢ",
+      "desc": "선제 공격 시 크리티컬 확률이 7.8% 증가한다.",
+      "desc_en": "Increase critical rate by 7.8% when ambushing.",
+      "desc_jp": "先制時のクリティカル率が７.８%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "18"
+    },
+    {
+      "name": "마하타루카쟈",
+      "name_en": "Matarukaja",
+      "name_jp": "マハタルカジャ",
+      "desc": "모든 동료의 공격력이 10.9%/11.4%/12.0% 증가하고, 자신의 공격력 500포인트마다 0.9%/0.9%/1.0% 추가 증가한다. 상한은 7.2%/7.6%/7.9%이며, 효과는 3턴 동안 지속된다.",
+      "desc_en": "Increase party's Attack by 10.9%/11.4%/12.0%. For every 500 of the user's Attack, increase party's Attack by 0.9%/0.9%/1.0% more, up to 7.2%/7.6%/7.9%. Lasts for 3 turns.",
+      "desc_jp": "３ターンの間、味方全体の攻撃力が10.9%/11.4%/12.0%上昇する。自身の攻撃力が５００ごとに、味方の攻撃力がさらに0.9%/0.9%/1.0%上昇する（最大7.2%/7.6%/7.9%まで）。",
+      "cost": "SP 22",
+      "level": "6/7/8",
+      "learn_level": "27"
+    },
+    {
+      "name": "어드바이스Ⅳ",
+      "name_en": "Apt Pupil IV",
+      "name_jp": "アドバイスⅣ",
+      "desc": "크리티컬 확률이 8.1% 증가한다.",
+      "desc_en": "Increase critical rate by 8.1%.",
+      "desc_jp": "クリティカル率が８.１%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "36"
+    }
+  ]
 };

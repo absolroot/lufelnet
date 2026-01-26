@@ -90,5 +90,51 @@ window.personaFiles["벨페고르"] = {
     "desc_en": "Deal Ice damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
     "desc_jp": "敵全体に攻撃力90.0%/96.3%/102.6%の氷結属性ダメージを与える。さらに２ターンの間、被ダメージが19.6%/21.0%/22.3%上昇する。",
     "priority": 1
-  }
+  },
+  "innate_skill": [
+    {
+      "name": "부흐라",
+      "name_en": "Bufula",
+      "name_jp": "ブフーラ",
+      "desc": "1명의 적에게 공격력 114.0/119.7/125.4%의 빙결 속성 대미지를 주고, 63.3/66.5/69.6%의 기본 확률로 적을 2턴 동안 동결 상태에 빠뜨린다.",
+      "desc_en": "Deal Ice damage to 1 foe equal to 114.0/119.7/125.4% of Attack. 63.3/66.5/69.6% chance to inflict Freeze for 2 turns.",
+      "desc_jp": "敵単体に攻撃力114.0/119.7/125.4%の氷結属性ダメージを与える。63.3/66.5/69.6%の確率で敵を２ターンの間、凍結状態にする。",
+      "cost": "SP 20",
+      "level": "6/7/8",
+      "learn_level": "5"
+    },
+    {
+      "name": "공격의 마음가짐Ⅱ",
+      "name_en": "Attack Master II",
+      "name_jp": "攻撃の心得Ⅱ",
+      "desc": "전투 시작 시 2턴 동안 공격력이 12.1% 증가한다.",
+      "desc_en": "At the start of battle, increase Attack by 12.1% for 2 turns.",
+      "desc_jp": "戦闘開始時、２ターンの間、自身の攻撃力が１２.１%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "10"
+    },
+    {
+      "name": "망각 내성Ⅱ",
+      "name_en": "Resist Forget II",
+      "name_jp": "忘却耐性Ⅱ",
+      "desc": "망각 효과를 받을 시 효과 저항이 12.5% 증가한다.",
+      "desc_en": "Increase Forget resistance by 12.5%.",
+      "desc_jp": "忘却の抵抗率が１２.５%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "15"
+    },
+    {
+      "name": "마하부흐라",
+      "name_en": "Mabufula",
+      "name_jp": "マハブフーラ",
+      "desc": "모든 적에게 공격력 57.0/59.8/62.7%의 빙결 속성 대미지를 주고, 31.7/33.3/34.9%의 기본 확률로 적을 2턴 동안 동결 상태에 빠뜨린다.",
+      "desc_en": "Deal Ice damage to all foes equal to 57.0/59.8/62.7% of Attack. 31.7/33.3/34.9% chance to inflict Freeze for 2 turns.",
+      "desc_jp": "敵全体に攻撃力57.0/59.8/62.7%の氷結属性ダメージを与える。31.7/33.3/34.9%の確率で敵を２ターンの間、凍結状態にする。",
+      "cost": "SP 20",
+      "level": "6/7/8",
+      "learn_level": "20"
+    }
+  ]
 };

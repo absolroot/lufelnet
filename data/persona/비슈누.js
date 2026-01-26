@@ -114,5 +114,51 @@ window.personaFiles["비슈누"] = {
     "desc_en": "Deal Wind damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
     "desc_jp": "敵単体に攻撃力360.0%/385.2%/410.4%の疾風属性ダメージを与える。",
     "priority": 0
-  }
+  },
+  "innate_skill": [
+    {
+      "name": "질풍 강화Ⅲ",
+      "name_en": "Wind Boost III",
+      "name_jp": "疾風ブースタⅢ",
+      "desc": "질풍 속성 대미지가 8.7% 증가한다.",
+      "desc_en": "Increase Wind damage by 8.7%.",
+      "desc_jp": "疾風属性の与ダメージが８.７%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "10"
+    },
+    {
+      "name": "마하갈다인",
+      "name_en": "Magarudyne",
+      "name_jp": "マハガルダイン",
+      "desc": "모든 적에게 공격력 60.8/63.8/66.9%의 질풍 속성 대미지를 주고, 33.8/35.5/37.2%의 기본 확률로 적을 풍습 상태에 빠뜨린다. 2턴 동안 지속된다.",
+      "desc_en": "Deal Wind damage to all foes equal to 60.8/63.8/66.9% of Attack. 33.8/35.5/37.2% chance to inflict Windswept for 2 turns.",
+      "desc_jp": "敵全体に攻撃力60.8/63.8/66.9%の疾風属性ダメージを与える。33.8/35.5/37.2%の確率で敵を２ターンの間、風襲状態にする。",
+      "cost": "SP 21",
+      "level": "6/7/8",
+      "learn_level": "20"
+    },
+    {
+      "name": "공격의 마음가짐Ⅲ",
+      "name_en": "Attack Master III",
+      "name_jp": "攻撃の心得Ⅲ",
+      "desc": "전투 시작 시 2턴 동안 공격력이 15.7% 증가한다.",
+      "desc_en": "At the start of battle, increase Attack by 15.7% for 2 turns.",
+      "desc_jp": "戦闘開始時、２ターンの間、自身の攻撃力が１５.７%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "30"
+    },
+    {
+      "name": "메기도라온",
+      "name_en": "Megidolaon",
+      "name_jp": "メギドラオン",
+      "desc": "모든 적에게 공격력 43.5/45.7/47.8%의 만능 속성 대미지를 주고, 적의 방어력을 무시한다.",
+      "desc_en": "Deal Almighty damage to all foes equal to 43.5/45.7/47.8% of Attack, ignoring their defense.",
+      "desc_jp": "敵全体に防御力無視の攻撃力43.5/45.7/47.8%の万能属性ダメージを与える。",
+      "cost": "SP 20",
+      "level": "6/7/8",
+      "learn_level": "40"
+    }
+  ]
 };

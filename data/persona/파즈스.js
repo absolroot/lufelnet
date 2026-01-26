@@ -1,4 +1,3 @@
-// Auto-generated from data/kr/wonder/persona.js and data/external/persona/* by scripts/migrate-persona-to-files.mjs
 window.personaFiles = window.personaFiles || {};
 window.personaFiles["파즈스"] = {
   "id": "147",
@@ -95,5 +94,51 @@ window.personaFiles["파즈스"] = {
     "desc_en": "Deal Curse damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
     "desc_jp": "敵全体に攻撃力180.0%/192.6%/205.2%の呪怨属性ダメージを与える。",
     "priority": 0
-  }
+  },
+  "innate_skill": [
+    {
+      "name": "주원 강화Ⅲ",
+      "name_en": "Curse Boost III",
+      "name_jp": "呪怨ブースタⅢ",
+      "desc": "주원 속성 대미지가 8.7% 증가한다.",
+      "desc_en": "Increase Curse damage by 8.7%.",
+      "desc_jp": "呪怨属性の与ダメージが８.７%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "6"
+    },
+    {
+      "name": "주원 간파Ⅲ",
+      "name_en": "Curse Reduction III",
+      "name_jp": "呪怨レデュースⅢ",
+      "desc": "받는 주원 속성 대미지가 8.7% 감소한다.",
+      "desc_en": "Decrease Curse damage taken by 8.7%.",
+      "desc_jp": "呪怨属性の被ダメージを８.７%低下させる。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "12"
+    },
+    {
+      "name": "에이가온",
+      "name_en": "Eigaon",
+      "name_jp": "エイガオン",
+      "desc": "1명의 적에게 공격력 132.5/140.8/149.1%의 주원 속성 대미지를 주고, 적이 주원 효과 1~2개를 획득한다.",
+      "desc_en": "Deal Curse damage to 1 foe equal to 132.5/140.8/149.1% of Attack. Inflict 1 to 2 Curse stacks on the foe.",
+      "desc_jp": "敵単体に攻撃力132.5/140.8/149.1%の呪怨属性ダメージを与える。敵に１～２つの呪印を付与する。",
+      "cost": "SP 21",
+      "level": "6/7/8",
+      "learn_level": "18"
+    },
+    {
+      "name": "무드온",
+      "name_en": "Mudoon",
+      "name_jp": "ムドオン",
+      "desc": "1명의 적에게 공격력 90.6/99.3/108.0%의 주원 속성 대미지를 주고, 생명이 50% 이하인 적에게 낮은 확률로 주원 속성 즉사 효과를 추가하며 생명이 낮을수록 확률이 높아진다.",
+      "desc_en": "Deal Curse damage to 1 foe equal to 90.6/99.3/108.0% of Attack. Low chance to deal Curse insta-kill effect to foes with 50% or less HP. Increase chance based on foe's missing HP.",
+      "desc_jp": "敵単体に攻撃力90.6/99.3/108.0%の呪怨属性ダメージを与える。ＨＰ５０%以下の敵に低確率で呪怨属性の即死効果を与える。敵のＨＰが低いほど確率が上がる。",
+      "cost": "SP 20",
+      "level": "6/7/8",
+      "learn_level": "25"
+    }
+  ]
 };

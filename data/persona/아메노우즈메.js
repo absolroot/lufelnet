@@ -74,5 +74,51 @@ window.personaFiles["아메노우즈메"] = {
     "desc_en": "Deal Electric damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
     "desc_jp": "敵単体に攻撃力360.0%/385.2%/410.4%の電撃属性ダメージを与える。",
     "priority": 0
-  }
+  },
+  "innate_skill": [
+    {
+      "name": "마하지온가",
+      "name_en": "Mazionga",
+      "name_jp": "マハジオンガ",
+      "desc": "모든 적에게 공격력 57.0/59.8/62.7%의 전격 속성 대미지를 주고, 31.7/33.3/34.9%의 기본 확률로 적을 2턴 동안 감전 상태에 빠뜨린다.",
+      "desc_en": "Deal Electric damage to all foes equal to 57.0/59.8/62.7% of Attack. 31.7/33.3/34.9% chance to inflict Shock for 2 turns.",
+      "desc_jp": "敵全体に攻撃力57.0/59.8/62.7%の電撃属性ダメージを与える。31.7/33.3/34.9%の確率で敵を２ターンの間、感電状態にする。",
+      "cost": "SP 20",
+      "level": "6/7/8",
+      "learn_level": "5"
+    },
+    {
+      "name": "감전율 UPⅡ",
+      "name_en": "Shock Boost II",
+      "name_jp": "感電率ＵＰⅡ",
+      "desc": "감전 효과 부여 시 효과 명중이 12.5% 증가한다.",
+      "desc_en": "Increase Shock accuracy by 12.5%.",
+      "desc_jp": "感電の命中率が１２.５%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "10"
+    },
+    {
+      "name": "디아라마",
+      "name_en": "Diarama",
+      "name_jp": "ディアラマ",
+      "desc": "동료 1명이 공격력 35.6/37.4/39.2%+1077/1333/1608의 생명을 회복한다.",
+      "desc_en": "Restore 1 ally's HP by 35.6/37.4/39.2% of Attack + 1077/1333/1608.",
+      "desc_jp": "味方単体のＨＰを攻撃力の35.6/37.4/39.2%＋1077/1333/1608回復する。",
+      "cost": "SP 24",
+      "level": "6/7/8",
+      "learn_level": "15"
+    },
+    {
+      "name": "화염 간파Ⅱ",
+      "name_en": "Fire Reduction II",
+      "name_jp": "火炎レデュースⅡ",
+      "desc": "받는 화염 속성 대미지가 6.7% 감소한다.",
+      "desc_en": "Decrease Fire damage taken by 6.7%.",
+      "desc_jp": "火炎属性の被ダメージを６.７%低下させる。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "20"
+    }
+  ]
 };

@@ -99,5 +99,51 @@ window.personaFiles["비사문천"] = {
     "desc_en": "Deal Nuclear damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
     "desc_jp": "敵単体に攻撃力360.0%/385.2%/410.4%の核熱属性ダメージを与える。",
     "priority": 0
-  }
+  },
+  "innate_skill": [
+    {
+      "name": "핵열 강화Ⅳ",
+      "name_en": "Nuke Boost IV",
+      "name_jp": "核熱ブースタⅣ",
+      "desc": "핵열 속성 대미지가 10.8% 증가한다.",
+      "desc_en": "Increase Nuclear damage by 10.8%.",
+      "desc_jp": "核熱属性の与ダメージが１０.８%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "9"
+    },
+    {
+      "name": "코즈믹 플레어",
+      "name_en": "Cosmic Flare",
+      "name_jp": "コズミックフレア",
+      "desc": "모든 적에게 공격력 71.1/74.6/78.1%의 핵열 속성 대미지를 주고, 원소 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 22% 증가한다.",
+      "desc_en": "Deal Nuclear damage to all foes equal to 71.1/74.6/78.1% of Attack. Deal a Technical and increase damage by 22% for foes with an elemental ailment.",
+      "desc_jp": "敵全体に攻撃力71.1/74.6/78.1%の核熱属性ダメージを与える。属性異常の敵に対してテクニカルが発生しダメージが２２%上昇する。",
+      "cost": "SP 22",
+      "level": "6/7/8",
+      "learn_level": "18"
+    },
+    {
+      "name": "역경의 각오Ⅳ",
+      "name_en": "Adverse Resolve IV",
+      "name_jp": "逆境の覚悟Ⅳ",
+      "desc": "적에게 포위 시 크리티컬 확률이 10.5% 증가한다.",
+      "desc_en": "Increase critical rate by 10.5% when surrounded by enemies.",
+      "desc_jp": "ピンチエンカウント時のクリティカル率が１０.５%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "27"
+    },
+    {
+      "name": "핵열 간파Ⅳ",
+      "name_en": "Nuclear Reduction IV",
+      "name_jp": "核熱レデュースⅣ",
+      "desc": "받는 핵열 속성 대미지가 10.8% 감소한다.",
+      "desc_en": "Decrease Nuclear damage taken by 10.8%.",
+      "desc_jp": "核熱属性の被ダメージを１０.８%低下させる。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "36"
+    }
+  ]
 };

@@ -94,5 +94,51 @@ window.personaFiles["파르바티"] = {
     "desc_en": "Restore HP to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275.",
     "desc_jp": "味方全体のＨＰを攻撃力48.6%/52.0%/55.4%＋1471/1854/2275回復する。",
     "priority": 1
-  }
+  },
+  "innate_skill": [
+    {
+      "name": "치료 강화Ⅲ",
+      "name_en": "Healing Boost III",
+      "name_jp": "治療ブースタⅢ",
+      "desc": "주는 치료 효과가 7.8% 증가한다.",
+      "desc_en": "Increase healing by 7.8%.",
+      "desc_jp": "回復量が７.８%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "8"
+    },
+    {
+      "name": "바이스디",
+      "name_en": "Baisudi",
+      "name_jp": "バイスディ",
+      "desc": "동료 1명의 화상, 동결, 감전, 풍습 효과를 제거한다.",
+      "desc_en": "Cure Burn, Freeze, Shock, or Windswept on 1 ally.",
+      "desc_jp": "味方単体の炎上、凍結、感電、風襲を治療する。",
+      "cost": "SP 25",
+      "level": "6/7/8",
+      "learn_level": "16"
+    },
+    {
+      "name": "사이다인",
+      "name_en": "Psiodyne",
+      "name_jp": "サイダイン",
+      "desc": "1명의 적에게 공격력 130.5/136.4/142.3%의 염동 속성 대미지를 주고, 정신 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 45% 증가한다.",
+      "desc_en": "Deal Psy damage to 1 foe equal to 130.5/136.4/142.3% of Attack. Deal a Technical and increase damage by 45% for foes with a spiritual ailment.",
+      "desc_jp": "敵単体に攻撃力130.5/136.4/142.3%の念動属性ダメージを与える。行動異常の敵に対してテクニカルが発生しダメージが４５%上昇する。",
+      "cost": "SP 21",
+      "level": "6/7/8",
+      "learn_level": "24"
+    },
+    {
+      "name": "방어의 마음가짐Ⅲ",
+      "name_en": "Defense Master III",
+      "name_jp": "防御の心得Ⅲ",
+      "desc": "전투 시작 시 2턴 동안 방어력이 23.6% 증가한다.",
+      "desc_en": "At the start of battle, increase Defense by 23.6% for 2 turns.",
+      "desc_jp": "戦闘開始時、２ターンの間、自身の防御力が２３.６%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "32"
+    }
+  ]
 };

@@ -78,5 +78,51 @@ window.personaFiles["아누비스"] = {
     "desc_en": "Deal Curse damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
     "desc_jp": "敵単体に攻撃力360.0%/385.2%/410.4%の呪怨属性ダメージを与える。",
     "priority": 0
-  }
+  },
+  "innate_skill": [
+    {
+      "name": "코우가",
+      "name_en": "Kouga",
+      "name_jp": "コウガ",
+      "desc": "1명의 적에게 공격력 123.2/130.7/138.2%의 축복 속성 대미지를 주고, 자신은 축복 효과 1~2개를 획득한다.",
+      "desc_en": "Deal Bless damage to 1 foe equal to 123.2/130.7/138.2% of Attack. Gain 1 to 2 Blessing stacks.",
+      "desc_jp": "敵単体に攻撃力123.2/130.7/138.2%の祝福属性ダメージを与える。自身に１～２つの祝印を獲得する。",
+      "cost": "SP 20",
+      "level": "6/7/8",
+      "learn_level": "5"
+    },
+    {
+      "name": "에이가",
+      "name_en": "Eiga",
+      "name_jp": "エイガ",
+      "desc": "1명의 적에게 공격력 124.2/131.7/139.2%의 주원 속성 대미지를 주고, 적이 주원 효과 1~2개를 획득한다.",
+      "desc_en": "Deal Curse damage to 1 foe equal to 124.2/131.7/139.2% of Attack. Inflict 1 to 2 Curse stacks on the foe.",
+      "desc_jp": "敵単体に攻撃力124.2/131.7/139.2%の呪怨属性ダメージを与える。敵に１～２つの呪印を付与する。",
+      "cost": "SP 20",
+      "level": "6/7/8",
+      "learn_level": "10"
+    },
+    {
+      "name": "축복 강화Ⅱ",
+      "name_en": "Bless Boost II",
+      "name_jp": "祝福ブースタⅡ",
+      "desc": "축복 속성 대미지가 6.7% 증가한다.",
+      "desc_en": "Increase Bless damage by 6.7%.",
+      "desc_jp": "祝福属性の与ダメージが６.７%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "15"
+    },
+    {
+      "name": "주원 강화Ⅱ",
+      "name_en": "Curse Boost II",
+      "name_jp": "呪怨ブースタⅡ",
+      "desc": "주원 속성 대미지가 6.7% 증가한다.",
+      "desc_en": "Increase Curse damage by 6.7%.",
+      "desc_jp": "呪怨属性の与ダメージが６.７%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "20"
+    }
+  ]
 };

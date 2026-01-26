@@ -98,5 +98,51 @@ window.personaFiles["노른"] = {
     "desc_en": "Grant a shield to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275 for 2 turns.",
     "desc_jp": "２ターンの間、味方全体に攻撃力48.6%/52.0%/55.4%＋1471/1854/2275のシールドを付与する。",
     "priority": 0
-  }
+  },
+  "innate_skill": [
+    {
+      "name": "갈다인",
+      "name_en": "Garudyne",
+      "name_jp": "ガルダイン",
+      "desc": "1명의 적에게 공격력 121.7/127.8/133.9%의 질풍 속성 대미지를 주고, 67.6/71.0/74.4%의 기본 확률로 적을 2턴 동안 풍습 상태에 빠뜨린다.",
+      "desc_en": "Deal Wind damage to 1 foe equal to 121.7/127.8/133.9% of Attack. 67.6/71.0/74.4% chance to inflict Windswept for 2 turns.",
+      "desc_jp": "敵単体に攻撃力121.7/127.8/133.9%の疾風属性ダメージを与える。67.6/71.0/74.4%の確率で敵を２ターンの間、風襲状態にする。",
+      "cost": "SP 21",
+      "level": "6/7/8",
+      "learn_level": "8"
+    },
+    {
+      "name": "지오다인",
+      "name_en": "Ziodyne",
+      "name_jp": "ジオダイン",
+      "desc": "1명의 적에게 공격력 121.7/127.8/133.9%의 전격 속성 대미지를 주고, 67.6/71.0/74.4%의 기본 확률로 적을 2턴 동안 감전 상태에 빠뜨린다.",
+      "desc_en": "Deal Electric damage to 1 foe equal to 121.7/127.8/133.9% of Attack. 67.6/71.0/74.4% chance to inflict Shock for 2 turns.",
+      "desc_jp": "敵単体に攻撃力121.7/127.8/133.9%の電撃属性ダメージを与える。67.6/71.0/74.4%の確率で敵を２ターンの間、感電状態にする。",
+      "cost": "SP 21",
+      "level": "6/7/8",
+      "learn_level": "16"
+    },
+    {
+      "name": "질풍 간파Ⅲ",
+      "name_en": "Wind Reduction III",
+      "name_jp": "疾風レデュースⅢ",
+      "desc": "받는 질풍 속성 대미지가 8.7% 감소한다.",
+      "desc_en": "Decrease Wind damage taken by 8.7%.",
+      "desc_jp": "疾風属性の被ダメージを８.７%低下させる。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "24"
+    },
+    {
+      "name": "질풍률 UPⅢ",
+      "name_en": "Windsweep Boost III",
+      "name_jp": "風襲率ＵＰⅢ",
+      "desc": "풍습 효과 부여 시 효과 명중이 16.3% 증가한다.",
+      "desc_en": "Increase Windswept accuracy by 16.3%.",
+      "desc_jp": "風襲の命中率が１６.３%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "32"
+    }
+  ]
 };

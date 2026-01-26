@@ -1,4 +1,3 @@
-// Auto-generated from data/kr/wonder/persona.js and data/external/persona/* by scripts/migrate-persona-to-files.mjs
 window.personaFiles = window.personaFiles || {};
 window.personaFiles["오오쿠니누시"] = {
   "id": "148",
@@ -87,5 +86,51 @@ window.personaFiles["오오쿠니누시"] = {
     "desc_en": "Deal Psychokinesis damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
     "desc_jp": "敵全体に攻撃力180.0%/192.6%/205.2%の念動属性ダメージを与える。",
     "priority": 0
-  }
+  },
+  "innate_skill": [
+    {
+      "name": "장대비 베기",
+      "name_en": "Tempest Slash",
+      "name_jp": "五月雨斬り",
+      "desc": "1명의 적에게 공격력 36.9/38.7/40.6%의 물리 속성 대미지를 3~5회 준다.",
+      "desc_en": "Deal Physical damage to 1 foe equal to 36.9/38.7/40.6% of Attack (3 to 5 hits).",
+      "desc_jp": "敵単体に攻撃力36.9/38.7/40.6%の物理属性ダメージを３～５回与える。",
+      "cost": "체력 7.0%",
+      "level": "6/7/8",
+      "learn_level": "6"
+    },
+    {
+      "name": "공격 강화Ⅲ",
+      "name_en": "Attack Boost III",
+      "name_jp": "アタックブースタⅢ",
+      "desc": "공격력이 10.8% 증가한다.",
+      "desc_en": "Increase Attack by 10.8%.",
+      "desc_jp": "攻撃力が１０.８%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "12"
+    },
+    {
+      "name": "마하사이다인",
+      "name_en": "Mapsiodyne",
+      "name_jp": "マハサイダイン",
+      "desc": "모든 적에게 공격력 72.3/75.3/78.3%의 염동 속성 대미지를 주고, 정신 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 45% 증가한다.",
+      "desc_en": "Deal Psy damage to all foes equal to 72.3/75.3/78.3% of Attack. Deal a Technical and increase damage by 45% for foes with a spiritual ailment.",
+      "desc_jp": "敵全体に攻撃力72.3/75.3/78.3%の念動属性ダメージを与える。行動異常の敵に対してテクニカルが発生しダメージが４５%上昇する。",
+      "cost": "SP 21",
+      "level": "6/7/8",
+      "learn_level": "18"
+    },
+    {
+      "name": "염동 간파Ⅲ",
+      "name_en": "Psy Reduction III",
+      "name_jp": "念動レデュースⅢ",
+      "desc": "받는 염동 속성 대미지가 8.7% 감소한다.",
+      "desc_en": "Decrease Psychokinesis damage taken by 8.7%.",
+      "desc_jp": "念動属性の被ダメージを８.７%低下させる。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "25"
+    }
+  ]
 };

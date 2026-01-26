@@ -82,5 +82,51 @@ window.personaFiles["수르트"] = {
     "desc_en": "Deal Fire damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
     "desc_jp": "敵全体に攻撃力90.0%/96.3%/102.6%の火炎属性ダメージを与える。さらに２ターンの間、被ダメージが19.6%/21.0%/22.3%上昇する。",
     "priority": 1
-  }
+  },
+  "innate_skill": [
+    {
+      "name": "화염 강화Ⅲ",
+      "name_en": "Fire Boost III",
+      "name_jp": "火炎ブースタⅢ",
+      "desc": "화염 속성 대미지가 8.7% 증가한다.",
+      "desc_en": "Increase Fire damage by 8.7%.",
+      "desc_jp": "火炎属性の与ダメージが８.７%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "8"
+    },
+    {
+      "name": "아기다인",
+      "name_en": "Agidyne",
+      "name_jp": "アギダイン",
+      "desc": "1명의 적에게 공격력 121.7/127.8/133.9%의 화염 속성 대미지를 주고, 67.6/71.0/74.4%의 기본 확률로 적을 2턴 동안 화상 상태에 빠뜨린다.",
+      "desc_en": "Deal Fire damage to 1 foe equal to 121.7/127.8/133.9% of Attack. 67.6/71.0/74.4% chance to inflict Burn for 2 turns.",
+      "desc_jp": "敵単体に攻撃力121.7/127.8/133.9%の火炎属性ダメージを与える。67.6/71.0/74.4%の確率で敵を２ターンの間、炎上状態にする。",
+      "cost": "SP 21",
+      "level": "6/7/8",
+      "learn_level": "16"
+    },
+    {
+      "name": "브레이브 재퍼",
+      "name_en": "Brave Blade",
+      "name_jp": "ブレイブザッパー",
+      "desc": "1명의 적에게 공격력 154.5/162.2/170.0%의 물리 속성 대미지를 준다.",
+      "desc_en": "Deal Physical damage to 1 foe equal to 154.5/162.2/170.0% of Attack.",
+      "desc_jp": "敵単体に攻撃力154.5/162.2/170.0%の物理属性ダメージを与える。",
+      "cost": "체력 9.0%",
+      "level": "6/7/8",
+      "learn_level": "24"
+    },
+    {
+      "name": "저항 강화Ⅲ",
+      "name_en": "Resistance Boost III",
+      "name_jp": "異常抵抗ブースタⅢ",
+      "desc": "효과 저항이 13% 증가한다.",
+      "desc_en": "Increase ailment resistance by 13%.",
+      "desc_jp": "状態異常抵抗が１３%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "32"
+    }
+  ]
 };

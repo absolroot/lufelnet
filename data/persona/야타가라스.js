@@ -1,4 +1,3 @@
-// Auto-generated from data/kr/wonder/persona.js and data/external/persona/* by scripts/migrate-persona-to-files.mjs
 window.personaFiles = window.personaFiles || {};
 window.personaFiles["야타가라스"] = {
   "id": "246",
@@ -95,5 +94,51 @@ window.personaFiles["야타가라스"] = {
     "desc_en": "Deal Fire damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
     "desc_jp": "敵全体に攻撃力180.0%/192.6%/205.2%の火炎属性ダメージを与える。",
     "priority": 1
-  }
+  },
+  "innate_skill": [
+    {
+      "name": "데쿤다",
+      "name_en": "Dekunda",
+      "name_jp": "デクンダ",
+      "desc": "모든 동료의 속성 감소 효과 1개를 제거한다.",
+      "desc_en": "Remove 1 stat debuff from all allies.",
+      "desc_jp": "味方全体のステータス低下効果を１つ打ち消す。",
+      "cost": "SP skillLv*-1+28",
+      "level": "6/7/8",
+      "learn_level": "8"
+    },
+    {
+      "name": "역경의 각오Ⅲ",
+      "name_en": "Adverse Resolve III",
+      "name_jp": "逆境の覚悟Ⅲ",
+      "desc": "적에게 포위 시 크리티컬 확률이 8.5% 증가한다.",
+      "desc_en": "Increase critical rate by 8.5% when surrounded by enemies.",
+      "desc_jp": "ピンチエンカウント時のクリティカル率が８.５%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "16"
+    },
+    {
+      "name": "축복 간파Ⅲ",
+      "name_en": "Bless Reduction III",
+      "name_jp": "祝福レデュースⅢ",
+      "desc": "받는 축복 속성 대미지가 8.7% 감소한다.",
+      "desc_en": "Decrease Bless damage taken by 8.7%.",
+      "desc_jp": "祝福属性の被ダメージを８.７%低下させる。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "24"
+    },
+    {
+      "name": "화상률 UPⅢ",
+      "name_en": "Burn Boost III",
+      "name_jp": "炎上率ＵＰⅢ",
+      "desc": "화상 효과 부여 시 효과 명중이 16.3% 증가한다.",
+      "desc_en": "Increase Burn accuracy by 16.3%.",
+      "desc_jp": "炎上の命中率が１６.３%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "32"
+    }
+  ]
 };

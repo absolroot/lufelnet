@@ -99,6 +99,52 @@ window.personaFiles["야노식"] = {
       "desc_jp": "攻撃力が２９.１%上昇する。戦闘開始時、敵単体に『標的』を与える。味方全体が『標的』を付与された敵を攻撃する時、攻撃力が２０%上昇し、クリティカル率とクリティカルダメージが４.５%上昇する。『標的』を付与された敵の防御力がさらに１２%低下させる。自身が『標的』を付与された敵を攻撃した時、追加で攻撃力１８%の銃撃属性ダメージを１回与える。"
     }
   ],
+  "innate_skill": [
+    {
+      "name": "불렛 타임",
+      "name_en": "Bullet Time",
+      "name_jp": "バレットタイム",
+      "desc": "모든 적에게 공격력 23.4%/25.5%/27.7%의 3단 총격 속성 대미지를 주고, 『조준』을 보유한 적이 있을 경우 해당 스킬의 공격력이 30.0%/32.7%/35.4%, 크리티컬 효과가 36.0%/39.2%/42.5% 증가한다.",
+      "desc_en": "Deal Gun damage to all foes equal to 23.4%/25.5%/27.7% of Attack (3 hits). If a foe is Marked, increase damage by 30.0%/32.7%/35.4% and critical damage by 36.0%/39.2%/42.5%.",
+      "desc_jp": "敵全体に攻撃力23.4%/25.5%/27.7%の銃撃属性ダメージを３回与える。『標的』状態の敵がいる時、与ダメージが30.0%/32.7%/35.4%、クリティカルダメージが36.0%/39.2%/42.5%上昇する。",
+      "cost": "체력 8.0%",
+      "level": "6/7/8",
+      "learn_level": "2"
+    },
+    {
+      "name": "흑백무계",
+      "name_en": "Seize the Day",
+      "name_jp": "生命欲の輝弾",
+      "desc": "모든 적에게 공격력 78.8%/85.9%/93.0%의 축복 속성 대미지를 주고, 생명이 가장 낮은 동료 1명이 공격력 15.8%/17.2%/18.6%+478/614/765의 생명을 회복한다.",
+      "desc_en": "Deal Bless damage to all foes equal to 78.8%/85.9%/93.0% of Attack. Restore HP of the ally with the lowest remaining HP, equal to 15.8%/17.2%/18.6% of Attack + 478/614/765.",
+      "desc_jp": "敵全体に攻撃力78.8%/85.9%/93.0%の祝福属性ダメージを与える。残りのＨＰが一番低い味方のＨＰを攻撃力15.8%/17.2%/18.6%＋478/614/765回復する。",
+      "cost": "SP 24",
+      "level": "6/7/8",
+      "learn_level": "4"
+    },
+    {
+      "name": "공격 강화Ⅰ",
+      "name_en": "Attack Boost I",
+      "name_jp": "アタックブースタⅠ",
+      "desc": "공격력이 5.8% 증가한다.",
+      "desc_en": "Increase Attack by 5.8%.",
+      "desc_jp": "攻撃力が５.８%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "7"
+    },
+    {
+      "name": "승리의 숨결Ⅰ",
+      "name_en": "Life Aid I",
+      "name_jp": "勝利の息吹Ⅰ",
+      "desc": "전투 승리 후 최대 생명과 SP를 2.5% 회복한다.",
+      "desc_en": "Restore 2.5% of max HP and SP after winning a battle.",
+      "desc_jp": "戦闘勝利後に２.５%の最大ＨＰとＳＰを回復する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "10"
+    }
+  ],
   "uniqueSkill": {
     "name": "궁지 반격",
     "name_en": "Tatra Shot",

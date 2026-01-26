@@ -102,5 +102,51 @@ window.personaFiles["시바"] = {
     "desc_en": "Deal Psychokinesis damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
     "desc_jp": "敵全体に攻撃力90.0%/96.3%/102.6%の念動属性ダメージを与える。さらに２ターンの間、被ダメージが19.6%/21.0%/22.3%上昇する。",
     "priority": 1
-  }
+  },
+  "innate_skill": [
+    {
+      "name": "염동 강화Ⅲ",
+      "name_en": "Psy Boost III",
+      "name_jp": "念動ブースタⅢ",
+      "desc": "염동 속성 대미지가 8.7% 증가한다.",
+      "desc_en": "Increase Psychokinesis damage by 8.7%.",
+      "desc_jp": "念動属性の与ダメージが８.７%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "10"
+    },
+    {
+      "name": "사이다인",
+      "name_en": "Psiodyne",
+      "name_jp": "サイダイン",
+      "desc": "1명의 적에게 공격력 130.5/136.4/142.3%의 염동 속성 대미지를 주고, 정신 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 45% 증가한다.",
+      "desc_en": "Deal Psy damage to 1 foe equal to 130.5/136.4/142.3% of Attack. Deal a Technical and increase damage by 45% for foes with a spiritual ailment.",
+      "desc_jp": "敵単体に攻撃力130.5/136.4/142.3%の念動属性ダメージを与える。行動異常の敵に対してテクニカルが発生しダメージが４５%上昇する。",
+      "cost": "SP 21",
+      "level": "6/7/8",
+      "learn_level": "20"
+    },
+    {
+      "name": "마하타루카쟈",
+      "name_en": "Matarukaja",
+      "name_jp": "マハタルカジャ",
+      "desc": "모든 동료의 공격력이 10.9%/11.4%/12.0% 증가하고, 자신의 공격력 500포인트마다 0.9%/0.9%/1.0% 추가 증가한다. 상한은 7.2%/7.6%/7.9%이며, 효과는 3턴 동안 지속된다.",
+      "desc_en": "Increase party's Attack by 10.9%/11.4%/12.0%. For every 500 of the user's Attack, increase party's Attack by 0.9%/0.9%/1.0% more, up to 7.2%/7.6%/7.9%. Lasts for 3 turns.",
+      "desc_jp": "３ターンの間、味方全体の攻撃力が10.9%/11.4%/12.0%上昇する。自身の攻撃力が５００ごとに、味方の攻撃力がさらに0.9%/0.9%/1.0%上昇する（最大7.2%/7.6%/7.9%まで）。",
+      "cost": "SP 22",
+      "level": "6/7/8",
+      "learn_level": "30"
+    },
+    {
+      "name": "사이코 포스",
+      "name_en": "Psycho Blast",
+      "name_jp": "サイコフォース",
+      "desc": "모든 적에게 공격력 77.1/80.6/84.1%의 염동 속성 대미지를 주고, 정신 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 50% 증가한다.",
+      "desc_en": "Deal Psy damage to all foes equal to 77.1/80.6/84.1% of Attack. Deal a Technical and increase damage by 50% for foes with a spiritual ailment.",
+      "desc_jp": "敵全体に攻撃力77.1/80.6/84.1%の念動属性ダメージを与える。行動異常の敵に対してテクニカルが発生しダメージが５０%上昇する。",
+      "cost": "SP 22",
+      "level": "6/7/8",
+      "learn_level": "40"
+    }
+  ]
 };

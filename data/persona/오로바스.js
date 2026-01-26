@@ -57,5 +57,40 @@ window.personaFiles["오로바스"] = {
     "desc_en": "Deal Fire damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
     "desc_jp": "敵全体に攻撃力90.0%/96.3%/102.6%の火炎属性ダメージを与える。さらに２ターンの間、被ダメージが19.6%/21.0%/22.3%上昇する。",
     "priority": 1
-  }
+  },
+  "innate_skill": [
+    {
+      "name": "마술의 소양Ⅰ",
+      "name_en": "Spell Master I",
+      "name_jp": "魔術の素養Ⅰ",
+      "desc": "스킬 사용 시 소모하는 SP가 2.4% 감소한다.",
+      "desc_en": "Decrease SP cost of skills by 2.4%.",
+      "desc_jp": "スキルのＳＰ消費量が２.４%低下する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "4"
+    },
+    {
+      "name": "질풍 간파Ⅰ",
+      "name_en": "Wind Reduction I",
+      "name_jp": "疾風レデュースⅠ",
+      "desc": "받는 질풍 속성 대미지가 4.7% 감소한다.",
+      "desc_en": "Decrease Wind damage taken by 4.7%.",
+      "desc_jp": "疾風属性の被ダメージを４.７%低下させる。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "8"
+    },
+    {
+      "name": "스쿠카쟈",
+      "name_en": "Sukukaja",
+      "name_jp": "スクカジャ",
+      "desc": "동료 1명의 효과 명중, 효과 저항이 9.3%/9.8%/10.2% 증가하고, 자신의 효과 명중 25%마다 1.6%/1.7%/1.8% 추가 증가한다. 상한은 6.4%/6.7%/7.0%이며, 효과는 3턴 동안 지속된다.",
+      "desc_en": "Increase 1 ally's ailment accuracy and ailment resistance by 9.3%/9.8%/10.2%, and Speed by 5. For every 25% of the user's ailment accuracy, increase the target's ailment accuracy by 1.6%/1.7%/1.8% more, up to 6.4%/6.7%/7.0%. Lasts for 3 turns.",
+      "desc_jp": "３ターンの間、味方単体の状態異常命中、状態異常抵抗が9.3%/9.8%/10.2%上昇し、速さが５上昇する。自身の状態異常命中が２５%ごとに、味方の状態異常命中がさらに1.6%/1.7%/1.8%上昇する（最大6.4%/6.7%/7.0%まで）。",
+      "cost": "SP 22",
+      "level": "6/7/8",
+      "learn_level": "12"
+    }
+  ]
 };

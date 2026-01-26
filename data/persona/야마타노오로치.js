@@ -94,5 +94,51 @@ window.personaFiles["야마타노오로치"] = {
     "desc_en": "Deal Ice damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
     "desc_jp": "敵単体に攻撃力360.0%/385.2%/410.4%の氷結属性ダメージを与える。",
     "priority": 0
-  }
+  },
+  "innate_skill": [
+    {
+      "name": "다이아의 별",
+      "name_en": "Diamond Dust",
+      "name_jp": "ダイアモンドダスト",
+      "desc": "1명의 적에게 공격력 129.5/136.0/142.5%의 빙결 속성 대미지를 주고, 72.0/75.6/79.2%의 기본 확률로 적을 2턴 동안 동결 상태에 빠뜨린다.",
+      "desc_en": "Deal Ice damage to 1 foe equal to 129.5/136.0/142.5% of Attack. 72.0/75.6/79.2% chance to inflict Freeze for 2 turns.",
+      "desc_jp": "敵単体に攻撃力129.5/136.0/142.5%の氷結属性ダメージを与える。72.0/75.6/79.2%の確率で敵を２ターンの間、凍結状態にする。",
+      "cost": "SP 22",
+      "level": "6/7/8",
+      "learn_level": "9"
+    },
+    {
+      "name": "정교한 타격Ⅳ",
+      "name_en": "Pinpoint IV",
+      "name_jp": "ピンポイントⅣ",
+      "desc": "크리티컬 효과가 16.2% 증가한다.",
+      "desc_en": "Increase critical damage by 16.2%.",
+      "desc_jp": "クリティカルダメージが１６.２%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "18"
+    },
+    {
+      "name": "빙결 강화Ⅳ",
+      "name_en": "Ice Boost IV",
+      "name_jp": "氷結ブースタⅣ",
+      "desc": "빙결 속성 대미지가 10.8% 증가한다.",
+      "desc_en": "Increase Ice damage by 10.8%.",
+      "desc_jp": "氷結属性の与ダメージが１０.８%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "27"
+    },
+    {
+      "name": "빙결률 UPⅣ",
+      "name_en": "Freeze Boost IV",
+      "name_jp": "凍結率ＵＰⅣ",
+      "desc": "동결 효과 부여 시 효과 명중이 20.3% 증가한다.",
+      "desc_en": "Increase Freeze accuracy by 20.3%.",
+      "desc_jp": "凍結の命中率が２０.３%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "36"
+    }
+  ]
 };

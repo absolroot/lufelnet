@@ -70,5 +70,40 @@ window.personaFiles["아프사라스"] = {
     "desc_en": "Increase party's damage by 29.5%/31.6%/33.6% for 2 turns.",
     "desc_jp": "２ターンの間、味方全体の与ダメージが29.5%/31.6%/33.6%上昇する。",
     "priority": 0
-  }
+  },
+  "innate_skill": [
+    {
+      "name": "부흐",
+      "name_en": "Bufu",
+      "name_jp": "ブフ",
+      "desc": "1명의 적에게 공격력 106.2/111.5/116.8%의 빙결 속성 대미지를 주고, 59.0/62.0/64.9%의 기본 확률로 적을 2턴 동안 동결 상태에 빠뜨린다.",
+      "desc_en": "Deal Ice damage to 1 foe equal to 106.2/111.5/116.8% of Attack. 59.0/62.0/64.9% chance to inflict Freeze for 2 turns.",
+      "desc_jp": "敵単体に攻撃力106.2/111.5/116.8%の氷結属性ダメージを与える。59.0/62.0/64.9%の確率で敵を２ターンの間、凍結状態にする。",
+      "cost": "SP 19",
+      "level": "6/7/8",
+      "learn_level": "4"
+    },
+    {
+      "name": "메디아",
+      "name_en": "Media",
+      "name_jp": "メディア",
+      "desc": "모든 동료가 공격력 16.6/17.4/18.3%+502/621/749의 생명을 회복한다.",
+      "desc_en": "Restore party's HP by 16.6/17.4/18.3% of Attack + 502/621/749.",
+      "desc_jp": "味方全体のＨＰを攻撃力の16.6/17.4/18.3%＋502/621/749回復する。",
+      "cost": "SP 23",
+      "level": "6/7/8",
+      "learn_level": "8"
+    },
+    {
+      "name": "마하라쿠카 오토Ⅰ",
+      "name_en": "Auto-Maraku I",
+      "name_jp": "マハラクカオートⅠ",
+      "desc": "전투 시작 시 전원의 방어력이 6.3% 증가하며, 이 효과는 2턴 동안 또는 페르소나를 전환할 때까지 지속된다.",
+      "desc_en": "At the start of battle, increase party's Defense by 6.3% for 2 turns or until user changes Personas.",
+      "desc_jp": "戦闘開始時、２ターンもしくはペルソナを切り替えるまでの間、味方全体の防御力が６.３%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "12"
+    }
+  ]
 };

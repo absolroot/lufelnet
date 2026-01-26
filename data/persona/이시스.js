@@ -1,4 +1,3 @@
-// Auto-generated from data/kr/wonder/persona.js and data/external/persona/* by scripts/migrate-persona-to-files.mjs
 window.personaFiles = window.personaFiles || {};
 window.personaFiles["이시스"] = {
   "id": "119",
@@ -79,5 +78,51 @@ window.personaFiles["이시스"] = {
     "desc_en": "Restore HP to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275.",
     "desc_jp": "味方全体のＨＰを攻撃力48.6%/52.0%/55.4%＋1471/1854/2275回復する。",
     "priority": 1
-  }
+  },
+  "innate_skill": [
+    {
+      "name": "치료 강화Ⅱ",
+      "name_en": "Healing Boost II",
+      "name_jp": "治療ブースタⅡ",
+      "desc": "주는 치료 효과가 6% 증가한다.",
+      "desc_en": "Increase healing by 6%.",
+      "desc_jp": "回復量が６%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "5"
+    },
+    {
+      "name": "방어 강화Ⅱ",
+      "name_en": "Protect Boost II",
+      "name_jp": "プロテクブースタⅡ",
+      "desc": "방어력이 12.5% 증가한다.",
+      "desc_en": "Increase Defense by 12.5%.",
+      "desc_jp": "防御力が１２.５%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "10"
+    },
+    {
+      "name": "메디아",
+      "name_en": "Media",
+      "name_jp": "メディア",
+      "desc": "모든 동료가 공격력 16.6/17.4/18.3%+502/621/749의 생명을 회복한다.",
+      "desc_en": "Restore party's HP by 16.6/17.4/18.3% of Attack + 502/621/749.",
+      "desc_jp": "味方全体のＨＰを攻撃力の16.6/17.4/18.3%＋502/621/749回復する。",
+      "cost": "SP 23",
+      "level": "6/7/8",
+      "learn_level": "15"
+    },
+    {
+      "name": "지온가",
+      "name_en": "Zionga",
+      "name_jp": "ジオンガ",
+      "desc": "1명의 적에게 공격력 114.0/119.7/125.4%의 전격 속성 대미지를 주고, 63.3/66.5/69.6%의 기본 확률로 적을 2턴 동안 감전 상태에 빠뜨린다.",
+      "desc_en": "Deal Electric damage to 1 foe equal to 114.0/119.7/125.4% of Attack. 63.3/66.5/69.6% chance to inflict Shock for 2 turns.",
+      "desc_jp": "敵単体に攻撃力114.0/119.7/125.4%の電撃属性ダメージを与える。63.3/66.5/69.6%の確率で敵を２ターンの間、感電状態にする。",
+      "cost": "SP 20",
+      "level": "6/7/8",
+      "learn_level": "20"
+    }
+  ]
 };

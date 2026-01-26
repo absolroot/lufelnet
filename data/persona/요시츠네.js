@@ -1,4 +1,3 @@
-// Auto-generated from data/kr/wonder/persona.js and data/external/persona/* by scripts/migrate-persona-to-files.mjs
 window.personaFiles = window.personaFiles || {};
 window.personaFiles["요시츠네"] = {
   "id": "139",
@@ -99,5 +98,51 @@ window.personaFiles["요시츠네"] = {
     "desc_en": "Deal Physical damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
     "desc_jp": "敵全体に攻撃力180.0%/192.6%/205.2%の物理属性ダメージを与える。",
     "priority": 1
-  }
+  },
+  "innate_skill": [
+    {
+      "name": "브레이브 재퍼",
+      "name_en": "Brave Blade",
+      "name_jp": "ブレイブザッパー",
+      "desc": "1명의 적에게 공격력 154.5/162.2/170.0%의 물리 속성 대미지를 준다.",
+      "desc_en": "Deal Physical damage to 1 foe equal to 154.5/162.2/170.0% of Attack.",
+      "desc_jp": "敵単体に攻撃力154.5/162.2/170.0%の物理属性ダメージを与える。",
+      "cost": "체력 9.0%",
+      "level": "6/7/8",
+      "learn_level": "10"
+    },
+    {
+      "name": "지오다인",
+      "name_en": "Ziodyne",
+      "name_jp": "ジオダイン",
+      "desc": "1명의 적에게 공격력 121.7/127.8/133.9%의 전격 속성 대미지를 주고, 67.6/71.0/74.4%의 기본 확률로 적을 2턴 동안 감전 상태에 빠뜨린다.",
+      "desc_en": "Deal Electric damage to 1 foe equal to 121.7/127.8/133.9% of Attack. 67.6/71.0/74.4% chance to inflict Shock for 2 turns.",
+      "desc_jp": "敵単体に攻撃力121.7/127.8/133.9%の電撃属性ダメージを与える。67.6/71.0/74.4%の確率で敵を２ターンの間、感電状態にする。",
+      "cost": "SP 21",
+      "level": "6/7/8",
+      "learn_level": "20"
+    },
+    {
+      "name": "전격 강화Ⅳ",
+      "name_en": "Elec Boost IV",
+      "name_jp": "電撃ブースタⅣ",
+      "desc": "전격 속성 대미지가 10.8% 증가한다.",
+      "desc_en": "Increase Electric damage by 10.8%.",
+      "desc_jp": "電撃属性の与ダメージが１０.８%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "30"
+    },
+    {
+      "name": "타루카쟈",
+      "name_en": "Tarukaja",
+      "name_jp": "タルカジャ",
+      "desc": "동료 1명의 공격력이 15.5%/16.3%/17.0% 증가하고, 자신의 공격력 500포인트마다 1.3%/1.4%/1.4% 추가 증가한다. 상한은 10.4%/10.9%/11.4%이며, 효과는 3턴 동안 지속된다.",
+      "desc_en": "Increase 1 ally's Attack by 15.5%/16.3%/17.0%. For every 500 of the user's Attack, increase the target's Attack by 1.3%/1.4%/1.4% more, up to 10.4%/10.9%/11.4%. Lasts for 3 turns.",
+      "desc_jp": "３ターンの間、味方単体の攻撃力が15.5%/16.3%/17.0%上昇する。自身の攻撃力が５００ごとに、味方の攻撃力がさらに1.3%/1.4%/1.4%上昇する（最大10.4%/10.9%/11.4%まで）。",
+      "cost": "SP 22",
+      "level": "6/7/8",
+      "learn_level": "40"
+    }
+  ]
 };

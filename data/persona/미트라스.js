@@ -78,5 +78,51 @@ window.personaFiles["미트라스"] = {
     "desc_en": "Grant a shield to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275 for 2 turns.",
     "desc_jp": "２ターンの間、味方全体に攻撃力48.6%/52.0%/55.4%＋1471/1854/2275のシールドを付与する。",
     "priority": 0
-  }
+  },
+  "innate_skill": [
+    {
+      "name": "마하라쿠카 오토Ⅱ",
+      "name_en": "Auto-Maraku II",
+      "name_jp": "マハラクカオートⅡ",
+      "desc": "전투 시작 시 전원의 방어력이 9.1% 증가하며, 이 효과는 2턴 동안 또는 페르소나를 전환할 때까지 지속된다.",
+      "desc_en": "At the start of battle, increase party's Defense by 9.1% for 2 turns or until user changes Personas.",
+      "desc_jp": "戦闘開始時、２ターンもしくはペルソナを切り替えるまでの間、味方全体の防御力が９.１%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "5"
+    },
+    {
+      "name": "프레이라",
+      "name_en": "Freila",
+      "name_jp": "フレイラ",
+      "desc": "1명의 적에게 공격력 124.2/129.1/134.0%의 핵열 속성 대미지를 주고, 원소 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 18% 증가한다.",
+      "desc_en": "Deal Nuclear damage to 1 foe equal to 124.2/129.1/134.0% of Attack. Deal a Technical and increase damage by 18% for foes with an elemental ailment.",
+      "desc_jp": "敵単体に攻撃力124.2/129.1/134.0%の核熱属性ダメージを与える。属性異常の敵に対してテクニカルが発生しダメージが１８%上昇する。",
+      "cost": "SP 20",
+      "level": "6/7/8",
+      "learn_level": "10"
+    },
+    {
+      "name": "굳건한 산Ⅱ",
+      "name_en": "Ironclad Resolve II",
+      "name_jp": "堅守の覚悟Ⅱ",
+      "desc": "속도가 9포인트 감소하고, 생명이 22% 증가한다.",
+      "desc_en": "Decrease Speed by 9. Increase HP by 22%.",
+      "desc_jp": "速さが９低下し、ＨＰが２２%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "15"
+    },
+    {
+      "name": "대미지 면역Ⅱ",
+      "name_en": "Reduction Boost II",
+      "name_jp": "レデュースブースタⅡ",
+      "desc": "받는 대미지가 6.7% 감소한다.",
+      "desc_en": "Decrease damage taken by 6.7%.",
+      "desc_jp": "被ダメージを６.７%低下させる。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "20"
+    }
+  ]
 };

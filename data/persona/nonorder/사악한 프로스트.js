@@ -1,0 +1,123 @@
+window.personaFiles = window.personaFiles || {};
+window.personaFiles["사악한 프로스트"] = {
+  "id": "126",
+  "key": "사악한 프로스트",
+  "name": "사악한 프로스트",
+  "name_en": "Black Frost",
+  "name_jp": "ジャアクフロスト",
+  "grade": "5",
+  "star": "5",
+  "position": "반항",
+  "element": "빙결",
+  "event": false,
+  "wild_emblem_rainbow": false,
+  "best_persona": false,
+  "added": "",
+  "cost": null,
+  "combination": null,
+  "recommendSkill": [],
+  "comment": "",
+  "comment_en": "",
+  "comment_jp": "",
+  "passive_priority": null,
+  "passive_skill": [
+    {
+      "name": "이루리라",
+      "name_en": "Nice Try",
+      "name_jp": "ナイストライ",
+      "desc": "공격력이 29.1% 증가한다. 자신이 페르소나 스킬을 사용해 적에게 대미지를 줄 때, 75%의 기본 확률로 메인 목표의 다운 수치를 1중첩 약화시킨다. 스킬을 사용해 적을 다운 상태에 빠뜨리면 「눈보라」 1중첩 획득: 2턴 동안 공격력이 15% 증가하고 빙결 대미지가 15% 증가한다(최대 2회 중첩 가능).",
+      "desc_en": "Increase Attack by 29.1%. When dealing skill damage to a foe, 75% chance to remove 1 Down Point. When knocking down a foe with a skill, gain 1 Blizzard stack: increase Attack by 15% and Ice damage by 15%. Lasts for 2 turns. Stacks up to 2 times.",
+      "desc_jp": "攻撃力が２９.１%上昇する。自身が敵にスキルダメージを与えた時、７５%の確率でダウン値を１減少させる。スキルを使用して敵をダウン状態にした時、自身に『暴風雪』１つ獲得する：２ターンの間、攻撃力が１５%上昇し、氷結属性の与ダメージが１５%上昇する。最大２つまで累積できる。"
+    },
+    {
+      "name": "이루리라Ⅰ",
+      "name_en": "Nice Try I",
+      "name_jp": "ナイストライⅠ",
+      "desc": "공격력이 29.1% 증가한다. 자신이 페르소나 스킬을 사용해 적에게 대미지를 줄 때, 75%의 기본 확률로 메인 목표의 다운 수치를 1중첩 약화시킨다. 스킬을 사용해 적을 다운 상태에 빠뜨리면 「눈보라」 1중첩 획득: 2턴 동안 공격력이 25% 증가하고 빙결 대미지가 15% 증가한다(최대 2회 중첩 가능).",
+      "desc_en": "Increase Attack by 29.1%. When dealing skill damage to a foe, 75% chance to remove 1 Down Point. When knocking down a foe with a skill, gain 1 Blizzard stack: increase Attack by 25% and Ice damage by 15%. Lasts for 2 turns. Stacks up to 2 times.",
+      "desc_jp": "攻撃力が２９.１%上昇する。自身が敵にスキルダメージを与えた時、７５%の確率でダウン値を１減少させる。スキルを使用して敵をダウン状態にした時、自身に『暴風雪』１つ獲得する：２ターンの間、攻撃力が２５%上昇し、氷結属性の与ダメージが１５%上昇する。最大２つまで累積できる。"
+    },
+    {
+      "name": "이루리라Ⅱ",
+      "name_en": "Nice Try II",
+      "name_jp": "ナイストライⅡ",
+      "desc": "공격력이 29.1% 증가한다. 자신이 페르소나 스킬을 사용해 적에게 대미지를 줄 때, 75%의 기본 확률로 메인 목표의 다운 수치를 1중첩 약화시킨다. 스킬을 사용해 적을 다운 상태에 빠뜨리면 「눈보라」 1중첩 획득: 2턴 동안 공격력이 25% 증가하고 빙결 대미지가 25% 증가한다(최대 2회 중첩 가능).",
+      "desc_en": "Increase Attack by 29.1%. When dealing skill damage to a foe, 75% chance to remove 1 Down Point. When knocking down a foe with a skill, gain 1 Blizzard stack: increase Attack by 25% and Ice damage by 25%. Lasts for 2 turns. Stacks up to 2 times.",
+      "desc_jp": "攻撃力が２９.１%上昇する。自身が敵にスキルダメージを与えた時、７５%の確率でダウン値を１減少させる。スキルを使用して敵をダウン状態にした時、自身に『暴風雪』１つ獲得する：２ターンの間、攻撃力が２５%上昇し、氷結属性の与ダメージが２５%上昇する。最大２つまで累積できる。"
+    },
+    {
+      "name": "이루리라Ⅲ",
+      "name_en": "Nice Try III",
+      "name_jp": "ナイストライⅢ",
+      "desc": "공격력이 29.1% 증가한다. 자신이 페르소나 스킬을 사용해 적에게 대미지를 줄 시 75%의 기본 확률로 메인 목표의 다운 수치를 1회 약화시킨다. 스킬을 사용해 적을 다운 상태에 빠뜨리면 「눈보라」 1회 획득: 3턴 동안 공격력이 25% 증가하고 빙결 대미지가 25% 증가한다(3회 중첩 가능).",
+      "desc_en": "Increase Attack by 29.1%. When dealing skill damage to a foe, 75% chance to remove 1 Down Point. When knocking down a foe with a skill, gain 1 Blizzard stack: increase Attack by 25% and Ice damage by 25%. Lasts for 3 turns. Stacks up to 2 times.",
+      "desc_jp": "攻撃力が２９.１%上昇する。自身が敵にスキルダメージを与えた時、７５%の確率でダウン値を１減少させる。スキルを使用して敵をダウン状態にした時、自身に『暴風雪』１つ獲得する：３ターンの間、攻撃力が２５%上昇し、氷結属性の与ダメージが２５%上昇する。最大２つまで累積できる。"
+    }
+  ],
+  "innate_skill": [
+    {
+      "name": "마하부흐다인",
+      "name_en": "Mabufudyne",
+      "name_jp": "マハブフダイン",
+      "desc": "모든 적에게 공격력 60.8/63.8/66.9%의 빙결 속성 대미지를 주고, 33.8/35.5/37.2%의 기본 확률로 적을 2턴 동안 동결 상태에 빠뜨린다.",
+      "desc_en": "Deal Ice damage to all foes equal to 60.8/63.8/66.9% of Attack. 33.8/35.5/37.2% chance to inflict Freeze for 2 turns.",
+      "desc_jp": "敵全体に攻撃力60.8/63.8/66.9%の氷結属性ダメージを与える。33.8/35.5/37.2%の確率で敵を２ターンの間、凍結状態にする。",
+      "cost": "SP 21",
+      "level": "6/7/8",
+      "learn_level": "9"
+    },
+    {
+      "name": "원 샷 킬",
+      "name_en": "One-shot Kill",
+      "name_jp": "ワンショットキル",
+      "desc": "1명의 적에게 공격 포인트 107.5/112.9/118.3%의 총격 속성 대미지를 주고, 크리티컬 확률이 20% 증가한다.",
+      "desc_en": "Increase this skill's critical rate by 20%, and deal Gun damage to 1 foe equal to 107.5/112.9/118.3% of Attack.",
+      "desc_jp": "このスキルのクリティカル率を２０%上昇させ、敵単体に攻撃力107.5/112.9/118.3%の銃撃属性ダメージを与える。",
+      "cost": "체력 8.0%",
+      "level": "6/7/8",
+      "learn_level": "18"
+    },
+    {
+      "name": "미라클 펀치",
+      "name_en": "Miracle Punch",
+      "name_jp": "ミラクルパンチ",
+      "desc": "1명의 적에게 공격력 127.9/134.3/140.7%의 물리 속성 대미지를 주고, 크리티컬 확률이 30% 증가하며 명중률은 20% 감소한다.",
+      "desc_en": "Deal Physical damage to 1 foe equal to 127.9/134.3/140.7%  of Attack. Increase critical rate by 30%, and decrease accuracy by 20%.",
+      "desc_jp": "敵単体に攻撃力127.9/134.3/140.7%の物理属性ダメージを与える。クリティカル率が３０%上昇し、命中率が２０%低下する。",
+      "cost": "체력 8.0%",
+      "level": "6/7/8",
+      "learn_level": "27"
+    },
+    {
+      "name": "어드바이스Ⅳ",
+      "name_en": "Apt Pupil IV",
+      "name_jp": "アドバイスⅣ",
+      "desc": "크리티컬 확률이 8.1% 증가한다.",
+      "desc_en": "Increase critical rate by 8.1%.",
+      "desc_jp": "クリティカル率が８.１%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "36"
+    }
+  ],
+  "uniqueSkill": {
+    "name": "눈사태",
+    "name_en": "Avalanche",
+    "name_jp": "雪崩",
+    "desc": "1명의 적에게 공격력 187.5%/196.9%/206.3%의 빙결 속성 대미지를 주고, 25%의 고정 확률로 약점과 다운 수치를 무시하여 목표를 다운 상태에 빠뜨린다. 해당 스킬로 적을 다운 상태에 빠뜨리면 공격력 42.5%/44.6%/46.8%의 빙결 속성 대미지를 추가로 1회 준다.",
+    "desc_en": "Deal Ice damage to 1 foe equal to 187.5%/196.9%/206.3% of Attack. 25% chance to knock down target. If knocked down with this skill, deal bonus Ice damage equal to 42.5%/44.6%/46.8% of Attack.",
+    "desc_jp": "敵単体に攻撃力の187.5%/196.9%/206.3%の氷結属性ダメージを与え、２５%の確率で対象をダウン状態にする。このスキルで敵をダウン状態にした場合、追加で攻撃力の42.5%/44.6%/46.8%の氷結属性ダメージを与える。",
+    "priority": 0,
+    "icon": "Default",
+    "icon_gl": ""
+  },
+  "highlight": {
+    "name": "HIGHLIGHT",
+    "name_en": "Highlight",
+    "name_jp": "ハイライト",
+    "desc": "1명의 적에게 공격력 360.0%/385.2%/410.4%의 빙결 속성 대미지를 준다.",
+    "desc_en": "Deal Ice damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
+    "desc_jp": "敵単体に攻撃力360.0%/385.2%/410.4%の氷結属性ダメージを与える。",
+    "priority": 0
+  }
+};

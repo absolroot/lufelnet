@@ -82,5 +82,51 @@ window.personaFiles["릴리스"] = {
     "desc_en": "Deal Almighty damage to all foes equal to 90.0%/96.3%/102.6% of Attack.",
     "desc_jp": "敵全体に攻撃力90.0%/96.3%/102.6%の万能属性ダメージを与える。",
     "priority": 0
-  }
+  },
+  "innate_skill": [
+    {
+      "name": "마하부흐다인",
+      "name_en": "Mabufudyne",
+      "name_jp": "マハブフダイン",
+      "desc": "모든 적에게 공격력 60.8/63.8/66.9%의 빙결 속성 대미지를 주고, 33.8/35.5/37.2%의 기본 확률로 적을 2턴 동안 동결 상태에 빠뜨린다.",
+      "desc_en": "Deal Ice damage to all foes equal to 60.8/63.8/66.9% of Attack. 33.8/35.5/37.2% chance to inflict Freeze for 2 turns.",
+      "desc_jp": "敵全体に攻撃力60.8/63.8/66.9%の氷結属性ダメージを与える。33.8/35.5/37.2%の確率で敵を２ターンの間、凍結状態にする。",
+      "cost": "SP 21",
+      "level": "6/7/8",
+      "learn_level": "10"
+    },
+    {
+      "name": "무드온",
+      "name_en": "Mudoon",
+      "name_jp": "ムドオン",
+      "desc": "1명의 적에게 공격력 90.6/99.3/108.0%의 주원 속성 대미지를 주고, 생명이 50% 이하인 적에게 낮은 확률로 주원 속성 즉사 효과를 추가하며 생명이 낮을수록 확률이 높아진다.",
+      "desc_en": "Deal Curse damage to 1 foe equal to 90.6/99.3/108.0% of Attack. Low chance to deal Curse insta-kill effect to foes with 50% or less HP. Increase chance based on foe's missing HP.",
+      "desc_jp": "敵単体に攻撃力90.6/99.3/108.0%の呪怨属性ダメージを与える。ＨＰ５０%以下の敵に低確率で呪怨属性の即死効果を与える。敵のＨＰが低いほど確率が上がる。",
+      "cost": "SP 20",
+      "level": "6/7/8",
+      "learn_level": "20"
+    },
+    {
+      "name": "마하갈다인",
+      "name_en": "Magarudyne",
+      "name_jp": "マハガルダイン",
+      "desc": "모든 적에게 공격력 60.8/63.8/66.9%의 질풍 속성 대미지를 주고, 33.8/35.5/37.2%의 기본 확률로 적을 풍습 상태에 빠뜨린다. 2턴 동안 지속된다.",
+      "desc_en": "Deal Wind damage to all foes equal to 60.8/63.8/66.9% of Attack. 33.8/35.5/37.2% chance to inflict Windswept for 2 turns.",
+      "desc_jp": "敵全体に攻撃力60.8/63.8/66.9%の疾風属性ダメージを与える。33.8/35.5/37.2%の確率で敵を２ターンの間、風襲状態にする。",
+      "cost": "SP 21",
+      "level": "6/7/8",
+      "learn_level": "30"
+    },
+    {
+      "name": "마술의 소양Ⅳ",
+      "name_en": "Spell Master IV",
+      "name_jp": "魔術の素養Ⅳ",
+      "desc": "스킬 사용 시 소모하는 SP가 6% 감소한다.",
+      "desc_en": "Decrease SP cost of skills by 6%.",
+      "desc_jp": "スキルのＳＰ消費量が６%低下する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "40"
+    }
+  ]
 };

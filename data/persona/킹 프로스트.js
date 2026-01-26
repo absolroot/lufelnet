@@ -1,4 +1,3 @@
-// Auto-generated from data/kr/wonder/persona.js and data/external/persona/* by scripts/migrate-persona-to-files.mjs
 window.personaFiles = window.personaFiles || {};
 window.personaFiles["킹 프로스트"] = {
   "id": "127",
@@ -87,5 +86,51 @@ window.personaFiles["킹 프로스트"] = {
     "desc_en": "Grant a shield to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275 for 2 turns.",
     "desc_jp": "２ターンの間、味方全体に攻撃力48.6%/52.0%/55.4%＋1471/1854/2275のシールドを付与する。",
     "priority": 0
-  }
+  },
+  "innate_skill": [
+    {
+      "name": "마하라쿠카 오토Ⅳ",
+      "name_en": "Auto-Maraku IV",
+      "name_jp": "マハラクカオートⅣ",
+      "desc": "전투 시작 시 전원의 방어력이 14.7% 증가하며, 이 효과는 2턴 동안 또는 페르소나를 전환할 때까지 지속된다.",
+      "desc_en": "At the start of battle, increase party's Defense by 14.7% for 2 turns or until user changes Personas.",
+      "desc_jp": "戦闘開始時、２ターンもしくはペルソナを切り替えるまでの間、味方全体の防御力が１４.７%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "9"
+    },
+    {
+      "name": "대미지 면역Ⅳ",
+      "name_en": "Reduction Boost IV",
+      "name_jp": "レデュースブースタⅣ",
+      "desc": "받는 대미지가 10.8% 감소한다.",
+      "desc_en": "Decrease damage taken by 10.8%.",
+      "desc_jp": "被ダメージを１０.８%低下させる。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "18"
+    },
+    {
+      "name": "빙결 간파Ⅳ",
+      "name_en": "Ice Reduction IV",
+      "name_jp": "氷結レデュースⅣ",
+      "desc": "받는 빙결 속성 대미지가 10.8% 감소한다.",
+      "desc_en": "Decrease Ice damage taken by 10.8%.",
+      "desc_jp": "氷結属性の被ダメージを１０.８%低下させる。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "27"
+    },
+    {
+      "name": "굳건한 산Ⅳ",
+      "name_en": "Ironclad Resolve IV",
+      "name_jp": "堅守の覚悟Ⅳ",
+      "desc": "속도가 15포인트 감소하고, 생명이 36% 증가한다.",
+      "desc_en": "Decrease Speed by 15. Increase HP by 36%.",
+      "desc_jp": "速さが１５低下し、ＨＰが３６%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "36"
+    }
+  ]
 };

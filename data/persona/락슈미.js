@@ -94,5 +94,51 @@ window.personaFiles["락슈미"] = {
     "desc_en": "Restore HP to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275.",
     "desc_jp": "味方全体のＨＰを攻撃力48.6%/52.0%/55.4%＋1471/1854/2275回復する。",
     "priority": 1
-  }
+  },
+  "innate_skill": [
+    {
+      "name": "치료 강화Ⅳ",
+      "name_en": "Healing Boost IV",
+      "name_jp": "治療ブースタⅣ",
+      "desc": "주는 치료 효과가 9.7% 증가한다.",
+      "desc_en": "Increase healing by 9.7%.",
+      "desc_jp": "回復量が９.７%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "9"
+    },
+    {
+      "name": "마도의 재능Ⅳ",
+      "name_en": "Battle Acumen IV",
+      "name_jp": "戦闘の才覚Ⅳ",
+      "desc": "주는 대미지가 10.8% 증가한다.",
+      "desc_en": "Increase damage by 10.8%.",
+      "desc_jp": "与ダメージが１０.８%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "18"
+    },
+    {
+      "name": "방어의 마음가짐Ⅳ",
+      "name_en": "Defense Master IV",
+      "name_jp": "防御の心得Ⅳ",
+      "desc": "전투 시작 시 2턴 동안 방어력이 29.4% 증가한다.",
+      "desc_en": "At the start of battle, increase Defense by 29.4% for 2 turns.",
+      "desc_jp": "戦闘開始時、２ターンの間、自身の防御力が２９.４%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "27"
+    },
+    {
+      "name": "메디아라한",
+      "name_en": "Mediarahan",
+      "name_jp": "メディアラハン",
+      "desc": "모든 동료가 공격력 19.0/20.0/20.9%+575/711/858의 생명을 회복한다.",
+      "desc_en": "Restore party's HP by 19.0/20.0/20.9% of Attack + 575/711/858.",
+      "desc_jp": "味方全体のＨＰを攻撃力の19.0/20.0/20.9%＋575/711/858回復する。",
+      "cost": "SP 25",
+      "level": "6/7/8",
+      "learn_level": "36"
+    }
+  ]
 };

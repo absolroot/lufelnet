@@ -1,0 +1,49 @@
+name: Fetch Persona (Wed 23h, Thu 18h, Fri 13h KST)
+
+on:
+  schedule:
+    # 수 23:00 KST = 14:00 UTC
+    - cron: "0 14 * * 3"
+    # 목 18:00 KST = 09:00 UTC
+    - cron: "0 9 * * 4"
+    # 금 13:00 KST = 04:00 UTC
+    - cron: "0 4 * * 5"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fetch-persona
+  cancel-in-progress: false
+
+jobs:
+  fetch-persona:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Fetch & Update Persona
+        run: |
+          # 기본값 실행: kr,en,jp (101~300)
+          node scripts/fetch-persona.mjs
+          # 데이터 정리: nonorder 생성 및 업데이트
+          # node scripts/manage-persona-data.mjs
+
+      - name: Commit & Push
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name  "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add -A
+            git commit -m "chore(data): update persona json [skip ci]" || echo "No changes to commit"
+            git push
+          else
+            echo "No changes found."
+          fi

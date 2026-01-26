@@ -105,5 +105,51 @@ window.personaFiles["도미니온"] = {
     "desc_en": "Increase party's damage by 29.5%/31.6%/33.6% for 2 turns.",
     "desc_jp": "２ターンの間、味方全体の与ダメージが29.5%/31.6%/33.6%上昇する。",
     "priority": 1
-  }
+  },
+  "innate_skill": [
+    {
+      "name": "코칭Ⅳ",
+      "name_en": "Sharp Student IV",
+      "name_jp": "コーチングⅣ",
+      "desc": "받는 크리티컬 확률이 8.1% 감소한다.",
+      "desc_en": "Decrease critical taken rate by 8.1%.",
+      "desc_jp": "被クリティカル率が８.１%低下する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "9"
+    },
+    {
+      "name": "기공Ⅳ",
+      "name_en": "Nurture IV",
+      "name_jp": "養心Ⅳ",
+      "desc": "SP 회복 효율이 7.1% 증가한다.",
+      "desc_en": "Increase SP recovery rate by 7.1%.",
+      "desc_jp": "ＳＰ回復率が７.１%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "18"
+    },
+    {
+      "name": "신의 심판",
+      "name_en": "Divine Judgment",
+      "name_jp": "神の審判",
+      "desc": "1명의 적에게 공격력 140.0/149.3/158.6%의 축복 속성 대미지를 주고, 자신은 축복 효과 2개를 획득한다.",
+      "desc_en": "Deal Bless damage to 1 foe equal to 140.0/149.3/158.6% of Attack. Gain 2 Blessing stacks.",
+      "desc_jp": "敵単体に攻撃力140.0/149.3/158.6%の祝福属性ダメージを与える。自身に２つの祝印を獲得する。",
+      "cost": "SP 22",
+      "level": "6/7/8",
+      "learn_level": "27"
+    },
+    {
+      "name": "민첩의 마음가짐Ⅳ",
+      "name_en": "Agility Master IV",
+      "name_jp": "敏捷の心得Ⅳ",
+      "desc": "속도가 15포인트 증가하고, 방어력이 12% 감소한다.",
+      "desc_en": "Increase Speed by 15. Decrease Defense by 12%.",
+      "desc_jp": "速さが１５上昇し、防御力が１２%低下する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "36"
+    }
+  ]
 };

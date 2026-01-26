@@ -62,5 +62,51 @@ window.personaFiles["네코쇼군"] = {
     "desc_en": "Increase party's damage by 29.5%/31.6%/33.6% for 2 turns.",
     "desc_jp": "２ターンの間、味方全体の与ダメージが29.5%/31.6%/33.6%上昇する。",
     "priority": 0
-  }
+  },
+  "innate_skill": [
+    {
+      "name": "사이오",
+      "name_en": "Psio",
+      "name_jp": "サイオ",
+      "desc": "1명의 적에게 공격력 122.0/126.9/131.8%의 염동 속성 대미지를 주고, 정신 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 40% 증가한다.",
+      "desc_en": "Deal Psy damage to 1 foe equal to 122.0/126.9/131.8% of Attack. Deal a Technical and increase damage by 40% for foes with a spiritual ailment.",
+      "desc_jp": "敵単体に攻撃力122.0/126.9/131.8%の念動属性ダメージを与える。行動異常の敵に対してテクニカルが発生しダメージが４０%上昇する。",
+      "cost": "SP 20",
+      "level": "6/7/8",
+      "learn_level": "5"
+    },
+    {
+      "name": "기공Ⅱ",
+      "name_en": "Nurture II",
+      "name_jp": "養心Ⅱ",
+      "desc": "SP 회복 효율이 4.4% 증가한다.",
+      "desc_en": "Increase SP recovery rate by 4.4%.",
+      "desc_jp": "ＳＰ回復率が４.４%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "10"
+    },
+    {
+      "name": "염동 강화Ⅱ",
+      "name_en": "Psy Boost II",
+      "name_jp": "念動ブースタⅡ",
+      "desc": "염동 속성 대미지가 6.7% 증가한다.",
+      "desc_en": "Increase Psychokinesis damage by 6.7%.",
+      "desc_jp": "念動属性の与ダメージが６.７%上昇する。",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "15"
+    },
+    {
+      "name": "마하스쿠카쟈",
+      "name_en": "Masukukaja",
+      "name_jp": "マハスクカジャ",
+      "desc": "모든 동료의 효과 명중, 효과 저항이 6.5%/6.8%/7.2% 증가하고, 자신의 효과 명중 25%마다 1.1%/1.2%/1.2% 추가 증가한다. 상한은 4.4%/4.6%/4.8%이며, 효과는 3턴 동안 지속된다.",
+      "desc_en": "Increase party's ailment accuracy and ailment resistance by 6.5%/6.8%/7.2%, and Speed by 3 for 3 turns. For every 25% of the user's ailment accuracy, increase party's ailment accuracy by 1.1%/1.2%/1.2% more, up to 4.4%/4.6%/4.8%.",
+      "desc_jp": "３ターンの間、味方全体の状態異常命中、状態異常抵抗が6.5%/6.8%/7.2%上昇し、速さが３上昇する。自身の状態異常命中が２５%ごとに、味方の状態異常命中がさらに1.1%/1.2%/1.2%上昇する（最大4.4%/4.6%/4.8%まで）。",
+      "cost": "SP 22",
+      "level": "6/7/8",
+      "learn_level": "20"
+    }
+  ]
 };

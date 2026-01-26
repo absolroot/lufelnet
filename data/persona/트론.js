@@ -1,4 +1,3 @@
-// Auto-generated from data/kr/wonder/persona.js and data/external/persona/* by scripts/migrate-persona-to-files.mjs
 window.personaFiles = window.personaFiles || {};
 window.personaFiles["트론"] = {
   "id": "262",
@@ -91,5 +90,35 @@ window.personaFiles["트론"] = {
     "desc_en": "Increase party's damage by 29.5%/31.6%/33.6% for 2 turns.",
     "desc_jp": "2ターンの間、味方全体の与ダメージが29.5%/31.6%/33.6%上昇する。",
     "priority": 1
-  }
+  },
+  "innate_skill": [
+    {
+      "name": "아기다인",
+      "desc": "1명의 적에게 공격력 121.7/127.8/133.9%의 화염 속성 대미지를 주고, 67.6/71.0/74.4%의 기본 확률로 적을 2턴 동안 화상 상태에 빠뜨린다.",
+      "cost": "SP 21",
+      "level": "6/7/8",
+      "learn_level": "10"
+    },
+    {
+      "name": "화상률 UPⅢ",
+      "desc": "화상 효과 부여 시 효과 명중이 16.3% 증가한다.",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "20"
+    },
+    {
+      "name": "화염 강화Ⅲ",
+      "desc": "화염 속성 대미지가 8.7% 증가한다.",
+      "cost": "",
+      "level": "6/7/8",
+      "learn_level": "30"
+    },
+    {
+      "name": "마하코우가온",
+      "desc": "모든 적에게 공격력 65.8/70.0/74.2%의 축복 속성 대미지를 주고, 자신은 축복 효과 1~2개를 획득한다.",
+      "cost": "SP 21",
+      "level": "6/7/8",
+      "learn_level": "40"
+    }
+  ]
 };

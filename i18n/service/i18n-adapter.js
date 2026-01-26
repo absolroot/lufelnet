@@ -149,6 +149,11 @@
 
         window.__I18nService__ = i18nService;
 
+        // Update DOM elements with data-i18n attributes
+        if (i18nService.updateDOM) {
+            i18nService.updateDOM();
+        }
+
         // Remove loading state to prevent FOUC (Flash of Untranslated Content)
         document.documentElement.classList.remove('i18n-loading');
 

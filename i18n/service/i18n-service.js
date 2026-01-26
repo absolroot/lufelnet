@@ -325,6 +325,9 @@ class I18nService {
         // 리스너들에게 알림
         this._notifyLanguageChange(oldLang, newLang);
 
+        // DOM 업데이트 (data-i18n 속성 기반)
+        this.updateDOM();
+
         console.log(`[I18nService] Language changed from ${oldLang} to ${newLang}`);
     }
 
@@ -385,6 +388,70 @@ class I18nService {
     clearCache() {
         this.cache = {};
         console.log('[I18nService] Cache cleared');
+    }
+
+    /**
+     * DOM 요소 업데이트 - data-i18n 속성 기반
+     * @param {Element} rootElement - 업데이트할 루트 요소 (기본값: document)
+     */
+    updateDOM(rootElement = document) {
+        // 1. data-i18n 속성 처리 (textContent)
+        rootElement.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (key) {
+                const translation = this.t(key);
+                if (translation) {
+                    el.textContent = translation;
+                    // 번역이 있으면 표시
+                    if (el.style.display === 'none') {
+                        el.style.display = '';
+                    }
+                } else {
+                    // 번역이 없으면 (빈 문자열) 숨김
+                    el.style.display = 'none';
+                }
+            }
+        });
+
+        // 2. data-i18n-html 속성 처리 (innerHTML - HTML 콘텐츠용)
+        rootElement.querySelectorAll('[data-i18n-html]').forEach(el => {
+            const key = el.getAttribute('data-i18n-html');
+            if (key) {
+                const translation = this.t(key);
+                if (translation) {
+                    el.innerHTML = translation;
+                    // 번역이 있으면 표시
+                    if (el.style.display === 'none') {
+                        el.style.display = '';
+                    }
+                } else {
+                    // 번역이 없으면 (빈 문자열) 숨김
+                    el.style.display = 'none';
+                }
+            }
+        });
+
+        // 3. data-i18n-aria 속성 처리 (aria-label)
+        rootElement.querySelectorAll('[data-i18n-aria]').forEach(el => {
+            const key = el.getAttribute('data-i18n-aria');
+            if (key) {
+                const translation = this.t(key);
+                if (translation) {
+                    el.setAttribute('aria-label', translation);
+                }
+            }
+        });
+
+        // 4. data-i18n-placeholder 속성 처리 (placeholder)
+        rootElement.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+            const key = el.getAttribute('data-i18n-placeholder');
+            if (key) {
+                const translation = this.t(key);
+                if (translation) {
+                    el.setAttribute('placeholder', translation);
+                }
+            }
+        });
     }
 }
 

@@ -16,15 +16,20 @@
 /* ===== Global Styles ===== */
 
 /* i18n Loading State - Prevent FOUC (Flash of Untranslated Content) */
-/* i18n Loading State - Prevent FOUC (Flash of Untranslated Content) */
-/* html.i18n-loading .main-wrapper {
-    opacity: 0 !important;
-    visibility: hidden !important;
-} */
-
-
-/* i18n Loading State - Prevent FOUC removed per user request */
-/* Skeleton loading animation removed per user request */
+/* Only hide translatable text elements, keep layout visible */
+/*
+html.i18n-loading [data-i18n],
+html.i18n-loading [data-i18n-tooltip] {
+    opacity: 0.5;
+    transition: opacity 0.15s ease-in;
+}
+*/
+/* Show elements after i18n is loaded */
+/*
+html:not(.i18n-loading) [data-i18n],
+html:not(.i18n-loading) [data-i18n-tooltip] {
+    opacity: 1;
+}*/
 
 .adsbygoogle-noablate {
     right: 86px !important;

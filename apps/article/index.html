@@ -3,17 +3,18 @@ layout: default
 title: Articles
 permalink: /article/
 custom_css: article
+custom_js: []
 ---
 
 <div class="main-wrapper">
     <div class="navigation-path">
-        <a href="/" data-kr="홈" data-en="Home" data-jp="ホーム">홈</a>
+        <a href="/" data-i18n="navHome">홈</a>
         <span class="separator">/</span>
-        <span class="current-page" data-kr="가이드" data-en="Guide" data-jp="ガイド">가이드</span>
+        <span class="current-page" data-i18n="navCurrent">가이드</span>
     </div>
 
     <div class="header-container">
-        <h1 class="header-title" data-kr="가이드" data-en="Guide" data-jp="ガイド">가이드</h1>
+        <h1 class="header-title" data-i18n="pageTitle">가이드</h1>
     </div>
 
     <div class="main-content">
@@ -48,6 +49,7 @@ custom_css: article
     </div>
 
     <!-- 외부 가이드 섹션 -->
+    <!--
     <div class="external-guides"
         style="margin: 40px 20px 20px 20px; background: var(--card-background); border-radius: 12px; padding: 20px;">
         <h2 class="external-guides-title" data-kr="외부 링크" data-en="External Links" data-jp="外部リンク"
@@ -56,29 +58,11 @@ custom_css: article
         </h2>
 
         <div class="external-guides-grid"
-            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-            <!-- 협력자 시트 / Synergy Sheet -->
-            <a href="https://docs.google.com/spreadsheets/d/1L47W0r5nHpAlU_qUY3HuslcqBRS78tHC682eFCXiftM"
-                target="_blank" rel="noopener noreferrer" class="external-guide-card"
-                data-kr-url="https://docs.google.com/spreadsheets/d/1L47W0r5nHpAlU_qUY3HuslcqBRS78tHC682eFCXiftM"
-                data-en-url="https://docs.google.com/spreadsheets/d/1gbV0OY_6K579nxUa5FuDcOkbxDc1VJD5ejjq3dkuELs"
-                data-jp-url="https://docs.google.com/spreadsheets/d/1gbV0OY_6K579nxUa5FuDcOkbxDc1VJD5ejjq3dkuELs"
-                style="display: block; padding: 20px; border-radius: 8px; text-decoration: none; color: inherit; transition: all 0.3s ease; background: rgba(255, 255, 255, 0.05);">
-                <div class="external-guide-content">
-                    <h3 class="external-guide-title" data-kr="협력자 시트↗" data-en="Persona5:The Phantom X Synergy↗"
-                        data-jp="ペルソナ5:ザ・ファントム X シナジー↗" style="font-size: 1.3rem; margin: 0 0 10px 0; color: #bababa;">
-                        협력자 시트↗
-                    </h3>
-                    <p class="external-guide-description" data-kr="협력자들의 호감도와 선물 정보를 확인하세요."
-                        data-en="Check synergy partner affinity and gift information."
-                        data-jp="シナジーパートナーの好感度とギフト情報を確認できます。"
-                        style="margin: 0; color: #666; font-size: 0.9rem; line-height: 1.4;">
-                        협력자들의 호감도와 선물 정보를 확인하세요.
-                    </p>
-                </div>
-            </a>
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">-->
+    <!-- 협력자 시트 / Synergy Sheet -->
 
-            <!-- 실시간 코드 / Redeem Code -->
+    <!-- 실시간 코드 / Redeem Code -->
+    <!--
             <a href="https://iant.kr/code/?region=kr" target="_blank" rel="noopener noreferrer"
                 class="external-guide-card" data-kr-url="https://iant.kr/code/?region=kr"
                 data-en-url="https://iant.kr/code/?region=en" data-jp-url="https://iant.kr/code/?region=jp"
@@ -96,7 +80,7 @@ custom_css: article
                 </div>
             </a>
         </div>
-    </div>
+    </div>-->
 
     <!-- 광고 -->
     <!--    
@@ -137,6 +121,10 @@ custom_css: article
     </style>
     -->
 </div>
+
+<!-- i18n 서비스 -->
+<script type="module" src="{{ site.baseurl }}/i18n/service/i18n-service.js?v={{ site.time | date: '%s' }}"></script>
+<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
 
 <script>
     // 언어별 SEO 설정 함수
@@ -190,31 +178,20 @@ custom_css: article
         ogDescription.setAttribute('content', currentSEO.description);
     }
 
-    // 외부 가이드 링크 업데이트 함수
-    function updateExternalGuideLinks() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const currentLang = urlParams.get('lang') || 'kr';
+    document.addEventListener('DOMContentLoaded', async () => {
+        // Initialize i18n first
+        if (typeof initPageI18n === 'function') {
+            await initPageI18n('article');
+        }
 
-        // 외부 가이드 카드들의 링크 업데이트
-        document.querySelectorAll('.external-guide-card').forEach(card => {
-            const newUrl = card.getAttribute(`data-${currentLang}-url`);
-            if (newUrl) {
-                card.href = newUrl;
-            }
-        });
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
         Navigation.load('article');
         VersionChecker.check();
         updateSEOContent();
-        updateExternalGuideLinks();
 
         // 현재 언어 가져오기
-        const urlParams = new URLSearchParams(window.location.search);
-        const currentLang = urlParams.get('lang') || 'kr';
+        const currentLang = typeof getCurrentLang === 'function' ? getCurrentLang() : 'kr';
 
-        // 모든 data-* 속성이 있는 요소들의 텍스트 업데이트
+        // Jekyll post 제목 번역 (data-kr/en/jp 속성 사용)
         document.querySelectorAll('[data-kr]').forEach(el => {
             const text = el.getAttribute(`data-${currentLang}`);
             if (text) {

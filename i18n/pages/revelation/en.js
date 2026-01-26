@@ -1,4 +1,4 @@
-const revelationTranslations = {
+export default {
     // Messages and Navigation
     nav_home: "Home",
     nav_current: "Revelations",

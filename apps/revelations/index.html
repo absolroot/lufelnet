@@ -25,19 +25,18 @@ jp: /revelations/?lang=jp
 <!-- Main content -->
 <div class="main-wrapper">
     <!-- 언어 안내 메시지 -->
-    <!--
     <div id="language-notice" class="language-notice" style="display: none;">
-        <p id="language-notice-text"></p>
-    </div>-->
+        <p id="language-notice-text" data-i18n="language_notice"></p>
+    </div>
 
     <!-- Navigation path -->
     <div class="navigation-path">
-        <script>document.write(`<a href="../../?v=${APP_VERSION}" id="nav-home">홈</a>`);</script>
+        <script>document.write(`<a href="../../?v=${APP_VERSION}" id="nav-home" data-i18n="nav_home">홈</a>`);</script>
         <span class="separator">/</span>
-        <span class="current-page" id="nav-current">계시</span>
+        <span class="current-page" id="nav-current" data-i18n="nav_current">계시</span>
     </div>
     <div class="header-container">
-        <h1 id="page-title">계시</h1>
+        <h1 id="page-title" data-i18n="page_title">계시</h1>
     </div>
 
     <!-- Filter section -->
@@ -45,7 +44,7 @@ jp: /revelations/?lang=jp
         <div class="filter-content">
             <!-- Revelation type filter -->
             <div class="filter-group">
-                <h3 id="filter-type-label">분류</h3>
+                <h3 id="filter-type-label" data-i18n="filter_type">분류</h3>
                 <div class="filter-options">
                     <label>
                         <input type="checkbox" name="type" value="main">
@@ -65,7 +64,7 @@ jp: /revelations/?lang=jp
 
             <!-- Element filter -->
             <div class="filter-group">
-                <h3 id="filter-element-label">속성</h3>
+                <h3 id="filter-element-label" data-i18n="filter_element">속성</h3>
                 <div class="filter-options">
                     <label>
                         <input type="checkbox" name="element" value="물리">
@@ -127,27 +126,27 @@ jp: /revelations/?lang=jp
 
             <!-- Type filter -->
             <div class="filter-group">
-                <h3 id="filter-effect-label">타입</h3>
+                <h3 id="filter-effect-label" data-i18n="filter_effect">타입</h3>
                 <div class="filter-options">
                     <label>
                         <input type="checkbox" name="effect" value="버프">
-                        <p id="effect-buff">버프</p>
+                        <p id="effect-buff" data-i18n="effect_buff">버프</p>
                     </label>
                     <label>
                         <input type="checkbox" name="effect" value="디버프">
-                        <p id="effect-debuff">디버프</p>
+                        <p id="effect-debuff" data-i18n="effect_debuff">디버프</p>
                     </label>
                     <label>
                         <input type="checkbox" name="effect" value="추가 효과">
-                        <p id="effect-additional">추가 효과</p>
+                        <p id="effect-additional" data-i18n="effect_additional">추가 효과</p>
                     </label>
                     <label>
                         <input type="checkbox" name="effect" value="HL 25%">
-                        <p id="effect-hl">HL 25%</p>
+                        <p id="effect-hl" data-i18n="effect_hl">HL 25%</p>
                     </label>
                     <label>
                         <input type="checkbox" name="effect" value="치료">
-                        <p id="effect-heal">치료</p>
+                        <p id="effect-heal" data-i18n="effect_heal">치료</p>
                     </label>
                 </div>
             </div>
@@ -167,18 +166,19 @@ jp: /revelations/?lang=jp
                         fill="rgba(255, 255, 255, 0.6)" />
                 </svg>
             </div>
-            <input type="text" id="revelationSearch" placeholder="계시 검색..." autocomplete="off">
+            <input type="text" id="revelationSearch" data-i18n-placeholder="search_placeholder" placeholder="계시 검색..."
+                autocomplete="off">
             <div id="searchDropdown" class="search-dropdown"></div>
         </div>
         <div class="search-count">
-            <span id="filteredCount">전체 0개</span>
+            <span id="filteredCount" data-i18n="filtered_count">전체 0개</span>
         </div>
     </div>
 
     <!-- Revelation Stats (Accordion) -->
     <div id="revelation-stats" class="rev-stats-section">
         <button class="rev-accordion" id="rev-accordion-btn">
-            <span id="rev-stats-title">계시 스탯</span>
+            <span id="rev-stats-title" data-i18n="stats_title">계시 스탯</span>
             <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round" />
@@ -188,20 +188,20 @@ jp: /revelations/?lang=jp
             <!-- Tabs -->
             <div class="rev-tabs" role="tablist">
                 <button class="rev-tab active" data-tab="uni" role="tab"><img
-                        src="{{ site.baseurl }}/assets/img/revelation/icon-주.png" alt="주" /> <span
-                        class="tab-text-uni">주</span></button>
+                        src="{{ site.baseurl }}/assets/img/revelation/icon-주.png" alt="주" /> <span class="tab-text-uni"
+                        data-i18n="tab_uni">주</span></button>
                 <button class="rev-tab" data-tab="sun" role="tab"><img
-                        src="{{ site.baseurl }}/assets/img/revelation/icon-일.png" alt="일" /> <span
-                        class="tab-text-sun">일</span></button>
+                        src="{{ site.baseurl }}/assets/img/revelation/icon-일.png" alt="일" /> <span class="tab-text-sun"
+                        data-i18n="tab_sun">일</span></button>
                 <button class="rev-tab" data-tab="moon" role="tab"><img
-                        src="{{ site.baseurl }}/assets/img/revelation/icon-월.png" alt="월" /> <span
-                        class="tab-text-moon">월</span></button>
+                        src="{{ site.baseurl }}/assets/img/revelation/icon-월.png" alt="월" /> <span class="tab-text-moon"
+                        data-i18n="tab_moon">월</span></button>
                 <button class="rev-tab" data-tab="star" role="tab"><img
-                        src="{{ site.baseurl }}/assets/img/revelation/icon-성.png" alt="성" /> <span
-                        class="tab-text-star">성</span></button>
+                        src="{{ site.baseurl }}/assets/img/revelation/icon-성.png" alt="성" /> <span class="tab-text-star"
+                        data-i18n="tab_star">성</span></button>
                 <button class="rev-tab" data-tab="sky" role="tab"><img
-                        src="{{ site.baseurl }}/assets/img/revelation/icon-진.png" alt="진" /> <span
-                        class="tab-text-sky">진</span></button>
+                        src="{{ site.baseurl }}/assets/img/revelation/icon-진.png" alt="진" /> <span class="tab-text-sky"
+                        data-i18n="tab_sky">진</span></button>
             </div>
 
             <!-- Tab panels -->
@@ -264,12 +264,16 @@ jp: /revelations/?lang=jp
 
 
 
+<!-- i18n 서비스 -->
+<script type="module" src="{{ site.baseurl }}/i18n/service/i18n-service.js?v={{ site.time | date: '%s' }}"></script>
+<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
+
 <script>
     // 전역 변수 초기화
     if (window.revelationData) delete window.revelationData;
     if (window.tooltipData) delete window.tooltipData;
 
-    // 동적 데이터 로딩 함수
+    // 동적 데이터 로딩 함수 (콘텐츠 데이터)
     async function loadLanguageData(lang) {
         return new Promise((resolve, reject) => {
             const dataFiles = {
@@ -402,123 +406,14 @@ jp: /revelations/?lang=jp
 
     // 다국어 지원 함수
     async function updateLanguageContent() {
-        const currentLang = (typeof LanguageRouter !== 'undefined' && LanguageRouter) ? LanguageRouter.getCurrentLanguage() : 'kr';
-
-        // 다국어 데이터 정의
-        const i18nData = {
-            kr: {
-                language_notice: "",
-                nav_home: "홈",
-                nav_current: "계시",
-                page_title: "계시",
-                filtered_count: "전체",
-                search_placeholder: "계시 검색...",
-                filter_type: "분류",
-                filter_element: "속성",
-                filter_effect: "타입",
-                effect_buff: "버프",
-                effect_debuff: "디버프",
-                effect_additional: "추가 효과",
-                effect_hl: "HL 25%",
-                effect_heal: "치료",
-                count_unit: "개",
-                set_effect_2: "2세트",
-                set_effect_4: "4세트",
-                label_characters: "사용 캐릭터"
-            },
-            en: {
-                language_notice: "🌍 Please let me know if you find an accurate translation.\nIt may contain content that hasn't been released yet.",
-                nav_home: "Home",
-                nav_current: "Revelations",
-                page_title: "Revelations",
-                filtered_count: "Total",
-                search_placeholder: "Search revelations...",
-                filter_type: "Type",
-                filter_element: "Element",
-                filter_effect: "Effect",
-                effect_buff: "Buff",
-                effect_debuff: "Debuff",
-                effect_additional: "Resonance",
-                effect_hl: "HL 25%",
-                effect_heal: "Heal",
-                count_unit: "",
-                set_effect_2: "2-Set",
-                set_effect_4: "4-Set",
-                label_characters: "Characters"
-            },
-            jp: {
-                language_notice: "🌍 正確な翻訳が見つかった場合は、お知らせください。\nまだリリースされていないコンテンツが含まれている可能性があります。",
-                nav_home: "ホーム",
-                nav_current: "啓示",
-                page_title: "啓示",
-                filtered_count: "全体",
-                search_placeholder: "啓示検索...",
-                filter_type: "分類",
-                filter_element: "属性",
-                filter_effect: "タイプ",
-                effect_buff: "バフ",
-                effect_debuff: "デバフ",
-                effect_additional: "意識奏功",
-                effect_hl: "HL 25%",
-                effect_heal: "回復",
-                count_unit: "",
-                set_effect_2: "2セット",
-                set_effect_4: "4セット",
-                label_characters: "使用キャラ"
-            }
-        };
-
-        const data = i18nData[currentLang];
-        if (!data) return;
-
-        // 언어 안내 메시지
-        if (currentLang !== 'kr') {
-            const notice = document.getElementById('language-notice');
-            const noticeText = document.getElementById('language-notice-text');
-            if (notice && noticeText && data.language_notice) {
-                noticeText.textContent = data.language_notice;
-                notice.style.display = 'block';
-            }
-        }
-
-        // 네비게이션 및 제목 업데이트
-        const navHome = document.getElementById('nav-home');
-        const navCurrent = document.getElementById('nav-current');
-        const pageTitle = document.getElementById('page-title');
-        const searchInput = document.getElementById('revelationSearch');
-
-        if (navHome) navHome.textContent = data.nav_home;
-        if (navCurrent) navCurrent.textContent = data.nav_current;
-        if (pageTitle) pageTitle.textContent = data.page_title;
-        if (searchInput) searchInput.placeholder = data.search_placeholder;
-
-        // 필터 라벨 업데이트
-        const filterTypeLabel = document.getElementById('filter-type-label');
-        const filterElementLabel = document.getElementById('filter-element-label');
-        const filterEffectLabel = document.getElementById('filter-effect-label');
-
-        if (filterTypeLabel) filterTypeLabel.textContent = data.filter_type;
-        if (filterElementLabel) filterElementLabel.textContent = data.filter_element;
-        if (filterEffectLabel) filterEffectLabel.textContent = data.filter_effect;
-
-        // 효과 타입 라벨 업데이트
-        const effectBuff = document.getElementById('effect-buff');
-        const effectDebuff = document.getElementById('effect-debuff');
-        const effectAdditional = document.getElementById('effect-additional');
-        const effectHl = document.getElementById('effect-hl');
-        const effectHeal = document.getElementById('effect-heal');
-
-        if (effectBuff) effectBuff.textContent = data.effect_buff;
-        if (effectDebuff) effectDebuff.textContent = data.effect_debuff;
-        if (effectAdditional) effectAdditional.textContent = data.effect_additional;
-        if (effectHl) effectHl.textContent = data.effect_hl;
-        if (effectHeal) effectHeal.textContent = data.effect_heal;
+        const currentLang = I18nService.getCurrentLanguage();
+        I18nService.updateDOM();
 
         // 필터 카운트 텍스트 업데이트를 위한 전역 변수 설정
-        window.i18nFilteredCount = data.filtered_count;
-        window.i18nCountUnit = data.count_unit;
-        window.i18nSetEffect2 = data.set_effect_2;
-        window.i18nSetEffect4 = data.set_effect_4;
+        window.i18nFilteredCount = I18nService.t('filtered_count');
+        window.i18nCountUnit = I18nService.t('count_unit');
+        window.i18nSetEffect2 = I18nService.t('set_effect_2');
+        window.i18nSetEffect4 = I18nService.t('set_effect_4');
     }
 
     // 언어별 SEO 설정 함수
@@ -555,140 +450,68 @@ jp: /revelations/?lang=jp
         if (ogDescription) ogDescription.setAttribute('content', currentSEO.description);
     }
 
-    // 계시 스탯 i18n 및 데이터
-    const revI18n = {
-        kr: {
-            stats_title: '계시 스탯',
-            main_title: '메인 스탯',
-            sub_title: '부 스탯',
-            col_option: '옵션', col_min: '최소 (LV1)', col_max: '최대 (LV25)',
-            col_1st: '1st', col_2nd: '2nd', col_3rd: '3rd', col_4th: '4th', col_5th: '5th',
-            tabs: { uni: '주', sun: '일', moon: '월', star: '성', sky: '진' },
-        },
-        en: {
-            stats_title: 'Revelation Stats',
-            main_title: 'Main Stats',
-            sub_title: 'Sub Stats',
-            col_option: 'Option', col_min: 'Min (LV1)', col_max: 'Max (LV25)',
-            col_1st: '1st', col_2nd: '2nd', col_3rd: '3rd', col_4th: '4th', col_5th: '5th',
-            tabs: { uni: 'Universe', sun: 'Sun', moon: 'Moon', star: 'Star', sky: 'Sky' },
-        },
-        jp: {
-            stats_title: '啓示ステータス',
-            main_title: 'メインステータス',
-            sub_title: 'サブステータス',
-            col_option: 'オプション', col_min: '最小 (LV1)', col_max: '最大 (LV25)',
-            col_1st: '1st', col_2nd: '2nd', col_3rd: '3rd', col_4th: '4th', col_5th: '5th',
-            tabs: { uni: '宙', sun: '旭', moon: '月', star: '星', sky: '天' },
-        }
-    };
+    // 계시 스탯 i18n 및 데이터 - Removed local revI18n, using I18nService now.
 
     // Sub stats values sourced from the article (KR/EN/JP identical numerically)
-    let subStatsData = {
-        universe: [
-            ['Crit Rate', '2.6%', '2.3%', '2.1%', '1.8%', '1.6%'],
-            ['Crit Mult.', '5.2%', '4.7%', '4.1%', '3.6%', '3.1%'],
-            ['Pierce Rate', '2.7%', '2.5%', '2.2%', '1.8%', '1.6%'],
-            ['Attack Mult.', '3.5%', '3.1%', '2.7%', '2.5%', '2.1%'],
-            ['Attack %', '4.3%', '3.9%', '3.5%', '3.1%', '2.6%'],
-            ['Attack', '/', '/', '/', '/', '/'],
-            ['HP %', '4.4%', '4.0%', '3.5%', '3.2%', '2.7%'],
-            ['HP', '175', '157', '140', '123', '105'],
-            ['Defense %', '6.4%', '5.8%', '5.2%', '4.5%', '3.8%'],
-            ['Defense', '/', '/', '/', '/', '/'],
-            ['Ailment Accuracy', '5.2%', '4.7%', '4.1%', '3.6%', '3.1%'],
-            ['SP Recovery', '12.5%', '11.2%', '10.0%', '8.7%', '7.5%'],
-            ['Speed', '2.8', '2.5', '2.2', '1.9', '1.6'],
-        ],
-        universal: [ // Sun/Moon/Star/Sky
-            ['Crit Rate', '2%', '1.8%', '1.7%', '1.4%', '1.3%'],
-            ['Crit Mult.', '4.1%', '3.7%', '3.4%', '2.8%', '2.5%'],
-            ['Pierce Rate', '2.1%', '1.9%', '1.7%', '1.4%', '1.3%'],
-            ['Attack Mult.', '2.8%', '2.5%', '2.1%', '1.9%', '1.7%'],
-            ['Attack %', '3.5%', '3.2%', '2.8%', '2.5%', '2.0%'],
-            ['Attack', '46', '41', '37', '32', '27'],
-            ['HP %', '3.6%', '3.3%', '2.9%', '2.6%', '2.1%'],
-            ['HP', '140', '126', '112', '98', '84'],
-            ['Defense %', '5.2%', '4.6%', '4.1%', '3.5%', '3.0%'],
-            ['Defense', '46', '41', '37', '32', '27'],
-            ['Ailment Accuracy', '4.1%', '3.7%', '3.4%', '2.8%', '2.5%'],
-            ['SP Recovery', '10.0%', '9.0%', '7.9%', '7.0%', '5.9%'],
-            ['Speed', '2.2', '2', '1.8', '1.5', '1.3'],
-        ]
-    };
+    // Sub stats values sourced from the article (KR/EN/JP identical numerically)
+    // Data is now loaded from revelation_stats.json to avoid duplication
+    let subStatsData = {};
 
-    // Translation maps for sub stat names per language
-    const subLabelMap = {
-        kr: {
-            'Crit Rate': '크리티컬 확률', 'Crit Mult.': '크리티컬 효과', 'Pierce Rate': '관통', 'Attack Mult.': '대미지 보너스',
-            'Attack %': '공격력%', 'Attack': '공격력', 'HP %': '생명%', 'HP': '생명', 'Defense %': '방어력%', 'Defense': '방어력',
-            'Ailment Accuracy': '효과 명중', 'SP Recovery': 'SP회복', 'Speed': '속도'
-        },
-        en: {},
-        jp: {
-            'Crit Rate': 'CRT発生率', 'Crit Mult.': 'CRT倍率', 'Pierce Rate': '貫通', 'Attack Mult.': '攻撃倍率+', 'Attack %': '攻撃力%',
-            'Attack': '攻撃力', 'HP %': 'HP%', 'HP': 'HP', 'Defense %': '防御力%', 'Defense': '防御力', 'Ailment Accuracy': '状態異常命中',
-            'SP Recovery': 'SP回復', 'Speed': '速さ'
-        }
+    // Map English sub stat keys to I18n keys
+    const subStatKeyMap = {
+        'Crit Rate': 'sub_crit_rate',
+        'Crit Mult.': 'sub_crit_mult',
+        'Pierce Rate': 'sub_pierce_rate',
+        'Attack Mult.': 'sub_attack_mult',
+        'Attack %': 'sub_attack_percent',
+        'Attack': 'sub_attack',
+        'HP %': 'sub_hp_percent',
+        'HP': 'sub_hp',
+        'Defense %': 'sub_defense_percent',
+        'Defense': 'sub_defense',
+        'Ailment Accuracy': 'sub_ailment_accuracy',
+        'SP Recovery': 'sub_sp_recovery',
+        'Speed': 'sub_speed',
+        'Healing Effect': 'sub_healing_effect'
     };
 
     // Placeholder main stats ranges (fill exact values later from image)
-    let mainStatsData = {
-        kr: {
-            uni: [['공격력', '—', '—'], ['방어력', '—', '—']],
-            sun: [['생명', '—', '—']],
-            moon: [['공격력', '—', '—'], ['대미지 보너스', '—', '—'], ['생명', '—', '—'], ['방어력', '—', '—'], ['치료 효과', '—', '—']],
-            star: [['크리티컬 확률', '—', '—'], ['크리티컬 효과', '—', '—'], ['생명', '—', '—'], ['공격력', '—', '—'], ['방어력', '—', '—'], ['효과 명중', '—', '—']].slice(0, 5),
-            sky: [['공격력', '—', '—'], ['방어력', '—', '—'], ['생명', '—', '—'], ['SP 회복', '—', '—'], ['속도', '—', '—']],
-        },
-        en: {
-            uni: [['Attack', '—', '—'], ['Defense', '—', '—']],
-            sun: [['HP', '—', '—']],
-            moon: [['Attack', '—', '—'], ['Attack Mult.', '—', '—'], ['HP', '—', '—'], ['Defense', '—', '—'], ['Healing Effect', '—', '—']],
-            star: [['Crit Rate', '—', '—'], ['Crit Mult.', '—', '—'], ['HP', '—', '—'], ['Attack', '—', '—'], ['Defense', '—', '—']],
-            sky: [['Attack', '—', '—'], ['Defense', '—', '—'], ['HP', '—', '—'], ['SP Recovery', '—', '—'], ['Speed', '—', '—']],
-        },
-        jp: {
-            uni: [['攻撃力', '—', '—'], ['防御力', '—', '—']],
-            sun: [['HP', '—', '—']],
-            moon: [['攻撃力', '—', '—'], ['攻撃倍率+', '—', '—'], ['HP', '—', '—'], ['防御力', '—', '—'], ['HP回復量', '—', '—']],
-            star: [['CRT発生率', '—', '—'], ['CRT倍率', '—', '—'], ['HP', '—', '—'], ['攻撃力', '—', '—'], ['防御力', '—', '—']],
-            sky: [['攻撃力', '—', '—'], ['防御力', '—', '—'], ['HP', '—', '—'], ['SP回復', '—', '—'], ['速さ', '—', '—']],
-        }
-    }
+    // Placeholder main stats ranges (fill exact values later from image)
+    // Data is now loaded from revelation_stats.json to avoid duplication
+    let mainStatsData = {};
 
     // Helper: determine if a main stat label should be pink-highlighted for a given tab and language
+    // Helper: determine if a main stat label should be pink-highlighted for a given tab
+    // Now uses I18nService keys to avoid hardcoded strings per language
     function isRevPinkLabel(lang, slotKey, label) {
-        const L = lang || 'kr';
-        const K = slotKey || '';
-        const maps = {
-            kr: {
-                moon: new Set(['대미지 보너스', '치료 효과']),
-                star: new Set(['크리티컬 확률', '크리티컬 효과', '효과 명중']),
-                sky: new Set(['SP 회복', '속도'])
-            },
-            en: {
-                moon: new Set(['Attack Mult.', 'Healing Effect']),
-                star: new Set(['Crit Rate', 'Crit Mult.', 'Ailment Accuracy']),
-                sky: new Set(['SP Recovery', 'Speed'])
-            },
-            jp: {
-                moon: new Set(['攻撃倍率+', 'HP回復量']),
-                star: new Set(['CRT発生率', 'CRT倍率', '状態異常命中']),
-                sky: new Set(['SP回復', '速さ'])
-            }
+        // Define which stats (by i18n key) should be pink for each slot
+        const pinkKeys = {
+            moon: ['sub_attack_mult', 'sub_healing_effect'],
+            star: ['sub_crit_rate', 'sub_crit_mult', 'sub_ailment_accuracy'],
+            sky: ['sub_sp_recovery', 'sub_speed']
         };
-        const dict = maps[L] || maps.kr;
-        const set = dict[K];
-        return !!(set && set.has(label));
+
+        const keys = pinkKeys[slotKey];
+        if (!keys) return false;
+
+        // Check if the current label matches the translation of any pink key
+        // Note: This assumes 'label' (from stats JSON) matches the I18nService translation
+        return keys.some(key => I18nService.t(key) === label);
     }
 
     function renderMainTable(lang, slotKey) {
-        const i18n = revI18n[lang] || revI18n.kr;
-        const rows = (mainStatsData[lang] || mainStatsData.kr)[slotKey] || [];
-        const header = `<div class="rev-subsection-title">${i18n.main_title}</div>`;
+        // lang is kept for mainStatsData lookup logic if needed, but headers use I18nService
+        const langData = mainStatsData[lang] || mainStatsData.kr || {};
+        const rows = langData[slotKey] || [];
+        const title = I18nService.t('main_title');
+        const header = `<div class="rev-subsection-title">${title}</div>`;
+
+        const colOption = I18nService.t('col_option');
+        const colMax = I18nService.t('col_max');
+        const colMin = I18nService.t('col_min');
+
         // Show bigger values first (Max -> Min)
-        const table = [`<div class="rev-table-wrap"><table class="rev-table rev-table-main"><thead><tr><th>${i18n.col_option}</th><th>${i18n.col_max}</th><th>${i18n.col_min}</th></tr></thead><tbody>`,
+        const table = [`<div class="rev-table-wrap"><table class="rev-table rev-table-main"><thead><tr><th>${colOption}</th><th>${colMax}</th><th>${colMin}</th></tr></thead><tbody>`,
         ...rows.map(r => {
             const pink = isRevPinkLabel(lang, slotKey, r[0]);
             const label = pink ? `<span class="rev-label-pink">${r[0]}</span>` : r[0];
@@ -713,31 +536,33 @@ jp: /revelations/?lang=jp
     }
 
     function renderSubTable(lang, group) {
-        const i18n = revI18n[lang] || revI18n.kr;
-        const data = group === 'universal' ? subStatsData.universal : subStatsData.universe;
-        const map = subLabelMap[lang] || {};
-        const header = `<div class="rev-subsection-title">${i18n.sub_title}</div>`;
-        const head = `<thead><tr><th>${i18n.col_option}</th><th>${i18n.col_1st}</th><th>${i18n.col_2nd}</th><th>${i18n.col_3rd}</th><th>${i18n.col_4th}</th><th>${i18n.col_5th}</th></tr></thead>`;
+        const data = (group === 'universal' ? subStatsData.universal : subStatsData.universe) || [];
+
+        const title = I18nService.t('sub_title');
+        const colOption = I18nService.t('col_option');
+        const col1st = I18nService.t('col_1st');
+        const col2nd = I18nService.t('col_2nd');
+        const col3rd = I18nService.t('col_3rd');
+        const col4th = I18nService.t('col_4th');
+        const col5th = I18nService.t('col_5th');
+
+        const header = `<div class="rev-subsection-title">${title}</div>`;
+        const head = `<thead><tr><th>${colOption}</th><th>${col1st}</th><th>${col2nd}</th><th>${col3rd}</th><th>${col4th}</th><th>${col5th}</th></tr></thead>`;
         const body = data.map(row => {
-            const label = map[row[0]] || row[0];
+            // Map English key to I18n key, then translate
+            const i18nKey = subStatKeyMap[row[0]];
+            const label = i18nKey ? I18nService.t(i18nKey) : row[0];
+
             return `<tr><td>${label}</td><td>${row[1]}</td><td>${row[2]}</td><td>${row[3]}</td><td>${row[4]}</td><td>${row[5]}</td></tr>`;
         }).join('');
         return header + `<div class="rev-table-wrap"><table class="rev-table rev-table-sub">${head}<tbody>${body}</tbody></table></div>`;
     }
 
     function buildRevStatsUI(currentLang) {
-        const lang = currentLang || (typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr');
-        const i18n = revI18n[lang] || revI18n.kr;
+        // Headers and tabs are now handled by data-i18n in HTML and I18nService.updateDOM()
+        // We just need to re-render the tables here.
 
-        const titleEl = document.getElementById('rev-stats-title');
-        if (titleEl) titleEl.textContent = i18n.stats_title;
-
-        // Update tab labels for i18n
-        const tabMap = { uni: '.tab-text-uni', sun: '.tab-text-sun', moon: '.tab-text-moon', star: '.tab-text-star', sky: '.tab-text-sky' };
-        Object.entries(tabMap).forEach(([k, sel]) => {
-            const el = document.querySelector(sel);
-            if (el) el.textContent = i18n.tabs[k];
-        });
+        const lang = currentLang || I18nService.getCurrentLanguage();
 
         // Fill panels
         const panels = {
@@ -794,8 +619,17 @@ jp: /revelations/?lang=jp
                 VersionChecker.check();
             }
 
-            // SEO 설정 업데이트
-            updateSEOContent();
+            // I18nService 초기화
+            if (typeof I18nService !== 'undefined') {
+                await I18nService.init('revelation');
+            } else {
+                console.error('I18nService is not defined!');
+            }
+
+            // SEO 설정 업데이트 (Excluded from i18n update per user request)
+            if (typeof updateSEOContent === 'function') {
+                updateSEOContent();
+            }
 
             // 데이터 로드
             await loadLanguageData(currentLang);
@@ -1059,19 +893,7 @@ jp: /revelations/?lang=jp
 
             // ---- Characters Accordion ----
             // i18n label
-            const tLabel = (function () {
-                const lang = (typeof LanguageRouter !== 'undefined' && LanguageRouter) ? LanguageRouter.getCurrentLanguage() : 'kr';
-                const map = {
-                    kr: '사용 캐릭터',
-                    en: 'Characters',
-                    jp: '使用キャラ'
-                };
-                // prefer i18nData if available
-                try {
-                    const tdata = (window.i18nSetEffect2 !== undefined) ? null : null; // no-op, ensure no crash
-                } catch (e) { }
-                return (lang === 'en' ? 'Characters' : (lang === 'jp' ? '使用キャラ' : '사용 캐릭터'));
-            })();
+            const tLabel = I18nService.t('label_characters');
 
             // Helpers
             function getCharacterLabel(koreanCharName, lang) {

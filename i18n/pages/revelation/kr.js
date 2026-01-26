@@ -1,4 +1,4 @@
-const revelationTranslations = {
+export default {
     // 메시지 및 네비게이션
     nav_home: "홈",
     nav_current: "계시",
@@ -24,7 +24,7 @@ const revelationTranslations = {
     set_effect_4: "4세트",
     label_characters: "사용 캐릭터",
 
-    // SEO
+    // SEO (Excluded from i18n update per user request, but kept for reference or future use if needed, though unused in code)
     seo_title: "계시 - 페르소나5 더 팬텀 X 루페르넷",
     seo_description: "페르소나5 더 팬텀 X의 계시 정보. 세트 효과와 추가 효과를 확인하세요.",
 

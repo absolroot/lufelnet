@@ -23,12 +23,12 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
 
     <!-- Navigation path -->
     <div class="navigation-path">
-        <script>document.write(`<a href="{{ site.baseurl }}/?v=${APP_VERSION}" id="nav-home">홈</a>`);</script>
+        <script>document.write(`<a href="{{ site.baseurl }}/?v=${APP_VERSION}" id="nav-home" data-i18n="navHome">홈</a>`);</script>
         <span class="separator">/</span>
-        <span class="current-page" id="nav-current">티어 메이커</span>
+        <span class="current-page" id="nav-current" data-i18n="navCurrent">티어 메이커</span>
     </div>
     <div class="header-container">
-        <h1 id="page-title">티어 메이커</h1>
+        <h1 id="page-title" data-i18n="pageTitle">티어 메이커</h1>
     </div>
 
     <!-- Filter section -->
@@ -46,7 +46,7 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
         <div class="filter-content" style="display: none;">
             <!-- Element filter -->
             <div class="filter-group">
-                <h3 id="filter-element-title">속성</h3>
+                <h3 id="filter-element-title" data-i18n="filterElement">속성</h3>
                 <div class="filter-options">
                     <label>
                         <input type="checkbox" name="element" value="물리">
@@ -108,7 +108,7 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
 
             <!-- Position filter -->
             <div class="filter-group">
-                <h3 id="filter-position-title">직업</h3>
+                <h3 id="filter-position-title" data-i18n="filterPosition">직업</h3>
                 <div class="filter-options">
                     <label>
                         <input type="checkbox" name="position" value="지배">
@@ -143,7 +143,7 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
 
             <!-- Rarity filter -->
             <div class="filter-group">
-                <h3 id="filter-rarity-title">유형</h3>
+                <h3 id="filter-rarity-title" data-i18n="filterRarity">유형</h3>
                 <div class="filter-options">
                     <label>
                         <input type="checkbox" name="rarity" value="5" hidden>
@@ -167,25 +167,6 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
                 </div>
             </div>
 
-            <!-- Tag filter -->
-            <!--
-            <div class="filter-group">
-                <h3 id="filter-tag-title">태그</h3>
-                <div class="filter-options tag-options">
-                    <label><input type="checkbox" name="tag" value="TECHNICAL"><span>TECHNICAL</span></label>
-                    <label><input type="checkbox" name="tag" value="추가효과"><span>추가 효과</span></label>
-                    <label><input type="checkbox" name="tag" value="지속대미지"><span>지속 대미지</span></label>
-                    <label><input type="checkbox" name="tag" value="방어력감소"><span>방어력 감소</span></label>
-                    <label><input type="checkbox" name="tag" value="관통"><span>관통</span></label>
-                    <label><input type="checkbox" name="tag" value="효과명중"><span>효과 명중</span></label>
-                    <label><input type="checkbox" name="tag" value="실드"><span>실드</span></label>
-                    <label><input type="checkbox" name="tag" value="화상"><span>화상</span></label>
-                    <label><input type="checkbox" name="tag" value="풍습"><span>풍습</span></label>
-                    <label><input type="checkbox" name="tag" value="감전"><span>감전</span></label>
-                    <label><input type="checkbox" name="tag" value="동결"><span>동결</span></label>
-                </div>
-            </div>
-            -->
         </div>
     </div>
 
@@ -197,53 +178,17 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
         <!-- Disclaimer above Criteria -->
         <div id="tier-disclaimer" class="tier-disclaimer"
             style="margin-bottom: 8px; padding: 0px 16px; font-size: 12px; color: rgba(255,255,255,0.8);">
-            <p class="kr-text" style="font-weight: 700;">
-                주의: 본 티어는 주관적이며 참고 및 재미로만 봐주세요. 또한 P5X는 적의 속성 약점과 기믹에 따라 활용 가능한 파티가 크게 제한됩니다.
-            </p>
-            <p class="en-text" style="display:none; font-weight: 700;">
-                Note: This tier list is subjective; please use it for reference and entertainment only. In addition, in
-                P5X, available parties can be heavily limited by enemy attribute weaknesses and mechanics.
-            </p>
-            <p class="jp-text" style="display:none; font-weight: 700;">
-                注意：本ティアリストは主観的なものであり、参考・娯楽目的でご覧ください。さらに、P5Xでは敵の属性弱点やギミックによって活用できるパーティが大きく制限される場合があります。
-            </p>
+            <p id="tier-disclaimer-text" style="font-weight: 700;"></p>
         </div>
         <div class="tier-criteria-toggle">
             <button id="tier-criteria-btn" class="tier-criteria-button" aria-expanded="true">
-                <span id="tier-criteria-title">티어 기준</span>
+                <span id="tier-criteria-title" data-i18n="tierCriteriaTitle">티어 기준</span>
                 <span class="tier-criteria-arrow" aria-hidden="true"><i class="bi bi-chevron-up"></i></span>
             </button>
         </div>
         <div id="tier-criteria-content" class="tier-criteria-content" style="display: block;">
-            <!-- Korean -->
-            <div class="tier-criteria-text kr-text">
-                <ul>
-                    <li>LV80, 모든 스킬 레벨 등 의식을 제외한 모든 값이 기본적으로 세팅돼있는 경우를 말합니다.</li>
-                    <li>경쟁 콘텐츠를 중심으로 작성됐으며, 버전 업데이트에 따라 티어는 지속적으로 변동될 수 있습니다.</li>
-                    <li>J&C는 심상 코어를 모두 활성화한 기준으로 작성돼있습니다.</li>
-                </ul>
-            </div>
-            <!-- English -->
-            <div class="tier-criteria-text en-text" style="display: none;">
-                <ul>
-                    <li>Assumes LV80, all skill levels, and all values are basically set except for Awareness.</li>
-                    <li>Written with competitive content in mind, tiers may continuously change with version updates.
-                    </li>
-                    <li>Global servers may differ from KR tiers because characters are buffed.</li>
-                    <li>When some characters are labeled only as A1, it indicates that their operating mechanism or
-                        value changes significantly starting from A1, gaining versatility.</li>
-                    <li>J&C was created based solely on A1. J&C KR Tier is a tier with Mindscape Core(V4.7) effect
-                        applied in Korea servers.</li>
-                </ul>
-            </div>
-            <!-- Japanese -->
-            <div class="tier-criteria-text jp-text" style="display: none;">
-                <ul>
-                    <li>LV80、すべてのスキルレベルなど、意識（Awareness）を除くすべての値が基本的に設定されている場合を指します。</li>
-                    <li>競争コンテンツを中心に作成されており、バージョンアップデートによってティアは継続的に変動する可能性があります。</li>
-                    <li>グローバルサーバーは怪盗がバフされているため、KRティアとは異なる場合があります。</li>
-                    <li>J&Cは凸1を基準としてのみ作成されました。J&C KRティアは、韓国サーバーでイメジャリー・コア(V4.7)効果が適用されたティアです。</li>
-                </ul>
+            <div class="tier-criteria-text">
+                <ul id="tier-criteria-list"></ul>
             </div>
         </div>
     </div>
@@ -291,7 +236,7 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
 
     <!-- Help Text -->
     <div class="help-text">
-        <p id="help-message">* 캐릭터 이동이 안될 경우 캐릭터를 더블 클릭해서 아래 리스트로 이동한 뒤 일정 시간 뒤 다시 시도해주세요.</p>
+        <p id="help-message" data-i18n="helpMessage">* 캐릭터 이동이 안될 경우 캐릭터를 더블 클릭해서 아래 리스트로 이동한 뒤 일정 시간 뒤 다시 시도해주세요.</p>
     </div>
 
     <!-- Settings Modal -->
@@ -339,7 +284,8 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
             <div class="ritual-separator" style="margin: 8px 0; border-top: 1px solid #e5e7eb;"></div>
             <div class="ritual-modal-footer" style="margin-top: 12px;">
                 <div class="ritual-copy-option" style="width: 100%;">
-                    <div class="ritual-none ritual-copy-button" style="width: 100%; text-align: center;">캐릭터 복사</div>
+                    <div class="ritual-none ritual-copy-button" style="width: 100%; text-align: center;"
+                        data-i18n="ritualCopy">캐릭터 복사</div>
                 </div>
             </div>
         </div>
@@ -433,74 +379,26 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
 
 </div>
 
+<!-- i18n 서비스 -->
+<script type="module" src="{{ site.baseurl }}/i18n/service/i18n-service.js?v={{ site.time | date: '%s' }}"></script>
+<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
+
 <script>
     // 다국어 지원 함수
     async function updateLanguageContent() {
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
 
-        // Jekyll 다국어 데이터 사용
-        const i18nData = {
-            kr: {
-                language_notice: "",
-                nav_home: "홈",
-                nav_current: "티어 메이커",
-                page_title: "티어 메이커",
-                filter_element: "속성",
-                filter_position: "직업",
-                filter_rarity: "유형",
-                filter_tag: "태그",
-                help_message: "* 캐릭터를 더블클릭하면 의식을 설정할 수 있습니다.",
-                ritual_copy: "캐릭터 복사"
-            },
-            en: {
-                language_notice: "",
-                nav_home: "{{ site.data.i18n.en.nav_home | default: 'Home' }}",
-                nav_current: "{{ site.data.i18n.en.position_tier_maker | default: 'Position Tier Maker' }}",
-                page_title: "{{ site.data.i18n.en.position_tier_maker_title | default: 'Position Tier Maker' }}",
-                filter_element: "{{ site.data.i18n.en.filter_element | default: 'Element' }}",
-                filter_position: "{{ site.data.i18n.en.filter_position | default: 'Position' }}",
-                filter_rarity: "{{ site.data.i18n.en.filter_rarity | default: 'Type' }}",
-                filter_tag: "{{ site.data.i18n.en.filter_tag | default: 'Tag' }}",
-                help_message: "* Double-click the character to set the Awareness.",
-                ritual_copy: "Copy Character"
-            },
-            jp: {
-                language_notice: "",
-                nav_home: "{{ site.data.i18n.jp.nav_home | default: 'ホーム' }}",
-                nav_current: "{{ site.data.i18n.jp.position_tier_maker | default: 'ポジションティアメーカー' }}",
-                page_title: "{{ site.data.i18n.jp.position_tier_maker_title | default: 'ポジションティアメーカー' }}",
-                filter_element: "{{ site.data.i18n.jp.filter_element | default: '属性' }}",
-                filter_position: "{{ site.data.i18n.jp.filter_position | default: '職業' }}",
-                filter_rarity: "{{ site.data.i18n.jp.filter_rarity | default: 'タイプ' }}",
-                filter_tag: "{{ site.data.i18n.jp.filter_tag | default: 'タグ' }}",
-                help_message: "* 怪盗をダブルクリックして意識を設定してください。",
-                ritual_copy: "キャラクターをコピー"
-            }
-        };
-
-        const data = i18nData[currentLang];
-        if (!data) return;
-
-        // 언어 안내 메시지
-        if (currentLang !== 'kr') {
-            const notice = document.getElementById('language-notice');
-            const noticeText = document.getElementById('language-notice-text');
-            if (notice && noticeText && data.language_notice) {
-                noticeText.textContent = data.language_notice;
-                notice.style.display = 'block';
-            }
+        // i18n 시스템 로드 대기 (필요시)
+        if (typeof window.t !== 'function') {
+            console.warn('[Position-Tier] i18n not loaded yet in updateLanguageContent');
         }
 
         // list 파라미터 확인
         const urlParams = new URLSearchParams(window.location.search);
         const isListMode = urlParams.get('list') !== 'false';
 
-        // 네비게이션 및 제목 업데이트
-        const navHome = document.getElementById('nav-home');
-        const navCurrent = document.getElementById('nav-current');
-        const pageTitle = document.getElementById('page-title');
-
-        if (navHome) navHome.textContent = data.nav_home;
+        // 네비게이션 및 제목 업데이트 (i18n 시스템이 자동 처리하므로 필요 없음)
+        // data-i18n 속성으로 처리됨
 
         // 언어별 제목 데이터
         const titleTexts = {
@@ -511,7 +409,10 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
 
         const currentTitleTexts = titleTexts[currentLang] || titleTexts['kr'];
 
-        // list=false일 때 제목 변경
+        // list=false일 때 제목 변경 (네비게이션과 페이지 타이틀)
+        const navCurrent = document.getElementById('nav-current');
+        const pageTitle = document.getElementById('page-title');
+
         if (isListMode) {
             // 티어 리스트 모드
             if (navCurrent) navCurrent.textContent = currentTitleTexts.tierList;
@@ -522,29 +423,10 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
             if (pageTitle) pageTitle.textContent = currentTitleTexts.tierMaker;
         }
 
-        // 필터 제목 업데이트
-        const filterElementTitle = document.getElementById('filter-element-title');
-        const filterPositionTitle = document.getElementById('filter-position-title');
-        const filterRarityTitle = document.getElementById('filter-rarity-title');
-        const filterTagTitle = document.getElementById('filter-tag-title');
-
-        if (filterElementTitle) filterElementTitle.textContent = data.filter_element;
-        if (filterPositionTitle) filterPositionTitle.textContent = data.filter_position;
-        if (filterRarityTitle) filterRarityTitle.textContent = data.filter_rarity;
-        if (filterTagTitle) filterTagTitle.textContent = data.filter_tag;
-
-        // 도움말 메시지 업데이트
-        const helpMessage = document.getElementById('help-message');
-        if (helpMessage) helpMessage.textContent = data.help_message;
+        // 도움말 메시지 업데이트 (리스트 모드에서는 숨김)
         const helpText = document.querySelector('.help-text');
         if (helpText) {
             helpText.style.display = isListMode ? 'none' : 'block';
-        }
-
-        // 리추얼 모달 복사 버튼 라벨
-        const ritualCopyBtn = document.querySelector('.ritual-copy-button');
-        if (ritualCopyBtn && data.ritual_copy) {
-            ritualCopyBtn.textContent = data.ritual_copy;
         }
 
         // 티어 기준 섹션 표시/숨김 및 언어 업데이트
@@ -553,7 +435,7 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
             if (isListMode) {
                 // 티어 리스트 모드일 때 표시
                 tierCriteriaSection.style.display = 'block';
-                updateTierCriteriaLanguage(currentLang);
+                await updateTierCriteriaLanguage(currentLang);
             } else {
                 // 티어 메이커 모드일 때는 숨김
                 tierCriteriaSection.style.display = 'none';
@@ -583,44 +465,53 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
             }
         }
 
-        // 태그 필터 번역
-        await updateTagFilterTranslations(currentLang);
 
         if (typeof window.renderTierQa === 'function') {
             window.renderTierQa();
         }
     }
 
-    // 티어 기준 언어 업데이트 함수
-    function updateTierCriteriaLanguage(currentLang) {
-        // 제목 업데이트
-        const tierCriteriaTitle = document.getElementById('tier-criteria-title');
-        if (tierCriteriaTitle) {
-            if (currentLang === 'en') {
-                tierCriteriaTitle.textContent = 'Tier Criteria';
-            } else if (currentLang === 'jp') {
-                tierCriteriaTitle.textContent = 'ティア基準';
-            } else {
-                tierCriteriaTitle.textContent = '티어 기준';
+    // 티어 기준 언어 업데이트 함수 (i18n 전용)
+    async function updateTierCriteriaLanguage(currentLang) {
+        console.log('[Tier Criteria] Updating with lang:', currentLang);
+
+        // i18n이 로드될 때까지 대기
+        let retries = 0;
+        while (typeof window.t !== 'function' && retries < 50) {
+            await new Promise(resolve => setTimeout(resolve, 100));
+            retries++;
+        }
+
+        if (typeof window.t !== 'function') {
+            console.error('[Tier Criteria] i18n failed to load after 5 seconds');
+            return;
+        }
+
+        console.log('[Tier Criteria] i18n loaded successfully');
+
+        // Disclaimer 업데이트
+        const disclaimerText = document.getElementById('tier-disclaimer-text');
+        if (disclaimerText) {
+            const disclaimer = window.t('tierCriteriaDisclaimer');
+            if (disclaimer) {
+                disclaimerText.textContent = disclaimer;
             }
         }
 
-        // 언어별 텍스트 표시/숨김
-        const krText = document.querySelector('.tier-criteria-text.kr-text');
-        const enText = document.querySelector('.tier-criteria-text.en-text');
-        const jpText = document.querySelector('.tier-criteria-text.jp-text');
-
-        if (krText) krText.style.display = currentLang === 'kr' ? 'block' : 'none';
-        if (enText) enText.style.display = currentLang === 'en' ? 'block' : 'none';
-        if (jpText) jpText.style.display = currentLang === 'jp' ? 'block' : 'none';
-
-        // 상단 디스클레이머 언어 표시/숨김
-        const disclaimerKR = document.querySelector('#tier-disclaimer .kr-text');
-        const disclaimerEN = document.querySelector('#tier-disclaimer .en-text');
-        const disclaimerJP = document.querySelector('#tier-disclaimer .jp-text');
-        if (disclaimerKR) disclaimerKR.style.display = currentLang === 'kr' ? 'block' : 'none';
-        if (disclaimerEN) disclaimerEN.style.display = currentLang === 'en' ? 'block' : 'none';
-        if (disclaimerJP) disclaimerJP.style.display = currentLang === 'jp' ? 'block' : 'none';
+        // Tier Criteria List 업데이트
+        const criteriaList = document.getElementById('tier-criteria-list');
+        if (criteriaList) {
+            const items = window.t('tierCriteriaItems');
+            if (Array.isArray(items)) {
+                criteriaList.innerHTML = '';
+                items.forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = item;
+                    criteriaList.appendChild(li);
+                });
+                console.log('[Tier Criteria] Rendered', items.length, 'items');
+            }
+        }
     }
 
     // 티어 기준 토글 기능 초기화
@@ -645,60 +536,6 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
                 const isVisible = tierCriteriaContent.style.display !== 'none';
                 setTierCriteriaState(!isVisible);
             });
-        }
-    }
-
-    // 태그 필터 번역 함수
-    async function updateTagFilterTranslations(currentLang) {
-        if (currentLang === 'kr') return;
-
-        const tagTranslations = {
-            'en': {
-                'TECHNICAL': 'TECHNICAL',
-                '추가 효과': 'Additional Effect',
-                '지속 대미지': 'Damage over Time',
-                '방어력 감소': 'Defense Reduction',
-                '관통': 'Pierce Rate',
-                '효과 명중': 'Effect Accuracy',
-                '실드': 'Shield',
-                '화상': 'Burn',
-                '풍습': 'Windswept',
-                '감전': 'Shock',
-                '동결': 'Freeze'
-            },
-            'jp': {
-                'TECHNICAL': 'TECHNICAL',
-                '추가 효과': '追加効果',
-                '지속 대미지': '持続ダメージ',
-                '방어력 감소': '防御力減少',
-                '관통': '貫通',
-                '효과 명중': '状態異常命中',
-                '실드': 'シールド',
-                '화상': '火傷',
-                '풍습': '風習',
-                '감전': '感電',
-                '동결': '凍結'
-            }
-        };
-
-        const translations = tagTranslations[currentLang];
-        if (!translations) return;
-
-        // 태그 필터가 주석 처리되어 있으므로 특정 ID로 찾기
-        const tagFilterGroup = document.getElementById('filter-tag-title')?.closest('.filter-group');
-        if (tagFilterGroup) {
-            const tagOptions = tagFilterGroup.querySelectorAll('.filter-options label span');
-            tagOptions.forEach(span => {
-                const originalText = span.textContent;
-                if (translations[originalText]) {
-                    span.textContent = translations[originalText];
-                }
-            });
-
-            // 영어/일본어일 때 태그 필터 숨기기 (주석 처리되어 있으므로 실제로는 숨길 필요 없음)
-            if (currentLang === 'en' || currentLang === 'jp') {
-                tagFilterGroup.style.display = 'none';
-            }
         }
     }
 
@@ -921,12 +758,17 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
         }
 
         // 언어별 라벨
-        if (currentLang === 'en') {
-            label.textContent = 'Show Spoilers';
-        } else if (currentLang === 'jp') {
-            label.textContent = 'スポイラー表示';
+        if (typeof window.t === 'function') {
+            label.textContent = window.t('showSpoilers') || '스포일러 보기';
         } else {
-            label.textContent = '스포일러 보기';
+            // Fallback
+            if (currentLang === 'en') {
+                label.textContent = 'Show Spoilers';
+            } else if (currentLang === 'jp') {
+                label.textContent = 'スポイラー表示';
+            } else {
+                label.textContent = '스포일러 보기';
+            }
         }
 
         // 기본 상태: 체크 해제 (현재 페이지 세션에서만 유지)
@@ -981,8 +823,20 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
     document.addEventListener('DOMContentLoaded', async () => {
         //console.log('DOMContentLoaded event fired');
 
+        // i18n 초기화 (제일 먼저)
+        if (typeof initPageI18n === 'function') {
+            await initPageI18n('tier');
+        }
+
         // 기본 초기화 작업
-        Navigation.load('position-tier-maker');
+        // list=false 인 경우 tier-maker 로 로드
+        const urlParams = new URLSearchParams(window.location.search);
+        const isListMode = urlParams.get('list') !== 'false';
+        if (isListMode) {
+            Navigation.load('tier-list');
+        } else {
+            Navigation.load('tier-maker');
+        }
 
         // 티어 기준 토글 기능 초기화
         initTierCriteriaToggle();

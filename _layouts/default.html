@@ -209,6 +209,19 @@
 </head>
 
 <body>
+  <script>
+    // Critical: Apply nav state immediately to prevent layout shift
+    (function () {
+      try {
+        if (window.innerWidth > 1440) {
+          const navPinned = localStorage.getItem('navPinned');
+          if (navPinned === 'true') {
+            document.body.classList.add('nav-expanded');
+          }
+        }
+      } catch (e) { }
+    })();
+  </script>
   <!-- 네비게이션 컨테이너 -->
   <div class="container">
     <div id="nav-container"></div>

@@ -1,0 +1,964 @@
+{
+    "data": {
+        "advance_dialog": [
+            {
+                "good_answers": [
+                    [
+                        {
+                            "content": "너무 의도적으로 행동하지 않는 게 좋겠죠",
+                            "reward": 50
+                        },
+                        {
+                            "content": "너의 진심과 진지함이 감동적이야",
+                            "reward": 60
+                        },
+                        {
+                            "content": "너무 과하면 위화감이 들 거야",
+                            "reward": 40
+                        }
+                    ]
+                ],
+                "rank_up": {
+                    "from": 2,
+                    "to": 3
+                },
+                "unlock_cond": "친절 Lv.3"
+            },
+            {
+                "good_answers": [
+                    [
+                        {
+                            "content": "하지만 지금은 달라",
+                            "reward": 50
+                        },
+                        {
+                            "content": "지난 일은 쫓지 않아도 돼",
+                            "reward": 40
+                        },
+                        {
+                            "content": "변화가 있었기에 지금의 네가 있는 거야",
+                            "reward": 60
+                        }
+                    ]
+                ],
+                "rank_up": {
+                    "from": 4,
+                    "to": 5
+                },
+                "unlock_cond": "친절 Lv.5"
+            },
+            {
+                "good_answers": [
+                    [
+                        {
+                            "content": "나루루——!",
+                            "reward": 60
+                        },
+                        {
+                            "content": "완전 멋져!",
+                            "reward": 40
+                        },
+                        {
+                            "content": "손하트",
+                            "reward": 50
+                        }
+                    ]
+                ],
+                "rank_up": {
+                    "from": 6,
+                    "to": 7
+                },
+                "unlock_cond": "친절 Lv.6"
+            },
+            {
+                "good_answers": [
+                    [
+                        {
+                            "content": "그런 말 신경 쓸 필요 없어",
+                            "reward": 40
+                        },
+                        {
+                            "content": "너만의 방식대로 노력하면 돼",
+                            "reward": 50
+                        },
+                        {
+                            "content": "무슨 고민 있어?",
+                            "reward": 60
+                        }
+                    ],
+                    [
+                        {
+                            "content": "자~! 모두가 가장 좋아하는 나루루♪\n바로 나, 나시모토 나루미야!",
+                            "reward": 50
+                        }
+                    ]
+                ],
+                "rank_up": {
+                    "from": 8,
+                    "to": 9
+                },
+                "unlock_cond": "친절 Lv.8"
+            },
+            {
+                "good_answers": [
+                    [
+                        {
+                            "content": "꿈을 쫓기에 늦은 때란 없어",
+                            "reward": 40
+                        },
+                        {
+                            "content": "쏟은 노력은 진짜야",
+                            "reward": 50
+                        },
+                        {
+                            "content": "팬들을 봐봐",
+                            "reward": 60
+                        }
+                    ]
+                ],
+                "rank_up": {
+                    "from": 10,
+                    "to": 11
+                },
+                "unlock_cond": "친절 Lv.10"
+            },
+            {
+                "good_answers": [
+                    [
+                        {
+                            "content": "나루루처럼 노력할게",
+                            "reward": 50
+                        },
+                        {
+                            "content": "꿈이 이루어질 때까지 응원할게",
+                            "reward": 60
+                        },
+                        {
+                            "content": "팬으로서 널 응원할게",
+                            "reward": 40
+                        }
+                    ],
+                    [
+                        {
+                            "content": "냐옹2CLAW 선발 투표에서 1위를 차지해 센터가 될 기회를 얻었어……",
+                            "reward": 50
+                        }
+                    ]
+                ],
+                "rank_up": {
+                    "from": 12,
+                    "to": 13
+                },
+                "unlock_cond": "친절 Lv.11"
+            },
+            {
+                "good_answers": [
+                    [
+                        {
+                            "content": "자신의 마음을 따라야 해",
+                            "reward": 60
+                        },
+                        {
+                            "content": "어떤 길을 선택하든 응원할게",
+                            "reward": 50
+                        },
+                        {
+                            "content": "나루루는 어디서든 잘해낼 거야",
+                            "reward": 40
+                        }
+                    ]
+                ],
+                "rank_up": {
+                    "from": 14,
+                    "to": 15
+                },
+                "unlock_cond": "친절 Lv.13"
+            },
+            {
+                "good_answers": [
+                    [
+                        {
+                            "content": "후회하지 않겠어?",
+                            "reward": 40
+                        },
+                        {
+                            "content": "나루루답네",
+                            "reward": 50
+                        },
+                        {
+                            "content": "나루루의 행복이 곧 팬들의 행복이야",
+                            "reward": 60
+                        }
+                    ]
+                ],
+                "rank_up": {
+                    "from": 16,
+                    "to": 17
+                },
+                "unlock_cond": "친절 Lv.15"
+            },
+            {
+                "good_answers": [
+                    [
+                        {
+                            "content": "톱 아이돌이 되는 길은 정말 험난하구나",
+                            "reward": 60
+                        },
+                        {
+                            "content": "그녀가 너의 팬이 되면 좋겠네",
+                            "reward": 50
+                        },
+                        {
+                            "content": "모두가 다시 보게끔 노력하자",
+                            "reward": 40
+                        }
+                    ]
+                ],
+                "rank_up": {
+                    "from": 19,
+                    "to": 20
+                },
+                "unlock_cond": "친절 Lv.17"
+            }
+        ],
+        "can_romance": false,
+        "friend_lover_dialog": [],
+        "item": [
+            {
+                "bonus_synergy": 6,
+                "compound": [],
+                "image": "item-303079.png",
+                "name": "응원 형광봉",
+                "new_gift_synergy": 12,
+                "seed": [],
+                "shop": [
+                    {
+                        "discountPrice": 2280,
+                        "isHidden": 0,
+                        "mapName": "시부야",
+                        "maxBuy": 5,
+                        "moneyName": "현금",
+                        "price": 2400,
+                        "reducePriceCond": "도겐자카 루우나 LV.1",
+                        "resetType": "주간",
+                        "shopName": "할인 상점"
+                    },
+                    {
+                        "isHidden": 0,
+                        "mapName": null,
+                        "maxBuy": 1,
+                        "moneyName": "음악부 배지",
+                        "price": 100,
+                        "resetType": "주간",
+                        "shopName": "음악부 포인트 교환"
+                    }
+                ],
+                "source": [
+                    "shop"
+                ],
+                "synergy": 6
+            },
+            {
+                "bonus_synergy": 50,
+                "compound": [],
+                "image": "item-303083.png",
+                "name": "진주 귀걸이",
+                "new_gift_synergy": 100,
+                "seed": [],
+                "shop": [
+                    {
+                        "discountPrice": 27000,
+                        "isHidden": 0,
+                        "mapName": "신주쿠",
+                        "maxBuy": 1,
+                        "moneyName": "현금",
+                        "personalityLimit": "매력 LV.8",
+                        "price": 28000,
+                        "reducePriceCond": "도겐자카 루우나 LV.7",
+                        "resetType": "주간",
+                        "shopName": "보석 가게"
+                    },
+                    {
+                        "discountPrice": 27000,
+                        "isHidden": 0,
+                        "mapName": "기치조지",
+                        "maxBuy": 1,
+                        "moneyName": "현금",
+                        "price": 28000,
+                        "reducePriceCond": "도겐자카 루우나 LV.13",
+                        "resetType": "주간",
+                        "shopName": "에너지 스톤 전문점"
+                    }
+                ],
+                "source": [
+                    "shop"
+                ],
+                "synergy": 50
+            },
+            {
+                "bonus_synergy": 44,
+                "compound": [],
+                "image": "item-303204.png",
+                "name": "노이즈 캔슬링 헤드폰",
+                "new_gift_synergy": 88,
+                "seed": [],
+                "shop": [
+                    {
+                        "discountPrice": 22800,
+                        "isHidden": 0,
+                        "mapName": "아키하바라",
+                        "maxBuy": 1,
+                        "moneyName": "현금",
+                        "price": 23800,
+                        "reducePriceCond": "도겐자카 루우나 LV.5",
+                        "resetType": "주간",
+                        "shopName": "전자제품 매장"
+                    },
+                    {
+                        "isHidden": 1,
+                        "mapName": null,
+                        "maxBuy": -1,
+                        "moneyName": "게임 센터 교환권",
+                        "price": 4760,
+                        "resetType": "없음",
+                        "shopName": "AAAAAA=="
+                    }
+                ],
+                "source": [
+                    "shop"
+                ],
+                "synergy": 44
+            },
+            {
+                "bonus_synergy": 24,
+                "compound": [],
+                "image": "item-303246.png",
+                "name": "최신 미용 기구",
+                "new_gift_synergy": 48,
+                "seed": [],
+                "shop": [
+                    {
+                        "discountPrice": 9310,
+                        "isHidden": 0,
+                        "mapName": "시부야",
+                        "maxBuy": 1,
+                        "moneyName": "현금",
+                        "price": 9800,
+                        "reducePriceCond": "도겐자카 루우나 LV.1",
+                        "resetType": "주간",
+                        "shopName": "뷰티 살롱"
+                    }
+                ],
+                "source": [
+                    "shop"
+                ],
+                "synergy": 24
+            },
+            {
+                "bonus_synergy": 12,
+                "compound": [],
+                "image": "item-303268.png",
+                "name": "회전목마 오르골",
+                "new_gift_synergy": 24,
+                "seed": [],
+                "shop": [
+                    {
+                        "discountPrice": 4560,
+                        "isHidden": 0,
+                        "mapName": "기치조지",
+                        "maxBuy": 3,
+                        "moneyName": "현금",
+                        "price": 4800,
+                        "reducePriceCond": "도겐자카 루우나 LV.13",
+                        "resetType": "주간",
+                        "shopName": "문구점"
+                    }
+                ],
+                "source": [
+                    "shop"
+                ],
+                "synergy": 12
+            },
+            {
+                "bonus_synergy": 8,
+                "compound": [],
+                "image": "item-303282.png",
+                "name": "한정판 키링",
+                "new_gift_synergy": 16,
+                "seed": [],
+                "shop": [
+                    {
+                        "discountPrice": 2850,
+                        "isHidden": 0,
+                        "mapName": "기치조지",
+                        "maxBuy": 3,
+                        "moneyName": "현금",
+                        "price": 3000,
+                        "reducePriceCond": "도겐자카 루우나 LV.13",
+                        "resetType": "주간",
+                        "shopName": "에너지 스톤 전문점"
+                    },
+                    {
+                        "discountPrice": 2850,
+                        "isHidden": 0,
+                        "mapName": "아키하바라",
+                        "maxBuy": 3,
+                        "moneyName": "현금",
+                        "price": 3000,
+                        "reducePriceCond": "도겐자카 루우나 LV.5",
+                        "resetType": "주간",
+                        "shopName": "굿즈샵"
+                    }
+                ],
+                "source": [
+                    "shop"
+                ],
+                "synergy": 8
+            },
+            {
+                "bonus_synergy": 8,
+                "compound": [],
+                "image": "item-303283.png",
+                "name": "막과자 패키지",
+                "new_gift_synergy": 16,
+                "seed": [],
+                "shop": [
+                    {
+                        "discountPrice": 2850,
+                        "isHidden": 0,
+                        "mapName": "욘겐자야",
+                        "maxBuy": 3,
+                        "moneyName": "현금",
+                        "price": 3000,
+                        "reducePriceCond": "도겐자카 루우나 LV.9",
+                        "resetType": "주간",
+                        "shopName": "슈퍼마켓"
+                    }
+                ],
+                "source": [
+                    "shop"
+                ],
+                "synergy": 8
+            },
+            {
+                "bonus_synergy": 19,
+                "compound": [],
+                "image": "item-303284.png",
+                "name": "프리미엄 에센스 세트",
+                "new_gift_synergy": 38,
+                "seed": [],
+                "shop": [
+                    {
+                        "discountPrice": 7320,
+                        "isHidden": 0,
+                        "mapName": "시부야",
+                        "maxBuy": 2,
+                        "moneyName": "현금",
+                        "price": 7700,
+                        "reducePriceCond": "도겐자카 루우나 LV.1",
+                        "resetType": "주간",
+                        "shopName": "뷰티 살롱"
+                    }
+                ],
+                "source": [
+                    "shop"
+                ],
+                "synergy": 19
+            },
+            {
+                "bonus_synergy": 15,
+                "compound": [],
+                "image": "item-303285.png",
+                "name": "마롱 케이크",
+                "new_gift_synergy": 30,
+                "seed": [],
+                "shop": [
+                    {
+                        "discountPrice": 5700,
+                        "isHidden": 0,
+                        "mapName": "시부야",
+                        "maxBuy": 3,
+                        "moneyName": "현금",
+                        "price": 6000,
+                        "reducePriceCond": "도겐자카 루우나 LV.1",
+                        "resetType": "주간",
+                        "shopName": "프리미엄 마켓"
+                    }
+                ],
+                "source": [
+                    "shop"
+                ],
+                "synergy": 15
+            },
+            {
+                "bonus_synergy": 24,
+                "compound": [],
+                "image": "item-303286.png",
+                "name": "뮤직 스노글로브",
+                "new_gift_synergy": 48,
+                "seed": [],
+                "shop": [
+                    {
+                        "discountPrice": 9500,
+                        "isHidden": 0,
+                        "mapName": "기치조지",
+                        "maxBuy": 1,
+                        "moneyName": "현금",
+                        "price": 10000,
+                        "reducePriceCond": "도겐자카 루우나 LV.13",
+                        "resetType": "주간",
+                        "shopName": "문구점"
+                    }
+                ],
+                "source": [
+                    "shop"
+                ],
+                "synergy": 24
+            },
+            {
+                "bonus_synergy": 28,
+                "compound": [],
+                "image": "item-303287.png",
+                "name": "탁상용 아로마 기계",
+                "new_gift_synergy": 56,
+                "seed": [],
+                "shop": [
+                    {
+                        "discountPrice": 11400,
+                        "isHidden": 0,
+                        "mapName": "시부야",
+                        "maxBuy": 1,
+                        "moneyName": "현금",
+                        "price": 12000,
+                        "reducePriceCond": "도겐자카 루우나 LV.1",
+                        "resetType": "주간",
+                        "shopName": "뷰티 살롱"
+                    }
+                ],
+                "source": [
+                    "shop"
+                ],
+                "synergy": 28
+            },
+            {
+                "bonus_synergy": 18,
+                "compound": [],
+                "image": "item-303295.png",
+                "name": "고급 요가 매트",
+                "new_gift_synergy": 36,
+                "seed": [],
+                "shop": [
+                    {
+                        "discountPrice": 6650,
+                        "isHidden": 0,
+                        "mapName": "시부야",
+                        "maxBuy": 3,
+                        "moneyName": "현금",
+                        "price": 7000,
+                        "reducePriceCond": "도겐자카 루우나 LV.1",
+                        "resetType": "주간",
+                        "shopName": "프리미엄 마켓"
+                    }
+                ],
+                "source": [
+                    "shop"
+                ],
+                "synergy": 18
+            },
+            {
+                "bonus_synergy": 4,
+                "compound": [],
+                "image": "item-317017.png",
+                "name": "가정 수납 가이드",
+                "new_gift_synergy": 8,
+                "seed": [],
+                "shop": [
+                    {
+                        "discountPrice": 1600,
+                        "isHidden": 0,
+                        "mapName": "기치조지",
+                        "maxBuy": 5,
+                        "moneyName": "현금",
+                        "price": 1680,
+                        "reducePriceCond": "도겐자카 루우나 LV.13",
+                        "resetType": "주간",
+                        "shopName": "문구점"
+                    }
+                ],
+                "source": [
+                    "shop"
+                ],
+                "synergy": 4
+            },
+            {
+                "bonus_synergy": 22,
+                "compound": [],
+                "image": "item-317026.png",
+                "name": "최신형 보조배터리",
+                "new_gift_synergy": 44,
+                "seed": [],
+                "shop": [
+                    {
+                        "discountPrice": 8360,
+                        "isHidden": 0,
+                        "mapName": "아키하바라",
+                        "maxBuy": 2,
+                        "moneyName": "현금",
+                        "price": 8800,
+                        "reducePriceCond": "도겐자카 루우나 LV.5",
+                        "resetType": "주간",
+                        "shopName": "전자제품 매장"
+                    }
+                ],
+                "source": [
+                    "shop"
+                ],
+                "synergy": 22
+            },
+            {
+                "bonus_synergy": 3,
+                "compound": [],
+                "image": "item-317027.png",
+                "name": "러버덕 목욕 장난감",
+                "new_gift_synergy": 6,
+                "seed": [],
+                "shop": [
+                    {
+                        "discountPrice": 950,
+                        "isHidden": 0,
+                        "mapName": "아키하바라",
+                        "maxBuy": 3,
+                        "moneyName": "현금",
+                        "price": 1000,
+                        "reducePriceCond": "도겐자카 루우나 LV.5",
+                        "resetType": "주간",
+                        "shopName": "굿즈샵"
+                    }
+                ],
+                "source": [
+                    "shop"
+                ],
+                "synergy": 3
+            },
+            {
+                "bonus_synergy": 48,
+                "compound": [],
+                "image": "item-317028.png",
+                "name": "픽싱 파운데이션",
+                "new_gift_synergy": 96,
+                "seed": [],
+                "shop": [
+                    {
+                        "discountPrice": 25600,
+                        "isHidden": 0,
+                        "mapName": "시부야",
+                        "maxBuy": 1,
+                        "moneyName": "현금",
+                        "price": 26600,
+                        "reducePriceCond": "도겐자카 루우나 LV.1",
+                        "resetType": "주간",
+                        "shopName": "뷰티 살롱"
+                    }
+                ],
+                "source": [
+                    "shop"
+                ],
+                "synergy": 48
+            },
+            {
+                "bonus_synergy": 17,
+                "compound": [
+                    {
+                        "item": {
+                            "box": [],
+                            "compound": [],
+                            "content_bg": "색이 선명하고 꽃잎이 여러 층 겹쳐 마치 하늘하늘한 치맛자락 같다. 한여름에 만개하며, 정원과 길가에서 흔히 볼 수 있는 장식이다.",
+                            "icon": "item-306218.png",
+                            "name": "봉선화",
+                            "seed": [],
+                            "shop": [
+                                {
+                                    "discountPrice": 1140,
+                                    "isHidden": 0,
+                                    "mapName": "시부야",
+                                    "maxBuy": 3,
+                                    "moneyName": "현금",
+                                    "price": 1200,
+                                    "reducePriceCond": "도겐자카 루우나 LV.1",
+                                    "resetType": "주간",
+                                    "shopName": "꽃집"
+                                }
+                            ],
+                            "source": [
+                                "shop"
+                            ],
+                            "tips": "『봉선화』, 부드러운 향기가 나는 화초. 작업대를 이용하여 『봉선화 염색 손수건』으로 제작해 협력자에게 선물할 수 있다.",
+                            "type": "화초"
+                        },
+                        "itemCount": 6
+                    },
+                    {
+                        "item": {
+                            "box": [],
+                            "compound": [],
+                            "content_bg": "흰색 면으로 만든 정사각형 원단으로, 가볍고 부드럽다. 간단한 염색 가공이 가능하다.",
+                            "icon": "item-305969.png",
+                            "name": "흰색 손수건",
+                            "seed": [],
+                            "shop": [
+                                {
+                                    "discountPrice": 380,
+                                    "isHidden": 0,
+                                    "mapName": "시부야",
+                                    "maxBuy": 10,
+                                    "moneyName": "현금",
+                                    "price": 400,
+                                    "reducePriceCond": "도겐자카 루우나 LV.1",
+                                    "resetType": "주간",
+                                    "shopName": "프리미엄 마켓"
+                                }
+                            ],
+                            "source": [
+                                "shop"
+                            ],
+                            "tips": "일반적인 제작 재료.\n작업대에서 협력자 선물 『봉선화 염색 손수건』을 제작할 수 있다.",
+                            "type": "재료"
+                        },
+                        "itemCount": 1
+                    }
+                ],
+                "image": "item-305951.png",
+                "name": "봉선화 염색 손수건",
+                "new_gift_synergy": 0,
+                "seed": [],
+                "shop": [],
+                "source": [
+                    "compound"
+                ],
+                "synergy": 17
+            },
+            {
+                "bonus_synergy": 49,
+                "compound": [],
+                "image": "item-303298.png",
+                "name": "마음의 초콜릿",
+                "new_gift_synergy": 0,
+                "seed": [],
+                "shop": [],
+                "source": [],
+                "synergy": 50
+            },
+            {
+                "bonus_synergy": 1000,
+                "compound": [
+                    {
+                        "item": {
+                            "box": [],
+                            "compound": [],
+                            "content_bg": "활짝 핀 붉은 장미. 꽃말은 뜨거운 감정과 진실한 마음이다. 밸런타인데이 기간에 인기가 좋다.",
+                            "icon": "item-305965.png",
+                            "name": "붉은 장미",
+                            "seed": [],
+                            "shop": [],
+                            "source": [],
+                            "tips": "밸런타인데이 한정 패키지에서 획득하며, 작업대에서 협력자 선물인 『영원한 사랑』을 제작할 수 있다. 꽃다발을 협력자에게 선물하면 친밀도가 크게 증가한다.",
+                            "type": "재료"
+                        },
+                        "itemCount": 999
+                    },
+                    {
+                        "item": {
+                            "box": [],
+                            "compound": [],
+                            "content_bg": "화려한 스타일의 포장지. 귀한 선물에 적합하다.",
+                            "icon": "item-305932.png",
+                            "name": "화려한 포장",
+                            "seed": [],
+                            "shop": [
+                                {
+                                    "discountPrice": 480,
+                                    "isHidden": 0,
+                                    "mapName": "시부야",
+                                    "maxBuy": 10,
+                                    "moneyName": "현금",
+                                    "price": 500,
+                                    "reducePriceCond": "도겐자카 루우나 LV.1",
+                                    "resetType": "일간",
+                                    "shopName": "꽃집"
+                                }
+                            ],
+                            "source": [
+                                "shop"
+                            ],
+                            "tips": "일반적인 제작 재료.\n작업대에서 협력자 선물인 『동백차』·『금목서차』·『프리저브드 백합』·『빌리트』·『민속 시』·『영원한 사랑』을 제작할 수 있다.",
+                            "type": "재료"
+                        },
+                        "itemCount": 1
+                    }
+                ],
+                "image": "item-305966.png",
+                "name": "영원한 사랑",
+                "new_gift_synergy": 0,
+                "seed": [],
+                "shop": [],
+                "source": [
+                    "compound"
+                ],
+                "synergy": 999
+            }
+        ],
+        "name": "나시모토 나루미",
+        "romance_dialog": [
+            {
+                "good_answers": [
+                    [
+                        {
+                            "content": "왜 그래?",
+                            "reward": 40
+                        },
+                        {
+                            "content": "이상해……",
+                            "reward": 40
+                        }
+                    ],
+                    [
+                        {
+                            "content": "뭐 좀 마실래?",
+                            "reward": 40
+                        },
+                        {
+                            "content": "뭐 좀 먹을래?",
+                            "reward": 40
+                        }
+                    ],
+                    [
+                        {
+                            "content": "일단 진정해",
+                            "reward": 60
+                        },
+                        {
+                            "content": "어쨌든 긴장 좀 풀어",
+                            "reward": 50
+                        }
+                    ]
+                ]
+            }
+        ],
+        "special_award": [
+            {
+                "description": "캡슐 토이 회수 시 획득 가능한 아이템 수량 증가",
+                "icon": "xielizhe-icon-libenchengliuhai-01.png",
+                "name": "캡슐 토이 스카우트!",
+                "rank": 1
+            },
+            {
+                "description": "나시모토 테마의 전용 캡슐 토이 1세트 해제",
+                "icon": "xielizhe-icon-libenchengliuhai-02.png",
+                "name": "전용 서비스",
+                "rank": 5
+            },
+            {
+                "description": "새로운 캡슐 토이 전시관 벽지 1장 획득",
+                "icon": "xielizhe-icon-libenchengliuhai-03.png",
+                "name": "작은 무대",
+                "rank": 9
+            },
+            {
+                "description": "더 좋은 캡슐 토이 전시관 벽지 1장 획득",
+                "icon": "xielizhe-icon-libenchengliuhai-03.png",
+                "name": "새로운 무대",
+                "rank": 13
+            },
+            {
+                "description": "집의 진열장에 전시 가능한 슬롯 8개 추가",
+                "icon": "xielizhe-icon-libenchengliuhai-04.png",
+                "name": "비밀 공간",
+                "rank": 17
+            }
+        ],
+        "time": "저녁",
+        "unlock_quest": {
+            "details": "아키하바라에서의 짧은 여행이 끝났다. 잊지 못할 추억이 될 것이다.",
+            "name": "아키하바라 여행"
+        },
+        "visit_dialog": [
+            {
+                "destination": "츠키시마",
+                "good_answers": [
+                    [
+                        {
+                            "content": "정말 여동생을 생각하는구나",
+                            "reward": 60
+                        },
+                        {
+                            "content": "몬자야키에 그런 깊은 뜻이 있었구나",
+                            "reward": 50
+                        }
+                    ]
+                ]
+            },
+            {
+                "destination": "시부야",
+                "good_answers": [
+                    [
+                        {
+                            "content": "히어로 영화",
+                            "reward": 50
+                        },
+                        {
+                            "content": "공포 영화",
+                            "reward": 60
+                        }
+                    ]
+                ]
+            },
+            {
+                "destination": "스이도바시",
+                "good_answers": [
+                    [
+                        {
+                            "content": "안 놀면 손해지",
+                            "reward": 50
+                        },
+                        {
+                            "content": "놀아야 배울 수 있지",
+                            "reward": 60
+                        }
+                    ]
+                ]
+            },
+            {
+                "destination": "칸다",
+                "good_answers": [
+                    [
+                        {
+                            "content": "다 같은 동업자니까",
+                            "reward": 60
+                        },
+                        {
+                            "content": "도전할 만한 가치가 있어 보여",
+                            "reward": 50
+                        }
+                    ]
+                ]
+            },
+            {
+                "destination": "기치조지",
+                "good_answers": [
+                    [
+                        {
+                            "content": "기준은 다르지만, 좋은 음악은 좋은 음악이야",
+                            "reward": 50
+                        },
+                        {
+                            "content": "어떤 음악이든 사람의 마음을 움직일 수 있어",
+                            "reward": 60
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    "msg": "OK",
+    "status": 0
+}

@@ -210,12 +210,14 @@
 
 <body>
   <script>
-    // Critical: Apply nav state immediately to prevent layout shift
+    // Apply nav state immediately to prevent layout shift
     (function () {
       try {
         if (window.innerWidth > 1440) {
           const navPinned = localStorage.getItem('navPinned');
-          if (navPinned === 'true') {
+          // Default to true (expanded) if null or explicitly 'true'
+          // Only if explicitly 'false' do we not expand
+          if (navPinned !== 'false') {
             document.body.classList.add('nav-expanded');
           }
         }

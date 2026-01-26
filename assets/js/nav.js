@@ -432,7 +432,8 @@ class Navigation {
         // Restore nav pinned state from localStorage (PC only)
         if (window.innerWidth > 1440) {
             const navPinned = localStorage.getItem('navPinned');
-            if (navPinned === 'true') {
+            // Default to true (expanded) if null or explicitly 'true'
+            if (navPinned !== 'false') {
                 document.querySelector('.main-nav')?.classList.add('nav-pinned');
                 document.body.classList.add('nav-expanded');
             }

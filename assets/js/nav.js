@@ -2,7 +2,7 @@ class Navigation {
     static async load(activePage) {
         // 현재 언어 감지
         const currentLang = this.getCurrentLanguage();
-        
+
         // 모바일 헤더 추가
         const mobileHeader = document.createElement('div');
         mobileHeader.className = 'mobile-header';
@@ -48,12 +48,12 @@ class Navigation {
                 defenseCalc: '방어력 계산기',
                 criticalCalc: '크리티컬 계산기',
                 maps: '지도',
-                pullTracker: '계약 트래커',
+                pullTracker: '계약',
                 pullTracker_individual: '개인 통계',
                 pullTracker_global: '전체 통계',
                 schedule: '스케줄',
                 scheduleRelease: '출시 일정',
-                pullPlanner: '뽑기 플래너',
+                pullPlanner: '계약 플래너',
                 article: '가이드',
                 gallery: '갤러리',
                 about: 'about'
@@ -78,7 +78,7 @@ class Navigation {
                 payCalc: 'Payment Calculator',
                 defenseCalc: 'Defense Reduction',
                 criticalCalc: 'Critical Rate',
-                pullTracker: 'Pull Tracker',
+                pullTracker: 'Pull',
                 pullTracker_individual: 'Individual Stats',
                 pullTracker_global: 'Global Stats',
                 schedule: 'Schedule',
@@ -108,7 +108,7 @@ class Navigation {
                 payCalc: '課金',
                 defenseCalc: '防御力減少',
                 criticalCalc: 'クリティカル',
-                pullTracker: 'ガチャ履歴',
+                pullTracker: 'ガチャ',
                 pullTracker_individual: '個人統計',
                 pullTracker_global: '全体統計',
                 schedule: 'スケジュール',
@@ -144,8 +144,8 @@ class Navigation {
         // 언어별 표시할 메뉴 정의 (한국어는 모든 메뉴, 영어/일본어는 제한된 메뉴)
         const availableMenus = {
             kr: ['character', 'persona', 'revelations', 'synergy', 'wonderweapon', 'maps', 'calculator', 'tactic', 'article', 'pullTracker', 'tier', 'gallery', 'about'],
-            en: ['character', 'persona', 'revelations', 'synergy', 'wonderweapon', 'maps', 'calculator', 'tactic', 'article', 'pullTracker', 'tier', 'schedule', 'gallery', 'about'],
-            jp: ['character', 'persona', 'revelations', 'synergy', 'wonderweapon', 'maps', 'calculator', 'tactic', 'article', 'pullTracker', 'tier', 'schedule', 'gallery', 'about'],
+            en: ['character', 'persona', 'revelations', 'synergy', 'wonderweapon', 'maps', 'calculator', 'tactic', 'article', 'pullTracker', 'tier', 'gallery', 'about'],
+            jp: ['character', 'persona', 'revelations', 'synergy', 'wonderweapon', 'maps', 'calculator', 'tactic', 'article', 'pullTracker', 'tier', 'gallery', 'about'],
             cn: ['character', 'article', 'about']
         };
 
@@ -206,6 +206,14 @@ class Navigation {
                         <span data-text="${texts.pullTracker}">${texts.pullTracker}</span>
                     </div>
                     <div class="submenu">
+                        ${currentLang !== 'kr' ? `
+                        <a href="${BASE_URL}/schedule/?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="schedule-release">
+                            <span data-text="${texts.scheduleRelease}">◈　${texts.scheduleRelease}</span>
+                        </a>
+                        <a href="${BASE_URL}/pull-calc/?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="pull-calc">
+                            <span data-text="${texts.pullPlanner}">◈　${texts.pullPlanner}</span>
+                        </a>
+                        ` : ''}
                         <a href="${BASE_URL}/pull-tracker?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="pullTracker_individual">
                             <span data-text="${texts.pullTracker_individual}">◈　${texts.pullTracker_individual}</span>
                         </a>
@@ -283,22 +291,7 @@ class Navigation {
                     </div>
                 </div>
                 ` : ''}
-                ${currentMenus.includes('schedule') ? `
-                <div class="nav-item has-submenu" data-nav="schedule">
-                    <div class="nav-main-item">
-                        <img src="${BASE_URL}/assets/img/nav/schedule.png" alt="schedule" style="width: 32px; height: 32px; object-fit: contain;" />
-                        <span data-text="${texts.schedule}">${texts.schedule}</span>
-                    </div>
-                    <div class="submenu">
-                        <a href="${BASE_URL}/schedule/?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="schedule-release">
-                            <span data-text="${texts.scheduleRelease}">◈　${texts.scheduleRelease}</span>
-                        </a>
-                        <a href="${BASE_URL}/pull-calc/?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="pull-calc">
-                            <span data-text="${texts.pullPlanner}">◈　${texts.pullPlanner}</span>
-                        </a>
-                    </div>
-                </div>
-                ` : ''}
+
                 ${currentMenus.includes('gallery') ? `
                     <a href="${BASE_URL}/gallery/?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="gallery">
                         <img src="${BASE_URL}/assets/img/nav/gallery.png" alt="gallery" style="width: 32px; height: 32px; object-fit: contain;" />
@@ -326,7 +319,7 @@ class Navigation {
                                 <img src="${BASE_URL}/assets/img/flags/kr.png" alt="kr" class="flag-icon">
                                 <span>한국어</span>
                             </div>
-                            
+
                             <div class="option ${currentLang === 'en' ? 'selected' : ''}" data-value="en" role="button" tabindex="0" onclick="return false;">
                                 <img src="${BASE_URL}/assets/img/flags/en.png" alt="en" class="flag-icon">
                                 <span>English</span>
@@ -335,7 +328,7 @@ class Navigation {
                                 <img src="${BASE_URL}/assets/img/flags/jp.png" alt="jp" class="flag-icon">
                                 <span>日本語</span>
                             </div>
-                            <!-- 
+                            <!--
                             <div class="option ${currentLang === 'cn' ? 'selected' : ''} disabled" data-value="cn" role="button" tabindex="0" onclick="return false;">
                                 <img src="${BASE_URL}/assets/img/flags/cn.png" alt="cn" class="flag-icon">
                                 <span>中文 (Not Yet)</span>
@@ -343,15 +336,27 @@ class Navigation {
                             -->
                         </div>
                     </div>
+                    <!-- PC nav toggle icon -->
+                    <div class="nav-toggle-separator"></div>
+                    <button class="nav-toggle-btn" aria-label="Toggle navigation"> 
+                    <div class="nav-toggle-icon-wrapper" aria-label="Toggle navigation">
+                        <svg class="nav-toggle-icon open" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18 3a3 3 0 0 1 2.995 2.824l.005 .176v12a3 3 0 0 1 -2.824 2.995l-.176 .005h-12a3 3 0 0 1 -2.995 -2.824l-.005 -.176v-12a3 3 0 0 1 2.824 -2.995l.176 -.005h12zm0 2h-9v14h9a1 1 0 0 0 .993 -.883l.007 -.117v-12a1 1 0 0 0 -.883 -.993l-.117 -.007zm-4.387 4.21l.094 .083l2 2a1 1 0 0 1 .083 1.32l-.083 .094l-2 2a1 1 0 0 1 -1.497 -1.32l.083 -.094l1.292 -1.293l-1.292 -1.293a1 1 0 0 1 -.083 -1.32l.083 -.094a1 1 0 0 1 1.32 -.083z" />
+                        </svg>
+                        <svg class="nav-toggle-icon close" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18 3a3 3 0 0 1 2.995 2.824l.005 .176v12a3 3 0 0 1 -2.824 2.995l-.176 .005h-12a3 3 0 0 1 -2.995 -2.824l-.005 -.176v-12a3 3 0 0 1 2.824 -2.995l.176 -.005h12zm0 2h-9v14h9a1 1 0 0 0 .993 -.883l.007 -.117v-12a1 1 0 0 0 -.883 -.993l-.117 -.007zm-2.293 4.293a1 1 0 0 1 .083 1.32l-.083 .094l-1.292 1.293l1.292 1.293a1 1 0 0 1 .083 1.32l-.083 .094a1 1 0 0 1 -1.32 .083l-.094 -.083l-2 -2a1 1 0 0 1 -.083 -1.32l.083 -.094l2 -2a1 1 0 0 1 1.414 0z" />
+                        </svg>
+                    </div>
+                </button>
                 </div>
             </nav>
         `;
 
         document.querySelector('#nav-container').innerHTML = navTemplate;
-        
+
         // 먼저 sword animation 초기화
         this.initSwordAnimation();
-        
+
         // 그 다음 이벤트 리스너 등록
         if (!document.querySelector('.logo-container').hasAttribute('data-event-bound')) {
             // 로고 클릭 이벤트 처리
@@ -383,28 +388,61 @@ class Navigation {
         // 언어 선택 옵션 이벤트 처리
         document.querySelectorAll('.language-selector-container .option').forEach(option => {
             if (!option.hasAttribute('data-event-bound')) {
-                option.addEventListener('click', function(e) {
+                option.addEventListener('click', function (e) {
                     e.preventDefault();
                     e.stopPropagation();
                     e.stopImmediatePropagation();
-                    
+
                     // 비활성화된 언어는 선택 불가능하게 처리
                     if (this.classList.contains('disabled')) {
                         return;
                     }
-                    
+
                     const lang = this.getAttribute('data-value');
                     Navigation.selectLanguage(lang, e);
                 });
                 option.setAttribute('data-event-bound', 'true');
             }
         });
-        
+
+        // PC nav toggle button event handler
+        const navToggleBtn = document.querySelector('.nav-toggle-btn');
+        if (navToggleBtn && !navToggleBtn.hasAttribute('data-event-bound')) {
+            navToggleBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const mainNav = document.querySelector('.main-nav');
+                const body = document.body;
+
+                if (mainNav.classList.contains('nav-pinned')) {
+                    // Close: remove pinned state
+                    mainNav.classList.remove('nav-pinned');
+                    body.classList.remove('nav-expanded');
+                    localStorage.setItem('navPinned', 'false');
+                } else {
+                    // Open: add pinned state
+                    mainNav.classList.add('nav-pinned');
+                    body.classList.add('nav-expanded');
+                    localStorage.setItem('navPinned', 'true');
+                }
+            });
+            navToggleBtn.setAttribute('data-event-bound', 'true');
+        }
+
+        // Restore nav pinned state from localStorage (PC only)
+        if (window.innerWidth > 1440) {
+            const navPinned = localStorage.getItem('navPinned');
+            if (navPinned === 'true') {
+                document.querySelector('.main-nav')?.classList.add('nav-pinned');
+                document.body.classList.add('nav-expanded');
+            }
+        }
+
         if (activePage) {
             const activeItem = document.querySelector(`[data-nav="${activePage}"]`);
             if (activeItem) {
                 activeItem.classList.add('active');
-                
+
                 // 서브메뉴 아이템인 경우
                 if (activeItem.classList.contains('nav-sub-item')) {
                     // 부모 메뉴 활성화
@@ -420,7 +458,7 @@ class Navigation {
                 const tacticMenu = document.querySelector('[data-nav="tactic"]');
                 if (tacticMenu) {
                     tacticMenu.classList.add('active');
-                    
+
                     // 현재 활성화된 서브메뉴 아이템 찾기
                     let activeSubItem;
                     if (activePage === 'tactic' || activePage === 'tactic-maker') {
@@ -430,7 +468,7 @@ class Navigation {
                     } else if (activePage === 'tactics') {
                         activeSubItem = document.querySelector('[data-nav="tactics"]');
                     }
-                    
+
                     if (activeSubItem) {
                         // 다른 서브메뉴 아이템의 active 클래스 제거
                         document.querySelectorAll('.nav-sub-item').forEach(item => {
@@ -447,10 +485,10 @@ class Navigation {
                 const calculatorMenu = document.querySelector('[data-nav="calculator"]');
                 if (calculatorMenu) {
                     calculatorMenu.classList.add('active');
-                    
+
                     // 현재 활성화된 서브메뉴 아이템 찾기
                     let activeSubItem = document.querySelector(`[data-nav="${activePage}"]`);
-                    
+
                     if (activeSubItem) {
                         // 다른 서브메뉴 아이템의 active 클래스 제거
                         document.querySelectorAll('.nav-sub-item').forEach(item => {
@@ -467,7 +505,7 @@ class Navigation {
                 const scheduleMenu = document.querySelector('[data-nav="schedule"]');
                 if (scheduleMenu) {
                     scheduleMenu.classList.add('active');
-                    
+
                     // 현재 활성화된 서브메뉴 아이템 찾기
                     let activeSubItem;
                     if (activePage === 'schedule' || activePage === 'schedule-release') {
@@ -475,7 +513,7 @@ class Navigation {
                     } else if (activePage === 'pull-calc') {
                         activeSubItem = document.querySelector('[data-nav="pull-calc"]');
                     }
-                    
+
                     if (activeSubItem) {
                         // 다른 서브메뉴 아이템의 active 클래스 제거
                         document.querySelectorAll('.nav-sub-item').forEach(item => {
@@ -487,7 +525,7 @@ class Navigation {
                 }
             }
         }
-        
+
         // 스크롤 이벤트 처리
         let lastScroll = 0;
         // 모바일 바디 스크롤 잠금용 저장 변수
@@ -497,7 +535,7 @@ class Navigation {
             if (window.innerWidth <= 1440) {  // 1440px under
                 const currentScroll = window.pageYOffset;
                 const header = document.querySelector('.mobile-header');
-                
+
                 if (currentScroll > lastScroll && currentScroll > 60) {
                     header.classList.add('hide');
                 } else {
@@ -511,9 +549,9 @@ class Navigation {
         hamburgerBtn.addEventListener('click', () => {
             const nav = document.querySelector('.main-nav');
             const header = document.querySelector('.mobile-header');
-            
+
             const willOpen = !hamburgerBtn.classList.contains('active');
-            
+
             hamburgerBtn.classList.toggle('active');
             nav.classList.toggle('active');
             header.classList.toggle('active');
@@ -572,18 +610,18 @@ class Navigation {
 
         // 메인 메뉴 클릭 이벤트 처리
         document.querySelectorAll('.has-submenu .nav-main-item').forEach(item => {
-            item.addEventListener('click', function(e) {
+            item.addEventListener('click', function (e) {
                 e.preventDefault();
                 e.stopPropagation();
                 const submenu = this.closest('.has-submenu');
                 submenu.classList.toggle('active');
             });
         });
-        
+
         // Footer 번역 적용
         this.updateFooterTranslation();
     }
-    
+
     // 현재 언어 감지 함수
     static getCurrentLanguage() {
         // URL 파라미터에서 언어 확인
@@ -598,28 +636,28 @@ class Navigation {
         if (['kr', 'en', 'jp', 'cn'].includes(pathLang)) {
             return pathLang;
         }
-        
+
         // 로컬 스토리지에서 언어 확인
         const savedLang = localStorage.getItem('preferredLanguage');
         if (savedLang && ['kr', 'en', 'jp', 'cn'].includes(savedLang)) {
             return savedLang;
         }
-        
+
         // 브라우저 언어 감지
         const browserLang = navigator.language.toLowerCase();
         if (browserLang.startsWith('ko')) return 'kr';
         if (browserLang.startsWith('ja')) return 'jp';
         if (browserLang.startsWith('zh')) return 'cn';
         if (browserLang.startsWith('en')) return 'en';
-        
+
         return 'kr'; // 기본값
     }
-    
+
     // sleep 함수 추가
     static sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
-    
+
     // 언어 선택 함수
     static async selectLanguage(lang, event) {
         // 이벤트 전파 중단
@@ -634,56 +672,56 @@ class Navigation {
         if (optionsContainer) {
             optionsContainer.classList.remove('active');
         }
-        
+
         // 선호 언어 저장
         localStorage.setItem('preferredLanguage', lang);
-        
+
         // 현재 URL 구성
         const currentPath = window.location.pathname;
         const currentSearch = window.location.search;
-        
+
         // URL 파라미터 구성
         const params = new URLSearchParams(currentSearch);
         params.set('lang', lang);
-        
+
         // 경로 정리 (기존 언어 디렉토리 제거)
         let cleanPath = currentPath;
         const pathSegments = currentPath.split('/').filter(Boolean);
-        
+
         // 첫 번째 세그먼트가 언어 코드인 경우 제거
         if (pathSegments.length > 0 && ['kr', 'en', 'jp', 'cn'].includes(pathSegments[0])) {
             pathSegments.shift();
             cleanPath = '/' + pathSegments.join('/');
         }
-        
+
         // 빈 경로면 루트로
         if (cleanPath === '/' || cleanPath === '') {
             cleanPath = '/';
         }
-        
+
         // 새 URL 생성
         const newUrl = cleanPath + '?' + params.toString();
-        
+
         // 페이지 이동 
         window.location.href = newUrl;
     }
-    
+
     static initSwordAnimation() {
         const isPc = () => window.innerWidth > 1440;  // PC 1440px
-        
+
         // sword animation 생성 함수
         const createSwordAnimation = (element, href) => {
             const sword = document.createElement('div');
             sword.className = 'sword-animation';
-            
+
             const rect = element.getBoundingClientRect();
             const navRect = document.querySelector('.main-nav').getBoundingClientRect();
-            
+
             sword.style.top = `${rect.top + (rect.height - 32) / 2}px`;
             sword.style.left = `${navRect.left + navRect.width - 48}px`;
-            
+
             document.body.appendChild(sword);
-            
+
             setTimeout(() => {
                 window.location.href = href;
             }, 300);
@@ -693,13 +731,13 @@ class Navigation {
         document.querySelectorAll('.nav-link').forEach(item => {
             // 언어 선택 옵션이 아닌 경우에만 이벤트 처리
             if (!item.closest('.language-selector-container')) {
-                item.addEventListener('click', function(e) {
+                item.addEventListener('click', function (e) {
                     if (!this.classList.contains('active')) {
                         e.preventDefault();
                         e.stopPropagation();
                         e.stopImmediatePropagation();
                         const href = this.getAttribute('href');
-                        
+
                         if (isPc()) {
                             createSwordAnimation(this, href);
                         } else {
@@ -714,13 +752,13 @@ class Navigation {
         document.querySelectorAll('.nav-sub-item').forEach(item => {
             // 언어 선택 옵션이 아닌 경우에만 이벤트 처리
             if (!item.closest('.language-selector-container')) {
-                item.addEventListener('click', function(e) {
+                item.addEventListener('click', function (e) {
                     e.preventDefault();
                     e.stopPropagation();
                     e.stopImmediatePropagation();
-                    
+
                     const href = this.getAttribute('href');
-                    
+
                     if (isPc()) {
                         createSwordAnimation(this, href);
                     } else {
@@ -730,11 +768,11 @@ class Navigation {
             }
         });
     }
-    
+
     // Footer 번역 함수
     static updateFooterTranslation() {
         const currentLang = Navigation.getCurrentLanguage();
-        
+
         const footerTranslations = {
             kr: {
                 disclaimer: "※ 루페르넷은 개인이 만든 비공식 페르소나5X 정보 제공 사이트로 게임의 콘텐츠와 소재의 트레이드마크와 저작권은 SEGA·ATLUS·Perfect World Games에 있습니다.",
@@ -750,14 +788,14 @@ class Navigation {
                 contact: `✉️ contact : superphil722@gmail.com　💬 <a href="https://discord.gg/8S8pnv2MsH" target="_blank" class="discord-link">Discord</a>　@AbsolRoot　<a href="/about/" target="_blank" class="discord-link">Support</a>　`
             }
         };
-        
+
         const translation = footerTranslations[currentLang];
         if (!translation) return;
-        
+
         // Footer 요소들 업데이트
         const disclaimerElement = document.getElementById('footer-disclaimer');
         const contactElement = document.getElementById('footer-contact');
-        
+
         if (disclaimerElement) {
             disclaimerElement.innerHTML = translation.disclaimer;
         }

@@ -17,7 +17,12 @@ window.scheduleTranslations_kr = {
     firstAnniversary: "1주년",
     oneHalfAnniversary: "1.5주년",
     secondAnniversary: "2주년",
-    twoHalfAnniversary: "2.5주년"
+    twoHalfAnniversary: "2.5주년",
+    filterAll: "전체",
+    filterReleased: "출시됨",
+    filterCurrent: "현재",
+    filterUpcoming: "예정",
+    filterFuture: "미래"
 };
 
 export default window.scheduleTranslations_kr;

@@ -17,7 +17,12 @@ window.scheduleTranslations_jp = {
     firstAnniversary: "1周年",
     oneHalfAnniversary: "1.5周年",
     secondAnniversary: "2周年",
-    twoHalfAnniversary: "2.5周年"
+    twoHalfAnniversary: "2.5周年",
+    filterAll: "すべて",
+    filterReleased: "リリース済み",
+    filterCurrent: "現在",
+    filterUpcoming: "近日",
+    filterFuture: "予定"
 };
 
 export default window.scheduleTranslations_jp;

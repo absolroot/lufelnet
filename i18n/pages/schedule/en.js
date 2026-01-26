@@ -17,7 +17,12 @@ window.scheduleTranslations_en = {
     firstAnniversary: "1st Anniversary",
     oneHalfAnniversary: "1.5 Anniversary",
     secondAnniversary: "2nd Anniversary",
-    twoHalfAnniversary: "2.5 Anniversary"
+    twoHalfAnniversary: "2.5 Anniversary",
+    filterAll: "All",
+    filterReleased: "Released",
+    filterCurrent: "Current",
+    filterUpcoming: "Upcoming",
+    filterFuture: "Future"
 };
 
 export default window.scheduleTranslations_en;

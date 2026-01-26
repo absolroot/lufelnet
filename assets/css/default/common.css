@@ -122,8 +122,8 @@ body {
 
 /* 메인 컨텐츠 영역 */
 .main-wrapper {
-    left: 120px;
-    width: calc(100% - 240px);
+    left: 40px;
+    width: calc(100% - 160px);
     position: relative;
     margin-left: auto;
     margin-right: auto;
@@ -131,11 +131,21 @@ body {
     flex: 1;
     padding: 32px;
     max-width: 1200px;
+    transition: left 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* PC: 네비게이션 고정 확장 시 */
+@media screen and (min-width: 1441px) {
+    body.nav-expanded .main-wrapper {
+        left: 120px;
+        width: calc(100% - 240px);
+    }
 }
 
 @media screen and (max-width: 1440px) {
     .main-wrapper {
         left: 0;
+        transition: none;
     }
 }
 

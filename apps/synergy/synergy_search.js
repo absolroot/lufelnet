@@ -1,6 +1,6 @@
 // Synergy Search and Filter Functions
 
-(function() {
+(function () {
     'use strict';
 
     const BASE_URL = (typeof window !== 'undefined' && window.BASE_URL) ? window.BASE_URL : '';
@@ -28,7 +28,7 @@
                 if (htmlLang.startsWith('en')) return 'en';
                 if (htmlLang.startsWith('ja') || htmlLang.startsWith('jp')) return 'jp';
             }
-        } catch (e) {}
+        } catch (e) { }
         return 'kr';
     }
 
@@ -45,14 +45,14 @@
         // inactive가 true인 경우 필터링 (탭에 표시하지 않음)
         if (char.inactive === true) return false;
         if (currentTimeFilter === 'all') return true;
-        
+
         // characterTime이 제공된 경우 우선 사용 (캐릭터 JSON 파일의 time)
         // 없으면 friend_num.json의 time/appear로 폴백
         const time = characterTime || char.time || char.appear;
         if (!time) return false;
-        
+
         const currentLanguage = getCurrentLanguage();
-        
+
         // 언어별 time 값을 영어 값으로 변환하여 비교
         const timeMapping = {
             'kr': {
@@ -74,11 +74,11 @@
                 '午後': 'Afternoon'
             }
         };
-        
+
         // 현재 언어에 맞는 매핑 사용
         const mapping = timeMapping[currentLanguage] || timeMapping['en'];
         const normalizedTime = mapping[time] || time;
-        
+
         return normalizedTime === currentTimeFilter;
     }
 
@@ -87,14 +87,14 @@
         if (!currentSearchQuery) return true;
         const query = currentSearchQuery.toLowerCase().trim();
         if (!query) return true;
-        
+
         const characterList = getCharacterList();
-        
+
         // 한국어 이름으로 검색
         if (characterName.toLowerCase().includes(query)) {
             return true;
         }
-        
+
         // characterNamesMap이 제공된 경우 영어/일본어 이름도 검색
         if (characterNamesMap && characterNamesMap[characterName]) {
             const names = characterNamesMap[characterName];
@@ -111,7 +111,7 @@
                 return true;
             }
         }
-        
+
         // characterNamesMap이 없으면 friend_num.json과 characters.js에서 직접 확인
         const char = characterList[characterName];
         if (char) {
@@ -123,7 +123,7 @@
                 return true;
             }
         }
-        
+
         // characters.js의 name_en, name_jp 검색
         if (window.characterData && window.characterData[characterName]) {
             const charData = window.characterData[characterName];
@@ -134,7 +134,7 @@
                 return true;
             }
         }
-        
+
         return false;
     }
 
@@ -175,7 +175,7 @@
                 btn.classList.add('active');
                 currentTimeFilter = btn.dataset.time;
                 applyFilters();
-                
+
                 // 필터링 후 첫 번째 보이는 탭 선택
                 const visibleTabs = Array.from(document.querySelectorAll('.character-tab:not([style*="display: none"])'));
                 if (visibleTabs.length > 0) {
@@ -197,7 +197,7 @@
                 searchTimeout = setTimeout(() => {
                     currentSearchQuery = e.target.value.trim();
                     applyFilters();
-                    
+
                     // 검색 후 첫 번째 보이는 탭 선택
                     const visibleTabs = Array.from(document.querySelectorAll('.character-tab:not([style*="display: none"])'));
                     if (visibleTabs.length > 0) {
@@ -214,10 +214,18 @@
         // Spoiler 체크박스
         const spoilerCheckbox = document.getElementById('showSpoiler');
         if (spoilerCheckbox) {
+            // 한국어일 경우 Spoiler 체크박스 숨김
+            if (getCurrentLanguage() === 'kr') {
+                const container = spoilerCheckbox.closest('.spoiler-checkbox-container');
+                if (container) {
+                    container.style.display = 'none';
+                }
+            }
+
             spoilerCheckbox.addEventListener('change', (e) => {
                 showSpoiler = e.target.checked;
                 applyFilters();
-                
+
                 // Spoiler 체크 후 첫 번째 보이는 탭 선택
                 const visibleTabs = Array.from(document.querySelectorAll('.character-tab:not([style*="display: none"])'));
                 if (visibleTabs.length > 0) {

@@ -27,38 +27,44 @@ jp: /synergy/?lang=jp
     <link rel="stylesheet" href="{{ site.baseurl }}/apps/synergy/soulmate.css?v={{ site.time | date: '%s' }}">
     <script src="{{ site.baseurl }}/assets/js/ad-injector.js?v={{ site.time | date: '%s' }}"></script>
     <script src="{{ site.baseurl }}/data/kr/characters/characters.js?v={{ site.time | date: '%s' }}"></script>
-    <script src="{{ site.baseurl }}/apps/synergy/friends/synergy_translate.js?v={{ site.time | date: '%s' }}"></script>
+
+    <!-- i18n 서비스 -->
+    <script type="module" src="{{ site.baseurl }}/i18n/service/i18n-service.js?v={{ site.time | date: '%s' }}"></script>
+    <script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
 
     <div class="navigation-path">
-        <script>document.write(`<a href="../../?v=${APP_VERSION}" id="nav-home">홈</a>`);</script>
+        <script>document.write(`<a href="../../?v=${APP_VERSION}" id="nav-home" data-i18n="navHome">홈</a>`);</script>
         <span class="separator">/</span>
-        <span class="current-page" id="nav-current">협력자</span>
+        <span class="current-page" id="nav-current" data-i18n="navCurrent">협력자</span>
     </div>
     <div class="header-container">
-        <h1 id="page-title">협력자</h1>
+        <h1 id="page-title" data-i18n="pageTitle">협력자</h1>
     </div>
 
     <!-- Filter section -->
     <div class="filter-section">
         <div class="filter-header">
             <div class="time-filter">
-                <button class="time-filter-btn active" data-time="all">전체</button>
-                <button class="time-filter-btn" data-time="After School">방과 후</button>
-                <button class="time-filter-btn" data-time="Evening">저녁</button>
-                <button class="time-filter-btn" data-time="Night">밤</button>
+                <button class="time-filter-btn active" data-time="all" data-i18n="filterAll">전체</button>
+                <button class="time-filter-btn" data-time="After School" data-i18n="filterAfterSchool">방과 후</button>
+                <button class="time-filter-btn" data-time="Evening" data-i18n="filterEvening">저녁</button>
+                <button class="time-filter-btn" data-time="Night" data-i18n="filterNight">밤</button>
             </div>
             <div class="search-container">
                 <div class="search-icon">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z" fill="rgba(255, 255, 255, 0.6)" />
+                        <path
+                            d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z"
+                            fill="rgba(255, 255, 255, 0.6)" />
                     </svg>
                 </div>
-                <input type="text" id="characterSearch" placeholder="캐릭터 검색..." autocomplete="off">
+                <input type="text" id="characterSearch" data-i18n-placeholder="searchPlaceholder"
+                    placeholder="캐릭터 검색..." autocomplete="off">
             </div>
             <div class="spoiler-checkbox-container">
                 <label class="spoiler-checkbox-label">
                     <input type="checkbox" id="showSpoiler" class="spoiler-checkbox">
-                    <span id="spoiler-label-text">Show Spoiler</span>
+                    <span id="spoiler-label-text" data-i18n="labelShowSpoiler">Show Spoiler</span>
                 </label>
             </div>
         </div>
@@ -82,9 +88,8 @@ jp: /synergy/?lang=jp
     </div>
 </div>
 
-    <script src="{{ site.baseurl }}/apps/synergy/synergy_search.js?v={{ site.time | date: '%s' }}"></script>
-    <script src="{{ site.baseurl }}/apps/synergy/item_from.js?v={{ site.time | date: '%s' }}"></script>
-    <script src="{{ site.baseurl }}/apps/synergy/synergy.js?v={{ site.time | date: '%s' }}"></script>
-    <script src="{{ site.baseurl }}/apps/synergy/discount_tooltip.js?v={{ site.time | date: '%s' }}"></script>
-    <script src="{{ site.baseurl }}/apps/synergy/soulmate.js?v={{ site.time | date: '%s' }}"></script>
-
+<script src="{{ site.baseurl }}/apps/synergy/synergy_search.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/synergy/item_from.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/synergy/synergy.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/synergy/discount_tooltip.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/synergy/soulmate.js?v={{ site.time | date: '%s' }}"></script>

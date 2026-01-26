@@ -1,6 +1,6 @@
 // Synergy Page JavaScript
 
-(function() {
+(function () {
     'use strict';
 
     const BASE_URL = (typeof window !== 'undefined' && window.BASE_URL) ? window.BASE_URL : '';
@@ -29,65 +29,47 @@
             if (savedLang && ['kr', 'en', 'jp'].includes(savedLang)) {
                 return savedLang;
             }
-        } catch (e) {}
+        } catch (e) { }
         return 'kr';
     }
-    
+
     // 전역으로 노출
     window.getCurrentLanguage = getCurrentLanguage;
 
-    // UI 번역 함수
-    function translateUI() {
-        if (currentLanguage === 'kr') {
-            // 한국어에서는 spoiler 체크박스 숨기기
-            const spoilerContainer = document.querySelector('.spoiler-checkbox-container');
-            if (spoilerContainer) {
-                spoilerContainer.style.display = 'none';
-            }
-            return;
+    /* === CONSTANTS === */
+    const CURRENCY_MAPPING = [
+        { icon: 'item-huobi-1038.png', keywords: ['게임 센터', 'Arcade', 'ゲーム', 'ゲームセンター'] },
+        { icon: 'item-huobi-22.png', keywords: ['현금', 'Money', '所持金'] },
+        { icon: 'item-huobi-16.png', keywords: ['야구 포인트', 'Batting Points', 'バッティングポイント'] },
+        { icon: 'item-huobi-53.png', keywords: ['축구부 배지', 'Soccer Badge', 'サッカー部バッジ'] }
+    ];
+
+    const FILTER_TIME_MAPPING = {
+        'kr': { '방과 후': 'After School', '저녁': 'Evening', '밤': 'Night', '오후': 'Afternoon' },
+        'en': { 'After School': 'After School', 'Evening': 'Evening', 'Night': 'Night', 'Afternoon': 'Afternoon' },
+        'jp': { '放課後': 'After School', '夕方': 'Evening', '夜': 'Night', '午後': 'Afternoon' }
+    };
+
+    // 화폐 아이콘 가져오기 헬퍼 함수
+    function getMoneyIcon(moneyName, shop) {
+        if (!moneyName) {
+            moneyName = shop?.moneyName || '';
         }
-        
-        const translations = window.synergyTranslations?.[currentLanguage];
-        if (!translations) return;
+        if (!moneyName) return '';
 
-        // 텍스트 번역
-        function translateText(element, originalText) {
-            if (element && translations[originalText]) {
-                element.textContent = translations[originalText];
+        for (const currency of CURRENCY_MAPPING) {
+            // 키워드 중 하나라도 포함되거나 일치하면 해당 아이콘 반환
+            // (화폐 이름에 다른 텍스트가 섞여 있을 수도 있으므로 includes 사용)
+            if (currency.keywords.some(k => moneyName.includes(k) || moneyName === k)) {
+                return `<img src="${BASE_URL}/assets/img/item-little-icon/${currency.icon}" alt="${moneyName}" class="money-icon" style="height: 16px; width: auto; vertical-align: middle;" onerror="this.onerror=null; this.style.display='none';">`;
             }
         }
-
-        // placeholder 번역
-        function translatePlaceholder(element, originalText) {
-            if (element && translations[originalText]) {
-                element.placeholder = translations[originalText];
-            }
-        }
-
-        // 네비게이션
-        const navHome = document.getElementById('nav-home');
-        const navCurrent = document.getElementById('nav-current');
-        const pageTitle = document.getElementById('page-title');
-        translateText(navHome, '홈');
-        translateText(navCurrent, '협력자');
-        translateText(pageTitle, '협력자');
-
-        // 필터 버튼
-        document.querySelectorAll('.time-filter-btn').forEach(btn => {
-            const text = btn.textContent.trim();
-            if (translations[text]) {
-                btn.textContent = translations[text];
-            }
-        });
-
-        // 검색창
-        const searchInput = document.getElementById('characterSearch');
-        translatePlaceholder(searchInput, '캐릭터 검색...');
-
-        // Spoiler 체크박스
-        const spoilerLabel = document.getElementById('spoiler-label-text');
-        translateText(spoilerLabel, 'Show Spoiler');
+        return '';
     }
+
+    // UI 번역 함수 (i18n 서비스로 대체됨)
+    // function translateUI() { ... } - Removed
+
 
     // friend_num.json 로드
     async function loadCharacterList() {
@@ -124,18 +106,18 @@
         if (!translation) return mapNameKr;
         return translation[currentLanguage] || mapNameKr;
     }
-    
+
     // mapName의 이미지 경로 가져오기
     function getMapImage(mapName) {
         if (!mapName) return null;
-        
+
         // 한국어인 경우 직접 키로 찾기
         if (currentLanguage === 'kr') {
             const translation = mapNameTranslations[mapName];
             if (!translation || !translation.img) return null;
             return `${BASE_URL}/assets/img/synergy/place/${translation.img}`;
         }
-        
+
         // 영어/일본어인 경우 역으로 검색 (번역된 값으로 한국어 키 찾기)
         for (const [krKey, translation] of Object.entries(mapNameTranslations)) {
             if (translation && translation[currentLanguage] === mapName) {
@@ -144,44 +126,45 @@
                 }
             }
         }
-        
+
         // 역 검색 실패 시 한국어 키로도 시도 (폴백)
         const translation = mapNameTranslations[mapName];
         if (translation && translation.img) {
             return `${BASE_URL}/assets/img/synergy/place/${translation.img}`;
         }
-        
+
         return null;
     }
 
     // resetType 번역
+    // resetType 번역
     function translateResetType(resetType) {
-        if (!resetType || resetType === '없음') return '-';
-        if (currentLanguage === 'kr') return resetType;
-        
-        const translations = {
-            '주간': { en: 'Weekly', jp: '週間' },
-            '월간': { en: 'Monthly', jp: '月間' },
-            '일간': { en: 'Daily', jp: '日間' }
+        if (!resetType || resetType === '없음') return (window.t ? window.t('labelNone') : '-');
+
+        const keyMap = {
+            '주간': 'resetWeekly',
+            '월간': 'resetMonthly',
+            '일간': 'resetDaily'
         };
-        
-        const translation = translations[resetType];
-        if (!translation) return resetType;
-        return translation[currentLanguage] || resetType;
+
+        if (keyMap[resetType] && window.t) {
+            return window.t(keyMap[resetType]);
+        }
+        return resetType;
     }
-    
+
     // 전역으로 노출 (item_from.js에서 사용)
     window.translateResetType = translateResetType;
 
     // moneyName을 아이콘으로 변환하는 함수
     function getMoneyIcon(moneyName, shop) {
         if (!moneyName) return '';
-        
+
         let iconFile = '';
         let tooltip = moneyName;
-        
+
         // 게임 센터 관련 (게임 센터, Game, ゲームセンター 등)
-        if (moneyName.includes('게임 센터') || moneyName.includes('Game') || 
+        if (moneyName.includes('게임 센터') || moneyName.includes('Arcade') ||
             moneyName.includes('ゲーム') || moneyName.includes('ゲームセンター')) {
             iconFile = 'item-huobi-1038.png';
         }
@@ -197,12 +180,12 @@
         else if (moneyName === '축구부 배지' || moneyName === 'Soccer Badge' || moneyName === 'サッカー部バッジ') {
             iconFile = 'item-huobi-53.png';
         }
-        
+
         if (iconFile) {
             const iconSrc = `${BASE_URL}/assets/img/item-little-icon/${iconFile}`;
             return `<img src="${iconSrc}" alt="${tooltip}" class="money-icon" title="${tooltip}" onerror="this.onerror=null; this.style.display='none';">`;
         }
-        
+
         return '';
     }
 
@@ -219,12 +202,12 @@
             let response = await fetch(`${BASE_URL}/apps/synergy/friends/${lang}/${fileName}.json?v=${APP_VERSION}`);
             let data = null;
             let krData = null;
-            
+
             if (response.ok) {
                 const jsonData = await response.json();
                 data = jsonData.data || jsonData;
             }
-            
+
             // mapName이 없으면 kr 데이터를 폴백으로 로드
             if (lang !== 'kr' && (!data || !hasMapName(data))) {
                 const krResponse = await fetch(`${BASE_URL}/apps/synergy/friends/kr/${fileName}.json?v=${APP_VERSION}`);
@@ -240,7 +223,7 @@
                     }
                 }
             }
-            
+
             if (!data) {
                 // 언어별 파일이 없으면 kr로 폴백
                 if (lang !== 'kr') {
@@ -253,7 +236,7 @@
                 }
                 if (!data) return null;
             }
-            
+
             // en/jp인 경우 kr 데이터를 로드하여 병합
             if (lang !== 'kr' && data) {
                 if (!krData) {
@@ -263,7 +246,7 @@
                         krData = krJsonData.data || krJsonData;
                     }
                 }
-                
+
                 // kr 데이터가 있으면 dialog 병합
                 if (krData) {
                     mergeKrFallbackDialogs(data, krData, lang);
@@ -299,9 +282,9 @@
     // kr 데이터의 dialog를 en/jp 데이터에 병합하고 "(패치 예정)" 추가
     function mergeKrFallbackDialogs(data, krData, lang) {
         if (!data || !krData) return;
-        
+
         const patchPendingText = lang === 'en' ? '(Patch Pending)' : '(パッチ予定)';
-        
+
         // 1. advance_dialog 병합
         if (krData.advance_dialog && Array.isArray(krData.advance_dialog)) {
             if (!data.advance_dialog || !Array.isArray(data.advance_dialog)) {
@@ -315,9 +298,9 @@
                         // 해당 인덱스의 dialog가 없으면 kr에서 복사
                         data.advance_dialog[index] = JSON.parse(JSON.stringify(krDialog));
                         addPatchPendingToDialog([data.advance_dialog[index]], patchPendingText);
-                    } else if (!data.advance_dialog[index].good_answers || 
-                               !Array.isArray(data.advance_dialog[index].good_answers) || 
-                               data.advance_dialog[index].good_answers.length === 0) {
+                    } else if (!data.advance_dialog[index].good_answers ||
+                        !Array.isArray(data.advance_dialog[index].good_answers) ||
+                        data.advance_dialog[index].good_answers.length === 0) {
                         // good_answers가 없거나 비어있으면 kr에서 복사
                         if (krDialog.good_answers && Array.isArray(krDialog.good_answers)) {
                             data.advance_dialog[index].good_answers = JSON.parse(JSON.stringify(krDialog.good_answers));
@@ -327,7 +310,7 @@
                         // good_answers가 있지만 일부 choiceGroup이 비어있을 수 있음
                         if (krDialog.good_answers && Array.isArray(krDialog.good_answers)) {
                             krDialog.good_answers.forEach((krChoiceGroup, groupIndex) => {
-                                if (!data.advance_dialog[index].good_answers[groupIndex] || 
+                                if (!data.advance_dialog[index].good_answers[groupIndex] ||
                                     !Array.isArray(data.advance_dialog[index].good_answers[groupIndex]) ||
                                     data.advance_dialog[index].good_answers[groupIndex].length === 0) {
                                     // 해당 choiceGroup이 없거나 비어있으면 kr에서 복사
@@ -343,7 +326,7 @@
                 });
             }
         }
-        
+
         // 2. visit_dialog 병합
         if (krData.visit_dialog && Array.isArray(krData.visit_dialog)) {
             if (!data.visit_dialog || !Array.isArray(data.visit_dialog)) {
@@ -357,9 +340,9 @@
                         // 해당 인덱스의 visit이 없으면 kr에서 복사
                         data.visit_dialog[index] = JSON.parse(JSON.stringify(krVisit));
                         addPatchPendingToVisitDialog([data.visit_dialog[index]], patchPendingText);
-                    } else if (!data.visit_dialog[index].good_answers || 
-                               !Array.isArray(data.visit_dialog[index].good_answers) || 
-                               data.visit_dialog[index].good_answers.length === 0) {
+                    } else if (!data.visit_dialog[index].good_answers ||
+                        !Array.isArray(data.visit_dialog[index].good_answers) ||
+                        data.visit_dialog[index].good_answers.length === 0) {
                         // good_answers가 없거나 비어있으면 kr에서 복사
                         if (krVisit.good_answers && Array.isArray(krVisit.good_answers)) {
                             data.visit_dialog[index].good_answers = JSON.parse(JSON.stringify(krVisit.good_answers));
@@ -369,7 +352,7 @@
                         // good_answers가 있지만 일부 choiceGroup이 비어있을 수 있음
                         if (krVisit.good_answers && Array.isArray(krVisit.good_answers)) {
                             krVisit.good_answers.forEach((krChoiceGroup, groupIndex) => {
-                                if (!data.visit_dialog[index].good_answers[groupIndex] || 
+                                if (!data.visit_dialog[index].good_answers[groupIndex] ||
                                     !Array.isArray(data.visit_dialog[index].good_answers[groupIndex]) ||
                                     data.visit_dialog[index].good_answers[groupIndex].length === 0) {
                                     // 해당 choiceGroup이 없거나 비어있으면 kr에서 복사
@@ -385,7 +368,7 @@
                 });
             }
         }
-        
+
         // 3. romance_dialog 병합
         if (krData.romance_dialog && Array.isArray(krData.romance_dialog)) {
             if (!data.romance_dialog || !Array.isArray(data.romance_dialog)) {
@@ -399,9 +382,9 @@
                         // 해당 인덱스의 dialog가 없으면 kr에서 복사
                         data.romance_dialog[index] = JSON.parse(JSON.stringify(krDialog));
                         addPatchPendingToDialog([data.romance_dialog[index]], patchPendingText);
-                    } else if (!data.romance_dialog[index].good_answers || 
-                               !Array.isArray(data.romance_dialog[index].good_answers) || 
-                               data.romance_dialog[index].good_answers.length === 0) {
+                    } else if (!data.romance_dialog[index].good_answers ||
+                        !Array.isArray(data.romance_dialog[index].good_answers) ||
+                        data.romance_dialog[index].good_answers.length === 0) {
                         // good_answers가 없거나 비어있으면 kr에서 복사
                         if (krDialog.good_answers && Array.isArray(krDialog.good_answers)) {
                             data.romance_dialog[index].good_answers = JSON.parse(JSON.stringify(krDialog.good_answers));
@@ -411,7 +394,7 @@
                         // good_answers가 있지만 일부 choiceGroup이 비어있을 수 있음
                         if (krDialog.good_answers && Array.isArray(krDialog.good_answers)) {
                             krDialog.good_answers.forEach((krChoiceGroup, groupIndex) => {
-                                if (!data.romance_dialog[index].good_answers[groupIndex] || 
+                                if (!data.romance_dialog[index].good_answers[groupIndex] ||
                                     !Array.isArray(data.romance_dialog[index].good_answers[groupIndex]) ||
                                     data.romance_dialog[index].good_answers[groupIndex].length === 0) {
                                     // 해당 choiceGroup이 없거나 비어있으면 kr에서 복사
@@ -428,7 +411,7 @@
             }
         }
     }
-    
+
     // dialog의 모든 선택지에 "(패치 예정)" 추가
     function addPatchPendingToDialog(dialogs, patchPendingText) {
         if (!dialogs || !Array.isArray(dialogs)) return;
@@ -442,7 +425,7 @@
             }
         });
     }
-    
+
     // visit_dialog의 모든 선택지에 "(패치 예정)" 추가
     function addPatchPendingToVisitDialog(visits, patchPendingText) {
         if (!visits || !Array.isArray(visits)) return;
@@ -456,7 +439,7 @@
             }
         });
     }
-    
+
     // 선택지 배열에 "(패치 예정)" 추가
     function addPatchPendingToChoices(choices, patchPendingText) {
         if (!choices || !Array.isArray(choices)) return;
@@ -482,7 +465,7 @@
         const timePromises = Object.keys(characterList).map(async (characterName) => {
             const char = characterList[characterName];
             let characterTime = null;
-            
+
             try {
                 const fileName = encodeURIComponent(characterName);
                 // 현재 언어 파일에서 time 가져오기
@@ -507,11 +490,11 @@
             } catch (e) {
                 // 에러 발생 시 무시
             }
-            
+
             // 캐릭터 JSON 파일의 time이 없으면 friend_num.json의 time/appear로 폴백
             characterTimeMap[characterName] = characterTime || char.time || char.appear || null;
         });
-        
+
         await Promise.all(timePromises);
 
         // 각 캐릭터의 이름 정보 수집 (검색용)
@@ -521,20 +504,20 @@
             let nameEn = null;
             let nameJp = null;
             let displayName = characterName;
-            
+
             // friend_num.json에서 가져오기
             if (char) {
                 if (char.name_en) nameEn = char.name_en;
                 if (char.name_jp) nameJp = char.name_jp;
             }
-            
+
             // characters.js에서 가져오기
             if (window.characterData && window.characterData[characterName]) {
                 const charData = window.characterData[characterName];
                 if (!nameEn && charData.name_en) nameEn = charData.name_en;
                 if (!nameJp && charData.name_jp) nameJp = charData.name_jp;
             }
-            
+
             // JSON 파일에서 가져오기 (현재 언어)
             try {
                 const fileName = encodeURIComponent(characterName);
@@ -558,14 +541,14 @@
             } catch (e) {
                 // 에러 무시
             }
-            
+
             characterNamesMap[characterName] = {
                 nameEn: nameEn,
                 nameJp: nameJp,
                 displayName: displayName
             };
         });
-        
+
         await Promise.all(namePromises);
 
         // 처음 로드 시에는 모든 캐릭터를 생성 (필터링 없이)
@@ -586,11 +569,8 @@
 
         if (sortedCharacters.length === 0) {
             // 번역 함수
-            const t = (key) => {
-                if (currentLanguage === 'kr') return key;
-                return window.synergyTranslations?.[currentLanguage]?.[key] || key;
-            };
-            const noResultsText = t('검색 결과가 없습니다');
+            const t = (key) => window.t ? window.t(key) : key;
+            const noResultsText = window.t ? window.t('noResults') : '검색 결과가 없습니다';
             tabsContainer.innerHTML = `<div style="padding: 20px; text-align: center; color: #999;">${noResultsText}</div>`;
             // 검색 결과가 없으면 선택된 캐릭터도 초기화
             selectedCharacter = null;
@@ -605,7 +585,7 @@
             const char = characterList[characterName];
             let displayName = characterName;
             let nameAlreadySet = false; // 이름이 이미 설정되었는지 추적
-            
+
             // friend_num.json에 name_en, name_jp가 있는 경우 예외처리 (최우선)
             if (char) {
                 if (currentLanguage === 'en' && char.name_en) {
@@ -616,7 +596,7 @@
                     nameAlreadySet = true;
                 }
             }
-            
+
             // friend_num.json에 없으면 characters.js에서 name_en, name_jp 사용
             if (!nameAlreadySet && window.characterData && window.characterData[characterName]) {
                 const charData = window.characterData[characterName];
@@ -628,9 +608,9 @@
                     nameAlreadySet = true;
                 }
             }
-            
+
             let characterTime = null;
-            
+
             try {
                 const fileName = encodeURIComponent(characterName);
                 // 이름이 아직 설정되지 않았으면 JSON 파일에서 가져오기
@@ -680,7 +660,7 @@
             } catch (e) {
                 // 에러 발생 시 기본 이름 사용
             }
-            
+
             // 영어일 경우 띄어쓰기 기준 앞 단어만 표시
             if (currentLanguage === 'en' && displayName.includes(' ')) {
                 displayName = displayName.split(' ')[0];
@@ -690,7 +670,7 @@
                 const parts = displayName.split(' ');
                 displayName = parts[parts.length - 1];
             }
-            
+
             return { characterName, displayName, char, characterTime };
         });
 
@@ -700,7 +680,7 @@
             const tab = document.createElement('div');
             tab.className = 'character-tab';
             tab.dataset.character = characterName;
-            
+
             // 필터링용 데이터 속성 추가
             const timeValue = characterTime || char.time || char.appear || '';
             tab.dataset.characterTime = timeValue;
@@ -710,10 +690,10 @@
             tab.dataset.characterNameEn = nameInfo.nameEn || '';
             tab.dataset.characterNameJp = nameInfo.nameJp || '';
             tab.dataset.displayName = displayName;
-            
+
             // 언어 파일 존재 여부 저장 (나중에 사용)
             tab.dataset.hasLanguageFile = 'pending'; // 나중에 확인
-            
+
             if (index === 0 && wasFirstLoad) {
                 tab.classList.add('active');
             } else if (previousSelected === characterName) {
@@ -724,24 +704,29 @@
             const imgFileName = char.img_color || char.img;
             const imgPath = char.img_color ? 'face' : 'face_black';
             const imgSrc = `${BASE_URL}/assets/img/synergy/${imgPath}/${imgFileName}`;
-            
+
             // time 필드 사용 (캐릭터 JSON 파일의 time 우선, 없으면 friend_num.json의 time/appear로 폴백)
             // timeValue는 위에서 이미 선언됨
             let timeLabel = timeValue;
-            if (timeValue === 'After School') timeLabel = '방과 후';
-            else if (timeValue === 'Evening') timeLabel = '저녁';
-            else if (timeValue === 'Night') timeLabel = '밤';
-            else if (timeValue === 'Afternoon') timeLabel = '오후';
-            
-            // 번역 적용
-            if (currentLanguage !== 'kr' && window.synergyTranslations?.[currentLanguage]?.[timeLabel]) {
-                timeLabel = window.synergyTranslations[currentLanguage][timeLabel];
+            const timeKeyMap = {
+                'After School': 'filterAfterSchool',
+                'Evening': 'filterEvening',
+                'Night': 'filterNight',
+                'Afternoon': 'filterAfternoon',
+                '방과 후': 'filterAfterSchool',
+                '저녁': 'filterEvening',
+                '밤': 'filterNight',
+                '오후': 'filterAfternoon'
+            };
+
+            if (timeKeyMap[timeValue] && window.t) {
+                timeLabel = window.t(timeKeyMap[timeValue]);
             }
-            
+
             // recommend 아이콘 추가
             const recommendIconSvg = `<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" class="recommend-icon"><path d="M7 0L8.618 4.764L14 5.528L10 9.236L11.236 14L7 11.236L2.764 14L4 9.236L0 5.528L5.382 4.764L7 0Z" fill="currentColor"/></svg>`;
-            const recommendTitle = currentLanguage === 'kr' ? '추천' : currentLanguage === 'en' ? 'Recommended' : '推奨';
-            
+            const recommendTitle = window.t ? window.t('labelRecommend') : '추천';
+
             tab.innerHTML = `
                 <div class="character-tab-image-wrapper">
                     <img src="${imgSrc}" alt="${characterName}" class="character-tab-image" onerror="this.onerror=null; this.style.display='none';">
@@ -767,7 +752,7 @@
         const languageCheckPromises = sortedCharacters.map(async (characterName) => {
             const tab = document.querySelector(`.character-tab[data-character="${characterName}"]`);
             if (!tab) return;
-            
+
             const currentLanguage = getCurrentLanguage();
             if (currentLanguage === 'kr') {
                 tab.dataset.hasLanguageFile = 'true';
@@ -822,27 +807,8 @@
         const searchQuery = (window.synergySearch?.getCurrentSearchQuery() || '').toLowerCase().trim();
         const showSpoiler = window.synergySearch?.getShowSpoiler() || false;
 
-        // 언어별 time 매핑
-        const timeMapping = {
-            'kr': {
-                '방과 후': 'After School',
-                '저녁': 'Evening',
-                '밤': 'Night',
-                '오후': 'Afternoon'
-            },
-            'en': {
-                'After School': 'After School',
-                'Evening': 'Evening',
-                'Night': 'Night',
-                'Afternoon': 'Afternoon'
-            },
-            'jp': {
-                '放課後': 'After School',
-                '夕方': 'Evening',
-                '夜': 'Night',
-                '午後': 'Afternoon'
-            }
-        };
+        // 언어별 time 매핑 (상수 사용)
+        const timeMapping = FILTER_TIME_MAPPING;
 
         tabs.forEach(tab => {
             let shouldShow = true;
@@ -852,7 +818,7 @@
                 const tabTime = tab.dataset.characterTime || '';
                 const mapping = timeMapping[currentLanguage] || timeMapping['en'];
                 const normalizedTime = mapping[tabTime] || tabTime;
-                
+
                 // showSpoiler가 true이고, 언어 파일이 없는 캐릭터인 경우 kr 시간 값을 현재 언어로 변환
                 if (showSpoiler && tab.dataset.hasLanguageFile === 'false' && normalizedTime !== timeFilter) {
                     // kr 언어 매핑으로 다시 확인
@@ -861,7 +827,7 @@
                     // kr 시간 값을 현재 언어로 변환하여 다시 확인
                     const krToCurrentMapping = {
                         '방과 후': 'After School',
-                        '저녁': 'Evening', 
+                        '저녁': 'Evening',
                         '밤': 'Night',
                         '오후': 'Afternoon'
                     };
@@ -883,10 +849,10 @@
                 const nameEn = (tab.dataset.characterNameEn || '').toLowerCase();
                 const nameJp = (tab.dataset.characterNameJp || '').toLowerCase();
                 const displayName = (tab.dataset.displayName || '').toLowerCase();
-                
-                if (!nameKr.includes(searchQuery) && 
-                    !nameEn.includes(searchQuery) && 
-                    !nameJp.includes(searchQuery) && 
+
+                if (!nameKr.includes(searchQuery) &&
+                    !nameEn.includes(searchQuery) &&
+                    !nameJp.includes(searchQuery) &&
                     !displayName.includes(searchQuery)) {
                     shouldShow = false;
                 }
@@ -915,11 +881,11 @@
                 return window.synergyTranslations?.[currentLanguage]?.[key] || key;
             };
             noResultsDiv.textContent = t('검색 결과가 없습니다');
-            
+
             // 기존 메시지 제거
             const existingMessage = tabsContainer.querySelector('div[style*="padding: 20px"]');
             if (existingMessage) existingMessage.remove();
-            
+
             tabsContainer.appendChild(noResultsDiv);
         } else {
             // 메시지 제거
@@ -950,14 +916,13 @@
         const detailContainer = document.getElementById('characterDetail');
         if (!detailContainer) return;
 
-        const loadingText = currentLanguage === 'kr' ? '로딩 중...' : 
-                           currentLanguage === 'en' ? 'Loading...' : '読み込み中...';
+        const t = window.t || ((k) => k);
+        const loadingText = t('msgLoading');
         detailContainer.innerHTML = `<div style="padding: 40px; text-align: center; color: rgba(255,255,255,0.5);">${loadingText}</div>`;
 
         const data = await loadCharacterData(characterName);
         if (!data) {
-            const errorText = currentLanguage === 'kr' ? '데이터를 불러올 수 없습니다' : 
-                             currentLanguage === 'en' ? 'Failed to load data' : 'データの読み込みに失敗しました';
+            const errorText = t('msgLoadError');
             detailContainer.innerHTML = `<div style="padding: 40px; text-align: center; color: rgba(255,255,255,0.5);">${errorText}</div>`;
             return;
         }
@@ -969,8 +934,8 @@
             setTimeout(() => {
                 const detailElement = document.getElementById('characterDetail');
                 if (detailElement) {
-                    detailElement.scrollIntoView({ 
-                        behavior: 'smooth', 
+                    detailElement.scrollIntoView({
+                        behavior: 'smooth',
                         block: 'start',
                         inline: 'nearest'
                     });
@@ -978,7 +943,7 @@
             }, 100); // 렌더링 완료를 위한 약간의 지연
         }
     }
-    
+
     // selectCharacter를 전역으로 노출
     window.selectCharacter = selectCharacter;
 
@@ -991,31 +956,33 @@
         } else if (window.characterData && window.characterData[characterName] && window.characterData[characterName].codename) {
             charCodeName = window.characterData[characterName].codename.toLowerCase();
         }
-        
-        // 캐릭터의 영어 이름 가져오기 (타이틀용, JSON 파일에서)
-        let charNameEn = characterName;
-        try {
-            const fileName = encodeURIComponent(characterName);
-            const response = await fetch(`${BASE_URL}/apps/synergy/friends/en/${fileName}.json?v=${APP_VERSION}`);
-            if (response.ok) {
-                const jsonData = await response.json();
-                const data = jsonData.data || jsonData;
-                if (data.name) {
-                    charNameEn = data.name;
-                }
-            } else {
-                // 영어 파일이 없으면 kr에서 가져오기
-                const krResponse = await fetch(`${BASE_URL}/apps/synergy/friends/kr/${fileName}.json?v=${APP_VERSION}`);
-                if (krResponse.ok) {
-                    const krJsonData = await krResponse.json();
-                    const krData = krJsonData.data || krJsonData;
-                    if (krData.name) {
-                        charNameEn = krData.name;
+
+        // 캐릭터의 표시 이름 가져오기 (타이틀용, JSON 파일에서)
+        let displayCharName = characterName;
+
+        if (currentLanguage !== 'kr') {
+            try {
+                const fileName = encodeURIComponent(characterName);
+                // 현재 언어에 맞는 파일 로드
+                const response = await fetch(`${BASE_URL}/apps/synergy/friends/${currentLanguage}/${fileName}.json?v=${APP_VERSION}`);
+                if (response.ok) {
+                    const jsonData = await response.json();
+                    const data = jsonData.data || jsonData;
+                    if (data.name) {
+                        displayCharName = data.name;
+                    }
+                } else if (currentLanguage === 'jp') {
+                    // 일본어 파일이 없을 경우 영어 파일 시도
+                    const enResponse = await fetch(`${BASE_URL}/apps/synergy/friends/en/${fileName}.json?v=${APP_VERSION}`);
+                    if (enResponse.ok) {
+                        const enJson = await enResponse.json();
+                        const enData = enJson.data || enJson;
+                        if (enData.name) displayCharName = enData.name;
                     }
                 }
+            } catch (e) {
+                // 에러 발생 시 기본 이름(kr) 사용
             }
-        } catch (e) {
-            // 에러 발생 시 기본 이름 사용
         }
 
         // URL 파라미터 업데이트 (코드네임 사용)
@@ -1023,13 +990,16 @@
         url.searchParams.set('character', charCodeName);
         window.history.pushState({ character: characterName }, '', url);
 
-        // 타이틀 업데이트 (영어 이름 사용)
-        const baseTitle = currentLanguage === 'kr' ? '협력자' : 
-                         currentLanguage === 'en' ? 'Synergy' : 'シナジー';
+        // 타이틀 업데이트
         const titlePrefix = currentLanguage === 'kr' ? 'P5X 협력자 가이드' :
-                           currentLanguage === 'en' ? 'P5X Synergy guide' :
-                           'P5X シナジーガイド';
-        document.title = `${titlePrefix} ${charNameEn} | 페르소나5 더 팬텀 X 루페르넷`;
+            currentLanguage === 'en' ? 'P5X Synergy guide' :
+                'P5X シナジーガイド';
+
+        if (currentLanguage === 'kr') {
+            document.title = `${titlePrefix} ${displayCharName} | 페르소나5 더 팬텀 X 루페르넷`;
+        } else {
+            document.title = `${titlePrefix} ${displayCharName} | Persona 5 The Phantom X Lufelnet`;
+        }
     }
 
     // 상세 정보 렌더링
@@ -1042,7 +1012,7 @@
         const imgFileName = char.img_color || char.img;
         const imgPath = char.img_color ? 'face' : 'face_black';
         const imgSrc = `${BASE_URL}/assets/img/synergy/${imgPath}/${imgFileName}`;
-        
+
         // time 필드 사용 (캐릭터 JSON 파일의 time 우선, 없으면 friend_num.json의 time/appear로 폴백)
         const timeValue = data.time || char.time || char.appear || '';
         let timeLabel = timeValue;
@@ -1050,12 +1020,12 @@
         else if (timeValue === 'Evening') timeLabel = '저녁';
         else if (timeValue === 'Night') timeLabel = '밤';
         else if (timeValue === 'Afternoon') timeLabel = '오후';
-        
+
         // 번역 적용
         if (currentLanguage !== 'kr' && window.synergyTranslations?.[currentLanguage]?.[timeLabel]) {
             timeLabel = window.synergyTranslations[currentLanguage][timeLabel];
         }
-        
+
         // can_romance 아이콘
         let romanceIcons = '';
         // 쇼키와 카타야마는 can_romance가 true여도 false로 취급
@@ -1077,9 +1047,9 @@
         // 한국어 폴백 안내문
         const fallbackNotice = (currentLanguage !== 'kr' && hasKrFallback) ? `
             <div class="fallback-notice" style="padding: 12px; background: #1e1b1b; border-left: 3px solid #730000; margin-bottom: 20px; border-radius: 4px; user-select: text;">
-                ${currentLanguage === 'en' 
-                    ? 'Content that has not been released or updated by the administrator may be displayed in Korean. Separate translation work is not planned, and we ask that you use a translator even if it is inconvenient.'
-                    : '管理者が更新・公開していないコンテンツは韓国語で表示される場合があります。別途の翻訳作業は予定されておらず、ご不便をおかけしますが、翻訳機のご利用をお願いします。'}
+                ${currentLanguage === 'en'
+                ? 'Content that has not been released or updated by the administrator may be displayed in Korean. Separate translation work is not planned, and we ask that you use a translator even if it is inconvenient.'
+                : '管理者が更新・公開していないコンテンツは韓国語で表示される場合があります。別途の翻訳作業は予定されておらず、ご不便をおかけしますが、翻訳機のご利用をお願いします。'}
             </div>
         ` : '';
 
@@ -1087,8 +1057,8 @@
         let tipHtml = '';
         if (char) {
             // 현재 언어에 맞는 팁 키
-            const tipKey = currentLanguage === 'kr' ? 'tip_kr' : 
-                          currentLanguage === 'en' ? 'tip_en' : 'tip_jp';
+            const tipKey = currentLanguage === 'kr' ? 'tip_kr' :
+                currentLanguage === 'en' ? 'tip_en' : 'tip_jp';
             const tip = char[tipKey];
             if (tip) {
                 // \n과 줄 맨 앞 -를 리스트로 변환
@@ -1108,13 +1078,13 @@
                         .filter(item => item.length > 0)
                         .map(item => `<li style="margin-bottom: 4px;">${item}</li>`)
                         .join('');
-                    
+
                     processedTip = `<ul style="margin: 0; padding-left: 20px; list-style-type: disc; color: rgba(255, 255, 255, 0.7);">${listItems}</ul>`;
                 } else {
                     // 리스트 형식이 아니면 그대로 표시 (기존 \n을 <br>로 변환)
                     processedTip = tip.replace(/\n|\\n/g, '<br>');
                 }
-                
+
                 tipHtml = `
                     <div class="character-tip" style="padding: 12px 16px; background: rgba(0, 0, 0, 0.2); border-left: 3px solid #730000; margin: 0px 0 32px 0; border-radius: 4px; line-height: 1.6; font-size:13px; color: rgba(255, 255, 255, 0.7);">
                         ${processedTip}
@@ -1138,15 +1108,12 @@
         `;
 
         // 번역 함수
-        const t = (key) => {
-            if (currentLanguage === 'kr') return key;
-            return window.synergyTranslations?.[currentLanguage]?.[key] || key;
-        };
-        
+        const t = (key) => window.t ? window.t(key) : key;
+
         // unlock_cond에 아이콘 추가하는 함수 (텍스트를 아이콘으로 치환)
         function processUnlockCond(unlockCond) {
             if (!unlockCond) return '';
-            
+
             // 능력치 아이콘 매핑
             const statIcons = {
                 '재주': { icon: 'wuwei2-lingqiao.png', en: 'Proficiency', jp: '器用さ' },
@@ -1155,24 +1122,24 @@
                 '매력': { icon: 'wuwei2-meili.png', en: 'Charm', jp: '魅力' },
                 '지식': { icon: 'wuwei2-zhishi.png', en: 'Knowledge', jp: '知識' }
             };
-            
+
             let processedText = unlockCond;
-            
+
             // 각 능력치에 대해 텍스트를 아이콘으로 치환
             for (const [krText, statData] of Object.entries(statIcons)) {
-                const searchText = currentLanguage === 'kr' ? krText : 
-                                 currentLanguage === 'en' ? statData.en : statData.jp;
+                const searchText = currentLanguage === 'kr' ? krText :
+                    currentLanguage === 'en' ? statData.en : statData.jp;
                 // alt 텍스트는 현재 언어에 맞게 설정
-                const altText = currentLanguage === 'kr' ? krText : 
-                               currentLanguage === 'en' ? statData.en : statData.jp;
+                const altText = currentLanguage === 'kr' ? krText :
+                    currentLanguage === 'en' ? statData.en : statData.jp;
                 const iconHtml = `<img src="${BASE_URL}/assets/img/synergy/${statData.icon}" alt="${altText}" title="${altText}" class="unlock-stat-icon" onerror="this.onerror=null; this.style.display='none';">`;
-                
+
                 // 텍스트를 아이콘으로 치환 (텍스트는 제거)
                 const escapedText = searchText.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
                 const regex = new RegExp(`(^|\\s|>)${escapedText}(?=\\s|$|<)`, 'g');
                 processedText = processedText.replace(regex, `$1${iconHtml}`);
             }
-            
+
             return processedText;
         }
 
@@ -1185,11 +1152,11 @@
             const spoilerKey = `unlockQuestSpoiler_${characterName}`;
             const isSpoilerRevealed = localStorage.getItem(spoilerKey) === '1';
             const spoilerClass = isSpoilerRevealed ? '' : 'spoiler';
-            
+
             html += `
                 <div class="detail-section">
                     <h3 class="detail-section-title">
-                        <span>${t('사전 퀘스트')}</span>
+                        <span>${t('labelUnlockQuest')}</span>
                     </h3>
                     <div class="section-content">
                         <div class="unlock-quest-content ${spoilerClass}" data-character="${characterName}" style="display: flex; flex-direction: column; gap: 8px; padding: 12px 16px; background: rgba(0, 0, 0, 0.2); border-radius: 4px; margin-bottom: 12px; position: relative; cursor: pointer;">
@@ -1197,7 +1164,7 @@
                                 <div class="unlock-quest-name" style="font-weight: 600; color: rgb(255 245 181 / 95%); font-size:14px;">${data.unlock_quest.name || ''}</div>
                                 <div class="unlock-quest-details" style="color: rgba(255, 255, 255, 0.8); font-size: 13px; line-height: 1.6;">${data.unlock_quest.details || ''}</div>
                             </div>
-                            <div style="font-size: 12px; color: rgba(255, 255, 255, 0.6); font-style: italic;">${t('해당 퀘스트 클리어 이후 이벤트 퀘스트가 해금됩니다.')}</div>
+                            <div style="font-size: 12px; color: rgba(255, 255, 255, 0.6); font-style: italic;">${t('labelQuestUnlockNotice')}</div>
                         </div>
                     </div>
                 </div>
@@ -1209,20 +1176,20 @@
             // recommend_num 가져오기
             const char = characterList[characterName];
             const recommendNums = char && char.recommend_num ? char.recommend_num : [];
-            
+
             html += `
                 <div class="detail-section">
                     <h3 class="detail-section-title collapsible">
-                        <span>${t('협력 보상')}</span>
+                        <span>${t('labelSpecialAward')}</span>
                         ${chevronSvg}
                     </h3>
                     <div class="section-content">
                         <table class="award-table">
                         <thead>
                             <tr>
-                                <th>${t('랭크')}</th>
-                                <th class="award-name-header">${t('이름')}</th>
-                                <th class="award-reward-header">${t('보상')}</th>
+                                <th>${t('labelRank')}</th>
+                                <th class="award-name-header">${t('labelName')}</th>
+                                <th class="award-reward-header">${t('labelReward')}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -1231,14 +1198,14 @@
                 // recommend_num에 해당하는 랭크인지 확인
                 const isRecommended = recommendNums.includes(award.rank);
                 const nameClass = isRecommended ? 'award-name-recommended' : '';
-                
+
                 // 아이콘 이미지 추가
                 let nameHtml = award.name;
                 if (award.icon) {
                     const iconSrc = `${BASE_URL}/assets/img/synergy/reward/${award.icon}`;
                     nameHtml = `<img src="${iconSrc}" alt="${award.name}" class="award-icon" onerror="this.onerror=null; this.style.display='none';">${award.name}`;
                 }
-                
+
                 html += `
                     <tr>
                         <td>${award.rank}</td>
@@ -1271,7 +1238,7 @@
             html += `
                 <div class="detail-section">
                     <h3 class="detail-section-title collapsible">
-                        <span>${t('협력 이벤트')}</span>
+                        <span>${t('labelAdvanceDialog')}</span>
                         ${chevronSvg}
                     </h3>
                     <div class="section-content">
@@ -1282,7 +1249,7 @@
                 const rankTo = dialog.rank_up?.to || 0;
                 const chevronSvg = `<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="rank-chevron"><path d="M4 2L8 6L4 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
                 const rankText = rankFrom > 0 && rankTo > 0 ? `<span class="rank-label">Rank ${rankFrom}</span>${chevronSvg}<span class="rank-target">${rankTo}</span>` : '';
-                const unlockCond = dialog.unlock_cond ? `<div class="dialog-unlock">${t('UNLOCK :')} ${processUnlockCond(dialog.unlock_cond)}</div>` : '';
+                const unlockCond = dialog.unlock_cond ? `<div class="dialog-unlock">${t('labelUnlock')} ${processUnlockCond(dialog.unlock_cond)}</div>` : '';
                 const hasChoices = dialog.good_answers && Array.isArray(dialog.good_answers) && dialog.good_answers.length > 0;
                 const noChoicesClass = !hasChoices ? 'no-choices' : '';
                 html += `
@@ -1302,10 +1269,10 @@
                         // 단일 선택지인 경우(choiceGroup.length === 1) 노란색 표시 안함
                         const maxRewardCount = rewards.filter(r => r === maxReward).length;
                         const hasUniqueMax = maxRewardCount === 1 && choiceGroup.length > 1;
-                        
+
                         if (dialog.good_answers.length > 1) {
                             html += `<div class="dialog-choice-group" style="margin-bottom: 8px;">`;
-                            html += `<div style="font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 4px;">${t('선택')} ${groupIndex + 1}</div>`;
+                            html += `<div style="font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 4px;">${t('labelSelect')} ${groupIndex + 1}</div>`;
                         }
                         choiceGroup.forEach((choice, choiceIndex) => {
                             const reward = choice.reward || 0;
@@ -1325,12 +1292,12 @@
                         }
                     });
                 }
-                
+
                 // RANK 14→15이고 can_romance가 true인 경우 소울 메이트/절친 표시 추가 (메로페 제외)
                 if (rankFrom === 14 && rankTo === 15 && data.can_romance === true && characterName !== '메로페') {
                     html += `<div class="soulmate-indicator-placeholder" data-rank="14-15" data-character="${characterName}"></div>`;
                 }
-                
+
                 html += `
                         </div>
                     </div>
@@ -1344,7 +1311,7 @@
             html += `
                 <div class="detail-section">
                     <h3 class="detail-section-title collapsible">
-                        <span>${t('도시 이벤트')}</span>
+                        <span>${t('labelVisitDialog')}</span>
                         ${chevronSvg}
                     </h3>
                     <div class="section-content">
@@ -1355,9 +1322,9 @@
                 const destinationText = translateMapName(visit.destination);
                 // destination 이미지 가져오기
                 const destinationImage = getMapImage(visit.destination);
-                const destinationImageHtml = destinationImage ? 
+                const destinationImageHtml = destinationImage ?
                     `<img src="${destinationImage}" alt="${destinationText}" class="visit-destination-image" onerror="this.onerror=null; this.style.display='none';">` : '';
-                
+
                 html += `
                     <div class="visit-dialog">
                         <div class="visit-destination">
@@ -1375,7 +1342,7 @@
                         // 단일 선택지인 경우(choiceGroup.length === 1) 노란색 표시 안함
                         const maxRewardCount = rewards.filter(r => r === maxReward).length;
                         const hasUniqueMax = maxRewardCount === 1 && choiceGroup.length > 1;
-                        
+
                         choiceGroup.forEach((choice, choiceIndex) => {
                             const reward = choice.reward || 0;
                             const isMaxReward = hasUniqueMax && reward === maxReward;
@@ -1404,7 +1371,7 @@
             html += `
                 <div class="detail-section">
                     <h3 class="detail-section-title collapsible">
-                        <span>${t('기타 이벤트 (15랭크 이후)')}</span>
+                        <span>${t('labelRomanceDialog')}</span>
                         ${chevronSvg}
                     </h3>
                     <div class="section-content">
@@ -1424,10 +1391,10 @@
                         // 단일 선택지인 경우(choiceGroup.length === 1) 노란색 표시 안함
                         const maxRewardCount = rewards.filter(r => r === maxReward).length;
                         const hasUniqueMax = maxRewardCount === 1 && choiceGroup.length > 1;
-                        
+
                         if (dialog.good_answers.length > 1) {
                             html += `<div class="dialog-choice-group" style="margin-bottom: 8px;">`;
-                            html += `<div style="font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 4px;">${t('선택')} ${groupIndex + 1}</div>`;
+                            html += `<div style="font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 4px;">${t('labelSelect')} ${groupIndex + 1}</div>`;
                         }
                         choiceGroup.forEach((choice, choiceIndex) => {
                             const reward = choice.reward || 0;
@@ -1459,14 +1426,14 @@
         if (data.item && data.item.length > 0) {
             // 원본 데이터 저장 (정렬 전)
             const originalItems = [...data.item];
-            
+
             // shop이 배열인 경우 각 shop을 별도 항목으로 확장
             const expandedItems = [];
             data.item.forEach((item, index) => {
                 const synergy = item.synergy || 0;
                 const bonusSynergy = item.bonus_synergy || 0;
                 const totalSynergy = synergy + bonusSynergy;
-                
+
                 // shop이 배열인지 확인
                 if (Array.isArray(item.shop) && item.shop.length > 0) {
                     // shop 배열의 각 항목에 대해 별도 항목 생성
@@ -1475,7 +1442,7 @@
                         const moneyName = shop.moneyName || '';
                         const isCash = moneyName === '현금' || moneyName === 'Money' || moneyName === '所持金';
                         const efficiency = (isCash && totalSynergy > 0) ? Math.round(price / totalSynergy) : null;
-                        
+
                         expandedItems.push({
                             ...item,
                             shop: shop, // 단일 shop 객체로 교체
@@ -1494,7 +1461,7 @@
                     const moneyName = shop.moneyName || '';
                     const isCash = moneyName === '현금' || moneyName === 'Money' || moneyName === '所持金';
                     const efficiency = (isCash && totalSynergy > 0) ? Math.round(price / totalSynergy) : null;
-                    
+
                     expandedItems.push({
                         ...item,
                         _originalIndex: index,
@@ -1506,14 +1473,14 @@
                     });
                 }
             });
-            
+
             // 재귀적으로 계산한 가격으로 효율 재계산
             if (window.buildItemTree && window.calculateItemPrice) {
                 expandedItems.forEach((item) => {
                     try {
                         const itemTree = window.buildItemTree(item);
                         const calculatedPrice = window.calculateItemPrice(itemTree);
-                        
+
                         // 계산된 가격이 있고 호감도가 있으면 효율 재계산
                         if (calculatedPrice !== null && calculatedPrice > 0) {
                             const synergy = item.synergy || 0;
@@ -1528,16 +1495,16 @@
                     }
                 });
             }
-            
+
             // 호감도 기준 내림차순 정렬 (기본 정렬)
             const itemsWithEfficiency = expandedItems.sort((a, b) => {
                 return b._totalSynergy - a._totalSynergy;
             });
-            
+
             // 효율과 호감도 값 수집 (색상 계산용)
             const efficiencyValues = [];
             const synergyValues = [];
-            
+
             itemsWithEfficiency.forEach((item) => {
                 if (item._efficiency !== null && item._efficiency !== -1) {
                     efficiencyValues.push(item._efficiency);
@@ -1549,35 +1516,35 @@
                     synergyValues.push(totalSynergy);
                 }
             });
-            
+
             // 사분위수 계산 함수
             function getQuartiles(values) {
                 if (values.length === 0) return { q1: 0, q3: 0, min: 0, max: 0 };
-                
+
                 const sorted = [...values].sort((a, b) => a - b);
                 const min = sorted[0];
                 const max = sorted[sorted.length - 1];
-                
+
                 const q1Index = Math.floor(sorted.length * 0.25);
                 const q3Index = Math.floor(sorted.length * 0.75);
                 const q1 = sorted[q1Index] || min;
                 const q3 = sorted[q3Index] || max;
-                
+
                 return { q1, q3, min, max };
             }
-            
+
             const efficiencyQuartiles = getQuartiles(efficiencyValues);
             const synergyQuartiles = getQuartiles(synergyValues);
-            
+
             // 효율 색상 계산 함수 (낮을수록 진하게, 사분위수 기반)
             function getEfficiencyColor(efficiency, quartiles) {
                 if (efficiency === null || efficiency === -1) {
                     return '#999'; // 기본 회색
                 }
-                
+
                 const { q1, q3, min, max } = quartiles;
                 if (min === max) return '#4caf50'; // 모두 같으면 초록
-                
+
                 let normalized;
                 if (efficiency <= q1) {
                     // 하위 25%: 0.75 ~ 1.0 (진한 초록)
@@ -1589,27 +1556,27 @@
                     // 상위 25%: 0.0 ~ 0.25 (연한 회색)
                     normalized = 0.25 * (1 - (efficiency - q3) / (max - q3 || 1));
                 }
-                
+
                 // 초록색(#4caf50)에서 회색(#999)으로 그라데이션
                 const r1 = 0x4c, g1 = 0xaf, b1 = 0x50; // 초록
                 const r2 = 0x99, g2 = 0x99, b2 = 0x99; // 회색
-                
+
                 const r = Math.round(r1 + (r2 - r1) * (1 - normalized));
                 const g = Math.round(g1 + (g2 - g1) * (1 - normalized));
                 const b = Math.round(b1 + (b2 - b1) * (1 - normalized));
-                
+
                 return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
             }
-            
+
             // 호감도 색상 계산 함수 (높을수록 진하게, 사분위수 기반)
             function getSynergyColor(synergy, quartiles) {
                 if (synergy <= 0) {
                     return '#999'; // 기본 회색
                 }
-                
+
                 const { q1, q3, min, max } = quartiles;
                 if (min === max) return '#4caf50'; // 모두 같으면 초록
-                
+
                 let normalized;
                 if (synergy >= q3) {
                     // 상위 25%: 0.75 ~ 1.0 (진한 초록)
@@ -1621,37 +1588,37 @@
                     // 하위 25%: 0.0 ~ 0.25 (연한 회색)
                     normalized = 0.25 * ((synergy - min) / (q1 - min || 1));
                 }
-                
+
                 // 회색(#999)에서 초록색(#4caf50)으로 그라데이션
                 const r1 = 0x99, g1 = 0x99, b1 = 0x99; // 회색
                 const r2 = 0x4c, g2 = 0xaf, b2 = 0x50; // 초록
-                
+
                 const r = Math.round(r1 + (r2 - r1) * normalized);
                 const g = Math.round(g1 + (g2 - g1) * normalized);
                 const b = Math.round(b1 + (b2 - b1) * normalized);
-                
+
                 return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
             }
-            
+
             html += `
                 <div class="detail-section">
                     <h3 class="detail-section-title collapsible">
-                        <span>${t('선호 선물')}</span>
+                        <span>${t('labelItem')}</span>
                         ${chevronSvg}
                     </h3>
                     <div class="section-content">
                         <table class="item-table">
                         <thead>
                             <tr>
-                                <th class="item-name-header">${t('이름')}</th>
-                                <th>${t('호감도')}</th>
-                                <th>${t('최초 선물')}</th>
-                                <th class="item-price-header">${t('가격')}</th>
-                                <th>${t('효율')}</th>
-                                <th>${t('할인가')}</th>
-                                <th class="item-source-header">${t('획득처')}</th>
-                                <th>${t('최대')}</th>
-                                <th>${t('갱신')}</th>
+                                <th class="item-name-header">${t('labelName')}</th>
+                                <th>${t('labelSynergy')}</th>
+                                <th>${t('labelFirstGift')}</th>
+                                <th class="item-price-header">${t('labelPrice')}</th>
+                                <th>${t('labelEfficiency')}</th>
+                                <th>${t('labelDiscount')}</th>
+                                <th class="item-source-header">${t('labelSource')}</th>
+                                <th>${t('labelMax')}</th>
+                                <th>${t('labelReset')}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -1662,14 +1629,14 @@
                 const newGiftSynergy = item.new_gift_synergy || 0;
                 const totalSynergy = item._totalSynergy || synergy + bonusSynergy;
                 const firstGiftSynergy = synergy + bonusSynergy + newGiftSynergy;
-                
+
                 // shop 정보 처리
                 const shop = item.shop || {};
                 let price = item._price !== undefined ? item._price : (shop.price || 0);
                 const discountPrice = item._discountPrice !== undefined ? item._discountPrice : (shop.discountPrice || price);
                 const moneyName = shop.moneyName || '';
                 const isCash = moneyName === '현금' || moneyName === 'Money' || moneyName === '所持金';
-                
+
                 // 재귀적으로 계산한 가격 (현금 가치)
                 let calculatedPrice = null;
                 if (window.buildItemTree && window.calculateItemPrice) {
@@ -1684,7 +1651,7 @@
                         console.warn('가격 계산 중 오류:', e);
                     }
                 }
-                
+
                 // 효율 계산 (계산된 가격이 있으면 그 가격으로, 없으면 기존 로직)
                 let efficiency = item._efficiency !== null ? item._efficiency : null;
                 if (efficiency === null) {
@@ -1696,14 +1663,14 @@
                         efficiency = Math.round(price / totalSynergy);
                     }
                 }
-                
+
                 const efficiencyText = efficiency !== null ? efficiency : '-';
                 const efficiencyColor = getEfficiencyColor(efficiency !== null ? efficiency : -1, efficiencyQuartiles);
                 const synergyColor = getSynergyColor(totalSynergy, synergyQuartiles);
-                
+
                 // moneyName 아이콘 가져오기
                 const moneyIcon = getMoneyIcon(moneyName, shop);
-                
+
                 // 가격 표시 (moneyName을 아이콘으로 대체, 아이콘을 숫자 앞에)
                 // 계산된 가격이 있으면 그 가격 표시, 없으면 shop 가격 표시
                 let priceText = '-';
@@ -1719,7 +1686,7 @@
                         priceText = `${displayPrice.toLocaleString()} ${moneyName}`;
                     }
                 }
-                
+
                 // 할인가 표시 (moneyName을 아이콘으로 대체, 아이콘을 숫자 앞에)
                 let discountText = '-';
                 let discountTooltipHtml = null; // 할인 조건 툴팁 HTML (아이콘 포함)
@@ -1729,7 +1696,7 @@
                     } else {
                         discountText = `${discountPrice.toLocaleString()} ${moneyName}`;
                     }
-                    
+
                     // 할인 조건이 있으면 툴팁 HTML 생성 (아이콘 포함)
                     if (shop.reducePriceCond) {
                         // "도겐자카 루우나 LV.1" 같은 형식에서 LV 부분만 추출
@@ -1738,7 +1705,7 @@
                         discountTooltipHtml = `<span class="item-condition-wrapper"><img src="${BASE_URL}/assets/img/synergy/item-500218.png" alt="할인 조건" class="item-condition-icon" onerror="this.onerror=null; this.style.display='none';">${lvText}</span>`;
                     }
                 }
-                
+
                 // 할인가 옆에 ? 아이콘 추가 (할인 조건이 있을 때만)
                 let discountIconHtml = '';
                 if (discountTooltipHtml) {
@@ -1751,11 +1718,11 @@
                         </span>
                     `;
                 }
-                
+
                 // 획득처 (item_from.js 사용, compound 우선)
                 let sourceText = '-';
                 let sourceIconHtml = '';
-                
+
                 // item_from.js의 generateSourceText 함수 사용
                 if (window.generateSourceText) {
                     const generatedText = window.generateSourceText(item);
@@ -1779,9 +1746,9 @@
                         if (shop.mapName || shop.shopName) {
                             const parts = [];
                             // 게임 센터 관련 moneyName인 경우 mapName 오버라이드
-                            if (moneyName && (moneyName.includes('게임 센터') || moneyName.includes('Game') || 
+                            if (moneyName && (moneyName.includes('게임 센터') || moneyName.includes('Arcade') ||
                                 moneyName.includes('ゲーム') || moneyName.includes('ゲームセンター'))) {
-                                parts.push('아키하바라 게임 센터');
+                                parts.push(t('labelMapAkihabaraArcade'));
                             } else if (shop.mapName) {
                                 parts.push(translateMapName(shop.mapName));
                             }
@@ -1801,9 +1768,9 @@
                     if (shop.mapName || shop.shopName) {
                         const parts = [];
                         // 게임 센터 관련 moneyName인 경우 mapName 오버라이드
-                        if (moneyName && (moneyName.includes('게임 센터') || moneyName.includes('Game') || 
+                        if (moneyName && (moneyName.includes('게임 센터') || moneyName.includes('Game') || moneyName.includes('Arcade') ||
                             moneyName.includes('ゲーム') || moneyName.includes('ゲームセンター'))) {
-                            parts.push('아키하바라 게임 센터');
+                            parts.push(t('labelMapAkihabaraArcade'));
                         } else if (shop.mapName) {
                             parts.push(translateMapName(shop.mapName));
                         }
@@ -1818,16 +1785,16 @@
                         if (!sourceText) sourceText = '-';
                     }
                 }
-                
+
                 // 최대 개수 (-1이면 '-'로 표시)
                 const maxBuyText = (shop.maxBuy !== undefined && shop.maxBuy !== null && shop.maxBuy !== -1) ? shop.maxBuy : '-';
-                
+
                 // 갱신 (resetType 번역)
                 const resetTypeText = translateResetType(shop.resetType);
-                
+
                 // 아이템 이미지
                 const itemImage = item.image ? `<img src="${BASE_URL}/assets/img/synergy/item/${item.image}" alt="${item.name}" class="item-image" onerror="this.onerror=null; this.style.display='none';">` : '';
-                
+
                 // 모바일용 이름 셀 (이름 + 가격 · 획득처)
                 const itemNameMobileHtml = `
                     <div class="item-name-cell">
@@ -1839,7 +1806,7 @@
                         </div>
                     </div>
                 `;
-                
+
                 html += `
                     <tr data-original-index="${item._originalIndex}" data-shop-index="${item._shopIndex || 0}">
                         <td>
@@ -1867,14 +1834,14 @@
                     </div>
                 </div>
             `;
-            
+
             // 할인 조건 툴팁 초기화
             if (window.initDiscountTooltips) {
                 setTimeout(() => {
                     window.initDiscountTooltips();
                 }, 0);
             }
-            
+
             // 획득처 아이콘 클릭 이벤트 초기화
             setTimeout(() => {
                 setupItemSourceIcons();
@@ -1882,34 +1849,34 @@
         }
 
         detailContainer.innerHTML = html;
-        
+
         // 소울 메이트 표시 추가 (soulmate.js가 로드된 경우)
         if (window.addSoulmateIndicator) {
             setTimeout(() => {
                 window.addSoulmateIndicator();
             }, 0);
         }
-        
+
         // 섹션 접기/펼치기 기능 초기화
         setupSectionCollapse();
-        
+
         // 사전 퀘스트 스포일러 클릭 이벤트 설정
         setupUnlockQuestSpoiler();
-        
+
         // 모바일에서 헤더 텍스트 변경
         if (window.innerWidth <= 768) {
             const awardNameHeader = detailContainer.querySelector('.award-name-header');
             if (awardNameHeader) {
-                awardNameHeader.textContent = t('이름/보상');
+                awardNameHeader.textContent = t('mobileHeaderNameReward');
             }
-            
+
             const itemNameHeader = detailContainer.querySelector('.item-name-header');
             if (itemNameHeader) {
-                itemNameHeader.textContent = t('이름/가격/획득처');
+                itemNameHeader.textContent = t('mobileHeaderNamePriceSource');
             }
         }
     }
-    
+
     // 전역으로 노출 (synergy_search.js에서 사용)
     window.createTabs = createTabs;
 
@@ -1923,7 +1890,7 @@
             const icon = e.target.closest('.item-source-icon');
             const text = e.target.closest('.item-source-text-clickable');
             const clickableElement = icon || text;
-            
+
             if (!clickableElement) return;
 
             try {
@@ -1947,8 +1914,8 @@
     function setupUnlockQuestSpoiler() {
         const unlockQuestContent = document.querySelector('.unlock-quest-content.spoiler');
         if (!unlockQuestContent) return;
-        
-        unlockQuestContent.addEventListener('click', function(e) {
+
+        unlockQuestContent.addEventListener('click', function (e) {
             if (this.classList.contains('spoiler')) {
                 e.preventDefault();
                 e.stopPropagation();
@@ -1968,7 +1935,7 @@
     function setupSectionCollapse() {
         const detailContainer = document.getElementById('characterDetail');
         if (!detailContainer) return;
-        
+
         // 이미 리스너가 추가되었는지 확인
         if (detailContainer.dataset.collapseListenerAdded === 'true') {
             // 리스너는 이미 추가되어 있으므로, 새로 생성된 제목들에만 커서 스타일 적용
@@ -1978,9 +1945,9 @@
             });
             return;
         }
-        
+
         detailContainer.dataset.collapseListenerAdded = 'true';
-        
+
         // 이벤트 위임 사용: detailContainer에 한 번만 리스너 추가
         detailContainer.addEventListener('click', (e) => {
             // 사전 퀘스트 스포일러 클릭 처리 (먼저 처리)
@@ -1998,21 +1965,21 @@
                 spoilerContent.dataset.spoilerRevealed = '1';
                 return;
             }
-            
+
             // 클릭된 요소가 collapsible 제목이나 그 자식 요소인지 확인
             let title = e.target.closest('.detail-section-title.collapsible');
-            
+
             // chevron SVG나 span을 클릭한 경우도 처리
             if (!title && (e.target.classList.contains('section-chevron') || e.target.closest('.section-chevron'))) {
                 title = e.target.closest('.section-chevron')?.closest('.detail-section-title.collapsible');
             }
-            
+
             if (!title) return;
-            
+
             e.preventDefault();
             e.stopPropagation();
             e.stopImmediatePropagation();
-            
+
             // 해당 제목이 속한 섹션만 찾기 (직접 부모만)
             const section = title.parentElement;
             if (!section || !section.classList.contains('detail-section')) {
@@ -2022,18 +1989,18 @@
                 toggleSection(foundSection, title);
                 return;
             }
-            
+
             toggleSection(section, title);
         });
-        
+
         // 섹션 토글 함수 (재사용)
         function toggleSection(section, title) {
             const content = section.querySelector(':scope > .section-content');
             if (!content) return;
-            
+
             const chevron = title.querySelector('.section-chevron');
             const isCollapsed = section.classList.contains('collapsed');
-            
+
             if (isCollapsed) {
                 section.classList.remove('collapsed');
                 if (chevron) {
@@ -2046,7 +2013,7 @@
                 }
             }
         }
-        
+
         // 모든 collapsible 제목에 커서 스타일 적용
         const collapsibleTitles = detailContainer.querySelectorAll('.detail-section-title.collapsible');
         collapsibleTitles.forEach(title => {
@@ -2058,16 +2025,16 @@
     function setupItemTableSorting() {
         const table = document.querySelector('.item-table');
         if (!table) return;
-        
+
         const sortableHeaders = table.querySelectorAll('th.sortable');
         const tbody = table.querySelector('tbody');
         if (!tbody) return;
-        
+
         let currentSort = {
             column: 'synergy',
             direction: 'desc' // 기본값: 호감도 내림차순 (인디케이터 표시 안 함)
         };
-        
+
         // 정렬 인디케이터 업데이트
         function updateSortIndicators() {
             sortableHeaders.forEach(header => {
@@ -2082,14 +2049,14 @@
                 }
             });
         }
-        
+
         // 초기 정렬 인디케이터 설정 (기본 정렬은 표시 안 함)
         // updateSortIndicators(); // 기본 정렬이므로 인디케이터 표시 안 함
-        
-            // 정렬 함수
+
+        // 정렬 함수
         function sortTable(sortType) {
             const rows = Array.from(tbody.querySelectorAll('tr'));
-            
+
             // 같은 컬럼 클릭 시 방향 토글, 다른 컬럼 클릭 시 내림차순으로 시작
             if (currentSort.column === sortType) {
                 if (currentSort.direction === 'desc') {
@@ -2103,7 +2070,7 @@
                 currentSort.column = sortType;
                 currentSort.direction = 'desc';
             }
-            
+
             if (currentSort.direction === 'original') {
                 // 원래 순서로 복원 (data-original-index와 data-shop-index 기준)
                 rows.sort((a, b) => {
@@ -2121,7 +2088,7 @@
                 // 정렬 수행 (rowspan이 있는 경우를 고려)
                 rows.sort((a, b) => {
                     let aVal, bVal;
-                    
+
                     // rowspan이 있는 경우 첫 번째 셀의 값을 사용
                     const getCellValue = (row, cellIndex) => {
                         const cell = row.cells[cellIndex];
@@ -2129,7 +2096,7 @@
                         // rowspan이 있는 경우 해당 셀의 값을 반환
                         return cell.textContent?.trim() || '';
                     };
-                    
+
                     if (sortType === 'synergy') {
                         const aText = getCellValue(a, 1);
                         const bText = getCellValue(b, 1);
@@ -2159,20 +2126,20 @@
                         aVal = aText === '-' ? -1 : parseFloat(aText.replace(/[^\d.]/g, '')) || -1;
                         bVal = bText === '-' ? -1 : parseFloat(bText.replace(/[^\d.]/g, '')) || -1;
                     }
-                    
+
                     if (currentSort.direction === 'asc') {
                         return aVal - bVal;
                     } else {
                         return bVal - aVal;
                     }
                 });
-                
+
                 rows.forEach(row => tbody.appendChild(row));
             }
-            
+
             updateSortIndicators();
         }
-        
+
         // 헤더 클릭 이벤트
         sortableHeaders.forEach(header => {
             header.style.cursor = 'pointer';
@@ -2192,26 +2159,33 @@
 
     // 초기화
     async function init() {
-        currentLanguage = getCurrentLanguage();
-        
+        // i18n 초기화
+        if (typeof window.initPageI18n === 'function') {
+            await window.initPageI18n('synergy');
+        }
+
+        currentLanguage = (typeof window.I18nService !== 'undefined')
+            ? window.I18nService.getCurrentLanguage()
+            : getCurrentLanguage();
+
         // Navigation 초기화
         try {
             if (typeof Navigation !== 'undefined' && Navigation.load) {
                 Navigation.load('synergy');
             }
-        } catch (e) {}
+        } catch (e) { }
 
         // Version 체크
         try {
             if (typeof VersionChecker !== 'undefined' && VersionChecker.check) {
                 VersionChecker.check();
             }
-        } catch (e) {}
+        } catch (e) { }
 
         // 캐릭터 목록 로드
         const loaded = await loadCharacterList();
         if (!loaded) {
-            document.getElementById('characterDetail').innerHTML = 
+            document.getElementById('characterDetail').innerHTML =
                 '<div style="padding: 40px; text-align: center; color: rgba(255,255,255,0.5);">데이터를 불러올 수 없습니다</div>';
             return;
         }
@@ -2223,7 +2197,11 @@
         setupFilters();
 
         // UI 번역
-        translateUI();
+        // UI 번역 (i18n 서비스가 자동 처리)
+        // translateUI();
+        if (window.I18nService && window.I18nService.updateDOM) {
+            window.I18nService.updateDOM();
+        }
 
         // URL 파라미터에서 캐릭터 읽기 (코드네임으로 찾기)
         const urlParams = new URLSearchParams(window.location.search);
@@ -2231,24 +2209,24 @@
         if (urlCharacter) {
             const decodedChar = urlCharacter.toLowerCase();
             let foundCharacter = null;
-            
+
             // 각 캐릭터의 코드네임과 비교
             for (const name of Object.keys(characterList)) {
                 let codeName = null;
-                
+
                 // 메로페 예외 처리
                 if (name === '메로페') {
                     codeName = 'merope';
                 } else if (window.characterData && window.characterData[name] && window.characterData[name].codename) {
                     codeName = window.characterData[name].codename.toLowerCase();
                 }
-                
+
                 if (codeName && codeName === decodedChar) {
                     foundCharacter = name;
                     break;
                 }
             }
-            
+
             if (foundCharacter && characterList[foundCharacter]) {
                 selectedCharacter = foundCharacter;
             }

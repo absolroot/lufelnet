@@ -943,11 +943,41 @@
             "enemy_data": null
         },
         {
+            "sn": 8533199,
+            "image": "breakable.png",
+            "position": [
+                1555,
+                15
+            ],
+            "ratio": 0.7,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
             "sn": 8533201,
             "image": "breakable.png",
             "position": [
                 1735,
                 286
+            ],
+            "ratio": 0.7,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8533203,
+            "image": "breakable.png",
+            "position": [
+                1443,
+                353
             ],
             "ratio": 0.7,
             "rotate": 0.0,
@@ -1370,6 +1400,21 @@
                 895
             ],
             "ratio": 0.7777777777777778,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 853349002,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                1416,
+                289
+            ],
+            "ratio": 0.7368421052631579,
             "rotate": 0.0,
             "rotate_pivot": [
                 0.5,

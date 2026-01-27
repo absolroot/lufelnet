@@ -16,6 +16,21 @@
     ],
     "objects": [
         {
+            "sn": 8546152,
+            "image": "yishijie-icon-box-suo-new.png",
+            "position": [
+                153,
+                518
+            ],
+            "ratio": 0.7777777777777778,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
             "sn": 8546801,
             "image": "breakable.png",
             "position": [

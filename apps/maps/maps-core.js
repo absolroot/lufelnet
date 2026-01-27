@@ -1,18 +1,18 @@
 // Maps Core - 공통 로직 (PixiJS, 맵 로드, 타일/오브젝트 로드, 마우스 이벤트)
 
-(function() {
+(function () {
     'use strict';
 
     // BASE_URL은 레이아웃에서 window.BASE_URL로 설정됨
     const BASE_URL = typeof window.BASE_URL !== 'undefined' ? window.BASE_URL : '';
-    
+
     // 경로 정규화
     function normalizePath(base, path) {
         const cleanBase = base.replace(/\/+$/, '');
         const cleanPath = path.replace(/^\/+/, '');
         return cleanBase ? `${cleanBase}/${cleanPath}` : `/${cleanPath}`;
     }
-    
+
     // 경로 상수
     const MAP_DATA_BASE_PATH = normalizePath(BASE_URL, 'apps/maps/map_json/');
     const TILE_PATH = normalizePath(BASE_URL, 'apps/maps/tiles/');
@@ -37,7 +37,7 @@
             if (savedLang && ['kr', 'en', 'jp'].includes(savedLang)) {
                 return savedLang;
             }
-        } catch (e) {}
+        } catch (e) { }
         return 'kr';
     }
 
@@ -56,7 +56,8 @@
     let mapVersions = []; // 사용 가능한 맵 버전 목록
     let currentMapVersion = 0; // 현재 선택된 버전
     let currentMapId = null; // 현재 맵 ID (위치 저장용)
-    let positionSaveTimeout = null; // 위치 저장 디바운스용
+    // 위치 저장 디바운스용
+    const positionSaveTimeout = null;
 
     // 텍스처 메모리 캐시 (세션 동안 유지)
     const textureCache = new Map();
@@ -70,7 +71,7 @@
         // 공개 API
         getApp: () => app,
         getMapContainer: () => mapContainer,
-        
+
         // 초기화 함수
         async init() {
             // 비대화형 아이콘 목록 로드
@@ -87,7 +88,7 @@
         getCurrentLanguage: getCurrentLanguage,
         getMapDataPath: getMapDataPath,
         getPaths: () => ({ MAP_DATA_BASE_PATH, TILE_PATH, ICON_PATH, MAPS_LIST_PATH, getMapDataPath }),
-        
+
         // PixiJS 초기화
         async initPixi() {
             try {
@@ -554,24 +555,24 @@
             //         new_h = round(max(py, h - py) * 2)
             const new_w = Math.round(Math.max(px, w - px) * 2);
             const new_h = Math.round(Math.max(py, h - py) * 2);
-            
+
             // Python: paste_x = round(new_w / 2 - px)
             //         paste_y = round(new_h / 2 - py)
             const paste_x = Math.round(new_w / 2 - px);
             const paste_y = Math.round(new_h / 2 - py);
-            
+
             // Python: center = (paste_x + px, paste_y + py)
             const center_x = paste_x + px;
             const center_y = paste_y + py;
-            
+
             // 회전된 캔버스의 네 모서리
             const canvas_corners = [
                 [0, 0], [new_w, 0], [new_w, new_h], [0, new_h]
             ];
-            
+
             const cos = Math.cos(angleRad);
             const sin = Math.sin(angleRad);
-            
+
             // 회전 변환
             const rotated_corners = canvas_corners.map(([x, y]) => {
                 const dx = x - center_x;
@@ -581,18 +582,18 @@
                     dx * sin + dy * cos
                 ];
             });
-            
+
             const xs = rotated_corners.map(c => c[0]);
             const ys = rotated_corners.map(c => c[1]);
             const minX = Math.min(...xs);
             const minY = Math.min(...ys);
             const maxX = Math.max(...xs);
             const maxY = Math.max(...ys);
-            
+
             // Python: PIL rotate(expand=True)는 결과 크기를 정수로 처리
             const expandedWidth = Math.round(maxX - minX);
             const expandedHeight = Math.round(maxY - minY);
-            
+
             return {
                 expandedWidth,
                 expandedHeight,
@@ -670,7 +671,7 @@
                             // 회전 없음: Python rotate_and_expand(expand=True) 로직 구현
                             // Python position은 확장된 캔버스(new_w x new_h)의 좌상단 좌표
                             // PixiJS sprite는 pivot을 중심으로 위치하므로 pivot을 기준으로 조정 필요
-                            
+
                             sprite.rotation = 0;
                             // 확장된 캔버스의 좌상단에서 pivot까지의 거리를 계산
                             sprite.x = tile.position[0] + paste_x + px;
@@ -738,7 +739,7 @@
                     // 타일 클릭 이벤트 (디버그 모드에서만 동작)
                     sprite.eventMode = 'static';
                     sprite.cursor = 'default';
-                    sprite.on('pointerup', function() {
+                    sprite.on('pointerup', function () {
                         if (window.MapsCore && window.MapsCore.debugMode) {
                             console.log('=== TILE DEBUG INFO ===');
                             console.log('Index:', this.debugInfo.index);
@@ -757,7 +758,7 @@
                     });
 
                     tilesContainer.addChild(sprite);
-                    
+
                     loaded++;
                     if (loadingText && window.MapsI18n) {
                         const lang = getCurrentLanguage();
@@ -864,24 +865,24 @@
                         'yishijie-icon-chepiao03.png',
                         'yishijie-icon-youtong-new.png'
                     ];
-                    
+
                     let adjustedRatio = finalRatio;
                     if (limitedIcons.includes(obj.image) && adjustedRatio > 1.5) {
                         adjustedRatio = 1.5;
                     }
-                    
+
                     // 최소 사이즈 24px 보장
                     const minSize = 24;
                     const scaledWidth = texture.width * adjustedRatio;
                     const scaledHeight = texture.height * adjustedRatio;
                     const minDimension = Math.min(scaledWidth, scaledHeight);
-                    
+
                     if (minDimension < minSize) {
                         // 최소 사이즈를 보장하기 위해 ratio 조정
                         const minRatioForWidth = minSize / texture.width;
                         const minRatioForHeight = minSize / texture.height;
                         const requiredMinRatio = Math.max(minRatioForWidth, minRatioForHeight);
-                        
+
                         // 기존 adjustedRatio와 requiredMinRatio 중 더 큰 값 사용
                         adjustedRatio = Math.max(adjustedRatio, requiredMinRatio);
                     }
@@ -889,30 +890,30 @@
                     // breakable 아이콘은 ratio를 원래 그대로 설정
                     if (obj.image === 'breakable.png' || obj.image === 'yishijie-icon-breakable.png') {
                         adjustedRatio = finalRatio * 0.6;
-                        
+
                         // breakable 아이콘은 자기 height/2 + height/10 만큼 위로 이동
                         sprite.y -= texture.height * adjustedRatio / 2 + texture.height * adjustedRatio / 10;
                     }
 
                     sprite.scale.set(adjustedRatio);
-                    
+
                     debugInfo.computed.finalRatio = finalRatio;
                     debugInfo.computed.adjustedRatio = adjustedRatio;
-                    
+
                     // 디버그 정보를 sprite에 저장
                     sprite.debugInfo = debugInfo;
-                    
+
                     // sn 정보 저장
                     sprite.objectSn = obj.sn || null;
-                    
+
                     // 이미지 정보 저장 (non_countable_icons 확인용)
                     sprite.objectImage = obj.image || null;
-                    
+
                     // enemy_data 저장
                     if (obj.enemy_data) {
                         sprite.debugInfo.enemyData = obj.enemy_data;
                     }
-                    
+
                     // 디버그 정보를 전역 저장소에 추가
                     if (window.MapsDebug) {
                         window.MapsDebug.addObjectDebugInfo({
@@ -930,20 +931,20 @@
                             spriteScale: [sprite.scale.x, sprite.scale.y]
                         });
                     }
-                    
+
                     // 저장된 클릭 상태 확인 및 적용 (비대화형 아이콘 제외)
                     const isNonInteractive = this.isNonInteractiveIcon(obj.image);
                     // console.log(`오브젝트: ${obj.image}, 비대화형: ${isNonInteractive}`);
-                    
+
                     if (sprite.objectSn && window.ObjectClickHandler && !isNonInteractive) {
                         window.ObjectClickHandler.restoreClickedState(sprite);
                     }
-                    
+
                     // 클릭 이벤트 활성화 (비대화형 아이콘 제외)
                     if (!isNonInteractive) {
                         sprite.eventMode = 'static';
                         sprite.cursor = 'pointer';
-                        sprite.on('pointerup', function() {
+                        sprite.on('pointerup', function () {
                             if (this.objectSn && window.ObjectClickHandler) {
                                 window.ObjectClickHandler.toggleObjectClicked(this);
                             }
@@ -971,7 +972,7 @@
                         sprite.cursor = 'default';
                         //console.log(`비대화형 아이콘 처리: ${obj.image}`);
                     }
-                    
+
                     let objectType = obj.image;
                     if (objectType.startsWith('yishijie-icon-')) {
                         objectType = objectType.replace('yishijie-icon-', '');
@@ -987,13 +988,13 @@
                         objectType = 'jinzhi';
                     }
                     sprite.objectType = objectType;
-                    
+
                     // null이 아닌 경우에만 추가 (로드 실패한 오브젝트는 스프라이트 생성 안 함)
                     if (sprite) {
                         objectSprites.push(sprite);
                         objectsContainer.addChild(sprite);
                     }
-                    
+
                     loaded++;
                     if (loadingText && window.MapsI18n) {
                         const lang = getCurrentLanguage();
@@ -1019,27 +1020,27 @@
                 }
                 fileName = fileName[0];
             }
-            
+
             // 문자열 타입 체크
             if (typeof fileName !== 'string') {
                 throw new Error(`잘못된 파일명 타입: ${typeof fileName}. 문자열이 필요합니다.`);
             }
-            
+
             // 예: "palace/인지·폭식의 댐/댐·정신 에너지탑 하층0_data.json" 또는 "댐·정신 에너지탑 하층0_data.json"
             const match = fileName.match(/^(.+?)(\d+)_data\.json$/);
             if (match) {
                 const fullBase = match[1];
                 const version = parseInt(match[2], 10);
-                
+
                 let basePath = '';
                 let baseName = fullBase;
-                
+
                 if (fullBase.includes('/')) {
                     const lastSlash = fullBase.lastIndexOf('/');
                     basePath = fullBase.substring(0, lastSlash + 1);
                     baseName = fullBase.substring(lastSlash + 1);
                 }
-                
+
                 return {
                     basePath: basePath,
                     baseName: baseName,
@@ -1047,16 +1048,16 @@
                     fullPath: fileName
                 };
             }
-            
+
             let basePath = '';
             let baseName = fileName.replace('_data.json', '');
-            
+
             if (baseName.includes('/')) {
                 const lastSlash = baseName.lastIndexOf('/');
                 basePath = baseName.substring(0, lastSlash + 1);
                 baseName = baseName.substring(lastSlash + 1);
             }
-            
+
             return {
                 basePath: basePath,
                 baseName: baseName,
@@ -1104,21 +1105,21 @@
             }));
             this.createVersionSelectorFromArray(versions, version);
         },
-        
+
         // 배열 기반 버전 선택 UI 생성 (오브젝트 필터 패널 외부 오른쪽 상단)
         createVersionSelectorFromArray(versions, currentVersion) {
             const existing = document.getElementById('map-version-selector');
             if (existing) {
                 existing.remove();
             }
-            
+
             if (versions.length < 2) {
                 return;
             }
-            
+
             const selector = document.createElement('div');
             selector.id = 'map-version-selector';
-            
+
             versions.forEach((v, index) => {
                 const button = document.createElement('button');
                 button.className = 'version-btn';
@@ -1131,7 +1132,7 @@
                 });
                 selector.appendChild(button);
             });
-            
+
             // 오브젝트 필터 패널 외부 오른쪽 상단에 배치
             const objectFilterPanel = document.getElementById('object-filter-panel');
             const mapContainer = document.getElementById('map-container');
@@ -1222,6 +1223,15 @@
                 }
 
                 const data = await response.json();
+
+                // 맵 예외 처리 적용 (MapExceptionHandling)
+                if (window.MapExceptionHandling && window.MapExceptionHandling.applyExceptions) {
+                    console.log(`[MapsCore] Calling MapExceptionHandling for ${actualFileName}`);
+                    window.MapExceptionHandling.applyExceptions(actualFileName, data);
+                } else {
+                    console.warn(`[MapsCore] MapExceptionHandling not found or invalid`);
+                }
+
                 currentMapData = data;
                 currentMapFileName = mapFileName;
 
@@ -1236,22 +1246,22 @@
                 // 맵 전체 회전 처리
                 let mapRotation = 0;
                 let rotatedMapSize = data.map_size ? [...data.map_size] : null;
-                
+
                 if (data.rotate !== undefined && data.rotate !== null) {
                     mapRotation = data.rotate;
-                    
+
                     // 맵 크기를 기준으로 pivot 설정 (중앙 기준 회전)
                     if (rotatedMapSize && rotatedMapSize.length >= 2) {
                         const originalWidth = rotatedMapSize[0];
                         const originalHeight = rotatedMapSize[1];
-                        
+
                         // pivot을 맵 중앙으로 설정
                         mapContainer.pivot.set(originalWidth / 2, originalHeight / 2);
-                        
+
                         // 반시계 방향 회전 (PixiJS는 시계 방향이므로 음수로 변환)
                         const rotationRad = -mapRotation * (Math.PI / 180);
                         mapContainer.rotation = rotationRad;
-                        
+
                         // 90도 또는 270도 회전 시 맵 크기 swap
                         const normalizedRotation = ((mapRotation % 360) + 360) % 360;
                         if (normalizedRotation === 90 || normalizedRotation === 270) {

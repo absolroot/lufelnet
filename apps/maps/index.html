@@ -5,8 +5,8 @@ language: kr
 title: P5X 맵스 - 루페르넷
 description: P5X 맵 뷰어. 팰리스와 메멘토스의 모든 맵을 확인하세요.
 alternate_urls:
-  en: /maps/?lang=en
-  jp: /maps/?lang=jp
+en: /maps/?lang=en
+jp: /maps/?lang=jp
 ---
 
 <div id="map-container">
@@ -14,10 +14,10 @@ alternate_urls:
         <img id="loading-gif" src="" alt="로딩 중">
         <div id="loading-text">지도를 불러오는 중...</div>
     </div>
-    
+
     <!-- 좌측 상단: 로고 컨테이너 -->
     <div class="maps-logo-container"></div>
-    
+
     <!-- 좌측: 오브젝트 필터 패널 -->
     <div id="object-filter-panel" class="side-panel">
         <h2 id="object-filter-title">오브젝트 필터</h2>
@@ -89,7 +89,7 @@ alternate_urls:
             </div>
         </div>
     </div>
-    
+
     <!-- 모바일용 상단 브레드크럼 네비게이션 -->
     <div id="mobile-breadcrumb" class="mobile-breadcrumb">
         <div class="mobile-breadcrumb-logo"></div>
@@ -126,7 +126,7 @@ alternate_urls:
             <button class="map-tab active" data-map-id="palace">팰리스</button>
             <button class="map-tab" data-map-id="mementoes">메멘토스</button>
         </div>
-        
+
         <!-- 카테고리 드롭다운 -->
         <div id="category-select-container">
             <div id="category-select" class="custom-category-select">
@@ -140,7 +140,7 @@ alternate_urls:
                 </div>
             </div>
         </div>
-        
+
         <!-- 맵 리스트 -->
         <div id="map-list-container">
             <div id="map-list"></div>
@@ -156,6 +156,8 @@ alternate_urls:
 <script src="{{ site.baseurl }}/apps/maps/object-filter-panel.js?v={{ site.time | date: '%s' }}"></script>
 <script src="{{ site.baseurl }}/apps/maps/map-select-panel.js?v={{ site.time | date: '%s' }}"></script>
 <script src="{{ site.baseurl }}/apps/maps/maps-seo.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/maps/map-exception-handling.js?v={{ site.time | date: '%s' }}"></script>
+
 <script>
     // 초기화
     (async () => {
@@ -166,7 +168,7 @@ alternate_urls:
             const cleanPath = path.replace(/^\/+/, '');
             return cleanBase ? `${cleanBase}/${cleanPath}` : `/${cleanPath}`;
         }
-        
+
         const loadingGif = document.getElementById('loading-gif');
         if (loadingGif) {
             const gifPath = normalizePath(BASE_URL, 'apps/maps/p5xkr_walk_960.gif');
@@ -180,7 +182,7 @@ alternate_urls:
         if (window.MapSelectPanel) {
             window.MapSelectPanel.translateUI();
         }
-        
+
         // 언어 변경 감지
         let lastLang = window.MapsI18n ? window.MapsI18n.getCurrentLanguage() : 'kr';
         setInterval(() => {
@@ -206,12 +208,12 @@ alternate_urls:
             if (window.ObjectFilterPanel) {
                 window.ObjectFilterPanel.init();
             }
-            
+
             // 맵 선택 패널 초기화
             if (window.MapSelectPanel) {
                 window.MapSelectPanel.init();
             }
-            
+
             // 맵 목록 로드
             try {
                 const paths = window.MapsCore.getPaths();
@@ -221,7 +223,7 @@ alternate_urls:
                 }
                 const mapsListData = await response.json();
                 window.MapsCore.setMapsListData(mapsListData);
-                
+
                 // 맵 선택 패널 UI 구축
                 if (window.MapSelectPanel) {
                     window.MapSelectPanel.buildMapUI();

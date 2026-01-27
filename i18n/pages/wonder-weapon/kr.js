@@ -17,6 +17,7 @@ export default {
     labelShard: '수정',
     labelRelease: '출시 시점',
     labelLightningStamp: '빛의 각인',
+    labelLightningStampDesc: '',
     labelWeaponRelease: '무기',
     labelStampRelease: '빛의 각인',
 

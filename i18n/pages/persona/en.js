@@ -9,7 +9,8 @@ export default {
     filterRarity: "Rarity",
     filterGrade: "Grade",
     countUnit: "",
-    skillLevelLabel: "Skill LV :",
+    skillLevelLabel: "Skill LV",
+    tooltipSkillLevel: "LV7 with J&C, LV8 with J&C Awareness 6",
 
     // SEO
     seoTitle: "Personas Build & Guide - Persona 5: The Phantom X",

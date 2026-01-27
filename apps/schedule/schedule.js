@@ -46,7 +46,7 @@
 
         // If SEA mode, shift all dates by +7 days
         if (isSea) {
-            const shiftDays = 7;
+            const shiftDays = 8;
 
             // Shift manualReleases dates
             if (window.ReleaseScheduleData.manualReleases) {

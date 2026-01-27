@@ -84,8 +84,8 @@ const I18N = {
         freqVersion: '버전',
         freqOnce: '1회',
         mustReadTitle: '계산기 기준 및 안내',
-        labelSeaServer: 'SEA 서버 (일정 +7일)',
-        tooltipSeaServer: 'SEA 서버는 기본 일정보다 7일 늦습니다. 활성화 시 모든 출시 일정이 7일 연기되며, 현재 계획이 초기화됩니다.'
+        labelSeaServer: 'SEA 서버 (일정 +8일)',
+        tooltipSeaServer: 'SEA 서버는 기본 일정보다 8일 늦습니다. 활성화 시 모든 출시 일정이 8일 연기되며, 현재 계획이 초기화됩니다.'
     },
     en: {
         pageTitle: 'Pull Planner',
@@ -166,8 +166,8 @@ const I18N = {
         freqVersion: 'Per Version',
         freqOnce: 'Once',
         mustReadTitle: 'Calculator Criteria & Guide',
-        labelSeaServer: 'SEA Server (+7 Days)',
-        tooltipSeaServer: 'SEA server schedule is 7 days behind the default schedule. When enabled, all release dates shift by +7 days and your current plan will be reset.'
+        labelSeaServer: 'SEA Server (+8 Days)',
+        tooltipSeaServer: 'SEA server schedule is 8 days behind the default schedule. When enabled, all release dates shift by +8 days and your current plan will be reset.'
     },
     jp: {
         pageTitle: 'ガチャプランナー',
@@ -248,8 +248,8 @@ const I18N = {
         freqVersion: 'バージョン',
         freqOnce: '1回',
         mustReadTitle: '計算機の基準と案内',
-        labelSeaServer: 'SEAサーバー (+7日)',
-        tooltipSeaServer: 'SEAサーバーはデフォルトスケジュールより7日遅れます。有効にすると、すべてのリリース日程が7日延期され、現在の計画がリセットされます.'
+        labelSeaServer: 'SEAサーバー (+8日)',
+        tooltipSeaServer: 'SEAサーバーはデフォルトスケジュールより8日遅れます。有効にすると、すべてのリリース日程が8日延期され、現在の計画がリセットされます.'
     }
 };
 

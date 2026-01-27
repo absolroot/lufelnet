@@ -1,210 +1,601 @@
-.main-content { background-color: transparent; width: 100%; }
+.main-content {
+    background-color: transparent;
+    width: 100%;
+}
 
-.separator-line { padding : 0 20px; width: 100%; height: 1px; background: linear-gradient(
-    to right,
-    transparent,
-    rgba(255, 255, 255, 0.1) 10%,
-    rgba(255, 255, 255, 0.1) 90%,
-    transparent
-    ); margin: 0px 0 24px 0; box-sizing: border-box; }
+.separator-line {
+    padding: 0 20px;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right,
+            transparent,
+            rgba(255, 255, 255, 0.1) 10%,
+            rgba(255, 255, 255, 0.1) 90%,
+            transparent);
+    margin: 0px 0 24px 0;
+    box-sizing: border-box;
+}
 
-.character-cards { display: flex; flex-wrap: wrap; gap: 2vh 32px;  /* row-gap을 50px로 증가 */
-    justify-content: left; padding: 20px; }
+.character-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2vh 32px;
+    /* row-gap을 50px로 증가 */
+    justify-content: left;
+    padding: 20px 0px;
+}
 
-.card { position: relative; width: 160px; cursor: pointer; margin-bottom: 55px; transform-style: preserve-3d; transition: all 0.1s; }
+.card {
+    position: relative;
+    width: 160px;
+    cursor: pointer;
+    margin-bottom: 55px;
+    transform-style: preserve-3d;
+    transition: all 0.1s;
+}
 
-.card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(105deg,
-    transparent 40%,
-    rgba(255, 219, 112, 0.8) 45%,
-    rgba(132, 50, 255, 0.6) 50%,
-    transparent 54%); filter: brightness(1.1) opacity(0); mix-blend-mode: color-dodge; background-size: 150% 150%; background-position: 100%; transition: all 0.1s; pointer-events: none; z-index: 2; }
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(105deg,
+            transparent 40%,
+            rgba(255, 219, 112, 0.8) 45%,
+            rgba(132, 50, 255, 0.6) 50%,
+            transparent 54%);
+    filter: brightness(1.1) opacity(0);
+    mix-blend-mode: color-dodge;
+    background-size: 150% 150%;
+    background-position: 100%;
+    transition: all 0.1s;
+    pointer-events: none;
+    z-index: 2;
+}
 
-.card img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; box-shadow: 0 4px 8px rgba(255, 255, 255, 0.05); outline: none; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; }
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.05);
+    outline: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
 
-.character-img { width: 100%; height: 100%; object-fit: cover; transition: all 0.7s ease-in-out; position: relative; }
+.character-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.7s ease-in-out;
+    position: relative;
+}
 
-.character-img:not(.loaded) { opacity: 0.2; filter: grayscale(100%) blur(0px); transform: scale(1); }
+.character-img:not(.loaded) {
+    opacity: 0.2;
+    filter: grayscale(100%) blur(0px);
+    transform: scale(1);
+}
 
-.character-img.loaded { opacity: 1; filter: grayscale(0%) blur(0); transform: scale(1); }
+.character-img.loaded {
+    opacity: 1;
+    filter: grayscale(0%) blur(0);
+    transform: scale(1);
+}
 
-.element-icon { width: 11% !important; height: auto !important; position: absolute; top: 0px; left: 50%; transform: translateX(-50%); z-index: 1; object-fit: contain !important; box-shadow: none !important; border-radius: 0 !important; }
+.element-icon {
+    width: 11% !important;
+    height: auto !important;
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    object-fit: contain !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+}
 
 /* 특정 속성 아이콘들은 더 크게 표시 */
 .element-icon img[src*="속성_축복.png"],
 .element-icon img[src*="속성_빙결.png"],
-.element-icon img[src*="속성_질풍빙결.png"] { width: 12% !important; }
+.element-icon img[src*="속성_질풍빙결.png"] {
+    width: 12% !important;
+}
 
-.element-icon[src*="속성_주원.png"] { width: 9% !important; }
-.filter-options img[src*="속성_주원.png"] { width: 16px !important; height: 16px !important; padding: 2px; }
+.element-icon[src*="속성_주원.png"] {
+    width: 9% !important;
+}
 
-.position-container { position: absolute; top: 0; left: 0; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; z-index: 1; }
+.filter-options img[src*="속성_주원.png"] {
+    width: 16px !important;
+    height: 16px !important;
+    padding: 2px;
+}
 
-.position-icon { width: 60% !important; height: auto !important; object-fit: contain !important; box-shadow: none !important; border-radius: 0 !important; filter: sepia(100%) saturate(100%) hue-rotate(359deg) brightness(100%); }
+.position-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
 
-.card:nth-child(odd) { transform: rotate(-2deg) translateY(-10px); }
+.position-icon {
+    width: 60% !important;
+    height: auto !important;
+    object-fit: contain !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    filter: sepia(100%) saturate(100%) hue-rotate(359deg) brightness(100%);
+}
 
-.card:nth-child(even) { transform: rotate(-2deg) translateY(10px); }
+.card:nth-child(odd) {
+    transform: rotate(-2deg) translateY(-10px);
+}
+
+.card:nth-child(even) {
+    transform: rotate(-2deg) translateY(10px);
+}
 
 /* 호버 시 카드 이미지 색이 빛나는 효과*/
-.card:hover { filter: brightness(1.1); transform: rotate(-1deg) translateY(0px); z-index: 1; } 
+.card:hover {
+    filter: brightness(1.1);
+    transform: rotate(-1deg) translateY(0px);
+    z-index: 1;
+}
 
 /* 카드 호버 시 이름표 배경색 변경 */
-.card:hover .name-text { background: linear-gradient(to bottom, #8e222d, #841f28);  /* 빨간색 그라데이션으로 변경 */
-    transition: background 0.5s;  /* 부드러운 전환 효과 */
+.card:hover .name-text {
+    background: linear-gradient(to bottom, #8e222d, #841f28);
+    /* 빨간색 그라데이션으로 변경 */
+    transition: background 0.5s;
+    /* 부드러운 전환 효과 */
 }
 
 
 /* 페르소나3 호버 시 스타일 */
-.card:hover .name-text[data-persona3="true"] { background: linear-gradient(to bottom, #0e4570, #0d4e76); transition: background 0.5s; }
+.card:hover .name-text[data-persona3="true"] {
+    background: linear-gradient(to bottom, #0e4570, #0d4e76);
+    transition: background 0.5s;
+}
 
 
 /* 페르소나4 호버 시 스타일 */
-.card:hover .name-text[data-persona4="true"] { background: linear-gradient(to bottom, #cba233, #bf992f); transition: background 0.5s; }
+.card:hover .name-text[data-persona4="true"] {
+    background: linear-gradient(to bottom, #cba233, #bf992f);
+    transition: background 0.5s;
+}
 
 
 /* 페르소나5 호버 시 스타일 */
-.card:hover .name-text[data-persona5="true"] { background: linear-gradient(to bottom, #8c0b0b, #8d1919); transition: background 0.5s; }
+.card:hover .name-text[data-persona5="true"] {
+    background: linear-gradient(to bottom, #8c0b0b, #8d1919);
+    transition: background 0.5s;
+}
 
 
 
 
-.name-img { position: absolute; bottom: 30px !important; 
-    left: 50% !important; transform: translateX(-50%) !important; width: 50% !important; height: auto !important; object-fit: contain !important; z-index: 1 !important; }
+.name-img {
+    position: absolute;
+    bottom: 30px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 50% !important;
+    height: auto !important;
+    object-fit: contain !important;
+    z-index: 1 !important;
+}
 
-.name-text { position: absolute; display: block; font-size: 13px; color: #fff; bottom: -18px; left: 50%; transform: translateX(-50%); width: calc(100% - 20px); text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; background: linear-gradient(to bottom, #610000, #5a0000); padding: 5px 10px; border-radius: 0 0 8px 8px; box-shadow: 0 2px 4px rgba(255, 255, 255, 0.05); transition: background 0.5s;  /* 배경색 전환 효과 추가 */
+.name-text {
+    position: absolute;
+    display: block;
+    font-size: 13px;
+    color: #fff;
+    bottom: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 20px);
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background: linear-gradient(to bottom, #610000, #5a0000);
+    padding: 5px 10px;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.05);
+    transition: background 0.5s;
+    /* 배경색 전환 효과 추가 */
 }
 
 /* 필터 섹션 스타일 */
-.filter-section { /* background-color: #1a1919;*/
-    margin-bottom: 20px; overflow: hidden; }
-
-.filter-header { display: none; /*display: flex; align-items: center; padding: 0px 12px 10px 12px;*/
+.filter-section {
+    /* background-color: #1a1919;*/
+    margin-bottom: 20px;
+    overflow: hidden;
 }
 
-.filter-toggle-btn { display: flex; align-items: center; gap: 8px; background: none; border: none; color: #fff; cursor: pointer; padding: 8px 0; }
+.filter-header {
+    display: none;
+    /*display: flex; align-items: center; padding: 0px 12px 10px 12px;*/
+}
 
-.filter-toggle-btn img { width: 20px; height: 20px; }
+.filter-toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 8px 0;
+}
 
-.filter-reset-btn { margin-right: auto; background: none; border: none; cursor: pointer; padding: 0px; align-items: center; display: flex; margin-left:8px}
+.filter-toggle-btn img {
+    width: 20px;
+    height: 20px;
+}
 
-.filter-reset-btn img { height: 24px; object-fit: contain; }
+.filter-reset-btn {
+    margin-right: auto;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0px;
+    align-items: center;
+    display: flex;
+    margin-left: 8px
+}
+
+.filter-reset-btn img {
+    height: 24px;
+    object-fit: contain;
+}
+
 /*
 .filter-content { padding: 4px 20px 12px 24px; background-color: #242424; border-radius: 8px; }*/
 
-.filter-content { padding: 0px 20px 0px 20px; }
+.filter-content {
+    padding: 0px 0px 0px 0px;
+}
 
-.filter-group { display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; margin-bottom: 4px; gap : 4px; }
+.filter-group {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 4px;
+    gap: 4px;
+}
 
-.filter-group:last-child { margin-bottom: 0; }
+.filter-group:last-child {
+    margin-bottom: 0;
+}
 
-.filter-group h3 { width: 60px; color: rgb(255, 255, 255, 0.8); margin-bottom: 12px; font-size: 13px; font-weight: 400; outline: none; }
+.filter-group h3 {
+    width: 60px;
+    color: rgb(255, 255, 255, 0.8);
+    margin-bottom: 12px;
+    font-size: 13px;
+    font-weight: 400;
+    outline: none;
+}
 
-.filter-options { display: flex; flex-wrap: wrap; gap: .6rem; margin-right: 0px; padding-right: 0px; }
+.filter-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .6rem;
+    margin-right: 0px;
+    padding-right: 0px;
+}
 
-.filter-options label { height: 32px; display: flex; align-items: center; justify-content: center; color: #fff; cursor: pointer; border-radius: 32px; padding: 0px 6px 0px 6px; transition: all 0s;  /* background-color만이 아닌 모든 속성에 transition 적용 */
-    background-color: var(--card-background); outline: none; }
+.filter-options label {
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 32px;
+    padding: 0px 6px 0px 6px;
+    transition: all 0s;
+    /* background-color만이 아닌 모든 속성에 transition 적용 */
+    background-color: var(--card-background);
+    outline: none;
+}
 
-.filter-options label:hover { filter: brightness(1.1); background-color: rgb(255, 255, 255, 0.4); }
+.filter-options label:hover {
+    filter: brightness(1.1);
+    background-color: rgb(255, 255, 255, 0.4);
+}
 
 /* 체크박스가 체크되었을 때 라벨 스타일 변경 */
-.filter-options input[type="checkbox"]:checked + img,
-.filter-options input[type="checkbox"]:checked + .star-container { filter: brightness(1.2); }
+.filter-options input[type="checkbox"]:checked+img,
+.filter-options input[type="checkbox"]:checked+.star-container {
+    filter: brightness(1.2);
+}
 
-.filter-options input[type="checkbox"]:checked ~ label,
-.filter-options label:has(input[type="checkbox"]:checked) { background-color: rgba(0, 0, 0, 0.15);
+.filter-options input[type="checkbox"]:checked~label,
+.filter-options label:has(input[type="checkbox"]:checked) {
+    background-color: rgba(0, 0, 0, 0.15);
     height: 32px;
     padding: 0px 6px 0px 6px;
-    box-shadow: 0 0 0 1px #ff00007c inset; }
+    box-shadow: 0 0 0 1px #ff00007c inset;
+}
 
-.filter-options img { width: 20px; height: 20px; object-fit: contain; }
+.filter-options img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
 
 .filter-options img[src*="직업_지배.png"],
 .filter-options img[src*="직업_반항.png"],
 .filter-options img[src*="직업_우월.png"],
 .filter-options img[src*="직업_굴복.png"],
 .filter-options img[src*="직업_방위.png"],
-.filter-options img[src*="직업_해명.png"] { width: 22px; height: 22px; }
+.filter-options img[src*="직업_해명.png"] {
+    width: 22px;
+    height: 22px;
+}
 
-.filter-options input[type="checkbox"] { display: none; width: 16px; height: 16px; }
+.filter-options input[type="checkbox"] {
+    display: none;
+    width: 16px;
+    height: 16px;
+}
 
-.filter-text { font-size: 13px; opacity: 0.8; }
+.filter-text {
+    font-size: 13px;
+    opacity: 0.8;
+}
 
-.sub-text { margin-left: 2px; font-size: 12px; opacity: 0.4; }
+.sub-text {
+    margin-left: 2px;
+    font-size: 12px;
+    opacity: 0.4;
+}
 
-.star-container { display: flex; gap: 2px; padding: 0px 8px 0px 8px; }
+.star-container {
+    display: flex;
+    gap: 2px;
+    padding: 0px 8px 0px 8px;
+}
 
-.star-container img { width: 12px; height: 12px; object-fit: contain; }
+.star-container img {
+    width: 12px;
+    height: 12px;
+    object-fit: contain;
+}
 
-.tag-options span{ font-size: 11px; font-weight: 400; padding: 0px 6px 0px 6px; color: rgb(255, 255, 255, 0.9); }
+.tag-options span {
+    font-size: 11px;
+    font-weight: 400;
+    padding: 0px 6px 0px 6px;
+    color: rgb(255, 255, 255, 0.9);
+}
 
-@media (max-width: 1440px) { .main-wrapper { padding-top: 60px; }
-    .filter-header{ display: none; }
-    .filter-header, .filter-section { /* background-color: #1a1919;*/
-    padding-top : 0; margin-top : 0; overflow: hidden; }
-    .filter-group { flex-direction: column; align-items: flex-start; }
-    .filter-group h3 { margin-bottom: 4px; }
-    .filter-content { margin-bottom: 10px; }
-    .card { max-width: 160px; width: 40vw; }
-    .character-cards { justify-content: space-between;  /* 카드 사이 간격 균등 분배 */
-    padding: 10px;  /* 패딩 줄임 */
-    gap: 2vh 2vw;  /* 갭 조정 */
+@media (max-width: 1440px) {
+    .main-wrapper {
+        padding-top: 60px;
     }
 
-    .filter-toggle-btn img { width: 20px; height: 20px; }
+    .filter-header {
+        display: none;
+    }
+
+    .filter-header,
+    .filter-section {
+        /* background-color: #1a1919;*/
+        padding-top: 0;
+        margin-top: 0;
+        overflow: hidden;
+    }
+
+    .filter-group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .filter-group h3 {
+        margin-bottom: 4px;
+    }
+
+    .filter-content {
+        margin-bottom: 10px;
+    }
+
+    .card {
+        max-width: 160px;
+        width: 40vw;
+    }
+
+    .character-cards {
+        justify-content: space-between;
+        /* 카드 사이 간격 균등 분배 */
+        padding: 10px;
+        /* 패딩 줄임 */
+        gap: 2vh 2vw;
+        /* 갭 조정 */
+    }
+
+    .filter-toggle-btn img {
+        width: 20px;
+        height: 20px;
+    }
 
 }
 
-body { caret-color: transparent; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; overflow-y: overlay; /* 모던 브라우저에서 콘텐츠 위에 스크롤바 표시 */
+body {
+    caret-color: transparent;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    overflow-y: overlay;
+    /* 모던 브라우저에서 콘텐츠 위에 스크롤바 표시 */
 }
 
 /* 입력이 필요한 요소들은 예외 처리 */
-input, textarea { caret-color: auto; user-select: auto; -webkit-user-select: auto; -moz-user-select: auto; -ms-user-select: auto; }
+input,
+textarea {
+    caret-color: auto;
+    user-select: auto;
+    -webkit-user-select: auto;
+    -moz-user-select: auto;
+    -ms-user-select: auto;
+}
 
 /* 크로스 브라우징을 위한 스크롤바 스타일링 */
-::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar {
+    width: 8px;
+}
 
-::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-track {
+    background: transparent;
+}
 
-::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2); border-radius: 4px; }
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
 
-::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.3); }
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
 
-@media (max-width: 1200px) { .navigation-path, .header-container, .filter-content{ padding-left: 0px; padding-right: 0px; }
-    .header-container h1{ margin-bottom: 0px; }
-    .separator-line { margin-bottom: 24px; }
-    .card:nth-child(odd) { transform: rotate(0deg) translateY(0px); }
-    .card:nth-child(even) { transform: rotate(0deg) translateY(0px); }
+@media (max-width: 1200px) {
+
+    .navigation-path,
+    .header-container,
+    .filter-content {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .header-container h1 {
+        margin-bottom: 0px;
+    }
+
+    .separator-line {
+        margin-bottom: 24px;
+    }
+
+    .card:nth-child(odd) {
+        transform: rotate(0deg) translateY(0px);
+    }
+
+    .card:nth-child(even) {
+        transform: rotate(0deg) translateY(0px);
+    }
 
 }
 
 /* Search section styles */
-.search-section { position: relative; padding: 0 20px; margin-bottom: 24px; width: 100%; box-sizing: border-box; display: flex; align-items: center; gap: 16px; }
-
-@media (max-width: 1200px) { .search-section { padding: 0px; width: 100%; }
+.search-section {
+    position: relative;
+    padding: 0 0px;
+    margin-bottom: 24px;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 16px;
 }
 
-.search-container { position: relative; align-items: center; max-width: 260px; box-sizing: border-box; }
+@media (max-width: 1200px) {
+    .search-section {
+        padding: 0px;
+        width: 100%;
+    }
+}
 
-.search-count { color: rgba(255, 255, 255, 0.4); font-size: 12px; white-space: nowrap; }
+.search-container {
+    position: relative;
+    align-items: center;
+    max-width: 260px;
+    box-sizing: border-box;
+}
 
-.search-icon { position: absolute; left: 16px; top: 50%; transform: translateY(-45%); pointer-events: none; }
+.search-count {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 12px;
+    white-space: nowrap;
+}
 
-#characterSearch { width: 100%; padding: 10px 16px 10px 44px; border: none; border-radius: 32px; background: var(--card-background); color: #fff; font-size: 14px; box-sizing: border-box; }
+.search-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-45%);
+    pointer-events: none;
+}
 
-#characterSearch:focus { outline: none; border-color: rgba(255, 255, 255, 0.3); }
+#characterSearch {
+    width: 100%;
+    padding: 10px 16px 10px 44px;
+    border: none;
+    border-radius: 32px;
+    background: var(--card-background);
+    color: #fff;
+    font-size: 14px;
+    box-sizing: border-box;
+}
 
-.search-dropdown { position: absolute; top: 100%; left: 0; right: 0; background: rgba(30, 30, 30, 0.95); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; margin-top: 4px; max-height: 300px; overflow-y: auto; display: none; z-index: 1000; }
+#characterSearch:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.3);
+}
 
-.dropdown-item { padding: 12px 16px; cursor: pointer; transition: background-color 0.2s; }
+.search-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(30, 30, 30, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    margin-top: 4px;
+    max-height: 300px;
+    overflow-y: auto;
+    display: none;
+    z-index: 1000;
+}
 
-.dropdown-item:hover { background: rgba(255, 255, 255, 0.1); }
+.dropdown-item {
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
 
 /* 스크롤바 스타일링 */
-.search-dropdown::-webkit-scrollbar { width: 8px; }
+.search-dropdown::-webkit-scrollbar {
+    width: 8px;
+}
 
-.search-dropdown::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); }
+.search-dropdown::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
 
-.search-dropdown::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.3); border-radius: 4px; }
+.search-dropdown::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+}
 
-.search-dropdown::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.4); }
-
+.search-dropdown::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.4);
+}

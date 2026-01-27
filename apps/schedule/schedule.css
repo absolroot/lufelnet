@@ -15,7 +15,7 @@
     border-left: 3px solid rgba(255, 255, 255, 0.25);
     border-radius: 6px;
     padding: 12px 16px;
-    margin: 0 20px 20px 20px;
+    margin: 0 2px 20px 0px;
 }
 
 .schedule-notice a {
@@ -46,7 +46,7 @@
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 8px;
     padding: 16px 20px;
-    margin: 0 20px 24px 20px;
+    margin: 0 0px 24px 0px;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -128,7 +128,7 @@
 .filter-section {
     display: flex;
     gap: 8px;
-    margin: 0 20px 20px 20px;
+    margin: 0 0px 20px 0px;
     flex-wrap: wrap;
 }
 
@@ -206,7 +206,7 @@
 
 /* Timeline Container */
 .timeline-container {
-    margin: 0 20px;
+    margin: 0 0px;
     position: relative;
     padding-left: 32px;
 }

@@ -1,5 +1,5 @@
 /* Quick Grid: Home launcher (2x6 desktop, 3x4 mobile) */
-(function() {
+(function () {
     const injectStyles = () => {
         if (document.getElementById('quick-grid-styles')) return;
         const style = document.createElement('style');
@@ -38,7 +38,7 @@
             if (browserLang.startsWith('ko')) return 'kr';
             if (browserLang.startsWith('ja')) return 'jp';
             if (browserLang.startsWith('en')) return 'en';
-        } catch(_) {}
+        } catch (_) { }
         return 'kr';
     };
 
@@ -63,7 +63,7 @@
             pullTracker: 'ガチャ履歴', pullTracker_global: '全体統計',
             materialCalc: '育成計算機', defenseCalc: '防御力減少計算機', criticalCalc: 'クリティカル計算機',
             tacticLibrary: 'タクティクスライブラリー', tacticMaker: 'タクティクスメーカー',
-            tier: 'ティア', guide: 'ガイド', gallery: 'ギャラリー', schedule: 'スケジュール', synergy: 'シナジー', support: 'サポート', maps: '地図', pullCalc: 'ガチャプランナー'  
+            tier: 'ティア', guide: 'ガイド', gallery: 'ギャラリー', schedule: 'スケジュール', synergy: 'シナジー', support: 'サポート', maps: '地図', pullCalc: 'ガチャプランナー'
         }
     };
 
@@ -124,17 +124,17 @@
 
     const getItems = (lang) => {
         if (lang === 'kr') {
-            return ['character','persona','revelations','synergy','wonderweapon','maps','pullTracker','pullTracker_global','materialCalc','defenseCalc','criticalCalc','tacticLibrary','tacticMaker','guide','tier','gallery','support'];
+            return ['character', 'persona', 'revelations', 'synergy', 'wonderweapon', 'maps', 'pullTracker', 'pullTracker_global', 'materialCalc', 'defenseCalc', 'criticalCalc', 'tacticLibrary', 'tacticMaker', 'guide', 'tier', 'gallery', 'support'];
         }
         if (lang === 'jp' || lang === 'en') {
-            return ['character','persona','revelations','synergy','wonderweapon','maps','pullTracker','pullTracker_global','materialCalc','defenseCalc','criticalCalc','tacticLibrary','guide','tier','schedule','pullCalc','gallery','support'];
+            return ['character', 'persona', 'revelations', 'synergy', 'wonderweapon', 'maps', 'pullTracker', 'pullTracker_global', 'materialCalc', 'defenseCalc', 'criticalCalc', 'tacticLibrary', 'guide', 'tier', 'schedule', 'pullCalc', 'gallery', 'support'];
         }
         // default to KR set
-        return ['character','persona','revelations','synergy','wonderweapon','maps','pullTracker','pullTracker_global','materialCalc','defenseCalc','criticalCalc','tacticLibrary','guide','tier','schedule','pullCalc','gallery','support'];
+        return ['character', 'persona', 'revelations', 'synergy', 'wonderweapon', 'maps', 'pullTracker', 'pullTracker_global', 'materialCalc', 'defenseCalc', 'criticalCalc', 'tacticLibrary', 'guide', 'tier', 'schedule', 'pullCalc', 'gallery', 'support'];
     };
 
     // New 배지를 표시할 아이템 목록
-    const newItems = ['maps','synergy','wonderweapon','pullCalc'];
+    const newItems = ['persona', 'synergy'];
 
     const render = () => {
         const root = document.getElementById('quick-grid');

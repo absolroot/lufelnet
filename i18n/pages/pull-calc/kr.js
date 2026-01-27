@@ -66,7 +66,7 @@ export default {
     scheduleScenario: '4.0 이후 스케줄 시나리오',
     scheduleScenario3Weeks: '3주 간격 (보상 1.5배)',
     scheduleScenario2Weeks: '2주 간격 (보상 1배)',
-    labelSeaServer: 'SEA 서버 (일정 +7일)',
+    labelSeaServer: 'SEA 서버 (일정 +8일)',
 
     // 계획 관련
     planDescription: '타임라인에서 캐릭터를 클릭하여 계획에 추가하세요.',
@@ -106,7 +106,7 @@ export default {
         chart: '시간에 따른 재화 변화를 보여줍니다. 빨간색 영역은 재화가 부족한 구간입니다.',
         scheduleScenario: '4.0 이후 버전 간격과 보상 배율을 선택합니다.',
         extraIncome: 'Weekly는 월요일을 기준으로 계산되며, Monthly는 1일을 기준으로 계산됩니다. (현재 배너 시작일 ~ 다음 배너 시작일 구간)',
-        seaServer: 'SEA 서버는 기본 일정보다 7일 늦습니다. 활성화 시 모든 출시 일정이 7일 연기되며, 현재 계획이 초기화됩니다.'
+        seaServer: 'SEA 서버는 기본 일정보다 8일 늦습니다. 활성화 시 모든 출시 일정이 8일 연기되며, 현재 계획이 초기화됩니다.'
     },
 
     // Must Read Content

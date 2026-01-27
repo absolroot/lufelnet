@@ -188,9 +188,9 @@ function applyServerDelayToData(isSea) {
     // Always restore from original first
     window.ReleaseScheduleData = JSON.parse(JSON.stringify(window.ReleaseScheduleData_Original));
 
-    // If SEA mode, shift all dates by +7 days
+    // If SEA mode, shift all dates by +8 days
     if (isSea) {
-        const shiftDays = 7;
+        const shiftDays = 8;
 
         // Shift manualReleases dates
         if (window.ReleaseScheduleData.manualReleases) {

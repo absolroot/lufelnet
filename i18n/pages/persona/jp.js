@@ -9,7 +9,8 @@ export default {
     filterRarity: "タイプ",
     filterGrade: "グレード",
     countUnit: "",
-    skillLevelLabel: "スキルレベル :",
+    skillLevelLabel: "スキルレベル",
+    tooltipSkillLevel: "J&C所有時LV7、J&C意識6の場合LV8",
 
     // SEO
     seoTitle: "ペルソナ 攻略 - ペルソナ5 ザ・ファントム X",

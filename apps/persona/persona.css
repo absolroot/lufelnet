@@ -94,6 +94,8 @@ textarea {
     overflow-y: auto;
     box-sizing: border-box;
     width: 100%;
+    user-select: text;
+    -webkit-user-select: text;
 }
 
 /* Panel specific scrollbar override */
@@ -821,7 +823,7 @@ textarea {
 
 .skill-level-buttons {
     display: inline-flex;
-    gap: 8px;
+    gap: 6px;
     margin-left: 6px;
 }
 

@@ -390,15 +390,23 @@ async function initializePageContent() {
         const lvl = (typeof globalSkillLevel === 'number' && globalSkillLevel !== null) ? globalSkillLevel : 'ALL';
         const btnClass = (l) => `skill-level-btn${lvl === l ? ' active' : ''}`;
 
-        const labelText = (currentLang === 'en') ? 'Skill Level:' : ((currentLang === 'jp') ? 'スキルレベル:' : '스킬 레벨 :');
+        const labelText = window.t('skillLevelLabel', (currentLang === 'en') ? 'Skill Level :' : ((currentLang === 'jp') ? 'スキルレベル :' : '스킬 레벨 :'));
 
         rightDiv.innerHTML = `
             <div class="skill-level-toggle" style="margin-left:auto;">
-                <span class="skill-level-label" style="margin-right:0px; font-size:12px; color:#aaa;">${labelText}</span>
+                <div style="display: flex; align-items: center; gap: 4px;">
+                    <span class="skill-level-label" style="margin-right:0px; font-size:12px; color:#aaa;">${labelText}</span>
+                    <span class="tooltip-icon" data-i18n-tooltip="tooltipSkillLevel" data-tooltip="${window.t('tooltipSkillLevel', '')}" style="display: inline-flex; align-items: center;">
+                        <svg width="14" height="14" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1" fill="rgba(255,255,255,0.05)"></circle>
+                            <path d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.3"></path>
+                        </svg>
+                    </span>
+                </div>
                 <div class="skill-level-buttons skill-level-buttons-global">
-                    <button type="button" class="${btnClass(0)}" data-level="0">LV6</button>
-                    <button type="button" class="${btnClass(1)}" data-level="1">LV7</button>
-                    <button type="button" class="${btnClass(2)}" data-level="2">LV8</button>
+                    <button type="button" class="${btnClass(0)}" data-level="0">6</button>
+                    <button type="button" class="${btnClass(1)}" data-level="1">7</button>
+                    <button type="button" class="${btnClass(2)}" data-level="2">8</button>
                     <button type="button" class="${btnClass('ALL')}" data-level="ALL">ALL</button>
                 </div>
             </div>
@@ -794,8 +802,11 @@ async function initializePageContent() {
         // Re-bind tooltips and apply formatting (number highlighting)
         if (typeof addTooltips === 'function') {
             try { addTooltips(); } catch (_) { }
-        } else if (typeof bindTooltipElement === 'function') {
-            const newTooltips = detailPanel.querySelectorAll('.tooltip-text, [data-tooltip]');
+        }
+
+        // Manual binding for new tooltip elements (ensure icons are bound even if addTooltips didn't catch them)
+        if (typeof bindTooltipElement === 'function') {
+            const newTooltips = detailPanel.querySelectorAll('.tooltip-text, .tooltip-icon, [data-tooltip]');
             newTooltips.forEach(bindTooltipElement);
         }
     }

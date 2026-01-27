@@ -66,7 +66,7 @@ export default {
     scheduleScenario: '4.0以降スケジュールシナリオ',
     scheduleScenario3Weeks: '3週間間隔 (報酬1.5倍)',
     scheduleScenario2Weeks: '2週間間隔 (報酬1倍)',
-    labelSeaServer: 'SEAサーバー (+7日)',
+    labelSeaServer: 'SEAサーバー (+8日)',
 
     // 計画関連
     planDescription: 'タイムラインからキャラクターをクリックして計画に追加してください。',
@@ -106,7 +106,7 @@ export default {
         chart: '時間による資源変化を示します。赤い領域は資源が不足している区間です。',
         scheduleScenario: '4.0以降のバージョン間隔と報酬倍率を選択します。',
         extraIncome: 'Weeklyは月曜日を基準に、Monthlyは毎月1日を基準に計算します。（現在のバナー開始日〜次のバナー開始日）',
-        seaServer: 'SEAサーバーはデフォルトスケジュールより7日遅れます。有効にすると、すべてのリリース日程が7日延期され、現在の計画がリセットされます.'
+        seaServer: 'SEAサーバーはデフォルトスケジュールより8日遅れます。有効にすると、すべてのリリース日程が8日延期され、現在の計画がリセットされます.'
     },
 
     // Must Read Content

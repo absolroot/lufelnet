@@ -66,7 +66,7 @@ export default {
     scheduleScenario: 'Post-4.0 Schedule Scenario',
     scheduleScenario3Weeks: '3-week interval (1.5x reward)',
     scheduleScenario2Weeks: '2-week interval (1x reward)',
-    labelSeaServer: 'SEA Server (+7 Days)',
+    labelSeaServer: 'SEA Server (+8 Days)',
 
     // Plan related
     planDescription: 'Click characters from the timeline to add to your plan.',
@@ -106,7 +106,7 @@ export default {
         chart: 'Shows resource changes over time. Red areas indicate resource shortage.',
         scheduleScenario: 'Select version interval and reward multiplier after 4.0.',
         extraIncome: 'Weekly income counts Mondays, and Monthly income counts the 1st day of the month between the current and next banner.',
-        seaServer: 'SEA server schedule is 7 days behind the default schedule. When enabled, all release dates shift by +7 days and your current plan will be reset.'
+        seaServer: 'SEA server schedule is 8 days behind the default schedule. When enabled, all release dates shift by +8 days and your current plan will be reset.'
     },
 
     // Must Read Content

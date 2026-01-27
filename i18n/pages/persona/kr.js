@@ -9,7 +9,8 @@ export default {
     filterRarity: "희귀도",
     filterGrade: "등급",
     countUnit: "개",
-    skillLevelLabel: "스킬 레벨 :",
+    skillLevelLabel: "스킬 레벨",
+    tooltipSkillLevel: "J&C 보유 시 LV7, J&C 의식6일 경우 LV8",
 
     // SEO
     seoTitle: "주요 페르소나 - 페르소나5 더 팬텀 X",

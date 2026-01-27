@@ -45,9 +45,9 @@ For this reason, the unusual build of **A1R5** has become recognized as a highly
 
 <br>
 
-- Chord's Additional hit is typed as electric for damage calculations but typed as the Costar's element for scoring purposes.
+- Chord's additional Skill 1 hit is typed as electric for damage calculations but typed as the Costar's element for scoring purposes.
 
-- second Costar hit of Distortion doesn't JUST take the attack stat into consideration when dealing damage. It takes EVERY offensive stat into account from the Costar
+- Additional Costar hit of Skill 1 doesn't just take the attack stat into consideration when dealing damage, it takes every offensive stat into account from the Costar.
 `,
     review_jp: `坂井 綾香は、HIGHLIGHT（以下HL）をコントロールするバッファーである。
 

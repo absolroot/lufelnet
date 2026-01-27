@@ -466,6 +466,18 @@
 
                         enemyDiv.appendChild(infoRow);
 
+                        if (enemy.isDnmLv) {
+                            const dmmLVDiv = document.createElement('div');
+                            dmmLVDiv.style.cssText = `
+                                font-size: 12px;
+                                color: #999;
+                                margin-top: 0px;
+                                margin-bottom: 8px;
+                            `;
+                            dmmLVDiv.textContent = `주인공 레벨에 따라 몬스터의 레벨이 달라집니다. (주인공 레벨 + ${enemy.realLv})`;
+                            enemyDiv.appendChild(dmmLVDiv);
+                        }
+
                         // 적합성
                         if (enemy.adapt) {
                             const adaptDiv = document.createElement('div');

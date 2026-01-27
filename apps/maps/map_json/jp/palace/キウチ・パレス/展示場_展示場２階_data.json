@@ -194,7 +194,9 @@
                                 "Reflect": [],
                                 "Absorb": []
                             },
-                            "level": "19",
+                            "level": 19,
+                            "isDnmLv": false,
+                            "realLv": 19,
                             "stat": {
                                 "HP": 3887.649,
                                 "HP 계산식": "(3153.0 * (1 + 0.23) + 0) * (1 + 0)",
@@ -282,7 +284,9 @@
                                 "Reflect": [],
                                 "Absorb": []
                             },
-                            "level": "19",
+                            "level": 19,
+                            "isDnmLv": false,
+                            "realLv": 19,
                             "stat": {
                                 "HP": 3239.7075,
                                 "HP 계산식": "(2627.5 * (1 + 0.23) + 0) * (1 + 0)",

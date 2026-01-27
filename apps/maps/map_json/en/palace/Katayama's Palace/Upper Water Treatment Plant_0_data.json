@@ -1592,7 +1592,9 @@
                                 "Reflect": [],
                                 "Absorb": []
                             },
-                            "level": "74",
+                            "level": 74,
+                            "isDnmLv": false,
+                            "realLv": 74,
                             "stat": {
                                 "HP": 102773.502,
                                 "HP 계산식": "(40638.0 * (1 + 1.53) + 0) * (1 + 0)",
@@ -1682,7 +1684,9 @@
                                 "Reflect": [],
                                 "Absorb": []
                             },
-                            "level": "74",
+                            "level": 74,
+                            "isDnmLv": false,
+                            "realLv": 74,
                             "stat": {
                                 "HP": 59240.3076,
                                 "HP 계산식": "(23424.4 * (1 + 1.53) + 0) * (1 + 0)",
@@ -1771,7 +1775,9 @@
                                 "Reflect": [],
                                 "Absorb": []
                             },
-                            "level": "74",
+                            "level": 74,
+                            "isDnmLv": false,
+                            "realLv": 74,
                             "stat": {
                                 "HP": 59240.3076,
                                 "HP 계산식": "(23424.4 * (1 + 1.53) + 0) * (1 + 0)",
@@ -1885,7 +1891,9 @@
                                 "Reflect": [],
                                 "Absorb": []
                             },
-                            "level": "74",
+                            "level": 74,
+                            "isDnmLv": false,
+                            "realLv": 74,
                             "stat": {
                                 "HP": 102773.502,
                                 "HP 계산식": "(40638.0 * (1 + 1.53) + 0) * (1 + 0)",
@@ -1975,7 +1983,9 @@
                                 "Reflect": [],
                                 "Absorb": []
                             },
-                            "level": "74",
+                            "level": 74,
+                            "isDnmLv": false,
+                            "realLv": 74,
                             "stat": {
                                 "HP": 59240.3076,
                                 "HP 계산식": "(23424.4 * (1 + 1.53) + 0) * (1 + 0)",
@@ -2064,7 +2074,9 @@
                                 "Reflect": [],
                                 "Absorb": []
                             },
-                            "level": "74",
+                            "level": 74,
+                            "isDnmLv": false,
+                            "realLv": 74,
                             "stat": {
                                 "HP": 59240.3076,
                                 "HP 계산식": "(23424.4 * (1 + 1.53) + 0) * (1 + 0)",

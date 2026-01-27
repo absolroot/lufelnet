@@ -911,6 +911,125 @@ redirect_from:
     function initializeFiltersAndSearch(sortedCharacters) {
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
 
+        // 검색 인덱스 생성 (성능 최적화 및 검색 범위 확장)
+        const searchIndex = {};
+
+        // 별칭 매핑
+        const nicknameMap = {
+            '유이': 'YUI',
+            '라멘': '카노 슌',
+            '욧샤': '사카모토 류지',
+            '수모코': '노게 토모코·여름',
+            '수토하': '아라이 모토하·여름',
+            '왕왕루': '도겐자카 루우나',
+            '얼탱': '아시야 마사키',
+            '조커': '아마미야 렌',
+            '의사': '키타자토 키라',
+            '와가하이': '모르가나',
+            '수나미': '미나미·여름',
+            '수미유': '미유·여름',
+            '수유': '미유·여름',
+            '그새끼': '아케치 고로',
+            '선생': '카타야마 쿠미',
+            '에우떼르빼': '나가오 마나카',
+            '화오링': '리 야오링·사자무',
+            '불오링': '리 야오링·사자무',
+            '5리코': '타네무라 리코·매화',
+            '풍리코': '타네무라 리코·매화',
+            '풍타뉴': '코토네 몽타뉴·백조',
+            '백타뉴': '코토네 몽타뉴·백조',
+            '3주': '유키 마코토',
+            '센세': '카타야마 쿠미',
+            '선생': '카타야마 쿠미',
+            'fuuka': '야마기시 후카'
+        };
+
+        // 검색용 속성/직업 번역 데이터 (i18n-common에서 가져옴)
+        const searchTranslations = {
+            en: {
+                elements: {
+                    "만능": "Almighty", "물리": "Physical", "총격": "Gun", "화염": "Fire",
+                    "빙결": "Ice", "전격": "Electric", "질풍": "Wind", "염동": "Psychokinesis",
+                    "핵열": "Nuclear", "축복": "Bless", "주원": "Curse",
+                    "버프": "Buff", "디버프": "Debuff", "디버프광역": "AOE Debuff"
+                },
+                positions: {
+                    "구원": "Medic", "굴복": "Saboteur", "반항": "Assassin", "방위": "Guardian",
+                    "우월": "Strategist", "지배": "Sweeper", "해명": "Elucidator", "자율": "Virtuoso"
+                }
+            },
+            jp: {
+                elements: {
+                    "만능": "万能", "물리": "物理", "총격": "銃撃", "화염": "火炎",
+                    "빙결": "氷結", "전격": "電撃", "질풍": "疾風", "염동": "念動",
+                    "핵열": "核熱", "축복": "祝福", "주원": "呪怨",
+                    "버프": "バフ", "디버프": "デバフ", "디버프광역": "デバフ広域"
+                },
+                positions: {
+                    "구원": "救済", "굴복": "屈服", "반항": "反抗", "방위": "防衛",
+                    "우월": "優越", "지배": "支配", "해명": "解明", "자율": "自律"
+                }
+            }
+        };
+
+        // 데이터 로드 확인 및 인덱스 빌드
+        if (window.characterData) {
+            sortedCharacters.forEach(name => {
+                const char = window.characterData[name];
+                if (!char) return;
+
+                // 검색어 구성을 위한 배열
+                const searchTerms = [];
+
+                // 1. 이름 (Name)
+                if (char.name) searchTerms.push(char.name);
+                if (char.name_en) searchTerms.push(char.name_en);
+                if (char.name_jp) searchTerms.push(char.name_jp);
+                if (char.name_cn) searchTerms.push(char.name_cn);
+                if (char.name_tw) searchTerms.push(char.name_tw);
+                if (char.codename) searchTerms.push(char.codename);
+
+                // 2. 페르소나 (Persona)
+                if (char.persona) searchTerms.push(char.persona);
+                if (char.persona_en) searchTerms.push(char.persona_en);
+                if (char.persona_jp) searchTerms.push(char.persona_jp);
+                if (char.persona_cn) searchTerms.push(char.persona_cn);
+
+                // 3. 태그 (Tags)
+                if (char.tag) searchTerms.push(char.tag);
+                if (char.tag_en) searchTerms.push(char.tag_en);
+                if (char.tag_jp) searchTerms.push(char.tag_jp);
+
+                // 4. 역할 (Roles)
+                if (char.role_en) searchTerms.push(char.role_en);
+                if (char.role_jp) searchTerms.push(char.role_jp);
+
+                // 5. 속성 및 직업 (Element & Position) + 번역어
+                if (char.element) {
+                    searchTerms.push(char.element);
+                    if (searchTranslations.en.elements[char.element]) searchTerms.push(searchTranslations.en.elements[char.element]);
+                    if (searchTranslations.jp.elements[char.element]) searchTerms.push(searchTranslations.jp.elements[char.element]);
+                }
+                if (char.position) {
+                    searchTerms.push(char.position);
+                    if (searchTranslations.en.positions[char.position]) searchTerms.push(searchTranslations.en.positions[char.position]);
+                    if (searchTranslations.jp.positions[char.position]) searchTerms.push(searchTranslations.jp.positions[char.position]);
+                }
+
+                // 6. 별칭 (Nicknames)
+                // 별칭 매핑 역방향 검색
+                Object.entries(nicknameMap).forEach(([nick, realName]) => {
+                    if (realName === char.name) {
+                        searchTerms.push(nick);
+                    }
+                });
+
+                // 모든 용어를 소문자로 변환하여 공백으로 연결
+                searchIndex[name] = searchTerms.join(' ').toLowerCase();
+                // console.log(`Indexer for ${name}: `, searchIndex[name]);
+            });
+        }
+
         // 영어/일본어일 때 태그 필터 숨기기
         /*
         if (currentLang === 'en' || currentLang === 'jp') {
@@ -1004,53 +1123,42 @@ redirect_from:
                 });
 
                 const shouldShow = elementMatch && positionMatch && rarityMatch && (selectedTags.length === 0 || tagMatch);
-                card.style.display = shouldShow ? 'block' : 'none';
-                if (shouldShow) visibleCount++;
+                if (shouldShow && !card.classList.contains('hidden-by-search')) {
+                    card.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
             });
 
             // Update search count
+            updateSearchCount(visibleCount);
+        }
+
+        function updateSearchCount(count) {
             if (searchCount) {
                 const countText = window.i18nFilteredCount || '전체';
                 const countUnit = window.i18nCountUnit || '명';
-                searchCount.textContent = `${countText} ${visibleCount}${countUnit}`;
+                searchCount.textContent = `${countText} ${count}${countUnit}`;
             }
         }
 
-        // 별칭 매핑
-        const nicknameMap = {
-            '유이': 'YUI',
-            '라멘': '카노 슌',
-            '욧샤': '사카모토 류지',
-            '수모코': '노게 토모코·여름',
-            '수토하': '아라이 모토하·여름',
-            '왕왕루': '도겐자카 루우나',
-            '얼탱': '아시야 마사키',
-            '조커': '아마미야 렌',
-            '의사': '키타자토 키라',
-            '와가하이': '모르가나',
-            '수나미': '미나미·여름',
-            '수미유': '미유·여름',
-            '수유': '미유·여름',
-            '그새끼': '아케치 고로',
-            '선생': '카타야마 쿠미',
-            '에우떼르빼': '나가오 마나카',
-            '화오링': '리 야오링·사자무',
-            '불오링': '리 야오링·사자무',
-            '5리코': '타네무라 리코·매화',
-            '풍리코': '타네무라 리코·매화',
-            '풍타뉴': '코토네 몽타뉴·백조',
-            '백타뉴': '코토네 몽타뉴·백조',
-            '3주': '유키 마코토',
-            '센세': '카타야마 쿠미',
-            '선생': '카타야마 쿠미',
-            'fuuka': '야마기시 후카'
-        };
+
 
         // 검색 기능 구현
         const searchInput = document.getElementById('characterSearch');
         const dropdown = document.getElementById('searchDropdown');
 
         if (searchInput) {
+            // URL 파라미터로 초기 검색어 있으면 적용
+            const urlParams = new URLSearchParams(window.location.search);
+            const searchParam = urlParams.get('q') || urlParams.get('search');
+            if (searchParam) {
+                searchInput.value = searchParam;
+                // 약간의 지연 후 검색 실행 (DOM 렌더링 확보)
+                setTimeout(() => filterBySearch(searchParam.toLowerCase()), 100);
+            }
+
             searchInput.addEventListener('input', (e) => {
                 const searchValue = e.target.value.toLowerCase();
                 if (dropdown) {
@@ -1063,12 +1171,9 @@ redirect_from:
                             return;
                         }
 
-                        // sortedCharacters 배열에서 검색
+                        // sortedCharacters 배열에서 검색 (이름 기반으로 드롭다운 표시)
                         const matches = sortedCharacters.filter(characterName => {
-                            if (!window.characterData[characterName]) {
-                                console.warn(`No data found for character: ${characterName}`);
-                                return false;
-                            }
+                            if (!window.characterData[characterName]) return false;
 
                             const charData = window.characterData[characterName];
                             const displayName = charData.name ? charData.name.toLowerCase() : '';
@@ -1077,9 +1182,10 @@ redirect_from:
 
                             // 별칭 매칭도 포함
                             const nicknameMatch = Object.entries(nicknameMap).find(([nickname, realName]) =>
-                                nickname.toLowerCase().includes(searchValue) && realName === charData.name
+                                nickname.toLowerCase().includes(searchValue) && realName === characterName // realName is key here
                             );
 
+                            // 드롭다운은 주로 이름 검색용
                             return displayName.includes(searchValue) ||
                                 originalName.includes(searchValue) ||
                                 codeName.includes(searchValue) ||
@@ -1120,6 +1226,13 @@ redirect_from:
 
                 filterBySearch(searchValue);
             });
+
+            // 포커스 잃으면 드롭다운 닫기 (지연 처리로 클릭 허용)
+            searchInput.addEventListener('blur', () => {
+                setTimeout(() => {
+                    if (dropdown) dropdown.style.display = 'none';
+                }, 200);
+            });
         }
 
         // Search filtering function
@@ -1133,51 +1246,56 @@ redirect_from:
             const cards = document.querySelectorAll('.card');
 
             cards.forEach(card => {
+                // 카드에서 이름 텍스트 요소 찾기 (원래 이름을 찾기 위함)
                 const nameText = card.querySelector('.name-text');
                 if (!nameText) return;
 
-                const displayName = nameText.textContent;
-                if (!displayName) return;
+                // 역으로 characterName 찾기 (이름 텍스트는 번역되었을 수 있음)
+                // 하지만 가장 확실한 건 card 생성 시 data 속성으로 key를 넣어두는 것이 좋음.
+                // 현재 코드에서는 DOM 구조에 의존해야 함.
+                // filterBySearch가 applyFilters와 연동되도록 구조 개선 필요
+                // 여기서는 hidden 클래스 토글만 하고 applyFilters를 호출하는 게 좋지만,
+                // 루프 효율을 위해 직접 처리
 
-                const displayNameLower = displayName.toLowerCase();
+                // characterKey 찾기 (조금 비효율적이지만 현재 DOM 구조상 최선)
+                // initializePageContent에서 card에 dataset.key라도 넣으면 좋은데...
+                // 일단 nameText.textContent로 찾거나, sortedCharacters 순서대로 card가 생성되었다는 점 이용
+                // 하지만 data-tags 등은 card에 있으니...
 
-                // characterData에서 해당 캐릭터 찾기
-                const characterKey = sortedCharacters.find(name =>
-                    window.characterData[name] &&
-                    (window.characterData[name].name === displayName ||
-                        window.characterData[name].codename === displayName ||
-                        window.characterData[name].name_en === displayName ||
-                        window.characterData[name].name_jp === displayName)
-                );
+                // 더 나은 방법: searchIndex를 순회하며 매칭되는 키를 찾고, 해당 키에 해당하는 카드를 표시
+                // 이를 위해 card 생성 시 id나 data-name을 추가했으면 좋았을 것.
+                // 기존 코드를 많이 안 건드리기 위해, 현재 카드의 텍스트 대신
+                // searchIndex의 모든 키에 대해 매칭 여부를 미리 판단.
 
-                // 별칭 매칭 확인
-                const nicknameMatch = Object.entries(nicknameMap).find(([nickname, realName]) =>
-                    nickname.toLowerCase().includes(searchValue) && realName === displayName
-                );
-
-                // 코드네임도 검색 대상에 포함
-                const charData = characterKey ? window.characterData[characterKey] : null;
-                const codeNameMatch = charData && charData.codename &&
-                    charData.codename.toLowerCase().includes(searchValue) ||
-                    charData.name_en && charData.name_en.toLowerCase().includes(searchValue) ||
-                    charData.name_jp && charData.name_jp.toLowerCase().includes(searchValue);
-
-                const shouldShow = searchValue === '' ||
-                    (characterKey && characterKey.toLowerCase().includes(searchValue)) ||
-                    displayNameLower.includes(searchValue) ||
-                    codeNameMatch ||
-                    nicknameMatch !== undefined;
-
-                card.style.display = shouldShow ? 'block' : 'none';
-                if (shouldShow) visibleCount++;
             });
 
-            // 검색 결과 수 업데이트
-            if (searchCount) {
-                const countText = window.i18nFilteredCount || '전체';
-                const countUnit = window.i18nCountUnit || '명';
-                searchCount.textContent = `${countText} ${visibleCount}${countUnit}`;
-            }
+            // 개선된 방식:
+            // 1. 모든 캐릭터에 대해 검색어 매칭 여부 판단
+            const matchedCharacters = new Set();
+            Object.keys(searchIndex).forEach(name => {
+                if (searchValue === '' || searchIndex[name].includes(searchValue)) {
+                    matchedCharacters.add(name);
+                }
+            });
+
+            // 2. 카드를 돌면서 매칭 여부에 따라 클래스 토글
+            cards.forEach((card, index) => {
+                // 주의: cards 순서가 sortedCharacters 순서와 같다고 가정 (initializePageContent 확인)
+                // 만약 필터나 정렬이 바뀌면 깨짐.
+                // 안전을 위해 card에 식별자를 넣는 것이 좋지만, 지금 당장은 이미지 alt 등을 사용
+
+                const img = card.querySelector('.character-img, .character-img.loaded');
+                const characterName = img ? img.alt : ''; // <img> alt는 항상 characterName (key)
+
+                if (matchedCharacters.has(characterName)) {
+                    card.classList.remove('hidden-by-search');
+                } else {
+                    card.classList.add('hidden-by-search');
+                }
+            });
+
+            // 3. 필터 재적용 (검색 결과 내에서 필터링)
+            applyFilters();
         }
     } // initializePageContent 함수 종료
 

@@ -390,7 +390,7 @@ async function initializePageContent() {
         const lvl = (typeof globalSkillLevel === 'number' && globalSkillLevel !== null) ? globalSkillLevel : 'ALL';
         const btnClass = (l) => `skill-level-btn${lvl === l ? ' active' : ''}`;
 
-        const labelText = window.t('skillLevelLabel', (currentLang === 'en') ? 'Skill Level :' : ((currentLang === 'jp') ? 'スキルレベル :' : '스킬 레벨 :'));
+        const labelText = window.t('skillLevelLabel', (currentLang === 'en') ? 'Skill Level' : ((currentLang === 'jp') ? 'スキルレベル' : '스킬 레벨'));
 
         rightDiv.innerHTML = `
             <div class="skill-level-toggle" style="margin-left:auto;">

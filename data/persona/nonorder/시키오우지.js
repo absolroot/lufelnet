@@ -5,7 +5,7 @@ window.personaFiles["시키오우지"] = {
   "name": "시키오우지",
   "name_en": "Shiki-Ouji",
   "name_jp": "シキオウジ",
-  "grade": "5",
+  "grade": "3",
   "star": "5",
   "position": "방위",
   "element": "총격",
@@ -92,7 +92,7 @@ window.personaFiles["시키오우지"] = {
     "desc_en": "45.0/47.2/49.5% chance to inflict Rage on 1 foe for 2 turns. Increase user's Defense by 45.0/47.2/49.5%.",
     "desc_jp": "45.0/47.2/49.5%の確率で、２ターンの間、敵単体を激怒状態にする。さらに自身の防御力が45.0/47.2/49.5%上昇する。",
     "priority": 0,
-    "icon": "Default",
+    "icon": "디버프",
     "icon_gl": ""
   },
   "highlight": {

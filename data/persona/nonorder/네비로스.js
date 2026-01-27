@@ -5,7 +5,7 @@ window.personaFiles["네비로스"] = {
   "name": "네비로스",
   "name_en": "Nebiros",
   "name_jp": "ネビロス",
-  "grade": "5",
+  "grade": "7",
   "star": "4",
   "position": "굴복",
   "element": "주원",
@@ -108,8 +108,8 @@ window.personaFiles["네비로스"] = {
     "desc_en": "Decrease 1 foe's Attack, Defense, ailment accuracy, and ailment resistance by 7.8%/8.2%/8.6%, and Speed by 5. Lasts for 3 turns.",
     "desc_jp": "３ターンの間、敵単体の攻撃力、防御力、状態異常命中、状態異常抵抗が7.8%/8.2%/8.6%低下し、速さが５低下する。",
     "priority": 0,
-    "icon": "Default",
-    "icon_gl": ""
+    "icon": "버프",
+    "icon_gl": "버프"
   },
   "highlight": {
     "name": "HIGHLIGHT",

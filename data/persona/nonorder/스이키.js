@@ -5,7 +5,7 @@ window.personaFiles["스이키"] = {
   "name": "스이키",
   "name_en": "Sui-Ki",
   "name_jp": "スイキ",
-  "grade": "5",
+  "grade": "3",
   "star": "3",
   "position": "반항",
   "element": "빙결",

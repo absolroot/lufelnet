@@ -5,7 +5,7 @@ window.personaFiles["화이트 라이더"] = {
   "name": "화이트 라이더",
   "name_en": "White Rider",
   "name_jp": "ホワイトライダー",
-  "grade": "5",
+  "grade": "4",
   "star": "5",
   "position": "굴복",
   "element": "주원",
@@ -100,7 +100,7 @@ window.personaFiles["화이트 라이더"] = {
     "desc_en": "Deal Curse damage to all foes equal to 77.9%/83.4%/88.9% of Attack. Inflict 1-2 Curse stacks.",
     "desc_jp": "敵全体に攻撃力77.9%/83.4%/88.9%の呪怨属性ダメージを与える。さらに１～２つの呪印を付与する。",
     "priority": 0,
-    "icon": "Default",
+    "icon": "주원광역",
     "icon_gl": ""
   },
   "highlight": {

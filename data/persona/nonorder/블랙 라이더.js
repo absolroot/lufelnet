@@ -5,7 +5,7 @@ window.personaFiles["블랙 라이더"] = {
   "name": "블랙 라이더",
   "name_en": "Black Rider",
   "name_jp": "ブラックライダー",
-  "grade": "5",
+  "grade": "6",
   "star": "4",
   "position": "지배",
   "element": "주원",

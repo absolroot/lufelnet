@@ -5,7 +5,7 @@ window.personaFiles["키쿠리히메"] = {
   "name": "키쿠리히메",
   "name_en": "Kikuri-Hime",
   "name_jp": "キクリヒメ",
-  "grade": "5",
+  "grade": "4",
   "star": "3",
   "position": "구원",
   "element": "빙결",

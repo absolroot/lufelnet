@@ -20,7 +20,7 @@ export default {
     // Resources
     ember: 'Meta Jewel',
     ticket: 'Platinum Ticket',
-    paidEmber: 'Hollow Stone',
+    paidEmber: 'Cognition Crystals',
     weaponTicket: 'Platinum Milicoin',
     cognigem: 'Cognigem',
     totalEmber: 'Total Jewel:',

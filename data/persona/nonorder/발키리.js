@@ -100,7 +100,7 @@ window.personaFiles["발키리"] = {
     "desc_en": "Deal Physical damage to 1 foe equal to 129.1/135.6/142.0% of Attack.",
     "desc_jp": "敵単体に攻撃力129.1/135.6/142.0%の物理属性ダメージを与える。",
     "priority": 0,
-    "icon": "Default",
+    "icon": "물리",
     "icon_gl": ""
   },
   "highlight": {

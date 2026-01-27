@@ -5,7 +5,7 @@ window.personaFiles["증장천"] = {
   "name": "증장천",
   "name_en": "Zouchouten",
   "name_jp": "ゾウチョウテン",
-  "grade": "5",
+  "grade": "4",
   "star": "3",
   "position": "반항",
   "element": "전격",

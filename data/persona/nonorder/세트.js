@@ -5,7 +5,7 @@ window.personaFiles["세트"] = {
   "name": "세트",
   "name_en": "Seth",
   "name_jp": "セト",
-  "grade": "5",
+  "grade": "6",
   "star": "5",
   "position": "반항",
   "element": "총격",
@@ -108,7 +108,7 @@ window.personaFiles["세트"] = {
     "desc_en": "Deal Gun damage to 1 foe equal to 150.3%/157.8%/165.3% of Attack. On a critical hit, remove 1 more Down Point.",
     "desc_jp": "敵単体に攻撃力150.3%/157.8%/165.3%の銃撃属性ダメージを与える。クリティカル発生でダウン値が追加で１増加する。",
     "priority": 0,
-    "icon": "Default",
+    "icon": "총격",
     "icon_gl": ""
   },
   "highlight": {

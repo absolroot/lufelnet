@@ -5,7 +5,7 @@ window.personaFiles["데카라비아"] = {
   "name": "데카라비아",
   "name_en": "Decarabia",
   "name_jp": "デカラビア",
-  "grade": "5",
+  "grade": "4",
   "star": "3",
   "position": "지배",
   "element": "화염",

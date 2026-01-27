@@ -430,6 +430,16 @@ const personaSkillList = {
         "target": "전체",
         "icon": "축복광역"
     },
+    "회전설법": {
+        "name_en": "Samsara",
+        "name_jp": "回転説法",
+        "description": "모든 적에게 공격력 76.0%/79.8%/83.6%의 축복 속성 대미지를 준다. 메인 목표의 생명이 50% 미만일 시 일정 확률로 즉사 효과가 추가된다.",
+        "description_en": "Deal Bless damage to all foes equal to 76.0%/79.8%/83.6% of Attack. If main target's HP is below 50%, chance of insta-kill.",
+        "description_jp": "敵全体に攻撃力76.0%/79.8%/83.6%の祝福属性ダメージを与える。選択した対象のＨＰが５０%未満の場合、一定の確率で即死させる。",
+        "type": "공격",
+        "target": "전체",
+        "icon": "축복광역"
+    },
     "하마온": {
         "name_en": "Hamaon",
         "name_jp": "ハマオン",
@@ -459,6 +469,16 @@ const personaSkillList = {
         "type": "공격",
         "target": "전체",
         "icon": "축복광역"
+    },
+    "에이가": {
+        "name_jp": "エイガ",
+        "name_en": "Eiga",
+        "description": "1명의 적에게 공격력 124.2/131.7/139.2%의 주원 속성 대미지를 주고, 적이 주원 효과 1~2개를 획득한다.",
+        "description_en": "Deal Curse damage to 1 foe equal to 124.2/131.7/139.2% of Attack. Inflict 1 to 2 Curse stacks on the foe.",
+        "description_jp": "敵単体に攻撃力124.2/131.7/139.2%の呪怨属性ダメージを与える。敵に１～２つの呪印を付与する。",
+        "type": "공격",
+        "target": "단일",
+        "icon": "주원"
     },
     "에이가온": {
         "name_jp": "エイガオン",
@@ -670,6 +690,19 @@ const personaSkillList = {
         "target": "단일",
         "icon": "물리"
     },
+
+    "미라클 펀치": {
+        "name_en": "Miracle Punch",
+        "name_jp": "ミラクルパンチ",
+        "description": "1명의 적에게 공격력 127.9/134.3/140.7%의 물리 속성 대미지를 주고, 크리티컬 확률이 30% 증가하며 명중률은 20% 감소한다.",
+        "description_en": "Deal Physical damage to 1 foe equal to 127.9/134.3/140.7%  of Attack. Increase critical rate by 30%, and decrease accuracy by 20%.",
+        "description_jp": "敵単体に攻撃力127.9/134.3/140.7%の物理属性ダメージを与える。クリティカル率が３０%上昇し、命中率が２０%低下する。",
+        "type": "공격",
+        "target": "단일",
+        "icon": "물리"
+    },
+
+
     "장대비 베기": {
         "name_jp": "五月雨斬り",
         "name_en": "Tempest Slash",
@@ -770,6 +803,18 @@ const personaSkillList = {
         "target": "전체",
         "icon": "물리광역"
     },
+
+    "플래시 봄": {
+        "name_jp": "フラッシュボム",
+        "name_en": "Flash Bomb",
+        "description": "모든 적에게 공격력 40.8/42.8/44.9%의 물리 속성 대미지를 주고, 2턴 동안 3.4/3.6/3.7%의 기본 확률로 적을 현기증 상태에 빠뜨린다.",
+        "description_en": "Deal Physical damage to all foes equal to 40.8/42.8/44.9% of Attack. 3.4/3.6/3.7% chance to inflict Dizzy for 2 turns.",
+        "description_jp": "敵全体に攻撃力40.8/42.8/44.9%の物理属性ダメージを与える。3.4/3.6/3.7%の確率で敵を２ターンの間、目眩状態にする。",
+        "type": "공격",
+        "target": "전체",
+        "icon": "물리광역"
+    },
+
     "폴 다운": {
         "name_jp": "脳天落とし",
         "name_en": "Skull Cracker",
@@ -1143,6 +1188,84 @@ const personaSkillList = {
         "icon": "디버프",
         "icon_gl": "버프"
     },
+    "도르민": {
+        "name_en": "Dormina",
+        "name_jp": "ドルミナー",
+        "description": "43.6/45.8/48.0%의 기본 확률로 2턴 동안 적 1명을 수면 상태에 빠뜨린다.",
+        "description_en": "43.6/45.8/48.0% chance to inflict Sleep on 1 foe for 2 turns.",
+        "description_jp": "43.6/45.8/48.0%の確率で敵単体を２ターンの間、睡眠状態にする。",
+        "type": "지원",
+        "target": "단일",
+        "icon": "디버프",
+        "icon_gl": "디버프"
+    },
+    "슬립 송": {
+        "name_en": "Lullaby",
+        "name_jp": "スリープソング",
+        "description": "21.8/22.9/24.0%의 기본 확률로 2턴 동안 모든 적을 수면 상태에 빠뜨린다.",
+        "description_en": "21.8/22.9/24.0% chance to inflict Sleep on all foes for 2 turns.",
+        "description_jp": "21.8/22.9/24.0%の確率で敵全体を２ターンの間、睡眠状態にする。",
+        "type": "지원",
+        "target": "전체",
+        "icon": "디버프",
+        "icon_gl": "디버프"
+    },
+    "도발": {
+        "name_en": "Taunt",
+        "name_jp": "挑発",
+        "description": "43.1/45.3/47.4%의 기본 확률로 2턴 동안 적 1명을 광노 상태에 빠뜨린다.",
+        "description_en": "43.1/45.3/47.4% chance to inflict Enrage on 1 foe for 2 turns.",
+        "description_jp": "43.1/45.3/47.4%の確率で敵単体を２ターンの間、激怒状態にする。",
+        "type": "지원",
+        "target": "단일",
+        "icon": "디버프",
+        "icon_gl": "디버프"
+    },
+    "마카쟈마": {
+        "name_en": "Makajama",
+        "name_jp": "マカジャマ",
+        "description": "65.1/68.4/71.6%의 기본 확률로 2턴 동안 적 1명을 망각 상태에 빠뜨린다.",
+        "description_en": "65.1/68.4/71.6% chance to inflict Forget on 1 foe for 2 turns.",
+        "description_jp": "65.1/68.4/71.6%の確率で敵単体を２ターンの間、忘却状態にする。",
+        "type": "지원",
+        "target": "단일",
+        "icon": "디버프",
+        "icon_gl": "디버프"
+    },
+    "마카쟈마온": {
+        "name_en": "Makajamaon",
+        "name_jp": "マカジャマオン",
+        "description": "32.6/34.2/35.9%의 기본 확률로 2턴 동안 모든 적을 망각 상태에 빠뜨린다.",
+        "description_en": "32.6/34.2/35.9% chance to inflict Forget on all foes for 2 turns.",
+        "description_jp": "32.6/34.2/35.9%の確率で敵全体を２ターンの間、忘却状態にする。",
+        "type": "지원",
+        "target": "전체",
+        "icon": "디버프",
+        "icon_gl": "디버프"
+    },
+    "암야의 섬광": {
+        "name_en": "Nocturnal Flash",
+        "name_jp": "闇夜の閃光",
+        "description": "16.3/17.1/17.9%의 기본 확률로 2턴 동안 모든 적을 현기증 상태에 빠뜨린다.",
+        "description_en": "16.3/17.1/17.9% chance to inflict Dizzy on all foes for 2 turns.",
+        "description_jp": "16.3/17.1/17.9%の確率で敵全体を２ターンの間、目眩状態にする。",
+        "type": "지원",
+        "target": "전체",
+        "icon": "디버프",
+        "icon_gl": "디버프"
+    },
+    "현기증": {
+        "name_en": "Dazzler",
+        "name_jp": "目眩し",
+        "description": "32.6/34.2/35.9%의 기본 확률로 2턴 동안 적 1명을 현기증 상태에 빠뜨린다.",
+        "description_en": "32.6/34.2/35.9% chance to inflict Dizzy on 1 foe for 2 turns.",
+        "description_jp": "32.6/34.2/35.9%の確率で敵単体を２ターンの間、目眩状態にする。",
+        "type": "지원",
+        "target": "단일",
+        "icon": "디버프",
+        "icon_gl": "디버프"
+    },
+
     "마하라쿤다": {
         "name_jp": "マハラクンダ",
         "name_en": "Marakunda",

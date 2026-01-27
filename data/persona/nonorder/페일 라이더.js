@@ -5,7 +5,7 @@ window.personaFiles["페일 라이더"] = {
   "name": "페일 라이더",
   "name_en": "Pale Rider",
   "name_jp": "ペイルライダー",
-  "grade": "5",
+  "grade": "6",
   "star": "4",
   "position": "굴복",
   "element": "주원",
@@ -108,7 +108,7 @@ window.personaFiles["페일 라이더"] = {
     "desc_en": "Deal Physical damage to 1 foe equal to 82.4/86.5/90.6% of Attack. 4.7/4.9/5.2% chance to inflict Brainwash for 2 turns.",
     "desc_jp": "敵単体に攻撃力82.4/86.5/90.6%の物理属性ダメージを与える。4.7/4.9/5.2%の確率で敵を２ターンの間、洗脳状態にする。",
     "priority": 0,
-    "icon": "Default",
+    "icon": "물리광역",
     "icon_gl": ""
   },
   "highlight": {

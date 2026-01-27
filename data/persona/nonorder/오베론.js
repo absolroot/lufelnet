@@ -5,7 +5,7 @@ window.personaFiles["오베론"] = {
   "name": "오베론",
   "name_en": "Oberon",
   "name_jp": "オベロン",
-  "grade": "5",
+  "grade": "7",
   "star": "4",
   "position": "반항",
   "element": "전격",
@@ -108,7 +108,7 @@ window.personaFiles["오베론"] = {
     "desc_en": "Deal Electric damage to 1 foe equal to 129.5/136.0/142.5% of Attack. 72.0/75.6/79.2% chance to inflict Shock for 2 turns.",
     "desc_jp": "敵単体に攻撃力129.5/136.0/142.5%の電撃属性ダメージを与える。72.0/75.6/79.2%の確率で敵を２ターンの間、感電状態にする。",
     "priority": 0,
-    "icon": "Default",
+    "icon": "전격",
     "icon_gl": ""
   },
   "highlight": {

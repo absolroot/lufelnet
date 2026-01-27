@@ -100,7 +100,7 @@ window.personaFiles["백호"] = {
     "desc_en": "Deal Physical damage to 1 foe equal to 148.0%/155.4%/162.8% of Attack. If target's HP is below 50%, increase damage by 40%.",
     "desc_jp": "敵単体に攻撃力148.0%/155.4%/162.8%の物理属性ダメージを与える。敵のＨＰが５０%未満になると、この与ダメージがさらに４０%上昇する。",
     "priority": 0,
-    "icon": "Default",
+    "icon": "물리",
     "icon_gl": ""
   },
   "highlight": {

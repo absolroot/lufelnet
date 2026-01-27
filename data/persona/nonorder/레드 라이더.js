@@ -100,7 +100,7 @@ window.personaFiles["레드 라이더"] = {
     "desc_en": "Deal Physical damage to 1 foe equal to 82.4/86.5/90.6% of Attack. 4.2/4.4/4.6% chance to inflict Despair for 3 turns.",
     "desc_jp": "敵単体に攻撃力82.4/86.5/90.6%の物理属性ダメージを与える。4.2/4.4/4.6%の確率で敵を３ターンの間、絶望状態にする。",
     "priority": 0,
-    "icon": "Default",
+    "icon": "물리",
     "icon_gl": ""
   },
   "highlight": {

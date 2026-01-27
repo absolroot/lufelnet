@@ -5,7 +5,7 @@ window.personaFiles["킨키"] = {
   "name": "킨키",
   "name_en": "Kin-Ki",
   "name_jp": "キンキ",
-  "grade": "5",
+  "grade": "3",
   "star": "4",
   "position": "지배",
   "element": "물리",
@@ -92,7 +92,7 @@ window.personaFiles["킨키"] = {
     "desc_en": "Deal Physical damage to all foes equal to 53.1/55.8/58.4% of Attack.",
     "desc_jp": "敵全体に攻撃力53.1/55.8/58.4%の物理属性ダメージを与える。",
     "priority": 0,
-    "icon": "Default",
+    "icon": "물리광역",
     "icon_gl": ""
   },
   "highlight": {

@@ -5,13 +5,15 @@
     // State variables
     let isListenersBound = false;
     let personaNameMapping = {};
+    let searchIndex = {}; // Stores the concatenated search text for each persona
     let nameSource = {};
     let searchDebounceTimer;
     let suppressDropdown = false;
     let lastConfirmedSearchValue = '';
 
     // Initialize on DOMContentLoaded
-    document.addEventListener('DOMContentLoaded', initSearch);
+    // Initialize on DOMContentLoaded - REMOVED to prevent overwriting i18n
+    // document.addEventListener('DOMContentLoaded', initSearch);
 
     // Make available globally for manual re-init after data load
     window.initPersonaSearch = initSearch;
@@ -39,12 +41,71 @@
     function buildMapping() {
         nameSource = (typeof window !== 'undefined' && window.personaFiles) ? window.personaFiles : {};
         personaNameMapping = {}; // Reset
+        searchIndex = {}; // Reset index
 
         Object.keys(nameSource).forEach(koreanName => {
             const persona = nameSource[koreanName];
+
+            // 1. Name Mapping for Dropdown
             personaNameMapping[koreanName.toLowerCase()] = koreanName;
             if (persona.name_en) personaNameMapping[persona.name_en.toLowerCase()] = koreanName;
             if (persona.name_jp) personaNameMapping[persona.name_jp.toLowerCase()] = koreanName;
+
+            // 2. Build Search Index (Concatenate all searchable text)
+            let searchText = '';
+
+            // Names
+            searchText += (persona.name || '') + ' ';
+            searchText += (persona.name_en || '') + ' ';
+            searchText += (persona.name_jp || '') + ' ';
+
+            // Unique Skill
+            if (persona.uniqueSkill) {
+                searchText += (persona.uniqueSkill.name || '') + ' ';
+                searchText += (persona.uniqueSkill.name_en || '') + ' ';
+                searchText += (persona.uniqueSkill.name_jp || '') + ' ';
+                searchText += (persona.uniqueSkill.desc || '') + ' ';
+                searchText += (persona.uniqueSkill.desc_en || '') + ' ';
+                searchText += (persona.uniqueSkill.desc_jp || '') + ' ';
+            }
+
+            // Highlight
+            if (persona.highlight) {
+                searchText += (persona.highlight.name || '') + ' ';
+                searchText += (persona.highlight.name_en || '') + ' ';
+                searchText += (persona.highlight.name_jp || '') + ' ';
+                searchText += (persona.highlight.desc || '') + ' ';
+                searchText += (persona.highlight.desc_en || '') + ' ';
+                searchText += (persona.highlight.desc_jp || '') + ' ';
+            }
+
+            // Innate Skills
+            if (persona.innate_skill && Array.isArray(persona.innate_skill)) {
+                persona.innate_skill.forEach(s => {
+                    searchText += (s.name || '') + ' ';
+                    searchText += (s.name_en || '') + ' ';
+                    searchText += (s.name_jp || '') + ' ';
+                    searchText += (s.desc || '') + ' ';
+                    searchText += (s.desc_en || '') + ' ';
+                    searchText += (s.desc_jp || '') + ' ';
+                });
+            }
+
+            // Passive Skills
+            if (persona.passive_skill && Array.isArray(persona.passive_skill)) {
+                persona.passive_skill.forEach(s => {
+                    searchText += (s.name || '') + ' ';
+                    searchText += (s.name_en || '') + ' ';
+                    searchText += (s.name_jp || '') + ' ';
+                    searchText += (s.desc || '') + ' ';
+                    searchText += (s.desc_en || '') + ' ';
+                    searchText += (s.desc_jp || '') + ' ';
+                });
+            }
+
+            // Note: Recommended Skills are EXCLUDED per user request.
+
+            searchIndex[koreanName] = searchText.toLowerCase();
         });
         // console.log("[Search] Mapping built with " + Object.keys(nameSource).length + " items.");
     }
@@ -52,7 +113,27 @@
     function bindListeners(searchInput) {
         const dropdown = document.getElementById('searchDropdown');
 
-        searchInput.addEventListener('input', (e) => handleSearchInput(e, searchInput, dropdown));
+        const clearBtn = document.getElementById('searchClearBtn');
+        const updateClearBtn = () => {
+            if (clearBtn) clearBtn.style.display = searchInput.value.length > 0 ? 'block' : 'none';
+        }
+
+        searchInput.addEventListener('input', (e) => {
+            handleSearchInput(e, searchInput, dropdown);
+            updateClearBtn();
+        });
+
+        if (clearBtn) {
+            clearBtn.addEventListener('click', () => {
+                searchInput.value = '';
+                updateClearBtn();
+                searchInput.focus();
+                filterBySearch('');
+                suppressDropdown = true;
+                if (dropdown) dropdown.style.display = 'none';
+            });
+        }
+
         searchInput.addEventListener('keydown', (e) => {
             if (e.key === 'Enter') {
                 e.preventDefault();
@@ -69,6 +150,9 @@
                 if (dropdown) dropdown.style.display = 'none';
             }
         });
+
+        // Initial state check
+        updateClearBtn();
     }
 
     function handleSearchInput(e, searchInput, dropdown) {
@@ -80,6 +164,9 @@
         } else {
             updateDropdown(searchValue, searchInput, dropdown);
         }
+
+        const clearBtn = document.getElementById('searchClearBtn');
+        if (clearBtn) clearBtn.style.display = searchValue.length > 0 ? 'block' : 'none';
 
         clearTimeout(searchDebounceTimer);
         searchDebounceTimer = setTimeout(() => {
@@ -120,7 +207,7 @@
                     div.addEventListener('click', () => {
                         searchInput.value = displayName;
                         dropdown.style.display = 'none';
-                        filterBySearch(matchedName.toLowerCase()); // Filter by the matched key
+                        filterBySearch(displayName.toLowerCase()); // Search by the selected display name (or key)
                     });
                     fragment.appendChild(div);
                 });
@@ -144,44 +231,20 @@
             if (!name) return;
 
             let isMatch = false;
+
+            // Check against pre-computed index
             if (searchValue === '') {
                 isMatch = true;
-            } else {
-                const persona = nameSource[name];
-                if (persona) {
-                    const k = name.toLowerCase();
-                    const e = (persona.name_en || '').toLowerCase();
-                    const j = (persona.name_jp || '').toLowerCase();
-                    if (k.includes(searchValue) || e.includes(searchValue) || j.includes(searchValue)) {
-                        isMatch = true;
-                    }
+            } else if (searchIndex[name]) {
+                // Determine search terms (support space-separated?)
+                // Simple 'includes' for now as typical for this scale
+                if (searchIndex[name].includes(searchValue)) {
+                    isMatch = true;
                 }
             }
 
             if (isMatch) {
                 container.classList.remove('hidden-by-search');
-                // Only show if not hidden by other filters
-                // Assuming other filters use 'hidden-by-filter' class or similar logic from applyFilters()
-                // Note: applyFilters usually sets style.display = 'none'.
-                // To cooperate:
-                // We need to know if it's hidden by filter.
-                // But applyFilters function inside index.html controls display directly.
-                // This filterBySearch function should probably trigger applyFilters or coexist.
-                // For now, FORCE display if match and let user reset filters if needed?
-                // NO, better to respect existing display property if it was hidden by filter?
-                // Complication: The user wants to search. If I search "Agathion", show it even if I filtered "Phys"?
-                // Usually search overrides or intersects. 
-                // Let's make it intersect: If hidden by key filter, stay hidden??
-                // The user likely wants to FIND it.
-                // Let's force show for now, or just remove 'hidden-by-search' class and ensure display is cleared IF NOT hidden by filter.
-                // Index.html ApplyFilters:
-                // if (!filterCache.elements.has(source.element)...) container.style.display = 'none';
-                // It manages display directly.
-                // If we change display here, applyFilters might overwrite it or vice versa.
-                // Ideally we update a search state and call applyFilters.
-                // But applyFilters is local in index.html.
-
-                // Fallback: Just set display.
                 container.style.display = '';
             } else {
                 container.classList.add('hidden-by-search');
@@ -193,8 +256,9 @@
         const visible = document.querySelectorAll('.persona-detail-container:not([style*="display: none"])').length;
         const countEl = document.getElementById('filteredCount');
         if (countEl) {
-            const countText = window.i18nFilteredCount || '전체';
-            const countUnit = window.i18nCountUnit !== undefined ? window.i18nCountUnit : (typeof window.currentLang !== 'undefined' && window.currentLang === 'kr' ? '개' : '');
+            const countText = (window.t && window.t('filteredCount', '전체')) || '전체';
+            const currentLang = window.getCurrentLang ? window.getCurrentLang() : 'kr';
+            const countUnit = (window.t && window.t('countUnit', (currentLang === 'kr' ? '개' : ''))) || '';
             countEl.textContent = `${countText} ${visible}${countUnit}`;
         }
     };

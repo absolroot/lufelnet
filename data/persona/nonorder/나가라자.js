@@ -5,7 +5,7 @@ window.personaFiles["나가라자"] = {
   "name": "나가라자",
   "name_en": "Raja Naga",
   "name_jp": "ナーガラジャ",
-  "grade": "5",
+  "grade": "6",
   "star": "3",
   "position": "지배",
   "element": "전격",

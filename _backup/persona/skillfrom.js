@@ -164,17 +164,14 @@
   }
 
   function addRecommendedSkillClickHandler() {
-    // Change: Listen on body to support both list and detail panels
-    const container = document.body;
+    const container = document.getElementById('personaCards');
+    if (!container) return;
 
     container.addEventListener('click', async (e) => {
       const target = e.target;
       // Accept clicks on the name container or anything inside it (icon, name text)
       const nameContainer = target.closest('.skill-name-container');
       if (!nameContainer) return;
-
-      // Exclude Innate Skills (획득 스킬) from being clickable
-      if (nameContainer.closest('.persona-innate-skills')) return;
 
       // Find the actual skill-name element within the container to read attributes/text
       const nameEl = nameContainer.querySelector('.skill-name');
@@ -195,8 +192,8 @@
       // Choose icon based on language (use icon_gl for en/jp when available)
       const iconKey = (skillInfo)
         ? ((currentLang === 'en' || currentLang === 'jp')
-          ? (skillInfo.icon_gl || skillInfo.icon || '')
-          : (skillInfo.icon || ''))
+            ? (skillInfo.icon_gl || skillInfo.icon || '')
+            : (skillInfo.icon || ''))
         : '';
       const iconSrc = iconKey ? `${siteBase}/assets/img/persona/속성_${iconKey}.png` : '';
       let subtitle = '';
@@ -261,7 +258,7 @@
         sections.push(`<div class="skill-source-group">${renderSources(entry.plain)}</div>`);
       }
 
-      const labelText = (function () {
+      const labelText = (function(){
         if (currentLang === 'en') return 'Sources';
         if (currentLang === 'jp') return '入手先';
         return '획득처';

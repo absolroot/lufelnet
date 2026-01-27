@@ -44,7 +44,7 @@ class I18nService {
         this.languageChangeListeners = [];
 
         // 번역 파일 베이스 경로
-        this.basePath = '/i18n';
+        this.basePath = (typeof window.SITE_BASEURL !== 'undefined' ? window.SITE_BASEURL : '') + '/i18n';
     }
 
     /**

@@ -5,7 +5,7 @@ window.personaFiles["몰록"] = {
   "name": "몰록",
   "name_en": "Moloch",
   "name_jp": "モロク",
-  "grade": "5",
+  "grade": "6",
   "star": "4",
   "position": "방위",
   "element": "화염",

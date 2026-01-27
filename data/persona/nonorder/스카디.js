@@ -5,7 +5,7 @@ window.personaFiles["스카디"] = {
   "name": "스카디",
   "name_en": "Skadi",
   "name_jp": "スカディ",
-  "grade": "5",
+  "grade": "6",
   "star": "4",
   "position": "굴복",
   "element": "빙결",
@@ -108,7 +108,7 @@ window.personaFiles["스카디"] = {
     "desc_en": "21.5/22.6/23.7% chance to inflict Enrage on all foes for 2 turns.",
     "desc_jp": "21.5/22.6/23.7%の確率で敵全体を２ターンの間、激怒状態にする。",
     "priority": 0,
-    "icon": "Default",
+    "icon": "디버프광역",
     "icon_gl": ""
   },
   "highlight": {

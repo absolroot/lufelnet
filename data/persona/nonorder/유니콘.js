@@ -5,7 +5,7 @@ window.personaFiles["유니콘"] = {
   "name": "유니콘",
   "name_en": "Unicorn",
   "name_jp": "ユニコーン",
-  "grade": "5",
+  "grade": "4",
   "star": "5",
   "position": "구원",
   "element": "축복",
@@ -100,7 +100,7 @@ window.personaFiles["유니콘"] = {
     "desc_en": "Restore 1 ally's HP equal to 16.2%/17.7%/19.2% of Attack + 490/631/788 and remove 1 random debuff. When a debuff is removed, restore HP by an additional 10.8%/11.8%/12.8% of Attack + 326/420/525.",
     "desc_jp": "味方単体のＨＰを攻撃力16.2%/17.7%/19.2%＋490/631/788回復し、さらに、ランダムな弱体効果を１つ打ち消す。弱体を打ち消した時、追加で攻撃力10.8%/11.8%/12.8%＋326/420/525のＨＰを回復する。",
     "priority": 0,
-    "icon": "Default",
+    "icon": "치료",
     "icon_gl": ""
   },
   "highlight": {

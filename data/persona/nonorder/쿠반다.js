@@ -100,7 +100,7 @@ window.personaFiles["쿠반다"] = {
     "desc_en": "Deal Physical damage to all foes equal to 40.8/42.8/44.9% of Attack. 2.6/2.7/2.9% chance to inflict Fear for 3 turns.",
     "desc_jp": "敵全体に攻撃力40.8/42.8/44.9%の物理属性ダメージを与える。2.6/2.7/2.9%の確率で敵を３ターンの間、恐怖状態にする。",
     "priority": 0,
-    "icon": "Default",
+    "icon": "물리광역",
     "icon_gl": ""
   },
   "highlight": {

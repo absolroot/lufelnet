@@ -110,7 +110,7 @@
           <div class="skill-source-title-wrap">
             <div class="skill-source-title-row">
               <img id="skillSourceIcon" class="skill-source-icon" alt="" />
-              <h3 id="skillSourceTitle">Skill Sources</h3>
+              <h3 id="skillSourceTitle" data-i18n="skillSourcesTitle">Skill Sources</h3>
             </div>
             <div id="skillSourceSubtitle" class="skill-source-subtitle"></div>
           </div>
@@ -164,14 +164,17 @@
   }
 
   function addRecommendedSkillClickHandler() {
-    const container = document.getElementById('personaCards');
-    if (!container) return;
+    // Change: Listen on body to support both list and detail panels
+    const container = document.body;
 
     container.addEventListener('click', async (e) => {
       const target = e.target;
       // Accept clicks on the name container or anything inside it (icon, name text)
       const nameContainer = target.closest('.skill-name-container');
       if (!nameContainer) return;
+
+      // Exclude Innate Skills (획득 스킬) from being clickable
+      if (nameContainer.closest('.persona-innate-skills')) return;
 
       // Find the actual skill-name element within the container to read attributes/text
       const nameEl = nameContainer.querySelector('.skill-name');
@@ -192,8 +195,8 @@
       // Choose icon based on language (use icon_gl for en/jp when available)
       const iconKey = (skillInfo)
         ? ((currentLang === 'en' || currentLang === 'jp')
-            ? (skillInfo.icon_gl || skillInfo.icon || '')
-            : (skillInfo.icon || ''))
+          ? (skillInfo.icon_gl || skillInfo.icon || '')
+          : (skillInfo.icon || ''))
         : '';
       const iconSrc = iconKey ? `${siteBase}/assets/img/persona/속성_${iconKey}.png` : '';
       let subtitle = '';
@@ -208,11 +211,7 @@
 
       const title = (nameEl.textContent || baseKor).trim();
 
-      const noSourcesText = (function () {
-        if (currentLang === 'en') return 'No sources found.';
-        if (currentLang === 'jp') return '入手先が見つかりません。';
-        return '출처를 찾을 수 없습니다.';
-      })();
+      const noSourcesText = (window.t && window.t('noSourcesFound', '출처를 찾을 수 없습니다.')) || '출처를 찾을 수 없습니다.';
 
       if (!entry) {
         openSkillSourceModal(title, `<div class="skill-source-empty">${noSourcesText}</div>`, { iconSrc, subtitle });
@@ -258,11 +257,7 @@
         sections.push(`<div class="skill-source-group">${renderSources(entry.plain)}</div>`);
       }
 
-      const labelText = (function(){
-        if (currentLang === 'en') return 'Sources';
-        if (currentLang === 'jp') return '入手先';
-        return '획득처';
-      })();
+      const labelText = (window.t && window.t('sourcesLabel', '획득처')) || '획득처';
       const html = `<div class="skill-source-label" style="font-weight:700;margin-bottom:8px;color:#ffd54f;">${labelText}</div><div class="skill-source-sections">${sections.join('')}</div>`;
       openSkillSourceModal(title, html, { iconSrc, subtitle });
     });

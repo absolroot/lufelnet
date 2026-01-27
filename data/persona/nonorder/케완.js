@@ -5,7 +5,7 @@ window.personaFiles["케완"] = {
   "name": "케완",
   "name_en": "Kaiwan",
   "name_jp": "キウン",
-  "grade": "5",
+  "grade": "4",
   "star": "3",
   "position": "굴복",
   "element": "염동",

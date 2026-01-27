@@ -7,7 +7,7 @@ window.personaFiles["스카아하"] = {
   "name_jp": "スカアハ",
   "grade": "5",
   "star": "3",
-  "position": "굴복",
+  "position": "지배",
   "element": "질풍",
   "event": false,
   "wild_emblem_rainbow": false,

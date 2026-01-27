@@ -1,6 +1,6 @@
 ---
 layout: default
-custom_css: [persona]
+custom_css: []
 custom_js: [tooltip]
 custom_data: [tooltip.js, wonder/skills.js]
 permalink: /persona/
@@ -25,2198 +25,338 @@ jp: /persona/?lang=jp
 
 <div class="main-wrapper">
     <link rel="stylesheet" href="{{ site.baseurl }}/apps/persona/skillfrom.css?v={{ site.time | date: '%s' }}">
-    <script src="{{ site.baseurl }}/assets/js/ad-injector.js?v={{ site.time | date: '%s' }}"></script>
+    <link rel="stylesheet" href="{{ site.baseurl }}/apps/persona/persona.css?v={{ site.time | date: '%s' }}">
+    <link rel="stylesheet" href="{{ site.baseurl }}/apps/persona/persona-img.css?v={{ site.time | date: '%s' }}">
+
+    <!--<script src="{{ site.baseurl }}/assets/js/ad-injector.js?v={{ site.time | date: '%s' }}"></script>-->
     <!-- 페르소나 순서 및 로더 -->
     <script src="{{ site.baseurl }}/data/persona/order.js?v={{ site.time | date: '%s' }}"></script>
+    <script src="{{ site.baseurl }}/data/persona/nonorder.js?v={{ site.time | date: '%s' }}"></script>
     <script src="{{ site.baseurl }}/assets/js/persona-loader.js?v={{ site.time | date: '%s' }}"></script>
     <script src="{{ site.baseurl }}/apps/persona/getfrom.js?v={{ site.time | date: '%s' }}"></script>
-    <!-- 언어 안내 메시지 -->
-    <!--
-    <div id="language-notice" class="language-notice" style="display: none;">
-        <p id="language-notice-text"></p>
-    </div>-->
 
     <div class="navigation-path">
-        <script>document.write(`<a href="../../?v=${APP_VERSION}" id="nav-home">홈</a>`);</script>
+        <script>document.write(`<a href="../../?v=${APP_VERSION}" id="nav-home" data-i18n="navHome">홈</a>`);</script>
         <span class="separator">/</span>
-        <span class="current-page" id="nav-current">페르소나</span>
+        <span class="current-page" id="nav-current" data-i18n="navCurrent">페르소나</span>
     </div>
     <div class="header-container">
-        <h1 id="page-title">주요 페르소나</h1>
+        <h1 id="page-title" data-i18n="pageTitle">주요 페르소나</h1>
     </div>
 
-    <!-- Filter section -->
-    <div class="filter-section">
+
+
+    <!-- Split View Container -->
+    <div class="split-view-container">
+        <!-- Left Panel: Filter & List -->
+        <div class="persona-list-panel">
+            <!-- Search & Sort Header Implementation -->
+            <div class="search-section filter-header-sticky">
+                <div class="search-sort-container"
+                    style="display: flex; gap: 8px; align-items: center; justify-content: space-between;">
+                    <div class="search-container" style="flex: 1; position: relative;">
+                        <div class="search-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z"
+                                    fill="rgba(255, 255, 255, 0.6)" />
+                            </svg>
+                        </div>
+                        <input type="text" id="personaSearch" placeholder="Search..." autocomplete="off"
+                            data-i18n-placeholder="searchPlaceholder" style="padding-right: 30px;">
+                        <button id="searchClearBtn" class="search-clear-btn"
+                            style="display: none; position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: #999; padding: 0;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-circle-x-icon lucide-circle-x">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="m15 9-6 6" />
+                                <path d="m9 9 6 6" />
+                            </svg>
+                        </button>
+                        <div id="searchDropdown" class="search-dropdown"></div>
+                    </div>
+                    <div class="sort-container">
+                        <select id="sortSelect" class="sort-select">
+                            <option value="tier" data-i18n="sortTier">티어 순</option>
+                            <option value="rarity" data-i18n="sortRarity">희귀도 순</option>
+                            <option value="name" data-i18n="sortName">이름 순</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Filtered Count & Filter Button -->
+                <div class="search-status-row"
+                    style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px; width:100%;">
+                    <div class="search-count" style="font-size: 12px; color: #aaa;">
+                        <span id="filteredCount" data-i18n="filteredCount"></span>
+                    </div>
+                    <button id="filterOpenBtn" class="filter-open-btn" aria-label="Filter">
+                        <span data-i18n="common.filter"
+                            style="margin-right: 6px; font-size: 11px; font-weight: 400; color: #aaa;">필터</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"
+                            fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" class="lucide lucide-funnel-icon lucide-funnel">
+                            <path
+                                d="M10 20a1 1 0 0 0 .553.895l2 1A1 1 0 0 0 14 21v-7a2 2 0 0 1 .517-1.341L21.74 4.67A1 1 0 0 0 21 3H3a1 1 0 0 0-.742 1.67l7.225 7.989A2 2 0 0 1 10 14z" />
+                        </svg>
+                    </button>
+                </div>
+                <div id="activeFilters" class="active-filters-container"></div>
+            </div>
+            <div class="persona-cards drag-me" id="personaCards">
+                <!-- Dynamically generated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Right Panel: Detail -->
+        <div class="persona-detail-panel">
+            <div id="personaDetailContent" class="sticky-content">
+                <div class="empty-state-message">
+                    <p data-i18n="emptyStateMessage">페르소나를 선택하여 상세 정보를 확인하세요.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<!-- Filter Modal Structure (Hidden by default) -->
+<div id="filterModal" class="filter-modal hidden">
+    <div class="filter-backdrop"></div>
+    <div class="filter-dialog">
         <div class="filter-header">
-            <button class="filter-toggle-btn">
-                <img src="{{ site.baseurl }}/assets/img/character-cards/filter.png" alt="필터" />
-                <span></span>
-            </button>
-            <button class="filter-reset-btn" style="display: none;">
-                <img src="{{ site.baseurl }}/assets/img/character-cards/reset.png" alt="초기화" />
-            </button>
+            <h3 data-i18n="common.filter">필터</h3>
+            <button class="filter-close-btn">×</button>
         </div>
-
-        <div class="filter-content" style="display: none;">
-            <!-- Element filter -->
-            <div class="filter-group">
-                <h3>속성</h3>
-                <div class="filter-options">
-                    <label>
-                        <input type="checkbox" name="element" value="물리">
-                        <img src="{{ site.baseurl }}/assets/img/persona/속성_물리.png" alt="물리">
-                        <span></span>
-                    </label>
-                    <label>
-                        <input type="checkbox" name="element" value="총격">
-                        <img src="{{ site.baseurl }}/assets/img/persona/속성_총격.png" alt="총격">
-                        <span></span>
-                    </label>
-                    <label>
-                        <input type="checkbox" name="element" value="화염">
-                        <img src="{{ site.baseurl }}/assets/img/persona/속성_화염.png" alt="화염">
-                        <span></span>
-                    </label>
-                    <label>
-                        <input type="checkbox" name="element" value="빙결">
-                        <img src="{{ site.baseurl }}/assets/img/persona/속성_빙결.png" alt="빙결">
-                        <span></span>
-                    </label>
-                    <label>
-                        <input type="checkbox" name="element" value="전격">
-                        <img src="{{ site.baseurl }}/assets/img/persona/속성_전격.png" alt="전격">
-                        <span></span>
-                    </label>
-                    <label>
-                        <input type="checkbox" name="element" value="질풍">
-                        <img src="{{ site.baseurl }}/assets/img/persona/속성_질풍.png" alt="질풍">
-                        <span></span>
-                    </label>
-                    <label>
-                        <input type="checkbox" name="element" value="염동">
-                        <img src="{{ site.baseurl }}/assets/img/persona/속성_염동.png" alt="염동">
-                        <span></span>
-                    </label>
-                    <label>
-                        <input type="checkbox" name="element" value="핵열">
-                        <img src="{{ site.baseurl }}/assets/img/persona/속성_핵열.png" alt="핵열">
-                        <span></span>
-                    </label>
-                    <label>
-                        <input type="checkbox" name="element" value="축복">
-                        <img src="{{ site.baseurl }}/assets/img/persona/속성_축복.png" alt="축복">
-                        <span></span>
-                    </label>
-                    <label>
-                        <input type="checkbox" name="element" value="주원">
-                        <img src="{{ site.baseurl }}/assets/img/persona/속성_주원.png" alt="주원">
-                        <span></span>
-                    </label>
-                    <label>
-                        <input type="checkbox" name="element" value="만능">
-                        <img src="{{ site.baseurl }}/assets/img/persona/속성_만능.png" alt="만능">
-                        <span></span>
-                    </label>
-                </div>
-            </div>
-
-            <!-- Position filter -->
-            <div class="filter-group">
-                <h3>직업</h3>
-                <div class="filter-options">
-                    <label>
-                        <input type="checkbox" name="position" value="지배">
-                        <img src="{{ site.baseurl }}/assets/img/persona/직업_지배.png" alt="지배">
-                    </label>
-                    <label>
-                        <input type="checkbox" name="position" value="반항">
-                        <img src="{{ site.baseurl }}/assets/img/persona/직업_반항.png" alt="반항">
-                    </label>
-                    <label>
-                        <input type="checkbox" name="position" value="우월">
-                        <img src="{{ site.baseurl }}/assets/img/persona/직업_우월.png" alt="우월">
-                    </label>
-                    <label>
-                        <input type="checkbox" name="position" value="굴복">
-                        <img src="{{ site.baseurl }}/assets/img/persona/직업_굴복.png" alt="굴복">
-                    </label>
-                    <label>
-                        <input type="checkbox" name="position" value="방위">
-                        <img src="{{ site.baseurl }}/assets/img/persona/직업_방위.png" alt="방위">
-                    </label>
-                    <label>
-                        <input type="checkbox" name="position" value="구원">
-                        <img src="{{ site.baseurl }}/assets/img/persona/직업_구원.png" alt="구원">
-                    </label>
-                </div>
-            </div>
-
-            <!-- Rarity filter -->
-            <div class="filter-group">
-                <h3>희귀도</h3>
-                <div class="filter-options">
-                    <label>
-                        <input type="checkbox" name="rarity" value="5" hidden>
-                        <div class="star-container">
-                            <img src="{{ site.baseurl }}/assets/img/persona/star5.webp" alt="★">
-                            <img src="{{ site.baseurl }}/assets/img/persona/star5.webp" alt="★">
-                            <img src="{{ site.baseurl }}/assets/img/persona/star5.webp" alt="★">
-                            <img src="{{ site.baseurl }}/assets/img/persona/star5.webp" alt="★">
-                            <img src="{{ site.baseurl }}/assets/img/persona/star5.webp" alt="★">
-                        </div>
-                    </label>
-                    <label>
-                        <input type="checkbox" name="rarity" value="4" hidden>
-                        <div class="star-container">
-                            <img src="{{ site.baseurl }}/assets/img/persona/star4.webp" alt="★">
-                            <img src="{{ site.baseurl }}/assets/img/persona/star4.webp" alt="★">
-                            <img src="{{ site.baseurl }}/assets/img/persona/star4.webp" alt="★">
-                            <img src="{{ site.baseurl }}/assets/img/persona/star4.webp" alt="★">
-                        </div>
-                    </label>
-                    <label>
-                        <input type="checkbox" name="rarity" value="3" hidden>
-                        <div class="star-container">
-                            <img src="{{ site.baseurl }}/assets/img/persona/star3.webp" alt="★">
-                            <img src="{{ site.baseurl }}/assets/img/persona/star3.webp" alt="★">
-                            <img src="{{ site.baseurl }}/assets/img/persona/star3.webp" alt="★">
-                        </div>
-                    </label>
-                </div>
-            </div>
-
-            <!-- Grade filter -->
-            <div class="filter-group">
-                <h3>등급</h3>
-                <div class="filter-options">
-                    <label>
-                        <input type="checkbox" name="grade" value="1">
-                        <img src="{{ site.baseurl }}/assets/img/persona/persona-grade1.webp" alt="1등급">
-                        <span></span>
-                    </label>
-                    <label>
-                        <input type="checkbox" name="grade" value="2">
-                        <img src="{{ site.baseurl }}/assets/img/persona/persona-grade2.webp" alt="2등급">
-                        <span></span>
-                    </label>
-                    <label>
-                        <input type="checkbox" name="grade" value="3">
-                        <img src="{{ site.baseurl }}/assets/img/persona/persona-grade3.webp" alt="3등급">
-                        <span></span>
-                    </label>
-                    <label>
-                        <input type="checkbox" name="grade" value="4">
-                        <img src="{{ site.baseurl }}/assets/img/persona/persona-grade4.webp" alt="4등급">
-                        <span></span>
-                    </label>
-                    <label>
-                        <input type="checkbox" name="grade" value="5">
-                        <img src="{{ site.baseurl }}/assets/img/persona/persona-grade5.webp" alt="5등급">
-                        <span></span>
-                    </label>
-                    <label>
-                        <input type="checkbox" name="grade" value="6">
-                        <img src="{{ site.baseurl }}/assets/img/persona/persona-grade6.webp" alt="6등급">
-                        <span></span>
-                    </label>
-                    <label>
-                        <input type="checkbox" name="grade" value="7">
-                        <img src="{{ site.baseurl }}/assets/img/persona/persona-grade7.webp" alt="7등급">
-                        <span></span>
-                    </label>
-                    <label>
-                        <input type="checkbox" name="grade" value="8">
-                        <img src="{{ site.baseurl }}/assets/img/persona/persona-grade8.webp" alt="8등급">
-                        <span></span>
-                    </label>
-                    <label>
-                        <input type="checkbox" name="grade" value="9">
-                        <img src="{{ site.baseurl }}/assets/img/persona/persona-grade9.webp" alt="9등급">
-                        <span></span>
-                    </label>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Separator line -->
-    <div class="separator-line"></div>
-
-    <!-- Search section below filter section -->
-    <div class="search-section">
-        <div class="search-container">
-            <div class="search-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z"
-                        fill="rgba(255, 255, 255, 0.6)" />
-                </svg>
-            </div>
-            <input type="text" id="personaSearch" placeholder="페르소나 검색..." autocomplete="off">
-            <div id="searchDropdown" class="search-dropdown"></div>
-        </div>
-        <div class="search-count">
-            <span id="filteredCount">전체 0개</span>
-        </div>
-        <!-- Expand-all toggle -->
-        <div class="expand-all-toggle">
-            <input type="checkbox" id="expandAllToggle">
-            <label for="expandAllToggle" id="expandAllLabel">전체 펼치기</label>
-        </div>
-        
-        <span class="skill-level-separator">|</span>
-        <div class="skill-level-toggle">
-            <span class="skill-level-label">스킬 레벨 :</span>
-            <div class="skill-level-buttons skill-level-buttons-global">
-                <button type="button" class="skill-level-btn active" data-level="0">LV6</button>
-                <button type="button" class="skill-level-btn" data-level="1">LV7</button>
-                <button type="button" class="skill-level-btn" data-level="2">LV8</button>
-                <button type="button" class="skill-level-btn" data-level="ALL">ALL</button>
-            </div>
-        </div>
-        
-        
-    </div>
-
-    <!-- Explain Container -->
-    <div class="explain-container">
-        <div class="explain-box">
-            <div class="explain-section">
-                <h4>본능 · 고유 스킬 · HIGHLIGHT</h4>
-                <div class="priority-examples">
-                    <div class="priority-label">중요도 :</div>
-                    <div class="priority-item">
-                        <div class="priority-box high"></div>
-                        <span>상</span>
-                    </div>
-                    <div class="priority-item">
-                        <div class="priority-box medium"></div>
-                        <span>중</span>
-                    </div>
-                    <div class="priority-item">
-                        <div class="priority-box low"></div>
-                        <span>하</span>
+        <div class="filter-body">
+            <div class="filter-content">
+                <!-- Element filter -->
+                <div class="filter-group">
+                    <h3 data-i18n="filterElement">속성</h3>
+                    <div class="filter-options">
+                        <label>
+                            <input type="checkbox" name="element" value="물리">
+                            <img src="{{ site.baseurl }}/assets/img/persona/속성_물리.png" alt="물리">
+                            <span></span>
+                        </label>
+                        <label>
+                            <input type="checkbox" name="element" value="총격">
+                            <img src="{{ site.baseurl }}/assets/img/persona/속성_총격.png" alt="총격">
+                            <span></span>
+                        </label>
+                        <label>
+                            <input type="checkbox" name="element" value="화염">
+                            <img src="{{ site.baseurl }}/assets/img/persona/속성_화염.png" alt="화염">
+                            <span></span>
+                        </label>
+                        <label>
+                            <input type="checkbox" name="element" value="빙결">
+                            <img src="{{ site.baseurl }}/assets/img/persona/속성_빙결.png" alt="빙결">
+                            <span></span>
+                        </label>
+                        <label>
+                            <input type="checkbox" name="element" value="전격">
+                            <img src="{{ site.baseurl }}/assets/img/persona/속성_전격.png" alt="전격">
+                            <span></span>
+                        </label>
+                        <label>
+                            <input type="checkbox" name="element" value="질풍">
+                            <img src="{{ site.baseurl }}/assets/img/persona/속성_질풍.png" alt="질풍">
+                            <span></span>
+                        </label>
+                        <label>
+                            <input type="checkbox" name="element" value="염동">
+                            <img src="{{ site.baseurl }}/assets/img/persona/속성_염동.png" alt="염동">
+                            <span></span>
+                        </label>
+                        <label>
+                            <input type="checkbox" name="element" value="핵열">
+                            <img src="{{ site.baseurl }}/assets/img/persona/속성_핵열.png" alt="핵열">
+                            <span></span>
+                        </label>
+                        <label>
+                            <input type="checkbox" name="element" value="축복">
+                            <img src="{{ site.baseurl }}/assets/img/persona/속성_축복.png" alt="축복">
+                            <span></span>
+                        </label>
+                        <label>
+                            <input type="checkbox" name="element" value="주원">
+                            <img src="{{ site.baseurl }}/assets/img/persona/속성_주원.png" alt="주원">
+                            <span></span>
+                        </label>
+                        <label>
+                            <input type="checkbox" name="element" value="만능">
+                            <img src="{{ site.baseurl }}/assets/img/persona/속성_만능.png" alt="만능">
+                            <span></span>
+                        </label>
                     </div>
                 </div>
-            </div>
-            <div class="explain-section">
-                <h4>추천 스킬</h4>
-                <div class="priority-examples">
-                    <div class="priority-label">우선순위 :</div>
-                    <div class="priority-item">
-                        <div class="priority-text high" data-priority-text="high">높음</div>
-                    </div>
-                    <div class="priority-item">
-                        <div class="priority-text medium" data-priority-text="normal">일반</div>
 
-                    </div>
-                    <div class="priority-item">
-                        <div class="priority-text low" data-priority-text="low">낮음</div>
-                    </div>
-                    <div class="priority-item">
-                        <div class="priority-text extra-low" data-priority-text="very-low">매우 낮음</div>
+                <!-- Position filter -->
+                <div class="filter-group">
+                    <h3 data-i18n="filterPosition">직업</h3>
+                    <div class="filter-options">
+                        <label>
+                            <input type="checkbox" name="position" value="지배">
+                            <img src="{{ site.baseurl }}/assets/img/persona/직업_지배.png" alt="지배">
+                        </label>
+                        <label>
+                            <input type="checkbox" name="position" value="반항">
+                            <img src="{{ site.baseurl }}/assets/img/persona/직업_반항.png" alt="반항">
+                        </label>
+                        <label>
+                            <input type="checkbox" name="position" value="우월">
+                            <img src="{{ site.baseurl }}/assets/img/persona/직업_우월.png" alt="우월">
+                        </label>
+                        <label>
+                            <input type="checkbox" name="position" value="굴복">
+                            <img src="{{ site.baseurl }}/assets/img/persona/직업_굴복.png" alt="굴복">
+                        </label>
+                        <label>
+                            <input type="checkbox" name="position" value="방위">
+                            <img src="{{ site.baseurl }}/assets/img/persona/직업_방위.png" alt="방위">
+                        </label>
+                        <label>
+                            <input type="checkbox" name="position" value="구원">
+                            <img src="{{ site.baseurl }}/assets/img/persona/직업_구원.png" alt="구원">
+                        </label>
                     </div>
                 </div>
-            </div>
+
+                <!-- Rarity filter -->
+                <div class="filter-group">
+                    <h3 data-i18n="filterRarity">희귀도</h3>
+                    <div class="filter-options">
+                        <label>
+                            <input type="checkbox" name="rarity" value="5" hidden>
+                            <div class="star-container">
+                                <img src="{{ site.baseurl }}/assets/img/persona/star5.webp" alt="★">
+                                <img src="{{ site.baseurl }}/assets/img/persona/star5.webp" alt="★">
+                                <img src="{{ site.baseurl }}/assets/img/persona/star5.webp" alt="★">
+                                <img src="{{ site.baseurl }}/assets/img/persona/star5.webp" alt="★">
+                                <img src="{{ site.baseurl }}/assets/img/persona/star5.webp" alt="★">
+                            </div>
+                        </label>
+                        <label>
+                            <input type="checkbox" name="rarity" value="4" hidden>
+                            <div class="star-container">
+                                <img src="{{ site.baseurl }}/assets/img/persona/star4.webp" alt="★">
+                                <img src="{{ site.baseurl }}/assets/img/persona/star4.webp" alt="★">
+                                <img src="{{ site.baseurl }}/assets/img/persona/star4.webp" alt="★">
+                                <img src="{{ site.baseurl }}/assets/img/persona/star4.webp" alt="★">
+                            </div>
+                        </label>
+                        <label>
+                            <input type="checkbox" name="rarity" value="3" hidden>
+                            <div class="star-container">
+                                <img src="{{ site.baseurl }}/assets/img/persona/star3.webp" alt="★">
+                                <img src="{{ site.baseurl }}/assets/img/persona/star3.webp" alt="★">
+                                <img src="{{ site.baseurl }}/assets/img/persona/star3.webp" alt="★">
+                            </div>
+                        </label>
+                        <label>
+                            <input type="checkbox" name="rarity" value="2" hidden>
+                            <div class="star-container">
+                                <img src="{{ site.baseurl }}/assets/img/persona/star3.webp" alt="★">
+                                <img src="{{ site.baseurl }}/assets/img/persona/star3.webp" alt="★">
+                            </div>
+                        </label>
+                        <label>
+                            <input type="checkbox" name="rarity" value="1" hidden>
+                            <div class="star-container">
+                                <img src="{{ site.baseurl }}/assets/img/persona/star3.webp" alt="★">
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Grade filter -->
+                <div class="filter-group">
+                    <h3 data-i18n="filterGrade">등급</h3>
+                    <div class="filter-options">
+                        <label>
+                            <input type="checkbox" name="grade" value="1">
+                            <img src="{{ site.baseurl }}/assets/img/persona/persona-grade1.webp" alt="1등급">
+                            <span></span>
+                        </label>
+                        <label>
+                            <input type="checkbox" name="grade" value="2">
+                            <img src="{{ site.baseurl }}/assets/img/persona/persona-grade2.webp" alt="2등급">
+                            <span></span>
+                        </label>
+                        <label>
+                            <input type="checkbox" name="grade" value="3">
+                            <img src="{{ site.baseurl }}/assets/img/persona/persona-grade3.webp" alt="3등급">
+                            <span></span>
+                        </label>
+                        <label>
+                            <input type="checkbox" name="grade" value="4">
+                            <img src="{{ site.baseurl }}/assets/img/persona/persona-grade4.webp" alt="4등급">
+                            <span></span>
+                        </label>
+                        <label>
+                            <input type="checkbox" name="grade" value="5">
+                            <img src="{{ site.baseurl }}/assets/img/persona/persona-grade5.webp" alt="5등급">
+                            <span></span>
+                        </label>
+                        <label>
+                            <input type="checkbox" name="grade" value="6">
+                            <img src="{{ site.baseurl }}/assets/img/persona/persona-grade6.webp" alt="6등급">
+                            <span></span>
+                        </label>
+                        <label>
+                            <input type="checkbox" name="grade" value="7">
+                            <img src="{{ site.baseurl }}/assets/img/persona/persona-grade7.webp" alt="7등급">
+                            <span></span>
+                        </label>
+                        <label>
+                            <input type="checkbox" name="grade" value="8">
+                            <img src="{{ site.baseurl }}/assets/img/persona/persona-grade8.webp" alt="8등급">
+                            <span></span>
+                        </label>
+                        <label>
+                            <input type="checkbox" name="grade" value="9">
+                            <img src="{{ site.baseurl }}/assets/img/persona/persona-grade9.webp" alt="9등급">
+                            <span></span>
+                        </label>
+                    </div>
+                </div>
+            </div> <!-- /filter-content -->
         </div>
-
+        <div class="filter-footer">
+            <button id="filterResetBtn" class="filter-action-btn reset" data-i18n="common.reset">초기화</button>
+            <button id="filterSaveBtn" class="filter-action-btn save" data-i18n="common.apply">적용</button>
+        </div>
     </div>
-
-    <!-- 카드 리스트 위에 직접 삽입 -->
-    <style>
-        /*
-        .reveal-ad-button {
-            background-color: #221c1c;
-        }
-
-        @media (max-width: 1200px) {
-            .ad-container {
-                width: 100% !important;
-                padding: 0px 0px !important;
-                margin-top: 0px !important;
-            }
-
-            ins.adsbygoogle[data-side-rail-status="displayed"] {
-                display: none !important;
-            }
-
-            .adsbygoogle {
-                padding-bottom: 0 !important;
-                background: transparent !important;
-            }
-        }*/
-
-        /* 성능 최적화 스타일 */
-        .persona-detail-container {
-            /* GPU 가속 활성화 */
-            transform: translateZ(0);
-            backface-visibility: hidden;
-            will-change: auto;
-
-            /* 트랜지션 비활성화로 성능 향상 */
-            transition: none !important;
-            /* 화면 밖 콘텐츠 지연 렌더링 및 레이아웃 격리 */
-            content-visibility: auto;
-            contain-intrinsic-size: 520px;
-            /* 카드 대략 높이 힌트: 실제 렌더 후 교정됨 */
-            contain: content;
-        }
-
-        .persona-img,
-        .card-background,
-        .cover-star {
-            /* 이미지 렌더링 최적화 */
-            image-rendering: -webkit-optimize-contrast;
-            image-rendering: crisp-edges;
-        }
-
-        /* 숨김 처리된 요소들의 레이아웃 최적화 */
-        .persona-detail-container[style*="position: absolute"] {
-            left: -9999px !important;
-            top: -9999px !important;
-            z-index: -1;
-        }
-
-        /* 스크롤 성능 최적화 */
-        .persona-cards {
-            contain: layout style paint;
-            overflow-anchor: none;
-            /* 8열 그리드 배치 */
-            display: grid;
-            grid-template-columns: repeat(8, minmax(0, 1fr));
-            /* Define gap vars so we can compensate around grid-break */
-            --row-gap: 16px;
-            --col-gap: 24px;
-            gap: var(--row-gap) var(--col-gap);
-        }
-
-        /* 반응형 열 수 조정 */
-        @media (max-width: 1440px) {
-            .persona-cards {
-                grid-template-columns: repeat(6, minmax(0, 1fr));
-            }
-        }
-
-        @media (max-width: 768px) {
-            .persona-cards {
-                grid-template-columns: repeat(5, minmax(0, 1fr));
-            }
-        }
-
-        @media (max-width: 660px) {
-            .persona-cards {
-                grid-template-columns: repeat(4, minmax(0, 1fr));
-            }
-        }
-
-        @media (max-width: 1440px) {
-            .persona-cards {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
-            }
-        }
-
-        @media (max-width: 450px) {
-            .persona-cards {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-        }
-
-        /* 카드 컨테이너: 기본은 1열 차지, 확장 시 전폭 차지 */
-        .persona-detail-container {
-            grid-column: span 1;
-        }
-
-        .persona-detail-container.expanded {
-            grid-column: 1 / -1;
-        }
-
-        /* 확장 상태일 때 별도 패딩을 적용할 수 있도록 훅 제공 */
-        @media(min-width:1440px) {
-            .persona-detail-container {
-                padding: 0px;
-                background: var(--card-background)
-            }
-
-            .persona-detail-container.active {
-                padding: 20px;
-                background: var(--card-background);
-                border-bottom: solid 3px rgb(115 0 0);
-            }
-        }
-
-        @media(max-width:1440px) {
-            .persona-detail-container {
-                padding: 20px 0 0 0px;
-                background: var(--card-background)
-            }
-
-            .persona-detail-container.active {
-                padding: 20px 10px 10px 10px;
-                background: var(--card-background);
-                border-bottom: solid 3px rgb(115 0 0);
-            }
-        }
-
-        /* 기본(축소) 상태에선 정보 섹션 숨김, 카드와 이름만 노출 */
-        .persona-detail-container .persona-info-section {
-            display: none;
-        }
-
-        .persona-detail-container.expanded .persona-info-section,
-        .expand-all .persona-detail-container .persona-info-section {
-            display: flex;
-        }
-
-
-        .persona-detail-container .persona-header-info {
-            margin-top: 8px;
-        }
-
-        /* 카드 하단 이름 캡션 (축소 모드에서 표시) */
-        .persona-detail-container .persona-name {
-            margin-top: 10px;
-            margin-bottom: 10px;
-            text-align: center;
-            font-weight: 500;
-            font-size: 13px;
-            color: EEEEEE;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        /* expand-all 시 전폭 확장 */
-        .expand-all .persona-detail-container {
-            grid-column: 1 / -1;
-        }
-
-        .expand-all-toggle {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .expand-all-toggle input {
-            width: auto;
-            padding: 0;
-            border: 0;
-            background: transparent;
-            color: inherit;
-            appearance: auto
-        }
-
-        .expand-all-toggle label {
-            font-size: 12px;
-            opacity: .9
-        }
-
-        @media screen and (max-width: 768px) {
-            .expand-all-toggle {
-                display: none;
-            }
-        }
-
-        /* 광고는 그리드에서 항상 전폭 사용 */
-        .persona-cards .ad-container {
-            grid-column: 1 / -1;
-        }
-
-        /* grid-break는 더 이상 사용하지 않습니다. */
-
-        /* Hide name caption when active (expanded styling) */
-        .persona-detail-container.active .persona-card-section .persona-name {
-            display: none;
-        }
-
-        /* Acquisition (획득처) section */
-        .persona-acq-info {
-            padding: 12px 16px 12px 16px;
-            background: rgba(0, 0, 0, 0.15);
-            border-radius: 8px;
-            display: flex;
-            gap: 16px;
-            align-items: center;
-        }
-
-        .persona-acq-info .acq-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 8px;
-        }
-
-        .persona-acq-info .acq-header h3 {
-            font-size: 13px;
-            margin: 0;
-        }
-
-        .persona-acq-info .acq-detail {
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #ddd;
-            border-radius: 6px;
-            padding: 2px 6px;
-            font-size: 11px;
-            cursor: pointer;
-        }
-
-        .persona-acq-info .acq-body {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .persona-acq-info .acq-row {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            flex-wrap: wrap;
-        }
-
-        .persona-acq-info .acq-icon {
-            width: 22px;
-            height: 22px;
-            object-fit: contain;
-        }
-
-        .persona-acq-info .acq-plus {
-            opacity: .8;
-            padding: 0 2px;
-        }
-
-        .persona-acq-info .acq-text {
-            font-size: 12px;
-            opacity: .9;
-        }
-
-        .persona-acq-info .acq-emblem {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .persona-acq-info .acq-emblem-num {
-            font-size: 12px;
-            color: #ffd54f;
-        }
-    </style>
-
-    <!-- Persona card container -->
-    <div class="persona-cards drag-me" id="personaCards">
-        <!-- Dynamically generated by JavaScript -->
-    </div>
-
-    <!-- 광고 -->
-    <!--
-    <div class="ads-container responsive-padding">
-        <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-gc+3n+7a-ag-4h"
-            data-ad-client="ca-pub-5862324369257695" data-ad-slot="5373524213"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
-
-    <div id="ad-unit-bottom" class="AD-bottom"
-        style="margin-top: 24px; text-align: center; align-items: center; display: flex; justify-content: center;">
-        <ins class="adsbygoogle" style="display:inline-block;width:970px;height:90px"
-            data-ad-client="ca-pub-5862324369257695" data-ad-slot="9244892982"></ins>
-    </div>
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-    <div style="height: 12px;"></div>
-    
-    <style>
-        @media (max-width: 1440px) {
-            .AD-bottom {
-                display: none !important;
-            }
-        }
-
-        @media (min-width: 1440px) {
-            .ads-container {
-                display: none !important;
-            }
-        }
-
-        .responsive-padding {
-            margin: 20px 20px 20px 0;
-            padding: 0 0;
-        }
-
-        @media (max-width: 1200px) {
-            .responsive-padding {
-                margin: 20px 0 0px 0;
-                padding: 0;
-            }
-        }
-    </style>
-    -->
 </div>
-
-
-</div>
-
-
-
-
-
+<script>window.SITE_BASEURL = '{{ site.baseurl }}';</script>
+<script src="{{ site.baseurl }}/apps/persona/persona-list.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/persona/skillfrom.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/assets/js/tooltip.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/persona/persona-search.js?v={{ site.time | date: '%s' }}"></script>
 <script>
-    // 다국어 지원 함수
-    async function updateLanguageContent() {
-        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
-
-        // 다국어 데이터 정의
-        const i18nData = {
-            kr: {
-                language_notice: "",
-                nav_home: "홈",
-                nav_current: "페르소나",
-                page_title: "주요 페르소나",
-                filtered_count: "전체",
-                search_placeholder: "페르소나 검색...",
-                filter_element: "속성",
-                filter_position: "직업",
-                filter_rarity: "희귀도",
-                filter_grade: "등급",
-                count_unit: "개",
-                skill_level_label: "스킬 레벨 :"
-            },
-            en: {
-                language_notice: "🌍 Please let me know if you find an accurate translation.\nIt may contain content that hasn't been released yet.",
-                nav_home: "Home",
-                nav_current: "Personas",
-                page_title: "Core Personas",
-                filtered_count: "Total",
-                search_placeholder: "Search personas...",
-                filter_element: "Element",
-                filter_position: "Position",
-                filter_rarity: "Rarity",
-                filter_grade: "Grade",
-                count_unit: "",
-                skill_level_label: "Skill Level :"
-            },
-            jp: {
-                language_notice: "🌍 正確な翻訳が見つかった場合は、お知らせください。\nまだリリースされていないコンテンツが含まれている可能性があります。",
-                nav_home: "ホーム",
-                nav_current: "ペルソナ",
-                page_title: "主要ペルソナ",
-                filtered_count: "全体",
-                search_placeholder: "ペルソナ検索...",
-                filter_element: "属性",
-                filter_position: "職業",
-                filter_rarity: "タイプ",
-                filter_grade: "グレード",
-                count_unit: "",
-                skill_level_label: "スキルレベル :"
-            }
-        };
-
-        const data = i18nData[currentLang];
-        if (!data) return;
-
-        // 언어 안내 메시지
-        if (currentLang !== 'kr') {
-            const notice = document.getElementById('language-notice');
-            const noticeText = document.getElementById('language-notice-text');
-            if (notice && noticeText && data.language_notice) {
-                noticeText.textContent = data.language_notice;
-                notice.style.display = 'block';
-            }
-        }
-
-        // 네비게이션 및 제목 업데이트
-        const navHome = document.getElementById('nav-home');
-        const navCurrent = document.getElementById('nav-current');
-        const pageTitle = document.getElementById('page-title');
-        const searchInput = document.getElementById('personaSearch');
-
-        if (navHome) navHome.textContent = data.nav_home;
-        if (navCurrent) navCurrent.textContent = data.nav_current;
-        if (pageTitle) pageTitle.textContent = data.page_title;
-        if (searchInput) searchInput.placeholder = data.search_placeholder;
-
-        // 필터 라벨 번역
-        const filterLabels = document.querySelectorAll('.filter-group h3');
-        if (filterLabels[0]) filterLabels[0].textContent = data.filter_element;
-        if (filterLabels[1]) filterLabels[1].textContent = data.filter_position;
-        if (filterLabels[2]) filterLabels[2].textContent = data.filter_rarity;
-        if (filterLabels[3]) filterLabels[3].textContent = data.filter_grade;
-
-        // 스킬 레벨 라벨 번역
-        const skillLevelLabel = document.querySelector('.skill-level-label');
-        if (skillLevelLabel && data.skill_level_label) {
-            skillLevelLabel.textContent = data.skill_level_label;
-        }
-
-        // 필터 카운트 텍스트 업데이트를 위한 전역 변수 설정
-        window.i18nFilteredCount = data.filtered_count;
-        window.i18nCountUnit = data.count_unit;
-
-        // 언어별 설명 박스 텍스트 업데이트
-        updateExplainBoxTexts(currentLang);
-    }
-
-    // 언어별 SEO 설정 함수
-    function updateSEOContent() {
-        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
-
-        const seoData = {
-            'kr': {
-                title: '주요 페르소나 - 페르소나5 더 팬텀 X',
-                description: '페르소나5 더 팬텀 X의 주요 페르소나 정보. 본능, 고유 스킬, 추천 스킬 정보를 확인하세요.'
-            },
-            'en': {
-                title: 'Core Personas Build & Guide - Persona 5: The Phantom X',
-                description: 'Core Persona information for Persona 5: The Phantom X. Talent, unique skills, and recommended skills.'
-            },
-            'jp': {
-                title: '主要ペルソナ 攻略 - ペルソナ5 ザ・ファントム X',
-                description: 'ペルソナ5 ザ・ファントム Xの主要ペルソナ情報。本能、固有スキル、推奨スキル情報をご確認ください。'
-            }
-        };
-
-        const currentSEO = seoData[currentLang] || seoData['kr'];
-
-        // 타이틀 업데이트
-        document.title = currentSEO.title;
-
-        // 메타 태그 업데이트
-        const metaDescription = document.querySelector('meta[name="description"]');
-        const ogTitle = document.querySelector('meta[property="og:title"]');
-        const ogDescription = document.querySelector('meta[property="og:description"]');
-
-        if (metaDescription) metaDescription.setAttribute('content', currentSEO.description);
-        if (ogTitle) ogTitle.setAttribute('content', currentSEO.title);
-        if (ogDescription) ogDescription.setAttribute('content', currentSEO.description);
-    }
-
-
-
-    // URL에서 검색 파라미터를 가져와서 검색을 실행하는 함수
-    function handleSearchParam() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const searchQuery = urlParams.get('search');
-        //console.log("[DEBUG] search param:", searchQuery);
-
-        if (searchQuery) {
-            const searchInput = document.getElementById('personaSearch');
-            //console.log("[DEBUG] searchInput:", searchInput);
-
-            if (searchInput) {
-                // URL 기반 검색 적용 플래그 설정 (자동 확장 및 드롭다운 숨김은 이 경우에만)
-                window.isApplyingUrlSearch = true;
-                searchInput.value = searchQuery;
-                //console.log("[DEBUG] Dispatching input event");
-                searchInput.dispatchEvent(new Event('input', { bubbles: true }));
-                // 초기 파라미터 적용 시 자동완성 드롭다운은 표시하지 않음
-                const dropdown = document.getElementById('searchDropdown');
-                if (dropdown) dropdown.style.display = 'none';
-            }
-        }
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-        Navigation.load('persona');
-        VersionChecker.check();
-
-        // SEO 설정 업데이트
-        updateSEOContent();
-
-        // 언어 라우터 초기화 및 콘텐츠 업데이트
-        if (typeof LanguageRouter !== 'undefined') {
-            // 이미 언어 파라미터가 있거나 직접 접근한 경우 리다이렉션 없이 진행
-            const hasLangParam = window.location.search.includes('lang=');
-            if (hasLangParam) {
-                // 언어 파라미터가 있으면 바로 콘텐츠 로드
-                updateLanguageContent().then(() => {
-                    const runInit = () => {
-                        initializePageContent().then(() => {
-                            // 검색 파라미터 처리 (짧은 지연 추가)
-                            setTimeout(handleSearchParam, 100);
-                            // 전역 스킬 레벨 선택기 초기화
-                            setupGlobalSkillLevelSelector();
-                        });
-                    };
-                    if (typeof ensurePersonaFilesLoaded === 'function') {
-                        ensurePersonaFilesLoaded(runInit);
-                    } else {
-                        runInit();
-                    }
-                });
-            } else {
-                // 언어 파라미터가 없으면 기본 한국어로 설정하고 콘텐츠 로드
-                const currentUrl = new URL(window.location);
-                currentUrl.searchParams.set('lang', 'kr');
-                window.history.replaceState({}, '', currentUrl);
-
-                updateLanguageContent().then(() => {
-                    const runInit = () => {
-                        initializePageContent().then(() => {
-                            // 검색 파라미터 처리 (짧은 지연 추가)
-                            setTimeout(handleSearchParam, 100);
-                            // 전역 스킬 레벨 선택기 초기화
-                            setupGlobalSkillLevelSelector();
-                        });
-                    };
-                    if (typeof ensurePersonaFilesLoaded === 'function') {
-                        ensurePersonaFilesLoaded(runInit);
-                    } else {
-                        runInit();
-                    }
-                });
-            }
-        } else {
-            updateLanguageContent().then(() => {
-                const runInit = () => {
-                    initializePageContent().then(() => {
-                        // 검색 파라미터 처리 (짧은 지연 추가)
-                        setTimeout(handleSearchParam, 100);
-                        // 전역 스킬 레벨 선택기 초기화
-                        setupGlobalSkillLevelSelector();
-                    });
-                };
-                if (typeof ensurePersonaFilesLoaded === 'function') {
-                    ensurePersonaFilesLoaded(runInit);
-                } else {
-                    runInit();
-                }
-            });
-        }
-    });
-
-    // 공용: LV6/LV7/LV8/ALL 버튼으로 "/" 구분 3단 수치를 필터링하는 헬퍼
-    function filterDescByLevel(originalText, levelIndex) {
-        if (levelIndex === null || levelIndex === undefined) return originalText;
-        // "150.0%/157.5%/165.0%" 또는 "1471/1854/2275" 형태를 개별 값으로 치환
-        const tripleRegex = /(\d+(?:\.\d+)?)(%?)\/(\d+(?:\.\d+)?)(%?)\/(\d+(?:\.\d+)?)(%?)/g;
-        return originalText.replace(tripleRegex, (match, n1, u1, n2, u2, n3, u3) => {
-            const variants = [`${n1}${u1}`, `${n2}${u2}`, `${n3}${u3}`];
-            return variants[levelIndex] || variants[0];
-        });
-    }
-
-    async function initializePageContent() {
-        const cardsContainer = document.getElementById('personaCards');
-
-        // 현재 언어 확인
-        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
-
-        // 새 데이터(window.personaFiles)만 사용 (기존 persona.js 는 더 이상 참조하지 않음)
-        const personaSource = (typeof window !== 'undefined' && window.personaFiles)
-            ? window.personaFiles
-            : {};
-
-        // order.js 에서 로드된 순서 정보
-        const orderList = (typeof window !== 'undefined' && window.personaOrder)
-            ? window.personaOrder
-            : [];
-
-        // 전역 스킬 레벨 (0: LV6, 1: LV7, 2: LV8, null: ALL)
-        let globalSkillLevel = 0;
-
-        // 언어별 설명 박스 텍스트 업데이트
-        updateExplainBoxTexts(currentLang);
-
-        // 정렬된 페르소나 이름 목록 구성
-        const allNames = Object.keys(personaSource);
-        const inOrder = [];
-        const remaining = new Set(allNames);
-
-        orderList.forEach(name => {
-            if (remaining.has(name)) {
-                inOrder.push(name);
-                remaining.delete(name);
-            }
-        });
-        const tail = Array.from(remaining).sort(); // 남은 애들은 이름순으로 뒤에
-        const sortedPersonas = inOrder.concat(tail);
-
-        // Update initial count (정렬된 목록 길이 기준)
-        const countText = window.i18nFilteredCount || '전체';
-        const countUnit = window.i18nCountUnit !== undefined ? window.i18nCountUnit : (currentLang === 'kr' ? '개' : '');
-        document.getElementById('filteredCount').textContent = `${countText} ${sortedPersonas.length}${countUnit}`;
-        // 대량 렌더링 최적화: 청크 단위로 분할 렌더링하여 메인 스레드 점유를 줄임
-        const CHUNK_SIZE = 10;
-        let currentIndex = 0;
-
-        function renderChunk() {
-            const fragment = document.createDocumentFragment();
-            let processed = 0;
-            while (processed < CHUNK_SIZE && currentIndex < sortedPersonas.length) {
-                const personaName = sortedPersonas[currentIndex];
-                const index = currentIndex;
-                const detailContainer = document.createElement('div');
-                detailContainer.className = 'persona-detail-container';
-                // Add data attributes for filtering
-                detailContainer.dataset.element = personaSource[personaName].element;
-                detailContainer.dataset.position = personaSource[personaName].position;
-                detailContainer.dataset.rarity = personaSource[personaName].star;
-                detailContainer.dataset.name = personaName;  // Add data-name attribute for search
-                detailContainer.dataset.grade = personaSource[personaName].grade;  // Add data-grade attribute for grade
-                detailContainer.dataset.event = personaSource[personaName].event;
-                detailContainer.dataset.wild_emblem_rainbow = personaSource[personaName].wild_emblem_rainbow;
-                // Preserve original order for restoring after collapse
-                detailContainer.dataset.order = String(index);
-
-                // Left card image section
-                const cardSection = document.createElement('div');
-                cardSection.className = 'persona-card-section';
-
-                // Insert existing card creation code here
-                const card = document.createElement('div');
-                card.className = 'card';
-                card.dataset.element = personaSource[personaName].element;
-                card.dataset.position = personaSource[personaName].position;
-                card.dataset.rarity = personaSource[personaName].star;
-
-                // Add card background with optimization
-                const cardBg = document.createElement('img');
-                cardBg.src = `{{ site.baseurl }}/assets/img/persona/persona-card-${personaSource[personaName].element}.webp`;
-                cardBg.alt = "card background";
-                cardBg.className = 'card-background';
-                cardBg.loading = 'lazy';
-                cardBg.decoding = 'async';
-
-                // Persona image with optimized lazy loading
-                const img = document.createElement('img');
-                img.src = `{{ site.baseurl }}/assets/img/persona/${personaName}.webp`;
-                img.alt = personaName;
-                img.className = 'persona-img';
-                img.loading = 'lazy';
-                img.decoding = 'async';  // 비동기 디코딩으로 렌더링 성능 향상
-
-                // Add rarity cover
-                const coverStar = document.createElement('img');
-                coverStar.src = `{{ site.baseurl }}/assets/img/persona/persona-cover-star${personaSource[personaName].star}.webp`;
-                coverStar.alt = "rarity cover";
-                coverStar.className = 'cover-star';
-                coverStar.loading = 'lazy';
-
-                // Add remaining elements
-                const positionContainer = document.createElement('div');
-                positionContainer.className = 'position-container';
-
-                const positionIcon = document.createElement('img');
-                positionIcon.src = `{{ site.baseurl }}/assets/img/persona/직업_${personaSource[personaName].position}.png`;
-                positionIcon.alt = personaSource[personaName].position;
-                positionIcon.className = 'position-icon';
-                positionIcon.loading = 'lazy';
-                positionIcon.decoding = 'async';
-
-                const elementIcon = document.createElement('img');
-                elementIcon.src = `{{ site.baseurl }}/assets/img/persona/속성_${personaSource[personaName].element}.png`;
-                elementIcon.alt = personaSource[personaName].element;
-                elementIcon.className = 'element-icon';
-                elementIcon.loading = 'lazy';
-                elementIcon.decoding = 'async';
-
-                positionContainer.appendChild(positionIcon);
-
-                // Wild Emblem
-                if (personaSource[personaName].wild_emblem_rainbow) {
-                    const wildEmblem = document.createElement('img');
-                    wildEmblem.src = `{{ site.baseurl }}/assets/img/persona/wild-emblem-rainbow.png`;
-                    wildEmblem.alt = "wild emblem";
-                    wildEmblem.className = 'wild-emblem';
-                    wildEmblem.loading = 'lazy';
-                    wildEmblem.decoding = 'async';
-                    // attach to card so it can be absolutely positioned at top-right via CSS
-                    card.appendChild(wildEmblem);
-                }
-
-
-                // Final assembly
-                card.appendChild(cardBg);
-                card.appendChild(img);
-                card.appendChild(coverStar);
-                card.appendChild(positionContainer);
-                card.appendChild(elementIcon);
-
-                cardSection.appendChild(card);
-
-                // Right info section
-                const infoSection = document.createElement('div');
-                infoSection.className = 'persona-info-section';
-
-                // 언어별 데이터 가져오기 (새 data/persona/* 구조 우선)
-                const persona = personaSource[personaName];
-                let displayName = personaName;
-                let uniqueSkillName = persona.uniqueSkill?.name || '';
-                // 새 구조(desc/desc_en/desc_jp) 우선, 없으면 구 구조(effect/effect_en/effect_jp) 사용
-                let uniqueSkillEffect = persona.uniqueSkill?.desc || persona.uniqueSkill?.effect || '';
-                let highlightEffect = persona.highlight?.desc || persona.highlight?.effect || '';
-                let comment = persona.comment;
-
-                // Instinct / Passive Skill 변형(예: 여러 단계) 지원을 위한 배열
-                const instinctVariants = [];
-
-                // 새 구조: passive_skill 배열 기반
-                if (Array.isArray(persona.passive_skill) && persona.passive_skill.length > 0) {
-                    persona.passive_skill.forEach((p) => {
-                        if (!p) return;
-                        let name = p.name;
-                        let effects = p.desc;
-                        const priority = typeof persona.passive_priority === 'number' ? persona.passive_priority : 0;
-
-                        if (currentLang === 'en') {
-                            name = p.name_en || name;
-                            effects = p.desc_en || effects;
-                        } else if (currentLang === 'jp') {
-                            name = p.name_jp || name;
-                            effects = p.desc_jp || effects;
-                        }
-
-                        let baseName = name;
-                        let roman = '';
-                        const m = name && name.match(/\s+([IVX]+)$/);
-                        if (m) {
-                            roman = m[1];
-                            baseName = name.slice(0, m.index).trim();
-                        }
-
-                        instinctVariants.push({ name, baseName, roman, effects, priority });
-                    });
-                } else {
-                    // 구 구조: instinct / instinct2 기반 (fallback)
-                    function pushLegacyInstinctVariant(src) {
-                        if (!src) return;
-                        let name = src.name;
-                        let effects = src.effects;
-                        let priority = src.priority;
-
-                        if (currentLang === 'en') {
-                            name = src.name_en || name;
-                            effects = src.effects_en || effects;
-                        } else if (currentLang === 'jp') {
-                            name = src.name_jp || name;
-                            effects = src.effects_jp || effects;
-                        }
-
-                        let baseName = name;
-                        let roman = '';
-                        const m = name && name.match(/\s+([IVX]+)$/);
-                        if (m) {
-                            roman = m[1];
-                            baseName = name.slice(0, m.index).trim();
-                        }
-
-                        instinctVariants.push({ name, baseName, roman, effects, priority });
-                    }
-
-                    pushLegacyInstinctVariant(persona.instinct);
-                    if (persona.instinct2) pushLegacyInstinctVariant(persona.instinct2);
-                }
-
-                // 언어별 이름/기타 텍스트 번역
-                if (currentLang === 'en') {
-                    displayName = persona.name_en || personaName;
-                    uniqueSkillName = persona.uniqueSkill?.name_en || persona.uniqueSkill?.name || uniqueSkillName;
-                    uniqueSkillEffect =
-                        persona.uniqueSkill?.desc_en ||
-                        persona.uniqueSkill?.desc ||
-                        persona.uniqueSkill?.effect_en ||
-                        persona.uniqueSkill?.effect ||
-                        uniqueSkillEffect;
-                    highlightEffect =
-                        persona.highlight?.desc_en ||
-                        persona.highlight?.desc ||
-                        persona.highlight?.effect_en ||
-                        persona.highlight?.effect ||
-                        highlightEffect;
-                    comment = persona.comment_en || persona.comment;
-                } else if (currentLang === 'jp') {
-                    displayName = persona.name_jp || personaName;
-                    uniqueSkillName = persona.uniqueSkill?.name_jp || persona.uniqueSkill?.name || uniqueSkillName;
-                    uniqueSkillEffect =
-                        persona.uniqueSkill?.desc_jp ||
-                        persona.uniqueSkill?.desc ||
-                        persona.uniqueSkill?.effect_jp ||
-                        persona.uniqueSkill?.effect ||
-                        uniqueSkillEffect;
-                    highlightEffect =
-                        persona.highlight?.desc_jp ||
-                        persona.highlight?.desc ||
-                        persona.highlight?.effect_jp ||
-                        persona.highlight?.effect ||
-                        highlightEffect;
-                    comment = persona.comment_jp || persona.comment;
-                }
-
-                // Collapsed-mode name caption under the card
-                const nameCaption = document.createElement('div');
-                nameCaption.className = 'persona-name';
-                nameCaption.textContent = displayName;
-
-                // 만약 persona_best 값이 true 일경우 nameCaption에 color 적용
-                if (personaSource[personaName].best_persona) {
-                    nameCaption.style.color = 'rgb(255 109 122)';
-                }
-                cardSection.appendChild(nameCaption);
-
-                // Name and grade
-                const headerInfo = document.createElement('div');
-                headerInfo.className = 'persona-header-info';
-
-                headerInfo.innerHTML = `
-            <h2>${displayName}</h2>
-            <img class="persona-grade-img" src="{{ site.baseurl }}/assets/img/persona/persona-grade${personaSource[personaName].grade}.webp" alt="Grade ${personaSource[personaName].grade}">
-            `;
-
-
-                // Instinct / Passive Skill (복수 변형 지원)
-                const instinctInfo = document.createElement('div');
-                instinctInfo.className = 'persona-instinct-info';
-                // 기본 priority: 새 구조의 passive_priority 우선, 없으면 legacy instinct.priority 사용
-                instinctInfo.dataset.priority =
-                    typeof persona.passive_priority === 'number'
-                        ? persona.passive_priority
-                        : (persona.instinct ? (persona.instinct.priority || 0) : 0);
-
-                // 헤더: 이름 + 로마자 버튼
-                const instinctHeader = document.createElement('div');
-                instinctHeader.className = 'persona-instinct-header';
-
-                const instinctTitle = document.createElement('h3');
-                const baseTitle = instinctVariants[0]
-                    ? (instinctVariants[0].baseName || instinctVariants[0].name)
-                    : (persona.instinct && persona.instinct.name) || '';
-                instinctTitle.textContent = baseTitle;
-                instinctHeader.appendChild(instinctTitle);
-
-                // 기본 활성 인스팅트 인덱스: 가장 마지막(최고 단계) 변형
-                let activeInstinctIndex = instinctVariants.length > 0 ? (instinctVariants.length - 1) : 0;
-                let instinctButtonsWrap = null;
-
-                if (instinctVariants.length > 1) {
-                    instinctButtonsWrap = document.createElement('div');
-                    instinctButtonsWrap.className = 'instinct-variant-buttons';
-
-                    instinctVariants.forEach((variant, idx) => {
-                        const btn = document.createElement('button');
-                        btn.type = 'button';
-                        btn.className = 'instinct-variant-btn' + (idx === activeInstinctIndex ? ' active' : '');
-                        // 0 단계는 "0", 이후는 로마자(I, II, III ...) 혹은 숫자
-                        if (idx === 0) {
-                            btn.textContent = '0';
-                        } else if (variant.roman) {
-                            btn.textContent = variant.roman;
-                        } else {
-                            // 간단한 로마자 변환 (1~9 범위 가정)
-                            const intToRoman = (n) => {
-                                const map = [
-                                    ['IX', 9],
-                                    ['V', 5],
-                                    ['IV', 4],
-                                    ['I', 1],
-                                ];
-                                let remain = n;
-                                let out = '';
-                                for (const [sym, val] of map) {
-                                    while (remain >= val) {
-                                        out += sym;
-                                        remain -= val;
-                                    }
-                                }
-                                return out || String(n);
-                            };
-                            btn.textContent = intToRoman(idx);
-                        }
-                        btn.setAttribute('aria-pressed', idx === activeInstinctIndex ? 'true' : 'false');
-                        btn.addEventListener('click', (e) => {
-                            e.stopPropagation();
-                            if (activeInstinctIndex === idx) return;
-                            activeInstinctIndex = idx;
-                            // 버튼 active 상태 갱신
-                            instinctButtonsWrap.querySelectorAll('.instinct-variant-btn').forEach((b, i) => {
-                                const isActive = i === activeInstinctIndex;
-                                b.classList.toggle('active', isActive);
-                                b.setAttribute('aria-pressed', isActive ? 'true' : 'false');
-                            });
-                            // 효과 텍스트 및 priority 갱신
-                            updateInstinctEffect();
-                        });
-                        instinctButtonsWrap.appendChild(btn);
-                    });
-
-                    instinctHeader.appendChild(instinctButtonsWrap);
-                }
-
-                instinctInfo.appendChild(instinctHeader);
-
-                // 효과 텍스트 영역
-                const instinctEffectP = document.createElement('p');
-                instinctEffectP.className = 'instinct-text';
-
-                function updateInstinctEffect() {
-                    const current = instinctVariants[activeInstinctIndex] || instinctVariants[0];
-                    if (!current) return;
-                    const text = Array.isArray(current.effects) ? current.effects.join('\n') : current.effects;
-                    instinctEffectP.textContent = text || '';
-                    // 제목도 현재 변형의 이름으로 갱신
-                    instinctTitle.textContent = current.baseName || current.name || instinctTitle.textContent;
-                    if (typeof current.priority !== 'undefined') {
-                        instinctInfo.dataset.priority = current.priority;
-                    }
-                    // 숫자 하이라이트 및 툴팁 재적용
-                    if (typeof addTooltips === 'function') {
-                        try { addTooltips(); } catch (_) { /* noop */ }
-                    }
-                }
-
-                // 초기 효과 렌더링
-                updateInstinctEffect();
-                instinctInfo.appendChild(instinctEffectP);
-
-                // Container for unique skill and highlight
-                const skillContainer = document.createElement('div');
-                skillContainer.className = 'skill-highlight-container';
-
-                // Unique skill
-                const uniqueSkillInfo = document.createElement('div');
-                uniqueSkillInfo.className = 'persona-unique-skill-info';
-                uniqueSkillInfo.dataset.priority = personaSource[personaName].uniqueSkill.priority;
-                // Use global icon when language is en/jp and icon_gl exists
-                const uniqueSkillIconName = (currentLang === 'en' || currentLang === 'jp')
-                    ? (personaSource[personaName].uniqueSkill.icon_gl || personaSource[personaName].uniqueSkill.icon)
-                    : personaSource[personaName].uniqueSkill.icon;
-
-                const uniqueHeader = document.createElement('div');
-                uniqueHeader.className = 'persona-unique-header';
-                const uniqueTitle = document.createElement('h3');
-                const uniqueIcon = document.createElement('img');
-                uniqueIcon.src = `{{ site.baseurl }}/assets/img/persona/속성_${uniqueSkillIconName}.png`;
-                uniqueIcon.alt = "Skill Element";
-                uniqueIcon.className = 'skill-type-icon';
-                uniqueTitle.appendChild(uniqueIcon);
-                uniqueTitle.appendChild(document.createTextNode(` ${uniqueSkillName}`));
-                uniqueHeader.appendChild(uniqueTitle);
-
-                const uniqueDescP = document.createElement('p');
-                // 원문 저장
-                uniqueDescP.dataset.originalText = uniqueSkillEffect;
-                // 전역 스킬 레벨이 설정되어 있으면 초기 렌더에서도 바로 필터 적용
-                if (typeof globalSkillLevel === 'number') {
-                    uniqueDescP.textContent = filterDescByLevel(uniqueSkillEffect, globalSkillLevel);
-                } else {
-                    uniqueDescP.textContent = uniqueSkillEffect;
-                }
-
-                uniqueSkillInfo.appendChild(uniqueHeader);
-                uniqueSkillInfo.appendChild(uniqueDescP);
-
-                // Highlight - 언어별 라벨 적용
-                const highlightLabels = {
-                    'kr': 'HIGHLIGHT',
-                    'en': 'HIGHLIGHT',
-                    'jp': 'HIGHLIGHT'
-                };
-                const highlightLabel = highlightLabels[currentLang] || 'HIGHLIGHT';
-
-                const highlightInfo = document.createElement('div');
-                highlightInfo.className = 'persona-highlight-info';
-                highlightInfo.dataset.priority = personaSource[personaName].highlight.priority;
-
-                const highlightHeader = document.createElement('div');
-                highlightHeader.className = 'persona-highlight-header';
-                const highlightTitle = document.createElement('h3');
-                highlightTitle.textContent = highlightLabel;
-                highlightHeader.appendChild(highlightTitle);
-
-                const highlightDescP = document.createElement('p');
-                // 원문 저장
-                highlightDescP.dataset.originalText = highlightEffect;
-                // 전역 스킬 레벨이 설정되어 있으면 초기 렌더에서도 바로 필터 적용
-                if (typeof globalSkillLevel === 'number') {
-                    highlightDescP.textContent = filterDescByLevel(highlightEffect, globalSkillLevel);
-                } else {
-                    highlightDescP.textContent = highlightEffect;
-                }
-
-                highlightInfo.appendChild(highlightHeader);
-                highlightInfo.appendChild(highlightDescP);
-
-                // Add to container
-                skillContainer.appendChild(uniqueSkillInfo);
-                skillContainer.appendChild(highlightInfo);
-
-                // Add elements to info section
-                infoSection.appendChild(headerInfo);
-                // Insert Acquisition section between header and instinct (if script is loaded)
-                try {
-                    if (window.Acquisition && typeof window.Acquisition.renderInto === 'function') {
-                        window.Acquisition.renderInto(infoSection, personaName);
-                    }
-                } catch (e) { /* noop */ }
-                infoSection.appendChild(instinctInfo);
-                infoSection.appendChild(skillContainer);  // Add container instead of individual elements
-
-                // Recommended skill list - 언어별 라벨 적용
-                if (personaSource[personaName].recommendSkill && personaSource[personaName].recommendSkill.length > 0 && personaSource[personaName].recommendSkill[0].name) {
-                    const recommendedSkillLabels = {
-                        'kr': '추천 스킬',
-                        'en': 'Recommended Skills',
-                        'jp': '推奨スキル'
-                    };
-                    const recommendedSkillLabel = recommendedSkillLabels[currentLang] || '추천 스킬';
-
-                    const recommendedSkills = document.createElement('div');
-                    recommendedSkills.className = 'persona-recommended-skills';
-                    recommendedSkills.innerHTML = `
-                    <h3>${recommendedSkillLabel}</h3>
-                    <ul>
-                        ${personaSource[personaName].recommendSkill.map(skill => {
-                        const skillInfo = personaSkillList[skill.name];
-                        if (!skillInfo) return ''; // Skip if skill info not found
-
-                        // 스킬 이름과 설명도 언어별로 번역 (현재는 한국어만 있으므로 그대로 사용)
-                        let skillName = skill.name;
-                        let skillDescription = skillInfo.description;
-
-                        // 언어별 스킬 이름과 설명 적용
-                        if (currentLang === 'en') {
-                            skillName = skillInfo.name_en || skill.name;
-                            skillDescription = skillInfo.description_en || skillInfo.description;
-                        } else if (currentLang === 'jp') {
-                            skillName = skillInfo.name_jp || skill.name;
-                            skillDescription = skillInfo.description_jp || skillInfo.description;
-                        }
-                        // Choose icon based on language (use icon_gl for en/jp when available)
-                        const iconName = (currentLang === 'en' || currentLang === 'jp')
-                            ? (skillInfo.icon_gl || skillInfo.icon)
-                            : skillInfo.icon;
-
-                        const isPassive = skillInfo.type === "패시브";
-
-                        return `
-                                <li data-priority="${skill.priority}">
-                                    <div class="skill-info">
-                                        <div class="skill-name-container">
-                                            <img src="{{ site.baseurl }}/assets/img/persona/속성_${iconName}.png" alt="${iconName}" class="skill-icon">
-                                            <span class="skill-name" data-skill-kor-full="${skill.name}">${skillName}</span>
-                                        </div>
-                                        <span class="skill-description" ${isPassive ? 'data-passive="true"' : ''}>${skillDescription}</span>
-                                    </div>
-                                </li>
-                            `;
-                    }).join('')}
-                    </ul>
-                `;
-                    infoSection.appendChild(recommendedSkills);
-
-                    // 추천 스킬 설명에도 스킬 레벨 토글(6/7/8/ALL) 적용을 위해
-                    // 원본 텍스트를 data-original-text 로 저장하고,
-                    // 초기 렌더 시 현재 globalSkillLevel 이 숫자라면 필터를 한 번 적용한다.
-                    const recommendedDescSpans = recommendedSkills.querySelectorAll('.skill-description');
-                    recommendedDescSpans.forEach((span) => {
-                        // type 이 "패시브" 인 스킬은 스킬 레벨 토글의 영향을 받지 않는다.
-                        if (span.dataset.passive === 'true') return;
-                        const original = span.textContent || '';
-                        span.dataset.originalText = original;
-                        if (typeof globalSkillLevel === 'number') {
-                            span.textContent = filterDescByLevel(original, globalSkillLevel);
-                        }
-                    });
-                }
-
-                // Comment
-                if (comment && comment.trim() !== '') {
-                    const commentDiv = document.createElement('div');
-                    commentDiv.className = 'persona-comment';
-                    commentDiv.innerHTML = `
-                    <div class="comment-container">
-                        <span class="comment-icon">💬</span>
-                        <p>${comment}</p>
-                    </div>
-                `;
-                    infoSection.appendChild(commentDiv);
-                }
-
-                // Add sections to container
-                detailContainer.appendChild(cardSection);
-                detailContainer.appendChild(infoSection);
-
-                fragment.appendChild(detailContainer);
-                currentIndex++;
-                processed++;
-            }
-            // 청크 단위로 DOM 삽입
-            cardsContainer.appendChild(fragment);
-
-            if (currentIndex < sortedPersonas.length) {
-                if ('requestIdleCallback' in window) {
-                    requestIdleCallback(renderChunk, { timeout: 100 });
-                } else {
-                    setTimeout(renderChunk, 0);
-                }
-            } else {
-                // 전체 렌더 완료 후 툴팁 1회 지연 실행 및 컨테이너 캐싱
-                if (typeof addTooltips === 'function') {
-                    if ('requestIdleCallback' in window) {
-                        requestIdleCallback(() => addTooltips(), { timeout: 1000 });
-                    } else {
-                        setTimeout(() => addTooltips(), 0);
-                    }
-                }
-                // 컨테이너 목록 캐싱 (필터/검색에서 재사용)
-                containers = document.querySelectorAll('.persona-detail-container');
-                // 인터랙션 연결
-                wireCardInteractions();
-
-                // 렌더 완료 후 URL 검색 파라미터 적용 (컨테이너 준비된 이후에만 실행)
-                try {
-                    const urlParams = new URLSearchParams(window.location.search);
-                    const searchQuery = urlParams.get('search');
-                    if (searchQuery && searchInput) {
-                        searchInput.value = searchQuery;
-                        // 드롭다운은 표시하지 않음
-                        if (dropdown) dropdown.style.display = 'none';
-                        // 리스너가 연결된 이후 안전하게 트리거
-                        searchInput.dispatchEvent(new Event('input', { bubbles: true }));
-                    }
-                } catch (_) { /* no-op */ }
-            }
-        }
-        // 초기 렌더 시작
-        if ('requestIdleCallback' in window) {
-            requestIdleCallback(renderChunk, { timeout: 50 });
-        } else {
-            setTimeout(renderChunk, 0);
-        }
-
-        // 컨테이너 목록은 렌더 완료 후 할당됨
-        let containers = null;
-        /*
-        // 광고 삽입 카운터 (Expand All 비활성 상태에서 카드 열 때만 증가)
-        let adOpenCount = 0;
-
-        function injectAdForContainer(container) {
-            try {
-                const infoSection = container.querySelector('.persona-info-section');
-                if (!infoSection) return;
-                // 이미 삽입된 경우 중복 방지
-                if (infoSection.querySelector('.dynamic-ad')) return;
-                const adHost = document.createElement('div');
-                adHost.className = 'dynamic-ad card-inline-ad';
-                infoSection.appendChild(adHost);
-                if (typeof ModalAdInjector !== 'undefined' && ModalAdInjector.injectAdInto) {
-                    try { ModalAdInjector.injectAdInto(adHost, { width: 970, height: 90, className: 'card-ad-wrap', marginTop: 12 }); } catch (_) { }
-                }
-            } catch (_) {  }
-        }*/
-
-        // 카드 클릭 확장 및 전체 펼치기 토글 연결
-        function wireCardInteractions() {
-            const grid = document.getElementById('personaCards');
-            const expandAllToggle = document.getElementById('expandAllToggle');
-
-            // i18n for label
-            const expandAllLabel = document.getElementById('expandAllLabel');
-            const labelTexts = { kr: '전체 펼치기', en: 'Expand all', jp: 'すべて展開' };
-            const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
-            if (expandAllLabel) expandAllLabel.textContent = labelTexts[currentLang] || labelTexts.kr;
-
-            function removeAllBreakers() {
-                grid.querySelectorAll('.grid-break').forEach(b => b.remove());
-            }
-
-            // Legacy no-ops (grid-break no longer used)
-            function ensureBreakerBefore(_container) { /* no-op */ }
-            function removeBreakerBefore(_container) { /* no-op */ }
-            function removeAllBreakers() {
-                grid.querySelectorAll('.grid-break').forEach(n => n.remove());
-            }
-
-            // Clean any leftover breakers from previous sessions/interactions
-            removeAllBreakers();
-
-            function applyExpandAllState() {
-                if (!expandAllToggle) return;
-                if (expandAllToggle.checked) {
-                    grid.classList.add('expand-all');
-                    // 전체 확장: 모든 컨테이너 확장 및 active
-                    containers.forEach(c => {
-                        c.classList.add('expanded');
-                        c.classList.add('active');
-                    });
-                } else {
-                    grid.classList.remove('expand-all');
-                    // 전체 축소: 모든 컨테이너 축소 및 active 제거
-                    containers.forEach(c => {
-                        c.classList.remove('expanded');
-                        c.classList.remove('active');
-                    });
-                    restoreOriginalOrder();
-                }
-            }
-
-            function restoreOriginalOrder() {
-                const items = Array.from(grid.querySelectorAll('.persona-detail-container'));
-                items.sort((a, b) => (parseInt(a.dataset.order) - parseInt(b.dataset.order)));
-                const frag = document.createDocumentFragment();
-                items.forEach(el => frag.appendChild(el));
-                grid.appendChild(frag);
-            }
-
-            function getSameRowPrevious(container) {
-                const rect = container.getBoundingClientRect();
-                const top = rect.top;
-                const tolerance = 8; // px, breakpoint/zoom 오차 보정
-                const prevSiblings = [];
-                let el = container.previousElementSibling;
-                while (el) {
-                    if (el.classList && el.classList.contains('persona-detail-container')) {
-                        // 숨김(absolute)인 경우 제외
-                        const style = window.getComputedStyle(el);
-                        if (style.position !== 'absolute') {
-                            const r = el.getBoundingClientRect();
-                            if (Math.abs(r.top - top) <= tolerance) {
-                                prevSiblings.push(el);
-                            } else {
-                                // 다른 행을 만나면 중단
-                                break;
-                            }
-                        }
-                    } else if (el.classList && el.classList.contains('grid-break')) {
-                        // 그리드 브레이커 만나면 같은 행 이전 요소는 없음
-                        break;
-                    }
-                    el = el.previousElementSibling;
-                }
-                // DOM 순서 유지 위해 역순으로 쌓였던 것을 뒤집어 반환
-                return prevSiblings.reverse();
-            }
-
-            // 개별 카드 클릭으로 확장/축소 (expand-all이 꺼져 있을 때만)
-            containers.forEach(container => {
-                const clickTarget = container.querySelector('.persona-card-section') || container;
-                clickTarget.style.cursor = 'pointer';
-                clickTarget.addEventListener('click', (e) => {
-                    if (expandAllToggle && expandAllToggle.checked) return; // 전체 펼치기 중에는 개별 토글 비활성화
-                    const willExpand = !container.classList.contains('expanded');
-                    if (willExpand) {
-                        // Expand All이 꺼져 있을 때는 하나만 열리도록 이전 열린 카드 닫기
-                        /*
-                        containers.forEach(c => {
-                            if (c !== container) { c.classList.remove('expanded'); c.classList.remove('active'); }
-                        });*/
-                        // 확장: 같은 행의 앞선 카드들을 먼저 계산하고
-                        // 확장 카드를 그 행의 첫 요소 앞에 이동하여 새 줄을 시작하게 함
-                        const sameRowPrev = getSameRowPrevious(container);
-                        if (sameRowPrev.length > 0) {
-                            const firstOfRow = sameRowPrev[0];
-                            firstOfRow.parentNode.insertBefore(container, firstOfRow);
-                        }
-                        container.classList.add('expanded');
-                        container.classList.add('active');
-
-                        // 광고 카운트 증가 및 1, 5, 9...번째 열 때 광고 삽입
-                        /*
-                        adOpenCount += 1;
-                        if (adOpenCount === 1 || ((adOpenCount - 1) % 4 === 0)) {
-                            injectAdForContainer(container);
-                            // 필터/검색 시 광고 가시성 규칙 적용
-                            try { manageAdVisibility(); } catch (_) { }
-                        }*/
-                    } else {
-                        // 축소: 클래스 제거 후 원래 DOM 순서 복구
-                        container.classList.remove('expanded');
-                        container.classList.remove('active');
-                        restoreOriginalOrder();
-                    }
-                });
-            });
-
-            if (expandAllToggle) {
-                expandAllToggle.addEventListener('change', applyExpandAllState);
-                // 초기 상태 적용
-                applyExpandAllState();
-            }
-        }
-
-        // ----------------------------------------------------
-        // Filter implementation
-
-        const filterToggleBtn = document.querySelector('.filter-toggle-btn');
-        const filterContent = document.querySelector('.filter-content');
-        const filterResetBtn = document.querySelector('.filter-reset-btn');
-        const checkboxes = document.querySelectorAll('.filter-options input[type="checkbox"]');
-        filterContent.style.display = 'block';
-
-        // Filter toggle
-        filterToggleBtn.addEventListener('click', () => {
-            filterContent.style.display = filterContent.style.display === 'none' ? 'block' : 'none';
-        });
-
-        // 필터 디바운싱을 위한 타이머
-        let filterDebounceTimer;
-
-        // Detect checkbox changes with debouncing
-        checkboxes.forEach(checkbox => {
-            checkbox.addEventListener('change', () => {
-                // 디바운싱 적용
-                clearTimeout(filterDebounceTimer);
-                filterDebounceTimer = setTimeout(() => {
-                    // Check if any filters are selected
-                    const hasChecked = Array.from(checkboxes).some(cb => cb.checked);
-                    //filterResetBtn.style.display = hasChecked ? 'block' : 'none';
-
-                    // Apply filters
-                    applyFilters();
-                }, 50); // 50ms 디바운싱
-            });
-        });
-
-        // Reset button
-
-        filterResetBtn.addEventListener('click', () => {
-            // 배치로 체크박스 상태 변경
-            requestAnimationFrame(() => {
-                checkboxes.forEach(cb => cb.checked = false);
-                filterResetBtn.style.display = 'none';
-
-                // 캐시 초기화
-                filterCache = {
-                    elements: new Set(),
-                    positions: new Set(),
-                    rarities: new Set(),
-                    grades: new Set()
-                };
-
-                applyFilters();
-            });
-        });
-
-        filterToggleBtn.style.display = 'none';
-        filterResetBtn.style.display = 'none';
-
-        // 필터 상태 캐싱을 위한 변수들
-        let filterCache = {
-            elements: new Set(),
-            positions: new Set(),
-            rarities: new Set(),
-            grades: new Set()
-        };
-
-        // 광고 가시성 관리 함수
-        /*
-        function manageAdVisibility() {
-            const hasActiveFilters = Array.from(checkboxes).some(cb => cb.checked);
-            const hasActiveSearch = searchInput && searchInput.value.trim() !== '';
-            const isFilteringActive = hasActiveFilters || hasActiveSearch;
-
-            const dynamicAds = document.querySelectorAll('.dynamic-ad');
-
-            if (isFilteringActive) {
-                // 필터나 검색이 활성화된 경우: 마지막 광고만 남기고 나머지 숨김
-                dynamicAds.forEach((ad, index) => {
-                    if (index === dynamicAds.length - 1) {
-                        // 마지막 광고는 표시
-                        ad.style.display = 'block';
-                    } else {
-                        // 나머지 광고는 숨김
-                        ad.style.display = 'none';
-                    }
-                });
-            } else {
-                // 필터나 검색이 비활성화된 경우: 모든 광고 표시
-                dynamicAds.forEach(ad => {
-                    ad.style.display = 'block';
-                });
-            }
-        }*/
-
-        // 성능 최적화된 필터 적용 함수
-        function applyFilters() {
-            if (!containers) return; // 아직 렌더링 중이면 무시
-            // 필터 상태를 Set으로 캐싱하여 빠른 조회
-            filterCache.elements = new Set(Array.from(document.querySelectorAll('input[name="element"]:checked')).map(cb => cb.value));
-            filterCache.positions = new Set(Array.from(document.querySelectorAll('input[name="position"]:checked')).map(cb => cb.value));
-            filterCache.rarities = new Set(Array.from(document.querySelectorAll('input[name="rarity"]:checked')).map(cb => parseInt(cb.value)));
-            filterCache.grades = new Set(Array.from(document.querySelectorAll('input[name="grade"]:checked')).map(cb => cb.value));
-
-            let visibleCount = 0;
-
-            // requestAnimationFrame으로 DOM 조작 배치 처리
-            requestAnimationFrame(() => {
-                containers.forEach(container => {
-                    const element = container.dataset.element;
-                    const position = container.dataset.position;
-                    const rarity = parseInt(container.dataset.rarity);
-                    const grade = container.dataset.grade;
-                    const personaName = container.dataset.name;
-
-                    // Set.has()로 빠른 조회 (O(1))
-                    const elementMatch = filterCache.elements.size === 0 || filterCache.elements.has(element);
-                    const positionMatch = filterCache.positions.size === 0 || filterCache.positions.has(position);
-                    const rarityMatch = filterCache.rarities.size === 0 || filterCache.rarities.has(rarity);
-                    const gradeMatch = filterCache.grades.size === 0 ||
-                        filterCache.grades.has(grade);
-
-                    const isVisible = elementMatch && positionMatch && rarityMatch && gradeMatch;
-
-                    // display 대신 position으로 성능 개선 (레이아웃 재계산 방지)
-                    if (isVisible) {
-                        container.style.position = 'relative';
-                        container.style.visibility = 'visible';
-                        container.style.height = 'auto';
-                        visibleCount++;
-                    } else {
-                        container.style.position = 'absolute';
-                        container.style.visibility = 'hidden';
-                        container.style.height = '0';
-                    }
-                });
-
-                // 카운트 업데이트
-                const countText = window.i18nFilteredCount || '전체';
-                const countUnit = window.i18nCountUnit !== undefined ? window.i18nCountUnit : (currentLang === 'kr' ? '개' : '');
-                document.getElementById('filteredCount').textContent = `${countText} ${visibleCount}${countUnit}`;
-
-                // 광고 가시성 관리
-                //manageAdVisibility();
-            });
-        }
-
-        // Search functionality implementation
-        const searchInput = document.getElementById('personaSearch');
-        const dropdown = document.getElementById('searchDropdown');
-        // 드롭다운 노출 억제 플래그 (엔터/URL 검색 확정 후 재노출 방지)
-        let suppressDropdown = false;
-        // 마지막 확정 검색어 (엔터/URL 적용 시 기록)
-        let lastConfirmedSearchValue = '';
-        // Note: reuse cached NodeList from above to avoid redeclaration and extra DOM query
-        // const containers = document.querySelectorAll('.persona-detail-container');
-
-        // 언어별 페르소나 이름 매핑 생성
-        const personaNameMapping = {};
-        const nameSource = (typeof window !== 'undefined' && window.personaFiles)
-            ? window.personaFiles
-            : {};
-        Object.keys(nameSource).forEach(koreanName => {
-            const persona = nameSource[koreanName];
-            personaNameMapping[koreanName.toLowerCase()] = koreanName;
-
-            // 영어 이름 추가
-            if (persona.name_en) {
-                personaNameMapping[persona.name_en.toLowerCase()] = koreanName;
-            }
-
-            // 일본어 이름 추가
-            if (persona.name_jp) {
-                personaNameMapping[persona.name_jp.toLowerCase()] = koreanName;
-            }
-        });
-
-        // 디바운싱을 위한 타이머
-        let searchDebounceTimer;
-
-        // 검색 핸들러 함수 분리
-        function handleSearchInput(e) {
-            const searchValue = e ? e.target.value.toLowerCase() : '';
-
-            // 사용자가 마지막 확정 검색어에서 변경을 시작하면 드롭다운 억제 해제
-            if (searchValue !== lastConfirmedSearchValue) {
-                suppressDropdown = false;
-            }
-
-            // 드롭다운 업데이트 (즉시) — 억제 중이면 숨김 유지
-            if (suppressDropdown) {
-                if (dropdown) dropdown.style.display = 'none';
-            } else {
-                updateDropdown(searchValue);
-            }
-
-            // 검색 필터링 (디바운싱 적용)
-            clearTimeout(searchDebounceTimer);
-            searchDebounceTimer = setTimeout(() => {
-                filterBySearch(searchValue);
-            }, 100); // 100ms 디바운싱
-        }
-
-        // 이벤트 리스너 등록
-        searchInput.addEventListener('input', handleSearchInput);
-        // Enter로 검색 확정 시 드롭다운 닫고 즉시 필터 적용
-        searchInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                const value = searchInput.value.trim().toLowerCase();
-                // 일반 입력 검색: 드롭다운 유지, 자동 확장 없음
-                clearTimeout(searchDebounceTimer);
-                filterBySearch(value);
-            }
-        });
-
-        // 드롭다운 업데이트 함수 분리
-        function updateDropdown(searchValue) {
-            // URL 파라미터 검색 적용 중에는 드롭다운을 노출하지 않음
-            if (window.isApplyingUrlSearch) {
-                if (dropdown) dropdown.style.display = 'none';
-                return;
-            }
-            if (suppressDropdown) {
-                if (dropdown) dropdown.style.display = 'none';
-                return;
-            }
-            dropdown.innerHTML = '';
-
-            if (searchValue.length > 0) {
-                const matches = Object.keys(personaNameMapping).filter(name =>
-                    name.includes(searchValue)
-                ).slice(0, 10); // 성능을 위해 최대 10개로 제한
-
-                if (matches.length > 0) {
-                    dropdown.style.display = 'block';
-
-                    // DocumentFragment로 배치 DOM 추가
-                    const fragment = document.createDocumentFragment();
-
-                    matches.forEach(matchedName => {
-                        const koreanName = personaNameMapping[matchedName];
-                const persona = nameSource[koreanName];
-
-                        // 현재 언어에 맞는 표시 이름 가져오기
-                        let displayName = koreanName;
-                        if (currentLang === 'en' && persona.name_en) {
-                            displayName = persona.name_en;
-                        } else if (currentLang === 'jp' && persona.name_jp) {
-                            displayName = persona.name_jp;
-                        }
-
-                        const div = document.createElement('div');
-                        div.className = 'dropdown-item';
-                        div.textContent = displayName;
-                        div.addEventListener('click', () => {
-                            searchInput.value = displayName;
-                            dropdown.style.display = 'none';
-                            filterBySearch(matchedName.toLowerCase());
-                        });
-                        fragment.appendChild(div);
-                    });
-
-                    dropdown.appendChild(fragment);
-                } else {
-                    dropdown.style.display = 'none';
-                }
-            } else {
-                dropdown.style.display = 'none';
-            }
-        }
-
-        // 검색 결과 캐싱
-        let searchCache = new Map();
-
-        // 성능 최적화된 검색 필터링 함수
-        function filterBySearch(searchValue) {
-            // 캐시에서 결과 확인
-            if (searchCache.has(searchValue)) {
-                applySearchResults(searchCache.get(searchValue));
-                return;
-            }
-
-            let visibleCount = 0;
-            const results = [];
-            let firstVisibleIndex = -1;
-
-            // requestAnimationFrame으로 배치 처리
-            requestAnimationFrame(() => {
-                containers.forEach(container => {
-                    const koreanName = container.dataset.name;
-                    const persona = nameSource[koreanName];
-
-                    // 모든 언어 이름으로 검색 가능하도록
-                    const searchableNames = [
-                        koreanName.toLowerCase(),
-                        persona.name_en ? persona.name_en.toLowerCase() : '',
-                        persona.name_jp ? persona.name_jp.toLowerCase() : ''
-                    ].filter(name => name); // 빈 문자열 제거
-
-                    const isVisible = searchValue === '' || searchableNames.some(name => name.includes(searchValue));
-
-                    // display 대신 position으로 성능 개선
-                    if (isVisible) {
-                        container.style.position = 'relative';
-                        container.style.visibility = 'visible';
-                        container.style.height = 'auto';
-                        visibleCount++;
-                    } else {
-                        container.style.position = 'absolute';
-                        container.style.visibility = 'hidden';
-                        container.style.height = '0';
-                    }
-
-                    results.push(isVisible);
-                    if (isVisible && firstVisibleIndex === -1) {
-                        firstVisibleIndex = results.length - 1;
-                    }
-                });
-
-                // 결과 캐싱 (최대 50개까지만)
-                if (searchCache.size < 50) {
-                    searchCache.set(searchValue, results);
-                }
-
-                // 카운트 업데이트
-                const countText = window.i18nFilteredCount || '전체';
-                const countUnit = window.i18nCountUnit !== undefined ? window.i18nCountUnit : (currentLang === 'kr' ? '개' : '');
-                document.getElementById('filteredCount').textContent = `${countText} ${visibleCount}${countUnit}`;
-
-                // 광고 가시성 관리
-                //manageAdVisibility();
-
-                // URL 파라미터 검색일 때만 자동 확장/드롭다운 숨김 적용
-                if (window.isApplyingUrlSearch) {
-                    const expandAllToggle = document.getElementById('expandAllToggle');
-                    if (!expandAllToggle || !expandAllToggle.checked) {
-                        // 기존 확장 상태 초기화
-                        containers.forEach(c => { c.classList.remove('expanded'); c.classList.remove('active'); });
-                        if (firstVisibleIndex >= 0) {
-                            const firstEl = containers[firstVisibleIndex];
-                            if (firstEl) {
-                                firstEl.classList.add('expanded');
-                                firstEl.classList.add('active');
-                            }
-                        }
-                    }
-                    // 드롭다운 숨김
-                    const dropdown = document.getElementById('searchDropdown');
-                    if (dropdown) dropdown.style.display = 'none';
-                    // 플래그 리셋
-                    window.isApplyingUrlSearch = false;
-                }
-            });
-        }
-
-        // 캐시된 검색 결과 적용 함수
-        function applySearchResults(results) {
-            const containers = document.querySelectorAll('.persona-detail-container');
-            let visibleCount = 0;
-            let firstVisibleIndex = -1;
-
-            requestAnimationFrame(() => {
-                containers.forEach((container, index) => {
-                    const isVisible = results[index];
-
-                    if (isVisible) {
-                        container.style.position = 'relative';
-                        container.style.visibility = 'visible';
-                        container.style.height = 'auto';
-                        visibleCount++;
-                        if (firstVisibleIndex === -1) firstVisibleIndex = index;
-                    } else {
-                        container.style.position = 'absolute';
-                        container.style.visibility = 'hidden';
-                        container.style.height = '0';
-                    }
-                });
-
-                // 카운트 업데이트
-                const countText = window.i18nFilteredCount || '전체';
-                const countUnit = window.i18nCountUnit !== undefined ? window.i18nCountUnit : (currentLang === 'kr' ? '개' : '');
-                document.getElementById('filteredCount').textContent = `${countText} ${visibleCount}${countUnit}`;
-
-                // 검색 후 광고 가시성 관리
-                //manageAdVisibility();
-
-                // URL 파라미터 검색일 때만 자동 확장/드롭다운 숨김 적용
-                if (window.isApplyingUrlSearch) {
-                    // 드롭다운 숨김
-                    if (dropdown) dropdown.style.display = 'none';
-                    // 첫 번째 결과 자동 확장 (expand-all이 꺼져 있을 때만)
-                    const expandAllToggle = document.getElementById('expandAllToggle');
-                    if (!expandAllToggle || !expandAllToggle.checked) {
-                        containers.forEach(c => { c.classList.remove('expanded'); c.classList.remove('active'); });
-                        if (firstVisibleIndex >= 0) {
-                            const firstEl = containers[firstVisibleIndex];
-                            if (firstEl) {
-                                firstEl.classList.add('expanded');
-                                firstEl.classList.add('active');
-                            }
-                        }
-                    }
-                    // 플래그 리셋
-                    window.isApplyingUrlSearch = false;
-                }
-            });
-        }
-
-        // Close dropdown when clicking outside search
-        document.addEventListener('click', (e) => {
-            if (!searchInput.contains(e.target) && !dropdown.contains(e.target)) {
-                dropdown.style.display = 'none';
-            }
-        });
-
-        // When keyboard appears
-        searchInput.addEventListener('focus', () => {
-            document.body.classList.add('keyboard-open');
-        });
-
-        // When keyboard disappears
-        searchInput.addEventListener('blur', () => {
-            document.body.classList.remove('keyboard-open');
-        });
-
-        // Prevent viewport size changes on iOS
-        if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
-            const viewport = document.querySelector('meta[name="viewport"]');
-            if (viewport) {
-                viewport.content = 'width=device-width, initial-scale=1, maximum-scale=1';
-            }
-        }
-    } // initializePageContent 함수 종료
-
-    // ----------------------------------------------------
-    // Global skill level selector (LV6 / LV7 / LV8 / ALL)
-    // ----------------------------------------------------
-
-    function setupGlobalSkillLevelSelector() {
-        const buttons = document.querySelectorAll('.skill-level-buttons-global .skill-level-btn');
-        if (!buttons.length) return;
-
-        function applyGlobalSkillLevel(level) {
-            globalSkillLevel = level;
-            const applyTo = (p) => {
-                const original = p.dataset.originalText || p.textContent || '';
-                if (level === null) {
-                    p.textContent = original;
-                } else {
-                    p.textContent = filterDescByLevel(original, level);
-                }
-            };
-            const uniqueParas = document.querySelectorAll('.persona-unique-skill-info p');
-            const highlightParas = document.querySelectorAll('.persona-highlight-info p');
-            uniqueParas.forEach(applyTo);
-            highlightParas.forEach(applyTo);
-            // 추천 스킬(description)에도 동일한 스킬 레벨 필터 적용
-            const recommendedParas = document.querySelectorAll('.persona-recommended-skills .skill-description');
-            recommendedParas.forEach((p) => {
-                // type 이 "패시브" 인 추천 스킬은 스킬 레벨 토글의 영향을 받지 않는다.
-                if (p.dataset.passive === 'true') return;
-                applyTo(p);
-            });
-            if (typeof addTooltips === 'function') {
-                try { addTooltips(); } catch (_) { /* noop */ }
-            }
-        }
-
-        buttons.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                const levelAttr = btn.dataset.level;
-                const level = levelAttr === 'ALL' ? null : parseInt(levelAttr, 10);
-
-                buttons.forEach(b => {
-                    const isActive = b === btn;
-                    b.classList.toggle('active', isActive);
-                    b.setAttribute('aria-pressed', isActive ? 'true' : 'false');
-                });
-
-                applyGlobalSkillLevel(level);
-            });
-        });
-
-        // 초기 상태(LV6) 전역 적용
-        applyGlobalSkillLevel(0);
-    }
-
-    // 언어별 설명 박스 텍스트 업데이트 함수
-    function updateExplainBoxTexts(currentLang) {
-        const explainTexts = {
-            kr: {
-                instinct_title: "본능 · 고유 스킬 · HIGHLIGHT",
-                skills_title: "추천 스킬",
-                priority_label: "중요도 :",
-                priority_label2: "우선순위 :",
-                priority_high: "상",
-                priority_medium: "중",
-                priority_low: "하",
-                priority_normal: "중",
-                priority_very_low: "최하",
-                priority_highest: "상"
-            },
-            en: {
-                instinct_title: "Talent · Unique Skill · HIGHLIGHT",
-                skills_title: "Recommended Skills",
-                priority_label: "Importance :",
-                priority_label2: "Priority :",
-                priority_high: "High",
-                priority_medium: "Med",
-                priority_low: "Low",
-                priority_normal: "Normal",
-                priority_very_low: "Very Low",
-                priority_highest: "High"
-            },
-            jp: {
-                instinct_title: "本能 · 固有スキル · ハイライト",
-                skills_title: "推奨スキル",
-                priority_label: "重要度 :",
-                priority_label2: "優先順位 :",
-                priority_high: "高",
-                priority_medium: "中",
-                priority_low: "低",
-                priority_normal: "一般",
-                priority_very_low: "非常に低い",
-                priority_highest: "高い"
-            }
-        };
-
-        const currentExplainTexts = explainTexts[currentLang] || explainTexts['kr'];
-
-        // 설명 박스 텍스트 업데이트
-        const explainSections = document.querySelectorAll('.explain-section h4');
-        if (explainSections[0]) explainSections[0].textContent = currentExplainTexts.instinct_title;
-        if (explainSections[1]) explainSections[1].textContent = currentExplainTexts.skills_title;
-
-        const priorityLabels = document.querySelectorAll('.priority-label');
-        if (priorityLabels[0]) priorityLabels[0].textContent = currentExplainTexts.priority_label;
-        if (priorityLabels[1]) priorityLabels[1].textContent = currentExplainTexts.priority_label2;
-
-        // 우선순위 텍스트 업데이트
-        const priorityTexts = document.querySelectorAll('[data-priority-text]');
-        priorityTexts.forEach(element => {
-            const type = element.dataset.priorityText;
-            switch (type) {
-                case 'high':
-                    element.textContent = currentExplainTexts.priority_highest;
-                    break;
-                case 'normal':
-                    element.textContent = currentExplainTexts.priority_normal;
-                    break;
-                case 'low':
-                    element.textContent = currentExplainTexts.priority_low;
-                    break;
-                case 'very-low':
-                    element.textContent = currentExplainTexts.priority_very_low;
-                    break;
-            }
-        });
-
-        // 기존 우선순위 아이템들 (설명 박스 첫 번째 섹션)
-        const priorityItems = document.querySelectorAll('.priority-item span');
-        if (priorityItems[0]) priorityItems[0].textContent = currentExplainTexts.priority_high;
-        if (priorityItems[1]) priorityItems[1].textContent = currentExplainTexts.priority_medium;
-        if (priorityItems[2]) priorityItems[2].textContent = currentExplainTexts.priority_low;
-        if (priorityItems[3]) priorityItems[3].textContent = currentExplainTexts.priority_highest;
-        if (priorityItems[4]) priorityItems[4].textContent = currentExplainTexts.priority_normal;
-        if (priorityItems[5]) priorityItems[5].textContent = currentExplainTexts.priority_low;
-        if (priorityItems[6]) priorityItems[6].textContent = currentExplainTexts.priority_very_low;
-    }
-
-    // 광고 흰 박스 숨김
-    /*
-    setTimeout(() => {
-        document.querySelectorAll(".adsbygoogle").forEach(el => {
-            const status = el.getAttribute("data-ad-status");
-            const adslot = el.getAttribute("data-ad-slot");
-            //console.log("google status", status);
-            //console.log("google adslot", adslot);
-            if (status === "unfilled" || el.querySelector("iframe") === null) {
-                el.style.display = "none";
-            }
-        });
-    }, 1000);  // 광고 로딩 기다렸다가 1초 후 검사*/
+    // Search initialized via main callback
 </script>
 
-
-
-<script>window.SITE_BASEURL = '{{ site.baseurl }}';</script>
-<script src="{{ site.baseurl }}/apps/persona/skillfrom.js?v={{ site.time | date: '%s' }}"></script>
+<!-- i18n 서비스 -->
+<script type="module" src="{{ site.baseurl }}/i18n/service/i18n-service.js?v={{ site.time | date: '%s' }}"></script>
+<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
+<script type="module">
+    import { handlePersonaRouting } from "{{ site.baseurl }}/apps/persona/persona-routing.js?v={{ site.time | date: '%s' }}";
+    window.handlePersonaRouting = handlePersonaRouting;
+</script>

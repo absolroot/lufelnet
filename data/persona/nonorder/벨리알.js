@@ -5,7 +5,7 @@ window.personaFiles["벨리알"] = {
   "name": "벨리알",
   "name_en": "Belial",
   "name_jp": "ベリアル",
-  "grade": "5",
+  "grade": "7",
   "star": "5",
   "position": "굴복",
   "element": "주원",
@@ -108,7 +108,7 @@ window.personaFiles["벨리알"] = {
     "desc_en": "Deal Curse damage to 1 foe equal to 173.0%/181.6%/190.3% of Attack. Inflict 1 Hell's Inferno stack on the foe, and immediately deal damage based on number of Hell's Inferno stacks on the foe. Increase this damage by 200%.",
     "desc_jp": "敵単体に攻撃力173.0%/181.6%/190.3%の呪怨属性ダメージを与える。敵に『地獄の炎』を１つ付与し、さらに敵に付与されている『地獄の炎』の数に基づいたダメージを即時発生させる。その与ダメージが２００%上昇する。",
     "priority": 0,
-    "icon": "Default",
+    "icon": "주원",
     "icon_gl": ""
   },
   "highlight": {

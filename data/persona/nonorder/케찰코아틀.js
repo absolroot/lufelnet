@@ -108,7 +108,7 @@ window.personaFiles["케찰코아틀"] = {
     "desc_en": "Deal Wind damage to all foes equal to 64.8/68.0/71.3% of Attack. 36.0/37.8/39.6% chance to inflict Windswept for 2 turns.",
     "desc_jp": "敵全体に攻撃力64.8/68.0/71.3%の疾風属性ダメージを与える。36.0/37.8/39.6%の確率で敵を２ターンの間、風襲状態にする。",
     "priority": 0,
-    "icon": "Default",
+    "icon": "질풍광역",
     "icon_gl": ""
   },
   "highlight": {

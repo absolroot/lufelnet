@@ -5,7 +5,7 @@ window.personaFiles["릴림"] = {
   "name": "릴림",
   "name_en": "Lilim",
   "name_jp": "リリム",
-  "grade": "5",
+  "grade": "4",
   "star": "4",
   "position": "반항",
   "element": "빙결",

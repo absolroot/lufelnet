@@ -100,7 +100,7 @@ window.personaFiles["랑다"] = {
     "desc_en": "Decrease all foes' Attack by 18.1%/19.0%/19.9% for 3 turns.",
     "desc_jp": "３ターンの間、敵全体の攻撃力を18.1%/19.0%/19.9%低下させる。",
     "priority": 0,
-    "icon": "Default",
+    "icon": "디버프광역",
     "icon_gl": ""
   },
   "highlight": {

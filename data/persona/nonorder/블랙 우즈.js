@@ -5,7 +5,7 @@ window.personaFiles["블랙 우즈"] = {
   "name": "블랙 우즈",
   "name_en": "Black Ooze",
   "name_jp": "ブラックウーズ",
-  "grade": "5",
+  "grade": "3",
   "star": "3",
   "position": "굴복",
   "element": "주원",

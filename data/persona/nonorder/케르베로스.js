@@ -5,7 +5,7 @@ window.personaFiles["케르베로스"] = {
   "name": "케르베로스",
   "name_en": "Cerberus",
   "name_jp": "ケルベロス",
-  "grade": "5",
+  "grade": "6",
   "star": "4",
   "position": "지배",
   "element": "화염",

@@ -5,7 +5,7 @@ window.personaFiles["봉황"] = {
   "name": "봉황",
   "name_en": "Phoenix",
   "name_jp": "ホウオウ",
-  "grade": "5",
+  "grade": "3",
   "star": "4",
   "position": "지배",
   "element": "핵열",

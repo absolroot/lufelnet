@@ -5,7 +5,7 @@ window.personaFiles["아라미타마"] = {
   "name": "아라미타마",
   "name_en": "Ara Mitama",
   "name_jp": "アラミタマ",
-  "grade": "5",
+  "grade": "4",
   "star": "3",
   "position": "반항",
   "element": "핵열",

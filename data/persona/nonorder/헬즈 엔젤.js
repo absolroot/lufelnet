@@ -5,7 +5,7 @@ window.personaFiles["헬즈 엔젤"] = {
   "name": "헬즈 엔젤",
   "name_en": "Hell Biker",
   "name_jp": "ヘルズエンジェル",
-  "grade": "5",
+  "grade": "4",
   "star": "5",
   "position": "반항",
   "element": "화염",
@@ -100,7 +100,7 @@ window.personaFiles["헬즈 엔젤"] = {
     "desc_en": "Deal Fire damage to 1 foe equal to 81.0%/85.0%/89.1% of Attack. If a foe is Burning, deal more Fire damage equal to 81.0%/85.0%/89.1% of Attack and reset the duration of Burn.",
     "desc_jp": "敵単体に攻撃力81.0%/85.0%/89.1%の火炎属性ダメージを与える。敵が炎上状態の場合、さらに攻撃力81.0%/85.0%/89.1%の火炎属性ダメージを与え、炎上の効果時間をリセットする。",
     "priority": 0,
-    "icon": "Default",
+    "icon": "화염",
     "icon_gl": ""
   },
   "highlight": {

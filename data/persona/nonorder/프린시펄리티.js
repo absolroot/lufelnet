@@ -5,7 +5,7 @@ window.personaFiles["프린시펄리티"] = {
   "name": "프린시펄리티",
   "name_en": "Principality",
   "name_jp": "プリンシパリティ",
-  "grade": "5",
+  "grade": "3",
   "star": "5",
   "position": "구원",
   "element": "축복",
@@ -92,7 +92,7 @@ window.personaFiles["프린시펄리티"] = {
     "desc_en": "Heal 1 ally for 36.0%/37.8%/39.6% Attack + 1089/1348/1626. Increase Defense by 18.0%/18.9%/19.8%. Lasts for 2 turns.",
     "desc_jp": "味方単体のＨＰを攻撃力36.0%/37.8%/39.6%＋1089/1348/1626回復する。さらに２ターンの間、防御力が18.0%/18.9%/19.8%上昇する。",
     "priority": 0,
-    "icon": "Default",
+    "icon": "치료",
     "icon_gl": ""
   },
   "highlight": {

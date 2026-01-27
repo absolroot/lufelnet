@@ -5,7 +5,7 @@ window.personaFiles["청룡"] = {
   "name": "청룡",
   "name_en": "Seiryu",
   "name_jp": "セイリュウ",
-  "grade": "5",
+  "grade": "7",
   "star": "4",
   "position": "구원",
   "element": "빙결",
@@ -108,7 +108,7 @@ window.personaFiles["청룡"] = {
     "desc_en": "Restore 1 ally's HP by 38.0/39.9/41.8% of Attack + 1150/1423/1716.",
     "desc_jp": "味方単体のＨＰを攻撃力の38.0/39.9/41.8%＋1150/1423/1716回復する。",
     "priority": 0,
-    "icon": "Default",
+    "icon": "치료",
     "icon_gl": ""
   },
   "highlight": {

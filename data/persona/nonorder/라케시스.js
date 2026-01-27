@@ -5,7 +5,7 @@ window.personaFiles["라케시스"] = {
   "name": "라케시스",
   "name_en": "Lachesis",
   "name_jp": "ラケシス",
-  "grade": "5",
+  "grade": "4",
   "star": "4",
   "position": "구원",
   "element": "빙결",
@@ -100,7 +100,7 @@ window.personaFiles["라케시스"] = {
     "desc_en": "Restore party's HP by 12.9/13.5/14.2% of Attack + 390/483/582. Cure 1 elemental ailment.",
     "desc_jp": "味方全体のＨＰを攻撃力12.9/13.5/14.2%＋390/483/582回復する。さらに属性異常を１つ治療する。",
     "priority": 0,
-    "icon": "Default",
+    "icon": "치료",
     "icon_gl": ""
   },
   "highlight": {

@@ -237,5 +237,35 @@ export default {
         new: 'New',
         hot: 'Hot',
         updated: 'Updated'
+    },
+
+    // 속성 번역
+    elements: {
+        "만능": "Almighty",
+        "물리": "Physical",
+        "총격": "Gun",
+        "화염": "Fire",
+        "빙결": "Ice",
+        "전격": "Electric",
+        "질풍": "Wind",
+        "염동": "Psychokinesis",
+        "핵열": "Nuclear",
+        "축복": "Bless",
+        "주원": "Curse",
+        "버프": "Buff",
+        "디버프": "Debuff",
+        "디버프광역": "AOE Debuff"
+    },
+
+    // 직업 번역  
+    positions: {
+        "구원": "Medic",
+        "굴복": "Saboteur",
+        "반항": "Assassin",
+        "방위": "Guardian",
+        "우월": "Strategist",
+        "지배": "Sweeper",
+        "해명": "Elucidator",
+        "자율": "Virtuoso"
     }
 };

@@ -210,7 +210,8 @@
             const i18n = {
                 title: { kr: '적 정보', en: 'Enemy Info', jp: '敵情報', cn: '敌人信息', tw: '敵人資訊', sea: 'Enemy Info' },
                 defeated: { kr: '처치 완료', en: 'Defeated', jp: '討伐完了', cn: '击败完成', tw: '擊敗完成', sea: 'Defeated' },
-                undo: { kr: '되돌리기', en: 'Undo', jp: '元に戻す', cn: '撤销', tw: '復原', sea: 'Undo' }
+                undo: { kr: '되돌리기', en: 'Undo', jp: '元に戻す', cn: '撤销', tw: '復原', sea: 'Undo' },
+                relativeLevel: { kr: '주인공 레벨에 따라 몬스터의 레벨이 달라집니다. (주인공 레벨 + {level})', en: 'Monster level varies with protagonist level. (Protagonist Level + {level})', jp: '主人公のレベルに応じてモンスターのレベルが変化します。（主人公レベル + {level}）', cn: '怪物等级随主角等级变化。（主角等级 + {level}）', tw: '怪物等級隨主角等級變化。（主角等級 + {level}）', sea: 'Monster level varies with protagonist level. (Protagonist Level + {level})' }
             };
 
             // 언어 감지
@@ -474,7 +475,7 @@
                                 margin-top: 0px;
                                 margin-bottom: 8px;
                             `;
-                            dmmLVDiv.textContent = `주인공 레벨에 따라 몬스터의 레벨이 달라집니다. (주인공 레벨 + ${enemy.realLv})`;
+                            dmmLVDiv.textContent = getText('relativeLevel').replace('{level}', enemy.realLv);
                             enemyDiv.appendChild(dmmLVDiv);
                         }
 

@@ -12,7 +12,7 @@ window.personaFiles["라미아"] = {
   "event": false,
   "wild_emblem_rainbow": false,
   "best_persona": false,
-  "tier": "A",
+  "tier": "B",
   "added": "",
   "cost": null,
   "combination": null,

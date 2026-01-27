@@ -285,9 +285,17 @@ async function initializePageContent() {
                     // 리스너가 연결된 이후 안전하게 트리거
                     searchInput.dispatchEvent(new Event('input', { bubbles: true }));
                 }
+
+                // Deep Link Routing (Check 'name' param)
+                if (urlParams.has('name') || urlParams.has('persona')) {
+                    if (typeof window.handlePersonaRouting === 'function') {
+                        window.handlePersonaRouting();
+                        window.hasInitialAutoSelected = true; // Prevent default auto-select
+                    }
+                }
             } catch (_) { /* no-op */ }
 
-            // Initial Auto Select (Once)
+            // Initial Auto Select (Once) - Only if no deep link handled
             if (!window.hasInitialAutoSelected && containers.length > 0) {
                 const firstCard = containers[0];
                 renderDetailInPanel(firstCard);
@@ -386,7 +394,7 @@ async function initializePageContent() {
 
         rightDiv.innerHTML = `
             <div class="skill-level-toggle" style="margin-left:auto;">
-                <span class="skill-level-label" style="margin-right:8px; font-size:12px; color:#aaa;">${labelText}</span>
+                <span class="skill-level-label" style="margin-right:0px; font-size:12px; color:#aaa;">${labelText}</span>
                 <div class="skill-level-buttons skill-level-buttons-global">
                     <button type="button" class="${btnClass(0)}" data-level="0">LV6</button>
                     <button type="button" class="${btnClass(1)}" data-level="1">LV7</button>
@@ -684,7 +692,52 @@ async function initializePageContent() {
             infoSection.appendChild(commentDiv);
         }
 
+        // Update Page Title and Meta Data (SEO)
+        updatePageSEO(personaName, displayName, comment);
+
         return infoSection;
+    }
+
+    // Update Page Title & Meta Tags
+    function updatePageSEO(originalName, localizedName, description) {
+        // Title: "Persona Name - Site Name"
+        // Base title is usually "주요 페르소나 - 페르소나5 더 팬텀 X 루페르넷"
+        // We will keep the suffix or just "Name - P5X Lufelnet"
+        const siteSuffix = (currentLang === 'en' || currentLang === 'jp') ? 'P5X Lufelnet' : '페르소나5 더 팬텀 X 루페르넷';
+
+        // Prefix logic
+        let prefix = '페르소나 ';
+        if (currentLang === 'en') prefix = 'Persona ';
+        else if (currentLang === 'jp') prefix = 'ペルソナ ';
+
+        const pageTitle = `${prefix}${localizedName} - ${siteSuffix}`;
+
+        document.title = pageTitle;
+
+        // Meta Tags
+        const setMeta = (selector, content) => {
+            const el = document.querySelector(selector);
+            if (el) el.setAttribute('content', content);
+        };
+
+        setMeta('meta[property="og:title"]', pageTitle);
+        setMeta('meta[name="twitter:title"]', pageTitle);
+
+        // Description: Use persona comment or fallback
+        const desc = description ? description.replace(/<[^>]*>/g, '') : `${localizedName} Info & Skills`;
+        setMeta('meta[name="description"]', desc);
+        setMeta('meta[property="og:description"]', desc);
+        setMeta('meta[name="twitter:description"]', desc);
+
+        // Canonical URL (optional, good for SEO if strictly using query params)
+        // Update canonical to include ?name=...
+        const linkCanonical = document.querySelector('link[rel="canonical"]');
+        if (linkCanonical) {
+            const baseUrl = window.SITE_BASEURL || window.location.origin + window.location.pathname;
+            // Clean base url (remove index.html if present)
+            const cleanBase = baseUrl.replace('index.html', '');
+            linkCanonical.href = `${cleanBase}?name=${encodeURIComponent(originalName)}`;
+        }
     }
 
 
@@ -706,6 +759,16 @@ async function initializePageContent() {
 
                     // 2. Render Detail
                     renderDetailInPanel(container);
+
+                    // 3. Update URL (SEO / Deep Linking)
+                    const targetName = container.dataset.name;
+                    const url = new URL(window.location);
+                    if (url.searchParams.get('name') !== targetName) {
+                        url.searchParams.set('name', targetName);
+                        // Delete legacy param if exists
+                        url.searchParams.delete('persona');
+                        window.history.pushState({ name: targetName }, '', url);
+                    }
                 };
             });
         }

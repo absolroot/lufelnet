@@ -12,6 +12,7 @@ window.personaFiles["사악한 프로스트"] = {
   "event": true,
   "wild_emblem_rainbow": true,
   "best_persona": false,
+  "tier": "B",
   "added": "",
   "cost": null,
   "combination": null,

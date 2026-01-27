@@ -11,8 +11,8 @@ window.personaFiles["사히모치노카미"] = {
   "element": "빙결",
   "event": true,
   "wild_emblem_rainbow": true,
-  "best_persona": false,
-  "tier": "A",
+  "best_persona": true,
+  "tier": "S",
   "added": "KR v4.3.2",
   "cost": null,
   "combination": null,
@@ -39,6 +39,10 @@ window.personaFiles["사히모치노카미"] = {
     },
     {
       "name": "전의 공명",
+      "priority": 0
+    },
+    {
+      "name": "음률의 침입",
       "priority": 0
     }
   ],

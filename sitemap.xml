@@ -273,4 +273,40 @@ sitemap:
       {% endfor %}
     {% endunless %}
   {% endfor %}
+
+  <!-- Persona Detail Pages from data/persona/*.js -->
+  {% assign languages = "kr,en,jp" | split: "," %}
+  {% assign persona_files = site.static_files | where_exp: "file", "file.path contains '/data/persona/'" %}
+  {% for file in persona_files %}
+    {% if file.extname == '.js' %}
+      {% assign filename = file.basename | remove: '.js' %}
+      {% unless filename == 'order' or filename == 'nonorder' or filename == 'persona-list' or filename == 'persona-search' or filename == 'persona-routing' or filename == 'skillfrom' or filename == 'getfrom' %}
+        {% assign encoded_name = filename | url_encode %}
+        <url>
+          <loc>{{ site.url }}/persona/?name={{ encoded_name }}</loc>
+          <lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod>
+          <changefreq>monthly</changefreq>
+          <priority>0.7</priority>
+          {% for lang in languages %}
+            <xhtml:link rel="alternate" hreflang="{{ lang }}" href="{{ site.url }}/persona/?name={{ encoded_name }}&amp;lang={{ lang }}" />
+          {% endfor %}
+          <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}/persona/?name={{ encoded_name }}" />
+        </url>
+        
+        <!-- Persona with explicit language parameters -->
+        {% for lang in languages %}
+          <url>
+            <loc>{{ site.url }}/persona/?name={{ encoded_name }}&amp;lang={{ lang }}</loc>
+            <lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.6</priority>
+            {% for alt_lang in languages %}
+              <xhtml:link rel="alternate" hreflang="{{ alt_lang }}" href="{{ site.url }}/persona/?name={{ encoded_name }}&amp;lang={{ alt_lang }}" />
+            {% endfor %}
+            <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}/persona/?name={{ encoded_name }}" />
+          </url>
+        {% endfor %}
+      {% endunless %}
+    {% endif %}
+  {% endfor %}
 </urlset>

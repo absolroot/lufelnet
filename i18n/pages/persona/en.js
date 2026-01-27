@@ -1,7 +1,7 @@
 export default {
     navHome: "Home",
     navCurrent: "Personas",
-    pageTitle: "Personas",
+    pageTitle: "Persona",
     filteredCount: "Total",
     searchPlaceholder: "Search Personas, Skills...",
     filterElement: "Element",

@@ -1,10 +1,10 @@
 export default {
     // Page metadata
-    pageTitle: 'Confidant',
+    pageTitle: 'Synergy',
 
     // Navigation
     navHome: 'Home',
-    navCurrent: 'Confidant',
+    navCurrent: 'Synergy',
 
     // Filters
     filterAll: 'All',

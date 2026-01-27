@@ -203,7 +203,8 @@ img[src*="속성_주원.png"] {
 
 .persona-img[src*="야타가라스.webp"] {
     --tx: 5%;
-    --ty: 15%;
+    --ty: 7%;
+    --scale: 0.75;
 }
 
 .persona-img[src*="사히모치노카미.webp"] {
@@ -239,8 +240,16 @@ img[src*="속성_주원.png"] {
     --ty: -10%;
 }
 
+.persona-img[src*="가네샤.webp"],
+.persona-img[src*="누에.webp"],
+.persona-img[src*="년수.webp"] {
+    --scale: 0.9;
+}
+
 .persona-img[src*="잭 프로스트.webp"],
-.persona-img[src*="스다마.webp"] {
+.persona-img[src*="사악한 프로스트.webp"],
+.persona-img[src*="스다마.webp"],
+.persona-img[src*="시사.webp"] {
     --scale: 0.8;
 }
 
@@ -272,4 +281,49 @@ img[src*="속성_주원.png"] {
 .persona-img[src*="아트로포스.webp"] {
     --tx: 20%;
     --ty: 20%;
+}
+
+.persona-img[src*="바롱.webp"] {
+    --tx: -20%;
+    --ty: -5%;
+}
+
+.persona-img[src*="스이키.webp"] {
+    --tx: -15%;
+}
+
+.persona-img[src*="주작.webp"] {
+    --tx: 5%;
+    --ty: -5%;
+}
+
+.persona-img[src*="랑다.webp"] {
+    --tx: 10%;
+}
+
+.persona-img[src*="레드 라이더.webp"] {
+    --ty: -8%;
+}
+
+.persona-img[src*="오바리욘.webp"] {
+    --scale: 0.8;
+    --tx: 12%;
+}
+
+.persona-img[src*="오르트로스.webp"] {
+    --tx: -6%;
+    --ty: -10%;
+}
+
+.persona-img[src*="스카아하.webp"] {
+    --tx: -15%;
+    --ty: 14%;
+}
+
+.persona-img[src*="바이콘.webp"] {
+    --ty: -3%;
+}
+
+.persona-img[src*="랴난시.webp"] {
+    --ty: 15%;
 }

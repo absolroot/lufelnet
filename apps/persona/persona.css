@@ -71,7 +71,6 @@ textarea {
 .split-view-container {
     display: flex;
     gap: 20px;
-    margin-top: 20px;
     margin-bottom: 40px;
     align-items: flex-start;
 }

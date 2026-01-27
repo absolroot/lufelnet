@@ -1016,6 +1016,18 @@
               "description_jp": "",
               "submaps": [
                 {
+                  "id": "slum_enterance",
+                  "name": "빈민굴 입구",
+                  "name_en": "",
+                  "name_jp": "",
+                  "file": [
+                    "palace/시모츠나 팰리스/개미굴·빈민굴 입구_0_data.json"
+                  ],
+                  "description": "",
+                  "description_en": "",
+                  "description_jp": ""
+                },
+                {
                   "id": "slum_b1",
                   "name": "빈민굴 B1",
                   "name_en": "",
@@ -1052,6 +1064,19 @@
               "description_en": "",
               "description_jp": "",
               "submaps": [
+                {
+                  "id": "office_enterance",
+                  "name": "사무실 입구",
+                  "name_en": "",
+                  "name_jp": "",
+                  "file": [
+                    "palace/시모츠나 팰리스/개미굴·사무실 입구_0_data.json",
+                    "palace/시모츠나 팰리스/개미굴·사무실 입구_1_data.json"
+                  ],
+                  "description": "",
+                  "description_en": "",
+                  "description_jp": ""
+                },
                 {
                   "id": "office_lower",
                   "name": "사무실 하층",

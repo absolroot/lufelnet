@@ -603,14 +603,14 @@ const AstrolabeCanvasRenderer = (function () {
     const pos = node.pos || [0, 0];
     const screen = worldToScreen(pos[0], pos[1]);
 
-    pin.style.display = 'block';
-    pin.style.left = `${screen.x}px`;
-    pin.style.top = `${screen.y}px`;
-
     // Scale pin with zoom
     // Base size approximation (tianerong-xingpan-now.png)
     const baseSize = 60;
     const size = baseSize * 0.6 * viewState.zoom; // 0.6 scale factor
+
+    pin.style.display = 'block';
+    pin.style.left = `${screen.x}px`;
+    pin.style.top = `${screen.y - size * 0.2}px`; // Shift up by 10% height
 
     pin.style.width = `${size}px`;
     pin.style.height = `${size}px`;

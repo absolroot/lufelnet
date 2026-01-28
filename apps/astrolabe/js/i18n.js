@@ -1,5 +1,5 @@
 // Astrolabe Internationalization
-const AstrolabeI18n = (function() {
+const AstrolabeI18n = (function () {
   const SUPPORTED_LANGS = ['kr', 'en', 'jp', 'cn', 'tw', 'sea'];
 
   const translations = {
@@ -111,11 +111,11 @@ const AstrolabeI18n = (function() {
 
   // Adapt labels (from bosses.js)
   const adaptLabels = {
-    Weak:      { kr: '약', en: 'Wk',  jp: '弱',  cn: '弱', tw: '弱', sea: 'Wk', cls: 'weak' },
-    Resistant: { kr: '내', en: 'Res', jp: '耐',  cn: '耐', tw: '耐', sea: 'Res', cls: 'res' },
-    Nullify:   { kr: '무', en: 'Nul', jp: '無',  cn: '無', tw: '無', sea: 'Nul', cls: 'nul' },
-    Absorb:    { kr: '흡', en: 'Abs', jp: '吸',  cn: '吸', tw: '吸', sea: 'Abs', cls: 'abs' },
-    Reflect:   { kr: '반', en: 'Rpl', jp: '反',  cn: '反', tw: '反', sea: 'Rpl', cls: 'rpl' },
+    Weak: { kr: '약', en: 'Wk', jp: '弱', cn: '弱', tw: '弱', sea: 'Wk', cls: 'weak' },
+    Resistant: { kr: '내', en: 'Res', jp: '耐', cn: '耐', tw: '耐', sea: 'Res', cls: 'res' },
+    Nullify: { kr: '무', en: 'Nul', jp: '無', cn: '無', tw: '無', sea: 'Nul', cls: 'nul' },
+    Absorb: { kr: '흡', en: 'Abs', jp: '吸', cn: '吸', tw: '吸', sea: 'Abs', cls: 'abs' },
+    Reflect: { kr: '반', en: 'Rpl', jp: '反', cn: '反', tw: '反', sea: 'Rpl', cls: 'rpl' },
   };
 
   let currentLang = 'kr';
@@ -130,16 +130,33 @@ const AstrolabeI18n = (function() {
       }
       const saved = localStorage.getItem('preferredLanguage');
       if (saved && SUPPORTED_LANGS.includes(saved)) return saved;
-    } catch (_) {}
+    } catch (_) { }
     return 'kr';
   }
 
   function loadRegion() {
+    // 1. Check URL param 'server' (Highest priority)
+    try {
+      const urlServer = new URLSearchParams(window.location.search).get('server');
+      if (urlServer && typeof AstrolabeConfig !== 'undefined' && AstrolabeConfig.REGIONS.includes(urlServer)) {
+        return urlServer;
+      }
+    } catch (_) { }
+
+    // 2. Check localStorage
     try {
       const saved = localStorage.getItem('carousel_region');
-      if (saved && AstrolabeConfig.REGIONS.includes(saved)) return saved;
-    } catch (_) {}
-    return detectLang();
+      if (saved && typeof AstrolabeConfig !== 'undefined' && AstrolabeConfig.REGIONS.includes(saved)) {
+        return saved;
+      }
+    } catch (_) { }
+
+    // 3. Default based on Language
+    // kr->kr, jp->jp, others->en
+    const lang = detectLang();
+    if (lang === 'kr') return 'kr';
+    if (lang === 'jp') return 'jp';
+    return 'en';
   }
 
   function t(key) {

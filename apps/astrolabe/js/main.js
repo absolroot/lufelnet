@@ -215,4 +215,48 @@
   } else {
     init();
   }
+
+  // Shooting Star Logic (CSS based)
+  setInterval(() => {
+    // Constraint: Only on PC > 1600px
+    if (window.innerWidth < 1600) return;
+
+    // Chance: 30% check every 2 seconds -> ~1 star every 6-7 seconds
+    if (Math.random() > 0.3) return;
+
+    spawnCSSStar();
+  }, 2000);
+
+  function spawnCSSStar() {
+    const container = document.getElementById('shooting-star-container');
+    if (!container) return;
+
+    const star = document.createElement('div');
+    star.classList.add('shooting-star');
+
+    // Random start position
+    // Top-left approach roughly
+    const startX = Math.random() * window.innerWidth;
+    const startY = Math.random() * (window.innerHeight * 0.5) - 100;
+
+    star.style.left = `${startX}px`;
+    star.style.top = `${startY}px`;
+
+    // Randomize duration slightly
+    const duration = 1.5 + Math.random();
+    star.style.animation = `shootingStarAnim ${duration}s linear forwards`;
+
+    // Randomize length (width)
+    const length = 100 + Math.random() * 80;
+    star.style.width = `${length}px`;
+
+    container.appendChild(star);
+
+    // Clean up
+    setTimeout(() => {
+      if (star.parentNode) {
+        star.parentNode.removeChild(star);
+      }
+    }, duration * 1000 + 100);
+  }
 })();

@@ -121,6 +121,7 @@ const AstrolabeCanvasRenderer = (function () {
     });
   }
 
+
   function centerView() {
     if (!canvas || Object.keys(nodes).length === 0) return;
 
@@ -610,7 +611,7 @@ const AstrolabeCanvasRenderer = (function () {
 
     pin.style.display = 'block';
     pin.style.left = `${screen.x}px`;
-    pin.style.top = `${screen.y - size * 0.2}px`; // Shift up by 10% height
+    pin.style.top = `${screen.y - size * 0.2}px`; // Shift up by 20% height
 
     pin.style.width = `${size}px`;
     pin.style.height = `${size}px`;

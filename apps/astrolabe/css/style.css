@@ -162,6 +162,24 @@
   margin: 0 0 10px 0;
   color: rgba(255, 255, 255, 0.9);
   text-shadow: 0 0 10px rgba(68, 136, 255, 0.3);
+  position: relative;
+}
+
+/* Desktop Decoration (> 1600px) */
+@media (min-width: 1601px) {
+  .astrolabe-title::before {
+    content: '';
+    position: absolute;
+    top: 55%;
+    left: 45%;
+    transform: translate(-47%, -55%);
+    width: 200px;
+    height: 100px;
+    background: url('../img/tianerong-xingpan-bg03.png') no-repeat center center / contain;
+    z-index: -1;
+    opacity: 1;
+    filter: brightness(1.2);
+  }
 }
 
 .astrolabe-header-right {

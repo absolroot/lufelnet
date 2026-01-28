@@ -31,6 +31,12 @@
         AstrolabeCanvasRenderer.init(canvas);
         AstrolabeCanvasRenderer.setData(nodes, imageCache);
 
+        // Auto-select the first node for visual effect (without opening modal)
+        const firstNodeId = Object.keys(nodes)[0];
+        if (firstNodeId) {
+          AstrolabeCanvasRenderer.setSelectedNode(firstNodeId);
+        }
+
         // Handle node selection
         canvas.addEventListener('nodeSelected', (e) => {
           const { nodeId, node } = e.detail;

@@ -6,9 +6,14 @@ const AstrolabeNodeDetail = (function () {
   function init(panelElement) {
     detailPanel = panelElement;
 
-    // Close on backdrop click
+    // Close on backdrop click (Only for mobile/standard modal view)
     detailPanel.addEventListener('click', (e) => {
-      if (e.target === detailPanel) {
+      // On PC (>1600px), clicking the "transparent backdrop" (which allows pass-through via pointer-events:none anyway)
+      // shouldn't close it. But since we use pointer-events: none on the container in CSS for >1600px, 
+      // this event listener might not even fire for the background click on PC.
+      // However, if we didn't use pointer-events: none, we would need this check.
+      // Keeping it safe:
+      if (window.innerWidth < 1600 && e.target === detailPanel) {
         hide();
       }
     });
@@ -22,8 +27,93 @@ const AstrolabeNodeDetail = (function () {
 
     // Delegate close button click
     detailPanel.addEventListener('click', (e) => {
-      if (e.target.classList.contains('detail-close-btn')) {
+      if (e.target.classList.contains('detail-close-btn') || e.target.closest('.detail-close-btn')) {
         hide();
+      }
+    });
+
+    // Handle resize to adjust scroll lock
+    window.addEventListener('resize', () => {
+      if (detailPanel.classList.contains('active')) {
+        if (window.innerWidth >= 1600) {
+          document.body.style.overflow = '';
+        } else {
+          document.body.style.overflow = 'hidden';
+          // Reset position on mobile shift if needed, or leave it (it's modal anyway)
+          const content = detailPanel.querySelector('.detail-content');
+          if (content) {
+            content.style.top = '';
+            content.style.left = '';
+            content.style.bottom = '';
+            content.style.right = '';
+            content.style.transform = '';
+          }
+        }
+      }
+    });
+
+    // Initialize Draggable Logic
+    setupDraggable();
+  }
+
+  function setupDraggable() {
+    const content = detailPanel.querySelector('.detail-content');
+    if (!content) return;
+
+    let isDragging = false;
+    let startX, startY, initialLeft, initialTop;
+
+    // Use delegation on detailPanel because detail-header is dynamic
+    detailPanel.addEventListener('mousedown', (e) => {
+      // Check if clicking on header
+      const header = e.target.closest('.detail-header');
+      if (!header) return;
+
+      // Don't drag if clicking buttons
+      if (e.target.closest('button') || e.target.closest('.detail-close-btn')) return;
+
+      // Only drag on PC > 1600
+      if (window.innerWidth < 1600) return;
+
+      isDragging = true;
+
+      // Calculate current position to switch from CSS bottom/right to distinct top/left
+      const rect = content.getBoundingClientRect();
+
+      // Set explicit Top/Left based on current visual position
+      // Important to clear bottom/right so top/left takes precedence
+      content.style.bottom = 'auto';
+      content.style.right = 'auto';
+      content.style.left = `${rect.left}px`;
+      content.style.top = `${rect.top}px`;
+
+      startX = e.clientX;
+      startY = e.clientY;
+      initialLeft = rect.left;
+      initialTop = rect.top;
+
+      header.style.cursor = 'grabbing';
+
+      e.preventDefault(); // Prevent text selection
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+
+      const dx = e.clientX - startX;
+      const dy = e.clientY - startY;
+
+      content.style.left = `${initialLeft + dx}px`;
+      content.style.top = `${initialTop + dy}px`;
+    });
+
+    window.addEventListener('mouseup', () => {
+      if (isDragging) {
+        isDragging = false;
+        // We can't easily reset cursor on header here because it might be recreated or mouse moved off
+        // But we can try finding it again
+        const header = detailPanel.querySelector('.detail-header');
+        if (header) header.style.cursor = 'move';
       }
     });
   }
@@ -34,7 +124,11 @@ const AstrolabeNodeDetail = (function () {
     currentNode = node;
     renderContent(node);
     detailPanel.classList.add('active');
-    document.body.style.overflow = 'hidden';
+
+    // Only lock scroll on smaller screens
+    if (window.innerWidth < 1600) {
+      document.body.style.overflow = 'hidden';
+    }
   }
 
   function hide() {

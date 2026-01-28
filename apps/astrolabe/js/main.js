@@ -13,6 +13,13 @@
     // Get region
     const region = AstrolabeI18n.loadRegion();
 
+    // Ensure URL has server param
+    const url = new URL(window.location);
+    if (url.searchParams.get('server') !== region) {
+      url.searchParams.set('server', region);
+      window.history.replaceState({}, '', url);
+    }
+
     // Show loading
     const loadingEl = document.getElementById('astrolabe-loading');
     if (loadingEl) loadingEl.style.display = 'flex';
@@ -25,16 +32,27 @@
       // Preload images
       const imageCache = await AstrolabeDataLoader.preloadImages(nodes);
 
+      // Initialize detail panel (Must be before auto-open logic)
+      const detailPanel = document.getElementById('node-detail-panel');
+      if (detailPanel) {
+        AstrolabeNodeDetail.init(detailPanel);
+      }
+
       // Initialize canvas
       const canvas = document.getElementById('astrolabe-canvas');
       if (canvas) {
         AstrolabeCanvasRenderer.init(canvas);
         AstrolabeCanvasRenderer.setData(nodes, imageCache);
 
-        // Auto-select the first node for visual effect (without opening modal)
+        // Auto-select the first node for visual effect
         const firstNodeId = Object.keys(nodes)[0];
         if (firstNodeId) {
           AstrolabeCanvasRenderer.setSelectedNode(firstNodeId);
+
+          // On PC (> 1600px), automatically show the detail panel for the first node
+          if (window.innerWidth >= 1600) {
+            AstrolabeNodeDetail.show(nodes[firstNodeId]);
+          }
         }
 
         // Handle node selection
@@ -47,10 +65,7 @@
       }
 
       // Initialize detail panel
-      const detailPanel = document.getElementById('node-detail-panel');
-      if (detailPanel) {
-        AstrolabeNodeDetail.init(detailPanel);
-      }
+
 
       // Set up countdown
       endTimeUTC = AstrolabeDataLoader.getEndTime(data, region);
@@ -76,9 +91,28 @@
   }
 
   function updateUIText() {
+    // Page Title & Meta
+    document.title = AstrolabeI18n.t('title') + " - P5X lufel.net";
+
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', AstrolabeI18n.t('description'));
+    }
+
     // Title
     const titleEl = document.getElementById('astrolabe-title');
     if (titleEl) titleEl.textContent = AstrolabeI18n.t('title');
+
+    // Nav Title (Desktop)
+    const navTitleEl = document.getElementById('astrolabe-title-nav');
+    if (navTitleEl) navTitleEl.textContent = AstrolabeI18n.t('title');
+
+    // Mobile Breadcrumb
+    const mobileHome = document.querySelector('.mobile-breadcrumb .breadcrumb-item:not(.active)');
+    if (mobileHome) mobileHome.textContent = AstrolabeI18n.t('home');
+
+    const mobileActive = document.querySelector('.mobile-breadcrumb .breadcrumb-item.active');
+    if (mobileActive) mobileActive.textContent = AstrolabeI18n.t('title');
 
     // Time label
     const timeLabelEl = document.getElementById('time-label');
@@ -133,6 +167,11 @@
     selector.value = currentRegion;
     selector.addEventListener('change', async (e) => {
       const newRegion = e.target.value;
+
+      // Update URL
+      const url = new URL(window.location);
+      url.searchParams.set('server', newRegion);
+      window.history.pushState({}, '', url);
 
       // Clear selection and pin
       if (AstrolabeCanvasRenderer.clearSelection) {

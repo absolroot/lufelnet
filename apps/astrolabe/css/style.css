@@ -354,12 +354,47 @@
   justify-content: center;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s, visibility 0.3s;
+  transition: opacity 0.1s, visibility 0.1s;
 }
 
 .node-detail-panel.active {
   opacity: 1;
   visibility: visible;
+}
+
+/* PC Specific Node Detail Behavior (> 1600px) */
+@media screen and (min-width: 1600px) {
+  .node-detail-panel {
+    background: transparent;
+    pointer-events: none;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .node-detail-panel .detail-content {
+    position: absolute;
+    bottom: 200px;
+    right: 32px;
+    width: 600px;
+    /* Specific width for side panel */
+    max-height: 60vh;
+    pointer-events: auto;
+    border: 1px solid var(--astro-border);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    transform: none;
+    /* Reset any potential transforms */
+  }
+
+  .detail-header {
+    cursor: move;
+  }
+
+  .detail-close-btn {
+    cursor: pointer;
+  }
+
+  /* Remove body lock effect if it was applied by JS (handled in JS, but good to ensure layout is stable) */
 }
 
 .detail-content {

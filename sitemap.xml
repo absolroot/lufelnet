@@ -195,6 +195,20 @@ sitemap:
     <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}/tactic/tactics.html" />
   </url>
 
+  <!-- Astrolabe -->
+  <url>
+    <loc>{{ site.url }}/astrolabe/</loc>
+    <lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="{{ site.url }}/astrolabe/?lang=kr" />
+    <xhtml:link rel="alternate" hreflang="en" href="{{ site.url }}/astrolabe/?lang=en" />
+    <xhtml:link rel="alternate" hreflang="ja" href="{{ site.url }}/astrolabe/?lang=jp" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="{{ site.url }}/astrolabe/?lang=cn" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="{{ site.url }}/astrolabe/?lang=tw" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}/astrolabe/" />
+  </url>
+
   <!-- Maps -->
   <url>
     <loc>{{ site.url }}/maps/</loc>

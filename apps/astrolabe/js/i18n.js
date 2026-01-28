@@ -106,6 +106,14 @@ const AstrolabeI18n = (function () {
       cn: '重置',
       tw: '重置',
       sea: 'Reset'
+    },
+    description: {
+      kr: '페르소나5 더 팬텀 X 성좌의 시련 (Trial of the Astrolabe) 정보',
+      en: 'Persona 5: The Phantom X - Trial of the Astrolabe Information',
+      jp: 'ペルソナ5・ザ・ファントムX - アストロラーベの試練 情報',
+      cn: '女神异闻录5: 夜幕魅影 - 天域星盘 信息',
+      tw: '女神異聞錄5: 夜幕魅影 - 天域星盤 信息',
+      sea: 'Persona 5: The Phantom X - Trial of the Astrolabe Information'
     }
   };
 

@@ -10,7 +10,6 @@
     "body_en": "Justin & Carolin (Confirmed)",
     "body_jp": "ジュスティーヌ＆カロリーヌ (確定)",
     "image": "/assets/img/home/banner/P5DSN_-_Caroline_and_Justine.webp",
-
     "background_image": "/assets/img/home/banner/JC.jpg",
     "background_image_jp": "/assets/img/home/banner/JC-jp.jpg",
     "background_image_en": "/assets/img/home/banner/JC-en.jpg",
@@ -22,53 +21,65 @@
     "link_jp": "https://www.youtube.com/watch?v=F3_7JnVGcgs",
     "link_en": "https://www.youtube.com/watch?v=Wulo8Bz00wA",
     "visible_langs": [],
-    "regions": ["kr","cn","tw","sea","en","jp"]  
-},
-
-
-{
-  "kind": "custom",
-  "order": 0,
-  "title": "베사 - 로보틱 챌린지 공략 링크",
-  "title_en": "Besa - Robotic Challenge Guide Link",
-  "title_jp": "ベサ - ロボティックチャレンジガイドリンク",
-  "subtitle": "",
-  "body": "EVENT",
-  "body_en": "EVENT",
-  "body_jp": "EVENT",
-  "image": "/assets/img/home/banner/besa.webp",
-  "background_image": "/assets/img/home/banner/besa-bg.jpg",
-  "background_bottom": 80,
-  "background_bottom_mobile": 0,
-  "background_right": 0,
-  "color": "#e91e63",
-  "link": "https://www.youtube.com/watch?v=uC3X6-kjbs4",
-  "link_target": "_blank",
-  "visible_langs": ["en","jp"],
-  "regions": ["en","jp"]  
-},
-
-
-
+    "regions": [
+      "kr",
+      "cn",
+      "tw",
+      "sea",
+      "en",
+      "jp"
+    ]
+  },
   {
-      "kind": "custom",
-      "order": 1,
-      "title": "오만의 팰리스 - 가면 배우의 피날레",
-      "title_en": "The Masked Actor's Finale",
-      "title_jp": "仮面バレイのフィナーレ",
-      "subtitle": "V4.7 UPDATE",
-      "body": "메인 스토리 업데이트",
-      "body_en": "Main story update",
-      "body_jp": "メインストーリーの更新",
-      "image": "",
-      "background_image": "/assets/img/home/banner/section-head-bg.jpg",
-      "background_bottom": 80,
-      "background_bottom_mobile": 0,
-      "background_right": 0,
-      "color": "#e91e63",
-      "link": "",
-      "visible_langs": [],
-      "regions": ["kr","cn","tw"]  
+    "kind": "custom",
+    "order": 0,
+    "title": "베사 - 로보틱 챌린지 공략 링크",
+    "title_en": "Besa - Robotic Challenge Guide Link",
+    "title_jp": "ベサ - ロボティックチャレンジガイドリンク",
+    "subtitle": "",
+    "body": "EVENT",
+    "body_en": "EVENT",
+    "body_jp": "EVENT",
+    "image": "/assets/img/home/banner/besa.webp",
+    "background_image": "/assets/img/home/banner/besa-bg.jpg",
+    "background_bottom": 80,
+    "background_bottom_mobile": 0,
+    "background_right": 0,
+    "color": "#e91e63",
+    "link": "https://www.youtube.com/watch?v=uC3X6-kjbs4",
+    "link_target": "_blank",
+    "visible_langs": [
+      "en",
+      "jp"
+    ],
+    "regions": [
+      "en",
+      "jp"
+    ]
+  },
+  {
+    "kind": "custom",
+    "order": 1,
+    "title": "오만의 팰리스 - 가면 배우의 피날레",
+    "title_en": "The Masked Actor's Finale",
+    "title_jp": "仮面バレイのフィナーレ",
+    "subtitle": "V4.7 UPDATE",
+    "body": "메인 스토리 업데이트",
+    "body_en": "Main story update",
+    "body_jp": "メインストーリーの更新",
+    "image": "",
+    "background_image": "/assets/img/home/banner/section-head-bg.jpg",
+    "background_bottom": 80,
+    "background_bottom_mobile": 0,
+    "background_right": 0,
+    "color": "#e91e63",
+    "link": "",
+    "visible_langs": [],
+    "regions": [
+      "kr",
+      "cn",
+      "tw"
+    ]
   },
   {
     "kind": "custom",
@@ -84,5 +95,41 @@
     "link_en": "",
     "link_jp": "",
     "visible_langs": []
+  },
+  {
+    "kind": "custom",
+    "order": 999,
+    "title": "루페르넷이 도움이 되셨나요?",
+    "title_en": "Did Lufel.net help you?",
+    "title_jp": "ルフェルネットは役に立ちましたか？",
+    "subtitle": "루페르넷은 광고 없이 운영되는 P5X만을 위한 사이트입니다.",
+    "subtitle_en": "An ad-free community dedicated solely to P5X.",
+    "subtitle_jp": "ルフェルネットは広告なしで運営されるP5X専門サイトです。",
+    "body": "여러분의 작은 후원이 더 완벽한 가이드를 만드는 힘이 됩니다.",
+    "body_en": "Your support fuels better guides and features.",
+    "body_jp": "皆様の温かいご支援が、より良い攻略を作る原動力になります。",
+    "image": "/assets/img/home/banner/support.webp",
+    "background_image": "/assets/img/home/banner/under.png",
+    "background_bottom": 0,
+    "background_bottom_mobile": 0,
+    "background_right": 0,
+    "color": "#e2b524",
+    "link": "/about/",
+    "link_en": "https://ko-fi.com/S6S11F0PUN",
+    "link_jp": "https://ko-fi.com/S6S11F0PUN",
+    "link_target": "_self",
+    "visible_langs": [
+      "kr",
+      "en",
+      "jp"
+    ],
+    "regions": [
+      "kr",
+      "cn",
+      "tw",
+      "sea",
+      "en",
+      "jp"
+    ]
   }
 ]

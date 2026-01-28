@@ -48,6 +48,7 @@ class Navigation {
                 defenseCalc: '방어력 계산기',
                 criticalCalc: '크리티컬 계산기',
                 maps: '지도',
+                astrolabe: '성좌의 시련',
                 pullTracker: '계약',
                 pullTracker_individual: '개인 통계',
                 pullTracker_global: '전체 통계',
@@ -66,6 +67,7 @@ class Navigation {
                 synergy: 'Synergy',
                 wonderweapon: 'Wonder Daggers',
                 maps: 'Maps',
+                astrolabe: 'Astrolabe',
                 tactic: 'Tactics',
                 tacticMaker: 'Tactic Maker',
                 tacticForge: 'Tactics Forge',
@@ -96,6 +98,7 @@ class Navigation {
                 synergy: 'シナジー',
                 wonderweapon: 'ワンダー武器',
                 maps: '地図',
+                astrolabe: 'アストロラーベ',
                 tactic: 'タクティクス',
                 tacticMaker: 'タクティクスメーカー',
                 tacticForge: 'タクティック鍛冶場',
@@ -124,6 +127,7 @@ class Navigation {
                 persona: '面具',
                 revelations: '觉醒',
                 maps: '地图',
+                astrolabe: '天域星盘',
                 tactic: '战术',
                 tacticMaker: '战术制作',
                 tacticForge: '战术锻造',
@@ -141,11 +145,10 @@ class Navigation {
         // 현재 언어의 텍스트 가져오기
         const texts = i18n[currentLang] || i18n.kr;
 
-        // 언어별 표시할 메뉴 정의 (한국어는 모든 메뉴, 영어/일본어는 제한된 메뉴)
         const availableMenus = {
-            kr: ['character', 'persona', 'revelations', 'synergy', 'wonderweapon', 'maps', 'calculator', 'tactic', 'article', 'pullTracker', 'tier', 'gallery', 'about'],
-            en: ['character', 'persona', 'revelations', 'synergy', 'wonderweapon', 'maps', 'calculator', 'tactic', 'article', 'pullTracker', 'tier', 'gallery', 'about'],
-            jp: ['character', 'persona', 'revelations', 'synergy', 'wonderweapon', 'maps', 'calculator', 'tactic', 'article', 'pullTracker', 'tier', 'gallery', 'about'],
+            kr: ['character', 'persona', 'revelations', 'synergy', 'wonderweapon', 'maps', 'astrolabe', 'calculator', 'tactic', 'article', 'pullTracker', 'tier', 'gallery', 'about'],
+            en: ['character', 'persona', 'revelations', 'synergy', 'wonderweapon', 'maps', 'astrolabe', 'calculator', 'tactic', 'article', 'pullTracker', 'tier', 'gallery', 'about'],
+            jp: ['character', 'persona', 'revelations', 'synergy', 'wonderweapon', 'maps', 'astrolabe', 'calculator', 'tactic', 'article', 'pullTracker', 'tier', 'gallery', 'about'],
             cn: ['character', 'article', 'about']
         };
 
@@ -197,6 +200,12 @@ class Navigation {
                 <a href="${BASE_URL}/maps?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="maps">
                     <img src="${BASE_URL}/assets/img/nav/maps.png" alt="maps" style="width: 32px; height: 32px; object-fit: contain;" />
                     <span data-text="${texts.maps}">${texts.maps}</span>
+                </a>
+                ` : ''}
+                ${currentMenus.includes('astrolabe') ? `
+                <a href="${BASE_URL}/astrolabe/?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="astrolabe">
+                    <img src="${BASE_URL}/assets/img/nav/astrolabe.png" alt="astrolabe" style="width: 32px; height: 32px; object-fit: contain;" />
+                    <span data-text="${texts.astrolabe}">${texts.astrolabe}</span>
                 </a>
                 ` : ''}
                 ${currentMenus.includes('pullTracker') ? `

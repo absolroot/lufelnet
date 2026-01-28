@@ -58,7 +58,7 @@
     try {
       const saved = localStorage.getItem('carousel_region');
       if (saved && REGIONS.includes(saved)) return saved;
-    } catch (_) {}
+    } catch (_) { }
 
     // 2) Language-based mapping (URL lang -> LanguageRouter -> preferredLanguage)
     try {
@@ -71,30 +71,30 @@
       try {
         const pref = localStorage.getItem('preferredLanguage');
         if (pref) candidates.push(pref);
-      } catch (_) {}
+      } catch (_) { }
 
       for (const cand of candidates) {
         const reg = mapLangToRegion(cand);
         if (reg) {
-          try { localStorage.setItem('carousel_region', reg); } catch (_) {}
+          try { localStorage.setItem('carousel_region', reg); } catch (_) { }
           return reg;
         }
       }
-    } catch (_) {}
+    } catch (_) { }
 
     // 3) Fallback
     return 'kr';
   }
 
   function saveRegion(region) {
-    try { localStorage.setItem('carousel_region', region); } catch (_) {}
+    try { localStorage.setItem('carousel_region', region); } catch (_) { }
   }
 
   function loadUtcOffsetMinutes() {
     try {
       const saved = localStorage.getItem('carousel_utc_offset_min');
       if (saved != null) return parseInt(saved, 10);
-    } catch (_) {}
+    } catch (_) { }
     // Default to browser timezone
     // getTimezoneOffset: minutes from local time to UTC (e.g., KST -> 540, meaning UTC+9 => -540)
     const tz = new Date().getTimezoneOffset();
@@ -104,7 +104,7 @@
   }
 
   function saveUtcOffsetMinutes(mins) {
-    try { localStorage.setItem('carousel_utc_offset_min', String(mins)); } catch (_) {}
+    try { localStorage.setItem('carousel_utc_offset_min', String(mins)); } catch (_) { }
   }
 
   function normalizeName(s) {
@@ -139,10 +139,10 @@
       const normalized = normalizeName(name);
       for (const [k, v] of Object.entries(window.characterData)) {
         if (normalizeName(k) === normalized ||
-            normalizeName(v.name) === normalized ||
-            normalizeName(v.name_en) === normalized ||
-            normalizeName(v.name_jp) === normalized ||
-            normalizeName(v.codename) === normalized) {
+          normalizeName(v.name) === normalized ||
+          normalizeName(v.name_en) === normalized ||
+          normalizeName(v.name_jp) === normalized ||
+          normalizeName(v.codename) === normalized) {
           key = k;
           break;
         }
@@ -160,10 +160,10 @@
       const normalized = normalizeName(name);
       for (const [k, v] of Object.entries(window.characterData)) {
         if (normalizeName(k) === normalized ||
-            normalizeName(v.name) === normalized ||
-            normalizeName(v.name_en) === normalized ||
-            normalizeName(v.name_jp) === normalized ||
-            normalizeName(v.codename) === normalized) {
+          normalizeName(v.name) === normalized ||
+          normalizeName(v.name_en) === normalized ||
+          normalizeName(v.name_jp) === normalized ||
+          normalizeName(v.codename) === normalized) {
           key = k;
           break;
         }
@@ -234,14 +234,14 @@
   function detectLang() {
     try {
       const urlLang = new URLSearchParams(window.location.search).get('lang');
-      if (urlLang && ['kr','en','jp','cn','tw','sea'].includes(urlLang)) return urlLang;
+      if (urlLang && ['kr', 'en', 'jp', 'cn', 'tw', 'sea'].includes(urlLang)) return urlLang;
       if (typeof LanguageRouter !== 'undefined' && LanguageRouter.getCurrentLanguage) {
         const l = (LanguageRouter.getCurrentLanguage() || 'kr').toLowerCase();
-        if (['kr','en','jp','cn','tw','sea'].includes(l)) return l;
+        if (['kr', 'en', 'jp', 'cn', 'tw', 'sea'].includes(l)) return l;
       }
       const saved = localStorage.getItem('preferredLanguage');
-      if (saved && ['kr','en','jp','cn','tw','sea'].includes(saved)) return saved;
-    } catch (_) {}
+      if (saved && ['kr', 'en', 'jp', 'cn', 'tw', 'sea'].includes(saved)) return saved;
+    } catch (_) { }
     return 'kr';
   }
 
@@ -302,7 +302,7 @@
       if (lang === 'en' && typeof show_en === 'boolean') return show_en;
       if (lang === 'jp' && typeof show_jp === 'boolean') return show_jp;
       if (lang === 'kr' && typeof show_kr === 'boolean') return show_kr;
-    } catch(_) {}
+    } catch (_) { }
     return true; // default visible
   }
 
@@ -323,7 +323,7 @@
       if (typeof item.region === 'string' && item.region.trim()) {
         return String(item.region).toLowerCase() === String(region).toLowerCase();
       }
-    } catch(_) {}
+    } catch (_) { }
     return true;
   }
 
@@ -556,6 +556,7 @@
       /* 특정 이미지 예외처리 */
       .char-img.back[src*="YUI"] { right: -6% !important; }
       .char-img.front[src*="렌"], .char-img.front[alt*="Ren"], .char-img.middle[src*="렌"], .char-img.middle[alt*="Ren"] { right: 20% !important; }
+      img[src*="support.webp"] { scale: 0.9; }
 
       .char-img.front { z-index: 3; transform: translateY(-40%) scale(1.16); }
       .char-img.middle { z-index: 2; transform: translateX(-8%) translateY(-50%) scale(1.08) }
@@ -655,7 +656,7 @@
     try {
       const item = (window.characterData || {})[key];
       if (item && item.color) return parseHexColor(item.color);
-    } catch(_) {}
+    } catch (_) { }
     return null;
   }
 
@@ -1110,21 +1111,21 @@
         const ta = a.startUTC.getTime();
         const tb = b.startUTC.getTime();
         if (tb !== ta) return tb - ta;
-        
+
         // Compare end times (later end time first)
         const ea = a.endUTC ? a.endUTC.getTime() : 0;
         const eb = b.endUTC ? b.endUTC.getTime() : 0;
         if (eb !== ea) return eb - ea;
-        
+
         // All times equal: compare character counts (single comes first)
         const aCount = Array.isArray(a.fiveStar) ? a.fiveStar.length : 0;
         const bCount = Array.isArray(b.fiveStar) ? b.fiveStar.length : 0;
         const aIsMultiple = aCount > 1;
         const bIsMultiple = bCount > 1;
-        
+
         if (aIsMultiple && !bIsMultiple) return 1; // a (multiple) goes after b (single)
         if (!aIsMultiple && bIsMultiple) return -1; // b (multiple) goes after a (single)
-        
+
         // All equal: keep original order
         return a.__origIndex - b.__origIndex;
       });
@@ -1175,7 +1176,7 @@
       errEl.textContent = '캐러셀 데이터를 불러오지 못했습니다.';
       root.appendChild(errEl);
       // eslint-disable-next-line no-console
-      try { console.error(err); } catch (_) {}
+      try { console.error(err); } catch (_) { }
     }
   }
 

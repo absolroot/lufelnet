@@ -8,7 +8,7 @@
         style.textContent = `
             .main-content { border-radius: 0px 0px 10px 10px; background-color: var(--card-background); border-bottom: 3px solid var(--border-red); }
             .quick-grid { display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 16px; width: 100%; margin: 12px 0 24px 0; }
-            .quick-item { display: flex; align-items: center; }
+            .quick-item { display: flex; align-items: flex-start; }
             .quick-link { width: 100%; display: flex; flex-direction: column; align-items: center; text-decoration: none; color: inherit; border: transparent; background: transparent; border-radius: 14px; padding: 12px 18px; transition: all .18s ease; position: relative; overflow: hidden; }
             .quick-link:hover, .quick-link:focus-visible { background: transparent; box-shadow: none; transform: none; }
             .quick-icon-wrap { width: 72px; height: 72px; display: grid; place-items: center; border-radius: 50%; margin-bottom: 10px; transition: transform .18s ease; position: relative; }
@@ -48,22 +48,22 @@
             pullTracker: '계약 트래커', pullTracker_global: '계약 통계',
             materialCalc: '육성 계산기', defenseCalc: '방어력 계산기', criticalCalc: '크리티컬 계산기',
             tacticLibrary: '택틱 도서관', tacticMaker: '택틱 메이커',
-            tier: '티어', guide: '가이드', gallery: '갤러리', synergy: '협력자', support: '서포트', schedule: '스케줄',
-            maps: '지도', pullCalc: '가챠 플래너'
+            tier: '티어', guide: '가이드', gallery: '갤러리', synergy: '협력자', schedule: '스케줄',
+            maps: '지도', pullCalc: '가챠 플래너', astrolabe: '성좌의 시련'
         },
         en: {
             character: 'Character', persona: 'Persona', revelations: 'Revelations', wonderweapon: 'Wonder Daggers',
             pullTracker: 'Pull Tracker', pullTracker_global: 'Pull Global Stats',
             materialCalc: 'Progression Calc', defenseCalc: 'Defense Calc', criticalCalc: 'Critical Calc',
             tacticLibrary: 'Tactics Library', tacticMaker: 'Tactic Maker',
-            tier: 'Tiers', guide: 'Guides', gallery: 'Gallery', schedule: 'Schedule', synergy: 'Synergy', support: 'Support', maps: 'Maps', pullCalc: 'Pull Planner'
+            tier: 'Tiers', guide: 'Guides', gallery: 'Gallery', schedule: 'Schedule', synergy: 'Synergy', maps: 'Maps', pullCalc: 'Pull Planner', astrolabe: 'Astrolabe'
         },
         jp: {
             character: '怪盗', persona: 'ペルソナ', revelations: '啓示', wonderweapon: 'ワンダー武器',
             pullTracker: 'ガチャ履歴', pullTracker_global: '全体統計',
             materialCalc: '育成計算機', defenseCalc: '防御力減少計算機', criticalCalc: 'クリティカル計算機',
             tacticLibrary: 'タクティクスライブラリー', tacticMaker: 'タクティクスメーカー',
-            tier: 'ティア', guide: 'ガイド', gallery: 'ギャラリー', schedule: 'スケジュール', synergy: 'シナジー', support: 'サポート', maps: '地図', pullCalc: 'ガチャプランナー'
+            tier: 'ティア', guide: 'ガイド', gallery: 'ギャラリー', schedule: 'スケジュール', synergy: 'シナジー', maps: '地図', pullCalc: 'ガチャプランナー', astrolabe: 'アストロラーベ'
         }
     };
 
@@ -85,8 +85,8 @@
         gallery: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/gallery.png`,
         schedule: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/schedule.png`,
         synergy: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/synergy.png`,
-        support: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/support.png`,
-        pullCalc: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/pull-calc.png`
+        pullCalc: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/pull-calc.png`,
+        astrolabe: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/astrolabe.png`
     };
 
     const pathMap = {
@@ -95,6 +95,7 @@
         revelations: '/revelations',
         wonderweapon: '/wonder-weapon',
         maps: '/maps',
+        astrolabe: '/astrolabe/',
         pullTracker: '/pull-tracker',
         pullTracker_global: '/pull-tracker/global-stats',
         materialCalc: '/material-calc',
@@ -107,7 +108,6 @@
         gallery: '/gallery',
         schedule: '/schedule',
         synergy: '/synergy',
-        support: '/about',
         pullCalc: '/pull-calc'
     };
 
@@ -124,17 +124,17 @@
 
     const getItems = (lang) => {
         if (lang === 'kr') {
-            return ['character', 'persona', 'revelations', 'synergy', 'wonderweapon', 'maps', 'pullTracker', 'pullTracker_global', 'materialCalc', 'defenseCalc', 'criticalCalc', 'tacticLibrary', 'tacticMaker', 'guide', 'tier', 'gallery', 'support'];
+            return ['character', 'persona', 'revelations', 'synergy', 'wonderweapon', 'maps', 'astrolabe', 'pullTracker', 'pullTracker_global', 'materialCalc', 'defenseCalc', 'criticalCalc', 'tacticLibrary', 'tacticMaker', 'guide', 'tier', 'gallery'];
         }
         if (lang === 'jp' || lang === 'en') {
-            return ['character', 'persona', 'revelations', 'synergy', 'wonderweapon', 'maps', 'pullTracker', 'pullTracker_global', 'materialCalc', 'defenseCalc', 'criticalCalc', 'tacticLibrary', 'guide', 'tier', 'schedule', 'pullCalc', 'gallery', 'support'];
+            return ['character', 'persona', 'revelations', 'synergy', 'wonderweapon', 'maps', 'astrolabe', 'pullTracker', 'pullTracker_global', 'materialCalc', 'defenseCalc', 'criticalCalc', 'tacticLibrary', 'guide', 'tier', 'schedule', 'pullCalc', 'gallery'];
         }
         // default to KR set
-        return ['character', 'persona', 'revelations', 'synergy', 'wonderweapon', 'maps', 'pullTracker', 'pullTracker_global', 'materialCalc', 'defenseCalc', 'criticalCalc', 'tacticLibrary', 'guide', 'tier', 'schedule', 'pullCalc', 'gallery', 'support'];
+        return ['character', 'persona', 'revelations', 'synergy', 'wonderweapon', 'maps', 'astrolabe', 'pullTracker', 'pullTracker_global', 'materialCalc', 'defenseCalc', 'criticalCalc', 'tacticLibrary', 'guide', 'tier', 'schedule', 'pullCalc', 'gallery'];
     };
 
     // New 배지를 표시할 아이템 목록
-    const newItems = ['persona', 'synergy'];
+    const newItems = ['persona', 'synergy', 'astrolabe'];
 
     const render = () => {
         const root = document.getElementById('quick-grid');
@@ -177,10 +177,7 @@
             label.className = 'quick-label';
             label.textContent = dict[key] || key;
 
-            //라벨이 서포트인 경우 글자 노란색
-            if (key === 'support') {
-                label.style.color = 'rgb(255, 226, 226)';
-            }
+
 
             // 일본어일 때만 word-break: break-all 적용
             if (lang === 'jp') {

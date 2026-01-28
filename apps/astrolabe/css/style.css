@@ -1,0 +1,838 @@
+/* Astrolabe Styles */
+:root {
+  --astro-bg: #0a0e1a;
+  --astro-card: rgba(20, 30, 50, 0.9);
+  --astro-border: rgba(100, 150, 255, 0.3);
+  --astro-text: #e0e8ff;
+  --astro-text-dim: rgba(200, 210, 240, 0.7);
+  --astro-accent: #4488ff;
+  --astro-accent-glow: rgba(100, 180, 255, 0.5);
+  --astro-red: #ff4466;
+}
+
+/* Ensure Nav is above canvas */
+#nav-container,
+.mobile-header,
+.main-nav {
+  position: relative;
+  z-index: 5000;
+}
+
+/* Wrapper - full viewport */
+.astrolabe-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  z-index: 10;
+}
+
+/* UI Container - Respects Nav width */
+.astrolabe-ui-container {
+  position: relative;
+  top: 0;
+  bottom: 0;
+  /* Start after the collapsed nav */
+  left: 80px;
+  width: calc(100% - 80px);
+  max-width: 1200px;
+  /* Allow wider than 1200 if needed, but centering content */
+  margin: 0 auto;
+  /* Center within the available space */
+  padding: 32px 40px;
+  /* Top/Bottom padding 32px, Left/Right 40px */
+  pointer-events: none;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* Match body.nav-expanded if possible - This typically requires JS to toggle a class on the container or body. 
+   Assuming standard layout interaction or default to collapsed width for now. 
+   On large screens where nav might be expanded: */
+@media screen and (min-width: 1441px) {
+
+  /* If body has nav-expanded class, we should ideally adjust, but CSS standalone:
+     We'll stick to a safe layout or use the generic container. 
+     Since the main site uses a fixed width logic: */
+  .astrolabe-ui-container {
+    /* If the user has expanded nav, content might be covered. 
+       For now, we'll keep it at 80px offset which is safer for collapsed. 
+       If expanded (240px), there is overlap. 
+       The user said "check other pages". 
+       Other pages use flexbox with the nav. 
+    */
+    left: 80px;
+    width: calc(100% - 80px);
+  }
+}
+
+/* Tablet/Mobile Adjustments */
+@media screen and (max-width: 1200px) {
+  .astrolabe-ui-container {
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    padding-top: 60px;
+    /* Space for mobile header */
+  }
+
+  .astrolabe-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Navigation path - Match .navigation-path */
+.astrolabe-nav-path {
+  margin-left: 2px;
+  margin-bottom: 4px;
+  font-weight: 500;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 0px 0px 0px;
+  background: none;
+  /* Remove background */
+  backdrop-filter: none;
+  border-radius: 0;
+  color: rgba(255, 255, 255, 0.8);
+  /* Match common.css */
+  pointer-events: auto;
+  align-self: flex-start;
+}
+
+.astrolabe-nav-path a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.astrolabe-nav-path a:hover {
+  color: rgba(255, 255, 255, 1);
+  text-decoration: underline;
+}
+
+.astrolabe-nav-path .separator {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.3);
+  margin: 0 4px;
+}
+
+.astrolabe-nav-path .current-page {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* Header */
+.astrolabe-header {
+  margin-top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  pointer-events: none;
+  width: 100%;
+  padding: 0;
+  /* Align with container */
+}
+
+.astrolabe-header>* {
+  pointer-events: auto;
+}
+
+.astrolabe-header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0;
+  background: none;
+  backdrop-filter: none;
+  border-radius: 10px;
+}
+
+.astrolabe-title {
+  font-size: 28px;
+  /* Match common.css h1 in header-container */
+  font-weight: 700;
+  margin: 0 0 10px 0;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 0 10px rgba(68, 136, 255, 0.3);
+}
+
+.astrolabe-header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0;
+  background: none;
+  backdrop-filter: none;
+  border-radius: 10px;
+}
+
+/* Countdown */
+.countdown-display {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  background: none;
+  /* Remove background */
+  padding: 0;
+  border: none;
+  border-radius: 0;
+}
+
+#time-label {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+#countdown-value {
+  font-weight: 700;
+  color: var(--astro-red);
+  font-family: 'Consolas', 'Monaco', monospace;
+}
+
+/* Region Selector */
+.region-selector {
+  padding: 6px 12px;
+  background: rgba(0, 0, 0, 0.5);
+  /* Dark background */
+  border: 1px solid var(--astro-border);
+  border-radius: 6px;
+  color: var(--astro-text);
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.region-selector:focus {
+  outline: none;
+  border-color: var(--astro-accent);
+}
+
+.region-selector option {
+  background: #1a2030;
+  color: var(--astro-text);
+}
+
+/* Canvas Container - full screen */
+.canvas-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 20%, #1c2540 0%, #0a0e1a 60%, #000000 100%);
+}
+
+#astrolabe-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+}
+
+#astrolabe-canvas:active {
+  cursor: grabbing;
+}
+
+/* Loading Overlay */
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(10, 14, 26, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid var(--astro-border);
+  border-top-color: var(--astro-accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Error Message */
+.error-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 50, 50, 0.2);
+  border: 1px solid rgba(255, 50, 50, 0.5);
+  padding: 20px 30px;
+  border-radius: 8px;
+  color: #ff6666;
+  display: none;
+  z-index: 150;
+}
+
+/* Zoom Controls */
+.zoom-controls {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 100;
+}
+
+.zoom-btn {
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--astro-border);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  color: var(--astro-text);
+  font-size: 1.3rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.zoom-btn:hover {
+  background: rgba(68, 136, 255, 0.3);
+  border-color: var(--astro-accent);
+}
+
+.zoom-btn:active {
+  transform: scale(0.95);
+}
+
+/* Node Detail Panel */
+.node-detail-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  /* Darker overlay */
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.node-detail-panel.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.detail-content {
+  background: #121825;
+  /* Opaque background */
+  border: 1px solid var(--astro-border);
+  border-radius: 12px;
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+.detail-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--astro-border);
+  position: sticky;
+  top: 0;
+  background: #121825;
+  /* Match opaque content */
+  z-index: 10;
+}
+
+.detail-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--astro-text);
+}
+
+.detail-close-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: rgba(255, 255, 255, 0.0);
+  border-radius: 50%;
+  color: var(--astro-text);
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.detail-close-btn:hover {
+  background: rgba(255, 100, 100, 0.3);
+}
+
+.detail-body {
+  padding: 20px;
+}
+
+.detail-section {
+  margin-bottom: 24px;
+}
+
+.detail-section:last-child {
+  margin-bottom: 0;
+}
+
+.section-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--astro-accent);
+  margin: 0 0 12px 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(68, 136, 255, 0.3);
+}
+
+/* Affix List */
+.affix-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.affix-item {
+  padding: 0px;
+  background: transparent;
+  border: 0px;
+}
+
+.affix-name {
+  font-weight: 600;
+  color: var(--astro-text);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.affix-desc {
+  font-size: 0.85rem;
+  color: #eee;
+  line-height: 1.4;
+}
+
+.highlight-percent {
+  color: #f4e23f;
+}
+
+/* Enemy List */
+.enemy-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Pin Overlay */
+.astrolabe-pin {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  /* Base size, scaled via JS transform if needed, or fixed */
+  height: 40px;
+  background-image: url('../img/tianerong-xingpan-now.png');
+  background-position: center bottom;
+  background-size: contain;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  z-index: 50;
+  display: none;
+  /* Hidden by default */
+  /* Animation handled here - efficient */
+  filter: drop-shadow(0 0 10px rgba(0, 200, 255, 0.6));
+}
+
+/* Floating Animation applied to a wrapper or directly if using transform translate for position? 
+   If we use top/left for position, we can use transform for animation. */
+@keyframes pinFloat {
+
+  0%,
+  100% {
+    transform: translate(-50%, -100%) translateY(0);
+  }
+
+  50% {
+    transform: translate(-50%, -100%) translateY(-12px);
+  }
+}
+
+/* Enemy List - Grid Layout */
+.enemy-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 12px;
+}
+
+.enemy-item {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
+  padding: 12px 12px 8px 12px;
+  border: 0px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.enemy-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  width: 100%;
+}
+
+.enemy-name {
+  font-weight: 400;
+  color: #eee;
+  font-size: 0.95rem;
+  line-height: 1.2;
+}
+
+.enemy-level {
+  font-size: 0.7rem;
+  color: var(--astro-text-dim);
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* Elements Line (from bosses.js) */
+.elements-line {
+  position: relative;
+  display: inline-block;
+  height: 40px;
+}
+
+.elements-line img.elements-sprite {
+  height: 32px;
+  display: block;
+}
+
+.el-mark {
+  position: absolute;
+  top: 24px;
+  transform: translateX(-50%) skew(0deg);
+  font-style: italic;
+  font-weight: 900;
+  font-size: 14px;
+  color: #bbb;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 0 2px #000;
+}
+
+.el-mark.short {
+  font-size: 12px;
+}
+
+.el-mark.weak {
+  color: #fff;
+}
+
+.el-mark.res {
+  color: #88aaff;
+}
+
+.el-mark.nul {
+  color: #aaa;
+}
+
+.el-mark.abs {
+  color: #88ff88;
+}
+
+.el-mark.rpl {
+  color: #ffaa44;
+}
+
+/* Award List */
+.award-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.award-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.award-icon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.award-name {
+  font-size: 0.8rem;
+  color: var(--astro-text);
+}
+
+.award-count {
+  font-size: 0.8rem;
+  color: var(--astro-accent);
+  font-weight: 600;
+}
+
+/* Responsive */
+/* Responsive Layout (Expanded to 1600px) */
+@media (max-width: 1600px) {
+
+  /* Hide System Nav & Header */
+  #nav-container,
+  .main-nav,
+  .mobile-header,
+  .site-header {
+    display: none !important;
+  }
+
+  /* Show dedicated Mobile Breadcrumb */
+  .mobile-breadcrumb {
+    display: flex !important;
+  }
+
+  /* Reset Container */
+  .astrolabe-ui-container {
+    left: 0 !important;
+    width: 100% !important;
+    padding: 0;
+    height: 100vh;
+    max-width: none;
+    pointer-events: none;
+  }
+
+  /* Hide Desktop Header Left Elements */
+  .astrolabe-header-left,
+  .astrolabe-nav-path {
+    display: none !important;
+  }
+
+  /* Position Server/Time on Left, Below Breadcrumb */
+  .astrolabe-header-right {
+    position: absolute;
+    top: 56px;
+    /* 44px breadcrumb + margin */
+    left: 12px;
+    right: auto;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    pointer-events: auto;
+  }
+
+  /* Remove backgrounds/borders for clean look */
+  .region-selector {
+    background: transparent;
+    backdrop-filter: none;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 4px 8px;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.9);
+    border-radius: 4px;
+  }
+
+  .countdown-display {
+    background: transparent;
+    backdrop-filter: none;
+    padding: 0;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.8);
+    border: none;
+  }
+
+  /* Zoom Controls */
+  .zoom-controls {
+    bottom: 24px;
+    right: 16px;
+  }
+
+  /* Detail Panel */
+  .detail-content {
+    width: 90%;
+    max-height: 80vh;
+  }
+
+  /* Enemy Header (Mobile: Single Row) */
+  .enemy-header {
+    justify-content: center !important;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .affix-name {
+    font-size: 0.9rem;
+  }
+
+  .affix-desc {
+    font-size: 0.75rem;
+  }
+
+  .enemy-name {
+    margin: 0;
+    font-size: 0.8rem;
+  }
+
+  .enemy-level {
+    font-size: 0.6rem;
+  }
+
+  .award-name {
+    font-size: 0.6rem;
+  }
+
+  .award-count {
+    font-size: 0.6rem;
+  }
+
+  /* Mobile Grid Layouts */
+  .enemy-list {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px;
+  }
+
+  .award-list {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px;
+  }
+
+  .award-item {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 480px) {
+  .countdown-display {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  .detail-body {
+    padding: 16px;
+  }
+}
+
+/* Mobile Breadcrumb (Hidden on Desktop) */
+.mobile-breadcrumb {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 8px 12px;
+  font-size: 12px;
+  z-index: 6000;
+  align-items: center;
+  gap: 12px;
+  height: 44px;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-breadcrumb-logo {
+  display: flex;
+  flex-shrink: 0;
+  cursor: pointer;
+  align-items: center;
+  gap: 6px;
+}
+
+.mobile-breadcrumb-logo img[src*="lufel.webp"] {
+  height: 20px;
+  width: auto;
+  filter: grayscale(100%) contrast(1.5);
+  filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.9));
+}
+
+.mobile-breadcrumb-logo img[src*="lufelnet.png"] {
+  width: 55px;
+  object-fit: contain;
+  filter: drop-shadow(0px 2px 0px rgba(255, 255, 255, 0.9)) invert(1);
+  opacity: 0.9;
+}
+
+.mobile-breadcrumb-items {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  overflow-x: auto;
+  flex: 1;
+  gap: 6px;
+}
+
+.breadcrumb-item {
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+}
+
+.breadcrumb-item.active {
+  color: #fff;
+  font-weight: 600;
+  cursor: default;
+}
+
+.breadcrumb-separator {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 14px;
+  margin-top: -2px;
+}
+
+/* Scrollbar */
+.detail-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.detail-content::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.detail-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+.detail-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}

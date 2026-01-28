@@ -36,12 +36,12 @@ jobs:
 
           # 저장 루트 설정
           ROOT_DIR="data/external"
-          mkdir -p "$ROOT_DIR/gacha" "$ROOT_DIR/guildboss" "$ROOT_DIR/sos"
+          mkdir -p "$ROOT_DIR/gacha" "$ROOT_DIR/guildboss" "$ROOT_DIR/sos" "$ROOT_DIR/sandbox"
           mkdir -p "$ROOT_DIR/character" "$ROOT_DIR/weapon"
           mkdir -p "$ROOT_DIR/before"
-          mkdir -p "$ROOT_DIR/before/character" "$ROOT_DIR/before/weapon"
+          mkdir -p "$ROOT_DIR/before/character" "$ROOT_DIR/before/weapon" "$ROOT_DIR/before/sandbox"
 
-          ENDPOINTS=("gacha" "guildboss" "sos")
+          ENDPOINTS=("gacha" "guildboss" "sos" "sandbox")
           REGIONS=("kr" "en" "cn" "tw" "jp" "sea")
           CODENAME_FILE="${ROOT_DIR}/character/codename.json"
 

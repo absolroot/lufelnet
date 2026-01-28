@@ -1,65 +1,74 @@
 {
-  "data": {
-    "name": "Red Rider",
-    "skill": {
-      "fixed_skill": {
-        "cost": "체력 7.0%",
-        "desc": "Deal Physical damage to 1 foe equal to 82.4/86.5/90.6% of Attack. 4.2/4.4/4.6% chance to inflict Despair for 3 turns.",
-        "level": "6/7/8",
-        "name": "Negative Pile"
-      },
-      "innate_skill": [
-        {
-          "cost": "SP 21",
-          "desc": "Deal Psy damage to 1 foe equal to 130.5/136.4/142.3% of Attack. Deal a Technical and increase damage by 45% for foes with a spiritual ailment.",
-          "learn_level": "6",
-          "level": "6/7/8",
-          "name": "Psiodyne"
-        },
-        {
-          "cost": "",
-          "desc": "Increase Psychokinesis damage by 8.7%.",
-          "learn_level": "12",
-          "level": "6/7/8",
-          "name": "Psy Boost III"
-        },
-        {
-          "cost": "",
-          "desc": "Increase critical rate by 7.8% when ambushing.",
-          "learn_level": "18",
-          "level": "6/7/8",
-          "name": "Fortified Moxy III"
-        },
-        {
-          "cost": "",
-          "desc": "Increase ailment accuracy by 16.9% when it rains.",
-          "learn_level": "25",
-          "level": "6/7/8",
-          "name": "Ambient Aid III"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase ailment accuracy by 17.4%. For each foe with a debuff, increase user's ailment accuracy by 8%. Stacks up to 5 times.",
-          "name": "Joy of Plunder"
-        },
-        {
-          "desc": "Increase ailment accuracy by 17.4%. For each foe with a debuff, increase user's ailment accuracy by 10%. Stacks up to 5 times.",
-          "name": "Joy of Plunder I"
-        },
-        {
-          "desc": "Increase ailment accuracy by 17.4%. For each foe with a debuff, increase user's ailment accuracy by 12%. Stacks up to 5 times.",
-          "name": "Joy of Plunder II"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Deal Psychokinesis damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Curse"
+    ],
+    "Weak": [
+      "Bless"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "체력 7.0%",
+    "desc": "Deal Physical damage to 1 foe equal to 82.4/86.5/90.6% of Attack. 4.2/4.4/4.6% chance to inflict Despair for 3 turns.",
+    "level": "6/7/8",
+    "name": "Negative Pile"
+  },
+  "innate_skill": [
+    {
+      "cost": "SP 21",
+      "desc": "Deal Psy damage to 1 foe equal to 130.5/136.4/142.3% of Attack. Deal a Technical and increase damage by 45% for foes with a spiritual ailment.",
+      "learn_level": "6",
+      "level": "6/7/8",
+      "name": "Psiodyne"
+    },
+    {
+      "cost": "",
+      "desc": "Increase Psychokinesis damage by 8.7%.",
+      "learn_level": "12",
+      "level": "6/7/8",
+      "name": "Psy Boost III"
+    },
+    {
+      "cost": "",
+      "desc": "Increase critical rate by 7.8% when ambushing.",
+      "learn_level": "18",
+      "level": "6/7/8",
+      "name": "Fortified Moxy III"
+    },
+    {
+      "cost": "",
+      "desc": "Increase ailment accuracy by 16.9% when it rains.",
+      "learn_level": "25",
+      "level": "6/7/8",
+      "name": "Ambient Aid III"
+    }
+  ],
+  "max_level": 60,
+  "max_level_after_awake": 70,
+  "name": "Red Rider",
+  "nature": "Psychokinesis",
+  "passive_skill": [
+    {
+      "desc": "Increase ailment accuracy by 17.4%. For each foe with a debuff, increase user's ailment accuracy by 8%. Stacks up to 5 times.",
+      "name": "Joy of Plunder"
+    },
+    {
+      "desc": "Increase ailment accuracy by 17.4%. For each foe with a debuff, increase user's ailment accuracy by 10%. Stacks up to 5 times.",
+      "name": "Joy of Plunder I"
+    },
+    {
+      "desc": "Increase ailment accuracy by 17.4%. For each foe with a debuff, increase user's ailment accuracy by 12%. Stacks up to 5 times.",
+      "name": "Joy of Plunder II"
+    }
+  ],
+  "rank": 5,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Psychokinesis damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

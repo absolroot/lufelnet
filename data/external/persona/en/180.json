@@ -1,54 +1,64 @@
 {
-  "data": {
-    "name": "Koppa Tengu",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 19",
-        "desc": "Deal Wind damage to 1 foe equal to 106.2/111.5/116.8% of Attack. 59.0/62.0/64.9% chance to inflict Windswept for 2 turns.",
-        "level": "6/7/8",
-        "name": "Garu"
-      },
-      "innate_skill": [
-        {
-          "cost": "",
-          "desc": "Increase Gun damage by 4.7%.",
-          "learn_level": "4",
-          "level": "6/7/8",
-          "name": "Gun Boost I"
-        },
-        {
-          "cost": "체력 6.0%",
-          "desc": "Increase this skill's critical rate by 16%, and deal Gun damage to 1 foe equal to 92.2/96.8/101.4% of Attack.",
-          "learn_level": "8",
-          "level": "6/7/8",
-          "name": "Snap"
-        },
-        {
-          "cost": "",
-          "desc": "Increase Windswept accuracy by 8.8%.",
-          "learn_level": "12",
-          "level": "6/7/8",
-          "name": "Windsweep Boost I"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase critical rate by 3.5%. When attacking an Enraged foe, increase Attack by 35%.",
-          "name": "Dance of Disappearance"
-        },
-        {
-          "desc": "Increase critical rate by 3.5%. When attacking an Enraged foe, increase Attack by 40%.",
-          "name": "Dance of Disappearance I"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Deal Wind damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Wind"
+    ],
+    "Weak": [
+      "Ice",
+      "Bless"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 19",
+    "desc": "Deal Wind damage to 1 foe equal to 106.2/111.5/116.8% of Attack. 59.0/62.0/64.9% chance to inflict Windswept for 2 turns.",
+    "level": "6/7/8",
+    "name": "Garu"
+  },
+  "innate_skill": [
+    {
+      "cost": "",
+      "desc": "Increase Gun damage by 4.7%.",
+      "learn_level": "4",
+      "level": "6/7/8",
+      "name": "Gun Boost I"
+    },
+    {
+      "cost": "체력 6.0%",
+      "desc": "Increase this skill's critical rate by 16%, and deal Gun damage to 1 foe equal to 92.2/96.8/101.4% of Attack.",
+      "learn_level": "8",
+      "level": "6/7/8",
+      "name": "Snap"
+    },
+    {
+      "cost": "",
+      "desc": "Increase Windswept accuracy by 8.8%.",
+      "learn_level": "12",
+      "level": "6/7/8",
+      "name": "Windsweep Boost I"
+    }
+  ],
+  "max_level": 30,
+  "max_level_after_awake": 35,
+  "name": "Koppa Tengu",
+  "nature": "Wind",
+  "passive_skill": [
+    {
+      "desc": "Increase critical rate by 3.5%. When attacking an Enraged foe, increase Attack by 35%.",
+      "name": "Dance of Disappearance"
+    },
+    {
+      "desc": "Increase critical rate by 3.5%. When attacking an Enraged foe, increase Attack by 40%.",
+      "name": "Dance of Disappearance I"
+    }
+  ],
+  "rank": 2,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Wind damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

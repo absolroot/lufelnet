@@ -1,54 +1,63 @@
 {
-  "data": {
-    "name": "Kodama",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 22",
-        "desc": "65.1/68.4/71.6% chance to inflict Forget on 1 foe for 2 turns.",
-        "level": "6/7/8",
-        "name": "Makajama"
-      },
-      "innate_skill": [
-        {
-          "cost": "",
-          "desc": "Increase ailment accuracy by 7%.",
-          "learn_level": "4",
-          "level": "6/7/8",
-          "name": "Accuracy Boost I"
-        },
-        {
-          "cost": "SP 22",
-          "desc": "Increase 1 ally's Attack by 15.5%/16.3%/17.0%. For every 500 of the user's Attack, increase the target's Attack by 1.3%/1.4%/1.4% more, up to 10.4%/10.9%/11.4%. Lasts for 3 turns.",
-          "learn_level": "8",
-          "level": "6/7/8",
-          "name": "Tarukaja"
-        },
-        {
-          "cost": "",
-          "desc": "Decreases damage taken by 6.1% when it rains.",
-          "learn_level": "12",
-          "level": "6/7/8",
-          "name": "Raindrop Barrier I"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase Attack by 5.8%. When 3 or more foes are on the field, increase ailment accuracy by 32%.",
-          "name": "Mystery of the Woods"
-        },
-        {
-          "desc": "Increase Attack by 5.8%. When 3 or more foes are on the field, increase ailment accuracy by 37.5%.",
-          "name": "Mystery of the Woods I"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Deal Wind damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Ice"
+    ],
+    "Weak": [
+      "Fire"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 22",
+    "desc": "65.1/68.4/71.6% chance to inflict Forget on 1 foe for 2 turns.",
+    "level": "6/7/8",
+    "name": "Makajama"
+  },
+  "innate_skill": [
+    {
+      "cost": "",
+      "desc": "Increase ailment accuracy by 7%.",
+      "learn_level": "4",
+      "level": "6/7/8",
+      "name": "Accuracy Boost I"
+    },
+    {
+      "cost": "SP 22",
+      "desc": "Increase 1 ally's Attack by 15.5%/16.3%/17.0%. For every 500 of the user's Attack, increase the target's Attack by 1.3%/1.4%/1.4% more, up to 10.4%/10.9%/11.4%. Lasts for 3 turns.",
+      "learn_level": "8",
+      "level": "6/7/8",
+      "name": "Tarukaja"
+    },
+    {
+      "cost": "",
+      "desc": "Decreases damage taken by 6.1% when it rains.",
+      "learn_level": "12",
+      "level": "6/7/8",
+      "name": "Raindrop Barrier I"
+    }
+  ],
+  "max_level": 30,
+  "max_level_after_awake": 35,
+  "name": "Kodama",
+  "nature": "Wind",
+  "passive_skill": [
+    {
+      "desc": "Increase Attack by 5.8%. When 3 or more foes are on the field, increase ailment accuracy by 32%.",
+      "name": "Mystery of the Woods"
+    },
+    {
+      "desc": "Increase Attack by 5.8%. When 3 or more foes are on the field, increase ailment accuracy by 37.5%.",
+      "name": "Mystery of the Woods I"
+    }
+  ],
+  "rank": 2,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Wind damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

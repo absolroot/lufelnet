@@ -1,54 +1,64 @@
 {
-  "data": {
-    "name": "Suzaku",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 19",
-        "desc": "Deal Nuclear damage to all foes equal to 57.7/59.7/61.7% of Attack. Deal a Technical and increase damage by 16% for foes with an elemental ailment.",
-        "level": "6/7/8",
-        "name": "Mafrei"
-      },
-      "innate_skill": [
-        {
-          "cost": "",
-          "desc": "Restores 1.9% of max HP at the start of each turn.",
-          "learn_level": "4",
-          "level": "6/7/8",
-          "name": "Regenerate I"
-        },
-        {
-          "cost": "SP 19",
-          "desc": "Deal Nuclear damage to 1 foe equal to 114.8/118.7/122.6% of Attack. Deal a Technical and increase damage by 16% for foes with an elemental ailment.",
-          "learn_level": "8",
-          "level": "6/7/8",
-          "name": "Frei"
-        },
-        {
-          "cost": "",
-          "desc": "Decrease Nuclear damage taken by 4.7%.",
-          "learn_level": "12",
-          "level": "6/7/8",
-          "name": "Nuclear Reduction I"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase critical damage by 7%. When using Nuclear skills on all foes, increase Attack by 27%.",
-          "name": "Southern Sunlight"
-        },
-        {
-          "desc": "Increase critical damage by 7%. When using Nuclear skills on all foes, increase Attack by 31%.",
-          "name": "Southern Sunlight I"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Deal Nuclear damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Fire",
+      "Nuclear"
+    ],
+    "Weak": [
+      "Ice"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 19",
+    "desc": "Deal Nuclear damage to all foes equal to 57.7/59.7/61.7% of Attack. Deal a Technical and increase damage by 16% for foes with an elemental ailment.",
+    "level": "6/7/8",
+    "name": "Mafrei"
+  },
+  "innate_skill": [
+    {
+      "cost": "",
+      "desc": "Restores 1.9% of max HP at the start of each turn.",
+      "learn_level": "4",
+      "level": "6/7/8",
+      "name": "Regenerate I"
+    },
+    {
+      "cost": "SP 19",
+      "desc": "Deal Nuclear damage to 1 foe equal to 114.8/118.7/122.6% of Attack. Deal a Technical and increase damage by 16% for foes with an elemental ailment.",
+      "learn_level": "8",
+      "level": "6/7/8",
+      "name": "Frei"
+    },
+    {
+      "cost": "",
+      "desc": "Decrease Nuclear damage taken by 4.7%.",
+      "learn_level": "12",
+      "level": "6/7/8",
+      "name": "Nuclear Reduction I"
+    }
+  ],
+  "max_level": 30,
+  "max_level_after_awake": 35,
+  "name": "Suzaku",
+  "nature": "Nuclear",
+  "passive_skill": [
+    {
+      "desc": "Increase critical damage by 7%. When using Nuclear skills on all foes, increase Attack by 27%.",
+      "name": "Southern Sunlight"
+    },
+    {
+      "desc": "Increase critical damage by 7%. When using Nuclear skills on all foes, increase Attack by 31%.",
+      "name": "Southern Sunlight I"
+    }
+  ],
+  "rank": 2,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Nuclear damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

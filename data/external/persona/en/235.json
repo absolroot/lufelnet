@@ -1,65 +1,75 @@
 {
-  "data": {
-    "name": "Kikuri-Hime",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 24",
-        "desc": "Restore 1 ally's HP by 35.6/37.4/39.2% of Attack + 1077/1333/1608.",
-        "level": "6/7/8",
-        "name": "Diarama"
-      },
-      "innate_skill": [
-        {
-          "cost": "SP 22",
-          "desc": "21.8/22.9/24.0% chance to inflict Sleep on all foes for 2 turns.",
-          "learn_level": "5",
-          "level": "6/7/8",
-          "name": "Lullaby"
-        },
-        {
-          "cost": "",
-          "desc": "Increase ailment resistance by 10%.",
-          "learn_level": "10",
-          "level": "6/7/8",
-          "name": "Resistance Boost II"
-        },
-        {
-          "cost": "SP 25",
-          "desc": "Cure Burn, Freeze, Shock, or Windswept on 1 ally.",
-          "learn_level": "15",
-          "level": "6/7/8",
-          "name": "Baisudi"
-        },
-        {
-          "cost": "",
-          "desc": "Increase healing received by 3.3%.",
-          "learn_level": "20",
-          "level": "6/7/8",
-          "name": "Divine Grace II"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase healing effect by 8%. If an ally is below 50% HP, increase healing effect by 20%.",
-          "name": "Goddess of Fate"
-        },
-        {
-          "desc": "Increase healing effect by 8%. If an ally is below 50% HP, increase healing effect by 23%.",
-          "name": "Goddess of Fate I"
-        },
-        {
-          "desc": "Increase healing effect by 8%. If an ally is below 50% HP, increase healing effect by 26%.",
-          "name": "Goddess of Fate II"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Restore HP to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Wind",
+      "Bless"
+    ],
+    "Weak": [
+      "Fire"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 24",
+    "desc": "Restore 1 ally's HP by 35.6/37.4/39.2% of Attack + 1077/1333/1608.",
+    "level": "6/7/8",
+    "name": "Diarama"
+  },
+  "innate_skill": [
+    {
+      "cost": "SP 22",
+      "desc": "21.8/22.9/24.0% chance to inflict Sleep on all foes for 2 turns.",
+      "learn_level": "5",
+      "level": "6/7/8",
+      "name": "Lullaby"
+    },
+    {
+      "cost": "",
+      "desc": "Increase ailment resistance by 10%.",
+      "learn_level": "10",
+      "level": "6/7/8",
+      "name": "Resistance Boost II"
+    },
+    {
+      "cost": "SP 25",
+      "desc": "Cure Burn, Freeze, Shock, or Windswept on 1 ally.",
+      "learn_level": "15",
+      "level": "6/7/8",
+      "name": "Baisudi"
+    },
+    {
+      "cost": "",
+      "desc": "Increase healing received by 3.3%.",
+      "learn_level": "20",
+      "level": "6/7/8",
+      "name": "Divine Grace II"
+    }
+  ],
+  "max_level": 50,
+  "max_level_after_awake": 60,
+  "name": "Kikuri-Hime",
+  "nature": "Ice",
+  "passive_skill": [
+    {
+      "desc": "Increase healing effect by 8%. If an ally is below 50% HP, increase healing effect by 20%.",
+      "name": "Goddess of Fate"
+    },
+    {
+      "desc": "Increase healing effect by 8%. If an ally is below 50% HP, increase healing effect by 23%.",
+      "name": "Goddess of Fate I"
+    },
+    {
+      "desc": "Increase healing effect by 8%. If an ally is below 50% HP, increase healing effect by 26%.",
+      "name": "Goddess of Fate II"
+    }
+  ],
+  "rank": 4,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Restore HP to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

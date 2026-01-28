@@ -1,54 +1,65 @@
 {
-  "data": {
-    "name": "Onmoraki",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 19",
-        "desc": "Deal Curse damage to 1 foe equal to 116.5/123.2/129.9% of Attack. Inflict 0 to 1 Curse stacks on the foe.",
-        "level": "6/7/8",
-        "name": "Eiha"
-      },
-      "innate_skill": [
-        {
-          "cost": "SP 19",
-          "desc": "Deal Fire damage to 1 foe equal to 106.2/111.5/116.8% of Attack. 59.0/62.0/64.9% chance to inflict Burn for 2 turns.",
-          "learn_level": "4",
-          "level": "6/7/8",
-          "name": "Agi"
-        },
-        {
-          "cost": "",
-          "desc": "Increase Speed by 6.",
-          "learn_level": "8",
-          "level": "6/7/8",
-          "name": "Agility Master I"
-        },
-        {
-          "cost": "",
-          "desc": "Increase damage by 4.7%.",
-          "learn_level": "12",
-          "level": "6/7/8",
-          "name": "Battle Acumen I"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase Attack by 5.8%. When only 1 foe is on the field, increase party's Curse damage by 12%.",
-          "name": "Grudge of Hunger"
-        },
-        {
-          "desc": "Increase Attack by 5.8%. When only 1 foe is on the field, increase party's Curse damage by 14%.",
-          "name": "Grudge of Hunger I"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Deal Curse damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Fire",
+      "Curse"
+    ],
+    "Weak": [
+      "Gun",
+      "Bless"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 19",
+    "desc": "Deal Curse damage to 1 foe equal to 116.5/123.2/129.9% of Attack. Inflict 0 to 1 Curse stacks on the foe.",
+    "level": "6/7/8",
+    "name": "Eiha"
+  },
+  "innate_skill": [
+    {
+      "cost": "SP 19",
+      "desc": "Deal Fire damage to 1 foe equal to 106.2/111.5/116.8% of Attack. 59.0/62.0/64.9% chance to inflict Burn for 2 turns.",
+      "learn_level": "4",
+      "level": "6/7/8",
+      "name": "Agi"
+    },
+    {
+      "cost": "",
+      "desc": "Increase Speed by 6.",
+      "learn_level": "8",
+      "level": "6/7/8",
+      "name": "Agility Master I"
+    },
+    {
+      "cost": "",
+      "desc": "Increase damage by 4.7%.",
+      "learn_level": "12",
+      "level": "6/7/8",
+      "name": "Battle Acumen I"
+    }
+  ],
+  "max_level": 30,
+  "max_level_after_awake": 35,
+  "name": "Onmoraki",
+  "nature": "Curse",
+  "passive_skill": [
+    {
+      "desc": "Increase Attack by 5.8%. When only 1 foe is on the field, increase party's Curse damage by 12%.",
+      "name": "Grudge of Hunger"
+    },
+    {
+      "desc": "Increase Attack by 5.8%. When only 1 foe is on the field, increase party's Curse damage by 14%.",
+      "name": "Grudge of Hunger I"
+    }
+  ],
+  "rank": 2,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Curse damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

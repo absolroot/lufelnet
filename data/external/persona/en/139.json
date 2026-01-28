@@ -1,69 +1,79 @@
 {
-  "data": {
-    "name": "Yoshitsune",
-    "skill": {
-      "fixed_skill": {
-        "cost": "체력 12.0%",
-        "desc": "Deal Physical damage to all foes equal to 15.0%/15.8%/16.5% of Attack (8 hits). Increase damage by 5% for each foe, up to 15%.",
-        "level": "6/7/8",
-        "name": "Hassou Tobi"
-      },
-      "innate_skill": [
-        {
-          "cost": "체력 9.0%",
-          "desc": "Deal Physical damage to 1 foe equal to 154.5/162.2/170.0% of Attack.",
-          "learn_level": "10",
-          "level": "6/7/8",
-          "name": "Brave Blade"
-        },
-        {
-          "cost": "SP 21",
-          "desc": "Deal Electric damage to 1 foe equal to 121.7/127.8/133.9% of Attack. 67.6/71.0/74.4% chance to inflict Shock for 2 turns.",
-          "learn_level": "20",
-          "level": "6/7/8",
-          "name": "Ziodyne"
-        },
-        {
-          "cost": "",
-          "desc": "Increase Electric damage by 10.8%.",
-          "learn_level": "30",
-          "level": "6/7/8",
-          "name": "Elec Boost IV"
-        },
-        {
-          "cost": "SP 22",
-          "desc": "Increase 1 ally's Attack by 15.5%/16.3%/17.0%. For every 500 of the user's Attack, increase the target's Attack by 1.3%/1.4%/1.4% more, up to 10.4%/10.9%/11.4%. Lasts for 3 turns.",
-          "learn_level": "40",
-          "level": "6/7/8",
-          "name": "Tarukaja"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase critical damage by 34.9%. At the start of battle, gain 1 Guerrilla stack. When dealing damage with a unique skill, 30% chance to gain Guerrilla: Increase Attack by 7% for each stack for 2 turns. Can stack up to 8 times. At 8 stacks, increase unique skill critical rate by 10%.",
-          "name": "Victory Foretold"
-        },
-        {
-          "desc": "Increase critical damage by 34.9%. At the start of battle, gain 2 Guerrilla stacks. When dealing damage with a unique skill, 40% chance to gain Guerrilla: Increase Attack by 7% for each stack for 2 turns. Can stack up to 8 times. At 8 stacks, increase unique skill critical rate by 20%.",
-          "name": "Victory Foretold I"
-        },
-        {
-          "desc": "Increase critical damage by 34.9%. At the start of battle, gain 3 Guerrilla stacks. When dealing damage with a unique skill, 50% chance to gain Guerrilla: Increase Attack by 9% for each stack for 2 turns. Can stack up to 8 times. At 8 stacks, increase unique skill critical rate by 20%.",
-          "name": "Victory Foretold II"
-        },
-        {
-          "desc": "Increase critical damage by 34.9%. At the start of battle, gain 4 Guerrilla stacks. When dealing damage with a unique skill, 60% chance to gain Guerrilla: Increase Attack by 9% for each stack for 2 turns. Can stack up to 8 times. At 8 stacks, increase unique skill critical rate by 30%.",
-          "name": "Victory Foretold III"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Deal Physical damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Phys",
+      "Fire",
+      "Electric",
+      "Bless"
+    ],
+    "Weak": []
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "체력 12.0%",
+    "desc": "Deal Physical damage to all foes equal to 15.0%/15.8%/16.5% of Attack (8 hits). Increase damage by 5% for each foe, up to 15%.",
+    "level": "6/7/8",
+    "name": "Hassou Tobi"
+  },
+  "innate_skill": [
+    {
+      "cost": "체력 9.0%",
+      "desc": "Deal Physical damage to 1 foe equal to 154.5/162.2/170.0% of Attack.",
+      "learn_level": "10",
+      "level": "6/7/8",
+      "name": "Brave Blade"
+    },
+    {
+      "cost": "SP 21",
+      "desc": "Deal Electric damage to 1 foe equal to 121.7/127.8/133.9% of Attack. 67.6/71.0/74.4% chance to inflict Shock for 2 turns.",
+      "learn_level": "20",
+      "level": "6/7/8",
+      "name": "Ziodyne"
+    },
+    {
+      "cost": "",
+      "desc": "Increase Electric damage by 10.8%.",
+      "learn_level": "30",
+      "level": "6/7/8",
+      "name": "Elec Boost IV"
+    },
+    {
+      "cost": "SP 22",
+      "desc": "Increase 1 ally's Attack by 15.5%/16.3%/17.0%. For every 500 of the user's Attack, increase the target's Attack by 1.3%/1.4%/1.4% more, up to 10.4%/10.9%/11.4%. Lasts for 3 turns.",
+      "learn_level": "40",
+      "level": "6/7/8",
+      "name": "Tarukaja"
+    }
+  ],
+  "max_level": 80,
+  "max_level_after_awake": 99,
+  "name": "Yoshitsune",
+  "nature": "Phys",
+  "passive_skill": [
+    {
+      "desc": "Increase critical damage by 34.9%. At the start of battle, gain 1 Guerrilla stack. When dealing damage with a unique skill, 30% chance to gain Guerrilla: Increase Attack by 7% for each stack for 2 turns. Can stack up to 8 times. At 8 stacks, increase unique skill critical rate by 10%.",
+      "name": "Victory Foretold"
+    },
+    {
+      "desc": "Increase critical damage by 34.9%. At the start of battle, gain 2 Guerrilla stacks. When dealing damage with a unique skill, 40% chance to gain Guerrilla: Increase Attack by 7% for each stack for 2 turns. Can stack up to 8 times. At 8 stacks, increase unique skill critical rate by 20%.",
+      "name": "Victory Foretold I"
+    },
+    {
+      "desc": "Increase critical damage by 34.9%. At the start of battle, gain 3 Guerrilla stacks. When dealing damage with a unique skill, 50% chance to gain Guerrilla: Increase Attack by 9% for each stack for 2 turns. Can stack up to 8 times. At 8 stacks, increase unique skill critical rate by 20%.",
+      "name": "Victory Foretold II"
+    },
+    {
+      "desc": "Increase critical damage by 34.9%. At the start of battle, gain 4 Guerrilla stacks. When dealing damage with a unique skill, 60% chance to gain Guerrilla: Increase Attack by 9% for each stack for 2 turns. Can stack up to 8 times. At 8 stacks, increase unique skill critical rate by 30%.",
+      "name": "Victory Foretold III"
+    }
+  ],
+  "rank": 8,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Physical damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

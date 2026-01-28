@@ -1,47 +1,57 @@
 {
-  "data": {
-    "name": "Incubus",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 19",
-        "desc": "Deal Curse damage to 1 foe equal to 116.5/123.2/129.9% of Attack. Inflict 0 to 1 Curse stacks on the foe.",
-        "level": "6/7/8",
-        "name": "Eiha"
-      },
-      "innate_skill": [
-        {
-          "cost": "SP 19",
-          "desc": "Deal Almighty damage to 1 foe equal to 41.4/43.5/45.5% of Attack, ignoring their Defense. Restore user's HP equal to 41.4/43.5/45.5% of Attack.",
-          "learn_level": "4",
-          "level": "6/7/8",
-          "name": "Life Drain"
-        },
-        {
-          "cost": "",
-          "desc": "Increase HP by 5.1%.",
-          "learn_level": "8",
-          "level": "6/7/8",
-          "name": "HP Boost I"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase max HP by 3.5%. After dealing Curse damage, decrease target's Attack by 10%. Lasts for 2 turns.",
-          "name": "Corrupting Whisper"
-        },
-        {
-          "desc": "Increase max HP by 3.5%. After dealing Curse damage, decrease target's Attack by 11.5%. Lasts for 2 turns.",
-          "name": "Corrupting Whisper I"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Deal Curse damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Electric"
+    ],
+    "Weak": [
+      "Gun",
+      "Bless"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 19",
+    "desc": "Deal Curse damage to 1 foe equal to 116.5/123.2/129.9% of Attack. Inflict 0 to 1 Curse stacks on the foe.",
+    "level": "6/7/8",
+    "name": "Eiha"
+  },
+  "innate_skill": [
+    {
+      "cost": "SP 19",
+      "desc": "Deal Almighty damage to 1 foe equal to 41.4/43.5/45.5% of Attack, ignoring their Defense. Restore user's HP equal to 41.4/43.5/45.5% of Attack.",
+      "learn_level": "4",
+      "level": "6/7/8",
+      "name": "Life Drain"
+    },
+    {
+      "cost": "",
+      "desc": "Increase HP by 5.1%.",
+      "learn_level": "8",
+      "level": "6/7/8",
+      "name": "HP Boost I"
+    }
+  ],
+  "max_level": 20,
+  "max_level_after_awake": 25,
+  "name": "Incubus",
+  "nature": "Curse",
+  "passive_skill": [
+    {
+      "desc": "Increase max HP by 3.5%. After dealing Curse damage, decrease target's Attack by 10%. Lasts for 2 turns.",
+      "name": "Corrupting Whisper"
+    },
+    {
+      "desc": "Increase max HP by 3.5%. After dealing Curse damage, decrease target's Attack by 11.5%. Lasts for 2 turns.",
+      "name": "Corrupting Whisper I"
+    }
+  ],
+  "rank": 1,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Curse damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

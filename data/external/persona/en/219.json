@@ -1,65 +1,75 @@
 {
-  "data": {
-    "name": "Ose",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 22",
-        "desc": "43.1/45.3/47.4% chance to inflict Enrage on 1 foe for 2 turns.",
-        "level": "6/7/8",
-        "name": "Taunt"
-      },
-      "innate_skill": [
-        {
-          "cost": "",
-          "desc": "12% chance to repel Physical attacks, dealing Physical damage equal to 70% of Attack.",
-          "learn_level": "6",
-          "level": "6/7/8",
-          "name": "Counter II"
-        },
-        {
-          "cost": "",
-          "desc": "Increase HP by 10.8%.",
-          "learn_level": "12",
-          "level": "6/7/8",
-          "name": "HP Boost III"
-        },
-        {
-          "cost": "SP 22",
-          "desc": "Increase party's Attack by 10.9%/11.4%/12.0%. For every 500 of the user's Attack, increase party's Attack by 0.9%/0.9%/1.0% more, up to 7.2%/7.6%/7.9%. Lasts for 3 turns.",
-          "learn_level": "18",
-          "level": "6/7/8",
-          "name": "Matarukaja"
-        },
-        {
-          "cost": "체력 7.0%",
-          "desc": "Deal Physical damage to 1 foe equal to 36.9/38.7/40.6% of Attack (3 to 5 hits).",
-          "learn_level": "25",
-          "level": "6/7/8",
-          "name": "Tempest Slash"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase ailment accuracy by 21.2%. Increase damage to Enraged foes by 44%.",
-          "name": "Rituals of Madness"
-        },
-        {
-          "desc": "Increase ailment accuracy by 21.2%. Increase damage to Enraged foes by 50%.",
-          "name": "Rituals of Madness I"
-        },
-        {
-          "desc": "Increase ailment accuracy by 21.2%. Increase damage to Enraged foes by 56%.",
-          "name": "Rituals of Madness II"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Deal Physical damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Fire",
+      "Curse"
+    ],
+    "Weak": [
+      "Bless"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 22",
+    "desc": "43.1/45.3/47.4% chance to inflict Enrage on 1 foe for 2 turns.",
+    "level": "6/7/8",
+    "name": "Taunt"
+  },
+  "innate_skill": [
+    {
+      "cost": "",
+      "desc": "12% chance to repel Physical attacks, dealing Physical damage equal to 70% of Attack.",
+      "learn_level": "6",
+      "level": "6/7/8",
+      "name": "Counter II"
+    },
+    {
+      "cost": "",
+      "desc": "Increase HP by 10.8%.",
+      "learn_level": "12",
+      "level": "6/7/8",
+      "name": "HP Boost III"
+    },
+    {
+      "cost": "SP 22",
+      "desc": "Increase party's Attack by 10.9%/11.4%/12.0%. For every 500 of the user's Attack, increase party's Attack by 0.9%/0.9%/1.0% more, up to 7.2%/7.6%/7.9%. Lasts for 3 turns.",
+      "learn_level": "18",
+      "level": "6/7/8",
+      "name": "Matarukaja"
+    },
+    {
+      "cost": "체력 7.0%",
+      "desc": "Deal Physical damage to 1 foe equal to 36.9/38.7/40.6% of Attack (3 to 5 hits).",
+      "learn_level": "25",
+      "level": "6/7/8",
+      "name": "Tempest Slash"
+    }
+  ],
+  "max_level": 60,
+  "max_level_after_awake": 70,
+  "name": "Ose",
+  "nature": "Phys",
+  "passive_skill": [
+    {
+      "desc": "Increase ailment accuracy by 21.2%. Increase damage to Enraged foes by 44%.",
+      "name": "Rituals of Madness"
+    },
+    {
+      "desc": "Increase ailment accuracy by 21.2%. Increase damage to Enraged foes by 50%.",
+      "name": "Rituals of Madness I"
+    },
+    {
+      "desc": "Increase ailment accuracy by 21.2%. Increase damage to Enraged foes by 56%.",
+      "name": "Rituals of Madness II"
+    }
+  ],
+  "rank": 5,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Physical damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

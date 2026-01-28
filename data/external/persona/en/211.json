@@ -1,54 +1,63 @@
 {
-  "data": {
-    "name": "Matador",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 19",
-        "desc": "Deal Psy damage to 1 foe equal to 113.3/117.2/121.1% of Attack. Deal a Technical and increase damage by 35% for foes with a spiritual ailment.",
-        "level": "6/7/8",
-        "name": "Psi"
-      },
-      "innate_skill": [
-        {
-          "cost": "",
-          "desc": "Increase Forget resistance by 8.8%.",
-          "learn_level": "4",
-          "level": "6/7/8",
-          "name": "Resist Forget I"
-        },
-        {
-          "cost": "SP 19",
-          "desc": "Deal Psy damage to all foes equal to 61.4/63.4/65.4% of Attack. Deal a Technical and increase damage by 35% for foes with a spiritual ailment.",
-          "learn_level": "8",
-          "level": "6/7/8",
-          "name": "Mapsi"
-        },
-        {
-          "cost": "",
-          "desc": "Increase Psychokinesis damage by 4.7%.",
-          "learn_level": "12",
-          "level": "6/7/8",
-          "name": "Psy Boost I"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase Attack by 7%. Increase damage to foes with spiritual ailments by 34%.",
-          "name": "Boiling Frenzy Sacrifice"
-        },
-        {
-          "desc": "Increase Attack by 7%. Increase damage to foes with spiritual ailments by 40%.",
-          "name": "Boiling Frenzy Sacrifice I"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Deal Psychokinesis damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Wind"
+    ],
+    "Weak": [
+      "Electric"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 19",
+    "desc": "Deal Psy damage to 1 foe equal to 113.3/117.2/121.1% of Attack. Deal a Technical and increase damage by 35% for foes with a spiritual ailment.",
+    "level": "6/7/8",
+    "name": "Psi"
+  },
+  "innate_skill": [
+    {
+      "cost": "",
+      "desc": "Increase Forget resistance by 8.8%.",
+      "learn_level": "4",
+      "level": "6/7/8",
+      "name": "Resist Forget I"
+    },
+    {
+      "cost": "SP 19",
+      "desc": "Deal Psy damage to all foes equal to 61.4/63.4/65.4% of Attack. Deal a Technical and increase damage by 35% for foes with a spiritual ailment.",
+      "learn_level": "8",
+      "level": "6/7/8",
+      "name": "Mapsi"
+    },
+    {
+      "cost": "",
+      "desc": "Increase Psychokinesis damage by 4.7%.",
+      "learn_level": "12",
+      "level": "6/7/8",
+      "name": "Psy Boost I"
+    }
+  ],
+  "max_level": 30,
+  "max_level_after_awake": 35,
+  "name": "Matador",
+  "nature": "Psychokinesis",
+  "passive_skill": [
+    {
+      "desc": "Increase Attack by 7%. Increase damage to foes with spiritual ailments by 34%.",
+      "name": "Boiling Frenzy Sacrifice"
+    },
+    {
+      "desc": "Increase Attack by 7%. Increase damage to foes with spiritual ailments by 40%.",
+      "name": "Boiling Frenzy Sacrifice I"
+    }
+  ],
+  "rank": 2,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Psychokinesis damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

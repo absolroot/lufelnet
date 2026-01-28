@@ -1,74 +1,87 @@
 {
-  "data": {
-    "name": "Error: tnxotb-[133]",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 22",
-        "desc": "Deal Curse damage to 1 foe equal to 142.5/151.8/161.1% of Attack. Inflict 2 Curse stacks on the foe.",
-        "level": "6/7/8",
-        "name": "Demonic Decree"
-      },
-      "innate_skill": [
-        {
-          "cost": "",
-          "desc": "Increase Curse damage by 25%.",
-          "learn_level": "1",
-          "level": "6/7/8",
-          "name": "Curse Boost"
-        },
-        {
-          "cost": "",
-          "desc": "At the start of battle, increase party's Defense.",
-          "learn_level": "30",
-          "level": "6/7/8",
-          "name": "Auto-Maraku"
-        },
-        {
-          "cost": "SP 21",
-          "desc": "Deal Curse damage to all foes equal to 66.5/70.7/74.9% of Attack. Chance to inflict 1 Curse stack on foes.",
-          "learn_level": "50",
-          "level": "6/7/8",
-          "name": "Maeigaon"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase Curse damage by 4%.",
-          "name": "Curse Boost"
-        },
-        {
-          "desc": "Increase Curse damage by 8%.",
-          "name": "Curse Boost: Improved"
-        },
-        {
-          "desc": "Increase Curse damage by 12%.",
-          "name": "Curse Boost: Refined"
-        },
-        {
-          "desc": "Increase Curse damage by 12%. When defeating a foe with Despair, transfer Despair to a living foe.",
-          "name": "Curse Boost: Enhanced"
-        },
-        {
-          "desc": "Increase Curse damage by 16%. When defeating a foe with Despair, transfer Despair to a living foe.",
-          "name": "Curse Boost: Superior"
-        },
-        {
-          "desc": "Increase Curse damage by 20%. When defeating a foe with Despair, transfer Despair to a living foe.",
-          "name": "Curse Boost: Ascended"
-        },
-        {
-          "desc": "Increase Curse damage by 20%. When defeating a foe with Despair, transfer Despair to a living foe. When target foe has 5 or more debuffs, increase damage by 10% more.",
-          "name": "Curse Boost: Ultimate"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Deal Curse damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Phys",
+      "Gun",
+      "Fire",
+      "Curse"
+    ],
+    "Weak": [
+      "Electric",
+      "Bless"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 22",
+    "desc": "Deal Curse damage to 1 foe equal to 142.5/151.8/161.1% of Attack. Inflict 2 Curse stacks on the foe.",
+    "level": "6/7/8",
+    "name": "Demonic Decree"
+  },
+  "innate_skill": [
+    {
+      "cost": "",
+      "desc": "Increase Curse damage by 25%.",
+      "learn_level": "1",
+      "level": "6/7/8",
+      "name": "Curse Boost"
+    },
+    {
+      "cost": "",
+      "desc": "At the start of battle, increase party's Defense.",
+      "learn_level": "30",
+      "level": "6/7/8",
+      "name": "Auto-Maraku"
+    },
+    {
+      "cost": "SP 21",
+      "desc": "Deal Curse damage to all foes equal to 66.5/70.7/74.9% of Attack. Chance to inflict 1 Curse stack on foes.",
+      "learn_level": "50",
+      "level": "6/7/8",
+      "name": "Maeigaon"
+    }
+  ],
+  "max_level": 60,
+  "max_level_after_awake": 70,
+  "name": "Error: tnxotb-[133]",
+  "nature": "Curse",
+  "passive_skill": [
+    {
+      "desc": "Increase Curse damage by 4%.",
+      "name": "Curse Boost"
+    },
+    {
+      "desc": "Increase Curse damage by 8%.",
+      "name": "Curse Boost: Improved"
+    },
+    {
+      "desc": "Increase Curse damage by 12%.",
+      "name": "Curse Boost: Refined"
+    },
+    {
+      "desc": "Increase Curse damage by 12%. When defeating a foe with Despair, transfer Despair to a living foe.",
+      "name": "Curse Boost: Enhanced"
+    },
+    {
+      "desc": "Increase Curse damage by 16%. When defeating a foe with Despair, transfer Despair to a living foe.",
+      "name": "Curse Boost: Superior"
+    },
+    {
+      "desc": "Increase Curse damage by 20%. When defeating a foe with Despair, transfer Despair to a living foe.",
+      "name": "Curse Boost: Ascended"
+    },
+    {
+      "desc": "Increase Curse damage by 20%. When defeating a foe with Despair, transfer Despair to a living foe. When target foe has 5 or more debuffs, increase damage by 10% more.",
+      "name": "Curse Boost: Ultimate"
+    }
+  ],
+  "rank": 5,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Curse damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

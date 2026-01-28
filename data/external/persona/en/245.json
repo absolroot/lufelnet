@@ -1,69 +1,79 @@
 {
-  "data": {
-    "name": "Pale Rider",
-    "skill": {
-      "fixed_skill": {
-        "cost": "체력 7.0%",
-        "desc": "Deal Physical damage to 1 foe equal to 82.4/86.5/90.6% of Attack. 4.7/4.9/5.2% chance to inflict Brainwash for 2 turns.",
-        "level": "6/7/8",
-        "name": "Brain Shake"
-      },
-      "innate_skill": [
-        {
-          "cost": "SP 21",
-          "desc": "Deal Curse damage to 1 foe equal to 132.5/140.8/149.1% of Attack. Inflict 1 to 2 Curse stacks on the foe.",
-          "learn_level": "8",
-          "level": "6/7/8",
-          "name": "Eigaon"
-        },
-        {
-          "cost": "체력 8.0%",
-          "desc": "Deal Physical damage to all foes equal to 40.8/42.8/44.9% of Attack. 3.4/3.6/3.7% chance to inflict Confuse for 2 turns.",
-          "learn_level": "16",
-          "level": "6/7/8",
-          "name": "Mind Slice"
-        },
-        {
-          "cost": "",
-          "desc": "Decrease SP cost of skills by 4.8%.",
-          "learn_level": "24",
-          "level": "6/7/8",
-          "name": "Spell Master III"
-        },
-        {
-          "cost": "",
-          "desc": "Increase ailment accuracy by 13%.",
-          "learn_level": "32",
-          "level": "6/7/8",
-          "name": "Accuracy Boost III"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase ailment resistance by 25.4%. When an ally is inflicted with a debuff, increase target's ailment accuracy by 25%.",
-          "name": "Herald of Death"
-        },
-        {
-          "desc": "Increase ailment resistance by 25.4%. When an ally is inflicted with a debuff, increase target's ailment resistance by 28.5%.",
-          "name": "Herald of Death I"
-        },
-        {
-          "desc": "Increase ailment resistance by 25.4%. When an ally is inflicted with a debuff, increase target's ailment resistance by 31.5%.",
-          "name": "Herald of Death II"
-        },
-        {
-          "desc": "Increase ailment resistance by 25.4%. When an ally is inflicted with a debuff, increase target's ailment resistance by 35%.",
-          "name": "Herald of Death III"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Deal Curse damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Wind",
+      "Curse"
+    ],
+    "Weak": [
+      "Bless"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "체력 7.0%",
+    "desc": "Deal Physical damage to 1 foe equal to 82.4/86.5/90.6% of Attack. 4.7/4.9/5.2% chance to inflict Brainwash for 2 turns.",
+    "level": "6/7/8",
+    "name": "Brain Shake"
+  },
+  "innate_skill": [
+    {
+      "cost": "SP 21",
+      "desc": "Deal Curse damage to 1 foe equal to 132.5/140.8/149.1% of Attack. Inflict 1 to 2 Curse stacks on the foe.",
+      "learn_level": "8",
+      "level": "6/7/8",
+      "name": "Eigaon"
+    },
+    {
+      "cost": "체력 8.0%",
+      "desc": "Deal Physical damage to all foes equal to 40.8/42.8/44.9% of Attack. 3.4/3.6/3.7% chance to inflict Confuse for 2 turns.",
+      "learn_level": "16",
+      "level": "6/7/8",
+      "name": "Mind Slice"
+    },
+    {
+      "cost": "",
+      "desc": "Decrease SP cost of skills by 4.8%.",
+      "learn_level": "24",
+      "level": "6/7/8",
+      "name": "Spell Master III"
+    },
+    {
+      "cost": "",
+      "desc": "Increase ailment accuracy by 13%.",
+      "learn_level": "32",
+      "level": "6/7/8",
+      "name": "Accuracy Boost III"
+    }
+  ],
+  "max_level": 70,
+  "max_level_after_awake": 85,
+  "name": "Pale Rider",
+  "nature": "Curse",
+  "passive_skill": [
+    {
+      "desc": "Increase ailment resistance by 25.4%. When an ally is inflicted with a debuff, increase target's ailment accuracy by 25%.",
+      "name": "Herald of Death"
+    },
+    {
+      "desc": "Increase ailment resistance by 25.4%. When an ally is inflicted with a debuff, increase target's ailment resistance by 28.5%.",
+      "name": "Herald of Death I"
+    },
+    {
+      "desc": "Increase ailment resistance by 25.4%. When an ally is inflicted with a debuff, increase target's ailment resistance by 31.5%.",
+      "name": "Herald of Death II"
+    },
+    {
+      "desc": "Increase ailment resistance by 25.4%. When an ally is inflicted with a debuff, increase target's ailment resistance by 35%.",
+      "name": "Herald of Death III"
+    }
+  ],
+  "rank": 6,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Curse damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

@@ -1,47 +1,57 @@
 {
-  "data": {
-    "name": "Andras",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 19",
-        "desc": "Deal Ice damage to all foes equal to 53.1/55.8/58.4% of Attack. 29.5/31.0/32.4% chance to inflict Freeze for 2 turns.",
-        "level": "6/7/8",
-        "name": "Mabufu"
-      },
-      "innate_skill": [
-        {
-          "cost": "",
-          "desc": "Decrease critical taken rate by 3.5%.",
-          "learn_level": "4",
-          "level": "6/7/8",
-          "name": "Sharp Student I"
-        },
-        {
-          "cost": "",
-          "desc": "Increase Ice damage by 4.7%.",
-          "learn_level": "8",
-          "level": "6/7/8",
-          "name": "Ice Boost I"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase Attack by 2.9%. After using a skill on a foe, increase main target's Ice damage taken by 6.6% for 2 turns.",
-          "name": "Release of Grudges"
-        },
-        {
-          "desc": "Increase Attack by 2.9%. After using a skill on a foe, increase main target's Ice damage taken by 7.5% for 2 turns.",
-          "name": "Release of Grudges I"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Deal Ice damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Ice"
+    ],
+    "Weak": [
+      "Gun",
+      "Fire"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 19",
+    "desc": "Deal Ice damage to all foes equal to 53.1/55.8/58.4% of Attack. 29.5/31.0/32.4% chance to inflict Freeze for 2 turns.",
+    "level": "6/7/8",
+    "name": "Mabufu"
+  },
+  "innate_skill": [
+    {
+      "cost": "",
+      "desc": "Decrease critical taken rate by 3.5%.",
+      "learn_level": "4",
+      "level": "6/7/8",
+      "name": "Sharp Student I"
+    },
+    {
+      "cost": "",
+      "desc": "Increase Ice damage by 4.7%.",
+      "learn_level": "8",
+      "level": "6/7/8",
+      "name": "Ice Boost I"
+    }
+  ],
+  "max_level": 20,
+  "max_level_after_awake": 25,
+  "name": "Andras",
+  "nature": "Ice",
+  "passive_skill": [
+    {
+      "desc": "Increase Attack by 2.9%. After using a skill on a foe, increase main target's Ice damage taken by 6.6% for 2 turns.",
+      "name": "Release of Grudges"
+    },
+    {
+      "desc": "Increase Attack by 2.9%. After using a skill on a foe, increase main target's Ice damage taken by 7.5% for 2 turns.",
+      "name": "Release of Grudges I"
+    }
+  ],
+  "rank": 1,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Ice damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

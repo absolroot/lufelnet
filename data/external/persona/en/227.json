@@ -1,61 +1,70 @@
 {
-  "data": {
-    "name": "Fuu-Ki",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 20",
-        "desc": "Deal Wind damage to 1 foe equal to 114.0/119.7/125.4% of Attack. 63.3/66.5/69.6% chance to inflict Windswept for 2 turns.",
-        "level": "6/7/8",
-        "name": "Garula"
-      },
-      "innate_skill": [
-        {
-          "cost": "SP 22",
-          "desc": "Increase 1 ally's Attack by 15.5%/16.3%/17.0%. For every 500 of the user's Attack, increase the target's Attack by 1.3%/1.4%/1.4% more, up to 10.4%/10.9%/11.4%. Lasts for 3 turns.",
-          "learn_level": "5",
-          "level": "6/7/8",
-          "name": "Tarukaja"
-        },
-        {
-          "cost": "",
-          "desc": "Increase critical damage by 10%.",
-          "learn_level": "10",
-          "level": "6/7/8",
-          "name": "Pinpoint II"
-        },
-        {
-          "cost": "",
-          "desc": "Increase Wind damage by 6.7%.",
-          "learn_level": "15",
-          "level": "6/7/8",
-          "name": "Wind Boost II"
-        },
-        {
-          "cost": "",
-          "desc": "Decrease Wind damage taken by 6.7%.",
-          "learn_level": "20",
-          "level": "6/7/8",
-          "name": "Wind Reduction II"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase Attack by 8.7%. After defeating a foe, permanently increase Wind damage by 6%. Stacks up to 3 times.",
-          "name": "Whirlwind of Fealty"
-        },
-        {
-          "desc": "Increase Attack by 8.7%. After defeating a foe, permanently increase Wind damage by 7%. Stacks up to 3 times.",
-          "name": "Whirlwind of Fealty I"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Deal Wind damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Wind"
+    ],
+    "Weak": [
+      "Electric"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 20",
+    "desc": "Deal Wind damage to 1 foe equal to 114.0/119.7/125.4% of Attack. 63.3/66.5/69.6% chance to inflict Windswept for 2 turns.",
+    "level": "6/7/8",
+    "name": "Garula"
+  },
+  "innate_skill": [
+    {
+      "cost": "SP 22",
+      "desc": "Increase 1 ally's Attack by 15.5%/16.3%/17.0%. For every 500 of the user's Attack, increase the target's Attack by 1.3%/1.4%/1.4% more, up to 10.4%/10.9%/11.4%. Lasts for 3 turns.",
+      "learn_level": "5",
+      "level": "6/7/8",
+      "name": "Tarukaja"
+    },
+    {
+      "cost": "",
+      "desc": "Increase critical damage by 10%.",
+      "learn_level": "10",
+      "level": "6/7/8",
+      "name": "Pinpoint II"
+    },
+    {
+      "cost": "",
+      "desc": "Increase Wind damage by 6.7%.",
+      "learn_level": "15",
+      "level": "6/7/8",
+      "name": "Wind Boost II"
+    },
+    {
+      "cost": "",
+      "desc": "Decrease Wind damage taken by 6.7%.",
+      "learn_level": "20",
+      "level": "6/7/8",
+      "name": "Wind Reduction II"
+    }
+  ],
+  "max_level": 40,
+  "max_level_after_awake": 45,
+  "name": "Fuu-Ki",
+  "nature": "Wind",
+  "passive_skill": [
+    {
+      "desc": "Increase Attack by 8.7%. After defeating a foe, permanently increase Wind damage by 6%. Stacks up to 3 times.",
+      "name": "Whirlwind of Fealty"
+    },
+    {
+      "desc": "Increase Attack by 8.7%. After defeating a foe, permanently increase Wind damage by 7%. Stacks up to 3 times.",
+      "name": "Whirlwind of Fealty I"
+    }
+  ],
+  "rank": 3,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Wind damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

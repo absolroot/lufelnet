@@ -1,61 +1,70 @@
 {
-  "data": {
-    "name": "Ame-no-Uzume",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 24",
-        "desc": "Deal Electric damage to 1 foe equal to 143.0%/150.2%/157.3% of Attack. 100.0%/105.0%/110.0% chance to inflict Shock for 2 turns.",
-        "level": "6/7/8",
-        "name": "Electric Dance"
-      },
-      "innate_skill": [
-        {
-          "cost": "SP 20",
-          "desc": "Deal Electric damage to all foes equal to 57.0/59.8/62.7% of Attack. 31.7/33.3/34.9% chance to inflict Shock for 2 turns.",
-          "learn_level": "5",
-          "level": "6/7/8",
-          "name": "Mazionga"
-        },
-        {
-          "cost": "",
-          "desc": "Increase Shock accuracy by 12.5%.",
-          "learn_level": "10",
-          "level": "6/7/8",
-          "name": "Shock Boost II"
-        },
-        {
-          "cost": "SP 24",
-          "desc": "Restore 1 ally's HP by 35.6/37.4/39.2% of Attack + 1077/1333/1608.",
-          "learn_level": "15",
-          "level": "6/7/8",
-          "name": "Diarama"
-        },
-        {
-          "cost": "",
-          "desc": "Decrease Fire damage taken by 6.7%.",
-          "learn_level": "20",
-          "level": "6/7/8",
-          "name": "Fire Reduction II"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase ailment accuracy by 15%. When foes are Shocked, increase party's critical rate by 8.5% for 2 turns.",
-          "name": "Divine Exultation"
-        },
-        {
-          "desc": "Increase ailment accuracy by 15%. When foes are Shocked, increase party's critical rate by 10% for 2 turns.",
-          "name": "Divine Exultation I"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Deal Electric damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Fire"
+    ],
+    "Weak": [
+      "Psychokinesis"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 24",
+    "desc": "Deal Electric damage to 1 foe equal to 143.0%/150.2%/157.3% of Attack. 100.0%/105.0%/110.0% chance to inflict Shock for 2 turns.",
+    "level": "6/7/8",
+    "name": "Electric Dance"
+  },
+  "innate_skill": [
+    {
+      "cost": "SP 20",
+      "desc": "Deal Electric damage to all foes equal to 57.0/59.8/62.7% of Attack. 31.7/33.3/34.9% chance to inflict Shock for 2 turns.",
+      "learn_level": "5",
+      "level": "6/7/8",
+      "name": "Mazionga"
+    },
+    {
+      "cost": "",
+      "desc": "Increase Shock accuracy by 12.5%.",
+      "learn_level": "10",
+      "level": "6/7/8",
+      "name": "Shock Boost II"
+    },
+    {
+      "cost": "SP 24",
+      "desc": "Restore 1 ally's HP by 35.6/37.4/39.2% of Attack + 1077/1333/1608.",
+      "learn_level": "15",
+      "level": "6/7/8",
+      "name": "Diarama"
+    },
+    {
+      "cost": "",
+      "desc": "Decrease Fire damage taken by 6.7%.",
+      "learn_level": "20",
+      "level": "6/7/8",
+      "name": "Fire Reduction II"
+    }
+  ],
+  "max_level": 40,
+  "max_level_after_awake": 45,
+  "name": "Ame-no-Uzume",
+  "nature": "Electric",
+  "passive_skill": [
+    {
+      "desc": "Increase ailment accuracy by 15%. When foes are Shocked, increase party's critical rate by 8.5% for 2 turns.",
+      "name": "Divine Exultation"
+    },
+    {
+      "desc": "Increase ailment accuracy by 15%. When foes are Shocked, increase party's critical rate by 10% for 2 turns.",
+      "name": "Divine Exultation I"
+    }
+  ],
+  "rank": 3,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Electric damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

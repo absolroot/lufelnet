@@ -1,47 +1,58 @@
 {
-  "data": {
-    "name": "Jack-o'-Lantern",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 19",
-        "desc": "Deal Fire damage to 1 foe equal to 106.2/111.5/116.8% of Attack. 59.0/62.0/64.9% chance to inflict Burn for 2 turns.",
-        "level": "6/7/8",
-        "name": "Agi"
-      },
-      "innate_skill": [
-        {
-          "cost": "",
-          "desc": "Increase Sleep resistance by 8.8%.",
-          "learn_level": "4",
-          "level": "6/7/8",
-          "name": "Resist Sleep I"
-        },
-        {
-          "cost": "",
-          "desc": "Increase Fire damage by 4.7%.",
-          "learn_level": "8",
-          "level": "6/7/8",
-          "name": "Fire Boost I"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase Attack by 2.9%. After knocking down a foe, increase Fire damage by 20% for 2 turns.",
-          "name": "Feast of Fools"
-        },
-        {
-          "desc": "Increase Attack by 2.9%. After knocking down a foe, increase Fire damage by 23% for 2 turns.",
-          "name": "Feast of Fools I"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Deal Fire damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Fire"
+    ],
+    "Weak": [
+      "Gun",
+      "Ice",
+      "Wind"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 19",
+    "desc": "Deal Fire damage to 1 foe equal to 106.2/111.5/116.8% of Attack. 59.0/62.0/64.9% chance to inflict Burn for 2 turns.",
+    "level": "6/7/8",
+    "name": "Agi"
+  },
+  "innate_skill": [
+    {
+      "cost": "",
+      "desc": "Increase Sleep resistance by 8.8%.",
+      "learn_level": "4",
+      "level": "6/7/8",
+      "name": "Resist Sleep I"
+    },
+    {
+      "cost": "",
+      "desc": "Increase Fire damage by 4.7%.",
+      "learn_level": "8",
+      "level": "6/7/8",
+      "name": "Fire Boost I"
+    }
+  ],
+  "max_level": 20,
+  "max_level_after_awake": 25,
+  "name": "Jack-o'-Lantern",
+  "nature": "Fire",
+  "passive_skill": [
+    {
+      "desc": "Increase Attack by 2.9%. After knocking down a foe, increase Fire damage by 20% for 2 turns.",
+      "name": "Feast of Fools"
+    },
+    {
+      "desc": "Increase Attack by 2.9%. After knocking down a foe, increase Fire damage by 23% for 2 turns.",
+      "name": "Feast of Fools I"
+    }
+  ],
+  "rank": 1,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Fire damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

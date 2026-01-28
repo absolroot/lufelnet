@@ -1,69 +1,76 @@
 {
-  "data": {
-    "name": "Belial",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 24",
-        "desc": "Deal Curse damage to 1 foe equal to 173.0%/181.6%/190.3% of Attack. Inflict 1 Hell's Inferno stack on the foe, and immediately deal damage based on number of Hell's Inferno stacks on the foe. Increase this damage by 200%.",
-        "level": "6/7/8",
-        "name": "Abyssal Flame"
-      },
-      "innate_skill": [
-        {
-          "cost": "",
-          "desc": "Increase ailment resistance by 16.2%.",
-          "learn_level": "9",
-          "level": "6/7/8",
-          "name": "Resistance Boost IV"
-        },
-        {
-          "cost": "SP 22",
-          "desc": "Deal Curse damage to 1 foe equal to 142.5/151.8/161.1% of Attack. Inflict 2 Curse stacks on the foe.",
-          "learn_level": "18",
-          "level": "6/7/8",
-          "name": "Demonic Decree"
-        },
-        {
-          "cost": "",
-          "desc": "At the start of battle, increase party's Attack by 9.8% for 2 turns or until user changes Personas.",
-          "learn_level": "27",
-          "level": "6/7/8",
-          "name": "Auto-Mataru IV"
-        },
-        {
-          "cost": "",
-          "desc": "Increase critical rate by 9.7% when ambushing.",
-          "learn_level": "36",
-          "level": "6/7/8",
-          "name": "Fortified Moxy IV"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase ailment accuracy by 34.9%. When a foe takes a continuous damage effect, they are inflicted with Hell's Inferno, and take 7% of Attack as damage each turn for 2 turns. Stacks up to 3 times.",
-          "name": "Flame of Corruption"
-        },
-        {
-          "desc": "Increase ailment accuracy by 34.9%. When a foe takes a continuous damage effect, they are inflicted with Hell's Inferno, and take 8% of Attack as damage each turn for 2 turns. Stacks up to 3 times.",
-          "name": "Flame of Corruption I"
-        },
-        {
-          "desc": "Increase ailment accuracy by 34.9%. When a foe takes a continuous damage effect, they are inflicted with Hell's Inferno, and take 9% of Attack as damage each turn for 2 turns. Stacks up to 3 times.",
-          "name": "Flame of Corruption II"
-        },
-        {
-          "desc": "Increase ailment accuracy by 34.9%. When a foe takes a continuous damage effect, they are inflicted with Hell's Inferno, and take 10% of Attack as damage each turn. If target has less than 50%, damage is increased by 20%. Lasts for 2 turns. Stacks up to 3 times.",
-          "name": "Flame of Corruption III"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Deal Curse damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Curse"
+    ],
+    "Weak": []
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 24",
+    "desc": "Deal Curse damage to 1 foe equal to 173.0%/181.6%/190.3% of Attack. Inflict 1 Hell's Inferno stack on the foe, and immediately deal damage based on number of Hell's Inferno stacks on the foe. Increase this damage by 200%.",
+    "level": "6/7/8",
+    "name": "Abyssal Flame"
+  },
+  "innate_skill": [
+    {
+      "cost": "",
+      "desc": "Increase ailment resistance by 16.2%.",
+      "learn_level": "9",
+      "level": "6/7/8",
+      "name": "Resistance Boost IV"
+    },
+    {
+      "cost": "SP 22",
+      "desc": "Deal Curse damage to 1 foe equal to 142.5/151.8/161.1% of Attack. Inflict 2 Curse stacks on the foe.",
+      "learn_level": "18",
+      "level": "6/7/8",
+      "name": "Demonic Decree"
+    },
+    {
+      "cost": "",
+      "desc": "At the start of battle, increase party's Attack by 9.8% for 2 turns or until user changes Personas.",
+      "learn_level": "27",
+      "level": "6/7/8",
+      "name": "Auto-Mataru IV"
+    },
+    {
+      "cost": "",
+      "desc": "Increase critical rate by 9.7% when ambushing.",
+      "learn_level": "36",
+      "level": "6/7/8",
+      "name": "Fortified Moxy IV"
+    }
+  ],
+  "max_level": 80,
+  "max_level_after_awake": 95,
+  "name": "Belial",
+  "nature": "Curse",
+  "passive_skill": [
+    {
+      "desc": "Increase ailment accuracy by 34.9%. When a foe takes a continuous damage effect, they are inflicted with Hell's Inferno, and take 7% of Attack as damage each turn for 2 turns. Stacks up to 3 times.",
+      "name": "Flame of Corruption"
+    },
+    {
+      "desc": "Increase ailment accuracy by 34.9%. When a foe takes a continuous damage effect, they are inflicted with Hell's Inferno, and take 8% of Attack as damage each turn for 2 turns. Stacks up to 3 times.",
+      "name": "Flame of Corruption I"
+    },
+    {
+      "desc": "Increase ailment accuracy by 34.9%. When a foe takes a continuous damage effect, they are inflicted with Hell's Inferno, and take 9% of Attack as damage each turn for 2 turns. Stacks up to 3 times.",
+      "name": "Flame of Corruption II"
+    },
+    {
+      "desc": "Increase ailment accuracy by 34.9%. When a foe takes a continuous damage effect, they are inflicted with Hell's Inferno, and take 10% of Attack as damage each turn. If target has less than 50%, damage is increased by 20%. Lasts for 2 turns. Stacks up to 3 times.",
+      "name": "Flame of Corruption III"
+    }
+  ],
+  "rank": 7,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Curse damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

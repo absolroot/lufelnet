@@ -1,54 +1,63 @@
 {
-  "data": {
-    "name": "Nekomata",
-    "skill": {
-      "fixed_skill": {
-        "cost": "체력 7.0%",
-        "desc": "Deal Physical damage to 1 foe equal to 82.4/86.5/90.6% of Attack. 12.4/13.0/13.6% chance to inflict Enrage for 2 turns.",
-        "level": "6/7/8",
-        "name": "Hysterical Slap"
-      },
-      "innate_skill": [
-        {
-          "cost": "SP 19",
-          "desc": "Deal Wind damage to 1 foe equal to 106.2/111.5/116.8% of Attack. 59.0/62.0/64.9% chance to inflict Windswept for 2 turns.",
-          "learn_level": "4",
-          "level": "6/7/8",
-          "name": "Garu"
-        },
-        {
-          "cost": "",
-          "desc": "At the start of battle, increase Defense by 12.7% for 2 turns.",
-          "learn_level": "8",
-          "level": "6/7/8",
-          "name": "Defense Master I"
-        },
-        {
-          "cost": "",
-          "desc": "Decrease Electric damage taken by 4.7%.",
-          "learn_level": "12",
-          "level": "6/7/8",
-          "name": "Electric Reduction I"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase ailment accuracy by 7%. At the start of battle, increase accuracy of spiritual ailments by 45% for 2 turns.",
-          "name": "Chaotic Cat-Step"
-        },
-        {
-          "desc": "Increase ailment accuracy by 7%. At the start of battle, increase accuracy of spiritual ailments by 55% for 2 turns.",
-          "name": "Chaotic Cat-Step I"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Deal Wind damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Psychokinesis"
+    ],
+    "Weak": [
+      "Electric"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "체력 7.0%",
+    "desc": "Deal Physical damage to 1 foe equal to 82.4/86.5/90.6% of Attack. 12.4/13.0/13.6% chance to inflict Enrage for 2 turns.",
+    "level": "6/7/8",
+    "name": "Hysterical Slap"
+  },
+  "innate_skill": [
+    {
+      "cost": "SP 19",
+      "desc": "Deal Wind damage to 1 foe equal to 106.2/111.5/116.8% of Attack. 59.0/62.0/64.9% chance to inflict Windswept for 2 turns.",
+      "learn_level": "4",
+      "level": "6/7/8",
+      "name": "Garu"
+    },
+    {
+      "cost": "",
+      "desc": "At the start of battle, increase Defense by 12.7% for 2 turns.",
+      "learn_level": "8",
+      "level": "6/7/8",
+      "name": "Defense Master I"
+    },
+    {
+      "cost": "",
+      "desc": "Decrease Electric damage taken by 4.7%.",
+      "learn_level": "12",
+      "level": "6/7/8",
+      "name": "Electric Reduction I"
+    }
+  ],
+  "max_level": 30,
+  "max_level_after_awake": 35,
+  "name": "Nekomata",
+  "nature": "Wind",
+  "passive_skill": [
+    {
+      "desc": "Increase ailment accuracy by 7%. At the start of battle, increase accuracy of spiritual ailments by 45% for 2 turns.",
+      "name": "Chaotic Cat-Step"
+    },
+    {
+      "desc": "Increase ailment accuracy by 7%. At the start of battle, increase accuracy of spiritual ailments by 55% for 2 turns.",
+      "name": "Chaotic Cat-Step I"
+    }
+  ],
+  "rank": 2,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Wind damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

@@ -1,65 +1,75 @@
 {
-  "data": {
-    "name": "Queen Mab",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 19",
-        "desc": "Deal Almighty damage to all foes equal to 40.7/42.7/44.8% of Attack, ignoring their defense.",
-        "level": "6/7/8",
-        "name": "Megidola"
-      },
-      "innate_skill": [
-        {
-          "cost": "SP 21",
-          "desc": "Deal Fire damage to all foes equal to 60.8/63.8/66.9% of Attack. 33.8/35.5/37.2% chance to inflict Burn for 2 turns.",
-          "learn_level": "6",
-          "level": "6/7/8",
-          "name": "Maragidyne"
-        },
-        {
-          "cost": "SP 21",
-          "desc": "Deal Ice damage to all foes equal to 60.8/63.8/66.9% of Attack. 33.8/35.5/37.2% chance to inflict Freeze for 2 turns.",
-          "learn_level": "12",
-          "level": "6/7/8",
-          "name": "Mabufudyne"
-        },
-        {
-          "cost": "",
-          "desc": "Increase Fire damage by 8.7%.",
-          "learn_level": "18",
-          "level": "6/7/8",
-          "name": "Fire Boost III"
-        },
-        {
-          "cost": "",
-          "desc": "Increase Ice damage by 8.7%.",
-          "learn_level": "25",
-          "level": "6/7/8",
-          "name": "Ice Boost III"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase Attack by 17.7%. When using a skill to attack a Burning or Frozen foe, increase Attack by 20%. If the foe is both Burning and Frozen, increase effect by 100%.",
-          "name": "Sweet Dreams"
-        },
-        {
-          "desc": "Increase Attack by 17.7%. When using a skill to attack a Burning or Frozen foe, increase Attack by 24%. If the foe is both Burning and Frozen, increase effect by 100%.",
-          "name": "Sweet Dreams I"
-        },
-        {
-          "desc": "Increase Attack by 17.7%. When using a skill to attack a Burning or Frozen foe, increase Attack by 28%. If the foe is both Burning and Frozen, increase effect by 100%.",
-          "name": "Sweet Dreams II"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Deal Fire damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Fire",
+      "Electric"
+    ],
+    "Weak": [
+      "Wind"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 19",
+    "desc": "Deal Almighty damage to all foes equal to 40.7/42.7/44.8% of Attack, ignoring their defense.",
+    "level": "6/7/8",
+    "name": "Megidola"
+  },
+  "innate_skill": [
+    {
+      "cost": "SP 21",
+      "desc": "Deal Fire damage to all foes equal to 60.8/63.8/66.9% of Attack. 33.8/35.5/37.2% chance to inflict Burn for 2 turns.",
+      "learn_level": "6",
+      "level": "6/7/8",
+      "name": "Maragidyne"
+    },
+    {
+      "cost": "SP 21",
+      "desc": "Deal Ice damage to all foes equal to 60.8/63.8/66.9% of Attack. 33.8/35.5/37.2% chance to inflict Freeze for 2 turns.",
+      "learn_level": "12",
+      "level": "6/7/8",
+      "name": "Mabufudyne"
+    },
+    {
+      "cost": "",
+      "desc": "Increase Fire damage by 8.7%.",
+      "learn_level": "18",
+      "level": "6/7/8",
+      "name": "Fire Boost III"
+    },
+    {
+      "cost": "",
+      "desc": "Increase Ice damage by 8.7%.",
+      "learn_level": "25",
+      "level": "6/7/8",
+      "name": "Ice Boost III"
+    }
+  ],
+  "max_level": 60,
+  "max_level_after_awake": 70,
+  "name": "Queen Mab",
+  "nature": "Fire",
+  "passive_skill": [
+    {
+      "desc": "Increase Attack by 17.7%. When using a skill to attack a Burning or Frozen foe, increase Attack by 20%. If the foe is both Burning and Frozen, increase effect by 100%.",
+      "name": "Sweet Dreams"
+    },
+    {
+      "desc": "Increase Attack by 17.7%. When using a skill to attack a Burning or Frozen foe, increase Attack by 24%. If the foe is both Burning and Frozen, increase effect by 100%.",
+      "name": "Sweet Dreams I"
+    },
+    {
+      "desc": "Increase Attack by 17.7%. When using a skill to attack a Burning or Frozen foe, increase Attack by 28%. If the foe is both Burning and Frozen, increase effect by 100%.",
+      "name": "Sweet Dreams II"
+    }
+  ],
+  "rank": 5,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Fire damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

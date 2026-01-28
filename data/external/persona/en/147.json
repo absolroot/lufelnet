@@ -1,65 +1,75 @@
 {
-  "data": {
-    "name": "Pazuzu",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 21",
-        "desc": "Deal Curse damage to all foes equal to 66.5/70.7/74.9% of Attack. Chance to inflict 1 Curse stack on foes.",
-        "level": "6/7/8",
-        "name": "Maeigaon"
-      },
-      "innate_skill": [
-        {
-          "cost": "",
-          "desc": "Increase Curse damage by 8.7%.",
-          "learn_level": "6",
-          "level": "6/7/8",
-          "name": "Curse Boost III"
-        },
-        {
-          "cost": "",
-          "desc": "Decrease Curse damage taken by 8.7%.",
-          "learn_level": "12",
-          "level": "6/7/8",
-          "name": "Curse Reduction III"
-        },
-        {
-          "cost": "SP 21",
-          "desc": "Deal Curse damage to 1 foe equal to 132.5/140.8/149.1% of Attack. Inflict 1 to 2 Curse stacks on the foe.",
-          "learn_level": "18",
-          "level": "6/7/8",
-          "name": "Eigaon"
-        },
-        {
-          "cost": "SP 20",
-          "desc": "Deal Curse damage to 1 foe equal to 90.6/99.3/108.0% of Attack. Low chance to deal Curse insta-kill effect to foes with 50% or less HP. Increase chance based on foe's missing HP.",
-          "learn_level": "25",
-          "level": "6/7/8",
-          "name": "Mudoon"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase Attack by 17.7%. When attacking a foe with a skill, 40% chance to inflict 1 Curse stack on the main target. Then, deal Curse damage.",
-          "name": "Eternal Curse"
-        },
-        {
-          "desc": "Increase Attack by 17.7%. When attacking a foe with a skill, 50% chance to inflict 1 Curse stack on the main target. Then, deal Curse damage.",
-          "name": "Eternal Curse I"
-        },
-        {
-          "desc": "Increase Attack by 17.7%. When attacking a foe with a skill, 60% chance to inflict 1 Curse stack on the main target. Then, deal Curse damage.",
-          "name": "Eternal Curse II"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Deal Curse damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Wind",
+      "Curse"
+    ],
+    "Weak": [
+      "Bless"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 21",
+    "desc": "Deal Curse damage to all foes equal to 66.5/70.7/74.9% of Attack. Chance to inflict 1 Curse stack on foes.",
+    "level": "6/7/8",
+    "name": "Maeigaon"
+  },
+  "innate_skill": [
+    {
+      "cost": "",
+      "desc": "Increase Curse damage by 8.7%.",
+      "learn_level": "6",
+      "level": "6/7/8",
+      "name": "Curse Boost III"
+    },
+    {
+      "cost": "",
+      "desc": "Decrease Curse damage taken by 8.7%.",
+      "learn_level": "12",
+      "level": "6/7/8",
+      "name": "Curse Reduction III"
+    },
+    {
+      "cost": "SP 21",
+      "desc": "Deal Curse damage to 1 foe equal to 132.5/140.8/149.1% of Attack. Inflict 1 to 2 Curse stacks on the foe.",
+      "learn_level": "18",
+      "level": "6/7/8",
+      "name": "Eigaon"
+    },
+    {
+      "cost": "SP 20",
+      "desc": "Deal Curse damage to 1 foe equal to 90.6/99.3/108.0% of Attack. Low chance to deal Curse insta-kill effect to foes with 50% or less HP. Increase chance based on foe's missing HP.",
+      "learn_level": "25",
+      "level": "6/7/8",
+      "name": "Mudoon"
+    }
+  ],
+  "max_level": 60,
+  "max_level_after_awake": 70,
+  "name": "Pazuzu",
+  "nature": "Curse",
+  "passive_skill": [
+    {
+      "desc": "Increase Attack by 17.7%. When attacking a foe with a skill, 40% chance to inflict 1 Curse stack on the main target. Then, deal Curse damage.",
+      "name": "Eternal Curse"
+    },
+    {
+      "desc": "Increase Attack by 17.7%. When attacking a foe with a skill, 50% chance to inflict 1 Curse stack on the main target. Then, deal Curse damage.",
+      "name": "Eternal Curse I"
+    },
+    {
+      "desc": "Increase Attack by 17.7%. When attacking a foe with a skill, 60% chance to inflict 1 Curse stack on the main target. Then, deal Curse damage.",
+      "name": "Eternal Curse II"
+    }
+  ],
+  "rank": 5,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Curse damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

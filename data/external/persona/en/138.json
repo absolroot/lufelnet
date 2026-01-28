@@ -1,65 +1,76 @@
 {
-  "data": {
-    "name": "Unicorn",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 27",
-        "desc": "Restore 1 ally's HP equal to 16.2%/17.7%/19.2% of Attack + 490/631/788 and remove 1 random debuff. When a debuff is removed, restore HP by an additional 10.8%/11.8%/12.8% of Attack + 326/420/525.",
-        "level": "6/7/8",
-        "name": "Immaculate"
-      },
-      "innate_skill": [
-        {
-          "cost": "SP 25",
-          "desc": "Cure Dizzy, Sleep, or Forget on 1 ally.",
-          "learn_level": "5",
-          "level": "6/7/8",
-          "name": "Patra"
-        },
-        {
-          "cost": "SP 25",
-          "desc": "Cure Burn, Freeze, Shock, or Windswept on 1 ally.",
-          "learn_level": "10",
-          "level": "6/7/8",
-          "name": "Baisudi"
-        },
-        {
-          "cost": "",
-          "desc": "Increase HP by 8.3%.",
-          "learn_level": "15",
-          "level": "6/7/8",
-          "name": "HP Boost II"
-        },
-        {
-          "cost": "",
-          "desc": "Increase healing by 6%.",
-          "learn_level": "20",
-          "level": "6/7/8",
-          "name": "Healing Boost II"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase healing effect by 12%. When allies with no debuffs take damage, increase Defense by 26%.",
-          "name": "Spiritual Protection"
-        },
-        {
-          "desc": "Increase healing effect by 12%. When allies with no debuffs take damage, increase Defense by 29%.",
-          "name": "Spiritual Protection I"
-        },
-        {
-          "desc": "Increase healing effect by 12%. When allies with no debuffs take damage, increase Defense by 32%. After dealing damage, increase Attack by 5.5%.",
-          "name": "Spiritual Protection II"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Restore HP to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Ice",
+      "Psychokinesis",
+      "Bless"
+    ],
+    "Weak": [
+      "Curse"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 27",
+    "desc": "Restore 1 ally's HP equal to 16.2%/17.7%/19.2% of Attack + 490/631/788 and remove 1 random debuff. When a debuff is removed, restore HP by an additional 10.8%/11.8%/12.8% of Attack + 326/420/525.",
+    "level": "6/7/8",
+    "name": "Immaculate"
+  },
+  "innate_skill": [
+    {
+      "cost": "SP 25",
+      "desc": "Cure Dizzy, Sleep, or Forget on 1 ally.",
+      "learn_level": "5",
+      "level": "6/7/8",
+      "name": "Patra"
+    },
+    {
+      "cost": "SP 25",
+      "desc": "Cure Burn, Freeze, Shock, or Windswept on 1 ally.",
+      "learn_level": "10",
+      "level": "6/7/8",
+      "name": "Baisudi"
+    },
+    {
+      "cost": "",
+      "desc": "Increase HP by 8.3%.",
+      "learn_level": "15",
+      "level": "6/7/8",
+      "name": "HP Boost II"
+    },
+    {
+      "cost": "",
+      "desc": "Increase healing by 6%.",
+      "learn_level": "20",
+      "level": "6/7/8",
+      "name": "Healing Boost II"
+    }
+  ],
+  "max_level": 50,
+  "max_level_after_awake": 60,
+  "name": "Unicorn",
+  "nature": "Bless",
+  "passive_skill": [
+    {
+      "desc": "Increase healing effect by 12%. When allies with no debuffs take damage, increase Defense by 26%.",
+      "name": "Spiritual Protection"
+    },
+    {
+      "desc": "Increase healing effect by 12%. When allies with no debuffs take damage, increase Defense by 29%.",
+      "name": "Spiritual Protection I"
+    },
+    {
+      "desc": "Increase healing effect by 12%. When allies with no debuffs take damage, increase Defense by 32%. After dealing damage, increase Attack by 5.5%.",
+      "name": "Spiritual Protection II"
+    }
+  ],
+  "rank": 4,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Restore HP to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

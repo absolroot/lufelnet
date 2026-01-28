@@ -1,65 +1,74 @@
 {
-  "data": {
-    "name": "Jatayu",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP skillLv*-1+28",
-        "desc": "Remove Wind resistance from 1 target for 2 turns.",
-        "level": "6/7/8",
-        "name": "Wind Break"
-      },
-      "innate_skill": [
-        {
-          "cost": "SP 20",
-          "desc": "Deal Wind damage to 1 foe equal to 114.0/119.7/125.4% of Attack. 63.3/66.5/69.6% chance to inflict Windswept for 2 turns.",
-          "learn_level": "5",
-          "level": "6/7/8",
-          "name": "Garula"
-        },
-        {
-          "cost": "",
-          "desc": "Increase Speed by 9. Decrease Defense by 4%.",
-          "learn_level": "10",
-          "level": "6/7/8",
-          "name": "Agility Master II"
-        },
-        {
-          "cost": "SP 20",
-          "desc": "Deal Wind damage to all foes equal to 57.0/59.8/62.7% of Attack. 31.7/33.3/34.9% chance to inflict Windswept for 2 turns.",
-          "learn_level": "15",
-          "level": "6/7/8",
-          "name": "Magarula"
-        },
-        {
-          "cost": "",
-          "desc": "Increase Wind damage by 6.7%.",
-          "learn_level": "20",
-          "level": "6/7/8",
-          "name": "Wind Boost II"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase ailment accuracy by 14%. After using a Wind skill, decrease target's Defense by 16% for 2 turns.",
-          "name": "Golden Wings"
-        },
-        {
-          "desc": "Increase ailment accuracy by 14%. After using a Wind skill, decrease target's Defense by 18% for 2 turns.",
-          "name": "Golden Wings I"
-        },
-        {
-          "desc": "Increase ailment accuracy by 14%. After using a Wind skill, decrease target's Defense by 20% for 2 turns.",
-          "name": "Golden Wings II"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Deal Wind damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Wind"
+    ],
+    "Weak": [
+      "Psychokinesis"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP skillLv*-1+28",
+    "desc": "Remove Wind resistance from 1 target for 2 turns.",
+    "level": "6/7/8",
+    "name": "Wind Break"
+  },
+  "innate_skill": [
+    {
+      "cost": "SP 20",
+      "desc": "Deal Wind damage to 1 foe equal to 114.0/119.7/125.4% of Attack. 63.3/66.5/69.6% chance to inflict Windswept for 2 turns.",
+      "learn_level": "5",
+      "level": "6/7/8",
+      "name": "Garula"
+    },
+    {
+      "cost": "",
+      "desc": "Increase Speed by 9. Decrease Defense by 4%.",
+      "learn_level": "10",
+      "level": "6/7/8",
+      "name": "Agility Master II"
+    },
+    {
+      "cost": "SP 20",
+      "desc": "Deal Wind damage to all foes equal to 57.0/59.8/62.7% of Attack. 31.7/33.3/34.9% chance to inflict Windswept for 2 turns.",
+      "learn_level": "15",
+      "level": "6/7/8",
+      "name": "Magarula"
+    },
+    {
+      "cost": "",
+      "desc": "Increase Wind damage by 6.7%.",
+      "learn_level": "20",
+      "level": "6/7/8",
+      "name": "Wind Boost II"
+    }
+  ],
+  "max_level": 50,
+  "max_level_after_awake": 60,
+  "name": "Jatayu",
+  "nature": "Wind",
+  "passive_skill": [
+    {
+      "desc": "Increase ailment accuracy by 14%. After using a Wind skill, decrease target's Defense by 16% for 2 turns.",
+      "name": "Golden Wings"
+    },
+    {
+      "desc": "Increase ailment accuracy by 14%. After using a Wind skill, decrease target's Defense by 18% for 2 turns.",
+      "name": "Golden Wings I"
+    },
+    {
+      "desc": "Increase ailment accuracy by 14%. After using a Wind skill, decrease target's Defense by 20% for 2 turns.",
+      "name": "Golden Wings II"
+    }
+  ],
+  "rank": 4,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Wind damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

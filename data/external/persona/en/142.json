@@ -1,54 +1,64 @@
 {
-  "data": {
-    "name": "Archangel",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 24",
-        "desc": "35.0/36.8/38.5% chance to inflict Dizzy on 1 foe for 1 turn. Increase base accuracy by 15.0/15.8/16.5% for each Blessing on the user. Stacks up to 4 times.",
-        "level": "6/7/8",
-        "name": "Dizzy Needle"
-      },
-      "innate_skill": [
-        {
-          "cost": "SP 19",
-          "desc": "Deal Bless damage to all foes equal to 57.6/60.9/64.2% of Attack. Gain 0 to 1 Blessing stacks.",
-          "learn_level": "4",
-          "level": "6/7/8",
-          "name": "Makouha"
-        },
-        {
-          "cost": "",
-          "desc": "Increase Dizzy accuracy by 8.8%.",
-          "learn_level": "8",
-          "level": "6/7/8",
-          "name": "Dizzy Boost I"
-        },
-        {
-          "cost": "SP 19",
-          "desc": "Deal Bless damage to 1 foe equal to 79.2/87.3/95.4% of Attack. Low chance to deal a Bless insta-kill effect to foes with 50% or less HP. Increase chance based on foe's missing HP.",
-          "learn_level": "12",
-          "level": "6/7/8",
-          "name": "Hama"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase ailment accuracy by 10%. After using a skill, 30% chance to gain 1 Blessing stack. If the skill deals Bless damage, gain 1 more Blessing stack.",
-          "name": "Sublime Luminance"
-        },
-        {
-          "desc": "Increase ailment accuracy by 10%. After using a skill, 70% chance to gain 1 Blessing stack. If the skill deals Bless damage, gain 1 more Blessing stack.",
-          "name": "Sublime Luminance I"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Deal Bless damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Bless"
+    ],
+    "Weak": [
+      "Electric",
+      "Curse"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 24",
+    "desc": "35.0/36.8/38.5% chance to inflict Dizzy on 1 foe for 1 turn. Increase base accuracy by 15.0/15.8/16.5% for each Blessing on the user. Stacks up to 4 times.",
+    "level": "6/7/8",
+    "name": "Dizzy Needle"
+  },
+  "innate_skill": [
+    {
+      "cost": "SP 19",
+      "desc": "Deal Bless damage to all foes equal to 57.6/60.9/64.2% of Attack. Gain 0 to 1 Blessing stacks.",
+      "learn_level": "4",
+      "level": "6/7/8",
+      "name": "Makouha"
+    },
+    {
+      "cost": "",
+      "desc": "Increase Dizzy accuracy by 8.8%.",
+      "learn_level": "8",
+      "level": "6/7/8",
+      "name": "Dizzy Boost I"
+    },
+    {
+      "cost": "SP 19",
+      "desc": "Deal Bless damage to 1 foe equal to 79.2/87.3/95.4% of Attack. Low chance to deal a Bless insta-kill effect to foes with 50% or less HP. Increase chance based on foe's missing HP.",
+      "learn_level": "12",
+      "level": "6/7/8",
+      "name": "Hama"
+    }
+  ],
+  "max_level": 30,
+  "max_level_after_awake": 35,
+  "name": "Archangel",
+  "nature": "Bless",
+  "passive_skill": [
+    {
+      "desc": "Increase ailment accuracy by 10%. After using a skill, 30% chance to gain 1 Blessing stack. If the skill deals Bless damage, gain 1 more Blessing stack.",
+      "name": "Sublime Luminance"
+    },
+    {
+      "desc": "Increase ailment accuracy by 10%. After using a skill, 70% chance to gain 1 Blessing stack. If the skill deals Bless damage, gain 1 more Blessing stack.",
+      "name": "Sublime Luminance I"
+    }
+  ],
+  "rank": 2,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Bless damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

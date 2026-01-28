@@ -1,69 +1,79 @@
 {
-  "data": {
-    "name": "Yatagarasu",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 21",
-        "desc": "Deal Fire damage to all foes equal to 60.8/63.8/66.9% of Attack. 33.8/35.5/37.2% chance to inflict Burn for 2 turns.",
-        "level": "6/7/8",
-        "name": "Maragidyne"
-      },
-      "innate_skill": [
-        {
-          "cost": "SP skillLv*-1+28",
-          "desc": "Remove 1 stat debuff from all allies.",
-          "learn_level": "8",
-          "level": "6/7/8",
-          "name": "Dekunda"
-        },
-        {
-          "cost": "",
-          "desc": "Increase critical rate by 8.5% when surrounded by enemies.",
-          "learn_level": "16",
-          "level": "6/7/8",
-          "name": "Adverse Resolve III"
-        },
-        {
-          "cost": "",
-          "desc": "Decrease Bless damage taken by 8.7%.",
-          "learn_level": "24",
-          "level": "6/7/8",
-          "name": "Bless Reduction III"
-        },
-        {
-          "cost": "",
-          "desc": "Increase Burn accuracy by 16.3%.",
-          "learn_level": "32",
-          "level": "6/7/8",
-          "name": "Burn Boost III"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase Attack by 17.5%. If the user has no debuffs, increase Attack by 22.5% and Fire damage by 12%.",
-          "name": "Servant of the Sun"
-        },
-        {
-          "desc": "Increase Attack by 17.5%. If the user has no debuffs, increase Attack by 25% and Fire damage by 13.5%.",
-          "name": "Servant of the Sun I"
-        },
-        {
-          "desc": "Increase Attack by 17.5%. If the user has no debuffs, increase Attack by 27.5% and Fire damage by 15%.",
-          "name": "Servant of the Sun II"
-        },
-        {
-          "desc": "Increase Attack by 17.5%. If the user has no debuffs, increase Attack by 30% and Fire damage by 16.5%.",
-          "name": "Servant of the Sun III"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Deal Fire damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Wind",
+      "Bless"
+    ],
+    "Weak": [
+      "Curse"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 21",
+    "desc": "Deal Fire damage to all foes equal to 60.8/63.8/66.9% of Attack. 33.8/35.5/37.2% chance to inflict Burn for 2 turns.",
+    "level": "6/7/8",
+    "name": "Maragidyne"
+  },
+  "innate_skill": [
+    {
+      "cost": "SP skillLv*-1+28",
+      "desc": "Remove 1 stat debuff from all allies.",
+      "learn_level": "8",
+      "level": "6/7/8",
+      "name": "Dekunda"
+    },
+    {
+      "cost": "",
+      "desc": "Increase critical rate by 8.5% when surrounded by enemies.",
+      "learn_level": "16",
+      "level": "6/7/8",
+      "name": "Adverse Resolve III"
+    },
+    {
+      "cost": "",
+      "desc": "Decrease Bless damage taken by 8.7%.",
+      "learn_level": "24",
+      "level": "6/7/8",
+      "name": "Bless Reduction III"
+    },
+    {
+      "cost": "",
+      "desc": "Increase Burn accuracy by 16.3%.",
+      "learn_level": "32",
+      "level": "6/7/8",
+      "name": "Burn Boost III"
+    }
+  ],
+  "max_level": 70,
+  "max_level_after_awake": 85,
+  "name": "Yatagarasu",
+  "nature": "Fire",
+  "passive_skill": [
+    {
+      "desc": "Increase Attack by 17.5%. If the user has no debuffs, increase Attack by 22.5% and Fire damage by 12%.",
+      "name": "Servant of the Sun"
+    },
+    {
+      "desc": "Increase Attack by 17.5%. If the user has no debuffs, increase Attack by 25% and Fire damage by 13.5%.",
+      "name": "Servant of the Sun I"
+    },
+    {
+      "desc": "Increase Attack by 17.5%. If the user has no debuffs, increase Attack by 27.5% and Fire damage by 15%.",
+      "name": "Servant of the Sun II"
+    },
+    {
+      "desc": "Increase Attack by 17.5%. If the user has no debuffs, increase Attack by 30% and Fire damage by 16.5%.",
+      "name": "Servant of the Sun III"
+    }
+  ],
+  "rank": 6,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Fire damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

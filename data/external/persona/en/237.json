@@ -1,65 +1,74 @@
 {
-  "data": {
-    "name": "Kushinada",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 22",
-        "desc": "Increase party's Attack by 10.9%/11.4%/12.0%. For every 500 of the user's Attack, increase party's Attack by 0.9%/0.9%/1.0% more, up to 7.2%/7.6%/7.9%. Lasts for 3 turns.",
-        "level": "6/7/8",
-        "name": "Matarukaja"
-      },
-      "innate_skill": [
-        {
-          "cost": "SP 21",
-          "desc": "Deal Ice damage to 1 foe equal to 121.7/127.8/133.9% of Attack. 67.6/71.0/74.4% chance to inflict Freeze for 2 turns.",
-          "learn_level": "6",
-          "level": "6/7/8",
-          "name": "Bufudyne"
-        },
-        {
-          "cost": "",
-          "desc": "Decrease Ice damage taken by 8.7%.",
-          "learn_level": "12",
-          "level": "6/7/8",
-          "name": "Ice Reduction III"
-        },
-        {
-          "cost": "",
-          "desc": "Increase damage by 8.7%.",
-          "learn_level": "18",
-          "level": "6/7/8",
-          "name": "Battle Acumen III"
-        },
-        {
-          "cost": "",
-          "desc": "Increase Speed by 12. Decrease Defense by 8%.",
-          "learn_level": "25",
-          "level": "6/7/8",
-          "name": "Agility Master III"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase ailment accuracy by 21.2%. Whenever using a buff skill, permanently increase party's Attack by 6.7%. Stacks up to 3 times.",
-          "name": "Beloved Princess"
-        },
-        {
-          "desc": "Increase ailment accuracy by 21.2%. Whenever using a buff skill, permanently increase party's Attack by 7.6%. Stacks up to 3 times.",
-          "name": "Beloved Princess I"
-        },
-        {
-          "desc": "Increase ailment accuracy by 21.2%. Whenever using a buff skill, permanently increase party's Attack by 8.5%. Stacks up to 3 times.",
-          "name": "Beloved Princess II"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Increase party's damage by 29.5%/31.6%/33.6% for 2 turns.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Bless"
+    ],
+    "Weak": [
+      "Nuclear"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 22",
+    "desc": "Increase party's Attack by 10.9%/11.4%/12.0%. For every 500 of the user's Attack, increase party's Attack by 0.9%/0.9%/1.0% more, up to 7.2%/7.6%/7.9%. Lasts for 3 turns.",
+    "level": "6/7/8",
+    "name": "Matarukaja"
+  },
+  "innate_skill": [
+    {
+      "cost": "SP 21",
+      "desc": "Deal Ice damage to 1 foe equal to 121.7/127.8/133.9% of Attack. 67.6/71.0/74.4% chance to inflict Freeze for 2 turns.",
+      "learn_level": "6",
+      "level": "6/7/8",
+      "name": "Bufudyne"
+    },
+    {
+      "cost": "",
+      "desc": "Decrease Ice damage taken by 8.7%.",
+      "learn_level": "12",
+      "level": "6/7/8",
+      "name": "Ice Reduction III"
+    },
+    {
+      "cost": "",
+      "desc": "Increase damage by 8.7%.",
+      "learn_level": "18",
+      "level": "6/7/8",
+      "name": "Battle Acumen III"
+    },
+    {
+      "cost": "",
+      "desc": "Increase Speed by 12. Decrease Defense by 8%.",
+      "learn_level": "25",
+      "level": "6/7/8",
+      "name": "Agility Master III"
+    }
+  ],
+  "max_level": 60,
+  "max_level_after_awake": 70,
+  "name": "Kushinada",
+  "nature": "Ice",
+  "passive_skill": [
+    {
+      "desc": "Increase ailment accuracy by 21.2%. Whenever using a buff skill, permanently increase party's Attack by 6.7%. Stacks up to 3 times.",
+      "name": "Beloved Princess"
+    },
+    {
+      "desc": "Increase ailment accuracy by 21.2%. Whenever using a buff skill, permanently increase party's Attack by 7.6%. Stacks up to 3 times.",
+      "name": "Beloved Princess I"
+    },
+    {
+      "desc": "Increase ailment accuracy by 21.2%. Whenever using a buff skill, permanently increase party's Attack by 8.5%. Stacks up to 3 times.",
+      "name": "Beloved Princess II"
+    }
+  ],
+  "rank": 5,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Increase party's damage by 29.5%/31.6%/33.6% for 2 turns.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

@@ -1,65 +1,77 @@
 {
-  "data": {
-    "name": "Lilim",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 3",
-        "desc": "Drain 25/26/27 SP from 1 foe.",
-        "level": "6/7/8",
-        "name": "Spirit Drain"
-      },
-      "innate_skill": [
-        {
-          "cost": "SP 20",
-          "desc": "Deal Ice damage to 1 foe equal to 114.0/119.7/125.4% of Attack. 63.3/66.5/69.6% chance to inflict Freeze for 2 turns.",
-          "learn_level": "5",
-          "level": "6/7/8",
-          "name": "Bufula"
-        },
-        {
-          "cost": "",
-          "desc": "Increase damage by 6.7%.",
-          "learn_level": "10",
-          "level": "6/7/8",
-          "name": "Battle Acumen II"
-        },
-        {
-          "cost": "",
-          "desc": "Increase Freeze accuracy by 12.5%.",
-          "learn_level": "15",
-          "level": "6/7/8",
-          "name": "Freeze Boost II"
-        },
-        {
-          "cost": "",
-          "desc": "Decrease Bless damage taken by 6.7%.",
-          "learn_level": "20",
-          "level": "6/7/8",
-          "name": "Bless Reduction II"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase Attack by 14.1%. After inflicting Freeze, increase user's Attack by 24% for 2 turns.",
-          "name": "A Kiss Like Ice"
-        },
-        {
-          "desc": "Increase Attack by 14.1%. After inflicting Freeze, increase user's Attack by 27% for 2 turns.",
-          "name": "A Kiss Like Ice I"
-        },
-        {
-          "desc": "Increase Attack by 14.1%. After inflicting Freeze, increase user's Attack by 30% for 2 turns.",
-          "name": "A Kiss Like Ice II"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Deal Ice damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Ice",
+      "Curse"
+    ],
+    "Weak": [
+      "Gun",
+      "Wind",
+      "Bless"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 3",
+    "desc": "Drain 25/26/27 SP from 1 foe.",
+    "level": "6/7/8",
+    "name": "Spirit Drain"
+  },
+  "innate_skill": [
+    {
+      "cost": "SP 20",
+      "desc": "Deal Ice damage to 1 foe equal to 114.0/119.7/125.4% of Attack. 63.3/66.5/69.6% chance to inflict Freeze for 2 turns.",
+      "learn_level": "5",
+      "level": "6/7/8",
+      "name": "Bufula"
+    },
+    {
+      "cost": "",
+      "desc": "Increase damage by 6.7%.",
+      "learn_level": "10",
+      "level": "6/7/8",
+      "name": "Battle Acumen II"
+    },
+    {
+      "cost": "",
+      "desc": "Increase Freeze accuracy by 12.5%.",
+      "learn_level": "15",
+      "level": "6/7/8",
+      "name": "Freeze Boost II"
+    },
+    {
+      "cost": "",
+      "desc": "Decrease Bless damage taken by 6.7%.",
+      "learn_level": "20",
+      "level": "6/7/8",
+      "name": "Bless Reduction II"
+    }
+  ],
+  "max_level": 50,
+  "max_level_after_awake": 60,
+  "name": "Lilim",
+  "nature": "Ice",
+  "passive_skill": [
+    {
+      "desc": "Increase Attack by 14.1%. After inflicting Freeze, increase user's Attack by 24% for 2 turns.",
+      "name": "A Kiss Like Ice"
+    },
+    {
+      "desc": "Increase Attack by 14.1%. After inflicting Freeze, increase user's Attack by 27% for 2 turns.",
+      "name": "A Kiss Like Ice I"
+    },
+    {
+      "desc": "Increase Attack by 14.1%. After inflicting Freeze, increase user's Attack by 30% for 2 turns.",
+      "name": "A Kiss Like Ice II"
+    }
+  ],
+  "rank": 4,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Ice damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

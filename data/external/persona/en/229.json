@@ -1,61 +1,70 @@
 {
-  "data": {
-    "name": "Setanta",
-    "skill": {
-      "fixed_skill": {
-        "cost": "체력 9.0%",
-        "desc": "Deal Physical damage to all foes equal to 74.3%/78.0%/81.7% of Attack. For each debuff on foes, increase damage by 12%. Stacks up to 3 times. If foes are Sleeping, it is counted as 3 debuffs.",
-        "level": "6/7/8",
-        "name": "Spirit Binding"
-      },
-      "innate_skill": [
-        {
-          "cost": "",
-          "desc": "At the start of battle, increase Attack by 12.1% for 2 turns.",
-          "learn_level": "5",
-          "level": "6/7/8",
-          "name": "Attack Master II"
-        },
-        {
-          "cost": "",
-          "desc": "Increase Sleep accuracy by 12.5%.",
-          "learn_level": "10",
-          "level": "6/7/8",
-          "name": "Sleep Boost II"
-        },
-        {
-          "cost": "SP 22",
-          "desc": "43.6/45.8/48.0% chance to inflict Sleep on 1 foe for 2 turns.",
-          "learn_level": "15",
-          "level": "6/7/8",
-          "name": "Dormina"
-        },
-        {
-          "cost": "",
-          "desc": "Increase critical rate by 5%.",
-          "learn_level": "20",
-          "level": "6/7/8",
-          "name": "Apt Pupil II"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase critical damage by 15%. When attacking a foe with a debuff, increase Attack by 30%. If damage is dealt, increase party's Attack by 10% for 1 turn.",
-          "name": "Bloodthirsty Warrior"
-        },
-        {
-          "desc": "Increase critical damage by 15%. When attacking a foe with a debuff, increase Attack by 35%. If damage is dealt, increase party's Attack by 11.5% for 1 turn.",
-          "name": "Bloodthirsty Warrior I"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Deal Physical damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Nuclear"
+    ],
+    "Weak": [
+      "Psychokinesis"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "체력 9.0%",
+    "desc": "Deal Physical damage to all foes equal to 74.3%/78.0%/81.7% of Attack. For each debuff on foes, increase damage by 12%. Stacks up to 3 times. If foes are Sleeping, it is counted as 3 debuffs.",
+    "level": "6/7/8",
+    "name": "Spirit Binding"
+  },
+  "innate_skill": [
+    {
+      "cost": "",
+      "desc": "At the start of battle, increase Attack by 12.1% for 2 turns.",
+      "learn_level": "5",
+      "level": "6/7/8",
+      "name": "Attack Master II"
+    },
+    {
+      "cost": "",
+      "desc": "Increase Sleep accuracy by 12.5%.",
+      "learn_level": "10",
+      "level": "6/7/8",
+      "name": "Sleep Boost II"
+    },
+    {
+      "cost": "SP 22",
+      "desc": "43.6/45.8/48.0% chance to inflict Sleep on 1 foe for 2 turns.",
+      "learn_level": "15",
+      "level": "6/7/8",
+      "name": "Dormina"
+    },
+    {
+      "cost": "",
+      "desc": "Increase critical rate by 5%.",
+      "learn_level": "20",
+      "level": "6/7/8",
+      "name": "Apt Pupil II"
+    }
+  ],
+  "max_level": 40,
+  "max_level_after_awake": 45,
+  "name": "Setanta",
+  "nature": "Phys",
+  "passive_skill": [
+    {
+      "desc": "Increase critical damage by 15%. When attacking a foe with a debuff, increase Attack by 30%. If damage is dealt, increase party's Attack by 10% for 1 turn.",
+      "name": "Bloodthirsty Warrior"
+    },
+    {
+      "desc": "Increase critical damage by 15%. When attacking a foe with a debuff, increase Attack by 35%. If damage is dealt, increase party's Attack by 11.5% for 1 turn.",
+      "name": "Bloodthirsty Warrior I"
+    }
+  ],
+  "rank": 3,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Physical damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

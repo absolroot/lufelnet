@@ -1,65 +1,73 @@
 {
-  "data": {
-    "name": "Scathach",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 21",
-        "desc": "Deal Wind damage to all foes equal to 60.8/63.8/66.9% of Attack. 33.8/35.5/37.2% chance to inflict Windswept for 2 turns.",
-        "level": "6/7/8",
-        "name": "Magarudyne"
-      },
-      "innate_skill": [
-        {
-          "cost": "",
-          "desc": "Decrease Curse damage taken by 8.7%.",
-          "learn_level": "6",
-          "level": "6/7/8",
-          "name": "Curse Reduction III"
-        },
-        {
-          "cost": "",
-          "desc": "Increase Wind damage by 8.7%.",
-          "learn_level": "12",
-          "level": "6/7/8",
-          "name": "Wind Boost III"
-        },
-        {
-          "cost": "",
-          "desc": "At the start of battle, increase party's Attack by 7.9% for 2 turns or until user changes Personas.",
-          "learn_level": "18",
-          "level": "6/7/8",
-          "name": "Auto-Mataru III"
-        },
-        {
-          "cost": "",
-          "desc": "Decrease Ice damage taken by 8.7%.",
-          "learn_level": "25",
-          "level": "6/7/8",
-          "name": "Ice Reduction III"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase Attack by 14.5%. Increase Wind damage taken by foes with debuffs by 22%. If Windswept, increase effect by 25% more.",
-          "name": "Storm of Shadows"
-        },
-        {
-          "desc": "Increase Attack by 14.5%. Increase Wind damage taken by foes with debuffs by 25%. If Windswept, increase effect by 25% more.",
-          "name": "Storm of Shadows I"
-        },
-        {
-          "desc": "Increase Attack by 14.5%. Increase Wind damage taken by foes with debuffs by 28%. If Windswept, increase effect by 25% more.",
-          "name": "Storm of Shadows II"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Deal Wind damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Ice",
+      "Curse"
+    ],
+    "Weak": []
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 21",
+    "desc": "Deal Wind damage to all foes equal to 60.8/63.8/66.9% of Attack. 33.8/35.5/37.2% chance to inflict Windswept for 2 turns.",
+    "level": "6/7/8",
+    "name": "Magarudyne"
+  },
+  "innate_skill": [
+    {
+      "cost": "",
+      "desc": "Decrease Curse damage taken by 8.7%.",
+      "learn_level": "6",
+      "level": "6/7/8",
+      "name": "Curse Reduction III"
+    },
+    {
+      "cost": "",
+      "desc": "Increase Wind damage by 8.7%.",
+      "learn_level": "12",
+      "level": "6/7/8",
+      "name": "Wind Boost III"
+    },
+    {
+      "cost": "",
+      "desc": "At the start of battle, increase party's Attack by 7.9% for 2 turns or until user changes Personas.",
+      "learn_level": "18",
+      "level": "6/7/8",
+      "name": "Auto-Mataru III"
+    },
+    {
+      "cost": "",
+      "desc": "Decrease Ice damage taken by 8.7%.",
+      "learn_level": "25",
+      "level": "6/7/8",
+      "name": "Ice Reduction III"
+    }
+  ],
+  "max_level": 60,
+  "max_level_after_awake": 70,
+  "name": "Scathach",
+  "nature": "Wind",
+  "passive_skill": [
+    {
+      "desc": "Increase Attack by 14.5%. Increase Wind damage taken by foes with debuffs by 22%. If Windswept, increase effect by 25% more.",
+      "name": "Storm of Shadows"
+    },
+    {
+      "desc": "Increase Attack by 14.5%. Increase Wind damage taken by foes with debuffs by 25%. If Windswept, increase effect by 25% more.",
+      "name": "Storm of Shadows I"
+    },
+    {
+      "desc": "Increase Attack by 14.5%. Increase Wind damage taken by foes with debuffs by 28%. If Windswept, increase effect by 25% more.",
+      "name": "Storm of Shadows II"
+    }
+  ],
+  "rank": 5,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Wind damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

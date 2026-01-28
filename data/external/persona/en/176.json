@@ -1,69 +1,79 @@
 {
-  "data": {
-    "name": "Ganesha",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 22",
-        "desc": "Increase 1 ally's Defense by 23.3%/24.5%/25.6%. For every 500 of the user's Defense, increase the target's Defense by 3.9%/4.1%/4.3% more, up to 15.6%/16.4%/17.2%. Lasts for 3 turns.",
-        "level": "6/7/8",
-        "name": "Rakukaja"
-      },
-      "innate_skill": [
-        {
-          "cost": "",
-          "desc": "Increase HP by 10.8%.",
-          "learn_level": "8",
-          "level": "6/7/8",
-          "name": "HP Boost III"
-        },
-        {
-          "cost": "",
-          "desc": "Decrease damage taken by 8.7%.",
-          "learn_level": "16",
-          "level": "6/7/8",
-          "name": "Reduction Boost III"
-        },
-        {
-          "cost": "",
-          "desc": "At the start of battle, increase party's Defense by 11.8% for 2 turns or until user changes Personas.",
-          "learn_level": "24",
-          "level": "6/7/8",
-          "name": "Auto-Maraku III"
-        },
-        {
-          "cost": "",
-          "desc": "Decrease Speed by 12. Increase HP by 29%.",
-          "learn_level": "32",
-          "level": "6/7/8",
-          "name": "Ironclad Resolve III"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase Defense by 31.8%. When using a skill on an ally, increase target's healing received by 8.1% for 1 turn. Increase user's healing received by 4.8%.",
-          "name": "Fortune's Protection"
-        },
-        {
-          "desc": "Increase Defense by 31.8%. When using a skill on an ally, increase target's healing received by 9.2% for 1 turn. Increase user's healing received by 5.4%.",
-          "name": "Fortune's Protection I"
-        },
-        {
-          "desc": "Increase Defense by 31.8%. When using a skill on an ally, increase target's healing received by 10.3% for 1 turn. Increase user's healing received by 6%.",
-          "name": "Fortune's Protection II"
-        },
-        {
-          "desc": "Increase Defense by 31.8%. When using a skill on an ally, increase target's healing received by 11.4% for 1 turn. Increase user's healing received by 6.6%.",
-          "name": "Fortune's Protection III"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Grant a shield to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275 for 2 turns.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Phys",
+      "Wind"
+    ],
+    "Weak": [
+      "Psychokinesis"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 22",
+    "desc": "Increase 1 ally's Defense by 23.3%/24.5%/25.6%. For every 500 of the user's Defense, increase the target's Defense by 3.9%/4.1%/4.3% more, up to 15.6%/16.4%/17.2%. Lasts for 3 turns.",
+    "level": "6/7/8",
+    "name": "Rakukaja"
+  },
+  "innate_skill": [
+    {
+      "cost": "",
+      "desc": "Increase HP by 10.8%.",
+      "learn_level": "8",
+      "level": "6/7/8",
+      "name": "HP Boost III"
+    },
+    {
+      "cost": "",
+      "desc": "Decrease damage taken by 8.7%.",
+      "learn_level": "16",
+      "level": "6/7/8",
+      "name": "Reduction Boost III"
+    },
+    {
+      "cost": "",
+      "desc": "At the start of battle, increase party's Defense by 11.8% for 2 turns or until user changes Personas.",
+      "learn_level": "24",
+      "level": "6/7/8",
+      "name": "Auto-Maraku III"
+    },
+    {
+      "cost": "",
+      "desc": "Decrease Speed by 12. Increase HP by 29%.",
+      "learn_level": "32",
+      "level": "6/7/8",
+      "name": "Ironclad Resolve III"
+    }
+  ],
+  "max_level": 70,
+  "max_level_after_awake": 85,
+  "name": "Ganesha",
+  "nature": "Phys",
+  "passive_skill": [
+    {
+      "desc": "Increase Defense by 31.8%. When using a skill on an ally, increase target's healing received by 8.1% for 1 turn. Increase user's healing received by 4.8%.",
+      "name": "Fortune's Protection"
+    },
+    {
+      "desc": "Increase Defense by 31.8%. When using a skill on an ally, increase target's healing received by 9.2% for 1 turn. Increase user's healing received by 5.4%.",
+      "name": "Fortune's Protection I"
+    },
+    {
+      "desc": "Increase Defense by 31.8%. When using a skill on an ally, increase target's healing received by 10.3% for 1 turn. Increase user's healing received by 6%.",
+      "name": "Fortune's Protection II"
+    },
+    {
+      "desc": "Increase Defense by 31.8%. When using a skill on an ally, increase target's healing received by 11.4% for 1 turn. Increase user's healing received by 6.6%.",
+      "name": "Fortune's Protection III"
+    }
+  ],
+  "rank": 6,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Grant a shield to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275 for 2 turns.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

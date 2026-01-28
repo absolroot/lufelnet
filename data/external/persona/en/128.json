@@ -1,74 +1,83 @@
 {
-  "data": {
-    "name": "Michael",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 22",
-        "desc": "Deal Curse damage to 1 foe equal to 142.5/151.8/161.1% of Attack. Inflict 2 Curse stacks on the foe.",
-        "level": "6/7/8",
-        "name": "Demonic Decree"
-      },
-      "innate_skill": [
-        {
-          "cost": "",
-          "desc": "Increase Attack by 5.8%.",
-          "learn_level": "1",
-          "level": "6/7/8",
-          "name": "Attack Boost I"
-        },
-        {
-          "cost": "",
-          "desc": "Increase critical damage by 7%.",
-          "learn_level": "30",
-          "level": "6/7/8",
-          "name": "Pinpoint I"
-        },
-        {
-          "cost": "",
-          "desc": "Increase Physical damage by 4.7%.",
-          "learn_level": "50",
-          "level": "6/7/8",
-          "name": "Phys Boost I"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase Curse damage by 4%.",
-          "name": "Curse Boost"
-        },
-        {
-          "desc": "Increase Curse damage by 8%.",
-          "name": "Curse Boost: Improved"
-        },
-        {
-          "desc": "Increase Curse damage by 12%.",
-          "name": "Curse Boost: Refined"
-        },
-        {
-          "desc": "Increase Curse damage by 12%. When defeating a foe with Despair, transfer Despair to a living foe.",
-          "name": "Curse Boost: Enhanced"
-        },
-        {
-          "desc": "Increase Curse damage by 16%. When defeating a foe with Despair, transfer Despair to a living foe.",
-          "name": "Curse Boost: Superior"
-        },
-        {
-          "desc": "Increase Curse damage by 20%. When defeating a foe with Despair, transfer Despair to a living foe.",
-          "name": "Curse Boost: Ascended"
-        },
-        {
-          "desc": "Increase Curse damage by 20%. When defeating a foe with Despair, transfer Despair to a living foe. When target foe has 5 or more debuffs, increase damage by 10% more.",
-          "name": "Curse Boost: Ultimate"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Deal Nuclear damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Gun",
+      "Bless",
+      "Curse"
+    ],
+    "Weak": []
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 22",
+    "desc": "Deal Curse damage to 1 foe equal to 142.5/151.8/161.1% of Attack. Inflict 2 Curse stacks on the foe.",
+    "level": "6/7/8",
+    "name": "Demonic Decree"
+  },
+  "innate_skill": [
+    {
+      "cost": "",
+      "desc": "Increase Attack by 5.8%.",
+      "learn_level": "1",
+      "level": "6/7/8",
+      "name": "Attack Boost I"
+    },
+    {
+      "cost": "",
+      "desc": "Increase critical damage by 7%.",
+      "learn_level": "30",
+      "level": "6/7/8",
+      "name": "Pinpoint I"
+    },
+    {
+      "cost": "",
+      "desc": "Increase Physical damage by 4.7%.",
+      "learn_level": "50",
+      "level": "6/7/8",
+      "name": "Phys Boost I"
+    }
+  ],
+  "max_level": 80,
+  "max_level_after_awake": 99,
+  "name": "Michael",
+  "nature": "Nuclear",
+  "passive_skill": [
+    {
+      "desc": "Increase Curse damage by 4%.",
+      "name": "Curse Boost"
+    },
+    {
+      "desc": "Increase Curse damage by 8%.",
+      "name": "Curse Boost: Improved"
+    },
+    {
+      "desc": "Increase Curse damage by 12%.",
+      "name": "Curse Boost: Refined"
+    },
+    {
+      "desc": "Increase Curse damage by 12%. When defeating a foe with Despair, transfer Despair to a living foe.",
+      "name": "Curse Boost: Enhanced"
+    },
+    {
+      "desc": "Increase Curse damage by 16%. When defeating a foe with Despair, transfer Despair to a living foe.",
+      "name": "Curse Boost: Superior"
+    },
+    {
+      "desc": "Increase Curse damage by 20%. When defeating a foe with Despair, transfer Despair to a living foe.",
+      "name": "Curse Boost: Ascended"
+    },
+    {
+      "desc": "Increase Curse damage by 20%. When defeating a foe with Despair, transfer Despair to a living foe. When target foe has 5 or more debuffs, increase damage by 10% more.",
+      "name": "Curse Boost: Ultimate"
+    }
+  ],
+  "rank": 8,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Nuclear damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

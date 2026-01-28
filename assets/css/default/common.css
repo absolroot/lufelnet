@@ -644,25 +644,8 @@ body {
 
 
 body {
-    caret-color: transparent;
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
     overflow-y: auto;
     /* overlay는 Chrome 114 이후 deprecated */
-}
-
-/* 입력이 필요한 요소들은 예외 처리 */
-input,
-textarea,
-p,
-span {
-    caret-color: auto;
-    user-select: auto;
-    -webkit-user-select: auto;
-    -moz-user-select: auto;
-    -ms-user-select: auto;
 }
 
 

@@ -309,6 +309,7 @@
   function toAbsUrl(path) {
     if (!path) return '';
     const p = String(path);
+    if (p.startsWith('#')) return p; // Return hash links as-is
     if (/^https?:\/\//i.test(p)) return p;
     if (p.startsWith('/')) return `${BASE}${p}`;
     return `${BASE}/${p}`;
@@ -848,6 +849,14 @@
         link = document.createElement('a');
         link.className = 'slide-link';
         link.href = slide.customLink;
+        if (slide.customLink.startsWith('#')) {
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const modalId = slide.customLink.substring(1);
+            const modal = document.getElementById(modalId);
+            if (modal) modal.style.display = 'block';
+          });
+        }
         link.target = slide.customLinkTarget;
       }
     } else {

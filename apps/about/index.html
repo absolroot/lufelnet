@@ -105,6 +105,28 @@ jp: /about/?lang=jp
         <!-- Inline donate (EN/JP only) -->
         <div class="about-section" id="donate-inline" style="display: none;">
             <div id="donation-inline-text"></div>
+
+            <!-- JP: Fanbox Button -->
+            <div id="fanbox-inline-container" style="display: none; margin-bottom: 12px;">
+                <a href="https://absolroot.fanbox.cc/plans" target="_blank" class="fanbox-button" style="
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 8px;
+                    background-color: #F5F5F5;
+                    color: #333;
+                    text-decoration: none;
+                    font-weight: bold;
+                    padding: 10px 20px;
+                    border-radius: 8px;
+                    border: 1px solid #ddd;
+                    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                    transition: all 0.2s;
+                 ">
+                    <img src="https://img.icons8.com/color/48/pixiv.png" alt="pixiv" style="width: 24px; height: 24px;">
+                    <span>pixivFANBOXで支援する</span>
+                </a>
+            </div>
+
             <div class="kofi-inline" id="kofiInline"></div>
         </div>
 
@@ -506,6 +528,16 @@ jp: /about/?lang=jp
                 if (currentLang === 'en') srcEl = document.getElementById('donation-message-en');
                 else if (currentLang === 'jp') srcEl = document.getElementById('donation-message-jp');
                 if (srcEl) inlineText.innerHTML = srcEl.outerHTML;
+            }
+
+            // JP일 경우 Fanbox 버튼 표시
+            const fanboxContainer = document.getElementById('fanbox-inline-container');
+            if (fanboxContainer) {
+                if (currentLang === 'jp') {
+                    fanboxContainer.style.display = 'block';
+                } else {
+                    fanboxContainer.style.display = 'none';
+                }
             }
         }
     }

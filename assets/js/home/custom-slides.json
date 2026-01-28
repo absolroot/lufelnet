@@ -114,10 +114,10 @@
     "background_bottom_mobile": 0,
     "background_right": 0,
     "color": "#e2b524",
-    "link": "/about/",
+    "link": "#supportModalKR",
     "link_en": "https://ko-fi.com/S6S11F0PUN",
-    "link_jp": "https://ko-fi.com/S6S11F0PUN",
-    "link_target": "_self",
+    "link_jp": "#supportModalJP",
+    "link_target": "_blank",
     "visible_langs": [
       "kr",
       "en",

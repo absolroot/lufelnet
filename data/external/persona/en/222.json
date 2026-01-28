@@ -1,47 +1,57 @@
 {
-  "data": {
-    "name": "Genbu",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 27",
-        "desc": "Grants a shield equal to 33.5%/35.2%/36.8% Attack + 1014/1254/1513 to 1 ally. When a shielded ally takes damage, attacker has 35.0%/36.8%/38.5% chance of being Frozen. Lasts for 2 turns.",
-        "level": "6/7/8",
-        "name": "Devotion of the Flesh"
-      },
-      "innate_skill": [
-        {
-          "cost": "",
-          "desc": "Increase shield effect by 4.2%.",
-          "learn_level": "4",
-          "level": "6/7/8",
-          "name": "Shield Boost I"
-        },
-        {
-          "cost": "",
-          "desc": "Increase Freeze accuracy by 8.8%.",
-          "learn_level": "8",
-          "level": "6/7/8",
-          "name": "Freeze Boost I"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase Defense by 6.2%. Decrease damage taken from Frozen foes by 22%. Increase damage dealt to Frozen foes by 20%.",
-          "name": "Arctic Glacier"
-        },
-        {
-          "desc": "Increase Defense by 6.2%. Decrease damage taken from Frozen foes by 26%. Increase damage dealt to Frozen foes by 22%.",
-          "name": "Arctic Glacier I"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Grant a shield to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275 for 2 turns.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Ice",
+      "Psychokinesis"
+    ],
+    "Weak": [
+      "Electric"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 27",
+    "desc": "Grants a shield equal to 33.5%/35.2%/36.8% Attack + 1014/1254/1513 to 1 ally. When a shielded ally takes damage, attacker has 35.0%/36.8%/38.5% chance of being Frozen. Lasts for 2 turns.",
+    "level": "6/7/8",
+    "name": "Devotion of the Flesh"
+  },
+  "innate_skill": [
+    {
+      "cost": "",
+      "desc": "Increase shield effect by 4.2%.",
+      "learn_level": "4",
+      "level": "6/7/8",
+      "name": "Shield Boost I"
+    },
+    {
+      "cost": "",
+      "desc": "Increase Freeze accuracy by 8.8%.",
+      "learn_level": "8",
+      "level": "6/7/8",
+      "name": "Freeze Boost I"
+    }
+  ],
+  "max_level": 20,
+  "max_level_after_awake": 25,
+  "name": "Genbu",
+  "nature": "Ice",
+  "passive_skill": [
+    {
+      "desc": "Increase Defense by 6.2%. Decrease damage taken from Frozen foes by 22%. Increase damage dealt to Frozen foes by 20%.",
+      "name": "Arctic Glacier"
+    },
+    {
+      "desc": "Increase Defense by 6.2%. Decrease damage taken from Frozen foes by 26%. Increase damage dealt to Frozen foes by 22%.",
+      "name": "Arctic Glacier I"
+    }
+  ],
+  "rank": 1,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Grant a shield to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275 for 2 turns.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

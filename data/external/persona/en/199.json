@@ -1,61 +1,70 @@
 {
-  "data": {
-    "name": "Naga",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 20",
-        "desc": "Deal Electric damage to all foes equal to 57.0/59.8/62.7% of Attack. 31.7/33.3/34.9% chance to inflict Shock for 2 turns.",
-        "level": "6/7/8",
-        "name": "Mazionga"
-      },
-      "innate_skill": [
-        {
-          "cost": "SP 20",
-          "desc": "Deal Electric damage to 1 foe equal to 114.0/119.7/125.4% of Attack. 63.3/66.5/69.6% chance to inflict Shock for 2 turns.",
-          "learn_level": "5",
-          "level": "6/7/8",
-          "name": "Zionga"
-        },
-        {
-          "cost": "",
-          "desc": "Increase Electric damage by 6.7%.",
-          "learn_level": "10",
-          "level": "6/7/8",
-          "name": "Elec Boost II"
-        },
-        {
-          "cost": "체력 6.0%",
-          "desc": "Deal Physical damage to 1 foe equal to 58.2/61.1/64.0% of Attack (2 hits).",
-          "learn_level": "15",
-          "level": "6/7/8",
-          "name": "Double Fangs"
-        },
-        {
-          "cost": "",
-          "desc": "At the start of battle, increase party's Defense by 9.1% for 2 turns or until user changes Personas.",
-          "learn_level": "20",
-          "level": "6/7/8",
-          "name": "Auto-Maraku II"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase critical rate by 5.2%. When dealing Electric damage, increase critical damage by 37.5%.",
-          "name": "Thunder's Judgment"
-        },
-        {
-          "desc": "Increase critical rate by 5.2%. When dealing Electric damage, increase critical damage by 43%.",
-          "name": "Thunder's Judgment I"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Deal Electric damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Electric"
+    ],
+    "Weak": [
+      "Wind"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 20",
+    "desc": "Deal Electric damage to all foes equal to 57.0/59.8/62.7% of Attack. 31.7/33.3/34.9% chance to inflict Shock for 2 turns.",
+    "level": "6/7/8",
+    "name": "Mazionga"
+  },
+  "innate_skill": [
+    {
+      "cost": "SP 20",
+      "desc": "Deal Electric damage to 1 foe equal to 114.0/119.7/125.4% of Attack. 63.3/66.5/69.6% chance to inflict Shock for 2 turns.",
+      "learn_level": "5",
+      "level": "6/7/8",
+      "name": "Zionga"
+    },
+    {
+      "cost": "",
+      "desc": "Increase Electric damage by 6.7%.",
+      "learn_level": "10",
+      "level": "6/7/8",
+      "name": "Elec Boost II"
+    },
+    {
+      "cost": "체력 6.0%",
+      "desc": "Deal Physical damage to 1 foe equal to 58.2/61.1/64.0% of Attack (2 hits).",
+      "learn_level": "15",
+      "level": "6/7/8",
+      "name": "Double Fangs"
+    },
+    {
+      "cost": "",
+      "desc": "At the start of battle, increase party's Defense by 9.1% for 2 turns or until user changes Personas.",
+      "learn_level": "20",
+      "level": "6/7/8",
+      "name": "Auto-Maraku II"
+    }
+  ],
+  "max_level": 40,
+  "max_level_after_awake": 45,
+  "name": "Naga",
+  "nature": "Electric",
+  "passive_skill": [
+    {
+      "desc": "Increase critical rate by 5.2%. When dealing Electric damage, increase critical damage by 37.5%.",
+      "name": "Thunder's Judgment"
+    },
+    {
+      "desc": "Increase critical rate by 5.2%. When dealing Electric damage, increase critical damage by 43%.",
+      "name": "Thunder's Judgment I"
+    }
+  ],
+  "rank": 3,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Electric damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

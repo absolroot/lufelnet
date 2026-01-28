@@ -1,65 +1,75 @@
 {
-  "data": {
-    "name": "Mitra",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 20",
-        "desc": "Deal Bless damage to all foes equal to 61.3/65.0/68.7% of Attack. Gain 1 to 2 Blessing stacks.",
-        "level": "6/7/8",
-        "name": "Makouga"
-      },
-      "innate_skill": [
-        {
-          "cost": "",
-          "desc": "Increase Bless damage by 6.7%.",
-          "learn_level": "5",
-          "level": "6/7/8",
-          "name": "Bless Boost II"
-        },
-        {
-          "cost": "",
-          "desc": "Increase the success rate of insta-kill skills by 4.2%.",
-          "learn_level": "10",
-          "level": "6/7/8",
-          "name": "Divine Guidance II"
-        },
-        {
-          "cost": "SP 19",
-          "desc": "Deal Bless damage to all foes equal to 39.9/44.0/48.1% of Attack. Low chance to deal a Bless insta-kill effect to foes with 50% or less HP. Increase chance based on foe's missing HP.",
-          "learn_level": "15",
-          "level": "6/7/8",
-          "name": "Mahama"
-        },
-        {
-          "cost": "SP 20",
-          "desc": "Deal Bless damage to 1 foe equal to 123.2/130.7/138.2% of Attack. Gain 1 to 2 Blessing stacks.",
-          "learn_level": "20",
-          "level": "6/7/8",
-          "name": "Kouga"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase Attack by 11.6%. Decrease SP cost of Bless skills by 33%.",
-          "name": "Blessed Bloodline"
-        },
-        {
-          "desc": "Increase Attack by 11.6%. Decrease SP cost of Bless skills by 38%.",
-          "name": "Blessed Bloodline I"
-        },
-        {
-          "desc": "Increase Attack by 11.6%. Decrease SP cost of Bless skills by 42%.",
-          "name": "Blessed Bloodline II"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Deal Bless damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Ice",
+      "Bless"
+    ],
+    "Weak": [
+      "Electric"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 20",
+    "desc": "Deal Bless damage to all foes equal to 61.3/65.0/68.7% of Attack. Gain 1 to 2 Blessing stacks.",
+    "level": "6/7/8",
+    "name": "Makouga"
+  },
+  "innate_skill": [
+    {
+      "cost": "",
+      "desc": "Increase Bless damage by 6.7%.",
+      "learn_level": "5",
+      "level": "6/7/8",
+      "name": "Bless Boost II"
+    },
+    {
+      "cost": "",
+      "desc": "Increase the success rate of insta-kill skills by 4.2%.",
+      "learn_level": "10",
+      "level": "6/7/8",
+      "name": "Divine Guidance II"
+    },
+    {
+      "cost": "SP 19",
+      "desc": "Deal Bless damage to all foes equal to 39.9/44.0/48.1% of Attack. Low chance to deal a Bless insta-kill effect to foes with 50% or less HP. Increase chance based on foe's missing HP.",
+      "learn_level": "15",
+      "level": "6/7/8",
+      "name": "Mahama"
+    },
+    {
+      "cost": "SP 20",
+      "desc": "Deal Bless damage to 1 foe equal to 123.2/130.7/138.2% of Attack. Gain 1 to 2 Blessing stacks.",
+      "learn_level": "20",
+      "level": "6/7/8",
+      "name": "Kouga"
+    }
+  ],
+  "max_level": 50,
+  "max_level_after_awake": 60,
+  "name": "Mitra",
+  "nature": "Bless",
+  "passive_skill": [
+    {
+      "desc": "Increase Attack by 11.6%. Decrease SP cost of Bless skills by 33%.",
+      "name": "Blessed Bloodline"
+    },
+    {
+      "desc": "Increase Attack by 11.6%. Decrease SP cost of Bless skills by 38%.",
+      "name": "Blessed Bloodline I"
+    },
+    {
+      "desc": "Increase Attack by 11.6%. Decrease SP cost of Bless skills by 42%.",
+      "name": "Blessed Bloodline II"
+    }
+  ],
+  "rank": 4,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Bless damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

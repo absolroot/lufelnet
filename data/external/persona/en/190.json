@@ -1,65 +1,77 @@
 {
-  "data": {
-    "name": "Belphegor",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 22",
-        "desc": "Decrease 1 foe's Defense by 38.8%/40.7%/42.7% for 3 turns.",
-        "level": "6/7/8",
-        "name": "Rakunda"
-      },
-      "innate_skill": [
-        {
-          "cost": "SP 20",
-          "desc": "Deal Ice damage to 1 foe equal to 114.0/119.7/125.4% of Attack. 63.3/66.5/69.6% chance to inflict Freeze for 2 turns.",
-          "learn_level": "5",
-          "level": "6/7/8",
-          "name": "Bufula"
-        },
-        {
-          "cost": "",
-          "desc": "At the start of battle, increase Attack by 12.1% for 2 turns.",
-          "learn_level": "10",
-          "level": "6/7/8",
-          "name": "Attack Master II"
-        },
-        {
-          "cost": "",
-          "desc": "Increase Forget resistance by 12.5%.",
-          "learn_level": "15",
-          "level": "6/7/8",
-          "name": "Resist Forget II"
-        },
-        {
-          "cost": "SP 20",
-          "desc": "Deal Ice damage to all foes equal to 57.0/59.8/62.7% of Attack. 31.7/33.3/34.9% chance to inflict Freeze for 2 turns.",
-          "learn_level": "20",
-          "level": "6/7/8",
-          "name": "Mabufula"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase ailment resistance by 17%. After using a skill on a foe, increase main target's Ice damage taken by 11.3% for 2 turns. If target's HP is below 50%, increase effect by 40% more.",
-          "name": "Ice the Slackers"
-        },
-        {
-          "desc": "Increase ailment resistance by 17%. After using a skill on a foe, increase main target's Ice damage taken by 12.9% for 2 turns. If target's HP is below 50%, increase effect by 40% more.",
-          "name": "Ice the Slackers I"
-        },
-        {
-          "desc": "Increase ailment resistance by 17%. After using a skill on a foe, increase main target's Ice damage taken by 14.4% for 2 turns. If target's HP is below 50%, increase effect by 40% more.",
-          "name": "Ice the Slackers II"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Deal Ice damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Ice",
+      "Electric",
+      "Nuclear",
+      "Curse"
+    ],
+    "Weak": [
+      "Fire"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 22",
+    "desc": "Decrease 1 foe's Defense by 38.8%/40.7%/42.7% for 3 turns.",
+    "level": "6/7/8",
+    "name": "Rakunda"
+  },
+  "innate_skill": [
+    {
+      "cost": "SP 20",
+      "desc": "Deal Ice damage to 1 foe equal to 114.0/119.7/125.4% of Attack. 63.3/66.5/69.6% chance to inflict Freeze for 2 turns.",
+      "learn_level": "5",
+      "level": "6/7/8",
+      "name": "Bufula"
+    },
+    {
+      "cost": "",
+      "desc": "At the start of battle, increase Attack by 12.1% for 2 turns.",
+      "learn_level": "10",
+      "level": "6/7/8",
+      "name": "Attack Master II"
+    },
+    {
+      "cost": "",
+      "desc": "Increase Forget resistance by 12.5%.",
+      "learn_level": "15",
+      "level": "6/7/8",
+      "name": "Resist Forget II"
+    },
+    {
+      "cost": "SP 20",
+      "desc": "Deal Ice damage to all foes equal to 57.0/59.8/62.7% of Attack. 31.7/33.3/34.9% chance to inflict Freeze for 2 turns.",
+      "learn_level": "20",
+      "level": "6/7/8",
+      "name": "Mabufula"
+    }
+  ],
+  "max_level": 50,
+  "max_level_after_awake": 60,
+  "name": "Belphegor",
+  "nature": "Ice",
+  "passive_skill": [
+    {
+      "desc": "Increase ailment resistance by 17%. After using a skill on a foe, increase main target's Ice damage taken by 11.3% for 2 turns. If target's HP is below 50%, increase effect by 40% more.",
+      "name": "Ice the Slackers"
+    },
+    {
+      "desc": "Increase ailment resistance by 17%. After using a skill on a foe, increase main target's Ice damage taken by 12.9% for 2 turns. If target's HP is below 50%, increase effect by 40% more.",
+      "name": "Ice the Slackers I"
+    },
+    {
+      "desc": "Increase ailment resistance by 17%. After using a skill on a foe, increase main target's Ice damage taken by 14.4% for 2 turns. If target's HP is below 50%, increase effect by 40% more.",
+      "name": "Ice the Slackers II"
+    }
+  ],
+  "rank": 4,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Ice damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

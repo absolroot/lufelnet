@@ -1,65 +1,78 @@
 {
-  "data": {
-    "name": "Rangda",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 22",
-        "desc": "Decrease all foes' Attack by 18.1%/19.0%/19.9% for 3 turns.",
-        "level": "6/7/8",
-        "name": "Matarunda"
-      },
-      "innate_skill": [
-        {
-          "cost": "",
-          "desc": "Increase ailment accuracy by 13%.",
-          "learn_level": "6",
-          "level": "6/7/8",
-          "name": "Accuracy Boost III"
-        },
-        {
-          "cost": "",
-          "desc": "Increase Curse damage by 8.7%.",
-          "learn_level": "12",
-          "level": "6/7/8",
-          "name": "Curse Boost III"
-        },
-        {
-          "cost": "SP 21",
-          "desc": "Deal Curse damage to 1 foe equal to 132.5/140.8/149.1% of Attack. Inflict 1 to 2 Curse stacks on the foe.",
-          "learn_level": "18",
-          "level": "6/7/8",
-          "name": "Eigaon"
-        },
-        {
-          "cost": "SP 20",
-          "desc": "Deal Curse damage to 1 foe equal to 90.6/99.3/108.0% of Attack. Low chance to deal Curse insta-kill effect to foes with 50% or less HP. Increase chance based on foe's missing HP.",
-          "learn_level": "25",
-          "level": "6/7/8",
-          "name": "Mudoon"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase ailment accuracy by 17.4%. After dealing Curse skill damage, decrease main target's Attack by 16% for 2 turns.",
-          "name": "Curse of Misfortune"
-        },
-        {
-          "desc": "Increase ailment accuracy by 17.4%. After dealing Curse skill damage, decrease main target's Attack by 18% for 2 turns.",
-          "name": "Curse of Misfortune I"
-        },
-        {
-          "desc": "Increase ailment accuracy by 17.4%. After dealing Curse skill damage, decrease main target's Attack by 20% for 2 turns.",
-          "name": "Curse of Misfortune II"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Deal Curse damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Phys",
+      "Gun",
+      "Fire",
+      "Curse"
+    ],
+    "Weak": [
+      "Electric",
+      "Bless"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 22",
+    "desc": "Decrease all foes' Attack by 18.1%/19.0%/19.9% for 3 turns.",
+    "level": "6/7/8",
+    "name": "Matarunda"
+  },
+  "innate_skill": [
+    {
+      "cost": "",
+      "desc": "Increase ailment accuracy by 13%.",
+      "learn_level": "6",
+      "level": "6/7/8",
+      "name": "Accuracy Boost III"
+    },
+    {
+      "cost": "",
+      "desc": "Increase Curse damage by 8.7%.",
+      "learn_level": "12",
+      "level": "6/7/8",
+      "name": "Curse Boost III"
+    },
+    {
+      "cost": "SP 21",
+      "desc": "Deal Curse damage to 1 foe equal to 132.5/140.8/149.1% of Attack. Inflict 1 to 2 Curse stacks on the foe.",
+      "learn_level": "18",
+      "level": "6/7/8",
+      "name": "Eigaon"
+    },
+    {
+      "cost": "SP 20",
+      "desc": "Deal Curse damage to 1 foe equal to 90.6/99.3/108.0% of Attack. Low chance to deal Curse insta-kill effect to foes with 50% or less HP. Increase chance based on foe's missing HP.",
+      "learn_level": "25",
+      "level": "6/7/8",
+      "name": "Mudoon"
+    }
+  ],
+  "max_level": 60,
+  "max_level_after_awake": 70,
+  "name": "Rangda",
+  "nature": "Curse",
+  "passive_skill": [
+    {
+      "desc": "Increase ailment accuracy by 17.4%. After dealing Curse skill damage, decrease main target's Attack by 16% for 2 turns.",
+      "name": "Curse of Misfortune"
+    },
+    {
+      "desc": "Increase ailment accuracy by 17.4%. After dealing Curse skill damage, decrease main target's Attack by 18% for 2 turns.",
+      "name": "Curse of Misfortune I"
+    },
+    {
+      "desc": "Increase ailment accuracy by 17.4%. After dealing Curse skill damage, decrease main target's Attack by 20% for 2 turns.",
+      "name": "Curse of Misfortune II"
+    }
+  ],
+  "rank": 5,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Curse damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

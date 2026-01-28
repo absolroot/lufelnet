@@ -1,69 +1,79 @@
 {
-  "data": {
-    "name": "Lakshmi",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 27",
-        "desc": "Restore 1 ally's HP equal to 32.7%/34.3%/36.0% of Attack + 989/1224/1477. Gain 2 Lotus stacks for 1 turn. While user has Lotus, after each enemy and ally action, when an ally's HP is below 50%, spend 1 Lotus stack to restore HP equal to 8.4%/8.8%/9.2% of Attack + 254/314/379.",
-        "level": "6/7/8",
-        "name": "Flowers of the Pure Land"
-      },
-      "innate_skill": [
-        {
-          "cost": "",
-          "desc": "Increase healing by 9.7%.",
-          "learn_level": "9",
-          "level": "6/7/8",
-          "name": "Healing Boost IV"
-        },
-        {
-          "cost": "",
-          "desc": "Increase damage by 10.8%.",
-          "learn_level": "18",
-          "level": "6/7/8",
-          "name": "Battle Acumen IV"
-        },
-        {
-          "cost": "",
-          "desc": "At the start of battle, increase Defense by 29.4% for 2 turns.",
-          "learn_level": "27",
-          "level": "6/7/8",
-          "name": "Defense Master IV"
-        },
-        {
-          "cost": "SP 25",
-          "desc": "Restore party's HP by 19.0/20.0/20.9% of Attack + 575/711/858.",
-          "learn_level": "36",
-          "level": "6/7/8",
-          "name": "Mediarahan"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase healing by 20.9%. When healing with Lotus, increase max HP of allies healed by 13% for 2 turns.",
-          "name": "Lotus Dance"
-        },
-        {
-          "desc": "Increase healing by 20.9%. When healing with Lotus, increase max HP of allies healed by 14.5% for 2 turns.",
-          "name": "Lotus Dance I"
-        },
-        {
-          "desc": "Increase healing by 20.9%. For 2 turns, when healing with Lotus, increase healed allies' max HP by 16% and healing from Lotus by 40%.",
-          "name": "Lotus Dance II"
-        },
-        {
-          "desc": "Increase healing by 20.9%. For 2 turns, when healing with Lotus, increase healed allies' max HP by 17.5% and healing from Lotus by 45%.",
-          "name": "Lotus Dance III"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Restore HP to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Ice",
+      "Bless"
+    ],
+    "Weak": [
+      "Fire"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 27",
+    "desc": "Restore 1 ally's HP equal to 32.7%/34.3%/36.0% of Attack + 989/1224/1477. Gain 2 Lotus stacks for 1 turn. While user has Lotus, after each enemy and ally action, when an ally's HP is below 50%, spend 1 Lotus stack to restore HP equal to 8.4%/8.8%/9.2% of Attack + 254/314/379.",
+    "level": "6/7/8",
+    "name": "Flowers of the Pure Land"
+  },
+  "innate_skill": [
+    {
+      "cost": "",
+      "desc": "Increase healing by 9.7%.",
+      "learn_level": "9",
+      "level": "6/7/8",
+      "name": "Healing Boost IV"
+    },
+    {
+      "cost": "",
+      "desc": "Increase damage by 10.8%.",
+      "learn_level": "18",
+      "level": "6/7/8",
+      "name": "Battle Acumen IV"
+    },
+    {
+      "cost": "",
+      "desc": "At the start of battle, increase Defense by 29.4% for 2 turns.",
+      "learn_level": "27",
+      "level": "6/7/8",
+      "name": "Defense Master IV"
+    },
+    {
+      "cost": "SP 25",
+      "desc": "Restore party's HP by 19.0/20.0/20.9% of Attack + 575/711/858.",
+      "learn_level": "36",
+      "level": "6/7/8",
+      "name": "Mediarahan"
+    }
+  ],
+  "max_level": 80,
+  "max_level_after_awake": 95,
+  "name": "Lakshmi",
+  "nature": "Ice",
+  "passive_skill": [
+    {
+      "desc": "Increase healing by 20.9%. When healing with Lotus, increase max HP of allies healed by 13% for 2 turns.",
+      "name": "Lotus Dance"
+    },
+    {
+      "desc": "Increase healing by 20.9%. When healing with Lotus, increase max HP of allies healed by 14.5% for 2 turns.",
+      "name": "Lotus Dance I"
+    },
+    {
+      "desc": "Increase healing by 20.9%. For 2 turns, when healing with Lotus, increase healed allies' max HP by 16% and healing from Lotus by 40%.",
+      "name": "Lotus Dance II"
+    },
+    {
+      "desc": "Increase healing by 20.9%. For 2 turns, when healing with Lotus, increase healed allies' max HP by 17.5% and healing from Lotus by 45%.",
+      "name": "Lotus Dance III"
+    }
+  ],
+  "rank": 7,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Restore HP to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

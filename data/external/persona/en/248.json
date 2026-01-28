@@ -1,69 +1,78 @@
 {
-  "data": {
-    "name": "Seiryu",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 25",
-        "desc": "Restore 1 ally's HP by 38.0/39.9/41.8% of Attack + 1150/1423/1716.",
-        "level": "6/7/8",
-        "name": "Diarahan"
-      },
-      "innate_skill": [
-        {
-          "cost": "SP 25",
-          "desc": "Cure Confuse, Fear, Despair, Rage, or Brainwash on 1 ally.",
-          "learn_level": "9",
-          "level": "6/7/8",
-          "name": "Energy Drop"
-        },
-        {
-          "cost": "",
-          "desc": "Increase healing received by 5.4%.",
-          "learn_level": "18",
-          "level": "6/7/8",
-          "name": "Divine Grace IV"
-        },
-        {
-          "cost": "",
-          "desc": "Increase HP by 13.5%.",
-          "learn_level": "27",
-          "level": "6/7/8",
-          "name": "HP Boost IV"
-        },
-        {
-          "cost": "SP 22",
-          "desc": "Increase party's Defense by 16.3%/17.1%/17.9%. For every 500 of the user's Defense, increase party's Defense by 2.7%/2.8%/3.0% more, up to 10.8%/11.3%/11.9%. Lasts for 3 turns.",
-          "learn_level": "36",
-          "level": "6/7/8",
-          "name": "Marakukaja"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase healing by 17.8%. When healing with a skill, increase target's ailment accuracy and ailment resistance by 10% for 2 turns.",
-          "name": "Dragon's Protection"
-        },
-        {
-          "desc": "Increase healing by 17.8%. When healing with a skill, increase target's ailment accuracy and ailment resistance by 11% for 2 turns.",
-          "name": "Dragon's Protection I"
-        },
-        {
-          "desc": "Increase healing by 17.8%. When healing with a skill, increase target's ailment accuracy and ailment resistance by 12% for 2 turns.",
-          "name": "Dragon's Protection II"
-        },
-        {
-          "desc": "Increase healing by 17.8%. When healing with a skill, increase target's ailment accuracy and ailment resistance by 13% for 2 turns.",
-          "name": "Dragon's Protection III"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Restore HP to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Ice"
+    ],
+    "Weak": [
+      "Nuclear"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 25",
+    "desc": "Restore 1 ally's HP by 38.0/39.9/41.8% of Attack + 1150/1423/1716.",
+    "level": "6/7/8",
+    "name": "Diarahan"
+  },
+  "innate_skill": [
+    {
+      "cost": "SP 25",
+      "desc": "Cure Confuse, Fear, Despair, Rage, or Brainwash on 1 ally.",
+      "learn_level": "9",
+      "level": "6/7/8",
+      "name": "Energy Drop"
+    },
+    {
+      "cost": "",
+      "desc": "Increase healing received by 5.4%.",
+      "learn_level": "18",
+      "level": "6/7/8",
+      "name": "Divine Grace IV"
+    },
+    {
+      "cost": "",
+      "desc": "Increase HP by 13.5%.",
+      "learn_level": "27",
+      "level": "6/7/8",
+      "name": "HP Boost IV"
+    },
+    {
+      "cost": "SP 22",
+      "desc": "Increase party's Defense by 16.3%/17.1%/17.9%. For every 500 of the user's Defense, increase party's Defense by 2.7%/2.8%/3.0% more, up to 10.8%/11.3%/11.9%. Lasts for 3 turns.",
+      "learn_level": "36",
+      "level": "6/7/8",
+      "name": "Marakukaja"
+    }
+  ],
+  "max_level": 80,
+  "max_level_after_awake": 95,
+  "name": "Seiryu",
+  "nature": "Ice",
+  "passive_skill": [
+    {
+      "desc": "Increase healing by 17.8%. When healing with a skill, increase target's ailment accuracy and ailment resistance by 10% for 2 turns.",
+      "name": "Dragon's Protection"
+    },
+    {
+      "desc": "Increase healing by 17.8%. When healing with a skill, increase target's ailment accuracy and ailment resistance by 11% for 2 turns.",
+      "name": "Dragon's Protection I"
+    },
+    {
+      "desc": "Increase healing by 17.8%. When healing with a skill, increase target's ailment accuracy and ailment resistance by 12% for 2 turns.",
+      "name": "Dragon's Protection II"
+    },
+    {
+      "desc": "Increase healing by 17.8%. When healing with a skill, increase target's ailment accuracy and ailment resistance by 13% for 2 turns.",
+      "name": "Dragon's Protection III"
+    }
+  ],
+  "rank": 7,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Restore HP to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

@@ -1,69 +1,78 @@
 {
-  "data": {
-    "name": "Dionysus",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 22",
-        "desc": "Increase party's critical rate by 6.5%/6.8%/7.2%. For every 10% of the user's critical rate, increase party's critical rate by 1.1%/1.2%/1.2% more, up to 4.4%/4.6%/4.8%. Lasts for 3 turns.",
-        "level": "6/7/8",
-        "name": "Revolution"
-      },
-      "innate_skill": [
-        {
-          "cost": "",
-          "desc": "Increase Psychokinesis damage by 10.8%.",
-          "learn_level": "9",
-          "level": "6/7/8",
-          "name": "Psy Boost IV"
-        },
-        {
-          "cost": "SP 22",
-          "desc": "Deal Psy damage to 1 foe equal to 138.9/145.9/152.9% of Attack. Deal a Technical and increase damage by 50% for foes with a spiritual ailment.",
-          "learn_level": "18",
-          "level": "6/7/8",
-          "name": "Psycho Force"
-        },
-        {
-          "cost": "",
-          "desc": "Decrease Electric damage taken by 10.8%.",
-          "learn_level": "27",
-          "level": "6/7/8",
-          "name": "Electric Reduction IV"
-        },
-        {
-          "cost": "",
-          "desc": "Increase ailment accuracy by 16.2%.",
-          "learn_level": "36",
-          "level": "6/7/8",
-          "name": "Accuracy Boost IV"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase critical rate by 14.8%. When using a skill on an ally, increase main target's critical damage by 22% for 2 turns.",
-          "name": "Feast of the Frenzied"
-        },
-        {
-          "desc": "Increase critical rate by 14.8%. When using a skill on an ally, increase main target's critical damage by 24.7% for 2 turns.",
-          "name": "Feast of the Frenzied I"
-        },
-        {
-          "desc": "Increase critical rate by 14.8%. When using a skill on an ally, increase main target's critical damage by 27.6% for 2 turns.",
-          "name": "Feast of the Frenzied II"
-        },
-        {
-          "desc": "Increase critical rate by 14.8%. When using a skill on an ally, increase main target's critical damage by 30% for 2 turns.",
-          "name": "Feast of the Frenzied III"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Increase party's damage by 29.5%/31.6%/33.6% for 2 turns.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Electric",
+      "Bless",
+      "Curse"
+    ],
+    "Weak": []
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 22",
+    "desc": "Increase party's critical rate by 6.5%/6.8%/7.2%. For every 10% of the user's critical rate, increase party's critical rate by 1.1%/1.2%/1.2% more, up to 4.4%/4.6%/4.8%. Lasts for 3 turns.",
+    "level": "6/7/8",
+    "name": "Revolution"
+  },
+  "innate_skill": [
+    {
+      "cost": "",
+      "desc": "Increase Psychokinesis damage by 10.8%.",
+      "learn_level": "9",
+      "level": "6/7/8",
+      "name": "Psy Boost IV"
+    },
+    {
+      "cost": "SP 22",
+      "desc": "Deal Psy damage to 1 foe equal to 138.9/145.9/152.9% of Attack. Deal a Technical and increase damage by 50% for foes with a spiritual ailment.",
+      "learn_level": "18",
+      "level": "6/7/8",
+      "name": "Psycho Force"
+    },
+    {
+      "cost": "",
+      "desc": "Decrease Electric damage taken by 10.8%.",
+      "learn_level": "27",
+      "level": "6/7/8",
+      "name": "Electric Reduction IV"
+    },
+    {
+      "cost": "",
+      "desc": "Increase ailment accuracy by 16.2%.",
+      "learn_level": "36",
+      "level": "6/7/8",
+      "name": "Accuracy Boost IV"
+    }
+  ],
+  "max_level": 80,
+  "max_level_after_awake": 95,
+  "name": "Dionysus",
+  "nature": "Psychokinesis",
+  "passive_skill": [
+    {
+      "desc": "Increase critical rate by 14.8%. When using a skill on an ally, increase main target's critical damage by 22% for 2 turns.",
+      "name": "Feast of the Frenzied"
+    },
+    {
+      "desc": "Increase critical rate by 14.8%. When using a skill on an ally, increase main target's critical damage by 24.7% for 2 turns.",
+      "name": "Feast of the Frenzied I"
+    },
+    {
+      "desc": "Increase critical rate by 14.8%. When using a skill on an ally, increase main target's critical damage by 27.6% for 2 turns.",
+      "name": "Feast of the Frenzied II"
+    },
+    {
+      "desc": "Increase critical rate by 14.8%. When using a skill on an ally, increase main target's critical damage by 30% for 2 turns.",
+      "name": "Feast of the Frenzied III"
+    }
+  ],
+  "rank": 7,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Increase party's damage by 29.5%/31.6%/33.6% for 2 turns.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

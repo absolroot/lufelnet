@@ -1,47 +1,56 @@
 {
-  "data": {
-    "name": "Mokoi",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 22",
-        "desc": "32.6/34.2/35.9% chance to inflict Dizzy on 1 foe for 2 turns.",
-        "level": "6/7/8",
-        "name": "Dazzler"
-      },
-      "innate_skill": [
-        {
-          "cost": "체력 7.0%",
-          "desc": "Deal Physical damage to 1 foe equal to 82.4/86.5/90.6% of Attack. 9.3/9.8/10.2% chance to inflict Confuse for 2 turns.",
-          "learn_level": "4",
-          "level": "6/7/8",
-          "name": "Skull Cracker"
-        },
-        {
-          "cost": "",
-          "desc": "Increase Dizzy accuracy by 8.8%.",
-          "learn_level": "8",
-          "level": "6/7/8",
-          "name": "Dizzy Boost I"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase ailment accuracy by 3.5%. Increase Dizzy accuracy by 30%.",
-          "name": "Off-Kilter"
-        },
-        {
-          "desc": "Increase ailment accuracy by 3.5%. Increase Dizzy accuracy by 35%.",
-          "name": "Off-Kilter I"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Deal Physical damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Electric"
+    ],
+    "Weak": [
+      "Wind"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 22",
+    "desc": "32.6/34.2/35.9% chance to inflict Dizzy on 1 foe for 2 turns.",
+    "level": "6/7/8",
+    "name": "Dazzler"
+  },
+  "innate_skill": [
+    {
+      "cost": "체력 7.0%",
+      "desc": "Deal Physical damage to 1 foe equal to 82.4/86.5/90.6% of Attack. 9.3/9.8/10.2% chance to inflict Confuse for 2 turns.",
+      "learn_level": "4",
+      "level": "6/7/8",
+      "name": "Skull Cracker"
+    },
+    {
+      "cost": "",
+      "desc": "Increase Dizzy accuracy by 8.8%.",
+      "learn_level": "8",
+      "level": "6/7/8",
+      "name": "Dizzy Boost I"
+    }
+  ],
+  "max_level": 20,
+  "max_level_after_awake": 25,
+  "name": "Mokoi",
+  "nature": "Phys",
+  "passive_skill": [
+    {
+      "desc": "Increase ailment accuracy by 3.5%. Increase Dizzy accuracy by 30%.",
+      "name": "Off-Kilter"
+    },
+    {
+      "desc": "Increase ailment accuracy by 3.5%. Increase Dizzy accuracy by 35%.",
+      "name": "Off-Kilter I"
+    }
+  ],
+  "rank": 1,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Physical damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

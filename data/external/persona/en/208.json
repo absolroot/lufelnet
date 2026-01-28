@@ -1,65 +1,77 @@
 {
-  "data": {
-    "name": "Girimehkala",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 22",
-        "desc": "Decrease all foes' Attack by 18.1%/19.0%/19.9% for 3 turns.",
-        "level": "6/7/8",
-        "name": "Matarunda"
-      },
-      "innate_skill": [
-        {
-          "cost": "",
-          "desc": "Decrease Physical damage taken by 8.7%.",
-          "learn_level": "6",
-          "level": "6/7/8",
-          "name": "Physical Reduction III"
-        },
-        {
-          "cost": "",
-          "desc": "Decrease Gun damage taken by 8.7%.",
-          "learn_level": "12",
-          "level": "6/7/8",
-          "name": "Gun Reduction III"
-        },
-        {
-          "cost": "",
-          "desc": "Decrease Fire damage taken by 8.7%.",
-          "learn_level": "18",
-          "level": "6/7/8",
-          "name": "Fire Reduction III"
-        },
-        {
-          "cost": "",
-          "desc": "Decrease Curse damage taken by 8.7%.",
-          "learn_level": "25",
-          "level": "6/7/8",
-          "name": "Curse Reduction III"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase ailment resistance by 17.4%. Decrease party's damage taken from foes with debuffs by 16%.",
-          "name": "Demonic Eyes"
-        },
-        {
-          "desc": "Increase ailment resistance by 17.4%. Decrease party's damage taken from foes with debuffs by 18%.",
-          "name": "Demonic Eyes I"
-        },
-        {
-          "desc": "Increase ailment resistance by 17.4%. Decrease party's damage taken from foes with debuffs by 20%.",
-          "name": "Demonic Eyes II"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Grant a shield to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275 for 2 turns.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Phys",
+      "Gun",
+      "Fire",
+      "Curse"
+    ],
+    "Weak": [
+      "Bless"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 22",
+    "desc": "Decrease all foes' Attack by 18.1%/19.0%/19.9% for 3 turns.",
+    "level": "6/7/8",
+    "name": "Matarunda"
+  },
+  "innate_skill": [
+    {
+      "cost": "",
+      "desc": "Decrease Physical damage taken by 8.7%.",
+      "learn_level": "6",
+      "level": "6/7/8",
+      "name": "Physical Reduction III"
+    },
+    {
+      "cost": "",
+      "desc": "Decrease Gun damage taken by 8.7%.",
+      "learn_level": "12",
+      "level": "6/7/8",
+      "name": "Gun Reduction III"
+    },
+    {
+      "cost": "",
+      "desc": "Decrease Fire damage taken by 8.7%.",
+      "learn_level": "18",
+      "level": "6/7/8",
+      "name": "Fire Reduction III"
+    },
+    {
+      "cost": "",
+      "desc": "Decrease Curse damage taken by 8.7%.",
+      "learn_level": "25",
+      "level": "6/7/8",
+      "name": "Curse Reduction III"
+    }
+  ],
+  "max_level": 60,
+  "max_level_after_awake": 70,
+  "name": "Girimehkala",
+  "nature": "Phys",
+  "passive_skill": [
+    {
+      "desc": "Increase ailment resistance by 17.4%. Decrease party's damage taken from foes with debuffs by 16%.",
+      "name": "Demonic Eyes"
+    },
+    {
+      "desc": "Increase ailment resistance by 17.4%. Decrease party's damage taken from foes with debuffs by 18%.",
+      "name": "Demonic Eyes I"
+    },
+    {
+      "desc": "Increase ailment resistance by 17.4%. Decrease party's damage taken from foes with debuffs by 20%.",
+      "name": "Demonic Eyes II"
+    }
+  ],
+  "rank": 5,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Grant a shield to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275 for 2 turns.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

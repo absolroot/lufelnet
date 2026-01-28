@@ -1,69 +1,77 @@
 {
-  "data": {
-    "name": "Norn",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 27",
-        "desc": "Grant shield to all allies equal to 19.5%/20.5%/21.5% of Attack + 590/730/880 for 2 turns. When shielded allies take damage, 35.0%/36.8%/38.5% chance to inflict Windswept on the attacker.",
-        "level": "6/7/8",
-        "name": "Wind Barrier"
-      },
-      "innate_skill": [
-        {
-          "cost": "SP 21",
-          "desc": "Deal Wind damage to 1 foe equal to 121.7/127.8/133.9% of Attack. 67.6/71.0/74.4% chance to inflict Windswept for 2 turns.",
-          "learn_level": "8",
-          "level": "6/7/8",
-          "name": "Garudyne"
-        },
-        {
-          "cost": "SP 21",
-          "desc": "Deal Electric damage to 1 foe equal to 121.7/127.8/133.9% of Attack. 67.6/71.0/74.4% chance to inflict Shock for 2 turns.",
-          "learn_level": "16",
-          "level": "6/7/8",
-          "name": "Ziodyne"
-        },
-        {
-          "cost": "",
-          "desc": "Decrease Wind damage taken by 8.7%.",
-          "learn_level": "24",
-          "level": "6/7/8",
-          "name": "Wind Reduction III"
-        },
-        {
-          "cost": "",
-          "desc": "Increase Windswept accuracy by 16.3%.",
-          "learn_level": "32",
-          "level": "6/7/8",
-          "name": "Windsweep Boost III"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase Defense by 37.4%. After inflicting Windswept, decrease target's Defense by 22.8% for 2 turns.",
-          "name": "Guidance of Fate"
-        },
-        {
-          "desc": "Increase Defense by 37.4%. After inflicting Windswept, decrease target's Defense by 25.7% for 2 turns.",
-          "name": "Guidance of Fate I"
-        },
-        {
-          "desc": "Increase Defense by 37.4%. After inflicting Windswept, decrease target's Defense by 28.7% for 2 turns.",
-          "name": "Guidance of Fate II"
-        },
-        {
-          "desc": "Increase Defense by 37.4%. After inflicting Windswept, decrease target's Defense by 31.5% and increase user's Defense by 30% for 2 turns.",
-          "name": "Guidance of Fate III"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Grant a shield to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275 for 2 turns.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Ice",
+      "Wind"
+    ],
+    "Weak": []
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 27",
+    "desc": "Grant shield to all allies equal to 19.5%/20.5%/21.5% of Attack + 590/730/880 for 2 turns. When shielded allies take damage, 35.0%/36.8%/38.5% chance to inflict Windswept on the attacker.",
+    "level": "6/7/8",
+    "name": "Wind Barrier"
+  },
+  "innate_skill": [
+    {
+      "cost": "SP 21",
+      "desc": "Deal Wind damage to 1 foe equal to 121.7/127.8/133.9% of Attack. 67.6/71.0/74.4% chance to inflict Windswept for 2 turns.",
+      "learn_level": "8",
+      "level": "6/7/8",
+      "name": "Garudyne"
+    },
+    {
+      "cost": "SP 21",
+      "desc": "Deal Electric damage to 1 foe equal to 121.7/127.8/133.9% of Attack. 67.6/71.0/74.4% chance to inflict Shock for 2 turns.",
+      "learn_level": "16",
+      "level": "6/7/8",
+      "name": "Ziodyne"
+    },
+    {
+      "cost": "",
+      "desc": "Decrease Wind damage taken by 8.7%.",
+      "learn_level": "24",
+      "level": "6/7/8",
+      "name": "Wind Reduction III"
+    },
+    {
+      "cost": "",
+      "desc": "Increase Windswept accuracy by 16.3%.",
+      "learn_level": "32",
+      "level": "6/7/8",
+      "name": "Windsweep Boost III"
+    }
+  ],
+  "max_level": 70,
+  "max_level_after_awake": 85,
+  "name": "Norn",
+  "nature": "Wind",
+  "passive_skill": [
+    {
+      "desc": "Increase Defense by 37.4%. After inflicting Windswept, decrease target's Defense by 22.8% for 2 turns.",
+      "name": "Guidance of Fate"
+    },
+    {
+      "desc": "Increase Defense by 37.4%. After inflicting Windswept, decrease target's Defense by 25.7% for 2 turns.",
+      "name": "Guidance of Fate I"
+    },
+    {
+      "desc": "Increase Defense by 37.4%. After inflicting Windswept, decrease target's Defense by 28.7% for 2 turns.",
+      "name": "Guidance of Fate II"
+    },
+    {
+      "desc": "Increase Defense by 37.4%. After inflicting Windswept, decrease target's Defense by 31.5% and increase user's Defense by 30% for 2 turns.",
+      "name": "Guidance of Fate III"
+    }
+  ],
+  "rank": 6,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Grant a shield to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275 for 2 turns.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

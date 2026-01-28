@@ -1,69 +1,82 @@
 {
-  "data": {
-    "name": "Shiva",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 24",
-        "desc": "Deal Psychokinesis damage to all foes equal to 100.0%/105.0%/110.0% of Attack. Spend all Wisdom stacks to activate Karmic Alteration effects.",
-        "level": "6/7/8",
-        "name": "Dance of Destruction"
-      },
-      "innate_skill": [
-        {
-          "cost": "",
-          "desc": "Increase Psychokinesis damage by 8.7%.",
-          "learn_level": "10",
-          "level": "6/7/8",
-          "name": "Psy Boost III"
-        },
-        {
-          "cost": "SP 21",
-          "desc": "Deal Psy damage to 1 foe equal to 130.5/136.4/142.3% of Attack. Deal a Technical and increase damage by 45% for foes with a spiritual ailment.",
-          "learn_level": "20",
-          "level": "6/7/8",
-          "name": "Psiodyne"
-        },
-        {
-          "cost": "SP 22",
-          "desc": "Increase party's Attack by 10.9%/11.4%/12.0%. For every 500 of the user's Attack, increase party's Attack by 0.9%/0.9%/1.0% more, up to 7.2%/7.6%/7.9%. Lasts for 3 turns.",
-          "learn_level": "30",
-          "level": "6/7/8",
-          "name": "Matarukaja"
-        },
-        {
-          "cost": "SP 22",
-          "desc": "Deal Psy damage to all foes equal to 77.1/80.6/84.1% of Attack. Deal a Technical and increase damage by 50% for foes with a spiritual ailment.",
-          "learn_level": "40",
-          "level": "6/7/8",
-          "name": "Psycho Blast"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase Attack by 29.1%. At the start of each turn, gain Wisdom. Activate even in reserve. Stacks up to 3 times. When a unique skill spends Wisdom, apply the following effects based on the number of stacks spent:\n1: Increase this skill's Psychokinesis damage by 22%.\n2: Decrease foe's Defense by 30% for 1 turn.\n3. Increase target's Psychokinesis critical taken rate by 12% for 1 turn.",
-          "name": "Karmic Alteration"
-        },
-        {
-          "desc": "Increase Attack by 29.1%. At the start of each turn, gain Wisdom. Activate even in reserve. Stacks up to 3 times. When a unique skill spends Wisdom, apply the following effects based on the number of stacks spent:\n1: Increase this skill's Psychokinesis damage by 33%.\n2: Decrease foe's Defense by 30% for 1 turn.\n3. Increase target's Psychokinesis critical taken rate by 12% for 1 turn.",
-          "name": "Karmic Alteration I"
-        },
-        {
-          "desc": "Increase Attack by 29.1%. At the start of each turn, gain Wisdom. Activate even in reserve. Stacks up to 3 times. When a unique skill spends Wisdom, apply the following effects based on the number of stacks spent:\n1: Increase this skill's Psychokinesis damage by 33%.\n2: Decrease foe's Defense by 45% for 1 turn.\n3. Increase target's Psychokinesis critical taken rate by 12% for 1 turn.",
-          "name": "Karmic Alteration II"
-        },
-        {
-          "desc": "Increase Attack by 29.1%. At the start of each turn, gain Wisdom. Activate even in reserve. Stacks up to 3 times. When a unique skill spends Wisdom, apply the following effects based on the number of stacks spent:\n1: Increase this skill's Psychokinesis damage by 33%.\n2: Decrease foe's Defense by 45% for 1 turn.\n3. Increase target's Psychokinesis critical taken rate by 18% for 1 turn.",
-          "name": "Karmic Alteration III"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Deal Psychokinesis damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Ice",
+      "Electric",
+      "Psychokinesis",
+      "Bless",
+      "Curse"
+    ],
+    "Weak": [
+      "Nuclear"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 24",
+    "desc": "Deal Psychokinesis damage to all foes equal to 100.0%/105.0%/110.0% of Attack. Spend all Wisdom stacks to activate Karmic Alteration effects.",
+    "level": "6/7/8",
+    "name": "Dance of Destruction"
+  },
+  "innate_skill": [
+    {
+      "cost": "",
+      "desc": "Increase Psychokinesis damage by 8.7%.",
+      "learn_level": "10",
+      "level": "6/7/8",
+      "name": "Psy Boost III"
+    },
+    {
+      "cost": "SP 21",
+      "desc": "Deal Psy damage to 1 foe equal to 130.5/136.4/142.3% of Attack. Deal a Technical and increase damage by 45% for foes with a spiritual ailment.",
+      "learn_level": "20",
+      "level": "6/7/8",
+      "name": "Psiodyne"
+    },
+    {
+      "cost": "SP 22",
+      "desc": "Increase party's Attack by 10.9%/11.4%/12.0%. For every 500 of the user's Attack, increase party's Attack by 0.9%/0.9%/1.0% more, up to 7.2%/7.6%/7.9%. Lasts for 3 turns.",
+      "learn_level": "30",
+      "level": "6/7/8",
+      "name": "Matarukaja"
+    },
+    {
+      "cost": "SP 22",
+      "desc": "Deal Psy damage to all foes equal to 77.1/80.6/84.1% of Attack. Deal a Technical and increase damage by 50% for foes with a spiritual ailment.",
+      "learn_level": "40",
+      "level": "6/7/8",
+      "name": "Psycho Blast"
+    }
+  ],
+  "max_level": 80,
+  "max_level_after_awake": 99,
+  "name": "Shiva",
+  "nature": "Psychokinesis",
+  "passive_skill": [
+    {
+      "desc": "Increase Attack by 29.1%. At the start of each turn, gain Wisdom. Activate even in reserve. Stacks up to 3 times. When a unique skill spends Wisdom, apply the following effects based on the number of stacks spent:\n1: Increase this skill's Psychokinesis damage by 22%.\n2: Decrease foe's Defense by 30% for 1 turn.\n3. Increase target's Psychokinesis critical taken rate by 12% for 1 turn.",
+      "name": "Karmic Alteration"
+    },
+    {
+      "desc": "Increase Attack by 29.1%. At the start of each turn, gain Wisdom. Activate even in reserve. Stacks up to 3 times. When a unique skill spends Wisdom, apply the following effects based on the number of stacks spent:\n1: Increase this skill's Psychokinesis damage by 33%.\n2: Decrease foe's Defense by 30% for 1 turn.\n3. Increase target's Psychokinesis critical taken rate by 12% for 1 turn.",
+      "name": "Karmic Alteration I"
+    },
+    {
+      "desc": "Increase Attack by 29.1%. At the start of each turn, gain Wisdom. Activate even in reserve. Stacks up to 3 times. When a unique skill spends Wisdom, apply the following effects based on the number of stacks spent:\n1: Increase this skill's Psychokinesis damage by 33%.\n2: Decrease foe's Defense by 45% for 1 turn.\n3. Increase target's Psychokinesis critical taken rate by 12% for 1 turn.",
+      "name": "Karmic Alteration II"
+    },
+    {
+      "desc": "Increase Attack by 29.1%. At the start of each turn, gain Wisdom. Activate even in reserve. Stacks up to 3 times. When a unique skill spends Wisdom, apply the following effects based on the number of stacks spent:\n1: Increase this skill's Psychokinesis damage by 33%.\n2: Decrease foe's Defense by 45% for 1 turn.\n3. Increase target's Psychokinesis critical taken rate by 18% for 1 turn.",
+      "name": "Karmic Alteration III"
+    }
+  ],
+  "rank": 8,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Psychokinesis damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

@@ -1,54 +1,63 @@
 {
-  "data": {
-    "name": "Yaksini",
-    "skill": {
-      "fixed_skill": {
-        "cost": "체력 7.0%",
-        "desc": "Deal Physical damage to 1 foe equal to 82.4/86.5/90.6% of Attack. 12.4/13.0/13.6% chance to inflict Enrage for 2 turns.",
-        "level": "6/7/8",
-        "name": "Hysterical Slap"
-      },
-      "innate_skill": [
-        {
-          "cost": "",
-          "desc": "At the start of battle, increase Attack by 8.5% for 2 turns.",
-          "learn_level": "4",
-          "level": "6/7/8",
-          "name": "Attack Master I"
-        },
-        {
-          "cost": "",
-          "desc": "8% chance to repel Physical attacks, dealing Physical damage equal to 70% of Attack.",
-          "learn_level": "8",
-          "level": "6/7/8",
-          "name": "Counter I"
-        },
-        {
-          "cost": "",
-          "desc": "Decrease Physical damage taken by 4.7%.",
-          "learn_level": "12",
-          "level": "6/7/8",
-          "name": "Physical Reduction I"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase Attack by 7%. After taking damage, increase Attack by 25% for 2 turns.",
-          "name": "She-Demon's Discontent"
-        },
-        {
-          "desc": "Increase Attack by 7%. After taking damage, increase Attack by 30% for 2 turns.",
-          "name": "She-Demon's Discontent I"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Deal Ice damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Ice"
+    ],
+    "Weak": [
+      "Nuclear"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "체력 7.0%",
+    "desc": "Deal Physical damage to 1 foe equal to 82.4/86.5/90.6% of Attack. 12.4/13.0/13.6% chance to inflict Enrage for 2 turns.",
+    "level": "6/7/8",
+    "name": "Hysterical Slap"
+  },
+  "innate_skill": [
+    {
+      "cost": "",
+      "desc": "At the start of battle, increase Attack by 8.5% for 2 turns.",
+      "learn_level": "4",
+      "level": "6/7/8",
+      "name": "Attack Master I"
+    },
+    {
+      "cost": "",
+      "desc": "8% chance to repel Physical attacks, dealing Physical damage equal to 70% of Attack.",
+      "learn_level": "8",
+      "level": "6/7/8",
+      "name": "Counter I"
+    },
+    {
+      "cost": "",
+      "desc": "Decrease Physical damage taken by 4.7%.",
+      "learn_level": "12",
+      "level": "6/7/8",
+      "name": "Physical Reduction I"
+    }
+  ],
+  "max_level": 30,
+  "max_level_after_awake": 35,
+  "name": "Yaksini",
+  "nature": "Ice",
+  "passive_skill": [
+    {
+      "desc": "Increase Attack by 7%. After taking damage, increase Attack by 25% for 2 turns.",
+      "name": "She-Demon's Discontent"
+    },
+    {
+      "desc": "Increase Attack by 7%. After taking damage, increase Attack by 30% for 2 turns.",
+      "name": "She-Demon's Discontent I"
+    }
+  ],
+  "rank": 2,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Ice damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

@@ -1,69 +1,80 @@
 {
-  "data": {
-    "name": "Dominion",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 27",
-        "desc": "Increase party's Attack by 15.0%/15.8%/16.5% for 2 turns. For every 500 of the user's Attack, increase party's Attack by 1.25%/1.31%/1.38% more (up to 10%). Increase main target's damage by 8.0%/8.4%/8.8% and increase damage by 1.0%/1.05%/1.1% more for every 500 of the user's Attack (up to 8%) for 1 turn.",
-        "level": "6/7/8",
-        "name": "Cohesion"
-      },
-      "innate_skill": [
-        {
-          "cost": "",
-          "desc": "Decrease critical taken rate by 8.1%.",
-          "learn_level": "9",
-          "level": "6/7/8",
-          "name": "Sharp Student IV"
-        },
-        {
-          "cost": "",
-          "desc": "Increase SP recovery rate by 7.1%.",
-          "learn_level": "18",
-          "level": "6/7/8",
-          "name": "Nurture IV"
-        },
-        {
-          "cost": "SP 22",
-          "desc": "Deal Bless damage to 1 foe equal to 140.0/149.3/158.6% of Attack. Gain 2 Blessing stacks.",
-          "learn_level": "27",
-          "level": "6/7/8",
-          "name": "Divine Judgment"
-        },
-        {
-          "cost": "",
-          "desc": "Increase Speed by 15. Decrease Defense by 12%.",
-          "learn_level": "36",
-          "level": "6/7/8",
-          "name": "Agility Master IV"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase Attack by 29.1%. When a skill is used on an ally, gain 2 Commandment stacks. When an ally deals skill damage, spend 1 Commandment stack to increase that skill's damage by 13.5%. Lasts for 1 turn.",
-          "name": "Angel's Command"
-        },
-        {
-          "desc": "Increase Attack by 29.1%. When a skill is used on an ally, gain 2 Commandment stacks. When an ally deals skill damage, spend 1 Commandment stack to increase that skill's damage by 15%. Lasts for 1 turn.",
-          "name": "Angel's Command I"
-        },
-        {
-          "desc": "Increase Attack by 29.1%. When a skill is used on an ally, gain 2 Commandment stacks. When an ally deals skill damage, spend 1 Commandment stack to increase that skill's Attack by 3.2% and damage by 15%. Lasts for 1 turn.",
-          "name": "Angel's Command II"
-        },
-        {
-          "desc": "Increase Attack by 29.1%. When a skill is used on an ally, gain 2 Commandment stacks. When an ally deals skill damage, spend 1 Commandment stack to increase that skill's Attack by 6.4% and damage by 15%. Lasts for 1 turn.",
-          "name": "Angel's Command III"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Increase party's damage by 29.5%/31.6%/33.6% for 2 turns.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Nuclear",
+      "Bless",
+      "Curse"
+    ],
+    "Weak": [
+      "Gun"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 27",
+    "desc": "Increase party's Attack by 15.0%/15.8%/16.5% for 2 turns. For every 500 of the user's Attack, increase party's Attack by 1.25%/1.31%/1.38% more (up to 10%). Increase main target's damage by 8.0%/8.4%/8.8% and increase damage by 1.0%/1.05%/1.1% more for every 500 of the user's Attack (up to 8%) for 1 turn.",
+    "level": "6/7/8",
+    "name": "Cohesion"
+  },
+  "innate_skill": [
+    {
+      "cost": "",
+      "desc": "Decrease critical taken rate by 8.1%.",
+      "learn_level": "9",
+      "level": "6/7/8",
+      "name": "Sharp Student IV"
+    },
+    {
+      "cost": "",
+      "desc": "Increase SP recovery rate by 7.1%.",
+      "learn_level": "18",
+      "level": "6/7/8",
+      "name": "Nurture IV"
+    },
+    {
+      "cost": "SP 22",
+      "desc": "Deal Bless damage to 1 foe equal to 140.0/149.3/158.6% of Attack. Gain 2 Blessing stacks.",
+      "learn_level": "27",
+      "level": "6/7/8",
+      "name": "Divine Judgment"
+    },
+    {
+      "cost": "",
+      "desc": "Increase Speed by 15. Decrease Defense by 12%.",
+      "learn_level": "36",
+      "level": "6/7/8",
+      "name": "Agility Master IV"
+    }
+  ],
+  "max_level": 80,
+  "max_level_after_awake": 95,
+  "name": "Dominion",
+  "nature": "Bless",
+  "passive_skill": [
+    {
+      "desc": "Increase Attack by 29.1%. When a skill is used on an ally, gain 2 Commandment stacks. When an ally deals skill damage, spend 1 Commandment stack to increase that skill's damage by 13.5%. Lasts for 1 turn.",
+      "name": "Angel's Command"
+    },
+    {
+      "desc": "Increase Attack by 29.1%. When a skill is used on an ally, gain 2 Commandment stacks. When an ally deals skill damage, spend 1 Commandment stack to increase that skill's damage by 15%. Lasts for 1 turn.",
+      "name": "Angel's Command I"
+    },
+    {
+      "desc": "Increase Attack by 29.1%. When a skill is used on an ally, gain 2 Commandment stacks. When an ally deals skill damage, spend 1 Commandment stack to increase that skill's Attack by 3.2% and damage by 15%. Lasts for 1 turn.",
+      "name": "Angel's Command II"
+    },
+    {
+      "desc": "Increase Attack by 29.1%. When a skill is used on an ally, gain 2 Commandment stacks. When an ally deals skill damage, spend 1 Commandment stack to increase that skill's Attack by 6.4% and damage by 15%. Lasts for 1 turn.",
+      "name": "Angel's Command III"
+    }
+  ],
+  "rank": 7,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Increase party's damage by 29.5%/31.6%/33.6% for 2 turns.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

@@ -1,54 +1,64 @@
 {
-  "data": {
-    "name": "Nue",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 19",
-        "desc": "Deal Curse damage to all foes equal to 58.0/61.3/64.6% of Attack. Chance to inflict 1 Curse stack on foes.",
-        "level": "6/7/8",
-        "name": "Maeiha"
-      },
-      "innate_skill": [
-        {
-          "cost": "SP 19",
-          "desc": "Deal Curse damage to all foes equal to 39.9/44.0/48.1% of Attack. Low chance to deal Curse insta-kill effect to foes with 50% or less HP. Increase chance based on foe's missing HP.",
-          "learn_level": "4",
-          "level": "6/7/8",
-          "name": "Mamudo"
-        },
-        {
-          "cost": "체력 7.0%",
-          "desc": "Deal Physical damage to 1 foe equal to 82.4/86.5/90.6% of Attack. 9.3/9.8/10.2% chance to inflict Confuse for 2 turns.",
-          "learn_level": "8",
-          "level": "6/7/8",
-          "name": "Skull Cracker"
-        },
-        {
-          "cost": "",
-          "desc": "Decrease Curse damage taken by 4.7%.",
-          "learn_level": "12",
-          "level": "6/7/8",
-          "name": "Curse Reduction I"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase critical rate by 4.2%. When dealing Curse damage, 75% chance to inflict 1 Curse stack.",
-          "name": "Cursed Howl"
-        },
-        {
-          "desc": "Increase critical rate by 4.2%. When dealing Curse damage, 90% chance to inflict 1 Curse stack.",
-          "name": "Cursed Howl I"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Deal Curse damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Ice",
+      "Curse"
+    ],
+    "Weak": [
+      "Fire"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 19",
+    "desc": "Deal Curse damage to all foes equal to 58.0/61.3/64.6% of Attack. Chance to inflict 1 Curse stack on foes.",
+    "level": "6/7/8",
+    "name": "Maeiha"
+  },
+  "innate_skill": [
+    {
+      "cost": "SP 19",
+      "desc": "Deal Curse damage to all foes equal to 39.9/44.0/48.1% of Attack. Low chance to deal Curse insta-kill effect to foes with 50% or less HP. Increase chance based on foe's missing HP.",
+      "learn_level": "4",
+      "level": "6/7/8",
+      "name": "Mamudo"
+    },
+    {
+      "cost": "체력 7.0%",
+      "desc": "Deal Physical damage to 1 foe equal to 82.4/86.5/90.6% of Attack. 9.3/9.8/10.2% chance to inflict Confuse for 2 turns.",
+      "learn_level": "8",
+      "level": "6/7/8",
+      "name": "Skull Cracker"
+    },
+    {
+      "cost": "",
+      "desc": "Decrease Curse damage taken by 4.7%.",
+      "learn_level": "12",
+      "level": "6/7/8",
+      "name": "Curse Reduction I"
+    }
+  ],
+  "max_level": 30,
+  "max_level_after_awake": 35,
+  "name": "Nue",
+  "nature": "Curse",
+  "passive_skill": [
+    {
+      "desc": "Increase critical rate by 4.2%. When dealing Curse damage, 75% chance to inflict 1 Curse stack.",
+      "name": "Cursed Howl"
+    },
+    {
+      "desc": "Increase critical rate by 4.2%. When dealing Curse damage, 90% chance to inflict 1 Curse stack.",
+      "name": "Cursed Howl I"
+    }
+  ],
+  "rank": 2,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Curse damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

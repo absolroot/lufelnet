@@ -1,65 +1,75 @@
 {
-  "data": {
-    "name": "Bugs",
-    "skill": {
-      "fixed_skill": {
-        "cost": "체력 8.0%",
-        "desc": "Deal Physical damage to 1 foe equal to 127.9/134.3/140.7%  of Attack. Increase critical rate by 30%, and decrease accuracy by 20%.",
-        "level": "6/7/8",
-        "name": "Miracle Punch"
-      },
-      "innate_skill": [
-        {
-          "cost": "체력 9.0%",
-          "desc": "Decrease this skill's accuracy by 15%, increase critical rate by 16%, and deal Gun damage to all foes equal to 14.9/15.6/16.4% of Attack (3 hits).",
-          "learn_level": "6",
-          "level": "6/7/8",
-          "name": "Triple Down"
-        },
-        {
-          "cost": "",
-          "desc": "Increase Gun damage by 8.7%.",
-          "learn_level": "12",
-          "level": "6/7/8",
-          "name": "Gun Boost III"
-        },
-        {
-          "cost": "체력 8.0%",
-          "desc": "Deal Physical damage to all foes equal to 40.8/42.8/44.9% of Attack. 2.6/2.7/2.9% chance to inflict Fear for 3 turns.",
-          "learn_level": "18",
-          "level": "6/7/8",
-          "name": "Bloodbath"
-        },
-        {
-          "cost": "",
-          "desc": "Increase critical rate by 6.5%.",
-          "learn_level": "25",
-          "level": "6/7/8",
-          "name": "Apt Pupil III"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase critical rate by 10.6%. When a critical attack knocks down a foe, increase user's Attack by 30% for 2 turns.",
-          "name": "Let's Play!"
-        },
-        {
-          "desc": "Increase critical rate by 10.6%. When a critical attack knocks down a foe, increase user's Attack by 35% for 2 turns.",
-          "name": "Let's Play! I"
-        },
-        {
-          "desc": "Increase critical rate by 10.6%. When a critical attack knocks down a foe, increase user's Attack by 40% for 2 turns.",
-          "name": "Let's Play! II"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Deal Gun damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Psychokinesis",
+      "Curse"
+    ],
+    "Weak": [
+      "Nuclear"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "체력 8.0%",
+    "desc": "Deal Physical damage to 1 foe equal to 127.9/134.3/140.7%  of Attack. Increase critical rate by 30%, and decrease accuracy by 20%.",
+    "level": "6/7/8",
+    "name": "Miracle Punch"
+  },
+  "innate_skill": [
+    {
+      "cost": "체력 9.0%",
+      "desc": "Decrease this skill's accuracy by 15%, increase critical rate by 16%, and deal Gun damage to all foes equal to 14.9/15.6/16.4% of Attack (3 hits).",
+      "learn_level": "6",
+      "level": "6/7/8",
+      "name": "Triple Down"
+    },
+    {
+      "cost": "",
+      "desc": "Increase Gun damage by 8.7%.",
+      "learn_level": "12",
+      "level": "6/7/8",
+      "name": "Gun Boost III"
+    },
+    {
+      "cost": "체력 8.0%",
+      "desc": "Deal Physical damage to all foes equal to 40.8/42.8/44.9% of Attack. 2.6/2.7/2.9% chance to inflict Fear for 3 turns.",
+      "learn_level": "18",
+      "level": "6/7/8",
+      "name": "Bloodbath"
+    },
+    {
+      "cost": "",
+      "desc": "Increase critical rate by 6.5%.",
+      "learn_level": "25",
+      "level": "6/7/8",
+      "name": "Apt Pupil III"
+    }
+  ],
+  "max_level": 60,
+  "max_level_after_awake": 70,
+  "name": "Bugs",
+  "nature": "Gun",
+  "passive_skill": [
+    {
+      "desc": "Increase critical rate by 10.6%. When a critical attack knocks down a foe, increase user's Attack by 30% for 2 turns.",
+      "name": "Let's Play!"
+    },
+    {
+      "desc": "Increase critical rate by 10.6%. When a critical attack knocks down a foe, increase user's Attack by 35% for 2 turns.",
+      "name": "Let's Play! I"
+    },
+    {
+      "desc": "Increase critical rate by 10.6%. When a critical attack knocks down a foe, increase user's Attack by 40% for 2 turns.",
+      "name": "Let's Play! II"
+    }
+  ],
+  "rank": 5,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Gun damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

@@ -1,69 +1,81 @@
 {
-  "data": {
-    "name": "Cu Chulainn",
-    "skill": {
-      "fixed_skill": {
-        "cost": "체력 11.0%",
-        "desc": "Deal Physical damage to 1 foe equal to 174.0%/182.7%/191.4% of Attack. For each debuff on the target, increase this skill's critical rate by 4% (up to 20%).",
-        "level": "6/7/8",
-        "name": "Gae Bolg"
-      },
-      "innate_skill": [
-        {
-          "cost": "체력 8.0%",
-          "desc": "Increase this skill's critical rate by 20%, and deal Gun damage to 1 foe equal to 107.5/112.9/118.3% of Attack.",
-          "learn_level": "9",
-          "level": "6/7/8",
-          "name": "One-shot Kill"
-        },
-        {
-          "cost": "",
-          "desc": "Increase critical rate by 7.8% when ambushing.",
-          "learn_level": "18",
-          "level": "6/7/8",
-          "name": "Fortified Moxy III"
-        },
-        {
-          "cost": "SP 22",
-          "desc": "Increase party's Attack by 10.9%/11.4%/12.0%. For every 500 of the user's Attack, increase party's Attack by 0.9%/0.9%/1.0% more, up to 7.2%/7.6%/7.9%. Lasts for 3 turns.",
-          "learn_level": "27",
-          "level": "6/7/8",
-          "name": "Matarukaja"
-        },
-        {
-          "cost": "",
-          "desc": "Increase critical rate by 8.1%.",
-          "learn_level": "36",
-          "level": "6/7/8",
-          "name": "Apt Pupil IV"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase critical rate by 17.5%. After a critical hit, inflict Fatal Thorn on foe. On the next attack with a unique skill, spend Fatal Thorn to increase skill damage by 58% of Attack.",
-          "name": "Fell Spear's Wielder"
-        },
-        {
-          "desc": "Increase critical rate by 17.5%. After a critical hit, inflict Fatal Thorn on foe. On the next attack with a unique skill, spend Fatal Thorn to increase skill damage by 58% with a miniscule chance to insta-kill.",
-          "name": "Fell Spear's Wielder I"
-        },
-        {
-          "desc": "Increase critical rate by 17.5%. After a critical hit, inflict Fatal Thorn on foe. On the next attack with a unique skill, spend Fatal Thorn to increase skill damage by 87% with a miniscule chance to insta-kill.",
-          "name": "Fell Spear's Wielder II"
-        },
-        {
-          "desc": "Increase critical rate by 17.5%. After a critical hit, inflict Fatal Thorn on foe. On the next attack with a unique skill, spend Fatal Thorn to increase skill damage by 87% with a miniscule chance to insta-kill.",
-          "name": "Fell Spear's Wielder III"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Deal Physical damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Phys",
+      "Gun",
+      "Wind",
+      "Bless"
+    ],
+    "Weak": [
+      "Electric"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "체력 11.0%",
+    "desc": "Deal Physical damage to 1 foe equal to 174.0%/182.7%/191.4% of Attack. For each debuff on the target, increase this skill's critical rate by 4% (up to 20%).",
+    "level": "6/7/8",
+    "name": "Gae Bolg"
+  },
+  "innate_skill": [
+    {
+      "cost": "체력 8.0%",
+      "desc": "Increase this skill's critical rate by 20%, and deal Gun damage to 1 foe equal to 107.5/112.9/118.3% of Attack.",
+      "learn_level": "9",
+      "level": "6/7/8",
+      "name": "One-shot Kill"
+    },
+    {
+      "cost": "",
+      "desc": "Increase critical rate by 7.8% when ambushing.",
+      "learn_level": "18",
+      "level": "6/7/8",
+      "name": "Fortified Moxy III"
+    },
+    {
+      "cost": "SP 22",
+      "desc": "Increase party's Attack by 10.9%/11.4%/12.0%. For every 500 of the user's Attack, increase party's Attack by 0.9%/0.9%/1.0% more, up to 7.2%/7.6%/7.9%. Lasts for 3 turns.",
+      "learn_level": "27",
+      "level": "6/7/8",
+      "name": "Matarukaja"
+    },
+    {
+      "cost": "",
+      "desc": "Increase critical rate by 8.1%.",
+      "learn_level": "36",
+      "level": "6/7/8",
+      "name": "Apt Pupil IV"
+    }
+  ],
+  "max_level": 80,
+  "max_level_after_awake": 95,
+  "name": "Cu Chulainn",
+  "nature": "Phys",
+  "passive_skill": [
+    {
+      "desc": "Increase critical rate by 17.5%. After a critical hit, inflict Fatal Thorn on foe. On the next attack with a unique skill, spend Fatal Thorn to increase skill damage by 58% of Attack.",
+      "name": "Fell Spear's Wielder"
+    },
+    {
+      "desc": "Increase critical rate by 17.5%. After a critical hit, inflict Fatal Thorn on foe. On the next attack with a unique skill, spend Fatal Thorn to increase skill damage by 58% with a miniscule chance to insta-kill.",
+      "name": "Fell Spear's Wielder I"
+    },
+    {
+      "desc": "Increase critical rate by 17.5%. After a critical hit, inflict Fatal Thorn on foe. On the next attack with a unique skill, spend Fatal Thorn to increase skill damage by 87% with a miniscule chance to insta-kill.",
+      "name": "Fell Spear's Wielder II"
+    },
+    {
+      "desc": "Increase critical rate by 17.5%. After a critical hit, inflict Fatal Thorn on foe. On the next attack with a unique skill, spend Fatal Thorn to increase skill damage by 87% with a low chance to insta-kill.",
+      "name": "Fell Spear's Wielder III"
+    }
+  ],
+  "rank": 7,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Physical damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

@@ -1,65 +1,76 @@
 {
-  "data": {
-    "name": "Narcissus",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 24",
-        "desc": "Deal Wind damage to 1 foe equal to 155.1%/162.9%/170.6% of Attack. 100.0%/105.0%/110.0% chance to inflict Windswept on the target for 2 turns.",
-        "level": "6/7/8",
-        "name": "Spike"
-      },
-      "innate_skill": [
-        {
-          "cost": "SP 21",
-          "desc": "Deal Wind damage to 1 foe equal to 121.7/127.8/133.9% of Attack. 67.6/71.0/74.4% chance to inflict Windswept for 2 turns.",
-          "learn_level": "6",
-          "level": "6/7/8",
-          "name": "Garudyne"
-        },
-        {
-          "cost": "SP 22",
-          "desc": "32.6/34.2/35.9% chance to inflict Dizzy on 1 foe for 2 turns.",
-          "learn_level": "12",
-          "level": "6/7/8",
-          "name": "Dazzler"
-        },
-        {
-          "cost": "",
-          "desc": "Increase Dizzy accuracy by 16.3%.",
-          "learn_level": "18",
-          "level": "6/7/8",
-          "name": "Dizzy Boost III"
-        },
-        {
-          "cost": "",
-          "desc": "Increase Windswept accuracy by 16.3%.",
-          "learn_level": "25",
-          "level": "6/7/8",
-          "name": "Windsweep Boost III"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase ailment accuracy by 24.9%. After inflicting Windswept, increase main target's damage taken by 17.6% and increase user's ailment accuracy by 14% for 2 turns.",
-          "name": "Bewildering Fragrance"
-        },
-        {
-          "desc": "Increase ailment accuracy by 24.9%. After inflicting Windswept, increase main target's damage taken by 20% and increase user's ailment accuracy by 16% for 2 turns.",
-          "name": "Bewildering Fragrance I"
-        },
-        {
-          "desc": "Increase ailment accuracy by 24.9%. After inflicting Windswept, increase main target's damage taken by 22.4% and increase user's ailment accuracy by 18% for 2 turns.",
-          "name": "Bewildering Fragrance II"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Deal Wind damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Electric",
+      "Wind",
+      "Bless"
+    ],
+    "Weak": [
+      "Fire"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 24",
+    "desc": "Deal Wind damage to 1 foe equal to 155.1%/162.9%/170.6% of Attack. 100.0%/105.0%/110.0% chance to inflict Windswept on the target for 2 turns.",
+    "level": "6/7/8",
+    "name": "Spike"
+  },
+  "innate_skill": [
+    {
+      "cost": "SP 21",
+      "desc": "Deal Wind damage to 1 foe equal to 121.7/127.8/133.9% of Attack. 67.6/71.0/74.4% chance to inflict Windswept for 2 turns.",
+      "learn_level": "6",
+      "level": "6/7/8",
+      "name": "Garudyne"
+    },
+    {
+      "cost": "SP 22",
+      "desc": "32.6/34.2/35.9% chance to inflict Dizzy on 1 foe for 2 turns.",
+      "learn_level": "12",
+      "level": "6/7/8",
+      "name": "Dazzler"
+    },
+    {
+      "cost": "",
+      "desc": "Increase Dizzy accuracy by 16.3%.",
+      "learn_level": "18",
+      "level": "6/7/8",
+      "name": "Dizzy Boost III"
+    },
+    {
+      "cost": "",
+      "desc": "Increase Windswept accuracy by 16.3%.",
+      "learn_level": "25",
+      "level": "6/7/8",
+      "name": "Windsweep Boost III"
+    }
+  ],
+  "max_level": 60,
+  "max_level_after_awake": 70,
+  "name": "Narcissus",
+  "nature": "Wind",
+  "passive_skill": [
+    {
+      "desc": "Increase ailment accuracy by 24.9%. After inflicting Windswept, increase main target's damage taken by 17.6% and increase user's ailment accuracy by 14% for 2 turns.",
+      "name": "Bewildering Fragrance"
+    },
+    {
+      "desc": "Increase ailment accuracy by 24.9%. After inflicting Windswept, increase main target's damage taken by 20% and increase user's ailment accuracy by 16% for 2 turns.",
+      "name": "Bewildering Fragrance I"
+    },
+    {
+      "desc": "Increase ailment accuracy by 24.9%. After inflicting Windswept, increase main target's damage taken by 22.4% and increase user's ailment accuracy by 18% for 2 turns.",
+      "name": "Bewildering Fragrance II"
+    }
+  ],
+  "rank": 5,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Wind damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

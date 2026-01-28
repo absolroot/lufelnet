@@ -1,65 +1,75 @@
 {
-  "data": {
-    "name": "Daisoujou",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 24",
-        "desc": "Deal Bless damage to all foes equal to 76.0%/79.8%/83.6% of Attack. If main target's HP is below 50%, chance of insta-kill.",
-        "level": "6/7/8",
-        "name": "Samsara"
-      },
-      "innate_skill": [
-        {
-          "cost": "",
-          "desc": "Increase Bless damage by 8.7%.",
-          "learn_level": "6",
-          "level": "6/7/8",
-          "name": "Bless Boost III"
-        },
-        {
-          "cost": "",
-          "desc": "Increase the success rate of insta-kill skills by 5.4%.",
-          "learn_level": "12",
-          "level": "6/7/8",
-          "name": "Divine Guidance III"
-        },
-        {
-          "cost": "SP 19",
-          "desc": "Deal Almighty damage to 1 foe equal to 41.4/43.5/45.5% of Attack, ignoring their Defense. Restore user's HP equal to 41.4/43.5/45.5% of Attack.",
-          "learn_level": "18",
-          "level": "6/7/8",
-          "name": "Life Drain"
-        },
-        {
-          "cost": "SP 3",
-          "desc": "Drain 25/26/27 SP from 1 foe.",
-          "learn_level": "25",
-          "level": "6/7/8",
-          "name": "Spirit Drain"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase Attack by 20.8%. Increase Bless damage by 48% when attacking foes with less than 50% HP.",
-          "name": "Miraculous Salvation"
-        },
-        {
-          "desc": "Increase Attack by 20.8%. Increase Bless damage by 55% when attacking foes with less than 50% HP.",
-          "name": "Miraculous Salvation I"
-        },
-        {
-          "desc": "Increase Attack by 20.8%. Increase Bless damage by 61% when attacking foes with less than 50% HP. After dealing damage to foes with less than 50% HP, restore user's HP by 12% of Attack.",
-          "name": "Miraculous Salvation II"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Deal Bless damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Phys",
+      "Bless"
+    ],
+    "Weak": [
+      "Curse"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 24",
+    "desc": "Deal Bless damage to all foes equal to 76.0%/79.8%/83.6% of Attack. If main target's HP is below 50%, chance of insta-kill.",
+    "level": "6/7/8",
+    "name": "Samsara"
+  },
+  "innate_skill": [
+    {
+      "cost": "",
+      "desc": "Increase Bless damage by 8.7%.",
+      "learn_level": "6",
+      "level": "6/7/8",
+      "name": "Bless Boost III"
+    },
+    {
+      "cost": "",
+      "desc": "Increase the success rate of insta-kill skills by 5.4%.",
+      "learn_level": "12",
+      "level": "6/7/8",
+      "name": "Divine Guidance III"
+    },
+    {
+      "cost": "SP 19",
+      "desc": "Deal Almighty damage to 1 foe equal to 41.4/43.5/45.5% of Attack, ignoring their Defense. Restore user's HP equal to 41.4/43.5/45.5% of Attack.",
+      "learn_level": "18",
+      "level": "6/7/8",
+      "name": "Life Drain"
+    },
+    {
+      "cost": "SP 3",
+      "desc": "Drain 25/26/27 SP from 1 foe.",
+      "learn_level": "25",
+      "level": "6/7/8",
+      "name": "Spirit Drain"
+    }
+  ],
+  "max_level": 60,
+  "max_level_after_awake": 70,
+  "name": "Daisoujou",
+  "nature": "Bless",
+  "passive_skill": [
+    {
+      "desc": "Increase Attack by 20.8%. Increase Bless damage by 48% when attacking foes with less than 50% HP.",
+      "name": "Miraculous Salvation"
+    },
+    {
+      "desc": "Increase Attack by 20.8%. Increase Bless damage by 55% when attacking foes with less than 50% HP.",
+      "name": "Miraculous Salvation I"
+    },
+    {
+      "desc": "Increase Attack by 20.8%. Increase Bless damage by 61% when attacking foes with less than 50% HP. After dealing damage to foes with less than 50% HP, restore user's HP by 12% of Attack.",
+      "name": "Miraculous Salvation II"
+    }
+  ],
+  "rank": 5,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Bless damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

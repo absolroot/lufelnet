@@ -1,69 +1,82 @@
 {
-  "data": {
-    "name": "Chernobog",
-    "skill": {
-      "fixed_skill": {
-        "cost": "체력 11.0%",
-        "desc": "Deal Physical damage to 1 foe equal to 40.0%/42.0%/44.0% of Attack (3 hits) and inflict Nightmare. 9.0%/9.5%/9.9% chance to inflict Fear.",
-        "level": "6/7/8",
-        "name": "Verdict of Agony"
-      },
-      "innate_skill": [
-        {
-          "cost": "SP 20",
-          "desc": "Deal Curse damage to 1 foe equal to 90.6/99.3/108.0% of Attack. Low chance to deal Curse insta-kill effect to foes with 50% or less HP. Increase chance based on foe's missing HP.",
-          "learn_level": "10",
-          "level": "6/7/8",
-          "name": "Mudoon"
-        },
-        {
-          "cost": "체력 8.0%",
-          "desc": "Deal Physical damage to all foes equal to 40.8/42.8/44.9% of Attack. 2.6/2.7/2.9% chance to inflict Fear for 3 turns.",
-          "learn_level": "20",
-          "level": "6/7/8",
-          "name": "Bloodbath"
-        },
-        {
-          "cost": "",
-          "desc": "Increase ailment accuracy by 13%.",
-          "learn_level": "30",
-          "level": "6/7/8",
-          "name": "Accuracy Boost III"
-        },
-        {
-          "cost": "체력 9.0%",
-          "desc": "Deal Physical damage to 1 foe equal to 154.5/162.2/170.0% of Attack.",
-          "learn_level": "40",
-          "level": "6/7/8",
-          "name": "Deadly Fury"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase ailment accuracy by 34.9%. With Nightmare, decrease ailment resistance by 10% and Defense by 7% for 2 turns. Increase damage taken by foes with Nightmare by 6%. Every 3 times a foe takes Physical damage, inflict 1 more stack of Nightmare. Can stack up to 3 times. Stacks are calculated individually.",
-          "name": "Deathly Silence"
-        },
-        {
-          "desc": "Increase ailment accuracy by 34.9%. With Nightmare, decrease ailment resistance by 15% and Defense by 7% for 2 turns. Increase damage taken by foes with Nightmare by 6%. Every 3 times a foe takes Physical damage, inflict 1 more stack of Nightmare. Can stack up to 3 times. Stacks are calculated individually.",
-          "name": "Deathly Silence I"
-        },
-        {
-          "desc": "Increase ailment accuracy by 34.9%. With Nightmare, decrease ailment resistance by 15% and Defense by 7% for 2 turns. Increase damage taken by foes with Nightmare by 8%. Every 3 times a foe takes Physical damage, inflict 1 more stack of Nightmare. Can stack up to 3 times. Stacks are calculated individually.",
-          "name": "Deathly Silence II"
-        },
-        {
-          "desc": "Increase ailment accuracy by 34.9%. With Nightmare, decrease ailment resistance by 15% and Defense by 10% for 2 turns. Increase damage taken by foes with Nightmare by 8%. Every 3 times a foe takes Physical damage, inflict 1 more stack of Nightmare. Can stack up to 3 times. Stacks are calculated individually.",
-          "name": "Deathly Silence III"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Deal Physical damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Gun",
+      "Ice",
+      "Electric",
+      "Curse"
+    ],
+    "Weak": [
+      "Fire",
+      "Bless"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "체력 11.0%",
+    "desc": "Deal Physical damage to 1 foe equal to 40.0%/42.0%/44.0% of Attack (3 hits) and inflict Nightmare. 9.0%/9.5%/9.9% chance to inflict Fear.",
+    "level": "6/7/8",
+    "name": "Verdict of Agony"
+  },
+  "innate_skill": [
+    {
+      "cost": "SP 20",
+      "desc": "Deal Curse damage to 1 foe equal to 90.6/99.3/108.0% of Attack. Low chance to deal Curse insta-kill effect to foes with 50% or less HP. Increase chance based on foe's missing HP.",
+      "learn_level": "10",
+      "level": "6/7/8",
+      "name": "Mudoon"
+    },
+    {
+      "cost": "체력 8.0%",
+      "desc": "Deal Physical damage to all foes equal to 40.8/42.8/44.9% of Attack. 2.6/2.7/2.9% chance to inflict Fear for 3 turns.",
+      "learn_level": "20",
+      "level": "6/7/8",
+      "name": "Bloodbath"
+    },
+    {
+      "cost": "",
+      "desc": "Increase ailment accuracy by 13%.",
+      "learn_level": "30",
+      "level": "6/7/8",
+      "name": "Accuracy Boost III"
+    },
+    {
+      "cost": "체력 9.0%",
+      "desc": "Deal Physical damage to 1 foe equal to 154.5/162.2/170.0% of Attack.",
+      "learn_level": "40",
+      "level": "6/7/8",
+      "name": "Deadly Fury"
+    }
+  ],
+  "max_level": 80,
+  "max_level_after_awake": 95,
+  "name": "Chernobog",
+  "nature": "Phys",
+  "passive_skill": [
+    {
+      "desc": "Increase ailment accuracy by 34.9%. With Nightmare, decrease ailment resistance by 10% and Defense by 7% for 2 turns. Increase damage taken by foes with Nightmare by 6%. Every 3 times a foe takes Physical damage, inflict 1 more stack of Nightmare. Can stack up to 3 times. Stacks are calculated individually.",
+      "name": "Deathly Silence"
+    },
+    {
+      "desc": "Increase ailment accuracy by 34.9%. With Nightmare, decrease ailment resistance by 15% and Defense by 7% for 2 turns. Increase damage taken by foes with Nightmare by 6%. Every 3 times a foe takes Physical damage, inflict 1 more stack of Nightmare. Can stack up to 3 times. Stacks are calculated individually.",
+      "name": "Deathly Silence I"
+    },
+    {
+      "desc": "Increase ailment accuracy by 34.9%. With Nightmare, decrease ailment resistance by 15% and Defense by 7% for 2 turns. Increase damage taken by foes with Nightmare by 8%. Every 3 times a foe takes Physical damage, inflict 1 more stack of Nightmare. Can stack up to 3 times. Stacks are calculated individually.",
+      "name": "Deathly Silence II"
+    },
+    {
+      "desc": "Increase ailment accuracy by 34.9%. With Nightmare, decrease ailment resistance by 15% and Defense by 10% for 2 turns. Increase damage taken by foes with Nightmare by 8%. Every 3 times a foe takes Physical damage, inflict 1 more stack of Nightmare. Can stack up to 3 times. Stacks are calculated individually.",
+      "name": "Deathly Silence III"
+    }
+  ],
+  "rank": 7,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Physical damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

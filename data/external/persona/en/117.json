@@ -1,47 +1,56 @@
 {
-  "data": {
-    "name": "Bicorn",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 19",
-        "desc": "Deal Wind damage to 1 foe equal to 106.2/111.5/116.8% of Attack. 59.0/62.0/64.9% chance to inflict Windswept for 2 turns.",
-        "level": "6/7/8",
-        "name": "Garu"
-      },
-      "innate_skill": [
-        {
-          "cost": "",
-          "desc": "Increase Speed by 6.",
-          "learn_level": "4",
-          "level": "6/7/8",
-          "name": "Agility Master I"
-        },
-        {
-          "cost": "",
-          "desc": "Increase critical rate by 3.5%.",
-          "learn_level": "8",
-          "level": "6/7/8",
-          "name": "Apt Pupil I"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase Attack by 2.9%. After knocking down a foe, increase Wind damage by 20% for 2 turns.",
-          "name": "Dance of the Wind"
-        },
-        {
-          "desc": "Increase Attack by 2.9%. After knocking down a foe, increase Wind damage by 23% for 2 turns.",
-          "name": "Dance of the Wind I"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Deal Wind damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Curse"
+    ],
+    "Weak": [
+      "Electric"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 19",
+    "desc": "Deal Wind damage to 1 foe equal to 106.2/111.5/116.8% of Attack. 59.0/62.0/64.9% chance to inflict Windswept for 2 turns.",
+    "level": "6/7/8",
+    "name": "Garu"
+  },
+  "innate_skill": [
+    {
+      "cost": "",
+      "desc": "Increase Speed by 6.",
+      "learn_level": "4",
+      "level": "6/7/8",
+      "name": "Agility Master I"
+    },
+    {
+      "cost": "",
+      "desc": "Increase critical rate by 3.5%.",
+      "learn_level": "8",
+      "level": "6/7/8",
+      "name": "Apt Pupil I"
+    }
+  ],
+  "max_level": 20,
+  "max_level_after_awake": 25,
+  "name": "Bicorn",
+  "nature": "Wind",
+  "passive_skill": [
+    {
+      "desc": "Increase Attack by 2.9%. After knocking down a foe, increase Wind damage by 20% for 2 turns.",
+      "name": "Dance of the Wind"
+    },
+    {
+      "desc": "Increase Attack by 2.9%. After knocking down a foe, increase Wind damage by 23% for 2 turns.",
+      "name": "Dance of the Wind I"
+    }
+  ],
+  "rank": 1,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Wind damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

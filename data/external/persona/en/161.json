@@ -1,69 +1,80 @@
 {
-  "data": {
-    "name": "Vishnu",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 24",
-        "desc": "Deal Wind damage to 1 foe equal to 192.0%/201.6%/211.2% of Attack with a 75% chance to inflict Windswept.\nIf the target already has Windswept, reset effect duration and increase this skill's damage by 27.0%/28.4%/29.7%. Also, increase foes' Wind damage taken by 27.0%/28.4%/29.7% for 2 turns.",
-        "level": "6/7/8",
-        "name": "Wind of Nirvana"
-      },
-      "innate_skill": [
-        {
-          "cost": "",
-          "desc": "Increase Wind damage by 8.7%.",
-          "learn_level": "10",
-          "level": "6/7/8",
-          "name": "Wind Boost III"
-        },
-        {
-          "cost": "SP 21",
-          "desc": "Deal Wind damage to all foes equal to 60.8/63.8/66.9% of Attack. 33.8/35.5/37.2% chance to inflict Windswept for 2 turns.",
-          "learn_level": "20",
-          "level": "6/7/8",
-          "name": "Magarudyne"
-        },
-        {
-          "cost": "",
-          "desc": "At the start of battle, increase Attack by 15.7% for 2 turns.",
-          "learn_level": "30",
-          "level": "6/7/8",
-          "name": "Attack Master III"
-        },
-        {
-          "cost": "SP 20",
-          "desc": "Deal Almighty damage to all foes equal to 43.5/45.7/47.8% of Attack, ignoring their defense.",
-          "learn_level": "40",
-          "level": "6/7/8",
-          "name": "Megidolaon"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase critical rate by 17.5%. Increase Windswept accuracy by 13%. Increase damage to Windswept foes by 13%. When inflicting or resetting Windswept, decrease the target's Defense by 32% for 2 turns.",
-          "name": "Goodwill to All"
-        },
-        {
-          "desc": "Increase critical rate by 17.5%. Increase Windswept accuracy by 20%. Increase damage to Windswept foes by 13%. When inflicting or resetting Windswept, decrease the target's Defense by 32% for 2 turns.",
-          "name": "Goodwill to All I"
-        },
-        {
-          "desc": "Increase critical rate by 17.5%. Increase Windswept accuracy by 20%. Increase damage to Windswept foes by 20%. When inflicting or resetting Windswept, decrease the target's Defense by 32% for 2 turns.",
-          "name": "Goodwill to All II"
-        },
-        {
-          "desc": "Increase critical rate by 17.5%. Increase Windswept accuracy by 20%. Increase damage to Windswept foes by 20%. When inflicting or resetting Windswept, decrease the target's Defense by 48% for 2 turns.",
-          "name": "Goodwill to All III"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Deal Wind damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Ice",
+      "Bless",
+      "Curse"
+    ],
+    "Weak": [
+      "Fire"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 24",
+    "desc": "Deal Wind damage to 1 foe equal to 192.0%/201.6%/211.2% of Attack with a 75% chance to inflict Windswept.\nIf the target already has Windswept, reset effect duration and increase this skill's damage by 27.0%/28.4%/29.7%. Also, increase foes' Wind damage taken by 27.0%/28.4%/29.7% for 2 turns.",
+    "level": "6/7/8",
+    "name": "Wind of Nirvana"
+  },
+  "innate_skill": [
+    {
+      "cost": "",
+      "desc": "Increase Wind damage by 8.7%.",
+      "learn_level": "10",
+      "level": "6/7/8",
+      "name": "Wind Boost III"
+    },
+    {
+      "cost": "SP 21",
+      "desc": "Deal Wind damage to all foes equal to 60.8/63.8/66.9% of Attack. 33.8/35.5/37.2% chance to inflict Windswept for 2 turns.",
+      "learn_level": "20",
+      "level": "6/7/8",
+      "name": "Magarudyne"
+    },
+    {
+      "cost": "",
+      "desc": "At the start of battle, increase Attack by 15.7% for 2 turns.",
+      "learn_level": "30",
+      "level": "6/7/8",
+      "name": "Attack Master III"
+    },
+    {
+      "cost": "SP 20",
+      "desc": "Deal Almighty damage to all foes equal to 43.5/45.7/47.8% of Attack, ignoring their defense.",
+      "learn_level": "40",
+      "level": "6/7/8",
+      "name": "Megidolaon"
+    }
+  ],
+  "max_level": 80,
+  "max_level_after_awake": 99,
+  "name": "Vishnu",
+  "nature": "Wind",
+  "passive_skill": [
+    {
+      "desc": "Increase critical rate by 17.5%. Increase Windswept accuracy by 13%. Increase damage to Windswept foes by 13%. When inflicting or resetting Windswept, decrease the target's Defense by 32% for 2 turns.",
+      "name": "Goodwill to All"
+    },
+    {
+      "desc": "Increase critical rate by 17.5%. Increase Windswept accuracy by 20%. Increase damage to Windswept foes by 13%. When inflicting or resetting Windswept, decrease the target's Defense by 32% for 2 turns.",
+      "name": "Goodwill to All I"
+    },
+    {
+      "desc": "Increase critical rate by 17.5%. Increase Windswept accuracy by 20%. Increase damage to Windswept foes by 20%. When inflicting or resetting Windswept, decrease the target's Defense by 32% for 2 turns.",
+      "name": "Goodwill to All II"
+    },
+    {
+      "desc": "Increase critical rate by 17.5%. Increase Windswept accuracy by 20%. Increase damage to Windswept foes by 20%. When inflicting or resetting Windswept, decrease the target's Defense by 48% for 2 turns.",
+      "name": "Goodwill to All III"
+    }
+  ],
+  "rank": 8,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Wind damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

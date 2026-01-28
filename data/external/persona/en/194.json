@@ -1,54 +1,65 @@
 {
-  "data": {
-    "name": "Shiisaa",
-    "skill": {
-      "fixed_skill": {
-        "cost": "체력 6.0%",
-        "desc": "Deal Physical damage to 1 foe equal to 58.2/61.1/64.0% of Attack (2 hits).",
-        "level": "6/7/8",
-        "name": "Double Fangs"
-      },
-      "innate_skill": [
-        {
-          "cost": "SP 19",
-          "desc": "Deal Electric damage to 1 foe equal to 106.2/111.5/116.8% of Attack. 59.0/62.0/64.9% chance to inflict Shock for 2 turns.",
-          "learn_level": "4",
-          "level": "6/7/8",
-          "name": "Zio"
-        },
-        {
-          "cost": "",
-          "desc": "Decrease damage taken by 4.7%.",
-          "learn_level": "8",
-          "level": "6/7/8",
-          "name": "Reduction Boost I"
-        },
-        {
-          "cost": "",
-          "desc": "Increase Electric damage by 4.7%.",
-          "learn_level": "12",
-          "level": "6/7/8",
-          "name": "Elec Boost I"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase Attack by 5.8%. Increase accuracy to inflict Shock on foes with less than 70% HP by 40%.",
-          "name": "Beast Guardian Statue"
-        },
-        {
-          "desc": "Increase Attack by 5.8%. Increase accuracy to inflict Shock on foes with less than 70% HP by 45%.",
-          "name": "Beast Guardian Statue I"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Deal Electric damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Phys",
+      "Gun",
+      "Bless"
+    ],
+    "Weak": [
+      "Curse"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "체력 6.0%",
+    "desc": "Deal Physical damage to 1 foe equal to 58.2/61.1/64.0% of Attack (2 hits).",
+    "level": "6/7/8",
+    "name": "Double Fangs"
+  },
+  "innate_skill": [
+    {
+      "cost": "SP 19",
+      "desc": "Deal Electric damage to 1 foe equal to 106.2/111.5/116.8% of Attack. 59.0/62.0/64.9% chance to inflict Shock for 2 turns.",
+      "learn_level": "4",
+      "level": "6/7/8",
+      "name": "Zio"
+    },
+    {
+      "cost": "",
+      "desc": "Decrease damage taken by 4.7%.",
+      "learn_level": "8",
+      "level": "6/7/8",
+      "name": "Reduction Boost I"
+    },
+    {
+      "cost": "",
+      "desc": "Increase Electric damage by 4.7%.",
+      "learn_level": "12",
+      "level": "6/7/8",
+      "name": "Elec Boost I"
+    }
+  ],
+  "max_level": 30,
+  "max_level_after_awake": 35,
+  "name": "Shiisaa",
+  "nature": "Electric",
+  "passive_skill": [
+    {
+      "desc": "Increase Attack by 5.8%. Increase accuracy to inflict Shock on foes with less than 70% HP by 40%.",
+      "name": "Beast Guardian Statue"
+    },
+    {
+      "desc": "Increase Attack by 5.8%. Increase accuracy to inflict Shock on foes with less than 70% HP by 45%.",
+      "name": "Beast Guardian Statue I"
+    }
+  ],
+  "rank": 2,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Electric damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

@@ -1,69 +1,79 @@
 {
-  "data": {
-    "name": "Sandalphon",
-    "skill": {
-      "fixed_skill": {
-        "cost": "체력 25.0%",
-        "desc": "Grant a shield to party equal to 25.5%/26.8%/28.0% of user's Attack + 771/955/1152. While shielded, increase damage by 20.4%/21.4%/22.4% for 2 turns.",
-        "level": "6/7/8",
-        "name": "Devoted Guard"
-      },
-      "innate_skill": [
-        {
-          "cost": "체력 9.0%",
-          "desc": "Deal Physical damage to 1 foe equal to 154.5/162.2/170.0% of Attack.",
-          "learn_level": "10",
-          "level": "6/7/8",
-          "name": "Sword Dance"
-        },
-        {
-          "cost": "",
-          "desc": "At the start of battle, increase party's Defense by 11.8% for 2 turns or until user changes Personas.",
-          "learn_level": "20",
-          "level": "6/7/8",
-          "name": "Auto-Maraku III"
-        },
-        {
-          "cost": "",
-          "desc": "Increase Physical damage by 10.8%.",
-          "learn_level": "30",
-          "level": "6/7/8",
-          "name": "Phys Boost IV"
-        },
-        {
-          "cost": "",
-          "desc": "Increase shield effect by 9.7%.",
-          "learn_level": "40",
-          "level": "6/7/8",
-          "name": "Shield Boost IV"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase Defense by 43.6%. When Sandalphon is present, increase shielded allies' Defense by 28%, and when not present, increase shielded allies' Defense by 15%.",
-          "name": "Titan's Protection"
-        },
-        {
-          "desc": "Increase Defense by 43.6%. When Sandalphon is present, increase shielded allies' Defense by 28%, and when not present, increase shielded allies' Defense by 15%. When using a unique skill, decrease HP cost by 15%.",
-          "name": "Titan's Protection I"
-        },
-        {
-          "desc": "Increase Defense by 43.6%. When Sandalphon is present, increase shielded allies' Defense by 42%, and when not present, increase shielded allies' Defense by 15%. When using a unique skill, decrease HP cost by 15%.",
-          "name": "Titan's Protection II"
-        },
-        {
-          "desc": "Increase Defense by 43.6%. When Sandalphon is present, increase shielded allies' Defense by 42%, and when not present, increase shielded allies' Defense by 25%. When using a unique skill, decrease HP cost to 15%.",
-          "name": "Titan's Protection III"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Grant a shield to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275 for 2 turns.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Phys",
+      "Gun",
+      "Bless",
+      "Curse"
+    ],
+    "Weak": []
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "체력 25.0%",
+    "desc": "Grant a shield to party equal to 25.5%/26.8%/28.0% of user's Attack + 771/955/1152. While shielded, increase damage by 20.4%/21.4%/22.4% for 2 turns.",
+    "level": "6/7/8",
+    "name": "Devoted Guard"
+  },
+  "innate_skill": [
+    {
+      "cost": "체력 9.0%",
+      "desc": "Deal Physical damage to 1 foe equal to 154.5/162.2/170.0% of Attack.",
+      "learn_level": "10",
+      "level": "6/7/8",
+      "name": "Sword Dance"
+    },
+    {
+      "cost": "",
+      "desc": "At the start of battle, increase party's Defense by 11.8% for 2 turns or until user changes Personas.",
+      "learn_level": "20",
+      "level": "6/7/8",
+      "name": "Auto-Maraku III"
+    },
+    {
+      "cost": "",
+      "desc": "Increase Physical damage by 10.8%.",
+      "learn_level": "30",
+      "level": "6/7/8",
+      "name": "Phys Boost IV"
+    },
+    {
+      "cost": "",
+      "desc": "Increase shield effect by 9.7%.",
+      "learn_level": "40",
+      "level": "6/7/8",
+      "name": "Shield Boost IV"
+    }
+  ],
+  "max_level": 80,
+  "max_level_after_awake": 99,
+  "name": "Sandalphon",
+  "nature": "Almighty",
+  "passive_skill": [
+    {
+      "desc": "Increase Defense by 43.6%. When Sandalphon is present, increase shielded allies' Defense by 28%, and when not present, increase shielded allies' Defense by 15%.",
+      "name": "Titan's Protection"
+    },
+    {
+      "desc": "Increase Defense by 43.6%. When Sandalphon is present, increase shielded allies' Defense by 28%, and when not present, increase shielded allies' Defense by 15%. When using a unique skill, decrease HP cost by 15%.",
+      "name": "Titan's Protection I"
+    },
+    {
+      "desc": "Increase Defense by 43.6%. When Sandalphon is present, increase shielded allies' Defense by 42%, and when not present, increase shielded allies' Defense by 15%. When using a unique skill, decrease HP cost by 15%.",
+      "name": "Titan's Protection II"
+    },
+    {
+      "desc": "Increase Defense by 43.6%. When Sandalphon is present, increase shielded allies' Defense by 42%, and when not present, increase shielded allies' Defense by 25%. When using a unique skill, decrease HP cost to 15%.",
+      "name": "Titan's Protection III"
+    }
+  ],
+  "rank": 8,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Grant a shield to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275 for 2 turns.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

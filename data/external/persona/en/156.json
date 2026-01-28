@@ -1,47 +1,59 @@
 {
-  "data": {
-    "name": "Pixie",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 19",
-        "desc": "Deal Electric damage to 1 foe equal to 106.2/111.5/116.8% of Attack. 59.0/62.0/64.9% chance to inflict Shock for 2 turns.",
-        "level": "6/7/8",
-        "name": "Zio"
-      },
-      "innate_skill": [
-        {
-          "cost": "",
-          "desc": "Decrease Bless damage taken by 4.7%.",
-          "learn_level": "4",
-          "level": "6/7/8",
-          "name": "Bless Reduction I"
-        },
-        {
-          "cost": "",
-          "desc": "Increase Shock accuracy by 8.8%.",
-          "learn_level": "8",
-          "level": "6/7/8",
-          "name": "Shock Boost I"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase Attack by 2.9%. After knocking down a foe, increase party's Attack by 14.3% for 2 turns.",
-          "name": "Guide the Lost"
-        },
-        {
-          "desc": "Increase Attack by 2.9%. After knocking down a foe, increase party's Attack by 16.5% for 2 turns.",
-          "name": "Guide the Lost I"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Deal Electric damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Electric",
+      "Bless"
+    ],
+    "Weak": [
+      "Gun",
+      "Ice",
+      "Curse"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 19",
+    "desc": "Deal Electric damage to 1 foe equal to 106.2/111.5/116.8% of Attack. 59.0/62.0/64.9% chance to inflict Shock for 2 turns.",
+    "level": "6/7/8",
+    "name": "Zio"
+  },
+  "innate_skill": [
+    {
+      "cost": "",
+      "desc": "Decrease Bless damage taken by 4.7%.",
+      "learn_level": "4",
+      "level": "6/7/8",
+      "name": "Bless Reduction I"
+    },
+    {
+      "cost": "",
+      "desc": "Increase Shock accuracy by 8.8%.",
+      "learn_level": "8",
+      "level": "6/7/8",
+      "name": "Shock Boost I"
+    }
+  ],
+  "max_level": 20,
+  "max_level_after_awake": 25,
+  "name": "Pixie",
+  "nature": "Electric",
+  "passive_skill": [
+    {
+      "desc": "Increase Attack by 2.9%. After knocking down a foe, increase party's Attack by 14.3% for 2 turns.",
+      "name": "Guide the Lost"
+    },
+    {
+      "desc": "Increase Attack by 2.9%. After knocking down a foe, increase party's Attack by 16.5% for 2 turns.",
+      "name": "Guide the Lost I"
+    }
+  ],
+  "rank": 1,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Electric damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

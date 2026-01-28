@@ -1,69 +1,77 @@
 {
-  "data": {
-    "name": "King Frost",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 27",
-        "desc": "Grant a shield to party equal to 22.8%/23.9%/25.1% of user's Attack + 690/853/1030 for 2 turns. While shielded, increase Defense by 30%.",
-        "level": "6/7/8",
-        "name": "Snow King's Protection"
-      },
-      "innate_skill": [
-        {
-          "cost": "",
-          "desc": "At the start of battle, increase party's Defense by 14.7% for 2 turns or until user changes Personas.",
-          "learn_level": "9",
-          "level": "6/7/8",
-          "name": "Auto-Maraku IV"
-        },
-        {
-          "cost": "",
-          "desc": "Decrease damage taken by 10.8%.",
-          "learn_level": "18",
-          "level": "6/7/8",
-          "name": "Reduction Boost IV"
-        },
-        {
-          "cost": "",
-          "desc": "Decrease Ice damage taken by 10.8%.",
-          "learn_level": "27",
-          "level": "6/7/8",
-          "name": "Ice Reduction IV"
-        },
-        {
-          "cost": "",
-          "desc": "Decrease Speed by 15. Increase HP by 36%.",
-          "learn_level": "36",
-          "level": "6/7/8",
-          "name": "Ironclad Resolve IV"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase Defense by 37.4%. When granting a shield to an ally, either increase target's Defense by 18% or increase target's Ice damage by 10% for 2 turns.",
-          "name": "Tundra's Judgment"
-        },
-        {
-          "desc": "Increase Defense by 37.4%. When granting a shield to an ally, either increase main target's Defense by 18% or Ice damage by 15% for 2 turns.",
-          "name": "Tundra's Judgment I"
-        },
-        {
-          "desc": "Increase Defense by 37.4%. When granting a shield to an ally, increase main target's Defense by 18% and Ice damage by 15% for 2 turns.",
-          "name": "Tundra's Judgment II"
-        },
-        {
-          "desc": "Increase Defense by 37.4%. When granting a shield to an ally, increase main target's Defense by 25% and Ice damage by 15% for 2 turns.",
-          "name": "Tundra's Judgment III"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Grant a shield to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275 for 2 turns.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Ice",
+      "Bless"
+    ],
+    "Weak": []
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 27",
+    "desc": "Grant a shield to party equal to 22.8%/23.9%/25.1% of user's Attack + 690/853/1030 for 2 turns. While shielded, increase Defense by 30%.",
+    "level": "6/7/8",
+    "name": "Snow King's Protection"
+  },
+  "innate_skill": [
+    {
+      "cost": "",
+      "desc": "At the start of battle, increase party's Defense by 14.7% for 2 turns or until user changes Personas.",
+      "learn_level": "9",
+      "level": "6/7/8",
+      "name": "Auto-Maraku IV"
+    },
+    {
+      "cost": "",
+      "desc": "Decrease damage taken by 10.8%.",
+      "learn_level": "18",
+      "level": "6/7/8",
+      "name": "Reduction Boost IV"
+    },
+    {
+      "cost": "",
+      "desc": "Decrease Ice damage taken by 10.8%.",
+      "learn_level": "27",
+      "level": "6/7/8",
+      "name": "Ice Reduction IV"
+    },
+    {
+      "cost": "",
+      "desc": "Decrease Speed by 15. Increase HP by 36%.",
+      "learn_level": "36",
+      "level": "6/7/8",
+      "name": "Ironclad Resolve IV"
+    }
+  ],
+  "max_level": 80,
+  "max_level_after_awake": 95,
+  "name": "King Frost",
+  "nature": "Ice",
+  "passive_skill": [
+    {
+      "desc": "Increase Defense by 37.4%. When granting a shield to an ally, either increase target's Defense by 18% or increase target's Ice damage by 10% for 2 turns.",
+      "name": "Tundra's Judgment"
+    },
+    {
+      "desc": "Increase Defense by 37.4%. When granting a shield to an ally, either increase main target's Defense by 18% or Ice damage by 15% for 2 turns.",
+      "name": "Tundra's Judgment I"
+    },
+    {
+      "desc": "Increase Defense by 37.4%. When granting a shield to an ally, increase main target's Defense by 18% and Ice damage by 15% for 2 turns.",
+      "name": "Tundra's Judgment II"
+    },
+    {
+      "desc": "Increase Defense by 37.4%. When granting a shield to an ally, increase main target's Defense by 25% and Ice damage by 15% for 2 turns.",
+      "name": "Tundra's Judgment III"
+    }
+  ],
+  "rank": 7,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Grant a shield to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275 for 2 turns.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

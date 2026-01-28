@@ -1,47 +1,58 @@
 {
-  "data": {
-    "name": "Koropokguru",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 19",
-        "desc": "Deal Ice damage to 1 foe equal to 106.2/111.5/116.8% of Attack. 59.0/62.0/64.9% chance to inflict Freeze for 2 turns.",
-        "level": "6/7/8",
-        "name": "Bufu"
-      },
-      "innate_skill": [
-        {
-          "cost": "SP 19",
-          "desc": "Deal Ice damage to all foes equal to 53.1/55.8/58.4% of Attack. 29.5/31.0/32.4% chance to inflict Freeze for 2 turns.",
-          "learn_level": "4",
-          "level": "6/7/8",
-          "name": "Mabufu"
-        },
-        {
-          "cost": "",
-          "desc": "Decrease Ice damage taken by 4.7%.",
-          "learn_level": "8",
-          "level": "6/7/8",
-          "name": "Ice Reduction I"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase Attack by 2.9%. Decrease damage taken from Frozen foes by 20%.",
-          "name": "Frostproof Dwarf"
-        },
-        {
-          "desc": "Increase Attack by 2.9%. Decrease damage taken from Frozen foes by 23%.",
-          "name": "Frostproof Dwarf I"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Deal Ice damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Gun",
+      "Ice",
+      "Wind"
+    ],
+    "Weak": [
+      "Fire"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 19",
+    "desc": "Deal Ice damage to 1 foe equal to 106.2/111.5/116.8% of Attack. 59.0/62.0/64.9% chance to inflict Freeze for 2 turns.",
+    "level": "6/7/8",
+    "name": "Bufu"
+  },
+  "innate_skill": [
+    {
+      "cost": "SP 19",
+      "desc": "Deal Ice damage to all foes equal to 53.1/55.8/58.4% of Attack. 29.5/31.0/32.4% chance to inflict Freeze for 2 turns.",
+      "learn_level": "4",
+      "level": "6/7/8",
+      "name": "Mabufu"
+    },
+    {
+      "cost": "",
+      "desc": "Decrease Ice damage taken by 4.7%.",
+      "learn_level": "8",
+      "level": "6/7/8",
+      "name": "Ice Reduction I"
+    }
+  ],
+  "max_level": 20,
+  "max_level_after_awake": 25,
+  "name": "Koropokguru",
+  "nature": "Ice",
+  "passive_skill": [
+    {
+      "desc": "Increase Attack by 2.9%. Decrease damage taken from Frozen foes by 20%.",
+      "name": "Frostproof Dwarf"
+    },
+    {
+      "desc": "Increase Attack by 2.9%. Decrease damage taken from Frozen foes by 23%.",
+      "name": "Frostproof Dwarf I"
+    }
+  ],
+  "rank": 1,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Ice damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

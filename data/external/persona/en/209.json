@@ -1,74 +1,86 @@
 {
-  "data": {
-    "name": "Mara",
-    "skill": {
-      "fixed_skill": {
-        "cost": "체력 8.0%",
-        "desc": "Deal Gun damage to all foes equal to 23.4%/25.5%/27.7% of Attack (3 hits). If a foe is Marked, increase damage by 30.0%/32.7%/35.4% and critical damage by 36.0%/39.2%/42.5%.",
-        "level": "6/7/8",
-        "name": "Bullet Time"
-      },
-      "innate_skill": [
-        {
-          "cost": "",
-          "desc": "Increase Attack by 5.8%.",
-          "learn_level": "1",
-          "level": "6/7/8",
-          "name": "Attack Boost I"
-        },
-        {
-          "cost": "",
-          "desc": "Increase critical damage by 7%.",
-          "learn_level": "30",
-          "level": "6/7/8",
-          "name": "Pinpoint I"
-        },
-        {
-          "cost": "",
-          "desc": "Increase Physical damage by 4.7%.",
-          "learn_level": "50",
-          "level": "6/7/8",
-          "name": "Phys Boost I"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "When any ally attacks a Marked foe, increase Attack by 15%.",
-          "name": "Hunting"
-        },
-        {
-          "desc": "AAAAAA==",
-          "name": "Hunting I"
-        },
-        {
-          "desc": "AAAAAA==",
-          "name": "Hunting II"
-        },
-        {
-          "desc": "AAAAAA==",
-          "name": "Hunting III"
-        },
-        {
-          "desc": "AAAAAA==",
-          "name": "Hunting IV"
-        },
-        {
-          "desc": "Increase critical rate and critical damage 7.5%.",
-          "name": "Hunting V"
-        },
-        {
-          "desc": "When attacking a foe Marked by the user, deal bonus Gun damage equal to 20% of Attack.",
-          "name": "Hunting VI"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Deal Fire damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Gun",
+      "Fire",
+      "Bless",
+      "Curse"
+    ],
+    "Weak": [
+      "Ice"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "체력 8.0%",
+    "desc": "Deal Gun damage to all foes equal to 23.4%/25.5%/27.7% of Attack (3 hits). If a foe is Marked, increase damage by 30.0%/32.7%/35.4% and critical damage by 36.0%/39.2%/42.5%.",
+    "level": "6/7/8",
+    "name": "Bullet Time"
+  },
+  "innate_skill": [
+    {
+      "cost": "",
+      "desc": "Increase Attack by 5.8%.",
+      "learn_level": "1",
+      "level": "6/7/8",
+      "name": "Attack Boost I"
+    },
+    {
+      "cost": "",
+      "desc": "Increase critical damage by 7%.",
+      "learn_level": "30",
+      "level": "6/7/8",
+      "name": "Pinpoint I"
+    },
+    {
+      "cost": "",
+      "desc": "Increase Physical damage by 4.7%.",
+      "learn_level": "50",
+      "level": "6/7/8",
+      "name": "Phys Boost I"
+    }
+  ],
+  "max_level": 80,
+  "max_level_after_awake": 99,
+  "name": "Mara",
+  "nature": "Fire",
+  "passive_skill": [
+    {
+      "desc": "When any ally attacks a Marked foe, increase Attack by 15%.",
+      "name": "Hunting"
+    },
+    {
+      "desc": "AAAAAA==",
+      "name": "Hunting I"
+    },
+    {
+      "desc": "AAAAAA==",
+      "name": "Hunting II"
+    },
+    {
+      "desc": "AAAAAA==",
+      "name": "Hunting III"
+    },
+    {
+      "desc": "AAAAAA==",
+      "name": "Hunting IV"
+    },
+    {
+      "desc": "Increase critical rate and critical damage 7.5%.",
+      "name": "Hunting V"
+    },
+    {
+      "desc": "When attacking a foe Marked by the user, deal bonus Gun damage equal to 20% of Attack.",
+      "name": "Hunting VI"
+    }
+  ],
+  "rank": 8,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Fire damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

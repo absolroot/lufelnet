@@ -1,65 +1,75 @@
 {
-  "data": {
-    "name": "Sarasvati",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 27",
-        "desc": "Restore party's HP equal to 19.2/20.2/21.1% of Attack + 581/719/867. Decrease party's damage taken by 8.5/8.9/9.4% for 2 turns.",
-        "level": "6/7/8",
-        "name": "Mother Goddess' Chant"
-      },
-      "innate_skill": [
-        {
-          "cost": "SP 24",
-          "desc": "Restore 1 ally's HP by 35.6/37.4/39.2% of Attack + 1077/1333/1608.",
-          "learn_level": "6",
-          "level": "6/7/8",
-          "name": "Diarama"
-        },
-        {
-          "cost": "SP 24",
-          "desc": "Restore party's HP by 17.8/18.7/19.6% of Attack + 538/666/804.",
-          "learn_level": "12",
-          "level": "6/7/8",
-          "name": "Mediarama"
-        },
-        {
-          "cost": "",
-          "desc": "Increase healing by 7.8%.",
-          "learn_level": "18",
-          "level": "6/7/8",
-          "name": "Healing Boost III"
-        },
-        {
-          "cost": "",
-          "desc": "Increase HP by 10.8%.",
-          "learn_level": "25",
-          "level": "6/7/8",
-          "name": "HP Boost III"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase healing effect by 15%. After healing, heal the ally with the lowest HP for 24% of user's Attack.",
-          "name": "Echoes of Purity"
-        },
-        {
-          "desc": "Increase healing effect by 15%. After healing, heal the ally with the lowest HP for 27% of user's Attack.",
-          "name": "Echoes of Purity I"
-        },
-        {
-          "desc": "Increase healing effect by 15%. After healing, heal the ally with the lowest HP for 27% of user's Attack. If target's HP is below 50%, increase this effect by 15%.",
-          "name": "Echoes of Purity II"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Restore HP to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Ice",
+      "Electric"
+    ],
+    "Weak": [
+      "Nuclear"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 27",
+    "desc": "Restore party's HP equal to 19.2/20.2/21.1% of Attack + 581/719/867. Decrease party's damage taken by 8.5/8.9/9.4% for 2 turns.",
+    "level": "6/7/8",
+    "name": "Mother Goddess' Chant"
+  },
+  "innate_skill": [
+    {
+      "cost": "SP 24",
+      "desc": "Restore 1 ally's HP by 35.6/37.4/39.2% of Attack + 1077/1333/1608.",
+      "learn_level": "6",
+      "level": "6/7/8",
+      "name": "Diarama"
+    },
+    {
+      "cost": "SP 24",
+      "desc": "Restore party's HP by 17.8/18.7/19.6% of Attack + 538/666/804.",
+      "learn_level": "12",
+      "level": "6/7/8",
+      "name": "Mediarama"
+    },
+    {
+      "cost": "",
+      "desc": "Increase healing by 7.8%.",
+      "learn_level": "18",
+      "level": "6/7/8",
+      "name": "Healing Boost III"
+    },
+    {
+      "cost": "",
+      "desc": "Increase HP by 10.8%.",
+      "learn_level": "25",
+      "level": "6/7/8",
+      "name": "HP Boost III"
+    }
+  ],
+  "max_level": 60,
+  "max_level_after_awake": 70,
+  "name": "Sarasvati",
+  "nature": "Bless",
+  "passive_skill": [
+    {
+      "desc": "Increase healing effect by 15%. After healing, heal the ally with the lowest HP for 24% of user's Attack.",
+      "name": "Echoes of Purity"
+    },
+    {
+      "desc": "Increase healing effect by 15%. After healing, heal the ally with the lowest HP for 27% of user's Attack.",
+      "name": "Echoes of Purity I"
+    },
+    {
+      "desc": "Increase healing effect by 15%. After healing, heal the ally with the lowest HP for 27% of user's Attack. If target's HP is below 50%, increase this effect by 15%.",
+      "name": "Echoes of Purity II"
+    }
+  ],
+  "rank": 5,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Restore HP to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

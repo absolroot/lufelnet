@@ -1,65 +1,76 @@
 {
-  "data": {
-    "name": "Decarabia",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 20",
-        "desc": "Deal Fire damage to all foes equal to 57.0/59.8/62.7% of Attack. 31.7/33.3/34.9% chance to inflict Burn for 2 turns.",
-        "level": "6/7/8",
-        "name": "Maragion"
-      },
-      "innate_skill": [
-        {
-          "cost": "SP 20",
-          "desc": "Deal Fire damage to 1 foe equal to 114.0/119.7/125.4% of Attack. 63.3/66.5/69.6% chance to inflict Burn for 2 turns.",
-          "learn_level": "5",
-          "level": "6/7/8",
-          "name": "Agilao"
-        },
-        {
-          "cost": "",
-          "desc": "Increase Fire damage by 6.7%.",
-          "learn_level": "10",
-          "level": "6/7/8",
-          "name": "Fire Boost II"
-        },
-        {
-          "cost": "",
-          "desc": "Increase damage by 6.7%.",
-          "learn_level": "15",
-          "level": "6/7/8",
-          "name": "Battle Acumen II"
-        },
-        {
-          "cost": "",
-          "desc": "Increase Attack by 8.3%.",
-          "learn_level": "20",
-          "level": "6/7/8",
-          "name": "Attack Boost II"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase critical rate by 7%. Increase Physical damage taken by 10%, and increase Fire damage dealt by 34%.",
-          "name": "Burning Wheel"
-        },
-        {
-          "desc": "Increase critical rate by 7%. Increase Physical damage taken by 10%, and increase Fire damage dealt by 38%.",
-          "name": "Burning Wheel I"
-        },
-        {
-          "desc": "Increase critical rate by 7%. Increase Physical damage taken by 10%, and increase Fire damage dealt by 42%.",
-          "name": "Burning Wheel II"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Deal Fire damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Fire",
+      "Nuclear",
+      "Curse"
+    ],
+    "Weak": [
+      "Phys"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 20",
+    "desc": "Deal Fire damage to all foes equal to 57.0/59.8/62.7% of Attack. 31.7/33.3/34.9% chance to inflict Burn for 2 turns.",
+    "level": "6/7/8",
+    "name": "Maragion"
+  },
+  "innate_skill": [
+    {
+      "cost": "SP 20",
+      "desc": "Deal Fire damage to 1 foe equal to 114.0/119.7/125.4% of Attack. 63.3/66.5/69.6% chance to inflict Burn for 2 turns.",
+      "learn_level": "5",
+      "level": "6/7/8",
+      "name": "Agilao"
+    },
+    {
+      "cost": "",
+      "desc": "Increase Fire damage by 6.7%.",
+      "learn_level": "10",
+      "level": "6/7/8",
+      "name": "Fire Boost II"
+    },
+    {
+      "cost": "",
+      "desc": "Increase damage by 6.7%.",
+      "learn_level": "15",
+      "level": "6/7/8",
+      "name": "Battle Acumen II"
+    },
+    {
+      "cost": "",
+      "desc": "Increase Attack by 8.3%.",
+      "learn_level": "20",
+      "level": "6/7/8",
+      "name": "Attack Boost II"
+    }
+  ],
+  "max_level": 50,
+  "max_level_after_awake": 60,
+  "name": "Decarabia",
+  "nature": "Fire",
+  "passive_skill": [
+    {
+      "desc": "Increase critical rate by 7%. Increase Physical damage taken by 10%, and increase Fire damage dealt by 34%.",
+      "name": "Burning Wheel"
+    },
+    {
+      "desc": "Increase critical rate by 7%. Increase Physical damage taken by 10%, and increase Fire damage dealt by 38%.",
+      "name": "Burning Wheel I"
+    },
+    {
+      "desc": "Increase critical rate by 7%. Increase Physical damage taken by 10%, and increase Fire damage dealt by 42%.",
+      "name": "Burning Wheel II"
+    }
+  ],
+  "rank": 4,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Fire damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

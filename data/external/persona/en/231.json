@@ -1,65 +1,74 @@
 {
-  "data": {
-    "name": "Ara Mitama",
-    "skill": {
-      "fixed_skill": {
-        "cost": "SP 20",
-        "desc": "Deal Nuclear damage to 1 foe equal to 124.2/129.1/134.0% of Attack. Deal a Technical and increase damage by 18% for foes with an elemental ailment.",
-        "level": "6/7/8",
-        "name": "Freila"
-      },
-      "innate_skill": [
-        {
-          "cost": "",
-          "desc": "Restores 5.0% of max HP and 6 SP when ambushing.",
-          "learn_level": "5",
-          "level": "6/7/8",
-          "name": "Heat Up II"
-        },
-        {
-          "cost": "",
-          "desc": "Decrease SP cost of skills by 3.6%.",
-          "learn_level": "10",
-          "level": "6/7/8",
-          "name": "Spell Master II"
-        },
-        {
-          "cost": "SP 20",
-          "desc": "Deal Nuclear damage to all foes equal to 61.8/64.2/66.6% of Attack. Deal a Technical and increase damage by 18% for foes with an elemental ailment.",
-          "learn_level": "15",
-          "level": "6/7/8",
-          "name": "Mafreila"
-        },
-        {
-          "cost": "",
-          "desc": "Decrease critical taken rate by 5%.",
-          "learn_level": "20",
-          "level": "6/7/8",
-          "name": "Sharp Student II"
-        }
-      ],
-      "passive_skill": [
-        {
-          "desc": "Increase Attack by 11.6%. Decrease SP cost of Nuclear skills by 27%.",
-          "name": "Essence of Strength"
-        },
-        {
-          "desc": "Increase Attack by 11.6%. Decrease SP cost of Nuclear skills by 31%.",
-          "name": "Essence of Strength I"
-        },
-        {
-          "desc": "Increase Attack by 11.6%. Decrease SP cost of Nuclear skills by 35%.",
-          "name": "Essence of Strength II"
-        }
-      ],
-      "showtime_skill": {
-        "cost": "",
-        "desc": "Deal Nuclear damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
-        "level": "6/7/8",
-        "name": "Highlight"
-      }
-    }
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Phys"
+    ],
+    "Weak": [
+      "Ice"
+    ]
   },
-  "msg": "TESTING",
-  "status": 0
+  "fixed_skill": {
+    "cost": "SP 20",
+    "desc": "Deal Nuclear damage to 1 foe equal to 124.2/129.1/134.0% of Attack. Deal a Technical and increase damage by 18% for foes with an elemental ailment.",
+    "level": "6/7/8",
+    "name": "Freila"
+  },
+  "innate_skill": [
+    {
+      "cost": "",
+      "desc": "Restores 5.0% of max HP and 6 SP when ambushing.",
+      "learn_level": "5",
+      "level": "6/7/8",
+      "name": "Heat Up II"
+    },
+    {
+      "cost": "",
+      "desc": "Decrease SP cost of skills by 3.6%.",
+      "learn_level": "10",
+      "level": "6/7/8",
+      "name": "Spell Master II"
+    },
+    {
+      "cost": "SP 20",
+      "desc": "Deal Nuclear damage to all foes equal to 61.8/64.2/66.6% of Attack. Deal a Technical and increase damage by 18% for foes with an elemental ailment.",
+      "learn_level": "15",
+      "level": "6/7/8",
+      "name": "Mafreila"
+    },
+    {
+      "cost": "",
+      "desc": "Decrease critical taken rate by 5%.",
+      "learn_level": "20",
+      "level": "6/7/8",
+      "name": "Sharp Student II"
+    }
+  ],
+  "max_level": 50,
+  "max_level_after_awake": 60,
+  "name": "Ara Mitama",
+  "nature": "Nuclear",
+  "passive_skill": [
+    {
+      "desc": "Increase Attack by 11.6%. Decrease SP cost of Nuclear skills by 27%.",
+      "name": "Essence of Strength"
+    },
+    {
+      "desc": "Increase Attack by 11.6%. Decrease SP cost of Nuclear skills by 31%.",
+      "name": "Essence of Strength I"
+    },
+    {
+      "desc": "Increase Attack by 11.6%. Decrease SP cost of Nuclear skills by 35%.",
+      "name": "Essence of Strength II"
+    }
+  ],
+  "rank": 4,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Nuclear damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
 }

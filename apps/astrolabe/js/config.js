@@ -24,7 +24,7 @@ const AstrolabeConfig = (function () {
     xScale: 1.2, // Horizontal stretch factor
     yScale: 0.45, // Vertical compression factor
     // Pan and zoom
-    minZoom: 1.25,
+    minZoom: 1.0,
     maxZoom: 2.75,
     zoomStep: 0.25
   };

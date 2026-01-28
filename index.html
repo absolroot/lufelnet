@@ -227,33 +227,36 @@ jp: /?lang=jp
         @media (max-width: 1200px) { .responsive-padding {margin: 20px 0 0px 0; padding: 0; } }
     </style>
     -->
-    <!-- Support Modal Styles for Mobile Centering -->
-    <style>
-        @media (max-width: 768px) {
+</div>
+</div>
 
-            #supportModalJP .modal-content,
-            #supportModalKR .modal-content,
-            #kakaoPayModalHome .modal-content {
-                margin: 0 !important;
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                width: 90% !important;
-            }
+<!-- Support Modal Styles for Mobile Centering -->
+<style>
+    @media (max-width: 768px) {
+
+        #supportModalJP .modal-content,
+        #supportModalKR .modal-content,
+        #kakaoPayModalHome .modal-content {
+            margin: 0 !important;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90% !important;
         }
-    </style>
+    }
+</style>
 
-    <!-- Support Modal for JP -->
-    <div id="supportModalJP" class="modal"
-        style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4);">
-        <div class="modal-content"
-            style="background-color: #2a2a2a; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 500px; border-radius: 8px; color: white;">
-            <span class="close-button" onclick="document.getElementById('supportModalJP').style.display='none'"
-                style="color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer;">&times;</span>
-            <h3 style="margin-top: 0; margin-bottom: 20px; text-align: center;">サポート</h3>
-            <div style="display: flex; flex-direction: column; gap: 15px;">
-                <a href="https://absolroot.fanbox.cc/plans" target="_blank" style="
+<!-- Support Modal for JP -->
+<div id="supportModalJP" class="modal"
+    style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4);">
+    <div class="modal-content"
+        style="background-color: #2a2a2a; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 500px; border-radius: 8px; color: white;">
+        <span class="close-button" onclick="document.getElementById('supportModalJP').style.display='none'"
+            style="color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer;">&times;</span>
+        <h3 style="margin-top: 0; margin-bottom: 20px; text-align: center;">サポート</h3>
+        <div style="display: flex; flex-direction: column; gap: 15px;">
+            <a href="https://absolroot.fanbox.cc/plans" target="_blank" style="
                     display: flex;
                     align-items: center;
                     justify-content: center;
@@ -266,11 +269,11 @@ jp: /?lang=jp
                     border-radius: 8px;
                     transition: transform 0.2s;
                 " onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
-                    <img src="https://img.icons8.com/color/48/pixiv.png" alt="pixiv" style="width: 32px; height: 32px;">
-                    <span style="font-size: 1.1em;">pixivFANBOXで支援する</span>
-                </a>
+                <img src="https://img.icons8.com/color/48/pixiv.png" alt="pixiv" style="width: 32px; height: 32px;">
+                <span style="font-size: 1.1em;">pixivFANBOXで支援する</span>
+            </a>
 
-                <a href="https://ko-fi.com/S6S11F0PUN" target="_blank" style="
+            <a href="https://ko-fi.com/S6S11F0PUN" target="_blank" style="
                     display: flex;
                     align-items: center;
                     justify-content: center;
@@ -283,30 +286,29 @@ jp: /?lang=jp
                     border-radius: 8px;
                     transition: transform 0.2s;
                 " onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
-                    <img src="https://storage.ko-fi.com/cdn/cup-border.png" alt="Ko-fi"
-                        style="width: 32px; height: auto;">
-                    <span style="font-size: 1.1em;">Ko-fiで支援する</span>
-                </a>
-            </div>
+                <img src="https://storage.ko-fi.com/cdn/cup-border.png" alt="Ko-fi" style="width: 32px; height: auto;">
+                <span style="font-size: 1.1em;">Ko-fiで支援する</span>
+            </a>
         </div>
     </div>
+</div>
 
-    <!-- Support Modal for KR -->
-    <div id="supportModalKR" class="modal"
-        style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4);">
-        <div class="modal-content"
-            style="background-color: #2a2a2a; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 500px; border-radius: 8px; color: white;">
-            <span class="close-button" onclick="document.getElementById('supportModalKR').style.display='none'"
-                style="color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer;">&times;</span>
-            <h3 style="margin-top: 0; margin-bottom: 20px; text-align: center;">서포트</h3>
-            <p style="text-align: center; margin-bottom: 20px; word-break: keep-all;">
-                루페르넷은 여러분의 후원으로 운영됩니다.<br>
-            </p>
-            <div style="display: flex; flex-direction: column; gap: 15px;">
-                <!-- KakaoPay Button -->
-                <button
-                    onclick="document.getElementById('supportModalKR').style.display='none'; document.getElementById('kakaoPayModalHome').style.display='block';"
-                    style="
+<!-- Support Modal for KR -->
+<div id="supportModalKR" class="modal"
+    style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4);">
+    <div class="modal-content"
+        style="background-color: #2a2a2a; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 500px; border-radius: 8px; color: white;">
+        <span class="close-button" onclick="document.getElementById('supportModalKR').style.display='none'"
+            style="color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer;">&times;</span>
+        <h3 style="margin-top: 0; margin-bottom: 20px; text-align: center;">서포트</h3>
+        <p style="text-align: center; margin-bottom: 20px; word-break: keep-all;">
+            루페르넷은 여러분의 후원으로 운영됩니다.<br>
+        </p>
+        <div style="display: flex; flex-direction: column; gap: 15px;">
+            <!-- KakaoPay Button -->
+            <button
+                onclick="document.getElementById('supportModalKR').style.display='none'; document.getElementById('kakaoPayModalHome').style.display='block';"
+                style="
                     display: flex;
                     align-items: center;
                     justify-content: center;
@@ -322,13 +324,13 @@ jp: /?lang=jp
                     font-size: 1rem;
                     transition: transform 0.2s;
                 " onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
-                    <img src="{{ site.baseurl }}/assets/img/logo/kakaopay-logo.png" alt="kakaopay"
-                        style="height: 24px; vertical-align: middle;">
-                    <span>카카오페이</span>
-                </button>
+                <img src="{{ site.baseurl }}/assets/img/logo/kakaopay-logo.png" alt="kakaopay"
+                    style="height: 24px; vertical-align: middle;">
+                <span>카카오페이</span>
+            </button>
 
-                <!-- Ko-fi Button -->
-                <a href="https://ko-fi.com/S6S11F0PUN" target="_blank" style="
+            <!-- Ko-fi Button -->
+            <a href="https://ko-fi.com/S6S11F0PUN" target="_blank" style="
                     display: flex;
                     align-items: center;
                     justify-content: center;
@@ -341,32 +343,29 @@ jp: /?lang=jp
                     border-radius: 8px;
                     transition: transform 0.2s;
                 " onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
-                    <img src="https://storage.ko-fi.com/cdn/cup-border.png" alt="Ko-fi"
-                        style="width: 32px; height: auto;">
-                    <span style="font-size: 1.1em;">Support me on Ko-fi</span>
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <!-- KakaoPay QR Modal (Home) -->
-    <div id="kakaoPayModalHome" class="modal"
-        style="display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4);">
-        <div class="modal-content"
-            style="background-color: #2a2a2a; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 400px; border-radius: 8px; color: white; text-align: center;">
-            <span class="close-button" onclick="document.getElementById('kakaoPayModalHome').style.display='none'"
-                style="color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer;">&times;</span>
-            <h3 style="margin-top: 0; margin-bottom: 20px;">KakaoPay QR</h3>
-            <div style="background: white; padding: 20px; border-radius: 8px; display: inline-block;">
-                <img src="{{ site.baseurl }}/assets/img/logo/kakaopay.png" alt="카카오페이 QR"
-                    style="width: 100%; max-width: 250px; height: auto;">
-            </div>
-            <p style="margin-top: 15px; color: #ccc; font-size: 0.9em;">
-                스마트폰 카메라 또는 카카오톡으로 스캔해주세요.
-            </p>
+                <img src="https://storage.ko-fi.com/cdn/cup-border.png" alt="Ko-fi" style="width: 32px; height: auto;">
+                <span style="font-size: 1.1em;">Support me on Ko-fi</span>
+            </a>
         </div>
     </div>
 </div>
+
+<!-- KakaoPay QR Modal (Home) -->
+<div id="kakaoPayModalHome" class="modal"
+    style="display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4);">
+    <div class="modal-content"
+        style="background-color: #2a2a2a; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 400px; border-radius: 8px; color: white; text-align: center;">
+        <span class="close-button" onclick="document.getElementById('kakaoPayModalHome').style.display='none'"
+            style="color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer;">&times;</span>
+        <h3 style="margin-top: 0; margin-bottom: 20px;">KakaoPay QR</h3>
+        <div style="background: white; padding: 20px; border-radius: 8px; display: inline-block;">
+            <img src="{{ site.baseurl }}/assets/img/logo/kakaopay.png" alt="카카오페이 QR"
+                style="width: 100%; max-width: 250px; height: auto;">
+        </div>
+        <p style="margin-top: 15px; color: #ccc; font-size: 0.9em;">
+            스마트폰 카메라 또는 카카오톡으로 스캔해주세요.
+        </p>
+    </div>
 </div>
 
 <!-- Carousel JS -->

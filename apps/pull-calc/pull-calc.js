@@ -593,6 +593,9 @@ class PullSimulator {
             if (savedIsSeaServer !== null) {
                 this.isSeaServer = savedIsSeaServer === 'true';
             }
+
+            // Reschedule on load when schedule changes
+            window.addEventListener('load', this.handleScheduleScenarioChange.bind(this));
         } catch (e) {
             console.warn('Failed to load saved data:', e);
         }
@@ -898,10 +901,10 @@ class PullSimulator {
             this.targets.forEach(target => {
                 // Find matching release by version and character name
                 const matchingRelease = this.scheduleReleases.find(release => {
-                    return release.version === target.version &&
-                        release.characters &&
+                    return release.characters &&
                         release.characters.includes(target.name);
                 });
+                console.log('[ScheduleScenario] Matching release for target', target.name, 'in version', target.version, ':', matchingRelease);
 
                 if (matchingRelease && matchingRelease.date) {
                     // Update target date to match new schedule
@@ -1126,46 +1129,42 @@ class PullSimulator {
 
     parseScheduleData(scheduleData) {
         const releases = [];
-        // 동적으로 intervalRules 설정 (scheduleScenario에 따라)
-        const defaultIntervalRules = scheduleData.intervalRules || { beforeV4: 14, afterV4: 21 };
-        const intervalRules = {
-            beforeV4: defaultIntervalRules.beforeV4 || 14,
-            afterV4: this.scheduleScenario === '2weeks' ? 14 : 21
-        };
+        const isTwoWeeksScenario = this.scheduleScenario === '2weeks';
 
         (scheduleData.manualReleases || []).forEach(release => {
             releases.push({
                 version: release.version,
                 date: release.date,
                 characters: release.characters || [],
-                note: release.note
+                note: release.note,
+                days: release.days ?? scheduleData.intervalRules.beforeV4,
             });
         });
 
         let lastDate = null;
         if (releases.length > 0) {
             // 날짜 문자열(YYYY-MM-DD)을 쪼개서 UTC 자정 기준으로 명확하게 생성
-            const lastReleaseDate = releases[releases.length - 1].date;
-            const parts = lastReleaseDate.split('-');
+            const lastRelease = releases[releases.length - 1];
+            const parts = lastRelease.date.split('-');
             // 월(Month)은 0부터 시작하므로 -1 처리
             lastDate = new Date(Date.UTC(parts[0], parts[1] - 1, parts[2]));
+            lastDate.setUTCDate(lastDate.getUTCDate() + lastRelease.days);
         }
 
         (scheduleData.autoGenerateCharacters || []).forEach(release => {
-            const version = parseFloat(release.version);
-            // 4.0은 여전히 2주 간격, 4.0 이후(4.1, 4.2 등)부터 3주 간격
-            const interval = version > 4.0 ? intervalRules.afterV4 : intervalRules.beforeV4;
-
-            if (lastDate) {
-                lastDate.setUTCDate(lastDate.getUTCDate() + interval);
-            }
-
             releases.push({
                 version: release.version,
                 date: lastDate ? lastDate.toISOString().split('T')[0] : null,
                 characters: release.characters || [],
                 note: release.note
             });
+
+            // Update lastDate after adding the release
+            const version = parseFloat(release.version);
+            const interval = version > 4.0 && isTwoWeeksScenario ? scheduleData.intervalRules.beforeV4 : release.days;
+            if (lastDate) {
+                lastDate.setUTCDate(lastDate.getUTCDate() + interval);
+            }
         });
 
         return releases.filter(r => r.date && r.characters.length > 0);

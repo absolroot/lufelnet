@@ -890,7 +890,6 @@ class PullSimulator {
 
     handleScheduleScenarioChange() {
         const newValue = document.getElementById('inputScheduleScenario')?.value || '3weeks';
-        console.log('[ScheduleScenario] Changed to:', newValue);
         this.scheduleScenario = newValue;
         this.saveData();
         this.buildSchedule();
@@ -904,7 +903,6 @@ class PullSimulator {
                     return release.characters &&
                         release.characters.includes(target.name);
                 });
-                console.log('[ScheduleScenario] Matching release for target', target.name, 'in version', target.version, ':', matchingRelease);
 
                 if (matchingRelease && matchingRelease.date) {
                     // Update target date to match new schedule
@@ -1161,7 +1159,7 @@ class PullSimulator {
 
             // Update lastDate after adding the release
             const version = parseFloat(release.version);
-            const interval = version > 4.0 && isTwoWeeksScenario ? scheduleData.intervalRules.beforeV4 : release.days;
+            const interval = version >= 4.0 && isTwoWeeksScenario ? scheduleData.intervalRules.beforeV4 : release.days;
             if (lastDate) {
                 lastDate.setUTCDate(lastDate.getUTCDate() + interval);
             }

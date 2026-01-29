@@ -194,6 +194,7 @@
       .bosses-mode-name { font-weight:700; grid-column: 1; }
       .bosses-countdown.local { grid-column: 1; justify-self: end; }
       .bosses-mode-detail { font-size:.9rem; opacity:.75; margin-top:10px; grid-column: 1 / -1; }
+      .boss-image { width: 3rem; height: 3rem; object-fit: contain; margin-bottom:8px; }
       .boss-item { padding:12px; background:rgba(255, 255, 255, 0.05); border:1px solid #2a2a2a; border-radius:8px; }
       .boss-row { display:flex; flex-direction:column; gap:8px; }
       .boss-left { display:flex; align-items:center; flex-direction:column;}
@@ -285,6 +286,7 @@
       const enemy = b.enemy || {};
       const enemyObj = Array.isArray(enemy) ? enemy[0] : enemy;
       const name = (enemyObj && enemyObj.name) || '';
+      const imageUrl = (enemyObj && enemyObj.image) || '';
       const level = '';
       const item = document.createElement('div');
       item.className = 'boss-item';
@@ -296,7 +298,11 @@
       left.className = 'boss-left';
       const head = document.createElement('div');
       head.className = 'boss-name';
+      const image = document.createElement('img');
+      image.className = 'boss-image';
+      image.src = `${BASE}/assets/img/enemy/${imageUrl}`; image.alt = name; image.onerror = function () { this.style.display = 'none'; };
       head.textContent = name;
+      left.appendChild(image);
       left.appendChild(head);
 
       const affixList = document.createElement('div');

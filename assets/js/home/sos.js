@@ -129,7 +129,9 @@
     bosses.forEach(b=>{
       const enemyArr = b.enemy || [];
       const enemy = Array.isArray(enemyArr) ? enemyArr[0] : enemyArr;
+      const imageUrl=(enemy && enemy.image) || '';
       const name = (enemy && enemy.name) || '';
+      const image=document.createElement('img'); image.className='boss-image'; image.src=`${BASE}/assets/img/enemy/${imageUrl}`; image.alt=name; image.onerror=function(){this.style.display='none';};
       const item=document.createElement('div'); item.className='boss-item';
       const row=document.createElement('div'); row.className='boss-row';
       const left=document.createElement('div'); left.className='boss-left';
@@ -137,6 +139,7 @@
       // score ratio badge (e.g., × 2.5)
       const ratio = (typeof b.scoreRatio !== 'undefined' && b.scoreRatio !== null) ? String(b.scoreRatio) : '';
       if (ratio) { const r=document.createElement('span'); r.className='boss-score-ratio'; r.textContent=`× ${ratio}`; head.appendChild(r); }
+      left.appendChild(image);
       left.appendChild(head);
 
       // bonus rule (if present) - place between name and elements

@@ -230,6 +230,7 @@ const AstrolabeNodeDetail = (function () {
 
     return `
       <div class="enemy-item">
+        <img src="${BASE_URL}/assets/img/enemy/${enemy.image}" class="enemy-icon" onerror="this.style.display='none'">
         <div class="enemy-header">
           <span class="enemy-name">${escapeHtml(name)}</span>
           <span class="enemy-level">${AstrolabeI18n.t('level')}${level}</span>

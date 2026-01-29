@@ -1,2098 +1,2098 @@
 {
-    "data": {
-        "endTime": "2026-02-05 05:00:00",
-        "nodes": {
-            "1": {
-                "affix": [
-                    {
-                        "desc": "『反抗』ロールの味方の最終ダメージが６０%上昇する。",
-                        "name": "特殊効果",
-                        "sn": 4501
-                    }
-                ],
-                "award": [
-                    {
-                        "count": 450,
-                        "img": "item-302001.png",
-                        "name": "星屑の欠片"
-                    },
-                    {
-                        "count": 18,
-                        "img": "item-302021.png",
-                        "name": "星屑のボトル"
-                    }
-                ],
-                "connected": [],
-                "enemy": [
-                    {
-                        "adapt": {
-                            "Absorb": [],
-                            "Nullify": [],
-                            "Reflect": [],
-                            "Resistant": [],
-                            "Weak": []
-                        },
-                        "level": "54",
-                        "name": "タケミナカタ",
-                        "skill": "1005,1025,306,302,1001",
-                        "sn": "640021",
-                        "stat": {
-                            "Accuracy": 1,
-                            "Ailment Acc.": 0.27,
-                            "Ailment Resist.": 0.37,
-                            "Almighty Boost": 0,
-                            "Almighty Damage Taken": 0,
-                            "Attack": 1844.4706,
-                            "Bless Boost": 0,
-                            "Bless Damage Taken": 0,
-                            "Crit Mult.": 1.3,
-                            "Crit Rate": 0,
-                            "Curse Boost": 0,
-                            "Curse Damage Taken": 0,
-                            "Damage Down": 0,
-                            "Damage Mult.": 0.715,
-                            "Damage Taken": 0,
-                            "Defense": 1148.554,
-                            "Down Points": 3,
-                            "Electric Boost": 0,
-                            "Electric Damage Taken": 0,
-                            "Final Damage Mult.": 0,
-                            "Fire Boost": 0,
-                            "Fire Damage Taken": 0,
-                            "Gun Boost": 0,
-                            "Gun Damage Taken": 0,
-                            "HP": 277770.0802,
-                            "Ice Boost": 0,
-                            "Ice Damage Taken": 0,
-                            "Nuclear Boost": 0,
-                            "Nuclear Damage Taken": 0,
-                            "Phys Boost": 0,
-                            "Phys Damage Taken": 0,
-                            "Pierce Rate": 0,
-                            "Psychokinesis Boost": 0,
-                            "Psychokinesis Damage Taken": 0,
-                            "SP": 100,
-                            "SP Recovery": 0,
-                            "Shield Effect": 0,
-                            "Speed": 86.767,
-                            "Wind Boost": 0,
-                            "Wind Damage Taken": 0
-                        }
-                    }
-                ],
-                "id": 1,
-                "img": "tianerong-xingpan-point03.png",
-                "isActive": true,
-                "name": "観測点·守護星",
-                "pos": [
-                    0,
-                    -400
-                ],
-                "unlockCond": null
+  "data": {
+    "endTime": "2026-02-05 05:00:00",
+    "nodes": {
+      "1": {
+        "affix": [
+          {
+            "desc": "『反抗』ロールの味方の最終ダメージが６０%上昇する。",
+            "name": "特殊効果",
+            "sn": 4501
+          }
+        ],
+        "award": [
+          {
+            "count": 450,
+            "img": "item-302001.png",
+            "name": "星屑の欠片"
+          },
+          {
+            "count": 18,
+            "img": "item-302021.png",
+            "name": "星屑のボトル"
+          }
+        ],
+        "connected": [],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
             },
-            "2": {
-                "affix": [
-                    {
-                        "desc": "『支配』ロールの味方の最終ダメージが６０%上昇する。",
-                        "name": "特殊効果",
-                        "sn": 4502
-                    }
-                ],
-                "award": [
-                    {
-                        "count": 600,
-                        "img": "item-302001.png",
-                        "name": "星屑の欠片"
-                    },
-                    {
-                        "count": 24,
-                        "img": "item-302021.png",
-                        "name": "星屑のボトル"
-                    }
-                ],
-                "connected": [
-                    1
-                ],
-                "enemy": [
-                    {
-                        "adapt": {
-                            "Absorb": [],
-                            "Nullify": [],
-                            "Reflect": [],
-                            "Resistant": [],
-                            "Weak": []
-                        },
-                        "level": "60",
-                        "name": "ナーガラジャ",
-                        "skill": "303,307,1317",
-                        "sn": "640511",
-                        "stat": {
-                            "Accuracy": 1,
-                            "Ailment Acc.": 0.3,
-                            "Ailment Resist.": 0.24,
-                            "Almighty Boost": 0,
-                            "Almighty Damage Taken": 0,
-                            "Attack": 1470.9027,
-                            "Bless Boost": 0,
-                            "Bless Damage Taken": 0,
-                            "Crit Mult.": 1.3,
-                            "Crit Rate": 0,
-                            "Curse Boost": 0,
-                            "Curse Damage Taken": 0,
-                            "Damage Down": 0,
-                            "Damage Mult.": 0.799,
-                            "Damage Taken": 0,
-                            "Defense": 526.334,
-                            "Down Points": 2,
-                            "Electric Boost": 0,
-                            "Electric Damage Taken": 0,
-                            "Final Damage Mult.": 0,
-                            "Fire Boost": 0,
-                            "Fire Damage Taken": 0,
-                            "Gun Boost": 0,
-                            "Gun Damage Taken": 0,
-                            "HP": 205163.4015,
-                            "Ice Boost": 0,
-                            "Ice Damage Taken": 0,
-                            "Nuclear Boost": 0,
-                            "Nuclear Damage Taken": 0,
-                            "Phys Boost": 0,
-                            "Phys Damage Taken": 0,
-                            "Pierce Rate": 0,
-                            "Psychokinesis Boost": 0,
-                            "Psychokinesis Damage Taken": 0,
-                            "SP": 100,
-                            "SP Recovery": 0,
-                            "Shield Effect": 0,
-                            "Speed": 79.333,
-                            "Wind Boost": 0,
-                            "Wind Damage Taken": 0
-                        }
-                    },
-                    {
-                        "adapt": {
-                            "Absorb": [],
-                            "Nullify": [],
-                            "Reflect": [],
-                            "Resistant": [],
-                            "Weak": []
-                        },
-                        "level": "60",
-                        "name": "ケツアルカトル",
-                        "skill": "406,403,1084",
-                        "sn": "640512",
-                        "stat": {
-                            "Accuracy": 1,
-                            "Ailment Acc.": 0.3,
-                            "Ailment Resist.": 0.24,
-                            "Almighty Boost": 0,
-                            "Almighty Damage Taken": 0,
-                            "Attack": 1961.2037,
-                            "Bless Boost": 0,
-                            "Bless Damage Taken": 0,
-                            "Crit Mult.": 1.3,
-                            "Crit Rate": 0,
-                            "Curse Boost": 0,
-                            "Curse Damage Taken": 0,
-                            "Damage Down": 0,
-                            "Damage Mult.": 0.799,
-                            "Damage Taken": 0,
-                            "Defense": 526.334,
-                            "Down Points": 2,
-                            "Electric Boost": 0,
-                            "Electric Damage Taken": 0,
-                            "Final Damage Mult.": 0,
-                            "Fire Boost": 0,
-                            "Fire Damage Taken": 0,
-                            "Gun Boost": 0,
-                            "Gun Damage Taken": 0,
-                            "HP": 205163.4015,
-                            "Ice Boost": 0,
-                            "Ice Damage Taken": 0,
-                            "Nuclear Boost": 0,
-                            "Nuclear Damage Taken": 0,
-                            "Phys Boost": 0,
-                            "Phys Damage Taken": 0,
-                            "Pierce Rate": 0,
-                            "Psychokinesis Boost": 0,
-                            "Psychokinesis Damage Taken": 0,
-                            "SP": 100,
-                            "SP Recovery": 0,
-                            "Shield Effect": 0,
-                            "Speed": 79.333,
-                            "Wind Boost": 0,
-                            "Wind Damage Taken": 0
-                        }
-                    },
-                    {
-                        "adapt": {
-                            "Absorb": [],
-                            "Nullify": [],
-                            "Reflect": [],
-                            "Resistant": [],
-                            "Weak": []
-                        },
-                        "level": "60",
-                        "name": "ユルング",
-                        "skill": "306,902,1317",
-                        "sn": "640513",
-                        "stat": {
-                            "Accuracy": 1,
-                            "Ailment Acc.": 0.3,
-                            "Ailment Resist.": 0.16,
-                            "Almighty Boost": 0,
-                            "Almighty Damage Taken": 0,
-                            "Attack": 1576.9128,
-                            "Bless Boost": 0,
-                            "Bless Damage Taken": 0,
-                            "Crit Mult.": 1.3,
-                            "Crit Rate": 0,
-                            "Curse Boost": 0,
-                            "Curse Damage Taken": 0,
-                            "Damage Down": 0,
-                            "Damage Mult.": 0.799,
-                            "Damage Taken": 0,
-                            "Defense": 355.275,
-                            "Down Points": 1,
-                            "Electric Boost": 0,
-                            "Electric Damage Taken": 0,
-                            "Final Damage Mult.": 0,
-                            "Fire Boost": 0,
-                            "Fire Damage Taken": 0,
-                            "Gun Boost": 0,
-                            "Gun Damage Taken": 0,
-                            "HP": 192581.2732,
-                            "Ice Boost": 0,
-                            "Ice Damage Taken": 0,
-                            "Nuclear Boost": 0,
-                            "Nuclear Damage Taken": 0,
-                            "Phys Boost": 0,
-                            "Phys Damage Taken": 0,
-                            "Pierce Rate": 0,
-                            "Psychokinesis Boost": 0,
-                            "Psychokinesis Damage Taken": 0,
-                            "SP": 100,
-                            "SP Recovery": 0,
-                            "Shield Effect": 0,
-                            "Speed": 74.667,
-                            "Wind Boost": 0,
-                            "Wind Damage Taken": 0
-                        }
-                    },
-                    {
-                        "adapt": {
-                            "Absorb": [],
-                            "Nullify": [],
-                            "Reflect": [],
-                            "Resistant": [],
-                            "Weak": []
-                        },
-                        "level": "60",
-                        "name": "ユルング",
-                        "skill": "306,902,1317",
-                        "sn": "640514",
-                        "stat": {
-                            "Accuracy": 1,
-                            "Ailment Acc.": 0.3,
-                            "Ailment Resist.": 0.16,
-                            "Almighty Boost": 0,
-                            "Almighty Damage Taken": 0,
-                            "Attack": 1576.9128,
-                            "Bless Boost": 0,
-                            "Bless Damage Taken": 0,
-                            "Crit Mult.": 1.3,
-                            "Crit Rate": 0,
-                            "Curse Boost": 0,
-                            "Curse Damage Taken": 0,
-                            "Damage Down": 0,
-                            "Damage Mult.": 0.799,
-                            "Damage Taken": 0,
-                            "Defense": 355.275,
-                            "Down Points": 1,
-                            "Electric Boost": 0,
-                            "Electric Damage Taken": 0,
-                            "Final Damage Mult.": 0,
-                            "Fire Boost": 0,
-                            "Fire Damage Taken": 0,
-                            "Gun Boost": 0,
-                            "Gun Damage Taken": 0,
-                            "HP": 192581.2732,
-                            "Ice Boost": 0,
-                            "Ice Damage Taken": 0,
-                            "Nuclear Boost": 0,
-                            "Nuclear Damage Taken": 0,
-                            "Phys Boost": 0,
-                            "Phys Damage Taken": 0,
-                            "Pierce Rate": 0,
-                            "Psychokinesis Boost": 0,
-                            "Psychokinesis Damage Taken": 0,
-                            "SP": 100,
-                            "SP Recovery": 0,
-                            "Shield Effect": 0,
-                            "Speed": 74.667,
-                            "Wind Boost": 0,
-                            "Wind Damage Taken": 0
-                        }
-                    }
-                ],
-                "id": 2,
-                "img": "tianerong-xingpan-point03.png",
-                "isActive": true,
-                "name": "観測点·守護星",
-                "pos": [
-                    104,
-                    -256
-                ],
-                "unlockCond": null
-            },
-            "3": {
-                "affix": [
-                    {
-                        "desc": "『心の怪盗団』の味方の最終ダメージが６０%上昇する。",
-                        "name": "特殊効果",
-                        "sn": 4591
-                    }
-                ],
-                "award": [
-                    {
-                        "count": 750,
-                        "img": "item-302001.png",
-                        "name": "星屑の欠片"
-                    },
-                    {
-                        "count": 30,
-                        "img": "item-302021.png",
-                        "name": "星屑のボトル"
-                    },
-                    {
-                        "count": 20,
-                        "img": "item-302011.png",
-                        "name": "星屑晶珠"
-                    }
-                ],
-                "connected": [
-                    2
-                ],
-                "enemy": [
-                    {
-                        "adapt": {
-                            "Absorb": [],
-                            "Nullify": [],
-                            "Reflect": [],
-                            "Resistant": [],
-                            "Weak": []
-                        },
-                        "level": "66",
-                        "name": "ジャターユ",
-                        "skill": "403,407",
-                        "sn": "640721",
-                        "stat": {
-                            "Accuracy": 1,
-                            "Ailment Acc.": 0.33,
-                            "Ailment Resist.": 0.43,
-                            "Almighty Boost": 0,
-                            "Almighty Damage Taken": 0,
-                            "Attack": 2986.9962,
-                            "Bless Boost": 0,
-                            "Bless Damage Taken": 0,
-                            "Crit Mult.": 1.3,
-                            "Crit Rate": 0,
-                            "Curse Boost": 0,
-                            "Curse Damage Taken": 0,
-                            "Damage Down": 0,
-                            "Damage Mult.": 0.92,
-                            "Damage Taken": 0,
-                            "Defense": 756.205,
-                            "Down Points": 2,
-                            "Electric Boost": 0,
-                            "Electric Damage Taken": 0,
-                            "Final Damage Mult.": 0,
-                            "Fire Boost": 0,
-                            "Fire Damage Taken": 0,
-                            "Gun Boost": 0,
-                            "Gun Damage Taken": 0,
-                            "HP": 279750.555,
-                            "Ice Boost": 0,
-                            "Ice Damage Taken": 0,
-                            "Nuclear Boost": 0,
-                            "Nuclear Damage Taken": 0,
-                            "Phys Boost": 0,
-                            "Phys Damage Taken": 0,
-                            "Pierce Rate": 0,
-                            "Psychokinesis Boost": 0,
-                            "Psychokinesis Damage Taken": 0,
-                            "SP": 100,
-                            "SP Recovery": 0,
-                            "Shield Effect": 0,
-                            "Speed": 85.8,
-                            "Wind Boost": 0,
-                            "Wind Damage Taken": 0
-                        }
-                    },
-                    {
-                        "adapt": {
-                            "Absorb": [],
-                            "Nullify": [],
-                            "Reflect": [],
-                            "Resistant": [],
-                            "Weak": []
-                        },
-                        "level": "66",
-                        "name": "ガルーダ",
-                        "skill": "403,406,1085",
-                        "sn": "640722",
-                        "stat": {
-                            "Accuracy": 1,
-                            "Ailment Acc.": 0.33,
-                            "Ailment Resist.": 0.43,
-                            "Almighty Boost": 0,
-                            "Almighty Damage Taken": 0,
-                            "Attack": 2986.9962,
-                            "Bless Boost": 0,
-                            "Bless Damage Taken": 0,
-                            "Crit Mult.": 1.3,
-                            "Crit Rate": 0,
-                            "Curse Boost": 0,
-                            "Curse Damage Taken": 0,
-                            "Damage Down": 0,
-                            "Damage Mult.": 0.92,
-                            "Damage Taken": 0,
-                            "Defense": 756.205,
-                            "Down Points": 2,
-                            "Electric Boost": 0,
-                            "Electric Damage Taken": 0,
-                            "Final Damage Mult.": 0,
-                            "Fire Boost": 0,
-                            "Fire Damage Taken": 0,
-                            "Gun Boost": 0,
-                            "Gun Damage Taken": 0,
-                            "HP": 279750.555,
-                            "Ice Boost": 0,
-                            "Ice Damage Taken": 0,
-                            "Nuclear Boost": 0,
-                            "Nuclear Damage Taken": 0,
-                            "Phys Boost": 0,
-                            "Phys Damage Taken": 0,
-                            "Pierce Rate": 0,
-                            "Psychokinesis Boost": 0,
-                            "Psychokinesis Damage Taken": 0,
-                            "SP": 100,
-                            "SP Recovery": 0,
-                            "Shield Effect": 0,
-                            "Speed": 85.8,
-                            "Wind Boost": 0,
-                            "Wind Damage Taken": 0
-                        }
-                    }
-                ],
-                "id": 3,
-                "img": "tianerong-xingpan-point03.png",
-                "isActive": true,
-                "name": "観測点·守護星",
-                "pos": [
-                    -120,
-                    -168
-                ],
-                "unlockCond": null
-            },
-            "4": {
-                "affix": [
-                    {
-                        "desc": "味方全体は追加行動の時、最終ダメージが１２０%上昇する。",
-                        "name": "特殊効果",
-                        "sn": 4551
-                    }
-                ],
-                "award": [
-                    {
-                        "count": 60,
-                        "img": "item-302021.png",
-                        "name": "星屑のボトル"
-                    },
-                    {
-                        "count": 40,
-                        "img": "item-302011.png",
-                        "name": "星屑晶珠"
-                    },
-                    {
-                        "count": 1,
-                        "img": "item-302012.png",
-                        "name": "明星晶珠"
-                    }
-                ],
-                "connected": [
-                    3
-                ],
-                "enemy": [
-                    {
-                        "adapt": {
-                            "Absorb": [],
-                            "Nullify": [],
-                            "Reflect": [],
-                            "Resistant": [],
-                            "Weak": []
-                        },
-                        "level": "78",
-                        "name": "ドミニオン",
-                        "skill": "905,902",
-                        "sn": "643011",
-                        "stat": {
-                            "Accuracy": 1,
-                            "Ailment Acc.": 0.39,
-                            "Ailment Resist.": 0.196,
-                            "Almighty Boost": 0,
-                            "Almighty Damage Taken": 0,
-                            "Attack": 2299.0167,
-                            "Bless Boost": 0,
-                            "Bless Damage Taken": 0,
-                            "Crit Mult.": 1.3,
-                            "Crit Rate": 0,
-                            "Curse Boost": 0,
-                            "Curse Damage Taken": 0,
-                            "Damage Down": 0,
-                            "Damage Mult.": 1.037,
-                            "Damage Taken": 0,
-                            "Defense": 356.596,
-                            "Down Points": 1,
-                            "Electric Boost": 0,
-                            "Electric Damage Taken": 0,
-                            "Final Damage Mult.": 0,
-                            "Fire Boost": 0,
-                            "Fire Damage Taken": 0,
-                            "Gun Boost": 0,
-                            "Gun Damage Taken": 0,
-                            "HP": 663794.2224,
-                            "Ice Boost": 0,
-                            "Ice Damage Taken": 0,
-                            "Nuclear Boost": 0,
-                            "Nuclear Damage Taken": 0,
-                            "Phys Boost": 0,
-                            "Phys Damage Taken": 0,
-                            "Pierce Rate": 0,
-                            "Psychokinesis Boost": 0,
-                            "Psychokinesis Damage Taken": 0,
-                            "SP": 100,
-                            "SP Recovery": 0,
-                            "Shield Effect": 0,
-                            "Speed": 79.467,
-                            "Wind Boost": 0,
-                            "Wind Damage Taken": 0
-                        }
-                    },
-                    {
-                        "adapt": {
-                            "Absorb": [],
-                            "Nullify": [],
-                            "Reflect": [],
-                            "Resistant": [],
-                            "Weak": []
-                        },
-                        "level": "78",
-                        "name": "パワー",
-                        "skill": "707,1008,1406",
-                        "sn": "643012",
-                        "stat": {
-                            "Accuracy": 1,
-                            "Ailment Acc.": 0.39,
-                            "Ailment Resist.": 0.196,
-                            "Almighty Boost": 0,
-                            "Almighty Damage Taken": 0,
-                            "Attack": 3065.3556,
-                            "Bless Boost": 0,
-                            "Bless Damage Taken": 0,
-                            "Crit Mult.": 1.3,
-                            "Crit Rate": 0,
-                            "Curse Boost": 0,
-                            "Curse Damage Taken": 0,
-                            "Damage Down": 0,
-                            "Damage Mult.": 1.037,
-                            "Damage Taken": 0,
-                            "Defense": 356.596,
-                            "Down Points": 1,
-                            "Electric Boost": 0,
-                            "Electric Damage Taken": 0,
-                            "Final Damage Mult.": 0,
-                            "Fire Boost": 0,
-                            "Fire Damage Taken": 0,
-                            "Gun Boost": 0,
-                            "Gun Damage Taken": 0,
-                            "HP": 663794.2224,
-                            "Ice Boost": 0,
-                            "Ice Damage Taken": 0,
-                            "Nuclear Boost": 0,
-                            "Nuclear Damage Taken": 0,
-                            "Phys Boost": 0,
-                            "Phys Damage Taken": 0,
-                            "Pierce Rate": 0,
-                            "Psychokinesis Boost": 0,
-                            "Psychokinesis Damage Taken": 0,
-                            "SP": 100,
-                            "SP Recovery": 0,
-                            "Shield Effect": 0,
-                            "Speed": 79.467,
-                            "Wind Boost": 0,
-                            "Wind Damage Taken": 0
-                        }
-                    },
-                    {
-                        "adapt": {
-                            "Absorb": [],
-                            "Nullify": [],
-                            "Reflect": [],
-                            "Resistant": [],
-                            "Weak": []
-                        },
-                        "level": "78",
-                        "name": "プリンシパリティ",
-                        "skill": "1025,456,452",
-                        "sn": "643013",
-                        "stat": {
-                            "Accuracy": 1,
-                            "Ailment Acc.": 0.39,
-                            "Ailment Resist.": 0.196,
-                            "Almighty Boost": 0,
-                            "Almighty Damage Taken": 0,
-                            "Attack": 3065.3556,
-                            "Bless Boost": 0,
-                            "Bless Damage Taken": 0,
-                            "Crit Mult.": 1.3,
-                            "Crit Rate": 0,
-                            "Curse Boost": 0,
-                            "Curse Damage Taken": 0,
-                            "Damage Down": 0,
-                            "Damage Mult.": 1.037,
-                            "Damage Taken": 0,
-                            "Defense": 356.596,
-                            "Down Points": 1,
-                            "Electric Boost": 0,
-                            "Electric Damage Taken": 0,
-                            "Final Damage Mult.": 0,
-                            "Fire Boost": 0,
-                            "Fire Damage Taken": 0,
-                            "Gun Boost": 0,
-                            "Gun Damage Taken": 0,
-                            "HP": 663794.2224,
-                            "Ice Boost": 0,
-                            "Ice Damage Taken": 0,
-                            "Nuclear Boost": 0,
-                            "Nuclear Damage Taken": 0,
-                            "Phys Boost": 0,
-                            "Phys Damage Taken": 0,
-                            "Pierce Rate": 0,
-                            "Psychokinesis Boost": 0,
-                            "Psychokinesis Damage Taken": 0,
-                            "SP": 100,
-                            "SP Recovery": 0,
-                            "Shield Effect": 0,
-                            "Speed": 79.467,
-                            "Wind Boost": 0,
-                            "Wind Damage Taken": 0
-                        }
-                    },
-                    {
-                        "adapt": {
-                            "Absorb": [],
-                            "Nullify": [],
-                            "Reflect": [],
-                            "Resistant": [],
-                            "Weak": []
-                        },
-                        "level": "78",
-                        "name": "アークエンジェル",
-                        "skill": "1003,1019,1010",
-                        "sn": "643014",
-                        "stat": {
-                            "Accuracy": 1,
-                            "Ailment Acc.": 0.39,
-                            "Ailment Resist.": 0.196,
-                            "Almighty Boost": 0,
-                            "Almighty Damage Taken": 0,
-                            "Attack": 3065.3556,
-                            "Bless Boost": 0,
-                            "Bless Damage Taken": 0,
-                            "Crit Mult.": 1.3,
-                            "Crit Rate": 0,
-                            "Curse Boost": 0,
-                            "Curse Damage Taken": 0,
-                            "Damage Down": 0,
-                            "Damage Mult.": 1.037,
-                            "Damage Taken": 0,
-                            "Defense": 356.596,
-                            "Down Points": 1,
-                            "Electric Boost": 0,
-                            "Electric Damage Taken": 0,
-                            "Final Damage Mult.": 0,
-                            "Fire Boost": 0,
-                            "Fire Damage Taken": 0,
-                            "Gun Boost": 0,
-                            "Gun Damage Taken": 0,
-                            "HP": 663794.2224,
-                            "Ice Boost": 0,
-                            "Ice Damage Taken": 0,
-                            "Nuclear Boost": 0,
-                            "Nuclear Damage Taken": 0,
-                            "Phys Boost": 0,
-                            "Phys Damage Taken": 0,
-                            "Pierce Rate": 0,
-                            "Psychokinesis Boost": 0,
-                            "Psychokinesis Damage Taken": 0,
-                            "SP": 100,
-                            "SP Recovery": 0,
-                            "Shield Effect": 0,
-                            "Speed": 79.467,
-                            "Wind Boost": 0,
-                            "Wind Damage Taken": 0
-                        }
-                    }
-                ],
-                "id": 4,
-                "img": "tianerong-xingpan-point01.png",
-                "isActive": true,
-                "name": "観測点·宮主星",
-                "pos": [
-                    0,
-                    -48
-                ],
-                "unlockCond": null
-            },
-            "5": {
-                "affix": [
-                    {
-                        "desc": "主人公以外の火炎／氷結／感電／疾風属性の味方の最終ダメージが６０%上昇する。",
-                        "name": "特殊効果",
-                        "sn": 4511
-                    }
-                ],
-                "award": [
-                    {
-                        "count": 900,
-                        "img": "item-302001.png",
-                        "name": "星屑の欠片"
-                    },
-                    {
-                        "count": 36,
-                        "img": "item-302021.png",
-                        "name": "星屑のボトル"
-                    }
-                ],
-                "connected": [
-                    4
-                ],
-                "enemy": [
-                    {
-                        "adapt": {
-                            "Absorb": [],
-                            "Nullify": [],
-                            "Reflect": [],
-                            "Resistant": [],
-                            "Weak": []
-                        },
-                        "level": "72",
-                        "name": "ビャッコ",
-                        "skill": "1025,206,203,1316",
-                        "sn": "641411",
-                        "stat": {
-                            "Accuracy": 1,
-                            "Ailment Acc.": 0.36,
-                            "Ailment Resist.": 0.46,
-                            "Almighty Boost": 0,
-                            "Almighty Damage Taken": 0,
-                            "Attack": 2571.3432,
-                            "Bless Boost": 0,
-                            "Bless Damage Taken": 0,
-                            "Crit Mult.": 1.3,
-                            "Crit Rate": 0,
-                            "Curse Boost": 0,
-                            "Curse Damage Taken": 0,
-                            "Damage Down": 0,
-                            "Damage Mult.": 1.009,
-                            "Damage Taken": 0,
-                            "Defense": 769.194,
-                            "Down Points": 2,
-                            "Electric Boost": 0,
-                            "Electric Damage Taken": 0,
-                            "Final Damage Mult.": 0,
-                            "Fire Boost": 0,
-                            "Fire Damage Taken": 0,
-                            "Gun Boost": 0,
-                            "Gun Damage Taken": 0,
-                            "HP": 303110.9437,
-                            "Ice Boost": 0,
-                            "Ice Damage Taken": 0,
-                            "Nuclear Boost": 0,
-                            "Nuclear Damage Taken": 0,
-                            "Phys Boost": 0,
-                            "Phys Damage Taken": 0,
-                            "Pierce Rate": 0,
-                            "Psychokinesis Boost": 0,
-                            "Psychokinesis Damage Taken": 0,
-                            "SP": 100,
-                            "SP Recovery": 0,
-                            "Shield Effect": 0,
-                            "Speed": 87.6,
-                            "Wind Boost": 0,
-                            "Wind Damage Taken": 0
-                        }
-                    },
-                    {
-                        "adapt": {
-                            "Absorb": [],
-                            "Nullify": [],
-                            "Reflect": [],
-                            "Resistant": [],
-                            "Weak": []
-                        },
-                        "level": "72",
-                        "name": "ケルベロス",
-                        "skill": "103,1006,1411",
-                        "sn": "641412",
-                        "stat": {
-                            "Accuracy": 1,
-                            "Ailment Acc.": 0.36,
-                            "Ailment Resist.": 0.184,
-                            "Almighty Boost": 0,
-                            "Almighty Damage Taken": 0,
-                            "Attack": 2233.3954,
-                            "Bless Boost": 0,
-                            "Bless Damage Taken": 0,
-                            "Crit Mult.": 1.3,
-                            "Crit Rate": 0,
-                            "Curse Boost": 0,
-                            "Curse Damage Taken": 0,
-                            "Damage Down": 0,
-                            "Damage Mult.": 1.009,
-                            "Damage Taken": 0,
-                            "Defense": 345.151,
-                            "Down Points": 2,
-                            "Electric Boost": 0,
-                            "Electric Damage Taken": 0,
-                            "Final Damage Mult.": 0,
-                            "Fire Boost": 0,
-                            "Fire Damage Taken": 0,
-                            "Gun Boost": 0,
-                            "Gun Damage Taken": 0,
-                            "HP": 297718.155,
-                            "Ice Boost": 0,
-                            "Ice Damage Taken": 0,
-                            "Nuclear Boost": 0,
-                            "Nuclear Damage Taken": 0,
-                            "Phys Boost": 0,
-                            "Phys Damage Taken": 0,
-                            "Pierce Rate": 0,
-                            "Psychokinesis Boost": 0,
-                            "Psychokinesis Damage Taken": 0,
-                            "SP": 100,
-                            "SP Recovery": 0,
-                            "Shield Effect": 0,
-                            "Speed": 82.733,
-                            "Wind Boost": 0,
-                            "Wind Damage Taken": 0
-                        }
-                    },
-                    {
-                        "adapt": {
-                            "Absorb": [],
-                            "Nullify": [],
-                            "Reflect": [],
-                            "Resistant": [],
-                            "Weak": []
-                        },
-                        "level": "72",
-                        "name": "オルトロス",
-                        "skill": "102,1014,1404",
-                        "sn": "641413",
-                        "stat": {
-                            "Accuracy": 1,
-                            "Ailment Acc.": 0.36,
-                            "Ailment Resist.": 0.184,
-                            "Almighty Boost": 0,
-                            "Almighty Damage Taken": 0,
-                            "Attack": 2233.3954,
-                            "Bless Boost": 0,
-                            "Bless Damage Taken": 0,
-                            "Crit Mult.": 1.3,
-                            "Crit Rate": 0,
-                            "Curse Boost": 0,
-                            "Curse Damage Taken": 0,
-                            "Damage Down": 0,
-                            "Damage Mult.": 1.009,
-                            "Damage Taken": 0,
-                            "Defense": 345.151,
-                            "Down Points": 2,
-                            "Electric Boost": 0,
-                            "Electric Damage Taken": 0,
-                            "Final Damage Mult.": 0,
-                            "Fire Boost": 0,
-                            "Fire Damage Taken": 0,
-                            "Gun Boost": 0,
-                            "Gun Damage Taken": 0,
-                            "HP": 297718.155,
-                            "Ice Boost": 0,
-                            "Ice Damage Taken": 0,
-                            "Nuclear Boost": 0,
-                            "Nuclear Damage Taken": 0,
-                            "Phys Boost": 0,
-                            "Phys Damage Taken": 0,
-                            "Pierce Rate": 0,
-                            "Psychokinesis Boost": 0,
-                            "Psychokinesis Damage Taken": 0,
-                            "SP": 100,
-                            "SP Recovery": 0,
-                            "Shield Effect": 0,
-                            "Speed": 82.733,
-                            "Wind Boost": 0,
-                            "Wind Damage Taken": 0
-                        }
-                    }
-                ],
-                "id": 5,
-                "img": "tianerong-xingpan-point03.png",
-                "isActive": true,
-                "name": "観測点·守護星",
-                "pos": [
-                    -152,
-                    72
-                ],
-                "unlockCond": null
-            },
-            "6": {
-                "affix": [
-                    {
-                        "desc": "主人公以外の念動／核熱／祝福／呪怨属性の味方の最終ダメージが６０%上昇する。",
-                        "name": "特殊効果",
-                        "sn": 4512
-                    }
-                ],
-                "award": [
-                    {
-                        "count": 1125,
-                        "img": "item-302001.png",
-                        "name": "星屑の欠片"
-                    },
-                    {
-                        "count": 45,
-                        "img": "item-302021.png",
-                        "name": "星屑のボトル"
-                    },
-                    {
-                        "count": 30,
-                        "img": "item-302011.png",
-                        "name": "星屑晶珠"
-                    }
-                ],
-                "connected": [
-                    5
-                ],
-                "enemy": [
-                    {
-                        "adapt": {
-                            "Absorb": [],
-                            "Nullify": [],
-                            "Reflect": [],
-                            "Resistant": [],
-                            "Weak": []
-                        },
-                        "level": "78",
-                        "name": "ラファエル",
-                        "skill": "1007,1409",
-                        "sn": "641731",
-                        "stat": {
-                            "Accuracy": 1,
-                            "Ailment Acc.": 0.39,
-                            "Ailment Resist.": 0.49,
-                            "Almighty Boost": 0,
-                            "Almighty Damage Taken": 0,
-                            "Attack": 3941.171,
-                            "Bless Boost": 0,
-                            "Bless Damage Taken": 0,
-                            "Crit Mult.": 1.3,
-                            "Crit Rate": 0,
-                            "Curse Boost": 0,
-                            "Curse Damage Taken": 0,
-                            "Damage Down": 0,
-                            "Damage Mult.": 1.037,
-                            "Damage Taken": 0,
-                            "Defense": 799.227,
-                            "Down Points": 2,
-                            "Electric Boost": 0,
-                            "Electric Damage Taken": 0,
-                            "Final Damage Mult.": 0,
-                            "Fire Boost": 0,
-                            "Fire Damage Taken": 0,
-                            "Gun Boost": 0,
-                            "Gun Damage Taken": 0,
-                            "HP": 354825.198,
-                            "Ice Boost": 0,
-                            "Ice Damage Taken": 0,
-                            "Nuclear Boost": 0,
-                            "Nuclear Damage Taken": 0,
-                            "Phys Boost": 0,
-                            "Phys Damage Taken": 0,
-                            "Pierce Rate": 0,
-                            "Psychokinesis Boost": 0,
-                            "Psychokinesis Damage Taken": 0,
-                            "SP": 100,
-                            "SP Recovery": 0,
-                            "Shield Effect": 0,
-                            "Speed": 89.4,
-                            "Wind Boost": 0,
-                            "Wind Damage Taken": 0
-                        }
-                    },
-                    {
-                        "adapt": {
-                            "Absorb": [],
-                            "Nullify": [],
-                            "Reflect": [],
-                            "Resistant": [],
-                            "Weak": []
-                        },
-                        "level": "78",
-                        "name": "ウリエル",
-                        "skill": "1026,1016,1090,905",
-                        "sn": "641732",
-                        "stat": {
-                            "Accuracy": 1,
-                            "Ailment Acc.": 0.39,
-                            "Ailment Resist.": 0.49,
-                            "Almighty Boost": 0,
-                            "Almighty Damage Taken": 0,
-                            "Attack": 3941.171,
-                            "Bless Boost": 0,
-                            "Bless Damage Taken": 0,
-                            "Crit Mult.": 1.3,
-                            "Crit Rate": 0,
-                            "Curse Boost": 0,
-                            "Curse Damage Taken": 0,
-                            "Damage Down": 0,
-                            "Damage Mult.": 1.037,
-                            "Damage Taken": 0,
-                            "Defense": 799.227,
-                            "Down Points": 2,
-                            "Electric Boost": 0,
-                            "Electric Damage Taken": 0,
-                            "Final Damage Mult.": 0,
-                            "Fire Boost": 0,
-                            "Fire Damage Taken": 0,
-                            "Gun Boost": 0,
-                            "Gun Damage Taken": 0,
-                            "HP": 354825.198,
-                            "Ice Boost": 0,
-                            "Ice Damage Taken": 0,
-                            "Nuclear Boost": 0,
-                            "Nuclear Damage Taken": 0,
-                            "Phys Boost": 0,
-                            "Phys Damage Taken": 0,
-                            "Pierce Rate": 0,
-                            "Psychokinesis Boost": 0,
-                            "Psychokinesis Damage Taken": 0,
-                            "SP": 100,
-                            "SP Recovery": 0,
-                            "Shield Effect": 0,
-                            "Speed": 89.4,
-                            "Wind Boost": 0,
-                            "Wind Damage Taken": 0
-                        }
-                    }
-                ],
-                "id": 6,
-                "img": "tianerong-xingpan-point03.png",
-                "isActive": true,
-                "name": "観測点·守護星",
-                "pos": [
-                    40,
-                    160
-                ],
-                "unlockCond": null
-            },
-            "7": {
-                "affix": [
-                    {
-                        "desc": "味方が敵にダメージを与えるたびに、その味方の最終ダメージが４%上昇する。最大で１５個まで累積し、３ターン持続する。",
-                        "name": "特殊効果",
-                        "sn": 4571
-                    }
-                ],
-                "award": [
-                    {
-                        "count": 165,
-                        "img": "item-302021.png",
-                        "name": "星屑のボトル"
-                    },
-                    {
-                        "count": 110,
-                        "img": "item-302011.png",
-                        "name": "星屑晶珠"
-                    },
-                    {
-                        "count": 2,
-                        "img": "item-302012.png",
-                        "name": "明星晶珠"
-                    }
-                ],
-                "connected": [
-                    6
-                ],
-                "enemy": [
-                    {
-                        "adapt": {
-                            "Absorb": [],
-                            "Nullify": [],
-                            "Reflect": [],
-                            "Resistant": [],
-                            "Weak": []
-                        },
-                        "level": "84",
-                        "name": "アタバク",
-                        "skill": "2444,107,1008",
-                        "sn": "645011",
-                        "stat": {
-                            "Accuracy": 1,
-                            "Ailment Acc.": 0.42,
-                            "Ailment Resist.": 0.5,
-                            "Almighty Boost": 0,
-                            "Almighty Damage Taken": 0,
-                            "Attack": 5227.9197,
-                            "Bless Boost": 0,
-                            "Bless Damage Taken": 0,
-                            "Crit Mult.": 1.3,
-                            "Crit Rate": 0,
-                            "Curse Boost": 0,
-                            "Curse Damage Taken": 0,
-                            "Damage Down": 0,
-                            "Damage Mult.": 1.065,
-                            "Damage Taken": 0,
-                            "Defense": 1298.512,
-                            "Down Points": 3,
-                            "Electric Boost": 0,
-                            "Electric Damage Taken": 0,
-                            "Final Damage Mult.": 0,
-                            "Fire Boost": 0,
-                            "Fire Damage Taken": 0,
-                            "Gun Boost": 0,
-                            "Gun Damage Taken": 0,
-                            "HP": 1648097.8065,
-                            "Ice Boost": 0,
-                            "Ice Damage Taken": 0,
-                            "Nuclear Boost": 0,
-                            "Nuclear Damage Taken": 0,
-                            "Phys Boost": 0,
-                            "Phys Damage Taken": 0,
-                            "Pierce Rate": 0,
-                            "Psychokinesis Boost": 0,
-                            "Psychokinesis Damage Taken": 0,
-                            "SP": 100,
-                            "SP Recovery": 0,
-                            "Shield Effect": 0,
-                            "Speed": 95,
-                            "Wind Boost": 0,
-                            "Wind Damage Taken": 0
-                        }
-                    }
-                ],
-                "id": 7,
-                "img": "tianerong-xingpan-point02.png",
-                "isActive": true,
-                "name": "観測点·命主星",
-                "pos": [
-                    0,
-                    312
-                ],
-                "unlockCond": null
-            },
-            "8": {
-                "affix": [
-                    {
-                        "desc": "ハイライトゲージの上昇量が２０%低下するが、味方のハイライトの最終ダメージが１００%上昇する。",
-                        "name": "特殊効果",
-                        "sn": 4533
-                    }
-                ],
-                "award": [
-                    {
-                        "count": 900,
-                        "img": "item-302001.png",
-                        "name": "星屑の欠片"
-                    },
-                    {
-                        "count": 36,
-                        "img": "item-302021.png",
-                        "name": "星屑のボトル"
-                    }
-                ],
-                "connected": [
-                    4
-                ],
-                "enemy": [
-                    {
-                        "adapt": {
-                            "Absorb": [],
-                            "Nullify": [],
-                            "Reflect": [],
-                            "Resistant": [],
-                            "Weak": []
-                        },
-                        "level": "72",
-                        "name": "ヘカトンケイル",
-                        "skill": "1025,1403,1023",
-                        "sn": "641041",
-                        "stat": {
-                            "Accuracy": 1,
-                            "Ailment Acc.": 0.36,
-                            "Ailment Resist.": 0.46,
-                            "Almighty Boost": 0,
-                            "Almighty Damage Taken": 0,
-                            "Attack": 3173.7729,
-                            "Bless Boost": 0,
-                            "Bless Damage Taken": 0,
-                            "Crit Mult.": 1.3,
-                            "Crit Rate": 0,
-                            "Curse Boost": 0,
-                            "Curse Damage Taken": 0,
-                            "Damage Down": 0,
-                            "Damage Mult.": 1.009,
-                            "Damage Taken": 0,
-                            "Defense": 1183.376,
-                            "Down Points": 3,
-                            "Electric Boost": 0,
-                            "Electric Damage Taken": 0,
-                            "Final Damage Mult.": 0,
-                            "Fire Boost": 0,
-                            "Fire Damage Taken": 0,
-                            "Gun Boost": 0,
-                            "Gun Damage Taken": 0,
-                            "HP": 464470.2,
-                            "Ice Boost": 0,
-                            "Ice Damage Taken": 0,
-                            "Nuclear Boost": 0,
-                            "Nuclear Damage Taken": 0,
-                            "Phys Boost": 0,
-                            "Phys Damage Taken": 0,
-                            "Pierce Rate": 0,
-                            "Psychokinesis Boost": 0,
-                            "Psychokinesis Damage Taken": 0,
-                            "SP": 100,
-                            "SP Recovery": 0,
-                            "Shield Effect": 0,
-                            "Speed": 92.467,
-                            "Wind Boost": 0,
-                            "Wind Damage Taken": 0
-                        }
-                    }
-                ],
-                "id": 8,
-                "img": "tianerong-xingpan-point03.png",
-                "isActive": true,
-                "name": "観測点·守護星",
-                "pos": [
-                    -336,
-                    -24
-                ],
-                "unlockCond": null
-            },
-            "9": {
-                "affix": [
-                    {
-                        "desc": "全ての敵は、属性異常１つごとに、最終被ダメージが５%上昇する。同時に４種類の属性異常を持つと、さらに最終被ダメージが４０%上昇する。",
-                        "name": "特殊効果",
-                        "sn": 4521
-                    }
-                ],
-                "award": [
-                    {
-                        "count": 1125,
-                        "img": "item-302001.png",
-                        "name": "星屑の欠片"
-                    },
-                    {
-                        "count": 45,
-                        "img": "item-302021.png",
-                        "name": "星屑のボトル"
-                    },
-                    {
-                        "count": 30,
-                        "img": "item-302011.png",
-                        "name": "星屑晶珠"
-                    }
-                ],
-                "connected": [
-                    8
-                ],
-                "enemy": [
-                    {
-                        "adapt": {
-                            "Absorb": [],
-                            "Nullify": [],
-                            "Reflect": [],
-                            "Resistant": [],
-                            "Weak": []
-                        },
-                        "level": "78",
-                        "name": "クー・フーリン",
-                        "skill": "1008,1102",
-                        "sn": "641711",
-                        "stat": {
-                            "Accuracy": 1,
-                            "Ailment Acc.": 0.39,
-                            "Ailment Resist.": 0.49,
-                            "Almighty Boost": 0,
-                            "Almighty Damage Taken": 0,
-                            "Attack": 3941.171,
-                            "Bless Boost": 0,
-                            "Bless Damage Taken": 0,
-                            "Crit Mult.": 1.3,
-                            "Crit Rate": 0,
-                            "Curse Boost": 0,
-                            "Curse Damage Taken": 0,
-                            "Damage Down": 0,
-                            "Damage Mult.": 1.037,
-                            "Damage Taken": 0,
-                            "Defense": 799.227,
-                            "Down Points": 2,
-                            "Electric Boost": 0,
-                            "Electric Damage Taken": 0,
-                            "Final Damage Mult.": 0,
-                            "Fire Boost": 0,
-                            "Fire Damage Taken": 0,
-                            "Gun Boost": 0,
-                            "Gun Damage Taken": 0,
-                            "HP": 354825.198,
-                            "Ice Boost": 0,
-                            "Ice Damage Taken": 0,
-                            "Nuclear Boost": 0,
-                            "Nuclear Damage Taken": 0,
-                            "Phys Boost": 0,
-                            "Phys Damage Taken": 0,
-                            "Pierce Rate": 0,
-                            "Psychokinesis Boost": 0,
-                            "Psychokinesis Damage Taken": 0,
-                            "SP": 100,
-                            "SP Recovery": 0,
-                            "Shield Effect": 0,
-                            "Speed": 89.4,
-                            "Wind Boost": 0,
-                            "Wind Damage Taken": 0
-                        }
-                    },
-                    {
-                        "adapt": {
-                            "Absorb": [],
-                            "Nullify": [],
-                            "Reflect": [],
-                            "Resistant": [],
-                            "Weak": []
-                        },
-                        "level": "78",
-                        "name": "スカアハ",
-                        "skill": "1016,1404,207",
-                        "sn": "641712",
-                        "stat": {
-                            "Accuracy": 1,
-                            "Ailment Acc.": 0.39,
-                            "Ailment Resist.": 0.49,
-                            "Almighty Boost": 0,
-                            "Almighty Damage Taken": 0,
-                            "Attack": 2955.8783,
-                            "Bless Boost": 0,
-                            "Bless Damage Taken": 0,
-                            "Crit Mult.": 1.3,
-                            "Crit Rate": 0,
-                            "Curse Boost": 0,
-                            "Curse Damage Taken": 0,
-                            "Damage Down": 0,
-                            "Damage Mult.": 1.037,
-                            "Damage Taken": 0,
-                            "Defense": 799.227,
-                            "Down Points": 2,
-                            "Electric Boost": 0,
-                            "Electric Damage Taken": 0,
-                            "Final Damage Mult.": 0,
-                            "Fire Boost": 0,
-                            "Fire Damage Taken": 0,
-                            "Gun Boost": 0,
-                            "Gun Damage Taken": 0,
-                            "HP": 354825.198,
-                            "Ice Boost": 0,
-                            "Ice Damage Taken": 0,
-                            "Nuclear Boost": 0,
-                            "Nuclear Damage Taken": 0,
-                            "Phys Boost": 0,
-                            "Phys Damage Taken": 0,
-                            "Pierce Rate": 0,
-                            "Psychokinesis Boost": 0,
-                            "Psychokinesis Damage Taken": 0,
-                            "SP": 100,
-                            "SP Recovery": 0,
-                            "Shield Effect": 0,
-                            "Speed": 89.4,
-                            "Wind Boost": 0,
-                            "Wind Damage Taken": 0
-                        }
-                    }
-                ],
-                "id": 9,
-                "img": "tianerong-xingpan-point03.png",
-                "isActive": true,
-                "name": "観測点·守護星",
-                "pos": [
-                    -384,
-                    136
-                ],
-                "unlockCond": null
-            },
-            "10": {
-                "affix": [
-                    {
-                        "desc": "主人公以外の味方がスキルと１ＭＯＲＥによる万能属性ダメージを与える時、２ターンの間、味方全体の最終ダメージが６０%上昇する。",
-                        "name": "特殊効果",
-                        "sn": 4515
-                    }
-                ],
-                "award": [
-                    {
-                        "count": 75,
-                        "img": "item-302021.png",
-                        "name": "星屑のボトル"
-                    },
-                    {
-                        "count": 50,
-                        "img": "item-302011.png",
-                        "name": "星屑晶珠"
-                    },
-                    {
-                        "count": 1,
-                        "img": "item-302012.png",
-                        "name": "明星晶珠"
-                    }
-                ],
-                "connected": [
-                    9
-                ],
-                "enemy": [
-                    {
-                        "adapt": {
-                            "Absorb": [],
-                            "Nullify": [],
-                            "Reflect": [],
-                            "Resistant": [],
-                            "Weak": []
-                        },
-                        "level": "84",
-                        "name": "マダ",
-                        "skill": "108,104",
-                        "sn": "644231",
-                        "stat": {
-                            "Accuracy": 1,
-                            "Ailment Acc.": 0.42,
-                            "Ailment Resist.": 0.52,
-                            "Almighty Boost": 0,
-                            "Almighty Damage Taken": 0,
-                            "Attack": 4356.5997,
-                            "Bless Boost": 0,
-                            "Bless Damage Taken": 0,
-                            "Crit Mult.": 1.3,
-                            "Crit Rate": 0,
-                            "Curse Boost": 0,
-                            "Curse Damage Taken": 0,
-                            "Damage Down": 0,
-                            "Damage Mult.": 1.065,
-                            "Damage Taken": 0,
-                            "Defense": 833.212,
-                            "Down Points": 2,
-                            "Electric Boost": 0,
-                            "Electric Damage Taken": 0,
-                            "Final Damage Mult.": 0,
-                            "Fire Boost": 0,
-                            "Fire Damage Taken": 0,
-                            "Gun Boost": 0,
-                            "Gun Damage Taken": 0,
-                            "HP": 1239283.4112,
-                            "Ice Boost": 0,
-                            "Ice Damage Taken": 0,
-                            "Nuclear Boost": 0,
-                            "Nuclear Damage Taken": 0,
-                            "Phys Boost": 0,
-                            "Phys Damage Taken": 0,
-                            "Pierce Rate": 0,
-                            "Psychokinesis Boost": 0,
-                            "Psychokinesis Damage Taken": 0,
-                            "SP": 100,
-                            "SP Recovery": 0,
-                            "Shield Effect": 0,
-                            "Speed": 90,
-                            "Wind Boost": 0,
-                            "Wind Damage Taken": 0
-                        }
-                    },
-                    {
-                        "adapt": {
-                            "Absorb": [],
-                            "Nullify": [],
-                            "Reflect": [],
-                            "Resistant": [],
-                            "Weak": []
-                        },
-                        "level": "84",
-                        "name": "モロク",
-                        "skill": "103,503",
-                        "sn": "644232",
-                        "stat": {
-                            "Accuracy": 1,
-                            "Ailment Acc.": 0.42,
-                            "Ailment Resist.": 0.52,
-                            "Almighty Boost": 0,
-                            "Almighty Damage Taken": 0,
-                            "Attack": 4356.5997,
-                            "Bless Boost": 0,
-                            "Bless Damage Taken": 0,
-                            "Crit Mult.": 1.3,
-                            "Crit Rate": 0,
-                            "Curse Boost": 0,
-                            "Curse Damage Taken": 0,
-                            "Damage Down": 0,
-                            "Damage Mult.": 1.065,
-                            "Damage Taken": 0,
-                            "Defense": 833.212,
-                            "Down Points": 2,
-                            "Electric Boost": 0,
-                            "Electric Damage Taken": 0,
-                            "Final Damage Mult.": 0,
-                            "Fire Boost": 0,
-                            "Fire Damage Taken": 0,
-                            "Gun Boost": 0,
-                            "Gun Damage Taken": 0,
-                            "HP": 1239283.4112,
-                            "Ice Boost": 0,
-                            "Ice Damage Taken": 0,
-                            "Nuclear Boost": 0,
-                            "Nuclear Damage Taken": 0,
-                            "Phys Boost": 0,
-                            "Phys Damage Taken": 0,
-                            "Pierce Rate": 0,
-                            "Psychokinesis Boost": 0,
-                            "Psychokinesis Damage Taken": 0,
-                            "SP": 100,
-                            "SP Recovery": 0,
-                            "Shield Effect": 0,
-                            "Speed": 90,
-                            "Wind Boost": 0,
-                            "Wind Damage Taken": 0
-                        }
-                    }
-                ],
-                "id": 10,
-                "img": "tianerong-xingpan-point01.png",
-                "isActive": true,
-                "name": "観測点·宮主星",
-                "pos": [
-                    -304,
-                    288
-                ],
-                "unlockCond": null
-            },
-            "11": {
-                "affix": [
-                    {
-                        "desc": "主人公以外の味方が１ターンの間にダメージを与えなかった時、自身の最終ダメージが５０%上昇する。この効果は１ターン持続する。",
-                        "name": "特殊効果",
-                        "sn": 4572
-                    }
-                ],
-                "award": [
-                    {
-                        "count": 900,
-                        "img": "item-302001.png",
-                        "name": "星屑の欠片"
-                    },
-                    {
-                        "count": 36,
-                        "img": "item-302021.png",
-                        "name": "星屑のボトル"
-                    }
-                ],
-                "connected": [
-                    4
-                ],
-                "enemy": [
-                    {
-                        "adapt": {
-                            "Absorb": [],
-                            "Nullify": [],
-                            "Reflect": [],
-                            "Resistant": [],
-                            "Weak": []
-                        },
-                        "level": "72",
-                        "name": "スルト",
-                        "skill": "108,103,1008",
-                        "sn": "641031",
-                        "stat": {
-                            "Accuracy": 1,
-                            "Ailment Acc.": 0.36,
-                            "Ailment Resist.": 0.46,
-                            "Almighty Boost": 0,
-                            "Almighty Damage Taken": 0,
-                            "Attack": 3173.7729,
-                            "Bless Boost": 0,
-                            "Bless Damage Taken": 0,
-                            "Crit Mult.": 1.3,
-                            "Crit Rate": 0,
-                            "Curse Boost": 0,
-                            "Curse Damage Taken": 0,
-                            "Damage Down": 0,
-                            "Damage Mult.": 1.009,
-                            "Damage Taken": 0,
-                            "Defense": 1183.376,
-                            "Down Points": 3,
-                            "Electric Boost": 0,
-                            "Electric Damage Taken": 0,
-                            "Final Damage Mult.": 0,
-                            "Fire Boost": 0,
-                            "Fire Damage Taken": 0,
-                            "Gun Boost": 0,
-                            "Gun Damage Taken": 0,
-                            "HP": 464470.2,
-                            "Ice Boost": 0,
-                            "Ice Damage Taken": 0,
-                            "Nuclear Boost": 0,
-                            "Nuclear Damage Taken": 0,
-                            "Phys Boost": 0,
-                            "Phys Damage Taken": 0,
-                            "Pierce Rate": 0,
-                            "Psychokinesis Boost": 0,
-                            "Psychokinesis Damage Taken": 0,
-                            "SP": 100,
-                            "SP Recovery": 0,
-                            "Shield Effect": 0,
-                            "Speed": 92.467,
-                            "Wind Boost": 0,
-                            "Wind Damage Taken": 0
-                        }
-                    }
-                ],
-                "id": 11,
-                "img": "tianerong-xingpan-point03.png",
-                "isActive": true,
-                "name": "観測点·守護星",
-                "pos": [
-                    304,
-                    24
-                ],
-                "unlockCond": null
-            },
-            "12": {
-                "affix": [
-                    {
-                        "desc": "主人公の最終ダメージが１００%上昇する。",
-                        "name": "特殊効果",
-                        "sn": 4504
-                    }
-                ],
-                "award": [
-                    {
-                        "count": 1125,
-                        "img": "item-302001.png",
-                        "name": "星屑の欠片"
-                    },
-                    {
-                        "count": 45,
-                        "img": "item-302021.png",
-                        "name": "星屑のボトル"
-                    },
-                    {
-                        "count": 30,
-                        "img": "item-302011.png",
-                        "name": "星屑晶珠"
-                    }
-                ],
-                "connected": [
-                    11
-                ],
-                "enemy": [
-                    {
-                        "adapt": {
-                            "Absorb": [],
-                            "Nullify": [],
-                            "Reflect": [],
-                            "Resistant": [],
-                            "Weak": []
-                        },
-                        "level": "78",
-                        "name": "アスラおう",
-                        "skill": "607,1023,603,604",
-                        "sn": "641721",
-                        "stat": {
-                            "Accuracy": 1,
-                            "Ailment Acc.": 0.39,
-                            "Ailment Resist.": 0.49,
-                            "Almighty Boost": 0,
-                            "Almighty Damage Taken": 0,
-                            "Attack": 3941.171,
-                            "Bless Boost": 0,
-                            "Bless Damage Taken": 0,
-                            "Crit Mult.": 1.3,
-                            "Crit Rate": 0,
-                            "Curse Boost": 0,
-                            "Curse Damage Taken": 0,
-                            "Damage Down": 0,
-                            "Damage Mult.": 1.037,
-                            "Damage Taken": 0,
-                            "Defense": 799.227,
-                            "Down Points": 2,
-                            "Electric Boost": 0,
-                            "Electric Damage Taken": 0,
-                            "Final Damage Mult.": 0,
-                            "Fire Boost": 0,
-                            "Fire Damage Taken": 0,
-                            "Gun Boost": 0,
-                            "Gun Damage Taken": 0,
-                            "HP": 354825.198,
-                            "Ice Boost": 0,
-                            "Ice Damage Taken": 0,
-                            "Nuclear Boost": 0,
-                            "Nuclear Damage Taken": 0,
-                            "Phys Boost": 0,
-                            "Phys Damage Taken": 0,
-                            "Pierce Rate": 0,
-                            "Psychokinesis Boost": 0,
-                            "Psychokinesis Damage Taken": 0,
-                            "SP": 100,
-                            "SP Recovery": 0,
-                            "Shield Effect": 0,
-                            "Speed": 89.4,
-                            "Wind Boost": 0,
-                            "Wind Damage Taken": 0
-                        }
-                    },
-                    {
-                        "adapt": {
-                            "Absorb": [],
-                            "Nullify": [],
-                            "Reflect": [],
-                            "Resistant": [],
-                            "Weak": []
-                        },
-                        "level": "78",
-                        "name": "ラクシュミ",
-                        "skill": "203,1503,1507",
-                        "sn": "641722",
-                        "stat": {
-                            "Accuracy": 1,
-                            "Ailment Acc.": 0.39,
-                            "Ailment Resist.": 0.49,
-                            "Almighty Boost": 0,
-                            "Almighty Damage Taken": 0,
-                            "Attack": 3941.171,
-                            "Bless Boost": 0,
-                            "Bless Damage Taken": 0,
-                            "Crit Mult.": 1.3,
-                            "Crit Rate": 0,
-                            "Curse Boost": 0,
-                            "Curse Damage Taken": 0,
-                            "Damage Down": 0,
-                            "Damage Mult.": 1.037,
-                            "Damage Taken": 0,
-                            "Defense": 799.227,
-                            "Down Points": 2,
-                            "Electric Boost": 0,
-                            "Electric Damage Taken": 0,
-                            "Final Damage Mult.": 0,
-                            "Fire Boost": 0,
-                            "Fire Damage Taken": 0,
-                            "Gun Boost": 0,
-                            "Gun Damage Taken": 0,
-                            "HP": 354825.198,
-                            "Ice Boost": 0,
-                            "Ice Damage Taken": 0,
-                            "Nuclear Boost": 0,
-                            "Nuclear Damage Taken": 0,
-                            "Phys Boost": 0,
-                            "Phys Damage Taken": 0,
-                            "Pierce Rate": 0,
-                            "Psychokinesis Boost": 0,
-                            "Psychokinesis Damage Taken": 0,
-                            "SP": 100,
-                            "SP Recovery": 0,
-                            "Shield Effect": 0,
-                            "Speed": 89.4,
-                            "Wind Boost": 0,
-                            "Wind Damage Taken": 0
-                        }
-                    }
-                ],
-                "id": 12,
-                "img": "tianerong-xingpan-point03.png",
-                "isActive": true,
-                "name": "観測点·守護星",
-                "pos": [
-                    400,
-                    176
-                ],
-                "unlockCond": null
-            },
-            "13": {
-                "affix": [
-                    {
-                        "desc": "パーティに同じ属性の味方を２人／３人／４人編成する時、味方全体の最終ダメージが２０%／４０%／６０%上昇する。",
-                        "name": "特殊効果",
-                        "sn": 4514
-                    }
-                ],
-                "award": [
-                    {
-                        "count": 75,
-                        "img": "item-302021.png",
-                        "name": "星屑のボトル"
-                    },
-                    {
-                        "count": 50,
-                        "img": "item-302011.png",
-                        "name": "星屑晶珠"
-                    },
-                    {
-                        "count": 1,
-                        "img": "item-302012.png",
-                        "name": "明星晶珠"
-                    }
-                ],
-                "connected": [
-                    12
-                ],
-                "enemy": [
-                    {
-                        "adapt": {
-                            "Absorb": [],
-                            "Nullify": [],
-                            "Reflect": [],
-                            "Resistant": [],
-                            "Weak": []
-                        },
-                        "level": "84",
-                        "name": "アヌビス",
-                        "skill": "706,806",
-                        "sn": "644421",
-                        "stat": {
-                            "Accuracy": 1,
-                            "Ailment Acc.": 0.42,
-                            "Ailment Resist.": 0.312,
-                            "Almighty Boost": 0,
-                            "Almighty Damage Taken": 0,
-                            "Attack": 3582.0933,
-                            "Bless Boost": 0,
-                            "Bless Damage Taken": 0,
-                            "Crit Mult.": 1.3,
-                            "Crit Rate": 0,
-                            "Curse Boost": 0,
-                            "Curse Damage Taken": 0,
-                            "Damage Down": 0,
-                            "Damage Mult.": 1.065,
-                            "Damage Taken": 0,
-                            "Defense": 552.504,
-                            "Down Points": 2,
-                            "Electric Boost": 0,
-                            "Electric Damage Taken": 0,
-                            "Final Damage Mult.": 0,
-                            "Fire Boost": 0,
-                            "Fire Damage Taken": 0,
-                            "Gun Boost": 0,
-                            "Gun Damage Taken": 0,
-                            "HP": 1143997.0848,
-                            "Ice Boost": 0,
-                            "Ice Damage Taken": 0,
-                            "Nuclear Boost": 0,
-                            "Nuclear Damage Taken": 0,
-                            "Phys Boost": 0,
-                            "Phys Damage Taken": 0,
-                            "Pierce Rate": 0,
-                            "Psychokinesis Boost": 0,
-                            "Psychokinesis Damage Taken": 0,
-                            "SP": 100,
-                            "SP Recovery": 0,
-                            "Shield Effect": 0,
-                            "Speed": 85,
-                            "Wind Boost": 0,
-                            "Wind Damage Taken": 0
-                        }
-                    },
-                    {
-                        "adapt": {
-                            "Absorb": [],
-                            "Nullify": [],
-                            "Reflect": [],
-                            "Resistant": [],
-                            "Weak": []
-                        },
-                        "level": "84",
-                        "name": "セト",
-                        "skill": "103,1102",
-                        "sn": "644422",
-                        "stat": {
-                            "Accuracy": 1,
-                            "Ailment Acc.": 0.42,
-                            "Ailment Resist.": 0.312,
-                            "Almighty Boost": 0,
-                            "Almighty Damage Taken": 0,
-                            "Attack": 3582.0933,
-                            "Bless Boost": 0,
-                            "Bless Damage Taken": 0,
-                            "Crit Mult.": 1.3,
-                            "Crit Rate": 0,
-                            "Curse Boost": 0,
-                            "Curse Damage Taken": 0,
-                            "Damage Down": 0,
-                            "Damage Mult.": 1.065,
-                            "Damage Taken": 0,
-                            "Defense": 552.504,
-                            "Down Points": 2,
-                            "Electric Boost": 0,
-                            "Electric Damage Taken": 0,
-                            "Final Damage Mult.": 0,
-                            "Fire Boost": 0,
-                            "Fire Damage Taken": 0,
-                            "Gun Boost": 0,
-                            "Gun Damage Taken": 0,
-                            "HP": 1143997.0848,
-                            "Ice Boost": 0,
-                            "Ice Damage Taken": 0,
-                            "Nuclear Boost": 0,
-                            "Nuclear Damage Taken": 0,
-                            "Phys Boost": 0,
-                            "Phys Damage Taken": 0,
-                            "Pierce Rate": 0,
-                            "Psychokinesis Boost": 0,
-                            "Psychokinesis Damage Taken": 0,
-                            "SP": 100,
-                            "SP Recovery": 0,
-                            "Shield Effect": 0,
-                            "Speed": 85,
-                            "Wind Boost": 0,
-                            "Wind Damage Taken": 0
-                        }
-                    },
-                    {
-                        "adapt": {
-                            "Absorb": [],
-                            "Nullify": [],
-                            "Reflect": [],
-                            "Resistant": [],
-                            "Weak": []
-                        },
-                        "level": "84",
-                        "name": "トート",
-                        "skill": "901,602",
-                        "sn": "644423",
-                        "stat": {
-                            "Accuracy": 1,
-                            "Ailment Acc.": 0.42,
-                            "Ailment Resist.": 0.208,
-                            "Almighty Boost": 0,
-                            "Almighty Damage Taken": 0,
-                            "Attack": 2160.1476,
-                            "Bless Boost": 0,
-                            "Bless Damage Taken": 0,
-                            "Crit Mult.": 1.3,
-                            "Crit Rate": 0,
-                            "Curse Boost": 0,
-                            "Curse Damage Taken": 0,
-                            "Damage Down": 0,
-                            "Damage Mult.": 1.065,
-                            "Damage Taken": 0,
-                            "Defense": 367.594,
-                            "Down Points": 1,
-                            "Electric Boost": 0,
-                            "Electric Damage Taken": 0,
-                            "Final Damage Mult.": 0,
-                            "Fire Boost": 0,
-                            "Fire Damage Taken": 0,
-                            "Gun Boost": 0,
-                            "Gun Damage Taken": 0,
-                            "HP": 1101946.896,
-                            "Ice Boost": 0,
-                            "Ice Damage Taken": 0,
-                            "Nuclear Boost": 0,
-                            "Nuclear Damage Taken": 0,
-                            "Phys Boost": 0,
-                            "Phys Damage Taken": 0,
-                            "Pierce Rate": 0,
-                            "Psychokinesis Boost": 0,
-                            "Psychokinesis Damage Taken": 0,
-                            "SP": 100,
-                            "SP Recovery": 0,
-                            "Shield Effect": 0,
-                            "Speed": 80,
-                            "Wind Boost": 0,
-                            "Wind Damage Taken": 0
-                        }
-                    },
-                    {
-                        "adapt": {
-                            "Absorb": [],
-                            "Nullify": [],
-                            "Reflect": [],
-                            "Resistant": [],
-                            "Weak": []
-                        },
-                        "level": "84",
-                        "name": "ホルス",
-                        "skill": "905,1082",
-                        "sn": "644424",
-                        "stat": {
-                            "Accuracy": 1,
-                            "Ailment Acc.": 0.42,
-                            "Ailment Resist.": 0.208,
-                            "Almighty Boost": 0,
-                            "Almighty Damage Taken": 0,
-                            "Attack": 2880.1968,
-                            "Bless Boost": 0,
-                            "Bless Damage Taken": 0,
-                            "Crit Mult.": 1.3,
-                            "Crit Rate": 0,
-                            "Curse Boost": 0,
-                            "Curse Damage Taken": 0,
-                            "Damage Down": 0,
-                            "Damage Mult.": 1.065,
-                            "Damage Taken": 0,
-                            "Defense": 367.594,
-                            "Down Points": 1,
-                            "Electric Boost": 0,
-                            "Electric Damage Taken": 0,
-                            "Final Damage Mult.": 0,
-                            "Fire Boost": 0,
-                            "Fire Damage Taken": 0,
-                            "Gun Boost": 0,
-                            "Gun Damage Taken": 0,
-                            "HP": 1101946.896,
-                            "Ice Boost": 0,
-                            "Ice Damage Taken": 0,
-                            "Nuclear Boost": 0,
-                            "Nuclear Damage Taken": 0,
-                            "Phys Boost": 0,
-                            "Phys Damage Taken": 0,
-                            "Pierce Rate": 0,
-                            "Psychokinesis Boost": 0,
-                            "Psychokinesis Damage Taken": 0,
-                            "SP": 100,
-                            "SP Recovery": 0,
-                            "Shield Effect": 0,
-                            "Speed": 80,
-                            "Wind Boost": 0,
-                            "Wind Damage Taken": 0
-                        }
-                    }
-                ],
-                "id": 13,
-                "img": "tianerong-xingpan-point01.png",
-                "isActive": true,
-                "name": "観測点·宮主星",
-                "pos": [
-                    224,
-                    248
-                ],
-                "unlockCond": null
+            "level": "54",
+            "name": "タケミナカタ",
+            "skill": "1005,1025,306,302,1001",
+            "sn": "640021",
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.27,
+              "Ailment Resist.": 0.37,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 1844.4706,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 0.715,
+              "Damage Taken": 0,
+              "Defense": 1148.554,
+              "Down Points": 3.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 277770.0802,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 86.767,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
             }
-        },
-        "startTime": "2026-01-08 11:30:00"
+          }
+        ],
+        "id": 1,
+        "img": "tianerong-xingpan-point03.png",
+        "isActive": true,
+        "name": "観測点·守護星",
+        "pos": [
+          0.0,
+          -400.0
+        ],
+        "unlockCond": null
+      },
+      "10": {
+        "affix": [
+          {
+            "desc": "主人公以外の味方がスキルと１ＭＯＲＥによる万能属性ダメージを与える時、２ターンの間、味方全体の最終ダメージが６０%上昇する。",
+            "name": "特殊効果",
+            "sn": 4515
+          }
+        ],
+        "award": [
+          {
+            "count": 75,
+            "img": "item-302021.png",
+            "name": "星屑のボトル"
+          },
+          {
+            "count": 50,
+            "img": "item-302011.png",
+            "name": "星屑晶珠"
+          },
+          {
+            "count": 1,
+            "img": "item-302012.png",
+            "name": "明星晶珠"
+          }
+        ],
+        "connected": [
+          9
+        ],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "level": "84",
+            "name": "マダ",
+            "skill": "108,104",
+            "sn": "644231",
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.42,
+              "Ailment Resist.": 0.52,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 4356.5997,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 1.065,
+              "Damage Taken": 0,
+              "Defense": 833.212,
+              "Down Points": 2.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 1239283.4112,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 90.0,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "level": "84",
+            "name": "モロク",
+            "skill": "103,503",
+            "sn": "644232",
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.42,
+              "Ailment Resist.": 0.52,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 4356.5997,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 1.065,
+              "Damage Taken": 0,
+              "Defense": 833.212,
+              "Down Points": 2.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 1239283.4112,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 90.0,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          }
+        ],
+        "id": 10,
+        "img": "tianerong-xingpan-point01.png",
+        "isActive": true,
+        "name": "観測点·宮主星",
+        "pos": [
+          -304.0,
+          288.0
+        ],
+        "unlockCond": null
+      },
+      "11": {
+        "affix": [
+          {
+            "desc": "主人公以外の味方が１ターンの間にダメージを与えなかった時、自身の最終ダメージが５０%上昇する。この効果は１ターン持続する。",
+            "name": "特殊効果",
+            "sn": 4572
+          }
+        ],
+        "award": [
+          {
+            "count": 900,
+            "img": "item-302001.png",
+            "name": "星屑の欠片"
+          },
+          {
+            "count": 36,
+            "img": "item-302021.png",
+            "name": "星屑のボトル"
+          }
+        ],
+        "connected": [
+          4
+        ],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "level": "72",
+            "name": "スルト",
+            "skill": "108,103,1008",
+            "sn": "641031",
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.36,
+              "Ailment Resist.": 0.46,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 3173.7729,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 1.009,
+              "Damage Taken": 0,
+              "Defense": 1183.376,
+              "Down Points": 3.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 464470.2,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 92.467,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          }
+        ],
+        "id": 11,
+        "img": "tianerong-xingpan-point03.png",
+        "isActive": true,
+        "name": "観測点·守護星",
+        "pos": [
+          304.0,
+          24.0
+        ],
+        "unlockCond": null
+      },
+      "12": {
+        "affix": [
+          {
+            "desc": "主人公の最終ダメージが１００%上昇する。",
+            "name": "特殊効果",
+            "sn": 4504
+          }
+        ],
+        "award": [
+          {
+            "count": 1125,
+            "img": "item-302001.png",
+            "name": "星屑の欠片"
+          },
+          {
+            "count": 45,
+            "img": "item-302021.png",
+            "name": "星屑のボトル"
+          },
+          {
+            "count": 30,
+            "img": "item-302011.png",
+            "name": "星屑晶珠"
+          }
+        ],
+        "connected": [
+          11
+        ],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "level": "78",
+            "name": "アスラおう",
+            "skill": "607,1023,603,604",
+            "sn": "641721",
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.39,
+              "Ailment Resist.": 0.49,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 3941.171,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 1.037,
+              "Damage Taken": 0,
+              "Defense": 799.227,
+              "Down Points": 2.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 354825.198,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 89.4,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "level": "78",
+            "name": "ラクシュミ",
+            "skill": "203,1503,1507",
+            "sn": "641722",
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.39,
+              "Ailment Resist.": 0.49,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 3941.171,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 1.037,
+              "Damage Taken": 0,
+              "Defense": 799.227,
+              "Down Points": 2.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 354825.198,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 89.4,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          }
+        ],
+        "id": 12,
+        "img": "tianerong-xingpan-point03.png",
+        "isActive": true,
+        "name": "観測点·守護星",
+        "pos": [
+          400.0,
+          176.0
+        ],
+        "unlockCond": null
+      },
+      "13": {
+        "affix": [
+          {
+            "desc": "パーティに同じ属性の味方を２人／３人／４人編成する時、味方全体の最終ダメージが２０%／４０%／６０%上昇する。",
+            "name": "特殊効果",
+            "sn": 4514
+          }
+        ],
+        "award": [
+          {
+            "count": 75,
+            "img": "item-302021.png",
+            "name": "星屑のボトル"
+          },
+          {
+            "count": 50,
+            "img": "item-302011.png",
+            "name": "星屑晶珠"
+          },
+          {
+            "count": 1,
+            "img": "item-302012.png",
+            "name": "明星晶珠"
+          }
+        ],
+        "connected": [
+          12
+        ],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "level": "84",
+            "name": "アヌビス",
+            "skill": "706,806",
+            "sn": "644421",
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.42,
+              "Ailment Resist.": 0.312,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 3582.0933,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 1.065,
+              "Damage Taken": 0,
+              "Defense": 552.504,
+              "Down Points": 2.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 1143997.0848,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 85.0,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "level": "84",
+            "name": "セト",
+            "skill": "103,1102",
+            "sn": "644422",
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.42,
+              "Ailment Resist.": 0.312,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 3582.0933,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 1.065,
+              "Damage Taken": 0,
+              "Defense": 552.504,
+              "Down Points": 2.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 1143997.0848,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 85.0,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "level": "84",
+            "name": "トート",
+            "skill": "901,602",
+            "sn": "644423",
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.42,
+              "Ailment Resist.": 0.208,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 2160.1476,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 1.065,
+              "Damage Taken": 0,
+              "Defense": 367.594,
+              "Down Points": 1.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 1101946.896,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 80.0,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "level": "84",
+            "name": "ホルス",
+            "skill": "905,1082",
+            "sn": "644424",
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.42,
+              "Ailment Resist.": 0.208,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 2880.1968,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 1.065,
+              "Damage Taken": 0,
+              "Defense": 367.594,
+              "Down Points": 1.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 1101946.896,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 80.0,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          }
+        ],
+        "id": 13,
+        "img": "tianerong-xingpan-point01.png",
+        "isActive": true,
+        "name": "観測点·宮主星",
+        "pos": [
+          224.00000000000003,
+          248.0
+        ],
+        "unlockCond": null
+      },
+      "2": {
+        "affix": [
+          {
+            "desc": "『支配』ロールの味方の最終ダメージが６０%上昇する。",
+            "name": "特殊効果",
+            "sn": 4502
+          }
+        ],
+        "award": [
+          {
+            "count": 600,
+            "img": "item-302001.png",
+            "name": "星屑の欠片"
+          },
+          {
+            "count": 24,
+            "img": "item-302021.png",
+            "name": "星屑のボトル"
+          }
+        ],
+        "connected": [
+          1
+        ],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "level": "60",
+            "name": "ナーガラジャ",
+            "skill": "303,307,1317",
+            "sn": "640511",
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.3,
+              "Ailment Resist.": 0.24,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 1470.9027,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 0.799,
+              "Damage Taken": 0,
+              "Defense": 526.334,
+              "Down Points": 2.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 205163.4015,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 79.333,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "level": "60",
+            "name": "ケツアルカトル",
+            "skill": "406,403,1084",
+            "sn": "640512",
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.3,
+              "Ailment Resist.": 0.24,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 1961.2037,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 0.799,
+              "Damage Taken": 0,
+              "Defense": 526.334,
+              "Down Points": 2.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 205163.4015,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 79.333,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "level": "60",
+            "name": "ユルング",
+            "skill": "306,902,1317",
+            "sn": "640513",
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.3,
+              "Ailment Resist.": 0.16,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 1576.9128,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 0.799,
+              "Damage Taken": 0,
+              "Defense": 355.275,
+              "Down Points": 1.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 192581.2732,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 74.667,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "level": "60",
+            "name": "ユルング",
+            "skill": "306,902,1317",
+            "sn": "640514",
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.3,
+              "Ailment Resist.": 0.16,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 1576.9128,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 0.799,
+              "Damage Taken": 0,
+              "Defense": 355.275,
+              "Down Points": 1.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 192581.2732,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 74.667,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          }
+        ],
+        "id": 2,
+        "img": "tianerong-xingpan-point03.png",
+        "isActive": true,
+        "name": "観測点·守護星",
+        "pos": [
+          104.0,
+          -256.0
+        ],
+        "unlockCond": null
+      },
+      "3": {
+        "affix": [
+          {
+            "desc": "『心の怪盗団』の味方の最終ダメージが６０%上昇する。",
+            "name": "特殊効果",
+            "sn": 4591
+          }
+        ],
+        "award": [
+          {
+            "count": 750,
+            "img": "item-302001.png",
+            "name": "星屑の欠片"
+          },
+          {
+            "count": 30,
+            "img": "item-302021.png",
+            "name": "星屑のボトル"
+          },
+          {
+            "count": 20,
+            "img": "item-302011.png",
+            "name": "星屑晶珠"
+          }
+        ],
+        "connected": [
+          2
+        ],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "level": "66",
+            "name": "ジャターユ",
+            "skill": "403,407",
+            "sn": "640721",
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.33,
+              "Ailment Resist.": 0.43,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 2986.9962,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 0.92,
+              "Damage Taken": 0,
+              "Defense": 756.205,
+              "Down Points": 2.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 279750.555,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 85.8,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "level": "66",
+            "name": "ガルーダ",
+            "skill": "403,406,1085",
+            "sn": "640722",
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.33,
+              "Ailment Resist.": 0.43,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 2986.9962,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 0.92,
+              "Damage Taken": 0,
+              "Defense": 756.205,
+              "Down Points": 2.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 279750.555,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 85.8,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          }
+        ],
+        "id": 3,
+        "img": "tianerong-xingpan-point03.png",
+        "isActive": true,
+        "name": "観測点·守護星",
+        "pos": [
+          -120.0,
+          -168.00000000000003
+        ],
+        "unlockCond": null
+      },
+      "4": {
+        "affix": [
+          {
+            "desc": "味方全体は追加行動の時、最終ダメージが１２０%上昇する。",
+            "name": "特殊効果",
+            "sn": 4551
+          }
+        ],
+        "award": [
+          {
+            "count": 60,
+            "img": "item-302021.png",
+            "name": "星屑のボトル"
+          },
+          {
+            "count": 40,
+            "img": "item-302011.png",
+            "name": "星屑晶珠"
+          },
+          {
+            "count": 1,
+            "img": "item-302012.png",
+            "name": "明星晶珠"
+          }
+        ],
+        "connected": [
+          3
+        ],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "level": "78",
+            "name": "ドミニオン",
+            "skill": "905,902",
+            "sn": "643011",
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.39,
+              "Ailment Resist.": 0.196,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 2299.0167,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 1.037,
+              "Damage Taken": 0,
+              "Defense": 356.596,
+              "Down Points": 1.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 663794.2224,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 79.467,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "level": "78",
+            "name": "パワー",
+            "skill": "707,1008,1406",
+            "sn": "643012",
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.39,
+              "Ailment Resist.": 0.196,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 3065.3556,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 1.037,
+              "Damage Taken": 0,
+              "Defense": 356.596,
+              "Down Points": 1.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 663794.2224,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 79.467,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "level": "78",
+            "name": "プリンシパリティ",
+            "skill": "1025,456,452",
+            "sn": "643013",
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.39,
+              "Ailment Resist.": 0.196,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 3065.3556,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 1.037,
+              "Damage Taken": 0,
+              "Defense": 356.596,
+              "Down Points": 1.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 663794.2224,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 79.467,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "level": "78",
+            "name": "アークエンジェル",
+            "skill": "1003,1019,1010",
+            "sn": "643014",
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.39,
+              "Ailment Resist.": 0.196,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 3065.3556,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 1.037,
+              "Damage Taken": 0,
+              "Defense": 356.596,
+              "Down Points": 1.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 663794.2224,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 79.467,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          }
+        ],
+        "id": 4,
+        "img": "tianerong-xingpan-point01.png",
+        "isActive": true,
+        "name": "観測点·宮主星",
+        "pos": [
+          0.0,
+          -48.0
+        ],
+        "unlockCond": null
+      },
+      "5": {
+        "affix": [
+          {
+            "desc": "主人公以外の火炎／氷結／感電／疾風属性の味方の最終ダメージが６０%上昇する。",
+            "name": "特殊効果",
+            "sn": 4511
+          }
+        ],
+        "award": [
+          {
+            "count": 900,
+            "img": "item-302001.png",
+            "name": "星屑の欠片"
+          },
+          {
+            "count": 36,
+            "img": "item-302021.png",
+            "name": "星屑のボトル"
+          }
+        ],
+        "connected": [
+          4
+        ],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "level": "72",
+            "name": "ビャッコ",
+            "skill": "1025,206,203,1316",
+            "sn": "641411",
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.36,
+              "Ailment Resist.": 0.46,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 2571.3432,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 1.009,
+              "Damage Taken": 0,
+              "Defense": 769.194,
+              "Down Points": 2.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 303110.9437,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 87.6,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "level": "72",
+            "name": "ケルベロス",
+            "skill": "103,1006,1411",
+            "sn": "641412",
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.36,
+              "Ailment Resist.": 0.184,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 2233.3954,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 1.009,
+              "Damage Taken": 0,
+              "Defense": 345.151,
+              "Down Points": 2.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 297718.155,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 82.733,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "level": "72",
+            "name": "オルトロス",
+            "skill": "102,1014,1404",
+            "sn": "641413",
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.36,
+              "Ailment Resist.": 0.184,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 2233.3954,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 1.009,
+              "Damage Taken": 0,
+              "Defense": 345.151,
+              "Down Points": 2.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 297718.155,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 82.733,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          }
+        ],
+        "id": 5,
+        "img": "tianerong-xingpan-point03.png",
+        "isActive": true,
+        "name": "観測点·守護星",
+        "pos": [
+          -152.0,
+          72.0
+        ],
+        "unlockCond": null
+      },
+      "6": {
+        "affix": [
+          {
+            "desc": "主人公以外の念動／核熱／祝福／呪怨属性の味方の最終ダメージが６０%上昇する。",
+            "name": "特殊効果",
+            "sn": 4512
+          }
+        ],
+        "award": [
+          {
+            "count": 1125,
+            "img": "item-302001.png",
+            "name": "星屑の欠片"
+          },
+          {
+            "count": 45,
+            "img": "item-302021.png",
+            "name": "星屑のボトル"
+          },
+          {
+            "count": 30,
+            "img": "item-302011.png",
+            "name": "星屑晶珠"
+          }
+        ],
+        "connected": [
+          5
+        ],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "level": "78",
+            "name": "ラファエル",
+            "skill": "1007,1409",
+            "sn": "641731",
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.39,
+              "Ailment Resist.": 0.49,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 3941.171,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 1.037,
+              "Damage Taken": 0,
+              "Defense": 799.227,
+              "Down Points": 2.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 354825.198,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 89.4,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "level": "78",
+            "name": "ウリエル",
+            "skill": "1026,1016,1090,905",
+            "sn": "641732",
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.39,
+              "Ailment Resist.": 0.49,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 3941.171,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 1.037,
+              "Damage Taken": 0,
+              "Defense": 799.227,
+              "Down Points": 2.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 354825.198,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 89.4,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          }
+        ],
+        "id": 6,
+        "img": "tianerong-xingpan-point03.png",
+        "isActive": true,
+        "name": "観測点·守護星",
+        "pos": [
+          40.0,
+          160.0
+        ],
+        "unlockCond": null
+      },
+      "7": {
+        "affix": [
+          {
+            "desc": "味方が敵にダメージを与えるたびに、その味方の最終ダメージが４%上昇する。最大で１５個まで累積し、３ターン持続する。",
+            "name": "特殊効果",
+            "sn": 4571
+          }
+        ],
+        "award": [
+          {
+            "count": 165,
+            "img": "item-302021.png",
+            "name": "星屑のボトル"
+          },
+          {
+            "count": 110,
+            "img": "item-302011.png",
+            "name": "星屑晶珠"
+          },
+          {
+            "count": 2,
+            "img": "item-302012.png",
+            "name": "明星晶珠"
+          }
+        ],
+        "connected": [
+          6
+        ],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "level": "84",
+            "name": "アタバク",
+            "skill": "2444,107,1008",
+            "sn": "645011",
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.42,
+              "Ailment Resist.": 0.5,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 5227.9197,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 1.065,
+              "Damage Taken": 0,
+              "Defense": 1298.512,
+              "Down Points": 3.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 1648097.8065,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 95.0,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          }
+        ],
+        "id": 7,
+        "img": "tianerong-xingpan-point02.png",
+        "isActive": true,
+        "name": "観測点·命主星",
+        "pos": [
+          0.0,
+          312.0
+        ],
+        "unlockCond": null
+      },
+      "8": {
+        "affix": [
+          {
+            "desc": "ハイライトゲージの上昇量が２０%低下するが、味方のハイライトの最終ダメージが１００%上昇する。",
+            "name": "特殊効果",
+            "sn": 4533
+          }
+        ],
+        "award": [
+          {
+            "count": 900,
+            "img": "item-302001.png",
+            "name": "星屑の欠片"
+          },
+          {
+            "count": 36,
+            "img": "item-302021.png",
+            "name": "星屑のボトル"
+          }
+        ],
+        "connected": [
+          4
+        ],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "level": "72",
+            "name": "ヘカトンケイル",
+            "skill": "1025,1403,1023",
+            "sn": "641041",
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.36,
+              "Ailment Resist.": 0.46,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 3173.7729,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 1.009,
+              "Damage Taken": 0,
+              "Defense": 1183.376,
+              "Down Points": 3.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 464470.2,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 92.467,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          }
+        ],
+        "id": 8,
+        "img": "tianerong-xingpan-point03.png",
+        "isActive": true,
+        "name": "観測点·守護星",
+        "pos": [
+          -336.0,
+          -24.0
+        ],
+        "unlockCond": null
+      },
+      "9": {
+        "affix": [
+          {
+            "desc": "全ての敵は、属性異常１つごとに、最終被ダメージが５%上昇する。同時に４種類の属性異常を持つと、さらに最終被ダメージが４０%上昇する。",
+            "name": "特殊効果",
+            "sn": 4521
+          }
+        ],
+        "award": [
+          {
+            "count": 1125,
+            "img": "item-302001.png",
+            "name": "星屑の欠片"
+          },
+          {
+            "count": 45,
+            "img": "item-302021.png",
+            "name": "星屑のボトル"
+          },
+          {
+            "count": 30,
+            "img": "item-302011.png",
+            "name": "星屑晶珠"
+          }
+        ],
+        "connected": [
+          8
+        ],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "level": "78",
+            "name": "クー・フーリン",
+            "skill": "1008,1102",
+            "sn": "641711",
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.39,
+              "Ailment Resist.": 0.49,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 3941.171,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 1.037,
+              "Damage Taken": 0,
+              "Defense": 799.227,
+              "Down Points": 2.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 354825.198,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 89.4,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "level": "78",
+            "name": "スカアハ",
+            "skill": "1016,1404,207",
+            "sn": "641712",
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.39,
+              "Ailment Resist.": 0.49,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 2955.8783,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 1.037,
+              "Damage Taken": 0,
+              "Defense": 799.227,
+              "Down Points": 2.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 354825.198,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 89.4,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          }
+        ],
+        "id": 9,
+        "img": "tianerong-xingpan-point03.png",
+        "isActive": true,
+        "name": "観測点·守護星",
+        "pos": [
+          -384.0,
+          136.0
+        ],
+        "unlockCond": null
+      }
     },
-    "msg": "OK",
-    "status": 0
+    "startTime": "2026-01-08 11:30:00"
+  },
+  "msg": "OK",
+  "status": 0
 }

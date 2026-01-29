@@ -1,1325 +1,1325 @@
 {
-    "data": {
-        "endTime": "2026-02-19 05:00:00",
-        "nodes": {
-            "1501": {
-                "affix": [
-                    {
-                        "desc": "反抗怪盜最終傷害提高60%",
-                        "name": "反抗磁場",
-                        "sn": 4501
-                    }
-                ],
-                "award": [
-                    {
-                        "count": 1500,
-                        "img": "item-302001.png",
-                        "name": "玲瓏辰星"
-                    },
-                    {
-                        "count": 45,
-                        "img": "item-302021.png",
-                        "name": "星屑之瓶·低階"
-                    },
-                    {
-                        "count": 8,
-                        "img": "item-20003.png",
-                        "name": "速通券·日常"
-                    }
-                ],
-                "connected": [],
-                "enemy": [
-                    {
-                        "adapt": {
-                            "Absorb": [],
-                            "Nullify": [],
-                            "Reflect": [],
-                            "Resistant": [],
-                            "Weak": []
-                        },
-                        "level": "66",
-                        "name": "躁動的荒霸吐",
-                        "skill": "806,1019",
-                        "sn": 640311,
-                        "stat": {
-                            "Accuracy": 1,
-                            "Ailment Acc.": 0.33,
-                            "Ailment Resist.": 0.43,
-                            "Almighty Boost": 0,
-                            "Almighty Damage Taken": 0,
-                            "Attack": 3476.8624,
-                            "Bless Boost": 0,
-                            "Bless Damage Taken": 0,
-                            "Crit Mult.": 1.3,
-                            "Crit Rate": 0,
-                            "Curse Boost": 0,
-                            "Curse Damage Taken": 0,
-                            "Damage Down": 0,
-                            "Damage Mult.": 0.92,
-                            "Damage Taken": 0,
-                            "Defense": 1167.134,
-                            "Down Points": 3,
-                            "Electric Boost": 0,
-                            "Electric Damage Taken": 0,
-                            "Final Damage Mult.": 0,
-                            "Fire Boost": 0,
-                            "Fire Damage Taken": 0,
-                            "Gun Boost": 0,
-                            "Gun Damage Taken": 0,
-                            "HP": 406444.5,
-                            "Ice Boost": 0,
-                            "Ice Damage Taken": 0,
-                            "Nuclear Boost": 0,
-                            "Nuclear Damage Taken": 0,
-                            "Phys Boost": 0,
-                            "Phys Damage Taken": 0,
-                            "Pierce Rate": 0,
-                            "Psychokinesis Boost": 0,
-                            "Psychokinesis Damage Taken": 0,
-                            "SP": 100,
-                            "SP Recovery": 0,
-                            "Shield Effect": 0,
-                            "Speed": 90.567,
-                            "Wind Boost": 0,
-                            "Wind Damage Taken": 0
-                        }
-                    }
-                ],
-                "id": 1501,
-                "img": "tianerong-xingpan-point03.png",
-                "isActive": true,
-                "name": "監測點·τ",
-                "pos": [
-                    160,
-                    -400
-                ],
-                "unlockCond": null
+  "data": {
+    "endTime": "2026-02-19 05:00:00",
+    "nodes": {
+      "1501": {
+        "affix": [
+          {
+            "desc": "反抗怪盜最終傷害提高60%",
+            "name": "反抗磁場",
+            "sn": 4501
+          }
+        ],
+        "award": [
+          {
+            "count": 1500,
+            "img": "item-302001.png",
+            "name": "玲瓏辰星"
+          },
+          {
+            "count": 45,
+            "img": "item-302021.png",
+            "name": "星屑之瓶·低階"
+          },
+          {
+            "count": 8,
+            "img": "item-20003.png",
+            "name": "速通券·日常"
+          }
+        ],
+        "connected": [],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
             },
-            "1502": {
-                "affix": [
-                    {
-                        "desc": "支配怪盜最終傷害提高60%",
-                        "name": "支配磁場",
-                        "sn": 4502
-                    }
-                ],
-                "award": [
-                    {
-                        "count": 1875,
-                        "img": "item-302001.png",
-                        "name": "玲瓏辰星"
-                    },
-                    {
-                        "count": 55,
-                        "img": "item-302021.png",
-                        "name": "星屑之瓶·低階"
-                    },
-                    {
-                        "count": 35,
-                        "img": "item-302011.png",
-                        "name": "明星水晶球·低階"
-                    },
-                    {
-                        "count": 10,
-                        "img": "item-20003.png",
-                        "name": "速通券·日常"
-                    }
-                ],
-                "connected": [
-                    1501
-                ],
-                "enemy": [
-                    {
-                        "adapt": {
-                            "Absorb": [],
-                            "Nullify": [],
-                            "Reflect": [],
-                            "Resistant": [],
-                            "Weak": []
-                        },
-                        "level": "72",
-                        "name": "躁動的可羅索",
-                        "skill": "1404,406",
-                        "sn": 640811,
-                        "stat": {
-                            "Accuracy": 1,
-                            "Ailment Acc.": 0.36,
-                            "Ailment Resist.": 0.276,
-                            "Almighty Boost": 0,
-                            "Almighty Damage Taken": 0,
-                            "Attack": 2314.2094,
-                            "Bless Boost": 0,
-                            "Bless Damage Taken": 0,
-                            "Crit Mult.": 1.3,
-                            "Crit Rate": 0,
-                            "Curse Boost": 0,
-                            "Curse Damage Taken": 0,
-                            "Damage Down": 0,
-                            "Damage Mult.": 1.009,
-                            "Damage Taken": 0,
-                            "Defense": 510.824,
-                            "Down Points": 1,
-                            "Electric Boost": 0,
-                            "Electric Damage Taken": 0,
-                            "Final Damage Mult.": 0,
-                            "Fire Boost": 0,
-                            "Fire Damage Taken": 0,
-                            "Gun Boost": 0,
-                            "Gun Damage Taken": 0,
-                            "HP": 334958.3887,
-                            "Ice Boost": 0,
-                            "Ice Damage Taken": 0,
-                            "Nuclear Boost": 0,
-                            "Nuclear Damage Taken": 0,
-                            "Phys Boost": 0,
-                            "Phys Damage Taken": 0,
-                            "Pierce Rate": 0,
-                            "Psychokinesis Boost": 0,
-                            "Psychokinesis Damage Taken": 0,
-                            "SP": 100,
-                            "SP Recovery": 0,
-                            "Shield Effect": 0,
-                            "Speed": 82.733,
-                            "Wind Boost": 0,
-                            "Wind Damage Taken": 0
-                        }
-                    },
-                    {
-                        "adapt": {
-                            "Absorb": [],
-                            "Nullify": [],
-                            "Reflect": [],
-                            "Resistant": [],
-                            "Weak": []
-                        },
-                        "level": "72",
-                        "name": "躁動的拉克西斯",
-                        "skill": "1408,206,202",
-                        "sn": 640812,
-                        "stat": {
-                            "Accuracy": 1,
-                            "Ailment Acc.": 0.36,
-                            "Ailment Resist.": 0.276,
-                            "Almighty Boost": 0,
-                            "Almighty Damage Taken": 0,
-                            "Attack": 3085.6125,
-                            "Bless Boost": 0,
-                            "Bless Damage Taken": 0,
-                            "Crit Mult.": 1.3,
-                            "Crit Rate": 0,
-                            "Curse Boost": 0,
-                            "Curse Damage Taken": 0,
-                            "Damage Down": 0,
-                            "Damage Mult.": 1.009,
-                            "Damage Taken": 0,
-                            "Defense": 510.824,
-                            "Down Points": 1,
-                            "Electric Boost": 0,
-                            "Electric Damage Taken": 0,
-                            "Final Damage Mult.": 0,
-                            "Fire Boost": 0,
-                            "Fire Damage Taken": 0,
-                            "Gun Boost": 0,
-                            "Gun Damage Taken": 0,
-                            "HP": 334958.3887,
-                            "Ice Boost": 0,
-                            "Ice Damage Taken": 0,
-                            "Nuclear Boost": 0,
-                            "Nuclear Damage Taken": 0,
-                            "Phys Boost": 0,
-                            "Phys Damage Taken": 0,
-                            "Pierce Rate": 0,
-                            "Psychokinesis Boost": 0,
-                            "Psychokinesis Damage Taken": 0,
-                            "SP": 100,
-                            "SP Recovery": 0,
-                            "Shield Effect": 0,
-                            "Speed": 82.733,
-                            "Wind Boost": 0,
-                            "Wind Damage Taken": 0
-                        }
-                    },
-                    {
-                        "adapt": {
-                            "Absorb": [],
-                            "Nullify": [],
-                            "Reflect": [],
-                            "Resistant": [],
-                            "Weak": []
-                        },
-                        "level": "72",
-                        "name": "躁動的阿特羅波斯",
-                        "skill": "303,306,1506",
-                        "sn": 640813,
-                        "stat": {
-                            "Accuracy": 1,
-                            "Ailment Acc.": 0.36,
-                            "Ailment Resist.": 0.276,
-                            "Almighty Boost": 0,
-                            "Almighty Damage Taken": 0,
-                            "Attack": 3085.6125,
-                            "Bless Boost": 0,
-                            "Bless Damage Taken": 0,
-                            "Crit Mult.": 1.3,
-                            "Crit Rate": 0,
-                            "Curse Boost": 0,
-                            "Curse Damage Taken": 0,
-                            "Damage Down": 0,
-                            "Damage Mult.": 1.009,
-                            "Damage Taken": 0,
-                            "Defense": 510.824,
-                            "Down Points": 1,
-                            "Electric Boost": 0,
-                            "Electric Damage Taken": 0,
-                            "Final Damage Mult.": 0,
-                            "Fire Boost": 0,
-                            "Fire Damage Taken": 0,
-                            "Gun Boost": 0,
-                            "Gun Damage Taken": 0,
-                            "HP": 334958.3887,
-                            "Ice Boost": 0,
-                            "Ice Damage Taken": 0,
-                            "Nuclear Boost": 0,
-                            "Nuclear Damage Taken": 0,
-                            "Phys Boost": 0,
-                            "Phys Damage Taken": 0,
-                            "Pierce Rate": 0,
-                            "Psychokinesis Boost": 0,
-                            "Psychokinesis Damage Taken": 0,
-                            "SP": 100,
-                            "SP Recovery": 0,
-                            "Shield Effect": 0,
-                            "Speed": 82.733,
-                            "Wind Boost": 0,
-                            "Wind Damage Taken": 0
-                        }
-                    }
-                ],
-                "id": 1502,
-                "img": "tianerong-xingpan-point03.png",
-                "isActive": true,
-                "name": "監測點·λ",
-                "pos": [
-                    -8,
-                    -168
-                ],
-                "unlockCond": null
-            },
-            "1503": {
-                "affix": [
-                    {
-                        "desc": "所有怪盜每次受到護盾後，最終傷害提升8%，持續3回合，可疊加8層",
-                        "name": "護盾磁場",
-                        "sn": 4541
-                    }
-                ],
-                "award": [
-                    {
-                        "count": 100,
-                        "img": "item-302021.png",
-                        "name": "星屑之瓶·低階"
-                    },
-                    {
-                        "count": 65,
-                        "img": "item-302011.png",
-                        "name": "明星水晶球·低階"
-                    },
-                    {
-                        "count": 1,
-                        "img": "item-302012.png",
-                        "name": "明星水晶球·高階"
-                    },
-                    {
-                        "count": 20,
-                        "img": "item-20003.png",
-                        "name": "速通券·日常"
-                    }
-                ],
-                "connected": [
-                    1502
-                ],
-                "enemy": [
-                    {
-                        "adapt": {
-                            "Absorb": [],
-                            "Nullify": [],
-                            "Reflect": [],
-                            "Resistant": [],
-                            "Weak": []
-                        },
-                        "level": "76",
-                        "name": "兇惡的主天使",
-                        "skill": "905,902",
-                        "sn": 643011,
-                        "stat": {
-                            "Accuracy": 1,
-                            "Ailment Acc.": 0.38,
-                            "Ailment Resist.": 0.192,
-                            "Almighty Boost": 0,
-                            "Almighty Damage Taken": 0,
-                            "Attack": 2218.3698,
-                            "Bless Boost": 0,
-                            "Bless Damage Taken": 0,
-                            "Crit Mult.": 1.3,
-                            "Crit Rate": 0,
-                            "Curse Boost": 0,
-                            "Curse Damage Taken": 0,
-                            "Damage Down": 0,
-                            "Damage Mult.": 1.028,
-                            "Damage Taken": 0,
-                            "Defense": 352.868,
-                            "Down Points": 1,
-                            "Electric Boost": 0,
-                            "Electric Damage Taken": 0,
-                            "Final Damage Mult.": 0,
-                            "Fire Boost": 0,
-                            "Fire Damage Taken": 0,
-                            "Gun Boost": 0,
-                            "Gun Damage Taken": 0,
-                            "HP": 622434.12,
-                            "Ice Boost": 0,
-                            "Ice Damage Taken": 0,
-                            "Nuclear Boost": 0,
-                            "Nuclear Damage Taken": 0,
-                            "Phys Boost": 0,
-                            "Phys Damage Taken": 0,
-                            "Pierce Rate": 0,
-                            "Psychokinesis Boost": 0,
-                            "Psychokinesis Damage Taken": 0,
-                            "SP": 100,
-                            "SP Recovery": 0,
-                            "Shield Effect": 0,
-                            "Speed": 78.933,
-                            "Wind Boost": 0,
-                            "Wind Damage Taken": 0
-                        }
-                    },
-                    {
-                        "adapt": {
-                            "Absorb": [],
-                            "Nullify": [],
-                            "Reflect": [],
-                            "Resistant": [],
-                            "Weak": []
-                        },
-                        "level": "76",
-                        "name": "兇惡的能天使",
-                        "skill": "707,1008,1406",
-                        "sn": 643012,
-                        "stat": {
-                            "Accuracy": 1,
-                            "Ailment Acc.": 0.38,
-                            "Ailment Resist.": 0.192,
-                            "Almighty Boost": 0,
-                            "Almighty Damage Taken": 0,
-                            "Attack": 2957.8265,
-                            "Bless Boost": 0,
-                            "Bless Damage Taken": 0,
-                            "Crit Mult.": 1.3,
-                            "Crit Rate": 0,
-                            "Curse Boost": 0,
-                            "Curse Damage Taken": 0,
-                            "Damage Down": 0,
-                            "Damage Mult.": 1.028,
-                            "Damage Taken": 0,
-                            "Defense": 352.868,
-                            "Down Points": 1,
-                            "Electric Boost": 0,
-                            "Electric Damage Taken": 0,
-                            "Final Damage Mult.": 0,
-                            "Fire Boost": 0,
-                            "Fire Damage Taken": 0,
-                            "Gun Boost": 0,
-                            "Gun Damage Taken": 0,
-                            "HP": 622434.12,
-                            "Ice Boost": 0,
-                            "Ice Damage Taken": 0,
-                            "Nuclear Boost": 0,
-                            "Nuclear Damage Taken": 0,
-                            "Phys Boost": 0,
-                            "Phys Damage Taken": 0,
-                            "Pierce Rate": 0,
-                            "Psychokinesis Boost": 0,
-                            "Psychokinesis Damage Taken": 0,
-                            "SP": 100,
-                            "SP Recovery": 0,
-                            "Shield Effect": 0,
-                            "Speed": 78.933,
-                            "Wind Boost": 0,
-                            "Wind Damage Taken": 0
-                        }
-                    },
-                    {
-                        "adapt": {
-                            "Absorb": [],
-                            "Nullify": [],
-                            "Reflect": [],
-                            "Resistant": [],
-                            "Weak": []
-                        },
-                        "level": "76",
-                        "name": "兇惡的權天使",
-                        "skill": "1025,456,452",
-                        "sn": 643013,
-                        "stat": {
-                            "Accuracy": 1,
-                            "Ailment Acc.": 0.38,
-                            "Ailment Resist.": 0.192,
-                            "Almighty Boost": 0,
-                            "Almighty Damage Taken": 0,
-                            "Attack": 2957.8265,
-                            "Bless Boost": 0,
-                            "Bless Damage Taken": 0,
-                            "Crit Mult.": 1.3,
-                            "Crit Rate": 0,
-                            "Curse Boost": 0,
-                            "Curse Damage Taken": 0,
-                            "Damage Down": 0,
-                            "Damage Mult.": 1.028,
-                            "Damage Taken": 0,
-                            "Defense": 352.868,
-                            "Down Points": 1,
-                            "Electric Boost": 0,
-                            "Electric Damage Taken": 0,
-                            "Final Damage Mult.": 0,
-                            "Fire Boost": 0,
-                            "Fire Damage Taken": 0,
-                            "Gun Boost": 0,
-                            "Gun Damage Taken": 0,
-                            "HP": 622434.12,
-                            "Ice Boost": 0,
-                            "Ice Damage Taken": 0,
-                            "Nuclear Boost": 0,
-                            "Nuclear Damage Taken": 0,
-                            "Phys Boost": 0,
-                            "Phys Damage Taken": 0,
-                            "Pierce Rate": 0,
-                            "Psychokinesis Boost": 0,
-                            "Psychokinesis Damage Taken": 0,
-                            "SP": 100,
-                            "SP Recovery": 0,
-                            "Shield Effect": 0,
-                            "Speed": 78.933,
-                            "Wind Boost": 0,
-                            "Wind Damage Taken": 0
-                        }
-                    },
-                    {
-                        "adapt": {
-                            "Absorb": [],
-                            "Nullify": [],
-                            "Reflect": [],
-                            "Resistant": [],
-                            "Weak": []
-                        },
-                        "level": "76",
-                        "name": "兇惡的大天使",
-                        "skill": "1003,1019,1010",
-                        "sn": 643014,
-                        "stat": {
-                            "Accuracy": 1,
-                            "Ailment Acc.": 0.38,
-                            "Ailment Resist.": 0.192,
-                            "Almighty Boost": 0,
-                            "Almighty Damage Taken": 0,
-                            "Attack": 2957.8265,
-                            "Bless Boost": 0,
-                            "Bless Damage Taken": 0,
-                            "Crit Mult.": 1.3,
-                            "Crit Rate": 0,
-                            "Curse Boost": 0,
-                            "Curse Damage Taken": 0,
-                            "Damage Down": 0,
-                            "Damage Mult.": 1.028,
-                            "Damage Taken": 0,
-                            "Defense": 352.868,
-                            "Down Points": 1,
-                            "Electric Boost": 0,
-                            "Electric Damage Taken": 0,
-                            "Final Damage Mult.": 0,
-                            "Fire Boost": 0,
-                            "Fire Damage Taken": 0,
-                            "Gun Boost": 0,
-                            "Gun Damage Taken": 0,
-                            "HP": 622434.12,
-                            "Ice Boost": 0,
-                            "Ice Damage Taken": 0,
-                            "Nuclear Boost": 0,
-                            "Nuclear Damage Taken": 0,
-                            "Phys Boost": 0,
-                            "Phys Damage Taken": 0,
-                            "Pierce Rate": 0,
-                            "Psychokinesis Boost": 0,
-                            "Psychokinesis Damage Taken": 0,
-                            "SP": 100,
-                            "SP Recovery": 0,
-                            "Shield Effect": 0,
-                            "Speed": 78.933,
-                            "Wind Boost": 0,
-                            "Wind Damage Taken": 0
-                        }
-                    }
-                ],
-                "id": 1503,
-                "img": "tianerong-xingpan-point01.png",
-                "isActive": true,
-                "name": "監測點·η",
-                "pos": [
-                    -80,
-                    224
-                ],
-                "unlockCond": null
-            },
-            "1504": {
-                "affix": [
-                    {
-                        "desc": "所有敵人處於倒地狀態時，受最終傷害提升100%",
-                        "name": "倒地磁場",
-                        "sn": 4601
-                    }
-                ],
-                "award": [
-                    {
-                        "count": 2700,
-                        "img": "item-302001.png",
-                        "name": "玲瓏辰星"
-                    },
-                    {
-                        "count": 70,
-                        "img": "item-302021.png",
-                        "name": "星屑之瓶·低階"
-                    },
-                    {
-                        "count": 50,
-                        "img": "item-302011.png",
-                        "name": "明星水晶球·低階"
-                    },
-                    {
-                        "count": 15,
-                        "img": "item-20003.png",
-                        "name": "速通券·日常"
-                    }
-                ],
-                "connected": [
-                    1503
-                ],
-                "enemy": [
-                    {
-                        "adapt": {
-                            "Absorb": [],
-                            "Nullify": [],
-                            "Reflect": [],
-                            "Resistant": [],
-                            "Weak": []
-                        },
-                        "level": "78",
-                        "name": "乖戾的奧伯隆",
-                        "skill": "303,1404,1021,1016",
-                        "sn": 641231,
-                        "stat": {
-                            "Accuracy": 1,
-                            "Ailment Acc.": 0.39,
-                            "Ailment Resist.": 0.49,
-                            "Almighty Boost": 0,
-                            "Almighty Damage Taken": 0,
-                            "Attack": 2364.7026,
-                            "Bless Boost": 0,
-                            "Bless Damage Taken": 0,
-                            "Crit Mult.": 1.3,
-                            "Crit Rate": 0,
-                            "Curse Boost": 0,
-                            "Curse Damage Taken": 0,
-                            "Damage Down": 0,
-                            "Damage Mult.": 1.037,
-                            "Damage Taken": 0,
-                            "Defense": 799.227,
-                            "Down Points": 2,
-                            "Electric Boost": 0,
-                            "Electric Damage Taken": 0,
-                            "Final Damage Mult.": 0,
-                            "Fire Boost": 0,
-                            "Fire Damage Taken": 0,
-                            "Gun Boost": 0,
-                            "Gun Damage Taken": 0,
-                            "HP": 394250.22,
-                            "Ice Boost": 0,
-                            "Ice Damage Taken": 0,
-                            "Nuclear Boost": 0,
-                            "Nuclear Damage Taken": 0,
-                            "Phys Boost": 0,
-                            "Phys Damage Taken": 0,
-                            "Pierce Rate": 0,
-                            "Psychokinesis Boost": 0,
-                            "Psychokinesis Damage Taken": 0,
-                            "SP": 100,
-                            "SP Recovery": 0,
-                            "Shield Effect": 0,
-                            "Speed": 89.4,
-                            "Wind Boost": 0,
-                            "Wind Damage Taken": 0
-                        }
-                    },
-                    {
-                        "adapt": {
-                            "Absorb": [],
-                            "Nullify": [],
-                            "Reflect": [],
-                            "Resistant": [],
-                            "Weak": []
-                        },
-                        "level": "78",
-                        "name": "乖戾的蒂妲妮亞",
-                        "skill": "303,603,1507",
-                        "sn": 641232,
-                        "stat": {
-                            "Accuracy": 1,
-                            "Ailment Acc.": 0.39,
-                            "Ailment Resist.": 0.49,
-                            "Almighty Boost": 0,
-                            "Almighty Damage Taken": 0,
-                            "Attack": 2364.7026,
-                            "Bless Boost": 0,
-                            "Bless Damage Taken": 0,
-                            "Crit Mult.": 1.3,
-                            "Crit Rate": 0,
-                            "Curse Boost": 0,
-                            "Curse Damage Taken": 0,
-                            "Damage Down": 0,
-                            "Damage Mult.": 1.037,
-                            "Damage Taken": 0,
-                            "Defense": 799.227,
-                            "Down Points": 2,
-                            "Electric Boost": 0,
-                            "Electric Damage Taken": 0,
-                            "Final Damage Mult.": 0,
-                            "Fire Boost": 0,
-                            "Fire Damage Taken": 0,
-                            "Gun Boost": 0,
-                            "Gun Damage Taken": 0,
-                            "HP": 394250.22,
-                            "Ice Boost": 0,
-                            "Ice Damage Taken": 0,
-                            "Nuclear Boost": 0,
-                            "Nuclear Damage Taken": 0,
-                            "Phys Boost": 0,
-                            "Phys Damage Taken": 0,
-                            "Pierce Rate": 0,
-                            "Psychokinesis Boost": 0,
-                            "Psychokinesis Damage Taken": 0,
-                            "SP": 100,
-                            "SP Recovery": 0,
-                            "Shield Effect": 0,
-                            "Speed": 89.4,
-                            "Wind Boost": 0,
-                            "Wind Damage Taken": 0
-                        }
-                    }
-                ],
-                "id": 1504,
-                "img": "tianerong-xingpan-point03.png",
-                "isActive": true,
-                "name": "監測點·γ",
-                "pos": [
-                    184,
-                    200
-                ],
-                "unlockCond": null
-            },
-            "1505": {
-                "affix": [
-                    {
-                        "desc": "所有怪盜使用普通攻擊/槍械攻擊時，最終傷害提高100%",
-                        "name": "刀槍磁場",
-                        "sn": 4534
-                    }
-                ],
-                "award": [
-                    {
-                        "count": 275,
-                        "img": "item-302021.png",
-                        "name": "星屑之瓶·低階"
-                    },
-                    {
-                        "count": 160,
-                        "img": "item-302011.png",
-                        "name": "明星水晶球·低階"
-                    },
-                    {
-                        "count": 3,
-                        "img": "item-302012.png",
-                        "name": "明星水晶球·高階"
-                    },
-                    {
-                        "count": 60,
-                        "img": "item-20003.png",
-                        "name": "速通券·日常"
-                    }
-                ],
-                "connected": [
-                    1504
-                ],
-                "enemy": [
-                    {
-                        "adapt": {
-                            "Absorb": [],
-                            "Nullify": [],
-                            "Reflect": [],
-                            "Resistant": [],
-                            "Weak": []
-                        },
-                        "level": "82",
-                        "name": "兇惡的持國天",
-                        "skill": "2309,1408,1005,1084,1019,1002",
-                        "sn": 645211,
-                        "stat": {
-                            "Accuracy": 1,
-                            "Ailment Acc.": 0.41,
-                            "Ailment Resist.": 0.204,
-                            "Almighty Boost": 0,
-                            "Almighty Damage Taken": 0,
-                            "Attack": 3075.6273,
-                            "Bless Boost": 0,
-                            "Bless Damage Taken": 0,
-                            "Crit Mult.": 1.3,
-                            "Crit Rate": 0,
-                            "Curse Boost": 0,
-                            "Curse Damage Taken": 0,
-                            "Damage Down": 0,
-                            "Damage Mult.": 1.056,
-                            "Damage Taken": 0,
-                            "Defense": 363.958,
-                            "Down Points": 1,
-                            "Electric Boost": 0,
-                            "Electric Damage Taken": 0,
-                            "Final Damage Mult.": 0,
-                            "Fire Boost": 0,
-                            "Fire Damage Taken": 0,
-                            "Gun Boost": 0,
-                            "Gun Damage Taken": 0,
-                            "HP": 1264001.8432,
-                            "Ice Boost": 0,
-                            "Ice Damage Taken": 0,
-                            "Nuclear Boost": 0,
-                            "Nuclear Damage Taken": 0,
-                            "Phys Boost": 0,
-                            "Phys Damage Taken": 0,
-                            "Pierce Rate": 0,
-                            "Psychokinesis Boost": 0,
-                            "Psychokinesis Damage Taken": 0,
-                            "SP": 100,
-                            "SP Recovery": 0,
-                            "Shield Effect": 0,
-                            "Speed": 80,
-                            "Wind Boost": 0,
-                            "Wind Damage Taken": 0
-                        }
-                    },
-                    {
-                        "adapt": {
-                            "Absorb": [],
-                            "Nullify": [],
-                            "Reflect": [],
-                            "Resistant": [],
-                            "Weak": []
-                        },
-                        "level": "82",
-                        "name": "兇惡的增長天",
-                        "skill": "302,1025,2310,1002",
-                        "sn": 645212,
-                        "stat": {
-                            "Accuracy": 1,
-                            "Ailment Acc.": 0.41,
-                            "Ailment Resist.": 0.204,
-                            "Almighty Boost": 0,
-                            "Almighty Damage Taken": 0,
-                            "Attack": 3075.6273,
-                            "Bless Boost": 0,
-                            "Bless Damage Taken": 0,
-                            "Crit Mult.": 1.3,
-                            "Crit Rate": 0,
-                            "Curse Boost": 0,
-                            "Curse Damage Taken": 0,
-                            "Damage Down": 0,
-                            "Damage Mult.": 1.056,
-                            "Damage Taken": 0,
-                            "Defense": 363.958,
-                            "Down Points": 1,
-                            "Electric Boost": 0,
-                            "Electric Damage Taken": 0,
-                            "Final Damage Mult.": 0,
-                            "Fire Boost": 0,
-                            "Fire Damage Taken": 0,
-                            "Gun Boost": 0,
-                            "Gun Damage Taken": 0,
-                            "HP": 1244251.8144,
-                            "Ice Boost": 0,
-                            "Ice Damage Taken": 0,
-                            "Nuclear Boost": 0,
-                            "Nuclear Damage Taken": 0,
-                            "Phys Boost": 0,
-                            "Phys Damage Taken": 0,
-                            "Pierce Rate": 0,
-                            "Psychokinesis Boost": 0,
-                            "Psychokinesis Damage Taken": 0,
-                            "SP": 100,
-                            "SP Recovery": 0,
-                            "Shield Effect": 0,
-                            "Speed": 80,
-                            "Wind Boost": 0,
-                            "Wind Damage Taken": 0
-                        }
-                    },
-                    {
-                        "adapt": {
-                            "Absorb": [],
-                            "Nullify": [],
-                            "Reflect": [],
-                            "Resistant": [],
-                            "Weak": []
-                        },
-                        "level": "82",
-                        "name": "兇惡的廣目天",
-                        "skill": "2311,1005,1011,1002",
-                        "sn": 645213,
-                        "stat": {
-                            "Accuracy": 1,
-                            "Ailment Acc.": 0.41,
-                            "Ailment Resist.": 0.204,
-                            "Almighty Boost": 0,
-                            "Almighty Damage Taken": 0,
-                            "Attack": 3116.6357,
-                            "Bless Boost": 0,
-                            "Bless Damage Taken": 0,
-                            "Crit Mult.": 1.3,
-                            "Crit Rate": 0,
-                            "Curse Boost": 0,
-                            "Curse Damage Taken": 0,
-                            "Damage Down": 0,
-                            "Damage Mult.": 1.056,
-                            "Damage Taken": 0,
-                            "Defense": 363.958,
-                            "Down Points": 1,
-                            "Electric Boost": 0,
-                            "Electric Damage Taken": 0,
-                            "Final Damage Mult.": 0,
-                            "Fire Boost": 0,
-                            "Fire Damage Taken": 0,
-                            "Gun Boost": 0,
-                            "Gun Damage Taken": 0,
-                            "HP": 1264001.8432,
-                            "Ice Boost": 0,
-                            "Ice Damage Taken": 0,
-                            "Nuclear Boost": 0,
-                            "Nuclear Damage Taken": 0,
-                            "Phys Boost": 0,
-                            "Phys Damage Taken": 0,
-                            "Pierce Rate": 0,
-                            "Psychokinesis Boost": 0,
-                            "Psychokinesis Damage Taken": 0,
-                            "SP": 100,
-                            "SP Recovery": 0,
-                            "Shield Effect": 0,
-                            "Speed": 80,
-                            "Wind Boost": 0,
-                            "Wind Damage Taken": 0
-                        }
-                    },
-                    {
-                        "adapt": {
-                            "Absorb": [],
-                            "Nullify": [],
-                            "Reflect": [],
-                            "Resistant": [],
-                            "Weak": []
-                        },
-                        "level": "82",
-                        "name": "兇惡的毘沙門天",
-                        "skill": "2313,603,607,601,1005",
-                        "sn": 645214,
-                        "stat": {
-                            "Accuracy": 1,
-                            "Ailment Acc.": 0.41,
-                            "Ailment Resist.": 0.204,
-                            "Almighty Boost": 0,
-                            "Almighty Damage Taken": 0,
-                            "Attack": 3034.619,
-                            "Bless Boost": 0,
-                            "Bless Damage Taken": 0,
-                            "Crit Mult.": 1.3,
-                            "Crit Rate": 0,
-                            "Curse Boost": 0,
-                            "Curse Damage Taken": 0,
-                            "Damage Down": 0,
-                            "Damage Mult.": 1.056,
-                            "Damage Taken": 0,
-                            "Defense": 363.958,
-                            "Down Points": 1,
-                            "Electric Boost": 0,
-                            "Electric Damage Taken": 0,
-                            "Final Damage Mult.": 0,
-                            "Fire Boost": 0,
-                            "Fire Damage Taken": 0,
-                            "Gun Boost": 0,
-                            "Gun Damage Taken": 0,
-                            "HP": 1165251.6992,
-                            "Ice Boost": 0,
-                            "Ice Damage Taken": 0,
-                            "Nuclear Boost": 0,
-                            "Nuclear Damage Taken": 0,
-                            "Phys Boost": 0,
-                            "Phys Damage Taken": 0,
-                            "Pierce Rate": 0,
-                            "Psychokinesis Boost": 0,
-                            "Psychokinesis Damage Taken": 0,
-                            "SP": 100,
-                            "SP Recovery": 0,
-                            "Shield Effect": 0,
-                            "Speed": 80,
-                            "Wind Boost": 0,
-                            "Wind Damage Taken": 0
-                        }
-                    }
-                ],
-                "id": 1505,
-                "img": "tianerong-xingpan-point02.png",
-                "isActive": true,
-                "name": "監測點·α",
-                "pos": [
-                    384,
-                    400
-                ],
-                "unlockCond": null
-            },
-            "1506": {
-                "affix": [
-                    {
-                        "desc": "WONDER最終傷害提高100%",
-                        "name": "主角磁場",
-                        "sn": 4504
-                    }
-                ],
-                "award": [
-                    {
-                        "count": 1875,
-                        "img": "item-302001.png",
-                        "name": "玲瓏辰星"
-                    },
-                    {
-                        "count": 55,
-                        "img": "item-302021.png",
-                        "name": "星屑之瓶·低階"
-                    },
-                    {
-                        "count": 35,
-                        "img": "item-302011.png",
-                        "name": "明星水晶球·低階"
-                    },
-                    {
-                        "count": 10,
-                        "img": "item-20003.png",
-                        "name": "速通券·日常"
-                    }
-                ],
-                "connected": [
-                    1503
-                ],
-                "enemy": [
-                    {
-                        "adapt": {
-                            "Absorb": [],
-                            "Nullify": [],
-                            "Reflect": [],
-                            "Resistant": [],
-                            "Weak": []
-                        },
-                        "level": "80",
-                        "name": "乖戾的霜精之王",
-                        "skill": "203,207,1006",
-                        "sn": 641911,
-                        "stat": {
-                            "Accuracy": 1,
-                            "Ailment Acc.": 0.4,
-                            "Ailment Resist.": 0.5,
-                            "Almighty Boost": 0,
-                            "Almighty Damage Taken": 0,
-                            "Attack": 3966.106,
-                            "Bless Boost": 0,
-                            "Bless Damage Taken": 0,
-                            "Crit Mult.": 1.3,
-                            "Crit Rate": 0,
-                            "Curse Boost": 0,
-                            "Curse Damage Taken": 0,
-                            "Damage Down": 0,
-                            "Damage Mult.": 1.046,
-                            "Damage Taken": 0,
-                            "Defense": 810.636,
-                            "Down Points": 2,
-                            "Electric Boost": 0,
-                            "Electric Damage Taken": 0,
-                            "Final Damage Mult.": 0,
-                            "Fire Boost": 0,
-                            "Fire Damage Taken": 0,
-                            "Gun Boost": 0,
-                            "Gun Damage Taken": 0,
-                            "HP": 383392.6,
-                            "Ice Boost": 0,
-                            "Ice Damage Taken": 0,
-                            "Nuclear Boost": 0,
-                            "Nuclear Damage Taken": 0,
-                            "Phys Boost": 0,
-                            "Phys Damage Taken": 0,
-                            "Pierce Rate": 0,
-                            "Psychokinesis Boost": 0,
-                            "Psychokinesis Damage Taken": 0,
-                            "SP": 100,
-                            "SP Recovery": 0,
-                            "Shield Effect": 0,
-                            "Speed": 90,
-                            "Wind Boost": 0,
-                            "Wind Damage Taken": 0
-                        }
-                    },
-                    {
-                        "adapt": {
-                            "Absorb": [],
-                            "Nullify": [],
-                            "Reflect": [],
-                            "Resistant": [],
-                            "Weak": []
-                        },
-                        "level": "80",
-                        "name": "乖戾的邪惡霜精",
-                        "skill": "207,204,1013,1102",
-                        "sn": 641912,
-                        "stat": {
-                            "Accuracy": 1,
-                            "Ailment Acc.": 0.4,
-                            "Ailment Resist.": 0.2,
-                            "Almighty Boost": 0,
-                            "Almighty Damage Taken": 0,
-                            "Attack": 1731.0354,
-                            "Bless Boost": 0,
-                            "Bless Damage Taken": 0,
-                            "Crit Mult.": 1.3,
-                            "Crit Rate": 0,
-                            "Curse Boost": 0,
-                            "Curse Damage Taken": 0,
-                            "Damage Down": 0,
-                            "Damage Mult.": 1.046,
-                            "Damage Taken": 0,
-                            "Defense": 360.282,
-                            "Down Points": 2,
-                            "Electric Boost": 0,
-                            "Electric Damage Taken": 0,
-                            "Final Damage Mult.": 0,
-                            "Fire Boost": 0,
-                            "Fire Damage Taken": 0,
-                            "Gun Boost": 0,
-                            "Gun Damage Taken": 0,
-                            "HP": 383392.6,
-                            "Ice Boost": 0,
-                            "Ice Damage Taken": 0,
-                            "Nuclear Boost": 0,
-                            "Nuclear Damage Taken": 0,
-                            "Phys Boost": 0,
-                            "Phys Damage Taken": 0,
-                            "Pierce Rate": 0,
-                            "Psychokinesis Boost": 0,
-                            "Psychokinesis Damage Taken": 0,
-                            "SP": 100,
-                            "SP Recovery": 0,
-                            "Shield Effect": 0,
-                            "Speed": 85,
-                            "Wind Boost": 0,
-                            "Wind Damage Taken": 0
-                        }
-                    },
-                    {
-                        "adapt": {
-                            "Absorb": [],
-                            "Nullify": [],
-                            "Reflect": [],
-                            "Resistant": [],
-                            "Weak": []
-                        },
-                        "level": "80",
-                        "name": "乖戾的邪惡霜精",
-                        "skill": "207,204,1013,1102",
-                        "sn": 641913,
-                        "stat": {
-                            "Accuracy": 1,
-                            "Ailment Acc.": 0.4,
-                            "Ailment Resist.": 0.2,
-                            "Almighty Boost": 0,
-                            "Almighty Damage Taken": 0,
-                            "Attack": 1731.0354,
-                            "Bless Boost": 0,
-                            "Bless Damage Taken": 0,
-                            "Crit Mult.": 1.3,
-                            "Crit Rate": 0,
-                            "Curse Boost": 0,
-                            "Curse Damage Taken": 0,
-                            "Damage Down": 0,
-                            "Damage Mult.": 1.046,
-                            "Damage Taken": 0,
-                            "Defense": 360.282,
-                            "Down Points": 2,
-                            "Electric Boost": 0,
-                            "Electric Damage Taken": 0,
-                            "Final Damage Mult.": 0,
-                            "Fire Boost": 0,
-                            "Fire Damage Taken": 0,
-                            "Gun Boost": 0,
-                            "Gun Damage Taken": 0,
-                            "HP": 383392.6,
-                            "Ice Boost": 0,
-                            "Ice Damage Taken": 0,
-                            "Nuclear Boost": 0,
-                            "Nuclear Damage Taken": 0,
-                            "Phys Boost": 0,
-                            "Phys Damage Taken": 0,
-                            "Pierce Rate": 0,
-                            "Psychokinesis Boost": 0,
-                            "Psychokinesis Damage Taken": 0,
-                            "SP": 100,
-                            "SP Recovery": 0,
-                            "Shield Effect": 0,
-                            "Speed": 85,
-                            "Wind Boost": 0,
-                            "Wind Damage Taken": 0
-                        }
-                    }
-                ],
-                "id": 1506,
-                "img": "tianerong-xingpan-point03.png",
-                "isActive": true,
-                "name": "監測點·φ",
-                "pos": [
-                    -272,
-                    -112
-                ],
-                "unlockCond": null
-            },
-            "1507": {
-                "affix": [
-                    {
-                        "desc": "所有怪盜處於額外回合時，最終傷害提高120%",
-                        "name": "再動磁場",
-                        "sn": 4551
-                    }
-                ],
-                "award": [
-                    {
-                        "count": 90,
-                        "img": "item-302021.png",
-                        "name": "星屑之瓶·低階"
-                    },
-                    {
-                        "count": 55,
-                        "img": "item-302011.png",
-                        "name": "明星水晶球·低階"
-                    },
-                    {
-                        "count": 1,
-                        "img": "item-302012.png",
-                        "name": "明星水晶球·高階"
-                    },
-                    {
-                        "count": 20,
-                        "img": "item-20003.png",
-                        "name": "速通券·日常"
-                    }
-                ],
-                "connected": [
-                    1506
-                ],
-                "enemy": [
-                    {
-                        "adapt": {
-                            "Absorb": [],
-                            "Nullify": [],
-                            "Reflect": [],
-                            "Resistant": [],
-                            "Weak": []
-                        },
-                        "level": "82",
-                        "name": "兇惡的義經",
-                        "skill": "1028,1427,303",
-                        "sn": 644011,
-                        "stat": {
-                            "Accuracy": 1,
-                            "Ailment Acc.": 0.41,
-                            "Ailment Resist.": 0.5,
-                            "Almighty Boost": 0,
-                            "Almighty Damage Taken": 0,
-                            "Attack": 5061.6033,
-                            "Bless Boost": 0,
-                            "Bless Damage Taken": 0,
-                            "Crit Mult.": 1.3,
-                            "Crit Rate": 0,
-                            "Curse Boost": 0,
-                            "Curse Damage Taken": 0,
-                            "Damage Down": 0,
-                            "Damage Mult.": 1.056,
-                            "Damage Taken": 0,
-                            "Defense": 1279.851,
-                            "Down Points": 3,
-                            "Electric Boost": 0,
-                            "Electric Damage Taken": 0,
-                            "Final Damage Mult.": 0,
-                            "Fire Boost": 0,
-                            "Fire Damage Taken": 0,
-                            "Gun Boost": 0,
-                            "Gun Damage Taken": 0,
-                            "HP": 1712609.0496,
-                            "Ice Boost": 0,
-                            "Ice Damage Taken": 0,
-                            "Nuclear Boost": 0,
-                            "Nuclear Damage Taken": 0,
-                            "Phys Boost": 0,
-                            "Phys Damage Taken": 0,
-                            "Pierce Rate": 0,
-                            "Psychokinesis Boost": 0,
-                            "Psychokinesis Damage Taken": 0,
-                            "SP": 100,
-                            "SP Recovery": 0,
-                            "Shield Effect": 0,
-                            "Speed": 95,
-                            "Wind Boost": 0,
-                            "Wind Damage Taken": 0
-                        }
-                    }
-                ],
-                "id": 1507,
-                "img": "tianerong-xingpan-point01.png",
-                "isActive": true,
-                "name": "監測點·ψ1",
-                "pos": [
-                    -200,
-                    -304
-                ],
-                "unlockCond": null
-            },
-            "1508": {
-                "affix": [],
-                "award": [],
-                "connected": [
-                    1505
-                ],
-                "enemy": [],
-                "id": 1508,
-                "img": "tianerong-xingpan-point03.png",
-                "isActive": false,
-                "name": "監測點·β",
-                "pos": [
-                    760,
-                    336
-                ],
-                "unlockCond": null
+            "level": "66",
+            "name": "躁動的荒霸吐",
+            "skill": "806,1019",
+            "sn": 640311,
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.33,
+              "Ailment Resist.": 0.43,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 3476.8624,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 0.92,
+              "Damage Taken": 0,
+              "Defense": 1167.134,
+              "Down Points": 3.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 406444.5,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 90.567,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
             }
-        },
-        "startTime": "2026-01-20 05:00:00"
+          }
+        ],
+        "id": 1501,
+        "img": "tianerong-xingpan-point03.png",
+        "isActive": true,
+        "name": "監測點·τ",
+        "pos": [
+          160.0,
+          -400.0
+        ],
+        "unlockCond": null
+      },
+      "1502": {
+        "affix": [
+          {
+            "desc": "支配怪盜最終傷害提高60%",
+            "name": "支配磁場",
+            "sn": 4502
+          }
+        ],
+        "award": [
+          {
+            "count": 1875,
+            "img": "item-302001.png",
+            "name": "玲瓏辰星"
+          },
+          {
+            "count": 55,
+            "img": "item-302021.png",
+            "name": "星屑之瓶·低階"
+          },
+          {
+            "count": 35,
+            "img": "item-302011.png",
+            "name": "明星水晶球·低階"
+          },
+          {
+            "count": 10,
+            "img": "item-20003.png",
+            "name": "速通券·日常"
+          }
+        ],
+        "connected": [
+          1501
+        ],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "level": "72",
+            "name": "躁動的可羅索",
+            "skill": "1404,406",
+            "sn": 640811,
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.36,
+              "Ailment Resist.": 0.276,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 2314.2094,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 1.009,
+              "Damage Taken": 0,
+              "Defense": 510.824,
+              "Down Points": 1.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 334958.3887,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 82.733,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "level": "72",
+            "name": "躁動的拉克西斯",
+            "skill": "1408,206,202",
+            "sn": 640812,
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.36,
+              "Ailment Resist.": 0.276,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 3085.6125,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 1.009,
+              "Damage Taken": 0,
+              "Defense": 510.824,
+              "Down Points": 1.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 334958.3887,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 82.733,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "level": "72",
+            "name": "躁動的阿特羅波斯",
+            "skill": "303,306,1506",
+            "sn": 640813,
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.36,
+              "Ailment Resist.": 0.276,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 3085.6125,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 1.009,
+              "Damage Taken": 0,
+              "Defense": 510.824,
+              "Down Points": 1.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 334958.3887,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 82.733,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          }
+        ],
+        "id": 1502,
+        "img": "tianerong-xingpan-point03.png",
+        "isActive": true,
+        "name": "監測點·λ",
+        "pos": [
+          -8.0,
+          -168.00000000000003
+        ],
+        "unlockCond": null
+      },
+      "1503": {
+        "affix": [
+          {
+            "desc": "所有怪盜每次受到護盾後，最終傷害提升8%，持續3回合，可疊加8層",
+            "name": "護盾磁場",
+            "sn": 4541
+          }
+        ],
+        "award": [
+          {
+            "count": 100,
+            "img": "item-302021.png",
+            "name": "星屑之瓶·低階"
+          },
+          {
+            "count": 65,
+            "img": "item-302011.png",
+            "name": "明星水晶球·低階"
+          },
+          {
+            "count": 1,
+            "img": "item-302012.png",
+            "name": "明星水晶球·高階"
+          },
+          {
+            "count": 20,
+            "img": "item-20003.png",
+            "name": "速通券·日常"
+          }
+        ],
+        "connected": [
+          1502
+        ],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "level": "76",
+            "name": "兇惡的主天使",
+            "skill": "905,902",
+            "sn": 643011,
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.38,
+              "Ailment Resist.": 0.192,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 2218.3698,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 1.028,
+              "Damage Taken": 0,
+              "Defense": 352.868,
+              "Down Points": 1.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 622434.12,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 78.933,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "level": "76",
+            "name": "兇惡的能天使",
+            "skill": "707,1008,1406",
+            "sn": 643012,
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.38,
+              "Ailment Resist.": 0.192,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 2957.8265,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 1.028,
+              "Damage Taken": 0,
+              "Defense": 352.868,
+              "Down Points": 1.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 622434.12,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 78.933,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "level": "76",
+            "name": "兇惡的權天使",
+            "skill": "1025,456,452",
+            "sn": 643013,
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.38,
+              "Ailment Resist.": 0.192,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 2957.8265,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 1.028,
+              "Damage Taken": 0,
+              "Defense": 352.868,
+              "Down Points": 1.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 622434.12,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 78.933,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "level": "76",
+            "name": "兇惡的大天使",
+            "skill": "1003,1019,1010",
+            "sn": 643014,
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.38,
+              "Ailment Resist.": 0.192,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 2957.8265,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 1.028,
+              "Damage Taken": 0,
+              "Defense": 352.868,
+              "Down Points": 1.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 622434.12,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 78.933,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          }
+        ],
+        "id": 1503,
+        "img": "tianerong-xingpan-point01.png",
+        "isActive": true,
+        "name": "監測點·η",
+        "pos": [
+          -80.0,
+          224.0
+        ],
+        "unlockCond": null
+      },
+      "1504": {
+        "affix": [
+          {
+            "desc": "所有敵人處於倒地狀態時，受最終傷害提升100%",
+            "name": "倒地磁場",
+            "sn": 4601
+          }
+        ],
+        "award": [
+          {
+            "count": 2700,
+            "img": "item-302001.png",
+            "name": "玲瓏辰星"
+          },
+          {
+            "count": 70,
+            "img": "item-302021.png",
+            "name": "星屑之瓶·低階"
+          },
+          {
+            "count": 50,
+            "img": "item-302011.png",
+            "name": "明星水晶球·低階"
+          },
+          {
+            "count": 15,
+            "img": "item-20003.png",
+            "name": "速通券·日常"
+          }
+        ],
+        "connected": [
+          1503
+        ],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "level": "78",
+            "name": "乖戾的奧伯隆",
+            "skill": "303,1404,1021,1016",
+            "sn": 641231,
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.39,
+              "Ailment Resist.": 0.49,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 2364.7026,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 1.037,
+              "Damage Taken": 0,
+              "Defense": 799.227,
+              "Down Points": 2.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 394250.22,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 89.4,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "level": "78",
+            "name": "乖戾的蒂妲妮亞",
+            "skill": "303,603,1507",
+            "sn": 641232,
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.39,
+              "Ailment Resist.": 0.49,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 2364.7026,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 1.037,
+              "Damage Taken": 0,
+              "Defense": 799.227,
+              "Down Points": 2.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 394250.22,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 89.4,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          }
+        ],
+        "id": 1504,
+        "img": "tianerong-xingpan-point03.png",
+        "isActive": true,
+        "name": "監測點·γ",
+        "pos": [
+          184.0,
+          200.0
+        ],
+        "unlockCond": null
+      },
+      "1505": {
+        "affix": [
+          {
+            "desc": "所有怪盜使用普通攻擊/槍械攻擊時，最終傷害提高100%",
+            "name": "刀槍磁場",
+            "sn": 4534
+          }
+        ],
+        "award": [
+          {
+            "count": 275,
+            "img": "item-302021.png",
+            "name": "星屑之瓶·低階"
+          },
+          {
+            "count": 160,
+            "img": "item-302011.png",
+            "name": "明星水晶球·低階"
+          },
+          {
+            "count": 3,
+            "img": "item-302012.png",
+            "name": "明星水晶球·高階"
+          },
+          {
+            "count": 60,
+            "img": "item-20003.png",
+            "name": "速通券·日常"
+          }
+        ],
+        "connected": [
+          1504
+        ],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "level": "82",
+            "name": "兇惡的持國天",
+            "skill": "2309,1408,1005,1084,1019,1002",
+            "sn": 645211,
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.41,
+              "Ailment Resist.": 0.204,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 3075.6273,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 1.056,
+              "Damage Taken": 0,
+              "Defense": 363.958,
+              "Down Points": 1.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 1264001.8432,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 80.0,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "level": "82",
+            "name": "兇惡的增長天",
+            "skill": "302,1025,2310,1002",
+            "sn": 645212,
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.41,
+              "Ailment Resist.": 0.204,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 3075.6273,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 1.056,
+              "Damage Taken": 0,
+              "Defense": 363.958,
+              "Down Points": 1.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 1244251.8144,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 80.0,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "level": "82",
+            "name": "兇惡的廣目天",
+            "skill": "2311,1005,1011,1002",
+            "sn": 645213,
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.41,
+              "Ailment Resist.": 0.204,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 3116.6357,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 1.056,
+              "Damage Taken": 0,
+              "Defense": 363.958,
+              "Down Points": 1.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 1264001.8432,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 80.0,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "level": "82",
+            "name": "兇惡的毘沙門天",
+            "skill": "2313,603,607,601,1005",
+            "sn": 645214,
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.41,
+              "Ailment Resist.": 0.204,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 3034.619,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 1.056,
+              "Damage Taken": 0,
+              "Defense": 363.958,
+              "Down Points": 1.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 1165251.6992,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 80.0,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          }
+        ],
+        "id": 1505,
+        "img": "tianerong-xingpan-point02.png",
+        "isActive": true,
+        "name": "監測點·α",
+        "pos": [
+          384.0,
+          400.0
+        ],
+        "unlockCond": null
+      },
+      "1506": {
+        "affix": [
+          {
+            "desc": "WONDER最終傷害提高100%",
+            "name": "主角磁場",
+            "sn": 4504
+          }
+        ],
+        "award": [
+          {
+            "count": 1875,
+            "img": "item-302001.png",
+            "name": "玲瓏辰星"
+          },
+          {
+            "count": 55,
+            "img": "item-302021.png",
+            "name": "星屑之瓶·低階"
+          },
+          {
+            "count": 35,
+            "img": "item-302011.png",
+            "name": "明星水晶球·低階"
+          },
+          {
+            "count": 10,
+            "img": "item-20003.png",
+            "name": "速通券·日常"
+          }
+        ],
+        "connected": [
+          1503
+        ],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "level": "80",
+            "name": "乖戾的霜精之王",
+            "skill": "203,207,1006",
+            "sn": 641911,
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.4,
+              "Ailment Resist.": 0.5,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 3966.106,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 1.046,
+              "Damage Taken": 0,
+              "Defense": 810.636,
+              "Down Points": 2.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 383392.6,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 90.0,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "level": "80",
+            "name": "乖戾的邪惡霜精",
+            "skill": "207,204,1013,1102",
+            "sn": 641912,
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.4,
+              "Ailment Resist.": 0.2,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 1731.0354,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 1.046,
+              "Damage Taken": 0,
+              "Defense": 360.282,
+              "Down Points": 2.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 383392.6,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 85.0,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "level": "80",
+            "name": "乖戾的邪惡霜精",
+            "skill": "207,204,1013,1102",
+            "sn": 641913,
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.4,
+              "Ailment Resist.": 0.2,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 1731.0354,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 1.046,
+              "Damage Taken": 0,
+              "Defense": 360.282,
+              "Down Points": 2.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 383392.6,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 85.0,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          }
+        ],
+        "id": 1506,
+        "img": "tianerong-xingpan-point03.png",
+        "isActive": true,
+        "name": "監測點·φ",
+        "pos": [
+          -272.0,
+          -112.0
+        ],
+        "unlockCond": null
+      },
+      "1507": {
+        "affix": [
+          {
+            "desc": "所有怪盜處於額外回合時，最終傷害提高120%",
+            "name": "再動磁場",
+            "sn": 4551
+          }
+        ],
+        "award": [
+          {
+            "count": 90,
+            "img": "item-302021.png",
+            "name": "星屑之瓶·低階"
+          },
+          {
+            "count": 55,
+            "img": "item-302011.png",
+            "name": "明星水晶球·低階"
+          },
+          {
+            "count": 1,
+            "img": "item-302012.png",
+            "name": "明星水晶球·高階"
+          },
+          {
+            "count": 20,
+            "img": "item-20003.png",
+            "name": "速通券·日常"
+          }
+        ],
+        "connected": [
+          1506
+        ],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "level": "82",
+            "name": "兇惡的義經",
+            "skill": "1028,1427,303",
+            "sn": 644011,
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.41,
+              "Ailment Resist.": 0.5,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 5061.6033,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 1.056,
+              "Damage Taken": 0,
+              "Defense": 1279.851,
+              "Down Points": 3.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 1712609.0496,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 95.0,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          }
+        ],
+        "id": 1507,
+        "img": "tianerong-xingpan-point01.png",
+        "isActive": true,
+        "name": "監測點·ψ1",
+        "pos": [
+          -200.0,
+          -304.0
+        ],
+        "unlockCond": null
+      },
+      "1508": {
+        "affix": [],
+        "award": [],
+        "connected": [
+          1505
+        ],
+        "enemy": [],
+        "id": 1508,
+        "img": "tianerong-xingpan-point03.png",
+        "isActive": false,
+        "name": "監測點·β",
+        "pos": [
+          760.0,
+          336.0
+        ],
+        "unlockCond": null
+      }
     },
-    "msg": "OK",
-    "status": 0
+    "startTime": "2026-01-20 05:00:00"
+  },
+  "msg": "OK",
+  "status": 0
 }

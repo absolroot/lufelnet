@@ -53,35 +53,35 @@ window.ReleaseScheduleData = {
         { version: "2.7", date: "2025-12-25", characters: ["J&C"], note: "Worldwide Simultaneous Release", goldTicketUnlocks: ["MARIAN"], revelation: ["탄생"] },
         // ===== 2026년 =====
         { version: "3.0", date: "2026-01-08", characters: ["몽타뉴·백조"], "main-story": "4-1", persona: ["사악한 프로스트"], weapon: ["야수의 이빨"], revelation: ["창조", "자유", "개선", "좌절", "우려", "화해"] },
+        { version: "3.1", date: "2026-01-22", characters: ["루우나"], days: 14 },
     ],
 
     // 순서를 지정하고 싶은 캐릭터들 (날짜만 자동 계산)
     // 이후 캐릭터들은 characterData의 release_order 기반으로 자동 추가됨
     autoGenerateCharacters: [
         // 3.x (2주 간격)
-        { version: "3.1", characters: ["루우나"] },
-        { version: "3.2", characters: ["카스미"], persona: ["스라오샤"], weapon: ["작열의 연옥"] },
-        { version: "3.3", characters: ["리코·매화"], "main-story": "4-2", persona: ["지크프리트"] },
-        { version: "3.4", characters: ["야오링·사자무"], persona: ["년수"], note: "" },
-        { version: "3.5", characters: ["미오"], persona: ["트론"], weapon: ["플라스마 섬멸자"], revelation: ["헛수고", "실망"] },
-        { version: "3.6", characters: ["아케치"] },
-        { version: "3.7", characters: ["마유미"] },
+        { version: "3.2", characters: ["리코·매화"], "main-story": "4-2", persona: ["지크프리트"], days: 14 },
+        { version: "3.3", characters: ["카스미"], persona: ["스라오샤"], weapon: ["작열의 연옥"], days: 14 },
+        { version: "3.4", characters: ["야오링·사자무"], persona: ["년수"], note: "", days: 14 },
+        { version: "3.5", characters: ["미오"], persona: ["트론"], weapon: ["플라스마 섬멸자"], revelation: ["헛수고", "실망"], days: 14 },
+        { version: "3.6", characters: ["아케치"], days: 14 },
+        { version: "3.7", characters: ["마유미"], days: 14 },
         // 4.0 이후 (3주 간격) - isThreeWeekStart 표시
-        { version: "4.0", characters: ["마나카", "쇼키"], "main-story": "5-1", weapon: ["하이브 가드"], revelation: ["희망", "신중", "고집"] },
-        { version: "4.1.1", characters: ["유키 마코토"], persona: ["자오우곤겐"], isThreeWeekStart: true },
-        { version: "4.1.2", characters: ["유카리"], weapon: ["마그네틱 스톰"] },
-        { version: "4.1.3", characters: ["사나다"], revelation: ["돌파", "슬픔", "변화"] },
-        { version: "4.2", characters: ["이치고"], "main-story": "5-2", persona: ["트럼페터", "바스키"], weapon: ["망령의 저주"] },
-        { version: "4.3.1", characters: ["미나미·여름"], "summer": true },
-        { version: "4.3.2", characters: ["미유·여름"], "summer": true, persona: ["사히모치노카미"], weapon: ["설원의 침묵"] },
-        { version: "4.4", characters: ["카타야마"] },
-        { version: "4.5", characters: ["YUI·스텔라"], "main-story": "5-3", weapon: ["엔트로피·제로"], revelation: ["예리", "풍족", "획득"] },
-        { version: "4.6.1", characters: ["미츠루"] },
-        { version: "4.6.2", characters: ["후카"] },
-        { version: "4.7.1", characters: ["쇼키·암야"], "main-story": "5-4", persona: ["마카브르"], weapon_stamp: ["크리스탈 트레저"], mindscape_core: ["토모코·여름", "유우미", "YUI"], note: "Janosik IV" },
-        { version: "4.7.1", characters: ["슌·프론티어"], note: "Desire Gallery Mission (Mindscape Core Dungeon)", mindscape_core: ["J&C"] },
-        { version: "4.8", characters: ["준페이"] },
-        { version: "4.9", characters: ["나루루"] },
+        { version: "4.0", characters: ["마나카", "쇼키"], "main-story": "5-1", weapon: ["하이브 가드"], revelation: ["희망", "신중", "고집"], days: 21 },
+        { version: "4.1.1", characters: ["유키 마코토"], persona: ["자오우곤겐"], days: 21 },
+        { version: "4.1.2", characters: ["유카리"], weapon: ["마그네틱 스톰"], days: 21 },
+        { version: "4.1.3", characters: ["사나다"], revelation: ["돌파", "슬픔", "변화"], days: 21 },
+        { version: "4.2", characters: ["이치고"], "main-story": "5-2", persona: ["트럼페터", "바스키"], weapon: ["망령의 저주"], days: 21 },
+        { version: "4.3.1", characters: ["미나미·여름"], "summer": true, days: 21 },
+        { version: "4.3.2", characters: ["미유·여름"], "summer": true, persona: ["사히모치노카미"], weapon: ["설원의 침묵"], days: 21 },
+        { version: "4.4", characters: ["카타야마"], days: 21 },
+        { version: "4.5", characters: ["YUI·스텔라"], "main-story": "5-3", weapon: ["엔트로피·제로"], revelation: ["예리", "풍족", "획득"], days: 21 },
+        { version: "4.6.1", characters: ["미츠루"], days: 21 },
+        { version: "4.6.2", characters: ["후카"], days: 21 },
+        { version: "4.7.1", characters: ["쇼키·암야"], "main-story": "5-4", persona: ["마카브르"], weapon_stamp: ["크리스탈 트레저"], mindscape_core: ["토모코·여름", "유우미", "YUI"], note: "Janosik IV", days: 21 },
+        { version: "4.7.1", characters: ["슌·프론티어"], note: "Desire Gallery Mission (Mindscape Core Dungeon)", mindscape_core: ["J&C"], days: 21 },
+        { version: "4.8", characters: ["준페이"], days: 21 },
+        { version: "4.9", characters: ["나루루"], days: 21 },
         // 이후 캐릭터들은 release_order 기반으로 자동 추가됨
     ]
 };

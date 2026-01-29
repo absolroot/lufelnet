@@ -1,5 +1,149 @@
 {
-  "data": null,
-  "msg": "SOS not found.",
-  "status": 100
+  "data": {
+    "boss": [
+      {
+        "bonusRule": null,
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Electric",
+                "Nuclear",
+                "Bless",
+                "Curse"
+              ],
+              "Weak": [
+                "Fire"
+              ]
+            },
+            "level": "89",
+            "name": "조종당한 릴리스",
+            "skill": "607,603",
+            "sn": 541101,
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.445,
+              "Ailment Resist.": 0.545,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 7182.6669,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 1.088,
+              "Damage Taken": 0,
+              "Defense": 855.113,
+              "Down Points": 6.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 1568927.304,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 90.0,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          }
+        ],
+        "scoreRatio": 2.0,
+        "sn": 78401
+      },
+      {
+        "bonusRule": null,
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Ice",
+                "Electric",
+                "Curse"
+              ],
+              "Weak": [
+                "Fire",
+                "Bless"
+              ]
+            },
+            "level": "89",
+            "name": "조종당하는 체르노보그",
+            "skill": "1016,1026",
+            "sn": 541111,
+            "stat": {
+              "Accuracy": 1.0,
+              "Ailment Acc.": 0.445,
+              "Ailment Resist.": 0.436,
+              "Almighty Boost": 0,
+              "Almighty Damage Taken": 0,
+              "Attack": 3428.0918,
+              "Bless Boost": 0,
+              "Bless Damage Taken": 0,
+              "Crit Mult.": 1.3,
+              "Crit Rate": 0.0,
+              "Curse Boost": 0,
+              "Curse Damage Taken": 0,
+              "Damage Down": 0,
+              "Damage Mult.": 1.088,
+              "Damage Taken": 0,
+              "Defense": 697.701,
+              "Down Points": 4.0,
+              "Electric Boost": 0,
+              "Electric Damage Taken": 0,
+              "Final Damage Mult.": 0,
+              "Fire Boost": 0,
+              "Fire Damage Taken": 0,
+              "Gun Boost": 0,
+              "Gun Damage Taken": 0,
+              "HP": 1845674.208,
+              "Ice Boost": 0,
+              "Ice Damage Taken": 0,
+              "Nuclear Boost": 0,
+              "Nuclear Damage Taken": 0,
+              "Phys Boost": 0,
+              "Phys Damage Taken": 0,
+              "Pierce Rate": 0,
+              "Psychokinesis Boost": 0,
+              "Psychokinesis Damage Taken": 0,
+              "SP": 100.0,
+              "SP Recovery": 0,
+              "Shield Effect": 0,
+              "Speed": 90.0,
+              "Wind Boost": 0,
+              "Wind Damage Taken": 0
+            }
+          }
+        ],
+        "scoreRatio": 1.0,
+        "sn": 78402
+      }
+    ],
+    "buff": "어둠의 잠식: 적을 조롱 상태에 빠뜨리며, 아군 전체에 『육감』을 4중첩 추가한다. 자신이 각기 다른 속성의 대미지를 줄 때 아군 전체에 『육감』을 1중첩 추가하고, 만약 만능 대미지를 주었다면 아군 전체에 『육감』을 1중첩 추가로 부여한다.",
+    "endTime": "2026-02-12 07:30:00",
+    "startTime": "2026-01-22 08:30:00"
+  },
+  "msg": "OK",
+  "status": 0
 }

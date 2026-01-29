@@ -3,11 +3,11 @@ window.operationData["카스미"] = {
     "basic": [
         {
             "label": "의식 0",
-            "value": "2 › 1+변신 › 1+HL › 2 › 1 › 1+변신+HL"
+            "value": "2 › 1+변신 › 1+HL › 2 › 1 › 변신+1+HL"
         },
         {
             "label": "의식 0",
-            "value": "2 › 1+변신 › 3+HL › 2 › 1 › 3+변신+HL"
+            "value": "2 › 1+변신 › 3+HL › 2 › 1 › 변신+3+HL"
         },
         {
             "label": "의식 1",

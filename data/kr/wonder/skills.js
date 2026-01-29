@@ -2868,6 +2868,11 @@ const personaSkillList = {
     }
 };
 
+window.skillList = skillList;
+window.skillList_en = skillList_en;
+window.skillList_jp = skillList_jp;
+window.personaSkillList = personaSkillList;
+
 
 
 

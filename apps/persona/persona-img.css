@@ -11,319 +11,319 @@ img[src*="속성_주원.png"] {
 
 /* 특정 카드 이미지 특수 효과 */
 
-.persona-img[src*="시바.webp"] {
+img[src*="시바.webp"] {
     --tx: 10%;
     --ty: 15%;
     --scale: 1.1;
 }
 
-.persona-img[src*="스라오샤.webp"] {
+img[src*="스라오샤.webp"] {
     --tx: 5%;
     --ty: 2%;
     --scale: 1.3;
 }
 
-.persona-img[src*="비슈누.webp"] {
+img[src*="비슈누.webp"] {
     --tx: 15%;
     --ty: 12%;
     --scale: 1.5;
 }
 
-.persona-img[src*="도미니온.webp"] {
+img[src*="도미니온.webp"] {
     --tx: -5%;
     --ty: 5%;
     --scale: 1.3;
 }
 
-.persona-img[src*="디오니소스.webp"] {
+img[src*="디오니소스.webp"] {
     --tx: 9%;
     --ty: 5%;
     --scale: 0.95;
 }
 
-.persona-img[src*="야노식.webp"] {
+img[src*="야노식.webp"] {
     --tx: 9%;
     --ty: 10%;
     --scale: 1.1;
 }
 
-.persona-img[src*="광목천.webp"] {
+img[src*="광목천.webp"] {
     --tx: 10%;
     --ty: 15%;
     --scale: 1.1;
 }
 
-.persona-img[src*="아메노우즈메.webp"] {
+img[src*="아메노우즈메.webp"] {
     --tx: -9%;
     --ty: 9%;
     --scale: 1.00;
 }
 
-.persona-img[src*="서큐버스.webp"] {
+img[src*="서큐버스.webp"] {
     --tx: 10%;
     --ty: 5%;
     --scale: 1.5;
 }
 
-.persona-img[src*="체르노보그.webp"] {
+img[src*="체르노보그.webp"] {
     --tx: 2%;
     --ty: 3%;
     --scale: 1.0;
 }
 
-.persona-img[src*="오오쿠니누시.webp"] {
+img[src*="오오쿠니누시.webp"] {
     --tx: 10%;
     --ty: 15%;
     --scale: 1.1;
 }
 
-.persona-img[src*="노른.webp"] {
+img[src*="노른.webp"] {
     --tx: 5%;
     --ty: 5%;
     --scale: 1.2;
 }
 
-.persona-img[src*="앨리스.webp"] {
+img[src*="앨리스.webp"] {
     --tx: -5%;
     --ty: 10%;
     --scale: 0.95;
 }
 
-.persona-img[src*="년수.webp"] {
+img[src*="년수.webp"] {
     --tx: 0%;
     --ty: 0%;
     --scale: 0.95;
 }
 
-.persona-img[src*="비사문천.webp"] {
+img[src*="비사문천.webp"] {
     --tx: 2%;
     --ty: 15%;
     --scale: 1.5;
 }
 
-.persona-img[src*="유룽.webp"] {
+img[src*="유룽.webp"] {
     --tx: 0%;
     --ty: 0%;
     --scale: 0.8;
 }
 
-.persona-img[src*="바포멧.webp"] {
+img[src*="바포멧.webp"] {
     --tx: 10%;
     --ty: 0%;
     --scale: 1.2;
 }
 
-.persona-img[src*="요시츠네.webp"] {
+img[src*="요시츠네.webp"] {
     --tx: 10%;
     --ty: 8%;
     --scale: 1.1;
 }
 
-.persona-img[src*="지국천.webp"] {
+img[src*="지국천.webp"] {
     --tx: 2%;
     --ty: 2%;
     --scale: 0.95;
 }
 
-.persona-img[src*="미트라스.webp"] {
+img[src*="미트라스.webp"] {
     --tx: 0%;
     --ty: 0%;
     --scale: 0.85;
 }
 
-.persona-img[src*="티타니아.webp"] {
+img[src*="티타니아.webp"] {
     --tx: 2%;
     --ty: 2%;
     --scale: 1.2;
 }
 
-.persona-img[src*="파르바티.webp"] {
+img[src*="파르바티.webp"] {
     --tx: 10%;
     --ty: 12%;
     --scale: 0.95;
 }
 
-.persona-img[src*="지크프리트.webp"] {
+img[src*="지크프리트.webp"] {
     --tx: 7%;
     --ty: 0%;
     --scale: 0.95;
 }
 
-.persona-img[src*="킹 프로스트.webp"] {
+img[src*="킹 프로스트.webp"] {
     --tx: 0%;
     --ty: -5%;
     --scale: 0.95;
 }
 
-.persona-img[src*="릴리스.webp"] {
+img[src*="릴리스.webp"] {
     --tx: -12%;
     --ty: 10%;
     --scale: 1.1;
 }
 
-.persona-img[src*="아누비스.webp"] {
+img[src*="아누비스.webp"] {
     --tx: -5%;
     --ty: 5%;
     --scale: 1.1;
 }
 
-.persona-img[src*="파즈스.webp"] {
+img[src*="파즈스.webp"] {
     --tx: -5%;
     --ty: -10%;
     --scale: 1;
 }
 
-.persona-img[src*="야마타노오로치.webp"] {
+img[src*="야마타노오로치.webp"] {
     --tx: 5%;
     --ty: 5%;
     --scale: 1.05;
 }
 
-.persona-img[src*="벨페고르.webp"] {
+img[src*="벨페고르.webp"] {
     --tx: 5%;
     --ty: 5%;
     --scale: 1.05;
 }
 
-.persona-img[src*="수르트.webp"] {
+img[src*="수르트.webp"] {
     --tx: 8%;
     --ty: 15%;
     --scale: 1.05;
 }
 
-.persona-img[src*="쿠 훌린.webp"] {
+img[src*="쿠 훌린.webp"] {
     --tx: 5%;
     --ty: 5%;
 }
 
-.persona-img[src*="기리메칼라.webp"] {
+img[src*="기리메칼라.webp"] {
     --tx: 0%;
     --ty: -5%;
 }
 
-.persona-img[src*="야타가라스.webp"] {
+img[src*="야타가라스.webp"] {
     --tx: 5%;
     --ty: 7%;
     --scale: 0.75;
 }
 
-.persona-img[src*="사히모치노카미.webp"] {
+img[src*="사히모치노카미.webp"] {
     bottom: 20px;
     left: 4px;
     scale: 1;
 }
 
-.persona-img[src*="트론.webp"] {
+img[src*="트론.webp"] {
     bottom: 16px;
     left: 4px;
     scale: 1;
 }
 
-.persona-img[src*="마카브르.webp"] {
+img[src*="마카브르.webp"] {
     --tx: -9%;
     --ty: 3%;
     --scale: 1.05;
 }
 
-.persona-img[src*="쿠시미타마.webp"],
-.persona-img[src*="슬라임.webp"],
-.persona-img[src*="블랙 우즈.webp"],
-.persona-img[src*="사키미타마.webp"] {
+img[src*="쿠시미타마.webp"],
+img[src*="슬라임.webp"],
+img[src*="블랙 우즈.webp"],
+img[src*="사키미타마.webp"] {
     --scale: 0.5;
 }
 
-.persona-img[src*="켈피.webp"] {
+img[src*="켈피.webp"] {
     --tx: -20%;
 }
 
-.persona-img[src*="안즈.webp"] {
+img[src*="안즈.webp"] {
     --ty: -10%;
 }
 
-.persona-img[src*="가네샤.webp"],
-.persona-img[src*="누에.webp"],
-.persona-img[src*="년수.webp"] {
+img[src*="가네샤.webp"],
+img[src*="누에.webp"],
+img[src*="년수.webp"] {
     --scale: 0.9;
 }
 
-.persona-img[src*="잭 프로스트.webp"],
-.persona-img[src*="사악한 프로스트.webp"],
-.persona-img[src*="스다마.webp"],
-.persona-img[src*="시사.webp"] {
+img[src*="잭 프로스트.webp"],
+img[src*="사악한 프로스트.webp"],
+img[src*="스다마.webp"],
+img[src*="시사.webp"] {
     --scale: 0.8;
 }
 
-.persona-img[src*="이누가미.webp"],
-.persona-img[src*="아가시온.webp"],
-.persona-img[src*="벅스.webp"],
-.persona-img[src*="데카라비아.webp"] {
+img[src*="이누가미.webp"],
+img[src*="아가시온.webp"],
+img[src*="벅스.webp"],
+img[src*="데카라비아.webp"] {
     --scale: 0.7;
 }
 
-.persona-img[src*="아라미타마.webp"],
-.persona-img[src*="니기미타마.webp"] {
+img[src*="아라미타마.webp"],
+img[src*="니기미타마.webp"] {
     --scale: 0.6;
 }
 
-.persona-img[src*="나가.webp"] {
+img[src*="나가.webp"] {
     --tx: 40%;
 }
 
-.persona-img[src*="네코마타.webp"],
-.persona-img[src*="릴림.webp"],
-.persona-img[src*="마카미.webp"],
-.persona-img[src*="미트라.webp"],
-.persona-img[src*="킨키.webp"],
-.persona-img[src*="플라로우스.webp"] {
+img[src*="네코마타.webp"],
+img[src*="릴림.webp"],
+img[src*="마카미.webp"],
+img[src*="미트라.webp"],
+img[src*="킨키.webp"],
+img[src*="플라로우스.webp"] {
     --ty: 20%;
 }
 
-.persona-img[src*="아트로포스.webp"] {
+img[src*="아트로포스.webp"] {
     --tx: 20%;
     --ty: 20%;
 }
 
-.persona-img[src*="바롱.webp"] {
+img[src*="바롱.webp"] {
     --tx: -20%;
     --ty: -5%;
 }
 
-.persona-img[src*="스이키.webp"] {
+img[src*="스이키.webp"] {
     --tx: -15%;
 }
 
-.persona-img[src*="주작.webp"] {
+img[src*="주작.webp"] {
     --tx: 5%;
     --ty: -5%;
 }
 
-.persona-img[src*="랑다.webp"] {
+img[src*="랑다.webp"] {
     --tx: 10%;
 }
 
-.persona-img[src*="레드 라이더.webp"] {
+img[src*="레드 라이더.webp"] {
     --ty: -8%;
 }
 
-.persona-img[src*="오바리욘.webp"] {
+img[src*="오바리욘.webp"] {
     --scale: 0.8;
     --tx: 12%;
 }
 
-.persona-img[src*="오르트로스.webp"] {
+img[src*="오르트로스.webp"] {
     --tx: -6%;
     --ty: -10%;
 }
 
-.persona-img[src*="스카아하.webp"] {
+img[src*="스카아하.webp"] {
     --tx: -15%;
     --ty: 14%;
 }
 
-.persona-img[src*="바이콘.webp"] {
+img[src*="바이콘.webp"] {
     --ty: -3%;
 }
 
-.persona-img[src*="랴난시.webp"] {
+img[src*="랴난시.webp"] {
     --ty: 15%;
 }

@@ -42,25 +42,39 @@ jp: /tactic-maker/?lang=jp
             <button id="btnEditMode" class="btn-refresh btn-storage btn-edit-toggle" type="button" aria-pressed="true">
                 <span data-i18n="editMode">편집 모드</span>
             </button>
-            <button id="btnImport" class="btn-refresh btn-storage" type="button" aria-label="가져오기">
+            <span id="autoSaveStatus" class="auto-save-status hidden"></span>
+            <button id="btnAutoSave" class="btn-refresh btn-storage btn-icon-hover" type="button" data-tooltip="임시저장" data-i18n-tooltip="autoSave">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+                    <polyline points="17 21 17 13 7 13 7 21"/>
+                    <polyline points="7 3 7 8 15 8"/>
+                </svg>
+            </button>
+            <button id="btnReset" class="btn-refresh btn-storage btn-icon-hover" type="button" data-tooltip="초기화" data-i18n-tooltip="resetData">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                    <path d="M3 3v5h5"/>
+                </svg>
+            </button>
+            <button id="btnImport" class="btn-refresh btn-storage btn-icon-hover" type="button" data-tooltip="가져오기" data-i18n-tooltip="import">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none"
                     stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M12 21V9" />
                     <path d="m17 14-5-5-5 5" />
                     <path d="M5 3h14" />
                 </svg>
-                <span data-i18n="import">가져오기</span>
             </button>
-            <button id="btnExport" class="btn-refresh btn-storage" type="button" aria-label="내보내기">
+            <button id="btnExport" class="btn-refresh btn-storage btn-icon-hover" type="button" data-tooltip="내보내기" data-i18n-tooltip="export">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none"
                     stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M12 3v12" />
                     <path d="m7 10 5 5 5-5" />
                     <path d="M5 21h14" />
                 </svg>
-                <span data-i18n="export">내보내기</span>
             </button>
-            <button id="btnShare" class="btn-refresh btn-storage" type="button" aria-label="공유">
+            <button id="btnShare" class="btn-refresh btn-storage btn-icon-hover" type="button" data-tooltip="공유" data-i18n-tooltip="share">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="18" cy="5" r="3"></circle>
@@ -69,17 +83,15 @@ jp: /tactic-maker/?lang=jp
                     <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
                     <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
                 </svg>
-                <span data-i18n="share">공유</span>
             </button>
-            <button id="btnCapture" class="btn-refresh btn-storage" type="button" aria-label="캡처">
+            <button id="btnCapture" class="btn-refresh btn-storage btn-icon-hover" type="button" data-tooltip="캡처" data-i18n-tooltip="capture">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
                     <circle cx="12" cy="13" r="4" />
                 </svg>
-                <span data-i18n="capture">캡처</span>
             </button>
-            <button id="btnSettings" class="btn-refresh btn-storage" type="button" aria-label="설정">
+            <button id="btnSettings" class="btn-refresh btn-storage btn-icon-hover" type="button" data-tooltip="설정" data-i18n-tooltip="settings">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path
@@ -95,6 +107,12 @@ jp: /tactic-maker/?lang=jp
     <div class="tactic-title-container">
         <input type="text" id="tacticTitle" class="tactic-title-input" placeholder="택틱 제목을 입력하세요"
             data-i18n-placeholder="titlePlaceholder">
+    </div>
+
+    <!-- Tactic Memo -->
+    <div class="tactic-memo-container">
+        <textarea id="tacticMemo" class="tactic-memo-input" placeholder="전체 택틱에 대한 설명을 입력하세요..."
+            data-i18n-placeholder="tacticMemoPlaceholder" rows="3"></textarea>
     </div>
 
     <!-- Party Settings -->

@@ -78,6 +78,18 @@ class TacticMakerApp {
         // Wire title input to store
         this.initTitleInput();
 
+        // Wire memo input to store
+        this.initMemoInput();
+
+        // Initialize auto-save
+        this.initAutoSave();
+
+        // Initialize reset button
+        this.initResetButton();
+
+        // Load auto-saved data if exists
+        this.loadAutoSavedData();
+
         // Expose for debugging
         window.tacticStore = this.store;
         window.tacticApp = this;
@@ -121,6 +133,128 @@ class TacticMakerApp {
                     const newTitle = event === 'fullReload' ? data.title : data;
                     if (titleInput.value !== newTitle) {
                         titleInput.value = newTitle || '';
+                    }
+                }
+            });
+        }
+    }
+
+    initMemoInput() {
+        const memoInput = document.getElementById('tacticMemo');
+        if (memoInput) {
+            // Load from store
+            memoInput.value = this.store.state.memo || '';
+
+            // Listen for changes
+            memoInput.addEventListener('input', (e) => {
+                this.store.setMemo(e.target.value);
+            });
+
+            // Listen for store updates
+            this.store.subscribe((event, data) => {
+                if (event === 'memoChange' || event === 'fullReload') {
+                    const newMemo = event === 'fullReload' ? data.memo : data;
+                    if (memoInput.value !== newMemo) {
+                        memoInput.value = newMemo || '';
+                    }
+                }
+            });
+        }
+    }
+
+    initAutoSave() {
+        const btnAutoSave = document.getElementById('btnAutoSave');
+        const autoSaveStatusEl = document.getElementById('autoSaveStatus');
+
+        // Update time display
+        const updateTimeDisplay = (time) => {
+            if (autoSaveStatusEl && time) {
+                autoSaveStatusEl.textContent = time;
+                autoSaveStatusEl.classList.remove('hidden');
+            }
+        };
+
+        // Manual save button
+        if (btnAutoSave) {
+            btnAutoSave.addEventListener('click', () => {
+                const time = this.store.saveToLocalStorage();
+                if (time) {
+                    updateTimeDisplay(time);
+                }
+            });
+        }
+
+        // Listen for auto-save events
+        this.store.subscribe((event, data) => {
+            if (event === 'autoSave' && data.time) {
+                updateTimeDisplay(data.time);
+            }
+        });
+
+        // Auto-save every 60 seconds
+        this.autoSaveInterval = setInterval(() => {
+            const time = this.store.saveToLocalStorage();
+            if (time) {
+                updateTimeDisplay(time);
+            }
+        }, 60000); // 1 minute
+
+        // Show last save time on load
+        const lastTime = this.store.getLastSaveTime();
+        if (lastTime) {
+            updateTimeDisplay(lastTime);
+        }
+
+        // Update tooltips with i18n
+        this.updateTooltips();
+    }
+
+    updateTooltips() {
+        const t = (key, fallback) => window.I18nService ? window.I18nService.t(key, fallback) : fallback;
+        document.querySelectorAll('[data-i18n-tooltip]').forEach(el => {
+            const key = el.getAttribute('data-i18n-tooltip');
+            el.setAttribute('data-tooltip', t(key, el.getAttribute('data-tooltip')));
+        });
+    }
+
+    loadAutoSavedData() {
+        // Check if there's auto-saved data
+        const savedTime = this.store.getLastSaveTime();
+        if (savedTime) {
+            // Load auto-saved data
+            this.store.loadFromLocalStorage();
+
+            // Update UI
+            const titleInput = document.getElementById('tacticTitle');
+            if (titleInput) {
+                titleInput.value = this.store.state.title || '';
+            }
+            const memoInput = document.getElementById('tacticMemo');
+            if (memoInput) {
+                memoInput.value = this.store.state.memo || '';
+            }
+        }
+    }
+
+    initResetButton() {
+        const btnReset = document.getElementById('btnReset');
+        if (btnReset) {
+            btnReset.addEventListener('click', () => {
+                const t = (key, fallback) => window.I18nService ? window.I18nService.t(key, fallback) : fallback;
+                if (confirm(t('resetConfirm', '모든 데이터를 초기화하시겠습니까?'))) {
+                    this.store.clearAll();
+
+                    // Reset UI inputs
+                    const titleInput = document.getElementById('tacticTitle');
+                    if (titleInput) titleInput.value = '';
+                    const memoInput = document.getElementById('tacticMemo');
+                    if (memoInput) memoInput.value = '';
+
+                    // Clear auto-save time display
+                    const autoSaveStatusEl = document.getElementById('autoSaveStatus');
+                    if (autoSaveStatusEl) {
+                        autoSaveStatusEl.textContent = '';
+                        autoSaveStatusEl.classList.add('hidden');
                     }
                 }
             });

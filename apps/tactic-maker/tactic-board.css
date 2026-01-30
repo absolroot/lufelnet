@@ -3,11 +3,11 @@
    ========================================================================== */
 .tactic-board-section {
     margin-top: 40px;
-    overflow-x: auto;
 }
 
 .tactic-table-container {
-    overflow: auto;
+    overflow-x: auto;
+    max-height: none;
 }
 
 .tactic-table {
@@ -34,7 +34,22 @@
     text-align: center;
     border-right: 1px solid rgba(255, 255, 255, 0.05);
     /* Vertical separator */
-    /* Sticky removed */
+}
+
+/* Sticky Header Row */
+.tactic-table thead {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.tactic-table thead tr {
+    background: rgba(0, 0, 0, 0.95);
+}
+
+.tactic-table thead th {
+    background: rgba(20, 20, 20, 0.98);
+    backdrop-filter: blur(4px);
 }
 
 .tactic-table th:last-child {
@@ -222,6 +237,8 @@ body:not(.tactic-edit-mode) .turn-row {
     align-items: center;
     gap: 8px;
     width: 100%;
+    min-width: 0;
+    overflow: hidden;
 }
 
 .action-name {
@@ -332,6 +349,7 @@ body:not(.tactic-edit-mode) .turn-row {
     overflow: hidden;
     text-overflow: ellipsis;
     flex: 1;
+    min-width: 0;
 }
 
 .custom-select-icon {
@@ -430,12 +448,25 @@ body:not(.tactic-edit-mode) .turn-row {
     align-items: center;
     justify-content: center;
     font-size: 12px;
+    transition: all 0.15s ease;
 }
 
 .action-icon-btn:hover {
     border-color: rgba(255, 255, 255, 0.35);
     background: rgba(0, 0, 0, 0.55);
     color: #fff;
+}
+
+/* Active state for memo toggle button */
+.action-icon-btn.active {
+    border-color: rgba(78, 205, 196, 0.5);
+    background: rgba(78, 205, 196, 0.2);
+    color: #4ecdc4;
+}
+
+.action-icon-btn.active:hover {
+    border-color: rgba(78, 205, 196, 0.7);
+    background: rgba(78, 205, 196, 0.3);
 }
 
 .action-item.auto {
@@ -516,6 +547,72 @@ body:not(.tactic-edit-mode) .custom-select-trigger {
     padding-top: 4px;
     padding-left: 26px;
     word-break: break-all;
+}
+
+/* Inline memo input in edit mode */
+.action-memo-container {
+    margin-top: 4px;
+    padding-left: 26px;
+}
+
+/* Hidden class for toggleable memo */
+.action-memo-container.hidden {
+    display: none;
+}
+
+.action-memo-inline {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid transparent;
+    border-radius: 3px;
+    color: #ccc;
+    font-size: 0.75rem;
+    font-style: italic;
+    padding: 3px 6px;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.15s, background 0.15s;
+}
+
+.action-memo-inline:focus {
+    background: rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.action-memo-inline::placeholder {
+    color: rgba(255, 255, 255, 0.25);
+    font-style: italic;
+}
+
+/* Note memo input - full width without left padding */
+.note-memo-input {
+    font-style: normal;
+}
+
+.note-action-item .action-memo-container {
+    padding-left: 0;
+}
+
+/* Note Action Item Style */
+.note-action-item {
+    background: linear-gradient(135deg, rgba(70, 70, 50, 0.9), rgba(50, 50, 40, 0.95)) !important;
+    border-left: 3px solid #c9a227 !important;
+}
+
+.note-action-item::before {
+    background: rgba(201, 162, 39, 0.15) !important;
+}
+
+.note-action-item .action-name {
+    color: #e8d59c;
+    font-style: italic;
+    font-size: 0.5rem;
+}
+
+.note-action-item .action-memo {
+    padding-left: 0;
+    border-top: none;
+    margin-top: 0;
 }
 
 .btn-add-action {
@@ -671,6 +768,8 @@ body:not(.tactic-edit-mode) .custom-select-trigger {
     display: flex;
     flex-direction: row;
     align-items: stretch;
+    min-width: 0;
+    overflow: hidden;
 }
 
 /* Drag Handle - left side */

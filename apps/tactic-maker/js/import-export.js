@@ -131,6 +131,12 @@ export class ImportExport {
             titleInput.value = internalState.title || '';
         }
 
+        // Update memo input
+        const memoInput = document.getElementById('tacticMemo');
+        if (memoInput) {
+            memoInput.value = internalState.memo || '';
+        }
+
         console.log('[ImportExport] Data imported successfully');
     }
 
@@ -298,36 +304,54 @@ export class ImportExport {
                 return { ...columns, __all: actions };
             }
 
-            const lastIdxByActor = new Map();
-            const normalized = actions.map((a, idx) => {
+            const orderKeys = columnPlan.map(p => p.orderKey);
+            const actorIndex = new Map(columnPlan.map((p, idx) => [p.actor, idx]));
+
+            const isTurnSkill123 = (actionVal) => {
+                const v = normalizeActionValue(actionVal);
+                return /^스킬[123]$/.test(v) || /^Skill[123]$/.test(v) || /^スキル[123]$/.test(v);
+            };
+
+            const isHighlight = (actionVal) => {
+                const v = normalizeActionValue(actionVal);
+                return v === 'HIGHLIGHT';
+            };
+
+            let currentColIdx = 0;
+
+            for (const a of actions) {
                 const actor = normalizeActorName(a?.character);
-                if (actor) lastIdxByActor.set(actor, idx);
-                return { raw: a, idx, actor };
-            });
+                const idx = actorIndex.has(actor) ? actorIndex.get(actor) : null;
+                const actionVal = a?.action;
 
-            const boundaries = [];
-            let prev = -1;
-            for (let i = 0; i < columnPlan.length - 1; i++) {
-                const actor = columnPlan[i].actor;
-                const last = lastIdxByActor.has(actor) ? lastIdxByActor.get(actor) : -1;
-                const b = Math.max(prev, last);
-                boundaries.push(b);
-                prev = b;
-            }
+                const shouldAdvance = (idx !== null && idx >= currentColIdx)
+                    && (isTurnSkill123(actionVal) || actor === '원더');
 
-            let start = 0;
-            for (let i = 0; i < columnPlan.length; i++) {
-                const orderKey = columnPlan[i].orderKey;
-                let end = (i < columnPlan.length - 1) ? boundaries[i] : (normalized.length - 1);
-                if (end < start) end = start - 1;
-
-                if (!columns[orderKey]) columns[orderKey] = [];
-
-                for (let j = start; j <= end; j++) {
-                    columns[orderKey].push(normalized[j].raw);
+                if (shouldAdvance) {
+                    currentColIdx = idx;
                 }
 
-                start = end + 1;
+                const placeColIdx = (idx !== null && isHighlight(actionVal))
+                    ? idx
+                    : currentColIdx;
+
+                const orderKey = orderKeys[placeColIdx] || orderKeys[0] || '1';
+                if (!columns[orderKey]) columns[orderKey] = [];
+                columns[orderKey].push(a);
+            }
+
+            for (let i = 0; i < orderKeys.length - 1; i++) {
+                const key = orderKeys[i];
+                const nextKey = orderKeys[i + 1];
+                const list = columns[key];
+                if (!Array.isArray(list) || list.length === 0) continue;
+
+                const last = list[list.length - 1];
+                if (!last) continue;
+                if (!isHighlight(last.action)) continue;
+
+                if (!columns[nextKey]) columns[nextKey] = [];
+                columns[nextKey].push(list.pop());
             }
 
             return columns;
@@ -418,6 +442,7 @@ export class ImportExport {
 
         return {
             title: data.title || '',
+            memo: data.memo || '',
             party,
             wonder,
             turns
@@ -618,6 +643,7 @@ export class ImportExport {
 
         return {
             title: (state.title || '').slice(0, 20) || 'P5X Tactic',
+            memo: state.memo || '',
             wonderPersonas: state.wonder.personas.map(p => p.name),
             weapon: weaponVal,
             personaSkills,

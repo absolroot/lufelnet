@@ -113,5 +113,14 @@ export default {
     shareFailed: "共有に失敗しました。",
     // SEO
     pageTitleFull: "タクティクスメーカー - ペルソナ5 ザ・ファントム X LufelNet",
-    pageDescription: "ペルソナ5 ザ・ファントム X タクティクスメーカー。パーティとスキルの順序を設定して共有しましょう。"
+    pageDescription: "ペルソナ5 ザ・ファントム X タクティクスメーカー。パーティとスキルの順序を設定して共有しましょう。",
+    // Auto Save
+    autoSave: "一時保存",
+    autoSaveTime: "保存済み: {0}",
+    resetData: "リセット",
+    resetConfirm: "すべてのデータをリセットしますか？",
+    // Tactic Memo
+    tacticMemoPlaceholder: "タクティクス全体の説明を入力してください...",
+    // Note Action
+    noteAction: "メモ"
 };

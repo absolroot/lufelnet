@@ -84,5 +84,14 @@ export default {
     shareFailed: "Failed to share.",
     // SEO
     pageTitleFull: "Tactic Maker - Persona 5: The Phantom X LufelNet",
-    pageDescription: "Persona 5: The Phantom X Tactic Maker. Set up your party and skill order to share."
+    pageDescription: "Persona 5: The Phantom X Tactic Maker. Set up your party and skill order to share.",
+    // Auto Save
+    autoSave: "Save Draft",
+    autoSaveTime: "Saved: {0}",
+    resetData: "Reset",
+    resetConfirm: "Reset all data?",
+    // Tactic Memo
+    tacticMemoPlaceholder: "Enter a description for the entire tactic...",
+    // Note Action
+    noteAction: "Note"
 };

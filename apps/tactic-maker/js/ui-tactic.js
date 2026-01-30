@@ -116,13 +116,13 @@ export class TacticUI {
         const lang = this.getCurrentLang();
         // KR: use the character's Korean name (charData.name) or fallback to key
         // EN: use CODENAME (charData.codename) or name_en
-        // JP: use name_en (romanized Japanese convention)
+        // JP: use name_jp or fallback
         if (lang === 'kr') {
             return charData.name || charKey;
         } else if (lang === 'en') {
             return charData.codename || charData.name_en || charData.name || charKey;
         } else if (lang === 'jp') {
-            return charData.name_en || charData.name || charKey;
+            return charData.name_jp || charData.name || charKey;
         }
         return charData.name || charKey;
     }
@@ -810,15 +810,17 @@ export class TacticUI {
         const isNote = !!action.isNote || (!action.character && !action.action && !!action.memo);
 
         if (isNote) {
+            const noteLabel = window.I18nService ? window.I18nService.t('noteAction', '메모') : '메모';
+            const hasMemoNote = !!(action.memo);
             item.classList.add('note-action-item');
             item.innerHTML = `
                 <div class="action-content-wrapper">
                     <div class="action-main-row">
-                        <span class="action-name">메모</span>
+                        <span class="action-name">${noteLabel}</span>
                     </div>
                 </div>
                 <div class="action-actions">
-                    <button type="button" class="action-icon-btn" data-action-btn="edit" title="${window.I18nService ? window.I18nService.t('editAction') : '수정/메모'}">
+                    <button type="button" class="action-icon-btn ${hasMemoNote ? 'active' : ''}" data-action-btn="memo" title="${window.I18nService ? window.I18nService.t('memo') : '메모'}">
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
                             <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
@@ -839,11 +841,42 @@ export class TacticUI {
                 </div>
             `;
 
-            if (action.memo) {
+            // Memo section for note item - editable inline, toggleable
+            const memoContainer = document.createElement('div');
+            memoContainer.className = 'action-memo-container';
+
+            // Initially hidden unless there's a memo
+            if (!action.memo) {
+                memoContainer.classList.add('hidden');
+            }
+
+            if (this.isEditMode()) {
+                const memoInput = document.createElement('input');
+                memoInput.type = 'text';
+                memoInput.className = 'action-memo-inline note-memo-input';
+                memoInput.value = action.memo || '';
+                memoInput.placeholder = window.I18nService ? window.I18nService.t('memoPlaceholder', '메모...') : '메모...';
+
+                memoInput.addEventListener('change', (e) => {
+                    this.store.updateAction(turnIdx, colKey, actionIdx, {
+                        ...action,
+                        memo: e.target.value
+                    });
+                });
+
+                memoInput.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                });
+
+                memoContainer.appendChild(memoInput);
+                item.appendChild(memoContainer);
+            } else if (action.memo) {
                 const memo = document.createElement('div');
                 memo.className = 'action-memo';
                 memo.textContent = action.memo;
-                item.appendChild(memo);
+                memoContainer.classList.remove('hidden');
+                memoContainer.appendChild(memo);
+                item.appendChild(memoContainer);
             }
 
             item.querySelectorAll('button[data-action-btn]').forEach(btn => {
@@ -851,8 +884,15 @@ export class TacticUI {
                     e.stopPropagation();
                     if (!this.isEditMode()) return;
                     const kind = btn.dataset.actionBtn;
-                    if (kind === 'edit') {
-                        this.openActionModal(turnIdx, colKey, char, actionIdx, action);
+                    if (kind === 'memo') {
+                        // Toggle memo container visibility
+                        memoContainer.classList.toggle('hidden');
+                        btn.classList.toggle('active', !memoContainer.classList.contains('hidden'));
+                        // Focus input when shown
+                        if (!memoContainer.classList.contains('hidden')) {
+                            const input = memoContainer.querySelector('.action-memo-inline');
+                            if (input) input.focus();
+                        }
                         return;
                     }
                     if (kind === 'duplicate') {
@@ -884,6 +924,7 @@ export class TacticUI {
         const isEditMode = this.isEditMode();
 
         // Build action item with inline drag handle
+        const hasMemo = !!(action.memo);
         item.innerHTML = `
             <div class="action-content-wrapper">
                 <div class="action-drag-handle" title="드래그하여 이동">
@@ -899,7 +940,7 @@ export class TacticUI {
                 <div class="action-main-row"></div>
             </div>
             <div class="action-actions">
-                <button type="button" class="action-icon-btn" data-action-btn="edit" title="${window.I18nService ? window.I18nService.t('editAction') : '수정/메모'}">
+                <button type="button" class="action-icon-btn ${hasMemo ? 'active' : ''}" data-action-btn="memo" title="${window.I18nService ? window.I18nService.t('memo') : '메모'}">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
                         <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
@@ -966,7 +1007,9 @@ export class TacticUI {
                 if (!m) return;
                 partyNames.push(m.name);
             });
+            const noteLabel = window.I18nService ? window.I18nService.t('noteAction', '메모') : '메모';
             const actorOptions = [
+                { label: noteLabel, value: '__NOTE__', image: '' },
                 { label: (window.I18nService ? window.I18nService.t('wonder') : '원더'), value: '원더', image: `${this.baseUrl}/assets/img/tier/원더.webp` }
             ];
             partyNames.forEach(n => {
@@ -1004,6 +1047,19 @@ export class TacticUI {
 
             // 4. Define Handlers
             const handleActorChange = (newActor) => {
+                // Handle note selection
+                if (newActor === '__NOTE__') {
+                    this.store.updateAction(turnIdx, colKey, actionIdx, {
+                        isNote: true,
+                        character: '',
+                        wonderPersona: '',
+                        wonderPersonaIndex: -1,
+                        action: '',
+                        memo: action.memo || ''
+                    });
+                    return;
+                }
+
                 let newPersona = '';
                 let newAction = '스킬1';
 
@@ -1140,12 +1196,44 @@ export class TacticUI {
             mainRow.appendChild(actionSpan);
         }
 
-        // Memo (if exists)
-        if (action.memo) {
+        // Memo section - editable inline, toggleable
+        const memoContainer = document.createElement('div');
+        memoContainer.className = 'action-memo-container';
+
+        // Initially hidden unless there's a memo
+        if (!action.memo) {
+            memoContainer.classList.add('hidden');
+        }
+
+        if (this.isEditMode()) {
+            // Editable input in edit mode
+            const memoInput = document.createElement('input');
+            memoInput.type = 'text';
+            memoInput.className = 'action-memo-inline';
+            memoInput.value = action.memo || '';
+            memoInput.placeholder = window.I18nService ? window.I18nService.t('memoPlaceholder', '메모...') : '메모...';
+
+            memoInput.addEventListener('change', (e) => {
+                this.store.updateAction(turnIdx, colKey, actionIdx, {
+                    ...action,
+                    memo: e.target.value
+                });
+            });
+
+            memoInput.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
+
+            memoContainer.appendChild(memoInput);
+            item.appendChild(memoContainer);
+        } else if (action.memo) {
+            // Read-only display in view mode
             const memo = document.createElement('div');
             memo.className = 'action-memo';
             memo.textContent = action.memo;
-            item.appendChild(memo);
+            memoContainer.classList.remove('hidden');
+            item.appendChild(memoContainer);
+            memoContainer.appendChild(memo);
         }
 
         // Action buttons (only work in edit mode)
@@ -1154,8 +1242,15 @@ export class TacticUI {
                 e.stopPropagation();
                 if (!this.isEditMode()) return;
                 const kind = btn.dataset.actionBtn;
-                if (kind === 'edit') {
-                    this.openActionModal(turnIdx, colKey, char, actionIdx, action);
+                if (kind === 'memo') {
+                    // Toggle memo container visibility
+                    memoContainer.classList.toggle('hidden');
+                    btn.classList.toggle('active', !memoContainer.classList.contains('hidden'));
+                    // Focus input when shown
+                    if (!memoContainer.classList.contains('hidden')) {
+                        const input = memoContainer.querySelector('.action-memo-inline');
+                        if (input) input.focus();
+                    }
                     return;
                 }
                 if (kind === 'duplicate') {
@@ -1401,7 +1496,7 @@ export class TacticUI {
 
                 // Localized display name
                 if (name === '__NOTE__') {
-                    opt.textContent = '메모';
+                    opt.textContent = window.I18nService ? window.I18nService.t('noteAction', '메모') : '메모';
                 } else if (name === '원더') {
                     opt.textContent = window.I18nService ? window.I18nService.t('wonder') : '원더';
                 } else {

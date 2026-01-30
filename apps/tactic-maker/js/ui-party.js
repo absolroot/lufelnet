@@ -320,6 +320,7 @@ export class PartyUI {
         if (!data) {
             slotEl.classList.add('empty');
             slotEl.classList.remove('active');
+            slotEl.style.removeProperty('--slot-char-color');
             slotContent.innerHTML = `<span class="empty-text" data-i18n="dragCharacter">클릭하여 선택</span>`;
             if (slotHeader) {
                 // restore default header label (keep existing i18n span)
@@ -335,6 +336,14 @@ export class PartyUI {
 
         const characterData = window.characterData || {};
         const charInfo = characterData[data.name] || {};
+
+        // Apply character color as transparent background
+        const charColor = charInfo.color || null;
+        if (charColor) {
+            slotEl.style.setProperty('--slot-char-color', charColor);
+        } else {
+            slotEl.style.removeProperty('--slot-char-color');
+        }
 
         const getCurrentLang = () => {
             if (window.I18nService && typeof window.I18nService.getCurrentLanguage === 'function') {

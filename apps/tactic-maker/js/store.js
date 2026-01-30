@@ -7,6 +7,7 @@ export class TacticStore {
         // Initial State
         this.state = {
             title: "",
+            memo: "", // Tactic description memo
             // Party: [Slot1, Slot2, Slot3, Elucidator, Slot4]
             // Each slot: { name, order, ritual(0-6), modification(0-6), role(J&C only), mainRev, subRev }
             party: [null, null, null, null, null],
@@ -39,6 +40,58 @@ export class TacticStore {
         this.redoStack = [];
         this.maxHistory = 30;
         this._skipHistory = false;
+
+        // Auto-save
+        this.autoSaveKey = 'tactic_maker_autosave';
+        this.autoSaveTimeKey = 'tactic_maker_autosave_time';
+    }
+
+    // --- Auto-save Methods ---
+
+    saveToLocalStorage() {
+        try {
+            const data = JSON.stringify(this.state);
+            localStorage.setItem(this.autoSaveKey, data);
+            const now = new Date().toLocaleTimeString();
+            localStorage.setItem(this.autoSaveTimeKey, now);
+            this.notify('autoSave', { time: now });
+            return now;
+        } catch (e) {
+            console.error('[TacticStore] Auto-save failed:', e);
+            return null;
+        }
+    }
+
+    loadFromLocalStorage() {
+        try {
+            const data = localStorage.getItem(this.autoSaveKey);
+            if (data) {
+                const parsed = JSON.parse(data);
+                this.loadData(parsed);
+                const time = localStorage.getItem(this.autoSaveTimeKey);
+                return time;
+            }
+        } catch (e) {
+            console.error('[TacticStore] Failed to load auto-save:', e);
+        }
+        return null;
+    }
+
+    getLastSaveTime() {
+        return localStorage.getItem(this.autoSaveTimeKey) || null;
+    }
+
+    clearLocalStorage() {
+        localStorage.removeItem(this.autoSaveKey);
+        localStorage.removeItem(this.autoSaveTimeKey);
+    }
+
+    // --- Memo Methods ---
+
+    setMemo(memo) {
+        this._saveHistory();
+        this.state.memo = memo;
+        this.notify('memoChange', memo);
     }
 
     // --- Subscription ---
@@ -667,6 +720,7 @@ export class TacticStore {
         // Validate and load data
         this.state = {
             title: data.title || '',
+            memo: data.memo || '',
             party: data.party || [null, null, null, null, null],
             wonder: data.wonder || {
                 order: 1,
@@ -748,6 +802,7 @@ export class TacticStore {
         this._saveHistory();
         this.state = {
             title: '',
+            memo: '',
             party: [null, null, null, null, null],
             wonder: {
                 order: 1,
@@ -761,6 +816,7 @@ export class TacticStore {
             },
             turns: []
         };
+        this.clearLocalStorage();
         this.notify('fullReload', this.state);
         this.checkPartySideEffects();
     }

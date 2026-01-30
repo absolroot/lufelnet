@@ -82,6 +82,7 @@ body {
 .sheet-status {
     display: flex;
     gap: 8px;
+    flex-wrap: wrap;
 }
 
 .btn-storage {
@@ -96,11 +97,92 @@ body {
     display: flex;
     align-items: center;
     gap: 6px;
+    position: relative;
 }
 
 .btn-storage:hover {
     background: rgba(255, 255, 255, 0.12);
     border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Icon-only buttons with tooltip on hover */
+.btn-icon-hover {
+    padding: 6px 8px;
+}
+
+.btn-icon-hover .btn-label {
+    display: none;
+}
+
+/* Tooltip style for icon buttons */
+.btn-icon-hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 6px;
+    padding: 4px 8px;
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    font-size: 11px;
+    white-space: nowrap;
+    color: #fff;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease;
+    z-index: 1000;
+}
+
+.btn-icon-hover::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-bottom-color: rgba(0, 0, 0, 0.9);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease;
+    z-index: 1001;
+}
+
+.btn-icon-hover:hover::after,
+.btn-icon-hover:hover::before {
+    opacity: 1;
+}
+
+/* Auto save time display - outside button */
+.auto-save-status {
+    display: flex;
+    align-items: center;
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.5);
+    white-space: nowrap;
+    padding: 0 4px;
+}
+
+.auto-save-status.hidden {
+    display: none;
+}
+
+/* Edit mode button keeps text always visible */
+.btn-edit-toggle {
+    flex-direction: row !important;
+    padding: 6px 12px !important;
+    gap: 6px !important;
+}
+
+.btn-edit-toggle span {
+    display: inline !important;
+}
+
+/* No tooltip for edit toggle */
+.btn-edit-toggle::after,
+.btn-edit-toggle::before {
+    display: none !important;
 }
 
 .btn-edit-toggle.active {
@@ -126,6 +208,39 @@ body {
 
 .tactic-title-input:focus {
     border-bottom-color: var(--accent-color);
+}
+
+/* ==========================================================================
+   Tactic Memo (Description Box)
+   ========================================================================== */
+.tactic-memo-container {
+    margin-bottom: 30px;
+}
+
+.tactic-memo-input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 0.9rem;
+    color: #ccc;
+    outline: none;
+    resize: vertical;
+    min-height: 60px;
+    max-height: 200px;
+    font-family: inherit;
+    box-sizing: border-box;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.tactic-memo-input:focus {
+    border-color: var(--accent-color);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.tactic-memo-input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
 }
 
 /* ==========================================================================
@@ -175,9 +290,31 @@ body {
 }
 
 .slot-card.active {
-    border-style: solid;
+    border-style: none;
     background: rgba(255, 255, 255, 0.08);
     /* dmg-calc style */
+}
+
+/* Character color tint on slot card */
+.slot-card.active[style*="--slot-char-color"] {
+    position: relative;
+    overflow: hidden;
+}
+
+.slot-card.active[style*="--slot-char-color"]::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--slot-char-color, transparent);
+    opacity: 0.15;
+    pointer-events: none;
+    border-radius: inherit;
+    z-index: 0;
+}
+
+.slot-card.active[style*="--slot-char-color"] > * {
+    position: relative;
+    z-index: 1;
 }
 
 .slot-card.selecting {
@@ -1326,7 +1463,7 @@ body:not(.tactic-edit-mode) .ritual-mod-wrapper {
 
 /* Card wrapper - 90px same as modal */
 .wp-img-wrapper {
-    width: 90px;
+    width: 80px;
     flex-shrink: 0;
 }
 
@@ -1390,7 +1527,7 @@ body:not(.tactic-edit-mode) .ritual-mod-wrapper {
 .wp-skills {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 4px;
 }
 
 .wp-skill-input {
@@ -1527,7 +1664,7 @@ body:not(.tactic-edit-mode) .ritual-mod-wrapper {
     width: 100%;
     max-width: 40px;
     padding: 4px 8px;
-    background: #3a3a3a;
+    background: #1f1f1f;
     border: 0px solid var(--border-color);
     border-radius: 6px;
     color: #fff;
@@ -1552,8 +1689,8 @@ body:not(.tactic-edit-mode) .ritual-mod-wrapper {
 }
 
 .preset-icon {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
     object-fit: contain;
 }
 
@@ -1564,7 +1701,7 @@ body:not(.tactic-edit-mode) .ritual-mod-wrapper {
 .preset-icons img[src*="r4"],
 .preset-icons img[src*="r5"],
 .preset-icons img[src*="r6"] {
-    scale: 0.9;
+    scale: 0.85;
 }
 
 /* ==========================================================================
@@ -1689,7 +1826,7 @@ body:not(.tactic-edit-mode) .ritual-mod-wrapper {
 }
 
 .role-change-hint {
-    font-size: 14px;
+    font-size: 12px;
     color: rgba(255, 255, 255, 0.7);
     line-height: 1;
 }
@@ -1810,4 +1947,28 @@ body:not(.tactic-edit-mode) .revelation-button {
     opacity: 0.8;
     background: rgba(0, 0, 0, 0.2);
     border-color: transparent;
+}
+
+/* ==========================================================================
+   View Mode - Hide Empty Elements
+   ========================================================================== */
+
+/* Hide tactic title container when input is empty (placeholder shown) in view mode */
+body:not(.tactic-edit-mode) .tactic-title-container:has(.tactic-title-input:placeholder-shown) {
+    display: none;
+}
+
+/* Hide tactic memo container when textarea is empty in view mode */
+body:not(.tactic-edit-mode) .tactic-memo-container:has(.tactic-memo-input:placeholder-shown) {
+    display: none;
+}
+
+/* Hide empty wp-memo-input in view mode */
+body:not(.tactic-edit-mode) .wp-memo-input:placeholder-shown {
+    display: none;
+}
+
+/* Also hide skill inputs in view mode if they're empty */
+body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
+    display: none;
 }

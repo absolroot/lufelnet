@@ -110,5 +110,14 @@ export default {
     shareFailed: "공유에 실패했습니다.",
     // SEO
     pageTitleFull: "택틱 메이커 - 페르소나5 더 팬텀 X 루페르넷",
-    pageDescription: "페르소나5 더 팬텀 X 택틱 메이커. 파티와 스킬 순서를 설정하고 공유하세요."
+    pageDescription: "페르소나5 더 팬텀 X 택틱 메이커. 파티와 스킬 순서를 설정하고 공유하세요.",
+    // Auto Save
+    autoSave: "임시저장",
+    autoSaveTime: "저장됨: {0}",
+    resetData: "초기화",
+    resetConfirm: "모든 데이터를 초기화하시겠습니까?",
+    // Tactic Memo
+    tacticMemoPlaceholder: "전체 택틱에 대한 설명을 입력하세요...",
+    // Note Action
+    noteAction: "메모"
 };

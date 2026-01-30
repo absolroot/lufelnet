@@ -576,6 +576,7 @@ export class TacticStore {
         // Normalize action data
         // NOTE: action.type(auto/manual) is deprecated; keep the field out for new actions.
         const action = {
+            isNote: !!actionData.isNote,
             character: actionData.character || '',
             wonderPersona: actionData.wonderPersona || '',
             wonderPersonaIndex: actionData.wonderPersonaIndex ?? -1,

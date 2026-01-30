@@ -469,10 +469,10 @@ Object.assign(window.characterData, {
         "persona_en": "Chiyome",
         "persona_jp": "チヨメ",
         "name": "타네무라 리코·매화",
-        "name_en": "Riko·Vast",
+        "name_en": "Tempest Riko",
         "name_jp": "多祢村 理子・花見",
         "name_cn": "多祢村理子·未央",
-        "codename": "WIND·Vast",
+        "codename": "WIND·Tempest",
         "skill_item": 4
     },
     "카스미": {

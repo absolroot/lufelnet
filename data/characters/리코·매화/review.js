@@ -1,6 +1,6 @@
 (function () {
     window.characterReview = window.characterReview || {};
-    window.characterReview["리코·매화"] = { name_en: "Riko·Vast", name_jp: "多祢村 理子・花見", codename: "WIND·Vast",
+    window.characterReview["리코·매화"] = { name_en: "Tempest Riko", name_jp: "多祢村 理子・花見", codename: "Wind·Tempest",
         review: `
 **크리티컬 공격 강화에 특화**된 SP기반 버퍼다.
 

@@ -22,7 +22,7 @@ window.WeaponData["리코·매화"] = {
   }
 };
 window.enCharacterWeaponData["리코·매화"] = {
-  "name": "Riko·Vast",
+  "name": "Tempest Riko",
   "weapon4-1": {
     "name": "Sunny Day, Fleeting Sparrows",
     "health": 1918,

@@ -329,9 +329,9 @@ const enCharacterRitualData = {
     },
 
     "리코·매화": {
-        "name": "Riko·Vast",
+        "name": "Tempest Riko",
         "r0": "Plums Bloom, Petals Rain",
-        "r0_detail": "Increase Wind Vast's Max SP to 200 and her SP Recovery by 60%. SP Recovery will affect Persona skills SP restored amount. Consume all SP when using [Fragrance of Time], which gives different effects depending on the SP consumed.",
+        "r0_detail": "Increase Wind Tempest's Max SP to 200 and her SP Recovery by 60%. SP Recovery will affect Persona skills SP restored amount. Consume all SP when using [Fragrance of Time], which gives different effects depending on the SP consumed.",
         "r1": "Piercing Winter, Not Awaited",
         "r1_detail": "Change the condition for [Wither] from [Wind of Vitality] from 'when taking Wind DMG' to 'when taking any Elemental DMG', additionally increase the main target's CRIT DMG Taken by 30%. \n[Under the Umbrella] additionally increase Dominate Thieves' ATK by 25%.",
         "r2": "Long Nights, Wakeful Heart",
@@ -343,7 +343,7 @@ const enCharacterRitualData = {
         "r5": "Calm Heart, Carefree Mind",
         "r5_detail": "[Wind of Vatility] Lv. +3, up to a maximum of Lv. 15. [Combat Skills] Lv. +3, up to a maximum of Lv. 15.",
         "r6": "Yearning Spring, Masked Bloom",
-        "r6_detail": "[Fragrance of Time] now works on all other allies, after the main target used a Persona skill, immediately use [Wind of Vitality] to the enemy once, this can only trigger once per [Fragrance of Time]. \nExtend [Wither] from [Wind of Vitality] by 1 turn. When Wind Vast is present, when allies deal damage with a CRIT Rate over 100%, for every 1%, additionally increases that damage's CRIT DMG by 2%."
+        "r6_detail": "[Fragrance of Time] now works on all other allies, after the main target used a Persona skill, immediately use [Wind of Vitality] to the enemy once, this can only trigger once per [Fragrance of Time]. \nExtend [Wither] from [Wind of Vitality] by 1 turn. When Wind Tempest is present, when allies deal damage with a CRIT Rate over 100%, for every 1%, additionally increases that damage's CRIT DMG by 2%."
     },
 
     "마사키": {

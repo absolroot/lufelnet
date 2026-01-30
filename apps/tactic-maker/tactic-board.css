@@ -183,12 +183,12 @@ body:not(.tactic-edit-mode) .turn-row {
 .action-item {
     padding: 3px 10px 3px 4px;
     background: linear-gradient(135deg, rgba(40, 40, 40, 0.9), rgba(30, 30, 30, 0.95));
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 6px;
+    border: 0px solid rgba(255, 255, 255, 0.15);
+    border-radius: 0px;
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 0px;
     transition: all 0.2s;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     position: relative;

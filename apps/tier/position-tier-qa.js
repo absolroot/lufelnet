@@ -13,7 +13,7 @@ const tierQaData = {
 미나미(MARIAN) - 일반 가챠로 뽑을 수 있는 유닛으로 의식1의 허들이 낮고, 관통 버프를 제공합니다.
 마사키(CHERISH) - 일반 가챠로 뽑을 수 있는 유닛으로 의식1의 허들이 낮고, 관통 버프를 제공합니다. 
 토모코·여름 (MOKO·Seaside) - 의식1부터 아군 전체 힐 제공이 가능해 범용성이 생깁니다.
-리코·매화 (Wind·Vast) - 1스킬이 질풍 속성 한정에서 전체 속성으로 확장됩니다. 다수의 적과 싸울 때는 2스킬이 메인이 되므로 의식0이어도 문제가 없습니다.
+리코·매화 (Wind·Tempest) - 1스킬이 질풍 속성 한정에서 전체 속성으로 확장됩니다. 다수의 적과 싸울 때는 2스킬이 메인이 되므로 의식0이어도 문제가 없습니다.
 J&C - 스킬3이 자동 발동되어 3턴 사이클이 2턴 사이클로 감축됩니다. 스킬3의 지속시간은 2턴이며, 전용 무기의 버프 또한 스킬3을 사용할 때 중첩되지 않아 의식0은 불완전한 형태로 티어 비교가 어렵습니다.`
             },
             {
@@ -38,7 +38,7 @@ J&C - 스킬3이 자동 발동되어 3턴 사이클이 2턴 사이클로 감축�
 Minami (Marian) - A general gacha unit with a low A1 barrier and provides a Penetrate buff.
 Masaki (Cherish) - A general gacha unit with a low A1 barrier and provides a Penetrate buff.
 Tomoko·Seaside (Moko·Seaside) - Gains full-team healing from A1, boosting overall usability.
-Riko·Vast (Wind·Vast) - Skill 1 expands from Wind-only to all elements. Skill 2 becomes the core in multi-target fights, so A0 is still viable.
+Tempest Riko (Wind·Tempest) - Skill 1 expands from Wind-only to all elements. Skill 2 becomes the core in multi-target fights, so A0 is still viable.
 Justine & Caroline (J&C) - Skill 3 triggers automatically, reducing its cycle from 3 to 2 turns. Its duration is 2 turns, and the exclusive weapon's buff doesn’t stack unless Skill 3 is used, making A0 an incomplete form and hard to compare in tiers.`
             },
             {
@@ -63,7 +63,7 @@ Justine & Caroline (J&C) - Skill 3 triggers automatically, reducing its cycle fr
 ミナミ（マリアン） - 通常ガチャで入手可能なユニットで、凸1のハードルが低く、貫通バフを提供します。
 マサキ（チェリッシュ） - 通常ガチャで入手可能なユニットで、凸1のハードルが低く、貫通バフを提供します。
 トモコ·夏（モコ·Seaside） - 凸1から味方全体の回復が可能となり、汎用性が上昇します。
-リコ·梅（Wind·Vast） - スキル1が疾風属性限定から全属性に拡張されます。複数の敵と戦う場合はスキル2がメインになるため、凸0でも問題ありません。
+リコ·梅（Wind·Tempest） - スキル1が疾風属性限定から全属性に拡張されます。複数の敵と戦う場合はスキル2がメインになるため、凸0でも問題ありません。
 ジュスティーヌ＆カロリーヌ（J&C） - スキル3が自動発動し、3ターン周期が2ターンに短縮されます。持続時間は2ターンで、専用武器のバフもスキル3使用時でないと重複せず、凸0では不完全でティア評価が難しいです。`
             },
             {

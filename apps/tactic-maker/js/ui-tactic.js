@@ -736,9 +736,9 @@ export class TacticUI {
 
         // skillList order: 스킬1, 스킬2, 스킬3, HIGHLIGHT, 테우르기아, 총격, 근접, 방어, 특수 스킬(header), ONE MORE, 아이템
         const skillList = {
-            kr: ['스킬1', '스킬2', '스킬3', 'HIGHLIGHT', '테우르기아', '총격', '근접', '방어', '특수 스킬', 'ONE MORE', '아이템'],
-            en: ['Skill1', 'Skill2', 'Skill3', 'HIGHLIGHT', 'Theurgy', 'Gunshot', 'Melee', 'Defense', 'Special Skill', 'ONE MORE', 'Item'],
-            jp: ['スキル1', 'スキル2', 'スキル3', 'HIGHLIGHT', 'テウルギア', '銃撃', '近接攻撃', 'ガード', 'スペシャルスキル', '1more', 'アイテム']
+            kr: ['스킬1', '스킬2', '스킬3', 'HIGHLIGHT', '테우르기아', '총격', '근접', '방어', '공용 스킬', 'ONE MORE', '아이템'],
+            en: ['Skill1', 'Skill2', 'Skill3', 'HIGHLIGHT', 'Theurgy', 'Gunshot', 'Melee', 'Defense', 'Common Skill', 'ONE MORE', 'Item'],
+            jp: ['スキル1', 'スキル2', 'スキル3', 'HIGHLIGHT', 'テウルギア', '銃撃', '近接攻撃', 'ガード', '共用スキル', '1more', 'アイテム']
         };
 
         const list = skillList[lang] || skillList.kr;
@@ -764,6 +764,7 @@ export class TacticUI {
 
             // Special actions for Wonder - no Theurgia (Wonder is not persona3)
             options.push({ label: list[8], isHeader: true }); // 특수 스킬
+            options.push({ label: list[8], value: '특수 스킬' });
             options.push({ label: list[3], value: 'HIGHLIGHT' });
             options.push({ label: list[5], value: '총격' });
             options.push({ label: list[6], value: '근접' });
@@ -784,6 +785,7 @@ export class TacticUI {
 
             // Common actions
             options.push({ label: list[8], isHeader: true }); // 특수 스킬
+            options.push({ label: list[8], value: '특수 스킬' });
             if (isPersona3) {
                 options.push({ label: list[4], value: 'Theurgia' });
             } else {
@@ -804,6 +806,67 @@ export class TacticUI {
         item.dataset.turnIndex = turnIdx;
         item.dataset.columnKey = colKey;
         item.dataset.actionIndex = actionIdx;
+
+        const isNote = !!action.isNote || (!action.character && !action.action && !!action.memo);
+
+        if (isNote) {
+            item.classList.add('note-action-item');
+            item.innerHTML = `
+                <div class="action-content-wrapper">
+                    <div class="action-main-row">
+                        <span class="action-name">메모</span>
+                    </div>
+                </div>
+                <div class="action-actions">
+                    <button type="button" class="action-icon-btn" data-action-btn="edit" title="${window.I18nService ? window.I18nService.t('editAction') : '수정/메모'}">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                        </svg>
+                    </button>
+                    <button type="button" class="action-icon-btn" data-action-btn="duplicate" title="${window.I18nService ? window.I18nService.t('duplicate') || '복제' : '복제'}">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="9" y="9" width="13" height="13" rx="2"/>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                        </svg>
+                    </button>
+                    <button type="button" class="action-icon-btn" data-action-btn="delete" title="${window.I18nService ? window.I18nService.t('delete') : '삭제'}">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="3 6 5 6 21 6"/>
+                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                        </svg>
+                    </button>
+                </div>
+            `;
+
+            if (action.memo) {
+                const memo = document.createElement('div');
+                memo.className = 'action-memo';
+                memo.textContent = action.memo;
+                item.appendChild(memo);
+            }
+
+            item.querySelectorAll('button[data-action-btn]').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (!this.isEditMode()) return;
+                    const kind = btn.dataset.actionBtn;
+                    if (kind === 'edit') {
+                        this.openActionModal(turnIdx, colKey, char, actionIdx, action);
+                        return;
+                    }
+                    if (kind === 'duplicate') {
+                        this.store.addAction(turnIdx, colKey, { ...action, isNote: true, character: '', action: '' });
+                        return;
+                    }
+                    if (kind === 'delete') {
+                        this.store.removeAction(turnIdx, colKey, actionIdx);
+                    }
+                });
+            });
+
+            return item;
+        }
 
         // Character color tint (if available)
         const actorName = action.character || '';
@@ -1278,6 +1341,9 @@ export class TacticUI {
             : (window.I18nService ? window.I18nService.t('addAction') : '액션 추가');
 
         const getCharByName = (name) => {
+            if (name === '__NOTE__') {
+                return { type: 'note', name: '' };
+            }
             if (name === '원더') {
                 return { type: 'wonder', name: '원더', displayName: '원더', order: 0, slotIndex: -1 };
             }
@@ -1285,10 +1351,28 @@ export class TacticUI {
         };
 
         const applyCharacterUI = (name) => {
+            const isNoteSelected = String(name) === '__NOTE__';
             const isWonderSelected = String(name) === '원더';
             if (personaGroup) {
                 personaGroup.style.display = isWonderSelected ? 'block' : 'none';
             }
+
+            if (actionSelect) {
+                actionSelect.disabled = false;
+                actionSelect.parentElement.style.display = 'block';
+            }
+
+            if (isNoteSelected) {
+                if (personaGroup) personaGroup.style.display = 'none';
+                if (personaValueInput) personaValueInput.value = '';
+                if (actionSelect) {
+                    actionSelect.value = '';
+                    actionSelect.disabled = true;
+                    actionSelect.parentElement.style.display = 'none';
+                }
+                return;
+            }
+
             if (isWonderSelected) {
                 this.populatePersonaSelector(modal);
             } else {
@@ -1303,6 +1387,7 @@ export class TacticUI {
         // Populate character select (all available characters)
         if (characterSelect) {
             const list = [];
+            list.push('__NOTE__');
             list.push('원더');
             (this.store.state.party || []).forEach((m, idx) => {
                 if (!m) return;
@@ -1315,7 +1400,9 @@ export class TacticUI {
                 opt.value = name;
 
                 // Localized display name
-                if (name === '원더') {
+                if (name === '__NOTE__') {
+                    opt.textContent = '메모';
+                } else if (name === '원더') {
                     opt.textContent = window.I18nService ? window.I18nService.t('wonder') : '원더';
                 } else {
                     const charData = (window.characterData || {})[name] || {};
@@ -1331,7 +1418,8 @@ export class TacticUI {
         }
 
         // Initial UI based on existing action or current column
-        const initialCharName = existingAction?.character || char.name || '';
+        const isNote = !!existingAction?.isNote || (!existingAction?.character && !existingAction?.action && !!existingAction?.memo);
+        const initialCharName = isNote ? '__NOTE__' : (existingAction?.character || char.name || '');
         if (characterSelect) {
             characterSelect.value = initialCharName;
         }
@@ -1348,11 +1436,13 @@ export class TacticUI {
                 this.updateDropdownDisplay(modal, pVal);
             }
 
-            actionSelect.value = existingAction.action || '';
+            if (actionSelect && !isNote) {
+                actionSelect.value = existingAction.action || '';
+            }
             memoInput.value = existingAction.memo || '';
         } else {
             // Default values
-            actionSelect.value = '';
+            if (actionSelect) actionSelect.value = '';
             memoInput.value = '';
         }
 
@@ -1367,8 +1457,9 @@ export class TacticUI {
         newSaveBtn.addEventListener('click', () => {
             const selectedCharacterName = characterSelect ? String(characterSelect.value || '') : '';
             const isWonderSelected = selectedCharacterName === '원더';
+            const isNoteSelected = selectedCharacterName === '__NOTE__';
             const personaValue = isWonderSelected ? personaValueInput.value : '';
-            const actionValue = actionSelect.value;
+            const actionValue = (actionSelect && !isNoteSelected) ? actionSelect.value : '';
             const memoValue = memoInput.value;
 
             // Get persona index
@@ -1379,10 +1470,11 @@ export class TacticUI {
             }
 
             const actionData = {
-                character: selectedCharacterName,
+                isNote: isNoteSelected,
+                character: isNoteSelected ? '' : selectedCharacterName,
                 wonderPersona: personaValue,
                 wonderPersonaIndex: personaIndex,
-                action: actionValue,
+                action: isNoteSelected ? '' : actionValue,
                 memo: memoValue
             };
 
@@ -1499,9 +1591,9 @@ export class TacticUI {
 
         // Common action labels
         const actionLabels = {
-            kr: { highlight: 'HIGHLIGHT', oneMore: 'ONE MORE', gun: '총격', melee: '근접', guard: '방어', item: '아이템', theurgia: '테우르기아', special: '특수 스킬', common: '공통 액션' },
-            en: { highlight: 'HIGHLIGHT', oneMore: 'ONE MORE', gun: 'Gunshot', melee: 'Melee', guard: 'Defense', item: 'Item', theurgia: 'Theurgy', special: 'Special Skill', common: 'Common Actions' },
-            jp: { highlight: 'HIGHLIGHT', oneMore: '1more', gun: '銃撃', melee: '近接攻撃', guard: 'ガード', item: 'アイテム', theurgia: 'テウルギア', special: 'スペシャルスキル', common: '共通アクション' }
+            kr: { highlight: 'HIGHLIGHT', oneMore: 'ONE MORE', gun: '총격', melee: '근접', guard: '방어', item: '아이템', theurgia: '테우르기아', special: '공용 스킬', common: '공통 액션' },
+            en: { highlight: 'HIGHLIGHT', oneMore: 'ONE MORE', gun: 'Gunshot', melee: 'Melee', guard: 'Defense', item: 'Item', theurgia: 'Theurgy', special: 'Common Skill', common: 'Common Actions' },
+            jp: { highlight: 'HIGHLIGHT', oneMore: '1more', gun: '銃撃', melee: '近接攻撃', guard: 'ガード', item: 'アイテム', theurgia: 'テウルギア', special: '共用スキル', common: '共通アクション' }
         };
 
         const skills = skillLabels[lang] || skillLabels.kr;
@@ -1542,6 +1634,7 @@ export class TacticUI {
             specialGroup.label = actions.special;
 
             const specialActions = [
+                { label: actions.special, value: '특수 스킬' },
                 { label: actions.highlight, value: 'HIGHLIGHT' },
                 { label: actions.gun, value: '총격' },
                 { label: actions.melee, value: '근접' },
@@ -1577,6 +1670,7 @@ export class TacticUI {
             commonGroup.label = actions.common;
 
             const commonActions = [
+                { label: actions.special, value: '특수 스킬' },
                 ...(isPersona3 ? [{ label: actions.theurgia, value: 'Theurgia' }] : [{ label: actions.highlight, value: 'HIGHLIGHT' }]),
                 { label: actions.gun, value: '총격' },
                 { label: actions.melee, value: '근접' },

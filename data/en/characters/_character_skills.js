@@ -823,7 +823,7 @@ const enCharacterSkillsData = {
     },
 
     "리코·매화": {
-        "name": "Riko·Vast",
+        "name": "Tempest Riko",
         "skill1": {
             "name": "Wind of Vitality",
             "element": "질풍",

@@ -93,9 +93,6 @@ export class ImportExport {
         if (Array.isArray(data.turns) && Array.isArray(data.party)) {
             return 'raw';
         }
-        if (Array.isArray(data.t) && Array.isArray(data.p)) {
-            return 'compressed';
-        }
         return 'unknown';
     }
 
@@ -123,12 +120,7 @@ export class ImportExport {
             throw new Error('Unrecognized file format');
         }
 
-        let internalState;
-        if (format === 'raw') {
-            internalState = this.parseRawFormat(data);
-        } else {
-            internalState = this.parseCompressedFormat(data);
-        }
+        const internalState = this.parseRawFormat(data);
 
         // Load data into store
         this.store.loadData(internalState);
@@ -146,93 +138,274 @@ export class ImportExport {
      * Parse raw format to internal state
      */
     parseRawFormat(data) {
-        const SPECIALS = ['HIGHLIGHT', 'ONE MORE', '총격', '근접', '방어', '아이템', 'Theurgia'];
+        const SPECIALS = ['HIGHLIGHT', 'ONE MORE', '총격', '근접', '방어', '아이템', 'Theurgia', '테우르기아', '특수 스킬'];
         const wonderPersonas = data.wonderPersonas || ['', '', ''];
 
-        // Parse party
-        const party = (data.party || []).map((p, idx) => {
-            if (!p || !p.name) return null;
+        let wonderOrderFromParty = null;
+
+        // Parse party (legacy export already uses the same slot ordering as new store)
+        // New store: [slot1, slot2, slot3, elucidator, slot4]
+        const party = [null, null, null, null, null];
+
+        const legacyParty = Array.isArray(data.party) ? data.party : [];
+        const nonWonder = [];
+
+        legacyParty.forEach((p) => {
+            if (!p || !p.name) return;
+
+            if (p.name === '원더' || p.name === 'Wonder') {
+                const ord = parseInt(String(p.order || ''), 10);
+                if (Number.isFinite(ord)) {
+                    wonderOrderFromParty = ord;
+                }
+                return;
+            }
+
+            nonWonder.push(p);
+        });
+
+        const elucidatorCandidate = nonWonder.find(p => String(p.order || '') === '-');
+        const battleCandidates = nonWonder.filter(p => String(p.order || '') !== '-');
+
+        battleCandidates.sort((a, b) => {
+            const ao = parseInt(String(a.order || ''), 10);
+            const bo = parseInt(String(b.order || ''), 10);
+
+            const an = Number.isFinite(ao);
+            const bn = Number.isFinite(bo);
+            if (an && bn) return ao - bo;
+            if (an && !bn) return -1;
+            if (!an && bn) return 1;
+            return 0;
+        });
+
+        const toInternalPartyMember = (p, forceOrderDash, fallbackOrder) => {
             return {
                 name: p.name,
-                order: String(p.order || (idx + 1)),
+                order: forceOrderDash ? '-' : String(p.order || fallbackOrder || ''),
                 ritual: String(p.ritual || '0'),
-                modification: '0', // Legacy format doesn't have this
+                modification: '0',
                 role: null,
                 mainRev: p.mainRev || '',
                 subRev: p.subRev || ''
             };
-        });
+        };
 
-        // Ensure 5 slots
-        while (party.length < 5) {
-            party.push(null);
+        for (let i = 0; i < 3; i++) {
+            const p = battleCandidates[i];
+            if (!p) continue;
+            party[i] = toInternalPartyMember(p, false, String(i + 1));
         }
+
+        if (elucidatorCandidate) {
+            party[3] = toInternalPartyMember(elucidatorCandidate, true);
+        }
+
+        const slot4Candidate = battleCandidates[3];
+        if (slot4Candidate) {
+            party[4] = toInternalPartyMember(slot4Candidate, true);
+        }
+
+        const resolvedWonderOrder = Number.isFinite(wonderOrderFromParty)
+            ? wonderOrderFromParty
+            : this.inferWonderOrder(party);
 
         // Parse wonder config
         const personaSkills = data.personaSkills || [];
         const wonder = {
-            order: this.inferWonderOrder(party),
-            weapon: { name: data.weapon || '', refinement: 0 },
+            order: resolvedWonderOrder,
+            weapon: data.weapon || '',
+            weaponRefinement: 0,
             personas: wonderPersonas.map((name, idx) => ({
                 name: name || '',
                 skills: [
-                    personaSkills[idx * 3] || '',     // Unique skill
-                    personaSkills[idx * 3 + 1] || '', // Skill 2
-                    personaSkills[idx * 3 + 2] || ''  // Skill 3
+                    personaSkills[idx * 3] || '',
+                    personaSkills[idx * 3 + 1] || '',
+                    personaSkills[idx * 3 + 2] || '',
+                    ''
                 ],
                 memo: ''
             }))
         };
 
-        // Parse turns and map actions to columns
-        const turns = (data.turns || []).map(turn => {
+        const buildColumnPlan = () => {
+            const plan = [];
+            plan.push({ orderKey: String(wonder.order), actor: '원더' });
+            (party || []).forEach((m, idx) => {
+                if (!m) return;
+                if (idx === 3) return; // elucidator
+                if (String(m.order || '-') === '-') return;
+                if (m.name === '원더') return;
+                plan.push({ orderKey: String(m.order), actor: String(m.name || '') });
+            });
+            plan.sort((a, b) => parseInt(a.orderKey, 10) - parseInt(b.orderKey, 10));
+            const seen = new Set();
+            return plan.filter(p => {
+                if (!p.orderKey || p.orderKey === '-') return false;
+                if (seen.has(p.orderKey)) return false;
+                seen.add(p.orderKey);
+                return true;
+            });
+        };
+
+        const normalizeActorName = (name) => {
+            if (name === 'Wonder') return '원더';
+            return String(name || '');
+        };
+
+        const normalizeActionValue = (val) => {
+            const v = String(val || '');
+            if (v === '테우르기아') return 'Theurgia';
+            return v;
+        };
+
+        const personaSkillCandidates = (personaSkills || [])
+            .map(s => String(s || ''))
+            .filter(Boolean)
+            .sort((a, b) => b.length - a.length);
+
+        const extractLeadingPersonaSkill = (text) => {
+            const src = String(text || '');
+            if (!src) return null;
+
+            for (const skill of personaSkillCandidates) {
+                if (!skill) continue;
+                if (src === skill) {
+                    return { skill, rest: '' };
+                }
+                if (src.startsWith(skill)) {
+                    const next = src.slice(skill.length, skill.length + 1);
+                    if (!next) continue;
+                    if (['>', ' ', '/', ',', ':', '(', '[', '-', '→'].includes(next)) {
+                        const rest = src
+                            .slice(skill.length)
+                            .replace(/^[>\s\/,\-:→]+/g, '')
+                            .trim();
+                        return { skill, rest };
+                    }
+                }
+            }
+            return null;
+        };
+
+        const columnPlan = buildColumnPlan();
+
+        const splitActionsIntoColumns = (actions) => {
             const columns = {};
+            if (!Array.isArray(actions) || actions.length === 0) return columns;
+            if (!Array.isArray(columnPlan) || columnPlan.length === 0) {
+                columns['1'] = [];
+                return { ...columns, __all: actions };
+            }
 
-            (turn.actions || []).forEach(action => {
-                // Determine column key based on character
-                let columnKey = this.getColumnKeyForCharacter(action.character, party, wonder);
+            const lastIdxByActor = new Map();
+            const normalized = actions.map((a, idx) => {
+                const actor = normalizeActorName(a?.character);
+                if (actor) lastIdxByActor.set(actor, idx);
+                return { raw: a, idx, actor };
+            });
 
-                if (!columnKey) {
-                    // Fallback: use order 1
-                    columnKey = '1';
+            const boundaries = [];
+            let prev = -1;
+            for (let i = 0; i < columnPlan.length - 1; i++) {
+                const actor = columnPlan[i].actor;
+                const last = lastIdxByActor.has(actor) ? lastIdxByActor.get(actor) : -1;
+                const b = Math.max(prev, last);
+                boundaries.push(b);
+                prev = b;
+            }
+
+            let start = 0;
+            for (let i = 0; i < columnPlan.length; i++) {
+                const orderKey = columnPlan[i].orderKey;
+                let end = (i < columnPlan.length - 1) ? boundaries[i] : (normalized.length - 1);
+                if (end < start) end = start - 1;
+
+                if (!columns[orderKey]) columns[orderKey] = [];
+
+                for (let j = start; j <= end; j++) {
+                    columns[orderKey].push(normalized[j].raw);
                 }
 
-                if (!columns[columnKey]) {
-                    columns[columnKey] = [];
-                }
+                start = end + 1;
+            }
 
-                // Parse action
-                let actionName = action.action || '';
-                let personaName = '';
-                let personaIndex = -1;
+            return columns;
+        };
 
-                // Handle Wonder persona/special actions
-                if (action.character === '원더') {
-                    const wp = action.wonderPersona;
-                    if (typeof wp === 'string' && SPECIALS.includes(wp)) {
-                        actionName = wp;
-                    } else if (typeof actionName === 'string' && SPECIALS.includes(actionName)) {
-                        // Already set
-                    } else if (wp) {
-                        // Persona selection
-                        const isNumeric = /^\d+$/.test(String(wp));
-                        if (isNumeric) {
-                            personaIndex = parseInt(wp);
-                            personaName = wonderPersonas[personaIndex] || '';
-                        } else {
-                            personaName = wp;
-                            personaIndex = wonderPersonas.indexOf(personaName);
-                        }
+        const parseLegacyActionToInternal = (legacyAction) => {
+            const actor = normalizeActorName(legacyAction?.character);
+            let memo = String(legacyAction?.memo || '');
+            const rawActionVal = normalizeActionValue(legacyAction?.action);
+
+            const isNote = !actor && !rawActionVal && !!memo;
+
+            if (isNote) {
+                return {
+                    type: 'manual',
+                    isNote: true,
+                    character: '',
+                    wonderPersona: '',
+                    wonderPersonaIndex: -1,
+                    action: '',
+                    memo
+                };
+            }
+
+            let actionName = rawActionVal;
+            let personaName = '';
+            let personaIndex = -1;
+
+            if (actor === '원더') {
+                const wp = legacyAction?.wonderPersona;
+                const wpStr = String(wp ?? '');
+
+                if (wpStr && SPECIALS.includes(wpStr)) {
+                    actionName = normalizeActionValue(wpStr);
+                } else if (actionName && SPECIALS.includes(actionName)) {
+                    // noop
+                } else if (wpStr) {
+                    const isNumeric = /^\d+$/.test(wpStr);
+                    if (isNumeric) {
+                        personaIndex = parseInt(wpStr, 10);
+                        personaName = wonderPersonas[personaIndex] || '';
+                    } else {
+                        personaName = wpStr;
+                        personaIndex = wonderPersonas.indexOf(personaName);
                     }
                 }
 
-                columns[columnKey].push({
-                    type: action.type === 0 ? 'auto' : 'manual',
-                    character: action.character || '',
-                    wonderPersona: personaName,
-                    wonderPersonaIndex: personaIndex,
-                    action: actionName,
-                    memo: action.memo || ''
+                if (!actionName && memo) {
+                    const extracted = extractLeadingPersonaSkill(memo);
+                    if (extracted && extracted.skill) {
+                        actionName = extracted.skill;
+                        memo = extracted.rest || '';
+                    }
+                }
+            }
+
+            return {
+                type: legacyAction?.type === 0 ? 'auto' : 'manual',
+                character: actor,
+                wonderPersona: personaName,
+                wonderPersonaIndex: personaIndex,
+                action: actionName,
+                memo
+            };
+        };
+
+        // Parse turns and map actions to columns (order-preserving split)
+        const turns = (data.turns || []).map(turn => {
+            const columns = {};
+
+            const segmented = splitActionsIntoColumns(turn.actions || []);
+            Object.keys(segmented).forEach(orderKey => {
+                const list = segmented[orderKey] || [];
+                if (!Array.isArray(list) || list.length === 0) return;
+                if (!columns[orderKey]) columns[orderKey] = [];
+                list.forEach(legacyAction => {
+                    const internal = parseLegacyActionToInternal(legacyAction);
+                    if (internal) columns[orderKey].push(internal);
                 });
             });
 
@@ -434,13 +607,19 @@ export class ImportExport {
             };
         });
 
-        // Build persona skills array (9 elements: 3 skills per persona)
-        const personaSkills = state.wonder.personas.flatMap(p => p.skills);
+        // Build persona skills array (legacy expects 9 elements: 3 skills per persona)
+        const personaSkills = (state.wonder.personas || []).flatMap(p => (p && Array.isArray(p.skills) ? p.skills.slice(0, 3) : ['', '', '']));
+        while (personaSkills.length < 9) personaSkills.push('');
+        if (personaSkills.length > 9) personaSkills.length = 9;
+
+        const weaponVal = (state.wonder && state.wonder.weapon && typeof state.wonder.weapon === 'object')
+            ? (state.wonder.weapon.name || '')
+            : (state.wonder.weapon || '');
 
         return {
             title: (state.title || '').slice(0, 20) || 'P5X Tactic',
             wonderPersonas: state.wonder.personas.map(p => p.name),
-            weapon: state.wonder.weapon.name,
+            weapon: weaponVal,
             personaSkills,
             party,
             turns
@@ -473,11 +652,12 @@ export class ImportExport {
         orderKeys.forEach(orderKey => {
             const columnActions = columns[orderKey] || [];
             columnActions.forEach(action => {
+                const isNote = !!action.isNote || (!action.character && !action.action && !!action.memo);
                 const exportAction = {
                     type: action.type === 'auto' ? 0 : 1,
-                    character: action.character || orderToChar[orderKey] || '',
+                    character: isNote ? '' : (action.character || orderToChar[orderKey] || ''),
                     wonderPersona: '',
-                    action: action.action || '',
+                    action: isNote ? '' : (action.action || ''),
                     memo: action.memo || ''
                 };
 

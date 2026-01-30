@@ -1,0 +1,807 @@
+/* ==========================================================================
+   Tactic Board (Timeline)
+   ========================================================================== */
+.tactic-board-section {
+    margin-top: 40px;
+    overflow-x: auto;
+}
+
+.tactic-table-container {
+    overflow: auto;
+}
+
+.tactic-table {
+    width: 100%;
+    border-collapse: separate;
+    /* Changed from collapse to allow spacing if needed */
+    border-spacing: 0;
+    min-width: 800px;
+    background: var(--card-background);
+    table-layout: fixed;
+    /* Enforce equal widths */
+}
+
+.tactic-table th,
+.tactic-table td {
+    padding: 12px;
+    vertical-align: top;
+    /* Align top for better look with different content heights */
+    box-sizing: border-box;
+}
+
+.tactic-table th {
+    background: rgba(0, 0, 0, 0.4);
+    text-align: center;
+    /* Sticky removed */
+}
+
+.col-character {
+    width: auto;
+    /* Will take equal remaining space */
+}
+
+.header-char {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.header-char-img {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+.header-char-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+}
+
+.col-turn {
+    width: 60px;
+    /* Fixed width for turn column */
+    text-align: center;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.turn-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.turn-number {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #eee;
+}
+
+.btn-remove-turn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 1.2rem;
+    opacity: 0.5;
+}
+
+.btn-remove-turn:hover {
+    opacity: 1;
+    color: #ff6b6b;
+}
+
+/* Separator between turns - only for data cells */
+td.tactic-cell {
+    background: rgba(0, 0, 0, 0.2);
+    height: 100px;
+    transition: background 0.2s;
+    border-bottom: 3px solid rgba(0, 0, 0, 0.3);
+}
+
+td.col-turn {
+    border-bottom: 3px solid rgba(0, 0, 0, 0.3);
+}
+
+.tactic-cell:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.col-turn .btn-remove-turn {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+}
+
+.col-turn:hover .btn-remove-turn {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.action-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+/* Hide controls in non-edit mode */
+body:not(.tactic-edit-mode) .btn-add-turn,
+body:not(.tactic-edit-mode) .btn-add-action,
+body:not(.tactic-edit-mode) .btn-remove-turn,
+body:not(.tactic-edit-mode) .btn-duplicate-turn,
+body:not(.tactic-edit-mode) .turn-actions,
+body:not(.tactic-edit-mode) .turn-drag-handle,
+body:not(.tactic-edit-mode) .action-drag-handle,
+body:not(.tactic-edit-mode) .action-actions {
+    display: none !important;
+    pointer-events: none !important;
+}
+
+/* Disable dragging and hover effects in non-edit mode */
+body:not(.tactic-edit-mode) .action-item {
+    cursor: default;
+}
+
+body:not(.tactic-edit-mode) .action-item:hover {
+    transform: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+body:not(.tactic-edit-mode) .turn-row {
+    cursor: default;
+}
+
+/* Hide Wonder Persona Name */
+.wonder-persona-display .action-persona-name {
+    display: none !important;
+}
+
+.wonder-persona-display .action-persona-icon {
+    margin-bottom: 0 !important;
+}
+
+.action-item {
+    padding: 4px 10px 4px 6px;
+    background: linear-gradient(135deg, rgba(40, 40, 40, 0.9), rgba(30, 30, 30, 0.95));
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transition: all 0.2s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: visible;
+}
+
+.action-item::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--actor-color-tint, transparent);
+    opacity: 1;
+    pointer-events: none;
+    border-radius: inherit;
+    z-index: 0;
+}
+
+.action-item>* {
+    position: relative;
+    z-index: 1;
+}
+
+.action-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    border-color: var(--actor-color-border, var(--accent-color));
+}
+
+.action-main-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.action-name {
+    flex: 1 1 auto;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Hover Menu (Tooltip Style) */
+.action-actions {
+    position: absolute;
+    bottom: calc(100% + 4px);
+    left: 50%;
+    transform: translateX(-50%) scale(0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.1s, transform 0.1s;
+    z-index: 1000;
+
+    /* Box Styling - compact */
+    padding: 3px 4px;
+    background: #1a1a1a;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
+    white-space: nowrap;
+}
+
+.tactic-edit-mode .action-item:hover .action-actions {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+    pointer-events: auto;
+}
+
+/* Important: Elevate hovered item so tooltip blocks neighbor's hover */
+.action-item:hover {
+    z-index: 2000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    border-color: var(--actor-color-border, var(--accent-color));
+}
+
+/* Invisible bridge for hover continuity */
+.action-actions::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: transparent;
+}
+
+/* Revert padding changes */
+.tactic-edit-mode .action-item {
+    padding-right: 10px;
+    /* or unset/default */
+}
+
+/* Custom Dropdown Styles */
+.custom-select-container {
+    position: relative;
+    width: 100%;
+    min-width: 0;
+    flex: 1;
+}
+
+.custom-select-trigger {
+    width: 100%;
+    padding: 0px 6px;
+    background: rgba(0, 0, 0, 0);
+    border: 0px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0px;
+    color: #fff;
+    font-size: 0.8rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    gap: 4px;
+    height: 24px;
+    transition: all 0.2s;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.custom-select-trigger:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.custom-select-trigger.active {
+    border-color: var(--accent-color);
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.custom-select-val {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1;
+}
+
+.custom-select-icon {
+    width: 16px;
+    height: 16px;
+    object-fit: cover;
+    border-radius: 2px;
+    flex-shrink: 0;
+}
+
+.custom-select-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 500;
+}
+
+.custom-select-arrow {
+    width: 12px;
+    height: 12px;
+    opacity: 0.5;
+    flex-shrink: 0;
+    transition: transform 0.2s;
+}
+
+.custom-select-options.show~.custom-select-trigger .custom-select-arrow {
+    transform: rotate(180deg);
+}
+
+.custom-select-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 100%;
+    width: max-content;
+    max-width: 220px;
+    background: #1f1f1f;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    margin-top: 4px;
+    z-index: 1000;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.7);
+    display: none;
+    max-height: 240px;
+    overflow-y: auto;
+}
+
+.custom-select-options.show {
+    display: block;
+}
+
+.custom-option {
+    padding: 6px 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.8);
+    transition: background 0.2s;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.custom-option:last-child {
+    border-bottom: none;
+}
+
+.custom-option:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.custom-option.selected {
+    background: rgba(209, 31, 31, 0.2);
+    color: #fff;
+}
+
+.custom-option-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: cover;
+    border-radius: 3px;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.action-icon-btn {
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(0, 0, 0, 0.35);
+    color: rgba(255, 255, 255, 0.85);
+    cursor: pointer;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+
+.action-icon-btn:hover {
+    border-color: rgba(255, 255, 255, 0.35);
+    background: rgba(0, 0, 0, 0.55);
+    color: #fff;
+}
+
+.action-item.auto {
+    border-left: 3px solid #4ecdc4;
+}
+
+.action-item.manual {
+    border-left: 3px solid #ff6b6b;
+}
+
+.action-persona-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    object-fit: cover;
+}
+
+.action-name {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #fff;
+}
+
+.action-actor {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.action-actor-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    object-fit: cover;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.action-actor-name {
+    font-size: 13px;
+    font-weight: 500;
+    opacity: 1;
+    color: #fff;
+}
+
+/* Styled Non-Edit View */
+/* Non-Edit View: Keep same look, remove interaction (but keep hover effect) */
+body:not(.tactic-edit-mode) .custom-select-arrow {
+    display: none !important;
+}
+
+body:not(.tactic-edit-mode) .custom-select-trigger {
+    cursor: default;
+    border-color: transparent;
+    /* Optional: if we want to hide border unless hovered usually? */
+}
+
+/* Force Hide Wonder Persona Name - Global */
+.action-item .wonder-persona-display .action-persona-name,
+.wonder-persona-display .action-persona-name {
+    display: none !important;
+}
+
+.action-type-badge {
+    font-size: 0.65rem;
+    padding: 2px 4px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.1);
+    align-self: flex-start;
+}
+
+.action-memo {
+    font-size: 0.75rem;
+    color: #ccc;
+    font-style: italic;
+    margin-top: 4px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 4px;
+    padding-left: 26px;
+    word-break: break-all;
+}
+
+.btn-add-action {
+    width: 100%;
+    padding: 8px;
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+    background: transparent;
+    color: var(--text-secondary);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+.btn-add-action:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.5);
+    color: #fff;
+}
+
+.empty-state-row {
+    height: 200px;
+}
+
+.empty-state {
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+/* Edit Mode Toggle */
+.controls-header {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+.toggle-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   Add Turn Button Styling
+   ========================================================================== */
+.btn-add-turn {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-add-turn:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.5);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.btn-add-turn:active {
+    transform: translateY(0);
+}
+
+/* Hide Wonder Persona Name - Global */
+.action-item .wonder-persona-display .action-persona-name,
+.wonder-persona-display .action-persona-name {
+    display: none !important;
+}
+
+.wonder-persona-display .action-persona-icon {
+    margin-bottom: 0 !important;
+}
+
+/* Actor + Persona Wrapper - Fixed width for grid alignment */
+.actor-persona-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex: 0 0 140px;
+    width: 140px;
+}
+
+.actor-persona-wrapper .actor-dropdown {
+    flex: 1;
+    min-width: 0;
+}
+
+/* When has persona, actor dropdown shrinks to make room for persona */
+.actor-persona-wrapper.has-persona .actor-dropdown {
+    flex: 0 0 100px;
+    width: 100px;
+    min-width: 100px;
+}
+
+/* Persona dropdown - hidden by default, visible when has-persona */
+.action-item .persona-dropdown {
+    flex: 0 0 36px;
+    width: 36px;
+    min-width: 36px;
+    display: none;
+}
+
+.actor-persona-wrapper.has-persona .persona-dropdown {
+    display: flex;
+}
+
+/* Hide text in Persona Dropdown, show only icon */
+.action-item .persona-dropdown .custom-select-trigger .custom-select-text {
+    display: none !important;
+}
+
+/* Action dropdown takes remaining space */
+.action-item .action-dropdown {
+    flex: 1;
+    min-width: 0;
+}
+
+/* ==========================================================================
+   Action Item Drag & Drop
+   ========================================================================== */
+
+/* Dragging state */
+.action-item.dragging {
+    opacity: 0.5;
+    transform: scale(0.98);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Content wrapper - horizontal flex layout */
+.action-content-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+}
+
+/* Drag Handle - left side */
+.action-drag-handle {
+    flex-shrink: 0;
+    width: 16px;
+    min-height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: grab;
+    color: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.00);
+    border-right: 1px solid rgba(255, 255, 255, 0.00);
+    transition: all 0.15s ease;
+}
+
+.tactic-edit-mode .action-item:hover .action-drag-handle {
+    color: rgba(255, 255, 255, 0.5);
+    /* background: rgba(255, 255, 255, 0.05); */
+}
+
+.action-drag-handle:hover {
+    color: rgba(255, 255, 255, 0.8) !important;
+    /* background: rgba(255, 255, 255, 0.1) !important; */
+}
+
+.action-drag-handle:active {
+    cursor: grabbing;
+}
+
+/* Drop Zone Styling */
+.tactic-cell.drag-over {
+    background: rgba(209, 31, 31, 0.1) !important;
+    outline: 2px dashed rgba(209, 31, 31, 0.5);
+    outline-offset: -2px;
+}
+
+/* Drop Indicator Line */
+.action-drop-indicator {
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+    border-radius: 2px;
+    margin: 4px 0;
+    animation: dropIndicatorPulse 0.8s ease-in-out infinite;
+}
+
+@keyframes dropIndicatorPulse {
+
+    0%,
+    100% {
+        opacity: 0.6;
+        transform: scaleX(0.9);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scaleX(1);
+    }
+}
+
+/* ==========================================================================
+   Turn Drag & Drop
+   ========================================================================== */
+
+.turn-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.turn-drag-handle {
+    cursor: grab;
+    color: rgba(255, 255, 255, 0.3);
+    padding: 4px;
+    transition: all 0.15s ease;
+    opacity: 0;
+}
+
+.tactic-edit-mode .col-turn:hover .turn-drag-handle {
+    opacity: 1;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.turn-drag-handle:hover {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.turn-drag-handle:active {
+    cursor: grabbing;
+}
+
+.turn-actions {
+    display: flex;
+    gap: 4px;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+}
+
+.tactic-edit-mode .col-turn:hover .turn-actions {
+    opacity: 1;
+}
+
+.btn-turn-action {
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(0, 0, 0, 0.3);
+    color: rgba(255, 255, 255, 0.7);
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+}
+
+.btn-turn-action:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: #fff;
+}
+
+.btn-remove-turn:hover {
+    background: rgba(209, 31, 31, 0.3) !important;
+    border-color: rgba(209, 31, 31, 0.5) !important;
+    color: #ff6b6b !important;
+}
+
+/* Turn row dragging state */
+.turn-row.dragging-turn {
+    opacity: 0.5;
+    background: rgba(209, 31, 31, 0.1);
+}
+
+.turn-row.drag-over-turn {
+    background: rgba(209, 31, 31, 0.05);
+}
+
+/* Turn drop indicator */
+.turn-drop-indicator {
+    height: 0;
+    padding: 0 !important;
+}
+
+.turn-drop-indicator td {
+    padding: 0 !important;
+    height: 4px !important;
+}
+
+.turn-drop-line {
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+    border-radius: 2px;
+    animation: dropIndicatorPulse 0.8s ease-in-out infinite;
+}

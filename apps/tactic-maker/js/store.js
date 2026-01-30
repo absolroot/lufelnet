@@ -120,6 +120,48 @@ export class TacticStore {
         this.checkPartySideEffects();
     }
 
+    /**
+     * Get the maximum order number available based on assigned characters
+     * Returns the count of characters that have orders assigned (not '-')
+     */
+    getMaxAvailableOrder() {
+        let count = 0;
+
+        // Check Wonder (always counts if it has a valid order)
+        const wonderOrder = this.state.wonder.order;
+        if (wonderOrder && wonderOrder !== '-' && Number.isFinite(parseInt(wonderOrder))) {
+            count++;
+        }
+
+        // Check party slots (exclude elucidator index 3 and slot4 index 4)
+        this.state.party.forEach((member, idx) => {
+            if (idx === 3 || idx === 4) return; // Elucidator and Slot4 don't have orders
+            if (member && member.order && member.order !== '-') {
+                count++;
+            }
+        });
+
+        return Math.min(count, 4);
+    }
+
+    /**
+     * Get the number of order-able slots that have characters assigned
+     * (Used to determine max selectable order)
+     */
+    getOrderableCharacterCount() {
+        let count = 1; // Wonder always counts
+
+        // Count party slots with characters (exclude elucidator and slot4)
+        this.state.party.forEach((member, idx) => {
+            if (idx === 3 || idx === 4) return;
+            if (member && member.name) {
+                count++;
+            }
+        });
+
+        return Math.min(count, 4);
+    }
+
     checkPartySideEffects() {
         // Fuuka logic - check multiple name variants
         const FUUKA_NAMES = ['후카', 'Fuuka', 'フーカ', '風花'];
@@ -136,6 +178,127 @@ export class TacticStore {
         this._saveHistory();
         this.state.wonder = { ...this.state.wonder, ...config };
         this.notify('wonderChange', this.state.wonder);
+    }
+
+    /**
+     * Get current order -> character mapping
+     */
+    getOrderToCharacterMap() {
+        const map = {};
+
+        // Wonder
+        const wonderOrder = String(this.state.wonder.order);
+        if (wonderOrder && wonderOrder !== '-') {
+            map[wonderOrder] = '원더';
+        }
+
+        // Party members (exclude elucidator index 3 and slot4 index 4)
+        this.state.party.forEach((member, idx) => {
+            if (idx === 3 || idx === 4) return;
+            if (member && member.order && member.order !== '-') {
+                map[String(member.order)] = member.name;
+            }
+        });
+
+        return map;
+    }
+
+    /**
+     * Get current character -> order mapping
+     */
+    getCharacterToOrderMap() {
+        const map = {};
+
+        // Wonder
+        const wonderOrder = String(this.state.wonder.order);
+        if (wonderOrder && wonderOrder !== '-') {
+            map['원더'] = wonderOrder;
+        }
+
+        // Party members (exclude elucidator index 3 and slot4 index 4)
+        this.state.party.forEach((member, idx) => {
+            if (idx === 3 || idx === 4) return;
+            if (member && member.order && member.order !== '-') {
+                map[member.name] = String(member.order);
+            }
+        });
+
+        return map;
+    }
+
+    /**
+     * Move actions when character orders change.
+     * Actions follow their character to the new column.
+     * @param {Object} oldCharToOrder - Previous character -> order mapping
+     */
+    moveActionsWithCharacters(oldCharToOrder) {
+        const newCharToOrder = this.getCharacterToOrderMap();
+
+        // Find characters whose order changed
+        const moves = []; // { charName, fromOrder, toOrder }
+
+        for (const [charName, oldOrder] of Object.entries(oldCharToOrder)) {
+            const newOrder = newCharToOrder[charName];
+            if (oldOrder && newOrder && oldOrder !== newOrder) {
+                moves.push({ charName, fromOrder: oldOrder, toOrder: newOrder });
+            }
+        }
+
+        if (moves.length === 0) return;
+
+        // For each turn, rearrange columns based on moves
+        this.state.turns.forEach(turn => {
+            const oldColumns = JSON.parse(JSON.stringify(turn.columns));
+            const newColumns = {};
+
+            // First, copy columns that didn't move
+            const movedFromOrders = new Set(moves.map(m => m.fromOrder));
+            const movedToOrders = new Set(moves.map(m => m.toOrder));
+
+            for (const [order, actions] of Object.entries(oldColumns)) {
+                if (!movedFromOrders.has(order) && !movedToOrders.has(order)) {
+                    newColumns[order] = actions;
+                }
+            }
+
+            // Then, apply moves (actions follow their character)
+            for (const move of moves) {
+                const actions = oldColumns[move.fromOrder] || [];
+                newColumns[move.toOrder] = actions;
+            }
+
+            turn.columns = newColumns;
+        });
+
+        this.notify('turnsChange', this.state.turns);
+    }
+
+    /**
+     * Sync all action character fields to match the current order assignments.
+     * Call this after actions have been moved to correct columns.
+     */
+    syncActionsToOrders() {
+        // Build a map of order -> character name
+        const orderToChar = this.getOrderToCharacterMap();
+
+        // Update all actions in all turns
+        this.state.turns.forEach(turn => {
+            Object.keys(turn.columns).forEach(columnKey => {
+                const charForColumn = orderToChar[columnKey];
+                if (charForColumn) {
+                    turn.columns[columnKey].forEach(action => {
+                        action.character = charForColumn;
+                        // Clear wonderPersona if this column is not Wonder
+                        if (charForColumn !== '원더') {
+                            action.wonderPersona = '';
+                            action.wonderPersonaIndex = -1;
+                        }
+                    });
+                }
+            });
+        });
+
+        this.notify('turnsChange', this.state.turns);
     }
 
     getWonderConfig() {
@@ -164,6 +327,41 @@ export class TacticStore {
         // Re-number turns
         this.state.turns.forEach((turn, idx) => {
             turn.turn = idx + 1;
+        });
+
+        this.notify('turnsChange', this.state.turns);
+    }
+
+    duplicateTurn(turnIndex) {
+        this._saveHistory();
+        if (turnIndex < 0 || turnIndex >= this.state.turns.length) return;
+
+        const originalTurn = this.state.turns[turnIndex];
+        const duplicatedTurn = JSON.parse(JSON.stringify(originalTurn));
+
+        // Insert after the original
+        this.state.turns.splice(turnIndex + 1, 0, duplicatedTurn);
+
+        // Re-number turns
+        this.state.turns.forEach((turn, idx) => {
+            turn.turn = idx + 1;
+        });
+
+        this.notify('turnsChange', this.state.turns);
+    }
+
+    moveTurn(fromIndex, toIndex) {
+        this._saveHistory();
+        if (fromIndex < 0 || fromIndex >= this.state.turns.length) return;
+        if (toIndex < 0 || toIndex >= this.state.turns.length) return;
+        if (fromIndex === toIndex) return;
+
+        const [turn] = this.state.turns.splice(fromIndex, 1);
+        this.state.turns.splice(toIndex, 0, turn);
+
+        // Re-number turns
+        this.state.turns.forEach((t, idx) => {
+            t.turn = idx + 1;
         });
 
         this.notify('turnsChange', this.state.turns);
@@ -231,6 +429,45 @@ export class TacticStore {
 
         const [action] = actions.splice(fromIndex, 1);
         actions.splice(toIndex, 0, action);
+        this.notify('turnsChange', this.state.turns);
+    }
+
+    /**
+     * Move an action to a different turn and/or column
+     * @param {number} fromTurnIdx - Source turn index
+     * @param {string} fromColKey - Source column key
+     * @param {number} fromActionIdx - Source action index
+     * @param {number} toTurnIdx - Destination turn index
+     * @param {string} toColKey - Destination column key
+     * @param {number} toActionIdx - Destination action index (insert position)
+     */
+    moveActionTo(fromTurnIdx, fromColKey, fromActionIdx, toTurnIdx, toColKey, toActionIdx) {
+        this._saveHistory();
+
+        const fromTurn = this.state.turns[fromTurnIdx];
+        const toTurn = this.state.turns[toTurnIdx];
+        if (!fromTurn || !toTurn) return;
+
+        const fromActions = fromTurn.columns[fromColKey];
+        if (!fromActions || fromActionIdx < 0 || fromActionIdx >= fromActions.length) return;
+
+        // Extract the action
+        const [action] = fromActions.splice(fromActionIdx, 1);
+
+        // Ensure destination column exists
+        if (!toTurn.columns[toColKey]) {
+            toTurn.columns[toColKey] = [];
+        }
+
+        // Adjust toActionIdx if moving within the same turn/column
+        let insertIdx = toActionIdx;
+        if (fromTurnIdx === toTurnIdx && fromColKey === toColKey && fromActionIdx < toActionIdx) {
+            insertIdx = Math.max(0, toActionIdx - 1);
+        }
+
+        // Insert at destination
+        toTurn.columns[toColKey].splice(insertIdx, 0, action);
+
         this.notify('turnsChange', this.state.turns);
     }
 

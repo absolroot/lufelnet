@@ -180,6 +180,13 @@ export class WonderUI extends EventEmitter {
             </div>
         ` : '';
 
+        // Limit order options to number of characters with order-able slots
+        const maxOrder = this.store.getOrderableCharacterCount();
+        const orderOptions = [];
+        for (let n = 1; n <= maxOrder; n++) {
+            orderOptions.push(n);
+        }
+
         return `
             <div class="wonder-persona-card wonder-slot-card" id="wonderSlotInGrid">
                 <div class="ws-header">
@@ -196,7 +203,7 @@ export class WonderUI extends EventEmitter {
                         <span class="order-label">순서</span>
                         <select class="styled-select order-select ws-order-select">
                             <option value="-" ${currentOrder == '-' ? 'selected' : ''}>-</option>
-                            ${[1, 2, 3, 4].map(n => `<option value="${n}" ${currentOrder == n ? 'selected' : ''}>${n}</option>`).join('')}
+                            ${orderOptions.map(n => `<option value="${n}" ${currentOrder == n ? 'selected' : ''}>${n}</option>`).join('')}
                         </select>
                     </div>
                     <div class="revelation-dropdown wonder-weapon-dropdown">

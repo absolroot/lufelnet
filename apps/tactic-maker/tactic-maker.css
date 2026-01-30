@@ -1171,424 +1171,6 @@ body {
     }
 }
 
-/* ==========================================================================
-   Tactic Board (Timeline)
-   ========================================================================== */
-.tactic-board-section {
-    margin-top: 40px;
-    overflow-x: auto;
-}
-
-.tactic-table-container {
-    overflow: auto;
-    max-height: calc(100vh - 260px);
-}
-
-.tactic-table {
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 800px;
-    background: var(--card-background);
-}
-
-.tactic-table th,
-.tactic-table td {
-    padding: 12px;
-    /*border: 1px solid var(--border-color);*/
-    vertical-align: middle;
-}
-
-.tactic-table th {
-    background: rgba(0, 0, 0, 0.4);
-    text-align: center;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-}
-
-.col-character {
-    min-width: 180px;
-}
-
-.header-char {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-
-.header-char-img {
-    width: 32px;
-    height: 32px;
-    border-radius: 6px;
-    object-fit: cover;
-}
-
-.header-char-name {
-    font-weight: 600;
-    font-size: 0.9rem;
-    color: var(--text-primary);
-}
-
-.col-turn {
-    width: 60px;
-    text-align: center;
-    background: rgba(255, 255, 255, 0.02);
-}
-
-.turn-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-}
-
-.turn-number {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--accent-color);
-}
-
-.btn-remove-turn {
-    background: transparent;
-    border: none;
-    color: var(--text-secondary);
-    cursor: pointer;
-    font-size: 1.2rem;
-    opacity: 0.5;
-}
-
-.btn-remove-turn:hover {
-    opacity: 1;
-    color: #ff6b6b;
-}
-
-.tactic-cell {
-    background: rgba(0, 0, 0, 0.2);
-    height: 100px;
-    /* Minimum height for drag target */
-    transition: background 0.2s;
-}
-
-.tactic-cell:hover {
-    background: rgba(255, 255, 255, 0.03);
-}
-
-.action-list {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 8px;
-}
-
-.action-item {
-    padding: 8px 10px;
-    background: linear-gradient(135deg, rgba(40, 40, 40, 0.9), rgba(30, 30, 30, 0.95));
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 6px;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    transition: all 0.2s;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    position: relative;
-    overflow: hidden;
-}
-
-.action-item::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: var(--actor-color-tint, transparent);
-    opacity: 1;
-    pointer-events: none;
-}
-
-.action-item>* {
-    position: relative;
-    z-index: 1;
-}
-
-.action-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    border-color: var(--actor-color-border, var(--accent-color));
-}
-
-.action-main-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.action-name {
-    flex: 1 1 auto;
-    min-width: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.action-actions {
-    position: absolute;
-    top: 6px;
-    right: 6px;
-    display: flex;
-    gap: 4px;
-    opacity: 0;
-    transform: translateY(-2px);
-    transition: opacity 0.15s, transform 0.15s;
-    z-index: 2;
-}
-
-.tactic-edit-mode .action-item:hover .action-actions {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Allow overflow for dropdowns */
-.action-item {
-    overflow: visible;
-}
-
-/* Custom Dropdown Styles */
-.custom-select-container {
-    position: relative;
-    width: 100%;
-    min-width: 0;
-    flex: 1;
-}
-
-.custom-select-trigger {
-    width: 100%;
-    padding: 2px 6px;
-    background: rgba(0, 0, 0, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 4px;
-    color: #fff;
-    font-size: 0.8rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 4px;
-    height: 24px;
-    transition: all 0.2s;
-    white-space: nowrap;
-    overflow: hidden;
-}
-
-.custom-select-trigger:hover {
-    border-color: rgba(255, 255, 255, 0.5);
-    background: rgba(255, 255, 255, 0.1);
-}
-
-.custom-select-trigger.active {
-    border-color: var(--accent-color);
-    background: rgba(0, 0, 0, 0.6);
-}
-
-.custom-select-val {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    flex: 1;
-}
-
-.custom-select-icon {
-    width: 16px;
-    height: 16px;
-    object-fit: cover;
-    border-radius: 2px;
-    flex-shrink: 0;
-}
-
-.custom-select-text {
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.custom-select-arrow {
-    font-size: 8px;
-    opacity: 0.7;
-    flex-shrink: 0;
-}
-
-.custom-select-options {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    min-width: 100%;
-    width: max-content;
-    max-width: 200px;
-    background: #252525;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 4px;
-    margin-top: 4px;
-    z-index: 1000;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-    display: none;
-    max-height: 200px;
-    overflow-y: auto;
-}
-
-.custom-select-options.show {
-    display: block;
-}
-
-.custom-option {
-    padding: 6px 8px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-    font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.9);
-    transition: background 0.2s;
-}
-
-.custom-option:hover {
-    background: rgba(255, 255, 255, 0.1);
-}
-
-.custom-option.selected {
-    background: rgba(209, 31, 31, 0.2);
-    color: #fff;
-}
-
-.custom-option-icon {
-    width: 20px;
-    height: 20px;
-    object-fit: cover;
-    border-radius: 3px;
-    background: rgba(0, 0, 0, 0.3);
-}
-
-.action-icon-btn {
-    width: 22px;
-    height: 22px;
-    padding: 0;
-    border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    background: rgba(0, 0, 0, 0.35);
-    color: rgba(255, 255, 255, 0.85);
-    cursor: pointer;
-    line-height: 1;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-}
-
-.action-icon-btn:hover {
-    border-color: rgba(255, 255, 255, 0.35);
-    background: rgba(0, 0, 0, 0.55);
-    color: #fff;
-}
-
-.action-item.auto {
-    border-left: 3px solid #4ecdc4;
-}
-
-.action-item.manual {
-    border-left: 3px solid #ff6b6b;
-}
-
-.action-persona-icon {
-    width: 24px;
-    height: 24px;
-    border-radius: 4px;
-    margin-bottom: 4px;
-    object-fit: cover;
-}
-
-.action-name {
-    font-weight: 600;
-    font-size: 0.85rem;
-    color: #fff;
-}
-
-.action-actor {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.action-actor-icon {
-    width: 20px;
-    height: 20px;
-    border-radius: 4px;
-    object-fit: cover;
-    background: rgba(0, 0, 0, 0.3);
-}
-
-.action-actor-name {
-    font-size: 12px;
-    opacity: 0.85;
-}
-
-.action-type-badge {
-    font-size: 0.65rem;
-    padding: 2px 4px;
-    border-radius: 3px;
-    background: rgba(255, 255, 255, 0.1);
-    align-self: flex-start;
-}
-
-.action-memo {
-    font-size: 0.75rem;
-    color: #ccc;
-    font-style: italic;
-    margin-top: 4px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 4px;
-}
-
-.btn-add-action {
-    width: 100%;
-    padding: 8px;
-    border: 1px dashed rgba(255, 255, 255, 0.2);
-    background: transparent;
-    color: var(--text-secondary);
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.2s;
-    font-size: 1.2rem;
-    line-height: 1;
-}
-
-.btn-add-action:hover {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.5);
-    color: #fff;
-}
-
-.empty-state-row {
-    height: 200px;
-}
-
-.empty-state {
-    text-align: center;
-    color: var(--text-secondary);
-}
-
-/* Edit Mode Toggle */
-.controls-header {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 10px;
-}
-
-.toggle-label {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-    font-size: 0.9rem;
-}
 
 /* ==========================================================================
    Wonder UI Specific Styles (Added in Hotfix)
@@ -1645,7 +1227,7 @@ body {
 
 /* Wonder Persona Card - 2 column grid layout */
 .wonder-persona-card {
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(255, 255, 255, 0.0);
     border: 1px solid var(--border-color);
     border-radius: 8px;
     overflow: visible;
@@ -1707,7 +1289,7 @@ body {
 
 .wp-name {
     font-weight: 600;
-    font-size: 0.85rem;
+    font-size: 0.7rem;
     color: #fff;
     text-align: center;
     max-width: 90px;
@@ -1849,8 +1431,8 @@ body {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    justify-content: flex-start;
+    gap: 12px;
+    justify-content: center;
 }
 
 .ws-order {
@@ -2012,4 +1594,107 @@ body {
     white-space: nowrap;
     width: 90px;
     font-weight: 500;
+}
+
+/* J&C Role Change Button */
+.btn-role-change {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    padding: 2px 6px;
+    margin-left: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    height: 24px;
+}
+
+.btn-role-change:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.btn-role-change .role-icon-img {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+}
+
+.role-change-hint {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1;
+}
+
+.btn-role-change:hover .role-change-hint {
+    color: #fff;
+}
+
+/* Force Downward positioning for Modal Dropdowns */
+.target-dropdown {
+    position: relative;
+}
+
+.target-dropdown-menu {
+    position: absolute;
+    top: 100% !important;
+    bottom: auto !important;
+    left: 0;
+    width: 100%;
+    margin-top: 4px;
+    z-index: 1000;
+    max-height: 200px;
+    overflow-y: auto;
+    background: #1b1b1b;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    display: none;
+}
+
+.target-dropdown-menu.active {
+    display: block !important;
+}
+
+/* Modal specific dropdown item styling */
+.target-dropdown-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: transparent;
+    border: none;
+    border-radius: 4px;
+    color: #ccc;
+    cursor: pointer;
+    transition: background 0.2s;
+    text-align: left;
+}
+
+.target-dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.target-dropdown-item img {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.target-dropdown-item.selected {
+    background: rgba(209, 31, 31, 0.2);
+    color: #fff;
+}
+
+
+/* Action List for proper drag drop */
+.action-list {
+    min-height: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 }

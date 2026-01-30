@@ -10,6 +10,7 @@ import { TacticUI } from './ui-tactic.js';
 import { WonderUI } from './ui-wonder.js';
 import { PersonaModal } from './ui-persona-modal.js';
 import { ImportExport } from './import-export.js';
+import { TacticSettingsUI } from './ui-settings.js';
 
 class TacticMakerApp {
     constructor() {
@@ -28,11 +29,14 @@ class TacticMakerApp {
         // Initialize Store
         this.store = new TacticStore();
 
+        // Initialize Settings
+        this.settingsUI = new TacticSettingsUI();
+
         // Initialize UI Modules
         this.personaModal = new PersonaModal(this.store);
         this.wonderUI = new WonderUI(this.store, this.personaModal);
-        // Pass wonderUI to PartyUI so it can toggle views
-        this.partyUI = new PartyUI(this.store, this.wonderUI);
+        // Pass wonderUI and settingsUI to PartyUI
+        this.partyUI = new PartyUI(this.store, this.wonderUI, this.settingsUI);
         // Connect partyUI back to wonderUI for order updates
         this.wonderUI.setPartyUI(this.partyUI);
         this.tacticUI = new TacticUI(this.store);

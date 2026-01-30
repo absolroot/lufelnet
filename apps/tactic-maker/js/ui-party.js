@@ -6,9 +6,10 @@
 import { DataLoader } from './data-loader.js';
 
 export class PartyUI {
-    constructor(store, wonderUI) {
+    constructor(store, wonderUI, settingsUI) {
         this.store = store;
         this.wonderUI = wonderUI; // Dependency injection
+        this.settingsUI = settingsUI; // Dependency injection
         this.container = document.getElementById('partySlots');
         this.rosterList = document.getElementById('rosterList');
         this.rosterContainer = document.getElementById('rosterContainer');
@@ -74,6 +75,17 @@ export class PartyUI {
                 this.rosterContainer.classList.remove('expanded');
             }
         });
+
+        // Initialize Role Modal Close Logic
+        const roleModal = document.getElementById('roleModal');
+        if (roleModal) {
+            roleModal.addEventListener('click', (e) => {
+                if (e.target.classList.contains('modal-backdrop') || e.target.closest('.modal-close')) {
+                    roleModal.hidden = true;
+                    roleModal.classList.remove('show');
+                }
+            });
+        }
     }
 
     ensureRosterFilterUI() {
@@ -341,11 +353,22 @@ export class PartyUI {
                         ${element ? `<span>${element}</span>` : ''}
                         ${posIcon ? `<img src="${posIcon}" class="meta-icon" title="${position}" onerror="this.style.display='none'">` : ''}
                         ${position ? `<span>${position}</span>` : ''}
+                        
+                        ${isJandC ? (() => {
+                const activeRole = data.role || '우월';
+                const roleIcon = `${this.baseUrl}/assets/img/character-cards/직업_${activeRole}.png`;
+                return `
+                                <button type="button" class="jnc-role-btn btn-role-change" title="직업 변경">
+                                    <img src="${roleIcon}" class="role-icon-img" alt="${activeRole}">
+                                    <span class="role-change-hint">↻</span>
+                                </button>
+                            `;
+            })() : ''}
                     </div>
                 </div>
             </div>
 
-            ${isJandC ? this.renderRoleSelector(data, index) : ''}
+            ${isJandC ? '' : ''}<!-- Role Selector removed -->
 
             <!-- Slot Options Grid -->
             <div class="slot-options-grid" style="display: grid; ">
@@ -380,13 +403,20 @@ export class PartyUI {
             if (isOrderless) {
                 slotHeader.innerHTML = labelSpan;
             } else {
+                // Limit order options to number of characters with order-able slots
+                const maxOrder = this.store.getOrderableCharacterCount();
+                const orderOptions = [];
+                for (let n = 1; n <= maxOrder; n++) {
+                    orderOptions.push(n);
+                }
+
                 slotHeader.innerHTML = `
                     ${labelSpan}
                     <div class="slot-header-right">
                         <span class="order-label">순서</span>
                         <select class="styled-select order-select slot-order-select" data-index="${index}">
                             <option value="-" ${currentOrder == '-' ? 'selected' : ''}>-</option>
-                            ${[1, 2, 3, 4].map(n => `<option value="${n}" ${currentOrder == n ? 'selected' : ''}>${n}</option>`).join('')}
+                            ${orderOptions.map(n => `<option value="${n}" ${currentOrder == n ? 'selected' : ''}>${n}</option>`).join('')}
                         </select>
                     </div>
                 `;
@@ -421,37 +451,89 @@ export class PartyUI {
     }
 
     bindSlotEvents(slotEl, data, index) {
-        // Role selector (J&C) - click to mark active (radio-like)
-        const roleRow = slotEl.querySelector('.role-icon-row');
-        if (roleRow) {
-            roleRow.querySelectorAll('.role-icon[data-role]').forEach(icon => {
-                icon.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    const role = icon.dataset.role;
-                    const currentData = { ...this.store.state.party[index], role };
-                    this.store.setPartySlot(index, currentData);
-                });
+        // J&C Role Button Click
+        const jncBtn = slotEl.querySelector('.jnc-role-btn');
+        if (jncBtn) {
+            jncBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                this.openRoleModal(index, data.role || '우월');
             });
         }
     }
 
-    renderRoleSelector(data, index) {
-        const active = String(data.role || '');
-        // Display-only icons (based on roster-filter positions). Exclude '자율' and '해명'.
-        const POSITIONS = ['지배', '반항', '우월', '굴복', '방위', '구원'];
-        return `
-            <div class="role-selector role-icon-row" data-index="${index}" >
-                ${POSITIONS.map(pos => {
-                    const isActive = active === pos;
-                    return `
-                        <span class="role-icon ${isActive ? 'active' : ''}" title="${pos}" data-role="${pos}">
-                            <img src="${this.baseUrl}/assets/img/character-cards/직업_${pos}.png" alt="${pos}" onerror="this.style.display='none'">
-                        </span>
-                    `;
-                }).join('')}
-            </div>
-        `;
+    openRoleModal(index, currentRole) {
+        const modal = document.getElementById('roleModal');
+        const roleList = document.getElementById('roleList');
+        if (!modal || !roleList) return;
+
+        // Populate Roles
+        // Order: 우월 (default), 지배, 반항, 굴복, 방위, 구원
+        const POSITIONS = ['우월', '지배', '반항', '굴복', '방위', '구원'];
+
+        roleList.innerHTML = POSITIONS.map(pos => {
+            const isActive = currentRole === pos;
+            return `
+                <div class="role-option-item ${isActive ? 'active' : ''}" data-role="${pos}" onclick="void(0)">
+                    <img src="${this.baseUrl}/assets/img/character-cards/직업_${pos}.png" alt="${pos}">
+                    <span>${pos}</span>
+                </div>
+            `;
+        }).join('');
+
+        // Apply Grid Styles via JS to ensure it looks good without CSS file edit for now
+        roleList.style.display = 'grid';
+        roleList.style.gridTemplateColumns = 'repeat(3, 1fr)';
+        roleList.style.gap = '10px';
+
+        roleList.querySelectorAll('.role-option-item').forEach(item => {
+            // Basic styles for items
+            item.style.cursor = 'pointer';
+            item.style.padding = '10px';
+            item.style.borderRadius = '8px';
+            item.style.background = 'rgba(255,255,255,0.05)';
+            item.style.display = 'flex';
+            item.style.flexDirection = 'column';
+            item.style.alignItems = 'center';
+            item.style.gap = '6px';
+            item.style.border = '1px solid transparent';
+
+            if (item.classList.contains('active')) {
+                item.style.background = 'rgba(209, 31, 31, 0.2)';
+                item.style.borderColor = 'rgba(209, 31, 31, 0.8)';
+            }
+
+            const img = item.querySelector('img');
+            img.style.width = '32px';
+            img.style.height = '32px';
+            img.style.objectFit = 'contain';
+
+            const span = item.querySelector('span');
+            span.style.fontSize = '12px';
+            span.style.color = '#ddd';
+
+            item.addEventListener('mouseover', () => {
+                if (!item.classList.contains('active')) item.style.background = 'rgba(255,255,255,0.1)';
+            });
+            item.addEventListener('mouseout', () => {
+                if (!item.classList.contains('active')) item.style.background = 'rgba(255,255,255,0.05)';
+                else item.style.background = 'rgba(209, 31, 31, 0.2)';
+            });
+
+            item.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const newRole = item.dataset.role;
+                const currentData = { ...this.store.state.party[index], role: newRole };
+                this.store.setPartySlot(index, currentData);
+                modal.hidden = true;
+                modal.classList.remove('show');
+            });
+        });
+
+        modal.hidden = false;
+        requestAnimationFrame(() => modal.classList.add('show'));
     }
+
+
 
     // --- Helper Methods for Slot Rendering ---
 
@@ -679,6 +761,15 @@ export class PartyUI {
         // - Party slots except elucidator (index 3) and slot4 (index 4)
         const isOrderParticipant = (idx) => idx === 'mystery' || (Number.isInteger(idx) && idx !== 3 && idx !== 4);
 
+        // Capture old character->order mapping BEFORE any changes
+        const oldCharToOrder = this.store.getCharacterToOrderMap();
+
+        const getOrder = (idx) => {
+            if (idx === 'mystery') return String(this.store.getWonderConfig().order);
+            const member = this.store.state.party[idx];
+            return member ? String(member.order || '-') : '-';
+        };
+
         const setOrder = (idx, val) => {
             if (idx === 'mystery') {
                 const cfg = this.store.getWonderConfig();
@@ -696,53 +787,61 @@ export class PartyUI {
         // If newOrder is '-', clear order
         if (newOrder === '-' || newOrder === '') {
             setOrder(index, '-');
+            // Move column data with their owner (actions stay unchanged)
+            this.store.moveActionsWithCharacters(oldCharToOrder);
             return;
         }
 
-        // Collect current assignments (1..4) for Wonder + party (except elucidator)
-        const used = new Map();
-        const wonderCfg = this.store.getWonderConfig();
-        const wonderOrder = String(wonderCfg.order);
-        if (index !== 'mystery' && ['1', '2', '3', '4'].includes(wonderOrder)) {
-            used.set(wonderOrder, 'mystery');
-        }
+        const targetOrderNum = parseInt(newOrder);
+        const currentOrderNum = parseInt(getOrder(index)) || 0;
 
+        // Build a map of order -> participant index
+        const orderToParticipant = new Map();
+        const wonderCfg = this.store.getWonderConfig();
+        const wonderOrderNum = parseInt(wonderCfg.order);
+        if (!isNaN(wonderOrderNum) && wonderOrderNum >= 1 && wonderOrderNum <= 4) {
+            orderToParticipant.set(wonderOrderNum, 'mystery');
+        }
         this.store.state.party.forEach((member, idx) => {
             if (!isOrderParticipant(idx)) return;
-            const orderStr = String(member?.order || '');
-            if (['1', '2', '3', '4'].includes(orderStr)) {
-                used.set(orderStr, idx);
+            if (idx === index) return; // Exclude the one being changed
+            const order = parseInt(member?.order);
+            if (!isNaN(order) && order >= 1 && order <= 4) {
+                orderToParticipant.set(order, idx);
             }
         });
 
-        // If the desired order is already taken, shift the existing occupant(s) forward
-        const targetOrder = String(newOrder);
-        if (used.has(targetOrder) && used.get(targetOrder) !== index) {
-            // Build list of participants sorted by current order
-            const participants = [];
-            if (used.has('1')) participants.push(used.get('1'));
-            if (used.has('2')) participants.push(used.get('2'));
-            if (used.has('3')) participants.push(used.get('3'));
-            if (used.has('4')) participants.push(used.get('4'));
-
-            // Determine which indices need to shift forward (greater or equal to targetOrder)
-            const toShift = participants.filter(idx => {
-                const cur = idx === 'mystery' ? wonderCfg.order : this.store.state.party[idx]?.order;
-                return String(cur) >= targetOrder;
-            });
-
-            // Shift each one forward by 1 (capped at 4)
-            toShift.forEach(idx => {
-                const cur = idx === 'mystery' ? wonderCfg.order : this.store.state.party[idx]?.order;
-                const curNum = parseInt(cur);
-                if (!isNaN(curNum) && curNum >= 1 && curNum < 4) {
-                    setOrder(idx, String(curNum + 1));
+        // Special case: Character at order 1 moving to a higher order
+        // When order 1 moves to X, all characters from 2 to X should shift DOWN by 1
+        if (currentOrderNum === 1 && targetOrderNum > 1) {
+            // Shift down: orders 2..targetOrderNum become 1..(targetOrderNum-1)
+            for (let o = 2; o <= targetOrderNum; o++) {
+                if (orderToParticipant.has(o)) {
+                    const participant = orderToParticipant.get(o);
+                    setOrder(participant, String(o - 1));
                 }
-            });
+            }
+            // Set the mover's order
+            setOrder(index, String(targetOrderNum));
+        } else {
+            // Normal case: shift others UP if target is taken
+            if (orderToParticipant.has(targetOrderNum)) {
+                // Shift those >= targetOrderNum forward (from high to low to avoid collision)
+                for (let o = 4; o >= targetOrderNum; o--) {
+                    if (orderToParticipant.has(o)) {
+                        const participant = orderToParticipant.get(o);
+                        if (o < 4) {
+                            setOrder(participant, String(o + 1));
+                        }
+                    }
+                }
+            }
+            // Set the mover's order
+            setOrder(index, String(targetOrderNum));
         }
 
-        // Finally set the desired order
-        setOrder(index, targetOrder);
+        // Move column data with their owner (actions stay unchanged)
+        this.store.moveActionsWithCharacters(oldCharToOrder);
     }
 
     updateI18n(element) {
@@ -800,7 +899,7 @@ export class PartyUI {
         if (index < 0) return;
 
         let defaultOrder = index + 1;
-        if (index === 3) defaultOrder = 0; // Support usually 0 order logic?
+        if (index === 3) defaultOrder = 0;
         if (index === 4) defaultOrder = 4;
 
         const normalizePrefList = (val) => {
@@ -811,12 +910,11 @@ export class PartyUI {
         };
 
         // Preferred revelations are maintained in window.characterSetting (data/characters/*/setting.js)
-        // Ensure it is loaded (tactic-maker page does not include it via custom_data)
         try {
             if (typeof DataLoader.loadCharacterSetting === 'function') {
                 await DataLoader.loadCharacterSetting(charName);
             }
-        } catch (_) {}
+        } catch (_) { }
 
         const cSetting = (window.characterSetting || {})[charName] || {};
         const cData = (window.characterData || {})[charName] || {};
@@ -835,14 +933,45 @@ export class PartyUI {
             subRev = subPrefs.find(v => allowedSubs.includes(v)) || allowedSubs[0] || '';
         }
 
-        const desiredOrder = (index === 3 || index === 4) ? '-' : String(defaultOrder);
+        // Find the first available order (not taken by Wonder or other party members)
+        let desiredOrder = '-';
+        if (index !== 3 && index !== 4) {
+            const usedOrders = new Set();
+
+            // Check Wonder's order
+            const wonderOrder = String(this.store.state.wonder.order);
+            if (wonderOrder && wonderOrder !== '-') {
+                usedOrders.add(wonderOrder);
+            }
+
+            // Check other party members' orders (exclude elucidator and slot4)
+            this.store.state.party.forEach((member, idx) => {
+                if (idx === 3 || idx === 4) return;
+                if (idx === index) return; // Skip the slot we're assigning to
+                if (member && member.order && member.order !== '-') {
+                    usedOrders.add(String(member.order));
+                }
+            });
+
+            // Find the first available order (1-4)
+            for (let n = 1; n <= 4; n++) {
+                if (!usedOrders.has(String(n))) {
+                    desiredOrder = String(n);
+                    break;
+                }
+            }
+        }
+
+        // Default Data Construction, respecting settings
+        const defaultRitual = (this.settingsUI && this.settingsUI.getDefaultRitual()) || '0';
+        const defaultModification = (this.settingsUI && this.settingsUI.getDefaultModification()) || '-';
 
         // Set slot first with order '-' to avoid order collision, then apply through updateSlotOrder
         this.store.setPartySlot(index, {
             name: charName,
             order: (index === 3 || index === 4) ? '-' : '-',
-            ritual: '0',
-            modification: '0',
+            ritual: defaultRitual,
+            modification: defaultModification,
             role: null,
             mainRev,
             subRev
@@ -850,6 +979,49 @@ export class PartyUI {
 
         if (desiredOrder !== '-') {
             this.updateSlotOrder(index, desiredOrder);
+        }
+
+        // Auto Wonder Weapon Selection (Rebel/Domination)
+        // Auto Wonder Weapon Selection (Rebel/Domination)
+        const isAutoWeaponEnabled = (this.settingsUI && typeof this.settingsUI.getAutoWonderWeapon === 'function' && this.settingsUI.getAutoWonderWeapon());
+        console.log('[AutoWeapon] Enabled:', isAutoWeaponEnabled, 'Char:', charName, 'Position:', cData.position);
+
+        if (isAutoWeaponEnabled) {
+            const position = cData.position || '';
+            if (['반항', '지배'].includes(position)) {
+                try {
+                    // Load party.js for this character
+                    if (typeof DataLoader.loadCharacterParty === 'function') {
+                        console.log('[AutoWeapon] Loading party js for', charName);
+                        await DataLoader.loadCharacterParty(charName);
+
+                        const rec = (window.recommendParty || {})[charName];
+                        console.log('[AutoWeapon] Loaded rec:', rec);
+
+                        if (rec && rec.weapon && rec.weapon.length > 0) {
+                            // Take first weapon, remove trailing '!' if present
+                            let weaponName = rec.weapon[0];
+                            if (weaponName.endsWith('!')) {
+                                weaponName = weaponName.slice(0, -1);
+                            }
+
+                            console.log('[AutoWeapon] Selected weapon:', weaponName);
+
+                            // Update Wonder config
+                            const wonderCfg = this.store.getWonderConfig();
+                            // Don't overwrite if it's the same to avoid unnecessary renders
+                            if (wonderCfg.weapon !== weaponName) {
+                                console.log('[AutoWeapon] Updating store...');
+                                this.store.setWonderConfig({ ...wonderCfg, weapon: weaponName });
+                            }
+                        }
+                    }
+                } catch (e) {
+                    console.error('Failed to auto-set Wonder weapon:', e);
+                }
+            } else {
+                console.log('[AutoWeapon] Position mismatch:', position);
+            }
         }
     }
 }

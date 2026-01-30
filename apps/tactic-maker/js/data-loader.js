@@ -155,6 +155,53 @@ export class DataLoader {
         });
 
         this._characterSettingPromises.set(name, p);
+        this._characterSettingPromises.set(name, p);
+        return p;
+    }
+
+    /**
+     * Load character party file (recommended party/weapons) on demand.
+     * data/characters/<NAME>/party.js -> window.recommendParty[NAME]
+     */
+    static loadCharacterParty(charName) {
+        const name = String(charName || '').trim();
+        if (!name) return Promise.resolve(false);
+
+        if (window.recommendParty && window.recommendParty[name]) {
+            return Promise.resolve(true);
+        }
+
+        // We can reuse the promise map if key is distinct, or create a new map
+        // Let's create a new static map for party promises
+        if (!this._characterPartyPromises) {
+            this._characterPartyPromises = new Map();
+        }
+
+        if (this._characterPartyPromises.has(name)) {
+            return this._characterPartyPromises.get(name);
+        }
+
+        const baseUrl = window.BASE_URL || '';
+        const version = (typeof window.APP_VERSION !== 'undefined' && window.APP_VERSION)
+            ? `?v=${encodeURIComponent(String(window.APP_VERSION))}`
+            : '';
+
+        const src = `${baseUrl}/data/characters/${encodeURIComponent(name)}/party.js${version}`;
+
+        const p = new Promise((resolve) => {
+            const script = document.createElement('script');
+            script.src = src;
+            script.async = true;
+            script.onload = () => {
+                resolve(!!(window.recommendParty && window.recommendParty[name]));
+            };
+            script.onerror = () => {
+                resolve(false);
+            };
+            document.head.appendChild(script);
+        });
+
+        this._characterPartyPromises.set(name, p);
         return p;
     }
 

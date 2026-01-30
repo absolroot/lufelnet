@@ -21,8 +21,9 @@ export class TacticUI {
         // Subscribe to store changes
         this.store.subscribe((event, data) => this.handleStoreUpdate(event, data));
 
-        // Bind events
+        // Bind events (only work in edit mode)
         this.btnAddTurn?.addEventListener('click', () => {
+            if (!this.isEditMode()) return;
             this.store.addTurn();
         });
 
@@ -53,6 +54,16 @@ export class TacticUI {
         applyEditMode(true);
         this.renderHeaders();
         this.renderTurns();
+
+        // Global click listener for custom dropdowns
+        document.addEventListener('click', (e) => {
+            document.querySelectorAll('.custom-select-options.show').forEach(menu => {
+                const container = menu.closest('.custom-select-container');
+                if (container && !container.contains(e.target)) {
+                    menu.classList.remove('show');
+                }
+            });
+        });
     }
 
     isEditMode() {
@@ -226,23 +237,58 @@ export class TacticUI {
         turns.forEach((turn, turnIdx) => {
             const tr = document.createElement('tr');
             tr.dataset.turnIndex = turnIdx;
+            tr.className = 'turn-row';
 
             // Turn number cell
             const tdTurn = document.createElement('td');
             tdTurn.className = 'col-turn';
             tdTurn.innerHTML = `
                 <div class="turn-info">
+                    <div class="turn-drag-handle" title="드래그하여 순서 변경">
+                        <svg width="10" height="14" viewBox="0 0 10 14" fill="currentColor">
+                            <circle cx="2" cy="2" r="1.5"/>
+                            <circle cx="8" cy="2" r="1.5"/>
+                            <circle cx="2" cy="7" r="1.5"/>
+                            <circle cx="8" cy="7" r="1.5"/>
+                            <circle cx="2" cy="12" r="1.5"/>
+                            <circle cx="8" cy="12" r="1.5"/>
+                        </svg>
+                    </div>
                     <span class="turn-number">${turn.turn}</span>
-                    <button class="btn-remove-turn" data-turn-index="${turnIdx}" title="턴 삭제">&times;</button>
+                    <div class="turn-actions">
+                        <button class="btn-turn-action btn-duplicate-turn" data-turn-index="${turnIdx}" title="턴 복제">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="9" y="9" width="13" height="13" rx="2"/>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                            </svg>
+                        </button>
+                        <button class="btn-turn-action btn-remove-turn" data-turn-index="${turnIdx}" title="턴 삭제">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="18" y1="6" x2="6" y2="18"/>
+                                <line x1="6" y1="6" x2="18" y2="18"/>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
             `;
             tr.appendChild(tdTurn);
 
-            // Bind turn removal
-            tdTurn.querySelector('.btn-remove-turn')?.addEventListener('click', () => {
+            // Setup turn drag & drop
+            this.setupTurnDragDrop(tr, turnIdx);
+
+            // Bind turn actions (only work in edit mode)
+            tdTurn.querySelector('.btn-remove-turn')?.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (!this.isEditMode()) return;
                 if (confirm('이 턴을 삭제하시겠습니까?')) {
                     this.store.removeTurn(turnIdx);
                 }
+            });
+
+            tdTurn.querySelector('.btn-duplicate-turn')?.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (!this.isEditMode()) return;
+                this.store.duplicateTurn(turnIdx);
             });
 
             // Character columns
@@ -267,20 +313,174 @@ export class TacticUI {
 
                 td.appendChild(actionList);
 
-                // Add action button (visible in edit mode)
+                // Add action button (only works in edit mode)
                 const btnAdd = document.createElement('button');
                 btnAdd.className = 'btn-add-action';
                 btnAdd.textContent = '+';
                 btnAdd.addEventListener('click', () => {
+                    if (!this.isEditMode()) return;
                     const defaultAction = this.getDefaultActionForColumn(char);
                     this.store.addAction(turnIdx, colKey, defaultAction);
                 });
                 td.appendChild(btnAdd);
 
+                // Setup drop zone for this cell
+                this.setupCellDropZone(td, actionList, turnIdx, colKey);
+
                 tr.appendChild(td);
             });
 
             this.tableBody.appendChild(tr);
+        });
+    }
+
+    setupCellDropZone(cell, actionList, turnIdx, colKey) {
+        cell.addEventListener('dragover', (e) => {
+            if (!this._draggedAction || !this.isEditMode()) return;
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
+            cell.classList.add('drag-over');
+
+            // Find drop position within action list
+            const actionItems = Array.from(actionList.querySelectorAll('.action-item:not(.dragging)'));
+            const mouseY = e.clientY;
+
+            // Remove existing indicators
+            actionList.querySelectorAll('.action-drop-indicator').forEach(el => el.remove());
+
+            // Find insert position
+            let insertBefore = null;
+            for (const item of actionItems) {
+                const rect = item.getBoundingClientRect();
+                const midY = rect.top + rect.height / 2;
+                if (mouseY < midY) {
+                    insertBefore = item;
+                    break;
+                }
+            }
+
+            // Add drop indicator
+            const indicator = document.createElement('div');
+            indicator.className = 'action-drop-indicator';
+            if (insertBefore) {
+                actionList.insertBefore(indicator, insertBefore);
+            } else {
+                actionList.appendChild(indicator);
+            }
+        });
+
+        cell.addEventListener('dragleave', (e) => {
+            // Only remove if leaving the cell entirely
+            if (!cell.contains(e.relatedTarget)) {
+                cell.classList.remove('drag-over');
+                actionList.querySelectorAll('.action-drop-indicator').forEach(el => el.remove());
+            }
+        });
+
+        cell.addEventListener('drop', (e) => {
+            e.preventDefault();
+            cell.classList.remove('drag-over');
+            actionList.querySelectorAll('.action-drop-indicator').forEach(el => el.remove());
+
+            if (!this._draggedAction || !this.isEditMode()) return;
+
+            const { turnIdx: fromTurnIdx, colKey: fromColKey, actionIdx: fromActionIdx } = this._draggedAction;
+
+            // Calculate drop position
+            const actionItems = Array.from(actionList.querySelectorAll('.action-item:not(.dragging)'));
+            const mouseY = e.clientY;
+            let toActionIdx = actionItems.length; // Default: end of list
+
+            for (let i = 0; i < actionItems.length; i++) {
+                const rect = actionItems[i].getBoundingClientRect();
+                const midY = rect.top + rect.height / 2;
+                if (mouseY < midY) {
+                    toActionIdx = i;
+                    break;
+                }
+            }
+
+            // Perform the move
+            this.store.moveActionTo(fromTurnIdx, fromColKey, fromActionIdx, turnIdx, colKey, toActionIdx);
+        });
+    }
+
+    setupTurnDragDrop(row, turnIdx) {
+        const dragHandle = row.querySelector('.turn-drag-handle');
+        if (!dragHandle) return;
+
+        row.draggable = false;
+
+        dragHandle.addEventListener('mousedown', () => {
+            if (this.isEditMode()) {
+                row.draggable = true;
+            }
+        });
+
+        row.addEventListener('dragstart', (e) => {
+            if (!this.isEditMode()) {
+                e.preventDefault();
+                return;
+            }
+            row.classList.add('dragging-turn');
+            e.dataTransfer.effectAllowed = 'move';
+            e.dataTransfer.setData('text/plain', JSON.stringify({ type: 'turn', turnIdx }));
+            this._draggedTurn = { turnIdx, element: row };
+        });
+
+        row.addEventListener('dragend', () => {
+            row.draggable = false;
+            row.classList.remove('dragging-turn');
+            this._draggedTurn = null;
+            document.querySelectorAll('.turn-drop-indicator').forEach(el => el.remove());
+            document.querySelectorAll('.turn-row.drag-over-turn').forEach(el => el.classList.remove('drag-over-turn'));
+        });
+
+        row.addEventListener('dragover', (e) => {
+            if (!this._draggedTurn || !this.isEditMode()) return;
+            if (this._draggedTurn.turnIdx === turnIdx) return;
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
+
+            // Remove existing indicators
+            document.querySelectorAll('.turn-drop-indicator').forEach(el => el.remove());
+            document.querySelectorAll('.turn-row.drag-over-turn').forEach(el => el.classList.remove('drag-over-turn'));
+
+            const rect = row.getBoundingClientRect();
+            const midY = rect.top + rect.height / 2;
+            const indicator = document.createElement('tr');
+            indicator.className = 'turn-drop-indicator';
+            indicator.innerHTML = '<td colspan="10"><div class="turn-drop-line"></div></td>';
+
+            if (e.clientY < midY) {
+                row.parentNode.insertBefore(indicator, row);
+            } else {
+                row.parentNode.insertBefore(indicator, row.nextSibling);
+            }
+        });
+
+        row.addEventListener('drop', (e) => {
+            e.preventDefault();
+            document.querySelectorAll('.turn-drop-indicator').forEach(el => el.remove());
+
+            if (!this._draggedTurn || !this.isEditMode()) return;
+
+            const fromIdx = this._draggedTurn.turnIdx;
+            const rect = row.getBoundingClientRect();
+            const midY = rect.top + rect.height / 2;
+            let toIdx = turnIdx;
+
+            if (e.clientY >= midY && fromIdx < turnIdx) {
+                // Dropping below, same index
+            } else if (e.clientY < midY && fromIdx > turnIdx) {
+                // Dropping above, same index
+            } else if (e.clientY >= midY) {
+                toIdx = turnIdx + 1;
+            }
+
+            if (fromIdx !== toIdx) {
+                this.store.moveTurn(fromIdx, toIdx > fromIdx ? toIdx - 1 : toIdx);
+            }
         });
     }
 
@@ -301,9 +501,17 @@ export class TacticUI {
         const triggerText = document.createElement('span');
         triggerText.className = 'custom-select-text';
 
-        const arrow = document.createElement('span');
-        arrow.className = 'custom-select-arrow';
-        arrow.textContent = '▼';
+        const arrow = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        arrow.setAttribute('width', '12');
+        arrow.setAttribute('height', '12');
+        arrow.setAttribute('viewBox', '0 0 24 24');
+        arrow.setAttribute('fill', 'none');
+        arrow.setAttribute('stroke', 'currentColor');
+        arrow.setAttribute('stroke-width', '2');
+        arrow.setAttribute('stroke-linecap', 'round');
+        arrow.setAttribute('stroke-linejoin', 'round');
+        arrow.setAttribute('class', 'custom-select-arrow');
+        arrow.innerHTML = '<path d="m6 9 6 6 6-6"/>';
 
         triggerVal.appendChild(triggerIcon);
         triggerVal.appendChild(triggerText);
@@ -381,6 +589,8 @@ export class TacticUI {
 
         trigger.addEventListener('click', (e) => {
             e.stopPropagation();
+            if (!document.body.classList.contains('tactic-edit-mode')) return;
+
             document.querySelectorAll('.custom-select-options.show').forEach(el => {
                 if (el !== menu) el.classList.remove('show');
             });
@@ -393,19 +603,8 @@ export class TacticUI {
         // Close on outside click is handled by global listener in createActionItem or main setup...
         // ACTUALLY, we should add a global listener once or use the one from modal?
         // Let's add a self-cleaning listener.
-        const closeHandler = (e) => {
-            if (!container.contains(e.target)) {
-                menu.classList.remove('show');
-            }
-        };
-        document.addEventListener('click', closeHandler);
-
-        // cleanup if removed? 
-        // This is a potential leak if we re-render turns often.
-        // ideally we remove listener when element is removed.
-        // But renderTurns clears innerHTML.
-        // We can attach a method to the container to cleanup.
-        container._cleanup = () => document.removeEventListener('click', closeHandler);
+        // Close handler is now global in constructor to prevent leaks
+        // container._cleanup no longer needed
 
         return {
             container,
@@ -481,23 +680,87 @@ export class TacticUI {
 
         const isEditMode = this.isEditMode();
 
-        // Build actions overlay (edit mode only)
+        // Build action item with inline drag handle
         item.innerHTML = `
-            <div class="action-actions" aria-hidden="true">
-                <button type="button" class="action-icon-btn" data-action-btn="edit" title="수정/메모">✎</button>
-                <button type="button" class="action-icon-btn" data-action-btn="duplicate" title="복제">⎘</button>
-                <button type="button" class="action-icon-btn" data-action-btn="delete" title="삭제">×</button>
+            <div class="action-content-wrapper">
+                <div class="action-drag-handle" title="드래그하여 이동">
+                    <svg width="10" height="14" viewBox="0 0 10 14" fill="currentColor">
+                        <circle cx="2" cy="2" r="1.5"/>
+                        <circle cx="8" cy="2" r="1.5"/>
+                        <circle cx="2" cy="7" r="1.5"/>
+                        <circle cx="8" cy="7" r="1.5"/>
+                        <circle cx="2" cy="12" r="1.5"/>
+                        <circle cx="8" cy="12" r="1.5"/>
+                    </svg>
+                </div>
+                <div class="action-main-row"></div>
             </div>
-            <div class="action-main-row"></div>
+            <div class="action-actions">
+                <button type="button" class="action-icon-btn" data-action-btn="edit" title="수정/메모">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                    </svg>
+                </button>
+                <button type="button" class="action-icon-btn" data-action-btn="duplicate" title="복제">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="9" y="9" width="13" height="13" rx="2"/>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                    </svg>
+                </button>
+                <button type="button" class="action-icon-btn" data-action-btn="delete" title="삭제">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="3 6 5 6 21 6"/>
+                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                    </svg>
+                </button>
+            </div>
         `;
 
+        // Setup drag handle
+        const dragHandle = item.querySelector('.action-drag-handle');
+        if (dragHandle) {
+            item.draggable = false; // Only drag via handle
+
+            dragHandle.addEventListener('mousedown', () => {
+                if (this.isEditMode()) {
+                    item.draggable = true;
+                }
+            });
+
+            item.addEventListener('dragstart', (e) => {
+                if (!this.isEditMode()) {
+                    e.preventDefault();
+                    return;
+                }
+                item.classList.add('dragging');
+                e.dataTransfer.effectAllowed = 'move';
+                e.dataTransfer.setData('text/plain', JSON.stringify({
+                    turnIdx: turnIdx,
+                    colKey: colKey,
+                    actionIdx: actionIdx
+                }));
+                // Store reference for drop handling
+                this._draggedAction = { turnIdx, colKey, actionIdx, element: item };
+            });
+
+            item.addEventListener('dragend', () => {
+                item.draggable = false;
+                item.classList.remove('dragging');
+                this._draggedAction = null;
+                // Remove all drop indicators
+                document.querySelectorAll('.action-drop-indicator').forEach(el => el.remove());
+                document.querySelectorAll('.tactic-cell.drag-over').forEach(el => el.classList.remove('drag-over'));
+            });
+        }
+
         const mainRow = item.querySelector('.action-main-row');
-        if (isEditMode) {
+        // Always render dropdowns (styling handles view mode)
+        if (true) {
             // 1. Prepare Data
             const partyNames = [];
             (this.store.state.party || []).forEach((m, idx) => {
                 if (!m) return;
-                if (idx === 3) return;
                 partyNames.push(m.name);
             });
             const actorOptions = [
@@ -559,6 +822,7 @@ export class TacticUI {
 
             // Actor Dropdown
             const actorDD = this.createCustomDropdown(actorOptions, initialActor, handleActorChange);
+            actorDD.container.classList.add('actor-dropdown');
 
             // Persona Dropdown
             const pOpts = (initialActor === '원더')
@@ -568,7 +832,17 @@ export class TacticUI {
                 : [];
 
             const personaDD = this.createCustomDropdown(pOpts, initialPersona, handlePersonaChange);
-            personaDD.container.style.display = (initialActor === '원더') ? 'block' : 'none';
+            personaDD.container.classList.add('persona-dropdown');
+            // Visibility is controlled by CSS via .has-persona class on wrapper
+
+            // Wrapper for actor + persona (fixed width for grid alignment)
+            const actorPersonaWrapper = document.createElement('div');
+            actorPersonaWrapper.className = 'actor-persona-wrapper';
+            if (initialActor === '원더') {
+                actorPersonaWrapper.classList.add('has-persona');
+            }
+            actorPersonaWrapper.appendChild(actorDD.container);
+            actorPersonaWrapper.appendChild(personaDD.container);
 
             // Action Dropdown
             const charObj = (initialActor === '원더')
@@ -577,10 +851,10 @@ export class TacticUI {
             const actionOpts = this.getActionOptions(charObj);
 
             const actionDD = this.createCustomDropdown(actionOpts, initialActionVal, handleActionChange);
+            actionDD.container.classList.add('action-dropdown');
 
             // 6. Append to DOM
-            mainRow.appendChild(actorDD.container);
-            mainRow.appendChild(personaDD.container);
+            mainRow.appendChild(actorPersonaWrapper);
             mainRow.appendChild(actionDD.container);
 
         } else {
@@ -611,7 +885,7 @@ export class TacticUI {
 
             if (actorName === '원더' && action.wonderPersona) {
                 const personaWrap = document.createElement('div');
-                personaWrap.className = 'action-persona';
+                personaWrap.className = 'action-persona wonder-persona-display';
                 const personaImg = document.createElement('img');
                 personaImg.src = `${this.baseUrl}/assets/img/persona/${action.wonderPersona}.webp`;
                 personaImg.className = 'action-persona-icon';
@@ -640,10 +914,11 @@ export class TacticUI {
             item.appendChild(memo);
         }
 
-        // Action buttons
+        // Action buttons (only work in edit mode)
         item.querySelectorAll('button[data-action-btn]').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.stopPropagation();
+                if (!this.isEditMode()) return;
                 const kind = btn.dataset.actionBtn;
                 if (kind === 'edit') {
                     this.openActionModal(turnIdx, colKey, char, actionIdx, action);
@@ -654,9 +929,7 @@ export class TacticUI {
                     return;
                 }
                 if (kind === 'delete') {
-                    if (confirm('이 액션을 삭제하시겠습니까?')) {
-                        this.store.removeAction(turnIdx, colKey, actionIdx);
-                    }
+                    this.store.removeAction(turnIdx, colKey, actionIdx);
                 }
             });
         });
@@ -767,6 +1040,25 @@ export class TacticUI {
 
         btn.addEventListener('click', toggleMenu);
 
+        // Event Delegation for dynamically populated items
+        menu.addEventListener('click', (e) => {
+            const item = e.target.closest('.target-dropdown-item');
+            if (!item) return;
+
+            e.stopPropagation();
+            const val = item.dataset.value;
+
+            // Update hidden input
+            const input = modal.querySelector('.persona-select-value');
+            if (input) input.value = val;
+
+            // Update display
+            this.updateDropdownDisplay(modal, val);
+
+            // Close menu
+            menu.classList.remove('active');
+        });
+
         // Click outside to close
         document.addEventListener('click', (e) => {
             if (!dropdown.contains(e.target)) {
@@ -841,7 +1133,6 @@ export class TacticUI {
             list.push('원더');
             (this.store.state.party || []).forEach((m, idx) => {
                 if (!m) return;
-                if (idx === 3) return;
                 list.push(m.name);
             });
 
@@ -999,30 +1290,8 @@ export class TacticUI {
             }
         });
 
-        html += `<div style="padding: 4px 8px; font-size: 10px; color: #888; margin-top: 4px;">특수 액션</div>`;
-
-        // Special actions
-        const specials = ['HIGHLIGHT', 'ONE MORE', '총격', '근접', '방어', '아이템', 'Theurgia'];
-        specials.forEach(s => {
-            html += `
-                <button type="button" class="target-dropdown-item" data-value="${s}">
-                    <span class="none-icon" style="font-size: 10px;">★</span>
-                    <span>${s}</span>
-                </button>
-            `;
-        });
-
         menu.innerHTML = html;
 
-        // Bind clicks
-        menu.querySelectorAll('.target-dropdown-item').forEach(item => {
-            item.addEventListener('click', () => {
-                const val = item.dataset.value;
-                valueInput.value = val;
-                this.updateDropdownDisplay(modal, val);
-                menu.classList.remove('active');
-            });
-        });
     }
 
     populateActionSelect(select, char) {

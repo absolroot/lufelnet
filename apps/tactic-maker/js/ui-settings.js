@@ -3,7 +3,8 @@ export class TacticSettingsUI {
         this.settings = {
             defaultRitual: '0',
             defaultModification: '-',
-            autoWonderWeapon: true
+            autoWonderWeapon: true,
+            autoActionPrompt: true
         };
         this.STORAGE_KEY = 'tactic_maker_settings';
 
@@ -12,7 +13,8 @@ export class TacticSettingsUI {
             modal: document.getElementById('settingsModal'),
             inputRitual: document.getElementById('settingDefaultRitual'),
             inputModification: document.getElementById('settingDefaultModification'),
-            inputAutoWonderWeapon: document.getElementById('settingAutoWonderWeapon')
+            inputAutoWonderWeapon: document.getElementById('settingAutoWonderWeapon'),
+            inputAutoActionPrompt: document.getElementById('settingAutoActionPrompt')
         };
 
         this.init();
@@ -33,6 +35,9 @@ export class TacticSettingsUI {
                 if (typeof this.settings.autoWonderWeapon === 'undefined') {
                     this.settings.autoWonderWeapon = true;
                 }
+                if (typeof this.settings.autoActionPrompt === 'undefined') {
+                    this.settings.autoActionPrompt = true;
+                }
             }
         } catch (e) {
             console.error('Failed to load settings:', e);
@@ -47,6 +52,9 @@ export class TacticSettingsUI {
         }
         if (this.elements.inputAutoWonderWeapon) {
             this.elements.inputAutoWonderWeapon.checked = this.settings.autoWonderWeapon;
+        }
+        if (this.elements.inputAutoActionPrompt) {
+            this.elements.inputAutoActionPrompt.checked = this.settings.autoActionPrompt;
         }
     }
 
@@ -93,6 +101,13 @@ export class TacticSettingsUI {
                 this.saveSettings();
             });
         }
+
+        if (this.elements.inputAutoActionPrompt) {
+            this.elements.inputAutoActionPrompt.addEventListener('change', (e) => {
+                this.settings.autoActionPrompt = e.target.checked;
+                this.saveSettings();
+            });
+        }
     }
 
     openModal() {
@@ -120,5 +135,9 @@ export class TacticSettingsUI {
 
     getAutoWonderWeapon() {
         return this.settings.autoWonderWeapon;
+    }
+
+    getAutoActionPrompt() {
+        return this.settings.autoActionPrompt;
     }
 }

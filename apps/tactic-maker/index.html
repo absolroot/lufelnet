@@ -219,6 +219,10 @@ jp: /tactic-maker/?lang=jp
                 <label data-i18n="autoWonderWeapon" for="settingAutoWonderWeapon">원더 무기 자동 설정 (반항/지배)</label>
                 <input type="checkbox" id="settingAutoWonderWeapon" style="width: 20px; height: 20px; cursor: pointer;">
             </div>
+            <div class="form-group" style="flex-direction: row; align-items: center; justify-content: space-between;">
+                <label data-i18n="autoActionPrompt">자동 행동 추가 알림</label>
+                <input type="checkbox" id="settingAutoActionPrompt" style="width: 20px; height: 20px; cursor: pointer;">
+            </div>
         </div>
     </div>
 </div>
@@ -226,8 +230,21 @@ jp: /tactic-maker/?lang=jp
 <!-- Data Scripts (Persona) -->
 <script src="{{ site.baseurl }}/data/persona/order.js?v={{ site.time | date: '%s' }}"></script>
 <script src="{{ site.baseurl }}/data/persona/nonorder.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/tactic-maker/pattern.js?v={{ site.time | date: '%s' }}"></script>
 <script src="{{ site.baseurl }}/assets/js/persona-loader.js?v={{ site.time | date: '%s' }}"></script>
 
 <!-- Scripts -->
 <script type="module" src="{{ site.baseurl }}/i18n/service/i18n-service.js?v={{ site.time | date: '%s' }}"></script>
 <script type="module" src="{{ site.baseurl }}/apps/tactic-maker/js/main.js?v={{ site.time | date: '%s' }}"></script>
+<script>
+    // Initialize Navigation
+    if (typeof Navigation !== 'undefined') {
+        Navigation.load('tactic-maker');
+    } else {
+        window.addEventListener('load', () => {
+            if (typeof Navigation !== 'undefined') {
+                Navigation.load('tactic-maker');
+            }
+        });
+    }
+</script>

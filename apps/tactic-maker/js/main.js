@@ -39,7 +39,7 @@ class TacticMakerApp {
         this.partyUI = new PartyUI(this.store, this.wonderUI, this.settingsUI);
         // Connect partyUI back to wonderUI for order updates
         this.wonderUI.setPartyUI(this.partyUI);
-        this.tacticUI = new TacticUI(this.store);
+        this.tacticUI = new TacticUI(this.store, this.settingsUI);
 
         // Initialize Import/Export
         this.importExport = new ImportExport(this.store);

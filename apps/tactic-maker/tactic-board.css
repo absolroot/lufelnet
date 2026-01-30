@@ -32,7 +32,13 @@
 .tactic-table th {
     background: rgba(0, 0, 0, 0.4);
     text-align: center;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    /* Vertical separator */
     /* Sticky removed */
+}
+
+.tactic-table th:last-child {
+    border-right: none;
 }
 
 .col-character {
@@ -97,13 +103,23 @@
 /* Separator between turns - only for data cells */
 td.tactic-cell {
     background: rgba(0, 0, 0, 0.2);
-    height: 100px;
+    min-height: 100px;
+    height: auto;
+    /* Allow growth */
     transition: background 0.2s;
     border-bottom: 3px solid rgba(0, 0, 0, 0.3);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    /* Vertical separator */
+}
+
+td.tactic-cell:last-child {
+    border-right: none;
 }
 
 td.col-turn {
     border-bottom: 3px solid rgba(0, 0, 0, 0.3);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    /* Vertical separator */
 }
 
 .tactic-cell:hover {
@@ -124,7 +140,7 @@ td.col-turn {
 .action-list {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 4px;
     margin-bottom: 8px;
 }
 
@@ -165,7 +181,7 @@ body:not(.tactic-edit-mode) .turn-row {
 }
 
 .action-item {
-    padding: 4px 10px 4px 6px;
+    padding: 3px 10px 3px 4px;
     background: linear-gradient(135deg, rgba(40, 40, 40, 0.9), rgba(30, 30, 30, 0.95));
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 6px;
@@ -281,7 +297,7 @@ body:not(.tactic-edit-mode) .turn-row {
 
 .custom-select-trigger {
     width: 100%;
-    padding: 0px 6px;
+    padding: 0px 2px;
     background: rgba(0, 0, 0, 0);
     border: 0px solid rgba(255, 255, 255, 0.2);
     border-radius: 0px;
@@ -320,7 +336,7 @@ body:not(.tactic-edit-mode) .turn-row {
 
 .custom-select-icon {
     width: 16px;
-    height: 16px;
+    height: auto;
     object-fit: cover;
     border-radius: 2px;
     flex-shrink: 0;
@@ -451,9 +467,9 @@ body:not(.tactic-edit-mode) .turn-row {
 }
 
 .action-actor-icon {
-    width: 20px;
-    height: 20px;
-    border-radius: 4px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
     object-fit: cover;
     background: rgba(0, 0, 0, 0.3);
 }
@@ -505,9 +521,9 @@ body:not(.tactic-edit-mode) .custom-select-trigger {
 .btn-add-action {
     width: 100%;
     padding: 8px;
-    border: 1px dashed rgba(255, 255, 255, 0.2);
+    border: 1px dashed rgba(255, 255, 255, 0.1);
     background: transparent;
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.2);
     border-radius: 6px;
     cursor: pointer;
     transition: all 0.2s;
@@ -599,6 +615,14 @@ body:not(.tactic-edit-mode) .custom-select-trigger {
 .actor-persona-wrapper .actor-dropdown {
     flex: 1;
     min-width: 0;
+}
+
+.actor-dropdown .custom-select-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: rgba(0, 0, 0, 0.3);
 }
 
 /* When has persona, actor dropdown shrinks to make room for persona */

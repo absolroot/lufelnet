@@ -251,6 +251,7 @@ export class PersonaModal extends EventEmitter {
         this.modal.querySelector('.persona-cards-container').addEventListener('click', (e) => {
             const cardItem = e.target.closest('.persona-card-item');
             if (cardItem) {
+                if (cardItem.classList.contains('disabled')) return;
                 const personaKey = cardItem.dataset.persona;
                 if (this.onSelect) {
                     this.onSelect(personaKey);
@@ -260,8 +261,9 @@ export class PersonaModal extends EventEmitter {
         });
     }
 
-    open(callback) {
+    open(callback, excludedPersonas = []) {
         this.onSelect = callback;
+        this.excludedPersonas = new Set(excludedPersonas);
         this.loadPersonaData();
         this.modal.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
@@ -437,6 +439,9 @@ export class PersonaModal extends EventEmitter {
 
             const cardItem = document.createElement('div');
             cardItem.className = 'persona-card-item';
+            if (this.excludedPersonas.has(personaName)) {
+                cardItem.classList.add('disabled');
+            }
             cardItem.dataset.persona = personaName;
 
             // Build tier label
@@ -817,11 +822,17 @@ export class PersonaModal extends EventEmitter {
 
             .persona-card-item {
                 cursor: pointer;
-                transition: transform 0.15s, box-shadow 0.15s;
+                transition: transform 0.2s;
             }
 
-            .persona-card-item:hover {
-                transform: translateY(-2px);
+            .persona-card-item.disabled {
+                cursor: not-allowed;
+                opacity: 0.5;
+                filter: grayscale(100%);
+            }
+
+            .persona-card-item:hover:not(.disabled) {
+                transform: translateY(-4px);
             }
 
             .persona-card-item:hover .card {

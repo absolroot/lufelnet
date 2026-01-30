@@ -790,6 +790,11 @@ body {
     background: rgba(255, 255, 255, 0.1);
 }
 
+/* Hide Ritual/Mod wrapper in non-edit mode */
+body:not(.tactic-edit-mode) .ritual-mod-wrapper {
+    display: none !important;
+}
+
 /* ==========================================================================
    Persona Cards (Ported from persona.css)
    ========================================================================== */
@@ -1697,4 +1702,42 @@ body {
     display: flex;
     flex-direction: column;
     gap: 4px;
+}
+
+/* ==========================================================================
+   Non-Edit Mode Restrictions (Global Party Settings)
+   ========================================================================== */
+body:not(.tactic-edit-mode) .slot-order-select,
+body:not(.tactic-edit-mode) .ws-order-select,
+body:not(.tactic-edit-mode) .styled-select,
+body:not(.tactic-edit-mode) .revelation-button,
+body:not(.tactic-edit-mode) .revelation-dropdown,
+body:not(.tactic-edit-mode) .btn-role-change,
+body:not(.tactic-edit-mode) .weapon-select,
+body:not(.tactic-edit-mode) .wonder-persona-card,
+body:not(.tactic-edit-mode) .wp-header,
+body:not(.tactic-edit-mode) .slot-card {
+    pointer-events: none !important;
+    cursor: default !important;
+}
+
+body:not(.tactic-edit-mode) .btn-remove-slot {
+    display: none !important;
+}
+
+/* Hide dropdown arrows in non-edit mode for cleaner look */
+body:not(.tactic-edit-mode) .styled-select {
+    appearance: none;
+    background-image: none;
+    padding-right: 6px;
+    /* Remove space for arrow */
+    text-align: center;
+}
+
+/* Dim disabled inputs slightly to indicate read-only */
+body:not(.tactic-edit-mode) .styled-select,
+body:not(.tactic-edit-mode) .revelation-button {
+    opacity: 0.8;
+    background: rgba(0, 0, 0, 0.2);
+    border-color: transparent;
 }

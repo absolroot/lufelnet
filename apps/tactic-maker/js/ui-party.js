@@ -31,6 +31,15 @@ export class PartyUI {
         this.initRoster();
         this.initRosterToggle();
 
+        // Global click listener to close Revelation dropdowns
+        document.addEventListener('click', (e) => {
+            document.querySelectorAll('.revelation-dropdown.open').forEach(el => {
+                if (!el.contains(e.target)) {
+                    el.classList.remove('open');
+                }
+            });
+        });
+
         // Explicitly render initial state to ensure UI is ready
         this.store.state.party.forEach((p, i) => this.renderSlot(i, p));
     }
@@ -374,7 +383,7 @@ export class PartyUI {
             <div class="slot-options-grid" style="display: grid; ">
                 
                 <!-- Row 1: Ritual, Modification -->
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px;">
+                <div class="ritual-mod-wrapper" style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px;">
                      <div class="slot-option-group">
                         <label style="font-size: 11px; opacity: 0.7; margin-bottom: 2px; display: block;">의식</label>
                         <select class="styled-select ritual-select" data-index="${index}" style="width: 100%;">

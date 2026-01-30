@@ -4,8 +4,9 @@
  */
 
 export class TacticUI {
-    constructor(store) {
+    constructor(store, settingsUI) {
         this.store = store;
+        this.settingsUI = settingsUI;
         this.tableHeader = document.getElementById('tacticHeaderRow');
         this.tableBody = document.getElementById('tacticBody');
         this.btnAddTurn = document.getElementById('btnAddTurn');
@@ -99,6 +100,7 @@ export class TacticUI {
             this.renderHeaders();
             this.renderTurns();
         } else if (event === 'turnsChange') {
+            this.renderHeaders(); // Re-render headers to update auto-action prompt state
             this.renderTurns();
         }
     }
@@ -181,6 +183,13 @@ export class TacticUI {
         return chars;
     }
 
+    getActionPromptText() {
+        const lang = this.getCurrentLang();
+        if (lang === 'kr') return '기본 패턴을 추가하시겠습니까?';
+        if (lang === 'jp') return '基本パターンを追加しますか？';
+        return 'Add default pattern?';
+    }
+
     renderHeaders() {
         const sortedChars = this.getSortedParty();
         this.sortedChars = sortedChars;
@@ -201,7 +210,9 @@ export class TacticUI {
                 ? `${this.baseUrl}/assets/img/tier/원더.webp`
                 : `${this.baseUrl}/assets/img/tier/${char.name}.webp`;
 
-            th.innerHTML = `
+            const headerContent = document.createElement('div');
+            headerContent.className = 'header-char-content';
+            headerContent.innerHTML = `
                 <div class="header-char">
                     <img src="${imgPath}" alt="${char.displayName}"
                          onerror="this.style.display='none'"
@@ -209,6 +220,60 @@ export class TacticUI {
                     <span class="header-char-name">${char.order}. ${char.displayName}</span>
                 </div>
             `;
+            th.appendChild(headerContent);
+
+            // Check if we should show the Auto-Action Prompt
+            const autoPromptEnabled = this.settingsUI ? this.settingsUI.getAutoActionPrompt() : true;
+
+            // Only show if:
+            // 1. Setting is ON
+            // 2. Character is NOT Wonder
+            // 3. The column has NO actions
+            // 4. A default pattern is available for this character
+            if (autoPromptEnabled && char.type !== 'wonder') {
+                const colKey = String(char.order);
+                let hasActions = false;
+                for (const turn of this.store.state.turns) {
+                    if (turn.columns[colKey] && turn.columns[colKey].length > 0) {
+                        hasActions = true;
+                        break;
+                    }
+                }
+
+                if (!hasActions && this.store.hasDefaultPattern(colKey)) {
+                    const promptDiv = document.createElement('div');
+                    promptDiv.className = 'auto-action-prompt';
+                    promptDiv.style.marginTop = '8px';
+                    promptDiv.style.display = 'flex';
+                    promptDiv.style.flexDirection = 'column';
+                    promptDiv.style.gap = '4px';
+                    promptDiv.style.alignItems = 'center';
+
+                    const promptText = this.getActionPromptText();
+
+                    promptDiv.innerHTML = `
+                        <span style="font-size: 0.75rem; color: #aaa; font-weight: normal; white-space: nowrap;">${promptText}</span>
+                        <div style="display: flex; gap: 6px;">
+                            <button type="button" class="btn-prompt-yes" style="padding: 2px 8px; font-size: 0.75rem; border: 1px solid #4ecdc4; background: rgba(78, 205, 196, 0.2); color: #fff; border-radius: 4px; cursor: pointer;">Yes</button>
+                            <button type="button" class="btn-prompt-no" style="padding: 2px 8px; font-size: 0.75rem; border: 1px solid #ff6b6b; background: rgba(255, 107, 107, 0.2); color: #fff; border-radius: 4px; cursor: pointer;">No</button>
+                        </div>
+                    `;
+
+                    // Bind events
+                    const btnYes = promptDiv.querySelector('.btn-prompt-yes');
+                    const btnNo = promptDiv.querySelector('.btn-prompt-no');
+
+                    btnYes.addEventListener('click', () => {
+                        this.store.applyDefaultPattern(colKey);
+                    });
+
+                    btnNo.addEventListener('click', () => {
+                        promptDiv.remove();
+                    });
+
+                    th.appendChild(promptDiv);
+                }
+            }
 
             this.tableHeader.appendChild(th);
         });
@@ -811,7 +876,27 @@ export class TacticUI {
             };
 
             const handlePersonaChange = (newP) => {
-                commitStore(currentActor, newP, currentAction);
+                // Smart Switch Logic
+                // If the current action (currentAction) belongs to the OLD persona (currentPersona)
+                // Switch it to the NEW persona's last skill (or default)
+                let nextAction = currentAction;
+                const oldPName = currentPersona;
+                const newPName = newP;
+
+                if (currentActor === '원더' && oldPName && newPName && oldPName !== newPName) {
+                    const personas = this.store.state?.wonder?.personas || [];
+                    const oldPData = personas.find(p => p && p.name === oldPName);
+                    if (oldPData && oldPData.skills && oldPData.skills.includes(currentAction)) {
+                        // It was a dependent skill. Switch to new persona's last skill (index 3)
+                        const newPData = personas.find(p => p && p.name === newPName);
+                        if (newPData && newPData.skills) {
+                            // Use 4th skill (index 3) or 1st if empty? User said "bottom one" which usually means the last slot.
+                            nextAction = newPData.skills[3] || newPData.skills[0] || '방어';
+                        }
+                    }
+                }
+
+                commitStore(currentActor, newP, nextAction);
             };
 
             const handleActionChange = (newA) => {

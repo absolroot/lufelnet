@@ -338,10 +338,16 @@ export class WonderUI extends EventEmitter {
             ? (personaData.uniqueSkill.icon || '')
             : '';
 
-        // Fallback: if persona unique skill icon is missing, use personaSkillList lookup (same idea as persona-list.js).
-        const skillInfo = unique ? ((window.personaSkillList || {})[unique] || {}) : {};
+        // Fallback: if persona unique skill icon is missing (or 'Default'), use personaSkillList lookup
+        const skillNameForLookup = unique || (skills && skills[0]) || '';
+        const skillInfo = skillNameForLookup ? ((window.personaSkillList || {})[skillNameForLookup] || {}) : {};
         const listIcon = (lang === 'en' || lang === 'jp') ? (skillInfo.icon_gl || skillInfo.icon || '') : (skillInfo.icon || '');
-        const uniqueIcon = uniqueIconRaw || listIcon || '패시브';
+
+        let uniqueIcon = uniqueIconRaw;
+        // Treat 'Default' as empty to trigger fallback
+        if (uniqueIcon === 'Default') uniqueIcon = '';
+
+        uniqueIcon = uniqueIcon || listIcon || '패시브';
 
         // Persona card image elements
         let cardContent = '<div class="empty-wp"></div>';
@@ -402,8 +408,8 @@ export class WonderUI extends EventEmitter {
                         </div>
 
                         ${[1, 2, 3].map((slot) => {
-                            const skill = skills[slot] || '';
-                            return `
+            const skill = skills[slot] || '';
+            return `
                                 <div class="revelation-dropdown wp-skill-dropdown" data-persona-index="${index}" data-skill-index="${slot}">
                                     <button type="button" class="revelation-button" style="width: 100%; justify-content: flex-start;">
                                         <span class="wp-skill-label" data-value="${skill || ''}">${skill || '-'}</span>
@@ -411,7 +417,7 @@ export class WonderUI extends EventEmitter {
                                     <div class="revelation-menu"></div>
                                 </div>
                             `;
-                        }).join('')}
+        }).join('')}
                     </div>
                     <input type="text" class="wp-memo-input" placeholder="메모" value="${memo}">
                 </div>
@@ -425,7 +431,12 @@ export class WonderUI extends EventEmitter {
             header.onclick = (e) => {
                 const index = parseInt(header.closest('.wonder-persona-card').dataset.index);
                 this.activePersonaIndex = index;
-                if (this.personaModal) this.personaModal.open(this.handlePersonaSelect);
+                if (this.personaModal) {
+                    const currentPersonas = (this.store.state.wonder.personas || [])
+                        .map(p => p.name)
+                        .filter(n => n);
+                    this.personaModal.open(this.handlePersonaSelect, currentPersonas);
+                }
             };
         });
 
@@ -462,15 +473,26 @@ export class WonderUI extends EventEmitter {
             return 'ko-KR';
         };
 
-        const getSortedSkills = () => {
+        const getSortedSkills = (personaName) => {
             const list = Object.keys(window.personaSkillList || {});
-            let collator;
-            try {
-                collator = new Intl.Collator(getLocale(), { usage: 'sort', sensitivity: 'base', numeric: true, ignorePunctuation: true });
-            } catch (_) {
-                collator = { compare: (a, b) => String(a).localeCompare(String(b)) };
-            }
-            return list.sort((a, b) => collator.compare(getSkillDisplayName(a), getSkillDisplayName(b)));
+
+            // 1. Get recommended skills for this Persona
+            const store = window.personaFiles || {};
+            const pData = personaName ? store[personaName] : null;
+            const recommended = (pData && pData.recommendSkill) ? pData.recommendSkill.map(r => r.name) : [];
+            const recSet = new Set(recommended);
+
+            // 2. Separate list into [Recommended] and [Others]
+            // "Remove name sort" -> Keep original order of 'list' for others?
+            // User requested to put recommended on top.
+
+            // Filter recommended items that actually exist in the skill list
+            const topList = recommended.filter(name => list.includes(name));
+
+            // Get the rest
+            const otherList = list.filter(name => !recSet.has(name));
+
+            return [...topList, ...otherList];
         };
 
         const renderSkillDropdownLabel = (dropdownEl, value) => {
@@ -501,7 +523,15 @@ export class WonderUI extends EventEmitter {
             const menu = dropdownEl.querySelector('.revelation-menu');
             if (!menu) return;
 
-            const skills = getSortedSkills();
+            const pIndex = parseInt(dropdownEl.dataset.personaIndex);
+            const sIndex = parseInt(dropdownEl.dataset.skillIndex);
+
+            // Get current persona name for this slot
+            const current = this.store.state.wonder;
+            const currentP = (current.personas && current.personas[pIndex]) ? current.personas[pIndex] : {};
+            const personaName = currentP.name || '';
+
+            const skills = getSortedSkills(personaName);
             menu.innerHTML = '';
 
             const search = document.createElement('input');
@@ -518,55 +548,96 @@ export class WonderUI extends EventEmitter {
             listWrap.style.gap = '2px';
             menu.appendChild(listWrap);
 
-            const pIndex = parseInt(dropdownEl.dataset.personaIndex);
-            const sIndex = parseInt(dropdownEl.dataset.skillIndex);
+            // Blur input on scroll to finish IME composition
+            menu.onscroll = () => {
+                if (document.activeElement === search) {
+                    search.blur();
+                }
+            };
+
+            // Create all options once
+            const allOptions = [];
+
+            const createOption = (label, value, iconKey) => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'revelation-option';
+                btn.dataset.skillValue = value;
+
+                // Store text for filtering
+                const searchText = (label + (value || '')).toLowerCase();
+
+                if (iconKey) {
+                    const img = document.createElement('img');
+                    img.className = 'revelation-icon';
+                    img.src = `${this.baseUrl}/assets/img/skill-element/${encodeURIComponent(iconKey)}.png`;
+                    img.alt = '';
+                    img.onerror = function () { this.style.display = 'none'; };
+                    btn.appendChild(img);
+                }
+                const span = document.createElement('span');
+                span.textContent = label;
+                btn.appendChild(span);
+
+                listWrap.appendChild(btn);
+                allOptions.push({ element: btn, text: searchText });
+            };
+
+            // Add default option
+            createOption('-', '', '');
+
+            // Add all skills
+            skills.forEach(name => {
+                createOption(getSkillDisplayName(name), name, getSkillIconKey(name));
+            });
+
+            // Use mousedown delegation to capture event immediately and prevent focus loss
+            listWrap.onmousedown = (e) => {
+                const btn = e.target.closest('.revelation-option');
+                if (!btn) return;
+
+                // CRITICAL: Prevent default to stop input blur / virtual keyboard shift
+                e.preventDefault();
+                e.stopPropagation();
+
+                const selectedVal = btn.dataset.skillValue;
+
+                const current = this.store.state.wonder;
+                const newPersonas = [...(current.personas || [{}, {}, {}])];
+                const targetPersona = { ...(newPersonas[pIndex] || {}) };
+                const newSkills = [...(targetPersona.skills || ['', '', '', ''])];
+                newSkills[sIndex] = selectedVal;
+                targetPersona.skills = newSkills;
+                newPersonas[pIndex] = targetPersona;
+                this.store.setWonderConfig({ ...current, personas: newPersonas });
+
+                dropdownEl.classList.remove('open');
+                // Force immediate render to reflect state
+                this.render();
+            };
+
+            let lastFilter = null;
+            let rafId = null;
 
             const apply = (filter) => {
-                listWrap.innerHTML = '';
-
-                const addOption = (label, value, iconKey) => {
-                    const btn = document.createElement('button');
-                    btn.type = 'button';
-                    btn.className = 'revelation-option';
-                    if (iconKey) {
-                        const img = document.createElement('img');
-                        img.className = 'revelation-icon';
-                        img.src = `${this.baseUrl}/assets/img/skill-element/${encodeURIComponent(iconKey)}.png`;
-                        img.alt = '';
-                        img.onerror = function () { this.style.display = 'none'; };
-                        btn.appendChild(img);
-                    }
-                    const span = document.createElement('span');
-                    span.textContent = label;
-                    btn.appendChild(span);
-                    btn.onclick = (e) => {
-                        e.stopPropagation();
-                        const current = this.store.state.wonder;
-                        const newPersonas = [...(current.personas || [{}, {}, {}])];
-                        const targetPersona = { ...(newPersonas[pIndex] || {}) };
-                        const newSkills = [...(targetPersona.skills || ['', '', '', ''])];
-                        newSkills[sIndex] = value;
-                        targetPersona.skills = newSkills;
-                        newPersonas[pIndex] = targetPersona;
-                        this.store.setWonderConfig({ ...current, personas: newPersonas });
-                        dropdownEl.classList.remove('open');
-                        // Ensure the UI reflects the selected value immediately.
-                        this.render();
-                    };
-                    listWrap.appendChild(btn);
-                };
-
-                addOption('-', '', '');
-
                 const f = String(filter || '').toLowerCase();
-                skills.forEach(name => {
-                    const disp = getSkillDisplayName(name);
-                    if (f && !disp.toLowerCase().includes(f) && !name.toLowerCase().includes(f)) return;
-                    addOption(disp, name, getSkillIconKey(name));
+                if (f === lastFilter) return;
+                lastFilter = f;
+
+                if (rafId) cancelAnimationFrame(rafId);
+                rafId = requestAnimationFrame(() => {
+                    allOptions.forEach(opt => {
+                        if (!f || opt.text.includes(f)) {
+                            opt.element.style.display = '';
+                        } else {
+                            opt.element.style.display = 'none';
+                        }
+                    });
                 });
             };
 
             search.oninput = () => apply(search.value);
+            // Initial state: show all
             apply('');
         };
 

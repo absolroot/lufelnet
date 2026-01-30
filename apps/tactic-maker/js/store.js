@@ -113,11 +113,119 @@ export class TacticStore {
     setPartySlot(slotIndex, characterData) {
         this._saveHistory();
         // characterData: { name, order, ritual, modification, role, mainRev, subRev } or null
+        const previousData = this.state.party[slotIndex];
         this.state.party[slotIndex] = characterData;
+
+        // "Just delete the previous character's actions when changing the character."
+        // Only if we are validly switching characters in the same slot/order context
+        if (previousData && characterData && previousData.name !== characterData.name) {
+            // Use previousData.order because ui-party.js temporarily sets NEW order to '-'
+            // preventing us from knowing the target column if we look at characterData only.
+            // But we know the actions belong to the previous char's order.
+            const orderKey = String(previousData.order);
+            if (orderKey && orderKey !== '-') {
+                this.state.turns.forEach(turn => {
+                    // Clear actions for this column
+                    if (turn.columns[orderKey]) {
+                        turn.columns[orderKey] = [];
+                    }
+                });
+            }
+        }
+
         this.notify('partyChange', { slotIndex, characterData });
 
         // Check for side-effects (e.g. Fuuka in Elucidator -> Show Slot 4)
         this.checkPartySideEffects();
+    }
+
+    applyDefaultPattern(orderKey) {
+        const order = parseInt(orderKey);
+        const characterData = this.getCharacterByOrder(order); // Returns { type, name }
+        // We need full character data to get ritual level.
+        // Find the slot or wonder config
+        let fullCharData = null;
+
+        if (characterData && characterData.type === 'wonder') {
+            // For wonder, we need to decide what ritual level means. Default to 0? Or user manually sets?
+            // Since applyDefaultPattern is generic, let's assume we find it from store.
+            // Wonder doesn't have a specific ritual level field in current store structure, maybe default to '0'.
+            // Actually, the pattern.js has entries for "원더" potentially? Let's check pattern usage.
+            // If pattern has "원더", we use it? No, patterns are by Persona usually? Or char name?
+            // The pattern keys are Character Names.
+            // Wait, user said "When new character added". Wonder is always there.
+            // So this likely applies to party slots.
+            return; // Wonder not supported for auto-pattern yet? Or is it based on Persona?
+        } else {
+            // Find party member
+            fullCharData = this.state.party.find(p => p && String(p.order) === orderKey);
+        }
+
+        if (!fullCharData || !fullCharData.name) return;
+
+        const ritualLevel = fullCharData.ritual || '0';
+        const pattern = this._findPatternForLevel(fullCharData.name, ritualLevel);
+
+        if (pattern) {
+            this._saveHistory();
+            // Apply pattern to turns (Append logic)
+            this.state.turns.forEach((turn, idx) => {
+                if (pattern[idx]) {
+                    if (!turn.columns[orderKey]) {
+                        turn.columns[orderKey] = [];
+                    }
+
+                    pattern[idx].forEach(actionDef => {
+                        const newAction = {
+                            character: fullCharData.name,
+                            wonderPersona: '',
+                            wonderPersonaIndex: -1,
+                            action: actionDef.type || '',
+                            memo: ''
+                        };
+                        turn.columns[orderKey].push(newAction);
+                    });
+                }
+            });
+            this.notify('turnsChange', this.state.turns);
+        }
+    }
+
+    _findPatternForLevel(characterName, ritualLevel) {
+        if (typeof ritualPatterns === 'undefined' || !ritualPatterns[characterName]) return null;
+
+        const characterPatterns = ritualPatterns[characterName];
+        const matchingPattern = characterPatterns.find(patternData => {
+            if (patternData.level.includes('-')) {
+                const [min, max] = patternData.level.split('-').map(Number);
+                const level = Number(ritualLevel);
+                return level >= min && level <= max;
+            } else {
+                return String(patternData.level) === String(ritualLevel);
+            }
+        });
+
+        return matchingPattern ? matchingPattern.pattern : null;
+    }
+
+    hasDefaultPattern(orderKey) {
+        const order = parseInt(orderKey);
+        // Find party member for this order
+        let fullCharData = null;
+        if (this.state.wonder.order === order) {
+            // Wonder currently doesn't have auto-pattern logic in this implementation 
+            // (applyDefaultPattern returns early for Wonder).
+            return false;
+        }
+
+        fullCharData = this.state.party.find(p => p && String(p.order) === orderKey);
+
+        if (!fullCharData || !fullCharData.name) return false;
+
+        const ritualLevel = fullCharData.ritual || '0';
+        // Reuse _findPatternForLevel logic but just return existence
+        const pattern = this._findPatternForLevel(fullCharData.name, ritualLevel);
+        return !!pattern;
     }
 
     /**
@@ -176,8 +284,88 @@ export class TacticStore {
 
     setWonderConfig(config) {
         this._saveHistory();
-        this.state.wonder = { ...this.state.wonder, ...config };
+        const oldWonder = this.state.wonder;
+        const newWonder = { ...this.state.wonder, ...config };
+
+        this.state.wonder = newWonder;
+
+        // Smart Update: Check for Persona changes
+        const oldPersonas = oldWonder.personas || [];
+        const newPersonas = newWonder.personas || [];
+
+        for (let i = 0; i < 3; i++) {
+            const oldP = oldPersonas[i];
+            const newP = newPersonas[i];
+
+            // If name changed, or if it was empty and now has a name (or vice versa)
+            // But we mainly care if the assigned Persona CHANGED.
+            // If just skills changed, we might not want to touch actions unless requested.
+            // Requirement: "When switching Persona..."
+            if (oldP && newP && oldP.name !== newP.name) {
+                // Persona Changed at index i
+                this._smartUpdateWonderGlobal(i, oldP, newP);
+            }
+        }
+
         this.notify('wonderChange', this.state.wonder);
+    }
+
+    _smartUpdateWonderGlobal(personaIndex, oldPersona, newPersona) {
+        if (!oldPersona || !newPersona) return;
+
+        const oldSkills = new Set(oldPersona.skills || []);
+        const newDefaultSkill = (newPersona.skills && newPersona.skills[3]) ? newPersona.skills[3] : '';
+        // If last skill is empty, try others? user said "last one" (index 3 usually). 
+        // If index 3 is empty, maybe we shouldn't change it or keep it empty. 
+        // Let's assume we use the last skill slot (index 3).
+
+        // Iterate all turns and actions
+        let actionsChanged = false;
+        this.state.turns.forEach(turn => {
+            Object.values(turn.columns).forEach(actions => {
+                actions.forEach(action => {
+                    // Check if it's Wonder and using this persona index
+                    // Note: action.wonderPersonaIndex should track which slot was used.
+                    // If -1 or undefined, maybe rely on name? But name changed.
+                    // Rely on index if available. If not, check old name.
+
+                    const isWonder = action.character === '원더' || action.character === 'WONDER';
+                    if (!isWonder) return;
+
+                    let targetMatch = false;
+
+                    if (typeof action.wonderPersonaIndex === 'number' && action.wonderPersonaIndex === personaIndex) {
+                        targetMatch = true;
+                    } else if (action.wonderPersona === oldPersona.name) {
+                        // Fallback: match by name if index missing
+                        targetMatch = true;
+                    }
+
+                    if (targetMatch) {
+                        // Check if current action is one of the old skills
+                        if (oldSkills.has(action.action)) {
+                            // Update to new persona
+                            action.wonderPersona = newPersona.name;
+                            action.wonderPersonaIndex = personaIndex;
+                            action.action = newDefaultSkill; // Change skill
+                            actionsChanged = true;
+                        } else {
+                            // It might be a common action (Attack/Guard), just update the Persona ref
+                            // But user said: "if existing action was dependent on old persona... change it".
+                            // If it's NOT dependent (e.g. "HIGHLIGHT"), do we update the persona name ref?
+                            // Yes, the action is now performed by the New Persona in that slot.
+                            action.wonderPersona = newPersona.name;
+                            action.wonderPersonaIndex = personaIndex;
+                            // Action string stays same
+                        }
+                    }
+                });
+            });
+        });
+
+        if (actionsChanged) {
+            this.notify('turnsChange', this.state.turns);
+        }
     }
 
     /**

@@ -183,11 +183,48 @@ export class TacticUI {
         return chars;
     }
 
+    getLocalizedActionName(actionName) {
+        if (!actionName) return '';
+
+        const lang = DataLoader.getCurrentLang();
+
+        // skillList order: 스킬1, 스킬2, 스킬3, HIGHLIGHT, 테우르기아, 총격, 근접, 방어, 특수 스킬, ONE MORE, 아이템
+        const skillList = {
+            kr: ['스킬1', '스킬2', '스킬3', 'HIGHLIGHT', '테우르기아', '총격', '근접', '방어', '특수 스킬', 'ONE MORE', '아이템'],
+            en: ['Skill1', 'Skill2', 'Skill3', 'HIGHLIGHT', 'Theurgy', 'Gunshot', 'Melee', 'Defense', 'Special Skill', 'ONE MORE', 'Item'],
+            jp: ['スキル1', 'スキル2', 'スキル3', 'HIGHLIGHT', 'テウルギア', '銃撃', '近接攻撃', 'ガード', 'スペシャルスキル', '1more', 'アイテム']
+        };
+
+        const list = skillList[lang] || skillList.kr;
+
+        // Map Korean values to localized display
+        const valueToIndex = {
+            '스킬1': 0, '스킬2': 1, '스킬3': 2,
+            'HIGHLIGHT': 3, 'Theurgia': 4, '총격': 5,
+            '근접': 6, '방어': 7, 'ONE MORE': 9, '아이템': 10
+        };
+
+        if (valueToIndex[actionName] !== undefined) {
+            return list[valueToIndex[actionName]];
+        }
+
+        // Check for Skill N pattern
+        const skillMatch = actionName.match(/^스킬(\d+)$/);
+        if (skillMatch) {
+            const num = parseInt(skillMatch[1]);
+            if (num >= 1 && num <= 3) {
+                return list[num - 1];
+            }
+        }
+
+        return actionName;
+    }
+
     getActionPromptText() {
-        const lang = this.getCurrentLang();
-        if (lang === 'kr') return '기본 패턴을 추가하시겠습니까?';
-        if (lang === 'jp') return '基本パターンを追加しますか？';
-        return 'Add default pattern?';
+        if (window.I18nService && window.I18nService.t) {
+            return window.I18nService.t('addDefaultPatternPrompt', 'Add default pattern?');
+        }
+        return '기본 패턴을 추가하시겠습니까?';
     }
 
     renderHeaders() {
@@ -254,8 +291,8 @@ export class TacticUI {
                     promptDiv.innerHTML = `
                         <span style="font-size: 0.75rem; color: #aaa; font-weight: normal; white-space: nowrap;">${promptText}</span>
                         <div style="display: flex; gap: 6px;">
-                            <button type="button" class="btn-prompt-yes" style="padding: 2px 8px; font-size: 0.75rem; border: 1px solid #4ecdc4; background: rgba(78, 205, 196, 0.2); color: #fff; border-radius: 4px; cursor: pointer;">Yes</button>
-                            <button type="button" class="btn-prompt-no" style="padding: 2px 8px; font-size: 0.75rem; border: 1px solid #ff6b6b; background: rgba(255, 107, 107, 0.2); color: #fff; border-radius: 4px; cursor: pointer;">No</button>
+                            <button type="button" class="btn-prompt-yes" style="padding: 2px 8px; font-size: 0.75rem; border: 1px solid #4ecdc4; background: rgba(78, 205, 196, 0.2); color: #fff; border-radius: 4px; cursor: pointer;">${window.I18nService ? window.I18nService.t('yes') : 'Yes'}</button>
+                            <button type="button" class="btn-prompt-no" style="padding: 2px 8px; font-size: 0.75rem; border: 1px solid #ff6b6b; background: rgba(255, 107, 107, 0.2); color: #fff; border-radius: 4px; cursor: pointer;">${window.I18nService ? window.I18nService.t('no') : 'No'}</button>
                         </div>
                     `;
 
@@ -281,6 +318,7 @@ export class TacticUI {
 
     renderTurns() {
         this.tableBody.innerHTML = '';
+
         const turns = this.store.state.turns;
         const sortedChars = this.sortedChars.length > 0 ? this.sortedChars : this.getSortedParty();
 
@@ -299,6 +337,8 @@ export class TacticUI {
             return;
         }
 
+        const getT = (k, f) => (window.I18nService && window.I18nService.t ? window.I18nService.t(k, f) : (f || k));
+
         turns.forEach((turn, turnIdx) => {
             const tr = document.createElement('tr');
             tr.dataset.turnIndex = turnIdx;
@@ -309,7 +349,7 @@ export class TacticUI {
             tdTurn.className = 'col-turn';
             tdTurn.innerHTML = `
                 <div class="turn-info">
-                    <div class="turn-drag-handle" title="드래그하여 순서 변경">
+                    <div class="turn-drag-handle" title="${getT('desc_drag_reorder', '드래그하여 순서 변경')}">
                         <svg width="10" height="14" viewBox="0 0 10 14" fill="currentColor">
                             <circle cx="2" cy="2" r="1.5"/>
                             <circle cx="8" cy="2" r="1.5"/>
@@ -321,13 +361,13 @@ export class TacticUI {
                     </div>
                     <span class="turn-number">${turn.turn}</span>
                     <div class="turn-actions">
-                        <button class="btn-turn-action btn-duplicate-turn" data-turn-index="${turnIdx}" title="턴 복제">
+                        <button class="btn-turn-action btn-duplicate-turn" data-turn-index="${turnIdx}" title="${getT('desc_duplicate_turn', '턴 복제')}">
                             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <rect x="9" y="9" width="13" height="13" rx="2"/>
                                 <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
                             </svg>
                         </button>
-                        <button class="btn-turn-action btn-remove-turn" data-turn-index="${turnIdx}" title="턴 삭제">
+                        <button class="btn-turn-action btn-remove-turn" data-turn-index="${turnIdx}" title="${getT('desc_remove_turn', '턴 삭제')}">
                             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <line x1="18" y1="6" x2="6" y2="18"/>
                                 <line x1="6" y1="6" x2="18" y2="18"/>
@@ -692,33 +732,68 @@ export class TacticUI {
 
         if (!char) return options;
 
+        const lang = DataLoader.getCurrentLang();
+
+        // skillList order: 스킬1, 스킬2, 스킬3, HIGHLIGHT, 테우르기아, 총격, 근접, 방어, 특수 스킬(header), ONE MORE, 아이템
+        const skillList = {
+            kr: ['스킬1', '스킬2', '스킬3', 'HIGHLIGHT', '테우르기아', '총격', '근접', '방어', '특수 스킬', 'ONE MORE', '아이템'],
+            en: ['Skill1', 'Skill2', 'Skill3', 'HIGHLIGHT', 'Theurgy', 'Gunshot', 'Melee', 'Defense', 'Special Skill', 'ONE MORE', 'Item'],
+            jp: ['スキル1', 'スキル2', 'スキル3', 'HIGHLIGHT', 'テウルギア', '銃撃', '近接攻撃', 'ガード', 'スペシャルスキル', '1more', 'アイテム']
+        };
+
+        const list = skillList[lang] || skillList.kr;
+
         if (char.type === 'wonder') {
             const wonderConfig = this.store.state.wonder;
             (wonderConfig.personas || []).forEach((p, idx) => {
-                if (p && p.name) {
-                    options.push({ label: `페르소나 ${idx + 1}: ${p.name}`, isHeader: true });
+                const pName = p ? p.name : '';
+                if (pName) {
+                    const dispPName = (window.DataLoader && window.DataLoader.getPersonaDisplayName)
+                        ? window.DataLoader.getPersonaDisplayName(pName)
+                        : pName;
+                    options.push({ label: `P${idx + 1}: ${dispPName}`, isHeader: true });
+
                     (p.skills || []).filter(s => s).forEach(skill => {
-                        options.push({ label: skill, value: skill });
+                        const dispSkill = (window.DataLoader && window.DataLoader.getSkillDisplayName)
+                            ? window.DataLoader.getSkillDisplayName(skill)
+                            : skill;
+                        options.push({ label: dispSkill, value: skill });
                     });
                 }
             });
 
-            options.push({ label: '특수 액션', isHeader: true });
-            ['HIGHLIGHT', 'ONE MORE', '총격', '근접', '방어', '아이템', 'Theurgia'].forEach(s => {
-                options.push({ label: s, value: s });
-            });
+            // Special actions for Wonder - no Theurgia (Wonder is not persona3)
+            options.push({ label: list[8], isHeader: true }); // 특수 스킬
+            options.push({ label: list[3], value: 'HIGHLIGHT' });
+            options.push({ label: list[5], value: '총격' });
+            options.push({ label: list[6], value: '근접' });
+            options.push({ label: list[7], value: '방어' });
+            options.push({ label: list[9], value: 'ONE MORE' });
+            options.push({ label: list[10], value: '아이템' });
         } else {
+            // Character skills - 스킬1, 스킬2, 스킬3
+            options.push({ label: list[0], value: '스킬1' });
+            options.push({ label: list[1], value: '스킬2' });
+            options.push({ label: list[2], value: '스킬3' });
+
+            // Check if character has persona3: true
+            // persona3: show Theurgia, hide HIGHLIGHT
+            // not persona3: show HIGHLIGHT, hide Theurgia
             const charData = (window.characterData || {})[char.name] || {};
-            const skillCount = charData.skill_item || 6;
+            const isPersona3 = charData.persona3 === true;
 
-            for (let i = 1; i <= skillCount; i++) {
-                options.push({ label: `스킬 ${i}`, value: `스킬${i}` });
+            // Common actions
+            options.push({ label: list[8], isHeader: true }); // 특수 스킬
+            if (isPersona3) {
+                options.push({ label: list[4], value: 'Theurgia' });
+            } else {
+                options.push({ label: list[3], value: 'HIGHLIGHT' });
             }
-
-            options.push({ label: '공통 액션', isHeader: true });
-            ['일반공격', 'HIGHLIGHT', 'ONE MORE', '총격', '근접', '방어', '아이템', 'Theurgia'].forEach(s => {
-                options.push({ label: s, value: s });
-            });
+            options.push({ label: list[5], value: '총격' });
+            options.push({ label: list[6], value: '근접' });
+            options.push({ label: list[7], value: '방어' });
+            options.push({ label: list[9], value: 'ONE MORE' });
+            options.push({ label: list[10], value: '아이템' });
         }
         return options;
     }
@@ -761,19 +836,19 @@ export class TacticUI {
                 <div class="action-main-row"></div>
             </div>
             <div class="action-actions">
-                <button type="button" class="action-icon-btn" data-action-btn="edit" title="수정/메모">
+                <button type="button" class="action-icon-btn" data-action-btn="edit" title="${window.I18nService ? window.I18nService.t('editAction') : '수정/메모'}">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
                         <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
                     </svg>
                 </button>
-                <button type="button" class="action-icon-btn" data-action-btn="duplicate" title="복제">
+                <button type="button" class="action-icon-btn" data-action-btn="duplicate" title="${window.I18nService ? window.I18nService.t('duplicate') || '복제' : '복제'}">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <rect x="9" y="9" width="13" height="13" rx="2"/>
                         <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
                     </svg>
                 </button>
-                <button type="button" class="action-icon-btn" data-action-btn="delete" title="삭제">
+                <button type="button" class="action-icon-btn" data-action-btn="delete" title="${window.I18nService ? window.I18nService.t('delete') : '삭제'}">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <polyline points="3 6 5 6 21 6"/>
                         <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
@@ -829,10 +904,13 @@ export class TacticUI {
                 partyNames.push(m.name);
             });
             const actorOptions = [
-                { label: '원더', value: '원더', image: `${this.baseUrl}/assets/img/tier/원더.webp` }
+                { label: (window.I18nService ? window.I18nService.t('wonder') : '원더'), value: '원더', image: `${this.baseUrl}/assets/img/tier/원더.webp` }
             ];
             partyNames.forEach(n => {
-                actorOptions.push({ label: n, value: n, image: `${this.baseUrl}/assets/img/tier/${n}.webp` });
+                // Localized name
+                const charData = (window.characterData || {})[n] || {};
+                const dispName = this.getCharacterDisplayName(n, charData);
+                actorOptions.push({ label: dispName, value: n, image: `${this.baseUrl}/assets/img/tier/${n}.webp` });
             });
 
             const initialActor = action.character || (char?.name || '원더');
@@ -913,7 +991,12 @@ export class TacticUI {
             const pOpts = (initialActor === '원더')
                 ? (this.store.state.wonder?.personas || [])
                     .filter(p => p && p.name)
-                    .map(p => ({ label: p.name, value: p.name, image: `${this.baseUrl}/assets/img/persona/${p.name}.webp` }))
+                    .map(p => {
+                        const dispName = (window.DataLoader && window.DataLoader.getPersonaDisplayName)
+                            ? window.DataLoader.getPersonaDisplayName(p.name)
+                            : p.name;
+                        return { label: dispName, value: p.name, image: `${this.baseUrl}/assets/img/persona/${p.name}.webp` };
+                    })
                 : [];
 
             const personaDD = this.createCustomDropdown(pOpts, initialPersona, handlePersonaChange);
@@ -963,7 +1046,9 @@ export class TacticUI {
                 }
                 const nameSpan = document.createElement('span');
                 nameSpan.className = 'action-actor-name';
-                nameSpan.textContent = actorName;
+                // Use localized character name
+                const actorData = (window.characterData || {})[actorName] || {};
+                nameSpan.textContent = this.getCharacterDisplayName(actorName, actorData);
                 actorWrap.appendChild(nameSpan);
                 mainRow.appendChild(actorWrap);
             }
@@ -987,7 +1072,8 @@ export class TacticUI {
             const actionName = action.action || '액션';
             const actionSpan = document.createElement('span');
             actionSpan.className = 'action-name';
-            actionSpan.textContent = actionName;
+            // Use localized action name
+            actionSpan.textContent = this.getLocalizedActionName(actionName);
             mainRow.appendChild(actionSpan);
         }
 
@@ -1060,18 +1146,18 @@ export class TacticUI {
         modal.innerHTML = `
             <div class="modal-backdrop" data-close="actionModal"></div>
             <div class="modal-dialog" style="max-width: 400px;">
-                <div class="modal-header">
-                    <h3>액션 추가</h3>
+                    <div class="modal-header">
+                    <h3>${window.I18nService ? window.I18nService.t('addAction') : '액션 추가'}</h3>
                     <button class="modal-close" data-close="actionModal">&times;</button>
                 </div>
                 <div class="modal-content">
                     <div class="form-group">
-                        <label>사용 캐릭터</label>
+                        <label>${window.I18nService ? window.I18nService.t('character') : '사용 캐릭터'}</label>
                         <select class="input-select character-select"></select>
                     </div>
 
                     <div class="form-group persona-group" style="display: none;">
-                        <label data-i18n="persona">페르소나</label>
+                        <label>${window.I18nService ? window.I18nService.t('persona') : '페르소나'}</label>
                         <div class="target-dropdown persona-dropdown" style="display: block; width: 100%;">
                             <button type="button" class="target-dropdown-btn" style="width: 100%; justify-content: space-between;">
                                 <div style="display: flex; align-items: center; gap: 8px;">
@@ -1090,21 +1176,21 @@ export class TacticUI {
                     </div>
 
                     <div class="form-group">
-                        <label data-i18n="action">액션/스킬</label>
+                        <label>${window.I18nService ? window.I18nService.t('action') : '액션/스킬'}</label>
                         <select class="input-select action-select">
                             <option value="">-</option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label data-i18n="memo">메모</label>
-                        <textarea class="input-text action-memo-input" rows="2" placeholder="메모 입력..."></textarea>
+                        <label>${window.I18nService ? window.I18nService.t('memo') : '메모'}</label>
+                        <textarea class="input-text action-memo-input" rows="2" placeholder="${window.I18nService ? window.I18nService.t('memoPlaceholder') : '메모 입력...'}"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn-danger btn-delete-action" style="margin-right: auto; display: none;">삭제</button>
-                    <button type="button" class="btn-secondary" data-close="actionModal">취소</button>
-                    <button type="button" class="btn-primary btn-save-action">저장</button>
+                    <button type="button" class="btn-danger btn-delete-action" style="margin-right: auto; display: none;">${window.I18nService ? window.I18nService.t('delete') : '삭제'}</button>
+                    <button type="button" class="btn-secondary" data-close="actionModal">${window.I18nService ? window.I18nService.t('cancel') : '취소'}</button>
+                    <button type="button" class="btn-primary btn-save-action">${window.I18nService ? window.I18nService.t('save') : '저장'}</button>
                 </div>
             </div>
         `;
@@ -1187,7 +1273,9 @@ export class TacticUI {
         const personaValueInput = modal.querySelector('.persona-select-value');
 
         // Update title
-        titleEl.textContent = isEdit ? '액션 수정' : '액션 추가';
+        titleEl.textContent = isEdit
+            ? (window.I18nService ? window.I18nService.t('editAction') : '액션 수정')
+            : (window.I18nService ? window.I18nService.t('addAction') : '액션 추가');
 
         const getCharByName = (name) => {
             if (name === '원더') {
@@ -1225,7 +1313,15 @@ export class TacticUI {
             list.forEach(name => {
                 const opt = document.createElement('option');
                 opt.value = name;
-                opt.textContent = name;
+
+                // Localized display name
+                if (name === '원더') {
+                    opt.textContent = window.I18nService ? window.I18nService.t('wonder') : '원더';
+                } else {
+                    const charData = (window.characterData || {})[name] || {};
+                    opt.textContent = this.getCharacterDisplayName(name, charData);
+                }
+
                 characterSelect.appendChild(opt);
             });
 
@@ -1339,6 +1435,12 @@ export class TacticUI {
         if (isPersona) {
             icon.src = `${this.baseUrl}/assets/img/persona/${value}.webp`;
             icon.style.display = 'block';
+            // Get localized name if not provided
+            if (!displayText) {
+                displayText = (window.DataLoader && window.DataLoader.getPersonaDisplayName)
+                    ? window.DataLoader.getPersonaDisplayName(value)
+                    : value;
+            }
         } else {
             icon.style.display = 'none';
         }
@@ -1354,22 +1456,26 @@ export class TacticUI {
         if (!dropdown || !menu) return;
 
         const personas = this.store.state.wonder.personas;
+        const t = (k, f) => (window.I18nService && window.I18nService.t ? window.I18nService.t(k, f) : (f || k));
 
         let html = `
             <button type="button" class="target-dropdown-item" data-value="">
                 <span class="none-icon">-</span>
-                <span>(선택 안함)</span>
+                <span>${t('notSelected', '(선택 안함)')}</span>
             </button>
             <div style="height: 1px; background: rgba(255,255,255,0.1); margin: 4px 0;"></div>
         `;
 
-        // Personas
+        // Personas with localized names
         personas.forEach((p, idx) => {
             if (p.name) {
+                const dispName = (window.DataLoader && window.DataLoader.getPersonaDisplayName)
+                    ? window.DataLoader.getPersonaDisplayName(p.name)
+                    : p.name;
                 html += `
                     <button type="button" class="target-dropdown-item" data-value="${p.name}">
                         <img src="${this.baseUrl}/assets/img/persona/${p.name}.webp" onerror="this.style.display='none'">
-                        <span>${p.name}</span>
+                        <span>${dispName}</span>
                     </button>
                 `;
             }
@@ -1382,6 +1488,25 @@ export class TacticUI {
     populateActionSelect(select, char) {
         if (!select) return;
 
+        const lang = DataLoader.getCurrentLang();
+
+        // Skill labels from skillList (kr/en/jp)
+        const skillLabels = {
+            kr: ['스킬1', '스킬2', '스킬3'],
+            en: ['Skill1', 'Skill2', 'Skill3'],
+            jp: ['スキル1', 'スキル2', 'スキル3']
+        };
+
+        // Common action labels
+        const actionLabels = {
+            kr: { highlight: 'HIGHLIGHT', oneMore: 'ONE MORE', gun: '총격', melee: '근접', guard: '방어', item: '아이템', theurgia: '테우르기아', special: '특수 스킬', common: '공통 액션' },
+            en: { highlight: 'HIGHLIGHT', oneMore: 'ONE MORE', gun: 'Gunshot', melee: 'Melee', guard: 'Defense', item: 'Item', theurgia: 'Theurgy', special: 'Special Skill', common: 'Common Actions' },
+            jp: { highlight: 'HIGHLIGHT', oneMore: '1more', gun: '銃撃', melee: '近接攻撃', guard: 'ガード', item: 'アイテム', theurgia: 'テウルギア', special: 'スペシャルスキル', common: '共通アクション' }
+        };
+
+        const skills = skillLabels[lang] || skillLabels.kr;
+        const actions = actionLabels[lang] || actionLabels.kr;
+
         select.innerHTML = '<option value="">-</option>';
 
         if (char.type === 'wonder') {
@@ -1390,14 +1515,21 @@ export class TacticUI {
 
             // Persona skills
             wonderConfig.personas.forEach((p, idx) => {
-                if (p.name) {
+                const pName = p ? p.name : '';
+                if (pName) {
                     const optGroup = document.createElement('optgroup');
-                    optGroup.label = `페르소나 ${idx + 1}: ${p.name}`;
+                    const dispPName = (window.DataLoader && window.DataLoader.getPersonaDisplayName)
+                        ? window.DataLoader.getPersonaDisplayName(pName)
+                        : pName;
+                    optGroup.label = `P${idx + 1}: ${dispPName}`;
 
-                    p.skills.filter(s => s).forEach((skill, sIdx) => {
+                    (p.skills || []).filter(s => s).forEach((skill, sIdx) => {
                         const opt = document.createElement('option');
                         opt.value = skill;
-                        opt.textContent = skill;
+                        const dispSkill = (window.DataLoader && window.DataLoader.getSkillDisplayName)
+                            ? window.DataLoader.getSkillDisplayName(skill)
+                            : skill;
+                        opt.textContent = dispSkill;
                         optGroup.appendChild(opt);
                     });
 
@@ -1405,35 +1537,58 @@ export class TacticUI {
                 }
             });
 
-            // Special actions
+            // Special actions for Wonder - no Theurgia (Wonder is not persona3)
             const specialGroup = document.createElement('optgroup');
-            specialGroup.label = '특수 액션';
-            ['HIGHLIGHT', 'ONE MORE', '총격', '근접', '방어', '아이템', 'Theurgia'].forEach(s => {
+            specialGroup.label = actions.special;
+
+            const specialActions = [
+                { label: actions.highlight, value: 'HIGHLIGHT' },
+                { label: actions.gun, value: '총격' },
+                { label: actions.melee, value: '근접' },
+                { label: actions.guard, value: '방어' },
+                { label: actions.oneMore, value: 'ONE MORE' },
+                { label: actions.item, value: '아이템' }
+            ];
+
+            specialActions.forEach(a => {
                 const opt = document.createElement('option');
-                opt.value = s;
-                opt.textContent = s;
+                opt.value = a.value;
+                opt.textContent = a.label;
                 specialGroup.appendChild(opt);
             });
             select.appendChild(specialGroup);
         } else {
-            // Party member actions - generic skill options
-            const charData = (window.characterData || {})[char.name] || {};
-            const skillCount = charData.skill_item || 6;
-
-            for (let i = 1; i <= skillCount; i++) {
+            // Party member actions - 3 skills
+            for (let i = 0; i < 3; i++) {
                 const opt = document.createElement('option');
-                opt.value = `스킬${i}`;
-                opt.textContent = `스킬 ${i}`;
+                opt.value = `스킬${i + 1}`;
+                opt.textContent = skills[i];
                 select.appendChild(opt);
             }
 
+            // Check if character has persona3: true
+            // persona3: show Theurgia, hide HIGHLIGHT
+            // not persona3: show HIGHLIGHT, hide Theurgia
+            const charData = (window.characterData || {})[char.name] || {};
+            const isPersona3 = charData.persona3 === true;
+
             // Common actions
             const commonGroup = document.createElement('optgroup');
-            commonGroup.label = '공통 액션';
-            ['일반공격', 'HIGHLIGHT', 'ONE MORE', '총격', '근접', '방어', '아이템', 'Theurgia'].forEach(s => {
+            commonGroup.label = actions.common;
+
+            const commonActions = [
+                ...(isPersona3 ? [{ label: actions.theurgia, value: 'Theurgia' }] : [{ label: actions.highlight, value: 'HIGHLIGHT' }]),
+                { label: actions.gun, value: '총격' },
+                { label: actions.melee, value: '근접' },
+                { label: actions.guard, value: '방어' },
+                { label: actions.oneMore, value: 'ONE MORE' },
+                { label: actions.item, value: '아이템' }
+            ];
+
+            commonActions.forEach(a => {
                 const opt = document.createElement('option');
-                opt.value = s;
-                opt.textContent = s;
+                opt.value = a.value;
+                opt.textContent = a.label;
                 commonGroup.appendChild(opt);
             });
             select.appendChild(commonGroup);

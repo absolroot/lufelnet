@@ -1,5 +1,7 @@
 export default {
     pageTitle: "Tactic Maker",
+    home: "Home",
+    navPath: "Tactics / Tactic Maker",
     wonder: "WONDER",
     import: "Import",
     export: "Export",
@@ -12,17 +14,75 @@ export default {
     slot4: "Slot 4",
     dragCharacter: "Select character",
     roster: "Roster",
+    searchPlaceholder: "Search Name, Codename...",
     wonderSettings: "Protagonist Settings",
     tacticTimeline: "Tactic Timeline",
     editMode: "Edit Mode",
     turn: "Turn",
     addTurn: "Add Turn",
     order: "Order",
+    orderLabel: "Order",
     weapon: "Weapon",
+    weaponRefinement: "Refinement", // Or Modification if that was the context, but user said Ritual->Awareness.
+    // wait, "의식" is Ritual. "개조" is Modification/Refinement. 
+    // User said "의식" (Ritual) -> "Awareness".
+
+    // Existing:
+    // weaponRefinement: "Refinement",
+    // defaultRitual: "Default Ritual",
+
+    // Update:
     weaponRefinement: "Refinement",
-    persona1: "Persona 1",
-    persona2: "Persona 2",
-    persona3: "Persona 3",
-    cancel: "Cancel",
-    confirm: "Confirm"
+    defaultRitual: "Awareness",
+    defaultModification: "Refinement",
+    autoWonderWeapon: "Auto Wonder Weapon (Rebel/Dom)",
+    selectPersona: "Select Persona",
+    selectRole: "Select Role",
+    autoActionPrompt: "Auto Add Action Prompt",
+    // Action Modal
+    addAction: "Add Action",
+    action_unique: "Unique Skill",
+    notSelected: "Not Selected",
+    settings: "Settings",
+    // Persona Modal
+    sort_tier: "Tier",
+    sort_rarity: "Rarity",
+    sort_name: "Name",
+    filter: "Filter",
+    reset: "Reset",
+    apply: "Apply",
+    total_count: "Total {0}",
+    // Turn Actions
+    desc_duplicate_turn: "Duplicate Turn",
+    desc_remove_turn: "Delete Turn",
+    desc_drag_reorder: "Drag to Reorder",
+    memoPlaceholder: "Enter memo...",
+    character: "Character",
+    persona: "Persona",
+    action: "Action/Skill",
+    // Action Types
+    action_common: "Common Actions",
+    action_special: "Special Actions",
+    action_general: "Attack",
+    action_oneMore: "ONE MORE",
+    action_item: "Item",
+    action_theurgia: "Theurgia",
+    action_guard: "Guard",
+    action_gun: "Gun",
+    action_highlight: "HIGHLIGHT",
+    // Capture
+    capture: "Capture",
+    capturing: "Capturing...",
+    generatingImage: "Generating image...",
+    downloading: "Downloading...",
+    done: "Done!",
+    captureFailed: "Failed to capture",
+    // Share
+    share: "Share",
+    sharing: "Sharing...",
+    shareSuccess: "Link copied to clipboard!",
+    shareFailed: "Failed to share.",
+    // SEO
+    pageTitleFull: "Tactic Maker - Persona 5: The Phantom X LufelNet",
+    pageDescription: "Persona 5: The Phantom X Tactic Maker. Set up your party and skill order to share."
 };

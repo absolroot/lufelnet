@@ -1,0 +1,530 @@
+{
+  "title": "4.7.3 전반 릴리스 (7.7억)",
+  "wonderPersonas": [
+    "트론",
+    "자오우곤겐",
+    "년수"
+  ],
+  "weapon": "작열의 연옥",
+  "personaSkills": [
+    "정화의 불",
+    "무한 알고리즘",
+    "응집",
+    "분노한 진신",
+    "",
+    "",
+    "조화의 균열",
+    "해체 역장",
+    ""
+  ],
+  "party": [
+    {
+      "name": "원더",
+      "order": "1",
+      "ritual": "0",
+      "mainRev": "",
+      "subRev": ""
+    },
+    {
+      "name": "준페이",
+      "order": "2",
+      "ritual": "6",
+      "mainRev": "깨달음",
+      "subRev": "주권"
+    },
+    {
+      "name": "미츠루",
+      "order": "3",
+      "ritual": "6",
+      "mainRev": "진정성",
+      "subRev": "고집"
+    },
+    {
+      "name": "유키 마코토",
+      "order": "4",
+      "ritual": "6",
+      "mainRev": "희망",
+      "subRev": "고집"
+    },
+    {
+      "name": "후카",
+      "order": "-",
+      "ritual": "6",
+      "mainRev": "진정성",
+      "subRev": "직책"
+    },
+    {
+      "name": "카타야마",
+      "order": "5",
+      "ritual": "6",
+      "mainRev": "창조",
+      "subRev": "화해"
+    }
+  ],
+  "turns": [
+    {
+      "turn": 1,
+      "actions": [
+        {
+          "type": 1,
+          "character": "",
+          "wonderPersona": "",
+          "action": "",
+          "memo": "트론 패시브 마하타루카 오토, 년수 패시브 전의 공명"
+        },
+        {
+          "type": 1,
+          "character": "후카",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "원더",
+          "wonderPersona": "2",
+          "action": "",
+          "memo": "해체 역장"
+        },
+        {
+          "type": 1,
+          "character": "준페이",
+          "wonderPersona": "",
+          "action": "",
+          "memo": "지원>유키"
+        },
+        {
+          "type": 1,
+          "character": "준페이",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "미츠루",
+          "wonderPersona": "",
+          "action": "스킬2",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "미츠루",
+          "wonderPersona": "",
+          "action": "테우르기아",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "미츠루",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "유키 마코토",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        }
+      ]
+    },
+    {
+      "turn": 2,
+      "actions": [
+        {
+          "type": 1,
+          "character": "후카",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "원더",
+          "wonderPersona": "0",
+          "action": "",
+          "memo": "무한 알고리즘>유키"
+        },
+        {
+          "type": 1,
+          "character": "준페이",
+          "wonderPersona": "",
+          "action": "테우르기아",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "준페이",
+          "wonderPersona": "",
+          "action": "근접",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "카타야마",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "원더",
+          "wonderPersona": "HIGHLIGHT",
+          "action": "",
+          "memo": "트론>유키"
+        },
+        {
+          "type": 1,
+          "character": "준페이",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "미츠루",
+          "wonderPersona": "",
+          "action": "테우르기아",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "미츠루",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "유키 마코토",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        }
+      ]
+    },
+    {
+      "turn": 3,
+      "actions": [
+        {
+          "type": 1,
+          "character": "후카",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "원더",
+          "wonderPersona": "1",
+          "action": "",
+          "memo": "분노한 진신"
+        },
+        {
+          "type": 1,
+          "character": "준페이",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "유키 마코토",
+          "wonderPersona": "",
+          "action": "테우르기아",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "미츠루",
+          "wonderPersona": "",
+          "action": "테우르기아",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "미츠루",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "유키 마코토",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        }
+      ]
+    },
+    {
+      "turn": 4,
+      "actions": [
+        {
+          "type": 1,
+          "character": "후카",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "후카",
+          "wonderPersona": "",
+          "action": "스킬2",
+          "memo": "유키"
+        },
+        {
+          "type": 1,
+          "character": "원더",
+          "wonderPersona": "HIGHLIGHT",
+          "action": "",
+          "memo": "자오우곤겐"
+        },
+        {
+          "type": 1,
+          "character": "카타야마",
+          "wonderPersona": "",
+          "action": "특수 스킬",
+          "memo": "ALT강화"
+        },
+        {
+          "type": 1,
+          "character": "카타야마",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "원더",
+          "wonderPersona": "2",
+          "action": "",
+          "memo": "해체 역장"
+        },
+        {
+          "type": 1,
+          "character": "준페이",
+          "wonderPersona": "",
+          "action": "테우르기아",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "준페이",
+          "wonderPersona": "",
+          "action": "근접",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "준페이",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "미츠루",
+          "wonderPersona": "",
+          "action": "테우르기아",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "미츠루",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "유키 마코토",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        }
+      ]
+    },
+    {
+      "turn": 5,
+      "actions": [
+        {
+          "type": 1,
+          "character": "후카",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "카타야마",
+          "wonderPersona": "",
+          "action": "특수 스킬",
+          "memo": "ALT강화"
+        },
+        {
+          "type": 1,
+          "character": "카타야마",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "원더",
+          "wonderPersona": "HIGHLIGHT",
+          "action": "",
+          "memo": "년수"
+        },
+        {
+          "type": 1,
+          "character": "원더",
+          "wonderPersona": "0",
+          "action": "",
+          "memo": "무한 알고리즘>유카"
+        },
+        {
+          "type": 1,
+          "character": "준페이",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "미츠루",
+          "wonderPersona": "",
+          "action": "",
+          "memo": "지원"
+        },
+        {
+          "type": 1,
+          "character": "유키 마코토",
+          "wonderPersona": "",
+          "action": "테우르기아",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "미츠루",
+          "wonderPersona": "",
+          "action": "테우르기아",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "미츠루",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "유키 마코토",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        }
+      ]
+    },
+    {
+      "turn": 6,
+      "actions": [
+        {
+          "type": 1,
+          "character": "후카",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "카타야마",
+          "wonderPersona": "",
+          "action": "특수 스킬",
+          "memo": "ALT강화"
+        },
+        {
+          "type": 1,
+          "character": "카타야마",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "원더",
+          "wonderPersona": "0",
+          "action": "",
+          "memo": "응집>유키"
+        },
+        {
+          "type": 1,
+          "character": "원더",
+          "wonderPersona": "HIGHLIGHT",
+          "action": "",
+          "memo": "트론"
+        },
+        {
+          "type": 1,
+          "character": "준페이",
+          "wonderPersona": "",
+          "action": "테우르기아",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "준페이",
+          "wonderPersona": "",
+          "action": "근접",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "준페이",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "미츠루",
+          "wonderPersona": "",
+          "action": "테우르기아",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "미츠루",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "유키 마코토",
+          "wonderPersona": "",
+          "action": "",
+          "memo": "지원>셀프"
+        },
+        {
+          "type": 1,
+          "character": "유키 마코토",
+          "wonderPersona": "",
+          "action": "테우르기아",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "유키 마코토",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        }
+      ]
+    }
+  ]
+}

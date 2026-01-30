@@ -171,12 +171,15 @@ export class WonderUI extends EventEmitter {
             }
         }
 
+        const displayElement = DataLoader.getElementName(wonderElement);
+        const displayPosition = DataLoader.getJobName(wonderPosition);
+
         const slotCharSub = (wonderElement || wonderPosition) ? `
             <div class="slot-char-sub">
-                ${attrIcon ? `<img src="${attrIcon}" class="meta-icon" title="${wonderElement}" onerror="this.style.display='none'">` : ''}
-                ${wonderElement ? `<span>${wonderElement}</span>` : ''}
-                ${posIcon ? `<img src="${posIcon}" class="meta-icon" title="${wonderPosition}" onerror="this.style.display='none'">` : ''}
-                ${wonderPosition ? `<span>${wonderPosition}</span>` : ''}
+                ${attrIcon ? `<img src="${attrIcon}" class="meta-icon" title="${displayElement}" onerror="this.style.display='none'">` : ''}
+                ${wonderElement ? `<span>${displayElement}</span>` : ''}
+                ${posIcon ? `<img src="${posIcon}" class="meta-icon" title="${displayPosition}" onerror="this.style.display='none'">` : ''}
+                ${wonderPosition ? `<span>${displayPosition}</span>` : ''}
             </div>
         ` : '';
 
@@ -200,7 +203,7 @@ export class WonderUI extends EventEmitter {
                 </div>
                 <div class="ws-details">
                     <div class="ws-order">
-                        <span class="order-label">순서</span>
+                        <span class="order-label">${window.I18nService ? window.I18nService.t('orderLabel') : '순서'}</span>
                         <select class="styled-select order-select ws-order-select">
                             <option value="-" ${currentOrder == '-' ? 'selected' : ''}>-</option>
                             ${orderOptions.map(n => `<option value="${n}" ${currentOrder == n ? 'selected' : ''}>${n}</option>`).join('')}
@@ -316,7 +319,7 @@ export class WonderUI extends EventEmitter {
     renderPersonaCard(index, persona) {
         const p = persona || {};
         const pName = p.name || '';
-        const pDisplayName = pName ? DataLoader.getPersonaDisplayName(pName) : '선택 안함';
+        const pDisplayName = pName ? DataLoader.getPersonaDisplayName(pName) : (window.I18nService ? window.I18nService.t('notSelected') : '선택 안함');
         const skills = p.skills || ['', '', '', ''];
         const memo = p.memo || '';
 
@@ -337,6 +340,13 @@ export class WonderUI extends EventEmitter {
         const uniqueIconRaw = (personaData && personaData.uniqueSkill)
             ? (personaData.uniqueSkill.icon || '')
             : '';
+
+        // Localized Unique Skill Name
+        let uniqueName = unique;
+        if (personaData && personaData.uniqueSkill) {
+            if (lang === 'en') uniqueName = personaData.uniqueSkill.name_en || uniqueName;
+            else if (lang === 'jp') uniqueName = personaData.uniqueSkill.name_jp || personaData.uniqueSkill.name_en || uniqueName;
+        }
 
         // Fallback: if persona unique skill icon is missing (or 'Default'), use personaSkillList lookup
         const skillNameForLookup = unique || (skills && skills[0]) || '';
@@ -403,7 +413,7 @@ export class WonderUI extends EventEmitter {
                         <div class="revelation-dropdown wp-unique-skill" data-persona-index="${index}">
                             <button type="button" class="revelation-button" style="width: 100%; justify-content: flex-start;" disabled>
                                 ${uniqueIcon ? `<img class="revelation-icon" src="${this.baseUrl}/assets/img/skill-element/${encodeURIComponent(uniqueIcon)}.png" onerror="this.style.display='none'">` : ''}
-                                <span>${unique || '-'}</span>
+                                <span>${uniqueName || '-'}</span>
                             </button>
                         </div>
 
@@ -419,7 +429,7 @@ export class WonderUI extends EventEmitter {
                             `;
         }).join('')}
                     </div>
-                    <input type="text" class="wp-memo-input" placeholder="메모" value="${memo}">
+                    <input type="text" class="wp-memo-input" placeholder="${window.I18nService ? window.I18nService.t('memo') : '메모'}" value="${memo}">
                 </div>
             </div>
         `;
@@ -536,7 +546,7 @@ export class WonderUI extends EventEmitter {
 
             const search = document.createElement('input');
             search.type = 'text';
-            search.placeholder = '검색...';
+            search.placeholder = (window.I18nService && window.I18nService.t('common.search')) || '검색...';
             search.className = 'input-text';
             search.style.minHeight = 'unset';
             search.style.height = '32px';

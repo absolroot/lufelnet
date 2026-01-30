@@ -1,0 +1,334 @@
+{
+  "title": "3.4億オオミツヌ虚弱",
+  "wonderPersonas": [
+    "비슈누",
+    "야노식",
+    "디오니소스"
+  ],
+  "weapon": "메커니컬 심판자",
+  "personaSkills": [
+    "적을 멸하는 바람",
+    "",
+    "",
+    "궁지 반격",
+    "라쿤다",
+    "",
+    "레볼루션",
+    "리벨리온",
+    "타루카쟈"
+  ],
+  "party": [
+    {
+      "name": "원더",
+      "order": "2",
+      "ritual": "0",
+      "mainRev": "",
+      "subRev": ""
+    },
+    {
+      "name": "J&C",
+      "order": "1",
+      "ritual": "6",
+      "mainRev": "탄생",
+      "subRev": "힘"
+    },
+    {
+      "name": "아야카",
+      "order": "3",
+      "ritual": "1",
+      "mainRev": "신뢰",
+      "subRev": "풍요"
+    },
+    {
+      "name": "몽타뉴·백조",
+      "order": "4",
+      "ritual": "",
+      "mainRev": "자유",
+      "subRev": "개선"
+    },
+    {
+      "name": "후타바",
+      "order": "-",
+      "ritual": "6",
+      "mainRev": "결심",
+      "subRev": "직책"
+    }
+  ],
+  "turns": [
+    {
+      "turn": 1,
+      "actions": [
+        {
+          "type": 1,
+          "character": "J&C",
+          "wonderPersona": "",
+          "action": "방어",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "원더",
+          "wonderPersona": "방어",
+          "action": "",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "아야카",
+          "wonderPersona": "",
+          "action": "방어",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "몽타뉴·백조",
+          "wonderPersona": "",
+          "action": "방어",
+          "memo": ""
+        }
+      ]
+    },
+    {
+      "turn": 2,
+      "actions": [
+        {
+          "type": 1,
+          "character": "J&C",
+          "wonderPersona": "",
+          "action": "방어",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "원더",
+          "wonderPersona": "방어",
+          "action": "",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "아야카",
+          "wonderPersona": "",
+          "action": "방어",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "몽타뉴·백조",
+          "wonderPersona": "",
+          "action": "방어",
+          "memo": ""
+        }
+      ]
+    },
+    {
+      "turn": 3,
+      "actions": [
+        {
+          "type": 1,
+          "character": "J&C",
+          "wonderPersona": "",
+          "action": "방어",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "원더",
+          "wonderPersona": "2",
+          "action": "",
+          "memo": "リベリオン→J&C"
+        },
+        {
+          "type": 1,
+          "character": "아야카",
+          "wonderPersona": "",
+          "action": "방어",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "몽타뉴·백조",
+          "wonderPersona": "",
+          "action": "방어",
+          "memo": ""
+        }
+      ]
+    },
+    {
+      "turn": 4,
+      "actions": [
+        {
+          "type": 1,
+          "character": "후타바",
+          "wonderPersona": "",
+          "action": "스킬2",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "J&C",
+          "wonderPersona": "",
+          "action": "방어",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "원더",
+          "wonderPersona": "2",
+          "action": "",
+          "memo": "レボリューション→J&C"
+        },
+        {
+          "type": 1,
+          "character": "원더",
+          "wonderPersona": "HIGHLIGHT",
+          "action": "",
+          "memo": "ディオニュソス"
+        },
+        {
+          "type": 1,
+          "character": "아야카",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "몽타뉴·백조",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        }
+      ]
+    },
+    {
+      "turn": 5,
+      "actions": [
+        {
+          "type": 1,
+          "character": "J&C",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": "火炎氷結"
+        },
+        {
+          "type": 1,
+          "character": "원더",
+          "wonderPersona": "1",
+          "action": "",
+          "memo": "라쿤다"
+        },
+        {
+          "type": 1,
+          "character": "아야카",
+          "wonderPersona": "",
+          "action": "스킬2",
+          "memo": "→J&C"
+        },
+        {
+          "type": 1,
+          "character": "몽타뉴·백조",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        }
+      ]
+    },
+    {
+      "turn": 6,
+      "actions": [
+        {
+          "type": 1,
+          "character": "후타바",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "J&C",
+          "wonderPersona": "",
+          "action": "HIGHLIGHT",
+          "memo": "火炎氷結"
+        },
+        {
+          "type": 1,
+          "character": "J&C",
+          "wonderPersona": "",
+          "action": "스킬2",
+          "memo": "念動核熱　真実の渇望発動"
+        },
+        {
+          "type": 1,
+          "character": "원더",
+          "wonderPersona": "0",
+          "action": "",
+          "memo": "적을 멸하는 바람"
+        },
+        {
+          "type": 1,
+          "character": "아야카",
+          "wonderPersona": "",
+          "action": "스킬2",
+          "memo": "→琴音"
+        },
+        {
+          "type": 1,
+          "character": "몽타뉴·백조",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        }
+      ],
+      "customName": "虚弱１ターン"
+    },
+    {
+      "turn": 7,
+      "actions": [
+        {
+          "type": 1,
+          "character": "후타바",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "J&C",
+          "wonderPersona": "",
+          "action": "스킬2",
+          "memo": "念動核熱"
+        },
+        {
+          "type": 1,
+          "character": "원더",
+          "wonderPersona": "2",
+          "action": "",
+          "memo": "リベリオン→琴音"
+        },
+        {
+          "type": 1,
+          "character": "아야카",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": "琴音"
+        },
+        {
+          "type": 1,
+          "character": "몽타뉴·백조",
+          "wonderPersona": "",
+          "action": "HIGHLIGHT",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "몽타뉴·백조",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        }
+      ],
+      "customName": "虚弱２ターン"
+    }
+  ]
+}

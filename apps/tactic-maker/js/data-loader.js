@@ -205,12 +205,26 @@ export class DataLoader {
         return p;
     }
 
+    static getCurrentLang() {
+        if (window.I18nService && typeof window.I18nService.getCurrentLanguage === 'function') {
+            return window.I18nService.getCurrentLanguage();
+        }
+        return 'kr';
+    }
+
     /**
      * Get character display name (with translation)
      */
     static getCharacterDisplayName(charName) {
         const charData = this.getCharacterData()[charName];
         if (!charData) return charName;
+
+        const lang = this.getCurrentLang();
+        if (lang === 'en') {
+            return charData.codename || charData.name_en || charData.name || charName;
+        } else if (lang === 'jp') {
+            return charData.name_en || charData.name || charName;
+        }
         return charData.name || charName;
     }
 
@@ -220,6 +234,13 @@ export class DataLoader {
     static getWeaponDisplayName(weaponName) {
         const weaponData = this.getWeaponList()[weaponName];
         if (!weaponData) return weaponName;
+
+        const lang = this.getCurrentLang();
+        if (lang === 'en') {
+            return weaponData.name_en || weaponData.name || weaponName;
+        } else if (lang === 'jp') {
+            return weaponData.name_jp || weaponData.name_en || weaponData.name || weaponName;
+        }
         return weaponData.name || weaponName;
     }
 
@@ -229,9 +250,201 @@ export class DataLoader {
     static getPersonaDisplayName(personaName) {
         const personaData = this.getPersonaList()[personaName];
         if (!personaData) return personaName;
+
+        const lang = this.getCurrentLang();
+        if (lang === 'en') {
+            return personaData.name_en || personaData.name || personaName;
+        } else if (lang === 'jp') {
+            return personaData.name_jp || personaData.name_en || personaData.name || personaName;
+        }
         return personaData.name || personaName;
     }
+
+    /**
+     * Get skill display name
+     */
+    static getSkillDisplayName(skillName) {
+        const skillList = this.getSkillList();
+        const skillData = skillList[skillName];
+        if (!skillData) return skillName;
+
+        const lang = this.getCurrentLang();
+        if (lang === 'en') {
+            return skillData.name_en || skillData.name || skillName;
+        } else if (lang === 'jp') {
+            return skillData.name_jp || skillData.name_en || skillData.name || skillName;
+        }
+        return skillData.name || skillName;
+    }
+
+    static getJobName(rawJob) {
+        if (!rawJob) return '';
+        if (window.I18nService && window.I18nService.t) {
+            return window.I18nService.t('positions.' + rawJob, rawJob);
+        }
+        return rawJob;
+    }
+
+    static getElementName(rawElement) {
+        if (!rawElement) return '';
+        if (window.I18nService && window.I18nService.t) {
+            return window.I18nService.t('elements.' + rawElement, rawElement);
+        }
+        return rawElement;
+    }
+
+    /**
+     * Load revelation translations for current language
+     */
+    static async loadRevelationMapping() {
+        const lang = DataLoader.getCurrentLang();
+        console.log('[DataLoader] loadRevelationMapping called. Lang:', lang);
+
+        if (lang === 'kr') {
+            console.log('[DataLoader] Korean language, skipping revelation mapping');
+            return;
+        }
+
+        if (DataLoader._revelationMappingLoaded) {
+            console.log('[DataLoader] Revelation mapping already loaded');
+            return;
+        }
+        if (DataLoader._revelationMappingPromise) {
+            console.log('[DataLoader] Revelation mapping already loading, waiting...');
+            await DataLoader._revelationMappingPromise;
+            return;
+        }
+
+        console.log('[DataLoader] Starting to load revelation mapping...');
+
+        DataLoader._revelationMappingPromise = (async () => {
+            try {
+                const baseUrl = window.BASE_URL || '';
+                const version = (typeof window.APP_VERSION !== 'undefined' && window.APP_VERSION)
+                    ? `?v=${encodeURIComponent(String(window.APP_VERSION))}`
+                    : '';
+
+                const url = `${baseUrl}/data/${lang}/revelations/revelations.js${version}`;
+                console.log('[DataLoader] Fetching revelation mapping from:', url);
+                const res = await fetch(url);
+                console.log('[DataLoader] Fetch response status:', res.status);
+                if (!res.ok) throw new Error(`Failed to load revelations for ${lang}`);
+                const text = await res.text();
+                console.log('[DataLoader] Fetched text length:', text.length);
+
+                // Extract mapping from the file
+                // Replace all occurrences (declaration + references)
+                let patchedText = text;
+                if (lang === 'en') {
+                    patchedText = patchedText.replaceAll('enRevelationData', 'window.__tmpEnRevelationData');
+                    patchedText = patchedText.replaceAll('mapping_en', 'window.__tmpMappingEn');
+                    // Remove const declarations
+                    patchedText = patchedText.replace('const window.__tmpEnRevelationData', 'window.__tmpEnRevelationData');
+                    patchedText = patchedText.replace('const window.__tmpMappingEn', 'window.__tmpMappingEn');
+                } else if (lang === 'jp') {
+                    patchedText = patchedText.replaceAll('jpRevelationData', 'window.__tmpJpRevelationData');
+                    patchedText = patchedText.replaceAll('mapping_jp', 'window.__tmpMappingJp');
+                    // Remove const declarations
+                    patchedText = patchedText.replace('const window.__tmpJpRevelationData', 'window.__tmpJpRevelationData');
+                    patchedText = patchedText.replace('const window.__tmpMappingJp', 'window.__tmpMappingJp');
+                }
+
+                console.log('[DataLoader] Executing patched script...');
+                // eslint-disable-next-line no-eval
+                eval(patchedText);
+                console.log('[DataLoader] Script executed');
+
+                // Extract mapping
+                if (lang === 'en') {
+                    console.log('[DataLoader] EN - __tmpMappingEn exists:', !!window.__tmpMappingEn);
+                    console.log('[DataLoader] EN - __tmpEnRevelationData exists:', !!window.__tmpEnRevelationData);
+                    if (window.__tmpEnRevelationData) {
+                        console.log('[DataLoader] EN - mapping_en in data:', !!window.__tmpEnRevelationData.mapping_en);
+                    }
+                    DataLoader._revelationMapping = window.__tmpMappingEn ||
+                        (window.__tmpEnRevelationData && window.__tmpEnRevelationData.mapping_en) || {};
+                    try { delete window.__tmpMappingEn; } catch (_) {}
+                    try { delete window.__tmpEnRevelationData; } catch (_) {}
+                } else if (lang === 'jp') {
+                    console.log('[DataLoader] JP - __tmpMappingJp exists:', !!window.__tmpMappingJp);
+                    console.log('[DataLoader] JP - __tmpJpRevelationData exists:', !!window.__tmpJpRevelationData);
+                    if (window.__tmpJpRevelationData) {
+                        console.log('[DataLoader] JP - mapping_jp in data:', !!window.__tmpJpRevelationData.mapping_jp);
+                    }
+                    DataLoader._revelationMapping = window.__tmpMappingJp ||
+                        (window.__tmpJpRevelationData && window.__tmpJpRevelationData.mapping_jp) || {};
+                    try { delete window.__tmpMappingJp; } catch (_) {}
+                    try { delete window.__tmpJpRevelationData; } catch (_) {}
+                }
+
+                DataLoader._revelationMappingLoaded = true;
+                const keys = Object.keys(DataLoader._revelationMapping);
+                console.log('[DataLoader] Revelation mapping loaded:', keys.length, 'entries');
+                if (keys.length > 0) {
+                    console.log('[DataLoader] Sample mappings:', keys.slice(0, 5).map(k => `${k} -> ${DataLoader._revelationMapping[k]}`));
+                }
+            } catch (e) {
+                console.error('[DataLoader] Failed to load revelation mapping:', e);
+            }
+        })();
+
+        await DataLoader._revelationMappingPromise;
+        console.log('[DataLoader] loadRevelationMapping completed');
+    }
+
+    static getRevelationName(rawRev) {
+        if (!rawRev) return '';
+
+        const lang = DataLoader.getCurrentLang();
+
+        // For non-Korean, use loaded mapping
+        if (lang !== 'kr') {
+            const mappingKeys = DataLoader._revelationMapping ? Object.keys(DataLoader._revelationMapping).length : 0;
+            console.log('[DataLoader] getRevelationName called. Lang:', lang, 'Rev:', rawRev, 'MappingSize:', mappingKeys, 'Loaded:', DataLoader._revelationMappingLoaded);
+
+            if (DataLoader._revelationMapping && DataLoader._revelationMapping[rawRev]) {
+                const translated = DataLoader._revelationMapping[rawRev];
+                console.log('[DataLoader] Found translation:', rawRev, '->', translated);
+                return translated;
+            } else {
+                console.log('[DataLoader] No translation found for:', rawRev);
+            }
+        }
+
+        // Fallback to i18n translations for common terms
+        const map = {
+            '일': 'revelation.sun',
+            '월': 'revelation.moon',
+            '성': 'revelation.star',
+            '진': 'revelation.sky',
+            '주': 'revelation.space',
+            '일월성진': 'revelation.sunMoonStarSky',
+            '공통': 'revelation.common',
+            '주권': 'revelation.control',
+            '여정': 'revelation.departure',
+            '직책': 'revelation.labor',
+            '결심': 'revelation.resolve',
+            '자유': 'revelation.freedom',
+            '개선': 'revelation.triumph',
+            '희망': 'revelation.hope',
+            '황야의 구세주': 'revelation.desperado'
+        };
+        const key = map[rawRev];
+        if (key && window.I18nService && window.I18nService.t) {
+            const translated = window.I18nService.t(key);
+            if (translated && translated !== key) {
+                return translated;
+            }
+        }
+        return rawRev;
+    }
 }
+
+// Static properties initialization
+DataLoader._revelationMappingLoaded = false;
+DataLoader._revelationMappingPromise = null;
+DataLoader._revelationMapping = {};
+
 
 // Expose to window for global access
 window.DataLoader = DataLoader;

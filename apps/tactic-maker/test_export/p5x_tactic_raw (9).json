@@ -1,0 +1,425 @@
+{
+  "title": "Reset Hell Kohryu/ 헬",
+  "wonderPersonas": [
+    "비사문천",
+    "자오우곤겐",
+    "트론"
+  ],
+  "weapon": "엔트로피·제로",
+  "personaSkills": [
+    "존왕의 항복",
+    "",
+    "",
+    "분노한 진신",
+    "프레이",
+    "",
+    "정화의 불",
+    "리벨리온",
+    ""
+  ],
+  "party": [
+    {
+      "name": "원더",
+      "order": "3",
+      "ritual": "0",
+      "mainRev": "",
+      "subRev": ""
+    },
+    {
+      "name": "YUI·스텔라",
+      "order": "4",
+      "ritual": "",
+      "mainRev": "예리",
+      "subRev": "풍족"
+    },
+    {
+      "name": "리코·매화",
+      "order": "1",
+      "ritual": "1",
+      "mainRev": "창조",
+      "subRev": "우려"
+    },
+    {
+      "name": "미츠루",
+      "order": "2",
+      "ritual": "",
+      "mainRev": "진정성",
+      "subRev": "고집"
+    },
+    {
+      "name": "마나카",
+      "order": "-",
+      "ritual": "1",
+      "mainRev": "희망",
+      "subRev": "직책"
+    }
+  ],
+  "turns": [
+    {
+      "turn": 1,
+      "actions": [
+        {
+          "type": 1,
+          "character": "마나카",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "리코·매화",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "미츠루",
+          "wonderPersona": "",
+          "action": "스킬2",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "미츠루",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "원더",
+          "wonderPersona": "2",
+          "action": "",
+          "memo": "Rebellion (Burn) / 리벨리온 (화상)"
+        },
+        {
+          "type": 1,
+          "character": "YUI·스텔라",
+          "wonderPersona": "",
+          "action": "스킬2",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "YUI·스텔라",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        }
+      ]
+    },
+    {
+      "turn": 2,
+      "actions": [
+        {
+          "type": 1,
+          "character": "마나카",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "리코·매화",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": "Windswept / 풍습"
+        },
+        {
+          "type": 1,
+          "character": "미츠루",
+          "wonderPersona": "",
+          "action": "테우르기아",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "YUI·스텔라",
+          "wonderPersona": "",
+          "action": "HIGHLIGHT",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "미츠루",
+          "wonderPersona": "",
+          "action": "특수 스킬",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "미츠루",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "원더",
+          "wonderPersona": "0",
+          "action": "",
+          "memo": "Imperial Purge / 존왕의 항복"
+        },
+        {
+          "type": 1,
+          "character": "YUI·스텔라",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "YUI·스텔라",
+          "wonderPersona": "",
+          "action": "특수 스킬",
+          "memo": ""
+        }
+      ]
+    },
+    {
+      "turn": 3,
+      "actions": [
+        {
+          "type": 1,
+          "character": "마나카",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "리코·매화",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "미츠루",
+          "wonderPersona": "",
+          "action": "테우르기아",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "미츠루",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "원더",
+          "wonderPersona": "HIGHLIGHT",
+          "action": "",
+          "memo": "Bishamonten / 비사문천"
+        },
+        {
+          "type": 1,
+          "character": "원더",
+          "wonderPersona": "1",
+          "action": "",
+          "memo": "Frei / 프레이"
+        },
+        {
+          "type": 1,
+          "character": "YUI·스텔라",
+          "wonderPersona": "",
+          "action": "스킬2",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "YUI·스텔라",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        }
+      ]
+    },
+    {
+      "turn": 4,
+      "actions": [
+        {
+          "type": 1,
+          "character": "마나카",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "리코·매화",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": "Windswept / 풍습"
+        },
+        {
+          "type": 1,
+          "character": "미츠루",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": "Heal if needed / 회복템 필요 가능"
+        },
+        {
+          "type": 1,
+          "character": "원더",
+          "wonderPersona": "2",
+          "action": "",
+          "memo": "Rebellion (Burn) / 리벨리온 (화상)"
+        },
+        {
+          "type": 1,
+          "character": "YUI·스텔라",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "YUI·스텔라",
+          "wonderPersona": "",
+          "action": "특수 스킬",
+          "memo": ""
+        }
+      ]
+    },
+    {
+      "turn": 5,
+      "actions": [
+        {
+          "type": 1,
+          "character": "마나카",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "리코·매화",
+          "wonderPersona": "",
+          "action": "HIGHLIGHT",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "리코·매화",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "미츠루",
+          "wonderPersona": "",
+          "action": "테우르기아",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "미츠루",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "원더",
+          "wonderPersona": "0",
+          "action": "",
+          "memo": "Imperial Purge / 존왕의 항복"
+        },
+        {
+          "type": 1,
+          "character": "YUI·스텔라",
+          "wonderPersona": "",
+          "action": "스킬2",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "YUI·스텔라",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        }
+      ]
+    },
+    {
+      "turn": 6,
+      "actions": [
+        {
+          "type": 1,
+          "character": "마나카",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "마나카",
+          "wonderPersona": "",
+          "action": "특수 스킬",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "리코·매화",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "미츠루",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "원더",
+          "wonderPersona": "1",
+          "action": "",
+          "memo": "Frei / 프레이"
+        },
+        {
+          "type": 1,
+          "character": "YUI·스텔라",
+          "wonderPersona": "",
+          "action": "HIGHLIGHT",
+          "memo": "2, maybe 3 dodges are needed"
+        },
+        {
+          "type": 1,
+          "character": "YUI·스텔라",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": "2~3회 회피."
+        },
+        {
+          "type": 1,
+          "character": "YUI·스텔라",
+          "wonderPersona": "",
+          "action": "특수 스킬",
+          "memo": "Good luck. I am sorry."
+        },
+        {
+          "type": 1,
+          "character": "YUI·스텔라",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": "행운을 빈다. 죄송해요."
+        },
+        {
+          "type": 1,
+          "character": "YUI·스텔라",
+          "wonderPersona": "",
+          "action": "특수 스킬",
+          "memo": ""
+        }
+      ]
+    }
+  ]
+}

@@ -3,12 +3,15 @@
  * Handles data compatibility with legacy tactic maker format
  */
 
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbzxSnf6_09q_LDRKIkmBvE2oTtQaLnK22M9ozrHMUAV0JnND9sc6CTILlnBS7_T8FIe/exec';
+
 export class ImportExport {
     constructor(store) {
         this.store = store;
         this.fileInput = document.getElementById('fileInput');
         this.btnImport = document.getElementById('btnImport');
         this.btnExport = document.getElementById('btnExport');
+        this.btnShare = document.getElementById('btnShare');
 
         this.initEventListeners();
         this.checkUrlParams();
@@ -40,6 +43,15 @@ export class ImportExport {
                 this.exportToFile();
             });
         }
+
+        // Share button click
+        if (this.btnShare) {
+            console.log('[ImportExport] Share button listener attached');
+            this.btnShare.addEventListener('click', () => {
+                console.log('[ImportExport] Share button clicked');
+                this.shareTactic();
+            });
+        }
     }
 
     /**
@@ -48,8 +60,11 @@ export class ImportExport {
     checkUrlParams() {
         const urlParams = new URLSearchParams(window.location.search);
         const sharedData = urlParams.get('data');
+        const binId = urlParams.get('bin');
 
-        if (sharedData) {
+        if (binId) {
+            this.fetchFromBin(binId);
+        } else if (sharedData) {
             try {
                 // Attempt LZString decompression if available
                 let jsonString = sharedData;
@@ -524,5 +539,90 @@ export class ImportExport {
 
         const baseUrl = window.location.origin + window.location.pathname;
         return `${baseUrl}?data=${jsonString}`;
+    }
+
+    /**
+     * Share tactic via GAS and get short link
+     */
+    async shareTactic() {
+        const t = (key) => window.I18nService ? window.I18nService.t(key) : key;
+
+        try {
+            // Show loading
+            const originalText = this.btnShare.querySelector('span').textContent;
+            this.btnShare.disabled = true;
+            this.btnShare.querySelector('span').textContent = t('sharing');
+
+            const data = this.generateExportData();
+            let jsonString = JSON.stringify(data);
+
+            if (typeof LZString !== 'undefined') {
+                jsonString = LZString.compressToEncodedURIComponent(jsonString);
+            }
+
+            const response = await fetch(GAS_URL, {
+                method: 'POST',
+                body: JSON.stringify({ data: jsonString })
+            });
+
+            if (!response.ok) throw new Error('Network response was not ok');
+
+            const result = await response.json();
+            if (result.id) {
+                const baseUrl = window.location.origin + window.location.pathname;
+                const shareUrl = `${baseUrl}?bin=${result.id}`;
+
+                // Copy to clipboard
+                await navigator.clipboard.writeText(shareUrl);
+                alert(t('shareSuccess'));
+            } else {
+                throw new Error('No ID returned');
+            }
+
+            // Restore button
+            this.btnShare.disabled = false;
+            this.btnShare.querySelector('span').textContent = originalText;
+
+        } catch (error) {
+            console.error('[ImportExport] Share failed:', error);
+            alert(t('shareFailed'));
+            this.btnShare.disabled = false;
+            if (this.btnShare.querySelector('span')) {
+                this.btnShare.querySelector('span').textContent = t('share');
+            }
+        }
+    }
+
+    /**
+     * Fetch data from GAS bin
+     */
+    async fetchFromBin(binId) {
+        try {
+            // Show a simple loading state if possible, but for now just console
+            console.log('[ImportExport] Fetching from bin:', binId);
+
+            const response = await fetch(`${GAS_URL}?id=${binId}`);
+            if (!response.ok) throw new Error('Failed to fetch from GAS');
+
+            const result = await response.json();
+            if (result.data) {
+                let jsonString = result.data;
+                if (typeof LZString !== 'undefined') {
+                    const decompressed = LZString.decompressFromEncodedURIComponent(jsonString);
+                    if (decompressed) {
+                        jsonString = decompressed;
+                    }
+                }
+                const data = JSON.parse(jsonString);
+                this.applyImportedData(data);
+
+                // Clean URL
+                window.history.replaceState({}, document.title, window.location.pathname);
+            } else {
+                console.error('[ImportExport] Bin not found:', binId);
+            }
+        } catch (error) {
+            console.error('[ImportExport] Failed to fetch bin data:', error);
+        }
     }
 }

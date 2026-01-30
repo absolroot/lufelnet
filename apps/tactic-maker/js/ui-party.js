@@ -106,7 +106,7 @@ export class PartyUI {
 
         bar.innerHTML = `
             <div class="roster-filter-search">
-                <input type="text" class="roster-search-input" placeholder="캐릭터 검색..." autocomplete="off">
+                <input type="text" class="roster-search-input" placeholder="${window.I18nService ? window.I18nService.t('searchPlaceholder') : '캐릭터 검색...'}" autocomplete="off">
             </div>
 
             <div class="roster-filter-groups">
@@ -213,15 +213,31 @@ export class PartyUI {
             div.dataset.name = name;
 
             const imgPath = `${this.baseUrl}/assets/img/tier/${name}.webp`;
-            const displayName = charData.name || name;
+            const getCurrentLang = () => {
+                if (window.I18nService && typeof window.I18nService.getCurrentLanguage === 'function') {
+                    return window.I18nService.getCurrentLanguage();
+                }
+                return 'kr';
+            };
+            const lang = getCurrentLang();
+            let displayName = charData.name || name;
+            if (lang !== 'kr') {
+                if (lang === 'en') displayName = charData.codename || charData.name_en || charData.name || name;
+                else if (lang === 'jp') displayName = charData.name_jp || charData.name || name;
+                else displayName = charData.name || name;
+            }
 
             // Logic copied from dmg-calc/roster.js
             const element = charData.element || '';
             const position = charData.position || '';
-            const parts = [element, position].filter(Boolean);
+
+            // For the text span, we may want to exclude element if it's redundant with the icon (e.g. in EN)
+            let spanParts = [element, position].filter(Boolean);
+            if (lang === 'en') {
+                spanParts = [position].filter(Boolean);
+            }
 
             const attrIconSrc = element ? `${this.baseUrl}/assets/img/character-cards/속성_${element}.png` : '';
-            const text = parts.join(' · ');
 
             div.innerHTML = `
                 <img class="roster-thumb" loading="lazy" decoding="async" src="${imgPath}" alt="${displayName}" onerror="this.src='${this.baseUrl}/assets/img/tier/${name}.webp'">
@@ -229,7 +245,10 @@ export class PartyUI {
                     <div class="roster-name">${displayName}</div>
                     <div class="roster-sub">
                         ${attrIconSrc ? `<img class="meta-icon" src="${attrIconSrc}" alt="${element}" onerror="this.style.display='none'">` : ''}
-                        <span>${text}</span>
+                        <span>${spanParts.map(p => {
+                const elName = DataLoader.getElementName(p);
+                return elName !== p ? elName : DataLoader.getJobName(p);
+            }).join(' · ')}</span>
                     </div>
                 </div>
             `;
@@ -358,10 +377,10 @@ export class PartyUI {
                         <span class="preset-icons"></span>
                     </div>
                     <div class="slot-char-sub">
-                        ${attrIcon ? `<img src="${attrIcon}" class="meta-icon" title="${element}" onerror="this.style.display='none'">` : ''}
-                        ${element ? `<span>${element}</span>` : ''}
-                        ${posIcon ? `<img src="${posIcon}" class="meta-icon" title="${position}" onerror="this.style.display='none'">` : ''}
-                        ${position ? `<span>${position}</span>` : ''}
+                        ${attrIcon ? `<img src="${attrIcon}" class="meta-icon" title="${DataLoader.getElementName(element)}" onerror="this.style.display='none'">` : ''}
+                        ${element ? `<span>${DataLoader.getElementName(element)}</span>` : ''}
+                        ${posIcon ? `<img src="${posIcon}" class="meta-icon" title="${DataLoader.getJobName(position)}" onerror="this.style.display='none'">` : ''}
+                        ${position ? `<span>${DataLoader.getJobName(position)}</span>` : ''}
                         
                         ${isJandC ? (() => {
                 const activeRole = data.role || '우월';
@@ -385,13 +404,13 @@ export class PartyUI {
                 <!-- Row 1: Ritual, Modification -->
                 <div class="ritual-mod-wrapper" style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px;">
                      <div class="slot-option-group">
-                        <label style="font-size: 11px; opacity: 0.7; margin-bottom: 2px; display: block;">의식</label>
+                        <label style="font-size: 11px; opacity: 0.7; margin-bottom: 2px; display: block;">${window.I18nService ? window.I18nService.t('defaultRitual').replace('기본 ', '') : '의식'}</label>
                         <select class="styled-select ritual-select" data-index="${index}" style="width: 100%;">
                              <!-- Populated by JS -->
                         </select>
                      </div>
                      <div class="slot-option-group">
-                        <label style="font-size: 11px; opacity: 0.7; margin-bottom: 2px; display: block;">개조</label>
+                        <label style="font-size: 11px; opacity: 0.7; margin-bottom: 2px; display: block;">${window.I18nService ? window.I18nService.t('defaultModification').replace('기본 ', '') : '개조'}</label>
                         <select class="styled-select mod-select" data-index="${index}" style="width: 100%;">
                              <!-- Populated by JS -->
                         </select>
@@ -422,7 +441,7 @@ export class PartyUI {
                 slotHeader.innerHTML = `
                     ${labelSpan}
                     <div class="slot-header-right">
-                        <span class="order-label">순서</span>
+                        <span class="order-label">${window.I18nService ? window.I18nService.t('orderLabel') : '순서'}</span>
                         <select class="styled-select order-select slot-order-select" data-index="${index}">
                             <option value="-" ${currentOrder == '-' ? 'selected' : ''}>-</option>
                             ${orderOptions.map(n => `<option value="${n}" ${currentOrder == n ? 'selected' : ''}>${n}</option>`).join('')}
@@ -484,7 +503,7 @@ export class PartyUI {
             return `
                 <div class="role-option-item ${isActive ? 'active' : ''}" data-role="${pos}" onclick="void(0)">
                     <img src="${this.baseUrl}/assets/img/character-cards/직업_${pos}.png" alt="${pos}">
-                    <span>${pos}</span>
+                    <span>${DataLoader.getJobName(pos)}</span>
                 </div>
             `;
         }).join('');
@@ -548,7 +567,7 @@ export class PartyUI {
 
     renderWonderWeaponConfig(wrapper, data, index) {
         if (!wrapper) return;
-        wrapper.innerHTML = `<label style="font-size: 11px; opacity: 0.7; margin-bottom: 2px; display: block;">원더 무기</label>`;
+        wrapper.innerHTML = `<label style="font-size: 11px; opacity: 0.7; margin-bottom: 2px; display: block;">${window.I18nService ? window.I18nService.t('weaponLabel') : '원더 무기'}</label>`;
 
         const config = this.buildRevelationSelectLike('wonder-weapon');
         wrapper.appendChild(config);
@@ -644,7 +663,7 @@ export class PartyUI {
             const img = this.buildRevelationIcon(selectedValue, kind === 'wonder-weapon');
             button.appendChild(img);
             const span = document.createElement('span');
-            span.textContent = selectedValue;
+            span.textContent = kind === 'wonder-weapon' ? DataLoader.getWeaponDisplayName(selectedValue) : DataLoader.getRevelationName(selectedValue);
             button.appendChild(span);
         } else {
             const span = document.createElement('span');
@@ -663,7 +682,7 @@ export class PartyUI {
             item.appendChild(img);
 
             const span = document.createElement('span');
-            span.textContent = opt;
+            span.textContent = kind === 'wonder-weapon' ? DataLoader.getWeaponDisplayName(opt) : DataLoader.getRevelationName(opt);
             item.appendChild(span);
 
             item.onclick = (e) => {

@@ -10,6 +10,58 @@
     --bg-dark: #121212;
 }
 
+/* ==========================================================================
+   Loading Overlay
+   ========================================================================== */
+.tactic-loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-dark);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    z-index: 9999;
+    transition: opacity 0.3s ease-out;
+}
+
+.tactic-loading-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.tactic-loading-gif {
+    width: 120px;
+    height: auto;
+    image-rendering: pixelated;
+}
+
+.tactic-loading-progress-container {
+    width: 200px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.tactic-loading-progress-bar {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-color), #ff6b6b);
+    border-radius: 3px;
+    transition: width 0.1s ease-out;
+}
+
+.tactic-loading-percent {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+}
+
 body {
     background-color: var(--bg-dark);
     color: var(--text-primary);
@@ -163,7 +215,7 @@ body {
 .slot-header .slot-order-select {
     width: auto;
     min-width: 32px;
-    height: 26px;
+    height: 20px;
     padding: 2px 6px;
     font-size: 12px;
 }
@@ -402,6 +454,15 @@ body {
     font-size: 12px;
     min-height: 32px;
     transition: background 0.2s, border-color 0.2s;
+    overflow: hidden;
+}
+
+.revelation-button span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1;
+    min-width: 0;
 }
 
 .revelation-button:hover {
@@ -1465,7 +1526,7 @@ body:not(.tactic-edit-mode) .ritual-mod-wrapper {
 .styled-select {
     width: 100%;
     max-width: 40px;
-    padding: 6px 8px;
+    padding: 4px 8px;
     background: #3a3a3a;
     border: 0px solid var(--border-color);
     border-radius: 6px;
@@ -1702,6 +1763,15 @@ body:not(.tactic-edit-mode) .ritual-mod-wrapper {
     display: flex;
     flex-direction: column;
     gap: 4px;
+}
+
+/* Action Item Styles */
+.action-item .actor-dropdown .custom-select-text {
+    font-size: 0.7rem;
+}
+
+.action-item .action-dropdown .custom-select-text {
+    font-size: 0.8rem;
 }
 
 /* ==========================================================================

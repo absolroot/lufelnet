@@ -33,6 +33,8 @@ export class PersonaModal extends EventEmitter {
     }
 
     createModal() {
+        const t = (k, f) => (window.I18nService && window.I18nService.t ? window.I18nService.t(k, f) : (f || k));
+
         // Remove existing modal if any
         const existing = document.getElementById('personaSelectModal');
         if (existing) existing.remove();
@@ -45,7 +47,7 @@ export class PersonaModal extends EventEmitter {
             <div class="persona-modal-backdrop"></div>
             <div class="persona-modal-dialog">
                 <div class="persona-modal-header">
-                    <h3>페르소나 선택</h3>
+                    <h3>${t('selectPersona', '페르소나 선택')}</h3>
                     <button class="persona-modal-close">&times;</button>
                 </div>
                 <div class="persona-modal-body">
@@ -58,7 +60,7 @@ export class PersonaModal extends EventEmitter {
                                         <path d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z" fill="rgba(255, 255, 255, 0.6)"/>
                                     </svg>
                                 </div>
-                                <input type="text" class="persona-search-input" placeholder="검색..." autocomplete="off">
+                                <input type="text" class="persona-search-input" placeholder="${window.I18nService ? window.I18nService.t('common.search') : '검색...'}" autocomplete="off">
                                 <button class="persona-search-clear" style="display: none;">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <circle cx="12" cy="12" r="10"/>
@@ -69,18 +71,18 @@ export class PersonaModal extends EventEmitter {
                             </div>
                             <div class="persona-sort-container">
                                 <select class="persona-sort-select">
-                                    <option value="tier">티어 순</option>
-                                    <option value="rarity">희귀도 순</option>
-                                    <option value="name">이름 순</option>
+                                    <option value="tier">${t('sort_tier', '티어 순')}</option>
+                                    <option value="rarity">${t('sort_rarity', '희귀도 순')}</option>
+                                    <option value="name">${t('sort_name', '이름 순')}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="persona-filter-row">
                             <div class="persona-filter-count">
-                                <span class="persona-filtered-count">전체 0개</span>
+                                <span class="persona-filtered-count">${this.formatCount(0)}</span>
                             </div>
                             <button class="persona-filter-open-btn">
-                                <span>필터</span>
+                                <span>${t('filter', '필터')}</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M10 20a1 1 0 0 0 .553.895l2 1A1 1 0 0 0 14 21v-7a2 2 0 0 1 .517-1.341L21.74 4.67A1 1 0 0 0 21 3H3a1 1 0 0 0-.742 1.67l7.225 7.989A2 2 0 0 1 10 14z"/>
                                 </svg>
@@ -97,7 +99,7 @@ export class PersonaModal extends EventEmitter {
                                 <div class="card none-card">
                                     <span>None</span>
                                 </div>
-                                <div class="persona-name">선택 해제</div>
+                                <div class="persona-name">${window.I18nService ? window.I18nService.t('notSelected') : '선택 해제'}</div>
                             </div>
                         </div>
                         <!-- Cards will be rendered here -->
@@ -110,42 +112,42 @@ export class PersonaModal extends EventEmitter {
                 <div class="persona-filter-backdrop"></div>
                 <div class="persona-filter-dialog">
                     <div class="persona-filter-header-inner">
-                        <h3>필터</h3>
+                        <h3>${t('filter', '필터')}</h3>
                         <button class="persona-filter-close">&times;</button>
                     </div>
                     <div class="persona-filter-body">
                         <!-- Element Filter -->
                         <div class="persona-filter-group">
-                            <h4>속성</h4>
+                            <h4>${window.I18nService ? window.I18nService.t('element') : '속성'}</h4>
                             <div class="persona-filter-options" data-filter="element">
                                 ${this.createElementFilterOptions()}
                             </div>
                         </div>
                         <!-- Position Filter -->
                         <div class="persona-filter-group">
-                            <h4>직업</h4>
+                            <h4>${window.I18nService ? window.I18nService.t('job') : '직업'}</h4>
                             <div class="persona-filter-options" data-filter="position">
                                 ${this.createPositionFilterOptions()}
                             </div>
                         </div>
                         <!-- Rarity Filter -->
                         <div class="persona-filter-group">
-                            <h4>희귀도</h4>
+                            <h4>${window.I18nService ? window.I18nService.t('rarity') : '희귀도'}</h4>
                             <div class="persona-filter-options" data-filter="rarity">
                                 ${this.createRarityFilterOptions()}
                             </div>
                         </div>
                         <!-- Grade Filter -->
                         <div class="persona-filter-group">
-                            <h4>등급</h4>
+                            <h4>${window.I18nService ? window.I18nService.t('grade') : '등급'}</h4>
                             <div class="persona-filter-options" data-filter="grade">
                                 ${this.createGradeFilterOptions()}
                             </div>
                         </div>
                     </div>
                     <div class="persona-filter-footer">
-                        <button class="persona-filter-reset">초기화</button>
-                        <button class="persona-filter-apply">적용</button>
+                        <button class="persona-filter-reset">${t('reset', '초기화')}</button>
+                        <button class="persona-filter-apply">${t('apply', '적용')}</button>
                     </div>
                 </div>
             </div>
@@ -194,6 +196,13 @@ export class PersonaModal extends EventEmitter {
                 <img src="${this.baseUrl}/assets/img/persona/persona-grade${grade}.webp" alt="Grade ${grade}" onerror="this.style.display='none'">
             </label>
         `).join('');
+    }
+
+    formatCount(count) {
+        if (window.I18nService && window.I18nService.t) {
+            return window.I18nService.t('total_count', `전체 ${count}개`).replace('{0}', count);
+        }
+        return `전체 ${count}개`;
     }
 
     bindEvents() {
@@ -481,9 +490,8 @@ export class PersonaModal extends EventEmitter {
         container.appendChild(fragment);
 
         // Update count
-        const countText = window.t?.('filteredCount', '전체') || '전체';
-        const countUnit = window.t?.('countUnit', '개') || '개';
-        this.modal.querySelector('.persona-filtered-count').textContent = `${countText} ${visibleCount}${countUnit}`;
+        // Update count
+        this.modal.querySelector('.persona-filtered-count').textContent = this.formatCount(visibleCount);
     }
 
     openFilterModal() {
@@ -510,6 +518,13 @@ export class PersonaModal extends EventEmitter {
     resetFilters() {
         const checkboxes = this.modal.querySelectorAll('.persona-filter-modal input[type="checkbox"]');
         checkboxes.forEach(cb => cb.checked = false);
+    }
+
+    updateFilterCount(count) {
+        const countEl = this.modal.querySelector('.persona-filtered-count');
+        if (countEl) {
+            countEl.textContent = this.formatCount(count);
+        }
     }
 
     applyFiltersFromModal() {

@@ -56,7 +56,10 @@ export class DataLoader {
                             attempts
                         });
 
-                        resolve();
+                        // Load critical data and wait for it
+                        this.loadCriticalData().then(() => {
+                            resolve();
+                        });
                         return;
                     }
 
@@ -74,6 +77,48 @@ export class DataLoader {
         });
 
         return this._loadPromise;
+    }
+
+    /**
+     * Load critical data (criticalBuffData, criticalSelfData)
+     */
+    static loadCriticalData() {
+        if (this._criticalDataLoaded) return Promise.resolve(true);
+        if (this._criticalDataPromise) return this._criticalDataPromise;
+
+        // Check if already loaded globally
+        if (window.criticalBuffData && window.criticalSelfData) {
+            this._criticalDataLoaded = true;
+            return Promise.resolve(true);
+        }
+
+        const baseUrl = window.BASE_URL || '';
+        const version = (typeof window.APP_VERSION !== 'undefined' && window.APP_VERSION)
+            ? `?v=${encodeURIComponent(String(window.APP_VERSION))}`
+            : '';
+
+        const src = `${baseUrl}/data/kr/calc/critical-data.js${version}`;
+
+        this._criticalDataPromise = new Promise((resolve) => {
+            const script = document.createElement('script');
+            script.src = src;
+            script.async = true;
+            script.onload = () => {
+                this._criticalDataLoaded = true;
+                console.log('[DataLoader] Critical data loaded:', {
+                    buffGroups: Object.keys(window.criticalBuffData || {}).length,
+                    selfGroups: Object.keys(window.criticalSelfData || {}).length
+                });
+                resolve(true);
+            };
+            script.onerror = () => {
+                console.error('[DataLoader] Failed to load critical data');
+                resolve(false);
+            };
+            document.head.appendChild(script);
+        });
+
+        return this._criticalDataPromise;
     }
 
     /**
@@ -444,6 +489,8 @@ export class DataLoader {
 DataLoader._revelationMappingLoaded = false;
 DataLoader._revelationMappingPromise = null;
 DataLoader._revelationMapping = {};
+DataLoader._criticalDataLoaded = false;
+DataLoader._criticalDataPromise = null;
 
 
 // Expose to window for global access

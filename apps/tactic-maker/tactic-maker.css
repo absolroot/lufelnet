@@ -85,9 +85,16 @@ body {
     flex-wrap: wrap;
 }
 
+/* Hide edit-only buttons in non-edit mode */
+body:not(.tactic-edit-mode) #btnAutoSave,
+body:not(.tactic-edit-mode) #btnReset,
+body:not(.tactic-edit-mode) #btnImport {
+    display: none !important;
+}
+
 .btn-storage {
     padding: 6px 12px;
-    background: rgba(255, 255, 255, 0.08);
+    background: #2a2a2a;
     border: 1px solid var(--border-color);
     border-radius: 6px;
     color: #fff;
@@ -101,7 +108,7 @@ body {
 }
 
 .btn-storage:hover {
-    background: rgba(255, 255, 255, 0.12);
+    background: #333;
     border-color: rgba(255, 255, 255, 0.4);
 }
 
@@ -201,7 +208,7 @@ body {
     border-bottom: 1px solid var(--border-color);
     padding: 10px 0;
     font-size: 1.4rem;
-    font-weight: 300;
+    font-weight: 700;
     color: #fff;
     outline: none;
 }
@@ -219,7 +226,7 @@ body {
 
 .tactic-memo-input {
     width: 100%;
-    background: rgba(255, 255, 255, 0.04);
+    background: #1a1a1a;
     border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 12px 14px;
@@ -236,7 +243,7 @@ body {
 
 .tactic-memo-input:focus {
     border-color: var(--accent-color);
-    background: rgba(255, 255, 255, 0.06);
+    background: #1f1f1f;
 }
 
 .tactic-memo-input::placeholder {
@@ -264,11 +271,53 @@ body {
     padding: 20px;
 }
 
+/* Non-edit mode: connected with wonder-config-panel */
+body:not(.tactic-edit-mode) .party-slots-wrapper {
+    border-radius: 12px 12px 0px 0px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
 .party-slots-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 16px;
     margin-bottom: 0px;
+}
+
+/* In view mode, use flexbox for right-aligned wrapping */
+body:not(.tactic-edit-mode) .party-slots-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 16px;
+}
+
+body:not(.tactic-edit-mode) .party-slots-container > .slot-card,
+body:not(.tactic-edit-mode) .party-slots-container > .wonder-in-party {
+    flex: 0 0 auto;
+    min-width: 200px;
+    max-width: 280px;
+}
+
+/* Wonder slot when moved into party container (view mode) */
+.wonder-in-party.slot-card {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: none !important;
+    padding: 0 !important;
+    grid-template-columns: 1fr !important;
+}
+
+.wonder-in-party .ws-header {
+    padding: 12px;
+}
+
+.wonder-in-party .ws-details {
+    padding: 0 12px 0px 12px;
+}
+
+/* Hide empty slots in view mode */
+body:not(.tactic-edit-mode) .slot-card.empty {
+    display: none !important;
 }
 
 .slot-card {
@@ -296,12 +345,12 @@ body {
 }
 
 /* Character color tint on slot card */
-.slot-card.active[style*="--slot-char-color"] {
+.slot-card.has-char-color {
     position: relative;
     overflow: hidden;
 }
 
-.slot-card.active[style*="--slot-char-color"]::before {
+.slot-card.has-char-color::before {
     content: "";
     position: absolute;
     inset: 0;
@@ -312,7 +361,7 @@ body {
     z-index: 0;
 }
 
-.slot-card.active[style*="--slot-char-color"] > * {
+.slot-card.has-char-color > * {
     position: relative;
     z-index: 1;
 }
@@ -336,25 +385,22 @@ body {
     gap: 8px;
 }
 
-.slot-header-right {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.order-label {
-    font-size: 11px;
-    opacity: 0.7;
-    text-transform: none;
-    font-weight: 500;
-}
-
-.slot-header .slot-order-select {
-    width: auto;
-    min-width: 32px;
-    height: 20px;
-    padding: 2px 6px;
+/* Consistent styling for order/ritual/mod selects in ritual-mod-wrapper */
+.ritual-mod-wrapper .slot-option-group .styled-select {
+    width: 100%;
+    height: 28px;
+    padding: 4px 8px;
     font-size: 12px;
+}
+
+/* Slot options grid */
+.slot-options-grid {
+    margin-top: 12px;
+}
+
+/* Hide only ritual-mod-wrapper (order/ritual/mod dropdowns) in non-edit mode, keep revelation visible */
+body:not(.tactic-edit-mode) .ritual-mod-wrapper {
+    display: none !important;
 }
 
 .slot-content {
@@ -374,7 +420,7 @@ body {
 .slot-char-info {
     display: flex;
     gap: 12px;
-    margin-bottom: 15px;
+    margin-bottom: 0px;
 }
 
 .slot-char-img {
@@ -414,6 +460,25 @@ body {
     width: 16px;
     height: 16px;
     object-fit: contain;
+}
+
+/* Order image in slot-char-info (shown only in non-edit mode) */
+.slot-char-info {
+    position: relative;
+}
+
+.order-img {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 32px;
+    height: auto;
+    opacity: 0.9;
+}
+
+/* Hide order image in edit mode */
+.tactic-edit-mode .order-img {
+    display: none;
 }
 
 /* Dropdowns in Slot */
@@ -581,7 +646,7 @@ body {
     width: 100%;
     padding: 6px 8px;
     border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 0px solid rgba(255, 255, 255, 0.2);
     background: rgba(0, 0, 0, 0.3);
     color: #fff;
     display: flex;
@@ -747,7 +812,13 @@ body {
     background: var(--card-background);
     border-radius: 12px;
     padding: 20px;
-    margin-bottom: 20px;
+    margin-top: 16px;
+}
+
+/* Non-edit mode: connected with party-slots-wrapper */
+body:not(.tactic-edit-mode) .wonder-config-panel {
+    border-radius: 0px 0px 12px 12px;
+    margin-top: 0;
 }
 
 .roster-container.expanded {
@@ -1409,11 +1480,16 @@ body:not(.tactic-edit-mode) .ritual-mod-wrapper {
     opacity: 0.3;
 }
 
-/* Wonder Config Panel - 4 column grid (Wonder smaller + 3 Personas) */
+/* Wonder Config Panel - 4 column grid (edit mode), 3 column (view mode) */
 .wonder-personas-grid {
     display: grid;
-    grid-template-columns: minmax(140px, 0.6fr) repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 16px;
+}
+
+/* In view mode, Wonder slot moves out so grid becomes 3 columns */
+body:not(.tactic-edit-mode) .wonder-personas-grid {
+    grid-template-columns: repeat(3, 1fr);
 }
 
 @media (max-width: 1200px) {
@@ -1430,8 +1506,8 @@ body:not(.tactic-edit-mode) .ritual-mod-wrapper {
 
 /* Wonder Persona Card - 2 column grid layout */
 .wonder-persona-card {
-    background: rgba(255, 255, 255, 0.0);
-    border: 1px solid var(--border-color);
+    background: rgba(255, 255, 255, 0.09);
+    border: 0px solid var(--border-color);
     border-radius: 8px;
     overflow: visible;
     transition: all 0.2s;
@@ -1447,7 +1523,7 @@ body:not(.tactic-edit-mode) .ritual-mod-wrapper {
 
 /* Column 1: Card + Name */
 .wp-header {
-    padding: 12px;
+    padding: 10px 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1455,6 +1531,7 @@ body:not(.tactic-edit-mode) .ritual-mod-wrapper {
     cursor: pointer;
     border-right: 1px solid rgba(255, 255, 255, 0.05);
     background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px 0 0 8px;
 }
 
 .wp-header:hover {
@@ -1463,14 +1540,14 @@ body:not(.tactic-edit-mode) .ritual-mod-wrapper {
 
 /* Card wrapper - 90px same as modal */
 .wp-img-wrapper {
-    width: 80px;
+    width: 64px;
     flex-shrink: 0;
 }
 
 /* card uses width: 100% from base, fills the 90px wrapper */
 
 .empty-wp {
-    width: 90px;
+    width: 64px;
     aspect-ratio: 1/1.67;
     border-radius: 10px;
     background: repeating-linear-gradient(45deg,
@@ -1517,7 +1594,7 @@ body:not(.tactic-edit-mode) .ritual-mod-wrapper {
 
 /* Column 2: Skills + Memo */
 .wp-details {
-    padding: 12px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -1551,6 +1628,7 @@ body:not(.tactic-edit-mode) .ritual-mod-wrapper {
 }
 
 .wp-memo-input {
+    display: none;
     margin-top: 8px;
     width: 100%;
     background: rgba(0, 0, 0, 0.2);
@@ -1579,54 +1657,70 @@ body:not(.tactic-edit-mode) .ritual-mod-wrapper {
 }
 
 .ws-header {
-    padding: 10px;
-    background: rgba(0, 0, 0, 0.2);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 12px;
+    background: rgb(0, 0, 0, 0.2);
+    border-radius: 8px 8px 0 0;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
+/* ws-char-info - same style as slot-char-info */
 .ws-char-info {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-    text-align: center;
+    gap: 12px;
+    margin-bottom: 0px;
+    flex: 1;
+}
+
+/* Order image in Wonder slot - position relative to ws-header */
+.ws-header {
+    position: relative;
+}
+
+.ws-header .order-img {
+    position: absolute;
+    right: 12px;
+    top: 12px;
 }
 
 .ws-char-img {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
+    width: 42px;
+    height: 48px;
+    border-radius: 8px;
     object-fit: cover;
-    border: 2px solid #d11f1f;
+    background: rgba(0, 0, 0, 0.3);
 }
 
 .ws-char-details {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 2px;
+    overflow: visible;
 }
 
 .ws-char-name {
-    font-weight: 600;
-    font-size: 0.85rem;
-    color: #fff;
+    font-weight: 700;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: flex;
+    align-items: center;
 }
 
 .ws-char-details .slot-char-sub {
+    font-size: 11px;
+    opacity: 0.7;
     display: flex;
     align-items: center;
     gap: 4px;
-    font-size: 0.7rem;
-    color: rgba(255, 255, 255, 0.7);
+    margin-top: 4px;
 }
 
 .ws-char-details .slot-char-sub .meta-icon {
-    width: 12px;
-    height: 12px;
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
 }
 
 .ws-details {
@@ -1643,6 +1737,11 @@ body:not(.tactic-edit-mode) .ritual-mod-wrapper {
     align-items: center;
     justify-content: space-between;
     gap: 6px;
+}
+
+/* Hide ws-order in non-edit mode */
+body:not(.tactic-edit-mode) .ws-order {
+    display: none !important;
 }
 
 .ws-order .order-label {
@@ -1899,7 +1998,7 @@ body:not(.tactic-edit-mode) .ritual-mod-wrapper {
     min-height: 20px;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 0px;
 }
 
 /* Action Item Styles */
@@ -1914,7 +2013,6 @@ body:not(.tactic-edit-mode) .ritual-mod-wrapper {
 /* ==========================================================================
    Non-Edit Mode Restrictions (Global Party Settings)
    ========================================================================== */
-body:not(.tactic-edit-mode) .slot-order-select,
 body:not(.tactic-edit-mode) .ws-order-select,
 body:not(.tactic-edit-mode) .styled-select,
 body:not(.tactic-edit-mode) .revelation-button,
@@ -1970,5 +2068,204 @@ body:not(.tactic-edit-mode) .wp-memo-input:placeholder-shown {
 
 /* Also hide skill inputs in view mode if they're empty */
 body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
+    display: none;
+}
+
+/* ==========================================================================
+   Critical Card Accordion (Simplified)
+   ========================================================================== */
+
+.critical-card-accordion {
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+/* Header: [toggle] [total] */
+.crit-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 10px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.03);
+    transition: background 0.15s;
+}
+
+.crit-header:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.crit-toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Caret: points right, rotates 90° clockwise when open */
+.crit-caret {
+    color: rgba(255, 255, 255, 0.4);
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+}
+
+.crit-caret.open {
+    transform: rotate(90deg);
+}
+
+.crit-total {
+    font-size: 13px;
+    font-weight: 700;
+    color: #ff6b6b;
+}
+
+/* Body: hidden by default, shown when .open */
+.crit-body {
+    display: none;
+    padding: 8px;
+    background: rgba(0, 0, 0, 0.15);
+    max-height: 280px;
+    overflow-y: auto;
+}
+
+.crit-body.open {
+    display: block;
+}
+
+/* Section: Buff / Self */
+.crit-section {
+    margin-bottom: 8px;
+}
+
+.crit-section:last-child {
+    margin-bottom: 0;
+}
+
+.crit-section-title {
+    font-size: 10px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    margin-bottom: 6px;
+    padding-bottom: 3px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Row: [check] [icon] [source] [name] [select?] [value] */
+.crit-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 6px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 4px;
+    font-size: 11px;
+    margin-bottom: 3px;
+    transition: background 0.15s;
+}
+
+.crit-row:last-child {
+    margin-bottom: 0;
+}
+
+.crit-row:hover {
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.crit-row.checked {
+    background: rgba(209, 31, 31, 0.12);
+}
+
+/* Check icon */
+.crit-check {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    cursor: pointer;
+    flex-shrink: 0;
+    opacity: 0.8;
+}
+
+.crit-check:hover {
+    opacity: 1;
+}
+
+/* Skill icon */
+.crit-icon {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    flex-shrink: 0;
+    border-radius: 3px;
+}
+
+span.crit-icon {
+    display: inline-block;
+}
+
+/* Source label */
+.crit-source {
+    font-size: 9px;
+    color: rgba(255, 255, 255, 0.45);
+    flex-shrink: 0;
+    min-width: 36px;
+    max-width: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Skill name */
+.crit-name {
+    flex: 1;
+    min-width: 0;
+    color: rgba(255, 255, 255, 0.85);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Options dropdown */
+.crit-select {
+    padding: 2px 4px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 3px;
+    color: #fff;
+    font-size: 10px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.crit-select:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+/* Value */
+.crit-value {
+    font-weight: 600;
+    color: #ff6b6b;
+    flex-shrink: 0;
+    min-width: 32px;
+    text-align: right;
+    font-size: 11px;
+}
+
+/* Empty state */
+.crit-empty {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.25);
+    text-align: center;
+    padding: 8px;
+}
+
+/* Hide critical card in non-edit mode */
+body:not(.tactic-edit-mode) .critical-card-accordion {
     display: none;
 }

@@ -23,7 +23,7 @@
 
 .tactic-table th,
 .tactic-table td {
-    padding: 12px;
+    padding: 12px 8px;
     vertical-align: top;
     /* Align top for better look with different content heights */
     box-sizing: border-box;
@@ -36,20 +36,9 @@
     /* Vertical separator */
 }
 
-/* Sticky Header Row */
+/* Hide header row - character headers are now in each cell */
 .tactic-table thead {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-
-.tactic-table thead tr {
-    background: rgba(0, 0, 0, 0.95);
-}
-
-.tactic-table thead th {
-    background: rgba(20, 20, 20, 0.98);
-    backdrop-filter: blur(4px);
+    display: none;
 }
 
 .tactic-table th:last-child {
@@ -81,8 +70,85 @@
     color: var(--text-primary);
 }
 
+/* Cell Character Header - replaces sticky header */
+.cell-char-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 8px;
+    margin: -12px -8px 8px -8px;
+    background: rgba(0, 0, 0, 0.3);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.cell-char-img {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.cell-char-name {
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Auto-action prompt in cell header */
+.auto-action-prompt {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-left: auto;
+    padding-left: 8px;
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.auto-action-prompt .prompt-text {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.7);
+    white-space: nowrap;
+}
+
+.auto-action-prompt .prompt-buttons {
+    display: flex;
+    gap: 4px;
+}
+
+.auto-action-prompt .btn-prompt-yes,
+.auto-action-prompt .btn-prompt-no {
+    padding: 2px 8px;
+    font-size: 0.65rem;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.auto-action-prompt .btn-prompt-yes {
+    background: var(--accent-color, #8b5cf6);
+    color: #fff;
+}
+
+.auto-action-prompt .btn-prompt-yes:hover {
+    background: var(--accent-hover, #7c3aed);
+}
+
+.auto-action-prompt .btn-prompt-no {
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.auto-action-prompt .btn-prompt-no:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
 .col-turn {
-    width: 60px;
+    width: 48px;
     /* Fixed width for turn column */
     text-align: center;
     background: rgba(255, 255, 255, 0.02);
@@ -155,7 +221,7 @@ td.col-turn {
 .action-list {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 0px;
     margin-bottom: 8px;
 }
 
@@ -197,7 +263,8 @@ body:not(.tactic-edit-mode) .turn-row {
 
 .action-item {
     padding: 3px 10px 3px 4px;
-    background: linear-gradient(135deg, rgba(40, 40, 40, 0.9), rgba(30, 30, 30, 0.95));
+    background: #222;
+    /* background: linear-gradient(135deg, rgba(40, 40, 40, 0.9), rgba(30, 30, 30, 0.95));*/
     border: 0px solid rgba(255, 255, 255, 0.15);
     border-radius: 0px;
     cursor: pointer;
@@ -205,7 +272,7 @@ body:not(.tactic-edit-mode) .turn-row {
     flex-direction: column;
     gap: 0px;
     transition: all 0.2s;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
     position: relative;
     overflow: visible;
 }
@@ -238,7 +305,7 @@ body:not(.tactic-edit-mode) .turn-row {
     gap: 8px;
     width: 100%;
     min-width: 0;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .action-name {
@@ -371,7 +438,19 @@ body:not(.tactic-edit-mode) .turn-row {
     height: 12px;
     opacity: 0.5;
     flex-shrink: 0;
-    transition: transform 0.2s;
+    transition: transform 0.2s, opacity 0.15s;
+}
+
+/* Hide arrows by default in action items, show on hover */
+.tactic-edit-mode .action-item .custom-select-arrow {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+}
+
+.tactic-edit-mode .action-item:hover .custom-select-arrow {
+    opacity: 0.5;
+    width: 12px;
 }
 
 .custom-select-options.show~.custom-select-trigger .custom-select-arrow {
@@ -553,6 +632,8 @@ body:not(.tactic-edit-mode) .custom-select-trigger {
 .action-memo-container {
     margin-top: 4px;
     padding-left: 26px;
+    word-wrap: break-word;
+    white-space: normal;
 }
 
 /* Hidden class for toggleable memo */
@@ -572,6 +653,13 @@ body:not(.tactic-edit-mode) .custom-select-trigger {
     outline: none;
     box-sizing: border-box;
     transition: border-color 0.15s, background 0.15s;
+    resize: none;
+    overflow: hidden;
+    min-height: 20px;
+    font-family: inherit;
+    line-height: 1.4;
+    word-wrap: break-word;
+    white-space: pre-wrap;
 }
 
 .action-memo-inline:focus {
@@ -705,8 +793,8 @@ body:not(.tactic-edit-mode) .custom-select-trigger {
     display: flex;
     align-items: center;
     gap: 4px;
-    flex: 0 0 140px;
-    width: 140px;
+    flex: 0 0 120px;
+    width: 120px;
 }
 
 .actor-persona-wrapper .actor-dropdown {
@@ -722,11 +810,11 @@ body:not(.tactic-edit-mode) .custom-select-trigger {
     background: rgba(0, 0, 0, 0.3);
 }
 
-/* When has persona, actor dropdown shrinks to make room for persona */
+/* When has persona (Wonder), actor dropdown shrinks to make room for persona */
 .actor-persona-wrapper.has-persona .actor-dropdown {
-    flex: 0 0 100px;
-    width: 100px;
-    min-width: 100px;
+    flex: 0 0 80px;
+    width: 80px;
+    min-width: 80px;
 }
 
 /* Persona dropdown - hidden by default, visible when has-persona */
@@ -752,6 +840,22 @@ body:not(.tactic-edit-mode) .custom-select-trigger {
     min-width: 0;
 }
 
+/* Action dropdown skill icons (element icons) */
+.action-item .action-dropdown .custom-select-icon {
+    width: 16px;
+    height: 16px;
+    border-radius: 2px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.action-item .action-dropdown .custom-option-icon {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    border-radius: 2px;
+}
+
 /* ==========================================================================
    Action Item Drag & Drop
    ========================================================================== */
@@ -769,32 +873,33 @@ body:not(.tactic-edit-mode) .custom-select-trigger {
     flex-direction: row;
     align-items: stretch;
     min-width: 0;
-    overflow: hidden;
+    overflow: visible;
 }
 
 /* Drag Handle - left side */
 .action-drag-handle {
     flex-shrink: 0;
-    width: 16px;
+    width: 0;
     min-height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: grab;
-    color: rgba(255, 255, 255, 0.25);
+    color: rgba(255, 255, 255, 0);
     background: rgba(255, 255, 255, 0.00);
     border-right: 1px solid rgba(255, 255, 255, 0.00);
     transition: all 0.15s ease;
+    overflow: hidden;
 }
 
+/* Show drag handle on hover in edit mode */
 .tactic-edit-mode .action-item:hover .action-drag-handle {
+    width: 16px;
     color: rgba(255, 255, 255, 0.5);
-    /* background: rgba(255, 255, 255, 0.05); */
 }
 
 .action-drag-handle:hover {
     color: rgba(255, 255, 255, 0.8) !important;
-    /* background: rgba(255, 255, 255, 0.1) !important; */
 }
 
 .action-drag-handle:active {

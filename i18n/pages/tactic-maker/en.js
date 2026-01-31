@@ -93,5 +93,10 @@ export default {
     // Tactic Memo
     tacticMemoPlaceholder: "Enter a description for the entire tactic...",
     // Note Action
-    noteAction: "Note"
+    noteAction: "Note",
+    // Critical Card
+    criticalRate: "Critical Rate",
+    criticalBuff: "Buff",
+    criticalSelf: "Self",
+    criticalNoItems: "No applicable items"
 };

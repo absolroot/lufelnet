@@ -119,5 +119,10 @@ export default {
     // Tactic Memo
     tacticMemoPlaceholder: "전체 택틱에 대한 설명을 입력하세요...",
     // Note Action
-    noteAction: "메모"
+    noteAction: "메모",
+    // Critical Card
+    criticalRate: "크리티컬 확률",
+    criticalBuff: "버프",
+    criticalSelf: "자신",
+    criticalNoItems: "해당 없음"
 };

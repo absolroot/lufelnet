@@ -190,6 +190,10 @@ export class WonderUI extends EventEmitter {
             orderOptions.push(n);
         }
 
+        // Order image for non-edit mode
+        const orderNum = currentOrder !== '-' ? String(currentOrder).padStart(2, '0') : '';
+        const orderImgSrc = orderNum ? `${this.baseUrl}/assets/img/ui/num${orderNum}.png` : '';
+
         return `
             <div class="wonder-persona-card wonder-slot-card" id="wonderSlotInGrid">
                 <div class="ws-header">
@@ -200,6 +204,7 @@ export class WonderUI extends EventEmitter {
                             ${slotCharSub}
                         </div>
                     </div>
+                    ${orderImgSrc ? `<img class="order-img" src="${orderImgSrc}" alt="${window.I18nService ? window.I18nService.t('orderLabel') : '순서'} ${currentOrder}">` : ''}
                 </div>
                 <div class="ws-details">
                     <div class="ws-order">

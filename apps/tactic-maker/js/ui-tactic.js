@@ -19,6 +19,9 @@ export class TacticUI {
         // Cache sorted party
         this.sortedChars = [];
 
+        // Track loaded skill scripts
+        this.loadedSkillScripts = new Set();
+
         // Subscribe to store changes
         this.store.subscribe((event, data) => this.handleStoreUpdate(event, data));
 
@@ -28,7 +31,7 @@ export class TacticUI {
             this.store.addTurn();
         });
 
-        const applyEditMode = (enabled) => {
+        const applyEditMode = (enabled, skipRender = false) => {
             document.body.classList.toggle('tactic-edit-mode', !!enabled);
 
             if (this.editModeToggle) {
@@ -39,7 +42,12 @@ export class TacticUI {
                 this.editModeBtn.setAttribute('aria-pressed', enabled ? 'true' : 'false');
             }
 
-            this.renderTurns();
+            if (!skipRender) {
+                this.renderTurns();
+            }
+
+            // Dispatch custom event for other modules to react
+            document.dispatchEvent(new CustomEvent('editModeChange', { detail: { enabled } }));
         };
 
         this.editModeToggle?.addEventListener('change', (e) => {
@@ -51,10 +59,14 @@ export class TacticUI {
             applyEditMode(!this.isEditMode());
         });
 
-        // Initial state (default: edit mode ON)
-        applyEditMode(true);
-        this.renderHeaders();
-        this.renderTurns();
+        // Initial state (default: edit mode ON) - skip render until skill data is loaded
+        applyEditMode(true, true);
+
+        // Load skill data then render
+        this.loadPartySkillData().then(() => {
+            this.renderHeaders();
+            this.renderTurns();
+        });
 
         // Global click listener for custom dropdowns
         document.addEventListener('click', (e) => {
@@ -97,11 +109,66 @@ export class TacticUI {
 
     handleStoreUpdate(event, data) {
         if (['partyChange', 'fullReload', 'elucidatorChange', 'wonderChange'].includes(event)) {
-            this.renderHeaders();
-            this.renderTurns();
+            this.loadPartySkillData().then(() => {
+                this.renderHeaders();
+                this.renderTurns();
+            });
         } else if (event === 'turnsChange') {
             this.renderHeaders(); // Re-render headers to update auto-action prompt state
             this.renderTurns();
+        }
+    }
+
+    /**
+     * Load skill data for all party members
+     */
+    async loadPartySkillData() {
+        const party = this.store.state.party || [];
+        const promises = [];
+
+        for (const member of party) {
+            if (member && member.name) {
+                promises.push(this.loadSkillData(member.name));
+            }
+        }
+
+        await Promise.all(promises);
+    }
+
+    /**
+     * Load skill data for a specific character
+     */
+    async loadSkillData(charName) {
+        if (!charName || charName === '원더') return;
+
+        // Skip if already loaded
+        if (this.loadedSkillScripts.has(charName)) return;
+        if (window.characterSkillsData?.[charName]) {
+            this.loadedSkillScripts.add(charName);
+            return;
+        }
+
+        // Initialize global object
+        window.characterSkillsData = window.characterSkillsData || {};
+
+        try {
+            const scriptUrl = `${this.baseUrl}/data/characters/${encodeURIComponent(charName)}/skill.js`;
+
+            return new Promise((resolve, reject) => {
+                const script = document.createElement('script');
+                script.src = scriptUrl;
+                script.onload = () => {
+                    this.loadedSkillScripts.add(charName);
+                    resolve();
+                };
+                script.onerror = () => {
+                    console.warn(`[TacticUI] Failed to load skill data for: ${charName}`);
+                    resolve(); // Don't reject, just warn
+                };
+                document.head.appendChild(script);
+            });
+        } catch (err) {
+            console.warn(`[TacticUI] Error loading skill data for: ${charName}`, err);
         }
     }
 
@@ -114,17 +181,17 @@ export class TacticUI {
 
     getCharacterDisplayName(charKey, charData) {
         const lang = this.getCurrentLang();
-        // KR: use the character's Korean name (charData.name) or fallback to key
+        // KR: use charKey (short name like "렌", "안") - same as slot-name-text
         // EN: use CODENAME (charData.codename) or name_en
         // JP: use name_jp or fallback
         if (lang === 'kr') {
-            return charData.name || charKey;
+            return charKey;
         } else if (lang === 'en') {
             return charData.codename || charData.name_en || charData.name || charKey;
         } else if (lang === 'jp') {
             return charData.name_jp || charData.name || charKey;
         }
-        return charData.name || charKey;
+        return charKey;
     }
 
     getWonderDisplayName() {
@@ -200,11 +267,15 @@ export class TacticUI {
         // Map Korean values to localized display
         const valueToIndex = {
             '스킬1': 0, '스킬2': 1, '스킬3': 2,
-            'HIGHLIGHT': 3, 'Theurgia': 4, '총격': 5,
-            '근접': 6, '방어': 7, 'ONE MORE': 9, '아이템': 10
+            'HIGHLIGHT': 3, 'HIGHLIGHT2': 3, 'Theurgia': 4, '테우르기아': 4, '총격': 5,
+            '근접': 6, '방어': 7, '특수 스킬': 8, 'ONE MORE': 9, '아이템': 10
         };
 
         if (valueToIndex[actionName] !== undefined) {
+            // Special handling for HIGHLIGHT2 (J&C's second highlight)
+            if (actionName === 'HIGHLIGHT2') {
+                return `${list[3]} 2`;
+            }
             return list[valueToIndex[actionName]];
         }
 
@@ -231,89 +302,26 @@ export class TacticUI {
         const sortedChars = this.getSortedParty();
         this.sortedChars = sortedChars;
 
-        // Clear existing headers (keep first "Turn" column)
-        while (this.tableHeader.children.length > 1) {
-            this.tableHeader.removeChild(this.tableHeader.lastChild);
+        // Hide the header row completely - character headers are now in each cell
+        if (this.tableHeader) {
+            this.tableHeader.style.display = 'none';
         }
+    }
 
-        // Add character columns
-        sortedChars.forEach(char => {
-            const th = document.createElement('th');
-            th.className = 'col-character';
-            th.dataset.order = char.order;
-
-            // Character thumbnail
-            const imgPath = char.type === 'wonder'
-                ? `${this.baseUrl}/assets/img/tier/원더.webp`
-                : `${this.baseUrl}/assets/img/tier/${char.name}.webp`;
-
-            const headerContent = document.createElement('div');
-            headerContent.className = 'header-char-content';
-            headerContent.innerHTML = `
-                <div class="header-char">
-                    <img src="${imgPath}" alt="${char.displayName}"
-                         onerror="this.style.display='none'"
-                         class="header-char-img">
-                    <span class="header-char-name">${char.order}. ${char.displayName}</span>
-                </div>
-            `;
-            th.appendChild(headerContent);
-
-            // Check if we should show the Auto-Action Prompt
-            const autoPromptEnabled = this.settingsUI ? this.settingsUI.getAutoActionPrompt() : true;
-
-            // Only show if:
-            // 1. Setting is ON
-            // 2. Character is NOT Wonder
-            // 3. The column has NO actions
-            // 4. A default pattern is available for this character
-            if (autoPromptEnabled && char.type !== 'wonder') {
-                const colKey = String(char.order);
-                let hasActions = false;
-                for (const turn of this.store.state.turns) {
-                    if (turn.columns[colKey] && turn.columns[colKey].length > 0) {
-                        hasActions = true;
-                        break;
-                    }
-                }
-
-                if (!hasActions && this.store.hasDefaultPattern(colKey)) {
-                    const promptDiv = document.createElement('div');
-                    promptDiv.className = 'auto-action-prompt';
-                    promptDiv.style.marginTop = '8px';
-                    promptDiv.style.display = 'flex';
-                    promptDiv.style.flexDirection = 'column';
-                    promptDiv.style.gap = '4px';
-                    promptDiv.style.alignItems = 'center';
-
-                    const promptText = this.getActionPromptText();
-
-                    promptDiv.innerHTML = `
-                        <span style="font-size: 0.75rem; color: #aaa; font-weight: normal; white-space: nowrap;">${promptText}</span>
-                        <div style="display: flex; gap: 6px;">
-                            <button type="button" class="btn-prompt-yes" style="padding: 2px 8px; font-size: 0.75rem; border: 1px solid #4ecdc4; background: rgba(78, 205, 196, 0.2); color: #fff; border-radius: 4px; cursor: pointer;">${window.I18nService ? window.I18nService.t('yes') : 'Yes'}</button>
-                            <button type="button" class="btn-prompt-no" style="padding: 2px 8px; font-size: 0.75rem; border: 1px solid #ff6b6b; background: rgba(255, 107, 107, 0.2); color: #fff; border-radius: 4px; cursor: pointer;">${window.I18nService ? window.I18nService.t('no') : 'No'}</button>
-                        </div>
-                    `;
-
-                    // Bind events
-                    const btnYes = promptDiv.querySelector('.btn-prompt-yes');
-                    const btnNo = promptDiv.querySelector('.btn-prompt-no');
-
-                    btnYes.addEventListener('click', () => {
-                        this.store.applyDefaultPattern(colKey);
-                    });
-
-                    btnNo.addEventListener('click', () => {
-                        promptDiv.remove();
-                    });
-
-                    th.appendChild(promptDiv);
-                }
-            }
-
-            this.tableHeader.appendChild(th);
-        });
+    // Helper to convert hex color to rgba
+    hexToRgba(hex, alpha = 0.15) {
+        if (!hex) return 'transparent';
+        const raw = String(hex).trim();
+        if (/^#([0-9a-f]{3}){1,2}$/i.test(raw)) {
+            const hexVal = raw.slice(1);
+            const full = hexVal.length === 3 ? hexVal.split('').map(c => c + c).join('') : hexVal;
+            const num = parseInt(full, 16);
+            const r = (num >> 16) & 255;
+            const g = (num >> 8) & 255;
+            const b = num & 255;
+            return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+        }
+        return 'transparent';
     }
 
     renderTurns() {
@@ -336,6 +344,14 @@ export class TacticUI {
             this.tableBody.appendChild(tr);
             return;
         }
+
+        // Update sortedChars with character data for color
+        sortedChars.forEach(char => {
+            const charData = char.type === 'wonder'
+                ? (window.characterData || {})['원더'] || {}
+                : (window.characterData || {})[char.name] || {};
+            char.color = charData.color || null;
+        });
 
         const getT = (k, f) => (window.I18nService && window.I18nService.t ? window.I18nService.t(k, f) : (f || k));
 
@@ -403,6 +419,83 @@ export class TacticUI {
                 td.className = 'tactic-cell';
                 td.dataset.turnIndex = turnIdx;
                 td.dataset.columnKey = colKey;
+
+                // Get character color for cell header
+                const charData = char.type === 'wonder'
+                    ? (window.characterData || {})['원더'] || {}
+                    : (window.characterData || {})[char.name] || {};
+                const charColor = charData.color || null;
+
+                // Apply character color as CSS variable
+                if (charColor) {
+                    td.style.setProperty('--cell-char-color', charColor);
+                }
+
+                // Cell header with character info
+                const cellHeader = document.createElement('div');
+                cellHeader.className = 'cell-char-header';
+
+                const imgPath = char.type === 'wonder'
+                    ? `${this.baseUrl}/assets/img/tier/원더.webp`
+                    : `${this.baseUrl}/assets/img/tier/${char.name}.webp`;
+
+                cellHeader.innerHTML = `
+                    <img src="${imgPath}" alt="${char.displayName}"
+                         onerror="this.style.display='none'"
+                         class="cell-char-img">
+                    <span class="cell-char-name">${char.displayName}</span>
+                `;
+
+                // Apply color tint to header
+                if (charColor) {
+                    cellHeader.style.background = this.hexToRgba(charColor, 0.07);
+                    cellHeader.style.borderBottom = `2px solid ${this.hexToRgba(charColor, 0.5)}`;
+                }
+
+                // Auto-Action Prompt (only in first turn, non-wonder characters)
+                if (turnIdx === 0 && char.type !== 'wonder') {
+                    const autoPromptEnabled = this.settingsUI ? this.settingsUI.getAutoActionPrompt() : true;
+
+                    if (autoPromptEnabled) {
+                        let hasActions = false;
+                        for (const t of this.store.state.turns) {
+                            if (t.columns[colKey] && t.columns[colKey].length > 0) {
+                                hasActions = true;
+                                break;
+                            }
+                        }
+
+                        if (!hasActions && this.store.hasDefaultPattern(colKey)) {
+                            const promptDiv = document.createElement('div');
+                            promptDiv.className = 'auto-action-prompt';
+
+                            const promptText = this.getActionPromptText();
+
+                            promptDiv.innerHTML = `
+                                <span class="prompt-text">${promptText}</span>
+                                <div class="prompt-buttons">
+                                    <button type="button" class="btn-prompt-yes">${window.I18nService ? window.I18nService.t('yes') : 'Yes'}</button>
+                                    <button type="button" class="btn-prompt-no">${window.I18nService ? window.I18nService.t('no') : 'No'}</button>
+                                </div>
+                            `;
+
+                            // Bind events
+                            promptDiv.querySelector('.btn-prompt-yes').addEventListener('click', (e) => {
+                                e.stopPropagation();
+                                this.store.applyDefaultPattern(colKey);
+                            });
+
+                            promptDiv.querySelector('.btn-prompt-no').addEventListener('click', (e) => {
+                                e.stopPropagation();
+                                promptDiv.remove();
+                            });
+
+                            cellHeader.appendChild(promptDiv);
+                        }
+                    }
+                }
+
+                td.appendChild(cellHeader);
 
                 // Get actions for this column
                 const actions = turn.columns[colKey] || [];
@@ -726,6 +819,94 @@ export class TacticUI {
         };
     }
 
+    /**
+     * Get J&C skill mapping based on role
+     * J&C has 4 base skills (skill1-4), and each role uses 2 of them as skill1/skill2
+     * Role mappings:
+     * - 구원: skill1, skill2
+     * - 우월: skill1, skill3
+     * - 지배: skill1, skill4
+     * - 굴복: skill2, skill4
+     * - 방위: skill2, skill3
+     * - 반항: skill3, skill4
+     */
+    getJnCSkillMapping(role) {
+        const roleMap = {
+            '구원': ['skill1', 'skill2'],
+            '우월': ['skill1', 'skill3'],
+            '지배': ['skill1', 'skill4'],
+            '굴복': ['skill2', 'skill4'],
+            '방위': ['skill2', 'skill3'],
+            '반항': ['skill3', 'skill4']
+        };
+        return roleMap[role] || ['skill1', 'skill3']; // Default to 우월
+    }
+
+    /**
+     * Get J&C role from party data
+     */
+    getJnCRole(charName) {
+        if (charName !== 'J&C') return null;
+
+        const party = this.store.state.party || [];
+        for (const member of party) {
+            if (member && member.name === 'J&C') {
+                return member.role || '우월';
+            }
+        }
+        return '우월';
+    }
+
+    getSkillElementIcon(charName, skillKey, role = null) {
+        // Get element icon for a character's skill
+        const skillsData = window.characterSkillsData?.[charName];
+        if (!skillsData) return null;
+
+        // J&C special handling
+        if (charName === 'J&C') {
+            const jncRole = role || this.getJnCRole(charName);
+            const skillMapping = this.getJnCSkillMapping(jncRole);
+
+            if (skillKey === 'skill1') {
+                // Use first mapped skill
+                const mappedSkill = skillsData[skillMapping[0]];
+                if (!mappedSkill?.element) return null;
+                return `${this.baseUrl}/assets/img/skill-element/${mappedSkill.element}.png`;
+            } else if (skillKey === 'skill2') {
+                // Use second mapped skill
+                const mappedSkill = skillsData[skillMapping[1]];
+                if (!mappedSkill?.element) return null;
+                return `${this.baseUrl}/assets/img/skill-element/${mappedSkill.element}.png`;
+            } else if (skillKey === 'skill3') {
+                // J&C has no skill3 in action dropdown
+                return null;
+            } else if (skillKey === 'skill_highlight') {
+                // J&C has 2 highlights, return first one's element (same as skill1)
+                const mappedSkill = skillsData[skillMapping[0]];
+                if (!mappedSkill?.element) return null;
+                return `${this.baseUrl}/assets/img/skill-element/${mappedSkill.element}.png`;
+            } else if (skillKey === 'skill_highlight2') {
+                // Second highlight element (same as skill2)
+                const mappedSkill = skillsData[skillMapping[1]];
+                if (!mappedSkill?.element) return null;
+                return `${this.baseUrl}/assets/img/skill-element/${mappedSkill.element}.png`;
+            }
+        }
+
+        const skillData = skillsData[skillKey];
+        if (!skillData?.element) return null;
+
+        return `${this.baseUrl}/assets/img/skill-element/${skillData.element}.png`;
+    }
+
+    getPersonaSkillIcon(skillName) {
+        // Get icon for a persona skill from personaSkillList
+        const skillData = window.personaSkillList?.[skillName];
+        if (!skillData?.icon) return null;
+
+        return `${this.baseUrl}/assets/img/skill-element/${skillData.icon}.png`;
+    }
+
     getActionOptions(char) {
         const options = [];
         options.push({ label: '-', value: '' });
@@ -734,11 +915,11 @@ export class TacticUI {
 
         const lang = DataLoader.getCurrentLang();
 
-        // skillList order: 스킬1, 스킬2, 스킬3, HIGHLIGHT, 테우르기아, 총격, 근접, 방어, 특수 스킬(header), ONE MORE, 아이템
+        // skillList order: 스킬1, 스킬2, 스킬3, HIGHLIGHT, 테우르기아, 총격, 근접, 방어, 공용스킬(header), ONE MORE, 아이템, 특수 스킬(action)
         const skillList = {
-            kr: ['스킬1', '스킬2', '스킬3', 'HIGHLIGHT', '테우르기아', '총격', '근접', '방어', '공용 스킬', 'ONE MORE', '아이템'],
-            en: ['Skill1', 'Skill2', 'Skill3', 'HIGHLIGHT', 'Theurgy', 'Gunshot', 'Melee', 'Defense', 'Common Skill', 'ONE MORE', 'Item'],
-            jp: ['スキル1', 'スキル2', 'スキル3', 'HIGHLIGHT', 'テウルギア', '銃撃', '近接攻撃', 'ガード', '共用スキル', '1more', 'アイテム']
+            kr: ['스킬1', '스킬2', '스킬3', 'HIGHLIGHT', '테우르기아', '총격', '근접', '방어', '공용 스킬', 'ONE MORE', '아이템', '특수 스킬'],
+            en: ['Skill1', 'Skill2', 'Skill3', 'HIGHLIGHT', 'Theurgy', 'Gunshot', 'Melee', 'Defense', 'Common Skills', 'ONE MORE', 'Item', 'Special Skill'],
+            jp: ['スキル1', 'スキル2', 'スキル3', 'HIGHLIGHT', 'テウルギア', '銃撃', '近接攻撃', 'ガード', '共用スキル', '1more', 'アイテム', 'スペシャルスキル']
         };
 
         const list = skillList[lang] || skillList.kr;
@@ -757,14 +938,15 @@ export class TacticUI {
                         const dispSkill = (window.DataLoader && window.DataLoader.getSkillDisplayName)
                             ? window.DataLoader.getSkillDisplayName(skill)
                             : skill;
-                        options.push({ label: dispSkill, value: skill });
+                        const skillIcon = this.getPersonaSkillIcon(skill);
+                        options.push({ label: dispSkill, value: skill, image: skillIcon });
                     });
                 }
             });
 
             // Special actions for Wonder - no Theurgia (Wonder is not persona3)
-            options.push({ label: list[8], isHeader: true }); // 특수 스킬
-            options.push({ label: list[8], value: '특수 스킬' });
+            options.push({ label: list[8], isHeader: true }); // 공용 스킬 header
+            options.push({ label: list[11], value: '특수 스킬' }); // 특수 스킬 action
             options.push({ label: list[3], value: 'HIGHLIGHT' });
             options.push({ label: list[5], value: '총격' });
             options.push({ label: list[6], value: '근접' });
@@ -772,30 +954,56 @@ export class TacticUI {
             options.push({ label: list[9], value: 'ONE MORE' });
             options.push({ label: list[10], value: '아이템' });
         } else {
-            // Character skills - 스킬1, 스킬2, 스킬3
-            options.push({ label: list[0], value: '스킬1' });
-            options.push({ label: list[1], value: '스킬2' });
-            options.push({ label: list[2], value: '스킬3' });
-
-            // Check if character has persona3: true
-            // persona3: show Theurgia, hide HIGHLIGHT
-            // not persona3: show HIGHLIGHT, hide Theurgia
+            // Character skills - 스킬1, 스킬2, 스킬3 with element icons
+            const charName = char.name;
             const charData = (window.characterData || {})[char.name] || {};
             const isPersona3 = charData.persona3 === true;
 
-            // Common actions
-            options.push({ label: list[8], isHeader: true }); // 특수 스킬
-            options.push({ label: list[8], value: '특수 스킬' });
-            if (isPersona3) {
-                options.push({ label: list[4], value: 'Theurgia' });
+            // J&C special handling - has 2 skills based on role, no skill3, and 2 HIGHLIGHTs
+            if (charName === 'J&C') {
+                const skill1Icon = this.getSkillElementIcon(charName, 'skill1');
+                const skill2Icon = this.getSkillElementIcon(charName, 'skill2');
+                const highlight1Icon = this.getSkillElementIcon(charName, 'skill_highlight');
+                const highlight2Icon = this.getSkillElementIcon(charName, 'skill_highlight2');
+
+                options.push({ label: list[0], value: '스킬1', image: skill1Icon });
+                options.push({ label: list[1], value: '스킬2', image: skill2Icon });
+
+                // Common actions
+                options.push({ label: list[8], isHeader: true }); // 공용 스킬 header
+                options.push({ label: list[11], value: '특수 스킬' }); // 특수 스킬 action
+                // J&C has 2 HIGHLIGHTs
+                options.push({ label: `${list[3]} 1`, value: 'HIGHLIGHT', image: highlight1Icon });
+                options.push({ label: `${list[3]} 2`, value: 'HIGHLIGHT2', image: highlight2Icon });
+                options.push({ label: list[5], value: '총격' });
+                options.push({ label: list[6], value: '근접' });
+                options.push({ label: list[7], value: '방어' });
+                options.push({ label: list[9], value: 'ONE MORE' });
+                options.push({ label: list[10], value: '아이템' });
             } else {
-                options.push({ label: list[3], value: 'HIGHLIGHT' });
+                const skill1Icon = this.getSkillElementIcon(charName, 'skill1');
+                const skill2Icon = this.getSkillElementIcon(charName, 'skill2');
+                const skill3Icon = this.getSkillElementIcon(charName, 'skill3');
+                const highlightIcon = this.getSkillElementIcon(charName, 'skill_highlight');
+
+                options.push({ label: list[0], value: '스킬1', image: skill1Icon });
+                options.push({ label: list[1], value: '스킬2', image: skill2Icon });
+                options.push({ label: list[2], value: '스킬3', image: skill3Icon });
+
+                // Common actions
+                options.push({ label: list[8], isHeader: true }); // 공용 스킬 header
+                options.push({ label: list[11], value: '특수 스킬' }); // 특수 스킬 action
+                if (isPersona3) {
+                    options.push({ label: list[4], value: 'Theurgia', image: highlightIcon });
+                } else {
+                    options.push({ label: list[3], value: 'HIGHLIGHT', image: highlightIcon });
+                }
+                options.push({ label: list[5], value: '총격' });
+                options.push({ label: list[6], value: '근접' });
+                options.push({ label: list[7], value: '방어' });
+                options.push({ label: list[9], value: 'ONE MORE' });
+                options.push({ label: list[10], value: '아이템' });
             }
-            options.push({ label: list[5], value: '총격' });
-            options.push({ label: list[6], value: '근접' });
-            options.push({ label: list[7], value: '방어' });
-            options.push({ label: list[9], value: 'ONE MORE' });
-            options.push({ label: list[10], value: '아이템' });
         }
         return options;
     }
@@ -851,12 +1059,19 @@ export class TacticUI {
             }
 
             if (this.isEditMode()) {
-                const memoInput = document.createElement('input');
-                memoInput.type = 'text';
+                const memoInput = document.createElement('textarea');
                 memoInput.className = 'action-memo-inline note-memo-input';
                 memoInput.value = action.memo || '';
                 memoInput.placeholder = window.I18nService ? window.I18nService.t('memoPlaceholder', '메모...') : '메모...';
+                memoInput.rows = 1;
 
+                // Auto-resize textarea
+                const autoResize = () => {
+                    memoInput.style.height = 'auto';
+                    memoInput.style.height = memoInput.scrollHeight + 'px';
+                };
+
+                memoInput.addEventListener('input', autoResize);
                 memoInput.addEventListener('change', (e) => {
                     this.store.updateAction(turnIdx, colKey, actionIdx, {
                         ...action,
@@ -870,6 +1085,9 @@ export class TacticUI {
 
                 memoContainer.appendChild(memoInput);
                 item.appendChild(memoContainer);
+
+                // Initial resize if there's content
+                if (action.memo) setTimeout(autoResize, 0);
             } else if (action.memo) {
                 const memo = document.createElement('div');
                 memo.className = 'action-memo';
@@ -909,15 +1127,21 @@ export class TacticUI {
         }
 
         // Character color tint (if available)
+        // Skip color if action's character matches the column header character
         const actorName = action.character || '';
-        const actorData = (window.characterData && actorName) ? window.characterData[actorName] : null;
-        const actorColor = actorData && actorData.color ? String(actorData.color) : '';
-        if (actorColor) {
-            item.style.setProperty('--actor-color', actorColor);
-            const rgb = this.colorToRgb(actorColor);
-            if (rgb) {
-                item.style.setProperty('--actor-color-tint', `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.18)`);
-                item.style.setProperty('--actor-color-border', `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.55)`);
+        const headerCharName = char.type === 'wonder' ? '원더' : (char.name || '');
+        const isSameAsHeader = actorName && actorName === headerCharName;
+
+        if (!isSameAsHeader) {
+            const actorData = (window.characterData && actorName) ? window.characterData[actorName] : null;
+            const actorColor = actorData && actorData.color ? String(actorData.color) : '';
+            if (actorColor) {
+                item.style.setProperty('--actor-color', actorColor);
+                const rgb = this.colorToRgb(actorColor);
+                if (rgb) {
+                    item.style.setProperty('--actor-color-tint', `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.18)`);
+                    item.style.setProperty('--actor-color-border', `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.55)`);
+                }
             }
         }
 
@@ -1206,13 +1430,20 @@ export class TacticUI {
         }
 
         if (this.isEditMode()) {
-            // Editable input in edit mode
-            const memoInput = document.createElement('input');
-            memoInput.type = 'text';
+            // Editable textarea in edit mode
+            const memoInput = document.createElement('textarea');
             memoInput.className = 'action-memo-inline';
             memoInput.value = action.memo || '';
             memoInput.placeholder = window.I18nService ? window.I18nService.t('memoPlaceholder', '메모...') : '메모...';
+            memoInput.rows = 1;
 
+            // Auto-resize textarea
+            const autoResize = () => {
+                memoInput.style.height = 'auto';
+                memoInput.style.height = memoInput.scrollHeight + 'px';
+            };
+
+            memoInput.addEventListener('input', autoResize);
             memoInput.addEventListener('change', (e) => {
                 this.store.updateAction(turnIdx, colKey, actionIdx, {
                     ...action,
@@ -1226,6 +1457,9 @@ export class TacticUI {
 
             memoContainer.appendChild(memoInput);
             item.appendChild(memoContainer);
+
+            // Initial resize if there's content
+            if (action.memo) setTimeout(autoResize, 0);
         } else if (action.memo) {
             // Read-only display in view mode
             const memo = document.createElement('div');

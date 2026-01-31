@@ -62,8 +62,8 @@ export default {
     action_unique: "固有スキル",
     notSelected: "選択なし",
     settings: "設定",
-    defaultRitual: "デフォルト儀式",
-    defaultModification: "デフォルト改造",
+    defaultRitual: "儀式",
+    defaultModification: "改造",
     autoWonderWeapon: "ワンダー武器自動設定 (反逆/支配)",
     selectPersona: "ペルソナ選択",
     selectRole: "職業選択",
@@ -122,5 +122,10 @@ export default {
     // Tactic Memo
     tacticMemoPlaceholder: "タクティクス全体の説明を入力してください...",
     // Note Action
-    noteAction: "メモ"
+    noteAction: "メモ",
+    // Critical Card
+    criticalRate: "クリ率",
+    criticalBuff: "バフ",
+    criticalSelf: "自分",
+    criticalNoItems: "該当なし"
 };

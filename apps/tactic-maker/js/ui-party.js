@@ -4,6 +4,7 @@
  */
 
 import { DataLoader } from './data-loader.js';
+import { CriticalCardUI } from './ui-critical-card.js';
 
 export class PartyUI {
     constructor(store, wonderUI, settingsUI) {
@@ -18,6 +19,9 @@ export class PartyUI {
 
         // Base URL for assets
         this.baseUrl = window.BASE_URL || '';
+
+        // Critical Card UI instances (per slot)
+        this.criticalCardUIs = {};
 
         // Initial setup
         this.store.subscribe((event, data) => this.handleStoreUpdate(event, data));
@@ -40,8 +44,110 @@ export class PartyUI {
             });
         });
 
+        // Listen for edit mode changes to reorganize slots
+        document.addEventListener('editModeChange', (e) => {
+            this.reorganizeSlotsForViewMode(!e.detail.enabled);
+        });
+
         // Explicitly render initial state to ensure UI is ready
         this.store.state.party.forEach((p, i) => this.renderSlot(i, p));
+    }
+
+    /**
+     * Reorganize slots for view mode (non-edit mode)
+     * In view mode: Wonder slot moves into party-slots-container, sorted by order
+     * Order: 1~n (by order number) / elucidator / slot4 (if visible)
+     */
+    reorganizeSlotsForViewMode(isViewMode) {
+        const partyContainer = this.container; // party-slots-container
+        const wonderGrid = document.querySelector('.wonder-personas-grid');
+        const wonderSlot = document.getElementById('wonderSlotInGrid');
+
+        if (!partyContainer) return;
+
+        if (isViewMode) {
+            // Move Wonder slot directly into party container (not clone)
+            if (wonderSlot && wonderGrid) {
+                // Add slot-card class for consistent styling
+                wonderSlot.classList.add('slot-card', 'wonder-in-party');
+                wonderSlot.dataset.slot = 'wonder';
+
+                // Get Wonder order
+                const wonderOrder = this.store.state.wonder?.order || '-';
+                wonderSlot.dataset.order = wonderOrder !== '-' ? wonderOrder : '99';
+
+                // Move to party container
+                partyContainer.appendChild(wonderSlot);
+            }
+
+            // Now sort all slots by order
+            this.sortSlotsByOrder();
+        } else {
+            // Edit mode: restore original layout
+            if (wonderSlot && wonderGrid) {
+                // Remove slot-card classes
+                wonderSlot.classList.remove('slot-card', 'wonder-in-party');
+                delete wonderSlot.dataset.slot;
+                delete wonderSlot.dataset.order;
+
+                // Move back to wonder grid (as first child)
+                wonderGrid.insertBefore(wonderSlot, wonderGrid.firstChild);
+            }
+
+            // Restore original slot order
+            this.restoreOriginalSlotOrder();
+        }
+    }
+
+    sortSlotsByOrder() {
+        const partyContainer = this.container;
+        if (!partyContainer) return;
+
+        const slots = Array.from(partyContainer.children);
+        const party = this.store.state.party;
+
+        // Assign order data to each slot
+        slots.forEach(slot => {
+            const slotNum = slot.dataset.slot;
+            if (slotNum === 'elucidator') {
+                slot.dataset.order = '100'; // Elucidator goes after ordered slots
+            } else if (slotNum === '4') {
+                slot.dataset.order = '101'; // Slot 4 goes last
+            } else if (slotNum === 'wonder') {
+                // Wonder slot - already has order set
+            } else {
+                const idx = parseInt(slotNum) - 1;
+                const memberOrder = party[idx]?.order;
+                slot.dataset.order = (memberOrder && memberOrder !== '-') ? memberOrder : '99';
+            }
+        });
+
+        // Sort by order
+        slots.sort((a, b) => {
+            const orderA = parseInt(a.dataset.order) || 99;
+            const orderB = parseInt(b.dataset.order) || 99;
+            return orderA - orderB;
+        });
+
+        // Re-append in sorted order
+        slots.forEach(slot => partyContainer.appendChild(slot));
+    }
+
+    restoreOriginalSlotOrder() {
+        const partyContainer = this.container;
+        if (!partyContainer) return;
+
+        // Original order: slot1, slot2, slot3, elucidator, slot4
+        const originalOrder = ['1', '2', '3', 'elucidator', '4'];
+        const slots = Array.from(partyContainer.children);
+
+        slots.sort((a, b) => {
+            const aSlot = a.dataset.slot || '';
+            const bSlot = b.dataset.slot || '';
+            return originalOrder.indexOf(aSlot) - originalOrder.indexOf(bSlot);
+        });
+
+        slots.forEach(slot => partyContainer.appendChild(slot));
     }
 
     handleStoreUpdate(event, data) {
@@ -53,12 +159,50 @@ export class PartyUI {
             // Re-render slot 4 content if visible
             const party = this.store.state.party;
             this.renderSlot(4, party[4]);
+            // Re-sort if in view mode
+            if (!document.body.classList.contains('tactic-edit-mode')) {
+                this.sortSlotsByOrder();
+            }
             return;
         }
 
         if (event === 'partyChange' || event === 'fullReload') {
             const party = this.store.state.party;
             party.forEach((p, i) => this.renderSlot(i, p));
+            // Re-sort if in view mode
+            if (!document.body.classList.contains('tactic-edit-mode')) {
+                // Need to update Wonder slot too
+                this.updateWonderSlotInParty();
+                this.sortSlotsByOrder();
+            }
+        }
+
+        if (event === 'wonderChange') {
+            // Re-sort if in view mode (Wonder order might have changed)
+            if (!document.body.classList.contains('tactic-edit-mode')) {
+                this.updateWonderSlotInParty();
+                this.sortSlotsByOrder();
+            }
+        }
+    }
+
+    updateWonderSlotInParty() {
+        const wonderSlot = document.getElementById('wonderSlotInGrid');
+        if (!wonderSlot || !wonderSlot.classList.contains('wonder-in-party')) return;
+
+        const wonderOrder = this.store.state.wonder?.order || '-';
+        wonderSlot.dataset.order = wonderOrder !== '-' ? wonderOrder : '99';
+
+        // Update the order image
+        const orderNum = wonderOrder !== '-' ? String(wonderOrder).padStart(2, '0') : '';
+        const orderImg = wonderSlot.querySelector('.order-img');
+        if (orderImg) {
+            if (orderNum) {
+                orderImg.src = `${this.baseUrl}/assets/img/ui/num${orderNum}.png`;
+                orderImg.style.display = '';
+            } else {
+                orderImg.style.display = 'none';
+            }
         }
     }
 
@@ -319,15 +463,25 @@ export class PartyUI {
 
         if (!data) {
             slotEl.classList.add('empty');
-            slotEl.classList.remove('active');
+            slotEl.classList.remove('active', 'has-char-color');
             slotEl.style.removeProperty('--slot-char-color');
             slotContent.innerHTML = `<span class="empty-text" data-i18n="dragCharacter">클릭하여 선택</span>`;
             if (slotHeader) {
-                // restore default header label (keep existing i18n span)
+                // Show header and restore default label when empty
+                slotHeader.style.display = '';
                 const labelSpan = slotHeader.querySelector('span')?.outerHTML || '';
                 slotHeader.innerHTML = labelSpan;
             }
             this.updateI18n(slotEl);
+
+            // Remove critical card if exists (inside slot)
+            const existingCard = slotEl.querySelector(`.critical-card-accordion[data-slot-index="${index}"]`);
+            if (existingCard) {
+                existingCard.remove();
+            }
+            if (this.criticalCardUIs[index]) {
+                delete this.criticalCardUIs[index];
+            }
             return;
         }
 
@@ -341,8 +495,10 @@ export class PartyUI {
         const charColor = charInfo.color || null;
         if (charColor) {
             slotEl.style.setProperty('--slot-char-color', charColor);
+            slotEl.classList.add('has-char-color');
         } else {
             slotEl.style.removeProperty('--slot-char-color');
+            slotEl.classList.remove('has-char-color');
         }
 
         const getCurrentLang = () => {
@@ -376,6 +532,18 @@ export class PartyUI {
         // (1) Elucidator has no turn order
         const isElucidator = index === 3;
 
+        // Determine order image number (01, 02, 03, 04)
+        const orderNum = currentOrder !== '-' ? String(currentOrder).padStart(2, '0') : '';
+        const orderImgSrc = orderNum ? `${this.baseUrl}/assets/img/ui/num${orderNum}.png` : '';
+
+        // Determine grid columns for ritual-mod-wrapper
+        let gridCols = '1fr 1fr 1fr'; // Default: order, ritual, mod
+        if (isElucidator || index === 4) {
+            gridCols = '1fr 1fr'; // No order for elucidator
+        } else if (isWonder) {
+            gridCols = '1fr'; // Only order for Wonder
+        }
+
         slotContent.innerHTML = `
             <div class="slot-char-info">
                 <img src="${imgPath}" class="slot-char-img"
@@ -390,7 +558,7 @@ export class PartyUI {
                         ${element ? `<span>${DataLoader.getElementName(element)}</span>` : ''}
                         ${posIcon ? `<img src="${posIcon}" class="meta-icon" title="${DataLoader.getJobName(position)}" onerror="this.style.display='none'">` : ''}
                         ${position ? `<span>${DataLoader.getJobName(position)}</span>` : ''}
-                        
+
                         ${isJandC ? (() => {
                 const activeRole = data.role || '우월';
                 const roleIcon = `${this.baseUrl}/assets/img/character-cards/직업_${activeRole}.png`;
@@ -403,15 +571,25 @@ export class PartyUI {
             })() : ''}
                     </div>
                 </div>
+                ${orderImgSrc && !isElucidator && index !== 4 ? `<img class="order-img" src="${orderImgSrc}" alt="${window.I18nService ? window.I18nService.t('orderLabel') : '순서'} ${currentOrder}">` : ''}
             </div>
 
             ${isJandC ? '' : ''}<!-- Role Selector removed -->
 
-            <!-- Slot Options Grid -->
-            <div class="slot-options-grid" style="display: grid; ">
-                
-                <!-- Row 1: Ritual, Modification -->
-                <div class="ritual-mod-wrapper" style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px;">
+            <!-- Slot Options Grid (hidden for Wonder in edit mode shows only order) -->
+            <div class="slot-options-grid" style="display: grid;">
+
+                <!-- Row 1: Order, Ritual, Modification -->
+                <div class="ritual-mod-wrapper" style="display: grid; grid-template-columns: ${gridCols}; gap: 20px;">
+                     ${isElucidator || index === 4 ? '' : `
+                     <div class="slot-option-group">
+                        <label style="font-size: 11px; opacity: 0.7; margin-bottom: 2px; display: block;">${window.I18nService ? window.I18nService.t('orderLabel') : '순서'}</label>
+                        <select class="styled-select order-select" data-index="${index}" style="width: 100%;">
+                             <!-- Populated by JS -->
+                        </select>
+                     </div>
+                     `}
+                     ${isWonder ? '' : `
                      <div class="slot-option-group">
                         <label style="font-size: 11px; opacity: 0.7; margin-bottom: 2px; display: block;">${window.I18nService ? window.I18nService.t('defaultRitual').replace('기본 ', '') : '의식'}</label>
                         <select class="styled-select ritual-select" data-index="${index}" style="width: 100%;">
@@ -424,39 +602,33 @@ export class PartyUI {
                              <!-- Populated by JS -->
                         </select>
                      </div>
+                     `}
                 </div>
 
-                <!-- Row 2: Revelation OR Wonder Weapon -->
+                <!-- Row 2: Revelation OR Wonder Weapon (hidden for Wonder) -->
+                ${isWonder ? '' : `
                 <div class="slot-option-group special-config-wrapper">
                     <!-- Injected via JS -->
                 </div>
+                `}
             </div>
         `;
 
-        // (5) Move order select to header (except elucidator / slot4)
+        // (5) Hide slot-header when character is selected (active)
         if (slotHeader) {
-            const labelSpan = slotHeader.querySelector('span')?.outerHTML || '';
-            const isOrderless = isElucidator || index === 4;
-            if (isOrderless) {
-                slotHeader.innerHTML = labelSpan;
-            } else {
-                // Limit order options to number of characters with order-able slots
-                const maxOrder = this.store.getOrderableCharacterCount();
-                const orderOptions = [];
-                for (let n = 1; n <= maxOrder; n++) {
-                    orderOptions.push(n);
-                }
+            slotHeader.style.display = 'none';
+        }
 
-                slotHeader.innerHTML = `
-                    ${labelSpan}
-                    <div class="slot-header-right">
-                        <span class="order-label">${window.I18nService ? window.I18nService.t('orderLabel') : '순서'}</span>
-                        <select class="styled-select order-select slot-order-select" data-index="${index}">
-                            <option value="-" ${currentOrder == '-' ? 'selected' : ''}>-</option>
-                            ${orderOptions.map(n => `<option value="${n}" ${currentOrder == n ? 'selected' : ''}>${n}</option>`).join('')}
-                        </select>
-                    </div>
-                `;
+        // (6) Populate order select in ritual-mod-wrapper (except elucidator / slot4)
+        if (!isElucidator && index !== 4) {
+            const orderSelect = slotEl.querySelector('.order-select');
+            if (orderSelect) {
+                const maxOrder = this.store.getOrderableCharacterCount();
+                let orderOptionsHtml = `<option value="-" ${currentOrder == '-' ? 'selected' : ''}>-</option>`;
+                for (let n = 1; n <= maxOrder; n++) {
+                    orderOptionsHtml += `<option value="${n}" ${currentOrder == n ? 'selected' : ''}>${n}</option>`;
+                }
+                orderSelect.innerHTML = orderOptionsHtml;
             }
         }
 
@@ -474,17 +646,23 @@ export class PartyUI {
             }
         }
 
-        // 3. Setup Revelation or Wonder Weapon
+        // 3. Setup Revelation (not for Wonder - Wonder has no revelation/weapon config in slot)
         const specialWrapper = slotEl.querySelector('.special-config-wrapper');
-        if (isWonder) {
-            this.renderWonderWeaponConfig(specialWrapper, data, index);
-        } else {
+        if (specialWrapper && !isWonder) {
             this.renderRevelationConfig(specialWrapper, data, index);
         }
 
         // 4. Bind other slot events
         this.bindSlotEvents(slotEl, data, index);
         this.updateI18n(slotEl);
+
+        // 5. Render Critical Card below slot (except Wonder)
+        if (!isWonder) {
+            // renderCriticalCard is async but we don't need to block
+            this.renderCriticalCard(slotEl, data, index).catch(err => {
+                console.error('[PartyUI] Failed to render critical card:', err);
+            });
+        }
     }
 
     bindSlotEvents(slotEl, data, index) {
@@ -884,6 +1062,54 @@ export class PartyUI {
     updateI18n(element) {
         if (window.I18nService && typeof window.I18nService.updateDOM === 'function') {
             window.I18nService.updateDOM(element);
+        }
+    }
+
+    /**
+     * Render Critical Card accordion inside a slot (at the bottom)
+     */
+    async renderCriticalCard(slotEl, data, index) {
+        // Prevent concurrent renders for the same slot
+        const renderKey = `_criticalRenderPending_${index}`;
+        if (this[renderKey]) return;
+        this[renderKey] = true;
+
+        try {
+            // Remove ALL existing critical cards in this slot (prevent duplicates)
+            slotEl.querySelectorAll('.critical-card-accordion').forEach(card => card.remove());
+
+            // Don't render if no character assigned
+            if (!data || !data.name) {
+                if (this.criticalCardUIs[index]) {
+                    delete this.criticalCardUIs[index];
+                }
+                return;
+            }
+
+            // Ensure critical data is loaded
+            await DataLoader.loadCriticalData();
+
+            // Double-check slot still has this character (might have changed during async wait)
+            const currentData = this.store.state.party[index];
+            if (!currentData || currentData.name !== data.name) {
+                return;
+            }
+
+            // Remove again after async (in case of race)
+            slotEl.querySelectorAll('.critical-card-accordion').forEach(card => card.remove());
+
+            // Create critical card UI instance if not exists
+            if (!this.criticalCardUIs[index]) {
+                this.criticalCardUIs[index] = new CriticalCardUI(this.store, this.baseUrl);
+            }
+
+            const criticalCardUI = this.criticalCardUIs[index];
+            const criticalCardEl = criticalCardUI.render(data, index);
+
+            // Append inside the slot card (at the bottom)
+            slotEl.appendChild(criticalCardEl);
+        } finally {
+            this[renderKey] = false;
         }
     }
 

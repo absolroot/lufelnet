@@ -92,8 +92,9 @@ export class CaptureUI {
         // Store original states
         const wasEditMode = document.body.classList.contains('tactic-edit-mode');
 
-        // Hide edit UI for capture
+        // Hide edit UI for capture and trigger view mode reorganization
         document.body.classList.remove('tactic-edit-mode');
+        document.dispatchEvent(new CustomEvent('editModeChange', { detail: { enabled: false } }));
 
         // Temporarily replace navigation-path text
         const navigationPath = mainWrapper.querySelector('.navigation-path');
@@ -162,6 +163,7 @@ export class CaptureUI {
             const opts = {
                 backgroundColor: bodyBg,
                 pixelRatio: Math.min(3, (window.devicePixelRatio || 1) * 2),
+                skipAutoScale: true,
                 filter: (node) => {
                     try {
                         if (!(node instanceof Element)) return true;
@@ -173,8 +175,25 @@ export class CaptureUI {
                         if (node.classList.contains('turn-actions')) return false;
                         if (node.classList.contains('roster-container')) return false;
                         if (node.classList.contains('auto-action-prompt')) return false;
+                        if (node.classList.contains('custom-select-arrow')) return false;
+                        // Skip hidden images or images that failed to load
+                        if (node.tagName === 'IMG') {
+                            const style = window.getComputedStyle(node);
+                            if (style.display === 'none' || style.visibility === 'hidden') return false;
+                            // Skip images with empty or invalid src
+                            if (!node.src || node.src === '' || node.src === 'about:blank') return false;
+                        }
                     } catch (_) { }
                     return true;
+                },
+                onclone: (clonedDoc) => {
+                    // Remove any broken images in the cloned document
+                    const brokenImages = clonedDoc.querySelectorAll('img');
+                    brokenImages.forEach(img => {
+                        if (!img.complete || img.naturalWidth === 0) {
+                            img.style.display = 'none';
+                        }
+                    });
                 }
             };
 
@@ -227,6 +246,7 @@ export class CaptureUI {
         // Restore edit mode if it was enabled
         if (wasEditMode) {
             document.body.classList.add('tactic-edit-mode');
+            document.dispatchEvent(new CustomEvent('editModeChange', { detail: { enabled: true } }));
         }
 
         // Remove loading overlay after delay

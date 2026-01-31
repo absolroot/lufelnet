@@ -206,3 +206,9 @@ const criticalBuffData = {
     ]
   };
   // ==== END STATIC CRITICAL DATA ====
+
+// Export to window for dynamic loading (tactic-maker)
+if (typeof window !== 'undefined') {
+    window.criticalBuffData = criticalBuffData;
+    window.criticalSelfData = criticalSelfData;
+}

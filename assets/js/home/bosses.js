@@ -194,7 +194,7 @@
       .bosses-mode-name { font-weight:700; grid-column: 1; }
       .bosses-countdown.local { grid-column: 1; justify-self: end; }
       .bosses-mode-detail { font-size:.9rem; opacity:.75; margin-top:10px; grid-column: 1 / -1; }
-      .boss-image { width: 3rem; height: 3rem; object-fit: contain; margin-bottom:8px; }
+      .boss-image { width: 3rem; height: 3rem; object-fit: contain; margin-bottom:0px; }
       .boss-item { padding:12px; background:rgba(255, 255, 255, 0.05); border:1px solid #2a2a2a; border-radius:8px; }
       .boss-row { display:flex; flex-direction:column; gap:8px; }
       .boss-left { display:flex; align-items:center; flex-direction:column;}

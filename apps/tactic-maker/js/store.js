@@ -800,6 +800,11 @@ export class TacticStore {
 
     clearAll() {
         this._saveHistory();
+        // Create initial 6 turns
+        const initialTurns = [];
+        for (let i = 1; i <= 6; i++) {
+            initialTurns.push({ turn: i, columns: {} });
+        }
         this.state = {
             title: '',
             memo: '',
@@ -814,7 +819,7 @@ export class TacticStore {
                     { name: '', skills: ['', '', '', ''], memo: '' }
                 ]
             },
-            turns: []
+            turns: initialTurns
         };
         this.clearLocalStorage();
         this.notify('fullReload', this.state);

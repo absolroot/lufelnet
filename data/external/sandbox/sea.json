@@ -94,7 +94,7 @@
       "10": {
         "affix": [
           {
-            "desc": "When allies besides Wonder deal Almighty damage with a skill or 1 More, the party's final damage is increased by 60% for 2 turns.",
+            "desc": "When allies other than Wonder deal Almighty damage with skills or 1 More attacks, the party's final damage is increased by 60% for 2 turns.",
             "name": "Special Effect",
             "sn": 4515
           }
@@ -158,7 +158,7 @@
               "Fire Damage Taken": 0,
               "Gun Boost": 0,
               "Gun Damage Taken": 0,
-              "HP": 1161828.198,
+              "HP": 1239283.4112,
               "Ice Boost": 0,
               "Ice Damage Taken": 0,
               "Nuclear Boost": 0,
@@ -214,7 +214,7 @@
               "Fire Damage Taken": 0,
               "Gun Boost": 0,
               "Gun Damage Taken": 0,
-              "HP": 1161828.198,
+              "HP": 1239283.4112,
               "Ice Boost": 0,
               "Ice Damage Taken": 0,
               "Nuclear Boost": 0,
@@ -246,7 +246,7 @@
       "11": {
         "affix": [
           {
-            "desc": "When an ally does not deal damage for 1 turn, their final damage is increased by 50%. This effect lasts for 1 turn.",
+            "desc": "When an ally besides Wonder does not deal damage for 1 turn, their final damage is increased by 50%. This effect lasts for 1 turn.",
             "name": "Special Effect",
             "sn": 4572
           }
@@ -553,7 +553,7 @@
               "Fire Damage Taken": 0,
               "Gun Boost": 0,
               "Gun Damage Taken": 0,
-              "HP": 1072497.267,
+              "HP": 1143997.0848,
               "Ice Boost": 0,
               "Ice Damage Taken": 0,
               "Nuclear Boost": 0,
@@ -609,7 +609,7 @@
               "Fire Damage Taken": 0,
               "Gun Boost": 0,
               "Gun Damage Taken": 0,
-              "HP": 1072497.267,
+              "HP": 1143997.0848,
               "Ice Boost": 0,
               "Ice Damage Taken": 0,
               "Nuclear Boost": 0,
@@ -665,7 +665,7 @@
               "Fire Damage Taken": 0,
               "Gun Boost": 0,
               "Gun Damage Taken": 0,
-              "HP": 1033075.215,
+              "HP": 1101946.896,
               "Ice Boost": 0,
               "Ice Damage Taken": 0,
               "Nuclear Boost": 0,
@@ -721,7 +721,7 @@
               "Fire Damage Taken": 0,
               "Gun Boost": 0,
               "Gun Damage Taken": 0,
-              "HP": 1033075.215,
+              "HP": 1101946.896,
               "Ice Boost": 0,
               "Ice Damage Taken": 0,
               "Nuclear Boost": 0,
@@ -1428,7 +1428,7 @@
       "5": {
         "affix": [
           {
-            "desc": "Fire, Ice, Electric, and Wind allies' final damage is increased by 60%.",
+            "desc": "Fire, Ice, Electric, and Wind allies' final damage is increased by 60% (other than Wonder).",
             "name": "Special Effect",
             "sn": 4511
           }
@@ -1631,7 +1631,7 @@
       "6": {
         "affix": [
           {
-            "desc": "Psychokinesis, Nuclear, Bless, and Curse allies' final damage is increased by 60%.",
+            "desc": "Psychokinesis, Nuclear, Bless, and Curse allies' final damage is increased by 60% (other than Wonder).",
             "name": "Special Effect",
             "sn": 4512
           }

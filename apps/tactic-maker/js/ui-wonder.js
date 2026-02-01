@@ -46,9 +46,9 @@ export class WonderUI extends EventEmitter {
     }
 
     /**
-     * Get weapon tooltip text based on current language
+     * Get weapon tooltip text based on current language and mod level
      */
-    getWeaponTooltip(weaponData) {
+    getWeaponTooltip(weaponData, modLevel = 6) {
         if (!weaponData) return '';
         const lang = this.getCurrentLang();
         let effect = '';
@@ -59,8 +59,19 @@ export class WonderUI extends EventEmitter {
         } else {
             effect = weaponData.effect || '';
         }
-        // Escape HTML entities for safe attribute usage
-        return effect.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br>');
+        
+        // Replace 7-split values with the value at modLevel index
+        const sevenSplitReplace = /(\d+(?:\.\d+)?%?)(?:\s*\/\s*(\d+(?:\.\d+)?%?)){6}/g;
+        effect = effect.replace(sevenSplitReplace, (match) => {
+            const parts = match.split('/').map(x => x.trim());
+            return parts[Math.min(Math.max(modLevel, 0), 6)] || parts[0];
+        });
+        
+        // Highlight numbers
+        effect = effect.replace(/(\d+(?:\.\d+)?%?)/g, '<span class="tooltip-num">$1</span>');
+        
+        // Don't escape HTML - tooltip.js uses innerHTML
+        return effect.replace(/\n/g, '<br>');
     }
 
     /**
@@ -82,6 +93,9 @@ export class WonderUI extends EventEmitter {
         const startIdx = Math.max(0, passives.length - count);
         const selectedPassives = passives.slice(startIdx);
 
+        // Highlight numbers in text
+        const highlightNums = (text) => text.replace(/(\d+(?:\.\d+)?%?)/g, '<span class="tooltip-num">$1</span>');
+
         const lines = selectedPassives.map(p => {
             let name = p.name || '';
             let desc = p.desc || '';
@@ -92,11 +106,12 @@ export class WonderUI extends EventEmitter {
                 name = p.name_jp || name;
                 desc = p.desc_jp || desc;
             }
-            return `<b>${name}</b><br>${desc}`;
+            return `<b>${name}</b><br>${highlightNums(desc)}`;
         });
 
         const tooltip = lines.join('<br><br>');
-        return tooltip.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        // Don't escape HTML - tooltip.js uses innerHTML
+        return tooltip;
     }
 
     init() {
@@ -248,28 +263,62 @@ export class WonderUI extends EventEmitter {
         const orderNum = currentOrder !== '-' ? String(currentOrder).padStart(2, '0') : '';
         const orderImgSrc = orderNum ? `${this.baseUrl}/assets/img/ui/num${orderNum}.png` : '';
 
+        // Mod and Stamp options for wonder weapon
+        const currentMod = config.weaponMod !== undefined ? config.weaponMod : 6;
+        const currentStamp = config.weaponStamp !== undefined ? config.weaponStamp : 4;
+        const hasLightningStamp = weaponData && Array.isArray(weaponData.lightning_stamp) && weaponData.lightning_stamp.length > 0;
+
+        // Mod icon for name display (show r0 icon when mod is 0)
+        const modIconSrc = `${this.baseUrl}/assets/img/ritual/r${currentMod}.png`;
+        
+        // Stamp icon and roman numeral for display (only if stamp >= 1)
+        const romanNumerals = ['', 'Ⅰ', 'Ⅱ', 'Ⅲ', 'Ⅳ'];
+        const stampIconHtml = (hasLightningStamp && currentStamp !== '-' && currentStamp >= 1) 
+            ? `<img class="preset-icon stamp-icon" src="${this.baseUrl}/assets/img/character-weapon/weaponEngraving-icon-1.png" alt="Stamp"><span class="stamp-roman">${romanNumerals[currentStamp] || ''}</span>` 
+            : '';
+
         return `
             <div class="wonder-persona-card wonder-slot-card" id="wonderSlotInGrid">
                 <div class="ws-header">
                     <div class="ws-char-info">
                         <img src="${wonderImg}" class="ws-char-img">
                         <div class="ws-char-details">
-                            <div class="ws-char-name">${this.getWonderDisplayName()}</div>
+                            <div class="ws-char-name">
+                                ${this.getWonderDisplayName()}
+                                <span class="preset-icons"><img class="preset-icon" src="${modIconSrc}" alt="R${currentMod}">${stampIconHtml}</span>
+                            </div>
                             ${slotCharSub}
                         </div>
                     </div>
                     ${orderImgSrc ? `<img class="order-img" src="${orderImgSrc}" alt="${window.I18nService ? window.I18nService.t('orderLabel') : '순서'} ${currentOrder}">` : ''}
                 </div>
                 <div class="ws-details">
-                    <div class="ws-order">
-                        <span class="order-label">${window.I18nService ? window.I18nService.t('orderLabel') : '순서'}</span>
-                        <select class="styled-select order-select ws-order-select">
-                            <option value="-" ${currentOrder == '-' ? 'selected' : ''}>-</option>
-                            ${orderOptions.map(n => `<option value="${n}" ${currentOrder == n ? 'selected' : ''}>${n}</option>`).join('')}
-                        </select>
+                    <div class="ritual-mod-wrapper" style="display: grid; grid-template-columns: ${hasLightningStamp ? '1fr 1fr 1fr' : '1fr 1fr'}; gap: 20px;">
+                        <div class="slot-option-group">
+                            <label style="font-size: 11px; opacity: 0.7; margin-bottom: 2px; display: block;">${window.I18nService ? window.I18nService.t('orderLabel') : '순서'}</label>
+                            <select class="styled-select order-select ws-order-select">
+                                <option value="-" ${currentOrder == '-' ? 'selected' : ''}>-</option>
+                                ${orderOptions.map(n => `<option value="${n}" ${currentOrder == n ? 'selected' : ''}>${n}</option>`).join('')}
+                            </select>
+                        </div>
+                        <div class="slot-option-group">
+                            <label style="font-size: 11px; opacity: 0.7; margin-bottom: 2px; display: block;">${window.I18nService ? window.I18nService.t('modLabel') || '개조' : '개조'}</label>
+                            <select class="styled-select mod-select ws-weapon-mod-select">
+                                ${[0,1,2,3,4,5,6].map(n => `<option value="${n}" ${currentMod == n ? 'selected' : ''}>${n}</option>`).join('')}
+                            </select>
+                        </div>
+                        ${hasLightningStamp ? `
+                        <div class="slot-option-group">
+                            <label style="font-size: 11px; opacity: 0.7; margin-bottom: 2px; display: block;">${window.I18nService ? window.I18nService.t('stampLabel') || '인장' : '인장'}</label>
+                            <select class="styled-select stamp-select ws-weapon-stamp-select">
+                                <option value="-" ${currentStamp === '-' ? 'selected' : ''}>-</option>
+                                ${[0,1,2,3,4].map(n => `<option value="${n}" ${currentStamp == n ? 'selected' : ''}>${n}</option>`).join('')}
+                            </select>
+                        </div>
+                        ` : ''}
                     </div>
-                    <div class="revelation-dropdown wonder-weapon-dropdown" ${weaponId && weaponData && weaponData.effect ? `data-tooltip="${this.getWeaponTooltip(weaponData)}"` : ''}>
-                        <button type="button" class="revelation-button" style="width: 100%; justify-content: flex-start;">
+                    <div class="revelation-dropdown wonder-weapon-dropdown">
+                        <button type="button" class="revelation-button" style="width: 100%; justify-content: flex-start;" ${weaponId && weaponData && weaponData.effect ? `data-tooltip="${this.getWeaponTooltip(weaponData, currentMod).replace(/"/g, '&quot;')}"` : ''}>
                             ${weaponId ? `<img class="revelation-icon" src="${this.baseUrl}/assets/img/wonder-weapon/${encodeURIComponent(weaponImageName)}.webp" onerror="this.style.display='none'">` : ''}
                             <span>${weaponDisplayName || '-'}</span>
                         </button>
@@ -299,15 +348,56 @@ export class WonderUI extends EventEmitter {
             });
         }
 
+        // Weapon mod select
+        const modSelect = wonderSlot.querySelector('.ws-weapon-mod-select');
+        if (modSelect) {
+            modSelect.addEventListener('change', (e) => {
+                e.stopPropagation();
+                const newMod = parseInt(e.target.value);
+                this.store.setWonderConfig({ ...this.store.state.wonder, weaponMod: newMod });
+            });
+        }
+
+        // Weapon stamp select
+        const stampSelect = wonderSlot.querySelector('.ws-weapon-stamp-select');
+        if (stampSelect) {
+            stampSelect.addEventListener('change', (e) => {
+                e.stopPropagation();
+                const val = e.target.value;
+                const newStamp = val === '-' ? '-' : parseInt(val);
+                this.store.setWonderConfig({ ...this.store.state.wonder, weaponStamp: newStamp });
+            });
+        }
+
         // Weapon dropdown
         const wonderWeaponDropdown = wonderSlot.querySelector('.wonder-weapon-dropdown');
         if (wonderWeaponDropdown) {
             const button = wonderWeaponDropdown.querySelector('.revelation-button');
             const menu = wonderWeaponDropdown.querySelector('.revelation-menu');
             
-            // Bind tooltip if data-tooltip exists
-            if (wonderWeaponDropdown.hasAttribute('data-tooltip') && typeof bindTooltipElement === 'function') {
-                bindTooltipElement(wonderWeaponDropdown);
+            // Bind tooltip for desktop hover directly (avoid bindTooltipElement which clones nodes)
+            if (window.innerWidth > 1200 && button && button.hasAttribute('data-tooltip')) {
+                const floating = document.getElementById('cursor-tooltip') || (() => {
+                    const el = document.createElement('div');
+                    el.id = 'cursor-tooltip';
+                    el.className = 'cursor-tooltip';
+                    document.body.appendChild(el);
+                    return el;
+                })();
+                button.addEventListener('mouseenter', function(e) {
+                    const content = this.getAttribute('data-tooltip');
+                    if (content) { floating.innerHTML = content; floating.style.display = 'block'; }
+                });
+                button.addEventListener('mousemove', function(e) {
+                    const offset = 16;
+                    let x = e.clientX + offset, y = e.clientY + offset;
+                    const vw = window.innerWidth, vh = window.innerHeight;
+                    const ttW = floating.offsetWidth, ttH = floating.offsetHeight;
+                    if (x + ttW + 8 > vw) x = e.clientX - ttW - offset;
+                    if (y + ttH + 8 > vh) y = e.clientY - ttH - offset;
+                    floating.style.left = x + 'px'; floating.style.top = y + 'px';
+                });
+                button.addEventListener('mouseleave', function() { floating.style.display = 'none'; });
             }
 
             const closeAll = () => {
@@ -461,11 +551,13 @@ export class WonderUI extends EventEmitter {
         }
 
         const passiveTooltip = this.getPersonaPassiveTooltip(pName);
+        // Escape quotes for HTML attribute (but keep HTML tags for innerHTML rendering)
+        const escapedTooltip = passiveTooltip ? passiveTooltip.replace(/"/g, '&quot;') : '';
         
         return `
             <div class="wonder-persona-card" data-index="${index}">
                 <div class="wp-header" data-action="select-persona">
-                    <div class="wp-img-wrapper" ${passiveTooltip ? `data-tooltip="${passiveTooltip}"` : ''}>
+                    <div class="wp-img-wrapper" ${escapedTooltip ? `data-tooltip="${escapedTooltip}"` : ''}>
                          ${cardContent}
                     </div>
                     <div class="wp-name-row">
@@ -502,9 +594,15 @@ export class WonderUI extends EventEmitter {
     }
 
     bindEvents() {
-        // Persona Selection Click
+        // Persona Selection Click (only in edit mode)
         this.container.querySelectorAll('.wp-header').forEach(header => {
             header.onclick = (e) => {
+                // Block click in non-edit mode
+                if (!document.body.classList.contains('tactic-edit-mode')) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    return;
+                }
                 const index = parseInt(header.closest('.wonder-persona-card').dataset.index);
                 this.activePersonaIndex = index;
                 if (this.personaModal) {

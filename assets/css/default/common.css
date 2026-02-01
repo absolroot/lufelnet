@@ -567,10 +567,12 @@ body {
     color: #c0a0a0;
 }
 
+/* Tooltip number highlighting */
+.tooltip-num {
+    color: #ffcc66;
+}
 
-
-
-/* 모바일 배너 스타일 */
+/* Mobile tooltip banner */
 .tooltip-mobile-banner {
     position: fixed;
     bottom: 20px;

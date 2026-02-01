@@ -35,8 +35,8 @@ class TacticMakerApp {
         I18nService.updateDOM();
         this.updateLoadingProgress(15);
 
-        // Wait for data to be ready
-        await DataLoader.ensureData();
+        // Wait for data to be ready (with progress callback)
+        await DataLoader.ensureData((progress) => this.updateLoadingProgress(progress));
         this.updateLoadingProgress(40);
 
         // Load revelation translations for non-Korean languages

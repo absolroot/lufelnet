@@ -99,5 +99,7 @@ export default {
     needStatSelf: "Self",
     needStatNoItems: "No applicable items",
     revelationSum: "Card Sum",
-    pending: "Pending"
+    pending: "Pending",
+    modLabel: "Mod",
+    stampLabel: "Stamp"
 };

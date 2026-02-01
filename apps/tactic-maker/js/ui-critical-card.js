@@ -9,6 +9,14 @@ import { DataLoader } from './data-loader.js';
 let globalElucidatorCritical = 0;
 let globalElucidatorPierce = 0;
 
+// Global boss settings (shared across all slots for pierce calculation)
+let globalBossSettings = {
+    bossType: 'sea', // 'sea' or 'nightmare'
+    bossId: null,
+    baseDefense: 855,
+    defenseCoef: 263.2
+};
+
 export function getElucidatorBonuses() {
     return { critical: globalElucidatorCritical, pierce: globalElucidatorPierce };
 }
@@ -16,6 +24,14 @@ export function getElucidatorBonuses() {
 export function setElucidatorBonuses(critical, pierce) {
     globalElucidatorCritical = critical;
     globalElucidatorPierce = pierce;
+}
+
+export function getGlobalBossSettings() {
+    return { ...globalBossSettings };
+}
+
+export function setGlobalBossSettings(settings) {
+    globalBossSettings = { ...globalBossSettings, ...settings };
 }
 
 export class NeedStatCardUI {
@@ -52,12 +68,11 @@ export class NeedStatCardUI {
             `;
         }
         
-        // Grid layout: labels on top, values below
+        // Inline layout with / separator for column header
         return `
-            <span class="need-stat-total need-stat-total-grid" data-slot-index="${slotIndex}" data-stat-type="${statType}">
-                <span class="need-stat-label-hint">${labelCurrent}</span>
-                <span class="need-stat-label-hint">${labelNeeded}</span>
+            <span class="need-stat-total need-stat-total-inline" data-slot-index="${slotIndex}" data-stat-type="${statType}">
                 <span class="need-stat-current">${currentText}</span>
+                <span class="need-stat-separator">/</span>
                 <span class="need-stat-needed">${neededText}</span>
             </span>
         `;
@@ -522,12 +537,19 @@ export class NeedStatCardUI {
 
             // 2. 의식N 타입: 슬롯 의식 값이 해당 타입 이상이면 자동 체크
             // 의식0인 경우 의식1 이상은 선택되면 안 됨
+            // IMPORTANT: Only auto-select if item.source matches current character
             const ritualMatch = typeStr.match(/의식(\d+)/);
             if (ritualMatch) {
                 const requiredRitual = parseInt(ritualMatch[1], 10);
-                // Only auto-select if slot ritual level is >= required ritual level
-                // AND required ritual is > 0 (의식0 is always available if character has it)
-                if (requiredRitual === 0 || ritual >= requiredRitual) {
+                // Check if this item belongs to the current character
+                const charName = charData.name || charData.character;
+                const itemSource = item.source || '';
+                const isCurrentChar = itemSource === charName;
+                
+                // Only auto-select if:
+                // 1. Item belongs to current character
+                // 2. Slot ritual level is >= required ritual level
+                if (isCurrentChar && (requiredRitual === 0 || ritual >= requiredRitual)) {
                     this.selectedItems.add(itemId);
                 }
             }
@@ -647,6 +669,7 @@ export class NeedStatCardUI {
                         <label class="need-stat-rev-sum-label"><img src="${this.baseUrl}/assets/img/nav/qishi.png" alt="" class="need-stat-rev-icon">${labelRevSum}</label>
                         <input type="number" class="need-stat-rev-sum-input" data-stat="pierce" value="${this.revelationSumPierce}" min="0" max="100" step="0.1">
                     </div>
+                    ${this.renderBossSettingsRow()}
                     <div class="need-stat-body open">
                         <div class="need-stat-pending">${labelPending}</div>
                     </div>
@@ -695,9 +718,227 @@ export class NeedStatCardUI {
     }
 
     /**
+     * Get boss-related labels
+     */
+    getBossLabels() {
+        const lang = this.getCurrentLang();
+        return {
+            labelBoss: lang === 'en' ? 'Boss' : (lang === 'jp' ? 'ボス' : '보스'),
+            labelSea: lang === 'en' ? 'Sea' : (lang === 'jp' ? '海' : '바다'),
+            labelNightmare: lang === 'en' ? 'Nightmare' : (lang === 'jp' ? '凶夢' : '흉몽'),
+            labelDefenseCoef: lang === 'en' ? 'Def Coef' : (lang === 'jp' ? '防御係数' : '방어 계수'),
+            labelBaseDefense: lang === 'en' ? 'Base Def' : (lang === 'jp' ? '基本防御' : '기본 방어')
+        };
+    }
+
+    /**
+     * Render boss settings row for pierce column
+     */
+    renderBossSettingsRow() {
+        const { labelBoss, labelSea, labelNightmare, labelDefenseCoef, labelBaseDefense } = this.getBossLabels();
+        const bossData = window.bossData || [];
+        
+        // Filter bosses by current type
+        const currentType = globalBossSettings.bossType;
+        const filteredBosses = bossData.filter(b => currentType === 'sea' ? !!b.isSea : !b.isSea);
+        
+        // Get current boss name and icon
+        const currentBoss = bossData.find(b => b.id === globalBossSettings.bossId);
+        const currentBossName = currentBoss ? this.getBossDisplayName(currentBoss) : '-';
+        const currentBossIcon = currentBoss?.img ? `<img src="${this.baseUrl}/assets/img/enemy/${currentBoss.img}" class="need-stat-boss-btn-icon" onerror="this.style.display='none'">` : '';
+        
+        return `
+            <div class="need-stat-boss-row">
+                <div class="need-stat-boss-header">
+                    <button type="button" class="need-stat-boss-tab ${currentType === 'sea' ? 'active' : ''}" data-boss-type="sea">
+                        <img src="${this.baseUrl}/assets/img/ui/바다.png" alt="" class="need-stat-boss-type-icon">
+                        <span>${labelSea}</span>
+                    </button>
+                    <button type="button" class="need-stat-boss-tab ${currentType === 'nightmare' ? 'active' : ''}" data-boss-type="nightmare">
+                        <img src="${this.baseUrl}/assets/img/ui/흉몽.png" alt="" class="need-stat-boss-type-icon">
+                        <span>${labelNightmare}</span>
+                    </button>
+                </div>
+                <div class="need-stat-boss-content">
+                    <div class="need-stat-boss-select-wrapper">
+                        <div class="revelation-dropdown need-stat-boss-dropdown">
+                            <button type="button" class="revelation-button need-stat-boss-button">
+                                ${currentBossIcon}
+                                <span class="need-stat-boss-name">${currentBossName}</span>
+                            </button>
+                            <div class="revelation-menu need-stat-boss-menu">
+                                ${filteredBosses.map(boss => `
+                                    <div class="revelation-option need-stat-boss-option ${boss.id === globalBossSettings.bossId ? 'selected' : ''}" data-boss-id="${boss.id}">
+                                        ${boss.img ? `<img src="${this.baseUrl}/assets/img/enemy/${boss.img}" class="need-stat-boss-option-icon" onerror="this.style.display='none'">` : ''}
+                                        <span>${this.getBossDisplayName(boss)}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="need-stat-boss-stat">
+                        <label>${labelDefenseCoef}</label>
+                        <input type="number" class="need-stat-boss-input" data-boss-stat="defenseCoef" value="${globalBossSettings.defenseCoef}" step="0.1">
+                    </div>
+                    <div class="need-stat-boss-stat">
+                        <label>${labelBaseDefense}</label>
+                        <input type="number" class="need-stat-boss-input" data-boss-stat="baseDefense" value="${globalBossSettings.baseDefense}" step="1">
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    /**
+     * Get boss display name based on current language
+     */
+    getBossDisplayName(boss) {
+        const lang = this.getCurrentLang();
+        if (lang === 'en' && boss.name_en) return boss.name_en;
+        if (lang === 'jp' && boss.name_jp) return boss.name_jp;
+        return boss.name || '';
+    }
+
+    /**
+     * Bind boss settings events
+     */
+    bindBossEvents(container) {
+        // Boss type tabs
+        container.querySelectorAll('.need-stat-boss-tab').forEach(tab => {
+            tab.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const bossType = tab.dataset.bossType;
+                globalBossSettings.bossType = bossType;
+                
+                // Update tab active state
+                container.querySelectorAll('.need-stat-boss-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                // Re-render boss list
+                this.updateBossDropdownList(container);
+            });
+        });
+
+        // Boss dropdown toggle
+        const bossDropdown = container.querySelector('.need-stat-boss-dropdown');
+        const bossButton = container.querySelector('.need-stat-boss-button');
+        const bossMenu = container.querySelector('.need-stat-boss-menu');
+        
+        if (bossButton && bossMenu) {
+            bossButton.addEventListener('click', (e) => {
+                e.stopPropagation();
+                bossDropdown.classList.toggle('open');
+            });
+            
+            // Close on outside click
+            document.addEventListener('click', () => {
+                bossDropdown?.classList.remove('open');
+            });
+        }
+
+        // Boss option selection
+        container.querySelectorAll('.need-stat-boss-option').forEach(option => {
+            option.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const bossId = parseInt(option.dataset.bossId);
+                this.selectBoss(bossId, container);
+                bossDropdown?.classList.remove('open');
+            });
+        });
+
+        // Boss stat inputs
+        container.querySelectorAll('.need-stat-boss-input').forEach(input => {
+            input.addEventListener('input', (e) => {
+                e.stopPropagation();
+                const statName = input.dataset.bossStat;
+                const val = parseFloat(input.value) || 0;
+                globalBossSettings[statName] = val;
+            });
+            input.addEventListener('click', (e) => e.stopPropagation());
+        });
+    }
+
+    /**
+     * Update boss dropdown list based on current type
+     */
+    updateBossDropdownList(container) {
+        const bossMenu = container.querySelector('.need-stat-boss-menu');
+        if (!bossMenu) return;
+        
+        const bossData = window.bossData || [];
+        const currentType = globalBossSettings.bossType;
+        const filteredBosses = bossData.filter(b => currentType === 'sea' ? !!b.isSea : !b.isSea);
+        
+        bossMenu.innerHTML = filteredBosses.map(boss => `
+            <div class="revelation-option need-stat-boss-option ${boss.id === globalBossSettings.bossId ? 'selected' : ''}" data-boss-id="${boss.id}">
+                ${boss.img ? `<img src="${this.baseUrl}/assets/img/enemy/${boss.img}" class="need-stat-boss-option-icon" onerror="this.style.display='none'">` : ''}
+                <span>${this.getBossDisplayName(boss)}</span>
+            </div>
+        `).join('');
+        
+        // Re-bind option events
+        bossMenu.querySelectorAll('.need-stat-boss-option').forEach(option => {
+            option.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const bossId = parseInt(option.dataset.bossId);
+                this.selectBoss(bossId, container);
+                container.querySelector('.need-stat-boss-dropdown')?.classList.remove('open');
+            });
+        });
+    }
+
+    /**
+     * Select a boss and update inputs
+     */
+    selectBoss(bossId, container) {
+        const bossData = window.bossData || [];
+        const boss = bossData.find(b => b.id === bossId);
+        if (!boss) return;
+        
+        globalBossSettings.bossId = bossId;
+        globalBossSettings.baseDefense = parseFloat(boss.baseDefense) || 0;
+        globalBossSettings.defenseCoef = parseFloat(boss.defenseCoef) || 0;
+        
+        // Update UI - name
+        const nameEl = container.querySelector('.need-stat-boss-name');
+        if (nameEl) nameEl.textContent = this.getBossDisplayName(boss);
+        
+        // Update UI - button icon
+        const bossButton = container.querySelector('.need-stat-boss-button');
+        if (bossButton) {
+            let iconEl = bossButton.querySelector('.need-stat-boss-btn-icon');
+            if (boss.img) {
+                if (!iconEl) {
+                    iconEl = document.createElement('img');
+                    iconEl.className = 'need-stat-boss-btn-icon';
+                    iconEl.onerror = function() { this.style.display = 'none'; };
+                    bossButton.insertBefore(iconEl, bossButton.firstChild);
+                }
+                iconEl.src = `${this.baseUrl}/assets/img/enemy/${boss.img}`;
+                iconEl.style.display = '';
+            } else if (iconEl) {
+                iconEl.style.display = 'none';
+            }
+        }
+        
+        const baseDefInput = container.querySelector('.need-stat-boss-input[data-boss-stat="baseDefense"]');
+        const defCoefInput = container.querySelector('.need-stat-boss-input[data-boss-stat="defenseCoef"]');
+        if (baseDefInput) baseDefInput.value = globalBossSettings.baseDefense;
+        if (defCoefInput) defCoefInput.value = globalBossSettings.defenseCoef;
+        
+        // Update selected state in dropdown
+        container.querySelectorAll('.need-stat-boss-option').forEach(opt => {
+            opt.classList.toggle('selected', parseInt(opt.dataset.bossId) === bossId);
+        });
+    }
+
+    /**
      * Bind critical card events
      */
     bindEvents(container, buffItems, selfItems, slotIndex) {
+        // Bind boss settings events
+        this.bindBossEvents(container);
+        
         // Revelation Sum inputs (one per column)
         container.querySelectorAll('.need-stat-rev-sum-input').forEach(revSumInput => {
             revSumInput.addEventListener('input', (e) => {

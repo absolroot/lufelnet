@@ -347,7 +347,7 @@ body:not(.tactic-edit-mode) .slot-card.empty {
 /* Character color tint on slot card */
 .slot-card.has-char-color {
     position: relative;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .slot-card.has-char-color::before {
@@ -396,6 +396,9 @@ body:not(.tactic-edit-mode) .slot-card.empty {
 .slot-options-grid {
     margin-top: 12px;
 }
+
+/* Wonder slot mod/stamp wrapper - inherits from ritual-mod-wrapper via class */
+/* Grid columns set inline based on number of options (2 or 3) */
 
 /* Hide only ritual-mod-wrapper (order/ritual/mod dropdowns) in non-edit mode, keep revelation visible */
 body:not(.tactic-edit-mode) .ritual-mod-wrapper {
@@ -1535,6 +1538,7 @@ body:not(.tactic-edit-mode) .wonder-personas-grid {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 8px;
     cursor: pointer;
     border-right: 1px solid rgba(255, 255, 255, 0.05);
@@ -1550,6 +1554,13 @@ body:not(.tactic-edit-mode) .wonder-personas-grid {
 .wp-img-wrapper {
     width: 64px;
     flex-shrink: 0;
+    position: relative;
+    z-index: 0;
+}
+
+.wp-img-wrapper .card {
+    border-radius: 4px;
+    overflow: hidden;
 }
 
 /* card uses width: 100% from base, fills the 90px wrapper */
@@ -1818,6 +1829,19 @@ body:not(.tactic-edit-mode) .ws-order {
     scale: 0.85;
 }
 
+.preset-icons .stamp-icon {
+    width: 18px;
+    height: 18px;
+    margin-bottom: 1px;
+}
+
+.preset-icons .stamp-roman {
+    font-size: 11px;
+    font-weight: 400;
+    color: #ffffff;
+    margin-left: 1px;
+}
+
 /* ==========================================================================
    Persona Modal Cards (Ported from persona.css)
    ========================================================================== */
@@ -2030,15 +2054,34 @@ body:not(.tactic-edit-mode) .ws-order {
    ========================================================================== */
 body:not(.tactic-edit-mode) .ws-order-select,
 body:not(.tactic-edit-mode) .styled-select,
-body:not(.tactic-edit-mode) .revelation-button,
-body:not(.tactic-edit-mode) .revelation-dropdown,
 body:not(.tactic-edit-mode) .btn-role-change,
 body:not(.tactic-edit-mode) .weapon-select,
-body:not(.tactic-edit-mode) .wonder-persona-card,
-body:not(.tactic-edit-mode) .wp-header,
-body:not(.tactic-edit-mode) .slot-card {
+body:not(.tactic-edit-mode) .slot-card,
+body:not(.tactic-edit-mode) .wp-header {
     pointer-events: none !important;
     cursor: default !important;
+}
+
+/* Allow tooltip hover in non-edit mode for persona, weapon, revelation (but no click) */
+body:not(.tactic-edit-mode) .revelation-button[data-tooltip],
+body:not(.tactic-edit-mode) .wp-img-wrapper[data-tooltip],
+body:not(.tactic-edit-mode) .wp-header .wp-img-wrapper[data-tooltip] {
+    pointer-events: auto !important;
+    cursor: help !important;
+}
+
+/* Prevent dropdown menu from opening in non-edit mode */
+body:not(.tactic-edit-mode) .revelation-dropdown .revelation-menu,
+body:not(.tactic-edit-mode) .revelation-dropdown.open .revelation-menu {
+    display: none !important;
+}
+
+body:not(.tactic-edit-mode) .revelation-dropdown {
+    pointer-events: none !important;
+}
+
+body:not(.tactic-edit-mode) .revelation-dropdown .revelation-button[data-tooltip] {
+    pointer-events: auto !important;
 }
 
 body:not(.tactic-edit-mode) .btn-remove-slot {
@@ -2170,12 +2213,16 @@ body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
     text-align: center;
 }
 
-/* Grid layout for total pair (labels on top, values below) */
-.need-stat-total-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2px 8px;
-    text-align: center;
+/* Inline layout for total pair with / separator */
+.need-stat-total-inline {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.need-stat-separator {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 11px;
 }
 
 /* Revelation icon in label */
@@ -2195,9 +2242,9 @@ body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
 /* Elucidator inline input in trigger */
 .need-stat-elucidator-inline-input {
     width: 48px;
-    padding: 2px 6px;
-    background: rgba(0, 0, 0, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 1px 6px;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 4px;
     color: #a4a4a4;
     font-size: 12px;
@@ -2291,6 +2338,18 @@ body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
     margin-top: 10px;
     margin-bottom: auto; /* Push to top, not bottom */
     overflow: hidden;
+    position: relative;
+    z-index: 0 !important; /* Lower than revelation dropdown */
+}
+
+/* Ensure revelation dropdown in slot-card is above need-stat-trigger */
+.slot-card .revelation-dropdown {
+    position: relative;
+    z-index: 10;
+}
+
+.slot-card .revelation-dropdown.open {
+    z-index: 2001;
 }
 
 .need-stat-trigger-header {
@@ -2349,12 +2408,12 @@ body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
 }
 
 .need-stat-trigger-row .need-stat-current {
-    color: #ff6b6b;
-    font-weight: 600;
+    color: rgba(255, 255, 255, 0.6);
 }
 
 .need-stat-trigger-row .need-stat-needed {
-    color: rgba(255, 255, 255, 0.6);
+    color: #ff6b6b;
+    font-weight: 600;
 }
 
 /* Header: [toggle] [total] */
@@ -2424,6 +2483,136 @@ body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
     font-size: 13px;
     font-weight: 700;
     color: #ff6b6b;
+}
+
+/* Boss Settings Row */
+.need-stat-boss-row {
+    padding: 8px;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.need-stat-boss-header {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.need-stat-boss-tab {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 4px 6px;
+    font-size: 10px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 4px;
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.need-stat-boss-tab:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.need-stat-boss-tab.active {
+    background: rgba(209, 31, 31, 0.12);
+    border-color: rgba(209, 31, 31, 0.3);
+    color: white;
+}
+
+.need-stat-boss-type-icon {
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+}
+
+.need-stat-boss-content {
+    display: grid;
+    grid-template-columns: 1fr 70px 70px;
+    gap: 6px;
+    align-items: end;
+}
+
+.need-stat-boss-select-wrapper {
+    width: 100%;
+}
+
+.need-stat-boss-dropdown {
+    width: 100%;
+    position: relative;
+}
+
+.need-stat-boss-button {
+    width: 100%;
+    padding: 5px 8px;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    justify-content: flex-start;
+}
+
+.need-stat-boss-btn-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    object-fit: cover;
+}
+
+.need-stat-boss-menu {
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 100;
+}
+
+.need-stat-boss-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+}
+
+.need-stat-boss-option-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.need-stat-boss-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.need-stat-boss-stat label {
+    font-size: 9px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.need-stat-boss-input {
+    width: 100%;
+    padding: 4px 6px;
+    font-size: 11px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+    color: white;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.need-stat-boss-input:focus {
+    outline: none;
+    border-color: var(--accent-color, #4a90d9);
 }
 
 /* Body: hidden by default, shown when .open */
@@ -2615,4 +2804,10 @@ body:not(.tactic-edit-mode) .need-stat-trigger {
 body:not(.tactic-edit-mode) .need-stat-trigger input {
     pointer-events: auto !important;
     cursor: text !important;
+}
+
+/* Elucidator's need-stat-trigger-table should not show pointer in non-edit mode */
+body:not(.tactic-edit-mode) .need-stat-trigger-table {
+    pointer-events: none !important;
+    cursor: default !important;
 }

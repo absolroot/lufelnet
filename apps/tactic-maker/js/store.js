@@ -200,15 +200,48 @@ export class TacticStore {
         let fullCharData = null;
 
         if (characterData && characterData.type === 'wonder') {
-            // For wonder, we need to decide what ritual level means. Default to 0? Or user manually sets?
-            // Since applyDefaultPattern is generic, let's assume we find it from store.
-            // Wonder doesn't have a specific ritual level field in current store structure, maybe default to '0'.
-            // Actually, the pattern.js has entries for "원더" potentially? Let's check pattern usage.
-            // If pattern has "원더", we use it? No, patterns are by Persona usually? Or char name?
-            // The pattern keys are Character Names.
-            // Wait, user said "When new character added". Wonder is always there.
-            // So this likely applies to party slots.
-            return; // Wonder not supported for auto-pattern yet? Or is it based on Persona?
+            // Wonder: use first persona's last skill for all turns
+            const personas = this.state.wonder.personas || [];
+            // Find first persona with a name
+            const firstPersona = personas.find(p => p && p.name);
+            if (!firstPersona) return;
+            
+            const personaName = firstPersona.name;
+            const personaIndex = personas.indexOf(firstPersona);
+            
+            // Get last skill from persona's recommended skills or unique skill
+            const pData = (window.personaFiles || {})[personaName];
+            if (!pData) return;
+            
+            let lastSkill = '';
+            const recommendSkills = pData.recommendSkill || [];
+            if (recommendSkills.length > 0) {
+                lastSkill = recommendSkills[recommendSkills.length - 1]?.name || '';
+            }
+            if (!lastSkill && pData.uniqueSkill) {
+                lastSkill = pData.uniqueSkill.name || '';
+            }
+            if (!lastSkill) return;
+            
+            this._saveHistory();
+            // Apply to all turns
+            this.state.turns.forEach((turn) => {
+                if (!turn.columns['mystery']) {
+                    turn.columns['mystery'] = [];
+                }
+                if (turn.columns['mystery'].length === 0) {
+                    turn.columns['mystery'].push({
+                        type: 'manual',
+                        character: '원더',
+                        wonderPersona: personaName,
+                        wonderPersonaIndex: personaIndex,
+                        action: lastSkill,
+                        memo: ''
+                    });
+                }
+            });
+            this.notify('turnsChange', this.state.turns);
+            return;
         } else {
             // Find party member
             fullCharData = this.state.party.find(p => p && String(p.order) === orderKey);
@@ -271,10 +304,13 @@ export class TacticStore {
         const order = parseInt(orderKey);
         // Find party member for this order
         let fullCharData = null;
-        if (this.state.wonder.order === order) {
-            // Wonder currently doesn't have auto-pattern logic in this implementation 
-            // (applyDefaultPattern returns early for Wonder).
-            return false;
+        
+        // Check if this is Wonder's order
+        if (orderKey === 'mystery' || this.state.wonder.order === order) {
+            // Wonder has default pattern if at least one persona is set
+            const personas = this.state.wonder.personas || [];
+            const hasPersona = personas.some(p => p && p.name);
+            return hasPersona;
         }
 
         fullCharData = this.state.party.find(p => p && String(p.order) === orderKey);

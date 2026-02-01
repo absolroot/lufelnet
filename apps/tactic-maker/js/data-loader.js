@@ -10,9 +10,10 @@ export class DataLoader {
 
     /**
      * Ensure all required data is loaded
+     * @param {Function} onProgress - Optional callback for progress updates (receives percent 15-40)
      * @returns {Promise<void>}
      */
-    static async ensureData() {
+    static async ensureData(onProgress) {
         if (this._dataReady) return;
         if (this._loadPromise) return this._loadPromise;
 
@@ -36,6 +37,19 @@ export class DataLoader {
                     const hasPersonas = window.personaFiles && Object.keys(window.personaFiles).length > 0;
                     const hasSkills = window.personaSkillList && Object.keys(window.personaSkillList).length > 0;
                     const hasRevelations = window.revelationData && window.revelationData.main;
+
+                    // Calculate progress based on loaded data (15% to 40%)
+                    let loadedCount = 0;
+                    if (hasCharacterData) loadedCount++;
+                    if (hasCharacterList) loadedCount++;
+                    if (hasWeapons) loadedCount++;
+                    if (hasPersonas) loadedCount++;
+                    if (hasSkills) loadedCount++;
+                    if (hasRevelations) loadedCount++;
+                    const progress = 15 + Math.floor((loadedCount / 6) * 25); // 15% to 40%
+                    if (typeof onProgress === 'function') {
+                        onProgress(progress);
+                    }
 
                     // Minimum required: characterData
                     // For Wonder components we strongly need weapons/personas/skills too
@@ -80,42 +94,48 @@ export class DataLoader {
     }
 
     /**
-     * Load critical data (criticalBuffData, criticalSelfData)
+     * Load critical data (criticalBuffData, criticalSelfData) and boss data
      */
     static loadCriticalData() {
         if (this._criticalDataLoaded) return Promise.resolve(true);
         if (this._criticalDataPromise) return this._criticalDataPromise;
-
-        // Check if already loaded globally
-        if (window.criticalBuffData && window.criticalSelfData) {
-            this._criticalDataLoaded = true;
-            return Promise.resolve(true);
-        }
 
         const baseUrl = window.BASE_URL || '';
         const version = (typeof window.APP_VERSION !== 'undefined' && window.APP_VERSION)
             ? `?v=${encodeURIComponent(String(window.APP_VERSION))}`
             : '';
 
-        const src = `${baseUrl}/data/kr/calc/critical-data.js${version}`;
+        const criticalSrc = `${baseUrl}/data/kr/calc/critical-data.js${version}`;
+        const bossSrc = `${baseUrl}/data/kr/calc/boss.js${version}`;
 
-        this._criticalDataPromise = new Promise((resolve) => {
+        const loadScript = (src) => new Promise((resolve) => {
             const script = document.createElement('script');
             script.src = src;
             script.async = true;
-            script.onload = () => {
-                this._criticalDataLoaded = true;
-                console.log('[DataLoader] Critical data loaded:', {
-                    buffGroups: Object.keys(window.criticalBuffData || {}).length,
-                    selfGroups: Object.keys(window.criticalSelfData || {}).length
-                });
-                resolve(true);
-            };
+            script.onload = () => resolve(true);
             script.onerror = () => {
-                console.error('[DataLoader] Failed to load critical data');
+                console.error('[DataLoader] Failed to load:', src);
                 resolve(false);
             };
             document.head.appendChild(script);
+        });
+
+        this._criticalDataPromise = Promise.all([
+            // Check if already loaded, otherwise load
+            (window.criticalBuffData && window.criticalSelfData) ? Promise.resolve(true) : loadScript(criticalSrc),
+            window.bossData ? Promise.resolve(true) : loadScript(bossSrc)
+        ]).then(() => {
+            // bossData is declared as const in boss.js, so we need to assign it to window
+            if (typeof bossData !== 'undefined' && !window.bossData) {
+                window.bossData = bossData;
+            }
+            this._criticalDataLoaded = true;
+            console.log('[DataLoader] Critical/Boss data loaded:', {
+                buffGroups: Object.keys(window.criticalBuffData || {}).length,
+                selfGroups: Object.keys(window.criticalSelfData || {}).length,
+                bosses: (window.bossData || []).length
+            });
+            return true;
         });
 
         return this._criticalDataPromise;

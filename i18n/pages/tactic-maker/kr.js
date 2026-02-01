@@ -133,5 +133,7 @@ export default {
     needStatSelf: "자신",
     needStatNoItems: "해당 없음",
     revelationSum: "계시 합계",
-    pending: "준비중"
+    pending: "준비중",
+    modLabel: "개조",
+    stampLabel: "인장"
 };

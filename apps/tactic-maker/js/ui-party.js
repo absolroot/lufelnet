@@ -11,7 +11,21 @@ import { NeedStatCardUI } from './ui-critical-card.js';
  * For main revelation: show set effect with sub revelations
  * For sub revelation: show its own effect (set2 + set4)
  */
-function getRevelationTooltip(revName, kind = 'sub') {
+/**
+ * Highlight numbers with % in tooltip text
+ */
+function highlightNumbers(text) {
+    if (!text) return '';
+    // Match numbers with optional decimal and optional %
+    return text.replace(/(\d+(?:\.\d+)?%?)/g, '<span class="tooltip-num">$1</span>');
+}
+
+/**
+ * Get revelation tooltip text based on current language
+ * For main revelation: show set effect with current sub revelation
+ * For sub revelation: show its own effect (set2 + set4)
+ */
+function getRevelationTooltip(revName, kind = 'sub', currentSubRev = '') {
     if (!revName) return '';
     const revData = window.revelationData || {};
     const lang = (window.I18nService && window.I18nService.getCurrentLanguage) 
@@ -19,17 +33,22 @@ function getRevelationTooltip(revName, kind = 'sub') {
         : 'kr';
     
     if (kind === 'main') {
-        // Main revelation: show compatible sub revelations as set effect info
-        const mainData = revData.main || {};
-        const subs = mainData[revName];
-        if (!subs || subs.length === 0) return '';
+        // Main revelation: show set effect with current sub revelation from set_effects
+        if (!currentSubRev) return ''; // No sub selected, no tooltip
         
-        // Get localized revelation names
-        const subNames = subs.map(sub => DataLoader.getRevelationName(sub)).join(', ');
+        const setEffects = revData.set_effects || {};
+        const mainEffects = setEffects[revName];
+        if (!mainEffects) return '';
+        
+        const setEffect = mainEffects[currentSubRev];
+        if (!setEffect) return '';
+        
         const mainName = DataLoader.getRevelationName(revName);
+        const subName = DataLoader.getRevelationName(currentSubRev);
         
-        const labelSet = lang === 'en' ? 'Set' : (lang === 'jp' ? 'セット' : '세트');
-        return `<b>${mainName}</b><br>${labelSet}: ${subNames}`;
+        const setLabel = lang === 'en' ? 'Set Effect' : (lang === 'jp' ? 'セット効果' : '세트 효과');
+        
+        return `<b>${mainName} + ${subName}</b><br>${setLabel}: ${highlightNumbers(setEffect)}`;
     } else {
         // Sub revelation: show set2 + set4 effects
         const subEffects = revData.sub_effects || {};
@@ -40,10 +59,10 @@ function getRevelationTooltip(revName, kind = 'sub') {
         let set2 = effect.set2 || '';
         let set4 = effect.set4 || '';
         
-        // For EN/JP, try to get translated effects if available
-        // (Currently data only has Korean, so we use Korean as fallback)
+        const label2 = lang === 'en' ? '2pc' : (lang === 'jp' ? '2個' : '2세트');
+        const label4 = lang === 'en' ? '4pc' : (lang === 'jp' ? '4個' : '4세트');
         
-        return `<b>${subName}</b><br>2${lang === 'en' ? 'pc' : (lang === 'jp' ? '個' : '세트')}: ${set2}<br>4${lang === 'en' ? 'pc' : (lang === 'jp' ? '個' : '세트')}: ${set4}`;
+        return `<b>${subName}</b><br>${label2}: ${highlightNumbers(set2)}<br>${label4}: ${highlightNumbers(set4)}`;
     }
 }
 
@@ -952,12 +971,7 @@ export class PartyUI {
         const revData = window.revelationData || { main: {} };
         const mainOptions = Object.keys(revData.main || {});
 
-        this.populateRevelationSelect(mainSel, 'main', data.mainRev, (val) => {
-            const currentData = { ...this.store.state.party[index], mainRev: val, subRev: '' };
-            this.store.setPartySlot(index, currentData);
-        }, mainOptions);
-
-        // Populate Sub
+        // Populate Sub first so main can reference it
         let subOptions = [];
         if (data.mainRev && revData.main && revData.main[data.mainRev]) {
             subOptions = revData.main[data.mainRev];
@@ -969,6 +983,12 @@ export class PartyUI {
             const currentData = { ...this.store.state.party[index], subRev: val };
             this.store.setPartySlot(index, currentData);
         }, subOptions);
+
+        // Populate Main after sub so it can get the sub value for tooltip
+        this.populateRevelationSelect(mainSel, 'main', data.mainRev, (val) => {
+            const currentData = { ...this.store.state.party[index], mainRev: val, subRev: '' };
+            this.store.setPartySlot(index, currentData);
+        }, mainOptions, data.subRev);
     }
 
     buildRevelationSelectLike(kind) {
@@ -1000,7 +1020,7 @@ export class PartyUI {
         return wrap;
     }
 
-    populateRevelationSelect(wrapEl, kind, selectedValue, onSelect, options = []) {
+    populateRevelationSelect(wrapEl, kind, selectedValue, onSelect, options = [], currentSubRevForMain = '') {
         const button = wrapEl.querySelector('.revelation-button');
         const menu = wrapEl.querySelector('.revelation-menu');
         const dropdown = wrapEl.querySelector('.revelation-dropdown');
@@ -1014,19 +1034,42 @@ export class PartyUI {
             span.textContent = kind === 'wonder-weapon' ? DataLoader.getWeaponDisplayName(selectedValue) : DataLoader.getRevelationName(selectedValue);
             button.appendChild(span);
             
-            // Add tooltip for revelation
+            // Add tooltip for revelation - bind to button, not dropdown (to avoid cloneNode issues)
             if (kind === 'main' || kind === 'sub') {
-                const tooltip = getRevelationTooltip(selectedValue, kind);
+                // For main, use the passed currentSubRevForMain parameter
+                const tooltip = getRevelationTooltip(selectedValue, kind, currentSubRevForMain);
                 if (tooltip) {
-                    const escaped = tooltip.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-                    dropdown.setAttribute('data-tooltip', escaped);
-                    if (typeof bindTooltipElement === 'function') {
-                        // Reset tooltip binding
-                        dropdown.removeAttribute('data-tooltip-bound');
-                        bindTooltipElement(dropdown);
+                    // Escape quotes for HTML attribute
+                    button.setAttribute('data-tooltip', tooltip.replace(/"/g, '&quot;'));
+                    dropdown.dataset.currentValue = selectedValue; // Store for main tooltip lookup
+                    // Bind tooltip for desktop hover (only if viewport > 1200)
+                    // Use mouseenter/mouseleave directly to avoid cloneNode which removes click handlers
+                    if (window.innerWidth > 1200) {
+                        const floating = document.getElementById('cursor-tooltip') || (() => {
+                            const el = document.createElement('div');
+                            el.id = 'cursor-tooltip';
+                            el.className = 'cursor-tooltip';
+                            document.body.appendChild(el);
+                            return el;
+                        })();
+                        button.addEventListener('mouseenter', function(e) {
+                            const content = this.getAttribute('data-tooltip');
+                            if (content) { floating.innerHTML = content; floating.style.display = 'block'; }
+                        });
+                        button.addEventListener('mousemove', function(e) {
+                            const offset = 16;
+                            let x = e.clientX + offset, y = e.clientY + offset;
+                            const vw = window.innerWidth, vh = window.innerHeight;
+                            const ttW = floating.offsetWidth, ttH = floating.offsetHeight;
+                            if (x + ttW + 8 > vw) x = e.clientX - ttW - offset;
+                            if (y + ttH + 8 > vh) y = e.clientY - ttH - offset;
+                            floating.style.left = x + 'px'; floating.style.top = y + 'px';
+                        });
+                        button.addEventListener('mouseleave', function() { floating.style.display = 'none'; });
                     }
                 } else {
-                    dropdown.removeAttribute('data-tooltip');
+                    button.removeAttribute('data-tooltip');
+                    dropdown.dataset.currentValue = selectedValue;
                 }
             }
         } else {

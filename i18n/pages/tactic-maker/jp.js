@@ -136,5 +136,7 @@ export default {
     needStatSelf: "自分",
     needStatNoItems: "該当なし",
     revelationSum: "啓示合計",
-    pending: "準備中"
+    pending: "準備中",
+    modLabel: "改造",
+    stampLabel: "刻印"
 };

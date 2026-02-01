@@ -126,8 +126,12 @@ export default {
     criticalSelf: "자신",
     criticalNoItems: "해당 없음",
 
+    needStat: "Need Stat",
     needStatCriticalRate: "크리티컬 확률",
+    needStatPierceRate: "관통 확률",
     needStatBuff: "버프",
     needStatSelf: "자신",
-    needStatNoItems: "해당 없음"
+    needStatNoItems: "해당 없음",
+    revelationSum: "계시 합계",
+    pending: "준비중"
 };

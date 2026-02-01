@@ -1785,6 +1785,13 @@ body:not(.tactic-edit-mode) .ws-order {
     outline: none;
 }
 
+/* Wider dropdown options for ritual/mod selects */
+.ritual-select option,
+.mod-select option {
+    min-width: 50px;
+    padding: 4px 12px;
+}
+
 /* Preset Icons */
 .preset-icons {
     display: inline-flex;
@@ -2090,17 +2097,212 @@ body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
     overflow: hidden;
 }
 
+/* Need Stat Container - styled like roster-container */
 .need-stat-container {
-    background: rgba(0, 0, 0, 0.18);
+    background: var(--card-background);
     border-radius: 12px;
-    margin-top: 12px;
-    padding: 10px;
+    border-bottom: 3px solid var(--border-red);
+    padding: 16px;
+    margin-top: 16px;
+}
+
+/* Panel header with character name */
+.need-stat-panel-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.need-stat-panel-char-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+/* Revelation Sum input row */
+.need-stat-rev-sum-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    padding: 8px 10px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 6px;
+}
+
+.need-stat-rev-sum-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.need-stat-rev-sum-input {
+    width: 70px;
+    padding: 4px 8px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+}
+
+.need-stat-rev-sum-input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+/* Two-column layout: Critical (left) / Pierce (right) */
+.need-stat-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+/* Label hints for current/needed */
+.need-stat-label-hint {
+    font-size: 9px;
+    color: rgba(255, 255, 255, 0.35);
+    margin-left: 2px;
+}
+
+/* Revelation icon in label */
+.need-stat-rev-icon {
+    width: 14px;
+    height: 14px;
+    vertical-align: middle;
+    margin-right: 4px;
+    opacity: 0.8;
+}
+
+/* Elucidator inline input in trigger */
+.need-stat-elucidator-inline-input {
+    width: 60px;
+    padding: 2px 6px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    color: #ff6b6b;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.need-stat-elucidator-inline-input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+.need-stat-total-editable {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.need-stat-column {
+    background: rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.need-stat-column-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.05);
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.need-stat-column .need-stat-body {
+    max-height: 350px;
+}
+
+/* Pending state for Pierce column */
+.need-stat-pending {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.3);
+    text-align: center;
+    padding: 20px;
+    font-style: italic;
+}
+
+/* Elucidator input row */
+.need-stat-elucidator-input-row {
+    padding: 12px;
+    display: flex;
+    justify-content: center;
+}
+
+.need-stat-elucidator-input {
+    width: 100px;
+    padding: 8px 12px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+}
+
+.need-stat-elucidator-input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+/* Revelation sum row inside column */
+.need-stat-column .need-stat-rev-sum-row {
+    margin: 0;
+    padding: 6px 10px;
+    background: rgba(0, 0, 0, 0.15);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Trigger: Need Stat title + 2 rows (Critical/Pierce) */
+.need-stat-trigger {
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.need-stat-trigger-header {
+    display: flex;
+    align-items: center;
+    padding: 6px 10px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.03);
+    transition: background 0.15s;
+}
+
+.need-stat-trigger-header:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.need-stat-trigger-rows {
+    padding: 4px 10px 8px;
+}
+
+.need-stat-trigger-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3px 0;
+    font-size: 11px;
+}
+
+.need-stat-trigger-label {
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 500;
 }
 
 /* Header: [toggle] [total] */
 .crit-header,
-.need-stat-header,
-.need-stat-trigger-header {
+.need-stat-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -2111,8 +2313,7 @@ body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
 }
 
 .crit-header:hover,
-.need-stat-header:hover,
-.need-stat-trigger-header:hover {
+.need-stat-header:hover {
     background: rgba(255, 255, 255, 0.06);
 }
 
@@ -2266,6 +2467,17 @@ span.need-stat-icon {
     display: inline-block;
 }
 
+/* Target label */
+.need-stat-target {
+    font-size: 9px;
+    color: rgba(255, 255, 255, 0.5);
+    flex-shrink: 0;
+    width: 42px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 /* Source label */
 .crit-source,
 .need-stat-source {
@@ -2329,9 +2541,8 @@ span.need-stat-icon {
     padding: 8px;
 }
 
-/* Hide critical card in non-edit mode */
+/* Hide critical card in non-edit mode (but keep need-stat-trigger visible) */
 body:not(.tactic-edit-mode) .critical-card-accordion,
-body:not(.tactic-edit-mode) .need-stat-trigger,
 body:not(.tactic-edit-mode) .need-stat-container {
     display: none;
 }

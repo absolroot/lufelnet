@@ -129,8 +129,12 @@ export default {
     criticalSelf: "自分",
     criticalNoItems: "該当なし",
 
+    needStat: "必要ステ",
     needStatCriticalRate: "クリ率",
+    needStatPierceRate: "貫通率",
     needStatBuff: "バフ",
     needStatSelf: "自分",
-    needStatNoItems: "該当なし"
+    needStatNoItems: "該当なし",
+    revelationSum: "啓示合計",
+    pending: "準備中"
 };

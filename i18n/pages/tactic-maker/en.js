@@ -92,8 +92,12 @@ export default {
     criticalSelf: "Self",
     criticalNoItems: "No applicable items",
 
+    needStat: "Need Stat",
     needStatCriticalRate: "Critical Rate",
+    needStatPierceRate: "Pierce Rate",
     needStatBuff: "Buff",
     needStatSelf: "Self",
-    needStatNoItems: "No applicable items"
+    needStatNoItems: "No applicable items",
+    revelationSum: "Card Sum",
+    pending: "Pending"
 };

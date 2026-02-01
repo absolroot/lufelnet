@@ -53,8 +53,30 @@ export class PartyUI {
             this.reorganizeSlotsForViewMode(!e.detail.enabled);
         });
 
+        // Listen for elucidator bonus changes to update all slot triggers
+        window.addEventListener('elucidator-bonus-changed', () => {
+            this.updateAllSlotTriggers();
+        });
+
         // Explicitly render initial state to ensure UI is ready
         this.store.state.party.forEach((p, i) => this.renderSlot(i, p));
+    }
+
+    /**
+     * Update all slot triggers when elucidator bonuses change
+     */
+    updateAllSlotTriggers() {
+        this.store.state.party.forEach((charData, index) => {
+            if (index === 3) return; // Skip elucidator itself
+            if (!charData || !charData.name) return;
+            
+            const slotEl = this.getSlotElement(index);
+            if (slotEl) {
+                this.renderNeedStatTrigger(slotEl, charData, index).catch(err => {
+                    console.error('[PartyUI] Failed to update slot trigger:', err);
+                });
+            }
+        });
     }
 
     ensureNeedStatContainer() {
@@ -1001,6 +1023,8 @@ export class PartyUI {
                 const currentData = { ...this.store.state.party[index], ritual: val };
                 this.store.setPartySlot(index, currentData);
                 this.updatePresetIconsFromValues(slotEl, val, modSelect ? modSelect.value : (data.modification || '0'));
+                // Refresh need-stat auto-selection
+                this.refreshNeedStatForSlot(index, currentData);
             });
         }
 
@@ -1020,6 +1044,8 @@ export class PartyUI {
                 const currentData = { ...this.store.state.party[index], modification: val };
                 this.store.setPartySlot(index, currentData);
                 this.updatePresetIconsFromValues(slotEl, ritualSelect ? ritualSelect.value : (data.ritual || '0'), val);
+                // Refresh need-stat auto-selection
+                this.refreshNeedStatForSlot(index, currentData);
             });
         }
 
@@ -1195,6 +1221,32 @@ export class PartyUI {
             slotEl.appendChild(triggerEl);
         } finally {
             this[renderKey] = false;
+        }
+    }
+
+    /**
+     * Refresh need-stat auto-selection when ritual/modification changes
+     */
+    refreshNeedStatForSlot(index, charData) {
+        const ui = this.needStatUIs[index];
+        if (!ui) return;
+        
+        // Refresh auto-selection
+        ui.refreshAutoSelection(charData);
+        
+        // Re-render trigger to update totals
+        const slotEl = this.getSlotElement(index);
+        if (slotEl) {
+            this.renderNeedStatTrigger(slotEl, charData, index).catch(err => {
+                console.error('[PartyUI] Failed to refresh need stat trigger:', err);
+            });
+        }
+        
+        // If panel is open for this slot, re-render it
+        if (this.openNeedStatSlotIndex === index) {
+            this.openNeedStatPanel(index, charData).catch(err => {
+                console.error('[PartyUI] Failed to refresh need stat panel:', err);
+            });
         }
     }
 

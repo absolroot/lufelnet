@@ -63,6 +63,42 @@ export class WonderUI extends EventEmitter {
         return effect.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br>');
     }
 
+    /**
+     * Get persona passive skill tooltip text based on current language
+     * For 야노식, show last 2 passive skills; for others, show only the last one
+     */
+    getPersonaPassiveTooltip(personaName) {
+        if (!personaName) return '';
+        const store = window.personaFiles || {};
+        const personaData = store[personaName];
+        if (!personaData || !personaData.passive_skill || personaData.passive_skill.length === 0) return '';
+
+        const lang = this.getCurrentLang();
+        const passives = personaData.passive_skill;
+        
+        // 야노식 shows last 2, others show last 1
+        const isYanosik = personaName === '야노식';
+        const count = isYanosik ? 2 : 1;
+        const startIdx = Math.max(0, passives.length - count);
+        const selectedPassives = passives.slice(startIdx);
+
+        const lines = selectedPassives.map(p => {
+            let name = p.name || '';
+            let desc = p.desc || '';
+            if (lang === 'en') {
+                name = p.name_en || name;
+                desc = p.desc_en || desc;
+            } else if (lang === 'jp') {
+                name = p.name_jp || name;
+                desc = p.desc_jp || desc;
+            }
+            return `<b>${name}</b><br>${desc}`;
+        });
+
+        const tooltip = lines.join('<br><br>');
+        return tooltip.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
     init() {
         if (this.personaModal) {
             this.personaModal.on('select', this.handlePersonaSelect);
@@ -424,10 +460,12 @@ export class WonderUI extends EventEmitter {
             `;
         }
 
+        const passiveTooltip = this.getPersonaPassiveTooltip(pName);
+        
         return `
             <div class="wonder-persona-card" data-index="${index}">
                 <div class="wp-header" data-action="select-persona">
-                    <div class="wp-img-wrapper">
+                    <div class="wp-img-wrapper" ${passiveTooltip ? `data-tooltip="${passiveTooltip}"` : ''}>
                          ${cardContent}
                     </div>
                     <div class="wp-name-row">
@@ -700,6 +738,13 @@ export class WonderUI extends EventEmitter {
                     dropdown.classList.toggle('open', willOpen);
                     if (willOpen) buildSkillMenu(dropdown);
                 };
+            }
+        });
+
+        // Bind tooltips for persona passive skills
+        this.container.querySelectorAll('.wp-img-wrapper[data-tooltip]').forEach(el => {
+            if (typeof bindTooltipElement === 'function') {
+                bindTooltipElement(el);
             }
         });
 

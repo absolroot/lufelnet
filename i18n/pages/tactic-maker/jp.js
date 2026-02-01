@@ -131,7 +131,7 @@ export default {
 
     needStat: "必要ステ",
     needStatCriticalRate: "クリ率",
-    needStatPierceRate: "貫通率",
+    needStatPierceRate: "貫通",
     needStatBuff: "バフ",
     needStatSelf: "自分",
     needStatNoItems: "該当なし",

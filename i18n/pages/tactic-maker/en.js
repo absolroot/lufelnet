@@ -94,7 +94,7 @@ export default {
 
     needStat: "Need Stat",
     needStatCriticalRate: "Critical Rate",
-    needStatPierceRate: "Pierce Rate",
+    needStatPierceRate: "Pierce",
     needStatBuff: "Buff",
     needStatSelf: "Self",
     needStatNoItems: "No applicable items",

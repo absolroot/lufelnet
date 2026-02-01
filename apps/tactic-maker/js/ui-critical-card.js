@@ -340,7 +340,7 @@ export class NeedStatCardUI {
             labelNeedStat: t('needStat', lang === 'en' ? 'Need Stat' : (lang === 'jp' ? '必要ステ' : '필요 스탯')),
             labelAttrImprove: lang === 'en' ? 'Attribute Improvement' : (lang === 'jp' ? 'ステータス強化' : '속성 강화'),
             labelCritical: t('needStatCriticalRate', t('criticalRate', lang === 'en' ? 'Critical Rate' : (lang === 'jp' ? 'クリ率' : '크리티컬 확률'))),
-            labelPierce: t('needStatPierceRate', lang === 'en' ? 'Pierce Rate' : (lang === 'jp' ? '貫通率' : '관통 확률')),
+            labelPierce: t('needStatPierceRate', lang === 'en' ? 'Pierce' : (lang === 'jp' ? '貫通' : '관통')),
             labelBuff: t('needStatBuff', t('criticalBuff', lang === 'en' ? 'Buff' : (lang === 'jp' ? 'バフ' : '버프'))),
             labelSelf: t('needStatSelf', t('criticalSelf', lang === 'en' ? 'Self' : (lang === 'jp' ? '自分' : '자신'))),
             labelNoItems: t('needStatNoItems', t('criticalNoItems', lang === 'en' ? 'No applicable items' : (lang === 'jp' ? '該当なし' : '해당 없음'))),
@@ -404,11 +404,11 @@ export class NeedStatCardUI {
                 <div class="need-stat-trigger-table">
                     <div class="need-stat-trigger-row">
                         <span class="need-stat-trigger-label">${labelCritical}</span>
-                        <input type="number" class="need-stat-elucidator-inline-input" data-stat="critical" data-slot-index="${slotIndex}" value="${critTotal}" min="0" max="100" step="0.1">
+                        <span class="need-stat-elucidator-input-wrap"><input type="number" class="need-stat-elucidator-inline-input" data-stat="critical" data-slot-index="${slotIndex}" value="${critTotal}" min="0" max="100" step="0.1">%</span>
                     </div>
                     <div class="need-stat-trigger-row">
                         <span class="need-stat-trigger-label">${labelPierce}</span>
-                        <input type="number" class="need-stat-elucidator-inline-input" data-stat="pierce" data-slot-index="${slotIndex}" value="${pierceTotal}" min="0" max="100" step="0.1">
+                        <span class="need-stat-elucidator-input-wrap"><input type="number" class="need-stat-elucidator-inline-input" data-stat="pierce" data-slot-index="${slotIndex}" value="${pierceTotal}" min="0" max="100" step="0.1">%</span>
                     </div>
                 </div>
             `;

@@ -128,7 +128,7 @@ export default {
 
     needStat: "필요 스탯",
     needStatCriticalRate: "크리티컬 확률",
-    needStatPierceRate: "관통 확률",
+    needStatPierceRate: "관통",
     needStatBuff: "버프",
     needStatSelf: "자신",
     needStatNoItems: "해당 없음",

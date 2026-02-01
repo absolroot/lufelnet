@@ -6,6 +6,47 @@
 import { DataLoader } from './data-loader.js';
 import { NeedStatCardUI } from './ui-critical-card.js';
 
+/**
+ * Get revelation tooltip text based on current language
+ * For main revelation: show set effect with sub revelations
+ * For sub revelation: show its own effect (set2 + set4)
+ */
+function getRevelationTooltip(revName, kind = 'sub') {
+    if (!revName) return '';
+    const revData = window.revelationData || {};
+    const lang = (window.I18nService && window.I18nService.getCurrentLanguage) 
+        ? window.I18nService.getCurrentLanguage() 
+        : 'kr';
+    
+    if (kind === 'main') {
+        // Main revelation: show compatible sub revelations as set effect info
+        const mainData = revData.main || {};
+        const subs = mainData[revName];
+        if (!subs || subs.length === 0) return '';
+        
+        // Get localized revelation names
+        const subNames = subs.map(sub => DataLoader.getRevelationName(sub)).join(', ');
+        const mainName = DataLoader.getRevelationName(revName);
+        
+        const labelSet = lang === 'en' ? 'Set' : (lang === 'jp' ? 'セット' : '세트');
+        return `<b>${mainName}</b><br>${labelSet}: ${subNames}`;
+    } else {
+        // Sub revelation: show set2 + set4 effects
+        const subEffects = revData.sub_effects || {};
+        const effect = subEffects[revName];
+        if (!effect) return '';
+        
+        const subName = DataLoader.getRevelationName(revName);
+        let set2 = effect.set2 || '';
+        let set4 = effect.set4 || '';
+        
+        // For EN/JP, try to get translated effects if available
+        // (Currently data only has Korean, so we use Korean as fallback)
+        
+        return `<b>${subName}</b><br>2${lang === 'en' ? 'pc' : (lang === 'jp' ? '個' : '세트')}: ${set2}<br>4${lang === 'en' ? 'pc' : (lang === 'jp' ? '個' : '세트')}: ${set4}`;
+    }
+}
+
 export class PartyUI {
     constructor(store, wonderUI, settingsUI) {
         this.store = store;
@@ -972,10 +1013,27 @@ export class PartyUI {
             const span = document.createElement('span');
             span.textContent = kind === 'wonder-weapon' ? DataLoader.getWeaponDisplayName(selectedValue) : DataLoader.getRevelationName(selectedValue);
             button.appendChild(span);
+            
+            // Add tooltip for revelation
+            if (kind === 'main' || kind === 'sub') {
+                const tooltip = getRevelationTooltip(selectedValue, kind);
+                if (tooltip) {
+                    const escaped = tooltip.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+                    dropdown.setAttribute('data-tooltip', escaped);
+                    if (typeof bindTooltipElement === 'function') {
+                        // Reset tooltip binding
+                        dropdown.removeAttribute('data-tooltip-bound');
+                        bindTooltipElement(dropdown);
+                    }
+                } else {
+                    dropdown.removeAttribute('data-tooltip');
+                }
+            }
         } else {
             const span = document.createElement('span');
             span.textContent = '-';
             button.appendChild(span);
+            dropdown.removeAttribute('data-tooltip');
         }
 
         // Render Menu

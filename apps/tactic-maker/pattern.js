@@ -1,5 +1,42 @@
 // 캐릭터별 의식 레벨에 따른 행동 패턴 정의
 const ritualPatterns = {
+    "준페이": [
+        {
+        level: "0-6",  
+        pattern: [
+            [{ order: 1, type: "스킬3" }],
+            [{ order: 1, type: "테우르기아" },{ order: 1, type: "스킬1" }],
+            [{ order: 1, type: "스킬3" }],
+            [{ order: 1, type: "테우르기아" },{ order: 1, type: "스킬1" }],
+            [{ order: 1, type: "스킬3" }],
+            [{ order: 1, type: "테우르기아" },{ order: 1, type: "스킬1" }],
+        ]
+        },
+    ],
+    "J&C": [
+        {
+        level: "0",  
+        pattern: [
+            [{ order: 1, type: "스킬1" }],
+            [{ order: 1, type: "스킬2" }],
+            [{ order: 1, type: "스킬3" }],
+            [{ order: 1, type: "스킬1" }],
+            [{ order: 1, type: "스킬2" }],
+            [{ order: 1, type: "스킬3" }]
+        ]
+        },
+        {
+        level: "1-6",  
+        pattern: [
+            [{ order: 1, type: "스킬3" },{ order: 1, type: "스킬1" }],
+            [{ order: 1, type: "스킬2" },{ order: 1, type: "스킬3" }],
+            [{ order: 1, type: "스킬1" }],
+            [{ order: 1, type: "스킬2" },{ order: 1, type: "스킬3" }],
+            [{ order: 1, type: "스킬1" }],
+            [{ order: 1, type: "스킬2" },{ order: 1, type: "스킬3" }],
+        ]
+        }
+    ],
     "슌·프론티어": [
         {
         level: "0-1",  

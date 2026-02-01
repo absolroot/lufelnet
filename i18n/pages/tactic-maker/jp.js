@@ -127,5 +127,10 @@ export default {
     criticalRate: "クリ率",
     criticalBuff: "バフ",
     criticalSelf: "自分",
-    criticalNoItems: "該当なし"
+    criticalNoItems: "該当なし",
+
+    needStatCriticalRate: "クリ率",
+    needStatBuff: "バフ",
+    needStatSelf: "自分",
+    needStatNoItems: "該当なし"
 };

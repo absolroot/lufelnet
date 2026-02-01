@@ -5,11 +5,43 @@
 
 import { DataLoader } from './data-loader.js';
 
-export class CriticalCardUI {
+export class NeedStatCardUI {
     constructor(store, baseUrl) {
         this.store = store;
         this.baseUrl = baseUrl || window.BASE_URL || '';
         this.selectedItems = new Set();
+    }
+
+    formatTotalPair(total) {
+        const current = Number.isFinite(total) ? total : 0;
+        const needed = Math.max(0, 100 - current);
+        return {
+            currentText: `${current.toFixed(1)}%`,
+            neededText: `${needed.toFixed(1)}%`
+        };
+    }
+
+    renderTotalPairHtml(slotIndex, total) {
+        const { currentText, neededText } = this.formatTotalPair(total);
+        return `
+            <span class="need-stat-total" data-slot-index="${slotIndex}">
+                <span class="need-stat-current">${currentText}</span>
+                <span class="need-stat-sep">/</span>
+                <span class="need-stat-needed">${neededText}</span>
+            </span>
+        `;
+    }
+
+    updateTotalPairDisplays(slotIndex, total) {
+        const { currentText, neededText } = this.formatTotalPair(total);
+        document
+            .querySelectorAll(`.need-stat-total[data-slot-index="${slotIndex}"]`)
+            .forEach(el => {
+                const cur = el.querySelector('.need-stat-current');
+                const need = el.querySelector('.need-stat-needed');
+                if (cur) cur.textContent = currentText;
+                if (need) need.textContent = neededText;
+            });
     }
 
     getCurrentLang() {
@@ -158,7 +190,7 @@ export class CriticalCardUI {
         let optionsHtml = '';
         if (item.options && item.options.length > 0) {
             optionsHtml = `
-                <select class="crit-select" data-item-id="${itemId}">
+                <select class="need-stat-select" data-item-id="${itemId}">
                     ${item.options.map(opt => {
                         const selected = (item.defaultOption === opt) ? 'selected' : '';
                         return `<option value="${opt}" ${selected}>${opt}</option>`;
@@ -169,13 +201,13 @@ export class CriticalCardUI {
 
         // Display: [check] [icon] [source] typeName skillName [options] value%
         return `
-            <div class="crit-row ${isChecked ? 'checked' : ''}" data-item-id="${itemId}">
-                <img src="${this.baseUrl}/assets/img/ui/check-${isChecked ? 'on' : 'off'}.png" class="crit-check">
-                ${skillIcon ? `<img src="${skillIcon}" class="crit-icon" onerror="this.style.display='none'">` : '<span class="crit-icon"></span>'}
-                <span class="crit-source">${sourceName}</span>
-                <span class="crit-name">${typeName}${skillName ? ' ' + skillName : ''}</span>
+            <div class="need-stat-row ${isChecked ? 'checked' : ''}" data-item-id="${itemId}">
+                <img src="${this.baseUrl}/assets/img/ui/check-${isChecked ? 'on' : 'off'}.png" class="need-stat-check">
+                ${skillIcon ? `<img src="${skillIcon}" class="need-stat-icon" onerror="this.style.display='none'">` : '<span class="need-stat-icon"></span>'}
+                <span class="need-stat-source">${sourceName}</span>
+                <span class="need-stat-name">${typeName}${skillName ? ' ' + skillName : ''}</span>
                 ${optionsHtml}
-                <span class="crit-value">${value}%</span>
+                <span class="need-stat-value">${value}%</span>
             </div>
         `;
     }
@@ -195,28 +227,8 @@ export class CriticalCardUI {
         return total;
     }
 
-    /**
-     * Render the critical card accordion
-     */
-    render(charData, slotIndex) {
+    getLabels() {
         const lang = this.getCurrentLang();
-        const container = document.createElement('div');
-        container.className = 'critical-card-accordion';
-        container.dataset.slotIndex = slotIndex;
-
-        const buffItems = this.getApplicableBuffItems();
-        const selfItems = this.getApplicableSelfItems(charData);
-
-        // Auto-select default items
-        buffItems.forEach(item => {
-            if (item.id === 'default' || item.id === 'myPalace') {
-                this.selectedItems.add(item.id);
-            }
-        });
-
-        const total = this.calculateTotal(buffItems, selfItems);
-
-        // Labels
         const t = (key, fallback) => {
             if (window.I18nService && typeof window.I18nService.t === 'function') {
                 const result = window.I18nService.t(key);
@@ -225,92 +237,125 @@ export class CriticalCardUI {
             return fallback;
         };
 
-        const labelCritical = t('criticalRate', lang === 'en' ? 'Critical Rate' : (lang === 'jp' ? 'クリ率' : '크리티컬 확률'));
-        const labelBuff = t('criticalBuff', lang === 'en' ? 'Buff' : (lang === 'jp' ? 'バフ' : '버프'));
-        const labelSelf = t('criticalSelf', lang === 'en' ? 'Self' : (lang === 'jp' ? '自分' : '자신'));
-        const labelNoItems = t('criticalNoItems', lang === 'en' ? 'No applicable items' : (lang === 'jp' ? '該当なし' : '해당 없음'));
+        return {
+            labelCritical: t('needStatCriticalRate', t('criticalRate', lang === 'en' ? 'Critical Rate' : (lang === 'jp' ? 'クリ率' : '크리티컬 확률'))),
+            labelBuff: t('needStatBuff', t('criticalBuff', lang === 'en' ? 'Buff' : (lang === 'jp' ? 'バフ' : '버프'))),
+            labelSelf: t('needStatSelf', t('criticalSelf', lang === 'en' ? 'Self' : (lang === 'jp' ? '自分' : '자신'))),
+            labelNoItems: t('needStatNoItems', t('criticalNoItems', lang === 'en' ? 'No applicable items' : (lang === 'jp' ? '該当なし' : '해당 없음')))
+        };
+    }
+
+    ensureDefaultSelected(buffItems) {
+        buffItems.forEach(item => {
+            if (item.id === 'default' || item.id === 'myPalace') {
+                this.selectedItems.add(item.id);
+            }
+        });
+    }
+
+    renderTrigger(charData, slotIndex, isOpen = false) {
+        const container = document.createElement('div');
+        container.className = `need-stat-trigger ${isOpen ? 'open' : ''}`;
+        container.dataset.slotIndex = slotIndex;
+
+        const { labelCritical } = this.getLabels();
+        const buffItems = this.getApplicableBuffItems();
+        const selfItems = this.getApplicableSelfItems(charData);
+        this.ensureDefaultSelected(buffItems);
+        const total = this.calculateTotal(buffItems, selfItems);
 
         container.innerHTML = `
-            <div class="crit-header">
-                <div class="crit-toggle">
-                    <svg class="crit-caret" width="12" height="12" viewBox="0 0 16 16" fill="none">
+            <div class="need-stat-trigger-header">
+                <div class="need-stat-toggle">
+                    <svg class="need-stat-caret ${isOpen ? 'open' : ''}" width="12" height="12" viewBox="0 0 16 16" fill="none">
                         <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                     <span>${labelCritical}</span>
                 </div>
-                <span class="crit-total">${total.toFixed(1)}%</span>
+                ${this.renderTotalPairHtml(slotIndex, total)}
             </div>
-            <div class="crit-body">
-                <div class="crit-section">
-                    <div class="crit-section-title">${labelBuff}</div>
+        `;
+
+        return container;
+    }
+
+    renderPanel(charData, slotIndex) {
+        const container = document.createElement('div');
+        container.className = 'need-stat-card-accordion';
+        container.dataset.slotIndex = slotIndex;
+
+        const { labelCritical, labelBuff, labelSelf, labelNoItems } = this.getLabels();
+
+        const buffItems = this.getApplicableBuffItems();
+        const selfItems = this.getApplicableSelfItems(charData);
+        this.ensureDefaultSelected(buffItems);
+
+        const total = this.calculateTotal(buffItems, selfItems);
+
+        container.innerHTML = `
+            <div class="need-stat-header">
+                <div class="need-stat-toggle">
+                    <span>${labelCritical}</span>
+                </div>
+                ${this.renderTotalPairHtml(slotIndex, total)}
+            </div>
+            <div class="need-stat-body open">
+                <div class="need-stat-section">
+                    <div class="need-stat-section-title">${labelBuff}</div>
                     ${buffItems.map(item => this.renderItemRow(item, false)).join('')}
                 </div>
-                <div class="crit-section">
-                    <div class="crit-section-title">${labelSelf}</div>
+                <div class="need-stat-section">
+                    <div class="need-stat-section-title">${labelSelf}</div>
                     ${selfItems.length > 0
                         ? selfItems.map(item => this.renderItemRow(item, true)).join('')
-                        : `<div class="crit-empty">${labelNoItems}</div>`
+                        : `<div class="need-stat-empty">${labelNoItems}</div>`
                     }
                 </div>
             </div>
         `;
 
-        this.bindEvents(container, buffItems, selfItems);
+        this.bindEvents(container, buffItems, selfItems, slotIndex);
         return container;
     }
 
     /**
      * Bind critical card events
      */
-    bindEvents(container, buffItems, selfItems) {
-        const header = container.querySelector('.crit-header');
-        const body = container.querySelector('.crit-body');
-        const caret = container.querySelector('.crit-caret');
-        const totalEl = container.querySelector('.crit-total');
-
-        // Accordion toggle
-        if (header) {
-            header.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const isOpen = body.classList.contains('open');
-                body.classList.toggle('open', !isOpen);
-                caret.classList.toggle('open', !isOpen);
-            });
-        }
-
+    bindEvents(container, buffItems, selfItems, slotIndex) {
         // Item checkbox click
-        container.querySelectorAll('.crit-row').forEach(row => {
-            const checkEl = row.querySelector('.crit-check');
-            if (checkEl) {
-                checkEl.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    const itemId = row.dataset.itemId;
+        container.querySelectorAll('.need-stat-row').forEach(row => {
+            const checkEl = row.querySelector('.need-stat-check');
+            if (!checkEl) return;
 
-                    if (this.selectedItems.has(itemId)) {
-                        this.selectedItems.delete(itemId);
-                        row.classList.remove('checked');
-                        checkEl.src = `${this.baseUrl}/assets/img/ui/check-off.png`;
-                    } else {
-                        this.selectedItems.add(itemId);
-                        row.classList.add('checked');
-                        checkEl.src = `${this.baseUrl}/assets/img/ui/check-on.png`;
-                    }
+            checkEl.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const itemId = row.dataset.itemId;
+                if (!itemId) return;
 
-                    const total = this.calculateTotal(buffItems, selfItems);
-                    if (totalEl) totalEl.textContent = `${total.toFixed(1)}%`;
-                });
-            }
+                if (this.selectedItems.has(itemId)) {
+                    this.selectedItems.delete(itemId);
+                    row.classList.remove('checked');
+                    checkEl.src = `${this.baseUrl}/assets/img/ui/check-off.png`;
+                } else {
+                    this.selectedItems.add(itemId);
+                    row.classList.add('checked');
+                    checkEl.src = `${this.baseUrl}/assets/img/ui/check-on.png`;
+                }
+
+                const total = this.calculateTotal(buffItems, selfItems);
+                this.updateTotalPairDisplays(slotIndex, total);
+            });
         });
 
         // Option select change
-        container.querySelectorAll('.crit-select').forEach(select => {
+        container.querySelectorAll('.need-stat-select').forEach(select => {
             select.addEventListener('click', (e) => e.stopPropagation());
             select.addEventListener('change', (e) => {
                 e.stopPropagation();
                 const itemId = select.dataset.itemId;
                 const selectedOption = select.value;
-                const row = select.closest('.crit-row');
-                const valueEl = row.querySelector('.crit-value');
+                const row = select.closest('.need-stat-row');
+                const valueEl = row ? row.querySelector('.need-stat-value') : null;
 
                 const allItems = [...buffItems, ...selfItems];
                 const item = allItems.find(i => (i.id || `${i.source}_${i.skillName}`) === itemId);
@@ -319,10 +364,8 @@ export class CriticalCardUI {
                     item.value = item.values[selectedOption];
                     if (valueEl) valueEl.textContent = `${item.value}%`;
 
-                    if (this.selectedItems.has(itemId)) {
-                        const total = this.calculateTotal(buffItems, selfItems);
-                        if (totalEl) totalEl.textContent = `${total.toFixed(1)}%`;
-                    }
+                    const total = this.calculateTotal(buffItems, selfItems);
+                    this.updateTotalPairDisplays(slotIndex, total);
                 }
             });
         });

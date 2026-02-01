@@ -177,9 +177,9 @@ export class WonderUI extends EventEmitter {
         const slotCharSub = (wonderElement || wonderPosition) ? `
             <div class="slot-char-sub">
                 ${attrIcon ? `<img src="${attrIcon}" class="meta-icon" title="${displayElement}" onerror="this.style.display='none'">` : ''}
-                ${wonderElement ? `<span>${displayElement}</span>` : ''}
+                ${wonderElement ? `<span class="slot-meta-text slot-meta-element">${displayElement}</span>` : ''}
                 ${posIcon ? `<img src="${posIcon}" class="meta-icon" title="${displayPosition}" onerror="this.style.display='none'">` : ''}
-                ${wonderPosition ? `<span>${displayPosition}</span>` : ''}
+                ${wonderPosition ? `<span class="slot-meta-text slot-meta-position">${displayPosition}</span>` : ''}
             </div>
         ` : '';
 

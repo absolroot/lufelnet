@@ -124,5 +124,10 @@ export default {
     criticalRate: "크리티컬 확률",
     criticalBuff: "버프",
     criticalSelf: "자신",
-    criticalNoItems: "해당 없음"
+    criticalNoItems: "해당 없음",
+
+    needStatCriticalRate: "크리티컬 확률",
+    needStatBuff: "버프",
+    needStatSelf: "자신",
+    needStatNoItems: "해당 없음"
 };

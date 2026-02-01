@@ -4,7 +4,7 @@
  */
 
 import { DataLoader } from './data-loader.js';
-import { CriticalCardUI } from './ui-critical-card.js';
+import { NeedStatCardUI } from './ui-critical-card.js';
 
 export class PartyUI {
     constructor(store, wonderUI, settingsUI) {
@@ -14,14 +14,18 @@ export class PartyUI {
         this.container = document.getElementById('partySlots');
         this.rosterList = document.getElementById('rosterList');
         this.rosterContainer = document.getElementById('rosterContainer');
+        this.needStatContainer = document.getElementById('needStatContainer');
         this.wonderConfigContainer = document.getElementById('wonderConfigContainer');
         this.toggleRosterBtn = document.getElementById('toggleRoster');
 
         // Base URL for assets
         this.baseUrl = window.BASE_URL || '';
 
-        // Critical Card UI instances (per slot)
-        this.criticalCardUIs = {};
+        // Need Stat UI instances (per slot)
+        this.needStatUIs = {};
+        this.openNeedStatSlotIndex = null;
+
+        this.ensureNeedStatContainer();
 
         // Initial setup
         this.store.subscribe((event, data) => this.handleStoreUpdate(event, data));
@@ -51,6 +55,70 @@ export class PartyUI {
 
         // Explicitly render initial state to ensure UI is ready
         this.store.state.party.forEach((p, i) => this.renderSlot(i, p));
+    }
+
+    ensureNeedStatContainer() {
+        if (this.needStatContainer && document.body.contains(this.needStatContainer)) return;
+
+        this.needStatContainer = document.getElementById('needStatContainer');
+        if (this.needStatContainer && document.body.contains(this.needStatContainer)) return;
+
+        if (!this.rosterContainer || !document.body.contains(this.rosterContainer)) return;
+
+        const el = document.createElement('div');
+        el.className = 'need-stat-container';
+        el.id = 'needStatContainer';
+        el.hidden = true;
+
+        this.rosterContainer.insertAdjacentElement('afterend', el);
+        this.needStatContainer = el;
+    }
+
+    closeNeedStatPanel() {
+        this.openNeedStatSlotIndex = null;
+        this.ensureNeedStatContainer();
+        if (this.needStatContainer) {
+            this.needStatContainer.innerHTML = '';
+            this.needStatContainer.hidden = true;
+        }
+        document.querySelectorAll('.need-stat-trigger.open').forEach(el => el.classList.remove('open'));
+        document.querySelectorAll('.need-stat-caret.open').forEach(el => el.classList.remove('open'));
+    }
+
+    async openNeedStatPanel(slotIndex, charData) {
+        this.ensureNeedStatContainer();
+        if (!this.needStatContainer) return;
+        if (!charData || !charData.name) return;
+
+        this.needStatContainer.hidden = false;
+
+        await DataLoader.loadCriticalData();
+
+        // If slot changed while awaiting, abort
+        const currentData = this.store.state.party[slotIndex];
+        if (!currentData || currentData.name !== charData.name) return;
+
+        if (!this.needStatUIs[slotIndex]) {
+            this.needStatUIs[slotIndex] = new NeedStatCardUI(this.store, this.baseUrl);
+        }
+
+        const ui = this.needStatUIs[slotIndex];
+        const panelEl = ui.renderPanel(charData, slotIndex);
+
+        this.needStatContainer.innerHTML = '';
+        this.needStatContainer.appendChild(panelEl);
+        this.needStatContainer.hidden = false;
+
+        this.openNeedStatSlotIndex = slotIndex;
+
+        document.querySelectorAll('.need-stat-trigger.open').forEach(el => el.classList.remove('open'));
+        document.querySelectorAll('.need-stat-caret.open').forEach(el => el.classList.remove('open'));
+        const trigger = document.querySelector(`.need-stat-trigger[data-slot-index="${slotIndex}"]`);
+        if (trigger) {
+            trigger.classList.add('open');
+            const caret = trigger.querySelector('.need-stat-caret');
+            if (caret) caret.classList.add('open');
+        }
     }
 
     /**
@@ -131,6 +199,14 @@ export class PartyUI {
 
         // Re-append in sorted order
         slots.forEach(slot => partyContainer.appendChild(slot));
+
+        // If in view mode and total slots == 6, move the last slot to the rightmost column of second row (grid-column: 5 / 6)
+        if (!document.body.classList.contains('tactic-edit-mode') && slots.length === 6) {
+            const lastSlot = slots[slots.length - 1];
+            if (lastSlot) {
+                lastSlot.style.gridColumn = '5 / 6';
+            }
+        }
     }
 
     restoreOriginalSlotOrder() {
@@ -220,12 +296,19 @@ export class PartyUI {
         document.addEventListener('click', (e) => {
             const isSlotClick = e.target.closest('.slot-card');
             const isRosterClick = e.target.closest('.roster-container') || e.target.closest('.wonder-config-panel');
+            const isNeedStatClick = e.target.closest('.need-stat-container') || e.target.closest('.need-stat-trigger');
             const isModal = e.target.closest('.modal');
 
-            if (!isSlotClick && !isRosterClick && !isModal) {
+            if (!isSlotClick && !isRosterClick && !isNeedStatClick && !isModal) {
                 this.activeSlotIndex = null;
                 this.container.querySelectorAll('.slot-card').forEach(s => s.classList.remove('selecting'));
                 this.rosterContainer.classList.remove('expanded');
+                this.closeNeedStatPanel();
+            }
+
+            // If clicked outside need-stat area, close need-stat panel (keep roster state as-is)
+            if (!isNeedStatClick && !isModal) {
+                this.closeNeedStatPanel();
             }
         });
 
@@ -474,13 +557,12 @@ export class PartyUI {
             }
             this.updateI18n(slotEl);
 
-            // Remove critical card if exists (inside slot)
-            const existingCard = slotEl.querySelector(`.critical-card-accordion[data-slot-index="${index}"]`);
-            if (existingCard) {
-                existingCard.remove();
+            slotEl.querySelectorAll('.need-stat-trigger').forEach(el => el.remove());
+            if (this.needStatUIs[index]) {
+                delete this.needStatUIs[index];
             }
-            if (this.criticalCardUIs[index]) {
-                delete this.criticalCardUIs[index];
+            if (this.openNeedStatSlotIndex === index) {
+                this.closeNeedStatPanel();
             }
             return;
         }
@@ -555,9 +637,9 @@ export class PartyUI {
                     </div>
                     <div class="slot-char-sub">
                         ${attrIcon ? `<img src="${attrIcon}" class="meta-icon" title="${DataLoader.getElementName(element)}" onerror="this.style.display='none'">` : ''}
-                        ${element ? `<span>${DataLoader.getElementName(element)}</span>` : ''}
+                        ${element ? `<span class="slot-meta-text slot-meta-element">${DataLoader.getElementName(element)}</span>` : ''}
                         ${posIcon ? `<img src="${posIcon}" class="meta-icon" title="${DataLoader.getJobName(position)}" onerror="this.style.display='none'">` : ''}
-                        ${position ? `<span>${DataLoader.getJobName(position)}</span>` : ''}
+                        ${position && !isJandC ? `<span class="slot-meta-text slot-meta-position">${DataLoader.getJobName(position)}</span>` : ''}
 
                         ${isJandC ? (() => {
                 const activeRole = data.role || '우월';
@@ -584,7 +666,7 @@ export class PartyUI {
                      ${isElucidator || index === 4 ? '' : `
                      <div class="slot-option-group">
                         <label style="font-size: 11px; opacity: 0.7; margin-bottom: 2px; display: block;">${window.I18nService ? window.I18nService.t('orderLabel') : '순서'}</label>
-                        <select class="styled-select order-select" data-index="${index}" style="width: 100%;">
+                        <select class="styled-select order-select" data-index="${index}">
                              <!-- Populated by JS -->
                         </select>
                      </div>
@@ -592,13 +674,13 @@ export class PartyUI {
                      ${isWonder ? '' : `
                      <div class="slot-option-group">
                         <label style="font-size: 11px; opacity: 0.7; margin-bottom: 2px; display: block;">${window.I18nService ? window.I18nService.t('defaultRitual').replace('기본 ', '') : '의식'}</label>
-                        <select class="styled-select ritual-select" data-index="${index}" style="width: 100%;">
+                        <select class="styled-select ritual-select" data-index="${index}">
                              <!-- Populated by JS -->
                         </select>
                      </div>
                      <div class="slot-option-group">
                         <label style="font-size: 11px; opacity: 0.7; margin-bottom: 2px; display: block;">${window.I18nService ? window.I18nService.t('defaultModification').replace('기본 ', '') : '개조'}</label>
-                        <select class="styled-select mod-select" data-index="${index}" style="width: 100%;">
+                        <select class="styled-select mod-select" data-index="${index}" >
                              <!-- Populated by JS -->
                         </select>
                      </div>
@@ -656,11 +738,11 @@ export class PartyUI {
         this.bindSlotEvents(slotEl, data, index);
         this.updateI18n(slotEl);
 
-        // 5. Render Critical Card below slot (except Wonder)
+        // 5. Render Need Stat trigger below slot (except Wonder)
         if (!isWonder) {
-            // renderCriticalCard is async but we don't need to block
-            this.renderCriticalCard(slotEl, data, index).catch(err => {
-                console.error('[PartyUI] Failed to render critical card:', err);
+            // renderNeedStatTrigger is async but we don't need to block
+            this.renderNeedStatTrigger(slotEl, data, index).catch(err => {
+                console.error('[PartyUI] Failed to render need stat trigger:', err);
             });
         }
     }
@@ -747,8 +829,6 @@ export class PartyUI {
         modal.hidden = false;
         requestAnimationFrame(() => modal.classList.add('show'));
     }
-
-
 
     // --- Helper Methods for Slot Rendering ---
 
@@ -1066,48 +1146,53 @@ export class PartyUI {
     }
 
     /**
-     * Render Critical Card accordion inside a slot (at the bottom)
+     * Render Need Stat trigger inside a slot (at the bottom)
      */
-    async renderCriticalCard(slotEl, data, index) {
+    async renderNeedStatTrigger(slotEl, data, index) {
         // Prevent concurrent renders for the same slot
-        const renderKey = `_criticalRenderPending_${index}`;
+        const renderKey = `_needStatRenderPending_${index}`;
         if (this[renderKey]) return;
         this[renderKey] = true;
 
         try {
-            // Remove ALL existing critical cards in this slot (prevent duplicates)
-            slotEl.querySelectorAll('.critical-card-accordion').forEach(card => card.remove());
+            // Remove existing trigger (prevent duplicates)
+            slotEl.querySelectorAll('.need-stat-trigger').forEach(el => el.remove());
 
-            // Don't render if no character assigned
+            // If no character assigned: cleanup + close panel if it was open
             if (!data || !data.name) {
-                if (this.criticalCardUIs[index]) {
-                    delete this.criticalCardUIs[index];
+                if (this.needStatUIs[index]) {
+                    delete this.needStatUIs[index];
+                }
+                if (this.openNeedStatSlotIndex === index) {
+                    this.closeNeedStatPanel();
                 }
                 return;
             }
 
-            // Ensure critical data is loaded
             await DataLoader.loadCriticalData();
 
             // Double-check slot still has this character (might have changed during async wait)
             const currentData = this.store.state.party[index];
-            if (!currentData || currentData.name !== data.name) {
-                return;
+            if (!currentData || currentData.name !== data.name) return;
+
+            // Create UI instance if not exists
+            if (!this.needStatUIs[index]) {
+                this.needStatUIs[index] = new NeedStatCardUI(this.store, this.baseUrl);
             }
 
-            // Remove again after async (in case of race)
-            slotEl.querySelectorAll('.critical-card-accordion').forEach(card => card.remove());
+            const ui = this.needStatUIs[index];
+            const isOpen = this.openNeedStatSlotIndex === index;
+            const triggerEl = ui.renderTrigger(data, index, isOpen);
+            triggerEl.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (this.openNeedStatSlotIndex === index) {
+                    this.closeNeedStatPanel();
+                } else {
+                    this.openNeedStatPanel(index, data).catch(err => console.error('[PartyUI] Failed to open need stat panel:', err));
+                }
+            });
 
-            // Create critical card UI instance if not exists
-            if (!this.criticalCardUIs[index]) {
-                this.criticalCardUIs[index] = new CriticalCardUI(this.store, this.baseUrl);
-            }
-
-            const criticalCardUI = this.criticalCardUIs[index];
-            const criticalCardEl = criticalCardUI.render(data, index);
-
-            // Append inside the slot card (at the bottom)
-            slotEl.appendChild(criticalCardEl);
+            slotEl.appendChild(triggerEl);
         } finally {
             this[renderKey] = false;
         }

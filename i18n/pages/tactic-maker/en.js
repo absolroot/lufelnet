@@ -23,18 +23,10 @@ export default {
     order: "Order",
     orderLabel: "Order",
     weapon: "Weapon",
-    weaponRefinement: "Refinement", // Or Modification if that was the context, but user said Ritual->Awareness.
-    // wait, "의식" is Ritual. "개조" is Modification/Refinement. 
-    // User said "의식" (Ritual) -> "Awareness".
-
-    // Existing:
-    // weaponRefinement: "Refinement",
-    // defaultRitual: "Default Ritual",
-
+    weaponRefinement: "Refinement", 
     // Update:
-    weaponRefinement: "Refinement",
-    defaultRitual: "Awareness",
-    defaultModification: "Refinement",
+    defaultRitual: "A",
+    defaultModification: "R",
     autoWonderWeapon: "Auto Wonder Weapon (Rebel/Dom)",
     selectPersona: "Select Persona",
     selectRole: "Select Role",
@@ -98,5 +90,10 @@ export default {
     criticalRate: "Critical Rate",
     criticalBuff: "Buff",
     criticalSelf: "Self",
-    criticalNoItems: "No applicable items"
+    criticalNoItems: "No applicable items",
+
+    needStatCriticalRate: "Critical Rate",
+    needStatBuff: "Buff",
+    needStatSelf: "Self",
+    needStatNoItems: "No applicable items"
 };

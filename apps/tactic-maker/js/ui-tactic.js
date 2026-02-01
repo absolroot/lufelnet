@@ -878,8 +878,10 @@ export class TacticUI {
                 if (!mappedSkill?.element) return null;
                 return `${this.baseUrl}/assets/img/skill-element/${mappedSkill.element}.png`;
             } else if (skillKey === 'skill3') {
-                // J&C has no skill3 in action dropdown
-                return null;
+                // J&C action dropdown uses "스킬3" slot; use skill5 icon
+                const mappedSkill = skillsData.skill5;
+                if (!mappedSkill?.element) return null;
+                return `${this.baseUrl}/assets/img/skill-element/${mappedSkill.element}.png`;
             } else if (skillKey === 'skill_highlight') {
                 // J&C has 2 highlights, return first one's element (same as skill1)
                 const mappedSkill = skillsData[skillMapping[0]];
@@ -904,7 +906,14 @@ export class TacticUI {
         const skillData = window.personaSkillList?.[skillName];
         if (!skillData?.icon) return null;
 
-        return `${this.baseUrl}/assets/img/skill-element/${skillData.icon}.png`;
+        const lang = (window.DataLoader && typeof window.DataLoader.getCurrentLang === 'function')
+            ? window.DataLoader.getCurrentLang()
+            : 'kr';
+        const iconKey = (lang === 'en' || lang === 'jp')
+            ? (skillData.icon_gl || skillData.icon)
+            : skillData.icon;
+        if (!iconKey) return null;
+        return `${this.baseUrl}/assets/img/skill-element/${iconKey}.png`;
     }
 
     getActionOptions(char) {
@@ -934,11 +943,33 @@ export class TacticUI {
                         : pName;
                     options.push({ label: `P${idx + 1}: ${dispPName}`, isHeader: true });
 
+                    const personaData = (window.personaFiles || {})[pName] || null;
+                    const uniqueSkill = personaData && personaData.uniqueSkill ? personaData.uniqueSkill : null;
+                    const uniqueBaseName = uniqueSkill ? (uniqueSkill.name || '') : '';
+
                     (p.skills || []).filter(s => s).forEach(skill => {
-                        const dispSkill = (window.DataLoader && window.DataLoader.getSkillDisplayName)
+                        let dispSkill = (window.DataLoader && window.DataLoader.getSkillDisplayName)
                             ? window.DataLoader.getSkillDisplayName(skill)
                             : skill;
-                        const skillIcon = this.getPersonaSkillIcon(skill);
+
+                        const isUnique = !!(uniqueSkill && uniqueBaseName && (
+                            skill === uniqueBaseName ||
+                            (uniqueSkill.name_en && skill === uniqueSkill.name_en) ||
+                            (uniqueSkill.name_jp && skill === uniqueSkill.name_jp)
+                        ));
+
+                        if (isUnique) {
+                            if (lang === 'en') dispSkill = uniqueSkill.name_en || uniqueSkill.name || dispSkill;
+                            else if (lang === 'jp') dispSkill = uniqueSkill.name_jp || uniqueSkill.name_en || uniqueSkill.name || dispSkill;
+                            else dispSkill = uniqueSkill.name || dispSkill;
+                        }
+
+                        let skillIcon = null;
+                        if (isUnique && uniqueSkill && uniqueSkill.icon && uniqueSkill.icon !== 'Default') {
+                            skillIcon = `${this.baseUrl}/assets/img/skill-element/${encodeURIComponent(uniqueSkill.icon)}.png`;
+                        }
+                        skillIcon = skillIcon || this.getPersonaSkillIcon(skill);
+
                         options.push({ label: dispSkill, value: skill, image: skillIcon });
                     });
                 }
@@ -963,11 +994,13 @@ export class TacticUI {
             if (charName === 'J&C') {
                 const skill1Icon = this.getSkillElementIcon(charName, 'skill1');
                 const skill2Icon = this.getSkillElementIcon(charName, 'skill2');
+                const skill3Icon = this.getSkillElementIcon(charName, 'skill3');
                 const highlight1Icon = this.getSkillElementIcon(charName, 'skill_highlight');
                 const highlight2Icon = this.getSkillElementIcon(charName, 'skill_highlight2');
 
                 options.push({ label: list[0], value: '스킬1', image: skill1Icon });
                 options.push({ label: list[1], value: '스킬2', image: skill2Icon });
+                options.push({ label: list[2], value: '스킬3', image: skill3Icon });
 
                 // Common actions
                 options.push({ label: list[8], isHeader: true }); // 공용 스킬 header
@@ -1252,8 +1285,18 @@ export class TacticUI {
             let currentPersona = initialPersona;
             let currentAction = initialActionVal;
 
+            // Dropdown component refs (set after creation)
+            let actorDD = null;
+            let personaDD = null;
+            let actionDD = null;
+
             // 3. Define Commit Function
             const commitStore = (a, p, act) => {
+                // Keep local closure state in sync
+                currentActor = a;
+                currentPersona = p;
+                currentAction = act;
+
                 let pIndex = -1;
                 if (a === '원더' && p) {
                     const personas = this.store.state?.wonder?.personas || [];
@@ -1321,13 +1364,39 @@ export class TacticUI {
             };
 
             const handleActionChange = (newA) => {
+                // If Wonder: auto-switch persona based on selected persona skill
+                if (currentActor === '원더' && newA) {
+                    const personas = this.store.state?.wonder?.personas || [];
+                    const matches = [];
+                    personas.forEach((p, idx) => {
+                        if (!p || !p.name) return;
+                        if ((p.skills || []).includes(newA)) {
+                            matches.push({ name: p.name, idx });
+                        }
+                    });
+
+                    if (matches.length > 0) {
+                        // Prefer keeping currentPersona if it also contains the skill
+                        const keep = matches.find(m => m.name === currentPersona);
+                        const chosen = keep || matches[0];
+                        if (chosen && chosen.name && chosen.name !== currentPersona) {
+                            commitStore(currentActor, chosen.name, newA);
+                            // Sync persona dropdown UI immediately
+                            if (personaDD && typeof personaDD.setValue === 'function') {
+                                personaDD.setValue(chosen.name);
+                            }
+                            return;
+                        }
+                    }
+                }
+
                 commitStore(currentActor, currentPersona, newA);
             };
 
             // 5. Create Components
 
             // Actor Dropdown
-            const actorDD = this.createCustomDropdown(actorOptions, initialActor, handleActorChange);
+            actorDD = this.createCustomDropdown(actorOptions, initialActor, handleActorChange);
             actorDD.container.classList.add('actor-dropdown');
 
             // Persona Dropdown
@@ -1342,7 +1411,7 @@ export class TacticUI {
                     })
                 : [];
 
-            const personaDD = this.createCustomDropdown(pOpts, initialPersona, handlePersonaChange);
+            personaDD = this.createCustomDropdown(pOpts, initialPersona, handlePersonaChange);
             personaDD.container.classList.add('persona-dropdown');
             // Visibility is controlled by CSS via .has-persona class on wrapper
 
@@ -1361,7 +1430,7 @@ export class TacticUI {
                 : { type: 'party', name: initialActor };
             const actionOpts = this.getActionOptions(charObj);
 
-            const actionDD = this.createCustomDropdown(actionOpts, initialActionVal, handleActionChange);
+            actionDD = this.createCustomDropdown(actionOpts, initialActionVal, handleActionChange);
             actionDD.container.classList.add('action-dropdown');
 
             // 6. Append to DOM
@@ -1944,12 +2013,30 @@ export class TacticUI {
                         : pName;
                     optGroup.label = `P${idx + 1}: ${dispPName}`;
 
+                    const personaData = (window.personaFiles || {})[pName] || null;
+                    const uniqueSkill = personaData && personaData.uniqueSkill ? personaData.uniqueSkill : null;
+                    const uniqueBaseName = uniqueSkill ? (uniqueSkill.name || '') : '';
+
                     (p.skills || []).filter(s => s).forEach((skill, sIdx) => {
                         const opt = document.createElement('option');
                         opt.value = skill;
-                        const dispSkill = (window.DataLoader && window.DataLoader.getSkillDisplayName)
+
+                        let dispSkill = (window.DataLoader && window.DataLoader.getSkillDisplayName)
                             ? window.DataLoader.getSkillDisplayName(skill)
                             : skill;
+
+                        const isUnique = !!(uniqueSkill && uniqueBaseName && (
+                            skill === uniqueBaseName ||
+                            (uniqueSkill.name_en && skill === uniqueSkill.name_en) ||
+                            (uniqueSkill.name_jp && skill === uniqueSkill.name_jp)
+                        ));
+
+                        if (isUnique) {
+                            if (lang === 'en') dispSkill = uniqueSkill.name_en || uniqueSkill.name || dispSkill;
+                            else if (lang === 'jp') dispSkill = uniqueSkill.name_jp || uniqueSkill.name_en || uniqueSkill.name || dispSkill;
+                            else dispSkill = uniqueSkill.name || dispSkill;
+                        }
+
                         opt.textContent = dispSkill;
                         optGroup.appendChild(opt);
                     });

@@ -45,6 +45,24 @@ export class WonderUI extends EventEmitter {
         return '원더';
     }
 
+    /**
+     * Get weapon tooltip text based on current language
+     */
+    getWeaponTooltip(weaponData) {
+        if (!weaponData) return '';
+        const lang = this.getCurrentLang();
+        let effect = '';
+        if (lang === 'en' && weaponData.effect_en) {
+            effect = weaponData.effect_en;
+        } else if (lang === 'jp' && weaponData.effect_jp) {
+            effect = weaponData.effect_jp;
+        } else {
+            effect = weaponData.effect || '';
+        }
+        // Escape HTML entities for safe attribute usage
+        return effect.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br>');
+    }
+
     init() {
         if (this.personaModal) {
             this.personaModal.on('select', this.handlePersonaSelect);
@@ -214,7 +232,7 @@ export class WonderUI extends EventEmitter {
                             ${orderOptions.map(n => `<option value="${n}" ${currentOrder == n ? 'selected' : ''}>${n}</option>`).join('')}
                         </select>
                     </div>
-                    <div class="revelation-dropdown wonder-weapon-dropdown">
+                    <div class="revelation-dropdown wonder-weapon-dropdown" ${weaponId && weaponData && weaponData.effect ? `data-tooltip="${this.getWeaponTooltip(weaponData)}"` : ''}>
                         <button type="button" class="revelation-button" style="width: 100%; justify-content: flex-start;">
                             ${weaponId ? `<img class="revelation-icon" src="${this.baseUrl}/assets/img/wonder-weapon/${encodeURIComponent(weaponImageName)}.webp" onerror="this.style.display='none'">` : ''}
                             <span>${weaponDisplayName || '-'}</span>
@@ -250,6 +268,11 @@ export class WonderUI extends EventEmitter {
         if (wonderWeaponDropdown) {
             const button = wonderWeaponDropdown.querySelector('.revelation-button');
             const menu = wonderWeaponDropdown.querySelector('.revelation-menu');
+            
+            // Bind tooltip if data-tooltip exists
+            if (wonderWeaponDropdown.hasAttribute('data-tooltip') && typeof bindTooltipElement === 'function') {
+                bindTooltipElement(wonderWeaponDropdown);
+            }
 
             const closeAll = () => {
                 document.querySelectorAll('.wonder-weapon-dropdown.open').forEach(d => d.classList.remove('open'));

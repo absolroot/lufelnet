@@ -229,11 +229,17 @@ export class TacticStore {
                     }
 
                     pattern[idx].forEach(actionDef => {
+                        // Normalize action type: 테우르기아 -> Theurgia for consistency with dropdown values
+                        let actionType = actionDef.type || '';
+                        if (actionType === '테우르기아') {
+                            actionType = 'Theurgia';
+                        }
+                        
                         const newAction = {
                             character: fullCharData.name,
                             wonderPersona: '',
                             wonderPersonaIndex: -1,
-                            action: actionDef.type || '',
+                            action: actionType,
                             memo: ''
                         };
                         turn.columns[orderKey].push(newAction);

@@ -112,6 +112,11 @@ export class PartyUI {
         if (!this.needStatContainer) return;
         if (!charData || !charData.name) return;
 
+        // Close roster-container when opening need-stat panel
+        if (this.rosterContainer && this.rosterContainer.classList.contains('expanded')) {
+            this.rosterContainer.classList.remove('expanded');
+        }
+
         this.needStatContainer.hidden = false;
 
         await DataLoader.loadCriticalData();
@@ -554,11 +559,24 @@ export class PartyUI {
                 e.target.closest('select') ||
                 e.target.closest('.revelation-option') ||
                 e.target.closest('.revelation-dropdown') ||
-                e.target.closest('.role-selector')) {
+                e.target.closest('.role-selector') ||
+                e.target.closest('.need-stat-trigger')) {
                 return;
             }
 
             e.stopPropagation();
+            
+            // Close need-stat panel when opening roster
+            this.closeNeedStatPanel();
+            
+            // Toggle roster: if same slot is clicked again and roster is expanded, close it
+            if (this.activeSlotIndex === index && this.rosterContainer.classList.contains('expanded')) {
+                this.rosterContainer.classList.remove('expanded');
+                this.activeSlotIndex = null;
+                this.container.querySelectorAll('.slot-card').forEach(s => s.classList.remove('selecting'));
+                return;
+            }
+            
             this.showRosterView(index === 3 ? 'support' : 'main');
             this.activeSlotIndex = index;
 
@@ -1208,15 +1226,20 @@ export class PartyUI {
 
             const ui = this.needStatUIs[index];
             const isOpen = this.openNeedStatSlotIndex === index;
+            const isElucidator = (index === 3);
             const triggerEl = ui.renderTrigger(data, index, isOpen);
-            triggerEl.addEventListener('click', (e) => {
-                e.stopPropagation();
-                if (this.openNeedStatSlotIndex === index) {
-                    this.closeNeedStatPanel();
-                } else {
-                    this.openNeedStatPanel(index, data).catch(err => console.error('[PartyUI] Failed to open need stat panel:', err));
-                }
-            });
+            
+            // Elucidator slot doesn't need panel expansion (all inputs are in trigger)
+            if (!isElucidator) {
+                triggerEl.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (this.openNeedStatSlotIndex === index) {
+                        this.closeNeedStatPanel();
+                    } else {
+                        this.openNeedStatPanel(index, data).catch(err => console.error('[PartyUI] Failed to open need stat panel:', err));
+                    }
+                });
+            }
 
             slotEl.appendChild(triggerEl);
         } finally {

@@ -42,30 +42,30 @@ export class NeedStatCardUI {
         const { currentText, neededText } = this.formatTotalPair(total);
         const { labelCurrent, labelNeeded } = this.getLabels();
         
-        // For elucidator slot, render editable inputs instead of static text
+        // For elucidator slot, render editable inputs instead of static text (no label needed)
         if (isElucidatorEditable) {
             const currentVal = Number.isFinite(total) ? total : 0;
             return `
                 <span class="need-stat-total need-stat-total-editable" data-slot-index="${slotIndex}" data-stat-type="${statType}">
                     <input type="number" class="need-stat-elucidator-inline-input" data-stat="${statType}" value="${currentVal}" min="0" max="100" step="0.1">
-                    <span class="need-stat-label-hint">${labelCurrent}</span>
                 </span>
             `;
         }
         
+        // Grid layout: labels on top, values below
         return `
-            <span class="need-stat-total" data-slot-index="${slotIndex}" data-stat-type="${statType}">
-                <span class="need-stat-current">${currentText}</span>
+            <span class="need-stat-total need-stat-total-grid" data-slot-index="${slotIndex}" data-stat-type="${statType}">
                 <span class="need-stat-label-hint">${labelCurrent}</span>
-                <span class="need-stat-sep">/</span>
-                <span class="need-stat-needed">${neededText}</span>
                 <span class="need-stat-label-hint">${labelNeeded}</span>
+                <span class="need-stat-current">${currentText}</span>
+                <span class="need-stat-needed">${neededText}</span>
             </span>
         `;
     }
 
     updateTotalPairDisplays(slotIndex, total, statType = 'critical') {
         const { currentText, neededText } = this.formatTotalPair(total);
+        // Update panel displays
         document
             .querySelectorAll(`.need-stat-total[data-slot-index="${slotIndex}"][data-stat-type="${statType}"]`)
             .forEach(el => {
@@ -74,6 +74,13 @@ export class NeedStatCardUI {
                 if (cur) cur.textContent = currentText;
                 if (need) need.textContent = neededText;
             });
+        // Update trigger table displays
+        document
+            .querySelectorAll(`.need-stat-trigger-row[data-stat-type="${statType}"] .need-stat-current[data-slot-index="${slotIndex}"]`)
+            .forEach(el => { el.textContent = currentText; });
+        document
+            .querySelectorAll(`.need-stat-trigger-row[data-stat-type="${statType}"] .need-stat-needed[data-slot-index="${slotIndex}"]`)
+            .forEach(el => { el.textContent = neededText; });
     }
 
     getCurrentLang() {
@@ -290,9 +297,10 @@ export class NeedStatCardUI {
         }
 
         // Display: [check] [target] [icon] [source] name [options] value%
+        const checkClass = isChecked ? '' : 'check-off';
         return `
             <div class="need-stat-row ${isChecked ? 'checked' : ''}" data-item-id="${itemId}" data-item-type="${item.type || ''}">
-                <img src="${this.baseUrl}/assets/img/ui/check-${isChecked ? 'on' : 'off'}.png" class="need-stat-check">
+                <img src="${this.baseUrl}/assets/img/ui/check-${isChecked ? 'on' : 'off'}.png" class="need-stat-check ${checkClass}">
                 <span class="need-stat-target">${target}</span>
                 ${skillIcon ? `<img src="${skillIcon}" class="need-stat-icon" onerror="this.style.display='none'">` : '<span class="need-stat-icon"></span>'}
                 <span class="need-stat-source">${sourceName}</span>
@@ -329,7 +337,7 @@ export class NeedStatCardUI {
         };
 
         return {
-            labelNeedStat: t('needStat', lang === 'en' ? 'Need Stat' : (lang === 'jp' ? '必要ステ' : 'Need Stat')),
+            labelNeedStat: t('needStat', lang === 'en' ? 'Need Stat' : (lang === 'jp' ? '必要ステ' : '필요 스탯')),
             labelAttrImprove: lang === 'en' ? 'Attribute Improvement' : (lang === 'jp' ? 'ステータス強化' : '속성 강화'),
             labelCritical: t('needStatCriticalRate', t('criticalRate', lang === 'en' ? 'Critical Rate' : (lang === 'jp' ? 'クリ率' : '크리티컬 확률'))),
             labelPierce: t('needStatPierceRate', lang === 'en' ? 'Pierce Rate' : (lang === 'jp' ? '貫通率' : '관통 확률')),
@@ -358,7 +366,7 @@ export class NeedStatCardUI {
         container.className = `need-stat-trigger ${isOpen ? 'open' : ''}`;
         container.dataset.slotIndex = slotIndex;
 
-        const { labelNeedStat, labelAttrImprove, labelCritical, labelPierce } = this.getLabels();
+        const { labelNeedStat, labelAttrImprove, labelCritical, labelPierce, labelCurrent, labelNeeded } = this.getLabels();
         const triggerTitle = this.isElucidator ? labelAttrImprove : labelNeedStat;
 
         // For elucidator, show global bonuses; for others, calculate from items
@@ -378,31 +386,61 @@ export class NeedStatCardUI {
 
         // Elucidator: editable inputs in trigger rows instead of accordion
         const isElucidatorEditable = this.isElucidator;
+        
+        const { currentText: critCurrentText, neededText: critNeededText } = this.formatTotalPair(critTotal);
+        const { currentText: pierceCurrentText, neededText: pierceNeededText } = this.formatTotalPair(pierceTotal);
 
-        container.innerHTML = `
-            <div class="need-stat-trigger-header">
-                <div class="need-stat-toggle">
-                    ${!isElucidatorEditable ? `<svg class="need-stat-caret ${isOpen ? 'open' : ''}" width="12" height="12" viewBox="0 0 16 16" fill="none">
-                        <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>` : ''}
-                    <span>${triggerTitle}</span>
-                </div>
-            </div>
-            <div class="need-stat-trigger-rows">
-                <div class="need-stat-trigger-row">
-                    <span class="need-stat-trigger-label">${labelCritical}</span>
-                    ${this.renderTotalPairHtml(slotIndex, critTotal, 'critical', isElucidatorEditable)}
-                </div>
-                <div class="need-stat-trigger-row">
-                    <span class="need-stat-trigger-label">${labelPierce}</span>
-                    ${this.renderTotalPairHtml(slotIndex, pierceTotal, 'pierce', isElucidatorEditable)}
-                </div>
-            </div>
-        `;
-
-        // Bind elucidator inline input events
+        // Table layout:
+        //                  현재    필요
+        // 크리티컬 확률    10%     90%
+        // 관통 확률        15%     85%
         if (isElucidatorEditable) {
+            container.innerHTML = `
+                <div class="need-stat-trigger-header">
+                    <div class="need-stat-toggle">
+                        <span>${triggerTitle}</span>
+                    </div>
+                </div>
+                <div class="need-stat-trigger-table">
+                    <div class="need-stat-trigger-row">
+                        <span class="need-stat-trigger-label">${labelCritical}</span>
+                        <input type="number" class="need-stat-elucidator-inline-input" data-stat="critical" data-slot-index="${slotIndex}" value="${critTotal}" min="0" max="100" step="0.1">
+                    </div>
+                    <div class="need-stat-trigger-row">
+                        <span class="need-stat-trigger-label">${labelPierce}</span>
+                        <input type="number" class="need-stat-elucidator-inline-input" data-stat="pierce" data-slot-index="${slotIndex}" value="${pierceTotal}" min="0" max="100" step="0.1">
+                    </div>
+                </div>
+            `;
             this.bindElucidatorTriggerEvents(container, slotIndex);
+        } else {
+            container.innerHTML = `
+                <div class="need-stat-trigger-header">
+                    <div class="need-stat-toggle">
+                        <svg class="need-stat-caret ${isOpen ? 'open' : ''}" width="12" height="12" viewBox="0 0 16 16" fill="none">
+                            <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span>${triggerTitle}</span>
+                    </div>
+                </div>
+                <div class="need-stat-trigger-table">
+                    <div class="need-stat-trigger-row need-stat-trigger-header-row">
+                        <span class="need-stat-trigger-label"></span>
+                        <span class="need-stat-trigger-col-header">${labelCurrent}</span>
+                        <span class="need-stat-trigger-col-header">${labelNeeded}</span>
+                    </div>
+                    <div class="need-stat-trigger-row" data-stat-type="critical">
+                        <span class="need-stat-trigger-label">${labelCritical}</span>
+                        <span class="need-stat-current" data-slot-index="${slotIndex}" data-stat-type="critical">${critCurrentText}</span>
+                        <span class="need-stat-needed" data-slot-index="${slotIndex}" data-stat-type="critical">${critNeededText}</span>
+                    </div>
+                    <div class="need-stat-trigger-row" data-stat-type="pierce">
+                        <span class="need-stat-trigger-label">${labelPierce}</span>
+                        <span class="need-stat-current" data-slot-index="${slotIndex}" data-stat-type="pierce">${pierceCurrentText}</span>
+                        <span class="need-stat-needed" data-slot-index="${slotIndex}" data-stat-type="pierce">${pierceNeededText}</span>
+                    </div>
+                </div>
+            `;
         }
 
         return container;
@@ -492,6 +530,11 @@ export class NeedStatCardUI {
                 if (requiredRitual === 0 || ritual >= requiredRitual) {
                     this.selectedItems.add(itemId);
                 }
+            }
+            
+            // 3. 계시 타입 (자신 아이템): 자동 선택
+            if (typeStr === '계시' && item.source && item.source !== '공통' && item.source !== '원더') {
+                this.selectedItems.add(itemId);
             }
         });
     }
@@ -675,12 +718,12 @@ export class NeedStatCardUI {
             revSumInput.addEventListener('click', (e) => e.stopPropagation());
         });
 
-        // Item checkbox click
+        // Item row click (whole row toggles check)
         container.querySelectorAll('.need-stat-row').forEach(row => {
             const checkEl = row.querySelector('.need-stat-check');
             if (!checkEl) return;
 
-            checkEl.addEventListener('click', (e) => {
+            const toggleCheck = (e) => {
                 e.stopPropagation();
                 const itemId = row.dataset.itemId;
                 if (!itemId) return;
@@ -689,15 +732,20 @@ export class NeedStatCardUI {
                     this.selectedItems.delete(itemId);
                     row.classList.remove('checked');
                     checkEl.src = `${this.baseUrl}/assets/img/ui/check-off.png`;
+                    checkEl.classList.add('check-off');
                 } else {
                     this.selectedItems.add(itemId);
                     row.classList.add('checked');
                     checkEl.src = `${this.baseUrl}/assets/img/ui/check-on.png`;
+                    checkEl.classList.remove('check-off');
                 }
 
                 const total = this.calculateTotal(buffItems, selfItems) + this.revelationSumCritical + globalElucidatorCritical;
                 this.updateTotalPairDisplays(slotIndex, total, 'critical');
-            });
+            };
+
+            // Click on row or check icon both toggle
+            row.addEventListener('click', toggleCheck);
         });
 
         // Option select change

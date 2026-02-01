@@ -1785,10 +1785,11 @@ body:not(.tactic-edit-mode) .ws-order {
     outline: none;
 }
 
-/* Wider dropdown options for ritual/mod selects */
+/* Wider dropdown options for ritual/mod/order selects (only affects expanded options) */
 .ritual-select option,
-.mod-select option {
-    min-width: 50px;
+.mod-select option,
+.order-select option {
+    min-width: 80px;
     padding: 4px 12px;
 }
 
@@ -2093,7 +2094,7 @@ body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
 .need-stat-card-accordion {
     background: rgba(0, 0, 0, 0.25);
     border-radius: 6px;
-    margin-top: 10px;
+    margin-top: 0;
     overflow: hidden;
 }
 
@@ -2102,7 +2103,7 @@ body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
     background: var(--card-background);
     border-radius: 12px;
     border-bottom: 3px solid var(--border-red);
-    padding: 16px;
+    padding: 12px 16px 12px 16px;
     margin-top: 16px;
 }
 
@@ -2166,7 +2167,15 @@ body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
 .need-stat-label-hint {
     font-size: 9px;
     color: rgba(255, 255, 255, 0.35);
-    margin-left: 2px;
+    text-align: center;
+}
+
+/* Grid layout for total pair (labels on top, values below) */
+.need-stat-total-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px 8px;
+    text-align: center;
 }
 
 /* Revelation icon in label */
@@ -2178,14 +2187,19 @@ body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
     opacity: 0.8;
 }
 
+.need-stat-rev-sum-label {
+    display: flex;
+    align-items: center;
+}
+
 /* Elucidator inline input in trigger */
 .need-stat-elucidator-inline-input {
-    width: 60px;
+    width: 48px;
     padding: 2px 6px;
     background: rgba(0, 0, 0, 0.4);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 4px;
-    color: #ff6b6b;
+    color: #a4a4a4;
     font-size: 12px;
     font-weight: 600;
     text-align: center;
@@ -2283,21 +2297,55 @@ body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
     background: rgba(255, 255, 255, 0.06);
 }
 
-.need-stat-trigger-rows {
+/* Elucidator slot: no hover effect on trigger header */
+.need-stat-trigger[data-slot-index="3"] .need-stat-trigger-header:hover {
+    background: rgba(255, 255, 255, 0.03);
+    cursor: default;
+}
+
+/* Table layout for trigger */
+.need-stat-trigger-table {
     padding: 4px 10px 8px;
 }
 
 .need-stat-trigger-row {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 50px 50px;
     align-items: center;
-    justify-content: space-between;
-    padding: 3px 0;
+    padding: 2px 0;
     font-size: 11px;
+}
+
+.need-stat-trigger-header-row {
+    padding-bottom: 4px;
+    margin-bottom: 2px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.need-stat-trigger-col-header {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 9px;
+    text-align: center;
 }
 
 .need-stat-trigger-label {
     color: rgba(255, 255, 255, 0.5);
     font-weight: 500;
+}
+
+.need-stat-trigger-row .need-stat-current,
+.need-stat-trigger-row .need-stat-needed {
+    text-align: center;
+    font-size: 11px;
+}
+
+.need-stat-trigger-row .need-stat-current {
+    color: #ff6b6b;
+    font-weight: 600;
+}
+
+.need-stat-trigger-row .need-stat-needed {
+    color: rgba(255, 255, 255, 0.6);
 }
 
 /* Header: [toggle] [total] */
@@ -2415,15 +2463,11 @@ body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
     gap: 6px;
     padding: 5px 6px;
     background: rgba(255, 255, 255, 0.03);
-    border-radius: 4px;
+    border-radius: 0;
     font-size: 11px;
-    margin-bottom: 3px;
-    transition: background 0.15s;
-}
-
-.crit-row:last-child,
-.need-stat-row:last-child {
     margin-bottom: 0;
+    transition: background 0.15s;
+    cursor: pointer;
 }
 
 .crit-row:hover,
@@ -2445,6 +2489,13 @@ body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
     cursor: pointer;
     flex-shrink: 0;
     opacity: 0.8;
+}
+
+/* Check off state is smaller (75%) */
+.need-stat-check.check-off {
+    width: 12px;
+    height: 12px;
+    margin: 2px; /* center align with 16px container */
 }
 
 .crit-check:hover,
@@ -2484,8 +2535,8 @@ span.need-stat-icon {
     font-size: 9px;
     color: rgba(255, 255, 255, 0.45);
     flex-shrink: 0;
-    min-width: 36px;
-    max-width: 50px;
+    min-width: 48px;
+    max-width: 60px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -2541,8 +2592,18 @@ span.need-stat-icon {
     padding: 8px;
 }
 
-/* Hide critical card in non-edit mode (but keep need-stat-trigger visible) */
-body:not(.tactic-edit-mode) .critical-card-accordion,
-body:not(.tactic-edit-mode) .need-stat-container {
+/* Hide critical card in non-edit mode (but keep need-stat-trigger and need-stat-container visible) */
+body:not(.tactic-edit-mode) .critical-card-accordion {
     display: none;
+}
+
+/* Allow need-stat-trigger to be clickable even in non-edit mode */
+body:not(.tactic-edit-mode) .need-stat-trigger {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+}
+
+body:not(.tactic-edit-mode) .need-stat-trigger input {
+    pointer-events: auto !important;
+    cursor: text !important;
 }

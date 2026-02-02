@@ -341,7 +341,7 @@ body:not(.tactic-edit-mode) #btnImport {
 .party-slots-wrapper {
     background: var(--card-background);
     border-radius: 12px;
-    padding: 20px;
+    padding: 16px;
 }
 
 /* Non-edit mode: connected with wonder-config-panel */
@@ -895,7 +895,7 @@ body:not(.tactic-edit-mode) .ritual-mod-wrapper {
 .wonder-config-panel {
     background: var(--card-background);
     border-radius: 12px;
-    padding: 20px;
+    padding: 16px;
     margin-top: 16px;
 }
 

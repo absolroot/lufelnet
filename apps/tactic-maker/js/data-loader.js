@@ -430,12 +430,15 @@ export class DataLoader {
                 eval(patchedText);
                 console.log('[DataLoader] Script executed');
 
-                // Extract mapping
+                // Extract mapping and effects
                 if (lang === 'en') {
                     console.log('[DataLoader] EN - __tmpMappingEn exists:', !!window.__tmpMappingEn);
                     console.log('[DataLoader] EN - __tmpEnRevelationData exists:', !!window.__tmpEnRevelationData);
                     if (window.__tmpEnRevelationData) {
                         console.log('[DataLoader] EN - mapping_en in data:', !!window.__tmpEnRevelationData.mapping_en);
+                        // 영어 sub_effects와 set_effects 저장
+                        DataLoader._localizedSubEffects = window.__tmpEnRevelationData.sub_effects || {};
+                        DataLoader._localizedSetEffects = window.__tmpEnRevelationData.set_effects || {};
                     }
                     DataLoader._revelationMapping = window.__tmpMappingEn ||
                         (window.__tmpEnRevelationData && window.__tmpEnRevelationData.mapping_en) || {};
@@ -446,6 +449,9 @@ export class DataLoader {
                     console.log('[DataLoader] JP - __tmpJpRevelationData exists:', !!window.__tmpJpRevelationData);
                     if (window.__tmpJpRevelationData) {
                         console.log('[DataLoader] JP - mapping_jp in data:', !!window.__tmpJpRevelationData.mapping_jp);
+                        // 일본어 sub_effects와 set_effects 저장
+                        DataLoader._localizedSubEffects = window.__tmpJpRevelationData.sub_effects || {};
+                        DataLoader._localizedSetEffects = window.__tmpJpRevelationData.set_effects || {};
                     }
                     DataLoader._revelationMapping = window.__tmpMappingJp ||
                         (window.__tmpJpRevelationData && window.__tmpJpRevelationData.mapping_jp) || {};

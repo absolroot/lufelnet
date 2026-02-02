@@ -1,38 +1,54 @@
 /**
  * Tactic Maker V2 - Need Stat Card UI Module
  * Renders a collapsible critical/pierce rate checklist panel.
+ * 
+ * Refactored into modules:
+ * - need-stat-state.js: Global state and utility functions
+ * - need-stat-data.js: Data getters, calculators, auto-selection
+ * - need-stat-events.js: Event handlers
  */
 
 import { DataLoader } from './data-loader.js';
 
-// Global elucidator bonus values (shared across all slots)
-let globalElucidatorCritical = 0;
-let globalElucidatorPierce = 0;
+// Import from state module
+import {
+    getElucidatorBonuses as _getElucidatorBonuses,
+    setElucidatorBonuses as _setElucidatorBonuses,
+    getGlobalBossSettings as _getGlobalBossSettings,
+    setGlobalBossSettings as _setGlobalBossSettings,
+    getGlobalElucidatorCritical,
+    getGlobalElucidatorPierce,
+    getCurrentLang,
+    formatTotalPair,
+    normalizeTextForLang,
+    getSourceDisplayName,
+    getLocalizedSkillName,
+    getLocalizedOptions,
+    getLabels,
+    sortItemsByCurrentChar
+} from './need-stat-state.js';
 
-// Global boss settings (shared across all slots for pierce calculation)
-let globalBossSettings = {
-    bossType: 'sea', // 'sea' or 'nightmare'
-    bossId: null,
-    baseDefense: 855,
-    defenseCoef: 263.2
-};
+// Data and events modules are available for future use
+// Currently, the class methods handle data fetching and event binding internally
+// These modules can be used for gradual migration to a more modular architecture
+// import { ... } from './need-stat-data.js';
+// import { ... } from './need-stat-events.js';
 
-
+// Re-export for external use
 export function getElucidatorBonuses() {
-    return { critical: globalElucidatorCritical, pierce: globalElucidatorPierce };
+    return _getElucidatorBonuses();
 }
 
 export function setElucidatorBonuses(critical, pierce) {
-    globalElucidatorCritical = critical;
-    globalElucidatorPierce = pierce;
+    _setElucidatorBonuses(critical, pierce);
 }
 
 export function getGlobalBossSettings() {
-    return { ...globalBossSettings };
+    return _getGlobalBossSettings();
 }
 
 export function setGlobalBossSettings(settings) {
-    globalBossSettings = { ...globalBossSettings, ...settings };
+    _setGlobalBossSettings(settings);
 }
 
 export class NeedStatCardUI {
@@ -49,6 +65,53 @@ export class NeedStatCardUI {
         this.extraDefenseReduce = 0;             // 별도 방어력 감소
         this.slotCharData = null;
         this.isElucidator = false;
+        this.currentSlotIndex = null;
+    }
+    
+    /**
+     * Save current selections to store for persistence
+     */
+    saveSelectionsToStore(slotIndex) {
+        if (slotIndex === undefined || slotIndex === null) return;
+        
+        if (!this.store.state.needStatSelections) {
+            this.store.state.needStatSelections = {};
+        }
+        
+        this.store.state.needStatSelections[slotIndex] = {
+            critical: [...this.selectedItems],
+            pierce: [...this.selectedPierceItems],
+            defense: [...this.selectedDefenseItems],
+            revSumCritical: this.revelationSumCritical,
+            revSumPierce: this.revelationSumPierce,
+            extraSumCritical: this.extraSumCritical,
+            extraSumPierce: this.extraSumPierce,
+            extraDefenseReduce: this.extraDefenseReduce
+        };
+        
+        // Trigger auto-save
+        this.store.notify('needStatChange', { slotIndex });
+    }
+    
+    /**
+     * Load saved selections from store
+     */
+    loadSelectionsFromStore(slotIndex) {
+        if (slotIndex === undefined || slotIndex === null) return false;
+        
+        const saved = this.store.state.needStatSelections?.[slotIndex];
+        if (!saved) return false;
+        
+        this.selectedItems = new Set(saved.critical || []);
+        this.selectedPierceItems = new Set(saved.pierce || []);
+        this.selectedDefenseItems = new Set(saved.defense || []);
+        this.revelationSumCritical = saved.revSumCritical || 0;
+        this.revelationSumPierce = saved.revSumPierce || 0;
+        this.extraSumCritical = saved.extraSumCritical || 0;
+        this.extraSumPierce = saved.extraSumPierce || 0;
+        this.extraDefenseReduce = saved.extraDefenseReduce || 0;
+        
+        return true;
     }
 
     formatTotalPair(total) {
@@ -809,7 +872,7 @@ export class NeedStatCardUI {
      * - 필요 관통 = 목표 - 현재
      */
     calculateDefenseStats(penetrateTotal, defenseReduceTotal) {
-        const { defenseCoef } = globalBossSettings;
+        const { defenseCoef } = _getGlobalBossSettings();
         
         // 방어력 감소만 적용 (관통은 적용하지 않음)
         const remainingDefenseCoef = Math.max(0, defenseCoef - defenseReduceTotal);
@@ -900,14 +963,14 @@ export class NeedStatCardUI {
         let pierceTarget = 0;
         let pierceNeeded = 0;
         if (this.isElucidator) {
-            critTotal = globalElucidatorCritical;
-            pierceTotal = globalElucidatorPierce;
+            critTotal = getGlobalElucidatorCritical();
+            pierceTotal = getGlobalElucidatorPierce();
         } else {
             const buffItems = this.getApplicableBuffItems();
             const selfItems = this.getApplicableSelfItems(charData);
             this.autoSelectBySlotSettings(charData, [...buffItems, ...selfItems]);
             this.ensureDefaultSelected(buffItems);
-            critTotal = this.calculateTotal(buffItems, selfItems) + this.revelationSumCritical + globalElucidatorCritical;
+            critTotal = this.calculateTotal(buffItems, selfItems) + this.revelationSumCritical + getGlobalElucidatorCritical();
             
             // Calculate pierce total from pierce items
             const { selfItems: penetrateSelfItems, buffItems: penetrateBuffItems } = this.getApplicablePenetrateItems(charData);
@@ -916,7 +979,7 @@ export class NeedStatCardUI {
             this.autoSelectPierceBySlotSettings(charData, defenseReduceItems, 'defense');
             const penetrateFromItems = this.calculatePierceTotal(penetrateSelfItems, penetrateBuffItems);
             const defenseReduceFromItems = this.calculateDefenseReduceTotal(defenseReduceItems);
-            pierceTotal = penetrateFromItems + this.revelationSumPierce + globalElucidatorPierce;
+            pierceTotal = penetrateFromItems + this.revelationSumPierce + getGlobalElucidatorPierce();
             
             // Calculate target and needed pierce based on defense stats
             const defenseStats = this.calculateDefenseStats(penetrateFromItems, defenseReduceFromItems);
@@ -1009,9 +1072,9 @@ export class NeedStatCardUI {
                 const val = parseFloat(input.value) || 0;
                 
                 if (statType === 'critical') {
-                    globalElucidatorCritical = val;
+                    _setElucidatorBonuses(val, getGlobalElucidatorPierce());
                 } else if (statType === 'pierce') {
-                    globalElucidatorPierce = val;
+                    _setElucidatorBonuses(getGlobalElucidatorCritical(), val);
                 }
                 
                 // Trigger update for all other slots
@@ -1040,7 +1103,7 @@ export class NeedStatCardUI {
             const itemTarget = item.target || '';
             const isRitualType = typeStr.match(/의식\d+/);
             const isWeaponType = typeStr === '전용무기';
-
+            
             // 방어력 감소: 전부 체크
             if (category === 'defense') {
                 selectedSet.add(itemId);
@@ -1206,6 +1269,7 @@ export class NeedStatCardUI {
     renderPanel(charData, slotIndex) {
         this.slotCharData = charData;
         this.isElucidator = (slotIndex === 3);
+        this.currentSlotIndex = slotIndex;
         const container = document.createElement('div');
         container.className = 'need-stat-card-accordion';
         container.dataset.slotIndex = slotIndex;
@@ -1220,22 +1284,22 @@ export class NeedStatCardUI {
                     <div class="need-stat-column need-stat-column-critical">
                         <div class="need-stat-column-header">
                             <span>${labelCritical}</span>
-                            ${this.renderTotalPairHtml(slotIndex, globalElucidatorCritical, 'critical')}
+                            ${this.renderTotalPairHtml(slotIndex, getGlobalElucidatorCritical(), 'critical')}
                         </div>
                         <div class="need-stat-body open">
                             <div class="need-stat-elucidator-input-row">
-                                <input type="number" class="need-stat-elucidator-input" data-stat="critical" value="${globalElucidatorCritical}" min="0" max="100" step="0.1">
+                                <input type="number" class="need-stat-elucidator-input" data-stat="critical" value="${getGlobalElucidatorCritical()}" min="0" max="100" step="0.1">
                             </div>
                         </div>
                     </div>
                     <div class="need-stat-column need-stat-column-pierce">
                         <div class="need-stat-column-header">
                             <span>${labelPierce}</span>
-                            ${this.renderTotalPairHtml(slotIndex, globalElucidatorPierce, 'pierce')}
+                            ${this.renderTotalPairHtml(slotIndex, getGlobalElucidatorPierce(), 'pierce')}
                         </div>
                         <div class="need-stat-body open">
                             <div class="need-stat-elucidator-input-row">
-                                <input type="number" class="need-stat-elucidator-input" data-stat="pierce" value="${globalElucidatorPierce}" min="0" max="100" step="0.1">
+                                <input type="number" class="need-stat-elucidator-input" data-stat="pierce" value="${getGlobalElucidatorPierce()}" min="0" max="100" step="0.1">
                             </div>
                         </div>
                     </div>
@@ -1245,29 +1309,38 @@ export class NeedStatCardUI {
             return container;
         }
 
+        // 저장된 선택 상태 로드 시도
+        const hasStoredSelections = this.loadSelectionsFromStore(slotIndex);
+        
         // Normal slot: show buff/self items with revelation sum per column
         const buffItems = this.getApplicableBuffItems();
         const selfItems = this.getApplicableSelfItems(charData);
-        this.autoSelectBySlotSettings(charData, [...buffItems, ...selfItems]);
-        this.ensureDefaultSelected(buffItems);
+        
+        // 저장된 선택이 없으면 자동 선택 적용
+        if (!hasStoredSelections) {
+            this.autoSelectBySlotSettings(charData, [...buffItems, ...selfItems]);
+            this.ensureDefaultSelected(buffItems);
+        }
 
         // Get pierce items (penetrate + defense reduce)
         const { selfItems: penetrateSelfItems, buffItems: penetrateBuffItems } = this.getApplicablePenetrateItems(charData);
         const defenseReduceItems = this.getApplicableDefenseReduceItems(charData);
         
-        // Auto-select pierce/defense items based on slot settings
-        this.autoSelectPierceBySlotSettings(charData, [...penetrateSelfItems, ...penetrateBuffItems], 'pierce');
-        this.autoSelectPierceBySlotSettings(charData, defenseReduceItems, 'defense');
+        // 저장된 선택이 없으면 자동 선택 적용
+        if (!hasStoredSelections) {
+            this.autoSelectPierceBySlotSettings(charData, [...penetrateSelfItems, ...penetrateBuffItems], 'pierce');
+            this.autoSelectPierceBySlotSettings(charData, defenseReduceItems, 'defense');
+        }
 
         const { labelExtraPierce, labelExtraDefenseReduce, labelPenetrateSelf, labelPenetrateBuff, labelDefenseReduce, labelRemainingDefense, labelRequiredPierce } = labels;
 
-        const critTotal = this.calculateTotal(buffItems, selfItems) + this.revelationSumCritical + this.extraSumCritical + globalElucidatorCritical;
+        const critTotal = this.calculateTotal(buffItems, selfItems) + this.revelationSumCritical + this.extraSumCritical + getGlobalElucidatorCritical();
         
         // Calculate pierce totals
         const penetrateFromItems = this.calculatePierceTotal(penetrateSelfItems, penetrateBuffItems);
         const defenseReduceFromItems = this.calculateDefenseReduceTotal(defenseReduceItems);
         const totalDefenseReduce = defenseReduceFromItems + this.extraDefenseReduce;
-        const pierceTotal = penetrateFromItems + this.revelationSumPierce + this.extraSumPierce + globalElucidatorPierce;
+        const pierceTotal = penetrateFromItems + this.revelationSumPierce + this.extraSumPierce + getGlobalElucidatorPierce();
         
         // Calculate remaining defense and pierce target/needed
         const defenseStats = this.calculateDefenseStats(penetrateFromItems, totalDefenseReduce);
@@ -1359,7 +1432,7 @@ export class NeedStatCardUI {
                 // Update boss button name
                 const bossNameEl = container.querySelector('.need-stat-boss-name');
                 const bossData = window.bossData || [];
-                const currentBoss = bossData.find(b => b.id === globalBossSettings.bossId);
+                const currentBoss = bossData.find(b => b.id === _getGlobalBossSettings().bossId);
                 if (bossNameEl && currentBoss) {
                     bossNameEl.textContent = this.getBossDisplayName(currentBoss);
                 }
@@ -1384,9 +1457,9 @@ export class NeedStatCardUI {
                 const val = parseFloat(input.value) || 0;
                 
                 if (statType === 'critical') {
-                    globalElucidatorCritical = val;
+                    _setElucidatorBonuses(val, getGlobalElucidatorPierce());
                 } else if (statType === 'pierce') {
-                    globalElucidatorPierce = val;
+                    _setElucidatorBonuses(getGlobalElucidatorCritical(), val);
                 }
                 
                 // Update this slot's display
@@ -1405,7 +1478,7 @@ export class NeedStatCardUI {
     notifyAllSlotsUpdate() {
         // Dispatch custom event that PartyUI can listen to
         window.dispatchEvent(new CustomEvent('elucidator-bonus-changed', {
-            detail: { critical: globalElucidatorCritical, pierce: globalElucidatorPierce }
+            detail: { critical: getGlobalElucidatorCritical(), pierce: getGlobalElucidatorPierce() }
         }));
         // Also dispatch event for shared item changes
         window.dispatchEvent(new CustomEvent('shared-item-changed', {
@@ -1438,17 +1511,15 @@ export class NeedStatCardUI {
         const bossData = window.bossData || [];
         
         // Filter bosses by current type
-        const currentType = globalBossSettings.bossType;
+        const currentType = _getGlobalBossSettings().bossType;
         const filteredBosses = bossData.filter(b => currentType === 'sea' ? !!b.isSea : !b.isSea);
         
         // If no boss selected or current boss doesn't match type, select first boss
-        let currentBoss = bossData.find(b => b.id === globalBossSettings.bossId);
+        let currentBoss = bossData.find(b => b.id === _getGlobalBossSettings().bossId);
         if (!currentBoss || (currentType === 'sea' ? !currentBoss.isSea : currentBoss.isSea)) {
             if (filteredBosses.length > 0) {
                 currentBoss = filteredBosses[0];
-                globalBossSettings.bossId = currentBoss.id;
-                globalBossSettings.defenseCoef = parseFloat(currentBoss.defenseCoef) || 0;
-                globalBossSettings.baseDefense = parseFloat(currentBoss.baseDefense) || 0;
+                _setGlobalBossSettings({ bossId: currentBoss.id, defenseCoef: parseFloat(currentBoss.defenseCoef) || 0, baseDefense: parseFloat(currentBoss.baseDefense) || 0 });
             }
         }
         const currentBossName = currentBoss ? this.getBossDisplayName(currentBoss) : '-';
@@ -1475,7 +1546,7 @@ export class NeedStatCardUI {
                             </button>
                             <div class="revelation-menu need-stat-boss-menu">
                                 ${filteredBosses.map(boss => `
-                                    <div class="revelation-option need-stat-boss-option ${boss.id === globalBossSettings.bossId ? 'selected' : ''}" data-boss-id="${boss.id}">
+                                    <div class="revelation-option need-stat-boss-option ${boss.id === _getGlobalBossSettings().bossId ? 'selected' : ''}" data-boss-id="${boss.id}">
                                         ${boss.img ? `<img src="${this.baseUrl}/assets/img/enemy/${boss.img}" class="need-stat-boss-option-icon" onerror="this.style.display='none'">` : ''}
                                         <span>${this.getBossDisplayName(boss)}</span>
                                     </div>
@@ -1485,7 +1556,7 @@ export class NeedStatCardUI {
                     </div>
                     <div class="need-stat-boss-stat">
                         <label>${labelDefenseCoef}</label>
-                        <input type="number" class="need-stat-boss-input" data-boss-stat="defenseCoef" value="${globalBossSettings.defenseCoef}" step="0.1">
+                        <input type="number" class="need-stat-boss-input" data-boss-stat="defenseCoef" value="${_getGlobalBossSettings().defenseCoef}" step="0.1">
                     </div>
                 </div>
             </div>
@@ -1570,7 +1641,7 @@ export class NeedStatCardUI {
             tab.addEventListener('click', (e) => {
                 e.stopPropagation();
                 const bossType = tab.dataset.bossType;
-                globalBossSettings.bossType = bossType;
+                _setGlobalBossSettings({ bossType });
                 
                 // Update tab active state
                 container.querySelectorAll('.need-stat-boss-tab').forEach(t => t.classList.remove('active'));
@@ -1614,7 +1685,14 @@ export class NeedStatCardUI {
                 e.stopPropagation();
                 const statName = input.dataset.bossStat;
                 const val = parseFloat(input.value) || 0;
-                globalBossSettings[statName] = val;
+                _setGlobalBossSettings({ [statName]: val });
+                
+                // defenseCoef 변경 시 pierce 계산 업데이트 트리거
+                if (statName === 'defenseCoef' || statName === 'baseDefense') {
+                    window.dispatchEvent(new CustomEvent('boss-settings-changed', {
+                        detail: { [statName]: val }
+                    }));
+                }
             });
             input.addEventListener('click', (e) => e.stopPropagation());
         });
@@ -1628,7 +1706,7 @@ export class NeedStatCardUI {
         if (!bossMenu) return;
         
         const bossData = window.bossData || [];
-        const currentType = globalBossSettings.bossType;
+        const currentType = _getGlobalBossSettings().bossType;
         const filteredBosses = bossData.filter(b => currentType === 'sea' ? !!b.isSea : !b.isSea);
         
         // Auto-select first boss of the new type
@@ -1638,7 +1716,7 @@ export class NeedStatCardUI {
         }
         
         bossMenu.innerHTML = filteredBosses.map(boss => `
-            <div class="revelation-option need-stat-boss-option ${boss.id === globalBossSettings.bossId ? 'selected' : ''}" data-boss-id="${boss.id}">
+            <div class="revelation-option need-stat-boss-option ${boss.id === _getGlobalBossSettings().bossId ? 'selected' : ''}" data-boss-id="${boss.id}">
                 ${boss.img ? `<img src="${this.baseUrl}/assets/img/enemy/${boss.img}" class="need-stat-boss-option-icon" onerror="this.style.display='none'">` : ''}
                 <span class="need-stat-boss-option-name">${this.getBossDisplayName(boss)}</span>
             </div>
@@ -1666,9 +1744,7 @@ export class NeedStatCardUI {
         const boss = bossData.find(b => b.id === bossId);
         if (!boss) return;
         
-        globalBossSettings.bossId = bossId;
-        globalBossSettings.baseDefense = parseFloat(boss.baseDefense) || 0;
-        globalBossSettings.defenseCoef = parseFloat(boss.defenseCoef) || 0;
+        _setGlobalBossSettings({ bossId, baseDefense: parseFloat(boss.baseDefense) || 0, defenseCoef: parseFloat(boss.defenseCoef) || 0 });
         
         // Update UI - name
         const nameEl = container.querySelector('.need-stat-boss-name');
@@ -1694,8 +1770,8 @@ export class NeedStatCardUI {
         
         const baseDefInput = container.querySelector('.need-stat-boss-input[data-boss-stat="baseDefense"]');
         const defCoefInput = container.querySelector('.need-stat-boss-input[data-boss-stat="defenseCoef"]');
-        if (baseDefInput) baseDefInput.value = globalBossSettings.baseDefense;
-        if (defCoefInput) defCoefInput.value = globalBossSettings.defenseCoef;
+        if (baseDefInput) baseDefInput.value = _getGlobalBossSettings().baseDefense;
+        if (defCoefInput) defCoefInput.value = _getGlobalBossSettings().defenseCoef;
         
         // Update selected state in dropdown
         container.querySelectorAll('.need-stat-boss-option').forEach(opt => {
@@ -1719,14 +1795,15 @@ export class NeedStatCardUI {
                 
                 if (statType === 'critical') {
                     this.revelationSumCritical = val;
-                    const total = this.calculateTotal(buffItems, selfItems) + this.revelationSumCritical + this.extraSumCritical + globalElucidatorCritical;
+                    const total = this.calculateTotal(buffItems, selfItems) + this.revelationSumCritical + this.extraSumCritical + getGlobalElucidatorCritical();
                     this.updateTotalPairDisplays(slotIndex, total, 'critical');
+                    this.saveSelectionsToStore(slotIndex);
                 } else if (statType === 'pierce') {
                     this.revelationSumPierce = val;
                     // Recalculate pierce total including items
                     const { selfItems: penetrateSelfItems, buffItems: penetrateBuffItems } = this.getApplicablePenetrateItems(this.slotCharData);
                     const penetrateFromItems = this.calculatePierceTotal(penetrateSelfItems, penetrateBuffItems);
-                    const total = penetrateFromItems + this.revelationSumPierce + this.extraSumPierce + globalElucidatorPierce;
+                    const total = penetrateFromItems + this.revelationSumPierce + this.extraSumPierce + getGlobalElucidatorPierce();
                     this.updateTotalPairDisplays(slotIndex, total, 'pierce');
                     
                     // Update defense info display
@@ -1754,6 +1831,7 @@ export class NeedStatCardUI {
                         if (triggerPierceCurrentEl) triggerPierceCurrentEl.textContent = `${total.toFixed(1)}%`;
                         if (triggerPierceNeededEl) triggerPierceNeededEl.textContent = `${neededPierce.toFixed(1)}%`;
                     }
+                    this.saveSelectionsToStore(slotIndex);
                 }
             });
             revSumInput.addEventListener('click', (e) => e.stopPropagation());
@@ -1768,14 +1846,15 @@ export class NeedStatCardUI {
                 
                 if (statType === 'critical') {
                     this.extraSumCritical = val;
-                    const total = this.calculateTotal(buffItems, selfItems) + this.revelationSumCritical + this.extraSumCritical + globalElucidatorCritical;
+                    const total = this.calculateTotal(buffItems, selfItems) + this.revelationSumCritical + this.extraSumCritical + getGlobalElucidatorCritical();
                     this.updateTotalPairDisplays(slotIndex, total, 'critical');
+                    this.saveSelectionsToStore(slotIndex);
                 } else if (statType === 'pierce') {
                     this.extraSumPierce = val;
                     // Recalculate pierce total including items
                     const { selfItems: penetrateSelfItems, buffItems: penetrateBuffItems } = this.getApplicablePenetrateItems(this.slotCharData);
                     const penetrateFromItems = this.calculatePierceTotal(penetrateSelfItems, penetrateBuffItems);
-                    const total = penetrateFromItems + this.revelationSumPierce + this.extraSumPierce + globalElucidatorPierce;
+                    const total = penetrateFromItems + this.revelationSumPierce + this.extraSumPierce + getGlobalElucidatorPierce();
                     this.updateTotalPairDisplays(slotIndex, total, 'pierce');
                     
                     // Update defense info display
@@ -1830,8 +1909,11 @@ export class NeedStatCardUI {
                     checkEl.classList.remove('check-off');
                 }
 
-                const total = this.calculateTotal(buffItems, selfItems) + this.revelationSumCritical + globalElucidatorCritical;
+                const total = this.calculateTotal(buffItems, selfItems) + this.revelationSumCritical + getGlobalElucidatorCritical();
                 this.updateTotalPairDisplays(slotIndex, total, 'critical');
+                
+                // 선택 상태 저장
+                this.saveSelectionsToStore(slotIndex);
             };
 
             // Click on row or check icon both toggle
@@ -1868,7 +1950,7 @@ export class NeedStatCardUI {
                         if (valueEl) valueEl.textContent = `${item.value}%`;
                     }
 
-                    const total = this.calculateTotal(buffItems, selfItems) + this.revelationSumCritical + globalElucidatorCritical;
+                    const total = this.calculateTotal(buffItems, selfItems) + this.revelationSumCritical + getGlobalElucidatorCritical();
                     this.updateTotalPairDisplays(slotIndex, total, 'critical');
                 }
             });
@@ -1918,7 +2000,7 @@ export class NeedStatCardUI {
                         }
                     });
                     
-                    const total = this.calculateTotal(buffItems, selfItems) + this.revelationSumCritical + globalElucidatorCritical;
+                    const total = this.calculateTotal(buffItems, selfItems) + this.revelationSumCritical + getGlobalElucidatorCritical();
                     this.updateTotalPairDisplays(slotIndex, total, 'critical');
                 }
             });
@@ -1937,7 +2019,7 @@ export class NeedStatCardUI {
             const penetrateFromItems = this.calculatePierceTotal(penetrateSelfItems, penetrateBuffItems);
             const defenseReduceFromItems = this.calculateDefenseReduceTotal(defenseReduceItems);
             const totalDefenseReduce = defenseReduceFromItems + this.extraDefenseReduce;
-            const pierceTotal = penetrateFromItems + this.revelationSumPierce + this.extraSumPierce + globalElucidatorPierce;
+            const pierceTotal = penetrateFromItems + this.revelationSumPierce + this.extraSumPierce + getGlobalElucidatorPierce();
             
             const defenseStats = this.calculateDefenseStats(penetrateFromItems, totalDefenseReduce);
             const remainingDefense = defenseStats.remainingDefense;
@@ -1971,6 +2053,9 @@ export class NeedStatCardUI {
                 if (triggerPierceNeededEl) triggerPierceNeededEl.textContent = `${pierceNeeded.toFixed(1)}%`;
             }
         };
+        
+        // boss-settings-changed 이벤트 수신하여 pierce 계산 업데이트
+        window.addEventListener('boss-settings-changed', updatePierceDisplays);
 
         // Item row click for pierce/defense items
         container.querySelectorAll('.need-stat-row[data-category]').forEach(row => {
@@ -1998,6 +2083,9 @@ export class NeedStatCardUI {
                 }
 
                 updatePierceDisplays();
+                
+                // 선택 상태 저장
+                this.saveSelectionsToStore(slotIndex);
             };
 
             row.addEventListener('click', toggleCheck);
@@ -2054,6 +2142,7 @@ export class NeedStatCardUI {
                 const val = parseFloat(extraDefenseInput.value) || 0;
                 this.extraDefenseReduce = val;
                 updatePierceDisplays();
+                this.saveSelectionsToStore(slotIndex);
             });
             extraDefenseInput.addEventListener('click', (e) => e.stopPropagation());
         });

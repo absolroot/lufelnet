@@ -32,15 +32,35 @@ function getRevelationTooltip(revName, kind = 'sub', currentSubRev = '') {
         ? window.I18nService.getCurrentLanguage() 
         : 'kr';
     
+    // DataLoader에서 로드된 매핑 사용 (한국어 키 -> 해당 언어 키)
+    const mapping = (lang !== 'kr' && DataLoader._revelationMapping) ? DataLoader._revelationMapping : {};
+    
+    // 한국어 키를 해당 언어 키로 변환하는 함수
+    const getLocalizedKey = (krKey) => {
+        if (lang === 'kr') return krKey;
+        return mapping[krKey] || krKey;
+    };
+    
+    // 언어별 효과 데이터 가져오기 (영어/일본어면 DataLoader에서 로드된 데이터 사용)
+    const subEffects = (lang !== 'kr' && DataLoader._localizedSubEffects) 
+        ? DataLoader._localizedSubEffects 
+        : (revData.sub_effects || {});
+    const setEffects = (lang !== 'kr' && DataLoader._localizedSetEffects) 
+        ? DataLoader._localizedSetEffects 
+        : (revData.set_effects || {});
+    
     if (kind === 'main') {
         // Main revelation: show set effect with current sub revelation from set_effects
         if (!currentSubRev) return ''; // No sub selected, no tooltip
         
-        const setEffects = revData.set_effects || {};
-        const mainEffects = setEffects[revName];
+        // 언어별 키로 변환하여 조회
+        const localizedMainKey = getLocalizedKey(revName);
+        const localizedSubKey = getLocalizedKey(currentSubRev);
+        
+        const mainEffects = setEffects[localizedMainKey] || setEffects[revName];
         if (!mainEffects) return '';
         
-        const setEffect = mainEffects[currentSubRev];
+        const setEffect = mainEffects[localizedSubKey] || mainEffects[currentSubRev];
         if (!setEffect) return '';
         
         const mainName = DataLoader.getRevelationName(revName);
@@ -51,8 +71,9 @@ function getRevelationTooltip(revName, kind = 'sub', currentSubRev = '') {
         return `<b>${mainName} + ${subName}</b><br>${setLabel}: ${highlightNumbers(setEffect)}`;
     } else {
         // Sub revelation: show set2 + set4 effects
-        const subEffects = revData.sub_effects || {};
-        const effect = subEffects[revName];
+        // 언어별 키로 변환하여 조회
+        const localizedKey = getLocalizedKey(revName);
+        const effect = subEffects[localizedKey] || subEffects[revName];
         if (!effect) return '';
         
         const subName = DataLoader.getRevelationName(revName);

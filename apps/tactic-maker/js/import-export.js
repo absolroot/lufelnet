@@ -61,8 +61,11 @@ export class ImportExport {
         const urlParams = new URLSearchParams(window.location.search);
         const sharedData = urlParams.get('data');
         const binId = urlParams.get('bin');
+        const libraryCode = urlParams.get('library');
 
-        if (binId) {
+        if (libraryCode) {
+            this.fetchFromLibrary(libraryCode);
+        } else if (binId) {
             this.fetchFromBin(binId);
         } else if (sharedData) {
             try {
@@ -83,6 +86,81 @@ export class ImportExport {
             } catch (error) {
                 console.error('[ImportExport] Failed to parse URL data:', error);
             }
+        }
+    }
+
+    /**
+     * Fetch tactic data from Supabase library (tactics table)
+     */
+    async fetchFromLibrary(code) {
+        try {
+            console.log('[ImportExport] Fetching from library:', code);
+
+            // Wait for supabase to be available
+            const waitForSupabase = () => new Promise((resolve) => {
+                const check = () => {
+                    if (typeof supabase !== 'undefined') {
+                        resolve(true);
+                    } else {
+                        setTimeout(check, 100);
+                    }
+                };
+                check();
+                // Timeout after 5 seconds
+                setTimeout(() => resolve(false), 5000);
+            });
+
+            const supabaseReady = await waitForSupabase();
+            if (!supabaseReady) {
+                console.error('[ImportExport] Supabase not available');
+                return;
+            }
+
+            const { data, error } = await supabase
+                .from('tactics')
+                .select('title, query, tactic_version')
+                .eq('url', code)
+                .maybeSingle();
+
+            if (error || !data) {
+                console.error('[ImportExport] Library fetch error:', error);
+                return;
+            }
+
+            let payload = data.query;
+            if (typeof payload === 'string') {
+                try {
+                    payload = JSON.parse(payload);
+                } catch (e) {
+                    console.error('[ImportExport] Failed to parse library data:', e);
+                    return;
+                }
+            }
+
+            if (!payload || typeof payload !== 'object') {
+                console.error('[ImportExport] Invalid library payload');
+                return;
+            }
+
+            // Apply the data with title override if available
+            this.applyImportedData(payload);
+
+            // Update title if provided
+            if (data.title) {
+                const titleInput = document.getElementById('tacticTitle');
+                if (titleInput) {
+                    titleInput.value = data.title;
+                }
+                // Also update store title
+                if (this.store && this.store.state) {
+                    this.store.state.title = data.title;
+                }
+            }
+
+            console.log('[ImportExport] Library data loaded successfully');
+
+        } catch (error) {
+            console.error('[ImportExport] Failed to fetch library data:', error);
         }
     }
 

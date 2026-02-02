@@ -613,6 +613,7 @@ class TacticUploader {
     constructor() {
         this.currentUser = null;
         this.tacticData = null;
+        this.tacticVersion = 'legacy'; // 'v3' or 'legacy'
         this.tacticPreview = new TacticPreview();
         this.currentLang = this.getCurrentLanguage();
         this.editMode = false;
@@ -864,6 +865,8 @@ class TacticUploader {
             if (data.tactic_type) document.getElementById('tacticType').value = data.tactic_type;
             try {
                 this.tacticData = typeof data.query === 'string' ? JSON.parse(data.query) : data.query;
+                // Set tactic version from DB or detect from data
+                this.tacticVersion = data.tactic_version || this.detectTacticVersion(this.tacticData);
                 this.showJsonPreview(this.tacticData);
             } catch (_) {}
             this.enableEditUI();
@@ -941,6 +944,29 @@ class TacticUploader {
 
     // 제목 자동 접두어 추가 기능 제거
 
+    /**
+     * Detect tactic format version
+     * Returns 'v3' for new tactic-maker (ver >= 3.0), 'legacy' for old format
+     */
+    detectTacticVersion(data) {
+        const version = data['tactic-maker-ver'];
+        if (version) {
+            const vNum = parseFloat(version);
+            if (vNum >= 3.0) {
+                return 'v3';
+            }
+        }
+        // Legacy format has party array and turns array
+        if (Array.isArray(data.party) && Array.isArray(data.turns)) {
+            return 'legacy';
+        }
+        // Compressed legacy format
+        if (Array.isArray(data.p) && Array.isArray(data.t)) {
+            return 'legacy';
+        }
+        return 'unknown';
+    }
+
     async handleFileUpload(event) {
         const file = event.target.files[0];
         if (!file) return;
@@ -949,6 +975,8 @@ class TacticUploader {
             const text = await file.text();
             const data = JSON.parse(text);
             
+            // Detect and store format version
+            this.tacticVersion = this.detectTacticVersion(data);
             this.tacticData = data;
             this.showJsonPreview(data);
             
@@ -971,15 +999,16 @@ class TacticUploader {
         const previewDiv = document.getElementById('jsonPreview');
         const contentDiv = document.getElementById('previewContent');
         
-        if (data.party && data.party.length > 0) {
+        // v3 format has party array with possible null values
+        const hasParty = data.party && Array.isArray(data.party) && 
+            data.party.some(m => m && m.name);
+        
+        if (hasParty) {
             const preview = this.createTacticPreview(data);
             contentDiv.innerHTML = '';
             if (preview) {
                 contentDiv.appendChild(preview);
             }
-            
-            // 파티 정보 텍스트
-                    // 파티 구성/턴수 표기는 미리보기에서 제외
         }
         
         previewDiv.style.display = 'block';
@@ -997,8 +1026,9 @@ class TacticUploader {
         const partyImagesDiv = document.createElement('div');
         partyImagesDiv.className = 'party-images';
 
+        // Filter out null/empty members and sort by order
         const orderedParty = tacticData.party
-            .filter(pm => pm.name !== "")
+            .filter(pm => pm && pm.name && pm.name !== "")
             .sort((a, b) => {
                 if (a.order === "-") return 1;
                 if (b.order === "-") return -1;
@@ -1006,7 +1036,7 @@ class TacticUploader {
             });
 
         orderedParty.forEach(member => {
-            if (member.name === "원더") return;
+            if (member.name === "원더" || member.name === "Wonder") return;
             
             const container = document.createElement('div');
             if (characterData[member.name]) {
@@ -1066,8 +1096,11 @@ class TacticUploader {
         // 폼 데이터 수집
         const formData = this.getFormData(true);
         
-        // 미리보기 생성
-        const tacticUrl = `https://lufel.net/tactic/?code=${formData.url}`;
+        // 미리보기 생성 - 버전에 따라 적절한 URL 사용
+        const tacticVersion = this.tacticVersion || 'legacy';
+        const tacticUrl = tacticVersion === 'v3' 
+            ? `https://lufel.net/tactic-maker/?library=${formData.url}`
+            : `https://lufel.net/tactic/?library=${formData.url}`;
         const previewHtml = `
             <div class="tactic-post">
                 <div class="post-header">
@@ -1155,6 +1188,9 @@ class TacticUploader {
         this.showLoading(true);
 
         try {
+            // Determine tactic version for storage and link generation
+            const tacticVersion = this.tacticVersion || 'legacy';
+            
             const { data, error } = await supabase
                 .from('tactics')
                 .insert([{
@@ -1165,13 +1201,11 @@ class TacticUploader {
                     query: this.tacticData,
                     tactic_type: formData.type,
                     region: formData.region,
-                    user_id: this.currentUser.id
+                    user_id: this.currentUser.id,
+                    tactic_version: tacticVersion
                 }])
                 .select('id')
                 .single();
-
-            //console.log('Tactic uploaded with URL code:', formData.url);
-            //console.log('Full URL will be: https://lufel.net/tactic/?code=' + formData.url);
 
             if (error) {
                 throw error;
@@ -1190,9 +1224,11 @@ class TacticUploader {
             const successMessage = this.currentLang === 'en' ? 'Tactic uploaded successfully!' :
                                   this.currentLang === 'jp' ? 'タクティックが正常にアップロードされました！' :
                                   '택틱이 성공적으로 업로드되었습니다!';
-            // 성공 팝업(모달)로 URL 안내 표시
+            // 성공 팝업(모달)로 URL 안내 표시 - v3는 새 택틱 메이커로, legacy는 기존 택틱 메이커로
             const urlCode = formData.url;
-            const publicLink = `https://lufel.net/tactic/?library=${encodeURIComponent(urlCode)}`;
+            const publicLink = tacticVersion === 'v3' 
+                ? `https://lufel.net/tactic-maker/?library=${encodeURIComponent(urlCode)}`
+                : `https://lufel.net/tactic/?library=${encodeURIComponent(urlCode)}`;
             const modal = document.getElementById('successModal');
             const msgEl = document.getElementById('successMessageText');
             const linkEl = document.getElementById('publicLinkEl');

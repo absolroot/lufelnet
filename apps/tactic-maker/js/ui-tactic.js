@@ -330,6 +330,29 @@ export class TacticUI {
         const turns = this.store.state.turns;
         const sortedChars = this.sortedChars.length > 0 ? this.sortedChars : this.getSortedParty();
 
+        // Create/update colgroup for fixed column widths
+        const table = this.tableBody.closest('table');
+        if (table) {
+            let colgroup = table.querySelector('colgroup');
+            if (!colgroup) {
+                colgroup = document.createElement('colgroup');
+                table.insertBefore(colgroup, table.firstChild);
+            }
+            colgroup.innerHTML = '';
+            // Turn column
+            const colTurn = document.createElement('col');
+            colTurn.style.width = '48px';
+            colTurn.style.minWidth = '48px';
+            colgroup.appendChild(colTurn);
+            // Character columns - equal width
+            const charColWidth = `${(100 / sortedChars.length).toFixed(2)}%`;
+            sortedChars.forEach(() => {
+                const col = document.createElement('col');
+                col.style.width = charColWidth;
+                colgroup.appendChild(col);
+            });
+        }
+
         if (turns.length === 0) {
             // Show empty state
             const tr = document.createElement('tr');
@@ -414,7 +437,8 @@ export class TacticUI {
 
             // Character columns
             sortedChars.forEach(char => {
-                const colKey = String(char.order);
+                // For wonder, use 'mystery' as column key; for others, use order
+                const colKey = char.type === 'wonder' ? 'mystery' : String(char.order);
                 const td = document.createElement('td');
                 td.className = 'tactic-cell';
                 td.dataset.turnIndex = turnIdx;
@@ -458,18 +482,16 @@ export class TacticUI {
 
                     if (autoPromptEnabled) {
                         let hasActions = false;
-                        // For wonder, check 'mystery' column; for others, check colKey
-                        const checkKey = char.type === 'wonder' ? 'mystery' : colKey;
+                        // Check if any turn has actions for this column
                         for (const t of this.store.state.turns) {
-                            if (t.columns[checkKey] && t.columns[checkKey].length > 0) {
+                            if (t.columns[colKey] && t.columns[colKey].length > 0) {
                                 hasActions = true;
                                 break;
                             }
                         }
 
-                        // For wonder, pass 'mystery' to hasDefaultPattern; for others, pass colKey
-                        const patternKey = char.type === 'wonder' ? 'mystery' : colKey;
-                        if (!hasActions && this.store.hasDefaultPattern(patternKey)) {
+                        // Show prompt if no actions and has default pattern
+                        if (!hasActions && this.store.hasDefaultPattern(colKey)) {
                             const promptDiv = document.createElement('div');
                             promptDiv.className = 'auto-action-prompt';
 
@@ -486,7 +508,7 @@ export class TacticUI {
                             // Bind events
                             promptDiv.querySelector('.btn-prompt-yes').addEventListener('click', (e) => {
                                 e.stopPropagation();
-                                this.store.applyDefaultPattern(patternKey);
+                                this.store.applyDefaultPattern(colKey);
                             });
 
                             promptDiv.querySelector('.btn-prompt-no').addEventListener('click', (e) => {
@@ -543,29 +565,38 @@ export class TacticUI {
             e.dataTransfer.dropEffect = 'move';
             cell.classList.add('drag-over');
 
-            // Find drop position within action list
-            const actionItems = Array.from(actionList.querySelectorAll('.action-item:not(.dragging)'));
+            const { turnIdx: fromTurnIdx, colKey: fromColKey, actionIdx: fromActionIdx } = this._draggedAction;
+            const isSameCell = fromTurnIdx === turnIdx && fromColKey === colKey;
+
+            // Get ALL action items (including the dragging one for proper index calculation)
+            const allActionItems = Array.from(actionList.querySelectorAll('.action-item'));
             const mouseY = e.clientY;
 
             // Remove existing indicators
             actionList.querySelectorAll('.action-drop-indicator').forEach(el => el.remove());
 
-            // Find insert position
-            let insertBefore = null;
-            for (const item of actionItems) {
+            // Find insert position based on all items
+            let insertBeforeIdx = allActionItems.length;
+            for (let i = 0; i < allActionItems.length; i++) {
+                const item = allActionItems[i];
                 const rect = item.getBoundingClientRect();
                 const midY = rect.top + rect.height / 2;
                 if (mouseY < midY) {
-                    insertBefore = item;
+                    insertBeforeIdx = i;
                     break;
                 }
+            }
+
+            // Don't show indicator at current position if same cell
+            if (isSameCell && (insertBeforeIdx === fromActionIdx || insertBeforeIdx === fromActionIdx + 1)) {
+                return;
             }
 
             // Add drop indicator
             const indicator = document.createElement('div');
             indicator.className = 'action-drop-indicator';
-            if (insertBefore) {
-                actionList.insertBefore(indicator, insertBefore);
+            if (insertBeforeIdx < allActionItems.length) {
+                actionList.insertBefore(indicator, allActionItems[insertBeforeIdx]);
             } else {
                 actionList.appendChild(indicator);
             }
@@ -587,14 +618,15 @@ export class TacticUI {
             if (!this._draggedAction || !this.isEditMode()) return;
 
             const { turnIdx: fromTurnIdx, colKey: fromColKey, actionIdx: fromActionIdx } = this._draggedAction;
+            const isSameCell = fromTurnIdx === turnIdx && fromColKey === colKey;
 
-            // Calculate drop position
-            const actionItems = Array.from(actionList.querySelectorAll('.action-item:not(.dragging)'));
+            // Get ALL action items for proper index calculation
+            const allActionItems = Array.from(actionList.querySelectorAll('.action-item'));
             const mouseY = e.clientY;
-            let toActionIdx = actionItems.length; // Default: end of list
+            let toActionIdx = allActionItems.length; // Default: end of list
 
-            for (let i = 0; i < actionItems.length; i++) {
-                const rect = actionItems[i].getBoundingClientRect();
+            for (let i = 0; i < allActionItems.length; i++) {
+                const rect = allActionItems[i].getBoundingClientRect();
                 const midY = rect.top + rect.height / 2;
                 if (mouseY < midY) {
                     toActionIdx = i;
@@ -602,7 +634,12 @@ export class TacticUI {
                 }
             }
 
-            // Perform the move
+            // Skip if dropping at the same position
+            if (isSameCell && (toActionIdx === fromActionIdx || toActionIdx === fromActionIdx + 1)) {
+                return;
+            }
+
+            // Perform the move (store handles index adjustment for same-cell moves)
             this.store.moveActionTo(fromTurnIdx, fromColKey, fromActionIdx, turnIdx, colKey, toActionIdx);
         });
     }
@@ -639,7 +676,8 @@ export class TacticUI {
         });
 
         row.addEventListener('dragover', (e) => {
-            if (!this._draggedTurn || !this.isEditMode()) return;
+            // Only show turn drag guide when dragging a turn, not an action
+            if (!this._draggedTurn || this._draggedAction || !this.isEditMode()) return;
             if (this._draggedTurn.turnIdx === turnIdx) return;
             e.preventDefault();
             e.dataTransfer.dropEffect = 'move';
@@ -1245,8 +1283,27 @@ export class TacticUI {
                     colKey: colKey,
                     actionIdx: actionIdx
                 }));
+
+                // Use transparent drag image to hide default browser preview
+                const emptyImg = document.createElement('div');
+                emptyImg.style.width = '1px';
+                emptyImg.style.height = '1px';
+                emptyImg.style.opacity = '0';
+                document.body.appendChild(emptyImg);
+                e.dataTransfer.setDragImage(emptyImg, 0, 0);
+                requestAnimationFrame(() => emptyImg.remove());
+
                 // Store reference for drop handling
                 this._draggedAction = { turnIdx, colKey, actionIdx, element: item };
+
+                // Add is-dragging class to table container for layout stability
+                const tableContainer = document.querySelector('.tactic-table-container');
+                if (tableContainer) {
+                    tableContainer.classList.add('is-dragging');
+                    // Set party count CSS variable for column width calculation
+                    const partyCount = (this.store.state.party || []).filter(m => m).length + 1; // +1 for wonder
+                    tableContainer.style.setProperty('--party-count', partyCount);
+                }
             });
 
             item.addEventListener('dragend', () => {
@@ -1256,6 +1313,9 @@ export class TacticUI {
                 // Remove all drop indicators
                 document.querySelectorAll('.action-drop-indicator').forEach(el => el.remove());
                 document.querySelectorAll('.tactic-cell.drag-over').forEach(el => el.classList.remove('drag-over'));
+                // Remove is-dragging class
+                const tableContainer = document.querySelector('.tactic-table-container');
+                if (tableContainer) tableContainer.classList.remove('is-dragging');
             });
         }
 

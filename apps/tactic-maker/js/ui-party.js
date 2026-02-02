@@ -1185,8 +1185,8 @@ export class PartyUI {
                 const currentData = { ...this.store.state.party[index], ritual: val };
                 this.store.setPartySlot(index, currentData);
                 this.updatePresetIconsFromValues(slotEl, val, modSelect ? modSelect.value : (data.modification || '0'));
-                // Refresh need-stat auto-selection
-                this.refreshNeedStatForSlot(index, currentData);
+                // Refresh need-stat auto-selection for ritual change
+                this.refreshNeedStatForRitual(index, currentData, val);
             });
         }
 
@@ -1206,8 +1206,8 @@ export class PartyUI {
                 const currentData = { ...this.store.state.party[index], modification: val };
                 this.store.setPartySlot(index, currentData);
                 this.updatePresetIconsFromValues(slotEl, ritualSelect ? ritualSelect.value : (data.ritual || '0'), val);
-                // Refresh need-stat auto-selection
-                this.refreshNeedStatForSlot(index, currentData);
+                // Refresh need-stat auto-selection for modification change
+                this.refreshNeedStatForModification(index, currentData, val);
             });
         }
 
@@ -1392,15 +1392,37 @@ export class PartyUI {
     }
 
     /**
-     * Refresh need-stat auto-selection when ritual/modification changes
+     * Refresh need-stat when ritual changes
      */
-    refreshNeedStatForSlot(index, charData) {
+    refreshNeedStatForRitual(index, charData, newRitual) {
         const ui = this.needStatUIs[index];
-        if (!ui) return;
+        if (!ui || !charData || !charData.name) return;
         
-        // Refresh auto-selection
-        ui.refreshAutoSelection(charData);
+        // Call onRitualChange for the specific character
+        ui.onRitualChange(charData.name, parseInt(newRitual, 10) || 0);
+        ui.saveSelectionsToStore(index);
         
+        this._refreshNeedStatDisplay(index, charData);
+    }
+    
+    /**
+     * Refresh need-stat when modification changes
+     */
+    refreshNeedStatForModification(index, charData, newMod) {
+        const ui = this.needStatUIs[index];
+        if (!ui || !charData || !charData.name) return;
+        
+        const modNum = (newMod && newMod !== '-') ? parseInt(newMod, 10) : -1;
+        ui.onModificationChange(charData, modNum);
+        ui.saveSelectionsToStore(index);
+        
+        this._refreshNeedStatDisplay(index, charData);
+    }
+    
+    /**
+     * Common method to refresh need-stat display
+     */
+    _refreshNeedStatDisplay(index, charData) {
         // Re-render trigger to update totals
         const slotEl = this.getSlotElement(index);
         if (slotEl) {
@@ -1415,6 +1437,20 @@ export class PartyUI {
                 console.error('[PartyUI] Failed to refresh need stat panel:', err);
             });
         }
+    }
+    
+    /**
+     * Refresh need-stat when character changes
+     */
+    refreshNeedStatForCharacter(index, newCharName, oldCharName) {
+        const ui = this.needStatUIs[index];
+        if (!ui) return;
+        
+        ui.onCharacterChange(newCharName, oldCharName);
+        ui.saveSelectionsToStore(index);
+        
+        const charData = this.store.state.party[index];
+        this._refreshNeedStatDisplay(index, charData);
     }
 
     initRosterToggle() {
@@ -1464,6 +1500,10 @@ export class PartyUI {
     async assignCharacterToSlot(slotEl, charName) {
         const index = this.getSlotIndex(slotEl);
         if (index < 0) return;
+
+        // 이전 캐릭터 이름 저장 (자동체크 업데이트용)
+        const oldCharData = this.store.state.party[index];
+        const oldCharName = oldCharData ? oldCharData.name : null;
 
         let defaultOrder = index + 1;
         if (index === 3) defaultOrder = 0;
@@ -1589,6 +1629,11 @@ export class PartyUI {
             } else {
                 console.log('[AutoWeapon] Position mismatch:', position);
             }
+        }
+        
+        // 캐릭터 변경 시 need-stat 자동체크 업데이트
+        if (charName !== oldCharName) {
+            this.refreshNeedStatForCharacter(index, charName, oldCharName);
         }
     }
 }

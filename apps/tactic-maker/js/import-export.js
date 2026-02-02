@@ -87,9 +87,21 @@ export class ImportExport {
     }
 
     /**
-     * Detect format type: 'raw' | 'compressed' | 'unknown'
+     * Detect format type: 'v3' | 'raw' | 'compressed' | 'unknown'
+     * v3 = tactic-maker-ver >= 3.0 (direct JSON load)
+     * raw = legacy format (needs parseRawFormat)
      */
     detectFormat(data) {
+        // Check for v3.0+ format
+        const version = data['tactic-maker-ver'];
+        if (version) {
+            const vNum = parseFloat(version);
+            if (vNum >= 3.0) {
+                return 'v3';
+            }
+        }
+        
+        // Legacy raw format
         if (Array.isArray(data.turns) && Array.isArray(data.party)) {
             return 'raw';
         }
@@ -120,7 +132,16 @@ export class ImportExport {
             throw new Error('Unrecognized file format');
         }
 
-        const internalState = this.parseRawFormat(data);
+        let internalState;
+        
+        if (format === 'v3') {
+            // v3.0+ format: direct load (remove version field before loading)
+            internalState = { ...data };
+            delete internalState['tactic-maker-ver'];
+        } else {
+            // Legacy format: parse through conversion
+            internalState = this.parseRawFormat(data);
+        }
 
         // Load data into store
         this.store.loadData(internalState);
@@ -600,9 +621,27 @@ export class ImportExport {
     }
 
     /**
-     * Generate export data in legacy raw format
+     * Generate export data in v3.0 format (direct state export)
      */
     generateExportData() {
+        const state = this.store.state;
+
+        // v3.0 format: export state directly with version marker
+        return {
+            'tactic-maker-ver': '3.0',
+            title: state.title || '',
+            memo: state.memo || '',
+            party: state.party,
+            wonder: state.wonder,
+            turns: state.turns,
+            needStatSelections: state.needStatSelections || {}
+        };
+    }
+    
+    /**
+     * Generate export data in legacy raw format (for compatibility)
+     */
+    generateLegacyExportData() {
         const state = this.store.state;
 
         // Flatten turns columns back to actions array

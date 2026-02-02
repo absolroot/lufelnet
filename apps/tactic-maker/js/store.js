@@ -196,128 +196,107 @@ export class TacticStore {
         this.checkPartySideEffects();
     }
 
+    /**
+     * Check if Wonder has a default pattern available
+     */
+    _hasWonderDefaultPattern() {
+        const personas = this.state.wonder.personas || [];
+        // Find first persona with a name set
+        const firstPersona = personas.find(p => p && p.name);
+        if (!firstPersona || !firstPersona.name) return false;
+        
+        // Get skill to use
+        const skill = this._getWonderLastSkill(firstPersona);
+        return !!skill;
+    }
+    
+    /**
+     * Get the last skill from a wonder persona
+     * Priority: user-set skills (index 1,2,3) > unique skill (index 0) > personaFiles fallback
+     */
+    _getWonderLastSkill(persona) {
+        if (!persona || !persona.name) return null;
+        
+        const allSkills = persona.skills || ['', '', '', ''];
+        
+        // Check user-set skills (index 1, 2, 3) from last to first
+        for (let i = 3; i >= 1; i--) {
+            if (allSkills[i] && allSkills[i].trim()) {
+                return allSkills[i].trim();
+            }
+        }
+        
+        // Check unique skill (index 0)
+        if (allSkills[0] && allSkills[0].trim()) {
+            return allSkills[0].trim();
+        }
+        
+        // Fallback to personaFiles
+        const pData = (window.personaFiles || {})[persona.name];
+        if (pData) {
+            // Try recommendSkill last item
+            const recommendSkills = pData.recommendSkill || [];
+            if (recommendSkills.length > 0) {
+                const lastRec = recommendSkills[recommendSkills.length - 1];
+                if (lastRec && lastRec.name) return lastRec.name;
+            }
+            // Try uniqueSkill
+            if (pData.uniqueSkill && pData.uniqueSkill.name) {
+                return pData.uniqueSkill.name;
+            }
+        }
+        
+        return null;
+    }
+    
+    /**
+     * Apply wonder default pattern to all turns
+     */
+    _applyWonderDefaultPattern() {
+        const personas = this.state.wonder.personas || [];
+        const firstPersona = personas.find(p => p && p.name);
+        if (!firstPersona || !firstPersona.name) return false;
+        
+        const personaName = firstPersona.name;
+        const personaIndex = personas.indexOf(firstPersona);
+        const lastSkill = this._getWonderLastSkill(firstPersona);
+        
+        if (!lastSkill) return false;
+        
+        this._saveHistory();
+        this.state.turns.forEach((turn) => {
+            if (!turn.columns['mystery']) {
+                turn.columns['mystery'] = [];
+            }
+            if (turn.columns['mystery'].length === 0) {
+                turn.columns['mystery'].push({
+                    type: 'manual',
+                    character: '원더',
+                    wonderPersona: personaName,
+                    wonderPersonaIndex: personaIndex,
+                    action: lastSkill,
+                    memo: ''
+                });
+            }
+        });
+        this.notify('turnsChange', this.state.turns);
+        return true;
+    }
+
     applyDefaultPattern(orderKey) {
         // Handle 'mystery' key for Wonder directly
         if (orderKey === 'mystery') {
-            // Wonder: use first persona's last skill for all turns
-            const personas = this.state.wonder.personas || [];
-            const firstPersona = personas.find(p => p && p.name);
-            if (!firstPersona) return;
-            
-            const personaName = firstPersona.name;
-            const personaIndex = personas.indexOf(firstPersona);
-            
-            // Get last skill from persona's configured skills (user-set, index 1,2,3)
-            // skills[0] is unique skill, skills[1,2,3] are user-configurable
-            const allSkills = firstPersona.skills || [];
-            const userSkills = [allSkills[1], allSkills[2], allSkills[3]].filter(s => s && s.trim());
-            let lastSkill = '';
-            if (userSkills.length > 0) {
-                lastSkill = userSkills[userSkills.length - 1];
-            }
-            
-            // Fallback to unique skill if no user skills
-            if (!lastSkill && allSkills[0] && allSkills[0].trim()) {
-                lastSkill = allSkills[0];
-            }
-            
-            // Fallback to personaFiles if no configured skills
-            if (!lastSkill) {
-                const pData = (window.personaFiles || {})[personaName];
-                if (pData) {
-                    const recommendSkills = pData.recommendSkill || [];
-                    if (recommendSkills.length > 0) {
-                        lastSkill = recommendSkills[recommendSkills.length - 1]?.name || '';
-                    }
-                    if (!lastSkill && pData.uniqueSkill) {
-                        lastSkill = pData.uniqueSkill.name || '';
-                    }
-                }
-            }
-            if (!lastSkill) return;
-            
-            this._saveHistory();
-            this.state.turns.forEach((turn) => {
-                if (!turn.columns['mystery']) {
-                    turn.columns['mystery'] = [];
-                }
-                if (turn.columns['mystery'].length === 0) {
-                    turn.columns['mystery'].push({
-                        type: 'manual',
-                        character: '원더',
-                        wonderPersona: personaName,
-                        wonderPersonaIndex: personaIndex,
-                        action: lastSkill,
-                        memo: ''
-                    });
-                }
-            });
-            this.notify('turnsChange', this.state.turns);
+            this._applyWonderDefaultPattern();
             return;
         }
 
         const order = parseInt(orderKey);
-        const characterData = this.getCharacterByOrder(order); // Returns { type, name }
-        // We need full character data to get ritual level.
-        // Find the slot or wonder config
+        const characterData = this.getCharacterByOrder(order);
         let fullCharData = null;
 
+        // Check if this is Wonder's order
         if (characterData && characterData.type === 'wonder') {
-            // Wonder: use first persona's last skill for all turns
-            const personas = this.state.wonder.personas || [];
-            // Find first persona with a name
-            const firstPersona = personas.find(p => p && p.name);
-            if (!firstPersona) return;
-            
-            const personaName = firstPersona.name;
-            const personaIndex = personas.indexOf(firstPersona);
-            
-            // Get last skill from persona's configured skills (user-set, index 1,2,3)
-            const allSkills = firstPersona.skills || [];
-            const userSkills = [allSkills[1], allSkills[2], allSkills[3]].filter(s => s && s.trim());
-            let lastSkill = '';
-            if (userSkills.length > 0) {
-                lastSkill = userSkills[userSkills.length - 1];
-            }
-            
-            // Fallback to unique skill if no user skills
-            if (!lastSkill && allSkills[0] && allSkills[0].trim()) {
-                lastSkill = allSkills[0];
-            }
-            
-            // Fallback to personaFiles if no configured skills
-            if (!lastSkill) {
-                const pData = (window.personaFiles || {})[personaName];
-                if (pData) {
-                    const recommendSkills = pData.recommendSkill || [];
-                    if (recommendSkills.length > 0) {
-                        lastSkill = recommendSkills[recommendSkills.length - 1]?.name || '';
-                    }
-                    if (!lastSkill && pData.uniqueSkill) {
-                        lastSkill = pData.uniqueSkill.name || '';
-                    }
-                }
-            }
-            if (!lastSkill) return;
-            
-            this._saveHistory();
-            // Apply to all turns
-            this.state.turns.forEach((turn) => {
-                if (!turn.columns['mystery']) {
-                    turn.columns['mystery'] = [];
-                }
-                if (turn.columns['mystery'].length === 0) {
-                    turn.columns['mystery'].push({
-                        type: 'manual',
-                        character: '원더',
-                        wonderPersona: personaName,
-                        wonderPersonaIndex: personaIndex,
-                        action: lastSkill,
-                        memo: ''
-                    });
-                }
-            });
-            this.notify('turnsChange', this.state.turns);
+            this._applyWonderDefaultPattern();
             return;
         } else {
             // Find party member
@@ -378,34 +357,18 @@ export class TacticStore {
     }
 
     hasDefaultPattern(orderKey) {
+        // Wonder check - 'mystery' key
+        if (orderKey === 'mystery') {
+            return this._hasWonderDefaultPattern();
+        }
+        
         const order = parseInt(orderKey);
         // Find party member for this order
         let fullCharData = null;
         
-        // Check if this is Wonder's order
-        if (orderKey === 'mystery' || this.state.wonder.order === order) {
-            // Wonder has default pattern if at least one persona with skills is set
-            const personas = this.state.wonder.personas || [];
-            const firstPersona = personas.find(p => p && p.name);
-            if (!firstPersona) return false;
-            
-            // Check if persona has configured skills (user-set, index 1,2,3)
-            // skills[0] is unique skill, skills[1,2,3] are user-configurable
-            const allSkills = firstPersona.skills || [];
-            const userSkills = [allSkills[1], allSkills[2], allSkills[3]].filter(s => s && s.trim());
-            if (userSkills.length > 0) return true;
-            
-            // Check unique skill (index 0)
-            if (allSkills[0] && allSkills[0].trim()) return true;
-            
-            // Fallback: check personaFiles for skills
-            const pData = (window.personaFiles || {})[firstPersona.name];
-            if (pData) {
-                const recommendSkills = pData.recommendSkill || [];
-                if (recommendSkills.length > 0) return true;
-                if (pData.uniqueSkill && pData.uniqueSkill.name) return true;
-            }
-            return false;
+        // Check if this is Wonder's order (numeric)
+        if (!isNaN(order) && this.state.wonder.order === order) {
+            return this._hasWonderDefaultPattern();
         }
 
         fullCharData = this.state.party.find(p => p && String(p.order) === orderKey);
@@ -869,7 +832,8 @@ export class TacticStore {
                     { name: '', skills: ['', '', '', ''], memo: '' }
                 ]
             },
-            turns: data.turns || []
+            turns: data.turns || [],
+            needStatSelections: data.needStatSelections || {}
         };
         this.notify('fullReload', this.state);
         this.checkPartySideEffects();

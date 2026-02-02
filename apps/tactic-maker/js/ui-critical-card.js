@@ -1205,11 +1205,134 @@ export class NeedStatCardUI {
     }
 
     /**
-     * Reset and re-apply auto-selection based on current slot settings
+     * Initial auto-selection for a slot (called only once when no saved selections exist)
      */
-    refreshAutoSelection(charData) {
+    _initialAutoSelect(charData, buffItems, selfItems, penetrateSelfItems, penetrateBuffItems, defenseReduceItems) {
         if (!charData) return;
-        // Clear previous auto-selections for weapon/ritual types
+        
+        // Critical items
+        this.autoSelectBySlotSettings(charData, [...buffItems, ...selfItems]);
+        this.ensureDefaultSelected(buffItems);
+        
+        // Pierce/Defense items
+        this.autoSelectPierceBySlotSettings(charData, [...penetrateSelfItems, ...penetrateBuffItems], 'pierce');
+        this.autoSelectPierceBySlotSettings(charData, defenseReduceItems, 'defense');
+    }
+    
+    /**
+     * Handle character change - auto-select items where the new character is the source
+     * @param {string} newCharName - The new character's name
+     * @param {string} oldCharName - The old character's name (optional)
+     */
+    onCharacterChange(newCharName, oldCharName = null) {
+        if (!newCharName) return;
+        
+        const buffItems = this.getApplicableBuffItems();
+        const selfItems = this.getApplicableSelfItems({ name: newCharName });
+        const allItems = [...buffItems, ...selfItems];
+        
+        // Remove items from old character
+        if (oldCharName) {
+            allItems.forEach(item => {
+                const itemId = String(item.id || `${item.source}_${item.skillName}`);
+                if (item.source === oldCharName) {
+                    this.selectedItems.delete(itemId);
+                }
+            });
+        }
+        
+        // Auto-select items from new character (except 의식/전용무기 types)
+        allItems.forEach(item => {
+            const itemId = String(item.id || `${item.source}_${item.skillName}`);
+            const typeStr = String(item.type || '');
+            const isRitualType = typeStr.match(/의식\d+/);
+            const isWeaponType = typeStr === '전용무기';
+            
+            if (item.source === newCharName && !isRitualType && !isWeaponType) {
+                this.selectedItems.add(itemId);
+            }
+        });
+        
+        // Same for pierce items
+        const { selfItems: penetrateSelfItems, buffItems: penetrateBuffItems } = this.getApplicablePenetrateItems({ name: newCharName });
+        const allPierceItems = [...penetrateSelfItems, ...penetrateBuffItems];
+        
+        if (oldCharName) {
+            allPierceItems.forEach(item => {
+                const itemId = String(item.id || `${item.source}_${item.skillName}`);
+                if (item.source === oldCharName) {
+                    this.selectedPierceItems.delete(itemId);
+                }
+            });
+        }
+        
+        allPierceItems.forEach(item => {
+            const itemId = String(item.id || `${item.source}_${item.skillName}`);
+            const typeStr = String(item.type || '');
+            const isRitualType = typeStr.match(/의식\d+/);
+            const isWeaponType = typeStr === '전용무기';
+            
+            if (item.source === newCharName && item.target === '자신' && !isRitualType && !isWeaponType) {
+                this.selectedPierceItems.add(itemId);
+            }
+        });
+    }
+    
+    /**
+     * Handle ritual level change - auto-select/deselect 의식N type items for the changed character
+     * @param {string} charName - The character whose ritual level changed
+     * @param {number} newRitual - The new ritual level
+     */
+    onRitualChange(charName, newRitual) {
+        if (!charName) return;
+        
+        const buffItems = this.getApplicableBuffItems();
+        const selfItems = this.getApplicableSelfItems({ name: charName });
+        const allItems = [...buffItems, ...selfItems];
+        
+        allItems.forEach(item => {
+            const itemId = String(item.id || `${item.source}_${item.skillName}`);
+            const typeStr = String(item.type || '');
+            const ritualMatch = typeStr.match(/의식(\d+)/);
+            
+            if (ritualMatch && item.source === charName) {
+                const requiredRitual = parseInt(ritualMatch[1], 10);
+                if (newRitual >= requiredRitual) {
+                    this.selectedItems.add(itemId);
+                } else {
+                    this.selectedItems.delete(itemId);
+                }
+            }
+        });
+        
+        // Same for pierce items
+        const { selfItems: penetrateSelfItems, buffItems: penetrateBuffItems } = this.getApplicablePenetrateItems({ name: charName });
+        const allPierceItems = [...penetrateSelfItems, ...penetrateBuffItems];
+        
+        allPierceItems.forEach(item => {
+            const itemId = String(item.id || `${item.source}_${item.skillName}`);
+            const typeStr = String(item.type || '');
+            const ritualMatch = typeStr.match(/의식(\d+)/);
+            
+            if (ritualMatch && item.source === charName) {
+                const requiredRitual = parseInt(ritualMatch[1], 10);
+                if (newRitual >= requiredRitual) {
+                    this.selectedPierceItems.add(itemId);
+                } else {
+                    this.selectedPierceItems.delete(itemId);
+                }
+            }
+        });
+    }
+    
+    /**
+     * Handle modification change - auto-select/deselect 전용무기 type items for the slot character
+     * @param {object} charData - The character data for the slot
+     * @param {number} newMod - The new modification level
+     */
+    onModificationChange(charData, newMod) {
+        if (!charData || !charData.name) return;
+        
         const buffItems = this.getApplicableBuffItems();
         const selfItems = this.getApplicableSelfItems(charData);
         const allItems = [...buffItems, ...selfItems];
@@ -1217,53 +1340,45 @@ export class NeedStatCardUI {
         allItems.forEach(item => {
             const itemId = String(item.id || `${item.source}_${item.skillName}`);
             const typeStr = String(item.type || '');
-            // Remove auto-selected items (weapon and ritual types)
-            if (typeStr === '전용무기' || typeStr.match(/의식\d+/)) {
-                this.selectedItems.delete(itemId);
-                delete item._selectedOption;
+            
+            if (typeStr === '전용무기' && item.source === charData.name) {
+                if (newMod >= 0 && item.options && item.options.length > 0) {
+                    // Find matching option
+                    const targetOption = item.options.find(opt => {
+                        if (opt === `개조${newMod}`) return true;
+                        const rangeMatch = opt.match(/개조(\d+)&(\d+)/);
+                        if (rangeMatch) {
+                            const low = parseInt(rangeMatch[1], 10);
+                            const high = parseInt(rangeMatch[2], 10);
+                            return newMod >= low && newMod <= high;
+                        }
+                        const nums = opt.match(/\d+/g);
+                        if (nums && nums.length > 1) {
+                            return nums.some(n => parseInt(n, 10) === newMod);
+                        }
+                        const singleMatch = opt.match(/개조(\d+)/);
+                        if (singleMatch) {
+                            return parseInt(singleMatch[1], 10) === newMod;
+                        }
+                        return false;
+                    });
+                    
+                    if (targetOption) {
+                        item._selectedOption = targetOption;
+                        if (item.values && item.values[targetOption] !== undefined) {
+                            item.value = item.values[targetOption];
+                        }
+                        this.selectedItems.add(itemId);
+                    } else {
+                        this.selectedItems.delete(itemId);
+                        delete item._selectedOption;
+                    }
+                } else {
+                    this.selectedItems.delete(itemId);
+                    delete item._selectedOption;
+                }
             }
         });
-        
-        // Re-apply auto-selection
-        this.autoSelectBySlotSettings(charData, allItems);
-        
-        // Also refresh pierce/defense items
-        this.refreshPierceAutoSelection(charData);
-    }
-
-    /**
-     * Reset and re-apply auto-selection for pierce/defense items
-     */
-    refreshPierceAutoSelection(charData) {
-        if (!charData) return;
-        
-        const { selfItems: penetrateSelfItems, buffItems: penetrateBuffItems } = this.getApplicablePenetrateItems(charData);
-        const defenseReduceItems = this.getApplicableDefenseReduceItems(charData);
-        const allPierceItems = [...penetrateSelfItems, ...penetrateBuffItems];
-        
-        // Clear previous auto-selections for weapon/ritual types in pierce
-        allPierceItems.forEach(item => {
-            const itemId = String(item.id || `${item.source}_${item.skillName}`);
-            const typeStr = String(item.type || '');
-            if (typeStr === '전용무기' || typeStr.match(/의식\d+/)) {
-                this.selectedPierceItems.delete(itemId);
-                delete item._selectedOption;
-            }
-        });
-        
-        // Clear previous auto-selections for weapon/ritual types in defense
-        defenseReduceItems.forEach(item => {
-            const itemId = String(item.id || `${item.source}_${item.skillName}`);
-            const typeStr = String(item.type || '');
-            if (typeStr === '전용무기' || typeStr.match(/의식\d+/)) {
-                this.selectedDefenseItems.delete(itemId);
-                delete item._selectedOption;
-            }
-        });
-        
-        // Re-apply auto-selection
-        this.autoSelectPierceBySlotSettings(charData, allPierceItems, 'pierce');
-        this.autoSelectPierceBySlotSettings(charData, defenseReduceItems, 'defense');
     }
 
     renderPanel(charData, slotIndex) {
@@ -1315,21 +1430,16 @@ export class NeedStatCardUI {
         // Normal slot: show buff/self items with revelation sum per column
         const buffItems = this.getApplicableBuffItems();
         const selfItems = this.getApplicableSelfItems(charData);
-        
-        // 저장된 선택이 없으면 자동 선택 적용
-        if (!hasStoredSelections) {
-            this.autoSelectBySlotSettings(charData, [...buffItems, ...selfItems]);
-            this.ensureDefaultSelected(buffItems);
-        }
 
         // Get pierce items (penetrate + defense reduce)
         const { selfItems: penetrateSelfItems, buffItems: penetrateBuffItems } = this.getApplicablePenetrateItems(charData);
         const defenseReduceItems = this.getApplicableDefenseReduceItems(charData);
         
-        // 저장된 선택이 없으면 자동 선택 적용
+        // 저장된 선택이 없을 때만 초기 자동 선택 적용 (최초 1회)
         if (!hasStoredSelections) {
-            this.autoSelectPierceBySlotSettings(charData, [...penetrateSelfItems, ...penetrateBuffItems], 'pierce');
-            this.autoSelectPierceBySlotSettings(charData, defenseReduceItems, 'defense');
+            this._initialAutoSelect(charData, buffItems, selfItems, penetrateSelfItems, penetrateBuffItems, defenseReduceItems);
+            // 초기 선택 후 즉시 저장
+            this.saveSelectionsToStore(slotIndex);
         }
 
         const { labelExtraPierce, labelExtraDefenseReduce, labelPenetrateSelf, labelPenetrateBuff, labelDefenseReduce, labelRemainingDefense, labelRequiredPierce } = labels;

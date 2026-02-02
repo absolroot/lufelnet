@@ -2948,3 +2948,130 @@ body:not(.tactic-edit-mode) .need-stat-trigger-table {
     pointer-events: none !important;
     cursor: default !important;
 }
+
+/* ==========================================================================
+   Non-Edit Mode Adjustments
+   ========================================================================== */
+
+/* Adjust need-stat-trigger-row grid in non-edit mode */
+body:not(.tactic-edit-mode) .need-stat-trigger-row {
+    grid-template-columns: 1fr 44px 44px 44px;
+}
+
+/* ==========================================================================
+   Responsive Styles (max-width: 1200px)
+   ========================================================================== */
+@media (max-width: 1200px) {
+    /* Party slots container - flex wrap */
+    body:not(.tactic-edit-mode) .party-slots-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        max-width: none;
+        margin-left: 0;
+    }
+
+    body:not(.tactic-edit-mode) .party-slots-container > .slot-card,
+    body:not(.tactic-edit-mode) .party-slots-container > .wonder-in-party {
+        flex: 1 1 200px;
+        min-width: 180px;
+        max-width: 300px;
+    }
+
+    /* Need stat columns - flex wrap */
+    .need-stat-columns {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .need-stat-columns > .need-stat-column {
+        flex: 1 1 calc(50% - 4px);
+        min-width: 280px;
+    }
+
+    /* Wonder personas grid - flex wrap */
+    body:not(.tactic-edit-mode) .wonder-personas-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    body:not(.tactic-edit-mode) .wonder-personas-grid > .wonder-persona-card {
+        flex: 1 1 calc(33.33% - 8px);
+        min-width: 280px;
+        max-width: 400px;
+    }
+
+    /* Tactic table responsive */
+    .tactic-table {
+        min-width: 600px;
+    }
+
+    .tactic-cell {
+        min-width: 120px;
+    }
+}
+
+@media (max-width: 900px) {
+    /* Further reduce for smaller screens */
+    body:not(.tactic-edit-mode) .wonder-personas-grid > .wonder-persona-card {
+        flex: 1 1 calc(50% - 6px);
+        min-width: 250px;
+    }
+
+    .tactic-table {
+        min-width: 500px;
+    }
+
+    .tactic-cell {
+        min-width: 100px;
+    }
+
+    .col-turn {
+        width: 40px;
+        min-width: 40px;
+    }
+}
+
+@media (max-width: 600px) {
+    /* Stack on mobile */
+    body:not(.tactic-edit-mode) .party-slots-container > .slot-card,
+    body:not(.tactic-edit-mode) .party-slots-container > .wonder-in-party {
+        flex: 1 1 100%;
+        max-width: none;
+    }
+
+    .need-stat-columns > .need-stat-column {
+        flex: 1 1 100%;
+        min-width: 0;
+    }
+
+    body:not(.tactic-edit-mode) .wonder-personas-grid > .wonder-persona-card {
+        flex: 1 1 100%;
+        min-width: 0;
+        max-width: none;
+    }
+
+    .tactic-table {
+        min-width: 400px;
+    }
+
+    .tactic-cell {
+        min-width: 80px;
+        padding: 8px 4px;
+    }
+
+    .cell-char-header {
+        padding: 4px 6px;
+        margin: -8px -4px 6px -4px;
+    }
+
+    .cell-char-name {
+        font-size: 0.7rem;
+    }
+
+    .action-item {
+        padding: 2px 6px 2px 2px;
+    }
+}

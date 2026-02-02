@@ -87,13 +87,13 @@ export default {
     // Note Action
     noteAction: "Note",
     // Critical Card
-    criticalRate: "Critical Rate",
+    criticalRate: "Crit Rate",
     criticalBuff: "Buff",
     criticalSelf: "Self",
     criticalNoItems: "No applicable items",
 
     needStat: "Need Stat",
-    needStatCriticalRate: "Critical Rate",
+    needStatCriticalRate: "Crit Rate",
     needStatPierceRate: "Pierce",
     needStatBuff: "Buff",
     needStatSelf: "Self",

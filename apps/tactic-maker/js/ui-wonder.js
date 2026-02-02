@@ -75,6 +75,53 @@ export class WonderUI extends EventEmitter {
     }
 
     /**
+     * Get skill tooltip text based on current language
+     * Priority: 1. uniqueSkill (from persona data)
+     *           2. recommendSkill description (from personaSkillList)
+     *           3. personaSkillList description
+     */
+    getSkillTooltip(skillName, personaName = '') {
+        if (!skillName) return '';
+        const lang = this.getCurrentLang();
+        const highlightNums = (text) => text.replace(/(\d+(?:\.\d+)?%?)/g, '<span class="tooltip-num">$1</span>');
+
+        // 1. Check if it's a unique skill from persona data
+        if (personaName) {
+            const store = window.personaFiles || {};
+            const personaData = store[personaName];
+            if (personaData && personaData.uniqueSkill) {
+                const unique = personaData.uniqueSkill;
+                const uniqueNameKr = unique.name || '';
+                const uniqueNameEn = unique.name_en || '';
+                const uniqueNameJp = unique.name_jp || '';
+                
+                // Check if skillName matches unique skill name in any language
+                if (skillName === uniqueNameKr || skillName === uniqueNameEn || skillName === uniqueNameJp) {
+                    let desc = '';
+                    if (lang === 'en' && unique.desc_en) desc = unique.desc_en;
+                    else if (lang === 'jp' && unique.desc_jp) desc = unique.desc_jp;
+                    else desc = unique.desc || '';
+                    
+                    if (desc) return highlightNums(desc);
+                }
+            }
+        }
+
+        // 2. Check personaSkillList (includes recommend skills)
+        const skillData = (window.personaSkillList || {})[skillName];
+        if (skillData) {
+            let desc = '';
+            if (lang === 'en' && skillData.description_en) desc = skillData.description_en;
+            else if (lang === 'jp' && skillData.description_jp) desc = skillData.description_jp;
+            else desc = skillData.description || '';
+            
+            if (desc) return highlightNums(desc);
+        }
+
+        return '';
+    }
+
+    /**
      * Get persona passive skill tooltip text based on current language
      * For 야노식, show last 2 passive skills; for others, show only the last one
      */
@@ -554,6 +601,10 @@ export class WonderUI extends EventEmitter {
         // Escape quotes for HTML attribute (but keep HTML tags for innerHTML rendering)
         const escapedTooltip = passiveTooltip ? passiveTooltip.replace(/"/g, '&quot;') : '';
         
+        // Get unique skill tooltip
+        const uniqueSkillTooltip = uniqueName ? this.getSkillTooltip(uniqueName, pName) : '';
+        const escapedUniqueTooltip = uniqueSkillTooltip ? uniqueSkillTooltip.replace(/"/g, '&quot;') : '';
+        
         return `
             <div class="wonder-persona-card" data-index="${index}">
                 <div class="wp-header" data-action="select-persona">
@@ -569,7 +620,7 @@ export class WonderUI extends EventEmitter {
                 <div class="wp-details">
                     <div class="wp-skills">
                         <div class="revelation-dropdown wp-unique-skill" data-persona-index="${index}">
-                            <button type="button" class="revelation-button" style="width: 100%; justify-content: flex-start;" disabled>
+                            <button type="button" class="revelation-button" style="width: 100%; justify-content: flex-start;" disabled ${escapedUniqueTooltip ? `data-tooltip="${escapedUniqueTooltip}"` : ''}>
                                 ${uniqueIcon ? `<img class="revelation-icon" src="${this.baseUrl}/assets/img/skill-element/${encodeURIComponent(uniqueIcon)}.png" onerror="this.style.display='none'">` : ''}
                                 <span>${uniqueName || '-'}</span>
                             </button>
@@ -669,10 +720,14 @@ export class WonderUI extends EventEmitter {
             return [...topList, ...otherList];
         };
 
-        const renderSkillDropdownLabel = (dropdownEl, value) => {
+        const renderSkillDropdownLabel = (dropdownEl, value, personaName = '') => {
             const btn = dropdownEl.querySelector('.revelation-button');
             if (!btn) return;
             btn.innerHTML = '';
+            
+            // Remove old tooltip attribute
+            btn.removeAttribute('data-tooltip');
+            
             if (!value) {
                 const span = document.createElement('span');
                 span.textContent = '-';
@@ -691,6 +746,12 @@ export class WonderUI extends EventEmitter {
             const span = document.createElement('span');
             span.textContent = getSkillDisplayName(value);
             btn.appendChild(span);
+            
+            // Add tooltip if description exists
+            const tooltip = this.getSkillTooltip(value, personaName);
+            if (tooltip) {
+                btn.setAttribute('data-tooltip', tooltip.replace(/"/g, '&quot;'));
+            }
         };
 
         const buildSkillMenu = (dropdownEl) => {
@@ -820,10 +881,10 @@ export class WonderUI extends EventEmitter {
             const current = this.store.state.wonder;
             const pIndex = parseInt(dropdown.dataset.personaIndex);
             const sIndex = parseInt(dropdown.dataset.skillIndex);
-            const existing = (current.personas && current.personas[pIndex] && current.personas[pIndex].skills)
-                ? (current.personas[pIndex].skills[sIndex] || '')
-                : '';
-            renderSkillDropdownLabel(dropdown, existing);
+            const currentP = (current.personas && current.personas[pIndex]) ? current.personas[pIndex] : {};
+            const personaName = currentP.name || '';
+            const existing = (currentP.skills) ? (currentP.skills[sIndex] || '') : '';
+            renderSkillDropdownLabel(dropdown, existing, personaName);
 
             const btn = dropdown.querySelector('.revelation-button');
             if (btn) {
@@ -836,6 +897,33 @@ export class WonderUI extends EventEmitter {
                     dropdown.classList.toggle('open', willOpen);
                     if (willOpen) buildSkillMenu(dropdown);
                 };
+            }
+        });
+
+        // Bind tooltips for skill dropdowns
+        this.container.querySelectorAll('.wp-skill-dropdown .revelation-button[data-tooltip], .wp-unique-skill .revelation-button[data-tooltip]').forEach(btn => {
+            if (window.innerWidth > 1200) {
+                const floating = document.getElementById('cursor-tooltip') || (() => {
+                    const el = document.createElement('div');
+                    el.id = 'cursor-tooltip';
+                    el.className = 'cursor-tooltip';
+                    document.body.appendChild(el);
+                    return el;
+                })();
+                btn.addEventListener('mouseenter', function(e) {
+                    const content = this.getAttribute('data-tooltip');
+                    if (content) { floating.innerHTML = content; floating.style.display = 'block'; }
+                });
+                btn.addEventListener('mousemove', function(e) {
+                    const offset = 16;
+                    let x = e.clientX + offset, y = e.clientY + offset;
+                    const vw = window.innerWidth, vh = window.innerHeight;
+                    const ttW = floating.offsetWidth, ttH = floating.offsetHeight;
+                    if (x + ttW + 8 > vw) x = e.clientX - ttW - offset;
+                    if (y + ttH + 8 > vh) y = e.clientY - ttH - offset;
+                    floating.style.left = x + 'px'; floating.style.top = y + 'px';
+                });
+                btn.addEventListener('mouseleave', function() { floating.style.display = 'none'; });
             }
         });
 

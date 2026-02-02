@@ -121,13 +121,13 @@ export default {
     // Note Action
     noteAction: "메모",
     // Critical Card
-    criticalRate: "크리티컬 확률",
+    criticalRate: "크리티컬",
     criticalBuff: "버프",
     criticalSelf: "자신",
     criticalNoItems: "해당 없음",
 
     needStat: "필요 스탯",
-    needStatCriticalRate: "크리티컬 확률",
+    needStatCriticalRate: "크리티컬",
     needStatPierceRate: "관통",
     needStatBuff: "버프",
     needStatSelf: "자신",

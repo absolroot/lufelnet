@@ -957,6 +957,9 @@ export class NeedStatCardUI {
         const { labelNeedStat, labelAttrImprove, labelCritical, labelPierce, labelCurrent, labelNeeded, labelTarget } = this.getLabels();
         const triggerTitle = this.isElucidator ? labelAttrImprove : labelNeedStat;
 
+        // Load saved selections first to get revelationSum and extraSum values
+        const hasStoredSelections = this.loadSelectionsFromStore(slotIndex);
+
         // For elucidator, show global bonuses; for others, calculate from items
         let critTotal = 0;
         let pierceTotal = 0;
@@ -968,21 +971,32 @@ export class NeedStatCardUI {
         } else {
             const buffItems = this.getApplicableBuffItems();
             const selfItems = this.getApplicableSelfItems(charData);
-            this.autoSelectBySlotSettings(charData, [...buffItems, ...selfItems]);
-            this.ensureDefaultSelected(buffItems);
-            critTotal = this.calculateTotal(buffItems, selfItems) + this.revelationSumCritical + getGlobalElucidatorCritical();
+            
+            // Only run auto-select if no stored selections exist
+            if (!hasStoredSelections) {
+                this.autoSelectBySlotSettings(charData, [...buffItems, ...selfItems]);
+                this.ensureDefaultSelected(buffItems);
+            }
+            
+            critTotal = this.calculateTotal(buffItems, selfItems) + this.revelationSumCritical + this.extraSumCritical + getGlobalElucidatorCritical();
             
             // Calculate pierce total from pierce items
             const { selfItems: penetrateSelfItems, buffItems: penetrateBuffItems } = this.getApplicablePenetrateItems(charData);
             const defenseReduceItems = this.getApplicableDefenseReduceItems(charData);
-            this.autoSelectPierceBySlotSettings(charData, [...penetrateSelfItems, ...penetrateBuffItems], 'pierce');
-            this.autoSelectPierceBySlotSettings(charData, defenseReduceItems, 'defense');
+            
+            // Only run auto-select for pierce if no stored selections exist
+            if (!hasStoredSelections) {
+                this.autoSelectPierceBySlotSettings(charData, [...penetrateSelfItems, ...penetrateBuffItems], 'pierce');
+                this.autoSelectPierceBySlotSettings(charData, defenseReduceItems, 'defense');
+            }
+            
             const penetrateFromItems = this.calculatePierceTotal(penetrateSelfItems, penetrateBuffItems);
             const defenseReduceFromItems = this.calculateDefenseReduceTotal(defenseReduceItems);
-            pierceTotal = penetrateFromItems + this.revelationSumPierce + getGlobalElucidatorPierce();
+            const totalDefenseReduce = defenseReduceFromItems + this.extraDefenseReduce;
+            pierceTotal = penetrateFromItems + this.revelationSumPierce + this.extraSumPierce + getGlobalElucidatorPierce();
             
             // Calculate target and needed pierce based on defense stats
-            const defenseStats = this.calculateDefenseStats(penetrateFromItems, defenseReduceFromItems);
+            const defenseStats = this.calculateDefenseStats(penetrateFromItems, totalDefenseReduce);
             pierceTarget = parseFloat(defenseStats.pierceTarget);
             pierceNeeded = parseFloat(defenseStats.pierceNeeded);
         }
@@ -2019,7 +2033,7 @@ export class NeedStatCardUI {
                     checkEl.classList.remove('check-off');
                 }
 
-                const total = this.calculateTotal(buffItems, selfItems) + this.revelationSumCritical + getGlobalElucidatorCritical();
+                const total = this.calculateTotal(buffItems, selfItems) + this.revelationSumCritical + this.extraSumCritical + getGlobalElucidatorCritical();
                 this.updateTotalPairDisplays(slotIndex, total, 'critical');
                 
                 // 선택 상태 저장
@@ -2060,7 +2074,7 @@ export class NeedStatCardUI {
                         if (valueEl) valueEl.textContent = `${item.value}%`;
                     }
 
-                    const total = this.calculateTotal(buffItems, selfItems) + this.revelationSumCritical + getGlobalElucidatorCritical();
+                    const total = this.calculateTotal(buffItems, selfItems) + this.revelationSumCritical + this.extraSumCritical + getGlobalElucidatorCritical();
                     this.updateTotalPairDisplays(slotIndex, total, 'critical');
                 }
             });
@@ -2110,7 +2124,7 @@ export class NeedStatCardUI {
                         }
                     });
                     
-                    const total = this.calculateTotal(buffItems, selfItems) + this.revelationSumCritical + getGlobalElucidatorCritical();
+                    const total = this.calculateTotal(buffItems, selfItems) + this.revelationSumCritical + this.extraSumCritical + getGlobalElucidatorCritical();
                     this.updateTotalPairDisplays(slotIndex, total, 'critical');
                 }
             });

@@ -1,0 +1,460 @@
+{
+  "title": "4.7.3 후반 체르노보그 (10.8",
+  "wonderPersonas": [
+    "도미니온",
+    "마카브르",
+    "디오니소스"
+  ],
+  "weapon": "크리스탈 트레저",
+  "personaSkills": [
+    "응집",
+    "",
+    "",
+    "죽은 자에게 고하는 자비",
+    "",
+    "",
+    "레볼루션",
+    "무한 알고리즘",
+    "디아라마"
+  ],
+  "party": [
+    {
+      "name": "슌·프론티어",
+      "order": "1",
+      "ritual": "6",
+      "mainRev": "창조",
+      "subRev": "화해"
+    },
+    {
+      "name": "J&C",
+      "order": "2",
+      "ritual": "6",
+      "mainRev": "희망",
+      "subRev": "변화"
+    },
+    {
+      "name": "원더",
+      "order": "3",
+      "ritual": "0",
+      "mainRev": "",
+      "subRev": ""
+    },
+    {
+      "name": "쇼키·암야",
+      "order": "4",
+      "ritual": "6",
+      "mainRev": "돌파",
+      "subRev": "획득"
+    },
+    {
+      "name": "마나카",
+      "order": "-",
+      "ritual": "6",
+      "mainRev": "진정성",
+      "subRev": "직책"
+    }
+  ],
+  "turns": [
+    {
+      "turn": 1,
+      "actions": [
+        {
+          "type": 1,
+          "character": "",
+          "wonderPersona": "",
+          "action": "",
+          "memo": "마카브르 전의 공명, 디오니 치료강화"
+        },
+        {
+          "type": 1,
+          "character": "마나카",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "슌·프론티어",
+          "wonderPersona": "",
+          "action": "총격",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "슌·프론티어",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": "쇼키(이하 모두 동일)"
+        },
+        {
+          "type": 1,
+          "character": "J&C",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "원더",
+          "wonderPersona": "1",
+          "action": "",
+          "memo": "죽은 자에게 고하는 자비"
+        },
+        {
+          "type": 1,
+          "character": "쇼키·암야",
+          "wonderPersona": "",
+          "action": "스킬2",
+          "memo": "x11"
+        },
+        {
+          "type": 1,
+          "character": "쇼키·암야",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        }
+      ]
+    },
+    {
+      "turn": 2,
+      "actions": [
+        {
+          "type": 1,
+          "character": "마나카",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "슌·프론티어",
+          "wonderPersona": "",
+          "action": "총격",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "슌·프론티어",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "J&C",
+          "wonderPersona": "",
+          "action": "스킬2",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "원더",
+          "wonderPersona": "2",
+          "action": "",
+          "memo": "디아라마>쇼키(이하 모두 동일)"
+        },
+        {
+          "type": 1,
+          "character": "슌·프론티어",
+          "wonderPersona": "",
+          "action": "HIGHLIGHT",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "쇼키·암야",
+          "wonderPersona": "",
+          "action": "스킬2",
+          "memo": "x3"
+        },
+        {
+          "type": 1,
+          "character": "쇼키·암야",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        }
+      ]
+    },
+    {
+      "turn": 3,
+      "actions": [
+        {
+          "type": 1,
+          "character": "마나카",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "슌·프론티어",
+          "wonderPersona": "",
+          "action": "총격",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "슌·프론티어",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "J&C",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "원더",
+          "wonderPersona": "2",
+          "action": "",
+          "memo": "무한 알고리즘"
+        },
+        {
+          "type": 1,
+          "character": "쇼키·암야",
+          "wonderPersona": "",
+          "action": "스킬2",
+          "memo": "x11"
+        },
+        {
+          "type": 1,
+          "character": "쇼키·암야",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        }
+      ]
+    },
+    {
+      "turn": 4,
+      "actions": [
+        {
+          "type": 1,
+          "character": "마나카",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "슌·프론티어",
+          "wonderPersona": "",
+          "action": "특수 스킬",
+          "memo": "특수탄x3"
+        },
+        {
+          "type": 1,
+          "character": "슌·프론티어",
+          "wonderPersona": "",
+          "action": "총격",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "슌·프론티어",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "쇼키·암야",
+          "wonderPersona": "",
+          "action": "HIGHLIGHT",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "J&C",
+          "wonderPersona": "",
+          "action": "스킬2",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "원더",
+          "wonderPersona": "1",
+          "action": "",
+          "memo": "죽은 자에게 고하는 자비"
+        },
+        {
+          "type": 1,
+          "character": "쇼키·암야",
+          "wonderPersona": "",
+          "action": "스킬2",
+          "memo": "x1"
+        },
+        {
+          "type": 1,
+          "character": "쇼키·암야",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        }
+      ]
+    },
+    {
+      "turn": 5,
+      "actions": [
+        {
+          "type": 1,
+          "character": "마나카",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "슌·프론티어",
+          "wonderPersona": "",
+          "action": "총격",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "슌·프론티어",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "J&C",
+          "wonderPersona": "",
+          "action": "특수 스킬",
+          "memo": "ALT강화"
+        },
+        {
+          "type": 1,
+          "character": "J&C",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "원더",
+          "wonderPersona": "2",
+          "action": "",
+          "memo": "무한 알고리즘"
+        },
+        {
+          "type": 1,
+          "character": "J&C",
+          "wonderPersona": "",
+          "action": "HIGHLIGHT",
+          "memo": "화&빙>쇼키"
+        },
+        {
+          "type": 1,
+          "character": "쇼키·암야",
+          "wonderPersona": "",
+          "action": "스킬2",
+          "memo": "x11"
+        },
+        {
+          "type": 1,
+          "character": "쇼키·암야",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        }
+      ]
+    },
+    {
+      "turn": 6,
+      "actions": [
+        {
+          "type": 1,
+          "character": "마나카",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "마나카",
+          "wonderPersona": "",
+          "action": "특수 스킬",
+          "memo": "추가턴x2>쇼키"
+        },
+        {
+          "type": 1,
+          "character": "슌·프론티어",
+          "wonderPersona": "",
+          "action": "총격",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "슌·프론티어",
+          "wonderPersona": "",
+          "action": "특수 스킬",
+          "memo": "특수탄x3"
+        },
+        {
+          "type": 1,
+          "character": "슌·프론티어",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "J&C",
+          "wonderPersona": "",
+          "action": "스킬2",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "원더",
+          "wonderPersona": "0",
+          "action": "",
+          "memo": "응집"
+        },
+        {
+          "type": 1,
+          "character": "쇼키·암야",
+          "wonderPersona": "",
+          "action": "스킬2",
+          "memo": "x7 (16중첩)"
+        },
+        {
+          "type": 1,
+          "character": "쇼키·암야",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "쇼키·암야",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "J&C",
+          "wonderPersona": "",
+          "action": "HIGHLIGHT",
+          "memo": "염&핵"
+        },
+        {
+          "type": 1,
+          "character": "쇼키·암야",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        }
+      ]
+    }
+  ]
+}

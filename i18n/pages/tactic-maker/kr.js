@@ -133,7 +133,7 @@ export default {
     criticalSelf: "자신",
     criticalNoItems: "해당 없음",
 
-    needStat: "필요 스탯",
+    needStat: "추천 스탯",
     needStatCriticalRate: "크리티컬",
     needStatPierceRate: "관통",
     needStatBuff: "버프",
@@ -142,5 +142,9 @@ export default {
     revelationSum: "계시 합계",
     pending: "준비중",
     modLabel: "개조",
-    stampLabel: "인장"
+    stampLabel: "인장",
+    
+    // Share function
+    shareGenerating: "공유 링크 생성 중...",
+    shareWarning: "해당 URL은 편의를 위한 기능으로 손상될 수 있습니다.<br>안전한 백업을 위해 내보내기 또는 사이트 업로드 기능을 활용해주세요."
 };

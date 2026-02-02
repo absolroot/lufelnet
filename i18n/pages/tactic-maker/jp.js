@@ -145,5 +145,9 @@ export default {
     revelationSum: "啓示合計",
     pending: "準備中",
     modLabel: "改造",
-    stampLabel: "刻印"
+    stampLabel: "刻印",
+    
+    // Share function
+    shareGenerating: "共有リンク生成中...",
+    shareWarning: "このURLは便宜上の機能であり、破損する可能性があります。<br>安全なバックアップのため、エクスポートまたはサイトアップロード機能をご利用ください。"
 };

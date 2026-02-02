@@ -606,6 +606,30 @@ const ritualPatterns = {
         ]
         }
     ],
+    "마코토": [
+        {
+            level: "0-5", 
+            pattern: [
+                [{ order: 1, type: "스킬3" }],
+                [{ order: 1, type: "특수 스킬" },{ order: 1, type: "스킬3" }],
+                [{ order: 1, type: "스킬3" }],
+                [{ order: 1, type: "스킬3" }],
+                [{ order: 1, type: "특수 스킬" },{ order: 1, type: "스킬3" }],
+                [{ order: 1, type: "스킬3" }]
+            ]
+        },
+        {
+            level: "6", 
+            pattern: [
+                [{ order: 1, type: "스킬3" }],
+                [{ order: 1, type: "특수 스킬" },{ order: 1, type: "스킬3" },{ order: 1, type: "스킬3" }],
+                [{ order: 1, type: "스킬3" }],
+                [{ order: 1, type: "스킬3" }],
+                [{ order: 1, type: "특수 스킬" },{ order: 1, type: "스킬3" },{ order: 1, type: "스킬3" }],
+                [{ order: 1, type: "스킬3" }]
+            ]
+        }
+    ],
     "치즈코": [
         {
         level: "0-6",  
@@ -617,6 +641,30 @@ const ritualPatterns = {
             [{ type: "스킬1" }],
             [{ type: "스킬3" }]
         ]
+        }
+    ],
+    "몽타뉴·백조": [
+        {
+            level: "0-5", 
+            pattern: [
+                [{ order: 1, type: "스킬3" }],
+                [{ order: 1, type: "스킬1" }],
+                [{ order: 1, type: "스킬3" }],
+                [{ order: 1, type: "스킬1" }],
+                [{ order: 1, type: "스킬3" }],
+                [{ order: 1, type: "스킬1" }]
+            ]
+        },
+        {
+            level: "6", 
+            pattern: [
+                [{ order: 1, type: "스킬3" }],
+                [{ order: 1, type: "스킬1" }],
+                [{ order: 1, type: "스킬1" }],
+                [{ order: 1, type: "스킬3" }],
+                [{ order: 1, type: "스킬1" }],
+                [{ order: 1, type: "스킬1" }]
+            ]
         }
     ],
     "루우나": [

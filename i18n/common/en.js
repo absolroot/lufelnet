@@ -245,6 +245,7 @@ export default {
         "물리": "Physical",
         "총격": "Gun",
         "화염": "Fire",
+        "질풍빙결": "Wind/Ice",
         "빙결": "Ice",
         "전격": "Electric",
         "질풍": "Wind",

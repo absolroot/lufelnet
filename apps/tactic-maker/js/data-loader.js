@@ -60,7 +60,7 @@ export class DataLoader {
                         this._dataReady = true;
 
                         // Log data status
-                        console.log('[DataLoader] Data status:', {
+                        /* console.log('[DataLoader] Data status:', {
                             characterData: hasCharacterData,
                             characterList: hasCharacterList,
                             weapons: hasWeapons,
@@ -68,7 +68,7 @@ export class DataLoader {
                             skills: hasSkills,
                             revelations: hasRevelations,
                             attempts
-                        });
+                        });*/
 
                         // Load critical data and wait for it
                         this.loadCriticalData().then(() => {
@@ -286,6 +286,58 @@ export class DataLoader {
             return window.I18nService.getCurrentLanguage();
         }
         return 'kr';
+    }
+
+    /**
+     * Load language-specific character list for spoiler filtering
+     * Sets window.originalLangCharacterList for non-KR languages
+     */
+    static async loadLangCharacterList() {
+        const lang = this.getCurrentLang();
+        if (lang === 'kr') return; // KR doesn't need spoiler filtering
+
+        // Use CharacterListLoader if available
+        if (typeof window.CharacterListLoader !== 'undefined') {
+            try {
+                const result = await window.CharacterListLoader.loadFor(lang);
+                const list = result.characterList || { mainParty: [], supportParty: [] };
+                window.originalLangCharacterList = [
+                    ...(list.mainParty || []),
+                    ...(list.supportParty || [])
+                ];
+                console.log('[DataLoader] Loaded lang character list:', lang, window.originalLangCharacterList.length);
+                return;
+            } catch (e) {
+                console.error('[DataLoader] CharacterListLoader failed:', e);
+            }
+        }
+
+        // Fallback: fetch directly
+        const baseUrl = window.BASE_URL || '';
+        const version = (typeof window.APP_VERSION !== 'undefined' && window.APP_VERSION)
+            ? `?v=${encodeURIComponent(String(window.APP_VERSION))}`
+            : '';
+        const url = `${baseUrl}/data/${lang}/characters/characters.js${version}`;
+
+        try {
+            const response = await fetch(url);
+            if (!response.ok) throw new Error('Failed to fetch');
+            const text = await response.text();
+
+            // Parse characterList from the script
+            const listMatch = text.match(/(?:window\.)?characterList\s*=\s*({[\s\S]*?});/);
+            if (listMatch) {
+                const parsed = new Function('return ' + listMatch[1])();
+                window.originalLangCharacterList = [
+                    ...(parsed.mainParty || []),
+                    ...(parsed.supportParty || [])
+                ];
+                console.log('[DataLoader] Loaded lang character list (fallback):', lang, window.originalLangCharacterList.length);
+            }
+        } catch (e) {
+            console.error('[DataLoader] Failed to load lang character list:', e);
+            window.originalLangCharacterList = [];
+        }
     }
 
     /**

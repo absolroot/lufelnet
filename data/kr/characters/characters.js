@@ -460,7 +460,7 @@ Object.assign(window.characterData, {
     "리코·매화": {
         "limit": true,
         "tag": "크리티컬 효과, 크리티컬 확률, 공격력, 대미지보너스, 풍습, SP 회복",
-        "color": "#c32233",
+        "color": "#a0ffb7",
         "element": "질풍",
         "rarity": 5,
         "position": "우월",
@@ -630,7 +630,7 @@ Object.assign(window.characterData, {
     "모토하·여름": {
         "limit": true,
         "tag": "최대 생명, HP 소모",
-        "color": "#1498fd",
+        "color": "#feffbe",
         "element": "축복",
         "rarity": 5,
         "position": "지배",
@@ -838,7 +838,7 @@ Object.assign(window.characterData, {
         "limit": false,
         "persona5": true,
         "tag": "풍습, 크리티컬, 원소 이상 제거, 추가 효과",
-        "color": "#111111",
+        "color": "#65ac19",
         "element": "질풍",
         "rarity": 5,
         "position": "구원",
@@ -907,7 +907,7 @@ Object.assign(window.characterData, {
         "role_en": "Healer",
         "role_jp": "ヒーラー",
         "tag": "화상, 치료, 공격력",
-        "color": "#4b0082",
+        "color": "#821c00",
         "element": "화염",
         "rarity": 4,
         "position": "구원",
@@ -923,7 +923,7 @@ Object.assign(window.characterData, {
     "모토하": {
         "limit": false,
         "tag": "전격 대미지보너스, 감전, TECHNICAL",
-        "color": "#1e90ff",
+        "color": "#f2f93f",
         "element": "전격",
         "rarity": 4,
         "position": "지배",
@@ -1043,7 +1043,7 @@ Object.assign(window.characterData, {
     "키요시": {
         "limit": false,
         "tag": "화상, 받는 대미지 증가, 화염 속성 TECHNICAL, TECHNICAL, 지속 대미지",
-        "color": "#2e8b57",
+        "color": "#8b562e",
         "element": "화염",
         "rarity": 4,
         "position": "굴복",
@@ -1075,7 +1075,7 @@ Object.assign(window.characterData, {
     "토시야": {
         "limit": false,
         "tag": "주원, 지속 대미지",
-        "color": "#4682b4",
+        "color": "#5a46b4",
         "element": "주원",
         "rarity": 4,
         "position": "반항",

@@ -770,7 +770,7 @@ export class TacticStore {
 
     // --- Action Management ---
 
-    addAction(turnIndex, columnKey, actionData) {
+    addAction(turnIndex, columnKey, actionData, insertAfterIndex = -1) {
         this._saveHistory();
         // Ensure turn exists
         if (!this.state.turns[turnIndex]) return;
@@ -790,7 +790,12 @@ export class TacticStore {
             memo: actionData.memo || ''
         };
 
-        this.state.turns[turnIndex].columns[columnKey].push(action);
+        // Insert after specific index if provided, otherwise push to end
+        if (insertAfterIndex >= 0 && insertAfterIndex < this.state.turns[turnIndex].columns[columnKey].length) {
+            this.state.turns[turnIndex].columns[columnKey].splice(insertAfterIndex + 1, 0, action);
+        } else {
+            this.state.turns[turnIndex].columns[columnKey].push(action);
+        }
         this.notify('turnsChange', this.state.turns);
     }
 

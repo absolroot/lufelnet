@@ -461,6 +461,12 @@ export class PartyUI {
         const bar = document.createElement('div');
         bar.className = 'roster-filter-bar';
 
+        const currentLang = (window.I18nService && window.I18nService.getCurrentLanguage) 
+            ? window.I18nService.getCurrentLanguage() 
+            : 'kr';
+        const showSpoilerToggle = currentLang !== 'kr';
+        const spoilerLabelText = currentLang === 'en' ? 'Show Spoilers' : (currentLang === 'jp' ? 'ネタバレ表示' : '스포일러 보기');
+
         bar.innerHTML = `
             <div class="roster-filter-search">
                 <input type="text" class="roster-search-input" placeholder="${window.I18nService ? window.I18nService.t('searchPlaceholder') : '캐릭터 검색...'}" autocomplete="off">
@@ -468,7 +474,22 @@ export class PartyUI {
 
             <div class="roster-filter-groups">
                 <div class="roster-filter-group roster-filter-elements"></div>
-                <div class="roster-filter-group roster-filter-positions"></div>
+                <div class="roster-filter-group roster-filter-positions">
+                    <button type="button" class="roster-filter-reset" title="${window.I18nService ? window.I18nService.t('resetFilter', '필터 초기화') : '필터 초기화'}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                            <path d="M3 3v5h5"/>
+                        </svg>
+                    </button>
+                </div>
+                ${showSpoilerToggle ? `
+                <div class="roster-filter-group roster-spoiler-toggle">
+                    <label class="spoiler-toggle-label">
+                        <input type="checkbox" id="rosterSpoilerToggle" class="spoiler-toggle-checkbox">
+                        <span class="spoiler-toggle-text">${spoilerLabelText}</span>
+                    </label>
+                </div>
+                ` : ''}
             </div>
         `;
 
@@ -490,18 +511,22 @@ export class PartyUI {
         }
 
         if (posWrap) {
+            const resetBtn = posWrap.querySelector('.roster-filter-reset');
             posWrap.innerHTML = POSITIONS.map(v => `
                 <label class="roster-filter-chip">
                     <input type="checkbox" data-kind="position" value="${v}">
                     <img src="${this.baseUrl}/assets/img/character-cards/직업_${v}.png" alt="${v}" onerror="this.style.display='none'">
                 </label>
             `).join('');
+            // Re-append reset button after adding filter chips
+            if (resetBtn) posWrap.appendChild(resetBtn);
         }
 
         const searchInput = bar.querySelector('.roster-search-input');
         if (searchInput) {
             searchInput.oninput = () => {
                 this.rosterFilters.query = String(searchInput.value || '').trim();
+                this.updateResetButtonVisibility(bar);
                 this.renderRoster(this.rosterType);
             };
         }
@@ -513,9 +538,69 @@ export class PartyUI {
                 const set = (kind === 'element') ? this.rosterFilters.elements : this.rosterFilters.positions;
                 if (cb.checked) set.add(val);
                 else set.delete(val);
+                this.updateResetButtonVisibility(bar);
                 this.renderRoster(this.rosterType);
             };
         });
+
+        // Spoiler toggle event
+        const spoilerToggle = bar.querySelector('#rosterSpoilerToggle');
+        if (spoilerToggle) {
+            // Restore saved state
+            const savedState = localStorage.getItem('spoilerToggle') === 'true';
+            spoilerToggle.checked = savedState;
+
+            spoilerToggle.onchange = () => {
+                const isEnabled = spoilerToggle.checked;
+                localStorage.setItem('spoilerToggle', isEnabled.toString());
+                // Re-render roster without page reload
+                this.renderRoster(this.rosterType);
+            };
+        }
+
+        // Filter reset button event
+        const resetBtn = bar.querySelector('.roster-filter-reset');
+        if (resetBtn) {
+            resetBtn.onclick = () => {
+                // Clear all filters
+                this.rosterFilters.elements.clear();
+                this.rosterFilters.positions.clear();
+                this.rosterFilters.query = '';
+                
+                // Uncheck all filter checkboxes
+                bar.querySelectorAll('input[type="checkbox"][data-kind]').forEach(cb => {
+                    cb.checked = false;
+                });
+                
+                // Clear search input
+                const searchInput = bar.querySelector('.roster-search-input');
+                if (searchInput) searchInput.value = '';
+                
+                // Update reset button visibility
+                this.updateResetButtonVisibility(bar);
+                
+                // Re-render roster
+                this.renderRoster(this.rosterType);
+            };
+        }
+        
+        // Initial reset button visibility check
+        this.updateResetButtonVisibility(bar);
+    }
+
+    updateResetButtonVisibility(bar) {
+        const resetBtn = bar.querySelector('.roster-filter-reset');
+        if (!resetBtn) return;
+        
+        const hasFilters = this.rosterFilters.elements.size > 0 || 
+                          this.rosterFilters.positions.size > 0 || 
+                          this.rosterFilters.query.length > 0;
+        
+        if (hasFilters) {
+            resetBtn.classList.add('active');
+        } else {
+            resetBtn.classList.remove('active');
+        }
     }
 
     renderRoster(type) {
@@ -523,11 +608,23 @@ export class PartyUI {
         const characterList = window.characterList || { mainParty: [], supportParty: [] };
         const characterData = window.characterData || {};
 
+        // Get current language and spoiler setting
+        const currentLang = (window.I18nService && window.I18nService.getCurrentLanguage) 
+            ? window.I18nService.getCurrentLanguage() 
+            : 'kr';
+        const spoilerEnabled = localStorage.getItem('spoilerToggle') === 'true';
+
         let targetChars = [];
         if (type === 'support') {
             targetChars = characterList.supportParty || [];
         } else {
             targetChars = characterList.mainParty || [];
+        }
+
+        // For non-KR languages without spoiler enabled, filter to only released characters
+        if (currentLang !== 'kr' && !spoilerEnabled && window.originalLangCharacterList) {
+            const releasedSet = new Set(window.originalLangCharacterList);
+            targetChars = targetChars.filter(name => releasedSet.has(name));
         }
 
         const selected = new Set(
@@ -771,8 +868,10 @@ export class PartyUI {
 
         slotContent.innerHTML = `
             <div class="slot-char-info">
-                <img src="${imgPath}" class="slot-char-img"
-                     onerror="this.src='${this.baseUrl}/assets/img/tier/${data.name}.webp'">
+                <a href="${this.baseUrl}/character.html?name=${encodeURIComponent(data.name)}" target="_blank" class="slot-char-link">
+                    <img src="${imgPath}" class="slot-char-img"
+                         onerror="this.src='${this.baseUrl}/assets/img/tier/${data.name}.webp'">
+                </a>
                 <div class="slot-char-details">
                     <div class="slot-char-name">
                         <span class="slot-name-text">${displayName}</span>

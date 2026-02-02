@@ -102,7 +102,10 @@ body {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
+    background: #1f1f1f;
+    padding: 16px 16px 12px 16px;
+    border-radius: 12px;
 }
 
 .tactic-input-group .tactic-title-container,
@@ -496,6 +499,16 @@ body:not(.tactic-edit-mode) .ritual-mod-wrapper {
     display: flex;
     gap: 12px;
     margin-bottom: 0px;
+}
+
+.slot-char-link {
+    display: inline-block;
+    line-height: 0;
+}
+
+.slot-char-img:hover{
+    filter: brightness(1.2);
+    transition: all 0.2s;
 }
 
 .slot-char-img {
@@ -959,12 +972,64 @@ body:not(.tactic-edit-mode) .wonder-config-panel {
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
+    align-items: center;
+}
+
+/* Spoiler Toggle in Roster */
+.roster-spoiler-toggle {
+    margin-left: auto;
+}
+
+.roster-spoiler-toggle .spoiler-toggle-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.roster-spoiler-toggle .spoiler-toggle-checkbox {
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+    accent-color: var(--accent-color, #d11f1f);
+}
+
+.roster-spoiler-toggle .spoiler-toggle-text {
+    white-space: nowrap;
 }
 
 .roster-filter-group {
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
+    align-items: center;
+}
+
+.roster-filter-positions {
+    position: relative;
+}
+
+.roster-filter-reset {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    padding: 4px;
+    margin-left: 2px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s;
+}
+
+.roster-filter-reset.active {
+    display: inline-flex;
+}
+
+.roster-filter-reset:hover {
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .roster-filter-chip {
@@ -989,6 +1054,10 @@ body:not(.tactic-edit-mode) .wonder-config-panel {
 
 .roster-filter-chip input[type="checkbox"]:checked+img {
     filter: brightness(1.5) drop-shadow(0 0 4px rgba(255, 255, 255, 0.5));
+}
+
+.roster-filter-chip:has(input[type="checkbox"]:checked) {
+    box-shadow: inset 0 0 0 1px #d11f1f;
 }
 
 .roster-filter-chip img {
@@ -2136,6 +2205,12 @@ body:not(.tactic-edit-mode) .wonder-persona-card {
     cursor: default !important;
 }
 
+/* Allow character image link to be clickable in non-edit mode */
+body:not(.tactic-edit-mode) .slot-char-link {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+}
+
 /* Allow tooltip hover in non-edit mode for persona, weapon, revelation (but no click) */
 body:not(.tactic-edit-mode) .revelation-button[data-tooltip],
 body:not(.tactic-edit-mode) .wp-img-wrapper[data-tooltip],
@@ -2148,6 +2223,10 @@ body:not(.tactic-edit-mode) .wp-header .wp-img-wrapper[data-tooltip] {
 body:not(.tactic-edit-mode) .revelation-dropdown .revelation-menu,
 body:not(.tactic-edit-mode) .revelation-dropdown.open .revelation-menu {
     display: none !important;
+}
+
+body:not(.tactic-edit-mode) .wonder-weapon-dropdown{
+    padding: 16px 0;
 }
 
 body:not(.tactic-edit-mode) .revelation-dropdown {
@@ -2563,7 +2642,7 @@ body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
 }
 
 .need-stat-trigger-row .need-stat-needed {
-    color: #ff6b6b;
+    color: #bf9999;
     font-weight: 600;
 }
 

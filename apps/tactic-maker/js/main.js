@@ -18,11 +18,44 @@ class TacticMakerApp {
         this.init();
     }
 
-    updateLoadingProgress(percent) {
+    updateLoadingProgress(targetPercent) {
         const bar = document.getElementById('tacticLoadingBar');
         const text = document.getElementById('tacticLoadingPercent');
-        if (bar) bar.style.width = `${percent}%`;
-        if (text) text.textContent = `${Math.round(percent)}%`;
+        if (!bar && !text) return;
+
+        const currentPercent = this._currentLoadingPercent || 0;
+        const target = Math.round(targetPercent);
+        
+        // Cancel any existing animation
+        if (this._loadingAnimationId) {
+            cancelAnimationFrame(this._loadingAnimationId);
+        }
+
+        // Animate from current to target
+        const duration = 300; // ms
+        const startTime = performance.now();
+        const startValue = currentPercent;
+
+        const animate = (now) => {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            
+            // Ease out cubic
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const current = Math.round(startValue + (target - startValue) * eased);
+
+            if (bar) bar.style.width = `${current}%`;
+            if (text) text.textContent = `${current}%`;
+
+            if (progress < 1) {
+                this._loadingAnimationId = requestAnimationFrame(animate);
+            } else {
+                this._currentLoadingPercent = target;
+                this._loadingAnimationId = null;
+            }
+        };
+
+        this._loadingAnimationId = requestAnimationFrame(animate);
     }
 
     async init() {
@@ -41,6 +74,10 @@ class TacticMakerApp {
 
         // Load revelation translations for non-Korean languages
         await DataLoader.loadRevelationMapping();
+        this.updateLoadingProgress(45);
+
+        // Load language-specific character list for spoiler filtering
+        await DataLoader.loadLangCharacterList();
         this.updateLoadingProgress(50);
 
         // Initialize Store

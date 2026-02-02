@@ -29,7 +29,7 @@ export default {
     defaultModification: "Default R",
     ritualLabel: "A",
     modificationLabel: "R",
-    autoWonderWeapon: "Auto Wonder Weapon (Rebel/Dom)",
+    autoWonderWeapon: "Auto Wonder Weapon (Dealer base)",
     selectPersona: "Select Persona",
     selectRole: "Select Role",
     autoActionPrompt: "Auto Add Action Prompt",
@@ -99,7 +99,7 @@ export default {
     criticalSelf: "Self",
     criticalNoItems: "No applicable items",
 
-    needStat: "Need Stat",
+    needStat: "Stat Setting",
     needStatCriticalRate: "Crit Rate",
     needStatPierceRate: "Pierce",
     needStatBuff: "Buff",
@@ -107,6 +107,10 @@ export default {
     needStatNoItems: "No applicable items",
     revelationSum: "Card Sum",
     pending: "Pending",
-    modLabel: "Mod",
-    stampLabel: "Stamp"
+    modLabel: "R",
+    stampLabel: "Stamp",
+    
+    // Share function
+    shareGenerating: "Generating share link...",
+    shareWarning: "This URL is a convenience feature and may be corrupted.<br>For safe backup, please use the export or site upload feature."
 };

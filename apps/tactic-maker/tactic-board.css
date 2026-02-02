@@ -315,12 +315,6 @@ body:not(.tactic-edit-mode) .turn-row {
     z-index: 1;
 }
 
-.action-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    border-color: var(--actor-color-border, var(--accent-color));
-}
-
 .action-main-row {
     display: flex;
     align-items: center;
@@ -371,8 +365,8 @@ body:not(.tactic-edit-mode) .turn-row {
 /* Important: Elevate hovered item so tooltip blocks neighbor's hover */
 .action-item:hover {
     z-index: 2000;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    transform: translateY(0px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     border-color: var(--actor-color-border, var(--accent-color));
 }
 
@@ -834,16 +828,16 @@ body:not(.tactic-edit-mode) .custom-select-trigger {
 
 /* When has persona (Wonder), actor dropdown shrinks to make room for persona */
 .actor-persona-wrapper.has-persona .actor-dropdown {
-    flex: 0 0 80px;
-    width: 80px;
-    min-width: 80px;
+    flex: 0 0 82px;
+    width: 82px;
+    min-width: 82px;
 }
 
 /* Persona dropdown - hidden by default, visible when has-persona */
 .action-item .persona-dropdown {
-    flex: 0 0 36px;
-    width: 36px;
-    min-width: 36px;
+    flex: 0 0 34px;
+    width: 34px;
+    min-width: 34px;
     display: none;
 }
 

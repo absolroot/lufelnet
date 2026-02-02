@@ -293,11 +293,14 @@ export class ImportExport {
         });
 
         const toInternalPartyMember = (p, forceOrderDash, fallbackOrder) => {
+            const ritualVal = String(p.ritual || '0');
+            // If ritual is 6, set modification to 6 as well
+            const modificationVal = ritualVal === '6' ? '6' : '0';
             return {
                 name: p.name,
                 order: forceOrderDash ? '-' : String(p.order || fallbackOrder || ''),
-                ritual: String(p.ritual || '0'),
-                modification: '0',
+                ritual: ritualVal,
+                modification: modificationVal,
                 role: null,
                 mainRev: p.mainRev || '',
                 subRev: p.subRev || ''
@@ -343,15 +346,17 @@ export class ImportExport {
 
         const buildColumnPlan = () => {
             const plan = [];
-            plan.push({ orderKey: String(wonder.order), actor: '원더' });
+            // Wonder uses 'mystery' as column key (matching UI), but sorted by order
+            plan.push({ orderKey: 'mystery', sortKey: wonder.order, actor: '원더' });
             (party || []).forEach((m, idx) => {
                 if (!m) return;
                 if (idx === 3) return; // elucidator
                 if (String(m.order || '-') === '-') return;
                 if (m.name === '원더') return;
-                plan.push({ orderKey: String(m.order), actor: String(m.name || '') });
+                const order = parseInt(String(m.order || ''), 10);
+                plan.push({ orderKey: String(m.order), sortKey: order, actor: String(m.name || '') });
             });
-            plan.sort((a, b) => parseInt(a.orderKey, 10) - parseInt(b.orderKey, 10));
+            plan.sort((a, b) => a.sortKey - b.sortKey);
             const seen = new Set();
             return plan.filter(p => {
                 if (!p.orderKey || p.orderKey === '-') return false;
@@ -388,7 +393,10 @@ export class ImportExport {
                 }
                 if (src.startsWith(skill)) {
                     const next = src.slice(skill.length, skill.length + 1);
-                    if (!next) continue;
+                    // If next is empty (skill is at the end), it's still a match
+                    if (!next) {
+                        return { skill, rest: '' };
+                    }
                     if (['>', ' ', '/', ',', ':', '(', '[', '-', '→'].includes(next)) {
                         const rest = src
                             .slice(skill.length)
@@ -423,10 +431,11 @@ export class ImportExport {
                     || /^아이템$/i.test(v) || /^Item$/i.test(v) || /^アイテム$/i.test(v);
             };
 
-            const isHighlight = (actionVal) => {
+            const isHighlight = (actionVal, wonderPersonaVal) => {
                 const v = normalizeActionValue(actionVal);
-                // 하이라이트 + 테우르기아
-                return v === 'HIGHLIGHT' 
+                const wp = String(wonderPersonaVal || '');
+                // 하이라이트 + 테우르기아 (check both action and wonderPersona)
+                return v === 'HIGHLIGHT' || wp === 'HIGHLIGHT'
                     || /^테우르기아$/i.test(v) || /^Theurgia$/i.test(v) || /^Theurgy$/i.test(v) || /^テウルギア$/i.test(v);
             };
 
@@ -436,6 +445,7 @@ export class ImportExport {
                 const actor = normalizeActorName(a?.character);
                 const idx = actorIndex.has(actor) ? actorIndex.get(actor) : null;
                 const actionVal = a?.action;
+                const wonderPersonaVal = a?.wonderPersona;
 
                 const shouldAdvance = (idx !== null && idx >= currentColIdx)
                     && (isTurnSkill123(actionVal) || actor === '원더');
@@ -444,7 +454,7 @@ export class ImportExport {
                     currentColIdx = idx;
                 }
 
-                const placeColIdx = (idx !== null && isHighlight(actionVal))
+                const placeColIdx = (idx !== null && isHighlight(actionVal, wonderPersonaVal))
                     ? idx
                     : currentColIdx;
 
@@ -461,7 +471,7 @@ export class ImportExport {
 
                 const last = list[list.length - 1];
                 if (!last) continue;
-                if (!isHighlight(last.action)) continue;
+                if (!isHighlight(last.action, last.wonderPersona)) continue;
 
                 if (!columns[nextKey]) columns[nextKey] = [];
                 columns[nextKey].push(list.pop());
@@ -506,17 +516,34 @@ export class ImportExport {
                     if (isNumeric) {
                         personaIndex = parseInt(wpStr, 10);
                         personaName = wonderPersonas[personaIndex] || '';
+                        // Extract skill from memo if available
+                        if (!actionName && memo) {
+                            const extracted = extractLeadingPersonaSkill(memo);
+                            if (extracted && extracted.skill) {
+                                actionName = extracted.skill;
+                                memo = extracted.rest || '';
+                            } else {
+                                // If extraction failed, use memo as action name (split by > or space)
+                                const parts = memo.split(/[>\s]/);
+                                actionName = parts[0] || memo;
+                                memo = parts.slice(1).join(' ').trim();
+                            }
+                        }
                     } else {
                         personaName = wpStr;
                         personaIndex = wonderPersonas.indexOf(personaName);
                     }
-                }
-
-                if (!actionName && memo) {
+                } else if (!actionName && memo) {
+                    // Try to extract skill from memo even if wonderPersona is empty
                     const extracted = extractLeadingPersonaSkill(memo);
                     if (extracted && extracted.skill) {
                         actionName = extracted.skill;
                         memo = extracted.rest || '';
+                    } else {
+                        // If extraction failed, use memo as action name (split by > or space)
+                        const parts = memo.split(/[>\s]/);
+                        actionName = parts[0] || memo;
+                        memo = parts.slice(1).join(' ').trim();
                     }
                 }
             }
@@ -558,7 +585,8 @@ export class ImportExport {
             memo: data.memo || '',
             party,
             wonder,
-            turns
+            turns,
+            needStatSelections: data.needStatSelections || {}
         };
     }
 
@@ -656,7 +684,8 @@ export class ImportExport {
             title: data.title || data.h || '',
             party,
             wonder,
-            turns
+            turns,
+            needStatSelections: data.needStatSelections || data.nss || {}
         };
     }
 
@@ -924,7 +953,10 @@ export class ImportExport {
         const t = (key) => window.I18nService ? window.I18nService.t(key) : key;
 
         try {
-            // Show loading - button only has SVG, no span
+            // Show loading modal
+            this.showShareLoadingModal();
+            
+            // Disable button
             this.btnShare.disabled = true;
             this.btnShare.style.opacity = '0.6';
 
@@ -949,6 +981,7 @@ export class ImportExport {
 
                 // Copy to clipboard
                 await navigator.clipboard.writeText(shareUrl);
+                this.hideShareLoadingModal();
                 alert(t('shareSuccess'));
             } else {
                 throw new Error('No ID returned');
@@ -960,9 +993,91 @@ export class ImportExport {
 
         } catch (error) {
             console.error('[ImportExport] Share failed:', error);
+            this.hideShareLoadingModal();
             alert(t('shareFailed'));
             this.btnShare.disabled = false;
             this.btnShare.style.opacity = '1';
+        }
+    }
+
+    /**
+     * Show share loading modal with warning message
+     */
+    showShareLoadingModal() {
+        const t = (key) => window.I18nService ? window.I18nService.t(key) : key;
+        
+        // Remove existing modal if any
+        this.hideShareLoadingModal();
+        
+        const modal = document.createElement('div');
+        modal.id = 'shareLoadingModal';
+        modal.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+        `;
+        
+        const content = document.createElement('div');
+        content.style.cssText = `
+            background: #2a2a2a;
+            padding: 32px;
+            border-radius: 12px;
+            text-align: center;
+            max-width: 400px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        `;
+        
+        content.innerHTML = `
+            <div style="margin-bottom: 20px;">
+                <div class="loading-spinner" style="
+                    border: 3px solid rgba(255, 255, 255, 0.1);
+                    border-top: 3px solid #fff;
+                    border-radius: 50%;
+                    width: 40px;
+                    height: 40px;
+                    animation: spin 1s linear infinite;
+                    margin: 0 auto;
+                "></div>
+            </div>
+            <div style="color: #fff; font-size: 16px; margin-bottom: 16px;">
+                ${t('shareGenerating') || '공유 링크 생성 중...'}
+            </div>
+            <div style="color: rgba(255, 255, 255, 0.6); font-size: 13px; line-height: 1.6;">
+                ${t('shareWarning') || '해당 URL은 편의를 위한 기능으로 손상될 수 있습니다.<br>안전한 백업을 위해 내보내기 또는 사이트 업로드 기능을 활용해주세요.'}
+            </div>
+        `;
+        
+        modal.appendChild(content);
+        document.body.appendChild(modal);
+        
+        // Add spinner animation if not exists
+        if (!document.getElementById('shareLoadingSpinnerStyle')) {
+            const style = document.createElement('style');
+            style.id = 'shareLoadingSpinnerStyle';
+            style.textContent = `
+                @keyframes spin {
+                    0% { transform: rotate(0deg); }
+                    100% { transform: rotate(360deg); }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+    }
+
+    /**
+     * Hide share loading modal
+     */
+    hideShareLoadingModal() {
+        const modal = document.getElementById('shareLoadingModal');
+        if (modal) {
+            modal.remove();
         }
     }
 

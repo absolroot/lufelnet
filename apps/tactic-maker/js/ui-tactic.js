@@ -1161,7 +1161,7 @@ export class TacticUI {
                         return;
                     }
                     if (kind === 'duplicate') {
-                        this.store.addAction(turnIdx, colKey, { ...action, isNote: true, character: '', action: '' });
+                        this.store.addAction(turnIdx, colKey, { ...action, isNote: true, character: '', action: '' }, actionIdx);
                         return;
                     }
                     if (kind === 'delete') {
@@ -1593,7 +1593,7 @@ export class TacticUI {
                     return;
                 }
                 if (kind === 'duplicate') {
-                    this.store.addAction(turnIdx, colKey, { ...action });
+                    this.store.addAction(turnIdx, colKey, { ...action }, actionIdx);
                     return;
                 }
                 if (kind === 'delete') {

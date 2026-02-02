@@ -78,6 +78,20 @@ export class NeedStatCardUI {
             this.store.state.needStatSelections = {};
         }
         
+        // Collect persona performance values from current container
+        const personaPerformanceValues = {};
+        const container = document.querySelector('.need-stat-container');
+        if (container) {
+            container.querySelectorAll('.need-stat-persona-input').forEach(input => {
+                const itemId = input.dataset.itemId;
+                const category = input.dataset.category;
+                if (itemId) {
+                    const key = `${category}_${itemId}`;
+                    personaPerformanceValues[key] = parseFloat(input.value) || 100;
+                }
+            });
+        }
+        
         this.store.state.needStatSelections[slotIndex] = {
             critical: [...this.selectedItems],
             pierce: [...this.selectedPierceItems],
@@ -86,7 +100,8 @@ export class NeedStatCardUI {
             revSumPierce: this.revelationSumPierce,
             extraSumCritical: this.extraSumCritical,
             extraSumPierce: this.extraSumPierce,
-            extraDefenseReduce: this.extraDefenseReduce
+            extraDefenseReduce: this.extraDefenseReduce,
+            personaPerformance: personaPerformanceValues
         };
         
         // Trigger auto-save
@@ -110,6 +125,7 @@ export class NeedStatCardUI {
         this.extraSumCritical = saved.extraSumCritical || 0;
         this.extraSumPierce = saved.extraSumPierce || 0;
         this.extraDefenseReduce = saved.extraDefenseReduce || 0;
+        this.savedPersonaPerformance = saved.personaPerformance || {};
         
         return true;
     }
@@ -658,7 +674,20 @@ export class NeedStatCardUI {
         if (lang === 'jp' && item.type_jp) typeName = item.type_jp;
 
         const target = item.target || '';
-        const value = item.value || 0;
+        let value = item.value || 0;
+        
+        // Apply saved persona performance for jc1 in critical section
+        if (String(item.id) === 'jc1') {
+            const savedKey = `critical_${itemId}`;
+            const savedN = this.savedPersonaPerformance?.[savedKey];
+            if (savedN !== undefined) {
+                const baseValue = item.__baseValue !== undefined ? item.__baseValue : value;
+                item.__baseValue = baseValue;
+                value = baseValue * (50 + savedN / 2) / 100;
+                item.value = value;
+            }
+        }
+        
         const skillIcon = item.skillIcon ? `${this.baseUrl}${item.skillIcon}` : '';
         const isChecked = this.selectedItems.has(itemId);
         const sourceName = this.getSourceDisplayName(item.source);
@@ -704,7 +733,9 @@ export class NeedStatCardUI {
         const isJC1Critical = (String(item.id) === 'jc1');
         
         if (isJC1Critical) {
-            const defaultValue = 100;
+            const savedKey = `critical_${itemId}`;
+            const savedValue = this.savedPersonaPerformance?.[savedKey];
+            const defaultValue = savedValue !== undefined ? savedValue : 100;
             const label = lang === 'en' ? 'Desire' : (lang === 'jp' ? 'デザイア' : '페르소나 성능');
             personaPerformanceHtml = `
                 <span class="need-stat-persona-performance">
@@ -725,7 +756,7 @@ export class NeedStatCardUI {
                 <span class="need-stat-name">${displayName}</span>
                 ${personaPerformanceHtml}
                 ${optionsHtml}
-                <span class="need-stat-value">${value}%</span>
+                <span class="need-stat-value">${typeof value === 'number' ? value.toFixed(2) : value}%</span>
             </div>
         `;
     }
@@ -745,7 +776,26 @@ export class NeedStatCardUI {
         if (lang === 'jp' && item.type_jp) typeName = item.type_jp;
 
         const target = item.target || '';
-        const value = item.value || 0;
+        let value = item.value || 0;
+        
+        // Apply saved persona performance for jc1/jc2
+        const isJC1Pierce = (String(item.id) === 'jc1' && category === 'pierce');
+        const isJC2Defense = (String(item.id) === 'jc2' && category === 'defense');
+        if (isJC1Pierce || isJC2Defense) {
+            const savedKey = `${category}_${itemId}`;
+            const savedN = this.savedPersonaPerformance?.[savedKey];
+            if (savedN !== undefined) {
+                const baseValue = item.__baseValue !== undefined ? item.__baseValue : value;
+                item.__baseValue = baseValue;
+                if (isJC1Pierce) {
+                    value = baseValue * (50 + savedN / 2) / 100;
+                } else if (isJC2Defense) {
+                    value = baseValue * savedN / 100;
+                }
+                item.value = value;
+            }
+        }
+        
         const skillIcon = item.skillIcon || '';
         const selectedSet = category === 'pierce' ? this.selectedPierceItems : this.selectedDefenseItems;
         const isChecked = selectedSet.has(itemId);
@@ -793,7 +843,9 @@ export class NeedStatCardUI {
         const isJC2 = (String(item.id) === 'jc2' && category === 'defense');
         
         if (isJC1 || isJC2) {
-            const defaultValue = 100;
+            const savedKey = `${category}_${itemId}`;
+            const savedValue = this.savedPersonaPerformance?.[savedKey];
+            const defaultValue = savedValue !== undefined ? savedValue : 100;
             const label = lang === 'en' ? 'Desire' : (lang === 'jp' ? 'デザイア' : '페르소나 성능');
             // jc1은 크리티컬 섹션과 값 동기화를 위해 need-stat-jc1-sync 클래스 추가
             const syncClass = isJC1 ? 'need-stat-jc1-sync' : '';
@@ -814,7 +866,7 @@ export class NeedStatCardUI {
                 <span class="need-stat-name">${displayName}</span>
                 ${personaPerformanceHtml}
                 ${optionsHtml}
-                <span class="need-stat-value">${value}%</span>
+                <span class="need-stat-value">${typeof value === 'number' ? value.toFixed(2) : value}%</span>
             </div>
         `;
     }
@@ -2055,7 +2107,7 @@ export class NeedStatCardUI {
                 const valueEl = row ? row.querySelector('.need-stat-value') : null;
 
                 const allItems = [...buffItems, ...selfItems];
-                const item = allItems.find(i => (i.id || `${i.source}_${i.skillName}`) === itemId);
+                const item = allItems.find(i => String(i.id || `${i.source}_${i.skillName}`) === itemId);
 
                 if (item && item.values && item.values[selectedOption] !== undefined) {
                     const newBaseValue = item.values[selectedOption];
@@ -2126,6 +2178,9 @@ export class NeedStatCardUI {
                     
                     const total = this.calculateTotal(buffItems, selfItems) + this.revelationSumCritical + this.extraSumCritical + getGlobalElucidatorCritical();
                     this.updateTotalPairDisplays(slotIndex, total, 'critical');
+                    
+                    // Save persona performance value to store
+                    this.saveSelectionsToStore(this.currentSlotIndex);
                 }
             });
         });
@@ -2227,7 +2282,7 @@ export class NeedStatCardUI {
                 const valueEl = row ? row.querySelector('.need-stat-value') : null;
 
                 const allItems = category === 'pierce' ? allPierceItems : allDefenseItems;
-                const item = allItems.find(i => (i.id || `${i.source}_${i.skillName}`) === itemId);
+                const item = allItems.find(i => String(i.id || `${i.source}_${i.skillName}`) === itemId);
 
                 if (item && item.values && item.values[selectedOption] !== undefined) {
                     const newBaseValue = item.values[selectedOption];
@@ -2320,6 +2375,9 @@ export class NeedStatCardUI {
                     if (valueEl) valueEl.textContent = `${calculatedValue.toFixed(2)}%`;
                     
                     updatePierceDisplays();
+                    
+                    // Save persona performance value to store
+                    this.saveSelectionsToStore(this.currentSlotIndex);
                 }
             });
         });

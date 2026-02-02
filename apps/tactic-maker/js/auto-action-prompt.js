@@ -349,32 +349,32 @@ export class AutoActionPrompt {
      * @returns {boolean} True if prompt was shown
      */
     checkAndShowElucidatorPrompt(firstColumnTd) {
-        console.log('[Elucidator Debug] checkAndShowElucidatorPrompt called');
+        //console.log('[Elucidator Debug] checkAndShowElucidatorPrompt called');
         
         if (!this.isPromptEnabled()) {
-            console.log('[Elucidator Debug] Prompt disabled');
+            //console.log('[Elucidator Debug] Prompt disabled');
             return false;
         }
 
         const elucidator = this.getElucidator();
-        console.log('[Elucidator Debug] Elucidator:', elucidator);
+        //console.log('[Elucidator Debug] Elucidator:', elucidator);
         if (!elucidator || !elucidator.name) {
-            console.log('[Elucidator Debug] No elucidator or no name');
+            //console.log('[Elucidator Debug] No elucidator or no name');
             return false;
         }
 
         // Check if Elucidator has any actions in the entire board
         if (this.hasActionsForCharacter(elucidator.name)) {
-            console.log('[Elucidator Debug] Already has actions for:', elucidator.name);
+            //console.log('[Elucidator Debug] Already has actions for:', elucidator.name);
             return false;
         }
 
         // Check if Elucidator has a default pattern
-        console.log('[Elucidator Debug] ritualPatterns available:', typeof ritualPatterns !== 'undefined');
-        console.log('[Elucidator Debug] ritualPatterns keys:', typeof ritualPatterns !== 'undefined' ? Object.keys(ritualPatterns) : 'N/A');
-        console.log('[Elucidator Debug] hasElucidatorPattern:', this.hasElucidatorPattern());
+        //console.log('[Elucidator Debug] ritualPatterns available:', typeof ritualPatterns !== 'undefined');
+        //console.log('[Elucidator Debug] ritualPatterns keys:', typeof ritualPatterns !== 'undefined' ? Object.keys(ritualPatterns) : 'N/A');
+        //console.log('[Elucidator Debug] hasElucidatorPattern:', this.hasElucidatorPattern());
         if (!this.hasElucidatorPattern()) {
-            console.log('[Elucidator Debug] No pattern for elucidator');
+            //console.log('[Elucidator Debug] No pattern for elucidator');
             return false;
         }
 

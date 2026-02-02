@@ -139,15 +139,18 @@ class TacticMakerApp {
         this.updateLoadingProgress(100);
 
         // Hide loading overlay after reaching 100%
-        const loadingOverlay = document.getElementById('tacticLoadingOverlay');
-        if (loadingOverlay) {
-            setTimeout(() => {
-                loadingOverlay.classList.add('hidden');
-                // Remove from DOM after transition
+        // But only if not loading shared data (library/bin will handle its own overlay hiding)
+        if (!this.importExport.isSharedDataLoad) {
+            const loadingOverlay = document.getElementById('tacticLoadingOverlay');
+            if (loadingOverlay) {
                 setTimeout(() => {
-                    loadingOverlay.remove();
-                }, 300);
-            }, 200);
+                    loadingOverlay.classList.add('hidden');
+                    // Remove from DOM after transition
+                    setTimeout(() => {
+                        loadingOverlay.remove();
+                    }, 300);
+                }, 200);
+            }
         }
 
         console.log('[TacticMaker] Ready');
@@ -182,9 +185,26 @@ class TacticMakerApp {
             // Load from store
             memoInput.value = this.store.state.memo || '';
 
+            // Auto-resize textarea to fit content in non-edit mode
+            const autoResizeMemo = () => {
+                if (!document.body.classList.contains('tactic-edit-mode')) {
+                    memoInput.style.height = '0px';
+                    const scrollHeight = memoInput.scrollHeight;
+                    memoInput.style.height = scrollHeight + 'px';
+                } else {
+                    memoInput.style.height = '';
+                }
+            };
+
             // Listen for changes
             memoInput.addEventListener('input', (e) => {
                 this.store.setMemo(e.target.value);
+                autoResizeMemo();
+            });
+
+            // Listen for edit mode changes
+            document.addEventListener('editModeChange', () => {
+                autoResizeMemo();
             });
 
             // Listen for store updates
@@ -194,8 +214,12 @@ class TacticMakerApp {
                     if (memoInput.value !== newMemo) {
                         memoInput.value = newMemo || '';
                     }
+                    autoResizeMemo();
                 }
             });
+
+            // Initial resize
+            setTimeout(autoResizeMemo, 100);
         }
     }
 

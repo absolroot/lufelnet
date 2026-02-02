@@ -447,13 +447,6 @@ body:not(.tactic-edit-mode) .turn-row {
     overflow: hidden;
     text-overflow: ellipsis;
     font-weight: 500;
-}
-
-.custom-select-arrow {
-    width: 12px;
-    height: 12px;
-    opacity: 0.5;
-    flex-shrink: 0;
     transition: transform 0.2s, opacity 0.15s;
 }
 

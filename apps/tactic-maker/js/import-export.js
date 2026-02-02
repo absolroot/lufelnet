@@ -13,6 +13,7 @@ export class ImportExport {
         this.btnExport = document.getElementById('btnExport');
         this.btnShare = document.getElementById('btnShare');
         this.btnUpload = document.getElementById('btnUpload');
+        this.isSharedDataLoad = false; // Flag for shared data loading
 
         this.initEventListeners();
         this.checkUrlParams();
@@ -71,6 +72,11 @@ export class ImportExport {
         const binId = urlParams.get('bin');
         const libraryCode = urlParams.get('library');
 
+        // Mark as shared data load if any share param exists
+        if (libraryCode || binId || sharedData) {
+            this.isSharedDataLoad = true;
+        }
+
         if (libraryCode) {
             this.fetchFromLibrary(libraryCode);
         } else if (binId) {
@@ -91,8 +97,12 @@ export class ImportExport {
 
                 // Clean URL
                 window.history.replaceState({}, document.title, window.location.pathname);
+                
+                // Switch to non-edit mode and hide loading overlay
+                this.onSharedDataLoaded();
             } catch (error) {
                 console.error('[ImportExport] Failed to parse URL data:', error);
+                this.onSharedDataLoaded();
             }
         }
     }
@@ -166,9 +176,13 @@ export class ImportExport {
             }
 
             console.log('[ImportExport] Library data loaded successfully');
+            
+            // Switch to non-edit mode and hide loading overlay
+            this.onSharedDataLoaded();
 
         } catch (error) {
             console.error('[ImportExport] Failed to fetch library data:', error);
+            this.onSharedDataLoaded();
         }
     }
 
@@ -1104,13 +1118,42 @@ export class ImportExport {
                 const data = JSON.parse(jsonString);
                 this.applyImportedData(data);
 
-                // Clean URL
-                window.history.replaceState({}, document.title, window.location.pathname);
+                console.log('[ImportExport] Bin data loaded successfully');
+                
+                // Switch to non-edit mode and hide loading overlay
+                this.onSharedDataLoaded();
             } else {
                 console.error('[ImportExport] Bin not found:', binId);
+                this.onSharedDataLoaded();
             }
         } catch (error) {
             console.error('[ImportExport] Failed to fetch bin data:', error);
+            this.onSharedDataLoaded();
+        }
+    }
+
+    /**
+     * Called when shared data (library/bin) loading is complete
+     * Switches to non-edit mode and hides loading overlay
+     */
+    onSharedDataLoaded() {
+        // Switch to non-edit mode
+        document.body.classList.remove('tactic-edit-mode');
+        document.dispatchEvent(new CustomEvent('editModeChange', { detail: { enabled: false } }));
+        
+        // Update edit mode toggle button if exists
+        const editModeToggle = document.getElementById('editModeToggle');
+        if (editModeToggle) {
+            editModeToggle.checked = false;
+        }
+        
+        // Hide loading overlay
+        const loadingOverlay = document.getElementById('tacticLoadingOverlay');
+        if (loadingOverlay) {
+            loadingOverlay.classList.add('hidden');
+            setTimeout(() => {
+                loadingOverlay.remove();
+            }, 300);
         }
     }
 }

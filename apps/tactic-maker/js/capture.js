@@ -36,13 +36,23 @@ export class CaptureUI {
             align-items: center;
             gap: 10px;
         `;
+        // Use CSS animation instead of SVG animateTransform for smoother performance during capture
         el.innerHTML = `
-            <svg class="capture-spinner" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10" stroke-opacity="0.3"/>
-                <path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round">
-                    <animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="1s" repeatCount="indefinite"/>
-                </path>
-            </svg>
+            <style>
+                @keyframes capture-spin {
+                    from { transform: rotate(0deg); }
+                    to { transform: rotate(360deg); }
+                }
+                .capture-spinner-css {
+                    width: 20px;
+                    height: 20px;
+                    border: 2px solid rgba(255,255,255,0.3);
+                    border-top-color: white;
+                    border-radius: 50%;
+                    animation: capture-spin 0.8s linear infinite;
+                }
+            </style>
+            <div class="capture-spinner-css"></div>
             <span class="capture-text">${text || 'Generating image...'}</span>
         `;
         document.body.appendChild(el);

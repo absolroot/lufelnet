@@ -282,7 +282,7 @@ body:not(.tactic-edit-mode) #btnImport {
     background: transparent;
     border: none;
     border-bottom: 1px solid var(--border-color);
-    padding: 10px 0;
+    padding: 4px 0 12px 0;
     font-size: 1.4rem;
     font-weight: 700;
     color: #fff;
@@ -324,6 +324,19 @@ body:not(.tactic-edit-mode) #btnImport {
 
 .tactic-memo-input::placeholder {
     color: rgba(255, 255, 255, 0.3);
+}
+
+/* Non-edit mode: tactic-memo-input minimal style */
+body:not(.tactic-edit-mode) .tactic-memo-input {
+    padding: 4px 4px 8px 4px;
+    border: 0;
+    background: transparent;
+    min-height: 0;
+    height: auto;
+    resize: none;
+    overflow: hidden;
+    line-height: 1.5;
+    box-sizing: border-box;
 }
 
 /* ==========================================================================

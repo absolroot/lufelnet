@@ -74,6 +74,9 @@ export default {
     sharing: "Sharing...",
     shareSuccess: "Link copied to clipboard!",
     shareFailed: "Failed to share.",
+    // Upload
+    upload: "Upload",
+    uploadFailed: "Failed to upload.",
     // SEO
     pageTitleFull: "Tactic Maker - Persona 5: The Phantom X LufelNet",
     pageDescription: "Persona 5: The Phantom X Tactic Maker. Set up your party and skill order to share.",

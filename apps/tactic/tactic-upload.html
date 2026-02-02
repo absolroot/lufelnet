@@ -642,6 +642,45 @@ class TacticUploader {
         this.initEventListeners();
         this.initRegionDropdown();
         this.checkEditMode();
+        this.checkFromMaker();
+    }
+
+    /**
+     * Check if navigated from tactic-maker with data in sessionStorage
+     */
+    checkFromMaker() {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('fromMaker') !== '1') return;
+
+        try {
+            const storedData = sessionStorage.getItem('tacticUploadData');
+            if (!storedData) return;
+
+            const tacticData = JSON.parse(storedData);
+            
+            // Set tactic data and version
+            this.tacticData = tacticData;
+            this.tacticVersion = this.detectTacticVersion(tacticData);
+            
+            // Show preview
+            this.showJsonPreview(tacticData);
+            
+            // Set title if available
+            const titleInput = document.getElementById('tacticTitle');
+            if (titleInput && tacticData.title) {
+                titleInput.value = tacticData.title;
+            }
+
+            // Clear sessionStorage after loading
+            sessionStorage.removeItem('tacticUploadData');
+
+            // Clean URL
+            window.history.replaceState({}, document.title, window.location.pathname);
+
+            console.log('[TacticUploader] Loaded data from tactic-maker');
+        } catch (error) {
+            console.error('[TacticUploader] Failed to load data from tactic-maker:', error);
+        }
     }
 
     initLanguage() {

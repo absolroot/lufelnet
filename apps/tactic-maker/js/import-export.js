@@ -12,6 +12,7 @@ export class ImportExport {
         this.btnImport = document.getElementById('btnImport');
         this.btnExport = document.getElementById('btnExport');
         this.btnShare = document.getElementById('btnShare');
+        this.btnUpload = document.getElementById('btnUpload');
 
         this.initEventListeners();
         this.checkUrlParams();
@@ -50,6 +51,13 @@ export class ImportExport {
             this.btnShare.addEventListener('click', () => {
                 console.log('[ImportExport] Share button clicked');
                 this.shareTactic();
+            });
+        }
+
+        // Upload button click
+        if (this.btnUpload) {
+            this.btnUpload.addEventListener('click', () => {
+                this.uploadTactic();
             });
         }
     }
@@ -868,6 +876,45 @@ export class ImportExport {
 
         const baseUrl = window.location.origin + window.location.pathname;
         return `${baseUrl}?data=${jsonString}`;
+    }
+
+    /**
+     * Upload tactic to library (requires login)
+     */
+    async uploadTactic() {
+        const t = (key) => window.I18nService ? window.I18nService.t(key) : key;
+
+        try {
+            // Generate export data
+            const tacticData = this.generateExportData();
+            
+            // Store tactic data in sessionStorage for transfer to upload page
+            sessionStorage.setItem('tacticUploadData', JSON.stringify(tacticData));
+            
+            // Check if user is logged in via Supabase
+            if (typeof supabase === 'undefined') {
+                console.error('[ImportExport] Supabase not available');
+                alert(t('uploadFailed') || '업로드에 실패했습니다.');
+                return;
+            }
+
+            const { data: { session } } = await supabase.auth.getSession();
+            
+            if (!session || !session.user) {
+                // Not logged in - redirect to login page with return URL
+                const returnUrl = encodeURIComponent('/tactic/tactic-upload.html?fromMaker=1');
+                window.location.href = `/login/?redirect=${returnUrl}`;
+                return;
+            }
+
+            // Logged in - redirect to upload page
+            window.location.href = '/tactic/tactic-upload.html?fromMaker=1';
+
+        } catch (error) {
+            console.error('[ImportExport] Upload failed:', error);
+            const t = (key) => window.I18nService ? window.I18nService.t(key) : key;
+            alert(t('uploadFailed') || '업로드에 실패했습니다.');
+        }
     }
 
     /**

@@ -109,8 +109,11 @@ export default {
     // Share
     share: "共有",
     sharing: "共有中...",
-    shareSuccess: "リンクがクリ립ボードにコピーされました！",
+    shareSuccess: "リンクがクリップボードにコピーされました！",
     shareFailed: "共有に失敗しました。",
+    // Upload
+    upload: "アップロード",
+    uploadFailed: "アップロードに失敗しました。",
     // SEO
     pageTitleFull: "タクティクスメーカー - ペルソナ5 ザ・ファントム X LufelNet",
     pageDescription: "ペルソナ5 ザ・ファントム X タクティクスメーカー。パーティとスキルの順序を設定して共有しましょう。",

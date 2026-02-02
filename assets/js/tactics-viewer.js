@@ -564,9 +564,9 @@ class TacticsViewer {
         const partyImagesDiv = document.createElement('div');
         partyImagesDiv.className = 'party-images';
 
-        // 파티원 정렬 및 이미지 생성
+        // 파티원 정렬 및 이미지 생성 (v3 포맷은 null 멤버 포함 가능)
         const orderedParty = tacticData.party
-            .filter(pm => pm.name !== "")
+            .filter(pm => pm && pm.name && pm.name !== "")
             .sort((a, b) => {
                 if (a.order === "-") return 1;
                 if (b.order === "-") return -1;
@@ -575,7 +575,7 @@ class TacticsViewer {
 
         orderedParty.forEach(member => {
             // 원더인 경우 건너뛰기
-            if (member.name === "원더") return;
+            if (member.name === "원더" || member.name === "Wonder") return;
 
             const container = document.createElement('div');
             if (charData[member.name]) {

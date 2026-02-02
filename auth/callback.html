@@ -15,47 +15,80 @@ title: 인증 처리 중
 </div>
 
 <style>
+:root {
+  --callback-bg: #121212;
+  --callback-card-bg: #1f1f1f;
+  --callback-accent: #d11f1f;
+  --callback-text: #ffffff;
+  --callback-text-secondary: rgba(255, 255, 255, 0.7);
+  --callback-border: rgba(255, 255, 255, 0.2);
+}
+
+body {
+  background: var(--callback-bg);
+  margin: 0;
+  font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
 .auth-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 80vh;
+  min-height: 100vh;
   padding: 2rem;
+  background: var(--callback-bg);
 }
 
 .auth-box {
-  background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  background: var(--callback-card-bg);
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
   width: 100%;
   max-width: 400px;
   text-align: center;
+  border: 1px solid var(--callback-border);
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--callback-accent), #ff6b6b);
 }
 
 .loading-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .loading-spinner {
-  width: 40px;
-  height: 40px;
-  border: 3px solid rgba(0,123,255,0.3);
+  width: 48px;
+  height: 48px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
   border-radius: 50%;
-  border-top-color: #007bff;
-  animation: spin 1s ease-in-out infinite;
+  border-top-color: var(--callback-accent);
+  animation: spin 0.8s ease-in-out infinite;
 }
 
 .auth-box h2 {
-  margin: 1rem 0;
-  color: #333;
+  margin: 0;
+  color: var(--callback-text);
+  font-size: 1.25rem;
+  font-weight: 600;
 }
 
 .auth-box p {
-  color: #666;
+  color: var(--callback-text-secondary);
+  margin: 0;
+  font-size: 0.9rem;
 }
 
 @keyframes spin {

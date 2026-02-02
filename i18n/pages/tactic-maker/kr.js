@@ -108,6 +108,9 @@ export default {
     sharing: "공유 중...",
     shareSuccess: "링크가 클립보드에 복사되었습니다!",
     shareFailed: "공유에 실패했습니다.",
+    // Upload
+    upload: "업로드",
+    uploadFailed: "업로드에 실패했습니다.",
     // SEO
     pageTitleFull: "택틱 메이커 - 페르소나5 더 팬텀 X 루페르넷",
     pageDescription: "페르소나5 더 팬텀 X 택틱 메이커. 파티와 스킬 순서를 설정하고 공유하세요.",

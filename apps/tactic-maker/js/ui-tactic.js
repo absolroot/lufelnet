@@ -424,7 +424,9 @@ export class TacticUI {
             tdTurn.querySelector('.btn-remove-turn')?.addEventListener('click', (e) => {
                 e.stopPropagation();
                 if (!this.isEditMode()) return;
-                if (confirm('이 턴을 삭제하시겠습니까?')) {
+                const t = (key) => window.I18nService ? window.I18nService.t(key) : key;
+                const confirmMsg = t('confirmDeleteTurn') || '이 턴을 삭제하시겠습니까?';
+                if (confirm(confirmMsg)) {
                     this.store.removeTurn(turnIdx);
                 }
             });
@@ -1952,7 +1954,9 @@ export class TacticUI {
 
         // Delete handler
         newDeleteBtn.addEventListener('click', () => {
-            if (confirm('이 액션을 삭제하시겠습니까?')) {
+            const t = (key) => window.I18nService ? window.I18nService.t(key) : key;
+            const confirmMsg = t('confirmDeleteAction') || '이 액션을 삭제하시겠습니까?';
+            if (confirm(confirmMsg)) {
                 this.store.removeAction(turnIdx, colKey, actionIdx);
                 this.closeActionModal(modal);
             }

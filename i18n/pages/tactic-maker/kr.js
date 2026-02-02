@@ -96,6 +96,8 @@ export default {
     desc_duplicate_turn: "턴 복제",
     desc_remove_turn: "턴 삭제",
     desc_drag_reorder: "드래그하여 순서 변경",
+    confirmDeleteTurn: "이 턴을 삭제하시겠습니까?",
+    confirmDeleteAction: "이 액션을 삭제하시겠습니까?",
     // Capture
     capture: "캡처",
     capturing: "캡처 중...",

@@ -99,6 +99,8 @@ export default {
     desc_duplicate_turn: "ターン複製",
     desc_remove_turn: "ターン削除",
     desc_drag_reorder: "ドラッグして並べ替え",
+    confirmDeleteTurn: "このターンを削除しますか？",
+    confirmDeleteAction: "このアクションを削除しますか？",
     // Capture
     capture: "キャプチャ",
     capturing: "キャプチャ中...",

@@ -662,6 +662,26 @@ class TacticUploader {
             this.tacticData = tacticData;
             this.tacticVersion = this.detectTacticVersion(tacticData);
             
+            // Remove required attribute from file input since data is loaded from sessionStorage
+            const jsonFileInput = document.getElementById('jsonFile');
+            if (jsonFileInput) {
+                jsonFileInput.removeAttribute('required');
+                // Hide the file upload section and show a loaded indicator
+                const fileGroup = jsonFileInput.closest('.form-group');
+                if (fileGroup) {
+                    fileGroup.innerHTML = `
+                        <label data-i18n="json_file">택틱 JSON 파일</label>
+                        <div class="data-loaded-indicator">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4CAF50" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                            <span>${this.currentLang === 'en' ? 'Data loaded from Tactic Maker' : this.currentLang === 'jp' ? 'タクティクスメーカーからデータをロードしました' : '택틱 메이커에서 데이터를 불러왔습니다'}</span>
+                        </div>
+                    `;
+                }
+            }
+            
             // Show preview
             this.showJsonPreview(tacticData);
             

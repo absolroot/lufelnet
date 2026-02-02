@@ -924,10 +924,9 @@ export class ImportExport {
         const t = (key) => window.I18nService ? window.I18nService.t(key) : key;
 
         try {
-            // Show loading
-            const originalText = this.btnShare.querySelector('span').textContent;
+            // Show loading - button only has SVG, no span
             this.btnShare.disabled = true;
-            this.btnShare.querySelector('span').textContent = t('sharing');
+            this.btnShare.style.opacity = '0.6';
 
             const data = this.generateExportData();
             let jsonString = JSON.stringify(data);
@@ -957,15 +956,13 @@ export class ImportExport {
 
             // Restore button
             this.btnShare.disabled = false;
-            this.btnShare.querySelector('span').textContent = originalText;
+            this.btnShare.style.opacity = '1';
 
         } catch (error) {
             console.error('[ImportExport] Share failed:', error);
             alert(t('shareFailed'));
             this.btnShare.disabled = false;
-            if (this.btnShare.querySelector('span')) {
-                this.btnShare.querySelector('span').textContent = t('share');
-            }
+            this.btnShare.style.opacity = '1';
         }
     }
 

@@ -76,13 +76,79 @@ body {
     margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
+    gap: 12px;
 }
 
 .sheet-status {
     display: flex;
+    flex-direction: column;
     gap: 8px;
+    align-items: flex-end;
+}
+
+.sheet-status-primary {
+    display: flex;
+    gap: 8px;
+}
+
+.sheet-status-secondary {
+    display: flex;
+    gap: 6px;
     flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+/* Buttons with visible text (Edit mode, Upload) */
+.btn-with-text {
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.btn-with-text svg {
+    flex-shrink: 0;
+}
+
+.btn-with-text span {
+    white-space: nowrap;
+}
+
+/* Upload button accent style */
+.btn-upload-primary {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.btn-upload-primary:hover {
+    background: #ff3b3b;
+    border-color: #ff3b3b;
+}
+
+/* Responsive: 768px and below */
+@media (max-width: 768px) {
+    .tactic-maker-page .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .sheet-status {
+        width: 100%;
+        align-items: flex-start;
+    }
+
+    .sheet-status-primary {
+        width: 100%;
+    }
+
+    .sheet-status-primary .btn-with-text {
+        flex: 1;
+        justify-content: center;
+    }
+
+    .sheet-status-secondary {
+        justify-content: flex-start;
+    }
 }
 
 /* Hide edit-only buttons in non-edit mode */

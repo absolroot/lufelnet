@@ -345,7 +345,7 @@ Object.assign(window.characterData, {
         "role_en": "Turn Revert Elucidator",
         "role_jp": "ターンリバート 解明",
         "tag": "추가 턴, 디버프 제거, 관통, 대미지 보너스, 공격력",
-        "color": "#d8d8d8ff",
+        "color": "#e9e6fe",
         "element": "버프",
         "rarity": 5,
         "position": "해명",

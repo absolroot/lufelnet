@@ -107,6 +107,7 @@ export class DataLoader {
 
         const criticalSrc = `${baseUrl}/data/kr/calc/critical-data.js${version}`;
         const bossSrc = `${baseUrl}/data/kr/calc/boss.js${version}`;
+        const defenseSrc = `${baseUrl}/data/kr/calc/defense-data.js${version}`;
 
         const loadScript = (src) => new Promise((resolve) => {
             const script = document.createElement('script');
@@ -123,17 +124,27 @@ export class DataLoader {
         this._criticalDataPromise = Promise.all([
             // Check if already loaded, otherwise load
             (window.criticalBuffData && window.criticalSelfData) ? Promise.resolve(true) : loadScript(criticalSrc),
-            window.bossData ? Promise.resolve(true) : loadScript(bossSrc)
+            window.bossData ? Promise.resolve(true) : loadScript(bossSrc),
+            (window.penetrateData && window.defenseCalcData) ? Promise.resolve(true) : loadScript(defenseSrc)
         ]).then(() => {
             // bossData is declared as const in boss.js, so we need to assign it to window
             if (typeof bossData !== 'undefined' && !window.bossData) {
                 window.bossData = bossData;
             }
+            // penetrateData and defenseCalcData are declared as const in defense-data.js
+            if (typeof penetrateData !== 'undefined' && !window.penetrateData) {
+                window.penetrateData = penetrateData;
+            }
+            if (typeof defenseCalcData !== 'undefined' && !window.defenseCalcData) {
+                window.defenseCalcData = defenseCalcData;
+            }
             this._criticalDataLoaded = true;
-            console.log('[DataLoader] Critical/Boss data loaded:', {
+            console.log('[DataLoader] Critical/Boss/Defense data loaded:', {
                 buffGroups: Object.keys(window.criticalBuffData || {}).length,
                 selfGroups: Object.keys(window.criticalSelfData || {}).length,
-                bosses: (window.bossData || []).length
+                bosses: (window.bossData || []).length,
+                penetrateGroups: Object.keys(window.penetrateData || {}).length,
+                defenseGroups: Object.keys(window.defenseCalcData || {}).length
             });
             return true;
         });

@@ -96,10 +96,10 @@ export class CaptureUI {
         document.body.classList.remove('tactic-edit-mode');
         document.dispatchEvent(new CustomEvent('editModeChange', { detail: { enabled: false } }));
 
-        // Temporarily replace navigation-path text
+        // Temporarily replace navigation-path text with logo + site name
         const navigationPath = mainWrapper.querySelector('.navigation-path');
         const originalNavigationContent = navigationPath ? navigationPath.innerHTML : null;
-        if (navigationPath) navigationPath.innerHTML = 'lufel.net';
+        if (navigationPath) navigationPath.innerHTML = `<img src="${this.baseUrl}/assets/img/logo/lufel.webp" alt="logo" style="height: 16px; vertical-align: middle; margin-right: 6px;">lufel.net`;
 
         // Hide elements that shouldn't be in capture
         const elementsToHide = [

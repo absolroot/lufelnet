@@ -402,11 +402,16 @@ class DefenseCalc {
             headerTr.appendChild(fullTd);
 
             // J&C 전용 Desire 레벨 입력 컨트롤 추가 (DOM 구조 구성 후)
+            // jc1(관통 테이블)과 jc2(방어력 감소 테이블)에 각각 별도의 페르소나 성능 입력 필드 부착
             try {
-                if (groupName === 'J&C' && typeof JCCalc !== 'undefined' && JCCalc.attachDesireControl) {
-                    // isPenetrate가 true면 'penetrate', 아니면 'def' 타입을 전달
-                    const type = isPenetrate ? 'penetrate' : 'def'; 
-                    JCCalc.attachDesireControl(headerTr, this, type);
+                if (groupName === 'J&C' && typeof JCCalc !== 'undefined') {
+                    if (isPenetrate && JCCalc.attachJC1Control) {
+                        // 관통 테이블: jc1 전용 컨트롤 (공식: value/2 + value/2 * N/100)
+                        JCCalc.attachJC1Control(headerTr, this);
+                    } else if (!isPenetrate && JCCalc.attachJC2Control) {
+                        // 방어력 감소 테이블: jc2 전용 컨트롤 (공식: value * N/100)
+                        JCCalc.attachJC2Control(headerTr, this);
+                    }
                 }
             } catch(_) {}
 
@@ -718,7 +723,16 @@ class DefenseCalc {
                         try {
                             data.__jcBaseValue = nextValue;
                             data.value = nextValue;
-                            JCCalc.onOptionChanged(data, valueCell, isPenetrate, this);
+                            // jc1과 jc2에 각각 별도 타입 사용
+                            let jcType;
+                            if (String(data.id) === 'jc1') {
+                                jcType = 'jc1_penetrate';
+                            } else if (String(data.id) === 'jc2') {
+                                jcType = 'jc2_def';
+                            } else {
+                                jcType = isPenetrate ? 'penetrate' : 'def';
+                            }
+                            JCCalc.onOptionChanged(data, valueCell, jcType, this);
                             return;
                         } catch(_) {}
                     }
@@ -747,8 +761,18 @@ class DefenseCalc {
         
         if (!isExcluded && groupName === 'J&C' && typeof JCCalc !== 'undefined' && JCCalc.registerItem) {
             try {
-                // 타입 명시: isPenetrate가 true면 'penetrate', 아니면 'def'
-                const type = isPenetrate ? 'penetrate' : 'def';
+                // jc1(관통 테이블)과 jc2(방어력 감소 테이블)에 각각 별도 타입 사용
+                // jc1: 공식 value/2 + value/2 * N/100
+                // jc2: 공식 value * N/100
+                let type;
+                if (String(data.id) === 'jc1') {
+                    type = 'jc1_penetrate';
+                } else if (String(data.id) === 'jc2') {
+                    type = 'jc2_def';
+                } else {
+                    // 기타 J&C 아이템은 기존 로직 유지
+                    type = isPenetrate ? 'penetrate' : 'def';
+                }
                 JCCalc.registerItem(data, valueCell, type, this);
             } catch(_) {
                 valueCell.textContent = `${data.value}%`;

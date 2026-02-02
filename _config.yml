@@ -94,6 +94,9 @@ exclude:
   - package-lock.json
   - .jekyll-cache
   - .jekyll-metadata
+  - nul
+  - nul.*
+  - data/external/before
 
 # 감시 제외 설정
 keep_files:

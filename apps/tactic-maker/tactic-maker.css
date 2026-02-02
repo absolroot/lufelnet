@@ -2057,7 +2057,8 @@ body:not(.tactic-edit-mode) .styled-select,
 body:not(.tactic-edit-mode) .btn-role-change,
 body:not(.tactic-edit-mode) .weapon-select,
 body:not(.tactic-edit-mode) .slot-card,
-body:not(.tactic-edit-mode) .wp-header {
+body:not(.tactic-edit-mode) .wp-header,
+body:not(.tactic-edit-mode) .wonder-persona-card {
     pointer-events: none !important;
     cursor: default !important;
 }
@@ -2199,11 +2200,47 @@ body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
     border-color: var(--accent-color);
 }
 
+.need-stat-extra-label {
+    margin-left: 12px;
+}
+
+.need-stat-extra-sum-input {
+    width: 60px;
+    padding: 4px 6px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+    color: #fff;
+    font-size: 11px;
+    text-align: center;
+}
+
+.need-stat-extra-sum-input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+.need-stat-extra-defense-input {
+    width: 60px;
+    padding: 4px 6px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+    color: #fff;
+    font-size: 11px;
+    text-align: center;
+}
+
+.need-stat-extra-defense-input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
 /* Two-column layout: Critical (left) / Pierce (right) */
 .need-stat-columns {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 12px;
+    gap: 8px;
 }
 
 /* Label hints for current/needed */
@@ -2218,6 +2255,12 @@ body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
     display: inline-flex;
     align-items: center;
     gap: 2px;
+}
+
+.need-stat-column-header .need-stat-total-inline .need-stat-current {
+    margin-left: 4px;
+    font-size: 13px;
+    font-weight: 600;
 }
 
 .need-stat-separator {
@@ -2281,7 +2324,7 @@ body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
     align-items: center;
     justify-content: space-between;
     padding: 10px 12px;
-    background: rgba(255, 255, 255, 0.05);
+    background: #1f1f1f;
     font-size: 12px;
     font-weight: 600;
     color: rgba(255, 255, 255, 0.8);
@@ -2342,6 +2385,11 @@ body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
     z-index: 0 !important; /* Lower than revelation dropdown */
 }
 
+/* Active trigger with inner shadow border */
+.need-stat-trigger.open {
+    box-shadow: inset 0 0 0 1px rgba(168, 0, 0);
+}
+
 /* Ensure revelation dropdown in slot-card is above need-stat-trigger */
 .slot-card .revelation-dropdown {
     position: relative;
@@ -2378,7 +2426,7 @@ body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
 
 .need-stat-trigger-row {
     display: grid;
-    grid-template-columns: 1fr 50px 50px;
+    grid-template-columns: 1fr 50px 50px 50px;
     align-items: center;
     padding: 2px 0;
     font-size: 11px;
@@ -2401,10 +2449,15 @@ body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
     font-weight: 500;
 }
 
+.need-stat-trigger-row .need-stat-target,
 .need-stat-trigger-row .need-stat-current,
 .need-stat-trigger-row .need-stat-needed {
     text-align: center;
     font-size: 11px;
+}
+
+.need-stat-trigger-row .need-stat-target {
+    color: rgba(255, 255, 255, 0.4);
 }
 
 .need-stat-trigger-row .need-stat-current {
@@ -2541,6 +2594,10 @@ body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
     align-items: end;
 }
 
+.need-stat-boss-content.need-stat-boss-content-2col {
+    grid-template-columns: 1fr 80px;
+}
+
 .need-stat-boss-select-wrapper {
     width: 100%;
 }
@@ -2578,6 +2635,7 @@ body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
     align-items: center;
     gap: 8px;
     padding: 6px 10px;
+    box-sizing: border-box;
 }
 
 .need-stat-boss-option-icon {
@@ -2613,6 +2671,51 @@ body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
 .need-stat-boss-input:focus {
     outline: none;
     border-color: var(--accent-color, #4a90d9);
+}
+
+/* Defense info row */
+.need-stat-defense-info {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 8px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    margin-bottom: 6px;
+    font-size: 10px;
+}
+
+.need-stat-defense-label {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.need-stat-defense-value {
+    color: #ff6b6b;
+    font-weight: 600;
+}
+
+.need-stat-defense-sep {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.need-stat-defense-required {
+    color: #4ecdc4;
+    font-weight: 600;
+}
+
+/* Defense info inline in header */
+.need-stat-defense-info-inline {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    margin-left: auto;
+    margin-right: 8px;
+}
+
+/* 주원 element icon scale */
+img[src*="주원.png"] {
+    transform: scale(0.85);
 }
 
 /* Body: hidden by default, shown when .open */
@@ -2716,8 +2819,8 @@ span.need-stat-icon {
     display: inline-block;
 }
 
-/* Target label */
-.need-stat-target {
+/* Target type label (자신/광역 등) */
+.need-stat-target-type {
     font-size: 9px;
     color: rgba(255, 255, 255, 0.5);
     flex-shrink: 0;
@@ -2751,9 +2854,42 @@ span.need-stat-icon {
     text-overflow: ellipsis;
 }
 
+/* J&C 페르소나 성능 입력 필드 */
+.need-stat-persona-performance {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+    margin-right: 4px;
+}
+
+.need-stat-persona-label {
+    font-size: 9px;
+    color: rgba(255, 255, 255, 0.5);
+    white-space: nowrap;
+}
+
+.need-stat-persona-input {
+    width: 48px;
+    padding: 2px 4px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 3px;
+    color: #fff;
+    font-size: 10px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.need-stat-persona-input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
 /* Options dropdown */
 .crit-select,
-.need-stat-select {
+.need-stat-select,
+.need-stat-options {
     padding: 2px 4px;
     background: rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.12);
@@ -2765,7 +2901,8 @@ span.need-stat-icon {
 }
 
 .crit-select:focus,
-.need-stat-select:focus {
+.need-stat-select:focus,
+.need-stat-options:focus {
     outline: none;
     border-color: var(--accent-color);
 }

@@ -452,20 +452,24 @@ export class TacticUI {
                     cellHeader.style.borderBottom = `2px solid ${this.hexToRgba(charColor, 0.5)}`;
                 }
 
-                // Auto-Action Prompt (only in first turn, non-wonder characters)
-                if (turnIdx === 0 && char.type !== 'wonder') {
+                // Auto-Action Prompt (only in first turn)
+                if (turnIdx === 0) {
                     const autoPromptEnabled = this.settingsUI ? this.settingsUI.getAutoActionPrompt() : true;
 
                     if (autoPromptEnabled) {
                         let hasActions = false;
+                        // For wonder, check 'mystery' column; for others, check colKey
+                        const checkKey = char.type === 'wonder' ? 'mystery' : colKey;
                         for (const t of this.store.state.turns) {
-                            if (t.columns[colKey] && t.columns[colKey].length > 0) {
+                            if (t.columns[checkKey] && t.columns[checkKey].length > 0) {
                                 hasActions = true;
                                 break;
                             }
                         }
 
-                        if (!hasActions && this.store.hasDefaultPattern(colKey)) {
+                        // For wonder, pass 'mystery' to hasDefaultPattern; for others, pass colKey
+                        const patternKey = char.type === 'wonder' ? 'mystery' : colKey;
+                        if (!hasActions && this.store.hasDefaultPattern(patternKey)) {
                             const promptDiv = document.createElement('div');
                             promptDiv.className = 'auto-action-prompt';
 
@@ -482,7 +486,7 @@ export class TacticUI {
                             // Bind events
                             promptDiv.querySelector('.btn-prompt-yes').addEventListener('click', (e) => {
                                 e.stopPropagation();
-                                this.store.applyDefaultPattern(colKey);
+                                this.store.applyDefaultPattern(patternKey);
                             });
 
                             promptDiv.querySelector('.btn-prompt-no').addEventListener('click', (e) => {

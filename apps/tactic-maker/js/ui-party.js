@@ -137,6 +137,28 @@ export class PartyUI {
                 });
             }
         });
+        
+        // Also update the open need-stat panel if any
+        if (this.openNeedStatSlotIndex !== null && this.openNeedStatSlotIndex !== 3) {
+            const charData = this.store.state.party[this.openNeedStatSlotIndex];
+            if (charData && charData.name) {
+                this.refreshOpenNeedStatPanel(this.openNeedStatSlotIndex, charData);
+            }
+        }
+    }
+
+    /**
+     * Refresh the currently open need-stat panel
+     */
+    refreshOpenNeedStatPanel(slotIndex, charData) {
+        if (!this.needStatContainer || this.needStatContainer.hidden) return;
+        
+        const ui = this.needStatUIs[slotIndex];
+        if (!ui) return;
+        
+        const panelEl = ui.renderPanel(charData, slotIndex);
+        this.needStatContainer.innerHTML = '';
+        this.needStatContainer.appendChild(panelEl);
     }
 
     ensureNeedStatContainer() {

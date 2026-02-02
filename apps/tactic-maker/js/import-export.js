@@ -309,12 +309,18 @@ export class ImportExport {
 
             const isTurnSkill123 = (actionVal) => {
                 const v = normalizeActionValue(actionVal);
-                return /^스킬[123]$/.test(v) || /^Skill[123]$/.test(v) || /^スキル[123]$/.test(v);
+                // 스킬1,2,3 + 총격 + 방어 + 아이템
+                return /^스킬[123]$/.test(v) || /^Skill[123]$/.test(v) || /^スキル[123]$/.test(v)
+                    || /^총격$/i.test(v) || /^Gun$/i.test(v) || /^銃撃$/i.test(v)
+                    || /^방어$/i.test(v) || /^Defense$/i.test(v) || /^Guard$/i.test(v) || /^防御$/i.test(v)
+                    || /^아이템$/i.test(v) || /^Item$/i.test(v) || /^アイテム$/i.test(v);
             };
 
             const isHighlight = (actionVal) => {
                 const v = normalizeActionValue(actionVal);
-                return v === 'HIGHLIGHT';
+                // 하이라이트 + 테우르기아
+                return v === 'HIGHLIGHT' 
+                    || /^테우르기아$/i.test(v) || /^Theurgia$/i.test(v) || /^Theurgy$/i.test(v) || /^テウルギア$/i.test(v);
             };
 
             let currentColIdx = 0;

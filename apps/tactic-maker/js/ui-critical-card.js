@@ -1412,7 +1412,7 @@ export class NeedStatCardUI {
                 <div class="need-stat-columns">
                     <div class="need-stat-column need-stat-column-critical">
                         <div class="need-stat-column-header">
-                            <span>${labelCritical}</span>
+                            <span>${labelCritical}<a href="${this.baseUrl}/critical-calc/" target="_blank" class="need-stat-external-link" title="Critical Calculator"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></span>
                             ${this.renderTotalPairHtml(slotIndex, getGlobalElucidatorCritical(), 'critical')}
                         </div>
                         <div class="need-stat-body open">
@@ -1423,7 +1423,7 @@ export class NeedStatCardUI {
                     </div>
                     <div class="need-stat-column need-stat-column-pierce">
                         <div class="need-stat-column-header">
-                            <span>${labelPierce}</span>
+                            <span>${labelPierce}<a href="${this.baseUrl}/defense-calc/" target="_blank" class="need-stat-external-link" title="Defense Calculator"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></span>
                             ${this.renderTotalPairHtml(slotIndex, getGlobalElucidatorPierce(), 'pierce')}
                         </div>
                         <div class="need-stat-body open">
@@ -1476,7 +1476,7 @@ export class NeedStatCardUI {
             <div class="need-stat-columns">
                 <div class="need-stat-column need-stat-column-critical">
                     <div class="need-stat-column-header">
-                        <span>${labelCritical}</span>
+                        <span>${labelCritical}<a href="${this.baseUrl}/critical-calc/" target="_blank" class="need-stat-external-link" title="Critical Calculator"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></span>
                         ${this.renderTotalPairHtml(slotIndex, critTotal, 'critical')}
                     </div>
                     <div class="need-stat-rev-sum-row">
@@ -1500,7 +1500,7 @@ export class NeedStatCardUI {
                 </div>
                 <div class="need-stat-column need-stat-column-pierce">
                     <div class="need-stat-column-header">
-                        <span>${labelPierce}</span>
+                        <span>${labelPierce}<a href="${this.baseUrl}/defense-calc/" target="_blank" class="need-stat-external-link" title="Defense Calculator"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></span>
                         <span class="need-stat-defense-info-inline">
                             <span class="need-stat-defense-label">${labelRemainingDefense}</span>
                             <span class="need-stat-defense-value" data-slot-index="${slotIndex}">${remainingDefense}%</span>

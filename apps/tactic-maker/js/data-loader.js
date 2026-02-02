@@ -482,11 +482,11 @@ export class DataLoader {
         // For non-Korean, use loaded mapping
         if (lang !== 'kr') {
             const mappingKeys = DataLoader._revelationMapping ? Object.keys(DataLoader._revelationMapping).length : 0;
-            console.log('[DataLoader] getRevelationName called. Lang:', lang, 'Rev:', rawRev, 'MappingSize:', mappingKeys, 'Loaded:', DataLoader._revelationMappingLoaded);
+            // console.log('[DataLoader] getRevelationName called. Lang:', lang, 'Rev:', rawRev, 'MappingSize:', mappingKeys, 'Loaded:', DataLoader._revelationMappingLoaded);
 
             if (DataLoader._revelationMapping && DataLoader._revelationMapping[rawRev]) {
                 const translated = DataLoader._revelationMapping[rawRev];
-                console.log('[DataLoader] Found translation:', rawRev, '->', translated);
+                // console.log('[DataLoader] Found translation:', rawRev, '->', translated);
                 return translated;
             } else {
                 console.log('[DataLoader] No translation found for:', rawRev);

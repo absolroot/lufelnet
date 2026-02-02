@@ -73,18 +73,16 @@ body {
    ========================================================================== */
 .tactic-maker-page .header-container {
     padding: 0;
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 12px;
+    margin-bottom: 12px;
 }
 
+/* Sheet Status: Single row below pageTitle, above title input */
 .sheet-status {
     display: flex;
-    flex-direction: column;
-    gap: 8px;
-    align-items: flex-end;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
 }
 
 .sheet-status-primary {
@@ -96,7 +94,20 @@ body {
     display: flex;
     gap: 6px;
     flex-wrap: wrap;
-    justify-content: flex-end;
+    align-items: center;
+}
+
+/* Title/Memo Input Group */
+.tactic-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.tactic-input-group .tactic-title-container,
+.tactic-input-group .tactic-memo-container {
+    margin: 0;
 }
 
 /* Buttons with visible text (Edit mode, Upload) */
@@ -127,14 +138,10 @@ body {
 
 /* Responsive: 768px and below */
 @media (max-width: 768px) {
-    .tactic-maker-page .header-container {
+    .sheet-status {
         flex-direction: column;
         align-items: flex-start;
-    }
-
-    .sheet-status {
-        width: 100%;
-        align-items: flex-start;
+        gap: 8px;
     }
 
     .sheet-status-primary {
@@ -2394,6 +2401,31 @@ body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
     font-size: 12px;
     font-weight: 600;
     color: rgba(255, 255, 255, 0.8);
+    gap: 6px;
+}
+
+.need-stat-column-header > span:first-child {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.need-stat-external-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.5);
+    transition: color 0.2s;
+    flex-shrink: 0;
+}
+
+.need-stat-external-link:hover {
+    color: var(--accent-color);
+}
+
+.need-stat-external-link svg {
+    width: 14px;
+    height: 14px;
 }
 
 .need-stat-column .need-stat-body {

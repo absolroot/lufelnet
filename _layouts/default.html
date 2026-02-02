@@ -42,24 +42,50 @@
 
 
 
-  <!-- 기본 메타태그 (영어 기본값) -->
+  <!-- 페이지별 메타태그 (frontmatter에서 설정 가능) -->
+  {% if page.description %}
+  <meta name="description" content="{{ page.description }}">
+  {% else %}
   <meta name="description" content="Persona 5X Strategy and Information Site">
+  {% endif %}
   <meta name="keywords" content="P5X, Persona5X, Guide, Strategy, Phantom Thieves">
   <meta name="author" content="LufelNet">
 
-  <!-- Open Graph 메타태그 (영어 기본값) -->
+  <!-- Open Graph 메타태그 (페이지별 설정 가능) -->
+  {% if page.title %}
+  <meta property="og:title" content="{{ page.title }}">
+  {% else %}
   <meta property="og:title" content="P5X Lufelnet - Persona 5X Guide">
+  {% endif %}
+  {% if page.description %}
+  <meta property="og:description" content="{{ page.description }}">
+  {% else %}
   <meta property="og:description" content="Persona 5X Strategy and Information Site">
+  {% endif %}
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ site.url }}{{ current_url }}{{ canonical_params }}">
   <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/assets/img/home/seo.png">
   <meta property="og:site_name" content="P5X Lufelnet">
+  {% if page.language == 'kr' %}
+  <meta property="og:locale" content="ko_KR">
+  {% elsif page.language == 'jp' %}
+  <meta property="og:locale" content="ja_JP">
+  {% else %}
   <meta property="og:locale" content="en_US">
+  {% endif %}
 
-  <!-- Twitter 카드 메타태그 (영어 기본값) -->
+  <!-- Twitter 카드 메타태그 (페이지별 설정 가능) -->
   <meta name="twitter:card" content="summary_large_image">
+  {% if page.title %}
+  <meta name="twitter:title" content="{{ page.title }}">
+  {% else %}
   <meta name="twitter:title" content="P5X Lufelnet - Persona 5X Guide">
+  {% endif %}
+  {% if page.description %}
+  <meta name="twitter:description" content="{{ page.description }}">
+  {% else %}
   <meta name="twitter:description" content="Persona 5X Strategy and Information Site">
+  {% endif %}
   <meta name="twitter:image" content="{{ site.url }}{{ site.baseurl }}/assets/img/home/seo.png">
 
   <!-- Firebase SDK -->

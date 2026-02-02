@@ -195,6 +195,18 @@ sitemap:
     <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}/tactic/tactics.html" />
   </url>
 
+  <!-- Tactic Maker -->
+  <url>
+    <loc>{{ site.url }}/tactic-maker/</loc>
+    <lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="{{ site.url }}/tactic-maker/?lang=kr" />
+    <xhtml:link rel="alternate" hreflang="en" href="{{ site.url }}/tactic-maker/?lang=en" />
+    <xhtml:link rel="alternate" hreflang="ja" href="{{ site.url }}/tactic-maker/?lang=jp" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}/tactic-maker/" />
+  </url>
+
   <!-- Astrolabe -->
   <url>
     <loc>{{ site.url }}/astrolabe/</loc>

@@ -62,6 +62,8 @@ export default {
     settings: "설정",
     defaultRitual: "기본 의식",
     defaultModification: "기본 개조",
+    ritualLabel: "의식",
+    modificationLabel: "개조",
     autoWonderWeapon: "원더 무기 자동 설정 (반항/지배)",
     selectPersona: "페르소나 선택",
     selectRole: "직업 선택",

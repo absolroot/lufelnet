@@ -3,6 +3,8 @@
  * Handles the timeline/tactic board rendering and action editing
  */
 
+import { AutoActionPrompt } from './auto-action-prompt.js';
+
 export class TacticUI {
     constructor(store, settingsUI) {
         this.store = store;
@@ -15,6 +17,9 @@ export class TacticUI {
 
         // Base URL for assets
         this.baseUrl = window.BASE_URL || '';
+
+        // Auto Action Prompt module
+        this.autoActionPrompt = new AutoActionPrompt(store, settingsUI, this.baseUrl);
 
         // Cache sorted party
         this.sortedChars = [];
@@ -478,52 +483,17 @@ export class TacticUI {
                     cellHeader.style.borderBottom = `2px solid ${this.hexToRgba(charColor, 0.5)}`;
                 }
 
-                // Auto-Action Prompt (only in first turn)
+                // Auto-Action Prompt (only in first turn) - now handled by AutoActionPrompt module
                 if (turnIdx === 0) {
-                    const autoPromptEnabled = this.settingsUI ? this.settingsUI.getAutoActionPrompt() : true;
-
-                    if (autoPromptEnabled) {
-                        let hasActions = false;
-                        // Check if any turn has actions for this column
-                        for (const t of this.store.state.turns) {
-                            if (t.columns[colKey] && t.columns[colKey].length > 0) {
-                                hasActions = true;
-                                break;
-                            }
-                        }
-
-                        // Show prompt if no actions and has default pattern
-                        if (!hasActions && this.store.hasDefaultPattern(colKey)) {
-                            const promptDiv = document.createElement('div');
-                            promptDiv.className = 'auto-action-prompt';
-
-                            const promptText = this.getActionPromptText();
-
-                            promptDiv.innerHTML = `
-                                <span class="prompt-text">${promptText}</span>
-                                <div class="prompt-buttons">
-                                    <button type="button" class="btn-prompt-yes">${window.I18nService ? window.I18nService.t('yes') : 'Yes'}</button>
-                                    <button type="button" class="btn-prompt-no">${window.I18nService ? window.I18nService.t('no') : 'No'}</button>
-                                </div>
-                            `;
-
-                            // Bind events
-                            promptDiv.querySelector('.btn-prompt-yes').addEventListener('click', (e) => {
-                                e.stopPropagation();
-                                this.store.applyDefaultPattern(colKey);
-                            });
-
-                            promptDiv.querySelector('.btn-prompt-no').addEventListener('click', (e) => {
-                                e.stopPropagation();
-                                promptDiv.remove();
-                            });
-
-                            cellHeader.appendChild(promptDiv);
-                        }
-                    }
+                    this.autoActionPrompt.checkAndShowColumnPrompt(cellHeader, char, colKey);
                 }
 
                 td.appendChild(cellHeader);
+
+                // Elucidator prompt check (only on first turn, first column - regardless of order)
+                if (turnIdx === 0 && sortedChars.indexOf(char) === 0) {
+                    this.autoActionPrompt.checkAndShowElucidatorPrompt(td);
+                }
 
                 // Get actions for this column
                 const actions = turn.columns[colKey] || [];

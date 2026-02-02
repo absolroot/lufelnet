@@ -1094,3 +1094,24 @@ body:not(.tactic-edit-mode) .custom-select-trigger {
         background: rgba(0, 0, 0, 0.2);
     }
 }
+
+/* ==========================================================================
+   Elucidator Prompt Header
+   ========================================================================== */
+.elucidator-prompt-header {
+    margin-bottom: 4px;
+}
+
+.elucidator-prompt-header .cell-char-header {
+    border-radius: 0;
+    border: 1px dashed rgba(255, 255, 255, 0.3);
+    border-bottom: 2px solid;
+}
+
+.elucidator-prompt-header .elucidator-temp-header {
+    position: relative;
+}
+
+.elucidator-prompt-header .auto-action-prompt {
+    margin-top: 8px;
+}

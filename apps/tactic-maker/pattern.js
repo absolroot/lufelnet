@@ -813,5 +813,45 @@ const ritualPatterns = {
             [{ type: "스킬3" }]
         ]
         }
+    ],
+    // Elucidator Characters (해명 괴도)
+    "후카": [
+        {
+        level: "0-6",  
+        pattern: [
+            [{ type: "스킬1" }],
+            [{ type: "스킬2" }],
+            [{ type: "스킬1" }],
+            [{ type: "스킬2" }],
+            [{ type: "스킬1" }],
+            [{ type: "스킬2" }]
+        ]
+        }
+    ],
+    "마키": [
+        {
+        level: "0-6",  
+        pattern: [
+            [{ type: "스킬1" }],
+            [{ type: "스킬2" }],
+            [{ type: "스킬1" }],
+            [{ type: "스킬2" }],
+            [{ type: "스킬1" }],
+            [{ type: "스킬2" }]
+        ]
+        }
+    ],
+    "에리코": [
+        {
+        level: "0-6",  
+        pattern: [
+            [{ type: "스킬1" }],
+            [{ type: "스킬2" }],
+            [{ type: "스킬1" }],
+            [{ type: "스킬2" }],
+            [{ type: "스킬1" }],
+            [{ type: "스킬2" }]
+        ]
+        }
     ]
 };

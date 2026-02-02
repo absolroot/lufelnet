@@ -176,17 +176,31 @@ export class TacticStore {
         // "Just delete the previous character's actions when changing the character."
         // Only if we are validly switching characters in the same slot/order context
         if (previousData && characterData && previousData.name !== characterData.name) {
-            // Use previousData.order because ui-party.js temporarily sets NEW order to '-'
-            // preventing us from knowing the target column if we look at characterData only.
-            // But we know the actions belong to the previous char's order.
-            const orderKey = String(previousData.order);
-            if (orderKey && orderKey !== '-') {
-                this.state.turns.forEach(turn => {
-                    // Clear actions for this column
-                    if (turn.columns[orderKey]) {
-                        turn.columns[orderKey] = [];
-                    }
-                });
+            // For Elucidator slot (index 3), clear actions by character name since they don't have order
+            if (slotIndex === 3) {
+                const prevCharName = previousData.name;
+                if (prevCharName) {
+                    this.state.turns.forEach(turn => {
+                        Object.keys(turn.columns).forEach(colKey => {
+                            turn.columns[colKey] = (turn.columns[colKey] || []).filter(
+                                action => action.character !== prevCharName
+                            );
+                        });
+                    });
+                }
+            } else {
+                // Use previousData.order because ui-party.js temporarily sets NEW order to '-'
+                // preventing us from knowing the target column if we look at characterData only.
+                // But we know the actions belong to the previous char's order.
+                const orderKey = String(previousData.order);
+                if (orderKey && orderKey !== '-') {
+                    this.state.turns.forEach(turn => {
+                        // Clear actions for this column
+                        if (turn.columns[orderKey]) {
+                            turn.columns[orderKey] = [];
+                        }
+                    });
+                }
             }
         }
 
@@ -519,6 +533,45 @@ export class TacticStore {
         if (actionsChanged) {
             this.notify('turnsChange', this.state.turns);
         }
+    }
+
+    /**
+     * Get sorted party (Wonder + party members) by order
+     * Used by auto-action-prompt for Elucidator pattern application
+     * @returns {Array} Array of { type, name, order, slotIndex }
+     */
+    getSortedParty() {
+        const chars = [];
+
+        // Add Wonder
+        const wonderOrder = this.state.wonder.order;
+        chars.push({
+            type: 'wonder',
+            name: '원더',
+            order: wonderOrder,
+            slotIndex: -1
+        });
+
+        // Add party members (exclude elucidator index 3)
+        this.state.party.forEach((member, idx) => {
+            if (idx === 3) return; // Skip elucidator
+            if (member && member.order && member.order !== '-') {
+                const parsedOrder = parseInt(member.order);
+                if (!Number.isFinite(parsedOrder)) return;
+
+                chars.push({
+                    type: 'party',
+                    name: member.name,
+                    order: parsedOrder,
+                    slotIndex: idx
+                });
+            }
+        });
+
+        // Sort by order
+        chars.sort((a, b) => a.order - b.order);
+
+        return chars;
     }
 
     /**

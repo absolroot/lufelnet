@@ -25,8 +25,10 @@ export default {
     weapon: "Weapon",
     weaponRefinement: "Refinement", 
     // Update:
-    defaultRitual: "A",
-    defaultModification: "R",
+    defaultRitual: "Default A",
+    defaultModification: "Default R",
+    ritualLabel: "A",
+    modificationLabel: "R",
     autoWonderWeapon: "Auto Wonder Weapon (Rebel/Dom)",
     selectPersona: "Select Persona",
     selectRole: "Select Role",

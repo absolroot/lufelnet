@@ -816,13 +816,13 @@ export class PartyUI {
                      `}
                      ${isWonder ? '' : `
                      <div class="slot-option-group">
-                        <label style="font-size: 11px; opacity: 0.7; margin-bottom: 2px; display: block;">${window.I18nService ? window.I18nService.t('defaultRitual').replace('기본 ', '') : '의식'}</label>
+                        <label style="font-size: 11px; opacity: 0.7; margin-bottom: 2px; display: block;">${window.I18nService ? window.I18nService.t('ritualLabel', '의식') : '의식'}</label>
                         <select class="styled-select ritual-select" data-index="${index}">
                              <!-- Populated by JS -->
                         </select>
                      </div>
                      <div class="slot-option-group">
-                        <label style="font-size: 11px; opacity: 0.7; margin-bottom: 2px; display: block;">${window.I18nService ? window.I18nService.t('defaultModification').replace('기본 ', '') : '개조'}</label>
+                        <label style="font-size: 11px; opacity: 0.7; margin-bottom: 2px; display: block;">${window.I18nService ? window.I18nService.t('modificationLabel', '개조') : '개조'}</label>
                         <select class="styled-select mod-select" data-index="${index}" >
                              <!-- Populated by JS -->
                         </select>

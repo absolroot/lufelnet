@@ -218,6 +218,8 @@ export class PartyUI {
         // Close roster-container when opening need-stat panel
         if (this.rosterContainer && this.rosterContainer.classList.contains('expanded')) {
             this.rosterContainer.classList.remove('expanded');
+            this.activeSlotIndex = null;
+            this.container.querySelectorAll('.slot-card').forEach(s => s.classList.remove('selecting'));
         }
 
         this.needStatContainer.hidden = false;

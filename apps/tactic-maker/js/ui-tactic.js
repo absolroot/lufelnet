@@ -426,20 +426,33 @@ export class TacticUI {
             this.setupTurnDragDrop(tr, turnIdx);
 
             // Bind turn actions (only work in edit mode)
+            // Use DOM-based index lookup for safety
             tdTurn.querySelector('.btn-remove-turn')?.addEventListener('click', (e) => {
                 e.stopPropagation();
                 if (!this.isEditMode()) return;
+                
+                // Get actual index from DOM
+                const allRows = Array.from(this.tableBody.querySelectorAll('.turn-row'));
+                const actualIdx = allRows.indexOf(tr);
+                if (actualIdx === -1) return;
+                
                 const t = (key) => window.I18nService ? window.I18nService.t(key) : key;
                 const confirmMsg = t('confirmDeleteTurn') || '이 턴을 삭제하시겠습니까?';
                 if (confirm(confirmMsg)) {
-                    this.store.removeTurn(turnIdx);
+                    this.store.removeTurn(actualIdx);
                 }
             });
 
             tdTurn.querySelector('.btn-duplicate-turn')?.addEventListener('click', (e) => {
                 e.stopPropagation();
                 if (!this.isEditMode()) return;
-                this.store.duplicateTurn(turnIdx);
+                
+                // Get actual index from DOM
+                const allRows = Array.from(this.tableBody.querySelectorAll('.turn-row'));
+                const actualIdx = allRows.indexOf(tr);
+                if (actualIdx === -1) return;
+                
+                this.store.duplicateTurn(actualIdx);
             });
 
             // Character columns
@@ -633,10 +646,19 @@ export class TacticUI {
                 e.preventDefault();
                 return;
             }
+            
+            // Get actual index from DOM at drag start
+            const allRows = Array.from(this.tableBody.querySelectorAll('.turn-row'));
+            const actualIdx = allRows.indexOf(row);
+            if (actualIdx === -1) {
+                e.preventDefault();
+                return;
+            }
+            
             row.classList.add('dragging-turn');
             e.dataTransfer.effectAllowed = 'move';
-            e.dataTransfer.setData('text/plain', JSON.stringify({ type: 'turn', turnIdx }));
-            this._draggedTurn = { turnIdx, element: row };
+            e.dataTransfer.setData('text/plain', JSON.stringify({ type: 'turn', turnIdx: actualIdx }));
+            this._draggedTurn = { turnIdx: actualIdx, element: row };
         });
 
         row.addEventListener('dragend', () => {
@@ -650,7 +672,10 @@ export class TacticUI {
         row.addEventListener('dragover', (e) => {
             // Only show turn drag guide when dragging a turn, not an action
             if (!this._draggedTurn || this._draggedAction || !this.isEditMode()) return;
-            if (this._draggedTurn.turnIdx === turnIdx) return;
+            
+            // Check if dragging over self using DOM element reference
+            if (this._draggedTurn.element === row) return;
+            
             e.preventDefault();
             e.dataTransfer.dropEffect = 'move';
 
@@ -678,20 +703,34 @@ export class TacticUI {
             if (!this._draggedTurn || !this.isEditMode()) return;
 
             const fromIdx = this._draggedTurn.turnIdx;
+            
+            // Get actual current index from DOM instead of relying on closure
+            const allRows = Array.from(this.tableBody.querySelectorAll('.turn-row'));
+            const currentRowIdx = allRows.indexOf(row);
+            if (currentRowIdx === -1) return;
+            
             const rect = row.getBoundingClientRect();
             const midY = rect.top + rect.height / 2;
-            let toIdx = turnIdx;
-
-            if (e.clientY >= midY && fromIdx < turnIdx) {
-                // Dropping below, same index
-            } else if (e.clientY < midY && fromIdx > turnIdx) {
-                // Dropping above, same index
-            } else if (e.clientY >= midY) {
-                toIdx = turnIdx + 1;
+            const dropBelow = e.clientY >= midY;
+            
+            // Calculate target index based on drop position
+            let toIdx;
+            if (dropBelow) {
+                // Insert after this row
+                toIdx = currentRowIdx + 1;
+            } else {
+                // Insert before this row
+                toIdx = currentRowIdx;
             }
-
+            
+            // Adjust for the removal of the dragged item
+            if (fromIdx < toIdx) {
+                toIdx = toIdx - 1;
+            }
+            
+            // Only move if actually changing position
             if (fromIdx !== toIdx) {
-                this.store.moveTurn(fromIdx, toIdx > fromIdx ? toIdx - 1 : toIdx);
+                this.store.moveTurn(fromIdx, toIdx);
             }
         });
     }

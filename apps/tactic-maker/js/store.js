@@ -59,10 +59,31 @@ export class TacticStore {
             const now = new Date().toLocaleTimeString();
             localStorage.setItem(this.autoSaveTimeKey, now);
             this.notify('autoSave', { time: now });
+            
+            // Remove bin/library URL params when local data is saved
+            // This ensures refreshing loads local data instead of shared data
+            this._clearShareUrlParams();
+            
             return now;
         } catch (e) {
             console.error('[TacticStore] Auto-save failed:', e);
             return null;
+        }
+    }
+    
+    /**
+     * Remove bin/library/data URL parameters to prevent reloading shared data on refresh
+     */
+    _clearShareUrlParams() {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('bin') || urlParams.has('library') || urlParams.has('data')) {
+            urlParams.delete('bin');
+            urlParams.delete('library');
+            urlParams.delete('data');
+            const newUrl = urlParams.toString() 
+                ? `${window.location.pathname}?${urlParams.toString()}`
+                : window.location.pathname;
+            window.history.replaceState({}, document.title, newUrl);
         }
     }
 

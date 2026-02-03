@@ -356,50 +356,6 @@ class LanguageRouter {
         return false;
     }
 
-    // 페이지별 언어 가용성 확인
-    static checkPageAvailability() {
-        const currentLang = this.getCurrentLanguage();
-        const path = window.location.pathname;
-
-        // 각 언어별 사용 가능한 페이지 정의
-        const availablePages = {
-            kr: ['/', '/character', '/persona', '/revelations', '/tactic', '/tier', '/about', '/pay-calc', '/defense-calc', '/critical-calc'],
-            en: ['/', '/character', '/character.html', '/about'], // 캐릭터 목록과 상세, 어바웃만 허용
-            jp: ['/', '/character', '/character.html', '/about'], // 캐릭터 목록과 상세, 어바웃만 허용
-            cn: ['/', '/character', '/character.html', '/about']  // 캐릭터 목록과 상세, 어바웃만 허용
-        };
-
-        const currentPages = availablePages[currentLang] || availablePages.kr;
-        const basePath = path.split('?')[0].replace(/\/$/, '') || '/';
-
-        // 현재 페이지가 해당 언어에서 사용 가능한지 확인
-        if (!currentPages.includes(basePath) && currentLang !== 'kr') {
-            // 사용할 수 없는 페이지인 경우 메인 페이지로 리다이렉션 (무한 루프 방지)
-            if (basePath !== '/') {
-                window.location.href = `/?lang=${currentLang}`;
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    // 언어별 콘텐츠 로드
-    static loadLanguageContent(contentId, langTexts) {
-        const currentLang = this.getCurrentLanguage();
-        const texts = langTexts[currentLang] || langTexts.kr;
-
-        const element = document.getElementById(contentId);
-        if (element && texts) {
-            // 텍스트 내용 업데이트
-            Object.keys(texts).forEach(key => {
-                const targetElement = element.querySelector(`[data-lang-key="${key}"]`);
-                if (targetElement) {
-                    targetElement.textContent = texts[key];
-                }
-            });
-        }
-    }
 
     // 언어 설정 디버그 정보 (개발자 도구에서 확인 가능)
     static getLanguageDebugInfo() {

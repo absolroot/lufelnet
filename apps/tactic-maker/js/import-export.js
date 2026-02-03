@@ -425,6 +425,14 @@ export class ImportExport {
 
         const columnPlan = buildColumnPlan();
 
+        // Build set of elucidator character names (order === '-')
+        const elucidatorNames = new Set();
+        (party || []).forEach((m) => {
+            if (m && String(m.order || '') === '-' && m.name) {
+                elucidatorNames.add(normalizeActorName(m.name));
+            }
+        });
+
         const splitActionsIntoColumns = (actions) => {
             const columns = {};
             if (!Array.isArray(actions) || actions.length === 0) return columns;
@@ -445,12 +453,41 @@ export class ImportExport {
                     || /^아이템$/i.test(v) || /^Item$/i.test(v) || /^アイテム$/i.test(v);
             };
 
+            // Check if action should be moved to next column when at end of current column
+            // Conditions: 하이라이트, 테우르기아, 특수 기술, 지원(메모), 해명 괴도
+            const shouldMoveToNextColumn = (actionObj) => {
+                const v = normalizeActionValue(actionObj?.action);
+                const wp = String(actionObj?.wonderPersona || '');
+                const memo = String(actionObj?.memo || '');
+                const actor = normalizeActorName(actionObj?.character);
+                
+                // 하이라이트 + 테우르기아
+                if (v === 'HIGHLIGHT' || wp === 'HIGHLIGHT'
+                    || /^테우르기아$/i.test(v) || /^Theurgia$/i.test(v) || /^Theurgy$/i.test(v) || /^テウルギア$/i.test(v)) {
+                    return true;
+                }
+                
+                // 특수 기술
+                if (/^특수\s*기술$/i.test(v) || /^Special\s*Skill$/i.test(v) || /^特殊スキル$/i.test(v) || /^特殊技$/i.test(v)) {
+                    return true;
+                }
+                
+                // 메모에 '지원' 포함
+                if (/지원/i.test(memo) || /support/i.test(memo) || /サポート/i.test(memo)) {
+                    return true;
+                }
+                
+                // 해명 괴도 (Elucidator) - check by character name from party with order '-'
+                if (elucidatorNames.has(actor)) {
+                    return true;
+                }
+                
+                return false;
+            };
+            
+            // Legacy alias for placement logic
             const isHighlight = (actionVal, wonderPersonaVal) => {
-                const v = normalizeActionValue(actionVal);
-                const wp = String(wonderPersonaVal || '');
-                // 하이라이트 + 테우르기아 (check both action and wonderPersona)
-                return v === 'HIGHLIGHT' || wp === 'HIGHLIGHT'
-                    || /^테우르기아$/i.test(v) || /^Theurgia$/i.test(v) || /^Theurgy$/i.test(v) || /^テウルギア$/i.test(v);
+                return shouldMoveToNextColumn({ action: actionVal, wonderPersona: wonderPersonaVal });
             };
 
             let currentColIdx = 0;
@@ -485,10 +522,11 @@ export class ImportExport {
 
                 const last = list[list.length - 1];
                 if (!last) continue;
-                if (!isHighlight(last.action, last.wonderPersona)) continue;
+                if (!shouldMoveToNextColumn(last)) continue;
 
                 if (!columns[nextKey]) columns[nextKey] = [];
-                columns[nextKey].push(list.pop());
+                // Insert at the beginning of next column instead of pushing to end
+                columns[nextKey].unshift(list.pop());
             }
 
             return columns;

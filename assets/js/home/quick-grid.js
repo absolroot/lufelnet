@@ -102,7 +102,7 @@
         defenseCalc: '/defense-calc',
         criticalCalc: '/critical-calc',
         tacticLibrary: '/tactic/tactics.html',
-        tacticMaker: '/tactic',
+        tacticMaker: '/tactic-maker',
         tier: '/tier/position-tier/',
         guide: '/article',
         gallery: '/gallery',

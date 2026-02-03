@@ -263,7 +263,7 @@ class Navigation {
                         <span data-text="${texts.tactic}">${texts.tactic}</span>
                     </div>
                     <div class="submenu">
-                        <a href="${BASE_URL}/tactic?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="tactic-maker">
+                        <a href="${BASE_URL}/tactic-maker?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="tactic-maker">
                             <span data-text="${texts.tacticMaker}">◈　${texts.tacticMaker}</span>
                         </a>
                         <a href="${BASE_URL}/tactic/tactics.html?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="tactics">

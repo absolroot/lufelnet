@@ -1,0 +1,338 @@
+{
+  "title": "Merope's Idols Atava",
+  "wonderPersonas": [
+    "비사문천",
+    "디오니소스",
+    "야노식"
+  ],
+  "weapon": "메커니컬 심판자",
+  "personaSkills": [
+    "존왕의 항복",
+    "라쿤다",
+    "민첩의 마음가짐 I",
+    "레볼루션",
+    "어드바이스 IV",
+    "",
+    "궁지 반격",
+    "리벨리온",
+    "어드바이스 IV"
+  ],
+  "party": [
+    {
+      "name": "원더",
+      "order": "1",
+      "ritual": "0",
+      "mainRev": "",
+      "subRev": ""
+    },
+    {
+      "name": "치즈코",
+      "order": "2",
+      "ritual": "6",
+      "mainRev": "조화",
+      "subRev": "진리"
+    },
+    {
+      "name": "아야카",
+      "order": "3",
+      "ritual": "",
+      "mainRev": "창조",
+      "subRev": "화해"
+    },
+    {
+      "name": "마코토",
+      "order": "4",
+      "ritual": "6",
+      "mainRev": "깨달음",
+      "subRev": "진리"
+    },
+    {
+      "name": "후타바",
+      "order": "-",
+      "ritual": "",
+      "mainRev": "진정성",
+      "subRev": "직책"
+    }
+  ],
+  "turns": [
+    {
+      "turn": 1,
+      "actions": [
+        {
+          "type": 1,
+          "character": "원더",
+          "wonderPersona": "0",
+          "action": "",
+          "memo": "Imperial"
+        },
+        {
+          "type": 1,
+          "character": "치즈코",
+          "wonderPersona": "",
+          "action": "스킬2",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "아야카",
+          "wonderPersona": "",
+          "action": "스킬2",
+          "memo": "on WONDER, not Queen."
+        },
+        {
+          "type": 1,
+          "character": "마코토",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        }
+      ]
+    },
+    {
+      "turn": 2,
+      "actions": [
+        {
+          "type": 1,
+          "character": "후타바",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": "on Atavaka"
+        },
+        {
+          "type": 1,
+          "character": "원더",
+          "wonderPersona": "0",
+          "action": "",
+          "memo": "라쿤다"
+        },
+        {
+          "type": 1,
+          "character": "치즈코",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "아야카",
+          "wonderPersona": "",
+          "action": "방어",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "마코토",
+          "wonderPersona": "",
+          "action": "스킬2",
+          "memo": "Vino"
+        }
+      ],
+      "customName": "3Turn"
+    },
+    {
+      "turn": 3,
+      "actions": [
+        {
+          "type": 1,
+          "character": "후타바",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "원더",
+          "wonderPersona": "1",
+          "action": "",
+          "memo": "Revolution on Queen"
+        },
+        {
+          "type": 1,
+          "character": "치즈코",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "아야카",
+          "wonderPersona": "",
+          "action": "HIGHLIGHT",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "아야카",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": "on Queen"
+        },
+        {
+          "type": 1,
+          "character": "마코토",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": "Crash Out"
+        },
+        {
+          "type": 1,
+          "character": "후타바",
+          "wonderPersona": "",
+          "action": "스킬2",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "마코토",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        }
+      ],
+      "customName": "5Turn"
+    },
+    {
+      "turn": 4,
+      "actions": [
+        {
+          "type": 1,
+          "character": "원더",
+          "wonderPersona": "HIGHLIGHT",
+          "action": "",
+          "memo": "Bishamonten, on Atavaka"
+        },
+        {
+          "type": 1,
+          "character": "후타바",
+          "wonderPersona": "",
+          "action": "스킬2",
+          "memo": "on Atavaka"
+        },
+        {
+          "type": 1,
+          "character": "원더",
+          "wonderPersona": "0",
+          "action": "",
+          "memo": "Imperial on Atavaka"
+        },
+        {
+          "type": 1,
+          "character": "치즈코",
+          "wonderPersona": "",
+          "action": "스킬2",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "아야카",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": "target Rakshasa, NOT Atavaka"
+        },
+        {
+          "type": 1,
+          "character": "마코토",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": "target Rakshasa, NOT Atavaka"
+        }
+      ],
+      "customName": "2Turn"
+    },
+    {
+      "turn": 5,
+      "actions": [
+        {
+          "type": 1,
+          "character": "치즈코",
+          "wonderPersona": "",
+          "action": "HIGHLIGHT",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "후타바",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": "target Queen"
+        },
+        {
+          "type": 1,
+          "character": "원더",
+          "wonderPersona": "2",
+          "action": "",
+          "memo": "Rebellion on Queen"
+        },
+        {
+          "type": 1,
+          "character": "치즈코",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "아야카",
+          "wonderPersona": "",
+          "action": "스킬2",
+          "memo": "target Queen"
+        },
+        {
+          "type": 1,
+          "character": "마코토",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        }
+      ],
+      "customName": "4Turn"
+    },
+    {
+      "turn": 6,
+      "actions": [
+        {
+          "type": 1,
+          "character": "원더",
+          "wonderPersona": "0",
+          "action": "",
+          "memo": "Imperial"
+        },
+        {
+          "type": 1,
+          "character": "치즈코",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "아야카",
+          "wonderPersona": "",
+          "action": "스킬1",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "후타바",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": "on Queen"
+        },
+        {
+          "type": 1,
+          "character": "마코토",
+          "wonderPersona": "",
+          "action": "HIGHLIGHT",
+          "memo": ""
+        },
+        {
+          "type": 1,
+          "character": "마코토",
+          "wonderPersona": "",
+          "action": "스킬3",
+          "memo": ""
+        }
+      ]
+    }
+  ]
+}

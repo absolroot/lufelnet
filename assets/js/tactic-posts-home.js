@@ -45,7 +45,7 @@ window.loadHomeTacticsFromSupabase = async function(currentLang) {
 
     postsListEl.innerHTML = '';
     data.forEach(t => {
-      const libraryLink = t.url ? `${BASE_URL}/tactic/?library=${encodeURIComponent(t.url)}` : null;
+      const libraryLink = t.url ? `${BASE_URL}/tactic-maker/?library=${encodeURIComponent(t.url)}` : null;
       const item = document.createElement('div');
       item.className = 'post-item';
       item.setAttribute('data-post-id', String(t.id));

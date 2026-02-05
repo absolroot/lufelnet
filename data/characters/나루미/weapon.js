@@ -13,7 +13,7 @@ window.WeaponData["나루미"] = {
     "description": "공격력이 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0% 증가한다. 『반짝임』 획득 시 2턴 동안 대미지가 8.8%/10.2%/10.2%/11.6%/11.6%/13.0%/13.0% 증가한다(최대 2회 중첩 가능)."
   },
   "weapon5-1": {
-    "name": "슈가 프로스트 앙코르",
+    "name": "슈가 앵콜",
     "health": 2219,
     "attack": 779,
     "defense": 405,
@@ -26,7 +26,7 @@ window.WeaponData["나루미"] = {
 
 window.enCharacterWeaponData["나루미"] = {
   "weapon5-1": {
-    "name": "Frosting Encore",
+    "name": "Sugar Encore",
     "health": 2219.84,
     "attack": 779.61,
     "defense": 405.19,
@@ -45,7 +45,7 @@ window.enCharacterWeaponData["나루미"] = {
 
 window.jpCharacterWeaponData["나루미"] = {
   "weapon5-1": {
-    "name": "シュガーフロスト・アンコール",
+    "name": "シュガー・アンコール",
     "health": 2219.84,
     "attack": 779.61,
     "defense": 405.19,

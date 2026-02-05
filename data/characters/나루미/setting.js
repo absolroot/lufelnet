@@ -21,7 +21,7 @@ window.characterSetting["나루미"] = {
         "LV13+5": false
     },
     "battle_plus_stats": "nan",
-    "element_weakness": "",
+    "element_weakness": "핵열",
     "element_resistance": "염동",
     "skill1_lv": "MAX!",
     "skill2_lv": "MAX",

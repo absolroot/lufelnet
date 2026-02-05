@@ -25,7 +25,7 @@ const mapping_en = {
     "신중": "Prudence",
     "고집": "Fixation",
     "헛수고": "Futility",
-    "실망": "Despair",
+    "실망": "Disappointment",
     "우려": "Worry",
     "화해": "Reconcilation",
     "진리": "Truth",
@@ -83,7 +83,7 @@ const enRevelationData = {
         "신중": "Prudence",
         "고집": "Fixation",
         "헛수고": "Futility",
-        "실망": "Despair",
+        "실망": "Disappointment",
         "우려": "Worry",
         "화해": "Reconcilation",
         "진리": "Truth",
@@ -127,7 +127,7 @@ const enRevelationData = {
         "Trust": ["Renewal", "Power", "Prosperity"], // 신뢰
         "Harmony": ["Victory", "Power", "Truth"], // 조화
         "Acceptance": ["Peace", "Strife", "Love"], // 수락
-        "Freedom": ["Triumph", "Defeat", "Despair"], // 자유
+        "Freedom": ["Triumph", "Defeat", "Disappointment"], // 자유
     },
     "sub": {
         "Depravity": ["Purity"], // 타락
@@ -139,7 +139,7 @@ const enRevelationData = {
         "Prudence": ["Resolve"], // 신중
         "Fixation": ["Integrity", "Hope"], // 고집
         "Futility": ["Faith"], // 헛수고
-        "Despair": ["Freedom"], // 실망
+        "Disappointment": ["Freedom"], // 실망
         "Triumph": ["Freedom"], // 개선
         "Defeat": ["Freedom"], // 좌절
         "Worry": ["Creation"], // 우려
@@ -263,14 +263,14 @@ const enRevelationData = {
             "type": ["치료"]
         },
         "Futility": { // 헛수고
-            "set2": "Increase ATK by 12%.",
-            "set4": "Increase Ailment Accuracy by 30% for 2 turns; Gain this effect again when you deal TECHNICAL.",
-            "type": ["TECHNICAL", "미출시"]
+            "set2": "Increase Attack by 12%.",
+            "set4": "Increase ailment accuracy by 30% for 2 turns. Reapply effect after dealing a Technical.",
+            "type": ["TECHNICAL"]
         },
-        "Despair": { // 실망
-            "set2": "Increase ATK by 12%.",
-            "set4": "When dealing Persona skill damage, increase the current Persona skill damage by 25% if your last Persona skill damage was a different element.",
-            "type": ["만능", "미출시"]
+        "Disappointment": { // 실망
+            "set2": "Increase Attack by 12%.",
+            "set4": "When dealing skill damage, if the attribute is different to the damage of the last used skill, increase the skill's damage dealt by 25%.",
+            "type": ["만능"]
         },
         "Prudence": { // 신중
             "set2": "Decrease SPD by 3, Increase ATK by 18%.",
@@ -377,12 +377,12 @@ const enRevelationData = {
         "Faith": {
             "Love": "Increase Healing Effect by 1% for every 800 HP you have, up to 20%.",
             "Peace": "After granting Shield, increase the target's DEF by 7% for 2 turns up to 3 stacks.",
-            "Futility": "Increase all Thieves' DMG Dealt to enemies under TECHNICAL Ailment by 10%, can't be triggered again."
+            "Futility": "Increase damage dealt by allies to foes inflicted with technical ailments by 10%. This effect won't activate if stacked."
         },
         "Freedom": { // 자유
             "Defeat": "Increases all allies' DMG Dealt to enemies with debuffs by 8%, doesn't stack.",
             "Triumph": "Gain 1 [Glory] when using a persona skill, up to 2 stacks. When triggering a Follow Up, consumes all [Glory] to increase that Follow Up's PEN by 8% per stack.",
-            "Despair": "When dealing Almighty damage, increase ATK by 35% and CRIT Rate by 12%.",
+            "Disappointment": "When dealing Almighty damage, increase Attack by 35% and critical rate by 12%.",
             //"type": ["미출시"]
         },
         "Meditation": {

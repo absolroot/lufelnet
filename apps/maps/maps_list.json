@@ -763,8 +763,8 @@
             {
               "id": "spirit_energy_tower",
               "name": "급수탑·정신 에너지",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Mental Energy Water Tower",
+              "name_jp": "精神エネルギー給水塔",
               "file": [],
               "description": "",
               "description_en": "",
@@ -773,8 +773,8 @@
                 {
                   "id": "spirit_tower_top",
                   "name": "정신탑 최상층",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "Upper Level",
+                  "name_jp": "精神エネルギー上層",
                   "file": [
                     "palace/아카시 팰리스/댐·정신 에너지탑 최상층_0_data.json"
                   ],
@@ -791,8 +791,8 @@
                 {
                   "id": "spirit_tower_lower",
                   "name": "정신탑 하층",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "Lower Level",
+                  "name_jp": "精神エネルギー下層",
                   "file": [
                     "palace/아카시 팰리스/댐·정신 에너지탑 하층_0_data.json",
                     "palace/아카시 팰리스/댐·정신 에너지탑 하층_1_data.json"
@@ -812,8 +812,8 @@
                 {
                   "id": "spirit_tower_middle",
                   "name": "정신탑 중층",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "Mid Level",
+                  "name_jp": "精神エネルギー中層",
                   "file": [
                     "palace/아카시 팰리스/댐·정신 에너지탑 중층_0_data.json",
                     "palace/아카시 팰리스/댐·정신 에너지탑 중층_1_data.json"
@@ -833,18 +833,22 @@
                 {
                   "id": "spirit_tower_blocked",
                   "name": "정신탑 봉쇄구역",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "Blockade Area",
+                  "name_jp": "精神エネルギー封鎖エリア",
                   "file": [
                     "palace/아카시 팰리스/3장 컨트롤 센터 ____1층_data.json",
                     "palace/아카시 팰리스/3장 컨트롤 센터 ____2층_data.json",
                     "palace/아카시 팰리스/3장 컨트롤 센터 ____3층_data.json"
                   ],
                   "file_en": [
-                    
+                    "palace/Akashi's Palace/Intake Tower_Blockade Area_1F_data.json",
+                    "palace/Akashi's Palace/Intake Tower_Blockade Area_2F_data.json",
+                    "palace/Akashi's Palace/Intake Tower_Blockade Area_3F_data.json"
                   ],
                   "file_jp": [
-
+                    "palace/アカシ・パレス/精神エネルギー封鎖エリア_1F_data.json",
+                    "palace/アカシ・パレス/精神エネルギー封鎖エリア_2F_data.json",
+                    "palace/アカシ・パレス/精神エネルギー封鎖エリア_3F_data.json"
                   ],
                   "description": "",
                   "description_en": "",
@@ -855,8 +859,8 @@
             {
               "id": "heat_energy_tower",
               "name": "급수탑·열 에너지",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Thermal Energy Water Tower",
+              "name_jp": "熱エネルギー給水塔",
               "file": [],
               "description": "",
               "description_en": "",
@@ -865,16 +869,16 @@
                 {
                   "id": "heat_tower_blocked",
                   "name": "열에너지탑 구역",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "Blockade Area",
+                  "name_jp": "熱エネルギー封鎖エリア",
                   "file": [
                     "palace/아카시 팰리스/댐·수처리장____0_data.json"
                   ],
                   "file_en": [
-
+                    "palace/Akashi's Palace/Thermal Energy Water Tower_Blockade Area_0_data.json"
                   ],
                   "file_jp": [
-
+                    "palace/アカシ・パレス/熱エネルギー封鎖エリア_0_data.json"
                   ],
                   "description": "",
                   "description_en": "",
@@ -883,17 +887,19 @@
                 {
                   "id": "heat_tower_lower",
                   "name": "열에너지탑 하층",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "Lower Level",
+                  "name_jp": "熱エネルギー下層",
                   "file": [
                     "palace/아카시 팰리스/댐·열에너지탑 하층_0_data.json",
                     "palace/아카시 팰리스/댐·열에너지탑 하층_1_data.json"
                   ],
                   "file_en": [
-
+                    "palace/Akashi's Palace/Thermal Energy Water Tower_Lower Level_0_data.json",
+                    "palace/Akashi's Palace/Thermal Energy Water Tower_Lower Level_1_data.json"
                   ],
                   "file_jp": [
-
+                    "palace/アカシ・パレス/熱エネルギー下層_0_data.json",
+                    "palace/アカシ・パレス/熱エネルギー下層_1_data.json"
                   ],
                   "description": "",
                   "description_en": "",
@@ -902,17 +908,19 @@
                 {
                   "id": "heat_tower_middle",
                   "name": "열에너지탑 중층",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "Mid Level",
+                  "name_jp": "熱エネルギー中層",
                   "file": [
                     "palace/아카시 팰리스/댐·열에너지탑 중층_0_data.json",
                     "palace/아카시 팰리스/댐·열에너지탑 중층_1_data.json"
                   ],
                   "file_en": [
-
-                  ],
+                    "palace/Akashi's Palace/Thermal Energy Water Tower_Mid Level_0_data.json",
+                    "palace/Akashi's Palace/Thermal Energy Water Tower_Mid Level_1_data.json"
+                  ],  
                   "file_jp": [
-
+                    "palace/アカシ・パレス/熱エネルギー中層_0_data.json",
+                    "palace/アカシ・パレス/熱エネルギー中層_1_data.json"
                   ],
                   "description": "",
                   "description_en": "",
@@ -921,17 +929,19 @@
                 {
                   "id": "heat_tower_top",
                   "name": "열에너지탑 최상층",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "Upper Level",
+                  "name_jp": "熱エネルギー上層",
                   "file": [
                     "palace/아카시 팰리스/댐·열에너지탑 최상층_0_data.json",
                     "palace/아카시 팰리스/댐·열에너지탑 최상층_1_data.json"
                   ],
                   "file_en": [
-
+                    "palace/Akashi's Palace/Thermal Energy Water Tower_Upper Level_0_data.json",
+                    "palace/Akashi's Palace/Thermal Energy Water Tower_Upper Level_1_data.json"
                   ],
                   "file_jp": [
-
+                    "palace/アカシ・パレス/熱エネルギー上層_0_data.json",
+                    "palace/アカシ・パレス/熱エネルギー上層_1_data.json"
                   ],
                   "description": "",
                   "description_en": "",
@@ -942,8 +952,8 @@
             {
               "id": "electric_energy_tower",
               "name": "급수탑·전기 에너지",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Electrical Energy Water Tower",
+              "name_jp": "電気エネルギー給水塔",
               "file": [],
               "description": "",
               "description_en": "",
@@ -952,16 +962,16 @@
                 {
                   "id": "electric_tower_top",
                   "name": "전기 에너지탑 최상층",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "Upper Level",
+                  "name_jp": "封鎖エリア上層",
                   "file": [
                     "palace/아카시 팰리스/댐·전기 에너지탑 최상층_0_data.json"
                   ],
                   "file_en": [
-
+                    "palace/Akashi's Palace/Electrical Energy Water Tower_Upper Level_0_data.json"
                   ],
                   "file_jp": [
-
+                    "palace/アカシ・パレス/封鎖エリア上層_0_data.json"
                   ],
                   "description": "",
                   "description_en": "",
@@ -970,16 +980,16 @@
                 {
                   "id": "electric_tower_lower",
                   "name": "전기 에너지탑 하층",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "Lower Level",
+                  "name_jp": "封鎖エリア下層",
                   "file": [
                     "palace/아카시 팰리스/댐·전기 에너지탑 하층_0_data.json"
                   ],
                   "file_en": [
-
+                    "palace/Akashi's Palace/Electrical Energy Water Tower_Lower Level_0_data.json"
                   ],
                   "file_jp": [
-
+                    "palace/アカシ・パレス/封鎖エリア下層_0_data.json"
                   ],
                   "description": "",
                   "description_en": "",
@@ -988,16 +998,16 @@
                 {
                   "id": "electric_tower_high",
                   "name": "전기 에너지탑 상",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "Upper Blockade Area",
+                  "name_jp": "封鎖エリア上",
                   "file": [
                     "palace/아카시 팰리스/댐·급수탑 전기탑 1_0_data.json"
                   ],
                   "file_en": [
-
+                    "palace/Akashi's Palace/Upper Blockade Area_0_data.json"
                   ],
                   "file_jp": [
-
+                    "palace/アカシ・パレス/封鎖エリア上_0_data.json"
                   ],
                   "description": "",
                   "description_en": "",
@@ -1006,16 +1016,16 @@
                 {
                   "id": "electric_tower_low",
                   "name": "전기 에너지탑 하",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "Lower Blockade Area",
+                  "name_jp": "封鎖エリア下",
                   "file": [
                     "palace/아카시 팰리스/댐·급수탑 전기탑 2_0_data.json"
                   ],
                   "file_en": [
-
+                    "palace/Akashi's Palace/Lower Blockade Area_0_data.json"
                   ],
                   "file_jp": [
-
+                    "palace/アカシ・パレス/封鎖エリア下_0_data.json"
                   ],
                   "description": "",
                   "description_en": "",
@@ -1024,17 +1034,19 @@
                 {
                   "id": "electric_tower_middle",
                   "name": "전기 에너지탑 중층",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "Mid Level",
+                  "name_jp": "封鎖エリア中層",
                   "file": [
                     "palace/아카시 팰리스/댐·전기 에너지탑 중층_0_data.json",
                     "palace/아카시 팰리스/댐·전기 에너지탑 중층_1_data.json"
                   ],
                   "file_en": [
-
+                    "palace/Akashi's Palace/Electrical Energy Water Tower_Mid Level_0_data.json",
+                    "palace/Akashi's Palace/Electrical Energy Water Tower_Mid Level_1_data.json"
                   ],
                   "file_jp": [
-
+                    "palace/アカシ・パレス/封鎖エリア中層_0_data.json",
+                    "palace/アカシ・パレス/封鎖エリア中層_1_data.json"
                   ],
                   "description": "",
                   "description_en": "",
@@ -1045,16 +1057,16 @@
             {
               "id": "abandoned_tower",
               "name": "폐기된 급수탑",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Derelict Water Tower",
+              "name_jp": "老朽化した給水塔",
               "file": [
                 "palace/아카시 팰리스/댐·폐기된 탑_0_data.json"
               ],
               "file_en": [
-
+                "palace/Akashi's Palace/Derelict Water Tower_0_data.json"
               ],
               "file_jp": [
-
+                "palace/アカシ・パレス/老朽化した給水塔_0_data.json"
               ],
               "description": "",
               "description_en": "",

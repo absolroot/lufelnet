@@ -54,6 +54,58 @@
         "type": "PICKUP怪ドル契約・CHANCE"
       },
       {
+        "endTime": "2026-03-05 10:59:59",
+        "fiveStar": [
+          {
+            "name": "理子・生命欲の暴走",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "加納 駿",
+            "type": "thief"
+          },
+          {
+            "name": "白鳥 誠司",
+            "type": "thief"
+          },
+          {
+            "name": "佐原 海夕",
+            "type": "thief"
+          }
+        ],
+        "name": "生命を謳う風",
+        "startTime": "2026-02-05 11:30:00",
+        "type": "PICKUP怪ドル契約・TARGET"
+      },
+      {
+        "endTime": "2026-03-05 10:59:59",
+        "fiveStar": [
+          {
+            "name": "理子・生命欲の暴走",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "加納 駿",
+            "type": "thief"
+          },
+          {
+            "name": "白鳥 誠司",
+            "type": "thief"
+          },
+          {
+            "name": "佐原 海夕",
+            "type": "thief"
+          }
+        ],
+        "name": "生命を謳う風",
+        "startTime": "2026-02-05 11:30:00",
+        "type": "PICKUP怪ドル契約・CHANCE"
+      },
+      {
         "endTime": "2026-02-13 10:59:59",
         "fiveStar": [
           {
@@ -140,6 +192,41 @@
         ],
         "name": "無音の硝煙",
         "startTime": "2026-01-22 11:30:00",
+        "type": "武器補給"
+      },
+      {
+        "endTime": "2026-03-05 10:59:59",
+        "fiveStar": [
+          {
+            "name": "天傘・風起梅園",
+            "type": "weapon",
+            "user": "理子"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "春告の花鳥",
+            "type": "weapon",
+            "user": "理子"
+          },
+          {
+            "name": "デーモンバイト",
+            "type": "weapon",
+            "user": "駿"
+          },
+          {
+            "name": "ナイトアワード",
+            "type": "weapon",
+            "user": "白鳥"
+          },
+          {
+            "name": "サブマリンソナー",
+            "type": "weapon",
+            "user": "海夕"
+          }
+        ],
+        "name": "無音の硝煙",
+        "startTime": "2026-02-05 11:30:00",
         "type": "武器補給"
       },
       {

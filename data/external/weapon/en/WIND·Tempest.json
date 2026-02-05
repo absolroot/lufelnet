@@ -4,11 +4,11 @@
       {
         "name": "Windplum Dance",
         "quality": 5,
-        "skill": "Increase Speed by 15.0/15.0/20.0/20.0/25.0/25.0/30.0. For every 2 Insight stack spent, gain 2/3/3/4/4/5/5 Intel stacks. Also, increase party's damage by 6.0%/7.8%/7.8%/9.6%/9.6%/11.4%/11.4% for 1 turn. Increase max stacks of Intel to 11/12/12/13/13/14/14.",
+        "skill": "Increase critical damage by 36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%.\nAfter using a skill on an ally, increase all allies' critical damage by 13.2%/17.2%/17.2%/21.2%/21.2%/25.2%/25.2% besides Tempest Riko for 2 turns. Also, when the main target deals damage with a skill, increase the damage by 3.3%/4.3%/4.3%/5.3%/5.3%/6.3%/6.3% for every 50 SP spent by that skill for 2 turns.",
         "stat": {
-          "attack": 687.1,
-          "defense": 400.84,
-          "hp": 2299.15
+          "attack": 647.48,
+          "defense": 422.82,
+          "hp": 2398.2
         },
         "user": "Riko"
       }
@@ -17,11 +17,11 @@
       {
         "name": "Sparrow's Leap",
         "quality": 4,
-        "skill": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. For each Insight stack spent, permanently increase party's Attack by 3.5%/4.6%/4.6%/5.7%/5.7%/6.8%/6.8%. Stacks up to 5 times.",
+        "skill": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.\nWhen user restores SP with a skill, increase own critical damage by 8.7%/11.3%/11.3%/13.9%/13.9%/16.5%/16.5% for 2 turns. Stacks up to 2 times.",
         "stat": {
-          "attack": 549.53,
-          "defense": 320.45,
-          "hp": 1838.99
+          "attack": 517.62,
+          "defense": 338.09,
+          "hp": 1918.23
         },
         "user": "Riko"
       }

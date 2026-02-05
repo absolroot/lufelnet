@@ -115,7 +115,27 @@
       }
     ],
     "assist_skill": [],
-    "final_innate": [],
+    "final_innate": [
+      [
+        {
+          "attr": "Final Damage Mult.",
+          "nature": "Curse",
+          "value": "0.02"
+        }
+      ],
+      [
+        {
+          "attr": "Curse Boost",
+          "nature": "Curse",
+          "value": "0.08"
+        },
+        {
+          "attr": "Curse Damage Taken",
+          "nature": "Curse",
+          "value": "-0.1"
+        }
+      ]
+    ],
     "highlight_skill": {
       "ascend": "0/5/0/5",
       "auto_select": "AICondition (Based on AAAAAA==)",
@@ -136,7 +156,40 @@
       "Crit Rate": "0.12",
       "Damage Mult.": "0.16"
     },
-    "innate_awake_skill": [],
+    "innate_awake_skill": [
+      {
+        "ascend": "0/0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身拥有3层及以上煞气时，暴击效果额外提升30.0%/45.0%/60.0%。",
+        "name": "愤怒",
+        "nature": null,
+        "skill_lv": "1/2/3",
+        "sn": 126171,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身厄运追击的技能倍率额外提升20.0%/30.0%/40.0%+自身意识等级*10%。\n自身攻击处于负面效果的敌人时，根据敌方的负面效果数量获得总伤害增幅\n负面效果≥5个：总伤害增幅提升自身意识等级*3%。\n负面效果≥10个：总伤害增幅提升自身意识等级*4%。\n负面效果≥15个：总伤害增幅提升自身意识等级*5%。",
+        "name": "毁灭",
+        "nature": null,
+        "skill_lv": "1/2/3",
+        "sn": 126172,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
     "name": "雨宫莲",
     "normal_skill": [
       {
@@ -178,7 +231,7 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "SP 22",
-        "desc": "对所有敌人造成74.2%/81.8%/78.7%/86.3%攻击力的诅咒属性伤害，处于额外回合时，该技能造成的伤害提升25%。若目标身上具有任意减益效果，则该技能造成的伤害额外提升25%。",
+        "desc": "对所有敌人造成74.2%/81.8%/78.7%/86.3%攻击力的诅咒属性伤害，处于额外回合时，技能伤害提升25%。若目标身上具有任意减益效果，则该技能伤害额外提升25%。",
         "name": "厄运追击",
         "nature": "Curse",
         "skill_lv": "10/10/13/13",
@@ -274,7 +327,49 @@
       "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
     },
-    "stat_100": null,
+    "stat_100": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1459.79 / 1486.79 / 1512.79 / 1539.79 / 1565.79 / 1592.79 / 1618.79",
+      "Attack Increase": "37.3% / 37.3% / 37.3% / 37.3% / 37.3% / 37.3% / 37.3%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "692.8 / 705.8 / 717.8 / 730.8 / 742.8 / 755.8 / 768.8",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "4045.47 / 4119.47 / 4192.47 / 4266.47 / 4339.47 / 4413.47 / 4486.47",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "102.0 / 102.0 / 102.0 / 102.0 / 102.0 / 102.0 / 102.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
     "theurgia_skill": []
   },
   "msg": "OK",

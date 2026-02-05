@@ -1,0 +1,33 @@
+{
+  "data": {
+    "fiveStar": [
+      {
+        "name": "New Year's Light",
+        "quality": 5,
+        "skill": "tdxct-[Skill_desc_50955]",
+        "stat": {
+          "attack": 792.82,
+          "defense": 391.98,
+          "hp": 2239.65
+        },
+        "user": "Yaoling"
+      }
+    ],
+    "fourStar": [
+      {
+        "name": "Demon Blade",
+        "quality": 4,
+        "skill": "tdxct-[Skill_desc_50945]",
+        "stat": {
+          "attack": 634.27,
+          "defense": 313.75,
+          "hp": 1791.59
+        },
+        "user": "Yaoling"
+      }
+    ],
+    "name": "Yaoling"
+  },
+  "msg": "OK",
+  "status": 0
+}

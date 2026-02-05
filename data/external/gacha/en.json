@@ -54,6 +54,58 @@
         "type": "Chance Most Wanted Idol Contracts"
       },
       {
+        "endTime": "2026-03-05 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Tempest Riko",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Shun Kano",
+            "type": "thief"
+          },
+          {
+            "name": "Seiji Shiratori",
+            "type": "thief"
+          },
+          {
+            "name": "Miyu Sahara",
+            "type": "thief"
+          }
+        ],
+        "name": "Winds of Change",
+        "startTime": "2026-02-05 11:30:00",
+        "type": "Targeted Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-03-05 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Tempest Riko",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Shun Kano",
+            "type": "thief"
+          },
+          {
+            "name": "Seiji Shiratori",
+            "type": "thief"
+          },
+          {
+            "name": "Miyu Sahara",
+            "type": "thief"
+          }
+        ],
+        "name": "Winds of Change",
+        "startTime": "2026-02-05 11:30:00",
+        "type": "Chance Most Wanted Idol Contracts"
+      },
+      {
         "endTime": "2026-02-13 10:59:59",
         "fiveStar": [
           {
@@ -140,6 +192,41 @@
         ],
         "name": "Silent Pistol",
         "startTime": "2026-01-22 11:30:00",
+        "type": "Arms Deals"
+      },
+      {
+        "endTime": "2026-03-05 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Windplum Dance",
+            "type": "weapon",
+            "user": "Riko"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Sparrow's Leap",
+            "type": "weapon",
+            "user": "Riko"
+          },
+          {
+            "name": "Demon's Bite",
+            "type": "weapon",
+            "user": "Shun"
+          },
+          {
+            "name": "Knight's Reward",
+            "type": "weapon",
+            "user": "Shiratori"
+          },
+          {
+            "name": "Submarine Sonar",
+            "type": "weapon",
+            "user": "Miyu"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2026-02-05 11:30:00",
         "type": "Arms Deals"
       },
       {

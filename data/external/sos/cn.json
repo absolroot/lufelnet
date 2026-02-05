@@ -1,5 +1,69 @@
 {
-  "data": null,
-  "msg": "SOS not found.",
-  "status": 100
+  "data": {
+    "boss": [
+      {
+        "bonusRule": null,
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Phys",
+                "Fire",
+                "Wind",
+                "Nuclear"
+              ],
+              "Weak": [
+                "Psychokinesis"
+              ]
+            },
+            "image": "B-guaiwutouxiang-ganesha.png",
+            "level": "89",
+            "name": "被操控的葛内舍",
+            "skill": "1013,1022",
+            "sn": 542101,
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 2.0,
+        "sn": 78401
+      },
+      {
+        "bonusRule": null,
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Electric",
+                "Nuclear",
+                "Bless",
+                "Curse"
+              ],
+              "Weak": [
+                "Fire"
+              ]
+            },
+            "image": "B-guaiwutouxiang-lilith.png",
+            "level": "89",
+            "name": "被操控的莉莉丝",
+            "skill": "607,603",
+            "sn": 542111,
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 1.0,
+        "sn": 78402
+      }
+    ],
+    "buff": "地壳瓦解: 造成弱点伤害时，自身获得持续1回合的『岩土解构』。『岩土解构』：造成的最终伤害提升20%，处于额外回合时或使用普通攻击时造成的最终伤害额外提升20%。",
+    "endTime": "2026-03-05 06:30:00",
+    "startTime": "2026-02-05 07:30:00"
+  },
+  "msg": "OK",
+  "status": 0
 }

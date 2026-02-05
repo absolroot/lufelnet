@@ -6,11 +6,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "At the start of battle, grant all allies 1 Knight's Protection shield equal to 12% of Ashiya's Defense + 120/240/360 (effect changes at Lv. 1/50/70, respectively).\nWhen an ally with Knight's Protection takes an attack, grant Ashiya 1 Heroism stack (up to 2 stacks in 1 turn). Heroism can stack up to 4 times.\nAt the start of the turn, if Heroism is at 4 stacks, spend 4 Heroism stacks to gain Garden of Promises and grant Knight's Protection again to all allies.",
-        "name": "Noble Knight of Flowers",
+        "desc": "tdxct-[Skill_desc_135140]",
+        "name": "tdxct-[Skill_name_135140]",
         "nature": null,
         "skill_lv": "3",
-        "sn": 133140,
+        "sn": 135140,
         "tags": [
           null
         ],
@@ -22,11 +22,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "At the start of battle, gain 3 Heroism stacks. Garden of Promises requires 3 Heroism stacks to activate.\nIncrease party's pierce rate by 20%.",
-        "name": "Floriography: Freesia",
+        "desc": "tdxct-[Skill_desc_135141]",
+        "name": "tdxct-[Skill_name_135141]",
         "nature": null,
         "skill_lv": "3",
-        "sn": 133141,
+        "sn": 135141,
         "tags": [
           null
         ],
@@ -38,11 +38,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "Increase Defense by 15%, damage dealt by 15%, and critical damage by 10% for every Knight's Protection shield. This effect can stack up to 2 times.\nWhen the effect of Knight's Protection ends, restore the targeted ally's HP by 20% of remaining shield.",
-        "name": "Floriography: Gerbera",
+        "desc": "tdxct-[Skill_desc_135142]",
+        "name": "tdxct-[Skill_name_135142]",
         "nature": null,
         "skill_lv": "3",
-        "sn": 133142,
+        "sn": 135142,
         "tags": [
           null
         ],
@@ -54,11 +54,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "Increase the skill levels of Frost Vines and Winter Fortress by 3.",
-        "name": "Benevolent Iceheart Knight",
+        "desc": "tdxct-[Skill_desc_135143]",
+        "name": "tdxct-[Skill_name_135143]",
         "nature": null,
         "skill_lv": "3",
-        "sn": 133143,
+        "sn": 135143,
         "tags": [
           null
         ],
@@ -70,11 +70,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "Highlight Enhanced: Increase shield granted to party by 30% (lasts for 2 turns).",
-        "name": "Floriography: Chamomile",
+        "desc": "tdxct-[Skill_desc_135144]",
+        "name": "tdxct-[Skill_name_135144]",
         "nature": null,
         "skill_lv": "3",
-        "sn": 133144,
+        "sn": 135144,
         "tags": [
           null
         ],
@@ -86,11 +86,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "Increase the skill levels of Hoarfrost Vow and Thief Tactics by 3.",
-        "name": "Floriography: Gentian",
+        "desc": "tdxct-[Skill_desc_135145]",
+        "name": "tdxct-[Skill_name_135145]",
         "nature": null,
         "skill_lv": "3",
-        "sn": 133145,
+        "sn": 135145,
         "tags": [
           null
         ],
@@ -102,11 +102,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "When gaining Garden of Promises, gain Poise for 3 turns.\nPoise: Increase the party's critical rate by 15%.",
-        "name": "True-Hearted Friendship",
+        "desc": "tdxct-[Skill_desc_135146]",
+        "name": "tdxct-[Skill_name_135146]",
         "nature": null,
         "skill_lv": "3",
-        "sn": 133146,
+        "sn": 135146,
         "tags": [
           null
         ],
@@ -118,23 +118,23 @@
     "final_innate": [],
     "highlight_skill": {
       "ascend": "0/5/0/5",
-      "auto_select": "Default",
-      "cooldown": 4,
+      "auto_select": "Weak",
+      "cooldown": 0,
       "cost": "",
-      "desc": "Grant Knight's Resolve shield equal to 59.0%/59.0%/62.7%/62.7% of Ashiya's Defense + 1681/2044/2066/2429 to all allies and decrease damage taken by 31.9%/35.2%/33.9%/37.1% for 2 turns.",
+      "desc": "AAAAAA==",
       "name": "Highlight",
-      "nature": "Heal",
+      "nature": "Bless",
       "skill_lv": "10/10/13/13",
-      "sn": 133152,
+      "sn": 135152,
       "tags": [
         null
       ],
-      "target": "Alive Ally",
-      "target_count": "All"
+      "target": "Alive Enemy",
+      "target_count": 1
     },
     "innate": {
-      "Ailment Resist.": "0.24",
-      "HP": "0.2"
+      "Crit Rate": "0.12",
+      "Damage Mult.": "0.16"
     },
     "innate_awake_skill": [],
     "name": "Kasumi Yoshizawa",
@@ -143,49 +143,49 @@
         "ascend": "0/5/0/5",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "SP 24",
-        "desc": "Deal Ice damage to the main target equal to 149.2%/164.5%/158.4%/173.7% of Ashiya's Defense, and deal Ice damage to other foes equal to 44.8%/49.4%/47.6%/52.1% of Ashiya's Defense.\n97.6%/97.6%/103.6%/103.6% chance to inflict Freeze on the main target, and gain 2 Heroism stacks.\nIf Garden of Promises is active, increase the main target's damage taken by 2% for every 600 points of Ashiya's Defense (up to 19.5%/21.5%/20.7%/22.7%), but gain only 1 Heroism stack.",
-        "name": "Frost Vines",
-        "nature": "Ice",
+        "cost": "SP 23",
+        "desc": "tdxct-[Skill_desc_135111]",
+        "name": "tdxct-[Skill_name_135111]",
+        "nature": "Bless",
         "skill_lv": "10/10/13/13",
-        "sn": 133111,
+        "sn": 135111,
         "tags": [
-          "Multi-Target"
+          "Single-Target"
         ],
         "target": "Alive Enemy",
-        "target_count": "All"
-      },
-      {
-        "ascend": "0/5/0/5",
-        "auto_select": "Default",
-        "cooldown": 0,
-        "cost": "SP 26",
-        "desc": "Grant 1 Knight's Protection shield equal to 22.8%/22.8%/24.2%/24.2% of Ashiya's Defense + 650/790/799/939 to 1 ally. Also increase the ally's Defense by 20% of Ashiya's Defense (up to 1220/1345/1295/1420) for 2 turns. If the target granted this effect has more than 60% HP, increase rate to take attacks from foes by 50%.\nAt the start of Ashiya's next turn, grant 1 Knight's Protection again to the same target. If Garden of Promises is active, increase shield granted from Knight's Protection by 25% for 2 turns.",
-        "name": "Hoarfrost Vow",
-        "nature": "Heal",
-        "skill_lv": "10/10/13/13",
-        "sn": 133112,
-        "tags": [
-          "Shield"
-        ],
-        "target": "Alive Ally",
         "target_count": 1
       },
       {
         "ascend": "0/5/0/5",
         "auto_select": "Default",
-        "cooldown": 1,
-        "cost": "SP 30",
-        "desc": "Grant all allies 1 Knight's Protection shield equal to 12% of Ashiya's Defense + 120/240/360 (effect changes at Lv. 1/50/70, respectively) and Knight's Resolve shield equal to 49.2%/49.2%/52.2%/52.2% of Ashiya's Defense + 1400/1702/1721/2024.\nAlso increase all allies' Down Points by 1 and damage dealt by 2.9% for every 300 points of Ashiya's Defense (up to 56.6%/62.4%/60.1%/65.9%) for 2 turns.",
-        "name": "Winter Fortress",
+        "cooldown": 0,
+        "cost": "SP 22",
+        "desc": "tdxct-[Skill_desc_135112]",
+        "name": "tdxct-[Skill_name_135112]",
         "nature": "Heal",
         "skill_lv": "10/10/13/13",
-        "sn": 133113,
+        "sn": 135112,
         "tags": [
-          "Shield"
+          "Buff"
         ],
-        "target": "Alive Ally",
-        "target_count": "All"
+        "target": "Ally excluding myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 27",
+        "desc": "tdxct-[Skill_desc_135113]",
+        "name": "tdxct-[Skill_name_135113]",
+        "nature": "Bless",
+        "skill_lv": "10/10/13/13",
+        "sn": 135113,
+        "tags": [
+          "Single-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
       }
     ],
     "passive_skill": [
@@ -194,11 +194,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "Increase Attack by 18.0% for each Will of Rebellion stack.",
-        "name": "Resistance",
+        "desc": "tdxct-[Skill_desc_135131]",
+        "name": "tdxct-[Skill_name_135131]",
         "nature": null,
         "skill_lv": "3",
-        "sn": 126131,
+        "sn": 135131,
         "tags": [
           "Talent"
         ],
@@ -210,11 +210,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "Increase damage on extra actions by 72.0%.",
-        "name": "Adverse Resolve",
+        "desc": "tdxct-[Skill_desc_135132]",
+        "name": "tdxct-[Skill_name_135132]",
         "nature": null,
         "skill_lv": "3",
-        "sn": 126132,
+        "sn": 135132,
         "tags": [
           "Talent"
         ],
@@ -223,9 +223,10 @@
       }
     ],
     "rating": {
-      "Defense": 4400.0,
-      "HP": 6440.0,
-      "Unknown Attr": 0.0
+      "Attack": 2920.0,
+      "Crit Mult.": 2.51,
+      "Crit Rate": 0.37,
+      "Damage Mult.": 0.18
     },
     "stat": {},
     "stat_100": null,

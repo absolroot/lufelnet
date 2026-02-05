@@ -1,11 +1,11 @@
 ---
 layout: article
 title: "페르소나5X 대미지 계산 공식에 대해"
-date: 2025-07-10 12:00:00 +0900
+date: 2025-07-10 09:00:00 +0900
 categories: [Guide]
 tags: [guide]
 author: AbsolRoot
-thumbnail: /apps/article/asset/damage.gif
+thumbnail: /apps/article/asset/damage-calc/damage.gif
 translations:
   kr:
     title: "페르소나5X 대미지 계산 공식에 대해"
@@ -13,40 +13,44 @@ translations:
     title: "About Persona 5X Damage Calculation"
   jp:
     title: "ペルソナ5X ダメージ計算"
+kramdown:
+  parse_block_html: true
 ---
 
 <div class="content-kr" markdown="1">
 
 > **⚠️ 주의사항**
+
 > 
 > 본 문서는 게임 초기 중국 Q&A 내용을 기반으로 작성되었습니다. 대미지 계산의 방향성과 구조를 이해하는 데 참고하시되, 정확한 수치는 실제 게임과 차이가 발생할 수 있습니다.
+
 > 
 > 또한 정확한 대미지 계산을 시도하는 것은 권장하지 않습니다. 대부분의 값과 요소는 서버에 숨겨져 있어 데이터마이닝이 불가능하며, 대미지에 영향을 미치는 스탯만 100가지 이상으로 알려져 있습니다.
+
 > 
 > 따라서 본 문서의 대미지 계산 공식은 완벽한 정확도를 추구하기보다는 **참고용**으로 활용하시기 바랍니다. 또한 스킬 대미지의 작동 방식은 캐릭터마다 다르게 적용될 수 있습니다 (예: "+20% 대미지 증가"가 때로는 "×1.2"를 또는 "+20%"를 의미할 수 있음).
 
 페르소나5X는 정말 복합적인 요소의 곱셈을 통해 대미지가 결정된다.
 
-![damage.gif](/apps/article/asset/damage.gif)
+<img src="/apps/article/asset/damage.gif">
 
 이를 모두 이해한다면 기상천외한 딜을 뽑아내는 택틱을 만들 수 있고, 곧 순위 상승으로 이어지게 된다.
 
 긴 말 필요 없이 바로 최종 공식부터 확인해보자.
 
-<br>
-
 # 최종 수치 공식
 
-```markdown
+```
+markdown
 = ⓐ 공격력 계산 × ⓑ 대미지 보너스 계산 × ⓒ 적 방어력 계산 × ⓓ 크리티컬 계산 × ⓔ 스킬 계수
 × ⓕ 약점 계수 × ⓖ 최종 대미지 보너스 × ⓗ 기타 계수 × ⓘ 랜덤 범위 계수
-```
 
-<br>
+```
 
 좀 더 상세하게 작성한 공식은 아래와 같다.
 
-```markdown
+```
+markdown
 ⓐ {(캐릭터 공격력 값 + 무기 공격력 값) × 공격력 % + 공격력 상수}
 
 × ⓑ {100% + 대미지 보너스 + 속성 대미지 보너스 + 적이 받는 대미지 증가}
@@ -65,22 +69,29 @@ translations:
 × ⓗ 기타 계수 
 
 × ⓘ 랜덤 범위 계수 (0.95~1.05)
+
 ```
-<br>
 
 대미지를 올리기 위해서는 다음 9가지 요소를 신경써야 한다는 것이고, 
 각각에 대해 상세히 작성했으니 이해한다면 보다 점수를 크게 올릴 수 있다.
 
 - ⓐ 공격력 계산
-- ⓑ 대미지 보너스 계산
-- ⓒ 적 방어력 계산
-- ⓓ 크리티컬 계산
-- ⓔ 스킬 계수
-- ⓕ 약점 계수
-- ⓖ 최종 대미지 보너스
-- ⓗ 기타 계수
-- ⓘ 랜덤 범위 계수
 
+- ⓑ 대미지 보너스 계산
+
+- ⓒ 적 방어력 계산
+
+- ⓓ 크리티컬 계산
+
+- ⓔ 스킬 계수
+
+- ⓕ 약점 계수
+
+- ⓖ 최종 대미지 보너스
+
+- ⓗ 기타 계수
+
+- ⓘ 랜덤 범위 계수
 
 ---
 
@@ -89,15 +100,15 @@ translations:
 **예시1) 공격력**
 
 - JOKER의 무기와 계시로 인해 공격력 +100%, 공격력 +1000
+
 - LEON의 스킬3으로 인한 버프로 공격력 +19.5%, +1516
 
 → 공격력 119.5%, 공격력 +2516
 
-<br>
-
 **예시2) 대미지 보너스**
 
 - PANTHER 계시 ‘분쟁’의 화염 대미지 보너스 10%
+
 - Dominion의 ‘응집’ 대미지 보너스 16%
 
 → PANTHER의 대미지 보너스 = 26%
@@ -108,11 +119,9 @@ translations:
 
 > {(캐릭터 공격력 값 + 무기 공격력 값) × 공격력 % + 공격력 상수}
 
-<br>
-
 ### ⓐ-**1. 캐릭터 공격력 값**
 
-![awareness6.png](/apps/article/asset/damage2.png)
+<img src="/apps/article/asset/damage2.png">
 
 각 캐릭터는 기본 공격력을 가지고 있고 해당 공격력은 레벨과 의식에 따라 성장률이 결정된다.
 
@@ -126,7 +135,6 @@ translations:
 
 레벨 80 기준 약 10.7%의 차이를 보인다.
 
-
 | 의식 0 | 의식 1 | 의식 2 | 의식 3 | 의식 4 | 의식 5 | 의식 6 |
 | --- | --- | --- | --- | --- | --- | --- |
 | 1180  | 1202  | 1222  | 1244  | 1265  | 1286  | 1307  |
@@ -136,8 +144,6 @@ translations:
 
 전반적으로 같은 포지션에 있는 캐릭터는 비슷한 수치를 지닌다.
 
-<br>
-
 ### ⓐ-**2. 무기 공격력 값**
 
 각 캐릭터는 고유한 무기를 가지고 있고, 무기의 기본 공격력은 희귀도와 레벨에 따라 결정된다.
@@ -146,9 +152,7 @@ translations:
 
 무기를 중첩해 강화한다고 하여도 기본 공격력은 오르지 않는다.
 
-![damage.png](/apps/article/asset/damage3.png)
-
-<br>
+<img src="/apps/article/asset/damage3.png">
 
 ### ⓐ-3. 공격력 %
 
@@ -156,9 +160,7 @@ translations:
 
 아래 사진에서는 2.8%가 이에 해당한다.
 
-![damage.png](/apps/article/asset/damage4-1.png)
-
-<br>
+<img src="/apps/article/asset/damage4-1.png">
 
 ### ⓐ-4. 공격력 상수
 
@@ -166,7 +168,7 @@ translations:
 
 아래 사진에서는 46이 이에 해당한다. 모든 공격력 계산이 끝난 후에 더해진다.
 
-![damage.png](/apps/article/asset/damage4.png)
+<img src="/apps/article/asset/damage4.png">
 
 ---
 
@@ -174,25 +176,19 @@ translations:
 
 > {100% + 대미지 보너스 + 속성 대미지 보너스 + 적이 받는 대미지 증가}
 
-<br>
-
 ### ⓑ-**1.** 대미지 보너스
 
 우리가 아는 일반적인 대미지 보너스, 대미지 증가라 적힌 전반적인 내용을 포함한다고 보면 된다.
 
 대표적으로 카요의 스킬 3은 대미지 보너스를 올려주는 스킬이다. 
 
-![damage.png](/apps/article/asset/damage5.png)
-
-<br>
+<img src="/apps/article/asset/damage5.png">
 
 ### ⓑ-2. 속성 대미지 보너스
 
 특정 속성에 한정 지어서 올라가는 대미지 보너스로 조건부지만 기존 대미지 보너스 풀에 포함되어 계산된다.
 
-![damage.png](/apps/article/asset/damage6.png)
-
-<br>
+<img src="/apps/article/asset/damage6.png">
 
 ### ⓑ-3. 받는 대미지 증가
 
@@ -200,7 +196,7 @@ translations:
 
 대표적으로 야오링의 스킬3이 있다. 적에게 종속되므로 적이 죽을 경우 해당 속성은 사라진다.
 
-![damage.png](/apps/article/asset/damage7.png)
+<img src="/apps/article/asset/damage7.png">
 
 ---
 
@@ -209,14 +205,12 @@ translations:
 > 1 - {적 방어 값 × [방어 계수] × (100% - 풍습 12%)} ÷ {적 방어 값 × [방어 계수] × (100% - 풍습 12%) + 1400}
 
 > ※ 방어 계수 = (100% + 추가 방어 계수) × (100% - 관통) - 방어력 감소
+
 >
 
-<br>
 가장 복잡한 메커니즘이자, 앞으로 가장 많이 신경쓰게 될 핵심 요소다.
 
 결론 : **가능하면 보스의 방어 계수를 모두 감소시켜 0으로 만들 수 있다면 하는 게 좋다**.
-
-<br>
 
 ### ⓒ-1 적 방어 값 & 추가 방어 계수
 
@@ -231,8 +225,6 @@ translations:
 
 위는 일반적인 수치이고, 보스에 따라 추가 방어 계수가 바뀌기도 한다.
 
-<br>
-
 | **흉몽 LV82** | **방어력** | **추가 계수** |
 | --- | --- | --- |
 | 도미니온 | 363.2 | 158.4% |
@@ -243,29 +235,27 @@ translations:
 
 방어력이 높을수록, 추가 방어 계수가 높을 수록 ⓒ의 계산 결과 값은 작아져, 결과적으로 최종 대미지가 감소하게 된다.
 
-<br>
-
 ### ⓒ-2 관통
 
 증가한 방어 계수를 % 단위로 감소시킬 수 있는 능력치다.
 
 캐릭터 자체 메커니즘에 포함되지 않는 이상 수급처가 정말 적은 편이고, 대표적으로 계시에서 획득 가능하다.
 
-![damage.png](/apps/article/asset/damage8.png)
+<img src="/apps/article/asset/damage8.png">
 
 관통이 50%이고, 보스가 도미니온일 경우 
 
-```markdown
+```
+markdown
 ※ 방어 계수 = (100% + 추가 방어 계수) × (100% - 관통) - 방어력 감소
 
 ※ 방어 계수 = (100% + 158.4%) × (100% - 50%) = 258.4% * 0.5 = 129.2%
+
 ```
 
 로 비례해서 방어 계수가 줄어들기 때문에 수치 대비 효용성이 상당히 높은 귀중한 능력치다.
 
 당연히 100%를 초과하는 관통은 적용되지 않는다.
-
-<br>
 
 ### ⓒ-3 방어력 감소
 
@@ -275,15 +265,18 @@ translations:
 
 관통으로 129.2%를 만든 방어 계수에 야노식의 패시브와 라쿤다가 적용한다면 방어 계수는 다음과 같다.
 
-```markdown
+```
+markdown
 129.2% - 41.6% (야노식 패시브) - 38.8% (라쿤다) = 48.8%
+
 ```
 
-![damage.png](/apps/article/asset/damage9.png)
+<img src="/apps/article/asset/damage9.png">
 
 결과를 방어력 계산식ⓒ에 넣게 되면 +48.4%의 대미지 증가가 됨을 알 수 있다.
 
 > 1 - {적 방어 값 × [방어 계수] } ÷ {적 방어 값 × [방어 계수] + 1400}
+
 > 
 
 | **관통** | **방어력 감소** | 적 방어 값 | 방어 계수 | **ⓒ 계산 결과** |
@@ -293,24 +286,21 @@ translations:
 
 방어력 감소에 의한 방어 계수는 0 이하로 내려가지 않는다.
 
-<br>
-
 ### ⓒ-4 풍습(Windswept)
 
 > 적 방어 값 × [방어 계수] × (100% - 풍습 12%)
+
 > 
 
 상태이상으로 방어 계수가 모두 계산된 결과에 88%를 곱하게 된다.
 
 앞서 관통과 방어력 감소를 통해 방어 계수를 0으로 만들 경우 가치가 0이 된다는 특징이 있다.
 
-![damage.png](/apps/article/asset/damage10.png)
+<img src="/apps/article/asset/damage10.png">
 
  대체로 방어력 감소 효과를 지닌 페르소나가 풍습을 필요로 하는 경우가 많다.
 
-![damage.png](/apps/article/asset/damage11.png)
-
-<br>
+<img src="/apps/article/asset/damage11.png">
 
 ### ⓒ 특징
 
@@ -328,14 +318,15 @@ translations:
 
 대표적으로 디오니소스는 리벨리온을 통해 15.7%의 크리티컬 확률과, 패시브를 통한 30%의 크리티컬 효과를 올려줄 수 있는 페르소나다.
 
-![damage.png](/apps/article/asset/damage12.png)
+<img src="/apps/article/asset/damage12.png">
 
 보스 구간에서는 안정 영역(Stable Domain)으로 크리티컬이 발생하지는 않지만 기댓값을 바탕으로 대미지를 올려주는 형태로 계산된다.
 
 > 크리티컬 확률 × (크리티컬 효과 - 100%)
+
 > 
 
-![damage.png](/apps/article/asset/damage13.png)
+<img src="/apps/article/asset/damage13.png">
 
 크리티컬 확률을 10% 올렸다면, 크리티컬 효과는 2배수인 20%를 올리는 형태가 효율이 가장 좋다.
 
@@ -344,15 +335,17 @@ translations:
 # ⓔ 스킬 계수
 
 말 그대로 스킬에 적혀있는 계수로서, 계수가 그대로 곱셈에 작용하기 때문에 캐릭터의 강함을 판단한다는 중요한 척도가 된다.
+ 
 
-![damage.png](/apps/article/asset/damage14.png)
+<img src="/apps/article/asset/damage14.png" style="width:500px">
 
-특이사항으로 조커의 3스킬은 추가 턴에는 25%, 디버프가 있는 적을 공격할 때 25%의 대미지가 증가한다고 표현돼 있다.
+ 
+ 특이사항으로 조커의 3스킬은 추가 턴에는 25%, 디버프가 있는 적을 공격할 때 25%의 대미지가 증가한다고 표현돼 있다.
 
 이는 기존 대미지 보너스 풀에 들어가지 않고, 스킬 계수에 작용한다고 한다. 스킬마다 기준은 알 수 없다.
 
-
 > 74.2 * (100% + 25% + 25%) = 111.3%
+
 > 
 
 ---
@@ -362,10 +355,12 @@ translations:
 페르소나 시리즈에는 전통적으로 약점이 정말 중요하다. 약점에 따른 계수는 다음과 같다.
 
 - 약점 : 1.2배
+
 - 일반 : 1.0배
+
 - 내성 : 0.5배
 
-![damage.png](/apps/article/asset/damage15.png)
+<img src="/apps/article/asset/damage15.png">
 
 ---
 
@@ -383,8 +378,8 @@ translations:
 
 # 계산 예시
 
-
-```markdown
+```
+markdown
 ⓐ {(캐릭터 공격력 값 + 무기 공격력 값) × 공격력 % + 공격력 상수}
 
 × ⓑ {100% + 대미지 보너스 + 속성 대미지 보너스 + 적이 받는 대미지 증가}
@@ -403,10 +398,8 @@ translations:
 × ⓗ 기타 계수 
 
 × ⓘ 랜덤 범위 계수 (0.95~1.05)
+
 ```
-
-<br>
-
 
 다음은 각각 합산된 값을 가정한 결과
 
@@ -426,7 +419,7 @@ translations:
 
 - ⓒ 도미니온 방어력 : 400
 
-- ⓒ 도미니온 추가 방어 계수 : 158.3% 
+- ⓒ 도미니온 추가 방어 계수 : 158.3%
 
 - ⓒ 관통 : 10%
 
@@ -444,13 +437,13 @@ translations:
 
 - ⓖ 최종 대미지 보너스 : 40%
 
-
 ```
+
 ⓐ {(1200+600) × 1.5 + 500}
 
 × ⓑ (100% + 50% + 20% + 20%)
 
-× ⓒ 1 - {400 × (258.3% * 0.9 - 80%) × 0.88} ÷ {400 × (258.3% * 0.9 - 80%) × 0.88 + 1400}
+× ⓒ 1 - {400 × (258.3%  0.9 - 80%) × 0.88} ÷ {400 × (258.3%  0.9 - 80%) × 0.88 + 1400}
 
 × ⓓ (100% + 40% × (220%-100%))
 
@@ -465,44 +458,45 @@ translations:
 = ⓐ3200 × ⓑ1.9 ×  ⓒ0.7228 × ⓓ1.48 × ⓔ1.2 × ⓕ1.2 × ⓖ1.4 × ⓘ0.95~1.05
 
 = 12456 ~ 13768
-```
 
-<br>
+```
 
 </div>
 
 <div class="content-en" markdown="1">
 
 > **⚠️ Important Notice**
+
 > 
 > This document is based on early Chinese Q&A content from the game. While it provides reference for understanding the direction and structure of damage calculation, the exact values may differ from the actual game.
+
 > 
 > We do not recommend attempting to calculate accurate damage. Most values and factors are hidden on the server and cannot be datamined. It is known that there are over 100 different stats that affect damage.
+
 > 
 > Therefore, the damage calculation formulas in this document should be used **for reference purposes** rather than seeking perfect accuracy. Additionally, how skill damage works varies by each character (e.g., "+20% damage increase" may sometimes mean "×1.2" or "+20%").
 
 Persona 5X determines damage through a complex multiplication of various factors.
 
-![damage.gif](/apps/article/asset/damage.gif)
+<img src="/apps/article/asset/damage.gif">
 
 Understanding all of these will allow you to create extraordinary damage-dealing tactics, leading to rank improvements.
 
 Let's get straight to the final formula without further ado.
 
-<br>
-
 # Final Formula
 
-```markdown
+```
+markdown
 = ⓐ Attack Power Calculation × ⓑ Damage Bonus Calculation × ⓒ Enemy Defense Calculation × ⓓ Critical Calculation × ⓔ Skill Coefficient
 × ⓕ Weakness Coefficient × ⓖ Final Damage Bonus × ⓗ Other Coefficients × ⓘ Random Range Coefficient
-```
 
-<br>
+```
 
 A more detailed formula is as follows:
 
-```markdown
+```
+markdown
 ⓐ {(Character Attack Value + Weapon Attack Value) × Attack % + Attack Constant}
 
 × ⓑ {100% + Attack Mult. + Elemental Damage Bonus + Increased Damage Taken by Enemy}
@@ -521,21 +515,28 @@ A more detailed formula is as follows:
 × ⓗ Other Coefficients 
 
 × ⓘ Random Range Coefficient (0.95~1.05)
+
 ```
-<br>
 
 To increase damage, you need to consider these 9 elements, and I've detailed each one so you can significantly improve your score if you understand them.
 
 - ⓐ Attack Power Calculation
-- ⓑ Damage Bonus Calculation
-- ⓒ Enemy Defense Calculation
-- ⓓ Critical Calculation
-- ⓔ Skill Coefficient
-- ⓕ Weakness Coefficient
-- ⓖ Final Damage Bonus
-- ⓗ Other Coefficients
-- ⓘ Random Range Coefficient
 
+- ⓑ Damage Bonus Calculation
+
+- ⓒ Enemy Defense Calculation
+
+- ⓓ Critical Calculation
+
+- ⓔ Skill Coefficient
+
+- ⓕ Weakness Coefficient
+
+- ⓖ Final Damage Bonus
+
+- ⓗ Other Coefficients
+
+- ⓘ Random Range Coefficient
 
 ---
 
@@ -544,15 +545,15 @@ To increase damage, you need to consider these 9 elements, and I've detailed eac
 **Example 1) Attack Power**
 
 - JOKER's weapon and revelation give Attack +100%, Attack +1000
+
 - LEON's Skill 3 buff gives Attack +19.5%, +1516
 
 → Attack 119.5%, Attack +2516
 
-<br>
-
 **Example 2) Damage Bonus**
 
 - PANTHER's revelation 'Strife' gives Fire damage bonus 10%
+
 - Dominion's 'Cohesion' gives damage bonus 16%
 
 → PANTHER's damage bonus = 26%
@@ -563,11 +564,9 @@ To increase damage, you need to consider these 9 elements, and I've detailed eac
 
 > {(Character Attack Value + Weapon Attack Value) × Attack % + Attack Constant}
 
-<br>
-
 ### ⓐ-**1. Character Attack Value**
 
-![awareness6.png](/apps/article/asset/damage2.png)
+<img src="/apps/article/asset/damage2.png">
 
 Each character has a base attack power, and its growth rate is determined by level and awareness.
 
@@ -590,8 +589,6 @@ The attack power values shown are examples for Joker and differ for each charact
 
 Generally, characters in the same position have similar values.
 
-<br>
-
 ### ⓐ-**2. Weapon Attack Value**
 
 Each character has their unique weapon, and the weapon's base attack power is determined by rarity and level.
@@ -600,9 +597,7 @@ Since Attack % buffs are applied after the weapon attack power is added, both op
 
 Even if you enhance weapons through duplication, the base attack power doesn't increase.
 
-![damage.png](/apps/article/asset/damage3.png)
-
-<br>
+<img src="/apps/article/asset/damage3.png">
 
 ### ⓐ-3. Attack %
 
@@ -610,9 +605,7 @@ This refers to attack power that increases by % from various buffs, revelations,
 
 In the image below, 2.8% corresponds to this.
 
-![damage.png](/apps/article/asset/damage4-1.png)
-
-<br>
+<img src="/apps/article/asset/damage4-1.png">
 
 ### ⓐ-4. Attack Constant
 
@@ -620,7 +613,7 @@ This refers to attack power that increases by regular integers from various buff
 
 In the image below, 46 corresponds to this. It's added after all attack power calculations are complete.
 
-![damage.png](/apps/article/asset/damage4.png)
+<img src="/apps/article/asset/damage4.png">
 
 ---
 
@@ -628,25 +621,19 @@ In the image below, 46 corresponds to this. It's added after all attack power ca
 
 > {100% + Attack Mult. + Elemental Damage Bonus + Increased Damage Taken by Enemy}
 
-<br>
-
 ### ⓑ-**1.** Damage Bonus
 
 This includes general damage bonuses and overall content marked as damage increase that we know.
 
 For example, Kayo's Skill 3 is a skill that increases damage bonus.
 
-![damage.png](/apps/article/asset/damage5.png)
-
-<br>
+<img src="/apps/article/asset/damage5.png">
 
 ### ⓑ-2. Elemental Damage Bonus
 
 This is a damage bonus that only applies to specific elements. While conditional, it's calculated as part of the existing damage bonus pool.
 
-![damage.png](/apps/article/asset/damage6.png)
-
-<br>
+<img src="/apps/article/asset/damage6.png">
 
 ### ⓑ-3. Increased Damage Taken
 
@@ -654,7 +641,7 @@ This is a debuff allocated to enemies that increases the damage they take.
 
 A notable example is Yaoring's Skill 3. Since it's tied to the enemy, this attribute disappears if the enemy dies.
 
-![damage.png](/apps/article/asset/damage7.png)
+<img src="/apps/article/asset/damage7.png">
 
 ---
 
@@ -663,14 +650,12 @@ A notable example is Yaoring's Skill 3. Since it's tied to the enemy, this attri
 > 1 - {Enemy Defense Value × [Defense Coefficient] × (100% - Windswept 12%)} ÷ {Enemy Defense Value × [Defense Coefficient] × (100% - Windswept 12%) + 1400}
 
 > ※ Defense Coefficient = (100% + Additional Defense Coefficient) × (100% - Pierce) - Defense Reduction
+
 >
 
-<br>
 This is the most complex mechanism and will be the core element you'll need to pay the most attention to going forward.
 
 Conclusion: **If possible, it's best to reduce the boss's defense coefficient to 0**.
-
-<br>
 
 ### ⓒ-1 Enemy Defense Value & Additional Defense Coefficient
 
@@ -685,8 +670,6 @@ Surprisingly, despite being crucial values, these numbers can't be found anywher
 
 These are general values, and the additional defense coefficient can change depending on the boss.
 
-<br>
-
 | **Nightmare (Guild Boss) LV82** | **Defense** | **Additional Defense Coefficient** |
 | --- | --- | --- |
 | Dominion | 363.2 | 158.4% |
@@ -697,29 +680,27 @@ These are general values, and the additional defense coefficient can change depe
 
 The higher the defense and additional defense coefficient, the smaller the result of calculation ⓒ becomes, ultimately reducing the final damage.
 
-<br>
-
 ### ⓒ-2 Pierce
 
 This is an ability that can reduce the increased defense coefficient by %.
 
 Unless it's included in the character's own mechanism, it's quite rare to obtain, and it's primarily available through revelations.
 
-![damage.png](/apps/article/asset/damage8.png)
+<img src="/apps/article/asset/damage8.png">
 
 If Pierce is 50% and the boss is Dominion:
 
-```markdown
+```
+markdown
 ※ Defense Coefficient = (100% + Additional Defense Coefficient) × (100% - Pierce) - Defense Reduction
 
 ※ Defense Coefficient = (100% + 158.4%) × (100% - 50%) = 258.4% * 0.5 = 129.2%
+
 ```
 
 The defense coefficient decreases proportionally, making it a valuable stat with high efficiency compared to its value.
 
 Of course, Pierce exceeding 100% is not applied.
-
-<br>
 
 ### ⓒ-3 Defense Reduction
 
@@ -729,15 +710,18 @@ Janosik's talen can reduce enemy defense by 41.6% for 2 turns, and through the R
 
 If we apply Janosik's talent and Rakunda to the defense coefficient of 129.2% that we got through Pierce, the defense coefficient becomes:
 
-```markdown
+```
+markdown
 129.2% - 41.6% (Janosik talent) - 38.8% (Rakunda) = 48.8%
+
 ```
 
-![damage.png](/apps/article/asset/damage9.png)
+<img src="/apps/article/asset/damage9.png">
 
 When putting this result into the defense calculation formula ⓒ, we can see it results in a +48.4% damage increase.
 
 > 1 - {Enemy Defense Value × [Defense Coefficient] } ÷ {Enemy Defense Value × [Defense Coefficient] + 1400}
+
 > 
 
 | **Pierce** | **Defense Reduction** | Enemy Defense Value | Defense Coefficient | **ⓒ Calculation Result** |
@@ -747,24 +731,21 @@ When putting this result into the defense calculation formula ⓒ, we can see it
 
 The defense coefficient from defense reduction cannot go below 0.
 
-<br>
-
 ### ⓒ-4 Windswept
 
 > Enemy Defense Value × [Defense Coefficient] × (100% - Windswept 12%)
+
 > 
 
 As a status ailment, it multiplies 88% to the result after all defense coefficients are calculated.
 
 It has the characteristic of becoming worthless if you reduce the defense coefficient to 0 through Pierce and defense reduction.
 
-![damage.png](/apps/article/asset/damage10.png)
+<img src="/apps/article/asset/damage10.png">
 
 Generally, Personas with defense reduction effects often require Windswept.
 
-![damage.png](/apps/article/asset/damage11.png)
-
-<br>
+<img src="/apps/article/asset/damage11.png">
 
 ### ⓒ Characteristics
 
@@ -782,14 +763,15 @@ The base critical rate is 5%, and the base Critical DMG(Mult) is 150%, meaning t
 
 Notably, Dionysus can increase critical rate by 15.7% through Rebellion, and increase Critical DMG(Mult) by 30% through its passive.
 
-![damage.png](/apps/article/asset/damage12.png)
+<img src="/apps/article/asset/damage12.png">
 
 In boss sections, while criticals don't occur due to the Stable Domain, damage is increased based on expected value calculations.
 
 > Critical Rate × (Critical DMG(Mult) - 100%)
+
 > 
 
-![damage.png](/apps/article/asset/damage13.png)
+<img src="/apps/article/asset/damage13.png">
 
 If you increase critical rate by 10%, increasing Critical DMG(Mult) by twice that amount (20%) is most efficient.
 
@@ -799,14 +781,14 @@ If you increase critical rate by 10%, increasing Critical DMG(Mult) by twice tha
 
 This is literally the coefficient written on skills, and since it directly affects multiplication, it becomes an important measure in determining a character's strength.
 
-![damage.png](/apps/article/asset/damage14.png)
+<img src="/apps/article/asset/damage14.png">
 
 As a special note, Joker's Skill 3 states that damage increases by 25% on additional turns and 25% when attacking enemies with debuffs.
 
 It's said that this doesn't go into the existing damage bonus pool but affects the skill coefficient. The criteria can vary by skill.
 
-
 > 74.2 * (100% + 25% + 25%) = 111.3%
+
 > 
 
 ---
@@ -816,10 +798,12 @@ It's said that this doesn't go into the existing damage bonus pool but affects t
 Traditionally in the Persona series, weaknesses are really important. The coefficients based on weaknesses are as follows:
 
 - Weakness: 1.2x
+
 - Normal: 1.0x
+
 - Resistance: 0.5x
 
-![damage.png](/apps/article/asset/damage15.png)
+<img src="/apps/article/asset/damage15.png">
 
 ---
 
@@ -837,7 +821,8 @@ After all values are calculated, a random value between 0.95 ~ 1.05 is multiplie
 
 # Calculation Example
 
-```markdown
+```
+markdown
 ⓐ {(Character Attack Value + Weapon Attack Value) × Attack % + Attack Constant}
 
 × ⓑ {100% + Attack Mult. + Elemental Damage Bonus + Increased Damage Taken by Enemy}
@@ -856,36 +841,52 @@ After all values are calculated, a random value between 0.95 ~ 1.05 is multiplie
 × ⓗ Other Coefficients 
 
 × ⓘ Random Range Coefficient (0.95~1.05)
-```
 
-<br>
+```
 
 The following are the results assuming each summed value:
 
 - ⓐ Character Attack Value: 1200
+
 - ⓐ Weapon Attack Value: 600
+
 - ⓐ Attack %: 50%
+
 - ⓐ Attack Constant: 500
+
 - ⓑ Damage Bonus (Attack Mult.): 50%
+
 - ⓑ Fire Damage Increase: 20%
+
 - ⓑ Increased Damage Taken by Enemy: 20%
+
 - ⓒ Dominion Defense: 400
+
 - ⓒ Dominion Additional Defense Coefficient: 158.3%
+
 - ⓒ Pierce: 10%
+
 - ⓒ Defense Reduction: 80%
+
 - ⓒ Windswept Status: YES 12%
+
 - ⓓ Critical Rate: 40%
+
 - ⓓ Critical DMG(Mult): 220%
+
 - ⓔ Skill Coefficient: 120%
+
 - ⓕ Weakness Coefficient: 120% (Weakness)
+
 - ⓖ Final Damage Bonus: 40%
 
 ```
+
 ⓐ {(1200+600) × 1.5 + 500}
 
 × ⓑ (100% + 50% + 20% + 20%)
 
-× ⓒ 1 - {400 × (258.3% * 0.9 - 80%) × 0.88} ÷ {400 × (258.3% * 0.9 - 80%) × 0.88 + 1400}
+× ⓒ 1 - {400 × (258.3%  0.9 - 80%) × 0.88} ÷ {400 × (258.3%  0.9 - 80%) × 0.88 + 1400}
 
 × ⓓ (100% + 40% × (220%-100%))
 
@@ -900,44 +901,45 @@ The following are the results assuming each summed value:
 = ⓐ3200 × ⓑ1.9 ×  ⓒ0.7228 × ⓓ1.48 × ⓔ1.2 × ⓕ1.2 × ⓖ1.4 × ⓘ0.95~1.05
 
 = 12456 ~ 13768
-```
 
-<br>
+```
 
 </div>
 
 <div class="content-jp" markdown="1">
 
 > **⚠️ 注意事項**
+
 > 
 > 本ドキュメントは、ゲーム初期の中国Q&Aの内容に基づいて作成されました。ダメージ計算の方向性と構造を理解するための参考としてご利用ください。正確な数値は実際のゲームと差異が生じる可能性があります。
+
 > 
 > また、正確なダメージ計算を試みることは推奨されません。ほとんどの値と要素はサーバーに隠されており、データマイニングが不可能です。ダメージに影響を与えるステータスだけでも100種類以上あることが知られています。
+
 > 
 > したがって、本ドキュメントのダメージ計算式は完璧な正確さを追求するのではなく、**参考用**としてご活用ください。また、スキルダメージの動作方法はキャラクターごとに異なる場合があります（例：「+20%ダメージ増加」が時には「×1.2」または「+20%」を意味する場合があります）。
 
 ペルソナ5Xは、複雑な要素の乗算によってダメージが決定されます。
 
-![damage.gif](/apps/article/asset/damage.gif)
+<img src="/apps/article/asset/damage.gif">
 
 これらをすべて理解することで、驚異的なダメージを出すタクティクスを作成でき、ランクの上昇につながります。
 
 長い説明は省いて、まずは最終計算式から確認しましょう。
 
-<br>
-
 # 最終計算式
 
-```markdown
+```
+markdown
 = ⓐ 攻撃力計算 × ⓑ 攻撃倍率+計算 × ⓒ 敵防御力計算 × ⓓ クリティカル計算 × ⓔ スキル係数
 × ⓕ 弱点係数 × ⓖ 最終攻撃倍率+ × ⓗ その他係数 × ⓘ ランダム範囲係数
-```
 
-<br>
+```
 
 より詳細な計算式は以下の通りです：
 
-```markdown
+```
+markdown
 ⓐ {(怪盗攻撃力値 + 武器攻撃力値) × 攻撃力% + 攻撃力定数}
 
 × ⓑ {100% + 攻撃倍率+ + 属性攻撃倍率+ + 敵が受けるダメージ増加}
@@ -956,22 +958,29 @@ The following are the results assuming each summed value:
 × ⓗ その他係数 
 
 × ⓘ ランダム範囲係数 (0.95~1.05)
+
 ```
-<br>
 
 ダメージを上げるためには、以下の9つの要素を考慮する必要があり、
 それぞれについて詳しく説明しましたので、理解すればスコアを大きく向上させることができます。
 
 - ⓐ 攻撃力計算
-- ⓑ 攻撃倍率+計算
-- ⓒ 敵防御力計算
-- ⓓ クリティカル計算
-- ⓔ スキル係数
-- ⓕ 弱点係数
-- ⓖ 最終攻撃倍率+
-- ⓗ その他係数
-- ⓘ ランダム範囲係数
 
+- ⓑ 攻撃倍率+計算
+
+- ⓒ 敵防御力計算
+
+- ⓓ クリティカル計算
+
+- ⓔ スキル係数
+
+- ⓕ 弱点係数
+
+- ⓖ 最終攻撃倍率+
+
+- ⓗ その他係数
+
+- ⓘ ランダム範囲係数
 
 ---
 
@@ -980,15 +989,15 @@ The following are the results assuming each summed value:
 **例1) 攻撃力**
 
 - JOKERの武器と啓示により攻撃力 +100%、攻撃力 +1000
+
 - LEONのスキル3によるバフで攻撃力 +19.5%、+1516
 
 → 攻撃力 119.5%、攻撃力 +2516
 
-<br>
-
 **例2) 攻撃倍率+**
 
 - PANTHERの啓示「争い」の火炎攻撃倍率+ 10%
+
 - Dominionの「凝集」攻撃倍率+ 16%
 
 → PANTHERの攻撃倍率+ = 26%
@@ -999,11 +1008,9 @@ The following are the results assuming each summed value:
 
 > {(怪盗攻撃力値 + 武器攻撃力値) × 攻撃力% + 攻撃力定数}
 
-<br>
-
 ### ⓐ-**1. 怪盗攻撃力値**
 
-![awareness6.png](/apps/article/asset/damage2.png)
+<img src="/apps/article/asset/damage2.png">
 
 各怪盗は基本攻撃力を持っており、その成長率はレベルと覚醒によって決定されます。
 
@@ -1026,8 +1033,6 @@ The following are the results assuming each summed value:
 
 全体的に同じポジションの怪盗は似た数値を持ちます。
 
-<br>
-
 ### ⓐ-**2. 武器攻撃力値**
 
 各怪盗は固有の武器を持っており、武器の基本攻撃力はレアリティとレベルによって決定されます。
@@ -1036,9 +1041,7 @@ The following are the results assuming each summed value:
 
 武器を重ねて強化しても、基本攻撃力は上昇しません。
 
-![damage.png](/apps/article/asset/damage3.png)
-
-<br>
+<img src="/apps/article/asset/damage3.png">
 
 ### ⓐ-3. 攻撃力%
 
@@ -1046,9 +1049,7 @@ The following are the results assuming each summed value:
 
 下の画像では2.8%がこれに該当します。
 
-![damage.png](/apps/article/asset/damage4-1.png)
-
-<br>
+<img src="/apps/article/asset/damage4-1.png">
 
 ### ⓐ-4. 攻撃力定数
 
@@ -1056,7 +1057,7 @@ The following are the results assuming each summed value:
 
 下の画像では46がこれに該当します。すべての攻撃力計算が終わった後に加算されます。
 
-![damage.png](/apps/article/asset/damage4.png)
+<img src="/apps/article/asset/damage4.png">
 
 ---
 
@@ -1064,25 +1065,19 @@ The following are the results assuming each summed value:
 
 > {100% + 攻撃倍率+ + 属性攻撃倍率+ + 敵が受けるダメージ増加}
 
-<br>
-
 ### ⓑ-**1.** 攻撃倍率+
 
 私たちが知っている一般的な攻撃倍率+、ダメージ増加と書かれている全般的な内容を含みます。
 
 代表的な例として、カヨのスキル3は攻撃倍率+を上げるスキルです。
 
-![damage.png](/apps/article/asset/damage5.png)
-
-<br>
+<img src="/apps/article/asset/damage5.png">
 
 ### ⓑ-2. 属性攻撃倍率+
 
 特定の属性に限定して上昇する攻撃倍率+で、条件付きですが既存の攻撃倍率+プールに含まれて計算されます。
 
-![damage.png](/apps/article/asset/damage6.png)
-
-<br>
+<img src="/apps/article/asset/damage6.png">
 
 ### ⓑ-3. 受けるダメージ増加
 
@@ -1090,24 +1085,23 @@ The following are the results assuming each summed value:
 
 代表的な例として、ヤオリンのスキル3があります。敵に依存するため、敵が死亡した場合、この属性は消失します。
 
-![damage.png](/apps/article/asset/damage7.png)
+<img src="/apps/article/asset/damage7.png">
 
 ---
 
 # ⓒ 敵防御力
 
 > 1 - {敵防御力値 × [(100% + 追加防御係数) × (100% - 貫通) - 防御力減少] × (100% - 風襲 12%)} 
+
 ÷ {敵防御力値 × [(100% + 追加防御係数) × (100% - 貫通) - 防御力減少] × (100% - 風襲 12%) + 1400}
 
 > ※ 防御係数 = (100% + 追加防御係数) × (100% - 貫通) - 防御力減少
+
 >
 
-<br>
 最も複雑なメカニズムであり、今後最も注意を払う必要がある核心的な要素です。
 
 結論：**可能であれば、ボスの防御係数をすべて減少させて0にできるならば、そうするのが良いでしょう**。
-
-<br>
 
 ### ⓒ-1 敵防御力値 & 追加防御係数
 
@@ -1122,8 +1116,6 @@ The following are the results assuming each summed value:
 
 これは一般的な数値で、ボスによって追加防御係数が変わることもあります。
 
-<br>
-
 | **悪夢（ギルドボス） LV82** | **防御力** | **追加防御係数** |
 | --- | --- | --- |
 | ドミニオン | 363.2 | 158.4% |
@@ -1134,29 +1126,27 @@ The following are the results assuming each summed value:
 
 防御力が高いほど、追加防御係数が高いほど、ⓒの計算結果値は小さくなり、結果として最終ダメージが減少します。
 
-<br>
-
 ### ⓒ-2 貫通
 
 増加した防御係数を%単位で減少させることができる能力値です。
 
 怪盗自体のメカニズムに含まれない限り、入手先が本当に少なく、代表的に啓示から獲得可能です。
 
-![damage.png](/apps/article/asset/damage8.png)
+<img src="/apps/article/asset/damage8.png">
 
 貫通が50%で、ボスがドミニオンの場合：
 
-```markdown
+```
+markdown
 ※ 防御係数 = (100% + 追加防御係数) × (100% - 貫通) - 防御力減少
 
 ※ 防御係数 = (100% + 158.4%) × (100% - 50%) = 258.4% * 0.5 = 129.2%
+
 ```
 
 防御係数が比例して減少するため、数値対比で効用性が非常に高い貴重な能力値です。
 
 当然、100%を超える貫通は適用されません。
-
-<br>
 
 ### ⓒ-3 防御力減少
 
@@ -1166,15 +1156,18 @@ The following are the results assuming each summed value:
 
 貫通で129.2%にした防御係数にヤノシクのパッシブとラクンダを適用すると、防御係数は次のようになります：
 
-```markdown
+```
+markdown
 129.2% - 41.6% (ヤノシクパッシブ) - 38.8% (ラクンダ) = 48.8%
+
 ```
 
-![damage.png](/apps/article/asset/damage9.png)
+<img src="/apps/article/asset/damage9.png">
 
 この結果を防御力計算式ⓒに入れると、+48.4%のダメージ増加になることがわかります。
 
 > 1 - {敵防御力値 × [防御係数] } ÷ {敵防御力値 × [防御係数] + 1400}
+
 > 
 
 | **貫通** | **防御力減少** | 敵防御力値 | 防御係数 | **ⓒ 計算結果** |
@@ -1184,24 +1177,21 @@ The following are the results assuming each summed value:
 
 防御力減少による防御係数は0以下にはなりません。
 
-<br>
-
 ### ⓒ-4 風襲
 
 > 敵防御力値 × [防御係数] × (100% - 風襲 12%)
+
 > 
 
 状態異常として、防御係数がすべて計算された結果に88%を掛けることになります。
 
 前述の貫通と防御力減少で防御係数を0にした場合、価値が0になるという特徴があります。
 
-![damage.png](/apps/article/asset/damage10.png)
+<img src="/apps/article/asset/damage10.png">
 
 一般的に、防御力減少効果を持つペルソナは風襲を必要とすることが多いです。
 
-![damage.png](/apps/article/asset/damage11.png)
-
-<br>
+<img src="/apps/article/asset/damage11.png">
 
 ### ⓒ 特徴
 
@@ -1219,14 +1209,15 @@ The following are the results assuming each summed value:
 
 代表的な例として、ディオニュソスはリベリオンで15.7%のCRT発生率と、パッシブを通じて30%のCRT倍率を上げることができるペルソナです。
 
-![damage.png](/apps/article/asset/damage12.png)
+<img src="/apps/article/asset/damage12.png">
 
 ボス区間では安定領域によってクリティカルは発生しませんが、期待値をもとにダメージを上げる形で計算されます。
 
 > CRT発生率 × (CRT倍率 - 100%)
+
 > 
 
-![damage.png](/apps/article/asset/damage13.png)
+<img src="/apps/article/asset/damage13.png">
 
 CRT発生率を10%上げた場合、CRT倍率は2倍の20%を上げる形が最も効率が良いです。
 
@@ -1236,14 +1227,14 @@ CRT発生率を10%上げた場合、CRT倍率は2倍の20%を上げる形が最�
 
 文字通りスキルに書かれている係数で、係数がそのまま乗算に作用するため、怪盗の強さを判断する重要な指標となります。
 
-![damage.png](/apps/article/asset/damage14.png)
+<img src="/apps/article/asset/damage14.png">
 
 特記事項として、ジョーカーの3スキルは追加ターンには25%、デバフがある敵を攻撃する時に25%のダメージが増加すると表現されています。
 
 これは既存の攻撃倍率+プールには入らず、スキル係数に作用すると言われています。スキルごとに基準は不明です。
 
-
 > 74.2 * (100% + 25% + 25%) = 111.3%
+
 > 
 
 ---
@@ -1253,10 +1244,12 @@ CRT発生率を10%上げた場合、CRT倍率は2倍の20%を上げる形が最�
 ペルソナシリーズには伝統的に弱点が本当に重要です。弱点による係数は以下の通りです：
 
 - 弱点：1.2倍
+
 - 通常：1.0倍
+
 - 耐性：0.5倍
 
-![damage.png](/apps/article/asset/damage15.png)
+<img src="/apps/article/asset/damage15.png">
 
 ---
 
@@ -1274,7 +1267,8 @@ CRT発生率を10%上げた場合、CRT倍率は2倍の20%を上げる形が最�
 
 # 計算例
 
-```markdown
+```
+markdown
 ⓐ {(怪盗攻撃力値 + 武器攻撃力値) × 攻撃力% + 攻撃力定数}
 
 × ⓑ {100% + 攻撃倍率+ + 属性攻撃倍率+ + 敵が受けるダメージ増加}
@@ -1293,36 +1287,52 @@ CRT発生率を10%上げた場合、CRT倍率は2倍の20%を上げる形が最�
 × ⓗ その他係数 
 
 × ⓘ ランダム範囲係数 (0.95~1.05)
-```
 
-<br>
+```
 
 以下は各値を合算した仮定の結果：
 
 - ⓐ 怪盗攻撃力値: 1200
+
 - ⓐ 武器攻撃力値: 600
+
 - ⓐ 攻撃力%: 50%
+
 - ⓐ 攻撃力定数: 500
+
 - ⓑ 攻撃倍率+: 50%
+
 - ⓑ 火炎ダメージ増加: 20%
+
 - ⓑ 敵が受けるダメージ増加: 20%
+
 - ⓒ ドミニオン防御力: 400
+
 - ⓒ ドミニオン追加防御係数: 158.3%
+
 - ⓒ 貫通: 10%
+
 - ⓒ 防御力減少: 80%
+
 - ⓒ 風襲状態異常: YES 12%
+
 - ⓓ CRT発生率: 40%
+
 - ⓓ CRT倍率: 220%
+
 - ⓔ スキル係数: 120%
+
 - ⓕ 弱点係数: 120% (弱点)
+
 - ⓖ 最終攻撃倍率+: 40%
 
 ```
+
 ⓐ {(1200+600) × 1.5 + 500}
 
 × ⓑ (100% + 50% + 20% + 20%)
 
-× ⓒ 1 - {400 × (258.3% * 0.9 - 80%) × 0.88} ÷ {400 × (258.3% * 0.9 - 80%) × 0.88 + 1400}
+× ⓒ 1 - {400 × (258.3%  0.9 - 80%) × 0.88} ÷ {400 × (258.3%  0.9 - 80%) × 0.88 + 1400}
 
 × ⓓ (100% + 40% × (220%-100%))
 
@@ -1337,8 +1347,7 @@ CRT発生率を10%上げた場合、CRT倍率は2倍の20%を上げる形が最�
 = ⓐ3200 × ⓑ1.9 ×  ⓒ0.7228 × ⓓ1.48 × ⓔ1.2 × ⓕ1.2 × ⓖ1.4 × ⓘ0.95~1.05
 
 = 12456 ~ 13768
+
 ```
 
-<br>
-
-</div> 
+</div>

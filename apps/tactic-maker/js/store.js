@@ -17,6 +17,9 @@ export class TacticStore {
                 order: 1, // Default order
                 weapon: "",
                 weaponRefinement: 0,
+                weaponMod: 6,
+                weaponStamp: 4,
+                weaponStampIndex: 0,
                 personas: [
                     { name: "", skills: ["", "", "", ""], memo: "" },
                     { name: "", skills: ["", "", "", ""], memo: "" },
@@ -896,20 +899,32 @@ export class TacticStore {
 
     loadData(data) {
         this._saveHistory();
-        // Validate and load data
+        // Validate and load data with defaults for new fields
+        const defaultWonder = {
+            order: 1,
+            weapon: '',
+            weaponRefinement: 0,
+            weaponMod: 6,
+            weaponStamp: 4,
+            weaponStampIndex: 0,
+            personas: [
+                { name: '', skills: ['', '', '', ''], memo: '' },
+                { name: '', skills: ['', '', '', ''], memo: '' },
+                { name: '', skills: ['', '', '', ''], memo: '' }
+            ]
+        };
+        const loadedWonder = data.wonder || {};
         this.state = {
             title: data.title || '',
             memo: data.memo || '',
             party: data.party || [null, null, null, null, null],
-            wonder: data.wonder || {
-                order: 1,
-                weapon: '',
-                weaponRefinement: 0,
-                personas: [
-                    { name: '', skills: ['', '', '', ''], memo: '' },
-                    { name: '', skills: ['', '', '', ''], memo: '' },
-                    { name: '', skills: ['', '', '', ''], memo: '' }
-                ]
+            wonder: {
+                ...defaultWonder,
+                ...loadedWonder,
+                // Ensure new fields have defaults if missing from loaded data
+                weaponMod: loadedWonder.weaponMod !== undefined ? loadedWonder.weaponMod : 6,
+                weaponStamp: loadedWonder.weaponStamp !== undefined ? loadedWonder.weaponStamp : 4,
+                weaponStampIndex: loadedWonder.weaponStampIndex !== undefined ? loadedWonder.weaponStampIndex : 0
             },
             turns: data.turns || [],
             needStatSelections: data.needStatSelections || {}
@@ -993,6 +1008,9 @@ export class TacticStore {
                 order: 1,
                 weapon: '',
                 weaponRefinement: 0,
+                weaponMod: 6,
+                weaponStamp: 4,
+                weaponStampIndex: 0,
                 personas: [
                     { name: '', skills: ['', '', '', ''], memo: '' },
                     { name: '', skills: ['', '', '', ''], memo: '' },

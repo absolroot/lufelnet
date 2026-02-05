@@ -388,3 +388,11 @@
 .character-images img[src*="준페이 - 헤르메스.webp"] {
     --char-scale: 1.17;
 }
+
+.character-images img[src*="나루미.webp"] {
+    --char-scale: 1.07;
+}
+
+.character-images img[src*="나루미 - 아스테로페.webp"] {
+    --char-scale: 1.12;
+}

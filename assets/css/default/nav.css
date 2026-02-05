@@ -138,7 +138,7 @@
 .nav-link span,
 .nav-main-item span {
     margin-left: 6px;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .nav-link:hover {
@@ -489,7 +489,7 @@
 
     /* 네비게이션 링크 - 고정 좌측 패딩 */
     .nav-link {
-        padding: 15px 12px 15px 26px !important;
+        padding: 12px 12px 12px 26px !important;
     }
 
     /* 네비게이션 아이콘 - 고정 크기, 고정 margin */
@@ -503,13 +503,13 @@
     /* 축소 상태: 활성화된 메뉴는 사각형 배경, 높이 동일하게 유지 */
     .nav-link.active {
         clip-path: none;
-        padding: 15px 12px 15px 26px !important;
+        padding: 12px 12px 12px 26px !important;
     }
 
     /* 확장 상태: 폴리곤 배경 복원 */
     .main-nav:hover .nav-link.active {
         clip-path: polygon(0% 2%, 99% 11%, 95% 95%, 4% 94%);
-        padding: 15px 24px !important;
+        padding: 12px 24px !important;
         animation: subtle-liquid 2s infinite linear;
     }
 
@@ -534,7 +534,7 @@
 
     /* 메인 메뉴 아이템 (서브메뉴 있는 경우) - 고정 좌측 패딩 */
     .nav-main-item {
-        padding: 15px 12px 15px 26px !important;
+        padding: 12px 12px 12px 26px !important;
     }
 
     .nav-main-item img {
@@ -827,7 +827,7 @@
 
     .main-nav.nav-pinned .nav-link.active {
         clip-path: polygon(0% 2%, 99% 11%, 95% 95%, 4% 94%);
-        padding: 15px 24px !important;
+        padding: 12px 24px !important;
     }
 
     .main-nav.nav-pinned .has-submenu.active .submenu {
@@ -1198,19 +1198,19 @@
 
 @media screen and (min-height: 960px) {
     .nav-link {
-        padding: 16px 24px;
+        padding: 12px 24px;
     }
 
     .nav-main-item {
-        padding: 16px 24px;
+        padding: 12px 24px;
     }
 
     .nav-item {
-        padding: 16px 24px;
+        padding: 12px 24px;
     }
 
     .nav-sub-item {
-        padding: 16px 24px 16px 48px;
+        padding: 12px 24px 12px 48px;
     }
 }
 

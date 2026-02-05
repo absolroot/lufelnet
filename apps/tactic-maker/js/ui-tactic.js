@@ -977,11 +977,11 @@ export class TacticUI {
 
         const lang = DataLoader.getCurrentLang();
 
-        // skillList order: 스킬1, 스킬2, 스킬3, HIGHLIGHT, 테우르기아, 총격, 근접, 방어, 공용스킬(header), ONE MORE, 아이템, 특수 스킬(action)
+        // skillList order: 스킬1, 스킬2, 스킬3, HIGHLIGHT, 테우르기아, 총격, 근접, 방어, 공용스킬(header), ONE MORE, 아이템, 특수 스킬(action), 지원 스킬
         const skillList = {
-            kr: ['스킬1', '스킬2', '스킬3', 'HIGHLIGHT', '테우르기아', '총격', '근접', '방어', '공용 스킬', 'ONE MORE', '아이템', '특수 스킬'],
-            en: ['Skill1', 'Skill2', 'Skill3', 'HIGHLIGHT', 'Theurgy', 'Gunshot', 'Melee', 'Defense', 'Common Skills', 'ONE MORE', 'Item', 'Special Skill'],
-            jp: ['スキル1', 'スキル2', 'スキル3', 'HIGHLIGHT', 'テウルギア', '銃撃', '近接攻撃', 'ガード', '共用スキル', '1more', 'アイテム', 'スペシャルスキル']
+            kr: ['스킬1', '스킬2', '스킬3', 'HIGHLIGHT', '테우르기아', '총격', '근접', '방어', '공용 스킬', 'ONE MORE', '아이템', '특수 스킬', '지원 스킬'],
+            en: ['Skill1', 'Skill2', 'Skill3', 'HIGHLIGHT', 'Theurgy', 'Gunshot', 'Melee', 'Defense', 'Common Skills', 'ONE MORE', 'Item', 'Special Skill', 'Support Skill'],
+            jp: ['スキル1', 'スキル2', 'スキル3', 'HIGHLIGHT', 'テウルギア', '銃撃', '近接攻撃', 'ガード', '共用スキル', '1more', 'アイテム', 'スペシャルスキル', 'サポートスキル']
         };
 
         const list = skillList[lang] || skillList.kr;
@@ -1081,6 +1081,7 @@ export class TacticUI {
                 options.push({ label: list[11], value: '특수 스킬' }); // 특수 스킬 action
                 if (isPersona3) {
                     options.push({ label: list[4], value: 'Theurgia', image: highlightIcon });
+                    options.push({ label: list[12], value: '지원 스킬' }); // 지원 스킬 (persona3 only)
                 } else {
                     options.push({ label: list[3], value: 'HIGHLIGHT', image: highlightIcon });
                 }
@@ -1190,12 +1191,24 @@ export class TacticUI {
                     const kind = btn.dataset.actionBtn;
                     if (kind === 'memo') {
                         // Toggle memo container visibility
+                        const isHidden = memoContainer.classList.contains('hidden');
                         memoContainer.classList.toggle('hidden');
-                        btn.classList.toggle('active', !memoContainer.classList.contains('hidden'));
-                        // Focus input when shown
-                        if (!memoContainer.classList.contains('hidden')) {
+                        btn.classList.toggle('active', isHidden);
+                        
+                        if (isHidden) {
+                            // Opening memo - focus input
                             const input = memoContainer.querySelector('.action-memo-inline');
                             if (input) input.focus();
+                        } else {
+                            // Closing memo - clear the memo value in store
+                            const input = memoContainer.querySelector('.action-memo-inline');
+                            if (input) {
+                                input.value = '';
+                                this.store.updateAction(turnIdx, colKey, actionIdx, {
+                                    ...action,
+                                    memo: ''
+                                });
+                            }
                         }
                         return;
                     }
@@ -1622,12 +1635,24 @@ export class TacticUI {
                 const kind = btn.dataset.actionBtn;
                 if (kind === 'memo') {
                     // Toggle memo container visibility
+                    const isHidden = memoContainer.classList.contains('hidden');
                     memoContainer.classList.toggle('hidden');
-                    btn.classList.toggle('active', !memoContainer.classList.contains('hidden'));
-                    // Focus input when shown
-                    if (!memoContainer.classList.contains('hidden')) {
+                    btn.classList.toggle('active', isHidden);
+                    
+                    if (isHidden) {
+                        // Opening memo - focus input
                         const input = memoContainer.querySelector('.action-memo-inline');
                         if (input) input.focus();
+                    } else {
+                        // Closing memo - clear the memo value in store
+                        const input = memoContainer.querySelector('.action-memo-inline');
+                        if (input) {
+                            input.value = '';
+                            this.store.updateAction(turnIdx, colKey, actionIdx, {
+                                ...action,
+                                memo: ''
+                            });
+                        }
                     }
                     return;
                 }
@@ -2066,9 +2091,9 @@ export class TacticUI {
 
         // Common action labels
         const actionLabels = {
-            kr: { highlight: 'HIGHLIGHT', oneMore: 'ONE MORE', gun: '총격', melee: '근접', guard: '방어', item: '아이템', theurgia: '테우르기아', special: '공용 스킬', common: '공통 액션' },
-            en: { highlight: 'HIGHLIGHT', oneMore: 'ONE MORE', gun: 'Gunshot', melee: 'Melee', guard: 'Defense', item: 'Item', theurgia: 'Theurgy', special: 'Common Skill', common: 'Common Actions' },
-            jp: { highlight: 'HIGHLIGHT', oneMore: '1more', gun: '銃撃', melee: '近接攻撃', guard: 'ガード', item: 'アイテム', theurgia: 'テウルギア', special: '共用スキル', common: '共通アクション' }
+            kr: { highlight: 'HIGHLIGHT', oneMore: 'ONE MORE', gun: '총격', melee: '근접', guard: '방어', item: '아이템', theurgia: '테우르기아', special: '공용 스킬', common: '공통 액션', support: '지원 스킬' },
+            en: { highlight: 'HIGHLIGHT', oneMore: 'ONE MORE', gun: 'Gunshot', melee: 'Melee', guard: 'Defense', item: 'Item', theurgia: 'Theurgy', special: 'Common Skill', common: 'Common Actions', support: 'Support Skill' },
+            jp: { highlight: 'HIGHLIGHT', oneMore: '1more', gun: '銃撃', melee: '近接攻撃', guard: 'ガード', item: 'アイテム', theurgia: 'テウルギア', special: '共用スキル', common: '共通アクション', support: 'サポートスキル' }
         };
 
         const skills = skillLabels[lang] || skillLabels.kr;
@@ -2164,7 +2189,10 @@ export class TacticUI {
 
             const commonActions = [
                 { label: actions.special, value: '특수 스킬' },
-                ...(isPersona3 ? [{ label: actions.theurgia, value: 'Theurgia' }] : [{ label: actions.highlight, value: 'HIGHLIGHT' }]),
+                ...(isPersona3 ? [
+                    { label: actions.theurgia, value: 'Theurgia' },
+                    { label: actions.support, value: '지원 스킬' }
+                ] : [{ label: actions.highlight, value: 'HIGHLIGHT' }]),
                 { label: actions.gun, value: '총격' },
                 { label: actions.melee, value: '근접' },
                 { label: actions.guard, value: '방어' },

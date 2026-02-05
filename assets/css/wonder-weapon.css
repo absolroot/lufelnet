@@ -676,13 +676,20 @@
     border-bottom: 1px solid #333;
 }
 
-.lightning-stamp-name { 
+.lightning-stamp-name {
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 16px; 
-    font-weight: 600; 
-    color: rgba(255,255,255,0.95); 
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.95);
+}
+
+.lightning-stamp-name .detail-section-icon {
+    width: auto;
+    height: 20px;
+    object-fit: contain;
+    flex-shrink: 0;
 }
 
 .lightning-stamp-icon { 

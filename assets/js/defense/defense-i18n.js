@@ -489,6 +489,64 @@
             document.querySelectorAll(`.defense-table thead ${selector}`).forEach(el => {
                 if (el && text != null) el.textContent = text;
             });
+        },
+
+        // 타입 번역 (심상코어, 스킬, 의식 등)
+        translateType(typeText){
+            const currentLang = this.getLang();
+            if (!typeText || currentLang === 'kr') return typeText;
+
+            const typeMap = {
+                en: {
+                    '심상코어': 'Mindscape Core',
+                    '스킬': 'Skill',
+                    '패시브': 'Passive',
+                    '하이라이트': 'Highlight',
+                    '전용무기': 'Weapon',
+                    '페르소나': 'Persona',
+                    '의식1': 'A1',
+                    '의식2': 'A2',
+                    '의식3': 'A3',
+                    '의식4': 'A4',
+                    '의식5': 'A5',
+                    '의식6': 'A6',
+                    '총격': 'Gun',
+                    '광역': 'AoE',
+                    '단일': 'Single'
+                },
+                jp: {
+                    '심상코어': 'イメジャリー・コア',
+                    '스킬': 'スキル',
+                    '패시브': 'パッシブ',
+                    '하이라이트': 'ハイライト',
+                    '전용무기': '専用武器',
+                    '페르소나': 'ペルソナ',
+                    '의식1': '意識1',
+                    '의식2': '意識2',
+                    '의식3': '意識3',
+                    '의식4': '意識4',
+                    '의식5': '意識5',
+                    '의식6': '意識6',
+                    '총격': '銃撃',
+                    '광역': '広域',
+                    '단일': '単体'
+                }
+            };
+
+            const langMap = typeMap[currentLang];
+            if (!langMap) return typeText;
+
+            // 정확히 매칭되는 경우
+            if (langMap[typeText]) return langMap[typeText];
+
+            // 부분 매칭 (예: "심상코어" 포함된 경우)
+            let result = typeText;
+            Object.keys(langMap).forEach(kr => {
+                if (result.includes(kr)) {
+                    result = result.replace(new RegExp(kr, 'g'), langMap[kr]);
+                }
+            });
+            return result;
         }
     };
 

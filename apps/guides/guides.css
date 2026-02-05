@@ -1,0 +1,808 @@
+/* ============================================
+   Guides - Editorial Documentation Style
+   Inspired by: Stripe Docs, Linear, Notion
+   ============================================ */
+
+:root {
+    /* Core Colors */
+    --guide-bg-primary: #0f0f0f;
+    --guide-bg-secondary: #161616;
+    --guide-bg-tertiary: #1c1c1c;
+    --guide-bg-elevated: #222222;
+
+    /* Border Colors */
+    --guide-border-subtle: #2a2a2a;
+    --guide-border-default: #333333;
+    --guide-border-strong: #404040;
+
+    /* Text Colors */
+    --guide-text-primary: #f5f5f5;
+    --guide-text-secondary: #a8a8a8;
+    --guide-text-tertiary: #6b6b6b;
+    --guide-text-muted: #4a4a4a;
+
+    /* Accent Colors */
+    --guide-accent-gold: #d4a853;
+    --guide-accent-gold-dim: rgba(212, 168, 83, 0.15);
+    --guide-accent-gold-glow: rgba(212, 168, 83, 0.08);
+    --guide-accent-blue: #5c9eff;
+    --guide-accent-blue-dim: rgba(92, 158, 255, 0.12);
+
+    /* Spacing Scale */
+    --guide-space-xs: 4px;
+    --guide-space-sm: 8px;
+    --guide-space-md: 16px;
+    --guide-space-lg: 24px;
+    --guide-space-xl: 32px;
+    --guide-space-2xl: 48px;
+    --guide-space-3xl: 64px;
+    --guide-space-4xl: 96px;
+
+    /* Typography Scale */
+    --guide-text-xs: 12px;
+    --guide-text-sm: 13px;
+    --guide-text-base: 15px;
+    --guide-text-lg: 17px;
+    --guide-text-xl: 20px;
+    --guide-text-2xl: 24px;
+    --guide-text-3xl: 30px;
+    --guide-text-4xl: 36px;
+
+    /* Effects */
+    --guide-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --guide-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --guide-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.4);
+    --guide-shadow-glow: 0 0 40px var(--guide-accent-gold-glow);
+
+    /* Transitions */
+    --guide-transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    --guide-transition-base: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    --guide-transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================
+   Page Header
+   ============================================ */
+
+.header-container {
+    margin-bottom: var(--guide-space-lg);
+    padding-bottom: var(--guide-space-lg);
+    border-bottom: 1px solid var(--guide-border-subtle);
+}
+
+.header-container h1 {
+    font-size: var(--guide-text-3xl);
+    font-weight: 600;
+    color: var(--guide-text-primary);
+    margin: 0;
+    letter-spacing: -0.02em;
+}
+
+/* ============================================
+   Guide List - Card Grid
+   ============================================ */
+
+.guides-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: var(--guide-space-lg) var(0);
+}
+
+.guides-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: var(--guide-space-lg);
+    margin-top: var(0);
+}
+
+/* Guide Card */
+.guide-card {
+    position: relative;
+    background: var(--guide-bg-secondary);
+    border: 1px solid var(--guide-border-subtle);
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    transition:
+        transform var(--guide-transition-base),
+        border-color var(--guide-transition-base),
+        box-shadow var(--guide-transition-base);
+}
+
+.guide-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        var(--guide-accent-gold-glow) 0%,
+        transparent 50%
+    );
+    opacity: 0;
+    transition: opacity var(--guide-transition-base);
+    pointer-events: none;
+}
+
+.guide-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--guide-border-default);
+    box-shadow: var(--guide-shadow-lg);
+}
+
+.guide-card:hover::before {
+    opacity: 1;
+}
+
+.guide-card-thumbnail {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    background: var(--guide-bg-primary);
+    border-bottom: 1px solid var(--guide-border-subtle);
+}
+
+.guide-card-content {
+    padding: var(--guide-space-lg);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.guide-card-category {
+    display: inline-flex;
+    align-items: center;
+    font-size: var(--guide-text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--guide-accent-gold);
+    background: var(--guide-accent-gold-dim);
+    padding: var(--guide-space-xs) var(--guide-space-sm);
+    border-radius: 4px;
+    margin-bottom: var(--guide-space-md);
+    width: fit-content;
+}
+
+.guide-card-title {
+    font-size: var(--guide-text-lg);
+    font-weight: 600;
+    color: var(--guide-text-primary);
+    margin-top: 0;
+    margin-bottom: var(--guide-space-sm);
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+}
+
+.guide-card-excerpt {
+    font-size: var(--guide-text-sm);
+    color: var(--guide-text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--guide-space-md);
+    flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.guide-card-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--guide-space-md);
+    font-size: var(--guide-text-xs);
+    color: var(--guide-text-tertiary);
+    padding-top: var(--guide-space-md);
+    border-top: 1px solid var(--guide-border-subtle);
+    margin-top: auto;
+}
+
+.guide-card-author {
+    display: flex;
+    align-items: center;
+    gap: var(--guide-space-xs);
+}
+
+.guide-card-author::before {
+    content: '';
+    width: 3px;
+    height: 3px;
+    background: var(--guide-text-muted);
+    border-radius: 50%;
+}
+
+/* ============================================
+   Guide View - Article Layout
+   ============================================ */
+
+.guide-view-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: var(--guide-space-lg) var(--guide-space-xl);
+    padding-bottom: var(--guide-space-4xl);
+}
+
+/* Back Button */
+.guide-back {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--guide-space-sm);
+    font-size: var(--guide-text-sm);
+    font-weight: 500;
+    color: var(--guide-text-secondary);
+    text-decoration: none;
+    margin-bottom: var(--guide-space-xl);
+    padding: var(--guide-space-sm) var(--guide-space-md);
+    background: var(--guide-bg-secondary);
+    border: 1px solid var(--guide-border-subtle);
+    border-radius: 8px;
+    transition: all var(--guide-transition-fast);
+}
+
+.guide-back:hover {
+    color: var(--guide-text-primary);
+    background: var(--guide-bg-tertiary);
+    border-color: var(--guide-border-default);
+}
+
+.guide-back svg {
+    width: 16px;
+    height: 16px;
+    transition: transform var(--guide-transition-fast);
+}
+
+.guide-back:hover svg {
+    transform: translateX(-2px);
+}
+
+/* Article Container */
+.guide-article {
+    background: var(--guide-bg-secondary);
+    border: 1px solid var(--guide-border-subtle);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+/* Guide Header */
+.guide-header {
+    padding: var(--guide-space-2xl) var(--guide-space-2xl) var(--guide-space-xl);
+    border-bottom: 1px solid var(--guide-border-subtle);
+    background: linear-gradient(
+        180deg,
+        var(--guide-bg-tertiary) 0%,
+        var(--guide-bg-secondary) 100%
+    );
+}
+
+.guide-category {
+    display: inline-flex;
+    align-items: center;
+    font-size: var(--guide-text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--guide-accent-gold);
+    background: var(--guide-accent-gold-dim);
+    padding: var(--guide-space-xs) var(--guide-space-md);
+    border-radius: 6px;
+    margin-bottom: var(--guide-space-md);
+}
+
+.guide-title {
+    font-size: var(--guide-text-4xl);
+    font-weight: 700;
+    color: var(--guide-text-primary);
+    line-height: 1.2;
+    margin-bottom: var(--guide-space-md);
+    letter-spacing: -0.025em;
+}
+
+.guide-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--guide-space-md);
+    font-size: var(--guide-text-sm);
+    color: var(--guide-text-tertiary);
+}
+
+.guide-meta-item {
+    display: flex;
+    align-items: center;
+    gap: var(--guide-space-xs);
+}
+
+.guide-meta-item:not(:last-child)::after {
+    content: '·';
+    margin-left: var(--guide-space-md);
+    color: var(--guide-text-muted);
+}
+
+.guide-thumbnail {
+    width: 100%;
+    margin-top: var(--guide-space-xl);
+    border-radius: 12px;
+    border: 1px solid var(--guide-border-subtle);
+}
+
+/* ============================================
+   Guide Content - Typography System
+   ============================================ */
+
+.guide-content {
+    padding: var(--guide-space-2xl);
+    font-size: var(--guide-text-base);
+    line-height: 1.75;
+    color: var(--guide-text-secondary);
+}
+
+/* Headings with anchor-style indicator */
+.guide-content h1,
+.guide-content h2,
+.guide-content h3,
+.guide-content h4 {
+    position: relative;
+    color: var(--guide-text-primary);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+.guide-content h1 {
+    font-size: var(--guide-text-2xl);
+    margin: var(--guide-space-3xl) 0 var(--guide-space-lg);
+    padding-bottom: var(--guide-space-md);
+    border-bottom: 2px solid var(--guide-accent-gold);
+}
+
+.guide-content h2 {
+    font-size: var(--guide-text-xl);
+    margin: var(--guide-space-2xl) 0 var(--guide-space-md);
+    padding-bottom: var(--guide-space-sm);
+    border-bottom: 1px solid var(--guide-border-subtle);
+}
+
+.guide-content h3 {
+    font-size: var(--guide-text-lg);
+    margin: var(--guide-space-xl) 0 var(--guide-space-md);
+    color: var(--guide-accent-gold);
+}
+
+.guide-content h4 {
+    font-size: var(--guide-text-base);
+    margin: var(--guide-space-lg) 0 var(--guide-space-sm);
+}
+
+.guide-content > h1:first-child,
+.guide-content > h2:first-child,
+.guide-content > h3:first-child,
+.guide-content > h4:first-child {
+    margin-top: 0;
+}
+
+/* Paragraphs */
+.guide-content p {
+    margin: 0 0 var(--guide-space-lg);
+}
+
+.guide-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* Links */
+.guide-content a {
+    color: var(--guide-accent-blue);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all var(--guide-transition-fast);
+}
+
+.guide-content a:hover {
+    border-bottom-color: var(--guide-accent-blue);
+}
+
+/* Text Emphasis */
+.guide-content strong,
+.guide-content b {
+    font-weight: 600;
+    color: var(--guide-text-primary);
+}
+
+.guide-content em,
+.guide-content i {
+    font-style: italic;
+}
+
+/* Lists */
+.guide-content ul,
+.guide-content ol {
+    margin: 0 0 var(--guide-space-lg);
+    padding-left: var(--guide-space-lg);
+}
+
+.guide-content li {
+    margin: var(--guide-space-sm) 0;
+    line-height: 1.7;
+    padding-left: var(--guide-space-sm);
+}
+
+.guide-content li::marker {
+    color: var(--guide-text-muted);
+}
+
+.guide-content ul li::marker {
+    content: '—  ';
+    font-weight: 500;
+}
+
+.guide-content ul ul,
+.guide-content ol ol,
+.guide-content ul ol,
+.guide-content ol ul {
+    margin: var(--guide-space-sm) 0;
+}
+
+/* Blockquotes */
+.guide-content blockquote {
+    position: relative;
+    margin: var(--guide-space-xl) 0;
+    padding: var(--guide-space-lg) var(--guide-space-xl);
+    background: var(--guide-bg-tertiary);
+    border-left: 3px solid var(--guide-accent-gold);
+    border-radius: 0 8px 8px 0;
+    color: var(--guide-text-secondary);
+    font-style: italic;
+}
+
+.guide-content blockquote::before {
+    content: '"';
+    position: absolute;
+    top: -8px;
+    left: 16px;
+    font-size: 48px;
+    font-family: Georgia, serif;
+    color: var(--guide-accent-gold-dim);
+    line-height: 1;
+}
+
+.guide-content blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+/* Code */
+.guide-content code {
+    font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', Consolas, monospace;
+    font-size: 0.875em;
+    padding: 2px 6px;
+    background: var(--guide-bg-tertiary);
+    border: 1px solid var(--guide-border-subtle);
+    border-radius: 4px;
+    color: #e8b865;
+}
+
+.guide-content pre {
+    margin: var(--guide-space-xl) 0;
+    padding: var(--guide-space-lg);
+    background: var(--guide-bg-primary);
+    border: 1px solid var(--guide-border-subtle);
+    border-radius: 10px;
+    overflow-x: auto;
+}
+
+.guide-content pre code {
+    padding: 0;
+    background: none;
+    border: none;
+    font-size: var(--guide-text-sm);
+    line-height: 1.7;
+    color: var(--guide-text-secondary);
+}
+
+/* Horizontal Rule */
+.guide-content hr {
+    margin: var(--guide-space-2xl) 0;
+    border: none;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--guide-border-default) 20%,
+        var(--guide-border-default) 80%,
+        transparent
+    );
+}
+
+/* Images */
+.guide-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: var(--guide-space-lg) 0;
+}
+
+.guide-content p > img:only-child {
+    display: block;
+    margin: var(--guide-space-xl) auto;
+}
+
+/* ============================================
+   Tables - Clean Data Display
+   ============================================ */
+
+.guide-content table {
+    width: 100%;
+    margin: var(--guide-space-xl) 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: var(--guide-text-sm);
+    background: var(--guide-bg-tertiary);
+    border: 1px solid var(--guide-border-subtle);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.guide-content thead {
+    background: var(--guide-bg-elevated);
+}
+
+.guide-content th {
+    padding: var(--guide-space-md) var(--guide-space-lg);
+    text-align: left;
+    font-weight: 600;
+    font-size: var(--guide-text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--guide-text-secondary);
+    border-bottom: 1px solid var(--guide-border-default);
+}
+
+.guide-content td {
+    padding: var(--guide-space-md) var(--guide-space-lg);
+    border-bottom: 1px solid var(--guide-border-subtle);
+    color: var(--guide-text-secondary);
+    vertical-align: middle;
+}
+
+.guide-content tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.guide-content tbody tr {
+    transition: background var(--guide-transition-fast);
+}
+
+.guide-content tbody tr:hover {
+    background: var(--guide-bg-elevated);
+}
+
+/* Table images */
+.guide-content td img {
+    max-height: 36px;
+    width: auto;
+    margin: 0;
+    vertical-align: middle;
+    border-radius: 4px;
+}
+
+/* Table alignment */
+.guide-content th[align="center"],
+.guide-content td[align="center"] {
+    text-align: center;
+}
+
+.guide-content th[align="right"],
+.guide-content td[align="right"] {
+    text-align: right;
+}
+
+/* ============================================
+   Callout Boxes
+   ============================================ */
+
+.guide-content .note,
+.guide-content .tip,
+.guide-content .info-box {
+    position: relative;
+    margin: var(--guide-space-xl) 0;
+    padding: var(--guide-space-lg) var(--guide-space-xl);
+    background: var(--guide-accent-blue-dim);
+    border: 1px solid rgba(92, 158, 255, 0.2);
+    border-radius: 10px;
+    color: var(--guide-text-secondary);
+}
+
+.guide-content .note::before,
+.guide-content .tip::before {
+    content: 'Note';
+    display: block;
+    font-size: var(--guide-text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--guide-accent-blue);
+    margin-bottom: var(--guide-space-sm);
+}
+
+.guide-content .tip::before {
+    content: 'Tip';
+}
+
+.guide-content .warning {
+    background: rgba(255, 180, 92, 0.1);
+    border-color: rgba(255, 180, 92, 0.2);
+}
+
+.guide-content .warning::before {
+    content: 'Warning';
+    color: #ffb45c;
+}
+
+/* ============================================
+   Empty & Loading States
+   ============================================ */
+
+.guides-empty,
+.guides-loading {
+    text-align: center;
+    padding: var(--guide-space-4xl) var(--guide-space-xl);
+    background: var(--guide-bg-secondary);
+    border: 1px solid var(--guide-border-subtle);
+    border-radius: 16px;
+}
+
+.guides-empty-icon {
+    font-size: 56px;
+    margin-bottom: var(--guide-space-lg);
+    opacity: 0.3;
+}
+
+.guides-empty-text {
+    font-size: var(--guide-text-base);
+    color: var(--guide-text-tertiary);
+}
+
+.guides-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--guide-space-md);
+    color: var(--guide-text-tertiary);
+}
+
+.guides-loading::after {
+    content: '';
+    width: 32px;
+    height: 32px;
+    border: 2px solid var(--guide-border-subtle);
+    border-top-color: var(--guide-accent-gold);
+    border-radius: 50%;
+    animation: guidesSpin 0.8s linear infinite;
+}
+
+@keyframes guidesSpin {
+    to { transform: rotate(360deg); }
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+
+@media (max-width: 1024px) {
+    .guides-container {
+        padding: var(--guide-space-md);
+    }
+
+    .guide-view-container {
+        max-width: 100%;
+        padding: var(--guide-space-md);
+    }
+
+    .guide-header {
+        padding: var(--guide-space-xl);
+    }
+
+    .guide-content {
+        padding: var(--guide-space-xl);
+    }
+}
+
+@media (max-width: 768px) {
+    .guides-grid {
+        grid-template-columns: 1fr;
+        gap: var(--guide-space-md);
+    }
+
+    .guide-card-content {
+        padding: var(--guide-space-md);
+    }
+
+    .guide-article {
+        border-radius: 12px;
+    }
+
+    .guide-header {
+        padding: var(--guide-space-lg);
+    }
+
+    .guide-title {
+        font-size: var(--guide-text-2xl);
+    }
+
+    .guide-content {
+        padding: var(--guide-space-lg);
+        font-size: var(--guide-text-sm);
+    }
+
+    .guide-content h1 {
+        font-size: var(--guide-text-xl);
+        margin: var(--guide-space-2xl) 0 var(--guide-space-md);
+    }
+
+    .guide-content h2 {
+        font-size: var(--guide-text-lg);
+        margin: var(--guide-space-xl) 0 var(--guide-space-md);
+    }
+
+    .guide-content h3 {
+        font-size: var(--guide-text-base);
+        margin: var(--guide-space-lg) 0 var(--guide-space-sm);
+    }
+
+    .guide-content table {
+        font-size: var(--guide-text-xs);
+    }
+
+    .guide-content th,
+    .guide-content td {
+        padding: var(--guide-space-sm) var(--guide-space-md);
+    }
+
+    .guide-content td img {
+        max-height: 28px;
+    }
+}
+
+@media (max-width: 600px) {
+    .guide-content table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .guide-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--guide-space-sm);
+    }
+
+    .guide-meta-item:not(:last-child)::after {
+        display: none;
+    }
+}
+
+/* ============================================
+   Print Styles
+   ============================================ */
+
+@media print {
+    .guide-back {
+        display: none;
+    }
+
+    .guide-article {
+        background: white;
+        border: none;
+        box-shadow: none;
+    }
+
+    .guide-content {
+        color: #333;
+    }
+
+    .guide-content a {
+        color: #333;
+        text-decoration: underline;
+    }
+}

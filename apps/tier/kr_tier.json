@@ -6,19 +6,17 @@
       "지배": [
         {
           "name": "쇼키·암야"
-        },
-        {
-          "name": "미유·여름"
         }
       ],
-      "반항": [
-        {
-          "name": "YUI·스텔라"
-        }
-      ],
+      "반항": [],
       "우월": [
         {
           "name": "미나미·여름"
+        },
+        {
+          "name": "J&C",
+          "Awareness": 1,
+          "core": true
         }
       ],
       "굴복": [],
@@ -37,16 +35,17 @@
     "positions": {
       "지배": [
         {
-          "name": "사나다"
+          "name": "미유·여름"
         },
         {
-          "name": "야오링·사자무"
+          "name": "야오링·사자무",
+          "core": true
+        },
+        {
+          "name": "사나다"
         }
       ],
       "반항": [
-        {
-          "name": "이치고"
-        },
         {
           "name": "유키 마코토"
         },
@@ -54,8 +53,10 @@
           "name": "미츠루"
         },
         {
-          "name": "J&C",
-          "Awareness": 1
+          "name": "이치고"
+        },
+        {
+          "name": "YUI·스텔라"
         }
       ],
       "우월": [
@@ -65,10 +66,6 @@
         },
         {
           "name": "마유미"
-        },
-        {
-          "name": "J&C",
-          "Awareness": 1
         }
       ],
       "굴복": [
@@ -87,7 +84,8 @@
       "구원": [
         {
           "name": "J&C",
-          "Awareness": 1
+          "Awareness": 1,
+          "core": true
         },
         {
           "name": "유카리"
@@ -106,27 +104,32 @@
     "positions": {
       "지배": [
         {
-          "name": "하루"
+          "name": "J&C",
+          "Awareness": 1,
+          "core": true
         },
         {
           "name": "아케치",
           "Awareness": 6
         },
         {
-          "name": "J&C",
-          "Awareness": 1
+          "name": "렌",
+          "core": true
         }
       ],
       "반항": [
         {
-          "name": "카스미"
-        },
-        {
-          "name": "몽타뉴·백조"
+          "name": "J&C",
+          "Awareness": 1,
+          "core": true
         },
         {
           "name": "YUI",
-          "Awareness": 6
+          "Awareness": 6,
+          "core": true
+        },
+        {
+          "name": "카스미"
         }
       ],
       "우월": [
@@ -146,17 +149,15 @@
         },
         {
           "name": "J&C",
-          "Awareness": 1
+          "Awareness": 1,
+          "core": true
         }
       ],
       "구원": [
         {
-          "name": "미나미",
-          "Awareness": 1
-        },
-        {
           "name": "토모코·여름",
-          "Awareness": 1
+          "Awareness": 1,
+          "core": true
         }
       ],
       "해명": [
@@ -172,18 +173,16 @@
     "positions": {
       "지배": [
         {
-          "name": "렌"
+          "name": "하루"
         }
       ],
       "반항": [
         {
-          "name": "마코토"
+          "name": "몽타뉴·백조"
         },
         {
-          "name": "키라"
-        },
-        {
-          "name": "YUI"
+          "name": "YUI",
+          "core": true
         }
       ],
       "우월": [
@@ -198,10 +197,16 @@
         }
       ],
       "방위": [],
-      "구원": [],
+      "구원": [
+        {
+          "name": "미나미",
+          "Awareness": 1
+        }
+      ],
       "해명": [
         {
-          "name": "유우미"
+          "name": "유우미",
+          "core": true
         }
       ]
     }
@@ -212,48 +217,41 @@
     "positions": {
       "지배": [
         {
-          "name": "안"
-        },
-        {
           "name": "아케치"
         },
         {
-          "name": "모토하·여름"
+          "name": "안"
         },
         {
-          "name": "유스케"
+          "name": "모토하·여름"
         }
       ],
       "반항": [
         {
-          "name": "류지"
+          "name": "마코토"
+        },
+        {
+          "name": "키라"
         }
       ],
       "우월": [
         {
           "name": "쇼키",
           "Awareness": 6
-        },
-        {
-          "name": "하루나"
         }
       ],
       "굴복": [
         {
           "name": "J&C",
-          "Awareness": 1
+          "Awareness": 1,
+          "core": true
         },
         {
           "name": "치즈코",
           "Awareness": 6
         }
       ],
-      "방위": [
-        {
-          "name": "슌",
-          "Awareness": 6
-        }
-      ],
+      "방위": [],
       "구원": [],
       "해명": [
         {
@@ -269,10 +267,16 @@
     "positions": {
       "지배": [
         {
+          "name": "유스케"
+        },
+        {
           "name": "모토하"
         }
       ],
       "반항": [
+        {
+          "name": "류지"
+        },
         {
           "name": "토시야"
         },
@@ -284,6 +288,9 @@
         }
       ],
       "우월": [
+        {
+          "name": "하루나"
+        },
         {
           "name": "토모코"
         }
@@ -297,6 +304,9 @@
         }
       ],
       "방위": [
+        {
+          "name": "슌"
+        },
         {
           "name": "유키미"
         }

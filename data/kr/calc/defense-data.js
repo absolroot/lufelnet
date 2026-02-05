@@ -253,6 +253,21 @@ const penetrateData = {
             note: ""
         }
     ],
+    "유우미":[
+        {
+            id: "yuumi1",
+            type: "심상코어",
+            target: "광역",
+            skillIcon: `${BASE_URL}/assets/img/character-detail/innate/core.png`,
+            skillName: "타기",
+            options: ["LV1:2","LV2:2","LV3:2","LV1:3","LV2:3","LV3:3"],
+            values: [4.0, 6.0, 8.0, 10.0, 15.0, 20.0],
+            defaultOption: "LV3:3",
+            value: 20.0,
+            duration: "-",
+            note: ""
+        }
+    ],
     "치즈코":[
         {
             id: "chizko1",
@@ -770,7 +785,7 @@ const defenseCalcData = {
             type: "스킬1",
             target: "광역",
             skillIcon: `${BASE_URL}/assets/img/skill-element/화염.png`,
-            skillName: "스킬1",
+            skillName: "황천격",
             options: ["LV10","LV10+심상5","LV13","LV13+심상5"],
             values: {
                 "LV10": 39.0,
@@ -790,7 +805,7 @@ const defenseCalcData = {
             type: "스킬2",
             target: "단일",
             skillIcon: `${BASE_URL}/assets/img/skill-element/물리.png`,
-            skillName: "스킬2",
+            skillName: "익파격",
             options: ["LV10","LV10+심상5","LV13","LV13+심상5"],
             values: {
                 "LV10": 39.0,

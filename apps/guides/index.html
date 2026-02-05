@@ -1,0 +1,41 @@
+---
+layout: default
+custom_css: []
+custom_js: []
+permalink: /guides/
+language: kr
+title: 가이드 - 페르소나5 더 팬텀 X 루페르넷
+description: 페르소나5 더 팬텀 X 공략 가이드
+---
+
+<head>
+    <link rel="stylesheet" href="/apps/guides/guides.css">
+    <script src="/apps/guides/guides.js"></script>
+</head>
+
+<!-- main contents -->
+<div class="main-wrapper">
+    <!-- navigation path -->
+    <div class="navigation-path">
+        <script>document.write(`<a href="/?v=${APP_VERSION}">홈</a>`);</script>
+        <span class="separator">/</span>
+        <span class="current-page" data-kr="가이드" data-en="Guides" data-jp="ガイド">가이드</span>
+    </div>
+
+    <div class="header-container">
+        <h1 data-kr="가이드" data-en="Guides" data-jp="ガイド">가이드</h1>
+    </div>
+
+    <!-- Guides List Container -->
+    <div class="guides-container" id="guides-container">
+        <div class="guides-loading">Loading guides</div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    Navigation.load('article');
+    VersionChecker.check();
+    Guides.loadList();
+});
+</script>

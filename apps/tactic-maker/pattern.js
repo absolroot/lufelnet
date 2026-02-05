@@ -1,5 +1,29 @@
 // 캐릭터별 의식 레벨에 따른 행동 패턴 정의
 const ritualPatterns = {
+    "나루미": [
+        {
+            level: "0-5",  
+            pattern: [
+                [{ order: 1, type: "스킬1" }],
+                [{ order: 1, type: "스킬2" },{ order: 1, type: "스킬3" }],
+                [{ order: 1, type: "스킬1" }],
+                [{ order: 1, type: "스킬2" },{ order: 1, type: "스킬3" }],
+                [{ order: 1, type: "스킬1" }],
+                [{ order: 1, type: "스킬2" },{ order: 1, type: "스킬3" }],
+            ]
+        },
+        {
+            level: "6",  
+            pattern: [
+                [{ order: 1, type: "스킬1" }],
+                [{ order: 1, type: "스킬2" },{ order: 1, type: "스킬3" },{ order: 1, type: "스킬3" }],
+                [{ order: 1, type: "스킬1" }],
+                [{ order: 1, type: "스킬2" },{ order: 1, type: "스킬3" },{ order: 1, type: "스킬3" }],
+                [{ order: 1, type: "스킬1" }],
+                [{ order: 1, type: "스킬2" },{ order: 1, type: "스킬3" },{ order: 1, type: "스킬3" }],
+            ]
+        }
+    ],
     "준페이": [
         {
         level: "0-6",  
@@ -862,43 +886,16 @@ const ritualPatterns = {
         ]
         }
     ],
-    // Elucidator Characters (해명 괴도)
     "후카": [
         {
         level: "0-6",  
         pattern: [
             [{ type: "스킬1" }],
-            [{ type: "스킬2" }],
+            [{ type: "스킬3" }],
             [{ type: "스킬1" }],
-            [{ type: "스킬2" }],
+            [{ type: "스킬3" }],
             [{ type: "스킬1" }],
-            [{ type: "스킬2" }]
-        ]
-        }
-    ],
-    "마키": [
-        {
-        level: "0-6",  
-        pattern: [
-            [{ type: "스킬1" }],
-            [{ type: "스킬2" }],
-            [{ type: "스킬1" }],
-            [{ type: "스킬2" }],
-            [{ type: "스킬1" }],
-            [{ type: "스킬2" }]
-        ]
-        }
-    ],
-    "에리코": [
-        {
-        level: "0-6",  
-        pattern: [
-            [{ type: "스킬1" }],
-            [{ type: "스킬2" }],
-            [{ type: "스킬1" }],
-            [{ type: "스킬2" }],
-            [{ type: "스킬1" }],
-            [{ type: "스킬2" }]
+            [{ type: "스킬3" }]
         ]
         }
     ]

@@ -687,7 +687,7 @@
       html += `
         <div class="detail-section">
           <h3 class="detail-section-title collapsible">
-            <span>${lightningStampTitle} <img src="${BASE_URL}/assets/img/wonder-weapon/lightning_stamp.png" alt="Lightning Stamp" class="detail-section-icon" loading="lazy"></span>
+            <span>${lightningStampTitle}</span>
             ${chevronSvg}
           </h3>
           <div class="section-content">
@@ -706,17 +706,24 @@
             (lang === 'jp' && stamp.effect_jp) ? stamp.effect_jp :
               stamp.effect || '';
 
+        // 각 stamp의 stamp_icon 사용 (없으면 기본값)
+        const stampIconImg = stamp.stamp_icon ? stamp.stamp_icon : 'weaponEngraving-icon-1.png';
+        const stampIconPath = stamp.stamp_icon ? `${BASE_URL}/assets/img/wonder-weapon/${stampIconImg}` : `${BASE_URL}/assets/img/character-weapon/${stampIconImg}`;
+
+        // 각 stamp의 stamp_img 사용
+        const stampImgHtml = stamp.stamp_img ? `<img src="${BASE_URL}/assets/img/wonder-weapon/${stamp.stamp_img}" alt="${stampName}" class="detail-section-icon" loading="lazy">` : '';
+
         html += `
           <div class="lightning-stamp-block" data-stamp-index="${stampIndex}">
             <div class="lightning-stamp-header">
-              <div class="lightning-stamp-name">${stampName}</div>
+              <div class="lightning-stamp-name">${stampName}${stampImgHtml}</div>
             </div>
             <div class="levels-controls" data-stamp-index="${stampIndex}">
         `;
 
         const romanNumerals = ['Ⅰ', 'Ⅱ', 'Ⅲ', 'Ⅳ'];
         for (let i = 0; i < 4; i++) {
-          html += `<button type="button" class="level-btn ${i === 3 ? 'active' : ''}" data-level="${i}" data-stamp-index="${stampIndex}" aria-pressed="${i === 3 ? 'true' : 'false'}"><img src="${BASE_URL}/assets/img/character-weapon/weaponEngraving-icon-1.png" alt="${i + 1}" class="level-btn-icon" loading="lazy"><span class="level-btn-roman">${romanNumerals[i]}</span></button>`;
+          html += `<button type="button" class="level-btn ${i === 3 ? 'active' : ''}" data-level="${i}" data-stamp-index="${stampIndex}" aria-pressed="${i === 3 ? 'true' : 'false'}"><img src="${stampIconPath}" alt="${i + 1}" class="level-btn-icon" loading="lazy"><span class="level-btn-roman">${romanNumerals[i]}</span></button>`;
         }
 
         html += `

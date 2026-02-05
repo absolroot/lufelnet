@@ -174,7 +174,12 @@ class DefenseCalc {
         const lang = this.getCurrentLang();
         if (!text || lang === 'kr') return text || '';
         // 의식3 -> 의식2 보정
-        return String(text).replace(/의식\s*3/g, '의식2');
+        let result = String(text).replace(/의식\s*3/g, '의식2');
+        // DefenseI18N 타입 번역 적용
+        if (typeof DefenseI18N !== 'undefined' && DefenseI18N.translateType) {
+            result = DefenseI18N.translateType(result);
+        }
+        return result;
     }
 
     transformIconSrcForLang(src) {

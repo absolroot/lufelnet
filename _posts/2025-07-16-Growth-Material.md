@@ -434,6 +434,48 @@ img_md:
 | --- | --- | --- | --- | --- | --- |
 | 110 |135 | 165 | 200 | 240 | 280 |
 
+---
+
+## How to get limited materials
+
+### SOS
+
+**Venus Bottles**
+
+| ★ Rank | TW | Global |
++--------+----+--------+
+|   4★   | 12 |    8   |
++--------+----+--------+
+|   5★   | 18 |   12   |
++--------+----+--------+
+|   6★   | 24 |   16   |
++--------+----+--------+
+|   7★   | 33 |   22   |
++--------+----+--------+
+|   8★   | 45 |   30   |
++--------+----+--------+
+
+### Exchange Shop
+
+**Cognigems**
+- Everlasting Incense x2 (patch - TW) (monthly - global)
+
+**Companio (Carpe Diem)**
+- 4★ Space Random x4 (monthly)
+
+**Velvet Shop**
+- Everlasting Incense x2 (monthly)
+
+
+### Astrolabe
+- 5 Venus Gems (in Global) [monthly]
+- ? Venus Gems (TW)
+
+
+### Nightmare Gateway
+- 600 Joy Medals (TW), 0 (Global) 
+- 3 Random Space Cards (TW), 2 Random Space (Global)
+
 </div>
 
 <div class="content-jp" markdown="1">
@@ -579,6 +621,7 @@ img_md:
 | --- | --- | 
 | 6 | 15 |
 
+
 <img src="/apps/article/asset/growth_material/item-302011.png" style="vertical-align: middle; height: 24px; width: auto; margin: 0px 0px;">
 
 | LV 1 | LV 2 | LV 3 |
@@ -600,6 +643,50 @@ img_md:
 | LV 07 | LV 08 | LV 09 | LV 10 | LV 11 | LV 12 |
 | --- | --- | --- | --- | --- | --- |
 | 110 |135 | 165 | 200 | 240 | 280 |
+
+
+---
+
+## How to get limited materials
+
+### SOS
+
+**Venus Bottles**
+
+| ★ Rank | TW | Global |
++--------+----+--------+
+|   4★   | 12 |    8   |
++--------+----+--------+
+|   5★   | 18 |   12   |
++--------+----+--------+
+|   6★   | 24 |   16   |
++--------+----+--------+
+|   7★   | 33 |   22   |
++--------+----+--------+
+|   8★   | 45 |   30   |
++--------+----+--------+
+
+### Exchange Shop
+
+**Cognigems**
+- Everlasting Incense x2 (patch - TW) (monthly - global)
+
+**Companio (Carpe Diem)**
+- 4★ Space Random x4 (monthly)
+
+**Velvet Shop**
+- Everlasting Incense x2 (monthly)
+
+
+### Astrolabe
+- 5 Venus Gems (in Global) [monthly]
+- ? Venus Gems (TW)
+
+
+### Nightmare Gateway
+- 600 Joy Medals (TW), 0 (Global) 
+- 3 Random Space Cards (TW), 2 Random Space (Global)
+
 
 </div>
 </div>

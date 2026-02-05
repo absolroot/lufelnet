@@ -223,6 +223,20 @@ window.matchWeapons = {
     effect: "공격력이 28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/56.0% 증가한다.\n빛의 고리 『성반만상』: 원더의 『부연』 중첩 수에 따라 다음 효과가 활성화된다.\n5중첩: 모든 적 방어력 11.0%/14.7%/14.7%/18.3%/18.3%/22.0%/22.0% 감소\n10중첩: 모든 괴도 효과 명중 9.0%/12.0%/12.0%/15.0%/15.0%/18.0%/18.0% 증가\n15중첩: 모든 괴도의 염동 대미지 11.0%/14.7%/14.7%/18.3%/18.3%/22.0%/22.0% 증가\n전투가 시작되면 『부연』 10중첩을 획득하고, 적에게 대미지를 줄 때마다 원더가 『부연』을 1중첩 획득한다. 원더 턴 종료 시 『부연』 5중첩을 소모한다.",
     effect_en: "Increase Attack by 28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/56.0%.\nAura - Universal Astrolabe: Gain the following effects based on number of stacks of Guidance.\n5 stacks: Decrease all foes' Defense by 11.0%/14.7%/14.7%/18.3%/18.3%/22.0%/22.0%.\n10 stacks: Increase party's ailment accuracy by 9.0%/12.0%/12.0%/15.0%/15.0%/18.0%/18.0%.\n15 stacks: Increase party's Psychokinesis damage by 6.0%/8.0%/8.0%/10.0%/10.0%/12.0%/12.0%.\nAt the start of battle, gain 10 Guidance stacks, and each time damage is dealt to a foe, gain 1 stack. At the end of user's turn, lose 5 Guidance stacks.",
     effect_jp: "攻撃力が28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/56.0%上昇する。\nオーラ『万象の星盤』：『導き』の数に応じて以下の効果を付与する。\n「５：敵全体の防御力を11.0%/14.7%/14.7%/18.3%/18.3%/22.0%/22.0%低下」\n「１０：味方全体の状態異常命中が9.0%/12.0%/12.0%/15.0%/15.0%/18.0%/18.0%上昇」\n「１５：味方全体の念動属性の与ダメージが6.0%/8.0%/8.0%/10.0%/10.0%/12.0%/12.0%上昇」。\n戦闘開始時、『導き』を１０個獲得し、敵にダメージを与えるごとに『導き』を１つ獲得する。自身のターン終了時に『導き』を５つ消費する。",
+    lightning_stamp: [
+      {
+        order: 2,
+        name: "현혹된 마음",
+        name_en: "Corrupting Glow",
+        name_jp: "荧惑蝕心",
+        stamp_img: "item-datu-302932.png",
+        stamp_icon: "weaponEngraving-icon-2.png",
+        effect: "빛의 고리 『성반만상』이 아군 전체의 공격력을 추가로 2.5%/5.0%/7.5%/10.0% 증가시킨다. 적이 대미지를 입을 때마다 원더가 『부연』을 추가로 1중첩 획득하며, 원더의 턴 종료 시 더 이상 『부연』 중첩을 소모하지 않는다.\n임의의 동료가 추가 턴을 획득할 때 해당 동료에게 2턴 동안 지속되는 『사고 초과』을 부여한다.\n『사고 초과』: 염동 속성 대미지가 4.0%/8.0%/12.0%/16.0% 증가하고, 염동 속성 대미지를 줄 때 크리티컬 효과가 2.5%/5.0%/7.5%/10.0% 증가한다.",
+        effect_en: "Aura [Universal Astrolabe] additionally increases the Attack of all allies by 2.5%/5.0%/7.5%/10.0%. Each time an enemy takes damage, WONDER gains 1 additional stack of [Guidance], and WONDER no longer consumes [Guidance] stacks at the end of their turn.\nWhen any ally enters an extra turn, grant them [Mind Overclock] for 2 turns.\n[Mind Overclock]: Psychokinesis damage +4.0%/8.0%/12.0%/16.0%. When dealing Psychokinesis damage, Critical Damage +2.5%/5.0%/7.5%/10.0%.",
+        effect_jp: "オーラ『万象の星盤』により、味方全体の攻撃力がさらに2.5%/5.0%/7.5%/10.0%上昇する。敵がダメージを受けるたびに、ワンダーは『導き』をさらに1スタック獲得し、自身のターン終了時に『導き』を消費しなくなる。\n味方が追加ターンを獲得した時、その味方に2ターン持続する『思考オーバークロック』を付与する。\n『思考オーバークロック』：念動属性ダメージが4.0%/8.0%/12.0%/16.0%上昇し、念動属性ダメージを与えた時のクリティカル倍率が2.5%/5.0%/7.5%/10.0%上昇する。",
+        release: "나루미",
+      }
+    ],
     shard: [
       {
         desc: "교환 - 운명의 섬 {item-huobi-49.png} 800",
@@ -265,6 +279,8 @@ window.matchWeapons = {
         name: "천명의 위엄",
         name_en: "Divine Might",
         name_jp: "天命の威光",
+        stamp_img: "item-datu-302931.png",
+        stamp_icon: "weaponEngraving-icon-1.png",
         effect: "임의 동료가 HP를 소모하여 스킬을 발동할 때, 해당 동료가 2턴 동안 지속되는 『오라클의 가호』를 획득한다. 『오라클의 가호』: 축복 속성 대미지가 4.0%/8.0%/12.0%/16.0% 증가한다. 축복 속성 대미지를 줄 때 크리티컬 효과가 2.5%/5.0%/7.5%/10.0% 증가한다.",
         effect_en: "When an ally consumes HP to activate a skill, that ally gains Oracle’s Blessing for 2 turns.  Oracle’s Blessing: Bless damage is increased by 4.0% / 8.0% / 12.0% / 16.0%.  Critical Damage dealt with Bless attacks is increased by 2.5% / 5.0% / 7.5% / 10.0%.",
         effect_jp: "味方がHPを消費してスキルを発動した時、その味方に2ターン持続する『オラクルの加護』を付与する。『オラクルの加護』：祝福属性ダメージが4.0% / 8.0% / 12.0% / 16.0%上昰。祝福属性ダメージのCRT倍率が2.5% / 5.0% / 7.5% / 10.0%上昰。",

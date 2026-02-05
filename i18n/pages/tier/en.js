@@ -28,7 +28,16 @@ export default {
     helpMessage: '* Double-click the character to set the Awareness.',
 
     // Ritual modal
+    ritualModalTitle: 'Character Enhancement',
+    ritualCoreTitle: 'Mindscape Core',
+    ritualCoreActivate: 'Activate Core',
+    ritualAwarenessTitle: 'Awareness',
     ritualCopy: 'Copy Character',
+
+    // Toolbar buttons
+    captureImage: 'Capture Image',
+    exportJSON: 'Export JSON',
+    importJSON: 'Import JSON',
 
     // Spoiler toggle
     showSpoilers: 'Show Spoilers',
@@ -41,7 +50,8 @@ export default {
         'Written with competitive content in mind, tiers may continuously change with version updates.',
         'Global servers may differ from KR tiers because characters are buffed.',
         'When some characters are labeled only as A1, it indicates that their operating mechanism or value changes significantly starting from A1, gaining versatility.',
-        'J&C was created based solely on A1. J&C KR Tier is a tier with Mindscape Core(V4.7) effect applied in Korea servers.'
+        'J&C was created based solely on A1.',
+        'KR Tier is a tier with Mindscape Core(V4.7) effect applied in Korea servers.'
     ],
 
     // Tag translations (for filter)

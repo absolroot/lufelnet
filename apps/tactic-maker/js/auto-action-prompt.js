@@ -57,13 +57,27 @@ export class AutoActionPrompt {
     }
 
     /**
-     * Check if any turn has actions for a specific column
+     * Check if any turn has actions for a specific column by the column's owner character
+     * Excludes Elucidator actions since they don't "own" the column
      * @param {string} colKey - Column key (order number or 'mystery')
+     * @param {string} ownerCharName - The character name that owns this column
      * @returns {boolean}
      */
-    hasActionsForColumn(colKey) {
+    hasActionsForColumn(colKey, ownerCharName) {
+        const elucidator = this.getElucidator();
+        const elucidatorName = elucidator?.name || null;
+        
         for (const turn of this.store.state.turns) {
-            if (turn.columns[colKey] && turn.columns[colKey].length > 0) {
+            const actions = turn.columns[colKey] || [];
+            for (const action of actions) {
+                // Skip Elucidator actions when checking column ownership
+                if (elucidatorName && action.character === elucidatorName) {
+                    continue;
+                }
+                // If ownerCharName is provided, only count actions by that character
+                if (ownerCharName && action.character !== ownerCharName) {
+                    continue;
+                }
                 return true;
             }
         }
@@ -191,7 +205,8 @@ export class AutoActionPrompt {
                         action: actionType,
                         memo: ''
                     };
-                    turn.columns[targetColKey].push(newAction);
+                    // Insert at the beginning so Elucidator actions come first
+                    turn.columns[targetColKey].unshift(newAction);
                 });
             }
         });
@@ -325,8 +340,8 @@ export class AutoActionPrompt {
     checkAndShowColumnPrompt(cellHeader, char, colKey) {
         if (!this.isPromptEnabled()) return;
 
-        // Check if this column already has actions
-        if (this.hasActionsForColumn(colKey)) return;
+        // Check if this column already has actions by the column owner (excluding Elucidator)
+        if (this.hasActionsForColumn(colKey, char.name)) return;
 
         // Check if character has a default pattern
         if (!this.store.hasDefaultPattern(colKey)) return;

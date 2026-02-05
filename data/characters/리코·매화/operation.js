@@ -24,11 +24,11 @@ window.operationData["리코·매화"] = {
     ],
     "basic_en": [
         {
-            "label": "A0 (Gale)",
+            "label": "A0",
             "value": "3 › 2 › 3 › 2 › 3 › 2"
         },
         {
-            "label": "A0 (Single)",
+            "label": "A0 (Wind)",
             "value": "3 › 1 › 3 › 1 › 3 › 1"
         },
         {
@@ -36,7 +36,7 @@ window.operationData["리코·매화"] = {
             "value": "3 › 1 › 3 › 1 › 3 › 1"
         },
         {
-            "label": "A1 (Multi)",
+            "label": "A1 (AoE)",
             "value": "3 › 2 › 3 › 2 › 3 › 2"
         },
         {
@@ -46,11 +46,11 @@ window.operationData["리코·매화"] = {
     ],
     "basic_jp": [
         {
-            "label": "意識 0 (疾風)",
+            "label": "意識 0",
             "value": "3 › 2 › 3 › 2 › 3 › 2"
         },
         {
-            "label": "意識 0 (単体)",
+            "label": "意識 0 (疾風)",
             "value": "3 › 1 › 3 › 1 › 3 › 1"
         },
         {

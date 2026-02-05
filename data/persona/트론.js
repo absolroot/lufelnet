@@ -41,44 +41,44 @@ window.personaFiles["트론"] = {
   "passive_skill": [
     {
       "name": "세속을 초월한 성인",
-      "name_en": "Otherworldly Saint",
-      "name_jp": "世俗を超越した聖人",
+      "name_en": "Flaming Chariot",
+      "name_jp": "燃える車輪",
       "desc": "공격력이 29.1% 증가한다. 전투 시작 시 [불씨]를 4중첩 획득한다. 아군 캐릭터가 원소 이상을 추가할 때 자신은 「불씨」 1중첩을 획득한다. 만약 화상일 경우 「불씨」를 추가로 1중첩 획득하며 3턴 동안 지속된다(10회 중첩 가능). 매회 스킬은 「불씨」를 최대 2중첩 제공할 수 있다. 자신이 아군 캐릭터에게 페르소나 스킬 시전 시 「불씨」가 4중첩 이상이면 모든 「불씨」를 소모해 중첩마다 2턴 동안 아군 전체 대미지가 1% 증가하며, 50%의 확률로 임의 적군 1명이 화상 상태에 빠진다.",
-      "desc_en": "Increases ATK by 29.1%. At the start of battle, gains 4 stacks of [Tinder]. Gains 1 stack of [Tinder] when allies inflict Elemental Ailments, gains 1 additional stack of [Tinder] if that Elemental Ailment was Burn for 3 turns, up to 10 stacks, each skill can give up to 2 stacks of [Tinder]. When using a Persona skill on allies, if [Tinder] is at 4 stacks or above, consumes all [Tinder] and increases party's damage by 1% for 2 turns, with a 50% base chance to inflict 1 random enemy with Burn.",
-      "desc_jp": "攻撃力が29.1%増加する。戦闘開始時『火種』を4重複獲得する。味方怪盗が元素異常を追加する時自分は『火種』1重複を獲得する。もし火傷の場合『火種』を追加で1重複獲得し3ターンの間持続する（10回重複可能）。毎回スキルは『火種』を最大2重複提供できる。自分が味方怪盗にペルソナスキル使用時『火種』が4重複以上なら全ての『火種』を消費し重複ごとに2ターンの間味方全体ダメージが1%増加し、50%の確率で任意敵軍1体が火傷状態になる。"
+      "desc_en": "Increase Attack by 29.1%.\nAt the start of battle, gain 4 Holy Flame stacks, and every 2 turns, inflict Burn on 1 random foe.\nWhen allies inflict an elemental ailment, gain 1 Holy Flame stack for 3 turns. If the ailment inflicted is Burn, gain 1 more Holy Flame stack. Holy Flame stacks up to 10 times, and up to 2 stacks can be gained from 1 skill.\nWhen an ally uses a skill, if Holy Flame is at 4 or more stacks, spend all Holy Flame stacks to increase the party's damage by 1% per stack for 2 turns. Also, 50% chance to inflict Burn on 1 random foe.",
+      "desc_jp": "攻撃力が２９.１%上昇する。\n戦闘開始時に『聖火』を４つ獲得し、ランダムな敵１体を２ターンの間、炎上状態にする。\n味方が属性異常を付与した時、３ターンの間、自身は『聖火』を１つ獲得する。付与した属性異常が炎上の場合、追加で『聖火』を１つ獲得する。『聖火』は最大１０個まで累積し、スキル１回で最大２つまで獲得できる。\n味方にスキルを使用した時、『聖火』が４つ以上累積している場合はすべての『聖火』を消費し、２ターンの間、味方全体のダメージが１つにつき１%上昇する。さらに５０%の確率でランダムな敵１体を炎上状態にする。"
     },
     {
       "name": "세속을 초월한 성인Ⅰ",
-      "name_en": "Otherworldly Saint I",
-      "name_jp": "世俗を超越した聖人 I",
+      "name_en": "Flaming Chariot I",
+      "name_jp": "燃える車輪 I",
       "desc": "공격력이 29.1% 증가한다. 전투 시작 시 [불씨]를 8중첩 획득한다. 아군 캐릭터가 원소 이상을 추가할 때 자신은 「불씨」 1중첩을 획득한다. 만약 화상일 경우 「불씨」를 추가로 1중첩 획득하며 3턴 동안 지속된다(10회 중첩 가능). 매회 스킬은 「불씨」를 최대 2중첩 제공할 수 있다. 자신이 아군 캐릭터에게 페르소나 스킬 시전 시 「불씨」가 4중첩 이상이면 모든 「불씨」를 소모해 중첩마다 2턴 동안 아군 전체 대미지가 1% 증가하며, 50%의 확률로 임의 적군 1명이 화상 상태에 빠진다.",
-      "desc_en": "Increases ATK by 29.1%. At the start of battle, gains 8 stacks of [Tinder]. Gains 1 stack of [Tinder] when allies inflict Elemental Ailments, gains 1 additional stack of [Tinder] if that Elemental Ailment was Burn for 3 turns, up to 10 stacks, each skill can give up to 2 stacks of [Tinder]. When using a Persona skill on allies, if [Tinder] is at 4 stacks or above, consumes all [Tinder] and increases party's damage by 1% for 2 turns, with a 50% base chance to inflict 1 random enemy with Burn.",
-      "desc_jp": "攻撃力が29.1%増加する。戦闘開始時『火種』を8重複獲得する。味方怪盗が元素異常を追加する時自分は『火種』1重複を獲得する。もし火傷の場合『火種』を追加で1重複獲得し3ターンの間持続する（10回重複可能）。毎回スキルは『火種』を最大2重複提供できる。自分が味方怪盗にペルソナスキル使用時『火種』が4重複以上なら全ての『火種』を消費し重複ごとに2ターンの間味方全体ダメージが1%増加し、50%の確率で任意敵軍1体が火傷状態になる。"
+      "desc_en": "Increase Attack by 29.1%.\nAt the start of battle, gain 8 Holy Flame stacks, and every 2 turns, inflict Burn on 1 random foe.\nWhen allies inflict an elemental ailment, gain 1 Holy Flame stack for 3 turns. If the ailment inflicted is Burn, gain 1 more Holy Flame stack. Holy Flame stacks up to 10 times, and up to 2 stacks can be gained from 1 skill.\nWhen an ally uses a skill, if Holy Flame is at 4 or more stacks, spend all Holy Flame stacks to increase the party's damage by 1% per stack for 2 turns. Also, 50% chance to inflict Burn on 1 random foe.",
+      "desc_jp": "攻撃力が２９.１%上昇する。\n戦闘開始時に『聖火』を８つ獲得し、ランダムな敵１体を２ターンの間、炎上状態にする。\n味方が属性異常を付与した時、３ターンの間、自身は『聖火』を１つ獲得する。付与した属性異常が炎上の場合、追加で『聖火』を１つ獲得する。『聖火』は最大１０個まで累積し、スキル１回で最大２つまで獲得できる。\n味方にスキルを使用した時、『聖火』が４つ以上累積している場合はすべての『聖火』を消費し、２ターンの間、味方全体のダメージが１つにつき１%上昇する。さらに５０%の確率でランダムな敵１体を炎上状態にする。"
     },
     {
       "name": "세속을 초월한 성인Ⅱ",
-      "name_en": "Otherworldly Saint II",
-      "name_jp": "世俗を超越した聖人 II",
+      "name_en": "Flaming Chariot II",
+      "name_jp": "燃える車輪 II",
       "desc": "공격력이 29.1% 증가한다. 전투 시작 시 [불씨]를 8중첩 획득한다. 아군 캐릭터가 원소 이상을 추가할 때 자신은 「불씨」 1중첩을 획득한다. 만약 화상일 경우 「불씨」를 추가로 1중첩 획득하며 3턴 동안 지속된다(10회 중첩 가능). 매회 스킬은 「불씨」를 최대 2중첩 제공할 수 있다. 자신이 아군 캐릭터에게 페르소나 스킬 시전 시 「불씨」가 4중첩 이상이면 모든 「불씨」를 소모해 중첩마다 2턴 동안 아군 전체 대미지가 1.5% 증가하며, 50%의 확률로 임의 적군 1명이 화상 상태에 빠진다.",
-      "desc_en": "Increases ATK by 29.1%. At the start of battle, gains 8 stacks of [Tinder]. Gains 1 stack of [Tinder] when allies inflict Elemental Ailments, gains 1 additional stack of [Tinder] if that Elemental Ailment was Burn for 3 turns, up to 10 stacks, each skill can give up to 2 stacks of [Tinder]. When using a Persona skill on allies, if [Tinder] is at 4 stacks or above, consumes all [Tinder] and increases party's damage by 1.5% for 2 turns, with a 50% base chance to inflict 1 random enemy with Burn.",
-      "desc_jp": "攻撃力が29.1%増加する。戦闘開始時『火種』を8重複獲得する。味方怪盗が元素異常を追加する時自分は『火種』1重複を獲得する。もし火傷の場合『火種』を追加で1重複獲得し3ターンの間持続する（10回重複可能）。毎回スキルは『火種』を最大2重複提供できる。自分が味方怪盗にペルソナスキル使用時『火種』が4重複以上なら全ての『火種』を消費し重複ごとに2ターンの間味方全体ダメージが1.5%増加し、50%の確率で任意敵軍1体が火傷状態になる。"
+      "desc_en": "Increase Attack by 29.1%.\nAt the start of battle, gain 8 Holy Flame stacks, and every 2 turns, inflict Burn on 1 random foe.\nWhen allies inflict an elemental ailment, gain 1 Holy Flame stack for 3 turns. If the ailment inflicted is Burn, gain 1 more Holy Flame stack. Holy Flame stacks up to 10 times, and up to 2 stacks can be gained from 1 skill.\nWhen an ally uses a skill, if Holy Flame is at 4 or more stacks, spend all Holy Flame stacks to increase the party's damage by 1.5% per stack for 2 turns. Also, 50% chance to inflict Burn on 1 random foe.",
+      "desc_jp": "攻撃力が２９.１%上昇する。\n戦闘開始時に『聖火』を８つ獲得し、ランダムな敵１体を２ターンの間、炎上状態にする。\n味方が属性異常を付与した時、３ターンの間、自身は『聖火』を１つ獲得する。付与した属性異常が炎上の場合、追加で『聖火』を１つ獲得する。『聖火』は最大１０個まで累積し、スキル１回で最大２つまで獲得できる。\n味方にスキルを使用した時、『聖火』が４つ以上累積している場合はすべての『聖火』を消費し、２ターンの間、味方全体のダメージが１つにつき１.５%上昇する。さらに５０%の確率でランダムな敵１体を炎上状態にする。"
     },
     {
       "name": "세속을 초월한 성인Ⅲ",
-      "name_en": "Otherworldly Saint III",
-      "name_jp": "世俗を超越した聖人 III",
+      "name_en": "Flaming Chariot III",
+      "name_jp": "燃える車輪 III",
       "desc": "공격력이 29.1% 증가한다. 전투 시작 시 [불씨]를 8중첩 획득한다. 아군 캐릭터가 원소 이상을 추가할 때 자신은 「불씨」 1중첩을 획득한다. 만약 화상일 경우 「불씨」를 추가로 1중첩 획득하며 3턴 동안 지속된다(10회 중첩 가능). 매회 스킬은 「불씨」를 최대 2중첩 제공할 수 있다. 자신이 아군 캐릭터에게 페르소나 스킬 시전 시 「불씨」가 4중첩 이상이면 모든 「불씨」를 소모해 중첩마다 2턴 동안 아군 전체 대미지가 1.5% 증가하며, 75%의 확률로 임의 적군 1명이 화상 상태에 빠진다.",
-      "desc_en": "Increases ATK by 29.1%. At the start of battle, gains 8 stacks of [Tinder]. Gains 1 stack of [Tinder] when allies inflict Elemental Ailments, gains 1 additional stack of [Tinder] if that Elemental Ailment was Burn for 3 turns, up to 10 stacks, each skill can give up to 2 stacks of [Tinder]. When using a Persona skill on allies, if [Tinder] is at 4 stacks or above, consumes all [Tinder] and increases party's damage by 1.5% for 2 turns, with a 75% base chance to inflict 1 random enemy with Burn.",
-      "desc_jp": "攻撃力が29.1%増加する。戦闘開始時『火種』を8重複獲得する。味方怪盗が元素異常を追加する時自分は『火種』1重複を獲得する。もし火傷の場合『火種』を追加で1重複獲得し3ターンの間持続する（10回重複可能）。毎回スキルは『火種』を最大2重複提供できる。自分が味方怪盗にペルソナスキル使用時『火種』が4重複以上なら全ての『火種』を消費し重複ごとに2ターンの間味方全体ダメージが1.5%増加し、75%の確率で任意敵軍1体が火傷状態になる。"
+      "desc_en": "Increase Attack by 29.1%.\nAt the start of battle, gain 8 Holy Flame stacks, and every 2 turns, inflict Burn on 1 random foe.\nWhen allies inflict an elemental ailment, gain 1 Holy Flame stack for 3 turns. If the ailment inflicted is Burn, gain 1 more Holy Flame stack. Holy Flame stacks up to 10 times, and up to 2 stacks can be gained from 1 skill.\nWhen an ally uses a skill, if Holy Flame is at 4 or more stacks, spend all Holy Flame stacks to increase the party's damage by 1.5% per stack for 2 turns. Also, 75% chance to inflict Burn on 1 random foe.",
+      "desc_jp": "攻撃力が２９.１%上昇する。\n戦闘開始時に『聖火』を８つ獲得し、ランダムな敵１体を２ターンの間、炎上状態にする。\n味方が属性異常を付与した時、３ターンの間、自身は『聖火』を１つ獲得する。付与した属性異常が炎上の場合、追加で『聖火』を１つ獲得する。『聖火』は最大１０個まで累積し、スキル１回で最大２つまで獲得できる。\n味方にスキルを使用した時、『聖火』が４つ以上累積している場合はすべての『聖火』を消費し、２ターンの間、味方全体のダメージが１つにつき１.５%上昇する。さらに７５%の確率でランダムな敵１体を炎上状態にする。"
     }
   ],
   "uniqueSkill": {
     "name": "정화의 불",
-    "name_en": "Fire of Purification",
-    "name_jp": "浄化の火",
+    "name_en": "Purifying Flames",
+    "name_jp": "浄世の火",
     "desc": "3턴 동안 모든 아군 캐릭터의 공격력이 12.0%/12.6%/13.2% 증가하고, 자신의 공격력 500마다 0.8%/0.8%/0.8% 추가 증가한다(최대 6%). 또한 3턴 동안 스킬 메인 목표가 「정화의 불」을 획득한다. 「정화의 불」: 적군 캐릭터에게 페르소나 스킬을 시전하여 대미지를 준 후 75%의 기본 확률로 임의 적군 1명이 화상 상태에 빠진다.",
-    "desc_en": "Increases party's ATK by 12%/12.6%/13.2% + 0.8%/0.8%/0.8% for every 500 ATK you have, up to 6% for 3 turns. Gives the main target [Fire of Purification] for 3 turns. [Fire of Purification]: After dealing Persona skill damage to foes, there is a 75% base chance to inflict 1 random foe with burn.",
-    "desc_jp": "3ターンの間全ての味方怪盗の攻撃力が12.0%/12.6%/13.2%増加し、自分の攻撃力500ごとに0.8%追加増加する（最大6%）。また3ターンの間スキルメインターゲットが『浄化の火』を獲得する。『浄化の火』：敵軍怪盗にペルソナスキルを使用してダメージを与えた後、75%の基本確率で任意敵軍1体が火傷状態になる。",
+    "desc_en": "Increase party's Attack by 12.0%/12.6%/13.2%. For every 500 of the user's Attack, increase allies' Attack by 0.8%/0.8%/0.8% more (up to 6%). Lasts for 3 turns.\nAlso, grant Purifying Flames to the main target for 3 turns.\nPurifying Flames: When dealing skill damage to foes, 75% chance to inflict Burn on 1 random foe.",
+    "desc_jp": "３ターンの間、味方全体の攻撃力が12.0%/12.6%/13.2%上昇し、自身の攻撃力５００ごとに追加で0.8%/0.8%/0.8%上昇する（最大６%まで）。\nさらに３ターンの間、選択した味方に『浄世の火』を付与する。\n『浄世の火』：敵にスキルでダメージを与えた時、７５%の確率でランダムな敵１体を炎上状態にする。",
     "priority": 2,
     "icon": "버프광역",
     "icon_gl": ""
@@ -89,7 +89,7 @@ window.personaFiles["트론"] = {
     "name_jp": "ハイライト",
     "desc": "모든 동료의 주는 대미지가 29.5%/31.6%/33.6% 증가하며 2턴 동안 지속된다.",
     "desc_en": "Increase party's damage by 29.5%/31.6%/33.6% for 2 turns.",
-    "desc_jp": "2ターンの間、味方全体の与ダメージが29.5%/31.6%/33.6%上昇する。",
+    "desc_jp": "２ターンの間、味方全体の与ダメージが29.5%/31.6%/33.6%上昇する。",
     "priority": 1
   },
   "innate_skill": [

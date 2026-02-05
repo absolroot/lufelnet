@@ -60,6 +60,10 @@ const criticalBuffData = {
               { id: "자유", type: "계시", type_en: "Revelation", type_jp: "啓示", target: "자신", target_en: "Self", target_jp: "自分", skillIcon: "/assets/img/revelation/자유.webp", skillName: "자유-실망", skillName_en: "Freedom-Despair", skillName_jp: "自由-失望", options: [], value: 12, duration: "-", note: "만능 속성 한정", note_en: "Only Allmighty", note_jp: "万能属性" },
               { id: "희망", type: "계시", type_en: "Revelation", type_jp: "啓示", target: "자신", target_en: "Self", target_jp: "自分", skillIcon: "/assets/img/revelation/희망.webp", skillName: "희망-고집", skillName_en: "Hope-Fixation", skillName_jp: "希望-固執", options: [], value: 6, duration: "3턴", note: "스킬로 대미지 8회 중첩 시 효력 발생", note_en: "Skill damage 8 consecutive hits", note_jp: "スキルで8回連続ダメージ" }
     ],
+    "나루미": [
+      { id: "narumi1", type: "스킬1", target: "자신", target_en: "Self", target_jp: "自分", skillIcon: "/assets/img/character-detail/ritual0.png", skillName: "당도 100%❤", skillName_en: "S1", skillName_jp: "スキル1", options: ["LV10", "LV10+심상5", "LV13", "LV13+심상5"], values: {"LV10": 14.6, "LV10+심상5": 16.1, "LV13": 15.5, "LV13+심상5": 17.1}, value: 17.1, duration: "2턴", note: "", note_en: "", note_jp: "" },
+      { id: "narumi2", type: "전용무기", type_en: "Exclusive Weapon", type_jp: "専用武器", target: "자신", target_en: "Self", target_jp: "自分", skillIcon: "/assets/img/character-weapon/나루미-5-01.png", skillName: "슈가 프로스트 앙코르", skillName_en: "Exclusive Weapon", skillName_jp: "専用武器", options: ["개조0&1", "개조2&3", "개조4&5", "개조6"], values: { "개조0&1": 18.1, "개조2&3": 23.5, "개조4&5": 28.9, "개조6": 34.3 }, defaultOption: "개조6", value: 34.3, duration: "", note: "" },
+    ],
 
     "J&C": [
       { id: "jc1", type: "스킬2", target: "자신", target_en: "자신", target_jp: "自分", skillIcon: "/assets/img/skill-element/축복주원.png", skillName: "복과와 화근의 페르소나", skillName_en: "Skill 2", skillName_jp: "スキル2", options: ["LV10", "LV10+심상5", "LV13", "LV13+심상5"], values: { "LV10": 9.8, "LV10+심상5": 10.8, "LV13": 10.4, "LV13+심상5": 11.4 }, defaultOption: "LV13+심상5", value: 11.4, duration: "3턴", note: "지배/굴복/반항", note_en: "Mask of Luck & Loss", note_jp: "福果と禍因の仮面" },

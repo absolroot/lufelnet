@@ -28,7 +28,16 @@ export default {
     helpMessage: '* 怪盗をダブルクリックして意識を設定してください。',
 
     // Ritual modal
+    ritualModalTitle: 'キャラクター強化要素',
+    ritualCoreTitle: 'イメジャリー・コア',
+    ritualCoreActivate: 'コア活性化',
+    ritualAwarenessTitle: 'Awareness',
     ritualCopy: 'キャラクターをコピー',
+
+    // Toolbar buttons
+    captureImage: '画像キャプチャ',
+    exportJSON: 'JSONエクスポート',
+    importJSON: 'JSONインポート',
 
     // Spoiler toggle
     showSpoilers: 'スポイラー表示',
@@ -40,7 +49,8 @@ export default {
         'LV80、すべてのスキルレベルなど、意識（Awareness）を除くすべての値が基本的に設定されている場合を指します。',
         '競争コンテンツを中心に作成されており、バージョンアップデートによってティアは継続的に変動する可能性があります。',
         'グローバルサーバーは怪盗がバフされているため、KRティアとは異なる場合があります。',
-        'J&Cは凸1を基準としてのみ作成されました。J&C KRティアは、韓国サーバーでイメジャリー・コア(V4.7)効果が適用されたティアです。'
+        'J&Cは凸1を基準としてのみ作成されました。',
+        'KRティアは、韓国サーバーでイメジャリー・コア(V4.7)効果が適用されたティアです。'
     ],
 
     // Tag translations (for filter)

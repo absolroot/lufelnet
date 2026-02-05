@@ -2,7 +2,7 @@
 // 캐릭터 목록 데이터
 window.characterList = window.characterList || {
     mainParty: [
-        "렌", "루우나", "루페르", "레오", "류지",
+        "나루미", "렌", "루우나", "루페르", "레오", "류지",
         "리코·매화", "마사키", "마유미", "마코토", "미나미", "미나미·여름", "미유·여름", "모르가나",
         "모토하", "모토하·여름", "몽타뉴", "몽타뉴·백조", "미오", "미츠루", "사나다","쇼키","쇼키·암야", "슌", "슌·프론티어",
         "세이지", "안", "아야카", "아케치", "야오링", "야오링·사자무",
@@ -31,7 +31,7 @@ window.characterData = window.characterData || {};
 Object.assign(window.characterData, {
     "나루미": {
         "limit": true,
-        "tag": "추가 턴 염동 딜러",
+        "tag": "추가 턴",
         "tag_en": "",
         "tag_jp": "",
         "color": "#ffa6a6",
@@ -470,7 +470,7 @@ Object.assign(window.characterData, {
         "persona_jp": "チヨメ",
         "name": "타네무라 리코·매화",
         "name_en": "Tempest Riko",
-        "name_jp": "多祢村 理子・花見",
+        "name_jp": "理子・生命欲の暴走",
         "name_cn": "多祢村理子·未央",
         "codename": "WIND·Tempest",
         "skill_item": 4

@@ -49,7 +49,7 @@ export class WonderUI extends EventEmitter {
      * Get weapon tooltip text based on current language and mod level
      * Also includes lightning_stamp effect if stampLevel >= 1
      */
-    getWeaponTooltip(weaponData, modLevel = 6, stampLevel = 0) {
+    getWeaponTooltip(weaponData, modLevel = 6, stampLevel = 0, stampIndex = 0) {
         if (!weaponData) return '';
         const lang = this.getCurrentLang();
         let effect = '';
@@ -60,20 +60,20 @@ export class WonderUI extends EventEmitter {
         } else {
             effect = weaponData.effect || '';
         }
-        
+
         // Replace 7-split values with the value at modLevel index
         const sevenSplitReplace = /(\d+(?:\.\d+)?%?)(?:\s*\/\s*(\d+(?:\.\d+)?%?)){6}/g;
         effect = effect.replace(sevenSplitReplace, (match) => {
             const parts = match.split('/').map(x => x.trim());
             return parts[Math.min(Math.max(modLevel, 0), 6)] || parts[0];
         });
-        
+
         // Add lightning_stamp effect if stampLevel >= 1
         if (stampLevel >= 1 && weaponData.lightning_stamp && Array.isArray(weaponData.lightning_stamp) && weaponData.lightning_stamp.length > 0) {
-            const stamp = weaponData.lightning_stamp[0];
+            const stamp = weaponData.lightning_stamp[stampIndex] || weaponData.lightning_stamp[0];
             let stampName = '';
             let stampEffect = '';
-            
+
             if (lang === 'en' && stamp.name_en) {
                 stampName = stamp.name_en;
             } else if (lang === 'jp' && stamp.name_jp) {
@@ -81,7 +81,7 @@ export class WonderUI extends EventEmitter {
             } else {
                 stampName = stamp.name || '';
             }
-            
+
             if (lang === 'en' && stamp.effect_en) {
                 stampEffect = stamp.effect_en;
             } else if (lang === 'jp' && stamp.effect_jp) {
@@ -89,7 +89,7 @@ export class WonderUI extends EventEmitter {
             } else {
                 stampEffect = stamp.effect || '';
             }
-            
+
             // Replace 4-split values with the value at stampLevel index (1-4)
             const fourSplitReplace = /(\d+(?:\.\d+)?%?)(?:\s*\/\s*(\d+(?:\.\d+)?%?)){3}/g;
             stampEffect = stampEffect.replace(fourSplitReplace, (match) => {
@@ -97,15 +97,15 @@ export class WonderUI extends EventEmitter {
                 // stampLevel is 1-4, array index is 0-3
                 return parts[Math.min(Math.max(stampLevel - 1, 0), 3)] || parts[0];
             });
-            
+
             if (stampName && stampEffect) {
                 effect += `<br><br><b>${stampName}</b><br>${stampEffect}`;
             }
         }
-        
+
         // Highlight numbers
         effect = effect.replace(/(\d+(?:\.\d+)?%?)/g, '<span class="tooltip-num">$1</span>');
-        
+
         // Don't escape HTML - tooltip.js uses innerHTML
         return effect.replace(/\n/g, '<br>');
     }
@@ -349,16 +349,33 @@ export class WonderUI extends EventEmitter {
         // Mod and Stamp options for wonder weapon
         const currentMod = config.weaponMod !== undefined ? config.weaponMod : 6;
         const currentStamp = config.weaponStamp !== undefined ? config.weaponStamp : 4;
+        const currentStampIndex = config.weaponStampIndex !== undefined ? config.weaponStampIndex : 0;
         const hasLightningStamp = weaponData && Array.isArray(weaponData.lightning_stamp) && weaponData.lightning_stamp.length > 0;
+        const lightningStamps = hasLightningStamp ? weaponData.lightning_stamp : [];
 
         // Mod icon for name display (show r0 icon when mod is 0)
         const modIconSrc = `${this.baseUrl}/assets/img/ritual/r${currentMod}.png`;
-        
-        // Stamp icon and roman numeral for display (only if stamp >= 1)
+
+        // Stamp icon and roman numeral for display (only if stampIndex is not '-' and stamp >= 1)
         const romanNumerals = ['', 'Ⅰ', 'Ⅱ', 'Ⅲ', 'Ⅳ'];
-        const stampIconHtml = (hasLightningStamp && currentStamp !== '-' && currentStamp >= 1) 
-            ? `<img class="preset-icon stamp-icon" src="${this.baseUrl}/assets/img/character-weapon/weaponEngraving-icon-1.png" alt="Stamp"><span class="stamp-roman">${romanNumerals[currentStamp] || ''}</span>` 
+        const hasValidStampIndex = currentStampIndex !== '-' && currentStampIndex !== undefined;
+        const currentStampData = (hasLightningStamp && hasValidStampIndex) ? (lightningStamps[currentStampIndex] || lightningStamps[0]) : null;
+        const stampIconFile = currentStampData && currentStampData.stamp_icon ? currentStampData.stamp_icon : 'weaponEngraving-icon-1.png';
+        const stampIconPath = currentStampData && currentStampData.stamp_icon
+            ? `${this.baseUrl}/assets/img/wonder-weapon/${stampIconFile}`
+            : `${this.baseUrl}/assets/img/character-weapon/${stampIconFile}`;
+        const stampIconHtml = (hasLightningStamp && hasValidStampIndex && currentStamp !== '-' && currentStamp >= 1)
+            ? `<img class="preset-icon stamp-icon" src="${stampIconPath}" alt="Stamp"><span class="stamp-roman">${romanNumerals[currentStamp] || ''}</span>`
             : '';
+
+        // Get stamp name for dropdown display
+        const lang = this.getCurrentLang();
+        const getStampDisplayName = (stamp) => {
+            if (!stamp) return '-';
+            if (lang === 'en' && stamp.name_en) return stamp.name_en;
+            if (lang === 'jp' && stamp.name_jp) return stamp.name_jp;
+            return stamp.name || '-';
+        };
 
         return `
             <div class="wonder-persona-card wonder-slot-card" id="wonderSlotInGrid">
@@ -376,7 +393,7 @@ export class WonderUI extends EventEmitter {
                     ${orderImgSrc ? `<img class="order-img" src="${orderImgSrc}" alt="${window.I18nService ? window.I18nService.t('orderLabel') : '순서'} ${currentOrder}">` : ''}
                 </div>
                 <div class="ws-details">
-                    <div class="ritual-mod-wrapper" style="display: grid; grid-template-columns: ${hasLightningStamp ? '1fr 1fr 1fr' : '1fr 1fr'}; gap: 20px;">
+                    <div class="ritual-mod-wrapper" style="display: grid; grid-template-columns: ${hasLightningStamp ? '1fr 1fr 1fr' : '1fr 1fr'}; gap: 12px;">
                         <div class="slot-option-group">
                             <label style="font-size: 11px; opacity: 0.7; margin-bottom: 2px; display: block;">${window.I18nService ? window.I18nService.t('orderLabel') : '순서'}</label>
                             <select class="styled-select order-select ws-order-select">
@@ -393,20 +410,29 @@ export class WonderUI extends EventEmitter {
                         ${hasLightningStamp ? `
                         <div class="slot-option-group">
                             <label style="font-size: 11px; opacity: 0.7; margin-bottom: 2px; display: block;">${window.I18nService ? window.I18nService.t('stampLabel') || '인장' : '인장'}</label>
-                            <select class="styled-select stamp-select ws-weapon-stamp-select">
+                            <select class="styled-select stamp-select ws-weapon-stamp-select" style="width:28px;">
                                 <option value="-" ${currentStamp === '-' ? 'selected' : ''}>-</option>
-                                ${[0,1,2,3,4].map(n => `<option value="${n}" ${currentStamp == n ? 'selected' : ''}>${n}</option>`).join('')}
+                                ${[1,2,3,4].map(n => `<option value="${n}" ${currentStamp == n ? 'selected' : ''}>${romanNumerals[n]}</option>`).join('')}
                             </select>
                         </div>
                         ` : ''}
                     </div>
                     <div class="revelation-dropdown wonder-weapon-dropdown">
-                        <button type="button" class="revelation-button" style="width: 100%; justify-content: flex-start;" ${weaponId && weaponData && weaponData.effect ? `data-tooltip="${this.getWeaponTooltip(weaponData, currentMod, currentStamp).replace(/"/g, '&quot;')}"` : ''}>
+                        <button type="button" class="revelation-button" style="width: 100%; justify-content: flex-start;" ${weaponId && weaponData && weaponData.effect ? `data-tooltip="${this.getWeaponTooltip(weaponData, currentMod, currentStamp, currentStampIndex).replace(/"/g, '&quot;')}"` : ''}>
                             ${weaponId ? `<img class="revelation-icon" src="${this.baseUrl}/assets/img/wonder-weapon/${encodeURIComponent(weaponImageName)}.webp" onerror="this.style.display='none'">` : ''}
                             <span>${weaponDisplayName || '-'}</span>
                         </button>
                         <div class="revelation-menu"></div>
                     </div>
+                    ${hasLightningStamp ? `
+                    <div class="revelation-dropdown stamp-type-dropdown">
+                        <button type="button" class="revelation-button" style="width: 100%; justify-content: flex-start;">
+                            ${(hasValidStampIndex && currentStampData && currentStampData.stamp_img) ? `<img class="revelation-icon" src="${this.baseUrl}/assets/img/wonder-weapon/${currentStampData.stamp_img}" onerror="this.style.display='none'">` : ''}
+                            <span>${hasValidStampIndex ? getStampDisplayName(currentStampData) : '-'}</span>
+                        </button>
+                        <div class="revelation-menu"></div>
+                    </div>
+                    ` : ''}
                 </div>
             </div>
         `;
@@ -438,7 +464,7 @@ export class WonderUI extends EventEmitter {
                 e.stopPropagation();
                 const newMod = parseInt(e.target.value);
                 this.store.setWonderConfig({ ...this.store.state.wonder, weaponMod: newMod });
-                
+
                 // Update tooltip with new mod level
                 const button = wonderSlot.querySelector('.wonder-weapon-dropdown .revelation-button');
                 if (button) {
@@ -447,15 +473,16 @@ export class WonderUI extends EventEmitter {
                     if (typeof weaponId === 'object' && weaponId !== null) weaponId = weaponId.name;
                     const weaponData = weaponId ? DataLoader.getWeaponList()[weaponId] : null;
                     const currentStamp = config.weaponStamp !== undefined ? config.weaponStamp : 4;
-                    
+                    const currentStampIndex = config.weaponStampIndex !== undefined ? config.weaponStampIndex : 0;
+
                     if (weaponData && weaponData.effect) {
-                        button.setAttribute('data-tooltip', this.getWeaponTooltip(weaponData, newMod, currentStamp).replace(/"/g, '&quot;'));
+                        button.setAttribute('data-tooltip', this.getWeaponTooltip(weaponData, newMod, currentStamp, currentStampIndex).replace(/"/g, '&quot;'));
                     }
                 }
             });
         }
 
-        // Weapon stamp select
+        // Weapon stamp select (인장 단계)
         const stampSelect = wonderSlot.querySelector('.ws-weapon-stamp-select');
         if (stampSelect) {
             stampSelect.addEventListener('change', (e) => {
@@ -463,7 +490,7 @@ export class WonderUI extends EventEmitter {
                 const val = e.target.value;
                 const newStamp = val === '-' ? '-' : parseInt(val);
                 this.store.setWonderConfig({ ...this.store.state.wonder, weaponStamp: newStamp });
-                
+
                 // Update tooltip with new stamp level
                 const button = wonderSlot.querySelector('.wonder-weapon-dropdown .revelation-button');
                 if (button) {
@@ -472,11 +499,15 @@ export class WonderUI extends EventEmitter {
                     if (typeof weaponId === 'object' && weaponId !== null) weaponId = weaponId.name;
                     const weaponData = weaponId ? DataLoader.getWeaponList()[weaponId] : null;
                     const currentMod = config.weaponMod !== undefined ? config.weaponMod : 6;
-                    
+                    const currentStampIndex = config.weaponStampIndex !== undefined ? config.weaponStampIndex : 0;
+
                     if (weaponData && weaponData.effect) {
-                        button.setAttribute('data-tooltip', this.getWeaponTooltip(weaponData, currentMod, newStamp).replace(/"/g, '&quot;'));
+                        button.setAttribute('data-tooltip', this.getWeaponTooltip(weaponData, currentMod, newStamp, currentStampIndex).replace(/"/g, '&quot;'));
                     }
                 }
+
+                // Re-render to update stamp icon display
+                this.render();
             });
         }
 
@@ -553,7 +584,8 @@ export class WonderUI extends EventEmitter {
                         ev.stopPropagation();
                         wonderWeaponDropdown.classList.remove('open');
                         button?.setAttribute('aria-expanded', 'false');
-                        this.store.setWonderConfig({ ...this.store.state.wonder, weapon: value });
+                        // Reset stampIndex to 0 when weapon changes
+                        this.store.setWonderConfig({ ...this.store.state.wonder, weapon: value, weaponStampIndex: 0 });
                         this.render();
                     });
 
@@ -576,6 +608,100 @@ export class WonderUI extends EventEmitter {
                     buildMenu();
                     const isOpen = wonderWeaponDropdown.classList.toggle('open');
                     button.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                };
+            }
+        }
+
+        // Stamp type dropdown (커스텀 드롭다운)
+        const stampTypeDropdown = wonderSlot.querySelector('.stamp-type-dropdown');
+        if (stampTypeDropdown) {
+            const stampButton = stampTypeDropdown.querySelector('.revelation-button');
+            const stampMenu = stampTypeDropdown.querySelector('.revelation-menu');
+
+            const closeAllStamp = () => {
+                document.querySelectorAll('.stamp-type-dropdown.open').forEach(d => d.classList.remove('open'));
+            };
+
+            if (!this._stampTypeOutsideHandlerBound) {
+                this._stampTypeOutsideHandlerBound = true;
+                document.addEventListener('click', (e) => {
+                    if (!e.target.closest('.stamp-type-dropdown')) {
+                        closeAllStamp();
+                    }
+                });
+            }
+
+            const buildStampMenu = () => {
+                if (!stampMenu) return;
+                const config = this.store.getWonderConfig();
+                let weaponId = config.weapon;
+                if (typeof weaponId === 'object' && weaponId !== null) weaponId = weaponId.name;
+                const weaponData = weaponId ? DataLoader.getWeaponList()[weaponId] : null;
+                const stamps = (weaponData && Array.isArray(weaponData.lightning_stamp)) ? weaponData.lightning_stamp : [];
+
+                const lang = this.getCurrentLang();
+                const getStampName = (stamp) => {
+                    if (!stamp) return '-';
+                    if (lang === 'en' && stamp.name_en) return stamp.name_en;
+                    if (lang === 'jp' && stamp.name_jp) return stamp.name_jp;
+                    return stamp.name || '-';
+                };
+
+                stampMenu.innerHTML = '';
+
+                const addStampItem = (label, value, stampData) => {
+                    const item = document.createElement('button');
+                    item.type = 'button';
+                    item.className = 'revelation-option';
+
+                    if (stampData && stampData.stamp_img) {
+                        const img = document.createElement('img');
+                        img.className = 'revelation-icon';
+                        img.src = `${this.baseUrl}/assets/img/wonder-weapon/${stampData.stamp_img}`;
+                        img.alt = label;
+                        img.onerror = function () { this.style.display = 'none'; };
+                        item.appendChild(img);
+                    }
+
+                    const span = document.createElement('span');
+                    span.textContent = label;
+                    item.appendChild(span);
+
+                    item.addEventListener('click', (ev) => {
+                        ev.stopPropagation();
+                        stampTypeDropdown.classList.remove('open');
+                        stampButton?.setAttribute('aria-expanded', 'false');
+
+                        // If '-', also set stamp level to '-'
+                        const updates = { weaponStampIndex: value };
+                        if (value === '-') {
+                            updates.weaponStamp = '-';
+                        }
+                        this.store.setWonderConfig({ ...this.store.state.wonder, ...updates });
+                        this.render();
+                    });
+
+                    stampMenu.appendChild(item);
+                };
+
+                // Add '-' option
+                addStampItem('-', '-', null);
+
+                // Add stamp options
+                stamps.forEach((stamp, idx) => {
+                    addStampItem(getStampName(stamp), idx, stamp);
+                });
+            };
+
+            buildStampMenu();
+
+            if (stampButton) {
+                stampButton.setAttribute('aria-expanded', 'false');
+                stampButton.onclick = (e) => {
+                    e.stopPropagation();
+                    buildStampMenu();
+                    const isOpen = stampTypeDropdown.classList.toggle('open');
+                    stampButton.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
                 };
             }
         }

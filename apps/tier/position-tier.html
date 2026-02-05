@@ -255,33 +255,46 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
     <dialog class="ritual-modal">
         <div class="ritual-modal-content">
             <div class="ritual-modal-header">
-                <h3>Awareness</h3>
+                <h3 data-i18n="ritualModalTitle">캐릭터 강화 요소</h3>
                 <button class="ritual-modal-close">&times;</button>
             </div>
-            <div class="ritual-options">
-                <div class="ritual-option" data-ritual="none">
-                    <div class="ritual-none">NONE</div>
-                </div>
-                <div class="ritual-option" data-ritual="num1">
-                    <img src="{{ site.baseurl }}/assets/img/ritual/num1.png" alt="Ritual 1">
-                </div>
-                <div class="ritual-option" data-ritual="num2">
-                    <img src="{{ site.baseurl }}/assets/img/ritual/num2.png" alt="Ritual 2">
-                </div>
-                <div class="ritual-option" data-ritual="num3">
-                    <img src="{{ site.baseurl }}/assets/img/ritual/num3.png" alt="Ritual 3">
-                </div>
-                <div class="ritual-option" data-ritual="num4">
-                    <img src="{{ site.baseurl }}/assets/img/ritual/num4.png" alt="Ritual 4">
-                </div>
-                <div class="ritual-option" data-ritual="num5">
-                    <img src="{{ site.baseurl }}/assets/img/ritual/num5.png" alt="Ritual 5">
-                </div>
-                <div class="ritual-option" data-ritual="num6">
-                    <img src="{{ site.baseurl }}/assets/img/ritual/num6.png" alt="Ritual 6">
+            <!-- Mindscape Core Section -->
+            <div class="ritual-section">
+                <h4 class="ritual-section-title" data-i18n="ritualCoreTitle">심상 코어</h4>
+                <div class="core-toggle-option" id="core-toggle">
+                    <img src="{{ site.baseurl }}/assets/img/character-detail/innate/core.png" alt="Core" class="core-toggle-img">
+                    <span class="core-toggle-text" data-i18n="ritualCoreActivate">코어 활성화</span>
                 </div>
             </div>
-            <div class="ritual-separator" style="margin: 8px 0; border-top: 1px solid #e5e7eb;"></div>
+            <div class="ritual-separator" style="margin: 12px 0; border-top: 1px solid rgba(255,255,255,0.1);"></div>
+            <!-- Awareness Section -->
+            <div class="ritual-section">
+                <h4 class="ritual-section-title" data-i18n="ritualAwarenessTitle">Awareness</h4>
+                <div class="ritual-options">
+                    <div class="ritual-option" data-ritual="none">
+                        <div class="ritual-none">NONE</div>
+                    </div>
+                    <div class="ritual-option" data-ritual="num1">
+                        <img src="{{ site.baseurl }}/assets/img/ritual/num1.png" alt="Ritual 1">
+                    </div>
+                    <div class="ritual-option" data-ritual="num2">
+                        <img src="{{ site.baseurl }}/assets/img/ritual/num2.png" alt="Ritual 2">
+                    </div>
+                    <div class="ritual-option" data-ritual="num3">
+                        <img src="{{ site.baseurl }}/assets/img/ritual/num3.png" alt="Ritual 3">
+                    </div>
+                    <div class="ritual-option" data-ritual="num4">
+                        <img src="{{ site.baseurl }}/assets/img/ritual/num4.png" alt="Ritual 4">
+                    </div>
+                    <div class="ritual-option" data-ritual="num5">
+                        <img src="{{ site.baseurl }}/assets/img/ritual/num5.png" alt="Ritual 5">
+                    </div>
+                    <div class="ritual-option" data-ritual="num6">
+                        <img src="{{ site.baseurl }}/assets/img/ritual/num6.png" alt="Ritual 6">
+                    </div>
+                </div>
+            </div>
+            <div class="ritual-separator" style="margin: 12px 0; border-top: 1px solid rgba(255,255,255,0.1);"></div>
             <div class="ritual-modal-footer" style="margin-top: 12px;">
                 <div class="ritual-copy-option" style="width: 100%;">
                     <div class="ritual-none ritual-copy-button" style="width: 100%; text-align: center;"

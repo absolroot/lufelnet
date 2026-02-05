@@ -1238,6 +1238,20 @@ body:not(.tactic-edit-mode) .ritual-mod-wrapper {
     display: none !important;
 }
 
+/* Stamp type dropdown - same style as wonder-weapon-dropdown */
+.stamp-type-dropdown {
+    margin-top: 0px;
+}
+
+/* In non-edit mode, stamp type dropdown is visible but read-only */
+body:not(.tactic-edit-mode) .stamp-type-dropdown {
+    pointer-events: none !important;
+}
+
+body:not(.tactic-edit-mode) .stamp-type-dropdown .revelation-button[data-tooltip] {
+    pointer-events: auto !important;
+}
+
 /* ==========================================================================
    Persona Cards (Ported from persona.css)
    ========================================================================== */
@@ -1926,6 +1940,12 @@ body:not(.tactic-edit-mode) .ws-order {
     display: none !important;
 }
 
+/* Remove justify-content center in non-edit mode */
+
+body:not(.tactic-edit-mode) .ws-details {
+    padding: 10px;
+}
+
 .ws-order .order-label {
     font-size: 0.75rem;
     color: rgba(255, 255, 255, 0.5);
@@ -2246,8 +2266,8 @@ body:not(.tactic-edit-mode) .revelation-dropdown.open .revelation-menu {
     display: none !important;
 }
 
-body:not(.tactic-edit-mode) .wonder-weapon-dropdown{
-    padding: 16px 0;
+body:not(.tactic-edit-mode) .wonder-weapon-dropdown {
+    padding: 0;
 }
 
 body:not(.tactic-edit-mode) .revelation-dropdown {

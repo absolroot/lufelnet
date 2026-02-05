@@ -362,7 +362,7 @@ const jpCharacterWeaponData = {
         }
     },
     "리코·매화": {
-        "name": "多祢村 理子・花見",
+        "name": "理子・生命欲の暴走",
         "weapon4-1": {
             "name": "晴れ日の風鈴",
             "health": 1918,

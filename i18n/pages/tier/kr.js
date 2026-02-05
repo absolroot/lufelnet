@@ -28,7 +28,16 @@ export default {
     helpMessage: '* 캐릭터를 더블클릭하면 의식을 설정할 수 있습니다.',
 
     // Ritual modal
+    ritualModalTitle: '캐릭터 강화 요소',
+    ritualCoreTitle: '심상 코어',
+    ritualCoreActivate: '코어 활성화',
+    ritualAwarenessTitle: 'Awareness',
     ritualCopy: '캐릭터 복사',
+
+    // Toolbar buttons
+    captureImage: '이미지 캡처',
+    exportJSON: 'JSON 내보내기',
+    importJSON: 'JSON 가져오기',
 
     // Spoiler toggle
     showSpoilers: '스포일러 보기',
@@ -39,7 +48,7 @@ export default {
     tierCriteriaItems: [
         'LV80, 모든 스킬 레벨 등 의식을 제외한 모든 값이 기본적으로 세팅돼있는 경우를 말합니다.',
         '경쟁 콘텐츠를 중심으로 작성됐으며, 버전 업데이트에 따라 티어는 지속적으로 변동될 수 있습니다.',
-        'J&C는 심상 코어를 모두 활성화한 기준으로 작성돼있습니다.'
+        '심상 코어를 모두 활성화한 기준으로 작성돼있습니다.'
     ],
 
     // Tag translations (for filter)

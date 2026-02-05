@@ -1408,14 +1408,25 @@ export class PartyUI {
             // Set the mover's order
             setOrder(index, String(targetOrderNum));
         } else {
-            // Normal case: shift others UP if target is taken
+            // Normal case: swap with target if taken, or shift others
             if (orderToParticipant.has(targetOrderNum)) {
-                // Shift those >= targetOrderNum forward (from high to low to avoid collision)
-                for (let o = 4; o >= targetOrderNum; o--) {
-                    if (orderToParticipant.has(o)) {
-                        const participant = orderToParticipant.get(o);
-                        if (o < 4) {
-                            setOrder(participant, String(o + 1));
+                const occupant = orderToParticipant.get(targetOrderNum);
+                
+                // If current slot has an order, swap with the occupant
+                if (currentOrderNum >= 1 && currentOrderNum <= 4) {
+                    setOrder(occupant, String(currentOrderNum));
+                } else {
+                    // Current slot has no order, need to shift occupant and others
+                    // Shift those >= targetOrderNum forward (from high to low to avoid collision)
+                    for (let o = 4; o >= targetOrderNum; o--) {
+                        if (orderToParticipant.has(o)) {
+                            const participant = orderToParticipant.get(o);
+                            if (o < 4) {
+                                setOrder(participant, String(o + 1));
+                            } else {
+                                // Order 4 has nowhere to go, clear it
+                                setOrder(participant, '-');
+                            }
                         }
                     }
                 }

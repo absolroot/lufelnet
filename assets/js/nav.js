@@ -162,56 +162,56 @@ class Navigation {
                 </div>
                 ${currentMenus.includes('home') ? `
                 <a href="${BASE_URL}/?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="home">
-                    <img src="${BASE_URL}/assets/img/nav/home.png" alt="home" style="width: 32px; height: 32px; object-fit: contain;" />
+                    <img src="${BASE_URL}/assets/img/nav/home.png" alt="home" style="width: 28px; height: 28px; object-fit: contain;" />
                     <span data-text="${texts.home}">${texts.home}</span>
                 </a>
                 ` : ''}
                 ${currentMenus.includes('character') ? `
                 <a href="${BASE_URL}/character/?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="character">
-                    <img src="${BASE_URL}/assets/img/nav/guaidao.png" alt="guaidao" style="width: 32px; height: 32px; object-fit: contain;" />
+                    <img src="${BASE_URL}/assets/img/nav/guaidao.png" alt="guaidao" style="width: 28px; height: 28px; object-fit: contain;" />
                     <span data-text="${texts.character}">${texts.character}</span>
                 </a>
                 ` : ''}
                 ${currentMenus.includes('persona') ? `
                 <a href="${BASE_URL}/persona?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="persona">
-                    <img src="${BASE_URL}/assets/img/nav/persona.png" alt="persona" style="width: 32px; height: 32px; object-fit: contain;" />
+                    <img src="${BASE_URL}/assets/img/nav/persona.png" alt="persona" style="width: 28px; height: 28px; object-fit: contain;" />
                     <span data-text="${texts.persona}">${texts.persona}</span>
                 </a>
                 ` : ''}
                 ${currentMenus.includes('revelations') ? `
                 <a href="${BASE_URL}/revelations?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="revelations">
-                    <img src="${BASE_URL}/assets/img/nav/qishi.png" alt="qishi" style="width: 32px; height: 32px; object-fit: contain;" />
+                    <img src="${BASE_URL}/assets/img/nav/qishi.png" alt="qishi" style="width: 28px; height: 28px; object-fit: contain;" />
                     <span data-text="${texts.revelations}">${texts.revelations}</span>
                 </a>
                 ` : ''}
                 ${currentMenus.includes('synergy') ? `
                 <a href="${BASE_URL}/synergy?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="synergy">
-                    <img src="${BASE_URL}/assets/img/nav/synergy.png" alt="synergy" style="width: 32px; height: 32px; object-fit: contain;" />
+                    <img src="${BASE_URL}/assets/img/nav/synergy.png" alt="synergy" style="width: 28px; height: 28px; object-fit: contain;" />
                     <span data-text="${texts.synergy}">${texts.synergy}</span>
                 </a>
                 ` : ''}
                 ${currentMenus.includes('wonderweapon') ? `
                 <a href="${BASE_URL}/wonder-weapon?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="wonderweapon">
-                    <img src="${BASE_URL}/assets/img/nav/wonder-weapon.png" alt="wonderweapon" style="width: 32px; height: 32px; object-fit: contain;" />
+                    <img src="${BASE_URL}/assets/img/nav/wonder-weapon.png" alt="wonderweapon" style="width: 28px; height: 28px; object-fit: contain;" />
                     <span data-text="${texts.wonderweapon}">${texts.wonderweapon}</span>
                 </a>
                 ` : ''}
                 ${currentMenus.includes('maps') ? `
                 <a href="${BASE_URL}/maps?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="maps">
-                    <img src="${BASE_URL}/assets/img/nav/maps.png" alt="maps" style="width: 32px; height: 32px; object-fit: contain;" />
+                    <img src="${BASE_URL}/assets/img/nav/maps.png" alt="maps" style="width: 28px; height: 28px; object-fit: contain;" />
                     <span data-text="${texts.maps}">${texts.maps}</span>
                 </a>
                 ` : ''}
                 ${currentMenus.includes('astrolabe') ? `
                 <a href="${BASE_URL}/astrolabe/?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="astrolabe">
-                    <img src="${BASE_URL}/assets/img/nav/astrolabe.png" alt="astrolabe" style="width: 32px; height: 32px; object-fit: contain;" />
+                    <img src="${BASE_URL}/assets/img/nav/astrolabe.png" alt="astrolabe" style="width: 28px; height: 28px; object-fit: contain;" />
                     <span data-text="${texts.astrolabe}">${texts.astrolabe}</span>
                 </a>
                 ` : ''}
                 ${currentMenus.includes('pullTracker') ? `
                 <div class="nav-item has-submenu" data-nav="pullTracker">
                     <div class="nav-main-item">
-                        <img src="${BASE_URL}/assets/img/nav/pull.png" alt="pullTracker" style="width: 32px; height: 32px; object-fit: contain;" />
+                        <img src="${BASE_URL}/assets/img/nav/pull.png" alt="pullTracker" style="width: 28px; height: 28px; object-fit: contain;" />
                         <span data-text="${texts.pullTracker}">${texts.pullTracker}</span>
                     </div>
                     <div class="submenu">
@@ -235,7 +235,7 @@ class Navigation {
                 ${currentMenus.includes('calculator') ? `
                 <div class="nav-item has-submenu" data-nav="calculator">
                     <div class="nav-main-item">
-                        <img src="${BASE_URL}/assets/img/nav/calculator.png" alt="calculator" style="width: 32px; height: 32px; object-fit: contain;" />
+                        <img src="${BASE_URL}/assets/img/nav/calculator.png" alt="calculator" style="width: 28px; height: 28px; object-fit: contain;" />
                         <span data-text="${texts.calculator}">${texts.calculator}</span>
                     </div>
                     <div class="submenu">
@@ -259,7 +259,7 @@ class Navigation {
                 ${currentMenus.includes('tactic') ? `
                 <div class="nav-item has-submenu" data-nav="tactic">
                     <div class="nav-main-item">
-                        <img src="${BASE_URL}/assets/img/nav/tactic.png" alt="tactic" style="width: 32px; height: 32px; object-fit: contain;" />
+                        <img src="${BASE_URL}/assets/img/nav/tactic.png" alt="tactic" style="width: 28px; height: 28px; object-fit: contain;" />
                         <span data-text="${texts.tactic}">${texts.tactic}</span>
                     </div>
                     <div class="submenu">
@@ -274,20 +274,20 @@ class Navigation {
                 ` : ''}
                 ${currentMenus.includes('tactic-maker') ? `
                 <a href="${BASE_URL}/tactic?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="tactic-maker">
-                    <img src="${BASE_URL}/assets/img/nav/tactic.png" alt="tactic" style="width: 32px; height: 32px; object-fit: contain;" />
+                    <img src="${BASE_URL}/assets/img/nav/tactic.png" alt="tactic" style="width: 28px; height: 28px; object-fit: contain;" />
                     <span data-text="${texts.tacticMaker}">${texts.tacticMaker}</span>
                 </a>
                 ` : ''}
                 ${currentMenus.includes('article') ? `
                     <a href="${BASE_URL}/article/?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="article">
-                        <img src="${BASE_URL}/assets/img/nav/article.png" alt="article" style="width: 32px; height: 32px; object-fit: contain;" />
+                        <img src="${BASE_URL}/assets/img/nav/article.png" alt="article" style="width: 28px; height: 28px; object-fit: contain;" />
                         <span data-text="${texts.article}">${texts.article}</span>
                     </a>
                     ` : ''}
                 ${currentMenus.includes('tier') ? `
                 <div class="nav-item has-submenu" data-nav="tier">
                     <div class="nav-main-item">
-                        <img src="${BASE_URL}/assets/img/nav/tier.png" alt="tier" style="width: 32px; height: 32px; object-fit: contain;" />
+                        <img src="${BASE_URL}/assets/img/nav/tier.png" alt="tier" style="width: 28px; height: 28px; object-fit: contain;" />
                         <span data-text="${texts.tier}">${texts.tier}</span>
                     </div>
                     <div class="submenu">
@@ -303,13 +303,13 @@ class Navigation {
 
                 ${currentMenus.includes('gallery') ? `
                     <a href="${BASE_URL}/gallery/?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="gallery">
-                        <img src="${BASE_URL}/assets/img/nav/gallery.png" alt="gallery" style="width: 32px; height: 32px; object-fit: contain;" />
+                        <img src="${BASE_URL}/assets/img/nav/gallery.png" alt="gallery" style="width: 28px; height: 28px; object-fit: contain;" />
                         <span data-text="${texts.gallery}">${texts.gallery}</span>
                     </a>
                     ` : ''}
                 ${currentMenus.includes('about') ? `
                 <a href="${BASE_URL}/about?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="about">
-                    <img src="${BASE_URL}/assets/img/nav/about.png" alt="about" style="width: 32px; height: 32px; object-fit: contain;" />
+                    <img src="${BASE_URL}/assets/img/nav/about.png" alt="about" style="width: 28px; height: 28px; object-fit: contain;" />
                     <span data-text="${texts.about}">${texts.about}</span>
                 </a>
                 ` : ''}

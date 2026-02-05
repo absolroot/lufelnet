@@ -12,7 +12,9 @@
 
 <br>
 
-다운을 빠르게 만들고 **독립 버킷인『다운 특수 공격』**을 강화하지만 의식0만으로는 부족한 모습을 보인다.
+다운을 빠르게 만들고 **독립 버킷인『다운 특수 공격』**을 강화한다 해당 버프는 별도로 곱해지기 때문에 언제나 일정 이상의 대미지 강화를 기대할 수 있다.
+
+그러나 아래와 같은 일부 제한 사항들이 존재하므로 참조하여 운영을 진행하는 것이 좋다.
 
 - 광역 보스의 기본 다운 수치는 5라서 의식1 미만이면 2스킬의 다운을 확정시킬 수 없다. 단일 보스는 다운치가 더 높아 효용성이 더 떨어진다.
 - 카타야마는 자체 버프(패시브/스킬)가 여럿이지만, 적 턴 종료 시에 다운에서 일어나기 때문에 디버프가 사라져 본인이 그 효과를 활용하기 어렵다.
@@ -27,7 +29,9 @@
 
 <br>
 
-Capable of quickly forcing Down and enhancing the **independent bucket “Down Special Attack”**, but shows noticeable limitations at A0.
+Quickly builds up Down and enhances the **independent bucket 『Down Special Attack』**. Since this buff stacks separately, you can always expect a certain level of damage enhancement.
+
+However, some limitations exist as listed below, so it's advisable to refer to them when operating.
 
 - AoE bosses have a base Down value of 5, making Skill 2 unable to guarantee Down before A1. Single-target bosses have even higher Down values, lowering her effectiveness further.  
 - Although she has multiple self-buffs (passives/skills), enemies stand up at the end of their turn, removing the debuffs—making it difficult for her to benefit from them.  
@@ -43,7 +47,9 @@ Capable of quickly forcing Down and enhancing the **independent bucket “Down S
 
 <br>
 
-素早くダウンを狙え、**独立計算の『ダウン特殊攻撃』**も強化できるが、A0では力不足が目立つ。
+ダウンを素早く発生させ、**独立バケットである『ダウン特殊攻撃』**を強化する。このバフは別途乗算されるため、常に一定以上のダメージ強化が期待できる。
+
+ただし、以下のような一部制限事項が存在するため、参照しながら運用を進めることが望ましい。
 
 - 全体ボスの基本ダウン値は5のため、A1未満ではスキル2で確定ダウンを取れない。単体ボスはさらにダウン値が高く、効率がさらに低下する。  
 - 自己バフ（パッシブ／スキル）は多いものの、敵はターン終了時にダウンから立ち上がるためデバフが消え、効果を活かしにくい。  

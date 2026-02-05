@@ -2,7 +2,7 @@ window.characterSetting = window.characterSetting || {};
 window.characterSetting["루우나"] = {
     "role": "화염 디버퍼",
     "video": ["Dv_rI-K7UnY", "gh3HhqBiBbQ"],
-    "video_en": [""],
+    "video_en": ["OBAr3ttwUIA","OmTj0OFlSDc"],
     "video_jp": ["CuopE0_v5BI"],
     "main_revelation": ["자유", "여정", "창조"],
     "sub_revelation": ["좌절", "주권", "화해"],

@@ -18,6 +18,7 @@ const mapping_en = {
     "자유": "Freedom",
     "진정성": "Integrity",
     "예리": "Agility",
+    "순수": "Purity",
     // Sub revelations
     "슬픔": "Sorrow",
     "변화": "Transformation",
@@ -46,7 +47,9 @@ const mapping_en = {
     "개선": "Triumph",
     "좌절": "Defeat",
     "풍족": "Satiety",
-    "획득": "Obtain"
+    "획득": "Obtain",
+    "타락": "Depravity",
+    "강인": "Tenacity",
 };
 
 // English revelation data
@@ -71,7 +74,8 @@ const enRevelationData = {
         "수락": "Acceptance",
         "자유": "Freedom",
         "진정성": "Integrity",
-        "예리": "Agility"
+        "예리": "Agility",
+        "순수": "Purity",
     },
     "subTranslated": {
         "슬픔": "Sorrow",
@@ -101,9 +105,12 @@ const enRevelationData = {
         "개선": "Triumph",
         "좌절": "Defeat",
         "풍족": "Satiety",
-        "획득": "Obtain"
+        "획득": "Obtain",
+        "타락": "Depravity",
+        "강인": "Tenacity",
     },
     "main": {
+        "Purity": ["Depravity"], // 순수
         "Nativity": ["Power"], // 탄생
         "Agility": ["Satiety"], // 예리
         "Perseverance": ["Sorrow", "Transformation", "Obtain"], //돌파
@@ -123,7 +130,8 @@ const enRevelationData = {
         "Freedom": ["Triumph", "Defeat", "Despair"], // 자유
     },
     "sub": {
-        
+        "Depravity": ["Purity"], // 타락
+        "Tenacity": [], // 강인
         "Satiety": ["Agility"], // 풍족
         "Obtain": ["Perseverance"], // 획득
         "Sorrow": ["Perseverance"], // 슬픔
@@ -293,7 +301,17 @@ const enRevelationData = {
             "set2": "Increase ATK by 12%.",
             "set4": "When cast a skill that reduces health, increase damage by 12% for 2 turns, up to 2 stacks.",
             "type": ["미출시"]
-        }
+        },
+        "Depravity": { //타락
+            "set2": "Increase ATK by 12%.",
+            "set4": "DMG Dealt increased by 12%. This effect increases to 24% during an Extra Turn.",
+            "type": [""]
+        },
+        "Tenacity": { //강인
+            "set2": "Gun damage increased by 10%.",
+            "set4": "Increase ATK by 25% for 2 turns; Gain this effect again when you cause a critical hit.",
+            "type": [""]
+        },
     },
     "set_effects": {
         "Perseverance": {
@@ -383,6 +401,10 @@ const enRevelationData = {
         },
         "Nativity": { // 탄생
             "Power": "When equipped by Justine & Caroline: Increase Desire Level by  5.0%."
+        },
+        "Purity": { // 순수
+            "Depravity": "Gain 1 stack of [Devotion] for each different Persona skill cast. ATK increases by 10% for 2 turns, stacking up to 3 times. At 3 stacks, own Critical Effect increases by an additional 12%. The duration of [Devotion] from different Persona skills is calculated independently.",
+            "type": ["미출시"]
         }
     }
 };

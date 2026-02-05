@@ -250,21 +250,31 @@ class TacticsViewer {
             const tacticIds = data.map(t => String(t.id));
             const likesMap = await this.loadLikesMap(tacticIds);
 
-            this.allTactics = data.map(tactic => ({
-                id: tactic.id,
-                title: tactic.title,
-                author: tactic.author,
-                comment: tactic.comment,
-                likes: likesMap[String(tactic.id)]?.likes || 0,
-                recentLikes: 0,
-                createdAt: new Date(tactic.created_at),
-                query: typeof tactic.query === 'string' ? (tactic.query.startsWith('{') ? JSON.parse(tactic.query) : null) : tactic.query,
-                url: tactic.url,
-                isLiked: this.isLikedByMe(likesMap[String(tactic.id)]),
-                region: tactic.region || null,
-                tactic_type: tactic.tactic_type || null,
-                user_id: tactic.user_id || null
-            }));
+            this.allTactics = data.map(tactic => {
+                const query = typeof tactic.query === 'string' ? (tactic.query.startsWith('{') ? JSON.parse(tactic.query) : null) : tactic.query;
+                // Detect tactic version: from DB field or from query JSON's tactic-maker-ver
+                let tacticVersion = tactic.tactic_version || 'legacy';
+                if (tacticVersion === 'legacy' && query && query['tactic-maker-ver']) {
+                    const vNum = parseFloat(query['tactic-maker-ver']);
+                    if (vNum >= 3.0) tacticVersion = 'v3';
+                }
+                return {
+                    id: tactic.id,
+                    title: tactic.title,
+                    author: tactic.author,
+                    comment: tactic.comment,
+                    likes: likesMap[String(tactic.id)]?.likes || 0,
+                    recentLikes: 0,
+                    createdAt: new Date(tactic.created_at),
+                    query,
+                    url: tactic.url,
+                    isLiked: this.isLikedByMe(likesMap[String(tactic.id)]),
+                    region: tactic.region || null,
+                    tactic_type: tactic.tactic_type || null,
+                    user_id: tactic.user_id || null,
+                    tactic_version: tacticVersion
+                };
+            });
 
             this.applyFilters();
         } catch (error) {
@@ -325,6 +335,8 @@ class TacticsViewer {
                 if (tactic.query && Array.isArray(tactic.query.party)) {
                     // 미출시 캐릭터가 하나라도 있으면 제외
                     const hasUnreleased = tactic.query.party.some(member => {
+                        // v3 format can have null party slots
+                        if (!member || !member.name) return false;
                         // 원더 제외
                         if (member.name === '원더') return false;
                         // originalList에 없는 캐릭터면 미출시로 간주
@@ -341,7 +353,7 @@ class TacticsViewer {
             filtered = filtered.filter(tactic => {
                 try {
                     const party = Array.isArray(tactic.query?.party) ? tactic.query.party : [];
-                    return this.selectedCharacters.every(name => party.some(p => p.name === name));
+                    return this.selectedCharacters.every(name => party.some(p => p && p.name === name));
                 } catch (e) { return false; }
             });
         }
@@ -372,7 +384,9 @@ class TacticsViewer {
     }
 
     createPostElement(tactic) {
-        const libraryLink = tactic.url ? `/tactic/?library=${encodeURIComponent(tactic.url)}` : null;
+        // Version-aware link: v3 goes to /tactic-maker/, legacy goes to /tactic/
+        const tacticPath = tactic.tactic_version === 'v3' ? '/tactic-maker/' : '/tactic/';
+        const libraryLink = tactic.url ? `${tacticPath}?library=${encodeURIComponent(tactic.url)}` : null;
         const postDiv = document.createElement('div');
         postDiv.className = 'post-item';
         postDiv.setAttribute('data-post-id', tactic.id);

@@ -73,7 +73,7 @@ window.operationData["리코·매화"] = {
     ],
     "note_en": [
         "· The buff of the passive critical effect is not limited",
-        "· If the party is not a Gale party, the skill 0 cycle is 3-2"
+        "· If the party is not a Wind party, the skill 0 cycle is 3-2"
     ],
     "note_jp": [
         "· パッシブのCRT倍率バフの上限なし",

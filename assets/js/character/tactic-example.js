@@ -209,7 +209,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                     };
 
                     matched.slice(0,3).forEach(t => {
-                        const libraryLink = t.url ? `/tactic/?library=${encodeURIComponent(t.url)}` : null;
+                        const libraryLink = t.url ? `/tactic-maker/?library=${encodeURIComponent(t.url)}` : null;
                         const item = document.createElement('div');
                         item.className = 'post-item';
                         item.setAttribute('data-post-id', String(t.id));

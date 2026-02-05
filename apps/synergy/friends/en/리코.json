@@ -5,16 +5,16 @@
                 "good_answers": [
                     [
                         {
-                            "content": "I like Shichi-kun a lot.",
-                            "reward": 60
-                        },
-                        {
-                            "content": "He's fine, I guess...?",
+                            "content": "Have you found your true self?",
                             "reward": 50
                         },
                         {
-                            "content": "I don't know too much about him.",
+                            "content": "You sure we can't split the bill?",
                             "reward": 40
+                        },
+                        {
+                            "content": "I got to see your cute side today.",
+                            "reward": 60
                         }
                     ]
                 ],
@@ -22,22 +22,22 @@
                     "from": 2,
                     "to": 3
                 },
-                "unlock_cond": "Guts Lv.3"
+                "unlock_cond": "Knowledge Lv.3"
             },
             {
                 "good_answers": [
                     [
                         {
-                            "content": "We'll go together.",
-                            "reward": 50
+                            "content": "It's time to find the real Riko.",
+                            "reward": 60
                         },
                         {
-                            "content": "Guess I have no choice.",
+                            "content": "You'll still have us.",
                             "reward": 40
                         },
                         {
-                            "content": "I'll do it. For Shichi-kun.",
-                            "reward": 60
+                            "content": "I don't think that'll happen...",
+                            "reward": 50
                         }
                     ]
                 ],
@@ -45,21 +45,21 @@
                     "from": 4,
                     "to": 5
                 },
-                "unlock_cond": "Guts Lv.5"
+                "unlock_cond": "Knowledge Lv.5"
             },
             {
                 "good_answers": [
                     [
                         {
-                            "content": "You touched his heart, Runa.",
+                            "content": "It would suit you.",
                             "reward": 60
                         },
                         {
-                            "content": "I'm used to it.",
+                            "content": "Sounds pretty tough...",
                             "reward": 40
                         },
                         {
-                            "content": "Anything for Shichi-kun.",
+                            "content": "Should we add it to the list?",
                             "reward": 50
                         }
                     ]
@@ -68,22 +68,22 @@
                     "from": 6,
                     "to": 7
                 },
-                "unlock_cond": "Guts Lv.6"
+                "unlock_cond": "Knowledge Lv.6"
             },
             {
                 "good_answers": [
                     [
                         {
-                            "content": "Woof! Woof! Hooray!",
+                            "content": "It's my duty as team leader.",
+                            "reward": 40
+                        },
+                        {
+                            "content": "It makes me happy to hear that.",
                             "reward": 60
                         },
                         {
-                            "content": "Woof woof hooray.",
+                            "content": "Talking it out always helps.",
                             "reward": 50
-                        },
-                        {
-                            "content": "Woof. Woof. Hooray...",
-                            "reward": 40
                         }
                     ]
                 ],
@@ -91,22 +91,22 @@
                     "from": 8,
                     "to": 9
                 },
-                "unlock_cond": "Guts Lv.8"
+                "unlock_cond": "Knowledge Lv.8"
             },
             {
                 "good_answers": [
                     [
                         {
-                            "content": "I'd call this a win.",
+                            "content": "Riko can't accept that.",
                             "reward": 60
                         },
                         {
-                            "content": "Better to be infamous than unknown.",
-                            "reward": 50
+                            "content": "What made you want to embezzle?",
+                            "reward": 40
                         },
                         {
-                            "content": "Maybe keep the weird routine?",
-                            "reward": 40
+                            "content": "Why the sudden kindness?",
+                            "reward": 50
                         }
                     ]
                 ],
@@ -114,22 +114,22 @@
                     "from": 10,
                     "to": 11
                 },
-                "unlock_cond": "Guts Lv.10"
+                "unlock_cond": "Knowledge Lv.10"
             },
             {
                 "good_answers": [
                     [
                         {
-                            "content": "This is copyright infringement.",
-                            "reward": 40
+                            "content": "Riko was considering other paths.",
+                            "reward": 60
                         },
                         {
-                            "content": "Are you just jealous of Shichi-kun?",
+                            "content": "Succession isn't the only way.",
                             "reward": 50
                         },
                         {
-                            "content": "Apologize to Runa.",
-                            "reward": 60
+                            "content": "Riko won't become the successor.",
+                            "reward": 40
                         }
                     ]
                 ],
@@ -137,22 +137,22 @@
                     "from": 12,
                     "to": 13
                 },
-                "unlock_cond": "Guts Lv.11"
+                "unlock_cond": "Knowledge Lv.11"
             },
             {
                 "good_answers": [
                     [
                         {
-                            "content": "I'll \"persuade\" him myself...",
+                            "content": "It's not a question of quantity.",
                             "reward": 50
                         },
                         {
-                            "content": "I was just curious.",
-                            "reward": 40
+                            "content": "Riko wants to be a teacher.",
+                            "reward": 60
                         },
                         {
-                            "content": "Leave the rest to me.",
-                            "reward": 60
+                            "content": "That's a bit off the mark...",
+                            "reward": 40
                         }
                     ]
                 ],
@@ -160,21 +160,21 @@
                     "from": 14,
                     "to": 15
                 },
-                "unlock_cond": "Guts Lv.13"
+                "unlock_cond": "Knowledge Lv.13"
             },
             {
                 "good_answers": [
                     [
                         {
-                            "content": "A city that accepts everyone, huh?",
-                            "reward": 60
-                        },
-                        {
-                            "content": "You're so sweet, Runa.",
+                            "content": "It's all right.",
                             "reward": 40
                         },
                         {
-                            "content": "Well done, Shichi-Kun VII.",
+                            "content": "I don't want you to cry alone.",
+                            "reward": 60
+                        },
+                        {
+                            "content": "You're cute no matter what.",
                             "reward": 50
                         }
                     ]
@@ -183,60 +183,53 @@
                     "from": 16,
                     "to": 17
                 },
-                "unlock_cond": "Guts Lv.15"
+                "unlock_cond": "Knowledge Lv.15"
             },
             {
-                "good_answers": [
-                    [
-                        {
-                            "content": "All thanks to you.",
-                            "reward": 60
-                        },
-                        {
-                            "content": "All thanks to me.",
-                            "reward": 40
-                        },
-                        {
-                            "content": "All thanks to Shichi-kun.",
-                            "reward": 50
-                        }
-                    ]
-                ],
+                "good_answers": [],
                 "rank_up": {
                     "from": 19,
                     "to": 20
                 },
-                "unlock_cond": "Guts Lv.17"
+                "unlock_cond": "Knowledge Lv.17"
             }
         ],
         "can_romance": true,
         "friend_lover_dialog": [
             {
-                "content": "Because I love Shibuya.",
+                "content": "I'll go with you, as a friend.",
                 "is_romance": false
             },
             {
-                "content": "Because I want to make you smile.",
+                "content": "I want to be there as your partner.",
                 "is_romance": true
             }
         ],
         "item": [
             {
-                "bonus_synergy": 9,
+                "bonus_synergy": 15,
                 "compound": [],
-                "image": "item-303067.png",
-                "name": "Sports Cap",
-                "new_gift_synergy": 18,
+                "image": "item-303069.png",
+                "name": "Baseball Team Mascot Bear",
+                "new_gift_synergy": 30,
                 "seed": [],
                 "shop": [
                     {
-                        "discountPrice": 3330,
                         "isHidden": 0,
                         "mapName": null,
-                        "maxBuy": 4,
+                        "maxBuy": 1,
+                        "moneyName": "Batting Points",
+                        "price": 400,
+                        "resetType": "없음",
+                        "shopName": "Batting Point Exchange"
+                    },
+                    {
+                        "discountPrice": 5510,
+                        "isHidden": 0,
+                        "mapName": null,
+                        "maxBuy": 1,
                         "moneyName": "Money",
-                        "personalityLimit": "Proficiency LV.3",
-                        "price": 3500,
+                        "price": 5800,
                         "reducePriceCond": "Runa Dogenzaka LV.9",
                         "resetType": "주간",
                         "shopName": "Zoshigaya Mart"
@@ -244,17 +237,54 @@
                     {
                         "isHidden": 0,
                         "mapName": null,
-                        "maxBuy": 1,
-                        "moneyName": "Soccer Badge",
-                        "price": 70,
-                        "resetType": "주간",
-                        "shopName": "Soccer Point Exchange"
+                        "maxBuy": -1,
+                        "moneyName": "Arcade Exchange Voucher",
+                        "price": 1160,
+                        "resetType": "없음",
+                        "shopName": "AAAAAA=="
                     }
                 ],
                 "source": [
                     "shop"
                 ],
-                "synergy": 9
+                "synergy": 15
+            },
+            {
+                "bonus_synergy": 50,
+                "compound": [],
+                "image": "item-303083.png",
+                "name": "Pearl Earrings",
+                "new_gift_synergy": 100,
+                "seed": [],
+                "shop": [
+                    {
+                        "discountPrice": 27000,
+                        "isHidden": 0,
+                        "mapName": null,
+                        "maxBuy": 1,
+                        "moneyName": "Money",
+                        "personalityLimit": "Charm LV.8",
+                        "price": 28000,
+                        "reducePriceCond": "Runa Dogenzaka LV.7",
+                        "resetType": "주간",
+                        "shopName": "Kyouryuu Jewelry"
+                    },
+                    {
+                        "discountPrice": 27000,
+                        "isHidden": 0,
+                        "mapName": null,
+                        "maxBuy": 1,
+                        "moneyName": "Money",
+                        "price": 28000,
+                        "reducePriceCond": "Runa Dogenzaka LV.13",
+                        "resetType": "주간",
+                        "shopName": "Crystal Healing"
+                    }
+                ],
+                "source": [
+                    "shop"
+                ],
+                "synergy": 50
             },
             {
                 "bonus_synergy": 20,
@@ -291,23 +321,75 @@
                 "synergy": 20
             },
             {
-                "bonus_synergy": 8,
+                "bonus_synergy": 29,
                 "compound": [],
-                "image": "item-303216.png",
-                "name": "Strawberry Bento Box",
-                "new_gift_synergy": 16,
+                "image": "item-303215.png",
+                "name": "Ume Fan",
+                "new_gift_synergy": 58,
                 "seed": [],
                 "shop": [
                     {
-                        "discountPrice": 3040,
+                        "discountPrice": 12160,
                         "isHidden": 0,
                         "mapName": null,
                         "maxBuy": 2,
                         "moneyName": "Money",
-                        "price": 3200,
-                        "reducePriceCond": "Runa Dogenzaka LV.7",
+                        "personalityLimit": "Charm LV.5",
+                        "price": 12800,
+                        "reducePriceCond": "Runa Dogenzaka LV.1",
                         "resetType": "주간",
-                        "shopName": "Triple Seven"
+                        "shopName": "High Sense"
+                    }
+                ],
+                "source": [
+                    "shop"
+                ],
+                "synergy": 29
+            },
+            {
+                "bonus_synergy": 28,
+                "compound": [],
+                "image": "item-303227.png",
+                "name": "Uji Matcha Flan Set",
+                "new_gift_synergy": 56,
+                "seed": [],
+                "shop": [
+                    {
+                        "discountPrice": 11400,
+                        "isHidden": 0,
+                        "mapName": null,
+                        "maxBuy": 1,
+                        "moneyName": "Money",
+                        "personalityLimit": "Kindness LV.13",
+                        "price": 12000,
+                        "reducePriceCond": "Runa Dogenzaka LV.1",
+                        "resetType": "주간",
+                        "shopName": "Taisho Store"
+                    }
+                ],
+                "source": [
+                    "shop"
+                ],
+                "synergy": 28
+            },
+            {
+                "bonus_synergy": 8,
+                "compound": [],
+                "image": "item-303236.png",
+                "name": "Japanese Book Cover",
+                "new_gift_synergy": 16,
+                "seed": [],
+                "shop": [
+                    {
+                        "discountPrice": 2850,
+                        "isHidden": 0,
+                        "mapName": null,
+                        "maxBuy": 4,
+                        "moneyName": "Money",
+                        "price": 3000,
+                        "reducePriceCond": "Runa Dogenzaka LV.1",
+                        "resetType": "주간",
+                        "shopName": "High Sense"
                     }
                 ],
                 "source": [
@@ -316,54 +398,135 @@
                 "synergy": 8
             },
             {
-                "bonus_synergy": 37,
+                "bonus_synergy": 20,
                 "compound": [],
-                "image": "item-303271.png",
-                "name": "Choker",
-                "new_gift_synergy": 74,
+                "image": "item-303238.png",
+                "name": "Burger Cushion",
+                "new_gift_synergy": 40,
                 "seed": [],
                 "shop": [
                     {
-                        "discountPrice": 17100,
+                        "discountPrice": 7600,
                         "isHidden": 0,
                         "mapName": null,
                         "maxBuy": 1,
                         "moneyName": "Money",
-                        "price": 18000,
-                        "reducePriceCond": "Runa Dogenzaka LV.13",
-                        "resetType": "주간",
-                        "shopName": "Crystal Healing"
-                    }
-                ],
-                "source": [
-                    "shop"
-                ],
-                "synergy": 37
-            },
-            {
-                "bonus_synergy": 52,
-                "compound": [],
-                "image": "item-303281.png",
-                "name": "Gag Glasses",
-                "new_gift_synergy": 104,
-                "seed": [],
-                "shop": [
-                    {
-                        "discountPrice": 29000,
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 1,
-                        "moneyName": "Money",
-                        "price": 30000,
+                        "price": 8000,
                         "reducePriceCond": "Runa Dogenzaka LV.1",
                         "resetType": "주간",
-                        "shopName": "37 Degrees Celsius"
+                        "shopName": "Triple Seven"
+                    },
+                    {
+                        "discountPrice": 7600,
+                        "isHidden": 0,
+                        "mapName": null,
+                        "maxBuy": 1,
+                        "moneyName": "Money",
+                        "price": 8000,
+                        "reducePriceCond": "Runa Dogenzaka LV.5",
+                        "resetType": "주간",
+                        "shopName": "Tokobushiya"
+                    },
+                    {
+                        "isHidden": 0,
+                        "mapName": null,
+                        "maxBuy": -1,
+                        "moneyName": "Arcade Exchange Voucher",
+                        "price": 1600,
+                        "resetType": "없음",
+                        "shopName": "AAAAAA=="
                     }
                 ],
                 "source": [
                     "shop"
                 ],
-                "synergy": 52
+                "synergy": 20
+            },
+            {
+                "bonus_synergy": 36,
+                "compound": [],
+                "image": "item-303239.png",
+                "name": "Flowery Comb",
+                "new_gift_synergy": 72,
+                "seed": [],
+                "shop": [
+                    {
+                        "discountPrice": 16150,
+                        "isHidden": 0,
+                        "mapName": null,
+                        "maxBuy": 1,
+                        "moneyName": "Money",
+                        "price": 17000,
+                        "reducePriceCond": "Runa Dogenzaka LV.1",
+                        "resetType": "주간",
+                        "shopName": "High Sense"
+                    }
+                ],
+                "source": [
+                    "shop"
+                ],
+                "synergy": 36
+            },
+            {
+                "bonus_synergy": 10,
+                "compound": [],
+                "image": "item-303240.png",
+                "name": "Classic Fairy Tales",
+                "new_gift_synergy": 20,
+                "seed": [],
+                "shop": [
+                    {
+                        "discountPrice": 3610,
+                        "isHidden": 0,
+                        "mapName": null,
+                        "maxBuy": 4,
+                        "moneyName": "Money",
+                        "price": 3800,
+                        "reducePriceCond": "Runa Dogenzaka LV.1",
+                        "resetType": "주간",
+                        "shopName": "Taisho Store"
+                    }
+                ],
+                "source": [
+                    "shop"
+                ],
+                "synergy": 10
+            },
+            {
+                "bonus_synergy": 12,
+                "compound": [],
+                "image": "item-303257.png",
+                "name": "Motorbike Figure",
+                "new_gift_synergy": 24,
+                "seed": [],
+                "shop": [
+                    {
+                        "discountPrice": 4560,
+                        "isHidden": 0,
+                        "mapName": null,
+                        "maxBuy": 3,
+                        "moneyName": "Money",
+                        "price": 4800,
+                        "reducePriceCond": "Runa Dogenzaka LV.1",
+                        "resetType": "주간",
+                        "shopName": "Rocinante"
+                    },
+                    {
+                        "discountPrice": 4560,
+                        "isHidden": 0,
+                        "mapName": null,
+                        "maxBuy": 3,
+                        "moneyName": "Money",
+                        "price": 4800,
+                        "reducePriceCond": "Runa Dogenzaka LV.5",
+                        "resetType": "주간",
+                        "shopName": "Tokobushiya"
+                    }
+                ],
+                "source": [
+                    "shop"
+                ],
+                "synergy": 12
             },
             {
                 "bonus_synergy": 8,
@@ -527,131 +690,6 @@
                 "synergy": 28
             },
             {
-                "bonus_synergy": 22,
-                "compound": [],
-                "image": "item-303290.png",
-                "name": "Smart Planter",
-                "new_gift_synergy": 44,
-                "seed": [],
-                "shop": [
-                    {
-                        "discountPrice": 8360,
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 2,
-                        "moneyName": "Money",
-                        "price": 8800,
-                        "reducePriceCond": "Runa Dogenzaka LV.7",
-                        "resetType": "주간",
-                        "shopName": "Flower Shop Sukebe"
-                    }
-                ],
-                "source": [
-                    "shop"
-                ],
-                "synergy": 22
-            },
-            {
-                "bonus_synergy": 7,
-                "compound": [],
-                "image": "item-317001.png",
-                "name": "Balloon Art Set",
-                "new_gift_synergy": 14,
-                "seed": [],
-                "shop": [
-                    {
-                        "discountPrice": 2550,
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 4,
-                        "moneyName": "Money",
-                        "price": 2680,
-                        "reducePriceCond": "Runa Dogenzaka LV.1",
-                        "resetType": "주간",
-                        "shopName": "Rocinante"
-                    }
-                ],
-                "source": [
-                    "shop"
-                ],
-                "synergy": 7
-            },
-            {
-                "bonus_synergy": 15,
-                "compound": [],
-                "image": "item-317002.png",
-                "name": "Cartoon Eye Mask",
-                "new_gift_synergy": 30,
-                "seed": [],
-                "shop": [
-                    {
-                        "discountPrice": 5590,
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 2,
-                        "moneyName": "Money",
-                        "price": 5880,
-                        "reducePriceCond": "Runa Dogenzaka LV.5",
-                        "resetType": "주간",
-                        "shopName": "Tokobushiya"
-                    }
-                ],
-                "source": [
-                    "shop"
-                ],
-                "synergy": 15
-            },
-            {
-                "bonus_synergy": 24,
-                "compound": [],
-                "image": "item-317003.png",
-                "name": "Advanced Sewing Tool Set",
-                "new_gift_synergy": 48,
-                "seed": [],
-                "shop": [
-                    {
-                        "discountPrice": 9310,
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 1,
-                        "moneyName": "Money",
-                        "price": 9800,
-                        "reducePriceCond": "Runa Dogenzaka LV.13",
-                        "resetType": "주간",
-                        "shopName": "Stationery Store"
-                    }
-                ],
-                "source": [
-                    "shop"
-                ],
-                "synergy": 24
-            },
-            {
-                "bonus_synergy": 42,
-                "compound": [],
-                "image": "item-317004.png",
-                "name": "Mini Cotton Candy Maker",
-                "new_gift_synergy": 84,
-                "seed": [],
-                "shop": [
-                    {
-                        "discountPrice": 20800,
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 1,
-                        "moneyName": "Money",
-                        "price": 21800,
-                        "reducePriceCond": "Runa Dogenzaka LV.5",
-                        "resetType": "주간",
-                        "shopName": "Akindo"
-                    }
-                ],
-                "source": [
-                    "shop"
-                ],
-                "synergy": 42
-            },
-            {
                 "bonus_synergy": 1000,
                 "compound": [],
                 "image": "item-305976.png",
@@ -663,28 +701,28 @@
                 "synergy": 999
             }
         ],
-        "name": "Runa Dogenzaka",
+        "name": "Riko Tanemura",
         "romance_dialog": [
             {
                 "good_answers": [
                     [
                         {
-                            "content": "I was pretty shocked.",
-                            "reward": 40
+                            "content": "I've got it covered.",
+                            "reward": 60
                         },
                         {
-                            "content": "I expected nothing less from you.",
-                            "reward": 40
+                            "content": "You sound like my mom...",
+                            "reward": 50
                         }
                     ],
                     [
                         {
-                            "content": "Wanna head up to my room?",
-                            "reward": 50
+                            "content": "With pleasure.",
+                            "reward": 40
                         },
                         {
-                            "content": "Let's stay like this for a while.",
-                            "reward": 60
+                            "content": "This is a bit sudden...",
+                            "reward": 40
                         }
                     ]
                 ]
@@ -692,40 +730,40 @@
         ],
         "special_award": [
             {
-                "description": "Prices of items in stores around Shibuya will be slightly reduced",
-                "icon": "xielizhe-icon-howler01.png",
-                "name": "Shibuya Coupon",
+                "description": "You can now go to the restaurant in Shibuya.",
+                "icon": "xielizhe-icon-lizi-01.png",
+                "name": "Best Buffet",
                 "rank": 1
             },
             {
-                "description": "Prices of items in stores around Akihabara will be slightly reduced",
-                "icon": "xielizhe-icon-howler02.png",
-                "name": "Akihabara Coupon",
-                "rank": 5
+                "description": "You can now go to Motomachi Chinatown.",
+                "icon": "xielizhe-icon-lizi-01.png",
+                "name": "Eat Around Chinatown",
+                "rank": 3
             },
             {
-                "description": "Prices of items in stores around Shinjuku will be slightly reduced",
-                "icon": "xielizhe-icon-howler03.png",
-                "name": "Shinjuku Coupon",
+                "description": "You can now go to the aquarium in Shinagawa. Synergy can be raised there.",
+                "icon": "xielizhe-icon-lizi-01.png",
+                "name": "Soothing Aquarium",
                 "rank": 7
             },
             {
-                "description": "Prices of items in stores around Zoshigaya and Yongen-Jaya will be slightly reduced",
-                "icon": "xielizhe-icon-howler04.png",
-                "name": "Zoshigaya & Yongen-Jaya Coupon",
-                "rank": 9
+                "description": "You can now go to the sushi restaurant in Ginza.",
+                "icon": "xielizhe-icon-lizi-01.png",
+                "name": "Fancy Sushi",
+                "rank": 13
             },
             {
-                "description": "Prices of items in stores around Kichijoji will be slightly reduced",
-                "icon": "xielizhe-icon-howler05.png",
-                "name": "Kichijoji Coupon",
-                "rank": 13
+                "description": "You can now go to the Electronics Superstore in Akihabara.\nSynergy can be raised there.",
+                "icon": "xielizhe-icon-lizi-01.png",
+                "name": "Bustling Electric Town",
+                "rank": 17
             }
         ],
-        "time": "Night",
+        "time": "After School",
         "unlock_quest": {
-            "details": "I should take on the Velvet Trials.",
-            "name": "The Velvet Room"
+            "details": "In a room somewhere, an unknown man gave Akashi a phone call...",
+            "name": "Unconditional Love"
         },
         "visit_dialog": [
             {
@@ -733,11 +771,41 @@
                 "good_answers": [
                     [
                         {
-                            "content": "That's... pretty unexpected.",
+                            "content": "Please do.",
+                            "reward": 60
+                        },
+                        {
+                            "content": "I'll pass...",
+                            "reward": 50
+                        }
+                    ]
+                ]
+            },
+            {
+                "destination": "Ueno",
+                "good_answers": [
+                    [
+                        {
+                            "content": "I'd love to.",
+                            "reward": 60
+                        },
+                        {
+                            "content": "Let's take a break first...",
+                            "reward": 50
+                        }
+                    ]
+                ]
+            },
+            {
+                "destination": "Kichijoji",
+                "good_answers": [
+                    [
+                        {
+                            "content": "I wanna explore on my own.",
                             "reward": 50
                         },
                         {
-                            "content": "You seem well informed.",
+                            "content": "Where are the swanky places?",
                             "reward": 60
                         }
                     ]
@@ -748,72 +816,27 @@
                 "good_answers": [
                     [
                         {
-                            "content": "A zesty ramen for a zesty mascot?",
+                            "content": "One thing at a time...",
                             "reward": 50
                         },
                         {
-                            "content": "Miso seems like the best choice.",
+                            "content": "You love going to the movies, huh.",
                             "reward": 60
                         }
                     ]
                 ]
             },
             {
-                "destination": "Seaside Park",
+                "destination": "Shimo-Kitazawa",
                 "good_answers": [
                     [
                         {
-                            "content": "Are you pretty good at it?",
+                            "content": "Of course, I don't mind.",
                             "reward": 60
                         },
                         {
-                            "content": "I feel bad for your dad...",
+                            "content": "Are you shirking your duties?",
                             "reward": 50
-                        }
-                    ]
-                ]
-            },
-            {
-                "destination": "Tsukishima",
-                "good_answers": [
-                    [
-                        {
-                            "content": "Think I'll scan the menu first.",
-                            "reward": 50
-                        },
-                        {
-                            "content": "I'll just go with what's popular.",
-                            "reward": 60
-                        }
-                    ]
-                ]
-            },
-            {
-                "destination": "Motomachi Chinatown",
-                "good_answers": [
-                    [
-                        {
-                            "content": "That might be a bit of a reach...",
-                            "reward": 50
-                        },
-                        {
-                            "content": "Shibuya's got some deep roots.",
-                            "reward": 60
-                        }
-                    ]
-                ]
-            },
-            {
-                "destination": "Shibuya",
-                "good_answers": [
-                    [
-                        {
-                            "content": "I heard their cake is famous.",
-                            "reward": 50
-                        },
-                        {
-                            "content": "How about the Choco Fountain?",
-                            "reward": 40
                         }
                     ]
                 ]

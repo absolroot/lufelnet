@@ -1,0 +1,80 @@
+{
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Ice",
+      "Electric",
+      "Curse"
+    ],
+    "Weak": [
+      "Fire"
+    ]
+  },
+  "fixed_skill": {
+    "cost": "SP 24",
+    "desc": "(SB)Deal Curse damage to all foes equal to 104.0%/109.2%/114.4% of Attack. Also, increase Defense by 10.0%/10.5%/11.0% and continous damage taken by 20.0%/21.0%/22.0%.",
+    "level": "6/7/8",
+    "name": "(SB)Gnawing Plague"
+  },
+  "innate_skill": [
+    {
+      "cost": "SP 21",
+      "desc": "Deal Curse damage to 1 foe equal to 132.5/140.8/149.1% of Attack. Inflict 1 to 2 Curse stacks on the foe.",
+      "learn_level": "10",
+      "level": "6/7/8",
+      "name": "Eigaon"
+    },
+    {
+      "cost": "",
+      "desc": "Increase Curse damage by 8.7%.",
+      "learn_level": "20",
+      "level": "6/7/8",
+      "name": "Year End Calamity"
+    },
+    {
+      "cost": "SP 21",
+      "desc": "Deal Curse damage to all foes equal to 66.5/70.7/74.9% of Attack. Chance to inflict 1 Curse stack on foes.",
+      "learn_level": "30",
+      "level": "6/7/8",
+      "name": "Maeigaon"
+    },
+    {
+      "cost": "",
+      "desc": "Increase Sleep resistance by 20.3%.",
+      "learn_level": "40",
+      "level": "6/7/8",
+      "name": "Resist Sleep IV"
+    }
+  ],
+  "max_level": 80,
+  "max_level_after_awake": 99,
+  "name": "Nian Shou",
+  "nature": "Curse",
+  "passive_skill": [
+    {
+      "desc": "AAAAAA==",
+      "name": "AAAAAA=="
+    },
+    {
+      "desc": "AAAAAA==",
+      "name": "AAAAAA=="
+    },
+    {
+      "desc": "AAAAAA==",
+      "name": "AAAAAA=="
+    },
+    {
+      "desc": "AAAAAA==",
+      "name": "AAAAAA=="
+    }
+  ],
+  "rank": 8,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Curse damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
+}

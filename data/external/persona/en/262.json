@@ -1,0 +1,80 @@
+{
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Fire",
+      "Wind",
+      "Bless"
+    ],
+    "Weak": [
+      "Nuclear"
+    ]
+  },
+  "fixed_skill": {
+    "cost": "SP 24",
+    "desc": "Increase party's Attack by 12.0%/12.6%/13.2%. For every 500 of the user's Attack, increase allies' Attack by 0.8%/0.8%/0.8% more (up to 6%). Lasts for 3 turns.\nAlso, grant Purifying Flames to the main target for 3 turns.\nPurifying Flames: When dealing skill damage to foes, 75% chance to inflict Burn on 1 random foe.",
+    "level": "6/7/8",
+    "name": "Purifying Flames"
+  },
+  "innate_skill": [
+    {
+      "cost": "SP 21",
+      "desc": "Deal Fire damage to 1 foe equal to 121.7/127.8/133.9% of Attack. 67.6/71.0/74.4% chance to inflict Burn for 2 turns.",
+      "learn_level": "10",
+      "level": "6/7/8",
+      "name": "Agidyne"
+    },
+    {
+      "cost": "",
+      "desc": "Increase Burn accuracy by 16.3%.",
+      "learn_level": "20",
+      "level": "6/7/8",
+      "name": "Burn Boost III"
+    },
+    {
+      "cost": "",
+      "desc": "Increase Fire damage by 8.7%.",
+      "learn_level": "30",
+      "level": "6/7/8",
+      "name": "Fire Boost III"
+    },
+    {
+      "cost": "SP 21",
+      "desc": "Deal Bless damage to all foes equal to 65.8/70.0/74.2% of Attack. Gain 1 to 2 Blessing stacks.",
+      "learn_level": "40",
+      "level": "6/7/8",
+      "name": "Makougaon"
+    }
+  ],
+  "max_level": 80,
+  "max_level_after_awake": 95,
+  "name": "Throne",
+  "nature": "Fire",
+  "passive_skill": [
+    {
+      "desc": "Increase Attack by 29.1%.\nAt the start of battle, gain 4 Holy Flame stacks, and every 2 turns, inflict Burn on 1 random foe.\nWhen allies inflict an elemental ailment, gain 1 Holy Flame stack for 3 turns. If the ailment inflicted is Burn, gain 1 more Holy Flame stack. Holy Flame stacks up to 10 times, and up to 2 stacks can be gained from 1 skill.\nWhen an ally uses a skill, if Holy Flame is at 4 or more stacks, spend all Holy Flame stacks to increase the party's damage by 1% per stack for 2 turns. Also, 50% chance to inflict Burn on 1 random foe.",
+      "name": "Flaming Chariot"
+    },
+    {
+      "desc": "Increase Attack by 29.1%.\nAt the start of battle, gain 8 Holy Flame stacks, and every 2 turns, inflict Burn on 1 random foe.\nWhen allies inflict an elemental ailment, gain 1 Holy Flame stack for 3 turns. If the ailment inflicted is Burn, gain 1 more Holy Flame stack. Holy Flame stacks up to 10 times, and up to 2 stacks can be gained from 1 skill.\nWhen an ally uses a skill, if Holy Flame is at 4 or more stacks, spend all Holy Flame stacks to increase the party's damage by 1% per stack for 2 turns. Also, 50% chance to inflict Burn on 1 random foe.",
+      "name": "Flaming Chariot I"
+    },
+    {
+      "desc": "Increase Attack by 29.1%.\nAt the start of battle, gain 8 Holy Flame stacks, and every 2 turns, inflict Burn on 1 random foe.\nWhen allies inflict an elemental ailment, gain 1 Holy Flame stack for 3 turns. If the ailment inflicted is Burn, gain 1 more Holy Flame stack. Holy Flame stacks up to 10 times, and up to 2 stacks can be gained from 1 skill.\nWhen an ally uses a skill, if Holy Flame is at 4 or more stacks, spend all Holy Flame stacks to increase the party's damage by 1.5% per stack for 2 turns. Also, 50% chance to inflict Burn on 1 random foe.",
+      "name": "Flaming Chariot II"
+    },
+    {
+      "desc": "Increase Attack by 29.1%.\nAt the start of battle, gain 8 Holy Flame stacks, and every 2 turns, inflict Burn on 1 random foe.\nWhen allies inflict an elemental ailment, gain 1 Holy Flame stack for 3 turns. If the ailment inflicted is Burn, gain 1 more Holy Flame stack. Holy Flame stacks up to 10 times, and up to 2 stacks can be gained from 1 skill.\nWhen an ally uses a skill, if Holy Flame is at 4 or more stacks, spend all Holy Flame stacks to increase the party's damage by 1.5% per stack for 2 turns. Also, 75% chance to inflict Burn on 1 random foe.",
+      "name": "Flaming Chariot III"
+    }
+  ],
+  "rank": 7,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Increase party's damage by 29.5%/31.6%/33.6% for 2 turns.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
+}

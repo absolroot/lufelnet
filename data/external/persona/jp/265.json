@@ -1,0 +1,80 @@
+{
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Ice",
+      "Electric",
+      "Curse"
+    ],
+    "Weak": [
+      "Fire"
+    ]
+  },
+  "fixed_skill": {
+    "cost": "SP 24",
+    "desc": "(SB)敵全体に攻撃力104.0%/109.2%/114.4%の呪怨属性ダメージを与える。さらに２ターンの間、防御力が10.0%/10.5%/11.0%し、受ける持続ダメージが20.0%/21.0%/22.0%上昇する。",
+    "level": "6/7/8",
+    "name": "(SB)呪禍の蝕み"
+  },
+  "innate_skill": [
+    {
+      "cost": "SP 21",
+      "desc": "敵単体に攻撃力132.5/140.8/149.1%の呪怨属性ダメージを与える。敵に１～２つの呪印を付与する。",
+      "learn_level": "10",
+      "level": "6/7/8",
+      "name": "エイガオン"
+    },
+    {
+      "cost": "",
+      "desc": "呪怨属性の与ダメージが８.７%上昇する。",
+      "learn_level": "20",
+      "level": "6/7/8",
+      "name": "歳暮の厄災"
+    },
+    {
+      "cost": "SP 21",
+      "desc": "敵全体に攻撃力66.5/70.7/74.9%の呪怨属性ダメージを与える。一定の確率で敵に１つの呪印を付与する。",
+      "learn_level": "30",
+      "level": "6/7/8",
+      "name": "マハエイガオン"
+    },
+    {
+      "cost": "",
+      "desc": "睡眠の抵抗率が２０.３%上昇する。",
+      "learn_level": "40",
+      "level": "6/7/8",
+      "name": "睡眠耐性Ⅳ"
+    }
+  ],
+  "max_level": 80,
+  "max_level_after_awake": 99,
+  "name": "ネンジュウ",
+  "nature": "Curse",
+  "passive_skill": [
+    {
+      "desc": "AAAAAA==",
+      "name": "AAAAAA=="
+    },
+    {
+      "desc": "AAAAAA==",
+      "name": "AAAAAA=="
+    },
+    {
+      "desc": "AAAAAA==",
+      "name": "AAAAAA=="
+    },
+    {
+      "desc": "AAAAAA==",
+      "name": "AAAAAA=="
+    }
+  ],
+  "rank": 8,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "敵全体に攻撃力90.0%/96.3%/102.6%の呪怨属性ダメージを与える。さらに２ターンの間、被ダメージが19.6%/21.0%/22.3%上昇する。",
+    "level": "6/7/8",
+    "name": "ハイライト"
+  }
+}

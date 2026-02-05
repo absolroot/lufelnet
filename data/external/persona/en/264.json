@@ -1,0 +1,81 @@
+{
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Phys",
+      "Gun",
+      "Ice",
+      "Electric"
+    ],
+    "Weak": [
+      "Nuclear"
+    ]
+  },
+  "fixed_skill": {
+    "cost": "체력 11.0%",
+    "desc": "Deal Physical damage to all foes equal to 95.0%/99.8%/104.5% of Attack.\nIf user has no Dragon's Blood, gain Dragon's Blood.\nWhen gaining Dragon's Blood, reset duration, and enhance Dragon's Blood.",
+    "level": "6/7/8",
+    "name": "Dragonslayer's Sword"
+  },
+  "innate_skill": [
+    {
+      "cost": "SP 22",
+      "desc": "Increase party's ailment accuracy and ailment resistance by 6.5%/6.8%/7.2%, and Speed by 3 for 3 turns. For every 25% of the user's ailment accuracy, increase party's ailment accuracy by 1.1%/1.2%/1.2% more, up to 4.4%/4.6%/4.8%.",
+      "learn_level": "10",
+      "level": "6/7/8",
+      "name": "Masukukaja"
+    },
+    {
+      "cost": "",
+      "desc": "Increase critical rate by 9.7% when ambushing.",
+      "learn_level": "20",
+      "level": "6/7/8",
+      "name": "Fortified Moxy IV"
+    },
+    {
+      "cost": "SP 22",
+      "desc": "Increase Physical and Gun damage (excluding 1 More) by 52.1%/54.7%/57.3% for 1 turn.",
+      "learn_level": "30",
+      "level": "6/7/8",
+      "name": "Charge"
+    },
+    {
+      "cost": "",
+      "desc": "Increase critical rate by 8.1%.",
+      "learn_level": "40",
+      "level": "6/7/8",
+      "name": "Apt Pupil IV"
+    }
+  ],
+  "max_level": 80,
+  "max_level_after_awake": 95,
+  "name": "Siegfried",
+  "nature": "Phys",
+  "passive_skill": [
+    {
+      "desc": "Increase Attack by 29.1%. At the beginning of battle, gain Dragon's Blood.\nDragon's Blood: When dealing Physical Damage, increase Attack by 7%. Lasts for 3 turns.\nAlso, after using a unique skill, enhance the effect of Dragon's Blood: When using a Physical skill, increase the damage 18% more, and critical damage by 18%.",
+      "name": "Dragonblood Champion"
+    },
+    {
+      "desc": "Increase Attack by 29.1%. At the beginning of battle, gain Dragon's Blood.\nDragon's Blood: When dealing Physical Damage, increase Attack by 10%. Lasts for 3 turns.\nAlso, after using a unique skill, enhance the effect of Dragon's Blood: When using a Physical skill, increase the damage 18% more, and critical damage by 18%.",
+      "name": "Dragonblood Champion I"
+    },
+    {
+      "desc": "Increase Attack by 29.1%. At the beginning of battle, gain Dragon's Blood.\nDragon's Blood: When dealing Physical Damage, increase Attack by 10%. Lasts for 3 turns.\nAlso, after using a unique skill, enhance the effect of Dragon's Blood: When using a Physical skill, increase the damage 28% more, and critical damage by 18%.",
+      "name": "Dragonblood Champion II"
+    },
+    {
+      "desc": "Increase Attack by 29.1%. At the beginning of battle, gain Dragon's Blood.\nDragon's Blood: When dealing Physical Damage, increase Attack by 10%. Lasts for 3 turns.\nAlso, after using a unique skill, enhance the effect of Dragon's Blood: When using a Physical skill, increase the damage 28% more, and critical damage by 28%.",
+      "name": "Dragonblood Champion III"
+    }
+  ],
+  "rank": 7,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Physical damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
+}

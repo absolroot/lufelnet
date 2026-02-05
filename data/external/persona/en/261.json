@@ -1,0 +1,79 @@
+{
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Electric",
+      "Bless"
+    ],
+    "Weak": [
+      "Curse"
+    ]
+  },
+  "fixed_skill": {
+    "cost": "SP 24",
+    "desc": "(SB)Bless dmg to 1 foe (200.0%/210.0%/220.0% Atk). Increase target's Highlight dmg taken 30.0%/31.5%/33.0% (1 turn).",
+    "level": "6/7/8",
+    "name": "(SB)Absolute Obedience"
+  },
+  "innate_skill": [
+    {
+      "cost": "SP 21",
+      "desc": "Deal Bless damage to 1 foe equal to 130.8/139.1/147.4% of Attack. Gain 1 to 2 Blessing stacks.",
+      "learn_level": "10",
+      "level": "6/7/8",
+      "name": "Kougaon"
+    },
+    {
+      "cost": "SP 20",
+      "desc": "Deal Bless damage to all foes equal to 45.0/49.3/53.6% of Attack. Low chance to deal a Bless insta-kill effect to foes with 50% or less HP. Increase chance based on foe's missing HP.",
+      "learn_level": "20",
+      "level": "6/7/8",
+      "name": "Mahamaon"
+    },
+    {
+      "cost": "",
+      "desc": "Increase the success rate of insta-kill skills by 5.4%.",
+      "learn_level": "30",
+      "level": "6/7/8",
+      "name": "Divine Guidance III"
+    },
+    {
+      "cost": "SP 21",
+      "desc": "Deal Bless damage to all foes equal to 65.8/70.0/74.2% of Attack. Gain 1 to 2 Blessing stacks.",
+      "learn_level": "40",
+      "level": "6/7/8",
+      "name": "Makougaon"
+    }
+  ],
+  "max_level": 80,
+  "max_level_after_awake": 99,
+  "name": "Sraosha",
+  "nature": "Bless",
+  "passive_skill": [
+    {
+      "desc": "(SB)Increase Attack by 29.1%. At the start of battle, gain 1 God's Ear stack. Lasts for 3 turns. Stacks up to 3 times. When an ally uses a Highlight, gain 1 God's Ear stack. When a Bless ally uses a Highlight, gain 1 more God's Ear stack. When using a unique skill, spend all God's Ear stacks, and increase foe's Bless damage taken by 4% for each stack. Also, when God's Ear reaches 3 stacks, when a foe takes Bless damage, decrease Defense by 16%.",
+      "name": "(SB)Heretical Hearings"
+    },
+    {
+      "desc": "(SB)Increase Attack by 29.1%. At the start of battle, gain 2 God's Ear stacks. Lasts for 3 turns. Stacks up to 3 times. When an ally uses a Highlight, gain 1 God's Ear stack. When a Bless ally uses a Highlight, gain 1 more God's Ear stack. When using a unique skill, spend all God's Ear stacks, and increase foe's Bless damage taken by 4% for each stack. Also, when God's Ear reaches 3 stacks, when a foe takes Bless damage, decrease Defense by 16%.",
+      "name": "(SB)Heretical Hearings I"
+    },
+    {
+      "desc": "(SB)Increase Attack by 29.1%. At the start of battle, gain 2 God's Ear stacks. Lasts for 3 turns. Stacks up to 3 times. When an ally uses a Highlight, gain 1 God's Ear stack. When a Bless ally uses a Highlight, gain 1 more God's Ear stack. When using a unique skill, spend all God's Ear stacks, and increase foe's Bless damage taken by 6% for each stack. Also, when God's Ear reaches 3 stacks, when a foe takes Bless damage, decrease Defense by 16%.",
+      "name": "(SB)Heretical Hearings II"
+    },
+    {
+      "desc": "(SB)Increase Attack by 29.1%. At the start of battle, gain 2 God's Ear stacks. Lasts for 3 turns. Stacks up to 3 times. When an ally uses a Highlight, gain 1 God's Ear stack. When a Bless ally uses a Highlight, gain 1 more God's Ear stack. When using a unique skill, spend all God's Ear stacks, and increase foe's Bless damage taken by 6% for each stack. Also, when God's Ear reaches 3 stacks, when a foe takes Bless damage, decrease Defense by 25%.",
+      "name": "(SB)Heretical Hearings III"
+    }
+  ],
+  "rank": 8,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Bless damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
+}

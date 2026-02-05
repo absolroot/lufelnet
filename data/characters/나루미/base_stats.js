@@ -1,10 +1,10 @@
 window.basicStatsData = window.basicStatsData || {};
 window.basicStatsData["나루미"] = {
     "a0_lv1": {
-      "HP": 0,
-      "SP": 0,
-      "attack": 0,
-      "defense": 0,
+      "HP": 300,
+      "SP": 100,
+      "attack": 105,
+      "defense": 54,
       "crit_rate": 5,
       "crit_mult": 150,
       "speed": 95

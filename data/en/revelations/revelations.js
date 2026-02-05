@@ -115,7 +115,7 @@ const enRevelationData = {
         "Agility": ["Satiety"], // 예리
         "Perseverance": ["Sorrow", "Transformation", "Obtain"], //돌파
         "Hope": ["Labor", "Fixation", "Transformation"], // 희망
-        "Creation": ["Worry", "Reconcilation"], // 창조 
+        "Creation": ["Worry", "Reconcilation","Tenacity"], // 창조 
         "Integrity": ["Pleasure", "Labor", "Fixation"], // 진정성
         "Resolve": ["Virtue", "Labor", "Prudence"], // 결심
         "Awareness": ["Truth", "Control", "Hindrance"], // 깨달음
@@ -131,7 +131,7 @@ const enRevelationData = {
     },
     "sub": {
         "Depravity": ["Purity"], // 타락
-        "Tenacity": [], // 강인
+        "Tenacity": ["Creation"], // 강인
         "Satiety": ["Agility"], // 풍족
         "Obtain": ["Perseverance"], // 획득
         "Sorrow": ["Perseverance"], // 슬픔
@@ -354,6 +354,7 @@ const enRevelationData = {
         "Creation": {
             "Reconcilation": "At the start of battle, increases the DMG Dealt of the ally with the lowest SPD by 12%, doesn't stack.",
             "Worry": "Increases CRIT DMG by 15%/ 30%/ 45% when you have 100%/ 150%/ 200% SP Recovery.",
+            "Tenacity": "When using Theurgy, ATK increases by 30% and DMG Dealt increases by 25%."
             //"type": ["미출시"]
         },
         "Integrity": { // 진정성

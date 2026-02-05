@@ -22,20 +22,20 @@ window.ritualData["나루미"] = {
 
 window.enCharacterRitualData["나루미"] = {
   "name": "Narumi Nashimoto",
-  "r0": "Debut Stage",
-  "r0_detail": "Narumi has a unique energy [Sparkle]. Starts with 1 [Sparkle], max 10. Skills are enhanced based on [Sparkle] stacks.\nUpon entering battle, Wonder gains a special skill to apply [Naruru♪Naruru♫] to Narumi, making her enter the extra turn [Spotlight: Full On] after her next turn and restore 15 SP. At the end of [Spotlight: Full On], clear [Naruru♪Naruru♫] and all [Sparkle].\nThis skill has a 1-turn initial cooldown, which is reduced by Wonder's non-extra turns.",
-  "r1": "My Precious Guest",
-  "r1_detail": "Gains the special skill [Handshake Event❤Come Visit❤], allowing Wonder to enter an extra turn after his next turn and restore 15 SP at the start of that turn.\nThis skill has a 1-turn cooldown, reduced by Narumi's non-extra turns.\nAll of Narumi's turns can trigger [Spotlight: Full On] related buffs. During [Spotlight: Full On], Narumi gains 30% Critical Damage.",
-  "r2": "Watch Me Forever",
-  "r2_detail": "[Sparkle] max stacks increased to 16. Gain 1 additional [Sparkle] when Wonder uses a Persona skill.\n[Love LIVE♪] Enhanced: When used at 16 [Sparkle] stacks, the effect provided by each stack increases to 1.5x.",
+  "r0": "The First Stage",
+  "r0_detail": "Narumi has special [Shiny Points] energy. At the start of battle, Narumi has 1 [Shiny Points], up to 10 stacks. Narumi can upgrade her skills based on [Shiny Points].\nWhen Narumi is on the field, Wonder will gain the special skill [Naruru ♪ Naruru ♫]: Grant Narumi 1 Extra Action [Spotlight Unleashed] at the end of her action, also restore 15 SP to her. At the end of Extra Action [Spotlight Unleashed], remove [Naruru ♪ Naruru ♫] and all [Shiny Points].\nThis skill has a 1 turn cooldown and an initial cooldown, decrease this skill's cooldown after Wonder's non-Extra Actions.",
+  "r1": "My Dearest Guest",
+  "r1_detail": "Narumi gains a special skill [Attend My Handshake Event ❤︎]: Grant Wonder 1 Extra Action at the end of his action. Also, restore 15 SP to him at the start of his Extra Action.\nThis skill has a 1 turn cooldown, decrease this skill's cooldown after Narumi's non-Extra Actions.\nNarumi can activate all buff effects from Extra Action [Spotlight Unleashed] on all actions. Increase critical damage by 30% on Extra Action [Spotlight Unleashed].",
+  "r2": "Please Watch Me Forever",
+  "r2_detail": "Increase the maximum stacks of [Shiny Points] to 16. Grant Narumi 1 bonus [Shiny Points] when Wonder uses a Persona skill.\nUpgrade skill [LIVE of LOVE ♪]: When [Shiny Points] is at 16 stacks, increase the effects from every [Shiny Points] to 1.5x.",
   "r3": "Exclusive Bond",
-  "r3_detail": "Increase the skill levels of [Cake BOOM!] and [Love LIVE♪] by 3.",
-  "r4": "Cheers for Me",
-  "r4_detail": "Highlight Enhanced: After casting Highlight, additionally increase own Critical Damage by 15% of Wonder's Critical Damage (max 30%) for 2 turns.",
+  "r3_detail": "Increase the skill levels of Cake BOOM! and LIVE of LOVE ♪ by 3.",
+  "r4": "Rousing Support",
+  "r4_detail": "Highlight Enhanced: After using Highlight, increase Narumi's critical damage based on 15% of Wonder's critical damage (up to 30% critical damage) for 2 turns.",
   "r5": "Absolute Center",
-  "r5_detail": "Increase the skill levels of [Sugar 100%❤] and [Thief Tactics] by 3.",
-  "r6": "Your Smile Alone",
-  "r6_detail": "After [Spotlight: Full On] ends, no longer clear [Naruru♪Naruru♫] and [Sparkle]. Instead, enter [Promise: See You Again] turn and restore 15 SP.\n[Promise: See You Again] is treated as [Spotlight: Full On]. At the end of this turn, clear [Naruru♪Naruru♫] and all [Sparkle]."
+  "r5_detail": "Increase the skill levels of 100% Sugar ❤ and Thief Tactics by 3.",
+  "r6": "A Smile Just for You",
+  "r6_detail": "After taking the Extra Action [Spotlight Unleashed], do not remove [Naruru ♪ Naruru ♫] and [Shiny Points]. Then, immediately gain Extra Action [Promised Meeting] and restore 15 SP. \nExtra Action [Promised Meeting] counts as Extra Action [Spotlight Unleashed]. At the end of Extra Action [Promised Meeting], remove [Naruru ♪ Naruru ♫] and all [Shiny Points]."
 };
 
 window.jpCharacterRitualData["나루미"] = {

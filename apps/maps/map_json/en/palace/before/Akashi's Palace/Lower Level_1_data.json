@@ -1,0 +1,98 @@
+{
+    "tiles": [
+        {
+            "image": "map_sb_qushuita02-diceng-01.png",
+            "position": [
+                -26,
+                -25
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_qushuita02-diceng-02.png",
+            "position": [
+                7,
+                -25
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "objects": [
+        {
+            "sn": 8544106,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                460,
+                54
+            ],
+            "ratio": 1.037037037037037,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8544152,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                495,
+                96
+            ],
+            "ratio": 0.7,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8544801,
+            "image": "breakable.png",
+            "position": [
+                336,
+                425
+            ],
+            "ratio": 0.7,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8544802,
+            "image": "breakable.png",
+            "position": [
+                618,
+                188
+            ],
+            "ratio": 0.7,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        }
+    ],
+    "enemies": [],
+    "rotate": 0.0,
+    "map_size": [
+        928,
+        840
+    ]
+}

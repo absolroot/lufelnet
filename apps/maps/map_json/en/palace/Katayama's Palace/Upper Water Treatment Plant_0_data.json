@@ -733,6 +733,21 @@
             "enemy_data": null
         },
         {
+            "sn": 8513463,
+            "image": "yishijie-icon-men-danxiang.png",
+            "position": [
+                616,
+                1021
+            ],
+            "ratio": 1.6176470588235294,
+            "rotate": 180.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
             "sn": 8513464,
             "image": "yishijie-icon-jiguan-gou.png",
             "position": [
@@ -831,6 +846,21 @@
             ],
             "ratio": 1.375,
             "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8513583,
+            "image": "yishijie-icon-men-danxiang.png",
+            "position": [
+                340,
+                753
+            ],
+            "ratio": 1.6176470588235294,
+            "rotate": 270.0,
             "rotate_pivot": [
                 0.5,
                 0.5

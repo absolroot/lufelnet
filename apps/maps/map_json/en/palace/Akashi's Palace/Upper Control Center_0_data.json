@@ -1248,7 +1248,7 @@
             "image": "breakable.png",
             "position": [
                 532,
-                463
+                438
             ],
             "ratio": 0.9,
             "rotate": 0.0,
@@ -2931,12 +2931,18 @@
                                 {
                                     "sn": "6257",
                                     "name": "Byakko's Claw",
-                                    "desc": null
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Physical damage to 1 foe, and inflict Deep Wounds."
+                                    }
                                 },
                                 {
                                     "sn": "6258",
                                     "name": "Byakko's Fang",
-                                    "desc": null
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Physical damage to all foes, and inflict Bite Marks."
+                                    }
                                 },
                                 {
                                     "sn": "6255",

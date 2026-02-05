@@ -136,14 +136,14 @@ window.matchWeapons = {
   },
   "플라스마 섬멸자": {
     element: "만능",
-    name_en: "Plasma Destroyer",
-    name_jp: "プラズマの破壊者",
+    name_en: "Starsplitter",
+    name_jp: "滅星の光刃",
     where_to_get: "Shop",
     release: "미오",
     order: "10",
     effect: "공격력이 28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/60.7% 증가한다.\n전투가 시작될 때 혹은 임의의 캐릭터가 페르소나 스킬을 사용해 만능 속성 대미지를 준 후 『공명』 효과가 발동되며 2턴 동안 지속된다.\n『공명』: 현재 라인업이 활성화한 소나타 효과 수량에 따라 다음 효과가 발동된다.\n소나타 최소 1개: 자신의 공격력이 15.0%/20.0%/20.0%/25.0%/25.0%/30.0%/30.0% 증가하고, 만능 속성 대미지가 9.0%/12.0%/12.0%/15.0%/15.0%/18.0%/18.0% 증가하며, 모든 괴도가 효과의 50%를 획득한다.\n소나타 최소 2개: 모든 괴도의 크리티컬 효과가 9.0%/12.0%/12.0%/15.0%/15.0%/18.0%/18.0% 증가한다.",
-    effect_en: "Increase Attack by 28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/60.7%.\nAt battle start or after a Persona skill deals Almighty damage, Resonance is triggered for 2 turns.\nResonance: Based on the number of active Sonata effects.\n1+ Sonata: User's Attack +15.0%/20.0%/20.0%/25.0%/25.0%/30.0%/30.0%, Almighty damage +6.0%/8.0%/8.0%/10.0%/10.0%/12.0%/12.0%, all allies get 50% of this.\n2+ Sonata: All allies' Critical Damage +9.0%/12.0%/12.0%/15.0%/15.0%/18.0%/18.0%.",
-    effect_jp: "攻撃力が28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/60.7%上昇する。\n戦闘開始時または任意のキャラが万能属性ダメージを与えると『共鳴』が2ターン発動。\n『共鳴』：アクティブなソナタ効果数に応じて効果発動。\nソナタ1個以上：自身攻撃力+15.0%/20.0%/20.0%/25.0%/25.0%/30.0%/30.0%、万能ダメージ+6.0%/8.0%/8.0%/10.0%/10.0%/12.0%/12.0%、味方は50%を共有。\nソナタ2個以上：味方全体のCRT倍率+9.0%/12.0%/12.0%/15.0%/15.0%/18.0%/18.0%。",
+    effect_en: "Increase Attack by 28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/60.7%.\nAt the start of battle, or after any ally deals damage with an Almighty skill, activate Sympathy for 2 turns.\nSympathy: Based on the number of Flames of Desire effects active on the current party, activate the following effects.\n1 or more: Increase user's Attack by 15.0%/20.0%/20.0%/25.0%/25.0%/30.0%/30.0% and Almighty damage by 6.0%/8.0%/8.0%/10.0%/10.0%/12.0%/12.0%. Grant 50% of this effect to party.\n2 or more: Increase party's critical damage by 9.0%/12.0%/12.0%/15.0%/15.0%/18.0%/18.0%.",
+    effect_jp: "攻撃力が28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/60.7%上昇する。\nオーラ『煉獄の洗礼』：『浄化の炎』の数に応じて以下の効果を付与する。\n「１つ：自身の攻撃力が180/240/240/300/300/360/360上昇、自身を除いた味方全体の攻撃力が150/200/200/249/249/300/300上昇」\n「２つ：自身の与ダメージが8.0%/10.7%/10.7%/13.3%/13.3%/16.0%/16.0%上昇、自身を除いた味方全体の与ダメージが3.0%/4.0%/4.0%/5.0%/5.0%/6.0%/6.0%上昇」\n「３つ：味方全体の火炎属性の与ダメージが7.0%/9.3%/9.3%/11.7%/11.7%/14.0%/14.0%上昇」\n戦闘開始時、『浄化の炎』を２つ獲得する。味方全体が敵に火炎属性ダメージを与えた時、『浄化の炎』を１つ獲得する。自身の開始時に『浄化の炎』を１つ消費する。",
     shard: [
       {
         desc: "교환 - 운명의 섬 {item-huobi-49.png} 800",
@@ -154,14 +154,14 @@ window.matchWeapons = {
   },
   "작열의 연옥": {
     element: "화염",
-    name_en: "Flame's Inferno",
-    name_jp: "炎の地獄",
+    name_en: "Purgatory",
+    name_jp: "煉獄の短刀",
     where_to_get: "Shop",
     release: "카스미",
     order: "9",
     effect: "공격력이 28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/56.0% 증가한다.\n빛의 고리 『연옥의 세례』: 원더의 『정화의 불꽃』 중첩 수에 따라 다음 효과가 활성화된다.\n1중첩: 자신의 공격력이 180/240/240/300/300/360/360포인트 증가하고, 다른 괴도의 공격력이 150/200/200/249/249/300/300포인트 증가한다.\n2중첩: 자신이 주는 대미지가 8.0%/10.7%/10.7%/13.3%/13.3%/16.0%/16.0% 증가하고, 다른 괴도가 주는 대미지가 3.0%/4.0%/4.0%/5.0%/5.0%/6.0%/6.0% 증가한다.\n3중첩: 모든 괴도의 화염 대미지가 12.0%/16.0%/16.0%/20.0%/20.0%/24.0%/24.0% 증가한다.\n전투 시작 시 『정화의 불꽃』 2중첩을 획득하며, 모든 괴도가 페르소나 스킬로 화염 대미지를 줄 때마다 『정화의 불꽃』 1중첩을 획득하고, 각 『정화의 불꽃』은 3턴 간 지속된다.",
-    effect_en: "Increase Attack by 28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/56.0%.\nAura - Purgatory's Baptism: Effects based on the number of Cleansing Flame stacks.\n1 stack: User's Attack +180/240/240/300/300/360/360 points, others +150/200/200/249/249/300/300 points.\n2 stacks: User's damage +8.0%/10.7%/10.7%/13.3%/13.3%/16.0%/16.0%, others +3.0%/4.0%/4.0%/5.0%/5.0%/6.0%/6.0%.\n3 stacks: All allies' Fire damage +12.0%/16.0%/16.0%/20.0%/20.0%/24.0%/24.0%.\nAt battle start, gain 2 stacks of Cleansing Flame. Whenever any ally deals Fire damage with a Persona skill, gain 1 stack of Cleansing Flame, each lasting 3 turns.",
-    effect_jp: "攻撃力が28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/56.0%上昇する。\nオーラ『煉獄の洗礼』：『浄化の炎』のスタック数に応じて効果が発動する。\n1スタック：自身の攻撃力+180/240/240/300/300/360/360ポイント、他の怪盗+150/200/200/249/249/300/300ポイント。\n2スタック：自身の与ダメージ+8.0%/10.7%/10.7%/13.3%/13.3%/16.0%/16.0%、他+3.0%/4.0%/4.0%/5.0%/5.0%/6.0%/6.0%。\n3スタック：全員の火炎ダメージ+12.0%/16.0%/16.0%/20.0%/20.0%/24.0%/24.0%。\n戦闘開始時に『浄化の炎』を2スタック獲得。味方がペルソナスキルで火炎ダメージを与えるたびに1スタック獲得し、各『浄化の炎』は3ターン持続する。",
+    effect_en: "Increase Attack by 28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/60.7%.\nBaptism of Nothingness (Aura): Gain following effects based on number of Purging Blaze stacks.\n1 stack: Increase user's Attack by 180/240/240/300/300/360/360, and increase all other allies' Attack by 150/200/200/249/249/300/300.\n2 stacks: Increase user's damage by 8.0%/10.7%/10.7%/13.3%/13.3%/16.0%/16.0%, and increase all other allies' damage by 3.0%/4.0%/4.0%/5.0%/5.0%/6.0%/6.0%.\n3 stacks: Increase party's Fire damage by 7.0%/9.3%/9.3%/11.7%/11.7%/14.0%/14.0%.\nAt the start of battle, gain 2 Purging Blaze stacks. When party deals Fire damage to foes, gain 1 Purging Blaze stack. At the start of the user's turn, spend 1 Purging Blaze stack.",
+    effect_jp: "攻撃力が28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/60.7%上昇する。\nオーラ『煉獄の洗礼』：『浄化の炎』の数に応じて以下の効果を付与する。\n「１つ：自身の攻撃力が180/240/240/300/300/360/360上昇、自身を除いた味方全体の攻撃力が150/200/200/249/249/300/300上昇」\n「２つ：自身の与ダメージが8.0%/10.7%/10.7%/13.3%/13.3%/16.0%/16.0%上昇、自身を除いた味方全体の与ダメージが3.0%/4.0%/4.0%/5.0%/5.0%/6.0%/6.0%上昇」\n「３つ：味方全体の火炎属性の与ダメージが7.0%/9.3%/9.3%/11.7%/11.7%/14.0%/14.0%上昇」\n戦闘開始時、『浄化の炎』を２つ獲得する。味方全体が敵に火炎属性ダメージを与えた時、『浄化の炎』を１つ獲得する。自身の開始時に『浄化の炎』を１つ消費する。",
     shard: [
       {
         desc: "교환 - 운명의 섬 {item-huobi-49.png} 800",

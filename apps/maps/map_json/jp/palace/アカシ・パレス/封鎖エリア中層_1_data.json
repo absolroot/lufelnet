@@ -1,0 +1,128 @@
+{
+    "tiles": [
+        {
+            "image": "map_sb_qushuita03-zhongceng-01.png",
+            "position": [
+                -27,
+                -25
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_qushuita03-zhongceng-02.png",
+            "position": [
+                32,
+                -25
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "objects": [
+        {
+            "sn": 8548103,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                803,
+                306
+            ],
+            "ratio": 1.037037037037037,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8548114,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                165,
+                275
+            ],
+            "ratio": 1.037037037037037,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8548119,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                615,
+                643
+            ],
+            "ratio": 1.037037037037037,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8548152,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                456,
+                745
+            ],
+            "ratio": 0.7,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8548801,
+            "image": "breakable.png",
+            "position": [
+                771,
+                558
+            ],
+            "ratio": 0.7,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8548803,
+            "image": "breakable.png",
+            "position": [
+                379,
+                298
+            ],
+            "ratio": 0.7,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        }
+    ],
+    "enemies": [],
+    "rotate": 0.0,
+    "map_size": [
+        928,
+        840
+    ]
+}

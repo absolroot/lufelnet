@@ -1,0 +1,298 @@
+{
+    "tiles": [
+        {
+            "image": "map_sb_qushuita02-dingceng-01.png",
+            "position": [
+                7,
+                -4
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "map_sb_qushuita02-dingceng-02.png",
+            "position": [
+                41,
+                -25
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "objects": [
+        {
+            "sn": 8546103,
+            "image": "yishijie-icon-jiguan-gou.png",
+            "position": [
+                592,
+                439
+            ],
+            "ratio": 1.037037037037037,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8546153,
+            "image": "yishijie-icon-box-hexin-new.png",
+            "position": [
+                395,
+                116
+            ],
+            "ratio": 0.5833333333333334,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8546162,
+            "image": "yishijie-icon-xinpian.png",
+            "position": [
+                460,
+                68
+            ],
+            "ratio": 0.7,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        }
+    ],
+    "enemies": [
+        {
+            "sn": "8546101",
+            "image": "yishijie-icon-boss01-2.png",
+            "position": [
+                459,
+                130
+            ],
+            "ratio": 0.45901639344262296,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": {
+                "instSn": 23156,
+                "enemies": [
+                    [
+                        {
+                            "sn": "231561",
+                            "name": "Cu Chulainn",
+                            "adapt": {
+                                "Weak": [
+                                    "Electric"
+                                ],
+                                "Resistant": [
+                                    "Phys",
+                                    "Gun"
+                                ],
+                                "Nullify": [
+                                    "Bless"
+                                ],
+                                "Reflect": [
+                                    "Wind"
+                                ],
+                                "Absorb": []
+                            },
+                            "level": 80,
+                            "isDnmLv": true,
+                            "realLv": 0,
+                            "stat": {
+                                "HP": 81249.265,
+                                "HP 계산식": "(31614.5 * (1 + 1.57) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 3399.5202,
+                                "공격력 계산식": "(1322.77 * (1 + 1.57) + 0) * (1 + 0)",
+                                "방어력": 810.636,
+                                "방어력 계산식": "(810.64 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.4,
+                                "효과 명중 계산식": "(0.4 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.5,
+                                "효과 저항 계산식": "(0.5 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 0,
+                                "다운 수치 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 90.0,
+                                "속도 계산식": "(90.0 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 1.046,
+                                "대미지 보너스 계산식": "(1.05 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": "1030",
+                                    "name": "Dormin Rush",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Physical damage to all foes equal to 30.6% of Attack. 3.4% chance to inflict Sleep for 2 turns."
+                                    },
+                                    "cost": "체력 8.0%"
+                                },
+                                {
+                                    "sn": "1404",
+                                    "name": "Matarukaja",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Increase party's Attack by 8.2%. For every 500 of the user's Attack, increase party's Attack by 0.7% more, up to 5.4%. Lasts for 3 turns."
+                                    },
+                                    "cost": "SP 22"
+                                },
+                                {
+                                    "sn": "1021",
+                                    "name": "Heat Wave",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Physical damage to all foes equal to 45.6% of Attack."
+                                    },
+                                    "cost": "체력 7.0%"
+                                },
+                                {
+                                    "sn": "1308",
+                                    "name": "Wage War",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "16.1% chance to inflict Enrage on all foes for 2 turns."
+                                    },
+                                    "cost": "SP 22"
+                                }
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "sn": "231562",
+                            "name": "Cu Chulainn",
+                            "adapt": {
+                                "Weak": [
+                                    "Electric"
+                                ],
+                                "Resistant": [
+                                    "Phys",
+                                    "Gun"
+                                ],
+                                "Nullify": [
+                                    "Bless"
+                                ],
+                                "Reflect": [
+                                    "Wind"
+                                ],
+                                "Absorb": []
+                            },
+                            "level": 80,
+                            "isDnmLv": true,
+                            "realLv": 0,
+                            "stat": {
+                                "HP": 81249.265,
+                                "HP 계산식": "(31614.5 * (1 + 1.57) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 3399.5202,
+                                "공격력 계산식": "(1322.77 * (1 + 1.57) + 0) * (1 + 0)",
+                                "방어력": 810.636,
+                                "방어력 계산식": "(810.64 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.4,
+                                "효과 명중 계산식": "(0.4 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.5,
+                                "효과 저항 계산식": "(0.5 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 0,
+                                "다운 수치 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 90.0,
+                                "속도 계산식": "(90.0 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 1.046,
+                                "대미지 보너스 계산식": "(1.05 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": "1030",
+                                    "name": "Dormin Rush",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Physical damage to all foes equal to 30.6% of Attack. 3.4% chance to inflict Sleep for 2 turns."
+                                    },
+                                    "cost": "체력 8.0%"
+                                },
+                                {
+                                    "sn": "1404",
+                                    "name": "Matarukaja",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Increase party's Attack by 8.2%. For every 500 of the user's Attack, increase party's Attack by 0.7% more, up to 5.4%. Lasts for 3 turns."
+                                    },
+                                    "cost": "SP 22"
+                                },
+                                {
+                                    "sn": "1021",
+                                    "name": "Heat Wave",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "Deal Physical damage to all foes equal to 45.6% of Attack."
+                                    },
+                                    "cost": "체력 7.0%"
+                                },
+                                {
+                                    "sn": "1308",
+                                    "name": "Wage War",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "16.1% chance to inflict Enrage on all foes for 2 turns."
+                                    },
+                                    "cost": "SP 22"
+                                }
+                            ]
+                        }
+                    ]
+                ],
+                "tutorial": {
+                    "sn": 0,
+                    "title": "",
+                    "content": ""
+                }
+            }
+        }
+    ],
+    "rotate": 0.0,
+    "map_size": [
+        928,
+        840
+    ]
+}

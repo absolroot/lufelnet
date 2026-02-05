@@ -20,7 +20,7 @@ HIGHLIGHT는 추가 턴 여부에 무관하게 쿨타임이 감소하고 게이�
 
 Through **WONDER's support**, which has a 1-turn cooldown, Narumi can **gain an additional turn**. This enables an explosive playstyle where she can unleash all three of her skills in a 1-2-3 sequence within just 2 turns.
 
-To maximize Skill 3, she needs 10 [Sparkle] stacks. Her kit is designed so that this is achieved naturally as long as the player follows the correct skill rotation, requiring no extra setup.
+To maximize Skill 3, she needs 10 [Shiny Points] stacks. Her kit is designed so that this is achieved naturally as long as the player follows the correct skill rotation, requiring no extra setup.
 
 <br>
 
@@ -30,7 +30,7 @@ At Awareness 6, she gains yet another extra turn, pairing perfectly with ANGE fo
 
 Since her HIGHLIGHT gauge and cooldown progress regardless of extra turns, she can **use HIGHLIGHT much more frequently** than other dealers, and her damage multipliers are impressively high.
 
-From Awareness 2, the [Sparkle] stack cap increases to 16. To reach this, WONDER's extra turn special skill [Handshake Event❤Come Visit❤] must be used before Skill 1.`,
+From Awareness 2, the [Shiny Points] stack cap increases to 16. To reach this, WONDER's extra turn special skill [Attend My Handshake Event ❤︎] must be used before Skill 1.`,
 
         review_jp: `P5Xオリジナルキャラクターであり、2ターンごとに**追加ターンを獲得可能な念動単体アタッカー**だ。
 

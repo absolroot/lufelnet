@@ -48,12 +48,12 @@ window.characterSkillsData["나루미"] = {
 
 window.enCharacterSkillsData["나루미"] = {
   "skill1": {
-    "name": "Sugar 100%❤",
+    "name": "100% Sugar ❤",
     "element": "염동",
     "type": "단일피해",
     "sp": 21,
     "cool": 0,
-    "description": "Deal Psy damage to 1 foe equal to 292.8%/322.8%/310.8%/340.8% of Attack, gain 3 [Sparkle] stacks, and enter [Idol Business] state for 2 turns.\n[Idol Business]: Increase Critical Rate by 14.6%/16.1%/15.5%/17.0% and Damage by 29.3%/32.3%/31.1%/34.1%. Also gain 1 [Sparkle] stack at the start of the turn."
+    "description": "Deal Psy damage to 1 foe equal to 292.8%/322.8%/310.8%/340.8% of Attack. Gain 3 [Shiny Points] and enter [Idol Business] mode for 2 turns.\n[Idol Business]: Increase critical rate by 14.6%/16.1%/15.5%/17.0% and damage by 29.3%/32.3%/31.1%/34.1%. At the start of turn, gain 1 [Shiny Points]."
   },
   "skill2": {
     "name": "Cake BOOM!",
@@ -61,31 +61,31 @@ window.enCharacterSkillsData["나루미"] = {
     "type": "광역피해",
     "sp": 23,
     "cool": 0,
-    "description": "Deal Psy damage to all foes equal to 404.0%/445.4%/428.8%/470.2% of Attack. This damage is shared equally among all foes.\nWhen used during [Idol Business]: Double the number of [Sparkle] stacks owned after the skill ends."
+    "description": "Deal Psy damage to all foes equal to 404.0%/445.4%/428.8%/470.2% of Attack, distribute this damage between all foes.\nAfter using this skill in [Idol Business] mode: Double Narumi's [Shiny Points]."
   },
   "skill3": {
-    "name": "Love LIVE♪",
+    "name": "LIVE of LOVE ♪",
     "element": "염동",
     "type": "단일피해",
     "sp": 25,
     "cool": 0,
-    "description": "Deal Psy damage to 1 foe equal to 349.8%/385.6%/371.3%/407.1% of Attack.\nWhen used during [Naruru♪Naruru♫]: Deal additional Psy damage equal to 10.1%/11.1%/10.7%/11.7% of Attack for each [Sparkle] stack owned.\nWhen [Sparkle] reaches 10 stacks: Deal additional Psy damage equal to 100.5%/110.8%/106.7%/117.0% of Attack, and gain a 50% Damage Bonus during this skill's activation."
+    "description": "Deal Psy damage to 1 foe equal to 349.8%/385.6%/371.3%/407.1% of Attack.\nWhen [Naruru ♪ Naruru ♫] is active: Deal bonus Psy damage equal to 10.1%/11.1%/10.7%/11.7% of Attack for every [Shiny Points] stacks.\nWhen [Shiny Points] stacks reach 10, deal bonus Psy damage equal to 100.5%/110.8%/106.7%/117.0% of Attack. Also gain 50% damage when activating this skill."
   },
   "skill_highlight": {
     "element": "염동",
     "type": "단일피해",
     "cool": 4,
-    "description": "Deal Psy damage to 1 foe equal to 535.9%/590.8%/568.9%/623.8% of Attack. Increase own Attack by 20% of Wonder's Attack (Max 976/1076/1036/1136) for 2 turns."
+    "description": "Deal Psy damage to 1 foe equal to 535.9%/590.8%/568.9%/623.8% of Attack. Increase Narumi's Attack based on 20% of Wonder's Attack (up to 976/1076/1036/1136 Attack) for 2 turns."
   },
   "passive1": {
-    "name": "Hype",
+    "name": "Heat",
     "element": "패시브",
-    "description": "Gain 36.0% Damage Bonus during the [Spotlight: Full On] turn."
+    "description": "Increase damage by 36.0% on Extra Action [Spotlight Unleashed]."
   },
   "passive2": {
-    "name": "Oshi",
+    "name": "Biggest Fan",
     "element": "패시브",
-    "description": "When receiving an active skill from Wonder targeting Narumi, permanently increase Attack by 21.0%. Stacks up to 2 times."
+    "description": "When Narumi receives an active skill from Wonder targeting herself, permanently increase Attack by 21.0%. Stacks up to 2 times."
   }
 };
 

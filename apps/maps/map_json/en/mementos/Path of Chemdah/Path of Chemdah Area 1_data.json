@@ -5239,7 +5239,7 @@
             "image": "yishijie-icon-up-01-new.png",
             "position": [
                 1161,
-                6320
+                6366
             ],
             "ratio": 1.08,
             "rotate": 0,
@@ -5272,6 +5272,21 @@
                 5005
             ],
             "ratio": 0.6206896551724138,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": "5520008",
+            "image": "yishijie-icon-wangrirenzhi-new.png",
+            "position": [
+                2123,
+                6271
+            ],
+            "ratio": 0.7941176470588235,
             "rotate": 0,
             "rotate_pivot": [
                 0.5,

@@ -1,15 +1,5 @@
 {
-    "tiles": [
-        {
-            "image": "map_sb_ZTGC_3F.png",
-            "position": [
-                0,
-                0
-            ],
-            "ratio": 1,
-            "rotate": 0
-        }
-    ],
+    "tiles": [],
     "objects": [
         {
             "sn": 8535033,
@@ -88,9 +78,5 @@
         }
     ],
     "enemies": [],
-    "rotate": 0.0,
-    "map_size": [
-        712,
-        1228
-    ]
+    "rotate": 0.0
 }

@@ -23,22 +23,23 @@ window.WeaponData["나루미"] = {
   }
 };
 
+
 window.enCharacterWeaponData["나루미"] = {
   "weapon5-1": {
-    "name": "Glazed Encore",
+    "name": "Frosting Encore",
     "health": 2219.84,
     "attack": 779.61,
     "defense": 405.19,
-    "skill_name": "",
-    "description": "Increase Critical Rate by 18.1%/18.1%/23.5%/23.5%/28.9%/28.9%/34.3%. When gaining [Naruru♪Naruru♫], increase Critical Damage by 32.8%/42.8%/42.8%/52.8%/52.8%/62.8%/62.8% for 2 turns. Increase Attack by 42.5%/55.0%/55.0%/67.5%/67.5%/80.0%/80.0% during [Spotlight: Full On] turns."
+    "skill_name": "Strawberry Frosting's Kiss",
+    "description": "Increase critical rate by 18.1%/18.1%/23.5%/23.5%/28.9%/28.9%/34.3%. \nWhen Narumi gains [Naruru ♪ Naruru ♫], increase critical damage by 32.8%/42.8%/42.8%/52.8%/52.8%/62.8%/62.8% for 2 turns.\nIncrease Attack by 42.5%/55.0%/55.0%/67.5%/67.5%/80.0%/80.0% on Extra Action [Spotlight Unleashed]."
   },
   "weapon4-1": {
     "name": "Shining Rhythm",
     "health": 1776.03,
     "attack": 623.35,
     "defense": 323.88,
-    "skill_name": "",
-    "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When gaining [Sparkle], increase Damage by 8.8%/10.2%/10.2%/11.6%/11.6%/13.0%/13.0% for 2 turns (Stacks up to 2 times)."
+    "skill_name": "Lethal Allure",
+    "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. \nWhen Narumi gains [Shiny Points], increase damage by 8.8%/10.2%/10.2%/11.6%/11.6%/13.0%/13.0% for 2 turns. Stacks up to 2 times."
   }
 };
 

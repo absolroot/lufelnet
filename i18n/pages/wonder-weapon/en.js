@@ -17,7 +17,7 @@ export default {
     labelShard: 'Shard',
     labelRelease: 'Released with',
     labelLightningStamp: 'Lightning Stamp',
-    labelLightningStampDesc: 'Feature released in Korean server v4.7.1 that further enhances weapons.',
+    labelLightningStampDesc: 'Feature released in KR server v4.7.1 that further enhances weapons.',
     labelWeaponRelease: 'Weapon',
     labelStampRelease: 'Lightning Stamp',
 

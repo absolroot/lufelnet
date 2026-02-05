@@ -305,12 +305,12 @@ const enRevelationData = {
         "Depravity": { //타락
             "set2": "Increase ATK by 12%.",
             "set4": "DMG Dealt increased by 12%. This effect increases to 24% during an Extra Turn.",
-            "type": [""]
+            "type": ["미출시"]
         },
         "Tenacity": { //강인
             "set2": "Gun damage increased by 10%.",
             "set4": "Increase ATK by 25% for 2 turns; Gain this effect again when you cause a critical hit.",
-            "type": [""]
+            "type": ["미출시"]
         },
     },
     "set_effects": {

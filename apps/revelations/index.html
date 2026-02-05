@@ -990,14 +990,7 @@ jp: /revelations/?lang=jp
             }
 
             // Toggle on card click (ignore interactive elements)
-            card.addEventListener('click', (e) => {
-                const target = e.target;
-                if (target.closest('a') || target.closest('button')) return;
-                const isOpen = content.classList.toggle('open');
-                header.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-                header.lastElementChild.textContent = isOpen ? '−' : '+';
-                card.classList.toggle('active', isOpen);
-            });
+            // Removed: card.addEventListener('click'...) - logic moved to separate handlers
 
             // Also allow toggling by clicking the accordion header directly
             header.addEventListener('click', (e) => {
@@ -1005,8 +998,12 @@ jp: /revelations/?lang=jp
                 const isOpen = content.classList.toggle('open');
                 header.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
                 header.lastElementChild.textContent = isOpen ? '−' : '+';
-                card.classList.toggle('active', isOpen);
+                // Use 'expanded' class for visual style to not conflict with 'active' (filter)
+                card.classList.toggle('expanded', isOpen);
             });
+
+            // Make the header interactive-looking
+            header.title = "사용 캐릭터 보기";
 
             accordion.appendChild(header);
             accordion.appendChild(content);
@@ -1028,7 +1025,34 @@ jp: /revelations/?lang=jp
             });
         });
 
+        // Add Reset Filter Button
+        const filterSection = document.querySelector('.filter-section');
+        const resetBtnContainer = document.createElement('div');
+        resetBtnContainer.className = 'reset-filter-container';
+        resetBtnContainer.style.display = 'none';
+        resetBtnContainer.innerHTML = `
+            <button id="resetFilterBtn" class="reset-filter-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/>
+                </svg>
+                <span data-i18n="reset_filter">필터 초기화</span>
+            </button>
+        `;
+
+        // Insert after filter options but before separator
+        filterSection.appendChild(resetBtnContainer);
+
+        // Setup Reset Button Event
+        document.getElementById('resetFilterBtn').addEventListener('click', () => {
+            deactivateFilter();
+        });
+
         function applyFilters() {
+            // Also hide reset button if no active card (normal filtering)
+            if (!activeCard) {
+                resetBtnContainer.style.display = 'none';
+            }
+
             const selectedTypes = Array.from(document.querySelectorAll('input[name="type"]:checked')).map(cb => cb.value);
             const selectedElements = Array.from(document.querySelectorAll('input[name="element"]:checked')).map(cb => cb.value);
             const selectedEffects = Array.from(document.querySelectorAll('input[name="effect"]:checked')).map(cb => cb.value);
@@ -1157,18 +1181,23 @@ jp: /revelations/?lang=jp
 
         let activeCard = null; // Track currently active card
 
-        // Handle card click events
+        // Handle card click events (For Filter/Selection Only)
         cards.forEach(card => {
             card.addEventListener('click', (e) => {
-                e.stopPropagation(); // Prevent event bubbling
+                // Prevent bubbling if clicking inside specific interactive elements
+                const target = e.target;
+                if (target.closest('.accordion-header') || target.closest('a') || target.closest('button')) {
+                    // These interactions are handled separately
+                    return;
+                }
+
                 const clickedName = card.getAttribute('data-name');
                 const cardType = card.getAttribute('data-type');
 
+                // Toggle selection
                 if (activeCard === card) {
-                    // If clicking the same card again, remove filter
                     deactivateFilter();
                 } else {
-                    // If clicking a different card, apply filter
                     activateFilter(card, clickedName, cardType);
                 }
             });
@@ -1181,6 +1210,13 @@ jp: /revelations/?lang=jp
 
             activeCard = card;
             card.classList.add('active');
+
+            // Show reset button
+            resetBtnContainer.style.display = 'flex';
+
+            // Scroll to top of cards container nicely
+            const containerTop = document.getElementById('revelationCards').offsetTop - 100;
+            window.scrollTo({ top: containerTop, behavior: 'smooth' });
 
             // 현재 언어에 맞는 데이터 가져오기
             const currentRevelationData = getCurrentRevelationData();
@@ -1226,9 +1262,23 @@ jp: /revelations/?lang=jp
         function deactivateFilter() {
             // Remove active card style
             if (activeCard) {
+                // Also collapse the details if open
+                const content = activeCard.querySelector('.accordion-content');
+                const header = activeCard.querySelector('.accordion-header');
+
+                if (content) content.classList.remove('open');
+                if (header) {
+                    header.setAttribute('aria-expanded', 'false');
+                    if (header.lastElementChild) header.lastElementChild.textContent = '+';
+                }
+
+                activeCard.classList.remove('expanded');
                 activeCard.classList.remove('active');
                 activeCard = null;
             }
+
+            // Hide reset button
+            resetBtnContainer.style.display = 'none';
 
             // Show all cards
             applyFilters();

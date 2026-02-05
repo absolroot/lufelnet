@@ -92,11 +92,22 @@
     z-index: 1;
 }
 
-/* 활성화된 카드 스타일 */
+/* 활성화된 카드 스타일 (선택/필터됨) */
 .card.active {
     border-color: rgba(255, 255, 255, 0.5);
     filter: brightness(1.1);
     z-index: 2;
+}
+
+/* 확장된 카드 스타일 (아코디언 열림) */
+.card.expanded {
+    z-index: 2;
+}
+
+/* Both active and expanded */
+.card.active.expanded {
+    border-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
 .type-label {
@@ -176,6 +187,40 @@
     /* background-color: #1a1919;*/
     margin-bottom: 20px;
     overflow: hidden;
+    position: relative;
+    /* For absolute positioning if needed */
+}
+
+.reset-filter-container {
+    display: flex;
+    justify-content: flex-end;
+    /* Right align */
+    margin-top: 10px;
+    padding-right: 4px;
+}
+
+.reset-filter-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.2s;
+}
+
+.reset-filter-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.reset-filter-btn svg {
+    width: 14px;
+    height: 14px;
 }
 
 .filter-header {
@@ -479,6 +524,8 @@
 }
 
 .accordion-header:hover {
+    background: rgba(255, 0, 0, 0.25);
+    /* Explicit hover bg */
     filter: brightness(1.1);
 }
 

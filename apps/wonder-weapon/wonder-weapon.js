@@ -466,28 +466,33 @@
     });
 
     // 첫 번째 보이는 탭 선택 (비동기 처리로 탭이 완전히 렌더링된 후 선택)
+    // 초기 선택 (URL 파라미터 또는 첫 번째 항목)
     setTimeout(() => {
       const visibleTabs = Array.from(document.querySelectorAll('.weapon-tab:not([style*="display: none"])'));
-      if (visibleTabs.length > 0 && !selectedWeapon) {
-        const firstTab = visibleTabs[0];
-        const firstWeapon = firstTab.dataset.weapon;
-        if (firstWeapon) {
-          selectedWeapon = firstWeapon;
-          firstTab.classList.add('active');
-          renderWeaponDetail(firstWeapon);
+
+      // 1. URL 파라미터 체크
+      const urlParams = new URLSearchParams(window.location.search);
+      const weaponParam = urlParams.get('weapon');
+
+      let targetWeapon = null;
+
+      if (weaponParam) {
+        const targetTab = document.querySelector(`.weapon-tab[data-weapon="${weaponParam}"]`);
+        if (targetTab && targetTab.style.display !== 'none') {
+          targetWeapon = weaponParam;
         }
-      } else if (selectedWeapon) {
-        const selectedTab = visibleTabs.find(tab => tab.dataset.weapon === selectedWeapon);
-        if (selectedTab) {
-          selectedTab.classList.add('active');
-          renderWeaponDetail(selectedWeapon);
-        } else if (visibleTabs.length > 0) {
-          const firstTab = visibleTabs[0];
-          const firstWeapon = firstTab.dataset.weapon;
-          selectedWeapon = firstWeapon;
-          firstTab.classList.add('active');
-          renderWeaponDetail(firstWeapon);
-        }
+      }
+
+      // 2. 선택된 무기가 없고 URL 파라미터도 유효하지 않으면 첫 번째 탭 선택
+      if (!targetWeapon && !selectedWeapon && visibleTabs.length > 0) {
+        targetWeapon = visibleTabs[0].dataset.weapon;
+      }
+
+      // 3. 최종 선택
+      const finalWeapon = targetWeapon || selectedWeapon;
+
+      if (finalWeapon) {
+        selectWeapon(finalWeapon, false);
       }
     }, 0);
   }
@@ -497,6 +502,12 @@
     if (selectedWeapon === krName) return;
 
     selectedWeapon = krName;
+
+    if (userInitiated) {
+      const url = new URL(window.location);
+      url.searchParams.set('weapon', krName);
+      window.history.pushState({}, '', url);
+    }
 
     // 탭 활성화
     document.querySelectorAll('.weapon-tab').forEach(tab => {

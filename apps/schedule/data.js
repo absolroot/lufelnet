@@ -80,8 +80,9 @@ window.ReleaseScheduleData = {
         { version: "4.6.2", characters: ["후카"], days: 21 },
         { version: "4.7.1", characters: ["쇼키·암야"], "main-story": "5-4", persona: ["마카브르"], weapon_stamp: ["크리스탈 트레저"], mindscape_core: ["토모코·여름", "유우미", "YUI"], note: "Janosik IV", days: 21 },
         { version: "4.7.1", characters: ["슌·프론티어"], note: "Desire Gallery Mission (Mindscape Core Dungeon)", mindscape_core: ["J&C"], days: 21 },
-        { version: "4.8", characters: ["준페이"], days: 21 },
-        { version: "4.9", characters: ["나루루"], days: 21 },
+        { version: "4.7.2", characters: ["준페이"], days: 21 },
+        { version: "4.8.1", characters: ["나루미"], mindscape_core: ["렌", "야오링·사자무"], weapon_stamp: ["천상의 별"], days: 21 },
+        { version: "4.8.2", characters: ["코로마루"] }
         // 이후 캐릭터들은 release_order 기반으로 자동 추가됨
     ]
 };

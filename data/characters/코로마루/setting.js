@@ -1,0 +1,35 @@
+window.characterSetting = window.characterSetting || {};
+window.characterSetting["코로마루"] = {
+    "role": "",
+    "video": [""],
+    "video_en": [""],
+    "video_jp": ["", ""],
+    "main_revelation": [""],
+    "sub_revelation": [""],
+    "sub_revel2": [""],
+    "sub_revel3": [""],
+    "sub_revel4": [""],
+    "sub_option1": [""],
+    "sub_option2": [""],
+    "sub_option3": [],
+    "minimum_stats": {
+        "LV10": false,
+        "LV10+5": false,
+        "LV12": false,
+        "LV12+5": false,
+        "LV13": false,
+        "LV13+5": false
+    },
+    "battle_plus_stats": "nan",
+    "element_weakness": "",
+    "element_resistance": "",
+    "skill1_lv": "MAX",
+    "skill2_lv": "MAX",
+    "skill3_lv": "MAX",
+    "skill4_lv": "MAX",
+    "skill_priority": "3>1>4>2",
+    "mind_stats1": "",
+    "mind_stats2": "",
+    "mind_skill1": "S1/HL",
+    "mind_skill2": "S2/S3"
+};

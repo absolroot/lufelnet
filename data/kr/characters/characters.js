@@ -1,18 +1,18 @@
-      
+
 // 캐릭터 목록 데이터
 window.characterList = window.characterList || {
     mainParty: [
         "나루미", "렌", "루우나", "루페르", "레오", "류지",
         "리코·매화", "마사키", "마유미", "마코토", "미나미", "미나미·여름", "미유·여름", "모르가나",
-        "모토하", "모토하·여름", "몽타뉴", "몽타뉴·백조", "미오", "미츠루", "사나다","쇼키","쇼키·암야", "슌", "슌·프론티어",
+        "모토하", "모토하·여름", "몽타뉴", "몽타뉴·백조", "미오", "미츠루", "사나다", "쇼키", "쇼키·암야", "슌", "슌·프론티어",
         "세이지", "안", "아야카", "아케치", "야오링", "야오링·사자무",
-        "원더", "유스케", "YUI", "YUI·스텔라","유카리", "유키미", "유키 마코토", "이치고",
+        "원더", "유스케", "YUI", "YUI·스텔라", "유카리", "유키미", "유키 마코토", "이치고",
         "준페이",
         "카스미", "카타야마", "키라", "키요시", "토모코", "토모코·여름", "토시야",
         "하루", "하루나", "치즈코", "J&C"
     ],
     supportParty: [
-        "리코", "미유","마나카", "유우미", "카요", "후타바", "후카"
+        "리코", "미유", "마나카", "유우미", "카요", "후타바", "후카"
     ]
 };
 
@@ -29,6 +29,28 @@ window.characterList = window.characterList || {
 
 window.characterData = window.characterData || {};
 Object.assign(window.characterData, {
+    "코로마루": {
+        "limit": true,
+        "tag": "PREDICT - 스택형 디버퍼",
+        "tag_en": "PREDICT - Stack Debuffer",
+        "tag_jp": "PREDICT - スタックデバッファー",
+        "persona3": true,
+        "color": "#e1e2ee",
+        "element": "",
+        "rarity": 5,
+        "position": "",
+        "release_order": 42,
+        "persona": "케르베로스",
+        "persona_en": "Cerberus",
+        "persona_jp": "ケルベロス",
+        "name": "코로마루",
+        "name_en": "Koromaru",
+        "name_jp": "コロマル",
+        "name_cn": "",
+        "name_tw": "",
+        "codename": "KOROMARU",
+        "skill_item": 6
+    },
     "나루미": {
         "limit": true,
         "tag": "추가 턴",

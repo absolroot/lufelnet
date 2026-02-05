@@ -669,7 +669,7 @@
 
         // Get last release for date calculation
         let lastRelease = releases[releases.length - 1];
-        
+
         // Calculate next update date
         let lastDate = parseDate(lastRelease.date);
         let interval = lastRelease.days ?? data.intervalRules.beforeV4
@@ -1052,6 +1052,9 @@
 
             // codename으로 캐릭터 찾기
             const charData = window.characterData || {};
+            // 첫 번째 캐릭터의 URL을 뱃지 전체 링크로 사용
+            let firstCharUrl = '';
+
             const characterIcons = release.goldTicketUnlocks.map(codename => {
                 // codename으로 캐릭터 찾기
                 let charName = null;
@@ -1063,17 +1066,31 @@
                 }
 
                 if (charName) {
+                    const lang = getCurrentLang();
+                    const charUrl = `${BASE_URL}/character.html?name=${encodeURIComponent(charName)}&lang=${lang}`;
+
+                    if (!firstCharUrl) {
+                        firstCharUrl = charUrl;
+                    }
+
+                    // 뱃지 전체가 링크이므로 내부는 이미지 태그만 반환 (a 태그 제거)
                     return `<img class="gold-ticket-character-icon" src="${BASE_URL}/assets/img/tier/${charName}.webp" alt="${codename}" title="${codename}" onerror="this.src='${BASE_URL}/assets/img/character-cards/card_skeleton.webp'">`;
                 }
                 return '';
             }).filter(icon => icon).join('');
 
+            // 첫 번째 캐릭터 URL이 있으면 a 태그로, 없으면 div 태그 사용
+            const badgeTag = firstCharUrl ? 'a' : 'div';
+            const badgeHref = firstCharUrl ? `href="${firstCharUrl}"` : '';
+            const badgeClick = firstCharUrl ? `onclick="event.stopPropagation();"` : '';
+            const badgeStyle = firstCharUrl ? 'style="text-decoration: none; color: inherit; cursor: pointer;"' : '';
+
             goldTicketHtml = `
-                <div class="content-badge gold-ticket-badge">
+                <${badgeTag} ${badgeHref} class="content-badge gold-ticket-badge" ${badgeClick} ${badgeStyle}>
                     <img class="gold-ticket-icon" src="${BASE_URL}/assets/img/character-detail/limit_non.png" alt="Gold Ticket Unlock" title="${labels.title}">
                     ${characterIcons}
                     <span class="content-label">${labelText}</span>
-                </div>
+                </${badgeTag}>
             `;
         }
 
@@ -1098,12 +1115,17 @@
 
                 const weaponImageUrl = `${BASE_URL}/assets/img/wonder-weapon/${weaponName}.webp`;
                 const stampAttr = hasStamp ? 'data-weapon-has-stamp="true"' : '';
+                // Weapon click handler (Prevent modal, go to link) -> a 태그로 변경
+                const tag = clickable ? 'a' : 'div';
+                const hrefAttr = clickable ? `href="${BASE_URL}/wonder-weapon/?weapon=${encodeURIComponent(weaponName)}"` : '';
+                const onClickAttr = clickable ? `onclick="event.stopPropagation();"` : '';
+
                 return `
-                    <div class="weapon-item ${noHoverClass}" ${dataAttrs} ${stampAttr} style="${cursorStyle}">
+                    <${tag} class="weapon-item ${noHoverClass}" ${dataAttrs} ${stampAttr} style="${cursorStyle}" ${hrefAttr} ${onClickAttr}>
                         ${hasStamp ? `<img class="weapon-stamp-icon" src="${BASE_URL}/assets/img/wonder-weapon/lightning_stamp.png" alt="Lightning Stamp" title="Lightning Stamp">` : ''}
                         <img class="weapon-icon" src="${weaponImageUrl}" alt="${localizedName}" title="${localizedName}" onerror="this.src='${BASE_URL}/assets/img/placeholder.png';">
                         <span class="weapon-name">${localizedName}</span>
-                    </div>
+                    </${tag}>
                 `;
             }).join('');
 
@@ -1148,12 +1170,15 @@
                 const charData = window.characterData?.[charName];
                 const displayName = charData?.name || charName;
 
+                const lang = getCurrentLang();
+                const charUrl = `${BASE_URL}/character.html?name=${encodeURIComponent(charName)}&lang=${lang}`;
+
                 return `
-                    <div class="mindscape-core-item">
+                    <a href="${charUrl}" class="mindscape-core-item" style="cursor: pointer;" onclick="event.stopPropagation();">
                         <img class="mindscape-core-icon" src="${BASE_URL}/assets/img/character-detail/innate/core.png" alt="Core" title="Core">
                         <img class="mindscape-core-character-icon" src="${BASE_URL}/assets/img/tier/${charName}.webp" alt="${displayName}" title="${displayName}" onerror="this.src='${BASE_URL}/assets/img/character-cards/card_skeleton.webp'">
                         <span class="mindscape-core-label">LV100</span>
-                    </div>
+                    </a>
                 `;
             }).join('');
 
@@ -1175,7 +1200,7 @@
 
                 // 사악한 프로스트는 링크 막기
                 const isBlackFrost = cleanPersonaName === '사악한 프로스트' || cleanPersonaName === 'Black Frost' || cleanPersonaName === 'ジャアクフロスト';
-                const personaPageUrl = isBlackFrost ? '#' : `${BASE_URL}/persona/?search=${encodeURIComponent(cleanPersonaName)}`;
+                const personaPageUrl = isBlackFrost ? '#' : `${BASE_URL}/persona/?name=${encodeURIComponent(cleanPersonaName)}`;
 
                 // CSV에서 combination 및 rank 정보 가져오기
                 const personaData = personaCsvMap && personaCsvMap[cleanPersonaName] ? personaCsvMap[cleanPersonaName] : null;

@@ -29,7 +29,12 @@ import {
     getGlobalItemOptions,
     setGlobalItemOptions,
     getGlobalItemOption,
-    setGlobalItemOption
+    setGlobalItemOption,
+    getGlobalSharedChecks,
+    getGlobalSharedChecksForExport,
+    setGlobalSharedChecks,
+    setGlobalSharedCheck,
+    isGlobalSharedChecked
 } from './need-stat-state.js';
 
 // Data and events modules are available for future use
@@ -71,7 +76,67 @@ export class NeedStatCardUI {
         this.isElucidator = false;
         this.currentSlotIndex = null;
     }
-    
+
+    /**
+     * Check if an item is a shared item that syncs across all character slots
+     * @param {Object} item - The item object
+     * @param {string} category - 'critical', 'pierce', or 'defense'
+     * @param {boolean} isBuff - Whether the item is from buff section
+     * @returns {string|null} - The shared category key or null if not shared
+     */
+    getSharedCategory(item, category, isBuff) {
+        const itemTarget = String(item.target || '');
+
+        // Defense reduce items - all are shared
+        if (category === 'defense') {
+            return 'defense';
+        }
+
+        // Pierce buff items with target '광역' - shared
+        if (category === 'pierce' && isBuff && itemTarget === '광역') {
+            return 'pierceBuffAoe';
+        }
+
+        // Critical buff items with target '광역' - shared
+        if (category === 'critical' && isBuff && itemTarget === '광역') {
+            return 'criticalBuffAoe';
+        }
+
+        return null;
+    }
+
+    /**
+     * Sync local slot selections to global shared checks
+     * This handles legacy data where shared items were stored per-slot
+     */
+    _syncLocalSelectionsToGlobalShared(buffItems, penetrateBuffItems, defenseReduceItems) {
+        // Critical buff items with type '광역'
+        buffItems.forEach(item => {
+            const itemId = String(item.id || `${item.source}_${item.skillName}`);
+            const sharedCategory = this.getSharedCategory(item, 'critical', true);
+            if (sharedCategory && this.selectedItems.has(itemId)) {
+                setGlobalSharedCheck(sharedCategory, itemId, true);
+            }
+        });
+
+        // Pierce buff items with type '광역'
+        penetrateBuffItems.forEach(item => {
+            const itemId = String(item.id || `${item.source}_${item.skillName}`);
+            const sharedCategory = this.getSharedCategory(item, 'pierce', true);
+            if (sharedCategory && this.selectedPierceItems.has(itemId)) {
+                setGlobalSharedCheck(sharedCategory, itemId, true);
+            }
+        });
+
+        // Defense reduce items (all are shared)
+        defenseReduceItems.forEach(item => {
+            const itemId = String(item.id || `${item.source}_${item.skillName}`);
+            if (this.selectedDefenseItems.has(itemId)) {
+                setGlobalSharedCheck('defense', itemId, true);
+            }
+        });
+    }
+
     /**
      * Save current selections to store for persistence
      */
@@ -111,6 +176,9 @@ export class NeedStatCardUI {
         // Save global item options (shared across all slots)
         this.store.state.needStatSelections.globalItemOptions = getGlobalItemOptions();
 
+        // Save global shared checks (synced across all slots)
+        this.store.state.needStatSelections.globalSharedChecks = getGlobalSharedChecksForExport();
+
         // Trigger auto-save
         this.store.notify('needStatChange', { slotIndex });
     }
@@ -125,6 +193,12 @@ export class NeedStatCardUI {
         const globalOptions = this.store.state.needStatSelections?.globalItemOptions;
         if (globalOptions) {
             setGlobalItemOptions(globalOptions);
+        }
+
+        // Load global shared checks (synced across all slots)
+        const globalChecks = this.store.state.needStatSelections?.globalSharedChecks;
+        if (globalChecks) {
+            setGlobalSharedChecks(globalChecks);
         }
 
         const saved = this.store.state.needStatSelections?.[slotIndex];
@@ -702,7 +776,23 @@ export class NeedStatCardUI {
         }
         
         const skillIcon = item.skillIcon ? `${this.baseUrl}${item.skillIcon}` : '';
-        const isChecked = this.selectedItems.has(itemId);
+
+        // Check if this item is a shared item (critical buff with type '광역')
+        const sharedCategory = this.getSharedCategory(item, 'critical', !isSelf);
+        let isChecked;
+        if (sharedCategory) {
+            // Use global shared state
+            isChecked = isGlobalSharedChecked(sharedCategory, itemId);
+            // Sync to local selectedItems
+            if (isChecked) {
+                this.selectedItems.add(itemId);
+            } else {
+                this.selectedItems.delete(itemId);
+            }
+        } else {
+            isChecked = this.selectedItems.has(itemId);
+        }
+
         const sourceName = this.getSourceDisplayName(item.source);
 
         // Build display name following critical-calc.js pattern
@@ -794,7 +884,7 @@ export class NeedStatCardUI {
     /**
      * Render a pierce/defense item row (similar to critical item row)
      */
-    renderPierceItemRow(item, category = 'pierce') {
+    renderPierceItemRow(item, category = 'pierce', isBuff = false) {
         const lang = this.getCurrentLang();
         const itemId = String(item.id || `${item.source}_${item.skillName}`);
         const groupName = item.source || '';
@@ -807,7 +897,7 @@ export class NeedStatCardUI {
 
         const target = item.target || '';
         let value = item.value || 0;
-        
+
         // Apply saved persona performance for jc1/jc2
         const isJC1Pierce = (String(item.id) === 'jc1' && category === 'pierce');
         const isJC2Defense = (String(item.id) === 'jc2' && category === 'defense');
@@ -825,10 +915,26 @@ export class NeedStatCardUI {
                 item.value = value;
             }
         }
-        
+
         const skillIcon = item.skillIcon || '';
         const selectedSet = category === 'pierce' ? this.selectedPierceItems : this.selectedDefenseItems;
-        const isChecked = selectedSet.has(itemId);
+
+        // Check if this item is a shared item
+        const sharedCategory = this.getSharedCategory(item, category, isBuff);
+        let isChecked;
+        if (sharedCategory) {
+            // Use global shared state
+            isChecked = isGlobalSharedChecked(sharedCategory, itemId);
+            // Sync to local selectedSet
+            if (isChecked) {
+                selectedSet.add(itemId);
+            } else {
+                selectedSet.delete(itemId);
+            }
+        } else {
+            isChecked = selectedSet.has(itemId);
+        }
+
         const sourceName = this.getSourceDisplayName(item.source);
 
         // Build display name following defense-calc.js pattern
@@ -1560,6 +1666,9 @@ export class NeedStatCardUI {
             this._initialAutoSelect(charData, buffItems, selfItems, penetrateSelfItems, penetrateBuffItems, defenseReduceItems);
             // 초기 선택 후 즉시 저장
             this.saveSelectionsToStore(slotIndex);
+        } else if (!this.store.state.needStatSelections?.globalSharedChecks) {
+            // Merge local selections to global shared checks only once (for legacy data compatibility)
+            this._syncLocalSelectionsToGlobalShared(buffItems, penetrateBuffItems, defenseReduceItems);
         }
 
         const { labelExtraPierce, labelExtraDefenseReduce, labelPenetrateSelf, labelPenetrateBuff, labelDefenseReduce, labelRemainingDefense, labelRequiredPierce } = labels;
@@ -1631,19 +1740,19 @@ export class NeedStatCardUI {
                         ${penetrateSelfItems.length > 0 ? `
                         <div class="need-stat-section">
                             <div class="need-stat-section-title">${labelPenetrateSelf}</div>
-                            ${penetrateSelfItems.map(item => this.renderPierceItemRow(item, 'pierce')).join('')}
+                            ${penetrateSelfItems.map(item => this.renderPierceItemRow(item, 'pierce', false)).join('')}
                         </div>
                         ` : ''}
                         ${penetrateBuffItems.length > 0 ? `
                         <div class="need-stat-section">
                             <div class="need-stat-section-title">${labelPenetrateBuff}</div>
-                            ${this.sortItemsByCurrentChar(penetrateBuffItems, charData).map(item => this.renderPierceItemRow(item, 'pierce')).join('')}
+                            ${this.sortItemsByCurrentChar(penetrateBuffItems, charData).map(item => this.renderPierceItemRow(item, 'pierce', true)).join('')}
                         </div>
                         ` : ''}
                         ${defenseReduceItems.length > 0 ? `
                         <div class="need-stat-section">
                             <div class="need-stat-section-title">${labelDefenseReduce}</div>
-                            ${this.sortItemsByCurrentChar(defenseReduceItems, charData).map(item => this.renderPierceItemRow(item, 'defense')).join('')}
+                            ${this.sortItemsByCurrentChar(defenseReduceItems, charData).map(item => this.renderPierceItemRow(item, 'defense', true)).join('')}
                         </div>
                         ` : ''}
                     </div>
@@ -2127,21 +2236,32 @@ export class NeedStatCardUI {
                 const itemId = row.dataset.itemId;
                 if (!itemId) return;
 
-                if (this.selectedItems.has(itemId)) {
-                    this.selectedItems.delete(itemId);
-                    row.classList.remove('checked');
-                    checkEl.src = `${this.baseUrl}/assets/img/ui/check-off.png`;
-                    checkEl.classList.add('check-off');
-                } else {
+                const newChecked = !this.selectedItems.has(itemId);
+
+                if (newChecked) {
                     this.selectedItems.add(itemId);
                     row.classList.add('checked');
                     checkEl.src = `${this.baseUrl}/assets/img/ui/check-on.png`;
                     checkEl.classList.remove('check-off');
+                } else {
+                    this.selectedItems.delete(itemId);
+                    row.classList.remove('checked');
+                    checkEl.src = `${this.baseUrl}/assets/img/ui/check-off.png`;
+                    checkEl.classList.add('check-off');
+                }
+
+                // Check if this is a shared item (buff with type '광역')
+                const buffItem = buffItems.find(i => String(i.id || `${i.source}_${i.skillName}`) === itemId);
+                if (buffItem) {
+                    const sharedCategory = this.getSharedCategory(buffItem, 'critical', true);
+                    if (sharedCategory) {
+                        setGlobalSharedCheck(sharedCategory, itemId, newChecked);
+                    }
                 }
 
                 const total = this.calculateTotal(buffItems, selfItems) + this.revelationSumCritical + this.extraSumCritical + getGlobalElucidatorCritical();
                 this.updateTotalPairDisplays(slotIndex, total, 'critical');
-                
+
                 // 선택 상태 저장
                 this.saveSelectionsToStore(slotIndex);
             };
@@ -2308,21 +2428,47 @@ export class NeedStatCardUI {
                 if (!itemId) return;
 
                 const selectedSet = category === 'pierce' ? this.selectedPierceItems : this.selectedDefenseItems;
+                const newChecked = !selectedSet.has(itemId);
 
-                if (selectedSet.has(itemId)) {
-                    selectedSet.delete(itemId);
-                    row.classList.remove('checked');
-                    checkEl.src = `${this.baseUrl}/assets/img/ui/check-off.png`;
-                    checkEl.classList.add('check-off');
-                } else {
+                if (newChecked) {
                     selectedSet.add(itemId);
                     row.classList.add('checked');
                     checkEl.src = `${this.baseUrl}/assets/img/ui/check-on.png`;
                     checkEl.classList.remove('check-off');
+                } else {
+                    selectedSet.delete(itemId);
+                    row.classList.remove('checked');
+                    checkEl.src = `${this.baseUrl}/assets/img/ui/check-off.png`;
+                    checkEl.classList.add('check-off');
+                }
+
+                // Check if this is a shared item
+                let item = null;
+                let isBuff = false;
+
+                if (category === 'defense') {
+                    // All defense items are shared
+                    item = allDefenseItems.find(i => String(i.id || `${i.source}_${i.skillName}`) === itemId);
+                    isBuff = true; // defense items are always shared
+                } else if (category === 'pierce') {
+                    // Check if it's a buff item with type '광역'
+                    item = penetrateBuffItems.find(i => String(i.id || `${i.source}_${i.skillName}`) === itemId);
+                    if (item) {
+                        isBuff = true;
+                    } else {
+                        item = penetrateSelfItems.find(i => String(i.id || `${i.source}_${i.skillName}`) === itemId);
+                    }
+                }
+
+                if (item) {
+                    const sharedCategory = this.getSharedCategory(item, category, isBuff);
+                    if (sharedCategory) {
+                        setGlobalSharedCheck(sharedCategory, itemId, newChecked);
+                    }
                 }
 
                 updatePierceDisplays();
-                
+
                 // 선택 상태 저장
                 this.saveSelectionsToStore(slotIndex);
             };

@@ -3,7 +3,7 @@
  * Handles data compatibility with legacy tactic maker format
  */
 
-import { setGlobalItemOptions } from './need-stat-state.js';
+import { setGlobalItemOptions, setGlobalSharedChecks, getGlobalItemOptions, getGlobalSharedChecks } from './need-stat-state.js';
 
 const GAS_URL = 'https://script.google.com/macros/s/AKfycbzxSnf6_09q_LDRKIkmBvE2oTtQaLnK22M9ozrHMUAV0JnND9sc6CTILlnBS7_T8FIe/exec';
 
@@ -245,13 +245,27 @@ export class ImportExport {
             internalState = this.parseRawFormat(data);
         }
 
+        // Reset global states before loading new data
+        // This ensures imported data doesn't inherit local browser's saved options
+        setGlobalItemOptions({});
+        setGlobalSharedChecks({ defense: [], pierceBuffAoe: [], criticalBuffAoe: [] });
+
         // Load data into store
         this.store.loadData(internalState);
 
-        // Load global item options if present
+        // Load global item options if present in imported data
         const globalOptions = internalState.needStatSelections?.globalItemOptions;
-        if (globalOptions) {
+        if (globalOptions && Object.keys(globalOptions).length > 0) {
             setGlobalItemOptions(globalOptions);
+        }
+
+        // Load global shared checks if present, or merge from slot selections
+        const globalChecks = internalState.needStatSelections?.globalSharedChecks;
+        if (globalChecks) {
+            setGlobalSharedChecks(globalChecks);
+        } else {
+            // Merge shared checks from all slots (for legacy data compatibility)
+            this.mergeSharedChecksFromSlots(internalState.needStatSelections || {});
         }
 
         // Update title input
@@ -267,6 +281,35 @@ export class ImportExport {
         }
 
         console.log('[ImportExport] Data imported successfully');
+    }
+
+    /**
+     * Merge shared checks from all slot selections (for legacy data compatibility)
+     * Defense items are all shared, so we can merge them directly.
+     * Buff items with type '광역' need item data which is loaded later,
+     * so they are handled in ui-critical-card.js renderPanel.
+     */
+    mergeSharedChecksFromSlots(needStatSelections) {
+        const merged = {
+            defense: [],
+            pierceBuffAoe: [],
+            criticalBuffAoe: []
+        };
+
+        // Merge defense items from all slots
+        Object.keys(needStatSelections).forEach(key => {
+            if (key === 'globalItemOptions' || key === 'globalSharedChecks') return;
+            const slotData = needStatSelections[key];
+            if (slotData?.defense && Array.isArray(slotData.defense)) {
+                slotData.defense.forEach(id => {
+                    if (!merged.defense.includes(id)) {
+                        merged.defense.push(id);
+                    }
+                });
+            }
+        });
+
+        setGlobalSharedChecks(merged);
     }
 
     /**

@@ -25,6 +25,16 @@ let globalBossSettings = {
 // Key: itemId, Value: selected option value
 let globalItemOptions = {};
 
+// Global shared check states (items that sync across all character slots)
+// - defense: all defense reduce items
+// - pierceBuffAoe: pierce buff items with type '광역'
+// - criticalBuffAoe: critical buff items with type '광역'
+let globalSharedChecks = {
+    defense: new Set(),
+    pierceBuffAoe: new Set(),
+    criticalBuffAoe: new Set()
+};
+
 // ============================================================================
 // State Getters/Setters
 // ============================================================================
@@ -69,6 +79,44 @@ export function setGlobalItemOptions(options) {
 
 export function getGlobalItemOption(itemId) {
     return globalItemOptions[String(itemId)];
+}
+
+// Global shared check getters/setters
+export function getGlobalSharedChecks() {
+    return {
+        defense: new Set(globalSharedChecks.defense),
+        pierceBuffAoe: new Set(globalSharedChecks.pierceBuffAoe),
+        criticalBuffAoe: new Set(globalSharedChecks.criticalBuffAoe)
+    };
+}
+
+export function getGlobalSharedChecksForExport() {
+    return {
+        defense: [...globalSharedChecks.defense],
+        pierceBuffAoe: [...globalSharedChecks.pierceBuffAoe],
+        criticalBuffAoe: [...globalSharedChecks.criticalBuffAoe]
+    };
+}
+
+export function setGlobalSharedChecks(checks) {
+    if (checks) {
+        globalSharedChecks.defense = new Set(checks.defense || []);
+        globalSharedChecks.pierceBuffAoe = new Set(checks.pierceBuffAoe || []);
+        globalSharedChecks.criticalBuffAoe = new Set(checks.criticalBuffAoe || []);
+    }
+}
+
+export function setGlobalSharedCheck(category, itemId, checked) {
+    const id = String(itemId);
+    if (checked) {
+        globalSharedChecks[category]?.add(id);
+    } else {
+        globalSharedChecks[category]?.delete(id);
+    }
+}
+
+export function isGlobalSharedChecked(category, itemId) {
+    return globalSharedChecks[category]?.has(String(itemId)) || false;
 }
 
 // ============================================================================

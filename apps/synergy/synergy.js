@@ -1016,14 +1016,20 @@
         // time 필드 사용 (캐릭터 JSON 파일의 time 우선, 없으면 friend_num.json의 time/appear로 폴백)
         const timeValue = data.time || char.time || char.appear || '';
         let timeLabel = timeValue;
-        if (timeValue === 'After School') timeLabel = '방과 후';
-        else if (timeValue === 'Evening') timeLabel = '저녁';
-        else if (timeValue === 'Night') timeLabel = '밤';
-        else if (timeValue === 'Afternoon') timeLabel = '오후';
 
-        // 번역 적용
-        if (currentLanguage !== 'kr' && window.synergyTranslations?.[currentLanguage]?.[timeLabel]) {
-            timeLabel = window.synergyTranslations[currentLanguage][timeLabel];
+        const timeKeyMap = {
+            'After School': 'filterAfterSchool',
+            'Evening': 'filterEvening',
+            'Night': 'filterNight',
+            'Afternoon': 'filterAfternoon',
+            '방과 후': 'filterAfterSchool',
+            '저녁': 'filterEvening',
+            '밤': 'filterNight',
+            '오후': 'filterAfternoon'
+        };
+
+        if (timeKeyMap[timeValue] && window.t) {
+            timeLabel = window.t(timeKeyMap[timeValue]);
         }
 
         // can_romance 아이콘

@@ -69,7 +69,7 @@ window.I18N_PAGE_PULL_CALC_JP = {
     labelSeaServer: 'SEAサーバー (+8日)',
 
     // 計画関連
-    planDescription: 'タイムラインからキャラクターをクリックして計画に追加してください。',
+    planDescription: 'タイムラインからキャラクターをクリックして計画に追加してください。既にリリースされたキャラクターがデータに残っている場合、グラフは描画されません。',
     chartEmpty: 'タイムラインからキャラクターを選択してください',
     charTarget: 'キャラクター目標',
     weaponTarget: '武器目標',

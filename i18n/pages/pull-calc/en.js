@@ -69,7 +69,7 @@ window.I18N_PAGE_PULL_CALC_EN = {
     labelSeaServer: 'SEA Server (+8 Days)',
 
     // Plan related
-    planDescription: 'Click characters from the timeline to add to your plan.',
+    planDescription: 'Click characters from the timeline to add to your plan. If a character that has already been released remains in the data, the graph will not be drawn.',
     chartEmpty: 'Select characters from the timeline',
     charTarget: 'Character Target',
     weaponTarget: 'Weapon Target',

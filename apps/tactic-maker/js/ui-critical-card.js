@@ -75,6 +75,91 @@ export class NeedStatCardUI {
         this.slotCharData = null;
         this.isElucidator = false;
         this.currentSlotIndex = null;
+
+        // Mutually exclusive item rules: only one can be checked at a time
+        // { ids: [id1, id2], priority: id1, category: 'defense' | 'pierce' }
+        this.mutuallyExclusiveRules = [
+            { ids: ['14', '14-2'], priority: '14', category: 'defense' },           // 후타바
+            { ids: ['katayama1', 'katayama2'], priority: 'katayama1', category: 'defense' }, // 카타야마
+            { ids: ['16', '17'], priority: '16', category: 'defense' },             // 루우나
+            { ids: ['19-1', '19-2'], priority: '19-1', category: 'defense' },       // 루우나
+            { ids: ['mio2', 'mio3'], priority: 'mio3', category: 'defense' },       // 미오
+            { ids: ['masaki1', 'masaki2'], priority: 'masaki1', category: 'pierce' }, // 마사키
+        ];
+    }
+
+    /**
+     * Get the mutually exclusive rule for an item
+     */
+    getMutuallyExclusiveRule(itemId, category) {
+        const id = String(itemId);
+        return this.mutuallyExclusiveRules.find(rule =>
+            rule.category === category && rule.ids.includes(id)
+        );
+    }
+
+    /**
+     * Handle mutually exclusive check: uncheck the other item if exists
+     * @returns {string|null} The unchecked item id, or null
+     */
+    handleMutuallyExclusiveCheck(itemId, category, container) {
+        const id = String(itemId);
+        const rule = this.getMutuallyExclusiveRule(id, category);
+        if (!rule) return null;
+
+        const otherId = rule.ids.find(ruleId => ruleId !== id);
+        if (!otherId) return null;
+
+        const selectedSet = category === 'pierce' ? this.selectedPierceItems : this.selectedDefenseItems;
+
+        if (selectedSet.has(otherId)) {
+            selectedSet.delete(otherId);
+
+            // Update UI if container is provided
+            if (container) {
+                const otherRow = container.querySelector(`.need-stat-row[data-item-id="${otherId}"][data-category="${category}"]`);
+                if (otherRow) {
+                    otherRow.classList.remove('checked');
+                    const checkEl = otherRow.querySelector('.need-stat-check');
+                    if (checkEl) {
+                        checkEl.src = `${this.baseUrl}/assets/img/ui/check-off.png`;
+                        checkEl.classList.add('check-off');
+                    }
+                }
+            }
+
+            // Also update global shared state if it's a shared item
+            const sharedCategory = category === 'defense' ? 'defense' : null;
+            if (sharedCategory) {
+                setGlobalSharedCheck(sharedCategory, otherId, false);
+            }
+
+            return otherId;
+        }
+        return null;
+    }
+
+    /**
+     * Resolve mutually exclusive conflicts on load: keep only priority item checked
+     */
+    resolveMutuallyExclusiveOnLoad() {
+        this.mutuallyExclusiveRules.forEach(rule => {
+            const selectedSet = rule.category === 'pierce' ? this.selectedPierceItems : this.selectedDefenseItems;
+            const checkedIds = rule.ids.filter(id => selectedSet.has(id));
+
+            if (checkedIds.length > 1) {
+                // Multiple items checked, keep only priority
+                checkedIds.forEach(id => {
+                    if (id !== rule.priority) {
+                        selectedSet.delete(id);
+                        // Also update global shared state
+                        if (rule.category === 'defense') {
+                            setGlobalSharedCheck('defense', id, false);
+                        }
+                    }
+                });
+            }
+        });
     }
 
     /**
@@ -213,6 +298,9 @@ export class NeedStatCardUI {
         this.extraSumPierce = saved.extraSumPierce || 0;
         this.extraDefenseReduce = saved.extraDefenseReduce || 0;
         this.savedPersonaPerformance = saved.personaPerformance || {};
+
+        // Resolve mutually exclusive conflicts
+        this.resolveMutuallyExclusiveOnLoad();
 
         return true;
     }
@@ -2435,6 +2523,9 @@ export class NeedStatCardUI {
                     row.classList.add('checked');
                     checkEl.src = `${this.baseUrl}/assets/img/ui/check-on.png`;
                     checkEl.classList.remove('check-off');
+
+                    // Handle mutually exclusive items
+                    this.handleMutuallyExclusiveCheck(itemId, category, container);
                 } else {
                     selectedSet.delete(itemId);
                     row.classList.remove('checked');

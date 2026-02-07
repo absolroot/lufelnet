@@ -62,8 +62,8 @@ window.ReleaseScheduleData = {
         // 3.x (2주 간격)
         { version: "3.2.1", date: "2026-02-05", characters: ["리코·매화"], "main-story": "4-2", persona: ["지크프리트"], weapon: ["플라스마 섬멸자"], revelation: ["헛수고", "실망"], days: 8 },
         { version: "3.2.2", characters: ["미오"], persona: ["트론"], weapon: ["작열의 연옥"], days: 14 },
-        { version: "3.3", characters: ["카스미"], persona: ["스라오샤"], days: 14 },
-        { version: "3.4", characters: ["야오링·사자무"], persona: ["년수"], note: "", days: 14 },
+        { version: "3.3", characters: ["야오링·사자무"], persona: ["년수"], note: "", days: 14 },
+        { version: "3.4", characters: ["카스미"], persona: ["스라오샤"], days: 14 },
         { version: "3.5", characters: ["아케치"], days: 14 },
         { version: "3.6", characters: ["마유미"], days: 14 },
         // 4.0 이후 (3주 간격) - isThreeWeekStart 표시

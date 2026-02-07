@@ -1,4 +1,4 @@
-export default {
+window.I18N_PAGE_ARTICLE_KR = {
     // Navigation
     navHome: '홈',
     navCurrent: '가이드',

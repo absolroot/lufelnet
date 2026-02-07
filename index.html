@@ -493,15 +493,72 @@ jp: /?lang=jp
         if (window.i18nData) return window.i18nData;
 
         try {
-            // 다국어 데이터를 직접 정의 (Jekyll에서 빌드 시 생성)
+            // I18nService가 로드되어 있으면 사용
+            if (window.I18nService) {
+                // 공통 번역 로드 (모든 언어)
+                await Promise.all([
+                    window.I18nService.loadCommonTranslations('kr'),
+                    window.I18nService.loadCommonTranslations('en'),
+                    window.I18nService.loadCommonTranslations('jp')
+                ]);
+
+                // i18nData 호환 형식으로 변환
+                const buildLangData = (lang) => {
+                    const common = window.I18nService.cache?.[lang]?.common || {};
+                    const home = common.home || {};
+                    return {
+                        language_notice: home.languageNotice || '',
+                        site_title: home.siteTitle || 'P5X Lufelnet',
+                        menu_character: home.menuCharacter || '',
+                        menu_persona: home.menuPersona || '',
+                        menu_revelations: home.menuRevelations || '',
+                        menu_tactic: home.menuTactic || '',
+                        menu_article: home.menuArticle || '',
+                        menu_tier: home.menuTier || '',
+                        menu_character_desc_desktop: home.menuCharacterDescDesktop || '',
+                        menu_character_desc_mobile: home.menuCharacterDescMobile || '',
+                        menu_persona_desc_desktop: home.menuPersonaDescDesktop || '',
+                        menu_persona_desc_mobile: home.menuPersonaDescMobile || '',
+                        menu_revelations_desc_desktop: home.menuRevelationsDescDesktop || '',
+                        menu_revelations_desc_mobile: home.menuRevelationsDescMobile || '',
+                        menu_tactic_desc_desktop: home.menuTacticDescDesktop || '',
+                        menu_tactic_desc_mobile: home.menuTacticDescMobile || '',
+                        menu_article_desc_desktop: home.menuArticleDescDesktop || '',
+                        menu_article_desc_mobile: home.menuArticleDescMobile || '',
+                        menu_tier_desc_desktop: home.menuTierDescDesktop || '',
+                        menu_tier_desc_mobile: home.menuTierDescMobile || '',
+                        menu_goto: home.menuGoto || '',
+                        popular_characters: home.popularCharacters || '',
+                        recent_updates: home.recentUpdates || '',
+                        guides: home.guides || '',
+                        guide_city: home.guideCity || '',
+                        guide_growth: home.guideGrowth || '',
+                        guide_battle: home.guideBattle || '',
+                        tactic_workshop: home.tacticWorkshop || '',
+                        show_more: home.showMore || ''
+                    };
+                };
+
+                window.i18nData = {
+                    kr: buildLangData('kr'),
+                    en: buildLangData('en'),
+                    jp: buildLangData('jp')
+                };
+
+                return window.i18nData;
+            }
+
+            // 폴백: I18nService가 없는 경우 기본 한국어 데이터
             window.i18nData = {
                 kr: {
                     language_notice: "",
                     site_title: "P5X 루페르넷",
-                    menu_character: "캐릭터",
+                    menu_character: "괴도",
                     menu_persona: "페르소나",
                     menu_revelations: "계시",
                     menu_tactic: "택틱",
+                    menu_article: "가이드",
+                    menu_tier: "티어",
                     menu_character_desc_desktop: "보다 높은 점수, 보다 쉬운 클리어를 위한<br>괴도별 육성 전략을 만나보세요",
                     menu_character_desc_mobile: "괴도별 육성 전략을 만나보세요",
                     menu_persona_desc_desktop: "핵심 페르소나 추천과 더불어<br>각 페르소나에 어울리는 스킬 세팅까지",
@@ -510,6 +567,10 @@ jp: /?lang=jp
                     menu_revelations_desc_mobile: "계시 정보들을 한 눈에!",
                     menu_tactic_desc_desktop: "본인만의 택틱을 만들고 공유하고,<br>바다와 흉몽에서 높은 점수를 쟁취하세요",
                     menu_tactic_desc_mobile: "본인만의 택틱을 만들고 공유하세요",
+                    menu_article_desc_desktop: "게임에서 알려주지 않는 정보들을 정리했습니다.",
+                    menu_article_desc_mobile: "게임에서 알려주지 않는 정보들",
+                    menu_tier_desc_desktop: "티어표를 참고해서 괴도를 육성해보세요.",
+                    menu_tier_desc_mobile: "티어표를 참고해서 괴도를 육성",
                     menu_goto: "바로가기",
                     popular_characters: "인기 괴도",
                     recent_updates: "최신 업데이트",
@@ -520,68 +581,8 @@ jp: /?lang=jp
                     tactic_workshop: "택틱 도서관",
                     show_more: "더보기"
                 },
-                en: {
-                    language_notice: "{{ site.data.i18n.en.language_notice | default: '🌍 English translation is in progress. Some content may still be in Korean.' }}",
-                    site_title: "{{ site.data.i18n.en.site_title | default: 'P5X Lufelnet' }}",
-                    menu_character: "{{ site.data.i18n.en.menu_character | default: 'Characters' }}",
-                    menu_persona: "{{ site.data.i18n.en.menu_persona | default: 'Personas' }}",
-                    menu_revelations: "{{ site.data.i18n.en.menu_revelations | default: 'Revelations' }}",
-                    menu_tactic: "{{ site.data.i18n.en.menu_tactic | default: 'Tactics' }}",
-                    menu_article: "{{ site.data.i18n.en.menu_article | default: 'Guides' }}",
-                    menu_tier: "{{ site.data.i18n.en.menu_tier | default: 'Tiers' }}",
-                    menu_character_desc_desktop: "{{ site.data.i18n.en.menu_character_desc_desktop | default: 'Meet character development strategies<br>for higher scores and easier clears' }}",
-                    menu_character_desc_mobile: "{{ site.data.i18n.en.menu_character_desc_mobile | default: 'Meet character development strategies' }}",
-                    menu_persona_desc_desktop: "{{ site.data.i18n.en.menu_persona_desc_desktop | default: 'Core persona recommendations<br>and skill settings for each persona' }}",
-                    menu_persona_desc_mobile: "{{ site.data.i18n.en.menu_persona_desc_mobile | default: 'Core persona recommendations and skill settings' }}",
-                    menu_revelations_desc_desktop: "{{ site.data.i18n.en.menu_revelations_desc_desktop | default: 'All revelation information at a glance!<br>Match by element and sun/moon/star as desired' }}",
-                    menu_revelations_desc_mobile: "{{ site.data.i18n.en.menu_revelations_desc_mobile | default: 'All revelation information at a glance!' }}",
-                    menu_tactic_desc_desktop: "{{ site.data.i18n.en.menu_tactic_desc_desktop | default: 'Create and share your own tactics,<br>achieve high scores in sea and nightmare' }}",
-                    menu_tactic_desc_mobile: "{{ site.data.i18n.en.menu_tactic_desc_mobile | default: 'Create and share your own tactics' }}",
-                    menu_article_desc_desktop: "{{ site.data.i18n.en.menu_article_desc_desktop | default: 'Compiled information that the game doesn&#39;t tell you.' }}",
-                    menu_article_desc_mobile: "{{ site.data.i18n.en.menu_article_desc_mobile | default: 'Compiled information that the game doesn&#39;t tell you.' }}",
-                    menu_tier_desc_desktop: "{{ site.data.i18n.en.menu_tier_desc_desktop | default: 'Try building your Phantom Thieves based on the tier list.' }}",
-                    menu_tier_desc_mobile: "{{ site.data.i18n.en.menu_tier_desc_mobile | default: 'Building your Phantom Thieves by the tier list.' }}",
-                    menu_goto: "{{ site.data.i18n.en.menu_goto | default: 'Go to' }}",
-                    popular_characters: "{{ site.data.i18n.en.popular_characters | default: 'Popular Characters' }}",
-                    recent_updates: "{{ site.data.i18n.en.recent_updates | default: 'Recent Updates' }}",
-                    guides: "{{ site.data.i18n.en.guides | default: 'Guides' }}",
-                    guide_city: "{{ site.data.i18n.en.guide_city | default: 'City Life' }}",
-                    guide_growth: "{{ site.data.i18n.en.guide_growth | default: 'Growth & Resources' }}",
-                    guide_battle: "{{ site.data.i18n.en.guide_battle | default: 'Battle & Palace' }}",
-                    tactic_workshop: "{{ site.data.i18n.en.tactic_workshop | default: 'Tactic Library' }}",
-                    show_more: "{{ site.data.i18n.en.show_more | default: 'Show More' }}"
-                },
-                jp: {
-                    language_notice: "{{ site.data.i18n.jp.language_notice | default: '🌍 日本語翻訳は進行中です。一部のコンテンツは韓国語のままの場合があります。' }}",
-                    site_title: "{{ site.data.i18n.jp.site_title | default: 'P5X Lufelnet' }}",
-                    menu_character: "{{ site.data.i18n.jp.menu_character | default: '怪盗' }}",
-                    menu_persona: "{{ site.data.i18n.jp.menu_persona | default: 'ペルソナ' }}",
-                    menu_revelations: "{{ site.data.i18n.jp.menu_revelations | default: '啓示' }}",
-                    menu_tactic: "{{ site.data.i18n.jp.menu_tactic | default: 'タクティクス' }}",
-                    menu_article: "{{ site.data.i18n.jp.menu_article | default: 'ガイド' }}",
-                    menu_tier: "{{ site.data.i18n.jp.menu_tier | default: 'ティア' }}",
-                    menu_character_desc_desktop: "{{ site.data.i18n.jp.menu_character_desc_desktop | default: 'より高いスコア、より簡単なクリアのための<br>怪盗別育成戦略をご紹介します' }}",
-                    menu_character_desc_mobile: "{{ site.data.i18n.jp.menu_character_desc_mobile | default: '怪盗別育成戦略をご紹介します' }}",
-                    menu_persona_desc_desktop: "{{ site.data.i18n.jp.menu_persona_desc_desktop | default: 'コアペルソナ推薦と共に<br>各ペルソナに合うスキル設定まで' }}",
-                    menu_persona_desc_mobile: "{{ site.data.i18n.jp.menu_persona_desc_mobile | default: 'コアペルソナ推薦とスキル設定まで' }}",
-                    menu_revelations_desc_desktop: "{{ site.data.i18n.jp.menu_revelations_desc_desktop | default: '啓示情報を一目で！<br>属性別、旭月星天別にお好みに合わせてマッチング' }}",
-                    menu_revelations_desc_mobile: "{{ site.data.i18n.jp.menu_revelations_desc_mobile | default: '啓示情報を一目で！' }}",
-                    menu_tactic_desc_desktop: "{{ site.data.i18n.jp.menu_tactic_desc_desktop | default: '自分だけのタクティクスを作成・共有し、<br>海と悪夢で高スコアを獲得しましょう' }}",
-                    menu_tactic_desc_mobile: "{{ site.data.i18n.jp.menu_tactic_desc_mobile | default: '自分だけのタクティクスを作成・共有しましょう' }}",
-                    menu_article_desc_desktop: "{{ site.data.i18n.jp.menu_article_desc_desktop | default: 'ゲーム内で説明されない情報をまとめました。' }}",
-                    menu_article_desc_mobile: "{{ site.data.i18n.jp.menu_article_desc_mobile | default: 'ゲーム内で説明されない情報をまとめました。' }}",
-                    menu_tier_desc_desktop: "{{ site.data.i18n.jp.menu_tier_desc_desktop | default: 'ティア表を参考にして怪盗を育成してみましょう。' }}",
-                    menu_tier_desc_mobile: "{{ site.data.i18n.jp.menu_tier_desc_mobile | default: 'ティア表を参考にして怪盗を育成してみましょう。' }}",
-                    menu_goto: "{{ site.data.i18n.jp.menu_goto | default: '移動' }}",
-                    popular_characters: "{{ site.data.i18n.jp.popular_characters | default: '人気怪盗' }}",
-                    recent_updates: "{{ site.data.i18n.jp.recent_updates | default: '最新アップデート' }}",
-                    guides: "{{ site.data.i18n.jp.guides | default: 'ガイド' }}",
-                    guide_city: "{{ site.data.i18n.jp.guide_city | default: '都市生活' }}",
-                    guide_growth: "{{ site.data.i18n.jp.guide_growth | default: '育成・資源' }}",
-                    guide_battle: "{{ site.data.i18n.jp.guide_battle | default: '戦闘・パレス' }}",
-                    tactic_workshop: "{{ site.data.i18n.jp.tactic_workshop | default: 'タクティクスライブラリー' }}",
-                    show_more: "{{ site.data.i18n.jp.show_more | default: 'もっと見る' }}"
-                }
+                en: {},
+                jp: {}
             };
 
             return window.i18nData;

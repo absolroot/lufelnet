@@ -1,4 +1,4 @@
-export default {
+window.I18N_PAGE_ARTICLE_EN = {
     // Navigation
     navHome: 'Home',
     navCurrent: 'Guide',

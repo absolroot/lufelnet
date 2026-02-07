@@ -1,4 +1,4 @@
-export default {
+window.I18N_PAGE_ABOUT_KR = {
     // Page titles
     siteTitle: '루페르넷 lufel.net',
     contactTitle: '문의 및 피드백',

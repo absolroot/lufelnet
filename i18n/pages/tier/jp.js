@@ -1,4 +1,4 @@
-export default {
+window.I18N_PAGE_TIER_JP = {
     // Navigation
     navHome: 'ホーム',
     navCurrent: 'ティアメーカー',

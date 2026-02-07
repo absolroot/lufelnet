@@ -2,9 +2,54 @@
  * 한국어 공통 번역
  * 
  * 모든 페이지에서 공통으로 사용하는 UI 요소, 네비게이션, 버튼, 메시지 등의 번역을 포함합니다.
+ * 영어 키 → 한국어 값 구조로 통일 (다른 언어 파일과 동일한 키 사용)
  */
 
-export default {
+window.I18N_COMMON_KR = {
+    // 사이트 메타데이터
+    site: {
+        title: '페르소나5 더 팬텀 X - 루페르넷',
+        description: '페르소나5 더 팬텀 X의 모든 정보를 한 곳에서 확인하세요. 캐릭터, 페르소나, 스킬, 공략 가이드를 제공합니다.',
+        keywords: '페르소나5 더 팬텀 X, P5X, 루페르넷, 괴도, 페르소나, 계시, 택틱, 게임공략',
+        author: '루페르넷'
+    },
+
+    // 푸터
+    footer: {
+        disclaimer: '※ 루페르넷은 개인이 만든 비공식 페르소나5X 정보 제공 사이트로 게임의 콘텐츠와 소재의 트레이드마크와 저작권은 SEGA·ATLUS·Perfect World Games에 있습니다.',
+        contactName: '루트',
+        reportLink: '제보 및 요청'
+    },
+
+    // 홈페이지
+    home: {
+        languageNotice: '',
+        siteTitle: 'P5X 루페르넷',
+        menuCharacter: '괴도',
+        menuPersona: '페르소나',
+        menuRevelations: '계시',
+        menuTactic: '택틱',
+        menuArticle: '가이드',
+        menuTier: '티어',
+        menuCharacterDescDesktop: '보다 높은 점수, 보다 쉬운 클리어를 위한<br>괴도별 육성 전략을 만나보세요',
+        menuCharacterDescMobile: '괴도별 육성 전략을 만나보세요',
+        menuPersonaDescDesktop: '핵심 페르소나 추천과 더불어<br>각 페르소나에 어울리는 스킬 세팅까지',
+        menuPersonaDescMobile: '핵심 페르소나 추천과 스킬 세팅까지',
+        menuRevelationsDescDesktop: '계시 정보들을 한 눈에!<br>속성별, 일월성진별 원하는 대로 매칭',
+        menuRevelationsDescMobile: '계시 정보들을 한 눈에!',
+        menuTacticDescDesktop: '본인만의 택틱을 만들고 공유하고,<br>바다와 흉몽에서 높은 점수를 쟁취하세요',
+        menuTacticDescMobile: '본인만의 택틱을 만들고 공유하세요',
+        menuGoto: '바로가기',
+        popularCharacters: '인기 괴도',
+        recentUpdates: '최신 업데이트',
+        guides: '가이드',
+        guideCity: '도시 생활',
+        guideGrowth: '육성 및 재화',
+        guideBattle: '전투 및 팰리스',
+        tacticWorkshop: '택틱 도서관',
+        showMore: '더보기'
+    },
+
     // 네비게이션 공통
     nav: {
         home: '홈',
@@ -54,11 +99,12 @@ export default {
         seconds: '초'
     },
 
-    // 게임 공통 용어 (i18n-utils.js에서 이관)
+    // 게임 용어 (영어 키 → 한국어 값) - 동적 번역용
     gameTerms: {
         // 기본 스탯
         hp: '생명',
         maxHp: '최대 생명',
+        maxHpUp: '최대 생명 증가',
         attack: '공격력',
         defense: '방어력',
         speed: '속도',
@@ -78,17 +124,19 @@ export default {
         shieldEffect: '실드 효과',
         dmgReduction: '대미지감면',
 
-        // 기타
+        // 기타 스탯
         spRecovery: 'SP 회복',
         resonance: '추가 효과',
         downdamage: '다운 허약',
         naviPower: '해명의힘',
         labor: '직책',
         myPalace: '마이팰리스',
+        gunShot: '총격',
 
         // 무기 및 의식
         awareness: '의식',
         exclusiveWeapon: '전용무기',
+        weapon4star: '4성 무기',
         weapon: '무기',
         passive: '패시브',
 
@@ -104,20 +152,9 @@ export default {
         taunt: '공격받을 확률 증가',
         down: '다운',
         theurgy: '테우르기아',
-
-        // 속성
-        fire: '화염 속성',
-        ice: '빙결 속성',
-        electric: '전격',
-
-        // 상태이상
-        burn: '화상',
-        freeze: '동결',
-        shock: '감전',
-        sleep: '수면',
-        forget: '망각',
-        curse: '주원',
-        windswept: '풍습',
+        theurgyCharge: '테우르기아 충전',
+        dmgTaken: '받는 대미지 증가',
+        hpCost: 'HP 소모',
 
         // 버프/디버프
         buff: '버프',
@@ -132,27 +169,53 @@ export default {
         transform: '변신',
         charge: '차지',
         additionalTurn: '추가 턴',
+        weaknessChange: '약점 변경',
+        formChange: '폼 체인지',
+        skillMaster: '스킬마스터',
+        damageAccumulation: '대미지 축적',
+        item: '아이템',
+        tbd: '미정',
 
         // 심상
         mindscape: '심상',
         minds5: '심상5',
 
-        // 계시
+        // 계시/원더
         revelation: '계시',
         wonder: '원더',
-
-        // 턴 관련
-        '1turn': '1턴',
-        '2turns': '2턴',
-        '3turns': '3턴',
-        '4turns': '4턴',
-        '5turns': '5턴',
-        '6turns': '6턴',
+        common: '공통',
 
         // 범위
         aoe: '광역',
         single: '단일',
-        self: '자신'
+        self: '자신',
+
+        // ========================================
+        // 띄어쓰기 변형 (aliases) - 동적 번역 매칭용
+        // ========================================
+        // 원문 데이터에서 띄어쓰기가 다양하게 사용됨
+        // ex) '대미지보너스', '대미지 보너스' 둘 다 처리 필요
+
+        // 생명 관련
+        hpAlt: '생명력',
+
+        // 대미지 관련 (띄어쓰기 없는 버전)
+        dmgBonusAlt: '대미지보너스',
+        critRateAlt: '크리티컬확률',
+        critMultAlt: '크리티컬효과',
+
+        // 효과 관련
+        ailmentAccuracyAlt: '효과명중',
+        effectResiAlt: '효과저항',
+        healingEffectAlt: '치료 효과',
+        shieldEffectAlt: '실드효과',
+
+        // 기타
+        spRecoveryAlt: 'SP회복',
+        naviPowerAlt: '해명의 힘',
+        resonanceAlt: '추격',
+        myPalaceRating: '마이팰리스 평점',
+        desperado: '황야의 구세주'
     },
 
     // 의식(Awareness) 단계
@@ -178,6 +241,59 @@ export default {
         enhanced: '(강화)'
     },
 
+    // 턴 관련
+    turns: {
+        '1turn': '1턴',
+        '2turns': '2턴',
+        '3turns': '3턴',
+        '4turns': '4턴',
+        '5turns': '5턴',
+        '6turns': '6턴'
+    },
+
+    // 속성 (영어 키 → 한국어 값)
+    elements: {
+        almighty: '만능',
+        physical: '물리',
+        gun: '총격',
+        fire: '화염',
+        ice: '빙결',
+        electric: '전격',
+        wind: '질풍',
+        windIce: '질풍빙결',
+        psy: '염동',
+        nuclear: '핵열',
+        bless: '축복',
+        curse: '주원',
+        buff: '버프',
+        debuff: '디버프',
+        debuffAoe: '디버프광역'
+    },
+
+    // 상태이상 (영어 키 → 한국어 값)
+    ailments: {
+        burn: '화상',
+        freeze: '동결',
+        shock: '감전',
+        sleep: '수면',
+        forget: '망각',
+        curse: '주원',
+        windswept: '풍습',
+        elementAilment: '원소 이상'
+    },
+
+    // 직업/포지션 (영어 키 → 한국어 값)
+    positions: {
+        medic: '구원',
+        breaker: '굴복',
+        assassin: '반항',
+        guardian: '방위',
+        striker: '우월',
+        controller: '지배',
+        navigator: '해명',
+        autonomous: '자율'
+    },
+
     // 계시 관련
     revelation: {
         sun: '일',
@@ -186,6 +302,7 @@ export default {
         sky: '진',
         space: '주',
         sunMoonStarSky: '일월성진',
+        sms: 'S/M/S/P',
 
         // 계시 종류
         common: '공통',
@@ -195,8 +312,7 @@ export default {
         resolve: '결심',
         freedom: '자유',
         triumph: '개선',
-        hope: '희망',
-        desperado: '황야의 구세주'
+        hope: '희망'
     },
 
     // 에러 메시지
@@ -238,36 +354,5 @@ export default {
         new: '신규',
         hot: '인기',
         updated: '업데이트됨'
-    },
-
-    // 속성 번역
-    elements: {
-        "만능": "만능",
-        "물리": "물리",
-        "총격": "총격",
-        "화염": "화염",
-        "빙결": "빙결",
-        "전격": "전격",
-        "질풍": "질풍",
-        "질풍빙결": "질풍빙결",
-        "염동": "염동",
-        "핵열": "핵열",
-        "축복": "축복",
-        "주원": "주원",
-        "버프": "버프",
-        "디버프": "디버프",
-        "디버프광역": "디버프광역"
-    },
-
-    // 직업 번역  
-    positions: {
-        "구원": "구원",
-        "굴복": "굴복",
-        "반항": "반항",
-        "방위": "방위",
-        "우월": "우월",
-        "지배": "지배",
-        "해명": "해명",
-        "자율": "자율"
     }
 };

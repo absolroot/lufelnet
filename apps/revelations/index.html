@@ -265,7 +265,7 @@ jp: /revelations/?lang=jp
 
 
 <!-- i18n 서비스 -->
-<script type="module" src="{{ site.baseurl }}/i18n/service/i18n-service.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/i18n/service/i18n-service.js?v={{ site.time | date: '%s' }}"></script>
 <script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
 
 <script>
@@ -620,8 +620,8 @@ jp: /revelations/?lang=jp
             }
 
             // I18nService 초기화
-            if (typeof I18nService !== 'undefined') {
-                await I18nService.init('revelation');
+            if (typeof window.I18nService !== 'undefined') {
+                await window.I18nService.init('revelation');
             } else {
                 console.error('I18nService is not defined!');
             }

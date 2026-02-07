@@ -1,4 +1,4 @@
-export default {
+window.I18N_PAGE_SYNERGY_JP = {
     // Page metadata
     pageTitle: '協力者',
 

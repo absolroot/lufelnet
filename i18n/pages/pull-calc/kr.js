@@ -3,7 +3,7 @@
  * 가챠 플래너 한국어 번역
  */
 
-export default {
+window.I18N_PAGE_PULL_CALC_KR = {
     pageTitle: '가챠 플래너',
     navHome: '홈',
     navCurrent: '가챠 플래너',

@@ -1,4 +1,4 @@
-export default {
+window.I18N_PAGE_GALLERY_EN = {
     pageTitle: 'Gallery',
     navHome: 'Home',
     navCurrent: 'Gallery',

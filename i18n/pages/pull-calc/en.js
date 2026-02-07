@@ -3,7 +3,7 @@
  * 가챠 플래너 영어 번역
  */
 
-export default {
+window.I18N_PAGE_PULL_CALC_EN = {
     pageTitle: 'Pull Planner',
     navHome: 'Home',
     navCurrent: 'Pull Planner',

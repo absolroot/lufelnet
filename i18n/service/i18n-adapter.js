@@ -81,16 +81,24 @@
             return false;
         }
 
-        // Initialize i18n service
-        if (!i18nService.cache.kr?.common) {
+        // Initialize i18n service (sets currentPage and loads current lang)
+        if (pageName) {
             await i18nService.init(pageName);
-        } else if (pageName && !i18nService.cache.kr?.pages?.[pageName]) {
-            await Promise.all([
-                i18nService.loadPageTranslations(pageName, 'kr'),
-                i18nService.loadPageTranslations(pageName, 'en'),
-                i18nService.loadPageTranslations(pageName, 'jp')
-            ]);
+        } else {
+            await i18nService.init();
         }
+
+        // Initialize i18n service - Load all languages for compatibility
+        const languages = ['kr', 'en', 'jp'];
+        await Promise.all(languages.map(async (lang) => {
+            // Load common translations
+            await i18nService.loadCommonTranslations(lang);
+
+            // Load page translations if pageName is provided
+            if (pageName) {
+                await i18nService.loadPageTranslations(pageName, lang);
+            }
+        }));
 
         // Build I18N object compatible with existing code
         window.I18N = {

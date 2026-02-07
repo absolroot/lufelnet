@@ -1,4 +1,4 @@
-export default {
+window.I18N_PAGE_REVELATION_EN = {
     // Messages and Navigation
     nav_home: "Home",
     nav_current: "Revelations",

@@ -1,4 +1,4 @@
-export default {
+window.I18N_PAGE_TACTIC_MAKER_KR = {
     pageTitle: "택틱 메이커",
     home: "홈",
     navPath: "택틱 / 택틱 메이커",

@@ -1,4 +1,4 @@
-export default {
+window.I18N_PAGE_SYNERGY_KR = {
     // Page metadata
     pageTitle: '협력자',
 

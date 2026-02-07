@@ -1,4 +1,4 @@
-export default {
+window.I18N_PAGE_PERSONA_JP = {
     navHome: "ホーム",
     navCurrent: "ペルソナ",
     pageTitle: "ペルソナ",

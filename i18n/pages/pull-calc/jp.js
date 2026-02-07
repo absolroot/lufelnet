@@ -3,7 +3,7 @@
  * ガチャプランナー 일본어 번역
  */
 
-export default {
+window.I18N_PAGE_PULL_CALC_JP = {
     pageTitle: 'ガチャプランナー',
     navHome: 'ホーム',
     navCurrent: 'ガチャプランナー',

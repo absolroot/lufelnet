@@ -1,4 +1,4 @@
-export default {
+window.I18N_PAGE_ABOUT_EN = {
     // Page titles
     siteTitle: 'lufel.net',
     contactTitle: 'Contact & Feedback',

@@ -1,4 +1,4 @@
-export default {
+window.I18N_PAGE_SYNERGY_EN = {
     // Page metadata
     pageTitle: 'Synergy',
 

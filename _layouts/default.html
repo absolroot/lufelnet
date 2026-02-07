@@ -126,7 +126,8 @@
     document.write('<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/default/nav.css?v=' + APP_VERSION + '">');
     document.write('<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/default/version-update.css?v=' + APP_VERSION + '">');
     document.write('<script src="{{ site.baseurl }}/assets/js/language-router.js?v=' + APP_VERSION + '"><\/script>');
-    document.write('<script src="{{ site.baseurl }}/assets/js/i18n-utils.js?v=' + APP_VERSION + '"><\/script>');
+    document.write('<script src="{{ site.baseurl }}/i18n/service/i18n-service.js?v=' + APP_VERSION + '"><\/script>');
+    document.write('<script src="{{ site.baseurl }}/i18n/service/i18n-compat.js?v=' + APP_VERSION + '"><\/script>');
     document.write('<script src="{{ site.baseurl }}/assets/js/nav.js?v=' + APP_VERSION + '"><\/script>');
     document.write('<script src="{{ site.baseurl }}/assets/js/top_button.js?v=' + APP_VERSION + '"><\/script>');
 
@@ -269,12 +270,14 @@
   </div>
   <div class="footer-container">
     <div class="footer-text">
-      <p id="footer-disclaimer">{{ site.data.i18n[page.lang].footer_disclaimer }}</p>
+      <p id="footer-disclaimer" data-i18n="footer.disclaimer">{{ site.data.i18n[page.lang].footer_disclaimer }}</p>
       <p><span id="footer-contact">✉️ contact : superphil722@gmail.com　💬 <a href="https://discord.gg/8S8pnv2MsH"
-            target="_blank" style="color: #fff; text-decoration: underline;">discord.gg/x3fvdQtBVg</a>　@{{
-          site.data.i18n[page.lang].footer_contact_name }}</span></p>
+            target="_blank" style="color: #fff; text-decoration: underline;">discord.gg/x3fvdQtBVg</a>　@<span
+            id="footer-contact-name" data-i18n="footer.contactName">{{ site.data.i18n[page.lang].footer_contact_name
+            }}</span></span></p>
       <p></p>
     </div>
+
 
   </div>
 

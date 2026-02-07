@@ -1,4 +1,4 @@
-export default {
+window.I18N_PAGE_TACTIC_MAKER_EN = {
     pageTitle: "Tactic Maker",
     home: "Home",
     navPath: "Tactics / Tactic Maker",

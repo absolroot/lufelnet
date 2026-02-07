@@ -1,4 +1,4 @@
-export default {
+window.I18N_PAGE_WONDER_WEAPON_KR = {
     // Navigation
     navHome: '홈',
     navCurrent: '원더 무기',

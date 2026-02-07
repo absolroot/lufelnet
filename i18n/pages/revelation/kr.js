@@ -1,4 +1,4 @@
-export default {
+window.I18N_PAGE_REVELATION_KR = {
     // 메시지 및 네비게이션
     nav_home: "홈",
     nav_current: "계시",

@@ -1,4 +1,4 @@
-export default {
+window.I18N_PAGE_TACTIC_MAKER_JP = {
     pageTitle: "タクティクスメーカー",
     home: "ホーム",
     navPath: "タクティクス / タクティクスメーカー",

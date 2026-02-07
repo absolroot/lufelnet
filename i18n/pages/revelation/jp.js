@@ -1,4 +1,4 @@
-export default {
+window.I18N_PAGE_REVELATION_JP = {
     // Messages and Navigation
     nav_home: "ホーム",
     nav_current: "啓示",

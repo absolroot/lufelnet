@@ -2,8 +2,8 @@ window.characterSetting = window.characterSetting || {};
 window.characterSetting["리코·매화"] = {
     "role": "단일/광역 버퍼",
     "video": ["csjd73u9dLA"],
-    "video_en": [""],
-    "video_jp": ["yo_z1Fkg3B0"],
+    "video_en": ["dZunweE9CUA"],
+    "video_jp": ["dZunweE9CUA","yo_z1Fkg3B0"],
     "main_revelation": ["창조"],
     "sub_revelation": ["우려"],
     "sub_revel2": ["-"],

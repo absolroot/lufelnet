@@ -316,7 +316,7 @@
       '.riko-calc-columns{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px}',
       '.riko-calc-column{background:rgba(0,0,0,.18);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:14px 14px 10px 14px}',
       '.riko-col-header{font-size:14px;font-weight:600;color:#fff;margin:0 0 10px 0;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.12);display:flex;align-items:center;gap:6px}',
-      '.riko-col-header-goal{margin-left:auto;font-size:12px;font-weight:600;color:rgba(255,255,0,.8);white-space:nowrap;letter-spacing:.3px}',
+      '.riko-col-header-goal{margin-left:auto;font-size:12px;font-weight:600;color:rgba(255,255,255,0.9);white-space:nowrap;letter-spacing:.3px}',
 
       /* section labels */
       '.riko-section-label{font-size:10px;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.8px;margin:10px 0 6px 0;padding-top:8px;border-top:1px dashed rgba(255,255,255,.1)}',
@@ -336,7 +336,7 @@
 
       /* inputs */
       '.riko-input-wrap{display:flex;align-items:center;gap:2px}',
-      '.riko-stat-input{width:62px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:5px;color:#fff;text-align:right;padding:3px 6px;font-size:12px;font-variant-numeric:tabular-nums;transition:border-color .15s}',
+      '.riko-stat-input{width:62px;background:rgba(255,255,255,.0);border:1px solid rgba(255,255,255,.1);border-radius:5px;color:#fff;text-align:right;padding:3px 6px;font-size:12px;font-variant-numeric:tabular-nums;transition:border-color .15s}',
       '.riko-stat-input:focus{border-color:rgba(209,31,31,.6);outline:none;background:rgba(255,255,255,.09)}',
       '.riko-stat-input::-webkit-inner-spin-button,.riko-stat-input::-webkit-outer-spin-button{opacity:1;height:16px}',
       '.riko-input-unit{color:rgba(255,255,255,.35);font-size:11px}',

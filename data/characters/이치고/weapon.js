@@ -37,7 +37,7 @@ window.enCharacterWeaponData["이치고"] = {
     "attack": 773,
     "defense": 361,
     "skill_name": "Possessive Desire",
-    "description": "Increase critical rate by 18.1/18.1/23.5/23.5/28.9/28.9/34.3%.\nWhen [Obsessive Love] stacks reach 1/2/3, increase user's damage by 1.0/14.2/14.2/17.4/17.4/20.6/20.6%|22.0/28.5/28.5/35.0/35.0/41.5/41.5%|34.0/44.0/44.0/54.0/54.0/64.0/64.0%; When using [Hush! It's Execution Time], increase critical damage by 16.4/21.4/21.4/26.4/26.4/31.4/31.4%."
+    "description": "Increase critical rate by 18.1/18.1/23.5/23.5/28.9/28.9/34.3%.\nWhen [Obsessive Love] stacks reach 1/2/3, increase user's damage by 11.0/14.2/14.2/17.4/17.4/20.6/20.6%|22.0/28.5/28.5/35.0/35.0/41.5/41.5%|34.0/44.0/44.0/54.0/54.0/64.0/64.0%; When using [Hush! It's Execution Time], increase critical damage by 16.4/21.4/21.4/26.4/26.4/31.4/31.4%."
   }
 };
 window.jpCharacterWeaponData["이치고"] = {

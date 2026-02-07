@@ -756,53 +756,50 @@ export class NeedStatCardUI {
         const typeStr = String(item.type || '');
         const isWonder = groupName === '원더';
 
-        // For 원더 전용무기, use DataLoader.getWeaponDisplayName for translation
-        if (isWonder && typeStr === '전용무기' && item.skillName) {
-            return DataLoader.getWeaponDisplayName(item.skillName);
-        }
-
-        // For 원더 페르소나, use DataLoader.getPersonaDisplayName for translation
-        if (isWonder && typeStr === '페르소나' && item.skillName) {
-            // Extract persona name (remove " - 고유스킬" suffix if present)
-            const baseName = item.skillName.replace(/\s*-\s*고유\s?스킬/g, '').trim();
-            const displayName = DataLoader.getPersonaDisplayName(baseName);
-            if (item.skillName.includes('고유스킬') || item.skillName.includes('고유 스킬')) {
-                const suffix = lang === 'en' ? ' - Unique Skill' : (lang === 'jp' ? ' - 固有スキル' : ' - 고유스킬');
-                return displayName + suffix;
-            }
-            return displayName;
-        }
-
-        // For 원더 스킬, use DataLoader.getSkillDisplayName for translation
-        if (isWonder && typeStr === '스킬' && item.skillName) {
-            return DataLoader.getSkillDisplayName(item.skillName);
-        }
-
+        // First, check if data already has translated name (priority)
         if (lang === 'en') {
             localizedName = (item.skillName_en && String(item.skillName_en).trim()) ? item.skillName_en : '';
         } else if (lang === 'jp') {
             localizedName = (item.skillName_jp && String(item.skillName_jp).trim()) ? item.skillName_jp : '';
+        } else if (lang === 'kr') {
+            localizedName = item.skillName || '';
         }
 
-        // Fallback rules following critical-calc.js / defense-calc.js pattern
-        if (!localizedName) {
-            const isWonder = groupName === '원더';
-            const isRevelation = groupName === '계시';
-            const typeStr = String(item.type || '');
-            const isWonderDisplayType = isWonder && (typeStr === '전용무기' || typeStr === '페르소나' || typeStr === '스킬');
-            
-            // EN/JP: only allow KR fallback for 원더 group's 전용무기/페르소나/스킬
-            if (lang !== 'kr' && isWonderDisplayType) {
-                localizedName = item.skillName || '';
-            } else if (lang === 'kr') {
-                localizedName = item.skillName || '';
-            } else {
-                // EN/JP for non-원더/계시 groups: no fallback → type only will be shown
-                localizedName = '';
+        // If translation found in data, return it
+        if (localizedName) {
+            return localizedName;
+        }
+
+        // Fallback: For 원더 items without translation, use DataLoader
+        if (isWonder && item.skillName) {
+            // For 원더 전용무기, use DataLoader.getWeaponDisplayName for translation
+            if (typeStr === '전용무기') {
+                return DataLoader.getWeaponDisplayName(item.skillName);
             }
+
+            // For 원더 페르소나, use DataLoader.getPersonaDisplayName for translation
+            if (typeStr === '페르소나') {
+                // Extract persona name (remove " - 고유스킬" suffix if present)
+                const baseName = item.skillName.replace(/\s*-\s*고유\s?스킬/g, '').trim();
+                const displayName = DataLoader.getPersonaDisplayName(baseName);
+                if (item.skillName.includes('고유스킬') || item.skillName.includes('고유 스킬')) {
+                    const suffix = lang === 'en' ? ' - Unique Skill' : (lang === 'jp' ? ' - 固有スキル' : ' - 고유스킬');
+                    return displayName + suffix;
+                }
+                return displayName;
+            }
+
+            // For 원더 스킬, use DataLoader.getSkillDisplayName for translation
+            if (typeStr === '스킬') {
+                return DataLoader.getSkillDisplayName(item.skillName);
+            }
+
+            // Other 원더 types: return KR name as fallback
+            return item.skillName || '';
         }
 
-        return localizedName;
+        // Non-원더 items without translation: return empty (type only will be shown)
+        return '';
     }
 
     /**

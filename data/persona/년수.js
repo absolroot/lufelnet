@@ -34,6 +34,10 @@ window.personaFiles["년수"] = {
       "priority": 1
     },
     {
+      "name": "치료 촉진",
+      "priority": 1
+    },
+    {
       "name": "대미지 면역",
       "priority": 0
     },

@@ -12,11 +12,24 @@ window.personaFiles["오로바스"] = {
   "event": false,
   "wild_emblem_rainbow": false,
   "best_persona": false,
-  "tier": "B",
+  "tier": "A",
   "added": "",
   "cost": null,
   "combination": null,
-  "recommendSkill": [],
+  "recommendSkill": [
+    {
+      "name": "치료 촉진",
+      "priority": 1
+    },
+    {
+      "name": "대미지 면역",
+      "priority": 0
+    },
+    {
+      "name": "방어 강화",
+      "priority": 0
+    }
+  ],
   "comment": "화염 내성 제거 효과가 필요할 때 채용한다.",
   "comment_en": "Adopted when Fire Resistance Removal effects are needed.",
   "comment_jp": "火炎耐性解除効果が必要な時に採用する。",

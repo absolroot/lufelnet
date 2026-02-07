@@ -12,7 +12,7 @@ window.personaFiles["아메노우즈메"] = {
   "event": false,
   "wild_emblem_rainbow": false,
   "best_persona": true,
-  "tier": "S",
+  "tier": "A",
   "added": "",
   "cost": null,
   "combination": null,

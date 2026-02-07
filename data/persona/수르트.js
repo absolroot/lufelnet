@@ -18,6 +18,10 @@ window.personaFiles["수르트"] = {
   "combination": null,
   "recommendSkill": [
     {
+      "name": "치료 촉진",
+      "priority": 1
+    },
+    {
       "name": "대미지 면역",
       "priority": 0
     },

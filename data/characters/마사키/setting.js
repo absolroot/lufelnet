@@ -30,7 +30,7 @@ window.characterSetting["마사키"] = {
     "skill_priority": "3>2>1>4",
     "mind_stats1": "효과저항 24%×",
     "mind_stats2": "방어력 30%",
-    "mind_stats2_glb": "생명 20%",
+    /*"mind_stats2_glb": "생명 20%",*/
     "mind_skill1": "S1/S2",
     "mind_skill2": "S3/HL"
 };

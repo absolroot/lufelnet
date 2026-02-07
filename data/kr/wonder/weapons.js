@@ -226,12 +226,12 @@ window.matchWeapons = {
     lightning_stamp: [
       {
         order: 2,
-        name: "현혹된 마음",
+        name: "현혹의 식심",
         name_en: "Corrupting Glow",
         name_jp: "荧惑蝕心",
         stamp_img: "item-datu-302932.png",
         stamp_icon: "weaponEngraving-icon-2.png",
-        effect: "빛의 고리 『성반만상』이 아군 전체의 공격력을 추가로 2.5%/5.0%/7.5%/10.0% 증가시킨다. 적이 대미지를 입을 때마다 원더가 『부연』을 추가로 1중첩 획득하며, 원더의 턴 종료 시 더 이상 『부연』 중첩을 소모하지 않는다.\n임의의 동료가 추가 턴을 획득할 때 해당 동료에게 2턴 동안 지속되는 『사고 초과』을 부여한다.\n『사고 초과』: 염동 속성 대미지가 4.0%/8.0%/12.0%/16.0% 증가하고, 염동 속성 대미지를 줄 때 크리티컬 효과가 2.5%/5.0%/7.5%/10.0% 증가한다.",
+        effect: "빛의 고리 『성반만상』이 아군 전체의 공격력을 추가로 2.5%/5.0%/7.5%/10.0% 증가시킨다. 적이 대미지를 입을 때마다 원더가 『부연』을 추가로 1중첩 획득하며, 원더의 턴 종료 시 더 이상 『부연』 중첩을 소모하지 않는다.\n임의의 동료가 추가 턴을 획득할 때 해당 동료에게 2턴 동안 지속되는 『사유의 속도』를 부여한다.\n『사유의 속도』: 염동 속성 대미지가 4.0%/8.0%/12.0%/16.0% 증가하고, 염동 속성 대미지를 줄 때 크리티컬 효과가 2.5%/5.0%/7.5%/10.0% 증가한다.",
         effect_en: "Aura [Universal Astrolabe] additionally increases the Attack of all allies by 2.5%/5.0%/7.5%/10.0%. Each time an enemy takes damage, WONDER gains 1 additional stack of [Guidance], and WONDER no longer consumes [Guidance] stacks at the end of their turn.\nWhen any ally enters an extra turn, grant them [Mind Overclock] for 2 turns.\n[Mind Overclock]: Psychokinesis damage +4.0%/8.0%/12.0%/16.0%. When dealing Psychokinesis damage, Critical Damage +2.5%/5.0%/7.5%/10.0%.",
         effect_jp: "オーラ『万象の星盤』により、味方全体の攻撃力がさらに2.5%/5.0%/7.5%/10.0%上昇する。敵がダメージを受けるたびに、ワンダーは『導き』をさらに1スタック獲得し、自身のターン終了時に『導き』を消費しなくなる。\n味方が追加ターンを獲得した時、その味方に2ターン持続する『思考オーバークロック』を付与する。\n『思考オーバークロック』：念動属性ダメージが4.0%/8.0%/12.0%/16.0%上昇し、念動属性ダメージを与えた時のクリティカル倍率が2.5%/5.0%/7.5%/10.0%上昇する。",
         release: "나루미",

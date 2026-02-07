@@ -35,6 +35,10 @@ window.personaFiles["디오니소스"] = {
       "priority": 3
     },
     {
+      "name": "동력 격동",
+      "priority": 3
+    },
+    {
       "name": "라쿠카쟈",
       "priority": 1
     },
@@ -53,6 +57,10 @@ window.personaFiles["디오니소스"] = {
     {
       "name": "치료 강화",
       "priority": 1
+    },
+    {
+      "name": "민첩의 마음가짐",
+      "priority": 0
     },
     {
       "name": "대미지 면역",

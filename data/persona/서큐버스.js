@@ -12,7 +12,7 @@ window.personaFiles["서큐버스"] = {
   "event": false,
   "wild_emblem_rainbow": false,
   "best_persona": true,
-  "tier": "S",
+  "tier": "A",
   "added": "",
   "cost": {
     "blue": true,

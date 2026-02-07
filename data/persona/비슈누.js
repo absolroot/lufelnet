@@ -12,7 +12,7 @@ window.personaFiles["비슈누"] = {
   "event": false,
   "wild_emblem_rainbow": true,
   "best_persona": true,
-  "tier": "S",
+  "tier": "A",
   "added": "KR v2.3.2",
   "cost": {
     "blue": 0,
@@ -51,10 +51,6 @@ window.personaFiles["비슈누"] = {
     },
     {
       "name": "민첩의 마음가짐",
-      "priority": 0
-    },
-    {
-      "name": "전의 공명",
       "priority": 0
     }
   ],

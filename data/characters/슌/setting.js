@@ -30,7 +30,7 @@ window.characterSetting["슌"] = {
     "skill_priority": "2>3>4>1",
     "mind_stats1": "대미지감면 16%×",
     "mind_stats2": "생명 20%",
-    "mind_stats2_glb": "방어력 30%",
+    /*"mind_stats2_glb": "방어력 30%",*/
     "mind_skill1": "-",
     "mind_skill2": "-"
 };

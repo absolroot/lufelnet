@@ -4,7 +4,7 @@ window.characterSetting["후타바"] = {
     "video": ["GWlKrqoWSXk", "dBUktg0nRuw"],
     "video_en": ["3ltXw3ohe5A", "dBUktg0nRuw"],
     "video_jp": ["K5oSdPz0x8k", "dBUktg0nRuw"],
-    "main_revelation": ["결심", "진정성"],
+    "main_revelation": ["진정성", "결심"],
     "sub_revelation": ["직책", "직책"],
     "sub_revel2": ["공격력"],
     "sub_revel3": ["크리티컬 효과", "크리티컬 확률"],

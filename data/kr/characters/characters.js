@@ -130,7 +130,7 @@ Object.assign(window.characterData, {
         "persona_jp": "マンドラン",
         "name": "카노 슌·프론티어",
         "name_en": "Shun·Pioneer",
-        "name_jp": "加納 駿·フロンティア",
+        "name_jp": "駿·生命欲の暴走",
         "name_tw": "加納駿·拓荒",
         "codename": "SOY·Pioneer",
         "skill_item": 6
@@ -152,7 +152,7 @@ Object.assign(window.characterData, {
         "persona_jp": "ギーノ",
         "name": "이케나미 쇼키·암야",
         "name_en": "Shoki·Notte",
-        "name_jp": "池波 星輝·永夜",
+        "name_jp": "星輝·生命欲の暴走",
         "name_cn": "池波星辉·永夜",
         "codename": "LUCE·Notte",
         "skill_item": 6

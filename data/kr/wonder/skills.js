@@ -1310,6 +1310,16 @@ const personaSkillList = {
         "icon": "패시브",
         "icon_gl": "패시브"
     },
+    "동력 격동": {
+        "name_jp": "動力激蕩",
+        "name_en": "Power Surge",
+        "description": "모든 동료의 대미지가 15% 증가하고, 크리티컬 효과가 20% 증가한다. 효과는 3턴 동안 지속된다. 전투 시작 시 및 매 3턴마다 해당 스킬이 자동으로 발동된다.",
+        "description_en": "Increases all allies' DMG by 15% and CRIT DMG by 20% for 3 turns. This skill is automatically cast at the start of battle and every 3 turns.",
+        "description_jp": "味方全体の与ダメージが15%上昇し、会心効果が20%上昇する。効果は3ターン継続する。戦闘開始時および3ターンごとに、このスキルが自動的に発動する。",
+        "type": "지원",
+        "target": "자신",
+        "icon": "패시브"
+    },
     "공격 강화 I": {
         "name_jp": "アタックブースタⅠ",
         "name_en": "Attack Boost I",

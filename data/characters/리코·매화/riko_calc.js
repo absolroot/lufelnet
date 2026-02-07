@@ -27,7 +27,7 @@
       spRecovery: 'SP회복',
       critEffect: '크리티컬 효과',
       charPage: '캐릭터 페이지',
-      baseStat: '기본 스탯',
+      baseStat: '기본 스탯 (LV80)',
       awareness0: '의식 0',
       revelationSet: '계시 세트',
       revelationJin: '계시 진',
@@ -57,28 +57,28 @@
       cardTitle: 'Riko Recommended Stats Calculator',
       goalLabel: 'Goal Selection',
       spRecovery: 'SP Recovery',
-      critEffect: 'Crit Effect',
+      critEffect: 'Crit. DMG',
       charPage: 'Character Page',
-      baseStat: 'Base Stat',
+      baseStat: 'Base Stat (LV80)',
       awareness0: 'Awareness 0',
       revelationSet: 'Revelation Set',
-      revelationJin: 'Revelation Sky',
+      revelationJin: 'Revelation Sky - SP Recovery',
       revSubMain: 'Rev. Sub - Space',
       revSubSun: 'Rev. Sub - Sun',
       revSubMoon: 'Rev. Sub - Moon',
       revSubStar: 'Rev. Sub - Star',
       revSubJin: 'Rev. Sub - Sky',
       passive: 'Passive',
-      revelationStar: 'Revelation Star',
+      revelationStar: 'Revelation Star - Crit. DMG',
       myPalace: 'Thieves Den',
       naviPower: 'Navi Power',
       total: 'Total',
       goal: 'Goal',
       battleEntry: 'Battle Entry',
       inBattle: 'In Battle',
-      weapon: 'Signature Weapon',
+      weapon: 'Exclusive Weapon',
       cycle: 'Cycle',
-      enhance: 'Enh.',
+      enhance: 'Forge',
       goalBtnLV10: 'LV10',
       goalBtnLV10M: 'LV10+Mind5',
       goalBtnLV13: 'LV13',
@@ -91,17 +91,17 @@
       spRecovery: 'SP回復',
       critEffect: 'CRT倍率',
       charPage: 'キャラクターページ',
-      baseStat: '基本スタット',
+      baseStat: '基本スタット (LV80)',
       awareness0: '意識 0',
       revelationSet: '啓示セット',
-      revelationJin: '啓示 天',
+      revelationJin: '啓示 天 - SP回復',
       revSubMain: '啓示サブ - 宙',
       revSubSun: '啓示サブ - 旭',
       revSubMoon: '啓示サブ - 月',
       revSubStar: '啓示サブ - 星',
       revSubJin: '啓示サブ - 天',
       passive: 'パッシブ',
-      revelationStar: '啓示 星',
+      revelationStar: '啓示 星 - CRT倍率',
       myPalace: 'マイパレス',
       naviPower: '解明の力',
       total: '合計',
@@ -191,6 +191,16 @@
       + CRIT_FIXED.revelationSet_battle + state.crit_navi + state.crit_mypalace
       + calcWeaponCritBonus();
   }
+  function calcSPCharPage() {
+    return SP_FIXED.baseStat + SP_FIXED.revelationSet + SP_FIXED.revelationJin
+      + state.sp_sub_main + state.sp_sub_sun + state.sp_sub_moon + state.sp_sub_star;
+  }
+  function calcCritCharPage() {
+    var v = CRIT_FIXED.baseStat + CRIT_FIXED.revelationStar
+      + state.crit_sub_main + state.crit_sub_sun + state.crit_sub_moon + state.crit_sub_jin;
+    if (state.weapon_star === 5) v += WEAPON_5STAR[state.weapon_5_enhance] || 0;
+    return v;
+  }
   function getGoal() {
     for (var i = 0; i < GOALS.length; i++) { if (GOALS[i].id === state.selectedGoal) return GOALS[i]; }
     return GOALS[0];
@@ -202,6 +212,7 @@
   var elSpGoal, elCritGoal, elSpWarn;
   var elWeapon4Row, elWeapon5Row, elWeapon4Val, elWeapon5Val;
   var elInBattleLabel;
+  var elSpCharPage, elCritCharPage;
 
   function recalculate() {
     var spT = calcSPTotal();
@@ -228,6 +239,10 @@
     if (elSpWarn) {
       elSpWarn.style.display = (spT > 450.1) ? 'block' : 'none';
     }
+
+    /* char page subtotals */
+    if (elSpCharPage) elSpCharPage.textContent = calcSPCharPage().toFixed(1) + '%';
+    if (elCritCharPage) elCritCharPage.textContent = calcCritCharPage().toFixed(1) + '%';
 
     /* weapon value display */
     if (elWeapon4Val) elWeapon4Val.textContent = weaponBonus.toFixed(1) + '%';
@@ -298,7 +313,7 @@
       '.riko-col-header .riko-stat-icon{width:18px;height:18px}',
 
       /* two columns */
-      '.riko-calc-columns{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:4px}',
+      '.riko-calc-columns{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px}',
       '.riko-calc-column{background:rgba(0,0,0,.18);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:14px 14px 10px 14px}',
       '.riko-col-header{font-size:14px;font-weight:600;color:#fff;margin:0 0 10px 0;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.12);display:flex;align-items:center;gap:6px}',
       '.riko-col-header-goal{margin-left:auto;font-size:12px;font-weight:600;color:rgba(255,255,0,.8);white-space:nowrap;letter-spacing:.3px}',
@@ -326,8 +341,13 @@
       '.riko-stat-input::-webkit-inner-spin-button,.riko-stat-input::-webkit-outer-spin-button{opacity:1;height:16px}',
       '.riko-input-unit{color:rgba(255,255,255,.35);font-size:11px}',
 
-      /* total row */
-      '.riko-total-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0 4px 0;margin-top:8px;border-top:2px solid rgba(255,255,255,.15);font-size:13px;font-weight:600}',
+      /* char page subtotal row — sits under the thick border, before total */
+      '.riko-charpage-total{display:flex;justify-content:space-between;align-items:center;padding:8px 0 2px 0;margin-top:8px;border-top:2px solid rgba(255,255,255,.15);font-size:12px}',
+      '.riko-charpage-total .riko-total-label{color:rgba(255,255,255,.5);font-weight:500}',
+      '.riko-charpage-total .riko-total-value{color:rgba(255,255,255,.5);font-size:12px}',
+
+      /* total row — follows charpage subtotal, no border */
+      '.riko-total-row{display:flex;justify-content:space-between;align-items:center;padding:4px 0 4px 0;font-size:13px;font-weight:600}',
       '.riko-total-label{color:#fff}',
       '.riko-total-right{display:flex;align-items:center;gap:6px}',
       '.riko-total-value{color:#fff;font-size:14px;font-variant-numeric:tabular-nums}',
@@ -569,7 +589,6 @@
 
     spCol.appendChild(el('div', 'riko-section-label', t('charPage')));
     spCol.appendChild(createStatRow(t('baseStat'), SP_FIXED.baseStat + '%'));
-    spCol.appendChild(createStatRow(t('awareness0'), SP_FIXED.awareness0 + '%'));
     spCol.appendChild(createStatRow(t('revelationSet'), SP_FIXED.revelationSet + '%'));
     spCol.appendChild(createStatRow(t('revelationJin'), SP_FIXED.revelationJin + '%', { iconKey: 'revelationJin' }));
 
@@ -579,7 +598,15 @@
     spCol.appendChild(createStatRow(t('revSubStar'), null, { inputKey: 'sp_sub_star', iconKey: 'revSubStar' }));
 
     spCol.appendChild(el('div', 'riko-section-label', t('battleEntry')));
+    spCol.appendChild(createStatRow(t('awareness0'), SP_FIXED.awareness0 + '%'));
     spCol.appendChild(createStatRow(t('myPalace'), null, { inputKey: 'sp_mypalace' }));
+
+    /* SP char page subtotal */
+    var spSubRow = el('div', 'riko-charpage-total');
+    spSubRow.appendChild(el('span', 'riko-total-label', t('charPage') + ' ' + t('total')));
+    elSpCharPage = el('span', 'riko-total-value');
+    spSubRow.appendChild(elSpCharPage);
+    spCol.appendChild(spSubRow);
 
     /* SP total */
     var spTotalRow = el('div', 'riko-total-row');
@@ -637,6 +664,13 @@
     elInBattleLabel = el('div', 'riko-section-label', t('inBattle'));
     critCol.appendChild(elInBattleLabel);
     critCol.appendChild(buildWeapon4Row());
+
+    /* Crit char page subtotal */
+    var critSubRow = el('div', 'riko-charpage-total');
+    critSubRow.appendChild(el('span', 'riko-total-label', t('charPage') + ' ' + t('total')));
+    elCritCharPage = el('span', 'riko-total-value');
+    critSubRow.appendChild(elCritCharPage);
+    critCol.appendChild(critSubRow);
 
     /* Crit total */
     var critTotalRow = el('div', 'riko-total-row');

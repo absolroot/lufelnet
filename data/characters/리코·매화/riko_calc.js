@@ -51,7 +51,8 @@
       goalBtnLV10M: 'LV10+심상5',
       goalBtnLV13: 'LV13',
       goalBtnLV13M: 'LV13+심상5',
-      spOverWarn: '스킬3을 연속으로 사용하는 경우 외에는 450.1%를 초과해도 얻는 이득이 없습니다. 크리티컬 효과에 보다 집중하세요.'
+      spOverWarn: '스킬3을 연속으로 사용하는 경우 외에는 450.1%를 초과해도 얻는 이득이 없습니다. 크리티컬 효과에 보다 집중하세요.',
+      mindscape: '심상'
     },
     en: {
       cardTitle: 'Riko Recommended Stats Calculator',
@@ -83,7 +84,8 @@
       goalBtnLV10M: 'LV10+Mind5',
       goalBtnLV13: 'LV13',
       goalBtnLV13M: 'LV13+Mind5',
-      spOverWarn: 'Exceeding 450.1% provides no benefit unless you are spamming Skill 3. Focus more on Crit DMG instead.'
+      spOverWarn: 'Exceeding 450.1% provides no benefit unless you are spamming Skill 3. Focus more on Crit DMG instead.',
+      mindscape: 'Mindscape'
     },
     jp: {
       cardTitle: 'リコ推奨ステータス計算機',
@@ -115,7 +117,8 @@
       goalBtnLV10M: 'LV10+イメジャリー5',
       goalBtnLV13: 'LV13',
       goalBtnLV13M: 'LV13+イメジャリー5',
-      spOverWarn: 'スキル3を連発する場合を除き、450.1%を超えてもメリットはありません。CRT倍率により集中してください。'
+      spOverWarn: 'スキル3を連発する場合を除き、450.1%を超えてもメリットはありません。CRT倍率により集中してください。',
+      mindscape: 'イメジャリー'
     }
   };
 
@@ -145,6 +148,7 @@
   /* ── Weapon enhancement values ──────────────────── */
   var WEAPON_4STAR = [8.7, 11.3, 11.3, 13.9, 13.9, 16.5, 16.5];
   var WEAPON_5STAR = [36.3, 36.3, 47.2, 47.2, 58.1, 58.1, 69.0];
+  var MINDSCAPE_CRIT = [0, 4.8, 9.6, 14.4, 19.2, 24.0];
 
   /* ── State ──────────────────────────────────────── */
   var STORAGE_KEY = 'riko_calc_state';
@@ -154,6 +158,7 @@
     sp_mypalace: 5,
     crit_sub_main: 0, crit_sub_sun: 0, crit_sub_moon: 0, crit_sub_jin: 0,
     crit_navi: 0, crit_mypalace: 2,
+    crit_mindscape: 0,
     weapon_star: 4, weapon_4_enhance: 6, weapon_4_cycle: '3-1', weapon_5_enhance: 0
   };
 
@@ -187,6 +192,7 @@
     var spT = calcSPTotal();
     var passive = calcPassive(spT);
     return CRIT_FIXED.baseStat + passive + CRIT_FIXED.revelationStar
+      + MINDSCAPE_CRIT[state.crit_mindscape]
       + state.crit_sub_main + state.crit_sub_sun + state.crit_sub_moon + state.crit_sub_jin
       + CRIT_FIXED.revelationSet_battle + state.crit_navi + state.crit_mypalace
       + calcWeaponCritBonus();
@@ -196,7 +202,7 @@
       + state.sp_sub_main + state.sp_sub_sun + state.sp_sub_moon + state.sp_sub_star;
   }
   function calcCritCharPage() {
-    var v = CRIT_FIXED.baseStat + CRIT_FIXED.revelationStar
+    var v = CRIT_FIXED.baseStat + CRIT_FIXED.revelationStar + MINDSCAPE_CRIT[state.crit_mindscape]
       + state.crit_sub_main + state.crit_sub_sun + state.crit_sub_moon + state.crit_sub_jin;
     if (state.weapon_star === 5) v += WEAPON_5STAR[state.weapon_5_enhance] || 0;
     return v;
@@ -213,6 +219,7 @@
   var elWeapon4Row, elWeapon5Row, elWeapon4Val, elWeapon5Val;
   var elInBattleLabel;
   var elSpCharPage, elCritCharPage;
+  var elMindscapeVal;
 
   function recalculate() {
     var spT = calcSPTotal();
@@ -243,6 +250,9 @@
     /* char page subtotals */
     if (elSpCharPage) elSpCharPage.textContent = calcSPCharPage().toFixed(1) + '%';
     if (elCritCharPage) elCritCharPage.textContent = calcCritCharPage().toFixed(1) + '%';
+
+    /* mindscape value display */
+    if (elMindscapeVal) elMindscapeVal.textContent = MINDSCAPE_CRIT[state.crit_mindscape].toFixed(1) + '%';
 
     /* weapon value display */
     if (elWeapon4Val) elWeapon4Val.textContent = weaponBonus.toFixed(1) + '%';
@@ -640,6 +650,22 @@
 
     critCol.appendChild(el('div', 'riko-section-label', t('charPage')));
     critCol.appendChild(createStatRow(t('baseStat'), CRIT_FIXED.baseStat + '%'));
+
+    /* mindscape row */
+    var mindscapeRow = el('div', 'riko-weapon-row');
+    mindscapeRow.appendChild(el('span', 'riko-weapon-label', t('mindscape')));
+    var msOpts = [];
+    for (var mi = 0; mi <= 5; mi++) msOpts.push({ label: 'LV ' + mi, value: mi });
+    var msSel = createLabeledSelect('', msOpts, state.crit_mindscape, function (val) {
+      state.crit_mindscape = Number(val);
+      saveState();
+      recalculate();
+    });
+    mindscapeRow.appendChild(msSel);
+    elMindscapeVal = el('span', 'riko-weapon-value');
+    mindscapeRow.appendChild(elMindscapeVal);
+    critCol.appendChild(mindscapeRow);
+
     critCol.appendChild(createStatRow(t('revelationStar'), CRIT_FIXED.revelationStar + '%', { iconKey: 'revelationStar' }));
 
     /* 5★ weapon row — in char page section */

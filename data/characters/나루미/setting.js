@@ -1,7 +1,7 @@
 window.characterSetting = window.characterSetting || {};
 window.characterSetting["나루미"] = {
     "role": "추가턴 염동 딜러",
-    "video": [""],
+    "video": ["hc0gm6G93rU"],
     "video_en": [""],
     "video_jp": ["", ""],
     "main_revelation": ["순수"],

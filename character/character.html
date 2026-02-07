@@ -2943,13 +2943,79 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             // Process each member asynchronously
             const processMembers = async () => {
                 const currentPageChar = new URLSearchParams(window.location.search).get('name');
-                for (const memberName of party.members) {
+                const members = party.members;
+                const totalMembers = members.length;
+                const isFiveMemberParty = totalMembers === 5;
+
+                for (let i = 0; i < totalMembers; i++) {
+                    const memberName = members[i];
+                    if (!memberName) continue;
+
+                    // Case: 4th member in a 5-member party -> Combine with 5th
+                    if (isFiveMemberParty && i === 3) {
+                        const nextMemberName = members[i + 1];
+                        if (nextMemberName) {
+                            const memberItem = document.createElement('a');
+                            memberItem.className = 'party-member';
+                            memberItem.href = `character.html?name=${memberName}`;
+
+                            // Spoiler check for main member
+                            const isReleased = await isCharacterReleased(memberName);
+                            if (!isReleased && memberName !== currentPageChar) {
+                                memberItem.classList.add('spoiler');
+                                memberItem.addEventListener('click', function (e) {
+                                    if (this.classList.contains('spoiler')) {
+                                        e.preventDefault();
+                                        e.stopPropagation();
+                                        this.classList.remove('spoiler');
+                                    }
+                                });
+                            }
+                            if (memberName === currentPageChar) {
+                                memberItem.classList.remove('spoiler');
+                            }
+
+                            const link = document.createElement('a');
+                            link.href = `character.html?name=${memberName}`;
+
+                            const img = document.createElement('img');
+                            img.src = `../assets/img/tier/${memberName}.webp`;
+                            img.alt = memberName;
+                            img.onerror = function () { this.style.display = 'none'; };
+                            link.appendChild(img);
+                            memberItem.appendChild(link);
+
+                            // Sub Member Badge (5th member)
+                            const subBadge = document.createElement('div');
+                            subBadge.className = 'sub-member-badge';
+                            // Add title/tooltip for 5th member name
+                            subBadge.title = getLocalizedCharacterName(nextMemberName);
+
+                            const subImg = document.createElement('img');
+                            subImg.src = `../assets/img/tier/${nextMemberName}.webp`;
+                            subImg.alt = nextMemberName;
+                            subBadge.appendChild(subImg);
+                            memberItem.appendChild(subBadge);
+
+                            const name = document.createElement('span');
+                            name.className = 'character-name';
+                            name.textContent = getLocalizedCharacterName(memberName);
+                            memberItem.appendChild(name);
+
+                            partyList.appendChild(memberItem);
+
+                            // Skip next iteration
+                            i++;
+                            continue;
+                        }
+                    }
+
                     const memberItem = document.createElement('a');
                     memberItem.className = 'party-member';
                     if (memberName !== "") {
                         memberItem.href = `character.html?name=${memberName}`;
                     }
-                    // Check if character is released in current language using Korean name
+
                     const isReleased = await isCharacterReleased(memberName);
 
                     if (!isReleased && memberName !== currentPageChar && memberName !== "") {
@@ -2960,10 +3026,8 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                                 e.stopPropagation();
                                 this.classList.remove('spoiler');
                             }
-                            // On second click, the default link behavior will work
                         });
                     }
-                    // 현재 페이지 캐릭터는 스포일러 제외 (전역 토글이 켜져 있어도 강제 해제)
                     if (memberName === currentPageChar) {
                         memberItem.classList.remove('spoiler');
                     }

@@ -80,7 +80,8 @@ export default {
 
         // 기타
         spRecovery: 'SP 회복',
-        resonance: '추격',
+        resonance: '추가 효과',
+        downdamage: '다운 허약',
         naviPower: '해명의힘',
         labor: '직책',
         myPalace: '마이팰리스',

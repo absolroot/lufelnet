@@ -81,6 +81,7 @@ export default {
         // その他
         spRecovery: 'SP 回復',
         resonance: '追撃',
+        downdamage: 'ダウンダメージ',
         naviPower: 'ステータス強化',
         labor: '職責',
         myPalace: 'マイパレス',

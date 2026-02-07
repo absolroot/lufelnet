@@ -81,6 +81,7 @@ export default {
         // Other
         spRecovery: 'SP Recovery',
         resonance: 'Resonance',
+        downdamage: 'Downed damage',
         naviPower: 'Navi Power',
         labor: 'Labor',
         myPalace: 'Thieves Den',

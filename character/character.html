@@ -916,6 +916,8 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             window.innateData = window.innateData || {};
             // 캐릭터 세팅 데이터 전역 스텁
             window.characterSetting = window.characterSetting || {};
+            // 리코·매화 전용 계산기 전역 스텁
+            window.RikoCalc = window.RikoCalc || {};
         } catch (e) { console.warn('[SAFE:init-globals]', e); }
 
         async function loadCharacterDataAll(name) {
@@ -940,6 +942,11 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             // 몽타뉴·백조 전용 모드 선택 스크립트 로드
             if (name === '몽타뉴·백조' || name === '코토네 몽타뉴·백조') {
                 tasks.push(loadPerCharacterResource(name, { fileBase: 'MONT2_icons', globalVarName: 'MONT2Icons' }));
+            }
+
+            // 리코·매화 전용 스탯 계산기 로드
+            if (name === '리코·매화') {
+                tasks.push(loadPerCharacterResource(name, { fileBase: 'riko_calc', globalVarName: 'RikoCalc' }));
             }
 
             await Promise.all(tasks.map(t => safeAwait('loadPerCharacterResource', t)));

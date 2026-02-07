@@ -20,9 +20,9 @@ window.characterSetting["리코·매화"] = {
         "LV13": "SP회복 450.1% , 크리티컬 효과 418%",
         "LV13+5": "SP회복 450.1% , 크리티컬 효과 448%"
     },
-    "battle_plus_stats": "<b>SP회복</b>/ 기본 스탯: 188.5% / 의식 0: 60% / 마이팰리스: 5% / 마이팰리스 평점 <b>크리티컬 효과</b>/ 해명의 힘 / 패시브(활기): 84% / 창조우려: 45% / 마이팰리스: 2%",
-    "battle_plus_stats_en": "<b>SP recovery</b>/ Base Stat: 188.5% / Awareness 0: 60% / Thieves Den: 5% / Thieves Den Rating <b>Crit Mult</b>/ Navi Power / Passive: 84% / Creation+Worry: 45% / Thieves Den: 2%",
-    "battle_plus_stats_jp": "<b>SP回復</b>/ 基本スタット: 188.5% / 意識 0: 60% / マイパレス: 5% / マイパレス 評価 <b>CRT倍率</b>/ 解明の力 / パッシブ: 84% / 結造+憂慮: 45% / マイパレス: 2%",
+    "battle_plus_stats": "<b>SP회복</b>/ 기본 스탯: 188.5% / 의식 0: 60% / 마이팰리스: 5% <b>크리티컬 효과</b>/ 해명의 힘 / 패시브(활기): 84% / 창조우려: 45% / 마이팰리스: 2%",
+    "battle_plus_stats_en": "<b>SP recovery</b>/ Base Stat: 188.5% / Awareness 0: 60% / Thieves Den: 5% <b>Crit Mult</b>/ Navi Power / Passive: 84% / Creation+Worry: 45% / Thieves Den: 2%",
+    "battle_plus_stats_jp": "<b>SP回復</b>/ 基本スタット: 188.5% / 意識 0: 60% / マイパレス: 5% <b>CRT倍率</b>/ 解明の力 / パッシブ: 84% / 結造+憂慮: 45% / マイパレス: 2%",
     "element_weakness": "염동",
     "element_resistance": "질풍",
     "skill1_lv": "MAX!",

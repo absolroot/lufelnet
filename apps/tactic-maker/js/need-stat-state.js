@@ -21,6 +21,10 @@ let globalBossSettings = {
     defenseCoef: 263.2
 };
 
+// Global item option selections (shared across all slots)
+// Key: itemId, Value: selected option value
+let globalItemOptions = {};
+
 // ============================================================================
 // State Getters/Setters
 // ============================================================================
@@ -48,6 +52,23 @@ export function getGlobalElucidatorCritical() {
 
 export function getGlobalElucidatorPierce() {
     return globalElucidatorPierce;
+}
+
+// Global item options getters/setters
+export function getGlobalItemOptions() {
+    return { ...globalItemOptions };
+}
+
+export function setGlobalItemOption(itemId, optionValue) {
+    globalItemOptions[String(itemId)] = optionValue;
+}
+
+export function setGlobalItemOptions(options) {
+    globalItemOptions = { ...options };
+}
+
+export function getGlobalItemOption(itemId) {
+    return globalItemOptions[String(itemId)];
 }
 
 // ============================================================================

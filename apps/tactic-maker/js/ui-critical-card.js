@@ -25,7 +25,11 @@ import {
     getLocalizedSkillName,
     getLocalizedOptions,
     getLabels,
-    sortItemsByCurrentChar
+    sortItemsByCurrentChar,
+    getGlobalItemOptions,
+    setGlobalItemOptions,
+    getGlobalItemOption,
+    setGlobalItemOption
 } from './need-stat-state.js';
 
 // Data and events modules are available for future use
@@ -103,7 +107,10 @@ export class NeedStatCardUI {
             extraDefenseReduce: this.extraDefenseReduce,
             personaPerformance: personaPerformanceValues
         };
-        
+
+        // Save global item options (shared across all slots)
+        this.store.state.needStatSelections.globalItemOptions = getGlobalItemOptions();
+
         // Trigger auto-save
         this.store.notify('needStatChange', { slotIndex });
     }
@@ -113,10 +120,16 @@ export class NeedStatCardUI {
      */
     loadSelectionsFromStore(slotIndex) {
         if (slotIndex === undefined || slotIndex === null) return false;
-        
+
+        // Load global item options (shared across all slots)
+        const globalOptions = this.store.state.needStatSelections?.globalItemOptions;
+        if (globalOptions) {
+            setGlobalItemOptions(globalOptions);
+        }
+
         const saved = this.store.state.needStatSelections?.[slotIndex];
         if (!saved) return false;
-        
+
         this.selectedItems = new Set(saved.critical || []);
         this.selectedPierceItems = new Set(saved.pierce || []);
         this.selectedDefenseItems = new Set(saved.defense || []);
@@ -126,7 +139,7 @@ export class NeedStatCardUI {
         this.extraSumPierce = saved.extraSumPierce || 0;
         this.extraDefenseReduce = saved.extraDefenseReduce || 0;
         this.savedPersonaPerformance = saved.personaPerformance || {};
-        
+
         return true;
     }
 
@@ -715,7 +728,24 @@ export class NeedStatCardUI {
         if (item.options && item.options.length > 0) {
             const baseOptions = item.options;
             const labelOptions = this.getLocalizedOptions(item);
-            const selectedOpt = item._selectedOption || item.defaultOption || baseOptions[0];
+            // Priority: saved global option > item._selectedOption > defaultOption > first option
+            const savedOption = getGlobalItemOption(itemId);
+            const selectedOpt = savedOption || item._selectedOption || item.defaultOption || baseOptions[0];
+            // Apply saved option to item for value calculation
+            if (savedOption && item.values && item.values[savedOption] !== undefined) {
+                item._selectedOption = savedOption;
+                const newBaseValue = item.values[savedOption];
+                // For jc1, apply persona performance formula
+                if (String(item.id) === 'jc1') {
+                    item.__baseValue = newBaseValue;
+                    const savedKey = `critical_${itemId}`;
+                    const savedN = this.savedPersonaPerformance?.[savedKey] ?? 100;
+                    value = newBaseValue * (50 + savedN / 2) / 100;
+                } else {
+                    value = newBaseValue;
+                }
+                item.value = value;
+            }
             optionsHtml = `
                 <select class="need-stat-select" data-item-id="${itemId}">
                     ${baseOptions.map((opt, idx) => {
@@ -824,7 +854,31 @@ export class NeedStatCardUI {
         if (item.options && item.options.length > 0) {
             const baseOptions = item.options;
             const labelOptions = this.getLocalizedOptions(item);
-            const selectedOpt = item._selectedOption || item.defaultOption || baseOptions[0];
+            // Priority: saved global option > item._selectedOption > defaultOption > first option
+            const optionKey = `${category}_${itemId}`;
+            const savedOption = getGlobalItemOption(optionKey);
+            const selectedOpt = savedOption || item._selectedOption || item.defaultOption || baseOptions[0];
+            // Apply saved option to item for value calculation
+            if (savedOption && item.values && item.values[savedOption] !== undefined) {
+                item._selectedOption = savedOption;
+                const newBaseValue = item.values[savedOption];
+                // For J&C items, apply persona performance formula
+                const isJC1 = (String(item.id) === 'jc1' && category === 'pierce');
+                const isJC2 = (String(item.id) === 'jc2' && category === 'defense');
+                if (isJC1 || isJC2) {
+                    item.__baseValue = newBaseValue;
+                    const savedKey = `${category}_${itemId}`;
+                    const savedN = this.savedPersonaPerformance?.[savedKey] ?? 100;
+                    if (isJC1) {
+                        value = newBaseValue * (50 + savedN / 2) / 100;
+                    } else {
+                        value = newBaseValue * savedN / 100;
+                    }
+                } else {
+                    value = newBaseValue;
+                }
+                item.value = value;
+            }
             optionsHtml = `
                 <select class="need-stat-options" data-item-id="${itemId}" data-category="${category}">
                     ${baseOptions.map((opt, idx) => {
@@ -2112,7 +2166,10 @@ export class NeedStatCardUI {
                 if (item && item.values && item.values[selectedOption] !== undefined) {
                     const newBaseValue = item.values[selectedOption];
                     item._selectedOption = selectedOption;
-                    
+
+                    // Save to global state for persistence
+                    setGlobalItemOption(itemId, selectedOption);
+
                     // J&C jc1인 경우 페르소나 성능 적용
                     if (String(itemId) === 'jc1') {
                         item.__baseValue = newBaseValue;
@@ -2128,6 +2185,9 @@ export class NeedStatCardUI {
 
                     const total = this.calculateTotal(buffItems, selfItems) + this.revelationSumCritical + this.extraSumCritical + getGlobalElucidatorCritical();
                     this.updateTotalPairDisplays(slotIndex, total, 'critical');
+
+                    // Save selections to store
+                    this.saveSelectionsToStore(slotIndex);
                 }
             });
         });
@@ -2287,21 +2347,25 @@ export class NeedStatCardUI {
                 if (item && item.values && item.values[selectedOption] !== undefined) {
                     const newBaseValue = item.values[selectedOption];
                     item._selectedOption = selectedOption;
-                    
+
+                    // Save to global state for persistence (with category prefix)
+                    const optionKey = `${category}_${itemId}`;
+                    setGlobalItemOption(optionKey, selectedOption);
+
                     // J&C 아이템인 경우 페르소나 성능 적용
                     const isJC = (String(itemId) === 'jc1' || String(itemId) === 'jc2');
                     if (isJC) {
                         item.__baseValue = newBaseValue;
                         const personaInput = row ? row.querySelector('.need-stat-persona-input') : null;
                         const N = personaInput ? (parseFloat(personaInput.value) || 100) : 100;
-                        
+
                         let calculatedValue = newBaseValue;
                         if (String(itemId) === 'jc1') {
                             calculatedValue = newBaseValue * (50 + N / 2) / 100;
                         } else if (String(itemId) === 'jc2') {
                             calculatedValue = newBaseValue * N / 100;
                         }
-                        
+
                         item.value = calculatedValue;
                         if (valueEl) valueEl.textContent = `${calculatedValue.toFixed(2)}%`;
                     } else {
@@ -2310,6 +2374,9 @@ export class NeedStatCardUI {
                     }
 
                     updatePierceDisplays();
+
+                    // Save selections to store
+                    this.saveSelectionsToStore(slotIndex);
                 }
             });
         });

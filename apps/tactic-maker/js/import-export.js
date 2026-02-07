@@ -3,6 +3,8 @@
  * Handles data compatibility with legacy tactic maker format
  */
 
+import { setGlobalItemOptions } from './need-stat-state.js';
+
 const GAS_URL = 'https://script.google.com/macros/s/AKfycbzxSnf6_09q_LDRKIkmBvE2oTtQaLnK22M9ozrHMUAV0JnND9sc6CTILlnBS7_T8FIe/exec';
 
 export class ImportExport {
@@ -245,6 +247,12 @@ export class ImportExport {
 
         // Load data into store
         this.store.loadData(internalState);
+
+        // Load global item options if present
+        const globalOptions = internalState.needStatSelections?.globalItemOptions;
+        if (globalOptions) {
+            setGlobalItemOptions(globalOptions);
+        }
 
         // Update title input
         const titleInput = document.getElementById('tacticTitle');

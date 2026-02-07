@@ -405,18 +405,61 @@ export class DataLoader {
         return skillData.name || skillName;
     }
 
+    static KR_TO_I18N_POSITIONS = {
+        '구원': 'medic',
+        '굴복': 'breaker',
+        '반항': 'assassin',
+        '방위': 'guardian',
+        '우월': 'striker',
+        '지배': 'controller',
+        '해명': 'navigator',
+        '자율': 'autonomous'
+    };
+
+    static KR_TO_I18N_ELEMENTS = {
+        '만능': 'almighty',
+        '물리': 'physical',
+        '총격': 'gun',
+        '화염': 'fire',
+        '빙결': 'ice',
+        '전격': 'electric',
+        '질풍': 'wind',
+        '질풍빙결': 'windIce',
+        '염동': 'psy',
+        '핵열': 'nuclear',
+        '축복': 'bless',
+        '주원': 'curse',
+        '버프': 'buff',
+        '디버프': 'debuff',
+        '디버프광역': 'debuffAoe'
+    };
+
     static getJobName(rawJob) {
         if (!rawJob) return '';
+
+        let key = rawJob;
+        // Check if rawJob is Korean and needs mapping
+        if (this.KR_TO_I18N_POSITIONS[rawJob]) {
+            key = this.KR_TO_I18N_POSITIONS[rawJob];
+        }
+
         if (window.I18nService && window.I18nService.t) {
-            return window.I18nService.t('positions.' + rawJob, rawJob);
+            return window.I18nService.t('positions.' + key, rawJob);
         }
         return rawJob;
     }
 
     static getElementName(rawElement) {
         if (!rawElement) return '';
+
+        let key = rawElement;
+        // Check if rawElement is Korean and needs mapping
+        if (this.KR_TO_I18N_ELEMENTS[rawElement]) {
+            key = this.KR_TO_I18N_ELEMENTS[rawElement];
+        }
+
         if (window.I18nService && window.I18nService.t) {
-            return window.I18nService.t('elements.' + rawElement, rawElement);
+            return window.I18nService.t('elements.' + key, rawElement);
         }
         return rawElement;
     }
@@ -494,8 +537,8 @@ export class DataLoader {
                     }
                     DataLoader._revelationMapping = window.__tmpMappingEn ||
                         (window.__tmpEnRevelationData && window.__tmpEnRevelationData.mapping_en) || {};
-                    try { delete window.__tmpMappingEn; } catch (_) {}
-                    try { delete window.__tmpEnRevelationData; } catch (_) {}
+                    try { delete window.__tmpMappingEn; } catch (_) { }
+                    try { delete window.__tmpEnRevelationData; } catch (_) { }
                 } else if (lang === 'jp') {
                     console.log('[DataLoader] JP - __tmpMappingJp exists:', !!window.__tmpMappingJp);
                     console.log('[DataLoader] JP - __tmpJpRevelationData exists:', !!window.__tmpJpRevelationData);
@@ -507,8 +550,8 @@ export class DataLoader {
                     }
                     DataLoader._revelationMapping = window.__tmpMappingJp ||
                         (window.__tmpJpRevelationData && window.__tmpJpRevelationData.mapping_jp) || {};
-                    try { delete window.__tmpMappingJp; } catch (_) {}
-                    try { delete window.__tmpJpRevelationData; } catch (_) {}
+                    try { delete window.__tmpMappingJp; } catch (_) { }
+                    try { delete window.__tmpJpRevelationData; } catch (_) { }
                 }
 
                 DataLoader._revelationMappingLoaded = true;

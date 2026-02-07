@@ -3,13 +3,14 @@
  * Event handlers for critical, pierce, elucidator, and boss interactions.
  */
 
-import { 
-    setElucidatorBonuses, 
-    getGlobalBossSettings, 
+import {
+    setElucidatorBonuses,
+    getGlobalBossSettings,
     setGlobalBossSettings,
     getGlobalElucidatorCritical,
     getGlobalElucidatorPierce,
-    getCurrentLang
+    getCurrentLang,
+    setGlobalItemOption
 } from './need-stat-state.js';
 
 import {
@@ -73,7 +74,10 @@ export function bindCriticalEvents(container, ui, buffItems, selfItems, slotInde
             if (item && item.values && item.values[selectedOption] !== undefined) {
                 const newBaseValue = item.values[selectedOption];
                 item._selectedOption = selectedOption;
-                
+
+                // Save to global state for persistence
+                setGlobalItemOption(itemId, selectedOption);
+
                 // J&C jc1인 경우 페르소나 성능 적용
                 if (String(itemId) === 'jc1') {
                     item.__baseValue = newBaseValue;
@@ -89,6 +93,9 @@ export function bindCriticalEvents(container, ui, buffItems, selfItems, slotInde
 
                 const total = calculateTotal(buffItems, selfItems, ui.selectedItems) + ui.revelationSumCritical + getGlobalElucidatorCritical();
                 ui.updateTotalPairDisplays(slotIndex, total, 'critical');
+
+                // Trigger save to store
+                ui.saveSelectionsToStore(slotIndex);
             }
         });
     });
@@ -236,21 +243,25 @@ export function bindPierceEvents(container, ui, penetrateSelfItems, penetrateBuf
             if (item && item.values && item.values[selectedOption] !== undefined) {
                 const newBaseValue = item.values[selectedOption];
                 item._selectedOption = selectedOption;
-                
+
+                // Save to global state for persistence (with category prefix for uniqueness)
+                const optionKey = `${category}_${itemId}`;
+                setGlobalItemOption(optionKey, selectedOption);
+
                 // J&C 아이템인 경우 페르소나 성능 적용
                 const isJC = (String(itemId) === 'jc1' || String(itemId) === 'jc2');
                 if (isJC) {
                     item.__baseValue = newBaseValue;
                     const personaInput = row ? row.querySelector('.need-stat-persona-input') : null;
                     const N = personaInput ? (parseFloat(personaInput.value) || 100) : 100;
-                    
+
                     let calculatedValue = newBaseValue;
                     if (String(itemId) === 'jc1') {
                         calculatedValue = newBaseValue * (50 + N / 2) / 100;
                     } else if (String(itemId) === 'jc2') {
                         calculatedValue = newBaseValue * N / 100;
                     }
-                    
+
                     item.value = calculatedValue;
                     if (valueEl) valueEl.textContent = `${calculatedValue.toFixed(2)}%`;
                 } else {
@@ -259,6 +270,9 @@ export function bindPierceEvents(container, ui, penetrateSelfItems, penetrateBuf
                 }
 
                 updatePierceDisplays();
+
+                // Trigger save to store
+                ui.saveSelectionsToStore(slotIndex);
             }
         });
     });

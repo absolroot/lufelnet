@@ -1,7 +1,7 @@
 // =====================
 // Supabase 기반 홈 택틱 로더
 // =====================
-window.loadHomeTacticsFromSupabase = async function(currentLang) {
+window.loadHomeTacticsFromSupabase = async function (currentLang) {
   try {
     const postsListEl = document.getElementById('postsList');
     if (!postsListEl || typeof supabase === 'undefined') return;
@@ -13,7 +13,7 @@ window.loadHomeTacticsFromSupabase = async function(currentLang) {
 
     let { data, error } = await query;
     if (!error && data && data.length === 0 && (currentLang === 'en' || currentLang === 'jp')) {
-      const res2 = await supabase.from('tactics').select('*').in('region', ['en','sea']).order('created_at', { ascending: false }).limit(3);
+      const res2 = await supabase.from('tactics').select('*').in('region', ['en', 'sea']).order('created_at', { ascending: false }).limit(3);
       data = res2.data || [];
     }
     if (error) { console.error('Supabase load error:', error); return; }
@@ -24,7 +24,7 @@ window.loadHomeTacticsFromSupabase = async function(currentLang) {
       const ipRes = await fetch('https://api.ipify.org?format=json');
       const ipJson = await ipRes.json();
       window.__HOME_IP = ipJson.ip || '';
-    } catch(_) { window.__HOME_IP = ''; }
+    } catch (_) { window.__HOME_IP = ''; }
     window.__HOME_LIKES_MAP = {};
     try {
       const ids = (data || []).map(t => String(t.id));
@@ -41,7 +41,7 @@ window.loadHomeTacticsFromSupabase = async function(currentLang) {
           };
         });
       }
-    } catch(_) {}
+    } catch (_) { }
 
     postsListEl.innerHTML = '';
     data.forEach(t => {
@@ -51,7 +51,7 @@ window.loadHomeTacticsFromSupabase = async function(currentLang) {
       item.setAttribute('data-post-id', String(t.id));
       const likeRow = window.__HOME_LIKES_MAP[String(t.id)] || null;
       const likeCount = likeRow?.likes || 0;
-      const likedByMe = (function(){ try { if (!likeRow || !likeRow.recent_like || !window.__HOME_IP) return false; const ts = likeRow.recent_like[window.__HOME_IP]; if (!ts) return false; const last = new Date(ts).getTime(); return (Date.now() - last) < 24*60*60*1000; } catch(_) { return false; } })();
+      const likedByMe = (function () { try { if (!likeRow || !likeRow.recent_like || !window.__HOME_IP) return false; const ts = likeRow.recent_like[window.__HOME_IP]; if (!ts) return false; const last = new Date(ts).getTime(); return (Date.now() - last) < 24 * 60 * 60 * 1000; } catch (_) { return false; } })();
       item.innerHTML = `
         <div class="post-header">
           <h3>
@@ -83,7 +83,7 @@ window.loadHomeTacticsFromSupabase = async function(currentLang) {
         const previewEl = createHomePreviewFromQuery(q);
         const container = item.querySelector('.tactic-preview-container');
         if (container && previewEl) container.appendChild(previewEl);
-      } catch(_) {}
+      } catch (_) { }
     });
   } catch (e) { console.error('홈 택틱 로드 실패:', e); }
 }
@@ -96,23 +96,23 @@ function formatHomeDate(date) {
       try {
         const urlLang = new URLSearchParams(window.location.search).get('lang');
         if (urlLang) lang = urlLang;
-      } catch(_) {}
+      } catch (_) { }
       if (!lang && typeof LanguageRouter !== 'undefined' && LanguageRouter.getCurrentLanguage) {
-        try { lang = LanguageRouter.getCurrentLanguage(); } catch(_) {}
+        try { lang = LanguageRouter.getCurrentLanguage(); } catch (_) { }
       }
       if (!lang) {
-        try { lang = localStorage.getItem('preferredLanguage') || 'kr'; } catch(_) { lang = 'kr'; }
+        try { lang = localStorage.getItem('preferredLanguage') || 'kr'; } catch (_) { lang = 'kr'; }
       }
     }
-    if (!['kr','en','jp'].includes(lang)) lang = 'kr';
+    if (!['kr', 'en', 'jp'].includes(lang)) lang = 'kr';
 
     const now = new Date();
     const diff = now - date;
-    const days = Math.floor(diff / (1000*60*60*24));
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
     if (days === 0) {
-      const hours = Math.floor(diff / (1000*60*60));
+      const hours = Math.floor(diff / (1000 * 60 * 60));
       if (hours === 0) {
-        const minutes = Math.floor(diff / (1000*60));
+        const minutes = Math.floor(diff / (1000 * 60));
         if (lang === 'en') return `${minutes} min ago`;
         if (lang === 'jp') return `${minutes}分前`;
         return `${minutes}분 전`;
@@ -127,7 +127,7 @@ function formatHomeDate(date) {
     }
     const locale = (lang === 'en') ? 'en-US' : (lang === 'jp') ? 'ja-JP' : 'ko-KR';
     return date.toLocaleDateString(locale);
-  } catch(_) { return ''; }
+  } catch (_) { return ''; }
 }
 
 // 홈 목록용 파티 프리뷰 (tactics.html의 미리보기와 동일 로직)
@@ -143,7 +143,7 @@ function createHomePreviewFromQuery(tacticData) {
   partyImagesDiv.className = 'party-images';
 
   const orderedParty = tacticData.party
-    .filter(pm => pm.name !== '')
+    .filter(pm => pm && pm.name && pm.name !== '')
     .sort((a, b) => {
       if (a.order === '-') return 1;
       if (b.order === '-') return -1;
@@ -183,7 +183,7 @@ function createHomePreviewFromQuery(tacticData) {
 }
 
 // 홈 좋아요 처리 (tactics.html과 동일 정책)
-window.homeHandleLike = async function(tacticId) {
+window.homeHandleLike = async function (tacticId) {
   try {
     const ip = window.__HOME_IP || '';
     const { data: likeRow } = await supabase
@@ -194,7 +194,7 @@ window.homeHandleLike = async function(tacticId) {
     let likes = likeRow?.likes || 0;
     const recent = (likeRow?.recent_like && typeof likeRow.recent_like === 'object') ? likeRow.recent_like : {};
     const last = recent[ip] ? new Date(recent[ip]).getTime() : 0;
-    if (last && (Date.now() - last) < 24*60*60*1000) {
+    if (last && (Date.now() - last) < 24 * 60 * 60 * 1000) {
       const lang = window.__HOME_LANG__ || 'kr';
       const msg = lang === 'en' ? 'You already liked this within 24 hours.' : lang === 'jp' ? '24時間以内に既にいいねしました。' : '24시간 내 이미 좋아요 했습니다.';
       alert(msg);

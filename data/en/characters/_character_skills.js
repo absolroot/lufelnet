@@ -805,7 +805,7 @@ const enCharacterSkillsData = {
             "description": "Spend all Intel stacks to grant Fair Winds to party for 1 turn and restore targeted ally's HP by 12.7%/12.7%/13.7%/13.7%.\nFair Winds: Increase damage to foes by 12.6%/13.9%/13.6%/14.9%. Increase more based on Riko's Speed and the number of Intel stacks spent. If Riko's Speed is above 100, increase damage by 1.05% for every 10 points of Speed over 100, up to 6.3%/6.9%/6.8%/7.4%."
         },
         "skill_highlight": {
-            "name": "Attribute Boost",
+            "name": "Stat Buff",
             "element": "패시브",
             "type": "패시브",
             "description": "Increases all allies' corresponding attribute stats by 15% of the Revealed Phantom Thief's attributes."
@@ -1113,7 +1113,7 @@ const enCharacterSkillsData = {
             "description": "Spend all Cocktails to increase party's attribute damage based on the targeted ally's attribute for 2 turns.\nIncrease damage by 1% for every 230 of Yumi's Attack (up to 4600/5060/5980/6440of Attack). [Tailor-Made], [Standard], and [Basic] Cocktails will increase damage by an additional 120%, 100%, and 50% respectively.\nIncrease effects on targeted ally by 1.2 times. If 2 or more [Standard] or better Cocktails are spent, increase targeted ally's critical damage by 20.0%/22.0%/22.4%/24.4%."
         },
         "skill_highlight": {
-            "name": "Attribute Boost",
+            "name": "Stat Buff",
             "element": "패시브",
             "type": "패시브",
             "description": "Increases the corresponding attribute values of all deployed allies by 20% of the Phantom Thieves’ respective attributes."
@@ -1286,7 +1286,7 @@ const enCharacterSkillsData = {
         "skill2": { "name": "Vulnerability Found!", "element": "버프", "type": "버프", "cool": 0, "description": "For 3 turns, increase 1 foe's damage taken by 6%; increase damage taken by 0.57% more for every 100 points of Futaba's Attack (up to 4600/5060/5980/6440 of Attack).\nWhen an ally deals damage with a skill, Resonance, or Highlight to foes inflicted with this effect, gain 20% Analysis Progress.\nIf Futaba's Analysis Progress is at 100%, also grant Data Storm to all allies for 2 turns." },
         "skill3": { "name": "Data Link Established!", "element": "버프", "type": "버프", "cool": 0, "unlock": "Ally must have 『Hack Complete』.", "description": "Usable when allies have Data Storm. For 2 turns, increase 1 ally's Attack by 270/297/302/329; increase Attack by 21.7 more for every 100 points of Futaba's Attack (up to 4600/5060/5980/6440 of Attack).\nInflict Virus on all foes for 1 turn, based on the targeted ally's attribute.\nVirus: Change affinities of the foe this is inflicted upon. (Null, Repel, and Drain become Resist, Resist becomes Normal, and Normal becomes Weak. Weak attributes take 25% more weakness damage.)" },
         "skill_highlight": {
-            "name": "Attribute Improvement",
+            "name": "Stat Buff",
             "element": "패시브",
             "description": "Increase all allies' stats by 20% of Oracle's stats."
         },
@@ -2171,7 +2171,7 @@ const enCharacterSkillsData = {
             "description": "Grant a shield to all allies equal to 33.2%/33.2%/35.9%/35.9% of Miyu's Defense + 1259/1409/1629/1779 + number of Seashell stacks on party × (6.9%/6.9%/7.5%/7.5% of Miyu's Defense + 260/260/336/336) for 3 turns. Also, if an ally has 4 or more Seashell stacks, increase damage by 2.0%/2.0%/2.2%/2.2% for each stack for 3 turns. The damage increase effect lasts for 3 turns or until shield is broken, and then lose 2 Seashell stacks."
         },
         "skill_highlight": {
-            "name": "Attribute Boost",
+            "name": "Stat Buff",
             "element": "패시브",
             "type": "패시브",
             "description": "Increase all allies' corresponding attribute stats by 15% of Phantom Thief's respective attributes."
@@ -2212,7 +2212,7 @@ const enCharacterSkillsData = {
             "description": "Increase party's damage by 10.0%/11.0%/10.8%/11.8% for 3 turns. Increase damage by 1% for every 225 of Tomiyama's Attack (up to 4500/4950/5400/5850 of Attack). Also increase damage dealt to foes with an elemental ailment by 1.5 times and gain 2 Beat stacks."
         },
         "skill_highlight": {
-            "name": "Attribute Boost",
+            "name": "Stat Buff",
             "element": "패시브",
             "type": "패시브",
             "description": "Increase all allies' corresponding attribute stats by 15% of Phantom Thief's respective attributes."

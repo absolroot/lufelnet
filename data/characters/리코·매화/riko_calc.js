@@ -72,7 +72,7 @@
       passive: 'Passive',
       revelationStar: 'Revelation Star - Crit. DMG',
       myPalace: 'Thieves Den',
-      naviPower: 'Navi Power',
+      naviPower: 'Eludi. Stat Buff',
       total: 'Total',
       goal: 'Goal',
       battleEntry: 'Battle Entry',

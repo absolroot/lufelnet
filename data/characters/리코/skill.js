@@ -67,7 +67,7 @@ window.enCharacterSkillsData["리코"] = {
     "description": "Spend all Intel stacks to grant Fair Winds to party for 1 turn and restore targeted ally's HP by 12.7%/12.7%/13.7%/13.7%.\nFair Winds: Increase damage to foes by 12.6%/13.9%/13.6%/14.9%. Increase more based on Riko's Speed and the number of Intel stacks spent. If Riko's Speed is above 100, increase damage by 1.05% for every 10 points of Speed over 100, up to 6.3%/6.9%/6.8%/7.4%."
   },
   "skill_highlight": {
-    "name": "Attribute Boost",
+    "name": "Stat Buff",
     "element": "패시브",
     "type": "패시브",
     "description": "Increases all allies' corresponding attribute stats by 15% of the Revealed Phantom Thief's attributes."

@@ -66,7 +66,7 @@ window.enCharacterSkillsData["후타바"] = {
     "description": "Usable when allies have Data Storm. For 2 turns, increase 1 ally's Attack by 270/297/302/329; increase Attack by 21.7 more for every 100 points of Futaba's Attack (up to 4600/5060/5980/6440 of Attack).\nInflict Virus on all foes for 1 turn, based on the targeted ally's attribute.\nVirus: Change affinities of the foe this is inflicted upon. (Null, Repel, and Drain become Resist, Resist becomes Normal, and Normal becomes Weak. Weak attributes take 25% more weakness damage.)"
   },
   "skill_highlight": {
-    "name": "Attribute Improvement",
+    "name": "Stat Buff",
     "element": "패시브",
     "description": "Increase all allies' stats by 20% of Oracle's stats."
   },

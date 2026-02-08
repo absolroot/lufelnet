@@ -20,7 +20,12 @@ J&C - 스킬3이 자동 발동되어 3턴 사이클이 2턴 사이클로 감축�
                 q: "Q. 일부 캐릭터들은 왜 의식6으로 설정됐나요.",
                 a: `YUI(BUI) - YUI는 의식6부터 스킬 배율이 크게 상승해 완전히 다른 대미지를 보여주며, 광역 공격이 가능해집니다. 이는 전격 내성을 가지지 않은 보스 모드에서 이따금씩 포텐셜을 보여주며 랭킹 콘텐츠에 얼굴을 내밀곤 합니다.
 아케치(CROW) - 아케치는 의식6부터 대미지 비축 비율이 1.5배로 증가하며, 유의미한 효과를 보이게 됩니다. 의식6 미만에서 축적되는 비율은 현재 다른 버퍼들에 비해 활용도가 너무 낮습니다.`
+            },
+            {
+                q: "Q. 캐릭터 좌측 하단에 있는 삼각형 아이템은 뭔가요.",
+                a: "한국 기준 V4.7.1에 추가된 심상 코어를 위한 재료로 레벨 100까지의 확장을 나타냅니다. 추가적인 패시브를 획득하게 되면서 티어가 변동될 수 있습니다.",
             }
+
         ]
     },
     en: {
@@ -45,6 +50,10 @@ Justine & Caroline (J&C) - Skill 3 triggers automatically, reducing its cycle fr
                 q: "Q. Why are some characters listed at A6?",
                 a: `YUI (BUI) - YUI's skill scaling jumps drastically from A6 (80→110), allowing AOE attacks and opening up new damage potential. She occasionally excels in boss modes without Electric resistance and appears in ranking content.
     Akechi (Crow) - From A6, Akechi's damage storage multiplier increases by 1.5x, delivering significant impact. Below A6, his storage ratio is too low compared to other buffers and lacks effectiveness.`
+            },
+            {
+                q: "Q. What is the triangular item at the bottom left of the character?",
+                a: "It represents materials for the Mindscape Core added in the KR V4.7.1 update, allowing expansion up to Level 100. Acquiring additional Passives may lead to Tier changes."
             }
         ]
     },
@@ -70,6 +79,10 @@ Justine & Caroline (J&C) - Skill 3 triggers automatically, reducing its cycle fr
                 q: "Q. なぜ一部キャラが凸6設定なの？",
                 a: `YUI（ブイ） - 凸6からスキル倍率が大幅に上昇し（80→110）、全体攻撃が可能になります。電撃耐性を持たないボス戦でポテンシャルを発揮し、ランキングコンテンツにも登場することがあります。
     明智（クロウ） - 凸6からダメージ蓄積率が1.5倍に上昇し、効果が顕著になります。凸6未満では蓄積率が他のバッファーと比べて低すぎて、実用性に欠けます。`
+            },
+            {
+                q: "Q. キャラクターの左下にある三角形のアイテムは何ですか？",
+                a: "韓国版V4.7.1で追加された「イメジャリーコア」用の素材で、レベル100までの拡張を意味します。追加パッシブを獲得することで、ティアが変動する可能性があります。"
             }
         ]
     }

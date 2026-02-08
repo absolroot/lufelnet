@@ -128,7 +128,7 @@ window.I18N_COMMON_EN = {
         spRecovery: 'SP Recovery',
         resonance: 'Resonance',
         downdamage: 'Downed damage',
-        naviPower: 'Navi Power',
+        naviPower: 'Eludi. Stat Buff',
         labor: 'Labor',
         myPalace: 'Thieves Den',
         gunShot: 'Gun Shot',
@@ -202,7 +202,7 @@ window.I18N_COMMON_EN = {
         healingEffectAlt: 'Healing Effect',
         shieldEffectAlt: 'Shield Effect',
         spRecoveryAlt: 'SP Recovery',
-        naviPowerAlt: 'Navi Power',
+        naviPowerAlt: 'Eludi. Stat Buff',
         resonanceAlt: 'Resonance',
         myPalaceRating: 'Thieves Den Rating',
         desperado: 'Desperado'

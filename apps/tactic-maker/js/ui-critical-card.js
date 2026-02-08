@@ -1199,7 +1199,7 @@ export class NeedStatCardUI {
 
         return {
             labelNeedStat: t('needStat', lang === 'en' ? 'Key Stat' : (lang === 'jp' ? '重要ステ' : '중요 스탯')),
-            labelAttrImprove: lang === 'en' ? 'Attribute Improvement' : (lang === 'jp' ? 'ステータス強化' : '속성 강화'),
+            labelAttrImprove: lang === 'en' ? 'Stat Buff' : (lang === 'jp' ? 'ステータス強化' : '해명의 힘'),
             labelCritical: t('needStatCriticalRate', t('criticalRate', lang === 'en' ? 'Critical Rate' : (lang === 'jp' ? 'クリ率' : '크리티컬 확률'))),
             labelPierce: t('needStatPierceRate', lang === 'en' ? 'Pierce' : (lang === 'jp' ? '貫通' : '관통')),
             labelBuff: t('needStatBuff', t('criticalBuff', lang === 'en' ? 'Buff' : (lang === 'jp' ? 'バフ' : '버프'))),

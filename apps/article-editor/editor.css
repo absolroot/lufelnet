@@ -454,6 +454,16 @@ body {
     margin-right: 4px;
 }
 
+.status.autosaved {
+    color: var(--success);
+    font-size: 12px;
+}
+
+.status.autosaved::before {
+    content: '✓';
+    margin-right: 4px;
+}
+
 /* Buttons */
 .icon-btn {
     width: 32px;
@@ -919,6 +929,34 @@ body {
 
 .editor img.selected {
     outline: 2px solid var(--accent);
+}
+
+.editor img.dragging {
+    opacity: 0.25;
+    outline: 2px dashed var(--accent);
+}
+
+.editor img[draggable="true"] {
+    cursor: grab;
+}
+
+.editor img[draggable="true"]:active {
+    cursor: grabbing;
+}
+
+.drop-indicator {
+    height: 3px;
+    background: var(--accent);
+    border-radius: 2px;
+    margin: 4px 0;
+    pointer-events: none;
+    animation: dropIndicatorPulse 1s ease-in-out infinite;
+    box-shadow: 0 0 8px rgba(212, 168, 83, 0.4);
+}
+
+@keyframes dropIndicatorPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
 }
 
 .editor table {

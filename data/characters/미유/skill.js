@@ -65,7 +65,7 @@ window.enCharacterSkillsData["미유"] = {
     "description": "Grant a shield to all allies equal to 33.2%/33.2%/35.9%/35.9% of Miyu's Defense + 1259/1409/1629/1779 + number of Seashell stacks on party × (6.9%/6.9%/7.5%/7.5% of Miyu's Defense + 260/260/336/336) for 3 turns. Also, if an ally has 4 or more Seashell stacks, increase damage by 2.0%/2.0%/2.2%/2.2% for each stack for 3 turns. The damage increase effect lasts for 3 turns or until shield is broken, and then lose 2 Seashell stacks."
   },
   "skill_highlight": {
-    "name": "Attribute Boost",
+    "name": "Stat Buff",
     "element": "패시브",
     "type": "패시브",
     "description": "Increase all allies' corresponding attribute stats by 15% of Phantom Thief's respective attributes."

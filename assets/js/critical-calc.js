@@ -49,7 +49,7 @@ class CriticalCalc {
             const lang = this.getCurrentLang();
             const texts = {
                 kr: { navCurrent:'크리티컬 확률 계산기', page:'크리티컬 확률 계산기', total:'크리티컬 확률 합계', custom:'커스텀 크리티컬 확률', rev:'계시 합계', exp:'해명의 힘', buff:'버프', self:'자신', select:'선택', target:'목표', name:'이름', option:'옵션', value:'수치', duration:'지속시간', note:'비고', spoiler:'Show Spoilers', buffSum:'버프 합계', selfSum:'자신 합계', needed:'필요 수치', totalLabel:'크리티컬 확률 합계' },
-                en: { navCurrent:'Critical Rate Calculator', page:'Critical Rate Calculator', total:'Total Critical Rate', custom:'Custom Critical Rate', rev:'Card Sum', exp:'Navi Power', buff:'Buff', self:'Self', select:'Select', target:'Target', name:'Name', option:'Option', value:'Value', duration:'Duration', note:'Note', spoiler:'Show Spoilers', buffSum:'Buff Sum', selfSum:'Self Sum', needed:'Needed', totalLabel:'Total Critical Rate' },
+                en: { navCurrent:'Critical Rate Calculator', page:'Critical Rate Calculator', total:'Total Critical Rate', custom:'Custom Critical Rate', rev:'Card Sum', exp:'Eludi. Stat Buff', buff:'Buff', self:'Self', select:'Select', target:'Target', name:'Name', option:'Option', value:'Value', duration:'Duration', note:'Note', spoiler:'Show Spoilers', buffSum:'Buff Sum', selfSum:'Self Sum', needed:'Needed', totalLabel:'Total Critical Rate' },
                 jp: { navCurrent:'クリ率計算機', page:'クリ率計算機', total:'クリ率合計', custom:'カスタム クリ率', rev:'啓示 合計', exp:'ナビ力', buff:'バフ', self:'自分', select:'選択', target:'目標', name:'名前', option:'オプション', value:'数値', duration:'持続時間', note:'備考', spoiler:'ネタバレ表示', buffSum:'バフ合計', selfSum:'自分合計', needed:'必要数値', totalLabel:'クリ率合計' }
             }[lang] || undefined;
             if (texts) {

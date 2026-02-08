@@ -21,7 +21,7 @@ window.characterSetting["미나미·여름"] = {
         "LV13+5": "생명 13632, 크리티컬 효과 246.4%"
     },
     "battle_plus_stats": "<b>생명</b>/ 해명의힘 / 직책 8% / 마이팰리스 LV50 260 / 마이팰리스 LV70 560 / 마이팰리스 평점 <b>크리티컬 효과</b>/ 해명의 힘 / 마이팰리스 2%",
-    "battle_plus_stats_en": "<b>HP</b>/ Navi Power / Card-Labor 8% / Thieves Den 260 / Thieves Den Rating <b>Crit Mult</b>/ Navi Power / Thieves Den 2%",
+    "battle_plus_stats_en": "<b>HP</b>/ Eludi. Stat Buff / Card-Labor 8% / Thieves Den 260 / Thieves Den Rating <b>Crit Mult</b>/ Eludi. Stat Buff / Thieves Den 2%",
     "battle_plus_stats_jp": "<b>HP</b>/ 解明の力 / 職責 8% / マイパレス 260 / マイパレス 評価 <b>CRT倍率</b>/ 解明の力 / マイパレス 2%",
     "element_weakness": "핵열",
     "element_resistance": "축복",

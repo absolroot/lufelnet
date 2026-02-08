@@ -38,7 +38,7 @@ Ver2.0で登場した理子は、ストーリーを進めることで加入す�
         pros_en: ["You can reduce the DOWN status even with a non-weakness attack.","Enhances the All-Out Attack and ONE MORE.","Has a defense reduction effect on important stats."],
         pros_jp: ["弱点以外の攻撃でもDOWN数値を減少させることができます。","総攻撃と1Moreを強化します。","重要なステータスの防御力減少効果を持っています。"],
         cons: ["속도가 메인 스탯이라 속성 증가 스킬의 효과가 떨어진다."],
-        cons_en: ["Since speed is the main stat, the effect of Attribute Boost skills is reduced."],
+        cons_en: ["Since speed is the main stat, the effect of Stat Buff skills is reduced."],
         cons_jp: ["スピードがメインステータスなので、ステータス強化スキルの効果が低下します。"],
     };
 })();

@@ -17,7 +17,8 @@ const state = {
     posts: [],
     guides: [],
     drafts: [],
-    currentDraftId: null
+    currentDraftId: null,
+    draggedImage: null
 };
 
 // ============================================
@@ -32,6 +33,7 @@ const dom = {
     btnMenu: $('btn-menu'),
     btnCloseSidebar: $('btn-close-sidebar'),
     btnLoadPosts: $('btn-load-posts'),
+    btnConvertPosts: $('btn-convert-posts'),
     postsList: $('posts-list'),
     guidesList: $('guides-list'),
     draftsList: $('drafts-list'),
@@ -96,6 +98,16 @@ function setModified(val) {
     state.modified = val;
     dom.status.className = val ? 'status modified' : 'status';
     dom.status.textContent = val ? 'Modified' : '';
+}
+
+function autoSave() {
+    if (!state.modified) return;
+    const hasContent = dom.editors.kr.textContent.trim() ||
+                       dom.editors.en.textContent.trim() ||
+                       dom.editors.jp.textContent.trim() ||
+                       dom.titleKr.value || dom.titleEn.value || dom.titleJp.value;
+    if (!hasContent) return;
+    saveDraft(true);
 }
 
 function slugify(text) {
@@ -238,32 +250,11 @@ function renderPostsList() {
 // ============================================
 
 async function loadGuidesList() {
-    if (!state.rootHandle) {
-        try {
-            state.rootHandle = await window.showDirectoryPicker({ mode: 'readwrite' });
-        } catch (e) {
-            if (e.name !== 'AbortError') {
-                dom.guidesList.innerHTML = '<div class="posts-empty">Select folder to load guides</div>';
-            }
-            return;
-        }
-    }
-
     try {
-        // Navigate to guides data folder
-        const appsHandle = await state.rootHandle.getDirectoryHandle('apps');
-        const guidesHandle = await appsHandle.getDirectoryHandle('guides');
-        const dataHandle = await guidesHandle.getDirectoryHandle('data');
-
-        // Load guides-list.json
-        const listHandle = await dataHandle.getFileHandle('guides-list.json');
-        const file = await listHandle.getFile();
-        const content = await file.text();
-        state.guides = JSON.parse(content);
-
+        const response = await fetch('../guides/data/guides-list.json');
+        if (!response.ok) throw new Error('Not found');
+        state.guides = await response.json();
         renderGuidesList();
-        toast(`Loaded ${state.guides.length} guides`);
-
     } catch (e) {
         console.warn('Could not load guides:', e);
         dom.guidesList.innerHTML = '<div class="posts-empty">No guides found</div>';
@@ -297,21 +288,12 @@ function renderGuidesList() {
 }
 
 async function loadGuideById(id) {
-    if (!state.rootHandle) return;
-
     try {
-        const appsHandle = await state.rootHandle.getDirectoryHandle('apps');
-        const guidesHandle = await appsHandle.getDirectoryHandle('guides');
-        const dataHandle = await guidesHandle.getDirectoryHandle('data');
-        const postsHandle = await dataHandle.getDirectoryHandle('posts');
-
-        const fileHandle = await postsHandle.getFileHandle(`${id}.json`);
-        const file = await fileHandle.getFile();
-        const content = await file.text();
-
+        const response = await fetch(`../guides/data/posts/${id}.json`);
+        if (!response.ok) throw new Error('Not found');
+        const content = await response.text();
         await loadGuideJson(content, `${id}.json`);
-        state.currentDraftId = null; // Clear draft association
-
+        state.currentDraftId = null;
     } catch (e) {
         console.error('Error loading guide:', e);
         toast('Failed to load guide', 'error');
@@ -342,7 +324,7 @@ function saveDrafts() {
     }
 }
 
-function saveDraft() {
+function saveDraft(silent = false) {
     const slug = dom.metaSlug.value || slugify(dom.titleKr.value || dom.titleEn.value || 'untitled');
     const now = new Date().toISOString();
 
@@ -387,9 +369,23 @@ function saveDraft() {
 
     state.currentDraftId = draftData.id;
     saveDrafts();
-    renderDraftsList();
-    setModified(false);
-    toast('Draft saved locally');
+
+    if (silent) {
+        // Auto-save: update list but don't change modified state
+        renderDraftsList();
+        dom.status.textContent = 'Auto-saved';
+        dom.status.className = 'status autosaved';
+        setTimeout(() => {
+            if (state.modified) {
+                dom.status.textContent = 'Modified';
+                dom.status.className = 'status modified';
+            }
+        }, 3000);
+    } else {
+        renderDraftsList();
+        setModified(false);
+        toast('Draft saved locally');
+    }
 }
 
 function renderDraftsList() {
@@ -720,6 +716,61 @@ function deleteSelectedImage() {
     hideImageResize();
     setModified(true);
     toast('Image deleted');
+}
+
+// ============================================
+// Image Drag & Drop (in-editor reorder)
+// ============================================
+
+let dropIndicator = null;
+
+function getOrCreateDropIndicator() {
+    if (!dropIndicator) {
+        dropIndicator = document.createElement('div');
+        dropIndicator.className = 'drop-indicator';
+    }
+    return dropIndicator;
+}
+
+function updateDropIndicator(editor, clientY) {
+    const indicator = getOrCreateDropIndicator();
+    const children = Array.from(editor.children).filter(
+        c => c !== indicator && c !== state.draggedImage
+    );
+
+    let target = null;
+    for (const child of children) {
+        const rect = child.getBoundingClientRect();
+        if (clientY < rect.top + rect.height / 2) {
+            target = child;
+            break;
+        }
+    }
+
+    if (target) {
+        editor.insertBefore(indicator, target);
+    } else {
+        editor.appendChild(indicator);
+    }
+}
+
+function removeDropIndicator() {
+    if (dropIndicator && dropIndicator.parentNode) {
+        dropIndicator.remove();
+    }
+}
+
+function getDropTarget(editor, clientY) {
+    const children = Array.from(editor.children).filter(
+        c => c !== dropIndicator && c !== state.draggedImage
+    );
+    for (const child of children) {
+        const rect = child.getBoundingClientRect();
+        if (clientY < rect.top + rect.height / 2) {
+            return child;
+        }
+    }
+    return null;
 }
 
 // ============================================
@@ -1205,10 +1256,49 @@ async function exportArticle() {
 }
 
 // ============================================
+// Image Helpers
+// ============================================
+
+function dataUrlToFile(dataUrl, filename) {
+    const arr = dataUrl.split(',');
+    const mime = arr[0].match(/:(.*?);/)[1];
+    const bstr = atob(arr[1]);
+    const u8arr = new Uint8Array(bstr.length);
+    for (let i = 0; i < bstr.length; i++) {
+        u8arr[i] = bstr.charCodeAt(i);
+    }
+    return new File([u8arr], filename, { type: mime });
+}
+
+function collectAllImages() {
+    const allImages = [...state.images];
+    const seen = new Set(allImages.map(img => img.name));
+
+    [dom.editors.kr, dom.editors.en, dom.editors.jp].forEach(editor => {
+        editor.querySelectorAll('img[data-filename]').forEach(img => {
+            const filename = img.dataset.filename;
+            if (filename && img.src.startsWith('data:') && !seen.has(filename)) {
+                seen.add(filename);
+                const file = dataUrlToFile(img.src, filename);
+                allImages.push({ name: filename, dataUrl: img.src, file });
+            }
+        });
+    });
+
+    return allImages;
+}
+
+// ============================================
 // Save Guide (JSON format)
 // ============================================
 
 async function saveGuide() {
+    // Require slug
+    if (!dom.metaSlug.value.trim()) {
+        toast('Slug (URL) is required. Set it in the sidebar.', 'error');
+        return;
+    }
+
     if (!state.rootHandle) {
         try {
             state.rootHandle = await window.showDirectoryPicker({ mode: 'readwrite' });
@@ -1219,7 +1309,7 @@ async function saveGuide() {
     }
 
     try {
-        const slug = dom.metaSlug.value || slugify(dom.titleKr.value || dom.titleEn.value || 'untitled');
+        const slug = dom.metaSlug.value.trim();
 
         // Generate guide data
         const guideData = generateGuideJson(slug);
@@ -1244,7 +1334,10 @@ async function saveGuide() {
         const assetsHandle = await dataHandle.getDirectoryHandle('assets', { create: true });
         const slugAssetsHandle = await assetsHandle.getDirectoryHandle(slug, { create: true });
 
-        for (const img of state.images) {
+        // Collect all images: state.images + data URL images from editor HTML
+        const allImages = collectAllImages();
+
+        for (const img of allImages) {
             if (img.file) {
                 const imgHandle = await slugAssetsHandle.getFileHandle(img.name, { create: true });
                 const wr = await imgHandle.createWritable();
@@ -1253,11 +1346,18 @@ async function saveGuide() {
             }
         }
 
-        if (state.thumbnail && state.thumbnail.file) {
-            const thumbHandle = await slugAssetsHandle.getFileHandle(state.thumbnail.name, { create: true });
-            const wr = await thumbHandle.createWritable();
-            await wr.write(state.thumbnail.file);
-            await wr.close();
+        // Save thumbnail (handle draft-loaded thumbnails without File object)
+        if (state.thumbnail) {
+            let thumbFile = state.thumbnail.file;
+            if (!thumbFile && state.thumbnail.dataUrl) {
+                thumbFile = dataUrlToFile(state.thumbnail.dataUrl, state.thumbnail.name);
+            }
+            if (thumbFile) {
+                const thumbHandle = await slugAssetsHandle.getFileHandle(state.thumbnail.name, { create: true });
+                const wr = await thumbHandle.createWritable();
+                await wr.write(thumbFile);
+                await wr.close();
+            }
         }
 
         dom.filename.textContent = guideFilename;
@@ -1288,14 +1388,31 @@ function generateGuideJson(slug) {
         syncCodeToVisual();
     }
 
-    const thumbnailPath = state.thumbnail
-        ? `/apps/guides/data/assets/${slug}/${state.thumbnail.name}`
-        : '';
-
     // Convert editor HTML to clean HTML
     const contentKr = cleanHtmlContent(dom.editors.kr.innerHTML, slug);
     const contentEn = cleanHtmlContent(dom.editors.en.innerHTML, slug);
     const contentJp = cleanHtmlContent(dom.editors.jp.innerHTML, slug);
+
+    // Thumbnail: explicit > first content image > empty
+    let thumbnailPath = '';
+    if (state.thumbnail) {
+        thumbnailPath = `/apps/guides/data/assets/${slug}/${state.thumbnail.name}`;
+    } else {
+        // Auto-detect first image from content
+        for (const editor of [dom.editors.kr, dom.editors.en, dom.editors.jp]) {
+            const firstImg = editor.querySelector('img');
+            if (firstImg) {
+                if (firstImg.dataset.filename) {
+                    thumbnailPath = `/apps/guides/data/assets/${slug}/${firstImg.dataset.filename}`;
+                } else if (firstImg.dataset.originalPath) {
+                    thumbnailPath = firstImg.dataset.originalPath;
+                } else if (firstImg.src && !firstImg.src.startsWith('data:')) {
+                    thumbnailPath = firstImg.src;
+                }
+                break;
+            }
+        }
+    }
 
     return {
         id: slug,
@@ -1714,28 +1831,35 @@ function getNestedValue(obj, path) {
 }
 
 async function loadImageFromPath(imgPath, isThumbnail) {
-    if (!state.rootHandle) return null;
-
     try {
-        // Convert path like /apps/article/asset/damage.gif to relative path
-        let relativePath = imgPath;
-        if (relativePath.startsWith('/')) {
-            relativePath = relativePath.substring(1);
+        const filename = imgPath.split('/').pop();
+        let dataUrl = null;
+        let file = null;
+
+        // Try fetch first (works when served via HTTP)
+        try {
+            const response = await fetch(imgPath);
+            if (response.ok) {
+                const blob = await response.blob();
+                file = new File([blob], filename, { type: blob.type });
+                dataUrl = await readFileAsDataUrl(file);
+            }
+        } catch (e) {}
+
+        // Fall back to File System API
+        if (!dataUrl && state.rootHandle) {
+            let relativePath = imgPath.startsWith('/') ? imgPath.substring(1) : imgPath;
+            const parts = relativePath.split('/');
+            let handle = state.rootHandle;
+            for (let i = 0; i < parts.length - 1; i++) {
+                handle = await handle.getDirectoryHandle(parts[i]);
+            }
+            const fileHandle = await handle.getFileHandle(filename);
+            file = await fileHandle.getFile();
+            dataUrl = await readFileAsDataUrl(file);
         }
 
-        const parts = relativePath.split('/');
-        let handle = state.rootHandle;
-
-        // Navigate to the directory
-        for (let i = 0; i < parts.length - 1; i++) {
-            handle = await handle.getDirectoryHandle(parts[i]);
-        }
-
-        // Get the file
-        const filename = parts[parts.length - 1];
-        const fileHandle = await handle.getFileHandle(filename);
-        const file = await fileHandle.getFile();
-        const dataUrl = await readFileAsDataUrl(file);
+        if (!dataUrl) return null;
 
         if (isThumbnail) {
             state.thumbnail = { name: filename, dataUrl, file };
@@ -1744,7 +1868,6 @@ async function loadImageFromPath(imgPath, isThumbnail) {
             dom.thumbnailPlaceholder.classList.add('hidden');
             dom.thumbnailRemove.classList.remove('hidden');
         } else {
-            // Add to images list if not already there
             if (!state.images.find(img => img.name === filename)) {
                 state.images.push({ name: filename, dataUrl, file, originalPath: imgPath });
             }
@@ -1918,6 +2041,218 @@ function markdownToHtml(md, imageMap = {}) {
 }
 
 // ============================================
+// Legacy Post Migration
+// ============================================
+
+function convertMarkdownToGuide(content, filename) {
+    const match = content.match(/^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/);
+    if (!match) return null;
+
+    const frontmatter = match[1];
+    let body = match[2];
+
+    const getValue = (key) => {
+        const m = frontmatter.match(new RegExp(`^${key}:\\s*"?([^"\\n]*)"?`, 'm'));
+        return m ? m[1] : '';
+    };
+
+    const getArrayValue = (key) => {
+        const m = frontmatter.match(new RegExp(`^${key}:\\s*\\[([^\\]]+)\\]`, 'm'));
+        return m ? m[1] : '';
+    };
+
+    const author = getValue('author') || 'AbsolRoot';
+    const category = getArrayValue('categories') || 'Guide';
+    const tagsStr = getArrayValue('tags') || 'guide';
+
+    const dateMatch = frontmatter.match(/^date:\s*(\d{4}-\d{2}-\d{2})/m);
+    const date = dateMatch ? dateMatch[1] : new Date().toISOString().split('T')[0];
+
+    const slugMatch = filename.match(/\d{4}-\d{2}-\d{2}-(.+)\.md$/);
+    const slug = slugMatch ? slugMatch[1] : filename.replace('.md', '');
+
+    const titleKrMatch = frontmatter.match(/kr:\s*\n\s*title:\s*"([^"]*)"/);
+    const titleEnMatch = frontmatter.match(/en:\s*\n\s*title:\s*"([^"]*)"/);
+    const titleJpMatch = frontmatter.match(/jp:\s*\n\s*title:\s*"([^"]*)"/);
+
+    const titleKr = titleKrMatch ? titleKrMatch[1] : getValue('title');
+    const titleEn = titleEnMatch ? titleEnMatch[1] : '';
+    const titleJp = titleJpMatch ? titleJpMatch[1] : '';
+
+    const thumbnailMatch = frontmatter.match(/^thumbnail:\s*(.+)$/m);
+    const thumbnail = thumbnailMatch ? thumbnailMatch[1].trim() : '';
+
+    // Parse and replace template variables
+    const pageVars = parseFrontmatterVars(frontmatter);
+    body = body.replace(/\{\{\s*page\.([a-zA-Z0-9_.]+)\s*\}\}/g, (m, varPath) => {
+        const value = getNestedValue(pageVars, varPath);
+        return value !== undefined ? value : m;
+    });
+
+    // Extract per-language content
+    const extractContent = (lang) => {
+        const regex = new RegExp(`<div\\s+class="content-${lang}"[^>]*>([\\s\\S]*?)<\\/div>`, 'i');
+        const m = body.match(regex);
+        return m ? m[1].trim() : '';
+    };
+
+    let rawKr = extractContent('kr');
+    let rawEn = extractContent('en');
+    let rawJp = extractContent('jp');
+
+    // If no language wrappers, use entire body as Korean
+    if (!rawKr && !rawEn && !rawJp) {
+        rawKr = body.trim();
+    }
+
+    // Convert markdown to HTML and strip data-original-path attributes
+    const toHtml = (md) => {
+        let html = markdownToHtml(md);
+        return html.replace(/\s*data-original-path="[^"]*"/g, '');
+    };
+
+    const contentKr = toHtml(rawKr);
+    const contentEn = toHtml(rawEn);
+    const contentJp = toHtml(rawJp);
+
+    const excerpt = (html) => {
+        const temp = document.createElement('div');
+        temp.innerHTML = html;
+        const text = (temp.textContent || '').trim().replace(/\s+/g, ' ');
+        return text.length > 150 ? text.substring(0, 150) + '...' : text;
+    };
+
+    return {
+        id: slug,
+        titles: { kr: titleKr, en: titleEn, jp: titleJp },
+        excerpts: { kr: excerpt(contentKr), en: excerpt(contentEn), jp: excerpt(contentJp) },
+        category: category,
+        tags: tagsStr.split(',').map(t => t.trim()),
+        date: date,
+        author: author,
+        thumbnail: thumbnail,
+        contents: { kr: contentKr, en: contentEn, jp: contentJp }
+    };
+}
+
+async function convertAllLegacyPosts() {
+    if (!state.rootHandle) {
+        try {
+            state.rootHandle = await window.showDirectoryPicker({ mode: 'readwrite' });
+        } catch (e) {
+            if (e.name !== 'AbortError') toast('Failed to open folder', 'error');
+            return;
+        }
+    }
+
+    // Read all legacy posts
+    let posts = [];
+    try {
+        const postsHandle = await state.rootHandle.getDirectoryHandle('_posts');
+        for await (const entry of postsHandle.values()) {
+            if (entry.kind === 'file' && entry.name.endsWith('.md')) {
+                const file = await entry.getFile();
+                const content = await file.text();
+                posts.push({ filename: entry.name, content });
+            }
+        }
+    } catch (e) {
+        toast('Failed to read _posts directory', 'error');
+        return;
+    }
+
+    if (posts.length === 0) {
+        toast('No legacy posts found', 'error');
+        return;
+    }
+
+    if (!confirm(`Convert ${posts.length} legacy posts to guide format?`)) return;
+
+    toast(`Converting ${posts.length} posts...`);
+
+    try {
+        const appsHandle = await state.rootHandle.getDirectoryHandle('apps', { create: true });
+        const guidesHandle = await appsHandle.getDirectoryHandle('guides', { create: true });
+        const dataHandle = await guidesHandle.getDirectoryHandle('data', { create: true });
+        const guidesPostsHandle = await dataHandle.getDirectoryHandle('posts', { create: true });
+
+        let convertedCount = 0;
+        let failedCount = 0;
+        const newGuides = [];
+
+        for (const post of posts) {
+            try {
+                const guide = convertMarkdownToGuide(post.content, post.filename);
+                if (!guide) {
+                    console.warn(`Skipped (invalid format): ${post.filename}`);
+                    failedCount++;
+                    continue;
+                }
+
+                const guideFilename = `${guide.id}.json`;
+                const fileHandle = await guidesPostsHandle.getFileHandle(guideFilename, { create: true });
+                const writable = await fileHandle.createWritable();
+                await writable.write(JSON.stringify(guide, null, 2));
+                await writable.close();
+
+                newGuides.push({
+                    id: guide.id,
+                    titles: guide.titles,
+                    excerpts: guide.excerpts,
+                    category: guide.category,
+                    date: guide.date,
+                    author: guide.author,
+                    thumbnail: guide.thumbnail
+                });
+
+                convertedCount++;
+                console.log(`Converted: ${post.filename} → ${guideFilename}`);
+            } catch (e) {
+                console.error(`Failed: ${post.filename}`, e);
+                failedCount++;
+            }
+        }
+
+        // Merge with existing guides-list.json
+        let existingGuides = [];
+        try {
+            const listHandle = await dataHandle.getFileHandle('guides-list.json');
+            const file = await listHandle.getFile();
+            existingGuides = JSON.parse(await file.text());
+        } catch (e) {}
+
+        for (const g of newGuides) {
+            const idx = existingGuides.findIndex(eg => eg.id === g.id);
+            if (idx >= 0) {
+                existingGuides[idx] = g;
+            } else {
+                existingGuides.push(g);
+            }
+        }
+
+        existingGuides.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+        const listHandle = await dataHandle.getFileHandle('guides-list.json', { create: true });
+        const listWritable = await listHandle.createWritable();
+        await listWritable.write(JSON.stringify(existingGuides, null, 2));
+        await listWritable.close();
+
+        // Refresh guides list in sidebar
+        state.guides = existingGuides;
+        renderGuidesList();
+
+        const msg = failedCount > 0
+            ? `Converted ${convertedCount} posts (${failedCount} failed)`
+            : `Converted ${convertedCount} posts successfully!`;
+        toast(msg, failedCount > 0 ? 'error' : 'success');
+
+    } catch (e) {
+        console.error('Migration error:', e);
+        toast('Migration failed: ' + e.message, 'error');
+    }
+}
+
+// ============================================
 // Init
 // ============================================
 
@@ -1940,11 +2275,13 @@ function init() {
     // Load drafts from localStorage
     loadDrafts();
 
-    // Auto-load guides when folder is selected
+    // Auto-load guides on init + refresh button
     dom.btnRefreshGuides.onclick = loadGuidesList;
+    loadGuidesList();
 
     // Load posts (legacy)
     dom.btnLoadPosts.onclick = loadPostsList;
+    dom.btnConvertPosts.onclick = convertAllLegacyPosts;
 
     // Mode switch (visual/code)
     dom.modeBtns.forEach(btn => {
@@ -2020,9 +2357,77 @@ function init() {
             }
         };
 
-        // Drop images
-        editor.ondragover = (e) => e.preventDefault();
+        // Image drag-and-drop: make images draggable on mousedown
+        editor.addEventListener('mousedown', (e) => {
+            if (e.target.tagName === 'IMG') {
+                e.target.setAttribute('draggable', 'true');
+            }
+        });
+
+        editor.addEventListener('dragstart', (e) => {
+            if (e.target.tagName === 'IMG') {
+                state.draggedImage = e.target;
+                e.target.classList.add('dragging');
+                e.dataTransfer.effectAllowed = 'move';
+                e.dataTransfer.setData('text/plain', '');
+            }
+        });
+
+        editor.addEventListener('dragend', (e) => {
+            if (e.target.tagName === 'IMG') {
+                e.target.classList.remove('dragging');
+                e.target.removeAttribute('draggable');
+            }
+            state.draggedImage = null;
+            removeDropIndicator();
+        });
+
+        // Drag over: show drop indicator or allow external file drop
+        editor.ondragover = (e) => {
+            e.preventDefault();
+            if (state.draggedImage) {
+                e.dataTransfer.dropEffect = 'move';
+                updateDropIndicator(editor, e.clientY);
+            }
+        };
+
+        editor.ondragleave = (e) => {
+            if (!editor.contains(e.relatedTarget)) {
+                removeDropIndicator();
+            }
+        };
+
+        // Drop: handle internal image move or external file drop
         editor.ondrop = async (e) => {
+            // Internal image move
+            if (state.draggedImage) {
+                e.preventDefault();
+                e.stopPropagation();
+                const target = getDropTarget(editor, e.clientY);
+                const img = state.draggedImage;
+
+                // Wrap image in a <p> if it's a bare child
+                const wrapper = document.createElement('p');
+                const nextSib = img.nextSibling;
+                img.remove();
+                if (nextSib && nextSib.nodeName === 'BR') nextSib.remove();
+                wrapper.appendChild(img);
+
+                if (target) {
+                    editor.insertBefore(wrapper, target);
+                } else {
+                    editor.appendChild(wrapper);
+                }
+
+                img.classList.remove('dragging');
+                img.removeAttribute('draggable');
+                state.draggedImage = null;
+                removeDropIndicator();
+                setModified(true);
+                return;
+            }
+
+            // External file drop
             const files = Array.from(e.dataTransfer?.files || []).filter(f => f.type.startsWith('image/'));
             if (files.length) {
                 e.preventDefault();
@@ -2121,11 +2526,14 @@ function init() {
     const postsSection = document.getElementById('posts-section');
     if (postsHeader && postsSection) {
         postsHeader.onclick = (e) => {
-            if (e.target.id !== 'btn-load-posts') {
+            if (e.target.id !== 'btn-load-posts' && e.target.id !== 'btn-convert-posts') {
                 postsSection.classList.toggle('collapsed');
             }
         };
     }
+
+    // Auto-save every 30s if modified
+    setInterval(autoSave, 30000);
 
     console.log('Editor initialized');
 }

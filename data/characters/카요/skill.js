@@ -65,7 +65,7 @@ window.enCharacterSkillsData["카요"] = {
     "description": "Increase party's damage by 10.0%/11.0%/10.8%/11.8% for 3 turns. Increase damage by 1% for every 225 of Tomiyama's Attack (up to 4500/4950/5400/5850 of Attack). Also increase damage dealt to foes with an elemental ailment by 1.5 times and gain 2 Beat stacks."
   },
   "skill_highlight": {
-    "name": "Attribute Boost",
+    "name": "Stat Buff",
     "element": "패시브",
     "type": "패시브",
     "description": "Increase all allies' corresponding attribute stats by 15% of Phantom Thief's respective attributes."

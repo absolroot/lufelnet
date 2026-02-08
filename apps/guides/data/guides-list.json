@@ -1,5 +1,56 @@
 [
   {
+    "id": "untitled",
+    "titles": {
+      "kr": "새로운 테스트",
+      "en": "",
+      "jp": ""
+    },
+    "excerpts": {
+      "kr": "도레미파솔",
+      "en": "",
+      "jp": ""
+    },
+    "category": "Guide",
+    "date": "2026-02-08",
+    "author": "AbsolRoot",
+    "thumbnail": ""
+  },
+  {
+    "id": "Ailment-Acc",
+    "titles": {
+      "kr": "효과명중 적용 방식",
+      "en": "Ailment Accuracy Mechanism",
+      "jp": "状態異常命中率の計算方法"
+    },
+    "excerpts": {
+      "kr": "P5X에는 다양한 효과가 있고 확률을 가지고 있다. 대표적으로 토모코의 스킬3이 예시인데 LV12인 경우 81.3%의 기본확률로 적을 수면 상태에 빠뜨리는 확률을 지니고 있다. 그러나 토모코에게 효과 명중을 계시 카드를 통해 20% 넘게 부여해줘도 적이 100% 수면 ...",
+      "en": "P5X contains various effects that have chance rates. A representative example is Tomoko’s Skill 3 — at LV12, it has a base chance of 81.3% to inflict ...",
+      "jp": "P5Xには、確率を持つさまざまな効果が存在します。 代表的な例としては朋子のスキル3があり、LV12の場合、基礎確率81.3%で敵を睡眠状態にする確率を持っています。 しかし、朋子に啓示カードで20%以上の状態異常命中率（Ailment Accuracy）を付与しても、敵を100%睡眠状態にすること..."
+    },
+    "category": "Guide",
+    "date": "2025-08-08",
+    "author": "AbsolRoot\r",
+    "thumbnail": "/apps/article/asset/ailment acc.gif"
+  },
+  {
+    "id": "HIGHLIGHT",
+    "titles": {
+      "kr": "HIGHLIGHT 충전 메커니즘",
+      "en": "HIGHLIGHT Charge Mechanism",
+      "jp": "HIGHLIGHTチャージメカニズム"
+    },
+    "excerpts": {
+      "kr": "HIGHLIGHT 게이지 메커니즘은 가장 중요한 요소 중 하나인데도 인게임 내에서 설명이 되고 있지 않은 요소 중 하나다. 게이지 수치 각 괴도의 행동 1회당 기본 17% 게이지를 충전한다. 해당 행동에서 약점을 타격할 경우 21%(+4%)의 게이지를 충전한다. 해당 ...",
+      "en": "The HIGHLIGHT charge mechanism is one of the most important elements, yet it is not explained in-game. Gauge Values Each Thief action charges the gaug...",
+      "jp": "HIGHLIGHTチャージメカニズムは最も重要な要素の一つであるにもかかわらず、ゲーム内では説明されていない。 ゲージ数値 怪盗の行動1回ごとに基本17%ゲージがチャージされる。 弱点を突いた場合、21%（+4%）ゲージがチャージされる。 その行動によってONE MOREや追加行動が発動し、その中で..."
+    },
+    "category": "Guide",
+    "date": "2025-08-07",
+    "author": "AbsolRoot",
+    "thumbnail": "/apps/article/asset/highlight1.png"
+  },
+  {
     "id": "growth-material",
     "titles": {
       "kr": "육성 재료 요구량 총정리",
@@ -30,7 +81,58 @@
     },
     "category": "Guide",
     "date": "2025-07-15",
+    "author": "AbsolRoot\r",
+    "thumbnail": "/apps/article/asset/wonder_levelup.gif"
+  },
+  {
+    "id": "Growth-Material",
+    "titles": {
+      "kr": "육성 재료 요구량 총정리",
+      "en": "Summary of Growth Material Requirements",
+      "jp": "育成素材必要量まとめ"
+    },
+    "excerpts": {
+      "kr": "LEVEL (LV 80) Full Upgrade itemcount173436350392k Detail LV10 → 205--20 → 3012--30 → 40-6-40 → 50-10-50 → 60-18-60 → 70--1270 → 80--24 WEAPON (LV 80) ...",
+      "en": "LEVEL (LV 80) Full Upgrade itemcount173436350392k Detail LV10 → 205--20 → 3012--30 → 40-6-40 → 50-10-50 → 60-18-60 → 70--1270 → 80--24 WEAPON (LV 80) ...",
+      "jp": "LEVEL (LV 80) Full Upgrade itemcount173436350392k Detail LV10 → 205--20 → 3012--30 → 40-6-40 → 50-10-50 → 60-18-60 → 70--1270 → 80--24 WEAPON (LV 80) ..."
+    },
+    "category": "Guide",
+    "date": "2025-07-15",
+    "author": "AbsolRoot\r",
+    "thumbnail": "/apps/article/asset/growth_material/1.webp"
+  },
+  {
+    "id": "Revelation-Options",
+    "titles": {
+      "kr": "페르소나5X 계시 옵션에 대해",
+      "en": "About Persona 5X Revelation Stats",
+      "jp": "ペルソナ5X 啓示のオプションについて"
+    },
+    "excerpts": {
+      "kr": "모든 스탯 수치는 레벨 1부터 레벨 25까지 노란색 계시 카드를 기준으로 한다. 주 옵션 (Main Stats) 각 계시 위치 별로 나올 수 있는 주 옵션이 고정돼 있다. 위치옵션주 (Universe)공격력, 방어력일 (Sun)생명월 (Moon)공격력, 대미지 보너스,...",
+      "en": "Stats are based on the yellow revelation cards starting at Lv1 to Lv25 Main Stats Each revelation position has fixed main stats that can appear. Posit...",
+      "jp": "すべてのステータスの数値はレベル1からレベル25までの黄色の啓示カードを基準にしています。 メインステータス 各啓示のポジション別に出現可能な主属性が固定されています。 ポジションオプション主 (Universe)攻撃力、防御力旭 (Sun)HP月 (Moon)攻撃力、攻撃倍率+、HP、防御力、HP..."
+    },
+    "category": "Guide",
+    "date": "2025-07-11",
+    "author": "AbsolRoot\r",
+    "thumbnail": "/apps/article/asset/damage4-1.png"
+  },
+  {
+    "id": "damage-calc",
+    "titles": {
+      "kr": "페르소나5X 대미지 계산 공식에 대해",
+      "en": "About Persona 5X Damage Calculation",
+      "jp": "ペルソナ5X ダメージ計算"
+    },
+    "excerpts": {
+      "kr": "⚠️ 주의사항 > 본 문서는 게임 초기 중국 Q&A 내용을 기반으로 작성되었습니다. 대미지 계산의 방향성과 구조를 이해하는 데 참고하시되, 정확한 수치는 실제 게임과 차이가 발생할 수 있습니다. > 또한 정확한 대미지 계산을 시도하는 것은 권장하지 않습니다. 대부분의 ...",
+      "en": "⚠️ Important Notice > This document is based on early Chinese Q&A content from the game. While it provides reference for understanding the direction a...",
+      "jp": "⚠️ 注意事項 > 本ドキュメントは、ゲーム初期の中国Q&Aの内容に基づいて作成されました。ダメージ計算の方向性と構造を理解するための参考としてご利用ください。正確な数値は実際のゲームと差異が生じる可能性があります。 > また、正確なダメージ計算を試みることは推奨されません。ほとんどの値と要素はサー..."
+    },
+    "category": "Guide",
+    "date": "2025-07-10",
     "author": "AbsolRoot",
-    "thumbnail": "/apps/guides/data/assets/Wonder-Level/wonder_levelup.gif"
+    "thumbnail": "/apps/article/asset/damage-calc/damage.gif"
   }
 ]

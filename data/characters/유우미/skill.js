@@ -67,7 +67,7 @@ window.enCharacterSkillsData["유우미"] = {
     "description": "Spend all Cocktails to increase party's attribute damage based on the targeted ally's attribute for 2 turns.\nIncrease damage by 1% for every 230 of Yumi's Attack (up to 4600/5060/5980/6440of Attack). [Tailor-Made], [Standard], and [Basic] Cocktails will increase damage by an additional 120%, 100%, and 50% respectively.\nIncrease effects on targeted ally by 1.2 times. If 2 or more [Standard] or better Cocktails are spent, increase targeted ally's critical damage by 20.0%/22.0%/22.4%/24.4%."
   },
   "skill_highlight": {
-    "name": "Attribute Boost",
+    "name": "Stat Buff",
     "element": "패시브",
     "type": "패시브",
     "description": "Increases the corresponding attribute values of all deployed allies by 20% of the Phantom Thieves’ respective attributes."

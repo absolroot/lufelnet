@@ -1158,6 +1158,7 @@ export class TacticUI {
 
         const lang = this.getCurrentLang();
         const highlightNums = (text) => text.replace(/(\d+(?:\.\d+)?%?)/g, '<span class="tooltip-num">$1</span>');
+        const lvNote = '<br><span style="opacity:0.6;font-size:0.85em">※ LV6 / LV7 / LV8</span>';
 
         // 1. Check if it's a unique skill from persona data
         if (personaName) {
@@ -1175,7 +1176,7 @@ export class TacticUI {
                     else if (lang === 'jp' && unique.desc_jp) desc = unique.desc_jp;
                     else desc = unique.desc || '';
 
-                    if (desc) return highlightNums(desc);
+                    if (desc) return highlightNums(desc) + lvNote;
                 }
             }
         }
@@ -1188,7 +1189,7 @@ export class TacticUI {
             else if (lang === 'jp' && skillData.description_jp) desc = skillData.description_jp;
             else desc = skillData.description || '';
 
-            if (desc) return highlightNums(desc);
+            if (desc) return highlightNums(desc) + lvNote;
         }
 
         return '';

@@ -79,20 +79,123 @@
 }
 
 /* ============================================
+   Search Bar
+   ============================================ */
+
+.guides-search {
+    position: relative;
+    margin-bottom: var(--guide-space-md);
+}
+
+.guides-search-icon {
+    position: absolute;
+    left: var(--guide-space-md);
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    color: var(--guide-text-tertiary);
+    pointer-events: none;
+}
+
+.guides-search-input {
+    width: 100%;
+    padding: var(--guide-space-md) var(--guide-space-md) var(--guide-space-md) 44px;
+    background: var(--guide-bg-secondary);
+    border: 1px solid var(--guide-border-subtle);
+    border-radius: 10px;
+    color: var(--guide-text-primary);
+    font-size: var(--guide-text-base);
+    outline: none;
+    transition: border-color var(--guide-transition-fast), box-shadow var(--guide-transition-fast);
+    box-sizing: border-box;
+}
+
+.guides-search-input::placeholder {
+    color: var(--guide-text-muted);
+}
+
+.guides-search-input:focus {
+    border-color: var(--guide-accent-gold);
+    box-shadow: 0 0 0 3px var(--guide-accent-gold-glow);
+}
+
+/* ============================================
+   Category Tabs
+   ============================================ */
+
+.guides-category-tabs {
+    display: flex;
+    gap: var(--guide-space-sm);
+    margin-bottom: var(--guide-space-lg);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.guides-category-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.guides-tab {
+    padding: var(--guide-space-sm) var(--guide-space-md);
+    background: var(--guide-bg-secondary);
+    border: 1px solid var(--guide-border-subtle);
+    border-radius: 8px;
+    color: var(--guide-text-secondary);
+    font-size: var(--guide-text-sm);
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all var(--guide-transition-fast);
+}
+
+.guides-tab:hover {
+    background: var(--guide-bg-tertiary);
+    border-color: var(--guide-border-default);
+    color: var(--guide-text-primary);
+}
+
+.guides-tab.active {
+    background: var(--guide-accent-gold-dim);
+    border-color: var(--guide-accent-gold);
+    color: var(--guide-accent-gold);
+    font-weight: 600;
+}
+
+.guides-tab.active[data-cat="growth"] {
+    color: #5ccc7f;
+    border-color: #5ccc7f;
+    background: rgba(92, 204, 127, 0.12);
+}
+
+.guides-tab.active[data-cat="combat"] {
+    color: #e85c5c;
+    border-color: #e85c5c;
+    background: rgba(232, 92, 92, 0.12);
+}
+
+.guides-tab.active[data-cat="system"] {
+    color: #5c9eff;
+    border-color: #5c9eff;
+    background: rgba(92, 158, 255, 0.12);
+}
+
+/* ============================================
    Guide List - Card Grid
    ============================================ */
 
 .guides-container {
     max-width: 1280px;
     margin: 0 auto;
-    padding: var(--guide-space-lg) var(0);
+    padding: 0 0 32px;
 }
 
 .guides-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: var(--guide-space-lg);
-    margin-top: var(0);
+    grid-template-columns: 1fr;
+    gap: var(--guide-space-md);
+    margin-top: 0;
 }
 
 /* Guide Card */
@@ -100,90 +203,97 @@
     position: relative;
     background: var(--guide-bg-secondary);
     border: 1px solid var(--guide-border-subtle);
-    border-radius: 12px;
+    border-radius: 10px;
     overflow: hidden;
     text-decoration: none;
     color: inherit;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     transition:
-        transform var(--guide-transition-base),
+        background var(--guide-transition-base),
         border-color var(--guide-transition-base),
         box-shadow var(--guide-transition-base);
 }
 
-.guide-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        135deg,
-        var(--guide-accent-gold-glow) 0%,
-        transparent 50%
-    );
-    opacity: 0;
-    transition: opacity var(--guide-transition-base);
-    pointer-events: none;
-}
-
 .guide-card:hover {
-    transform: translateY(-4px);
+    background: var(--guide-bg-tertiary);
     border-color: var(--guide-border-default);
-    box-shadow: var(--guide-shadow-lg);
-}
-
-.guide-card:hover::before {
-    opacity: 1;
+    box-shadow: inset 3px 0 0 var(--guide-accent-gold), var(--guide-shadow-md);
 }
 
 .guide-card-thumbnail {
-    width: 100%;
-    aspect-ratio: 16/9;
+    width: 160px;
+    min-width: 160px;
+    aspect-ratio: 3/2;
     object-fit: cover;
     background: var(--guide-bg-primary);
-    border-bottom: 1px solid var(--guide-border-subtle);
+    border-right: 1px solid var(--guide-border-subtle);
 }
 
 .guide-card-content {
-    padding: var(--guide-space-lg);
+    padding: var(--guide-space-md) var(--guide-space-lg);
     display: flex;
     flex-direction: column;
+    justify-content: center;
     flex: 1;
+    min-width: 0;
 }
 
 .guide-card-category {
     display: inline-flex;
     align-items: center;
-    font-size: var(--guide-text-xs);
+    font-size: 10px;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.05em;
     color: var(--guide-accent-gold);
     background: var(--guide-accent-gold-dim);
-    padding: var(--guide-space-xs) var(--guide-space-sm);
-    border-radius: 4px;
-    margin-bottom: var(--guide-space-md);
+    padding: 2px 6px;
+    border-radius: 3px;
+    margin-bottom: var(--guide-space-xs);
     width: fit-content;
 }
 
+/* Category Color Variants */
+.guide-card-category.cat-growth,
+.guide-category.cat-growth {
+    color: #5ccc7f;
+    background: rgba(92, 204, 127, 0.12);
+}
+
+.guide-card-category.cat-combat,
+.guide-category.cat-combat {
+    color: #e85c5c;
+    background: rgba(232, 92, 92, 0.12);
+}
+
+.guide-card-category.cat-system,
+.guide-category.cat-system {
+    color: #5c9eff;
+    background: rgba(92, 158, 255, 0.12);
+}
+
 .guide-card-title {
-    font-size: var(--guide-text-lg);
+    font-size: var(--guide-text-base);
     font-weight: 600;
     color: var(--guide-text-primary);
     margin-top: 0;
-    margin-bottom: var(--guide-space-sm);
+    margin-bottom: var(--guide-space-xs);
     line-height: 1.4;
     letter-spacing: -0.01em;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .guide-card-excerpt {
     font-size: var(--guide-text-sm);
     color: var(--guide-text-secondary);
-    line-height: 1.6;
-    margin-bottom: var(--guide-space-md);
-    flex: 1;
+    line-height: 1.5;
+    margin: 0 0 var(--guide-space-sm);
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -191,11 +301,9 @@
 .guide-card-meta {
     display: flex;
     align-items: center;
-    gap: var(--guide-space-md);
+    gap: var(--guide-space-sm);
     font-size: var(--guide-text-xs);
     color: var(--guide-text-tertiary);
-    padding-top: var(--guide-space-md);
-    border-top: 1px solid var(--guide-border-subtle);
     margin-top: auto;
 }
 
@@ -690,10 +798,6 @@
    ============================================ */
 
 @media (max-width: 1024px) {
-    .guides-container {
-        padding: var(--guide-space-md);
-    }
-
     .guide-view-container {
         max-width: 100%;
         padding: var(--guide-space-md);
@@ -709,13 +813,36 @@
 }
 
 @media (max-width: 768px) {
-    .guides-grid {
-        grid-template-columns: 1fr;
-        gap: var(--guide-space-md);
+    .guide-card-thumbnail {
+        width: 100px;
+        min-width: 100px;
     }
 
     .guide-card-content {
-        padding: var(--guide-space-md);
+        padding: var(--guide-space-sm) var(--guide-space-md);
+    }
+
+    .guide-card-category {
+        font-size: 10px;
+        padding: 2px 6px;
+    }
+
+    .guide-card-title {
+        font-size: var(--guide-text-sm);
+        line-height: 1.3;
+    }
+
+    .guide-card-excerpt {
+        display: none;
+    }
+
+    .guide-card-meta {
+        font-size: 10px;
+    }
+
+    .guide-card-author::before {
+        width: 2px;
+        height: 2px;
     }
 
     .guide-article {

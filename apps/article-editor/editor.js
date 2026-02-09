@@ -11,10 +11,10 @@ const state = {
     currentMode: 'visual', // 'visual' or 'code'
     images: [],
     thumbnail: null,
+    existingThumbnailPath: null,
     modified: false,
     rootHandle: null,
     selectedImage: null,
-    posts: [],
     guides: [],
     drafts: [],
     currentDraftId: null,
@@ -32,9 +32,6 @@ const dom = {
     sidebar: $('sidebar'),
     btnMenu: $('btn-menu'),
     btnCloseSidebar: $('btn-close-sidebar'),
-    btnLoadPosts: $('btn-load-posts'),
-    btnConvertPosts: $('btn-convert-posts'),
-    postsList: $('posts-list'),
     guidesList: $('guides-list'),
     draftsList: $('drafts-list'),
     draftsCount: $('drafts-count'),
@@ -56,6 +53,9 @@ const dom = {
     metaAuthor: $('meta-author'),
     metaCategory: $('meta-category'),
     metaTags: $('meta-tags'),
+    excerptKr: $('excerpt-kr'),
+    excerptEn: $('excerpt-en'),
+    excerptJp: $('excerpt-jp'),
     thumbnailArea: $('thumbnail-area'),
     thumbnailPlaceholder: $('thumbnail-placeholder'),
     thumbnailPreview: $('thumbnail-preview'),
@@ -178,71 +178,27 @@ function toggleSidebar() {
 }
 
 // ============================================
-// Posts List
+// Categories (Auto-loaded)
 // ============================================
 
-async function loadPostsList() {
-    if (!state.rootHandle) {
-        try {
-            state.rootHandle = await window.showDirectoryPicker({ mode: 'readwrite' });
-        } catch (e) {
-            if (e.name !== 'AbortError') toast('Failed to open folder', 'error');
-            return;
-        }
-    }
-
+async function loadCategories() {
     try {
-        const postsHandle = await state.rootHandle.getDirectoryHandle('_posts');
-        state.posts = [];
-
-        for await (const entry of postsHandle.values()) {
-            if (entry.kind === 'file' && entry.name.endsWith('.md')) {
-                const file = await entry.getFile();
-                const content = await file.text();
-
-                // Extract title from frontmatter
-                const titleMatch = content.match(/^title:\s*"?([^"\n]+)"?/m);
-                const dateMatch = entry.name.match(/^(\d{4}-\d{2}-\d{2})/);
-
-                state.posts.push({
-                    filename: entry.name,
-                    title: titleMatch ? titleMatch[1] : entry.name,
-                    date: dateMatch ? dateMatch[1] : '',
-                    content: content
-                });
-            }
-        }
-
-        // Sort by date descending
-        state.posts.sort((a, b) => b.date.localeCompare(a.date));
-        renderPostsList();
-        toast(`Loaded ${state.posts.length} posts`);
-
+        const response = await fetch('../guides/data/categories.json?v=' + Date.now());
+        if (!response.ok) return;
+        const categories = await response.json();
+        const select = dom.metaCategory;
+        const currentVal = select.value;
+        select.innerHTML = '';
+        categories.forEach(cat => {
+            const opt = document.createElement('option');
+            opt.value = cat.id;
+            opt.textContent = `${cat.labels.kr} / ${cat.labels.en}`;
+            select.appendChild(opt);
+        });
+        if (currentVal) select.value = currentVal;
     } catch (e) {
-        console.error(e);
-        toast('Failed to load posts', 'error');
+        console.warn('Could not load categories:', e);
     }
-}
-
-function renderPostsList() {
-    if (state.posts.length === 0) {
-        dom.postsList.innerHTML = '<div class="posts-empty">No posts found</div>';
-        return;
-    }
-
-    dom.postsList.innerHTML = state.posts.map((post, i) => `
-        <div class="post-item" data-index="${i}">
-            <div class="post-item-title">${post.title}</div>
-            <div class="post-item-date">${post.date}</div>
-        </div>
-    `).join('');
-
-    dom.postsList.querySelectorAll('.post-item').forEach(item => {
-        item.onclick = async () => {
-            const idx = parseInt(item.dataset.index);
-            await loadMarkdown(state.posts[idx].content, state.posts[idx].filename);
-        };
-    });
 }
 
 // ============================================
@@ -276,15 +232,74 @@ function renderGuidesList() {
         <div class="post-item" data-id="${guide.id}">
             <div class="post-item-title">${guide.titles?.kr || guide.id}</div>
             <div class="post-item-date">${guide.date}</div>
+            <div class="post-item-actions">
+                <button class="post-item-action delete" data-id="${guide.id}" title="Delete guide">Del</button>
+            </div>
         </div>
     `).join('');
 
     dom.guidesList.querySelectorAll('.post-item').forEach(item => {
-        item.onclick = async () => {
+        item.onclick = async (e) => {
+            if (e.target.classList.contains('delete')) return;
             const id = item.dataset.id;
             await loadGuideById(id);
         };
     });
+
+    dom.guidesList.querySelectorAll('.post-item-action.delete').forEach(btn => {
+        btn.onclick = (e) => {
+            e.stopPropagation();
+            deleteGuide(btn.dataset.id);
+        };
+    });
+}
+
+async function deleteGuide(id) {
+    if (!confirm(`Delete guide "${id}"?`)) return;
+
+    if (!state.rootHandle) {
+        try {
+            state.rootHandle = await window.showDirectoryPicker({ mode: 'readwrite' });
+        } catch (e) {
+            if (e.name !== 'AbortError') toast('Failed to select folder', 'error');
+            return;
+        }
+    }
+
+    try {
+        const appsHandle = await state.rootHandle.getDirectoryHandle('apps');
+        const guidesHandle = await appsHandle.getDirectoryHandle('guides');
+        const dataHandle = await guidesHandle.getDirectoryHandle('data');
+        const postsHandle = await dataHandle.getDirectoryHandle('posts');
+
+        // Delete guide JSON file
+        try {
+            await postsHandle.removeEntry(`${id}.json`);
+        } catch (e) {
+            console.warn('Could not delete guide file:', e);
+        }
+
+        // Delete assets folder
+        try {
+            const assetsHandle = await dataHandle.getDirectoryHandle('assets');
+            await assetsHandle.removeEntry(id, { recursive: true });
+        } catch (e) {
+            console.warn('Could not delete assets folder:', e);
+        }
+
+        // Remove from guides-list.json
+        state.guides = state.guides.filter(g => g.id !== id);
+        const listHandle = await dataHandle.getFileHandle('guides-list.json', { create: true });
+        const writable = await listHandle.createWritable();
+        await writable.write(JSON.stringify(state.guides, null, 2));
+        await writable.close();
+
+        renderGuidesList();
+        toast(`Deleted "${id}"`, 'success');
+    } catch (e) {
+        console.error('Delete error:', e);
+        toast('Failed to delete guide', 'error');
+    }
 }
 
 async function loadGuideById(id) {
@@ -345,6 +360,11 @@ function saveDraft(silent = false) {
             kr: dom.editors.kr.innerHTML,
             en: dom.editors.en.innerHTML,
             jp: dom.editors.jp.innerHTML
+        },
+        excerpts: {
+            kr: dom.excerptKr.value || '',
+            en: dom.excerptEn.value || '',
+            jp: dom.excerptJp.value || ''
         },
         meta: {
             date: dom.metaDate.value,
@@ -452,8 +472,12 @@ function loadDraft(id) {
     dom.metaSlug.value = draft.slug || '';
     dom.metaDate.value = draft.meta?.date || new Date().toISOString().split('T')[0];
     dom.metaAuthor.value = draft.meta?.author || 'AbsolRoot';
-    dom.metaCategory.value = draft.meta?.category || 'Guide';
+    dom.metaCategory.value = draft.meta?.category || 'growth';
     dom.metaTags.value = draft.meta?.tags || 'guide';
+
+    dom.excerptKr.value = draft.excerpts?.kr || '';
+    dom.excerptEn.value = draft.excerpts?.en || '';
+    dom.excerptJp.value = draft.excerpts?.jp || '';
 
     dom.titleKr.value = draft.titles?.kr || '';
     dom.titleEn.value = draft.titles?.en || '';
@@ -579,6 +603,7 @@ function handleThumbnailUpload(file) {
 
 function removeThumbnail() {
     state.thumbnail = null;
+    state.existingThumbnailPath = null;
     dom.thumbnailPreview.src = '';
     dom.thumbnailPreview.classList.add('hidden');
     dom.thumbnailPlaceholder.classList.remove('hidden');
@@ -1006,8 +1031,11 @@ function newArticle() {
     dom.metaSlug.value = '';
     dom.metaDate.value = new Date().toISOString().split('T')[0];
     dom.metaAuthor.value = 'AbsolRoot';
-    dom.metaCategory.value = 'Guide';
+    dom.metaCategory.value = 'growth';
     dom.metaTags.value = 'guide';
+    dom.excerptKr.value = '';
+    dom.excerptEn.value = '';
+    dom.excerptJp.value = '';
     dom.titleKr.value = '';
     dom.titleEn.value = '';
     dom.titleJp.value = '';
@@ -1023,6 +1051,7 @@ function newArticle() {
 
     state.images = [];
     state.thumbnail = null;
+    state.existingThumbnailPath = null;
     state.currentDraftId = null;
     removeThumbnail();
     renderImageList();
@@ -1128,7 +1157,7 @@ function generateMarkdown() {
     const slug = dom.metaSlug.value || slugify(dom.titleKr.value || dom.titleEn.value || 'untitled');
     const date = dom.metaDate.value ? formatDate(dom.metaDate.value) : formatDate(new Date());
     const author = dom.metaAuthor.value || 'AbsolRoot';
-    const category = dom.metaCategory.value || 'Guide';
+    const category = dom.metaCategory.value || 'growth';
     const tags = dom.metaTags.value || 'guide';
     const titleKr = dom.titleKr.value || dom.editorTitle.textContent || '';
     const titleEn = dom.titleEn.value || '';
@@ -1393,10 +1422,12 @@ function generateGuideJson(slug) {
     const contentEn = cleanHtmlContent(dom.editors.en.innerHTML, slug);
     const contentJp = cleanHtmlContent(dom.editors.jp.innerHTML, slug);
 
-    // Thumbnail: explicit > first content image > empty
+    // Thumbnail: explicit upload > existing path > first content image > empty
     let thumbnailPath = '';
     if (state.thumbnail) {
         thumbnailPath = `/apps/guides/data/assets/${slug}/${state.thumbnail.name}`;
+    } else if (state.existingThumbnailPath) {
+        thumbnailPath = state.existingThumbnailPath;
     } else {
         // Auto-detect first image from content
         for (const editor of [dom.editors.kr, dom.editors.en, dom.editors.jp]) {
@@ -1407,7 +1438,11 @@ function generateGuideJson(slug) {
                 } else if (firstImg.dataset.originalPath) {
                     thumbnailPath = firstImg.dataset.originalPath;
                 } else if (firstImg.src && !firstImg.src.startsWith('data:')) {
-                    thumbnailPath = firstImg.src;
+                    try {
+                        thumbnailPath = new URL(firstImg.src).pathname;
+                    } catch {
+                        thumbnailPath = firstImg.src;
+                    }
                 }
                 break;
             }
@@ -1422,11 +1457,16 @@ function generateGuideJson(slug) {
             jp: dom.titleJp.value || ''
         },
         excerpts: {
-            kr: extractExcerpt(contentKr),
-            en: extractExcerpt(contentEn),
-            jp: extractExcerpt(contentJp)
+            kr: dom.excerptKr.value.trim() || extractExcerpt(contentKr),
+            en: dom.excerptEn.value.trim() || extractExcerpt(contentEn),
+            jp: dom.excerptJp.value.trim() || extractExcerpt(contentJp)
         },
-        category: dom.metaCategory.value || 'Guide',
+        searchContent: {
+            kr: extractPlainText(contentKr),
+            en: extractPlainText(contentEn),
+            jp: extractPlainText(contentJp)
+        },
+        category: dom.metaCategory.value || 'growth',
         tags: dom.metaTags.value ? dom.metaTags.value.split(',').map(t => t.trim()) : ['guide'],
         date: dom.metaDate.value || new Date().toISOString().split('T')[0],
         author: dom.metaAuthor.value || 'AbsolRoot',
@@ -1475,6 +1515,12 @@ function extractExcerpt(html, maxLength = 150) {
         : trimmed;
 }
 
+function extractPlainText(html) {
+    const temp = document.createElement('div');
+    temp.innerHTML = html;
+    return (temp.textContent || temp.innerText || '').trim().replace(/\s+/g, ' ');
+}
+
 async function updateGuidesList(dataHandle, guideData) {
     let guidesList = [];
 
@@ -1495,6 +1541,7 @@ async function updateGuidesList(dataHandle, guideData) {
         id: guideData.id,
         titles: guideData.titles,
         excerpts: guideData.excerpts,
+        searchContent: guideData.searchContent,
         category: guideData.category,
         date: guideData.date,
         author: guideData.author,
@@ -1550,8 +1597,13 @@ async function loadGuideJson(content, filename) {
         dom.metaSlug.value = guide.id || '';
         dom.metaDate.value = guide.date || new Date().toISOString().split('T')[0];
         dom.metaAuthor.value = guide.author || 'AbsolRoot';
-        dom.metaCategory.value = guide.category || 'Guide';
+        dom.metaCategory.value = guide.category || 'growth';
         dom.metaTags.value = Array.isArray(guide.tags) ? guide.tags.join(', ') : 'guide';
+
+        // Set excerpts
+        dom.excerptKr.value = guide.excerpts?.kr || '';
+        dom.excerptEn.value = guide.excerpts?.en || '';
+        dom.excerptJp.value = guide.excerpts?.jp || '';
 
         // Set titles
         dom.titleKr.value = guide.titles?.kr || '';
@@ -1562,6 +1614,7 @@ async function loadGuideJson(content, filename) {
         // Reset images
         state.images = [];
         state.thumbnail = null;
+        state.existingThumbnailPath = guide.thumbnail || null;
         removeThumbnail();
 
         // Load thumbnail
@@ -2041,218 +2094,6 @@ function markdownToHtml(md, imageMap = {}) {
 }
 
 // ============================================
-// Legacy Post Migration
-// ============================================
-
-function convertMarkdownToGuide(content, filename) {
-    const match = content.match(/^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/);
-    if (!match) return null;
-
-    const frontmatter = match[1];
-    let body = match[2];
-
-    const getValue = (key) => {
-        const m = frontmatter.match(new RegExp(`^${key}:\\s*"?([^"\\n]*)"?`, 'm'));
-        return m ? m[1] : '';
-    };
-
-    const getArrayValue = (key) => {
-        const m = frontmatter.match(new RegExp(`^${key}:\\s*\\[([^\\]]+)\\]`, 'm'));
-        return m ? m[1] : '';
-    };
-
-    const author = getValue('author') || 'AbsolRoot';
-    const category = getArrayValue('categories') || 'Guide';
-    const tagsStr = getArrayValue('tags') || 'guide';
-
-    const dateMatch = frontmatter.match(/^date:\s*(\d{4}-\d{2}-\d{2})/m);
-    const date = dateMatch ? dateMatch[1] : new Date().toISOString().split('T')[0];
-
-    const slugMatch = filename.match(/\d{4}-\d{2}-\d{2}-(.+)\.md$/);
-    const slug = slugMatch ? slugMatch[1] : filename.replace('.md', '');
-
-    const titleKrMatch = frontmatter.match(/kr:\s*\n\s*title:\s*"([^"]*)"/);
-    const titleEnMatch = frontmatter.match(/en:\s*\n\s*title:\s*"([^"]*)"/);
-    const titleJpMatch = frontmatter.match(/jp:\s*\n\s*title:\s*"([^"]*)"/);
-
-    const titleKr = titleKrMatch ? titleKrMatch[1] : getValue('title');
-    const titleEn = titleEnMatch ? titleEnMatch[1] : '';
-    const titleJp = titleJpMatch ? titleJpMatch[1] : '';
-
-    const thumbnailMatch = frontmatter.match(/^thumbnail:\s*(.+)$/m);
-    const thumbnail = thumbnailMatch ? thumbnailMatch[1].trim() : '';
-
-    // Parse and replace template variables
-    const pageVars = parseFrontmatterVars(frontmatter);
-    body = body.replace(/\{\{\s*page\.([a-zA-Z0-9_.]+)\s*\}\}/g, (m, varPath) => {
-        const value = getNestedValue(pageVars, varPath);
-        return value !== undefined ? value : m;
-    });
-
-    // Extract per-language content
-    const extractContent = (lang) => {
-        const regex = new RegExp(`<div\\s+class="content-${lang}"[^>]*>([\\s\\S]*?)<\\/div>`, 'i');
-        const m = body.match(regex);
-        return m ? m[1].trim() : '';
-    };
-
-    let rawKr = extractContent('kr');
-    let rawEn = extractContent('en');
-    let rawJp = extractContent('jp');
-
-    // If no language wrappers, use entire body as Korean
-    if (!rawKr && !rawEn && !rawJp) {
-        rawKr = body.trim();
-    }
-
-    // Convert markdown to HTML and strip data-original-path attributes
-    const toHtml = (md) => {
-        let html = markdownToHtml(md);
-        return html.replace(/\s*data-original-path="[^"]*"/g, '');
-    };
-
-    const contentKr = toHtml(rawKr);
-    const contentEn = toHtml(rawEn);
-    const contentJp = toHtml(rawJp);
-
-    const excerpt = (html) => {
-        const temp = document.createElement('div');
-        temp.innerHTML = html;
-        const text = (temp.textContent || '').trim().replace(/\s+/g, ' ');
-        return text.length > 150 ? text.substring(0, 150) + '...' : text;
-    };
-
-    return {
-        id: slug,
-        titles: { kr: titleKr, en: titleEn, jp: titleJp },
-        excerpts: { kr: excerpt(contentKr), en: excerpt(contentEn), jp: excerpt(contentJp) },
-        category: category,
-        tags: tagsStr.split(',').map(t => t.trim()),
-        date: date,
-        author: author,
-        thumbnail: thumbnail,
-        contents: { kr: contentKr, en: contentEn, jp: contentJp }
-    };
-}
-
-async function convertAllLegacyPosts() {
-    if (!state.rootHandle) {
-        try {
-            state.rootHandle = await window.showDirectoryPicker({ mode: 'readwrite' });
-        } catch (e) {
-            if (e.name !== 'AbortError') toast('Failed to open folder', 'error');
-            return;
-        }
-    }
-
-    // Read all legacy posts
-    let posts = [];
-    try {
-        const postsHandle = await state.rootHandle.getDirectoryHandle('_posts');
-        for await (const entry of postsHandle.values()) {
-            if (entry.kind === 'file' && entry.name.endsWith('.md')) {
-                const file = await entry.getFile();
-                const content = await file.text();
-                posts.push({ filename: entry.name, content });
-            }
-        }
-    } catch (e) {
-        toast('Failed to read _posts directory', 'error');
-        return;
-    }
-
-    if (posts.length === 0) {
-        toast('No legacy posts found', 'error');
-        return;
-    }
-
-    if (!confirm(`Convert ${posts.length} legacy posts to guide format?`)) return;
-
-    toast(`Converting ${posts.length} posts...`);
-
-    try {
-        const appsHandle = await state.rootHandle.getDirectoryHandle('apps', { create: true });
-        const guidesHandle = await appsHandle.getDirectoryHandle('guides', { create: true });
-        const dataHandle = await guidesHandle.getDirectoryHandle('data', { create: true });
-        const guidesPostsHandle = await dataHandle.getDirectoryHandle('posts', { create: true });
-
-        let convertedCount = 0;
-        let failedCount = 0;
-        const newGuides = [];
-
-        for (const post of posts) {
-            try {
-                const guide = convertMarkdownToGuide(post.content, post.filename);
-                if (!guide) {
-                    console.warn(`Skipped (invalid format): ${post.filename}`);
-                    failedCount++;
-                    continue;
-                }
-
-                const guideFilename = `${guide.id}.json`;
-                const fileHandle = await guidesPostsHandle.getFileHandle(guideFilename, { create: true });
-                const writable = await fileHandle.createWritable();
-                await writable.write(JSON.stringify(guide, null, 2));
-                await writable.close();
-
-                newGuides.push({
-                    id: guide.id,
-                    titles: guide.titles,
-                    excerpts: guide.excerpts,
-                    category: guide.category,
-                    date: guide.date,
-                    author: guide.author,
-                    thumbnail: guide.thumbnail
-                });
-
-                convertedCount++;
-                console.log(`Converted: ${post.filename} → ${guideFilename}`);
-            } catch (e) {
-                console.error(`Failed: ${post.filename}`, e);
-                failedCount++;
-            }
-        }
-
-        // Merge with existing guides-list.json
-        let existingGuides = [];
-        try {
-            const listHandle = await dataHandle.getFileHandle('guides-list.json');
-            const file = await listHandle.getFile();
-            existingGuides = JSON.parse(await file.text());
-        } catch (e) {}
-
-        for (const g of newGuides) {
-            const idx = existingGuides.findIndex(eg => eg.id === g.id);
-            if (idx >= 0) {
-                existingGuides[idx] = g;
-            } else {
-                existingGuides.push(g);
-            }
-        }
-
-        existingGuides.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-        const listHandle = await dataHandle.getFileHandle('guides-list.json', { create: true });
-        const listWritable = await listHandle.createWritable();
-        await listWritable.write(JSON.stringify(existingGuides, null, 2));
-        await listWritable.close();
-
-        // Refresh guides list in sidebar
-        state.guides = existingGuides;
-        renderGuidesList();
-
-        const msg = failedCount > 0
-            ? `Converted ${convertedCount} posts (${failedCount} failed)`
-            : `Converted ${convertedCount} posts successfully!`;
-        toast(msg, failedCount > 0 ? 'error' : 'success');
-
-    } catch (e) {
-        console.error('Migration error:', e);
-        toast('Migration failed: ' + e.message, 'error');
-    }
-}
-
-// ============================================
 // Init
 // ============================================
 
@@ -2275,13 +2116,10 @@ function init() {
     // Load drafts from localStorage
     loadDrafts();
 
-    // Auto-load guides on init + refresh button
+    // Load categories and auto-load guides on init
+    loadCategories();
     dom.btnRefreshGuides.onclick = loadGuidesList;
     loadGuidesList();
-
-    // Load posts (legacy)
-    dom.btnLoadPosts.onclick = loadPostsList;
-    dom.btnConvertPosts.onclick = convertAllLegacyPosts;
 
     // Mode switch (visual/code)
     dom.modeBtns.forEach(btn => {
@@ -2520,17 +2358,6 @@ function init() {
             saveGuide();
         }
     };
-
-    // Collapsible posts section
-    const postsHeader = document.getElementById('posts-section-header');
-    const postsSection = document.getElementById('posts-section');
-    if (postsHeader && postsSection) {
-        postsHeader.onclick = (e) => {
-            if (e.target.id !== 'btn-load-posts' && e.target.id !== 'btn-convert-posts') {
-                postsSection.classList.toggle('collapsed');
-            }
-        };
-    }
 
     // Auto-save every 30s if modified
     setInterval(autoSave, 30000);

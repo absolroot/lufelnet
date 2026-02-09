@@ -50,20 +50,6 @@
                     </div>
                 </div>
 
-                <!-- Posts List (Manual Load) -->
-                <div class="sidebar-section collapsed" id="posts-section">
-                    <div class="section-header clickable" id="posts-section-header">
-                        <h3>Legacy Posts</h3>
-                        <div style="display:flex;gap:4px;">
-                            <button class="btn-small" id="btn-load-posts">Load</button>
-                            <button class="btn-small" id="btn-convert-posts" title="Convert all legacy posts to guide format">Migrate</button>
-                        </div>
-                    </div>
-                    <div class="posts-list" id="posts-list">
-                        <div class="posts-empty">Click "Load" to browse posts</div>
-                    </div>
-                </div>
-
                 <!-- Metadata -->
                 <div class="sidebar-section">
                     <h3>Metadata</h3>
@@ -81,7 +67,11 @@
                     </div>
                     <div class="field">
                         <label>Category</label>
-                        <input type="text" id="meta-category" value="Guide">
+                        <select id="meta-category">
+                            <option value="growth">육성 / Growth</option>
+                            <option value="combat">전투 / Combat</option>
+                            <option value="system">시스템 / System</option>
+                        </select>
                     </div>
                     <div class="field">
                         <label>Tags</label>
@@ -103,6 +93,23 @@
                     <div class="field">
                         <label><span class="lang-badge jp">JP</span> Japanese</label>
                         <input type="text" id="title-jp" placeholder="Japanese title">
+                    </div>
+                </div>
+
+                <!-- Excerpts -->
+                <div class="sidebar-section">
+                    <h3>Excerpts (per language)</h3>
+                    <div class="field">
+                        <label><span class="lang-badge kr">KR</span> Korean</label>
+                        <textarea id="excerpt-kr" rows="2" placeholder="Auto-generated if empty"></textarea>
+                    </div>
+                    <div class="field">
+                        <label><span class="lang-badge en">EN</span> English</label>
+                        <textarea id="excerpt-en" rows="2" placeholder="Auto-generated if empty"></textarea>
+                    </div>
+                    <div class="field">
+                        <label><span class="lang-badge jp">JP</span> Japanese</label>
+                        <textarea id="excerpt-jp" rows="2" placeholder="Auto-generated if empty"></textarea>
                     </div>
                 </div>
 

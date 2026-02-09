@@ -64,7 +64,11 @@
   {% endif %}
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ site.url }}{{ current_url }}{{ canonical_params }}">
-  <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/assets/img/home/seo.png">
+  {% if page.image %}
+  <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}{{ page.image }}">
+  {% else %}
+  <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/assets/img/logo/lufel.png">
+  {% endif %}
   <meta property="og:site_name" content="P5X Lufelnet">
   {% if page.language == 'kr' %}
   <meta property="og:locale" content="ko_KR">

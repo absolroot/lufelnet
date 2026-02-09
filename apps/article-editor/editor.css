@@ -205,7 +205,8 @@ body {
     margin-bottom: 4px;
 }
 
-.field input {
+.field input,
+.field select {
     width: 100%;
     padding: 8px 10px;
     background: var(--bg);
@@ -216,12 +217,33 @@ body {
     transition: border-color 0.15s;
 }
 
-.field input:focus {
+.field select {
+    cursor: pointer;
+    appearance: auto;
+}
+
+.field textarea {
+    width: 100%;
+    padding: 8px 10px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 13px;
+    color: var(--text);
+    font-family: inherit;
+    resize: vertical;
+    transition: border-color 0.15s;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
     outline: none;
     border-color: var(--accent);
 }
 
-.field input::placeholder {
+.field input::placeholder,
+.field textarea::placeholder {
     color: var(--text-muted);
 }
 

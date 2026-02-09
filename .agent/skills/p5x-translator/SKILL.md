@@ -46,7 +46,7 @@ description: P5X(페르소나 5더 팬텀 X)의 한국어 게임 데이터를 �
 
 4. **예시**:
    - 아래 경로의 예시 파일들을 참조하여 번역 스타일을 학습하세요. 이외에도 동일한 구조를 가진 파일이 있을 경우 학습합니다.
-   - 아티클: examples/2025-08-07-HIGHLIGHT.md
+   - 아티클/가이드: examples/posts/* 
    - 스킬: examples/skill.js ~ skill4.js (element, type 유지 확인)
    - 의식: examples/ritual.js ~ ritual4.js 
    - 무기/리뷰: examples/weapon.js, examples/review.js 등

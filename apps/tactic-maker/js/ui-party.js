@@ -1183,34 +1183,30 @@ export class PartyUI {
                 // For main, use the passed currentSubRevForMain parameter
                 const tooltip = getRevelationTooltip(selectedValue, kind, currentSubRevForMain);
                 if (tooltip) {
-                    // Escape quotes for HTML attribute
-                    button.setAttribute('data-tooltip', tooltip.replace(/"/g, '&quot;'));
+                    button.setAttribute('data-tooltip', tooltip);
                     dropdown.dataset.currentValue = selectedValue; // Store for main tooltip lookup
-                    // Bind tooltip for desktop hover (only if viewport > 1200)
-                    // Use mouseenter/mouseleave directly to avoid cloneNode which removes click handlers
-                    if (window.innerWidth > 1200) {
-                        const floating = document.getElementById('cursor-tooltip') || (() => {
-                            const el = document.createElement('div');
-                            el.id = 'cursor-tooltip';
-                            el.className = 'cursor-tooltip';
-                            document.body.appendChild(el);
-                            return el;
-                        })();
-                        button.addEventListener('mouseenter', function(e) {
-                            const content = this.getAttribute('data-tooltip');
-                            if (content) { floating.innerHTML = content; floating.style.display = 'block'; }
-                        });
-                        button.addEventListener('mousemove', function(e) {
-                            const offset = 16;
-                            let x = e.clientX + offset, y = e.clientY + offset;
-                            const vw = window.innerWidth, vh = window.innerHeight;
-                            const ttW = floating.offsetWidth, ttH = floating.offsetHeight;
-                            if (x + ttW + 8 > vw) x = e.clientX - ttW - offset;
-                            if (y + ttH + 8 > vh) y = e.clientY - ttH - offset;
-                            floating.style.left = x + 'px'; floating.style.top = y + 'px';
-                        });
-                        button.addEventListener('mouseleave', function() { floating.style.display = 'none'; });
-                    }
+                    // Bind tooltip hover directly (avoid cloneNode which removes click handlers)
+                    const floating = document.getElementById('cursor-tooltip') || (() => {
+                        const el = document.createElement('div');
+                        el.id = 'cursor-tooltip';
+                        el.className = 'cursor-tooltip';
+                        document.body.appendChild(el);
+                        return el;
+                    })();
+                    button.addEventListener('mouseenter', function(e) {
+                        const content = this.getAttribute('data-tooltip');
+                        if (content) { floating.innerHTML = content; floating.style.display = 'block'; }
+                    });
+                    button.addEventListener('mousemove', function(e) {
+                        const offset = 16;
+                        let x = e.clientX + offset, y = e.clientY + offset;
+                        const vw = window.innerWidth, vh = window.innerHeight;
+                        const ttW = floating.offsetWidth, ttH = floating.offsetHeight;
+                        if (x + ttW + 8 > vw) x = e.clientX - ttW - offset;
+                        if (y + ttH + 8 > vh) y = e.clientY - ttH - offset;
+                        floating.style.left = x + 'px'; floating.style.top = y + 'px';
+                    });
+                    button.addEventListener('mouseleave', function() { floating.style.display = 'none'; });
                 } else {
                     button.removeAttribute('data-tooltip');
                     dropdown.dataset.currentValue = selectedValue;

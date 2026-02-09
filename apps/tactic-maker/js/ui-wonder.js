@@ -68,46 +68,58 @@ export class WonderUI extends EventEmitter {
             return parts[Math.min(Math.max(modLevel, 0), 6)] || parts[0];
         });
 
-        // Add lightning_stamp effect if stampLevel >= 1
-        if (stampLevel >= 1 && weaponData.lightning_stamp && Array.isArray(weaponData.lightning_stamp) && weaponData.lightning_stamp.length > 0) {
-            const stamp = weaponData.lightning_stamp[stampIndex] || weaponData.lightning_stamp[0];
-            let stampName = '';
-            let stampEffect = '';
-
-            if (lang === 'en' && stamp.name_en) {
-                stampName = stamp.name_en;
-            } else if (lang === 'jp' && stamp.name_jp) {
-                stampName = stamp.name_jp;
-            } else {
-                stampName = stamp.name || '';
-            }
-
-            if (lang === 'en' && stamp.effect_en) {
-                stampEffect = stamp.effect_en;
-            } else if (lang === 'jp' && stamp.effect_jp) {
-                stampEffect = stamp.effect_jp;
-            } else {
-                stampEffect = stamp.effect || '';
-            }
-
-            // Replace 4-split values with the value at stampLevel index (1-4)
-            const fourSplitReplace = /(\d+(?:\.\d+)?%?)(?:\s*\/\s*(\d+(?:\.\d+)?%?)){3}/g;
-            stampEffect = stampEffect.replace(fourSplitReplace, (match) => {
-                const parts = match.split('/').map(x => x.trim());
-                // stampLevel is 1-4, array index is 0-3
-                return parts[Math.min(Math.max(stampLevel - 1, 0), 3)] || parts[0];
-            });
-
-            if (stampName && stampEffect) {
-                effect += `<br><br><b>${stampName}</b><br>${stampEffect}`;
-            }
-        }
-
         // Highlight numbers
         effect = effect.replace(/(\d+(?:\.\d+)?%?)/g, '<span class="tooltip-num">$1</span>');
 
         // Don't escape HTML - tooltip.js uses innerHTML
         return effect.replace(/\n/g, '<br>');
+    }
+
+    /**
+     * Get stamp tooltip text based on current language and stamp level
+     */
+    getStampTooltip(weaponData, stampLevel = 0, stampIndex = 0) {
+        if (!weaponData || !stampLevel || stampLevel < 1) return '';
+        if (!weaponData.lightning_stamp || !Array.isArray(weaponData.lightning_stamp) || weaponData.lightning_stamp.length === 0) return '';
+
+        const lang = this.getCurrentLang();
+        const stamp = weaponData.lightning_stamp[stampIndex] || weaponData.lightning_stamp[0];
+        if (!stamp) return '';
+
+        let stampName = '';
+        let stampEffect = '';
+
+        if (lang === 'en' && stamp.name_en) {
+            stampName = stamp.name_en;
+        } else if (lang === 'jp' && stamp.name_jp) {
+            stampName = stamp.name_jp;
+        } else {
+            stampName = stamp.name || '';
+        }
+
+        if (lang === 'en' && stamp.effect_en) {
+            stampEffect = stamp.effect_en;
+        } else if (lang === 'jp' && stamp.effect_jp) {
+            stampEffect = stamp.effect_jp;
+        } else {
+            stampEffect = stamp.effect || '';
+        }
+
+        // Replace 4-split values with the value at stampLevel index (1-4)
+        const fourSplitReplace = /(\d+(?:\.\d+)?%?)(?:\s*\/\s*(\d+(?:\.\d+)?%?)){3}/g;
+        stampEffect = stampEffect.replace(fourSplitReplace, (match) => {
+            const parts = match.split('/').map(x => x.trim());
+            return parts[Math.min(Math.max(stampLevel - 1, 0), 3)] || parts[0];
+        });
+
+        // Highlight numbers
+        stampEffect = stampEffect.replace(/(\d+(?:\.\d+)?%?)/g, '<span class="tooltip-num">$1</span>');
+
+        let result = '';
+        if (stampName) result += `<b>${stampName}</b><br>`;
+        if (stampEffect) result += stampEffect.replace(/\n/g, '<br>');
+
+        return result;
     }
 
     /**
@@ -426,7 +438,7 @@ export class WonderUI extends EventEmitter {
                     </div>
                     ${hasLightningStamp ? `
                     <div class="revelation-dropdown stamp-type-dropdown">
-                        <button type="button" class="revelation-button" style="width: 100%; justify-content: flex-start;">
+                        <button type="button" class="revelation-button" style="width: 100%; justify-content: flex-start;" ${(hasValidStampIndex && currentStamp >= 1 && currentStampData) ? `data-tooltip="${this.getStampTooltip(weaponData, currentStamp, currentStampIndex).replace(/"/g, '&quot;')}"` : ''}>
                             ${(hasValidStampIndex && currentStampData && currentStampData.stamp_img) ? `<img class="revelation-icon" src="${this.baseUrl}/assets/img/wonder-weapon/${currentStampData.stamp_img}" onerror="this.style.display='none'">` : ''}
                             <span>${hasValidStampIndex ? getStampDisplayName(currentStampData) : '-'}</span>
                         </button>
@@ -476,7 +488,7 @@ export class WonderUI extends EventEmitter {
                     const currentStampIndex = config.weaponStampIndex !== undefined ? config.weaponStampIndex : 0;
 
                     if (weaponData && weaponData.effect) {
-                        button.setAttribute('data-tooltip', this.getWeaponTooltip(weaponData, newMod, currentStamp, currentStampIndex).replace(/"/g, '&quot;'));
+                        button.setAttribute('data-tooltip', this.getWeaponTooltip(weaponData, newMod, currentStamp, currentStampIndex));
                     }
                 }
             });
@@ -502,7 +514,7 @@ export class WonderUI extends EventEmitter {
                     const currentStampIndex = config.weaponStampIndex !== undefined ? config.weaponStampIndex : 0;
 
                     if (weaponData && weaponData.effect) {
-                        button.setAttribute('data-tooltip', this.getWeaponTooltip(weaponData, currentMod, newStamp, currentStampIndex).replace(/"/g, '&quot;'));
+                        button.setAttribute('data-tooltip', this.getWeaponTooltip(weaponData, currentMod, newStamp, currentStampIndex));
                     }
                 }
 
@@ -517,8 +529,8 @@ export class WonderUI extends EventEmitter {
             const button = wonderWeaponDropdown.querySelector('.revelation-button');
             const menu = wonderWeaponDropdown.querySelector('.revelation-menu');
             
-            // Bind tooltip for desktop hover directly (avoid bindTooltipElement which clones nodes)
-            if (window.innerWidth > 1200 && button && button.hasAttribute('data-tooltip')) {
+            // Bind tooltip hover directly (avoid bindTooltipElement which clones nodes)
+            if (button && button.hasAttribute('data-tooltip')) {
                 const floating = document.getElementById('cursor-tooltip') || (() => {
                     const el = document.createElement('div');
                     el.id = 'cursor-tooltip';
@@ -703,6 +715,31 @@ export class WonderUI extends EventEmitter {
                     const isOpen = stampTypeDropdown.classList.toggle('open');
                     stampButton.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
                 };
+            }
+
+            // Bind tooltip for stamp type dropdown
+            if (stampButton && stampButton.hasAttribute('data-tooltip')) {
+                const floating = document.getElementById('cursor-tooltip') || (() => {
+                    const el = document.createElement('div');
+                    el.id = 'cursor-tooltip';
+                    el.className = 'cursor-tooltip';
+                    document.body.appendChild(el);
+                    return el;
+                })();
+                stampButton.addEventListener('mouseenter', function(e) {
+                    const content = this.getAttribute('data-tooltip');
+                    if (content) { floating.innerHTML = content; floating.style.display = 'block'; }
+                });
+                stampButton.addEventListener('mousemove', function(e) {
+                    const offset = 16;
+                    let x = e.clientX + offset, y = e.clientY + offset;
+                    const vw = window.innerWidth, vh = window.innerHeight;
+                    const ttW = floating.offsetWidth, ttH = floating.offsetHeight;
+                    if (x + ttW + 8 > vw) x = e.clientX - ttW - offset;
+                    if (y + ttH + 8 > vh) y = e.clientY - ttH - offset;
+                    floating.style.left = x + 'px'; floating.style.top = y + 'px';
+                });
+                stampButton.addEventListener('mouseleave', function() { floating.style.display = 'none'; });
             }
         }
     }
@@ -940,7 +977,7 @@ export class WonderUI extends EventEmitter {
             // Add tooltip if description exists
             const tooltip = this.getSkillTooltip(value, personaName);
             if (tooltip) {
-                btn.setAttribute('data-tooltip', tooltip.replace(/"/g, '&quot;'));
+                btn.setAttribute('data-tooltip', tooltip);
             }
         };
 
@@ -1092,29 +1129,27 @@ export class WonderUI extends EventEmitter {
 
         // Bind tooltips for skill dropdowns
         this.container.querySelectorAll('.wp-skill-dropdown .revelation-button[data-tooltip], .wp-unique-skill .revelation-button[data-tooltip]').forEach(btn => {
-            if (window.innerWidth > 1200) {
-                const floating = document.getElementById('cursor-tooltip') || (() => {
-                    const el = document.createElement('div');
-                    el.id = 'cursor-tooltip';
-                    el.className = 'cursor-tooltip';
-                    document.body.appendChild(el);
-                    return el;
-                })();
-                btn.addEventListener('mouseenter', function(e) {
-                    const content = this.getAttribute('data-tooltip');
-                    if (content) { floating.innerHTML = content; floating.style.display = 'block'; }
-                });
-                btn.addEventListener('mousemove', function(e) {
-                    const offset = 16;
-                    let x = e.clientX + offset, y = e.clientY + offset;
-                    const vw = window.innerWidth, vh = window.innerHeight;
-                    const ttW = floating.offsetWidth, ttH = floating.offsetHeight;
-                    if (x + ttW + 8 > vw) x = e.clientX - ttW - offset;
-                    if (y + ttH + 8 > vh) y = e.clientY - ttH - offset;
-                    floating.style.left = x + 'px'; floating.style.top = y + 'px';
-                });
-                btn.addEventListener('mouseleave', function() { floating.style.display = 'none'; });
-            }
+            const floating = document.getElementById('cursor-tooltip') || (() => {
+                const el = document.createElement('div');
+                el.id = 'cursor-tooltip';
+                el.className = 'cursor-tooltip';
+                document.body.appendChild(el);
+                return el;
+            })();
+            btn.addEventListener('mouseenter', function(e) {
+                const content = this.getAttribute('data-tooltip');
+                if (content) { floating.innerHTML = content; floating.style.display = 'block'; }
+            });
+            btn.addEventListener('mousemove', function(e) {
+                const offset = 16;
+                let x = e.clientX + offset, y = e.clientY + offset;
+                const vw = window.innerWidth, vh = window.innerHeight;
+                const ttW = floating.offsetWidth, ttH = floating.offsetHeight;
+                if (x + ttW + 8 > vw) x = e.clientX - ttW - offset;
+                if (y + ttH + 8 > vh) y = e.clientY - ttH - offset;
+                floating.style.left = x + 'px'; floating.style.top = y + 'px';
+            });
+            btn.addEventListener('mouseleave', function() { floating.style.display = 'none'; });
         });
 
         // Bind tooltips for persona passive skills

@@ -23,20 +23,20 @@ image: /assets/img/home/seo.png
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-    Navigation.load('article');
-    VersionChecker.check();
+    document.addEventListener('DOMContentLoaded', () => {
+        Navigation.load('article');
+        VersionChecker.check();
 
-    const guideId = Guides.getGuideIdFromUrl();
-    if (guideId) {
-        Guides.loadGuide(guideId);
-    } else {
-        document.getElementById('guide-view-container').innerHTML = `
+        const guideId = Guides.getGuideIdFromUrl();
+        if (guideId) {
+            Guides.loadGuide(guideId);
+        } else {
+            document.getElementById('guide-view-container').innerHTML = `
             <div class="guides-empty">
                 <div class="guides-empty-icon">404</div>
                 <div class="guides-empty-text">Guide not found</div>
             </div>
         `;
-    }
-});
+        }
+    });
 </script>

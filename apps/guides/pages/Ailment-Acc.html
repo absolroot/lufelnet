@@ -1,0 +1,29 @@
+---
+layout: default
+custom_css: []
+custom_js: []
+permalink: /article/Ailment-Acc/
+language: kr
+title: 효과명중 적용 방식 - 루페르넷
+description: 페르소나5 더 팬텀 X 효과명중 적용 방식 가이드
+image: /apps/guides/data/assets/Ailment-Acc/ailment acc.gif
+---
+
+<head>
+    <link rel="stylesheet" href="/apps/guides/guides.css">
+    <script src="/apps/guides/guides.js"></script>
+</head>
+
+<div class="main-wrapper">
+    <div class="guide-view-container" id="guide-view-container">
+        <div class="guides-loading">Loading guide</div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    Navigation.load('article');
+    VersionChecker.check();
+    Guides.loadGuide('Ailment-Acc');
+});
+</script>

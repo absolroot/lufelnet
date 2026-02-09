@@ -1,5 +1,27 @@
 [
   {
+    "id": "mypalace-buff",
+    "titles": {
+      "kr": "마이팰리스 전투 버프",
+      "en": "Thieves Den Combat Buffs",
+      "jp": "マイパレス戦闘バフ"
+    },
+    "excerpts": {
+      "kr": "마이팰리스는 도시 생활은 물론 전투에서도 다양한 버프를 제공한다.크지 않은 값이지만 정말로 유용한 역할을 톡톡히 하는 부분인만큼 빼먹지 않고 챙겨주는 것이 좋다.기본적으로 레벨별로 수집 가능한 아이템과 갤러리를 통해 각종 전투 버프를 활성화 가능하다.활성화한 효과들은 ...",
+      "en": "The Thieves Den provides various buffs not only for city life but also for combat. Although the values may not be large, they play a truly useful role, so it is recommended not to miss out on them. You can activate various combat buffs through items collectable by level and the gallery. The activated effects...",
+      "jp": "マイパレスは都市生活はもちろん、戦闘でも様々なバフを提供します。大きな値ではありませんが、本当に有用な役割を果たす部分であるため、忘れずに確保することをお勧めします。基本的にレベル別に収集可能なアイテムとギャラリーを通じて各種戦闘バフを有効化できます。有効化した効果は..."
+    },
+    "searchContent": {
+      "kr": "마이팰리스는 도시 생활은 물론 전투에서도 다양한 버프를 제공한다.크지 않은 값이지만 정말로 유용한 역할을 톡톡히 하는 부분인만큼 빼먹지 않고 챙겨주는 것이 좋다.기본적으로 레벨별로 수집 가능한 아이템과 갤러리를 통해 각종 전투 버프를 활성화 가능하다.활성화한 효과들은 [장치 효과] - [배틀 효과]에서 확인 가능하며 다음과 같은 버프들을 제공한다. - 마음의 바다 대미지- 흉몽의 문 대미지- 영롱한 머큐리 생산량- 크리티컬 확률- 크리티컬 대미지- 공격력- 생명- 방어력- SP회복- 효과 명중- 속도- 각종 속성 대미지등해당 버프들은 '전투 중'에만 발동되는 형태로 전투 전의 캐릭터 스탯 창에서는 확인할 수 없고, 전투 진입 후의 스탯 창에서 변동사항을 확인할 수 있다.예를 들어 공격력 + 10, 공격력 +10 2개의 버프가 있고 전투 진입 전 공격력이 4380인 캐릭터가 있을 때,공격력 4400일 때 최대 효과를 얻는 스킬은 마이팰리스 버프를 통해 조건이 달성돼 최대 효과가 적용된다.때문에 평소에는 정말 불필요한 부가 옵션이지만 정작 필요한 캐릭터에게는 나오지 않는 '속도'와 같은 속성을 마이팰리스로 얻는 경우가 가뭄에 단비와 같은 버프로 작용하곤 한다.> '해명의 힘' 같은 경우에는 전투 진입 시의 스탯을 기준으로 하므로, 마이팰리스 버프에 영향받지 않는다.또한 보유하고 있는 캐릭터들의 평가 점수에 따라 마이팰리스 평점이 결정된다. 20레벨을 기준으로 올라가는 효과는 반복되며 각 캐릭터들의 평가 점수는 심상 코어가 열리기 전에는 최대 130점, 심상 코어(CN/TW/KR 4.7.1버전) 이후로는 145점이 최대 점수로 1점 당 평가 경험치 1을 제공한다.각 레벨별 효과는 lufel.net의 캐릭터 페이지에서 전투 진입 시 섹션에 '마이팰리스 평점'을 명시해둔 경우 + 버튼을 클릭하여 확인할 수 있도록 구성해놨다. 이 평점으로 얻는 효과 또한 전투 시에만 발동된다.",
+      "en": "The Thieves Den provides various buffs not only for city life but also for combat. Although the values may not be large, they play a truly useful role, so it is recommended not to miss out on them. You can activate various combat buffs through items collectable by level and the gallery. The activated effects can be checked in [Device Effects] - [Battle Effects] and provide buffs such as: - Sea of Souls Damage - Nightmare Damage - Lucent Mercury Production - Crit Rate - Crit Mult - Attack - HP - Defense - SP Recovery - Ailment Accuracy - Speed - Various Elemental Damage, etc. These buffs are triggered only 'during combat', so they cannot be seen in the character stat screen before battle, but changes can be checked in the stat screen after entering battle. For example, if a character has 4380 Attack before battle and there are two \"Attack +10\" buffs, and a skill requires 4400 Attack for maximum effect, the condition is met through the Thieves Den buffs, and the maximum effect is applied. Therefore, attributes like 'Speed', which are generally unnecessary sub-options but hard to obtain for characters who need them, can often be obtained through the Thieves Den, acting as a welcome rain in a drought. > In the case of 'Eludi. Stat Buff', it is based on stats at the time of entering battle, so it is not affected by Thieves Den buffs. Also, the Thieves Den Rating is determined by the evaluation score of the characters you possess. The effects that increase based on level 20 repeat, and each character's evaluation score provides 1 evaluation EXP per point, with a maximum of 130 points before the Mindscape Core opens, and 145 points after the Mindscape Core (CN/TW/KR 4.7.1 version). The effects for each level are configured to be viewable by clicking the + button if 'Thieves Den Rating' is specified in the \"When Entering Battle\" section on the character page of lufel.net. The effects obtained from this rating are also triggered only during combat.",
+      "jp": "マイパレスは都市生活はもちろん、戦闘でも様々なバフを提供します。大きな値ではありませんが、本当に有用な役割を果たす部分であるため、忘れずに確保することをお勧めします。基本的にレベル別に収集可能なアイテムとギャラリーを通じて各種戦闘バフを有効化できます。有効化した効果は[施設効果] - [バトル効果]で確認可能で、次のようなバフを提供します。 - 心の海ダメージ - 悪夢ダメージ - 玲瓏な水銀生産量 - CRT発生率 - CRT倍率 - 攻撃力 - HP - 防御力 - SP回復 - 状態異常命中 - 速さ - 各種属性ダメージなど。これらのバフは「戦闘中」にのみ発動する形式で、戦闘前のキャラクターステータス画面では確認できず、戦闘突入後のステータス画面で変動事項を確認できます。例えば、攻撃力+10、攻撃力+10の2つのバフがあり、戦闘突入前の攻撃力が4380のキャラクターがいる場合、攻撃力4400の時に最大効果を得るスキルは、マイパレスバフを通じて条件が達成され、最大効果が適用されます。そのため、普段は本当に不要なサブオプションですが、いざ必要なキャラクターには出ない「速さ」のような属性をマイパレスで得る場合が、干天の慈雨のようなバフとして作用したりします。 > 「ステータス強化」のような場合は、戦闘突入時のステータスを基準にするため、マイパレスバフの影響を受けません。また、保有しているキャラクターの評価点数によってマイパレス評価が決定されます。20レベルを基準に上昇する効果は繰り返され、各キャラクターの評価点数は、イメジャリーコアが開く前は最大130点、イメジャリーコア（CN/TW/KR 4.7.1バージョン）以降は145点が最大点数で、1点につき評価経験値1を提供します。各レベルごとの効果は、lufel.netのキャラクターページで戦闘突入時セクションに「マイパレス評価」を明記している場合、+ボタンをクリックして確認できるように構成しました。この評価で得られる効果も戦闘時にのみ発動します。"
+    },
+    "category": "combat",
+    "date": "2026-02-09",
+    "author": "AbsolRoot",
+    "thumbnail": "/apps/guides/data/assets/mypalace-buff/pasted-1770651536579.png"
+  },
+  {
     "id": "navi",
     "titles": {
       "kr": "'해명의 힘'이란",
@@ -66,11 +88,11 @@
     "thumbnail": "/apps/guides/data/assets/HIGHLIGHT/highlight1.png"
   },
   {
-    "id": "growth-material",
+    "id": "Growth-Material",
     "titles": {
-      "kr": "육성 재료 요구량 총정리",
-      "en": "Summary of Growth Material Requirements",
-      "jp": "育成素材必要量まとめ"
+      "kr": "육성 재료 요구량 총정리 (LV80)",
+      "en": "Summary of Growth Material Requirements (LV80)",
+      "jp": "育成素材必要量まとめ (LV80)"
     },
     "excerpts": {
       "kr": "캐릭터 육성에 필요한 모든 재료 정보를 한눈에 확인하세요.",

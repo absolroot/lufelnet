@@ -203,8 +203,7 @@ const Guides = {
         container.querySelectorAll('.guide-card').forEach(card => {
             card.addEventListener('click', (e) => {
                 e.preventDefault();
-                const id = card.dataset.id;
-                window.location.href = `/guides/view/?id=${id}&lang=${lang}`;
+                window.location.href = card.getAttribute('href');
             });
         });
 
@@ -243,8 +242,7 @@ const Guides = {
         gridContainer.querySelectorAll('.guide-card').forEach(card => {
             card.addEventListener('click', (e) => {
                 e.preventDefault();
-                const id = card.dataset.id;
-                window.location.href = `/guides/view/?id=${id}&lang=${lang}`;
+                window.location.href = card.getAttribute('href');
             });
         });
 
@@ -275,6 +273,16 @@ const Guides = {
     },
 
     /**
+     * Get the URL for a guide
+     */
+    getGuideUrl(guide, lang) {
+        if (guide.hasPage !== false) {
+            return `/article/${guide.id}/?lang=${lang}`;
+        }
+        return `/article/view/?id=${guide.id}&lang=${lang}`;
+    },
+
+    /**
      * Render a single guide card
      */
     renderCard(guide, lang) {
@@ -284,9 +292,10 @@ const Guides = {
         const catClass = guide.category ? ` cat-${guide.category}` : '';
         const date = this.formatDate(guide.date, lang);
         const thumbnail = guide.thumbnail || '';
+        const url = this.getGuideUrl(guide, lang);
 
         return `
-            <a class="guide-card" data-id="${guide.id}" href="/guides/view/?id=${guide.id}&lang=${lang}">
+            <a class="guide-card" data-id="${guide.id}" href="${url}">
                 ${thumbnail ? `<img class="guide-card-thumbnail" src="${thumbnail}" alt="${title}">` : ''}
                 <div class="guide-card-content">
                     <span class="guide-card-category${catClass}">${categoryLabel}</span>
@@ -381,7 +390,20 @@ const Guides = {
         const categoryLabel = this.getCategoryLabel(guide.category, lang);
         const date = this.formatDate(guide.date, lang);
         const author = guide.author || '';
-        const thumbnail = guide.thumbnail || '';
+        let thumbnail = guide.thumbnail || '';
+
+        // Hide thumbnail if same as first content image
+        if (thumbnail) {
+            const tmp = document.createElement('div');
+            tmp.innerHTML = content;
+            const firstImg = tmp.querySelector('img');
+            if (firstImg) {
+                const firstSrc = firstImg.getAttribute('src') || '';
+                if (firstSrc && (firstSrc === thumbnail || firstSrc.endsWith(thumbnail) || thumbnail.endsWith(firstSrc))) {
+                    thumbnail = '';
+                }
+            }
+        }
 
         // Update page title & SEO
         const excerpt = guide.excerpts?.[lang] || guide.excerpts?.kr || '';
@@ -394,7 +416,7 @@ const Guides = {
         );
 
         const html = `
-            <a class="guide-back" href="/guides/?lang=${lang}">
+            <a class="guide-back" href="/article/?lang=${lang}">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M19 12H5M12 19l-7-7 7-7"/>
                 </svg>

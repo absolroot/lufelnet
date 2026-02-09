@@ -1,0 +1,29 @@
+---
+layout: default
+custom_css: []
+custom_js: []
+permalink: /article/Wonder-Level/
+language: kr
+title: 『원더』 레벨별 EXP 필요량 - 루페르넷
+description: 페르소나5 더 팬텀 X 원더 레벨별 경험치 필요량
+image: /apps/guides/data/assets/Wonder-Level/wonder_levelup.gif
+---
+
+<head>
+    <link rel="stylesheet" href="/apps/guides/guides.css">
+    <script src="/apps/guides/guides.js"></script>
+</head>
+
+<div class="main-wrapper">
+    <div class="guide-view-container" id="guide-view-container">
+        <div class="guides-loading">Loading guide</div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    Navigation.load('article');
+    VersionChecker.check();
+    Guides.loadGuide('Wonder-Level');
+});
+</script>

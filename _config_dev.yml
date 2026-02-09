@@ -10,12 +10,6 @@ collections:
     output: true
     permalink: /test/character/:name/
 
-# build settings
-markdown: kramdown
-permalink: /article/:year/:month/:day/:title/
-future: true     # 미래 날짜 포스트 허용
-safe: false      # 개발 환경에서는 플러그인 리스트를 명확히 제어하기 위해 끕니다.
-
 # 플러그인 설정
 # 개발 환경에서는 무거운 플러그인을 끕니다.
 plugins: []

@@ -1,0 +1,29 @@
+---
+layout: default
+custom_css: []
+custom_js: []
+permalink: /article/mypalace-buff/
+language: kr
+title: 마이팰리스 전투 버프 - 루페르넷
+description: 페르소나5 더 팬텀 X 마이팰리스 전투 버프 가이드
+image: /apps/guides/data/assets/mypalace-buff/pasted-1770651536579.png
+---
+
+<head>
+    <link rel="stylesheet" href="/apps/guides/guides.css">
+    <script src="/apps/guides/guides.js"></script>
+</head>
+
+<div class="main-wrapper">
+    <div class="guide-view-container" id="guide-view-container">
+        <div class="guides-loading">Loading guide</div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    Navigation.load('article');
+    VersionChecker.check();
+    Guides.loadGuide('mypalace-buff');
+});
+</script>

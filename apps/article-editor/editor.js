@@ -254,6 +254,64 @@ function renderGuidesList() {
     });
 }
 
+function generatePageHtml(guideData) {
+    const title = guideData.titles?.kr || guideData.id;
+    const desc = guideData.excerpts?.kr || '';
+    const thumb = guideData.thumbnail || '/assets/img/home/seo.png';
+    const safeTitle = title.includes("'") ? `"${title} - 루페르넷"` : `${title} - 루페르넷`;
+    return `---
+layout: default
+custom_css: []
+custom_js: []
+permalink: /article/${guideData.id}/
+language: kr
+title: ${safeTitle}
+description: ${desc}
+image: ${thumb}
+---
+
+<head>
+    <link rel="stylesheet" href="/apps/guides/guides.css">
+    <script src="/apps/guides/guides.js"></script>
+</head>
+
+<div class="main-wrapper">
+    <div class="guide-view-container" id="guide-view-container">
+        <div class="guides-loading">Loading guide</div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    Navigation.load('article');
+    VersionChecker.check();
+    Guides.loadGuide('${guideData.id}');
+});
+</script>
+`;
+}
+
+async function saveGuidePage(guidesHandle, guideData) {
+    try {
+        const pagesHandle = await guidesHandle.getDirectoryHandle('pages', { create: true });
+        const pageHandle = await pagesHandle.getFileHandle(`${guideData.id}.html`, { create: true });
+        const writable = await pageHandle.createWritable();
+        await writable.write(generatePageHtml(guideData));
+        await writable.close();
+    } catch (e) {
+        console.warn('Could not save page:', e);
+    }
+}
+
+async function deleteGuidePage(guidesHandle, id) {
+    try {
+        const pagesHandle = await guidesHandle.getDirectoryHandle('pages');
+        await pagesHandle.removeEntry(`${id}.html`);
+    } catch (e) {
+        console.warn('Could not delete page:', e);
+    }
+}
+
 async function deleteGuide(id) {
     if (!confirm(`Delete guide "${id}"?`)) return;
 
@@ -286,6 +344,9 @@ async function deleteGuide(id) {
         } catch (e) {
             console.warn('Could not delete assets folder:', e);
         }
+
+        // Delete page HTML
+        await deleteGuidePage(guidesHandle, id);
 
         // Remove from guides-list.json
         state.guides = state.guides.filter(g => g.id !== id);
@@ -1358,6 +1419,9 @@ async function saveGuide() {
 
         // Update guides-list.json
         await updateGuidesList(dataHandle, guideData);
+
+        // Save/update page HTML
+        await saveGuidePage(guidesHandle, guideData);
 
         // Save images to /apps/guides/data/assets/[slug]/
         const assetsHandle = await dataHandle.getDirectoryHandle('assets', { create: true });

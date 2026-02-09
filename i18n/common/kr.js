@@ -190,6 +190,15 @@ window.I18N_COMMON_KR = {
         single: '단일',
         self: '자신',
 
+        // 재화 (Resources)
+        ember: '이계 엠버',
+        ticket: '계약 티켓',
+        paidEmber: '유료 엠버',
+        weaponTicket: '무기 티켓',
+        cognigem: '인지 단면',
+        totalEmber: '총 엠버:',
+
+
         // ========================================
         // 띄어쓰기 변형 (aliases) - 동적 번역 매칭용
         // ========================================

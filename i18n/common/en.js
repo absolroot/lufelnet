@@ -190,6 +190,14 @@ window.I18N_COMMON_EN = {
         single: 'Single',
         self: 'Self',
 
+        // Resources
+        ember: 'Meta Jewel',
+        ticket: 'Platinum Ticket',
+        paidEmber: 'Cognition Crystals',
+        weaponTicket: 'Platinum Milicoin',
+        cognigem: 'Cognigem',
+        totalEmber: 'Total Jewel:',
+
         // ========================================
         // Aliases (for whitespace variations in Korean source)
         // ========================================

@@ -612,6 +612,12 @@ body:not(.tactic-edit-mode) .custom-select-trigger {
     /* Optional: if we want to hide border unless hovered usually? */
 }
 
+/* Non-edit mode: allow tooltip hover on action dropdown skill descriptions */
+body:not(.tactic-edit-mode) .action-dropdown .custom-select-val[data-tooltip] {
+    cursor: help;
+    pointer-events: auto;
+}
+
 /* Force Hide Wonder Persona Name - Global */
 .action-item .wonder-persona-display .action-persona-name,
 .wonder-persona-display .action-persona-name {

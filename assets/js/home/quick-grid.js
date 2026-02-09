@@ -134,7 +134,7 @@
     };
 
     // New 배지를 표시할 아이템 목록
-    const newItems = ['character','criticalCalc','tacticMaker'];
+    const newItems = ['character','guide'];
 
     const render = () => {
         const root = document.getElementById('quick-grid');

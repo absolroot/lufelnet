@@ -969,6 +969,231 @@ export class TacticUI {
         return `${this.baseUrl}/assets/img/skill-element/${iconKey}.png`;
     }
 
+    /**
+     * Get character skill tooltip for tactic board actions (non-edit mode)
+     * Maps action values (스킬1-3, HIGHLIGHT, HIGHLIGHT2, Theurgia) to actual skill data
+     * Extracts 2nd and 4th values from 4-split numbers (LV10+5 / LV13+5)
+     */
+    getCharacterSkillTooltip(charName, actionValue) {
+        if (!charName || !actionValue) return '';
+
+        // Only handle character skill actions
+        const skillActionMap = {
+            '스킬1': 'skill1',
+            '스킬2': 'skill2',
+            '스킬3': 'skill3',
+            'HIGHLIGHT': 'skill_highlight',
+            'HIGHLIGHT2': 'skill_highlight2',
+            'Theurgia': 'skill_highlight',
+            '테우르기아': 'skill_highlight'
+        };
+
+        const baseKey = skillActionMap[actionValue];
+        if (!baseKey) return '';
+
+        const lang = this.getCurrentLang();
+
+        // Get skill data source based on language
+        let skillsData;
+        if (lang === 'en' && window.enCharacterSkillsData?.[charName]) {
+            skillsData = window.enCharacterSkillsData[charName];
+        } else if (lang === 'jp' && window.jpCharacterSkillsData?.[charName]) {
+            skillsData = window.jpCharacterSkillsData[charName];
+        } else {
+            skillsData = window.characterSkillsData?.[charName];
+        }
+        if (!skillsData) return '';
+
+        // Resolve actual skill key (J&C special handling)
+        let actualKey = baseKey;
+        if (charName === 'J&C') {
+            const jncRole = this.getJnCRole(charName);
+            const skillMapping = this.getJnCSkillMapping(jncRole);
+
+            if (baseKey === 'skill1') {
+                actualKey = skillMapping[0]; // role-mapped first skill
+            } else if (baseKey === 'skill2') {
+                actualKey = skillMapping[1]; // role-mapped second skill
+            } else if (baseKey === 'skill3') {
+                actualKey = 'skill5'; // always skill5
+            } else if (baseKey === 'skill_highlight2') {
+                actualKey = 'skill_highlight'; // J&C has single skill_highlight for both
+            }
+        }
+
+        const skillData = skillsData[actualKey];
+        if (!skillData?.description) return '';
+
+        let desc = skillData.description;
+
+        // J&C: filter highlight/skill5 description by selected role's persona pair
+        if (charName === 'J&C' && (actualKey === 'skill_highlight' || actualKey === 'skill5')) {
+            desc = this.filterJnCDescription(desc, actualKey, lang);
+        }
+
+        // Extract 2nd and 4th values from 4-split numbers (A/B/C/D → B/D)
+        const fourSplitReplace = /(\d+(?:\.\d+)?%?)(?:\s*\/\s*(\d+(?:\.\d+)?%?)){3}/g;
+        desc = desc.replace(fourSplitReplace, (match) => {
+            const parts = match.split('/').map(x => x.trim());
+            if (parts.length >= 4) {
+                return parts[1] + '/' + parts[3];
+            }
+            return match;
+        });
+
+        // Highlight numbers
+        desc = desc.replace(/(\d+(?:\.\d+)?%?)/g, '<span class="tooltip-num">$1</span>');
+
+        // Add skill name as title if available
+        const skillName = skillData.name || '';
+        const titleHtml = skillName ? `<b>${skillName}</b><br>` : '';
+
+        // Newlines to <br>
+        desc = desc.replace(/\n/g, '<br>');
+
+        // Add LV note footer
+        const lvNote = '<br><span style="opacity:0.6;font-size:0.85em">※ LV10+5 / LV13+5</span>';
+
+        return titleHtml + desc + lvNote;
+    }
+
+    /**
+     * Filter J&C highlight/skill5 description to show only sections matching the selected role
+     */
+    filterJnCDescription(desc, skillKey, lang) {
+        const jncRole = this.getJnCRole('J&C');
+        if (!jncRole) return desc;
+
+        // Persona definitions: skill index → persona data
+        const personas = [
+            { id: 'skill1', mask: '장난과 천진의 페르소나', mask_en: 'Mask of Mischief & Innocence', mask_jp: '悪戯と無邪気の仮面', facade: '어설픔', facade_en: 'Facade of Mischief & Innocence', facade_jp: '相貌・悪戯と無邪気' },
+            { id: 'skill2', mask: '헌신과 경고의 페르소나', mask_en: 'Mask of Service & Admonition', mask_jp: '奉仕と警告の仮面', facade: '가르침', facade_en: 'Facade of Service & Admonition', facade_jp: '相貌・奉仕と警告' },
+            { id: 'skill3', mask: '부조리와 비합리의 페르소나', mask_en: 'Mask of Absurdity & Nonsense', mask_jp: '不条理と非合理の仮面', facade: '무질서', facade_en: 'Facade of Absurdity & Nonsense', facade_jp: '相貌・不条理と非合理' },
+            { id: 'skill4', mask: '복과와 화근의 페르소나', mask_en: 'Mask of Luck & Loss', mask_jp: '福果と禍因の仮面', facade: '인과', facade_en: 'Facade of Luck & Loss', facade_jp: '相貌・福果と禍因' }
+        ];
+
+        // Get the 2 skill keys for this role
+        const skillMapping = this.getJnCSkillMapping(jncRole);
+        const keepSet = new Set(skillMapping); // e.g. {'skill1', 'skill3'} for 우월
+
+        const escRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+        if (skillKey === 'skill_highlight') {
+            // Highlight: each section starts with mask label header
+            // Build all headers for lookahead, then remove sections not in keepSet
+            const allHeaders = personas.map(p => {
+                if (lang === 'en') return escRe(p.mask_en + ':');
+                if (lang === 'jp') return escRe('『' + p.mask_jp + '』：');
+                return escRe('『' + p.mask + '』:');
+            });
+            const allHeadersPattern = allHeaders.join('|');
+
+            personas.forEach((p, idx) => {
+                if (keepSet.has(p.id)) return; // keep this section
+                let header;
+                if (lang === 'en') header = escRe(p.mask_en + ':');
+                else if (lang === 'jp') header = escRe('『' + p.mask_jp + '』：');
+                else header = escRe('『' + p.mask + '』:');
+
+                const pattern = new RegExp(header + '[\\s\\S]*?(?=(' + allHeadersPattern + '|$))', 'g');
+                desc = desc.replace(pattern, '');
+            });
+        } else if (skillKey === 'skill5') {
+            // Skill5: combo sections use facade labels in pairs
+            // Build all combo headers, then remove combos not matching the role pair
+            const combos = [];
+            for (let i = 0; i < personas.length; i++) {
+                for (let j = i + 1; j < personas.length; j++) {
+                    combos.push({ a: personas[i], b: personas[j] });
+                }
+            }
+
+            const makeHeaders = (a, b) => {
+                if (lang === 'en') {
+                    return [
+                        escRe(a.facade_en + ' + ' + b.facade_en + ':'),
+                        escRe(b.facade_en + ' + ' + a.facade_en + ':')
+                    ];
+                } else if (lang === 'jp') {
+                    return [
+                        escRe('『' + a.facade_jp + '』＋『' + b.facade_jp + '』：'),
+                        escRe('『' + b.facade_jp + '』＋『' + a.facade_jp + '』：')
+                    ];
+                }
+                return [
+                    escRe('『' + a.facade + '』+『' + b.facade + '』:'),
+                    escRe('『' + b.facade + '』+『' + a.facade + '』:'),
+                    escRe('『' + a.facade + '』＋『' + b.facade + '』:'),
+                    escRe('『' + b.facade + '』＋『' + a.facade + '』:')
+                ];
+            };
+
+            const allComboHeaders = combos.flatMap(c => makeHeaders(c.a, c.b));
+            const allComboPattern = allComboHeaders.join('|');
+
+            combos.forEach(({ a, b }) => {
+                const isKeep = keepSet.has(a.id) && keepSet.has(b.id);
+                if (isKeep) return;
+
+                const headers = makeHeaders(a, b);
+                headers.forEach(header => {
+                    const pattern = new RegExp(header + '[\\s\\S]*?(?=(' + allComboPattern + '|$))', 'g');
+                    desc = desc.replace(pattern, '');
+                });
+            });
+        }
+
+        // Clean up multiple consecutive newlines
+        desc = desc.replace(/\n{3,}/g, '\n\n');
+
+        return desc;
+    }
+
+    /**
+     * Get persona skill tooltip for wonder actions in tactic board
+     * Reuses the same data sources as WonderUI.getSkillTooltip()
+     */
+    getPersonaSkillTooltipForAction(skillName, personaName) {
+        if (!skillName) return '';
+
+        const lang = this.getCurrentLang();
+        const highlightNums = (text) => text.replace(/(\d+(?:\.\d+)?%?)/g, '<span class="tooltip-num">$1</span>');
+
+        // 1. Check if it's a unique skill from persona data
+        if (personaName) {
+            const store = window.personaFiles || {};
+            const personaData = store[personaName];
+            if (personaData && personaData.uniqueSkill) {
+                const unique = personaData.uniqueSkill;
+                const uniqueNameKr = unique.name || '';
+                const uniqueNameEn = unique.name_en || '';
+                const uniqueNameJp = unique.name_jp || '';
+
+                if (skillName === uniqueNameKr || skillName === uniqueNameEn || skillName === uniqueNameJp) {
+                    let desc = '';
+                    if (lang === 'en' && unique.desc_en) desc = unique.desc_en;
+                    else if (lang === 'jp' && unique.desc_jp) desc = unique.desc_jp;
+                    else desc = unique.desc || '';
+
+                    if (desc) return highlightNums(desc);
+                }
+            }
+        }
+
+        // 2. Check personaSkillList
+        const skillData = (window.personaSkillList || {})[skillName];
+        if (skillData) {
+            let desc = '';
+            if (lang === 'en' && skillData.description_en) desc = skillData.description_en;
+            else if (lang === 'jp' && skillData.description_jp) desc = skillData.description_jp;
+            else desc = skillData.description || '';
+
+            if (desc) return highlightNums(desc);
+        }
+
+        return '';
+    }
+
     getActionOptions(char) {
         const options = [];
         options.push({ label: '-', value: '' });
@@ -1520,6 +1745,45 @@ export class TacticUI {
 
             actionDD = this.createCustomDropdown(actionOpts, initialActionVal, handleActionChange);
             actionDD.container.classList.add('action-dropdown');
+
+            // Non-edit mode: add skill tooltip on action dropdown
+            if (!this.isEditMode()) {
+                const triggerEl = actionDD.container.querySelector('.custom-select-val');
+                if (triggerEl) {
+                    let tooltip = '';
+                    if (currentActor === '원더') {
+                        tooltip = this.getPersonaSkillTooltipForAction(currentAction, currentPersona);
+                    } else {
+                        tooltip = this.getCharacterSkillTooltip(currentActor, currentAction);
+                    }
+                    if (tooltip) {
+                        triggerEl.setAttribute('data-tooltip', tooltip);
+
+                        // Bind floating cursor-tooltip events
+                        const floating = document.getElementById('cursor-tooltip') || (() => {
+                            const el = document.createElement('div');
+                            el.id = 'cursor-tooltip';
+                            el.className = 'cursor-tooltip';
+                            document.body.appendChild(el);
+                            return el;
+                        })();
+                        triggerEl.addEventListener('mouseenter', function () {
+                            const content = this.getAttribute('data-tooltip');
+                            if (content) { floating.innerHTML = content; floating.style.display = 'block'; }
+                        });
+                        triggerEl.addEventListener('mousemove', function (e) {
+                            const offset = 16;
+                            let x = e.clientX + offset, y = e.clientY + offset;
+                            const vw = window.innerWidth, vh = window.innerHeight;
+                            const ttW = floating.offsetWidth, ttH = floating.offsetHeight;
+                            if (x + ttW + 8 > vw) x = e.clientX - ttW - offset;
+                            if (y + ttH + 8 > vh) y = e.clientY - ttH - offset;
+                            floating.style.left = x + 'px'; floating.style.top = y + 'px';
+                        });
+                        triggerEl.addEventListener('mouseleave', function () { floating.style.display = 'none'; });
+                    }
+                }
+            }
 
             // 6. Append to DOM
             mainRow.appendChild(actorPersonaWrapper);

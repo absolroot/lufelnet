@@ -850,7 +850,7 @@
     }
 
     .guide-header {
-        padding: var(--guide-space-lg);
+        padding: var(--guide-space-md);
     }
 
     .guide-title {
@@ -858,7 +858,7 @@
     }
 
     .guide-content {
-        padding: var(--guide-space-lg);
+        padding: var(--guide-space-md);
         font-size: var(--guide-text-sm);
     }
 

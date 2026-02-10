@@ -457,7 +457,7 @@
 
 .guide-content h1 {
     font-size: var(--guide-text-2xl);
-    margin: var(--guide-space-3xl) 0 var(--guide-space-lg);
+    margin: 0 0 var(--guide-space-lg);
     padding-bottom: var(--guide-space-md);
     border-bottom: 2px solid var(--guide-accent-gold);
 }

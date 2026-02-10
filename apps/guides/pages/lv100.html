@@ -1,0 +1,29 @@
+---
+layout: default
+custom_css: []
+custom_js: []
+permalink: /article/lv100/
+language: kr
+title: 심상 코어 (LV100) - 루페르넷
+description: 심상 코어(심상 활성화)는 한국 버전 4.7.1에 공개된 신규 육성 시스템으로, 기존 캐릭터의 레벨 상한을 최대 100까지 늘리고 신규 패시브 2개를 획득 가능한 추가 강화 방식이다.이외에도 동일 속성의 아군들을 모두 강화시키는 '속성 공명'과 동일 속성들이 사용...
+image: /apps/guides/data/assets/lv100/pasted-1770716728489.png
+---
+
+<head>
+    <link rel="stylesheet" href="/apps/guides/guides.css">
+    <script src="/apps/guides/guides.js"></script>
+</head>
+
+<div class="main-wrapper">
+    <div class="guide-view-container" id="guide-view-container">
+        <div class="guides-loading">Loading guide</div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    Navigation.load('article');
+    VersionChecker.check();
+    Guides.loadGuide('lv100');
+});
+</script>

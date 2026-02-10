@@ -198,6 +198,18 @@ window.I18N_COMMON_JP = {
         cognigem: '認知の欠片',
         totalEmber: '異界琥珀合計:',
 
+        // コンテンツ（ゲームモードおよびシステム）
+        task: 'タスク',
+        tycoon: '大富豪',
+        metroOfDesire: '運命の軌跡',
+        landOfFortune: '運命の島',
+        companioShop: 'コンパニオショップ',
+        spaceCard: '宙の啓示',
+        kaguraBell: 'カグラベル',
+        nightmareGateway: '悪夢の門',
+        phantomPass: 'ファントムパス',
+        rerunContract: '復刻契約',
+
         // ========================================
         // Aliases (韓国語ソースの空白バリエーション用)
         // ========================================

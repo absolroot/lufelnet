@@ -198,6 +198,17 @@ window.I18N_COMMON_KR = {
         cognigem: '인지 단면',
         totalEmber: '총 엠버:',
 
+        // 컨텐츠 (게임 모드 및 시스템)
+        task: '의뢰',
+        tycoon: '대부호',
+        metroOfDesire: '선택의 궤적',
+        landOfFortune: '운명의 섬',
+        companioShop: '낙원 상점',
+        spaceCard: '주 계시',
+        kaguraBell: '기원 뽑기',
+        nightmareGateway: '흉몽',
+        phantomPass: '팬텀 패스',
+        rerunContract: '복각 계약',
 
         // ========================================
         // 띄어쓰기 변형 (aliases) - 동적 번역 매칭용

@@ -198,6 +198,18 @@ window.I18N_COMMON_EN = {
         cognigem: 'Cognigem',
         totalEmber: 'Total Jewel:',
 
+        // Content (game modes and systems)
+        task: 'TASK',
+        tycoon: 'Tycoon',
+        metroOfDesire: 'Metro of Desire',
+        landOfFortune: 'Land of Fortune',
+        companioShop: 'Companio Shop',
+        spaceCard: 'Space Card',
+        kaguraBell: 'Kagura Bell',
+        nightmareGateway: "Nightmare's Gateway",
+        phantomPass: 'Phantom Pass',
+        rerunContract: 'Rerun Contract',
+
         // ========================================
         // Aliases (for whitespace variations in Korean source)
         // ========================================

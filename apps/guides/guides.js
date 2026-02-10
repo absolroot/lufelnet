@@ -444,6 +444,45 @@ const Guides = {
 
         // Update back link text based on language
         this.updateLanguageTexts();
+
+        // Thumbnail GIF: play once then freeze
+        const thumbEl = container.querySelector('.guide-thumbnail');
+        if (thumbEl && thumbnail.toLowerCase().endsWith('.gif')) {
+            this.playGifOnce(thumbEl);
+        }
+    },
+
+    /**
+     * Play a GIF once then freeze on its last frame
+     */
+    async playGifOnce(img) {
+        try {
+            const res = await fetch(img.src);
+            const buf = new Uint8Array(await res.arrayBuffer());
+            let duration = 0;
+            for (let i = 0; i < buf.length - 5; i++) {
+                if (buf[i] === 0x21 && buf[i + 1] === 0xF9) {
+                    duration += (buf[i + 4] | (buf[i + 5] << 8)) * 10;
+                }
+            }
+            if (duration <= 0) return;
+
+            const freeze = () => {
+                try {
+                    const c = document.createElement('canvas');
+                    c.width = img.naturalWidth;
+                    c.height = img.naturalHeight;
+                    c.getContext('2d').drawImage(img, 0, 0);
+                    img.src = c.toDataURL();
+                } catch (e) {}
+            };
+
+            if (img.complete && img.naturalWidth) {
+                setTimeout(freeze, duration);
+            } else {
+                img.addEventListener('load', () => setTimeout(freeze, duration), { once: true });
+            }
+        } catch (e) {}
     },
 
     /**

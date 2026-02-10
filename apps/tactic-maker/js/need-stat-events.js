@@ -99,7 +99,7 @@ export function bindCriticalEvents(container, ui, buffItems, selfItems, slotInde
             }
         });
     });
-    
+
     // J&C jc1 크리티컬 섹션 페르소나 성능 입력 필드 이벤트
     container.querySelectorAll('.need-stat-persona-input[data-category="critical"]').forEach(personaInput => {
         personaInput.addEventListener('click', (e) => e.stopPropagation());
@@ -109,20 +109,20 @@ export function bindCriticalEvents(container, ui, buffItems, selfItems, slotInde
             const N = parseFloat(personaInput.value) || 100;
             const row = personaInput.closest('.need-stat-row');
             const valueEl = row ? row.querySelector('.need-stat-value') : null;
-            
+
             const item = allItems.find(i => String(i.id || `${i.source}_${i.skillName}`) === itemId);
-            
+
             if (item) {
                 if (item.__baseValue === undefined) {
                     item.__baseValue = item.value || 0;
                 }
-                
+
                 const baseValue = item.__baseValue;
                 const calculatedValue = baseValue * (50 + N / 2) / 100;
-                
+
                 item.value = calculatedValue;
                 if (valueEl) valueEl.textContent = `${calculatedValue.toFixed(2)}%`;
-                
+
                 // 동일한 jc1 입력 필드들 동기화 (관통 섹션 포함)
                 document.querySelectorAll('.need-stat-jc1-sync').forEach(syncInput => {
                     if (syncInput !== personaInput) {
@@ -137,7 +137,7 @@ export function bindCriticalEvents(container, ui, buffItems, selfItems, slotInde
                         }
                     }
                 });
-                
+
                 const total = calculateTotal(buffItems, selfItems, ui.selectedItems) + ui.revelationSumCritical + getGlobalElucidatorCritical();
                 ui.updateTotalPairDisplays(slotIndex, total, 'critical');
             }
@@ -162,12 +162,12 @@ export function bindPierceEvents(container, ui, penetrateSelfItems, penetrateBuf
         const defenseReduceFromItems = calculateDefenseReduceTotal(defenseReduceItems, ui.selectedDefenseItems);
         const totalDefenseReduce = defenseReduceFromItems + ui.extraDefenseReduce;
         const pierceTotal = penetrateFromItems + ui.revelationSumPierce + ui.extraSumPierce + getGlobalElucidatorPierce();
-        
+
         const defenseStats = calculateDefenseStats(penetrateFromItems, totalDefenseReduce);
         const remainingDefense = defenseStats.remainingDefense;
         const pierceTarget = parseFloat(defenseStats.pierceTarget);
         const pierceNeeded = parseFloat(defenseStats.pierceNeeded);
-        
+
         // Update pierce target/current/needed in container
         const pierceTargetEl = container.querySelector('.need-stat-column-pierce .need-stat-target');
         const pierceCurrentEl = container.querySelector('.need-stat-column-pierce .need-stat-current');
@@ -175,13 +175,13 @@ export function bindPierceEvents(container, ui, penetrateSelfItems, penetrateBuf
         if (pierceTargetEl) pierceTargetEl.textContent = `${pierceTarget.toFixed(1)}%`;
         if (pierceCurrentEl) pierceCurrentEl.textContent = `${pierceTotal.toFixed(1)}%`;
         if (pierceNeededEl) pierceNeededEl.textContent = `${pierceNeeded.toFixed(1)}%`;
-        
+
         // Update defense info
         const defenseValueEl = container.querySelector('.need-stat-defense-value');
         const defenseRequiredEl = container.querySelector('.need-stat-defense-required');
         if (defenseValueEl) defenseValueEl.textContent = `${remainingDefense}%`;
         if (defenseRequiredEl) defenseRequiredEl.textContent = `${pierceTarget.toFixed(1)}%`;
-        
+
         // Update trigger table
         const triggerEl = document.querySelector(`.need-stat-trigger[data-slot-index="${slotIndex}"]`);
         const triggerTable = triggerEl?.querySelector('.need-stat-trigger-table');
@@ -259,7 +259,7 @@ export function bindPierceEvents(container, ui, penetrateSelfItems, penetrateBuf
                     if (String(itemId) === 'jc1') {
                         calculatedValue = newBaseValue * (50 + N / 2) / 100;
                     } else if (String(itemId) === 'jc2') {
-                        calculatedValue = newBaseValue * N / 100;
+                        calculatedValue = newBaseValue * (50 + N / 2) / 100;
                     }
 
                     item.value = calculatedValue;
@@ -276,7 +276,7 @@ export function bindPierceEvents(container, ui, penetrateSelfItems, penetrateBuf
             }
         });
     });
-    
+
     // Extra Defense Reduce input
     container.querySelectorAll('.need-stat-extra-defense-input').forEach(extraDefenseInput => {
         extraDefenseInput.addEventListener('input', (e) => {
@@ -287,7 +287,7 @@ export function bindPierceEvents(container, ui, penetrateSelfItems, penetrateBuf
         });
         extraDefenseInput.addEventListener('click', (e) => e.stopPropagation());
     });
-    
+
     // J&C 페르소나 성능 입력 필드 이벤트 (jc1, jc2)
     container.querySelectorAll('.need-stat-persona-input').forEach(personaInput => {
         personaInput.addEventListener('click', (e) => e.stopPropagation());
@@ -298,21 +298,21 @@ export function bindPierceEvents(container, ui, penetrateSelfItems, penetrateBuf
             const N = parseFloat(personaInput.value) || 100;
             const row = personaInput.closest('.need-stat-row');
             const valueEl = row ? row.querySelector('.need-stat-value') : null;
-            
+
             const allItems = category === 'pierce' ? allPierceItems : allDefenseItems;
             const item = allItems.find(i => String(i.id || `${i.source}_${i.skillName}`) === itemId);
-            
+
             if (item) {
                 if (item.__baseValue === undefined) {
                     item.__baseValue = item.value || 0;
                 }
-                
+
                 const baseValue = item.__baseValue;
                 let calculatedValue = baseValue;
-                
+
                 if (String(itemId) === 'jc1') {
                     calculatedValue = baseValue * (50 + N / 2) / 100;
-                    
+
                     // jc1은 크리티컬 섹션과 값 동기화
                     document.querySelectorAll('.need-stat-jc1-sync').forEach(syncInput => {
                         if (syncInput !== personaInput) {
@@ -326,12 +326,12 @@ export function bindPierceEvents(container, ui, penetrateSelfItems, penetrateBuf
                     });
                 }
                 else if (String(itemId) === 'jc2') {
-                    calculatedValue = baseValue * N / 100;
+                    calculatedValue = baseValue * (50 + N / 2) / 100;
                 }
-                
+
                 item.value = calculatedValue;
                 if (valueEl) valueEl.textContent = `${calculatedValue.toFixed(2)}%`;
-                
+
                 updatePierceDisplays();
             }
         });
@@ -351,13 +351,13 @@ export function bindElucidatorEvents(container, ui, slotIndex) {
             e.stopPropagation();
             const statType = input.dataset.stat;
             const val = parseFloat(input.value) || 0;
-            
+
             if (statType === 'critical') {
                 setElucidatorBonuses(val, getGlobalElucidatorPierce());
             } else if (statType === 'pierce') {
                 setElucidatorBonuses(getGlobalElucidatorCritical(), val);
             }
-            
+
             // Update header display
             const headerEl = container.querySelector(`.need-stat-column-${statType} .need-stat-current`);
             if (headerEl) headerEl.textContent = `${val.toFixed(1)}%`;
@@ -380,10 +380,10 @@ export function bindBossEvents(container, ui) {
             e.stopPropagation();
             const bossType = tab.dataset.bossType;
             setGlobalBossSettings({ bossType });
-            
+
             container.querySelectorAll('.need-stat-boss-tab').forEach(t => t.classList.remove('active'));
             tab.classList.add('active');
-            
+
             ui.updateBossDropdownList(container);
         });
     });
@@ -392,13 +392,13 @@ export function bindBossEvents(container, ui) {
     const bossDropdown = container.querySelector('.need-stat-boss-dropdown');
     const bossButton = container.querySelector('.need-stat-boss-button');
     const bossMenu = container.querySelector('.need-stat-boss-menu');
-    
+
     if (bossButton && bossMenu) {
         bossButton.addEventListener('click', (e) => {
             e.stopPropagation();
             bossDropdown.classList.toggle('open');
         });
-        
+
         document.addEventListener('click', () => {
             bossDropdown?.classList.remove('open');
         });

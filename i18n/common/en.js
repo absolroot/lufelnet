@@ -171,7 +171,7 @@ window.I18N_COMMON_EN = {
         additionalTurn: 'Additional Turn',
         weaknessChange: 'Weakness Change',
         formChange: 'Form Change',
-        skillMaster: 'Skill Master',
+        skillMaster: 'Technical Precision',
         damageAccumulation: 'Damage Accumulation',
         item: 'Item',
         tbd: 'TBD',

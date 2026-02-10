@@ -171,7 +171,7 @@ window.I18N_COMMON_JP = {
         additionalTurn: '追加ターン',
         weaknessChange: '弱点変更',
         formChange: 'フォームチェンジ',
-        skillMaster: 'スキルマスター',
+        skillMaster: 'テクニカル精度',
         damageAccumulation: 'ダメージ蓄積',
         item: 'アイテム',
         tbd: '未定',

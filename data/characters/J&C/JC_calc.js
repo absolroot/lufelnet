@@ -1,6 +1,6 @@
 window.JCCalc = (function () {
     const registrations = []; // { item, valueCell, type, calc }
-    
+
     // 타입 정의
     const TYPES = {
         PENETRATE: 'penetrate',
@@ -40,10 +40,10 @@ window.JCCalc = (function () {
                         state[type] = parsed;
                     }
                 }
-            } catch (_) {}
+            } catch (_) { }
         });
     }
-    
+
     // 초기 로드 실행
     loadState();
 
@@ -55,7 +55,7 @@ window.JCCalc = (function () {
             if (typeof LanguageRouter !== 'undefined' && LanguageRouter.getCurrentLanguage) {
                 return LanguageRouter.getCurrentLanguage();
             }
-        } catch (_) {}
+        } catch (_) { }
         return 'kr';
     }
 
@@ -70,17 +70,17 @@ window.JCCalc = (function () {
     function getFactor(type, baseValue) {
         // 타입이 없거나 잘못되었으면 기본값(Def) 혹은 100 사용
         const currentN = state[type] || 100;
-        
+
         // jc1 전용 공식: value/2 + value/2 * N/100 = value * (0.5 + 0.5 * N/100) = value * (50 + N/2) / 100
         if (type === TYPES.JC1_PENETRATE) {
             return (50 + currentN / 2) / 100;
         }
-        
-        // jc2 전용 공식: value * N/100
+
+        // jc2 전용 공식: value/2 + value/2 * N/100 = value * (50 + N/2) / 100
         if (type === TYPES.JC2_DEF) {
-            return currentN / 100;
+            return (50 + currentN / 2) / 100;
         }
-        
+
         // 기존 공식: (100 + (N - 100) / 2)%
         return (100 + (currentN - 100) / 2) / 100;
     }
@@ -92,11 +92,11 @@ window.JCCalc = (function () {
     function applyMultiplierToItemInternal(item, valueCell, type) {
         if (!item || !valueCell) return;
         const base = (item.__jcBaseValue != null) ? item.__jcBaseValue : (item.value || 0);
-        
+
         // 해당 아이템에 지정된 타입의 Desire Level을 적용
         const factor = getFactor(type, base);
         const effective = base * factor;
-        
+
         item.value = effective;
         valueCell.textContent = formatValue(effective);
     }
@@ -112,14 +112,14 @@ window.JCCalc = (function () {
                 }
             }
         });
-        
+
         // 변경된 값들을 합계에 반영
         seenCalc.forEach(calc => {
             try {
                 if (typeof calc.updateTotal === 'function') calc.updateTotal();
                 if (typeof calc.updatePenetrateTotal === 'function') calc.updatePenetrateTotal();
                 if (typeof calc.updateCritTotal === 'function') calc.updateCritTotal(); // Crit용 업데이트 함수가 있다면 호출
-            } catch (_) {}
+            } catch (_) { }
         });
     }
 
@@ -137,10 +137,10 @@ window.JCCalc = (function () {
          */
         attachDesireControl(headerTr, calcInstance, type) {
             if (!headerTr) return;
-            
+
             // 타입 유효성 검사 (기본값 def)
             let targetType = Object.values(TYPES).includes(type) ? type : TYPES.DEF;
-            
+
             // jc1_penetrate와 jc2_def는 별도로 attachJC1Control, attachJC2Control에서 처리
             // 여기서는 기존 penetrate/def/crit 타입만 처리
             if (type === TYPES.JC1_PENETRATE || type === TYPES.JC2_DEF) {
@@ -183,21 +183,21 @@ window.JCCalc = (function () {
                     const rawValue = input.value;
                     let n = parseFloat(rawValue);
 
-                    if (isNaN(n)) return; 
-                    
+                    if (isNaN(n)) return;
+
                     // 해당 타입의 상태 업데이트
                     state[targetType] = n;
-                    
+
                     // 해당 타입의 로컬 스토리지 저장
                     try {
                         localStorage.setItem(STORAGE_KEYS[targetType], String(n));
-                    } catch (_) {}
+                    } catch (_) { }
 
                     // 동일한 타입의 다른 인풋들도 동기화 (같은 페이지에 여러 표가 있을 경우)
                     document.querySelectorAll(`.jc-input-${targetType}`).forEach(el => {
                         if (el !== input) el.value = rawValue;
                     });
-                    
+
                     recalcAll();
                 };
 
@@ -207,7 +207,7 @@ window.JCCalc = (function () {
                 container.appendChild(label);
                 container.appendChild(input);
                 infoWrap.appendChild(container);
-            } catch (_) {}
+            } catch (_) { }
         },
 
         /**
@@ -249,18 +249,18 @@ window.JCCalc = (function () {
                     const rawValue = input.value;
                     let n = parseFloat(rawValue);
 
-                    if (isNaN(n)) return; 
-                    
+                    if (isNaN(n)) return;
+
                     state[targetType] = n;
-                    
+
                     try {
                         localStorage.setItem(STORAGE_KEYS[targetType], String(n));
-                    } catch (_) {}
+                    } catch (_) { }
 
                     document.querySelectorAll(`.jc-input-${targetType}`).forEach(el => {
                         if (el !== input) el.value = rawValue;
                     });
-                    
+
                     recalcAll();
                 };
 
@@ -270,12 +270,12 @@ window.JCCalc = (function () {
                 container.appendChild(label);
                 container.appendChild(input);
                 infoWrap.appendChild(container);
-            } catch (_) {}
+            } catch (_) { }
         },
 
         /**
          * jc2 전용 Desire Control UI 붙이기 (방어력 감소 테이블용)
-         * 공식: value * N/100
+         * 공식: value/2 + value/2 * N/100
          */
         attachJC2Control(headerTr, calcInstance) {
             if (!headerTr) return;
@@ -312,18 +312,18 @@ window.JCCalc = (function () {
                     const rawValue = input.value;
                     let n = parseFloat(rawValue);
 
-                    if (isNaN(n)) return; 
-                    
+                    if (isNaN(n)) return;
+
                     state[targetType] = n;
-                    
+
                     try {
                         localStorage.setItem(STORAGE_KEYS[targetType], String(n));
-                    } catch (_) {}
+                    } catch (_) { }
 
                     document.querySelectorAll(`.jc-input-${targetType}`).forEach(el => {
                         if (el !== input) el.value = rawValue;
                     });
-                    
+
                     recalcAll();
                 };
 
@@ -333,7 +333,7 @@ window.JCCalc = (function () {
                 container.appendChild(label);
                 container.appendChild(input);
                 infoWrap.appendChild(container);
-            } catch (_) {}
+            } catch (_) { }
         },
 
         /**
@@ -345,7 +345,7 @@ window.JCCalc = (function () {
          */
         registerItem(item, valueCell, typeOrIsPenetrate, calcInstance) {
             if (!item || !valueCell) return;
-            
+
             if (item.__jcBaseValue == null) {
                 item.__jcBaseValue = item.value || 0;
             }
@@ -377,7 +377,7 @@ window.JCCalc = (function () {
                 item.__jcRegistered = true;
                 item.__jcRegIndex = index;
             }
-            
+
             applyMultiplierToItemInternal(item, valueCell, targetType);
         },
 
@@ -394,20 +394,20 @@ window.JCCalc = (function () {
             else if (typeOrIsPenetrate === 'jc2_def') targetType = TYPES.JC2_DEF;
 
             applyMultiplierToItemInternal(item, valueCell, targetType);
-            
+
             // 합계 업데이트 (각 타입에 맞는 합계 함수 호출)
             try {
                 if (calcInstance) {
                     if (targetType === TYPES.PENETRATE || targetType === TYPES.JC1_PENETRATE) {
-                         if(calcInstance.updatePenetrateTotal) calcInstance.updatePenetrateTotal();
+                        if (calcInstance.updatePenetrateTotal) calcInstance.updatePenetrateTotal();
                     } else if (targetType === TYPES.CRIT) {
-                         if(calcInstance.updateCritTotal) calcInstance.updateCritTotal(); // Crit 합계 함수가 있다고 가정
-                         else if (calcInstance.updateTotal) calcInstance.updateTotal(); // 없으면 기본 Total
+                        if (calcInstance.updateCritTotal) calcInstance.updateCritTotal(); // Crit 합계 함수가 있다고 가정
+                        else if (calcInstance.updateTotal) calcInstance.updateTotal(); // 없으면 기본 Total
                     } else {
-                        if(calcInstance.updateTotal) calcInstance.updateTotal();
+                        if (calcInstance.updateTotal) calcInstance.updateTotal();
                     }
                 }
-            } catch (_) {}
+            } catch (_) { }
         },
 
         // 타입 상수 노출 (외부에서 사용 가능)

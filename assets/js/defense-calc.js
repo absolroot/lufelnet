@@ -35,9 +35,9 @@ class DefenseCalc {
         this.initializePenetrateInputs();
 
         // 초기 렌더 후 UI 텍스트 번역 적용 (전용 i18n)
-        try { if (typeof DefenseI18N !== 'undefined' && DefenseI18N.updateLanguageContent) { DefenseI18N.updateLanguageContent(document); } } catch(_) {}
+        try { if (typeof DefenseI18N !== 'undefined' && DefenseI18N.updateLanguageContent) { DefenseI18N.updateLanguageContent(document); } } catch (_) { }
         // 사전 매핑 단어 번역(원더/계시 등)
-        try { if (typeof I18NUtils !== 'undefined' && I18NUtils.translateStatTexts) { I18NUtils.translateStatTexts(document); } } catch(_) {}
+        try { if (typeof I18NUtils !== 'undefined' && I18NUtils.translateStatTexts) { I18NUtils.translateStatTexts(document); } } catch (_) { }
 
         // 스포일러 토글 이벤트: 목록 재렌더링
         try {
@@ -48,7 +48,7 @@ class DefenseCalc {
                     await this.renderAccordion(this.penetrateTableBody, true);
                 });
             }
-        } catch(_) {}
+        } catch (_) { }
 
         // order-switch 제거됨
 
@@ -60,14 +60,14 @@ class DefenseCalc {
         this.scheduleTranslateCharacterNames();
 
         // J&C 전용 추가 계산 스크립트가 분리되어 있으므로, 동적으로 로드 후 헤더에 컨트롤 부착
-        try { this.ensureJCCalcLoadedAndAttach(); } catch(_) {}
+        try { this.ensureJCCalcLoadedAndAttach(); } catch (_) { }
     }
 
     getCurrentLang() {
         try {
             if (typeof I18NUtils !== 'undefined' && I18NUtils.getCurrentLanguageSafe) return I18NUtils.getCurrentLanguageSafe();
             if (typeof LanguageRouter !== 'undefined' && LanguageRouter.getCurrentLanguage) return LanguageRouter.getCurrentLanguage();
-        } catch(_) {}
+        } catch (_) { }
         return 'kr';
     }
 
@@ -78,7 +78,7 @@ class DefenseCalc {
             const saved = JSON.parse(localStorage.getItem(storageKey) || '{}');
             saved[itemId] = selectedValue;
             localStorage.setItem(storageKey, JSON.stringify(saved));
-        } catch(_) {}
+        } catch (_) { }
     }
 
     loadOptionSelection(itemId, isPenetrate) {
@@ -86,7 +86,7 @@ class DefenseCalc {
             const storageKey = isPenetrate ? 'defenseCalc_penetrateOptions' : 'defenseCalc_reduceOptions';
             const saved = JSON.parse(localStorage.getItem(storageKey) || '{}');
             return saved[itemId] || null;
-        } catch(_) {}
+        } catch (_) { }
         return null;
     }
 
@@ -104,7 +104,7 @@ class DefenseCalc {
                 // 매핑 실패 시 원문과 동일 문자열이 돌아오므로, 그 경우에는 덮어쓰지 않음
                 if (mapped && mapped.trim() && mapped !== baseName) baseName = mapped;
             }
-        } catch(_) {}
+        } catch (_) { }
 
         return baseName;
     }
@@ -112,14 +112,14 @@ class DefenseCalc {
     async ensureCsvNameMapLoaded() {
         if (this._csvNameMap) return this._csvNameMap;
         if (!this._csvLoadPromise) {
-            const url = `${BASE_URL}/data/kr/wonder/persona_skill_from.csv?v=${typeof APP_VERSION!== 'undefined' ? APP_VERSION : '1'}`;
+            const url = `${BASE_URL}/data/kr/wonder/persona_skill_from.csv?v=${typeof APP_VERSION !== 'undefined' ? APP_VERSION : '1'}`;
             this._csvLoadPromise = fetch(url)
                 .then(r => r.text())
                 .then(text => {
                     const map = {};
-                    const lines = text.split(/\r?\n/).filter(l => l.trim().length>0);
+                    const lines = text.split(/\r?\n/).filter(l => l.trim().length > 0);
                     // skip header
-                    for (let i=1;i<lines.length;i++) {
+                    for (let i = 1; i < lines.length; i++) {
                         const row = lines[i].split(',');
                         if (row.length < 3) continue;
                         const kr = row[0]?.trim();
@@ -130,7 +130,7 @@ class DefenseCalc {
                     this._csvNameMap = map;
                     return map;
                 })
-                .catch(_=> (this._csvNameMap = {}));
+                .catch(_ => (this._csvNameMap = {}));
         }
         return this._csvLoadPromise;
     }
@@ -158,7 +158,7 @@ class DefenseCalc {
                 const translated = DefenseI18N.translateGroupName(groupName);
                 if (translated && translated !== groupName) return translated;
             }
-        } catch(_) {}
+        } catch (_) { }
         const excluded = groupName === '원더' || groupName === '계시' || groupName === '공통';
         if (excluded) return groupName; // 사전에 없으면 원문 유지
         try {
@@ -166,7 +166,7 @@ class DefenseCalc {
                 if (lang === 'en') return characterData[groupName].codename || groupName;
                 if (lang === 'jp') return characterData[groupName].name_jp || groupName;
             }
-        } catch(_) {}
+        } catch (_) { }
         return groupName;
     }
 
@@ -188,15 +188,15 @@ class DefenseCalc {
         let out = src;
         // 디버프 → 버프, 디버프광역 → 버프광역
         out = out.replace('/skill-element/디버프광역', '/skill-element/버프광역')
-                 .replace('/skill-element/디버프', '/skill-element/버프');
+            .replace('/skill-element/디버프', '/skill-element/버프');
         // 의식3 이미지는 의식2로
         out = out.replace('item-mind_stat3', 'item-mind_stat2')
-                 .replace('의식3', '의식2')
-                 .replace('/character-detail/ritual3', '/character-detail/ritual2');
+            .replace('의식3', '의식2')
+            .replace('/character-detail/ritual3', '/character-detail/ritual2');
         return out;
     }
 
-    adjustImagesForLang(root=document) {
+    adjustImagesForLang(root = document) {
         const lang = this.getCurrentLang();
         if (lang === 'kr') return;
         root.querySelectorAll('.defense-table-container img, .penetrate-table-container img').forEach(img => {
@@ -221,7 +221,7 @@ class DefenseCalc {
                 // 아이콘 경로도 언어에 맞춰 보정
                 this.adjustImagesForLang(document);
                 // 사전 매핑 단어 번역(원더/계시 등)
-                try { if (typeof I18NUtils !== 'undefined' && I18NUtils.translateStatTexts) { I18NUtils.translateStatTexts(document); } } catch(_) {}
+                try { if (typeof I18NUtils !== 'undefined' && I18NUtils.translateStatTexts) { I18NUtils.translateStatTexts(document); } } catch (_) { }
                 return;
             }
             if (tries < 20) setTimeout(tryTranslate, 100);
@@ -236,9 +236,9 @@ class DefenseCalc {
             // 중복 렌더링 방지: 이미 렌더링된 경우 재렌더링하지 않음
             return;
         }
-    
+
         if (this._jcCalcLoadPromise) return this._jcCalcLoadPromise;
-        
+
         const url = `${BASE_URL}/data/characters/J&C/JC_calc.js?v=${typeof APP_VERSION !== 'undefined' ? APP_VERSION : '1'}`;
         this._jcCalcLoadPromise = new Promise((resolve) => {
             try {
@@ -248,15 +248,15 @@ class DefenseCalc {
                 script.onload = () => {
                     // [중요] 스크립트 로드 완료 시 테이블을 강제로 다시 그려야
                     // J&C 아이템들이 registerItem을 통해 등록됩니다.
-                    try { 
+                    try {
                         // 중복 렌더링 방지: 이미 초기화된 경우 재렌더링하지 않음
                         // initializeTable과 initializePenetrateTable은 생성자에서 이미 호출되었으므로 여기서는 호출하지 않음
-                    } catch(_) {}
+                    } catch (_) { }
                     resolve();
                 };
                 script.onerror = () => resolve();
                 document.head.appendChild(script);
-            } catch(_) {
+            } catch (_) {
                 resolve();
             }
         });
@@ -337,13 +337,13 @@ class DefenseCalc {
             if (typeof CharacterListLoader !== 'undefined') {
                 visibleNames = await CharacterListLoader.getVisibleNames(showSpoiler);
             }
-        } catch(_) {}
+        } catch (_) { }
 
         order.forEach(groupName => {
             const items = groupsObj[groupName] || [];
 
             // 그룹 필터링: 원더/계시/공통 제외하고 목록에 없는 캐릭터는 스킵
-            if (!['원더','계시','공통'].includes(groupName)) {
+            if (!['원더', '계시', '공통'].includes(groupName)) {
                 if (Array.isArray(visibleNames) && visibleNames.length > 0 && !visibleNames.includes(groupName)) {
                     return; // skip rendering this group
                 }
@@ -367,7 +367,7 @@ class DefenseCalc {
             const isMobile = window.innerWidth <= 1200;
             const initiallyOpen = !isMobile || groupName === '계시' || groupName === '원더';
             caret.classList.toggle('open', initiallyOpen);
-            
+
             // SVG chevron 생성
             const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
             svg.setAttribute('width', '16');
@@ -375,7 +375,7 @@ class DefenseCalc {
             svg.setAttribute('viewBox', '0 0 16 16');
             svg.setAttribute('fill', 'none');
             svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-            
+
             const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
             if (initiallyOpen) {
                 // 아래를 보는 chevron (열림)
@@ -414,18 +414,18 @@ class DefenseCalc {
                         // 관통 테이블: jc1 전용 컨트롤 (공식: value/2 + value/2 * N/100)
                         JCCalc.attachJC1Control(headerTr, this);
                     } else if (!isPenetrate && JCCalc.attachJC2Control) {
-                        // 방어력 감소 테이블: jc2 전용 컨트롤 (공식: value * N/100)
+                        // 방어력 감소 테이블: jc2 전용 컨트롤 (공식: value/2 + value/2 * N/100)
                         JCCalc.attachJC2Control(headerTr, this);
                     }
                 }
-            } catch(_) {}
+            } catch (_) { }
 
             // 토글 동작: 같은 그룹의 데이터 행 show/hide
             headerTr.addEventListener('click', () => {
                 const isOpen = caret.classList.contains('open');
                 const newIsOpen = !isOpen;
                 caret.classList.toggle('open', newIsOpen);
-                
+
                 // 그룹 헤더의 열림/닫힘 상태 클래스 업데이트
                 if (newIsOpen) {
                     headerTr.classList.add('group-open');
@@ -434,7 +434,7 @@ class DefenseCalc {
                     headerTr.classList.add('group-closed');
                     headerTr.classList.remove('group-open');
                 }
-                
+
                 // SVG chevron 업데이트
                 const svg = caret.querySelector('svg');
                 if (svg) {
@@ -449,7 +449,7 @@ class DefenseCalc {
                         }
                     }
                 }
-                
+
                 items.forEach(it => {
                     if (it.__rowEl) {
                         if (newIsOpen) {
@@ -468,7 +468,7 @@ class DefenseCalc {
                     }
                 });
             });
-            
+
             // 초기 상태 클래스 설정
             if (initiallyOpen) {
                 headerTr.classList.add('group-open');
@@ -496,7 +496,7 @@ class DefenseCalc {
                 }
                 row.classList.add('group-row');
                 row.setAttribute('data-group', groupName);
-                
+
                 // 각 그룹의 마지막 row에 클래스 추가
                 if (index === items.length - 1) {
                     row.classList.add('group-last-row');
@@ -508,20 +508,20 @@ class DefenseCalc {
                     } else {
                         item.__rowEl = row;
                     }
-                } catch(_) {
-                    try { item.__rowEl = row; } catch(_) {}
+                } catch (_) {
+                    try { item.__rowEl = row; } catch (_) { }
                 }
                 tbody.appendChild(row);
             });
 
             // 그룹 헤더 렌더 후 텍스트 번역 보정
-            try { if (typeof I18NUtils !== 'undefined' && I18NUtils.translateStatTexts) { I18NUtils.translateStatTexts(tbody); } } catch(_) {}
+            try { if (typeof I18NUtils !== 'undefined' && I18NUtils.translateStatTexts) { I18NUtils.translateStatTexts(tbody); } } catch (_) { }
         });
     }
 
     createTableRow(data, isPenetrate = false, groupName = '') {
         const row = document.createElement('tr');
-        
+
         // 초기 선택된 항목에 대해 selected 클래스 추가
         if (isPenetrate) {
             if (this.selectedPenetrateItems.has(data.id)) {
@@ -532,17 +532,17 @@ class DefenseCalc {
                 row.classList.add('selected');
             }
         }
-        
+
         // 괴도 이름이 비어있는 경우 클래스 추가
         if (!data.charName && data.id !== 1) {
             row.classList.add('empty-char');
         }
-        
+
         // 체크박스 열
         const checkCell = document.createElement('td');
         checkCell.className = 'check-column';
         const checkbox = document.createElement('img');
-        checkbox.src = isPenetrate 
+        checkbox.src = isPenetrate
             ? (this.selectedPenetrateItems.has(data.id) ? `${BASE_URL}/assets/img/ui/check-on.png` : `${BASE_URL}/assets/img/ui/check-off.png`)
             : (this.selectedItems.has(data.id) ? `${BASE_URL}/assets/img/ui/check-on.png` : `${BASE_URL}/assets/img/ui/check-off.png`);
         checkbox.onclick = () => {
@@ -554,35 +554,35 @@ class DefenseCalc {
         };
         checkCell.appendChild(checkbox);
         row.appendChild(checkCell);
-        
+
         // char-img-column / char-name-column 제거: 데이터 행에서는 표시 안 함
-        
+
         // 목표 열
         const targetCell = document.createElement('td');
         targetCell.className = 'target-column';
         targetCell.textContent = this.normalizeTextForLang(data.target);
         targetCell.setAttribute('data-target', data.target);
         row.appendChild(targetCell);
-        
+
         // 스킬 아이콘 열
         const skillIconCell = document.createElement('td');
         skillIconCell.className = 'skill-icon-column';
         if (data.skillIcon) {
             const skillIcon = document.createElement('img');
             skillIcon.src = this.transformIconSrcForLang(data.skillIcon);
-            
+
             // 스킬 관련 타입인 경우 skill-icon 클래스 추가
-            if (data.type.includes('스킬') || 
-                data.type === '하이라이트' || 
+            if (data.type.includes('스킬') ||
+                data.type === '하이라이트' ||
                 data.type === '패시브' ||
                 data.type === '총격') {
                 skillIcon.className = 'skill-icon';
             }
-            
+
             skillIconCell.appendChild(skillIcon);
         }
         row.appendChild(skillIconCell);
-        
+
         // 스킬 이름 열 (분류 + 이름 결합)
         const skillNameCell = document.createElement('td');
         skillNameCell.className = 'skill-name-column';
@@ -612,17 +612,17 @@ class DefenseCalc {
         const typeSpan = document.createElement('span');
         typeSpan.className = 'skill-type-label';
         typeSpan.textContent = this.normalizeTextForLang(data.type);
-        
+
         const nameSpan = document.createElement('span');
         nameSpan.className = 'skill-name-text';
-        
+
         // 모바일에서 원더/계시 그룹이고 skill-name-text가 있을 경우 type-label과 구분자 제거
         const isMobile = window.innerWidth <= 1200;
         const isWonder = groupName === '원더';
         const isRevelation = groupName === '계시';
         const hasNameText = localizedName && localizedName.trim();
         const shouldHideTypeLabel = isMobile && (isWonder || isRevelation) && hasNameText;
-        
+
         if (currentLang === 'kr') {
             // KR: 분류 + 이름 모두 표기
             nameSpan.textContent = localizedName;
@@ -653,7 +653,7 @@ class DefenseCalc {
             }
         }
         row.appendChild(skillNameCell);
-        
+
         // 옵션 열
         const optionCell = document.createElement('td');
         optionCell.className = 'option-column';
@@ -672,14 +672,14 @@ class DefenseCalc {
 
             // values 매핑: 언어 우선, 폴백 KR
             const valuesLang = (lang === 'en' && data.values_en) ? data.values_en
-                              : (lang === 'jp' && data.values_jp) ? data.values_jp
-                              : null;
+                : (lang === 'jp' && data.values_jp) ? data.values_jp
+                    : null;
             const valuesBase = data.values || null;
 
             // 기본 선택 옵션: 언어 우선, 폴백 KR
             const defaultLangOption = (lang === 'en' && data.defaultOption_en) ? data.defaultOption_en
-                                   : (lang === 'jp' && data.defaultOption_jp) ? data.defaultOption_jp
-                                   : null;
+                : (lang === 'jp' && data.defaultOption_jp) ? data.defaultOption_jp
+                    : null;
 
             // 저장된 옵션 로드
             const savedOption = this.loadOptionSelection(data.id, isPenetrate);
@@ -739,7 +739,7 @@ class DefenseCalc {
                             }
                             JCCalc.onOptionChanged(data, valueCell, jcType, this);
                             return;
-                        } catch(_) {}
+                        } catch (_) { }
                     }
                     data.value = nextValue;
                     valueCell.textContent = `${data.value}%`;
@@ -755,20 +755,20 @@ class DefenseCalc {
             optionCell.appendChild(select);
         }
         row.appendChild(optionCell);
-        
+
         // 수치 열
         const valueCell = document.createElement('td');
         valueCell.className = 'value-column';
-        
+
         // J&C 전용 페르소나 성능 보정
         // id가 'jc3' 인 경우는 보정 제외 
         const isExcluded = (String(data.id) === 'jc3');
-        
+
         if (!isExcluded && groupName === 'J&C' && typeof JCCalc !== 'undefined' && JCCalc.registerItem) {
             try {
                 // jc1(관통 테이블)과 jc2(방어력 감소 테이블)에 각각 별도 타입 사용
                 // jc1: 공식 value/2 + value/2 * N/100
-                // jc2: 공식 value * N/100
+                // jc2: 공식 value/2 + value/2 * N/100
                 let type;
                 if (String(data.id) === 'jc1') {
                     type = 'jc1_penetrate';
@@ -779,20 +779,20 @@ class DefenseCalc {
                     type = isPenetrate ? 'penetrate' : 'def';
                 }
                 JCCalc.registerItem(data, valueCell, type, this);
-            } catch(_) {
+            } catch (_) {
                 valueCell.textContent = `${data.value}%`;
             }
         } else {
             valueCell.textContent = `${data.value}%`;
         }
         row.appendChild(valueCell);
-        
+
         // 지속시간 열
         const durationCell = document.createElement('td');
         durationCell.className = 'duration-column';
         durationCell.textContent = this.normalizeTextForLang(data.duration);
         row.appendChild(durationCell);
-        
+
         // 비고 열
         const noteCell = document.createElement('td');
         noteCell.className = 'note-column';
@@ -802,23 +802,23 @@ class DefenseCalc {
         if (lang === 'en' && data.note_en) noteText = data.note_en;
         else if (lang === 'jp' && data.note_jp) noteText = data.note_jp;
         noteCell.textContent = this.normalizeTextForLang(noteText);
-        
+
         // note가 비어있으면 행에 클래스 추가 (모바일에서 3행 제거용)
         if (!noteText || !noteText.trim()) {
             row.classList.add('no-note');
         }
-        
+
         row.appendChild(noteCell);
-        
+
         return row;
     }
 
     toggleCheck(checkbox, data) {
         const isChecked = checkbox.src.includes('check-on');
         checkbox.src = `${BASE_URL}/assets/img/ui/check-${isChecked ? 'off' : 'on'}.png`;
-        
+
         const row = checkbox.closest('tr');
-        
+
         if (isChecked) {
             this.selectedItems.delete(data.id);
             row.classList.remove('selected');
@@ -826,16 +826,16 @@ class DefenseCalc {
             this.selectedItems.add(data.id);
             row.classList.add('selected');
         }
-        
+
         this.updateTotal();
     }
 
     togglePenetrateCheck(checkbox, data) {
         const isChecked = checkbox.src.includes('check-on');
         checkbox.src = `${BASE_URL}/assets/img/ui/check-${isChecked ? 'off' : 'on'}.png`;
-        
+
         const row = checkbox.closest('tr');
-        
+
         if (isChecked) {
             this.selectedPenetrateItems.delete(data.id);
             row.classList.remove('selected');
@@ -843,7 +843,7 @@ class DefenseCalc {
             this.selectedPenetrateItems.add(data.id);
             row.classList.add('selected');
         }
-        
+
         this.updatePenetrateTotal();
         this.updateDamageCalculation();
     }
@@ -864,18 +864,18 @@ class DefenseCalc {
             .map(id => this.idToPenetrateItem.get(id))
             .filter(Boolean)
             .reduce((sum, item) => sum + (item.value || 0), 0);
-        
+
         // 입력 필드의 값 (숫자가 아닌 경우 0으로 처리)
         const revelationValue = parseFloat(this.revelationPenetrateInput.value) || 0;
         const explanationValue = parseFloat(this.explanationPowerInput.value) || 0;
-        
+
         // 전체 합계 계산
         const total = tableTotal + revelationValue + explanationValue;
         const capped = Math.min(100, Math.max(0, total));
-        
+
         // 합계 표시
         this.penetrateTotal = capped;
-        
+
         // 대미지 계산 업데이트
         this.updateDamageCalculation();
     }
@@ -932,7 +932,7 @@ class DefenseCalc {
             let scrollTop = 0;
             let startTime = 0;
             let startTarget = null;
-            
+
             bossListContainer.addEventListener('mousedown', (e) => {
                 if (e.target.classList.contains('boss-list-item') || e.target.closest('.boss-list-item')) {
                     startTarget = e.target.closest('.boss-list-item');
@@ -947,7 +947,7 @@ class DefenseCalc {
                 bossListContainer.style.cursor = 'grabbing';
                 e.preventDefault();
             });
-            
+
             bossListContainer.addEventListener('touchstart', (e) => {
                 if (e.target.classList.contains('boss-list-item') || e.target.closest('.boss-list-item')) {
                     startTarget = e.target.closest('.boss-list-item');
@@ -961,7 +961,7 @@ class DefenseCalc {
                 scrollTop = bossListContainer.scrollTop;
                 e.preventDefault();
             });
-            
+
             document.addEventListener('mousemove', (e) => {
                 if (startTarget && Math.abs(e.clientY - startY) > 5) {
                     // 드래그로 판단
@@ -973,7 +973,7 @@ class DefenseCalc {
                     bossListContainer.scrollTop = scrollTop - deltaY;
                 }
             });
-            
+
             document.addEventListener('touchmove', (e) => {
                 if (startTarget && Math.abs(e.touches[0].clientY - startY) > 5) {
                     // 드래그로 판단
@@ -986,7 +986,7 @@ class DefenseCalc {
                     e.preventDefault();
                 }
             });
-            
+
             document.addEventListener('mouseup', (e) => {
                 if (startTarget && !isDragging && Date.now() - startTime < 300) {
                     // 클릭으로 판단
@@ -999,7 +999,7 @@ class DefenseCalc {
                 }
                 startTarget = null;
             });
-            
+
             document.addEventListener('touchend', (e) => {
                 if (startTarget && !isDragging && Date.now() - startTime < 300) {
                     // 클릭으로 판단
@@ -1021,8 +1021,8 @@ class DefenseCalc {
             this.ensureCsvNameMapLoaded().then(() => {
                 this.renderBossList();
             });
-        } catch(_) {}
-        
+        } catch (_) { }
+
         // 입력 변경 시 실시간 반영
         if (this.baseDefenseInput) {
             this.baseDefenseInput.addEventListener('input', () => this.updateDamageCalculation());
@@ -1033,19 +1033,19 @@ class DefenseCalc {
 
         // 초기: 기본 선택된 보스 값으로 입력 필드 채우기
         // 비동기 로딩 (백그라운드)
-        try { this.ensureCsvNameMapLoaded(); } catch(_) {}
+        try { this.ensureCsvNameMapLoaded(); } catch (_) { }
         if (initBoss) {
             this.selectBoss(initBoss.id);
         }
 
         this.updateDamageCalculation();
-        try { if (typeof DefenseI18N !== 'undefined' && DefenseI18N.updateLanguageContent) { DefenseI18N.updateLanguageContent(document); } } catch(_) {}
-        try { if (typeof I18NUtils !== 'undefined' && I18NUtils.translateStatTexts) { I18NUtils.translateStatTexts(document); } } catch(_) {}
+        try { if (typeof DefenseI18N !== 'undefined' && DefenseI18N.updateLanguageContent) { DefenseI18N.updateLanguageContent(document); } } catch (_) { }
+        try { if (typeof I18NUtils !== 'undefined' && I18NUtils.translateStatTexts) { I18NUtils.translateStatTexts(document); } } catch (_) { }
     }
 
     renderBossList() {
         if (!this.bossList) return;
-        
+
         // 기존 리스트 비우기
         this.bossList.innerHTML = '';
 
@@ -1063,25 +1063,25 @@ class DefenseCalc {
             if (this.selectedBossId === boss.id) {
                 listItem.classList.add('selected');
             }
-            
+
             // 보스 아이콘 추가
             if (boss.img) {
                 const icon = document.createElement('img');
                 icon.src = `${BASE_URL}/assets/img/enemy/${boss.img}`;
                 icon.alt = this.getBossDisplayName(boss);
                 icon.className = 'boss-list-icon';
-                icon.onerror = function() {
+                icon.onerror = function () {
                     this.style.display = 'none';
                 };
                 listItem.appendChild(icon);
             }
-            
+
             // 보스 이름 추가
             const nameSpan = document.createElement('span');
             nameSpan.className = 'boss-list-name';
             nameSpan.textContent = this.getBossDisplayName(boss);
             listItem.appendChild(nameSpan);
-            
+
             this.bossList.appendChild(listItem);
         });
     }
@@ -1206,17 +1206,17 @@ class DefenseCalc {
             pierceTarget = Math.max(0, Math.min(100, pierceTarget));
         }
         this.setSumTarget('pierce', penetrateTotal, pierceTarget);
-        
+
         // 관통 남은 수치 계산
         const pierceRemaining = isFinite(pierceTarget) ? Math.max(0, pierceTarget - penetrateTotal) : 0;
         const pierceRemainingEl = document.getElementById('pierceValueRemaining');
         if (pierceRemainingEl) {
             pierceRemainingEl.textContent = isFinite(pierceRemaining) ? `${pierceRemaining.toFixed(1)}%` : '-';
         }
-        
+
         // 방어력 감소 목표: 관통 적용 후 방어계수
         this.setSumTarget('reduce', reduceTotalRaw, afterPierceCoef);
-        
+
         // 방어력 감소 남은 수치 계산
         const reduceRemaining = isFinite(afterPierceCoef) ? Math.max(0, afterPierceCoef - reduceTotalRaw) : 0;
         const reduceRemainingEl = document.getElementById('reduceValueRemaining');
@@ -1452,7 +1452,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (window.defenseCalcInstance) {
         return;
     }
-    
+
     const start = () => {
         // 원더 번역 주입을 페르소나 데이터 로드 이후에 보장
         try {
@@ -1460,7 +1460,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 DefenseI18N.enrichDefenseDataWithWonderNames) {
                 DefenseI18N.enrichDefenseDataWithWonderNames();
             }
-        } catch (_) {}
+        } catch (_) { }
         window.defenseCalcInstance = new DefenseCalc();
     };
 

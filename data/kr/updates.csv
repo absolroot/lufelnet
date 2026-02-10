@@ -1,5 +1,6 @@
 date,version,content
-2026.02.10,v4.4.0,Tactic Maker - When not in edit mode, character skills display tooltips
+2026.02.11,v4.4.1,New Guide - Mindscape Core
+2026.02.10,v4.4.0,Tactic Maker - When not in edit mode\n character skills display tooltips
 2026.02.10,v4.3.9,Guide Refactoring\nNew Guide - Thieves Den Combat Buffs\nNew Guide - What is Eludi. Stat Buff
 2026.02.08,v4.3.8,Tempest Riko Recommend Stat Calc Added
 2026.02.07,v4.3.7,Schedule Update\nTactics Maker - Calculator\n- Fixed a bug where options were not persisted\n- Changed so that area-of-effect elements are applied to the entire character at once\n- Options that cannot coexist are now automatically deselected when another incompatible option is selected

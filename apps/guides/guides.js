@@ -453,36 +453,52 @@ const Guides = {
     },
 
     /**
-     * Play a GIF once then freeze on its last frame
+     * Play a GIF once then freeze on its last frame.
+     * Simple approach: let GIF play naturally, freeze after one loop duration.
      */
     async playGifOnce(img) {
+        const t0 = performance.now();
         try {
-            const res = await fetch(img.src);
+            const gifSrc = img.src;
+
+            // 1. Fetch GIF binary and parse total animation duration
+            const res = await fetch(gifSrc);
             const buf = new Uint8Array(await res.arrayBuffer());
-            let duration = 0;
+            let totalDelay = 0;
             for (let i = 0; i < buf.length - 5; i++) {
                 if (buf[i] === 0x21 && buf[i + 1] === 0xF9) {
-                    duration += (buf[i + 4] | (buf[i + 5] << 8)) * 10;
+                    let d = (buf[i + 4] | (buf[i + 5] << 8)) * 10;
+                    if (d < 20) d = 100; // browsers use ~100ms for 0-delay frames
+                    totalDelay += d;
                 }
             }
-            if (duration <= 0) return;
+            if (totalDelay <= 0) return;
 
-            const freeze = () => {
-                try {
-                    const c = document.createElement('canvas');
-                    c.width = img.naturalWidth;
-                    c.height = img.naturalHeight;
-                    c.getContext('2d').drawImage(img, 0, 0);
-                    img.src = c.toDataURL();
-                } catch (e) {}
-            };
-
-            if (img.complete && img.naturalWidth) {
-                setTimeout(freeze, duration);
-            } else {
-                img.addEventListener('load', () => setTimeout(freeze, duration), { once: true });
+            // 2. Ensure image is loaded (set up listener BEFORE checking)
+            if (!img.complete || !img.naturalWidth) {
+                await new Promise(r => {
+                    img.addEventListener('load', r, { once: true });
+                    // Safety: if already complete by now, resolve immediately
+                    if (img.complete && img.naturalWidth) r();
+                });
             }
-        } catch (e) {}
+
+            // 3. Wait for one full loop to finish
+            const elapsed = performance.now() - t0;
+            const remaining = totalDelay - elapsed;
+            if (remaining > 0) {
+                await new Promise(r => setTimeout(r, remaining));
+            }
+
+            // 4. Freeze: capture current frame and replace with static PNG
+            const canvas = document.createElement('canvas');
+            canvas.width = img.naturalWidth;
+            canvas.height = img.naturalHeight;
+            canvas.getContext('2d').drawImage(img, 0, 0);
+            img.src = canvas.toDataURL('image/png');
+        } catch (e) {
+            console.error('playGifOnce failed:', e);
+        }
     },
 
     /**

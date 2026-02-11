@@ -1,5 +1,48 @@
 [
-
+  {
+    "id": "theurgy",
+    "titles": {
+      "kr": "테우르기아 메커니즘",
+      "en": "Theurgy Mechanism",
+      "jp": "テウルギア メカニズム"
+    },
+    "excerpts": {
+      "kr": "P3 콜라보가 시작된 지 어느덧 1년이 가까워지지만 아직도 인게임에서는 테우르기아 메커니즘에 대해 설명해주고 있지 않고, 올해 글로벌 서버에도 P3 콜라보가 시작될 예정으로 시스템을 정리해본다.테우르기아는 P3R 콜라보레이션을 통해 등장한 고유한 필살기 시스템으로 HI...",
+      "en": "Although it has been nearly a year since the P3 collab began, the in-game still has not explained the Theurgy mechanism. With the P3 collab also scheduled to launch on the global server this year, here is a summary of the system. Theurgy is a unique ultimate skill system introduced through the P3R collaboration, replacing HI...",
+      "jp": "P3コラボが始まってから早くも1年が近づいているが、未だにゲーム内ではテウルギアのメカニズムについて説明されておらず、今年グローバルサーバーでもP3コラボが開始される予定のため、システムを整理してみる。テウルギアはP3Rコラボレーションを通じて登場した固有の必殺技システムでHI..."
+    },
+    "searchContent": {
+      "kr": "P3 콜라보가 시작된 지 어느덧 1년이 가까워지지만 아직도 인게임에서는 테우르기아 메커니즘에 대해 설명해주고 있지 않고, 올해 글로벌 서버에도 P3 콜라보가 시작될 예정으로 시스템을 정리해본다.테우르기아는 P3R 콜라보레이션을 통해 등장한 고유한 필살기 시스템으로 HIGHLIGHT를 대체한다.메커니즘이 사뭇 달라 초기에는 이해하기 어렵지만 한 번 익숙해지고 나면 괜찮아진다.테우르기아 에너지는 해당 캐릭터의 '턴이 시작될 때 35 포인트가 회복'된다.기존 HIGHLIGHT는 게이지를 파티원 전체가 공유해서 HIGHLIGHT 게이지가 100%가 되면 파티원 중 한 명이 사용하는 방식이었다면 테우르기아 게이지는 각 캐릭터에 종속된다.HIGHLIGHT와 마찬가지로 자신의 순서가 아닐 때도 사용 가능한 기술로, 한 턴에 여러개의 테우르기아를 한 번에 사용할 수 있다.각 캐릭터마다 테우르기아를 사용하는데 필요한 에너지 수치는 다르다.캐릭터필요 테우르기아 에너지유키 마코토100타케바 유카리70사나다 아키히코140키리조 미츠루70기본 턴 시작 35 회복 외에도 의식에 의한 추가 효과나 유카리, 후카의 스킬을 통한 에너지 회복도 가능해 파티에 따라 사용 주기는 달라진다.특수 케이스를 제외하고서는 필요 테우르기아 에너지를 초과하여 충전되지 않는다.(ex. 유키 마코토 테우르기아 에너지 70 → 유키 마코토 턴 시작 +35 → 100)따라서 다음 해당 캐릭터가 행동하기 전에 사용해야 사용되지 않아 낭비되는 테우르기아 에너지를 최소화할 수 있다.참고로 테우르기아는 HIGHLIGHT가 아니기 때문에 아야카의 스킬3으로 발동할 수 없다.",
+      "en": "",
+      "jp": ""
+    },
+    "category": "system",
+    "date": "2026-02-11",
+    "author": "AbsolRoot",
+    "thumbnail": "/apps/guides/data/assets/theurgy/스크린샷 2026-02-11 114301.png"
+  },
+  {
+    "id": "speed-order",
+    "titles": {
+      "kr": "'속도' 그리고 '순서'",
+      "en": "'Speed' and 'Turn Order'",
+      "jp": "「速さ」そして「行動順」"
+    },
+    "excerpts": {
+      "kr": "P5X에서는 4명의 괴도가 파티에 참가한다. 각각의 순서는 전투 진입 전에 정해진다. 이 순서는 제한된 턴 내에서 전투를 수행하는 흉몽의 문이나 마음의 바다에서 무척 중요한 가치를 지닌다.캐릭터의 배치에 무관하게 라인업에 적혀있는 순서대로 행동하게 되며 이는 속도에 의...",
+      "en": "In P5X, a party consists of 4 Phantom Thieves. Each character's turn order is determined before entering battle. This order is highly valuable in content with turn limits like Nightmare's Gateway or Sea of Souls. Regardless of character placement, they act in the order listed in the lineup, which is determined by Speed...",
+      "jp": "P5Xでは4人の怪盗でパーティを編成する。それぞれの行動順は戦闘開始前に決定される。この順序は、限られたターン内で戦闘を行う悪夢の門や心の海において非常に重要な価値を持つ。キャラクターの配置に関わらず、ラインナップに表示されている順に行動し、これは速さによって決..."
+    },
+    "searchContent": {
+      "kr": "P5X에서는 4명의 괴도가 파티에 참가한다. 각각의 순서는 전투 진입 전에 정해진다. 이 순서는 제한된 턴 내에서 전투를 수행하는 흉몽의 문이나 마음의 바다에서 무척 중요한 가치를 지닌다.캐릭터의 배치에 무관하게 라인업에 적혀있는 1st, 2nd, 3rd, 4th 순서대로 행동하게 되며 이는 속도에 의해 결정된다.속도속도는 스탯에서 확인할 수가 있으며 각 캐릭터별로 속도는 별개로 적용된다.아군의 '회피' 결정력은 해당 속도에 의한 확률로 계산된다. 과거에는 적에게 피격 당해야만 HIGHLIGHT 게이지가 차는 경우가 있어 속도를 올리는 것이 손해였지만 이제는 아군 행동에만 게이지가 영향을 받아 해결됐다. 적의 속도가 아군보다 빠를 경우 적의 행동이 아군보다 빨라진다.그러나 정말 일부를 제외하고는 대부분 아군이 우선 행동한다.만약 두 캐릭터의 속도가 동일한 경우 라인업 배치에서 왼쪽에 있는 캐릭터가 우측에 있는 캐릭터보다 우선 행동한다.해당 라인업에서의 순서를 보고 아군의 속도를 다른 방식으로 조절한 경우 업데이트되지 않는 버그가 잦으니, 조절한 다음에는 나갔다가 새로 들어오는 것이 정확하다.일반적으로 '반항' '지배'와 같이 딜러 포지션의 캐릭터들은 100 미만의 속도를, '우월' '굴복' 등 버퍼와 디버퍼 포지션의 캐릭터들은 100 이상의 속도를 지니고 있어 자연스럽게 딜러가 후순위에서 행동하도록 구성돼있다.해당 수치는 각 캐릭터 상세 페이지 가이드에서 확인할 수 있다. 속도 조절원더의 경우 페르소나 스킬 '민첩의 마음가짐' 이나 '굳건한 산'을 배우게 해서 속도를 조절할 수 있고, 두 개를 겹쳐 활용해서 3 단위로도 속도를 조절 할 수 있다.KR/CN/TW 등 기존 서버와는 달리 글로벌 서버에스는 페르소나 스킬 스쿠카쟈에 속도를 5 추가하는 효과가 추가됐다. 그러나 해당 스킬을 사용해서 속도가 늘어난다고 해서 행동 순서는 바뀌지 않는다. 이외 캐릭터들은 대부분 계시 카드를 통해서 속도를 조절한다. 속도 스탯을 필요로 하는 캐릭터가 아니면 웬만하면 속도 스탯을 파밍할 일이 정말 적기 때문에 많은 유저들의 원성을 사기도 하는 시스템이지만, 어쩔 수가 없다. 이외에도 계시 세트의 효과로 속도를 증가시키거나 감소시키는 형태도 존재한다.순서의 중요성앞서 미리 말했지만 딜러들은 대부분 맨 마지막에 순서가 배치되도록 기본 속도부터 설계가 돼있다. 각종 랭킹이 존재하는 시스템들은 '턴 제한'이 존재한다.즉 딜러가 활동할 수 있는 회수는 한정돼있고, 모든 턴에서 최대한 많은 버프를 받은 상태에서 공격을 수행해야한다.예를 들어 메인 딜러가 1번째 순서에 위치해있을 경우, 1턴에는 아무런 버프도 받지 못하고 공격하고 2턴에는 1턴의 버프만 받아 공격하게 된다.반대로 4번째 순서에 위치한 경우 1턴에 3개의 버프를, 2턴에는 6개 이상의 버프를 받은 상태에서 공격할 수 있다.예외적으로 '유스케'는 적의 공격을 받아서 반격하는 형태이고, 자신의 행동이 끝나면 버프가 1턴씩 차감되므로 반대로 순서를 1번에 배치해서 버프 유지시간을 늘리는 형태로 구성된다.또한 HIGHLIGHT는 아야카를 채용한 경우가 아니면 일반적으로 2턴에서야 활성화되고, HIGHLIGHT는 한 번 사용한 후 캐릭터가 행동을 해야 쿨타임이 감소한다. (쿨타임 4행동)원더의 페르소나 3개 중 원하는 HIGHLIGHT를 발동하기 위해서라든지, 2턴에 사용한 캐릭터의 HIGHLIGHT를 5턴 이후에 다시 사용하고 싶은 경우 등1,2,3번째도 순서에 따라 디테일이 달라지는 경우가 존재하기 때문에 단순히 딜러를 4번에 두는 것 이상으로 순서는 꼼꼼히 고민해볼 필요가 있다.",
+      "en": "In P5X, a party consists of 4 Phantom Thieves. Each character's turn order is determined before entering battle. This order is highly valuable in content with turn limits like Nightmare's Gateway or Sea of Souls. Regardless of character placement, they act in the order of 1st, 2nd, 3rd, 4th listed in the lineup, which is determined by Speed. Speed can be checked in stats and is applied separately for each character. Ally 'Evasion' chance is calculated based on this Speed. In the past, HIGHLIGHT gauge only filled when taking damage, so increasing Speed was a disadvantage, but now it is resolved as allies' actions also affect the gauge. If the enemy's Speed is higher than the ally's, the enemy acts faster. However, with very few exceptions, allies generally act first. If two characters have the same Speed, the character on the left in the lineup acts before the one on the right. If you check the order in the lineup and adjust Speed in another way, there is often a bug where it doesn't update, so it's accurate to exit and re-enter after adjusting. General dealer position characters like 'Assassin' and 'Sweeper' have Speed under 100, while buffer and debuffer positions like 'Strategist' and 'Saboteur' have Speed over 100, naturally configuring dealers to act later. These values can be checked in each character's detail page guide. Speed Adjustment: Wonder can adjust speed by learning Persona skills 'Speed Master' or 'Ironclad Resolve', and can even adjust by units of 3 by stacking the two. Unlike KR/CN/TW servers, in Global server, Persona skill Sukukaja has an added effect of increasing Speed by 5. However, increasing Speed using this skill does not change turn order. Other characters mostly adjust Speed through Revelation Cards. Since most characters don't need Speed stats, it's a system that draws complaints from many users for having to farm Speed stats, but it can't be helped. There are also Revelation set effects that increase or decrease Speed. Importance of Order: As mentioned, dealers are designed with base Speed to be placed last in order. Systems with rankings generally have 'turn limits'. This means the dealer has limited action counts, and must attack with maximum buffs in every turn. For example, if the main dealer is 1st, they attack with no buffs in turn 1, and only turn 1 buffs in turn 2. Conversely, if placed 4th, they can attack with 3 buffs in turn 1 and 6+ buffs in turn 2. Exceptionally, 'Yusuke' counters enemy attacks, and buffs decrease by 1 turn after his action, so generally he is placed 1st to increase buff duration. Also, unless using Ayaka, HIGHLIGHT usually activates in turn 2, and HIGHLIGHT cooldown decreases only after the character acts. (Cooldown 4 actions). To activate a specific HIGHLIGHT among Wonder's 3 Personas, or to reuse a character's HIGHLIGHT used in turn 2 after turn 5, details vary depending on the order of 1st, 2nd, 3rd as well, so turn order requires careful consideration beyond just placing the dealer 4th.",
+      "jp": "P5Xでは4人の怪盗でパーティを編成する。それぞれの行動順は戦闘開始前に決定される。この順序は、限られたターン内で戦闘を行う悪夢の門や心の海において非常に重要な価値を持つ。キャラクターの配置に関わらず、ラインナップに表示されている1st、2nd、3rd、4thの順に行動し、これは速さによって決定される。速さはステータスで確認でき、各キャラクターごとに個別に適用される。味方の「回避」判定は、その速さによる確率で計算される。以前は敵に攻撃されなければHIGHLIGHTゲージが溜まらない場合があり、速さを上げるのが損だったが、現在は味方の行動でもゲージが溜まるようになり解決された。敵の速さが味方より速い場合、敵の行動が味方より早くなる。しかし、ごく一部を除いて、ほとんどの場合は味方が先に行動する。もし2人のキャラクターの速さが同じ場合、ラインナップ配置で左側にいるキャラクターが右側にいるキャラクターより先に行動する。ラインナップでの順序を見て味方の速さを別の方法で調整した場合、更新されないバグが多いため、調整後は一度出てから入り直すのが正確だ。一般的に「反抗」「支配」のようなアタッカーポジションのキャラクターは100未満の速さを、「優越」「屈服」などバッファーやデバッファーポジションのキャラクターは100以上の速さを持っており、自然とアタッカーが後順位で行動するように構成されている。これらの数値は各キャラクター詳細ページのガイドで確認できる。速さ調整：ワンダーの場合、ペルソナスキル「素早さの心得」や「堅守の覚悟」を習得させて速さを調整でき、2つを重ねて活用することで3単位でも速さを調整できる。KR/CN/TWなど既存サーバーとは異なり、グローバルサーバーではペルソナスキル「スクカジャ」に速さを5追加する効果が追加された。しかし、そのスキルを使用して速さが増えても行動順は変わらない。その他のキャラクターは主に啓示カードを通じて速さを調整する。速さステータスを必要とするキャラクターでなければ、速さステータスをファーミングすることは本当に少ないため、多くのユーザーから不満を買うシステムでもあるが、仕方がない。他にも啓示セットの効果で速さを増加または減少させる形態も存在する。順序の重要性：前述の通り、アタッカーは大部分が最後に行動するように基本速さから設計されている。各種ランキングが存在するシステムには「ターン制限」が存在する。つまりアタッカーが活動できる回数は限られており、すべてのターンで最大限多くのバフを受けた状態で攻撃を行う必要がある。例えばメインアタッカーが1番目に位置している場合、1ターン目には何のバフも受けずに攻撃し、2ターン目には1ターン目のバフだけを受けて攻撃することになる。逆に4番目に位置している場合、1ターン目に3つのバフを、2ターン目には6つ以上のバフを受けた状態で攻撃できる。例外として「祐介」は敵の攻撃を受けて反撃する形態であり、自身の行動が終わるとバフが1ターンずつ減少するため、逆に順序を1番にしてバフ維持時間を延ばす形で構成される。またHIGHLIGHTは綾香を採用していない場合、一般的に2ターン目でようやく活性化され、HIGHLIGHTは一度使用した後、キャラクターが行動しなければクールタイムが減少しない。（クールタイム4行動）。ワンダーのペルソナ3体のうち希望するHIGHLIGHTを発動するためや、2ターン目に使用したキャラクターのHIGHLIGHTを5ターン目以降に再使用したい場合など、1、2、3番目も順序によって詳細が異なる場合があるため、単にアタッカーを4番目に置くこと以上に順序は慎重に検討する必要がある。"
+    },
+    "category": "combat",
+    "date": "2026-02-11",
+    "author": "AbsolRoot",
+    "thumbnail": "/apps/guides/data/assets/speed-order/pasted-1770797172878.png"
+  },
   {
     "id": "lv100",
     "titles": {
@@ -221,4 +264,3 @@
     "thumbnail": "/apps/guides/data/assets/damage-calc/damage.gif"
   }
 ]
-

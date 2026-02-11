@@ -1,0 +1,29 @@
+---
+layout: default
+custom_css: []
+custom_js: []
+permalink: /article/theurgy/
+language: kr
+title: 테우르기아 메커니즘 - 루페르넷
+description: P3 콜라보가 시작된 지 어느덧 1년이 가까워지지만 아직도 인게임에서는 테우르기아 메커니즘에 대해 설명해주고 있지 않고, 올해 글로벌 서버에도 P3 콜라보가 시작될 예정으로 시스템을 정리해본다.테우르기아는 P3R 콜라보레이션을 통해 등장한 고유한 필살기 시스템으로 HI...
+image: /apps/guides/data/assets/theurgy/스크린샷 2026-02-11 114301.png
+---
+
+<head>
+    <link rel="stylesheet" href="/apps/guides/guides.css">
+    <script src="/apps/guides/guides.js"></script>
+</head>
+
+<div class="main-wrapper">
+    <div class="guide-view-container" id="guide-view-container">
+        <div class="guides-loading">Loading guide</div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    Navigation.load('article');
+    VersionChecker.check();
+    Guides.loadGuide('theurgy');
+});
+</script>

@@ -1,0 +1,105 @@
+{
+  "data": {
+    "boss": [
+      {
+        "affixs": [
+          {
+            "detail": "Shielded allies deal 20% increased damage.",
+            "name": "Special Effect"
+          },
+          {
+            "detail": "Party's Resonance damage is increased by 50%.",
+            "name": "Special Effect"
+          },
+          {
+            "detail": "At the end of each turn, foes gain 1 Berserk stack.\nBerserk: Increase damage by a set amount. Stacks up to 3 times.",
+            "name": "Special Effect"
+          },
+          {
+            "detail": "If the party contains Guardians or Medics, all foes' final damage dealt is decreased by 60% and final damage taken is increased by 20%. If not, all foes' final damage dealt is increased by 60%.",
+            "name": "Special Effect"
+          },
+          {
+            "detail": "Allies are unable to deal critical hits, but deal increased final damage from skills and Resonances. This increase is equal to critical hit rate x (critical damage - 100%). (Max critical hit rate in this calculation is 100%).",
+            "name": "Special Effect"
+          }
+        ],
+        "enemy": {
+          "adapt": {
+            "Absorb": [],
+            "Nullify": [],
+            "Reflect": [],
+            "Resistant": [
+              "Gun",
+              "Fire",
+              "Nuclear"
+            ],
+            "Weak": [
+              "Ice"
+            ]
+          },
+          "image": "B-guaiwutouxiang-surtr.png",
+          "level": "82",
+          "name": "Surt",
+          "skill": "108,103,1023,1008",
+          "sn": "733611",
+          "stat": {}
+        }
+      },
+      {
+        "affixs": [
+          {
+            "detail": "Foes' damage taken is increased by 3% for each debuff they have, up to 45%.",
+            "name": "Special Effect"
+          },
+          {
+            "detail": "Whenever an ally deals damage, that ally's damage is increased by 4%. Lasts for 3 turns. Stacks up to 10 times.",
+            "name": "Special Effect"
+          },
+          {
+            "detail": "At the end of each turn, foes gain 1 Berserk stack.\nBerserk: Increase damage by a set amount. Stacks up to 3 times.",
+            "name": "Special Effect"
+          },
+          {
+            "detail": "If the party contains Guardians or Medics, all foes' final damage dealt is decreased by 60% and final damage taken is increased by 20%. If not, all foes' final damage dealt is increased by 60%.",
+            "name": "Special Effect"
+          },
+          {
+            "detail": "Allies are unable to deal critical hits, but deal increased final damage from skills and Resonances. This increase is equal to critical hit rate x (critical damage - 100%). (Max critical hit rate in this calculation is 100%).",
+            "name": "Special Effect"
+          }
+        ],
+        "enemy": {
+          "adapt": {
+            "Absorb": [],
+            "Nullify": [],
+            "Reflect": [],
+            "Resistant": [
+              "Fire",
+              "Wind",
+              "Nuclear",
+              "Bless"
+            ],
+            "Weak": [
+              "Phys"
+            ]
+          },
+          "image": "B-guaiwutouxiang-baal.png",
+          "level": "82",
+          "name": "Baal",
+          "skill": "2452,2453,905,408,1403,2451,1021",
+          "sn": "739611",
+          "stat": {}
+        }
+      }
+    ],
+    "endTime": "2026-02-13 09:30:00",
+    "mode": {
+      "detail": "Each turn, the boss's attacks grow stronger, and you get more points!",
+      "name": "Multidimensional Dreamscape"
+    },
+    "startTime": "2026-02-06 10:30:00"
+  },
+  "msg": "OK",
+  "status": 0
+}

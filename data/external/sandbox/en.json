@@ -1,0 +1,962 @@
+{
+  "data": {
+    "endTime": "2026-03-05 05:00:00",
+    "nodes": {
+      "201": {
+        "affix": [
+          {
+            "desc": "Sweeper allies' final damage is increased by 60%.",
+            "name": "Special Effect",
+            "sn": 4502
+          }
+        ],
+        "award": [
+          {
+            "count": 600,
+            "img": "item-302001.png",
+            "name": "Stardust Shard"
+          },
+          {
+            "count": 24,
+            "img": "item-302021.png",
+            "name": "Stardust Bottle"
+          }
+        ],
+        "connected": [],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-kikurihime.png",
+            "level": "54",
+            "name": "Kikuri-Hime",
+            "skill": "1408,1506",
+            "sn": "640211",
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-kusinadahime.png",
+            "level": "54",
+            "name": "Kushinada",
+            "skill": "1036",
+            "sn": "640212",
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-amenouzume.png",
+            "level": "54",
+            "name": "Ame-no-Uzume",
+            "skill": "305,405,1505",
+            "sn": "640213",
+            "stat": {}
+          }
+        ],
+        "id": 201,
+        "img": "tianerong-xingpan-point03.png",
+        "isActive": true,
+        "name": "Kappa Stella",
+        "pos": [
+          0.0,
+          -400.0
+        ],
+        "unlockCond": null
+      },
+      "202": {
+        "affix": [
+          {
+            "desc": "Assassin allies' final damage is increased by 60%.",
+            "name": "Special Effect",
+            "sn": 4501
+          }
+        ],
+        "award": [
+          {
+            "count": 750,
+            "img": "item-302001.png",
+            "name": "Stardust Shard"
+          },
+          {
+            "count": 30,
+            "img": "item-302021.png",
+            "name": "Stardust Bottle"
+          }
+        ],
+        "connected": [
+          201,
+          203
+        ],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-arahabaki.png",
+            "level": "60",
+            "name": "Arahabaki",
+            "skill": "806,1019",
+            "sn": "640311",
+            "stat": {}
+          }
+        ],
+        "id": 202,
+        "img": "tianerong-xingpan-point03.png",
+        "isActive": true,
+        "name": "Zeta Stella",
+        "pos": [
+          374.40000000000003,
+          -192.4
+        ],
+        "unlockCond": null
+      },
+      "203": {
+        "affix": [
+          {
+            "desc": "The Highlight gauge fills 20% slower, but allies' Highlight final damage is increased by 100%.",
+            "name": "Special Effect",
+            "sn": 4533
+          }
+        ],
+        "award": [
+          {
+            "count": 900,
+            "img": "item-302001.png",
+            "name": "Stardust Shard"
+          },
+          {
+            "count": 36,
+            "img": "item-302021.png",
+            "name": "Stardust Bottle"
+          },
+          {
+            "count": 27,
+            "img": "item-302011.png",
+            "name": "Stardust Gem"
+          }
+        ],
+        "connected": [
+          202,
+          204
+        ],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-queenMab.png",
+            "level": "66",
+            "name": "Queen Mab",
+            "skill": "103,306",
+            "sn": "640711",
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-queenMab.png",
+            "level": "66",
+            "name": "Queen Mab",
+            "skill": "103,306",
+            "sn": "640712",
+            "stat": {}
+          }
+        ],
+        "id": 203,
+        "img": "tianerong-xingpan-point03.png",
+        "isActive": true,
+        "name": "Zeta Stella",
+        "pos": [
+          529.6,
+          34.0
+        ],
+        "unlockCond": null
+      },
+      "204": {
+        "affix": [
+          {
+            "desc": "Each time an ally deals damage to a foe, that ally's final damage is increased by 4%. Stacks up to 15 times. Lasts for 3 turns.",
+            "name": "Special Effect",
+            "sn": 4571
+          }
+        ],
+        "award": [
+          {
+            "count": 72,
+            "img": "item-302021.png",
+            "name": "Stardust Bottle"
+          },
+          {
+            "count": 54,
+            "img": "item-302011.png",
+            "name": "Stardust Gem"
+          },
+          {
+            "count": 1,
+            "img": "item-302012.png",
+            "name": "Venus Gem"
+          }
+        ],
+        "connected": [
+          203,
+          205
+        ],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-maara.png",
+            "level": "78",
+            "name": "Mara",
+            "skill": "507,1102,905",
+            "sn": "643031",
+            "stat": {}
+          }
+        ],
+        "id": 204,
+        "img": "tianerong-xingpan-point01.png",
+        "isActive": true,
+        "name": "Omega Stella",
+        "pos": [
+          687.2,
+          300.4
+        ],
+        "unlockCond": null
+      },
+      "205": {
+        "affix": [
+          {
+            "desc": "When allies activate a Technical, final damage is increased by 100%.",
+            "name": "Special Effect",
+            "sn": 4535
+          }
+        ],
+        "award": [
+          {
+            "count": 1050,
+            "img": "item-302001.png",
+            "name": "Stardust Shard"
+          },
+          {
+            "count": 42,
+            "img": "item-302021.png",
+            "name": "Stardust Bottle"
+          }
+        ],
+        "connected": [
+          204,
+          206
+        ],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-nebiros.png",
+            "level": "72",
+            "name": "Nebiros",
+            "skill": "803,810,1410",
+            "sn": "641221",
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-nebiros.png",
+            "level": "72",
+            "name": "Nebiros",
+            "skill": "803,810,1410",
+            "sn": "641222",
+            "stat": {}
+          }
+        ],
+        "id": 205,
+        "img": "tianerong-xingpan-point03.png",
+        "isActive": true,
+        "name": "Psi Stella",
+        "pos": [
+          605.6,
+          452.0
+        ],
+        "unlockCond": null
+      },
+      "206": {
+        "affix": [
+          {
+            "desc": "When the party has 2 or more Sweeper or Assassin allies, all allies' final damage is increased by 60%.",
+            "name": "Special Effect",
+            "sn": 4503
+          }
+        ],
+        "award": [
+          {
+            "count": 1350,
+            "img": "item-302001.png",
+            "name": "Stardust Shard"
+          },
+          {
+            "count": 54,
+            "img": "item-302021.png",
+            "name": "Stardust Bottle"
+          },
+          {
+            "count": 40,
+            "img": "item-302011.png",
+            "name": "Stardust Gem"
+          }
+        ],
+        "connected": [
+          205,
+          207
+        ],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-raphael.png",
+            "level": "78",
+            "name": "Raphael",
+            "skill": "1007,1409",
+            "sn": "641731",
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-uriel.png",
+            "level": "78",
+            "name": "Uriel",
+            "skill": "1026,1016,1090,905",
+            "sn": "641732",
+            "stat": {}
+          }
+        ],
+        "id": 206,
+        "img": "tianerong-xingpan-point03.png",
+        "isActive": true,
+        "name": "Rho Stella",
+        "pos": [
+          257.6,
+          872.0
+        ],
+        "unlockCond": null
+      },
+      "207": {
+        "affix": [
+          {
+            "desc": "When the party has 2/3/4 allies of the same attribute, all allies' final damage is increased by 20%/40%/60%.",
+            "name": "Special Effect",
+            "sn": 4514
+          }
+        ],
+        "award": [
+          {
+            "count": 180,
+            "img": "item-302021.png",
+            "name": "Stardust Bottle"
+          },
+          {
+            "count": 135,
+            "img": "item-302011.png",
+            "name": "Stardust Gem"
+          },
+          {
+            "count": 2,
+            "img": "item-302012.png",
+            "name": "Venus Gem"
+          }
+        ],
+        "connected": [
+          206,
+          210
+        ],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-ongyoki.png",
+            "level": "84",
+            "name": "Ongyo-Ki",
+            "skill": "2222,2223",
+            "sn": "645311",
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-fuuki.png",
+            "level": "84",
+            "name": "Fuu-Ki",
+            "skill": "1403,2216,2217",
+            "sn": "645312",
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-suiki-i18n.png",
+            "level": "84",
+            "name": "Sui-Ki",
+            "skill": "1031,2218,2219,2220",
+            "sn": "645313",
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-kinki.png",
+            "level": "84",
+            "name": "Kin-Ki",
+            "skill": "1019,1407",
+            "sn": "645314",
+            "stat": {}
+          }
+        ],
+        "id": 207,
+        "img": "tianerong-xingpan-point02.png",
+        "isActive": true,
+        "name": "Beta Stella",
+        "pos": [
+          0.0,
+          1050.8
+        ],
+        "unlockCond": null
+      },
+      "208": {
+        "affix": [
+          {
+            "desc": "When the party gains a shield, their final damage is increased by 8%. Lasts for 3 turns. Stacks up to 8 times.",
+            "name": "Special Effect",
+            "sn": 4541
+          }
+        ],
+        "award": [
+          {
+            "count": 750,
+            "img": "item-302001.png",
+            "name": "Stardust Shard"
+          },
+          {
+            "count": 30,
+            "img": "item-302021.png",
+            "name": "Stardust Bottle"
+          }
+        ],
+        "connected": [
+          201,
+          209
+        ],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-byako.png",
+            "level": "72",
+            "name": "Byakko",
+            "skill": "1025,206,203,1316",
+            "sn": "641411",
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-cerberus.png",
+            "level": "72",
+            "name": "Cerberus",
+            "skill": "103,1006,1411",
+            "sn": "641412",
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-orthos.png",
+            "level": "72",
+            "name": "Orthrus",
+            "skill": "102,1014,1404",
+            "sn": "641413",
+            "stat": {}
+          }
+        ],
+        "id": 208,
+        "img": "tianerong-xingpan-point03.png",
+        "isActive": true,
+        "name": "Delta Stella",
+        "pos": [
+          -333.59999999999997,
+          -332.4
+        ],
+        "unlockCond": null
+      },
+      "209": {
+        "affix": [
+          {
+            "desc": "When an ally (other than Wonder) activates a continuous damage effect, their final damage is increased by 200%.",
+            "name": "Special Effect",
+            "sn": 4532
+          }
+        ],
+        "award": [
+          {
+            "count": 900,
+            "img": "item-302001.png",
+            "name": "Stardust Shard"
+          },
+          {
+            "count": 36,
+            "img": "item-302021.png",
+            "name": "Stardust Bottle"
+          },
+          {
+            "count": 27,
+            "img": "item-302011.png",
+            "name": "Stardust Gem"
+          }
+        ],
+        "connected": [
+          208,
+          210
+        ],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-zaougongen.png",
+            "level": "78",
+            "name": "Zaou-Gongen",
+            "skill": "1009,108",
+            "sn": "641531",
+            "stat": {}
+          }
+        ],
+        "id": 209,
+        "img": "tianerong-xingpan-point03.png",
+        "isActive": true,
+        "name": "Gamma Stella",
+        "pos": [
+          -160.4,
+          -160.4
+        ],
+        "unlockCond": null
+      },
+      "210": {
+        "affix": [
+          {
+            "desc": "When an ally (other than Wonder) activates a Resonance, their final damage is increased by 100%.",
+            "name": "Special Effect",
+            "sn": 4531
+          }
+        ],
+        "award": [
+          {
+            "count": 60,
+            "img": "item-302021.png",
+            "name": "Stardust Bottle"
+          },
+          {
+            "count": 45,
+            "img": "item-302011.png",
+            "name": "Stardust Gem"
+          },
+          {
+            "count": 1,
+            "img": "item-302012.png",
+            "name": "Venus Gem"
+          }
+        ],
+        "connected": [
+          209,
+          207
+        ],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-raphael.png",
+            "level": "84",
+            "name": "Raphael",
+            "skill": "1007,1409",
+            "sn": "644411",
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-michael.png",
+            "level": "84",
+            "name": "Michael",
+            "skill": "207,607,1007,905",
+            "sn": "644413",
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-gabriel.png",
+            "level": "84",
+            "name": "Gabriel",
+            "skill": "207,307,704",
+            "sn": "644414",
+            "stat": {}
+          }
+        ],
+        "id": 210,
+        "img": "tianerong-xingpan-point01.png",
+        "isActive": true,
+        "name": "Theta Stella",
+        "pos": [
+          0.0,
+          280.79999999999995
+        ],
+        "unlockCond": null
+      },
+      "211": {
+        "affix": [
+          {
+            "desc": "Wonder's final damage is increased by 100%.",
+            "name": "Special Effect",
+            "sn": 4504
+          }
+        ],
+        "award": [
+          {
+            "count": 750,
+            "img": "item-302001.png",
+            "name": "Stardust Shard"
+          },
+          {
+            "count": 30,
+            "img": "item-302021.png",
+            "name": "Stardust Bottle"
+          }
+        ],
+        "connected": [
+          210
+        ],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-melchizedek.png",
+            "level": "72",
+            "name": "Melchizedek",
+            "skill": "712,1009,1006,1404",
+            "sn": "641211",
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-melchizedek.png",
+            "level": "72",
+            "name": "Melchizedek",
+            "skill": "712,1009,1006,1404",
+            "sn": "641212",
+            "stat": {}
+          }
+        ],
+        "id": 211,
+        "img": "tianerong-xingpan-point03.png",
+        "isActive": true,
+        "name": "Epsilon Stella",
+        "pos": [
+          0.0,
+          -124.0
+        ],
+        "unlockCond": [
+          {
+            "type": "clearSpecificNode",
+            "value": 210
+          }
+        ]
+      },
+      "212": {
+        "affix": [
+          {
+            "desc": "When the party receives healing from a Resonance, their final damage is increased by 30%. Lasts for 2 turns. Stacks up to 2 times.",
+            "name": "Special Effect",
+            "sn": 4542
+          }
+        ],
+        "award": [
+          {
+            "count": 900,
+            "img": "item-302001.png",
+            "name": "Stardust Shard"
+          },
+          {
+            "count": 36,
+            "img": "item-302021.png",
+            "name": "Stardust Bottle"
+          },
+          {
+            "count": 27,
+            "img": "item-302011.png",
+            "name": "Stardust Gem"
+          }
+        ],
+        "connected": [
+          210
+        ],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-koryu.png",
+            "level": "78",
+            "name": "Kohryu",
+            "skill": "504,507",
+            "sn": "641511",
+            "stat": {}
+          }
+        ],
+        "id": 212,
+        "img": "tianerong-xingpan-point03.png",
+        "isActive": true,
+        "name": "Iota Stella",
+        "pos": [
+          -376.79999999999995,
+          74.0
+        ],
+        "unlockCond": [
+          {
+            "type": "clearSpecificNode",
+            "value": 210
+          }
+        ]
+      },
+      "213": {
+        "affix": [
+          {
+            "desc": "Psychokinesis, Nuclear, Bless, and Curse allies' final damage is increased by 60% (other than Wonder).",
+            "name": "Special Effect",
+            "sn": 4512
+          }
+        ],
+        "award": [
+          {
+            "count": 60,
+            "img": "item-302021.png",
+            "name": "Stardust Bottle"
+          },
+          {
+            "count": 45,
+            "img": "item-302011.png",
+            "name": "Stardust Gem"
+          },
+          {
+            "count": 1,
+            "img": "item-302012.png",
+            "name": "Venus Gem"
+          }
+        ],
+        "connected": [
+          207
+        ],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-anubis.png",
+            "level": "84",
+            "name": "Anubis",
+            "skill": "706,806",
+            "sn": "644421",
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-set.png",
+            "level": "84",
+            "name": "Seth",
+            "skill": "103,1102",
+            "sn": "644422",
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-tooto.png",
+            "level": "84",
+            "name": "Thoth",
+            "skill": "901,602",
+            "sn": "644423",
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-horus.png",
+            "level": "84",
+            "name": "Horus",
+            "skill": "905,1082",
+            "sn": "644424",
+            "stat": {}
+          }
+        ],
+        "id": 213,
+        "img": "tianerong-xingpan-point01.png",
+        "isActive": true,
+        "name": "Alpha 2 Stella",
+        "pos": [
+          -271.6,
+          1223.6000000000001
+        ],
+        "unlockCond": [
+          {
+            "type": "clearNodesCount",
+            "value": 12
+          }
+        ]
+      }
+    },
+    "startTime": "2026-02-05 11:30:00"
+  },
+  "msg": "OK",
+  "status": 0
+}

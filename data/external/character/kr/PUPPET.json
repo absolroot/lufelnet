@@ -1,0 +1,267 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "사하라 미유가 동료에게 실드를 부여할 때마다 해당 동료는 『바다의 수호』를 1중첩 영구 획득하고, 매 중첩마다 받는 실드 효과가 1% 증가한다(6회 중첩 가능).\n동료의 『바다의 수호』는 중첩 횟수에 따라 추가 효과 획득(1/50/70레벨):\n2중첩 시: 방어력이 8%/12%/16% 증가한다.\n4중첩 시: 공격력이 8%/12%/16% 증가한다.\n6중첩 시: 방어력이 12%/18%/24% 증가한다.",
+        "name": "배후 준비",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 127140,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "전투 시작 시 모든 동료가 『바다의 수호』를 1중첩 획득한다.",
+        "name": "시작의 시간",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 127141,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『태평의 노래』, 『교차의 춤』의 스킬 레벨이 2레벨 증가하고, 최대 15레벨까지 증가한다.",
+        "name": "묶인 자",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 127142,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "임의의 동료의 생명이 처음으로 30% 미만이 되면 사하라 미유가 즉시 해당 동료에게 자신의 방어력 28%+660에 해당하는 실드를 추가한다. 효과는 2턴 동안 지속되며 전투마다 1회로 제한된다.",
+        "name": "글레이즈",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 127143,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『여명의 거품』의 스킬 레벨이 2레벨 증가하고, 최대 15레벨까지 증가한다.",
+        "name": "주연의 여유",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 127144,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "임의의 동료가 HIGHLIGHT/테우르기아 시전 후 사하라 미유가 해당 동료에게 사하라 미유의 방어력 16%+480에 해당하는 실드를 추가한다. 효과는 2턴 동안 지속된다.",
+        "name": "스포트라이트",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 127145,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『바다의 수호』의 최대 중첩수가 8회까지 증가하고, 8회에 도달하면 주는 대미지가 20% 증가하는 추가 효과를 획득한다.",
+        "name": "커튼콜의 부재",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 127146,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": null,
+    "innate": {
+      "Defense": "0.3",
+      "Shield Effect": "0.144"
+    },
+    "innate_awake_skill": [],
+    "name": "사하라 미유",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "준비 시간: 8회 행동\n2턴 동안 아군 전체는 방어력 29.3%/29.3%/31.6%/31.6%+1110/1330/1437/1657의 실드를 획득하고 SP를 4포인트 회복한다. 실드가 깨지면 동료 서포트의 준비 시간에서 행동 1회가 감소한다.",
+        "name": "태평의 노래",
+        "nature": null,
+        "skill_lv": "10/10/12/12",
+        "sn": 127111,
+        "tags": [
+          "액티브",
+          "실드"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "AICondition (Based on HPcur/HP)",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "준비 시간: 행동 8회\n동료 1명이 방어력 67.2%/67.2%/72.6%/72.6%+2542/3042/3290/3790의 실드를 획득하고, 동료가 받는 약점 대미지가 20%/20%/20%/20% 감소한다. 효과는 2턴 동안 지속된다. 스킬 목표는 즉시 다운 수치 2포인트와 『바다의 수호』 2중첩을 획득한다.",
+        "name": "교차의 춤",
+        "nature": null,
+        "skill_lv": "10/10/12/12",
+        "sn": 127112,
+        "tags": [
+          "액티브",
+          "실드"
+        ],
+        "target": "Alive Ally",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "준비 시간: 행동 12회\n모든 동료가 3턴 동안 방어력 33.2%/33.2%/35.9%/35.9%+1259/1509/1629/1879+목표의 『바다의 수호』 중첩수*(방어력 6.9%/6.9%/7.5%/7.5%+260/260/336/336)의 실드를 획득한다. 『바다의 수호』가 4중첩 이상이면, 매 중첩마다 동료가 주는 대미지가 3턴 동안 2.0%/2.0%/2.2%/2.2% 증가한다. 실드 지속 시간이 끝나거나 처치당하면 동료가 가진 대미지 증가 효과가 사라지고 『바다의 수호』 2중첩을 잃는다.",
+        "name": "여명의 거품",
+        "nature": null,
+        "skill_lv": "10/10/12/12",
+        "sn": 127113,
+        "tags": [
+          "액티브",
+          "버프"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "미유가 제공하는 실드량이 (필드의 전체 『바다의 수호』 중첩수)*1.0%만큼 증가한다.",
+        "name": "얽매임",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 127131,
+        "tags": [
+          "잠재력"
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『바다의 수호』 중첩마다 추가 효과를 획득해 동료의 방어력이 3.6% 증가한다.",
+        "name": "동경",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 127132,
+        "tags": [
+          "잠재력"
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 2360.0,
+      "Defense": 2280.0,
+      "HP": 7980.0,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "727.73 / 735.73 / 744.53 / 752.53 / 761.33 / 769.33 / 778.13",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0%",
+      "Crit Rate": "0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "540.01 / 546.41 / 552.81 / 558.41 / 564.81 / 571.21 / 577.61",
+      "Defense Increase": "32.7% / 32.7% / 32.7% / 32.7% / 32.7% / 32.7% / 32.7%",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "2655.42 / 2685.82 / 2717.02 / 2747.42 / 2777.82 / 2808.22 / 2839.42",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

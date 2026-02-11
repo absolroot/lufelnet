@@ -1,0 +1,278 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身がスキルを使用した時、『選ばれし者』を１つ獲得する。\n『選ばれし者』状態：２ターンの間、味方全体の火炎属性の与ダメージが５%ずつ上昇し、黒谷がスキルを使用した時、現在のＨＰの４%分のダメージを受ける。『選ばれし者』は、最大５つまで累積できる。\n『選ばれし者』の持続ターンは、個別に管理される。\nまた、黒谷の遠隔攻撃は、火炎属性となる。",
+        "name": "使命への決意",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 112140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身の行動時、『選ばれし者』１つごとに１２%の確率でランダムな敵１体を炎上状態にする。",
+        "name": "抑えきれない『力』",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 112141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身の行動時、炎上状態の敵１体ごとに、１ターンの間、自身の与ダメージが８%上昇する。この効果は敵３体分までカウントされる。",
+        "name": "発火現象",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 112142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『火円流』『浄化の焔』のスキルレベルが２上昇する。",
+        "name": "悔い改めよ、罪人よ。",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 112143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "ハイライト能力追加：敵全体の火炎属性の被ダメージがさらに３０.８%上昇する。",
+        "name": "知られざる物語",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 112144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『紅蓮の召喚』『怪盗戦技』のスキルレベルが２上昇する。",
+        "name": "魔を祓う術",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 112145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『選ばれし者』を１０回獲得するごとに、２ターンの間、味方全体の火炎属性の与ダメージが３０%上昇する。",
+        "name": "伝播する熱量",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 112146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "Weak",
+      "cooldown": 4,
+      "cost": "",
+      "desc": "敵全体の火炎属性の被ダメージが30.1%/33.1%/31.3%/34.4%上昇し、自身の最大ＨＰ41.5%/45.7%/43.2%/47.4%分の火炎属性ダメージを与える。さらに２ターンの間、敵を炎上状態にする。",
+      "name": "ハイライト",
+      "nature": "Fire",
+      "skill_lv": "10/10/12/12",
+      "sn": 112152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": "All"
+    },
+    "innate": {
+      "Ailment Acc.": "0.24",
+      "HP": "0.2"
+    },
+    "innate_awake_skill": [],
+    "name": "黒谷 清",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 18",
+        "desc": "敵単体に最大ＨＰ26.2%/28.8%/27.2%/29.9%の火炎属性ダメージを与え、炎上状態にする。\n選択した対象が炎上状態の時は、『選ばれし者』を１つ獲得し、攻撃対象が敵全体に変化して与えるダメージが半分になり、炎上状態にする。",
+        "name": "火円流",
+        "nature": "Fire",
+        "skill_lv": "10/10/12/12",
+        "sn": 112111,
+        "tags": [
+          "弱体"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 22",
+        "desc": "敵全体に最大ＨＰ20.2%/22.3%/21.0%/23.1%の火炎属性ダメージを与え、火炎テクニカルが発生するようになる。攻撃後、炎上状態の敵の数に応じて『選ばれし者』を２つ獲得する。\nさらに炎上状態の敵を２ターンの間、『サクリファイア』状態にする。\n『サクリファイア』状態：敵の行動時、黒谷の最大ＨＰ24.8%/27.3%/25.8%/28.3%の火炎属性ダメージを与える。",
+        "name": "紅蓮の召喚",
+        "nature": "Fire",
+        "skill_lv": "10/10/12/12",
+        "sn": 112112,
+        "tags": [
+          "全体攻撃"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 22",
+        "desc": "敵単体に最大ＨＰ58.6%/64.6%/61.0%/67.0%の火炎属性ダメージを与え、火炎テクニカルが発生するようになる。選択した対象が『サクリファイア』状態の時、テクニカルが発生し、ダメージが３０%上昇する。",
+        "name": "浄化の焔",
+        "nature": "Fire",
+        "skill_lv": "10/10/12/12",
+        "sn": 112113,
+        "tags": [
+          "単体攻撃"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『選ばれし者』の累積数に応じて、『サクリファイア』状態の敵に火炎属性と属性異常の与ダメージが6.0%ずつ上昇する。",
+        "name": "連火の恩恵",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 112131,
+        "tags": [
+          "潜在能力"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身の最大ＨＰに応じて自身の火炎属性の与ダメージが上昇する。ＨＰ３００ごとに１%上昇し、最大9000まで上昇する。",
+        "name": "たぎる余熱",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 112132,
+        "tags": [
+          "潜在能力"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Ailment Acc.": 0.13,
+      "Damage Mult.": 0.52,
+      "HP": 11930.0,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "675.43 / 683.43 / 690.63 / 698.63 / 706.63 / 714.63 / 721.83",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "450.02 / 454.82 / 460.42 / 465.22 / 470.82 / 475.62 / 481.22",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3195.43 / 3232.23 / 3269.03 / 3305.83 / 3342.63 / 3379.43 / 3416.23",
+      "HP Increase": "21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8%",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "99.0 / 99.0 / 99.0 / 99.0 / 99.0 / 99.0 / 99.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

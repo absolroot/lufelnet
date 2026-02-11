@@ -1,0 +1,281 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "턴 시작 시 자신이 잃은 생명에 따라 류지의 공격력이 증가하고, 최저 10% 증가한다. 자신의 생명이 20% 미만일 경우 최고로 증가하고, 공격력이 40% 증가한다. 자신의 생명이 75% 이하일 경우 『리바운드』 효과를 추가 획득한다. 다음 페르소나 스킬이 주는 대미지가 30%, 크리티컬 확률이 30% 증가한다.",
+        "name": "오장폭발권",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 101140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『차지 일격』 스킬 대미지가 20% 증가하고, 차지 기간 동안 받는 대미지가 20% 감소한다.",
+        "name": "맹호의 포효",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 101141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『차지 일격』, 『전투 기술』의 스킬 레벨이 3레벨 증가하고, 최대 15레벨까지 증가한다.",
+        "name": "승천의 나선 망치",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 101142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "스킬을 시전하여 크리티컬 발생 시 적의 방어력 35%를 무시한다.",
+        "name": "쾌도난마",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 101143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『폭발 충돌』, 『전격의 징계』의 스킬 레벨이 3레벨 증가하고, 최대 15레벨까지 증가한다.",
+        "name": "환영의 연타",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 101144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "HIGHLIGHT 효과 증가: 다음 스킬이 주는 대미지가 30% 증가하고, 크리티컬 효과는 75% 증가한다.",
+        "name": "무적의 파풍참",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 101145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『차지 일격』 스킬을 시전하여 적에게 대미지를 줄 경우 목표에게 『두려움』 효과 1개를 부여한다. 『두려움』: 류지의 다음 스킬 시전 시 해당 적에게 주는 대미지가 60% 증가한다. 전투 중 처음으로 치명적인 대미지를 받았을 때 자신의 생명이 1포인트 이하로 감소되지 않으며, 최대 생명의 25%를 회복한다.",
+        "name": "초신절살",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 101146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on AAAAAA==)",
+      "cooldown": 4,
+      "cost": "",
+      "desc": "1명의 적에게 공격력 405.0%/446.5%/429.9%/471.4%의 물리 대미지를 주며 다음 스킬의 대미지가 58.6%/58.6%/62.2%/62.2% 증가한다.",
+      "name": "HIGHLIGHT",
+      "nature": "Phys",
+      "skill_lv": "10/10/13/13",
+      "sn": 101152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": 1
+    },
+    "innate": {
+      "Crit Mult.": "0.24",
+      "Damage Mult.": "0.16"
+    },
+    "innate_awake_skill": [],
+    "name": "사카모토 류지",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "체력 8.0%",
+        "desc": "1명의 적에게 공격력 64.7%/71.3%/68.7%/75.3%의 물리 속성 대미지를 3회 준다. 자신에게 『리바운드』 효과가 없는 경우, 해당 스킬은 최대 생명의 20%를 추가로 소모해 해당 스킬의 대미지를 30%, 크리티컬 확률을 30% 증가시킨다.",
+        "name": "폭발 충돌",
+        "nature": "Phys",
+        "skill_lv": "10/10/13/13",
+        "sn": 101111,
+        "tags": [
+          "액티브",
+          "단일피해"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 26",
+        "desc": "모든 적에게 공격력 67.1%/74.0%/71.3%/78.2%의 전격 속성 대미지를 주고, 29.3%/29.3%/31.1%/31.1%의 기본 확률로 적을 감전 상태에 빠뜨린다. 자신에게 『리바운드』 효과가 있으면 확률이 58.6%/58.6%/62.2%/62.2%까지 증가한다.",
+        "name": "전격의 징계",
+        "nature": "Electric",
+        "skill_lv": "10/10/13/13",
+        "sn": 101112,
+        "tags": [
+          "액티브",
+          "광역피해"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "체력 20.0%",
+        "desc": "1명의 적을 선택하여 차지하면 다음 턴에서 자동으로 목표에 공격력 341.6%/376.6%/362.6%/397.6%의 물리 속성 대미지를 준다. 자신에게 『리바운드』 효과가 있으면 해당 스킬은 반드시 크리티컬이 발동한다. 차지하는 동안 목표가 사망하면 랜덤으로 다른 적 1명을 선택한다. 류지가 행동 불가 상태인 경우, 행동 가능 상태가 된 이후에 실행한다.",
+        "name": "차지 일격",
+        "nature": "Phys",
+        "skill_lv": "10/10/13/13",
+        "sn": 101113,
+        "tags": [
+          "액티브",
+          "단일피해"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "생명 백분율이 자신보다 낮지 않은 적을 공격할 때, 공격력이 45.0% 증가한다.",
+        "name": "특공",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 101132,
+        "tags": [
+          "잠재력"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『리바운드』 효과 발동 후, 자신의 공격력 30.0%에 해당하는 생명을 회복한다.",
+        "name": "의리",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 101131,
+        "tags": [
+          "잠재력"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 3090.0,
+      "Crit Mult.": 2.92,
+      "Damage Mult.": 0.47,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1100.01 / 1120.01 / 1140.01 / 1159.21 / 1179.21 / 1199.21 / 1219.21",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "185.0% / 185.0% / 185.0% / 185.0% / 185.0% / 185.0% / 185.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "533.35 / 542.95 / 552.55 / 562.15 / 571.75 / 581.35 / 590.95",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3959.98 / 4031.18 / 4102.38 / 4173.58 / 4244.78 / 4316.78 / 4387.98",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "94.0 / 94.0 / 94.0 / 94.0 / 94.0 / 94.0 / 94.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

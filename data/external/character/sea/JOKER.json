@@ -1,0 +1,278 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "At the end of Ren's action, gain 1 Will of Rebellion stack for each foe with less than 60% HP (up to 5 stacks).\nWhen Will of Rebellion reaches 3 stacks, gain an extra action.\nAn additional extra action cannot be gained during the extra action. (Extra actions do not affect the duration of effects with turn limits).\nAt the end of an extra action, spend 3 Will of Rebellion stacks.\n*Can gain 1 Will of Rebellion stack per foe per battle.",
+        "name": "Rebellion Resurgence",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 126140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase skill damage to the main target by 30%, and increase skill damage to other targets by 10%.",
+        "name": "Calling Card",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 126141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "On an extra action, decrease SP cost of skills by 80%. When Ren's SP is above 60%, increase Attack by 50%.",
+        "name": "Meditate",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 126142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase the skill levels of Arsène's Chains and Thief Tactics by 3.",
+        "name": "Secret Maneuvers",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 126143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Highlight Enhanced: Increase number of Will of Rebellion stacks gained to 3.",
+        "name": "Highway Robbery",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 126144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase the skill levels of Trickster's Plunder and Phantom Omen by 3.",
+        "name": "Moonlit Evening",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 126145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "After taking an extra action, if there are foes with below 25% HP, deal damage to those foes equal to up to 250% of Ren's Attack (once per enemy per battle).\nAfter using a skill on an extra action, deal Curse damage equal to 50% of Attack to all foes.",
+        "name": "Merciless Pursuit",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 126146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "Weak",
+      "cooldown": 4,
+      "cost": "",
+      "desc": "Deal Curse damage to all foes equal to 205.0%/226.0%/217.6%/238.6% of Attack, and gain 1 Will of Rebellion stack.",
+      "name": "Highlight",
+      "nature": "Curse",
+      "skill_lv": "10/10/13/13",
+      "sn": 126152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": "All"
+    },
+    "innate": {
+      "Crit Rate": "0.12",
+      "Damage Mult.": "0.16"
+    },
+    "innate_awake_skill": [],
+    "name": "Ren Amamiya",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 19",
+        "desc": "Deal Curse damage to all foes equal to 83.0%/91.5%/88.1%/96.6% of Attack. 20% chance to inflict Curse. Also gain 1 Will of Rebellion stack.",
+        "name": "Trickster's Plunder",
+        "nature": "Curse",
+        "skill_lv": "10/10/13/13",
+        "sn": 126111,
+        "tags": [
+          "Multi-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 19",
+        "desc": "Deal Curse damage to 1 foe equal to 97.6%/107.6%/103.6%/113.6% of Attack. When only 1 foe is present, gain 2 Will of Rebellion stacks.",
+        "name": "Phantom Omen",
+        "nature": "Curse",
+        "skill_lv": "10/10/13/13",
+        "sn": 126112,
+        "tags": [
+          "Single-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 22",
+        "desc": "Deal Curse damage to all foes equal to 74.2%/81.8%/78.7%/86.3% of Attack. When used on an extra action, increase damage by 25%. When attacking foes with debuffs, increase damage by 25% more.",
+        "name": "Arsène's Chains",
+        "nature": "Curse",
+        "skill_lv": "10/10/13/13",
+        "sn": 126113,
+        "tags": [
+          "Multi-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase Attack by 18.0% for each Will of Rebellion stack.",
+        "name": "Resistance",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 126131,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase damage on extra actions by 72.0%.",
+        "name": "Adverse Resolve",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 126132,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 2960.0,
+      "Crit Mult.": 1.77,
+      "Crit Rate": 0.37,
+      "Damage Mult.": 0.43
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1179.97 / 1201.57 / 1222.37 / 1243.97 / 1264.77 / 1286.37 / 1307.17",
+      "Attack Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "560.0 / 570.4 / 580.0 / 590.4 / 600.0 / 610.4 / 620.8",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3270.01 / 3329.21 / 3387.61 / 3446.81 / 3505.21 / 3564.41 / 3622.81",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "102.0 / 102.0 / 102.0 / 102.0 / 102.0 / 102.0 / 102.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

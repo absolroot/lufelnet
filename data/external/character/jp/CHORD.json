@@ -1,0 +1,278 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『エキサイトフレーズ』を使用する時、その戦闘中、自身の攻撃力が２０%上昇し、最大４０%まで上昇する。\n『エキサイトフレーズ』を使用するにはクールタイムが１ターン必要で、使用するごとに必要ターン数が増加する（最大３ターンまで）。",
+        "name": "オープニングアクト",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 132140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "戦闘開始時から３ターンの間、攻撃力が最も高い味方を『共演』状態にする（効果の適用は『反抗』と『支配』ロールが優先される）。\nさらに『共演』状態の味方にクリティカル率１５%上昇が追加される。",
+        "name": "ハードロック",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 132141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『エキサイトフレーズ』を使用する時、２ターンの間、対象となる味方の与ダメージを３０%上昇させる。",
+        "name": "ピークシャウト",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 132142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『ディストーション』『エキサイトフレーズ』のスキルレベルが３上昇する。",
+        "name": "アンプリファイア",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 132143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "ハイライト能力追加：効果の持続が、味方の行動６回に増加する。\nさらに、ハイライトゲージ増加の上限を６０%に引き上げ、自身以外の味方のハイライト発動のクールタイムを１ターン減少させる。",
+        "name": "スポットライト",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 132144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『ユニゾンノーツ』『怪盗戦技』のスキルレベルが３上昇する。",
+        "name": "テクニカルギター",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 132145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "戦闘開始時、即座に『エキサイトフレーズ』が使用できるようになる。またクールタイムが永続的に１ターンとなり、それ以上は増加しない。\nさらに『エキサイトフレーズ』を使用するごとに、味方全体の与ダメージが２０%上昇し、最大２つまで累積できる。",
+        "name": "ロックスピリット",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 132146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "Weak",
+      "cooldown": 4,
+      "cost": "",
+      "desc": "味方が４回行動する間、味方全体の与ダメージを45.5%/50.1%/48.3%/52.9%上昇させる。\nこの効果が持続中、味方が行動した後にハイライトゲージが１０%増加する（最大４０%まで）。",
+      "name": "ハイライト",
+      "nature": null,
+      "skill_lv": "10/10/13/13",
+      "sn": 132152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Ally",
+      "target_count": "All"
+    },
+    "innate": {
+      "Attack": "0.2",
+      "Damage Down": "0.16"
+    },
+    "innate_awake_skill": [],
+    "name": "坂井 綾香",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 20",
+        "desc": "敵全体に攻撃力85.4%/94.2%/90.6%/99.4%の電撃属性ダメージを与え、８０％の確率で２ターンの間、選択した対象を感電状態にする。\n『共演』状態の味方がいる時、選択した敵に対して、その味方の攻撃力83.3%/91.8%/88.4%/96.9%の電撃属性ダメージを追加で１回与える。",
+        "name": "ディストーション",
+        "nature": "Electric",
+        "skill_lv": "10/10/13/13",
+        "sn": 132111,
+        "tags": [
+          "全体攻撃"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 20",
+        "desc": "３ターンの間、味方単体を\n『共演』状態にし、対象の攻撃力を綾香の攻撃力２４%分（最大1220/1345/1295/1420まで）上昇させる。\n複数の味方を同時に『共演』状態にすることはできない。",
+        "name": "ユニゾンノーツ",
+        "nature": "Support",
+        "skill_lv": "10/10/13/13",
+        "sn": 132112,
+        "tags": [
+          "強化"
+        ],
+        "target": "Ally excluding myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 1,
+        "cost": "SP 25",
+        "desc": "選択した味方のハイライトを即座に発動させ、その与ダメージを78.1%/86.1%/82.9%/90.9%上昇させる。\nこのスキルによってハイライトを発動しても、対象のハイライト発動クールタイムには影響しない。",
+        "name": "エキサイトフレーズ",
+        "nature": "Support",
+        "skill_lv": "10/10/13/13",
+        "sn": 132113,
+        "tags": [
+          "強化"
+        ],
+        "target": "Ally excluding myself",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "味方がハイライトを使用する時、１ターンの間、対象の攻撃力を24.0%上昇させる。\nこの効果は、対象が『共演』状態の時、１.５倍になる。",
+        "name": "バッキング",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 132131,
+        "tags": [
+          "潜在能力"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "味方がハイライトを使用した時、残りＨＰ割合が最も低い味方のＨＰを綾香の攻撃力15.0%＋1350分回復する。",
+        "name": "コーラスエフェクト",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 132132,
+        "tags": [
+          "潜在能力"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 4850.0,
+      "Defense": 980.0,
+      "HP": 6310.0,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1080.02 / 1099.22 / 1119.22 / 1138.42 / 1157.62 / 1177.62 / 1196.82",
+      "Attack Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "586.65 / 597.05 / 607.45 / 618.65 / 629.05 / 639.45 / 649.85",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3449.99 / 3512.39 / 3573.99 / 3636.39 / 3698.79 / 3760.39 / 3822.79",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

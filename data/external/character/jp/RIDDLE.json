@@ -1,0 +1,277 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "スキル使用時、『子供心』を全て消費して、消費された『子供心』１つごとに味方全体の攻撃力を２ターンの間、８%上昇させる。『子供心』は最大５つまで累積する。\nさらに、陽菜が『子供心』を獲得した時、同数の『ミステリー』を獲得する。『ミステリー』はハイライトを使用するか２ターン経過で消失し、最大５つまで累積する。",
+        "name": "宝探しへ出発！",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 128140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "味方がスキルでダメージを与えた時、陽菜の攻撃力が２０%上昇し、最大３回まで累積する。この効果は陽菜がスキルを使用すると終了する。\nさらに、自身の攻撃力が２回上昇した時、１ターンの間、味方全体の与ダメージが１５%上昇する。",
+        "name": "みんなに続けー！",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 128141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『手を繋いで行こう！』の効果で『子供心』を獲得する確率が２０%上昇する。\n『勇気の大作戦』の使用時、『子供心』の累積数が最大の場合、さらに２ターンの間、攻撃力とクリティカルダメージが２４%上昇する。",
+        "name": "お手伝いするね！",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 128142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『勇気の大作戦』『怪盗戦技』のスキルレベルが３上昇する。",
+        "name": "成長中だよ！",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 128143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "ハイライト能力追加：ダメージ上昇効果が２ターンに延長される。",
+        "name": "やっつけちゃうぞ！",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 128144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『ビックリドッキリ隊員』『冒険の準備は万端』のスキルレベルが３上昇する。",
+        "name": "装備を整えよう！",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 128145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『子供心』を５つ獲得した時、『好奇心旺盛』状態になる。\n『好奇心旺盛』状態：陽菜がスキルでダメージを与えた時、ダメージが７５%上昇する。この状態は敵にスキルダメージを与えると終了する。",
+        "name": "謎解きしよ！",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 128146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "Weak",
+      "cooldown": 4,
+      "cost": "",
+      "desc": "敵単体に攻撃力366.0%/403.5%/388.5%/426.0%の念動属性ダメージを与え、１ターンの間、味方全体の与ダメージを『ミステリー』の累積数ごとに7.8%/8.6%/8.3%/9.1%ずつ上昇させる。",
+      "name": "ハイライト",
+      "nature": "Psychokinesis",
+      "skill_lv": "10/10/13/13",
+      "sn": 128152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": 1
+    },
+    "innate": {
+      "Attack": "0.2",
+      "Damage Mult.": "0.16"
+    },
+    "innate_awake_skill": [],
+    "name": "西森 陽菜",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 20",
+        "desc": "敵単体に攻撃力146.4%/161.4%/155.4%/170.4%の念動属性ダメージを与え、味方全体を１ターンの間、『愛情』状態にする。\n『愛情』状態：スキルでダメージを与えた時、陽菜が『子供心』を１つ獲得する。",
+        "name": "ビックリドッキリ隊員",
+        "nature": "Psychokinesis",
+        "skill_lv": "10/10/13/13",
+        "sn": 128111,
+        "tags": [
+          "単体攻撃"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 22",
+        "desc": "２ターンの間、味方全体の被ＨＰ回復量と被シールド量を17.6%/19.4%/18.6%/20.4%、防御力を34.2%/37.7%/36.3%/39.8%上昇させる。\n『子供心』を獲得していない場合、『子供心』を２つ獲得する。",
+        "name": "冒険の準備は万端",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 128112,
+        "tags": [
+          "強化"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 24",
+        "desc": "『子供心』を獲得していない場合、このスキルは使用できない。\n『子供心』を獲得した状態で使用すると２ターンの間、味方全体の攻撃力を１０%上昇させる。\n『子供心』の累積が２つ以上の時、さらに与ダメージが自身の攻撃力１００ごとに１%上昇し、最大48.8%/53.8%/51.8%/56.8%まで上昇する。",
+        "name": "勇気の大作戦",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 128113,
+        "tags": [
+          "強化"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『愛情』状態の味方がダメージを与えるごとに、40.0%の確率で『子供心』を１つ獲得する。",
+        "name": "手を繋いで行こう！",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 128131,
+        "tags": [
+          "潜在能力"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『子供心』を一度に３つ以上消費した時、『宝探しへ出発！』の攻撃力上昇効果の値が24.0%上昇する。",
+        "name": "一緒なら怖くない！",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 128132,
+        "tags": [
+          "潜在能力"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 4730.0,
+      "Damage Mult.": 0.09,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1010.02 / 1028.42 / 1046.02 / 1064.42 / 1082.82 / 1101.22 / 1118.82",
+      "Attack Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "660.02 / 672.02 / 684.02 / 696.02 / 707.22 / 719.22 / 731.22",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3539.98 / 3603.98 / 3667.18 / 3731.18 / 3795.18 / 3858.38 / 3922.38",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "101.0 / 101.0 / 101.0 / 101.0 / 101.0 / 101.0 / 101.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

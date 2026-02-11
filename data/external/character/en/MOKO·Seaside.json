@@ -1,0 +1,277 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Seaside Tomoko can inflict Sparks on foes.\nAfter an ally acts, if foes have 3 Sparks stacks, activate Seaside Tomoko's Resonance: For every 3 Sparks stacks on all foes, deal Psy damage to all foes equal to 19% of Attack, and decrease the target's damage by 30% for 1 turn. Restore the party's HP by 9% of Seaside Tomoko's Attack + 300/600/900 (based on if she is at Lv. 1/50/70+, respectively). This can activate up to 5 damage and healing effects, based on how many Sparks stacks are spent within the same Resonance (this Resonance damage does not inflict more Sparks effects).\nChange Resonance damage based on the number of foes present, equal to 150%/120%/100% of the original damage if there are 1/2/3+ foes present, respectively. Damage from this Resonance cannot deal Down Point damage. When a foe is defeated, pass its Sparks stacks onto other random foes.",
+        "name": "Summer Reminiscence",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 110240,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Each time a foe receives a Summer Reminiscence effect, decrease the foe's Defense by 15% for 3 turns. Stacks up to 3 times.\nHale Summer Days healing effects apply to all allies.",
+        "name": "Flash of Summer",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 110241,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Every 2 times a Summer Reminiscence effect is activated, inflict 1 Sparks stack on 1 random foe.\nEach time Sparks is inflicted on a foe, permanently increase party's Attack by 2%. Stacks up to 15 times.",
+        "name": "Gentle Sunbeams",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 110242,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase the skill levels of Have a Cold Drink and Hale Summer Days by 3.",
+        "name": "Sentimental Seabreeze",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 110243,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Highlight Enhanced: Deal bonus damage (2 hits) and inflict 1 Sparks stack per hit.",
+        "name": "Sparkling Summer Night",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 110244,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase the skill levels of Sparkling Memories and Thief Tactics by 3.",
+        "name": "Lingering Glow",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 110245,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Summer Reminiscence gains the following effects.\nWhen dealing damage with Summer Reminiscence, increase critical rate by 35%. Each time a foe takes a Summer Reminiscence effect, permanently increase damage taken by 5%. This effect stacks up to 3 times. At the maximum stack, increase critical damage taken by 20% more.",
+        "name": "Heartfelt Days",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 110246,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "Weak",
+      "cooldown": 4,
+      "cost": "",
+      "desc": "Deal Psy damage to random foes equal to 82.4%/90.8%/87.4%/95.9% of Attack (3 hits). Prioritize attacking foes that have not been hit by this skill and inflict 1 Sparks stack per damage dealt. Repeated hits on the same target deal 30% damage.",
+      "name": "Highlight",
+      "nature": "Psychokinesis",
+      "skill_lv": "10/10/13/13",
+      "sn": 110252,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": "All"
+    },
+    "innate": {
+      "Attack": "0.2",
+      "SP Recovery": "1.25"
+    },
+    "innate_awake_skill": [],
+    "name": "Seaside Tomoko",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 23",
+        "desc": "Deal Psy damage to foes equal to 77.6%/85.5%/82.4%/90.3% of Attack (4 hits). From the second hit, prioritize new targets and inflict 1 Sparks stack per hit. Deal 30% damage for hits on the same target.\nPassive: Increase Summer Reminiscence skill damage multiplier and healing by 51.7%/51.7%/60.0%/60.0%.",
+        "name": "Have a Cold Drink",
+        "nature": "Psychokinesis",
+        "skill_lv": "10/10/13/13",
+        "sn": 110211,
+        "tags": [
+          "Multi-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 27",
+        "desc": "Restore 1 ally's HP by 22.4%/22.4%/23.8%/23.8% of Seaside Tomoko's Attack + 1437/1748/1767/2078. For 2 turns, increase the target's Attack by 14.6%/14.6%/15.5%/15.5%, ailment accuracy by 58.6%/58.6%/62.2%/62.2%, and damage by 30%. Also, increase Attack (up to 22.5%) by 25% of the target's ailment accuracy (up to 90%). Inflict 1 Sparks stack for each time skill damage is dealt to a foe. Sparks from this effect can stack up to 5 times.",
+        "name": "Hale Summer Days",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 110212,
+        "tags": [
+          "Single-Heal"
+        ],
+        "target": "Alive Ally",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 25",
+        "desc": "Deal Psy damage to all foes equal to 61.0%/67.2%/64.8%/71.0% of Attack. For 2 turns, increase foes' damage taken by 19.5%/19.5%/20.7%/20.7% and inflict 1 Sparks stack when foes take skill damage. At the start of Seaside Tomoko's turn, decrease this effect's duration by 1. Sparks stacks up to 5 times and isn't inflicted by damage from this skill.",
+        "name": "Sparkling Memories",
+        "nature": "Psychokinesis",
+        "skill_lv": "10/10/13/13",
+        "sn": 110213,
+        "tags": [
+          "Multi-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "During battle, increase Seaside Tomoko's damage and max HP based on her HP recovery. When HP recovery is at up to 42.0%, increase Psy damage by 70.0% and max HP by 2100.",
+        "name": "Power of Memories",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 110231,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "When activating Hale Summer Days, increase the main target's max HP by 1800 for 2 turns. Restore HP of the ally with the lowest HP, equal to 60% of skill healing.",
+        "name": "Soothing Waves",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 110232,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 3780.0,
+      "Damage Mult.": 0.09,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1089.98 / 1109.98 / 1129.18 / 1149.18 / 1168.38 / 1188.38 / 1207.58",
+      "Attack Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "579.99 / 590.39 / 600.79 / 611.19 / 621.59 / 631.99 / 642.39",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3539.98 / 3603.98 / 3667.18 / 3731.18 / 3795.18 / 3858.38 / 3922.38",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "103.0 / 103.0 / 103.0 / 103.0 / 103.0 / 103.0 / 103.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

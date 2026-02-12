@@ -135,6 +135,8 @@ function formatHomeGuideDate(date, lang) {
         const now = new Date();
         const diff = now - date;
         const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const currentYear = now.getFullYear();
+        const targetYear = date.getFullYear();
 
         if (days === 0) {
             const hours = Math.floor(diff / (1000 * 60 * 60));
@@ -151,10 +153,20 @@ function formatHomeGuideDate(date, lang) {
             if (lang === 'en') return `${days} days ago`;
             if (lang === 'jp') return `${days}日前`;
             return `${days}일 전`;
+        } else if (days < 30) {
+            const weeks = Math.floor(days / 7);
+            if (lang === 'en') return `${weeks} week${weeks > 1 ? 's' : ''} ago`;
+            if (lang === 'jp') return `${weeks}週間前`;
+            return `${weeks}주 전`;
+        }
+
+        const options = { month: 'long', day: 'numeric' };
+        if (currentYear !== targetYear) {
+            options.year = 'numeric';
         }
 
         const locale = (lang === 'en') ? 'en-US' : (lang === 'jp') ? 'ja-JP' : 'ko-KR';
-        return date.toLocaleDateString(locale);
+        return date.toLocaleDateString(locale, options);
     } catch (_) { return ''; }
 }
 

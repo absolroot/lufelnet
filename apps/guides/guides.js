@@ -503,23 +503,45 @@ const Guides = {
     /**
      * Format date based on language
      */
+    /**
+     * Format date based on language
+     */
     formatDate(dateStr, lang) {
         if (!dateStr) return '';
 
         const date = new Date(dateStr);
-        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        const now = new Date();
+        const diff = now - date;
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const currentYear = now.getFullYear();
+        const targetYear = date.getFullYear();
 
-        const locales = {
-            kr: 'ko-KR',
-            en: 'en-US',
-            jp: 'ja-JP'
-        };
-
-        try {
-            return date.toLocaleDateString(locales[lang] || 'ko-KR', options);
-        } catch {
-            return dateStr;
+        if (days === 0) {
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            if (hours === 0) {
+                const minutes = Math.floor(diff / (1000 * 60));
+                if (lang === 'en') return `${minutes} min ago`;
+                if (lang === 'jp') return `${minutes}分前`;
+                return `${minutes}분 전`;
+            }
+            if (lang === 'en') return `${hours} hours ago`;
+            if (lang === 'jp') return `${hours}時間前`;
+            return `${hours}시간 전`;
+        } else if (days < 7) {
+            if (lang === 'en') return `${days} days ago`;
+            if (lang === 'jp') return `${days}日前`;
+            return `${days}일 전`;
+        } else if (days < 14) {
+            const weeks = Math.floor(days / 7);
+            if (lang === 'en') return `${weeks} week${weeks > 1 ? 's' : ''} ago`;
+            if (lang === 'jp') return `${weeks}週間前`;
+            return `${weeks}주 전`;
         }
+
+        // Unified string for older guides (> 2 weeks)
+        if (lang === 'kr') return '루페르넷 가이드';
+        if (lang === 'jp') return 'Lufelnet Guide';
+        return 'Lufelnet Guide';
     },
 
     /**

@@ -459,10 +459,10 @@ export class PersonaModal extends EventEmitter {
                 tierHtml = `<div class="tier-label tier-${persona.tier.toLowerCase()}">${persona.tier}</div>`;
             }
 
-            // Build wild emblem
+            // Build Repression Medal
             let wildEmblemHtml = '';
             if (persona.wild_emblem_rainbow) {
-                wildEmblemHtml = `<img src="${this.baseUrl}/assets/img/persona/wild-emblem-rainbow.png" alt="wild emblem" class="wild-emblem" loading="lazy">`;
+                wildEmblemHtml = `<img src="${this.baseUrl}/assets/img/persona/wild-emblem-rainbow.png" alt="Repression Medal" class="wild-emblem" loading="lazy">`;
             }
 
             cardItem.innerHTML = `

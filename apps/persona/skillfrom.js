@@ -232,7 +232,7 @@
           const sourceEn = (s.en || '').trim();
           const iconName = encodeURIComponent(sourceKr) + '.png';
           const iconPath = `${siteBase}/apps/persona/persona_icon/${iconName}`;
-          const isKrOnly = (sourceKr === '결제 이벤트') || sourceKr.startsWith('와일드 엠블럼') || sourceEn.startsWith('Wild Emblem');
+          const isKrOnly = (sourceKr === '결제 이벤트') || sourceKr.startsWith('와일드 엠블럼') || sourceEn.startsWith('Repression Medal');
           const krOnlyBadge = (isKrOnly && currentLang !== 'kr') ? (currentLang === 'jp' ? '<span class="kr-only-badge">(KR専用)</span>' : '<span class="kr-only-badge">(KR Only)</span>') : '';
           return `<div class="skill-source-item"><img class="source-icon" src="${iconPath}" alt="" onerror="this.style.display='none'" /><span class="source-label">${display}</span>${krOnlyBadge}</div>`;
         }).join('')}</div>`;

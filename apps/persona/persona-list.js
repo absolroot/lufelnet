@@ -195,11 +195,11 @@ async function initializePageContent() {
             card.appendChild(positionContainer);
             card.appendChild(elementIcon);
 
-            // Wild Emblem
+            // Repression Medal
             if (personaSource[personaName].wild_emblem_rainbow) {
                 const wildEmblem = document.createElement('img');
                 wildEmblem.src = `${window.SITE_BASEURL}/assets/img/persona/wild-emblem-rainbow.png`;
-                wildEmblem.alt = "wild emblem";
+                wildEmblem.alt = "Repression Medal";
                 wildEmblem.className = 'wild-emblem';
                 wildEmblem.loading = 'lazy';
                 wildEmblem.decoding = 'async';

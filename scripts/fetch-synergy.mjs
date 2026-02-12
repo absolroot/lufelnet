@@ -7,13 +7,13 @@
  * 기본 동작:
  *   node scripts/fetch-synergy.mjs
  *     - 모든 언어 (kr, en, jp)
- *     - 모든 캐릭터 (1 ~ 32)
+ *     - 모든 캐릭터 (1 ~ 33)
  *
  * 옵션:
  *   node scripts/fetch-synergy.mjs [lang] [startNum] [endNum]
  *     - lang    : kr | en | jp | all (기본값: all)
  *     - startNum: 시작 번호 (기본값: 1)
- *     - endNum  : 끝 번호 (기본값: 32, 포함 범위)
+ *     - endNum  : 끝 번호 (기본값: 33, 포함 범위)
  *
  * API 예시:
  *   https://iant.kr:5000/data/coop/kr/1?source=mydiscord
@@ -44,7 +44,7 @@ function log(msg) {
 
 function usage() {
   console.log(
-`Usage:
+    `Usage:
   node scripts/fetch-synergy.mjs [lang] [startNum] [endNum]
 
 예시:

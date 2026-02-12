@@ -1,10 +1,15 @@
 /*이미지별 크기 조절*/
 .char-img.middle[alt*="유카리"] {
-  transform: translateY(-50%) scale(1.25) !important; right: 14% !important;
+  transform: translateY(-50%) scale(1.25) !important;
+  right: 14% !important;
+}
+
+.char-img.middle[alt*="사하라 미유·여름"] {
+  scale: 0.75 !important;
 }
 
 
 .char-img.front[src*="P5DSN_-_Caroline_and_Justine"] {
-  transform: translateY(-25%) scale(1.4) ;
-  right: 14% ;
+  transform: translateY(-25%) scale(1.4);
+  right: 14%;
 }

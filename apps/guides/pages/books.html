@@ -1,0 +1,29 @@
+---
+layout: default
+custom_css: []
+custom_js: []
+permalink: /article/books/
+language: kr
+title: 도서 목록 가이드 - 루페르넷
+description: 모든 도서의 효과와 획득 방법을 확인하세요.
+image: /apps/guides/data/assets/books/thumbnail.png
+---
+
+<head>
+    <link rel="stylesheet" href="/apps/guides/guides.css?v=3">
+    <script src="/apps/guides/guides.js"></script>
+</head>
+
+<div class="main-wrapper">
+    <div class="guide-view-container" id="guide-view-container">
+        <div class="guides-loading">Loading guide</div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        Navigation.load('article');
+        VersionChecker.check();
+        Guides.loadGuide('books');
+    });
+</script>

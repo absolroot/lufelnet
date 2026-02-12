@@ -1,5 +1,49 @@
 [
   {
+    "id": "books",
+    "titles": {
+      "kr": "독서 가이드",
+      "en": "Book Guide",
+      "jp": "図書ガイド"
+    },
+    "excerpts": {
+      "kr": "독서는 책을 읽으면 다양한 부가 효과를 주는데 이 중에서도 데이트 장소를 해금하거나, 알바 현금을 추가로 얻는 효과가 무척이나 유용하다. 도시 일정을 진행하다보면 등교하다 지하철에서 책을 읽는 이벤트가 등장하곤 한다. 해당 이벤트는 별도의 행동력을 소모하지 않기 때문에 가능하면 책을 미리 가지고 있는 것이 좋다.",
+      "en": "Reading books grants various additional effects, among which unlocking date spots and gaining extra income from part-time jobs are particularly useful. During city life events, you may encounter opportunities to read books on the subway while commuting. Since these events do not consume any action points, it is advisable to have books ready beforehand.",
+      "jp": "読書をすると様々な追加効果が得られますが、中でもデートスポットの解放やアルバイト収入の増加効果は非常に有用です。都市生活イベント中、通学中に地下鉄で本を読むイベントが発生することがあります。このイベントは行動力を消費しないため、可能であれば事前に本を用意しておくことをお勧めします。"
+    },
+    "searchContent": {
+      "kr": "겨울과 노래와 성 마계에서 살아남는 법 체크메이트! 승리의 여신과 악수를 식재료와 대화 가부키의 미와 기술 화풍경운록 기관인법첩 배부른 고생꾼 고독한 낭객 바다의 공주 밀수 거상 로디나의 약혼 무욕의 현대 사회 마녀 밀리카 꽃놀이 스팟 추천 스카이트리 가이드 공주의 복수의 춤 매력학 용의자 Y의 헌신  요가와 건강한 생활 꽃말 결연의 서 「실패」라는 것 창가의 쿠루미 나는 개로소이다 예술의 세계 슈퍼 이론! 별의 바다 디저트 제작 비결! 스킬 업! 패스트푸드점 편 스킬 업! 편의점 편 남성 MОNMО 잡지 페더맨 대전집",
+      "en": "The Castle of Frost Devil School Summoners Forest on the Board Grasping Victory The Ingredient Whisperer The Art of Kabuki Keiun Chronicles Cyber Ninjutsu Scrolls Starvation of the Mind Legend of the Ronin Queen of the Seas Smuggler on Horseback Rosina's Engagement Apathy in the Modern Age Mirika the Witch Top-Secret Sakura Spots All About Skytree Dance of Vengeance Charisma 101 Suspect Y's Sacrifice Comprehensive Yoga The Language of Flowers Weaving Fate What It Means to Fail By the Window I Am a Dog The World of Art Science Savvy: Stars Delectable Desserts! Fast Food Finesse Convenience Store Clout Menswear Monthly Featherman: A Corpus",
+      "jp": "氷雪の城 漂流学園ｉｆ 盤上の森 勝利の女神と握手を 食材はかく語りき 歌舞伎の美と技 和風慶雲集 カラクリ忍法帖 飽食の苦労人 浪客孤影譚 海上の姫 馬を駆る運び屋 ロジーナの婚約 欲望のない現代社会 魔女ミリカ 決定版お花見スポット スカイタワーを知る ダンス・リベンジ 魅力学 容疑者Ｙの犠牲 ヨガ大全 花語 縁を紡ぐ手紙 失敗というのは 窓辺のくるみちゃん 吾輩は犬である 芸術の世界 超理論・星の海 デザート作りの秘訣！ ファストフードの匠 コンビニマル秘テク集 メンズＭＯＮＭＯ フェザーマン大全集"
+    },
+    "category": "citylife",
+    "date": "2026-02-12",
+    "author": "AbsolRoot",
+    "thumbnail": "/apps/guides/data/assets/books/thumbnail.png"
+  },
+  {
+    "id": "fortune-teller",
+    "titles": {
+      "kr": "운세 점술 목록",
+      "en": "Fortune Telling Guide",
+      "jp": "運勢占いガイド"
+    },
+    "excerpts": {
+      "kr": "챕터 2장부터 도시 생활에서 만날 수 있다. 무작위로 등장하며 생각보다 그 빈도가 적고 관련된 업적도 존재하기 때문에 보일 때마다 시도하는 것이 좋다.",
+      "en": "You can encounter it in City Life starting from Chapter 2. It appears randomly, and since it is rarer than expected and has related achievements, it is recommended to attempt it whenever you see it.",
+      "jp": "チャプター2から都市生活で遭遇できる。ランダムに出現するが、思ったより頻度が低く、関連するアチーブメントも存在するため、見かけるたびに試すのが良いだろう。 "
+    },
+    "searchContent": {
+      "kr": "챕터 2장부터 도시 생활에서 만날 수 있다. 무작위로 등장하며 생각보다 그 빈도가 적고 관련된 업적도 존재하기 때문에 보일 때마다 시도하는 것이 좋다.특정 버프(『정의』)는 평소 10 엠버를 획득하던 도시 생활 이벤트의 엠버를 70까지 늘려주는 효과도 가지고 있다. 방향은 정방향과 역방향을 설명하지만 실질적으로 카드 당 방향은 1개로 고정이다. 아이콘 이름 효과 『광대』 다음에 『억압의 공간』을 통해 페르소나 획득 시 대량의 보상을 추가로 획득합니다. 『마법사』 다음 4회 동안 『작업대』를 통해 아이템 합성 시 소량의 아이템을 추가 생산합니다. 『여법황』 다음 3회 동안 학교 『수업 문제 풀기』 시 더 많은 『인간 파라미터』를 추가로 획득합니다. 『여황제』 다음 3회 동안 집에서 『식물 수확』 시 더 많은 재배 산물을 획득합니다. 『황제』 다음 3회 동안 도시 일정을 통해 『아르바이트』를 진행하고 현금 획득 시 더 많은 현금을 추가로 획득합니다. 『법황』 다음 4회 동안 도시 일정을 진행하여 『지식』 인간 파라미터 획득 시 더 많은 『인간 파라미터』를 추가로 획득합니다. 『연인』 다음 3회 동안 도시 일정의 『임의의 협력자와 만남』에서 호감을 얻을 시 더 많은 호감도를 추가로 획득합니다. 『전차』 다음 4회 동안 도시 일정을 진행하여 『배짱』 인간 파라미터 획득 시 더 많은 『인간 파라미터』를 추가로 획득합니다. 『힘』 다음 2회 동안 도시 일정을 진행하여 『헬스장』 단련 진행 시 더 많은 『인간 파라미터』를 추가로 획득합니다. 『은둔자』 다음 3회 동안 도시 일정을 통해 『집』에서 공부, 게임 플레이, 청소 시 더 많은 『인간 파라미터』를 추가로 획득합니다. 『운명』 다음에 도시 일정을 진행하여 『임의의 인간 파라미터』 획득 시 더 많은 『인간 파라미터』를 추가로 획득합니다. 『정의』 다음에 도시 일정을 진행하여 다른 캐릭터를 도울 시 보상을 추가 획득합니다. 『사형수』 다음 4회 동안 도시 일정을 진행하여 『친절』 인간 파라미터 획득 시 더 많은 『인간 파라미터』를 추가로 획득합니다. 『사신』 다음에 『영광 추구』, 『기계 추구』, 『인격 추구』 스테이지 클리어 시 대량의 보상을 추가로 받을 수 있습니다. 『절제』 다음 4회 동안 도시 일정을 진행하여 『재주』 인간 파라미터 획득 시 더 많은 『인간 파라미터』를 추가로 획득합니다. 『악마』 다음에 『온화한 향기』, 『조립과 제련』 스테이지 클리어 시 대량의 보상을 추가로 획득합니다. 『탑』 다음에 『영적 깨달음』, 『재물 추구』 스테이지 클리어 시 대량의 보상을 추가로 획득합니다. 『별』 다음 4회 동안 도시 일정을 진행하여 『매력』 인간 파라미터 획득 시 더 많은 『인간 파라미터』를 추가로 획득합니다. 『달』 다음 2회 동안 『밤』에 도시 일정을 진행하여 『임의의 인간 파라미터』 획득 시 더 많은 『인간 파라미터』를 추가로 획득합니다. 『태양』 다음 2회 동안 『방과 후』에 도시 일정을 진행하여 『임의의 인간 파라미터』 획득 시 더 많은 『인간 파라미터』를 추가로 획득합니다. 『심판』 다음 2회 동안 도시 일정의 『임의의 괴도단 멤버와 만남』에서 호감도를 얻을 시 더 많은 호감도를 추가로 획득합니다. 『세계』 다음 2회 동안 도시 일정을 진행하여 『임의의 인간 파라미터』 획득 시 더 많은 『인간 파라미터』를 추가로 획득합니다.",
+      "en": "You can encounter it in City Life starting from Chapter 2. It appears randomly, and since it is rarer than expected and has related achievements, it is recommended to attempt it whenever you see it. Certain Buffs(Justice Upright) also increase the Meta Jewel obtained from City Life events from the usual 10 to 70.While tarot cards describe upright and reversed positions, each card's orientation is fixed to one direction. Icon Name Effect The Fool Upright You will now earn more rewards the next time you obtain a Persona in the Realm of Repression. The Magician Upright You will now earn slightly more items the next four times you craft items at the workbench. The High Priestess Upright You will now earn more social stats the next three times you answer a question in class. The Empress Upright You will now earn more plants the next three times you harvest plants. The Emperor Upright You will now earn more money the next three times you work part-time through City Life. The Hierophant Upright For the next four times you gain Knowledge through City Life activities, you will gain more of that social stat. The Lovers Upright You will now earn more Synergy the next three times an accomplice invites you though City Life. The Chariot Upright For the next four times you gain Guts through City Life activities, you will gain more of that social stat. Strength Upright You will now earn more social stats the next two times you train at the gym through City Life. The Hermit Reversed You will now earn more social stats the next three times you study, play games, or clean through City Life at home. Wheel of Fortune Upright You will now earn more social stats the next time you increase them through City Life. Justice Upright You will now earn a reward the next time you help someone through City Life. The Hanged Man Reversed For the next four times you gain Kindness through City Life activities, you will gain more of that social stat. Death Reversed You will now earn more rewards the next time you clear Pursuit of Honor, Pursuit of Parts, or Pursuit of Persona. Temperance Upright You will now earn more social stats the next four times you increase your Proficiency through City Life. The Devil Reversed You will now earn more rewards the next time you clear Alluring Aroma or Gear Forging. The Tower Reversed You will now earn more rewards the next time you clear Enlightenment or Pursuit of Wealth. The Star Upright For the next four times you gain Charm through City Life activities, you will gain more of that social stat. The Moon Reversed You will now earn more social stats the next two times you increase them through City Life at night. The Sun Upright You will now earn more social stats the next two times you increase them through City Life after school. Judgement Upright You will now earn more Affinity the next two times a Phantom Thief invites you through City Life. The World Upright You will now earn more social stats the next two times you increase them through City Life.",
+      "jp": "チャプター2から都市生活で遭遇できる。ランダムに出現するが、思ったより頻度が低く、関連するアチーブメントも存在するため、見かけるたびに試すのが良いだろう。 特定のバフは、普段10異界琥珀を獲得する都市生活イベントの異界琥珀を70まで増やしてくれる効果もある。(『正義』) アイコン 名前 効果 『愚者』 次回、『調伏の領域』でペルソナ獲得時、大量報酬を獲得できる。 『魔術師』 次から４回の間、『作業台』でアイテム作成時、少量のアイテムを追加で獲得できる。 『女教皇』 次から３回の間、『授業で回答』時、より多くの『人間パラメータ』を獲得できる。 『女帝』 次から３回の間、『植物を収穫』時、より多くの植物を収穫できる。 『皇帝』 次から３回の間、都市生活で『アルバイト』時、より多くの所持金を獲得できる。 『法王』 次から４回の間、都市生活で知識の人間パラメータ獲得時、より多くの『人間パラメータ』を獲得できる。 『恋人』 次から３回の間、都市生活で『シナジー対象者の誘い』で好感度を獲得時、より多くの好感度を獲得できる。 『戦車』 次から４回の間、都市生活で度胸の人間パラメータ獲得時、より多くの『人間パラメータ』を獲得できる。 『剛毅』 次から２回の間、都市生活で『トレーニングジム』でトレーニング時、より多くの『人間パラメータ』を獲得できる。 『隠者』 次から３回の間、都市生活で『家』で勉強・ゲーム・掃除をすると、より多くの『人間パラメータ』を獲得できる。 『運命の輪』 次回、都市生活で『任意の人間パラメータ』獲得時、追加でより多くの『人間パラメータ』を獲得できる。 『正義』 次回、都市生活で誰かを助けると報酬を獲得できる。 『刑死者』 次から４回の間、都市生活で優しさの人間パラメータ獲得時、より多くの『人間パラメータ』を獲得できる。 『死神』 次回『栄誉の追求』『パーツの追求』『ペルソナの追求』ステージクリアで、大量報酬を獲得できる。 『節制』 次から４回の間、都市生活で器用さの人間パラメータ獲得時、より多くの『人間パラメータ』を獲得できる。 『悪魔』 次回『魅惑の香』『装備品の工芸』ステージクリアで、大量報酬を獲得できる。 『塔』 次回『精神の悟り』『財宝の追求』ステージクリアで、大量報酬を獲得できる。 『星』 次から４回の間、都市生活で魅力の人間パラメータ獲得時、より多くの『人間パラメータ』を獲得できる。 『月』 次から２回の間、都市生活で『夜』に『人間パラメータ』獲得時、より多くの『人間パラメータ』を獲得できる。 『太陽』 次から２回の間、都市生活で『放課後』に『人間パラメータ』獲得時、より多くの『人間パラメータ』を獲得できる。 『審判』 次から２回の間、都市生活で『任意の怪盗団メンバーのお誘い』から好感度獲得時、より多くの好感度を獲得できる。 『世界』 次から２回の間、都市生活で『任意の人間パラメータ』獲得時、より多くの『人間パラメータ』を獲得できる。"
+    },
+    "category": "citylife",
+    "date": "2026-02-12",
+    "author": "AbsolRoot",
+    "thumbnail": "/apps/guides/data/assets/fortune-teller/스크린샷 2026-02-11 222310.png"
+  },
+  {
     "id": "theurgy",
     "titles": {
       "kr": "테우르기아 메커니즘",

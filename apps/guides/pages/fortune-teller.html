@@ -1,0 +1,29 @@
+---
+layout: default
+custom_css: []
+custom_js: []
+permalink: /article/fortune-teller/
+language: kr
+title: 운세 점술 목록 - 루페르넷
+description: 운세 점술의 모든 효과와 버프를 확인하세요.
+image: /apps/guides/data/assets/fortune-teller/스크린샷 2026-02-11 222310.png
+---
+
+<head>
+    <link rel="stylesheet" href="/apps/guides/guides.css">
+    <script src="/apps/guides/guides.js"></script>
+</head>
+
+<div class="main-wrapper">
+    <div class="guide-view-container" id="guide-view-container">
+        <div class="guides-loading">Loading guide</div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    Navigation.load('article');
+    VersionChecker.check();
+    Guides.loadGuide('fortune-teller');
+});
+</script>

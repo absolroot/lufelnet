@@ -682,7 +682,7 @@
 
 /* Table images */
 .guide-content td img {
-    max-height: 48px;
+    max-height: 72px;
     width: auto;
     margin: 0;
     vertical-align: middle;
@@ -885,7 +885,202 @@
     }
 
     .guide-content td img {
-        max-height: 28px;
+        max-height: 48px;
+    }
+}
+
+@media (max-width: 600px) {
+    .guide-content table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .guide-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--guide-space-sm);
+    }
+
+    .guide-meta-item:not(:last-child)::after {
+        display: none;
+    }
+}
+
+/* ============================================
+   Print Styles
+   ============================================ */
+
+@media print {
+    .guide-back {
+        display: none;
+    }
+
+    .guide-article {
+        background: white;
+        border: none;
+        box-shadow: none;
+    }
+
+    .guide-content {
+        color: #333;
+    }
+}
+
+.guide-content .warning {
+    background: rgba(255, 180, 92, 0.1);
+    border-color: rgba(255, 180, 92, 0.2);
+}
+
+.guide-content .warning::before {
+    content: 'Warning';
+    color: #ffb45c;
+}
+
+/* ============================================
+   Empty & Loading States
+   ============================================ */
+
+.guides-empty,
+.guides-loading {
+    text-align: center;
+    padding: var(--guide-space-4xl) var(--guide-space-xl);
+    background: var(--guide-bg-secondary);
+    border: 1px solid var(--guide-border-subtle);
+    border-radius: 16px;
+}
+
+.guides-empty-icon {
+    font-size: 56px;
+    margin-bottom: var(--guide-space-lg);
+    opacity: 0.3;
+}
+
+.guides-empty-text {
+    font-size: var(--guide-text-base);
+    color: var(--guide-text-tertiary);
+}
+
+.guides-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--guide-space-md);
+    color: var(--guide-text-tertiary);
+}
+
+.guides-loading::after {
+    content: '';
+    width: 32px;
+    height: 32px;
+    border: 2px solid var(--guide-border-subtle);
+    border-top-color: var(--guide-accent-gold);
+    border-radius: 50%;
+    animation: guidesSpin 0.8s linear infinite;
+}
+
+@keyframes guidesSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+
+@media (max-width: 1024px) {
+    .guide-view-container {
+        max-width: 100%;
+        padding: var(--guide-space-md);
+    }
+
+    .guide-header {
+        padding: var(--guide-space-xl);
+    }
+
+    .guide-content {
+        padding: var(--guide-space-xl);
+    }
+}
+
+@media (max-width: 768px) {
+    .guide-card-thumbnail {
+        width: 100px;
+        min-width: 100px;
+    }
+
+    .guide-card-content {
+        padding: var(--guide-space-sm) var(--guide-space-md);
+    }
+
+    .guide-card-category {
+        font-size: 10px;
+        padding: 2px 6px;
+    }
+
+    .guide-card-title {
+        font-size: var(--guide-text-sm);
+        line-height: 1.3;
+    }
+
+    .guide-card-excerpt {
+        display: none;
+    }
+
+    .guide-card-meta {
+        font-size: 10px;
+    }
+
+    .guide-card-author::before {
+        width: 2px;
+        height: 2px;
+    }
+
+    .guide-article {
+        border-radius: 12px;
+    }
+
+    .guide-header {
+        padding: var(--guide-space-md);
+    }
+
+    .guide-title {
+        font-size: var(--guide-text-2xl);
+    }
+
+    .guide-content {
+        padding: var(--guide-space-md);
+        font-size: var(--guide-text-sm);
+    }
+
+    .guide-content h1 {
+        font-size: var(--guide-text-xl);
+        margin: 0 0 var(--guide-space-md);
+    }
+
+    .guide-content h2 {
+        font-size: var(--guide-text-lg);
+        margin: var(--guide-space-xl) 0 var(--guide-space-md);
+    }
+
+    .guide-content h3 {
+        font-size: var(--guide-text-base);
+        margin: var(--guide-space-lg) 0 var(--guide-space-sm);
+    }
+
+    .guide-content table {
+        font-size: var(--guide-text-xs);
+    }
+
+    .guide-content th,
+    .guide-content td {
+        padding: var(--guide-space-sm) var(--guide-space-md);
+    }
+
+    .guide-content td img {
+        max-height: 48px;
     }
 }
 
@@ -929,5 +1124,206 @@
     .guide-content a {
         color: #333;
         text-decoration: underline;
+    }
+}
+
+/* Books Guide Styles */
+.shop-title {
+    font-size: 1.5rem;
+    color: var(--text-highlight);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.shop-title::before {
+    content: '';
+    display: block;
+    width: 4px;
+    height: 1.5rem;
+    background: var(--guide-accent-gold);
+    border-radius: 2px;
+}
+
+.books-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.book-card {
+    background: rgba(30, 30, 30, 0.6);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+.book-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    border-color: var(--guide-accent-gold);
+    background: rgba(40, 40, 40, 0.8);
+}
+
+.book-row-1 {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.book-icon {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--guide-border-subtle);
+}
+
+.book-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.book-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 56px;
+}
+
+.book-name {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-highlight);
+    line-height: 1.3;
+    margin-bottom: 0.25rem;
+}
+
+.book-price {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #ffd700;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.book-price::before {
+    content: '¥';
+    font-weight: normal;
+    opacity: 0.8;
+}
+
+.book-row-2 {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    color: var(--text-normal);
+    line-height: 1.5;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex-grow: 1;
+}
+
+.book-effect {
+    color: var(--guide-text-secondary);
+}
+
+.book-value {
+    font-weight: 700;
+    color: var(--guide-accent-blue);
+    font-size: 1.1em;
+    align-self: flex-end;
+}
+
+/* Hide value if empty */
+.book-value:empty {
+    display: none;
+}
+
+.shop-divider {
+    display: none;
+    /* Grid layout doesn't need dividers as much, spacing handles it */
+}
+
+.custom-text-blue {
+    color: #4facfe;
+    /* Bright Blue for location unlock */
+}
+
+.custom-text-green {
+    color: #43e97b;
+    /* Bright Green for cash boost */
+}
+
+/* Book Guide Intro Styles */
+.book-guide-intro {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.intro-section {
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.intro-section img {
+    object-fit: contain;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 4px;
+    border: 1px solid var(--guide-border-subtle);
+    flex-shrink: 0;
+}
+
+.intro-section p {
+    margin: 0;
+    line-height: 1.6;
+    color: var(--text-normal);
+    font-size: 0.95rem;
+}
+
+.intro-footer {
+    margin-top: 0.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--guide-border-subtle);
+    color: var(--text-highlight);
+    font-weight: 500;
+    text-align: center;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .intro-section {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .intro-section img {
+        margin: 0 auto;
     }
 }

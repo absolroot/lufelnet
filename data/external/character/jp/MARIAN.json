@@ -1,0 +1,275 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "戦闘開始時、『カルテ』を１つ獲得する。自身の行動時、いずれかの味方のＨＰが７０%未満の場合、『カルテ』を獲得する。『カルテ』は最大２つまで累積する。",
+        "name": "看護の誓詞",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 123140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "味方を最大ＨＰ以上に回復させた時、２ターンの間、味方の貫通力を２０%上昇させる。",
+        "name": "白衣の天使",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 123141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『トリートメントライト』使用時、追加で味方１人を回復し、対象のＨＰが５０%未満の時、回復効果が２０%上昇するようになる。",
+        "name": "診療看護",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 123142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『トリートメントライト』『怪盗戦技』のスキルレベルが３上昇する。",
+        "name": "実践看護",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 123143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "ハイライト能力追加：最大ＨＰ上昇効果と、ＨＰ回復効果が１ターンずつ延長される。",
+        "name": "看護研究",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 123144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『ナーシングライト』『コンパッションヒール』のスキルレベルが３上昇する。",
+        "name": "犠牲なき献身",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 123145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "戦闘不能になった味方を、美波の最大ＨＰ４０%＋１２００で回復する。この効果は１回のバトル中に１度だけ発動する。",
+        "name": "生命の守護者",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 123146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "Default",
+      "cooldown": 4,
+      "cost": "",
+      "desc": "味方全体のＨＰを美波の最大ＨＰ17.6%/17.6%/18.6%/18.6%＋1500/1824/1844/2168回復し、弱体状態を１つ治療する。\nさらに２ターンの間、味方全員の最大ＨＰを美波の最大ＨＰ１６．５%分（最大2326/2326/2697/2697まで）上昇させ、加えて１ターンの間、行動後に美波の最大ＨＰ6.5%/6.5%/6.9%/6.9%＋556/676/683/803回復する。",
+      "name": "ハイライト",
+      "nature": "Heal",
+      "skill_lv": "10/10/13/13",
+      "sn": 123152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Ally",
+      "target_count": "All"
+    },
+    "innate": {
+      "Ailment Resist.": "0.24",
+      "HP": "0.2"
+    },
+    "innate_awake_skill": [],
+    "name": "宮下 美波",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 20",
+        "desc": "敵単体に最大ＨＰ56.9%/62.7%/60.4%/66.2%の祝福属性ダメージを与え、味方全体に祝印を１つ付与する。さらに美波が『カルテ』を１つ獲得する。",
+        "name": "ナーシングライト",
+        "nature": "Bless",
+        "skill_lv": "10/10/13/13",
+        "sn": 123111,
+        "tags": [
+          "単体攻撃"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 25",
+        "desc": "選択した味方とＨＰが最も低い味方のＨＰを、美波の最大ＨＰ17.4%/17.4%/18.5%/18.5%＋1488/1809/1829/2151回復し、弱体状態を２つ治療する。\nさらに回復した味方に祝印を１つ付与し、美波が『カルテ』を１つ獲得する。\nこのスキルで回復された味方は、２ターンの間、ターン開始時にＨＰを美波の最大ＨＰ13.9%/13.9%/14.8%/14.8%＋1190/1447/1463/1720回復する。",
+        "name": "トリートメントライト",
+        "nature": "Heal",
+        "skill_lv": "10/10/13/13",
+        "sn": 123112,
+        "tags": [
+          "回復治療"
+        ],
+        "target": "Alive Ally",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 32",
+        "desc": "『カルテ』を全て消費し、選択した味方のＨＰを、美波の最大ＨＰ15.8%/15.8%/16.8%/16.8%＋1347/1638/1656/1947回復する。\nさらにＨＰが低い順に同一効果で味方を２回回復する。\n『カルテ』１つにつき、追加で効果が１回発動する。\n加えて、消費した『カルテ』の数に応じて、２ターンの間、美波を除く味方の最大ＨＰを美波の最大ＨＰ７．５％分（最大1057/1057/1226/1226まで）上昇させる。",
+        "name": "コンパッションヒール",
+        "nature": "Heal",
+        "skill_lv": "10/10/13/13",
+        "sn": 123113,
+        "tags": [
+          "範囲回復"
+        ],
+        "target": "Alive Ally",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "美波から回復効果を受けた味方は、１ターンの間、与ダメージが15.0%＋3.0%×対象の味方の『祝印』の累積数分上昇し、最大３０%まで上昇する。",
+        "name": "健康第一",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 123131,
+        "tags": [
+          "潜在能力"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "戦闘開始時、味方全体の最大ＨＰが美波の最大ＨＰ10.0%分（最大1500まで）上昇する。",
+        "name": "安心感",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 123132,
+        "tags": [
+          "潜在能力"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "rating": {
+      "HP": 13630.0,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "910.0 / 926.0 / 942.8 / 958.8 / 975.6 / 991.6 / 1008.4",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "673.35 / 685.35 / 697.35 / 709.35 / 722.15 / 734.15 / 746.15",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "4140.03 / 4214.43 / 4288.83 / 4363.23 / 4438.43 / 4512.83 / 4587.23",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "94.0 / 94.0 / 94.0 / 94.0 / 94.0 / 94.0 / 94.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

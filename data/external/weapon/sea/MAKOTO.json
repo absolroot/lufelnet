@@ -1,0 +1,33 @@
+{
+  "data": {
+    "fiveStar": [
+      {
+        "name": "Nuclear Finisher",
+        "quality": 5,
+        "skill": "Increase Nuclear damage by 24.2%/24.2%/31.5%/31.5%/38.8%/38.8%/46.1%. When attacking a foe with an elemental ailment, increase Attack by 30.0%/39.0%/39.0%/48.0%/48.0%/57.0%/57.0%. When an ally inflicts an elemental ailment, gain 1 Heat stack. When Crash Out is active, spend all Heat stacks to increase next Nuclear skill damage by 10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0% for each Heat stack, up to 60.0%/78.0%/78.0%/96.0%/96.0%/114.0%/114.0%.",
+        "stat": {
+          "attack": 766.41,
+          "defense": 449.24,
+          "hp": 2061.29
+        },
+        "user": "Makoto"
+      }
+    ],
+    "fourStar": [
+      {
+        "name": "Omega Knuckle",
+        "quality": 4,
+        "skill": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When dealing Nuclear damage, increase damage by 4.4%/5.6%/5.6%/6.8%/6.8%/8.0%/8.0% for each Tenacity stack gained.",
+        "stat": {
+          "attack": 613.28,
+          "defense": 359.07,
+          "hp": 1649.32
+        },
+        "user": "Makoto"
+      }
+    ],
+    "name": "Makoto"
+  },
+  "msg": "OK",
+  "status": 0
+}

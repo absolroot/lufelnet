@@ -1,0 +1,282 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "北里基良擁有『尋獵者』與『行刑官』兩種狀態，不同狀態擁有不同的技能模式，初始處於『尋獵者』狀態。\n『尋獵者』：造成每次技能傷害時，有70%基礎機率為目標添加1層『流血』。處於『流血』狀態的敵人陣亡時，其『流血』會轉移至生命值最高的敵人。\n『行刑官』：使用技能時，目標每有3層『流血』，北里基良額外對其造成1次『撕裂』傷害。\n『流血』：每回合受到相當於自身1%最大生命值的萬能屬性傷害+北里基良4%攻擊力的物理屬性傷害，持續4回合，可疊加10層。\n『撕裂』：基於北里基良攻擊力、『夜幕已至』技能等級的物理屬性傷害。無法暴擊，無法造成倒地值傷害。",
+        "name": "死神的勝利",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 129140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "處於『尋獵者』狀態，對每個敵人首次造成技能傷害時，額外為其添加5層『流血』。\n處於『行刑官』狀態，使用技能時，基於目標的負面狀態數量提高本技能傷害，最多10層負面狀態使本技能造成傷害提高80%。\n使『流血』的萬能屬性傷害提升至原來的150%。",
+        "name": "玫瑰花般的圓圈",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 129141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『切割技法/罪惡遊戲』、『戰鬥技巧』的技能等級提升3級，至多提升至15級。",
+        "name": "裝滿口袋的花束",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 129142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『撕裂』的技能倍率提升，提升值相當於北里基良攻擊力的35%。北里基良會恢復相當於『撕裂』傷害量2%的生命值。（每回合最多回復北里基良等級*15+300點）",
+        "name": "路上都有花相伴",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 129143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『致命快感/謝幕致禮』、『夜幕已至』的技能等級提升3級，至多提升至15級。",
+        "name": "一跳一跳離開地面",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 129144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "HIGHLIGHT效果提升：目標每有1層『流血』，使HIGHLIGHT造成傷害額外提升8%。",
+        "name": "灰燼，灰燼",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 129145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『流血』的可疊加上限提升至13層，每個敵人的『流血』層數始終不低於3層。\n處於『行刑官』狀態，使用『罪惡遊戲』不再清除目標『流血』層數；『撕裂』效果強化為『殘殺』，『殘殺』造成傷害提升100%，對其他所有敵人造成50%的濺射傷害。『殘殺』能觸發所有技能中『撕裂』相關的效果。",
+        "name": "全部都會倒下",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 129146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on AAAAAA==)",
+      "cooldown": 4,
+      "cost": "",
+      "desc": "轉變至『尋獵者』狀態，立刻為1名敵人添加5層『流血』；隨即轉變至『行刑官』狀態，對其造成492.8%/543.3%/523.1%/573.6%攻擊力的物理屬性傷害。（可觸發『撕裂』效果）",
+      "name": "HIGHLIGHT",
+      "nature": "Phys",
+      "skill_lv": "10/10/13/13",
+      "sn": 129152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": 1
+    },
+    "innate": {
+      "Attack": "0.2",
+      "Pierce Rate": "0.075"
+    },
+    "innate_awake_skill": [],
+    "name": "北里基良",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 21",
+        "desc": "『尋獵者』狀態：對1名敵人造成4次47.3%/52.2%/50.2%/55.1%攻擊力的物理屬性傷害，並為其添加1層『流血』。\n『行刑官』狀態：對1名敵人造成251.7%/277.5%/267.2%/292.9%攻擊力的物理屬性傷害，技能結束後清除其2層『流血』。（可觸發『撕裂』效果）",
+        "name": "切割技法/罪惡遊戲",
+        "nature": "Phys",
+        "skill_lv": "10/10/13/13",
+        "sn": 129111,
+        "tags": [
+          "主動",
+          "單傷"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 21",
+        "desc": "『尋獵者』狀態：對1名敵人造成2次84.2%/92.9%/89.4%/98.0%攻擊力的物理屬性傷害，立即結算一次『流血』傷害並刷新其『流血』狀態的持續時間。\n『行刑官』狀態：對1名敵人造成251.7%/277.5%/267.2%/292.9%攻擊力的物理屬性傷害，目標每有1層『流血』，使該技能傷害及其觸發的『撕裂』傷害提升2%，技能結束後清除其所有『流血』狀態。（可觸發『撕裂』效果）",
+        "name": "致命快感/謝幕致禮",
+        "nature": "Phys",
+        "skill_lv": "10/10/13/13",
+        "sn": 129112,
+        "tags": [
+          "主動",
+          "單傷"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 15",
+        "desc": "任意敵人的『流血』層數≥7時該技能解鎖。\n轉變至『行刑官』狀態，改變技能模式，並獲得效果：使用技能時，目標每有3層『流血』，北里基良額外對其造成1次『撕裂』：66.7%/73.5%/70.8%/77.6%攻擊力的物理屬性傷害。\n使用該技能後本回合仍可使用其他技能，回合結束時自動轉變至『尋獵者』狀態。",
+        "name": "夜幕已至",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 129113,
+        "tags": [
+          "主動",
+          "轉變"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "北里基良每30%的效果命中，使『流血』的物理屬性傷害提升相當於北里基良攻擊力的4%，最多計入90%的效果命中。",
+        "name": "感染",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 129131,
+        "tags": [
+          "潛能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "處於『尋獵者』狀態時，效果命中提升36%；\n處於『行刑官』狀態時，穿透提升21%。",
+        "name": "潰爛",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 129132,
+        "tags": [
+          "潛能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Ailment Acc.": 0.6,
+      "Attack": 3160.0,
+      "Damage Mult.": 0.47,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1130.03 / 1150.03 / 1170.83 / 1190.83 / 1211.63 / 1231.63 / 1252.43",
+      "Attack Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "546.67 / 556.27 / 566.67 / 576.27 / 585.87 / 596.27 / 605.87",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3720.03 / 3787.23 / 3853.63 / 3920.83 / 3988.03 / 4055.23 / 4121.63",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "97.0 / 97.0 / 97.0 / 97.0 / 97.0 / 97.0 / 97.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

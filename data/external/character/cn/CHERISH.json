@@ -1,0 +1,281 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "进入战斗时，为所有同伴添加可抵御12%防御力+120/240/360（达到1、50、70级时变化）伤害的『正直圣印』；处于『正直圣印』保护下的同伴受到攻击时，芦谷真咲获得1点『英勇』，每个回合最多可通过这种方式获得2点『英勇』；回合开始时，若『英勇』达到4点时，消耗4点『英勇』获得『公正宣言』效果，并为所有同伴添加『正直圣印』。",
+        "name": "不凌弱小，谦度时日",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 133140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "进入战斗时，获得3点『英勇』，获得『公正宣言』效果所需的『英勇』降低为3点；提升所有怪盗15%的穿透。",
+        "name": "所经之战，莫畏强敌",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 133141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『怜悯祝福』，『灵魂祷告』的技能等级提升3级，至多提升至15级。",
+        "name": "凡所邪谬，吾伐其帜",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 133142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "每层『正直圣印』额外提供15%的防御力提升（最多计入2层）；『正直圣印』移除时，为同伴回复剩余护盾量20%的生命值。",
+        "name": "妇弱童长，战所为之",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 133143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『荣誉守护』、『战斗技巧』的技能等级提升3级，至多提升至15级。",
+        "name": "同僚道合，竭力相携",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 133144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "HIGHLIGHT效果提升：使所有同伴受到护盾效果提升30%，持续2回合。",
+        "name": "诚待友人，以为君子",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 133145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "获得『公正宣言』效果时，额外获得持续2回合的『公正审判』。『公正审判』持续时间内，所有同伴获得15%暴击率提升。",
+        "name": "吾所挚爱，忠贞不渝",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 133146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on HPcur/HP)",
+      "cooldown": 4,
+      "cost": "",
+      "desc": "立即为所有同伴添加1层可抵御59.0%/59.0%/62.7%/62.7%防御力+1681/2044/2066/2429伤害的『圣洁庇佑』，同时使所有同伴受到伤害降低31.9%/35.2%/33.9%/37.1%，持续2回合。",
+      "name": "HIGHLIGHT",
+      "nature": "Heal",
+      "skill_lv": "10/10/13/13",
+      "sn": 133152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Ally",
+      "target_count": "All"
+    },
+    "innate": {
+      "Ailment Resist.": "0.24",
+      "Defense": "0.3"
+    },
+    "innate_awake_skill": [],
+    "name": "芦谷真咲",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 24",
+        "desc": "对指定敌方单体造成149.2%/164.5%/158.4%/173.7%防御力的冰冻属性伤害并对其他敌方单位造成44.8%/49.4%/47.6%/52.1%防御力的冰冻属性伤害，有97.6%/97.6%/103.6%/103.6%的基础概率使主目标陷入冻结状态；同时为芦谷真咲回复2点『英勇』。若芦谷真咲处于『公正宣言』状态，额外使主目标受到的伤害提升（芦谷真咲每有600点防御主目标受到的伤害提升1%，最多提升9.8%/10.8%/10.4%/11.4%），效果持续2回合；但是『英勇』回复降为1点。",
+        "name": "怜悯祝福",
+        "nature": "Ice",
+        "skill_lv": "10/10/13/13",
+        "sn": 133111,
+        "tags": [
+          "主动",
+          "群伤"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 26",
+        "desc": "使1名同伴获得1层可抵御22.8%/22.8%/24.2%/24.2%防御力+650/790/799/939伤害的『正直圣印』，并使其获得等同于芦谷真咲20%防御力（最多1220/1345/1295/1420点）的防御力提升效果，持续2回合；获得此效果时，若该同伴血量高于60%，则使其被攻击的概率提升50%；芦谷真咲下个回合开始时，会再次使该同伴获得1层『正直圣印』。若芦谷真咲处于『公正宣言』状态，则其在两回合内释放的『正直圣印』护盾量额外提升25%。",
+        "name": "荣誉守护",
+        "nature": "Heal",
+        "skill_lv": "10/10/13/13",
+        "sn": 133112,
+        "tags": [
+          "主动",
+          "护盾"
+        ],
+        "target": "Alive Ally",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 1,
+        "cost": "SP 30",
+        "desc": "立即为所有同伴添加1层可抵御12%防御力+120/240/360（达到1、50、70级时变化）伤害的『正直圣印』和1层可抵御49.2%/49.2%/52.2%/52.2%防御力+1400/1702/1721/2024伤害的『圣洁庇佑』，同时使所有同伴获得1点倒地值及造成伤害提升效果（芦谷真咲每有300点防御力，造成伤害提升1%，最多提升19.5%/21.5%/20.7%/22.7%），持续2回合。",
+        "name": "灵魂祷告",
+        "nature": "Heal",
+        "skill_lv": "10/10/13/13",
+        "sn": 133113,
+        "tags": [
+          "主动",
+          "护盾"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "处于芦谷真咲护盾保护下的同伴获得24.0%的防御力提升。",
+        "name": "牺牲",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 133131,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "处于芦谷真咲护盾保护下的同伴获得48.0%的效果抵抗提升。",
+        "name": "谦恭",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 133132,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "rating": {
+      "Defense": 4400.0,
+      "HP": 6440.0,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "840.0 / 855.2 / 870.4 / 885.6 / 900.8 / 916.0 / 930.4",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "813.35 / 827.75 / 842.95 / 857.35 / 871.75 / 886.95 / 901.35",
+      "Defense Increase": "43.6% / 43.6% / 43.6% / 43.6% / 43.6% / 43.6% / 43.6%",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3539.98 / 3603.98 / 3667.18 / 3731.18 / 3795.18 / 3858.38 / 3922.38",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "104.0 / 104.0 / 104.0 / 104.0 / 104.0 / 104.0 / 104.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

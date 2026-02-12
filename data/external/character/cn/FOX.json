@@ -1,0 +1,282 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "受到技能伤害时，有65%固定概率进行反击，对敌人造成88%防御力的冰冻属性伤害的追加效果。通过技能可以将该效果强化为『墨见龙吟』。",
+        "name": "游龙展布",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 116140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "每使用2次『银华残心』额外获得一次『墨见龙吟』的机会，这次额外的反击造成70%伤害。",
+        "name": "流线勾刻",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 116141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『银华残心』、『战斗技巧』的技能等级提升3级，至多提升至15级。",
+        "name": "色盘调谐",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 116142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身生命值不低于70%时，追加效果造成伤害提升35%。",
+        "name": "彩墨泼洒",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 116143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『寒气破击』、『拟霜流连斩』的技能等级提升3级，至多提升至15级。",
+        "name": "光影交界",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 116144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "HIGHLIGHT效果提升：使用技能后，反击攻击时伤害提升30%，3回合。",
+        "name": "识一见著",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 116145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『游龙展布』、『墨见龙吟』效果进化为『痴绝·游龙展布』、『痴绝·墨见龙吟』——\n对敌人造成的反击攻击提升为连续的2次伤害，每次伤害为原本的90%，且反击时获得30%穿透。",
+        "name": "笔落如生",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 116146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on AAAAAA==)",
+      "cooldown": 4,
+      "cost": "",
+      "desc": "对全体敌人造成178.1%/196.4%/189.1%/207.3%防御力的冰冻属性伤害，并使游龙展布触发概率提升35%，持续3回合。",
+      "name": "HIGHLIGHT",
+      "nature": "Ice",
+      "skill_lv": "10/10/13/13",
+      "sn": 116152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": "All"
+    },
+    "innate": {
+      "Crit Rate": "0.12",
+      "Damage Mult.": "0.16"
+    },
+    "innate_awake_skill": [],
+    "name": "喜多川祐介",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 20",
+        "desc": "对所有敌人造成72.1%/79.5%/76.6%/84.0%防御力的冰冻属性伤害，有100%基础概率使主目标敌人陷入冻结状态，效果持续2回合。",
+        "name": "寒气破击",
+        "nature": "Ice",
+        "skill_lv": "10/10/13/13",
+        "sn": 116111,
+        "tags": [
+          "主动",
+          "群伤"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 20",
+        "desc": "对随机敌人造成5次92.9%/102.4%/98.6%/108.1%防御力的冰冻属性伤害，优先攻击未受到该技能攻击的敌人。若自身处于护盾状态，则额外造成30%技能伤害。多次伤害命中同一目标伤害衰减60%，最低造成20%的伤害。",
+        "name": "拟霜流连斩",
+        "nature": "Ice",
+        "skill_lv": "10/10/13/13",
+        "sn": 116112,
+        "tags": [
+          "主动",
+          "群伤"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 1,
+        "cost": "SP 24",
+        "desc": "接下来1次『游龙展布』攻击强化为『墨见龙吟』。攻击触发概率提升至100%、技能倍率提升相当于祐介78.1%/86.1%/82.9%/90.9%的防御力并且以群体为目标攻击。若1回合内未触发『墨见龙吟』强化反击，则自动触发。\n此外自身获得19.5%/19.5%/20.7%/20.7%防御力+555/555/683/683的护盾，效果持续2回合。将自身弱点暂时变为默认耐性、免疫任何精神异常并使所有敌人获得嘲讽状态，效果持续2回合。\n冷却时间：1回合。",
+        "name": "银华残心",
+        "nature": "Support",
+        "skill_lv": "10/10/13/13",
+        "sn": 116113,
+        "tags": [
+          "主动",
+          "强化反击"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "获得护盾时伤害提升7.5%，持续2回合，可叠6层。",
+        "name": "创造",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 116131,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "使用技能提供护盾时，增加自身的穿透20.0%，持续1回合。",
+        "name": "雕琢",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 116132,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Crit Mult.": 1.77,
+      "Crit Rate": 0.37,
+      "Damage Mult.": 0.43,
+      "Defense": 2320.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "820.01 / 834.41 / 849.61 / 864.01 / 879.21 / 893.61 / 908.81",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "800.02 / 814.42 / 828.82 / 843.22 / 857.62 / 872.02 / 886.42",
+      "Defense Increase": "43.6% / 43.6% / 43.6% / 43.6% / 43.6% / 43.6% / 43.6%",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3720.03 / 3787.23 / 3853.63 / 3920.83 / 3988.03 / 4055.23 / 4121.63",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "102.0 / 102.0 / 102.0 / 102.0 / 102.0 / 102.0 / 102.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

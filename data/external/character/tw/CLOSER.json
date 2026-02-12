@@ -1,0 +1,282 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "對敵人造成電擊屬性傷害後，有15%基礎機率使敵人陷入觸電狀態。自身攻擊處於觸電狀態的敵人時，攻擊力提升30%。",
+        "name": "進攻的號角",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 103140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『雷霆之怒』的段數增加1段，對同一敵人的連續攻擊造成15%傷害。",
+        "name": "失控攔截",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 103141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『雷霆之怒』、『超速電擊』的技能等級提升2級，至多提升至15級。",
+        "name": "全力一擊",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 103142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "受到來自處於觸電狀態的敵人的傷害降低20%。",
+        "name": "時速追逐",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 103143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『電鳴狂鯊』、『戰鬥技巧』的技能等級提升2級，至多提升至15級。",
+        "name": "無限超越",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 103144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "HIGHLIGHT效果提升：使所有敵人受到的電擊屬性傷害提升20%，效果持續2回合。",
+        "name": "得分！",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 103145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "使場上處於觸電狀態的敵人受到的電擊屬性傷害提升20%、受到電擊屬性暴擊傷害提升20%。",
+        "name": "勝利的果實",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 103146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on AAAAAA==)",
+      "cooldown": 4,
+      "cost": "",
+      "desc": "對所有敵人造成162.4%/179.0%/169.1%/185.7%攻擊力的電擊屬性傷害，有100%的固定機率使技能主目標進入觸電狀態，效果持續2回合。並使其受到的電擊屬性傷害提升10%，效果持續2回合。",
+      "name": "HIGHLIGHT",
+      "nature": "Electric",
+      "skill_lv": "10/10/12/12",
+      "sn": 103152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": "All"
+    },
+    "innate": {
+      "Crit Rate": "0.12",
+      "Damage Mult.": "0.16"
+    },
+    "innate_awake_skill": [],
+    "name": "新井素羽",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 20",
+        "desc": "發射4道天雷，造成76.7%/84.6%/79.9%/87.7%攻擊力的電擊屬性傷害，對技能主目標有100%的基礎機率使其陷入觸電狀態。對同一目標的後續攻擊只會造成10%的傷害，天雷會優先選擇未攻擊過的目標。",
+        "name": "雷霆之怒",
+        "nature": "Electric",
+        "skill_lv": "10/10/12/12",
+        "sn": 103112,
+        "tags": [
+          "主動",
+          "群傷"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 18",
+        "desc": "對1名敵人造成157.1%/173.2%/163.6%/179.7%攻擊力的電擊屬性傷害，並使所有同伴造成的電擊屬性傷害提升11.7%/11.7%/12.2%/12.2%，效果持續2回合。",
+        "name": "超速電擊",
+        "nature": "Electric",
+        "skill_lv": "10/10/12/12",
+        "sn": 103111,
+        "tags": [
+          "主動",
+          "單傷"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 24",
+        "desc": "對所有敵人造成79.3%/87.4%/82.5%/90.6%攻擊力的電擊屬性傷害。若場上存在處於觸電狀態的敵人，則造成TECHNICAL，對所有敵人造成1次42.7%/47.1%/44.5%/48.9%攻擊力的額外電擊屬性傷害。",
+        "name": "電鳴狂鯊",
+        "nature": "Electric",
+        "skill_lv": "10/10/12/12",
+        "sn": 103113,
+        "tags": [
+          "主動",
+          "群傷"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "造成觸電效果時，有66.0%固定機率使該效果延長1回合。",
+        "name": "力量",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 103132,
+        "tags": [
+          "潛能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "釋放人格面具技能後，使技能主目標受到的電擊屬性傷害提升20.0%，效果持續2回合，可疊加2層。",
+        "name": "守護",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 103131,
+        "tags": [
+          "潛能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 2550.0,
+      "Crit Mult.": 1.77,
+      "Crit Rate": 0.37,
+      "Damage Mult.": 0.67
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "825.39 / 834.99 / 844.59 / 854.19 / 863.79 / 873.39 / 882.19",
+      "Attack Increase": "21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8% / 21.8%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "515.37 / 520.97 / 527.37 / 532.97 / 539.37 / 544.97 / 551.37",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "2430.01 / 2458.01 / 2486.01 / 2514.01 / 2542.01 / 2570.01 / 2598.01",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "98.0 / 98.0 / 98.0 / 98.0 / 98.0 / 98.0 / 98.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

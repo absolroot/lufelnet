@@ -1,0 +1,282 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "鹿野莓首次釋放『紅蝶斷頸』時可獲得1層『貪戀』。自身每次釋放HIGHLIGHT時可獲得1層『貪戀』。『貪戀』最多可獲得3層，根據『貪戀』層數獲得如下強化效果：\n1層：每層『怨念』使敵人受到的傷害提升2.5%；\n2層：暴擊率提升15%，自身釋放人格面具技能造成的傷害均視為持續傷害效果；\n3層：持續傷害效果提升25%。",
+        "name": "如果攝入愛的毒藥",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 142140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "每層『怨念』使敵人防禦降低3%；每次使用人格面具技能時，額外為目標添加1層『怨念』。",
+        "name": "如果壞掉的話",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 142141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "進入戰鬥時，獲得1層『貪戀』。『貪戀』疊加上限提升至5層。根據『貪戀』層數額外獲得如下強化效果：\n4層：暴擊效果提升36%；\n5層：自身首次受到致命傷害時，進入瀕死狀態並獲得4層『瘋狂妄想』，瀕死狀態期間生命值不會低於1點，友方每個回合結束時消耗1層『瘋狂妄想』，『瘋狂妄想』耗盡後死亡。",
+        "name": "如果任由妄念叢生",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 142142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『噓！行刑時間到』、『戰鬥技巧』的技能等級提升3級，至多提升至15級。",
+        "name": "如果求饒有用",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 142143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "每次釋放HIGHLIGHT後，角色的攻擊力永久提升6%，可疊加5層。",
+        "name": "如果愛意不斷累積",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 142144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『紅蝶斷頸』、『血薔薇之吻』的技能等級提升3級，至多提升至15級。",
+        "name": "如果危險逼近",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 142145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『怨念』疊加上限提升至15層。\n『貪戀』達到指定層數時，獲得如下效果：\n1層：可以在釋放『紅蝶斷頸』後額外對目標釋放1次『紅蝶斷頸』（每場戰鬥限1次）；\n2層：可以在釋放『血薔薇之吻』後額外對目標釋放1次『血薔薇之吻』（每場戰鬥限1次）；\n3層：可以在釋放『噓！行刑時間到』後額外對目標釋放1次『噓！行刑時間到』（每場戰鬥限1次）；\n4層：可以在自己回合對指定目標釋放1次『HIGHLIGHT』（每場戰鬥限1次，不消耗HIGHLIGHT能量，不影響HIGHLIGHT的冷卻時間）。",
+        "name": "如果你發現了另一個我",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 142146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on AAAAAA==)",
+      "cooldown": 4,
+      "cost": "",
+      "desc": "對1名敵人造成457.1%/503.9%/485.2%/532.0%攻擊力的詛咒屬性傷害，使『怨念』可觸發暴擊，持續3回合。立即結算1次目標身上所有類型的持續傷害效果並額外結算2次『怨念』效果。",
+      "name": "HIGHLIGHT",
+      "nature": "Curse",
+      "skill_lv": "10/10/13/13",
+      "sn": 142152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": 1
+    },
+    "innate": {
+      "Damage Mult.": "0.16",
+      "Pierce Rate": "0.075"
+    },
+    "innate_awake_skill": [],
+    "name": "鹿野莓",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 1,
+        "cost": "SP 20",
+        "desc": "對1名敵人造成129.0%/142.2%/137.0%/150.2%攻擊力的詛咒屬性傷害，並對其添加2層『怨念』。當目標當前生命值高於70%時，技能傷害提升200%。若技能擊殺了目標，則額外觸發一次技能效果（可連續觸發）。",
+        "name": "紅蝶斷頸",
+        "nature": "Curse",
+        "skill_lv": "10/10/13/13",
+        "sn": 142111,
+        "tags": [
+          "主動",
+          "單傷"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 20",
+        "desc": "對1名敵人造成92.9%/102.4%/98.6%/108.1%攻擊力的詛咒屬性傷害，並對其添加4層『怨念』。",
+        "name": "血薔薇之吻",
+        "nature": "Curse",
+        "skill_lv": "10/10/13/13",
+        "sn": 142112,
+        "tags": [
+          "主動",
+          "單傷"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 22",
+        "desc": "對1名敵人造成221.6%/244.3%/235.2%/257.9%+『怨念』層數*11.7%/12.9%/12.4%/13.6%攻擊力的詛咒屬性傷害，『怨念』層數達到10層時，額外造成103.3%/113.8%/109.6%/120.2%攻擊力的詛咒屬性傷害；同時刷新『怨念』的持續時間。",
+        "name": "噓！行刑時間到",
+        "nature": "Curse",
+        "skill_lv": "10/10/13/13",
+        "sn": 142113,
+        "tags": [
+          "主動",
+          "單傷"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "每有1層『貪戀』，自身攻擊力提升15.0%。",
+        "name": "執念",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 142131,
+        "tags": [
+          "潛能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "鹿野莓在場時，所有友方的持續傷害效果提升15.0%。",
+        "name": "依戀",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 142132,
+        "tags": [
+          "潛能"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "rating": {
+      "Attack": 2940.0,
+      "Crit Mult.": 2.15,
+      "Crit Rate": 0.55,
+      "Damage Mult.": 0.18
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1170.01 / 1190.81 / 1212.41 / 1233.21 / 1254.01 / 1275.61 / 1296.41",
+      "Attack Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "546.67 / 556.27 / 566.67 / 576.27 / 585.87 / 596.27 / 605.87",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3600.02 / 3664.82 / 3729.62 / 3794.42 / 3859.22 / 3924.02 / 3988.82",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "96.0 / 96.0 / 96.0 / 96.0 / 96.0 / 96.0 / 96.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

@@ -10,20 +10,20 @@
               "Nullify": [],
               "Reflect": [],
               "Resistant": [
-                "Electric",
-                "Nuclear",
-                "Bless",
-                "Curse"
+                "Phys",
+                "Fire",
+                "Wind",
+                "Nuclear"
               ],
               "Weak": [
-                "Fire"
+                "Psychokinesis"
               ]
             },
-            "image": "B-guaiwutouxiang-lilith.png",
+            "image": "B-guaiwutouxiang-ganesha.png",
             "level": "89",
-            "name": "조종당한 릴리스",
-            "skill": "607,603",
-            "sn": 541101,
+            "name": "조종당하는 가네샤",
+            "skill": "1013,1022",
+            "sn": 542101,
             "stat": {}
           }
         ],
@@ -39,20 +39,20 @@
               "Nullify": [],
               "Reflect": [],
               "Resistant": [
-                "Ice",
                 "Electric",
+                "Nuclear",
+                "Bless",
                 "Curse"
               ],
               "Weak": [
-                "Fire",
-                "Bless"
+                "Fire"
               ]
             },
-            "image": "B-guaiwutouxiang-chernobog.png",
+            "image": "B-guaiwutouxiang-lilith.png",
             "level": "89",
-            "name": "조종당하는 체르노보그",
-            "skill": "1016,1026",
-            "sn": 541111,
+            "name": "조종당한 릴리스",
+            "skill": "607,603",
+            "sn": 542111,
             "stat": {}
           }
         ],
@@ -60,9 +60,9 @@
         "sn": 78402
       }
     ],
-    "buff": "어둠의 잠식: 적을 조롱 상태에 빠뜨리며, 아군 전체에 『육감』을 4중첩 추가한다. 자신이 각기 다른 속성의 대미지를 줄 때 아군 전체에 『육감』을 1중첩 추가하고, 만약 만능 대미지를 주었다면 아군 전체에 『육감』을 1중첩 추가로 부여한다.",
-    "endTime": "2026-02-12 07:30:00",
-    "startTime": "2026-01-22 08:30:00"
+    "buff": "지각 붕괴: 약점 대미지를 줄 때, 자신은 1턴 동안 『암석 해체』를 얻는다. 『암석 해체』: 주는 최종 대미지가 20% 증가하며, 추가 턴 상태 또는 일반 공격 사용 시 주는 최종 대미지가 추가로 20% 증가한다.",
+    "endTime": "2026-03-12 07:30:00",
+    "startTime": "2026-02-12 08:30:00"
   },
   "msg": "OK",
   "status": 0

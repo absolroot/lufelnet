@@ -1,0 +1,282 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "요시자와 카스미의 HIGHLIGHT가 HIGHLIGHT 에너지를 소모하지 않으며 크리티컬이 발생한다. 아군의 괴도 턴에 요시자와 카스미의 춤사위 중첩 횟수가 2회 이상이면 변신하여 『가면무도회』 상태에 진입해 HIGHLIGHT를 1회 사용할 수 있다(변신 쿨타임은 3턴). 해당 효과는 요시자와 카스미가 『가면무도회』 상태로 두 번째 턴을 시작할 때까지 지속된다. 『가면무도회』 상태에서 춤사위 1중첩마다 요시자와 카스미의 공격력이 10%, 크리티컬 확률이 3% 증가한다. 『가면무도회』 상태 종료 시 자신의 모든 춤사위가 제거된다(『가면무도회』 상태 종료 전까지 HIGHLIGHT를 시전하지 않으면 랜덤 목표에게 HIGHLIGHT를 자동 시전함).",
+        "name": "12시의 종소리",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 135140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『댄스 파트너』의 지속 시간이 1턴 연장된다. 『함께 추는 춤』 사용 후 자신 및 『댄스 파트너』의 크리티컬 확률이 3턴 동안 추가로 15% 증가한다.",
+        "name": "찢어진 치마와 그녀의 그림자",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 135141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "자신의 춤사위가 2중첩에 도달하면 공격력이 33% 증가하고 3중첩에 도달하면 크리티컬 효과가 33% 증가한다.",
+        "name": "무도회를 향한 동경",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 135142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『전투 기술』, 『어둠 속 빛』의 스킬 레벨이 3레벨 증가하고, 최대 15레벨까지 증가한다.",
+        "name": "그녀의 노랫소리",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 135143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "HIGHLIGHT 발동 시 『여명의 베일』을 1중첩 획득한다. 『여명의 베일』: 대미지를 받을 시 1중첩 소모하며, 해당 대미지 효과를 회피한다. 일부 스킬에는 효과가 적용되지 않는다. 자신의 춤사위가 4중첩에 도달하면 HIGHLIGHT 대미지가 50% 증가한다.",
+        "name": "왕자의 눈빛",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 135144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『함께 추는 춤』, 『피어나는 마음』의 스킬 레벨이 3레벨 증가하고, 최대 15레벨까지 증가한다.",
+        "name": "잊혀진 유리구두",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 135145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "자신이 HIGHLIGHT를 시전한 후 『가면무도회』 상태 종료 전까지 HIGHLIGHT를 1회 추가로 시전할 수 있으며, 대미지는 고유 HIGHLIGHT의 70%다. 해당 효과는 매회 『가면무도회』 상태 지속 기간 동안 1회만 발동된다.",
+        "name": "모든 틈과 모든 문",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 135146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on AAAAAA==)",
+      "cooldown": 0,
+      "cost": "",
+      "desc": "발동 조건: 자신이 『가면무도회』 상태일 것\n1명의 적에게 공격력 243.8%/268.8%/258.8%/283.8%의 축복 속성 대미지를 준다. 자신이 춤사위 보유 시 해당 버프 효과를 획득한다. 『용기의 발걸음』: 중첩마다 HIGHLIGHT 스킬 대미지가 15% 증가한다. 『민첩한 발걸음』: HIGHLIGHT의 크리티컬 확률이 10% 증가하고, 크리티컬 효과가 20% 증가한다.",
+      "name": "HIGHLIGHT",
+      "nature": "Bless",
+      "skill_lv": "10/10/13/13",
+      "sn": 135152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": 1
+    },
+    "innate": {
+      "Crit Rate": "0.12",
+      "Damage Mult.": "0.16"
+    },
+    "innate_awake_skill": [],
+    "name": "요시자와 카스미",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 23",
+        "desc": "액티브로 해당 스킬 사용 시 1명의 적에게 공격력 186.9%/206.1%/198.4%/217.5%의 축복 속성 대미지를 주고, 자신은 춤사위 『브레이브 스텝』을 획득한다(3회 중첩 가능). 댄스 파트너가 해당 스킬 사용 시 스킬 효과는 1명의 적에게 공격력 121.6%/134.1%/129.1%/141.5%의 축복 속성 대미지를 주고, 자신은 춤사위 『브레이브 스텝』을 획득한다(3회 중첩 가능).",
+        "name": "어둠 속 빛",
+        "nature": "Bless",
+        "skill_lv": "10/10/13/13",
+        "sn": 135111,
+        "tags": [
+          "액티브",
+          "단일공격"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 22",
+        "desc": "1턴 동안 1명의 동료를 선택해 『댄스 파트너』로 삼는다. 자신과 『댄스 파트너』의 공격력이 3턴 동안 32.4%/35.7%/34.4%/37.7% 증가한다. 자신이 춤사위 『스위프트 스텝』을 획득한다(1회 중첩 가능). 『댄스 파트너』가 페르소나 스킬을 사용하면 자신이 즉시 임의 적 목표에게 『어둠 속 빛』을 1회 시전한다(『댄스 파트너』의 스킬 목표가 적일 경우, 스킬 메인 목표를 향해 『어둠 속 빛』을 1회 시전함). 『댄스 파트너』는 동시에 1명만 존재할 수 있다.",
+        "name": "함께 추는 춤",
+        "nature": "Heal",
+        "skill_lv": "10/10/13/13",
+        "sn": 135112,
+        "tags": [
+          "액티브",
+          "버프"
+        ],
+        "target": "Ally excluding myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 27",
+        "desc": "1명의 적에게 공격력 214.7%/236.7%/227.9%/249.9%의 축복 속성 대미지를 준다. 해당 스킬을 사용할 때 자신이 『가면무도회』 상태일 경우 스킬 대미지가 30% 증가하고 자신의 크리티컬 효과가 29.3%/29.3%/31.1%/31.1% 증가한다.",
+        "name": "피어나는 마음",
+        "nature": "Bless",
+        "skill_lv": "10/10/13/13",
+        "sn": 135113,
+        "tags": [
+          "액티브",
+          "단일공격"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "자신의 춤사위 1중첩마다 축복 속성 대미지가 10.0% 증가하고, 최대 30.0% 증가한다.",
+        "name": "믿음",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 135131,
+        "tags": [
+          "잠재력"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "아군 동료가 HIGHLIGHT/테우르기아 효과를 발동하면 요시자와 카스미의 공격력이 2턴 동안 45.0% 증가한다(2회 중첩 가능).",
+        "name": "결의",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 135132,
+        "tags": [
+          "잠재력"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 2920.0,
+      "Crit Mult.": 2.51,
+      "Crit Rate": 0.37,
+      "Damage Mult.": 0.18
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1159.98 / 1180.78 / 1201.58 / 1222.38 / 1243.18 / 1264.78 / 1285.58",
+      "Attack Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "560.0 / 570.4 / 580.0 / 590.4 / 600.0 / 610.4 / 620.8",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3390.02 / 3450.82 / 3512.42 / 3573.22 / 3634.02 / 3694.82 / 3756.42",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "102.0 / 102.0 / 102.0 / 102.0 / 102.0 / 102.0 / 102.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

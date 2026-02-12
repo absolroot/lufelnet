@@ -8,6 +8,9 @@
   scale: 0.75 !important;
 }
 
+.char-img.front[alt*="나시모토 나루미"] {
+  scale: 1.2 !important;
+}
 
 .char-img.front[src*="P5DSN_-_Caroline_and_Justine"] {
   transform: translateY(-25%) scale(1.4);

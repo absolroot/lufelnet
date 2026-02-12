@@ -1,7 +1,7 @@
 ---
 layout: default
 custom_css: [home, tactic-posts]
-custom_js: [tactic-posts-home, tactic-preview, /tactic/share, home/popular-characters]
+custom_js: [tactic-posts-home, tactic-preview, /tactic/share, home/popular-characters, home/guides-home]
 custom_data: [/characters/characters.js]
 permalink: /
 redirect_from:
@@ -118,60 +118,13 @@ jp: /?lang=jp
     <div id="home-bosses-root"></div>
     <div class="separator-line"></div>
     <div class="guides-container">
-        <h2 id="guides-title">가이드</h2>
-        <div class="guide-cards">
-            <div class="guide-card">
-                <div class="guide-card-header">
-                    <img src="{{ site.baseurl }}/assets/img/home/guide1.png" alt="가이드 이미지">
-                    <h3 id="guide-city-title">도시 생활</h3>
-                </div>
-                <div class="guide-card-content">
-                    <div class="article"><a href="https://lufel.net/synergy/" target="_blank"
-                            style="text-decoration: none; color: inherit;">∘ 협력자 선물 & 선택지</a></div>
-                    <div class="article"><a
-                            href="https://gall.dcinside.com/mgallery/board/view/?id=persona5phantomx&no=158597"
-                            target="_blank" style="text-decoration: none; color: inherit;">∘ 협력자 우선순위 추천</a></div>
-                    <div class="article"><a href="https://gall.dcinside.com/m/persona5phantomx/191138" target="_blank"
-                            style="text-decoration: none; color: inherit;">∘ 이치가야 낚시</a></div>
-                    <div class="article"><a href="https://arca.live/b/persona5x/110240842" target="_blank"
-                            style="text-decoration: none; color: inherit;">∘ 요리 레시피 획득</a></div>
-                </div>
-            </div>
-            <div class="guide-card">
-                <div class="guide-card-header">
-                    <img src="{{ site.baseurl }}/assets/img/home/guide2.png" alt="가이드 이미지">
-                    <h3 id="guide-growth-title">육성 및 재화</h3>
-                </div>
-                <div class="guide-card-content">
-                    <div class="article"><a
-                            href="https://gall.dcinside.com/mgallery/board/view/?id=persona5phantomx&no=170601"
-                            target="_blank" style="text-decoration: none; color: inherit;">∘ 계시에 대하여</a></div>
-                    <div class="article"><a href="https://lufel.net/article/revelation-space-card/" target="_blank"
-                            style="text-decoration: none; color: inherit;">∘ 주 성위 계시 입수처</a></div>
-                    <div class="article"><a
-                            href="https://gall.dcinside.com/mgallery/board/view/?id=persona5phantomx&no=175353"
-                            target="_blank" style="text-decoration: none; color: inherit;">∘ 교환상점 구매목록</a></div>
-                    <div class="article"><a href="https://lufel.net/pay-calc" target="_blank"
-                            style="text-decoration: none; color: inherit;">∘ 패키지 과금효율 계산</a></div>
-                </div>
-            </div>
-            <div class="guide-card">
-                <div class="guide-card-header">
-                    <img src="{{ site.baseurl }}/assets/img/home/guide3.png" alt="가이드 이미지">
-                    <h3 id="guide-battle-title">전투 및 팰리스</h3>
-                </div>
-                <div class="guide-card-content">
-                    <div class="article"><a href="https://www.bilibili.com/video/BV1xF4m1N7bZ" target="_blank"
-                            style="text-decoration: none; color: inherit;">∘ 팰리스 1장 100% 탐색도</a></div>
-                    <div class="article"><a href="https://www.bilibili.com/video/BV1zD421n7jJ" target="_blank"
-                            style="text-decoration: none; color: inherit;">∘ 팰리스 2장 100% 탐색도</a></div>
-                    <div class="article"><a href="https://www.bilibili.com/video/BV1kr421T7Wp" target="_blank"
-                            style="text-decoration: none; color: inherit;">∘ 팰리스 3장 100% 탐색도</a></div>
-                    <div class="article"><a href="https://www.bilibili.com/video/BV1duUSYfEdY" target="_blank"
-                            style="text-decoration: none; color: inherit;">∘ 팰리스 4장 100% 탐색도</a></div>
-                </div>
-            </div>
+        <div class="posts-header">
+            <h2><a href="./apps/guides/" style="text-decoration: none; color: inherit;" id="guides-title">가이드</a></h2>
+            <a href="./apps/guides/" class="show-more-characters-btn" style="text-decoration: none; color: inherit;"
+                id="show-more-guides-btn"><img src="{{ site.baseurl }}/assets/img/home/news_more2.png" alt="logo"
+                    style="max-height: 11px; opacity: 0.75;"></a>
         </div>
+        <div class="guides-list" id="guides-list"></div>
     </div>
 
     <div class="posts-container" id="posts-container">
@@ -766,9 +719,7 @@ jp: /?lang=jp
             if (middleContainer) {
                 middleContainer.style.display = 'none';
             }
-            if (guidesContainer) {
-                guidesContainer.style.display = 'none';
-            }
+
 
         } else {
             // 한국어인 경우 모든 메뉴 활성화

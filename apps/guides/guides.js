@@ -285,6 +285,29 @@ const Guides = {
     /**
      * Render a single guide card
      */
+    /**
+     * Get optimized thumbnail URL
+     */
+    getOptimizedThumbnail(url, width) {
+        if (!url) return '';
+        // Skip optimization for local dev to avoid broken broken images if not public
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+            return url;
+        }
+
+        // Construct full URL if relative
+        let fullUrl = url;
+        if (url.startsWith('/')) {
+            fullUrl = window.location.origin + url;
+        }
+
+        // wsrv.nl format
+        return `//wsrv.nl/?url=${encodeURIComponent(fullUrl)}&w=${width}&output=webp`;
+    },
+
+    /**
+     * Render a single guide card
+     */
     renderCard(guide, lang) {
         const title = guide.titles?.[lang] || guide.titles?.kr || guide.title || 'Untitled';
         const excerpt = guide.excerpts?.[lang] || guide.excerpts?.kr || '';
@@ -294,9 +317,20 @@ const Guides = {
         const thumbnail = guide.thumbnail || '';
         const url = this.getGuideUrl(guide, lang);
 
+        let thumbHtml = '';
+        if (thumbnail) {
+            // Optimize to 300px WebP (static)
+            const optimizedThumb = this.getOptimizedThumbnail(thumbnail, 300);
+            // Store original GIF URL in data-gif if it is a GIF
+            const isGif = thumbnail.toLowerCase().endsWith('.gif');
+            const dataAttrs = isGif ? ` data-gif="${thumbnail}" data-static="${optimizedThumb}"` : '';
+
+            thumbHtml = `<img class="guide-card-thumbnail" src="${optimizedThumb}" alt="${title}"${dataAttrs} loading="lazy">`;
+        }
+
         return `
             <a class="guide-card" data-id="${guide.id}" href="${url}">
-                ${thumbnail ? `<img class="guide-card-thumbnail" src="${thumbnail}" alt="${title}">` : ''}
+                ${thumbHtml}
                 <div class="guide-card-content">
                     <span class="guide-card-category${catClass}">${categoryLabel}</span>
                     <h3 class="guide-card-title">${title}</h3>
@@ -311,36 +345,17 @@ const Guides = {
     },
 
     /**
-     * Freeze GIF thumbnails and play on hover
+     * Setup GIF hover effects using pre-calculated paths
      */
     setupGifThumbnails(container) {
-        container.querySelectorAll('.guide-card-thumbnail').forEach(img => {
-            if (!img.src.toLowerCase().endsWith('.gif')) return;
-
-            const gifSrc = img.src;
-
-            const freeze = () => {
-                try {
-                    const canvas = document.createElement('canvas');
-                    canvas.width = img.naturalWidth;
-                    canvas.height = img.naturalHeight;
-                    canvas.getContext('2d').drawImage(img, 0, 0);
-                    img.dataset.gif = gifSrc;
-                    img.dataset.static = canvas.toDataURL();
-                    img.src = img.dataset.static;
-                } catch (e) { /* CORS — leave GIF playing */ }
-            };
-
-            if (img.complete && img.naturalWidth) freeze();
-            else img.addEventListener('load', freeze, { once: true });
-
+        container.querySelectorAll('.guide-card-thumbnail[data-gif]').forEach(img => {
             const card = img.closest('.guide-card');
             if (card) {
                 card.addEventListener('mouseenter', () => {
-                    if (img.dataset.gif) img.src = img.dataset.gif;
+                    img.src = img.getAttribute('data-gif');
                 });
                 card.addEventListener('mouseleave', () => {
-                    if (img.dataset.static) img.src = img.dataset.static;
+                    img.src = img.getAttribute('data-static');
                 });
             }
         });
@@ -394,11 +409,13 @@ const Guides = {
 
         // Hide thumbnail if same as first content image
         if (thumbnail) {
+            // Check if content starts with image that matches thumbnail
             const tmp = document.createElement('div');
             tmp.innerHTML = content;
             const firstImg = tmp.querySelector('img');
             if (firstImg) {
                 const firstSrc = firstImg.getAttribute('src') || '';
+                // Simple check for matching filenames
                 if (firstSrc && (firstSrc === thumbnail || firstSrc.endsWith(thumbnail) || thumbnail.endsWith(firstSrc))) {
                     thumbnail = '';
                 }
@@ -445,60 +462,7 @@ const Guides = {
         // Update back link text based on language
         this.updateLanguageTexts();
 
-        // Thumbnail GIF: play once then freeze
-        const thumbEl = container.querySelector('.guide-thumbnail');
-        if (thumbEl && thumbnail.toLowerCase().endsWith('.gif')) {
-            this.playGifOnce(thumbEl);
-        }
-    },
-
-    /**
-     * Play a GIF once then freeze on its last frame.
-     * Simple approach: let GIF play naturally, freeze after one loop duration.
-     */
-    async playGifOnce(img) {
-        const t0 = performance.now();
-        try {
-            const gifSrc = img.src;
-
-            // 1. Fetch GIF binary and parse total animation duration
-            const res = await fetch(gifSrc);
-            const buf = new Uint8Array(await res.arrayBuffer());
-            let totalDelay = 0;
-            for (let i = 0; i < buf.length - 5; i++) {
-                if (buf[i] === 0x21 && buf[i + 1] === 0xF9) {
-                    let d = (buf[i + 4] | (buf[i + 5] << 8)) * 10;
-                    if (d < 20) d = 100; // browsers use ~100ms for 0-delay frames
-                    totalDelay += d;
-                }
-            }
-            if (totalDelay <= 0) return;
-
-            // 2. Ensure image is loaded (set up listener BEFORE checking)
-            if (!img.complete || !img.naturalWidth) {
-                await new Promise(r => {
-                    img.addEventListener('load', r, { once: true });
-                    // Safety: if already complete by now, resolve immediately
-                    if (img.complete && img.naturalWidth) r();
-                });
-            }
-
-            // 3. Wait for one full loop to finish
-            const elapsed = performance.now() - t0;
-            const remaining = totalDelay - elapsed;
-            if (remaining > 0) {
-                await new Promise(r => setTimeout(r, remaining));
-            }
-
-            // 4. Freeze: capture current frame and replace with static PNG
-            const canvas = document.createElement('canvas');
-            canvas.width = img.naturalWidth;
-            canvas.height = img.naturalHeight;
-            canvas.getContext('2d').drawImage(img, 0, 0);
-            img.src = canvas.toDataURL('image/png');
-        } catch (e) {
-            console.error('playGifOnce failed:', e);
-        }
+        // No special GIF handling for single view (let it play)
     },
 
     /**

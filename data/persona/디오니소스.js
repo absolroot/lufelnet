@@ -35,7 +35,7 @@ window.personaFiles["디오니소스"] = {
       "priority": 3
     },
     {
-      "name": "동력 격동",
+      "name": "역동적인 힘",
       "priority": 3
     },
     {

@@ -6,18 +6,18 @@ window.characterSkillsData["키라"] = {
   "skill1": {
     "name": "절단 기법/죄악의 게임",
     "element": "물리",
-    "type": "단일피해",
+    "type": "단일 피해",
     "sp": 21,
     "cool": 0,
-    "description": "『사냥꾼』 상태: 1명의 적에게 공격력 47.3%/52.2%/50.2%/55.1%의 물리 속성 대미지를 4회 주고, 『유혈』 1중첩을 추가한다.\n『집행관』 상태: 1명의 적에게 공격력 251.7%/277.5%/267.2%/292.9%의 물리 속성 대미지를 주고, 스킬 종료 후 적의 『유혈』 2중첩을 제거한다(『절개』 효과 발동 가능)."
+    "description": "『사냥꾼』 상태: 1명의 적에게 공격력 47.3%/52.2%/50.2%/55.1%의 물리 속성 대미지를 4회 주고, 『유혈』 1중첩을 추가한다.\n『집행관』 상태: 1명의 적에게 공격력 251.7%/277.5%/267.2%/292.9%의 물리 속성 대미지를 주고, 스킬 종료 후 해당 적의 『유혈』 2중첩을 제거한다(『절개』 효과 발동 가능)."
   },
   "skill2": {
-    "name": "치명적 쾌감/커튼 콜",
+    "name": "치명적 쾌감/커튼콜",
     "element": "물리",
-    "type": "단일피해",
+    "type": "단일 피해",
     "sp": 21,
     "cool": 0,
-    "description": "『사냥꾼』 상태: 1명의 적에게 공격력 84.2%/92.8%/89.4%/98.0%의 물리 속성 대미지를 2회 주고, 『유혈』 대미지를 즉시 1회 결산 및 『유혈』 상태 지속시간을 초기화한다.\n『집행관』 상태: 1명의 적에게 공격력 251.7%/277.5%/267.2%/292.9%의 물리 속성 대미지를 준다. 목표에게 『유혈』 1중첩이 있을 때마다 해당 스킬 대미지와 『절개』 대미지가 2% 증가하고, 스킬 종료 후 해당 적의 모든 『유혈』를 제거한다(『절개』 효과 발동 가능)."
+    "description": "『사냥꾼』 상태: 1명의 적에게 공격력 84.2%/92.9%/89.4%/98.0%의 물리 속성 대미지를 2회 주고, 『유혈』 대미지를 즉시 1회 결산 및 적의 『유혈』 상태 지속시간을 초기화한다.\n『집행관』 상태: 1명의 적에게 공격력 251.7%/277.5%/267.2%/292.9%의 물리 속성 대미지를 준다. 목표에게 『유혈』 1중첩이 있을 때마다 해당 스킬 대미지와 발동한 『절개』 대미지가 2% 증가하고, 스킬 종료 후 해당 적의 모든 『유혈』 상태를 제거한다(『절개』 효과 발동 가능)."
   },
   "skill3": {
     "name": "밤의 장막",
@@ -25,22 +25,25 @@ window.characterSkillsData["키라"] = {
     "type": "전환",
     "sp": 15,
     "cool": 0,
-    "description": "임의 적의 『유혈』 중첩수≥7 시 해당 스킬이 해제된다.\n『집행관』 상태로 전환해 스킬 모드가 변경되며 다음 효과를 획득한다. 스킬 사용 시 목표에게 『유혈』 3중첩이 있을 때마다 키타자토 키라는 추가로 목표에 『절개』 1회를 입혀, 공격력 66.7%/73.5%/70.8%/77.6%의 물리 속성 대미지를 준다. 해당 스킬 사용 후 이번 턴에서는 다른 스킬을 사용할 수 있으며, 턴 종료 시 『사냥꾼』 상태로 자동 전환된다."
+    "description": "임의 적의 『유혈』 중첩수≥7 시 해당 스킬이 해제된다.\n『집행관』 상태로 전환해 스킬 모드가 변경되며 다음 효과를 획득한다. 스킬 사용 시 목표에게 『유혈』 3중첩이 있을 때마다 키타자토 키라는 추가로 목표에 『절개』 1회를 입혀, 공격력 66.7%/73.5%/70.8%/77.6%의 물리 속성 대미지를 준다.\n해당 스킬 사용 후 이번 턴에서는 다른 스킬을 사용할 수 있으며, 턴 종료 시 『사냥꾼』 상태로 자동 전환된다."
   },
   "skill_highlight": {
     "element": "물리",
     "type": "단일피해",
-    "description": "『사냥꾼』 상태로 전환해 즉시 1명의 적에게 『유혈』 5중첩을 추가한다. 다음 『집행관』 상태로 전환해 해당 적에게 공격력 492.8%/543.3%/523.1%/573.6%의 물리 속성 대미지를 준다(『절개』 효과 발동 가능)."
+    "description": "『사냥꾼』 상태로 전환해 즉시 1명의 적에게 『유혈』 5중첩을 추가한다. 다음 『집행관』 상태로 전환해 해당 적에게 공격력 492.8%/543.3%/523.1%/573.6%의 물리 속성 대미지를 준다(『절개』 효과 발동 가능).",
+    "cool": 4
   },
   "passive1": {
     "name": "감염",
     "element": "패시브",
-    "description": "키타자토 키라 효과 명중 30%마다 『유혈』의 물리 속성 대미지가 키타자토 키라 공격력의 4%만큼 증가한다. 최대 90%의 효과 명중이 계산된다."
+    "description": "키타자토 키라의 효과 명중 30%마다 『유혈』의 물리 속성 대미지가 키타자토 키라 공격력의 4%만큼 증가한다. 최대 90%의 효과 명중이 계산된다.",
+    "cool": 0
   },
   "passive2": {
     "name": "부패",
     "element": "패시브",
-    "description": "『사냥꾼』 상태일 때 효과 명중이 36% 증가한다.\n『집행관』 상태일 때 관통이 21% 증가한다."
+    "description": "『사냥꾼』 상태일 때 효과 명중이 36% 증가한다.\n『집행관』 상태일 때 관통이 21% 증가한다.",
+    "cool": 0
   }
 };
 window.enCharacterSkillsData["키라"] = {
@@ -48,7 +51,7 @@ window.enCharacterSkillsData["키라"] = {
   "skill1": {
     "name": "Moonlit Scalpel / Midnight Surgery",
     "element": "물리",
-    "type": "단일피해",
+    "type": "단일 피해",
     "sp": 21,
     "cool": 0,
     "description": "Doctor mode: Deal Physical damage to 1 foe equal to 47.3%/52.2%/50.2%/55.1% of Attack (4 hits) and inflict 1 Bleed stack.  Ripper mode: Deal Physical damage to 1 foe equal to 251.7%/277.5%/267.2%/292.9% of Attack, then remove 2 Bleed stacks from the target (can activate Rending effects)."
@@ -56,7 +59,7 @@ window.enCharacterSkillsData["키라"] = {
   "skill2": {
     "name": "Crimson Operation / Pathology",
     "element": "물리",
-    "type": "단일피해",
+    "type": "단일 피해",
     "sp": 21,
     "cool": 0,
     "description": "Doctor mode: Deal Physical damage to 1 foe equal to 84.2%/92.9%/89.4%/98.0% of Attack (2 hits). At the same time, activate Bleed damage and reset the turn duration of the target's Bleed stacks 1 time.\nRipper mode: Deal Physical damage to 1 foe equal to 251.7%/277.5%/267.2%/292.9% of Attack. For each Bleed stack on the target, increase the damage of Rending activated by them and this skill by 2%, then remove all Bleed stacks from the target (can activate Rending effects)."
@@ -78,7 +81,7 @@ window.enCharacterSkillsData["키라"] = {
     "name": "Hideous Mask",
     "element": "패시브",
     "cool": 0,
-    "description": "For every 30% of the user's ailment accuracy, increase Physical damage dealt from Bleed by 4% of the user's Attack (up to 90% of ailment accuracy)."
+    "description": "For every 30% of Kitazato's ailment accuracy, increase Physical damage from Bleed by 4% of Attack (up to 90% of ailment accuracy)."
   },
   "passive2": {
     "name": "Drawn Blade",

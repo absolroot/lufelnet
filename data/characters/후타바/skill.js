@@ -7,15 +7,15 @@ window.characterSkillsData["후타바"] = {
     "name": "소리 없는 침습",
     "element": "버프광역",
     "type": "디버프",
-    "cool": 4,
-    "description": "모든 적의 방어력이 6%+(사쿠라 후타바의 공격력 100포인트마다 방어력 추가 0.53% 감소, 최대 4600/5060/5980/6440포인트 공격력 계산)만큼 감소하며 3턴 동안 지속된다. 기간동안 적이 약점 대미지를 받을 때 해당 효과는 2배로 증가한다. 자신의 분석 진도가 100%에 도달하면 아군 전체에게 『해킹 완료』를 추가하며 2턴 동안 지속된다."
+    "cool": 0,
+    "description": "모든 적의 방어력이 6%+(사쿠라 후타바의 공격력 100포인트마다 방어력 추가 0.53% 감소, 최대 4600/5060/5980/6440포인트 공격력 계산)만큼 감소하며 3턴 동안 지속된다. 기간 동안 적이 약점 대미지를 받을 때 해당 효과는 2배로 증가한다. 자신의 분석 진도가 100%에 도달하면 아군 전체에게 『해킹 완료』를 추가하며 2턴 동안 지속된다."
   },
   "skill2": {
     "name": "데이터 해독",
     "element": "버프",
     "type": "디버프",
     "cool": 4,
-    "description": "1명의 적이 받는 대미지가 6%+(사쿠라 후타바의 공격력 100포인트마다 목표가 받는 대미지 0.57% 추가 증가, 최대 4600/5060/5980/6440포인트 공격력 계산) 증가하며 3턴 동안 지속된다. 기간 동안 아군 동료가 페르소나 스킬/추가 효과/HIGHLIGHT를 발동해 목표에게 대미지를 주면, 사쿠라 후타바가 분석 진도를 15% 획득한다. 자신의 분석 진도가 100%에 도달하면 아군 전체에게 『해킹 완료』 상태를 추가하며 2턴 동안 지속된다."
+    "description": "3턴 동안 적 1명이 받는 대미지를 6%+(사쿠라 후타바의 공격력 100포인트마다 목표가 받는 대미지 0.57% 추가 증가, 최대 공격력 4600/5060/5980/6440포인트까지 계산) 증가시킨다. 효과가 지속되는 동안 아군 괴도가 페르소나 스킬/추가 효과/HIGHLIGHT/테우르기아로 목표에게 대미지를 주면, 사쿠라 후타바가 분석 진도 20%를 획득한다. 2턴 동안 자신의 분석 진도가 100%일 때 아군 전체에게 『해킹 완료』를 추가한다."
   },
   "skill3": {
     "name": "불사조의 이름으로",
@@ -23,7 +23,7 @@ window.characterSkillsData["후타바"] = {
     "type": "버프",
     "cool": 8,
     "unlock": "아군 캐릭터가 『해킹 완료』 보유.",
-    "description": "발동 조건: 아군 캐릭터가 『해킹 완료』 보유.\n아군 괴도 1명의 공격력이 270/297/302/329+(사쿠라 후타바의 공격력 100포인트마다 공격력 추가 21.7 증가, 최대 4600/5060/5980/6440포인트 공격력 계산) 증가하며 2턴 동안 지속된다. 전체 적에게 해당 괴도 적합성의 『교란 바이러스』를 추가하며 1턴 동안 지속된다.\n『교란 바이러스』: 목표의 적합성 속성을 변경한다. 무효, 반사, 흡수일 경우 내성으로, 내성일 경우 일반으로, 일반일 경우 약점으로 변경된다. 약점일 경우, 목표가 받는 약점 대미지를 25% 증가한다."
+    "description": "해제 조건: 아군 캐릭터가 『해킹 완료』 보유\n아군 괴도 1명의 공격력이 270/297/302/329+(사쿠라 후타바의 공격력 100포인트마다 공격력 추가 21.7 증가, 최대 4600/5060/5980/6440포인트 공격력 계산) 증가하며 2턴 동안 지속된다. 전체 적에게 해당 괴도 적합성의 『교란 바이러스』를 추가하며 1턴 동안 지속된다.\n『교란 바이러스』: 목표의 적합성 속성을 변경한다. 무효, 반사, 흡수일 경우 내성으로, 내성일 경우 일반으로, 일반일 경우 약점으로 변경된다. 약점일 경우 목표가 받는 약점 대미지가 25% 증가한다."
   },
   "skill_highlight": {
     "name": "속성 증가",
@@ -33,12 +33,14 @@ window.characterSkillsData["후타바"] = {
   "passive1": {
     "name": "장난기",
     "element": "패시브",
-    "description": "전투 시작 시 100%의 분석 진도를 획득한다."
+    "description": "전투 시작 시 100%의 분석 진도를 획득한다.",
+    "cool": 0
   },
   "passive2": {
     "name": "뒷수습",
     "element": "패시브",
-    "description": "『해킹 완료』 상태에서 3턴 동안 모든 괴도는 사쿠라 후타바 공격력 30.0%의 실드를 획득한다."
+    "description": "『해킹 완료』 상태에서 3턴 동안 모든 괴도는 사쿠라 후타바 공격력 30.0%의 실드를 획득한다.",
+    "cool": 0
   }
 };
 window.enCharacterSkillsData["후타바"] = {
@@ -63,7 +65,7 @@ window.enCharacterSkillsData["후타바"] = {
     "type": "버프",
     "cool": 0,
     "unlock": "Ally must have 『Hack Complete』.",
-    "description": "Usable when allies have Data Storm. For 2 turns, increase 1 ally's Attack by 270/297/302/329; increase Attack by 21.7 more for every 100 points of Futaba's Attack (up to 4600/5060/5980/6440 of Attack).\nInflict Virus on all foes for 1 turn, based on the targeted ally's attribute.\nVirus: Change affinities of the foe this is inflicted upon. (Null, Repel, and Drain become Resist, Resist becomes Normal, and Normal becomes Weak. Weak attributes take 25% more weakness damage.)"
+    "description": "Usable when allies have Data Storm. For 2 turns, increase 1 ally's Attack by 270/297/302/329; increase Attack by 21.7 more for every 100 points of Futaba's Attack (up to 4600/5060/5980/6440 of Attack).\nInflict Virus on all foes for 1 turn, based on the targeted ally's attribute.\nVirus: Change affinities of the foe this is inflicted upon. (Null, Repel, and Drain become Resist. Resist becomes Normal. Normal becomes Weak. Weak attributes take 25% more weakness damage.)"
   },
   "skill_highlight": {
     "name": "Stat Buff",

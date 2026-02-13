@@ -25,7 +25,7 @@ async function ensureDepsLoaded() {
   if (await tryLoad()) return;
   try {
     execSync('npm init -y', { stdio: 'ignore' });
-  } catch {}
+  } catch { }
   try {
     execSync('npm i -D recast @babel/parser prettier', { stdio: 'ignore' });
   } catch (e) {
@@ -322,7 +322,7 @@ function readInnateFile(filePath, charKey) {
 
 function writeInnateFile(filePath, charKey, obj) {
   const content =
-`window.innateData = window.innateData || {};
+    `window.innateData = window.innateData || {};
 window.innateData[${JSON.stringify(charKey)}] = ${JSON.stringify(obj, null, 4)};
 `;
   writeFile(filePath, content);
@@ -452,23 +452,23 @@ function normalizeFinalInnate(finalArr, element) {
 
     if (kind === 'finalDamage') {
       return {
-      desc: `모든 ${kr} 속성 아군의 총 대미지 증폭`,
-      desc_en: `All ${en} Attribute Allies' Final Damage Increase`,
-      desc_jp: `${jp}属性の味方全員の最終ダメージ上昇`
+        desc: `모든 ${kr} 속성 아군의 총 대미지 증폭`,
+        desc_en: `All ${en} Attribute Allies' Final Damage Increase`,
+        desc_jp: `${jp}属性の味方全員の最終ダメージ上昇`
       };
     }
     if (kind === 'damageBoost') {
       return {
-      desc: `모든 ${kr} 속성 아군의 ${kr} 속성 대미지 보너스 증가`,
-      desc_en: `All ${en} Attribute Allies' ${en} Attribute DMG Bonus(ATK Mult) Increase`,
-      desc_jp: `${jp}属性の味方全員の${jp}属性ダメージ攻撃倍率+上昇`
+        desc: `모든 ${kr} 속성 아군의 ${kr} 속성 대미지 보너스 증가`,
+        desc_en: `All ${en} Attribute Allies' ${en} Attribute Damage Mult Increase`,
+        desc_jp: `${jp}属性の味方全員の${jp}属性ダメージ攻撃倍率+上昇`
       };
     }
     if (kind === 'damageTaken') {
       return {
-      desc: `모든 ${kr} 속성 아군의 ${kr} 속성 받는 대미지 감소`,
-      desc_en: `All ${en} Attribute Allies' ${en} Attribute DMG Taken Decrease`,
-      desc_jp: `${jp}属性の味方全員の${jp}属性ダメージ受ける減少`
+        desc: `모든 ${kr} 속성 아군의 ${kr} 속성 받는 대미지 감소`,
+        desc_en: `All ${en} Attribute Allies' ${en} Attribute DMG Taken Decrease`,
+        desc_jp: `${jp}属性の味方全員の${jp}属性ダメージ受ける減少`
       };
     }
     return null;

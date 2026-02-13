@@ -79,7 +79,7 @@ window.recommendParty["사나다"] = {
         {
             "name": "마유미",
             "comment": "마유미는 공격력, 대미지 보너스 등의 버프와 더불어 강력한 관통 버프를 제공한다.",
-            "comment_en": "Provides ATK, DMG Bonus (ATK Mult) buffs, along with a powerful Penetration buff.",
+            "comment_en": "Provides ATK, Damage Mult. buffs, along with a powerful Penetration buff.",
             "comment_jp": "攻撃力や攻撃倍率+に加えて、強力な貫通バフを付与する。",
         },
         {

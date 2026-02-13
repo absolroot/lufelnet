@@ -19,7 +19,7 @@ window.innateData["야오링·사자무"] = {
                 "nature": "Fire",
                 "value": "0.08",
                 "desc": "모든 화염 속성 아군의 화염 속성 대미지 보너스 증가",
-                "desc_en": "All Fire Attribute Allies' Fire Attribute DMG Bonus(ATK Mult) Increase",
+                "desc_en": "All Fire Attribute Allies' Fire Attribute Damage Mult. Increase",
                 "desc_jp": "炎属性の味方全員の炎属性ダメージ攻撃倍率+上昇",
                 "desc_cn": "",
                 "type": "화염"

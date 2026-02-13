@@ -1,7 +1,8 @@
 (function () {
-    window.characterReview = window.characterReview || {};
-    window.characterReview["이치고"] = { name_en: "Ichigo Shikano", name_jp: "鹿野 苺", codename: "BERRY",
-        review: `
+  window.characterReview = window.characterReview || {};
+  window.characterReview["이치고"] = {
+    name_en: "Ichigo Shikano", name_jp: "鹿野 苺", codename: "BERRY",
+    review: `
 주원 속성 지속 대미지를 주는『원념』중첩을 적에게 부여하는 강력한 단일 딜러다다.
 
 스킬1과 스킬2를 통해『원념』을 적에게 중첩시키고, 최대 중첩을 완성 한 후 **스킬3으로 『원념』의 지속시간을 갱신하고 강력한 대미지**를 준다.
@@ -43,7 +44,7 @@
 참고로 이치고가 나타나기 전에 출시됐던 '년수'의 지속 대미지 증가는 일반적인 대미지 증가 버킷으로 계산된다.
 
 `,
-review_en: `
+    review_en: `
 A powerful single-target DPS that applies stacks of the Curse-element DoT [Resentment] to enemies.  
 
 Applies [Resentment] to enemies through S1 and S2, then after reaching maximum stacks, **refreshes the duration with S3 and deals heavy damage**.  
@@ -68,7 +69,7 @@ Ichigo is extremely powerful, but her damage-dealing mechanism is the most compl
 
 Below is the buff table showing which of Ichigo’s buffs apply:  
 
-| -                         | ATK / ATK Mult      | Crit Rate / Crit Mult | DEF Reduction | Pierce |
+| -                         | ATK / Damage Mult      | Crit Rate / Crit Mult | DEF Reduction | Pierce |
 |---------------------------|----------------------|------------------------------|---------------|--------|
 | S1/S2/S3                  | O                    | O                            | O             | O      |
 | Resentment Application/Refresh| O                    | -                            | O             | -      |
@@ -85,7 +86,7 @@ The **DoT Damage Increase** buff is calculated in a separate bucket from standar
 
 For reference, Nian’s DoT Damage Increase, released before Ichigo, is calculated in the standard damage increase bucket.   
 `,
-review_jp: `
+    review_jp: `
 単体対象に呪怨属性の持続ダメージ[怨念]スタックを付与する強力なアタッカー。  
 
 S1とS2で敵に[怨念]を付与し、最大スタックに到達した後、**S3で持続時間を更新しつつ強力なダメージを与える**。  
@@ -125,25 +126,25 @@ S1とS2で敵に[怨念]を付与し、最大スタックに到達した後、**
 **持続ダメージ増加**というバフは、既存のダメージ増加とは異なり、別のバケットで計算される。  
 
 参考までに、苺登場前に実装された年獣の持続ダメージ増加は、通常のダメージ増加バケットで計算される。`,
-        pros: ["체력 비례 대미지가 아닌 공격력 기반 지속 대미지로 모든 보스에게 유의미한 대미지를 줄 수 있다.", "3스킬과 HIGHLIGHT가 강력하다."],
-        pros_en: [
-          "Deals meaningful damage to all bosses thanks to ATK-based DoT instead of HP-based scaling.",
-          "Has powerful Skill 3 and HIGHLIGHT."
-        ]
-        ,
-        pros_jp: [
-          "HP比例ではなく攻撃力依存の継続ダメージにより、すべてのボスに有効なダメージを与えられる。",
-          "スキル3とHIGHLIGHTが強力。"
-        ]
-        ,
-        cons: ["1스킬을 통해 다수의 적을 공격할 수 없는 경우 예열시간이 길어진다."],
-        cons_en: [
-          "Takes longer to set up when Skill 1 cannot hit multiple enemies."
-        ],
-        cons_jp: [
-          "スキル1で複数の敵を攻撃できない場合、予熱時間が長くなる。"
-        ],
-    };
+    pros: ["체력 비례 대미지가 아닌 공격력 기반 지속 대미지로 모든 보스에게 유의미한 대미지를 줄 수 있다.", "3스킬과 HIGHLIGHT가 강력하다."],
+    pros_en: [
+      "Deals meaningful damage to all bosses thanks to ATK-based DoT instead of HP-based scaling.",
+      "Has powerful Skill 3 and HIGHLIGHT."
+    ]
+    ,
+    pros_jp: [
+      "HP比例ではなく攻撃力依存の継続ダメージにより、すべてのボスに有効なダメージを与えられる。",
+      "スキル3とHIGHLIGHTが強力。"
+    ]
+    ,
+    cons: ["1스킬을 통해 다수의 적을 공격할 수 없는 경우 예열시간이 길어진다."],
+    cons_en: [
+      "Takes longer to set up when Skill 1 cannot hit multiple enemies."
+    ],
+    cons_jp: [
+      "スキル1で複数の敵を攻撃できない場合、予熱時間が長くなる。"
+    ],
+  };
 })();
 
 

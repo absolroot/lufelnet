@@ -1,7 +1,8 @@
 (function () {
     window.characterReview = window.characterReview || {};
-    window.characterReview["토시야"] = { name_en: "Toshiya Sumi", name_jp: "須見 俊也", codename: "SEPIA",
-        review:`
+    window.characterReview["토시야"] = {
+        name_en: "Toshiya Sumi", name_jp: "須見 俊也", codename: "SEPIA",
+        review: `
 주원 효과를 기반으로 적에게 % 대미지를 주는 딜러이다.
 
 **주원 효과는 적의 체력에 비례한 대미지를 주며, 주원이 아닌 만능 속성 대미지에 영향**을 받는다.
@@ -17,13 +18,13 @@ A damage dealer that uses Curse Effects to deal % damage to enemies.
 
 **Curse Effects deal damage based on the enemy's HP and are affected by Almighty damage, not Curse itself.**
 
-Therefore, buffs should be structured to **increase Damage Bonus(Atk Mult)** or use Wonder’s weapon “Ex Machina” to boost Almighty damage.
+Therefore, buffs should be structured to **increase Damage Mult.+** or use Wonder’s weapon “Ex Machina” to boost Almighty damage.
 
 **[Verse of Hate]** applied by Skill 1 has a 30% chance to inflict Curse Effects on the enemy, and this 30% can increase depending on Ailment Accuracy Rate.
 
 By repeating Skill 1 to inflict as many Curse Effects as possible, and using Persona **Pazuzu**’s passive to finalize those effects, you can deal great damage to enemies.
 `,
-review_jp: `
+        review_jp: `
 呪怨効果を基に敵に％ダメージを与えるアタッカーです。
 
 **呪怨効果は敵のHPに比例したダメージを与え、呪怨ではなく万能属性ダメージの影響を受けます。**
@@ -38,7 +39,7 @@ review_jp: `
         pros_en: ["It can deal a large amount of damage through HP-scaling damage from Curse Effects."],
         pros_jp: ["呪怨効果によるHP割合ダメージを活用して大きなダメージを与えることができます。"],
         cons: ["절대 다수의 보스가 체력 비례 대미지 감소 효과를 가지고 있어 토시야의 도트 대미지의 효율이 급감한다.", "주원 부여 확률이 생각보다 낮다.", "운명의 십사행시 발동을 위해선 여러 타수를 공격하는 팀 구성이 필요하다."],
-        cons_en: ["Most bosses have HP-scaling damage reduction effects, which drastically decreases the effectiveness of Toshiya's Bleed damage.", "The probability of applying Curse is lower than expected.","Sonnet of Fate requires team compositions that facilitate multi-hits."],
+        cons_en: ["Most bosses have HP-scaling damage reduction effects, which drastically decreases the effectiveness of Toshiya's Bleed damage.", "The probability of applying Curse is lower than expected.", "Sonnet of Fate requires team compositions that facilitate multi-hits."],
         cons_jp: ["大多数のボスはHP割合ダメージ軽減効果を持っており、そのためトシヤの持続ダメージ（ドット）効率は大幅に低下します。", "呪怨効果付与確率は想像より低いです。", "。"],
     };
 })();

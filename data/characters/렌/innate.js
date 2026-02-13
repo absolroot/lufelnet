@@ -19,7 +19,7 @@ window.innateData["렌"] = {
                 "nature": "Curse",
                 "value": "0.08",
                 "desc": "모든 주원 속성 아군의 주원 속성 대미지 보너스 증가",
-                "desc_en": "All Curse Attribute Allies' Curse Attribute DMG Bonus(ATK Mult) Increase",
+                "desc_en": "All Curse Attribute Allies' Curse Attribute Damage Mult. Increase",
                 "desc_jp": "呪怨属性の味方全員の呪怨属性ダメージ攻撃倍率+上昇",
                 "desc_cn": "",
                 "type": "주원"

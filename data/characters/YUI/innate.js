@@ -19,7 +19,7 @@ window.innateData["YUI"] = {
                 "nature": "Electric",
                 "value": "0.08",
                 "desc": "모든 전격 속성 아군의 전격 속성 대미지 보너스 증가",
-                "desc_en": "All Electric Attribute Allies' Electric Attribute DMG Bonus(ATK Mult) Increase",
+                "desc_en": "All Electric Attribute Allies' Electric Attribute Damage Mult. Increase",
                 "desc_jp": "電撃属性の味方全員の電撃属性ダメージ攻撃倍率+上昇",
                 "desc_cn": "",
                 "type": "전격"

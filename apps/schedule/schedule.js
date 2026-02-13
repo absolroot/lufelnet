@@ -1048,7 +1048,10 @@
             const autoUnlocks = release.goldTicketUnlocksAuto && Array.isArray(release.goldTicketUnlocksAuto) ? release.goldTicketUnlocksAuto : [];
             const allAuto = autoUnlocks.length > 0 && autoUnlocks.length === release.goldTicketUnlocks.length &&
                 release.goldTicketUnlocks.every(codename => autoUnlocks.includes(codename));
-            const labelText = allAuto ? labels.predict : labels.desc;
+
+            // 미래 일정인 경우에도 Predict 표시 (수동 입력 포함)
+            const isFuture = status === 'upcoming' || status === 'future';
+            const labelText = (allAuto || isFuture) ? labels.predict : labels.desc;
 
             // codename으로 캐릭터 찾기
             const charData = window.characterData || {};

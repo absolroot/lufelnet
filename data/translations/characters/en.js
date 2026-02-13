@@ -3,7 +3,7 @@ const characterTranslations = {
     // 속성 번역
     elements: {
         "만능": "Almighty",
-        "물리": "Physical", 
+        "물리": "Physical",
         "총격": "Gun",
         "화염": "Fire",
         "빙결": "Ice",
@@ -17,11 +17,11 @@ const characterTranslations = {
         "디버프": "Debuff",
         "디버프광역": "AOE Debuff"
     },
-    
+
     // 직업 번역  
     positions: {
         "구원": "Medic",
-        "굴복": "Saboteur", 
+        "굴복": "Saboteur",
         "반항": "Assassin",
         "방위": "Guardian",
         "우월": "Strategist",
@@ -29,7 +29,7 @@ const characterTranslations = {
         "해명": "Elucidator",
         "자율": "Virtuoso"
     },
-    
+
     // 태그 번역
     tags: {
         "딜러": "DPS",
@@ -65,11 +65,11 @@ const characterTranslations = {
         "HP 소모": "HP Cost",
         "HP소모": "HP Cost"
     },
-    
+
     // 계시 번역
     revelations: {
         "돌파": "Breakthrough",
-        "결심": "Determination", 
+        "결심": "Determination",
         "희망": "Hope",
         "창조": "Creation",
         "진정성": "Authenticity",
@@ -88,11 +88,11 @@ const characterTranslations = {
         "헛수고": "Futile Effort",
         "직책": "Labor"
     },
-    
+
     // 스탯 옵션 번역
     stats: {
         "공격력": "ATK",
-        "대미지 보너스": "DMG Bonus(ATK Mult)",
+        "대미지 보너스": "Damage Mult",
         "크리티컬 효과": "CRIT Mult",
         "크리티컬 확률": "CRIT Rate",
         "관통": "Pierce Rate",
@@ -102,11 +102,11 @@ const characterTranslations = {
         "생명": "HP",
         "방어력": "DEF"
     },
-    
+
     // 심상 스킬 번역
     mindSkills: {
         "SP 회복": "SP Recovery",
-        "대미지 보너스": "DMG Bonus(ATK Mult)",
+        "대미지 보너스": "Damage Mult",
         "크리티컬 효과": "CRIT Mult",
         "크리티컬 확률": "CRIT Rate",
         "공격력": "ATK",

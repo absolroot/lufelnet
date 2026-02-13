@@ -18,7 +18,7 @@ window.innateData["토모코·여름"] = {
                 "nature": "Psychokinesis",
                 "value": "0.08",
                 "desc": "모든 염동 속성 아군의 염동 속성 대미지 보너스 증가",
-                "desc_en": "All Psychokinesis Attribute Allies' Psychokinesis Attribute DMG Bonus(ATK Mult) Increase",
+                "desc_en": "All Psychokinesis Attribute Allies' Psychokinesis Attribute Damage Mult. Increase",
                 "desc_jp": "念動属性の味方全員の念動属性ダメージ攻撃倍率+上昇",
                 "desc_cn": "",
                 "type": "염동"

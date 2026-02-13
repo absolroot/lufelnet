@@ -54,15 +54,23 @@ window.ReleaseScheduleData = {
         // ===== 2026년 =====
         { version: "3.0", date: "2026-01-08", characters: ["몽타뉴·백조"], "main-story": "4-1", persona: ["사악한 프로스트"], weapon: ["야수의 이빨"], revelation: ["창조", "자유", "개선", "좌절", "우려", "화해"] },
         { version: "3.1", date: "2026-01-22", characters: ["루우나"], days: 14 },
+        { version: "3.2.1", date: "2026-02-05", characters: ["리코·매화"], "main-story": "4-2", persona: ["지크프리트"], revelation: ["헛수고", "실망"], days: 8 },
     ],
 
     // 순서를 지정하고 싶은 캐릭터들 (날짜만 자동 계산)
     // 이후 캐릭터들은 characterData의 release_order 기반으로 자동 추가됨
+    // 
+    // [TIP] 특정 캐릭터의 잠금 해제(Gold Ticket) 시점을 수동으로 지정하는 방법:
+    // 1. 해당 캐릭터의 'codename'을 알아야 합니다. (예: 유우미 -> PHOEBE, 미오 -> MATOI)
+    // 2. 원하는 버전의 데이터에 goldTicketUnlocks: ["CODENAME"] 을 추가합니다.
+    // 3. 이렇게 하면 자동으로 계산되던 6개월 뒤 일정은 사라지고, 여기 작성한 위치에만 배지가 표시됩니다.
+    // 
+    // 예시: 유우미(PHOEBE)의 잠금 해제를 3.3버전으로 옮기고 싶을 때:
+    // { version: "3.3", characters: ["야오링·사자무"], ..., goldTicketUnlocks: ["PHOEBE"] },
     autoGenerateCharacters: [
         // 3.x (2주 간격)
-        { version: "3.2.1", date: "2026-02-05", characters: ["리코·매화"], "main-story": "4-2", persona: ["지크프리트"],  revelation: ["헛수고", "실망"], days: 8 },
-        { version: "3.2.2", characters: ["미오"], persona: ["트론"], weapon: ["플라스마 섬멸자","작열의 연옥"], days: 19 },
-        { version: "3.3", characters: ["야오링·사자무"], persona: ["년수"], note: "", days: 14 },
+        { version: "3.2.2", date: "2026-02-13", characters: ["미오"], persona: ["트론"], weapon: ["플라스마 섬멸자", "작열의 연옥"], days: 19 },
+        { version: "3.3", characters: ["야오링·사자무"], persona: ["년수"], goldTicketUnlocks: ["PHOEBE"], note: "", days: 14 },
         { version: "3.4", characters: ["카스미"], persona: ["스라오샤"], days: 14 },
         { version: "3.5", characters: ["아케치"], days: 14 },
         { version: "3.6", characters: ["마유미"], days: 14 },

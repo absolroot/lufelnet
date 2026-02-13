@@ -110,7 +110,7 @@ window.I18N_COMMON_EN = {
         speed: 'Speed',
 
         // Damage related
-        dmgBonus: 'DMG Bonus(ATK Mult)',
+        dmgBonus: 'Damage Mult',
         critRate: 'Crit Rate',
         critMult: 'Crit Mult',
         pierce: 'Pierce Rate',
@@ -214,7 +214,7 @@ window.I18N_COMMON_EN = {
         // Aliases (for whitespace variations in Korean source)
         // ========================================
         hpAlt: 'HP',
-        dmgBonusAlt: 'DMG Bonus(ATK Mult)',
+        dmgBonusAlt: 'Damage Mult',
         critRateAlt: 'Crit Rate',
         critMultAlt: 'Crit Mult',
         ailmentAccuracyAlt: 'Ailment Accuracy',

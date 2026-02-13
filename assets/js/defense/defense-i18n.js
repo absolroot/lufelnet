@@ -91,7 +91,9 @@
                     penetrate_total: '관통', final_defense_coef_after_pierce: '관통 적용 방어 계수:', sum_target: '합계 / 목표',
                     penetrate_desc: '※ 보스 방어 계수 × (100-관통)%', defense_reduce_total: '방어력 감소', final_defense_coef: '최종 방어 계수:',
                     final_defense_coef_title: '방어력 수치', defense_reduce_desc: '※ 보스 방어 계수 - 방어력 감소', final_damage_increase: '최종 대미지',
-                    boss_info_tip: '최고 난이도 기준 값이며, 같은 이름이더라도 보스마다 방어력 값은 다를 수 있습니다. 참조용 데이터이며 정확한 수치는 아닐 수 있습니다. 출시 초기에 알려진 수치를 기반한 데이터로 현재는 명확한 수치를 확인할 방법이 없습니다.',
+                    boss_info_tip: '최고 난이도 기준의 참조용 데이터입니다. 같은 이름이라도 보스별 방어력 수치는 다를 수 있습니다. 중요: 이 값은 출시 초기 확보 데이터 기반이며, 현재는 정확한 수치를 구하거나 검증할 방법이 없습니다.',
+                    boss_info_inline_badge: '초기 데이터',
+                    boss_info_inline: '출시 초기 확보 데이터 기반 / 현재 정확 수치 입수·검증 불가',
                     tooltip_formula: '대미지 배수 : 1 - [방어력 × 방어 계수 / (방어력× 방어 계수 + 1400)]',
                     base_final_damage: '· 방어력에 의한 최종 대미지 배수:', with_def_reduce: '· 방어력 감소 최종 대미지 배수:',
                     tab_pierce: '관통', tab_defense: '방어력 감소', revelation_penetrate: '계시 관통 합계', revelation_sum: '계시 합계', explanation_power: '해명의 힘',
@@ -108,7 +110,9 @@
                     penetrate_total: 'Pierce', final_defense_coef_after_pierce: 'Defense Coef. after Pierce:', sum_target: 'Sum / Target',
                     penetrate_desc: '※ Boss Defense Coef. × (100 - Pierce)%', defense_reduce_total: 'Def. Reduction', final_defense_coef: 'Final Defense Coef.:',
                     final_defense_coef_title: 'Def. Info', defense_reduce_desc: '※ Boss Defense Coef. - Defense Reduction', final_damage_increase: 'Final Damage',
-                    boss_info_tip: 'Values are based on the highest difficulty. Even with the same name, each boss can have different Defense values. This is reference data and may not be exact. The data is based on figures known at the time of initial release; there is currently no way to verify precise figures.',
+                    boss_info_tip: 'These are highest-difficulty reference values. Even bosses with the same name can have different Defense stats. Important: this dataset is based on launch-period data, and exact values are currently unobtainable and cannot be verified.',
+                    boss_info_inline_badge: 'Initial Data',
+                    boss_info_inline: 'Launch-period data only. Exact values are currently unobtainable and unverifiable.',
                     tooltip_formula: 'Damage multiplier: 1 - [Enemy Defense × Defense Coef. / (Enemy Defense × Defense Coef. + 1400)]',
                     base_final_damage: '· Base final damage mult.:', with_def_reduce: '· With defense reduction mult.:',
                     tab_pierce: 'Pierce', tab_defense: 'Defense Reduction', revelation_penetrate: 'Revelation Pierce Total', revelation_sum: 'Revelation Sum', explanation_power: 'Elucidation Power', other_reduce: 'Other Def. Reduction',
@@ -125,7 +129,9 @@
                     penetrate_total: '貫通合計', final_defense_coef_after_pierce: '貫通適用の防御係数:', sum_target: '合計 / 目標',
                     penetrate_desc: '※ ボス防御係数 × (100 - 貫通)%', defense_reduce_total: '防御力減少合計', final_defense_coef: '最終防御係数:',
                     final_defense_coef_title: '防御力数値', defense_reduce_desc: '※ ボス防御係数 - 防御力減少', final_damage_increase: '最終ダメージ',
-                    boss_info_tip: '最高難易度を基準とした値です。同じ名前でもボスごとに防御力は異なる場合があります。参考用データであり、正確な数値ではありません。発売初期に知られていた数値に基づくデータであり、現在は明確な数値を確認する方法がありません。',
+                    boss_info_tip: '最高難易度基準の参考値です。同名でもボスごとに防御値が異なる場合があります。重要: このデータはリリース初期に確保された情報ベースであり、現在は正確な数値を入手・検証できません。',
+                    boss_info_inline_badge: '初期データ',
+                    boss_info_inline: 'リリース初期データのみ / 現在は正確値の入手・検証不可',
                     tooltip_formula: 'ダメージ倍率: 1 - [敵防御 × 防御係数 / (敵防御 × 防御係数 + 1400)]',
                     base_final_damage: '・ 基本 最終ダメージ倍率:', with_def_reduce: '・ 防御力減少あり 最終ダメージ倍率:',
                     tab_pierce: '貫通', tab_defense: '防御力減少', revelation_penetrate: '啓示 貫通合計', revelation_sum: '啓示 合計', explanation_power: '解明の力', other_reduce: 'その他 防御力減少',
@@ -153,7 +159,11 @@
             const baseDefenseLabel = document.getElementById('baseDefenseLabel');
             const defenseCoefLabel = document.getElementById('defenseCoefLabel');
             const bossInfoTooltip = document.getElementById('bossInfoTooltip');
+            const bossInfoInlineBadge = document.getElementById('bossInfoInlineBadge');
+            const bossInfoInlineText = document.getElementById('bossInfoInlineText');
             if (bossInfoTooltip) bossInfoTooltip.setAttribute('data-tooltip', t.boss_info_tip);
+            if (bossInfoInlineBadge) bossInfoInlineBadge.textContent = t.boss_info_inline_badge || '';
+            if (bossInfoInlineText) bossInfoInlineText.textContent = t.boss_info_inline || '';
             if (bossSelectPlaceholder) bossSelectPlaceholder.textContent = t.boss_select;
             if (baseDefenseLabel) baseDefenseLabel.textContent = t.base_defense;
             if (defenseCoefLabel) defenseCoefLabel.textContent = t.defense_coef;
@@ -552,5 +562,3 @@
 
     window.DefenseI18N = DefenseI18N;
 })();
-
-

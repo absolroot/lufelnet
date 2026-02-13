@@ -1,0 +1,277 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Some skills and Highlight can activate Ice Technicals. Also, when dealing Ice damage, ignore foes' Ice resistance.\nOn Natsukawa's action, gain 1 Extinguish stack. Stacks up to 4 times. When using Extinguishing Guidance, spend Extinguish stacks, and inflict 1 Damnation stack on all foes for each stack spent.\nDamnation: Increase damage taken by 6% for 2 turns. Stacks up to 4 times.",
+        "name": "Smothering Agony",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 137140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "When using Sub-Zero Torrent, gain 1 more Extinguish stack. When spending Extinguish stacks, increase all foes' critical damage taken by 30% for 2 turns.",
+        "name": "Cooling Spray",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 137141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "When spending Extinguish stacks, increase party's Attack by 20%, Defense by 30%, and damage dealt by 15% for 2 turns.",
+        "name": "Frozen Gateway",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 137142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase the skill levels of Extinguishing Guidance and Thief Tactics by 3.",
+        "name": "Whirlpool Cannon",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 137143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Highlight Enhanced: Extend the duration of the damage taken increase effect by 1 turn. Also, when the Highlight activates Deepfreeze, the chance to inflict Icebound becomes 44%.",
+        "name": "Terrifying Chill",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 137144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase the skill levels of Sub-Zero Torrent and Freezing Prison by 3.",
+        "name": "Wellspring of Grief",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 137145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "If foes are Burning on Natsukawa's action, activate Sub-Zero Torrent on that foe 1 time (this effect will not be activated by Scald).\nAlso, when the same foe is attacked repeatedly with Extinguishing Guidance or Requiem Guidance, increase the target's damage taken by 25% more for 1 turn.\nThe maximum number of Damnation stacks becomes 6.",
+        "name": "Firefighter's Soul",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 137146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "Weak",
+      "cooldown": 4,
+      "cost": "",
+      "desc": "Deal Ice damage to all foes equal to 39.0%/43.0%/41.4%/45.4% of Attack, and increase their damage taken for 2 turns (for every 5.83% of Natsukawa's ailment accuracy, increase damage taken by 1% more, up to a maximum of 29.3%/32.3%/31.1%/34.1%).\nAlso, can activate Ice Technical. When Deepfreeze is activated, 32% chance to inflict Icebound. Also, increase damage taken by enemies inflicted with Freeze by this Highlight (for every 17.5% of Natsukawa's ailment accuracy, increase damage taken by 1%, up to a maximum of 9.8%/10.8%/10.4%/11.4%).\nThen, deal additional Ice damage to all foes equal to 117.1%/129.1%/124.3%/136.3% of Attack.",
+      "name": "Highlight",
+      "nature": "Ice",
+      "skill_lv": "10/10/13/13",
+      "sn": 137152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": "All"
+    },
+    "innate": {
+      "Ailment Acc.": "0.24",
+      "Damage Mult.": "0.16"
+    },
+    "innate_awake_skill": [],
+    "name": "Mio Natsukawa",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "BeHitRatio",
+        "cooldown": 0,
+        "cost": "SP 22",
+        "desc": "Gain 1 Extinguish stack, and deal Ice damage to all foes equal to 97.6%/107.6%/103.6%/113.6% of Attack. 50% chance to inflict Freeze.\nAlso, decrease Defense by 7.8%/8.6%/8.3%/9.1% for 3 turns (for every 5.47% of Natsukawa's ailment accuracy, decrease Defense by 1% more, up to a maximum of 31.2%/34.4%/33.2%/36.4%). When an ally attacks a foe whose Defense has been decreased by this skill, increase Technical Precision by 195/195/207/207.\nIf at least 1 foe is inflicted with Burn, remove Burn and inflict Scald on all foes (cannot be inflicted if Scald is already active).\nScald: Counts as Burn. Lasts for 3 turns. When allies attack the affected foe, increase Technical Precision by 1186/1308/1259/1381.",
+        "name": "Sub-Zero Torrent",
+        "nature": "Ice",
+        "skill_lv": "10/10/13/13",
+        "sn": 137111,
+        "tags": [
+          "Debuff"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "BeHitRatio",
+        "cooldown": 0,
+        "cost": "SP 24",
+        "desc": "Deal Ice damage to 1 foe equal to 195.2%/215.2%/207.2%/227.2% of Attack, and can activate an Ice Technical. When Deepfreeze is activated, 48.0%/52.9%/51.0%/55.9% chance to inflict Icebound.",
+        "name": "Freezing Prison",
+        "nature": "Ice",
+        "skill_lv": "10/10/13/13",
+        "sn": 137112,
+        "tags": [
+          "Control"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "BeHitRatio",
+        "cooldown": 0,
+        "cost": "SP 25",
+        "desc": "Can be used at 2 or more Extinguish stacks. Spend 2 Extinguish stacks to deal Ice damage to all foes equal to 109.8%/121.0%/116.6%/127.8% of Attack. Also, decrease Defense by 7.3%/8.1%/7.8%/8.5% for 2 turns (for every 5.83% of Natsukawa's ailment accuracy, decrease Defense by 1% more, up to a maximum of 29.3%/32.3%/31.1%/34.1%).\nAlso, can activate Ice Technical. When Iceburn is activated, this effect is guaranteed to evolve to Cold Flames.\nCold Flames: Increase damage taken by 9.8%/10.8%/10.4%/11.4% (for every 4.38% of Natsukawa's ailment accuracy, increase damage taken by 1% more, up to a maximum of 39.0%/43.0%/41.4%/45.4%).\nAt 4 or more Extinguish stacks, evolve this skill to Requiem Guidance.\nSpend 4 Extinguish stacks to deal Ice damage to all foes equal to 131.8%/145.3%/139.9%/153.4% of Attack. Also, decrease Defense by 8.8%/9.7%/9.3%/10.2% for 2 turns (for every 4.86% of Natsukawa's ailment accuracy, decrease Defense by 1% more, up to a maximum of 35.1%/38.7%/37.3%/40.9%).\nAlso, can activate Ice Technical. When Iceburn is activated, this effect is guaranteed to evolve to Cold Flames.\nCold Flames: Increase damage taken by 11.7%/12.9%/12.4%/13.6% (for every 3.65% of Natsukawa's ailment accuracy, increase damage taken by 1% more, up to a maximum of 46.8%/51.6%/49.7%/54.5%).",
+        "name": "Extinguishing Guidance",
+        "nature": "Ice",
+        "skill_lv": "10/10/13/13",
+        "sn": 137113,
+        "tags": [
+          "Debuff"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Each time Natsukawa activates a Technical, grant all allies a shield that protects against 1050 damage for 2 turns.",
+        "name": "Disaster Preparedness",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 137131,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "When Natsukawa is present, increase damage taken of foes inflicted with Freeze by 27.0%, and increase damage taken of foes inflicted with Icebound by 27.0%.",
+        "name": "Biting Cold",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 137132,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    ],
+    "rating": {
+      "Ailment Acc.": 1.4,
+      "Attack": 3660.0,
+      "Damage Mult.": 0.09,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "35.0% / 35.0% / 35.0% / 35.0% / 35.0% / 35.0% / 35.0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1019.98 / 1038.38 / 1056.78 / 1075.18 / 1093.58 / 1111.98 / 1130.38",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "626.63 / 637.83 / 649.03 / 660.23 / 671.43 / 683.43 / 694.63",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3539.98 / 3603.98 / 3667.18 / 3731.18 / 3795.18 / 3858.38 / 3922.38",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "104.0 / 104.0 / 104.0 / 104.0 / 104.0 / 104.0 / 104.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

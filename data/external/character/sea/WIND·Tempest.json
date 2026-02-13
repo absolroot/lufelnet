@@ -1,0 +1,277 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase Tempest Riko's max SP to 200, and increase her SP Recovery by 60%. When using a skill to restore her own SP, the amount recovered is affected by SP Recovery.\nWhen using Blossoming Season, spend all SP, and activate different effects based on the amount of SP spent.",
+        "name": "Fragrant Gale",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 105240,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "The condition to activate the Falling Petals effect from Storm of Petals changes from Wind damage to any attribute damage. Also, increase the target's critical damage taken by 30%.\nArrival of Spring increases Sweeper allies' Attack by 25% more.",
+        "name": "Colors of Dawn",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 105241,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase Tempest Riko's max SP by 50 (also increase the maximum effect of Blossoming Season). Also, after activating Blossoming Season, immediately recover 50 SP.\nEnhance the effect of the Talent Vernal Splendor: Double the critical damage increase after gaining 5/10 Blossom stacks.",
+        "name": "East Wind",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 105242,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase the skill levels of Arrival of Spring and Blossoming Season by 3.",
+        "name": "Swaying Boughs",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 105243,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Highlight Enhanced: The buff effect now applies to all allies besides Tempest Riko. Increase the main target's critical damage by 12% more, and restore 32 SP to all allies besides Tempest Riko.",
+        "name": "Sea Breeze",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 105244,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase the skill levels of Storm of Petals and Thief Tactics by 3.",
+        "name": "Rage of Spring",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 105245,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Blossoming Season now affects all allies besides Tempest Riko. When the main target uses a skill, immediately activate Storm of Petals 1 time on the target foe. This effect can only be activated 1 time for each use of Blossoming Season. Also, extend the duration of Falling Petals from Storm of Petals by 1 turn.\nWhile Riko is on the field, when any ally deals damage, for every 1% of their critical rate that exceeds 100%, increase the critical damage of that damage by 2%.",
+        "name": "Full Blossom",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 105246,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "Weak",
+      "cooldown": 4,
+      "cost": "",
+      "desc": "Increase 1 other ally's Attack (for every 1% of Tempest Riko's critical multiplier that exceeds 100%, increase Attack by 2.5, up to 388.0%/418.0%/418.0%/448.0% of critical multiplier) and increase critical damage by 24.4%/26.9%/25.9%/28.4% for 2 turns.\nAlso, restore 20 SP to all allies besides Tempest Riko.",
+      "name": "Highlight",
+      "nature": "Support",
+      "skill_lv": "10/10/13/13",
+      "sn": 105252,
+      "tags": [
+        null
+      ],
+      "target": "Ally excluding myself",
+      "target_count": 1
+    },
+    "innate": {
+      "Attack": "0.2",
+      "Crit Mult.": "0.24"
+    },
+    "innate_awake_skill": [],
+    "name": "Tempest Riko",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 0",
+        "desc": "Deal Wind damage to 1 foe equal to 183.0%/201.8%/194.2%/213.0% of Attack, and inflict Windswept and Falling Petals for 2 turns.\nFalling Petals: When taking Wind damage, increase Attack for that damage. The increase is equal to 18.3% of the portion of Tempest Riko's critical multiplier that exceeds 100% (up to 388.0%/418.0%/418.0%/448.0% of critical multiplier).\nAlso, restore Tempest Riko's SP by 16.",
+        "name": "Storm of Petals",
+        "nature": "Wind",
+        "skill_lv": "10/10/13/13",
+        "sn": 105211,
+        "tags": [
+          "Single-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 0",
+        "desc": "Increase party's Attack for 2 turns. The increase is equal to 12.8% of the portion of Tempest Riko's critical multiplier that exceeds 100% (up to 388.0%/418.0%/418.0%/448.0% of critical multiplier). Also, restore party's SP by 4.\nFor one time only while this effect is active, when an ally deals damage with a skill, Resonance, or Highlight, restore Tempest Riko's SP by 12.",
+        "name": "Arrival of Spring",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 105212,
+        "tags": [
+          "Buff"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Spend all SP, and increase 1 other ally's critical rate by 16.0%/17.0%/17.0%/18.0% for 2 turns. Also, apply the following effects based on the amount of SP spent. For every 2 SP spent, increase the effect by 1%.\n50 SP or higher: For every 1% of Tempest Riko's critical multiplier that exceeds 100%, increase Attack by 2.4.\n100 SP or higher: Increase critical damage by 12% of the portion of Tempest Riko's critical multiplier that exceeds 100%.\n150 SP or higher: Increase critical damage more by 6% of the portion of Tempest Riko's critical multiplier that exceeds 100%.\nThese effects count up to 388.0%/418.0%/418.0%/448.0% of Tempest Riko's critical multiplier.",
+        "name": "Blossoming Season",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 105213,
+        "tags": [
+          "Buff"
+        ],
+        "target": "Ally excluding myself",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "After using Blossoming Season, grant Unravel to the target for 2 turns.\nUnravel: Each time skill damage is dealt, gain 1 Blossom stack.\nBlossom: Increase Attack by 30 for 3 turns. Stacks up to 10 times. After gaining 5 Blossom stacks, increase Attack more by 8.0% of the portion of Tempest Riko's critical multiplier that exceeds 100%, and increase critical damage by 5.0% of the portion of her critical multiplier that exceeds 100%. After gaining 10 Blossom stacks, critical damage is increased more. This increase is equal to 5.0% of the portion of her critical multiplier that exceeds 100%.",
+        "name": "Vernal Splendor",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 105231,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "During battle, increase critical damage and HP based on Tempest Riko's SP Recovery. At a maximum of 450.0% SP Recovery, increase critical damage by 84.0%, and HP by 1800.0.",
+        "name": "Sun-kissed Blooms",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 105232,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 3600.0,
+      "Crit Mult.": 2.64,
+      "SP Recovery": 3.5,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "980.0 / 997.6 / 1015.2 / 1032.8 / 1050.4 / 1068.0 / 1085.6",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "640.03 / 651.23 / 663.23 / 674.43 / 686.43 / 697.63 / 708.83",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3629.97 / 3695.57 / 3760.37 / 3825.97 / 3891.57 / 3956.37 / 4021.97",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "200.0 / 200.0 / 200.0 / 200.0 / 200.0 / 200.0 / 200.0",
+      "SP Recovery": "189.0% / 189.0% / 189.0% / 189.0% / 189.0% / 189.0% / 189.0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "104.0 / 104.0 / 104.0 / 104.0 / 104.0 / 104.0 / 104.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

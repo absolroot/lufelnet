@@ -13,9 +13,9 @@
   },
   "fixed_skill": {
     "cost": "SP 24",
-    "desc": "(SB)Bless dmg to 1 foe (200.0%/210.0%/220.0% Atk). Increase target's Highlight dmg taken 30.0%/31.5%/33.0% (1 turn).",
+    "desc": "Bless dmg to 1 foe (200.0%/210.0%/220.0% Atk). Increase target's Highlight dmg taken 30.0%/31.5%/33.0% (1 turn).",
     "level": "6/7/8",
-    "name": "(SB)Absolute Obedience"
+    "name": "Absolute Obedience"
   },
   "innate_skill": [
     {
@@ -53,20 +53,20 @@
   "nature": "Bless",
   "passive_skill": [
     {
-      "desc": "(SB)Increase Attack by 29.1%. At the start of battle, gain 1 God's Ear stack. Lasts for 3 turns. Stacks up to 3 times. When an ally uses a Highlight, gain 1 God's Ear stack. When a Bless ally uses a Highlight, gain 1 more God's Ear stack. When using a unique skill, spend all God's Ear stacks, and increase foe's Bless damage taken by 4% for each stack. Also, when God's Ear reaches 3 stacks, when a foe takes Bless damage, decrease Defense by 16%.",
-      "name": "(SB)Heretical Hearings"
+      "desc": "Increase Attack by 29.1%. At the start of battle, gain 1 God's Ear stack. Lasts for 3 turns. Stacks up to 3 times. When an ally uses a Highlight, gain 1 God's Ear stack. When a Bless ally uses a Highlight, gain 1 more God's Ear stack. When using a unique skill, spend all God's Ear stacks, and increase foe's Bless damage taken by 4% for each stack. Also, when God's Ear reaches 3 stacks, when a foe takes Bless damage, decrease Defense by 16%.",
+      "name": "Sinful Listener"
     },
     {
-      "desc": "(SB)Increase Attack by 29.1%. At the start of battle, gain 2 God's Ear stacks. Lasts for 3 turns. Stacks up to 3 times. When an ally uses a Highlight, gain 1 God's Ear stack. When a Bless ally uses a Highlight, gain 1 more God's Ear stack. When using a unique skill, spend all God's Ear stacks, and increase foe's Bless damage taken by 4% for each stack. Also, when God's Ear reaches 3 stacks, when a foe takes Bless damage, decrease Defense by 16%.",
-      "name": "(SB)Heretical Hearings I"
+      "desc": "Increase Attack by 29.1%. At the start of battle, gain 2 God's Ear stacks. Lasts for 3 turns. Stacks up to 3 times. When an ally uses a Highlight, gain 1 God's Ear stack. When a Bless ally uses a Highlight, gain 1 more God's Ear stack. When using a unique skill, spend all God's Ear stacks, and increase foe's Bless damage taken by 4% for each stack. Also, when God's Ear reaches 3 stacks, when a foe takes Bless damage, decrease Defense by 16%.",
+      "name": "Sinful Listener I"
     },
     {
-      "desc": "(SB)Increase Attack by 29.1%. At the start of battle, gain 2 God's Ear stacks. Lasts for 3 turns. Stacks up to 3 times. When an ally uses a Highlight, gain 1 God's Ear stack. When a Bless ally uses a Highlight, gain 1 more God's Ear stack. When using a unique skill, spend all God's Ear stacks, and increase foe's Bless damage taken by 6% for each stack. Also, when God's Ear reaches 3 stacks, when a foe takes Bless damage, decrease Defense by 16%.",
-      "name": "(SB)Heretical Hearings II"
+      "desc": "Increase Attack by 29.1%. At the start of battle, gain 2 God's Ear stacks. Lasts for 3 turns. Stacks up to 3 times. When an ally uses a Highlight, gain 1 God's Ear stack. When a Bless ally uses a Highlight, gain 1 more God's Ear stack. When using a unique skill, spend all God's Ear stacks, and increase foe's Bless damage taken by 6% for each stack. Also, when God's Ear reaches 3 stacks, when a foe takes Bless damage, decrease Defense by 16%.",
+      "name": "Sinful Listener II"
     },
     {
-      "desc": "(SB)Increase Attack by 29.1%. At the start of battle, gain 2 God's Ear stacks. Lasts for 3 turns. Stacks up to 3 times. When an ally uses a Highlight, gain 1 God's Ear stack. When a Bless ally uses a Highlight, gain 1 more God's Ear stack. When using a unique skill, spend all God's Ear stacks, and increase foe's Bless damage taken by 6% for each stack. Also, when God's Ear reaches 3 stacks, when a foe takes Bless damage, decrease Defense by 25%.",
-      "name": "(SB)Heretical Hearings III"
+      "desc": "Increase Attack by 29.1%. At the start of battle, gain 2 God's Ear stacks. Lasts for 3 turns. Stacks up to 3 times. When an ally uses a Highlight, gain 1 God's Ear stack. When a Bless ally uses a Highlight, gain 1 more God's Ear stack. When using a unique skill, spend all God's Ear stacks, and increase foe's Bless damage taken by 6% for each stack. Also, when God's Ear reaches 3 stacks, when a foe takes Bless damage, decrease Defense by 25%.",
+      "name": "Sinful Listener III"
     }
   ],
   "rank": 8,

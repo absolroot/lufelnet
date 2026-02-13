@@ -14,9 +14,9 @@
   },
   "fixed_skill": {
     "cost": "SP 24",
-    "desc": "(SB)Deal Curse damage to all foes equal to 104.0%/109.2%/114.4% of Attack. Also, increase Defense by 10.0%/10.5%/11.0% and continous damage taken by 20.0%/21.0%/22.0%.",
+    "desc": "Deal Curse damage to all foes equal to 104.0%/109.2%/114.4% of Attack. Also, decrease Defense by 10.0%/10.5%/11.0% and increase continous damage taken by 20.0%/21.0%/22.0%.",
     "level": "6/7/8",
-    "name": "(SB)Gnawing Plague"
+    "name": "Disaster Ward"
   },
   "innate_skill": [
     {
@@ -54,20 +54,20 @@
   "nature": "Curse",
   "passive_skill": [
     {
-      "desc": "AAAAAA==",
-      "name": "AAAAAA=="
+      "desc": "Increase Attack by 29.1%.\nWhen using a skill on a foe, inflict Festival of Destruction for 2 turns. The first time that foes inflicted with Festival of Destruction take Fire damage, inflict Fearsome Flames: For 2 turns, increase damage taken by 8%, and 50% chance to inflict Burn.",
+      "name": "Year-End Harbinger"
     },
     {
-      "desc": "AAAAAA==",
-      "name": "AAAAAA=="
+      "desc": "Increase Attack by 29.1%.\nWhen using a skill on a foe, inflict Festival of Destruction for 2 turns. The first time that foes inflicted with Festival of Destruction take Fire damage, inflict Fearsome Flames: For 3 turns, increase damage taken by 8%, and 50% chance to inflict Burn.",
+      "name": "Year-End Harbinger I"
     },
     {
-      "desc": "AAAAAA==",
-      "name": "AAAAAA=="
+      "desc": "Increase Attack by 29.1%.\nWhen using a skill on a foe, inflict Festival of Destruction for 2 turns. The first time that foes inflicted with Festival of Destruction take Fire damage, inflict Fearsome Flames: For 3 turns, increase damage taken by 8%, and 75% chance to inflict Burn.",
+      "name": "Year-End Harbinger II"
     },
     {
-      "desc": "AAAAAA==",
-      "name": "AAAAAA=="
+      "desc": "Increase Attack by 29.1%.\nWhen using a skill on a foe, inflict Festival of Destruction for 2 turns. The first time that foes inflicted with Festival of Destruction take Fire damage, inflict Fearsome Flames: For 3 turns, increase damage taken by 12%, and 75% chance to inflict Burn.",
+      "name": "Year-End Harbinger III"
     }
   ],
   "rank": 8,

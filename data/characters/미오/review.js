@@ -1,7 +1,8 @@
 (function () {
-    window.characterReview = window.characterReview || {};
-    window.characterReview["미오"] = { name_en: "Mio Natsukawa", name_jp: "夏川 澪", codename: "MATOI",
-        review: `**TECHNICAL 공격과 화상 상태 이상에 특화된 광역 방어력 감소 디버퍼**다.
+        window.characterReview = window.characterReview || {};
+        window.characterReview["미오"] = {
+                name_en: "Mio Natsukawa", name_jp: "夏川 澪", codename: "MATOI",
+                review: `**TECHNICAL 공격과 화상 상태 이상에 특화된 광역 방어력 감소 디버퍼**다.
 
 자신의 턴 시작과 1스킬 사용 시 고유 스택을 획득하고, 해당 스택이 4개 이상일 때 3스킬이 크게 강화된다.
 
@@ -17,45 +18,45 @@ TECHNICAL 속성별 효과가 등장한 첫 캐릭터로 빙결 속성 TECHNICAL
 - 『얼음 봉인』의 기본 확률이 2.5% 증가한다.
    
         `,
-        review_en: `A **TECHNICAL-focused AoE DEF Down debuffer specialized in Burn setups**.
+                review_en: `A **TECHNICAL-focused AoE DEF Down debuffer specialized in Burn setups**.
 
 She gains her unique stacks at the start of her turn and when using Skill 1, and once she reaches 4 stacks, her Skill 3 becomes significantly enhanced.
 
-As the first character to introduce TECHNICAL-type effects, she uses the Ice TECHNICAL effect: when dealing TECHNICAL damage to a Burned enemy, she can inflict a 2-turn effect that increases the Fire/Ice damage the target receives.
+As the first character to introduce TECHNICAL-type effects, she uses the Ice Technical effect: when dealing TECHNICAL damage to a Burned enemy, she can inflict a 2-turn effect that increases the Fire/Ice damage the target receives.
 
-**Skill 1 grants “Skill Master” when attacking a Burned enemy, enhancing her TECHNICAL effects.**  
+**Skill 1 grants “Technical Precision” when attacking a Burned enemy, enhancing her TECHNICAL effects.**  
 Because of this, **inflicting Burn on at least one enemy is crucial**, leading players to frequently rely on Fire Item Charms or the Persona **Throne**.
 
-Skill Master: Influences the potency of additional TECHNICAL effects. For every 100 points gained (values below 100 scale proportionally):  
-- “Backdraft”: Skill damage bonus increases by 10%.  
-- “Cold Thunder”: Skill damage bonus increases by 10%.  
-- “Flames of Ice”: Weakness effect for Fire/Ice increases by 5%.  
-- “Flame Tempest”: Additional damage increases by 6%.  
-- “Ice Seal”: Base activation rate increases by 2.5%.
+Technical Precision: Influences the potency of additional TECHNICAL effects. For every 100 points gained (values below 100 scale proportionally):  
+- “Fireburn”: Skill damage bonus increases by 10%.  
+- “Short Circuit”: Skill damage bonus increases by 10%.  
+- “Iceburn”: Fire/Ice damage taken increases by 5%.  
+- “Windburn”: Additional damage increases by 6%.  
+- “Deepfreeze”: Base activation rate increases by 2.5%.
 `,
-        review_jp: `**TECHNICAL攻撃と火傷（バーン）に特化した、範囲防御力デバッファー。**
+                review_jp: `**TECHNICAL攻撃と火傷（バーン）に特化した、範囲防御力デバッファー。**
 
 自身のターン開始時およびスキル1使用時に固有スタックを獲得し、スタックが4以上になるとスキル3が大きく強化される。
 
 TECHNICAL属性効果が初めて実装されたキャラクターであり、氷結TECHNICAL効果は「火傷状態の敵にTECHNICALダメージを与えると、2ターンのあいだその敵が受ける火炎／氷結ダメージが上昇する」というもの。
 
-**スキル1は、火傷状態の敵を攻撃するとTECHNICAL効果を強化する『スキルマスター』を獲得する。**  
+**スキル1は、火傷状態の敵を攻撃するとTECHNICAL効果を強化する『テクニカル精度』を獲得する。**  
 そのため、**敵1体でも火傷を付与しておくことが非常に重要**であり、火炎系アクセサリやペルソナ『ソロネ（Throne）』がよく使われる。
 
-スキルマスター：TECHNICAL追加効果の強度に影響し、100ポイント上昇するごとに（100未満は比例して増加）：  
-- 『爆発燃焼』のスキルダメージ増加効果が10%上昇。  
-- 『冷たい雷』のスキルダメージ増加効果が10%上昇。  
-- 『氷の焔』の火炎／氷結弱点効果が5%上昇。  
-- 『火炎旋風』の追加ダメージが6%上昇。  
-- 『氷封印』の基本発動率が2.5%上昇。
+テクニカル精度：TECHNICAL追加効果の強度に影響し、100ポイント上昇するごとに（100未満は比例して増加）：  
+- 『炎焼』のスキルダメージ増加効果が10%上昇。  
+- 『漏電』のスキルダメージ増加効果が10%上昇。  
+- 『氷焼』の火炎／氷結被ダメージ上昇効果が5%上昇。  
+- 『風焼』の追加ダメージが6%上昇。  
+- 『寒獄』の基本発動率が2.5%上昇。
 `,
-        pros: ["방어력 감소 수치가 높다.", "TECHNICAL 효과를 강화할 수 있다."],
-        pros_en: ["Provides high DEF Down values.", "Can enhance TECHNICAL effects."],
-        pros_jp: ["防御力デバフ量が高い。", "TECHNICAL効果を強化できる。"],
-        cons: ["화상을 적에게 부여해야 한다."],
-        cons_en: ["Requires applying Burn to enemies."],
-        cons_jp: ["敵に火傷を付与する必要がある。"],
-    };
+                pros: ["방어력 감소 수치가 높다.", "TECHNICAL 효과를 강화할 수 있다."],
+                pros_en: ["Provides high DEF Down values.", "Can enhance TECHNICAL effects."],
+                pros_jp: ["防御力デバフ量が高い。", "TECHNICAL効果を強化できる。"],
+                cons: ["화상을 적에게 부여해야 한다."],
+                cons_en: ["Requires applying Burn to enemies."],
+                cons_jp: ["敵に火傷を付与する必要がある。"],
+        };
 })();
 
 

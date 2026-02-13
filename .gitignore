@@ -92,3 +92,10 @@ rating.py
 # Article editor
 apps/article-editor/
 apps/article-editor/**
+
+# Generated reports
+reports/
+scripts/reports/
+
+/apps/patch-console/
+/apps/patch-console/**

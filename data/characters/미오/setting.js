@@ -2,8 +2,8 @@ window.characterSetting = window.characterSetting || {};
 window.characterSetting["미오"] = {
     "role": "광역 디버퍼",
     "video": ["62-u95gz60Y", "7sitIWOr_zc"],
-    "video_en": [""],
-    "video_jp": [""],
+    "video_en": ["B9FjBMor1OI"],
+    "video_jp": ["B9FjBMor1OI"],
     "main_revelation": ["신념"],
     "sub_revelation": ["헛수고"],
     "sub_revel2": ["공격력/대미지보너스"],

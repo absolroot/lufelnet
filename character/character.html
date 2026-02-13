@@ -1820,7 +1820,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 if (weaponData.skill_name || weaponData.description) {
                     let description = weaponData.description || '';
                     description = transformEnhancementValues(description, stage, weapon.stars);
-                    description = description.replace(/(?<!\d)\.(?!\d)/g, '.\n');
+                    description = description.replace(/(?<!\d)\.(?!\d)(?!\s*<br>)(?!\s*\n)/g, '.\n');
 
                     // 스킬명이 있으면 표시, 없으면 설명만 표시
                     if (weaponData.skill_name) {

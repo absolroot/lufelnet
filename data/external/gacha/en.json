@@ -2,58 +2,6 @@
   "data": {
     "thief": [
       {
-        "endTime": "2026-02-13 10:59:59",
-        "fiveStar": [
-          {
-            "name": "Runa Dogenzaka",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Riko Tanemura",
-            "type": "thief"
-          },
-          {
-            "name": "Leo Kamiyama",
-            "type": "thief"
-          },
-          {
-            "name": "Toshiya Sumi",
-            "type": "thief"
-          }
-        ],
-        "name": "Howdy Hey!",
-        "startTime": "2026-01-22 11:30:00",
-        "type": "Targeted Most Wanted Idol Contracts"
-      },
-      {
-        "endTime": "2026-02-13 10:59:59",
-        "fiveStar": [
-          {
-            "name": "Runa Dogenzaka",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Riko Tanemura",
-            "type": "thief"
-          },
-          {
-            "name": "Leo Kamiyama",
-            "type": "thief"
-          },
-          {
-            "name": "Toshiya Sumi",
-            "type": "thief"
-          }
-        ],
-        "name": "Howdy Hey!",
-        "startTime": "2026-01-22 11:30:00",
-        "type": "Chance Most Wanted Idol Contracts"
-      },
-      {
         "endTime": "2026-03-05 10:59:59",
         "fiveStar": [
           {
@@ -103,97 +51,10 @@
         ],
         "name": "Winds of Change",
         "startTime": "2026-02-05 11:30:00",
-        "type": "Chance Most Wanted Idol Contracts"
-      },
-      {
-        "endTime": "2026-02-13 10:59:59",
-        "fiveStar": [
-          {
-            "name": "Ayaka Sakai",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Riko Tanemura",
-            "type": "thief"
-          },
-          {
-            "name": "Leo Kamiyama",
-            "type": "thief"
-          },
-          {
-            "name": "Toshiya Sumi",
-            "type": "thief"
-          }
-        ],
-        "name": "Dazzling Encore",
-        "startTime": "2026-01-29 11:30:00",
-        "type": "Targeted Most Wanted Idol Contracts"
-      },
-      {
-        "endTime": "2026-02-13 10:59:59",
-        "fiveStar": [
-          {
-            "name": "Ayaka Sakai",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Riko Tanemura",
-            "type": "thief"
-          },
-          {
-            "name": "Leo Kamiyama",
-            "type": "thief"
-          },
-          {
-            "name": "Toshiya Sumi",
-            "type": "thief"
-          }
-        ],
-        "name": "Dazzling Encore",
-        "startTime": "2026-01-29 11:30:00",
         "type": "Chance Most Wanted Idol Contracts"
       }
     ],
     "weapon": [
-      {
-        "endTime": "2026-02-13 10:59:59",
-        "fiveStar": [
-          {
-            "name": "Cerberus Claws",
-            "type": "weapon",
-            "user": "Runa"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Moonlight Needle",
-            "type": "weapon",
-            "user": "Riko"
-          },
-          {
-            "name": "Justice Lance",
-            "type": "weapon",
-            "user": "Kamiyama"
-          },
-          {
-            "name": "Scarlet Scepter",
-            "type": "weapon",
-            "user": "Sumi"
-          },
-          {
-            "name": "Hunting Hound Claws",
-            "type": "weapon",
-            "user": "Runa"
-          }
-        ],
-        "name": "Silent Pistol",
-        "startTime": "2026-01-22 11:30:00",
-        "type": "Arms Deals"
-      },
       {
         "endTime": "2026-03-05 10:59:59",
         "fiveStar": [
@@ -227,41 +88,6 @@
         ],
         "name": "Silent Pistol",
         "startTime": "2026-02-05 11:30:00",
-        "type": "Arms Deals"
-      },
-      {
-        "endTime": "2026-02-13 10:59:59",
-        "fiveStar": [
-          {
-            "name": "Superstar",
-            "type": "weapon",
-            "user": "Ayaka"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Moonlight Needle",
-            "type": "weapon",
-            "user": "Riko"
-          },
-          {
-            "name": "Justice Lance",
-            "type": "weapon",
-            "user": "Kamiyama"
-          },
-          {
-            "name": "Scarlet Scepter",
-            "type": "weapon",
-            "user": "Sumi"
-          },
-          {
-            "name": "Rock 'n' Roller",
-            "type": "weapon",
-            "user": "Ayaka"
-          }
-        ],
-        "name": "Silent Pistol",
-        "startTime": "2026-01-29 11:30:00",
         "type": "Arms Deals"
       }
     ]

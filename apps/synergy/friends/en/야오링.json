@@ -260,12 +260,14 @@
         "seed": [],
         "shop": [
           {
+            "discountPrice": 3040,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 3,
             "moneyName": "Money",
             "personalityLimit": "Charm LV.3",
             "price": 3200,
+            "reducePriceCond": "Runa Dogenzaka LV.7",
             "resetType": "주간",
             "shopName": "Triple Seven"
           }
@@ -284,12 +286,14 @@
         "seed": [],
         "shop": [
           {
+            "discountPrice": 31000,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 1,
             "moneyName": "Money",
             "personalityLimit": "Guts LV.10",
             "price": 32000,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
             "resetType": "주간",
             "shopName": "Rocinante"
           }
@@ -308,12 +312,14 @@
         "seed": [],
         "shop": [
           {
+            "discountPrice": 3390,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 3,
             "moneyName": "Money",
             "personalityLimit": "Guts LV.3",
             "price": 3560,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
             "resetType": "주간",
             "shopName": "Rocinante"
           }
@@ -332,11 +338,13 @@
         "seed": [],
         "shop": [
           {
+            "discountPrice": 2660,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 4,
             "moneyName": "Money",
             "price": 2800,
+            "reducePriceCond": "Runa Dogenzaka LV.9",
             "resetType": "주간",
             "shopName": "Zoshigaya Mart"
           }
@@ -355,11 +363,13 @@
         "seed": [],
         "shop": [
           {
+            "discountPrice": 4470,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 2,
             "moneyName": "Money",
             "price": 4700,
+            "reducePriceCond": "Runa Dogenzaka LV.7",
             "resetType": "주간",
             "shopName": "Triple Seven"
           }
@@ -378,13 +388,26 @@
         "seed": [],
         "shop": [
           {
+            "discountPrice": 38800,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 1,
             "moneyName": "Money",
             "price": 39800,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
             "resetType": "주간",
             "shopName": "Taisho Store"
+          },
+          {
+            "discountPrice": 38800,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 39800,
+            "reducePriceCond": "Runa Dogenzaka LV.5",
+            "resetType": "주간",
+            "shopName": "Akindo"
           }
         ],
         "source": [
@@ -401,11 +424,13 @@
         "seed": [],
         "shop": [
           {
+            "discountPrice": 3610,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 3,
             "moneyName": "Money",
             "price": 3800,
+            "reducePriceCond": "Runa Dogenzaka LV.9",
             "resetType": "주간",
             "shopName": "Zoshigaya Mart"
           }
@@ -424,11 +449,13 @@
         "seed": [],
         "shop": [
           {
+            "discountPrice": 2280,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 6,
             "moneyName": "Money",
             "price": 2400,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
             "resetType": "주간",
             "shopName": "High Sense"
           }
@@ -447,13 +474,26 @@
         "seed": [],
         "shop": [
           {
+            "discountPrice": 28800,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 1,
             "moneyName": "Money",
             "price": 29800,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
             "resetType": "주간",
             "shopName": "Triple Seven"
+          },
+          {
+            "discountPrice": 28800,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 29800,
+            "reducePriceCond": "Runa Dogenzaka LV.5",
+            "resetType": "주간",
+            "shopName": "Akindo"
           }
         ],
         "source": [
@@ -470,7 +510,7 @@
         "seed": [],
         "shop": [
           {
-            "discountPrice": 3000,
+            "discountPrice": 2850,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 3,
@@ -479,6 +519,17 @@
             "reducePriceCond": "Runa Dogenzaka LV.13",
             "resetType": "주간",
             "shopName": "Crystal Healing"
+          },
+          {
+            "discountPrice": 2850,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 3000,
+            "reducePriceCond": "Runa Dogenzaka LV.5",
+            "resetType": "주간",
+            "shopName": "Tokobushiya"
           }
         ],
         "source": [
@@ -495,7 +546,7 @@
         "seed": [],
         "shop": [
           {
-            "discountPrice": 3000,
+            "discountPrice": 2850,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 3,
@@ -520,7 +571,7 @@
         "seed": [],
         "shop": [
           {
-            "discountPrice": 7700,
+            "discountPrice": 7320,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 2,
@@ -545,7 +596,7 @@
         "seed": [],
         "shop": [
           {
-            "discountPrice": 6000,
+            "discountPrice": 5700,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 3,
@@ -570,7 +621,7 @@
         "seed": [],
         "shop": [
           {
-            "discountPrice": 10000,
+            "discountPrice": 9500,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 1,
@@ -595,7 +646,7 @@
         "seed": [],
         "shop": [
           {
-            "discountPrice": 12000,
+            "discountPrice": 11400,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 1,
@@ -639,12 +690,14 @@
                     "seed": [],
                     "shop": [
                       {
+                        "discountPrice": 490,
                         "isHidden": 0,
                         "mapName": null,
                         "maxBuy": 10,
                         "moneyName": "Money",
                         "personalityLimit": "Kindness LV.3",
                         "price": 510,
+                        "reducePriceCond": "Runa Dogenzaka LV.1",
                         "resetType": "일간",
                         "shopName": "Rafflesia"
                       }
@@ -673,12 +726,14 @@
                     "seed": [],
                     "shop": [
                       {
+                        "discountPrice": 1650,
                         "isHidden": 0,
                         "mapName": null,
                         "maxBuy": 10,
                         "moneyName": "Money",
                         "personalityLimit": "Kindness LV.9",
                         "price": 1730,
+                        "reducePriceCond": "Runa Dogenzaka LV.1",
                         "resetType": "일간",
                         "shopName": "Rafflesia"
                       }
@@ -710,11 +765,13 @@
               "seed": [],
               "shop": [
                 {
+                  "discountPrice": 290,
                   "isHidden": 0,
                   "mapName": null,
                   "maxBuy": 10,
                   "moneyName": "Money",
                   "price": 300,
+                  "reducePriceCond": "Runa Dogenzaka LV.1",
                   "resetType": "일간",
                   "shopName": "Rafflesia"
                 }
@@ -737,6 +794,17 @@
           "compound"
         ],
         "synergy": 9
+      },
+      {
+        "bonus_synergy": 1000,
+        "compound": [],
+        "image": "item-305976.png",
+        "name": "Eternal Love",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [],
+        "source": [],
+        "synergy": 999
       }
     ],
     "name": "Yaoling Li",

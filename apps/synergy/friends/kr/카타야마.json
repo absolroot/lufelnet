@@ -742,6 +742,351 @@
         "synergy": 50
       },
       {
+        "bonus_synergy": 60,
+        "compound": [
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "활짝 핀 붉은 장미. 꽃말은 뜨거운 감정과 진실한 마음이다. 밸런타인데이 기간에 인기가 좋다.",
+              "icon": "item-305965.png",
+              "name": "붉은 장미",
+              "seed": [],
+              "shop": [],
+              "source": [],
+              "tips": "특수한 제작 소재.\n작업대에서 협력자 선물 『영원한 사랑』, 『부유화·소형』, 『부유화·중형』, 『부유화·대형』, 『부유화·력셔리』, 『부유화·디럭스』를 제작하는 데 사용할 수 있다.",
+              "type": "재료"
+            },
+            "itemCount": 33
+          },
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "식품 등급의 액체 파라핀. 맑고 투명하며 은은한 알코올 향이 난다.",
+              "icon": "item-305970.png",
+              "name": "미네랄 오일",
+              "seed": [],
+              "shop": [
+                {
+                  "discountPrice": 190,
+                  "isHidden": 0,
+                  "mapName": "욘겐자야",
+                  "maxBuy": -1,
+                  "moneyName": "현금",
+                  "price": 200,
+                  "reducePriceCond": "도겐자카 루우나 LV.9",
+                  "resetType": "없음",
+                  "shopName": "중고 잡화점"
+                },
+                {
+                  "discountPrice": 190,
+                  "isHidden": 0,
+                  "mapName": null,
+                  "maxBuy": -1,
+                  "moneyName": "현금",
+                  "price": 200,
+                  "reducePriceCond": "도겐자카 루우나 LV.5",
+                  "resetType": "없음",
+                  "shopName": "아키하바라 전자"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "흔히 볼 수 있는 제작 소재.\n작업대에서 협력자 선물 『부유화·소형』, 『부유화·중형』, 『부유화·대형』, 『부유화·럭셔리』, 『부유화·디럭스』를 제작하는 데 사용할 수 있다.",
+              "type": "재료"
+            },
+            "itemCount": 1
+          }
+        ],
+        "image": "item-305971.png",
+        "name": "부유화·소형",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [],
+        "source": [
+          "compound"
+        ],
+        "synergy": 60
+      },
+      {
+        "bonus_synergy": 118,
+        "compound": [
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "활짝 핀 붉은 장미. 꽃말은 뜨거운 감정과 진실한 마음이다. 밸런타인데이 기간에 인기가 좋다.",
+              "icon": "item-305965.png",
+              "name": "붉은 장미",
+              "seed": [],
+              "shop": [],
+              "source": [],
+              "tips": "특수한 제작 소재.\n작업대에서 협력자 선물 『영원한 사랑』, 『부유화·소형』, 『부유화·중형』, 『부유화·대형』, 『부유화·력셔리』, 『부유화·디럭스』를 제작하는 데 사용할 수 있다.",
+              "type": "재료"
+            },
+            "itemCount": 88
+          },
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "식품 등급의 액체 파라핀. 맑고 투명하며 은은한 알코올 향이 난다.",
+              "icon": "item-305970.png",
+              "name": "미네랄 오일",
+              "seed": [],
+              "shop": [
+                {
+                  "discountPrice": 190,
+                  "isHidden": 0,
+                  "mapName": "욘겐자야",
+                  "maxBuy": -1,
+                  "moneyName": "현금",
+                  "price": 200,
+                  "reducePriceCond": "도겐자카 루우나 LV.9",
+                  "resetType": "없음",
+                  "shopName": "중고 잡화점"
+                },
+                {
+                  "discountPrice": 190,
+                  "isHidden": 0,
+                  "mapName": null,
+                  "maxBuy": -1,
+                  "moneyName": "현금",
+                  "price": 200,
+                  "reducePriceCond": "도겐자카 루우나 LV.5",
+                  "resetType": "없음",
+                  "shopName": "아키하바라 전자"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "흔히 볼 수 있는 제작 소재.\n작업대에서 협력자 선물 『부유화·소형』, 『부유화·중형』, 『부유화·대형』, 『부유화·럭셔리』, 『부유화·디럭스』를 제작하는 데 사용할 수 있다.",
+              "type": "재료"
+            },
+            "itemCount": 2
+          }
+        ],
+        "image": "item-305972.png",
+        "name": "부유화·중형",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [],
+        "source": [
+          "compound"
+        ],
+        "synergy": 118
+      },
+      {
+        "bonus_synergy": 142,
+        "compound": [
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "활짝 핀 붉은 장미. 꽃말은 뜨거운 감정과 진실한 마음이다. 밸런타인데이 기간에 인기가 좋다.",
+              "icon": "item-305965.png",
+              "name": "붉은 장미",
+              "seed": [],
+              "shop": [],
+              "source": [],
+              "tips": "특수한 제작 소재.\n작업대에서 협력자 선물 『영원한 사랑』, 『부유화·소형』, 『부유화·중형』, 『부유화·대형』, 『부유화·력셔리』, 『부유화·디럭스』를 제작하는 데 사용할 수 있다.",
+              "type": "재료"
+            },
+            "itemCount": 111
+          },
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "식품 등급의 액체 파라핀. 맑고 투명하며 은은한 알코올 향이 난다.",
+              "icon": "item-305970.png",
+              "name": "미네랄 오일",
+              "seed": [],
+              "shop": [
+                {
+                  "discountPrice": 190,
+                  "isHidden": 0,
+                  "mapName": "욘겐자야",
+                  "maxBuy": -1,
+                  "moneyName": "현금",
+                  "price": 200,
+                  "reducePriceCond": "도겐자카 루우나 LV.9",
+                  "resetType": "없음",
+                  "shopName": "중고 잡화점"
+                },
+                {
+                  "discountPrice": 190,
+                  "isHidden": 0,
+                  "mapName": null,
+                  "maxBuy": -1,
+                  "moneyName": "현금",
+                  "price": 200,
+                  "reducePriceCond": "도겐자카 루우나 LV.5",
+                  "resetType": "없음",
+                  "shopName": "아키하바라 전자"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "흔히 볼 수 있는 제작 소재.\n작업대에서 협력자 선물 『부유화·소형』, 『부유화·중형』, 『부유화·대형』, 『부유화·럭셔리』, 『부유화·디럭스』를 제작하는 데 사용할 수 있다.",
+              "type": "재료"
+            },
+            "itemCount": 3
+          }
+        ],
+        "image": "item-305973.png",
+        "name": "부유화·대형",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [],
+        "source": [
+          "compound"
+        ],
+        "synergy": 142
+      },
+      {
+        "bonus_synergy": 398,
+        "compound": [
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "활짝 핀 붉은 장미. 꽃말은 뜨거운 감정과 진실한 마음이다. 밸런타인데이 기간에 인기가 좋다.",
+              "icon": "item-305965.png",
+              "name": "붉은 장미",
+              "seed": [],
+              "shop": [],
+              "source": [],
+              "tips": "특수한 제작 소재.\n작업대에서 협력자 선물 『영원한 사랑』, 『부유화·소형』, 『부유화·중형』, 『부유화·대형』, 『부유화·력셔리』, 『부유화·디럭스』를 제작하는 데 사용할 수 있다.",
+              "type": "재료"
+            },
+            "itemCount": 365
+          },
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "식품 등급의 액체 파라핀. 맑고 투명하며 은은한 알코올 향이 난다.",
+              "icon": "item-305970.png",
+              "name": "미네랄 오일",
+              "seed": [],
+              "shop": [
+                {
+                  "discountPrice": 190,
+                  "isHidden": 0,
+                  "mapName": "욘겐자야",
+                  "maxBuy": -1,
+                  "moneyName": "현금",
+                  "price": 200,
+                  "reducePriceCond": "도겐자카 루우나 LV.9",
+                  "resetType": "없음",
+                  "shopName": "중고 잡화점"
+                },
+                {
+                  "discountPrice": 190,
+                  "isHidden": 0,
+                  "mapName": null,
+                  "maxBuy": -1,
+                  "moneyName": "현금",
+                  "price": 200,
+                  "reducePriceCond": "도겐자카 루우나 LV.5",
+                  "resetType": "없음",
+                  "shopName": "아키하바라 전자"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "흔히 볼 수 있는 제작 소재.\n작업대에서 협력자 선물 『부유화·소형』, 『부유화·중형』, 『부유화·대형』, 『부유화·럭셔리』, 『부유화·디럭스』를 제작하는 데 사용할 수 있다.",
+              "type": "재료"
+            },
+            "itemCount": 8
+          }
+        ],
+        "image": "item-305974.png",
+        "name": "부유화·럭셔리",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [],
+        "source": [
+          "compound"
+        ],
+        "synergy": 398
+      },
+      {
+        "bonus_synergy": 814,
+        "compound": [
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "활짝 핀 붉은 장미. 꽃말은 뜨거운 감정과 진실한 마음이다. 밸런타인데이 기간에 인기가 좋다.",
+              "icon": "item-305965.png",
+              "name": "붉은 장미",
+              "seed": [],
+              "shop": [],
+              "source": [],
+              "tips": "특수한 제작 소재.\n작업대에서 협력자 선물 『영원한 사랑』, 『부유화·소형』, 『부유화·중형』, 『부유화·대형』, 『부유화·력셔리』, 『부유화·디럭스』를 제작하는 데 사용할 수 있다.",
+              "type": "재료"
+            },
+            "itemCount": 777
+          },
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "식품 등급의 액체 파라핀. 맑고 투명하며 은은한 알코올 향이 난다.",
+              "icon": "item-305970.png",
+              "name": "미네랄 오일",
+              "seed": [],
+              "shop": [
+                {
+                  "discountPrice": 190,
+                  "isHidden": 0,
+                  "mapName": "욘겐자야",
+                  "maxBuy": -1,
+                  "moneyName": "현금",
+                  "price": 200,
+                  "reducePriceCond": "도겐자카 루우나 LV.9",
+                  "resetType": "없음",
+                  "shopName": "중고 잡화점"
+                },
+                {
+                  "discountPrice": 190,
+                  "isHidden": 0,
+                  "mapName": null,
+                  "maxBuy": -1,
+                  "moneyName": "현금",
+                  "price": 200,
+                  "reducePriceCond": "도겐자카 루우나 LV.5",
+                  "resetType": "없음",
+                  "shopName": "아키하바라 전자"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "흔히 볼 수 있는 제작 소재.\n작업대에서 협력자 선물 『부유화·소형』, 『부유화·중형』, 『부유화·대형』, 『부유화·럭셔리』, 『부유화·디럭스』를 제작하는 데 사용할 수 있다.",
+              "type": "재료"
+            },
+            "itemCount": 15
+          }
+        ],
+        "image": "item-305975.png",
+        "name": "부유화·디럭스",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [],
+        "source": [
+          "compound"
+        ],
+        "synergy": 814
+      },
+      {
         "bonus_synergy": 1000,
         "compound": [
           {
@@ -754,7 +1099,7 @@
               "seed": [],
               "shop": [],
               "source": [],
-              "tips": "밸런타인데이 한정 패키지에서 획득하며, 작업대에서 협력자 선물인 『영원한 사랑』을 제작할 수 있다. 꽃다발을 협력자에게 선물하면 친밀도가 크게 증가한다.",
+              "tips": "특수한 제작 소재.\n작업대에서 협력자 선물 『영원한 사랑』, 『부유화·소형』, 『부유화·중형』, 『부유화·대형』, 『부유화·력셔리』, 『부유화·디럭스』를 제작하는 데 사용할 수 있다.",
               "type": "재료"
             },
             "itemCount": 999
@@ -797,6 +1142,17 @@
         "source": [
           "compound"
         ],
+        "synergy": 999
+      },
+      {
+        "bonus_synergy": 1000,
+        "compound": [],
+        "image": "item-305976.png",
+        "name": "진실한 사랑의 마음",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [],
+        "source": [],
         "synergy": 999
       }
     ],

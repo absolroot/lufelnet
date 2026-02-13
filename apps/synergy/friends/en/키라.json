@@ -230,11 +230,13 @@
             "shopName": "Batting Point Exchange"
           },
           {
+            "discountPrice": 2850,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 4,
             "moneyName": "Money",
             "price": 3000,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
             "resetType": "주간",
             "shopName": "Taisho Store"
           }
@@ -253,12 +255,14 @@
         "seed": [],
         "shop": [
           {
+            "discountPrice": 6180,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 1,
             "moneyName": "Money",
             "personalityLimit": "Kindness LV.12",
             "price": 6500,
+            "reducePriceCond": "Runa Dogenzaka LV.7",
             "resetType": "주간",
             "shopName": "Triple Seven"
           }
@@ -277,12 +281,14 @@
         "seed": [],
         "shop": [
           {
+            "discountPrice": 5510,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 1,
             "moneyName": "Money",
             "personalityLimit": "Knowledge LV.3",
             "price": 5800,
+            "reducePriceCond": "Runa Dogenzaka LV.7",
             "resetType": "주간",
             "shopName": "Triple Seven"
           }
@@ -301,11 +307,13 @@
         "seed": [],
         "shop": [
           {
+            "discountPrice": 17100,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 1,
             "moneyName": "Money",
             "price": 18000,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
             "resetType": "주간",
             "shopName": "37 Degrees Celsius"
           }
@@ -324,11 +332,13 @@
         "seed": [],
         "shop": [
           {
+            "discountPrice": 6650,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 1,
             "moneyName": "Money",
             "price": 7000,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
             "resetType": "주간",
             "shopName": "Rocinante"
           }
@@ -347,13 +357,26 @@
         "seed": [],
         "shop": [
           {
+            "discountPrice": 4280,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 3,
             "moneyName": "Money",
             "price": 4500,
+            "reducePriceCond": "Runa Dogenzaka LV.13",
             "resetType": "주간",
             "shopName": "Stationery Store"
+          },
+          {
+            "discountPrice": 4280,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 4500,
+            "reducePriceCond": "Runa Dogenzaka LV.5",
+            "resetType": "주간",
+            "shopName": "Super Baron"
           }
         ],
         "source": [
@@ -370,11 +393,13 @@
         "seed": [],
         "shop": [
           {
+            "discountPrice": 2850,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 3,
             "moneyName": "Money",
             "price": 3000,
+            "reducePriceCond": "Runa Dogenzaka LV.9",
             "resetType": "주간",
             "shopName": "Zoshigaya Mart"
           }
@@ -393,13 +418,26 @@
         "seed": [],
         "shop": [
           {
+            "discountPrice": 19000,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 1,
             "moneyName": "Money",
             "price": 20000,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
             "resetType": "주간",
             "shopName": "Rocinante"
+          },
+          {
+            "discountPrice": 19000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 20000,
+            "reducePriceCond": "Runa Dogenzaka LV.5",
+            "resetType": "주간",
+            "shopName": "Tokobushiya"
           }
         ],
         "source": [
@@ -416,11 +454,13 @@
         "seed": [],
         "shop": [
           {
+            "discountPrice": 7600,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 2,
             "moneyName": "Money",
             "price": 8000,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
             "resetType": "주간",
             "shopName": "Aohige"
           }
@@ -439,11 +479,13 @@
         "seed": [],
         "shop": [
           {
+            "discountPrice": 29000,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 1,
             "moneyName": "Money",
             "price": 30000,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
             "resetType": "주간",
             "shopName": "37 Degrees Celsius"
           }
@@ -462,7 +504,7 @@
         "seed": [],
         "shop": [
           {
-            "discountPrice": 3000,
+            "discountPrice": 2850,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 3,
@@ -471,6 +513,17 @@
             "reducePriceCond": "Runa Dogenzaka LV.13",
             "resetType": "주간",
             "shopName": "Crystal Healing"
+          },
+          {
+            "discountPrice": 2850,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 3000,
+            "reducePriceCond": "Runa Dogenzaka LV.5",
+            "resetType": "주간",
+            "shopName": "Tokobushiya"
           }
         ],
         "source": [
@@ -487,7 +540,7 @@
         "seed": [],
         "shop": [
           {
-            "discountPrice": 3000,
+            "discountPrice": 2850,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 3,
@@ -512,7 +565,7 @@
         "seed": [],
         "shop": [
           {
-            "discountPrice": 7700,
+            "discountPrice": 7320,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 2,
@@ -537,7 +590,7 @@
         "seed": [],
         "shop": [
           {
-            "discountPrice": 6000,
+            "discountPrice": 5700,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 3,
@@ -562,7 +615,7 @@
         "seed": [],
         "shop": [
           {
-            "discountPrice": 10000,
+            "discountPrice": 9500,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 1,
@@ -587,7 +640,7 @@
         "seed": [],
         "shop": [
           {
-            "discountPrice": 12000,
+            "discountPrice": 11400,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 1,
@@ -602,6 +655,17 @@
           "shop"
         ],
         "synergy": 28
+      },
+      {
+        "bonus_synergy": 1000,
+        "compound": [],
+        "image": "item-305976.png",
+        "name": "Eternal Love",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [],
+        "source": [],
+        "synergy": 999
       }
     ],
     "name": "Kira Kitazato",
@@ -740,6 +804,21 @@
             {
               "content": "We have a few fun surprises.",
               "reward": 60
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Akihabara",
+        "good_answers": [
+          [
+            {
+              "content": "Get the fly catcher.",
+              "reward": 60
+            },
+            {
+              "content": "The air purifier seems good.",
+              "reward": 50
             }
           ]
         ]

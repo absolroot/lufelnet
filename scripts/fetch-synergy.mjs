@@ -1,26 +1,20 @@
 #!/usr/bin/env node
 
 /**
- * 협력자(Synergy) 데이터를 외부 API에서 가져와
- * `apps/synergy/friends/<lang>/<캐릭터이름>.json` 으로 저장하는 스크립트입니다.
+ * Fetch synergy (coop) data from iant API and write files to:
+ *   apps/synergy/friends/<lang>/<characterName>.json
  *
- * 기본 동작:
+ * Default behavior:
  *   node scripts/fetch-synergy.mjs
- *     - 모든 언어 (kr, en, jp)
- *     - 모든 캐릭터 (1 ~ 33)
+ *   - languages: kr,en,jp
+ *   - range: start at 1
+ *   - auto mode scans at least 1..33, then increases numbers and stops on KR not-found
  *
- * 옵션:
+ * Manual range:
  *   node scripts/fetch-synergy.mjs [lang] [startNum] [endNum]
- *     - lang    : kr | en | jp | all (기본값: all)
- *     - startNum: 시작 번호 (기본값: 1)
- *     - endNum  : 끝 번호 (기본값: 33, 포함 범위)
- *
- * API 예시:
- *   https://iant.kr:5000/data/coop/kr/1?source=mydiscord
- *
- * 응답이
- *   {"data": null, "msg": "Character not found.", "status": 100}
- * 인 경우에는 저장하지 않습니다.
+ *   - lang: kr | en | jp | all (default: all)
+ *   - startNum: default 1
+ *   - endNum: optional; if omitted, auto-stop mode is used
  */
 
 import fs from 'fs';
@@ -33,13 +27,19 @@ const __dirname = path.dirname(__filename);
 const PROJECT_ROOT = path.join(__dirname, '..');
 
 const BASE_URL = process.env.BASE_URL || 'https://iant.kr:5000/data';
+const SOURCE = process.env.SYNERGY_SOURCE || 'mydiscord';
+
 const FRIEND_NUM_FILE = path.join(PROJECT_ROOT, 'apps', 'synergy', 'friends', 'friend_num.json');
 const SYNERGY_DIR = path.join(PROJECT_ROOT, 'apps', 'synergy', 'friends');
 
 const LANGUAGES = ['kr', 'en', 'jp'];
+const AUTO_MIN_SCAN_END = 33;
+const REQUEST_TIMEOUT_MS = 15000;
+const REQUEST_RETRIES = 1;
+const REQUEST_DELAY_MS = 600;
 
-function log(msg) {
-  console.log(msg);
+function log(message) {
+  console.log(message);
 }
 
 function usage() {
@@ -47,18 +47,18 @@ function usage() {
     `Usage:
   node scripts/fetch-synergy.mjs [lang] [startNum] [endNum]
 
-예시:
-  # 기본값 (모든 언어, 1~32)
+Examples:
+  # default (kr,en,jp, start=1, auto-stop)
   node scripts/fetch-synergy.mjs
 
-  # kr만, 1~32
+  # kr only, start=1, auto-stop
   node scripts/fetch-synergy.mjs kr
 
-  # kr만, 1~10
-  node scripts/fetch-synergy.mjs kr 1 10
+  # kr only, range 1..33
+  node scripts/fetch-synergy.mjs kr 1 33
 
-  # 모든 언어, 1~10
-  node scripts/fetch-synergy.mjs all 1 10
+  # all languages, range 1..40
+  node scripts/fetch-synergy.mjs all 1 40
 `
   );
   process.exit(1);
@@ -68,57 +68,40 @@ function parseArgs() {
   const raw = process.argv.slice(2);
   const lang = raw[0] || 'all';
   const startNum = raw[1] ? Number(raw[1]) : 1;
-  const endNum = raw[2] ? Number(raw[2]) : 32;
+  const endNum = raw[2] ? Number(raw[2]) : null;
 
   if (lang !== 'all' && !LANGUAGES.includes(lang)) {
     console.error(`Invalid language '${lang}'. Must be one of: ${LANGUAGES.join(', ')}, all`);
     usage();
   }
-  if (!Number.isInteger(startNum) || !Number.isInteger(endNum) || startNum <= 0 || endNum < startNum) {
-    console.error(`Invalid number range: start=${startNum}, end=${endNum}`);
+
+  if (!Number.isInteger(startNum) || startNum <= 0) {
+    console.error(`Invalid startNum: ${raw[1]}`);
     usage();
   }
 
-  return { lang, startNum, endNum };
+  if (endNum != null && (!Number.isInteger(endNum) || endNum < startNum)) {
+    console.error(`Invalid endNum: ${raw[2]}`);
+    usage();
+  }
+
+  const targetLangs = lang === 'all' ? LANGUAGES : [lang];
+  return { targetLangs, startNum, endNum };
 }
 
-function fetchJson(url) {
-  return new Promise((resolve, reject) => {
-    https
-      .get(url, (res) => {
-        const { statusCode } = res;
-        if (statusCode && statusCode >= 400) {
-          reject(new Error(`Request failed. Status: ${statusCode} URL=${url}`));
-          res.resume();
-          return;
-        }
-        let data = '';
-        res.setEncoding('utf8');
-        res.on('data', (chunk) => {
-          data += chunk;
-        });
-        res.on('end', () => {
-          try {
-            const json = JSON.parse(data);
-            resolve(json);
-          } catch (e) {
-            reject(new Error(`Invalid JSON from ${url}: ${e.message}`));
-          }
-        });
-      })
-      .on('error', (e) => reject(e));
-  });
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-function ensureDir(p) {
-  fs.mkdirSync(p, { recursive: true });
+function ensureDir(dirPath) {
+  fs.mkdirSync(dirPath, { recursive: true });
 }
 
-function readJsonIfExists(p) {
+function readJsonIfExists(filePath) {
+  if (!fs.existsSync(filePath)) return null;
   try {
-    if (!fs.existsSync(p)) return null;
-    const txt = fs.readFileSync(p, 'utf8');
-    return JSON.parse(txt);
+    const text = fs.readFileSync(filePath, 'utf8');
+    return JSON.parse(text);
   } catch {
     return null;
   }
@@ -128,97 +111,272 @@ function loadFriendNumMapping() {
   if (!fs.existsSync(FRIEND_NUM_FILE)) {
     throw new Error(`friend_num.json not found: ${FRIEND_NUM_FILE}`);
   }
-  const friendNum = readJsonIfExists(FRIEND_NUM_FILE);
-  if (!friendNum || typeof friendNum !== 'object') {
-    throw new Error(`Invalid friend_num.json format`);
+
+  const mapping = readJsonIfExists(FRIEND_NUM_FILE);
+  if (!mapping || typeof mapping !== 'object' || Array.isArray(mapping)) {
+    throw new Error('Invalid friend_num.json format');
   }
 
-  // num -> 캐릭터 이름 매핑 생성
   const numToName = {};
-  Object.keys(friendNum).forEach(name => {
-    const num = friendNum[name].num;
-    if (num > 0) {
-      numToName[num] = name;
-    }
-  });
+  let maxMappedNum = 0;
 
-  return numToName;
+  for (const [characterName, value] of Object.entries(mapping)) {
+    const num = value?.num;
+    if (!Number.isInteger(num) || num <= 0) continue;
+
+    if (numToName[num] && numToName[num] !== characterName) {
+      log(`Warning: duplicate num=${num} in friend_num.json (${numToName[num]}, ${characterName}).`);
+      continue;
+    }
+
+    numToName[num] = characterName;
+    if (num > maxMappedNum) maxMappedNum = num;
+  }
+
+  return { numToName, maxMappedNum };
+}
+
+function fetchJson(url) {
+  return new Promise((resolve, reject) => {
+    const req = https.get(url, (res) => {
+      const { statusCode } = res;
+      if (statusCode && statusCode >= 400) {
+        res.resume();
+        reject(new Error(`Request failed. Status: ${statusCode} URL=${url}`));
+        return;
+      }
+
+      let body = '';
+      res.setEncoding('utf8');
+      res.on('data', (chunk) => {
+        body += chunk;
+      });
+      res.on('end', () => {
+        try {
+          resolve(JSON.parse(body));
+        } catch (error) {
+          reject(new Error(`Invalid JSON from ${url}: ${error.message}`));
+        }
+      });
+    });
+
+    req.setTimeout(REQUEST_TIMEOUT_MS, () => {
+      req.destroy(new Error(`Timeout after ${REQUEST_TIMEOUT_MS}ms`));
+    });
+    req.on('error', (error) => reject(error));
+  });
+}
+
+function isNotFoundPayload(json) {
+  return Boolean(json && typeof json === 'object' && json.status === 100 && json.data == null);
+}
+
+function isUsablePayload(json) {
+  return Boolean(json && typeof json === 'object' && !isNotFoundPayload(json));
 }
 
 async function fetchSynergyOnce({ lang, num }) {
-  const query = 'source=mydiscord';
-  const url = `${BASE_URL}/coop/${lang}/${num}?${query}`;
-  log(`➡️  Fetching: ${url}`);
+  const url = `${BASE_URL}/coop/${lang}/${num}?source=${encodeURIComponent(SOURCE)}`;
+  let lastError = null;
 
-  try {
-    const json = await fetchJson(url);
-
-    // Character not found 케이스 스킵
-    if (!json || (json.status === 100 && json.data == null)) {
-      log(`   Skip (not found): lang=${lang}, num=${num}`);
-      return null;
+  for (let attempt = 1; attempt <= REQUEST_RETRIES + 1; attempt += 1) {
+    try {
+      const json = await fetchJson(url);
+      if (isNotFoundPayload(json)) {
+        return { state: 'not_found', json: null, url };
+      }
+      if (!isUsablePayload(json)) {
+        return { state: 'invalid', json: null, url, error: new Error('Unexpected payload shape') };
+      }
+      return { state: 'ok', json, url };
+    } catch (error) {
+      lastError = error;
+      if (attempt <= REQUEST_RETRIES) {
+        log(`Retry ${attempt}/${REQUEST_RETRIES}: lang=${lang}, num=${num} (${error.message})`);
+        await sleep(400 * attempt);
+      }
+    } finally {
+      await sleep(REQUEST_DELAY_MS);
     }
-
-    return json;
-  } catch (e) {
-    log(`   ❌ Error: lang=${lang}, num=${num} - ${e.message}`);
-    return null;
   }
+
+  return { state: 'error', json: null, url, error: lastError };
+}
+
+function computeTextVolume(value) {
+  if (typeof value === 'string') return value.trim().length;
+  if (Array.isArray(value)) {
+    return value.reduce((sum, item) => sum + computeTextVolume(item), 0);
+  }
+  if (value && typeof value === 'object') {
+    return Object.values(value).reduce((sum, item) => sum + computeTextVolume(item), 0);
+  }
+  return 0;
+}
+
+function writeJson(filePath, json) {
+  ensureDir(path.dirname(filePath));
+  fs.writeFileSync(filePath, JSON.stringify(json, null, 2), 'utf8');
+}
+
+function saveIfTextIncreased(filePath, nextJson) {
+  const nextTextVolume = computeTextVolume(nextJson);
+  if (nextTextVolume <= 0) {
+    return { saved: false, reason: 'empty_new', previousTextVolume: 0, nextTextVolume };
+  }
+
+  if (!fs.existsSync(filePath)) {
+    writeJson(filePath, nextJson);
+    return { saved: true, mode: 'created', previousTextVolume: 0, nextTextVolume };
+  }
+
+  const previousJson = readJsonIfExists(filePath);
+  if (!previousJson) {
+    return { saved: false, reason: 'invalid_existing', previousTextVolume: 0, nextTextVolume };
+  }
+
+  const previousTextVolume = computeTextVolume(previousJson);
+  if (nextTextVolume > previousTextVolume) {
+    writeJson(filePath, nextJson);
+    return { saved: true, mode: 'updated', previousTextVolume, nextTextVolume };
+  }
+
+  return { saved: false, reason: 'not_longer', previousTextVolume, nextTextVolume };
 }
 
 async function run() {
-  const { lang, startNum, endNum } = parseArgs();
+  const { targetLangs, startNum, endNum } = parseArgs();
+  const { numToName, maxMappedNum } = loadFriendNumMapping();
+  const manualRange = Number.isInteger(endNum);
+  const autoGuaranteedEnd = Math.max(AUTO_MIN_SCAN_END, maxMappedNum);
 
-  // friend_num.json에서 매핑 로드
-  log(`➡️  Loading character mapping from: ${FRIEND_NUM_FILE}`);
-  const numToName = loadFriendNumMapping();
-  log(`   Found ${Object.keys(numToName).length} character mappings`);
+  log(`Start fetch-synergy`);
+  log(`- languages: ${targetLangs.join(', ')}`);
+  log(`- startNum : ${startNum}`);
+  log(
+    `- endNum   : ${manualRange
+      ? endNum
+      : `auto (scan <=${autoGuaranteedEnd}, then KR stop probe from ${autoGuaranteedEnd + 1})`}`
+  );
 
-  const targetLangs = lang === 'all' ? LANGUAGES : [lang];
-  let totalSaved = 0;
-  let totalNotFound = 0;
-  let totalError = 0;
+  const totals = {
+    created: 0,
+    updated: 0,
+    skippedNotFound: 0,
+    skippedEmpty: 0,
+    skippedNotLonger: 0,
+    skippedNoMapping: 0,
+    skippedInvalidExisting: 0,
+    errors: 0
+  };
 
-  for (const targetLang of targetLangs) {
-    const langDir = path.join(SYNERGY_DIR, targetLang);
-    ensureDir(langDir);
+  let num = startNum;
+  while (true) {
+    if (manualRange && num > endNum) break;
 
-    log(`\n📁 Processing language: ${targetLang}`);
+    const characterName = numToName[num] || null;
+    const shouldAutoStopProbe = !manualRange && num > autoGuaranteedEnd;
+    const shouldGapProbeInGuaranteedRange = !manualRange && !characterName && num <= AUTO_MIN_SCAN_END;
+    let krProbe = null;
 
-    for (let num = startNum; num <= endNum; num += 1) {
-      const characterName = numToName[num];
-      if (!characterName) {
-        log(`   ⚠️  No character mapping for num=${num}, skipping...`);
+    if (shouldAutoStopProbe || shouldGapProbeInGuaranteedRange) {
+      // In auto mode:
+      // 1) Always scan up to AUTO_MIN_SCAN_END (33) even if there are gaps.
+      // 2) After guaranteed range, probe KR and stop on first not-found.
+      // eslint-disable-next-line no-await-in-loop
+      krProbe = await fetchSynergyOnce({ lang: 'kr', num });
+
+      if (shouldAutoStopProbe) {
+        if (krProbe.state === 'not_found') {
+          log(`Auto-stop: KR not found at num=${num}`);
+          break;
+        }
+        if (krProbe.state !== 'ok') {
+          log(`Auto-stop: KR probe failed at num=${num} (${krProbe.error?.message || krProbe.state})`);
+          totals.errors += 1;
+          break;
+        }
+      } else if (krProbe.state !== 'ok' && krProbe.state !== 'not_found') {
+        log(`KR gap probe failed: num=${num} (${krProbe.error?.message || krProbe.state})`);
+        totals.errors += 1;
+      }
+    }
+
+    if (!characterName) {
+      if (krProbe?.state === 'ok') {
+        log(`No mapping for num=${num} (KR exists), skipping save.`);
+      } else {
+        log(`No mapping for num=${num}, skipping.`);
+      }
+      totals.skippedNoMapping += 1;
+      num += 1;
+      continue;
+    }
+
+    for (const lang of targetLangs) {
+      // Reuse KR probe result if we already fetched it.
+      // eslint-disable-next-line no-await-in-loop
+      const result = lang === 'kr' && krProbe?.state === 'ok'
+        ? krProbe
+        : await fetchSynergyOnce({ lang, num });
+
+      if (result.state === 'not_found') {
+        log(`Skip not found: lang=${lang}, num=${num}`);
+        totals.skippedNotFound += 1;
+        continue;
+      }
+      if (result.state !== 'ok') {
+        log(`Fetch failed: lang=${lang}, num=${num} (${result.error?.message || result.state})`);
+        totals.errors += 1;
         continue;
       }
 
-      try {
-        // eslint-disable-next-line no-await-in-loop
-        const json = await fetchSynergyOnce({ lang: targetLang, num });
-        if (!json) {
-          totalNotFound += 1;
-          continue;
-        }
+      const outPath = path.join(SYNERGY_DIR, lang, `${characterName}.json`);
+      const saveResult = saveIfTextIncreased(outPath, result.json);
 
-        const outPath = path.join(langDir, `${characterName}.json`);
-        fs.writeFileSync(outPath, JSON.stringify(json, null, 2), 'utf8');
-        log(`   ✅ Saved: ${targetLang}/${characterName}.json`);
-        totalSaved += 1;
-
-        // API 부하 방지를 위한 딜레이 (1초)
-        await new Promise(resolve => setTimeout(resolve, 1000));
-      } catch (e) {
-        console.error(`   ❌ Failed (lang=${targetLang}, num=${num}):`, e?.message || e);
-        totalError += 1;
+      if (saveResult.saved) {
+        if (saveResult.mode === 'created') totals.created += 1;
+        if (saveResult.mode === 'updated') totals.updated += 1;
+        log(
+          `Saved (${saveResult.mode}): ${lang}/${characterName}.json `
+          + `(text ${saveResult.previousTextVolume} -> ${saveResult.nextTextVolume})`
+        );
+        continue;
       }
+
+      if (saveResult.reason === 'empty_new') {
+        totals.skippedEmpty += 1;
+        log(`Skip empty payload: ${lang}/${characterName}.json`);
+        continue;
+      }
+      if (saveResult.reason === 'invalid_existing') {
+        totals.skippedInvalidExisting += 1;
+        log(`Skip invalid existing file: ${lang}/${characterName}.json`);
+        continue;
+      }
+
+      totals.skippedNotLonger += 1;
+      log(
+        `Skip not longer: ${lang}/${characterName}.json `
+        + `(text ${saveResult.previousTextVolume} -> ${saveResult.nextTextVolume})`
+      );
     }
+
+    num += 1;
   }
 
-  log(`\n✅ Done. Saved ${totalSaved} files. Not found: ${totalNotFound}. Errors: ${totalError}.`);
+  log('\nDone.');
+  log(`- created               : ${totals.created}`);
+  log(`- updated               : ${totals.updated}`);
+  log(`- skipped not found     : ${totals.skippedNotFound}`);
+  log(`- skipped empty         : ${totals.skippedEmpty}`);
+  log(`- skipped not longer    : ${totals.skippedNotLonger}`);
+  log(`- skipped no mapping    : ${totals.skippedNoMapping}`);
+  log(`- skipped invalid old   : ${totals.skippedInvalidExisting}`);
+  log(`- errors                : ${totals.errors}`);
 }
 
-run().catch((e) => {
-  console.error('❌ fetch-synergy failed:', e?.message || e);
+run().catch((error) => {
+  console.error(`fetch-synergy failed: ${error?.message || error}`);
   process.exit(1);
 });
-

@@ -241,12 +241,14 @@
         "seed": [],
         "shop": [
           {
+            "discountPrice": 31000,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 1,
             "moneyName": "所持金",
             "personalityLimit": "度胸 LV.10",
             "price": 32000,
+            "reducePriceCond": "道玄坂琉七 LV.1",
             "resetType": "주간",
             "shopName": "ロシナンテ"
           }
@@ -265,12 +267,14 @@
         "seed": [],
         "shop": [
           {
+            "discountPrice": 3390,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 3,
             "moneyName": "所持金",
             "personalityLimit": "度胸 LV.3",
             "price": 3560,
+            "reducePriceCond": "道玄坂琉七 LV.1",
             "resetType": "주간",
             "shopName": "ロシナンテ"
           }
@@ -289,11 +293,13 @@
         "seed": [],
         "shop": [
           {
+            "discountPrice": 77000,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 1,
             "moneyName": "所持金",
             "price": 78000,
+            "reducePriceCond": "道玄坂琉七 LV.1",
             "resetType": "주간",
             "shopName": "ツルカメダイアモンド"
           }
@@ -312,12 +318,14 @@
         "seed": [],
         "shop": [
           {
+            "discountPrice": 5510,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 1,
             "moneyName": "所持金",
             "personalityLimit": "知識 LV.3",
             "price": 5800,
+            "reducePriceCond": "道玄坂琉七 LV.7",
             "resetType": "주간",
             "shopName": "トリプルセブン"
           }
@@ -336,11 +344,13 @@
         "seed": [],
         "shop": [
           {
+            "discountPrice": 2850,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 3,
             "moneyName": "所持金",
             "price": 3000,
+            "reducePriceCond": "道玄坂琉七 LV.1",
             "resetType": "주간",
             "shopName": "トリプルセブン"
           }
@@ -359,20 +369,24 @@
         "seed": [],
         "shop": [
           {
+            "discountPrice": 2660,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 3,
             "moneyName": "所持金",
             "price": 2800,
+            "reducePriceCond": "道玄坂琉七 LV.9",
             "resetType": "주간",
             "shopName": "雑司ヶ谷マート"
           },
           {
+            "discountPrice": 2660,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 3,
             "moneyName": "所持金",
             "price": 2800,
+            "reducePriceCond": "道玄坂琉七 LV.13",
             "resetType": "주간",
             "shopName": "文房具屋"
           }
@@ -391,11 +405,13 @@
         "seed": [],
         "shop": [
           {
+            "discountPrice": 1710,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 5,
             "moneyName": "所持金",
             "price": 1800,
+            "reducePriceCond": "道玄坂琉七 LV.7",
             "resetType": "주간",
             "shopName": "トリプルセブン"
           }
@@ -414,11 +430,13 @@
         "seed": [],
         "shop": [
           {
+            "discountPrice": 4470,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 2,
             "moneyName": "所持金",
             "price": 4700,
+            "reducePriceCond": "道玄坂琉七 LV.7",
             "resetType": "주간",
             "shopName": "トリプルセブン"
           }
@@ -437,11 +455,13 @@
         "seed": [],
         "shop": [
           {
+            "discountPrice": 1520,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 8,
             "moneyName": "所持金",
             "price": 1600,
+            "reducePriceCond": "道玄坂琉七 LV.1",
             "resetType": "주간",
             "shopName": "大正屋"
           }
@@ -460,11 +480,13 @@
         "seed": [],
         "shop": [
           {
+            "discountPrice": 460,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 5,
             "moneyName": "所持金",
             "price": 480,
+            "reducePriceCond": "道玄坂琉七 LV.1",
             "resetType": "주간",
             "shopName": "トリプルセブン"
           }
@@ -483,7 +505,7 @@
         "seed": [],
         "shop": [
           {
-            "discountPrice": 3000,
+            "discountPrice": 2850,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 3,
@@ -492,6 +514,17 @@
             "reducePriceCond": "道玄坂琉七 LV.13",
             "resetType": "주간",
             "shopName": "パワーストーン専門店"
+          },
+          {
+            "discountPrice": 2850,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 3000,
+            "reducePriceCond": "道玄坂琉七 LV.5",
+            "resetType": "주간",
+            "shopName": "トコブシ屋"
           }
         ],
         "source": [
@@ -508,7 +541,7 @@
         "seed": [],
         "shop": [
           {
-            "discountPrice": 3000,
+            "discountPrice": 2850,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 3,
@@ -533,7 +566,7 @@
         "seed": [],
         "shop": [
           {
-            "discountPrice": 7700,
+            "discountPrice": 7320,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 2,
@@ -558,7 +591,7 @@
         "seed": [],
         "shop": [
           {
-            "discountPrice": 6000,
+            "discountPrice": 5700,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 3,
@@ -583,7 +616,7 @@
         "seed": [],
         "shop": [
           {
-            "discountPrice": 10000,
+            "discountPrice": 9500,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 1,
@@ -608,7 +641,7 @@
         "seed": [],
         "shop": [
           {
-            "discountPrice": 12000,
+            "discountPrice": 11400,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 1,
@@ -623,6 +656,17 @@
           "shop"
         ],
         "synergy": 28
+      },
+      {
+        "bonus_synergy": 1000,
+        "compound": [],
+        "image": "item-305976.png",
+        "name": "永遠の愛",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [],
+        "source": [],
+        "synergy": 999
       }
     ],
     "name": "黒谷清",

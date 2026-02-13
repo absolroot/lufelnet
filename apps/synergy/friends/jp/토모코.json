@@ -244,11 +244,13 @@
         "seed": [],
         "shop": [
           {
+            "discountPrice": 760,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 5,
             "moneyName": "所持金",
             "price": 800,
+            "reducePriceCond": "道玄坂琉七 LV.9",
             "resetType": "주간",
             "shopName": "スーパームラマサ"
           }
@@ -267,13 +269,24 @@
         "seed": [],
         "shop": [
           {
+            "discountPrice": 7410,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 3,
             "moneyName": "所持金",
             "price": 7800,
+            "reducePriceCond": "道玄坂琉七 LV.1",
             "resetType": "주간",
             "shopName": "トリプルセブン"
+          },
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": -1,
+            "moneyName": "ゲームセンター引換券",
+            "price": 1560,
+            "resetType": "없음",
+            "shopName": "AAAAAA=="
           }
         ],
         "source": [
@@ -290,11 +303,13 @@
         "seed": [],
         "shop": [
           {
+            "discountPrice": 4650,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 2,
             "moneyName": "所持金",
             "price": 4890,
+            "reducePriceCond": "道玄坂琉七 LV.9",
             "resetType": "주간",
             "shopName": "雑司ヶ谷マート"
           }
@@ -313,11 +328,13 @@
         "seed": [],
         "shop": [
           {
+            "discountPrice": 3800,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 3,
             "moneyName": "所持金",
             "price": 4000,
+            "reducePriceCond": "道玄坂琉七 LV.1",
             "resetType": "주간",
             "shopName": "３７℃"
           }
@@ -336,12 +353,14 @@
         "seed": [],
         "shop": [
           {
+            "discountPrice": 87000,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 1,
             "moneyName": "所持金",
             "personalityLimit": "魅力 LV.10",
             "price": 88000,
+            "reducePriceCond": "道玄坂琉七 LV.1",
             "resetType": "주간",
             "shopName": "ツルカメダイアモンド"
           }
@@ -360,11 +379,13 @@
         "seed": [],
         "shop": [
           {
+            "discountPrice": 3040,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 2,
             "moneyName": "所持金",
             "price": 3200,
+            "reducePriceCond": "道玄坂琉七 LV.7",
             "resetType": "주간",
             "shopName": "トリプルセブン"
           }
@@ -383,12 +404,14 @@
         "seed": [],
         "shop": [
           {
+            "discountPrice": 11400,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 1,
             "moneyName": "所持金",
             "personalityLimit": "優しさ LV.13",
             "price": 12000,
+            "reducePriceCond": "道玄坂琉七 LV.1",
             "resetType": "주간",
             "shopName": "大正屋"
           }
@@ -407,11 +430,13 @@
         "seed": [],
         "shop": [
           {
+            "discountPrice": 6650,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 1,
             "moneyName": "所持金",
             "price": 7000,
+            "reducePriceCond": "道玄坂琉七 LV.1",
             "resetType": "주간",
             "shopName": "ロシナンテ"
           }
@@ -430,11 +455,13 @@
         "seed": [],
         "shop": [
           {
+            "discountPrice": 1140,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 4,
             "moneyName": "所持金",
             "price": 1200,
+            "reducePriceCond": "道玄坂琉七 LV.7",
             "resetType": "주간",
             "shopName": "キョウリュウ"
           }
@@ -453,7 +480,7 @@
         "seed": [],
         "shop": [
           {
-            "discountPrice": 3000,
+            "discountPrice": 2850,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 3,
@@ -462,6 +489,17 @@
             "reducePriceCond": "道玄坂琉七 LV.13",
             "resetType": "주간",
             "shopName": "パワーストーン専門店"
+          },
+          {
+            "discountPrice": 2850,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 3000,
+            "reducePriceCond": "道玄坂琉七 LV.5",
+            "resetType": "주간",
+            "shopName": "トコブシ屋"
           }
         ],
         "source": [
@@ -478,7 +516,7 @@
         "seed": [],
         "shop": [
           {
-            "discountPrice": 3000,
+            "discountPrice": 2850,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 3,
@@ -503,7 +541,7 @@
         "seed": [],
         "shop": [
           {
-            "discountPrice": 7700,
+            "discountPrice": 7320,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 2,
@@ -528,7 +566,7 @@
         "seed": [],
         "shop": [
           {
-            "discountPrice": 6000,
+            "discountPrice": 5700,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 3,
@@ -553,7 +591,7 @@
         "seed": [],
         "shop": [
           {
-            "discountPrice": 10000,
+            "discountPrice": 9500,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 1,
@@ -578,7 +616,7 @@
         "seed": [],
         "shop": [
           {
-            "discountPrice": 12000,
+            "discountPrice": 11400,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 1,
@@ -622,11 +660,13 @@
                     "seed": [],
                     "shop": [
                       {
+                        "discountPrice": 480,
                         "isHidden": 0,
                         "mapName": null,
                         "maxBuy": 10,
                         "moneyName": "所持金",
                         "price": 500,
+                        "reducePriceCond": "道玄坂琉七 LV.1",
                         "resetType": "일간",
                         "shopName": "ラフレシ屋"
                       }
@@ -658,11 +698,13 @@
               "seed": [],
               "shop": [
                 {
+                  "discountPrice": 290,
                   "isHidden": 0,
                   "mapName": null,
                   "maxBuy": 10,
                   "moneyName": "所持金",
                   "price": 300,
+                  "reducePriceCond": "道玄坂琉七 LV.1",
                   "resetType": "일간",
                   "shopName": "ラフレシ屋"
                 }
@@ -685,6 +727,17 @@
           "compound"
         ],
         "synergy": 9
+      },
+      {
+        "bonus_synergy": 1000,
+        "compound": [],
+        "image": "item-305976.png",
+        "name": "永遠の愛",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [],
+        "source": [],
+        "synergy": 999
       }
     ],
     "name": "野毛朋子",

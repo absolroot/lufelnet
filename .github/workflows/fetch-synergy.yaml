@@ -1,26 +1,21 @@
-name: Fetch Persona (Wed 23:25, Thu 18:25, Fri 13:25 KST)
+name: Fetch Synergy every 12h
 
 on:
   schedule:
-    # Wed 23:25 KST = 14:25 UTC
-    - cron: "25 14 * * 3"
-    # Thu 18:25 KST = 09:25 UTC
-    - cron: "25 9 * * 4"
-    # Fri 13:25 KST = 04:25 UTC
-    - cron: "25 4 * * 5"
+    - cron: "20 */12 * * *" # every 12 hours, minute offset for stability (UTC)
   workflow_dispatch: {}
 
 permissions:
   contents: write
 
 concurrency:
-  group: fetch-persona
+  group: fetch-synergy
   cancel-in-progress: false
 
 jobs:
-  fetch-persona:
+  fetch-synergy:
     runs-on: ubuntu-latest
-    timeout-minutes: 35
+    timeout-minutes: 30
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -32,19 +27,16 @@ jobs:
         with:
           node-version: 20
 
-      - name: Fetch & Update Persona
+      - name: Fetch & update synergy data
         env:
           BASE_URL: https://iant.kr:5000/data
         run: |
           set -euo pipefail
-          # default: kr,en,jp (101~300)
-          node scripts/fetch-persona.mjs || {
+          node scripts/fetch-synergy.mjs || {
             echo "First fetch failed. Retry in 45s..."
             sleep 45
-            node scripts/fetch-persona.mjs
+            node scripts/fetch-synergy.mjs
           }
-          # Optional maintenance
-          # node scripts/manage-persona-data.mjs
 
       - name: Commit & Push
         run: |
@@ -63,7 +55,7 @@ jobs:
             exit 0
           fi
 
-          git commit -m "chore(data): update persona json [skip ci]"
+          git commit -m "chore(data): update synergy json [skip ci]"
 
           BRANCH="${GITHUB_REF_NAME:-main}"
           for attempt in 1 2 3; do

@@ -270,12 +270,6 @@
             return cur;
         })();
 
-        // 2. futureReleases 필터링 교체
-        const futureReleases = sortedReleases.filter(r => {
-            const releaseDate = this.parseGameDate(r.date);
-            return releaseDate >= today;
-        });
-
         // Get last target date
         const sortedTargets = [...this.targets].sort((a, b) => new Date(a.date) - new Date(b.date));
         // 3. lastTargetDate 구하는 부분 교체
@@ -283,17 +277,15 @@
             ? this.parseGameDate(sortedTargets[sortedTargets.length - 1].date)
             : today;
 
-        // Collect all banner-interval income events up to last target.
-        // Include the current ongoing version (so v3.0 -> v3.1 income is applied before the first selectable future target).
-        const releasesToProcess = [
-            ...(currentRelease ? [currentRelease] : []),
-            ...futureReleases
-        ];
-
         // Interval income is granted at interval endDate, and Once income (if any) is granted at:
         // - today for current ongoing version
         // - banner start date for future versions
-        releasesToProcess.forEach(release => {
+        //
+        // IMPORTANT:
+        // Iterate all releases (not just current/future) so we don't miss
+        // a past release whose interval endDate is exactly today.
+        // This keeps graph logic aligned with pull plan income event boundaries.
+        sortedReleases.forEach(release => {
             const releaseDate = this.parseGameDate(release.date);
             if (releaseDate > lastTargetDate) return;
 
@@ -313,18 +305,20 @@
                 const onceDate = (currentRelease && release.date === currentRelease.date && String(release.version) === String(currentRelease.version))
                     ? new Date(today)
                     : new Date(releaseDate);
-                events.push({
-                    date: onceDate,
-                    type: 'income',
-                    amount: income.totalIncomeOnceEquivalent,
-                    label: this.getCharacterName(firstCharName),
-                    charName: firstCharName
-                });
+                if (onceDate >= today && onceDate <= lastTargetDate) {
+                    events.push({
+                        date: onceDate,
+                        type: 'income',
+                        amount: income.totalIncomeOnceEquivalent,
+                        label: this.getCharacterName(firstCharName),
+                        charName: firstCharName
+                    });
+                }
             }
 
             // Interval income at end date
             const endDate = this.parseGameDate(income.interval.endDate);
-            if (endDate <= lastTargetDate) {
+            if (endDate >= today && endDate <= lastTargetDate) {
                 events.push({
                     date: endDate,
                     type: 'income',

@@ -1,0 +1,282 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "나시모토 나루미는 특별한 에너지 『반짝임 수치』를 보유한다. 나시모토 나루미는 전투 시작 시 『반짝임 수치』 1중첩을 보유하며, 『반짝임 수치』는 최대 10회 중첩된다. 또한 나시모토 나루미는 『반짝임 수치』 중첩수에 따라 스킬을 강화한다.\n나시모토 나루미가 출전하면 원더가 특수 스킬을 획득해 나시모토 나루미에게 『나루루♪나루루♫』를 추가하면, 나시모토 나루미는 다음 턴 종료 후 추가 턴 『스포트라이트·온』에 진입 및 SP 15포인트를 회복한다. 『스포트라이트·온』 턴 종료 시 『나루루♪나루루♫』와 모든 『반짝임 수치』를 제거한다.\n이 스킬은 1턴의 쿨타임을 가지며, 전투 시작 시 쿨타임이 적용된다. 이 스킬의 쿨타임은 원더의 추가 턴이 아닌 턴을 통해 감소된다.",
+        "name": "최초의 무대",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 148140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "나시모토 나루미가 특수 스킬 『악수회❤ 꼭 와야 해❤』를 획득한다. 시전 시 원더가 다음 턴 종료 후 추가 턴에 진입하며, 추가 턴 시작 시 SP 15포인트를 회복한다.\n이 스킬은 1턴의 쿨타임을 가진다. 이 스킬의 쿨타임은 나시모토 나루미의 추가 턴이 아닌 턴을 통해 감소된다.\n나시모토 나루미의 모든 턴은 『스포트라이트·온』 턴 관련 버프 효과를 발동할 수 있다. 『스포트라이트·온』 턴일 때, 나시모토 나루미는 30%의 크리티컬 효과를 얻는다.",
+        "name": "나의 소중한 손님",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 148141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "나시모토 나루미의 『반짝임 수치』 상한이 최대 16중첩으로 증가하며, 원더가 페르소나 스킬 시전 시에도 추가로 『반짝임 수치』 1중첩을 획득한다.\n스킬 『사랑의 LIVE♪』가 강화되며, 『반짝임 수치』가 16중첩에 도달하면 『반짝임 수치』 1중첩마다 제공하는 효과가 1.5배로 증가한다.",
+        "name": "영원히 나를 바라봐 줘",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 148142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『케이크 BOOM!』, 『사랑의 LIVE♪』의 스킬 레벨이 3레벨 증가하며, 최대 15레벨까지 증가한다.",
+        "name": "독점적 유대",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 148143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "HIGHLIGHT 효과 증가: HIGHLIGHT 시전 후 2턴 동안 추가로 원더 크리티컬 효과의 15%만큼 자신의 크리티컬 효과를 증가시키며, 최대 30%까지 증가한다.",
+        "name": "나를 위해 울려 퍼지는 응원",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 148144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『달콤 100%❤』, 『전투 기술』의 스킬 레벨이 3레벨 증가하며, 최대 15레벨까지 증가한다.",
+        "name": "절대 센터",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 148145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "나시모토 나루미가 『스포트라이트·온』 턴 종료 후 더 이상 『나루루♪나루루♫』와 『반짝임 수치』를 제거하지 않고, 이어서 『약속·다음에 또 만나요』 턴을 계속 진행하며 SP 포인트를 회복한다.\n『약속·다음에 또 만나요』 턴은 『스포트라이트·온』 턴으로 간주되며, 『약속·다음에 또 만나요』 턴 종료 시 『나루루♪나루루♫』와 모든 『반짝임 수치』를 제거한다.",
+        "name": "당신만을 위한 미소",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 148146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on AAAAAA==)",
+      "cooldown": 4,
+      "cost": "",
+      "desc": "1명의 적에게 공격력 535.9%/590.8%/568.9%/623.8%의 염동 속성 대미지를 주고, 원더 공격력의 20%만큼 자신의 공격력을 증가시키며, 최대 976/1076/1036/1136포인트 증가한다. 효과는 2턴 동안 지속된다.",
+      "name": "HIGHLIGHT",
+      "nature": "Psychokinesis",
+      "skill_lv": "10/10/13/13",
+      "sn": 148152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": 1
+    },
+    "innate": {
+      "Crit Mult.": "0.24",
+      "Damage Mult.": "0.16"
+    },
+    "innate_awake_skill": [],
+    "name": "나시모토 나루미",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 21",
+        "desc": "1명의 적에게 공격력 292.8%/322.8%/310.8%/340.8%의 염동 속성 대미지를 주고, 『반짝임 수치』 3중첩을 획득하며 『아이돌 영업』 상태에 진입한다. 효과는 2턴 동안 지속된다.\n『아이돌 영업』: 크리티컬 확률이 14.6%/16.1%/15.5%/17.0% 증가하고, 대미지가 29.3%/32.3%/31.1%/34.1% 증가하며, 턴 시작 시 『반짝임 수치』를 1중첩 획득한다.",
+        "name": "달콤 100%❤",
+        "nature": "Psychokinesis",
+        "skill_lv": "10/10/13/13",
+        "sn": 148111,
+        "tags": [
+          "액티브",
+          "단일피해"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 23",
+        "desc": "적 전체에 공격력 404.0%/445.4%/428.8%/470.2%의 염동 속성 대미지를 준다. 이 대미지는 적 전체가 균등하게 분담한다.\n『아이돌 영업』 상태에서 시전하면, 스킬 종료 후 자신의 『반짝임 수치』 중첩수가 두 배로 된다.",
+        "name": "케이크 BOOM!",
+        "nature": "Psychokinesis",
+        "skill_lv": "10/10/13/13",
+        "sn": 148112,
+        "tags": [
+          "액티브",
+          "광역피해"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 25",
+        "desc": "1명의 적에게 공격력 349.8%/385.6%/371.3%/407.1%의 염동 속성 대미지를 준다.\n『나루루♪ 나루루♫』 상태에서 시전 시, 『반짝임 수치』 1중첩마다 추가로 공격력 10.1%/11.1%/10.7%/11.7%의 염동 속성 대미지를 준다. 『반짝임 수치』 10중첩 달성 시 추가로 공격력 100.5%/110.8%/106.7%/117.0%의 염동 속성 대미지를 주고, 스킬 시전 기간 동안 50%의 대미지 보너스를 획득한다.",
+        "name": "사랑의 LIVE♪",
+        "nature": "Psychokinesis",
+        "skill_lv": "10/10/13/13",
+        "sn": 148113,
+        "tags": [
+          "액티브",
+          "단일피해"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『스포트라이트·온』 턴일 때 대미지 보너스를 36.0% 획득한다.",
+        "name": "열의",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 148131,
+        "tags": [
+          "잠재력"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "원더가 자신을 대상으로 하는 액티브 스킬 효과를 받을 때 공격력이 영구적으로 21.0% 증가한다(2회 중첩 가능).",
+        "name": "최애",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 148132,
+        "tags": [
+          "잠재력"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 2960.0,
+      "Crit Mult.": 2.15,
+      "Crit Rate": 0.55,
+      "Damage Mult.": 0.18
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1179.97 / 1201.57 / 1222.37 / 1243.97 / 1264.77 / 1286.37 / 1307.17",
+      "Attack Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "613.31 / 624.51 / 635.71 / 646.11 / 657.31 / 668.51 / 679.71",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3360.0 / 3420.8 / 3480.8 / 3541.6 / 3601.6 / 3662.4 / 3723.2",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "95.0 / 95.0 / 95.0 / 95.0 / 95.0 / 95.0 / 95.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

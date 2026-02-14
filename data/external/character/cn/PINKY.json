@@ -1,0 +1,282 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "梨本成瑠海拥有独特的能量『闪耀值』。梨本成瑠海初始拥有1层『闪耀值』，『闪耀值』上限为10层且梨本成瑠海将根据『闪耀值』层数强化其技能。\n梨本成瑠海出战后，WONDER会获得特殊技能为梨本成瑠海施加『成瑠瑠♪成瑠瑠♫』，使梨本成瑠海在下回合结束后进入额外回合『聚光灯·全开』并恢复15点精力值。『聚光灯·全开』回合结束时，清空『成瑠瑠♪成瑠瑠♫』和所有『闪耀值』。\n该技能存在1回合冷却时间且在战斗开始时冷却，该技能的冷却时间通过WONDER的非额外回合缩减。",
+        "name": "最初的舞台",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 148140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "梨本成瑠海获得特殊技能『握手会❤要来哦❤』，施放后可以使WONDER在下回合结束后进入额外回合并在额外回合开始时恢复15点精力值。\n该技能存在1回合冷却时间，该技能的冷却时间通过梨本成瑠海的非额外回合缩减。\n梨本成瑠海的全部回合都能触发所有『聚光灯·全开』回合相关的增益效果。处于『聚光灯·全开』回合时，梨本成瑠海获得30%暴击效果。",
+        "name": "我重要的客人",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 148141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "梨本成瑠海的『闪耀值』上限提升至16层，且在WONDER施放人格面具技能时也会额外获得1层『闪耀值』。\n技能『爱之LIVE♪』得到强化：若『闪耀值』达到16层，每层『闪耀值』提供的效果将提升至1.5倍。",
+        "name": "请永远注视我",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 148142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『蛋糕BOOM！』、『爱之LIVE♪』的技能等级提升3级，至多提升至15级。",
+        "name": "独家羁绊",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 148143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "HIGHLIGHT效果提升：施放HIGHLIGHT后还会额外基于WONDER暴击效果的15%提升自身的暴击效果，上限为30%，持续2回合。",
+        "name": "为我响起的应援",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 148144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『糖分100%❤』、『战斗技巧』的技能等级提升3级，至多提升至15级。",
+        "name": "绝对C位",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 148145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "梨本成瑠海在『聚光灯·全开』回合结束后，不再清空『成瑠瑠♪成瑠瑠♫』和『闪耀值』，转而继续进入『约定·下次再会』回合并恢复15点精力值。\n『约定·下次再会』回合被视为『聚光灯·全开』回合且『约定·下次再会』回合结束时，清空『成瑠瑠♪成瑠瑠♫』和所有『闪耀值』。",
+        "name": "独属于你的笑容",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 148146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on AAAAAA==)",
+      "cooldown": 4,
+      "cost": "",
+      "desc": "对1名敌人造成535.9%/590.8%/568.9%/623.8%攻击力的念动属性伤害，并基于WONDER攻击力的20%提升自身攻击力，最高提升976/1076/1036/1136点，持续2回合。",
+      "name": "HIGHLIGHT",
+      "nature": "Psychokinesis",
+      "skill_lv": "10/10/13/13",
+      "sn": 148152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": 1
+    },
+    "innate": {
+      "Crit Mult.": "0.24",
+      "Damage Mult.": "0.16"
+    },
+    "innate_awake_skill": [],
+    "name": "梨本成瑠海",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 21",
+        "desc": "对1名敌人造成292.8%/322.8%/310.8%/340.8%攻击力的念动属性伤害，获得3层『闪耀值』并进入『偶像营业』状态，持续2回合。\n『偶像营业』：暴击率提高14.6%/16.1%/15.5%/17.0%，伤害提高29.3%/32.3%/31.1%/34.1%，且回合开始时获得1层『闪耀值』。",
+        "name": "糖分100%❤",
+        "nature": "Psychokinesis",
+        "skill_lv": "10/10/13/13",
+        "sn": 148111,
+        "tags": [
+          "主动",
+          "单伤"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 23",
+        "desc": "对所有敌人造成404.0%/445.4%/428.8%/470.2%攻击力的念动属性伤害，该伤害由所有敌人平均分摊。\n处于『偶像营业』时施放：技能结束后使自身『闪耀值』层数翻倍。",
+        "name": "蛋糕BOOM！",
+        "nature": "Psychokinesis",
+        "skill_lv": "10/10/13/13",
+        "sn": 148112,
+        "tags": [
+          "主动",
+          "群伤"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 25",
+        "desc": "对1名敌人造成349.8%/385.6%/371.3%/407.1%攻击力的念动属性伤害。\n处于『成瑠瑠♪成瑠瑠♫』时施放：每层『闪耀值』都会额外造成10.1%/11.1%/10.7%/11.7%攻击力的念动属性伤害。若『闪耀值』达到10层，还会额外造成100.5%/110.8%/106.7%/117.0%攻击力的念动属性伤害且在施放技能期间获得50%伤害加成。",
+        "name": "爱之LIVE♪",
+        "nature": "Psychokinesis",
+        "skill_lv": "10/10/13/13",
+        "sn": 148113,
+        "tags": [
+          "主动",
+          "单伤"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "处于『聚光灯·全开』回合时获得36.0%伤害加成。",
+        "name": "热度",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 148131,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "受到WONDER以其为目标的主动技能效果时，攻击力永久提升21.0%，上限2层。",
+        "name": "激推",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 148132,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 2960.0,
+      "Crit Mult.": 2.15,
+      "Crit Rate": 0.55,
+      "Damage Mult.": 0.18
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1179.97 / 1201.57 / 1222.37 / 1243.97 / 1264.77 / 1286.37 / 1307.17",
+      "Attack Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "613.31 / 624.51 / 635.71 / 646.11 / 657.31 / 668.51 / 679.71",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3360.0 / 3420.8 / 3480.8 / 3541.6 / 3601.6 / 3662.4 / 3723.2",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "95.0 / 95.0 / 95.0 / 95.0 / 95.0 / 95.0 / 95.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

@@ -3,6 +3,12 @@
 기준일: 2026-02-14
 정리 대상: `i18n-migration-report.md`의 #1~#6
 
+## 0. i18n 불필요 서비스
+- article-editor
+- dmg-calc
+- patch-console
+- pay-calc
+
 ## 1. 통합 i18n 완료 서비스(핵심 흐름)
 
 | 서비스 | 분류 | 근거 |

@@ -5,6 +5,7 @@ window.I18N_PAGE_GALLERY_KR = {
 
     // Filters
     filterAll: '전체',
+    filterAllGroups: '전체 그룹',
     filterAllTags: '모든 태그',
     searchPlaceholder: '검색...',
 
@@ -21,6 +22,11 @@ window.I18N_PAGE_GALLERY_KR = {
 
     // Loading
     loading: '로딩 중...',
+    loadError: '갤러리 데이터를 불러오지 못했습니다.',
+
+    // SEO
+    seoTitle: '갤러리 - P5X 루페르넷',
+    seoDescription: 'P5X 갤러리. 썸네일을 클릭해 원본 이미지를 크게 확인하세요.',
 
     // Gallery Tags (special non-character tags)
     tags: {

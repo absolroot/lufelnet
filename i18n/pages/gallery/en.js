@@ -5,6 +5,7 @@ window.I18N_PAGE_GALLERY_EN = {
 
     // Filters
     filterAll: 'All',
+    filterAllGroups: 'All Groups',
     filterAllTags: 'All Tags',
     searchPlaceholder: 'Search...',
 
@@ -21,6 +22,11 @@ window.I18N_PAGE_GALLERY_EN = {
 
     // Loading
     loading: 'Loading...',
+    loadError: 'Failed to load gallery data.',
+
+    // SEO
+    seoTitle: 'Gallery - Persona 5: The Phantom X LufelNet',
+    seoDescription: 'P5X Gallery. Click a thumbnail to view original image in a modal.',
 
     // Gallery Tags (special non-character tags)
     tags: {

@@ -24,52 +24,61 @@
     try { return (typeof LanguageRouter !== 'undefined') ? LanguageRouter.getCurrentLanguage() : (window.currentLang || 'kr'); } catch(_) { return 'kr'; }
   }
 
+  function getI18nText(key, fallback = ''){
+    try {
+      if (typeof window.t === 'function') {
+        return window.t(key, fallback);
+      }
+    } catch (_) {}
+    return fallback;
+  }
+
+  async function waitForI18n(maxRetries = 50, delayMs = 100){
+    while (typeof window.t !== 'function' && maxRetries > 0){
+      await new Promise(resolve => setTimeout(resolve, delayMs));
+      maxRetries--;
+    }
+  }
+
   /**
-   * 다국어 적용 (제목/설명/placeholder 라벨)
+   * 통합 i18n 번들 적용
    */
   function applyI18n(){
-    const lang = getLang();
-    const map = {
-      kr: { title: '갤러리', navHome:'홈', navCurrent:'갤러리', descSel: ['.korean-content'], search: '검색...', all: '전체', allGroups: '전체 그룹', allTags: '전체 태그', sort: ['Order ↑','Order ↓','이름 A→Z','이름 Z→A'] },
-      en: { title: 'Gallery', navHome:'Home', navCurrent:'Gallery', descSel: ['.english-content'], search: 'Search...', all: 'All', allGroups: 'All Groups', allTags: 'All Tags', sort: ['Order ↑','Order ↓','Name A→Z','Name Z→A'] },
-      jp: { title: 'ギャラリー', navHome:'ホーム', navCurrent:'ギャラリー', descSel: ['.japanese-content'], search: '検索...', all: '全て', allGroups: '全てのグループ', allTags: '全てのタグ', sort: ['順序 ↑','順序 ↓','名前 A→Z','名前 Z→A'] }
-    };
-    const t = map[lang] || map.kr;
+    const pageTitle = getI18nText('pageTitle', '갤러리');
     const titleEl = document.getElementById('gallery-title');
-    if (titleEl) titleEl.textContent = t.title;
-    // 설명 가시성 전환
-    ['.korean-content','.english-content','.japanese-content'].forEach(sel=>document.querySelectorAll(sel).forEach(el=>el.style.display='none'));
-    t.descSel.forEach(sel=>document.querySelectorAll(sel).forEach(el=>el.style.display='block'));
-    if (searchInput) searchInput.placeholder = t.search;
+    if (titleEl) titleEl.textContent = pageTitle;
+
+    if (searchInput) searchInput.placeholder = getI18nText('searchPlaceholder', '검색...');
     // 드롭다운 기본 옵션 라벨 업데이트
-    if (categorySelect) categorySelect.options[0].textContent = t.allGroups || t.all;
-    if (tagSelect) tagSelect.options[0].textContent = t.allTags;
-    if (sortSelect && sortSelect.options.length>=4){
-      sortSelect.options[0].textContent = t.sort[0];
-      sortSelect.options[1].textContent = t.sort[1];
-      sortSelect.options[2].textContent = t.sort[2];
-      sortSelect.options[3].textContent = t.sort[3];
+    if (categorySelect && categorySelect.options.length > 0) {
+      categorySelect.options[0].textContent = getI18nText('filterAllGroups', getI18nText('filterAll', '전체'));
     }
+    if (tagSelect && tagSelect.options.length > 0) {
+      tagSelect.options[0].textContent = getI18nText('filterAllTags', '모든 태그');
+    }
+    if (sortSelect && sortSelect.options.length>=4){
+      sortSelect.options[0].textContent = getI18nText('sortOrderDesc', '순서 ↓');
+      sortSelect.options[1].textContent = getI18nText('sortOrderAsc', '순서 ↑');
+      sortSelect.options[2].textContent = getI18nText('sortNameAsc', '이름 A→Z');
+      sortSelect.options[3].textContent = getI18nText('sortNameDesc', '이름 Z→A');
+    }
+
     // SEO 타이틀/메타 업데이트
-    const seo = {
-      kr: { title: '갤러리 - P5X 루페르넷', desc: 'P5X 갤러리. 썸네일을 클릭해 원본 이미지를 크게 확인하세요.' },
-      en: { title: 'Gallery - Persona 5: The Phantom X LufelNet', desc: 'P5X Gallery. Click a thumbnail to view original image in a modal.' },
-      jp: { title: 'ギャラリー - ペルソナ5 ザ・ファントム X LufelNet', desc: 'P5X ギャラリー。サムネイルをクリックして原寸画像を表示します。' }
-    };
-    const cur = seo[lang] || seo.kr;
-    document.title = cur.title;
+    const seoTitle = getI18nText('seoTitle', `${pageTitle} - P5X 루페르넷`);
+    const seoDescription = getI18nText('seoDescription', '');
+    document.title = seoTitle;
     const metaD = document.querySelector('meta[name="description"]');
     const ogT = document.querySelector('meta[property="og:title"]');
     const ogD = document.querySelector('meta[property="og:description"]');
-    if (metaD) metaD.setAttribute('content', cur.desc);
-    if (ogT) ogT.setAttribute('content', cur.title);
-    if (ogD) ogD.setAttribute('content', cur.desc);
+    if (metaD) metaD.setAttribute('content', seoDescription);
+    if (ogT) ogT.setAttribute('content', seoTitle);
+    if (ogD) ogD.setAttribute('content', seoDescription);
 
     // Navigation path 번역
     const navHomeEl = document.getElementById('nav-home');
     const navCurEl = document.getElementById('nav-current');
-    if (navHomeEl) navHomeEl.textContent = t.navHome;
-    if (navCurEl) navCurEl.textContent = t.navCurrent;
+    if (navHomeEl) navHomeEl.textContent = getI18nText('navHome', '홈');
+    if (navCurEl) navCurEl.textContent = getI18nText('navCurrent', '갤러리');
   }
 
   /**
@@ -352,7 +361,8 @@
     if (nextBtn) nextBtn.addEventListener('click', ()=> moveModal(1));
   }
 
-  function main(){
+  async function main(){
+    await waitForI18n();
     applyI18n();
     wireModal();
 
@@ -384,7 +394,12 @@
       setupInfiniteScroll();
     }).catch(err=>{
       console.error(err);
-      gridEl.innerHTML = '<div style="color:rgba(255,255,255,0.7); padding:12px;">Failed to load gallery data.</div>';
+      const errorBox = document.createElement('div');
+      errorBox.style.color = 'rgba(255,255,255,0.7)';
+      errorBox.style.padding = '12px';
+      errorBox.textContent = getI18nText('loadError', 'Failed to load gallery data.');
+      gridEl.innerHTML = '';
+      gridEl.appendChild(errorBox);
     });
   }
 
@@ -430,8 +445,8 @@
     ioLoadMore.observe(sentinel);
   }
 
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', main);
-  else main();
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => { void main(); });
+  else void main();
 })();
 
 

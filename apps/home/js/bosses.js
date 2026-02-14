@@ -24,7 +24,7 @@
     if (!affixMapLoaded) {
       affixMapLoaded = (async () => {
         try {
-          const url = `${BASE}/assets/js/home/affix_name.json${APP_VER ? `?v=${APP_VER}` : ''}`;
+          const url = `${BASE}/apps/home/js/affix_name.json${APP_VER ? `?v=${APP_VER}` : ''}`;
           const res = await fetch(url, { cache: 'no-store' });
           if (!res.ok) throw new Error('Failed to load affix_name.json');
           const list = await res.json();

@@ -54,6 +54,35 @@ window.I18N_PAGE_TIER_EN = {
         'KR Tier is a tier with Mindscape Core(V4.7) effect applied in Korea servers.'
     ],
 
+    // Tier Q&A
+    tierQaTitle: 'Q&A',
+    tierQaItems: [
+        {
+            q: 'Q. I don’t agree with the tier list.',
+            a: 'That’s a very valid point. Tier lists always vary depending on personal experience and your current party composition. Priorities can shift depending on enemy weaknesses and gimmicks. Please treat the tier list as a fun reference and focus on building a party suited to your current opponent.'
+        },
+        {
+            q: 'Q. Why are some characters listed at A1?',
+            a: `A1 is assigned when a character gains significant utility or undergoes a mechanical shift that increases versatility. 
+(Based on the KR version. Mechanisms may differ depending on the server at launch.)
+　                
+Minami (Marian) - A general gacha unit with a low A1 barrier and provides a Penetrate buff.
+Masaki (Cherish) - A general gacha unit with a low A1 barrier and provides a Penetrate buff.
+Tomoko·Seaside (Moko·Seaside) - Gains full-team healing from A1, boosting overall usability.
+Tempest Riko (Wind·Tempest) - Skill 1 expands from Wind-only to all elements. Skill 2 becomes the core in multi-target fights, so A0 is still viable.
+Justine & Caroline (J&C) - Skill 3 triggers automatically, reducing its cycle from 3 to 2 turns. Its duration is 2 turns, and the exclusive weapon's buff doesn’t stack unless Skill 3 is used, making A0 an incomplete form and hard to compare in tiers.`
+        },
+        {
+            q: 'Q. Why are some characters listed at A6?',
+            a: `YUI (BUI) - YUI's skill scaling jumps drastically from A6 (80→110), allowing AOE attacks and opening up new damage potential. She occasionally excels in boss modes without Electric resistance and appears in ranking content.
+    Akechi (Crow) - From A6, Akechi's damage storage multiplier increases by 1.5x, delivering significant impact. Below A6, his storage ratio is too low compared to other buffers and lacks effectiveness.`
+        },
+        {
+            q: 'Q. What is the triangular item at the bottom left of the character?',
+            a: 'It represents materials for the Mindscape Core added in the KR V4.7.1 update, allowing expansion up to Level 100. Acquiring additional Passives may lead to Tier changes.'
+        }
+    ],
+
     // Tag translations (for filter)
     tags: {
         'TECHNICAL': 'TECHNICAL',

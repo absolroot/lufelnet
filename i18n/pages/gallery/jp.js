@@ -5,6 +5,7 @@ window.I18N_PAGE_GALLERY_JP = {
 
     // Filters
     filterAll: 'すべて',
+    filterAllGroups: 'すべてのグループ',
     filterAllTags: 'すべてのタグ',
     searchPlaceholder: '検索...',
 
@@ -21,6 +22,11 @@ window.I18N_PAGE_GALLERY_JP = {
 
     // Loading
     loading: '読み込み中...',
+    loadError: 'ギャラリーデータの読み込みに失敗しました。',
+
+    // SEO
+    seoTitle: 'ギャラリー - ペルソナ5 ザ・ファントム X LufelNet',
+    seoDescription: 'P5X ギャラリー。サムネイルをクリックして原寸画像を表示します。',
 
     // Gallery Tags (special non-character tags)
     tags: {

@@ -1,17 +1,19 @@
-# Tier 페이지 i18n - 별도 관리 항목
+# Tier 페이지 i18n 메모
 
-## ⚠️ i18n 시스템 외 별도 관리
+## 통합 i18n 적용 항목
 
 ### 1. QA 섹션
-**파일**: `apps/tier/position-tier-qa.js`
+**번들 키**: `tierQaTitle`, `tierQaItems`  
+**파일**: `i18n/pages/tier/kr.js`, `i18n/pages/tier/en.js`, `i18n/pages/tier/jp.js`  
+**렌더러**: `apps/tier/position-tier-qa.js`
 
-- 복잡한 다단락 텍스트 (개행, 서식 포함)
-- JavaScript 렌더링 로직과 강하게 결합
-- 별도 파일로 하드코딩 관리 권장
+- 다단락 답변은 `tierQaItems[].a`의 줄바꿈(`\n`)으로 관리
+- 렌더러는 언어별 번들에서 동일 키를 읽어 `<p>` 단위로 출력
 
-### 2. 캐릭터 데이터
+## 별도 관리 항목
+
+### 1. 캐릭터 데이터
 **파일**: `/data/{lang}/characters/characters.js`
 
-- 캐릭터 이름, 속성, 직업 등
-- i18n이 아닌 콘텐츠 데이터
-- 언어별 별도 파일 유지
+- 캐릭터 이름, 속성, 직업 등 콘텐츠 데이터
+- i18n 페이지 번들이 아닌 언어별 데이터 파일로 유지

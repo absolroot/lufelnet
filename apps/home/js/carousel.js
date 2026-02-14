@@ -261,7 +261,7 @@
 
   async function fetchCustomSlides() {
     try {
-      const url = `${BASE}/assets/js/home/custom-slides.json${APP_VER ? `?v=${APP_VER}` : ''}`;
+      const url = `${BASE}/apps/home/js/custom-slides.json${APP_VER ? `?v=${APP_VER}` : ''}`;
       const res = await fetch(url, { cache: 'no-store' });
       if (!res.ok) return [];
       const data = await res.json().catch(() => []);

@@ -21,6 +21,7 @@
 | `gallery` | 완료 | `apps/gallery/index.html:104`, `apps/gallery/gallery-tags.js:30`에서 `initPageI18n('gallery')` + `window.t()` 사용 |
 | `login` | 완료 | `apps/login/index.html:133`, `apps/login/index.html:138`에서 `initPageI18n('login')`/`I18nService.init('login')` 호출 |
 | `maps` | 완료 | `apps/maps/index.html:152`~`apps/maps/index.html:154` 페이지 번들 로드, `apps/maps/maps-i18n.js:48`에서 `MapsI18n` 사용 |
+| `persona` | 완료 | `apps/persona/persona-list.js:49` `initPageI18n('persona')` 호출, `apps/persona/getfrom.js:28` `window.t()` 기반 라벨 조회로 로컬 언어 분기 제거 |
 | `pull-calc` | 완료 | `apps/pull-calc/pull-calc.js:1674` `initPageI18n('pull-calc')`, `apps/pull-calc/pull-calc.js:523` `mustReadContent`를 `window.t()`로 조회, 로컬 번역 팩 제거(`apps/pull-calc/pull-calc-i18n.js` 삭제) |
 | `revelations` | 완료 | `apps/revelations/index.html:29`의 `data-i18n` 바인딩 + `apps/revelations/index.html:624`의 `I18nService.init('revelation')` |
 | `schedule` | 완료 | `apps/schedule/index.html:203` `initPageI18n('schedule')`, `apps/schedule/index.html:114` `window.t()` 사용 |
@@ -33,7 +34,6 @@
 | 서비스 | 상태 | 대표 잔존 위치 |
 | --- | --- | --- |
 | `character` | 부분 잔존 | 목록 페이지는 통합 i18n(`apps/character/index.html:949`)이나 상세 페이지에서 언어 분기 하드코딩(`apps/character/character.html:51`) 및 로컬 맵(`assets/js/character/character-i18n.js:5`) 유지 |
-| `persona` | 부분 잔존 | 통합 i18n 초기화(`apps/persona/persona-list.js:49`)는 적용됐지만 획득처 모듈에 로컬 라벨 분기(`apps/persona/getfrom.js:89`) 잔존 |
 | `tactic-maker` | 부분 잔존 | 통합 i18n 초기화(`apps/tactic-maker/js/main.js:67`) 이후에도 언어별 하드코딩 분기(`apps/tactic-maker/js/need-stat-state.js:261`, `apps/tactic-maker/js/ui-critical-card.js:1201`) 잔존 |
 
 ## 3. 통합 i18n 미구현 서비스
@@ -71,7 +71,7 @@
 | `material-calc` | 미구현 |
 | `patch-console` | 불필요 |
 | `pay-calc` | 불필요 |
-| `persona` | 부분 잔존 |
+| `persona` | 완료 |
 | `pull-calc` | 완료 |
 | `pull-tracker` | 미구현 |
 | `revelations` | 완료 |
@@ -83,6 +83,6 @@
 | `wonder-weapon` | 완료 |
 
 ## 6. 결론
-- 전수 점검 기준 통합 i18n 완료: `about`, `astrolabe`, `critical-calc`, `defense-calc`, `gallery`, `login`, `maps`, `pull-calc`, `revelations`, `schedule`, `synergy`, `tier`, `wonder-weapon`
+- 전수 점검 기준 통합 i18n 완료: `about`, `astrolabe`, `critical-calc`, `defense-calc`, `gallery`, `login`, `maps`, `persona`, `pull-calc`, `revelations`, `schedule`, `synergy`, `tier`, `wonder-weapon`
 - 우선 정리 대상(미구현): `guides`, `home`, `material-calc`, `pull-tracker`
-- 부분 잔존 정리 대상: `character`, `persona`, `tactic-maker`, `tactic`
+- 부분 잔존 정리 대상: `character`, `tactic-maker`, `tactic`

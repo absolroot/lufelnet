@@ -23,6 +23,13 @@
     return (typeof LanguageRouter !== 'undefined') ? LanguageRouter.getCurrentLanguage() : 'kr';
   }
 
+  function tx(key, defaultValue) {
+    if (typeof window !== 'undefined' && typeof window.t === 'function') {
+      return window.t(key, defaultValue);
+    }
+    return defaultValue || key;
+  }
+
   async function loadAcqMap() {
     if (acqMap) return acqMap;
     if (loadingPromise) return loadingPromise;
@@ -84,18 +91,13 @@
   }
 
   function i18nLabel(key) {
-    const lang = getCurrentLang();
     if (key === 'label') {
-      if (lang === 'en') return 'Acquisition';
-      if (lang === 'jp') return '入手先';
-      return '획득처';
+      return tx('acquisitionLabel', '획득처');
     }
     if (key === 'detail') {
-      if (lang === 'en') return 'detail';
-      if (lang === 'jp') return '詳細';
-      return '자세히';
+      return tx('acquisitionDetail', '자세히');
     }
-    return key;
+    return tx(key, key);
   }
 
   function buildIconForEmblem(token) {
@@ -134,12 +136,7 @@
     const m = token.match(/^gacha\+(\d+)$/i);
     if (!m) return null;
     const num = m[1];
-    const lang = getCurrentLang();
-    const label = (function () {
-      if (lang === 'en') return 'Persona Gacha Ticket';
-      if (lang === 'jp') return 'ペルソナ ガチャチケット';
-      return '페르소나 가챠 티켓';
-    })();
+    const label = tx('acqPersonaGachaTicket', '페르소나 가챠 티켓');
     const wrap = document.createElement('span');
     wrap.className = 'acq-emblem';
     wrap.title = label;
@@ -231,11 +228,11 @@
       const img = document.createElement('img');
       img.className = 'acq-icon';
       img.src = `${BASE()}/apps/persona/persona_icon/merope.webp`;
-      img.alt = 'Merope';
+      img.alt = tx('acqMeropeName', 'Merope');
       img.loading = 'lazy';
       const span = document.createElement('span');
       span.className = 'acq-text';
-      span.textContent = `MEROPE Rank ${num}`;
+      span.textContent = `${tx('acqMeropeRankPrefix', 'MEROPE Rank')} ${num}`;
       wrap.appendChild(img);
       wrap.appendChild(span);
       container.appendChild(wrap);
@@ -256,11 +253,11 @@
       const img = document.createElement('img');
       img.className = 'acq-icon';
       img.src = `${BASE()}/apps/persona/persona_icon/event.png`;
-      img.alt = 'EVENT';
+      img.alt = tx('acqEventLabel', 'EVENT');
       img.loading = 'lazy';
       const span = document.createElement('span');
       span.className = 'acq-text';
-      span.textContent = 'EVENT';
+      span.textContent = tx('acqEventLabel', 'EVENT');
       wrap.appendChild(img);
       wrap.appendChild(span);
       container.appendChild(wrap);
@@ -424,7 +421,7 @@
       col.dataset.combo = v;
       const clickable = isPersonaCombo(v);
       if (clickable) {
-        col.title = 'Combination detail';
+        col.title = tx('acqCombinationDetail', '조합 상세');
       } else {
         col.classList.add('disabled');
         col.title = '';
@@ -471,14 +468,16 @@
         <div class="skill-source-header">
           <div class="skill-source-title-wrap">
             <div class="skill-source-title-row">
-              <h3 id="acqModalTitle">Combination Detail</h3>
+              <h3 id="acqModalTitle">${tx('acqCombinationDetail', '조합 상세')}</h3>
             </div>
           </div>
-          <button class="skill-source-close" aria-label="Close" data-close="1">×</button>
+          <button class="skill-source-close" aria-label="${tx('common.close', '닫기')}" data-close="1">×</button>
         </div>
-        <div class="skill-source-content" id="acqModalContent">Coming soon.</div>
+        <div class="skill-source-content" id="acqModalContent">${tx('acqComingSoon', '준비 중...')}</div>
       </div>`;
     document.body.appendChild(modal);
+    const modalTitle = modal.querySelector('#acqModalTitle');
+    if (modalTitle) modalTitle.textContent = tx('acqCombinationDetail', '조합 상세');
     modal.addEventListener('click', (e) => { if (e.target.dataset.close === '1') closeAcqModal(); });
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeAcqModal(); });
   }
@@ -631,10 +630,10 @@
 
   function totalsLine(totals) {
     const parts = [];
-    if (totals.purple) parts.push(`Purple : ${totals.purple}`);
-    if (totals.blue) parts.push(`Blue : ${totals.blue}`);
-    if (totals.white) parts.push(`White : ${totals.white}`);
-    if (totals.rainbow) parts.push(`Rainbow : ${totals.rainbow}`);
+    if (totals.purple) parts.push(`${tx('acqColorPurple', 'Purple')} : ${totals.purple}`);
+    if (totals.blue) parts.push(`${tx('acqColorBlue', 'Blue')} : ${totals.blue}`);
+    if (totals.white) parts.push(`${tx('acqColorWhite', 'White')} : ${totals.white}`);
+    if (totals.rainbow) parts.push(`${tx('acqColorRainbow', 'Rainbow')} : ${totals.rainbow}`);
     return parts.join(' / ');
   }
 
@@ -646,9 +645,9 @@
       const comboText = splitTokens(node.combo).map(n => {
         const em = parseEmblemToken(n);
         if (em) return `${em.color.charAt(0).toUpperCase() + em.color.slice(1)}+${em.amount}`;
-        if (isMeropeToken(n)) return 'Merope';
-        if (isEventToken(n)) return 'EVENT';
-        if (isGachaToken(n)) return 'GACHA';
+        if (isMeropeToken(n)) return tx('acqMeropeName', 'Merope');
+        if (isEventToken(n)) return tx('acqEventLabel', 'EVENT');
+        if (isGachaToken(n)) return tx('acqGachaLabel', 'GACHA');
         return getLocalizedName(n);
       }).join(' + ');
       lines.push(`${indent}ㄴ ${name} : ${comboText}`);

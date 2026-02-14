@@ -51,33 +51,10 @@
         const time = characterTime || char.time || char.appear;
         if (!time) return false;
 
-        const currentLanguage = getCurrentLanguage();
-
-        // 언어별 time 값을 영어 값으로 변환하여 비교
-        const timeMapping = {
-            'kr': {
-                '방과 후': 'After School',
-                '저녁': 'Evening',
-                '밤': 'Night',
-                '오후': 'Afternoon'
-            },
-            'en': {
-                'After School': 'After School',
-                'Evening': 'Evening',
-                'Night': 'Night',
-                'Afternoon': 'Afternoon'
-            },
-            'jp': {
-                '放課後': 'After School',
-                '夕方': 'Evening',
-                '夜': 'Night',
-                '午後': 'Afternoon'
-            }
-        };
-
-        // 현재 언어에 맞는 매핑 사용
-        const mapping = timeMapping[currentLanguage] || timeMapping['en'];
-        const normalizedTime = mapping[time] || time;
+        // synergy.js에서 제공하는 i18n 기반 시간 정규화 사용
+        const normalizedTime = (typeof window.normalizeSynergyTime === 'function')
+            ? window.normalizeSynergyTime(time)
+            : time;
 
         return normalizedTime === currentTimeFilter;
     }

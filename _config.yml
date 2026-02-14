@@ -4,12 +4,6 @@ url: "https://lufel.net"
 baseurl: ""
 author: 루트
 
-# Collections
-collections:
-  characters_test:
-    output: true
-    permalink: /test/character/:name/
-
 # 플러그인 설정
 safe: true
 plugins:
@@ -25,15 +19,6 @@ defaults:
       path: ""
     values:
       layout: "default"
-      language: kr
-
-  # 테스트 캐릭터 페이지 설정
-  - scope:
-      path: ""
-      type: "characters_test"
-    values:
-      layout: "character_test"
-      sitemap: false
       language: kr
 
   # 리다이렉트 설정
@@ -61,8 +46,6 @@ exclude_from_localization: ["assets", "img", "css", "js", "music", "index.html"]
 parallel_localization: false
 
 # URL processing related settings
-keep_files: [assets]
-static_files: ["assets"]
 include: ["assets"]
 
 # exclude files/folders
@@ -78,14 +61,9 @@ exclude:
   - package-lock.json
   - .jekyll-cache
   - .jekyll-metadata
-  - nul
-  - nul.*
   - data/external/before
-  - apps/patch-console
-  - apps/patch-console/state
   - "apps/patch-console/**"
 
-# 감시 제외 설정
 keep_files:
   - assets
   - _site/assets

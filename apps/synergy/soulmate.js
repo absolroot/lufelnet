@@ -2,6 +2,18 @@
 (function() {
     'use strict';
 
+    function t(key, fallback) {
+        if (window.t && typeof window.t === 'function') {
+            const translated = window.t(key, fallback || key);
+            if (translated !== key) {
+                return translated;
+            }
+        }
+        const fallbackKr = window.I18N?.kr?.[key];
+        if (fallbackKr !== undefined) return fallbackKr;
+        return fallback || key;
+    }
+
     // RANK 14→15 선택지 하단에 소울 메이트/절친 표시 추가
     async function addSoulmateIndicator() {
         // 모든 soulmate-indicator-placeholder를 찾아서 실제 표시로 교체
@@ -75,28 +87,11 @@
     // dialog-choice HTML 생성
     function createDialogChoices(friendLoverDialog) {
         const BASE_URL = window.BASE_URL || '';
-        const currentLanguage = getCurrentLanguage();
-        
-        // 번역 텍스트
-        const texts = {
-            kr: { 
-                soulmate: '소울 메이트', 
-                friend: '절친',
-                notice: '이번 이벤트에는 위 선택지 외에 중요한 결정을 내리게 됩니다.'
-            },
-            en: { 
-                soulmate: 'Romantic', 
-                friend: 'Friendship',
-                notice: 'In this event, you will make an important decision in addition to the choices above.'
-            },
-            jp: { 
-                soulmate: '연인', 
-                friend: '친구',
-                notice: 'このイベントでは、上記の選択肢に加えて重要な決定を下すことになります。'
-            }
+        const text = {
+            soulmate: t('soulmateLabelRomantic'),
+            friend: t('soulmateLabelFriend'),
+            notice: t('soulmateNotice')
         };
-        
-        const text = texts[currentLanguage] || texts.kr;
         
         // is_romance: false가 먼저, true가 나중에 오도록 정렬
         const sortedDialog = [...friendLoverDialog].sort((a, b) => {
@@ -137,28 +132,11 @@
     // 소울 메이트/절친 표시 HTML 생성
     function createSoulmateIndicator() {
         const BASE_URL = window.BASE_URL || '';
-        const currentLanguage = getCurrentLanguage();
-        
-        // 번역 텍스트
-        const texts = {
-            kr: { 
-                soulmate: '소울 메이트', 
-                friend: '절친',
-                notice: '이번 이벤트에는 위 선택지 외에 중요한 결정을 내리게 됩니다.'
-            },
-            en: { 
-                soulmate: 'Romantic', 
-                friend: 'Friendship',
-                notice: 'In this event, you will make an important decision in addition to the choices above.'
-            },
-            jp: { 
-                soulmate: '연인', 
-                friend: '친구',
-                notice: 'このイベントでは、上記の選択肢に加えて重要な決定を下すことになります。'
-            }
+        const text = {
+            soulmate: t('soulmateLabelRomantic'),
+            friend: t('soulmateLabelFriend'),
+            notice: t('soulmateNotice')
         };
-        
-        const text = texts[currentLanguage] || texts.kr;
         
         return `
             <div class="soulmate-notice">${text.notice}</div>

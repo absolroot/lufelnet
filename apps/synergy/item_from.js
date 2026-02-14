@@ -6,27 +6,57 @@
 
     const BASE_URL = (typeof window !== 'undefined' && window.BASE_URL) || '';
 
-    // 현재 언어 가져오기
-    function getCurrentLanguage() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const langParam = urlParams.get('lang');
-        if (langParam === 'en') return 'en';
-        if (langParam === 'jp') return 'jp';
-        return 'kr';
+    // i18n 텍스트 헬퍼
+    function t(key, fallback) {
+        if (window.t && typeof window.t === 'function') {
+            const translated = window.t(key, fallback || key);
+            if (translated !== key) {
+                return translated;
+            }
+        }
+        const fallbackKr = window.I18N?.kr?.[key];
+        if (fallbackKr !== undefined) return fallbackKr;
+        return fallback || key;
     }
 
-    // 번역 함수 (간단한 버전)
-    function t(key) {
-        const lang = getCurrentLanguage();
-        const translations = {
-            '작업대': { en: 'Workbench', jp: '作業台' },
-            '획득처': { en: 'Source', jp: '入手先' },
-            '상점': { en: 'Shop', jp: 'ショップ' },
-            '재배': { en: 'Cultivation', jp: '栽培' },
-            // 통화 이름
-            '현금': { en: 'Money', jp: '所持金' }
-        };
-        return translations[key]?.[lang] || key;
+    function addStringToSet(set, value) {
+        if (typeof value === 'string' && value.trim()) {
+            set.add(value);
+        }
+    }
+
+    function getI18nValuesAllLanguages(key, fallback = []) {
+        const values = new Set();
+        const langs = ['kr', 'en', 'jp'];
+
+        if (window.I18N) {
+            langs.forEach(lang => {
+                const value = window.I18N[lang]?.[key];
+                if (Array.isArray(value)) {
+                    value.forEach(v => addStringToSet(values, v));
+                } else {
+                    addStringToSet(values, value);
+                }
+            });
+        }
+
+        const currentValue = (window.t && typeof window.t === 'function')
+            ? window.t(key, fallback)
+            : fallback;
+        if (Array.isArray(currentValue)) {
+            currentValue.forEach(v => addStringToSet(values, v));
+        } else {
+            addStringToSet(values, currentValue);
+        }
+
+        return Array.from(values);
+    }
+
+    function isCashCurrency(moneyName) {
+        if (!moneyName) return false;
+        const cashKeywords = getI18nValuesAllLanguages('currencyCashKeywords', []);
+        const cashName = t('moneyCash');
+        return cashKeywords.includes(moneyName) || moneyName === cashName;
     }
 
     // 조합식 텍스트 생성
@@ -63,7 +93,7 @@
         if (sources.includes('compound') && item.compound && item.compound.length > 0) {
             tree.sources.push({
                 type: 'compound',
-                label: t('작업대'),
+                label: t('itemFromWorkbench'),
                 materials: item.compound.map(comp => {
                     const material = comp.item;
                     const count = comp.itemCount || 1;
@@ -132,7 +162,7 @@
             const shop = shopSource.shops[0];
             // 현금인 경우만 가격 추가
             const moneyName = shop.moneyName || '';
-            if (moneyName === '현금' || moneyName === 'Money' || moneyName === '所持金') {
+            if (isCashCurrency(moneyName)) {
                 const shopPrice = shop.discountPrice && shop.discountPrice < shop.price 
                     ? shop.discountPrice 
                     : shop.price;
@@ -232,7 +262,7 @@
             }
             
             if (node.price !== null && node.price !== undefined) {
-                priceInfo = `<span class="item-tree-price">${Math.round(node.price).toLocaleString()} ${t('현금')}${countSuffix}</span>`;
+                priceInfo = `<span class="item-tree-price">${Math.round(node.price).toLocaleString()} ${t('moneyCash')}${countSuffix}</span>`;
             } else if (node.sources) {
                 // 계산된 가격이 없으면 shop에서 직접 가져오기
                 const shopSource = node.sources.find(s => s.type === 'shop');
@@ -240,7 +270,7 @@
                     const shop = shopSource.shops[0];
                     const moneyName = shop.moneyName || '';
                     // 현금인 경우만 표시
-                    if (moneyName === '현금' || moneyName === 'Money' || moneyName === '所持金') {
+                    if (isCashCurrency(moneyName)) {
                         if (shop.discountPrice && shop.discountPrice < shop.price) {
                             priceInfo = `<span class="item-tree-price">${shop.discountPrice.toLocaleString()} ${moneyName}${countSuffix}</span>`;
                         } else if (shop.price) {
@@ -292,12 +322,12 @@
                         });
                     } else if (source.type === 'seed') {
                         html += `<div class="item-tree-seed" style="margin-left: ${marginLeft + 28}px;">
-                            <span class="item-tree-label">${t('재배')} (${source.label}):</span>
+                            <span class="item-tree-label">${t('itemFromCultivation')} (${source.label}):</span>
                         </div>`;
                         html += renderTree(source.material, depth + 1);
                     } else if (source.type === 'shop') {
                         html += `<div class="item-tree-shop" style="margin-left: ${marginLeft + 28}px;">
-                            <span class="item-tree-label">${t('상점')}:</span>
+                            <span class="item-tree-label">${t('itemFromShop')}:</span>
                             ${source.shops.map(shop => {
                                 const shopName = (shop.mapName ? shop.mapName + ' ' : '') + (shop.shopName || '');
                                 let shopInfo = shopName;
@@ -332,7 +362,7 @@
             <div class="item-from-modal-overlay" id="itemFromModalOverlay">
                 <div class="item-from-modal">
                     <div class="item-from-modal-header">
-                        <h3>${t('획득처')}</h3>
+                        <h3>${t('labelSource')}</h3>
                         <button class="item-from-modal-close" id="itemFromModalClose">×</button>
                     </div>
                     <div class="item-from-modal-content">
@@ -394,8 +424,9 @@
 
         // seed가 있으면 씨앗 정보 반환
         if (sources.includes('seed') && item.seed && item.seed.length > 0) {
-            const seedName = item.seed[0]?.seed?.name || '씨앗';
-            return `씨앗: ${seedName}`;
+            const seedLabel = t('itemFromSeed');
+            const seedName = item.seed[0]?.seed?.name || seedLabel;
+            return `${seedLabel}: ${seedName}`;
         }
 
         // shop이 있으면 기존 로직 사용 (synergy.js에서 처리)

@@ -38,17 +38,109 @@
 
     /* === CONSTANTS === */
     const CURRENCY_MAPPING = [
-        { icon: 'item-huobi-1038.png', keywords: ['게임 센터', 'Arcade', 'ゲーム', 'ゲームセンター'] },
-        { icon: 'item-huobi-22.png', keywords: ['현금', 'Money', '所持金'] },
-        { icon: 'item-huobi-16.png', keywords: ['야구 포인트', 'Batting Points', 'バッティングポイント'] },
-        { icon: 'item-huobi-53.png', keywords: ['축구부 배지', 'Soccer Badge', 'サッカー部バッジ'] }
+        { icon: 'item-huobi-1038.png', keywordKey: 'currencyArcadeKeywords' },
+        { icon: 'item-huobi-22.png', keywordKey: 'currencyCashKeywords' },
+        { icon: 'item-huobi-16.png', keywordKey: 'currencyBattingKeywords' },
+        { icon: 'item-huobi-53.png', keywordKey: 'currencySoccerBadgeKeywords' }
     ];
 
-    const FILTER_TIME_MAPPING = {
-        'kr': { '방과 후': 'After School', '저녁': 'Evening', '밤': 'Night', '오후': 'Afternoon' },
-        'en': { 'After School': 'After School', 'Evening': 'Evening', 'Night': 'Night', 'Afternoon': 'Afternoon' },
-        'jp': { '放課後': 'After School', '夕方': 'Evening', '夜': 'Night', '午後': 'Afternoon' }
+    const TIME_FILTER_KEY_BY_CANONICAL = {
+        'After School': 'filterAfterSchool',
+        'Evening': 'filterEvening',
+        'Night': 'filterNight',
+        'Afternoon': 'filterAfternoon'
     };
+
+    function addStringToSet(set, value) {
+        if (typeof value === 'string' && value.trim()) {
+            set.add(value);
+        }
+    }
+
+    function getI18nText(key, fallback) {
+        if (window.t && typeof window.t === 'function') {
+            const translated = window.t(key, fallback || key);
+            if (translated !== key) {
+                return translated;
+            }
+        }
+        const fallbackKr = window.I18N?.kr?.[key];
+        if (fallbackKr !== undefined) return fallbackKr;
+        return fallback || key;
+    }
+
+    function getI18nValuesAllLanguages(key, fallback = []) {
+        const values = new Set();
+        const langs = ['kr', 'en', 'jp'];
+
+        if (window.I18N) {
+            langs.forEach(lang => {
+                const value = window.I18N[lang]?.[key];
+                if (Array.isArray(value)) {
+                    value.forEach(v => addStringToSet(values, v));
+                } else {
+                    addStringToSet(values, value);
+                }
+            });
+        }
+
+        const currentValue = (window.t && typeof window.t === 'function')
+            ? window.t(key, fallback)
+            : fallback;
+        if (Array.isArray(currentValue)) {
+            currentValue.forEach(v => addStringToSet(values, v));
+        } else {
+            addStringToSet(values, currentValue);
+        }
+
+        if (values.size === 0) {
+            if (Array.isArray(fallback)) {
+                fallback.forEach(v => addStringToSet(values, v));
+            } else {
+                addStringToSet(values, fallback);
+            }
+        }
+
+        return Array.from(values);
+    }
+
+    function normalizeTimeValue(timeValue) {
+        if (!timeValue) return '';
+        if (Object.prototype.hasOwnProperty.call(TIME_FILTER_KEY_BY_CANONICAL, timeValue)) {
+            return timeValue;
+        }
+
+        for (const [canonical, key] of Object.entries(TIME_FILTER_KEY_BY_CANONICAL)) {
+            const candidates = getI18nValuesAllLanguages(key, []);
+            if (candidates.some(candidate => candidate === timeValue)) {
+                return canonical;
+            }
+        }
+
+        return timeValue;
+    }
+
+    function getTimeLabel(timeValue) {
+        const normalized = normalizeTimeValue(timeValue);
+        const key = TIME_FILTER_KEY_BY_CANONICAL[normalized];
+        if (!key) return timeValue;
+        return getI18nText(key, timeValue);
+    }
+
+    function isArcadeCurrency(moneyName) {
+        if (!moneyName) return false;
+        const keywords = getI18nValuesAllLanguages('currencyArcadeKeywords', []);
+        return keywords.some(keyword => moneyName.includes(keyword) || moneyName === keyword);
+    }
+
+    function isCashCurrency(moneyName) {
+        if (!moneyName) return false;
+        const keywords = getI18nValuesAllLanguages('currencyCashKeywords', []);
+        return keywords.some(keyword => moneyName === keyword);
+    }
+
+    // 외부 모듈(synergy_search.js)에서 시간 정규화 재사용
+    window.normalizeSynergyTime = normalizeTimeValue;
 
     // 화폐 아이콘 가져오기 헬퍼 함수
     function getMoneyIcon(moneyName, shop) {
@@ -58,9 +150,8 @@
         if (!moneyName) return '';
 
         for (const currency of CURRENCY_MAPPING) {
-            // 키워드 중 하나라도 포함되거나 일치하면 해당 아이콘 반환
-            // (화폐 이름에 다른 텍스트가 섞여 있을 수도 있으므로 includes 사용)
-            if (currency.keywords.some(k => moneyName.includes(k) || moneyName === k)) {
+            const keywords = getI18nValuesAllLanguages(currency.keywordKey, []);
+            if (keywords.some(keyword => moneyName.includes(keyword) || moneyName === keyword)) {
                 return `<img src="${BASE_URL}/assets/img/item-little-icon/${currency.icon}" alt="${moneyName}" class="money-icon" style="height: 16px; width: auto; vertical-align: middle;" onerror="this.onerror=null; this.style.display='none';">`;
             }
         }
@@ -139,55 +230,28 @@
     // resetType 번역
     // resetType 번역
     function translateResetType(resetType) {
-        if (!resetType || resetType === '없음') return (window.t ? window.t('labelNone') : '-');
+        const noneValues = getI18nValuesAllLanguages('resetTypeNoneValues', []);
+        if (!resetType || noneValues.includes(resetType)) {
+            return getI18nText('labelNone', '-');
+        }
 
-        const keyMap = {
-            '주간': 'resetWeekly',
-            '월간': 'resetMonthly',
-            '일간': 'resetDaily'
-        };
+        const resetTypeMappings = [
+            { valueKey: 'resetTypeWeeklyValues', textKey: 'resetWeekly' },
+            { valueKey: 'resetTypeMonthlyValues', textKey: 'resetMonthly' },
+            { valueKey: 'resetTypeDailyValues', textKey: 'resetDaily' }
+        ];
 
-        if (keyMap[resetType] && window.t) {
-            return window.t(keyMap[resetType]);
+        for (const mapping of resetTypeMappings) {
+            const values = getI18nValuesAllLanguages(mapping.valueKey, []);
+            if (values.includes(resetType)) {
+                return getI18nText(mapping.textKey, resetType);
+            }
         }
         return resetType;
     }
 
     // 전역으로 노출 (item_from.js에서 사용)
     window.translateResetType = translateResetType;
-
-    // moneyName을 아이콘으로 변환하는 함수
-    function getMoneyIcon(moneyName, shop) {
-        if (!moneyName) return '';
-
-        let iconFile = '';
-        let tooltip = moneyName;
-
-        // 게임 센터 관련 (게임 센터, Game, ゲームセンター 등)
-        if (moneyName.includes('게임 센터') || moneyName.includes('Arcade') ||
-            moneyName.includes('ゲーム') || moneyName.includes('ゲームセンター')) {
-            iconFile = 'item-huobi-1038.png';
-        }
-        // 현금/Money/所持金
-        else if (moneyName === '현금' || moneyName === 'Money' || moneyName === '所持金') {
-            iconFile = 'item-huobi-22.png';
-        }
-        // 야구 포인트/Batting Points/バッティングポイント
-        else if (moneyName === '야구 포인트' || moneyName === 'Batting Points' || moneyName === 'バッティングポイント') {
-            iconFile = 'item-huobi-16.png';
-        }
-        // 축구부 배지/Soccer Badge/サッカー部バッジ
-        else if (moneyName === '축구부 배지' || moneyName === 'Soccer Badge' || moneyName === 'サッカー部バッジ') {
-            iconFile = 'item-huobi-53.png';
-        }
-
-        if (iconFile) {
-            const iconSrc = `${BASE_URL}/assets/img/item-little-icon/${iconFile}`;
-            return `<img src="${iconSrc}" alt="${tooltip}" class="money-icon" title="${tooltip}" onerror="this.onerror=null; this.style.display='none';">`;
-        }
-
-        return '';
-    }
 
     // 개별 캐릭터 데이터 로드
     async function loadCharacterData(characterName) {
@@ -283,7 +347,7 @@
     function mergeKrFallbackDialogs(data, krData, lang) {
         if (!data || !krData) return;
 
-        const patchPendingText = lang === 'en' ? '(Patch Pending)' : '(パッチ予定)';
+        const patchPendingText = getI18nText('patchPendingSuffix');
 
         // 1. advance_dialog 병합
         if (krData.advance_dialog && Array.isArray(krData.advance_dialog)) {
@@ -568,9 +632,7 @@
         });
 
         if (sortedCharacters.length === 0) {
-            // 번역 함수
-            const t = (key) => window.t ? window.t(key) : key;
-            const noResultsText = window.t ? window.t('noResults') : '검색 결과가 없습니다';
+            const noResultsText = getI18nText('noResults');
             tabsContainer.innerHTML = `<div style="padding: 20px; text-align: center; color: #999;">${noResultsText}</div>`;
             // 검색 결과가 없으면 선택된 캐릭터도 초기화
             selectedCharacter = null;
@@ -707,25 +769,11 @@
 
             // time 필드 사용 (캐릭터 JSON 파일의 time 우선, 없으면 friend_num.json의 time/appear로 폴백)
             // timeValue는 위에서 이미 선언됨
-            let timeLabel = timeValue;
-            const timeKeyMap = {
-                'After School': 'filterAfterSchool',
-                'Evening': 'filterEvening',
-                'Night': 'filterNight',
-                'Afternoon': 'filterAfternoon',
-                '방과 후': 'filterAfterSchool',
-                '저녁': 'filterEvening',
-                '밤': 'filterNight',
-                '오후': 'filterAfternoon'
-            };
-
-            if (timeKeyMap[timeValue] && window.t) {
-                timeLabel = window.t(timeKeyMap[timeValue]);
-            }
+            const timeLabel = getTimeLabel(timeValue);
 
             // recommend 아이콘 추가
             const recommendIconSvg = `<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" class="recommend-icon"><path d="M7 0L8.618 4.764L14 5.528L10 9.236L11.236 14L7 11.236L2.764 14L4 9.236L0 5.528L5.382 4.764L7 0Z" fill="currentColor"/></svg>`;
-            const recommendTitle = window.t ? window.t('labelRecommend') : '추천';
+            const recommendTitle = getI18nText('labelRecommend');
 
             tab.innerHTML = `
                 <div class="character-tab-image-wrapper">
@@ -807,38 +855,14 @@
         const searchQuery = (window.synergySearch?.getCurrentSearchQuery() || '').toLowerCase().trim();
         const showSpoiler = window.synergySearch?.getShowSpoiler() || false;
 
-        // 언어별 time 매핑 (상수 사용)
-        const timeMapping = FILTER_TIME_MAPPING;
-
         tabs.forEach(tab => {
             let shouldShow = true;
 
             // 1. 시간 필터
             if (timeFilter !== 'all') {
                 const tabTime = tab.dataset.characterTime || '';
-                const mapping = timeMapping[currentLanguage] || timeMapping['en'];
-                const normalizedTime = mapping[tabTime] || tabTime;
-
-                // showSpoiler가 true이고, 언어 파일이 없는 캐릭터인 경우 kr 시간 값을 현재 언어로 변환
-                if (showSpoiler && tab.dataset.hasLanguageFile === 'false' && normalizedTime !== timeFilter) {
-                    // kr 언어 매핑으로 다시 확인
-                    const krMapping = timeMapping['kr'];
-                    const krNormalizedTime = krMapping[tabTime] || tabTime;
-                    // kr 시간 값을 현재 언어로 변환하여 다시 확인
-                    const krToCurrentMapping = {
-                        '방과 후': 'After School',
-                        '저녁': 'Evening',
-                        '밤': 'Night',
-                        '오후': 'Afternoon'
-                    };
-                    const convertedTime = krToCurrentMapping[tabTime] || tabTime;
-                    if (convertedTime === timeFilter) {
-                        // 변환된 시간이 필터와 일치하면 통과
-                        shouldShow = true;
-                    } else {
-                        shouldShow = false;
-                    }
-                } else if (normalizedTime !== timeFilter) {
+                const normalizedTime = normalizeTimeValue(tabTime);
+                if (normalizedTime !== timeFilter) {
                     shouldShow = false;
                 }
             }
@@ -876,11 +900,7 @@
         if (visibleTabs.length === 0 && tabsContainer) {
             const noResultsDiv = document.createElement('div');
             noResultsDiv.style.cssText = 'padding: 20px; text-align: center; color: #999; grid-column: 1 / -1;';
-            const t = (key) => {
-                if (currentLanguage === 'kr') return key;
-                return window.synergyTranslations?.[currentLanguage]?.[key] || key;
-            };
-            noResultsDiv.textContent = t('검색 결과가 없습니다');
+            noResultsDiv.textContent = getI18nText('noResults');
 
             // 기존 메시지 제거
             const existingMessage = tabsContainer.querySelector('div[style*="padding: 20px"]');
@@ -991,15 +1011,9 @@
         window.history.pushState({ character: characterName }, '', url);
 
         // 타이틀 업데이트
-        const titlePrefix = currentLanguage === 'kr' ? 'P5X 협력자 가이드' :
-            currentLanguage === 'en' ? 'P5X Synergy guide' :
-                'P5X シナジーガイド';
-
-        if (currentLanguage === 'kr') {
-            document.title = `${titlePrefix} ${displayCharName} | 페르소나5 더 팬텀 X 루페르넷`;
-        } else {
-            document.title = `${titlePrefix} ${displayCharName} | Persona 5 The Phantom X Lufelnet`;
-        }
+        const titlePrefix = getI18nText('pageTitleGuidePrefix');
+        const titleSuffix = getI18nText('pageTitleSiteSuffix');
+        document.title = `${titlePrefix} ${displayCharName} | ${titleSuffix}`;
     }
 
     // 상세 정보 렌더링
@@ -1015,22 +1029,7 @@
 
         // time 필드 사용 (캐릭터 JSON 파일의 time 우선, 없으면 friend_num.json의 time/appear로 폴백)
         const timeValue = data.time || char.time || char.appear || '';
-        let timeLabel = timeValue;
-
-        const timeKeyMap = {
-            'After School': 'filterAfterSchool',
-            'Evening': 'filterEvening',
-            'Night': 'filterNight',
-            'Afternoon': 'filterAfternoon',
-            '방과 후': 'filterAfterSchool',
-            '저녁': 'filterEvening',
-            '밤': 'filterNight',
-            '오후': 'filterAfternoon'
-        };
-
-        if (timeKeyMap[timeValue] && window.t) {
-            timeLabel = window.t(timeKeyMap[timeValue]);
-        }
+        const timeLabel = getTimeLabel(timeValue);
 
         // can_romance 아이콘
         let romanceIcons = '';
@@ -1051,11 +1050,10 @@
         }
 
         // 한국어 폴백 안내문
-        const fallbackNotice = (currentLanguage !== 'kr' && hasKrFallback) ? `
+        const fallbackNoticeText = getI18nText('msgKrFallbackNotice', '');
+        const fallbackNotice = (currentLanguage !== 'kr' && hasKrFallback && fallbackNoticeText) ? `
             <div class="fallback-notice" style="padding: 12px; background: #1e1b1b; border-left: 3px solid #730000; margin-bottom: 20px; border-radius: 4px; user-select: text;">
-                ${currentLanguage === 'en'
-                ? 'Content that has not been released or updated by the administrator may be displayed in Korean. Separate translation work is not planned, and we ask that you use a translator even if it is inconvenient.'
-                : '管理者が更新・公開していないコンテンツは韓国語で表示される場合があります。別途の翻訳作業は予定されておらず、ご不便をおかけしますが、翻訳機のご利用をお願いします。'}
+                ${fallbackNoticeText}
             </div>
         ` : '';
 
@@ -1121,29 +1119,27 @@
             if (!unlockCond) return '';
 
             // 능력치 아이콘 매핑
-            const statIcons = {
-                '재주': { icon: 'wuwei2-lingqiao.png', en: 'Proficiency', jp: '器用さ' },
-                '친절': { icon: 'wuwei2-titie.png', en: 'Kindness', jp: '優しさ' },
-                '배짱': { icon: 'wuwei2-yongqi.png', en: 'Guts', jp: '度胸' },
-                '매력': { icon: 'wuwei2-meili.png', en: 'Charm', jp: '魅力' },
-                '지식': { icon: 'wuwei2-zhishi.png', en: 'Knowledge', jp: '知識' }
-            };
+            const statIcons = [
+                { key: 'socialStatProficiency', icon: 'wuwei2-lingqiao.png' },
+                { key: 'socialStatKindness', icon: 'wuwei2-titie.png' },
+                { key: 'socialStatGuts', icon: 'wuwei2-yongqi.png' },
+                { key: 'socialStatCharm', icon: 'wuwei2-meili.png' },
+                { key: 'socialStatKnowledge', icon: 'wuwei2-zhishi.png' }
+            ];
 
             let processedText = unlockCond;
 
             // 각 능력치에 대해 텍스트를 아이콘으로 치환
-            for (const [krText, statData] of Object.entries(statIcons)) {
-                const searchText = currentLanguage === 'kr' ? krText :
-                    currentLanguage === 'en' ? statData.en : statData.jp;
-                // alt 텍스트는 현재 언어에 맞게 설정
-                const altText = currentLanguage === 'kr' ? krText :
-                    currentLanguage === 'en' ? statData.en : statData.jp;
+            for (const statData of statIcons) {
+                const altText = getI18nText(statData.key, '');
+                const searchTexts = getI18nValuesAllLanguages(statData.key, altText ? [altText] : []);
                 const iconHtml = `<img src="${BASE_URL}/assets/img/synergy/${statData.icon}" alt="${altText}" title="${altText}" class="unlock-stat-icon" onerror="this.onerror=null; this.style.display='none';">`;
 
-                // 텍스트를 아이콘으로 치환 (텍스트는 제거)
-                const escapedText = searchText.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-                const regex = new RegExp(`(^|\\s|>)${escapedText}(?=\\s|$|<)`, 'g');
-                processedText = processedText.replace(regex, `$1${iconHtml}`);
+                searchTexts.forEach(searchText => {
+                    const escapedText = searchText.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                    const regex = new RegExp(`(^|\\s|>)${escapedText}(?=\\s|$|<)`, 'g');
+                    processedText = processedText.replace(regex, `$1${iconHtml}`);
+                });
             }
 
             return processedText;
@@ -1446,7 +1442,7 @@
                     item.shop.forEach((shop, shopIndex) => {
                         const price = shop.price || 0;
                         const moneyName = shop.moneyName || '';
-                        const isCash = moneyName === '현금' || moneyName === 'Money' || moneyName === '所持金';
+                        const isCash = isCashCurrency(moneyName);
                         const efficiency = (isCash && totalSynergy > 0) ? Math.round(price / totalSynergy) : null;
 
                         expandedItems.push({
@@ -1465,7 +1461,7 @@
                     const shop = item.shop || {};
                     const price = shop.price || 0;
                     const moneyName = shop.moneyName || '';
-                    const isCash = moneyName === '현금' || moneyName === 'Money' || moneyName === '所持金';
+                    const isCash = isCashCurrency(moneyName);
                     const efficiency = (isCash && totalSynergy > 0) ? Math.round(price / totalSynergy) : null;
 
                     expandedItems.push({
@@ -1641,7 +1637,7 @@
                 let price = item._price !== undefined ? item._price : (shop.price || 0);
                 const discountPrice = item._discountPrice !== undefined ? item._discountPrice : (shop.discountPrice || price);
                 const moneyName = shop.moneyName || '';
-                const isCash = moneyName === '현금' || moneyName === 'Money' || moneyName === '所持金';
+                const isCash = isCashCurrency(moneyName);
 
                 // 재귀적으로 계산한 가격 (현금 가치)
                 let calculatedPrice = null;
@@ -1684,7 +1680,8 @@
                 if (displayPrice > 0) {
                     // 계산된 가격인 경우 현금 아이콘 사용
                     if (calculatedPrice !== null && calculatedPrice > 0) {
-                        const cashIcon = `<img src="${BASE_URL}/assets/img/item-little-icon/item-huobi-22.png" alt="현금" class="money-icon" style="height: 16px; width: auto; vertical-align: middle;" onerror="this.onerror=null; this.style.display='none';">`;
+                        const cashAlt = getI18nText('moneyCash');
+                        const cashIcon = `<img src="${BASE_URL}/assets/img/item-little-icon/item-huobi-22.png" alt="${cashAlt}" class="money-icon" style="height: 16px; width: auto; vertical-align: middle;" onerror="this.onerror=null; this.style.display='none';">`;
                         priceText = `${cashIcon} ${Math.round(displayPrice).toLocaleString()}`;
                     } else if (moneyIcon) {
                         priceText = `${moneyIcon} ${displayPrice.toLocaleString()}`;
@@ -1752,8 +1749,7 @@
                         if (shop.mapName || shop.shopName) {
                             const parts = [];
                             // 게임 센터 관련 moneyName인 경우 mapName 오버라이드
-                            if (moneyName && (moneyName.includes('게임 센터') || moneyName.includes('Arcade') ||
-                                moneyName.includes('ゲーム') || moneyName.includes('ゲームセンター'))) {
+                            if (isArcadeCurrency(moneyName)) {
                                 parts.push(t('labelMapAkihabaraArcade'));
                             } else if (shop.mapName) {
                                 parts.push(translateMapName(shop.mapName));
@@ -1774,8 +1770,7 @@
                     if (shop.mapName || shop.shopName) {
                         const parts = [];
                         // 게임 센터 관련 moneyName인 경우 mapName 오버라이드
-                        if (moneyName && (moneyName.includes('게임 센터') || moneyName.includes('Game') || moneyName.includes('Arcade') ||
-                            moneyName.includes('ゲーム') || moneyName.includes('ゲームセンター'))) {
+                        if (isArcadeCurrency(moneyName)) {
                             parts.push(t('labelMapAkihabaraArcade'));
                         } else if (shop.mapName) {
                             parts.push(translateMapName(shop.mapName));
@@ -2191,8 +2186,9 @@
         // 캐릭터 목록 로드
         const loaded = await loadCharacterList();
         if (!loaded) {
+            const loadErrorText = getI18nText('msgLoadError');
             document.getElementById('characterDetail').innerHTML =
-                '<div style="padding: 40px; text-align: center; color: rgba(255,255,255,0.5);">데이터를 불러올 수 없습니다</div>';
+                `<div style="padding: 40px; text-align: center; color: rgba(255,255,255,0.5);">${loadErrorText}</div>`;
             return;
         }
 

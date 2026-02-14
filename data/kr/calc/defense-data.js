@@ -530,8 +530,8 @@ const penetrateData = {
             value: 35.0,
             duration: "-",
             note: "크리티컬 발생 시",
-            note_en: "크리티컬",
-            note_jp: "크리티컬"
+            note_en: "Critical",
+            note_jp: "クリティカル"
         }
     ],
 }

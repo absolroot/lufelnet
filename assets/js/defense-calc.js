@@ -63,10 +63,30 @@ class DefenseCalc {
         try { this.ensureJCCalcLoadedAndAttach(); } catch (_) { }
     }
 
+    normalizeCalcLang(rawLang) {
+        const lang = String(rawLang || '').trim().toLowerCase();
+        if (lang === 'kr' || lang === 'ko') return 'kr';
+        if (lang === 'en') return 'en';
+        if (lang === 'jp' || lang === 'ja') return 'jp';
+        // defense-calc 페이지팩은 kr/en/jp만 제공되므로 나머지는 en으로 폴백
+        if (lang === 'cn' || lang === 'tw' || lang === 'sea') return 'en';
+        return 'kr';
+    }
+
     getCurrentLang() {
         try {
-            if (typeof I18NUtils !== 'undefined' && I18NUtils.getCurrentLanguageSafe) return I18NUtils.getCurrentLanguageSafe();
-            if (typeof LanguageRouter !== 'undefined' && LanguageRouter.getCurrentLanguage) return LanguageRouter.getCurrentLanguage();
+            const urlLang = new URLSearchParams(window.location.search).get('lang');
+            if (urlLang) return this.normalizeCalcLang(urlLang);
+
+            const savedLang = localStorage.getItem('preferredLanguage');
+            if (savedLang) return this.normalizeCalcLang(savedLang);
+
+            if (typeof I18NUtils !== 'undefined' && I18NUtils.getCurrentLanguageSafe) {
+                return this.normalizeCalcLang(I18NUtils.getCurrentLanguageSafe());
+            }
+            if (typeof LanguageRouter !== 'undefined' && LanguageRouter.getCurrentLanguage) {
+                return this.normalizeCalcLang(LanguageRouter.getCurrentLanguage());
+            }
         } catch (_) { }
         return 'kr';
     }
@@ -175,6 +195,68 @@ class DefenseCalc {
         if (!text || lang === 'kr') return text || '';
         // 의식3 -> 의식2 보정
         let result = String(text).replace(/의식\s*3/g, '의식2');
+        // 옵션/노트의 중첩 표기를 EN/JP에서 읽기 쉬운 형태로 변환
+        if (lang === 'en') {
+            result = result.replace(/(\d+)\s*중첩/g, '$1 Stack')
+                           .replace(/중첩/g, 'Stack');
+        } else if (lang === 'jp') {
+            result = result.replace(/(\d+)\s*중첩/g, '$1重')
+                           .replace(/중첩/g, '重');
+        }
+        // 공통 용어 사전 치환 (상태이상/속성/턴 등)
+        try {
+            const dict = (typeof I18NUtils !== 'undefined' && I18NUtils.statTranslations && I18NUtils.statTranslations[lang])
+                ? I18NUtils.statTranslations[lang]
+                : null;
+            if (dict && typeof dict === 'object') {
+                const esc = (s) => String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                Object.keys(dict).sort((a, b) => b.length - a.length).forEach((ko) => {
+                    const tr = dict[ko];
+                    if (!tr || tr === ko) return;
+                    result = result.replace(new RegExp(esc(ko), 'g'), tr);
+                });
+            }
+        } catch (_) { }
+
+        // defense-calc 데이터에 직접 번역 필드가 없는 경우를 위한 공통 토큰 변환
+        if (lang === 'en') {
+            result = result
+                .replace(/단일\/광역/g, 'Single/Multi')
+                .replace(/단일\/자신/g, 'Single/Self')
+                .replace(/광역\/자신/g, 'Multi/Self')
+                .replace(/자신/g, 'Self')
+                .replace(/단일/g, 'Single')
+                .replace(/광역/g, 'Multi')
+                .replace(/의식\s*([0-9]+)/g, 'A$1')
+                .replace(/(\d+)\s*턴/g, '$1T')
+                .replace(/턴/g, 'T')
+                .replace(/레벨/g, 'Lv')
+                .replace(/심상/g, 'MS')
+                .replace(/개조/g, 'Mod')
+                .replace(/원소\s*이상/g, 'Elemental Ailment')
+                .replace(/풍습/g, 'Windswept')
+                .replace(/추가\s*효과/g, 'Additional Effect')
+                .replace(/없음/g, 'None');
+        } else if (lang === 'jp') {
+            result = result
+                .replace(/단일\/광역/g, '単体/複数対象')
+                .replace(/단일\/자신/g, '単体/自分')
+                .replace(/광역\/자신/g, '複数対象/自分')
+                .replace(/자신/g, '自分')
+                .replace(/단일/g, '単体')
+                .replace(/광역/g, '複数対象')
+                .replace(/의식\s*([0-9]+)/g, '意識$1')
+                .replace(/(\d+)\s*턴/g, '$1ターン')
+                .replace(/턴/g, 'ターン')
+                .replace(/레벨/g, 'Lv')
+                .replace(/심상/g, 'イメジャリー')
+                .replace(/개조/g, '改造')
+                .replace(/원소\s*이상/g, '元素異常')
+                .replace(/풍습/g, '風襲')
+                .replace(/추가\s*효과/g, '追加効果')
+                .replace(/없음/g, 'なし');
+        }
+
         // DefenseI18N 타입 번역 적용
         if (typeof DefenseI18N !== 'undefined' && DefenseI18N.translateType) {
             result = DefenseI18N.translateType(result);
@@ -586,7 +668,7 @@ class DefenseCalc {
         // 스킬 이름 열 (분류 + 이름 결합)
         const skillNameCell = document.createElement('td');
         skillNameCell.className = 'skill-name-column';
-        const currentLang = (typeof LanguageRouter !== 'undefined') ? LanguageRouter.getCurrentLanguage() : 'kr';
+        const currentLang = this.getCurrentLang();
         let localizedName = '';
         // 기본: 현지화된 이름 우선
         if (currentLang === 'en') {

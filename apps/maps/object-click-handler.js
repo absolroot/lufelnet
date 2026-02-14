@@ -134,16 +134,19 @@
                 Wind: '질풍', Psychokinesis: '염동', Nuclear: '핵열', Bless: '축복', Curse: '주원'
             };
 
-            const ADAPT_LABELS = {
-                Weak:   { kr: '약', en: 'Wk',  jp: '弱',  cls: 'weak' },
-                Resistant: { kr: '내', en: 'Res', jp: '耐',  cls: 'res' },
-                Nullify:   { kr: '무', en: 'Nul', jp: '無',  cls: 'nul' },
-                Absorb:    { kr: '흡', en: 'Abs', jp: '吸',  cls: 'abs' },
-                Reflect:   { kr: '반', en: 'Rpl', jp: '反',  cls: 'rpl' },
+            const lang = detectLang();
+            const mapPack = (window.MapsI18n && window.MapsI18n.getPack)
+                ? window.MapsI18n.getPack(lang)
+                : null;
+            const ADAPT_LABELS = (mapPack && mapPack.adaptLabels) || {
+                Weak: { text: '약', cls: 'weak' },
+                Resistant: { text: '내', cls: 'res' },
+                Nullify: { text: '무', cls: 'nul' },
+                Absorb: { text: '흡', cls: 'abs' },
+                Reflect: { text: '반', cls: 'rpl' }
             };
 
             const BASE = (typeof window !== 'undefined' && (window.BASE_URL || window.SITE_BASEURL)) || '';
-            const lang = detectLang();
             const wrap = document.createElement('div');
             wrap.className = 'elements-line';
             const img = document.createElement('img');
@@ -185,8 +188,8 @@
                     }
                 }
                 
-                const labelInfo = ADAPT_LABELS[key];
-                const text = (lang === 'en' ? labelInfo.en : (lang === 'jp' ? labelInfo.jp : labelInfo.kr));
+                const labelInfo = ADAPT_LABELS[key] || { text: key, cls: '' };
+                const text = labelInfo.text || key;
                 (list || []).forEach(enName => {
                     const kr = elementNameMap[enName] || enName;
                     const x = elementOffsetPx(kr);
@@ -206,14 +209,6 @@
         showEnemyModal(enemyData, sprite) {
             if (!enemyData) return;
 
-            // i18n 텍스트
-            const i18n = {
-                title: { kr: '적 정보', en: 'Enemy Info', jp: '敵情報', cn: '敌人信息', tw: '敵人資訊', sea: 'Enemy Info' },
-                defeated: { kr: '처치 완료', en: 'Defeated', jp: '討伐完了', cn: '击败完成', tw: '擊敗完成', sea: 'Defeated' },
-                undo: { kr: '되돌리기', en: 'Undo', jp: '元に戻す', cn: '撤销', tw: '復原', sea: 'Undo' },
-                relativeLevel: { kr: '주인공 레벨에 따라 몬스터의 레벨이 달라집니다. (주인공 레벨 + {level})', en: 'Monster level varies with protagonist level. (Protagonist Level + {level})', jp: '主人公のレベルに応じてモンスターのレベルが変化します。（主人公レベル + {level}）', cn: '怪物等级随主角等级变化。（主角等级 + {level}）', tw: '怪物等級隨主角等級變化。（主角等級 + {level}）', sea: 'Monster level varies with protagonist level. (Protagonist Level + {level})' }
-            };
-
             // 언어 감지
             function detectLang() {
                 try {
@@ -232,7 +227,25 @@
                 return 'kr';
             }
             const lang = detectLang();
-            const getText = (key) => i18n[key][lang] || i18n[key]['en'];
+            const mapKeyMap = {
+                title: 'enemyInfoTitle',
+                defeated: 'enemyDefeated',
+                undo: 'enemyUndo',
+                relativeLevel: 'enemyRelativeLevel'
+            };
+            const fallbackText = {
+                title: '적 정보',
+                defeated: '처치 완료',
+                undo: '되돌리기',
+                relativeLevel: '주인공 레벨에 따라 몬스터의 레벨이 달라집니다. (주인공 레벨 + {level})'
+            };
+            const getText = (key) => {
+                const mapKey = mapKeyMap[key];
+                if (window.MapsI18n && window.MapsI18n.getText && mapKey) {
+                    return window.MapsI18n.getText(lang, mapKey) || fallbackText[key] || key;
+                }
+                return fallbackText[key] || key;
+            };
 
             // 모달 오버레이 생성
             const overlay = document.createElement('div');

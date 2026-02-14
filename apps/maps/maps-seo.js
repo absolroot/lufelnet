@@ -2,18 +2,6 @@
 (function() {
     'use strict';
 
-    const DEFAULT_TITLES = {
-        kr: 'P5X 맵스 - 루페르넷',
-        en: 'P5X Maps - Lufelnet',
-        jp: 'P5X マップス - ルフェルネット'
-    };
-
-    const DEFAULT_DESCRIPTIONS = {
-        kr: 'P5X 맵 뷰어. 팰리스와 메멘토스의 모든 맵을 확인하세요.',
-        en: 'Explore all P5X Palaces and Mementos.',
-        jp: 'P5X マップビューアー。パレスとメメントスの全マップを確認してください'
-    };
-
     window.MapsSEO = {
         // 현재 언어 가져오기
         getCurrentLang() {
@@ -134,7 +122,12 @@
         // 페이지 제목 업데이트
         updateTitle(mapInfo) {
             const lang = this.getCurrentLang();
-            const defaultTitle = DEFAULT_TITLES[lang] || DEFAULT_TITLES.kr;
+            const titleFromPack = (window.MapsI18n && window.MapsI18n.getText)
+                ? window.MapsI18n.getText(lang, 'seoDefaultTitle')
+                : '';
+            const defaultTitle = (titleFromPack && titleFromPack !== 'seoDefaultTitle')
+                ? titleFromPack
+                : 'P5X 맵스 - 루페르넷';
 
             let title = defaultTitle;
 
@@ -167,7 +160,12 @@
         // 메타 설명 업데이트
         updateDescription(mapInfo) {
             const lang = this.getCurrentLang();
-            const defaultDesc = DEFAULT_DESCRIPTIONS[lang] || DEFAULT_DESCRIPTIONS.kr;
+            const descFromPack = (window.MapsI18n && window.MapsI18n.getText)
+                ? window.MapsI18n.getText(lang, 'seoDefaultDescription')
+                : '';
+            const defaultDesc = (descFromPack && descFromPack !== 'seoDefaultDescription')
+                ? descFromPack
+                : 'P5X 맵 뷰어. 팰리스와 메멘토스의 모든 맵을 확인하세요.';
 
             let description = defaultDesc;
 
@@ -175,15 +173,13 @@
                 const pathParts = this.getFullMapPath(mapInfo, lang);
                 if (pathParts && pathParts.length > 0) {
                     const pathStr = pathParts.join(' > ');
-
-                    // 언어별 설명 템플릿
-                    const templates = {
-                        kr: `${pathStr} 맵 정보. P5X 팰리스와 메멘토스의 상세 맵을 확인하세요.`,
-                        en: `${pathStr} map info. Explore detailed maps of P5X Palaces and Mementos.`,
-                        jp: `${pathStr} マップ情報。P5Xパレスとメメントスの詳細マップを確認してください。`
-                    };
-
-                    description = templates[lang] || templates.kr;
+                    const templateFromPack = (window.MapsI18n && window.MapsI18n.getText)
+                        ? window.MapsI18n.getText(lang, 'seoMapDescriptionTemplate')
+                        : '{path} 맵 정보. P5X 팰리스와 메멘토스의 상세 맵을 확인하세요.';
+                    const template = (templateFromPack && templateFromPack !== 'seoMapDescriptionTemplate')
+                        ? templateFromPack
+                        : '{path} 맵 정보. P5X 팰리스와 메멘토스의 상세 맵을 확인하세요.';
+                    description = String(template).replace('{path}', pathStr) || defaultDesc;
                 }
             }
 

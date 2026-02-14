@@ -2,8 +2,78 @@
     'use strict';
 
     const DefenseI18N = {
+        normalizeLang(rawLang){
+            const lang = String(rawLang || '').trim().toLowerCase();
+            if (lang === 'kr' || lang === 'ko') return 'kr';
+            if (lang === 'en') return 'en';
+            if (lang === 'jp' || lang === 'ja') return 'jp';
+            // defense/critical 계산기는 현재 kr/en/jp 페이지만 제공되므로
+            // 그 외 지원 언어는 영어로 폴백한다.
+            if (lang === 'cn' || lang === 'tw' || lang === 'sea') return 'en';
+            return 'kr';
+        },
+
         getLang(){
-            try { return (typeof getCurrentLanguage==='function') ? getCurrentLanguage() : (I18NUtils && I18NUtils.getCurrentLanguageSafe ? I18NUtils.getCurrentLanguageSafe() : 'kr'); } catch(_) { return 'kr'; }
+            try {
+                const urlLang = new URLSearchParams(window.location.search).get('lang');
+                if (urlLang) return this.normalizeLang(urlLang);
+
+                const savedLang = localStorage.getItem('preferredLanguage');
+                if (savedLang) return this.normalizeLang(savedLang);
+
+                if (typeof getCurrentLanguage === 'function') {
+                    return this.normalizeLang(getCurrentLanguage());
+                }
+
+                if (typeof LanguageRouter !== 'undefined' && LanguageRouter.getCurrentLanguage) {
+                    return this.normalizeLang(LanguageRouter.getCurrentLanguage());
+                }
+
+                if (I18NUtils && I18NUtils.getCurrentLanguageSafe) {
+                    return this.normalizeLang(I18NUtils.getCurrentLanguageSafe());
+                }
+            } catch(_) {}
+            return 'kr';
+        },
+
+        isCriticalCalcPage(){
+            try {
+                const path = String(window.location.pathname || '');
+                return path.includes('/critical-calc') || path.includes('critical-calc');
+            } catch(_) {
+                return false;
+            }
+        },
+
+        getPagePack(lang = this.getLang()){
+            const criticalVarMap = {
+                kr: 'I18N_PAGE_CRITICAL_CALC_KR',
+                en: 'I18N_PAGE_CRITICAL_CALC_EN',
+                jp: 'I18N_PAGE_CRITICAL_CALC_JP'
+            };
+            const defenseVarMap = {
+                kr: 'I18N_PAGE_DEFENSE_CALC_KR',
+                en: 'I18N_PAGE_DEFENSE_CALC_EN',
+                jp: 'I18N_PAGE_DEFENSE_CALC_JP'
+            };
+
+            const normalizedLang = this.normalizeLang(lang);
+            const primaryMap = this.isCriticalCalcPage() ? criticalVarMap : defenseVarMap;
+            const secondaryMap = this.isCriticalCalcPage() ? defenseVarMap : criticalVarMap;
+
+            return (
+                window[primaryMap[normalizedLang]] ||
+                window[primaryMap.kr] ||
+                window[secondaryMap[normalizedLang]] ||
+                window[secondaryMap.kr] ||
+                {}
+            );
+        },
+
+        getDefenseTexts(lang = this.getLang()){
+            const pagePack = this.getPagePack(lang);
+            const fallbackPack = this.getPagePack('kr');
+            return pagePack.defenseI18n || fallbackPack.defenseI18n || {};
         },
 
         // Wonder 데이터 이름 영어/일본어 매핑 주입
@@ -83,76 +153,30 @@
             // 원더 데이터에 영/일 이름 주입 (1회성 안전 호출)
             try { this.enrichDefenseDataWithWonderNames(); } catch(_) {}
             const currentLang = this.getLang();
-            const i18n = {
-                kr: {
-                    nav_home: '홈', nav_current: '방어력 계산', page_title: '방어력 감소 계산기',
-                    boss_info: '보스 정보', boss_select: '보스 선택', base_defense: '· 기본 방어력:', defense_coef: '· 보스 방어 계수:',
-                    boss_type_sea: '바다', boss_type_nightmare: '흉몽',
-                    penetrate_total: '관통', final_defense_coef_after_pierce: '관통 적용 방어 계수:', sum_target: '합계 / 목표',
-                    penetrate_desc: '※ 보스 방어 계수 × (100-관통)%', defense_reduce_total: '방어력 감소', final_defense_coef: '최종 방어 계수:',
-                    final_defense_coef_title: '방어력 수치', defense_reduce_desc: '※ 보스 방어 계수 - 방어력 감소', final_damage_increase: '최종 대미지',
-                    boss_info_tip: '최고 난이도 기준의 참조용 데이터입니다. 같은 이름이라도 보스별 방어력 수치는 다를 수 있습니다. 중요: 이 값은 출시 초기 확보 데이터 기반이며, 현재는 정확한 수치를 구하거나 검증할 방법이 없습니다.',
-                    boss_info_inline_badge: '초기 데이터',
-                    boss_info_inline: '출시 초기 확보 데이터 기반 / 현재 정확 수치 입수·검증 불가',
-                    tooltip_formula: '대미지 배수 : 1 - [방어력 × 방어 계수 / (방어력× 방어 계수 + 1400)]',
-                    base_final_damage: '· 방어력에 의한 최종 대미지 배수:', with_def_reduce: '· 방어력 감소 최종 대미지 배수:',
-                    tab_pierce: '관통', tab_defense: '방어력 감소', revelation_penetrate: '계시 관통 합계', revelation_sum: '계시 합계', explanation_power: '해명의 힘',
-                    th_select: '선택', th_thief: '괴도', th_type: '분류', th_target: '목표', th_name: '이름', th_option: '옵션', th_value: '수치', th_duration: '지속', th_note: '비고',
-                    windswept: '풍습', windswept_tip: '최종 방어력 계수 * 88%. 항상 마지막에 적용됩니다. 따라서 계수 0을 달성하기 위해서는 풍습을 제외하고 남은 수치 만큼 실제 감소가 필요합니다.',
-                    stat_sum: '합계', stat_target: '목표', stat_remaining: '남은 수치',
-                    stat_final_increase: '최종 증가', stat_base_damage_mult: '기존 대미지 배수', stat_final_damage_mult: '최종 대미지 배수',
-                    stat_final_def_coef: '최종 방어 계수', stat_boss_def_coef: '보스 방어 계수', stat_boss_base_def: '보스 기본 방어력'
-                },
-                en: {
-                    nav_home: 'Home', nav_current: 'Defense Calc', page_title: 'Defense Reduction Calculator',
-                    boss_info: 'Boss Info', boss_select: 'Select Boss', base_defense: '· Enemy Defense:', defense_coef: '· Boss Defense Coefficient:',
-                    boss_type_sea: 'SoS', boss_type_nightmare: 'NTMR',
-                    penetrate_total: 'Pierce', final_defense_coef_after_pierce: 'Defense Coef. after Pierce:', sum_target: 'Sum / Target',
-                    penetrate_desc: '※ Boss Defense Coef. × (100 - Pierce)%', defense_reduce_total: 'Def. Reduction', final_defense_coef: 'Final Defense Coef.:',
-                    final_defense_coef_title: 'Def. Info', defense_reduce_desc: '※ Boss Defense Coef. - Defense Reduction', final_damage_increase: 'Final Damage',
-                    boss_info_tip: 'These are highest-difficulty reference values. Even bosses with the same name can have different Defense stats. Important: this dataset is based on launch-period data, and exact values are currently unobtainable and cannot be verified.',
-                    boss_info_inline_badge: 'Initial Data',
-                    boss_info_inline: 'Launch-period data only. Exact values are currently unobtainable and unverifiable.',
-                    tooltip_formula: 'Damage multiplier: 1 - [Enemy Defense × Defense Coef. / (Enemy Defense × Defense Coef. + 1400)]',
-                    base_final_damage: '· Base final damage mult.:', with_def_reduce: '· With defense reduction mult.:',
-                    tab_pierce: 'Pierce', tab_defense: 'Defense Reduction', revelation_penetrate: 'Revelation Pierce Total', revelation_sum: 'Revelation Sum', explanation_power: 'Elucidation Power', other_reduce: 'Other Def. Reduction',
-                    th_select: 'Select', th_thief: 'Thief', th_type: 'Type', th_target: 'Target', th_name: 'Name', th_option: 'Option', th_value: 'Value', th_duration: 'Duration', th_note: 'Note',
-                    windswept: 'Windswept', windswept_tip: 'Final Defense Coef. * 88%. Always applied at the very end. Therefore, to reach a final coefficient of 0, you need enough actual reduction from other sources excluding Windswept.',
-                    stat_sum: 'Sum', stat_target: 'Target', stat_remaining: 'Remaining',
-                    stat_final_increase: 'Final Increase', stat_base_damage_mult: 'Base DMG Mult.', stat_final_damage_mult: 'Final DMG Mult.',
-                    stat_final_def_coef: 'Final Def Coef.', stat_boss_def_coef: 'Boss Def Coef.', stat_boss_base_def: 'Boss Base Def'
-                },
-                jp: {
-                    nav_home: 'ホーム', nav_current: '防御力計算', page_title: '防御力減少計算機',
-                    boss_info: 'ボス情報', boss_select: 'ボス選択', base_defense: '・ 敵防御力:', defense_coef: '・ ボス防御係数:',
-                    boss_type_sea: '心の海', boss_type_nightmare: '閼兇夢',
-                    penetrate_total: '貫通合計', final_defense_coef_after_pierce: '貫通適用の防御係数:', sum_target: '合計 / 目標',
-                    penetrate_desc: '※ ボス防御係数 × (100 - 貫通)%', defense_reduce_total: '防御力減少合計', final_defense_coef: '最終防御係数:',
-                    final_defense_coef_title: '防御力数値', defense_reduce_desc: '※ ボス防御係数 - 防御力減少', final_damage_increase: '最終ダメージ',
-                    boss_info_tip: '最高難易度基準の参考値です。同名でもボスごとに防御値が異なる場合があります。重要: このデータはリリース初期に確保された情報ベースであり、現在は正確な数値を入手・検証できません。',
-                    boss_info_inline_badge: '初期データ',
-                    boss_info_inline: 'リリース初期データのみ / 現在は正確値の入手・検証不可',
-                    tooltip_formula: 'ダメージ倍率: 1 - [敵防御 × 防御係数 / (敵防御 × 防御係数 + 1400)]',
-                    base_final_damage: '・ 基本 最終ダメージ倍率:', with_def_reduce: '・ 防御力減少あり 最終ダメージ倍率:',
-                    tab_pierce: '貫通', tab_defense: '防御力減少', revelation_penetrate: '啓示 貫通合計', revelation_sum: '啓示 合計', explanation_power: '解明の力', other_reduce: 'その他 防御力減少',
-                    th_select: '選択', th_thief: '怪盗', th_type: '分類', th_target: '対象', th_name: '名前', th_option: 'オプション', th_value: '数値', th_duration: '持続', th_note: '備考',
-                    windswept: '風襲', windswept_tip: '最終防御係数 * 88%。常に最後に適用されます。そのため、最終係数0を達成するには、風襲を除いた残りの分を実際の減少で満たす必要があります。',
-                    stat_sum: '合計', stat_target: '目標', stat_remaining: '残り数値',
-                    stat_final_increase: '最終増加', stat_base_damage_mult: '基本ダメージ倍率', stat_final_damage_mult: '最終ダメージ倍率',
-                    stat_final_def_coef: '最終防御係数', stat_boss_def_coef: 'ボス防御係数', stat_boss_base_def: 'ボス基本防御力'
-                }
+            const t = this.getDefenseTexts(currentLang);
+            if (!t || typeof t !== 'object' || !t.nav_home) {
+                // 번들 로딩 전에는 DOM에 undefined를 쓰지 않음
+                try {
+                    clearTimeout(this._i18nRetryTimer);
+                    this._i18nRetryTimer = setTimeout(() => this.updateLanguageContent(root), 60);
+                } catch(_) {}
+                return;
+            }
+            const tx = (key, fallback = '') => {
+                const v = t[key];
+                return (typeof v === 'string' && v.length > 0) ? v : fallback;
             };
 
-            const t = i18n[currentLang] || i18n.kr;
-
-            const navHome = root.getElementById ? root.getElementById('nav-home') : document.getElementById('nav-home');
-            const navCurrent = root.getElementById ? root.getElementById('nav-current') : document.getElementById('nav-current');
+            const navHome = (root.querySelector && root.querySelector('.navigation-path #nav-home'))
+                || (root.getElementById ? root.getElementById('nav-home') : document.getElementById('nav-home'));
+            const navCurrent = (root.querySelector && root.querySelector('.navigation-path #nav-current'))
+                || (root.getElementById ? root.getElementById('nav-current') : document.getElementById('nav-current'));
             const pageTitle = root.getElementById ? root.getElementById('page-title') : document.getElementById('page-title');
-            if (navHome) navHome.textContent = t.nav_home;
-            if (navCurrent) navCurrent.textContent = t.nav_current;
+            if (navHome) navHome.textContent = tx('nav_home', '홈');
+            if (navCurrent) navCurrent.textContent = tx('nav_current', '방어력 계산');
             // defense-calc 페이지에서만 page-title 업데이트 (critical-calc는 critical-calc.js에서 처리)
             if (pageTitle && (window.location.pathname.includes('/defense-calc') || window.location.pathname.includes('defense-calc'))) {
-                pageTitle.textContent = t.page_title;
+                pageTitle.textContent = tx('page_title', '방어력 감소 계산기');
             }
 
             const bossSelectPlaceholder = document.getElementById('bossSelectPlaceholder');
@@ -161,23 +185,23 @@
             const bossInfoTooltip = document.getElementById('bossInfoTooltip');
             const bossInfoInlineBadge = document.getElementById('bossInfoInlineBadge');
             const bossInfoInlineText = document.getElementById('bossInfoInlineText');
-            if (bossInfoTooltip) bossInfoTooltip.setAttribute('data-tooltip', t.boss_info_tip);
-            if (bossInfoInlineBadge) bossInfoInlineBadge.textContent = t.boss_info_inline_badge || '';
-            if (bossInfoInlineText) bossInfoInlineText.textContent = t.boss_info_inline || '';
-            if (bossSelectPlaceholder) bossSelectPlaceholder.textContent = t.boss_select;
-            if (baseDefenseLabel) baseDefenseLabel.textContent = t.base_defense;
-            if (defenseCoefLabel) defenseCoefLabel.textContent = t.defense_coef;
+            if (bossInfoTooltip) bossInfoTooltip.setAttribute('data-tooltip', tx('boss_info_tip'));
+            if (bossInfoInlineBadge) bossInfoInlineBadge.textContent = tx('boss_info_inline_badge');
+            if (bossInfoInlineText) bossInfoInlineText.textContent = tx('boss_info_inline');
+            if (bossSelectPlaceholder) bossSelectPlaceholder.textContent = tx('boss_select', '보스 선택');
+            if (baseDefenseLabel) baseDefenseLabel.textContent = tx('base_defense', '· 기본 방어력:');
+            if (defenseCoefLabel) defenseCoefLabel.textContent = tx('defense_coef', '· 보스 방어 계수:');
             
             // 바다/흉몽 탭 번역
             const bossTypeSea = document.getElementById('bossTypeSea');
             const bossTypeNightmare = document.getElementById('bossTypeNightmare');
             if (bossTypeSea) {
                 const span = bossTypeSea.querySelector('span');
-                if (span) span.textContent = t.boss_type_sea;
+                if (span) span.textContent = tx('boss_type_sea', '바다');
             }
             if (bossTypeNightmare) {
                 const span = bossTypeNightmare.querySelector('span');
-                if (span) span.textContent = t.boss_type_nightmare;
+                if (span) span.textContent = tx('boss_type_nightmare', '흉몽');
             }
 
             const showSpoilerLabel = document.getElementById('showSpoilerLabel');
@@ -186,9 +210,7 @@
                 spoilerWrap.style.display = (currentLang === 'kr') ? 'none' : '';
             }
             if (showSpoilerLabel) {
-                if (currentLang === 'en') showSpoilerLabel.textContent = 'Show Spoilers';
-                else if (currentLang === 'jp') showSpoilerLabel.textContent = 'スポイラー表示';
-                else showSpoilerLabel.textContent = 'Show Spoilers';
+                showSpoilerLabel.textContent = tx('show_spoiler', 'Show Spoilers');
             }
 
             const penetrateTitle = document.getElementById('penetrate-total-title');
@@ -202,7 +224,7 @@
                     }
                 });
                 // 아이콘 뒤에 텍스트 추가
-                const text = document.createTextNode(t.penetrate_total + ' ');
+                const text = document.createTextNode(`${tx('penetrate_total', '관통')} `);
                 if (statIcon && statIcon.nextSibling) {
                     penetrateTitle.insertBefore(text, statIcon.nextSibling);
                 } else if (statIcon) {
@@ -213,7 +235,7 @@
                 if (icon && !penetrateTitle.contains(icon)) penetrateTitle.appendChild(icon);
             }
             const penetrateIcon = document.getElementById('penetrateTooltip');
-            if (penetrateIcon) penetrateIcon.setAttribute('data-tooltip', t.penetrate_desc);
+            if (penetrateIcon) penetrateIcon.setAttribute('data-tooltip', tx('penetrate_desc'));
 
             const defenseReduceTitle = document.getElementById('defense-reduce-total-title');
             if (defenseReduceTitle) {
@@ -226,7 +248,7 @@
                     }
                 });
                 // 아이콘 뒤에 텍스트 추가
-                const text = document.createTextNode(t.defense_reduce_total + ' ');
+                const text = document.createTextNode(`${tx('defense_reduce_total', '방어력 감소')} `);
                 if (statIcon && statIcon.nextSibling) {
                     defenseReduceTitle.insertBefore(text, statIcon.nextSibling);
                 } else if (statIcon) {
@@ -237,12 +259,12 @@
                 if (icon2 && !defenseReduceTitle.contains(icon2)) defenseReduceTitle.appendChild(icon2);
             }
             const defenseReduceIcon = document.getElementById('defenseReduceTooltip');
-            if (defenseReduceIcon) defenseReduceIcon.setAttribute('data-tooltip', t.defense_reduce_desc);
+            if (defenseReduceIcon) defenseReduceIcon.setAttribute('data-tooltip', tx('defense_reduce_desc'));
 
             const pierceSumTargetLabel = document.getElementById('pierceSumTargetLabel');
             const reduceSumTargetLabel = document.getElementById('reduceSumTargetLabel');
-            if (pierceSumTargetLabel) pierceSumTargetLabel.textContent = t.sum_target;
-            if (reduceSumTargetLabel) reduceSumTargetLabel.textContent = t.sum_target;
+            if (pierceSumTargetLabel) pierceSumTargetLabel.textContent = tx('sum_target', '합계 / 목표');
+            if (reduceSumTargetLabel) reduceSumTargetLabel.textContent = tx('sum_target', '합계 / 목표');
 
             const finalCoefTitle = document.getElementById('defense-coef-title');
             if (finalCoefTitle) {
@@ -254,13 +276,13 @@
                     }
                 });
                 // 아이콘 뒤에 텍스트 추가
-                const text = document.createTextNode(t.final_defense_coef_title);
+                const text = document.createTextNode(tx('final_defense_coef_title', '방어력 수치'));
                 if (statIcon && statIcon.nextSibling) {
                     finalCoefTitle.insertBefore(text, statIcon.nextSibling);
                 } else if (statIcon) {
                     finalCoefTitle.appendChild(text);
                 } else {
-                    finalCoefTitle.textContent = t.final_defense_coef_title;
+                    finalCoefTitle.textContent = tx('final_defense_coef_title', '방어력 수치');
                 }
             }
 
@@ -278,7 +300,7 @@
                     }
                 });
                 // stat-icon 다음에 텍스트 추가
-                const text = document.createTextNode(t.final_damage_increase + ' ');
+                const text = document.createTextNode(`${tx('final_damage_increase', '최종 대미지')} `);
                 if (statIcon) {
                     // stat-icon 바로 다음에 텍스트 삽입
                     if (statIcon.nextSibling) {
@@ -291,32 +313,32 @@
                 }
                 // tooltip-icon이 이미 있으면 그대로 유지, 없으면 추가하지 않음 (HTML에 이미 있음)
             }
-            if (finalDamageTooltip) finalDamageTooltip.setAttribute('data-tooltip', t.tooltip_formula);
-            if (baseFinalDamageLabel) baseFinalDamageLabel.textContent = t.base_final_damage;
-            if (withDefReduceLabel) withDefReduceLabel.textContent = t.with_def_reduce;
+            if (finalDamageTooltip) finalDamageTooltip.setAttribute('data-tooltip', tx('tooltip_formula'));
+            if (baseFinalDamageLabel) baseFinalDamageLabel.textContent = tx('base_final_damage');
+            if (withDefReduceLabel) withDefReduceLabel.textContent = tx('with_def_reduce');
             
             // 새로 추가된 라벨들 번역
             const statLabels = root.querySelectorAll ? root.querySelectorAll('.stat-label') : document.querySelectorAll('.stat-label');
             statLabels.forEach(label => {
                 const text = label.textContent.trim();
                 if (text === '합계' || text === 'Sum' || text === '合計') {
-                    label.textContent = t.stat_sum;
+                    label.textContent = tx('stat_sum', '합계');
                 } else if (text === '목표' || text === 'Target' || text === '目標') {
-                    label.textContent = t.stat_target;
+                    label.textContent = tx('stat_target', '목표');
                 } else if (text === '남은 수치' || text === 'Remaining' || text === '残り数値') {
-                    label.textContent = t.stat_remaining;
+                    label.textContent = tx('stat_remaining', '남은 수치');
                 } else if (text === '최종 증가' || text === 'Final Increase' || text === '最終増加') {
-                    label.textContent = t.stat_final_increase;
+                    label.textContent = tx('stat_final_increase', '최종 증가');
                 } else if (text === '기존 대미지 배수' || text === 'Base Damage Mult.' || text === '基本ダメージ倍率') {
-                    label.textContent = t.stat_base_damage_mult;
+                    label.textContent = tx('stat_base_damage_mult', '기존 대미지 배수');
                 } else if (text === '최종 대미지 배수' || text === 'Final Damage Mult.' || text === '最終ダメージ倍率') {
-                    label.textContent = t.stat_final_damage_mult;
+                    label.textContent = tx('stat_final_damage_mult', '최종 대미지 배수');
                 } else if (text === '최종 방어 계수' || text === 'Final Defense Coef.' || text === '最終防御係数') {
-                    label.textContent = t.stat_final_def_coef;
+                    label.textContent = tx('stat_final_def_coef', '최종 방어 계수');
                 } else if (text === '보스 방어 계수' || text === 'Boss Defense Coef.' || text === 'ボス防御係数') {
-                    label.textContent = t.stat_boss_def_coef;
+                    label.textContent = tx('stat_boss_def_coef', '보스 방어 계수');
                 } else if (text === '보스 기본 방어력' || text === 'Boss Base Defense' || text === 'ボス基本防御力') {
-                    label.textContent = t.stat_boss_base_def;
+                    label.textContent = tx('stat_boss_base_def', '보스 기본 방어력');
                 }
             });
 
@@ -332,14 +354,14 @@
                 });
                 // 아이콘 뒤에 텍스트 추가
                 if (icon) {
-                    const text = document.createTextNode(t.tab_pierce);
+                    const text = document.createTextNode(tx('tab_pierce', '관통'));
                     if (icon.nextSibling) {
                         tabPierce.insertBefore(text, icon.nextSibling);
                     } else {
                         tabPierce.appendChild(text);
                     }
                 } else {
-                    tabPierce.textContent = t.tab_pierce;
+                    tabPierce.textContent = tx('tab_pierce', '관통');
                 }
             }
             if (tabDefense) {
@@ -352,14 +374,14 @@
                 });
                 // 아이콘 뒤에 텍스트 추가
                 if (icon) {
-                    const text = document.createTextNode(t.tab_defense);
+                    const text = document.createTextNode(tx('tab_defense', '방어력 감소'));
                     if (icon.nextSibling) {
                         tabDefense.insertBefore(text, icon.nextSibling);
                     } else {
                         tabDefense.appendChild(text);
                     }
                 } else {
-                    tabDefense.textContent = t.tab_defense;
+                    tabDefense.textContent = tx('tab_defense', '방어력 감소');
                 }
             }
 
@@ -379,14 +401,14 @@
                 });
                 // 아이콘 뒤에 텍스트 추가
                 if (icon) {
-                    const text = document.createTextNode(t.revelation_penetrate);
+                    const text = document.createTextNode(tx('revelation_penetrate', '계시 관통 합계'));
                     if (icon.nextSibling) {
                         revelationPenetrateLabel.insertBefore(text, icon.nextSibling);
                     } else {
                         revelationPenetrateLabel.appendChild(text);
                     }
                 } else {
-                    revelationPenetrateLabel.textContent = t.revelation_penetrate;
+                    revelationPenetrateLabel.textContent = tx('revelation_penetrate', '계시 관통 합계');
                 }
             }
             if (explanationPowerLabel) {
@@ -409,7 +431,7 @@
                 });
                 // 아이콘 다음에 텍스트 추가
                 if (icon) {
-                    const text = document.createTextNode(t.explanation_power);
+                    const text = document.createTextNode(tx('explanation_power', '해명의 힘'));
                     // 아이콘 다음에 텍스트 추가
                     if (icon.nextSibling) {
                         explanationPowerLabel.insertBefore(text, icon.nextSibling);
@@ -417,7 +439,7 @@
                         explanationPowerLabel.appendChild(text);
                     }
                 } else {
-                    explanationPowerLabel.textContent = t.explanation_power;
+                    explanationPowerLabel.textContent = tx('explanation_power', '해명의 힘');
                 }
             }
             if (revelationSumLabel) {
@@ -440,7 +462,7 @@
                 });
                 // 아이콘 다음에 텍스트 추가
                 if (icon) {
-                    const text = document.createTextNode(t.revelation_sum);
+                    const text = document.createTextNode(tx('revelation_sum', '계시 합계'));
                     // 아이콘 다음에 텍스트 추가
                     if (icon.nextSibling) {
                         revelationSumLabel.insertBefore(text, icon.nextSibling);
@@ -448,7 +470,7 @@
                         revelationSumLabel.appendChild(text);
                     }
                 } else {
-                    revelationSumLabel.textContent = t.revelation_sum;
+                    revelationSumLabel.textContent = tx('revelation_sum', '계시 합계');
                 }
             }
             if (otherReduceLabel) {
@@ -460,7 +482,7 @@
                     }
                 });
                 // 아이콘 뒤에 텍스트 추가
-                const text = currentLang === 'kr' ? '기타 방어력 감소' : t.other_reduce;
+                const text = tx('other_reduce', '기타 방어력 감소');
                 if (icon) {
                     const textNode = document.createTextNode(text);
                     if (icon.nextSibling) {
@@ -472,18 +494,18 @@
                     otherReduceLabel.textContent = text;
                 }
             }
-            if (windsweptText && t.windswept) windsweptText.textContent = t.windswept;
-            if (windsweptTooltip && t.windswept_tip) windsweptTooltip.setAttribute('data-tooltip', t.windswept_tip);
+            if (windsweptText && tx('windswept')) windsweptText.textContent = tx('windswept');
+            if (windsweptTooltip && tx('windswept_tip')) windsweptTooltip.setAttribute('data-tooltip', tx('windswept_tip'));
 
-            this.setTextAll('.check-column', t.th_select);
-            this.setTextAll('.char-img-column', t.th_thief);
-            this.setTextAll('.type-column', t.th_type);
-            this.setTextAll('.target-column', t.th_target);
-            this.setTextAll('.skill-name-column', t.th_name);
-            this.setTextAll('.option-column', t.th_option);
-            this.setTextAll('.value-column', t.th_value);
-            this.setTextAll('.duration-column', t.th_duration);
-            this.setTextAll('.note-column', t.th_note);
+            this.setTextAll('.check-column', tx('th_select', '선택'));
+            this.setTextAll('.char-img-column', tx('th_thief', '괴도'));
+            this.setTextAll('.type-column', tx('th_type', '분류'));
+            this.setTextAll('.target-column', tx('th_target', '목표'));
+            this.setTextAll('.skill-name-column', tx('th_name', '이름'));
+            this.setTextAll('.option-column', tx('th_option', '옵션'));
+            this.setTextAll('.value-column', tx('th_value', '수치'));
+            this.setTextAll('.duration-column', tx('th_duration', '지속'));
+            this.setTextAll('.note-column', tx('th_note', '비고'));
 
             // 툴팁 재바인딩
             try {
@@ -501,50 +523,28 @@
             });
         },
 
+        translateGroupName(groupName){
+            const currentLang = this.getLang();
+            if (!groupName || currentLang === 'kr') return groupName;
+
+            const pagePack = this.getPagePack(currentLang);
+            const groupMap = pagePack.defenseGroupNames || {};
+            if (!groupMap || typeof groupMap !== 'object') return groupName;
+
+            if (groupName === '원더') return groupMap.wonder || groupName;
+            if (groupName === '계시') return groupMap.revelation || groupName;
+            if (groupName === '공통') return groupMap.common || groupName;
+            return groupName;
+        },
+
         // 타입 번역 (심상코어, 스킬, 의식 등)
         translateType(typeText){
             const currentLang = this.getLang();
             if (!typeText || currentLang === 'kr') return typeText;
 
-            const typeMap = {
-                en: {
-                    '심상코어': 'Mindscape Core',
-                    '스킬': 'Skill',
-                    '패시브': 'Passive',
-                    '하이라이트': 'Highlight',
-                    '전용무기': 'Weapon',
-                    '페르소나': 'Persona',
-                    '의식1': 'A1',
-                    '의식2': 'A2',
-                    '의식3': 'A3',
-                    '의식4': 'A4',
-                    '의식5': 'A5',
-                    '의식6': 'A6',
-                    '총격': 'Gun',
-                    '광역': 'AoE',
-                    '단일': 'Single'
-                },
-                jp: {
-                    '심상코어': 'イメジャリー・コア',
-                    '스킬': 'スキル',
-                    '패시브': 'パッシブ',
-                    '하이라이트': 'ハイライト',
-                    '전용무기': '専用武器',
-                    '페르소나': 'ペルソナ',
-                    '의식1': '意識1',
-                    '의식2': '意識2',
-                    '의식3': '意識3',
-                    '의식4': '意識4',
-                    '의식5': '意識5',
-                    '의식6': '意識6',
-                    '총격': '銃撃',
-                    '광역': '広域',
-                    '단일': '単体'
-                }
-            };
-
-            const langMap = typeMap[currentLang];
-            if (!langMap) return typeText;
+            const pagePack = this.getPagePack(currentLang);
+            const langMap = pagePack.defenseTypeMap || {};
+            if (!langMap || typeof langMap !== 'object') return typeText;
 
             // 정확히 매칭되는 경우
             if (langMap[typeText]) return langMap[typeText];

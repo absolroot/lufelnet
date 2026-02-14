@@ -137,6 +137,11 @@ const AstrolabeNodeDetail = (function () {
     document.body.style.overflow = '';
   }
 
+  function refresh() {
+    if (!detailPanel || !currentNode) return;
+    renderContent(currentNode);
+  }
+
   function renderContent(node) {
     const content = detailPanel.querySelector('.detail-content');
     if (!content) return;
@@ -248,6 +253,7 @@ const AstrolabeNodeDetail = (function () {
   return {
     init,
     show,
-    hide
+    hide,
+    refresh
   };
 })();

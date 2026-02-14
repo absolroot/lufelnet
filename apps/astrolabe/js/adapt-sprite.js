@@ -16,16 +16,9 @@ const AstrolabeAdaptSprite = (function () {
     Wind: '질풍', Psychokinesis: '염동', Nuclear: '핵열', Bless: '축복', Curse: '주원'
   };
 
-  const ADAPT_LABELS = {
-    Weak: { kr: '약', en: 'Wk', jp: '弱', cls: 'weak' },
-    Resistant: { kr: '내', en: 'Res', jp: '耐', cls: 'res' },
-    Nullify: { kr: '무', en: 'Nul', jp: '無', cls: 'nul' },
-    Absorb: { kr: '흡', en: 'Abs', jp: '吸', cls: 'abs' },
-    Reflect: { kr: '반', en: 'Rpl', jp: '反', cls: 'rpl' },
-  };
+  const ADAPT_KEYS = ['Weak', 'Resistant', 'Nullify', 'Absorb', 'Reflect'];
 
   function buildAdaptSprite(adapt) {
-    const lang = AstrolabeI18n.getLang();
     const wrap = document.createElement('div');
     wrap.className = 'elements-line';
 
@@ -35,7 +28,7 @@ const AstrolabeAdaptSprite = (function () {
     img.src = `${BASE}/assets/img/character-detail/elements.png`;
     wrap.appendChild(img);
 
-    Object.keys(ADAPT_LABELS).forEach(key => {
+    ADAPT_KEYS.forEach(key => {
       // Compatibility with object-click-handler.js logic
       const keyMap = {
         'Weak': '약',
@@ -57,14 +50,14 @@ const AstrolabeAdaptSprite = (function () {
         }
       }
 
-      const labelInfo = ADAPT_LABELS[key];
-      const text = (lang === 'en' ? labelInfo.en : (lang === 'jp' ? labelInfo.jp : labelInfo.kr));
+      const labelInfo = AstrolabeI18n.getAdaptLabel(key);
+      const text = labelInfo.text;
 
       (list || []).forEach(enName => {
         const kr = elementNameMap[enName] || enName;
         const x = elementOffsetPx(kr);
         const mark = document.createElement('span');
-        mark.className = `el-mark ${labelInfo.cls}`;
+        mark.className = `el-mark ${labelInfo.cls || ''}`;
         mark.textContent = text;
         mark.title = `${key}: ${kr}`;
         mark.style.left = `${x}px`;
@@ -86,7 +79,7 @@ const AstrolabeAdaptSprite = (function () {
       'Reflect': '반',
       'Absorb': '흡'
     };
-    return Object.keys(ADAPT_LABELS).some(key => {
+    return ADAPT_KEYS.some(key => {
       const krKey = keyMap[key];
       // Check English key
       if (Array.isArray(adapt[key]) && adapt[key].length > 0) return true;
@@ -100,6 +93,6 @@ const AstrolabeAdaptSprite = (function () {
     buildAdaptSprite,
     hasAdaptData,
     elementNameMap,
-    ADAPT_LABELS
+    ADAPT_KEYS
   };
 })();

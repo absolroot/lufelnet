@@ -47,11 +47,25 @@ class CriticalCalc {
     applyHardcodedI18n() {
         try {
             const lang = this.getCurrentLang();
-            const texts = {
-                kr: { navCurrent:'크리티컬 확률 계산기', page:'크리티컬 확률 계산기', total:'크리티컬 확률 합계', custom:'커스텀 크리티컬 확률', rev:'계시 합계', exp:'해명의 힘', buff:'버프', self:'자신', select:'선택', target:'목표', name:'이름', option:'옵션', value:'수치', duration:'지속시간', note:'비고', spoiler:'Show Spoilers', buffSum:'버프 합계', selfSum:'자신 합계', needed:'필요 수치', totalLabel:'크리티컬 확률 합계' },
-                en: { navCurrent:'Critical Rate Calculator', page:'Critical Rate Calculator', total:'Total Critical Rate', custom:'Custom Critical Rate', rev:'Card Sum', exp:'Eludi. Stat Buff', buff:'Buff', self:'Self', select:'Select', target:'Target', name:'Name', option:'Option', value:'Value', duration:'Duration', note:'Note', spoiler:'Show Spoilers', buffSum:'Buff Sum', selfSum:'Self Sum', needed:'Needed', totalLabel:'Total Critical Rate' },
-                jp: { navCurrent:'クリ率計算機', page:'クリ率計算機', total:'クリ率合計', custom:'カスタム クリ率', rev:'啓示 合計', exp:'ナビ力', buff:'バフ', self:'自分', select:'選択', target:'目標', name:'名前', option:'オプション', value:'数値', duration:'持続時間', note:'備考', spoiler:'ネタバレ表示', buffSum:'バフ合計', selfSum:'自分合計', needed:'必要数値', totalLabel:'クリ率合計' }
-            }[lang] || undefined;
+            const pack = this.getCriticalPagePack(lang);
+            const texts = pack ? {
+                navCurrent: pack.navCurrent,
+                page: pack.pageTitle,
+                buff: pack.tabBuff,
+                self: pack.tabSelf,
+                select: pack.thSelect,
+                target: pack.thTarget,
+                name: pack.thName,
+                option: pack.thOption,
+                value: pack.thValue,
+                duration: pack.thDuration,
+                note: pack.thNote,
+                spoiler: pack.spoiler,
+                buffSum: pack.buffSum,
+                selfSum: pack.selfSum,
+                needed: pack.needed,
+                totalLabel: pack.totalLabel
+            } : undefined;
             if (texts) {
                 const setText = (id, text) => { const el=document.getElementById(id); if (el) el.textContent = text; };
                 setText('navCurrent', texts.navCurrent);
@@ -106,10 +120,41 @@ class CriticalCalc {
         } catch(_) {}
     }
 
+    normalizeCalcLang(rawLang) {
+        const lang = String(rawLang || '').trim().toLowerCase();
+        if (lang === 'kr' || lang === 'ko') return 'kr';
+        if (lang === 'en') return 'en';
+        if (lang === 'jp' || lang === 'ja') return 'jp';
+        if (lang === 'cn' || lang === 'tw' || lang === 'sea') return 'en';
+        return 'kr';
+    }
+
+    getCriticalPagePack(lang = this.getCurrentLang()) {
+        const varMap = {
+            kr: 'I18N_PAGE_CRITICAL_CALC_KR',
+            en: 'I18N_PAGE_CRITICAL_CALC_EN',
+            jp: 'I18N_PAGE_CRITICAL_CALC_JP'
+        };
+        const fallbackVar = varMap.kr;
+        const normalizedLang = this.normalizeCalcLang(lang);
+        const varName = varMap[normalizedLang] || fallbackVar;
+        return window[varName] || window[fallbackVar] || null;
+    }
+
     getCurrentLang() {
         try {
-            if (typeof I18NUtils !== 'undefined' && I18NUtils.getCurrentLanguageSafe) return I18NUtils.getCurrentLanguageSafe();
-            if (typeof LanguageRouter !== 'undefined' && LanguageRouter.getCurrentLanguage) return LanguageRouter.getCurrentLanguage();
+            const urlLang = new URLSearchParams(window.location.search).get('lang');
+            if (urlLang) return this.normalizeCalcLang(urlLang);
+
+            const savedLang = localStorage.getItem('preferredLanguage');
+            if (savedLang) return this.normalizeCalcLang(savedLang);
+
+            if (typeof I18NUtils !== 'undefined' && I18NUtils.getCurrentLanguageSafe) {
+                return this.normalizeCalcLang(I18NUtils.getCurrentLanguageSafe());
+            }
+            if (typeof LanguageRouter !== 'undefined' && LanguageRouter.getCurrentLanguage) {
+                return this.normalizeCalcLang(LanguageRouter.getCurrentLanguage());
+            }
         } catch(_) {}
         return 'kr';
     }
@@ -170,7 +215,63 @@ class CriticalCalc {
     normalizeTextForLang(text) {
         const lang = this.getCurrentLang();
         if (!text || lang === 'kr') return text || '';
-        return String(text).replace(/의식\s*3/g, '의식2');
+        let out = String(text).replace(/의식\s*3/g, '의식2');
+        // 옵션/노트의 중첩 표기를 EN/JP에서 읽기 쉬운 형태로 변환
+        if (lang === 'en') {
+            out = out.replace(/(\d+)\s*중첩/g, '$1 Stack')
+                     .replace(/중첩/g, 'Stack');
+        } else if (lang === 'jp') {
+            out = out.replace(/(\d+)\s*중첩/g, '$1重')
+                     .replace(/중첩/g, '重');
+        }
+        // 공통 용어 사전 치환 (상태이상/속성/턴 등)
+        try {
+            const dict = (typeof I18NUtils !== 'undefined' && I18NUtils.statTranslations && I18NUtils.statTranslations[lang])
+                ? I18NUtils.statTranslations[lang]
+                : null;
+            if (dict && typeof dict === 'object') {
+                const esc = (s) => String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                Object.keys(dict).sort((a, b) => b.length - a.length).forEach((ko) => {
+                    const tr = dict[ko];
+                    if (!tr || tr === ko) return;
+                    out = out.replace(new RegExp(esc(ko), 'g'), tr);
+                });
+            }
+        } catch(_) {}
+
+        if (lang === 'en') {
+            out = out
+                .replace(/단일\/광역/g, 'Single/Multi')
+                .replace(/단일\/자신/g, 'Single/Self')
+                .replace(/광역\/자신/g, 'Multi/Self')
+                .replace(/자신/g, 'Self')
+                .replace(/단일/g, 'Single')
+                .replace(/광역/g, 'Multi')
+                .replace(/의식\s*([0-9]+)/g, 'A$1')
+                .replace(/(\d+)\s*턴/g, '$1T')
+                .replace(/턴/g, 'T')
+                .replace(/레벨/g, 'Lv')
+                .replace(/심상/g, 'MS')
+                .replace(/개조/g, 'Mod')
+                .replace(/없음/g, 'None');
+        } else if (lang === 'jp') {
+            out = out
+                .replace(/단일\/광역/g, '単体/複数対象')
+                .replace(/단일\/자신/g, '単体/自分')
+                .replace(/광역\/자신/g, '複数対象/自分')
+                .replace(/자신/g, '自分')
+                .replace(/단일/g, '単体')
+                .replace(/광역/g, '複数対象')
+                .replace(/의식\s*([0-9]+)/g, '意識$1')
+                .replace(/(\d+)\s*턴/g, '$1ターン')
+                .replace(/턴/g, 'ターン')
+                .replace(/레벨/g, 'Lv')
+                .replace(/심상/g, 'イメジャリー')
+                .replace(/개조/g, '改造')
+                .replace(/없음/g, 'なし');
+        }
+
+        return out;
     }
 
     transformIconSrcForLang(src) {
@@ -545,7 +646,7 @@ class CriticalCalc {
         // 스킬 이름 열 (분류 + 이름 결합)
         const skillNameCell = document.createElement('td');
         skillNameCell.className = 'skill-name-column';
-        const currentLang = (typeof LanguageRouter !== 'undefined') ? LanguageRouter.getCurrentLanguage() : 'kr';
+        const currentLang = this.getCurrentLang();
         let localizedName = '';
         // 기본: 현지화된 이름 우선
         if (currentLang === 'en') {

@@ -5,13 +5,13 @@
 
   async function init() {
     // Initialize i18n
-    AstrolabeI18n.init();
-
-    // Update UI text
-    updateUIText();
+    await AstrolabeI18n.init();
 
     // Get region
     const region = AstrolabeI18n.loadRegion();
+
+    // Update UI text
+    await updateUIText();
 
     // Ensure URL has server param
     const url = new URL(window.location);
@@ -90,7 +90,11 @@
     }
   }
 
-  function updateUIText() {
+  async function updateUIText() {
+    // Always sync UI language from current URL/router state before rendering texts.
+    AstrolabeI18n.setLang(AstrolabeI18n.detectLang());
+    await AstrolabeI18n.ensurePacksReady();
+
     // Page Title & Meta
     document.title = AstrolabeI18n.t('title') + " - P5X lufel.net";
 
@@ -172,6 +176,12 @@
       const url = new URL(window.location);
       url.searchParams.set('server', newRegion);
       window.history.pushState({}, '', url);
+
+      // Keep current UI language. Server change is data-region switch only.
+      await updateUIText();
+      if (typeof AstrolabeNodeDetail !== 'undefined' && AstrolabeNodeDetail.refresh) {
+        AstrolabeNodeDetail.refresh();
+      }
 
       // Clear selection and pin
       if (AstrolabeCanvasRenderer.clearSelection) {

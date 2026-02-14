@@ -546,6 +546,16 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
             });
           }
         }
+
+        function setHeaderTextPreserveChildren(element, translatedText) {
+          if (!element || !translatedText) return;
+          const textNode = Array.from(element.childNodes).find(node => node.nodeType === Node.TEXT_NODE);
+          if (textNode) {
+            textNode.nodeValue = translatedText;
+          } else {
+            element.insertBefore(document.createTextNode(translatedText), element.firstChild);
+          }
+        }
         
         // 각 요소별 번역 적용
         Object.entries(langTranslations).forEach(([original, translated]) => {
@@ -600,6 +610,16 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
         if (currentPageSpan && translatedPath) {
           currentPageSpan.textContent = translatedPath;
         }
+
+        // 아코디언 화살표(span)가 들어간 h2도 번역 유지
+        setHeaderTextPreserveChildren(
+          document.querySelector('#wonder-config h2'),
+          langTranslations['원더 설정']
+        );
+        setHeaderTextPreserveChildren(
+          document.querySelector('#party-selection h2'),
+          langTranslations['괴도단']
+        );
       }
 
       

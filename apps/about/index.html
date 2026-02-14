@@ -455,15 +455,8 @@ jp: /about/?lang=jp
         if (showMoreUpdatesBtn) showMoreUpdatesBtn.textContent = getI18nText('showMoreButton', showMoreUpdatesBtn.textContent || '');
 
         const notice = document.getElementById('language-notice');
-        const noticeText = document.getElementById('language-notice-text');
-        const languageNotice = getI18nText('languageNotice', '');
-        if (notice && noticeText) {
-            if (currentLang !== 'kr' && languageNotice) {
-                noticeText.textContent = languageNotice;
-                notice.style.display = 'block';
-            } else {
-                notice.style.display = 'none';
-            }
+        if (notice) {
+            notice.style.display = 'none';
         }
 
         // 언어별 콘텐츠 표시/숨김

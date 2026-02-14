@@ -23,8 +23,19 @@ eval(atob(eB1ilzya1uivb));
 firebase.initializeApp(window.C1de3l1zdvbnEIlI1fr);
 const db = firebase.firestore();
 
+function getI18nText(key, fallback = '') {
+    if (typeof window.t === 'function') {
+        return window.t(key, fallback);
+    }
+    if (window.I18nService && typeof window.I18nService.t === 'function') {
+        return window.I18nService.t(key, fallback);
+    }
+    return fallback || key;
+}
+
 class TacticShare {
     constructor(options = {}) {
+        this.currentLang = options.lang || 'kr';
         this.currentPage = 1;
         this.postsPerPage = options.postsPerPage || 10;
         this.lastDoc = null;
@@ -49,6 +60,18 @@ class TacticShare {
         this.initSearch();
         this.loadBadWords(); // 비속어 목록 로드
         this.initRanking();
+    }
+
+    t(key, fallback = '') {
+        return getI18nText(key, fallback || key);
+    }
+
+    formatTemplate(template, replacements = {}) {
+        let result = template;
+        Object.entries(replacements).forEach(([key, value]) => {
+            result = result.replace(new RegExp(`\\{${key}\\}`, 'g'), String(value));
+        });
+        return result;
     }
 
     async handleLike(postId) {
@@ -76,14 +99,14 @@ class TacticShare {
             await db.runTransaction(async (transaction) => {
                 const chunkDoc = await transaction.get(chunkRef);
                 if (!chunkDoc.exists || !chunkDoc.data().posts[postId]) {
-                    throw new Error('게시물을 찾을 수 없습니다.');
+                    throw new Error(this.t('error_post_not_found', '게시물을 찾을 수 없습니다.'));
                 }
 
                 const post = chunkDoc.data().posts[postId];
                 const likes = post.likes || { count: 0, recentIPs: [] };
 
                 if (likes.recentIPs.includes(this.userIP)) {
-                    throw new Error('이미 좋아요를 누르셨습니다!');
+                    throw new Error(this.t('error_already_liked', '이미 좋아요를 누르셨습니다!'));
                 }
 
                 if (likes.recentIPs.length >= 1000) {
@@ -108,7 +131,7 @@ class TacticShare {
 
             } catch (error) {
             console.error('좋아요 실패:', error);
-            if (error.message === '이미 좋아요를 누르셨습니다!') {
+            if (error.message === this.t('error_already_liked', '이미 좋아요를 누르셨습니다!')) {
                 const post = document.querySelector(`.post-item[data-post-id="${postId}"]`);
                 if (post) {
                     const likeButton = post.querySelector('.like-button');
@@ -118,7 +141,7 @@ class TacticShare {
                     }
                 }
             }
-            alert(error.message || '좋아요 처리 중 오류가 발생했습니다.');
+            alert(error.message || this.t('error_like_failed', '좋아요 처리 중 오류가 발생했습니다.'));
         }
     }
 
@@ -197,9 +220,9 @@ class TacticShare {
         const container = document.getElementById('postsList');
         if (!posts || posts.length === 0) {
             container.innerHTML = `
-                <div class="post-item" style="text-align: center;">
-                    <p>아직 공유된 택틱이 없습니다.</p>
-                    <p>첫 번째 택틱을 공유해보세요!</p>
+                <div class="post-item post-empty" style="text-align: center;">
+                    <p>${this.t('empty_title', '아직 공유된 택틱이 없습니다.')}</p>
+                    <p>${this.t('empty_subtitle', '첫 번째 택틱을 공유해보세요!')}</p>
                 </div>
             `;
             return;
@@ -226,7 +249,7 @@ class TacticShare {
                 
                 <div class="post-content">
                     <div class="post-link">
-                        <a href="${escapeHtml(post.query)}" target="_blank" rel="noopener noreferrer">택틱 보기</a>
+                        <a href="${escapeHtml(post.query)}" target="_blank" rel="noopener noreferrer">${this.t('view_tactic', '택틱 보기')}</a>
                     </div>
                     <div class="tactic-preview-container"></div>
                 </div>
@@ -238,7 +261,7 @@ class TacticShare {
                             class="like-button ${post.isLiked ? 'liked' : ''}"
                             ${post.isLiked ? 'disabled' : ''}
                         >
-                            <img src="${BASE_URL}/assets/img/tactic-share/like.png" alt="좋아요" />
+                            <img src="${BASE_URL}/assets/img/tactic-share/like.png" alt="${this.t('like_alt', '좋아요')}" />
                         </button>
                         <div class="likes-count-wrapper">
                             <span class="likes-count">${post.likes}</span>
@@ -354,7 +377,7 @@ class TacticShare {
         ];
 
         if (!validPrefixes.some(prefix => url.startsWith(prefix))) {
-            throw new Error('올바른 택틱 URL 형식이 아니에요. 택틱 메이커에서 공유하기 기능을 통해 생성된 URL만 가능해요.');
+            throw new Error(this.t('error_invalid_tactic_url', '올바른 택틱 URL 형식이 아니에요. 택틱 메이커에서 공유하기 기능을 통해 생성된 URL만 가능해요.'));
         }
 
         // URL에서 data 파라미터 추출
@@ -374,14 +397,14 @@ class TacticShare {
         }
 
         if (!sharedData) {
-            throw new Error('택틱 데이터를 찾을 수 없습니다.');
+            throw new Error(this.t('error_tactic_data_not_found', '택틱 데이터를 찾을 수 없습니다.'));
         }
 
         try {
             // 데이터 구조 검증
             const decompressedData = LZString.decompressFromEncodedURIComponent(sharedData);
             if (!decompressedData) {
-                throw new Error('택틱 데이터 압축 해제에 실패했습니다.');
+                throw new Error(this.t('error_tactic_decompress_failed', '택틱 데이터 압축 해제에 실패했습니다.'));
             }
 
             const tacticData = JSON.parse(
@@ -400,12 +423,12 @@ class TacticShare {
 
             // 필수 데이터 구조 검증
             if (!tacticData.p || !Array.isArray(tacticData.p)) {
-                throw new Error('잘못된 택틱 데이터 구조입니다.');
+                throw new Error(this.t('error_invalid_tactic_structure', '잘못된 택틱 데이터 구조입니다.'));
             }
 
             return true;
         } catch (error) {
-            throw new Error('택틱 데이터 검증에 실패했습니다: ' + error.message);
+            throw new Error(`${this.t('error_tactic_validation_failed_prefix', '택틱 데이터 검증에 실패했습니다:')} ${error.message}`);
         }
     }
 
@@ -450,28 +473,28 @@ class TacticShare {
 
                 // 비속어 검사
                 if (this.containsBadWords(author)) {
-                    alert('제작자 이름에 부적절한 단어가 포함되어 있습니다.');
+                    alert(this.t('error_badword_author', '제작자 이름에 부적절한 단어가 포함되어 있습니다.'));
                     return;
                 }
                 if (this.containsBadWords(title)) {
-                    alert('제목에 부적절한 단어가 포함되어 있습니다.');
+                    alert(this.t('error_badword_title', '제목에 부적절한 단어가 포함되어 있습니다.'));
                     return;
                 }
 
                 // 일일 게시물 제한 확인
                 const limitReached = await this.checkDailyPostLimit();
                 if (limitReached) {
-                    alert('하루에 최대 5개의 택틱만 공유할 수 있어요.');
+                    alert(this.t('error_daily_limit', '하루에 최대 5개의 택틱만 공유할 수 있어요.'));
                     return;
                 }
 
                 // 길이 검증
                 if (author.length > 20) {
-                    alert('제작자 이름은 20자를 초과할 수 없습니다.');
+                    alert(this.t('error_author_too_long', '제작자 이름은 20자를 초과할 수 없습니다.'));
                     return;
                 }
                 if (title.length > 50) {
-                    alert('제목은 50자를 초과할 수 없습니다.');
+                    alert(this.t('error_title_too_long', '제목은 50자를 초과할 수 없습니다.'));
                     return;
                 }
 
@@ -512,7 +535,7 @@ class TacticShare {
 
             } catch (error) {
                 console.error('Write Post Error:', error);
-                alert(error.message || '게시물 작성에 실패했습니다.');
+                alert(error.message || this.t('error_create_post_failed', '게시물 작성에 실패했습니다.'));
             }
         });
 
@@ -580,7 +603,7 @@ class TacticShare {
                 
                 <div class="post-content">
                     <div class="post-link">
-                        <a href="${escapeHtml(postData.query)}" target="_blank" rel="noopener noreferrer">택틱 보기</a>
+                        <a href="${escapeHtml(postData.query)}" target="_blank" rel="noopener noreferrer">${this.t('view_tactic', '택틱 보기')}</a>
                     </div>
                     <div class="tactic-preview-container"></div>
                 </div>
@@ -591,7 +614,7 @@ class TacticShare {
                             onclick="tacticShare.handleLike('${postData.id}')"
                             class="like-button"
                         >
-                            <img src="${BASE_URL}/assets/img/tactic-share/like.png" alt="좋아요" />
+                            <img src="${BASE_URL}/assets/img/tactic-share/like.png" alt="${this.t('like_alt', '좋아요')}" />
                         </button>
                         <div class="likes-count-wrapper">
                             <span class="likes-count">0</span>
@@ -601,7 +624,7 @@ class TacticShare {
             </div>
         `;
 
-        if (!container.querySelector('.post-item')?.textContent.includes('아직 공유된 택틱이 없습니다')) {
+        if (!container.querySelector('.post-empty')) {
             container.insertAdjacentHTML('afterbegin', newPostHtml);
         } else {
             container.innerHTML = newPostHtml;
@@ -776,15 +799,17 @@ class TacticShare {
     // 랭킹 렌더링
     renderRanking(rankings) {
         const container = document.querySelector('.ranking-list');
+        const statsTemplate = this.t('ranking_stats', '택틱 {posts}개 · 좋아요 {likes}개');
+        const rankSuffix = this.t('rank_alt_suffix', '위');
         container.innerHTML = rankings.map((rank, index) => `
             <div class="ranking-item" data-rank="${index + 1}">
                 <div class="ranking-position">
-                    <img src="${BASE_URL}/assets/img/tactic-share/rank${index + 1}.png" alt="${index + 1}위" class="rank-icon">
+                    <img src="${BASE_URL}/assets/img/tactic-share/rank${index + 1}.png" alt="${index + 1}${rankSuffix}" class="rank-icon">
                 </div>
                 <div class="ranking-info">
                     <div class="ranking-author">${escapeHtml(rank.author)}</div>
                     <div class="ranking-stats">
-                        택틱 ${rank.posts}개 · 좋아요 ${rank.likes}개
+                        ${this.formatTemplate(statsTemplate, { posts: rank.posts, likes: rank.likes })}
                     </div>
                 </div>
             </div>

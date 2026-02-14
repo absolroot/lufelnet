@@ -25,6 +25,7 @@
 .kofi-container { display: flex; justify-content: center; }
 .kofi-container iframe { width: 226px !important; height: 60px !important; }
 .kofi-button { width: 202px !important; height: 44px !important; border-radius: 12px !important; justify-content: center !important; }
+.kofi-inline { margin-top: 14px; }
 .bmc-container { margin-bottom: 0px; }
 .kakao-pay-container { text-align: center; }
 .kakao-pay-button { padding: 8px 16px; background-color: #FFEB00; color: #000000; border: none; border-radius: 12px; cursor: pointer; font-weight: bold; font-size: 14px; display: flex; align-items: center; justify-content: center; position: relative; transition: all 0.3s ease; min-height: 60px; width: 226px; /* 버튼 크기 맞추기 */margin: 0 auto; /* 중앙 정렬 */}

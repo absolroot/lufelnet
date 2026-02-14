@@ -1,0 +1,56 @@
+{
+  "data": {
+    "advance_dialog": [],
+    "can_romance": false,
+    "friend_lover_dialog": [],
+    "item": [],
+    "name": "路菲尔",
+    "romance_dialog": [],
+    "special_award": [
+      {
+        "description": "不定期发布路菲尔的「商业」目标",
+        "icon": "xielizhe-icon-lufeier-06.png",
+        "name": "「交易」成立",
+        "rank": 1
+      },
+      {
+        "description": "可以进行潜入道具的制作（解锁工作台后解锁）",
+        "icon": "xielizhe-icon-lufeier-01.png",
+        "name": "潜入道具制作",
+        "rank": 2
+      },
+      {
+        "description": "可以在宫殿与印象空间对低等级的阴影进行瞬杀",
+        "icon": "xielizhe-icon-lufeier-07.png",
+        "name": "潜入行动心得",
+        "rank": 3
+      },
+      {
+        "description": "增加寻宝仪、潜入道具及礼物的制作",
+        "icon": "xielizhe-icon-lufeier-02.png",
+        "name": "中阶制作配方",
+        "rank": 4
+      },
+      {
+        "description": "制作礼物时，有几率返还部分制作材料",
+        "icon": "xielizhe-icon-lufeier-04.png",
+        "name": "材料节省心得",
+        "rank": 5
+      },
+      {
+        "description": "制作礼物时，有几率额外产出一个",
+        "icon": "xielizhe-icon-lufeier-04.png",
+        "name": "制作技巧",
+        "rank": 7
+      }
+    ],
+    "time": null,
+    "unlock_quest": {
+      "details": "时间不早了，上床休息吧。",
+      "name": "见证隐藏的世界"
+    },
+    "visit_dialog": []
+  },
+  "msg": "OK",
+  "status": 0
+}

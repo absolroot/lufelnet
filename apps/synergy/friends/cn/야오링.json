@@ -1,0 +1,1430 @@
+{
+  "data": {
+    "advance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "要不要尝试去体验",
+              "reward": 60
+            },
+            {
+              "content": "好严肃……",
+              "reward": 40
+            },
+            {
+              "content": "不用太着急",
+              "reward": 50
+            }
+          ],
+          [
+            {
+              "content": "从李瑶铃那里拿到了「爆竹」，\n学习到了食谱……",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 2,
+          "to": 3
+        },
+        "unlock_cond": "知识 Lv.3"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "可能的确",
+              "reward": 40
+            },
+            {
+              "content": "瑶铃是怎样的？",
+              "reward": 60
+            },
+            {
+              "content": "在热衷学习以外的事",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 4,
+          "to": 5
+        },
+        "unlock_cond": "知识 Lv.5"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "瑶铃也加油吧",
+              "reward": 60
+            },
+            {
+              "content": "按自己的节奏来",
+              "reward": 50
+            },
+            {
+              "content": "首先重要的是享受",
+              "reward": 40
+            }
+          ],
+          [
+            {
+              "content": "从李瑶铃那里收到了\n『中餐食谱（上卷）』……",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 6,
+          "to": 7
+        },
+        "unlock_cond": "知识 Lv.6"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "得做点什么",
+              "reward": 60
+            },
+            {
+              "content": "家家有本难念的经",
+              "reward": 50
+            },
+            {
+              "content": "未知全貌不予置评",
+              "reward": 40
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 8,
+          "to": 9
+        },
+        "unlock_cond": "知识 Lv.8"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "是个好机会",
+              "reward": 60
+            },
+            {
+              "content": "可以聊聊各种话题",
+              "reward": 50
+            },
+            {
+              "content": "感觉能学到东西",
+              "reward": 40
+            }
+          ],
+          [
+            {
+              "content": "下次也请务必多多关照！",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 10,
+          "to": 11
+        },
+        "unlock_cond": "知识 Lv.10"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "对抹茶也很熟悉？",
+              "reward": 60
+            },
+            {
+              "content": "食欲真伟大啊",
+              "reward": 40
+            },
+            {
+              "content": "明白不同之处的淑女",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 12,
+          "to": 13
+        },
+        "unlock_cond": "知识 Lv.11"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "可以用真心打动她",
+              "reward": 60
+            },
+            {
+              "content": "有礼貌地说吧",
+              "reward": 40
+            },
+            {
+              "content": "把想说的话说出来",
+              "reward": 50
+            }
+          ],
+          [
+            {
+              "content": "从李瑶铃那里收到了『咒符』\n学到了食谱……",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 14,
+          "to": 15
+        },
+        "unlock_cond": "知识 Lv.13"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "肯定传达到了",
+              "reward": 50
+            },
+            {
+              "content": "不知道",
+              "reward": 40
+            },
+            {
+              "content": "相信自己吧",
+              "reward": 60
+            }
+          ],
+          [
+            {
+              "content": "从瑶铃那里\n拿到了『中餐食谱（下卷）』……",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 16,
+          "to": 17
+        },
+        "unlock_cond": "知识 Lv.15"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "最佳回答",
+              "reward": 50
+            },
+            {
+              "content": "想多了吧？",
+              "reward": 40
+            },
+            {
+              "content": "爸爸的深谋远虑啊",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 19,
+          "to": 20
+        },
+        "unlock_cond": "知识 Lv.17"
+      }
+    ],
+    "can_romance": true,
+    "friend_lover_dialog": [
+      {
+        "content": "因为和你约好了",
+        "is_romance": false
+      },
+      {
+        "content": "因为瑶铃是我重要的人",
+        "is_romance": true
+      }
+    ],
+    "item": [
+      {
+        "bonus_synergy": 8,
+        "compound": [],
+        "image": "item-303075.png",
+        "name": "限定卡片集",
+        "new_gift_synergy": 16,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 3040,
+            "isHidden": 0,
+            "mapName": "新宿",
+            "maxBuy": 3,
+            "moneyName": "现金",
+            "personalityLimit": "魅力 LV.3",
+            "price": 3200,
+            "reducePriceCond": "道玄坂琉七 LV.7",
+            "resetType": "주간",
+            "shopName": "777便利店"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 55,
+        "compound": [],
+        "image": "item-303201.png",
+        "name": "灵异录像带",
+        "new_gift_synergy": 110,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 31000,
+            "isHidden": 0,
+            "mapName": "涩谷",
+            "maxBuy": 1,
+            "moneyName": "现金",
+            "personalityLimit": "勇气 LV.10",
+            "price": 32000,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "折扣商品店"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 55
+      },
+      {
+        "bonus_synergy": 9,
+        "compound": [],
+        "image": "item-303202.png",
+        "name": "不可思议眼镜",
+        "new_gift_synergy": 18,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 3390,
+            "isHidden": 0,
+            "mapName": "涩谷",
+            "maxBuy": 3,
+            "moneyName": "现金",
+            "personalityLimit": "勇气 LV.3",
+            "price": 3560,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "折扣商品店"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 9
+      },
+      {
+        "bonus_synergy": 7,
+        "compound": [],
+        "image": "item-303217.png",
+        "name": "特制坚果组合",
+        "new_gift_synergy": 14,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 2660,
+            "isHidden": 0,
+            "mapName": "杂司谷",
+            "maxBuy": 4,
+            "moneyName": "现金",
+            "price": 2800,
+            "reducePriceCond": "道玄坂琉七 LV.9",
+            "resetType": "주간",
+            "shopName": "超市"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 7
+      },
+      {
+        "bonus_synergy": 12,
+        "compound": [],
+        "image": "item-303220.png",
+        "name": "成人智慧环",
+        "new_gift_synergy": 24,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 4470,
+            "isHidden": 0,
+            "mapName": "新宿",
+            "maxBuy": 2,
+            "moneyName": "现金",
+            "price": 4700,
+            "reducePriceCond": "道玄坂琉七 LV.7",
+            "resetType": "주간",
+            "shopName": "777便利店"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 12
+      },
+      {
+        "bonus_synergy": 64,
+        "compound": [],
+        "image": "item-303241.png",
+        "name": "最新型数字相机",
+        "new_gift_synergy": 128,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 38800,
+            "isHidden": 0,
+            "mapName": "涩谷",
+            "maxBuy": 1,
+            "moneyName": "现金",
+            "price": 39800,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "高级超市"
+          },
+          {
+            "discountPrice": 38800,
+            "isHidden": 0,
+            "mapName": "秋叶原",
+            "maxBuy": 1,
+            "moneyName": "现金",
+            "price": 39800,
+            "reducePriceCond": "道玄坂琉七 LV.5",
+            "resetType": "주간",
+            "shopName": "商王"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 64
+      },
+      {
+        "bonus_synergy": 10,
+        "compound": [],
+        "image": "item-303244.png",
+        "name": "传统点心组合",
+        "new_gift_synergy": 20,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 3610,
+            "isHidden": 0,
+            "mapName": "杂司谷",
+            "maxBuy": 3,
+            "moneyName": "现金",
+            "price": 3800,
+            "reducePriceCond": "道玄坂琉七 LV.9",
+            "resetType": "주간",
+            "shopName": "超市"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 10
+      },
+      {
+        "bonus_synergy": 6,
+        "compound": [],
+        "image": "item-303245.png",
+        "name": "剑玉",
+        "new_gift_synergy": 12,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 2280,
+            "isHidden": 0,
+            "mapName": "涩谷",
+            "maxBuy": 6,
+            "moneyName": "现金",
+            "price": 2400,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "和风杂货店"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 6
+      },
+      {
+        "bonus_synergy": 52,
+        "compound": [],
+        "image": "item-303252.png",
+        "name": "高性能电动牙刷",
+        "new_gift_synergy": 104,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 28800,
+            "isHidden": 0,
+            "mapName": "涩谷",
+            "maxBuy": 1,
+            "moneyName": "现金",
+            "price": 29800,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "777便利店"
+          },
+          {
+            "discountPrice": 28800,
+            "isHidden": 0,
+            "mapName": "秋叶原",
+            "maxBuy": 1,
+            "moneyName": "现金",
+            "price": 29800,
+            "reducePriceCond": "道玄坂琉七 LV.5",
+            "resetType": "주간",
+            "shopName": "商王"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 52
+      },
+      {
+        "bonus_synergy": 8,
+        "compound": [],
+        "image": "item-303282.png",
+        "name": "限量版钥匙圈",
+        "new_gift_synergy": 16,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 2850,
+            "isHidden": 0,
+            "mapName": "吉祥寺",
+            "maxBuy": 3,
+            "moneyName": "现金",
+            "price": 3000,
+            "reducePriceCond": "道玄坂琉七 LV.13",
+            "resetType": "주간",
+            "shopName": "能量石专卖店"
+          },
+          {
+            "discountPrice": 2850,
+            "isHidden": 0,
+            "mapName": "秋叶原",
+            "maxBuy": 3,
+            "moneyName": "现金",
+            "price": 3000,
+            "reducePriceCond": "道玄坂琉七 LV.5",
+            "resetType": "주간",
+            "shopName": "受屋"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 8,
+        "compound": [],
+        "image": "item-303283.png",
+        "name": "粗点心零食超值包",
+        "new_gift_synergy": 16,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 2850,
+            "isHidden": 0,
+            "mapName": "四轩茶屋",
+            "maxBuy": 3,
+            "moneyName": "现金",
+            "price": 3000,
+            "reducePriceCond": "道玄坂琉七 LV.9",
+            "resetType": "주간",
+            "shopName": "超市"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 19,
+        "compound": [],
+        "image": "item-303284.png",
+        "name": "高级精油组合",
+        "new_gift_synergy": 38,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 7320,
+            "isHidden": 0,
+            "mapName": "涩谷",
+            "maxBuy": 2,
+            "moneyName": "现金",
+            "price": 7700,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "美妆店"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 19
+      },
+      {
+        "bonus_synergy": 15,
+        "compound": [],
+        "image": "item-303285.png",
+        "name": "栗子蛋糕",
+        "new_gift_synergy": 30,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 5700,
+            "isHidden": 0,
+            "mapName": "涩谷",
+            "maxBuy": 3,
+            "moneyName": "现金",
+            "price": 6000,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "高级超市"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 15
+      },
+      {
+        "bonus_synergy": 24,
+        "compound": [],
+        "image": "item-303286.png",
+        "name": "音乐雪花球模型",
+        "new_gift_synergy": 48,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 9500,
+            "isHidden": 0,
+            "mapName": "吉祥寺",
+            "maxBuy": 1,
+            "moneyName": "现金",
+            "price": 10000,
+            "reducePriceCond": "道玄坂琉七 LV.13",
+            "resetType": "주간",
+            "shopName": "文具店"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 24
+      },
+      {
+        "bonus_synergy": 28,
+        "compound": [],
+        "image": "item-303287.png",
+        "name": "桌上型熏香机",
+        "new_gift_synergy": 56,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 11400,
+            "isHidden": 0,
+            "mapName": "涩谷",
+            "maxBuy": 1,
+            "moneyName": "现金",
+            "price": 12000,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "美妆店"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 28
+      },
+      {
+        "bonus_synergy": 9,
+        "compound": [
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "拥有洁白的外貌和素雅的香气，宛如纯洁无瑕的少女一般令人着迷。",
+              "icon": "item-306119.png",
+              "name": "茉莉",
+              "seed": [
+                {
+                  "consume_ap": [
+                    10,
+                    9,
+                    7
+                  ],
+                  "count": "random(2,6)",
+                  "rate": "100%",
+                  "seed": {
+                    "box": [],
+                    "compound": [],
+                    "content_bg": "黑褐色的种子，表面皱皱巴巴，却可以成长为非常美丽且优雅的鲜花。",
+                    "icon": "item-306103.png",
+                    "name": "茉莉种子",
+                    "seed": [],
+                    "shop": [
+                      {
+                        "discountPrice": 490,
+                        "isHidden": 0,
+                        "mapName": "涩谷",
+                        "maxBuy": 10,
+                        "moneyName": "现金",
+                        "personalityLimit": "体贴 LV.3",
+                        "price": 510,
+                        "reducePriceCond": "道玄坂琉七 LV.1",
+                        "resetType": "일간",
+                        "shopName": "花店"
+                      }
+                    ],
+                    "source": [
+                      "shop"
+                    ],
+                    "tips": "一包品质普通的鲜花种子，种植后可收获『茉莉』。",
+                    "type": "种子"
+                  }
+                },
+                {
+                  "consume_ap": [
+                    15,
+                    13,
+                    10
+                  ],
+                  "count": "random(2,6)",
+                  "rate": "30.0%",
+                  "seed": {
+                    "box": [],
+                    "compound": [],
+                    "content_bg": "只能隐约从标签上辨识出是某种带有香味的花，但分不清具体是什么。",
+                    "icon": "item-306108.png",
+                    "name": "奇怪的种子",
+                    "seed": [],
+                    "shop": [
+                      {
+                        "discountPrice": 1650,
+                        "isHidden": 0,
+                        "mapName": "涩谷",
+                        "maxBuy": 10,
+                        "moneyName": "现金",
+                        "personalityLimit": "体贴 LV.9",
+                        "price": 1730,
+                        "reducePriceCond": "道玄坂琉七 LV.1",
+                        "resetType": "일간",
+                        "shopName": "花店"
+                      }
+                    ],
+                    "source": [
+                      "shop"
+                    ],
+                    "tips": "一包标签破损的鲜花种子，种植后可能会收获『紫罗兰』或『茉莉』。",
+                    "type": "种子"
+                  }
+                }
+              ],
+              "shop": [],
+              "source": [
+                "seed"
+              ],
+              "tips": "『茉莉』，既香又美的花卉，可使用工作台制作成『茉莉花茶』，作为礼物赠与协同者。",
+              "type": "花卉"
+            },
+            "itemCount": 6
+          },
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "简约风格的包装纸，非常实用。",
+              "icon": "item-305907.png",
+              "name": "简约的包装",
+              "seed": [],
+              "shop": [
+                {
+                  "discountPrice": 290,
+                  "isHidden": 0,
+                  "mapName": "涩谷",
+                  "maxBuy": 10,
+                  "moneyName": "现金",
+                  "price": 300,
+                  "reducePriceCond": "道玄坂琉七 LV.1",
+                  "resetType": "일간",
+                  "shopName": "花店"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "一种常见的制作材料。\n可使用工作台制作成协同者礼物『小雏菊香料』·『葵花籽』·『茉莉花茶』。",
+              "type": "材料"
+            },
+            "itemCount": 1
+          }
+        ],
+        "image": "item-305943.png",
+        "name": "茉莉花茶",
+        "new_gift_synergy": 18,
+        "seed": [],
+        "shop": [],
+        "source": [
+          "compound"
+        ],
+        "synergy": 9
+      },
+      {
+        "bonus_synergy": 17,
+        "compound": [
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "花色明艳，花瓣层层叠叠，宛如轻盈裙摆，盛夏时节盛开，是庭院与小径上常见的点缀。",
+              "icon": "item-306218.png",
+              "name": "凤仙花",
+              "seed": [],
+              "shop": [
+                {
+                  "discountPrice": 1140,
+                  "isHidden": 0,
+                  "mapName": "涩谷",
+                  "maxBuy": 3,
+                  "moneyName": "现金",
+                  "price": 1200,
+                  "reducePriceCond": "道玄坂琉七 LV.1",
+                  "resetType": "주간",
+                  "shopName": "花店"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "『凤仙花』，色彩明艳的花卉，可使用工作台制作成『凤仙花瓣染』，作为礼物赠与协同者。",
+              "type": "花卉"
+            },
+            "itemCount": 6
+          },
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "白色棉布制成的方形布料，质地轻薄柔软。可以进行简单的染色加工。",
+              "icon": "item-305969.png",
+              "name": "白色手帕",
+              "seed": [],
+              "shop": [
+                {
+                  "discountPrice": 380,
+                  "isHidden": 0,
+                  "mapName": "涩谷",
+                  "maxBuy": 10,
+                  "moneyName": "现金",
+                  "price": 400,
+                  "reducePriceCond": "道玄坂琉七 LV.1",
+                  "resetType": "주간",
+                  "shopName": "高级超市"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "一种常见的制作材料。\n可使用工作台制作成协同者礼物『凤仙花瓣染』。",
+              "type": "材料"
+            },
+            "itemCount": 1
+          }
+        ],
+        "image": "item-305951.png",
+        "name": "凤仙花瓣染",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [],
+        "source": [
+          "compound"
+        ],
+        "synergy": 17
+      },
+      {
+        "bonus_synergy": 49,
+        "compound": [],
+        "image": "item-303298.png",
+        "name": "心语巧克力",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [],
+        "source": [],
+        "synergy": 50
+      },
+      {
+        "bonus_synergy": 60,
+        "compound": [
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "一支盛放的红玫瑰花，花语是炽热的感情与真挚的心意，在情人节期间非常受人欢迎。",
+              "icon": "item-305965.png",
+              "name": "红玫瑰",
+              "seed": [],
+              "shop": [],
+              "source": [],
+              "tips": "一种特殊的制作材料。\n可使用工作台制作成协同者礼物『真爱永恒』、『浮游花·小型』、『浮游花·中型』、『浮游花·大型』、『浮游花·豪华』、『浮游花·典藏』。",
+              "type": "材料"
+            },
+            "itemCount": 33
+          },
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "食品级的液体白蜡，清澈透明，闻起来有淡淡的醇类香气。",
+              "icon": "item-305970.png",
+              "name": "矿物油",
+              "seed": [],
+              "shop": [
+                {
+                  "discountPrice": 190,
+                  "isHidden": 0,
+                  "mapName": "四轩茶屋",
+                  "maxBuy": -1,
+                  "moneyName": "现金",
+                  "price": 200,
+                  "reducePriceCond": "道玄坂琉七 LV.9",
+                  "resetType": "없음",
+                  "shopName": "二手杂货店"
+                },
+                {
+                  "discountPrice": 190,
+                  "isHidden": 0,
+                  "mapName": null,
+                  "maxBuy": -1,
+                  "moneyName": "现金",
+                  "price": 200,
+                  "reducePriceCond": "道玄坂琉七 LV.5",
+                  "resetType": "없음",
+                  "shopName": "秋叶原电子"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "一种常见的制作材料。\n可使用工作台制作成协同者礼物『浮游花·小型』、『浮游花·中型』、『浮游花·大型』、『浮游花·豪华』、『浮游花·典藏』。",
+              "type": "材料"
+            },
+            "itemCount": 1
+          }
+        ],
+        "image": "item-305971.png",
+        "name": "浮游花·小型",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [],
+        "source": [
+          "compound"
+        ],
+        "synergy": 60
+      },
+      {
+        "bonus_synergy": 118,
+        "compound": [
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "一支盛放的红玫瑰花，花语是炽热的感情与真挚的心意，在情人节期间非常受人欢迎。",
+              "icon": "item-305965.png",
+              "name": "红玫瑰",
+              "seed": [],
+              "shop": [],
+              "source": [],
+              "tips": "一种特殊的制作材料。\n可使用工作台制作成协同者礼物『真爱永恒』、『浮游花·小型』、『浮游花·中型』、『浮游花·大型』、『浮游花·豪华』、『浮游花·典藏』。",
+              "type": "材料"
+            },
+            "itemCount": 88
+          },
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "食品级的液体白蜡，清澈透明，闻起来有淡淡的醇类香气。",
+              "icon": "item-305970.png",
+              "name": "矿物油",
+              "seed": [],
+              "shop": [
+                {
+                  "discountPrice": 190,
+                  "isHidden": 0,
+                  "mapName": "四轩茶屋",
+                  "maxBuy": -1,
+                  "moneyName": "现金",
+                  "price": 200,
+                  "reducePriceCond": "道玄坂琉七 LV.9",
+                  "resetType": "없음",
+                  "shopName": "二手杂货店"
+                },
+                {
+                  "discountPrice": 190,
+                  "isHidden": 0,
+                  "mapName": null,
+                  "maxBuy": -1,
+                  "moneyName": "现金",
+                  "price": 200,
+                  "reducePriceCond": "道玄坂琉七 LV.5",
+                  "resetType": "없음",
+                  "shopName": "秋叶原电子"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "一种常见的制作材料。\n可使用工作台制作成协同者礼物『浮游花·小型』、『浮游花·中型』、『浮游花·大型』、『浮游花·豪华』、『浮游花·典藏』。",
+              "type": "材料"
+            },
+            "itemCount": 2
+          }
+        ],
+        "image": "item-305972.png",
+        "name": "浮游花·中型",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [],
+        "source": [
+          "compound"
+        ],
+        "synergy": 118
+      },
+      {
+        "bonus_synergy": 142,
+        "compound": [
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "一支盛放的红玫瑰花，花语是炽热的感情与真挚的心意，在情人节期间非常受人欢迎。",
+              "icon": "item-305965.png",
+              "name": "红玫瑰",
+              "seed": [],
+              "shop": [],
+              "source": [],
+              "tips": "一种特殊的制作材料。\n可使用工作台制作成协同者礼物『真爱永恒』、『浮游花·小型』、『浮游花·中型』、『浮游花·大型』、『浮游花·豪华』、『浮游花·典藏』。",
+              "type": "材料"
+            },
+            "itemCount": 111
+          },
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "食品级的液体白蜡，清澈透明，闻起来有淡淡的醇类香气。",
+              "icon": "item-305970.png",
+              "name": "矿物油",
+              "seed": [],
+              "shop": [
+                {
+                  "discountPrice": 190,
+                  "isHidden": 0,
+                  "mapName": "四轩茶屋",
+                  "maxBuy": -1,
+                  "moneyName": "现金",
+                  "price": 200,
+                  "reducePriceCond": "道玄坂琉七 LV.9",
+                  "resetType": "없음",
+                  "shopName": "二手杂货店"
+                },
+                {
+                  "discountPrice": 190,
+                  "isHidden": 0,
+                  "mapName": null,
+                  "maxBuy": -1,
+                  "moneyName": "现金",
+                  "price": 200,
+                  "reducePriceCond": "道玄坂琉七 LV.5",
+                  "resetType": "없음",
+                  "shopName": "秋叶原电子"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "一种常见的制作材料。\n可使用工作台制作成协同者礼物『浮游花·小型』、『浮游花·中型』、『浮游花·大型』、『浮游花·豪华』、『浮游花·典藏』。",
+              "type": "材料"
+            },
+            "itemCount": 3
+          }
+        ],
+        "image": "item-305973.png",
+        "name": "浮游花·大型",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [],
+        "source": [
+          "compound"
+        ],
+        "synergy": 142
+      },
+      {
+        "bonus_synergy": 398,
+        "compound": [
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "一支盛放的红玫瑰花，花语是炽热的感情与真挚的心意，在情人节期间非常受人欢迎。",
+              "icon": "item-305965.png",
+              "name": "红玫瑰",
+              "seed": [],
+              "shop": [],
+              "source": [],
+              "tips": "一种特殊的制作材料。\n可使用工作台制作成协同者礼物『真爱永恒』、『浮游花·小型』、『浮游花·中型』、『浮游花·大型』、『浮游花·豪华』、『浮游花·典藏』。",
+              "type": "材料"
+            },
+            "itemCount": 365
+          },
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "食品级的液体白蜡，清澈透明，闻起来有淡淡的醇类香气。",
+              "icon": "item-305970.png",
+              "name": "矿物油",
+              "seed": [],
+              "shop": [
+                {
+                  "discountPrice": 190,
+                  "isHidden": 0,
+                  "mapName": "四轩茶屋",
+                  "maxBuy": -1,
+                  "moneyName": "现金",
+                  "price": 200,
+                  "reducePriceCond": "道玄坂琉七 LV.9",
+                  "resetType": "없음",
+                  "shopName": "二手杂货店"
+                },
+                {
+                  "discountPrice": 190,
+                  "isHidden": 0,
+                  "mapName": null,
+                  "maxBuy": -1,
+                  "moneyName": "现金",
+                  "price": 200,
+                  "reducePriceCond": "道玄坂琉七 LV.5",
+                  "resetType": "없음",
+                  "shopName": "秋叶原电子"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "一种常见的制作材料。\n可使用工作台制作成协同者礼物『浮游花·小型』、『浮游花·中型』、『浮游花·大型』、『浮游花·豪华』、『浮游花·典藏』。",
+              "type": "材料"
+            },
+            "itemCount": 8
+          }
+        ],
+        "image": "item-305974.png",
+        "name": "浮游花·豪华",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [],
+        "source": [
+          "compound"
+        ],
+        "synergy": 398
+      },
+      {
+        "bonus_synergy": 814,
+        "compound": [
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "一支盛放的红玫瑰花，花语是炽热的感情与真挚的心意，在情人节期间非常受人欢迎。",
+              "icon": "item-305965.png",
+              "name": "红玫瑰",
+              "seed": [],
+              "shop": [],
+              "source": [],
+              "tips": "一种特殊的制作材料。\n可使用工作台制作成协同者礼物『真爱永恒』、『浮游花·小型』、『浮游花·中型』、『浮游花·大型』、『浮游花·豪华』、『浮游花·典藏』。",
+              "type": "材料"
+            },
+            "itemCount": 777
+          },
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "食品级的液体白蜡，清澈透明，闻起来有淡淡的醇类香气。",
+              "icon": "item-305970.png",
+              "name": "矿物油",
+              "seed": [],
+              "shop": [
+                {
+                  "discountPrice": 190,
+                  "isHidden": 0,
+                  "mapName": "四轩茶屋",
+                  "maxBuy": -1,
+                  "moneyName": "现金",
+                  "price": 200,
+                  "reducePriceCond": "道玄坂琉七 LV.9",
+                  "resetType": "없음",
+                  "shopName": "二手杂货店"
+                },
+                {
+                  "discountPrice": 190,
+                  "isHidden": 0,
+                  "mapName": null,
+                  "maxBuy": -1,
+                  "moneyName": "现金",
+                  "price": 200,
+                  "reducePriceCond": "道玄坂琉七 LV.5",
+                  "resetType": "없음",
+                  "shopName": "秋叶原电子"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "一种常见的制作材料。\n可使用工作台制作成协同者礼物『浮游花·小型』、『浮游花·中型』、『浮游花·大型』、『浮游花·豪华』、『浮游花·典藏』。",
+              "type": "材料"
+            },
+            "itemCount": 15
+          }
+        ],
+        "image": "item-305975.png",
+        "name": "浮游花·典藏",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [],
+        "source": [
+          "compound"
+        ],
+        "synergy": 814
+      },
+      {
+        "bonus_synergy": 1000,
+        "compound": [
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "一支盛放的红玫瑰花，花语是炽热的感情与真挚的心意，在情人节期间非常受人欢迎。",
+              "icon": "item-305965.png",
+              "name": "红玫瑰",
+              "seed": [],
+              "shop": [],
+              "source": [],
+              "tips": "一种特殊的制作材料。\n可使用工作台制作成协同者礼物『真爱永恒』、『浮游花·小型』、『浮游花·中型』、『浮游花·大型』、『浮游花·豪华』、『浮游花·典藏』。",
+              "type": "材料"
+            },
+            "itemCount": 999
+          },
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "风格华丽的包装纸，适用于名贵礼物。",
+              "icon": "item-305932.png",
+              "name": "华丽的包装",
+              "seed": [],
+              "shop": [
+                {
+                  "discountPrice": 480,
+                  "isHidden": 0,
+                  "mapName": "涩谷",
+                  "maxBuy": 10,
+                  "moneyName": "现金",
+                  "price": 500,
+                  "reducePriceCond": "道玄坂琉七 LV.1",
+                  "resetType": "일간",
+                  "shopName": "花店"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "一种常见的制作材料。\n可使用工作台制作成协同者礼物『山茶花花茶』·『金木樨花茶』·『百合永生花』·『维丽特』·『风物诗』·『真爱永恒』。",
+              "type": "材料"
+            },
+            "itemCount": 1
+          }
+        ],
+        "image": "item-305966.png",
+        "name": "真爱永恒",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [],
+        "source": [
+          "compound"
+        ],
+        "synergy": 999
+      },
+      {
+        "bonus_synergy": 1000,
+        "compound": [],
+        "image": "item-305976.png",
+        "name": "真爱同心",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [],
+        "source": [],
+        "synergy": 999
+      }
+    ],
+    "name": "李瑶铃",
+    "romance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "好漂亮……",
+              "reward": 60
+            },
+            {
+              "content": "好神奇……",
+              "reward": 50
+            }
+          ]
+        ]
+      }
+    ],
+    "special_award": [
+      {
+        "description": "开放部分战斗内小道具的制作",
+        "icon": "xielizhe-icon-lufeier-01.png",
+        "name": "心灵手巧",
+        "rank": 1
+      },
+      {
+        "description": "开放部分中式料理的烹饪",
+        "icon": "xielizhe-icon-jianajun-01.png",
+        "name": "中华料理配方",
+        "rank": 5
+      },
+      {
+        "description": "开放更多战斗内道具的制作",
+        "icon": "xielizhe-icon-lufeier-01.png",
+        "name": "努力的回报",
+        "rank": 9
+      },
+      {
+        "description": "战斗道具制作时概率返还部分材料",
+        "icon": "xielizhe-icon-lufeier-04.png",
+        "name": "娴熟的技巧",
+        "rank": 13
+      },
+      {
+        "description": "开放更多中式料理的烹饪",
+        "icon": "xielizhe-icon-jianajun-01.png",
+        "name": "中华料理的魅力",
+        "rank": 17
+      }
+    ],
+    "time": "傍晚",
+    "unlock_quest": {
+      "details": "回卧室准备睡觉吧。",
+      "name": "负重之人的对决"
+    },
+    "visit_dialog": [
+      {
+        "destination": "神田",
+        "good_answers": [
+          [
+            {
+              "content": "听说过",
+              "reward": 60
+            },
+            {
+              "content": "完全不知道",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "月岛",
+        "good_answers": [
+          [
+            {
+              "content": "或许是这样",
+              "reward": 60
+            },
+            {
+              "content": "是这样吗？",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "浅草",
+        "good_answers": [
+          [
+            {
+              "content": "要坐水上巴士吗？",
+              "reward": 60
+            },
+            {
+              "content": "要看水族馆吗？",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "杂司谷",
+        "good_answers": [
+          [
+            {
+              "content": "我请你吃吧",
+              "reward": 60
+            },
+            {
+              "content": "你请我吃",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "下北泽",
+        "good_answers": [
+          [
+            {
+              "content": "你看重是这个？",
+              "reward": 50
+            },
+            {
+              "content": "很符合瑶铃的风格",
+              "reward": 60
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "msg": "OK",
+  "status": 0
+}

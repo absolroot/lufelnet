@@ -304,20 +304,14 @@
 
             if (effectData) {
                 const translatedTitle = getLocalizedRevelationName(koreanName);
-                const setTexts = {
-                    kr: { set2: '2세트', set4: '4세트' },
-                    en: { set2: '2-Set', set4: '4-Set' },
-                    jp: { set2: '2セット', set4: '4セット' }
-                };
-                const setText = setTexts[currentLang] || setTexts.kr;
-
-                let tooltipText = `[${translatedTitle}]\n${setText.set2}: ${set2Text}\n${setText.set4}: ${set4Text}`;
+                const set2Label = t('revelationSet2');
+                const set4Label = t('revelationSet4');
+                let tooltipText = `[${translatedTitle}]\n${set2Label}: ${set2Text}\n${set4Label}: ${set4Text}`;
 
                 if (setTypes && setTypes.includes('미출시')) {
-                    if (currentLang === 'en') {
-                        tooltipText += `\n\n#NOT RELEASED IN GLOBAL SERVER#`;
-                    } else if (currentLang === 'jp') {
-                        tooltipText += `\n\n#グローバルサーバーで未発表#`;
+                    const notReleasedText = t('revelationNotReleased');
+                    if (notReleasedText) {
+                        tooltipText += `\n\n${notReleasedText}`;
                     }
                 }
 
@@ -362,10 +356,8 @@
                         } else {
                             subTitle = getLocalizedRevelationName(subRevKey);
                         }
-                        if (currentLang === 'en' && subTitle === 'type') {
-                            return '#NOT RELEASED IN GLOBAL SERVER#';
-                        } else if (currentLang === 'jp' && subTitle === 'type') {
-                            return '#グローバルサーバーで未発表#';
+                        if (subTitle === 'type') {
+                            return t('revelationNotReleased');
                         }
                         return `[${mainTitle} - ${subTitle}]\n${effect}`;
                     })
@@ -396,7 +388,7 @@
         }
 
         // Get the effect text based on current language
-        let effectText = 'No effect information available.';
+        let effectText = t('weaponEffectNoInfo');
         const lang = getCurrentLang();
 
         if (weaponsData && weaponsData[weaponId]) {
@@ -425,7 +417,8 @@
 
             if (stampEffectText) {
                 const stampName = lang === 'en' ? stampData.name_en : (lang === 'jp' ? stampData.name_jp : stampData.name);
-                const stampIcon = hasStamp ? ` <img class="weapon-modal-stamp-icon" src="${BASE_URL}/assets/img/wonder-weapon/lightning_stamp.png" alt="Lightning Stamp" title="Lightning Stamp" style="width: 16px; vertical-align: middle; margin-left: 4px;">` : '';
+                const stampLabel = t('labelLightningStamp');
+                const stampIcon = hasStamp ? ` <img class="weapon-modal-stamp-icon" src="${BASE_URL}/assets/img/wonder-weapon/lightning_stamp.png" alt="${stampLabel}" title="${stampLabel}" style="width: 16px; vertical-align: middle; margin-left: 4px;">` : '';
                 effectText += `\n\n-\n[${stampName}]${stampIcon}\n${stampEffectText}`;
             }
         }
@@ -922,45 +915,25 @@
             });
 
             // 언어별 콜라보 설명 (출시 콘텐츠 명시)
-            const lang = getCurrentLang();
-            const collaboLabels = {
-                en: {
-                    p5: { title: 'P5 Collaboration Release', desc: 'P5 Collaboration' },
-                    p5r: { title: 'P5R Collaboration Release', desc: 'P5R Collaboration' },
-                    p3r: { title: 'P3R Collaboration Release', desc: 'P3R Collaboration' }
-                },
-                jp: {
-                    p5: { title: 'P5 コラボレーション配信', desc: 'P5 コラボレーション' },
-                    p5r: { title: 'P5R コラボレーション配信', desc: 'P5R コラボレーション' },
-                    p3r: { title: 'P3R コラボレーション配信', desc: 'P3R コラボレーション' }
-                },
-                kr: {
-                    p5: { title: 'P5 콜라보 출시', desc: 'P5 콜라보' },
-                    p5r: { title: 'P5R 콜라보 출시', desc: 'P5R 콜라보' },
-                    p3r: { title: 'P3R 콜라보 출시', desc: 'P3R 콜라보' }
-                }
-            };
-            const labels = collaboLabels[lang] || collaboLabels.en;
-
             if (hasP5R) {
                 collaboIconHtml = `
                     <div class="content-badge collabo-badge">
-                        <img class="content-icon" src="${BASE_URL}/apps/schedule/p5r.png" alt="P5R" title="${labels.p5r.title}">
-                        <span class="content-label">${labels.p5r.desc}</span>
+                        <img class="content-icon" src="${BASE_URL}/apps/schedule/p5r.png" alt="P5R" title="${t('collaboP5rTitle')}">
+                        <span class="content-label">${t('collaboP5rDesc')}</span>
                     </div>
                 `;
             } else if (hasP5) {
                 collaboIconHtml = `
                     <div class="content-badge collabo-badge">
-                        <img class="content-icon" src="${BASE_URL}/apps/schedule/p5.png" alt="P5" title="${labels.p5.title}">
-                        <span class="content-label">${labels.p5.desc}</span>
+                        <img class="content-icon" src="${BASE_URL}/apps/schedule/p5.png" alt="P5" title="${t('collaboP5Title')}">
+                        <span class="content-label">${t('collaboP5Desc')}</span>
                     </div>
                 `;
             } else if (hasP3) {
                 collaboIconHtml = `
                     <div class="content-badge collabo-badge">
-                        <img class="content-icon" src="${BASE_URL}/apps/schedule/p3r.png" alt="P3R" title="${labels.p3r.title}">
-                        <span class="content-label">${labels.p3r.desc}</span>
+                        <img class="content-icon" src="${BASE_URL}/apps/schedule/p3r.png" alt="P3R" title="${t('collaboP3rTitle')}">
+                        <span class="content-label">${t('collaboP3rDesc')}</span>
                     </div>
                 `;
             }
@@ -970,26 +943,10 @@
         let mainStoryHtml = '';
         const mainStoryValue = release['main-story'] || release.main_story;
         if (mainStoryValue) {
-            const lang = getCurrentLang();
-            const mainStoryLabels = {
-                en: {
-                    prefix: 'Main Story',
-                    title: 'Main Story Update'
-                },
-                jp: {
-                    prefix: 'メインストーリー',
-                    title: 'メインストーリー更新'
-                },
-                kr: {
-                    prefix: '메인 스토리',
-                    title: '메인 스토리 업데이트'
-                }
-            };
-            const labels = mainStoryLabels[lang] || mainStoryLabels.en;
             mainStoryHtml = `
                 <div class="content-badge main-story-badge">
-                    <img class="content-icon" src="${BASE_URL}/apps/schedule/palace.png" alt="Main Story" title="${labels.title}">
-                    <span class="content-label">${labels.prefix} ${mainStoryValue}</span>
+                    <img class="content-icon" src="${BASE_URL}/apps/schedule/palace.png" alt="Main Story" title="${t('mainStoryTitle')}">
+                    <span class="content-label">${t('mainStoryPrefix')} ${mainStoryValue}</span>
                 </div>
             `;
         }
@@ -997,26 +954,10 @@
         // Summer Event 표시 (summer 필드 사용)
         let summerHtml = '';
         if (release.summer === true) {
-            const lang = getCurrentLang();
-            const summerLabels = {
-                en: {
-                    title: 'Summer Event Release',
-                    desc: 'Summer Event'
-                },
-                jp: {
-                    title: 'サマーイベント配信',
-                    desc: 'サマーイベント'
-                },
-                kr: {
-                    title: '여름 이벤트 출시',
-                    desc: '여름 이벤트'
-                }
-            };
-            const labels = summerLabels[lang] || summerLabels.en;
             summerHtml = `
                 <div class="content-badge summer-badge">
-                    <img class="content-icon" src="${BASE_URL}/apps/schedule/summer.png" alt="Summer Event" title="${labels.title}">
-                    <span class="content-label">${labels.desc}</span>
+                    <img class="content-icon" src="${BASE_URL}/apps/schedule/summer.png" alt="Summer Event" title="${t('summerEventTitle')}">
+                    <span class="content-label">${t('summerEventDesc')}</span>
                 </div>
             `;
         }
@@ -1024,26 +965,6 @@
         // Gold Ticket Unlock 표시 (goldTicketUnlocks 필드 사용)
         let goldTicketHtml = '';
         if (release.goldTicketUnlocks && Array.isArray(release.goldTicketUnlocks) && release.goldTicketUnlocks.length > 0) {
-            const lang = getCurrentLang();
-            const goldTicketLabels = {
-                en: {
-                    title: 'Gold Ticket Unlock',
-                    desc: 'Unlock',
-                    predict: 'Unlock (Predict)'
-                },
-                jp: {
-                    title: 'ゴールドチケット解放',
-                    desc: '解放',
-                    predict: '解放 (予測)'
-                },
-                kr: {
-                    title: '골드 티켓 해제',
-                    desc: '해제',
-                    predict: '해제 (예상)'
-                }
-            };
-            const labels = goldTicketLabels[lang] || goldTicketLabels.en;
-
             // 자동 추가된 것인지 확인 (모든 항목이 자동 추가된 경우에만 Predict 표시)
             const autoUnlocks = release.goldTicketUnlocksAuto && Array.isArray(release.goldTicketUnlocksAuto) ? release.goldTicketUnlocksAuto : [];
             const allAuto = autoUnlocks.length > 0 && autoUnlocks.length === release.goldTicketUnlocks.length &&
@@ -1051,7 +972,7 @@
 
             // 미래 일정인 경우에도 Predict 표시 (수동 입력 포함)
             const isFuture = status === 'upcoming' || status === 'future';
-            const labelText = (allAuto || isFuture) ? labels.predict : labels.desc;
+            const labelText = (allAuto || isFuture) ? t('goldTicketPredict') : t('goldTicketDesc');
 
             // codename으로 캐릭터 찾기
             const charData = window.characterData || {};
@@ -1090,7 +1011,7 @@
 
             goldTicketHtml = `
                 <${badgeTag} ${badgeHref} class="content-badge gold-ticket-badge" ${badgeClick} ${badgeStyle}>
-                    <img class="gold-ticket-icon" src="${BASE_URL}/assets/img/character-detail/limit_non.png" alt="Gold Ticket Unlock" title="${labels.title}">
+                    <img class="gold-ticket-icon" src="${BASE_URL}/assets/img/character-detail/limit_non.png" alt="Gold Ticket Unlock" title="${t('goldTicketTitle')}">
                     ${characterIcons}
                     <span class="content-label">${labelText}</span>
                 </${badgeTag}>
@@ -1122,10 +1043,11 @@
                 const tag = clickable ? 'a' : 'div';
                 const hrefAttr = clickable ? `href="${BASE_URL}/wonder-weapon/?weapon=${encodeURIComponent(weaponName)}"` : '';
                 const onClickAttr = clickable ? `onclick="event.stopPropagation();"` : '';
+                const lightningStampLabel = t('labelLightningStamp');
 
                 return `
                     <${tag} class="weapon-item ${noHoverClass}" ${dataAttrs} ${stampAttr} style="${cursorStyle}" ${hrefAttr} ${onClickAttr}>
-                        ${hasStamp ? `<img class="weapon-stamp-icon" src="${BASE_URL}/assets/img/wonder-weapon/lightning_stamp.png" alt="Lightning Stamp" title="Lightning Stamp">` : ''}
+                        ${hasStamp ? `<img class="weapon-stamp-icon" src="${BASE_URL}/assets/img/wonder-weapon/lightning_stamp.png" alt="${lightningStampLabel}" title="${lightningStampLabel}">` : ''}
                         <img class="weapon-icon" src="${weaponImageUrl}" alt="${localizedName}" title="${localizedName}" onerror="this.src='${BASE_URL}/assets/img/placeholder.png';">
                         <span class="weapon-name">${localizedName}</span>
                     </${tag}>
@@ -1178,7 +1100,7 @@
 
                 return `
                     <a href="${charUrl}" class="mindscape-core-item" style="cursor: pointer;" onclick="event.stopPropagation();">
-                        <img class="mindscape-core-icon" src="${BASE_URL}/assets/img/character-detail/innate/core.png" alt="Core" title="Core">
+                        <img class="mindscape-core-icon" src="${BASE_URL}/assets/img/character-detail/innate/core.png" alt="${t('coreLabel')}" title="${t('coreLabel')}">
                         <img class="mindscape-core-character-icon" src="${BASE_URL}/assets/img/tier/${charName}.webp" alt="${displayName}" title="${displayName}" onerror="this.src='${BASE_URL}/assets/img/character-cards/card_skeleton.webp'">
                         <span class="mindscape-core-label">LV100</span>
                     </a>
@@ -1316,30 +1238,25 @@
 
     // Render anniversary event
     function renderAnniversaryEvent(event) {
-        const lang = getCurrentLang();
         const eventDate = parseDate(event.date);
         const daysText = getDaysText(event.date);
 
         // Get localized event name
         let localizedName = event.name;
-        if (lang === 'kr') {
-            if (event.type === 'debut') localizedName = event.server === 'global' ? '글로벌 데뷔' : 'CN 데뷔';
-            else if (event.type === 'half') localizedName = event.server === 'global' ? '글로벌 반주년' : 'CN 반주년';
-            else if (event.type === 'first') localizedName = event.server === 'global' ? '글로벌 1주년' : 'CN 1주년';
-            else if (event.type === 'onehalf') localizedName = event.server === 'global' ? '글로벌 1.5주년' : 'CN 1.5주년';
-            else if (event.type === 'second') localizedName = 'CN 2주년';
-            else if (event.type === 'twohalf') localizedName = 'CN 2.5주년';
-        } else if (lang === 'jp') {
-            if (event.type === 'debut') localizedName = event.server === 'global' ? 'グローバルデビュー' : 'CNデビュー';
-            else if (event.type === 'half') localizedName = event.server === 'global' ? 'グローバル半周年' : 'CN半周年';
-            else if (event.type === 'first') localizedName = event.server === 'global' ? 'グローバル1周年' : 'CN1周年';
-            else if (event.type === 'onehalf') localizedName = event.server === 'global' ? 'グローバル1.5周年' : 'CN1.5周年';
-            else if (event.type === 'second') localizedName = 'CN2周年';
-            else if (event.type === 'twohalf') localizedName = 'CN2.5周年';
+        if (event.type === 'debut') localizedName = event.server === 'global' ? t('anniversaryGlobalDebut') : t('anniversaryCnDebut');
+        else if (event.type === 'half') localizedName = event.server === 'global' ? t('anniversaryGlobalHalf') : t('anniversaryCnHalf');
+        else if (event.type === 'first') localizedName = event.server === 'global' ? t('anniversaryGlobalFirst') : t('anniversaryCnFirst');
+        else if (event.type === 'onehalf') localizedName = event.server === 'global' ? t('anniversaryGlobalOneHalf') : t('anniversaryCnOneHalf');
+        else if (event.type === 'second') localizedName = t('anniversaryCnSecond');
+        else if (event.type === 'twohalf') localizedName = t('anniversaryCnTwoHalf');
+
+        if (!localizedName || localizedName === event.type) {
+            localizedName = event.name;
         }
 
         // Server icon
-        const serverIcon = `<img class="server-icon" src="${BASE_URL}/apps/schedule/aniver.png" alt="Anniversary" title="Anniversary">`;
+        const anniversaryLabel = t('anniversary');
+        const serverIcon = `<img class="server-icon" src="${BASE_URL}/apps/schedule/aniver.png" alt="${anniversaryLabel}" title="${anniversaryLabel}">`;
 
         return `
             <div class="release-card status-${getStatus(event.date)}" data-status="${getStatus(event.date)}">
@@ -1632,7 +1549,7 @@
             seaServerContainer.innerHTML = `
                 <label class="sea-server-label">
                     <input type="checkbox" id="seaServerCheckbox" ${isSeaServer ? 'checked' : ''}>
-                    <span>SEA Server</span>
+                    <span>${t('seaServerLabel')}</span>
                 </label>
             `;
 
@@ -1714,7 +1631,7 @@
             console.error('Schedule initialization failed:', error);
             const container = document.getElementById('timeline-container');
             if (container) {
-                container.innerHTML = '<div class="empty-state">Failed to load schedule data.</div>';
+                container.innerHTML = `<div class="empty-state">${t('loadScheduleFailed')}</div>`;
             }
         }
     }

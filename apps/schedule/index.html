@@ -31,19 +31,19 @@ kr: /schedule/?lang=kr
 <div class="main-wrapper schedule-page">
     <!-- Navigation path -->
     <div class="navigation-path">
-        <script>document.write(`<a href="../../?v=${APP_VERSION}" id="nav-home">Home</a>`);</script>
+        <script>document.write(`<a href="../../?v=${APP_VERSION}" id="nav-home" data-i18n="navHome">Home</a>`);</script>
         <span class="separator">/</span>
-        <span class="current-page" id="nav-current">Schedule</span>
+        <span class="current-page" id="nav-current" data-i18n="navCurrent">Schedule</span>
     </div>
 
     <!-- Header -->
     <div class="header-container">
-        <h1 id="page-title">Release Schedule</h1>
+        <h1 id="page-title" data-i18n="pageTitle">Release Schedule</h1>
     </div>
 
     <!-- Notice Banner -->
     <div class="schedule-notice" id="schedule-notice">
-        <p class="notice-text" id="notice-text-en">
+        <p class="notice-text" id="notice-text" data-i18n-html="noticeHtml">
             Be careful with spoilers.<br>
             This schedule is for GLB/JP servers.<br>
             Until version 4.0, new characters release every 2 weeks; after 4.0, the interval changes to 3 weeks. <br>
@@ -53,24 +53,6 @@ kr: /schedule/?lang=kr
             For detailed patch history, see <a
                 href="https://docs.google.com/spreadsheets/d/1KmLUs1Cpp2WuDQZYHCW1xzCVCThWCB6R2VR5pFuLixE/edit?usp=sharing"
                 target="_blank">P5X Patch History by Sages</a>.
-        </p>
-        <p class="notice-text" id="notice-text-jp" style="display: none;">
-            スポイラーに注意してください。<br>
-            このスケジュールはGLB/JPサーバー用です。<br>
-            バージョン4.0までは2週間ごと、4.0以降は3週間ごとのリリースです。
-            イベント・祝日により変更される場合があります。<strong style="color:rgb(255, 255, 0);">キャラクターリリース順序は変更される場合があります。</strong><br>
-            詳細なパッチ履歴は<a
-                href="https://docs.google.com/spreadsheets/d/1KmLUs1Cpp2WuDQZYHCW1xzCVCThWCB6R2VR5pFuLixE/edit?usp=sharing"
-                target="_blank">P5X Patch History by Sages</a>をご覧ください。
-        </p>
-        <p class="notice-text" id="notice-text-kr" style="display: none;">
-            스포일러에 주의하세요.<br>
-            이 스케줄은 GLB/JP 서버 기준입니다.<br>
-            4.0 버전까지는 2주 간격, 이후는 3주 간격으로 출시됩니다.
-            이벤트/휴일에 따라 변경될 수 있으며, <strong style="color:rgb(255, 255, 0);">출시 순서는 변경될 수 있습니다.</strong><br>
-            자세한 패치 히스토리는 <a
-                href="https://docs.google.com/spreadsheets/d/1KmLUs1Cpp2WuDQZYHCW1xzCVCThWCB6R2VR5pFuLixE/edit?usp=sharing"
-                target="_blank">P5X Patch History by Sages</a>를 참고하세요.
         </p>
     </div>
 
@@ -122,40 +104,30 @@ kr: /schedule/?lang=kr
 
 <script>
     (function () {
-        // SEO Meta Data
-        const seoData = {
-            en: {
-                title: 'Release Schedule - Persona 5 The Phantom X | lufel.net',
-                description: 'Release schedule for Persona 5 The Phantom X characters. Track upcoming character releases, current banners, and patch history.',
-                keywords: 'P5X, Persona 5X, Release Schedule, Character Release, Banner Schedule, P5X Schedule, GLB Server, JP Server',
-                ogLocale: 'en_US'
-            },
-            jp: {
-                title: 'リリーススケジュール - ペルソナ5 ザ・ファントム X | lufel.net',
-                description: 'ペルソナ5 ザ・ファントム Xキャラクターリリーススケジュール。今後のキャラクターリリース、現在のバナー、パッチ履歴を追跡できます。',
-                keywords: 'P5X, ペルソナ5X, リリーススケジュール, キャラクターリリース, バナースケジュール, P5Xスケジュール, GLBサーバー, JPサーバー',
-                ogLocale: 'ja_JP'
-            },
-            kr: {
-                title: '출시 스케줄 - 페르소나5 더 팬텀 X | lufel.net',
-                description: '페르소나5 더 팬텀 X 캐릭터 출시 스케줄. 향후 캐릭터 출시, 현재 배너, 패치 히스토리를 추적할 수 있습니다.',
-                keywords: 'P5X, 페르소나5X, 출시 스케줄, 캐릭터 출시, 배너 스케줄, P5X 스케줄, GLB 서버, JP 서버',
-                ogLocale: 'ko_KR'
-            }
-        };
-
         function detectLang() {
             const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get('lang') || 'en';
         }
 
+        function getI18nText(key, fallback = '') {
+            if (typeof window.t === 'function') {
+                return window.t(key, fallback);
+            }
+            return fallback;
+        }
+
         function updateSEOTags(lang) {
-            const seo = seoData[lang] || seoData.en;
             const baseUrl = 'https://lufel.net';
             const currentUrl = `${baseUrl}/schedule/?lang=${lang}`;
+            const seoTitle = getI18nText('seoTitle', document.title);
+            const seoDescription = getI18nText('seoDescription', '');
+            const seoKeywords = getI18nText('seoKeywords', '');
+            const seoOgLocale = getI18nText('seoOgLocale', lang === 'jp' ? 'ja_JP' : lang === 'kr' ? 'ko_KR' : 'en_US');
 
             // Update document title
-            document.title = seo.title;
+            if (seoTitle) {
+                document.title = seoTitle;
+            }
 
             // Update meta description
             let metaDesc = document.querySelector('meta[name="description"]');
@@ -164,7 +136,7 @@ kr: /schedule/?lang=kr
                 metaDesc.setAttribute('name', 'description');
                 document.head.appendChild(metaDesc);
             }
-            metaDesc.setAttribute('content', seo.description);
+            metaDesc.setAttribute('content', seoDescription);
 
             // Update meta keywords
             let metaKeywords = document.querySelector('meta[name="keywords"]');
@@ -173,7 +145,7 @@ kr: /schedule/?lang=kr
                 metaKeywords.setAttribute('name', 'keywords');
                 document.head.appendChild(metaKeywords);
             }
-            metaKeywords.setAttribute('content', seo.keywords);
+            metaKeywords.setAttribute('content', seoKeywords);
 
             // Update Open Graph tags
             function updateOGTag(property, content) {
@@ -186,10 +158,10 @@ kr: /schedule/?lang=kr
                 tag.setAttribute('content', content);
             }
 
-            updateOGTag('og:title', seo.title);
-            updateOGTag('og:description', seo.description);
+            updateOGTag('og:title', seoTitle);
+            updateOGTag('og:description', seoDescription);
             updateOGTag('og:url', currentUrl);
-            updateOGTag('og:locale', seo.ogLocale);
+            updateOGTag('og:locale', seoOgLocale);
             updateOGTag('og:type', 'website');
             updateOGTag('og:image', `${baseUrl}/assets/img/home/seo.png`);
 
@@ -205,8 +177,8 @@ kr: /schedule/?lang=kr
             }
 
             updateTwitterTag('twitter:card', 'summary_large_image');
-            updateTwitterTag('twitter:title', seo.title);
-            updateTwitterTag('twitter:description', seo.description);
+            updateTwitterTag('twitter:title', seoTitle);
+            updateTwitterTag('twitter:description', seoDescription);
             updateTwitterTag('twitter:image', `${baseUrl}/assets/img/home/seo.png`);
 
             // Update canonical URL
@@ -226,26 +198,19 @@ kr: /schedule/?lang=kr
         document.addEventListener('DOMContentLoaded', async function () {
             const lang = detectLang();
 
-            // SEO update first (doesn't depend on i18n service)
-            updateSEOTags(lang);
-
             // Initialize i18n
             if (typeof initPageI18n === 'function') {
                 await initPageI18n('schedule');
             }
 
-            // Then load navigation
-            Navigation.load('schedule-release');
+            // Update SEO after i18n initialization
+            const currentLang = (typeof getCurrentLang === 'function') ? getCurrentLang() : lang;
+            updateSEOTags(currentLang);
 
-            // Notice text visibility based on language
-            const noticeLang = (typeof getCurrentLang === 'function') ? getCurrentLang() : lang;
-            const noticeEn = document.getElementById('notice-text-en');
-            const noticeJp = document.getElementById('notice-text-jp');
-            const noticeKr = document.getElementById('notice-text-kr');
-
-            if (noticeEn) noticeEn.style.display = noticeLang === 'en' ? 'block' : 'none';
-            if (noticeJp) noticeJp.style.display = noticeLang === 'jp' ? 'block' : 'none';
-            if (noticeKr) noticeKr.style.display = noticeLang === 'kr' ? 'block' : 'none';
+            // Load navigation
+            if (typeof Navigation !== 'undefined') {
+                Navigation.load('schedule-release');
+            }
         });
     })();
 </script>

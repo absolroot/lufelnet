@@ -54,12 +54,12 @@ window.enCharacterSkillsData["하루"] = {
     "type": "광역피해",
     "sp": 26,
     "cool": 0,
-    "description": "Deal Psychokinesis damage to all foes equal to 75.8%/83.6%/80.5%/88.3% of Attack (2 hits). 97.6%/97.6%/103.6%/103.6% chance to inflict 1 Target Audience stack on the main target and 53.7%/53.7%/57.0%/57.0% chance to inflict 1 Target Audience stack on other foes. Then, change Target Audience stacks on foes to Target Audience stacks on Haru and Target Audience's duration to 3 turns. Also gain 1 Focused Shot stack.\nFocused Round: When using a ranged attack with Target Audience, increase skill damage by 29.3%/32.3%/31.1%/34.1%. After the ranged attack, remove all Target Audience stacks granted to Haru."
+    "description": "Deal Psychokinesis damage to all foes equal to 75.8%/83.6%/80.5%/88.3% of Attack (2 hits). 97.6%/97.6%/103.6%/103.6% chance to inflict 1 Target Audience stack on the main target and 53.7%/53.7%/57.0%/57.0% chance to inflict 1 Target Audience stack on other foes. Then, change Target Audience stacks on foes to Target Audience stacks on Haru and Target Audience's duration to 3 turns. Also gain 1 Focused Round stack.\nFocused Round: When using a ranged attack with Target Audience, increase skill damage by 29.3%/32.3%/31.1%/34.1%. After the ranged attack, remove all Target Audience stacks granted to Haru."
   },
   "skill2": {
     "name": "Precise Volley",
     "element": "총격",
-    "type": "단일피해",
+    "type": "단일 피해",
     "hp": 12,
     "cool": 0,
     "description": "Deal Gun damage to 1 foe equal to 151.6%/167.1%/160.9%/176.4% of Attack. When Haru has Target Audience, increase this skill's pierce rate by 19.5%/19.5%/20.7%/20.7% and gain 1 Painpoint Round.\nPainpoint Round: When using a ranged attack, also deal Psychokinesis damage to the main target equal to 39.0%/43.0%/41.4%/45.4% of Attack (can gain skill damage increases from Focused Round)."
@@ -87,7 +87,7 @@ window.enCharacterSkillsData["하루"] = {
   "passive2": {
     "name": "Helping Others",
     "element": "패시브",
-    "description": "Permanently gain 1 Area to Improve stack for each Thoughtful Round stack gained. Gain the following effects based on the number of Area to Improve stacks:\n1. Increase ailment accuracy by 18.0% and ailment resistance by 18.0%.\n2. Increase Attack by 18.0% and Defense by 18.0%.\n3. Increase critical damage by 18.0%.",
+    "description": "Permanently gain 1 Area to Improve stack for each Thoughtful Round stack gained. Gain the following effects based on the number of Area to Improve stacks.\n1 stack: Increase ailment accuracy by 18.0% and ailment resistance by 18.0%.\n2 stacks: Increase Attack by 18.0% and Defense by 18.0%.\n3 stacks: Increase critical damage by 18.0%.",
     "cool": 0
   }
 };

@@ -47,7 +47,14 @@ jobs:
     
     - name: Build site
       run: bundle exec jekyll build
-    
+
+    - name: Remove local admin console artifacts from site output
+      run: |
+        if [ -d "_site/apps/patch-console" ]; then
+          rm -rf "_site/apps/patch-console"
+          echo "Removed _site/apps/patch-console to block public access."
+        fi
+
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:

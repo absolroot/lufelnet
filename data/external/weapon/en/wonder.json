@@ -1,0 +1,132 @@
+{
+  "data": {
+    "fiveStar": [
+      {
+        "name": "Sennight Inferno",
+        "quality": 5,
+        "skill": "Increase Attack by 28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/56.0%. For each Persona of a different attribute equipped, increase damage by 6.0%/8.0%/8.0%/10.0%/10.0%/12.0%/12.0%. Stacks up to 3 times. After knocking down a foe, decrease the target's Defense by 15.0%/20.0%/20.0%/25.0%/25.0%/30.0%/30.0% for 1 turn.",
+        "stat": {
+          "attack": 594.58,
+          "defense": 396.41,
+          "hp": 2140.53
+        },
+        "user": "Wonder"
+      },
+      {
+        "name": "All In",
+        "quality": 5,
+        "skill": "Increase healing and shield by 20.0%/20.0%/26.7%/26.7%/33.3%/33.3%/40.0%. Aura: When user is on the field, increase party's Defense by 15.0%/20.0%/20.0%/25.0%/25.0%/30.0%/30.0%. After using a skill on an ally, restore 10.0%/13.3%/13.3%/16.7%/16.7%/20.0%/20.0% of the main target's max HP.",
+        "stat": {
+          "attack": 594.58,
+          "defense": 396.41,
+          "hp": 2140.53
+        },
+        "user": "Wonder"
+      },
+      {
+        "name": "Arc Knife",
+        "quality": 5,
+        "skill": "Increase Attack by 28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/56.0%. After inflicting an elemental ailment, increase Attack by 10.0%/13.3%/13.3%/16.7%/16.7%/20.0%/20.0% for 2 turns. Increase elemental ailment accuracy by 15.0%/20.0%/20.0%/25.0%/25.0%/30.0%/30.0%. When attacking a foe, decrease the target's Defense by 4.5%/6.0%/6.0%/7.5%/7.5%/9.0%/9.0% for 2 turns. Increase this effect for each of target's elemental ailments, up to 4.",
+        "stat": {
+          "attack": 654.08,
+          "defense": 396.41,
+          "hp": 1926.8
+        },
+        "user": "Wonder"
+      },
+      {
+        "name": "Ex Machina",
+        "quality": 5,
+        "skill": "Increase Attack by 28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/56.0%. Aura: When user is on the field, increase party's Attack by 120/160/160/199/199/240/240. Based on the attribute of the Persona equipped at the start of battle, increase damage of that attribute by 17.0%/22.7%/22.7%/28.3%/28.3%/34.0%/34.0%, and 40% for other allies.",
+        "stat": {
+          "attack": 654.08,
+          "defense": 356.79,
+          "hp": 2051.35
+        },
+        "user": "Wonder"
+      },
+      {
+        "name": "Glimmer",
+        "quality": 5,
+        "skill": "Increase Attack by 28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/56.0%. Increase Bless damage and healing by 11.0%/14.7%/14.7%/18.3%/18.3%/22.0%/22.0%. At the start of the turn, grant Blessing to 1 ally and increase their damage by 8.0%/10.7%/10.7%/13.3%/13.3%/16.0%/16.0%. If the target's attribute is Bless, increase Bless damage by 8.0%/10.7%/10.7%/13.3%/13.3%/16.0%/16.0% more. Effect reactivates every 2 turns.",
+        "stat": {
+          "attack": 654.08,
+          "defense": 396.41,
+          "hp": 1926.8
+        },
+        "user": "Wonder"
+      },
+      {
+        "name": "Eye of Obsequies",
+        "quality": 5,
+        "skill": "Increase Attack by 28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/56.0%. After inflicting a status ailment on a foe, decrease the foe's ailment resistance by 12.0%/12.0%/12.0%/12.0%/12.0%/12.0%/12.0%, Defense by 5.0%/6.7%/6.7%/8.3%/8.3%/10.0%/10.0%, and increase the user's Attack by 10.0%/13.3%/13.3%/16.7%/16.7%/20.0%/20.0% for 3 turns. This effect can stack up to 2 times, and stacks are spent separately. With 1 stack, increase target's Physical damage taken by 14.0%/18.7%/18.7%/23.3%/23.3%/28.0%/28.0% for 3 turns.",
+        "stat": {
+          "attack": 654.08,
+          "defense": 396.41,
+          "hp": 1926.8
+        },
+        "user": "Wonder"
+      },
+      {
+        "name": "Starry Compass",
+        "quality": 5,
+        "skill": "Increase Attack by 28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/56.0%.\nUniversal Astrolabe (Aura): Gain the following effects based on the number of Guidance stacks.\n5 stacks: Decrease all foes' Defense by 11.0%/14.7%/14.7%/18.3%/18.3%/22.0%/22.0%.\n10 stacks: Increase all allies' ailment accuracy by 9.0%/12.0%/12.0%/15.0%/15.0%/18.0%/18.0%.\n15 stacks: Increase all allies' Psychokinesis damage by 6.0%/8.0%/8.0%/10.0%/10.0%/12.0%/12.0%.\nAt the start of battle, gain 10 stacks of Guidance, for a maximum of 20 stacks. Gain 1 stack of Guidance whenever an ally deals damage to a foe. At the end of the user's turn, lose 5 Guidance stacks.",
+        "stat": {
+          "attack": 654.08,
+          "defense": 356.79,
+          "hp": 2051.35
+        },
+        "user": "Wonder"
+      },
+      {
+        "name": "Abyss Fang",
+        "quality": 5,
+        "skill": "Increase Attack by 28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/56.0%.\nWhen dealing damage with a skill, gain 3 Hunter's Instinct stacks. Every 2 times damage is dealt, gain 1 more stack.\nHunter's Instinct; Increase damage by 3.3%/4.4%/4.4%/5.5%/5.5%/6.6%/6.6% for 1 turn. Stacks up to 5 times. When Hunter's Instinct is at 3/5 stacks, also increase critical rate by 6.0%/8.0%/8.0%/10.0%/10.0%/12.0%/12.0%/9.0%/12.0%/12.0%/15.0%/15.0%/18.0%/18.0%, and increase critical damage by 12.0%/16.0%/16.0%/20.0%/20.0%/24.0%/24.0%/18.0%/24.0%/24.0%/30.0%/30.0%/36.0%/36.0%.",
+        "stat": {
+          "attack": 689.45,
+          "defense": 356.79,
+          "hp": 1926.8
+        },
+        "user": "Wonder"
+      },
+      {
+        "name": "Purgatory",
+        "quality": 5,
+        "skill": "Increase Attack by 28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/60.7%.\nBaptism of Nothingness (Aura): Gain following effects based on number of Purging Blaze stacks.\n1 stack: Increase user's Attack by 180/240/240/300/300/360/360, and increase all other allies' Attack by 150/200/200/249/249/300/300.\n2 stacks: Increase user's damage by 8.0%/10.7%/10.7%/13.3%/13.3%/16.0%/16.0%, and increase all other allies' damage by 3.0%/4.0%/4.0%/5.0%/5.0%/6.0%/6.0%.\n3 stacks: Increase party's Fire damage by 7.0%/9.3%/9.3%/11.7%/11.7%/14.0%/14.0%.\nAt the start of battle, gain 2 Purging Blaze stacks. When party deals Fire damage to foes, gain 1 Purging Blaze stack. At the start of the user's turn, spend 1 Purging Blaze stack.",
+        "stat": {
+          "attack": 654.08,
+          "defense": 356.79,
+          "hp": 2051.35
+        },
+        "user": "Wonder"
+      },
+      {
+        "name": "Starsplitter",
+        "quality": 5,
+        "skill": "Increase Attack by 28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/60.7%.\nAt the start of battle, or after any ally deals damage with an Almighty skill, activate Sympathy for 2 turns.\nSympathy: Based on the number of Flames of Desire effects active on the current party, activate the following effects.\n1 or more: Increase user's Attack by 15.0%/20.0%/20.0%/25.0%/25.0%/30.0%/30.0% and Almighty damage by 6.0%/8.0%/8.0%/10.0%/10.0%/12.0%/12.0%. Grant 50% of this effect to party.\n2 or more: Increase party's critical damage by 9.0%/12.0%/12.0%/15.0%/15.0%/18.0%/18.0%.",
+        "stat": {
+          "attack": 654.08,
+          "defense": 356.79,
+          "hp": 2051.35
+        },
+        "user": "Wonder"
+      }
+    ],
+    "fourStar": [
+      {
+        "name": "Midnight Sun",
+        "quality": 4,
+        "skill": "Increase Attack by 12.0%/14.0%/16.0%/18.0%/20.0%/22.0%/24.0%. Increase Attack by 6.4%/7.4%/8.3%/9.3%/10.2%/11.2%/12.2% more and double this effect after changing Personas for 1 turn.",
+        "stat": {
+          "attack": 528.55,
+          "defense": 352.36,
+          "hp": 1902.74
+        },
+        "user": "Wonder"
+      }
+    ],
+    "name": "Wonder"
+  },
+  "msg": "TESTING",
+  "status": 0
+}

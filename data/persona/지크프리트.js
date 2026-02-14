@@ -86,28 +86,44 @@ window.personaFiles["지크프리트"] = {
       "desc": "모든 동료의 효과 명중, 효과 저항이 6.5%/6.8%/7.2% 증가하고, 자신의 효과 명중 25%마다 1.1%/1.2%/1.2% 추가 증가한다. 상한은 4.4%/4.6%/4.8%이며, 효과는 3턴 동안 지속된다.",
       "cost": "SP 22",
       "level": "6/7/8",
-      "learn_level": "10"
+      "learn_level": "10",
+      "name_en": "Masukukaja",
+      "desc_en": "Increase party's ailment accuracy and ailment resistance by 6.5%/6.8%/7.2%, and Speed by 3 for 3 turns. For every 25% of the user's ailment accuracy, increase party's ailment accuracy by 1.1%/1.2%/1.2% more, up to 4.4%/4.6%/4.8%.",
+      "name_jp": "マハスクカジャ",
+      "desc_jp": "３ターンの間、味方全体の状態異常命中、状態異常抵抗が6.5%/6.8%/7.2%上昇し、速さが３上昇する。自身の状態異常命中が２５%ごとに、味方の状態異常命中がさらに1.1%/1.2%/1.2%上昇する（最大4.4%/4.6%/4.8%まで）。"
     },
     {
       "name": "고압 전류Ⅳ",
       "desc": "선제 공격 시 크리티컬 확률이 9.7% 증가한다.",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "20"
+      "learn_level": "20",
+      "name_en": "Fortified Moxy IV",
+      "desc_en": "Increase critical rate by 9.7% when ambushing.",
+      "name_jp": "ハイボルテージⅣ",
+      "desc_jp": "先制時のクリティカル率が９.７%上昇する。"
     },
     {
       "name": "차지",
       "desc": "1턴 동안 자신이 주는 다음 물리 속성 대미지가 52.1%/54.7%/57.3% 증가한다.",
       "cost": "SP 22",
       "level": "6/7/8",
-      "learn_level": "30"
+      "learn_level": "30",
+      "name_en": "Charge",
+      "desc_en": "Increase Physical and Gun damage (excluding 1 More) by 52.1%/54.7%/57.3% for 1 turn.",
+      "name_jp": "チャージ",
+      "desc_jp": "１ターンの間、自身が次に与える１ＭＯＲＥを除く物理属性ダメージと銃撃属性ダメージが52.1%/54.7%/57.3%上昇する。"
     },
     {
       "name": "어드바이스Ⅳ",
       "desc": "크리티컬 확률이 8.1% 증가한다.",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "40"
+      "learn_level": "40",
+      "name_en": "Apt Pupil IV",
+      "desc_en": "Increase critical rate by 8.1%.",
+      "name_jp": "アドバイスⅣ",
+      "desc_jp": "クリティカル率が８.１%上昇する。"
     }
   ]
 };

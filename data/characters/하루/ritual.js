@@ -33,7 +33,7 @@ window.enCharacterRitualData["하루"] = {
   "r5": "Giving It My Best Shot",
   "r5_detail": "Increase the skill levels of Extrasensory Aim and Precise Volley by 3.",
   "r6": "Heroine of Justice",
-  "r6_detail": "When at 2+ Thoughtful Round stacks, evolve Haru's ranged attacks to Resonating Shots. Also, deal a ranged attack that activates all Thoughtful Round effects once. This additional attack's damage is 70% of the original attack.\nActivate the following effects for Thoughtful Round gained from skills.\nFocused Round: When using a ranged attack, also decrease the foe's ailment resistance by 27% for 2 turns.\nPainpoint Round: When using a ranged attack and Haru has Target Audience, increase pierce rate by 12%.\nSpillover Round: When using a ranged attack and Haru has Target Audience, increase critical rate by 20% and critical damage by 20%."
+  "r6_detail": "When at 2+ Thoughtful Round stacks, evolve Haru's ranged attacks to Resonating Shots. Also, deal a ranged attack that activates all Thoughtful Round effects once. This additional attack's damage is 70% of the original attack.\nAt 2+ Thoughtful Round stacks, activate the following effects for Thoughtful Round gained from skills.\nFocused Round: When using a ranged attack, also decrease the foe's ailment resistance by 27% for 2 turns.\nPainpoint Round: When using a ranged attack and Haru has Target Audience, increase pierce rate by 12%.\nSpillover Round: When using a ranged attack and Haru has Target Audience, increase critical rate by 20% and critical damage by 20%."
 };
 window.jpCharacterRitualData["하루"] = {
   "name": "奥村 春",
@@ -50,5 +50,5 @@ window.jpCharacterRitualData["하루"] = {
   "r5": "心を込めて",
   "r5_detail": "『マインドエイム』『精密斉射』のスキルレベルが３上昇する。",
   "r6": "正義のヒロイン",
-  "r6_detail": "『想いの弾丸』が２つ以上の時、春の遠隔攻撃が『レゾネート弾』に強化され、追加で１回、全ての『想いの弾丸』効果が発動する遠隔攻撃を与える。この追加攻撃のダメージは元の７０%になる。\nスキルで獲得する『想いの弾丸』は以下の追加効果が発生する。\n『フォーカス弾』：遠隔攻撃は追加で２ターンの間、敵の状態異常抵抗を２７%低下させる。\n『ペインポイント弾』：遠隔攻撃時、自身が『標的層』を獲得している時、貫通力が１２%上昇する。\n『スピルオーバー弾』：遠隔攻撃時、自身が『標的層』を獲得している時、クリティカル率が２０%上昇し、クリティカルダメージが２０%上昇する。"
+  "r6_detail": "『想いの弾丸』が２つ以上の時、春の遠隔攻撃が『レゾネート弾』に強化され、追加で１回、全ての『想いの弾丸』効果が発動する遠隔攻撃を与える。この追加攻撃のダメージは元の７０%になる。\n『想いの弾丸』が２つ以上の時、スキルで獲得する『想いの弾丸』は以下の追加効果が発生する。\n『フォーカス弾』：遠隔攻撃は追加で２ターンの間、敵の状態異常抵抗を２７%低下させる。\n『ペインポイント弾』：遠隔攻撃時、自身が『標的層』を獲得している時、貫通力が１２%上昇する。\n『スピルオーバー弾』：遠隔攻撃時、自身が『標的層』を獲得している時、クリティカル率が２０%上昇し、クリティカルダメージが２０%上昇する。"
 };

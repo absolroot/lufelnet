@@ -21,28 +21,28 @@ window.ritualData["하루나"] = {
 window.enCharacterRitualData["하루나"] = {
   "name": "Haruna Nishimori",
   "r0": "Off to Treasure Hunt",
-  "r0_detail": "When using a skill, spend all [Childish Heart] stacks. For each stack, increase party's Attack by 8% for 2 turns. Up to 5 stacks. When Haruna gains [Childish Heart] stacks, gain the same number of [Mystery] stacks. [Mystery] stacks are lost when Haruna uses a Highlight or after 2 turns. Stacks up to 5 times.",
+  "r0_detail": "When using a skill, spend all Childish Heart stacks to increase party's Attack by 8% for each Childish Heart stack spent for 2 turns. Childish Heart stacks up to 5 times.\n When Haruna gains Childish Heart stacks, gain the same number of Mystery stacks. Mystery stacks are lost when Haruna uses a Highlight or after 2 turns, and stack up to 5 times.",
   "r1": "Let's Go, Everyone!",
-  "r1_detail": "When an ally deals damage with a skill, increase Haruna's Attack by 20%. Stacks up to 3 times. Additionally, when Haruna's Attack increases for the second time, increase party's damage by 15% for 1 turn.",
+  "r1_detail": "When an ally deals damage with a skill, increase Haruna's Attack by 20%. Stacks up to 3 times. This effect ends when Haruna uses a skill.\nAlso, when Haruna's Attack is increased 2 times, increase party's damage by 15% for 1 turn.",
   "r2": "Here to Help",
-  "r2_detail": "[Let's Hold Hands] increases the chance of gaining [Childish Heart] by 20%. When using [Courageous Campaign] and [Childish Heart] stacks are at maximum, increase Attack and critical damage by 24% for 2 turns.",
+  "r2_detail": "Let's Hold Hands increases the chance of gaining Childish Heart by 20%.\nWhen using Courageous Campaign and Childish Heart stacks are at maximum, increase Attack and critical damage by 24% for 2 turns.",
   "r3": "Still Growing",
-  "r3_detail": "Increase the skill levels of [Courageous Campaign] and [Thief Tactics] by 3.",
+  "r3_detail": "Increase the skill levels of Courageous Campaign and Thief Tactics by 3.",
   "r4": "Give It to Them",
-  "r4_detail": "[HIGHLIGHT] Enhanced: The duration of the damage increase is extended by 2 turns.",
+  "r4_detail": "Highlight Enhanced: Extend damage increase duration by 2 turns.",
   "r5": "A Little Maintenance",
-  "r5_detail": "Increase the skill levels of [Surprise Squad] and [Ready for Adventure] by 3.",
+  "r5_detail": "Increase the skill levels of Surprise Squad and Ready for Adventure by 3.",
   "r6": "Puzzle Solver",
-  "r6_detail": "When [Childish Heart] reaches 5 stacks, gain [Curiosity].\n[Curiosity]: When Haruna deals damage with a skill, increase damage by 75%. This effect ends after dealing skill damage to foes."
+  "r6_detail": "When Childish Heart reaches 5 stacks, gain Curiosity.\nCuriosity: When Haruna deals damage with a skill, increase damage by 75%. This effect ends after dealing skill damage to foes."
 };
 window.jpCharacterRitualData["하루나"] = {
-  "name": "西森陽菜",
+  "name": "西森 陽菜",
   "r0": "宝探しへ出発！",
-  "r0_detail": "スキル使用時、『子供心』を全て消費して、消費された『子供心』１つごとに味方全体の攻撃力を２ターンの間、８％上昇させる。『子供心』は最大５つまで累積する。さらに、陽菜が『子供心』を獲得した時、同数の『ミステリー』を獲得する。『ミステリー』はハイライトを使用するか２ターン経過で消失し、最大５つまで累積する。",
+  "r0_detail": "スキル使用時、『子供心』を全て消費して、消費された『子供心』１つごとに味方全体の攻撃力を２ターンの間、８%上昇させる。『子供心』は最大５つまで累積する。\nさらに、陽菜が『子供心』を獲得した時、同数の『ミステリー』を獲得する。『ミステリー』はハイライトを使用するか２ターン経過で消失し、最大５つまで累積する。",
   "r1": "みんなに続けー！",
-  "r1_detail": "味方がスキルでダメージを与えた時、陽菜の攻撃力が２０％上昇し、最大３回まで累積する。この効果は陽菜がスキルを使用すると終了する。さらに、自身の攻撃力が２回上昇した時、１ターンの間、味方全体の与ダメージが１５％上昇する。",
+  "r1_detail": "味方がスキルでダメージを与えた時、陽菜の攻撃力が２０%上昇し、最大３回まで累積する。この効果は陽菜がスキルを使用すると終了する。\nさらに、自身の攻撃力が２回上昇した時、１ターンの間、味方全体の与ダメージが１５%上昇する。",
   "r2": "お手伝いするね！",
-  "r2_detail": "『手を繋いで行こう！』の効果で『子供心』を獲得する確率が２０％上昇する。『勇気の大作戦』の使用時、『子供心』の累積数が最大の場合、さらに２ターンの間、攻撃力とクリティカルダメージが２４％上昇する。",
+  "r2_detail": "『手を繋いで行こう！』の効果で『子供心』を獲得する確率が２０%上昇する。\n『勇気の大作戦』の使用時、『子供心』の累積数が最大の場合、さらに２ターンの間、攻撃力とクリティカルダメージが２４%上昇する。",
   "r3": "成長中だよ！",
   "r3_detail": "『勇気の大作戦』『怪盗戦技』のスキルレベルが３上昇する。",
   "r4": "やっつけちゃうぞ！",
@@ -50,5 +50,5 @@ window.jpCharacterRitualData["하루나"] = {
   "r5": "装備を整えよう！",
   "r5_detail": "『ビックリドッキリ隊員』『冒険の準備は万端』のスキルレベルが３上昇する。",
   "r6": "謎解きしよ！",
-  "r6_detail": "『子供心』を５つ獲得した時、『好奇心旺盛』状態になる。『好奇心旺盛』状態：陽菜がスキルでダメージを与えた時、ダメージが７５％上昇する。この状態は敵にスキルダメージを与えると終了する。"
+  "r6_detail": "『子供心』を５つ獲得した時、『好奇心旺盛』状態になる。\n『好奇心旺盛』状態：陽菜がスキルでダメージを与えた時、ダメージが７５%上昇する。この状態は敵にスキルダメージを与えると終了する。"
 };

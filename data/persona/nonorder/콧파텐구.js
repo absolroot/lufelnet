@@ -43,7 +43,7 @@ window.personaFiles["콧파텐구"] = {
       "name": "정밀한 사격Ⅰ",
       "name_en": "Gun Boost I",
       "name_jp": "銃撃ブースタⅠ",
-      "desc": "총기 대미지가 4.7% 증가한다.",
+      "desc": "총격 대미지가 4.7% 증가한다.",
       "desc_en": "Increase Gun damage by 4.7%.",
       "desc_jp": "銃撃属性の与ダメージが４.７%上昇する。",
       "cost": "",

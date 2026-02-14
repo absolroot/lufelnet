@@ -89,7 +89,7 @@ window.personaFiles["트럼페터"] = {
       "name": "마하프레이다인",
       "name_en": "Ironclad Resolve I",
       "name_jp": "堅守の覚悟Ⅰ",
-      "desc": "모든 적에게 공격력 66.9/69.9/72.9%의 핵열 속성 대미지를 주고, 원소 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 20% 증가한다.",
+      "desc": "적 전체에 공격력 66.9/69.9/72.9%의 핵열 속성 대미지를 주고, 원소 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 20% 증가한다.",
       "desc_en": "Decrease Speed by 6. Increase HP by 15%.",
       "desc_jp": "速さが６低下し、ＨＰが１５%上昇する。",
       "cost": "SP 21",

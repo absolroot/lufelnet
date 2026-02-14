@@ -13,7 +13,7 @@ const b = recast.types.builders;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const PROJECT_ROOT = path.join(__dirname, '..');
+const PROJECT_ROOT = path.join(__dirname, '..', '..');
 
 const CHARACTER_ROOT = path.join(PROJECT_ROOT, 'data', 'characters');
 const TEMPLATE_ROOT = path.join(CHARACTER_ROOT, 'template');
@@ -110,22 +110,22 @@ function fail(message, exitCode = 1) {
 
 function usage() {
   log(`Usage:
-  node scripts/patch-characters.mjs list [--langs kr,en,jp,cn,tw,sea]
-  node scripts/patch-characters.mjs patch --langs kr,en,jp [--api api1,api2 | --local local1,local2 | --nums 1,3-5]
+  node apps/patch-console/patch-characters.mjs list [--langs kr,en,jp,cn,tw,sea]
+  node apps/patch-console/patch-characters.mjs patch --langs kr,en,jp [--api api1,api2 | --local local1,local2 | --nums 1,3-5]
                                        [--parts ritual,skill,weapon,base_stats]
                                        [--dry-run] [--no-bootstrap]
                                        [--report-file scripts/reports/character-patch-diff.md] [--no-report]
-  node scripts/patch-characters.mjs report --langs kr,en,jp
+  node apps/patch-console/patch-characters.mjs report --langs kr,en,jp
                                        [--api ... | --local ... | --nums ... | --all]
                                        [--exclude-api ... | --exclude-local ... | --exclude-nums ...]
                                        [--parts ritual,skill,weapon,base_stats]
                                        [--report-file scripts/reports/character-patch-diff.md]
-  node scripts/patch-characters.mjs report-json --langs kr,en,jp
+  node apps/patch-console/patch-characters.mjs report-json --langs kr,en,jp
                                        [--api ... | --local ... | --nums ... | --all]
                                        [--exclude-api ... | --exclude-local ... | --exclude-nums ...]
                                        [--parts ritual,skill,weapon,base_stats]
                                        [--json-file scripts/reports/character-patch-diff.json]
-  node scripts/patch-characters.mjs apply-diff-json --input-file scripts/reports/apply-diff-request.json
+  node apps/patch-console/patch-characters.mjs apply-diff-json --input-file scripts/reports/apply-diff-request.json
                                        [--dry-run]
 `);
 }
@@ -590,6 +590,39 @@ function setValueAtDiffPath(root, pathText, nextValue) {
   }
 
   return out;
+}
+
+function normalizeNoSpaceText(value) {
+  return String(value || '').replace(/\s+/g, '').trim();
+}
+
+function isIgnoredSkillElementAoeDiff(part, pathText, beforeValue, afterValue) {
+  if (part !== 'skill') return false;
+  const path = String(pathText || '').trim();
+  if (!/(^|\.)element$/i.test(path)) return false;
+  if (typeof beforeValue !== 'string' || typeof afterValue !== 'string') return false;
+
+  const beforeText = normalizeNoSpaceText(beforeValue);
+  const afterText = normalizeNoSpaceText(afterValue);
+  if (!beforeText.endsWith(KR.aoe)) return false;
+  const stripped = beforeText.slice(0, beforeText.length - KR.aoe.length);
+  return stripped.length > 0 && stripped === afterText;
+}
+
+function applyPartPatchPolicy(part, existingValue, nextValue) {
+  if (part !== 'skill') return nextValue;
+  const changedPaths = diffPaths(existingValue, nextValue).filter(Boolean);
+  if (changedPaths.length === 0) return nextValue;
+
+  let adjusted = nextValue;
+  for (const pathText of changedPaths) {
+    const before = getValueAtDiffPath(existingValue, pathText);
+    const after = getValueAtDiffPath(adjusted, pathText);
+    if (isIgnoredSkillElementAoeDiff(part, pathText, before, after)) {
+      adjusted = setValueAtDiffPath(adjusted, pathText, before);
+    }
+  }
+  return adjusted;
 }
 
 function normalizeCodeName(value) {
@@ -1101,7 +1134,8 @@ function runPatch(options) {
           row.skippedParts.push(`${part}:empty_payload`);
           continue;
         }
-        const nextValue = deepMerge(existing, payload);
+        const mergedValue = deepMerge(existing, payload);
+        const nextValue = applyPartPatchPolicy(part, existing, mergedValue);
         if (equals(existing, nextValue)) {
           row.skippedParts.push(`${part}:no_change`);
           continue;
@@ -1162,10 +1196,11 @@ function buildDiffRecord(entry, characterKey, lang, part, sources) {
   const current = readWindowEntry(filePath, windowName, characterKey);
   const payload = createPatchPayload(part, lang, sources, current);
   if (!payload || Object.keys(payload).length === 0) return null;
-  const nextValue = deepMerge(current, payload);
+  const mergedValue = deepMerge(current, payload);
+  const nextValue = applyPartPatchPolicy(part, current, mergedValue);
   if (equals(current, nextValue)) return null;
   const paths = diffPaths(current, nextValue).filter(Boolean);
-  const samplePaths = paths.slice(0, 6);
+  const samplePaths = paths;
   const valueDiffs = samplePaths.map((pathText) => {
     const beforeRaw = getValueAtDiffPath(current, pathText);
     const afterRaw = getValueAtDiffPath(nextValue, pathText);
@@ -1436,7 +1471,8 @@ function runApplyDiffJson(options) {
         row.skippedParts.push(`${part}:empty_payload`);
         continue;
       }
-      const nextValue = deepMerge(existing, partPayload);
+      const mergedValue = deepMerge(existing, partPayload);
+      const nextValue = applyPartPatchPolicy(part, existing, mergedValue);
       if (equals(existing, nextValue)) {
         row.skippedParts.push(`${part}:no_change`);
         continue;

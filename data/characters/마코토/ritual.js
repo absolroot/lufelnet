@@ -3,37 +3,37 @@ window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
 window.ritualData["마코토"] = {
   "name": "니지마 마코토",
-  "r0": "합기 수신",
-  "r0_detail": "페르소나 스킬로 적을 공격한 후 『강인』 효과를 1중첩 획득한다. 『철의 의지』 상태가 아닐 때 턴 종료 시, 적이 보유한 원소 이상 종류당 『강인』 효과 1중첩을 추가로 획득한다(해당 턴에 적을 처치했으며 적이 원소 이상을 보유한 경우에도 합산).. 턴 시작 시 자신의 강인 효과를 5중첩 보유하고 있을 경우, 변신하여 『철의 의지』 상태에 진입할 수 있다. 공격력 40%, 방어력 20%가 증가하고 『핵열 치명타』가 『핵융합 과부하』로 진화하며 2턴 동안 지속된다. 『철의 의지』 상태 종료 시 『강인』 효과가 모두 제거된다.",
-  "r1": "수신 이상",
-  "r1_detail": "전투 시작 시 『강인』 효과를 5중첩 획득하고, 첫 번째 턴 시작 시 변신해 『철의 의지』 상태에 진입할 수 있다. 『철의 의지』 상태에 있는 동안 공격력이 50% 추가 증가하고, 대미지 보너스가 추가로 35% 증가한다.",
-  "r2": "투기 속적",
+  "r0": "합기·수신",
+  "r0_detail": "페르소나 스킬을 시전하여 적을 공격한 후 『강인』 효과를 1중첩 획득한다. 『철의 의지』 상태가 아닌 경우 다음 턴 종료 시 적이 원소 이상을 1종 보유할 때마다 『강인』 효과를 1중첩 추가로 획득한다(해당 턴에 적 처치 및 적이 원소 이상을 보유한 경우에도 총 수에 계산됨). 턴 시작 시 자신이 강인 효과를 5중첩 보유하고 있으면 변신해 『철의 의지』 상태에 진입할 수 있으며, 2턴 동안 공격력 40%, 방어력 20%가 증가하고, 『핵열 치명타』가 『핵융합 과부하』로 진화한다. 『철의 의지』 상태 종료 시 『강인』 효과가 모두 제거된다.",
+  "r1": "수신·어상",
+  "r1_detail": "전투 시작 시 『강인』 효과를 5중첩 획득하고, 첫 번째 턴 시작 시 변신해 『철의 의지』 상태에 진입할 수 있다. 『철의 의지』 상태에 있는 동안 공격력이 50% 추가 증가하고, 대미지가 35% 증가한다.",
+  "r2": "투기·속적",
   "r2_detail": "『펄스 연타』, 『핵열 치명타』의 스킬 레벨이 3레벨 증가하고, 최대 15레벨까지 증가한다.",
-  "r3": "후발 선제",
+  "r3": "후발·선제",
   "r3_detail": "『철의 의지』 상태에 진입할 때 1명의 적에게 임의의 원소 이상 효과가 1개 추가되며, 『철의 의지』 상태에서 필드에 원소 이상 효과가 1종 있을 때마다 자신의 관통이 6% 증가한다.",
-  "r4": "예행 순수",
+  "r4": "예행·순수",
   "r4_detail": "『핵열 공진』, 『전투 기술』의 스킬 레벨이 3레벨 증가하고, 최대 15레벨까지 증가한다.",
-  "r5": "화유 파력",
-  "r5_detail": "HIGHLIGHT 효과 증가: 획득하는 열물질이 4중첩까지 증가한다. 열물질을 소모해 적에게 최대 4개 원소 이상을 부여하고, 스킬 대미지가 최대 4회 증가한다.",
-  "r6": "호흡 조화",
-  "r6_detail": "『철의 의지』 상태에 진입 시 추가로 1턴을 획득한다 (추가 턴 진입 시 캐릭터의 지속형 효과는 지속 턴 횟수를 차감하지 않는다). 『핵융합 과부하』의 SP 소모가 33% 감소한다."
+  "r5": "화유·파력",
+  "r5_detail": "HIGHLIGHT 효과 증가: 획득하는 열물질이 4중첩까지 증가한다. 열물질을 소모하여 최대 4개의 원소 이상을 적에게 부여하고, 스킬 대미지를 최대 4회 증가시킨다.",
+  "r6": "호흡·조화",
+  "r6_detail": "『철의 의지』 상태에 진입 시 추가로 1턴을 획득한다(추가 턴 진입 시 캐릭터의 지속형 효과는 지속 턴 횟수를 차감하지 않는다). 『핵융합 과부하』의 SP 소모가 33% 감소한다."
 };
 window.enCharacterRitualData["마코토"] = {
   "name": "Makoto Niijima",
   "r0": "Enraged Usurper",
-  "r0_detail": "When attacking a foe with a skill, gain 1 [Tenacity] stack. If [Crash Out] is not active, at the end of the turn, gain more [Tenacity] stacks based on the number of elemental ailments inflicted on the foe (including foes defeated during the turn).\nIf Makoto has 5 [Tenacity] stacks at the start of her turn, she can activate [Crash Out], increasing Attack by 40% and Defense by 20% and evolving Nuclear Fury to Thermonuclear Fury for 2 turns. When [Crash Out] ends, lose all [Tenacity] stacks.",
+  "r0_detail": "When attacking a foe with a skill, gain 1 Tenacity stack. If Crash Out is not active, at the end of the turn, gain more Tenacity stacks based on the number of elemental ailments inflicted on foes (including foes defeated during the turn).\nIf Makoto has 5 Tenacity stacks at the start of her turn, she can activate Crash Out, increasing Attack by 40% and Defense by 20%, and evolving Nuclear Fury to Thermonuclear Fury for 2 turns. When Crash Out ends, lose all Tenacity stacks.",
   "r1": "Execution of Justice",
-  "r1_detail": "At the start of battle, gain 5 [Tenacity] stacks, allowing Makoto to activate [Crash Out] on her action.\nWhen [Crash Out] is active, increase Attack by 50% more and damage by 35%.",
+  "r1_detail": "At the start of battle, gain 5 Tenacity stacks, allowing Makoto to activate Crash Out.\nWhen Crash Out is active, increase Attack by 50% more and damage by 35%.",
   "r2": "Hot and Cold",
-  "r2_detail": "When [Crash Out] is active, inflict random elemental ailments on foes, and for each different type of elemental ailment, increase Makoto's pierce rate by 6%.",
-  "r3": " Full Throttle",
-  "r3_detail": "Increase the skill levels of [Sanctioned Drift] and [Nuclear Fury] by 3.",
+  "r2_detail": "When Crash Out is active, inflict random elemental ailments on foes, and for each different type of elemental ailment, increase Makoto's pierce rate by 6%.",
+  "r3": "Full Throttle",
+  "r3_detail": "Increase the skill levels of Sanctioned Drift and Nuclear Fury by 3.",
   "r4": "Fist of the Phantom Star",
-  "r4_detail": "[HIGHLIGHT] Enhanced: Increase maximum Frenzied Voltage stacks to 4. Inflict up to 4 elemental ailments on foes, and increase skill damage up to 4 times.",
+  "r4_detail": "Highlight Enhanced: Increase maximum Frenzied Voltage stacks to 4. Inflict up to 4 elemental ailments on foes, and increase skill damage up to 4 times.",
   "r5": "Feel My Wrath",
-  "r5_detail": "Increase the skill levels of [President's Prowess] and [Thief Tactics] by 3.",
+  "r5_detail": "Increase the skill levels of President's Prowess and Thief Tactics by 3.",
   "r6": "Fist of Justice!",
-  "r6_detail": "When [Crash Out] is active, Makoto can gain an extra action. (These extra actions do not affect the duration of effects with turn limits.)\nAlso decrease the SP cost of [Thermonuclear Fury] by 33%."
+  "r6_detail": "When Crash Out is active, Makoto can gain an extra action. (These extra actions do not affect the duration of effects with turn limits.)\nAlso decrease the SP cost of Thermonuclear Fury by 33%."
 };
 window.jpCharacterRitualData["마코토"] = {
   "name": "新島 真",

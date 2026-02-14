@@ -74,6 +74,13 @@ function parseArgs() {
   const raw = process.argv.slice(2);
   let useDev = false;
   const pos = [];
+  for (const token of raw) {
+    if (token === '--dev') {
+      useDev = true;
+      continue;
+    }
+    pos.push(token);
+  }
   const regionStr = pos[0] || 'kr,en,jp';
   const startId = pos[1] ? Number(pos[1]) : 101;
   const endId = pos[2] ? Number(pos[2]) : 300;
@@ -250,12 +257,12 @@ async function run() {
         }
 
         const oldName = mapping[idStr][nameKey];
-        if (json.data && typeof json.data.name === 'string') {
-          const newName = json.data.name;
-          if (oldName !== newName) {
-            mapping[idStr][nameKey] = newName;
-            changedMapping = true;
-          }
+        const newName = typeof json?.data?.name === 'string'
+          ? json.data.name
+          : (typeof json?.name === 'string' ? json.name : '');
+        if (newName && oldName !== newName) {
+          mapping[idStr][nameKey] = newName;
+          changedMapping = true;
         }
       } catch (e) {
         console.error(`   ❌ Failed (${region}, id=${id}):`, e?.message || e);

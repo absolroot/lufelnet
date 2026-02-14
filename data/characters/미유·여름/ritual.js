@@ -2,7 +2,7 @@ window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
 window.ritualData["미유·여름"] = {
-  "name": "사하라 미유",
+  "name": "사하라 미유·여름",
   "r0": "파도의 부름",
   "r0_detail": "사하라 미유·여름은 전투 중 서핑보드에 타서 『바다의 영역』을 전개하며, SP를 소모해 적에게 끝없는 파도 공격을 가할 수 있다. 사하라 미유·여름의 SP 상한이 200포인트로 증가하며, 전투 시작 시 초기 SP는 0포인트이다. 자신 이외의 동료의 턴 시작 시 사하라 미유·여름이 SP 15포인트를 회복한다(해당 효과는 SP 회복 속성의 영향을 받음).\n전투 중 누적 회복한 SP에 따라(상한 초과 부분도 포함) 사하라 미유·여름이 다음 보너스를 획득한다.\n100포인트 도달: 공격력 10% 증가\n200포인트 도달: 주는 대미지 10% 증가\n300포인트 도달: 크리티컬 확률 12% 증가\n400포인트 도달: 크리티컬 효과 24% 증가",
   "r1": "심해에서 온 소녀",

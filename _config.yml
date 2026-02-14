@@ -81,6 +81,7 @@ exclude:
   - nul
   - nul.*
   - data/external/before
+  - apps/patch-console
 
 # 감시 제외 설정
 keep_files:
@@ -89,4 +90,3 @@ keep_files:
 
 # 증분 빌드 활성화
 incremental: true
-

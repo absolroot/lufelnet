@@ -6,21 +6,21 @@ window.characterSkillsData["유우미"] = {
     "name": "매혹적인 향기",
     "element": "버프",
     "type": "버프",
-    "cool": 0,
+    "cool": 6,
     "description": "준비 시간: 행동 6회\n3턴 동안 모든 동료의 공격력이 시이나 유우미 공격력의 8.7%만큼 증가한다(최대 공격력 4600/5060/5980/6440포인트까지 계산). 스킬 시전 시, 시이나 유우미가 『칵테일』을 보유하면, 『칵테일』을 1잔 소모해 스킬 효과를 강화한다(품질이 높은 『칵테일』을 먼저 소모). 『믹스·DELUXE/믹스/러프』소모 시 스킬 효과가 각각 120%/100%/50% 증가한다."
   },
   "skill2": {
     "name": "다채로운 부재료",
     "element": "버프",
     "type": "버프",
-    "cool": 0,
+    "cool": 4,
     "description": "준비 시간: 행동 4회\n2턴 동안 1명의 동료의 주는 대미지가 증가하고(시이나 유우미의 공격력 230포인트마다 1%의 대미지 보너스 제공, 최대 공격력 4600/5060/5980/6440포인트까지 계산), 최대 생명이 13.0%/13.0%/14.6%/14.6% 증가한다. 대미지를 줄 시 1턴 동안 해당 대미지 2%의 생명을 회복한다. 해당 스킬 시전 시 시이나 유우미가 『러프/믹스』를 1잔 소모해 『믹스·DELUXE』를 1잔 획득한다."
   },
   "skill3": {
     "name": "향기로운 와인",
     "element": "버프",
     "type": "버프",
-    "cool": 0,
+    "cool": 8,
     "description": "준비 시간: 행동 8회(『칵테일』이 없으면 해당 스킬 사용 불가)\n모든 『칵테일』을 소모해 지정 동료의 적합성 속성을 특별 조제한다. 『믹스·DELUXE/믹스/러프』를 1잔 소모할 때마다 120%/100%/50% 강도의 아래 효과 발동: 아군 전체의 특제 속성 대미지를 증가시키고(시이나 유우미의 공격력 230포인트마다 1%의 대미지 보너스 제공, 최대 공격력 4600/5060/5980/6440포인트까지 계산), 2턴 동안 지정 동료의 특별 조제 속성 대미지가 1.2배까지 증가한다. 만약 『믹스·DELUXE/믹스』를 최소 2잔 소모하면 2턴동안 지정 동료의 크리티컬 효과가 추가로 20.0%/22.0%/22.4%/24.4% 증가한다."
   },
   "skill_highlight": {
@@ -40,7 +40,8 @@ window.characterSkillsData["유우미"] = {
     "element": "패시브",
     "cool": 0,
     "description": "전투 시작 시, 시이나 유우미가 팀 내 괴도의 속성에 따라 임의의 3개의 『풍미』를 획득한다."
-  }
+  },
+  "name": "시이나 유우미"
 };
 window.enCharacterSkillsData["유우미"] = {
   "name": "Yumi Shiina",
@@ -49,22 +50,22 @@ window.enCharacterSkillsData["유우미"] = {
     "element": "버프광역",
     "type": "버프",
     "cool": 6,
-    "description": "Increase party's Attack by 8.7% of Yumi's Attack for 3 turns (up to 4600/5060/5980/6440of Attack).\nWhen an ally uses a skill, spend 1 Cocktail to strengthen that skill's effects.\nHigher quality Cocktails will be used first. [Tailor-Made], [Standard], and [Basic] Cocktails will increase skill effects by 120%, 100%, and 50% respectively.\nCooldown Time: 6 ally actions."
+    "description": "Increase party's Attack by 8.7% of Yumi's Attack for 3 turns (up to 4600/5060/5980/6440 of Attack).\nWhen an ally uses a skill, spend 1 Cocktail to strengthen that skill's effects.\nHigher quality Cocktails will be used first. Tailor-Made, Standard, and Basic Cocktails will increase skill effects by 120%, 100%, and 50% respectively.\nCooldown Time: 6 ally actions."
   },
   "skill2": {
-    "name": "Charming Gaze",
+    "name": "Enchanting Stir",
     "element": "버프",
     "type": "버프",
     "cool": 4,
-    "description": "Increase 1 ally's damage by 1% for every 230 of Yumi's Attack (up to 4600/5060/5980/6440of Attack) and their max HP by 13.0%/13.0%/14.6%/14.6% for 2 turns. When the target deals damage to a foe, restore the target's HP by 2% of damage dealt for 1 turn.\nWhen activating a skill, spend 1 Basic or Standard Cocktail to gain 1 Tailor-Made Cocktail."
+    "description": "Increase 1 ally's damage by 1% for every 230 of Yumi's Attack (up to 4600/5060/5980/6440 of Attack) and their max HP by 13.0%/13.0%/14.6%/14.6% for 2 turns. When the target deals damage to a foe, restore the target's HP by 2% of damage dealt for 1 turn.\nWhen activating a skill, spend 1 Basic or Standard Cocktail to gain 1 Tailor-Made Cocktail.\nCooldown Time: 4 ally actions."
   },
   "skill3": {
-    "name": "Fragrant Wine",
+    "name": "Invigorating Blend",
     "element": "버프광역",
     "type": "버프",
     "cool": 8,
     "unlock": "This skill requires Cocktails.",
-    "description": "Spend all Cocktails to increase party's attribute damage based on the targeted ally's attribute for 2 turns.\nIncrease damage by 1% for every 230 of Yumi's Attack (up to 4600/5060/5980/6440of Attack). [Tailor-Made], [Standard], and [Basic] Cocktails will increase damage by an additional 120%, 100%, and 50% respectively.\nIncrease effects on targeted ally by 1.2 times. If 2 or more [Standard] or better Cocktails are spent, increase targeted ally's critical damage by 20.0%/22.0%/22.4%/24.4%."
+    "description": "Spend all Cocktails to increase the party's attribute damage based on the targeted ally's attribute for 2 turns.\nAttribute damage will increase by 1% for every 230 of Yumi's Attack (up to 4600/5060/5980/6440 of Attack). Each Tailor-Made, Standard, and Basic Cocktail spent will change this effect by 120%, 100%, and 50% respectively.\nIncrease these effects for the targeted ally by 1.2 times. If 2+ Standard or better Cocktails are spent, also increase the targeted ally's critical damage by 20.0%/22.0%/22.4%/24.4%.\nCooldown Time: 8 ally actions. (This skill requires Cocktails.)"
   },
   "skill_highlight": {
     "name": "Stat Buff",
@@ -75,12 +76,14 @@ window.enCharacterSkillsData["유우미"] = {
   "passive1": {
     "name": "Cocktail Party",
     "element": "패시브",
-    "description": "Increase party's attribute damage by 4% based on main attributes of party members."
+    "description": "Increase party's attribute damage by 4% based on main attributes of party members.",
+    "cool": 0
   },
   "passive2": {
     "name": "Taking Orders",
     "element": "패시브",
-    "description": "At the start of the battle, gain Mixers based on the most common main attibute of party members participating in the battle."
+    "description": "At the start of battle, gain 3 Mixers, based on the most common attribute among allies in the battle.",
+    "cool": 0
   }
 };
 window.jpCharacterSkillsData["유우미"] = {
@@ -90,14 +93,14 @@ window.jpCharacterSkillsData["유우미"] = {
     "element": "버프광역",
     "type": "버프",
     "cool": 6,
-    "description": "3ターンの間、味方全体の攻撃力を悠美の攻撃力の8.7%分（最大で攻撃力4600/5060/5980/6440分まで）上昇させる。\nさらに、スキル発動時に『カクテル』を1つ消費して、スキル効果を強化する。\n『カクテル』は高品質なものから優先して消費され、『オーダーメイド』、『スタンダード』、『ベーシック』で、それぞれスキル効果が120%／100%／50%上昇する。"
+    "description": "３ターンの間、味方全体の攻撃力を悠美の攻撃力の８.７%分（最大で攻撃力4600/5060/5980/6440分まで）上昇させる。\nさらに、スキル発動時に『カクテル』を１つ消費して、スキル効果を強化する。\n『カクテル』は高品質なものから優先して消費され、『オーダーメイド』、『スタンダード』、『ベーシック』で、それぞれスキル効果が１２０%／１００%／５０%上昇する。\nクールタイム：味方の行動６回"
   },
   "skill2": {
     "name": "魅了のステア",
     "element": "버프",
     "type": "버프",
     "cool": 4,
-    "description": "2ターンの間、味方単体の与ダメージを悠美の攻撃力230ごとに1%（最大で攻撃力4600/5060/5980/6440分まで）上昇させ、最大ＨＰを13.0%/13.0%/14.6%/14.6%上昇させる。さらに1ターンの間、対象が敵にダメージを与えると、そのダメージの2%分のＨＰを回復させる。\nスキル発動時、悠美は『ベーシック』もしくは『スタンダード』の『カクテル』を1つ消費し、『オーダーメイド』の『カクテル』を1つ獲得する。"
+    "description": "２ターンの間、味方単体の与ダメージを悠美の攻撃力２３０ごとに１%（最大で攻撃力4600/5060/5980/6440分まで）上昇させ、最大ＨＰを13.0%/13.0%/14.6%/14.6%上昇させる。さらに１ターンの間、対象が敵にダメージを与えると、そのダメージの２%分のＨＰを回復させる。\nスキル発動時、悠美は『ベーシック』もしくは『スタンダード』の『カクテル』を１つ消費し、『オーダーメイド』の『カクテル』を１つ獲得する。\nクールタイム：味方の行動４回"
   },
   "skill3": {
     "name": "活力のシェイク",
@@ -105,7 +108,7 @@ window.jpCharacterSkillsData["유우미"] = {
     "type": "버프",
     "cool": 8,
     "unlock": "『カクテル』を獲得していない場合、このスキルは使用できない",
-    "description": "『カクテル』を全て消費し、2ターンの間、選択した味方の属性に対応した属性ダメージを上昇させる。\nこの効果は味方全体に適用され、悠美の攻撃力230ごとに1%（最大で攻撃力4600/5060/5980/6440分まで）上昇し、さらに『カクテル』の質に応じて、『オーダーメイド』、『スタンダード』、『ベーシック』を1つ消費するごとに効果が120%／100%／50%に変動する。\n加えて、選択した味方はこの効果量が1.2倍になる。また『スタンダード』以上のカクテルを2つ以上消費した場合、選択した味方のクリティカルダメージを20.0%/22.0%/22.4%/24.4%上昇する。"
+    "description": "『カクテル』を全て消費し、２ターンの間、選択した味方の属性に対応した属性ダメージを上昇させる。\nこの効果は味方全体に適用され、悠美の攻撃力２３０ごとに１%（最大で攻撃力4600/5060/5980/6440分まで）上昇し、さらに『カクテル』の質に応じて、『オーダーメイド』、『スタンダード』、『ベーシック』を１つ消費するごとに効果が１２０%／１００%／５０%に変動する。\n加えて、選択した味方はこの効果量が１.２倍になる。また『スタンダード』以上のカクテルを２つ以上消費した場合、選択した味方のクリティカルダメージを20.0%/22.0%/22.4%/24.4%上昇する。\nクールタイム：味方の行動８回（『カクテル』を獲得していない場合、このスキルは使用できない）"
   },
   "skill_highlight": {
     "name": "ステータス強化",
@@ -116,11 +119,13 @@ window.jpCharacterSkillsData["유우미"] = {
   "passive1": {
     "name": "カクテルパーティー",
     "element": "패시브",
-    "description": "戦闘に参加した味方の属性に対応する属性ダメージが4%ずつ上昇する。"
+    "description": "戦闘に参加した味方の属性に対応する属性ダメージが4%ずつ上昇する。",
+    "cool": 0
   },
   "passive2": {
     "name": "テイクオーダー",
     "element": "패시브",
-    "description": "戦闘開始時、戦闘に参加している味方のなかで最も多い属性の『フレーバー』を3つ獲得する。"
+    "description": "戦闘開始時、戦闘に参加している味方のなかで最も多い属性の『フレーバー』を3つ獲得する。",
+    "cool": 0
   }
 };

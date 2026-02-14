@@ -21,24 +21,24 @@ window.ritualData["야오링"] = {
 window.enCharacterRitualData["야오링"] = {
   "name": "Yaoling Li",
   "r0": "Goddess of Oblivion",
-  "r0_detail": "On Yaoling's action, gain 1 [Memory] stack for every 10 points of Speed (up to 18 stacks per turn). When [Memory] reaches 40 stacks, spend all stacks to gain 1 Meng Po Soup stack. When using a skill, spend 1 Meng Po Soup stack for a 50% chance to inflict Forget on 1 foe for 1 turn, and enhance effects of [Flowers of Naihe] and [Lion Dance of Oblivion].",
+  "r0_detail": "On Yaoling's action, gain 1 Memory stack for every 10 points of Speed (up to 18 stacks per turn). When Memory reaches 40 stacks, spend all stacks to gain 1 Meng Po Soup stack.\nWhen using a skill, spend 1 Meng Po Soup stack for a 50% chance to inflict Forget on 1 foe for 1 turn, and enhance effects of Flowers of Naihe and Lion Dance of Oblivion.",
   "r1": "Road to Rebirth",
-  "r1_detail": "At the start of battle, gain 1 [Meng Po Soup] stack.",
+  "r1_detail": "At the start of battle, gain 1 Meng Po Soup stack.",
   "r2": "Soul Reaper",
   "r2_detail": "Increase Attack by 10% for each debuff inflicted on foes for 2 turns. Stacks up to 5 times.",
   "r3": "Beyond the Bend",
-  "r3_detail": "Increase the skill levels of [Lion Dance of Oblivion] and [Thief Tactics] by 3.",
+  "r3_detail": "Increase the skill levels of Lion Dance of Oblivion and Thief Tactics by 3.",
   "r4": "Training Results",
-  "r4_detail": "[HIGHLIGHT] Enhanced: Increase damage taken effect by 20%. Inflict Curse on all foes for 2 turns.",
+  "r4_detail": "Highlight Enhanced: Increase damage taken effect by 20%. Inflict Curse on all foes for 2 turns.",
   "r5": "Meng Po's Medicine",
-  "r5_detail": "Increase the skill levels of [Underworld Ferry] and [Flowers of Naihe] by 3.",
+  "r5_detail": "Increase the skill levels of Underworld Ferry and Flowers of Naihe by 3.",
   "r6": "Wisps of Crimson",
-  "r6_detail": "When spending [Meng Po Soup], increase party's Curse damage by 20% for 1 turn. Also, 60% chance to gain 1 [Meng Po Soup] stack. This effect won't activate again on the next turn."
+  "r6_detail": "When spending Meng Po Soup, increase party's Curse damage by 20% for 1 turn. Also, 60% chance to gain 1 Meng Po Soup stack. This effect won't activate again on the next turn."
 };
 window.jpCharacterRitualData["야오링"] = {
   "name": "李 瑤鈴",
   "r0": "忘川の女神",
-  "r0_detail": "自身の行動時、自身の速さ１０ごとに『回想』を１つ獲得する。『回想』は、この効果で１ターンに最大１８まで獲得できる。『回想』が４０以上になった時、それらをすべて消費して『孟婆湯』を１つ獲得する。スキルを使用した時、『孟婆湯』を１つ消費して選択した敵を１ターンの間、５０％の確率で忘却状態にし、『黄泉路に咲く花』『泉下の獅子』を強化する。",
+  "r0_detail": "自身の行動時、自身の速さ１０ごとに『回想』を１つ獲得する。『回想』は、この効果で１ターンに最大１８まで獲得できる。『回想』が４０以上になった時、それらをすべて消費して『孟婆湯』を１つ獲得する。\nスキルを使用した時、『孟婆湯』を１つ消費して選択した敵を１ターンの間、５０%の確率で忘却状態にし、『黄泉路に咲く花』『泉下の獅子』を強化する。",
   "r1": "転生の導き手",
   "r1_detail": "戦闘開始時、『孟婆湯』を１つ獲得する。",
   "r2": "魂魄の捕縛",

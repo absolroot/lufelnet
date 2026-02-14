@@ -24,13 +24,20 @@
 - 실행 스크립트: `bash scripts/fetch-external-data.sh`
 - 모드: `FETCH_MODE=weapon`
 
-4. `fetch-synergy.yaml`
+4. `fetch-api-wonder-weapon.yaml`
+- 이름: `Fetch External Wonder Weapon every 6h (+3h)`
+- 주기: `03:00, 09:00, 15:00, 21:00 UTC`
+- 실행 스크립트: `bash scripts/fetch-external-data.sh`
+- 모드: `FETCH_MODE=wonder_weapon`
+- 특징: `data/external/weapon/{kr,en,jp,cn}/wonder.json` 저장, 데이터 개수 급감 시 덮어쓰기 방지
+
+5. `fetch-synergy.yaml`
 - 이름: `Fetch Synergy every 12h`
 - 주기: 매 12시간 (`20 */12 * * *`, UTC)
 - 실행 스크립트: `node scripts/fetch-synergy.mjs`
 - 특징: 1회 실패 시 45초 후 재시도
 
-5. `fetch-persona.yaml`
+6. `fetch-persona.yaml`
 - 이름: `Fetch Persona (Wed 23:25, Thu 18:25, Fri 13:25 KST)`
 - 주기: 수동 지정 cron 3개
 - 실행 스크립트: `node scripts/fetch-persona.mjs`
@@ -38,7 +45,7 @@
 
 ## 2. 수동 패치 핵심 스크립트
 
-1. `scripts/patch-characters.mjs`
+1. `apps/patch-console/patch-characters.mjs`
 - 목적: 특정 캐릭터/특정 언어만 안전하게 패치
 - 주요 안전장치
 - 지정한 언어 테이블과 캐릭터 키만 갱신
@@ -58,30 +65,36 @@
 - 목적: 시너지 데이터 업데이트
 - 동작 요약: KR 기준 탐색 + 업데이트/보완 처리
 
+4. `apps/patch-console/patch-wonder-weapon.mjs`
+- 목적: 원더 무기(`data/kr/wonder/weapons.js`)를 external wonder API 데이터 기준으로 diff/선택 반영
+- 지원 언어: `kr,en,jp,cn`
+- 지원 파트: `name`, `effect`
+- 대상 티어: `fiveStar`만 (4성은 패치 대상에서 제외)
+
 ## 3. patch-characters 사용법
 
 1. 대상 인덱스/매핑 확인
 
 ```bash
-node scripts/patch-characters.mjs list --langs kr,en,jp
+node apps/patch-console/patch-characters.mjs list --langs kr,en,jp
 ```
 
 2. 실제 패치 (예: 4번, 7~10번 / KR+EN)
 
 ```bash
-node scripts/patch-characters.mjs patch --nums 4,7-10 --langs kr,en
+node apps/patch-console/patch-characters.mjs patch --nums 4,7-10 --langs kr,en
 ```
 
 3. 드라이런 (파일 미수정)
 
 ```bash
-node scripts/patch-characters.mjs patch --nums 4 --langs en --dry-run
+node apps/patch-console/patch-characters.mjs patch --nums 4 --langs en --dry-run
 ```
 
 4. 차이점 리포트만 생성
 
 ```bash
-node scripts/patch-characters.mjs report --langs kr,en,jp --all
+node apps/patch-console/patch-characters.mjs report --langs kr,en,jp --all
 ```
 
 ## 4. 리포트 경로 정책
@@ -92,7 +105,7 @@ node scripts/patch-characters.mjs report --langs kr,en,jp --all
 2. 필요 시 직접 지정
 
 ```bash
-node scripts/patch-characters.mjs report --all --langs kr,en,jp --report-file scripts/reports/custom-diff.md
+node apps/patch-console/patch-characters.mjs report --all --langs kr,en,jp --report-file scripts/reports/custom-diff.md
 ```
 
 3. Git 관리 정책
@@ -110,7 +123,7 @@ node scripts/patch-characters.mjs report --all --langs kr,en,jp --report-file sc
 
 2. 구현 권장 형태
 - `apps/patch-console/` 같은 로컬 전용 페이지
-- 데이터 읽기/패치 실행은 기존 `scripts/patch-characters.mjs`를 호출해서 재사용
+- 데이터 읽기/패치 실행은 기존 `apps/patch-console/patch-characters.mjs`를 호출해서 재사용
 - 즉, GUI는 오케스트레이션만 담당하고 실제 반영 로직은 스크립트 단일화 유지
 
 3. 기대 효과
@@ -130,7 +143,7 @@ npm run patch-console
 - `http://127.0.0.1:4173`
 
 3. 위치
-- 서버: `scripts/run-patch-console.mjs`
+- 서버: `apps/patch-console/run-patch-console.mjs`
 - UI: `apps/patch-console/index.html`
 - 스타일: `apps/patch-console/patch-console.css`
 - 클라이언트 로직: `apps/patch-console/patch-console.js`
@@ -146,12 +159,12 @@ npm run patch-console
 - 체크된 파트만 report/patch 대상으로 전달됩니다.
 
 6. 참고
-- GUI도 내부적으로 `scripts/patch-characters.mjs`를 호출합니다.
+- GUI도 내부적으로 `apps/patch-console/patch-characters.mjs`를 호출합니다.
 - 리포트는 기본적으로 `scripts/reports/patch-console-report.md`에 생성됩니다.
 - GUI에서 신규 캐릭터 생성 시 다음이 자동 수행됩니다.
 - `data/external/character/codename.json`에 `{ api, local, key }` 추가
 - `data/characters/<key>`에 template 기반 파일 생성
 - 도메인 탭(`character`, `persona`, `wonder_weapon`) 구조를 추가해 확장 가능한 형태로 정리했습니다.
-- 현재 실제 동작은 `character`만 활성화되어 있고, 나머지는 준비중 상태로 표시됩니다.
+- 현재 실제 동작 도메인은 `character`, `persona`, `wonder_weapon`입니다.
 - `capabilities` API를 읽지 못해도 `character`는 fallback으로 항상 동작하도록 처리했습니다.
 - 아이콘은 `assets/img/tier`에서 `key -> local -> api` 순으로 exact 파일명을 우선 탐색하고, 실패 시 정규화 매칭으로 fallback합니다.

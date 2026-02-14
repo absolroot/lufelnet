@@ -142,7 +142,7 @@ window.personaFiles["시바"] = {
       "name": "사이코 포스",
       "name_en": "Psycho Blast",
       "name_jp": "サイコフォース",
-      "desc": "모든 적에게 공격력 77.1/80.6/84.1%의 염동 속성 대미지를 주고, 정신 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 50% 증가한다.",
+      "desc": "적 전체에 공격력 77.1/80.6/84.1%의 염동 속성 대미지를 주고, 정신 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 50% 증가한다.",
       "desc_en": "Deal Psy damage to all foes equal to 77.1/80.6/84.1% of Attack. Deal a Technical and increase damage by 50% for foes with a spiritual ailment.",
       "desc_jp": "敵全体に攻撃力77.1/80.6/84.1%の念動属性ダメージを与える。行動異常の敵に対してテクニカルが発生しダメージが５０%上昇する。",
       "cost": "SP 22",

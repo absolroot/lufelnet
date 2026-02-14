@@ -102,28 +102,44 @@ window.personaFiles["트론"] = {
       "desc": "1명의 적에게 공격력 121.7/127.8/133.9%의 화염 속성 대미지를 주고, 67.6/71.0/74.4%의 기본 확률로 적을 2턴 동안 화상 상태에 빠뜨린다.",
       "cost": "SP 21",
       "level": "6/7/8",
-      "learn_level": "10"
+      "learn_level": "10",
+      "name_en": "Agidyne",
+      "desc_en": "Deal Fire damage to 1 foe equal to 121.7/127.8/133.9% of Attack. 67.6/71.0/74.4% chance to inflict Burn for 2 turns.",
+      "name_jp": "アギダイン",
+      "desc_jp": "敵単体に攻撃力121.7/127.8/133.9%の火炎属性ダメージを与える。67.6/71.0/74.4%の確率で敵を２ターンの間、炎上状態にする。"
     },
     {
       "name": "화상률 UPⅢ",
       "desc": "화상 효과 부여 시 효과 명중이 16.3% 증가한다.",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "20"
+      "learn_level": "20",
+      "name_en": "Burn Boost III",
+      "desc_en": "Increase Burn accuracy by 16.3%.",
+      "name_jp": "炎上率ＵＰⅢ",
+      "desc_jp": "炎上の命中率が１６.３%上昇する。"
     },
     {
       "name": "화염 강화Ⅲ",
       "desc": "화염 속성 대미지가 8.7% 증가한다.",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "30"
+      "learn_level": "30",
+      "name_en": "Fire Boost III",
+      "desc_en": "Increase Fire damage by 8.7%.",
+      "name_jp": "火炎ブースタⅢ",
+      "desc_jp": "火炎属性の与ダメージが８.７%上昇する。"
     },
     {
       "name": "마하코우가온",
       "desc": "모든 적에게 공격력 65.8/70.0/74.2%의 축복 속성 대미지를 주고, 자신은 축복 효과 1~2개를 획득한다.",
       "cost": "SP 21",
       "level": "6/7/8",
-      "learn_level": "40"
+      "learn_level": "40",
+      "name_en": "Makougaon",
+      "desc_en": "Deal Bless damage to all foes equal to 65.8/70.0/74.2% of Attack. Gain 1 to 2 Blessing stacks.",
+      "name_jp": "マハコウガオン",
+      "desc_jp": "敵全体に攻撃力65.8/70.0/74.2%の祝福属性ダメージを与える。自身に１～２つの祝印を獲得する。"
     }
   ]
 };

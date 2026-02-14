@@ -81,7 +81,7 @@ window.personaFiles["세트"] = {
       "name": "정밀한 사격Ⅲ",
       "name_en": "Gun Boost III",
       "name_jp": "銃撃ブースタⅢ",
-      "desc": "총기 대미지가 8.7% 증가한다.",
+      "desc": "총격 대미지가 8.7% 증가한다.",
       "desc_en": "Increase Gun damage by 8.7%.",
       "desc_jp": "銃撃属性の与ダメージが８.７%上昇する。",
       "cost": "",

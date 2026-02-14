@@ -6,48 +6,51 @@ window.characterSkillsData["몽타뉴·백조"] = {
   "skill1": {
     "name": "폭풍의 서곡/싸늘한 바람",
     "element": "질풍빙결",
-    "type": "단일피해",
+    "type": "단일 피해",
     "sp": 24,
     "cool": 0,
-    "description": "『봄 형태』:1명의 적에게 공격력 65.9%/72.7%/69.9%/76.7%의 질풍 속성 대미지를 3회 주고, 30%의 기본 확률로 적을 풍습 상태에 빠뜨린다. 코토네 몽타뉴・백조가 『봄의 결계』에 있을 경우, 추가로 2턴 동안 적을 『풍상』 상태에 빠뜨린다. 코토네 몽타뉴・백조가 『풍상』 상태인 적 공격 시 크리티컬 효과가 29.3%/29.3%/31.1%/31.1% 증가한다.\n\n『겨울 형태』:1명의 적에게 공격력 122.2%/134.7%/129.7%/142.2%의 빙결 속성 대미지를 주고, 97.6%/97.6%/103.6%/103.6%의 기본 확률로 적을 동결 상태에 빠뜨린다. 적이 이미 동결 상태인 경우 2턴 동안 『동파』 상대에 빠뜨린다. 『동파』 상태의 적이 받는 빙결 속성 대미지가 13.7%/13.7%/14.5%/14.5% 증가한다."
+    "description": "『봄 형태』: 1명의 적에게 공격력 65.9%/72.6%/69.9%/76.7%의 질풍 속성 대미지를 3회 주고, 30%의 기본 확률로 적을 풍습 상태에 빠뜨린다. 코토네 몽타뉴·백조가 『봄의 결계』 에 있을 경우, 추가로 2턴 동안 적을 풍상 상태에 빠뜨린다. 코토네 몽타뉴·백조가 풍상 상태인 적 공격 시 크리티컬 효과가 29.3%/29.3%/31.1%/31.1% 증가한다.\n『겨울밤 형태』: 1명의 적에게 공격력 122.2%/134.7%/129.7%/142.2%의 빙결 속성 대미지를 주고, 97.6%/97.6%/103.6%/103.6%의 기본 확률로 적을 동결 상태에 빠뜨린다. 적이 이미 동결 상태인 경우 2턴 동안 동파 상태에 빠뜨린다. 동파 상태의 적이 받는 빙결 속성 대미지가 13.7%/13.7%/14.5%/14.5% 증가한다."
   },
   "skill2": {
     "name": "흩날리는 구름/눈 내리는 설원",
     "element": "질풍빙결광역",
-    "type": "광역피해",
+    "type": "광역 피해",
     "sp": 24,
     "cool": 0,
-    "description": "『봄 형태』: 모든 적에게 공격력 31.3%/34.5%/33.3%/36.5%의 질풍 속성 대미지를 3회 준다. 코토네 몽타뉴・백조가 『봄의 결계』에 있을 경우 추가로 『아침 이슬 결정』을 1개 획득한다.\n\n『겨울 형태』: 모든 적에게 공격력 83.8%/92.4%/89.0%/97.6%의 빙결 속성 대미지를 주고, 48.8%/48.8%/51.8%/51.8%의 기본 확률로 동결 상태에 빠뜨린다. 코토네 몽타뉴・백조가 『겨울의 결계』에 있을 경우, 해당 공격으로 주는 대미지가 20% 증가한다."
+    "description": "『봄 형태』: 모든 적에게 공격력 31.3%/34.5%/33.3%/36.5%의 질풍 속성 대미지를 3회 준다. 코토네 몽타뉴·백조가 『봄의 결계』 에 있을 경우 추가로 『아침 이슬 결정』을 1개 획득한다.\n『겨울밤 형태』: 모든 적에게 공격력 83.8%/92.4%/89.0%/97.6%의 빙결 속성 대미지를 주고, 48.8%/48.8%/51.8%/51.8%의 기본 확률로 동결 상태에 빠뜨린다. 코토네 몽타뉴·백조가 『겨울밤의 결계』 에 있을 경우, 해당 공격으로 주는 대미지가 20% 증가한다."
   },
   "skill3": {
     "name": "다가오는 봄/겨울밤의 무곡",
     "element": "질풍빙결",
-    "type": "단일피해",
+    "type": "단일 피해",
     "sp": 28,
     "cool": 0,
-    "description": "『봄 형태』: 1턴 동안 지속되는 『봄의 결계』를 시전하고, 1명의 적에게 공격력 82.9%/91.5%/87.9%/96.5%의 질풍 속성 대미지를 3회 준다. 『봄의 결계』 지속 시간 동안 모든 괴도가 페르소나 스킬, HIGHLIGHT, 추가 효과로 질풍 속성 대미지를 줄 때, 메인 목표에게 코토네 몽타뉴・백조 공격력 20%의 질풍 속성 대미지를 추가로 주고, 코토네 몽타뉴・백조에게는 『아침 이슬 결정』 1개를 제공한다. 『봄의 결계』 종료 시, 모든 『아침 이슬 결정』을 소모하여 현재 턴의 메인 목표에게 공격력 (3+『아침 이슬 결정』 수량)*34.2%/37.7%/36.3%/39.8%의 질풍 속성 대미지를 준다. 해당 대미지는 추가 효과로 계산한다.\n\n『겨울 형태』: 1턴 동안 지속되는 『겨울밤의 결계』를 시전하고, 1명의 적에게 공격력 183.2%/201.9%/194.5%/213.2%의 빙결 속성 대미지를 준다. 『겨울밤의 결계』 지속 시간 동안 모든 괴도가 공격을 받은 후 모든 괴도는 1301/1301/1381/1381포인트 대미지를 막을 수 있는 『눈덩이 방패』를 획득한다. 해당 효과는 최대 2회 발동한다. 모든 괴도가 페르소나 스킬, HIGHLIGHT, 추가 효과를 사용해 빙결 속성 대미지를 줄 때, 코토네 몽타뉴・백조는 『겨울 서리 결정』을 1개 획득한다. 『겨울밤의 결계』 종료 시, 모든 『겨울 서리 결정』『겨울서리』을 소모해 현재 턴의 메인 목표에게 공격력 (3+『겨울 서리 결정』 수량)*27.9%/30.8%/29.6%/32.5%의 빙결 속성 대미지를 준다. 해당 대미지는 추가 효과로 계산한다."
+    "description": "『봄 형태』: 1턴 동안 지속되는 『봄의 결계』를 시전하고, 1명의 적에게 공격력 82.9%/91.4%/88.0%/96.4%의 질풍 속성 대미지를 3회 준다. 『봄의 결계』 지속 시간 동안 모든 괴도가 페르소나 스킬, HIGHLIGHT, 테우르기아, 추가 효과로 질풍 속성 대미지를 줄 때, 메인 목표에게 코토네 몽타뉴·백조 공격력 20%의 질풍 속성 대미지를 추가로 주고, 코토네 몽타뉴·백조에게는 『아침 이슬 결정』 1개를 제공한다. 『봄의 결계』 종료 시, 모든 『아침 이슬 결정』을 소모하여 현재 턴의 메인 목표에게 공격력 (3+『아침 이슬 결정』 수량)*34.2%/37.7%/36.3%/39.8%의 질풍 속성 대미지를 준다. 해당 대미지는 추가 효과로 계산한다.\n『겨울밤 형태』: 1턴 동안 지속되는 『겨울밤의 결계』를 시전하고, 1명의 적에게 공격력 183.2%/202.0%/194.5%/213.2%의 빙결 속성 대미지를 준다. 『겨울밤의 결계』 지속 시간 동안 괴도가 공격을 받은 후 모든 괴도는 1301/1301/1380/1380포인트 대미지를 막을 수 있는 『눈덩이 방패』를 획득한다. 해당 효과는 최대 2회 발동한다. 모든 괴도가 페르소나 스킬, HIGHLIGHT, 테우르기아, 추가 효과를 사용해 빙결 속성 대미지를 줄 때, 코토네 몽타뉴·백조는 『겨울 서리 결정』을 1개 획득한다. 『겨울밤의 결계』 종료 시, 모든 『겨울 서리 결정』을 소모해 현재 턴의 메인 목표에게 공격력 (3+『겨울 서리 결정』수량)*27.9%/30.8%/29.6%/32.5%의 빙결 속성 대미지를 준다. 해당 대미지는 추가 효과로 계산한다."
   },
   "skill_highlight": {
     "element": "질풍빙결",
     "type": "단일피해",
-    "description": "『봄 형태』: 1명의 적에게 공격력 149.6%/165.0%/158.8%/174.2%의 질풍 속성 대미지를 3회 준다. 코토네 몽타뉴・백조가 『봄의 결계』에 있을 경우, 수량 제한을 돌파할 수 있는 『아침 이슬 결정』 1개를 추가로 획득한다. 그렇지 않을 경우 목표에게 질풍 속성 대미지를 1회 추가로 준다.\n\n『겨울 형태』: 1명의 적에게 공격력 380.6%/419.6%/404.0%/443.0%의 빙결 속성 대미지를 주고 68.3%/68.3%/72.5%/72.5%의 기본 확률로 적을 1턴 『얼음 봉인』 상태에 빠뜨린다. 코토네 몽타뉴・백조가 『겨울밤의 결계』에 있을 경우, 『얼음 봉인』의 기본 확률이 29.3%/29.3%/31.1%/31.1% 증가한다. 그렇지 않을 경우, 해당 공격으로 주는 대미지가 20% 증가한다."
+    "description": "『봄 형태』: 1명의 적에게 공격력 149.6%/165.0%/158.8%/174.1%의 질풍 속성 대미지를 3회 준다. 코토네 몽타뉴·백조가 『봄의 결계』 내에 있을 경우 수량 제한을 돌파할 수 있는 『아침 이슬 결정』 1개를 추가로 획득한다. 그렇지 않을 경우 목표에게 질풍 속성 대미지를 1회 추가로 준다. 『겨울밤 형태』: 1명의 적에게 공격력 380.6%/419.6%/404.0%/443.0%의 빙결 속성 대미지를 주고 68.3%/68.3%/72.5%/72.5%의 기본 확률로 적을 1턴 동안 얼음 봉인 상태에 빠뜨린다. 코토네 몽타뉴·백조가 『겨울밤의 결계』 안에 있을 경우, 얼음 봉인의 기본 확률이 29.3%/29.3%/31.1%/31.1% 증가한다. 그렇지 않을 경우, 이번 공격의 스킬 대미지가 20% 증가한다.",
+    "cool": 4
   },
   "passive1": {
     "name": "소중함",
     "element": "패시브",
-    "description": "팀에 다른 질풍 속성 괴도를 편성하면 코토네 몽타뉴・백조의 질풍 대미지가 33.0% 증가한다. 팀에 다른 빙결 속성 괴도를 편성하면 코토네 몽타뉴・백조의 빙결 대미지가 33.0% 증가한다."
+    "description": "팀에 다른 질풍 속성 괴도를 편성하면 코토네 몽타뉴·백조의 질풍 대미지가 33.0% 증가한다. 팀에 다른 빙결 속성 괴도를 편성하면 코토네 몽타뉴·백조의 빙결 대미지가 33.0% 증가한다.",
+    "cool": 0
   },
   "passive2": {
     "name": "그리움",
     "element": "패시브",
-    "description": "『봄 형태』에서는 괴도가 질풍 속성 공격을 1회 줄 때마다 2턴 동안 모든 괴도의 공격력이 8.1% 증가한다(5회 중첩 가능). 『겨울밤 형태』에서는 코토네 몽타뉴・백조가 실드를 획득할 때마다 2턴 동안 모든 괴도의 방어력이 9.0% 증가한다(4회 중첩 가능)."
+    "description": "『봄 형태』에서는 괴도가 질풍 속성 공격을 1회 줄 때마다 2턴 동안 모든 괴도의 공격력이 8.1% 증가한다(5회 중첩 가능). 『겨울밤 형태』에서는 코토네 몽타뉴·백조가 실드를 획득할 때마다 2턴 동안 모든 괴도의 방어력이 9.0% 증가한다(4회 중첩 가능).",
+    "cool": 0
   }
 };
 window.enCharacterSkillsData["몽타뉴·백조"] = {
   "skill1": {
     "name": "Éclat de Vent / Iceburst",
     "element": "질풍빙결",
-    "type": "단일피해",
+    "type": "단일 피해",
     "sp": 24,
     "cool": 0,
     "description": "Spring mode: Deal Wind damage to 1 foe equal to 73.8%/81.3%/78.3%/85.9% of Attack (3 hits), with a 30% chance to inflict Windswept. When Spring's Edge is active, also gain 1 Spring's Vestige stack and inflict Spiral Sequence for 2 turns. When Frostgale Kotone attacks a foe with Spiral Sequence, increase critical damage by 29.3%/29.3%/31.1%/31.1%.\nWinter mode: Deal Ice damage to 1 foe equal to 152.7%/168.4%/162.1%/177.8% of Attack, with a 97.6%/97.6%/103.6%/103.6% chance to inflict Freeze. If the target is already Frozen, inflict On Ice for 2 turns. Increase Ice damage taken by 13.7%/13.7%/14.5%/14.5% for foes with On Ice."
@@ -62,7 +65,7 @@ window.enCharacterSkillsData["몽타뉴·백조"] = {
   "skill3": {
     "name": "Ailes au Vent / Frozen Wings",
     "element": "질풍빙결",
-    "type": "단일피해",
+    "type": "단일 피해",
     "sp": 28,
     "cool": 0,
     "description": "Spring mode: Activate Spring's Edge for 1 turn, and deal Wind damage to 1 foe equal to 92.8%/102.3%/98.5%/108.0% of Attack (3 hits). While Spring's Edge is active, when allies deal Wind damage with a skill, Highlight, or Resonance, deal Wind damage to the selected target equal to 20% of Frostgale Kotone's Attack, and gain 1 Spring's Vestige stack. When Spring's Edge ends, spend all Spring's Vestige stacks, and deal Wind damage to the target selected that turn equal to (number of Spring's Vestige stacks + 4) x 36.4%/40.1%/38.6%/42.3% of Attack. This damage is counted as a Resonance.\nWinter mode: Activate Winter's Edge for 1 turn, and deal Ice damage to 1 foe equal to 229.0%/252.5%/243.1%/266.5% of Attack. While Winter's Edge is active, when an ally takes an attack, grant Glacial Heart to all allies for 2 turns, protecting them from up to 1301/1301/1380/1380 damage. This effect can be activated up to 2 times. Also, when allies deal Ice damage with a skill, Highlight, or Resonance, gain 1 Winter's Vestige stack. When Winter's Edge ends, spend all Winter's Vestige stacks, and deal Ice damage to the target selected that turn equal to (number of Winter's Vestige stacks + 4) x 27.9%/30.8%/29.6%/32.5% of Attack. This damage is counted as a Resonance."
@@ -83,7 +86,8 @@ window.enCharacterSkillsData["몽타뉴·백조"] = {
     "element": "질풍빙결",
     "cool": 4,
     "description": "Spring mode: Deal Wind damage to 1 foe equal to 212.5%/234.2%/225.5%/247.3% of Attack (3 hits). When Spring's Edge is active, gain 1 more Spring's Vestige stack (this additional stack can exceed the maximum limit). If Spring's Edge is not active, deal 1 more hit of Wind damage to selected target.\nWinter mode: Deal Ice damage to 1 foe equal to 380.6%/419.6%/404.0%/443.0% of Attack, with a 68.3%/68.3%/72.5%/72.5% chance to inflict Icebound. When Winter's Edge is active, increase chance to inflict Icebound by 29.3%/29.3%/31.1%/31.1%. If Winter's Edge is not active, increase Highlight damage by 20%."
-  }
+  },
+  "name": "Frostgale Kotone"
 };
 window.jpCharacterSkillsData["몽타뉴·백조"] = {
   "skill1": {

@@ -1,0 +1,42 @@
+name: Fetch External Wonder Weapon every 6h (+3h)
+
+on:
+  schedule:
+    - cron: "0 3-23/6 * * *" # 03:00, 09:00, 15:00, 21:00 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fetch-external-wonder-weapon
+  cancel-in-progress: false
+
+jobs:
+  fetch-wonder-weapon:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install jq
+        run: sudo apt-get update && sudo apt-get install -y jq
+
+      - name: Fetch wonder weapon data
+        env:
+          BASE_URL: https://iant.kr:5000/data
+          FETCH_MODE: wonder_weapon
+        run: |
+          bash scripts/fetch-external-data.sh
+
+      - name: Commit & Push
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name  "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add -A
+            git commit -m "chore(data): update external wonder weapon json [skip ci]" || echo "No changes to commit"
+            git push || echo "Nothing to push or push skipped."
+          else
+            echo "No changes found."
+          fi

@@ -54,7 +54,7 @@ window.enCharacterSkillsData["하루나"] = {
     "type": "단일 피해",
     "sp": 20,
     "cool": 0,
-    "description": "Deal Psychokinesis damage to 1 foe equal to 146.4%/161.4%/155.4%/170.4% of Attack, and grant [Affection] to party for 1 turn. [Affection]: When dealing damage with a skill, Haruna gains 1 Childish Heart stack."
+    "description": "Deal Psychokinesis damage to 1 foe equal to 146.4%/161.4%/155.4%/170.4% of Attack, and grant Affection to party for 1 turn.\nAffection: When dealing damage with a skill, grant Haruna 1 Childish Heart stack."
   },
   "skill2": {
     "name": "Ready for Adventure",
@@ -62,7 +62,7 @@ window.enCharacterSkillsData["하루나"] = {
     "type": "버프",
     "sp": 22,
     "cool": 0,
-    "description": "Increase party's healing received and shield received by 17.6%/19.4%/18.7%/20.5%, and Defense by 34.2%/37.7%/36.3%/39.8% for 2 turns. If Haruna does not have Childish Heart, gain 2 Childish Heart stacks."
+    "description": "Increase party's healing received and shield received by 17.6%/19.4%/18.6%/20.4%, and Defense by 34.2%/37.7%/36.3%/39.8% for 2 turns.\nIf Haruna does not have Childish Heart, gain 2 Childish Heart stacks."
   },
   "skill3": {
     "name": "Courageous Campaign",
@@ -70,36 +70,38 @@ window.enCharacterSkillsData["하루나"] = {
     "type": "버프",
     "sp": 24,
     "cool": 0,
-    "description": "This skill requires Childish Heart. When used with Childish Heart, increase party's Attack by 10% for 2 turns. At 2 or more stacks of Childish Heart, also increase party's damage dealt by 1% for every 100 of Haruna's Attack, up to 48.8%/53.8%/51.8%/56.8%."
+    "description": "This skill requires Childish Heart.\nWhen used with Childish Heart, increase party's Attack by 10% for 2 turns.\nAt 2 or more stacks of Childish Heart, also increase party's damage by 1% for every 100 of Haruna's Attack, up to 48.8%/53.8%/51.8%/56.8%."
   },
   "skill_highlight": {
     "name": "Highlight",
     "element": "염동",
     "type": "버프",
     "sp": 0,
-    "cool": 0,
-    "description": "When Haruna gains Childish Heart, gain 1 Mystery stack for 2 turns (stacks up to 5 times). Deal Psychokinesis damage to 1 foe equal to 336.0%/373.5%/388.5%/426.0% of Attack and increase party's damage for 1 turn by 7.8%/8.6%/8.3%/9.1% for each stack of Mystery."
+    "cool": 4,
+    "description": "Deal Psychokinesis damage to 1 foe equal to 366.0%/403.5%/388.5%/426.0% of Attack. Increase party's damage by 7.8%/8.6%/8.3%/9.1% for each stack of Mystery for 1 turn."
   },
   "passive1": {
     "name": "Let's Hold Hands",
     "element": "패시브",
-    "description": "Each time an ally with [Affection] deals damage, 40.0% chance to gain 1 Childish Heart stack."
+    "description": "Each time an ally with Affection deals damage, 40.0% chance to gain 1 Childish Heart stack.",
+    "cool": 0
   },
   "passive2": {
     "name": "Safety in Numbers",
     "element": "패시브",
-    "description": "When spending 3 or more Childish Heart stacks at once, further increase effects of Off to Treasure Hunt by 24.0%."
+    "description": "When spending 3 or more Childish Heart stacks at once, increase effects of Off to Treasure Hunt by 24.0% more.",
+    "cool": 0
   }
 };
 window.jpCharacterSkillsData["하루나"] = {
-  "name": "西森陽菜",
+  "name": "西森 陽菜",
   "skill1": {
     "name": "ビックリドッキリ隊員",
     "element": "염동",
     "type": "단일 피해",
     "sp": 20,
     "cool": 0,
-    "description": "敵単体に攻撃力146.4%/161.4%/155.4%/170.4%の念動属性ダメージを与え、味方全体を1ターンの間、『愛情』状態にする。『愛情』状態：スキルでダメージを与えた時、陽菜が『子供心』を1つ獲得する。"
+    "description": "敵単体に攻撃力146.4%/161.4%/155.4%/170.4%の念動属性ダメージを与え、味方全体を１ターンの間、『愛情』状態にする。\n『愛情』状態：スキルでダメージを与えた時、陽菜が『子供心』を１つ獲得する。"
   },
   "skill2": {
     "name": "冒険の準備は万端",
@@ -107,7 +109,7 @@ window.jpCharacterSkillsData["하루나"] = {
     "type": "버프",
     "sp": 22,
     "cool": 0,
-    "description": "2ターンの間、味方全体の被ＨＰ回復量と被シールド量を17.6%/19.4%/18.7%/20.5%、防御力を34.2%/37.7%/36.3%/39.8%上昇させる。『子供心』を獲得していない場合、『子供心』を2つ獲得する。"
+    "description": "２ターンの間、味方全体の被ＨＰ回復量と被シールド量を17.6%/19.4%/18.6%/20.4%、防御力を34.2%/37.7%/36.3%/39.8%上昇させる。\n『子供心』を獲得していない場合、『子供心』を２つ獲得する。"
   },
   "skill3": {
     "name": "勇気の大作戦",
@@ -115,23 +117,25 @@ window.jpCharacterSkillsData["하루나"] = {
     "type": "버프",
     "sp": 24,
     "cool": 0,
-    "description": "『子供心』を獲得していない場合、このスキルは使用できない。『子供心』を獲得した状態で使用すると2ターンの間、味方全体の攻撃力を10%上昇させる。『子供心』の累積が2つ以上の時、さらに与ダメージが自身の攻撃力100ごとに1%上昇し、最大48.8%/53.8%/51.8%/56.8%まで上昇する。"
+    "description": "『子供心』を獲得していない場合、このスキルは使用できない。\n『子供心』を獲得した状態で使用すると２ターンの間、味方全体の攻撃力を１０%上昇させる。\n『子供心』の累積が２つ以上の時、さらに与ダメージが自身の攻撃力１００ごとに１%上昇し、最大48.8%/53.8%/51.8%/56.8%まで上昇する。"
   },
   "skill_highlight": {
     "element": "염동",
     "type": "버프",
     "sp": 0,
-    "cool": 0,
-    "description": "陽菜が『子供心』を獲得した時、同数の『ミステリー』を獲得する。『ミステリー』はハイライトを使用するか2ターン経過で消失し、最大5つまで累積する。敵単体に攻撃力336.0%/373.5%/388.5%/426.0%の念動属性ダメージを与え、1ターンの間、味方全体の与ダメージを『ミステリー』の累積数ごとに7.8%/8.6%/8.3%/9.1%ずつ上昇させる。"
+    "cool": 4,
+    "description": "敵単体に攻撃力366.0%/403.5%/388.5%/426.0%の念動属性ダメージを与え、１ターンの間、味方全体の与ダメージを『ミステリー』の累積数ごとに7.8%/8.6%/8.3%/9.1%ずつ上昇させる。"
   },
   "passive1": {
     "name": "手を繋いで行こう！",
     "element": "패시브",
-    "description": "『愛情』状態の味方がダメージを与えるごとに、40.0%の確率で『子供心』を1つ獲得する。"
+    "description": "『愛情』状態の味方がダメージを与えるごとに、40.0%の確率で『子供心』を１つ獲得する。",
+    "cool": 0
   },
   "passive2": {
     "name": "一緒なら怖くない！",
     "element": "패시브",
-    "description": "『子供心』を一度に3つ以上消費した時、『宝探しへ出発！』の攻撃力上昇効果の値が24.0%上昇する。"
+    "description": "『子供心』を一度に３つ以上消費した時、『宝探しへ出発！』の攻撃力上昇効果の値が24.0%上昇する。",
+    "cool": 0
   }
 };

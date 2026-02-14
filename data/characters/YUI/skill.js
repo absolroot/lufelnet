@@ -46,14 +46,14 @@ window.characterSkillsData["YUI"] = {
   "name": "YUI"
 };
 window.enCharacterSkillsData["YUI"] = {
-  "name": "YUI",
+  "name": "Yui",
   "skill1": {
     "name": "Electric Bomb",
     "element": "전격",
-    "type": "단일피해",
+    "type": "단일 피해",
     "sp": 20,
     "cool": 0,
-    "description": "Deal Electric damage to 1 foe equal to 185.4%/204.4%/196.8%/215.8%of Attack. If the foe is not Shocked, there is a 68.3%/68.3%/72.5%/72.5% chance to inflict Shock for 2 turns. If the foe is already Shocked, increase damage by 30%."
+    "description": "Deal Electric damage to 1 foe equal to 185.4%/204.4%/196.8%/215.8% of Attack. If the foe is not Shocked, there is a 68.3%/68.3%/72.5%/72.5% chance to inflict Shock for 2 turns. If the foe is already Shocked, increase damage by 30%."
   },
   "skill2": {
     "name": "Meta Dynamite",
@@ -69,33 +69,36 @@ window.enCharacterSkillsData["YUI"] = {
     "type": "버프",
     "sp": 25,
     "cool": 1,
-    "description": "Grant Player 2 to 1 ally for 2 turns, and increase YUI's Attack by 39.0%/43.0%/41.4%/45.4%.\nFor 2 turns, when an ally with Player 2 deals damage to a foe with a skill, perform a follow-up attack, dealing Electric damage equal to 132.9%/137.2%/141.1%/145.4% of Attack (max 2 times).\nIncrease chance to activate Jolly Cooperation by 10% for 2 turns."
+    "description": "Grant Player 2 to 1 ally for 2 turns, and increase Yui's Attack by 39.0%/43.0%/41.4%/45.4%.\nFor 2 turns, when an ally with Player 2 deals damage to a foe with a skill, perform a follow-up attack, dealing Electric damage equal to 132.9%/146.6%/141.1%/154.7% of Attack (max 2 times).\nIncrease chance to activate Jolly Cooperation by 10% for 2 turns."
   },
   "skill_highlight": {
     "element": "버프",
     "type": "버프",
-    "description": "Increase Attack by 34.2%/37.7%/36.3%/39.8% and increase follow-up attack damage by 24.4%/25.9%/25.9%/27.4%  of Attack for 2 turns.\nActivate follow-up attacks after allies deal damage with skills for 2 turns."
+    "description": "Increase Attack by 34.2%/37.7%/36.3%/39.8% and follow-up damage by 24.4%/26.9%/25.9%/28.4% of Attack for 2 turns.\nActivate follow-up when allies deal damage to foes with skills for 2 turns.",
+    "cool": 4
   },
   "passive1": {
     "name": "Virtual Landowner",
     "element": "패시브",
-    "description": "Increase follow-up damage to Shocked foes by 36.0%."
+    "description": "Increase follow-up damage to Shocked foes by 36.0%.",
+    "cool": 0
   },
   "passive2": {
     "name": "Let's Go Together",
     "element": "패시브",
-    "description": "When an ally has Player 2, increase that ally and YUI's critical rate by 12.0% and Attack by 12.0%."
+    "description": "When an ally has Player 2, increase that ally and Yui's critical rate by 12.0% and Attack by 12.0%.",
+    "cool": 0
   }
 };
 window.jpCharacterSkillsData["YUI"] = {
-  "name": "YUI",
+  "name": "ＹＵＩ",
   "skill1": {
     "name": "エレクトリックボム",
     "element": "전격",
     "type": "단일피해",
     "sp": 20,
     "cool": 0,
-    "description": "敵単体に攻撃力185.4%/204.4%/196.8%/215.8%の電撃属性ダメージを与える。敵が感電状態でない時、2ターンの間、68.3%/68.3%/72.5%/72.5%の確率で感電状態にし、敵が感電状態の時は、与ダメージが30%上昇する。"
+    "description": "敵単体に攻撃力185.4%/204.4%/196.8%/215.8%の電撃属性ダメージを与える。敵が感電状態でない時、２ターンの間、68.3%/68.3%/72.5%/72.5%の確率で感電状態にし、敵が感電状態の時は、与ダメージが３０%上昇する。"
   },
   "skill2": {
     "name": "メタダイナマイト",
@@ -103,7 +106,7 @@ window.jpCharacterSkillsData["YUI"] = {
     "type": "광역피해",
     "sp": 20,
     "cool": 0,
-    "description": "敵全体に攻撃力59.6%/65.7%/63.3%/69.4%の電撃属性ダメージを与える。その際、選択した敵への与ダメージが25%上昇する。"
+    "description": "敵全体に攻撃力59.6%/65.7%/63.3%/69.4%の電撃属性ダメージを与える。その際、選択した敵への与ダメージが２５%上昇する。"
   },
   "skill3": {
     "name": "サプライズプレゼント",
@@ -111,21 +114,24 @@ window.jpCharacterSkillsData["YUI"] = {
     "type": "버프",
     "sp": 25,
     "cool": 1,
-    "description": "味方単体を2ターンの間、『お友達』状態にし、ＹＵＩの攻撃力が39.0%/43.0%/41.4%/45.4%上昇する。\nさらに2ターンの間、『お友達』状態の味方が、スキルで敵にダメージを与えた時に追撃し、その追撃ダメージが2回まで攻撃力132.9%/137.2%/141.1%/145.4%の電撃属性ダメージになる。\n加えて2ターンの間、『プロジェクト『Ｂ』、ＳＴＡＲＴ！』の発動確率が10%上昇する。"
+    "description": "味方単体を２ターンの間、『お友達』状態にし、ＹＵＩの攻撃力が39.0%/43.0%/41.4%/45.4%上昇する。\nさらに２ターンの間、『お友達』状態の味方が、スキルで敵にダメージを与えた時に追撃し、その追撃ダメージが２回まで攻撃力132.9%/146.6%/141.1%/154.7%の電撃属性ダメージになる。\n加えて２ターンの間、『プロジェクト『Ｂ』、ＳＴＡＲＴ！』の発動確率が１０%上昇する。"
   },
   "skill_highlight": {
     "element": "버프",
     "type": "버프",
-    "description": "2ターンの間、自身の攻撃力が34.2%/37.7%/36.3%/39.8%上昇し、追撃のダメージが攻撃力の24.4%/25.9%/25.9%/27.4%分上昇する。\nさらに2ターンの間、味方がスキルで敵にダメージを与えた時、追撃が発生する。"
+    "description": "２ターンの間、自身の攻撃力が34.2%/37.7%/36.3%/39.8%上昇し、追撃のダメージが攻撃力の24.4%/26.9%/25.9%/28.4%分上昇する。\nさらに２ターンの間、味方がスキルで敵にダメージを与えた時、追撃が発生する。",
+    "cool": 4
   },
   "passive1": {
     "name": "バーチャル大地主",
     "element": "패시브",
-    "description": "感電状態の敵への追撃によるダメージが36.0%上昇する。"
+    "description": "感電状態の敵への追撃によるダメージが36.0%上昇する。",
+    "cool": 0
   },
   "passive2": {
     "name": "さあ、ご一緒に！",
     "element": "패시브",
-    "description": "味方が『お友達』状態の時、ＹＵＩとその味方のクリティカル率が12.0%上昇し、攻撃力が12.0%上昇する。"
+    "description": "味方が『お友達』状態の時、ＹＵＩとその味方のクリティカル率が12.0%上昇し、攻撃力が12.0%上昇する。",
+    "cool": 0
   }
 };

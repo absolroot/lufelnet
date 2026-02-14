@@ -77,7 +77,7 @@ window.personaFiles["주작"] = {
     "name": "마하프레이",
     "name_en": "Mafrei",
     "name_jp": "マハフレイ",
-    "desc": "모든 적에게 공격력 57.7/59.7/61.7%의 핵열 속성 대미지를 주고, 원소 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 16% 증가한다.",
+    "desc": "적 전체에 공격력 57.7/59.7/61.7%의 핵열 속성 대미지를 주고, 원소 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 16% 증가한다.",
     "desc_en": "Deal Nuclear damage to all foes equal to 57.7/59.7/61.7% of Attack. Deal a Technical and increase damage by 16% for foes with an elemental ailment.",
     "desc_jp": "敵全体に攻撃力57.7/59.7/61.7%の核熱属性ダメージを与える。属性異常の敵に対してテクニカルが発生しダメージが１６%上昇する。",
     "priority": 0,

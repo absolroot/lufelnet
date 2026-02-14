@@ -21,19 +21,19 @@ window.ritualData["유우미"] = {
 window.enCharacterRitualData["유우미"] = {
   "name": "Yumi Shiina",
   "r0": "Expert Bartender",
-  "r0_detail": "When an ally deals damage with a skill, Resonance, or Highlight, Yumi gains 1 Mixer stack of the corresponding attribute.\nAfter gaining 3 Mixer stacks, change them to a Cocktail (max 3).\nIf the 3 Mixers have the same attribute, create a [Tailor-Made] Cocktail. If 2 are the same, create a [Standard] Cocktail. If all 3 are different, create a [Basic] Cocktail.\nWhen Yumi uses a skill, spend Cocktail stacks to activate various effects for the party and restore all allies' SP by 8.",
+  "r0_detail": "When an ally deals damage with a skill, Resonance, or Highlight, Yumi gains 1 Mixer stack of the corresponding attribute.\nAfter gaining 3 Mixer stacks, change them to a Cocktail (max 3).\nIf the 3 Mixers have the same attribute, create a Tailor-Made Cocktail. If 2 are the same, create a Standard Cocktail. If all 3 are different, create a Basic Cocktail.\nWhen Yumi uses a skill, spend Cocktail stacks to activate various effects for the party and restore all allies' SP by 8.",
   "r1": "Mojito",
-  "r1_detail": "When gaining a Cocktail, randomly gain 1 Mixer stack of the attributes spent.\nWhen activating Tempting Build or Invigorating Blend, and spending 1 [Basic] or [Standard] Cocktail, gain 1 [Standard] or [Tailor-Made] Cocktail.",
+  "r1_detail": "When gaining a Cocktail, randomly gain 1 Mixer stack of the attributes spent.\nWhen activating Tempting Build or Invigorating Blend, spend 1 Basic or Standard Cocktail to gain 1 Standard or Tailor-Made Cocktail.",
   "r2": "Screwdriver",
-  "r2_detail": "Increase party's damage by 16% when spending a Cocktail. Lasts for 2 turns.",
+  "r2_detail": "When gaining a Cocktail, increase the party's damage by 16% for 2 turns.",
   "r3": "Martini",
-  "r3_detail": "Increase the skill levels of [Charming Gaze] and [Invigorating Blend] by 3.",
+  "r3_detail": "Increase the skill levels of Enchanting Stir and Invigorating Blend by 3.",
   "r4": "Bloody Mary",
-  "r4_detail": "When an ally uses [Highlight], increase their Attack by 10% for 1 turn. Gain 1 [Tailor-Made] Cocktail.",
+  "r4_detail": "When an ally uses Highlight, increase their Attack by 10% for 1 turn.\nGain 1 Tailor-Made Cocktail.",
   "r5": "Old Fashioned",
-  "r5_detail": "Increase the skill level of [Tempting Build] by 3.",
+  "r5_detail": "Increase the skill level of Tempting Build by 3.",
   "r6": "XYZ",
-  "r6_detail": "The maximum number of Cocktail stacks increases to 4.\nAt the start of battle, gain 1 [Tailor-Made] Cocktail. After every 3 Cocktails gained, gain 1 more [Tailor-Made] Cocktail.\nWhen spending a [Tailor-Made], [Standard], or [Basic] Cocktail to activate a skill, increase the skill effect from 120%/100%/50% up to 135%/120%/75% (includes [Tempting Build], [Invigorating Blend], and [Moonlit Banquet])."
+  "r6_detail": "The maximum number of Cocktail stacks increases to 4.\nAt the start of battle, gain 1 Tailor-Made Cocktail. After every 3 Cocktails gained, gain 1 more Tailor-Made Cocktail.\nWhen spending a Tailor-Made, Standard, or Basic Cocktail to activate a skill, increase the skill effect from 120%/100%/50% up to 135%/120%/75% (includes Tempting Build, Invigorating Blend, and Moonlit Banquet)."
 };
 window.jpCharacterRitualData["유우미"] = {
   "name": "椎名 悠美",
@@ -47,7 +47,7 @@ window.jpCharacterRitualData["유우미"] = {
   "r3_detail": "『魅了のステア』『活力のシェイク』のスキルレベルが３上昇する。",
   "r4": "ブラッディメアリー",
   "r4_detail": "味方がハイライトを使用した時、１ターンの間、その味方の攻撃力が１０%上昇する。\nさらに、自身が『オーダーメイド』を１つ獲得する。",
-  "r5": " オールドファッションド",
+  "r5": "オールドファッションド",
   "r5_detail": "『誘惑のビルド』のスキルレベルが３上昇する。",
   "r6": "ＸＹＺ",
   "r6_detail": "最大４つまで『カクテル』を累積できるようになる。\n戦闘開始時、自身が『オーダーメイド』を１つ獲得し、『カクテル』を３つ獲得するごとに、追加で『オーダーメイド』を１つ獲得するようになる。\n自身が『オーダーメイド』、『スタンダード』、『ベーシック』を消費して発動するスキル効果が１２０%／１００%／５０%から１３５%／１２０%／７５%に上昇する（『誘惑のビルド』『活力のシェイク」『月下の酒宴』を含む）。"

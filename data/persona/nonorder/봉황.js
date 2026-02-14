@@ -88,7 +88,7 @@ window.personaFiles["봉황"] = {
     "name": "마하프레이라",
     "name_en": "Mafreila",
     "name_jp": "マハフレイラ",
-    "desc": "모든 적에게 공격력 61.8/64.2/66.6%의 핵열 속성 대미지를 주고, 원소 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 18% 증가한다.",
+    "desc": "적 전체에 공격력 61.8/64.2/66.6%의 핵열 속성 대미지를 주고, 원소 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 18% 증가한다.",
     "desc_en": "Deal Nuclear damage to all foes equal to 61.8/64.2/66.6% of Attack. Deal a Technical and increase damage by 18% for foes with an elemental ailment.",
     "desc_jp": "敵全体に攻撃力61.8/64.2/66.6%の核熱属性ダメージを与える。属性異常の敵に対してテクニカルが発生しダメージが１８%上昇する。",
     "priority": 0,

@@ -4,43 +4,94 @@ import http from 'http';
 import fs from 'fs';
 import path from 'path';
 import process from 'process';
+import crypto from 'crypto';
 import { fileURLToPath } from 'url';
 import { spawn } from 'child_process';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const PROJECT_ROOT = path.join(__dirname, '..');
+const PROJECT_ROOT = path.join(__dirname, '..', '..');
 const APP_ROOT = path.join(PROJECT_ROOT, 'apps', 'patch-console');
-const PATCH_SCRIPT_REL = path.join('scripts', 'patch-characters.mjs');
 const DEFAULT_REPORT_REL = path.join('scripts', 'reports', 'patch-console-report.md');
 const IGNORED_DIFFS_FILE = path.join(PROJECT_ROOT, 'scripts', 'reports', 'patch-console-ignored-diffs.json');
+const ALLOW_REMOTE_ACCESS = String(process.env.PATCH_CONSOLE_ALLOW_REMOTE || '0') === '1';
 const CODENAME_FILE = path.join(PROJECT_ROOT, 'data', 'external', 'character', 'codename.json');
 const TEMPLATE_ROOT = path.join(PROJECT_ROOT, 'data', 'characters', 'template');
 const CHARACTER_ROOT = path.join(PROJECT_ROOT, 'data', 'characters');
 const TIER_ICON_DIR = path.join(PROJECT_ROOT, 'assets', 'img', 'tier');
+const PERSONA_ICON_DIR = path.join(PROJECT_ROOT, 'assets', 'img', 'persona');
+const WONDER_WEAPON_ICON_DIR = path.join(PROJECT_ROOT, 'assets', 'img', 'wonder-weapon');
 const ICON_EXTS = ['.webp', '.png', '.jpg', '.jpeg', '.svg'];
+const DATA_TEXT_EXTS = ['.js', '.json', '.md', '.txt', '.csv', '.yml', '.yaml', '.html', '.css', '.ts'];
+const DATA_FILE_MAX_BYTES = 2 * 1024 * 1024;
 
 const DOMAIN_CAPABILITIES = [
   {
     id: 'character',
     label: 'Character',
     enabled: true,
-    features: ['list', 'report', 'patch', 'create']
+    features: ['list', 'report', 'patch', 'create'],
+    parts: ['ritual', 'skill', 'weapon', 'base_stats']
   },
   {
     id: 'persona',
     label: 'Persona',
-    enabled: false,
-    features: []
+    enabled: true,
+    features: ['list', 'report', 'patch'],
+    parts: ['profile', 'innate_skill', 'passive_skill', 'uniqueSkill', 'highlight']
   },
   {
     id: 'wonder_weapon',
     label: 'Wonder Weapon',
-    enabled: false,
-    features: []
+    enabled: true,
+    features: ['list', 'report', 'patch'],
+    parts: ['name', 'effect']
   }
 ];
 const DEFAULT_DOMAIN = 'character';
+const DOMAIN_PATCH_SCRIPT = {
+  character: path.join('apps', 'patch-console', 'patch-characters.mjs'),
+  persona: path.join('apps', 'patch-console', 'patch-persona.mjs'),
+  wonder_weapon: path.join('apps', 'patch-console', 'patch-wonder-weapon.mjs')
+};
+const DOMAIN_DATA_EDITOR_ROOTS = {
+  character: [
+    {
+      id: 'characters',
+      label: 'data/characters',
+      path: path.join(PROJECT_ROOT, 'data', 'characters')
+    },
+    {
+      id: 'character_external',
+      label: 'data/external/character',
+      path: path.join(PROJECT_ROOT, 'data', 'external', 'character')
+    }
+  ],
+  persona: [
+    {
+      id: 'persona',
+      label: 'data/persona',
+      path: path.join(PROJECT_ROOT, 'data', 'persona')
+    },
+    {
+      id: 'persona_external',
+      label: 'data/external/persona',
+      path: path.join(PROJECT_ROOT, 'data', 'external', 'persona')
+    }
+  ],
+  wonder_weapon: [
+    {
+      id: 'wonder_internal',
+      label: 'data/kr/wonder',
+      path: path.join(PROJECT_ROOT, 'data', 'kr', 'wonder')
+    },
+    {
+      id: 'wonder_external',
+      label: 'data/external/weapon',
+      path: path.join(PROJECT_ROOT, 'data', 'external', 'weapon')
+    }
+  ]
+};
 
 const MIME_TYPES = {
   '.html': 'text/html; charset=utf-8',
@@ -56,6 +107,41 @@ const MIME_TYPES = {
 };
 
 let tierIconIndexCache = null;
+let personaIconIndexCache = null;
+let wonderWeaponIconIndexCache = null;
+
+function hasOwn(obj, key) {
+  return Object.prototype.hasOwnProperty.call(obj || {}, key);
+}
+
+function isPlainObject(value) {
+  return Boolean(value && typeof value === 'object' && !Array.isArray(value));
+}
+
+function stableObject(value) {
+  if (Array.isArray(value)) return value.map((x) => stableObject(x));
+  if (isPlainObject(value)) {
+    const out = {};
+    for (const key of Object.keys(value).sort()) {
+      out[key] = stableObject(value[key]);
+    }
+    return out;
+  }
+  return value;
+}
+
+function stableStringify(value) {
+  return JSON.stringify(stableObject(value));
+}
+
+function shortHash(text) {
+  return crypto.createHash('sha1').update(String(text || '')).digest('hex').slice(0, 12);
+}
+
+function valueSignature(value) {
+  const normalized = value === undefined ? null : value;
+  return shortHash(stableStringify(normalized));
+}
 
 function normalizeDomain(raw) {
   const value = String(raw || DEFAULT_DOMAIN).trim().toLowerCase();
@@ -63,13 +149,76 @@ function normalizeDomain(raw) {
   return value;
 }
 
-function makeDiffKey(domain, diff) {
+function makeDiffKey(domain, diff, options = {}) {
+  const legacy = Boolean(options.legacy);
   const d = normalizeDomain(domain);
   const index = Number(diff?.index);
   const lang = String(diff?.lang || '').trim().toLowerCase();
   const part = String(diff?.part || '').trim();
   const pathText = String(diff?.path || '').trim();
-  return `${d}|${index}|${lang}|${part}|${pathText}`;
+  const base = `${d}|${index}|${lang}|${part}|${pathText}`;
+  if (legacy) return base;
+
+  const hasBefore = hasOwn(diff, 'before');
+  const hasAfter = hasOwn(diff, 'after');
+  if (!hasBefore && !hasAfter) return base;
+  const beforeSig = valueSignature(diff.before);
+  const afterSig = valueSignature(diff.after);
+  return `${base}|b:${beforeSig}|a:${afterSig}`;
+}
+
+function normalizeDataQueryValue(value) {
+  return String(value || '').trim();
+}
+
+function parseInteger(value) {
+  const n = Number(value);
+  return Number.isInteger(n) ? n : null;
+}
+
+function parseIgnoredFilter(params) {
+  const q = normalizeDataQueryValue(params?.q).toLowerCase();
+  return {
+    q,
+    index: parseInteger(normalizeDataQueryValue(params?.index)),
+    lang: normalizeDataQueryValue(params?.lang).toLowerCase(),
+    api: normalizeDataQueryValue(params?.api).toLowerCase(),
+    local: normalizeDataQueryValue(params?.local).toLowerCase(),
+    key: normalizeDataQueryValue(params?.key).toLowerCase(),
+    part: normalizeDataQueryValue(params?.part).toLowerCase(),
+    path: normalizeDataQueryValue(params?.path).toLowerCase(),
+    characterKey: normalizeDataQueryValue(params?.characterKey).toLowerCase()
+  };
+}
+
+function matchIgnoredItemFilter(item, filter) {
+  if (!item || typeof item !== 'object') return false;
+  const fields = [
+    ['index', Number(item.index), filter.index, (a, b) => a === b],
+    ['lang', String(item.lang || '').toLowerCase(), filter.lang],
+    ['api', String(item.api || '').toLowerCase(), filter.api],
+    ['local', String(item.local || '').toLowerCase(), filter.local],
+    ['key', String(item.key || '').toLowerCase(), filter.key],
+    ['part', String(item.part || '').toLowerCase(), filter.part],
+    ['path', String(item.path || '').toLowerCase(), filter.path],
+    ['characterKey', String(item.characterKey || '').toLowerCase(), filter.characterKey]
+  ];
+
+  for (const [name, actual, expected, comparer] of fields) {
+    if (name === 'index') {
+      if (expected != null && !comparer(actual, expected)) return false;
+      continue;
+    }
+    if (expected && actual !== expected) return false;
+  }
+
+  if (filter.q) {
+    const haystack = `${item.index} ${item.lang} ${item.api} ${item.local} ${item.key} ${item.part} ${item.path} ${item.characterKey} ${item.matcher || ''}`
+      .toLowerCase();
+    if (!haystack.includes(filter.q)) return false;
+  }
+
+  return true;
 }
 
 function loadIgnoredStore() {
@@ -104,12 +253,44 @@ function saveIgnoredStore(store) {
   fs.writeFileSync(IGNORED_DIFFS_FILE, `${JSON.stringify(payload, null, 2)}\n`, 'utf8');
 }
 
-function listIgnoredByDomain(domain) {
+function isIgnoredByStoreItem(domain, row, partName, entry) {
+  const target = {
+    index: Number(row.index),
+    lang: String(row.lang || '').trim().toLowerCase(),
+    part: String(partName || '').trim(),
+    path: String(entry.path || '').trim()
+  };
+  const valueSigBefore = valueSignature(entry.before);
+  const valueSigAfter = valueSignature(entry.after);
+  const ignored = listIgnoredByDomain(domain);
+
+  for (const item of ignored) {
+    if (Number(item.index) !== target.index) continue;
+    if (String(item.lang || '').trim().toLowerCase() !== target.lang) continue;
+    if (String(item.part || '').trim() !== target.part) continue;
+    if (String(item.path || '').trim() !== target.path) continue;
+
+    if (item.matcher === 'value') {
+      if (item.beforeSig || item.afterSig) {
+        return item.beforeSig === valueSigBefore && item.afterSig === valueSigAfter;
+      }
+      return true;
+    }
+
+    return true;
+  }
+
+  return false;
+}
+
+function listIgnoredByDomain(domain, filter = null) {
   const d = normalizeDomain(domain);
   const store = loadIgnoredStore();
-  return store.items
+  const parsedFilter = parseIgnoredFilter(filter || {});
+  const filtered = store.items
     .filter((item) => normalizeDomain(item.domain) === d)
-    .sort((a, b) => String(b.createdAt || '').localeCompare(String(a.createdAt || '')));
+    .filter((item) => matchIgnoredItemFilter(item, parsedFilter));
+  return filtered.sort((a, b) => String(b.createdAt || '').localeCompare(String(a.createdAt || '')));
 }
 
 function addIgnoredDiffs(domain, diffs) {
@@ -121,7 +302,12 @@ function addIgnoredDiffs(domain, diffs) {
   }
   let added = 0;
   for (const diff of diffs) {
-    const key = makeDiffKey(d, diff);
+    const hasBefore = hasOwn(diff, 'before');
+    const hasAfter = hasOwn(diff, 'after');
+    const matcher = hasBefore || hasAfter ? 'value' : 'path';
+    const key = matcher === 'value'
+      ? makeDiffKey(d, diff)
+      : makeDiffKey(d, diff, { legacy: true });
     if (map.has(key)) continue;
     const nextItem = {
       key,
@@ -133,6 +319,9 @@ function addIgnoredDiffs(domain, diffs) {
       characterKey: String(diff.key || ''),
       part: String(diff.part || ''),
       path: String(diff.path || ''),
+      matcher,
+      beforeSig: matcher === 'value' ? valueSignature(diff.before) : null,
+      afterSig: matcher === 'value' ? valueSignature(diff.after) : null,
       createdAt: new Date().toISOString()
     };
     map.set(key, nextItem);
@@ -161,10 +350,94 @@ function removeIgnoredDiffs(domain, keys) {
   return before - store.items.length;
 }
 
+function getDataEditorRoots(domain) {
+  const d = normalizeDomain(domain);
+  return Array.isArray(DOMAIN_DATA_EDITOR_ROOTS[d]) ? DOMAIN_DATA_EDITOR_ROOTS[d] : [];
+}
+
+function getDataRootById(domain, rootId) {
+  const roots = getDataEditorRoots(domain);
+  if (!Array.isArray(roots) || roots.length === 0) return null;
+  return roots.find((item) => item.id === rootId) || roots[0];
+}
+
+function collectDataFiles(rootPath, query = '') {
+  const rootNormalized = path.resolve(rootPath);
+  if (!fs.existsSync(rootNormalized) || !fs.statSync(rootNormalized).isDirectory()) return [];
+  const q = String(query || '').toLowerCase();
+  const out = [];
+  const skipDirs = new Set(['node_modules', '.git', '.turbo', '.next', '_site', '.cache']);
+
+  const visit = (dir, relPrefix) => {
+    const entries = fs.readdirSync(dir, { withFileTypes: true });
+    for (const entry of entries) {
+      const name = entry.name;
+      if (name.startsWith('.')) continue;
+      if (skipDirs.has(name)) continue;
+      const nextRel = relPrefix ? `${relPrefix}/${name}` : name;
+      const abs = path.join(dir, name);
+      if (entry.isDirectory()) {
+        visit(abs, nextRel);
+        continue;
+      }
+      if (!entry.isFile()) continue;
+      const ext = path.extname(name).toLowerCase();
+      if (!DATA_TEXT_EXTS.includes(ext)) continue;
+      if (!q || nextRel.toLowerCase().includes(q)) {
+        out.push(nextRel.replace(/\\/g, '/'));
+      }
+    }
+  };
+
+  visit(rootNormalized, '');
+  out.sort((a, b) => a.localeCompare(b));
+  return out;
+}
+
+function resolveDataFilePath(domain, rootId, relPath) {
+  const root = getDataRootById(domain, rootId);
+  if (!root) return null;
+  const input = String(relPath || '').trim();
+  if (!input) return null;
+  const segments = input
+    .replace(/\\/g, '/')
+    .split('/')
+    .filter(Boolean)
+    .filter((segment) => segment !== '.');
+  if (segments.includes('..')) return null;
+  if (segments.length === 0) return null;
+  const normalizedRelative = segments.join(path.sep).replace(/\\/g, '/');
+
+  const rootAbs = path.resolve(root.path);
+  const candidate = path.resolve(rootAbs, normalizedRelative);
+  const candidatePrefix = `${rootAbs}${path.sep}`;
+  if (candidate !== rootAbs && !candidate.startsWith(candidatePrefix)) return null;
+  return {
+    rootId: root.id,
+    rootPath: root.path,
+    rootLabel: root.label,
+    rel: normalizedRelative.replace(/\\/g, '/'),
+    abs: candidate
+  };
+}
+
+function normalizeDataEditorResponseRow(domain, rootId, filePath) {
+  return {
+    domain: normalizeDomain(domain),
+    rootId,
+    path: filePath
+  };
+}
+
+function canWriteDataFile(filePath) {
+  const ext = path.extname(filePath).toLowerCase();
+  return DATA_TEXT_EXTS.includes(ext);
+}
+
 function applyIgnoredFilter(domain, rows) {
   const ignored = listIgnoredByDomain(domain);
   const ignoredSet = new Set(ignored.map((item) => String(item.key)));
-  if (ignoredSet.size === 0) {
+  if (ignored.length === 0) {
     return {
       rows,
       ignoredCount: 0
@@ -180,21 +453,17 @@ function applyIgnoredFilter(domain, rows) {
         : (Array.isArray(part.samplePaths) ? part.samplePaths.map((pathText) => ({ path: pathText })) : []);
 
       const remained = diffs.filter((entry) => {
-        const key = makeDiffKey(domain, {
-          index: row.index,
-          lang: row.lang,
-          part: part.part,
-          path: entry.path
-        });
-        return !ignoredSet.has(key);
+        const isIgnored = isIgnoredByStoreItem(domain, row, part.part, entry);
+        if (isIgnored) return false;
+        return true;
       });
       if (remained.length === 0) continue;
       const allPaths = remained.map((entry) => entry.path);
       nextParts.push({
         ...part,
         diffCount: allPaths.length,
-        samplePaths: allPaths.slice(0, 6),
-        hiddenCount: Math.max(allPaths.length - 6, 0),
+        samplePaths: allPaths,
+        hiddenCount: 0,
         valueDiffs: remained
       });
     }
@@ -216,8 +485,65 @@ function applyIgnoredFilter(domain, rows) {
   };
 }
 
+function toFiniteNumber(value) {
+  if (typeof value === 'number' && Number.isFinite(value)) return value;
+  if (typeof value === 'string' && value.trim() !== '') {
+    const n = Number(value);
+    if (Number.isFinite(n)) return n;
+  }
+  return null;
+}
+
+function isAutoPatchWeaponStatDiff(row, partName, valueDiff) {
+  if (normalizeDomain(row?.domain || DEFAULT_DOMAIN) !== 'character') return false;
+  if (String(partName || '').trim().toLowerCase() !== 'weapon') return false;
+  const pathText = String(valueDiff?.path || '').trim();
+  if (!/\.(attack|health|defense)$/i.test(pathText)) return false;
+
+  const beforeNum = toFiniteNumber(valueDiff?.before);
+  const afterNum = toFiniteNumber(valueDiff?.after);
+  if (beforeNum == null || afterNum == null) return false;
+  if (!Number.isInteger(beforeNum)) return false;
+  if (Number.isInteger(afterNum)) return false;
+  if (Math.trunc(beforeNum) !== Math.trunc(afterNum)) return false;
+  if (beforeNum === afterNum) return false;
+  return true;
+}
+
+function collectAutoPatchDiffs(rows, domain) {
+  const out = [];
+  const seen = new Set();
+  for (const row of Array.isArray(rows) ? rows : []) {
+    for (const part of Array.isArray(row.partDiffs) ? row.partDiffs : []) {
+      for (const valueDiff of Array.isArray(part.valueDiffs) ? part.valueDiffs : []) {
+        const scopedRow = { ...row, domain };
+        if (!isAutoPatchWeaponStatDiff(scopedRow, part.part, valueDiff)) continue;
+        const item = {
+          index: row.index,
+          lang: row.lang,
+          api: row.api,
+          local: row.local,
+          key: row.key,
+          part: part.part,
+          path: valueDiff.path
+        };
+        const dedupeKey = `${item.index}|${item.lang}|${item.part}|${item.path}`;
+        if (seen.has(dedupeKey)) continue;
+        seen.add(dedupeKey);
+        out.push(item);
+      }
+    }
+  }
+  return out;
+}
+
 function getDomainCapability(domain) {
   return DOMAIN_CAPABILITIES.find((item) => item.id === normalizeDomain(domain)) || null;
+}
+
+function getPatchScriptForDomain(domain) {
+  const d = normalizeDomain(domain);
+  return DOMAIN_PATCH_SCRIPT[d] || DOMAIN_PATCH_SCRIPT.character;
 }
 
 function ensureDomainFeatureOrRespond(res, domainRaw, feature) {
@@ -265,6 +591,10 @@ function log(message) {
   process.stdout.write(`${message}\n`);
 }
 
+function warn(message) {
+  process.stderr.write(`[warn] ${message}\n`);
+}
+
 function sendJson(res, statusCode, payload) {
   res.writeHead(statusCode, {
     'Content-Type': 'application/json; charset=utf-8',
@@ -303,18 +633,18 @@ function normalizeLabel(value) {
     .replace(/\s+/g, '');
 }
 
-function toAssetIconUrl(fileName) {
-  return `/assets/img/tier/${encodeURIComponent(fileName)}`;
+function toAssetIconUrl(subdir, fileName) {
+  return `/assets/img/${subdir}/${encodeURIComponent(fileName)}`;
 }
 
-function findExactIconByName(rawName) {
+function findExactIconByName(rawName, iconDirAbs, subdir) {
   const baseName = String(rawName || '').normalize('NFC').trim();
   if (!baseName) return null;
   for (const ext of ICON_EXTS) {
     const fileName = `${baseName}${ext}`;
-    const abs = path.join(TIER_ICON_DIR, fileName);
+    const abs = path.join(iconDirAbs, fileName);
     if (fs.existsSync(abs)) {
-      return toAssetIconUrl(fileName);
+      return toAssetIconUrl(subdir, fileName);
     }
   }
   return null;
@@ -415,16 +745,56 @@ function buildTierIconIndex() {
     const stem = path.basename(fileName, ext);
     const key = normalizeLabel(stem);
     if (!key) continue;
-    map.set(key, toAssetIconUrl(fileName));
+    map.set(key, toAssetIconUrl('tier', fileName));
   }
   tierIconIndexCache = map;
   return map;
 }
 
-function resolveRowIcon({ key, local, api }) {
+function buildPersonaIconIndex() {
+  if (personaIconIndexCache) return personaIconIndexCache;
+  const map = new Map();
+  if (!fs.existsSync(PERSONA_ICON_DIR)) {
+    personaIconIndexCache = map;
+    return map;
+  }
+  const files = fs.readdirSync(PERSONA_ICON_DIR);
+  for (const fileName of files) {
+    const ext = path.extname(fileName).toLowerCase();
+    if (!ICON_EXTS.includes(ext)) continue;
+    const stem = path.basename(fileName, ext);
+    const key = normalizeLabel(stem);
+    if (!key) continue;
+    map.set(key, toAssetIconUrl('persona', fileName));
+  }
+  personaIconIndexCache = map;
+  return map;
+}
+
+function buildWonderWeaponIconIndex() {
+  if (wonderWeaponIconIndexCache) return wonderWeaponIconIndexCache;
+  const map = new Map();
+  if (!fs.existsSync(WONDER_WEAPON_ICON_DIR)) {
+    wonderWeaponIconIndexCache = map;
+    return map;
+  }
+  const files = fs.readdirSync(WONDER_WEAPON_ICON_DIR);
+  for (const fileName of files) {
+    const ext = path.extname(fileName).toLowerCase();
+    if (!ICON_EXTS.includes(ext)) continue;
+    const stem = path.basename(fileName, ext);
+    const key = normalizeLabel(stem);
+    if (!key) continue;
+    map.set(key, toAssetIconUrl('wonder-weapon', fileName));
+  }
+  wonderWeaponIconIndexCache = map;
+  return map;
+}
+
+function resolveCharacterRowIcon({ key, local, api }) {
   const exactCandidates = [key, local, api];
   for (const candidate of exactCandidates) {
-    const exact = findExactIconByName(candidate);
+    const exact = findExactIconByName(candidate, TIER_ICON_DIR, 'tier');
     if (exact) return exact;
   }
 
@@ -440,7 +810,52 @@ function resolveRowIcon({ key, local, api }) {
   return null;
 }
 
-function parseListOutput(stdout) {
+function resolvePersonaRowIcon({ key, local, api }) {
+  const exactCandidates = [key, local, api];
+  for (const candidate of exactCandidates) {
+    const exact = findExactIconByName(candidate, PERSONA_ICON_DIR, 'persona');
+    if (exact) return exact;
+  }
+
+  const iconIndex = buildPersonaIconIndex();
+  const candidates = [key, local, api];
+  for (const candidate of candidates) {
+    const normalized = normalizeLabel(candidate);
+    if (!normalized) continue;
+    if (iconIndex.has(normalized)) return iconIndex.get(normalized);
+  }
+  return null;
+}
+
+function resolveWonderWeaponRowIcon({ key, local, api }) {
+  const exactCandidates = [key, local, api];
+  for (const candidate of exactCandidates) {
+    const exact = findExactIconByName(candidate, WONDER_WEAPON_ICON_DIR, 'wonder-weapon');
+    if (exact) return exact;
+  }
+
+  const iconIndex = buildWonderWeaponIconIndex();
+  const candidates = [key, local, api];
+  for (const candidate of candidates) {
+    const normalized = normalizeLabel(candidate);
+    if (!normalized) continue;
+    if (iconIndex.has(normalized)) return iconIndex.get(normalized);
+  }
+  return null;
+}
+
+function resolveRowIcon({ key, local, api }, domain = DEFAULT_DOMAIN) {
+  const d = normalizeDomain(domain);
+  if (d === 'persona') {
+    return resolvePersonaRowIcon({ key, local, api });
+  }
+  if (d === 'wonder_weapon') {
+    return resolveWonderWeaponRowIcon({ key, local, api });
+  }
+  return resolveCharacterRowIcon({ key, local, api });
+}
+
+function parseListOutput(stdout, domain = DEFAULT_DOMAIN) {
   const rows = [];
   const lines = String(stdout || '').split(/\r?\n/);
   for (const raw of lines) {
@@ -463,7 +878,7 @@ function parseListOutput(stdout) {
       key: cols[3],
       status
     };
-    row.icon = resolveRowIcon(row);
+    row.icon = resolveRowIcon(row, domain);
     rows.push(row);
   }
   return rows;
@@ -490,7 +905,7 @@ function parseDiffSampleMap(diffSampleText) {
   return map;
 }
 
-function parseReportMarkdown(markdownText) {
+function parseReportMarkdown(markdownText, domain = DEFAULT_DOMAIN) {
   const rows = [];
   const lines = String(markdownText || '').split(/\r?\n/);
   for (const raw of lines) {
@@ -555,7 +970,7 @@ function parseReportMarkdown(markdownText) {
       diffSample,
       partDiffs
     };
-    row.icon = resolveRowIcon(row);
+    row.icon = resolveRowIcon(row, domain);
     rows.push(row);
   }
   return rows;
@@ -609,7 +1024,8 @@ function runNodeScript(args, { timeoutMs = 30 * 60 * 1000 } = {}) {
 }
 
 function buildPatchArgsFromFilter(payload, dryRun) {
-  const args = [PATCH_SCRIPT_REL, 'patch'];
+  const scriptRel = getPatchScriptForDomain(payload.domain);
+  const args = [scriptRel, 'patch'];
   const langs = parseCsv(payload.langs);
   const parts = parseCsv(payload.parts);
 
@@ -737,12 +1153,13 @@ async function handleList(res, urlObj) {
   const gate = ensureDomainFeatureOrRespond(res, urlObj.searchParams.get('domain'), 'list');
   if (!gate.ok) return;
   const langs = String(urlObj.searchParams.get('langs') || 'kr,en,jp');
-  const run = await runNodeScript([PATCH_SCRIPT_REL, 'list', '--langs', langs], { timeoutMs: 120000 });
+  const scriptRel = getPatchScriptForDomain(gate.domain);
+  const run = await runNodeScript([scriptRel, 'list', '--langs', langs], { timeoutMs: 120000 });
   if (run.code !== 0) {
     sendJson(res, 500, { ok: false, error: 'list_failed', stdout: run.stdout, stderr: run.stderr });
     return;
   }
-  const rows = parseListOutput(run.stdout);
+  const rows = parseListOutput(run.stdout, gate.domain);
   sendJson(res, 200, {
     ok: true,
     domain: gate.domain,
@@ -763,7 +1180,8 @@ async function handleReport(res, payload) {
     : `${reportPath.rel.replace(/\.md$/i, '')}.json`;
   const jsonPath = safeReportPath(jsonRel);
 
-  const args = [PATCH_SCRIPT_REL, 'report-json'];
+  const scriptRel = getPatchScriptForDomain(gate.domain);
+  const args = [scriptRel, 'report-json'];
   args.push('--langs', langs.length > 0 ? langs.join(',') : 'kr,en,jp');
   args.push(...buildScopeArgs({ scopeMode: payload.scopeMode, scopeValue: payload.scopeValue }));
   if (parts.length > 0) {
@@ -783,31 +1201,66 @@ async function handleReport(res, payload) {
     return;
   }
 
-  let rows = [];
-  if (fs.existsSync(jsonPath.abs)) {
-    try {
-      const parsed = JSON.parse(fs.readFileSync(jsonPath.abs, 'utf8'));
-      rows = Array.isArray(parsed?.rows) ? parsed.rows : [];
-    } catch (error) {
-      const reportText = fs.existsSync(reportPath.abs) ? fs.readFileSync(reportPath.abs, 'utf8') : '';
-      rows = parseReportMarkdown(reportText);
-      rows.push({
-        rowId: 'parse-error',
-        index: 0,
-        lang: '-',
-        api: '-',
-        local: '-',
-        key: '-',
-        partsText: '-',
-        diffSample: `report-json parse failed: ${error.message}`,
-        partDiffs: []
-      });
+  const loadRowsFromArtifacts = () => {
+    let parsedRows = [];
+    if (fs.existsSync(jsonPath.abs)) {
+      try {
+        const raw = fs.readFileSync(jsonPath.abs, 'utf8').replace(/^\uFEFF/, '');
+        const parsed = JSON.parse(raw);
+        parsedRows = Array.isArray(parsed?.rows) ? parsed.rows : [];
+      } catch (error) {
+        const reportText = fs.existsSync(reportPath.abs) ? fs.readFileSync(reportPath.abs, 'utf8') : '';
+        parsedRows = parseReportMarkdown(reportText, gate.domain);
+        parsedRows.push({
+          rowId: 'parse-error',
+          index: 0,
+          lang: '-',
+          api: '-',
+          local: '-',
+          key: '-',
+          partsText: '-',
+          diffSample: `report-json parse failed: ${error.message}`,
+          partDiffs: []
+        });
+      }
+    }
+    return parsedRows.map((row) => ({
+      ...row,
+      rowId: row.rowId || `${row.index}:${row.lang}:${row.api}`,
+      icon: row.icon || resolveRowIcon(row, gate.domain),
+      partDiffs: Array.isArray(row.partDiffs)
+        ? row.partDiffs.map((part) => ({
+            ...part,
+            samplePaths: Array.isArray(part.samplePaths) ? part.samplePaths : [],
+            valueDiffs: Array.isArray(part.valueDiffs) ? part.valueDiffs : []
+          }))
+        : []
+    }));
+  };
+
+  let rows = loadRowsFromArtifacts();
+  let autoPatchedCount = 0;
+  let autoPatchResult = null;
+  const autoPatchDiffs = collectAutoPatchDiffs(rows, gate.domain);
+  if (autoPatchDiffs.length > 0) {
+    autoPatchResult = await executeApplyDiffs(autoPatchDiffs, { dryRun: false, domain: gate.domain });
+    if (autoPatchResult.ok) {
+      autoPatchedCount = autoPatchDiffs.length;
+      const rerun = await runNodeScript(args);
+      if (rerun.code !== 0) {
+        warn(`[auto-patch] report rerun failed: ${rerun.stderr || rerun.stdout}`);
+      } else {
+        rows = loadRowsFromArtifacts();
+      }
+    } else {
+      warn(`[auto-patch] apply failed: ${autoPatchResult.stderr || autoPatchResult.error || 'unknown error'}`);
     }
   }
+
   rows = rows.map((row) => ({
     ...row,
     rowId: row.rowId || `${row.index}:${row.lang}:${row.api}`,
-    icon: row.icon || resolveRowIcon(row),
+    icon: row.icon || resolveRowIcon(row, gate.domain),
     partDiffs: Array.isArray(row.partDiffs)
       ? row.partDiffs.map((part) => ({
           ...part,
@@ -825,22 +1278,23 @@ async function handleReport(res, payload) {
     reportFile: jsonPath.rel,
     rowCount: rows.length,
     ignoredCount: filtered.ignoredCount,
+    autoPatchedCount,
+    autoPatch: autoPatchResult
+      ? {
+          ok: autoPatchResult.ok,
+          code: autoPatchResult.code,
+          args: autoPatchResult.args,
+          stdout: autoPatchResult.stdout,
+          stderr: autoPatchResult.stderr
+        }
+      : null,
     rows,
     stdout: run.stdout,
     stderr: run.stderr
   });
 }
 
-async function handleApplyDiffs(res, payload) {
-  const gate = ensureDomainFeatureOrRespond(res, payload.domain, 'patch');
-  if (!gate.ok) return;
-  const dryRun = Boolean(payload.dryRun);
-  const diffs = Array.isArray(payload.diffs) ? payload.diffs : [];
-  if (diffs.length === 0) {
-    sendJson(res, 400, { ok: false, error: 'No diffs provided.' });
-    return;
-  }
-
+function buildApplyDiffTasks(diffs) {
   const grouped = new Map();
   for (const diff of diffs) {
     const index = Number(diff.index);
@@ -861,8 +1315,7 @@ async function handleApplyDiffs(res, payload) {
   }
 
   if (grouped.size === 0) {
-    sendJson(res, 400, { ok: false, error: 'No valid diff entries.' });
-    return;
+    return [];
   }
 
   const tasksMap = new Map();
@@ -880,7 +1333,21 @@ async function handleApplyDiffs(res, payload) {
       paths: [...item.paths]
     });
   }
-  const tasks = [...tasksMap.values()];
+  return [...tasksMap.values()];
+}
+
+async function executeApplyDiffs(diffs, { dryRun = false, domain = DEFAULT_DOMAIN } = {}) {
+  const tasks = buildApplyDiffTasks(diffs);
+  if (tasks.length === 0) {
+    return {
+      ok: false,
+      code: -1,
+      error: 'No valid diff entries.',
+      args: [],
+      stdout: '',
+      stderr: ''
+    };
+  }
 
   const reqFile = path.join(
     PROJECT_ROOT,
@@ -891,13 +1358,39 @@ async function handleApplyDiffs(res, payload) {
   ensureDir(path.dirname(reqFile));
   fs.writeFileSync(reqFile, `${JSON.stringify({ tasks }, null, 2)}\n`, 'utf8');
 
-  const args = [PATCH_SCRIPT_REL, 'apply-diff-json', '--input-file', path.relative(PROJECT_ROOT, reqFile)];
+  const scriptRel = getPatchScriptForDomain(domain);
+  const args = [scriptRel, 'apply-diff-json', '--input-file', path.relative(PROJECT_ROOT, reqFile)];
   if (dryRun) args.push('--dry-run');
   const run = await runNodeScript(args);
   try {
     fs.unlinkSync(reqFile);
   } catch {
     // Keep temp file on failure to preserve debugging context.
+  }
+
+  return {
+    ok: run.code === 0,
+    code: run.code,
+    args,
+    stdout: run.stdout,
+    stderr: run.stderr
+  };
+}
+
+async function handleApplyDiffs(res, payload) {
+  const gate = ensureDomainFeatureOrRespond(res, payload.domain, 'patch');
+  if (!gate.ok) return;
+  const dryRun = Boolean(payload.dryRun);
+  const diffs = Array.isArray(payload.diffs) ? payload.diffs : [];
+  if (diffs.length === 0) {
+    sendJson(res, 400, { ok: false, error: 'No diffs provided.' });
+    return;
+  }
+
+  const run = await executeApplyDiffs(diffs, { dryRun, domain: gate.domain });
+  if (!run.args || run.args.length === 0) {
+    sendJson(res, 400, { ok: false, error: run.error || 'No valid diff entries.' });
+    return;
   }
 
   sendJson(res, run.code === 0 ? 200 : 500, {
@@ -907,7 +1400,7 @@ async function handleApplyDiffs(res, payload) {
     description: dryRun
       ? 'Dry Run: selected diff paths executed without file writes.'
       : 'Patch Run: selected diff paths were applied.',
-    args,
+    args: run.args,
     stdout: run.stdout,
     stderr: run.stderr
   });
@@ -915,12 +1408,172 @@ async function handleApplyDiffs(res, payload) {
 
 async function handleIgnoredList(req, res, urlObj) {
   const domain = normalizeDomain(urlObj.searchParams.get('domain'));
-  const items = listIgnoredByDomain(domain);
+  const items = listIgnoredByDomain(domain, {
+    q: urlObj.searchParams.get('q'),
+    index: urlObj.searchParams.get('index'),
+    lang: urlObj.searchParams.get('lang'),
+    api: urlObj.searchParams.get('api'),
+    local: urlObj.searchParams.get('local'),
+    key: urlObj.searchParams.get('key'),
+    part: urlObj.searchParams.get('part'),
+    path: urlObj.searchParams.get('path'),
+    characterKey: urlObj.searchParams.get('characterKey')
+  });
+  const totalCount = listIgnoredByDomain(domain).length;
   sendJson(res, 200, {
     ok: true,
     domain,
     count: items.length,
+    totalCount,
     items
+  });
+}
+
+async function handleDataRoots(res, urlObj) {
+  const domain = normalizeDomain(urlObj.searchParams.get('domain'));
+  const roots = getDataEditorRoots(domain).map((root) => ({
+    id: root.id,
+    label: root.label
+  }));
+  sendJson(res, 200, {
+    ok: true,
+    domain,
+    roots
+  });
+}
+
+async function handleDataFileList(res, urlObj) {
+  const domain = normalizeDomain(urlObj.searchParams.get('domain'));
+  const rootId = normalizeDataQueryValue(urlObj.searchParams.get('root'));
+  const q = normalizeDataQueryValue(urlObj.searchParams.get('q'));
+  const allRoots = getDataEditorRoots(domain);
+  if (!allRoots || allRoots.length === 0) {
+    sendJson(res, 404, { ok: false, error: `No editor root for domain: ${domain}` });
+    return;
+  }
+
+  const selectedRoots = rootId
+    ? allRoots.filter((root) => root.id === rootId)
+    : allRoots;
+
+  const items = [];
+  for (const root of selectedRoots) {
+    const rootFiles = collectDataFiles(root.path, q).map((filePath) => normalizeDataEditorResponseRow(domain, root.id, filePath));
+    for (const item of rootFiles) {
+      items.push(item);
+    }
+  }
+
+  items.sort((a, b) => {
+    if (a.rootId === b.rootId) return a.path.localeCompare(b.path);
+    return a.rootId.localeCompare(b.rootId);
+  });
+
+  sendJson(res, 200, {
+    ok: true,
+    domain,
+    rootId: rootId || '',
+    roots: allRoots.map((root) => ({
+      id: root.id,
+      label: root.label
+    })),
+    count: items.length,
+    items
+  });
+}
+
+async function handleDataFileGet(res, urlObj) {
+  const domain = normalizeDomain(urlObj.searchParams.get('domain'));
+  const rootId = normalizeDataQueryValue(urlObj.searchParams.get('root'));
+  const rel = normalizeDataQueryValue(urlObj.searchParams.get('path'));
+
+  const target = resolveDataFilePath(domain, rootId, rel);
+  if (!target) {
+    sendJson(res, 400, { ok: false, error: 'Invalid domain/root/path' });
+    return;
+  }
+  if (!canWriteDataFile(target.rel)) {
+    sendJson(res, 400, { ok: false, error: `Unsupported file extension: ${path.extname(target.abs)}` });
+    return;
+  }
+  if (!fs.existsSync(target.abs) || !fs.statSync(target.abs).isFile()) {
+    sendJson(res, 404, { ok: false, error: 'File not found' });
+    return;
+  }
+
+  const stat = fs.statSync(target.abs);
+  if (stat.size > DATA_FILE_MAX_BYTES) {
+    sendJson(res, 413, { ok: false, error: `File too large: ${stat.size}` });
+    return;
+  }
+
+  let content;
+  try {
+    content = fs.readFileSync(target.abs, 'utf8');
+  } catch (error) {
+    sendJson(res, 500, { ok: false, error: error.message });
+    return;
+  }
+
+  sendJson(res, 200, {
+    ok: true,
+    domain,
+    rootId: target.rootId,
+    path: target.rel,
+    rootLabel: target.rootLabel,
+    size: stat.size,
+    updatedAt: stat.mtime.toISOString(),
+    content
+  });
+}
+
+async function handleDataFileSave(res, payload) {
+  const domain = normalizeDomain(payload.domain);
+  const rootId = normalizeDataQueryValue(payload.root);
+  const rel = normalizeDataQueryValue(payload.path);
+  const content = String(payload.content == null ? '' : payload.content);
+
+  const target = resolveDataFilePath(domain, rootId, rel);
+  if (!target) {
+    sendJson(res, 400, { ok: false, error: 'Invalid domain/root/path' });
+    return;
+  }
+  if (!canWriteDataFile(target.rel)) {
+    sendJson(res, 400, { ok: false, error: `Unsupported file extension: ${path.extname(target.abs)}` });
+    return;
+  }
+
+  if (content.length > DATA_FILE_MAX_BYTES) {
+    sendJson(res, 413, { ok: false, error: `Content too large: ${content.length}` });
+    return;
+  }
+
+  if (path.extname(target.abs).toLowerCase() === '.json') {
+    try {
+      JSON.parse(content);
+    } catch (error) {
+      sendJson(res, 400, {
+        ok: false,
+        error: `Invalid JSON: ${error.message}`
+      });
+      return;
+    }
+  }
+
+  try {
+    ensureDir(path.dirname(target.abs));
+    fs.writeFileSync(target.abs, content, 'utf8');
+  } catch (error) {
+    sendJson(res, 500, { ok: false, error: error.message });
+    return;
+  }
+
+  sendJson(res, 200, {
+    ok: true,
+    domain,
+    rootId: target.rootId,
+    path: target.rel,
+    message: 'saved'
   });
 }
 
@@ -957,13 +1610,14 @@ async function handlePatch(res, payload) {
   const dryRun = Boolean(payload.dryRun);
   const parts = parseCsv(payload.parts);
   const outputs = [];
+  const scriptRel = getPatchScriptForDomain(gate.domain);
 
   if (Array.isArray(payload.rows) && payload.rows.length > 0) {
     const grouped = groupRowsByLang(payload.rows);
     for (const [lang, indexSet] of grouped.entries()) {
       const indexes = [...indexSet].sort((a, b) => a - b);
       if (indexes.length === 0) continue;
-      const args = [PATCH_SCRIPT_REL, 'patch', '--nums', indexes.join(','), '--langs', lang, '--no-report'];
+      const args = [scriptRel, 'patch', '--nums', indexes.join(','), '--langs', lang, '--no-report'];
       if (parts.length > 0) args.push('--parts', parts.join(','));
       if (dryRun) args.push('--dry-run');
       const run = await runNodeScript(args);
@@ -978,7 +1632,7 @@ async function handlePatch(res, payload) {
   } else {
     let args;
     try {
-      args = buildPatchArgsFromFilter(payload, dryRun);
+      args = buildPatchArgsFromFilter({ ...payload, domain: gate.domain }, dryRun);
       if (parts.length > 0 && !args.includes('--parts')) {
         args.push('--parts', parts.join(','));
       }
@@ -1055,22 +1709,59 @@ async function requestHandler(req, res) {
   const urlObj = new URL(req.url || '/', `http://${host}`);
   const { pathname } = urlObj;
 
+  if (!ALLOW_REMOTE_ACCESS) {
+    const remote = String(req.socket.remoteAddress || '').toLowerCase();
+    const isLoopback = remote === '127.0.0.1' || remote === '::1' || remote === '::ffff:127.0.0.1';
+    if (!isLoopback) {
+      sendText(res, 403, 'Forbidden: patch console is local-only. Use localhost host 127.0.0.1.');
+      return;
+    }
+  }
+
   if (pathname === '/api/health' && req.method === 'GET') {
     sendJson(res, 200, { ok: true });
     return;
   }
 
   if (pathname === '/api/capabilities' && req.method === 'GET') {
+    const dataRoots = Object.fromEntries(
+      Object.entries(DOMAIN_DATA_EDITOR_ROOTS).map(([domain, roots]) => [
+        domain,
+        roots.map((item) => ({ id: item.id, label: item.label }))
+      ])
+    );
     sendJson(res, 200, {
       ok: true,
       defaultDomain: DEFAULT_DOMAIN,
-      domains: DOMAIN_CAPABILITIES
+      domains: DOMAIN_CAPABILITIES,
+      dataRoots
     });
     return;
   }
 
   if (pathname === '/api/ignored' && req.method === 'GET') {
     await handleIgnoredList(req, res, urlObj);
+    return;
+  }
+
+  if (pathname === '/api/data-roots' && req.method === 'GET') {
+    await handleDataRoots(res, urlObj);
+    return;
+  }
+
+  if (pathname === '/api/data-files' && req.method === 'GET') {
+    await handleDataFileList(res, urlObj);
+    return;
+  }
+
+  if (pathname === '/api/data-file' && req.method === 'GET') {
+    await handleDataFileGet(res, urlObj);
+    return;
+  }
+
+  if (pathname === '/api/data-file' && req.method === 'POST') {
+    const body = await readBody(req);
+    await handleDataFileSave(res, body);
     return;
   }
 
@@ -1146,7 +1837,9 @@ function main() {
 
   server.listen(port, host, () => {
     log(`Patch Console running at http://${host}:${port}`);
-    log(`Using patch script: ${PATCH_SCRIPT_REL}`);
+    for (const [domain, scriptRel] of Object.entries(DOMAIN_PATCH_SCRIPT)) {
+      log(`Patch script [${domain}]: ${scriptRel.replace(/\\/g, '/')}`);
+    }
     log(`Default report: ${DEFAULT_REPORT_REL.replace(/\\/g, '/')}`);
   });
 }

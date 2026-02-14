@@ -43,7 +43,7 @@ window.personaFiles["랴난시"] = {
       "name": "마하사이",
       "name_en": "Mapsi",
       "name_jp": "マハサイ",
-      "desc": "모든 적에게 공격력 61.4/63.4/65.4%의 염동 속성 대미지를 주고, 정신 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 35% 증가한다.",
+      "desc": "적 전체에 공격력 61.4/63.4/65.4%의 염동 속성 대미지를 주고, 정신 이상 상태의 적에게 TECHNICAL을 준다. 스킬 대미지는 35% 증가한다.",
       "desc_en": "Deal Psy damage to all foes equal to 61.4/63.4/65.4% of Attack. Deal a Technical and increase damage by 35% for foes with a spiritual ailment.",
       "desc_jp": "敵全体に攻撃力61.4/63.4/65.4%の念動属性ダメージを与える。行動異常の敵に対してテクニカルが発生しダメージが３５%上昇する。",
       "cost": "SP 19",

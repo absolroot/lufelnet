@@ -23,33 +23,33 @@ window.enCharacterWeaponData["YUI"] = {
   "name": "YUI",
   "weapon4-1": {
     "name": "Meta Directors",
-    "health": 1807,
-    "attack": 607,
-    "defense": 299,
+    "health": 1807.87,
+    "attack": 607.79,
+    "defense": 299.47,
     "description": "Increase critical rate by 7.3%/7.3%/9.5%/9.5%/11.7%/11.7%/13.9%. When performing a follow-up attack, increase Electric damage by 9.7%/12.6%/12.6%/15.5%/15.5%/18.4%/18.4% for 1 turn. Stacks up to 2 times."
   },
   "weapon5-1": {
     "name": "Cyber Jammers",
-    "health": 2259,
-    "attack": 759,
-    "defense": 374,
-    "description": "Increase critical rate by 18.1%/18.1%/23.5%/23.5%/29.0%/29.0%/34.5%. Increase follow-up damage by 26.0%/34.0%/34.0%/42.0%/42.0%/50.0%/50.0%. When a follow-up attack is activated by an ally with Player 2, or by an ally dealing Electric damage with a skill, increase follow-up damage by 26.0%/34.0%/34.0%/42.0%/42.0%/50.0%/50.0% more."
+    "health": 2259.46,
+    "attack": 759.73,
+    "defense": 374.35,
+    "description": "Increase critical rate by 18.1%/18.1%/23.5%/23.5%/28.9%/28.9%/34.3%. Increase follow-up damage by 26.0%/34.0%/34.0%/42.0%/42.0%/50.0%/50.0%. When a follow-up attack is activated by an ally with Player 2, or by an ally dealing Electric damage with a skill, increase follow-up damage by 26.0%/34.0%/34.0%/42.0%/42.0%/50.0%/50.0% more."
   }
 };
 window.jpCharacterWeaponData["YUI"] = {
   "name": "YUI",
   "weapon4-1": {
     "name": "メタディレクター",
-    "health": 1807,
-    "attack": 607,
-    "defense": 299,
-    "description": "クリティカル率が7.3%/7.3%/9.5%/9.5%/11.7%/11.7%/13.9%上昇する。追撃を行った時、1ターンの間、自身の電撃属性の与ダメージが9.7%/12.6%/12.6%/15.5%/15.5%/18.4%/18.4%上昇する。この効果は最大2つまで累積できる。"
+    "health": 1807.87,
+    "attack": 607.79,
+    "defense": 299.47,
+    "description": "クリティカル率が7.3%/7.3%/9.5%/9.5%/11.7%/11.7%/13.9%上昇する。追撃を行った時、１ターンの間、自身の電撃属性の与ダメージが9.7%/12.6%/12.6%/15.5%/15.5%/18.4%/18.4%上昇する。この効果は最大２つまで累積できる。"
   },
   "weapon5-1": {
     "name": "サイバージャミンザー",
-    "health": 2259,
-    "attack": 759,
-    "defense": 374,
+    "health": 2259.46,
+    "attack": 759.73,
+    "defense": 374.35,
     "description": "クリティカル率が18.1%/18.1%/23.5%/23.5%/28.9%/28.9%/34.3%上昇する。追撃ダメージが26.0%/34.0%/34.0%/42.0%/42.0%/50.0%/50.0%上昇する。『お友達』状態の味方が追撃を発動するか、味方が電撃属性スキルを使用して追撃が発生した場合、さらに追撃ダメージが26.0%/34.0%/34.0%/42.0%/42.0%/50.0%/50.0%上昇する。"
   }
 };

@@ -19,24 +19,24 @@ window.ritualData["YUI"] = {
   "r6_detail": "필드에 적이 1명만 있을 시 YUI의 추격 기본 스킬 배율이 공격력의 110%까지 증가한다. YUI의 추격으로 다른 모든 적에게 25%의 스퍼터링 대미지를 준다. "
 };
 window.enCharacterRitualData["YUI"] = {
-  "name": "YUI",
+  "name": "Yui",
   "r0": "Jolly Cooperation",
-  "r0_detail": "When an ally deals damage with a skill, there is a 35% chance to activate [Resonance], dealing Electric damage equal to 80% of Attack as a [Resonance] attack. After a follow-up, increase target's next Electric damage taken by 15% for 2 turns.",
+  "r0_detail": "When an ally deals damage with a skill, there is a 35% chance to activate a Resonance , dealing Electric damage equal to 80% of Attack as a follow-up attack. After a follow-up, increase target's next Electric damage taken by 15% for 2 turns.",
   "r1": "Payappa",
   "r1_detail": "Increase critical rate of follow-up attacks by 20%. Increase critical rate by 10% after landing a follow-up attack on Shocked foes.",
   "r2": "Welcome Rain",
-  "r2_detail": "After performing a follow-up attack on a foe, increase Attack of YUI and allies with Player 2 by 10% for 2 turns. Stacks up to 3 times.",
+  "r2_detail": "After performing a follow-up attack on a foe, increase Attack of Yui and allies with Player 2 by 10% for 2 turns. Stacks up to 3 times.",
   "r3": "Rainbow Maker",
-  "r3_detail": "Increase the skill levels of [Sparky Surprise] and [Thief Tactics] by 3.",
+  "r3_detail": "Increase the skill levels of Sparky Surprise and Thief Tactics by 3.",
   "r4": "Virtual Fertilizer",
-  "r4_detail": "[HIGHLIGHT] Enhanced: Increase critical damage of follow-up attacks by 40% for 2 turns.",
+  "r4_detail": "Highlight Enhanced: Increase critical damage of follow-up attacks by 40% for 2 turns.",
   "r5": "Flower Garden",
-  "r5_detail": "Increase the skill levels of [Electric Bomb] and [Meta Dynamite] by 3.",
+  "r5_detail": "Increase the skill levels of Electric Bomb and Meta Dynamite by 3.",
   "r6": "Humongously Huge Harvest",
-  "r6_detail": "If only 1 foe is present, increase YUI's follow-up attack by 110% of Attack. Follow-up attack deals damage equal to 25% of Attack to all other foes."
+  "r6_detail": "If only 1 foe is present, increase Yui's follow-up attack by 110% of Attack. Follow-up attack deals damage equal to 25% of Attack to all other foes."
 };
 window.jpCharacterRitualData["YUI"] = {
-  "name": "YUI",
+  "name": "ＹＵＩ",
   "r0": "プロジェクト『Ｂ』、ＳＴＡＲＴ！",
   "r0_detail": "味方がスキルでダメージを与えた時、意識奏功の効果により、３５%の確率で攻撃力８０%の電撃属性による追撃を行う。さらに２ターンの間、追撃をした敵が受ける次の電撃属性ダメージが１５%上昇する。",
   "r1": "一粒万倍ぱやっぱ～♪",

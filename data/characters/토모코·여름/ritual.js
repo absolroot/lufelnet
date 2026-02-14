@@ -21,19 +21,19 @@ window.ritualData["토모코·여름"] = {
 window.enCharacterRitualData["토모코·여름"] = {
   "name": "Seaside Tomoko",
   "r0": "Summer Reminiscence",
-  "r0_detail": "Seaside Tomoko can inflict [Sparks] on foes.\nAfter an ally acts, if foes have 3 [Sparks] stacks, activate Seaside Tomoko's Resonance: For every 3 [Sparks] stacks on all foes, deal Psy damage to all foes equal to 19% of Attack, and decrease the target's damage by 30% for 1 turn. Restore the party's HP by 9% of Seaside Tomoko's Attack + 300/600/900 (based on if she is at Lv. 1/50/70+, respectively). This can activate up to 5 damage and healing effects, based on how many [Sparks] stacks are spent within the same Resonance (this Resonance damage does not inflict more Sparks effects).\nChange Resonance damage based on the number of foes present, equal to 150%/120%/100% of the original damage if there are 1/2/3+ foes present, respectively. Damage from this Resonance cannot deal Down Point damage. When a foe is defeated, pass its Sparks stacks onto other random foes.",
+  "r0_detail": "Seaside Tomoko can inflict Sparks on foes.\nAfter an ally acts, if foes have 3 Sparks stacks, activate Seaside Tomoko's Resonance: For every 3 Sparks stacks on all foes, deal Psy damage to all foes equal to 19% of Attack, and decrease the target's damage by 30% for 1 turn. Restore the party's HP by 9% of Seaside Tomoko's Attack + 300/600/900 (based on if she is at Lv. 1/50/70+, respectively). This can activate up to 5 damage and healing effects, based on how many Sparks stacks are spent within the same Resonance (this Resonance damage does not inflict more Sparks effects).\nChange Resonance damage based on the number of foes present, equal to 150%/120%/100% of the original damage if there are 1/2/3+ foes present, respectively. Damage from this Resonance cannot deal Down Point damage. When a foe is defeated, pass its Sparks stacks onto other random foes.",
   "r1": "Flash of Summer",
-  "r1_detail": "Each time a foe receives a [Summer Reminiscence] effect, decrease their DEF by 15% for 3 turns, stacking up to 3 times. [Hale Summer Days] healing effects now apply to all allies.",
+  "r1_detail": "Each time a foe receives a Summer Reminiscence effect, decrease the foe's Defense by 15% for 3 turns. Stacks up to 3 times.\nHale Summer Days healing effects apply to all allies.",
   "r2": "Gentle Sunbeams",
-  "r2_detail": "Every 2 times a [Summer Reminiscence] effect is activated, inflict 1 [Sparks] stack on 1 random foe. Each time [Sparks] is inflicted, permanently increase the party's Attack by 2%, stacking up to 15 times.",
+  "r2_detail": "Every 2 times a Summer Reminiscence effect is activated, inflict 1 Sparks stack on 1 random foe.\nEach time Sparks is inflicted on a foe, permanently increase party's Attack by 2%. Stacks up to 15 times.",
   "r3": "Sentimental Seabreeze",
-  "r3_detail": "Increase the skill levels of [Have a Cold Drink] and [Hale Summer Days] by 3.",
+  "r3_detail": "Increase the skill levels of Have a Cold Drink and Hale Summer Days by 3.",
   "r4": "Sparkling Summer Night",
-  "r4_detail": "[HIGHLIGHT] Enhanced: Deal bonus damage (2 hits) and inflict 1 [Sparks] stack per hit.",
+  "r4_detail": "Highlight Enhanced: Deal bonus damage (2 hits) and inflict 1 Sparks stack per hit.",
   "r5": "Lingering Glow",
-  "r5_detail": "Increase the skill levels of [Sparkling Memories] and [Thief Tactics] by 3.",
+  "r5_detail": "Increase the skill levels of Sparkling Memories and Thief Tactics by 3.",
   "r6": "Heartfelt Days",
-  "r6_detail": "[Summer Reminiscence] gains the following effects:\nWhen dealing damage with Summer Reminiscence, increase critical rate by 35%. Each time a foe takes a Summer Reminiscence effect, permanently increase damage taken by 5%. This effect stacks up to 3 times. At the maximum stack, increase critical damage taken by 20% more."
+  "r6_detail": "Summer Reminiscence gains the following effects.\nWhen dealing damage with Summer Reminiscence, increase critical rate by 35%. Each time a foe takes a Summer Reminiscence effect, permanently increase damage taken by 5%. This effect stacks up to 3 times. At the maximum stack, increase critical damage taken by 20% more."
 };
 window.jpCharacterRitualData["토모코·여름"] = {
   "name": "朋子・ピーチサマー",

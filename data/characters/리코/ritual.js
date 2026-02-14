@@ -12,7 +12,7 @@ window.ritualData["리코"] = {
   "r3": "미설",
   "r3_detail": "『은은한 이슬비』 시전 후, 다운 수치가 가장 높은 적의 『허점』이 즉시 노출된다.",
   "r4": "고요",
-  "r4_detail": "『은은한 이슬비』 스킬 레벨이 2레벨 증가하고, 최대 레벨이 15레벨까지 증가한다.",
+  "r4_detail": "『은은한 이슬비』 스킬 레벨이 2레벨 증가하고, 최대 15레벨까지 증가한다.",
   "r5": "만월",
   "r5_detail": "임의의 동료가 HIGHLIGHT/테우르기아를 시전한 후, 다운 수치가 가장 높은 적의 『허점』이 즉시 노출된다.",
   "r6": "우수",
@@ -21,19 +21,19 @@ window.ritualData["리코"] = {
 window.enCharacterRitualData["리코"] = {
   "name": "Riko Tanemura",
   "r0": "Snowfall Fragrance",
-  "r0_detail": "Every 3 ally actions, inflict [Insight] on the foe with the most Down Points. When a foe with Insight takes damage, it loses all Insight stacks and Riko gains Intel.\n[Insight]: Increase damage taken by 6%. When the target takes damage, Riko gains 2 Intel stacks. When the target takes weakness damage or normal attacks, decrease Down Points by 1 and gain 1 more Intel stack. Stacks up to 8 times.",
+  "r0_detail": "Every 3 ally actions, inflict Insight on the foe with the most Down Points. When attacking a foe with Insight, spend its Insight stacks to grant Riko Intel.\nInsight: Increase next damage taken by 6%. When attacking, Riko gains 2 Intel stacks. When dealing weakness or normal affinity damage, decrease Down Points by 1. When decreasing Down Points, gain 1 more Intel stack. Intel stacks up to 8 times.",
   "r1": "Spring Squall",
-  "r1_detail": "At the start of battle, inflict [Insight] on the foe with the most Down Points.",
+  "r1_detail": "At the start of battle, inflict Insight on the foe with the most Down Points.",
   "r2": "Ethereal Scent",
-  "r2_detail": "After using [Verngale Petals], inflict [Insight] on the foe with the most Down Points.",
+  "r2_detail": "After using Verngale Petals, inflict Insight on the foe with the most Down Points.",
   "r3": "Harmonious Fragrance",
-  "r3_detail": "Increase the skill levels of [Scattered Plum Blossoms] and [Dreams in the Mist] by 2.",
+  "r3_detail": "Increase the skill levels of Scattered Plum Blossoms and Dreams in the Mist by 2.",
   "r4": "One Thousand Blossoms",
-  "r4_detail": "When an ally uses a Highlight, inflict [Insight] on the foe with the most Down Points.",
+  "r4_detail": "When an ally uses a Highlight, inflict Insight on the foe with the most Down Points.",
   "r5": "Balance and Harmony",
-  "r5_detail": "Increase the skill level of [Verngale Petals] by 2.",
+  "r5_detail": "Increase the skill level of Verngale Petals by 2.",
   "r6": "Majesty",
-  "r6_detail": "If Riko's Speed is above 100, when using [Verngale Petals], decrease cooldown time for every 15 points of Speed over 100, up to 4 actions."
+  "r6_detail": "If Riko's Speed is 100 or more, when using Verngale Petals, decrease cooldown time for every 15 points of Speed over 100, up to 4 actions."
 };
 window.jpCharacterRitualData["리코"] = {
   "name": "多祢村 理子",
@@ -49,6 +49,6 @@ window.jpCharacterRitualData["리코"] = {
   "r4_detail": "味方がハイライトを使用した時、ダウン値が最も高い敵を『看破』状態にする。",
   "r5": "和羹塩梅",
   "r5_detail": "『春風来りて梅が花咲く』のスキルレベルが２上昇する。",
-  "r6": "威風凜々",
+  "r6": "威風凛々",
   "r6_detail": "自身の速さが１００以上の状態で『春風来りて梅が花咲く』を使用した時、１００を超えた分の速さ１５ごとにクールタイムが減少する（最大４行動分まで）。"
 };

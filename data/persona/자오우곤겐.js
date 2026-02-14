@@ -110,7 +110,7 @@ window.personaFiles["자오우곤겐"] = {
     },
     {
       "name": "정밀한 사격Ⅲ",
-      "desc": "총기 대미지가 8.7% 증가한다.",
+      "desc": "총격 대미지가 8.7% 증가한다.",
       "cost": "",
       "level": "6/7/8",
       "learn_level": "20"

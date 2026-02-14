@@ -1,0 +1,219 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patch Console</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Noto+Sans+KR:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./patch-console.css?v=0.9.1">
+</head>
+<body>
+  <div class="mesh"></div>
+  <main class="layout">
+    <aside class="panel sidebar">
+      <section class="title-box">
+        <p class="kicker">LOCAL PATCH TOOL</p>
+        <h1>Patch Console</h1>
+      </section>
+
+      <section class="group">
+        <h2>도메인</h2>
+        <div id="domain-tabs" class="domain-tabs"></div>
+        <p class="muted small">현재 도메인: <strong id="current-domain">character</strong></p>
+      </section>
+
+      <section class="group">
+        <h2>기본 필터</h2>
+        <div class="field">
+          <label>언어</label>
+          <input id="langs-input" type="text" value="kr,en,jp" placeholder="kr,en,jp">
+        </div>
+        <div class="field">
+          <label>범위 모드</label>
+          <select id="scope-mode">
+            <option value="all">all</option>
+            <option value="nums">nums</option>
+            <option value="api">api</option>
+            <option value="local">local</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>범위 값</label>
+          <input id="scope-value" type="text" placeholder="예: 3,7-9 or MESSA">
+        </div>
+        <div class="field">
+          <label>파트(선택)</label>
+          <div class="parts-picker" id="parts-picker">
+            <button id="parts-toggle" class="parts-toggle" type="button">전체 파트</button>
+            <div id="parts-menu" class="parts-menu hidden"></div>
+          </div>
+        </div>
+
+        <div class="actions two">
+          <button id="btn-load-list" class="btn ghost">목록 새로고침</button>
+          <button id="btn-report" class="btn primary">리포트 새로고침</button>
+        </div>
+        <div class="actions two">
+          <button id="btn-dryrun-filter" class="btn warn">현재 필터 검증</button>
+          <button id="btn-patch-filter" class="btn danger">현재 필터 패치</button>
+        </div>
+      </section>
+
+      <section class="group">
+        <h2>목록</h2>
+        <div class="field">
+          <input id="list-search" type="text" placeholder="api/local/key 검색">
+        </div>
+        <div class="char-list" id="char-list">
+          <p class="muted" style="padding:10px;">로딩 전 목록이 없습니다.</p>
+        </div>
+      </section>
+
+      <section class="group">
+        <h2>무시 목록</h2>
+        <div class="field">
+          <label>검색</label>
+          <div class="field-inline">
+            <input id="ignored-search" type="text" placeholder="무시 항목 검색">
+            <button id="btn-clear-ignored-search" class="btn ghost">초기화</button>
+          </div>
+        </div>
+        <div class="actions three">
+          <button id="btn-load-ignored" class="btn ghost">무시 목록 새로고침</button>
+          <button id="btn-unignore-selected" class="btn ghost">선택 해제</button>
+          <button id="btn-unignore-filtered" class="btn warn">필터 결과 해제</button>
+        </div>
+        <div class="char-list ignored-list" id="ignored-list">
+          <p class="muted" style="padding:10px;">저장된 무시 항목이 없습니다.</p>
+        </div>
+      </section>
+
+      <section class="group">
+        <h2>데이터 편집기</h2>
+        <div class="field">
+          <label>도메인</label>
+          <select id="data-domain"></select>
+        </div>
+        <div class="field">
+          <label>루트</label>
+          <select id="data-root"></select>
+        </div>
+        <div class="field">
+          <label>파일 검색</label>
+          <div class="field-inline">
+            <input id="data-file-search" type="text" placeholder="예: profile.js">
+            <button id="btn-load-data-files" class="btn ghost">조회</button>
+          </div>
+        </div>
+        <div class="field">
+          <label>파일 목록</label>
+          <div class="data-file-list" id="data-file-list">
+            <p class="muted" style="padding:10px;">먼저 조회하세요.</p>
+          </div>
+        </div>
+        <div class="field">
+          <label>현재 파일</label>
+          <div class="field-inline">
+            <input id="data-file-path" type="text" readonly>
+            <button id="btn-load-data-file" class="btn ghost">로드</button>
+            <button id="btn-reload-data-file" class="btn ghost">새로고침</button>
+          </div>
+        </div>
+        <div class="field">
+          <label>내용</label>
+          <p id="data-editor-status" class="muted small">파일을 선택하면 편집 가능합니다.</p>
+          <textarea id="data-editor" spellcheck="false" placeholder="파일 내용을 불러오면 수정 가능합니다."></textarea>
+          <button id="btn-save-data-file" class="btn primary">저장</button>
+        </div>
+      </section>
+
+      <section class="group" id="add-character-group">
+        <h2>캐릭터 추가</h2>
+        <div class="field">
+          <label>API 이름</label>
+          <input id="new-api" type="text" placeholder="예: aigis">
+        </div>
+        <div class="field">
+          <label>LOCAL 이름</label>
+          <input id="new-local" type="text" placeholder="예: AIGIS">
+        </div>
+        <div class="field">
+          <label>Character Key</label>
+          <input id="new-key" type="text" placeholder="예: 에이기스">
+        </div>
+        <button id="btn-add-character" class="btn primary">신규 캐릭터 생성</button>
+        <p class="muted small">codename.json에 { api, local, key }가 있어야 생성 가능합니다.</p>
+      </section>
+    </aside>
+
+    <section class="panel main">
+      <header class="main-header">
+        <div class="summary">
+          <p>목록: <strong id="list-count">0</strong></p>
+          <p>리포트: <strong id="report-count">0</strong></p>
+          <p>선택: <strong id="selected-count">0</strong></p>
+          <p>선택 Diff: <strong id="selected-diff-count">0</strong></p>
+        <p>무시 Diff(필터/전체): <strong id="ignored-count">0</strong>/<strong id="ignored-total-count">0</strong></p>
+          <p>리포트 파일: <strong id="report-file">-</strong></p>
+        </div>
+        <div class="actions">
+          <button id="btn-select-all" class="btn ghost small">전체 선택</button>
+          <button id="btn-clear-select" class="btn ghost small">선택 해제</button>
+          <button id="btn-dryrun-selected" class="btn warn small">선택 행 검증</button>
+          <button id="btn-patch-selected" class="btn danger small">선택 행 패치</button>
+        </div>
+      </header>
+
+      <section class="table-section">
+        <div class="table-tools">
+          <input id="report-search" type="text" placeholder="리포트 검색">
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th>#</th>
+                <th>Icon</th>
+                <th>Lang</th>
+                <th>API</th>
+                <th>Local</th>
+                <th>Key</th>
+                <th>Parts</th>
+                <th>Diff Preview</th>
+              </tr>
+            </thead>
+            <tbody id="report-tbody">
+              <tr><td colspan="9" class="empty">리포트 데이터가 없습니다. 조건을 선택해 주세요.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="detail" id="detail-panel">
+        <header class="detail-header">
+          <div class="detail-avatar" id="detail-avatar">N/A</div>
+          <div>
+            <h2>상세</h2>
+            <p id="detail-title" class="muted">행을 클릭하면 상세 내용을 볼 수 있습니다.</p>
+          </div>
+        </header>
+        <div id="detail-content" class="detail-content">
+          <p class="muted">선택한 행을 클릭하면 상세 정보가 표시됩니다.</p>
+        </div>
+      </section>
+
+      <section class="logs">
+        <div class="log-head">
+          <h2>실행 로그</h2>
+          <button id="btn-clear-log" class="btn ghost small">로그 비우기</button>
+        </div>
+        <pre id="log-output"></pre>
+      </section>
+    </section>
+  </main>
+  <script src="./patch-console.js?v=0.9.1"></script>
+</body>
+</html>

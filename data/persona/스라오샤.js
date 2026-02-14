@@ -114,28 +114,44 @@ window.personaFiles["스라오샤"] = {
       "desc": "1명의 적에게 공격력 130.8/139.1/147.4%의 축복 속성 대미지를 주고, 자신은 축복 효과 1~2개를 획득한다.",
       "cost": "SP 21",
       "level": "6/7/8",
-      "learn_level": "10"
+      "learn_level": "10",
+      "name_en": "Kougaon",
+      "desc_en": "Deal Bless damage to 1 foe equal to 130.8/139.1/147.4% of Attack. Gain 1 to 2 Blessing stacks.",
+      "name_jp": "コウガオン",
+      "desc_jp": "敵単体に攻撃力130.8/139.1/147.4%の祝福属性ダメージを与える。自身に１～２つの祝印を獲得する。"
     },
     {
       "name": "마한마온",
       "desc": "모든 적에게 공격력 45.0/49.3/53.6%의 축복 속성 대미지를 주고, 생명이 50% 이하인 적에게 낮은 확률로 축복 속성 즉사 효과를 추가하며 생명이 낮을수록 확률이 높아진다.",
       "cost": "SP 20",
       "level": "6/7/8",
-      "learn_level": "20"
+      "learn_level": "20",
+      "name_en": "Mahamaon",
+      "desc_en": "Deal Bless damage to all foes equal to 45.0/49.3/53.6% of Attack. Low chance to deal a Bless insta-kill effect to foes with 50% or less HP. Increase chance based on foe's missing HP.",
+      "name_jp": "マハンマオン",
+      "desc_jp": "敵全体に攻撃力45.0/49.3/53.6%の祝福属性ダメージを与える。ＨＰ５０%以下の敵に低確率で祝福属性の即死効果を与える。敵のＨＰが低いほど確率が上がる。"
     },
     {
       "name": "하마 성공률 UPⅢ",
       "desc": "즉사 스킬 성공률이 5.4% 증가한다.",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "30"
+      "learn_level": "30",
+      "name_en": "Divine Guidance III",
+      "desc_en": "Increase the success rate of insta-kill skills by 5.4%.",
+      "name_jp": "天上の導きⅢ",
+      "desc_jp": "即死スキルの成功率が５.４%上昇する。"
     },
     {
       "name": "마하코우가온",
       "desc": "모든 적에게 공격력 65.8/70.0/74.2%의 축복 속성 대미지를 주고, 자신은 축복 효과 1~2개를 획득한다.",
       "cost": "SP 21",
       "level": "6/7/8",
-      "learn_level": "40"
+      "learn_level": "40",
+      "name_en": "Makougaon",
+      "desc_en": "Deal Bless damage to all foes equal to 65.8/70.0/74.2% of Attack. Gain 1 to 2 Blessing stacks.",
+      "name_jp": "マハコウガオン",
+      "desc_jp": "敵全体に攻撃力65.8/70.0/74.2%の祝福属性ダメージを与える。自身に１～２つの祝印を獲得する。"
     }
   ]
 };

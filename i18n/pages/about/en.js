@@ -1,6 +1,6 @@
 window.I18N_PAGE_ABOUT_EN = {
     // Page titles
-    siteTitle: 'lufel.net',
+    siteTitle: 'Lufelnet lufel.net',
     contactTitle: 'Contact & Feedback',
     thanksTitle: 'Thanks To',
     recentUpdatesTitle: 'Recent Updates',
@@ -34,5 +34,9 @@ LufelNet is made possible entirely by your support. Thank you sincerely.`,
     // Donation inline text (for EN/JP - shown inline instead of modal)
     donationInlineText: `As a user who truly loves P5X, I am continuously managing lufel.net.<br>
 Your donation will be a great driving force for improving the site.<br>
-LufelNet is made possible entirely by your support. Thank you sincerely.`
+LufelNet is made possible entirely by your support. Thank you sincerely.`,
+
+    // SEO
+    seoTitle: 'About - Persona 5: The Phantom X LufelNet',
+    seoDescription: 'Lufelnet is an unofficial information site for Persona 5: The Phantom X players. Check site introduction and contact information.'
 };

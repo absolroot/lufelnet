@@ -478,136 +478,17 @@ description: 페르소나5 더 팬텀 X 택틱을 업로드하세요.
 }
 </style>
 
+<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
 <script>
-// 다국어 지원
-const translations = {
-    kr: {
-        tactic_info: '택틱 정보',
-        region: '지역 *',
-        tactic_type: '택틱 타입 *',
-        select_please: '선택해주세요',
-        nightmare: '흉몽',
-        sea: '바다',
-        event: '이벤트',
-        other: '기타',
-        title: '제목 *',
-        title_placeholder: '보스 이름 (점수)',
-        title_example: '예: 쿠 훌린 (1.4억)',
-        author: '작성자 *',
-        tactic_data: '택틱 데이터',
-        json_file: '택틱 JSON 파일 *',
-        json_file_desc: '택틱 메이커에서 내보낸 JSON 파일을 업로드해주세요.',
-        data_preview: '데이터 미리보기',
-        additional_info: '추가 정보 (선택사항)',
-        comment: '코멘트',
-        comment_placeholder: '참고 사항, 메모 등',
-        preview: '미리보기',
-        upload: '업로드',
-        login_required: '로그인이 필요합니다',
-        login_required_desc: '택틱을 업로드하려면 로그인해주세요.',
-        login: '로그인하기',
-        tactic_preview: '택틱 미리보기',
-        close: '닫기',
-        uploading: '업로드 중...',
-        saving: '저장 중...',
-        deleting: '삭제 중...',
-        lang_kr: '한국 (KR)',
-        lang_en: '글로벌 (EN)',
-        lang_jp: '일본 (JP)',
-        lang_sea: '동남아 (SEA)',
-        signed_in_as: '로그인:',
-        logout: '로그아웃',
-        nav_home: '홈',
-        nav_current: '택틱 / 택틱 업로드',
-        page_title: '택틱 업로드',
-        seo_title: '택틱 업로드 - 페르소나5 더 팬텀 X 루페르넷',
-        seo_desc: '페르소나5 더 팬텀 X 택틱을 업로드하세요.'
-    },
-    en: {
-        tactic_info: 'Tactic Information',
-        region: 'Region *',
-        tactic_type: 'Tactic Type *',
-        select_please: 'Please select',
-        nightmare: 'Nightmare',
-        sea: 'Sea',
-        event: 'Event',
-        other: 'Other',
-        title: 'Title *',
-        title_placeholder: 'Boss Name (Score)',
-        title_example: 'e.g.: Cu Chulainn (140M)',
-        author: 'Author *',
-        tactic_data: 'Tactic Data',
-        json_file: 'Tactic JSON File *',
-        json_file_desc: 'Please upload the JSON file exported from the tactic maker.',
-        data_preview: 'Data Preview',
-        additional_info: 'Additional Information (Optional)',
-        comment: 'Comment',
-        comment_placeholder: 'Notes, memo, etc.',
-        preview: 'Preview',
-        upload: 'Upload',
-        login_required: 'Login Required',
-        login_required_desc: 'Please log in to upload tactics.',
-        login: 'Login',
-        tactic_preview: 'Tactic Preview',
-        close: 'Close',
-        uploading: 'Uploading...',
-        saving: 'Saving...',
-        deleting: 'Deleting...',
-        lang_kr: 'KR',
-        lang_en: 'EN',
-        lang_jp: 'JP',
-        lang_sea: 'SEA',
-        signed_in_as: 'Signed in as:',
-        logout: 'Logout',
-        nav_home: 'Home',
-        nav_current: 'Tactic / Upload',
-        page_title: 'Upload Tactic',
-        seo_title: 'Upload Tactic - Persona 5: The Phantom X LufelNet',
-        seo_desc: 'Upload your tactics for Persona 5: The Phantom X.'
-    },
-    jp: {
-        tactic_info: 'タクティック情報',
-        region: '地域 *',
-        tactic_type: 'タクティックタイプ *',
-        select_please: '選択してください',
-        nightmare: '閼兇夢', // 閼兇夢の扉
-        sea: '心の海',
-        event: 'イベント',
-        other: 'その他',
-        title: 'タイトル *',
-        title_placeholder: 'ボス名 (スコア)',
-        title_example: '例: クー・フーリン (1.4億)',
-        author: '作成者 *',
-        tactic_data: 'タクティックデータ',
-        json_file: 'タクティック JSON ファイル *',
-        json_file_desc: 'タクティックメーカーからエクスポートしたJSONファイルをアップロードしてください。',
-        data_preview: 'データプレビュー',
-        additional_info: '追加情報 (オプション)',
-        comment: 'コメント',
-        comment_placeholder: '備考、メモなど',
-        preview: 'プレビュー',
-        upload: 'アップロード',
-        login_required: 'ログインが必要です',
-        login_required_desc: 'タクティックをアップロードするにはログインしてください。',
-        login: 'ログイン',
-        tactic_preview: 'タクティックプレビュー',
-        close: '閉じる',
-        uploading: 'アップロード中...',
-        saving: '保存中...',
-        deleting: '削除中...',
-        lang_kr: 'KR',
-        lang_en: 'EN',
-        lang_jp: 'JP',
-        lang_sea: 'SEA',
-        signed_in_as: 'ログイン：',
-        logout: 'ログアウト',
-        nav_home: 'ホーム',
-        nav_current: 'タクティック / アップロード',
-        page_title: 'タクティックをアップロード',
-        seo_title: 'タクティックをアップロード - ペルソナ5 ザ・ファントム X LufelNet',
-        seo_desc: 'ペルソナ5 ザ・ファントム X のタクティックをアップロードしてください。'
+function getI18nText(key, fallback = '') {
+    if (typeof window.t === 'function') {
+        return window.t(key, fallback);
     }
-};
+    if (window.I18nService && typeof window.I18nService.t === 'function') {
+        return window.I18nService.t(key, fallback);
+    }
+    return fallback || key;
+}
 
 class TacticUploader {
     constructor() {
@@ -633,12 +514,18 @@ class TacticUploader {
     }
 
     async init() {
+        if (typeof initPageI18n === 'function') {
+            await initPageI18n('tactic-upload');
+            if (typeof setLang === 'function') {
+                await setLang(this.currentLang);
+            }
+        } else if (window.I18nService && typeof window.I18nService.init === 'function') {
+            await window.I18nService.init('tactic-upload', this.currentLang);
+        }
+
         await this.checkAuth();
-        // DOM이 완전히 로드된 후 번역 실행
-        setTimeout(() => {
-            this.initLanguage();
-            this.updateLanguageTextsAndSEO();
-        }, 100);
+        this.initLanguage();
+        this.updateLanguageTextsAndSEO();
         this.initEventListeners();
         this.initRegionDropdown();
         this.checkEditMode();
@@ -704,57 +591,41 @@ class TacticUploader {
     }
 
     initLanguage() {
-        const lang = this.currentLang;
-        //console.log('Current language:', lang); // 디버그용
-        
-        if (translations[lang]) {
-            // data-i18n 속성을 가진 요소들 번역
-            document.querySelectorAll('[data-i18n]').forEach(element => {
-                const key = element.getAttribute('data-i18n');
-                if (translations[lang][key]) {
-                    element.textContent = translations[lang][key];
-                    //console.log(`Translated ${key} to:`, translations[lang][key]); // 디버그용
-                }
-            });
+        document.querySelectorAll('[data-i18n]').forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            if (!key) return;
+            element.textContent = getI18nText(key, element.textContent || '');
+        });
 
-            // placeholder 번역
-            document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
-                const key = element.getAttribute('data-i18n-placeholder');
-                if (translations[lang][key]) {
-                    element.placeholder = translations[lang][key];
-                }
-            });
-            
-            // option 요소들도 번역
-            document.querySelectorAll('option[data-i18n]').forEach(element => {
-                const key = element.getAttribute('data-i18n');
-                if (translations[lang][key]) {
-                    element.textContent = translations[lang][key];
-                }
-            });
-            // 상단 네비/페이지 타이틀 번역
-            const navHome = document.getElementById('nav-home');
-            const navCurrent = document.getElementById('nav-current');
-            const pageTitle = document.getElementById('page-title');
-            if (navHome && translations[lang].nav_home) navHome.textContent = translations[lang].nav_home;
-            if (navCurrent && translations[lang].nav_current) navCurrent.textContent = translations[lang].nav_current;
-            if (pageTitle && translations[lang].page_title) pageTitle.textContent = translations[lang].page_title;
-        } else {
-            //console.log('No translations found for language:', lang);
-        }
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+            const key = element.getAttribute('data-i18n-placeholder');
+            if (!key) return;
+            element.placeholder = getI18nText(key, element.placeholder || '');
+        });
+
+        document.querySelectorAll('option[data-i18n]').forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            if (!key) return;
+            element.textContent = getI18nText(key, element.textContent || '');
+        });
+
+        const navHome = document.getElementById('nav-home');
+        const navCurrent = document.getElementById('nav-current');
+        const pageTitle = document.getElementById('page-title');
+        if (navHome) navHome.textContent = getI18nText('nav_home', navHome.textContent || '');
+        if (navCurrent) navCurrent.textContent = getI18nText('nav_current', navCurrent.textContent || '');
+        if (pageTitle) pageTitle.textContent = getI18nText('page_title', pageTitle.textContent || '');
     }
 
     updateLanguageTextsAndSEO() {
-        const lang = this.currentLang;
-        const t = translations[lang] || translations.kr;
-        // SEO
-        document.title = t.seo_title;
+        document.title = getI18nText('seo_title', document.title || '택틱 업로드 - 페르소나5 더 팬텀 X 루페르넷');
         const metaDesc = document.querySelector('meta[name="description"]');
         const ogTitle = document.querySelector('meta[property="og:title"]');
         const ogDesc = document.querySelector('meta[property="og:description"]');
-        if (metaDesc) metaDesc.setAttribute('content', t.seo_desc);
-        if (ogTitle) ogTitle.setAttribute('content', t.seo_title);
-        if (ogDesc) ogDesc.setAttribute('content', t.seo_desc);
+        const seoDesc = getI18nText('seo_desc', (metaDesc && metaDesc.getAttribute('content')) || '');
+        if (metaDesc) metaDesc.setAttribute('content', seoDesc);
+        if (ogTitle) ogTitle.setAttribute('content', document.title);
+        if (ogDesc) ogDesc.setAttribute('content', seoDesc);
     }
 
     initRegionDropdown() {
@@ -1340,12 +1211,14 @@ class TacticUploader {
         const overlay = document.getElementById('loadingOverlay');
         if (overlay) overlay.style.display = show ? 'flex' : 'none';
         // 텍스트 교체 (업로드/저장/삭제)
-        const t = translations[this.currentLang] || translations.kr;
         const p = overlay ? overlay.querySelector('p[data-i18n="uploading"]') : null;
         if (overlay && p) {
-            if (mode === 'save') p.textContent = t.saving || t.uploading;
-            else if (mode === 'delete') p.textContent = t.deleting || t.uploading;
-            else p.textContent = t.uploading;
+            const uploadingText = getI18nText('uploading', '업로드 중...');
+            const savingText = getI18nText('saving', uploadingText);
+            const deletingText = getI18nText('deleting', uploadingText);
+            if (mode === 'save') p.textContent = savingText;
+            else if (mode === 'delete') p.textContent = deletingText;
+            else p.textContent = uploadingText;
         }
         // 버튼 비활성화 (업로드 버튼이 없는 편집 모드 대비 안전 가드)
         const submitBtn = document.getElementById('submitButton');

@@ -1,7 +1,6 @@
 ---
 layout: default
 custom_css: [character]
-custom_js: [translation-loader]
 
 redirect_from:
 - /kr/character/
@@ -352,144 +351,80 @@ redirect_from:
     }
 </style>
 
+<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
 <script>
     // 다국어 지원 함수
+    function getI18nText(key, fallback = '') {
+        if (typeof window.t === 'function') {
+            return window.t(key, fallback);
+        }
+        if (window.I18nService && typeof window.I18nService.t === 'function') {
+            return window.I18nService.t(key, fallback);
+        }
+        return fallback || key;
+    }
+
+    function translateTermSafe(text) {
+        if (!text) return text;
+        if (window.I18nService && typeof window.I18nService.translateTerm === 'function') {
+            return window.I18nService.translateTerm(text);
+        }
+        return text;
+    }
+
     async function updateLanguageContent() {
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
 
-        // Jekyll 다국어 데이터 사용
-        const i18nData = {
-            kr: {
-                language_notice: "",
-                nav_home: "홈",
-                nav_current: "괴도",
-                page_title: "괴도 육성",
-                filtered_count: "전체",
-                search_placeholder: "캐릭터 검색..."
-            },
-            en: {
-                language_notice: "{{ site.data.i18n.en.language_notice | default: '' }}",
-                nav_home: "{{ site.data.i18n.en.nav_home | default: 'Home' }}",
-                nav_current: "{{ site.data.i18n.en.character_breadcrumb | default: 'Characters' }}",
-                page_title: "{{ site.data.i18n.en.character_page_title | default: 'Characters' }}",
-                filtered_count: "{{ site.data.i18n.en.filtered_count | default: 'Total' }}",
-                search_placeholder: "{{ site.data.i18n.en.character_search_placeholder | default: 'Search characters...' }}"
-            },
-            jp: {
-                language_notice: "{{ site.data.i18n.jp.language_notice | default: '' }}",
-                nav_home: "{{ site.data.i18n.jp.nav_home | default: 'ホーム' }}",
-                nav_current: "{{ site.data.i18n.jp.character_breadcrumb | default: '怪盗' }}",
-                page_title: "{{ site.data.i18n.jp.character_page_title | default: '怪盗' }}",
-                filtered_count: "{{ site.data.i18n.jp.filtered_count | default: '全体' }}",
-                search_placeholder: "{{ site.data.i18n.jp.character_search_placeholder | default: '怪盗検索...' }}"
-            }
-        };
-
-        const data = i18nData[currentLang];
-        if (!data) return;
-
-        // 언어 안내 메시지
-        if (currentLang !== 'kr') {
-            const notice = document.getElementById('language-notice');
-            const noticeText = document.getElementById('language-notice-text');
-            if (notice && noticeText && data.language_notice) {
-                noticeText.textContent = data.language_notice;
-                notice.style.display = 'block';
-            }
-        }
-
-        // 네비게이션 및 제목 업데이트
         const navHome = document.getElementById('nav-home');
         const navCurrent = document.getElementById('nav-current');
         const pageTitle = document.getElementById('page-title');
         const searchInput = document.getElementById('characterSearch');
 
-        if (navHome) navHome.textContent = data.nav_home;
-        if (navCurrent) navCurrent.textContent = data.nav_current;
-        if (pageTitle) pageTitle.textContent = data.page_title;
-        if (searchInput) searchInput.placeholder = data.search_placeholder;
-
-        // 필터 카운트 텍스트 업데이트를 위한 전역 변수 설정
-        window.i18nFilteredCount = data.filtered_count;
-
-        // 필터 제목 번역
-        updateFilterTitles(currentLang);
-    }
-
-    // 필터 제목 번역 함수
-    function updateFilterTitles(currentLang) {
-        const filterTitles = {
-            kr: {
-                element: "속성",
-                position: "직업",
-                type: "유형",
-                tag: "태그",
-                count_unit: "명"
-            },
-            en: {
-                element: "Element",
-                position: "Position",
-                type: "Type",
-                tag: "Tag",
-                count_unit: " "
-            },
-            jp: {
-                element: "属性",
-                position: "職業",
-                type: "タイプ",
-                tag: "タグ",
-                count_unit: "体"
-            }
-        };
-
-        const titles = filterTitles[currentLang];
-        if (!titles) return;
-
-        // 필터 그룹 제목들 업데이트
-        const filterGroups = document.querySelectorAll('.filter-group h3');
-        if (filterGroups.length >= 4) {
-            filterGroups[0].textContent = titles.element; // 속성
-            filterGroups[1].textContent = titles.position; // 직업
-            filterGroups[2].textContent = titles.type; // 유형
-            filterGroups[3].textContent = titles.tag; // 태그
+        if (navHome) {
+            navHome.textContent = getI18nText('navHome', navHome.textContent || '');
+        }
+        if (navCurrent) {
+            navCurrent.textContent = getI18nText('navCurrent', navCurrent.textContent || '');
+        }
+        if (pageTitle) {
+            pageTitle.textContent = getI18nText('pageTitle', pageTitle.textContent || '');
+        }
+        if (searchInput) {
+            searchInput.placeholder = getI18nText('searchPlaceholder', searchInput.placeholder || '');
         }
 
-        // 개수 단위 전역 변수 설정
-        window.i18nCountUnit = titles.count_unit;
+        const filteredFallback = 'Total';
+        const countUnitFallback = '';
+        window.i18nFilteredCount = getI18nText('filteredCount', filteredFallback);
+        window.i18nCountUnit = getI18nText('countUnit', countUnitFallback);
+
+        updateFilterTitles();
     }
 
-    // 언어별 SEO 설정 함수
+    function updateFilterTitles() {
+        const filterGroups = document.querySelectorAll('.filter-group h3');
+        const keys = ['filterElement', 'filterPosition', 'filterType', 'filterTag'];
+
+        keys.forEach((key, index) => {
+            if (!filterGroups[index]) return;
+            filterGroups[index].textContent = getI18nText(key, filterGroups[index].textContent || '');
+        });
+    }
+
     function updateSEOContent() {
-        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
-
-        const seoData = {
-            'kr': {
-                title: '괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷',
-                description: '페르소나5 더 팬텀 X의 괴도별 육성 가이드. 추천 세팅, 스킬, 의식, 전용무기 정보를 확인하세요.'
-            },
-            'en': {
-                title: 'Character Build Guide - Persona 5: The Phantom X LufelNet',
-                description: 'Character development guide for Persona 5: The Phantom X. Check recommended setup, skills, awareness, and exclusive weapon info.'
-            },
-            'jp': {
-                title: '怪盗育成ガイド - ペルソナ5 ザ・ファントム X LufelNet',
-                description: 'ペルソナ5 ザ・ファントム Xの怪盗別育成ガイド。おすすめ設定、スキル、意識、専用武器情報をご確認ください。'
-            }
-        };
-
-        const currentSEO = seoData[currentLang] || seoData['kr'];
-
-        // 타이틀 업데이트
-        document.title = currentSEO.title;
-
-        // 메타 태그 업데이트
         const metaDescription = document.querySelector('meta[name="description"]');
         const ogTitle = document.querySelector('meta[property="og:title"]');
         const ogDescription = document.querySelector('meta[property="og:description"]');
 
-        if (metaDescription) metaDescription.setAttribute('content', currentSEO.description);
-        if (ogTitle) ogTitle.setAttribute('content', currentSEO.title);
-        if (ogDescription) ogDescription.setAttribute('content', currentSEO.description);
+        const fallbackTitle = document.title || 'Character Build Guide - Persona 5: The Phantom X LufelNet';
+        const fallbackDescription = (metaDescription && metaDescription.getAttribute('content')) || '';
+        const seoTitle = getI18nText('seoTitle', fallbackTitle);
+        const seoDescription = getI18nText('seoDescription', fallbackDescription);
+
+        document.title = seoTitle;
+        if (metaDescription) metaDescription.setAttribute('content', seoDescription);
+        if (ogTitle) ogTitle.setAttribute('content', seoTitle);
+        if (ogDescription) ogDescription.setAttribute('content', seoDescription);
     }
 
     // Initialize navigation on page load
@@ -648,14 +583,14 @@ redirect_from:
                 }
 
                 // 속성 번역 처리 (element 필드는 그대로 유지하되, 표시용 번역 추가)
-                if (currentLang !== 'kr' && typeof characterTranslations !== 'undefined' && characterTranslations.elements) {
-                    const translatedElement = characterTranslations.elements[mergedData[characterKey].element];
-                    if (translatedElement) {
+                if (currentLang !== 'kr') {
+                    const translatedElement = translateTermSafe(mergedData[characterKey].element);
+                    if (translatedElement && translatedElement !== mergedData[characterKey].element) {
                         mergedData[characterKey].element_display = translatedElement;
                     }
 
-                    const translatedPosition = characterTranslations.positions[mergedData[characterKey].position];
-                    if (translatedPosition) {
+                    const translatedPosition = translateTermSafe(mergedData[characterKey].position);
+                    if (translatedPosition && translatedPosition !== mergedData[characterKey].position) {
                         mergedData[characterKey].position_display = translatedPosition;
                     }
                 }
@@ -771,8 +706,8 @@ redirect_from:
 
 
         // 초기 검색 결과 수 표시
-        const countText = window.i18nFilteredCount || '전체';
-        const countUnit = window.i18nCountUnit || '명';
+        const countText = window.i18nFilteredCount ?? '전체';
+        const countUnit = window.i18nCountUnit ?? '명';
         searchCount.textContent = `${countText} ${sortedCharacters.length}${countUnit}`;
 
 
@@ -877,11 +812,7 @@ redirect_from:
                 if (isUnreleased) {
                     const notReleasedTag = document.createElement('div');
                     notReleasedTag.className = 'not-released-tag';
-                    const tagTexts = {
-                        en: 'Not Released',
-                        jp: '未リリース'
-                    };
-                    notReleasedTag.textContent = tagTexts[currentLang] || 'Not Released';
+                    notReleasedTag.textContent = getI18nText('notReleased', 'Not Released');
                     link.appendChild(notReleasedTag);
                     console.log(`Added Not Released tag for ${characterName}`);
                 }
@@ -904,7 +835,7 @@ redirect_from:
         }
 
         // 번역 적용 (데이터 로딩 후)
-        await applyTranslations();
+        await applyI18nTranslations();
 
         // 초기화 완료
         isInitializing = false;
@@ -914,234 +845,118 @@ redirect_from:
     // initializePageContent 함수 종료
 
     // 번역 시스템 적용
-    async function applyTranslations() {
+    async function applyI18nTranslations() {
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
         if (currentLang === 'kr') return;
 
-        try {
-            // 번역 데이터 로드
-            const translations = await TranslationLoader.loadTranslations('characters', currentLang);
-            if (!translations) {
-                console.warn('No translations found for', currentLang);
-                return;
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            const elementImg = card.querySelector('.element-icon');
+            const elementKey = card.dataset.element;
+            if (elementImg && elementKey) {
+                const translatedElement = translateTermSafe(elementKey);
+                elementImg.alt = translatedElement;
+                elementImg.title = translatedElement;
             }
 
-            // console.log('Applying translations for', currentLang, translations);
+            const positionImg = card.querySelector('.position-icon');
+            const positionKey = card.dataset.position;
+            if (positionImg && positionKey) {
+                const translatedPosition = translateTermSafe(positionKey);
+                positionImg.alt = translatedPosition;
+                positionImg.title = translatedPosition;
+            }
+        });
 
-            // 카드 업데이트
-            const cards = document.querySelectorAll('.card');
-            cards.forEach(card => {
-                const nameElement = card.querySelector('.name-text');
-                if (!nameElement) return;
+        const elementLabels = document.querySelectorAll('.filter-group:first-child .filter-options label');
+        elementLabels.forEach(label => {
+            const input = label.querySelector('input[name="element"]');
+            const img = label.querySelector('img');
+            const source = (input && input.value) || (img && img.alt);
+            if (!img || !source) return;
+            const translated = translateTermSafe(source);
+            img.alt = translated;
+            img.title = translated;
+        });
 
-                const originalName = nameElement.textContent;
-                const characterKey = Object.keys(characterData).find(key =>
-                    characterData[key].name === originalName
-                );
+        const positionLabels = document.querySelectorAll('.filter-group:nth-child(2) .filter-options label');
+        positionLabels.forEach(label => {
+            const input = label.querySelector('input[name="position"]');
+            const img = label.querySelector('img');
+            const source = (input && input.value) || (img && img.alt);
+            if (!img || !source) return;
+            const translated = translateTermSafe(source);
+            img.alt = translated;
+            img.title = translated;
+        });
 
-                if (characterKey && characterData[characterKey]) {
-                    const char = characterData[characterKey];
+        const tagLabels = document.querySelectorAll('.filter-group:last-child .filter-options label span');
+        tagLabels.forEach(span => {
+            const text = span.textContent;
+            if (!text) return;
+            span.textContent = translateTermSafe(text);
+        });
 
-                    // 영어일 때 코드네임 우선, 없으면 번역된 이름 사용
-                    if (currentLang === 'en') {
-                        if (char.codename) {
-                            nameElement.textContent = char.codename;
-                        } else if (char.name_en) {
-                            nameElement.textContent = char.name_en;
-                        }
-                    } else if (currentLang === 'jp' && char.name_jp) {
-                        nameElement.textContent = char.name_jp;
-                    }
-
-                    // 속성 아이콘 alt 텍스트 번역
-                    const elementImg = card.querySelector('.element-icon');
-                    if (elementImg && translations.elements && translations.elements[char.element]) {
-                        elementImg.alt = translations.elements[char.element];
-                        elementImg.title = translations.elements[char.element];
-                    }
-                }
-            });
-
-            // 필터 레이블 번역
-            updateFilterLabels(translations, currentLang);
-
-            // 검색 플레이스홀더 번역
-            updateSearchPlaceholder(currentLang);
-
-            // UI 텍스트 번역
-            updateUITexts(currentLang);
-
-        } catch (error) {
-            console.warn('Translation application failed:', error);
-        }
-    }
-
-    // 필터 레이블 번역
-    function updateFilterLabels(translations, lang) {
-        if (!translations) return;
-
-        // 속성 필터 번역
-        if (translations.elements) {
-            const elementLabels = document.querySelectorAll('.filter-group:first-child .filter-options label span');
-            elementLabels.forEach((span, index) => {
-                const elementKey = span.textContent;
-                if (translations.elements[elementKey]) {
-                    span.textContent = translations.elements[elementKey];
-                }
-            });
-        }
-
-        // 직업 필터 번역 
-        if (translations.positions) {
-            const positionLabels = document.querySelectorAll('.filter-group:nth-child(2) .filter-options label');
-            positionLabels.forEach(label => {
-                const img = label.querySelector('img');
-                if (img) {
-                    const positionKey = img.alt;
-                    if (translations.positions[positionKey]) {
-                        img.alt = translations.positions[positionKey];
-                        img.title = translations.positions[positionKey];
-                    }
-                }
-            });
-        }
-
-        // 태그 필터 번역
-        if (translations.tags) {
-            const tagLabels = document.querySelectorAll('.filter-group:last-child .filter-options label span');
-            tagLabels.forEach(span => {
-                const tagKey = span.textContent;
-                if (translations.tags[tagKey]) {
-                    span.textContent = translations.tags[tagKey];
-                }
-            });
-        }
-    }
-
-    // 검색 플레이스홀더 번역
-    function updateSearchPlaceholder(lang) {
         const searchInput = document.getElementById('characterSearch');
-        if (!searchInput) return;
+        if (searchInput) {
+            searchInput.placeholder = getI18nText('searchPlaceholder', searchInput.placeholder || '');
+        }
 
-        const placeholders = {
-            'en': 'Search characters...',
-            'jp': '怪盗検索...'
-        };
-
-        if (placeholders[lang]) {
-            searchInput.placeholder = placeholders[lang];
+        const filterSection = document.querySelector('.filter-section');
+        if (filterSection && window.I18nService && typeof window.I18nService.translateDOM === 'function') {
+            window.I18nService.translateDOM(filterSection);
         }
     }
 
-    // UI 텍스트 번역
-    function updateUITexts(lang) {
-        if (lang === 'kr') return;
-
-        // 기존 i18n 시스템 활용
-        if (window.i18nData && window.i18nData[lang]) {
-            const i18n = window.i18nData[lang];
-
-            // 페이지 제목
-            const pageTitle = document.getElementById('page-title');
-            if (pageTitle && i18n.character_title) {
-                pageTitle.textContent = i18n.character_title;
-            }
-
-            // 브레드크럼
-            const navHome = document.getElementById('nav-home');
-            const navCurrent = document.getElementById('nav-current');
-            if (navHome && i18n.nav_home) navHome.textContent = i18n.nav_home;
-            if (navCurrent && i18n.nav_character) navCurrent.textContent = i18n.nav_character;
-
-            // 필터 그룹 제목들
-            const filterGroups = document.querySelectorAll('.filter-group h3');
-            const filterTitles = [i18n.filter_element, i18n.filter_position, i18n.filter_type, i18n.filter_tag];
-            filterGroups.forEach((title, index) => {
-                if (filterTitles[index]) {
-                    title.textContent = filterTitles[index];
-                }
-            });
-        }
-    }
-
-    // 스포일러 토글 초기화 함수
     function initializeSpoilerToggle() {
         const spoilerToggle = document.getElementById('spoilerToggle');
         const spoilerToggleText = document.getElementById('spoilerToggleText');
 
         if (!spoilerToggle || !spoilerToggleText) return;
 
-        // 저장된 상태 복원
         const savedState = localStorage.getItem('spoilerToggle') === 'true';
         spoilerToggle.checked = savedState;
 
-        // 언어별 텍스트 설정
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
-        const toggleTexts = {
-            kr: '스포일러 보기',
-            en: 'Show Spoilers',
-            jp: 'スポイラー表示'
-        };
-        spoilerToggleText.textContent = toggleTexts[currentLang] || toggleTexts.kr;
+        spoilerToggleText.textContent = getI18nText('showSpoilers', 'Show Spoilers');
 
-        // 토글 이벤트 리스너
         spoilerToggle.addEventListener('change', function () {
             const isEnabled = this.checked;
             localStorage.setItem('spoilerToggle', isEnabled.toString());
-
             console.log('Spoiler toggle changed:', isEnabled);
-
-            // 페이지 새로고침
             window.location.reload();
         });
 
-        // EN/JP에서만 토글 표시 (KR에서는 숨김)
         const spoilerContainer = document.querySelector('.spoiler-toggle-container');
         if (spoilerContainer) {
-            if (currentLang === 'kr') {
-                spoilerContainer.style.display = 'none';
-            } else {
-                spoilerContainer.style.display = 'block';
-            }
+            spoilerContainer.style.display = currentLang === 'kr' ? 'none' : 'block';
         }
     }
 
-    // 페이지 로드 시 초기화 (통합된 초기화 함수)
     document.addEventListener('DOMContentLoaded', async () => {
-        // console.log('DOMContentLoaded event fired');
-
-        // 기본 초기화 작업
         Navigation.load('character'); // nav active
         VersionChecker.check();
 
-        // SEO 설정 업데이트
-        updateSEOContent();
-
-        // 언어 라우터 초기화 및 콘텐츠 업데이트
-        if (typeof LanguageRouter !== 'undefined') {
-            // 이미 언어 파라미터가 있거나 직접 접근한 경우 리다이렉션 없이 진행
-            const hasLangParam = window.location.search.includes('lang=');
-            if (hasLangParam) {
-                // 언어 파라미터가 있으면 바로 콘텐츠 로드
-                updateLanguageContent().then(async () => {
-                    await initializePageContent();
-                });
-            } else {
-                // 언어 파라미터가 없으면 기본 한국어로 설정하고 콘텐츠 로드
-                const currentUrl = new URL(window.location);
-                currentUrl.searchParams.set('lang', 'kr');
-                window.history.replaceState({}, '', currentUrl);
-
-                updateLanguageContent().then(async () => {
-                    await initializePageContent();
-                });
-            }
-        } else {
-            updateLanguageContent();
-            await initializePageContent();
+        if (typeof LanguageRouter !== 'undefined' && !window.location.search.includes('lang=')) {
+            const currentUrl = new URL(window.location);
+            currentUrl.searchParams.set('lang', 'kr');
+            window.history.replaceState({}, '', currentUrl);
         }
 
-        // 스포일러 토글 초기화
+        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+
+        if (typeof initPageI18n === 'function') {
+            await initPageI18n('character');
+            if (typeof setLang === 'function') {
+                await setLang(currentLang);
+            }
+        } else if (window.I18nService && typeof window.I18nService.init === 'function') {
+            await window.I18nService.init('character', currentLang);
+        }
+
+        updateSEOContent();
+        await updateLanguageContent();
+        await initializePageContent();
         initializeSpoilerToggle();
     });
 

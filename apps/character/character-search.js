@@ -229,8 +229,8 @@
 
         function updateSearchCount(count) {
             if (searchCount) {
-                const countText = window.i18nFilteredCount || '전체';
-                const countUnit = window.i18nCountUnit || '명';
+                const countText = window.i18nFilteredCount ?? '전체';
+                const countUnit = window.i18nCountUnit ?? '명';
                 searchCount.textContent = `${countText} ${count}${countUnit}`;
             }
         }

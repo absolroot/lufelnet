@@ -189,40 +189,33 @@
       // UI 텍스트 번역 함수
       function getUIText(key) {
         const currentLang = getCurrentLanguage();
-        const translations = {
-          reference: {
-            kr: '참고사항',
-            en: 'Reference',
-            jp: '参考事項'
-          },
-          persona: {
-            kr: '페르소나',
-            en: 'Persona',
-            jp: 'ペルソナ'
-          },
-          details: {
-            kr: '세부사항',
-            en: 'Details',
-            jp: '詳細'
-          },
-          enterDetails: {
-            kr: '세부사항 입력',
-            en: 'Enter details',
-            jp: '詳細を入力'
-          },
-          confirm: {
-            kr: '확인',
-            en: 'Confirm',
-            jp: '確認'
-          },
-          select: {
-            kr: '선택',
-            en: 'Select',
-            jp: '選択'
-          }
+        const keyMap = {
+          reference: 'uiReference',
+          persona: 'uiPersona',
+          details: 'uiDetails',
+          enterDetails: 'uiEnterDetails',
+          confirm: 'uiConfirm',
+          select: 'uiSelect'
         };
-        
-        return translations[key] ? translations[key][currentLang] : key;
+        const fallbackMap = {
+          reference: currentLang === 'en' ? 'Reference' : (currentLang === 'jp' ? '参考事項' : '참고사항'),
+          persona: currentLang === 'en' ? 'Persona' : (currentLang === 'jp' ? 'ペルソナ' : '페르소나'),
+          details: currentLang === 'en' ? 'Details' : (currentLang === 'jp' ? '詳細' : '세부사항'),
+          enterDetails: currentLang === 'en' ? 'Enter details' : (currentLang === 'jp' ? '詳細を入力' : '세부사항 입력'),
+          confirm: currentLang === 'en' ? 'Confirm' : (currentLang === 'jp' ? '確認' : '확인'),
+          select: currentLang === 'en' ? 'Select' : (currentLang === 'jp' ? '選択' : '선택')
+        };
+        const i18nKey = keyMap[key];
+        const fallback = fallbackMap[key] || key;
+
+        if (i18nKey && typeof window.t === 'function') {
+          return window.t(i18nKey, fallback);
+        }
+        if (i18nKey && window.I18nService && typeof window.I18nService.t === 'function') {
+          return window.I18nService.t(i18nKey, fallback);
+        }
+
+        return fallback;
       }
 
       // 메모 텍스트 번역 함수 (스킬 이름인 경우 번역)

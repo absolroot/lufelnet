@@ -113,21 +113,9 @@
     setTimeout(() => {
       try { if (typeof translateUI === 'function') translateUI(); } catch(_) {}
       try {
-        const getLang = () => {
-          if (typeof getCurrentLanguage === 'function') return getCurrentLanguage();
-          const urlLang = new URLSearchParams(window.location.search).get('lang');
-          if (urlLang && ['kr','en','jp'].includes(urlLang)) return urlLang;
-          const saved = localStorage.getItem('preferredLanguage');
-          if (saved && ['kr','en','jp'].includes(saved)) return saved;
-          return 'kr';
-        };
-        const currentLang = getLang();
-        const labelMap = {
-          kr: { off: '🕶️ 편집 UI 숨김', on: '🔍 편집 UI 표시' },
-          en: { off: '🕶️ Hide Edit UI', on: '🔍 Show Edit UI' },
-          jp: { off: '🕶️ 編集UIを非表示', on: '🔍 編集UIを表示' }
-        };
-        const t = labelMap[currentLang] || labelMap.kr;
+        const t = (typeof window.getTacticToggleLabels === 'function')
+          ? window.getTacticToggleLabels()
+          : { off: '🕶️ 편집 UI 숨김', on: '🔍 편집 UI 표시' };
         const mobileToggleBtn = document.querySelector('.mobile-buttons .toggle-ui-btn');
         if (mobileToggleBtn) {
           mobileToggleBtn.setAttribute('data-label', t.off);
@@ -139,4 +127,3 @@
 
   document.addEventListener('DOMContentLoaded', loadFromLibraryParam);
 })();
-

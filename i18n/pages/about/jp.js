@@ -1,6 +1,6 @@
 window.I18N_PAGE_ABOUT_JP = {
     // Page titles
-    siteTitle: 'lufel.net',
+    siteTitle: 'Lufelnet lufel.net',
     contactTitle: 'お問い合わせ・フィードバック',
     thanksTitle: 'Thanks To',
     recentUpdatesTitle: '最新アップデート',
@@ -34,5 +34,9 @@ window.I18N_PAGE_ABOUT_JP = {
     // Donation inline text (for EN/JP - shown inline instead of modal)
     donationInlineText: `P5Xを愛するユーザーとして、lufel.netを継続的に管理しています。<br>
 あなたの寄付はサイトを改善する大きな原動力になります。<br>
-ルフェルネットは、皆様のご支援によってのみ運営されています。心から感謝いたします。`
+ルフェルネットは、皆様のご支援によってのみ運営されています。心から感謝いたします。`,
+
+    // SEO
+    seoTitle: 'About - ペルソナ5 ザ・ファントム X LufelNet',
+    seoDescription: 'Lufelnetはペルソナ5 ザ・ファントム Xプレイヤーのための非公式情報サイトです。サイト紹介とお問い合わせ情報をご確認ください。'
 };

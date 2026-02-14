@@ -351,6 +351,7 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
 
     <!-- SortableJS (drag and drop library) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
+    <script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
     <script>
       /* ========== Global data ========== */
       // Wonder persona 3 slots
@@ -378,6 +379,13 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
 
       // 현재 언어 감지 함수
       function getCurrentLanguage() {
+        if (typeof LanguageRouter !== 'undefined' && typeof LanguageRouter.getCurrentLanguage === 'function') {
+          const routedLang = LanguageRouter.getCurrentLanguage();
+          if (routedLang && ['kr', 'en', 'jp'].includes(routedLang)) {
+            return routedLang;
+          }
+        }
+
         // URL 파라미터 체크
         const urlParams = new URLSearchParams(window.location.search);
         const urlLang = urlParams.get('lang');
@@ -394,6 +402,26 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
         // 기본값
         return 'kr';
       }
+
+      function getI18nValue(key, fallback = '') {
+        if (typeof window.t === 'function') {
+          return window.t(key, fallback);
+        }
+        if (window.I18nService && typeof window.I18nService.t === 'function') {
+          return window.I18nService.t(key, fallback);
+        }
+        return fallback;
+      }
+
+      function getTacticToggleLabels() {
+        return {
+          off: getI18nValue('toggleUiHide', '🕶️ 편집 UI 숨김'),
+          on: getI18nValue('toggleUiShow', '🔍 편집 UI 표시'),
+          title: getI18nValue('toggleUiTitle', '편집 UI 토글')
+        };
+      }
+
+      window.getTacticToggleLabels = getTacticToggleLabels;
 
       // 언어별 characters.js를 샌드박스에서 평가해 순수 데이터만 추출
       async function fetchCharactersData(url) {
@@ -486,90 +514,13 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
         return await __ensureCharacterDataLoadedPromise;
       };
 
-            // UI 번역 함수
+      // UI 번역 함수
       function translateUI() {
         const currentLang = getCurrentLanguage();
-        
         if (currentLang === 'kr') return; // 한국어는 기본값이므로 번역 불필요
-        
-        // 번역 매핑
-        const translations = {
-          en: {
-            // 네비게이션
-            '홈': 'Home',
-            
-            // 헤더
-            '택틱 메이커': 'Tactic Maker',
-            '내보내기': 'Export',
-            '가져오기': 'Import', 
-            '공유하기': 'Share',
-            '화면 캡처': 'Capture',
-            '순서 이동 잠금': 'Lock Order',
-            
-            // 원더 설정
-            '원더 설정': 'Wonder Settings',
-            '무기': 'Weapon',
-            '선택 또는 입력': 'Select or Input',
-            '페르소나1': 'Persona 1',
-            '페르소나2': 'Persona 2', 
-            '페르소나3': 'Persona 3',
-            '고유스킬': 'Unique Skill',
-            '스킬 2': 'Skill 2',
-            '스킬 3': 'Skill 3',
-            
-            // 괴도단
-            '괴도단': 'Phantom Thieves',
-            '괴도 1': 'P1',
-            '괴도 2': 'P2',
-            '괴도 3': 'P3',
-            '괴도 4': 'P4',
-            '괴도 5': 'P5',
-            '의식': 'A',
-            '순서': 'Order',
-            '주': 'Uni.',
-            '일월성진': 'S/M/S/P',
-            '해명 -': 'SP'
-          },
-          jp: {
-            // 네비게이션
-            '홈': 'ホーム',
-            
-            // 헤더
-            '택틱 메이커': 'タクティックメーカー',
-            '내보내기': 'エクスポート',
-            '가져오기': 'インポート',
-            '공유하기': 'シェア',
-            '화면 캡처': 'キャプチャ',
-            '순서 이동 잠금': '順序移動ロック',
-            
-            // 원더 설정
-            '원더 설정': 'ワンダー設定',
-            '무기': '武器',
-            '선택 또는 입력': '選択または入力',
-            '페르소나1': 'ペルソナ1',
-            '페르소나2': 'ペルソナ2',
-            '페르소나3': 'ペルソナ3',
-            '고유스킬': '固有スキル',
-            '스킬 2': 'スキル2',
-            '스킬 3': 'スキル3',
-            
-            // 괴도단
-            '괴도단': '怪盗団',
-            '괴도 1': '怪盗1',
-            '괴도 2': '怪盗2',
-            '괴도 3': '怪盗3',
-            '괴도 4': '怪盗4',
-            '괴도 5': '怪盗5',
-            '의식': '意識',
-            '순서': '順序',
-            '주': '宙',
-            '일월성진': '旭月星天',
-            '해명 -': '解明 -'
-          }
-        };
-        
-        const langTranslations = translations[currentLang];
-        if (!langTranslations) return;
+
+        const langTranslations = getI18nValue('uiMap', {});
+        if (!langTranslations || typeof langTranslations !== 'object' || Object.keys(langTranslations).length === 0) return;
         
         // 텍스트 번역
         function translateText(element, originalText, translatedText) {
@@ -630,33 +581,24 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
         // 동적으로 생성되는 홈 링크 번역 (지연 실행)
         setTimeout(() => {
           const homeLink = document.querySelector('.navigation-path a');
-          if (homeLink && homeLink.textContent.trim() === '홈') {
-            if (currentLang === 'en') {
-              homeLink.textContent = 'Home';
-            } else if (currentLang === 'jp') {
-              homeLink.textContent = 'ホーム';
-            }
+          const translatedHome = langTranslations['홈'];
+          if (homeLink && homeLink.textContent.trim() === '홈' && translatedHome) {
+            homeLink.textContent = translatedHome;
           }
         }, 100);
         
         // 제목 번역
         const titleInput = document.querySelector('.title-input');
-        if (titleInput && titleInput.value === '페르소나5X 택틱 메이커') {
-          if (currentLang === 'en') {
-            titleInput.value = 'P5X Tactic Maker';
-          } else if (currentLang === 'jp') {
-            titleInput.value = 'P5X タクティックメーカー';
-          }
+        const translatedTitle = langTranslations['페르소나5X 택틱 메이커'];
+        if (titleInput && titleInput.value === '페르소나5X 택틱 메이커' && translatedTitle) {
+          titleInput.value = translatedTitle;
         }
         
         // 네비게이션 경로 번역
         const currentPageSpan = document.querySelector('.current-page');
-        if (currentPageSpan) {
-          if (currentLang === 'en') {
-            currentPageSpan.textContent = 'Tactic / Tactic Maker';
-          } else if (currentLang === 'jp') {
-            currentPageSpan.textContent = 'タクティック / タクティックメーカー';
-          }
+        const translatedPath = langTranslations['택틱 / 택틱 메이커'];
+        if (currentPageSpan && translatedPath) {
+          currentPageSpan.textContent = translatedPath;
         }
       }
 
@@ -664,37 +606,21 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
 
       // 언어별 SEO 설정 함수
       function updateSEOContent() {
-          const urlParams = new URLSearchParams(window.location.search);
-          const currentLang = urlParams.get('lang') || 'kr';
-          
-          const seoData = {
-            'kr': {
-                title: '택틱 메이커 - 페르소나5 더 팬텀 X 루페르넷',
-                description: '페르소나5 더 팬텀 X 택틱 메이커' 
-            },
-            'en': {
-                title: 'Tactic Maker - Persona 5: The Phantom X LufelNet',
-                description: 'Persona 5: The Phantom X Tactic Maker'
-            },
-            'jp': {
-                title: 'タクティクスメーカー - ペルソナ5 ザ・ファントムX LufelNet',
-                description: 'ペルソナ5 ザ・ファントムX タクティクスメーカー'
-            }
-        };
-                  
-          const currentSEO = seoData[currentLang] || seoData['kr'];
-          
-          // 타이틀 업데이트
-          document.title = currentSEO.title;
-          
-          // 메타 태그 업데이트
+          const fallbackTitle = document.title || '택틱 메이커 - 페르소나5 더 팬텀 X 루페르넷';
           let metaDescription = document.querySelector('meta[name="description"]');
+          const fallbackDescription = (metaDescription && metaDescription.getAttribute('content')) || '';
+          const seoTitle = getI18nValue('seoTitle', fallbackTitle);
+          const seoDescription = getI18nValue('seoDescription', fallbackDescription);
+
+          document.title = seoTitle;
+
+          metaDescription = document.querySelector('meta[name="description"]');
           if (!metaDescription) {
               metaDescription = document.createElement('meta');
               metaDescription.name = 'description';
               document.head.appendChild(metaDescription);
           }
-          metaDescription.setAttribute('content', currentSEO.description);
+          metaDescription.setAttribute('content', seoDescription);
           
           let ogTitle = document.querySelector('meta[property="og:title"]');
           if (!ogTitle) {
@@ -702,7 +628,7 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
               ogTitle.setAttribute('property', 'og:title');
               document.head.appendChild(ogTitle);
           }
-          ogTitle.setAttribute('content', currentSEO.title);
+          ogTitle.setAttribute('content', seoTitle);
           
           let ogDescription = document.querySelector('meta[property="og:description"]');
           if (!ogDescription) {
@@ -710,7 +636,7 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
               ogDescription.setAttribute('property', 'og:description');
               document.head.appendChild(ogDescription);
           }
-          ogDescription.setAttribute('content', currentSEO.description);
+          ogDescription.setAttribute('content', seoDescription);
       }
 
 
@@ -718,31 +644,32 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
 
       // 모바일 토글 버튼 라벨 설정 (다국어)
       function updateToggleUILabels() {
-        const currentLang = getCurrentLanguage();
+        const labels = getTacticToggleLabels();
         const mobileToggleBtn = document.querySelector('.mobile-buttons .toggle-ui-btn');
         if (mobileToggleBtn) {
-          const labelMap = {
-            kr: { off: '🕶️ 편집 UI 숨김', on: '🔍 편집 UI 표시' },
-            en: { off: '🕶️ Hide Edit UI', on: '🔍 Show Edit UI' },
-            jp: { off: '🕶️ 編集UIを非表示', on: '🔍 編集UIを表示' }
-          };
-          const t = labelMap[currentLang] || labelMap.kr;
-          mobileToggleBtn.setAttribute('data-label', t.off);
-          mobileToggleBtn.setAttribute('data-label-active', t.on);
+          mobileToggleBtn.setAttribute('data-label', labels.off);
+          mobileToggleBtn.setAttribute('data-label-active', labels.on);
         }
 
         // 데스크톱 토글 버튼은 스위치형(텍스트 없음)이지만 접근성/힌트를 위해 title 제공
         const desktopToggleBtn = document.querySelector('.header-container .toggle-ui-btn');
         if (desktopToggleBtn) {
-          const titleText = currentLang === 'en' ? 'Toggle edit UI'
-                            : currentLang === 'jp' ? '編集UIの表示切替'
-                            : '편집 UI 토글';
-          desktopToggleBtn.setAttribute('title', titleText);
+          desktopToggleBtn.setAttribute('title', labels.title);
         }
       }
 
       // DOM is loaded, initialize initial settings
       document.addEventListener("DOMContentLoaded", async () => {
+        const currentLang = getCurrentLanguage();
+        if (typeof initPageI18n === 'function') {
+          await initPageI18n('tactic');
+          if (typeof setLang === 'function') {
+            await setLang(currentLang);
+          }
+        } else if (window.I18nService && typeof window.I18nService.init === 'function') {
+          await window.I18nService.init('tactic', currentLang);
+        }
+
         // 먼저 UI 텍스트/레이블을 현재 언어에 맞게 번역 (데이터 로딩과 분리)
         translateUI();
         updateToggleUILabels();

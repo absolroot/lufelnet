@@ -423,55 +423,21 @@ jp: /about/?lang=jp
     </div>
 </div>
 
+<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
 <script>
+    function getI18nText(key, fallback = '') {
+        if (typeof window.t === 'function') {
+            return window.t(key, fallback);
+        }
+        if (window.I18nService && typeof window.I18nService.t === 'function') {
+            return window.I18nService.t(key, fallback);
+        }
+        return fallback || key;
+    }
+
     // 다국어 지원 함수
     async function updateLanguageContent() {
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
-
-        // 다국어 데이터 정의
-        const i18nData = {
-            kr: {
-                language_notice: "",
-                site_title: "루페르넷 lufel.net",
-                contact_title: "문의 및 피드백",
-                thanks_title: "Thanks To",
-                donate_button: "서포트 | Support",
-                recent_updates_title: "최신 업데이트",
-                recent_updates_more: "더보기"
-            },
-            en: {
-                language_notice: "🌍 English translation is in progress. Some content may still be in Korean.",
-                site_title: "Lufelnet lufel.net",
-                contact_title: "Contact & Feedback",
-                thanks_title: "Thanks To",
-                donate_button: "Support | Donate",
-                recent_updates_title: "Recent Updates",
-                recent_updates_more: "More"
-            },
-            jp: {
-                language_notice: "🌍 日本語翻訳は進行中です。一部のコンテンツは韓国語のままの場合があります。",
-                site_title: "Lufelnet lufel.net",
-                contact_title: "お問い合わせ・フィードバック",
-                thanks_title: "Thanks To",
-                donate_button: "サポート | 寄付",
-                recent_updates_title: "最新アップデート",
-                recent_updates_more: "もっと見る"
-            }
-        };
-
-        const data = i18nData[currentLang];
-        if (!data) return;
-
-        // 언어 안내 메시지
-        /*
-        if (currentLang !== 'kr') {
-            const notice = document.getElementById('language-notice');
-            const noticeText = document.getElementById('language-notice-text');
-            if (notice && noticeText && data.language_notice) {
-                noticeText.textContent = data.language_notice;
-                notice.style.display = 'block';
-            }
-        }*/
 
         // 제목 업데이트
         const siteTitle = document.getElementById('site-title');
@@ -481,12 +447,24 @@ jp: /about/?lang=jp
         const recentUpdatesTitle = document.getElementById('recent-updates-title');
         const showMoreUpdatesBtn = document.getElementById('show-more-updates-btn');
 
-        if (siteTitle) siteTitle.textContent = data.site_title;
-        if (contactTitle) contactTitle.textContent = data.contact_title;
-        if (thanksTitle) thanksTitle.textContent = data.thanks_title;
-        if (donateButton) donateButton.textContent = data.donate_button;
-        if (recentUpdatesTitle) recentUpdatesTitle.textContent = data.recent_updates_title;
-        if (showMoreUpdatesBtn) showMoreUpdatesBtn.textContent = data.recent_updates_more;
+        if (siteTitle) siteTitle.textContent = getI18nText('siteTitle', siteTitle.textContent || '');
+        if (contactTitle) contactTitle.textContent = getI18nText('contactTitle', contactTitle.textContent || '');
+        if (thanksTitle) thanksTitle.textContent = getI18nText('thanksTitle', thanksTitle.textContent || '');
+        if (donateButton) donateButton.textContent = getI18nText('donateButton', donateButton.textContent || '');
+        if (recentUpdatesTitle) recentUpdatesTitle.textContent = getI18nText('recentUpdatesTitle', recentUpdatesTitle.textContent || '');
+        if (showMoreUpdatesBtn) showMoreUpdatesBtn.textContent = getI18nText('showMoreButton', showMoreUpdatesBtn.textContent || '');
+
+        const notice = document.getElementById('language-notice');
+        const noticeText = document.getElementById('language-notice-text');
+        const languageNotice = getI18nText('languageNotice', '');
+        if (notice && noticeText) {
+            if (currentLang !== 'kr' && languageNotice) {
+                noticeText.textContent = languageNotice;
+                notice.style.display = 'block';
+            } else {
+                notice.style.display = 'none';
+            }
+        }
 
         // 언어별 콘텐츠 표시/숨김
         const koreanContent = document.querySelectorAll('.korean-content');
@@ -508,14 +486,14 @@ jp: /about/?lang=jp
         }
 
         // 외국어 사용자에게는 KR 교환코드, 카카오페이, 모달형 후원 숨김, 인라인 Ko-fi 표시
-        if (currentLang !== 'kr') {
-            const exchangeCodeSection = document.getElementById('exchange-code-section');
-            const kakaoPayContainer = document.getElementById('kakao-pay-container');
-            const donateInline = document.getElementById('donate-inline');
-            const donateButton = document.getElementById('donateButton');
-            const inlineText = document.getElementById('donation-inline-text');
-            const donateButtonSection = donateButton ? donateButton.closest('.about-section') : null;
+        const exchangeCodeSection = document.getElementById('exchange-code-section');
+        const kakaoPayContainer = document.getElementById('kakao-pay-container');
+        const donateInline = document.getElementById('donate-inline');
+        const inlineText = document.getElementById('donation-inline-text');
+        const donateButtonSection = donateButton ? donateButton.closest('.about-section') : null;
+        const fanboxContainer = document.getElementById('fanbox-inline-container');
 
+        if (currentLang !== 'kr') {
             if (exchangeCodeSection) {
                 exchangeCodeSection.style.display = 'none';
             }
@@ -532,92 +510,60 @@ jp: /about/?lang=jp
                 donateButtonSection.style.display = 'none';
             }
 
-            // 기존 모달의 EN/JP 문구를 그대로 재사용하여 인라인에 삽입
             if (inlineText) {
-                let srcEl = null;
-                if (currentLang === 'en') srcEl = document.getElementById('donation-message-en');
-                else if (currentLang === 'jp') srcEl = document.getElementById('donation-message-jp');
-                if (srcEl) inlineText.innerHTML = srcEl.outerHTML;
+                inlineText.innerHTML = getI18nText('donationInlineText', inlineText.innerHTML || '');
             }
-
-            // JP일 경우 Fanbox 버튼 표시
-            const fanboxContainer = document.getElementById('fanbox-inline-container');
             if (fanboxContainer) {
-                if (currentLang === 'jp') {
-                    fanboxContainer.style.display = 'block';
-                } else {
-                    fanboxContainer.style.display = 'none';
-                }
+                fanboxContainer.style.display = currentLang === 'jp' ? 'block' : 'none';
             }
+        } else {
+            if (exchangeCodeSection) exchangeCodeSection.style.display = '';
+            if (kakaoPayContainer) kakaoPayContainer.style.display = '';
+            if (donateInline) donateInline.style.display = 'none';
+            if (donateButton) donateButton.style.display = '';
+            if (donateButtonSection) donateButtonSection.style.display = '';
+            if (fanboxContainer) fanboxContainer.style.display = 'none';
         }
     }
 
     // 언어별 SEO 설정 함수
     function updateSEOContent() {
-        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
-
-        const seoData = {
-            'kr': {
-                title: 'About - 페르소나5 더 팬텀 X 루페르넷',
-                description: '루페르넷은 페르소나5 더 팬텀 X 플레이어를 위한 비공식 정보 사이트입니다. 사이트 소개 및 문의 정보를 확인하세요.'
-            },
-            'en': {
-                title: 'About - Persona 5: The Phantom X LufelNet',
-                description: 'Lufelnet is an unofficial information site for Persona 5: The Phantom X players. Check site introduction and contact information.'
-            },
-            'jp': {
-                title: 'About - ペルソナ5 ザ・ファントム X LufelNet',
-                description: 'Lufelnetはペルソナ5 ザ・ファントム Xプレイヤーのための非公式情報サイトです。サイト紹介とお問い合わせ情報をご確認ください。'
-            }
-        };
-
-        const currentSEO = seoData[currentLang] || seoData['kr'];
-
-        // 타이틀 업데이트
-        document.title = currentSEO.title;
-
-        // 메타 태그 업데이트
         const metaDescription = document.querySelector('meta[name="description"]');
         const ogTitle = document.querySelector('meta[property="og:title"]');
         const ogDescription = document.querySelector('meta[property="og:description"]');
+        const fallbackTitle = document.title || 'About - 페르소나5 더 팬텀 X 루페르넷';
+        const fallbackDescription = (metaDescription && metaDescription.getAttribute('content')) || '';
+        const seoTitle = getI18nText('seoTitle', fallbackTitle);
+        const seoDescription = getI18nText('seoDescription', fallbackDescription);
 
-        if (metaDescription) metaDescription.setAttribute('content', currentSEO.description);
-        if (ogTitle) ogTitle.setAttribute('content', currentSEO.title);
-        if (ogDescription) ogDescription.setAttribute('content', currentSEO.description);
+        document.title = seoTitle;
+        if (metaDescription) metaDescription.setAttribute('content', seoDescription);
+        if (ogTitle) ogTitle.setAttribute('content', seoTitle);
+        if (ogDescription) ogDescription.setAttribute('content', seoDescription);
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', async () => {
         Navigation.load('about');
 
-        // SEO 설정 업데이트
-        updateSEOContent();
-
-        // 언어 라우터 초기화 및 콘텐츠 업데이트
-        if (typeof LanguageRouter !== 'undefined') {
-            // 이미 언어 파라미터가 있거나 직접 접근한 경우 리다이렉션 없이 진행
-            const hasLangParam = window.location.search.includes('lang=');
-            if (hasLangParam) {
-                // 언어 파라미터가 있으면 바로 콘텐츠 로드
-                updateLanguageContent().then(() => {
-                    // 언어 변경 후 SEO 다시 업데이트
-                    updateSEOContent();
-                    initializePageContent();
-                });
-            } else {
-                // 언어 파라미터가 없으면 기본 한국어로 설정하고 콘텐츠 로드
-                const currentUrl = new URL(window.location);
-                currentUrl.searchParams.set('lang', 'kr');
-                window.history.replaceState({}, '', currentUrl);
-
-                updateLanguageContent().then(() => {
-                    updateSEOContent();
-                    initializePageContent();
-                });
-            }
-        } else {
-            updateLanguageContent();
-            initializePageContent();
+        if (typeof LanguageRouter !== 'undefined' && !window.location.search.includes('lang=')) {
+            const currentUrl = new URL(window.location);
+            currentUrl.searchParams.set('lang', 'kr');
+            window.history.replaceState({}, '', currentUrl);
         }
+
+        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+        if (typeof initPageI18n === 'function') {
+            await initPageI18n('about');
+            if (typeof setLang === 'function') {
+                await setLang(currentLang);
+            }
+        } else if (window.I18nService && typeof window.I18nService.init === 'function') {
+            await window.I18nService.init('about', currentLang);
+        }
+
+        updateSEOContent();
+        await updateLanguageContent();
+        initializePageContent();
     });
 
     function initializePageContent() {

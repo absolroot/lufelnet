@@ -299,16 +299,14 @@
             const isComplete = collectedCountable === totalCountable;
 
             const lang = window.MapsI18n ? window.MapsI18n.getCurrentLanguage() : 'kr';
-            const progressLabels = {
-                kr: '진행도',
-                en: 'Progress',
-                jp: '進行度',
-                cn: '进度'
-            };
+            const fallbackPack = window.I18N_PAGE_MAPS_KR || {};
+            const progressLabel = (window.MapsI18n && window.MapsI18n.getText)
+                ? window.MapsI18n.getText(lang, 'progressLabel')
+                : (fallbackPack.progressLabel || 'progressLabel');
 
             progressContainer.innerHTML = `
                 <div class="progress-label">
-                    <span class="progress-title">${progressLabels[lang] || progressLabels.kr}</span>
+                    <span class="progress-title">${progressLabel}</span>
                     <span class="progress-text ${isComplete ? 'complete' : ''}">${collectedCountable}/${totalCountable}</span>
                 </div>
                 <div class="progress-bar-container">
@@ -997,14 +995,18 @@
         // 백업/복원 메시지 표시
         showBackupMessage(type) {
             const lang = window.MapsI18n ? window.MapsI18n.getCurrentLanguage() : 'kr';
-            const messages = {
-                success: { kr: '백업 완료!', en: 'Backup complete!', jp: 'バックアップ完了!' },
-                error: { kr: '백업 실패', en: 'Backup failed', jp: 'バックアップ失敗' },
-                'restore-success': { kr: '복원 완료! 새로고침 중...', en: 'Restore complete! Refreshing...', jp: '復元完了！更新中...' },
-                'restore-error': { kr: '복원 실패', en: 'Restore failed', jp: '復元失敗' }
+            const messageKeyMap = {
+                success: 'backupMessageSuccess',
+                error: 'backupMessageError',
+                'restore-success': 'backupMessageRestoreSuccess',
+                'restore-error': 'backupMessageRestoreError'
             };
+            const messageKey = messageKeyMap[type] || 'backupMessageError';
+            const fallbackPack = window.I18N_PAGE_MAPS_KR || {};
 
-            const message = messages[type][lang] || messages[type].kr;
+            const message = (window.MapsI18n && window.MapsI18n.getText)
+                ? window.MapsI18n.getText(lang, messageKey)
+                : (fallbackPack[messageKey] || messageKey);
             const isError = type.includes('error');
 
             // 토스트 메시지 생성

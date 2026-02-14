@@ -32,7 +32,7 @@
 
 협력자
 - app/synergy/friends/friend_num.json 수정 - 캐릭터 num 및 img_color 별도 지정 필요
-- node scripts/fetch-synergy.mjs {num} 입력하여 해당 캐릭터 정보 자동 갱신
+- node scripts/fetch-synergy.mjs {num} 입력하여 해당 캐릭터 정보 자동 갱신 // 자동화 완료 (02.14)
 
 
 

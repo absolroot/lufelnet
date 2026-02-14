@@ -32,7 +32,7 @@ window.I18N_PAGE_DEFENSE_CALC_EN = {
         "tab_defense": "Defense Reduction",
         "revelation_penetrate": "Revelation Pierce Total",
         "revelation_sum": "Revelation Sum",
-        "explanation_power": "Elucidation Power",
+        "explanation_power": "Eludi. Stat Buff",
         "other_reduce": "Other Def. Reduction",
         "th_select": "Select",
         "th_thief": "Thief",
@@ -57,6 +57,7 @@ window.I18N_PAGE_DEFENSE_CALC_EN = {
         "show_spoiler": "Show Spoilers"
     },
     "defenseTypeMap": {
+        "심상 코어": "Mindscape Core",
         "심상코어": "Mindscape Core",
         "스킬": "Skill",
         "패시브": "Passive",

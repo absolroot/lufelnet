@@ -133,7 +133,7 @@ window.matchWeapons = {
   "작열의 연옥": {
     "element": "화염",
     "name_en": "Purgatory",
-    "name_jp": "煉獄の短刀",
+    "name_jp": "煉獄の炎刃",
     "where_to_get": "Shop",
     "release": "카스미",
     "order": "9",

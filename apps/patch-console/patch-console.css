@@ -913,8 +913,9 @@ td.empty {
 
 .diff-select-row {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
+  flex-wrap: wrap;
   gap: 8px;
   border: 1px dashed var(--border);
   border-radius: 8px;

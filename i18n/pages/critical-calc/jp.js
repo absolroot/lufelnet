@@ -48,7 +48,7 @@ window.I18N_PAGE_CRITICAL_CALC_JP = {
         "tab_defense": "防御力減少",
         "revelation_penetrate": "啓示 貫通合計",
         "revelation_sum": "啓示 合計",
-        "explanation_power": "解明の力",
+        "explanation_power": "ステータス強化",
         "other_reduce": "その他 防御力減少",
         "th_select": "選択",
         "th_thief": "怪盗",
@@ -73,7 +73,8 @@ window.I18N_PAGE_CRITICAL_CALC_JP = {
         "show_spoiler": "スポイラー表示"
     },
     "defenseTypeMap": {
-        "심상코어": "イメジャリー・コア",
+        "심상 코어": "イメジャリーコア",
+        "심상코어": "イメジャリーコア",
         "스킬": "スキル",
         "패시브": "パッシブ",
         "하이라이트": "ハイライト",

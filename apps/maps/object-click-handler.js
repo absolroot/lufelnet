@@ -138,13 +138,10 @@
             const mapPack = (window.MapsI18n && window.MapsI18n.getPack)
                 ? window.MapsI18n.getPack(lang)
                 : null;
-            const ADAPT_LABELS = (mapPack && mapPack.adaptLabels) || {
-                Weak: { text: '약', cls: 'weak' },
-                Resistant: { text: '내', cls: 'res' },
-                Nullify: { text: '무', cls: 'nul' },
-                Absorb: { text: '흡', cls: 'abs' },
-                Reflect: { text: '반', cls: 'rpl' }
-            };
+            const fallbackPack = window.I18N_PAGE_MAPS_KR || {};
+            const ADAPT_LABELS = (mapPack && mapPack.adaptLabels)
+                || fallbackPack.adaptLabels
+                || {};
 
             const BASE = (typeof window !== 'undefined' && (window.BASE_URL || window.SITE_BASEURL)) || '';
             const wrap = document.createElement('div');
@@ -233,18 +230,14 @@
                 undo: 'enemyUndo',
                 relativeLevel: 'enemyRelativeLevel'
             };
-            const fallbackText = {
-                title: '적 정보',
-                defeated: '처치 완료',
-                undo: '되돌리기',
-                relativeLevel: '주인공 레벨에 따라 몬스터의 레벨이 달라집니다. (주인공 레벨 + {level})'
-            };
+            const fallbackPack = window.I18N_PAGE_MAPS_KR || {};
             const getText = (key) => {
                 const mapKey = mapKeyMap[key];
-                if (window.MapsI18n && window.MapsI18n.getText && mapKey) {
-                    return window.MapsI18n.getText(lang, mapKey) || fallbackText[key] || key;
+                if (!mapKey) return key;
+                if (window.MapsI18n && window.MapsI18n.getText) {
+                    return window.MapsI18n.getText(lang, mapKey) || fallbackPack[mapKey] || key;
                 }
-                return fallbackText[key] || key;
+                return fallbackPack[mapKey] || key;
             };
 
             // 모달 오버레이 생성

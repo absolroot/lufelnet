@@ -251,6 +251,7 @@ class CriticalCalc {
                 .replace(/(\d+)\s*턴/g, '$1T')
                 .replace(/턴/g, 'T')
                 .replace(/레벨/g, 'Lv')
+                .replace(/심상\s*코어/g, 'Mindscape Core')
                 .replace(/심상/g, 'MS')
                 .replace(/개조/g, 'Mod')
                 .replace(/없음/g, 'None');
@@ -266,6 +267,7 @@ class CriticalCalc {
                 .replace(/(\d+)\s*턴/g, '$1ターン')
                 .replace(/턴/g, 'ターン')
                 .replace(/레벨/g, 'Lv')
+                .replace(/심상\s*코어/g, 'イメジャリーコア')
                 .replace(/심상/g, 'イメジャリー')
                 .replace(/개조/g, '改造')
                 .replace(/없음/g, 'なし');

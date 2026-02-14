@@ -76,6 +76,29 @@
             return pagePack.defenseI18n || fallbackPack.defenseI18n || {};
         },
 
+        getCommonGameTerm(lang = this.getLang(), keys = [], fallback = ''){
+            const normalizedLang = this.normalizeLang(lang);
+            const commonVarName = `I18N_COMMON_${normalizedLang.toUpperCase()}`;
+            const commonPack = window[commonVarName] || {};
+            const gameTerms = commonPack.gameTerms || {};
+
+            for (let i = 0; i < keys.length; i += 1) {
+                const key = keys[i];
+                const value = gameTerms[key];
+                if (typeof value === 'string' && value.length > 0) return value;
+            }
+
+            if (typeof window.t === 'function') {
+                for (let i = 0; i < keys.length; i += 1) {
+                    const key = keys[i];
+                    const translated = window.t(`gameTerms.${key}`);
+                    if (translated && translated !== `gameTerms.${key}`) return translated;
+                }
+            }
+
+            return fallback;
+        },
+
         // Wonder 데이터 이름 영어/일본어 매핑 주입
         enrichDefenseDataWithWonderNames(){
             try {
@@ -429,9 +452,14 @@
                         node.remove();
                     }
                 });
+                const explanationPowerText = this.getCommonGameTerm(
+                    currentLang,
+                    ['naviPowerAlt', 'naviPower'],
+                    tx('explanation_power', '해명의 힘')
+                );
                 // 아이콘 다음에 텍스트 추가
                 if (icon) {
-                    const text = document.createTextNode(tx('explanation_power', '해명의 힘'));
+                    const text = document.createTextNode(explanationPowerText);
                     // 아이콘 다음에 텍스트 추가
                     if (icon.nextSibling) {
                         explanationPowerLabel.insertBefore(text, icon.nextSibling);
@@ -439,7 +467,7 @@
                         explanationPowerLabel.appendChild(text);
                     }
                 } else {
-                    explanationPowerLabel.textContent = tx('explanation_power', '해명의 힘');
+                    explanationPowerLabel.textContent = explanationPowerText;
                 }
             }
             if (revelationSumLabel) {
@@ -551,7 +579,7 @@
 
             // 부분 매칭 (예: "심상코어" 포함된 경우)
             let result = typeText;
-            Object.keys(langMap).forEach(kr => {
+            Object.keys(langMap).sort((a, b) => b.length - a.length).forEach(kr => {
                 if (result.includes(kr)) {
                     result = result.replace(new RegExp(kr, 'g'), langMap[kr]);
                 }

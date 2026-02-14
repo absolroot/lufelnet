@@ -176,6 +176,10 @@ window.I18N_COMMON_KR = {
         item: '아이템',
         tbd: '미정',
 
+        // 심상 코어 (LV100)
+        mindscapeCore: '심상 코어',
+        mindscapeCoreAlt: '심상코어',
+
         // 심상
         mindscape: '심상',
         minds5: '심상5',

@@ -176,6 +176,10 @@ window.I18N_COMMON_EN = {
         item: 'Item',
         tbd: 'TBD',
 
+        // Mindscape Core (LV100)
+        mindscapeCore: 'Mindscape Core',
+        mindscapeCoreAlt: 'Mindscape Core',
+
         // Mindscape
         mindscape: 'Mindscape',
         minds5: 'Mindscape5',

@@ -176,6 +176,10 @@ window.I18N_COMMON_JP = {
         item: 'アイテム',
         tbd: '未定',
 
+        // イメジャリーコア (LV100)
+        mindscapeCore: 'イメジャリーコア',
+        mindscapeCoreAlt: 'イメジャリーコア',
+
         // イメジャリー
         mindscape: 'イメジャリー',
         minds5: 'イメジャリー5',

@@ -96,6 +96,7 @@ const dom = {
   btnSelectAll: document.getElementById('btn-select-all'),
   btnClearSelect: document.getElementById('btn-clear-select'),
   btnPatchSelected: document.getElementById('btn-patch-selected'),
+  btnIgnoreSelected: document.getElementById('btn-ignore-selected'),
   btnClearLog: document.getElementById('btn-clear-log'),
   reportTbody: document.getElementById('report-tbody'),
   charList: document.getElementById('char-list'),
@@ -1967,14 +1968,15 @@ function renderDetail() {
   dom.detailContent.innerHTML = `
     <div class="detail-actions">
       <button class="btn danger small" id="btn-detail-patch">이 행 실제 반영</button>
+      <button class="btn ghost small" id="btn-detail-ignore">이 행 Diff 무시</button>
       <button class="btn ghost small ${state.showChangedLinesOnly ? 'toggled' : ''}" id="btn-toggle-changed-lines">${state.showChangedLinesOnly ? '전체 줄 보기' : '변경 줄만 보기'}</button>
     </div>
     <div class="diff-select-row">
-      <p class="muted small">현재 행 선택 Diff: <strong>${selectedInRow}</strong> / ${rowDiffs.length}</p>
       <div class="actions">
         <button class="btn ghost small" id="btn-diff-select-all-row">행 Diff 전체 선택</button>
         <button class="btn ghost small" id="btn-diff-clear-row">행 Diff 선택 해제</button>
       </div>
+      <p class="muted small">현재 행 선택 Diff: <strong>${selectedInRow}</strong> / ${rowDiffs.length}</p>
     </div>
     <div class="diff-actions">
       <button class="btn danger small" id="btn-diff-patch">선택 Diff 실제 반영</button>
@@ -1988,6 +1990,7 @@ function renderDetail() {
   `;
 
   const btnPatch = document.getElementById('btn-detail-patch');
+  const btnIgnoreRow = document.getElementById('btn-detail-ignore');
   const btnToggleChangedLines = document.getElementById('btn-toggle-changed-lines');
   const btnSelectAllRow = document.getElementById('btn-diff-select-all-row');
   const btnClearRow = document.getElementById('btn-diff-clear-row');
@@ -2001,6 +2004,18 @@ function renderDetail() {
       if (!ok) return;
       await runPatchForRows([{ index: row.index, lang: row.lang }]);
       await generateReport();
+    });
+  }
+  if (btnIgnoreRow) {
+    btnIgnoreRow.addEventListener('click', async () => {
+      try {
+        setPending(btnIgnoreRow, true);
+        await runIgnoreRows([row]);
+      } catch (error) {
+        appendLog(`이 행 Diff 무시 실패: ${error.message}`);
+      } finally {
+        setPending(btnIgnoreRow, false);
+      }
     });
   }
   if (btnToggleChangedLines) {
@@ -2148,12 +2163,15 @@ async function generateReport() {
   }
   appendLog(`[${state.domain}] 리포트 생성 완료: ${state.reportRows.length}행 (ignored=${state.ignoredCount})`);
 }
-function selectedRows() {
+function selectedReportRows() {
   const byId = new Map(state.reportRows.map((row) => [rowId(row), row]));
   return [...state.selectedIds]
     .map((id) => byId.get(id))
-    .filter(Boolean)
-    .map((row) => ({ index: row.index, lang: row.lang }));
+    .filter(Boolean);
+}
+
+function selectedRows() {
+  return selectedReportRows().map((row) => ({ index: row.index, lang: row.lang }));
 }
 
 async function runPatchForRows(rows) {
@@ -2262,10 +2280,10 @@ async function runApplySelectedDiffs() {
   await generateReport();
 }
 
-async function runIgnoreSelectedDiffs() {
-  const diffs = selectedDiffEntries();
-  if (diffs.length === 0) {
-    appendLog('무시할 Diff가 선택되지 않았습니다.');
+async function runIgnoreDiffEntries(diffs, { emptyMessage = '무시할 Diff가 없습니다.' } = {}) {
+  const targetDiffs = Array.isArray(diffs) ? diffs.filter(Boolean) : [];
+  if (targetDiffs.length === 0) {
+    appendLog(emptyMessage);
     return;
   }
 
@@ -2274,7 +2292,7 @@ async function runIgnoreSelectedDiffs() {
     body: {
       domain: state.domain,
       overwrite: true,
-      diffs: diffs.map((diff) => ({
+      diffs: targetDiffs.map((diff) => ({
         index: diff.index,
         lang: diff.lang,
         api: diff.api,
@@ -2289,10 +2307,32 @@ async function runIgnoreSelectedDiffs() {
   });
 
   appendLog(`[${state.domain}] Diff 무시 처리: +${result.added || 0} / 갱신 ${result.updated || 0}`);
-  for (const diff of diffs) state.selectedDiffKeys.delete(diff.diffKey);
+  for (const diff of targetDiffs) state.selectedDiffKeys.delete(diff.diffKey);
 
   await loadIgnoredList();
   await generateReport();
+}
+
+async function runIgnoreRows(rows) {
+  const targetRows = Array.isArray(rows) ? rows.filter(Boolean) : [];
+  if (!targetRows.length) {
+    appendLog('선택된 행이 없습니다.');
+    return;
+  }
+
+  const diffMap = new Map();
+  for (const row of targetRows) {
+    for (const diff of collectRowDiffEntries(row)) {
+      diffMap.set(diff.diffKey, diff);
+    }
+  }
+
+  await runIgnoreDiffEntries([...diffMap.values()], { emptyMessage: '무시할 Diff가 없습니다.' });
+}
+
+async function runIgnoreSelectedDiffs() {
+  const diffs = selectedDiffEntries();
+  await runIgnoreDiffEntries(diffs, { emptyMessage: '무시할 Diff가 선택되지 않았습니다.' });
 }
 
 async function runUpdateIgnoredState({ keys, isHidden, note }) {
@@ -2636,6 +2676,17 @@ function bindEvents() {
       appendLog(`선택 행 실반영 실패: ${error.message}`);
     } finally {
       setPending(dom.btnPatchSelected, false);
+    }
+  });
+
+  dom.btnIgnoreSelected?.addEventListener('click', async () => {
+    try {
+      setPending(dom.btnIgnoreSelected, true);
+      await runIgnoreRows(selectedReportRows());
+    } catch (error) {
+      appendLog(`선택 행 Diff 무시 실패: ${error.message}`);
+    } finally {
+      setPending(dom.btnIgnoreSelected, false);
     }
   });
 

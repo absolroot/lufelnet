@@ -1,12 +1,13 @@
 ---
 layout: default
-custom_css: [material-planner, character]
-custom_js: [material-planner]
+custom_css: [character]
 permalink: /material-calc/
 language: kr
 title: 육성 계산기 - 페르소나5 더 팬텀 X 루페르넷
 description: P5X 캐릭터 육성 재료 계산기 (레벨/무기/스킬/심상)
 ---
+<link rel="stylesheet" href="/apps/material-calc/material-planner.css">
+<script src="/apps/material-calc/material-planner.js"></script>
 
 <div class="main-wrapper">
     <div class="navigation-path">
@@ -638,7 +639,7 @@ description: P5X 캐릭터 육성 재료 계산기 (레벨/무기/스킬/심상)
 </script>
 
 <!-- Export/Import handler -->
-<script src="{{ site.baseurl }}/assets/js/material-planner-export.js?v={{ site.time | date: '%s' }}"></script>
+<script src="/apps/material-calc/material-planner-export.js?v={{ site.time | date: '%s' }}"></script>
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         Navigation.load('material-calc');

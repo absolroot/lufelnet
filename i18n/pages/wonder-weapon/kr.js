@@ -30,6 +30,10 @@ window.I18N_PAGE_WONDER_WEAPON_KR = {
     loadFailed: '데이터를 불러올 수 없습니다',
     errorMessage: '데이터를 불러오는 중 오류가 발생했습니다. 페이지를 새로고침해주세요.',
 
+    // SEO
+    seoTitle: '원더 무기 - 페르소나5 더 팬텀 X 루페르넷',
+    seoDescription: '페르소나5 더 팬텀 X의 원더 무기 정보. 획득처, 효과, 사용 캐릭터를 확인하세요.',
+
     // Source map
     sourceMap: {
         'Shop': '교환',

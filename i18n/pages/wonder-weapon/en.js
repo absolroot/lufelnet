@@ -30,6 +30,10 @@ window.I18N_PAGE_WONDER_WEAPON_EN = {
     loadFailed: 'Failed to load data',
     errorMessage: 'An error occurred while loading data. Please refresh the page.',
 
+    // SEO
+    seoTitle: 'Wonder Daggers - Persona 5: The Phantom X LufelNet',
+    seoDescription: 'Wonder weapon information for Persona 5: The Phantom X. See source, effect, and characters.',
+
     // Source map
     sourceMap: {
         'Shop': 'Shop',

@@ -14,6 +14,7 @@
 | `synergy` | 통합 i18n 완료 | `apps/synergy/synergy.js:350`, `apps/synergy/item_from.js:96`, `apps/synergy/soulmate.js:91`, `apps/synergy/synergy_search.js:58`에서 로컬 번역 맵을 `i18n/pages/synergy/*` 키 조회로 전환. 레거시 `apps/synergy/friends/synergy_translate.js` 제거 |
 | `gallery` | 통합 i18n 완료 | `apps/gallery/gallery-tags.js`의 로컬 `map`/`seo` 제거 후 `window.t()` 키 조회(`filterAllGroups`, `seoTitle`, `loadError` 등)로 전환. 관련 키를 `i18n/pages/gallery/{kr,en,jp}.js`에 통합 |
 | `tier` | 통합 i18n 완료 | `apps/tier/position-tier-qa.js`의 언어별 하드코딩 객체 제거. `tierQaTitle`, `tierQaItems`를 `i18n/pages/tier/{kr,en,jp}.js`로 이관해 통합 번들 기반 렌더링 적용 |
+| `wonder-weapon` | 통합 i18n 완료 | `apps/wonder-weapon/wonder-weapon.js`의 로컬 SEO 객체/`sourceMap` fallback 제거 후 번들 키(`seoTitle`, `seoDescription`, `sourceMap`) 조회로 전환. 관련 키를 `i18n/pages/wonder-weapon/{kr,en,jp}.js`에 통합 |
 
 ## 2. 로컬 i18n 잔존 서비스(서비스 기준)
 
@@ -23,7 +24,6 @@
 | `pull-tracker` | 로컬 i18n 잔존 | `apps/pull-tracker/js/pull-tracker.js:3`, `apps/pull-tracker/js/global-stats.js:6`, `apps/pull-tracker/js/manual-editor.js:16`, `apps/pull-tracker/js/import.js:6`, `apps/pull-tracker/js/export.js:6`, `apps/pull-tracker/url-guide.html:589`, `apps/pull-tracker/url-guide.html:686` |
 | `schedule` | 로컬 i18n 잔존 | `apps/schedule/index.html:126`, `apps/schedule/schedule.js:307`, `apps/schedule/schedule.js:937`, `apps/schedule/schedule.js:983`, `apps/schedule/schedule.js:1010`, `apps/schedule/schedule.js:1039` |
 | `tactic-maker` | 부분 잔존 | `apps/tactic-maker/js/ui-tactic.js:264`, `apps/tactic-maker/js/ui-tactic.js:1207`, `apps/tactic-maker/js/ui-tactic.js:2358` |
-| `wonder-weapon` | 부분 잔존 | `apps/wonder-weapon/wonder-weapon.js:138` |
 
 ## 3. 레거시/중복 잔존
 
@@ -35,5 +35,6 @@
 
 - `##5` 이슈(맵스 소규모 로컬 문자열)는 **해결됨**.
 - `gallery`, `tier`의 로컬 잔존 i18n도 통합 번들로 이관 완료.
-- 현재 기준 완전 통합 완료 서비스: `astrolabe`, `critical-calc`, `defense-calc`, `maps`, `synergy`, `gallery`, `tier`.
+- `wonder-weapon`의 로컬 잔존 i18n도 통합 번들로 이관 완료.
+- 현재 기준 완전 통합 완료 서비스: `astrolabe`, `critical-calc`, `defense-calc`, `maps`, `synergy`, `gallery`, `tier`, `wonder-weapon`.
 

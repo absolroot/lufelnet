@@ -81,83 +81,38 @@
   }
 
   // i18n helper - uses global t() function from i18n-service
-  function t(key) {
+  function t(key, defaultValue = '') {
     if (typeof window.t === 'function') {
-      return window.t(key);
+      return window.t(key, defaultValue);
     }
-    // Fallback defaults for initial load
-    const fallbacks = {
-      navHome: '홈',
-      navCurrent: '원더 무기',
-      pageTitle: '원더 무기',
-      filterAll: '전체',
-      filterShop: '교환',
-      filterStory: '스토리',
-      searchPlaceholder: '무기 검색...',
-      labelSource: '획득처',
-      labelEffect: '개조 설명',
-      labelCharacters: '주요 괴도',
-      labelShard: '수정',
-      labelRelease: '출시 시점',
-      labelLightningStamp: '빛의 각인',
-      labelWeaponRelease: '무기',
-      labelStampRelease: '빛의 각인',
-      noResults: '검색 결과가 없습니다',
-      loadFailed: '데이터를 불러올 수 없습니다',
-      errorMessage: '데이터를 불러오는 중 오류가 발생했습니다. 페이지를 새로고침해주세요.'
-    };
-    return fallbacks[key] || key;
+    return defaultValue || key;
   }
 
   // Source map helper
   function getSourceMapValue(rawSource) {
     if (typeof window.t === 'function') {
-      const sourceMap = window.t('sourceMap');
+      const sourceMap = window.t('sourceMap', null);
       if (sourceMap && typeof sourceMap === 'object') {
         return sourceMap[rawSource] || rawSource;
       }
     }
-    // Fallback
-    const defaultMap = {
-      'Shop': '교환',
-      'Palace 1': '팰리스 1',
-      'Palace 2': '팰리스 2',
-      'Palace 3': '팰리스 3',
-      'Palace 3-2': '팰리스 3-2',
-      'Palace 4': '팰리스 4',
-      'Palace 5': '팰리스 5',
-      'Palace 6': '팰리스 6',
-      'Palace 7': '팰리스 7'
-    };
-    return defaultMap[rawSource] || rawSource;
+    return rawSource;
   }
 
-  // SEO per language (unchanged)
+  // SEO metadata from i18n bundle
   function updateSEO() {
-    const lang = (typeof LanguageRouter !== 'undefined' && LanguageRouter) ? LanguageRouter.getCurrentLanguage() : 'kr';
-    const seo = {
-      kr: {
-        title: t('pageTitle') + ' - 페르소나5 더 팬텀 X 루페르넷',
-        description: '페르소나5 더 팬텀 X의 원더 무기 정보. 획득처, 효과, 사용 캐릭터를 확인하세요.'
-      },
-      en: {
-        title: t('pageTitle') + ' - Persona 5: The Phantom X LufelNet',
-        description: 'Wonder weapon information for Persona 5: The Phantom X. See source, effect, and characters.'
-      },
-      jp: {
-        title: t('pageTitle') + ' - ペルソナ5 ザ・ファントム X LufelNet',
-        description: 'P5Xのワンダー武器情報。入手方法・効果・使用キャラを確認。'
-      }
-    }[lang] || null;
-
-    if (!seo) return;
-    document.title = seo.title;
+    const pageTitle = t('pageTitle', '');
+    const seoTitle = t('seoTitle', pageTitle);
+    const seoDescription = t('seoDescription', '');
+    if (seoTitle) {
+      document.title = seoTitle;
+    }
     const metaDescription = document.querySelector('meta[name="description"]');
     const ogTitle = document.querySelector('meta[property="og:title"]');
     const ogDescription = document.querySelector('meta[property="og:description"]');
-    if (metaDescription) metaDescription.setAttribute('content', seo.description);
-    if (ogTitle) ogTitle.setAttribute('content', seo.title);
-    if (ogDescription) ogDescription.setAttribute('content', seo.description);
+    if (metaDescription) metaDescription.setAttribute('content', seoDescription);
+    if (ogTitle) ogTitle.setAttribute('content', seoTitle);
+    if (ogDescription) ogDescription.setAttribute('content', seoDescription);
   }
 
   // Update static labels per language - now uses i18n system
@@ -906,7 +861,7 @@
           <div class="shard-item">
             <div class="shard-icon-cell">
               <div class="shard-icon-wrapper" data-weapon="${krName}" data-shard-index="${shardIndex}">
-                <img src="${BASE_URL}/assets/img/wonder-weapon/${krName}_수정.png" alt="${displayName} 수정" class="shard-icon ${checked ? 'checked' : ''}" loading="lazy" onerror="this.onerror=null; this.style.display='none';">
+                <img src="${BASE_URL}/assets/img/wonder-weapon/${krName}_수정.png" alt="${displayName} ${t('labelShard')}" class="shard-icon ${checked ? 'checked' : ''}" loading="lazy" onerror="this.onerror=null; this.style.display='none';">
                 ${checkSvg}
               </div>
             </div>
@@ -1193,8 +1148,6 @@
         await window.initPageI18n('wonder-weapon');
       }
 
-      const lang = (typeof LanguageRouter !== 'undefined' && LanguageRouter) ? LanguageRouter.getCurrentLanguage() : 'kr';
-
       if (typeof Navigation !== 'undefined') {
         Navigation.load('wonderweapon', 1);
       }
@@ -1237,7 +1190,7 @@
       const wrapper = document.querySelector('.main-wrapper');
       const div = document.createElement('div');
       div.className = 'error-message';
-      div.textContent = '데이터를 불러오는 중 오류가 발생했습니다. 페이지를 새로고침해주세요.';
+      div.textContent = t('errorMessage');
       wrapper.prepend(div);
     }
   });

@@ -67,6 +67,7 @@ window.I18N_PAGE_PULL_CALC_JP = {
     scheduleScenario3Weeks: '3週間間隔 (報酬1.5倍)',
     scheduleScenario2Weeks: '2週間間隔 (報酬1倍)',
     labelSeaServer: 'SEAサーバー (+8日)',
+    confirmServerChangeReset: 'サーバー設定を変更すると、現在の計画/目標がリセットされます。続けますか？',
 
     // 計画関連
     planDescription: 'タイムラインからキャラクターをクリックして計画に追加してください。既にリリースされたキャラクターがデータに残っている場合、グラフは描画されません。',
@@ -77,6 +78,10 @@ window.I18N_PAGE_PULL_CALC_JP = {
     tickets: '枚',
     extraPurchase: '追加購入',
     currentResources: 'この時点の資源',
+    statusAvailable: '所持',
+    statusRequired: '必要',
+    statusAfter: '結果',
+    noneLabel: 'なし',
 
     // ステータス
     loading: '読み込み中...',

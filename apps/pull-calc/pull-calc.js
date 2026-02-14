@@ -5,7 +5,7 @@
 
 const PITY_EN_URL = 'https://raw.githubusercontent.com/iantCode/P5X_Gacha_Statistics/refs/heads/main/pity/pity_en.json';
 
-// I18N and MUST_READ_CONTENT are defined in pull-calc-i18n.js
+// i18n is provided by i18n/service/i18n-service.js + i18n-adapter.js
 
 /**
  * Wallet System - Manages assets with proper consumption priorities
@@ -218,8 +218,7 @@ function applyServerDelayToData(isSea) {
 class PullSimulator {
 
     constructor() {
-        // Use global getCurrentLang() instead of detectLang()
-        this.lang = typeof getCurrentLang === 'function' ? getCurrentLang() : 'kr';
+        this.lang = this.getLang();
 
         // Assets
         this.assets = {
@@ -375,15 +374,21 @@ class PullSimulator {
         }
     }
 
-    detectLang() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const urlLang = urlParams.get('lang');
-        if (urlLang && ['kr', 'en', 'jp'].includes(urlLang)) return urlLang;
-        return 'kr';
+    getLang() {
+        if (typeof getCurrentLang === 'function') {
+            return getCurrentLang();
+        }
+        return this.lang || 'kr';
     }
 
-    t(key) {
-        return I18N[this.lang]?.[key] || I18N.kr[key] || key;
+    t(key, defaultValue = '') {
+        const fallback = defaultValue || key;
+        const lang = this.getLang();
+        this.lang = lang;
+        if (typeof window.t === 'function') {
+            return window.t(key, fallback);
+        }
+        return fallback;
     }
 
     applyI18n() {
@@ -515,7 +520,11 @@ class PullSimulator {
 
         const mustReadText = document.getElementById('mustReadText');
         if (mustReadText) {
-            const content = MUST_READ_CONTENT[this.lang] || MUST_READ_CONTENT.kr;
+            const content = this.t('mustReadContent', '');
+            if (!content) {
+                mustReadText.innerHTML = '';
+                return;
+            }
             // Simple markdown to HTML conversion
             let html = content;
 
@@ -656,10 +665,10 @@ class PullSimulator {
 
     updatePityDisplay() {
         const charMedianValue = document.getElementById('charMedianValue');
-        if (charMedianValue) charMedianValue.textContent = `${this.charPityStats.median}${t('pulls')}`;
+        if (charMedianValue) charMedianValue.textContent = `${this.charPityStats.median}${this.t('pulls')}`;
 
         const weaponMedianValue = document.getElementById('weaponMedianValue');
-        if (weaponMedianValue) weaponMedianValue.textContent = `${this.weaponPityStats.median}${t('pulls')}`;
+        if (weaponMedianValue) weaponMedianValue.textContent = `${this.weaponPityStats.median}${this.t('pulls')}`;
     }
 
     initializeMustReadAccordion() {
@@ -857,11 +866,10 @@ class PullSimulator {
         const newValue = seaServerEl.checked;
 
         // Confirm with user before changing
-        const confirmMessage = this.lang === 'kr'
-            ? '서버 설정을 변경하면 현재 계획/목표가 초기화됩니다. 계속하시겠습니까?'
-            : this.lang === 'jp'
-                ? 'サーバー設定を変更すると、現在の計画/目標がリセットされます。続けますか？'
-                : 'Changing server settings will reset your current plan/targets. Continue?';
+        const confirmMessage = this.t(
+            'confirmServerChangeReset',
+            'Changing server settings will reset your current plan/targets. Continue?'
+        );
 
         if (!confirm(confirmMessage)) {
             // User cancelled - revert checkbox state
@@ -1354,8 +1362,9 @@ class PullSimulator {
     getCharacterName(charName) {
         const charData = window.characterData?.[charName];
         if (!charData) return charName;
-        if (this.lang === 'en' && charData.name_en) return charData.name_en;
-        if (this.lang === 'jp' && charData.name_jp) return charData.name_jp;
+        const lang = this.getLang();
+        if (lang === 'en' && charData.name_en) return charData.name_en;
+        if (lang === 'jp' && charData.name_jp) return charData.name_jp;
         return charData.name || charName;
     }
 

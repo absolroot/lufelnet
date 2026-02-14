@@ -601,7 +601,7 @@
                                         <div class="target-dropdown-menu">
                                             <button class="target-dropdown-item ${target.weaponTarget === 'None' ? 'selected' : ''}" data-value="None">
                                                 <span class="none-icon">✕</span>
-                                                <span>None</span>
+                                                <span>${this.t('noneLabel')}</span>
                                             </button>
                                             ${['R0', 'R1', 'R2', 'R3', 'R4', 'R5', 'R6'].map(opt =>
                 `<button class="target-dropdown-item ${target.weaponTarget === opt ? 'selected' : ''}" data-value="${opt}">
@@ -640,7 +640,7 @@
                     <div class="plan-item-status-bar">
                         <div class="status-row-container">
                             <div class="status-column status-column-before">
-                                <div class="status-column-label">Available</div>
+                                <div class="status-column-label">${this.t('statusAvailable')}</div>
                                 <div class="status-column-values">
                                     <div class="status-column-value">
                                         <img src="${BASE_URL}/assets/img/pay/정해진 운명.png" class="status-mini-icon">
@@ -658,7 +658,7 @@
                             </div>
                             <div class="status-operator status-operator-minus">−</div>
                             <div class="status-column status-column-required">
-                                <div class="status-column-label">Required</div>
+                                <div class="status-column-label">${this.t('statusRequired')}</div>
                                 <div class="status-column-values">
                                     <div class="status-column-value">
                                         <img src="${BASE_URL}/assets/img/pay/정해진 운명.png" class="status-mini-icon">
@@ -673,7 +673,7 @@
                             <div class="status-operator status-operator-equal">=</div>
                             <div class="status-column status-column-after ${isSafe ? 'safe' : 'warning'}">
                                 <div class="status-column-label">
-                                    After${!isSafe ? '<span class="shortage-label">: Shortage</span>' : ''}
+                                    ${this.t('statusAfter')}${!isSafe ? `<span class="shortage-label">: ${this.t('shortage')}</span>` : ''}
                                 </div>
                                 <div class="status-column-values">
                                     <div class="status-column-value ${walletAfter.ticket < 0 ? 'negative' : ''}">

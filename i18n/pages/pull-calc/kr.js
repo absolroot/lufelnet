@@ -67,6 +67,7 @@ window.I18N_PAGE_PULL_CALC_KR = {
     scheduleScenario3Weeks: '3주 간격 (보상 1.5배)',
     scheduleScenario2Weeks: '2주 간격 (보상 1배)',
     labelSeaServer: 'SEA 서버 (일정 +8일)',
+    confirmServerChangeReset: '서버 설정을 변경하면 현재 계획/목표가 초기화됩니다. 계속하시겠습니까?',
 
     // 계획 관련
     planDescription: '타임라인에서 캐릭터를 클릭하여 계획에 추가하세요.',
@@ -77,6 +78,10 @@ window.I18N_PAGE_PULL_CALC_KR = {
     tickets: '장',
     extraPurchase: '추가 구매',
     currentResources: '해당 시점 보유 재화',
+    statusAvailable: '보유',
+    statusRequired: '필요',
+    statusAfter: '결과',
+    noneLabel: '없음',
 
     // 상태
     loading: '로딩 중...',

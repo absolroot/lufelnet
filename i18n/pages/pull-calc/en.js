@@ -67,6 +67,7 @@ window.I18N_PAGE_PULL_CALC_EN = {
     scheduleScenario3Weeks: '3-week interval (1.5x reward)',
     scheduleScenario2Weeks: '2-week interval (1x reward)',
     labelSeaServer: 'SEA Server (+8 Days)',
+    confirmServerChangeReset: 'Changing server settings will reset your current plan/targets. Continue?',
 
     // Plan related
     planDescription: 'Click characters from the timeline to add to your plan. If a character that has already been released remains in the data, the graph will not be drawn.',
@@ -77,6 +78,10 @@ window.I18N_PAGE_PULL_CALC_EN = {
     tickets: 'tickets',
     extraPurchase: 'Extra Purchase',
     currentResources: 'Resources at this point',
+    statusAvailable: 'Available',
+    statusRequired: 'Required',
+    statusAfter: 'After',
+    noneLabel: 'None',
 
     // Status
     loading: 'Loading...',

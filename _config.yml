@@ -82,6 +82,8 @@ exclude:
   - nul.*
   - data/external/before
   - apps/patch-console
+  - apps/patch-console/state
+  - "apps/patch-console/**"
 
 # 감시 제외 설정
 keep_files:

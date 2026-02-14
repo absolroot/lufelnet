@@ -50,10 +50,34 @@ jobs:
 
     - name: Remove local admin console artifacts from site output
       run: |
+        if [ -d "_site/apps" ]; then
+          find "_site/apps" -maxdepth 2 -type d \( -name 'patch-console' -o -name 'patch-console-state' \) -print -exec rm -rf {} +
+        fi
+        rm -rf "_site/apps/patch-console" || true
         if [ -d "_site/apps/patch-console" ]; then
           rm -rf "_site/apps/patch-console"
-          echo "Removed _site/apps/patch-console to block public access."
         fi
+        if [ -d "_site/apps/patch-console/state" ]; then
+          rm -rf "_site/apps/patch-console/state"
+        fi
+        if [ -d "_site/apps/patch-console" ] || [ -d "_site/apps/patch-console/state" ]; then
+          echo "Warning: failed to fully remove patch console from site output."
+        else
+          echo "Patch Console removed from site output."
+        fi
+
+    - name: Verify patch console is not in deploy output
+      run: |
+        if [ -d "_site/apps/patch-console" ] || [ -d "_site/apps/patch-console-state" ]; then
+          echo "Patch Console output still exists. Deployment blocked."
+          echo "Please check .github/workflows/jekyll.yml exclusion and run a clean build."
+          exit 1
+        fi
+        if [ -f "_site/apps" ] || [ -e "_site/apps/patch-console.html" ] || [ -e "_site/apps/patch-console.js" ]; then
+          echo "Unexpected patch-console artifact in _site."
+          exit 1
+        fi
+        echo "No patch-console artifacts found in _site."
 
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3

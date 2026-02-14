@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
@@ -6,214 +6,322 @@
   <title>Patch Console</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Noto+Sans+KR:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./patch-console.css?v=0.9.1">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Noto+Sans+KR:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./patch-console.css?v=0.12.5">
 </head>
 <body>
-  <div class="mesh"></div>
-  <main class="layout">
-    <aside class="panel sidebar">
-      <section class="title-box">
-        <p class="kicker">LOCAL PATCH TOOL</p>
-        <h1>Patch Console</h1>
+  <div class="app-shell">
+    <header class="app-header panel">
+      <div class="brand-block">
+        <p class="kicker">Patch Console Admin</p>
+        <h1>Local Patch Console</h1>
+      </div>
+
+      <nav class="view-tabs" role="tablist" aria-label="관리자 메뉴">
+        <button class="view-tab active" data-view="work" type="button" aria-selected="true" aria-controls="panel-work" tabindex="0">패치 작업</button>
+        <button class="view-tab" data-view="ignored" type="button" aria-selected="false" aria-controls="panel-ignored" tabindex="-1">무시 목록</button>
+        <button class="view-tab" data-view="editor" type="button" aria-selected="false" aria-controls="panel-editor" tabindex="-1">데이터 편집기</button>
+      </nav>
+
+      <section class="header-domain">
+        <div class="header-controls">
+          <div id="domain-tabs" class="domain-tabs"></div>
+          <button
+            id="btn-header-refresh"
+            class="header-refresh-btn"
+            type="button"
+            title="목록 · 리포트 · 무시 목록 새로고침"
+            aria-label="목록 · 리포트 · 무시 목록 새로고침"
+          >
+            <svg class="header-refresh-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20 12a8 8 0 0 1-13.66 5.66M4 12A8 8 0 0 1 17.66 6.34M4 4v4h4M16 16h4v4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+        </div>
+        <span id="current-domain" class="sr-only">character</span>
       </section>
+    </header>
 
-      <section class="group">
-        <h2>도메인</h2>
-        <div id="domain-tabs" class="domain-tabs"></div>
-        <p class="muted small">현재 도메인: <strong id="current-domain">character</strong></p>
+    <main class="app-main">
+      <section class="panel main">
+        <section id="panel-work" class="view-panel active">
+          <details class="group work-controls-accordion">
+            <summary>
+              <span>패치 작업 컨트롤</span>
+              <small>언어/범위/파트</small>
+            </summary>
+            <div class="work-controls-body">
+              <p class="muted small">필요할 때만 펼쳐서 사용하세요. 새로고침은 상단 아이콘 하나로 처리됩니다.</p>
+              <div class="control-grid">
+                <div class="field">
+                  <label>언어</label>
+                  <input id="langs-input" type="text" value="kr,en,jp" placeholder="kr,en,jp">
+                </div>
+                <div class="field">
+                  <label>범위 모드</label>
+                  <select id="scope-mode">
+                    <option value="all">all</option>
+                    <option value="nums">nums</option>
+                    <option value="api">api</option>
+                    <option value="local">local</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label>범위 값</label>
+                  <input id="scope-value" type="text" placeholder="예: 3,7-9 or MESSA">
+                </div>
+                <div class="field">
+                  <label>파트(선택)</label>
+                  <div class="parts-picker" id="parts-picker">
+                    <button id="parts-toggle" class="parts-toggle" type="button">전체 파트</button>
+                    <div id="parts-menu" class="parts-menu hidden"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <section class="work-layout">
+            <aside class="group work-list-panel">
+              <h2>대상 목록</h2>
+              <div class="field">
+                <input id="list-search" type="text" placeholder="api/local/key 검색">
+              </div>
+              <div class="char-list" id="char-list">
+                <p class="muted" style="padding:10px;">로딩 전 목록이 없습니다.</p>
+              </div>
+            </aside>
+
+            <div class="work-main-panel">
+              <section class="group table-section">
+                <div class="table-stats" aria-label="작업 요약">
+                  <p>목록 <strong id="list-count">0</strong></p>
+                  <p>리포트 <strong id="report-count">0</strong></p>
+                  <p>선택 행 <strong id="selected-count">0</strong></p>
+                  <p>선택 Diff <strong id="selected-diff-count">0</strong></p>
+                  <p>무시 규칙 활성 <strong id="ignored-active-count">0</strong> / 숨김 <strong id="ignored-hidden-count">0</strong> / 전체 <strong id="ignored-total-count">0</strong></p>
+                  <p>현재 표시 무시 <strong id="ignored-count">0</strong></p>
+                  <p>리포트 파일 <strong id="report-file">-</strong></p>
+                </div>
+                <div class="table-topbar">
+                  <p class="toolbar-note muted small">테이블에서 행을 클릭하면 선택/상세가 고정됩니다.</p>
+                  <div class="actions">
+                    <button id="btn-select-all" class="btn ghost small">전체 선택</button>
+                    <button id="btn-clear-select" class="btn ghost small">선택 해제</button>
+                    <button id="btn-patch-selected" class="btn danger small">선택 행 실제 반영</button>
+                  </div>
+                </div>
+                <div class="table-tools">
+                  <input id="report-search" type="text" placeholder="리포트 검색">
+                </div>
+                <div class="table-wrap">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th></th>
+                        <th>#</th>
+                        <th>Icon</th>
+                        <th>Lang</th>
+                        <th>API</th>
+                        <th>Local</th>
+                        <th>Key</th>
+                        <th>Parts</th>
+                        <th>Diff Preview</th>
+                      </tr>
+                    </thead>
+                    <tbody id="report-tbody">
+                      <tr><td colspan="9" class="empty">리포트 데이터가 없습니다. 조건을 선택해 주세요.</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
+              <section class="group detail" id="detail-panel">
+                <header class="detail-header">
+                  <div class="detail-avatar" id="detail-avatar">N/A</div>
+                  <div>
+                    <h2>상세</h2>
+                    <p id="detail-title" class="muted">행을 클릭하면 상세 내용을 볼 수 있습니다.</p>
+                  </div>
+                </header>
+                <div id="detail-content" class="detail-content">
+                  <p class="muted">선택한 행을 클릭하면 상세 정보가 표시됩니다.</p>
+                </div>
+              </section>
+
+              <section class="group logs">
+                <div class="log-head">
+                  <h2>실행 로그</h2>
+                  <button id="btn-clear-log" class="btn ghost small">로그 비우기</button>
+                </div>
+                <pre id="log-output"></pre>
+              </section>
+            </div>
+          </section>
+        </section>
+
+        <section id="panel-ignored" class="view-panel hidden">
+          <section class="group">
+            <div class="group-head">
+              <h2>무시 목록 운영</h2>
+              <p class="muted small">1) 빠른 필터로 좁히고 2) 선택/필터 기준 작업을 실행하세요.</p>
+            </div>
+            <div class="ignored-overview" aria-label="무시 목록 요약">
+              <p>활성 <strong id="ignored-active-count-ignored">0</strong></p>
+              <p>숨김 <strong id="ignored-hidden-count-ignored">0</strong></p>
+              <p>전체 <strong id="ignored-total-count-ignored">0</strong></p>
+              <p>표시 <strong id="ignored-count-ignored">0</strong> / 총 <strong id="ignored-total-count-ignored-all">0</strong></p>
+              <p>정렬 <strong id="ignored-sort-label">created_desc</strong></p>
+            </div>
+            <div class="ignored-toolbar-grid">
+              <div class="field">
+                <label>표시 범위</label>
+                <select id="ignored-show" class="ignored-filter-input">
+                  <option value="active">활성만</option>
+                  <option value="hidden">숨김만</option>
+                  <option value="all">전체</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>검색</label>
+                <div class="field-inline">
+                  <input id="ignored-search" type="text" placeholder="무시 항목 검색">
+                  <button id="btn-clear-ignored-search" class="btn ghost">초기화</button>
+                </div>
+              </div>
+              <div class="field">
+                <label>정렬</label>
+                <select id="ignored-sort" class="ignored-filter-input">
+                  <option value="created_desc">생성일 ↓</option>
+                  <option value="created_asc">생성일 ↑</option>
+                  <option value="index_desc">index ↓</option>
+                  <option value="index_asc">index ↑</option>
+                </select>
+              </div>
+            </div>
+            <p class="muted small ignored-action-caption">선택 또는 필터 결과에 적용할 작업</p>
+            <div class="actions ignored-actions">
+              <button id="btn-unignore-filtered" class="btn warn">필터 결과 무시 해제</button>
+              <button id="btn-unignore-selected" class="btn ghost">선택 무시 해제</button>
+              <button id="btn-hide-selected-ignored" class="btn ghost">선택 숨김</button>
+              <button id="btn-unhide-selected-ignored" class="btn ghost">선택 숨김 해제</button>
+              <button id="btn-edit-ignored-note" class="btn ghost">선택 메모 편집</button>
+            </div>
+          </section>
+
+          <section class="group">
+            <details class="ignored-advanced">
+              <summary>상세 필터 (고급)</summary>
+              <p class="muted small">입력값은 즉시 적용됩니다. 필요한 항목만 사용하세요.</p>
+              <div class="ignored-filter-grid">
+                <input id="ignored-filter-index" class="ignored-filter-input" type="text" placeholder="index">
+                <input id="ignored-filter-lang" class="ignored-filter-input" type="text" placeholder="lang (kr/en/jp...)">
+                <input id="ignored-filter-api" class="ignored-filter-input" type="text" placeholder="api">
+                <input id="ignored-filter-local" class="ignored-filter-input" type="text" placeholder="local">
+                <input id="ignored-filter-key" class="ignored-filter-input" type="text" placeholder="key">
+                <input id="ignored-filter-part" class="ignored-filter-input" type="text" placeholder="part">
+                <input id="ignored-filter-path" class="ignored-filter-input" type="text" placeholder="path">
+                <input id="ignored-filter-character-key" class="ignored-filter-input" type="text" placeholder="characterKey">
+                <input id="ignored-filter-note" class="ignored-filter-input" type="text" placeholder="note">
+                <input id="ignored-filter-created-from" class="ignored-filter-input" type="date" placeholder="created from">
+                <input id="ignored-filter-created-to" class="ignored-filter-input" type="date" placeholder="created to">
+              </div>
+              <div class="actions" style="margin-top: 10px;">
+                <button id="btn-clear-ignored-filters" class="btn ghost">상세 필터 초기화</button>
+              </div>
+            </details>
+          </section>
+
+          <section class="group">
+            <div class="group-head">
+              <h2>무시 항목</h2>
+              <p class="muted small">체크박스로 여러 항목을 선택한 뒤 위 작업 버튼을 사용하세요.</p>
+            </div>
+            <div class="char-list ignored-list" id="ignored-list">
+              <p class="muted" style="padding:10px;">저장된 무시 항목이 없습니다.</p>
+            </div>
+          </section>
+        </section>
+
+        <section id="panel-editor" class="view-panel hidden">
+          <section class="editor-layout">
+            <section class="group editor-side-panel">
+              <h2>파일 탐색</h2>
+              <div class="field">
+                <label>루트</label>
+                <select id="data-root"></select>
+              </div>
+              <div class="field">
+                <label>파일 검색</label>
+                <div class="field-inline">
+                  <input id="data-file-search" type="text" placeholder="예: profile.js">
+                  <button id="btn-load-data-files" class="btn ghost">조회</button>
+                </div>
+              </div>
+              <div class="field">
+                <label>파일 목록</label>
+                <div class="data-file-list" id="data-file-list">
+                  <p class="muted" style="padding:10px;">먼저 조회하세요.</p>
+                </div>
+              </div>
+            </section>
+
+            <div class="editor-main-panel">
+              <section class="group">
+                <h2>데이터 편집기</h2>
+                <div class="field">
+                  <label>현재 파일</label>
+                  <div class="field-inline">
+                    <input id="data-file-path" type="text" readonly>
+                    <button id="btn-load-data-file" class="btn ghost">로드</button>
+                    <button id="btn-reload-data-file" class="btn ghost">새로고침</button>
+                  </div>
+                </div>
+                <div class="field">
+                  <label>편집 방식</label>
+                  <div class="data-editor-mode-switch">
+                    <button id="btn-data-mode-form" class="btn ghost small active" type="button" data-mode="form">GUI 편집</button>
+                    <button id="btn-data-mode-raw" class="btn ghost small" type="button" data-mode="raw">원문 편집</button>
+                  </div>
+                  <div id="data-editor-meta" class="muted small">파일을 선택하면 편집 가능합니다.</div>
+                  <p id="data-editor-status" class="muted small">선택된 항목: 없음</p>
+                  <div id="data-editor-form-wrap" class="data-editor-form-wrap hidden">
+                    <div id="data-editor-entry-info" class="muted small"></div>
+                    <select id="data-editor-entry-select" class="hidden"></select>
+                    <div id="data-editor-form" class="data-editor-form"></div>
+                  </div>
+                  <div id="data-editor-raw-wrap">
+                    <textarea id="data-editor" spellcheck="false" placeholder="파일 내용을 불러오면 수정 가능합니다."></textarea>
+                  </div>
+                  <button id="btn-save-data-file" class="btn primary">저장</button>
+                </div>
+              </section>
+
+              <section class="group" id="add-character-group">
+                <h2>캐릭터 추가</h2>
+                <div class="add-character-grid">
+                  <div class="field">
+                    <label>API 이름</label>
+                    <input id="new-api" type="text" placeholder="예: aigis">
+                  </div>
+                  <div class="field">
+                    <label>LOCAL 이름</label>
+                    <input id="new-local" type="text" placeholder="예: AIGIS">
+                  </div>
+                  <div class="field">
+                    <label>Character Key</label>
+                    <input id="new-key" type="text" placeholder="예: 에이기스">
+                  </div>
+                </div>
+                <button id="btn-add-character" class="btn primary">신규 캐릭터 생성</button>
+                <p class="muted small">codename.json에 { api, local, key }가 있어야 생성 가능합니다.</p>
+              </section>
+            </div>
+          </section>
+        </section>
       </section>
-
-      <section class="group">
-        <h2>기본 필터</h2>
-        <div class="field">
-          <label>언어</label>
-          <input id="langs-input" type="text" value="kr,en,jp" placeholder="kr,en,jp">
-        </div>
-        <div class="field">
-          <label>범위 모드</label>
-          <select id="scope-mode">
-            <option value="all">all</option>
-            <option value="nums">nums</option>
-            <option value="api">api</option>
-            <option value="local">local</option>
-          </select>
-        </div>
-        <div class="field">
-          <label>범위 값</label>
-          <input id="scope-value" type="text" placeholder="예: 3,7-9 or MESSA">
-        </div>
-        <div class="field">
-          <label>파트(선택)</label>
-          <div class="parts-picker" id="parts-picker">
-            <button id="parts-toggle" class="parts-toggle" type="button">전체 파트</button>
-            <div id="parts-menu" class="parts-menu hidden"></div>
-          </div>
-        </div>
-
-        <div class="actions two">
-          <button id="btn-load-list" class="btn ghost">목록 새로고침</button>
-          <button id="btn-report" class="btn primary">리포트 새로고침</button>
-        </div>
-        <div class="actions two">
-          <button id="btn-dryrun-filter" class="btn warn">현재 필터 검증</button>
-          <button id="btn-patch-filter" class="btn danger">현재 필터 패치</button>
-        </div>
-      </section>
-
-      <section class="group">
-        <h2>목록</h2>
-        <div class="field">
-          <input id="list-search" type="text" placeholder="api/local/key 검색">
-        </div>
-        <div class="char-list" id="char-list">
-          <p class="muted" style="padding:10px;">로딩 전 목록이 없습니다.</p>
-        </div>
-      </section>
-
-      <section class="group">
-        <h2>무시 목록</h2>
-        <div class="field">
-          <label>검색</label>
-          <div class="field-inline">
-            <input id="ignored-search" type="text" placeholder="무시 항목 검색">
-            <button id="btn-clear-ignored-search" class="btn ghost">초기화</button>
-          </div>
-        </div>
-        <div class="actions three">
-          <button id="btn-load-ignored" class="btn ghost">무시 목록 새로고침</button>
-          <button id="btn-unignore-selected" class="btn ghost">선택 해제</button>
-          <button id="btn-unignore-filtered" class="btn warn">필터 결과 해제</button>
-        </div>
-        <div class="char-list ignored-list" id="ignored-list">
-          <p class="muted" style="padding:10px;">저장된 무시 항목이 없습니다.</p>
-        </div>
-      </section>
-
-      <section class="group">
-        <h2>데이터 편집기</h2>
-        <div class="field">
-          <label>도메인</label>
-          <select id="data-domain"></select>
-        </div>
-        <div class="field">
-          <label>루트</label>
-          <select id="data-root"></select>
-        </div>
-        <div class="field">
-          <label>파일 검색</label>
-          <div class="field-inline">
-            <input id="data-file-search" type="text" placeholder="예: profile.js">
-            <button id="btn-load-data-files" class="btn ghost">조회</button>
-          </div>
-        </div>
-        <div class="field">
-          <label>파일 목록</label>
-          <div class="data-file-list" id="data-file-list">
-            <p class="muted" style="padding:10px;">먼저 조회하세요.</p>
-          </div>
-        </div>
-        <div class="field">
-          <label>현재 파일</label>
-          <div class="field-inline">
-            <input id="data-file-path" type="text" readonly>
-            <button id="btn-load-data-file" class="btn ghost">로드</button>
-            <button id="btn-reload-data-file" class="btn ghost">새로고침</button>
-          </div>
-        </div>
-        <div class="field">
-          <label>내용</label>
-          <p id="data-editor-status" class="muted small">파일을 선택하면 편집 가능합니다.</p>
-          <textarea id="data-editor" spellcheck="false" placeholder="파일 내용을 불러오면 수정 가능합니다."></textarea>
-          <button id="btn-save-data-file" class="btn primary">저장</button>
-        </div>
-      </section>
-
-      <section class="group" id="add-character-group">
-        <h2>캐릭터 추가</h2>
-        <div class="field">
-          <label>API 이름</label>
-          <input id="new-api" type="text" placeholder="예: aigis">
-        </div>
-        <div class="field">
-          <label>LOCAL 이름</label>
-          <input id="new-local" type="text" placeholder="예: AIGIS">
-        </div>
-        <div class="field">
-          <label>Character Key</label>
-          <input id="new-key" type="text" placeholder="예: 에이기스">
-        </div>
-        <button id="btn-add-character" class="btn primary">신규 캐릭터 생성</button>
-        <p class="muted small">codename.json에 { api, local, key }가 있어야 생성 가능합니다.</p>
-      </section>
-    </aside>
-
-    <section class="panel main">
-      <header class="main-header">
-        <div class="summary">
-          <p>목록: <strong id="list-count">0</strong></p>
-          <p>리포트: <strong id="report-count">0</strong></p>
-          <p>선택: <strong id="selected-count">0</strong></p>
-          <p>선택 Diff: <strong id="selected-diff-count">0</strong></p>
-        <p>무시 Diff(필터/전체): <strong id="ignored-count">0</strong>/<strong id="ignored-total-count">0</strong></p>
-          <p>리포트 파일: <strong id="report-file">-</strong></p>
-        </div>
-        <div class="actions">
-          <button id="btn-select-all" class="btn ghost small">전체 선택</button>
-          <button id="btn-clear-select" class="btn ghost small">선택 해제</button>
-          <button id="btn-dryrun-selected" class="btn warn small">선택 행 검증</button>
-          <button id="btn-patch-selected" class="btn danger small">선택 행 패치</button>
-        </div>
-      </header>
-
-      <section class="table-section">
-        <div class="table-tools">
-          <input id="report-search" type="text" placeholder="리포트 검색">
-        </div>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th></th>
-                <th>#</th>
-                <th>Icon</th>
-                <th>Lang</th>
-                <th>API</th>
-                <th>Local</th>
-                <th>Key</th>
-                <th>Parts</th>
-                <th>Diff Preview</th>
-              </tr>
-            </thead>
-            <tbody id="report-tbody">
-              <tr><td colspan="9" class="empty">리포트 데이터가 없습니다. 조건을 선택해 주세요.</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <section class="detail" id="detail-panel">
-        <header class="detail-header">
-          <div class="detail-avatar" id="detail-avatar">N/A</div>
-          <div>
-            <h2>상세</h2>
-            <p id="detail-title" class="muted">행을 클릭하면 상세 내용을 볼 수 있습니다.</p>
-          </div>
-        </header>
-        <div id="detail-content" class="detail-content">
-          <p class="muted">선택한 행을 클릭하면 상세 정보가 표시됩니다.</p>
-        </div>
-      </section>
-
-      <section class="logs">
-        <div class="log-head">
-          <h2>실행 로그</h2>
-          <button id="btn-clear-log" class="btn ghost small">로그 비우기</button>
-        </div>
-        <pre id="log-output"></pre>
-      </section>
-    </section>
-  </main>
-  <script src="./patch-console.js?v=0.9.1"></script>
+    </main>
+  </div>
+  <script src="./patch-console.js?v=0.12.4"></script>
 </body>
 </html>

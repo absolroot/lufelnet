@@ -7,12 +7,12 @@
  *
  * 기본 동작:
  *   node scripts/fetch-persona.mjs
- *     - regions: kr,en,jp
+ *     - regions: kr,en,jp,cn
  *     - id: 101 ~ 300
  *
  * 옵션:
  *   node scripts/fetch-persona.mjs [regions] [startId] [endId]
- *     - regions: 콤마로 구분된 지역 코드 (예: kr,en,jp) (기본값: kr,en,jp)
+ *     - regions: 콤마로 구분된 지역 코드 (예: kr,en,jp,cn) (기본값: kr,en,jp,cn)
  *     - startId: 시작 ID (기본값: 101)
  *     - endId  : 끝 ID (기본값: 300, 포함 범위)
  *
@@ -57,7 +57,7 @@ function usage() {
   node scripts/fetch-persona.mjs [regions] [startId] [endId] 
 
 예시:
-  # 기본값 (kr,en,jp, 101~300)
+  # 기본값 (kr,en,jp,cn, 101~300)
   node scripts/fetch-persona.mjs
 
   # en만, 1~200
@@ -81,7 +81,7 @@ function parseArgs() {
     }
     pos.push(token);
   }
-  const regionStr = pos[0] || 'kr,en,jp';
+  const regionStr = pos[0] || 'kr,en,jp,cn';
   const startId = pos[1] ? Number(pos[1]) : 101;
   const endId = pos[2] ? Number(pos[2]) : 300;
 

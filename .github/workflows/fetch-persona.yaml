@@ -37,7 +37,7 @@ jobs:
           BASE_URL: https://iant.kr:5000/data
         run: |
           set -euo pipefail
-          # default: kr,en,jp (101~300)
+          # default: kr,en,jp,cn (101~300)
           node scripts/fetch-persona.mjs || {
             echo "First fetch failed. Retry in 45s..."
             sleep 45

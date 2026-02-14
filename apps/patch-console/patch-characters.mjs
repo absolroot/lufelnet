@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+﻿#!/usr/bin/env node
 
 import fs from 'fs';
 import path from 'path';
@@ -7,6 +7,19 @@ import process from 'process';
 import recastImport from 'recast';
 import * as babelParser from '@babel/parser';
 import { fileURLToPath } from 'url';
+import {
+  clone,
+  diffPaths,
+  equals,
+  getValueAtDiffPath,
+  isPlainObject,
+  parseCsv,
+  parseRangeList,
+  setValueAtDiffPath,
+  stableObject,
+  stableStringify,
+  tokenizeDiffPath
+} from './lib/patch-console-shared.mjs';
 
 const recast = recastImport.default || recastImport;
 const b = recast.types.builders;
@@ -128,38 +141,6 @@ function usage() {
   node apps/patch-console/patch-characters.mjs apply-diff-json --input-file scripts/reports/apply-diff-request.json
                                        [--dry-run]
 `);
-}
-
-function parseCsv(value) {
-  if (!value) return [];
-  return String(value)
-    .split(',')
-    .map((x) => x.trim())
-    .filter(Boolean);
-}
-
-function parseNumRanges(value) {
-  const out = new Set();
-  for (const token of parseCsv(value)) {
-    if (token.includes('-')) {
-      const [aRaw, bRaw] = token.split('-', 2);
-      const a = Number(aRaw);
-      const bVal = Number(bRaw);
-      if (!Number.isInteger(a) || !Number.isInteger(bVal)) {
-        throw new Error(`Invalid range token '${token}'`);
-      }
-      const from = Math.min(a, bVal);
-      const to = Math.max(a, bVal);
-      for (let n = from; n <= to; n += 1) out.add(n);
-    } else {
-      const n = Number(token);
-      if (!Number.isInteger(n)) {
-        throw new Error(`Invalid number token '${token}'`);
-      }
-      out.add(n);
-    }
-  }
-  return [...out].sort((a, b) => a - b);
 }
 
 function parseArgs(argv) {
@@ -374,15 +355,6 @@ function readWindowEntry(filePath, windowName, charKey) {
   return value;
 }
 
-function clone(value) {
-  if (value === undefined) return undefined;
-  return JSON.parse(JSON.stringify(value));
-}
-
-function isPlainObject(value) {
-  return Boolean(value && typeof value === 'object' && !Array.isArray(value));
-}
-
 function deepMerge(base, patch) {
   if (!isPlainObject(base)) return clone(patch);
   if (!isPlainObject(patch)) return clone(patch);
@@ -395,200 +367,6 @@ function deepMerge(base, patch) {
       out[key] = clone(value);
     }
   }
-  return out;
-}
-
-function stableObject(value) {
-  if (Array.isArray(value)) return value.map((x) => stableObject(x));
-  if (isPlainObject(value)) {
-    const out = {};
-    for (const key of Object.keys(value).sort()) {
-      out[key] = stableObject(value[key]);
-    }
-    return out;
-  }
-  return value;
-}
-
-function stableStringify(value) {
-  return JSON.stringify(stableObject(value));
-}
-
-function equals(a, b) {
-  return stableStringify(a) === stableStringify(b);
-}
-
-function diffPaths(a, b, prefix = '') {
-  if (equals(a, b)) return [];
-
-  if (Array.isArray(a) || Array.isArray(b)) {
-    if (!Array.isArray(a) || !Array.isArray(b)) return [prefix || '<root>'];
-    const max = Math.max(a.length, b.length);
-    const out = [];
-    for (let i = 0; i < max; i += 1) {
-      const nextPrefix = `${prefix}[${i}]`;
-      out.push(...diffPaths(a[i], b[i], nextPrefix));
-    }
-    return out;
-  }
-
-  if (isPlainObject(a) || isPlainObject(b)) {
-    if (!isPlainObject(a) || !isPlainObject(b)) return [prefix || '<root>'];
-    const keys = new Set([...Object.keys(a), ...Object.keys(b)]);
-    const out = [];
-    for (const key of [...keys].sort()) {
-      const nextPrefix = prefix ? `${prefix}.${key}` : key;
-      out.push(...diffPaths(a[key], b[key], nextPrefix));
-    }
-    return out;
-  }
-
-  return [prefix || '<root>'];
-}
-
-function tokenizeDiffPath(pathText) {
-  const text = String(pathText || '').trim();
-  if (!text || text === '<root>') return [];
-  const tokens = [];
-  let buffer = '';
-  let i = 0;
-  while (i < text.length) {
-    const ch = text[i];
-    if (ch === '.') {
-      if (buffer) {
-        tokens.push({ type: 'prop', key: buffer });
-        buffer = '';
-      }
-      i += 1;
-      continue;
-    }
-    if (ch === '[') {
-      if (buffer) {
-        tokens.push({ type: 'prop', key: buffer });
-        buffer = '';
-      }
-      const close = text.indexOf(']', i + 1);
-      if (close < 0) break;
-      const rawIndex = text.slice(i + 1, close).trim();
-      const index = Number(rawIndex);
-      if (Number.isInteger(index)) {
-        tokens.push({ type: 'index', index });
-      }
-      i = close + 1;
-      continue;
-    }
-    buffer += ch;
-    i += 1;
-  }
-  if (buffer) {
-    tokens.push({ type: 'prop', key: buffer });
-  }
-  return tokens;
-}
-
-function getValueAtDiffPath(root, pathText) {
-  const tokens = tokenizeDiffPath(pathText);
-  let cur = root;
-  for (const token of tokens) {
-    if (cur === undefined || cur === null) return undefined;
-    if (token.type === 'prop') {
-      cur = cur[token.key];
-      continue;
-    }
-    if (!Array.isArray(cur)) return undefined;
-    cur = cur[token.index];
-  }
-  return cur;
-}
-
-function setValueAtDiffPath(root, pathText, nextValue) {
-  const tokens = tokenizeDiffPath(pathText);
-  if (tokens.length === 0) {
-    return clone(nextValue);
-  }
-
-  let out = clone(root);
-  if (tokens[0].type === 'index') {
-    if (!Array.isArray(out)) out = [];
-  } else if (!isPlainObject(out) && !Array.isArray(out)) {
-    out = {};
-  }
-
-  let cur = out;
-  let parent = null;
-  let parentToken = null;
-
-  const replaceCurrent = (replacement) => {
-    if (!parent) {
-      out = replacement;
-      cur = replacement;
-      return;
-    }
-    if (parentToken.type === 'prop') {
-      parent[parentToken.key] = replacement;
-    } else {
-      while (parent.length <= parentToken.index) parent.push(undefined);
-      parent[parentToken.index] = replacement;
-    }
-    cur = replacement;
-  };
-
-  for (let i = 0; i < tokens.length - 1; i += 1) {
-    const token = tokens[i];
-    const nextToken = tokens[i + 1];
-
-    if (token.type === 'prop') {
-      if (!isPlainObject(cur) && !Array.isArray(cur)) {
-        replaceCurrent({});
-      }
-
-      let child = cur[token.key];
-      if (nextToken.type === 'index') {
-        if (!Array.isArray(child)) child = [];
-      } else {
-        if (!isPlainObject(child)) child = {};
-      }
-
-      cur[token.key] = child;
-      parent = cur;
-      parentToken = token;
-      cur = child;
-      continue;
-    }
-
-    if (!Array.isArray(cur)) {
-      replaceCurrent([]);
-    }
-    while (cur.length <= token.index) cur.push(undefined);
-
-    let child = cur[token.index];
-    if (nextToken.type === 'index') {
-      if (!Array.isArray(child)) child = [];
-    } else {
-      if (!isPlainObject(child)) child = {};
-    }
-
-    cur[token.index] = child;
-    parent = cur;
-    parentToken = token;
-    cur = child;
-  }
-
-  const finalToken = tokens[tokens.length - 1];
-  const nextCloned = clone(nextValue);
-  if (finalToken.type === 'prop') {
-    if (!isPlainObject(cur) && !Array.isArray(cur)) {
-      replaceCurrent({});
-    }
-    cur[finalToken.key] = nextCloned;
-  } else {
-    if (!Array.isArray(cur)) {
-      replaceCurrent([]);
-    }
-    while (cur.length <= finalToken.index) cur.push(undefined);
-    cur[finalToken.index] = nextCloned;
-  }
-
   return out;
 }
 
@@ -1031,7 +809,7 @@ function getSelectors(args) {
     nums: []
   };
   if (args.nums) {
-    selectors.nums = parseNumRanges(args.nums);
+    selectors.nums = parseRangeList(args.nums);
   }
   return selectors;
 }
@@ -1323,7 +1101,7 @@ function resolveReportTargets(options) {
   const excludeSelectors = {
     apis: parseCsv(options.args['exclude-api']),
     locals: parseCsv(options.args['exclude-local']),
-    nums: options.args['exclude-nums'] ? parseNumRanges(options.args['exclude-nums']) : []
+    nums: options.args['exclude-nums'] ? parseRangeList(options.args['exclude-nums']) : []
   };
   const excludeRows = pickEntriesBySelectors(codenameEntries, excludeSelectors);
   const excludeSet = new Set(excludeRows.map((x) => x.index));
@@ -1584,4 +1362,3 @@ function main() {
 }
 
 main();
-

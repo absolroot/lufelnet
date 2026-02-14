@@ -1,9 +1,22 @@
-#!/usr/bin/env node
+﻿#!/usr/bin/env node
 
 import fs from 'fs';
 import path from 'path';
 import vm from 'vm';
 import { fileURLToPath } from 'url';
+import {
+  clone,
+  diffPaths,
+  equals,
+  getValueAtDiffPath,
+  isPlainObject,
+  parseCsv,
+  parseRangeSet,
+  setValueAtDiffPath,
+  stableObject,
+  stableStringify,
+  tokenizeDiffPath
+} from './lib/patch-console-shared.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -62,204 +75,6 @@ function parseCli(argv) {
   return { command, args };
 }
 
-function clone(value) {
-  if (value === undefined) return undefined;
-  return JSON.parse(JSON.stringify(value));
-}
-
-function isPlainObject(value) {
-  return Boolean(value && typeof value === 'object' && !Array.isArray(value));
-}
-
-function stableObject(value) {
-  if (Array.isArray(value)) return value.map((x) => stableObject(x));
-  if (isPlainObject(value)) {
-    const out = {};
-    for (const key of Object.keys(value).sort()) {
-      out[key] = stableObject(value[key]);
-    }
-    return out;
-  }
-  return value;
-}
-
-function stableStringify(value) {
-  return JSON.stringify(stableObject(value));
-}
-
-function equals(a, b) {
-  return stableStringify(a) === stableStringify(b);
-}
-
-function diffPaths(a, b, prefix = '') {
-  if (equals(a, b)) return [];
-
-  if (Array.isArray(a) || Array.isArray(b)) {
-    if (!Array.isArray(a) || !Array.isArray(b)) return [prefix || '<root>'];
-    const max = Math.max(a.length, b.length);
-    const out = [];
-    for (let i = 0; i < max; i += 1) {
-      const nextPrefix = `${prefix}[${i}]`;
-      out.push(...diffPaths(a[i], b[i], nextPrefix));
-    }
-    return out;
-  }
-
-  if (isPlainObject(a) || isPlainObject(b)) {
-    if (!isPlainObject(a) || !isPlainObject(b)) return [prefix || '<root>'];
-    const keys = new Set([...Object.keys(a), ...Object.keys(b)]);
-    const out = [];
-    for (const key of [...keys].sort()) {
-      const nextPrefix = prefix ? `${prefix}.${key}` : key;
-      out.push(...diffPaths(a[key], b[key], nextPrefix));
-    }
-    return out;
-  }
-
-  return [prefix || '<root>'];
-}
-
-function tokenizeDiffPath(pathText) {
-  const text = String(pathText || '').trim();
-  if (!text || text === '<root>') return [];
-  const tokens = [];
-  let buffer = '';
-  let i = 0;
-  while (i < text.length) {
-    const ch = text[i];
-    if (ch === '.') {
-      if (buffer) {
-        tokens.push({ type: 'prop', key: buffer });
-        buffer = '';
-      }
-      i += 1;
-      continue;
-    }
-    if (ch === '[') {
-      if (buffer) {
-        tokens.push({ type: 'prop', key: buffer });
-        buffer = '';
-      }
-      const close = text.indexOf(']', i + 1);
-      if (close < 0) break;
-      const rawIndex = text.slice(i + 1, close).trim();
-      const index = Number(rawIndex);
-      if (Number.isInteger(index)) tokens.push({ type: 'index', index });
-      i = close + 1;
-      continue;
-    }
-    buffer += ch;
-    i += 1;
-  }
-  if (buffer) tokens.push({ type: 'prop', key: buffer });
-  return tokens;
-}
-
-function getValueAtDiffPath(root, pathText) {
-  const tokens = tokenizeDiffPath(pathText);
-  let current = root;
-  for (const token of tokens) {
-    if (current === undefined || current === null) return undefined;
-    if (token.type === 'prop') {
-      current = current[token.key];
-      continue;
-    }
-    if (!Array.isArray(current)) return undefined;
-    current = current[token.index];
-  }
-  return current;
-}
-
-function setValueAtDiffPath(root, pathText, nextValue) {
-  const tokens = tokenizeDiffPath(pathText);
-  if (tokens.length === 0) {
-    return clone(nextValue);
-  }
-
-  let out = clone(root);
-  if (tokens[0].type === 'index') {
-    if (!Array.isArray(out)) out = [];
-  } else if (!isPlainObject(out) && !Array.isArray(out)) {
-    out = {};
-  }
-
-  let cur = out;
-  let parent = null;
-  let parentToken = null;
-
-  const replaceCurrent = (replacement) => {
-    if (!parent) {
-      out = replacement;
-      cur = replacement;
-      return;
-    }
-    if (parentToken.type === 'prop') {
-      parent[parentToken.key] = replacement;
-    } else {
-      while (parent.length <= parentToken.index) parent.push(undefined);
-      parent[parentToken.index] = replacement;
-    }
-    cur = replacement;
-  };
-
-  for (let i = 0; i < tokens.length - 1; i += 1) {
-    const token = tokens[i];
-    const nextToken = tokens[i + 1];
-
-    if (token.type === 'prop') {
-      if (!isPlainObject(cur) && !Array.isArray(cur)) {
-        replaceCurrent({});
-      }
-
-      let child = cur[token.key];
-      if (nextToken.type === 'index') {
-        if (!Array.isArray(child)) child = [];
-      } else if (!isPlainObject(child)) {
-        child = {};
-      }
-
-      cur[token.key] = child;
-      parent = cur;
-      parentToken = token;
-      cur = child;
-      continue;
-    }
-
-    if (!Array.isArray(cur)) {
-      replaceCurrent([]);
-    }
-
-    while (cur.length <= token.index) cur.push(undefined);
-    let child = cur[token.index];
-    if (nextToken.type === 'index') {
-      if (!Array.isArray(child)) child = [];
-    } else if (!isPlainObject(child)) {
-      child = {};
-    }
-
-    cur[token.index] = child;
-    parent = cur;
-    parentToken = token;
-    cur = child;
-  }
-
-  const tail = tokens[tokens.length - 1];
-  if (tail.type === 'prop') {
-    if (!isPlainObject(cur) && !Array.isArray(cur)) {
-      replaceCurrent({});
-    }
-    cur[tail.key] = clone(nextValue);
-  } else {
-    if (!Array.isArray(cur)) {
-      replaceCurrent([]);
-    }
-    while (cur.length <= tail.index) cur.push(undefined);
-    cur[tail.index] = clone(nextValue);
-  }
-
-  return out;
-}
-
 function mergePatch(base, patch) {
   if (patch === undefined) return clone(base);
 
@@ -284,13 +99,6 @@ function mergePatch(base, patch) {
   return clone(patch);
 }
 
-function parseCsv(value) {
-  return String(value || '')
-    .split(',')
-    .map((x) => x.trim())
-    .filter(Boolean);
-}
-
 function parseLangs(input) {
   const requested = parseCsv(input || SUPPORTED_LANGS.join(',')).map((x) => x.toLowerCase());
   const langs = requested.filter((lang) => SUPPORTED_LANGS.includes(lang));
@@ -302,25 +110,6 @@ function parseParts(input) {
   const set = new Set(requested);
   const parts = SUPPORTED_PARTS.filter((part) => set.has(part));
   return parts.length > 0 ? parts : [...SUPPORTED_PARTS];
-}
-
-function parseNumsSelector(text) {
-  const out = new Set();
-  const chunks = parseCsv(text);
-  for (const chunk of chunks) {
-    const m = chunk.match(/^(\d+)-(\d+)$/);
-    if (m) {
-      const start = Number(m[1]);
-      const end = Number(m[2]);
-      if (Number.isInteger(start) && Number.isInteger(end) && start <= end) {
-        for (let n = start; n <= end; n += 1) out.add(n);
-      }
-      continue;
-    }
-    const n = Number(chunk);
-    if (Number.isInteger(n)) out.add(n);
-  }
-  return out;
 }
 
 function parseScope(args) {
@@ -446,7 +235,7 @@ function loadRows() {
 function matchesScope(row, scope) {
   if (scope.mode === 'all') return true;
   if (scope.mode === 'nums') {
-    const nums = parseNumsSelector(scope.value);
+    const nums = parseRangeSet(scope.value);
     if (nums.size === 0) return true;
     return nums.has(Number(row.index));
   }

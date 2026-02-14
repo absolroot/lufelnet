@@ -18,7 +18,8 @@ BASE_URL="${BASE_URL:-https://iant.kr:5000/data}"
 FETCH_MODE="${FETCH_MODE:-all}"
 
 ENDPOINTS=("gacha" "guildboss" "sos" "sandbox")
-REGIONS=("kr" "en" "cn" "tw" "jp" "sea")
+CORE_REGIONS=("kr" "en" "cn" "tw" "jp" "sea")
+CHARACTER_WEAPON_REGIONS=("kr" "en" "cn" "jp")
 WONDER_REGIONS=("kr" "en" "jp" "cn")
 CODENAME_FILE="${ROOT_DIR}/character/codename.json"
 
@@ -318,7 +319,7 @@ mkdir -p "$ROOT_DIR/before"
 
 if [ "$RUN_CORE" -eq 1 ]; then
   for ep in "${ENDPOINTS[@]}"; do
-    for rg in "${REGIONS[@]}"; do
+    for rg in "${CORE_REGIONS[@]}"; do
       fetch_and_write "$ep" "$rg"
     done
   done
@@ -338,7 +339,7 @@ if [ "$RUN_CHARACTER" -eq 1 ] || [ "$RUN_WEAPON" -eq 1 ]; then
     exit 0
   fi
 
-  for rg in "${REGIONS[@]}"; do
+  for rg in "${CHARACTER_WEAPON_REGIONS[@]}"; do
     if [ "$RUN_CHARACTER" -eq 1 ]; then
       mkdir -p "$ROOT_DIR/character/$rg" "$ROOT_DIR/before/character/$rg"
     fi

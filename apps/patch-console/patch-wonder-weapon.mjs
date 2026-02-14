@@ -1,9 +1,10 @@
-#!/usr/bin/env node
+﻿#!/usr/bin/env node
 
 import fs from 'fs';
 import path from 'path';
 import vm from 'vm';
 import { fileURLToPath } from 'url';
+import { clone, isPlainObject, parseCsv, parseRangeSet } from './lib/patch-console-shared.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -71,22 +72,6 @@ function parseCli(argv) {
   return { command, args };
 }
 
-function clone(value) {
-  if (value === undefined) return undefined;
-  return JSON.parse(JSON.stringify(value));
-}
-
-function isPlainObject(value) {
-  return Boolean(value && typeof value === 'object' && !Array.isArray(value));
-}
-
-function parseCsv(value) {
-  return String(value || '')
-    .split(',')
-    .map((x) => x.trim())
-    .filter(Boolean);
-}
-
 function parseLangs(input) {
   const requested = parseCsv(input || SUPPORTED_LANGS.join(',')).map((x) => x.toLowerCase());
   const langs = requested.filter((lang) => SUPPORTED_LANGS.includes(lang));
@@ -97,25 +82,6 @@ function parseParts(input) {
   const requested = parseCsv(input || SUPPORTED_PARTS.join(',')).map((x) => x.toLowerCase());
   const picked = SUPPORTED_PARTS.filter((part) => requested.includes(part));
   return picked.length > 0 ? picked : [...SUPPORTED_PARTS];
-}
-
-function parseNumsSelector(text) {
-  const out = new Set();
-  const chunks = parseCsv(text);
-  for (const chunk of chunks) {
-    const m = chunk.match(/^(\d+)-(\d+)$/);
-    if (m) {
-      const start = Number(m[1]);
-      const end = Number(m[2]);
-      if (Number.isInteger(start) && Number.isInteger(end) && start <= end) {
-        for (let n = start; n <= end; n += 1) out.add(n);
-      }
-      continue;
-    }
-    const n = Number(chunk);
-    if (Number.isInteger(n)) out.add(n);
-  }
-  return out;
 }
 
 function parseScope(args) {
@@ -286,7 +252,7 @@ function loadContext() {
 function matchesScope(row, scope) {
   if (scope.mode === 'all') return true;
   if (scope.mode === 'nums') {
-    const nums = parseNumsSelector(scope.value);
+    const nums = parseRangeSet(scope.value);
     if (nums.size === 0) return true;
     return nums.has(Number(row.index));
   }

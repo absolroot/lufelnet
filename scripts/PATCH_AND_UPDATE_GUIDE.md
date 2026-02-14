@@ -71,6 +71,10 @@
 - 지원 파트: `name`, `effect`
 - 대상 티어: `fiveStar`만 (4성은 패치 대상에서 제외)
 
+5. `apps/patch-console/patch-persona.mjs`
+- 목적: 페르소나(`data/persona`, `data/external/persona`)를 외부 데이터와 동기화
+- 지원 파트: `profile`, `innate_skill`, `passive_skill`, `uniqueSkill`, `highlight`
+
 ## 3. patch-characters 사용법
 
 1. 대상 인덱스/매핑 확인
@@ -100,7 +104,11 @@ node apps/patch-console/patch-characters.mjs report --langs kr,en,jp --all
 ## 4. 리포트 경로 정책
 
 1. 기본 리포트 경로
-- `scripts/reports/character-patch-diff.md`
+- 콘솔 UI(기본): `apps/patch-console/state/reports/patch-console-report.md`
+- CLI 기본:
+  - `apps/patch-console/patch-characters.mjs`: `scripts/reports/character-patch-diff.md`
+  - `apps/patch-console/patch-persona.mjs`: `scripts/reports/persona-patch-diff.json`
+  - `apps/patch-console/patch-wonder-weapon.mjs`: `scripts/reports/wonder-weapon-patch-diff.json`
 
 2. 필요 시 직접 지정
 
@@ -110,6 +118,8 @@ node apps/patch-console/patch-characters.mjs report --all --langs kr,en,jp --rep
 
 3. Git 관리 정책
 - `reports/` 및 `scripts/reports/`는 `.gitignore`에 포함되어 커밋 대상에서 제외
+- `apps/patch-console/state/`도 로컬 생성물(임시 리포트/요청 파일)이라 `.gitignore`에 포함
+- `apps/patch-console/`는 로컬 운영 페이지이며, GitHub Pages 빌드에서는 `.gitignore` + `_config.yml` + `jekyll.yml`에서 제외 처리
 
 ## 5. 로컬 GUI 제안
 
@@ -141,6 +151,8 @@ npm run patch-console
 
 2. 접속
 - `http://127.0.0.1:4173`
+- 원칙적으로 로컬 전용입니다. 원격에서 필요할 때만 `PATCH_CONSOLE_ALLOW_REMOTE=1`와
+  `PATCH_CONSOLE_ACCESS_TOKEN`을 함께 설정하고 요청 시 `Authorization: Bearer <token>` 헤더로 접속합니다.
 
 3. 위치
 - 서버: `apps/patch-console/run-patch-console.mjs`
@@ -159,8 +171,8 @@ npm run patch-console
 - 체크된 파트만 report/patch 대상으로 전달됩니다.
 
 6. 참고
-- GUI도 내부적으로 `apps/patch-console/patch-characters.mjs`를 호출합니다.
-- 리포트는 기본적으로 `scripts/reports/patch-console-report.md`에 생성됩니다.
+- GUI는 `apps/patch-console/patch-characters.mjs`, `apps/patch-console/patch-persona.mjs`, `apps/patch-console/patch-wonder-weapon.mjs`를 호출합니다.
+- 리포트는 기본적으로 `apps/patch-console/state/reports/patch-console-report.md`에 생성됩니다.
 - GUI에서 신규 캐릭터 생성 시 다음이 자동 수행됩니다.
 - `data/external/character/codename.json`에 `{ api, local, key }` 추가
 - `data/characters/<key>`에 template 기반 파일 생성

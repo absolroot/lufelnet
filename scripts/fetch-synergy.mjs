@@ -6,13 +6,13 @@
  *
  * Default behavior:
  *   node scripts/fetch-synergy.mjs
- *   - languages: kr,en,jp
+ *   - languages: kr,en,jp,cn
  *   - range: start at 1
  *   - auto mode scans at least 1..33, then increases numbers and stops on KR not-found
  *
  * Manual range:
  *   node scripts/fetch-synergy.mjs [lang] [startNum] [endNum]
- *   - lang: kr | en | jp | all (default: all)
+ *   - lang: kr | en | jp | cn | all (default: all)
  *   - startNum: default 1
  *   - endNum: optional; if omitted, auto-stop mode is used
  */
@@ -32,7 +32,7 @@ const SOURCE = process.env.SYNERGY_SOURCE || 'mydiscord';
 const FRIEND_NUM_FILE = path.join(PROJECT_ROOT, 'apps', 'synergy', 'friends', 'friend_num.json');
 const SYNERGY_DIR = path.join(PROJECT_ROOT, 'apps', 'synergy', 'friends');
 
-const LANGUAGES = ['kr', 'en', 'jp'];
+const LANGUAGES = ['kr', 'en', 'jp', 'cn'];
 const AUTO_MIN_SCAN_END = 33;
 const REQUEST_TIMEOUT_MS = 15000;
 const REQUEST_RETRIES = 1;
@@ -48,7 +48,7 @@ function usage() {
   node scripts/fetch-synergy.mjs [lang] [startNum] [endNum]
 
 Examples:
-  # default (kr,en,jp, start=1, auto-stop)
+  # default (kr,en,jp,cn, start=1, auto-stop)
   node scripts/fetch-synergy.mjs
 
   # kr only, start=1, auto-stop

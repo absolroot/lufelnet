@@ -12,9 +12,13 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const PROJECT_ROOT = path.join(__dirname, '..', '..');
 const APP_ROOT = path.join(PROJECT_ROOT, 'apps', 'patch-console');
-const DEFAULT_REPORT_REL = path.join('scripts', 'reports', 'patch-console-report.md');
-const IGNORED_DIFFS_FILE = path.join(PROJECT_ROOT, 'scripts', 'reports', 'patch-console-ignored-diffs.json');
+const APP_STATE_ROOT = path.join(APP_ROOT, 'state');
+const APP_REPORT_DIR = path.join(APP_STATE_ROOT, 'reports');
+const DEFAULT_REPORT_REL = path.join('apps', 'patch-console', 'state', 'reports', 'patch-console-report.md');
+const IGNORED_DIFFS_FILE = path.join(APP_STATE_ROOT, 'patch-console-ignored-diffs.json');
 const ALLOW_REMOTE_ACCESS = String(process.env.PATCH_CONSOLE_ALLOW_REMOTE || '0') === '1';
+const REMOTE_ACCESS_TOKEN = String(process.env.PATCH_CONSOLE_ACCESS_TOKEN || '').trim();
+const REQUIRE_REMOTE_TOKEN = ALLOW_REMOTE_ACCESS && REMOTE_ACCESS_TOKEN.length > 0;
 const CODENAME_FILE = path.join(PROJECT_ROOT, 'data', 'external', 'character', 'codename.json');
 const TEMPLATE_ROOT = path.join(PROJECT_ROOT, 'data', 'characters', 'template');
 const CHARACTER_ROOT = path.join(PROJECT_ROOT, 'data', 'characters');
@@ -171,8 +175,47 @@ function normalizeDataQueryValue(value) {
   return String(value || '').trim();
 }
 
+function normalizeIgnoredShow(value) {
+  const normalized = String(value || 'active').trim().toLowerCase();
+  if (normalized === 'hidden' || normalized === 'all') return normalized;
+  return 'active';
+}
+
+function extractClientIp(req) {
+  const forwarded = String(req.headers['x-forwarded-for'] || '').split(',')[0].trim();
+  if (forwarded) return forwarded.replace(/\[|\]/g, '');
+  const realIp = String(req.headers['x-real-ip'] || '').trim();
+  if (realIp) return realIp.replace(/\[|\]/g, '');
+  return String(req.socket?.remoteAddress || '').trim();
+}
+
+function extractAccessToken(req) {
+  const auth = String(req.headers.authorization || '').trim();
+  if (auth.startsWith('Bearer ')) {
+    return auth.slice(7).trim();
+  }
+  return String(req.headers['x-patch-console-token'] || '').trim();
+}
+
+function isLoopbackIp(ip) {
+  const normalized = String(ip || '').toLowerCase().trim();
+  if (!normalized) return false;
+  if (normalized === '127.0.0.1' || normalized === '::1' || normalized === '::ffff:127.0.0.1') return true;
+  if (normalized.startsWith('127.') || normalized.startsWith('::ffff:127.')) return true;
+  return false;
+}
+
+function isAuthorizedRemoteRequest(req) {
+  if (!REQUIRE_REMOTE_TOKEN) return false;
+  const token = extractAccessToken(req);
+  return token === REMOTE_ACCESS_TOKEN;
+}
+
 function parseInteger(value) {
-  const n = Number(value);
+  if (value === undefined || value === null) return null;
+  const text = String(value).trim();
+  if (!text) return null;
+  const n = Number(text);
   return Number.isInteger(n) ? n : null;
 }
 
@@ -187,12 +230,18 @@ function parseIgnoredFilter(params) {
     key: normalizeDataQueryValue(params?.key).toLowerCase(),
     part: normalizeDataQueryValue(params?.part).toLowerCase(),
     path: normalizeDataQueryValue(params?.path).toLowerCase(),
-    characterKey: normalizeDataQueryValue(params?.characterKey).toLowerCase()
+    characterKey: normalizeDataQueryValue(params?.characterKey).toLowerCase(),
+    note: normalizeDataQueryValue(params?.note).toLowerCase(),
+    createdFrom: normalizeDataQueryValue(params?.createdFrom).toLowerCase(),
+    createdTo: normalizeDataQueryValue(params?.createdTo).toLowerCase(),
+    show: normalizeIgnoredShow(params?.show),
+    sort: normalizeDataQueryValue(params?.sort).toLowerCase() || 'created_desc'
   };
 }
 
 function matchIgnoredItemFilter(item, filter) {
   if (!item || typeof item !== 'object') return false;
+  const createdAt = new Date(String(item.createdAt || '').trim());
   const fields = [
     ['index', Number(item.index), filter.index, (a, b) => a === b],
     ['lang', String(item.lang || '').toLowerCase(), filter.lang],
@@ -201,8 +250,23 @@ function matchIgnoredItemFilter(item, filter) {
     ['key', String(item.key || '').toLowerCase(), filter.key],
     ['part', String(item.part || '').toLowerCase(), filter.part],
     ['path', String(item.path || '').toLowerCase(), filter.path],
-    ['characterKey', String(item.characterKey || '').toLowerCase(), filter.characterKey]
+    ['characterKey', String(item.characterKey || '').toLowerCase(), filter.characterKey],
+    ['note', String(item.note || '').toLowerCase(), filter.note]
   ];
+
+  if (filter.createdFrom) {
+    const fromDate = new Date(filter.createdFrom);
+    if (!Number.isNaN(fromDate.getTime()) && createdAt.getTime() < fromDate.getTime()) return false;
+  }
+
+  if (filter.createdTo) {
+    const toDate = new Date(filter.createdTo);
+    if (!Number.isNaN(toDate.getTime())) {
+      const end = new Date(toDate.getTime());
+      end.setHours(23, 59, 59, 999);
+      if (createdAt.getTime() > end.getTime()) return false;
+    }
+  }
 
   for (const [name, actual, expected, comparer] of fields) {
     if (name === 'index') {
@@ -213,7 +277,7 @@ function matchIgnoredItemFilter(item, filter) {
   }
 
   if (filter.q) {
-    const haystack = `${item.index} ${item.lang} ${item.api} ${item.local} ${item.key} ${item.part} ${item.path} ${item.characterKey} ${item.matcher || ''}`
+    const haystack = `${item.index} ${item.lang} ${item.api} ${item.local} ${item.key} ${item.part} ${item.path} ${item.characterKey} ${item.note || ''} ${item.matcher || ''}`
       .toLowerCase();
     if (!haystack.includes(filter.q)) return false;
   }
@@ -222,6 +286,7 @@ function matchIgnoredItemFilter(item, filter) {
 }
 
 function loadIgnoredStore() {
+  let shouldSave = false;
   if (!fs.existsSync(IGNORED_DIFFS_FILE)) {
     return {
       version: 1,
@@ -236,6 +301,17 @@ function loadIgnoredStore() {
     }
     if (!Array.isArray(parsed.items)) {
       parsed.items = [];
+      shouldSave = true;
+    }
+    for (const item of parsed.items) {
+      if (!item || typeof item !== 'object') continue;
+      if (!Object.prototype.hasOwnProperty.call(item, 'isHidden')) {
+        item.isHidden = false;
+        shouldSave = true;
+      }
+    }
+    if (shouldSave) {
+      saveIgnoredStore(parsed);
     }
     return parsed;
   } catch {
@@ -290,17 +366,43 @@ function listIgnoredByDomain(domain, filter = null) {
   const filtered = store.items
     .filter((item) => normalizeDomain(item.domain) === d)
     .filter((item) => matchIgnoredItemFilter(item, parsedFilter));
-  return filtered.sort((a, b) => String(b.createdAt || '').localeCompare(String(a.createdAt || '')));
+  const showMode = parsedFilter.show || 'active';
+  const visibleItems = filtered.filter((item) => {
+    const hidden = Boolean(item.isHidden);
+    if (showMode === 'all') return true;
+    if (showMode === 'hidden') return hidden;
+    return !hidden;
+  });
+  const sortMode = String(parsedFilter.sort || 'created_desc').toLowerCase();
+  let compare = (a, b) => String(b.createdAt || '').localeCompare(String(a.createdAt || ''));
+  if (sortMode === 'created_asc') {
+    compare = (a, b) => String(a.createdAt || '').localeCompare(String(b.createdAt || ''));
+  } else if (sortMode === 'index_asc') {
+    compare = (a, b) => Number(a.index || 0) - Number(b.index || 0);
+  } else if (sortMode === 'index_desc') {
+    compare = (a, b) => Number(b.index || 0) - Number(a.index || 0);
+  }
+  return visibleItems.sort((a, b) => {
+    const c = compare(a, b);
+    if (c !== 0) return c;
+    return String(b.createdAt || '').localeCompare(String(a.createdAt || ''));
+  });
 }
 
 function addIgnoredDiffs(domain, diffs) {
+  return addIgnoredDiffsWithOptions(domain, diffs, { overwrite: false });
+}
+
+function addIgnoredDiffsWithOptions(domain, diffs, options = {}) {
   const d = normalizeDomain(domain);
   const store = loadIgnoredStore();
+  const overwrite = Boolean(options.overwrite);
   const map = new Map();
   for (const item of store.items) {
     map.set(String(item.key), item);
   }
   let added = 0;
+  let updated = 0;
   for (const diff of diffs) {
     const hasBefore = hasOwn(diff, 'before');
     const hasAfter = hasOwn(diff, 'after');
@@ -308,7 +410,31 @@ function addIgnoredDiffs(domain, diffs) {
     const key = matcher === 'value'
       ? makeDiffKey(d, diff)
       : makeDiffKey(d, diff, { legacy: true });
-    if (map.has(key)) continue;
+    if (map.has(key)) {
+      if (!overwrite) continue;
+      const before = map.get(key) || {};
+      const nextItem = {
+        ...before,
+        key,
+        domain: d,
+        index: Number(diff.index),
+        lang: String(diff.lang || '').trim().toLowerCase(),
+        api: String(diff.api || ''),
+        local: String(diff.local || ''),
+        characterKey: String(diff.key || ''),
+        part: String(diff.part || ''),
+        path: String(diff.path || ''),
+        isHidden: false,
+        note: String(diff.note || '').trim() || null,
+        matcher,
+        beforeSig: matcher === 'value' ? valueSignature(diff.before) : null,
+        afterSig: matcher === 'value' ? valueSignature(diff.after) : null,
+        createdAt: new Date().toISOString()
+      };
+      map.set(key, nextItem);
+      updated += 1;
+      continue;
+    }
     const nextItem = {
       key,
       domain: d,
@@ -319,6 +445,8 @@ function addIgnoredDiffs(domain, diffs) {
       characterKey: String(diff.key || ''),
       part: String(diff.part || ''),
       path: String(diff.path || ''),
+      isHidden: false,
+      note: String(diff.note || '').trim() || null,
       matcher,
       beforeSig: matcher === 'value' ? valueSignature(diff.before) : null,
       afterSig: matcher === 'value' ? valueSignature(diff.after) : null,
@@ -329,7 +457,7 @@ function addIgnoredDiffs(domain, diffs) {
   }
   store.items = [...map.values()];
   saveIgnoredStore(store);
-  return added;
+  return { added, updated };
 }
 
 function removeIgnoredDiffs(domain, keys) {
@@ -348,6 +476,60 @@ function removeIgnoredDiffs(domain, keys) {
   });
   saveIgnoredStore(store);
   return before - store.items.length;
+}
+
+function normalizeIgnoredUpdatePayload(payload = {}) {
+  const hasIsHidden = Object.prototype.hasOwnProperty.call(payload, 'isHidden');
+  const hasNote = Object.prototype.hasOwnProperty.call(payload, 'note');
+  let isHidden = false;
+  if (hasIsHidden) isHidden = Boolean(payload.isHidden);
+  const note = hasNote ? String(payload.note || '').trim() : null;
+  return {
+    keys: Array.isArray(payload.keys) ? payload.keys.map((key) => String(key || '').trim()).filter(Boolean) : [],
+    hasNote,
+    note,
+    hasIsHidden,
+    isHidden
+  };
+}
+
+function updateIgnoredDiffs(domain, payload = {}) {
+  const d = normalizeDomain(domain);
+  const { keys, hasNote, note, hasIsHidden, isHidden } = normalizeIgnoredUpdatePayload(payload);
+  const normalizedKeys = [...keys];
+  if (normalizedKeys.length === 0 && Array.isArray(payload.diffs)) {
+    for (const diff of payload.diffs) {
+      const hasBefore = hasOwn(diff, 'before');
+      const hasAfter = hasOwn(diff, 'after');
+      const matcher = hasBefore || hasAfter ? 'value' : 'path';
+      const key = matcher === 'value'
+        ? makeDiffKey(d, diff)
+        : makeDiffKey(d, diff, { legacy: true });
+      if (key) normalizedKeys.push(key);
+    }
+  }
+  const keySet = new Set(Array.from(new Set(normalizedKeys)).map((key) => String(key || '').trim()).filter(Boolean));
+  if (keySet.size === 0 || (!hasNote && !hasIsHidden)) {
+    return { updated: 0, notFound: 0 };
+  }
+
+  const store = loadIgnoredStore();
+  const updated = new Set();
+  const keyList = [...keySet];
+  for (const item of store.items) {
+    if (normalizeDomain(item.domain) !== d) continue;
+    if (!keyList.includes(String(item.key))) continue;
+    if (hasIsHidden) item.isHidden = isHidden;
+    if (hasNote) item.note = note || null;
+    item.updatedAt = new Date().toISOString();
+    updated.add(item.key);
+  }
+
+  if (updated.size > 0) {
+    saveIgnoredStore(store);
+  }
+
+  return { updated: updated.size, notFound: keyList.length - updated.size };
 }
 
 function getDataEditorRoots(domain) {
@@ -435,7 +617,7 @@ function canWriteDataFile(filePath) {
 }
 
 function applyIgnoredFilter(domain, rows) {
-  const ignored = listIgnoredByDomain(domain);
+  const ignored = listIgnoredByDomain(domain, { show: 'all' });
   const ignoredSet = new Set(ignored.map((item) => String(item.key)));
   if (ignored.length === 0) {
     return {
@@ -654,7 +836,7 @@ function safeReportPath(relativeOrEmpty) {
   const rel = String(relativeOrEmpty || DEFAULT_REPORT_REL).replace(/\\/g, '/');
   const normalizedRel = rel.startsWith('/') ? rel.slice(1) : rel;
   const absolute = path.resolve(PROJECT_ROOT, normalizedRel);
-  const reportsRoot = path.resolve(PROJECT_ROOT, 'scripts', 'reports');
+  const reportsRoot = path.resolve(APP_REPORT_DIR);
   if (!absolute.startsWith(reportsRoot)) {
     return {
       rel: DEFAULT_REPORT_REL.replace(/\\/g, '/'),
@@ -1351,8 +1533,9 @@ async function executeApplyDiffs(diffs, { dryRun = false, domain = DEFAULT_DOMAI
 
   const reqFile = path.join(
     PROJECT_ROOT,
-    'scripts',
-    'reports',
+    'apps',
+    'patch-console',
+    'state',
     `apply-diff-request-${Date.now()}.json`
   );
   ensureDir(path.dirname(reqFile));
@@ -1415,16 +1598,24 @@ async function handleIgnoredList(req, res, urlObj) {
     api: urlObj.searchParams.get('api'),
     local: urlObj.searchParams.get('local'),
     key: urlObj.searchParams.get('key'),
+    note: urlObj.searchParams.get('note'),
     part: urlObj.searchParams.get('part'),
     path: urlObj.searchParams.get('path'),
-    characterKey: urlObj.searchParams.get('characterKey')
+    characterKey: urlObj.searchParams.get('characterKey'),
+    createdFrom: urlObj.searchParams.get('createdFrom'),
+    createdTo: urlObj.searchParams.get('createdTo'),
+    show: urlObj.searchParams.get('show'),
+    sort: urlObj.searchParams.get('sort')
   });
-  const totalCount = listIgnoredByDomain(domain).length;
+  const activeCount = listIgnoredByDomain(domain, { show: 'active' }).length;
+  const hiddenCount = listIgnoredByDomain(domain, { show: 'hidden' }).length;
   sendJson(res, 200, {
     ok: true,
     domain,
     count: items.length,
-    totalCount,
+    totalCount: activeCount + hiddenCount,
+    activeCount,
+    hiddenCount,
     items
   });
 }
@@ -1580,12 +1771,30 @@ async function handleDataFileSave(res, payload) {
 async function handleIgnoreDiffs(res, payload) {
   const domain = normalizeDomain(payload.domain);
   const diffs = Array.isArray(payload.diffs) ? payload.diffs : [];
-  const added = addIgnoredDiffs(domain, diffs);
+  const overwrite = Boolean(payload.overwrite);
+  const { added, updated } = addIgnoredDiffsWithOptions(domain, diffs, { overwrite });
   sendJson(res, 200, {
     ok: true,
     domain,
     added,
-    count: listIgnoredByDomain(domain).length
+    updated,
+    count: listIgnoredByDomain(domain, { show: 'all' }).length,
+    activeCount: listIgnoredByDomain(domain, { show: 'active' }).length,
+    hiddenCount: listIgnoredByDomain(domain, { show: 'hidden' }).length
+  });
+}
+
+async function handleUpdateIgnoredDiffs(res, payload) {
+  const domain = normalizeDomain(payload.domain);
+  const result = updateIgnoredDiffs(domain, payload);
+  sendJson(res, 200, {
+    ok: true,
+    domain,
+    updated: result.updated,
+    notFound: result.notFound,
+    count: listIgnoredByDomain(domain, { show: 'all' }).length,
+    activeCount: listIgnoredByDomain(domain, { show: 'active' }).length,
+    hiddenCount: listIgnoredByDomain(domain, { show: 'hidden' }).length
   });
 }
 
@@ -1593,14 +1802,21 @@ async function handleUnignoreDiffs(res, payload) {
   const domain = normalizeDomain(payload.domain);
   let keys = Array.isArray(payload.keys) ? payload.keys : [];
   if (keys.length === 0 && Array.isArray(payload.diffs)) {
-    keys = payload.diffs.map((diff) => makeDiffKey(domain, diff));
+    keys = payload.diffs.map((diff) => {
+      const hasBefore = hasOwn(diff, 'before');
+      const hasAfter = hasOwn(diff, 'after');
+      const matcher = hasBefore || hasAfter ? 'value' : 'path';
+      return matcher === 'value'
+        ? makeDiffKey(domain, diff)
+        : makeDiffKey(domain, diff, { legacy: true });
+    });
   }
   const removed = removeIgnoredDiffs(domain, keys);
   sendJson(res, 200, {
     ok: true,
     domain,
     removed,
-    count: listIgnoredByDomain(domain).length
+    count: listIgnoredByDomain(domain, { show: 'all' }).length
   });
 }
 
@@ -1707,15 +1923,26 @@ function serveFileFromBase(res, baseDir, requestPath, { defaultIndex = null } = 
 async function requestHandler(req, res) {
   const host = req.headers.host || '127.0.0.1';
   const urlObj = new URL(req.url || '/', `http://${host}`);
-  const { pathname } = urlObj;
+  let pathname = urlObj.pathname;
+  const normalizedPathname = String(pathname || '').replace(/\/+$/u, '') || '/';
+  if (normalizedPathname === '/work' || normalizedPathname === '/ignored' || normalizedPathname === '/editor') {
+    pathname = '/';
+  }
 
   if (!ALLOW_REMOTE_ACCESS) {
-    const remote = String(req.socket.remoteAddress || '').toLowerCase();
-    const isLoopback = remote === '127.0.0.1' || remote === '::1' || remote === '::ffff:127.0.0.1';
+    const remote = extractClientIp(req);
+    const isLoopback = isLoopbackIp(remote);
     if (!isLoopback) {
       sendText(res, 403, 'Forbidden: patch console is local-only. Use localhost host 127.0.0.1.');
       return;
     }
+  } else if (!isAuthorizedRemoteRequest(req)) {
+    sendText(
+      res,
+      403,
+      'Forbidden: remote access requires Authorization Bearer token or x-patch-console-token header.'
+    );
+    return;
   }
 
   if (pathname === '/api/health' && req.method === 'GET') {
@@ -1800,6 +2027,12 @@ async function requestHandler(req, res) {
     return;
   }
 
+  if (pathname === '/api/ignore-diffs' && req.method === 'PATCH') {
+    const body = await readBody(req);
+    await handleUpdateIgnoredDiffs(res, body);
+    return;
+  }
+
   if (pathname === '/api/add-character' && req.method === 'POST') {
     const body = await readBody(req);
     await handleAddCharacter(res, body);
@@ -1825,8 +2058,16 @@ function main() {
     process.exit(1);
   }
 
-  ensureDir(path.join(PROJECT_ROOT, 'scripts', 'reports'));
   const port = parsePort(process.argv);
+  ensureDir(APP_STATE_ROOT);
+  ensureDir(APP_REPORT_DIR);
+  if (!ALLOW_REMOTE_ACCESS) {
+    log('Patch Console is local-only. Set PATCH_CONSOLE_ALLOW_REMOTE=1 only for explicit remote access testing.');
+  } else if (REQUIRE_REMOTE_TOKEN) {
+    log('Patch Console remote access enabled with token.');
+  } else {
+    log('Patch Console remote access enabled, but token check disabled (consider setting PATCH_CONSOLE_ACCESS_TOKEN).');
+  }
   const host = '127.0.0.1';
 
   const server = http.createServer((req, res) => {

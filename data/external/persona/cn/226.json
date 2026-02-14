@@ -1,0 +1,64 @@
+{
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Bless",
+      "Curse"
+    ],
+    "Weak": [
+      "Electric"
+    ]
+  },
+  "fixed_skill": {
+    "cost": "SP 25",
+    "desc": "驱散1名同伴的燃烧、冻结、触电、风袭效果。",
+    "level": "6/7/8",
+    "name": "拜斯提"
+  },
+  "innate_skill": [
+    {
+      "cost": "SP 23",
+      "desc": "使1名同伴恢复33.1/34.8/36.4%攻击力+1001/1239/1495的生命值。",
+      "learn_level": "4",
+      "level": "6/7/8",
+      "name": "迪亚"
+    },
+    {
+      "cost": "",
+      "desc": "生命值提升5.1%。",
+      "learn_level": "8",
+      "level": "6/7/8",
+      "name": "生命强化Ⅰ"
+    },
+    {
+      "cost": "",
+      "desc": "每回合开始时，回复1.9%最大生命值。",
+      "learn_level": "12",
+      "level": "6/7/8",
+      "name": "治疗促进Ⅰ"
+    }
+  ],
+  "max_level": 30,
+  "max_level_after_awake": 35,
+  "name": "和魂",
+  "nature": "Bless",
+  "passive_skill": [
+    {
+      "desc": "生命值提升5.8%。释放人格面具技能造成治疗效果后，使技能主目标获得1层祝福效果。",
+      "name": "顺和的本质"
+    },
+    {
+      "desc": "生命值提升5.8%。释放人格面具技能造成治疗效果后，使技能主目标获得1层祝福效果。有50%的概率使其额外获得一层祝福效果。",
+      "name": "顺和的本质Ⅰ"
+    }
+  ],
+  "rank": 2,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "使所有同伴恢复48.6%/52.0%/55.4%攻击力+1471/1854/2275的生命值。",
+    "level": "6/7/8",
+    "name": "HIGHLIGHT"
+  }
+}

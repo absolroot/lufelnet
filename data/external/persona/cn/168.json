@@ -1,0 +1,71 @@
+{
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Ice",
+      "Wind"
+    ],
+    "Weak": [
+      "Electric"
+    ]
+  },
+  "fixed_skill": {
+    "cost": "SP 20",
+    "desc": "对所有敌人造成61.8/64.2/66.6%攻击力的核热属性伤害，对处于元素异常状态的敌人造成TECHNICAL，技能伤害提升18%。",
+    "level": "6/7/8",
+    "name": "玛哈芙雷拉"
+  },
+  "innate_skill": [
+    {
+      "cost": "SP 20",
+      "desc": "对1名敌人造成124.2/129.1/134.0%攻击力的核热属性伤害，对处于元素异常状态的敌人造成TECHNICAL，技能伤害提升18%。",
+      "learn_level": "5",
+      "level": "6/7/8",
+      "name": "芙雷拉"
+    },
+    {
+      "cost": "",
+      "desc": "核热属性伤害提升6.7%。",
+      "learn_level": "10",
+      "level": "6/7/8",
+      "name": "核热强化Ⅱ"
+    },
+    {
+      "cost": "SP 24",
+      "desc": "使1名同伴恢复35.6/37.4/39.2%攻击力+1077/1333/1608的生命值。",
+      "learn_level": "15",
+      "level": "6/7/8",
+      "name": "迪亚拉玛"
+    },
+    {
+      "cost": "",
+      "desc": "攻击力提升8.3%。",
+      "learn_level": "20",
+      "level": "6/7/8",
+      "name": "攻击强化Ⅱ"
+    }
+  ],
+  "max_level": 40,
+  "max_level_after_awake": 45,
+  "name": "凤凰",
+  "nature": "Nuclear",
+  "passive_skill": [
+    {
+      "desc": "攻击力提升10.6%。击败敌人后，核热伤害提升30%，效果持续2回合。",
+      "name": "圣炎的尊者"
+    },
+    {
+      "desc": "攻击力提升10.6%。击败敌人后，核热伤害提升35%，效果持续2回合。",
+      "name": "圣炎的尊者Ⅰ"
+    }
+  ],
+  "rank": 3,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "对所有敌人造成180.0%/192.6%/205.2%攻击力的核热属性伤害。",
+    "level": "6/7/8",
+    "name": "HIGHLIGHT"
+  }
+}

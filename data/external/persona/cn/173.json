@@ -1,0 +1,78 @@
+{
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Phys",
+      "Gun",
+      "Bless",
+      "Curse"
+    ],
+    "Weak": [
+      "Psychokinesis",
+      "Nuclear"
+    ]
+  },
+  "fixed_skill": {
+    "cost": "SP 22",
+    "desc": "使1名敌人的攻击力降低25.8%/27.1%/28.4%，效果持续3回合。",
+    "level": "6/7/8",
+    "name": "塔伦达"
+  },
+  "innate_skill": [
+    {
+      "cost": "SP skillLv*-1+28",
+      "desc": "驱散所有同伴的1个属性降低效果。",
+      "learn_level": "5",
+      "level": "6/7/8",
+      "name": "迪坤达"
+    },
+    {
+      "cost": "체력 8.0%",
+      "desc": "对1名敌人造成141.8/148.9/156.0%攻击力的物理属性伤害。",
+      "learn_level": "10",
+      "level": "6/7/8",
+      "name": "俯冲突击"
+    },
+    {
+      "cost": "",
+      "desc": "战斗开始时防御力提升18.1%，持续2回合。",
+      "learn_level": "15",
+      "level": "6/7/8",
+      "name": "防御的心得Ⅱ"
+    },
+    {
+      "cost": "",
+      "desc": "防御力提升12.5%。",
+      "learn_level": "20",
+      "level": "6/7/8",
+      "name": "防御强化Ⅱ"
+    }
+  ],
+  "max_level": 50,
+  "max_level_after_awake": 60,
+  "name": "荒霸吐",
+  "nature": "Phys",
+  "passive_skill": [
+    {
+      "desc": "防御力提升21.2%。使所有同伴受到的弱点伤害降低18%。",
+      "name": "铁铸之身"
+    },
+    {
+      "desc": "防御力提升21.2%。使所有同伴受到的弱点伤害降低20.5%。",
+      "name": "铁铸之身Ⅰ"
+    },
+    {
+      "desc": "防御力提升21.2%。使所有同伴受到的弱点伤害降低23%。",
+      "name": "铁铸之身Ⅱ"
+    }
+  ],
+  "rank": 4,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "使所有同伴获得48.6%/52.0%/55.4%攻击力+1471/1854/2275的护盾，效果持续2回合。",
+    "level": "6/7/8",
+    "name": "HIGHLIGHT"
+  }
+}

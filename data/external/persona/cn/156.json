@@ -1,0 +1,59 @@
+{
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Electric",
+      "Bless"
+    ],
+    "Weak": [
+      "Gun",
+      "Ice",
+      "Curse"
+    ]
+  },
+  "fixed_skill": {
+    "cost": "SP 19",
+    "desc": "对1名敌人造成106.2/111.5/116.8%攻击力的电击属性伤害，有59.0/62.0/64.9%基础概率使敌人陷入触电状态，效果持续2回合。",
+    "level": "6/7/8",
+    "name": "吉欧"
+  },
+  "innate_skill": [
+    {
+      "cost": "",
+      "desc": "受到的祝福属性伤害降低4.7%。",
+      "learn_level": "4",
+      "level": "6/7/8",
+      "name": "祝福识破Ⅰ"
+    },
+    {
+      "cost": "",
+      "desc": "造成触电效果时，效果命中提升8.8%。",
+      "learn_level": "8",
+      "level": "6/7/8",
+      "name": "触电率UPⅠ"
+    }
+  ],
+  "max_level": 20,
+  "max_level_after_awake": 25,
+  "name": "皮克希",
+  "nature": "Electric",
+  "passive_skill": [
+    {
+      "desc": "攻击力提升2.9%。造成击倒后，提升所有同伴14.3%攻击力，效果持续2回合。",
+      "name": "迷途的劝导"
+    },
+    {
+      "desc": "攻击力提升2.9%。造成击倒后，提升所有同伴16.5%攻击力，效果持续2回合。",
+      "name": "迷途的劝导Ⅰ"
+    }
+  ],
+  "rank": 1,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "对1名敌人造成360.0%/385.2%/410.4%攻击力的电击属性伤害。",
+    "level": "6/7/8",
+    "name": "HIGHLIGHT"
+  }
+}

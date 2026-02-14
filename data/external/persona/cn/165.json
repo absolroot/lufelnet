@@ -1,0 +1,65 @@
+{
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Wind",
+      "Nuclear",
+      "Bless"
+    ],
+    "Weak": [
+      "Electric"
+    ]
+  },
+  "fixed_skill": {
+    "cost": "SP 19",
+    "desc": "对1名敌人造成114.8/118.7/122.6%攻击力的核热属性伤害，对处于元素异常状态的敌人造成TECHNICAL，技能伤害提升16%。",
+    "level": "6/7/8",
+    "name": "芙雷"
+  },
+  "innate_skill": [
+    {
+      "cost": "체력 6.0%",
+      "desc": "对1名敌人造成2次58.2/61.1/64.0%攻击力的物理属性伤害。",
+      "learn_level": "4",
+      "level": "6/7/8",
+      "name": "二连牙"
+    },
+    {
+      "cost": "",
+      "desc": "核热属性伤害提升4.7%。",
+      "learn_level": "8",
+      "level": "6/7/8",
+      "name": "核热强化Ⅰ"
+    },
+    {
+      "cost": "",
+      "desc": "被包围时暴击率提升4.6%。",
+      "learn_level": "12",
+      "level": "6/7/8",
+      "name": "逆境的觉悟Ⅰ"
+    }
+  ],
+  "max_level": 30,
+  "max_level_after_awake": 35,
+  "name": "真神",
+  "nature": "Nuclear",
+  "passive_skill": [
+    {
+      "desc": "攻击力提升5.8%。换手后，造成的核热属性伤害提升23%，效果持续1回合。",
+      "name": "导热的追击者"
+    },
+    {
+      "desc": "攻击力提升5.8%。换手后，造成的核热属性伤害提升27%，效果持续1回合。",
+      "name": "导热的追击者Ⅰ"
+    }
+  ],
+  "rank": 2,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "对1名敌人造成360.0%/385.2%/410.4%攻击力的核热属性伤害。",
+    "level": "6/7/8",
+    "name": "HIGHLIGHT"
+  }
+}

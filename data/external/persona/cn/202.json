@@ -1,0 +1,75 @@
+{
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Gun",
+      "Psychokinesis"
+    ],
+    "Weak": [
+      "Nuclear"
+    ]
+  },
+  "fixed_skill": {
+    "cost": "SP 20",
+    "desc": "对1名敌人造成122.0/126.9/131.8%攻击力的念动属性伤害，对处于精神异常状态的敌人造成TECHNICAL，技能伤害提升40%。",
+    "level": "6/7/8",
+    "name": "赛欧"
+  },
+  "innate_skill": [
+    {
+      "cost": "SP 22",
+      "desc": "有65.1/68.4/71.6%基础概率使1名敌人陷入遗忘，效果持续2回合。",
+      "learn_level": "5",
+      "level": "6/7/8",
+      "name": "玛卡加玛"
+    },
+    {
+      "cost": "",
+      "desc": "速度提升9点，防御力降低4%。",
+      "learn_level": "10",
+      "level": "6/7/8",
+      "name": "敏捷的心得Ⅱ"
+    },
+    {
+      "cost": "",
+      "desc": "受到的射击属性伤害降低6.7%。",
+      "learn_level": "15",
+      "level": "6/7/8",
+      "name": "枪械识破Ⅱ"
+    },
+    {
+      "cost": "SP 20",
+      "desc": "对所有敌人造成66.4/68.8/71.2%攻击力的念动属性伤害，对处于精神异常状态的敌人造成TECHNICAL，技能伤害提升40%。",
+      "learn_level": "20",
+      "level": "6/7/8",
+      "name": "玛哈赛欧"
+    }
+  ],
+  "max_level": 50,
+  "max_level_after_awake": 60,
+  "name": "迦温",
+  "nature": "Psychokinesis",
+  "passive_skill": [
+    {
+      "desc": "攻击力提升11.6%。使用念动属性技能时，SP消耗降低27%。",
+      "name": "念视的血统"
+    },
+    {
+      "desc": "攻击力提升11.6%。使用念动属性技能时，SP消耗降低31%。",
+      "name": "念视的血统Ⅰ"
+    },
+    {
+      "desc": "攻击力提升11.6%。使用念动属性技能时，SP消耗降低35%。",
+      "name": "念视的血统Ⅱ"
+    }
+  ],
+  "rank": 4,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "对所有敌人造成90.0%/96.3%/102.6%攻击力的念动属性伤害，并使其受到的伤害提升19.6%/21.0%/22.3%，效果持续2回合。",
+    "level": "6/7/8",
+    "name": "HIGHLIGHT"
+  }
+}

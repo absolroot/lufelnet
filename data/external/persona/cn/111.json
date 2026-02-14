@@ -1,0 +1,58 @@
+{
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Fire"
+    ],
+    "Weak": [
+      "Gun",
+      "Ice",
+      "Wind"
+    ]
+  },
+  "fixed_skill": {
+    "cost": "SP 19",
+    "desc": "对1名敌人造成106.2/111.5/116.8%攻击力的火焰属性伤害，有59.0/62.0/64.9%基础概率使敌人陷入燃烧状态，效果持续2回合。",
+    "level": "6/7/8",
+    "name": "亚基"
+  },
+  "innate_skill": [
+    {
+      "cost": "",
+      "desc": "受到睡眠效果时，效果抵抗提升8.8%。",
+      "learn_level": "4",
+      "level": "6/7/8",
+      "name": "睡眠耐性Ⅰ"
+    },
+    {
+      "cost": "",
+      "desc": "火焰属性伤害提升4.7%。",
+      "learn_level": "8",
+      "level": "6/7/8",
+      "name": "火焰强化Ⅰ"
+    }
+  ],
+  "max_level": 20,
+  "max_level_after_awake": 25,
+  "name": "杰克灯笼",
+  "nature": "Fire",
+  "passive_skill": [
+    {
+      "desc": "攻击力提升2.9%。造成击倒后，造成的火焰属性伤害提升20%，效果持续2回合。",
+      "name": "愚弄者的狂欢"
+    },
+    {
+      "desc": "攻击力提升2.9%。造成击倒后，造成的火焰属性伤害提升23%，效果持续2回合。",
+      "name": "愚弄者的狂欢Ⅰ"
+    }
+  ],
+  "rank": 1,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "对1名敌人造成360.0%/385.2%/410.4%攻击力的火焰属性伤害。",
+    "level": "6/7/8",
+    "name": "HIGHLIGHT"
+  }
+}

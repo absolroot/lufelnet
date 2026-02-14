@@ -1,0 +1,63 @@
+{
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Wind"
+    ],
+    "Weak": [
+      "Electric"
+    ]
+  },
+  "fixed_skill": {
+    "cost": "SP 19",
+    "desc": "对1名敌人造成113.3/117.2/121.1%攻击力的念动属性伤害，对处于精神异常状态的敌人造成TECHNICAL，技能伤害提升35%。",
+    "level": "6/7/8",
+    "name": "赛"
+  },
+  "innate_skill": [
+    {
+      "cost": "",
+      "desc": "受到遗忘效果时，效果抵抗提升8.8%。",
+      "learn_level": "4",
+      "level": "6/7/8",
+      "name": "遗忘耐性Ⅰ"
+    },
+    {
+      "cost": "SP 19",
+      "desc": "对所有敌人造成61.4/63.4/65.4%攻击力的念动属性伤害，对处于精神异常状态的敌人造成TECHNICAL，技能伤害提升35%。",
+      "learn_level": "8",
+      "level": "6/7/8",
+      "name": "玛哈赛"
+    },
+    {
+      "cost": "",
+      "desc": "念动属性伤害提升4.7%。",
+      "learn_level": "12",
+      "level": "6/7/8",
+      "name": "念动强化Ⅰ"
+    }
+  ],
+  "max_level": 30,
+  "max_level_after_awake": 35,
+  "name": "斗牛士",
+  "nature": "Psychokinesis",
+  "passive_skill": [
+    {
+      "desc": "攻击力提升7%。攻击带有精神异常的敌人时伤害提升34%。",
+      "name": "躁动的狂热祭品"
+    },
+    {
+      "desc": "攻击力提升7%。攻击带有精神异常的敌人时伤害提升40%。",
+      "name": "躁动的狂热祭品Ⅰ"
+    }
+  ],
+  "rank": 2,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "对1名敌人造成360.0%/385.2%/410.4%攻击力的念动属性伤害。",
+    "level": "6/7/8",
+    "name": "HIGHLIGHT"
+  }
+}

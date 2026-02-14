@@ -1,0 +1,85 @@
+{
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Fire",
+      "Psychokinesis",
+      "Nuclear"
+    ],
+    "Weak": [
+      "Ice"
+    ]
+  },
+  "fixed_skill": {
+    "cost": "SP 27",
+    "desc": "对单体敌人造成火焰属性伤害，并有80%的基础概率附加灼烧效果，持续2回合。",
+    "level": "6/7/8",
+    "name": "摩陀技能1"
+  },
+  "innate_skill": [
+    {
+      "cost": "",
+      "desc": "攻击力提升5.8%。",
+      "learn_level": "1",
+      "level": "6/7/8",
+      "name": "攻击强化Ⅰ"
+    },
+    {
+      "cost": "",
+      "desc": "暴击效果提升7%。",
+      "learn_level": "30",
+      "level": "6/7/8",
+      "name": "精准打击Ⅰ"
+    },
+    {
+      "cost": "",
+      "desc": "物理属性伤害提升4.7%。",
+      "learn_level": "50",
+      "level": "6/7/8",
+      "name": "物理强化Ⅰ"
+    }
+  ],
+  "max_level": 80,
+  "max_level_after_awake": 99,
+  "name": "摩陀",
+  "nature": "Fire",
+  "passive_skill": [
+    {
+      "desc": "灼烧效果的基础命中率提升10%。",
+      "name": "摩陀特性0"
+    },
+    {
+      "desc": "灼烧效果的基础命中率提升20%。",
+      "name": "摩陀特性1"
+    },
+    {
+      "desc": "火焰属性攻击提升。",
+      "name": "摩陀特性2"
+    },
+    {
+      "desc": "免疫精神异常。",
+      "name": "摩陀特性3"
+    },
+    {
+      "desc": "燃烧效果附着率提升10%。",
+      "name": "摩陀特性4"
+    },
+    {
+      "desc": "造成击倒时，概率附加灼烧效果，持续2回合。",
+      "name": "摩陀特性5"
+    },
+    {
+      "desc": "提升技能三50%基础概率刷新灼烧效果至100%。",
+      "name": "摩陀特性6"
+    }
+  ],
+  "rank": 8,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "对1名敌人造成360.0%/385.2%/410.4%攻击力的火焰属性伤害。",
+    "level": "6/7/8",
+    "name": "HIGHLIGHT"
+  }
+}

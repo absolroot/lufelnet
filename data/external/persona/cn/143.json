@@ -1,0 +1,64 @@
+{
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Fire",
+      "Nuclear"
+    ],
+    "Weak": [
+      "Ice"
+    ]
+  },
+  "fixed_skill": {
+    "cost": "SP 19",
+    "desc": "对所有敌人造成57.7/59.7/61.7%攻击力的核热属性伤害，对处于元素异常状态的敌人造成TECHNICAL，技能伤害提升16%。",
+    "level": "6/7/8",
+    "name": "玛哈芙雷"
+  },
+  "innate_skill": [
+    {
+      "cost": "",
+      "desc": "每回合开始时，回复1.9%最大生命值。",
+      "learn_level": "4",
+      "level": "6/7/8",
+      "name": "治疗促进Ⅰ"
+    },
+    {
+      "cost": "SP 19",
+      "desc": "对1名敌人造成114.8/118.7/122.6%攻击力的核热属性伤害，对处于元素异常状态的敌人造成TECHNICAL，技能伤害提升16%。",
+      "learn_level": "8",
+      "level": "6/7/8",
+      "name": "芙雷"
+    },
+    {
+      "cost": "",
+      "desc": "受到的核热属性伤害降低4.7%。",
+      "learn_level": "12",
+      "level": "6/7/8",
+      "name": "核热识破Ⅰ"
+    }
+  ],
+  "max_level": 30,
+  "max_level_after_awake": 35,
+  "name": "朱雀",
+  "nature": "Nuclear",
+  "passive_skill": [
+    {
+      "desc": "暴击效果提升7%。以群体为目标释放核热属性技能时，攻击力提升27%。",
+      "name": "南方主的日照"
+    },
+    {
+      "desc": "暴击效果提升7%。以群体为目标释放核热属性技能时，攻击力提升31%。",
+      "name": "南方主的日照Ⅰ"
+    }
+  ],
+  "rank": 2,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "对所有敌人造成180.0%/192.6%/205.2%攻击力的核热属性伤害。",
+    "level": "6/7/8",
+    "name": "HIGHLIGHT"
+  }
+}

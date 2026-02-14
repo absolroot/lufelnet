@@ -1,0 +1,57 @@
+{
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Gun",
+      "Electric"
+    ],
+    "Weak": [
+      "Wind"
+    ]
+  },
+  "fixed_skill": {
+    "cost": "SP 23",
+    "desc": "使1名同伴恢复33.1/34.8/36.4%攻击力+1001/1239/1495的生命值。",
+    "level": "6/7/8",
+    "name": "迪亚"
+  },
+  "innate_skill": [
+    {
+      "cost": "SP 19",
+      "desc": "对1名敌人造成106.2/111.5/116.8%攻击力的电击属性伤害，有59.0/62.0/64.9%基础概率使敌人陷入触电状态，效果持续2回合。",
+      "learn_level": "4",
+      "level": "6/7/8",
+      "name": "吉欧"
+    },
+    {
+      "cost": "",
+      "desc": "防御力提升8.8%。",
+      "learn_level": "8",
+      "level": "6/7/8",
+      "name": "防御强化Ⅰ"
+    }
+  ],
+  "max_level": 20,
+  "max_level_after_awake": 25,
+  "name": "阿珈席翁",
+  "nature": "Electric",
+  "passive_skill": [
+    {
+      "desc": "防御力提升4.4%。以自身为目标时，治疗量提升27%。",
+      "name": "瓶居之恩"
+    },
+    {
+      "desc": "防御力提升4.4%。以自身为目标时，治疗量提升31%。",
+      "name": "瓶居之恩Ⅰ"
+    }
+  ],
+  "rank": 1,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "使所有同伴恢复48.6%/52.0%/55.4%攻击力+1471/1854/2275的生命值。",
+    "level": "6/7/8",
+    "name": "HIGHLIGHT"
+  }
+}

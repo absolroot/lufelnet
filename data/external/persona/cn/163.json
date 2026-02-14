@@ -1,0 +1,56 @@
+{
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Electric"
+    ],
+    "Weak": [
+      "Fire"
+    ]
+  },
+  "fixed_skill": {
+    "cost": "체력 6.0%",
+    "desc": "对1名敌人造成116.4/122.2/128.0%攻击力的物理属性伤害。",
+    "level": "6/7/8",
+    "name": "突击"
+  },
+  "innate_skill": [
+    {
+      "cost": "",
+      "desc": "受到晕眩效果时，效果抵抗提升8.8%。",
+      "learn_level": "4",
+      "level": "6/7/8",
+      "name": "晕眩耐性Ⅰ"
+    },
+    {
+      "cost": "",
+      "desc": "攻击力提升5.8%。",
+      "learn_level": "8",
+      "level": "6/7/8",
+      "name": "攻击强化Ⅰ"
+    }
+  ],
+  "max_level": 20,
+  "max_level_after_awake": 25,
+  "name": "曼陀罗",
+  "nature": "Phys",
+  "passive_skill": [
+    {
+      "desc": "攻击力提升2.9%。战斗开始时攻击力提升15%，效果持续3回合。",
+      "name": "破土而出的尖叫"
+    },
+    {
+      "desc": "攻击力提升2.9%。战斗开始时攻击力提升17.5%，效果持续3回合。",
+      "name": "破土而出的尖叫Ⅰ"
+    }
+  ],
+  "rank": 1,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "对1名敌人造成360.0%/385.2%/410.4%攻击力的物理属性伤害。",
+    "level": "6/7/8",
+    "name": "HIGHLIGHT"
+  }
+}

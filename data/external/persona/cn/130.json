@@ -1,0 +1,62 @@
+{
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Phys",
+      "Gun"
+    ],
+    "Weak": []
+  },
+  "fixed_skill": {
+    "cost": "체력 6.0%",
+    "desc": "对所有敌人造成30.0/31.5/33.0%攻击力的1~3次物理属性伤害。",
+    "level": "6/7/8",
+    "name": "横冲直撞"
+  },
+  "innate_skill": [
+    {
+      "cost": "",
+      "desc": "速度提升6点。",
+      "learn_level": "4",
+      "level": "6/7/8",
+      "name": "敏捷的心得Ⅰ"
+    },
+    {
+      "cost": "",
+      "desc": "物理属性伤害提升4.7%。",
+      "learn_level": "8",
+      "level": "6/7/8",
+      "name": "物理强化Ⅰ"
+    },
+    {
+      "cost": "",
+      "desc": "先制攻击时暴击率提升4.2%。",
+      "learn_level": "12",
+      "level": "6/7/8",
+      "name": "高压电流Ⅰ"
+    }
+  ],
+  "max_level": 30,
+  "max_level_after_awake": 35,
+  "name": "鬼",
+  "nature": "Phys",
+  "passive_skill": [
+    {
+      "desc": "暴击率提升4.2%。换手攻击后，造成的伤害提升28%，效果持续1回合。",
+      "name": "连锁诡计"
+    },
+    {
+      "desc": "暴击率提升4.2%。换手攻击后，造成的伤害提升33%，效果持续1回合。",
+      "name": "连锁诡计Ⅰ"
+    }
+  ],
+  "rank": 2,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "对所有敌人造成180.0%/192.6%/205.2%攻击力的物理属性伤害。",
+    "level": "6/7/8",
+    "name": "HIGHLIGHT"
+  }
+}

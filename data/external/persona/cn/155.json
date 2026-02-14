@@ -1,0 +1,56 @@
+{
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Phys"
+    ],
+    "Weak": [
+      "Electric"
+    ]
+  },
+  "fixed_skill": {
+    "cost": "체력 6.0%",
+    "desc": "对1名敌人造成92.2/96.8/101.4%攻击力的射击属性伤害，暴击率提升16%。",
+    "level": "6/7/8",
+    "name": "指弹"
+  },
+  "innate_skill": [
+    {
+      "cost": "체력 6.0%",
+      "desc": "对1名敌人造成108.3/113.7/119.1%攻击力的物理属性伤害，暴击率提升20%，命中率降低20%",
+      "learn_level": "4",
+      "level": "6/7/8",
+      "name": "幸运拳"
+    },
+    {
+      "cost": "",
+      "desc": "暴击效果提升7%。",
+      "learn_level": "8",
+      "level": "6/7/8",
+      "name": "精准打击Ⅰ"
+    }
+  ],
+  "max_level": 20,
+  "max_level_after_awake": 25,
+  "name": "背背鬼",
+  "nature": "Gun",
+  "passive_skill": [
+    {
+      "desc": "暴击率提升2.1%。造成射击属性伤害时，暴击率提升14%。",
+      "name": "灵财的射手"
+    },
+    {
+      "desc": "暴击率提升2.1%。造成射击属性伤害时，暴击率提升16%。",
+      "name": "灵财的射手Ⅰ"
+    }
+  ],
+  "rank": 1,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "对1名敌人造成360.0%/385.2%/410.4%攻击力的射击属性伤害。",
+    "level": "6/7/8",
+    "name": "HIGHLIGHT"
+  }
+}

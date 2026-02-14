@@ -1,0 +1,57 @@
+{
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Phys"
+    ],
+    "Weak": [
+      "Fire",
+      "Wind"
+    ]
+  },
+  "fixed_skill": {
+    "cost": "SP 22",
+    "desc": "使1名敌人的攻击力降低25.8%/27.1%/28.4%，效果持续3回合。",
+    "level": "6/7/8",
+    "name": "塔伦达"
+  },
+  "innate_skill": [
+    {
+      "cost": "",
+      "desc": "速度降低6点，生命值提升15%。",
+      "learn_level": "4",
+      "level": "6/7/8",
+      "name": "不动如山Ⅰ"
+    },
+    {
+      "cost": "",
+      "desc": "效果抵抗提升7%。",
+      "learn_level": "8",
+      "level": "6/7/8",
+      "name": "抵抗强化Ⅰ"
+    }
+  ],
+  "max_level": 20,
+  "max_level_after_awake": 25,
+  "name": "软泥怪",
+  "nature": "Curse",
+  "passive_skill": [
+    {
+      "desc": "效果抵抗提升3.5%。受到减益效果时，效果抵抗提升30%。",
+      "name": "流动的臭气"
+    },
+    {
+      "desc": "效果抵抗提升3.5%。受到减益效果时，效果抵抗提升35%。",
+      "name": "流动的臭气Ⅰ"
+    }
+  ],
+  "rank": 1,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "对所有敌人造成90.0%/96.3%/102.6%攻击力的诅咒属性伤害，并使其受到的伤害提升19.6%/21.0%/22.3%，效果持续2回合。",
+    "level": "6/7/8",
+    "name": "HIGHLIGHT"
+  }
+}

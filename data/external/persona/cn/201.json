@@ -1,0 +1,75 @@
+{
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Nuclear",
+      "Bless"
+    ],
+    "Weak": [
+      "Psychokinesis"
+    ]
+  },
+  "fixed_skill": {
+    "cost": "SP 20",
+    "desc": "对所有敌人造成61.8/64.2/66.6%攻击力的核热属性伤害，对处于元素异常状态的敌人造成TECHNICAL，技能伤害提升18%。",
+    "level": "6/7/8",
+    "name": "玛哈芙雷拉"
+  },
+  "innate_skill": [
+    {
+      "cost": "SP 22",
+      "desc": "有43.1/45.3/47.4%基础概率使1名敌人陷入狂怒，效果持续2回合。",
+      "learn_level": "5",
+      "level": "6/7/8",
+      "name": "挑衅"
+    },
+    {
+      "cost": "",
+      "desc": "受到的念动属性伤害降低6.7%。",
+      "learn_level": "10",
+      "level": "6/7/8",
+      "name": "念动识破Ⅱ"
+    },
+    {
+      "cost": "",
+      "desc": "受到的核热属性伤害降低6.7%。",
+      "learn_level": "15",
+      "level": "6/7/8",
+      "name": "核热识破Ⅱ"
+    },
+    {
+      "cost": "SP 19",
+      "desc": "对1名敌人造成81.4/85.5/89.5%攻击力的万能属性伤害，无视其防御力。",
+      "learn_level": "20",
+      "level": "6/7/8",
+      "name": "米吉多"
+    }
+  ],
+  "max_level": 50,
+  "max_level_after_awake": 60,
+  "name": "托特",
+  "nature": "Nuclear",
+  "passive_skill": [
+    {
+      "desc": "暴击效果提升14%。对生命值低于50%的敌人，造成的核热伤害提升46%。",
+      "name": "热心的记录"
+    },
+    {
+      "desc": "暴击效果提升14%。对生命值低于50%的敌人，造成的核热伤害提升52%。",
+      "name": "热心的记录Ⅰ"
+    },
+    {
+      "desc": "暴击效果提升14%。对生命值低于50%的敌人，造成的核热伤害提升58%。",
+      "name": "热心的记录Ⅱ"
+    }
+  ],
+  "rank": 4,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "对所有敌人造成180.0%/192.6%/205.2%攻击力的核热属性伤害。",
+    "level": "6/7/8",
+    "name": "HIGHLIGHT"
+  }
+}

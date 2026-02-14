@@ -1,0 +1,57 @@
+{
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Electric"
+    ],
+    "Weak": [
+      "Gun",
+      "Bless"
+    ]
+  },
+  "fixed_skill": {
+    "cost": "SP 19",
+    "desc": "对1名敌人造成116.5/123.2/129.9%攻击力的诅咒属性伤害，使敌人获得0~1个诅咒效果。",
+    "level": "6/7/8",
+    "name": "耶哈"
+  },
+  "innate_skill": [
+    {
+      "cost": "SP 19",
+      "desc": "对1名敌人造成41.4/43.5/45.5%攻击力的万能属性伤害，无视其防御力，并使自身恢复41.4/43.5/45.5%攻击力的生命值。",
+      "learn_level": "4",
+      "level": "6/7/8",
+      "name": "吸血"
+    },
+    {
+      "cost": "",
+      "desc": "生命值提升5.1%。",
+      "learn_level": "8",
+      "level": "6/7/8",
+      "name": "生命强化Ⅰ"
+    }
+  ],
+  "max_level": 20,
+  "max_level_after_awake": 25,
+  "name": "男梦魔",
+  "nature": "Curse",
+  "passive_skill": [
+    {
+      "desc": "生命值提升3.5%。造成诅咒属性伤害后，降低目标10%攻击力，效果持续2回合。",
+      "name": "堕落的低语"
+    },
+    {
+      "desc": "生命值提升3.5%。造成诅咒属性伤害后，降低目标11.5%攻击力，效果持续2回合。",
+      "name": "堕落的低语Ⅰ"
+    }
+  ],
+  "rank": 1,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "对1名敌人造成360.0%/385.2%/410.4%攻击力的诅咒属性伤害。",
+    "level": "6/7/8",
+    "name": "HIGHLIGHT"
+  }
+}

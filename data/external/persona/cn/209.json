@@ -1,0 +1,86 @@
+{
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Gun",
+      "Fire",
+      "Bless",
+      "Curse"
+    ],
+    "Weak": [
+      "Ice"
+    ]
+  },
+  "fixed_skill": {
+    "cost": "체력 8.0%",
+    "desc": "对所有敌人造成3段23.4%/25.5%/27.7%攻击力的射击属性伤害，若场上存在具有『瞄准』的敌人，则该技能的攻击力提升30.0%/32.7%/35.4%，暴击效果提升36.0%/39.2%/42.5%。",
+    "level": "6/7/8",
+    "name": "子弹时间"
+  },
+  "innate_skill": [
+    {
+      "cost": "",
+      "desc": "攻击力提升5.8%。",
+      "learn_level": "1",
+      "level": "6/7/8",
+      "name": "攻击强化Ⅰ"
+    },
+    {
+      "cost": "",
+      "desc": "暴击效果提升7%。",
+      "learn_level": "30",
+      "level": "6/7/8",
+      "name": "精准打击Ⅰ"
+    },
+    {
+      "cost": "",
+      "desc": "物理属性伤害提升4.7%。",
+      "learn_level": "50",
+      "level": "6/7/8",
+      "name": "物理强化Ⅰ"
+    }
+  ],
+  "max_level": 80,
+  "max_level_after_awake": 99,
+  "name": "魔罗",
+  "nature": "Fire",
+  "passive_skill": [
+    {
+      "desc": "所有同伴攻击带有『瞄准』的敌人时，攻击力提升15%。",
+      "name": "余孽收割"
+    },
+    {
+      "desc": "AAAAAA==",
+      "name": "余孽收割Ⅰ"
+    },
+    {
+      "desc": "AAAAAA==",
+      "name": "余孽收割Ⅱ"
+    },
+    {
+      "desc": "AAAAAA==",
+      "name": "余孽收割Ⅲ"
+    },
+    {
+      "desc": "AAAAAA==",
+      "name": "余孽收割Ⅳ"
+    },
+    {
+      "desc": "暴击率、暴击效果提升7.5%",
+      "name": "余孽收割Ⅴ"
+    },
+    {
+      "desc": "自身攻击有『瞄准』的敌人时，造成1次20%攻击力的射击属性伤害。",
+      "name": "余孽收割Ⅵ"
+    }
+  ],
+  "rank": 8,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "对1名敌人造成360.0%/385.2%/410.4%攻击力的火焰属性伤害。",
+    "level": "6/7/8",
+    "name": "HIGHLIGHT"
+  }
+}

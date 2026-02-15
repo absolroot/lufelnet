@@ -25,6 +25,7 @@ const CHARACTER_ROOT = path.join(PROJECT_ROOT, 'data', 'characters');
 const TIER_ICON_DIR = path.join(PROJECT_ROOT, 'assets', 'img', 'tier');
 const PERSONA_ICON_DIR = path.join(PROJECT_ROOT, 'assets', 'img', 'persona');
 const WONDER_WEAPON_ICON_DIR = path.join(PROJECT_ROOT, 'assets', 'img', 'wonder-weapon');
+const REVELATION_ICON_DIR = path.join(PROJECT_ROOT, 'assets', 'img', 'revelation');
 const ICON_EXTS = ['.webp', '.png', '.jpg', '.jpeg', '.svg'];
 const DATA_TEXT_EXTS = ['.js', '.json', '.md', '.txt', '.csv', '.yml', '.yaml', '.html', '.css', '.ts'];
 const DATA_FILE_MAX_BYTES = 2 * 1024 * 1024;
@@ -50,13 +51,21 @@ const DOMAIN_CAPABILITIES = [
     enabled: true,
     features: ['list', 'report', 'patch'],
     parts: ['name', 'effect']
+  },
+  {
+    id: 'revelation',
+    label: 'Revelation',
+    enabled: true,
+    features: ['list', 'report', 'patch', 'create'],
+    parts: ['name', 'relation', 'effect', 'unreleased']
   }
 ];
 const DEFAULT_DOMAIN = 'character';
 const DOMAIN_PATCH_SCRIPT = {
   character: path.join('apps', 'patch-console', 'patch-characters.mjs'),
   persona: path.join('apps', 'patch-console', 'patch-persona.mjs'),
-  wonder_weapon: path.join('apps', 'patch-console', 'patch-wonder-weapon.mjs')
+  wonder_weapon: path.join('apps', 'patch-console', 'patch-wonder-weapon.mjs'),
+  revelation: path.join('apps', 'patch-console', 'patch-revelation.mjs')
 };
 const DOMAIN_DATA_EDITOR_ROOTS = {
   character: [
@@ -94,6 +103,28 @@ const DOMAIN_DATA_EDITOR_ROOTS = {
       label: 'data/external/weapon',
       path: path.join(PROJECT_ROOT, 'data', 'external', 'weapon')
     }
+  ],
+  revelation: [
+    {
+      id: 'revelation_kr',
+      label: 'data/kr/revelations',
+      path: path.join(PROJECT_ROOT, 'data', 'kr', 'revelations')
+    },
+    {
+      id: 'revelation_en',
+      label: 'data/en/revelations',
+      path: path.join(PROJECT_ROOT, 'data', 'en', 'revelations')
+    },
+    {
+      id: 'revelation_jp',
+      label: 'data/jp/revelations',
+      path: path.join(PROJECT_ROOT, 'data', 'jp', 'revelations')
+    },
+    {
+      id: 'revelation_cn',
+      label: 'data/cn/revelations',
+      path: path.join(PROJECT_ROOT, 'data', 'cn', 'revelations')
+    }
   ]
 };
 
@@ -113,6 +144,7 @@ const MIME_TYPES = {
 let tierIconIndexCache = null;
 let personaIconIndexCache = null;
 let wonderWeaponIconIndexCache = null;
+let revelationIconIndexCache = null;
 
 function hasOwn(obj, key) {
   return Object.prototype.hasOwnProperty.call(obj || {}, key);
@@ -151,6 +183,12 @@ function normalizeDomain(raw) {
   const value = String(raw || DEFAULT_DOMAIN).trim().toLowerCase();
   if (!value) return DEFAULT_DOMAIN;
   return value;
+}
+
+function defaultLangCsvForDomain(domain) {
+  const d = normalizeDomain(domain);
+  if (d === 'wonder_weapon' || d === 'revelation') return 'kr,en,jp,cn';
+  return 'kr,en,jp';
 }
 
 function makeDiffKey(domain, diff, options = {}) {
@@ -973,6 +1011,26 @@ function buildWonderWeaponIconIndex() {
   return map;
 }
 
+function buildRevelationIconIndex() {
+  if (revelationIconIndexCache) return revelationIconIndexCache;
+  const map = new Map();
+  if (!fs.existsSync(REVELATION_ICON_DIR)) {
+    revelationIconIndexCache = map;
+    return map;
+  }
+  const files = fs.readdirSync(REVELATION_ICON_DIR);
+  for (const fileName of files) {
+    const ext = path.extname(fileName).toLowerCase();
+    if (!ICON_EXTS.includes(ext)) continue;
+    const stem = path.basename(fileName, ext);
+    const key = normalizeLabel(stem);
+    if (!key) continue;
+    map.set(key, toAssetIconUrl('revelation', fileName));
+  }
+  revelationIconIndexCache = map;
+  return map;
+}
+
 function resolveCharacterRowIcon({ key, local, api }) {
   const exactCandidates = [key, local, api];
   for (const candidate of exactCandidates) {
@@ -1026,6 +1084,23 @@ function resolveWonderWeaponRowIcon({ key, local, api }) {
   return null;
 }
 
+function resolveRevelationRowIcon({ key, local, api }) {
+  const exactCandidates = [key, local, api];
+  for (const candidate of exactCandidates) {
+    const exact = findExactIconByName(candidate, REVELATION_ICON_DIR, 'revelation');
+    if (exact) return exact;
+  }
+
+  const iconIndex = buildRevelationIconIndex();
+  const candidates = [key, local, api];
+  for (const candidate of candidates) {
+    const normalized = normalizeLabel(candidate);
+    if (!normalized) continue;
+    if (iconIndex.has(normalized)) return iconIndex.get(normalized);
+  }
+  return null;
+}
+
 function resolveRowIcon({ key, local, api }, domain = DEFAULT_DOMAIN) {
   const d = normalizeDomain(domain);
   if (d === 'persona') {
@@ -1033,6 +1108,9 @@ function resolveRowIcon({ key, local, api }, domain = DEFAULT_DOMAIN) {
   }
   if (d === 'wonder_weapon') {
     return resolveWonderWeaponRowIcon({ key, local, api });
+  }
+  if (d === 'revelation') {
+    return resolveRevelationRowIcon({ key, local, api });
   }
   return resolveCharacterRowIcon({ key, local, api });
 }
@@ -1211,7 +1289,7 @@ function buildPatchArgsFromFilter(payload, dryRun) {
   const langs = parseCsv(payload.langs);
   const parts = parseCsv(payload.parts);
 
-  args.push('--langs', langs.length > 0 ? langs.join(',') : 'kr,en,jp');
+  args.push('--langs', langs.length > 0 ? langs.join(',') : defaultLangCsvForDomain(payload.domain));
   if (parts.length > 0) {
     args.push('--parts', parts.join(','));
   }
@@ -1334,7 +1412,7 @@ function addCharacter(payload) {
 async function handleList(res, urlObj) {
   const gate = ensureDomainFeatureOrRespond(res, urlObj.searchParams.get('domain'), 'list');
   if (!gate.ok) return;
-  const langs = String(urlObj.searchParams.get('langs') || 'kr,en,jp');
+  const langs = String(urlObj.searchParams.get('langs') || defaultLangCsvForDomain(gate.domain));
   const scriptRel = getPatchScriptForDomain(gate.domain);
   const run = await runNodeScript([scriptRel, 'list', '--langs', langs], { timeoutMs: 120000 });
   if (run.code !== 0) {
@@ -1364,7 +1442,7 @@ async function handleReport(res, payload) {
 
   const scriptRel = getPatchScriptForDomain(gate.domain);
   const args = [scriptRel, 'report-json'];
-  args.push('--langs', langs.length > 0 ? langs.join(',') : 'kr,en,jp');
+  args.push('--langs', langs.length > 0 ? langs.join(',') : defaultLangCsvForDomain(gate.domain));
   args.push(...buildScopeArgs({ scopeMode: payload.scopeMode, scopeValue: payload.scopeValue }));
   if (parts.length > 0) {
     args.push('--parts', parts.join(','));
@@ -1878,15 +1956,78 @@ async function handlePatch(res, payload) {
   });
 }
 
-async function handleAddCharacter(res, payload) {
+async function handleCreateEntry(res, payload) {
   const gate = ensureDomainFeatureOrRespond(res, payload.domain, 'create');
   if (!gate.ok) return;
   try {
-    const result = addCharacter(payload);
-    sendJson(res, 200, {
-      ok: true,
-      domain: gate.domain,
-      result
+    if (gate.domain === 'character') {
+      const result = addCharacter(payload);
+      sendJson(res, 200, {
+        ok: true,
+        domain: gate.domain,
+        result
+      });
+      return;
+    }
+
+    if (gate.domain === 'revelation') {
+      const scriptRel = getPatchScriptForDomain(gate.domain);
+      const args = [scriptRel, 'create'];
+      const kind = String(payload.kind || '').trim();
+      const kr = String(payload.kr || '').trim();
+      const en = String(payload.en || '').trim();
+      const jp = String(payload.jp || '').trim();
+      const cn = String(payload.cn || '').trim();
+      const types = String(payload.types || '').trim();
+      if (kind) args.push('--kind', kind);
+      if (kr) args.push('--kr', kr);
+      if (en) args.push('--en', en);
+      if (jp) args.push('--jp', jp);
+      if (cn) args.push('--cn', cn);
+      if (types) args.push('--types', types);
+      if (Boolean(payload.unreleased)) args.push('--unreleased');
+
+      const setFields = ['set2_kr', 'set4_kr', 'set2_en', 'set4_en', 'set2_jp', 'set4_jp', 'set2_cn', 'set4_cn'];
+      for (const field of setFields) {
+        const value = payload[field];
+        if (value == null) continue;
+        const text = String(value);
+        if (!text.trim()) continue;
+        args.push(`--${field}`, text);
+      }
+
+      const run = await runNodeScript(args, { timeoutMs: 120000 });
+      if (run.code !== 0) {
+        sendJson(res, 400, {
+          ok: false,
+          error: 'create_failed',
+          args,
+          stdout: run.stdout,
+          stderr: run.stderr
+        });
+        return;
+      }
+
+      let parsed = null;
+      try {
+        parsed = JSON.parse(String(run.stdout || '').trim());
+      } catch {
+        // ignored
+      }
+
+      sendJson(res, 200, {
+        ok: true,
+        domain: gate.domain,
+        result: parsed?.entry || null,
+        stdout: run.stdout,
+        stderr: run.stderr
+      });
+      return;
+    }
+
+    sendJson(res, 400, {
+      ok: false,
+      error: `Unsupported create domain: ${gate.domain}`
     });
   } catch (error) {
     sendJson(res, 400, {
@@ -2033,9 +2174,15 @@ async function requestHandler(req, res) {
     return;
   }
 
+  if (pathname === '/api/create-entry' && req.method === 'POST') {
+    const body = await readBody(req);
+    await handleCreateEntry(res, body);
+    return;
+  }
+
   if (pathname === '/api/add-character' && req.method === 'POST') {
     const body = await readBody(req);
-    await handleAddCharacter(res, body);
+    await handleCreateEntry(res, body);
     return;
   }
 

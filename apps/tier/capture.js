@@ -1,4 +1,11 @@
 (function(){
+  const tierText = (key, fallback = '') => {
+    if (typeof window.t === 'function') {
+      return window.t(key, fallback);
+    }
+    return fallback || key;
+  };
+
   async function ensureHtmlToImage(){
     if (window.htmlToImage) return;
     await new Promise((resolve, reject)=>{
@@ -68,14 +75,14 @@
             clearAllTiers();
             window.loadTierDataFromURL(tierData);
           } else {
-            alert('Tier loading function not available');
+            alert(tierText('tierLoadFunctionUnavailable', 'Tier loading function not available'));
           }
         } else {
-          alert('Invalid tier data format');
+          alert(tierText('tierInvalidDataFormat', 'Invalid tier data format'));
         }
       } catch (err) {
         console.error('Failed to parse JSON:', err);
-        alert('Failed to parse JSON file');
+        alert(tierText('tierFailedParseJsonFile', 'Failed to parse JSON file'));
       }
     };
     reader.readAsText(file);
@@ -125,7 +132,7 @@
       btn.className = 'tier-capture-btn';
       // 카메라 아이콘
       btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 15a3 3 0 100-6 3 3 0 000 6z"/><path fill-rule="evenodd" d="M8.293 5.293A1 1 0 019 5h6a1 1 0 01.707.293l1.414 1.414A1 1 0 0017.828 7H20a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V9a2 2 0 012-2h2.172a1 1 0 00.707-.293l1.414-1.414zM12 17a5 5 0 100-10 5 5 0 000 10z" clip-rule="evenodd"/></svg>';
-      btn.title = 'Capture Image';
+      btn.title = tierText('captureImage', 'Capture Image');
       applyButtonStyle(btn);
       btn.addEventListener('click', capturePositionTiers);
     }
@@ -140,7 +147,7 @@
       btn.className = 'tier-export-btn';
       // 내보내기 아이콘 (다운로드 화살표 + 파일)
       btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3a1 1 0 0 1 1 1v8.586l2.293-2.293a1 1 0 1 1 1.414 1.414l-4.007 4.007a1 1 0 0 1-1.414 0L7.279 11.707a1 1 0 1 1 1.414-1.414L11 12.586V4a1 1 0 0 1 1-1z"/><path d="M5 18a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2a1 1 0 1 1 2 0v2a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4v-2a1 1 0 1 1 2 0v2z"/></svg>';
-      btn.title = 'Export JSON';
+      btn.title = tierText('exportJSON', 'Export JSON');
       applyButtonStyle(btn);
       btn.addEventListener('click', exportTierJSON);
     }
@@ -155,7 +162,7 @@
       btn.className = 'tier-import-btn';
       // 가져오기 아이콘 (업로드 화살표 + 파일)
       btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 16a1 1 0 0 0 1-1V6.414l2.293 2.293a1 1 0 0 0 1.414-1.414l-4.007-4.007a1 1 0 0 0-1.414 0L7.279 7.293a1 1 0 1 0 1.414 1.414L11 6.414V15a1 1 0 0 0 1 1z"/><path d="M5 18a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2a1 1 0 1 1 2 0v2a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4v-2a1 1 0 1 1 2 0v2z"/></svg>';
-      btn.title = 'Import JSON';
+      btn.title = tierText('importJSON', 'Import JSON');
       applyButtonStyle(btn);
 
       // 숨겨진 파일 입력 생성

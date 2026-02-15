@@ -27,7 +27,7 @@ async function ensureDepsLoaded() {
   if (await tryLoad()) return;
   try {
     execSync('npm init -y', { stdio: 'ignore' });
-  } catch {}
+  } catch { }
   try {
     execSync('npm i -D recast @babel/parser prettier', { stdio: 'ignore' });
   } catch (e) {
@@ -503,7 +503,7 @@ function writePerCharacterUnified(charKey) {
 
   // ritual.js
   const ritualJs =
-`window.ritualData = window.ritualData || {};
+    `window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
 window.ritualData[${JSON.stringify(charKey)}] = ${JSON.stringify(finalKrRitual, null, 2)};
@@ -514,7 +514,7 @@ window.jpCharacterRitualData[${JSON.stringify(charKey)}] = ${JSON.stringify((Obj
 
   // skill.js
   const skillJs =
-`window.characterSkillsData = window.characterSkillsData || {};
+    `window.characterSkillsData = window.characterSkillsData || {};
 window.enCharacterSkillsData = window.enCharacterSkillsData || {};
 window.jpCharacterSkillsData = window.jpCharacterSkillsData || {};
 window.characterSkillsData[${JSON.stringify(charKey)}] = ${JSON.stringify(krSkills || {}, null, 2)};
@@ -525,7 +525,7 @@ window.jpCharacterSkillsData[${JSON.stringify(charKey)}] = ${JSON.stringify((Obj
 
   // weapon.js
   const weaponJs =
-`window.WeaponData = window.WeaponData || {};
+    `window.WeaponData = window.WeaponData || {};
 window.enCharacterWeaponData = window.enCharacterWeaponData || {};
 window.jpCharacterWeaponData = window.jpCharacterWeaponData || {};
 window.WeaponData[${JSON.stringify(charKey)}] = ${JSON.stringify(krWeapon || {}, null, 2)};
@@ -767,7 +767,7 @@ function updateBaseStatsKR(charKey, external) {
     fs.mkdirSync(destDir, { recursive: true });
     const destFile = path.join(destDir, 'base_stats.js');
     const content =
-`window.basicStatsData = window.basicStatsData || {};
+      `window.basicStatsData = window.basicStatsData || {};
 window.basicStatsData[${JSON.stringify(charKey)}] = ${JSON.stringify(outObj, null, 2)};
 `;
     fs.writeFileSync(destFile, content, 'utf8');
@@ -780,7 +780,7 @@ window.basicStatsData[${JSON.stringify(charKey)}] = ${JSON.stringify(outObj, nul
 }
 
 function updateNamesKR(local, key, nameMap) {
-  const krCharsPath = path.join('data', 'kr', 'characters', 'characters.js');
+  const krCharsPath = path.join('data', 'character_info.js');
   if (!fs.existsSync(krCharsPath)) return;
   const code = readText(krCharsPath);
   const ast = parseAst(code);
@@ -825,7 +825,7 @@ function readPerCharacterBlock(filePath, windowName, charKey) {
 function createPerCharacterSkeleton(kind) {
   if (kind === 'ritual') {
     return (
-`window.ritualData = window.ritualData || {};
+      `window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
 `
@@ -833,7 +833,7 @@ window.jpCharacterRitualData = window.jpCharacterRitualData || {};
   }
   if (kind === 'skill') {
     return (
-`window.characterSkillsData = window.characterSkillsData || {};
+      `window.characterSkillsData = window.characterSkillsData || {};
 window.enCharacterSkillsData = window.enCharacterSkillsData || {};
 window.jpCharacterSkillsData = window.jpCharacterSkillsData || {};
 `
@@ -841,7 +841,7 @@ window.jpCharacterSkillsData = window.jpCharacterSkillsData || {};
   }
   if (kind === 'weapon') {
     return (
-`window.WeaponData = window.WeaponData || {};
+      `window.WeaponData = window.WeaponData || {};
 window.enCharacterWeaponData = window.enCharacterWeaponData || {};
 window.jpCharacterWeaponData = window.jpCharacterWeaponData || {};
 `
@@ -849,7 +849,7 @@ window.jpCharacterWeaponData = window.jpCharacterWeaponData || {};
   }
   if (kind === 'base_stats') {
     return (
-`window.basicStatsData = window.basicStatsData || {};
+      `window.basicStatsData = window.basicStatsData || {};
 `
     );
   }
@@ -1074,14 +1074,16 @@ async function main() {
 
   const extTarget = loadExternal(lang, local);
 
-  // find character key via codename in target language characters.js (fallback to KR)
-  const charsPath = path.join('data', lang, 'characters', 'characters.js');
+  // find character key via codename in target language data (fallback to KR global data)
+  const charsPath = (lang === 'kr')
+    ? path.join('data', 'character_info.js')
+    : path.join('data', lang, 'characters', 'characters.js');
   let key = null;
   if (fs.existsSync(charsPath)) {
     key = findCharacterKeyByCodename(charsPath, local);
   }
   if (!key && lang !== 'kr') {
-    const alt = path.join('data', 'kr', 'characters', 'characters.js');
+    const alt = path.join('data', 'character_info.js');
     if (fs.existsSync(alt)) key = findCharacterKeyByCodename(alt, local);
   }
   if (!key) {
@@ -1125,5 +1127,4 @@ async function main() {
 }
 
 main();
-
 

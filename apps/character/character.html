@@ -3,7 +3,7 @@ layout: default
 custom_css: [cha_detail, cha_detail_img, tactic-posts, tactic-share]
 custom_js: [character/cha_video, character/cha_detail, tooltip, detail/dot-carousel, marked.min, character/cha_stats,
 character/character-i18n, character/helpmodal, character/QEVEL]
-custom_data: [characters/characters.js, revelations/revelations.js,
+custom_data: [/data/character_info.js, revelations/revelations.js,
 tooltip.js, wonder/weapons.js]
 permalink: /character.html
 redirect_from: []
@@ -44,22 +44,22 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                         return 'kr';
                     }
 
-                    const currentLang = getCurrentLanguage();
-                    let homeText = '홈';
-                    let characterText = '괴도';
-
-                    if (currentLang === 'en') {
-                        homeText = 'Home';
-                        characterText = 'Characters';
-                    } else if (currentLang === 'jp') {
-                        homeText = 'ホーム';
-                        characterText = '怪盗';
+                    function getCharacterI18nText(key, fallback) {
+                        if (typeof window.t === 'function') {
+                            try {
+                                return window.t(key, fallback);
+                            } catch (_) { }
+                        }
+                        if (window.I18nService && typeof window.I18nService.t === 'function') {
+                            const result = window.I18nService.t(key, fallback);
+                            if (result && result !== key) return result;
+                        }
+                        return fallback;
                     }
-
-                    document.write(`<a href="../../?v=${APP_VERSION}">${homeText}</a>`);
                 </script>
+                <a id="character-home-link" href="../../">홈</a>
                 <span class="separator">/</span>
-                <script>document.write(`<a href="/character/?v=${APP_VERSION}">${characterText}</a>`);</script>
+                <a id="character-list-link" href="/character/">괴도</a>
                 <span class="separator">/</span>
                 <span class="current-page"></span>
             </div>
@@ -720,6 +720,26 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             } catch (e) { console.warn(`[SAFE:addEvent:${name}]`, e); }
         };
 
+        const pageLang = getCurrentLanguage();
+        try {
+            if (window.I18nService && typeof window.I18nService.init === 'function') {
+                await window.I18nService.init('character', pageLang);
+            }
+        } catch (e) { console.warn('[SAFE:I18nService.init]', e); }
+
+        try {
+            const homeLink = document.getElementById('character-home-link');
+            const listLink = document.getElementById('character-list-link');
+            if (homeLink) {
+                homeLink.href = `../../?v=${APP_VERSION}`;
+                homeLink.textContent = getCharacterI18nText('navHome', '홈');
+            }
+            if (listLink) {
+                listLink.href = `/character/?v=${APP_VERSION}`;
+                listLink.textContent = getCharacterI18nText('navCurrent', '괴도');
+            }
+        } catch (e) { console.warn('[SAFE:nav-i18n]', e); }
+
         safeRun('Navigation.load', () => Navigation.load('character', 1));
         safeRun('VersionChecker.check', () => VersionChecker.check());
 
@@ -1259,16 +1279,14 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
 
         // 코드네임 설정
         try {
-            const codeNameLabel = currentLang === 'kr' ? '코드네임 ' :
-                currentLang === 'en' ? 'Code Name ' : 'コードネーム ';
+            const codeNameLabel = `${getCharacterI18nText('characterDetailCodeName', '코드네임')} `;
             const codeEl = document.querySelector('.code-name');
             if (codeEl) {
                 codeEl.innerHTML = `
                     <span class="label">${codeNameLabel}</span><span class="value">${character.codename || ''}</span>
                 `;
             }
-            const personaLabel = currentLang === 'kr' ? '페르소나 ' :
-                currentLang === 'en' ? 'Persona ' : 'ペルソナ ';
+            const personaLabel = `${getCharacterI18nText('characterDetailPersona', '페르소나')} `;
             const personaValue = currentLang === 'en' && character.persona_en ? character.persona_en :
                 currentLang === 'jp' && character.persona_jp ? character.persona_jp :
                     character.persona || '';
@@ -1973,13 +1991,14 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         // 영어/일본어에서 주의 메시지 표시
         try {
             if (currentLang === 'en' || currentLang === 'jp') {
-                const warningMessage = currentLang === 'en' ?
-                    'The recommended settings are based on future content. Some features may not be currently available (Revelations, Mindscape, etc.)' :
-                    '推奨設定は将来のコンテンツを基準に提示されます。現在は存在しないコンテンツが含まれる可能性があります（啓示、イメジャリーなど）';
+                const warningMessage = getCharacterI18nText(
+                    'characterDetailNoticeMessage',
+                    'The recommended settings are based on future content. Some features may not be currently available (Revelations, Mindscape, etc.)'
+                );
                 const warningDiv = document.createElement('div');
                 warningDiv.className = 'warning-message';
                 warningDiv.style.cssText = 'background: rgba(17, 17, 17, 0.2); color: #6c757d; padding: 10px; margin: 15px 0; border-radius: 4px; font-size: 13px; opacity: 0.5;';
-                warningDiv.innerHTML = `<strong>${currentLang === 'en' ? 'Notice' : '注意'}</strong><br>${warningMessage}`;
+                warningDiv.innerHTML = `<strong>${getCharacterI18nText('characterDetailNoticeTitle', 'Notice')}</strong><br>${warningMessage}`;
                 const settingsCard = document.querySelector('.settings-card');
                 if (settingsCard) {
                     settingsCard.insertBefore(warningDiv, settingsCard.firstChild.nextSibling);
@@ -2194,9 +2213,10 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 noteContainer.style.fontStyle = 'italic';
 
                 const noteText = document.createElement('p');
-                noteText.textContent = currentLang === 'en'
-                    ? 'Note: Some recommended personas & weapons may not be released yet in your region.'
-                    : '※推奨されているペルソナとウェポンの一部は、現在の地域ではリリースされていない可能性があります。';
+                noteText.textContent = getCharacterI18nText(
+                    'characterDetailUnreleasedNote',
+                    'Note: Some recommended personas & weapons may not be released yet in your region.'
+                );
 
                 noteContainer.appendChild(noteText);
                 if (personaContentEl && personaContentEl.parentNode) {
@@ -2228,20 +2248,10 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
 
     // 섹션 제목 다국어 지원
     function updateSectionTitles() {
-        const currentLang = getCurrentLanguage();
         const personaTitle = document.querySelector('.recommended-persona-card h2');
         const partyTitle = document.querySelector('.recommended-party-card h2');
-
-        if (currentLang === 'en') {
-            if (personaTitle) personaTitle.textContent = 'Recommended Combination';
-            if (partyTitle) partyTitle.textContent = 'Recommended Parties Example';
-        } else if (currentLang === 'jp') {
-            if (personaTitle) personaTitle.textContent = '推奨コンビネーション';
-            if (partyTitle) partyTitle.textContent = '推奨パーティ例';
-        } else {
-            if (personaTitle) personaTitle.textContent = '추천 조합';
-            if (partyTitle) partyTitle.textContent = '추천 파티 예시';
-        }
+        if (personaTitle) personaTitle.textContent = getCharacterI18nText('characterDetailRecommendedCombination', '추천 조합');
+        if (partyTitle) partyTitle.textContent = getCharacterI18nText('characterDetailRecommendedPartyExample', '추천 파티 예시');
     }
 
     // 페르소나 이름 다국어 지원 (data/persona 기반)
@@ -2272,7 +2282,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         krNameDataLoaded = true;
         try {
             const base = (typeof BASE_URL !== 'undefined') ? BASE_URL : '';
-            const url = `${base}/data/kr/characters/characters.js?v=${APP_VERSION}`;
+            const url = `${base}/data/character_info.js?v=${APP_VERSION}`;
             const res = await fetch(url, { cache: 'no-store' });
             if (!res.ok) throw new Error(`HTTP ${res.status}`);
             const text = await res.text();
@@ -2577,7 +2587,8 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
 
         try {
             // console.log(`Loading ${currentLang} character list...`);
-            const langUrl = `../data/${currentLang}/characters/characters.js?v=${Date.now()}`;
+            const base = (typeof BASE_URL !== 'undefined') ? BASE_URL : '';
+            const langUrl = `${base}/data/${currentLang}/characters/characters.js?v=${Date.now()}`;
             // console.log('Character list URL:', langUrl);
 
             const langResponse = await fetch(langUrl);
@@ -2724,15 +2735,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
 
             const title = document.createElement('h3');
             title.className = 'friends-title';
-            // 라인업 제목 다국어 처리
-            const lang = getCurrentLanguage();
-            if (lang === 'en') {
-                title.textContent = 'Lineup';
-            } else if (lang === 'jp') {
-                title.textContent = 'ラインナップ';
-            } else {
-                title.textContent = '라인업';
-            }
+            title.textContent = getCharacterI18nText('characterDetailLineup', '라인업');
             lineupSection.appendChild(title);
 
             const list = document.createElement('div');
@@ -2910,14 +2913,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         if (hasFriends) {
             const partyLabel = document.createElement('h3');
             partyLabel.className = 'party-label';
-            const lang = getCurrentLanguage();
-            if (lang === 'en') {
-                partyLabel.textContent = 'Parties';
-            } else if (lang === 'jp') {
-                partyLabel.textContent = 'パーティー';
-            } else {
-                partyLabel.textContent = '파티';
-            }
+            partyLabel.textContent = getCharacterI18nText('characterDetailParties', '파티');
             container.appendChild(partyLabel);
         }
 
@@ -3110,7 +3106,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         // modalDescription에 아래 'Detail' 추가하고 링크 걸기 /wonder-weapon
         const detailLink = document.createElement('a');
         detailLink.href = `/wonder-weapon/`;
-        detailLink.textContent = 'Detail →';
+        detailLink.textContent = getCharacterI18nText('characterDetailLinkLabel', 'Detail →');
         detailLink.target = '_blank';
         modalDescription.appendChild(detailLink);
 

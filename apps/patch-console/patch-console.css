@@ -1326,6 +1326,45 @@ td.empty {
   gap: 8px;
 }
 
+.add-revelation-grid {
+  display: grid;
+  gap: 8px;
+}
+
+.add-revelation-grid-main {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.add-revelation-grid-sub {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 8px;
+}
+
+.checkbox-field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.checkbox-field input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+}
+
+.revelation-subtext-wrap {
+  border: 1px dashed var(--border);
+  border-radius: 10px;
+  padding: 8px;
+  margin: 10px 0;
+}
+
+.revelation-subtext-wrap summary {
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
 .muted {
   color: var(--muted-foreground);
 }
@@ -1426,6 +1465,11 @@ td.empty {
   }
 
   .add-character-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .add-revelation-grid-main,
+  .add-revelation-grid-sub {
     grid-template-columns: 1fr;
   }
 }

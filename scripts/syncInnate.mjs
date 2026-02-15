@@ -528,7 +528,7 @@ async function main() {
   // character.js에서 실제 캐릭터 key 찾기 (없으면 local을 fallback으로 사용)
   let charKey = null;
   // 우선 KR characters.js 기준으로 키를 찾는다 (실제 per-character 디렉토리 키와 일치)
-  const krCharsPath = path.join('data', 'kr', 'characters', 'characters.js');
+  const krCharsPath = path.join('data', 'character_info.js');
   if (fs.existsSync(krCharsPath)) {
     charKey = findCharacterKeyByCodename(krCharsPath, local);
   }
@@ -541,7 +541,7 @@ async function main() {
   }
   if (!charKey) {
     console.warn(
-      `::warning::character key for '${local}' not found in KR/${lang} characters.js, fallback to local`
+      `::warning::character key for '${local}' not found in KR/${lang} character data, fallback to local`
     );
     charKey = local;
   }

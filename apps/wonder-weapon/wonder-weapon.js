@@ -13,11 +13,11 @@
     return new Promise((resolve, reject) => {
       // Remove any previous scripts to avoid duplication
       document.querySelectorAll('script[src*="/data/kr/wonder/weapons.js"]').forEach(s => s.remove());
-      document.querySelectorAll('script[src*="/data/kr/characters/characters.js"]').forEach(s => s.remove());
+      document.querySelectorAll('script[src*="/data/character_info.js"]').forEach(s => s.remove());
 
       const scripts = [
         '/data/kr/wonder/weapons.js',
-        '/data/kr/characters/characters.js',
+        '/data/character_info.js',
       ];
 
       let loaded = 0;

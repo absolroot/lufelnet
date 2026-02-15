@@ -16,6 +16,10 @@ window.I18N_PAGE_TIER_JP = {
 
     // Buttons
     addTierButton: '新規ティア追加',
+    tierSourceGlobal: 'グローバル',
+    tierSourceGlobalOnKr: 'グローバル(韓国版)',
+    tierSourceKrSpoiler: '[ネタバレ] 韓国版',
+    newTierLabel: '新規',
 
     // Modal buttons
     deleteRow: '行を削除',
@@ -38,6 +42,9 @@ window.I18N_PAGE_TIER_JP = {
     captureImage: '画像キャプチャ',
     exportJSON: 'JSONエクスポート',
     importJSON: 'JSONインポート',
+    tierLoadFunctionUnavailable: 'ティア読み込み機能が利用できません。',
+    tierInvalidDataFormat: '無効なティアデータ形式です。',
+    tierFailedParseJsonFile: 'JSONファイルの解析に失敗しました。',
 
     // Spoiler toggle
     showSpoilers: 'スポイラー表示',
@@ -81,6 +88,12 @@ window.I18N_PAGE_TIER_JP = {
             a: '韓国版V4.7.1で追加された「イメジャリーコア」用の素材で、レベル100までの拡張を意味します。追加パッシブを獲得することで、ティアが変動する可能性があります。'
         }
     ],
+
+    // SEO
+    tierListSeoTitle: 'ティアリスト - ペルソナ5 ザ・ファントム X LufelNet',
+    tierListSeoDescription: 'P5X怪盗のポジション別ティアリストを確認してください。',
+    tierMakerSeoTitle: 'ティアメーカー - ペルソナ5 ザ・ファントム X LufelNet',
+    tierMakerSeoDescription: 'ポジション別にP5X怪盗ティアを作ってみましょう。',
 
     // Tag translations (for filter)
     tags: {

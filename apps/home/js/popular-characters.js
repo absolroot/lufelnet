@@ -1,98 +1,98 @@
- (function () {
-     'use strict';
+(function () {
+    'use strict';
 
-     const DEFAULT_MAX_COUNT = 10;
+    const DEFAULT_MAX_COUNT = 10;
 
-     const POPULAR_CHARACTERS_OVERRIDE = { kr: null, en: null, jp: null };
-     const POPULAR_CHARACTERS_FIXED = {
-         kr: [
-             { name: '나루미', badge: 'NEW' },
-             { name: '렌', badge: 'NEW' },
-             { name: '야오링·사자무', badge: 'NEW' },
-             { name: 'J&C', badge: 'HOT' },
-             { name: '마나카', badge: 'HOT' },
-             { name: '미나미·여름', badge: 'HOT' },
-             { name: '리코·매화', badge: 'HOT' },
-         ],
-         en: [
+    const POPULAR_CHARACTERS_OVERRIDE = { kr: null, en: null, jp: null };
+    const POPULAR_CHARACTERS_FIXED = {
+        kr: [
+            { name: '나루미', badge: 'NEW' },
+            { name: '렌', badge: 'NEW' },
+            { name: '야오링·사자무', badge: 'NEW' },
+            { name: 'J&C', badge: 'HOT' },
+            { name: '마나카', badge: 'HOT' },
+            { name: '미나미·여름', badge: 'HOT' },
+            { name: '리코·매화', badge: 'HOT' },
+        ],
+        en: [
             { name: 'J&C', badge: 'HOT' },
             { name: '아야카', badge: 'HOT' },
             { name: '후타바', badge: 'HOT' },
-         ],
-         jp: [
+        ],
+        jp: [
             { name: 'J&C', badge: 'HOT' },
             { name: '아야카', badge: 'HOT' },
             { name: '후타바', badge: 'HOT' },
-         ],
-     };
+        ],
+    };
 
-     function getAllowedCharacterSet() {
-         try {
-             const list = window.characterList;
-             if (!list) return null;
-             const main = Array.isArray(list.mainParty) ? list.mainParty : [];
-             const sup = Array.isArray(list.supportParty) ? list.supportParty : [];
-             const all = [...main, ...sup].filter(x => typeof x === 'string' && x.trim() !== '');
-             if (all.length === 0) return null;
-             return new Set(all);
-         } catch (_) {
-             return null;
-         }
-     }
+    function getAllowedCharacterSet() {
+        try {
+            const list = window.characterList;
+            if (!list) return null;
+            const main = Array.isArray(list.mainParty) ? list.mainParty : [];
+            const sup = Array.isArray(list.supportParty) ? list.supportParty : [];
+            const all = [...main, ...sup].filter(x => typeof x === 'string' && x.trim() !== '');
+            if (all.length === 0) return null;
+            return new Set(all);
+        } catch (_) {
+            return null;
+        }
+    }
 
-     function bindMouseDragScroll(container) {
-         if (!container) return;
-         if (container.dataset && container.dataset.mouseDragScrollBound === '1') return;
-         if (container.dataset) container.dataset.mouseDragScrollBound = '1';
+    function bindMouseDragScroll(container) {
+        if (!container) return;
+        if (container.dataset && container.dataset.mouseDragScrollBound === '1') return;
+        if (container.dataset) container.dataset.mouseDragScrollBound = '1';
 
-         container.addEventListener('dragstart', (e) => {
-             e.preventDefault();
-         });
+        container.addEventListener('dragstart', (e) => {
+            e.preventDefault();
+        });
 
-         let isDown = false;
-         let startX = 0;
-         let scrollLeft = 0;
-         let didDrag = false;
+        let isDown = false;
+        let startX = 0;
+        let scrollLeft = 0;
+        let didDrag = false;
 
-         container.style.cursor = 'grab';
-         container.style.userSelect = 'none';
+        container.style.cursor = 'grab';
+        container.style.userSelect = 'none';
 
-         container.addEventListener('mousedown', (e) => {
-             if (e.button !== 0) return;
-             isDown = true;
-             didDrag = false;
-             startX = e.pageX - container.offsetLeft;
-             scrollLeft = container.scrollLeft;
-             container.style.cursor = 'grabbing';
-         });
+        container.addEventListener('mousedown', (e) => {
+            if (e.button !== 0) return;
+            isDown = true;
+            didDrag = false;
+            startX = e.pageX - container.offsetLeft;
+            scrollLeft = container.scrollLeft;
+            container.style.cursor = 'grabbing';
+        });
 
-         container.addEventListener('mouseleave', () => {
-             isDown = false;
-             container.style.cursor = 'grab';
-         });
+        container.addEventListener('mouseleave', () => {
+            isDown = false;
+            container.style.cursor = 'grab';
+        });
 
-         window.addEventListener('mouseup', () => {
-             if (!isDown) return;
-             isDown = false;
-             container.style.cursor = 'grab';
-             window.setTimeout(() => { didDrag = false; }, 0);
-         });
+        window.addEventListener('mouseup', () => {
+            if (!isDown) return;
+            isDown = false;
+            container.style.cursor = 'grab';
+            window.setTimeout(() => { didDrag = false; }, 0);
+        });
 
-         container.addEventListener('mousemove', (e) => {
-             if (!isDown) return;
-             e.preventDefault();
-             const x = e.pageX - container.offsetLeft;
-             const walk = x - startX;
-             if (Math.abs(walk) > 5) didDrag = true;
-             container.scrollLeft = scrollLeft - walk;
-         });
+        container.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - container.offsetLeft;
+            const walk = x - startX;
+            if (Math.abs(walk) > 5) didDrag = true;
+            container.scrollLeft = scrollLeft - walk;
+        });
 
-         container.addEventListener('click', (e) => {
-             if (!didDrag) return;
-             e.preventDefault();
-             e.stopPropagation();
-         }, true);
-     }
+        container.addEventListener('click', (e) => {
+            if (!didDrag) return;
+            e.preventDefault();
+            e.stopPropagation();
+        }, true);
+    }
 
     function getCurrentLang() {
         try {
@@ -266,7 +266,7 @@
         const maxCount = getMaxCountFromDom(popularRoot);
         const v = window.APP_VERSION || Date.now();
 
-        const kr = await fetchCharactersData(`${window.BASE_URL || ''}/data/kr/characters/characters.js?v=${v}`);
+        const kr = await fetchCharactersData(`${window.BASE_URL || ''}/data/character_info.js?v=${v}`);
         const lg = (lang === 'kr') ? kr : await fetchCharactersData(`${window.BASE_URL || ''}/data/${lang}/characters/characters.js?v=${v}`);
 
         const krCharacterData = (kr && kr.characterData) ? kr.characterData : {};

@@ -8,7 +8,12 @@ window.I18N_PAGE_ABOUT_JP = {
     // Buttons
     donateButton: 'サポート | 寄付',
     supportersButton: 'サポーターリスト',
+    supportersModalTitle: 'サポーターリスト',
     showMoreButton: 'もっと見る',
+
+    // Feedback
+    copySuccessText: 'コピー完了!',
+    copyFailedText: 'コピー失敗',
 
     // Language notice
     languageNotice: '🌍 日本語翻訳は進行中です。一部のコンテンツは韓国語のままの場合があります。',

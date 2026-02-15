@@ -152,7 +152,20 @@
     // 페이지별 데이터 파일 로드 (기본 한국어, geo-meta.js에서 언어별 동적 로딩)
     {% if page.custom_data %}
     {% for data_file in page.custom_data %}
-    document.write(`<script src="{{ site.baseurl }}/data/kr/{{ data_file }}?v=${APP_VERSION}"><\/script>`);
+    {
+      const dataFile = '{{ data_file }}';
+      let dataSrc = '';
+      if (/^https?:\/\//i.test(dataFile)) {
+        dataSrc = dataFile;
+      } else if (dataFile.startsWith('/')) {
+        dataSrc = `${BASE_URL}${dataFile}`;
+      } else if (dataFile.startsWith('data/')) {
+        dataSrc = `${BASE_URL}/${dataFile}`;
+      } else {
+        dataSrc = `${BASE_URL}/data/kr/${dataFile}`;
+      }
+      document.write(`<script src="${dataSrc}?v=${APP_VERSION}"><\/script>`);
+    }
     {% endfor %}
     {% endif %}
 

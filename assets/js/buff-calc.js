@@ -1727,7 +1727,7 @@ class BuffCalculator {
             '크리티컬 효과': 'CritDamage',
             '대미지 보너스': 'DamageBonus',
             '방어력 감소': 'DefenseReduce',
-            '관통': 'Penetrate',
+            '관통': 'Pierce',
             '스킬 마스터': 'SkillMaster',
             '독립 배수': 'IndependentMultiplier'
         };
@@ -2132,7 +2132,7 @@ class BuffCalculator {
             '크리티컬 효과': 'CritDamage',
             '대미지 보너스': 'DamageBonus',
             '방어력 감소': 'DefenseReduce',
-            '관통': 'Penetrate',
+            '관통': 'Pierce',
             '스킬 마스터': 'SkillMaster',
             '독립 배수': 'IndependentMultiplier'
         };
@@ -2174,7 +2174,7 @@ class BuffCalculator {
             '크리티컬 효과': 'CritDamage',
             '대미지 보너스': 'DamageBonus',
             '방어력 감소': 'DefenseReduce',
-            '관통': 'Penetrate',
+            '관통': 'Pierce',
             '스킬 마스터': 'SkillMaster',
             '독립 배수': 'IndependentMultiplier'
         };
@@ -2235,7 +2235,7 @@ class BuffCalculator {
             '크리티컬 효과': 'CritDamage',
             '대미지 보너스': 'DamageBonus',
             '방어력 감소': 'DefenseReduce',
-            '관통': 'Penetrate',
+            '관통': 'Pierce',
             '스킬 마스터': 'SkillMaster',
             '독립 배수': 'IndependentMultiplier'
         };
@@ -2594,7 +2594,7 @@ class BuffCalculator {
         // 버프 카드 관련 요소들에 변경 감지 이벤트 추가
         const observeElements = [
             'totalAttackPercent', 'totalAttackFlat', 'totalCritRate', 'totalCritDamage',
-            'totalDamageBonus', 'totalDefenseReduce', 'totalPenetrate', 'totalIndependentMultiplier'
+            'totalDamageBonus', 'totalDefenseReduce', 'totalPierce', 'totalIndependentMultiplier'
         ];
         
         // MutationObserver 생성
@@ -2632,7 +2632,7 @@ class BuffCalculator {
         const totalCritDamageElem = document.getElementById('totalCritDamage');
         const totalDamageBonusElem = document.getElementById('totalDamageBonus');
         const totalDefenseReduceElem = document.getElementById('totalDefenseReduce');
-        const totalPenetrateElem = document.getElementById('totalPenetrate');
+        const totalPierceElem = document.getElementById('totalPierce');
         const totalIndependentMultiplierElem = document.getElementById('totalIndependentMultiplier');
         
         // '%' 문자 제거하고 파싱
@@ -2642,7 +2642,7 @@ class BuffCalculator {
         const critDamage = totalCritDamageElem ? parseFloat(totalCritDamageElem.textContent.replace('%', '')) || 0 : 0;
         const damageBonus = totalDamageBonusElem ? parseFloat(totalDamageBonusElem.textContent.replace('%', '')) || 0 : 0;
         const defenseReduce = totalDefenseReduceElem ? parseFloat(totalDefenseReduceElem.textContent.replace('%', '')) || 0 : 0;
-        const penetrate = totalPenetrateElem ? Math.min(parseFloat(totalPenetrateElem.textContent.replace('%', '')) || 0, 100) : 0;
+        const penetrate = totalPierceElem ? Math.min(parseFloat(totalPierceElem.textContent.replace('%', '')) || 0, 100) : 0;
         const independentMultiplier = totalIndependentMultiplierElem ? parseFloat(totalIndependentMultiplierElem.textContent.replace('%', '')) || 0 : 0;
         
         // 1. 공격력 계산: (기본 공격력 * 공격력 %) + 공격력 상수

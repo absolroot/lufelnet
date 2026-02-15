@@ -124,7 +124,7 @@
     };
 
     function applyTexts() {
-        if(els.home) els.home.textContent = t.navhome;
+        if (els.home) els.home.textContent = t.navhome;
         if (els.title) els.title.textContent = t.pageTitle;
         if (els.navCurrent) els.navCurrent.textContent = t.navCurrent;
         const guideBtn = document.getElementById('openGuideBtn');
@@ -137,7 +137,7 @@
         if (els.clear) els.clear.textContent = t.clear;
         if (els.info) els.info.innerHTML = `${t.infoReady}<br>${t.infoNotice}`;
         const hide4 = document.getElementById('hide4Label');
-        if (hide4) hide4.textContent = (lang==='en'?'Hide under 4★': (lang==='jp'?'4★ 以下を隠す':'4★ 이하 숨기기'));
+        if (hide4) hide4.textContent = (lang === 'en' ? 'Hide under 4★' : (lang === 'jp' ? '4★ 以下を隠す' : '4★ 이하 숨기기'));
         if (els.cardsTitle) {
             const map = { kr: '요약 카드 (최근 90일)', en: 'Stats (Last 90 Days)', jp: '統計（直近90日）' };
             els.cardsTitle.textContent = map[lang] || map.kr;
@@ -148,26 +148,26 @@
             const loginBtn = document.getElementById('ptLoginBtn');
             const logoutBtn = document.getElementById('ptLogoutBtn');
             const scopeNote = document.getElementById('ptScopeNote');
-            if (signed) signed.textContent = (lang==='en'?'Signed in:': (lang==='jp'?'ログイン:':'로그인:'));
-            if (loginBtn) loginBtn.textContent = (lang==='en'?'Login': (lang==='jp'?'ログイン':'로그인'));
-            if (logoutBtn) logoutBtn.textContent = (lang==='en'?'Logout': (lang==='jp'?'ログアウト':'로그아웃'));
+            if (signed) signed.textContent = (lang === 'en' ? 'Signed in:' : (lang === 'jp' ? 'ログイン:' : '로그인:'));
+            if (loginBtn) loginBtn.textContent = (lang === 'en' ? 'Login' : (lang === 'jp' ? 'ログイン' : '로그인'));
+            if (logoutBtn) logoutBtn.textContent = (lang === 'en' ? 'Logout' : (lang === 'jp' ? 'ログアウト' : '로그아웃'));
             if (scopeNote) {
-                scopeNote.textContent = (lang==='en'
+                scopeNote.textContent = (lang === 'en'
                     ? '※ lufel.net can only read/write files created by this site.'
-                    : (lang==='jp'
+                    : (lang === 'jp'
                         ? '※ このサイトで作成したファイルのみ読み書きできます。'
                         : '※ 이 사이트에서 생성한 파일만 읽고 쓸 수 있습니다.'));
             }
-        } catch(_) {}
+        } catch (_) { }
     }
 
     // DEBUG 예시 UI 바인딩 (DOM 생성 이후)
-    document.addEventListener('DOMContentLoaded', function(){
+    document.addEventListener('DOMContentLoaded', function () {
         try {
             // URL 가이드 버튼 이동
             const gbtn = document.getElementById('openGuideBtn');
             if (gbtn) {
-                gbtn.addEventListener('click', ()=>{
+                gbtn.addEventListener('click', () => {
                     const base = (typeof window.BASE_URL !== 'undefined') ? window.BASE_URL : '';
                     location.href = `${base}/pull-tracker/url-guide/?lang=${lang}`;
                 });
@@ -180,24 +180,24 @@
             if (btn && sel) {
                 btn.addEventListener('click', async () => {
                     try {
-                        const n = String(sel.value||'1');
+                        const n = String(sel.value || '1');
                         const base = (typeof window.BASE_URL !== 'undefined') ? window.BASE_URL : '';
-                        const url = `${base}/apps/pull-tracker/examples/example${n==='1'?'':n}.json?v=${Date.now()}`;
+                        const url = `${base}/apps/pull-tracker/examples/example${n === '1' ? '' : n}.json?v=${Date.now()}`;
                         const res = await fetch(url);
                         if (!res.ok) throw new Error('example fetch failed');
                         const text = await res.text();
                         setResult(text);
-                        try { localStorage.setItem('pull-tracker:last-response', text); } catch(_) {}
+                        try { localStorage.setItem('pull-tracker:last-response', text); } catch (_) { }
                         const incoming = parseIncoming(text);
                         const merged = ensureTsOrderInPayload(mergeWithCache(incoming));
                         localStorage.setItem('pull-tracker:merged', JSON.stringify(merged));
                         renderCardsFromExample(merged);
                         __dataSource = 'local';
                         setStatus(`${t.savedLocal} ${nowStamp()}\n✅ 완료`);
-                    } catch(e){ setStatus('예시 적용 실패'); }
+                    } catch (e) { setStatus('예시 적용 실패'); }
                 });
             }
-        } catch(_) {}
+        } catch (_) { }
     });
 
     // --- Google Drive 로그인/동기화 ---
@@ -216,23 +216,23 @@
                 const tick = setInterval(() => {
                     if (window.gapi) { clearInterval(tick); gapi.load('client', resolve); }
                 }, 50);
-            } catch(_) { resolve(); }
+            } catch (_) { resolve(); }
         });
     }
 
     // GIS 하드닝: 사용자 제스처 없이 popup flow가 시작되지 않도록 차단
-    (function hardenGIS(){
+    (function hardenGIS() {
         const tryPatch = () => {
             try {
                 if (!window.google || !google.accounts || !google.accounts.oauth2) return;
                 if (google.__pt_hardened) return;
                 const origInit = google.accounts.oauth2.initTokenClient;
                 if (typeof origInit !== 'function') return;
-                google.accounts.oauth2.initTokenClient = function(config){
+                google.accounts.oauth2.initTokenClient = function (config) {
                     const client = origInit(config);
                     const origReq = client.requestAccessToken && client.requestAccessToken.bind(client);
                     if (typeof origReq === 'function') {
-                        client.requestAccessToken = function(options){
+                        client.requestAccessToken = function (options) {
                             const promptVal = (options && options.prompt) || (config && config.prompt) || undefined;
                             const allow = !!window.__pt_allowInteractive || promptVal === '';
                             if (!allow) {
@@ -245,15 +245,15 @@
                     return client;
                 };
                 google.__pt_hardened = true;
-            } catch(_) {}
+            } catch (_) { }
         };
         window.__pt_allowInteractive = false;
-        const id = setInterval(()=>{ tryPatch(); if (window.google && google.__pt_hardened) clearInterval(id); }, 60);
+        const id = setInterval(() => { tryPatch(); if (window.google && google.__pt_hardened) clearInterval(id); }, 60);
         document.addEventListener('DOMContentLoaded', tryPatch);
     })();
 
     // Token client (silent refresh)
-    function initTokenClientOnce(){
+    function initTokenClientOnce() {
         if (tokenClient) return tokenClient;
         try {
             tokenClient = google.accounts.oauth2.initTokenClient({
@@ -265,37 +265,37 @@
                         __googleAuthed = true;
                         const sec = Number(resp.expires_in || 3600);
                         __tokenExpAt = Date.now() + Math.max(0, (sec - 60) * 1000);
-                        try { localStorage.setItem('pull-tracker:google-token', __googleToken); } catch(_) {}
+                        try { localStorage.setItem('pull-tracker:google-token', __googleToken); } catch (_) { }
                         localStorage.setItem('pull-tracker:google-exp', String(__tokenExpAt));
                     }
                 }
             });
-        } catch(_) {}
+        } catch (_) { }
         return tokenClient;
     }
 
-    async function ensureTokenSilent(){
+    async function ensureTokenSilent() {
         try {
             // 저장된 토큰이 없으면 절대 무팝업 요청을 시도하지 않음 (사용자 클릭 전 UI 노출 방지)
             if (!__googleToken) return false;
             if (Date.now() < __tokenExpAt) return true;
             initTokenClientOnce();
-            return await new Promise((resolve)=>{
+            return await new Promise((resolve) => {
                 try {
-                    tokenClient.callback = (resp)=>{ resolve(!!(resp && resp.access_token)); };
+                    tokenClient.callback = (resp) => { resolve(!!(resp && resp.access_token)); };
                     tokenClient.requestAccessToken({ prompt: '' }); // 무팝업 갱신만
-                } catch(_) { resolve(false); }
+                } catch (_) { resolve(false); }
             });
-        } catch(_) { return false; }
+        } catch (_) { return false; }
     }
 
-    async function tokenHas(scopeSubstr){
+    async function tokenHas(scopeSubstr) {
         if (!__googleToken) return false;
         try {
             const r = await fetch('https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=' + encodeURIComponent(__googleToken));
             const j = await r.json();
             return typeof j.scope === 'string' && j.scope.includes(scopeSubstr);
-        } catch(_) { return false; }
+        } catch (_) { return false; }
     }
 
     // 공통: Drive API 호출 래퍼 (401/403 시 선택적으로 재인증)
@@ -305,14 +305,14 @@
             if (res.status === 403) {
                 const txt = await res.clone().text();
                 if (/storageQuotaExceeded/i.test(txt)) {
-                    setStatus(lang==='en' ? 'Google Drive storage quota exceeded. Please free up space.' : (lang==='jp' ? 'Google ドライブの保存容量が上限に達しました。空き容量を確保してください。' : 'Google 드라이브 저장 용량이 초과되었습니다. 공간을 확보해주세요.'));
+                    setStatus(lang === 'en' ? 'Google Drive storage quota exceeded. Please free up space.' : (lang === 'jp' ? 'Google ドライブの保存容量が上限に達しました。空き容量を確保してください。' : 'Google 드라이브 저장 용량이 초과되었습니다. 공간을 확보해주세요.'));
                 }
             }
-        } catch(_) {}
+        } catch (_) { }
         // 재인증은 401(만료/무효 토큰)에 한정. 403은 권한/정책/쿼터 이슈일 수 있어 재팝업 금지
         if (res.status === 401 && interactive) {
-            try { await gapiInit(); await googleSignIn(); } catch(_) {}
-            res = await fetch(url, { ...options, headers: { ...(options.headers||{}), Authorization: 'Bearer ' + __googleToken } });
+            try { await gapiInit(); await googleSignIn(); } catch (_) { }
+            res = await fetch(url, { ...options, headers: { ...(options.headers || {}), Authorization: 'Bearer ' + __googleToken } });
         }
         return res;
     }
@@ -324,7 +324,7 @@
                 apiKey: '',
                 discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/drive/v3/rest']
             });
-        } catch(_) {}
+        } catch (_) { }
     }
 
     function renderAuthBarUI(profile) {
@@ -338,12 +338,12 @@
             if (nameEl) nameEl.textContent = profile?.email || profile?.name || 'Google Drive';
             loginBtn.style.display = 'none';
             logoutBtn.style.display = 'inline-block';
-            try { localStorage.setItem('pull-tracker:google-token', __googleToken||''); } catch(_) {}
+            try { localStorage.setItem('pull-tracker:google-token', __googleToken || ''); } catch (_) { }
         } else {
             if (nameEl) nameEl.textContent = '';
             loginBtn.style.display = 'inline-block';
             logoutBtn.style.display = 'none';
-            try { localStorage.removeItem('pull-tracker:google-token'); } catch(_) {}
+            try { localStorage.removeItem('pull-tracker:google-token'); } catch (_) { }
         }
     }
 
@@ -353,42 +353,42 @@
     async function googleSignIn() {
         return new Promise((resolve) => {
             try {
-            // 사용자 제스처 구간: 인터랙티브 허용
-            const prev = window.__pt_allowInteractive;
-            window.__pt_allowInteractive = true;
-            const client = google.accounts.oauth2.initTokenClient({
-                client_id: window.GOOGLE_CLIENT_ID,
-                scope: OAUTH_SCOPE,
-                callback: async (resp) => {
-                __googleToken = resp.access_token;
-                __googleAuthed = true;
-                try {
-                    const sec = Number(resp.expires_in || 3600);
-                    __tokenExpAt = Date.now() + Math.max(0, (sec - 60) * 1000);
-                    localStorage.setItem('pull-tracker:google-token', __googleToken);
-                    localStorage.setItem('pull-tracker:google-exp', String(__tokenExpAt));
-                } catch(_) {}
-                // 2) 사용자 정보 가져오기 (OIDC userinfo)
-                let profile = null;
-                try {
-                    const r = await fetch('https://openidconnect.googleapis.com/v1/userinfo', {
-                    headers: { Authorization: 'Bearer ' + __googleToken }
-                    });
-                    profile = r.ok ? await r.json() : null; // { email, name, ... }
-                } catch(_) {}
-                try { if (profile && profile.email) localStorage.setItem('pull-tracker:google-email', profile.email); } catch(_) {}
-                renderAuthBarUI(profile || { email: (localStorage.getItem('pull-tracker:google-email')||'') });
-                window.__pt_allowInteractive = prev;
-                resolve(resp);
-                }
-            });
-            client.requestAccessToken(); // 최초 동의 이후엔 prompt 없이 재발급됨
-            } catch(e) { try { window.__pt_allowInteractive = false; } catch(_) {}; resolve(null); }
+                // 사용자 제스처 구간: 인터랙티브 허용
+                const prev = window.__pt_allowInteractive;
+                window.__pt_allowInteractive = true;
+                const client = google.accounts.oauth2.initTokenClient({
+                    client_id: window.GOOGLE_CLIENT_ID,
+                    scope: OAUTH_SCOPE,
+                    callback: async (resp) => {
+                        __googleToken = resp.access_token;
+                        __googleAuthed = true;
+                        try {
+                            const sec = Number(resp.expires_in || 3600);
+                            __tokenExpAt = Date.now() + Math.max(0, (sec - 60) * 1000);
+                            localStorage.setItem('pull-tracker:google-token', __googleToken);
+                            localStorage.setItem('pull-tracker:google-exp', String(__tokenExpAt));
+                        } catch (_) { }
+                        // 2) 사용자 정보 가져오기 (OIDC userinfo)
+                        let profile = null;
+                        try {
+                            const r = await fetch('https://openidconnect.googleapis.com/v1/userinfo', {
+                                headers: { Authorization: 'Bearer ' + __googleToken }
+                            });
+                            profile = r.ok ? await r.json() : null; // { email, name, ... }
+                        } catch (_) { }
+                        try { if (profile && profile.email) localStorage.setItem('pull-tracker:google-email', profile.email); } catch (_) { }
+                        renderAuthBarUI(profile || { email: (localStorage.getItem('pull-tracker:google-email') || '') });
+                        window.__pt_allowInteractive = prev;
+                        resolve(resp);
+                    }
+                });
+                client.requestAccessToken(); // 최초 동의 이후엔 prompt 없이 재발급됨
+            } catch (e) { try { window.__pt_allowInteractive = false; } catch (_) { }; resolve(null); }
         });
     }
-      
 
-    function googleSignOut(){ __googleAuthed = false; __googleToken = null; renderAuthBarUI(null); }
+
+    function googleSignOut() { __googleAuthed = false; __googleToken = null; renderAuthBarUI(null); }
 
     async function driveFetchFileIds(interactive = false) {
         try {
@@ -398,12 +398,12 @@
             let res = await driveFetch(url, { headers: { Authorization: 'Bearer ' + __googleToken } }, interactive);
             const json = await res.json();
             return Array.isArray(json.files) ? json.files : [];
-        } catch(_) { return null; }
+        } catch (_) { return null; }
     }
 
     async function driveFetchFileId(interactive = false) {
         const files = await driveFetchFileIds(interactive);
-        if (!files || files.length===0) return null;
+        if (!files || files.length === 0) return null;
         return files[0].id || null;
     }
 
@@ -415,10 +415,10 @@
             const fileId = await driveFetchFileId(interactive);
             if (!fileId) return null;
             const bust = Date.now();
-            let res = await driveFetch('https://www.googleapis.com/drive/v3/files/'+fileId+'?alt=media&v='+bust, { headers: { Authorization: 'Bearer '+__googleToken, 'Cache-Control':'no-cache' } }, interactive);
+            let res = await driveFetch('https://www.googleapis.com/drive/v3/files/' + fileId + '?alt=media&v=' + bust, { headers: { Authorization: 'Bearer ' + __googleToken, 'Cache-Control': 'no-cache' } }, interactive);
             if (!res.ok) return null;
             return await res.json();
-        } catch(_) { return null; }
+        } catch (_) { return null; }
     }
 
     async function driveSaveMerged(merged, interactive = false) {
@@ -438,35 +438,35 @@
             let res;
             if (fileId) {
                 const url = 'https://www.googleapis.com/upload/drive/v3/files/' + fileId + '?uploadType=multipart';
-                res = await driveFetch(url, { method: 'PATCH', headers: { 'Authorization': 'Bearer '+__googleToken, 'Content-Type': 'multipart/related; boundary=' + boundary }, body }, interactive);
+                res = await driveFetch(url, { method: 'PATCH', headers: { 'Authorization': 'Bearer ' + __googleToken, 'Content-Type': 'multipart/related; boundary=' + boundary }, body }, interactive);
                 if (res.status === 403) {
                     // 폴백: 새 파일 생성
                     const createUrl = 'https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id';
-                    res = await driveFetch(createUrl, { method: 'POST', headers: { 'Authorization': 'Bearer '+__googleToken, 'Content-Type': 'multipart/related; boundary=' + boundary }, body }, interactive);
+                    res = await driveFetch(createUrl, { method: 'POST', headers: { 'Authorization': 'Bearer ' + __googleToken, 'Content-Type': 'multipart/related; boundary=' + boundary }, body }, interactive);
                 }
             } else {
                 const createUrl = 'https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id';
-                res = await driveFetch(createUrl, { method: 'POST', headers: { 'Authorization': 'Bearer '+__googleToken, 'Content-Type': 'multipart/related; boundary=' + boundary }, body }, interactive);
+                res = await driveFetch(createUrl, { method: 'POST', headers: { 'Authorization': 'Bearer ' + __googleToken, 'Content-Type': 'multipart/related; boundary=' + boundary }, body }, interactive);
             }
             return res.ok;
-        } catch(_) { return false; }
+        } catch (_) { return false; }
     }
 
     async function driveDeleteMerged(interactive = false) {
         try {
             if (!__googleToken) return false;
             const files = await driveFetchFileIds(interactive);
-            if (!files || files.length===0) return true;
+            if (!files || files.length === 0) return true;
             let allOk = true;
-            for (const f of files){
-                const res = await driveFetch('https://www.googleapis.com/drive/v3/files/'+f.id, { method:'DELETE', headers: { Authorization: 'Bearer '+__googleToken } }, interactive);
+            for (const f of files) {
+                const res = await driveFetch('https://www.googleapis.com/drive/v3/files/' + f.id, { method: 'DELETE', headers: { Authorization: 'Bearer ' + __googleToken } }, interactive);
                 allOk = allOk && (res.ok || res.status === 404);
             }
             return allOk;
-        } catch(_) { return false; }
+        } catch (_) { return false; }
     }
 
-    async function initAuthBar(){
+    async function initAuthBar() {
         const loginBtn = document.getElementById('ptLoginBtn');
         const logoutBtn = document.getElementById('ptLogoutBtn');
         // 토큰 복원으로 로그인 유지 + 유효성 확인 (자동 재인증은 하지 않음)
@@ -474,19 +474,19 @@
             const tok = localStorage.getItem('pull-tracker:google-token');
             if (tok) {
                 __googleToken = tok; __googleAuthed = true;
-                __tokenExpAt = Number(localStorage.getItem('pull-tracker:google-exp')||'0')||0;
+                __tokenExpAt = Number(localStorage.getItem('pull-tracker:google-exp') || '0') || 0;
                 // 새로고침 시에는 무팝업 갱신조차 시도하지 않음(일부 환경에서 팝업 생성 방지)
                 try {
-                    const r = await fetch('https://openidconnect.googleapis.com/v1/userinfo', { headers:{ Authorization:'Bearer '+__googleToken } });
-                    if (r.status === 401 || r.status === 403) { __googleAuthed = false; __googleToken = null; renderAuthBarUI({ email: (localStorage.getItem('pull-tracker:google-email')||'') }); }
+                    const r = await fetch('https://openidconnect.googleapis.com/v1/userinfo', { headers: { Authorization: 'Bearer ' + __googleToken } });
+                    if (r.status === 401 || r.status === 403) { __googleAuthed = false; __googleToken = null; renderAuthBarUI({ email: (localStorage.getItem('pull-tracker:google-email') || '') }); }
                     else {
-                        const profile = await r.json().catch(()=>null);
-                        try { if (profile && profile.email) localStorage.setItem('pull-tracker:google-email', profile.email); } catch(_) {}
-                        renderAuthBarUI(profile || { email: (localStorage.getItem('pull-tracker:google-email')||'') });
+                        const profile = await r.json().catch(() => null);
+                        try { if (profile && profile.email) localStorage.setItem('pull-tracker:google-email', profile.email); } catch (_) { }
+                        renderAuthBarUI(profile || { email: (localStorage.getItem('pull-tracker:google-email') || '') });
                     }
-                } catch(_) {}
+                } catch (_) { }
             } else { renderAuthBarUI(null); }
-        } catch(_) { renderAuthBarUI(null); }
+        } catch (_) { renderAuthBarUI(null); }
         if (loginBtn) loginBtn.onclick = async () => {
             const prev = window.__pt_allowInteractive;
             window.__pt_allowInteractive = true;
@@ -503,7 +503,7 @@
     }
 
     // 병합 완료 시 Google Drive 저장 (수동 호출용)
-    async function syncMergedToCloud(){
+    async function syncMergedToCloud() {
         try {
             if (!__googleAuthed) return 'AUTH';
             const ok = await ensureTokenSilent();
@@ -513,14 +513,14 @@
             const merged = JSON.parse(s);
             const res = await driveSaveMerged(merged, true);
             return !!res;
-        } catch(_) {
+        } catch (_) {
             return false;
         }
     }
 
     // 수동 Drive 로드용 헬퍼 (drive-sync.js에서 호출)
     // opts: { interactive: boolean, merge: boolean }
-    async function loadFromCloud(opts){
+    async function loadFromCloud(opts) {
         try {
             const interactive = !!(opts && opts.interactive);
             const doMerge = !!(opts && opts.merge);
@@ -542,7 +542,7 @@
             setMergedDebug(finalPayload);
             setHide4Visible(true);
             return true;
-        } catch(_) {
+        } catch (_) {
             return false;
         }
     }
@@ -553,9 +553,9 @@
         window.pullTrackerSyncToCloud = syncMergedToCloud;
         window.pullTrackerLoadFromCloud = loadFromCloud;
         window.pullTrackerChooseMergeMode = chooseMergeMode;
-    } catch(_) {}
+    } catch (_) { }
 
-    function renderOverview(payload){
+    function renderOverview(payload) {
         try {
             const base = (typeof window.BASE_URL !== 'undefined') ? window.BASE_URL : '';
             const jewel = `${base}/assets/img/pay/이계 엠버.png`;
@@ -568,19 +568,19 @@
             const inProgressOf = (b) => {
                 try {
                     const list = Array.isArray(b.records) ? b.records : [];
-                    let s = 0; for (const seg of list) { if (seg && seg.fivestar == null) { const rec = Array.isArray(seg.record)?seg.record:[]; s += rec.length; } }
+                    let s = 0; for (const seg of list) { if (seg && seg.fivestar == null) { const rec = Array.isArray(seg.record) ? seg.record : []; s += rec.length; } }
                     return s;
-                } catch(_) { return 0; }
+                } catch (_) { return 0; }
             };
             const calc = (arr) => {
-                const sum = (sel) => arr.reduce((s,b)=> s + (Number(((b||{}).summary||{})[sel])||0), 0);
+                const sum = (sel) => arr.reduce((s, b) => s + (Number(((b || {}).summary || {})[sel]) || 0), 0);
                 const pulled = sum('pulledSum');
                 const t5 = sum('total5Star');
                 const t4 = sum('total4Star');
-                const effTotal = pulled - arr.reduce((s,b)=> s + inProgressOf(b||{}), 0);
-                const avg5 = (arr.map(b=>Number((b||{}).summary?.avgPity)||0).filter(Boolean).reduce((a,b)=>a+b,0) / Math.max(1, arr.filter(b=>Number(b?.summary?.avgPity)).length)) || null;
-                const rate5 = effTotal>0 && t5>=0 ? (t5/effTotal*100) : null;
-                const rate4 = pulled>0 && t4>=0 ? (t4/pulled*100) : null;
+                const effTotal = pulled - arr.reduce((s, b) => s + inProgressOf(b || {}), 0);
+                const avg5 = (arr.map(b => Number((b || {}).summary?.avgPity) || 0).filter(Boolean).reduce((a, b) => a + b, 0) / Math.max(1, arr.filter(b => Number(b?.summary?.avgPity)).length)) || null;
+                const rate5 = effTotal > 0 && t5 >= 0 ? (t5 / effTotal * 100) : null;
+                const rate4 = pulled > 0 && t4 >= 0 ? (t4 / pulled * 100) : null;
                 return { pulled, effTotal, t5, t4, avg5, rate5, rate4 };
             };
             const pickup = calc(blocks.pickup);
@@ -588,17 +588,17 @@
             const standard = calc(blocks.standard);
 
             const jewelCost = (key) => {
-                if (key==='pickup') return pickup.pulled * 150;
-                if (key==='weapon') return weapon.pulled * 100;
-                if (key==='standard') {
-                    const goldPulled = Number((blocks.standard[0]?.summary?.pulledSum)||0);
-                    const newcomerPulled = Number((blocks.standard[1]?.summary?.pulledSum)||0);
-                    return goldPulled*150 + newcomerPulled*120;
+                if (key === 'pickup') return pickup.pulled * 150;
+                if (key === 'weapon') return weapon.pulled * 100;
+                if (key === 'standard') {
+                    const goldPulled = Number((blocks.standard[0]?.summary?.pulledSum) || 0);
+                    const newcomerPulled = Number((blocks.standard[1]?.summary?.pulledSum) || 0);
+                    return goldPulled * 150 + newcomerPulled * 120;
                 }
                 return 0;
             };
 
-            const makeCard = (key, title, data, ExtraRow=null, titleIcon=null) => {
+            const makeCard = (key, title, data, ExtraRow = null, titleIcon = null) => {
                 const el = document.createElement('div');
                 el.className = 'overview-card';
                 // title with right-side icon (like stat-cards)
@@ -606,16 +606,16 @@
                 titleWrap.className = 'h3-row';
                 const h3 = document.createElement('h3'); h3.textContent = title;
                 titleWrap.appendChild(h3);
-                if (titleIcon){ const ic=document.createElement('img'); ic.src=titleIcon; ic.alt=key; ic.className='card-title-icon'; titleWrap.appendChild(ic); }
+                if (titleIcon) { const ic = document.createElement('img'); ic.src = titleIcon; ic.alt = key; ic.className = 'card-title-icon'; titleWrap.appendChild(ic); }
                 el.appendChild(titleWrap);
                 // top stats: 총 뽑기 N회 / {jewel} cost
-                const pullsSuffix = lang==='en' ? 'pulls' : (lang==='jp' ? '回' : '회');
-                const topRow = document.createElement('div'); topRow.className='stat'; topRow.style.fontSize='13px'; topRow.style.justifyContent='flex-start'; topRow.style.gap='16px';
+                const pullsSuffix = lang === 'en' ? 'pulls' : (lang === 'jp' ? '回' : '회');
+                const topRow = document.createElement('div'); topRow.className = 'stat'; topRow.style.fontSize = '13px'; topRow.style.justifyContent = 'flex-start'; topRow.style.gap = '16px';
                 // const l = document.createElement('span'); l.textContent = textFor('total');
                 const r = document.createElement('strong');
-                const txt = document.createElement('span'); txt.textContent = `${numberFmt(data.pulled)}${pullsSuffix}`; txt.style.marginRight='8px';
-                const jimg=document.createElement('img'); jimg.src=jewel; jimg.alt='j'; jimg.className='jewel'; jimg.style.marginLeft='16px';
-                const jv = document.createElement('span'); jv.textContent = numberFmt(jewelCost(key)); jv.style.fontSize='13px'; jv.style.color='#cdcdcd'; jv.style.fontWeight='400';
+                const txt = document.createElement('span'); txt.textContent = `${numberFmt(data.pulled)}${pullsSuffix}`; txt.style.marginRight = '8px';
+                const jimg = document.createElement('img'); jimg.src = jewel; jimg.alt = 'j'; jimg.className = 'jewel'; jimg.style.marginLeft = '16px';
+                const jv = document.createElement('span'); jv.textContent = numberFmt(jewelCost(key)); jv.style.fontSize = '13px'; jv.style.color = '#cdcdcd'; jv.style.fontWeight = '400';
                 r.appendChild(txt); r.appendChild(jimg); r.appendChild(jv);
                 //topRow.appendChild(l); 
                 topRow.appendChild(r);
@@ -624,68 +624,68 @@
 
                 // ----------------------------
                 // chart canvas
-                const canvas = document.createElement('canvas'); canvas.className='overview-chart';
+                const canvas = document.createElement('canvas'); canvas.className = 'overview-chart';
                 el.appendChild(canvas);
-                requestAnimationFrame(()=> { try { if (window.drawOverviewChart) window.drawOverviewChart(canvas, blocks, key, lang); } catch(_) {} });
+                requestAnimationFrame(() => { try { if (window.drawOverviewChart) window.drawOverviewChart(canvas, blocks, key, lang); } catch (_) { } });
 
                 const table = document.createElement('div');
                 table.className = 'stat-table';
-                const header = document.createElement('div'); header.className='tr';
-                header.appendChild(cell('th',''));
+                const header = document.createElement('div'); header.className = 'tr';
+                header.appendChild(cell('th', ''));
                 header.appendChild(cell('th', textFor('count')));
                 header.appendChild(cell('th', textFor('rate')));
                 header.appendChild(cell('th', textFor('avg')));
                 table.appendChild(header);
                 // 5★
-                const row5 = document.createElement('div'); row5.className='tr five';
-                row5.appendChild(cell('td','5★'));
+                const row5 = document.createElement('div'); row5.className = 'tr five';
+                row5.appendChild(cell('td', '5★'));
                 row5.appendChild(cell('td', numberFmt(data.t5)));
-                row5.appendChild(cell('td', data.rate5!=null?numberFmt(data.rate5,2)+'%':'-'));
-                row5.appendChild(cell('td', data.avg5!=null?numberFmt(data.avg5,2):'-'));
+                row5.appendChild(cell('td', data.rate5 != null ? numberFmt(data.rate5, 2) + '%' : '-'));
+                row5.appendChild(cell('td', data.avg5 != null ? numberFmt(data.avg5, 2) : '-'));
                 table.appendChild(row5);
                 // extra
-                if (ExtraRow){ const holder=document.createElement('div'); holder.innerHTML=ExtraRow; while(holder.firstChild){ table.appendChild(holder.firstChild);} }
+                if (ExtraRow) { const holder = document.createElement('div'); holder.innerHTML = ExtraRow; while (holder.firstChild) { table.appendChild(holder.firstChild); } }
                 // 4★
-                const row4 = document.createElement('div'); row4.className='tr four';
-                row4.appendChild(cell('td','4★'));
+                const row4 = document.createElement('div'); row4.className = 'tr four';
+                row4.appendChild(cell('td', '4★'));
                 row4.appendChild(cell('td', numberFmt(data.t4)));
-                row4.appendChild(cell('td', data.rate4!=null?numberFmt(data.rate4,2)+'%':'-'));
-                row4.appendChild(cell('td', data.pulled>0?numberFmt(data.pulled/Math.max(1,data.t4),2):'-'));
+                row4.appendChild(cell('td', data.rate4 != null ? numberFmt(data.rate4, 2) + '%' : '-'));
+                row4.appendChild(cell('td', data.pulled > 0 ? numberFmt(data.pulled / Math.max(1, data.t4), 2) : '-'));
                 table.appendChild(row4);
                 el.appendChild(table);
                 return el;
             };
-            function cell(cls, html){ const d=document.createElement('div'); d.className=cls; d.innerHTML=html; return d; }
+            function cell(cls, html) { const d = document.createElement('div'); d.className = cls; d.innerHTML = html; return d; }
             // drawOverviewChart moved to charts.js
 
             // 5성 픽업(운명/확정 합산, 무기는 50:50)
-            const pickupWin = (Number(blocks.pickup[0]?.summary?.win5050)||0)+(Number(blocks.pickup[1]?.summary?.win5050)||0);
-            const pickupRate = (pickup.t5>0) ? (pickupWin / pickup.t5 * 100) : null;
-            const pickupAvg = (pickupWin>0) ? (pickup.effTotal / pickupWin) : null;
-            const pickupLabel = `  └ ${lang==='en'?'5★ Limited':(lang==='jp'?'★5 限定':'5성 한정')}`; 
-            const pickupExtra = `<div class=\"tr fifty\"><div class=\"td\">${pickupLabel}</div><div class=\"td\">${numberFmt(pickupWin)}</div><div class=\"td\">${pickupRate!=null?numberFmt(pickupRate,2)+'%':'-'}</div><div class=\"td\">${pickupAvg!=null?numberFmt(pickupAvg,2):'-'}</div></div>`;
+            const pickupWin = (Number(blocks.pickup[0]?.summary?.win5050) || 0) + (Number(blocks.pickup[1]?.summary?.win5050) || 0);
+            const pickupRate = (pickup.t5 > 0) ? (pickupWin / pickup.t5 * 100) : null;
+            const pickupAvg = (pickupWin > 0) ? (pickup.effTotal / pickupWin) : null;
+            const pickupLabel = `  └ ${lang === 'en' ? '5★ Limited' : (lang === 'jp' ? '★5 限定' : '5성 한정')}`;
+            const pickupExtra = `<div class=\"tr fifty\"><div class=\"td\">${pickupLabel}</div><div class=\"td\">${numberFmt(pickupWin)}</div><div class=\"td\">${pickupRate != null ? numberFmt(pickupRate, 2) + '%' : '-'}</div><div class=\"td\">${pickupAvg != null ? numberFmt(pickupAvg, 2) : '-'}</div></div>`;
 
             // Weapon만 50:50 계산, Weapon_Confirmed는 제외
-            const weaponWin = (Number(blocks.weapon[0]?.summary?.win5050)||0);
-            const weaponTotal5 = (Number(blocks.weapon[0]?.summary?.total5Star)||0) + (Number(blocks.weapon[1]?.summary?.total5Star)||0);
-            const weaponLabel = `  └ ${lang==='en'?'5★ Limited':(lang==='jp'?'★5 限定':'5성 한정')}`;
-            const weaponAvg = weaponWin>0 ? (weapon.effTotal/weaponWin) : null;
-            const weaponExtra = `<div class=\"tr fifty\"><div class=\"td\">${weaponLabel}</div><div class=\"td\">${numberFmt(weaponWin)}</div><div class=\"td\">${weaponTotal5>0?numberFmt(weaponWin/weaponTotal5*100,2)+'%':'-'}</div><div class=\"td\">${weaponAvg!=null?numberFmt(weaponAvg,2):'-'}</div></div>`;
+            const weaponWin = (Number(blocks.weapon[0]?.summary?.win5050) || 0);
+            const weaponTotal5 = (Number(blocks.weapon[0]?.summary?.total5Star) || 0) + (Number(blocks.weapon[1]?.summary?.total5Star) || 0);
+            const weaponLabel = `  └ ${lang === 'en' ? '5★ Limited' : (lang === 'jp' ? '★5 限定' : '5성 한정')}`;
+            const weaponAvg = weaponWin > 0 ? (weapon.effTotal / weaponWin) : null;
+            const weaponExtra = `<div class=\"tr fifty\"><div class=\"td\">${weaponLabel}</div><div class=\"td\">${numberFmt(weaponWin)}</div><div class=\"td\">${weaponTotal5 > 0 ? numberFmt(weaponWin / weaponTotal5 * 100, 2) + '%' : '-'}</div><div class=\"td\">${weaponAvg != null ? numberFmt(weaponAvg, 2) : '-'}</div></div>`;
 
             const wrap = els.overview;
-            wrap.innerHTML='';
+            wrap.innerHTML = '';
             const iconMap = { pickup: '정해진 운명.png', weapon: '정해진 코인.png', standard: '미래의 운명.png' };
-            wrap.appendChild(makeCard('pickup', (lang==='en'?'Character':(lang==='jp'?'キャラクター':'캐릭터')), pickup, pickupExtra, `${base}/assets/img/pay/${iconMap.pickup}`));
-            wrap.appendChild(makeCard('weapon', (lang==='en'?'Weapon':(lang==='jp'?'武器':'무기')), weapon, weaponExtra, `${base}/assets/img/pay/${iconMap.weapon}`));
-            wrap.appendChild(makeCard('standard', (lang==='en'?'Standard':(lang==='jp'?'通常':'일반')), standard, null, `${base}/assets/img/pay/${iconMap.standard}`));
-        } catch(_) {}
+            wrap.appendChild(makeCard('pickup', (lang === 'en' ? 'Character' : (lang === 'jp' ? 'キャラクター' : '캐릭터')), pickup, pickupExtra, `${base}/assets/img/pay/${iconMap.pickup}`));
+            wrap.appendChild(makeCard('weapon', (lang === 'en' ? 'Weapon' : (lang === 'jp' ? '武器' : '무기')), weapon, weaponExtra, `${base}/assets/img/pay/${iconMap.weapon}`));
+            wrap.appendChild(makeCard('standard', (lang === 'en' ? 'Standard' : (lang === 'jp' ? '通常' : '일반')), standard, null, `${base}/assets/img/pay/${iconMap.standard}`));
+        } catch (_) { }
     }
 
     applyTexts();
 
     // tooltip lib loader
-    function ensureTooltipLib(){
-        return new Promise((resolve)=>{
+    function ensureTooltipLib() {
+        return new Promise((resolve) => {
             try {
                 if (window.bindTooltipElement) return resolve();
                 const base = (typeof window.BASE_URL !== 'undefined') ? window.BASE_URL : '';
@@ -694,7 +694,7 @@
                 s.onload = () => resolve();
                 s.onerror = () => resolve();
                 document.head.appendChild(s);
-            } catch(_) { resolve(); }
+            } catch (_) { resolve(); }
         });
     }
 
@@ -704,7 +704,7 @@
             // top-level const characterData is not a window property; access via identifier when available
             // eslint-disable-next-line no-undef
             if (typeof characterData !== 'undefined') return characterData;
-        } catch(_) {}
+        } catch (_) { }
         return window.characterData || null;
     }
 
@@ -713,7 +713,7 @@
         try {
             // eslint-disable-next-line no-undef
             if (typeof WeaponData !== 'undefined') return WeaponData;
-        } catch(_) {}
+        } catch (_) { }
         return window.WeaponData || null;
     }
 
@@ -723,11 +723,11 @@
             try {
                 const s = document.createElement('script');
                 const base = (typeof window.BASE_URL !== 'undefined') ? window.BASE_URL : '';
-                s.src = `${base}/data/kr/characters/characters.js?v=${Date.now()}`;
+                s.src = `${base}/data/character_info.js?v=${Date.now()}`;
                 s.onload = () => resolve();
                 s.onerror = () => resolve();
                 document.head.appendChild(s);
-            } catch(_) { resolve(); }
+            } catch (_) { resolve(); }
         });
         /*
         if (DEBUG) {
@@ -762,24 +762,24 @@
                         // 404 등 에러는 무시하고 계속 진행 (콘솔 에러는 브라우저가 표시하지만 프로세스는 계속됨)
                         s.onerror = () => res();
                         document.head.appendChild(s);
-                    } catch (_) { 
+                    } catch (_) {
                         // 에러 발생해도 계속 진행
-                        res(); 
+                        res();
                     }
                 }));
                 await Promise.all(tasks);
                 // 스크립트 로드 후 데이터가 설정될 시간을 약간 대기
                 await new Promise(resolve => setTimeout(resolve, 100));
-            } catch (_) {}
+            } catch (_) { }
         })();
         return __weaponsLoading;
     }
-    
+
     // manual-editor에서 사용할 수 있도록 window에 노출
     try {
         window.loadWeapons = loadWeapons;
         window.loadCharacters = loadCharacters;
-    } catch(_) {}
+    } catch (_) { }
 
     // Persist last URL (자동 입력은 비활성화)
     const STORAGE_KEY = 'pull-tracker:last-url';
@@ -792,21 +792,21 @@
             els.status.textContent = lines || '';
         }
     }
-    try { window.__pull_setStatus = setStatus; } catch(_) {}
+    try { window.__pull_setStatus = setStatus; } catch (_) { }
 
-    function setHide4Visible(visible){
-        try { const lbl = document.querySelector('.hide4-toggle'); if (lbl) lbl.style.display = visible ? 'inline-block' : 'none'; } catch(_) {}
+    function setHide4Visible(visible) {
+        try { const lbl = document.querySelector('.hide4-toggle'); if (lbl) lbl.style.display = visible ? 'inline-block' : 'none'; } catch (_) { }
     }
 
     let __dataSource = null; // 'drive' | 'local' | null
     let __needDriveConsent = false;
 
     // inline 로딩 UI를 유지하면서 메시지만 교체하는 헬퍼
-    function updateInlineStatus(message){
+    function updateInlineStatus(message) {
         try {
             if (!els.status) return;
             els.status.innerHTML = `<span class="spinner" style="display:inline-block;vertical-align:-3px;margin-right:6px;width:14px;height:14px;border-width:2px"></span>${message} <span id="inline-elapsed"></span>`;
-        } catch(_) {}
+        } catch (_) { }
     }
 
     function setResult(text) {
@@ -820,34 +820,34 @@
                 pre.style.display = 'none';
                 pre.textContent = '';
             }
-        } catch(_) {}
+        } catch (_) { }
     }
 
     // JSON.parse 전에 gachaId 숫자 리터럴을 문자열로 강제
-    function normalizeGachaIdText(text){
+    function normalizeGachaIdText(text) {
         try {
             // "gachaId": 123, "gachaId": 1.23e16 등 모든 숫자 리터럴을 문자열로 치환
             return String(text).replace(/("gachaId"\s*:\s*)(-?\d+(?:\.\d+)?(?:[eE][+\-]?\d+)?)/g, '$1"$2"');
-        } catch(_) { return text; }
+        } catch (_) { return text; }
     }
-    function parseIncoming(text){
+    function parseIncoming(text) {
         try { return JSON.parse(normalizeGachaIdText(text)); }
-        catch(_) { return JSON.parse(text); }
+        catch (_) { return JSON.parse(text); }
     }
 
     // payload 내 모든 record에 대해, 같은 timestamp 묶음에서 tsOrder/ts_order가 없으면 현재 배열 순서로 보정
-    function ensureTsOrderInPayload(payload){
+    function ensureTsOrderInPayload(payload) {
         try {
             if (!payload || !payload.data) return payload;
-            const KEYS = ['Confirmed','Fortune','Weapon','Weapon_Confirmed','Gold','Newcomer'];
-            for (const k of KEYS){
+            const KEYS = ['Confirmed', 'Fortune', 'Weapon', 'Weapon_Confirmed', 'Gold', 'Newcomer'];
+            for (const k of KEYS) {
                 const block = payload.data[k];
                 if (!block || !Array.isArray(block.records)) continue;
-                for (const seg of block.records){
+                for (const seg of block.records) {
                     const recs = Array.isArray(seg?.record) ? seg.record : [];
                     // timestamp별 인덱스 할당 (기존 tsOrder/ts_order가 있으면 그대로 둠)
                     const perTsIdx = new Map();
-                    for (let i=0;i<recs.length;i++){
+                    for (let i = 0; i < recs.length; i++) {
                         const r = recs[i] || {};
                         const t = Number(r.timestamp ?? r.time ?? r.ts ?? 0) || 0;
                         const has = (r.tsOrder != null) || (r.ts_order != null);
@@ -861,12 +861,12 @@
                     }
                 }
             }
-        } catch(_) {}
+        } catch (_) { }
         return payload;
     }
 
     // DEBUG: 병합/로컬 로드된 데이터(result-response) 표시
-    function setMergedDebug(obj){
+    function setMergedDebug(obj) {
         if (!DEBUG) return;
         try {
             const raw = document.getElementById('result');
@@ -895,7 +895,7 @@
             }
             pre.style.display = 'block';
             pre.textContent = (typeof obj === 'string') ? obj : JSON.stringify(obj, null, 2);
-        } catch(_) {}
+        } catch (_) { }
     }
 
     function startLoadingUI() {
@@ -903,7 +903,7 @@
         // top inline status with spinner
         try {
             updateInlineStatus(t.waiting);
-        } catch(_) {}
+        } catch (_) { }
         let dot = 0;
         const anim = setInterval(() => {
             dot = (dot + 1) % 4;
@@ -911,7 +911,7 @@
             const elapsedMs = Date.now() - startedAt;
             const m = Math.floor(elapsedMs / 60000);
             const s = Math.floor((elapsedMs % 60000) / 1000);
-            try { const el = document.getElementById('inline-elapsed'); if (el) el.textContent = `(${t.elapsed(m, s)})`; } catch(_) {}
+            try { const el = document.getElementById('inline-elapsed'); if (el) el.textContent = `(${t.elapsed(m, s)})`; } catch (_) { }
             try {
                 const ldTitle = document.getElementById('ld-title');
                 const ldSub = document.getElementById('ld-sub');
@@ -919,7 +919,7 @@
                 if (ldTitle) ldTitle.textContent = t.loadingTitle;
                 if (ldSub) ldSub.textContent = `${t.waiting} ${d}`;
                 if (ldElapsed) ldElapsed.textContent = t.elapsed(m, s);
-            } catch(_) {}
+            } catch (_) { }
         }, 1000);
         return () => {
             clearInterval(anim);
@@ -958,7 +958,7 @@
             setStatus(t.invalidUrl);
             return;
         }
-        try { localStorage.setItem(STORAGE_KEY, userUrl); } catch(_) {}
+        try { localStorage.setItem(STORAGE_KEY, userUrl); } catch (_) { }
 
         setResult('');
         const stop = startLoadingUI();
@@ -973,16 +973,16 @@
 
             try {
                 const incoming = parseIncoming(text);
-                try { console.log('[pull-tracker][incoming]', incoming); } catch(_) {}
-                try { localStorage.setItem('pull-tracker:last-response', text); } catch(_) {}
+                try { console.log('[pull-tracker][incoming]', incoming); } catch (_) { }
+                try { localStorage.setItem('pull-tracker:last-response', text); } catch (_) { }
                 // 병합 수행 → 저장 → 렌더
                 const merged = ensureTsOrderInPayload(mergeWithCache(incoming));
-                try { console.log('[pull-tracker][merged]', merged); } catch(_) {}
-                try { localStorage.setItem('pull-tracker:merged', JSON.stringify(merged)); } catch(_) {}
+                try { console.log('[pull-tracker][merged]', merged); } catch (_) { }
+                try { localStorage.setItem('pull-tracker:merged', JSON.stringify(merged)); } catch (_) { }
                 renderCardsFromExample(merged);
                 setMergedDebug(merged);
                 setStatus(`${t.savedLocal} ${nowStamp()}`);
-            } catch(_) {
+            } catch (_) {
                 // ignore parse error; keep raw text only
             }
         } catch (err) {
@@ -996,19 +996,19 @@
         try {
             const ok = window.confirm(t.confirmReset);
             if (!ok) return;
-        } catch(_) {}
+        } catch (_) { }
         // 입력 및 화면 초기화
-        try { if (els.input) els.input.value = ''; } catch(_) {}
-        try { setStatus(''); } catch(_) {}
-        try { setResult(''); } catch(_) {}
-        try { const m = document.getElementById('resultMerged'); if (m) m.textContent = ''; } catch(_) {}
-        try { if (els.cards) els.cards.innerHTML = ''; } catch(_) {}
-        try { if (els.overview) els.overview.innerHTML = ''; } catch(_) {}
+        try { if (els.input) els.input.value = ''; } catch (_) { }
+        try { setStatus(''); } catch (_) { }
+        try { setResult(''); } catch (_) { }
+        try { const m = document.getElementById('resultMerged'); if (m) m.textContent = ''; } catch (_) { }
+        try { if (els.cards) els.cards.innerHTML = ''; } catch (_) { }
+        try { if (els.overview) els.overview.innerHTML = ''; } catch (_) { }
 
         // 로컬 저장소 정리
-        try { localStorage.removeItem(STORAGE_KEY); } catch(_) {}
-        try { localStorage.removeItem('pull-tracker:last-response'); } catch(_) {}
-        try { localStorage.removeItem('pull-tracker:merged'); } catch(_) {}
+        try { localStorage.removeItem(STORAGE_KEY); } catch (_) { }
+        try { localStorage.removeItem('pull-tracker:last-response'); } catch (_) { }
+        try { localStorage.removeItem('pull-tracker:merged'); } catch (_) { }
         __dataSource = null;
         // hide4 설정은 사용자 환경 설정이므로 유지
 
@@ -1036,13 +1036,15 @@
         els.cards.innerHTML = '';
         // 4★ 숨기기 상태 불러오기
         let hide4 = false;
-        try { hide4 = localStorage.getItem('pull-tracker:hide4') === '1'; } catch(_) {}
+        try { hide4 = localStorage.getItem('pull-tracker:hide4') === '1'; } catch (_) { }
         const hide4Chk = document.getElementById('hide4Chk');
-        if (hide4Chk) { hide4Chk.checked = hide4; hide4Chk.onchange = () => {
-            try { localStorage.setItem('pull-tracker:hide4', hide4Chk.checked ? '1' : '0'); } catch(_) {}
-            // 재렌더
-            renderCardsFromExample(payload);
-        }; }
+        if (hide4Chk) {
+            hide4Chk.checked = hide4; hide4Chk.onchange = () => {
+                try { localStorage.setItem('pull-tracker:hide4', hide4Chk.checked ? '1' : '0'); } catch (_) { }
+                // 재렌더
+                renderCardsFromExample(payload);
+            };
+        }
         if (els.overview) renderOverview(payload);
 
         for (const [key, label] of types) {
@@ -1058,17 +1060,17 @@
             let inProgress = (() => {
                 try {
                     const list = Array.isArray(actualBlock.records) ? actualBlock.records : [];
-                    if (list.length===0) return 0;
+                    if (list.length === 0) return 0;
                     // 이 블록의 모든 진행 중 세그먼트 길이 합산 (overview 규칙과 동일화)
-                    let s = 0; 
-                    for (const seg of list){
-                        if (seg && seg.fivestar == null){
+                    let s = 0;
+                    for (const seg of list) {
+                        if (seg && seg.fivestar == null) {
                             const rec = Array.isArray(seg.record) ? seg.record : [];
                             s += rec.length;
                         }
                     }
                     return s;
-                } catch(_) { return 0; }
+                } catch (_) { return 0; }
             })();
             // 엔진 summary 값이 있으면 우선 사용
             const inProgressFromSummary = getNumber(actualBlock, ['summary', 'inProgressCount']);
@@ -1145,7 +1147,7 @@
                             const success = window.RecordManager.addRecord(record, panelKey);
                             if (success) {
                                 window.RecordManager.triggerRerender();
-                                setStatus((lang==='en'?'Record added.':(lang==='jp'?'記録を追加しました。':'기록이 추가되었습니다.')) + ' ' + nowStamp());
+                                setStatus((lang === 'en' ? 'Record added.' : (lang === 'jp' ? '記録を追加しました。' : '기록이 추가되었습니다.')) + ' ' + nowStamp());
                             }
                         }
                     });
@@ -1155,13 +1157,13 @@
 
             card.appendChild(titleWrap);
             // bind cursor-follow tooltip
-            ensureTooltipLib().then(() => { try { if (window.bindTooltipElement) window.bindTooltipElement(help); } catch(_) {} });
+            ensureTooltipLib().then(() => { try { if (window.bindTooltipElement) window.bindTooltipElement(help); } catch (_) { } });
 
             // 상단 총계: 총 뽑기 / 진행 중 (진행중은 작고 연해)
             const totalPair = (adjustedTotal != null) ? `${numberFmt(adjustedTotal)} / ` : '-';
             const rowTop = makeStatRow(textFor('totalInProgress'), totalPair);
             if (adjustedTotal != null) {
-                const ip = document.createElement('span'); ip.className='inprogress'; ip.textContent=numberFmt(adjustedProgress);
+                const ip = document.createElement('span'); ip.className = 'inprogress'; ip.textContent = numberFmt(adjustedProgress);
                 rowTop.lastChild.appendChild(ip);
 
                 // 수정 아이콘 추가
@@ -1171,7 +1173,7 @@
                             if (window.RecordManager && window.RecordManager.setAdjustment) {
                                 window.RecordManager.setAdjustment(key, additionalPulls, progressAdjust);
                                 window.RecordManager.triggerRerender();
-                                setStatus((lang==='en'?'Adjustment saved.':(lang==='jp'?'補正を保存しました。':'보정값이 저장되었습니다.')) + ' ' + nowStamp());
+                                setStatus((lang === 'en' ? 'Adjustment saved.' : (lang === 'jp' ? '補正を保存しました。' : '보정값이 저장되었습니다.')) + ' ' + nowStamp());
                             }
                         });
                     });
@@ -1198,7 +1200,7 @@
             //  ㄴ 50:50 (Fortune/Weapon) - 평균도 표시 (Weapon_Confirmed는 제외)
             if (label === 'fortune' || label === 'weapon') {
                 const fiftyRow = makeTableRow([
-                    '  └ 50% '+textFor('win'),
+                    '  └ 50% ' + textFor('win'),
                     win5050 != null ? numberFmt(win5050) : '-',
                     win5050Rate != null ? numberFmt(win5050Rate, 2) + '%' : '-',
                     win5050Avg != null ? numberFmt(win5050Avg, 2) : '-'
@@ -1240,9 +1242,9 @@
                 // RecordManager에서 pity 포함 5★ 기록 가져오기
                 let fiveRecords;
                 if (window.RecordManager && window.RecordManager.collectFiveStarWithPity) {
-                    fiveRecords = window.RecordManager.collectFiveStarWithPity(key).sort((a,b)=> Number(b.timestamp||0) - Number(a.timestamp||0));
+                    fiveRecords = window.RecordManager.collectFiveStarWithPity(key).sort((a, b) => Number(b.timestamp || 0) - Number(a.timestamp || 0));
                 } else {
-                    fiveRecords = collectFiveStarRecords(actualBlock).sort((a,b)=> Number(b.timestamp||0) - Number(a.timestamp||0));
+                    fiveRecords = collectFiveStarRecords(actualBlock).sort((a, b) => Number(b.timestamp || 0) - Number(a.timestamp || 0));
                 }
 
                 for (const rec of fiveRecords) {
@@ -1257,14 +1259,14 @@
                     nameEl.textContent = resolveDisplayName(rec.name, label);
                     // 운명/무기: 승(lose list에 없는 id)을 노란색으로 강조
                     try {
-                        if (label==='fortune' || label==='weapon'){
-                            const loseSet = (typeof window !== 'undefined' && Array.isArray(window.LOSE_5050_LIST)) ? new Set(window.LOSE_5050_LIST.map((v)=>Number(v))) : null;
+                        if (label === 'fortune' || label === 'weapon') {
+                            const loseSet = (typeof window !== 'undefined' && Array.isArray(window.LOSE_5050_LIST)) ? new Set(window.LOSE_5050_LIST.map((v) => Number(v))) : null;
                             const idNum = Number(rec.id);
                             if (loseSet && Number.isFinite(idNum) && !loseSet.has(idNum)) {
                                 nameEl.style.color = '#ffc17c';
                             }
                         }
-                    } catch(_) {}
+                    } catch (_) { }
                     left.appendChild(nameEl);
 
                     // 수동 태그 표시 (수동 입력된 기록만)
@@ -1272,7 +1274,7 @@
                     if (isManual) {
                         const tag = document.createElement('span');
                         tag.className = 'five-manual-tag';
-                        tag.textContent = lang==='en'?'Manual':(lang==='jp'?'手動':'수동');
+                        tag.textContent = lang === 'en' ? 'Manual' : (lang === 'jp' ? '手動' : '수동');
                         tag.style.cssText = 'font-size:10px; padding:2px 6px; background:rgba(100,200,100,0.2); color:#8f8; border-radius:4px; margin-left:6px;';
                         left.appendChild(tag);
                     }
@@ -1298,14 +1300,14 @@
                                 (updated, pk) => {
                                     if (window.RecordManager && window.RecordManager.updateRecord(updated, pk)) {
                                         window.RecordManager.triggerRerender();
-                                        setStatus((lang==='en'?'Record updated.':(lang==='jp'?'記録を更新しました。':'기록이 수정되었습니다.')) + ' ' + nowStamp());
+                                        setStatus((lang === 'en' ? 'Record updated.' : (lang === 'jp' ? '記録を更新しました。' : '기록이 수정되었습니다.')) + ' ' + nowStamp());
                                     }
                                 },
                                 // onDelete
                                 (deleted, pk) => {
                                     if (window.RecordManager && window.RecordManager.deleteRecord(deleted, pk)) {
                                         window.RecordManager.triggerRerender();
-                                        setStatus((lang==='en'?'Record deleted.':(lang==='jp'?'記録を削除しました。':'기록이 삭제되었습니다.')) + ' ' + nowStamp());
+                                        setStatus((lang === 'en' ? 'Record deleted.' : (lang === 'jp' ? '記録を削除しました。' : '기록이 삭제되었습니다.')) + ' ' + nowStamp());
                                     }
                                 }
                             );
@@ -1316,12 +1318,12 @@
                 }
                 accordion.appendChild(listWrap);
                 card.appendChild(accordion);
-            } catch(_) {}
+            } catch (_) { }
 
             els.cards.appendChild(card);
         }
     }
-    try { window.renderCardsFromExample = renderCardsFromExample; } catch(_) {}
+    try { window.renderCardsFromExample = renderCardsFromExample; } catch (_) { }
 
     function getNumber(obj, path) {
         try {
@@ -1329,7 +1331,7 @@
             for (const k of path) cur = cur[k];
             const n = Number(cur);
             return Number.isFinite(n) ? n : null;
-        } catch(_) { return null; }
+        } catch (_) { return null; }
     }
 
     function makeStatRow(label, value) {
@@ -1461,26 +1463,26 @@
 
     function numberFmt(n, frac = 0) {
         try { return new Intl.NumberFormat(undefined, { maximumFractionDigits: frac, minimumFractionDigits: frac }).format(n); }
-        catch(_) { return String(n); }
+        catch (_) { return String(n); }
     }
 
-    function nowStamp(){
+    function nowStamp() {
         try {
             const d = new Date();
             const yy = String(d.getFullYear()).slice(-2);
-            const mm = String(d.getMonth()+1).padStart(2,'0');
-            const dd = String(d.getDate()).padStart(2,'0');
+            const mm = String(d.getMonth() + 1).padStart(2, '0');
+            const dd = String(d.getDate()).padStart(2, '0');
             let h = d.getHours();
-            const ampm = h>=12 ? 'PM' : 'AM';
-            h = h%12; if (h===0) h = 12;
-            const hh = String(h).padStart(2,'0');
-            const mi = String(d.getMinutes()).padStart(2,'0');
-            const ss = String(d.getSeconds()).padStart(2,'0');
+            const ampm = h >= 12 ? 'PM' : 'AM';
+            h = h % 12; if (h === 0) h = 12;
+            const hh = String(h).padStart(2, '0');
+            const mi = String(d.getMinutes()).padStart(2, '0');
+            const ss = String(d.getSeconds()).padStart(2, '0');
             return `${yy}-${mm}-${dd} ${hh}:${mi}:${ss} ${ampm}`;
-        } catch(_) { return ''; }
+        } catch (_) { return ''; }
     }
 
-    function tsToLocal(ts){
+    function tsToLocal(ts) {
         try {
             const d = new Date(Number(ts));
             if (isNaN(d)) return '';
@@ -1491,18 +1493,18 @@
             const hh = pad(d.getHours());
             const mi = pad(d.getMinutes());
             return `${yy}-${mm}-${dd} ${hh}:${mi}`;
-        } catch(_) {}
+        } catch (_) { }
         return '';
     }
 
-    function tooltipFor(label){
+    function tooltipFor(label) {
         const key = label === 'confirmed' ? 'tooltip_confirmed'
-                 : label === 'fortune' ? 'tooltip_fortune'
-                 : label === 'gold' ? 'tooltip_gold'
-                 : label === 'weapon' ? 'tooltip_weapon'
-                 : label === 'weapon_confirmed' ? 'tooltip_weapon_confirmed'
-                 : label === 'newcomer' ? 'tooltip_newcomer'
-                 : null;
+            : label === 'fortune' ? 'tooltip_fortune'
+                : label === 'gold' ? 'tooltip_gold'
+                    : label === 'weapon' ? 'tooltip_weapon'
+                        : label === 'weapon_confirmed' ? 'tooltip_weapon_confirmed'
+                            : label === 'newcomer' ? 'tooltip_newcomer'
+                                : null;
         const dict = {
             kr: textFor(key),
             en: textFor(key),
@@ -1512,19 +1514,19 @@
     }
 
     // 병합 / 덮어쓰기 선택용 간단 다이얼로그
-    async function chooseMergeMode(source){
+    async function chooseMergeMode(source) {
         try {
             return await new Promise((resolve) => {
                 const l = lang;
                 const isFile = source === 'file';
-                const title = (l==='en')
+                const title = (l === 'en')
                     ? (isFile ? 'Import from file' : 'Load from Drive')
-                    : (l==='jp'
+                    : (l === 'jp'
                         ? (isFile ? 'ファイルから読み込み' : 'Drive から読み込み')
                         : (isFile ? '파일 가져오기' : 'Drive 불러오기'));
-                const msg = (l==='en')
+                const msg = (l === 'en')
                     ? 'How do you want to apply the new data?\n\nMerge: Combine with existing records\nOverwrite: Replace current records with new data'
-                    : (l==='jp'
+                    : (l === 'jp'
                         ? '新しいデータをどのように適用しますか？\n\nマージ: 既存の記録と結合\n上書き: 現在の記録を新しいデータで置き換え'
                         : '새 데이터 적용 방식 선택:\n\n병합: 기존 기록에 새 데이터를 합치기\n덮어쓰기: 현재 기록을 새 데이터로 교체하기');
                 const backdrop = document.createElement('div');
@@ -1563,12 +1565,12 @@
                 btnRow.style.justifyContent = 'flex-end';
                 btnRow.style.gap = '8px';
 
-                const cancelLabel = (l==='en') ? 'Cancel' : (l==='jp' ? 'キャンセル' : '취소');
-                const mergeLabel  = (l==='en') ? 'Merge'  : (l==='jp' ? 'マージ' : '병합');
-                const overwriteLabel = (l==='en') ? 'Overwrite' : (l==='jp' ? '上書き' : '덮어쓰기');
+                const cancelLabel = (l === 'en') ? 'Cancel' : (l === 'jp' ? 'キャンセル' : '취소');
+                const mergeLabel = (l === 'en') ? 'Merge' : (l === 'jp' ? 'マージ' : '병합');
+                const overwriteLabel = (l === 'en') ? 'Overwrite' : (l === 'jp' ? '上書き' : '덮어쓰기');
 
-                function close(val){
-                    try { document.body.removeChild(backdrop); } catch(_) {}
+                function close(val) {
+                    try { document.body.removeChild(backdrop); } catch (_) { }
                     resolve(val);
                 }
 
@@ -1600,7 +1602,7 @@
                 });
                 document.body.appendChild(backdrop);
             });
-        } catch(_) {
+        } catch (_) {
             return null;
         }
     }
@@ -1609,12 +1611,12 @@
         // 규칙: Confirmed(확정)=110, Fortune(운명)=80, Gold(골드)=80, Weapon(무기)=70, Weapon_Confirmed(무기확정)=95, Newcomer(뉴커머)=50
         // 4★은 전 타입 10
         const five = (label === 'confirmed') ? 110
-                  : (label === 'fortune') ? 80
-                  : (label === 'gold') ? 80
-                  : (label === 'weapon') ? 70
-                  : (label === 'weapon_confirmed') ? 95
-                  : (label === 'newcomer') ? 50
-                  : null;
+            : (label === 'fortune') ? 80
+                : (label === 'gold') ? 80
+                    : (label === 'weapon') ? 70
+                        : (label === 'weapon_confirmed') ? 95
+                            : (label === 'newcomer') ? 50
+                                : null;
         const four = 10;
         if (five == null) return '-';
         return `5★ ${five}, 4★ ${four}`;
@@ -1626,7 +1628,7 @@
             const records = (block.records || []).flatMap(r => Array.isArray(r.record) ? r.record : []);
             // 5★ → 4★ → 3★ 순서로 name별 개수 집계
             const byGrade = { 5: new Map(), 4: new Map(), 3: new Map(), 2: new Map() };
-            const loseSet = (typeof window !== 'undefined' && Array.isArray(window.LOSE_5050_LIST)) ? new Set(window.LOSE_5050_LIST.map((v)=>Number(v))) : null;
+            const loseSet = (typeof window !== 'undefined' && Array.isArray(window.LOSE_5050_LIST)) ? new Set(window.LOSE_5050_LIST.map((v) => Number(v))) : null;
             for (const it of records) {
                 const g = Number(it.grade);
                 const name = it.name;
@@ -1634,14 +1636,14 @@
                 const bucket = byGrade[g] || byGrade[3];
                 bucket.set(name, (bucket.get(name) || 0) + 1);
             }
-            if (DEBUG) console.log('[pull-tracker] grade buckets', Object.fromEntries(Object.entries(byGrade).map(([k,m])=>[k, m.size])));
+            if (DEBUG) console.log('[pull-tracker] grade buckets', Object.fromEntries(Object.entries(byGrade).map(([k, m]) => [k, m.size])));
             // 3★ 이하 묶기: 3★/2★ 총합 표시
             const gradesForList = [5, 4];
             for (const g of gradesForList) {
-                if (g===4 && hide4) continue;
+                if (g === 4 && hide4) continue;
                 const m = byGrade[g];
                 if (!m || m.size === 0) continue;
-                const arr = Array.from(m.entries()).sort((a,b) => b[1]-a[1]);
+                const arr = Array.from(m.entries()).sort((a, b) => b[1] - a[1]);
                 for (const [name, cnt] of arr) {
                     const pill = document.createElement('span');
                     pill.className = 'pill pill-clickable';
@@ -1659,11 +1661,11 @@
                     const disp = resolveDisplayName(name, label);
                     text.textContent = `${disp} ${cnt}`;
                     // 운명/무기: LOSE_5050_LIST 기준 승(win: not in list) 노란색 표시
-                    if ((label==='fortune' || label==='weapon') && g===5 && loseSet) {
+                    if ((label === 'fortune' || label === 'weapon') && g === 5 && loseSet) {
                         try {
                             // 가능한 id/charId는 five history쪽에서만 안정적이므로 pills는 이름만 강조
                             // 이름만으로 id 매칭은 불가 → pills에서는 전체 5성을 승 강조하지 않고, history에서 정확히 처리
-                        } catch(_) {}
+                        } catch (_) { }
                     }
                     pill.appendChild(text);
 
@@ -1674,19 +1676,19 @@
                             const historyRecords = window.RecordManager.collectRecordsByName(name, panelKey);
                             window.ManualEditor.openHistoryPanel(disp, historyRecords, panelKey, (rec) => {
                                 // 개별 레코드 수정 모달 열기
-                                window.ManualEditor.openEditModal(rec, panelKey, 
+                                window.ManualEditor.openEditModal(rec, panelKey,
                                     // onSave
                                     (updated, pk) => {
                                         if (window.RecordManager.updateRecord(updated, pk)) {
                                             window.RecordManager.triggerRerender();
-                                            setStatus((lang==='en'?'Record updated.':(lang==='jp'?'記録を更新しました。':'기록이 수정되었습니다.')) + ' ' + nowStamp());
+                                            setStatus((lang === 'en' ? 'Record updated.' : (lang === 'jp' ? '記録を更新しました。' : '기록이 수정되었습니다.')) + ' ' + nowStamp());
                                         }
                                     },
                                     // onDelete
                                     (deleted, pk) => {
                                         if (window.RecordManager.deleteRecord(deleted, pk)) {
                                             window.RecordManager.triggerRerender();
-                                            setStatus((lang==='en'?'Record deleted.':(lang==='jp'?'記録を削除しました。':'기록이 삭제되었습니다.')) + ' ' + nowStamp());
+                                            setStatus((lang === 'en' ? 'Record deleted.' : (lang === 'jp' ? '記録を削除しました。' : '기록이 삭제되었습니다.')) + ' ' + nowStamp());
                                         }
                                     }
                                 );
@@ -1703,7 +1705,7 @@
             const lowLabel = lang === 'jp' ? '以下' : (lang === 'en' ? 'and below' : '이하');
             if (total3 > 0 && !hide4) addPill(container, `3★ ${total3}`);
             if (total2 > 0 && !hide4) addPill(container, `2★ ${total2}`);
-        } catch(_) {}
+        } catch (_) { }
     }
 
     function sumMap(m) {
@@ -1724,7 +1726,7 @@
             const segments = Array.isArray(block.records) ? block.records : [];
             for (const seg of segments) {
                 // 정렬 강제: timestamp asc → tsOrder/ts_order asc → gachaId asc
-                const recs = (Array.isArray(seg.record) ? seg.record.slice() : []).sort((a,b)=>{
+                const recs = (Array.isArray(seg.record) ? seg.record.slice() : []).sort((a, b) => {
                     const ta = Number(a?.timestamp ?? a?.time ?? a?.ts ?? 0) || 0;
                     const tb = Number(b?.timestamp ?? b?.time ?? b?.ts ?? 0) || 0;
                     if (ta !== tb) return ta - tb;
@@ -1744,21 +1746,21 @@
                         let disp = r.name;
                         const cls = resolveCharacterClass(r.name);
                         if (cls) {
-                            const info = (getCharData()||{})[cls];
+                            const info = (getCharData() || {})[cls];
                             const alt = charNameByLang(info);
                             if (alt) disp = alt;
                         }
-                        rows.push({ name: disp, timestamp: r.timestamp, pity, id: (r && (r.id!=null||r.charId!=null) ? Number(r.id!=null? r.id: r.charId) : undefined) });
+                        rows.push({ name: disp, timestamp: r.timestamp, pity, id: (r && (r.id != null || r.charId != null) ? Number(r.id != null ? r.id : r.charId) : undefined) });
                         pity = 0;
                     }
                 }
             }
             return rows;
-        } catch(_) { return []; }
+        } catch (_) { return []; }
     }
 
     // 이름에서 캐릭터 클래스 키 추정 후 이미지 노출 (무기 카드는 제외)
-    function characterThumbFor(displayName){
+    function characterThumbFor(displayName) {
         try {
             // 이름 풀서치로 class key 찾기 (예외 치환 적용)
             const globalChar = getCharData();
@@ -1780,7 +1782,7 @@
                 const candidates = [];
                 for (const [cls, info] of Object.entries(globalChar)) {
                     const cands = candidateNames(info);
-                    for (const nm of cands){
+                    for (const nm of cands) {
                         if (!nm) continue;
                         if (baseOf(nm) === wantedBase) {
                             candidates.push({ cls, nm, hasVar: hasVar(nm) });
@@ -1820,72 +1822,72 @@
             img.referrerPolicy = 'no-referrer';
             // 안정화: 네트워크 지연 시 onload 보장 및 fallback 1회 재시도
             let triedFallback = false;
-            img.onerror = function(){
+            img.onerror = function () {
                 if (!triedFallback) {
                     triedFallback = true;
                     this.src = fallback;
                 } else {
-                    this.style.display='none';
+                    this.style.display = 'none';
                     // if (DEBUG) console.log('[pull-tracker] image not found for', found);
                 }
             };
             return img;
-        } catch(_) { return null; }
+        } catch (_) { return null; }
     }
 
     // 캐릭터 매칭 후보 이름들(다국어/코드네임 포함)
-    function candidateNames(info){
+    function candidateNames(info) {
         if (!info) return [];
         const base = [info.name, info.name_en, info.name_jp, info.codename]
-            .map(v => (v==null? '' : String(v).trim()))
+            .map(v => (v == null ? '' : String(v).trim()))
             .filter(Boolean);
         if (lang === 'jp') {
             const extra = [];
-            for (const s of base){
+            for (const s of base) {
                 try {
                     const noSpace = String(s).replace(/[\s\u3000]+/g, '');
                     if (noSpace && noSpace !== s) extra.push(noSpace);
-                } catch(_) {}
+                } catch (_) { }
             }
             return Array.from(new Set(base.concat(extra)));
         }
         return Array.from(new Set(base));
     }
 
-    function charNameByLang(info){
+    function charNameByLang(info) {
         if (!info) return '';
         if (lang === 'en') return String(info.codename || info.name_en || info.name || '').trim();
         if (lang === 'jp') return String(info.name_jp || info.name || '').trim();
         return String(info.name || '').trim();
     }
 
-    function resolveCharacterClass(displayName){
+    function resolveCharacterClass(displayName) {
         try {
             const globalChar = getCharData(); if (!globalChar) return null;
             let wanted = String(applyNameFixups(displayName)).trim();
             // 일본어: 공백 제거 버전도 함께 고려
-            const wantedNorm = (lang==='jp') ? wanted.replace(/[\s\u3000]+/g,'') : wanted;
+            const wantedNorm = (lang === 'jp') ? wanted.replace(/[\s\u3000]+/g, '') : wanted;
             const baseOf = (s) => String(s).split('·')[0].trim();
             const hasVar = (s) => String(s).includes('·');
             const wantedBase = baseOf(wanted);
             const wantedHasVar = hasVar(wanted);
-            for (const [cls, info] of Object.entries(globalChar)){
+            for (const [cls, info] of Object.entries(globalChar)) {
                 const cands = candidateNames(info);
-                if (cands.some(nm => nm === wanted || (lang==='jp' && nm.replace(/[\s\u3000]+/g,'') === wantedNorm))) return cls;
+                if (cands.some(nm => nm === wanted || (lang === 'jp' && nm.replace(/[\s\u3000]+/g, '') === wantedNorm))) return cls;
             }
             const candidates = [];
-            for (const [cls, info] of Object.entries(globalChar)){
+            for (const [cls, info] of Object.entries(globalChar)) {
                 const cands = candidateNames(info);
-                for (const nm of cands){
+                for (const nm of cands) {
                     if (!nm) continue;
                     const nmBase = baseOf(nm);
-                    if (nmBase === wantedBase) { candidates.push({cls, nm, hasVar: hasVar(nm)}); break; }
+                    if (nmBase === wantedBase) { candidates.push({ cls, nm, hasVar: hasVar(nm) }); break; }
                 }
             }
             if (candidates.length === 0) return null;
-            if (wantedHasVar) { const exact = candidates.find(c=>c.nm===wanted); return exact? exact.cls : candidates[0].cls; }
-            const plain = candidates.find(c=>!c.hasVar); return plain? plain.cls : candidates[0].cls;
-        } catch(_) { return null; }
+            if (wantedHasVar) { const exact = candidates.find(c => c.nm === wanted); return exact ? exact.cls : candidates[0].cls; }
+            const plain = candidates.find(c => !c.hasVar); return plain ? plain.cls : candidates[0].cls;
+        } catch (_) { return null; }
     }
 
     // 무기 썸네일 생성: WeaponData에서 name으로 찾고, 소유 캐릭터 키와 weaponX-Y 추출
@@ -1912,40 +1914,40 @@
             img.style.borderRadius = '3px';
             img.decoding = 'async';
             img.referrerPolicy = 'no-referrer';
-            img.onerror = function(){ this.style.display='none'; };
+            img.onerror = function () { this.style.display = 'none'; };
             return img;
-        } catch(_) { return null; }
+        } catch (_) { return null; }
     }
 
-    function resolveWeaponMeta(name){
+    function resolveWeaponMeta(name) {
         try {
             const datasets = [];
             const kr = getWeaponData(); if (kr) datasets.push(kr);
             if (window.enCharacterWeaponData) datasets.push(window.enCharacterWeaponData);
             if (window.jpCharacterWeaponData) datasets.push(window.jpCharacterWeaponData);
-            const needle = String(name||'').trim(); if (!needle) return null;
-            for (const db of datasets){
-                for (const [charKey, obj] of Object.entries(db)){
-                    for (const [k,v] of Object.entries(obj)){
+            const needle = String(name || '').trim(); if (!needle) return null;
+            for (const db of datasets) {
+                for (const [charKey, obj] of Object.entries(db)) {
+                    for (const [k, v] of Object.entries(obj)) {
                         if (!k.startsWith('weapon')) continue;
-                        const vname = v && typeof v.name==='string' ? v.name.trim() : '';
+                        const vname = v && typeof v.name === 'string' ? v.name.trim() : '';
                         if (vname && vname === needle) return { ownerKey: charKey, weaponKey: k };
                     }
                 }
             }
             return null;
-        } catch(_) { return null; }
+        } catch (_) { return null; }
     }
 
-    function weaponNameByLang(ownerKey, weaponKey){
+    function weaponNameByLang(ownerKey, weaponKey) {
         try {
-            const db = (lang==='en') ? (window.enCharacterWeaponData||getWeaponData())
-                     : (lang==='jp') ? (window.jpCharacterWeaponData||getWeaponData())
-                     : getWeaponData();
+            const db = (lang === 'en') ? (window.enCharacterWeaponData || getWeaponData())
+                : (lang === 'jp') ? (window.jpCharacterWeaponData || getWeaponData())
+                    : getWeaponData();
             const entry = db && db[ownerKey] && db[ownerKey][weaponKey];
             const n = entry && entry.name ? String(entry.name).trim() : '';
             return n || null;
-        } catch(_) { return null; }
+        } catch (_) { return null; }
     }
 
     // 표시에 사용할 이름을 언어별로 결정 (이미지 매칭은 항상 한국어 클래스 키 기반 유지)
@@ -1956,11 +1958,11 @@
         'Kotone Montagne': 'Montagne Kotone'
     };
 
-    function applyNameFixups(raw){
-        try { const k = String(raw||'').trim(); return NAME_FIXUPS[k] || k; } catch(_) { return raw; }
+    function applyNameFixups(raw) {
+        try { const k = String(raw || '').trim(); return NAME_FIXUPS[k] || k; } catch (_) { return raw; }
     }
 
-    function resolveDisplayName(name, label){
+    function resolveDisplayName(name, label) {
         try {
             const fixed = applyNameFixups(name);
             if (label === 'weapon' || label === 'weapon_confirmed') {
@@ -1970,38 +1972,38 @@
             }
             const cls = resolveCharacterClass(fixed);
             if (!cls) return name;
-            const info = (getCharData()||{})[cls];
+            const info = (getCharData() || {})[cls];
             const alt = charNameByLang(info);
             return alt || name;
-        } catch(_) { return name; }
+        } catch (_) { return name; }
     }
 
     // Supabase rows → merged payload 형태로 변환
-    function shapeCloudRows(rows){
-        const keys = ['Confirmed','Fortune','Weapon','Weapon_Confirmed','Gold','Newcomer'];
-        const data = {}; for (const k of keys) data[k] = { summary:{ pulledSum:0,total5Star:0,total4Star:0,win5050:0,avgPity:null }, records:[] };
+    function shapeCloudRows(rows) {
+        const keys = ['Confirmed', 'Fortune', 'Weapon', 'Weapon_Confirmed', 'Gold', 'Newcomer'];
+        const data = {}; for (const k of keys) data[k] = { summary: { pulledSum: 0, total5Star: 0, total4Star: 0, win5050: 0, avgPity: null }, records: [] };
         const byType = new Map();
-        for (const r of rows){
+        for (const r of rows) {
             const t = r.gacha_type; if (!data[t]) continue;
             if (!byType.has(t)) byType.set(t, []);
-            byType.get(t).push({ name:r.name, grade:Number(r.grade||0), timestamp:Number(r.timestamp||0), gachaId:(r.gacha_id!=null? String(r.gacha_id): null), tsOrder: (r.ts_order!=null? Number(r.ts_order): null) });
+            byType.get(t).push({ name: r.name, grade: Number(r.grade || 0), timestamp: Number(r.timestamp || 0), gachaId: (r.gacha_id != null ? String(r.gacha_id) : null), tsOrder: (r.ts_order != null ? Number(r.ts_order) : null) });
         }
-        for (const [t, arr] of byType.entries()){
-            arr.sort((a,b)=>{
+        for (const [t, arr] of byType.entries()) {
+            arr.sort((a, b) => {
                 const dt = a.timestamp - b.timestamp; if (dt) return dt;
-                const au = (a.tsOrder==null); const bu = (b.tsOrder==null);
+                const au = (a.tsOrder == null); const bu = (b.tsOrder == null);
                 if (au !== bu) return au ? -1 : 1;
                 if (!au && !bu) { const doo = a.tsOrder - b.tsOrder; if (doo) return doo; }
                 return 0;
             });
             // 간단히 한 그룹으로 묶어 segment 구성
-            const seg = { fivestar: null, lastTimestamp: (arr[arr.length-1]?.timestamp||0), record: arr };
-            const i5 = arr.findIndex(v=> Number(v.grade)===5); if (i5>=0) seg.fivestar = { name: arr[i5].name, timestamp: arr[i5].timestamp };
+            const seg = { fivestar: null, lastTimestamp: (arr[arr.length - 1]?.timestamp || 0), record: arr };
+            const i5 = arr.findIndex(v => Number(v.grade) === 5); if (i5 >= 0) seg.fivestar = { name: arr[i5].name, timestamp: arr[i5].timestamp };
             data[t].records = [seg];
-            const s = { pulledSum: arr.length, total5Star: arr.filter(v=>v.grade===5).length, total4Star: arr.filter(v=>v.grade===4).length, win5050:0, avgPity:null };
+            const s = { pulledSum: arr.length, total5Star: arr.filter(v => v.grade === 5).length, total4Star: arr.filter(v => v.grade === 4).length, win5050: 0, avgPity: null };
             data[t].summary = s;
         }
-        return { version:1, updatedAt: Date.now(), data };
+        return { version: 1, updatedAt: Date.now(), data };
     }
 
     // Auto render from bundled example when available (dev view)
@@ -2010,8 +2012,8 @@
         const exampleAttr = els.cards ? els.cards.getAttribute('data-example') : null;
         const exampleUrl = exampleAttr || `${location.pathname}example.json`;
         */
-       const exampleAttr = null;
-       const exampleUrl = exampleAttr;
+        const exampleAttr = null;
+        const exampleUrl = exampleAttr;
 
         // 캐릭터 메타 → 무기 데이터 순으로 로드 후, 로컬 캐시/마지막 응답만 사용
         (async () => {
@@ -2021,7 +2023,7 @@
                 const mergedCached = localStorage.getItem('pull-tracker:merged');
                 if (mergedCached) {
                     const json = ensureTsOrderInPayload(JSON.parse(mergedCached));
-                    try { console.log('[pull-tracker][merged-local]', json); } catch(_) {}
+                    try { console.log('[pull-tracker][merged-local]', json); } catch (_) { }
                     __dataSource = 'local';
                     setStatus(`${t.loadedLocal} ${nowStamp()}`);
                     renderCardsFromExample(json); setMergedDebug(json); setHide4Visible(true); return;
@@ -2029,16 +2031,16 @@
                 const cached = localStorage.getItem('pull-tracker:last-response');
                 if (cached) {
                     const json = parseIncoming(cached);
-                    try { console.log('[pull-tracker][incoming-local]', json); } catch(_) {}
+                    try { console.log('[pull-tracker][incoming-local]', json); } catch (_) { }
                     const m = ensureTsOrderInPayload(mergeWithCache(json));
-                    try { console.log('[pull-tracker][merged-from-last]', m); } catch(_) {}
+                    try { console.log('[pull-tracker][merged-from-last]', m); } catch (_) { }
                     renderCardsFromExample(m); setMergedDebug(m); setHide4Visible(true); return;
                 }
                 setStatus(t.noData);
                 setHide4Visible(false);
-            } catch(_) {}
+            } catch (_) { }
         })();
-    } catch(_) {}
+    } catch (_) { }
 })();
 
 

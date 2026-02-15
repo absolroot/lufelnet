@@ -55,7 +55,7 @@
               <div class="control-grid">
                 <div class="field">
                   <label>언어</label>
-                  <input id="langs-input" type="text" value="kr,en,jp" placeholder="kr,en,jp">
+                  <input id="langs-input" type="text" value="kr,en,jp" placeholder="kr,en,jp,cn">
                 </div>
                 <div class="field">
                   <label>범위 모드</label>
@@ -316,6 +316,84 @@
                 </div>
                 <button id="btn-add-character" class="btn primary">신규 캐릭터 생성</button>
                 <p class="muted small">codename.json에 { api, local, key }가 있어야 생성 가능합니다.</p>
+              </section>
+
+              <section class="group hidden" id="add-revelation-group">
+                <h2>계시 추가</h2>
+                <div class="add-revelation-grid add-revelation-grid-main">
+                  <div class="field">
+                    <label>Kind</label>
+                    <select id="new-revelation-kind">
+                      <option value="sub">sub</option>
+                      <option value="main">main</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <label>KR</label>
+                    <input id="new-revelation-kr" type="text" placeholder="예: 신규 계시">
+                  </div>
+                  <div class="field">
+                    <label>EN</label>
+                    <input id="new-revelation-en" type="text" placeholder="예: New Revelation">
+                  </div>
+                  <div class="field">
+                    <label>JP</label>
+                    <input id="new-revelation-jp" type="text" placeholder="예: 日本語名">
+                  </div>
+                  <div class="field">
+                    <label>CN</label>
+                    <input id="new-revelation-cn" type="text" placeholder="例: 简体中文名">
+                  </div>
+                  <div class="field">
+                    <label>Type Tags (CSV)</label>
+                    <input id="new-revelation-types" type="text" placeholder="버프,화염">
+                  </div>
+                  <label class="field checkbox-field">
+                    <span>EN/JP 미출시 태그</span>
+                    <input id="new-revelation-unreleased" type="checkbox">
+                  </label>
+                </div>
+
+                <details class="revelation-subtext-wrap">
+                  <summary>sub 계시 set2/set4 텍스트 (선택)</summary>
+                  <div class="add-revelation-grid add-revelation-grid-sub">
+                    <div class="field">
+                      <label>KR set2</label>
+                      <textarea id="new-revelation-set2-kr" rows="2" placeholder="KR 2세트 효과"></textarea>
+                    </div>
+                    <div class="field">
+                      <label>KR set4</label>
+                      <textarea id="new-revelation-set4-kr" rows="2" placeholder="KR 4세트 효과"></textarea>
+                    </div>
+                    <div class="field">
+                      <label>EN set2</label>
+                      <textarea id="new-revelation-set2-en" rows="2" placeholder="EN 2-set effect"></textarea>
+                    </div>
+                    <div class="field">
+                      <label>EN set4</label>
+                      <textarea id="new-revelation-set4-en" rows="2" placeholder="EN 4-set effect"></textarea>
+                    </div>
+                    <div class="field">
+                      <label>JP set2</label>
+                      <textarea id="new-revelation-set2-jp" rows="2" placeholder="JP 2セット効果"></textarea>
+                    </div>
+                    <div class="field">
+                      <label>JP set4</label>
+                      <textarea id="new-revelation-set4-jp" rows="2" placeholder="JP 4セット効果"></textarea>
+                    </div>
+                    <div class="field">
+                      <label>CN set2</label>
+                      <textarea id="new-revelation-set2-cn" rows="2" placeholder="CN 2件套效果"></textarea>
+                    </div>
+                    <div class="field">
+                      <label>CN set4</label>
+                      <textarea id="new-revelation-set4-cn" rows="2" placeholder="CN 4件套效果"></textarea>
+                    </div>
+                  </div>
+                </details>
+
+                <button id="btn-add-revelation" class="btn primary">신규 계시 생성</button>
+                <p class="muted small">EN/JP 미출시 태그는 동시 반영됩니다. CN은 KR과 같은 출시 기준으로 미출시 태그를 사용하지 않습니다.</p>
               </section>
             </div>
           </section>

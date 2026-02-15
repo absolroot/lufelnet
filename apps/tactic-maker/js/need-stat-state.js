@@ -130,6 +130,21 @@ export function getCurrentLang() {
     return 'kr';
 }
 
+export function translateNeedStat(key, fallback = '') {
+    if (typeof window.t === 'function') {
+        try {
+            return window.t(key, fallback);
+        } catch (_) {
+            // fall through
+        }
+    }
+    if (window.I18nService && typeof window.I18nService.t === 'function') {
+        const result = window.I18nService.t(key, fallback);
+        if (result && result !== key) return result;
+    }
+    return fallback;
+}
+
 export function formatTotalPair(total) {
     const current = Number.isFinite(total) ? total : 0;
     const needed = Math.max(0, 100 - current);
@@ -154,13 +169,13 @@ export function normalizeTextForLang(text) {
 export function getSourceDisplayName(source, baseUrl) {
     const lang = getCurrentLang();
     if (source === '공통') {
-        return lang === 'en' ? 'Common' : (lang === 'jp' ? '共通' : '공통');
+        return translateNeedStat('needStatSourceCommon', '공통');
     }
     if (source === '원더') {
-        return lang === 'en' ? 'WONDER' : (lang === 'jp' ? 'ワンダー' : '원더');
+        return translateNeedStat('needStatSourceWonder', '원더');
     }
     if (source === '계시') {
-        return lang === 'en' ? 'Revelation' : (lang === 'jp' ? '啓示' : '계시');
+        return translateNeedStat('needStatSourceRevelation', '계시');
     }
     // Character name - use characterData for proper display
     const charMeta = (window.characterData || {})[source];
@@ -177,9 +192,19 @@ export function getSourceDisplayName(source, baseUrl) {
  */
 export function getLocalizedSkillName(item, groupName = '') {
     const lang = getCurrentLang();
-    let localizedName = '';
     const typeStr = String(item.type || '');
     const isWonder = groupName === '원더';
+
+    // 1) 데이터에 언어별 필드가 있으면 우선 사용
+    if (lang === 'en' && item.skillName_en && String(item.skillName_en).trim()) {
+        return String(item.skillName_en).trim();
+    }
+    if (lang === 'jp' && item.skillName_jp && String(item.skillName_jp).trim()) {
+        return String(item.skillName_jp).trim();
+    }
+    if (lang === 'kr' && item.skillName && String(item.skillName).trim()) {
+        return String(item.skillName).trim();
+    }
 
     // For 원더 전용무기, use DataLoader.getWeaponDisplayName for translation
     if (isWonder && typeStr === '전용무기' && item.skillName) {
@@ -188,10 +213,11 @@ export function getLocalizedSkillName(item, groupName = '') {
 
     // For 원더 페르소나, use DataLoader.getPersonaDisplayName for translation
     if (isWonder && typeStr === '페르소나' && item.skillName) {
-        const baseName = item.skillName.replace(/\s*-\s*고유\s?스킬/g, '').trim();
+        // "광목천 - 본능" 같은 형태에서 페르소나 본체 이름만 추출
+        const baseName = String(item.skillName).split(/\s*-\s*/)[0].trim();
         const displayName = DataLoader.getPersonaDisplayName(baseName);
         if (item.skillName.includes('고유스킬') || item.skillName.includes('고유 스킬')) {
-            const suffix = lang === 'en' ? ' - Unique Skill' : (lang === 'jp' ? ' - 固有スキル' : ' - 고유스킬');
+            const suffix = translateNeedStat('needStatUniqueSkillSuffix', ' - 고유스킬');
             return displayName + suffix;
         }
         return displayName;
@@ -202,27 +228,12 @@ export function getLocalizedSkillName(item, groupName = '') {
         return DataLoader.getSkillDisplayName(item.skillName);
     }
 
-    if (lang === 'en') {
-        localizedName = (item.skillName_en && String(item.skillName_en).trim()) ? item.skillName_en : '';
-    } else if (lang === 'jp') {
-        localizedName = (item.skillName_jp && String(item.skillName_jp).trim()) ? item.skillName_jp : '';
+    // 3) 마지막 폴백
+    if (item.skillName && String(item.skillName).trim()) {
+        if (lang === 'kr') return String(item.skillName).trim();
+        if (isWonder) return String(item.skillName).trim();
     }
-
-    // Fallback rules
-    if (!localizedName) {
-        const isRevelation = groupName === '계시';
-        const isWonderDisplayType = isWonder && (typeStr === '전용무기' || typeStr === '페르소나' || typeStr === '스킬');
-        
-        if (lang !== 'kr' && isWonderDisplayType) {
-            localizedName = item.skillName || '';
-        } else if (lang === 'kr') {
-            localizedName = item.skillName || '';
-        } else {
-            localizedName = '';
-        }
-    }
-
-    return localizedName;
+    return '';
 }
 
 /**
@@ -248,36 +259,28 @@ export function getLocalizedOptions(item) {
  * Get all labels for UI
  */
 export function getLabels() {
-    const lang = getCurrentLang();
-    const t = (key, fallback) => {
-        if (window.I18nService && typeof window.I18nService.t === 'function') {
-            const result = window.I18nService.t(key);
-            if (result && result !== key) return result;
-        }
-        return fallback;
-    };
-
     return {
-        labelNeedStat: t('needStat', lang === 'en' ? 'Key Stat' : (lang === 'jp' ? '重要ステ' : '중요 스탯')),
-        labelAttrImprove: lang === 'en' ? 'Stat Buff' : (lang === 'jp' ? 'ステータス強化' : '해명의 힘'),
-        labelCritical: t('needStatCriticalRate', t('criticalRate', lang === 'en' ? 'Critical Rate' : (lang === 'jp' ? 'クリ率' : '크리티컬 확률'))),
-        labelPierce: t('needStatPierceRate', lang === 'en' ? 'Pierce' : (lang === 'jp' ? '貫通' : '관통')),
-        labelBuff: t('needStatBuff', t('criticalBuff', lang === 'en' ? 'Buff' : (lang === 'jp' ? 'バフ' : '버프'))),
-        labelSelf: t('needStatSelf', t('criticalSelf', lang === 'en' ? 'Self' : (lang === 'jp' ? '自分' : '자신'))),
-        labelNoItems: t('needStatNoItems', t('criticalNoItems', lang === 'en' ? 'No applicable items' : (lang === 'jp' ? '該当なし' : '해당 없음'))),
-        labelRevSum: t('revelationSum', lang === 'en' ? 'Card Sum' : (lang === 'jp' ? '啓示合計' : '계시 합계')),
-        labelExtraSum: t('extraSum', lang === 'en' ? 'Extra' : (lang === 'jp' ? '別途' : '별도 수치')),
-        labelExtraPierce: t('extraPierce', lang === 'en' ? 'Extra Pierce' : (lang === 'jp' ? '別途貫通' : '별도 관통 수치')),
-        labelExtraDefenseReduce: t('extraDefenseReduce', lang === 'en' ? 'Extra Def Reduce' : (lang === 'jp' ? '別途防御減少' : '별도 방어력 감소')),
-        labelPending: t('pending', lang === 'en' ? 'Pending' : (lang === 'jp' ? '準備中' : '준비중')),
-        labelCurrent: lang === 'en' ? 'current' : (lang === 'jp' ? '現在' : '현재'),
-        labelNeeded: lang === 'en' ? 'needed' : (lang === 'jp' ? '必要' : '필요'),
-        labelPenetrateSelf: lang === 'en' ? 'Penetrate - Self' : (lang === 'jp' ? '貫通 - 自分' : '관통 - 자신'),
-        labelPenetrateBuff: lang === 'en' ? 'Penetrate - Buff' : (lang === 'jp' ? '貫通 - バフ' : '관통 - 버프'),
-        labelDefenseReduce: lang === 'en' ? 'Defense Reduce' : (lang === 'jp' ? '防御減少' : '방어력 감소'),
-        labelRemainingDefense: lang === 'en' ? 'Remaining Def' : (lang === 'jp' ? '残り防御' : '남은 방어력'),
-        labelRequiredPierce: lang === 'en' ? 'Required Pierce' : (lang === 'jp' ? '必要貫通' : '필요 관통'),
-        labelTarget: lang === 'en' ? 'target' : (lang === 'jp' ? '目標' : '목표')
+        labelNeedStat: translateNeedStat('needStat', '중요 스탯'),
+        labelAttrImprove: translateNeedStat('needStatAttrImprove', '해명의 힘'),
+        labelCritical: translateNeedStat('needStatCriticalRate', '크리티컬 확률'),
+        labelPierce: translateNeedStat('needStatPierceRate', '관통'),
+        labelBuff: translateNeedStat('needStatBuff', '버프'),
+        labelSelf: translateNeedStat('needStatSelf', '자신'),
+        labelNoItems: translateNeedStat('needStatNoItems', '해당 없음'),
+        labelRevSum: translateNeedStat('revelationSum', '계시 합계'),
+        labelExtraSum: translateNeedStat('extraSum', '별도 수치'),
+        labelExtraPierce: translateNeedStat('extraPierce', '별도 관통 수치'),
+        labelExtraDefenseReduce: translateNeedStat('extraDefenseReduce', '별도 방어력 감소'),
+        labelPending: translateNeedStat('pending', '준비중'),
+        labelCurrent: translateNeedStat('needStatCurrent', '현재'),
+        labelNeeded: translateNeedStat('needStatNeeded', '필요'),
+        labelPenetrateSelf: translateNeedStat('needStatPenetrateSelf', '관통 - 자신'),
+        labelPenetrateBuff: translateNeedStat('needStatPenetrateBuff', '관통 - 버프'),
+        labelDefenseReduce: translateNeedStat('needStatDefenseReduce', '방어력 감소'),
+        labelRemainingDefense: translateNeedStat('needStatRemainingDefense', '남은 방어력'),
+        labelRequiredPierce: translateNeedStat('needStatRequiredPierce', '필요 관통'),
+        labelTarget: translateNeedStat('needStatTarget', '목표'),
+        labelPersonaPerformance: translateNeedStat('needStatPersonaPerformance', '페르소나 성능')
     };
 }
 

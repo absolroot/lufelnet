@@ -16,6 +16,10 @@ window.I18N_PAGE_TIER_EN = {
 
     // Buttons
     addTierButton: 'Add New Tier',
+    tierSourceGlobal: 'Global',
+    tierSourceGlobalOnKr: 'GLB on KR',
+    tierSourceKrSpoiler: '[Spoiler] KR',
+    newTierLabel: 'New',
 
     // Modal buttons
     deleteRow: 'Delete Row',
@@ -38,6 +42,9 @@ window.I18N_PAGE_TIER_EN = {
     captureImage: 'Capture Image',
     exportJSON: 'Export JSON',
     importJSON: 'Import JSON',
+    tierLoadFunctionUnavailable: 'Tier loading function is not available.',
+    tierInvalidDataFormat: 'Invalid tier data format.',
+    tierFailedParseJsonFile: 'Failed to parse JSON file.',
 
     // Spoiler toggle
     showSpoilers: 'Show Spoilers',
@@ -65,9 +72,9 @@ window.I18N_PAGE_TIER_EN = {
             q: 'Q. Why are some characters listed at A1?',
             a: `A1 is assigned when a character gains significant utility or undergoes a mechanical shift that increases versatility. 
 (Based on the KR version. Mechanisms may differ depending on the server at launch.)
-　                
-Minami (Marian) - A general gacha unit with a low A1 barrier and provides a Penetrate buff.
-Masaki (Cherish) - A general gacha unit with a low A1 barrier and provides a Penetrate buff.
+
+Minami (Marian) - A general gacha unit with a low A1 barrier and provides a Pierce buff.
+Masaki (Cherish) - A general gacha unit with a low A1 barrier and provides a Pierce buff.
 Tomoko·Seaside (Moko·Seaside) - Gains full-team healing from A1, boosting overall usability.
 Tempest Riko (Wind·Tempest) - Skill 1 expands from Wind-only to all elements. Skill 2 becomes the core in multi-target fights, so A0 is still viable.
 Justine & Caroline (J&C) - Skill 3 triggers automatically, reducing its cycle from 3 to 2 turns. Its duration is 2 turns, and the exclusive weapon's buff doesn’t stack unless Skill 3 is used, making A0 an incomplete form and hard to compare in tiers.`
@@ -82,6 +89,12 @@ Justine & Caroline (J&C) - Skill 3 triggers automatically, reducing its cycle fr
             a: 'It represents materials for the Mindscape Core added in the KR V4.7.1 update, allowing expansion up to Level 100. Acquiring additional Passives may lead to Tier changes.'
         }
     ],
+
+    // SEO
+    tierListSeoTitle: 'Tier List - Persona 5: The Phantom X LufelNet',
+    tierListSeoDescription: 'Check P5X character tier list by position.',
+    tierMakerSeoTitle: 'Tier Maker - Persona 5: The Phantom X LufelNet',
+    tierMakerSeoDescription: 'Create your own P5X character tier list by position.',
 
     // Tag translations (for filter)
     tags: {

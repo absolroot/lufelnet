@@ -16,6 +16,15 @@ let isTierListMode = false;
 // 글로벌 언어(en/jp)에서 KR 티어 파일 강제 사용 여부
 let forceUseKRTierInGlobal = false;
 
+const getTierI18nText = (key, fallback = '') => {
+  if (typeof window.t === 'function') {
+    return window.t(key, fallback);
+  }
+  return fallback || key;
+};
+
+const getNewTierLabel = () => getTierI18nText('newTierLabel', 'New');
+
 // 필터링된 캐릭터들의 원래 위치를 저장하는 맵 (parent와 nextSibling 정보 포함)
 const originalPositions = new Map();
 
@@ -188,12 +197,13 @@ const handlePrependTier = () => {
       const allElements = Array.from(positionTiersContainer.children);
 
       // Create new tier row elements
-      const tierColor = getTierColor("New");
+      const newTierLabel = getNewTierLabel();
+      const tierColor = getTierColor(newTierLabel);
       const isMobile = window.innerWidth <= 1200;
 
       if (isMobile) {
         // For mobile, just create the mobile tier row normally
-        createMobileTierRow("New", tierColor);
+        createMobileTierRow(newTierLabel, tierColor);
       } else {
         // For desktop, we need to insert elements at the correct positions
         const newElements = [];
@@ -203,7 +213,7 @@ const handlePrependTier = () => {
         tierLabelCell.className = "tier-label-cell";
         tierLabelCell.contentEditable = "plaintext-only";
         tierLabelCell.style.setProperty("--color", tierColor);
-        tierLabelCell.innerHTML = `<span>New</span>`;
+        tierLabelCell.innerHTML = `<span>${newTierLabel}</span>`;
         newElements.push(tierLabelCell);
 
         // Create position cells
@@ -274,12 +284,13 @@ const handleAppendTier = () => {
       const allElements = Array.from(positionTiersContainer.children);
 
       // Create new tier row elements
-      const tierColor = getTierColor("New");
+      const newTierLabel = getNewTierLabel();
+      const tierColor = getTierColor(newTierLabel);
       const isMobile = window.innerWidth <= 1200;
 
       if (isMobile) {
         // For mobile, just create the mobile tier row normally
-        createMobileTierRow("New", tierColor);
+        createMobileTierRow(newTierLabel, tierColor);
       } else {
         // For desktop, we need to insert elements at the correct positions
         const newElements = [];
@@ -289,7 +300,7 @@ const handleAppendTier = () => {
         tierLabelCell.className = "tier-label-cell";
         tierLabelCell.contentEditable = "plaintext-only";
         tierLabelCell.style.setProperty("--color", tierColor);
-        tierLabelCell.innerHTML = `<span>New</span>`;
+        tierLabelCell.innerHTML = `<span>${newTierLabel}</span>`;
         newElements.push(tierLabelCell);
 
         // Create position cells
@@ -697,14 +708,15 @@ const getTierColor = (label) => {
   return colors[Math.floor(Math.random() * colors.length)];
 };
 
-const createTierRow = (label = "New") => {
-  const tierColor = getTierColor(label);
+const createTierRow = (label) => {
+  const tierLabel = label || getNewTierLabel();
+  const tierColor = getTierColor(tierLabel);
   const isMobile = window.innerWidth <= 1200;
 
   if (isMobile) {
-    return createMobileTierRow(label, tierColor);
+    return createMobileTierRow(tierLabel, tierColor);
   } else {
-    return createDesktopTierRow(label, tierColor);
+    return createDesktopTierRow(tierLabel, tierColor);
   }
 };
 
@@ -1693,48 +1705,22 @@ window.initPositionTierMaker = () => {
     updateAllDragListenersForMode();
   }, 1000);
 
-  // 현재 언어 확인
-  const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
-
-  // 언어별 제목 데이터
-  const titleData = {
-    'kr': {
-      tierList: '티어 리스트',
-      tierMaker: '티어 메이커',
-      metaPrefix: '페르소나5 더 팬텀 X 루페르넷 - ',
-      listDesc: 'P5X 캐릭터 티어 리스트를 확인하세요.',
-      makerDesc: 'P5X 캐릭터 티어 리스트를 만들어 보세요.'
-    },
-    'en': {
-      tierList: 'Tier List',
-      tierMaker: 'Tier Maker',
-      metaPrefix: 'Persona 5: The Phantom X LufelNet - ',
-      listDesc: 'Check P5X character tier list by position.',
-      makerDesc: 'Create your own P5X character tier list by position.'
-    },
-    'jp': {
-      tierList: 'ティアリスト',
-      tierMaker: 'ティアメーカー',
-      metaPrefix: 'ペルソナ5 ザ・ファントム X LufelNet - ',
-      listDesc: 'P5X怪盗のポジション別ティアリストを確認してください。',
-      makerDesc: 'ポジション別にP5X怪盗ティアを作ってみましょう。'
-    }
-  };
-
-  const currentTitleData = titleData[currentLang] || titleData['kr'];
-
   // 제목과 설명 동적 변경 (언어별 제목은 여기서 설정하지 않음 - updateLanguageContent에서 처리)
   const metaTitle = document.querySelector('title');
   const metaDescription = document.querySelector('meta[name="description"]');
+  const tierListSeoTitle = getTierI18nText('tierListSeoTitle', '티어 리스트 - 페르소나5 더 팬텀 X 루페르넷');
+  const tierListSeoDescription = getTierI18nText('tierListSeoDescription', 'P5X 캐릭터 포지션별 티어 리스트를 확인하세요.');
+  const tierMakerSeoTitle = getTierI18nText('tierMakerSeoTitle', '티어 메이커 - 페르소나5 더 팬텀 X 루페르넷');
+  const tierMakerSeoDescription = getTierI18nText('tierMakerSeoDescription', '포지션별로 P5X 캐릭터 티어 리스트를 만들어 보세요.');
 
   if (shouldLoadList) {
     // 기본: 티어 리스트 모드
-    if (metaTitle) metaTitle.textContent = currentTitleData.metaPrefix + currentTitleData.tierList;
-    if (metaDescription) metaDescription.setAttribute('content', currentTitleData.listDesc);
+    if (metaTitle) metaTitle.textContent = tierListSeoTitle;
+    if (metaDescription) metaDescription.setAttribute('content', tierListSeoDescription);
   } else {
     // list=false: 티어 메이커 모드
-    if (metaTitle) metaTitle.textContent = currentTitleData.metaPrefix + currentTitleData.tierMaker;
-    if (metaDescription) metaDescription.setAttribute('content', currentTitleData.makerDesc);
+    if (metaTitle) metaTitle.textContent = tierMakerSeoTitle;
+    if (metaDescription) metaDescription.setAttribute('content', tierMakerSeoDescription);
   }
 
   // 이미 초기화된 경우 중복 실행 방지

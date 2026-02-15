@@ -1,7 +1,7 @@
 ﻿# 서비스별 i18n 처리 현황
 
-기준일: 2026-02-14  
-점검 범위: `apps` 하위 26개 서비스 전수 점검
+기준일: 2026-02-15  
+점검 범위: `apps` 하위 26개 서비스 + 기존 `통합 i18n 완료` 14개 서비스 재점검
 
 ## 0. i18n 불필요 서비스
 - `article-editor`
@@ -14,27 +14,27 @@
 
 | 서비스 | 상태 | 근거 |
 | --- | --- | --- |
-| `about` | 완료 | `apps/about/index.html:549`, `apps/about/index.html:554`에서 `initPageI18n('about')`/`I18nService.init('about')` 호출 |
+| `about` | 완료 | 통합 초기화 + 모달 타이틀/복사 피드백을 페이지 번들 키 조회로 통합(`apps/about/index.html:324`, `apps/about/index.html:458`, `apps/about/index.html:630`) |
 | `astrolabe` | 완료 | `apps/astrolabe/index.html:123`, `apps/astrolabe/js/i18n.js:5`에서 페이지 번들 + `I18N_PAGE_ASTROLABE_*` 사용 |
-| `critical-calc` | 완료 | `apps/critical-calc/index.html:180`, `apps/critical-calc/index.html:200`에서 페이지 번들 + `I18N_PAGE_CRITICAL_CALC_*` 사용 |
-| `defense-calc` | 완료 | `apps/defense-calc/index.html:363`, `apps/defense-calc/index.html:429`에서 페이지 번들 + `I18N_PAGE_DEFENSE_CALC_*` 사용 |
+| `critical-calc` | 완료(경미 초기값 잔존) | 통합 번들 사용(`apps/critical-calc/index.html:180`), 초기 하드코딩(`apps/critical-calc/index.html:27`)은 `assets/js/defense/defense-i18n.js:236`에서 런타임 치환 |
+| `defense-calc` | 완료(경미 초기값 잔존) | 통합 번들 사용(`apps/defense-calc/index.html:363`), 초기 하드코딩(`apps/defense-calc/index.html:49`)은 `assets/js/defense/defense-i18n.js:236`에서 런타임 치환 |
 | `gallery` | 완료 | `apps/gallery/index.html:104`, `apps/gallery/gallery-tags.js:30`에서 `initPageI18n('gallery')` + `window.t()` 사용 |
 | `login` | 완료 | `apps/login/index.html:133`, `apps/login/index.html:138`에서 `initPageI18n('login')`/`I18nService.init('login')` 호출 |
-| `maps` | 완료 | `apps/maps/index.html:152`~`apps/maps/index.html:154` 페이지 번들 로드, `apps/maps/maps-i18n.js:48`에서 `MapsI18n` 사용 |
-| `persona` | 완료 | `apps/persona/persona-list.js:49` `initPageI18n('persona')` 호출, `apps/persona/getfrom.js:28` `window.t()` 기반 라벨 조회로 로컬 언어 분기 제거 |
-| `pull-calc` | 완료 | `apps/pull-calc/pull-calc.js:1674` `initPageI18n('pull-calc')`, `apps/pull-calc/pull-calc.js:523` `mustReadContent`를 `window.t()`로 조회, 로컬 번역 팩 제거(`apps/pull-calc/pull-calc-i18n.js` 삭제) |
-| `revelations` | 완료 | `apps/revelations/index.html:29`의 `data-i18n` 바인딩 + `apps/revelations/index.html:624`의 `I18nService.init('revelation')` |
 | `schedule` | 완료 | `apps/schedule/index.html:203` `initPageI18n('schedule')`, `apps/schedule/index.html:114` `window.t()` 사용 |
-| `synergy` | 완료 | `apps/synergy/synergy.js:2165` `initPageI18n('synergy')`, `apps/synergy/synergy.js:62` `window.t()` 사용 |
-| `tier` | 완료 | `apps/tier/position-tier.html:840` `initPageI18n('tier')`, `apps/tier/position-tier-qa.js:16` 키 조회 |
+| `tier` | 완료 | 타이틀/소스 토글/SEO/모달·툴바 라벨을 페이지 번들 키 조회로 통합(`apps/tier/position-tier.html:428`, `apps/tier/position-tier.html:473`, `apps/tier/position-tier.html:709`, `apps/tier/position-tiers.js:1711`, `apps/tier/capture.js:150`) |
 | `wonder-weapon` | 완료 | `apps/wonder-weapon/wonder-weapon.js:1148` `initPageI18n('wonder-weapon')`, `apps/wonder-weapon/wonder-weapon.js:86` `window.t()` 사용 |
 
 ## 2. 통합 i18n 연결 + 로컬 i18n 잔존(부분)
 
 | 서비스 | 상태 | 대표 잔존 위치 |
 | --- | --- | --- |
-| `character` | 부분 잔존 | 목록 페이지는 통합 i18n(`apps/character/index.html:949`)이나 상세 페이지에서 언어 분기 하드코딩(`apps/character/character.html:51`) 및 로컬 맵(`assets/js/character/character-i18n.js:5`) 유지 |
-| `tactic-maker` | 부분 잔존 | 통합 i18n 초기화(`apps/tactic-maker/js/main.js:67`) 이후에도 언어별 하드코딩 분기(`apps/tactic-maker/js/need-stat-state.js:261`, `apps/tactic-maker/js/ui-critical-card.js:1201`) 잔존 |
+| `character` | 부분 잔존 | 상세 상단/섹션 라벨은 통합 키 조회로 전환(`apps/character/character.html:735`, `assets/js/character/character-i18n.js:31`)했으나 도움말/보조 모듈 로컬 맵(`assets/js/character/helpmodal.js:13`, `assets/js/character/QEVEL.js:27`) 잔존 |
+| `maps` | 부분 잔존 | 페이지 번들 + `MapsI18n` 사용(`apps/maps/maps-i18n.js:48`) 중이나 언어 선택기 라벨 하드코딩(`apps/maps/index.html:78`, `apps/maps/object-filter-panel.js:493`) 잔존 |
+| `persona` | 부분 잔존 | 통합 초기화(`apps/persona/persona-list.js:49`) 이후에도 fallback 문자열/배지 하드코딩(`apps/persona/persona-list.js:393`, `apps/persona/skillfrom.js:214`, `apps/persona/skillfrom.js:236`) 잔존 |
+| `pull-calc` | 부분 잔존 | 통합 초기화(`apps/pull-calc/pull-calc.js:1674`)되었으나 로컬 SEO 맵(`apps/pull-calc/index.html:471`) 잔존 |
+| `revelations` | 부분 잔존 | 통합 초기화(`apps/revelations/index.html:624`)되었으나 로컬 SEO 맵/상태 라벨 하드코딩(`apps/revelations/index.html:423`, `apps/revelations/index.html:846`) 잔존 |
+| `synergy` | 부분 잔존 | 통합 초기화(`apps/synergy/synergy.js:2165`)되었으나 레거시 `window.I18N` fallback 경로(`apps/synergy/synergy.js:67`, `apps/synergy/item_from.js:17`, `apps/synergy/soulmate.js:12`) 잔존 |
+| `tactic-maker` | 부분 잔존 | need-stat 카드 라벨은 통합 키 조회로 전환(`apps/tactic-maker/js/need-stat-state.js:133`, `apps/tactic-maker/js/ui-critical-card.js:1806`)했으나 액션 라벨 로컬 맵(`apps/tactic-maker/js/ui-tactic.js:2351`) 잔존 |
 
 ## 3. 통합 i18n 미구현 서비스
 
@@ -58,31 +58,31 @@
 | `about` | 완료 |
 | `article-editor` | 불필요 |
 | `astrolabe` | 완료 |
-| `buff-calc` | 미구현 |
+| `buff-calc` | 불필요 |
 | `character` | 부분 잔존 |
-| `critical-calc` | 완료 |
-| `defense-calc` | 완료 |
+| `critical-calc` | 완료(경미 잔존) |
+| `defense-calc` | 완료(경미 잔존) |
 | `dmg-calc` | 불필요 |
 | `gallery` | 완료 |
 | `guides` | 미구현 |
 | `home` | 미구현 |
 | `login` | 완료 |
-| `maps` | 완료 |
+| `maps` | 부분 잔존 |
 | `material-calc` | 미구현 |
 | `patch-console` | 불필요 |
 | `pay-calc` | 불필요 |
-| `persona` | 완료 |
-| `pull-calc` | 완료 |
+| `persona` | 부분 잔존 |
+| `pull-calc` | 부분 잔존 |
 | `pull-tracker` | 미구현 |
-| `revelations` | 완료 |
+| `revelations` | 부분 잔존 |
 | `schedule` | 완료 |
-| `synergy` | 완료 |
+| `synergy` | 부분 잔존 |
 | `tactic` | 레거시/중복 잔존 |
 | `tactic-maker` | 부분 잔존 |
 | `tier` | 완료 |
 | `wonder-weapon` | 완료 |
 
 ## 6. 결론
-- 전수 점검 기준 통합 i18n 완료: `about`, `astrolabe`, `critical-calc`, `defense-calc`, `gallery`, `login`, `maps`, `persona`, `pull-calc`, `revelations`, `schedule`, `synergy`, `tier`, `wonder-weapon`
+- 재점검 기준 통합 i18n 완료(경미 초기값 잔존 포함): `about`, `astrolabe`, `critical-calc`, `defense-calc`, `gallery`, `login`, `schedule`, `tier`, `wonder-weapon`
 - 우선 정리 대상(미구현): `guides`, `home`, `material-calc`, `pull-tracker`
-- 부분 잔존 정리 대상: `character`, `tactic-maker`, `tactic`
+- 부분 잔존 정리 대상: `character`, `maps`, `persona`, `pull-calc`, `revelations`, `synergy`, `tactic-maker`, `tactic`

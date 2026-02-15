@@ -8,7 +8,12 @@ window.I18N_PAGE_ABOUT_EN = {
     // Buttons
     donateButton: 'Support | Donate',
     supportersButton: 'Supporters',
+    supportersModalTitle: 'Supporters List',
     showMoreButton: 'More',
+
+    // Feedback
+    copySuccessText: 'Copied!',
+    copyFailedText: 'Copy failed',
 
     // Language notice
     languageNotice: '🌍 English translation is in progress. Some content may still be in Korean.',

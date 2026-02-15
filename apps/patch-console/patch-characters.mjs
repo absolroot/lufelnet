@@ -31,7 +31,7 @@ const PROJECT_ROOT = path.join(__dirname, '..', '..');
 const CHARACTER_ROOT = path.join(PROJECT_ROOT, 'data', 'characters');
 const TEMPLATE_ROOT = path.join(CHARACTER_ROOT, 'template');
 const CODENAME_FILE = path.join(PROJECT_ROOT, 'data', 'external', 'character', 'codename.json');
-const KR_CHARACTER_META_FILE = path.join(PROJECT_ROOT, 'data', 'kr', 'characters', 'characters.js');
+const KR_CHARACTER_META_FILE = path.join(PROJECT_ROOT, 'data', 'character_info.js');
 
 const SUPPORTED_PATCH_LANGS = new Set(['kr', 'en', 'jp']);
 const ALL_EXTERNAL_LANGS = ['kr', 'en', 'jp', 'cn', 'tw', 'sea'];

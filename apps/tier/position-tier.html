@@ -1,7 +1,7 @@
 ---
 layout: default
 custom_css: [position-tiers]
-custom_data: [characters/characters.js]
+custom_data: [/data/character_info.js]
 permalink: /tier/position-tier/
 language: kr
 title: 페르소나5 더 팬텀 X 루페르넷 - 티어 리스트
@@ -196,11 +196,14 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
     <div id="tier-source-toggle" class="tier-source-toggle" style="display:none;">
         <div style="display:flex; gap:8px; align-items:center;">
             <button id="btn-global-tier" class="tier-source-btn"
+                data-i18n="tierSourceGlobal"
                 style="padding:6px 10px; border-radius:6px; border:1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.9); cursor:pointer;">Global</button>
             <button id="btn-kr-tier" class="tier-source-btn"
+                data-i18n="tierSourceGlobalOnKr"
                 style="padding:6px 10px; border-radius:6px; border:1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.9); cursor:pointer;">GLB
                 on KR</button>
             <button id="btn-kr-spoiler-tier" class="tier-source-btn"
+                data-i18n="tierSourceKrSpoiler"
                 style="padding:6px 10px; border-radius:6px; border:1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.9); cursor:pointer;">[Spoiler]
                 KR</button>
         </div>
@@ -221,7 +224,7 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
     <div class="spoiler-toggle-container" id="position-spoiler-container" style="display:none;">
         <label class="spoiler-toggle-label">
             <input type="checkbox" id="position-spoiler-toggle" class="spoiler-toggle-checkbox">
-            <span class="spoiler-toggle-text" id="position-spoiler-text">Show Spoilers</span>
+            <span class="spoiler-toggle-text" id="position-spoiler-text" data-i18n="showSpoilers">Show Spoilers</span>
         </label>
     </div>
     <div class="cards container">
@@ -242,11 +245,11 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
     <dialog class="settings-modal">
         <section>
             <div class="colors"></div>
-            <textarea class="tier-label" placeholder="Tier label"></textarea>
-            <button id="delete">Delete Row</button>
-            <button id="clear">Clear Row</button>
-            <button id="prepend">Add a Row Above</button>
-            <button id="append">Add a Row Below</button>
+            <textarea class="tier-label" data-i18n-placeholder="tierLabel" placeholder="Tier label"></textarea>
+            <button id="delete" data-i18n="deleteRow">Delete Row</button>
+            <button id="clear" data-i18n="clearRow">Clear Row</button>
+            <button id="prepend" data-i18n="addRowAbove">Add a Row Above</button>
+            <button id="append" data-i18n="addRowBelow">Add a Row Below</button>
         </section>
     </dialog>
 
@@ -396,6 +399,16 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
 <script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
 
 <script>
+    function getTierText(key, fallback = '') {
+        if (typeof window.t === 'function') {
+            return window.t(key, fallback);
+        }
+        if (window.I18nService && typeof window.I18nService.t === 'function') {
+            return window.I18nService.t(key, fallback);
+        }
+        return fallback || key;
+    }
+
     // 다국어 지원 함수
     async function updateLanguageContent() {
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
@@ -412,14 +425,8 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
         // 네비게이션 및 제목 업데이트 (i18n 시스템이 자동 처리하므로 필요 없음)
         // data-i18n 속성으로 처리됨
 
-        // 언어별 제목 데이터
-        const titleTexts = {
-            'kr': { tierList: '티어 리스트', tierMaker: '티어 메이커' },
-            'en': { tierList: 'Tier List', tierMaker: 'Tier Maker' },
-            'jp': { tierList: 'ティアリスト', tierMaker: 'ティアメーカー' }
-        };
-
-        const currentTitleTexts = titleTexts[currentLang] || titleTexts['kr'];
+        const tierListTitle = getTierText('tierListTitle', '티어 리스트');
+        const tierMakerTitle = getTierText('tierMakerTitle', '티어 메이커');
 
         // list=false일 때 제목 변경 (네비게이션과 페이지 타이틀)
         const navCurrent = document.getElementById('nav-current');
@@ -427,12 +434,12 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
 
         if (isListMode) {
             // 티어 리스트 모드
-            if (navCurrent) navCurrent.textContent = currentTitleTexts.tierList;
-            if (pageTitle) pageTitle.textContent = currentTitleTexts.tierList;
+            if (navCurrent) navCurrent.textContent = tierListTitle;
+            if (pageTitle) pageTitle.textContent = tierListTitle;
         } else {
             // 티어 메이커 모드
-            if (navCurrent) navCurrent.textContent = currentTitleTexts.tierMaker;
-            if (pageTitle) pageTitle.textContent = currentTitleTexts.tierMaker;
+            if (navCurrent) navCurrent.textContent = tierMakerTitle;
+            if (pageTitle) pageTitle.textContent = tierMakerTitle;
         }
 
         // 도움말 메시지 업데이트 (리스트 모드에서는 숨김)
@@ -463,15 +470,9 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
             // 리스트 모드(보기)에서만 노출, 메이커(list=false)에서는 숨김
             if (isListMode && (currentLang === 'en' || currentLang === 'jp')) {
                 sourceToggle.style.display = 'block';
-                if (currentLang === 'en') {
-                    btnGlobal.textContent = 'Global';
-                    btnKR.textContent = 'GLB on KR';
-                    btnKRSpoiler.textContent = '[Spoiler] KR';
-                } else {
-                    btnGlobal.textContent = 'グローバル';
-                    btnKR.textContent = 'グローバル(韓国版)';
-                    btnKRSpoiler.textContent = '[ネタバレ] 韓国版';
-                }
+                btnGlobal.textContent = getTierText('tierSourceGlobal', btnGlobal.textContent || 'Global');
+                btnKR.textContent = getTierText('tierSourceGlobalOnKr', btnKR.textContent || 'GLB on KR');
+                btnKRSpoiler.textContent = getTierText('tierSourceKrSpoiler', btnKRSpoiler.textContent || '[Spoiler] KR');
             } else {
                 sourceToggle.style.display = 'none';
             }
@@ -593,7 +594,7 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
 
         try {
             // 1) KR 데이터 샌드박스 로드
-            const kr = await fetchCharactersData(`/data/kr/characters/characters.js?v=${APP_VERSION}`);
+            const kr = await fetchCharactersData(`/data/character_info.js?v=${APP_VERSION}`);
             if (!kr) throw new Error('Failed to load KR character data');
             const krCharacterData = kr.characterData || {};
             const krCharacterList = kr.characterList || { mainParty: [], supportParty: [] };
@@ -701,49 +702,25 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
 
     // 언어별 SEO 설정 함수
     function updateSEOContent() {
-        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
-
         // URL 파라미터 확인
         const urlParams = new URLSearchParams(window.location.search);
         const shouldLoadList = urlParams.get('list') !== 'false';
-
-        const seoData = {
-            'kr': shouldLoadList ? {
-                title: '티어 리스트 - 페르소나5 더 팬텀 X 루페르넷',
-                description: 'P5X 캐릭터 포지션별 티어 리스트를 확인하세요.'
-            } : {
-                title: '티어 메이커 - 페르소나5 더 팬텀 X 루페르넷',
-                description: '포지션별로 P5X 캐릭터 티어 리스트를 만들어 보세요.'
-            },
-            'en': shouldLoadList ? {
-                title: 'Tier List - Persona 5: The Phantom X LufelNet',
-                description: 'Check P5X character tier list by position.'
-            } : {
-                title: 'Tier Maker - Persona 5: The Phantom X LufelNet',
-                description: 'Create your own P5X character tier list by position.'
-            },
-            'jp': shouldLoadList ? {
-                title: 'ティアリスト - ペルソナ5 ザ・ファントム X LufelNet',
-                description: 'P5X怪盗のポジション別ティアリストを確認してください。'
-            } : {
-                title: 'ティアメーカー - ペルソナ5 ザ・ファントム X LufelNet',
-                description: 'ポジション別にP5X怪盗ティアを作ってみましょう。'
-            }
-        };
-
-        const currentSEO = seoData[currentLang] || seoData['kr'];
+        const metaDescription = document.querySelector('meta[name="description"]');
+        const titleKey = shouldLoadList ? 'tierListSeoTitle' : 'tierMakerSeoTitle';
+        const descriptionKey = shouldLoadList ? 'tierListSeoDescription' : 'tierMakerSeoDescription';
+        const seoTitle = getTierText(titleKey, document.title || '');
+        const seoDescription = getTierText(descriptionKey, (metaDescription && metaDescription.getAttribute('content')) || '');
 
         // 타이틀 업데이트
-        document.title = currentSEO.title;
+        document.title = seoTitle;
 
         // 메타 태그 업데이트
-        const metaDescription = document.querySelector('meta[name="description"]');
         const ogTitle = document.querySelector('meta[property="og:title"]');
         const ogDescription = document.querySelector('meta[property="og:description"]');
 
-        if (metaDescription) metaDescription.setAttribute('content', currentSEO.description);
-        if (ogTitle) ogTitle.setAttribute('content', currentSEO.title);
-        if (ogDescription) ogDescription.setAttribute('content', currentSEO.description);
+        if (metaDescription) metaDescription.setAttribute('content', seoDescription);
+        if (ogTitle) ogTitle.setAttribute('content', seoTitle);
+        if (ogDescription) ogDescription.setAttribute('content', seoDescription);
     }
 
     // 중복 실행 방지를 위한 플래그
@@ -770,18 +747,7 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
         }
 
         // 언어별 라벨
-        if (typeof window.t === 'function') {
-            label.textContent = window.t('showSpoilers') || '스포일러 보기';
-        } else {
-            // Fallback
-            if (currentLang === 'en') {
-                label.textContent = 'Show Spoilers';
-            } else if (currentLang === 'jp') {
-                label.textContent = 'スポイラー表示';
-            } else {
-                label.textContent = '스포일러 보기';
-            }
-        }
+        label.textContent = getTierText('showSpoilers', '스포일러 보기');
 
         // 기본 상태: 체크 해제 (현재 페이지 세션에서만 유지)
         checkbox.checked = false;

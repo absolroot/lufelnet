@@ -72,7 +72,7 @@ async function ensureCharacterDataLoaded() {
     const spoilerEnabled = isSpoilerEnabled();
 
     // 1) KR 데이터 로드
-    const kr = await fetchCharactersData(`/data/kr/characters/characters.js?v=${APP_VERSION}`);
+    const kr = await fetchCharactersData(`/data/character_info.js?v=${APP_VERSION}`);
     if (!kr) return false;
 
     const krCharacterData = kr.characterData || {};

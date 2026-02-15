@@ -136,6 +136,14 @@ function loadFriendNumMapping() {
   return { numToName, maxMappedNum };
 }
 
+function cleanJsonString(str) {
+  if (!str) return str;
+  // 1. : [ , 뒤에 공백이 있을 수 있고, 그 뒤에 0으로 시작해서 0이 아닌 숫자가 오는 경우 0을 제거
+  // 예: "id": 0123 -> "id": 123
+  // 예: [ 01, 02 ] -> [ 1, 2 ]
+  return str.replace(/([:\[,]\s*)0+([1-9])/g, '$1$2');
+}
+
 function fetchJson(url) {
   return new Promise((resolve, reject) => {
     const req = https.get(url, (res) => {
@@ -153,7 +161,8 @@ function fetchJson(url) {
       });
       res.on('end', () => {
         try {
-          resolve(JSON.parse(body));
+          const cleanBody = cleanJsonString(body);
+          resolve(JSON.parse(cleanBody));
         } catch (error) {
           reject(new Error(`Invalid JSON from ${url}: ${error.message}`));
         }

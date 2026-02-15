@@ -147,6 +147,7 @@ jp: /about/?lang=jp
         <div id="supporters-modal" class="modal">
             <div class="modal-content">
                 <span class="close-modal">&times;</span>
+                <h3 id="supporters-title">서포터 목록</h3>
                 <div class="supporters-list">
                     <div class="supporter-tier">
                         <h4>Special Thanks</h4>
@@ -325,13 +326,10 @@ jp: /about/?lang=jp
                 const modal = document.getElementById('supporters-modal');
                 modal.style.display = 'block';
 
-                // 현재 언어에 따라 타이틀 변경
-                const currentLang = getCurrentLanguage();
+                // i18n 키로 모달 타이틀 갱신
                 const title = document.getElementById('supporters-title');
                 if (title) {
-                    title.textContent = currentLang === 'en' ? 'Supporters List' :
-                        currentLang === 'jp' ? '支援者リスト' :
-                            '서포터 목록';
+                    title.textContent = getI18nText('supportersModalTitle', title.textContent || '');
                 }
             }
 
@@ -446,6 +444,8 @@ jp: /about/?lang=jp
         const donateButton = document.getElementById('donateButton');
         const recentUpdatesTitle = document.getElementById('recent-updates-title');
         const showMoreUpdatesBtn = document.getElementById('show-more-updates-btn');
+        const supportersButtons = document.querySelectorAll('.show-supporters-btn');
+        const supportersTitle = document.getElementById('supporters-title');
 
         if (siteTitle) siteTitle.textContent = getI18nText('siteTitle', siteTitle.textContent || '');
         if (contactTitle) contactTitle.textContent = getI18nText('contactTitle', contactTitle.textContent || '');
@@ -453,6 +453,17 @@ jp: /about/?lang=jp
         if (donateButton) donateButton.textContent = getI18nText('donateButton', donateButton.textContent || '');
         if (recentUpdatesTitle) recentUpdatesTitle.textContent = getI18nText('recentUpdatesTitle', recentUpdatesTitle.textContent || '');
         if (showMoreUpdatesBtn) showMoreUpdatesBtn.textContent = getI18nText('showMoreButton', showMoreUpdatesBtn.textContent || '');
+        if (supportersButtons.length > 0) {
+            const supportersText = getI18nText('supportersButton', '');
+            if (supportersText) {
+                supportersButtons.forEach(btn => {
+                    btn.textContent = supportersText;
+                });
+            }
+        }
+        if (supportersTitle) {
+            supportersTitle.textContent = getI18nText('supportersModalTitle', supportersTitle.textContent || '');
+        }
 
         const notice = document.getElementById('language-notice');
         if (notice) {
@@ -613,7 +624,7 @@ jp: /about/?lang=jp
                 const originalText = element.textContent;
 
                 element.classList.add('copied');
-                element.textContent = '복사됨!';
+                element.textContent = getI18nText('copySuccessText', '복사됨!');
 
                 setTimeout(() => {
                     element.classList.remove('copied');
@@ -623,7 +634,7 @@ jp: /about/?lang=jp
                 console.error('복사 실패:', err);
                 // 복사 실패 시 폴백
                 element.classList.add('copy-failed');
-                element.textContent = '복사 실패';
+                element.textContent = getI18nText('copyFailedText', '복사 실패');
                 setTimeout(() => {
                     element.classList.remove('copy-failed');
                     element.textContent = code;

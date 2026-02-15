@@ -55,7 +55,8 @@
 const DOMAIN_PARTS = {
   character: ['ritual', 'skill', 'weapon', 'base_stats'],
   persona: ['profile', 'innate_skill', 'passive_skill', 'uniqueSkill', 'highlight'],
-  wonder_weapon: ['name', 'effect']
+  wonder_weapon: ['name', 'effect'],
+  revelation: ['name', 'relation', 'effect', 'unreleased']
 };
 
 const CHARACTER_PART_FILES = {
@@ -67,11 +68,19 @@ const CHARACTER_PART_FILES = {
 const PERSONA_DATA_ROOT_ID = 'persona';
 const PERSONA_NONORDER_SUBDIR = 'nonorder';
 const WONDER_INTERNAL_ROOT_ID = 'wonder_internal';
+const REVELATION_LANGS = ['kr', 'en', 'jp', 'cn'];
+const DOMAIN_DEFAULT_LANGS = {
+  character: 'kr,en,jp',
+  persona: 'kr,en,jp',
+  wonder_weapon: 'kr,en,jp,cn',
+  revelation: 'kr,en,jp,cn'
+};
 
 const FALLBACK_CAPABILITIES = [
   { id: 'character', label: 'Character', enabled: true, features: ['list', 'report', 'patch', 'create'], parts: DOMAIN_PARTS.character },
   { id: 'persona', label: 'Persona', enabled: true, features: ['list', 'report', 'patch'], parts: DOMAIN_PARTS.persona },
-  { id: 'wonder_weapon', label: 'Wonder Weapon', enabled: true, features: ['list', 'report', 'patch'], parts: DOMAIN_PARTS.wonder_weapon }
+  { id: 'wonder_weapon', label: 'Wonder Weapon', enabled: true, features: ['list', 'report', 'patch'], parts: DOMAIN_PARTS.wonder_weapon },
+  { id: 'revelation', label: 'Revelation', enabled: true, features: ['list', 'report', 'patch', 'create'], parts: DOMAIN_PARTS.revelation }
 ];
 
 const APP_VERSION = 'patch-console v0.12.3';
@@ -87,6 +96,7 @@ const dom = {
   panelEditor: document.getElementById('panel-editor'),
   currentDomain: document.getElementById('current-domain'),
   addCharacterGroup: document.getElementById('add-character-group'),
+  addRevelationGroup: document.getElementById('add-revelation-group'),
   langsInput: document.getElementById('langs-input'),
   scopeMode: document.getElementById('scope-mode'),
   scopeValue: document.getElementById('scope-value'),
@@ -160,7 +170,23 @@ const dom = {
   newApi: document.getElementById('new-api'),
   newLocal: document.getElementById('new-local'),
   newKey: document.getElementById('new-key'),
-  btnAddCharacter: document.getElementById('btn-add-character')
+  btnAddCharacter: document.getElementById('btn-add-character'),
+  newRevelationKind: document.getElementById('new-revelation-kind'),
+  newRevelationKr: document.getElementById('new-revelation-kr'),
+  newRevelationEn: document.getElementById('new-revelation-en'),
+  newRevelationJp: document.getElementById('new-revelation-jp'),
+  newRevelationCn: document.getElementById('new-revelation-cn'),
+  newRevelationTypes: document.getElementById('new-revelation-types'),
+  newRevelationUnreleased: document.getElementById('new-revelation-unreleased'),
+  newRevelationSet2Kr: document.getElementById('new-revelation-set2-kr'),
+  newRevelationSet4Kr: document.getElementById('new-revelation-set4-kr'),
+  newRevelationSet2En: document.getElementById('new-revelation-set2-en'),
+  newRevelationSet4En: document.getElementById('new-revelation-set4-en'),
+  newRevelationSet2Jp: document.getElementById('new-revelation-set2-jp'),
+  newRevelationSet4Jp: document.getElementById('new-revelation-set4-jp'),
+  newRevelationSet2Cn: document.getElementById('new-revelation-set2-cn'),
+  newRevelationSet4Cn: document.getElementById('new-revelation-set4-cn'),
+  btnAddRevelation: document.getElementById('btn-add-revelation')
 };
 
 function appendLog(message) {
@@ -289,6 +315,16 @@ function parseCsv(value) {
   return String(value || '').split(',').map((x) => x.trim()).filter(Boolean);
 }
 
+function defaultLangsForDomain(domain = state.domain) {
+  const key = String(domain || '').trim();
+  return DOMAIN_DEFAULT_LANGS[key] || DOMAIN_DEFAULT_LANGS.character;
+}
+
+function setLangInputForDomain(domain = state.domain) {
+  if (!dom.langsInput) return;
+  dom.langsInput.value = defaultLangsForDomain(domain);
+}
+
 function domainInfoById(domain) {
   const source = state.capabilities.length > 0 ? state.capabilities : FALLBACK_CAPABILITIES;
   return source.find((item) => item.id === domain) || null;
@@ -343,7 +379,7 @@ function updatePartsToggleLabel() {
 function readFilterForm() {
   return {
     domain: state.domain,
-    langs: asCsv(parseCsv(dom.langsInput?.value || '')) || 'kr,en,jp',
+    langs: asCsv(parseCsv(dom.langsInput?.value || '')) || defaultLangsForDomain(state.domain),
     parts: selectedPartsCsv(),
     scopeMode: dom.scopeMode?.value || 'all',
     scopeValue: String(dom.scopeValue?.value || '').trim()
@@ -1282,9 +1318,12 @@ function domainSupports(feature) {
 
 function updateDomainDependentUi() {
   if (dom.currentDomain) dom.currentDomain.textContent = state.domain;
-  if (!dom.addCharacterGroup) return;
-  if (state.domain === 'character') dom.addCharacterGroup.classList.remove('hidden');
-  else dom.addCharacterGroup.classList.add('hidden');
+  if (dom.addCharacterGroup) {
+    dom.addCharacterGroup.classList.toggle('hidden', state.domain !== 'character');
+  }
+  if (dom.addRevelationGroup) {
+    dom.addRevelationGroup.classList.toggle('hidden', state.domain !== 'revelation');
+  }
 }
 
 function renderDomainTabs() {
@@ -1319,7 +1358,14 @@ function renderCharList() {
   dom.charList.innerHTML = rows
     .map((row) => {
       const active = state.activeListIndex === row.index ? 'active' : '';
-      const status = ['kr', 'en', 'jp']
+      const statusKeys = Object.keys(row.status || {}).sort((a, b) => {
+        const order = ['kr', 'en', 'jp', 'cn'];
+        const ai = order.includes(a) ? order.indexOf(a) : 999;
+        const bi = order.includes(b) ? order.indexOf(b) : 999;
+        if (ai !== bi) return ai - bi;
+        return a.localeCompare(b);
+      });
+      const status = statusKeys
         .map((lang) => {
           const mark = String(row.status?.[lang] || 'N').toLowerCase();
           return `<span class="status-dot ${mark === 'y' ? 'y' : 'n'}" title="${lang}:${mark.toUpperCase()}"></span>`;
@@ -2066,6 +2112,7 @@ async function loadCapabilities() {
     appendLog(`capabilities 로드 실패, fallback 사용: ${error.message}`);
   } finally {
     resetSelectedParts(state.domain);
+    setLangInputForDomain(state.domain);
     renderPartsMenu();
     updatePartsToggleLabel();
     renderDomainTabs();
@@ -2080,7 +2127,7 @@ async function loadList() {
     appendLog(`[${state.domain}] list 기능은 아직 준비중입니다.`);
     return;
   }
-  const langs = asCsv(parseCsv(dom.langsInput?.value || '')) || 'kr,en,jp';
+  const langs = asCsv(parseCsv(dom.langsInput?.value || '')) || defaultLangsForDomain(state.domain);
   appendLog(`[${state.domain}] 목록 조회: langs=${langs}`);
   const result = await requestJson(`/api/list?domain=${encodeURIComponent(state.domain)}&langs=${encodeURIComponent(langs)}`);
   state.listRows = Array.isArray(result.rows) ? result.rows : [];
@@ -2219,6 +2266,11 @@ function inferDataFileByDomainRowPart(row, part) {
   }
   if (targetDomain === 'wonder_weapon') {
     return { rootId: WONDER_INTERNAL_ROOT_ID, path: 'weapons.js' };
+  }
+  if (targetDomain === 'revelation') {
+    const langRaw = String(row?.lang || '').trim().toLowerCase();
+    const lang = REVELATION_LANGS.includes(langRaw) ? langRaw : 'kr';
+    return { rootId: `revelation_${lang}`, path: 'revelations.js' };
   }
   return null;
 }
@@ -2459,7 +2511,7 @@ async function addCharacter() {
   }
 
   appendLog(`신규 캐릭터 생성 요청: api=${api}, local=${local}, key=${key}`);
-  const result = await requestJson('/api/add-character', {
+  const result = await requestJson('/api/create-entry', {
     method: 'POST',
     body: { domain: state.domain, api, local, key }
   });
@@ -2474,6 +2526,82 @@ async function addCharacter() {
 
   await loadList();
   const matched = state.listRows.find((row) => String(row.api).toLowerCase() === api.toLowerCase());
+  if (matched) {
+    state.activeListIndex = matched.index;
+    if (dom.scopeMode) dom.scopeMode.value = 'nums';
+    if (dom.scopeValue) dom.scopeValue.value = String(matched.index);
+    renderCharList();
+    await generateReport();
+  }
+}
+
+function clearRevelationCreateInputs() {
+  if (dom.newRevelationKind) dom.newRevelationKind.value = 'sub';
+  if (dom.newRevelationKr) dom.newRevelationKr.value = '';
+  if (dom.newRevelationEn) dom.newRevelationEn.value = '';
+  if (dom.newRevelationJp) dom.newRevelationJp.value = '';
+  if (dom.newRevelationCn) dom.newRevelationCn.value = '';
+  if (dom.newRevelationTypes) dom.newRevelationTypes.value = '';
+  if (dom.newRevelationUnreleased) dom.newRevelationUnreleased.checked = false;
+  if (dom.newRevelationSet2Kr) dom.newRevelationSet2Kr.value = '';
+  if (dom.newRevelationSet4Kr) dom.newRevelationSet4Kr.value = '';
+  if (dom.newRevelationSet2En) dom.newRevelationSet2En.value = '';
+  if (dom.newRevelationSet4En) dom.newRevelationSet4En.value = '';
+  if (dom.newRevelationSet2Jp) dom.newRevelationSet2Jp.value = '';
+  if (dom.newRevelationSet4Jp) dom.newRevelationSet4Jp.value = '';
+  if (dom.newRevelationSet2Cn) dom.newRevelationSet2Cn.value = '';
+  if (dom.newRevelationSet4Cn) dom.newRevelationSet4Cn.value = '';
+}
+
+async function addRevelation() {
+  if (state.domain !== 'revelation') {
+    appendLog(`[${state.domain}] 신규 계시 생성은 revelation 도메인에서만 지원합니다.`);
+    return;
+  }
+
+  const kind = String(dom.newRevelationKind?.value || '').trim().toLowerCase();
+  const kr = String(dom.newRevelationKr?.value || '').trim();
+  const en = String(dom.newRevelationEn?.value || '').trim();
+  const jp = String(dom.newRevelationJp?.value || '').trim();
+  const cn = String(dom.newRevelationCn?.value || '').trim();
+  if (!kind || !kr || !en || !jp || !cn) {
+    appendLog('신규 계시 생성 실패: kind/kr/en/jp/cn 모두 필요합니다.');
+    return;
+  }
+
+  const payload = {
+    domain: state.domain,
+    kind,
+    kr,
+    en,
+    jp,
+    cn,
+    types: String(dom.newRevelationTypes?.value || '').trim(),
+    unreleased: Boolean(dom.newRevelationUnreleased?.checked),
+    set2_kr: String(dom.newRevelationSet2Kr?.value || '').trim(),
+    set4_kr: String(dom.newRevelationSet4Kr?.value || '').trim(),
+    set2_en: String(dom.newRevelationSet2En?.value || '').trim(),
+    set4_en: String(dom.newRevelationSet4En?.value || '').trim(),
+    set2_jp: String(dom.newRevelationSet2Jp?.value || '').trim(),
+    set4_jp: String(dom.newRevelationSet4Jp?.value || '').trim(),
+    set2_cn: String(dom.newRevelationSet2Cn?.value || '').trim(),
+    set4_cn: String(dom.newRevelationSet4Cn?.value || '').trim()
+  };
+
+  appendLog(`신규 계시 생성 요청: kind=${kind}, kr=${kr}, en=${en}, jp=${jp}, cn=${cn}`);
+  const result = await requestJson('/api/create-entry', {
+    method: 'POST',
+    body: payload
+  });
+
+  if (result.stdout) appendLog(String(result.stdout).trim());
+  if (result.stderr) appendLog(String(result.stderr).trim());
+  appendLog(`신규 계시 생성 완료: ${kr} (${kind})`);
+
+  clearRevelationCreateInputs();
+
+  await loadList();
+  const matched = state.listRows.find((row) => String(row.key || '').trim() === kr && String(row.local || '').trim() === kind);
   if (matched) {
     state.activeListIndex = matched.index;
     if (dom.scopeMode) dom.scopeMode.value = 'nums';
@@ -2536,6 +2664,7 @@ function bindDomainEvents() {
     state.ignoredCount = 0;
     clearIgnoredFilterInputs();
     resetSelectedParts(state.domain);
+    setLangInputForDomain(state.domain);
     state.dataDomain = state.domain;
     state.dataRoot = '';
 
@@ -2698,6 +2827,17 @@ function bindEvents() {
       appendLog(`신규 캐릭터 생성 실패: ${error.message}`);
     } finally {
       setPending(dom.btnAddCharacter, false);
+    }
+  });
+
+  dom.btnAddRevelation?.addEventListener('click', async () => {
+    try {
+      setPending(dom.btnAddRevelation, true);
+      await addRevelation();
+    } catch (error) {
+      appendLog(`신규 계시 생성 실패: ${error.message}`);
+    } finally {
+      setPending(dom.btnAddRevelation, false);
     }
   });
 

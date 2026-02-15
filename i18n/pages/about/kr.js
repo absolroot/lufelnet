@@ -8,7 +8,12 @@ window.I18N_PAGE_ABOUT_KR = {
     // Buttons
     donateButton: '서포트 | Support',
     supportersButton: '감사한 분들',
+    supportersModalTitle: '서포터 목록',
     showMoreButton: '더보기',
+
+    // Feedback
+    copySuccessText: '복사됨!',
+    copyFailedText: '복사 실패',
 
     // Language notice (empty for Korean)
     languageNotice: '',

@@ -16,6 +16,10 @@ window.I18N_PAGE_TIER_KR = {
 
     // Buttons
     addTierButton: '새 티어 추가',
+    tierSourceGlobal: '글로벌',
+    tierSourceGlobalOnKr: '글로벌(KR 기준)',
+    tierSourceKrSpoiler: '[스포일러] KR',
+    newTierLabel: '새 티어',
 
     // Modal buttons
     deleteRow: '행 삭제',
@@ -38,6 +42,9 @@ window.I18N_PAGE_TIER_KR = {
     captureImage: '이미지 캡처',
     exportJSON: 'JSON 내보내기',
     importJSON: 'JSON 가져오기',
+    tierLoadFunctionUnavailable: '티어 로딩 기능을 찾을 수 없습니다.',
+    tierInvalidDataFormat: '유효하지 않은 티어 데이터 형식입니다.',
+    tierFailedParseJsonFile: 'JSON 파일을 파싱하지 못했습니다.',
 
     // Spoiler toggle
     showSpoilers: '스포일러 보기',
@@ -78,6 +85,12 @@ J&C - 스킬3이 자동 발동되어 3턴 사이클이 2턴 사이클로 감축�
             a: '한국 기준 V4.7.1에 추가된 심상 코어를 위한 재료로 레벨 100까지의 확장을 나타냅니다. 추가적인 패시브를 획득하게 되면서 티어가 변동될 수 있습니다.'
         }
     ],
+
+    // SEO
+    tierListSeoTitle: '티어 리스트 - 페르소나5 더 팬텀 X 루페르넷',
+    tierListSeoDescription: 'P5X 캐릭터 포지션별 티어 리스트를 확인하세요.',
+    tierMakerSeoTitle: '티어 메이커 - 페르소나5 더 팬텀 X 루페르넷',
+    tierMakerSeoDescription: '포지션별로 P5X 캐릭터 티어 리스트를 만들어 보세요.',
 
     // Tag translations (for filter)
     tags: {

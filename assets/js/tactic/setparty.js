@@ -118,7 +118,9 @@ async function setupTranslations() {
       // 2) 언어별 캐릭터 목록 로드 (dropdown용)
       try {
         if (!window.languageData[lang].characterList) {
-          const chUrl = `${base}/data/${lang}/characters/characters.js${ver}`;
+          const chUrl = (lang === 'kr')
+            ? `${base}/data/character_info.js${ver}`
+            : `${base}/data/${lang}/characters/characters.js${ver}`;
           const chRes = await fetch(chUrl);
           if (!chRes.ok) throw new Error(`Failed to load characters for ${lang}`);
           let chTxt = await chRes.text();

@@ -1,0 +1,1010 @@
+<script>
+window.__TIER_PAGE_MODE__ = {{ page.tier_mode | default: '' | jsonify }};
+</script>
+<script>
+(function () {
+    var params = new URLSearchParams(window.location.search || '');
+    var path = String(window.location.pathname || '/');
+    var lowerPath = path.toLowerCase();
+    var pathLangMatch = lowerPath.match(/^\/(kr|en|jp|cn)(\/|$)/);
+    var pathLang = pathLangMatch ? pathLangMatch[1] : '';
+    var queryLang = String(params.get('lang') || '').toLowerCase();
+    var effectiveLang = pathLang || (['kr', 'en', 'jp'].indexOf(queryLang) !== -1 ? queryLang : '');
+    var queryMode = (params.get('list') === 'false') ? 'maker' : 'list';
+
+    var isLegacyTierRoot = /^\/tier\/position-tier\/?$/.test(lowerPath);
+    var isLegacyTierRootWithLang = /^\/(kr|en|jp|cn)\/tier\/position-tier\/?$/.test(lowerPath);
+    var isCanonicalTier = /^\/(kr|en|jp|cn)\/tier\/?$/.test(lowerPath);
+    var isCanonicalTierMaker = /^\/(kr|en|jp|cn)\/tier-maker\/?$/.test(lowerPath);
+
+    var buildCanonicalPath = function (lang, mode) {
+        if (!lang) return '';
+        return mode === 'maker'
+            ? '/' + lang + '/tier-maker/'
+            : '/' + lang + '/tier/';
+    };
+
+    // Legacy query URL -> canonical path URL
+    // /tier/position-tier/?lang=en&list=false -> /en/tier-maker/
+    if (isLegacyTierRoot && effectiveLang) {
+        window.__SEO_PATH_LANG__ = effectiveLang;
+        window.__TIER_PAGE_MODE__ = queryMode;
+        params.delete('lang');
+        params.delete('v');
+        params.delete('list');
+        var remainingLegacy = params.toString();
+        var nextLegacyPath = buildCanonicalPath(effectiveLang, queryMode);
+        history.replaceState(null, '', nextLegacyPath + (remainingLegacy ? '?' + remainingLegacy : ''));
+        return;
+    }
+
+    // /{lang}/tier/position-tier/ -> /{lang}/tier/ or /{lang}/tier-maker/
+    if (isLegacyTierRootWithLang) {
+        window.__SEO_PATH_LANG__ = pathLang;
+        window.__TIER_PAGE_MODE__ = queryMode;
+        params.delete('lang');
+        params.delete('v');
+        params.delete('list');
+        var remainingLegacyLang = params.toString();
+        var nextLegacyLangPath = buildCanonicalPath(pathLang, queryMode);
+        history.replaceState(null, '', nextLegacyLangPath + (remainingLegacyLang ? '?' + remainingLegacyLang : ''));
+        return;
+    }
+
+    // Canonical path URL cleanup and mode normalization
+    if (isCanonicalTier || isCanonicalTierMaker) {
+        var canonicalMode = isCanonicalTierMaker ? 'maker' : 'list';
+        // Support old shared links: /{lang}/tier/?list=false and /{lang}/tier-maker/?list=true
+        if (isCanonicalTier && params.get('list') === 'false') canonicalMode = 'maker';
+        if (isCanonicalTierMaker && params.get('list') === 'true') canonicalMode = 'list';
+
+        window.__SEO_PATH_LANG__ = pathLang;
+        window.__TIER_PAGE_MODE__ = canonicalMode;
+
+        params.delete('lang');
+        params.delete('v');
+        params.delete('list');
+        var remainingCanonical = params.toString();
+        var nextCanonicalPath = buildCanonicalPath(pathLang, canonicalMode);
+        var nextCanonical = nextCanonicalPath + (remainingCanonical ? '?' + remainingCanonical : '');
+        var currentCanonical = window.location.pathname + window.location.search;
+        if (nextCanonical !== currentCanonical) {
+            history.replaceState(null, '', nextCanonical);
+        }
+        return;
+    }
+
+    // Keep legacy root URL clean when only cache-busting param exists.
+    if (isLegacyTierRoot && params.has('v')) {
+        params.delete('v');
+        params.delete('list');
+        var remainingRoot = params.toString();
+        history.replaceState(null, '', '/tier/position-tier/' + (remainingRoot ? '?' + remainingRoot : ''));
+    }
+})();
+</script>
+{% if page.alternate_urls %}
+{% for alt in page.alternate_urls %}
+<link rel="alternate" hreflang="{{ alt[0] }}" href="{{ site.url }}{{ alt[1] }}" />
+{% endfor %}
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.alternate_urls['ko'] | default: page.alternate_urls.first[1] }}" />
+{% endif %}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+<script type="module" src="{{ site.baseurl }}/apps/tier/position-tiers.js?v=${APP_VERSION}"></script>
+<script type="module" src="{{ site.baseurl }}/apps/tier/position-tier-qa.js?v=${APP_VERSION}"></script>
+
+<!-- Main content -->
+<div class="main-wrapper">
+    <!-- 언어 안내 메시지 -->
+    <div id="language-notice" class="language-notice" style="display: none;">
+        <p id="language-notice-text"></p>
+    </div>
+
+    <!-- Navigation path -->
+    <div class="navigation-path">
+        <script>document.write(`<a href="{{ site.baseurl }}/?v=${APP_VERSION}" id="nav-home" data-i18n="navHome">-</a>`);</script>
+        <span class="separator">/</span>
+        <span class="current-page" id="nav-current" data-i18n="navCurrent">-</span>
+    </div>
+    <div class="header-container">
+        <h1 id="page-title" data-i18n="pageTitle">-</h1>
+    </div>
+
+    <!-- Filter section -->
+    <div class="filter-section">
+        <div class="filter-header">
+            <button class="filter-toggle-btn">
+                <img src="{{ site.baseurl }}/assets/img/character-cards/filter.png" alt="필터" />
+                <span></span>
+            </button>
+            <button class="filter-reset-btn" style="display: none;">
+                <img src="{{ site.baseurl }}/assets/img/character-cards/reset.png" alt="초기화" />
+            </button>
+        </div>
+
+        <div class="filter-content" style="display: none;">
+            <!-- Element filter -->
+            <div class="filter-group">
+                <h3 id="filter-element-title" data-i18n="filterElement">속성</h3>
+                <div class="filter-options">
+                    <label>
+                        <input type="checkbox" name="element" value="물리">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_물리.png" alt="물리">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="총격">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_총격.png" alt="총격">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="화염">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_화염.png" alt="화염">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="빙결">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_빙결.png" alt="빙결">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="전격">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_전격.png" alt="전격">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="질풍">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_질풍.png" alt="질풍">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="염동">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_염동.png" alt="염동">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="핵열">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_핵열.png" alt="핵열">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="축복">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_축복.png" alt="축복">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="주원">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_주원.png" alt="주원">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="만능">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_만능.png" alt="만능">
+                        <span></span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Position filter -->
+            <div class="filter-group">
+                <h3 id="filter-position-title" data-i18n="filterPosition">직업</h3>
+                <div class="filter-options">
+                    <label>
+                        <input type="checkbox" name="position" value="지배">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/직업_지배.png" alt="지배">
+                    </label>
+                    <label>
+                        <input type="checkbox" name="position" value="반항">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/직업_반항.png" alt="반항">
+                    </label>
+                    <label>
+                        <input type="checkbox" name="position" value="우월">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/직업_우월.png" alt="우월">
+                    </label>
+                    <label>
+                        <input type="checkbox" name="position" value="굴복">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/직업_굴복.png" alt="굴복">
+                    </label>
+                    <label>
+                        <input type="checkbox" name="position" value="방위">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/직업_방위.png" alt="방위">
+                    </label>
+                    <label>
+                        <input type="checkbox" name="position" value="구원">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/직업_구원.png" alt="구원">
+                    </label>
+                    <label>
+                        <input type="checkbox" name="position" value="해명">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/직업_해명.png" alt="해명">
+                    </label>
+                </div>
+            </div>
+
+            <!-- Rarity filter -->
+            <div class="filter-group">
+                <h3 id="filter-rarity-title" data-i18n="filterRarity">유형</h3>
+                <div class="filter-options">
+                    <label>
+                        <input type="checkbox" name="rarity" value="5" hidden>
+                        <div class="star-container">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star5.png" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star5.png" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star5.png" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star5.png" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star5.png" alt="★">
+                        </div>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="rarity" value="4" hidden>
+                        <div class="star-container">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star4.png" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star4.png" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star4.png" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star4.png" alt="★">
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Separator line -->
+    <div class="separator-line"></div>
+
+    <!-- Tier Criteria Section (only shown in Tier List mode) -->
+    <div id="tier-criteria-section" class="tier-criteria-section" style="display: none;">
+        <!-- Disclaimer above Criteria -->
+        <div id="tier-disclaimer" class="tier-disclaimer"
+            style="margin-bottom: 8px; padding: 0px 16px; font-size: 12px; color: rgba(255,255,255,0.8);">
+            <p id="tier-disclaimer-text" style="font-weight: 700;"></p>
+        </div>
+        <div class="tier-criteria-toggle">
+            <button id="tier-criteria-btn" class="tier-criteria-button" aria-expanded="true">
+                <span id="tier-criteria-title" data-i18n="tierCriteriaTitle">티어 기준</span>
+                <span class="tier-criteria-arrow" aria-hidden="true"><i class="bi bi-chevron-up"></i></span>
+            </button>
+        </div>
+        <div id="tier-criteria-content" class="tier-criteria-content" style="display: block;">
+            <div class="tier-criteria-text">
+                <ul id="tier-criteria-list"></ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tier Source Toggle Section (separate from Tier Criteria) -->
+    <div id="tier-source-toggle" class="tier-source-toggle" style="display:none;">
+        <div style="display:flex; gap:8px; align-items:center;">
+            <button id="btn-global-tier" class="tier-source-btn"
+                data-i18n="tierSourceGlobal"
+                style="padding:6px 10px; border-radius:6px; border:1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.9); cursor:pointer;">Global</button>
+            <button id="btn-kr-tier" class="tier-source-btn"
+                data-i18n="tierSourceGlobalOnKr"
+                style="padding:6px 10px; border-radius:6px; border:1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.9); cursor:pointer;">GLB
+                on KR</button>
+            <button id="btn-kr-spoiler-tier" class="tier-source-btn"
+                data-i18n="tierSourceKrSpoiler"
+                style="padding:6px 10px; border-radius:6px; border:1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.9); cursor:pointer;">[Spoiler]
+                KR</button>
+        </div>
+    </div>
+
+    <!-- Position Tier Container -->
+    <div class="position-tiers-container">
+        <!-- Header Row -->
+        <div class="tier-header-cell">lufel.net</div>
+        <!-- Position Headers will be populated by JavaScript -->
+        <div class="settings-header-cell"></div>
+
+        <!-- Tier Rows will be populated by JavaScript -->
+    </div>
+
+    <!-- Character Pool -->
+    <!-- Spoiler toggle (tier maker 전용, EN/JP에서만 표시) -->
+    <div class="spoiler-toggle-container" id="position-spoiler-container" style="display:none;">
+        <label class="spoiler-toggle-label">
+            <input type="checkbox" id="position-spoiler-toggle" class="spoiler-toggle-checkbox">
+            <span class="spoiler-toggle-text" id="position-spoiler-text" data-i18n="showSpoilers">Show Spoilers</span>
+        </label>
+    </div>
+    <div class="cards container">
+    </div>
+
+    <!-- Q&A (tier list mode only) -->
+    <div id="tier-qa-section" class="tier-qa-section" style="display: none;">
+        <h2 id="tier-qa-title" class="tier-qa-title">Q&A</h2>
+        <div id="tier-qa-list" class="tier-qa-list"></div>
+    </div>
+
+    <!-- Help Text -->
+    <div class="help-text">
+        <p id="help-message" data-i18n="helpMessage">* 캐릭터 이동이 안될 경우 캐릭터를 더블 클릭해서 아래 리스트로 이동한 뒤 일정 시간 뒤 다시 시도해주세요.</p>
+    </div>
+
+    <!-- Settings Modal -->
+    <dialog class="settings-modal">
+        <section>
+            <div class="colors"></div>
+            <textarea class="tier-label" data-i18n-placeholder="tierLabel" placeholder="Tier label"></textarea>
+            <button id="delete" data-i18n="deleteRow">Delete Row</button>
+            <button id="clear" data-i18n="clearRow">Clear Row</button>
+            <button id="prepend" data-i18n="addRowAbove">Add a Row Above</button>
+            <button id="append" data-i18n="addRowBelow">Add a Row Below</button>
+        </section>
+    </dialog>
+
+    <!-- Ritual Modal -->
+    <dialog class="ritual-modal">
+        <div class="ritual-modal-content">
+            <div class="ritual-modal-header">
+                <h3 data-i18n="ritualModalTitle">캐릭터 강화 요소</h3>
+                <button class="ritual-modal-close">&times;</button>
+            </div>
+            <!-- Mindscape Core Section -->
+            <div class="ritual-section">
+                <h4 class="ritual-section-title" data-i18n="ritualCoreTitle">심상 코어</h4>
+                <div class="core-toggle-option" id="core-toggle">
+                    <img src="{{ site.baseurl }}/assets/img/character-detail/innate/core.png" alt="Core" class="core-toggle-img">
+                    <span class="core-toggle-text" data-i18n="ritualCoreActivate">코어 활성화</span>
+                </div>
+            </div>
+            <div class="ritual-separator" style="margin: 12px 0; border-top: 1px solid rgba(255,255,255,0.1);"></div>
+            <!-- Awareness Section -->
+            <div class="ritual-section">
+                <h4 class="ritual-section-title" data-i18n="ritualAwarenessTitle">Awareness</h4>
+                <div class="ritual-options">
+                    <div class="ritual-option" data-ritual="none">
+                        <div class="ritual-none">NONE</div>
+                    </div>
+                    <div class="ritual-option" data-ritual="num1">
+                        <img src="{{ site.baseurl }}/assets/img/ritual/num1.png" alt="Ritual 1">
+                    </div>
+                    <div class="ritual-option" data-ritual="num2">
+                        <img src="{{ site.baseurl }}/assets/img/ritual/num2.png" alt="Ritual 2">
+                    </div>
+                    <div class="ritual-option" data-ritual="num3">
+                        <img src="{{ site.baseurl }}/assets/img/ritual/num3.png" alt="Ritual 3">
+                    </div>
+                    <div class="ritual-option" data-ritual="num4">
+                        <img src="{{ site.baseurl }}/assets/img/ritual/num4.png" alt="Ritual 4">
+                    </div>
+                    <div class="ritual-option" data-ritual="num5">
+                        <img src="{{ site.baseurl }}/assets/img/ritual/num5.png" alt="Ritual 5">
+                    </div>
+                    <div class="ritual-option" data-ritual="num6">
+                        <img src="{{ site.baseurl }}/assets/img/ritual/num6.png" alt="Ritual 6">
+                    </div>
+                </div>
+            </div>
+            <div class="ritual-separator" style="margin: 12px 0; border-top: 1px solid rgba(255,255,255,0.1);"></div>
+            <div class="ritual-modal-footer" style="margin-top: 12px;">
+                <div class="ritual-copy-option" style="width: 100%;">
+                    <div class="ritual-none ritual-copy-button" style="width: 100%; text-align: center;"
+                        data-i18n="ritualCopy">캐릭터 복사</div>
+                </div>
+            </div>
+        </div>
+    </dialog>
+
+    <style>
+        /* 티어 메이커 전용 스포일러 토글 (character 페이지 스타일 재사용) */
+        .spoiler-toggle-container {
+            display: flex;
+            align-items: center;
+            margin: 8px 0 4px 0;
+        }
+
+        .spoiler-toggle-label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+            user-select: none;
+            transition: color 0.2s ease;
+        }
+
+        .spoiler-toggle-label:hover {
+            color: rgba(255, 255, 255, 1);
+        }
+
+        .spoiler-toggle-checkbox {
+            appearance: none;
+            width: 20px !important;
+            height: 20px !important;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 3px;
+            position: relative;
+            transition: all 0.2s ease;
+            background: transparent;
+            background-image: none !important;
+            margin-right: 4px !important;
+        }
+
+        .spoiler-toggle-checkbox:checked {
+            background: #a90505b7;
+            border-color: #a90505b7;
+            background-image: none !important;
+            width: 20px !important;
+            height: 20px !important;
+            margin-right: 4px !important;
+        }
+
+        .spoiler-toggle-checkbox:checked::after {
+            content: '✓';
+            position: absolute;
+            top: -2px;
+            left: 1px;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 2px 0 0 2px;
+        }
+
+        .spoiler-toggle-checkbox:hover {
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .spoiler-toggle-text {
+            font-weight: 500;
+        }
+    </style>
+
+    <!--
+    <div style="height: 24px;"></div>
+    
+    <div id="ad-unit-bottom" class="AD-bottom" style="text-align: center; align-items: center; display: flex; justify-content: center;"> 
+    <ins class="adsbygoogle"
+        style="display:inline-block;width:970px;height:90px"
+        data-ad-client="ca-pub-5862324369257695"
+        data-ad-slot="9244892982"></ins>
+    </div>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <div style="height: 12px;"></div>
+    <style>
+        @media (max-width: 1440px) {
+            .AD-bottom {    
+                display: none !important;
+            }
+        }
+    </style>
+    -->
+
+</div>
+
+<!-- i18n 서비스 -->
+<script type="module" src="{{ site.baseurl }}/i18n/service/i18n-service.js?v={{ site.time | date: '%s' }}"></script>
+<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
+
+<script>
+    function getTierText(key, fallback = '') {
+        if (typeof window.t === 'function') {
+            return window.t(key, fallback);
+        }
+        if (window.I18nService && typeof window.I18nService.t === 'function') {
+            return window.I18nService.t(key, fallback);
+        }
+        return fallback || key;
+    }
+
+    function getTierPageMode() {
+        const forcedMode = String(window.__TIER_PAGE_MODE__ || '').toLowerCase();
+        if (forcedMode === 'list' || forcedMode === 'maker') {
+            return forcedMode;
+        }
+
+        const path = String(window.location.pathname || '').toLowerCase();
+        if (/^\/(kr|en|jp|cn)\/tier-maker\/?$/.test(path)) return 'maker';
+        if (/^\/(kr|en|jp|cn)\/tier\/?$/.test(path)) return 'list';
+        if (/^\/tier-maker\/?$/.test(path)) return 'maker';
+        if (/^\/tier\/?$/.test(path)) return 'list';
+
+        const urlParams = new URLSearchParams(window.location.search || '');
+        return urlParams.get('list') === 'false' ? 'maker' : 'list';
+    }
+
+    function isTierListMode() {
+        return getTierPageMode() === 'list';
+    }
+
+    // 다국어 지원 함수
+    async function updateLanguageContent() {
+        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+
+        // i18n 시스템 로드 대기 (필요시)
+        if (typeof window.t !== 'function') {
+            console.warn('[Position-Tier] i18n not loaded yet in updateLanguageContent');
+        }
+
+        const isListMode = isTierListMode();
+
+        // 네비게이션 및 제목 업데이트 (i18n 시스템이 자동 처리하므로 필요 없음)
+        // data-i18n 속성으로 처리됨
+
+        const tierListTitle = getTierText('tierListTitle', '티어 리스트');
+        const tierMakerTitle = getTierText('tierMakerTitle', '티어 메이커');
+
+        // list=false일 때 제목 변경 (네비게이션과 페이지 타이틀)
+        const navCurrent = document.getElementById('nav-current');
+        const pageTitle = document.getElementById('page-title');
+
+        if (isListMode) {
+            // 티어 리스트 모드
+            if (navCurrent) navCurrent.textContent = tierListTitle;
+            if (pageTitle) pageTitle.textContent = tierListTitle;
+        } else {
+            // 티어 메이커 모드
+            if (navCurrent) navCurrent.textContent = tierMakerTitle;
+            if (pageTitle) pageTitle.textContent = tierMakerTitle;
+        }
+
+        // 도움말 메시지 업데이트 (리스트 모드에서는 숨김)
+        const helpText = document.querySelector('.help-text');
+        if (helpText) {
+            helpText.style.display = isListMode ? 'none' : 'block';
+        }
+
+        // 티어 기준 섹션 표시/숨김 및 언어 업데이트
+        const tierCriteriaSection = document.getElementById('tier-criteria-section');
+        if (tierCriteriaSection) {
+            if (isListMode) {
+                // 티어 리스트 모드일 때 표시
+                tierCriteriaSection.style.display = 'block';
+                await updateTierCriteriaLanguage(currentLang);
+            } else {
+                // 티어 메이커 모드일 때는 숨김
+                tierCriteriaSection.style.display = 'none';
+            }
+        }
+
+        // 티어 소스 토글 섹션 노출/라벨 현지화 (en/jp 전용)
+        const sourceToggle = document.getElementById('tier-source-toggle');
+        const btnGlobal = document.getElementById('btn-global-tier');
+        const btnKR = document.getElementById('btn-kr-tier');
+        const btnKRSpoiler = document.getElementById('btn-kr-spoiler-tier');
+        if (sourceToggle && btnGlobal && btnKR && btnKRSpoiler) {
+            // 리스트 모드(보기)에서만 노출, 메이커(list=false)에서는 숨김
+            if (isListMode && (currentLang === 'en' || currentLang === 'jp')) {
+                sourceToggle.style.display = 'block';
+                btnGlobal.textContent = getTierText('tierSourceGlobal', btnGlobal.textContent || 'Global');
+                btnKR.textContent = getTierText('tierSourceGlobalOnKr', btnKR.textContent || 'GLB on KR');
+                btnKRSpoiler.textContent = getTierText('tierSourceKrSpoiler', btnKRSpoiler.textContent || '[Spoiler] KR');
+            } else {
+                sourceToggle.style.display = 'none';
+            }
+        }
+
+
+        if (typeof window.renderTierQa === 'function') {
+            window.renderTierQa();
+        }
+    }
+
+    // 티어 기준 언어 업데이트 함수 (i18n 전용)
+    async function updateTierCriteriaLanguage(currentLang) {
+        console.log('[Tier Criteria] Updating with lang:', currentLang);
+
+        // i18n이 로드될 때까지 대기
+        let retries = 0;
+        while (typeof window.t !== 'function' && retries < 50) {
+            await new Promise(resolve => setTimeout(resolve, 100));
+            retries++;
+        }
+
+        if (typeof window.t !== 'function') {
+            console.error('[Tier Criteria] i18n failed to load after 5 seconds');
+            return;
+        }
+
+        console.log('[Tier Criteria] i18n loaded successfully');
+
+        // Disclaimer 업데이트
+        const disclaimerText = document.getElementById('tier-disclaimer-text');
+        if (disclaimerText) {
+            const disclaimer = window.t('tierCriteriaDisclaimer');
+            if (disclaimer) {
+                disclaimerText.textContent = disclaimer;
+            }
+        }
+
+        // Tier Criteria List 업데이트
+        const criteriaList = document.getElementById('tier-criteria-list');
+        if (criteriaList) {
+            const items = window.t('tierCriteriaItems');
+            if (Array.isArray(items)) {
+                criteriaList.innerHTML = '';
+                items.forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = item;
+                    criteriaList.appendChild(li);
+                });
+                console.log('[Tier Criteria] Rendered', items.length, 'items');
+            }
+        }
+    }
+
+    // 티어 기준 토글 기능 초기화
+    function initTierCriteriaToggle() {
+        const tierCriteriaBtn = document.getElementById('tier-criteria-btn');
+        const tierCriteriaContent = document.getElementById('tier-criteria-content');
+        const tierCriteriaArrowIcon = document.querySelector('.tier-criteria-arrow i');
+
+        if (tierCriteriaBtn && tierCriteriaContent) {
+            const setTierCriteriaState = (isOpen) => {
+                tierCriteriaContent.style.display = isOpen ? 'block' : 'none';
+                if (tierCriteriaArrowIcon) {
+                    tierCriteriaArrowIcon.classList.toggle('bi-chevron-up', isOpen);
+                    tierCriteriaArrowIcon.classList.toggle('bi-chevron-down', !isOpen);
+                }
+                tierCriteriaBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            };
+
+            setTierCriteriaState(tierCriteriaContent.style.display !== 'none');
+
+            tierCriteriaBtn.addEventListener('click', function () {
+                const isVisible = tierCriteriaContent.style.display !== 'none';
+                setTierCriteriaState(!isVisible);
+            });
+        }
+    }
+
+    // 스크립트에서 데이터 추출하는 함수
+    function extractDataFromScript(scriptText) {
+        // 더 이상 정규식 파싱을 사용하지 않습니다.
+        throw new Error('Failed to extract data from script');
+    }
+
+    // 안전한 스크립트 로더
+    function loadScriptOnce(src) {
+        return new Promise((resolve, reject) => {
+            const exists = Array.from(document.scripts).some(s => s.src && s.src.includes(src));
+            if (exists) return resolve();
+            const s = document.createElement('script');
+            s.src = src;
+            s.onload = () => resolve();
+            s.onerror = () => reject(new Error('Failed to load ' + src));
+            document.head.appendChild(s);
+        });
+    }
+
+    // 언어별 characters.js를 샌드박스에서 평가해 순수 데이터만 추출
+    async function fetchCharactersData(url) {
+        try {
+            const res = await fetch(url, { cache: 'no-store' });
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            const text = await res.text();
+            const sandbox = {};
+            const win = (new Function('window', `${text}\n; return window;`))(sandbox);
+            const list = win.characterList || { mainParty: [], supportParty: [] };
+            const data = win.characterData || {};
+            return { characterList: list, characterData: data };
+        } catch (e) {
+            return null;
+        }
+    }
+
+    // 언어별 캐릭터 데이터 로딩 및 병합
+    // listLangOverride: 'kr'를 전달하면 캐릭터 리스트는 KR 기준 사용 (표시 이름은 현재 언어 우선)
+    async function loadCharacterData(listLangOverride) {
+        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+
+        try {
+            // 1) KR 데이터 샌드박스 로드
+            const kr = await fetchCharactersData(`/data/character_info.js?v=${APP_VERSION}`);
+            if (!kr) throw new Error('Failed to load KR character data');
+            const krCharacterData = kr.characterData || {};
+            const krCharacterList = kr.characterList || { mainParty: [], supportParty: [] };
+
+            // helper: 주어진 characterList 에 포함된 캐릭터만 남기도록 데이터 필터링
+            const filterCharacterDataByList = (baseData, list) => {
+                if (!baseData || !list) return baseData || {};
+                const allowed = new Set([
+                    ...(Array.isArray(list.mainParty) ? list.mainParty : []),
+                    ...(Array.isArray(list.supportParty) ? list.supportParty : []),
+                ]);
+                // 리스트가 비어있으면 그대로 반환 (KR 전체 등)
+                if (!allowed.size) return baseData;
+                const filtered = {};
+                Object.keys(baseData).forEach(key => {
+                    if (allowed.has(key)) {
+                        filtered[key] = baseData[key];
+                    }
+                });
+                return filtered;
+            };
+
+            // 2. 언어별 데이터 로딩 (한국어가 아닌 경우)
+            if (currentLang !== 'kr') {
+                try {
+                    const langDataPath = (currentLang === 'en' || currentLang === 'jp')
+                        ? '/data/character_info_glb.js'
+                        : `/data/${currentLang}/characters/characters.js`;
+                    const lang = await fetchCharactersData(`${langDataPath}?v=${APP_VERSION}`);
+                    if (!lang) throw new Error('lang load failed');
+                    const langCharacterData = lang.characterData || {};
+                    const langCharacterList = lang.characterList || { mainParty: [], supportParty: [] };
+
+                    const mergedData = mergeCharacterData(krCharacterData, langCharacterData);
+                    // 기본 머지 데이터
+                    window.characterData = mergedData;
+                    // GLB on KR 모드 및 티어 메이커 스포일러 설정에 따라 리스트 선택
+                    window.characterList = (listLangOverride === 'kr') ? krCharacterList : langCharacterList;
+
+                    // 언어별 리스트만 사용해야 하는 경우(스포일러 OFF)에는 캐릭터 풀을 해당 리스트로 제한
+                    if (listLangOverride !== 'kr') {
+                        window.characterData = filterCharacterDataByList(window.characterData, window.characterList);
+                    }
+                } catch (e) {
+                    window.characterData = krCharacterData;
+                    window.characterList = krCharacterList;
+                }
+            } else {
+                // 한국어인 경우 그대로 사용
+                window.characterData = krCharacterData;
+                window.characterList = krCharacterList;
+            }
+
+            // 4. characterList가 변경되었으므로, 전역 캐시/파생 데이터 초기화 보조
+            try {
+                window.characterListUpdatedAt = Date.now();
+            } catch (_) { }
+
+            return true;
+
+        } catch (error) {
+            console.error('Failed to load character data:', error);
+            return false;
+        }
+    }
+
+    // 외부에서 리스트 소스 오버라이드로 재로딩할 수 있도록 전역 노출
+    window.loadCharacterDataForTierSource = async function (listLangOverride) {
+        return await loadCharacterData(listLangOverride);
+    }
+
+    // 캐릭터 데이터 병합 함수
+    function mergeCharacterData(krData, langData) {
+        // KR 전체를 기본으로 두고, 언어 데이터가 존재하는 항목만 필요한 필드를 덮어쓴다
+        const mergedData = {};
+        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+
+        // 1) KR 데이터 전부 복사
+        Object.keys(krData || {}).forEach(key => {
+            mergedData[key] = { ...krData[key] };
+        });
+
+        // 2) 언어 데이터가 제공되면 필요한 필드만 덮어쓰기
+        Object.keys(langData || {}).forEach(characterKey => {
+            const krChar = krData[characterKey];
+            const langChar = langData[characterKey];
+            if (!krChar) return; // KR에 없는 키는 무시
+
+            // 이름 현지화: KR 데이터에 별도 현지화 필드가 있으면 우선, 없으면 언어 데이터의 name
+            if (currentLang === 'en') {
+                if (krChar.name_en) mergedData[characterKey].name = krChar.name_en;
+                else if (langChar?.name) mergedData[characterKey].name = langChar.name;
+            } else if (currentLang === 'jp') {
+                if (krChar.name_jp) mergedData[characterKey].name = krChar.name_jp;
+                else if (langChar?.name) mergedData[characterKey].name = langChar.name;
+            }
+
+            // 보조 필드 덮어쓰기 (값이 있을 때만)
+            if (langChar?.role) mergedData[characterKey].role = langChar.role;
+            if (langChar?.tag) mergedData[characterKey].tag = langChar.tag;
+            if (typeof langChar?.release_order !== 'undefined' && langChar.release_order !== 0) {
+                mergedData[characterKey].release_order = langChar.release_order;
+            }
+        });
+
+        return mergedData;
+    }
+
+    // 언어별 SEO 설정 함수
+    function updateSEOContent() {
+        const shouldLoadList = isTierListMode();
+        const metaDescription = document.querySelector('meta[name="description"]');
+        const titleKey = shouldLoadList ? 'tierListSeoTitle' : 'tierMakerSeoTitle';
+        const descriptionKey = shouldLoadList ? 'tierListSeoDescription' : 'tierMakerSeoDescription';
+        const seoTitle = getTierText(titleKey, document.title || '');
+        const seoDescription = getTierText(descriptionKey, (metaDescription && metaDescription.getAttribute('content')) || '');
+
+        // 타이틀 업데이트
+        document.title = seoTitle;
+
+        // 메타 태그 업데이트
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        const ogDescription = document.querySelector('meta[property="og:description"]');
+
+        if (metaDescription) metaDescription.setAttribute('content', seoDescription);
+        if (ogTitle) ogTitle.setAttribute('content', seoTitle);
+        if (ogDescription) ogDescription.setAttribute('content', seoDescription);
+    }
+
+    // 중복 실행 방지를 위한 플래그
+    let isInitializing = false;
+    let isInitialized = false;
+
+    // 티어 메이커용 스포일러 토글 초기화
+    function initPositionSpoilerToggle() {
+        const container = document.getElementById('position-spoiler-container');
+        const checkbox = document.getElementById('position-spoiler-toggle');
+        const label = document.getElementById('position-spoiler-text');
+        if (!container || !checkbox || !label) return;
+
+        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+
+        const isListMode = isTierListMode();
+
+        // KR 이거나 리스트 모드면 숨김
+        if (currentLang === 'kr' || isListMode) {
+            container.style.display = 'none';
+            return;
+        }
+
+        // 언어별 라벨
+        label.textContent = getTierText('showSpoilers', 'Show Spoilers');
+
+        // 기본 상태: 체크 해제 (현재 페이지 세션에서만 유지)
+        container.style.display = 'flex';
+        const applySpoiler = (useKR) => {
+            if (typeof window.reloadPositionTierCharacterPool === 'function') {
+                window.reloadPositionTierCharacterPool(useKR);
+            }
+        };
+
+        if (window.SpoilerState && typeof window.SpoilerState.bindCheckbox === 'function') {
+            window.SpoilerState.bindCheckbox({
+                checkbox,
+                container,
+                displayStyle: 'flex',
+                lang: currentLang,
+                source: 'position-tier-maker',
+                onChange: (enabled) => {
+                    applySpoiler(enabled);
+                }
+            });
+            if (typeof window.SpoilerState.get === 'function' && window.SpoilerState.get()) {
+                applySpoiler(true);
+            }
+        } else {
+            checkbox.checked = false;
+            checkbox.addEventListener('change', function () {
+                applySpoiler(this.checked);
+            });
+        }
+    }
+
+    async function initializePageContent() {
+        // 중복 실행 방지
+        if (isInitializing || isInitialized) {
+            //console.log('initializePageContent already running or completed');
+            return;
+        }
+
+        isInitializing = true;
+
+        // 캐릭터 데이터 로딩 (기본은 언어별 리스트 기준; 스포일러 토글은 런타임에 풀만 다시 로드)
+        const dataLoaded = await loadCharacterData();
+        if (!dataLoaded || typeof window.characterData === 'undefined') {
+            console.error('characterData is not loaded');
+            isInitializing = false;
+            return;
+        }
+
+
+        // 포지션별 티어 메이커 초기화 (position-tiers.js에서 정의된 함수)
+        if (typeof window.initPositionTierMaker === 'function') {
+            window.initPositionTierMaker();
+        } else {
+            console.error('initPositionTierMaker function not found');
+        }
+
+        // 초기화 완료
+        isInitializing = false;
+        isInitialized = true;
+    }
+
+    // 페이지 로드 시 초기화
+    document.addEventListener('DOMContentLoaded', async () => {
+        //console.log('DOMContentLoaded event fired');
+
+        // i18n 초기화 (제일 먼저)
+        if (typeof initPageI18n === 'function') {
+            await initPageI18n('tier');
+        }
+
+        // 기본 초기화 작업
+        const isListMode = isTierListMode();
+        if (isListMode) {
+            Navigation.load('tier-list');
+        } else {
+            Navigation.load('tier-maker');
+        }
+
+        // 티어 기준 토글 기능 초기화
+        initTierCriteriaToggle();
+
+        // SEO 설정 업데이트
+        updateSEOContent();
+
+        // 언어 라우터 초기화 및 콘텐츠 업데이트
+        if (typeof LanguageRouter !== 'undefined') {
+            // path 기반 SEO URL(/kr|/en|/jp|/cn)에서는 lang 쿼리를 강제하지 않음
+            const hasLangParam = window.location.search.includes('lang=');
+            const isPathLanguagePage = /^\/(kr|en|jp|cn)(\/|$)/.test(window.location.pathname);
+            if (hasLangParam || isPathLanguagePage) {
+                // 언어 파라미터가 있으면 바로 콘텐츠 로드
+                await updateLanguageContent();
+                initPositionSpoilerToggle();
+                await initializePageContent();
+            } else {
+                // 언어 파라미터가 없으면 기본 한국어로 설정
+                const currentUrl = new URL(window.location);
+                currentUrl.searchParams.set('lang', 'kr');
+                window.history.replaceState({}, '', currentUrl);
+
+                await updateLanguageContent();
+                initPositionSpoilerToggle();
+                await initializePageContent();
+            }
+        } else {
+            await updateLanguageContent();
+            initPositionSpoilerToggle();
+            await initializePageContent();
+        }
+
+        // 티어 소스 버튼 이벤트 연결 (en/jp 전용)
+        const btnGlobal = document.getElementById('btn-global-tier');
+        const btnKR = document.getElementById('btn-kr-tier');
+        const btnKRSpoiler = document.getElementById('btn-kr-spoiler-tier');
+        const setActive = (which) => {
+            if (!btnGlobal || !btnKR || !btnKRSpoiler) return;
+            const applyActive = (el, active) => {
+                el.style.background = active ? 'rgba(255,255,255,0.18)' : 'rgba(255,255,255,0.08)';
+                el.style.borderColor = active ? 'rgba(255,255,255,0.35)' : 'rgba(255,255,255,0.2)';
+            };
+            applyActive(btnGlobal, which === 'global');
+            applyActive(btnKR, which === 'kr');
+            applyActive(btnKRSpoiler, which === 'kr_spoiler');
+        };
+        if (btnGlobal && btnKR && btnKRSpoiler) {
+            // 기본값: Global 활성화
+            setActive('global');
+            // 초기 로딩 시에도 실제 소스를 Global로 전환
+            if (typeof window.setTierSource === 'function') {
+                await window.setTierSource('global');
+            } else {
+                // 로더 지연 대비 재시도
+                setTimeout(() => {
+                    try { if (typeof window.setTierSource === 'function') window.setTierSource('global'); } catch (_) { }
+                }, 100);
+            }
+            btnGlobal.addEventListener('click', async () => {
+                setActive('global');
+                if (typeof window.setTierSource === 'function') await window.setTierSource('global');
+            });
+            btnKR.addEventListener('click', async () => {
+                setActive('kr');
+                if (typeof window.setTierSource === 'function') await window.setTierSource('kr');
+            });
+            btnKRSpoiler.addEventListener('click', async () => {
+                setActive('kr_spoiler');
+                if (typeof window.setTierSource === 'function') await window.setTierSource('kr_spoiler');
+            });
+        }
+    });
+
+    // 추가 안전장치
+    window.addEventListener('load', async () => {
+        //console.log('Window load event fired');
+        if (!isInitialized) {
+            //console.log('Page not initialized yet, running initialization...');
+            await initializePageContent();
+        }
+    });
+</script>
+<script src="{{ site.baseurl }}/apps/tier/capture.js"></script>

@@ -291,10 +291,10 @@ class Navigation {
                         <span data-text="${texts.tier}">${texts.tier}</span>
                     </div>
                     <div class="submenu">
-                        <a href="${BASE_URL}/tier/position-tier/?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="tier-list">
+                        <a href="${BASE_URL}/${currentLang}/tier/" class="nav-sub-item" data-nav="tier-list">
                             <span data-text="${texts.tierList}">◈　${texts.tierList}</span>
                         </a>
-                        <a href="${BASE_URL}/tier/position-tier/?lang=${currentLang}&v=${APP_VERSION}&list=false" class="nav-sub-item" data-nav="tier-maker">
+                        <a href="${BASE_URL}/${currentLang}/tier-maker/" class="nav-sub-item" data-nav="tier-maker">
                             <span data-text="${texts.tierMaker}">◈　${texts.tierMaker}</span>
                         </a>
                     </div>

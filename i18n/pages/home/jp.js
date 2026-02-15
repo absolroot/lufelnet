@@ -69,5 +69,12 @@ window.I18N_PAGE_HOME_JP = {
     carousel_nav_prev_aria: 'Prev',
     carousel_nav_next_aria: 'Next',
     carousel_maintenance_title: 'メンテナンス中',
-    carousel_maintenance_body: 'メンテナンス中です。'
+    carousel_maintenance_body: 'メンテナンス中です。',
+
+    notfound_seo_title: '404 - ページが見つかりません | P5X Lufelnet',
+    notfound_title: 'ページが見つかりません',
+    notfound_description: '入力したアドレスは変更または削除された可能性があります。',
+    notfound_path_label: 'リクエストパス',
+    notfound_home: 'ホームへ移動',
+    notfound_back: '前のページ'
 };

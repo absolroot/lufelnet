@@ -143,7 +143,7 @@
         criticalCalc: '/critical-calc',
         tacticLibrary: '/tactic/tactics.html',
         tacticMaker: '/tactic-maker',
-        tier: '/tier/position-tier/',
+        tier: '/tier/',
         guide: '/article',
         gallery: '/gallery',
         schedule: '/schedule',
@@ -153,6 +153,9 @@
 
     const buildHref = (key, lang) => {
         const base = typeof BASE_URL !== 'undefined' ? BASE_URL : '';
+        if (key === 'tier') {
+            return `${base}/${lang}/tier/`;
+        }
         const ver = typeof APP_VERSION !== 'undefined' ? APP_VERSION : (Date.now().toString());
         const path = pathMap[key] || '/';
         const url = new URL(base + path, window.location.origin);

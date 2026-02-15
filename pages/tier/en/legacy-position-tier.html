@@ -1,0 +1,29 @@
+---
+layout: null
+permalink: /en/tier/position-tier/
+sitemap: false
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Redirecting...</title>
+</head>
+<body>
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search || "");
+      var mode = (params.get("list") === "false") ? "maker" : "list";
+      var target = mode === "maker" ? "/en/tier-maker/" : "/en/tier/";
+      params.delete("lang");
+      params.delete("v");
+      params.delete("list");
+      var query = params.toString();
+      window.location.replace(target + (query ? ("?" + query) : ""));
+    })();
+  </script>
+  <noscript><meta http-equiv="refresh" content="0; url=/en/tier/"></noscript>
+  <a href="/en/tier/">Continue</a>
+</body>
+</html>

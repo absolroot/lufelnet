@@ -69,5 +69,12 @@ window.I18N_PAGE_HOME_KR = {
     carousel_nav_prev_aria: 'Prev',
     carousel_nav_next_aria: 'Next',
     carousel_maintenance_title: '배너 점검 중',
-    carousel_maintenance_body: '조치 중입니다.'
+    carousel_maintenance_body: '조치 중입니다.',
+
+    notfound_seo_title: '404 - 페이지를 찾을 수 없습니다 | P5X 루페르넷',
+    notfound_title: '페이지를 찾을 수 없습니다',
+    notfound_description: '요청하신 주소가 변경되었거나 삭제되었을 수 있습니다.',
+    notfound_path_label: '요청 경로',
+    notfound_home: '홈으로 이동',
+    notfound_back: '이전 페이지'
 };

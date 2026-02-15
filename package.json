@@ -12,7 +12,9 @@
     "seo:home:generate": "node scripts/seo/generate-home-pages.mjs",
     "seo:home:check": "node scripts/seo/generate-home-pages.mjs --check",
     "seo:character:generate": "node scripts/seo/generate-character-pages.mjs",
-    "seo:character:check": "node scripts/seo/generate-character-pages.mjs --check"
+    "seo:character:check": "node scripts/seo/generate-character-pages.mjs --check",
+    "seo:tier:generate": "node scripts/seo/generate-tier-pages.mjs",
+    "seo:tier:check": "node scripts/seo/generate-tier-pages.mjs --check"
   },
   "keywords": [],
   "author": "",

@@ -11,6 +11,18 @@ function getCurrentTierLanguage() {
         : 'kr';
 }
 
+function isTierListMode() {
+    const forcedMode = String(window.__TIER_PAGE_MODE__ || '').toLowerCase();
+    if (forcedMode === 'list') return true;
+    if (forcedMode === 'maker') return false;
+
+    const path = String(window.location.pathname || '').toLowerCase();
+    if (/^\/(kr|en|jp|cn)\/tier-maker\/?$/.test(path) || /^\/tier-maker\/?$/.test(path)) return false;
+    if (/^\/(kr|en|jp|cn)\/tier\/?$/.test(path) || /^\/tier\/?$/.test(path)) return true;
+
+    return new URLSearchParams(window.location.search).get('list') !== 'false';
+}
+
 function getTierQaData(lang) {
     if (typeof window.t === 'function') {
         const title = window.t('tierQaTitle', 'Q&A');
@@ -36,8 +48,7 @@ async function renderTierQa() {
     const title = document.getElementById('tier-qa-title');
     if (!section || !list) return;
 
-    const urlParams = new URLSearchParams(window.location.search);
-    const isListMode = urlParams.get('list') !== 'false';
+    const isListMode = isTierListMode();
     if (!isListMode) {
         section.style.display = 'none';
         return;

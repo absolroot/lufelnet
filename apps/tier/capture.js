@@ -191,9 +191,20 @@
     const container = document.querySelector('.position-tiers-container');
     if (!container) return;
 
-    // list=false (티어 메이커 모드)인지 확인
-    const urlParams = new URLSearchParams(window.location.search);
-    const isListMode = urlParams.get('list') !== 'false';
+    const forcedMode = String(window.__TIER_PAGE_MODE__ || '').toLowerCase();
+    let isListMode;
+    if (forcedMode === 'list' || forcedMode === 'maker') {
+      isListMode = forcedMode === 'list';
+    } else {
+      const path = String(window.location.pathname || '').toLowerCase();
+      if (/^\/(kr|en|jp|cn)\/tier-maker\/?$/.test(path) || /^\/tier-maker\/?$/.test(path)) {
+        isListMode = false;
+      } else if (/^\/(kr|en|jp|cn)\/tier\/?$/.test(path) || /^\/tier\/?$/.test(path)) {
+        isListMode = true;
+      } else {
+        isListMode = new URLSearchParams(window.location.search).get('list') !== 'false';
+      }
+    }
 
     // 티어 리스트 모드에서는 툴바 표시하지 않음
     if (isListMode) {

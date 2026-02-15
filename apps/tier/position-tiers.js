@@ -23,6 +23,23 @@ const getTierI18nText = (key, fallback = '') => {
   return fallback || key;
 };
 
+const getTierPageMode = () => {
+  const forcedMode = String(window.__TIER_PAGE_MODE__ || '').toLowerCase();
+  if (forcedMode === 'list' || forcedMode === 'maker') {
+    return forcedMode;
+  }
+
+  const path = String(window.location.pathname || '').toLowerCase();
+  if (/^\/(kr|en|jp|cn)\/tier-maker\/?$/.test(path)) return 'maker';
+  if (/^\/(kr|en|jp|cn)\/tier\/?$/.test(path)) return 'list';
+  if (/^\/tier-maker\/?$/.test(path)) return 'maker';
+  if (/^\/tier\/?$/.test(path)) return 'list';
+
+  return (new URLSearchParams(window.location.search).get('list') === 'false')
+    ? 'maker'
+    : 'list';
+};
+
 const getNewTierLabel = () => getTierI18nText('newTierLabel', 'New');
 
 // 필터링된 캐릭터들의 원래 위치를 저장하는 맵 (parent와 nextSibling 정보 포함)
@@ -1051,9 +1068,10 @@ const attachDragListeners = (element, force = false) => {
           if (targetImage && targetImage.alt) {
             const characterName = targetImage.alt;
 
-            // 현재 URL에서 언어 파라미터 추출
-            const urlParams = new URLSearchParams(window.location.search);
-            const currentLang = urlParams.get('lang') || 'kr'; // 기본값은 'kr'
+            // SEO path(/en/...)와 query 기반 URL 모두에서 현재 언어를 안전하게 가져옴
+            const currentLang = (typeof LanguageRouter !== 'undefined' && typeof LanguageRouter.getCurrentLanguage === 'function')
+              ? LanguageRouter.getCurrentLanguage()
+              : (new URLSearchParams(window.location.search).get('lang') || 'kr');
 
             // 언어 파라미터를 유지하며 캐릭터 상세 페이지로 이동
             window.location.href = `/character.html?name=${encodeURIComponent(characterName)}&lang=${currentLang}`;
@@ -1686,9 +1704,8 @@ const loadTierDataFromURL = (tierData) => {
 window.initPositionTierMaker = () => {
   console.log('Initializing position tier maker...');
 
-  // URL 파라미터 확인 및 제목 설정
-  const urlParams = new URLSearchParams(window.location.search);
-  const shouldLoadList = urlParams.get('list') !== 'false';
+  // URL/경로 기반 모드 확인 및 제목 설정
+  const shouldLoadList = getTierPageMode() === 'list';
 
   // 티어 리스트 모드 설정 (list=false가 아니면 티어 리스트 모드)
   isTierListMode = shouldLoadList;

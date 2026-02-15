@@ -69,5 +69,12 @@ window.I18N_PAGE_HOME_EN = {
     carousel_nav_prev_aria: 'Prev',
     carousel_nav_next_aria: 'Next',
     carousel_maintenance_title: 'Under Maintenance',
-    carousel_maintenance_body: 'Under maintenance.'
+    carousel_maintenance_body: 'Under maintenance.',
+
+    notfound_seo_title: '404 - Page Not Found | P5X Lufelnet',
+    notfound_title: 'Page not found',
+    notfound_description: 'The address you entered may have changed or no longer exists.',
+    notfound_path_label: 'Requested path',
+    notfound_home: 'Go to Home',
+    notfound_back: 'Previous Page'
 };

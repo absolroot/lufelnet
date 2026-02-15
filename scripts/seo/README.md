@@ -146,6 +146,11 @@ For home only: add the replaceState URL normalization script at the very top of 
 </script>
 ```
 
+For single-page apps with non-root paths (example: `tier`), use the same pattern with app path mapping:
+- `/tier/position-tier/?lang=en&v=...` -> `/en/tier/`
+- `/tier/position-tier/?lang=en&list=false&v=...` -> `/en/tier-maker/`
+- Set `window.__SEO_PATH_LANG__ = lang` before `replaceState` so `LanguageRouter` does not revert to query-based URL.
+
 For per-item apps: add `?lang=` stripping via replaceState in the body include if the app page uses `?lang=` query params at runtime. The pattern:
 - On `/{lang}/{app}/{slug}/` paths, if `?lang=` is present, strip it via `replaceState`.
 - Path-based URLs must not retain `lang` query.
@@ -317,6 +322,7 @@ if (/^\/(kr|en|jp)\//.test(window.location.pathname)) return;
 | synergy | A (per-item) | `generate-synergy-pages.mjs` | Done |
 | wonder-weapon | A (per-item) | `generate-wonder-weapon-pages.mjs` | Done |
 | character | A (per-item) | `generate-character-pages.mjs` | Done |
+| tier | B (single-page) | `generate-tier-pages.mjs` | Done |
 | persona | A (per-item) | — | Not started |
 | maps | A (per-item) | — | Not started |
 
@@ -329,6 +335,8 @@ if (/^\/(kr|en|jp)\//.test(window.location.pathname)) return;
 | Wonder Weapon | `/kr/wonder-weapon/{slug}/`, `/en/wonder-weapon/{slug}/`, `/jp/wonder-weapon/{slug}/` |
 | Character (detail) | `/kr/character/{slug}/`, `/en/character/{slug}/`, `/jp/character/{slug}/` |
 | Character (list) | `/character/` (default), `/kr/character/`, `/en/character/`, `/jp/character/` |
+| Tier (list) | `/kr/tier/`, `/en/tier/`, `/jp/tier/` |
+| Tier Maker | `/kr/tier-maker/`, `/en/tier-maker/`, `/jp/tier-maker/` |
 
 Legacy URLs redirect to canonical via generated stub pages (`layout: null`).
 Language root URLs (`/{lang}/{app}/`) redirect to `/{app}/?lang={lang}` via generated root stubs.
@@ -345,8 +353,12 @@ Legacy query-based URLs are rewritten to clean path-based URLs via `history.repl
 | `/character.html?name=렌&lang=en` | `/en/character/joker/` |
 | `/character/?lang=en` | `/en/character/` |
 | `/en/wonder-weapon/?v=4.4.7` | `/en/wonder-weapon/` |
+| `/tier/position-tier/?lang=en&v=4.4.8` | `/en/tier/` |
+| `/tier/position-tier/?lang=en&list=false&v=4.4.8` | `/en/tier-maker/` |
 
 The rewrite scripts are placed at the top of the body include or page, before any other scripts, so they run early. They use the `__*_SLUG_MAP` data (injected via Jekyll) to resolve slugs.
+
+For app paths not listed in `LanguageRouter.isSeoDetailPath()` (e.g. `tier`), set `window.__SEO_PATH_LANG__ = lang` before `replaceState` when rewriting query URLs to path URLs.
 
 ## Encoding and File Safety
 

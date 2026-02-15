@@ -7,34 +7,264 @@ layout: null
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - 페이지를 찾을 수 없습니다</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="color-scheme" content="dark">
+    <title>404 - 페이지를 찾을 수 없습니다 | P5X 루페르넷</title>
+    <script>
+        window.SITE_BASEURL = '{{ site.baseurl }}';
+    </script>
+    <script src="{{ site.baseurl }}/i18n/service/i18n-service.js"></script>
+    <script src="{{ site.baseurl }}/i18n/service/i18n-adapter.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg-main: #111111;
+            --card-bg: #232323;
+            --text-main: rgba(255, 255, 255, 0.9);
+            --text-sub: rgba(255, 255, 255, 0.62);
+            --border-soft: rgba(255, 255, 255, 0.09);
+            --accent-red: rgba(125, 10, 10, 0.9);
+            --accent-red-hover: rgba(157, 20, 20, 0.96);
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Noto Sans', 'Apple SD Gothic Neo', "Segoe UI", Arial, sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        html,
         body {
+            margin: 0;
+            min-height: 100vh;
+            color: var(--text-main);
+            background:
+                linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.26)),
+                linear-gradient(45deg, transparent 48%, rgba(255, 255, 255, 0.03) 49%, rgba(255, 255, 255, 0.03) 51%, transparent 52%),
+                linear-gradient(-45deg, transparent 48%, rgba(255, 255, 255, 0.03) 49%, rgba(255, 255, 255, 0.03) 51%, transparent 52%),
+                var(--bg-main);
+            background-size: 100% 100%, 30px 30px, 30px 30px, 100% 100%;
+        }
+
+        body {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            overflow: hidden;
+        }
+
+        .not-found {
+            width: min(680px, 100%);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01)) var(--card-bg);
+            border: 1px solid var(--border-soft);
+            border-bottom: 3px solid var(--accent-red);
+            border-radius: 14px;
+            padding: 34px 30px 30px;
             text-align: center;
-            font-family: Arial, sans-serif;
-            padding: 50px;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 1;
         }
 
-        h1 {
-            font-size: 50px;
+        .code {
+            margin: 0;
+            line-height: 0.9;
+            font-size: clamp(58px, 14vw, 120px);
+            font-weight: 900;
+            color: #f3f3f3;
+            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.65), 0 0 22px rgba(125, 10, 10, 0.34);
         }
 
-        p {
-            font-size: 20px;
+        .title {
+            margin: 16px 0 10px;
+            font-size: clamp(22px, 3.8vw, 30px);
+            font-weight: 700;
         }
 
-        a {
-            color: #007BFF;
+        .description {
+            margin: 0;
+            font-size: clamp(14px, 2.7vw, 17px);
+            color: var(--text-sub);
+            line-height: 1.6;
+            word-break: keep-all;
+        }
+
+        .missing-path {
+            margin: 16px auto 0;
+            width: fit-content;
+            max-width: 100%;
+            padding: 6px 12px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(0, 0, 0, 0.28);
+            color: rgba(255, 255, 255, 0.76);
+            font-size: 12px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .actions {
+            margin-top: 26px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            min-width: 136px;
+            padding: 11px 18px;
+            border-radius: 999px;
+            border: 1px solid transparent;
+            font-size: 14px;
+            font-weight: 600;
             text-decoration: none;
+            cursor: pointer;
+            transition: all 0.16s ease;
+        }
+
+        .btn-home {
+            background: var(--accent-red);
+            color: #ffffff;
+            border-color: rgba(165, 55, 55, 0.72);
+        }
+
+        .btn-home:hover {
+            background: var(--accent-red-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-back {
+            background: rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.9);
+            border-color: rgba(255, 255, 255, 0.16);
+        }
+
+        .btn-back:hover {
+            background: rgba(255, 255, 255, 0.14);
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 560px) {
+            body {
+                padding: 16px;
+            }
+
+            .not-found {
+                padding: 28px 18px 24px;
+            }
+
+            .actions {
+                margin-top: 22px;
+            }
+
+            .btn {
+                min-width: 124px;
+                font-size: 13px;
+                padding: 10px 15px;
+            }
         }
     </style>
 </head>
 
 <body>
-    <h1>404</h1>
-    <p>이 페이지는 존재하지 않습니다.</p>
-    <p><a href="{{ site.baseurl }}/">홈으로 돌아가기</a></p>
+    <main class="not-found">
+        <p class="code">404</p>
+        <h1 id="notfound-title" class="title">페이지를 찾을 수 없습니다</h1>
+        <p id="notfound-description" class="description">요청하신 주소가 변경되었거나 삭제되었을 수 있습니다.</p>
+        <p class="missing-path" id="missing-path" aria-live="polite"></p>
+        <div class="actions">
+            <a id="home-link" class="btn btn-home" href="{{ site.baseurl }}/">홈으로 이동</a>
+            <button class="btn btn-back" id="go-back" type="button">이전 페이지</button>
+        </div>
+    </main>
+
+    <script>
+        (function () {
+            var FALLBACK_TEXT = {
+                notfound_seo_title: '404 - 페이지를 찾을 수 없습니다 | P5X 루페르넷',
+                notfound_title: '페이지를 찾을 수 없습니다',
+                notfound_description: '요청하신 주소가 변경되었거나 삭제되었을 수 있습니다.',
+                notfound_path_label: '요청 경로',
+                notfound_home: '홈으로 이동',
+                notfound_back: '이전 페이지'
+            };
+
+            function detectLangFallback() {
+                try {
+                    var params = new URLSearchParams(window.location.search);
+                    var fromParam = params.get('lang');
+                    if (fromParam && ['kr', 'en', 'jp'].indexOf(fromParam) !== -1) return fromParam;
+
+                    var path = window.location.pathname || '';
+                    var match = path.match(/^\/(kr|en|jp)(\/|$)/);
+                    if (match && match[1]) return match[1];
+
+                    var saved = localStorage.getItem('preferredLanguage');
+                    if (saved && ['kr', 'en', 'jp'].indexOf(saved) !== -1) return saved;
+                } catch (_) { }
+                return 'kr';
+            }
+
+            function tr(key, fallbackValue) {
+                if (typeof window.t === 'function') {
+                    return window.t(key, fallbackValue);
+                }
+                return fallbackValue;
+            }
+
+            function applyLocalizedText() {
+                var langCode = (typeof window.getCurrentLang === 'function' && window.getCurrentLang()) || detectLangFallback();
+                document.documentElement.lang = langCode === 'jp' ? 'ja' : (langCode === 'kr' ? 'ko' : 'en');
+
+                var title = document.getElementById('notfound-title');
+                var description = document.getElementById('notfound-description');
+                var homeLink = document.getElementById('home-link');
+                var backButton = document.getElementById('go-back');
+                var pathElement = document.getElementById('missing-path');
+
+                document.title = tr('notfound_seo_title', FALLBACK_TEXT.notfound_seo_title);
+                if (title) title.textContent = tr('notfound_title', FALLBACK_TEXT.notfound_title);
+                if (description) description.textContent = tr('notfound_description', FALLBACK_TEXT.notfound_description);
+                if (homeLink) homeLink.textContent = tr('notfound_home', FALLBACK_TEXT.notfound_home);
+                if (backButton) backButton.textContent = tr('notfound_back', FALLBACK_TEXT.notfound_back);
+
+                if (pathElement) {
+                    var currentPath = window.location.pathname || '/';
+                    var pathLabel = tr('notfound_path_label', FALLBACK_TEXT.notfound_path_label);
+                    pathElement.textContent = pathLabel + ': ' + currentPath;
+                }
+            }
+
+            var pathElement = document.getElementById('missing-path');
+            if (pathElement) {
+                pathElement.textContent = (window.location.pathname || '/');
+            }
+
+            var backButton = document.getElementById('go-back');
+            if (backButton) {
+                backButton.addEventListener('click', function () {
+                    if (window.history.length > 1) {
+                        window.history.back();
+                        return;
+                    }
+                    window.location.href = '{{ site.baseurl }}/';
+                });
+            }
+
+            (async function () {
+                try {
+                    if (typeof window.initPageI18n === 'function') {
+                        await window.initPageI18n('home');
+                    }
+                } catch (_) { }
+                applyLocalizedText();
+            })();
+        })();
+    </script>
 </body>
 
 </html>

@@ -73,6 +73,14 @@ console.log('[I18nService] Script started loading...');
 
             // 역조회 캐시: 한국어 값 → 영어 키
             this._reverseLookupCache = null;
+            this._statTranslationCache = {};
+            this._sortedStatKeysCache = {};
+
+            // 기본은 조용한 모드, ?i18nDebug=1 에서만 상세 로그 출력
+            this.debug = false;
+            try {
+                this.debug = new URLSearchParams(window.location.search).get('i18nDebug') === '1';
+            } catch (_) { }
 
             console.log('[I18nService] Detected language:', this.currentLang);
         }
@@ -207,6 +215,8 @@ console.log('[I18nService] Script started loading...');
                     this.cache[targetLang] = {};
                 }
                 this.cache[targetLang].common = translations;
+                delete this._statTranslationCache[targetLang];
+                delete this._sortedStatKeysCache[targetLang];
                 return translations;
             }
 
@@ -221,6 +231,8 @@ console.log('[I18nService] Script started loading...');
                     this.cache[targetLang] = {};
                 }
                 this.cache[targetLang].common = translations;
+                delete this._statTranslationCache[targetLang];
+                delete this._sortedStatKeysCache[targetLang];
 
                 return translations;
             } catch (error) {
@@ -400,19 +412,19 @@ console.log('[I18nService] Script started loading...');
                 }
             }
 
-            // 4. 실패 시 키 반환 (로그 출력)
-            console.warn(`[I18nService] Missing translation: ${key} (lang: ${lang})`);
+            // 4. 실패 시 키 반환 (상세 로그는 debug 모드에서만 출력)
+            if (this.debug) {
+                console.warn(`[I18nService] Missing translation: ${key} (lang: ${lang})`);
 
-            // 디버깅: 현재 페이지 캐시 상태 확인
-            if (this.currentPage) {
-                const pageCache = this.cache[lang]?.pages?.[this.currentPage];
-                if (pageCache) {
-                    console.log(`Cache keys for ${this.currentPage}:`, Object.keys(pageCache));
-                    // 키 존재 여부 직접 확인
-                    console.log(`Key '${key}' in cache:`, pageCache[key] !== undefined);
-                } else {
-                    console.log(`Cache empty or invalid for ${this.currentPage} (lang: ${lang})`);
-                    if (this.cache[lang]) console.log('Cache structure:', Object.keys(this.cache[lang]));
+                if (this.currentPage) {
+                    const pageCache = this.cache[lang]?.pages?.[this.currentPage];
+                    if (pageCache) {
+                        console.log(`Cache keys for ${this.currentPage}:`, Object.keys(pageCache));
+                        console.log(`Key '${key}' in cache:`, pageCache[key] !== undefined);
+                    } else {
+                        console.log(`Cache empty or invalid for ${this.currentPage} (lang: ${lang})`);
+                        if (this.cache[lang]) console.log('Cache structure:', Object.keys(this.cache[lang]));
+                    }
                 }
             }
 
@@ -533,6 +545,9 @@ console.log('[I18nService] Script started loading...');
          */
         clearCache() {
             this.cache = {};
+            this._reverseLookupCache = null;
+            this._statTranslationCache = {};
+            this._sortedStatKeysCache = {};
             console.log('[I18nService] Cache cleared');
         }
 
@@ -655,7 +670,9 @@ console.log('[I18nService] Script started loading...');
                 }
             });
 
-            console.log(`[I18nService] Built reverse lookup cache with ${Object.keys(this._reverseLookupCache).length} entries`);
+            if (this.debug) {
+                console.log(`[I18nService] Built reverse lookup cache with ${Object.keys(this._reverseLookupCache).length} entries`);
+            }
         }
 
         /**
@@ -664,6 +681,8 @@ console.log('[I18nService] Script started loading...');
          */
         _invalidateReverseLookup() {
             this._reverseLookupCache = null;
+            this._statTranslationCache = {};
+            this._sortedStatKeysCache = {};
         }
 
         /**
@@ -701,20 +720,31 @@ console.log('[I18nService] Script started loading...');
          */
         getStatTranslations() {
             this._buildReverseLookup();
-
-            const dict = {};
+            if (!this._reverseLookupCache) {
+                return {};
+            }
             const targetLang = this.currentLang;
-
-            // 역조회 캐시를 사용해 Korean→Target 사전 생성
-            if (this._reverseLookupCache) {
-                Object.entries(this._reverseLookupCache).forEach(([koreanText, { section, key }]) => {
-                    const translated = this.cache[targetLang]?.common?.[section]?.[key];
-                    if (translated && translated !== koreanText) {
-                        dict[koreanText] = translated;
-                    }
-                });
+            const targetCommon = this.cache[targetLang]?.common;
+            if (!targetCommon) {
+                // common 번역이 아직 로드되지 않았으면 빈 결과를 즉시 반환하고 캐시하지 않는다.
+                return {};
+            }
+            if (this._statTranslationCache[targetLang]) {
+                return this._statTranslationCache[targetLang];
             }
 
+            const dict = {};
+
+            // 역조회 캐시를 사용해 Korean→Target 사전 생성
+            Object.entries(this._reverseLookupCache).forEach(([koreanText, { section, key }]) => {
+                const translated = targetCommon?.[section]?.[key];
+                if (translated && translated !== koreanText) {
+                    dict[koreanText] = translated;
+                }
+            });
+
+            this._statTranslationCache[targetLang] = dict;
+            this._sortedStatKeysCache[targetLang] = Object.keys(dict).sort((a, b) => b.length - a.length);
             return dict;
         }
 
@@ -736,44 +766,70 @@ console.log('[I18nService] Script started loading...');
             if (this.currentLang === 'kr') return;
 
             const dict = this.getStatTranslations();
-            console.log(`[I18nService] translateDOM: dictionary size = ${dict ? Object.keys(dict).length : 0}`);
-
             if (!dict || Object.keys(dict).length === 0) return;
+            if (this.debug) {
+                console.log(`[I18nService] translateDOM: dictionary size = ${Object.keys(dict).length}`);
+            }
 
             // 긴 키부터 먼저 처리 (부분 매칭 방지)
-            const sortedKeys = Object.keys(dict).sort((a, b) => b.length - a.length);
-
-            // 모든 leaf 노드 탐색
-            const all = root.querySelectorAll('*');
-            all.forEach(el => {
-                if (el.children.length === 0) {
-                    let text = el.textContent;
-                    if (!text) return;
-                    let changed = false;
-                    sortedKeys.forEach(ko => {
-                        const tr = dict[ko];
-                        if (text.includes(ko)) {
-                            text = text.replace(new RegExp(ko.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'), tr);
-                            changed = true;
-                        }
-                    });
-                    if (changed) el.textContent = text;
-                }
-            });
-
-            // 특정 클래스들 재적용
-            root.querySelectorAll('.stat-label, .value, .option-row .value, .stat-value').forEach(el => {
-                let text = el.textContent || '';
-                let changed = false;
-                sortedKeys.forEach(ko => {
-                    const tr = dict[ko];
-                    if (text.includes(ko)) {
-                        text = text.replace(new RegExp(ko.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'), tr);
-                        changed = true;
+            const sortedKeys = this._sortedStatKeysCache[this.currentLang] || Object.keys(dict).sort((a, b) => b.length - a.length);
+            const keyRegexCache = {};
+            const replaceText = (text) => {
+                if (!text) return text;
+                let output = text;
+                for (const ko of sortedKeys) {
+                    if (!output.includes(ko)) continue;
+                    if (!keyRegexCache[ko]) {
+                        keyRegexCache[ko] = new RegExp(ko.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g');
                     }
-                });
-                if (changed) el.textContent = text;
+                    output = output.replace(keyRegexCache[ko], dict[ko]);
+                }
+                return output;
+            };
+            const applyToElement = (el) => {
+                if (!el || el.children.length !== 0) return;
+                const original = el.textContent || '';
+                if (!original) return;
+                const replaced = replaceText(original);
+                if (replaced !== original) {
+                    el.textContent = replaced;
+                }
+            };
+
+            const targetSelectors = [
+                '.stat-label',
+                '.value',
+                '.option-row .value',
+                '.stat-value',
+                '.stat-row .label',
+                '.skill-level .label',
+                '.operation-label',
+                '.operation-note',
+                '.mind-stats .label',
+                '.mind-skills .label',
+                'h1',
+                'h2',
+                'h3',
+                'h4',
+                'p',
+                'span',
+                'li',
+                'button',
+                'a',
+                'strong',
+                'small'
+            ];
+
+            const seen = new Set();
+            root.querySelectorAll(targetSelectors.join(',')).forEach((el) => {
+                if (seen.has(el)) return;
+                seen.add(el);
+                applyToElement(el);
             });
+
+            if (root instanceof Element) {
+                applyToElement(root);
+            }
         }
 
         /**

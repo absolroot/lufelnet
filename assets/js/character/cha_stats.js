@@ -1,15 +1,57 @@
 // character/cha_stats.js
 (function () {
-    // 안전 실행 유틸
+    // ?전 ?행 ?틸
     function safe(fn) { try { fn(); } catch (e) { console.warn('[cha_stats]', e); } }
   
-    // 현재 언어 가져오기 (페이지에 정의되어 있으면 사용)
+    // ?재 ?어 가?오?(?이지???의?어 ?으??용)
     function getLang() {
       try { return typeof getCurrentLanguage === 'function' ? getCurrentLanguage() : 'kr'; }
       catch(_) { return 'kr'; }
     }
+
+    function t(key, fallback) {
+      if (typeof window.t === 'function') {
+        try {
+          return window.t(key, fallback);
+        } catch (_) {}
+      }
+      if (window.I18nService && typeof window.I18nService.t === 'function') {
+        const result = window.I18nService.t(key, fallback);
+        if (result && result !== key) return result;
+      }
+      return fallback;
+    }
+
+    function getAwarenessPattern(lang) {
+      if (lang === 'en') return t('characterStatsAwarenessPatternEn', 'A{idx}');
+      if (lang === 'jp') return t('characterStatsAwarenessPatternJp', '意識{idx}');
+      return t('characterStatsAwarenessPatternKr', '의식 {idx}');
+    }
+
+    function awarenessLabel(idx, lang) {
+      return getAwarenessPattern(lang).replace(/\{idx\}/g, String(idx));
+    }
+
+    function statsLabelSet() {
+      return {
+        hp: t('characterStatsLabelHp', '생명'),
+        atk: t('characterStatsLabelAtk', '공격력'),
+        def: t('characterStatsLabelDef', '방어력')
+      };
+    }
   
-    // URL파라미터 name
+
+    function localizeBaseStatsLabels() {
+      const labels = statsLabelSet();
+      const speed = t('gameTerms.speed', '속도');
+      const statLabels = document.querySelectorAll('.stats-card .stats-main .stats-grid .stat-row .label');
+      if (!statLabels || statLabels.length < 4) return;
+      statLabels[0].textContent = labels.hp;
+      statLabels[1].textContent = labels.atk;
+      statLabels[2].textContent = labels.def;
+      statLabels[3].textContent = speed;
+    }
+    // URL?라미터 name
     function getCharacterNameFromURL() {
       const p = new URLSearchParams(window.location.search);
       return p.get('name');
@@ -24,7 +66,7 @@
         const charName = getCharacterNameFromURL();
         const basePath = `${window.BASE_URL || ''}/data/characters/${encodeURIComponent(charName)}`;
 
-        // 1) per-character JS 우선 시도
+        // 1) per-character JS ?선 ?도
         const tryPerCharacterJs = () => new Promise((res) => {
           try {
             const s = document.createElement('script');
@@ -32,7 +74,7 @@
             s.onload = () => {
               try {
                 if (window.basicStatsData && window.basicStatsData[charName]) return res(true);
-                // 레거시 변수명 스캔 (basicStats_* 형태)
+                // ?거??변?명 ?캔 (basicStats_* ?태)
                 const keys = Object.keys(window).filter(k => /^basicStats_/.test(k));
                 for (const k of keys) {
                   const val = window[k];
@@ -50,7 +92,7 @@
           } catch(_) { res(false); }
         });
 
-        // 2) per-character JSON 폴백
+        // 2) per-character JSON ?백
         const tryPerCharacterJson = async () => {
           try {
             const r = await fetch(`${basePath}/base_stats.json?v=${ver}`, { cache: 'no-store' });
@@ -74,44 +116,44 @@
       });
     }
   
-    // 이름 → 한국어 키 매핑
+    // ?름 ???국????매핑
     function toKoreanKey(name, lang) {
       if (!name) return null;
-      if (window.characterData && window.characterData[name]) return name; // 이미 KR키
+      if (window.characterData && window.characterData[name]) return name; // ?? KR??
   
-      // 역매핑 (EN/JP 표시 이름이 들어온 경우)
+      // ????(EN/JP ?시 ?름???어??경우)
       if (window.characterData) {
         for (const k in window.characterData) {
           const cd = window.characterData[k] || {};
           if (lang === 'en' && cd.name_en === name) return k;
           if (lang === 'jp' && cd.name_jp === name) return k;
-          // 혹시 전체 한글 이름 필드와 같은 경우
+          // ?시 ?체 ?? ?름 ?드? 같? 경우
           if (cd.name === name) return k;
         }
       }
-      return name; // 마지막 시도
+      return name; // 마???도
     }
   
-    // awake7 내부키 -> 라벨(kr/en/jp)
-    function translateAwakeLabel(internalKey, lang) {
-      const map = {
-        attack_per: { kr: '공격력 %', en: 'ATK %', jp: '攻撃力 %' },
-        defense_per:{ kr: '방어력 %', en: 'DEF %', jp: '防御力 %' },
-        HP_per:     { kr: '생명 %',  en: 'HP %',  jp: 'HP %'  },
-        crit_rate:  { kr: '크리티컬 확률', en: 'CRIT Rate', jp: 'CRT発生率' },
-        crit_mult:  { kr: '크리티컬 효과', en: 'CRIT DMG',  jp: 'CRT倍率' },
-        speed:      { kr: '속도', en: 'Speed', jp: '速さ' },
-        ailment_accuracy: { kr: '효과 명중', en: 'Ailment Accur.', jp: '状態異常命中' },
-        sp_recover: { kr: 'SP 회복', en: 'SP Recovery', jp: 'SP回復' },
-        HP_recover: { kr: '치료 효과', en: 'Healing Effect', jp: 'HP回復量' },
-        pierce_rate:{ kr: '관통', en: 'Pierce Rate', jp: '貫通' },
+    // awake7 ????-> ?벨(kr/en/jp)
+    function translateAwakeLabel(internalKey) {
+      const keyMap = {
+        attack_per: ['characterStatsAwakeAttackPercent', '공격력 %'],
+        defense_per: ['characterStatsAwakeDefensePercent', '방어력 %'],
+        HP_per: ['characterStatsAwakeHpPercent', '생명 %'],
+        crit_rate: ['characterStatsAwakeCritRate', '크리티컬 확률'],
+        crit_mult: ['characterStatsAwakeCritDamage', '크리티컬 효과'],
+        speed: ['characterStatsAwakeSpeed', '속도'],
+        ailment_accuracy: ['characterStatsAwakeAilmentAccuracy', '효과 명중'],
+        sp_recover: ['characterStatsAwakeSpRecovery', 'SP 회복'],
+        HP_recover: ['characterStatsAwakeHealingEffect', '치료 효과'],
+        pierce_rate: ['characterStatsAwakePierceRate', '관통']
       };
-      const entry = map[internalKey];
-      if (!entry) return (lang === 'en' ? 'Hidden Stat' : lang === 'jp' ? '潜在能力' : '잠재력');
-      return entry[lang] || entry.kr;
+      const mapped = keyMap[internalKey];
+      if (!mapped) return t('characterStatsAwakeFallback', '잠재력');
+      return t(mapped[0], mapped[1]);
     }
   
-    // 퍼센트 키 여부 (awake7 값 포맷용)
+    // ?센?????? (awake7 ??맷??
     function isPercentKey(key) {
       return key.endsWith('_per') ||
              key === 'crit_rate' ||
@@ -122,7 +164,7 @@
              key === 'pierce_rate'
     }
   
-    // DOM 헬퍼
+    // DOM ?퍼
     function qs(sel) { return document.querySelector(sel); }
     function setText(sel, v) { const el = qs(sel); if (el) el.textContent = (v ?? '') + ''; }
     function setValueRow(baseSelector, idx, v) {
@@ -130,25 +172,23 @@
       if (row) row.textContent = (v ?? '') + '';
     }
   
-    function localizeAwakeTitle(lang) {
-      return lang === 'en' ? 'Hidden Ability LV7'
-           : lang === 'jp' ? '潜在能力 LV7'
-           : '잠재력 LV7';
+    function localizeAwakeTitle() {
+      return t('characterStatsAwakeTitle', '잠재력 LV7');
     }
 
-    // 스탯 카드 제목 로컬라이즈 (h2, h3)
+    // ?탯 카드 ?목 로컬?이?(h2, h3)
     function localizeStatsHeadings(lang) {
-      const H2 = { kr: '스탯', en: 'Stats', jp: 'ステータス' };
-      const H3_LEFT = { kr: '기초 스탯', en: 'Base Stats', jp: '基礎ステータス' };
-      const H3_RIGHT = { kr: '잠재력 LV 7', en: 'Hidden Ability LV7', jp: '潜在能力 LV7' };
+      const h2 = t('characterStatsSectionTitle', '스탯');
+      const h3Left = t('characterStatsBaseTitle', '기초 스탯');
+      const h3Right = t('characterStatsAwakeTitle', '잠재력 LV7');
 
-      setText('.stats-card h2', H2[lang] || H2.kr);
+      setText('.stats-card h2', h2);
       const leftH3Sel = '.stats-card .stats-settings .setting-section:nth-child(1) > h3';
       const rightH3Sel = '.stats-card .stats-settings .setting-section:nth-child(2) > h3';
       const leftH3 = document.querySelector(leftH3Sel);
       const rightH3 = document.querySelector(rightH3Sel);
       if (leftH3) {
-        leftH3.innerHTML = `${H3_LEFT[lang] || H3_LEFT.kr}
+        leftH3.innerHTML = `${h3Left}
           <span class="help-icon" onclick="showHelpModal('base-stats')">
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1" fill="rgba(255,255,255,0.05)"></circle>
@@ -157,7 +197,7 @@
           </span>`;
       }
       if (rightH3) {
-        rightH3.innerHTML = `${H3_RIGHT[lang] || H3_RIGHT.kr}
+        rightH3.innerHTML = `${h3Right}
           <span class="help-icon" onclick="showHelpModal('awake7')">
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1" fill="rgba(255,255,255,0.05)"></circle>
@@ -167,12 +207,119 @@
       }
     }
 
-    // LV80 기초 스탯 섹션 타이틀 지역화
-    function localizeLv80Title(lang) {
-      return lang === 'en' ? 'Base Stats (LV 80)' : (lang === 'jp' ? '基礎ステータス (LV 80)' : '기초 스탯 (LV 80)');
+
+    function localizeStatsCardTexts() {
+      const lang = getLang();
+      localizeStatsHeadings(lang);
+      localizeBaseStatsLabels();
+      const awakeTitle = document.querySelector('.stats-awake .awake-title');
+      if (awakeTitle) awakeTitle.textContent = localizeAwakeTitle();
+      const lv80Title = document.querySelector('.lv80-stats-card .lv80-title');
+      if (lv80Title) lv80Title.textContent = localizeLv80Title();
+      const lv100Title = document.querySelector('.lv100-stats-card .lv80-title');
+      if (lv100Title) lv100Title.textContent = t('characterStatsLv100Title', 'Base Stats (LV 100)');
+      relocalizeLvStatsGrid('.lv80-stats-card .lv80-grid', lang);
+      relocalizeLvStatsGrid('.lv100-stats-card .lv80-grid', lang);
+      const awakeLabel = document.querySelector('.stats-awake .label');
+      if (awakeLabel && awakeLabel.dataset && awakeLabel.dataset.awakeKey) {
+        awakeLabel.textContent = translateAwakeLabel(awakeLabel.dataset.awakeKey);
+      }
+    }
+
+    function relocalizeLvStatsGrid(selector, lang) {
+      const grid = document.querySelector(selector);
+      if (!grid) return;
+
+      const labels = statsLabelSet();
+      const L_HP = labels.hp;
+      const L_ATK = labels.atk;
+      const L_DEF = labels.def;
+      const labelCells = Array.from(grid.querySelectorAll('.lv80-cell.label'));
+      if (labelCells.length < 4) return;
+
+      const norm = (v) => String(v || '').replace(/\s+/g, ' ').trim();
+      const extractAwakeIdx = (v) => {
+        const m = norm(v).match(/(\d+)/);
+        return m ? parseInt(m[1], 10) : null;
+      };
+
+      const secondText = norm(labelCells[1] && labelCells[1].textContent);
+      // Wide layout second label is awareness (contains index number), narrow layout is stat label.
+      const isNarrowLayout = !/\d+/.test(secondText);
+
+      if (isNarrowLayout) {
+        labelCells[1].textContent = L_HP;
+        labelCells[2].textContent = L_ATK;
+        labelCells[3].textContent = L_DEF;
+        for (let i = 4; i < labelCells.length; i++) {
+          const idx = extractAwakeIdx(labelCells[i].textContent);
+          labelCells[i].textContent = awarenessLabel(idx !== null ? idx : (i - 4), lang);
+        }
+        return;
+      }
+
+      const statStart = Math.max(1, labelCells.length - 3);
+      for (let i = 1; i < statStart; i++) {
+        const idx = extractAwakeIdx(labelCells[i].textContent);
+        labelCells[i].textContent = awarenessLabel(idx !== null ? idx : (i - 1), lang);
+      }
+      if (labelCells[statStart]) labelCells[statStart].textContent = L_HP;
+      if (labelCells[statStart + 1]) labelCells[statStart + 1].textContent = L_ATK;
+      if (labelCells[statStart + 2]) labelCells[statStart + 2].textContent = L_DEF;
+    }
+
+    function getI18nServiceInstance() {
+      return window.__I18nService__ || window.I18nService || null;
+    }
+
+    function hasCharacterPack(lang) {
+      const service = getI18nServiceInstance();
+      return !!(service &&
+        service.cache &&
+        service.cache[lang] &&
+        service.cache[lang].pages &&
+        service.cache[lang].pages.character);
+    }
+
+    function waitAndRelocalizeStatsCard() {
+      const maxAttempts = 60;
+      const intervalMs = 100;
+      let attempts = 0;
+
+      function tryRelocalize() {
+        const lang = getLang();
+        if (hasCharacterPack(lang) || lang === 'kr') {
+          safe(localizeStatsCardTexts);
+          return;
+        }
+        attempts += 1;
+        if (attempts < maxAttempts) {
+          setTimeout(tryRelocalize, intervalMs);
+        }
+      }
+
+      tryRelocalize();
+    }
+
+    function registerI18nLanguageHook() {
+      const service = getI18nServiceInstance();
+      if (!service || typeof service.onLanguageChange !== 'function') return;
+      if (window.__CharacterStatsI18nHookRegistered__) return;
+      window.__CharacterStatsI18nHookRegistered__ = true;
+      service.onLanguageChange(() => {
+        safe(localizeStatsCardTexts);
+      });
+    }
+
+    window.localizeCharacterStatsCard = function () {
+      safe(localizeStatsCardTexts);
+    };
+    // LV80 기초 ?탯 ?션 ??? 지??
+    function localizeLv80Title() {
+      return t('characterStatsLv80Title', '기초 스탯 (LV 80)');
     }
   
-    // a0_lv80 ~ a7_lv80 중 하나라도 데이터가 있는지 확인
+    // a0_lv80 ~ a7_lv80 ??나?도 ?이?? ?는지 ?인
     function hasAnyLv80(statObj) {
       if (!statObj) return false;
       for (let i = 0; i <= 7; i++) {
@@ -183,7 +330,7 @@
       return false;
     }
   
-    // a0_lv100 ~ a7_lv100 중 하나라도 데이터가 있는지 확인
+    // a0_lv100 ~ a7_lv100 ??나?도 ?이?? ?는지 ?인
     function hasAnyLv100(statObj) {
       if (!statObj) return false;
       for (let i = 0; i <= 7; i++) {
@@ -194,32 +341,32 @@
       return false;
     }
 
-    // LV80 기초 스탯 DOM 빌드 및 렌더 (두 컬럼 영역 밖, 전체 폭 사용)
+    // LV80 기초 ?탯 DOM 빌드 ??더 (??컬럼 ?역 ? ?체 ???용)
     function renderLv80BaseStats(statObj, lang) {
       try {
-        if (!hasAnyLv80(statObj)) return; // 전체 비표시
+        if (!hasAnyLv80(statObj)) return; // ?체 비표??
 
-        // 두 컬럼 래퍼(.stats-settings) 바로 아래(형제)로 삽입하여 전체 폭 사용
+        // ??컬럼 ?퍼(.stats-settings) 바로 ?래(?제)??입?여 ?체 ???용
         const settingsWrap = document.querySelector('.stats-card .stats-settings');
         const cardRoot = document.querySelector('.stats-card');
         if (!settingsWrap || !cardRoot) return;
 
-        // 컨테이너 생성
+        // 컨테?너 ?성
         const wrap = document.createElement('div');
         wrap.className = 'lv80-stats-card setting-section';
         wrap.style.marginTop = '16px';
 
         const title = document.createElement('h3');
         title.className = 'lv80-title';
-        title.textContent = localizeLv80Title(lang);
+        title.textContent = localizeLv80Title();
         wrap.appendChild(title);
 
-        const grid = document.createElement('div'); // 테이블 컨테이너
+        const grid = document.createElement('div'); // ?이?컨테?너
         grid.className = 'lv80-grid';
         grid.style.fontSize = '14px';
         wrap.appendChild(grid);
 
-        // 항목 생성: a0~a7 순회, 존재하는 것만 추가
+        // ?? ?성: a0~a7 ?회, 존재?는 것만 추?
         const items = [];
         for (let i = 0; i <= 7; i++) {
           const key = `a${i}_lv80`;
@@ -230,41 +377,40 @@
         }
         if (items.length === 0) return;
 
-        // 공통 라벨
-        const L_HP  = (lang === 'en' ? 'HP'  : (lang === 'jp' ? 'HP' : '생명'));
-        const L_ATK = (lang === 'en' ? 'ATK' : (lang === 'jp' ? '攻撃力' : '공격력'));
-        const L_DEF = (lang === 'en' ? 'DEF' : (lang === 'jp' ? '防御力' : '방어력'));
+        // 공통 ?벨
+        const labels = statsLabelSet();
+        const L_HP = labels.hp;
+        const L_ATK = labels.atk;
+        const L_DEF = labels.def;
 
-        // 수치 포맷: 소수 첫째자리까지 표시, 둘째자리에서 반올림
+        // ?치 ?맷: ?수 첫째?리까? ?시, ?째?리?서 반올?
         function fmt1(v) {
           if (v === undefined || v === null || isNaN(v)) return '';
           const n = Math.round(Number(v) * 10) / 10;
           return n.toFixed(1);
         }
 
-        // 수치 포맷: 정수 표시, 소숫점 첫째자리에서 반올림
+        // ?치 ?맷: ?수 ?시, ?숫??첫째?리?서 반올?
         function fmt0(v) {
           if (v === undefined || v === null || isNaN(v)) return '';
           const n = Math.round(Number(v));
           return n.toFixed(0);
         }
 
-        // 헤더 라벨 지역화: KR: 의식0~6, JP: 意識0~6, 그 외: A0~6
-        function lv80HeaderLabel(idx, lang) {
-          if (lang === 'kr') return `의식${idx}`;
-          if (lang === 'jp') return `意識${idx}`;
-          return `A${idx}`;
+        // ?더 ?벨 지??: KR: ?식0~6, JP: ?識0~6, ??? A0~6
+        function lv80HeaderLabel(idx, currentLang) {
+          return awarenessLabel(idx, currentLang);
         }
 
-        // 표 생성 함수들 (값 텍스트에 인라인 스타일 미적용)
+        // ???성 ?수??(??스?에 ?라??????미적??
         function renderWide() {
           grid.innerHTML = '';
-          const cols = items.length + 1; // 첫 컬럼은 라벨
+          const cols = items.length + 1; // ?컬럼? ?벨
           grid.style.display = 'grid';
           grid.style.gridTemplateColumns = `repeat(${cols}, minmax(0, 1fr))`;
           grid.style.gap = '6px';
 
-          // 헤더 행: [blank, A0/A1... (지역화)]
+          // ?더 ?? [blank, A0/A1... (지??)]
           const headBlank = document.createElement('div');
           headBlank.className = 'lv80-cell label';
           grid.appendChild(headBlank);
@@ -275,7 +421,7 @@
             grid.appendChild(h);
           });
 
-          // HP 행
+          // HP ??
           const hpLabel = document.createElement('div');
           hpLabel.className = 'lv80-cell label';
           hpLabel.textContent = L_HP;
@@ -287,7 +433,7 @@
             grid.appendChild(c);
           });
 
-          // ATK 행
+          // ATK ??
           const atkLabel = document.createElement('div');
           atkLabel.className = 'lv80-cell label';
           atkLabel.textContent = L_ATK;
@@ -299,7 +445,7 @@
             grid.appendChild(c);
           });
 
-          // DEF 행
+          // DEF ??
           const defLabel = document.createElement('div');
           defLabel.className = 'lv80-cell label';
           defLabel.textContent = L_DEF;
@@ -319,13 +465,13 @@
           grid.style.gridTemplateColumns = `repeat(${cols}, minmax(0, 1fr))`;
           grid.style.gap = '6px';
 
-          // 헤더 행: ['', 생명, 공격력, 방어력]
+          // ?더 ?? ['', ?명, 공격?? 방어??
           const blank = document.createElement('div'); blank.className = 'lv80-cell label'; grid.appendChild(blank);
           const h1 = document.createElement('div'); h1.className = 'lv80-cell label'; h1.textContent = L_HP; grid.appendChild(h1);
           const h2 = document.createElement('div'); h2.className = 'lv80-cell label'; h2.textContent = L_ATK; grid.appendChild(h2);
           const h3 = document.createElement('div'); h3.className = 'lv80-cell label'; h3.textContent = L_DEF; grid.appendChild(h3);
 
-          // 데이터 행들: [A#/의식#, hp, atk, def]
+          // ?이???들: [A#/?식#, hp, atk, def]
           items.forEach(({ idx, data }) => {
             const r0 = document.createElement('div'); r0.className = 'lv80-cell label'; r0.textContent = lv80HeaderLabel(idx, lang); grid.appendChild(r0);
             const r1 = document.createElement('div'); r1.className = 'lv80-cell value'; r1.textContent = fmt0(data.HP); grid.appendChild(r1);
@@ -339,7 +485,7 @@
           if (wide) renderWide(); else renderNarrow();
         }
 
-        // 삽입 및 적용
+        // ?입 ??용
         if (settingsWrap.nextSibling) {
           cardRoot.insertBefore(wrap, settingsWrap.nextSibling);
         } else {
@@ -352,10 +498,10 @@
       }
     }
 
-    // 외부(예: cha_detail.js)에서 호출할 수 있는 LV100 스탯 카드 렌더러
+    // ??(?? cha_detail.js)?서 ?출?????는 LV100 ?탯 카드 ?더??
     window.renderLv100BaseStatsFromBasicStats = async function () {
       try {
-        // 이미 카드가 있다면 중복 생성 방지
+        // ?? 카드가 ?다?중복 ?성 방?
         const existing = document.querySelector('.lv100-stats-card');
         if (existing) return;
 
@@ -379,10 +525,7 @@
 
         const title = document.createElement('h3');
         title.className = 'lv80-title';
-        title.textContent =
-          lang === 'en'
-            ? 'Base Stats (LV 100)'
-            : (lang === 'jp' ? '基礎ステータス (LV 100)' : '기초 스탯 (LV 100)');
+        title.textContent = t('characterStatsLv100Title', '기초 스탯 (LV 100)');
         wrap.appendChild(title);
 
         const grid = document.createElement('div');
@@ -400,9 +543,10 @@
         }
         if (items.length === 0) return;
 
-        const L_HP  = (lang === 'en' ? 'HP'  : (lang === 'jp' ? 'HP' : '생명'));
-        const L_ATK = (lang === 'en' ? 'ATK' : (lang === 'jp' ? '攻撃力' : '공격력'));
-        const L_DEF = (lang === 'en' ? 'DEF' : (lang === 'jp' ? '防御力' : '방어력'));
+        const labels = statsLabelSet();
+        const L_HP = labels.hp;
+        const L_ATK = labels.atk;
+        const L_DEF = labels.def;
 
         function fmt1(v) {
           if (v === undefined || v === null || isNaN(v)) return '';
@@ -415,10 +559,8 @@
           return n.toFixed(0);
         }
 
-        function headerLabel(idx, lang) {
-          if (lang === 'kr') return `의식${idx}`;
-          if (lang === 'jp') return `意識${idx}`;
-          return `A${idx}`;
+        function headerLabel(idx, currentLang) {
+          return awarenessLabel(idx, currentLang);
         }
 
         function renderWide() {
@@ -510,59 +652,66 @@
     };
 
     async function init() {
-      // DOM 준비
+      // DOM 준?
       if (!document.querySelector('.stats-card')) return;
 
       const lang = getLang();
       const urlName = getCharacterNameFromURL();
       const krKey = toKoreanKey(urlName, lang);
 
-      // 스탯 카드 제목 로컬라이즈
-      localizeStatsHeadings(lang);
+      // ?탯 카드 ?목 로컬?이?
+      localizeStatsCardTexts();
+      registerI18nLanguageHook();
+      waitAndRelocalizeStatsCard();
 
-      // 데이터 로드
+      // ?이??로드
       const ok = await ensureBasicStatsLoaded();
       if (!ok || !window.basicStatsData) return;
   
       const statObj = window.basicStatsData[krKey];
       if (!statObj) return;
   
-      // 좌측: 초기 스탯 (a0_lv1)
+      // 좌측: 초기 ?탯 (a0_lv1)
       const lv1 = statObj.a0_lv1 || {};
-      // HP, ATK(attack), DEF(defense), Speed(speed) 소수점 버림 처리
+      // HP, ATK(attack), DEF(defense), Speed(speed) ?수??버림 처리
       setValueRow('.stats-main .stats-grid', 1, Math.floor(lv1.HP) ?? '');
       setValueRow('.stats-main .stats-grid', 2, Math.floor(lv1.attack) ?? '');
       setValueRow('.stats-main .stats-grid', 3, Math.floor(lv1.defense) ?? '');
-      // Speed는 상수(그대로 숫자)
+      // Speed???수(그???자)
       setValueRow('.stats-main .stats-grid', 4, lv1.speed ?? '');
-      // 두개는 뒤에 % 붙이기
+      // ?개???에 % 붙이?
       //setValueRow('.stats-main .stats-grid', 5, lv1.crit_rate+'%' ?? '');
       //setValueRow('.stats-main .stats-grid', 6, lv1.crit_mult+'%' ?? '');
   
-      // 레벨 80 기초 스탯 (a0_lv80 ~ a7_lv80)
+      // ?벨 80 기초 ?탯 (a0_lv80 ~ a7_lv80)
       renderLv80BaseStats(statObj, lang);
 
-      // 우측: 잠재력 
+      // ?측: ?재??
       const a7 = statObj.awake7 || {};
       const entries = Object.entries(a7);
-      // 타이틀 지역화
-      setText('.stats-awake .awake-title', localizeAwakeTitle(lang));
+      // ??? 지??
+      setText('.stats-awake .awake-title', localizeAwakeTitle());
   
       if (entries.length > 0) {
         const [k, v] = entries[0];
-        const label = translateAwakeLabel(k, lang);
-        // 소숫점 첫째자리까지는 남기고, 둘째자리는 버림
+        const label = translateAwakeLabel(k);
+        const awakeLabel = document.querySelector('.stats-awake .label');
+        if (awakeLabel && awakeLabel.dataset) awakeLabel.dataset.awakeKey = k;
         const value = (v === undefined || v === null) ? '' : (isPercentKey(k) ? `${Math.floor(v*10)/10}%` : `${Math.floor(v*10)/10}`);
         setText('.stats-awake .label', label);
         setText('.stats-awake .value', value);
       } else {
-        // 데이터가 없으면 빈 값 처리
+        const awakeLabel = document.querySelector('.stats-awake .label');
+        if (awakeLabel && awakeLabel.dataset && awakeLabel.dataset.awakeKey) delete awakeLabel.dataset.awakeKey;
         setText('.stats-awake .label', '');
         setText('.stats-awake .value', '');
       }
+
+      // Re-apply localized labels after LV80/LV100 cards are rendered.
+      localizeStatsCardTexts();
     }
   
-    // 실행
+    // ?행
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', () => safe(init));
     } else {

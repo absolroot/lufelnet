@@ -1,6 +1,7 @@
 ---
 layout: default
 custom_css: [position-tiers]
+custom_js: [character/spoiler-state]
 custom_data: [/data/character_info.js]
 permalink: /tier/position-tier/
 language: kr
@@ -753,21 +754,33 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
         label.textContent = getTierText('showSpoilers', '스포일러 보기');
 
         // 기본 상태: 체크 해제 (현재 페이지 세션에서만 유지)
-        checkbox.checked = false;
-
-        // 토글 표시
         container.style.display = 'flex';
-
-        // 변경 시 현재 세션에서만 스포일러 상태 반영 (페이지 리로드 없음)
-        checkbox.addEventListener('change', function () {
-            const useKR = this.checked;
-            // 전역 플래그 (필요 시 다른 스크립트에서도 참고 가능)
-            try { window.positionTierSpoiler = useKR; } catch (_) { }
-            // 카드 풀만 다시 로드 (티어 행은 유지)
+        const applySpoiler = (useKR) => {
             if (typeof window.reloadPositionTierCharacterPool === 'function') {
                 window.reloadPositionTierCharacterPool(useKR);
             }
-        });
+        };
+
+        if (window.SpoilerState && typeof window.SpoilerState.bindCheckbox === 'function') {
+            window.SpoilerState.bindCheckbox({
+                checkbox,
+                container,
+                displayStyle: 'flex',
+                lang: currentLang,
+                source: 'position-tier-maker',
+                onChange: (enabled) => {
+                    applySpoiler(enabled);
+                }
+            });
+            if (typeof window.SpoilerState.get === 'function' && window.SpoilerState.get()) {
+                applySpoiler(true);
+            }
+        } else {
+            checkbox.checked = false;
+            checkbox.addEventListener('change', function () {
+                applySpoiler(this.checked);
+            });
+        }
     }
 
     async function initializePageContent() {

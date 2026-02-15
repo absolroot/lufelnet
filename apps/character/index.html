@@ -1,6 +1,7 @@
 ---
 layout: default
 custom_css: [character]
+custom_js: [character/spoiler-state]
 permalink: /character/
 redirect_from:
 - /kr/character/
@@ -470,7 +471,16 @@ redirect_from:
 
     // 스포일러 토글 상태 확인 함수
     function isSpoilerEnabled() {
-        return localStorage.getItem('spoilerToggle') === 'true';
+        try {
+            if (window.SpoilerState && typeof window.SpoilerState.get === 'function') {
+                return !!window.SpoilerState.get();
+            }
+        } catch (_) { }
+        try {
+            return localStorage.getItem('spoilerToggle') === 'true';
+        } catch (_) {
+            return false;
+        }
     }
 
     // 언어별 캐릭터 데이터 로딩 및 병합
@@ -482,10 +492,14 @@ redirect_from:
         let originalLangCharacterList = null;
 
         try {
-            // 1) KR 스크립트 로드 후 전역에서 추출
-            await loadScriptOnce(`/data/character_info.js?v=${APP_VERSION}`);
-            const krCharacterData = JSON.parse(JSON.stringify(window.characterData || {}));
-            const krCharacterList = JSON.parse(JSON.stringify(window.characterList || {}));
+            // 1) KR 원본 데이터는 매번 샌드박스 fetch로 고정 로드
+            // (window 전역 재사용 시 토글 전환에 따라 기준 목록이 섞이는 문제 방지)
+            const kr = await fetchCharactersData(`/data/character_info.js?v=${APP_VERSION}`);
+            if (!kr) {
+                throw new Error('Failed to load KR character data');
+            }
+            const krCharacterData = kr.characterData || {};
+            const krCharacterList = kr.characterList || { mainParty: [], supportParty: [] };
 
             // 2) 언어 데이터 로드 및 병합(샌드박스 평가로 전역 오염 방지)
             if (currentLang !== 'kr') {
@@ -652,10 +666,12 @@ redirect_from:
     // 중복 실행 방지를 위한 플래그
     let isInitializing = false;
     let isInitialized = false;
+    let isApplyingSpoiler = false;
 
-    async function initializePageContent() {
+    async function initializePageContent(options = {}) {
+        const force = !!(options && options.force);
         // 중복 실행 방지
-        if (isInitializing || isInitialized) {
+        if (isInitializing || (isInitialized && !force)) {
             // console.log('initializePageContent already running or completed');
             return;
         }
@@ -710,7 +726,7 @@ redirect_from:
 
         // 초기 검색 결과 수 표시
         const countText = window.i18nFilteredCount ?? '전체';
-        const countUnit = window.i18nCountUnit ?? '명';
+        const countUnit = window.i18nCountUnit ?? '';
         searchCount.textContent = `${countText} ${sortedCharacters.length}${countUnit}`;
 
 
@@ -831,7 +847,13 @@ redirect_from:
         });
 
         // 필터 및 검색 기능 초기화
-        if (window.initCharacterSearch) {
+        if (window.CharacterSearch && typeof window.CharacterSearch.setSearchDataset === 'function') {
+            if (!isInitialized && typeof window.CharacterSearch.initOnce === 'function') {
+                window.CharacterSearch.initOnce(sortedCharacters);
+            } else {
+                window.CharacterSearch.setSearchDataset(sortedCharacters);
+            }
+        } else if (window.initCharacterSearch) {
             window.initCharacterSearch(sortedCharacters);
         } else {
             console.error('Character search script not loaded');
@@ -911,26 +933,47 @@ redirect_from:
         }
     }
 
+    function refreshForSpoilerChange() {
+        if (isApplyingSpoiler) return;
+        isApplyingSpoiler = true;
+        return initializePageContent({ force: true }).finally(() => {
+            isApplyingSpoiler = false;
+        });
+    }
+
     function initializeSpoilerToggle() {
         const spoilerToggle = document.getElementById('spoilerToggle');
         const spoilerToggleText = document.getElementById('spoilerToggleText');
 
         if (!spoilerToggle || !spoilerToggleText) return;
 
-        const savedState = localStorage.getItem('spoilerToggle') === 'true';
-        spoilerToggle.checked = savedState;
-
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
         spoilerToggleText.textContent = getI18nText('showSpoilers', 'Show Spoilers');
+
+        const spoilerContainer = document.querySelector('.spoiler-toggle-container');
+        if (window.SpoilerState && typeof window.SpoilerState.bindCheckbox === 'function') {
+            window.SpoilerState.bindCheckbox({
+                checkbox: spoilerToggle,
+                container: spoilerContainer,
+                displayStyle: 'block',
+                lang: currentLang,
+                source: 'character-index',
+                onChange: () => {
+                    refreshForSpoilerChange();
+                }
+            });
+            return;
+        }
+
+        const savedState = localStorage.getItem('spoilerToggle') === 'true';
+        spoilerToggle.checked = savedState;
 
         spoilerToggle.addEventListener('change', function () {
             const isEnabled = this.checked;
             localStorage.setItem('spoilerToggle', isEnabled.toString());
-            console.log('Spoiler toggle changed:', isEnabled);
-            window.location.reload();
+            refreshForSpoilerChange();
         });
 
-        const spoilerContainer = document.querySelector('.spoiler-toggle-container');
         if (spoilerContainer) {
             spoilerContainer.style.display = currentLang === 'kr' ? 'none' : 'block';
         }

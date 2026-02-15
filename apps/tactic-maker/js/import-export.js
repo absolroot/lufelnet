@@ -220,7 +220,10 @@ export class ImportExport {
             this.applyImportedData(data);
         } catch (error) {
             console.error('[ImportExport] Import failed:', error);
-            alert('Invalid file format. Please select a valid tactic JSON file.');
+            const message = (window.I18nService && window.I18nService.t)
+                ? window.I18nService.t('invalidTacticFileFormat', '올바른 전술 JSON 파일을 선택해주세요.')
+                : '올바른 전술 JSON 파일을 선택해주세요.';
+            alert(message);
         }
     }
 

@@ -43,10 +43,23 @@ class DefenseCalc {
         try {
             const sp = document.getElementById('showSpoilerToggle');
             if (sp) {
-                sp.addEventListener('change', async () => {
-                    await this.renderAccordion(this.tableBody, false);
-                    await this.renderAccordion(this.penetrateTableBody, true);
-                });
+                if (window.SpoilerState && typeof window.SpoilerState.bindCheckbox === 'function') {
+                    window.SpoilerState.bindCheckbox({
+                        checkbox: sp,
+                        container: document.getElementById('spoilerToggleWrap'),
+                        lang: this.getCurrentLang(),
+                        source: 'defense-calc',
+                        onChange: async () => {
+                            await this.renderAccordion(this.tableBody, false);
+                            await this.renderAccordion(this.penetrateTableBody, true);
+                        }
+                    });
+                } else {
+                    sp.addEventListener('change', async () => {
+                        await this.renderAccordion(this.tableBody, false);
+                        await this.renderAccordion(this.penetrateTableBody, true);
+                    });
+                }
             }
         } catch (_) { }
 
@@ -415,7 +428,9 @@ class DefenseCalc {
         const groupsObj = isPenetrate ? this.penetrateGroups : this.reduceGroups;
 
         // 스포일러 토글에 따른 표시 캐릭터 목록 계산
-        const showSpoiler = !!(document.getElementById('showSpoilerToggle') && document.getElementById('showSpoilerToggle').checked);
+        const showSpoiler = (window.SpoilerState && typeof window.SpoilerState.get === 'function')
+            ? !!window.SpoilerState.get()
+            : !!(document.getElementById('showSpoilerToggle') && document.getElementById('showSpoilerToggle').checked);
         let visibleNames = [];
         try {
             if (typeof CharacterListLoader !== 'undefined') {

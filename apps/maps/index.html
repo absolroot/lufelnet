@@ -75,15 +75,15 @@ jp: /maps/?lang=jp
                 <div class="options-container">
                     <div class="option" data-value="kr" role="button" tabindex="0">
                         <img src="" alt="kr" class="flag-icon">
-                        <span>한국어</span>
+                        <span data-lang-label="kr"></span>
                     </div>
                     <div class="option" data-value="en" role="button" tabindex="0">
                         <img src="" alt="en" class="flag-icon">
-                        <span>English</span>
+                        <span data-lang-label="en"></span>
                     </div>
                     <div class="option" data-value="jp" role="button" tabindex="0">
                         <img src="" alt="jp" class="flag-icon">
-                        <span>日本語</span>
+                        <span data-lang-label="jp"></span>
                     </div>
                 </div>
             </div>
@@ -109,11 +109,11 @@ jp: /maps/?lang=jp
 
     <!-- 모바일용 하단 플로팅 버튼 -->
     <div id="mobile-floating-buttons" class="mobile-floating-buttons">
-        <button id="mobile-filter-btn" class="mobile-fab" aria-label="오브젝트 필터">
+        <button id="mobile-filter-btn" class="mobile-fab" aria-label="오브젝트 필터" data-i18n-aria-key="objectFilter">
             <img src="{{ site.baseurl }}/apps/maps/fenbaoxiazai-icon-tongyong-new.png" alt="필터" class="mobile-fab-icon">
             <span>필터</span>
         </button>
-        <button id="mobile-map-btn" class="mobile-fab" aria-label="맵 선택">
+        <button id="mobile-map-btn" class="mobile-fab" aria-label="맵 선택" data-i18n-aria-key="mapSelect">
             <img src="{{ site.baseurl }}/apps/maps/fenbaoxiazai-icon-ditu-new.png" alt="맵" class="mobile-fab-icon">
             <span>맵</span>
         </button>
@@ -246,7 +246,18 @@ jp: /maps/?lang=jp
                 console.error('맵 목록 로드 실패:', error);
                 const loadingText = document.getElementById('loading-text');
                 if (loadingText) {
-                    loadingText.textContent = '맵 목록을 불러올 수 없습니다.';
+                    const lang = window.MapsI18n ? window.MapsI18n.getCurrentLanguage() : 'kr';
+                    const fallbackPack = (window.MapsI18n && window.MapsI18n.getPack)
+                        ? window.MapsI18n.getPack('kr')
+                        : {};
+                    let message = fallbackPack.mapListLoadError || '맵 목록을 불러올 수 없습니다.';
+                    if (window.MapsI18n && window.MapsI18n.getText) {
+                        const translated = window.MapsI18n.getText(lang, 'mapListLoadError');
+                        if (translated && translated !== 'mapListLoadError') {
+                            message = translated;
+                        }
+                    }
+                    loadingText.textContent = message;
                 }
             }
         }

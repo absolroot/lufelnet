@@ -207,6 +207,9 @@ const dom = {
   revAdminEmpty: document.getElementById('rev-admin-empty'),
   revAdminDetail: document.getElementById('rev-admin-detail'),
   revAdminDirtyState: document.getElementById('rev-admin-dirty-state'),
+  revAdminCardIcon: document.getElementById('rev-admin-card-icon'),
+  revAdminCardTitle: document.getElementById('rev-admin-card-title'),
+  revAdminCardSubtitle: document.getElementById('rev-admin-card-subtitle'),
   revAdminCardId: document.getElementById('rev-admin-card-id'),
   revAdminCardKind: document.getElementById('rev-admin-card-kind'),
   revAdminNameKr: document.getElementById('rev-admin-name-kr'),
@@ -2725,6 +2728,19 @@ function revelationNameById(id, lang = 'kr') {
   return String(card.names?.[lang] || card.names?.kr || id || '');
 }
 
+function revelationSummaryCardById(id) {
+  const rev = revelationAdminState();
+  return (Array.isArray(rev.cards) ? rev.cards : [])
+    .find((card) => String(card.id || '') === String(id || '')) || null;
+}
+
+function revelationIconMarkup(iconUrl, altText, className = 'revelation-admin-thumb') {
+  if (String(iconUrl || '').trim()) {
+    return `<img class="${className}" src="${escapeHtml(iconUrl)}" alt="${escapeHtml(altText || '')}">`;
+  }
+  return `<div class="${className} revelation-admin-thumb-fallback">N/A</div>`;
+}
+
 function revelationParseCardId(id) {
   const text = String(id || '').trim();
   const idx = text.indexOf(':');
@@ -2750,6 +2766,11 @@ function updateRevelationAdminDirtyState() {
   rev.dirty = Boolean(rev.draft) && before !== after;
   if (dom.revAdminDirtyState) {
     dom.revAdminDirtyState.textContent = rev.dirty ? 'dirty (save required)' : 'saved';
+    dom.revAdminDirtyState.classList.toggle('is-dirty', rev.dirty);
+    dom.revAdminDirtyState.classList.toggle('is-clean', !rev.dirty);
+  }
+  if (dom.revAdminDetail) {
+    dom.revAdminDetail.classList.toggle('is-dirty', rev.dirty);
   }
 }
 
@@ -2861,6 +2882,7 @@ function renderRevelationAdminCardList() {
     const icon = card.icon
       ? `<img class="char-icon" src="${escapeHtml(card.icon)}" alt="">`
       : '<div class="char-icon-fallback">N/A</div>';
+    const label = card.names?.kr || card.id;
     const badges = [
       `<span class="revelation-admin-badge ${escapeHtml(card.kind)}">${escapeHtml(card.kind)}</span>`,
       card.unreleased ? '<span class="revelation-admin-badge unreleased">unreleased</span>' : '',
@@ -2870,7 +2892,13 @@ function renderRevelationAdminCardList() {
       `<span class="revelation-admin-badge">links:${Number(card.relationCount || 0)}</span>`
     ].filter(Boolean).join('');
     return `
-      <div class="revelation-admin-card-item ${active}" data-card-id="${escapeHtml(card.id)}">
+      <div
+        class="revelation-admin-card-item ${active}"
+        data-card-id="${escapeHtml(card.id)}"
+        role="button"
+        tabindex="0"
+        aria-label="${escapeHtml(`Open card ${label}`)}"
+      >
         ${icon}
         <div class="revelation-admin-card-main">
           <strong>${escapeHtml(card.names?.kr || card.id)}</strong>
@@ -2882,6 +2910,20 @@ function renderRevelationAdminCardList() {
   }).join('');
 }
 
+function renderRevelationAdminLangLine({ label, lang, text, className, subId }) {
+  return `
+    <label class="revelation-admin-lang-line">
+      <span class="revelation-admin-lang-tag">${escapeHtml(label)}</span>
+      <textarea
+        class="${escapeHtml(className)}"
+        data-sub-id="${escapeHtml(subId)}"
+        data-lang="${escapeHtml(lang)}"
+        rows="2"
+      >${escapeHtml(text || '')}</textarea>
+    </label>
+  `;
+}
+
 function renderRevelationAdminMainFields(draft) {
   if (!dom.revAdminMainSubOptions || !dom.revAdminMainEffects) return;
   const rev = revelationAdminState();
@@ -2890,22 +2932,43 @@ function renderRevelationAdminMainFields(draft) {
 
   dom.revAdminMainSubOptions.innerHTML = options.map((item) => {
     const checked = selected.has(item.id) ? 'checked' : '';
-    const label = `${item.names?.kr || item.id} | ${item.names?.en || '-'} | ${item.names?.jp || '-'} | ${item.names?.cn || '-'}`;
-    return `<label class="revelation-admin-sub-option"><input class="rev-admin-main-sub-check" type="checkbox" data-sub-id="${escapeHtml(item.id)}" ${checked}> <span>${escapeHtml(label)}</span></label>`;
+    const icon = revelationSummaryCardById(item.id)?.icon || '';
+    const primary = item.names?.kr || item.id;
+    const secondary = `${item.names?.en || '-'} / ${item.names?.jp || '-'} / ${item.names?.cn || '-'}`;
+    return `
+      <label class="revelation-admin-sub-option">
+        <input class="rev-admin-main-sub-check" type="checkbox" data-sub-id="${escapeHtml(item.id)}" ${checked}>
+        <span class="revelation-admin-sub-option-icon-wrap">${revelationIconMarkup(icon, primary)}</span>
+        <span class="revelation-admin-sub-option-copy">
+          <strong>${escapeHtml(primary)}</strong>
+          <small>${escapeHtml(secondary)}</small>
+        </span>
+      </label>
+    `;
   }).join('');
 
   const selectedIds = Array.isArray(draft.relations?.subIds) ? draft.relations.subIds : [];
   const rows = selectedIds.map((subId) => {
     const effect = ensureMainEffectEntry(draft, subId);
-    const title = revelationNameById(subId, 'kr');
+    const card = revelationAdminOptionById(subId);
+    const summary = revelationSummaryCardById(subId);
+    const title = card?.names?.kr || revelationNameById(subId, 'kr');
+    const subtitle = `${card?.names?.en || '-'} / ${card?.names?.jp || '-'} / ${card?.names?.cn || '-'}`;
+    const icon = summary?.icon || '';
     return `
       <div class="revelation-admin-main-effect-row">
-        <h4>${escapeHtml(title)}</h4>
-        <div class="revelation-admin-main-effect-grid">
-          <div class="field"><label>KR</label><textarea class="rev-admin-main-effect-text" data-sub-id="${escapeHtml(subId)}" data-lang="kr" rows="2">${escapeHtml(effect.kr || '')}</textarea></div>
-          <div class="field"><label>EN</label><textarea class="rev-admin-main-effect-text" data-sub-id="${escapeHtml(subId)}" data-lang="en" rows="2">${escapeHtml(effect.en || '')}</textarea></div>
-          <div class="field"><label>JP</label><textarea class="rev-admin-main-effect-text" data-sub-id="${escapeHtml(subId)}" data-lang="jp" rows="2">${escapeHtml(effect.jp || '')}</textarea></div>
-          <div class="field"><label>CN</label><textarea class="rev-admin-main-effect-text" data-sub-id="${escapeHtml(subId)}" data-lang="cn" rows="2">${escapeHtml(effect.cn || '')}</textarea></div>
+        <div class="revelation-admin-main-effect-head">
+          <span class="revelation-admin-main-effect-icon-wrap">${revelationIconMarkup(icon, title)}</span>
+          <div class="revelation-admin-main-effect-copy">
+            <h4>${escapeHtml(title)}</h4>
+            <p class="muted small">${escapeHtml(subtitle)}</p>
+          </div>
+        </div>
+        <div class="revelation-admin-main-effect-lines">
+          ${renderRevelationAdminLangLine({ label: 'KR', lang: 'kr', text: effect.kr, className: 'rev-admin-main-effect-text', subId })}
+          ${renderRevelationAdminLangLine({ label: 'EN', lang: 'en', text: effect.en, className: 'rev-admin-main-effect-text', subId })}
+          ${renderRevelationAdminLangLine({ label: 'JP', lang: 'jp', text: effect.jp, className: 'rev-admin-main-effect-text', subId })}
+          ${renderRevelationAdminLangLine({ label: 'CN', lang: 'cn', text: effect.cn, className: 'rev-admin-main-effect-text', subId })}
         </div>
       </div>
     `;
@@ -2941,6 +3004,9 @@ function renderRevelationAdminDetail() {
   if (!draft) {
     dom.revAdminEmpty.classList.remove('hidden');
     dom.revAdminDetail.classList.add('hidden');
+    if (dom.revAdminCardIcon) dom.revAdminCardIcon.textContent = 'N/A';
+    if (dom.revAdminCardTitle) dom.revAdminCardTitle.textContent = '-';
+    if (dom.revAdminCardSubtitle) dom.revAdminCardSubtitle.textContent = '-';
     renderRevelationAdminCardList();
     return;
   }
@@ -2951,6 +3017,15 @@ function renderRevelationAdminDetail() {
 
   if (dom.revAdminCardId) dom.revAdminCardId.textContent = String(draft.id || '-');
   if (dom.revAdminCardKind) dom.revAdminCardKind.textContent = String(draft.kind || '-');
+  if (dom.revAdminCardTitle) dom.revAdminCardTitle.textContent = String(draft.names?.kr || draft.id || '-');
+  if (dom.revAdminCardSubtitle) {
+    dom.revAdminCardSubtitle.textContent = `${String(draft.names?.en || '-')} / ${String(draft.names?.jp || '-')} / ${String(draft.names?.cn || '-')}`;
+  }
+  if (dom.revAdminCardIcon) {
+    const summary = revelationSummaryCardById(draft.id);
+    const icon = summary?.icon || rev.detail?.icon || rev.draft?.icon || '';
+    dom.revAdminCardIcon.innerHTML = revelationIconMarkup(icon, draft.names?.kr || draft.id, 'revelation-admin-hero-thumb');
+  }
   if (dom.revAdminNameKr) dom.revAdminNameKr.value = String(draft.names?.kr || '');
   if (dom.revAdminNameEn) dom.revAdminNameEn.value = String(draft.names?.en || '');
   if (dom.revAdminNameJp) dom.revAdminNameJp.value = String(draft.names?.jp || '');
@@ -2981,8 +3056,19 @@ function renderRevelationAdminCreateMainFields() {
 
   dom.revAdminCreateMainSubOptions.innerHTML = options.map((item) => {
     const checked = oldChecked.has(item.id) ? 'checked' : '';
-    const label = `${item.names?.kr || item.id} | ${item.names?.en || '-'} | ${item.names?.jp || '-'} | ${item.names?.cn || '-'}`;
-    return `<label class="revelation-admin-sub-option"><input class="rev-admin-create-main-sub-check" type="checkbox" data-sub-id="${escapeHtml(item.id)}" ${checked}> <span>${escapeHtml(label)}</span></label>`;
+    const icon = revelationSummaryCardById(item.id)?.icon || '';
+    const primary = item.names?.kr || item.id;
+    const secondary = `${item.names?.en || '-'} / ${item.names?.jp || '-'} / ${item.names?.cn || '-'}`;
+    return `
+      <label class="revelation-admin-sub-option">
+        <input class="rev-admin-create-main-sub-check" type="checkbox" data-sub-id="${escapeHtml(item.id)}" ${checked}>
+        <span class="revelation-admin-sub-option-icon-wrap">${revelationIconMarkup(icon, primary)}</span>
+        <span class="revelation-admin-sub-option-copy">
+          <strong>${escapeHtml(primary)}</strong>
+          <small>${escapeHtml(secondary)}</small>
+        </span>
+      </label>
+    `;
   }).join('');
 
   const prevValue = {};
@@ -2997,17 +3083,30 @@ function renderRevelationAdminCreateMainFields() {
     .map((input) => String(input.dataset.subId || ''))
     .filter(Boolean);
 
-  const rows = selectedIds.map((subId) => `
+  const rows = selectedIds.map((subId) => {
+    const card = revelationAdminOptionById(subId);
+    const summary = revelationSummaryCardById(subId);
+    const title = card?.names?.kr || revelationNameById(subId, 'kr');
+    const subtitle = `${card?.names?.en || '-'} / ${card?.names?.jp || '-'} / ${card?.names?.cn || '-'}`;
+    const icon = summary?.icon || '';
+    return `
       <div class="revelation-admin-main-effect-row">
-        <h4>${escapeHtml(revelationNameById(subId, 'kr'))}</h4>
-        <div class="revelation-admin-main-effect-grid">
-          <div class="field"><label>KR</label><textarea class="rev-admin-create-main-effect-text" data-sub-id="${escapeHtml(subId)}" data-lang="kr" rows="2">${escapeHtml(prevValue[`${subId}:kr`] || '')}</textarea></div>
-          <div class="field"><label>EN</label><textarea class="rev-admin-create-main-effect-text" data-sub-id="${escapeHtml(subId)}" data-lang="en" rows="2">${escapeHtml(prevValue[`${subId}:en`] || '')}</textarea></div>
-          <div class="field"><label>JP</label><textarea class="rev-admin-create-main-effect-text" data-sub-id="${escapeHtml(subId)}" data-lang="jp" rows="2">${escapeHtml(prevValue[`${subId}:jp`] || '')}</textarea></div>
-          <div class="field"><label>CN</label><textarea class="rev-admin-create-main-effect-text" data-sub-id="${escapeHtml(subId)}" data-lang="cn" rows="2">${escapeHtml(prevValue[`${subId}:cn`] || '')}</textarea></div>
+        <div class="revelation-admin-main-effect-head">
+          <span class="revelation-admin-main-effect-icon-wrap">${revelationIconMarkup(icon, title)}</span>
+          <div class="revelation-admin-main-effect-copy">
+            <h4>${escapeHtml(title)}</h4>
+            <p class="muted small">${escapeHtml(subtitle)}</p>
+          </div>
+        </div>
+        <div class="revelation-admin-main-effect-lines">
+          ${renderRevelationAdminLangLine({ label: 'KR', lang: 'kr', text: prevValue[`${subId}:kr`] || '', className: 'rev-admin-create-main-effect-text', subId })}
+          ${renderRevelationAdminLangLine({ label: 'EN', lang: 'en', text: prevValue[`${subId}:en`] || '', className: 'rev-admin-create-main-effect-text', subId })}
+          ${renderRevelationAdminLangLine({ label: 'JP', lang: 'jp', text: prevValue[`${subId}:jp`] || '', className: 'rev-admin-create-main-effect-text', subId })}
+          ${renderRevelationAdminLangLine({ label: 'CN', lang: 'cn', text: prevValue[`${subId}:cn`] || '', className: 'rev-admin-create-main-effect-text', subId })}
         </div>
       </div>
-    `);
+    `;
+  });
 
   dom.revAdminCreateMainEffects.innerHTML = rows.length > 0
     ? rows.join('')
@@ -3438,6 +3537,24 @@ function bindEvents() {
     await handleRevelationAdminAction(async () => {
       await loadRevelationAdminCard(id);
     }, `card load (${id})`);
+    if (window.matchMedia('(max-width: 1300px)').matches) {
+      dom.revAdminDetail?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+
+  dom.revAdminCardList?.addEventListener('keydown', async (event) => {
+    if (event.key !== 'Enter' && event.key !== ' ') return;
+    const item = closestFromTarget(event.target, '.revelation-admin-card-item');
+    if (!item) return;
+    event.preventDefault();
+    const id = String(item.dataset.cardId || '').trim();
+    if (!id) return;
+    await handleRevelationAdminAction(async () => {
+      await loadRevelationAdminCard(id);
+    }, `card load (${id})`);
+    if (window.matchMedia('(max-width: 1300px)').matches) {
+      dom.revAdminDetail?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   });
 
   const revealNameInputs = [

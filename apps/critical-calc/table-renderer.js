@@ -24,7 +24,9 @@ class TableRenderer {
         const { order, groupsObj, getGroupDisplayName, createTableRow, getCurrentLang, getInitiallyOpen, onHeaderClick, onJCAttach } = config;
 
         // 스포일러 토글에 따른 표시 캐릭터 목록 계산
-        const showSpoiler = !!(document.getElementById('showSpoilerToggle') && document.getElementById('showSpoilerToggle').checked);
+        const showSpoiler = (window.SpoilerState && typeof window.SpoilerState.get === 'function')
+            ? !!window.SpoilerState.get()
+            : !!(document.getElementById('showSpoilerToggle') && document.getElementById('showSpoilerToggle').checked);
         let visibleNames = [];
         try {
             if (typeof CharacterListLoader !== 'undefined') {

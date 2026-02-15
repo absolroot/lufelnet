@@ -7,6 +7,41 @@
     let objectCounts = {}; // 타입별 { total: n, remaining: n, snList: [] }
 
     window.ObjectFilterPanel = {
+        getCurrentLang() {
+            if (window.MapsI18n && typeof window.MapsI18n.getCurrentLanguage === 'function') {
+                return window.MapsI18n.getCurrentLanguage();
+            }
+            return 'kr';
+        },
+
+        getMapsText(key, fallback = '') {
+            const lang = this.getCurrentLang();
+            if (window.MapsI18n && typeof window.MapsI18n.getText === 'function') {
+                const translated = window.MapsI18n.getText(lang, key);
+                if (translated && translated !== key) return translated;
+            }
+
+            if (window.MapsI18n && typeof window.MapsI18n.getPack === 'function') {
+                const krPack = window.MapsI18n.getPack('kr') || {};
+                if (Object.prototype.hasOwnProperty.call(krPack, key)) {
+                    return krPack[key];
+                }
+            }
+
+            return fallback || key;
+        },
+
+        getLanguageLabel(langCode) {
+            const keyMap = {
+                kr: 'languageNameKr',
+                en: 'languageNameEn',
+                jp: 'languageNameJp'
+            };
+            const key = keyMap[langCode] || '';
+            if (!key) return langCode || '';
+            return this.getMapsText(key, langCode);
+        },
+
         // 비대화형 아이콘인지 확인
         isNonInteractiveIcon(imageName) {
             if (window.MapsCore && window.MapsCore.isNonInteractiveIcon) {
@@ -298,11 +333,7 @@
             const percentage = Math.round((collectedCountable / totalCountable) * 100);
             const isComplete = collectedCountable === totalCountable;
 
-            const lang = window.MapsI18n ? window.MapsI18n.getCurrentLanguage() : 'kr';
-            const fallbackPack = window.I18N_PAGE_MAPS_KR || {};
-            const progressLabel = (window.MapsI18n && window.MapsI18n.getText)
-                ? window.MapsI18n.getText(lang, 'progressLabel')
-                : (fallbackPack.progressLabel || 'progressLabel');
+            const progressLabel = this.getMapsText('progressLabel', '진행도');
 
             progressContainer.innerHTML = `
                 <div class="progress-label">
@@ -415,65 +446,72 @@
 
         // UI 번역
         translateUI() {
-            if (!window.MapsI18n) return;
-            const lang = window.MapsI18n.getCurrentLanguage();
-            
             const objectFilterTitle = document.getElementById('object-filter-title');
             if (objectFilterTitle) {
-                objectFilterTitle.textContent = window.MapsI18n.getText(lang, 'objectFilter');
+                objectFilterTitle.textContent = this.getMapsText('objectFilter', '오브젝트 필터');
             }
             
             const selectAllText = document.getElementById('select-all-text');
             if (selectAllText) {
-                selectAllText.textContent = window.MapsI18n.getText(lang, 'selectAll');
+                selectAllText.textContent = this.getMapsText('selectAll', '전체 선택');
             }
             
             const resetFilterText = document.getElementById('reset-filter-text');
             if (resetFilterText) {
-                resetFilterText.textContent = window.MapsI18n.getText(lang, 'resetFilter');
+                resetFilterText.textContent = this.getMapsText('resetFilter', '초기화');
             }
             
             const zoomLabel = document.querySelector('#object-filter-panel .control-group label');
             if (zoomLabel) {
-                zoomLabel.textContent = window.MapsI18n.getText(lang, 'zoom');
+                zoomLabel.textContent = this.getMapsText('zoom', '줌');
             }
             
             const resetBtn = document.getElementById('zoom-reset');
             if (resetBtn) {
-                resetBtn.textContent = window.MapsI18n.getText(lang, 'reset');
+                resetBtn.textContent = this.getMapsText('reset', '리셋');
             }
             
             const moveText = document.getElementById('move-text');
             if (moveText) {
-                moveText.textContent = window.MapsI18n.getText(lang, 'moveControl');
+                moveText.textContent = this.getMapsText('moveControl', '드래그 / WASD / 방향키: 이동');
             }
 
             const zoomText = document.getElementById('zoom-text');
             if (zoomText) {
-                zoomText.textContent = window.MapsI18n.getText(lang, 'zoomControl');
+                zoomText.textContent = this.getMapsText('zoomControl', '휠 / +/-: 줌');
             }
 
             // 백업/복원 UI 번역
             const backupRestoreTitle = document.getElementById('backup-restore-title');
             if (backupRestoreTitle) {
-                backupRestoreTitle.textContent = window.MapsI18n.getText(lang, 'dataManagement');
+                backupRestoreTitle.textContent = this.getMapsText('dataManagement', '데이터 관리');
             }
 
             const backupBtnText = document.getElementById('backup-btn-text');
             if (backupBtnText) {
-                backupBtnText.textContent = window.MapsI18n.getText(lang, 'backup');
+                backupBtnText.textContent = this.getMapsText('backup', '백업');
             }
 
             const restoreBtnText = document.getElementById('restore-btn-text');
             if (restoreBtnText) {
-                restoreBtnText.textContent = window.MapsI18n.getText(lang, 'restore');
+                restoreBtnText.textContent = this.getMapsText('restore', '복원');
+            }
+
+            const backupBtn = document.getElementById('backup-btn');
+            if (backupBtn) {
+                backupBtn.title = this.getMapsText('backupTooltip', '수집 데이터 백업');
+            }
+
+            const restoreBtn = document.getElementById('restore-btn');
+            if (restoreBtn) {
+                restoreBtn.title = this.getMapsText('restoreTooltip', '수집 데이터 복원');
             }
         },
 
         // 언어 선택기 초기화
         initLanguageSelector() {
             const BASE_URL = typeof window.BASE_URL !== 'undefined' ? window.BASE_URL : '';
-            const currentLang = window.MapsI18n ? window.MapsI18n.getCurrentLanguage() : 'kr';
+            const currentLang = this.getCurrentLang();
             
             const selectedOption = document.querySelector('#object-filter-panel .selected-option');
             const optionsContainer = document.querySelector('#object-filter-panel .options-container');
@@ -490,7 +528,7 @@
                 flagImg.alt = currentLang;
             }
             if (flagSpan) {
-                flagSpan.textContent = currentLang === 'kr' ? '한국어' : currentLang === 'en' ? 'English' : currentLang === 'jp' ? '日本語' : '中文';
+                flagSpan.textContent = this.getLanguageLabel(currentLang);
             }
             
             // 옵션들의 플래그 이미지 설정
@@ -500,6 +538,11 @@
                 if (optionFlagImg && lang) {
                     optionFlagImg.src = `${BASE_URL}/assets/img/flags/${lang}.png`;
                     optionFlagImg.alt = lang;
+                }
+
+                const optionLabel = option.querySelector('span');
+                if (optionLabel && lang) {
+                    optionLabel.textContent = this.getLanguageLabel(lang);
                 }
                 
                 // 현재 선택된 언어 표시
@@ -539,8 +582,10 @@
             
             // 영어/일본어 사용자에게 안내 메시지 표시 (language-selector 뒤에 추가)
             if (currentLang === 'en' || currentLang === 'jp') {
-                const noticeText = window.MapsI18n ? window.MapsI18n.getText(currentLang, 'localizationNotice') : '';
+                const noticeText = this.getMapsText('localizationNotice', '');
                 if (noticeText) {
+                    const prevNotice = document.querySelector('#object-filter-panel .localization-notice');
+                    if (prevNotice) prevNotice.remove();
                     const notice = document.createElement('div');
                     notice.className = 'localization-notice';
                     notice.textContent = noticeText;
@@ -551,6 +596,9 @@
                         langSelectorContainer.parentNode.insertBefore(notice, langSelectorContainer.nextSibling);
                     }
                 }
+            } else {
+                const prevNotice = document.querySelector('#object-filter-panel .localization-notice');
+                if (prevNotice) prevNotice.remove();
             }
         },
         
@@ -754,17 +802,19 @@
 
         // 모바일 UI 번역
         translateMobileUI() {
-            if (!window.MapsI18n) return;
-            const lang = window.MapsI18n.getCurrentLanguage();
-
             const filterPanelTitle = document.getElementById('filter-panel-title');
             if (filterPanelTitle) {
-                filterPanelTitle.textContent = window.MapsI18n.getText(lang, 'objectFilter') || '오브젝트 필터';
+                filterPanelTitle.textContent = this.getMapsText('objectFilter', '오브젝트 필터');
             }
 
             const filterBtnSpan = document.querySelector('#mobile-filter-btn span');
             if (filterBtnSpan) {
-                filterBtnSpan.textContent = window.MapsI18n.getText(lang, 'filter') || '필터';
+                filterBtnSpan.textContent = this.getMapsText('filter', '필터');
+            }
+
+            const mobileFilterBtn = document.getElementById('mobile-filter-btn');
+            if (mobileFilterBtn) {
+                mobileFilterBtn.setAttribute('aria-label', this.getMapsText('objectFilter', '오브젝트 필터'));
             }
         },
 
@@ -858,30 +908,33 @@
             const panel = document.getElementById('object-filter-panel');
             if (!panel) return;
 
-            // 현재 언어 가져오기
-            const lang = window.MapsI18n ? window.MapsI18n.getCurrentLanguage() : 'kr';
+            const dataManagementText = this.getMapsText('dataManagement', '데이터 관리');
+            const backupText = this.getMapsText('backup', '백업');
+            const restoreText = this.getMapsText('restore', '복원');
+            const backupTooltip = this.getMapsText('backupTooltip', '수집 데이터 백업');
+            const restoreTooltip = this.getMapsText('restoreTooltip', '수집 데이터 복원');
 
             // 백업/복원 컨테이너 생성
             const container = document.createElement('div');
             container.className = 'backup-restore-container';
             container.innerHTML = `
-                <div class="backup-restore-title" id="backup-restore-title">${window.MapsI18n ? window.MapsI18n.getText(lang, 'dataManagement') : '데이터 관리'}</div>
+                <div class="backup-restore-title" id="backup-restore-title">${dataManagementText}</div>
                 <div class="backup-restore-buttons">
-                    <button class="backup-btn" id="backup-btn" title="수집 데이터 백업">
+                    <button class="backup-btn" id="backup-btn" title="${backupTooltip}">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"></path>
                             <polyline points="7 10 12 15 17 10"></polyline>
                             <line x1="12" y1="15" x2="12" y2="3"></line>
                         </svg>
-                        <span id="backup-btn-text">${window.MapsI18n ? window.MapsI18n.getText(lang, 'backup') : '백업'}</span>
+                        <span id="backup-btn-text">${backupText}</span>
                     </button>
-                    <button class="restore-btn" id="restore-btn" title="수집 데이터 복원">
+                    <button class="restore-btn" id="restore-btn" title="${restoreTooltip}">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"></path>
                             <polyline points="17 8 12 3 7 8"></polyline>
                             <line x1="12" y1="3" x2="12" y2="15"></line>
                         </svg>
-                        <span id="restore-btn-text">${window.MapsI18n ? window.MapsI18n.getText(lang, 'restore') : '복원'}</span>
+                        <span id="restore-btn-text">${restoreText}</span>
                     </button>
                 </div>
                 <input type="file" id="restore-file-input" accept=".json" style="display: none;">
@@ -994,7 +1047,6 @@
 
         // 백업/복원 메시지 표시
         showBackupMessage(type) {
-            const lang = window.MapsI18n ? window.MapsI18n.getCurrentLanguage() : 'kr';
             const messageKeyMap = {
                 success: 'backupMessageSuccess',
                 error: 'backupMessageError',
@@ -1002,11 +1054,7 @@
                 'restore-error': 'backupMessageRestoreError'
             };
             const messageKey = messageKeyMap[type] || 'backupMessageError';
-            const fallbackPack = window.I18N_PAGE_MAPS_KR || {};
-
-            const message = (window.MapsI18n && window.MapsI18n.getText)
-                ? window.MapsI18n.getText(lang, messageKey)
-                : (fallbackPack[messageKey] || messageKey);
+            const message = this.getMapsText(messageKey, messageKey);
             const isError = type.includes('error');
 
             // 토스트 메시지 생성

@@ -13,6 +13,24 @@
         return 'kr';
     }
 
+    function t(key, fallback) {
+        if (typeof window.t === 'function') {
+            try {
+                return window.t(key, fallback);
+            } catch (_) {}
+        }
+        if (window.I18nService && typeof window.I18nService.t === 'function') {
+            const result = window.I18nService.t(key, fallback);
+            if (result && result !== key) return result;
+        }
+        return fallback;
+    }
+
+    function applyNameTemplate(template, name, fallbackNoName) {
+        if (!name) return fallbackNoName;
+        return String(template || '').replace(/\{name\}/g, name);
+    }
+
     function pickFirstYoutubeId(value) {
         if (!value) return '';
         if (Array.isArray(value)) {
@@ -139,7 +157,9 @@
         stage.className = 'character-video-stage';
 
         const iframe = document.createElement('iframe');
-        iframe.title = characterName ? `${characterName} video` : 'character video';
+        const iframeTitleTemplate = t('characterVideoIframeTitle', '{name} 영상');
+        const iframeTitleFallback = t('characterVideoIframeTitleFallback', '캐릭터 영상');
+        iframe.title = applyNameTemplate(iframeTitleTemplate, characterName, iframeTitleFallback);
         iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
         iframe.allowFullscreen = true;
 
@@ -149,13 +169,13 @@
         const prevBtn = document.createElement('button');
         prevBtn.type = 'button';
         prevBtn.className = 'character-video-nav prev';
-        prevBtn.setAttribute('aria-label', 'Prev');
+        prevBtn.setAttribute('aria-label', t('characterVideoAriaPrev', '이전 영상'));
         prevBtn.innerHTML = buildArrowSvg('prev');
 
         const nextBtn = document.createElement('button');
         nextBtn.type = 'button';
         nextBtn.className = 'character-video-nav next';
-        nextBtn.setAttribute('aria-label', 'Next');
+        nextBtn.setAttribute('aria-label', t('characterVideoAriaNext', '다음 영상'));
         nextBtn.innerHTML = buildArrowSvg('next');
 
         let index = 0;
@@ -167,7 +187,9 @@
             poster.className = 'character-video-poster';
 
             const img = document.createElement('img');
-            img.alt = characterName ? `${characterName} thumbnail` : 'video thumbnail';
+            const thumbnailAltTemplate = t('characterVideoThumbnailAlt', '{name} 영상 썸네일');
+            const thumbnailAltFallback = t('characterVideoThumbnailAltFallback', '영상 썸네일');
+            img.alt = applyNameTemplate(thumbnailAltTemplate, characterName, thumbnailAltFallback);
             img.src = `https://i.ytimg.com/vi/${encodeURIComponent(videoId)}/hqdefault.jpg`;
 
             const overlay = document.createElement('div');
@@ -176,10 +198,11 @@
             const playBtn = document.createElement('button');
             playBtn.type = 'button';
             playBtn.className = 'character-video-play';
-            playBtn.setAttribute('aria-label', 'Play');
+            const playLabel = t('characterVideoAriaPlay', '재생');
+            playBtn.setAttribute('aria-label', playLabel);
             const playImg = document.createElement('img');
             playImg.className = 'character-video-play-img';
-            playImg.alt = 'Play';
+            playImg.alt = playLabel;
             playImg.src = `${getBaseUrl()}/assets/img/character-detail/play_btn.png`;
             playBtn.appendChild(playImg);
             playBtn.addEventListener('click', () => {

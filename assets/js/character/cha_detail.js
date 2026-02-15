@@ -28,6 +28,19 @@ document.addEventListener('DOMContentLoaded', () => {
         return 'kr';
     }
 
+    function t(key, fallback) {
+        if (typeof window.t === 'function') {
+            try {
+                return window.t(key, fallback);
+            } catch (_) {}
+        }
+        if (window.I18nService && typeof window.I18nService.t === 'function') {
+            const result = window.I18nService.t(key, fallback);
+            if (result && result !== key) return result;
+        }
+        return fallback;
+    }
+
     // 현재 언어별 계시 이름 번역 함수
     function translateRevelationName(koreanName, isMainRevelation = false) {
         const currentLang = getCurrentLanguage();
@@ -62,6 +75,71 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 기본: 한국어 그대로
         return koreanName;
+    }
+
+    function escapeRegExp(text) {
+        return String(text).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+
+    function replaceOptionTerms(sourceText, dictionary) {
+        if (!sourceText || !dictionary) return sourceText;
+        let output = String(sourceText);
+        const keys = Object.keys(dictionary).sort((a, b) => b.length - a.length);
+        keys.forEach((key) => {
+            if (!key || !output.includes(key)) return;
+            output = output.replace(new RegExp(escapeRegExp(key), 'g'), dictionary[key]);
+        });
+        return output;
+    }
+
+    function getEnOptionFallbackMap() {
+        return {
+            '공격력': 'Attack',
+            '생명': 'HP',
+            '생명력': 'HP',
+            '치료효과': 'Healing Effect',
+            '치료 효과': 'Healing Effect',
+            '크리티컬 확률': 'Crit Rate',
+            '크리티컬 효과': 'Crit Mult',
+            '대미지 보너스': 'Damage Mult',
+            '대미지보너스': 'Damage Mult',
+            '관통': 'Pierce Rate',
+            '효과 명중': 'Ailment Accuracy',
+            '효과명중': 'Ailment Accuracy',
+            '방어력': 'Defense',
+            '속도': 'Speed',
+            'SP 회복': 'SP Recovery',
+            'SP회복': 'SP Recovery'
+        };
+    }
+
+    function localizeOptionValueText(text) {
+        const currentLang = getCurrentLanguage();
+        if (currentLang === 'kr' || text == null) return text;
+        const source = String(text);
+
+        // 1) Prefer shared I18n dictionary when available
+        try {
+            if (window.I18nService && typeof window.I18nService.getStatTranslations === 'function') {
+                const dict = window.I18nService.getStatTranslations();
+                if (dict && Object.keys(dict).length > 0) {
+                    const replacedByDict = replaceOptionTerms(source, dict);
+                    if (replacedByDict !== source) return replacedByDict;
+                }
+            }
+        } catch (_) { }
+
+        // 2) Fallback map (for early race before dictionary is ready)
+        if (currentLang === 'en') {
+            return replaceOptionTerms(source, getEnOptionFallbackMap());
+        }
+
+        return source;
+    }
+
+    function localizeOptionValueArray(values) {
+        if (!Array.isArray(values)) return [];
+        return values.map((item) => localizeOptionValueText(item));
     }
 
     // 세팅 정보 채우기
@@ -216,9 +294,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const option = mainOptions[index];
             const valueElement = row.querySelector('.value');
             if (Array.isArray(option.values)) {
-                valueElement.textContent = option.values.length > 0 ? option.values.join(' / ') : '-';
+                const localizedValues = localizeOptionValueArray(option.values);
+                valueElement.textContent = localizedValues.length > 0 ? localizedValues.join(' / ') : '-';
             } else {
-                valueElement.textContent = option.value || '-';
+                valueElement.textContent = localizeOptionValueText(option.value || '-');
             }
         });
 
@@ -226,8 +305,24 @@ document.addEventListener('DOMContentLoaded', () => {
         const subOptionRows = document.querySelectorAll('.sub-options .option-row');
         [mergedCharacter.sub_option1, mergedCharacter.sub_option2, mergedCharacter.sub_option3].forEach((option, index) => {
             const valueElement = subOptionRows[index].querySelector('.value');
-            valueElement.textContent = Array.isArray(option) && option.length > 0 ? option.join(' / ') : '-';
+            const localizedValues = Array.isArray(option) ? localizeOptionValueArray(option) : [];
+            valueElement.textContent = localizedValues.length > 0 ? localizedValues.join(' / ') : '-';
         });
+
+        // EN/JP에서는 옵션 값 주입 직후 번역을 다시 스케줄해 레이스를 방지
+        try {
+            const currentLangForTranslate = getCurrentLanguage();
+            if (currentLangForTranslate !== 'kr') {
+                const revelationRoot = document.querySelector('.revelation-settings') || document;
+                if (typeof window.scheduleTranslate === 'function') {
+                    window.scheduleTranslate(revelationRoot);
+                } else if (window.I18NUtils && typeof window.I18NUtils.translateStatTexts === 'function') {
+                    window.I18NUtils.translateStatTexts(revelationRoot);
+                } else if (typeof window.translateStatTexts === 'function') {
+                    window.translateStatTexts(revelationRoot);
+                }
+            }
+        } catch (_) { }
 
         // 스킬 레벨
         const skillLevels = [
@@ -558,8 +653,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (ref && ref !== 'auto') baseTop = ref;
                 } catch (_) { }
                 // 라벨 텍스트
-                const RES_TXT = (langForEl === 'en') ? 'Res' : (langForEl === 'jp' ? '耐' : '내');
-                const WK_TXT = (langForEl === 'en') ? 'Wk' : (langForEl === 'jp' ? '弱' : '약');
+                const RES_TXT = t('characterElementBadgeRes', '내성');
+                const WK_TXT = t('characterElementBadgeWeak', '약점');
                 const mergedChar = { ...character, ...(characterName && window.characterSetting && window.characterSetting[characterName] ? window.characterSetting[characterName] : {}) };
                 if (mergedChar.element_resistance) {
                     const el = document.createElement('span');
@@ -1330,12 +1425,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             // 캐릭터 직업이 해명인 경우 '턴' 대신 '행동'
             const currentLang = getCurrentLanguage();
-            // 직업에 따라 기본 라벨 세트 선택
-            const labelSet = (characterInfo.position === '해명')
-                ? { kr: '행동', en: ' Action', jp: '行動' }
-                : { kr: '턴', en: ' Turn', jp: 'ターン' };
+            const isActionCooldown = characterInfo.position === '해명';
+            const cooldownLabel = isActionCooldown
+                ? t('characterSkillCooldownAction', '행동')
+                : t('characterSkillCooldownTurn', '턴');
             if (skill.cool && skill.cool > 0) {
-                const label = labelSet[currentLang] || labelSet.kr;
+                const label = ` ${cooldownLabel}`;
                 costParts.push(`${skill.cool}${label}`);
             }
             costText = costParts.join(' / ');
@@ -1407,13 +1502,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // 언어별 제목
             const currentLang = getCurrentLanguage();
             const titleEl = card.querySelector('h2');
-            const titleMap = {
-                kr: '심상 코어',
-                en: 'Mindscape Core',
-                jp: 'イメジャリー・コア'
-            };
             if (titleEl) {
-                titleEl.textContent = titleMap[currentLang] || titleMap.kr;
+                titleEl.textContent = t('characterInnateCoreTitle', '심상 코어');
             }
 
             const grid = card.querySelector('.innate-grid') || card.querySelector('.skills-grid');
@@ -1457,12 +1547,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // 1) final_innate → "심상 강화" 카드들
             const finalInnate = Array.isArray(data.final_innate) ? data.final_innate : [];
             if (finalInnate.length > 0) {
-                const boostNameMap = {
-                    kr: '심상 강화',
-                    en: 'Mindscape Amplification',
-                    jp: 'イメジャリー強化'
-                };
-                const boostName = boostNameMap[currentLang] || boostNameMap.kr;
+                const boostName = t('characterInnateAmplification', '심상 강화');
 
                 finalInnate.forEach((group) => {
                     if (!Array.isArray(group) || group.length === 0) return;
@@ -1541,12 +1626,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // EN/JP에서는 하단에 안내 문구 추가 (언어별 번역 포함)
                 if (currentLang === 'en' || currentLang === 'jp') {
                     let note = card.querySelector('.innate-global-note');
-                    const noteTexts = {
-                        kr: '※ KR V4.7에 출시된 기능입니다. LV100은 해당 기능을 해금해야 달성할 수 있습니다.',
-                        en: '※ This feature was first released in KR V4.7. LV100 requires unlocking this feature to achieve.',
-                        jp: '※ この機能はKR版V4.7で実装されました。LV100はこの機能を解鎖しないと達成できません。'
-                    };
-                    const noteText = noteTexts[currentLang] || noteTexts.kr;
+                    const noteText = t('characterInnateGlobalNote', '※ KR V4.7에 출시된 기능입니다. LV100은 해당 기능을 해금해야 달성할 수 있습니다.');
 
                     if (!note) {
                         note = document.createElement('div');
@@ -1736,10 +1816,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     // 의식 텍스트 번역
                     let translatedLabel = item.label;
+                    const awarenessPrefixEn = t('characterOperationAwarenessPrefixEn', 'A');
+                    const awarenessPrefixJp = t('characterOperationAwarenessPrefixJp', '意識');
                     if (currentLang === 'en') {
-                        translatedLabel = translatedLabel.replace(/의식 /g, 'A');
+                        translatedLabel = translatedLabel.replace(/의식\s*/g, awarenessPrefixEn);
                     } else if (currentLang === 'jp') {
-                        translatedLabel = translatedLabel.replace(/의식/g, '意識');
+                        translatedLabel = translatedLabel.replace(/의식\s*/g, awarenessPrefixJp);
                     }
 
                     return `

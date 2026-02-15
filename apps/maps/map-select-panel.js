@@ -18,6 +18,16 @@
             return submap.file;
         },
 
+        getMapsText(key, fallback = '') {
+            if (!window.MapsI18n) return fallback || key;
+            const lang = window.MapsI18n.getCurrentLanguage();
+            const text = window.MapsI18n.getText(lang, key);
+            if (text && text !== key) return text;
+            const krPack = window.MapsI18n.getPack ? (window.MapsI18n.getPack('kr') || {}) : {};
+            if (Object.prototype.hasOwnProperty.call(krPack, key)) return krPack[key];
+            return fallback || key;
+        },
+
         // 탭 설정
         setupTabs() {
             const tabs = document.querySelectorAll('.map-tab');
@@ -882,9 +892,10 @@
             if (!panel.querySelector('.bottomsheet-header')) {
                 const header = document.createElement('div');
                 header.className = 'bottomsheet-header';
+                const mapSelectText = this.getMapsText('mapSelect', '맵 선택');
                 header.innerHTML = `
                     <div class="bottomsheet-handle"></div>
-                    <div class="bottomsheet-title" id="map-panel-title">맵 선택</div>
+                    <div class="bottomsheet-title" id="map-panel-title">${mapSelectText}</div>
                 `;
 
                 const closeBtn = document.createElement('button');
@@ -911,6 +922,8 @@
                 });
                 mapBtn.dataset.eventBound = 'true';
             }
+
+            mapBtn.setAttribute('aria-label', this.getMapsText('mapSelect', '맵 선택'));
 
             // 오버레이 클릭 시 닫기
             if (overlay && !overlay.dataset.eventBound) {
@@ -986,17 +999,19 @@
 
         // 모바일 UI 번역
         translateMobileUI() {
-            if (!window.MapsI18n) return;
-            const lang = window.MapsI18n.getCurrentLanguage();
-
             const mapPanelTitle = document.getElementById('map-panel-title');
             if (mapPanelTitle) {
-                mapPanelTitle.textContent = window.MapsI18n.getText(lang, 'mapSelect') || '맵 선택';
+                mapPanelTitle.textContent = this.getMapsText('mapSelect', '맵 선택');
             }
 
             const mapBtnSpan = document.querySelector('#mobile-map-btn span');
             if (mapBtnSpan) {
-                mapBtnSpan.textContent = window.MapsI18n.getText(lang, 'map') || '맵';
+                mapBtnSpan.textContent = this.getMapsText('map', '맵');
+            }
+
+            const mapBtn = document.getElementById('mobile-map-btn');
+            if (mapBtn) {
+                mapBtn.setAttribute('aria-label', this.getMapsText('mapSelect', '맵 선택'));
             }
 
             // 브레드크럼도 업데이트

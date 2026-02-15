@@ -21,10 +21,23 @@ class CriticalCalc {
         try {
             const sp = document.getElementById('showSpoilerToggle');
             if (sp) {
-                sp.addEventListener('change', async () => {
-                    await this.renderAccordion(this.buffTableBody, false);
-                    await this.renderAccordion(this.selfTableBody, true);
-                });
+                if (window.SpoilerState && typeof window.SpoilerState.bindCheckbox === 'function') {
+                    window.SpoilerState.bindCheckbox({
+                        checkbox: sp,
+                        container: document.getElementById('spoilerToggleWrap'),
+                        lang: this.getCurrentLang(),
+                        source: 'critical-calc',
+                        onChange: async () => {
+                            await this.renderAccordion(this.buffTableBody, false);
+                            await this.renderAccordion(this.selfTableBody, true);
+                        }
+                    });
+                } else {
+                    sp.addEventListener('change', async () => {
+                        await this.renderAccordion(this.buffTableBody, false);
+                        await this.renderAccordion(this.selfTableBody, true);
+                    });
+                }
             }
         } catch(_) {}
 
@@ -407,7 +420,9 @@ class CriticalCalc {
 
     async renderAccordion(tbody, isSelf) {
         // [중요] 비동기 데이터 로딩을 먼저 수행
-        const showSpoiler = !!(document.getElementById('showSpoilerToggle') && document.getElementById('showSpoilerToggle').checked);
+        const showSpoiler = (window.SpoilerState && typeof window.SpoilerState.get === 'function')
+            ? !!window.SpoilerState.get()
+            : !!(document.getElementById('showSpoilerToggle') && document.getElementById('showSpoilerToggle').checked);
         let visibleNames = [];
         try {
             if (typeof CharacterListLoader !== 'undefined') {

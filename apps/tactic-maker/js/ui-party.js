@@ -6,6 +6,26 @@
 import { DataLoader } from './data-loader.js';
 import { NeedStatCardUI } from './ui-critical-card.js';
 
+function getTacticMakerText(key, fallback = '') {
+    if (typeof window.t === 'function') {
+        try {
+            const translated = window.t(key, fallback);
+            if (translated && translated !== key) {
+                return translated;
+            }
+        } catch (_) {
+            // fall through
+        }
+    }
+    if (window.I18nService && typeof window.I18nService.t === 'function') {
+        const translated = window.I18nService.t(key, fallback);
+        if (translated && translated !== key) {
+            return translated;
+        }
+    }
+    return fallback || key;
+}
+
 /**
  * Get revelation tooltip text based on current language
  * For main revelation: show set effect with sub revelations
@@ -66,7 +86,7 @@ function getRevelationTooltip(revName, kind = 'sub', currentSubRev = '') {
         const mainName = DataLoader.getRevelationName(revName);
         const subName = DataLoader.getRevelationName(currentSubRev);
         
-        const setLabel = lang === 'en' ? 'Set Effect' : (lang === 'jp' ? 'セット効果' : '세트 효과');
+        const setLabel = getTacticMakerText('revelationSetEffectLabel', '세트 효과');
         
         return `<b>${mainName} + ${subName}</b><br>${setLabel}: ${highlightNumbers(setEffect)}`;
     } else {
@@ -80,8 +100,8 @@ function getRevelationTooltip(revName, kind = 'sub', currentSubRev = '') {
         let set2 = effect.set2 || '';
         let set4 = effect.set4 || '';
         
-        const label2 = lang === 'en' ? '2pc' : (lang === 'jp' ? '2個' : '2세트');
-        const label4 = lang === 'en' ? '4pc' : (lang === 'jp' ? '4個' : '4세트');
+        const label2 = getTacticMakerText('revelationSet2Label', '2세트');
+        const label4 = getTacticMakerText('revelationSet4Label', '4세트');
         
         return `<b>${subName}</b><br>${label2}: ${highlightNumbers(set2)}<br>${label4}: ${highlightNumbers(set4)}`;
     }
@@ -467,7 +487,7 @@ export class PartyUI {
             ? window.I18nService.getCurrentLanguage() 
             : 'kr';
         const showSpoilerToggle = currentLang !== 'kr';
-        const spoilerLabelText = currentLang === 'en' ? 'Show Spoilers' : (currentLang === 'jp' ? 'ネタバレ表示' : '스포일러 보기');
+        const spoilerLabelText = getTacticMakerText('showSpoilersLabel', '스포일러 보기');
 
         bar.innerHTML = `
             <div class="roster-filter-search">
@@ -547,17 +567,33 @@ export class PartyUI {
 
         // Spoiler toggle event
         const spoilerToggle = bar.querySelector('#rosterSpoilerToggle');
+        if (this.disposeRosterSpoilerBinding) {
+            try { this.disposeRosterSpoilerBinding(); } catch (_) { }
+            this.disposeRosterSpoilerBinding = null;
+        }
         if (spoilerToggle) {
-            // Restore saved state
-            const savedState = localStorage.getItem('spoilerToggle') === 'true';
-            spoilerToggle.checked = savedState;
+            if (window.SpoilerState && typeof window.SpoilerState.bindCheckbox === 'function') {
+                this.disposeRosterSpoilerBinding = window.SpoilerState.bindCheckbox({
+                    checkbox: spoilerToggle,
+                    lang: currentLang,
+                    source: 'tactic-maker-roster',
+                    onChange: () => {
+                        // Re-render roster without page reload
+                        this.renderRoster(this.rosterType);
+                    }
+                });
+            } else {
+                // Restore saved state
+                const savedState = localStorage.getItem('spoilerToggle') === 'true';
+                spoilerToggle.checked = savedState;
 
-            spoilerToggle.onchange = () => {
-                const isEnabled = spoilerToggle.checked;
-                localStorage.setItem('spoilerToggle', isEnabled.toString());
-                // Re-render roster without page reload
-                this.renderRoster(this.rosterType);
-            };
+                spoilerToggle.onchange = () => {
+                    const isEnabled = spoilerToggle.checked;
+                    localStorage.setItem('spoilerToggle', isEnabled.toString());
+                    // Re-render roster without page reload
+                    this.renderRoster(this.rosterType);
+                };
+            }
         }
 
         // Filter reset button event
@@ -614,7 +650,9 @@ export class PartyUI {
         const currentLang = (window.I18nService && window.I18nService.getCurrentLanguage) 
             ? window.I18nService.getCurrentLanguage() 
             : 'kr';
-        const spoilerEnabled = localStorage.getItem('spoilerToggle') === 'true';
+        const spoilerEnabled = (window.SpoilerState && typeof window.SpoilerState.get === 'function')
+            ? !!window.SpoilerState.get()
+            : (localStorage.getItem('spoilerToggle') === 'true');
 
         let targetChars = [];
         if (type === 'support') {
@@ -889,7 +927,7 @@ export class PartyUI {
                 const activeRole = data.role || '우월';
                 const roleIcon = `${this.baseUrl}/assets/img/character-cards/직업_${activeRole}.png`;
                 return `
-                                <button type="button" class="jnc-role-btn btn-role-change" title="직업 변경">
+                                <button type="button" class="jnc-role-btn btn-role-change" title="${getTacticMakerText('roleChangeTooltip', '직업 변경')}">
                                     <img src="${roleIcon}" class="role-icon-img" alt="${activeRole}">
                                     <span class="role-change-hint">↻</span>
                                 </button>

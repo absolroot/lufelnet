@@ -1,4 +1,4 @@
-// QEVEL (My Palace Rating) 계산 및 모달 관리
+﻿// QEVEL (My Palace Rating) 계산 및 모달 관리
 (function() {
     'use strict';
 
@@ -20,7 +20,18 @@
             return 'kr';
         }
     }
-
+    function t(key, fallback) {
+        if (typeof window.t === 'function') {
+            try {
+                return window.t(key, fallback);
+            } catch (_) {}
+        }
+        if (window.I18nService && typeof window.I18nService.t === 'function') {
+            const result = window.I18nService.t(key, fallback);
+            if (result && result !== key) return result;
+        }
+        return fallback;
+    }
     // 버프 데이터 정의
     const buffData = [
         {
@@ -485,47 +496,27 @@
         const modal = document.createElement('div');
         modal.id = 'qevel-modal';
         modal.className = 'weapon-effect-modal show';
-
-        const titleText = {
-            kr: '마이팰리스 평점 (QEVEL)',
-            en: 'Thieves Den Rating (Qualia Lv)',
-            jp: 'マイパレス評価 (QEVEL)'
-        };
-
-        const inputLabelText = {
-            kr: 'QEVEL 입력:',
-            en: 'Enter Qualia Lv:',
-            jp: 'QEVEL入力:'
-        };
-
-        const calculateText = {
-            kr: '계산',
-            en: 'Calculate',
-            jp: '計算'
-        };
-
-        const closeText = {
-            kr: '닫기',
-            en: 'Close',
-            jp: '閉じる'
-        };
+        const modalTitleText = t('qevelTitle', '마이팰리스 평점 (QEVEL)');
+        const modalInputLabel = t('qevelInputLabel', 'QEVEL 입력:');
+        const promptText = t('qevelPrompt', 'QEVEL을 입력하면 버프를 확인할 수 있습니다');
+        const noBuffsText = t('qevelNoBuffs', '버프 없음');
 
         modal.innerHTML = `
             <div class="weapon-effect-modal-content" style="max-width: 600px; max-height: 80vh; overflow-y: auto;">
                 <span class="qevel-close weapon-effect-close">&times;</span>
                 <div class="weapon-effect-header">
-                    <h3>${titleText[lang] || titleText.kr}</h3>
+                    <h3>${modalTitleText}</h3>
                 </div>
                 <div style="padding: 0px;">
                     <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
                         <label for="qevel-input" style="color: #d3bc8e; white-space: nowrap;">
-                            ${inputLabelText[lang] || inputLabelText.kr}
+                            ${modalInputLabel}
                         </label>
                         <input 
                             type="number" 
                             id="qevel-input" 
                             name="qevel-input"
-                            aria-label="${inputLabelText[lang] || inputLabelText.kr}"
+                            aria-label="${modalInputLabel}"
                             min="0" 
                             max="500" 
                             value="0" 
@@ -533,7 +524,7 @@
                         />
                     </div>
                     <div id="qevel-result" style="min-height: 100px; padding: 15px; background: rgba(0,0,0,0.3); border-radius: 8px; color: #fff; line-height: 2.0; margin-top: 15px; font-size: 13px;">
-                        <div style="opacity: 0.6; text-align: center;">${lang === 'en' ? 'Enter Qualia Lv to see buffs' : (lang === 'jp' ? 'QEVELを入力してバフを確認' : 'QEVEL을 입력하면 버프를 확인할 수 있습니다')}</div>
+                        <div style="opacity: 0.6; text-align: center;">${promptText}</div>
                     </div>
                 </div>
             </div>
@@ -570,7 +561,7 @@
             const lines = formatBuffResult(buffs, lang);
 
             if (lines.length === 0) {
-                resultDiv.innerHTML = `<div style="opacity: 0.6; text-align: center;">${lang === 'en' ? 'No buffs' : (lang === 'jp' ? 'バフなし' : '버프 없음')}</div>`;
+                resultDiv.innerHTML = `<div style="opacity: 0.6; text-align: center;">${noBuffsText}</div>`;
             } else {
                 resultDiv.innerHTML = lines.map(line => `<div>${line}</div>`).join('');
             }
@@ -621,4 +612,6 @@
     window.formatQEVELResult = formatBuffResult;
 
 })();
+
+
 

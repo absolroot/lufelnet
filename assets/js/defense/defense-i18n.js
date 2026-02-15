@@ -230,7 +230,11 @@
             const showSpoilerLabel = document.getElementById('showSpoilerLabel');
             const spoilerWrap = document.getElementById('spoilerToggleWrap');
             if (spoilerWrap) {
-                spoilerWrap.style.display = (currentLang === 'kr') ? 'none' : '';
+                if (window.SpoilerState && typeof window.SpoilerState.shouldShowControl === 'function') {
+                    spoilerWrap.style.display = window.SpoilerState.shouldShowControl(currentLang) ? '' : 'none';
+                } else {
+                    spoilerWrap.style.display = (currentLang === 'kr') ? 'none' : '';
+                }
             }
             if (showSpoilerLabel) {
                 showSpoilerLabel.textContent = tx('show_spoiler', 'Show Spoilers');

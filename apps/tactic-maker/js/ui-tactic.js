@@ -184,6 +184,45 @@ export class TacticUI {
         return 'kr';
     }
 
+    getI18nText(key, fallback = '') {
+        if (typeof window.t === 'function') {
+            try {
+                const translated = window.t(key, fallback);
+                if (translated && translated !== key) {
+                    return translated;
+                }
+            } catch (_) {
+                // fall through
+            }
+        }
+        if (window.I18nService && typeof window.I18nService.t === 'function') {
+            const translated = window.I18nService.t(key, fallback);
+            if (translated && translated !== key) {
+                return translated;
+            }
+        }
+        return fallback || key;
+    }
+
+    getActionLabels() {
+        return {
+            skill1: this.getI18nText('action_skill1', '스킬1'),
+            skill2: this.getI18nText('action_skill2', '스킬2'),
+            skill3: this.getI18nText('action_skill3', '스킬3'),
+            highlight: this.getI18nText('action_highlight', 'HIGHLIGHT'),
+            theurgia: this.getI18nText('action_theurgia', '테우르기아'),
+            gun: this.getI18nText('action_gun', '총격'),
+            melee: this.getI18nText('action_melee', '근접'),
+            guard: this.getI18nText('action_guard', '방어'),
+            commonSkillGroup: this.getI18nText('action_commonSkillGroup', '공용 스킬'),
+            oneMore: this.getI18nText('action_oneMore', 'ONE MORE'),
+            item: this.getI18nText('action_item', '아이템'),
+            specialSkill: this.getI18nText('action_specialSkill', '특수 스킬'),
+            commonActions: this.getI18nText('action_common', '공통 액션'),
+            supportSkill: this.getI18nText('action_support', '지원 스킬')
+        };
+    }
+
     getCharacterDisplayName(charKey, charData) {
         const lang = this.getCurrentLang();
         // KR: use charKey (short name like "렌", "안") - same as slot-name-text
@@ -258,39 +297,63 @@ export class TacticUI {
     getLocalizedActionName(actionName) {
         if (!actionName) return '';
 
-        const lang = DataLoader.getCurrentLang();
+        const labels = this.getActionLabels();
 
-        // skillList order: 스킬1, 스킬2, 스킬3, HIGHLIGHT, 테우르기아, 총격, 근접, 방어, 특수 스킬, ONE MORE, 아이템
-        const skillList = {
-            kr: ['스킬1', '스킬2', '스킬3', 'HIGHLIGHT', '테우르기아', '총격', '근접', '방어', '특수 스킬', 'ONE MORE', '아이템'],
-            en: ['Skill1', 'Skill2', 'Skill3', 'HIGHLIGHT', 'Theurgy', 'Gunshot', 'Melee', 'Defense', 'Special Skill', 'ONE MORE', 'Item'],
-            jp: ['スキル1', 'スキル2', 'スキル3', 'HIGHLIGHT', 'テウルギア', '銃撃', '近接攻撃', 'ガード', 'スペシャルスキル', '1more', 'アイテム']
+        const valueToLabel = {
+            '스킬1': labels.skill1,
+            'Skill1': labels.skill1,
+            'スキル1': labels.skill1,
+            '스킬2': labels.skill2,
+            'Skill2': labels.skill2,
+            'スキル2': labels.skill2,
+            '스킬3': labels.skill3,
+            'Skill3': labels.skill3,
+            'スキル3': labels.skill3,
+            'HIGHLIGHT': labels.highlight,
+            'Theurgia': labels.theurgia,
+            'Theurgy': labels.theurgia,
+            '테우르기아': labels.theurgia,
+            'テウルギア': labels.theurgia,
+            '총격': labels.gun,
+            'Gunshot': labels.gun,
+            '銃撃': labels.gun,
+            '射撃': labels.gun,
+            '근접': labels.melee,
+            'Melee': labels.melee,
+            '近接攻撃': labels.melee,
+            '방어': labels.guard,
+            'Defense': labels.guard,
+            'ガード': labels.guard,
+            '防御': labels.guard,
+            '특수 스킬': labels.specialSkill,
+            'Special Skill': labels.specialSkill,
+            'スペシャルスキル': labels.specialSkill,
+            '지원 스킬': labels.supportSkill,
+            'Support Skill': labels.supportSkill,
+            'サポートスキル': labels.supportSkill,
+            'ONE MORE': labels.oneMore,
+            '1more': labels.oneMore,
+            '아이템': labels.item,
+            'Item': labels.item,
+            'アイテム': labels.item
         };
 
-        const list = skillList[lang] || skillList.kr;
+        // Special handling for HIGHLIGHT2 (J&C's second highlight)
+        if (actionName === 'HIGHLIGHT2') {
+            return `${labels.highlight} 2`;
+        }
 
-        // Map Korean values to localized display
-        const valueToIndex = {
-            '스킬1': 0, '스킬2': 1, '스킬3': 2,
-            'HIGHLIGHT': 3, 'HIGHLIGHT2': 3, 'Theurgia': 4, '테우르기아': 4, '총격': 5,
-            '근접': 6, '방어': 7, '특수 스킬': 8, 'ONE MORE': 9, '아이템': 10
-        };
-
-        if (valueToIndex[actionName] !== undefined) {
-            // Special handling for HIGHLIGHT2 (J&C's second highlight)
-            if (actionName === 'HIGHLIGHT2') {
-                return `${list[3]} 2`;
-            }
-            return list[valueToIndex[actionName]];
+        if (Object.prototype.hasOwnProperty.call(valueToLabel, actionName)) {
+            return valueToLabel[actionName];
         }
 
         // Check for Skill N pattern
-        const skillMatch = actionName.match(/^스킬(\d+)$/);
+        const skillMatch = actionName.match(/^(?:스킬|Skill|スキル)\s?(\d+)$/i);
         if (skillMatch) {
             const num = parseInt(skillMatch[1]);
-            if (num >= 1 && num <= 3) {
-                return list[num - 1];
-            }
+            if (num === 1) return labels.skill1;
+            if (num === 2) return labels.skill2;
+            if (num === 3) return labels.skill3;
         }
 
         return actionName;
@@ -1202,15 +1265,7 @@ export class TacticUI {
         if (!char) return options;
 
         const lang = DataLoader.getCurrentLang();
-
-        // skillList order: 스킬1, 스킬2, 스킬3, HIGHLIGHT, 테우르기아, 총격, 근접, 방어, 공용스킬(header), ONE MORE, 아이템, 특수 스킬(action), 지원 스킬
-        const skillList = {
-            kr: ['스킬1', '스킬2', '스킬3', 'HIGHLIGHT', '테우르기아', '총격', '근접', '방어', '공용 스킬', 'ONE MORE', '아이템', '특수 스킬', '지원 스킬'],
-            en: ['Skill1', 'Skill2', 'Skill3', 'HIGHLIGHT', 'Theurgy', 'Gunshot', 'Melee', 'Defense', 'Common Skills', 'ONE MORE', 'Item', 'Special Skill', 'Support Skill'],
-            jp: ['スキル1', 'スキル2', 'スキル3', 'HIGHLIGHT', 'テウルギア', '銃撃', '近接攻撃', 'ガード', '共用スキル', '1more', 'アイテム', 'スペシャルスキル', 'サポートスキル']
-        };
-
-        const list = skillList[lang] || skillList.kr;
+        const labels = this.getActionLabels();
 
         if (char.type === 'wonder') {
             const wonderConfig = this.store.state.wonder;
@@ -1255,14 +1310,14 @@ export class TacticUI {
             });
 
             // Special actions for Wonder - no Theurgia (Wonder is not persona3)
-            options.push({ label: list[8], isHeader: true }); // 공용 스킬 header
-            options.push({ label: list[11], value: '특수 스킬' }); // 특수 스킬 action
-            options.push({ label: list[3], value: 'HIGHLIGHT' });
-            options.push({ label: list[5], value: '총격' });
-            options.push({ label: list[6], value: '근접' });
-            options.push({ label: list[7], value: '방어' });
-            options.push({ label: list[9], value: 'ONE MORE' });
-            options.push({ label: list[10], value: '아이템' });
+            options.push({ label: labels.commonSkillGroup, isHeader: true });
+            options.push({ label: labels.specialSkill, value: '특수 스킬' });
+            options.push({ label: labels.highlight, value: 'HIGHLIGHT' });
+            options.push({ label: labels.gun, value: '총격' });
+            options.push({ label: labels.melee, value: '근접' });
+            options.push({ label: labels.guard, value: '방어' });
+            options.push({ label: labels.oneMore, value: 'ONE MORE' });
+            options.push({ label: labels.item, value: '아이템' });
         } else {
             // Character skills - 스킬1, 스킬2, 스킬3 with element icons
             const charName = char.name;
@@ -1277,45 +1332,45 @@ export class TacticUI {
                 const highlight1Icon = this.getSkillElementIcon(charName, 'skill_highlight');
                 const highlight2Icon = this.getSkillElementIcon(charName, 'skill_highlight2');
 
-                options.push({ label: list[0], value: '스킬1', image: skill1Icon });
-                options.push({ label: list[1], value: '스킬2', image: skill2Icon });
-                options.push({ label: list[2], value: '스킬3', image: skill3Icon });
+                options.push({ label: labels.skill1, value: '스킬1', image: skill1Icon });
+                options.push({ label: labels.skill2, value: '스킬2', image: skill2Icon });
+                options.push({ label: labels.skill3, value: '스킬3', image: skill3Icon });
 
                 // Common actions
-                options.push({ label: list[8], isHeader: true }); // 공용 스킬 header
-                options.push({ label: list[11], value: '특수 스킬' }); // 특수 스킬 action
+                options.push({ label: labels.commonSkillGroup, isHeader: true });
+                options.push({ label: labels.specialSkill, value: '특수 스킬' });
                 // J&C has 2 HIGHLIGHTs
-                options.push({ label: `${list[3]} 1`, value: 'HIGHLIGHT', image: highlight1Icon });
-                options.push({ label: `${list[3]} 2`, value: 'HIGHLIGHT2', image: highlight2Icon });
-                options.push({ label: list[5], value: '총격' });
-                options.push({ label: list[6], value: '근접' });
-                options.push({ label: list[7], value: '방어' });
-                options.push({ label: list[9], value: 'ONE MORE' });
-                options.push({ label: list[10], value: '아이템' });
+                options.push({ label: `${labels.highlight} 1`, value: 'HIGHLIGHT', image: highlight1Icon });
+                options.push({ label: `${labels.highlight} 2`, value: 'HIGHLIGHT2', image: highlight2Icon });
+                options.push({ label: labels.gun, value: '총격' });
+                options.push({ label: labels.melee, value: '근접' });
+                options.push({ label: labels.guard, value: '방어' });
+                options.push({ label: labels.oneMore, value: 'ONE MORE' });
+                options.push({ label: labels.item, value: '아이템' });
             } else {
                 const skill1Icon = this.getSkillElementIcon(charName, 'skill1');
                 const skill2Icon = this.getSkillElementIcon(charName, 'skill2');
                 const skill3Icon = this.getSkillElementIcon(charName, 'skill3');
                 const highlightIcon = this.getSkillElementIcon(charName, 'skill_highlight');
 
-                options.push({ label: list[0], value: '스킬1', image: skill1Icon });
-                options.push({ label: list[1], value: '스킬2', image: skill2Icon });
-                options.push({ label: list[2], value: '스킬3', image: skill3Icon });
+                options.push({ label: labels.skill1, value: '스킬1', image: skill1Icon });
+                options.push({ label: labels.skill2, value: '스킬2', image: skill2Icon });
+                options.push({ label: labels.skill3, value: '스킬3', image: skill3Icon });
 
                 // Common actions
-                options.push({ label: list[8], isHeader: true }); // 공용 스킬 header
-                options.push({ label: list[11], value: '특수 스킬' }); // 특수 스킬 action
+                options.push({ label: labels.commonSkillGroup, isHeader: true });
+                options.push({ label: labels.specialSkill, value: '특수 스킬' });
                 if (isPersona3) {
-                    options.push({ label: list[4], value: 'Theurgia', image: highlightIcon });
-                    options.push({ label: list[12], value: '지원 스킬' }); // 지원 스킬 (persona3 only)
+                    options.push({ label: labels.theurgia, value: 'Theurgia', image: highlightIcon });
+                    options.push({ label: labels.supportSkill, value: '지원 스킬' });
                 } else {
-                    options.push({ label: list[3], value: 'HIGHLIGHT', image: highlightIcon });
+                    options.push({ label: labels.highlight, value: 'HIGHLIGHT', image: highlightIcon });
                 }
-                options.push({ label: list[5], value: '총격' });
-                options.push({ label: list[6], value: '근접' });
-                options.push({ label: list[7], value: '방어' });
-                options.push({ label: list[9], value: 'ONE MORE' });
-                options.push({ label: list[10], value: '아이템' });
+                options.push({ label: labels.gun, value: '총격' });
+                options.push({ label: labels.melee, value: '근접' });
+                options.push({ label: labels.guard, value: '방어' });
+                options.push({ label: labels.oneMore, value: 'ONE MORE' });
+                options.push({ label: labels.item, value: '아이템' });
             }
         }
         return options;
@@ -1476,7 +1531,7 @@ export class TacticUI {
         const hasMemo = !!(action.memo);
         item.innerHTML = `
             <div class="action-content-wrapper">
-                <div class="action-drag-handle" title="드래그하여 이동">
+                <div class="action-drag-handle" title="${this.getI18nText('actionDragMoveTooltip', '드래그하여 이동')}">
                     <svg width="10" height="14" viewBox="0 0 10 14" fill="currentColor">
                         <circle cx="2" cy="2" r="1.5"/>
                         <circle cx="8" cy="2" r="1.5"/>
@@ -2346,23 +2401,7 @@ export class TacticUI {
         if (!select) return;
 
         const lang = DataLoader.getCurrentLang();
-
-        // Skill labels from skillList (kr/en/jp)
-        const skillLabels = {
-            kr: ['스킬1', '스킬2', '스킬3'],
-            en: ['Skill1', 'Skill2', 'Skill3'],
-            jp: ['スキル1', 'スキル2', 'スキル3']
-        };
-
-        // Common action labels
-        const actionLabels = {
-            kr: { highlight: 'HIGHLIGHT', oneMore: 'ONE MORE', gun: '총격', melee: '근접', guard: '방어', item: '아이템', theurgia: '테우르기아', special: '공용 스킬', common: '공통 액션', support: '지원 스킬' },
-            en: { highlight: 'HIGHLIGHT', oneMore: 'ONE MORE', gun: 'Gunshot', melee: 'Melee', guard: 'Defense', item: 'Item', theurgia: 'Theurgy', special: 'Common Skill', common: 'Common Actions', support: 'Support Skill' },
-            jp: { highlight: 'HIGHLIGHT', oneMore: '1more', gun: '銃撃', melee: '近接攻撃', guard: 'ガード', item: 'アイテム', theurgia: 'テウルギア', special: '共用スキル', common: '共通アクション', support: 'サポートスキル' }
-        };
-
-        const skills = skillLabels[lang] || skillLabels.kr;
-        const actions = actionLabels[lang] || actionLabels.kr;
+        const labels = this.getActionLabels();
 
         select.innerHTML = '<option value="">-</option>';
 
@@ -2414,16 +2453,16 @@ export class TacticUI {
 
             // Special actions for Wonder - no Theurgia (Wonder is not persona3)
             const specialGroup = document.createElement('optgroup');
-            specialGroup.label = actions.special;
+            specialGroup.label = labels.commonSkillGroup;
 
             const specialActions = [
-                { label: actions.special, value: '특수 스킬' },
-                { label: actions.highlight, value: 'HIGHLIGHT' },
-                { label: actions.gun, value: '총격' },
-                { label: actions.melee, value: '근접' },
-                { label: actions.guard, value: '방어' },
-                { label: actions.oneMore, value: 'ONE MORE' },
-                { label: actions.item, value: '아이템' }
+                { label: labels.specialSkill, value: '특수 스킬' },
+                { label: labels.highlight, value: 'HIGHLIGHT' },
+                { label: labels.gun, value: '총격' },
+                { label: labels.melee, value: '근접' },
+                { label: labels.guard, value: '방어' },
+                { label: labels.oneMore, value: 'ONE MORE' },
+                { label: labels.item, value: '아이템' }
             ];
 
             specialActions.forEach(a => {
@@ -2435,10 +2474,11 @@ export class TacticUI {
             select.appendChild(specialGroup);
         } else {
             // Party member actions - 3 skills
+            const skillLabels = [labels.skill1, labels.skill2, labels.skill3];
             for (let i = 0; i < 3; i++) {
                 const opt = document.createElement('option');
                 opt.value = `스킬${i + 1}`;
-                opt.textContent = skills[i];
+                opt.textContent = skillLabels[i];
                 select.appendChild(opt);
             }
 
@@ -2450,19 +2490,19 @@ export class TacticUI {
 
             // Common actions
             const commonGroup = document.createElement('optgroup');
-            commonGroup.label = actions.common;
+            commonGroup.label = labels.commonActions;
 
             const commonActions = [
-                { label: actions.special, value: '특수 스킬' },
+                { label: labels.specialSkill, value: '특수 스킬' },
                 ...(isPersona3 ? [
-                    { label: actions.theurgia, value: 'Theurgia' },
-                    { label: actions.support, value: '지원 스킬' }
-                ] : [{ label: actions.highlight, value: 'HIGHLIGHT' }]),
-                { label: actions.gun, value: '총격' },
-                { label: actions.melee, value: '근접' },
-                { label: actions.guard, value: '방어' },
-                { label: actions.oneMore, value: 'ONE MORE' },
-                { label: actions.item, value: '아이템' }
+                    { label: labels.theurgia, value: 'Theurgia' },
+                    { label: labels.supportSkill, value: '지원 스킬' }
+                ] : [{ label: labels.highlight, value: 'HIGHLIGHT' }]),
+                { label: labels.gun, value: '총격' },
+                { label: labels.melee, value: '근접' },
+                { label: labels.guard, value: '방어' },
+                { label: labels.oneMore, value: 'ONE MORE' },
+                { label: labels.item, value: '아이템' }
             ];
 
             commonActions.forEach(a => {

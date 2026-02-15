@@ -23,6 +23,45 @@
             return false;
         },
 
+        getCurrentLang() {
+            if (window.MapsI18n && typeof window.MapsI18n.getCurrentLanguage === 'function') {
+                return window.MapsI18n.getCurrentLanguage();
+            }
+            return 'kr';
+        },
+
+        getMapsText(key, fallback = '', lang = null) {
+            const currentLang = lang || this.getCurrentLang();
+            if (window.MapsI18n && typeof window.MapsI18n.getText === 'function') {
+                const text = window.MapsI18n.getText(currentLang, key);
+                if (text && text !== key) return text;
+            }
+
+            if (window.MapsI18n && typeof window.MapsI18n.getPack === 'function') {
+                const krPack = window.MapsI18n.getPack('kr') || {};
+                if (Object.prototype.hasOwnProperty.call(krPack, key)) {
+                    return krPack[key];
+                }
+            }
+
+            return fallback || key;
+        },
+
+        getAdaptLabels(lang = null) {
+            const currentLang = lang || this.getCurrentLang();
+            let mapPack = null;
+            let fallbackPack = null;
+
+            if (window.MapsI18n && typeof window.MapsI18n.getPack === 'function') {
+                mapPack = window.MapsI18n.getPack(currentLang);
+                fallbackPack = window.MapsI18n.getPack('kr');
+            }
+
+            return (mapPack && mapPack.adaptLabels)
+                || (fallbackPack && fallbackPack.adaptLabels)
+                || {};
+        },
+
         // 오브젝트 클릭 상태 저장/로드
         getObjectClickedState(sn) {
             try {
@@ -104,24 +143,6 @@
         buildAdaptSprite(adapt) {
             // 디버그: adapt 데이터 출력
             console.log('Adapt data:', adapt);
-            
-            // 언어 감지 함수
-            function detectLang() {
-                try {
-                    const urlLang = new URLSearchParams(window.location.search).get('lang');
-                    if (urlLang && ['kr','en','jp','cn','tw','sea'].includes(urlLang)) return urlLang;
-                    const saved = localStorage.getItem('preferredLanguage');
-                    if (saved && ['kr','en','jp','cn','tw','sea'].includes(saved)) return saved;
-                    const nav = navigator.language || navigator.userLanguage;
-                    if (nav) {
-                        if (nav.startsWith('ko')) return 'kr';
-                        if (nav.startsWith('ja')) return 'jp';
-                        if (nav.startsWith('zh')) return 'cn';
-                        if (nav.startsWith('en')) return 'en';
-                    }
-                } catch (e) {}
-                return 'kr';
-            }
 
             // elements sprite offsets (borrowed from cha_detail.js logic)
             function elementOffsetPx(krName) {
@@ -134,14 +155,8 @@
                 Wind: '질풍', Psychokinesis: '염동', Nuclear: '핵열', Bless: '축복', Curse: '주원'
             };
 
-            const lang = detectLang();
-            const mapPack = (window.MapsI18n && window.MapsI18n.getPack)
-                ? window.MapsI18n.getPack(lang)
-                : null;
-            const fallbackPack = window.I18N_PAGE_MAPS_KR || {};
-            const ADAPT_LABELS = (mapPack && mapPack.adaptLabels)
-                || fallbackPack.adaptLabels
-                || {};
+            const lang = this.getCurrentLang();
+            const ADAPT_LABELS = this.getAdaptLabels(lang);
 
             const BASE = (typeof window !== 'undefined' && (window.BASE_URL || window.SITE_BASEURL)) || '';
             const wrap = document.createElement('div');
@@ -150,12 +165,13 @@
             img.className = 'elements-sprite';
             img.alt = 'elements';
             img.src = `${BASE}/assets/img/character-detail/elements.png`;
+            const elementFallbackText = this.getMapsText('enemyElementFallback', '속성', lang);
             
             // 이미지 로드 실패 시 대체 처리
             img.onerror = function() {
                 this.style.display = 'none';
                 const fallback = document.createElement('div');
-                fallback.textContent = '속성';
+                fallback.textContent = elementFallbackText;
                 fallback.style.cssText = 'height: 32px; display: flex; align-items: center; justify-content: center; background: #333; color: #999; font-size: 12px; border-radius: 4px;';
                 this.parentNode.insertBefore(fallback, this);
             };
@@ -206,38 +222,17 @@
         showEnemyModal(enemyData, sprite) {
             if (!enemyData) return;
 
-            // 언어 감지
-            function detectLang() {
-                try {
-                    const urlLang = new URLSearchParams(window.location.search).get('lang');
-                    if (urlLang && ['kr','en','jp','cn','tw','sea'].includes(urlLang)) return urlLang;
-                    const saved = localStorage.getItem('preferredLanguage');
-                    if (saved && ['kr','en','jp','cn','tw','sea'].includes(saved)) return saved;
-                    const nav = navigator.language || navigator.userLanguage;
-                    if (nav) {
-                        if (nav.startsWith('ko')) return 'kr';
-                        if (nav.startsWith('ja')) return 'jp';
-                        if (nav.startsWith('zh')) return 'cn';
-                        if (nav.startsWith('en')) return 'en';
-                    }
-                } catch (e) {}
-                return 'kr';
-            }
-            const lang = detectLang();
+            const lang = this.getCurrentLang();
             const mapKeyMap = {
                 title: 'enemyInfoTitle',
                 defeated: 'enemyDefeated',
                 undo: 'enemyUndo',
                 relativeLevel: 'enemyRelativeLevel'
             };
-            const fallbackPack = window.I18N_PAGE_MAPS_KR || {};
             const getText = (key) => {
                 const mapKey = mapKeyMap[key];
                 if (!mapKey) return key;
-                if (window.MapsI18n && window.MapsI18n.getText) {
-                    return window.MapsI18n.getText(lang, mapKey) || fallbackPack[mapKey] || key;
-                }
-                return fallbackPack[mapKey] || key;
+                return this.getMapsText(mapKey, key, lang);
             };
 
             // 모달 오버레이 생성

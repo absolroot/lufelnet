@@ -87,7 +87,10 @@ export class CaptureUI {
     async captureAndDownload() {
         // Check if html-to-image is loaded
         if (typeof htmlToImage === 'undefined') {
-            alert('Image capture library not loaded. Please refresh the page.');
+            const message = (window.I18nService && window.I18nService.t)
+                ? window.I18nService.t('captureLibraryMissing', '이미지 캡처 라이브러리를 불러오지 못했습니다. 페이지를 새로고침해주세요.')
+                : '이미지 캡처 라이브러리를 불러오지 못했습니다. 페이지를 새로고침해주세요.';
+            alert(message);
             return;
         }
 

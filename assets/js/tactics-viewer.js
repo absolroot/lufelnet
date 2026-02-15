@@ -62,7 +62,16 @@ function mergeCharacterData(krData, langData) {
 }
 
 function isSpoilerEnabled() {
-    return localStorage.getItem('spoilerToggle') === 'true';
+    try {
+        if (window.SpoilerState && typeof window.SpoilerState.get === 'function') {
+            return !!window.SpoilerState.get();
+        }
+    } catch (_) { }
+    try {
+        return localStorage.getItem('spoilerToggle') === 'true';
+    } catch (_) {
+        return false;
+    }
 }
 
 async function ensureCharacterDataLoaded() {
@@ -131,6 +140,7 @@ class TacticsViewer {
         this.currentLang = getCurrentLanguage();
         this.currentUser = null;
         this.selectedCharacters = [];
+        this.isApplyingSpoiler = false;
 
         this.init();
     }
@@ -527,25 +537,45 @@ class TacticsViewer {
         const spoilerToggleText = document.getElementById('spoilerToggleText');
         if (!spoilerToggle || !spoilerToggleText) return;
 
-        // 저장된 상태 복원
-        const savedState = localStorage.getItem('spoilerToggle') === 'true';
-        spoilerToggle.checked = savedState;
-
-        // 이벤트 리스너
-        spoilerToggle.addEventListener('change', function () {
-            const isEnabled = this.checked;
-            localStorage.setItem('spoilerToggle', isEnabled.toString());
-            window.location.reload();
-        });
-
         // 컨테이너 표시 여부 (KR 제외)
         const container = document.querySelector('.spoiler-toggle-container');
+        if (window.SpoilerState && typeof window.SpoilerState.bindCheckbox === 'function') {
+            window.SpoilerState.bindCheckbox({
+                checkbox: spoilerToggle,
+                container,
+                displayStyle: 'flex',
+                lang: this.currentLang,
+                source: 'tactics-viewer',
+                onChange: async () => {
+                    if (this.isApplyingSpoiler) return;
+                    this.isApplyingSpoiler = true;
+                    try {
+                        await ensureCharacterDataLoaded();
+                        this.initCharacterFilter();
+                        this.applyFilters();
+                        this.renderTactics();
+                    } finally {
+                        this.isApplyingSpoiler = false;
+                    }
+                }
+            });
+            return;
+        }
+
+        // Fallback
+        const savedState = localStorage.getItem('spoilerToggle') === 'true';
+        spoilerToggle.checked = savedState;
+        spoilerToggle.addEventListener('change', async () => {
+            const isEnabled = spoilerToggle.checked;
+            localStorage.setItem('spoilerToggle', isEnabled.toString());
+            await ensureCharacterDataLoaded();
+            this.initCharacterFilter();
+            this.applyFilters();
+            this.renderTactics();
+        });
+
         if (container) {
-            if (this.currentLang === 'kr') {
-                container.style.display = 'none';
-            } else {
-                container.style.display = 'flex';
-            }
+            container.style.display = this.currentLang === 'kr' ? 'none' : 'flex';
         }
     }
 

@@ -550,13 +550,16 @@ export class PersonaModal extends EventEmitter {
     renderActiveTags() {
         const container = this.modal.querySelector('.persona-active-filters');
         container.innerHTML = '';
+        const removeLabel = (window.I18nService && window.I18nService.t)
+            ? window.I18nService.t('common.remove', '제거')
+            : '제거';
 
         const createTag = (text, type, value, iconSrc) => {
             const tag = document.createElement('div');
             tag.className = 'filter-tag';
             let iconHtml = iconSrc ? `<img src="${iconSrc}" alt="" onerror="this.style.display='none'">` : '';
             const textHtml = text ? `<span>${text}</span>` : '';
-            tag.innerHTML = `${iconHtml}${textHtml}<button class="filter-tag-close" aria-label="Remove">&times;</button>`;
+            tag.innerHTML = `${iconHtml}${textHtml}<button class="filter-tag-close" aria-label="${removeLabel}">&times;</button>`;
 
             tag.querySelector('.filter-tag-close').addEventListener('click', (e) => {
                 e.stopPropagation();

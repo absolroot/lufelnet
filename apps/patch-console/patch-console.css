@@ -467,6 +467,7 @@ button {
 
 .field input,
 .field select,
+.field textarea,
 .ignored-filter-input,
 .parts-toggle,
 .data-form-input {
@@ -482,6 +483,7 @@ button {
 
 .field input:focus,
 .field select:focus,
+.field textarea:focus,
 .ignored-filter-input:focus,
 .parts-toggle:focus,
 .data-form-input:focus,
@@ -1410,6 +1412,21 @@ td.empty {
   gap: 8px;
   align-items: center;
   cursor: pointer;
+  position: relative;
+  transition: background-color 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
+}
+
+.revelation-admin-card-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 3px;
+  border-radius: 999px;
+  background: #2563eb;
+  opacity: 0;
+  transition: opacity 120ms ease;
 }
 
 .revelation-admin-card-item:last-child {
@@ -1418,10 +1435,22 @@ td.empty {
 
 .revelation-admin-card-item:hover {
   background: #f8fafc;
+  box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.18);
 }
 
 .revelation-admin-card-item.active {
   background: #dbeafe;
+  box-shadow: inset 0 0 0 1px #93c5fd;
+}
+
+.revelation-admin-card-item.active::before {
+  opacity: 1;
+}
+
+.revelation-admin-card-item:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+  z-index: 1;
 }
 
 .revelation-admin-card-main {
@@ -1495,7 +1524,7 @@ td.empty {
   align-items: center;
   gap: 8px;
   flex-wrap: wrap;
-  margin-bottom: 6px;
+  margin-bottom: 10px;
 }
 
 .revelation-admin-meta span {
@@ -1514,8 +1543,119 @@ td.empty {
   gap: 8px;
 }
 
+#rev-admin-detail,
+#rev-admin-create {
+  border-radius: 12px;
+  border-color: #dbe5f2;
+  background:
+    linear-gradient(180deg, #ffffff 0%, #fcfdff 100%);
+}
+
+#rev-admin-detail.is-dirty {
+  border-color: #fdba74;
+  box-shadow: 0 0 0 3px rgba(251, 146, 60, 0.16);
+}
+
+#rev-admin-detail .group-head,
+#rev-admin-create .group-head {
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.revelation-admin-hero {
+  display: grid;
+  grid-template-columns: 66px minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 9px;
+  border: 1px solid #dbe5f2;
+  border-radius: 11px;
+  background: linear-gradient(180deg, #f8fbff 0%, #f2f8ff 100%);
+}
+
+.revelation-admin-hero-icon {
+  width: 66px;
+  height: 66px;
+  border-radius: 14px;
+  border: 1px solid #bfdbfe;
+  background: #eff6ff;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  color: #475569;
+  font-size: 0.69rem;
+}
+
+.revelation-admin-hero-icon img,
+.revelation-admin-hero-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.revelation-admin-hero-thumb.revelation-admin-thumb-fallback {
+  display: grid;
+  place-items: center;
+}
+
+.revelation-admin-hero-copy {
+  min-width: 0;
+}
+
+.revelation-admin-hero-copy h3 {
+  margin: 2px 0 3px;
+  font-size: 1rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: #0f172a;
+}
+
+.revelation-admin-hero-copy p {
+  margin: 0;
+}
+
+#rev-admin-dirty-state {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 9px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: #334155;
+  background: #f8fafc;
+}
+
+#rev-admin-dirty-state.is-clean {
+  color: #166534;
+  border-color: #bbf7d0;
+  background: #f0fdf4;
+}
+
+#rev-admin-dirty-state.is-dirty {
+  color: #9a3412;
+  border-color: #fdba74;
+  background: #fff7ed;
+}
+
+#rev-admin-detail .field,
+#rev-admin-create .field {
+  margin-bottom: 0;
+}
+
+#rev-admin-detail .field label,
+#rev-admin-create .field label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
 .names-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1fr;
 }
 
 .common-grid {
@@ -1530,6 +1670,49 @@ td.empty {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.revelation-inline-field {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  align-items: center;
+  gap: 9px;
+}
+
+.revelation-inline-field > label {
+  margin: 0;
+  justify-content: center;
+  min-height: 34px;
+  border: 1px solid #dbe5f2;
+  border-radius: 8px;
+  padding: 0 8px;
+  background: #f8fafc;
+  color: #475569;
+  font-size: 0.72rem;
+  font-weight: 800;
+  line-height: 1.2;
+  text-align: center;
+  letter-spacing: 0.01em;
+}
+
+.revelation-inline-field-kr .field-inline {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+}
+
+.revelation-inline-field-textarea {
+  align-items: flex-start;
+}
+
+.revelation-inline-field-textarea > label {
+  padding-block: 7px;
+  min-height: auto;
+}
+
+.revelation-inline-field textarea {
+  min-height: 74px;
+  resize: vertical;
+}
+
 .revelation-admin-branch {
   border: 1px solid var(--border);
   border-radius: 10px;
@@ -1539,57 +1722,201 @@ td.empty {
 }
 
 .revelation-admin-branch h3 {
-  margin: 0 0 8px;
+  margin: 0 0 10px;
   font-size: 0.84rem;
-  color: #334155;
+  color: #1e293b;
+  letter-spacing: 0.01em;
 }
 
 .revelation-admin-sub-options {
-  border: 1px solid var(--border);
+  border: 1px solid #dbe5f2;
   border-radius: 9px;
   padding: 8px;
   max-height: 220px;
   overflow: auto;
   display: grid;
   gap: 6px;
+  background: #f8fbff;
 }
 
 .revelation-admin-sub-option {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 34px minmax(0, 1fr);
   align-items: center;
   gap: 8px;
-  font-size: 0.8rem;
+  font-size: 0.76rem;
   color: #334155;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 7px 8px;
+  background: #fff;
+}
+
+.revelation-admin-sub-option input[type="checkbox"] {
+  margin: 0;
+}
+
+.revelation-admin-sub-option-icon-wrap {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  border: 1px solid #dbe5f2;
+  overflow: hidden;
+  background: #f8fafc;
+  display: grid;
+  place-items: center;
+}
+
+.revelation-admin-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.revelation-admin-thumb-fallback {
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: #64748b;
+}
+
+.revelation-admin-sub-option-copy {
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+}
+
+.revelation-admin-sub-option-copy strong {
+  font-size: 0.77rem;
+  color: #0f172a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.revelation-admin-sub-option-copy small {
+  margin: 0;
+  font-size: 0.71rem;
+  color: #475569;
+  line-height: 1.25;
+  white-space: normal;
+}
+
+.revelation-admin-sub-option:hover {
+  border-color: #cbd5e1;
+}
+
+.revelation-admin-sub-option:has(input:checked) {
+  border-color: #93c5fd;
+  background: #eff6ff;
+}
+
+.revelation-admin-sub-option:has(input:checked) .revelation-admin-sub-option-copy strong,
+.revelation-admin-sub-option:has(input:checked) .revelation-admin-sub-option-copy small {
+  color: #1e40af;
 }
 
 .revelation-admin-main-effects {
   display: grid;
-  gap: 8px;
+  gap: 10px;
+  margin-top: 6px;
 }
 
 .revelation-admin-main-effect-row {
-  border: 1px solid var(--border);
+  border: 1px solid #dbe5f2;
   border-radius: 9px;
-  padding: 8px;
-  background: #f8fafc;
+  padding: 9px;
+  background: linear-gradient(180deg, #f8fbff 0%, #f3f8ff 100%);
 }
 
-.revelation-admin-main-effect-row h4 {
-  margin: 0 0 8px;
-  font-size: 0.76rem;
-  color: #334155;
-}
-
-.revelation-admin-main-effect-grid {
+.revelation-admin-main-effect-head {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 40px minmax(0, 1fr);
+  gap: 9px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.revelation-admin-main-effect-icon-wrap {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid #bfdbfe;
+  overflow: hidden;
+  background: #eff6ff;
+  display: grid;
+  place-items: center;
+}
+
+.revelation-admin-main-effect-copy {
+  min-width: 0;
+}
+
+.revelation-admin-main-effect-copy h4 {
+  margin: 0;
+  font-size: 0.79rem;
+  color: #1e3a8a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.revelation-admin-main-effect-copy p {
+  margin: 2px 0 0;
+}
+
+.revelation-admin-main-effect-lines {
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 8px;
+}
+
+.revelation-admin-lang-line {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr);
+  gap: 8px;
+  align-items: flex-start;
+  border: 1px solid #dbe5f2;
+  border-radius: 8px;
+  padding: 7px;
+  background: #fff;
+}
+
+.revelation-admin-lang-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
+  border-radius: 7px;
+  border: 1px solid #cbd5e1;
+  background: #f8fafc;
+  color: #475569;
+  font-size: 0.71rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+}
+
+.revelation-admin-lang-line textarea {
+  min-height: 68px;
+  resize: vertical;
+}
+
+.sub-effects-grid .revelation-inline-field {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px;
+  background: #fff;
 }
 
 .revelation-admin-chip-list {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
+  min-height: 36px;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  padding: 6px;
+  background: #f8fafc;
 }
 
 .revelation-admin-chip {
@@ -1601,6 +1928,19 @@ td.empty {
   font-size: 0.72rem;
   color: #334155;
   background: #f8fafc;
+}
+
+#rev-admin-detail .actions,
+#rev-admin-create .actions {
+  justify-content: flex-end;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--border);
+}
+
+#rev-admin-detail .actions .btn.primary,
+#rev-admin-create .actions .btn.primary {
+  min-width: 126px;
 }
 
 .muted {
@@ -1726,10 +2066,14 @@ td.empty {
   .names-grid,
   .common-grid,
   .sub-effects-grid,
-  .revelation-admin-main-effect-grid,
+  .revelation-admin-main-effect-lines,
   .create-top-grid,
   .revelation-admin-filter-row {
     grid-template-columns: 1fr;
+  }
+
+  .revelation-inline-field {
+    grid-template-columns: 86px minmax(0, 1fr);
   }
 }
 
@@ -1763,6 +2107,26 @@ td.empty {
   .ignored-filter-grid,
   .data-form-row {
     grid-template-columns: 1fr;
+  }
+
+  .revelation-admin-hero {
+    grid-template-columns: 56px minmax(0, 1fr);
+  }
+
+  .revelation-admin-hero-icon {
+    width: 56px;
+    height: 56px;
+  }
+
+  .revelation-inline-field,
+  .revelation-inline-field-textarea {
+    grid-template-columns: 72px minmax(0, 1fr);
+    gap: 7px;
+  }
+
+  .revelation-admin-lang-line {
+    grid-template-columns: 46px minmax(0, 1fr);
+    gap: 7px;
   }
 
   .actions.three > *,

@@ -41,6 +41,22 @@
         return 'kr';
     }
 
+    function getMapsText(lang, key, fallback = '') {
+        if (window.MapsI18n && typeof window.MapsI18n.getText === 'function') {
+            const text = window.MapsI18n.getText(lang, key);
+            if (text && text !== key) return text;
+        }
+
+        if (window.MapsI18n && typeof window.MapsI18n.getPack === 'function') {
+            const krPack = window.MapsI18n.getPack('kr') || {};
+            if (Object.prototype.hasOwnProperty.call(krPack, key)) {
+                return krPack[key];
+            }
+        }
+
+        return fallback || key;
+    }
+
     // 전역 변수
     let app;
     let mapContainer;
@@ -141,7 +157,9 @@
                 console.error('PixiJS 초기화 실패:', error);
                 const loadingText = document.getElementById('loading-text');
                 if (loadingText) {
-                    loadingText.textContent = 'PixiJS 초기화 실패: ' + error.message;
+                    const lang = getCurrentLanguage();
+                    const message = getMapsText(lang, 'pixiInitError', 'PixiJS 초기화 실패');
+                    loadingText.textContent = `${message}: ${error.message}`;
                 }
                 return false;
             }
@@ -1337,15 +1355,10 @@
             } catch (error) {
                 console.error('맵 로드 실패:', error);
                 const loadingText = document.getElementById('loading-text');
-                // lang en jp 인 경우 영어 또는 일본어로 표시
-                if (lang === 'en' || lang === 'jp') {
-                    if (loadingText) {
-                        loadingText.textContent = 'Map load failed: ' + error.message;
-                    }
-                } else {
-                    if (loadingText) {
-                        loadingText.textContent = '맵 로드 실패: ' + error.message;
-                    }
+                if (loadingText) {
+                    const currentLang = getCurrentLanguage();
+                    const message = getMapsText(currentLang, 'mapLoadError', '맵을 불러오는데 실패했습니다.');
+                    loadingText.textContent = `${message} (${error.message})`;
                 }
             }
         },

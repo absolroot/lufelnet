@@ -20,6 +20,33 @@
             mindscape_core: 0, emblem_5star: 0, innate_seed: 0
         }
     };
+    let isApplyingSpoiler = false;
+
+    async function applySpoilerState(enabled) {
+        if (isApplyingSpoiler) return;
+        isApplyingSpoiler = true;
+        try {
+            STATE.spoiler = !!enabled;
+            await loadCharacterData();
+
+            const pageToggle = document.getElementById('spoilerToggle');
+            if (pageToggle && pageToggle.checked !== STATE.spoiler) {
+                pageToggle.checked = STATE.spoiler;
+            }
+
+            const modalToggle = document.getElementById('modalSpoilerCB');
+            if (modalToggle && modalToggle.checked !== STATE.spoiler) {
+                modalToggle.checked = STATE.spoiler;
+            }
+
+            const modal = document.getElementById('characterSelectModal');
+            if (modal && modal.getAttribute('aria-hidden') !== 'true') {
+                renderCharacterSelect();
+            }
+        } finally {
+            isApplyingSpoiler = false;
+        }
+    }
 
     // 레벨 돌파 요구량은 material_costs.js 의 level 섹션을 사용합니다.
 
@@ -295,7 +322,13 @@
                 const span = document.createElement('span'); span.textContent = t('showSpoiler');
                 holder.appendChild(cb); holder.appendChild(span);
                 filterWrap.appendChild(holder);
-                cb.onchange = async () => { STATE.spoiler = cb.checked; await loadCharacterData(); renderCharacterSelect(); };
+                cb.onchange = async () => {
+                    if (window.SpoilerState && typeof window.SpoilerState.set === 'function') {
+                        window.SpoilerState.set(cb.checked, { source: 'material-calc-modal' });
+                        return;
+                    }
+                    await applySpoilerState(cb.checked);
+                };
             }
             const cb = document.getElementById('modalSpoilerCB'); if (cb) cb.checked = !!STATE.spoiler;
         }
@@ -1398,6 +1431,9 @@
     async function boot() {
         // 다국어 문구 적용
         STATE.lang = (typeof getCurrentLanguage === 'function' ? getCurrentLanguage() : 'kr') || 'kr';
+        if (window.SpoilerState && typeof window.SpoilerState.get === 'function') {
+            STATE.spoiler = !!window.SpoilerState.get();
+        }
         document.querySelectorAll('[data-lang-key]').forEach(el => {
             const key = el.getAttribute('data-lang-key');
             el.textContent = t(key);
@@ -1408,7 +1444,28 @@
         const spoilerWrap = document.getElementById('spoilerContainer');
         if (spoilerWrap) spoilerWrap.style.display = (STATE.lang === 'en' || STATE.lang === 'jp') ? 'flex' : 'none';
         const spoilerToggle = document.getElementById('spoilerToggle');
-        if (spoilerToggle) { spoilerToggle.onchange = async () => { STATE.spoiler = spoilerToggle.checked; await loadCharacterData(); renderCharacterSelect(); }; }
+        if (window.SpoilerState && typeof window.SpoilerState.subscribe === 'function' && !window.__materialCalcSpoilerSubscribed) {
+            window.__materialCalcSpoilerSubscribed = true;
+            window.SpoilerState.subscribe(({ enabled }) => {
+                applySpoilerState(enabled);
+            });
+        }
+        if (spoilerToggle) {
+            if (window.SpoilerState && typeof window.SpoilerState.bindCheckbox === 'function') {
+                window.SpoilerState.bindCheckbox({
+                    checkbox: spoilerToggle,
+                    container: spoilerWrap,
+                    displayStyle: 'flex',
+                    lang: STATE.lang,
+                    source: 'material-calc-header'
+                });
+            } else {
+                spoilerToggle.onchange = async () => {
+                    await applySpoilerState(spoilerToggle.checked);
+                };
+                spoilerToggle.checked = !!STATE.spoiler;
+            }
+        }
 
         // 데이터 로드
         await loadCharacterData();

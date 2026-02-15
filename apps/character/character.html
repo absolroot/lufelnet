@@ -708,6 +708,78 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
 <!-- 스크립트 ----------------------------------------------------------------------->
 
 <script>
+    function fetchWithRevalidate(url, options = {}) {
+        return fetch(url, { cache: 'no-cache', ...options });
+    }
+
+    (function initCharacterPerf() {
+        const enabled = new URLSearchParams(window.location.search).get('perf') === '1';
+        const store = window.__CHAR_PERF__ || {};
+        store.enabled = !!enabled;
+        store.marks = Array.isArray(store.marks) ? store.marks : [];
+        store.mark = function (label) {
+            if (!this.enabled) return;
+            const entry = { label, ts: Date.now() };
+            this.marks.push(entry);
+            try { console.log(`[CHAR_PERF] ${label}`, entry.ts); } catch (_) { }
+        };
+        window.__CHAR_PERF__ = store;
+    })();
+
+    const CHAR_TRANSLATE_DEBOUNCE_MS = 120;
+    let charTranslateTimer = null;
+    let charTranslateInFlight = false;
+    let charTranslateQueuedRoot = null;
+
+    function runTranslateNow(root = document) {
+        if (typeof window.translateStatTexts === 'function') {
+            window.translateStatTexts(root);
+            return;
+        }
+        if (window.I18NUtils && typeof I18NUtils.translateStatTexts === 'function') {
+            I18NUtils.translateStatTexts(root);
+        }
+    }
+
+    function scheduleTranslate(root = document) {
+        const targetRoot = root || document;
+        if (charTranslateTimer) clearTimeout(charTranslateTimer);
+        charTranslateTimer = setTimeout(() => {
+            if (charTranslateInFlight) {
+                charTranslateQueuedRoot = targetRoot;
+                return;
+            }
+            charTranslateInFlight = true;
+            try {
+                runTranslateNow(targetRoot);
+            } catch (e) {
+                console.warn('[SAFE:scheduleTranslate]', e);
+            } finally {
+                charTranslateInFlight = false;
+                if (charTranslateQueuedRoot) {
+                    const queued = charTranslateQueuedRoot;
+                    charTranslateQueuedRoot = null;
+                    scheduleTranslate(queued);
+                }
+            }
+        }, CHAR_TRANSLATE_DEBOUNCE_MS);
+    }
+
+    function runWhenIdle(task, timeout = 300) {
+        if (typeof task !== 'function') return;
+        if (typeof window.requestIdleCallback === 'function') {
+            window.requestIdleCallback(() => {
+                try { task(); } catch (e) { console.warn('[SAFE:runWhenIdle]', e); }
+            }, { timeout });
+            return;
+        }
+        setTimeout(() => {
+            try { task(); } catch (e) { console.warn('[SAFE:runWhenIdle]', e); }
+        }, 0);
+    }
+
+    window.scheduleTranslate = scheduleTranslate;
+
     document.addEventListener('DOMContentLoaded', async function () {
         // 안전 실행 유틸리티: 개별 블록에서 오류가 나도 전체 흐름을 막지 않음
         const safeRun = (name, fn) => { try { return fn && fn(); } catch (e) { console.warn(`[SAFE:${name}]`, e); } };
@@ -843,7 +915,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 // party.js 는 없는 캐릭터가 많으므로, <script> 삽입 대신 fetch로 조용히 시도
                 if (fileBase === 'party' || fileBase === 'innate') {
                     try {
-                        const resp = await fetch(baseJs, { cache: 'no-store' });
+                        const resp = await fetchWithRevalidate(baseJs);
                         if (!resp || !resp.ok) {
                             // 파일이 없으면 조용히 실패 처리 (404 등 콘솔 에러 최소화)
                             return false;
@@ -1045,6 +1117,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         await safeAwait('loadLanguageData', loadLanguageData());
         // 계시 다국어 데이터도 먼저 로드 (EN/JP에서 최초 렌더부터 번역 적용)
         await safeAwait('loadRevelationDataByLanguage', loadRevelationDataByLanguage());
+        safeRun('refreshRevelationDisplay', () => setTimeout(refreshRevelationDisplay, 100));
 
         const character = characterData[characterName];
 
@@ -1789,12 +1862,16 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                 const weaponStats = document.createElement('div');
                 weaponStats.className = 'weapon-stats';
                 // 현재 언어 라벨 계산 (I18NUtils 폴백 포함)
-                const _lang = (typeof I18NUtils !== 'undefined' && I18NUtils.getCurrentLanguageSafe) ? I18NUtils.getCurrentLanguageSafe() : (typeof getCurrentLanguage === 'function' ? getCurrentLanguage() : 'kr');
-                const _dict = (typeof I18NUtils !== 'undefined' && I18NUtils.statTranslations && I18NUtils.statTranslations[_lang]) ? I18NUtils.statTranslations[_lang] : null;
-                const _label = (ko) => (_dict && _dict[ko]) ? _dict[ko] : ko;
-                const _healthLabel = _label('생명');
-                const _attackLabel = _label('공격력');
-                const _defenseLabel = _label('방어력');
+                const _lang = (typeof getCurrentLanguage === 'function') ? getCurrentLanguage() : 'kr';
+                const _fallbackStatLabel = {
+                    kr: { hp: 'HP', atk: 'ATK', def: 'DEF' },
+                    en: { hp: 'HP', atk: 'ATK', def: 'DEF' },
+                    jp: { hp: 'HP', atk: 'ATK', def: 'DEF' }
+                };
+                const _labelSet = _fallbackStatLabel[_lang] || _fallbackStatLabel.kr;
+                const _healthLabel = getCharacterI18nText('characterStatsLabelHp', _labelSet.hp);
+                const _attackLabel = getCharacterI18nText('characterStatsLabelAtk', _labelSet.atk);
+                const _defenseLabel = getCharacterI18nText('characterStatsLabelDef', _labelSet.def);
 
                 // 소숫점 스탯을 모두 정수로 반올림하여 표시
                 const _roundStat = (val) => {
@@ -1869,29 +1946,33 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
 
             }
 
-            // 무기 로드 후 스탯 텍스트 번역 적용 (안전 폴백 포함)
-            setTimeout(() => {
-                try {
-                    if (typeof window.translateStatTexts === 'function') {
-                        window.translateStatTexts();
-                    } else if (window.I18NUtils && typeof I18NUtils.translateStatTexts === 'function') {
-                        I18NUtils.translateStatTexts(document);
-                    }
-                } catch (_) { }
-            }, 100);
+            // 무기 렌더 이후 번역은 디바운스 큐로 합쳐서 실행
+            scheduleTranslate(document.querySelector('.weapons-card') || document);
 
             addTooltips();
 
         }
 
-        // 캐릭터 로드 시 무기 정보도 함께 로드
-        try { if (characterName && characterData[characterName]) { loadWeapons(characterName, 'mixed'); } } catch (e) { console.warn('[SAFE:loadWeapons-init]', e); }
+        // 무기 섹션은 idle 시점에 지연 렌더
+        runWhenIdle(() => {
+            try { if (characterName && characterData[characterName]) { loadWeapons(characterName, 'mixed'); } } catch (e) { console.warn('[SAFE:loadWeapons-init]', e); }
+        });
 
-        // 추천 페르소나와 파티 로드
-        try { loadRecommendations(characterName); } catch (e) { console.warn('[SAFE:loadRecommendations]', e); }
+        // 글로벌 서버 캐릭터 목록/출시 상태를 먼저 반영
+        await safeAwait('loadCharacterList', loadCharacterList());
+        try {
+            const currentLang = getCurrentLanguage();
+            if (characterName && currentLang !== 'kr') {
+                const selfReleased = await isCharacterReleased(characterName);
+                if (!selfReleased) spoilerDisabled = true;
+            }
+        } catch (e) { console.warn('[SAFE:check-self-released]', e); }
 
-        // 툴팁 추가
-        try { addTooltips(); } catch (e) { console.warn('[SAFE:addTooltips]', e); }
+        // 하위 섹션(추천/툴팁)은 idle 시점에 지연 로드
+        runWhenIdle(() => {
+            try { loadRecommendations(characterName); } catch (e) { console.warn('[SAFE:loadRecommendations]', e); }
+            try { addTooltips(); } catch (e) { console.warn('[SAFE:addTooltips]', e); }
+        });
 
         // 버튼 이벤트 리스너 추가
         const enhancementButtons = document.querySelectorAll('.enhancement-btn');
@@ -2039,25 +2120,23 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
 
     // MutationObserver를 사용해 동적 콘텐츠 변경 감지
     const observer = new MutationObserver((mutations) => {
-        let shouldTranslate = false;
-        mutations.forEach((mutation) => {
-            if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
-                shouldTranslate = true;
-            }
-        });
-
-        if (shouldTranslate && typeof window.translateStatTexts === 'function') {
-            setTimeout(() => {
-                window.translateStatTexts();
-            }, 100);
-        }
+        const shouldTranslate = mutations.some((mutation) =>
+            (mutation.type === 'childList' && mutation.addedNodes.length > 0)
+            || mutation.type === 'characterData'
+        );
+        if (!shouldTranslate) return;
+        scheduleTranslate(document.querySelector('.main-wrapper') || document);
     });
 
     // 관찰 시작
-    observer.observe(document.body, {
-        childList: true,
-        subtree: true
-    });
+    const observerTarget = document.querySelector('.main-wrapper');
+    if (observerTarget) {
+        observer.observe(observerTarget, {
+            childList: true,
+            characterData: true,
+            subtree: true
+        });
+    }
 
     // 언어별 계시 데이터 로드
     function loadRevelationDataByLanguage() {
@@ -2066,7 +2145,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         return new Promise((resolve) => {
             if (currentLang === 'en') {
                 // 영어 계시 데이터 로드
-                fetch(`${BASE_URL}/data/en/revelations/revelations.js?v=${APP_VERSION}`, { cache: 'no-store' })
+                fetchWithRevalidate(`${BASE_URL}/data/en/revelations/revelations.js?v=${APP_VERSION}`)
                     .then(response => response.text())
                     .then(scriptContent => {
                         // revelationData를 enRevelationData로 변경해서 실행
@@ -2081,7 +2160,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
                     });
             } else if (currentLang === 'jp') {
                 // 일본어 계시 데이터는 영어 데이터와 동일하게 사용
-                fetch(`${BASE_URL}/data/jp/revelations/revelations.js?v=${APP_VERSION}`, { cache: 'no-store' })
+                fetchWithRevalidate(`${BASE_URL}/data/jp/revelations/revelations.js?v=${APP_VERSION}`)
                     .then(response => response.text())
                     .then(scriptContent => {
                         // revelationData를 jpRevelationData로 변경해서 실행
@@ -2142,24 +2221,12 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         }
     }
 
-    // 페이지 로드 후 언어별 계시 데이터 로드
-    loadRevelationDataByLanguage().then(() => {
-        // 데이터 로드 완료 후 계시 표시 새로고침
-        setTimeout(refreshRevelationDisplay, 100);
-    });
-
-
     // 공통 번역 유틸로 적용 함수 위임 (중복 로직 제거)
     try {
         applyTranslations = function () {
             try { if (window.CharI18N && typeof CharI18N.applySectionLabels === 'function') { CharI18N.applySectionLabels(); } } catch (e) { console.warn('[CharI18N:applySectionLabels]', e); }
-            try {
-                if (typeof window.translateStatTexts === 'function') {
-                    window.translateStatTexts();
-                } else if (window.I18NUtils && typeof I18NUtils.translateStatTexts === 'function') {
-                    I18NUtils.translateStatTexts();
-                }
-            } catch (e) { console.warn('[I18N:translateStatTexts]', e); }
+            try { if (typeof window.localizeCharacterStatsCard === 'function') { window.localizeCharacterStatsCard(); } } catch (e) { console.warn('[cha_stats:localizeCharacterStatsCard]', e); }
+            scheduleTranslate(document.querySelector('.main-wrapper') || document);
         };
     } catch (e) { console.warn('[I18N:override-applyTranslations]', e); }
     // 추천 페르소나와 파티 로드 함수
@@ -2280,10 +2347,18 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
     async function ensureKrNameData() {
         if (krNameDataLoaded) return krNameData || {};
         krNameDataLoaded = true;
+
+        // custom_data로 이미 로드된 기본 characterData를 우선 사용
+        if (window.characterData && Object.keys(window.characterData).length > 0) {
+            krNameData = window.characterData;
+            window.krNameData = krNameData;
+            return krNameData;
+        }
+
         try {
             const base = (typeof BASE_URL !== 'undefined') ? BASE_URL : '';
             const url = `${base}/data/character_info.js?v=${APP_VERSION}`;
-            const res = await fetch(url, { cache: 'no-store' });
+            const res = await fetchWithRevalidate(url);
             if (!res.ok) throw new Error(`HTTP ${res.status}`);
             const text = await res.text();
             const parsed = extractDataFromScript(text);
@@ -2591,10 +2666,10 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             const langDataPath = (currentLang === 'en' || currentLang === 'jp')
                 ? '/data/character_info_glb.js'
                 : `/data/${currentLang}/characters/characters.js`;
-            const langUrl = `${base}${langDataPath}?v=${Date.now()}`;
+            const langUrl = `${base}${langDataPath}?v=${APP_VERSION}`;
             // console.log('Character list URL:', langUrl);
 
-            const langResponse = await fetch(langUrl);
+            const langResponse = await fetchWithRevalidate(langUrl);
             // console.log('Character list response status:', langResponse.status);
 
             if (langResponse.ok) {
@@ -2695,33 +2770,6 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         }
     }*/
 
-
-    // Load character list when the page loads
-    document.addEventListener('DOMContentLoaded', () => {
-        loadCharacterList().then(async () => {
-            // If we have recommendations to show, refresh them after loading the character list
-            const recommendations = document.getElementById('recommended-sections');
-            const characterName = new URLSearchParams(window.location.search).get('name');
-
-            // 현재 캐릭터가 미출시라면 스포일러 비활성화 플래그 설정
-            try {
-                const currentLang = getCurrentLanguage();
-                if (characterName && currentLang !== 'kr') {
-                    const selfReleased = await isCharacterReleased(characterName);
-                    if (!selfReleased) {
-                        spoilerDisabled = true;
-                    }
-                }
-            } catch (e) { console.warn('[SAFE:check-self-released]', e); }
-
-            if (characterName) {
-                // Load recommendations if the section is visible
-                if (recommendations && recommendations.style.display !== 'none') {
-                    loadRecommendations(characterName);
-                }
-            }
-        });
-    });
 
     function loadFriendsLineup(friendsData, partyCardEl, hasFriends) {
         try {

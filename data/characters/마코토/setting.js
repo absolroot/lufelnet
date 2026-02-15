@@ -30,7 +30,7 @@ window.characterSetting["마코토"] = {
     "skill_priority": "3>4>1>2",
     "mind_stats1": "공격력 20%",
     "mind_stats2": "크리티컬 확률 12%!",
-    /*"mind_stats2_glb": "관통 7.5%!",*/
+    "mind_stats2_glb": "관통 7.5%!",
     "mind_skill1": "S2/HL!",
     "mind_skill2": "S1/S3!"
 };

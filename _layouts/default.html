@@ -312,8 +312,27 @@
 
   <!-- Service Worker 등록 및 PWA 설치 프롬프트 -->
   <script>
-    // Service Worker 등록
-    if ('serviceWorker' in navigator) {
+    // Service Worker 등록 (localhost 개발 환경에서는 비활성화)
+    const isLocalhost = window.location.hostname === 'localhost'
+      || window.location.hostname === '127.0.0.1'
+      || window.location.hostname === '0.0.0.0';
+
+    if ('serviceWorker' in navigator && isLocalhost) {
+      // Local dev: remove old SW/caches to avoid stale JS during debugging
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.getRegistrations()
+          .then((regs) => Promise.all(regs.map((reg) => reg.unregister())))
+          .catch(() => { });
+
+        if (window.caches && typeof window.caches.keys === 'function') {
+          window.caches.keys()
+            .then((keys) => Promise.all(keys.map((key) => window.caches.delete(key))))
+            .catch(() => { });
+        }
+      });
+    }
+
+    if ('serviceWorker' in navigator && !isLocalhost) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('{{ site.baseurl }}/sw.js')
           .then((registration) => {

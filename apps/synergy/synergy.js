@@ -1063,10 +1063,10 @@
             }
         }
 
-        // URL 파라미터 업데이트 (코드네임 사용)
-        const url = new URL(window.location);
-        url.searchParams.set('character', charCodeName);
-        window.history.pushState({ character: characterName }, '', url);
+        // 경로 기반 URL 업데이트 (코드네임 사용)
+        const langPrefix = currentLanguage === 'kr' ? '' : `/${currentLanguage}`;
+        const newPath = `${langPrefix}/synergy/${charCodeName}/`;
+        window.history.pushState({ character: characterName }, '', newPath);
 
         // 타이틀 업데이트
         const titlePrefix = getI18nText('pageTitleGuidePrefix');
@@ -2263,11 +2263,14 @@
             window.I18nService.updateDOM();
         }
 
-        // URL 파라미터에서 캐릭터 읽기 (코드네임으로 찾기)
+        // URL 경로 또는 파라미터에서 캐릭터 읽기 (코드네임으로 찾기)
+        const pathMatch = window.location.pathname.match(/\/synergy\/([^/?#]+)/);
+        const urlCharacterFromPath = pathMatch ? pathMatch[1].toLowerCase() : null;
         const urlParams = new URLSearchParams(window.location.search);
         const urlCharacter = urlParams.get('character');
-        if (urlCharacter) {
-            const decodedChar = urlCharacter.toLowerCase();
+        const targetCodename = urlCharacter || urlCharacterFromPath;
+        if (targetCodename) {
+            const decodedChar = targetCodename.toLowerCase();
             let foundCharacter = null;
 
             // 각 캐릭터의 코드네임과 비교

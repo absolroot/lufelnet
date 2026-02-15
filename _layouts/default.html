@@ -90,7 +90,11 @@
   {% else %}
   <meta name="twitter:description" content="Persona 5X Strategy and Information Site">
   {% endif %}
+  {% if page.image %}
+  <meta name="twitter:image" content="{{ site.url }}{{ site.baseurl }}{{ page.image }}">
+  {% else %}
   <meta name="twitter:image" content="{{ site.url }}{{ site.baseurl }}/assets/img/home/seo.png">
+  {% endif %}
 
   <!-- Firebase SDK -->
   <!--

@@ -10,7 +10,9 @@
     "seo:wonder-weapon:generate": "node scripts/seo/generate-wonder-weapon-pages.mjs",
     "seo:wonder-weapon:check": "node scripts/seo/generate-wonder-weapon-pages.mjs --check",
     "seo:home:generate": "node scripts/seo/generate-home-pages.mjs",
-    "seo:home:check": "node scripts/seo/generate-home-pages.mjs --check"
+    "seo:home:check": "node scripts/seo/generate-home-pages.mjs --check",
+    "seo:character:generate": "node scripts/seo/generate-character-pages.mjs",
+    "seo:character:check": "node scripts/seo/generate-character-pages.mjs --check"
   },
   "keywords": [],
   "author": "",

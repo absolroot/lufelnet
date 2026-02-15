@@ -54,7 +54,7 @@
     // URL?라미터 name
     function getCharacterNameFromURL() {
       const p = new URLSearchParams(window.location.search);
-      return p.get('name');
+      return p.get('name') || window.__CHARACTER_DEFAULT || null;
     }
   
     // basicStatsData 로더

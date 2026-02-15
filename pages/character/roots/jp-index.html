@@ -1,0 +1,26 @@
+---
+layout: null
+permalink: /jp/character/
+sitemap: false
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Redirecting...</title>
+</head>
+<body>
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search || "");
+      params.set("lang", "jp");
+      var query = params.toString();
+      var next = "/character/" + (query ? ("?" + query) : "");
+      window.location.replace(next);
+    })();
+  </script>
+  <noscript><meta http-equiv="refresh" content="0; url=/character/?lang=jp"></noscript>
+  <a href="/character/?lang=jp">Continue</a>
+</body>
+</html>

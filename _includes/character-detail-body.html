@@ -1,0 +1,3323 @@
+{% if page.character_kr_name %}
+<script>
+  window.__CHARACTER_DEFAULT = {{ page.character_kr_name | jsonify }};
+</script>
+{% endif %}
+{% if site.data.character_slugs %}
+<script>
+  window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
+</script>
+{% endif %}
+
+<!-- URL rewrite: /character.html?name=X&lang=Y → /{lang}/character/{slug}/ -->
+<script>
+(function(){
+  var map = window.__CHARACTER_SLUG_MAP;
+  if (!map || typeof map !== 'object') return;
+  var params = new URLSearchParams(window.location.search);
+  var name = params.get('name');
+  if (!name) return;
+  var entry = map[name];
+  if (!entry || !entry.slug) return;
+  var lang = params.get('lang') || 'kr';
+  if (['kr','en','jp'].indexOf(lang) === -1) lang = 'kr';
+  // Set __CHARACTER_DEFAULT so get('name') fallbacks work after replaceState
+  window.__CHARACTER_DEFAULT = name;
+  // Set SEO flag so LanguageRouter skips redirect logic after replaceState
+  window.__SEO_PATH_LANG__ = lang;
+  var newPath = '/' + lang + '/character/' + entry.slug + '/';
+  params.delete('name');
+  params.delete('lang');
+  params.delete('v');
+  var remaining = params.toString();
+  history.replaceState(null, '', newPath + (remaining ? '?' + remaining : ''));
+})();
+</script>
+
+<!-- lang query cleanup for path-based SEO pages -->
+<script>
+(function(){
+  var path = window.location.pathname;
+  if (!/^\/(kr|en|jp)\//.test(path)) return;
+  var params = new URLSearchParams(window.location.search);
+  if (!params.has('lang')) return;
+  params.delete('lang');
+  var remaining = params.toString();
+  history.replaceState(null, '', path + (remaining ? '?' + remaining : ''));
+})();
+</script>
+
+{% if page.alternate_urls %}
+{% assign char_alt_ko = page.alternate_urls['ko'] | default: page.alternate_urls.first[1] %}
+<link rel="alternate" hreflang="ko" href="{{ site.url }}{{ char_alt_ko }}" />
+{% for alt in page.alternate_urls %}
+{% if alt[0] != 'ko' %}
+<link rel="alternate" hreflang="{{ alt[0] }}" href="{{ site.url }}{{ alt[1] }}" />
+{% endif %}
+{% endfor %}
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ char_alt_ko }}" />
+{% endif %}
+
+<script>
+// Skeleton: hide Korean text flash for non-KR languages (runs before first paint)
+(function(){
+    var p = new URLSearchParams(window.location.search).get('lang');
+    if (p && p !== 'kr') {
+        document.documentElement.classList.add('skel');
+        // Safety: remove skeleton after 3s even if DOMContentLoaded handler fails
+        setTimeout(function(){ document.documentElement.classList.remove('skel'); }, 3000);
+    }
+})();
+</script>
+
+{% include supabase-config.html %}
+
+<script src="{{ site.baseurl }}/data/persona/order.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/assets/js/persona-loader.js?v={{ site.time | date: '%s' }}"></script>
+<script>
+    if (typeof ensurePersonaFilesLoaded === 'function') {
+        ensurePersonaFilesLoaded();
+    }
+</script>
+
+<div class="main-wrapper">
+
+    <!-- 상단 섹션: 이미지와 기본 정보 -->
+    <div class="character-header">
+
+        <!-- 좌측: 캐릭터 정보 -->
+        <div class="character-info">
+            <!-- 네비게이션 경로 -->
+            <div class="navigation-path">
+                <script>
+                    // 현재 언어 확인
+                    function getCurrentLanguage() {
+                        const urlParams = new URLSearchParams(window.location.search);
+                        const langParam = urlParams.get('lang');
+                        if (langParam) return langParam;
+
+                        const path = window.location.pathname;
+                        if (path.includes('/kr/')) return 'kr';
+                        if (path.includes('/en/')) return 'en';
+                        if (path.includes('/jp/')) return 'jp';
+                        return 'kr';
+                    }
+
+                    function getCharacterI18nText(key, fallback) {
+                        if (typeof window.t === 'function') {
+                            try {
+                                return window.t(key, fallback);
+                            } catch (_) { }
+                        }
+                        if (window.I18nService && typeof window.I18nService.t === 'function') {
+                            const result = window.I18nService.t(key, fallback);
+                            if (result && result !== key) return result;
+                        }
+                        return fallback;
+                    }
+                </script>
+                <a id="character-home-link" href="../../">-</a>
+                <span class="separator">/</span>
+                <a id="character-list-link" href="/character/">-</a>
+                <span class="separator">/</span>
+                <span class="current-page"></span>
+            </div>
+            <div class="name-section">
+                <div class="name-row">
+                    <h1 class="character-name p5-layer-box">Character Name</h1>
+                    <div class="icon-group">
+                        <div class="element-icons"></div>
+                        <div class="position-icon"></div>
+                    </div>
+                </div>
+                <div class="name-row2">
+                    <div class="rarity-section"></div>
+                    <div class="chracter-role"></div>
+                </div>
+                <div class="sub-info">
+                    <p class="code-name">코드네임: </p>
+                    <p class="sees" style="font-weight: bold; display: none;">S.E.E.S</p>
+                    <p class="persona-name">페르소나: </p>
+                </div>
+            </div>
+            <div class="basic-info">
+
+                <div class="info-row">
+                    <div class="elements-container">
+                        <img src="{{ site.baseurl }}/assets/img/character-detail/elements.png" alt="elements"
+                            class="elements-sprite">
+                        <div class="resistance-overlay">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/elements-resi.png" alt="resistance"
+                                class="resistance-icon">
+                        </div>
+                        <div class="weakness-overlay">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/elements-weak.png" alt="weakness"
+                                class="weakness-icon">
+                        </div>
+                    </div>
+                </div>
+                <div class="character-description">
+                    <div class="chracter-tag"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 우측: 캐릭터 이미지 -->
+        <div class="character-images">
+            <div class="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="thief-anim-wrapper">
+                            <img src="" alt="괴도 이미지" class="thief-image">
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="" alt="페르소나 이미지" class="persona-image">
+                    </div>
+                </div>
+                <div class="carousel-dots">
+                    <span class="dot active" data-index="0"></span>
+                    <span class="dot" data-index="1"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 리뷰 섹션 -->
+    <div class="review-card card-style">
+        <h2>리뷰</h2>
+        <div class="review-content" id="character-review">
+            <!-- 리뷰 내용이 여기에 동적으로 로드됩니다 -->
+        </div>
+    </div>
+
+    <!-- 세팅 섹션 -->
+    <div class="settings-card card-style">
+        <h2>추천 세팅</h2>
+        <div class="settings-content">
+
+
+            <!-- 계시 섹션 -->
+            <div class="setting-group revelation-settings">
+                <div class="setting-section">
+                    <h3>계시 <span class="help-icon" onclick="showHelpModal('revelation')">?</span></h3>
+                    <div class="revelation-set">
+                        <div class="main-revelation">
+                            <span class="label">주
+                                <img src="{{ site.baseurl }}/assets/img/revelation/icon-주.png" alt="주"
+                                    class="option-icon">
+                            </span>
+                            <span class="value"></span>
+                        </div>
+                        <div class="sub-revelation">
+                            <span class="label">일월성진</span>
+                            <span class="value"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="setting-section">
+                    <h3>주 옵션 <span class="help-icon" onclick="showHelpModal('main-option')">?</span></h3>
+                    <div class="main-options">
+                        <div class="option-row">
+                            <span class="label">
+                                일 <img src="{{ site.baseurl }}/assets/img/revelation/icon-일.png" alt="일"
+                                    class="option-icon">
+                            </span>
+                            <span class="value">생명</span>
+                        </div>
+                        <div class="option-row">
+                            <span class="label">
+                                월 <img src="{{ site.baseurl }}/assets/img/revelation/icon-월.png" alt="월"
+                                    class="option-icon">
+                            </span>
+                            <span class="value"></span>
+                        </div>
+                        <div class="option-row">
+                            <span class="label">
+                                성 <img src="{{ site.baseurl }}/assets/img/revelation/icon-성.png" alt="성"
+                                    class="option-icon">
+                            </span>
+                            <span class="value"></span>
+                        </div>
+                        <div class="option-row">
+                            <span class="label">
+                                진 <img src="{{ site.baseurl }}/assets/img/revelation/icon-진.png" alt="진"
+                                    class="option-icon">
+                            </span>
+                            <span class="value"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="setting-section">
+                    <h3>부 옵션 <span class="help-icon" onclick="showHelpModal('sub-option')">?</span></h3>
+                    <div class="sub-options">
+                        <div class="option-row">
+                            <span class="priority">1순위</span>
+                            <span class="value"></span>
+                        </div>
+                        <div class="option-row">
+                            <span class="priority">2순위</span>
+                            <span class="value"></span>
+                        </div>
+                        <div class="option-row">
+                            <span class="priority">3순위</span>
+                            <span class="value"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 스탯 요구사항 섹션 -->
+            <div class="setting-group stats-requirements">
+                <div class="setting-section">
+                    <h3>권장 육성 스탯 <span class="help-icon" onclick="showHelpModal('recommended-stats')">?</span></h3>
+                    <div class="stat-levels">
+                        <div class="stat-level">
+                            <span class="label">LV10</span>
+                            <span class="value"></span>
+                        </div>
+                        <div class="stat-level">
+                            <span class="label">LV12</span>
+                            <span class="value"></span>
+                        </div>
+                        <div class="stat-level">
+                            <span class="label">LV12+5</span>
+                            <span class="value"></span>
+                        </div>
+                        <div class="stat-level">
+                            <span class="label">LV13</span>
+                            <span class="value"></span>
+                        </div>
+                        <div class="stat-level">
+                            <span class="label">LV13+5</span>
+                            <span class="value"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="setting-section">
+                    <h3>전투 진입 시 + <span class="help-icon" onclick="showHelpModal('battle-entry')">?</span></h3>
+                    <p class="battle-plus-stats"></p>
+                </div>
+            </div>
+
+
+            <!-- 스킬&심상 섹션 -->
+            <div class="setting-group skill-mind-settings">
+                <div class="setting-section">
+                    <h3>스킬 <span class="help-icon" onclick="showHelpModal('skill')">?</span></h3>
+                    <div class="skill-levels">
+                        <div class="skill-level">
+                            <span class="label">스킬 1</span>
+                            <span class="value"></span>
+                        </div>
+                        <div class="skill-level">
+                            <span class="label">스킬 2</span>
+                            <span class="value"></span>
+                        </div>
+                        <div class="skill-level">
+                            <span class="label">스킬 3</span>
+                            <span class="value"></span>
+                        </div>
+                        <div class="skill-level">
+                            <span class="label" data-text="highlight">하이라이트</span>
+                            <span class="value"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="setting-section">
+                    <h3>심상 (LV 5) <span class="help-icon" onclick="showHelpModal('mind-lv5')">?</span></h3>
+                    <div class="mind-settings">
+                        <div class="mind-stats">
+                            <div class="stat-row">
+                                <span class="label">진급강화 1</span>
+                                <span class="value"></span>
+                                <span class="skill-item"></span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="label">진급강화 2</span>
+                                <span class="value"></span>
+                                <span class="skill-item"></span>
+                            </div>
+                        </div>
+                        <div class="mind-skills">
+                            <div class="skill-row">
+                                <span class="label">스킬깨달음 1</span>
+                                <span class="value"></span>
+                                <span class="skill-item"></span>
+                            </div>
+                            <div class="skill-row">
+                                <span class="label">스킬깨달음 2</span>
+                                <span class="value"></span>
+                                <span class="skill-item"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 운영 섹션 -->
+            <div class="setting-group operation-settings">
+                <div class="setting-section">
+                    <h3>추천 운영 <span class="help-icon" onclick="showHelpModal('recommended-operation')">?</span></h3>
+                    <div class="operation-levels">
+                        <!-- 운영 내용이 여기에 동적으로 추가됨 -->
+                    </div>
+                </div>
+                <div class="setting-section">
+                    <h3>참고사항</h3>
+                    <div class="operation-notes">
+                        <!-- 참고 사항 내용이 여기에 동적으로 추가됨 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="height: 48px;"></div>
+        <!-- 광고 (기본적으로 표시) -->
+        <!--
+        <div id="ad-unit-1" class="ad-unit">
+            <ins class="adsbygoogle" style="display:block;" data-ad-format="fluid" data-ad-layout-key="-gc+3r+68-9q-29"
+                data-ad-client="ca-pub-5862324369257695" data-ad-slot="5373524213"></ins>
+        </div>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+        <div id="ad-unit-p5-1" class="ad-unit">
+            <ins class="adsbygoogle" style="display:block;" data-ad-format="fluid" data-ad-layout-key="-gc+3r+68-9q-29"
+                data-ad-client="ca-pub-5862324369257695" data-ad-slot="8118051131"></ins>
+        </div>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+        <div id="ad-unit-p3-1" class="ad-unit">
+            <ins class="adsbygoogle" style="display:block;" data-ad-format="fluid" data-ad-layout-key="-gc+3r+68-9q-29"
+                data-ad-client="ca-pub-5862324369257695" data-ad-slot="2039727945"></ins>
+        </div>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>-->
+    </div>
+
+    <!-- 스킬 섹션 -->
+    <div class="skills-card card-style drag-me">
+        <h2>스킬</h2>
+        <div class="skills-grid">
+        </div>
+    </div>
+
+    <!-- 의식 섹션 -->
+    <div class="ritual-card card-style drag-me">
+        <div class="ritual-header">
+            <h2>의식</h2>
+        </div>
+        <div class="ritual-grid">
+            <div class="ritual-item" data-ritual="0">
+                <div class="ritual-header-content">
+                    <img src="{{ site.baseurl }}/assets/img/character-detail/ritual0.png" alt="의식 0"
+                        class="ritual-image active">
+                    <h3 class="ritual-title"></h3>
+                </div>
+                <p class="ritual-description"></p>
+            </div>
+            <div class="ritual-item" data-ritual="1">
+                <div class="ritual-header-content">
+                    <img src="{{ site.baseurl }}/assets/img/character-detail/ritual1.png" alt="의식 1"
+                        class="ritual-image">
+                    <h3 class="ritual-title"></h3>
+                </div>
+                <p class="ritual-description"></p>
+            </div>
+            <div class="ritual-item" data-ritual="2">
+                <div class="ritual-header-content">
+                    <img src="{{ site.baseurl }}/assets/img/character-detail/ritual2.png" alt="의식 2"
+                        class="ritual-image">
+                    <h3 class="ritual-title"></h3>
+                </div>
+                <p class="ritual-description"></p>
+            </div>
+            <div class="ritual-item" data-ritual="3">
+                <div class="ritual-header-content">
+                    <img src="{{ site.baseurl }}/assets/img/character-detail/ritual3.png" alt="의식 3"
+                        class="ritual-image">
+                    <h3 class="ritual-title"></h3>
+                </div>
+                <p class="ritual-description"></p>
+            </div>
+            <div class="ritual-item" data-ritual="4">
+                <div class="ritual-header-content">
+                    <img src="{{ site.baseurl }}/assets/img/character-detail/ritual4.png" alt="의식 4"
+                        class="ritual-image">
+                    <h3 class="ritual-title"></h3>
+                </div>
+                <p class="ritual-description"></p>
+            </div>
+            <div class="ritual-item" data-ritual="5">
+                <div class="ritual-header-content">
+                    <img src="{{ site.baseurl }}/assets/img/character-detail/ritual5.png" alt="의식 5"
+                        class="ritual-image">
+                    <h3 class="ritual-title"></h3>
+                </div>
+                <p class="ritual-description"></p>
+            </div>
+            <div class="ritual-item" data-ritual="6">
+                <div class="ritual-header-content">
+                    <img src="{{ site.baseurl }}/assets/img/character-detail/ritual6.png" alt="의식 6"
+                        class="ritual-image">
+                    <h3 class="ritual-title"></h3>
+                </div>
+                <p class="ritual-description"></p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 스텟 섹션 -->
+    <div class="stats-card card-style">
+        <h2>스탯</h2>
+        <div class="setting-group stats-settings" style="display:flex; gap:40px; align-items:stretch;">
+            <!-- 기초 스탯 (왼쪽 3/4) -->
+            <div class="setting-section" style="flex:1; display:flex; flex-direction:column;">
+                <h3>기초 스탯</h3>
+                <div class="stats-main">
+                    <div class="stats-grid">
+                        <div class="stat-row">
+                            <span class="label">생명</span>
+                            <span class="value"></span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="label">공격력</span>
+                            <span class="value"></span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="label">방어력</span>
+                            <span class="value"></span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="label">속도</span>
+                            <span class="value"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 잠재력 LV 7 (오른쪽 1/4) -->
+            <div class="setting-section" style="flex:1; display:flex; flex-direction:column;">
+                <h3>잠재력 LV 7</h3>
+                <div class="stats-awake" style="display:flex; flex-direction:column; gap:8px;">
+                    <h3 class="awake-title" style="display:none;">잠재력 Lv7</h3>
+                    <div class="awake-row" style="display:flex; gap:8px;">
+                        <span class="label"></span>
+                        <span class="value"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 무기 섹션 -->
+    <div class="weapons-card card-style drag-me">
+        <h2>전용 무기</h2>
+        <div class="weapon-enhancement-buttons">
+            <button class="enhancement-btn active" data-stage="mixed">5성 개조0 / 4성 개조6</button>
+            <button class="enhancement-btn" data-stage="all">전체</button>
+            <div class="enhancement-stages">
+                <button class="enhancement-btn" data-stage="0">0</button>
+                <button class="enhancement-btn" data-stage="1">1</button>
+                <button class="enhancement-btn" data-stage="2">2</button>
+                <button class="enhancement-btn" data-stage="3">3</button>
+                <button class="enhancement-btn" data-stage="4">4</button>
+                <button class="enhancement-btn" data-stage="5">5</button>
+                <button class="enhancement-btn" data-stage="6">6</button>
+            </div>
+        </div>
+        <div class="weapons-container">
+            <!-- 무기들이 여기에 동적으로 추가됨 -->
+        </div>
+
+        <div style="height: 30px;"></div>
+        <!-- 광고 (기본적으로 표시) -->
+        <!--
+        <div id="ad-unit-2" class="ad-unit">
+            <ins class="adsbygoogle" style="display:block;" data-ad-format="fluid" data-ad-layout-key="-gc+3r+68-9q-29"
+                data-ad-client="ca-pub-5862324369257695" data-ad-slot="5373524213"></ins>
+        </div>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+
+        <div id="ad-unit-p5-2" class="ad-unit">
+            <ins class="adsbygoogle" style="display:block;" data-ad-format="fluid" data-ad-layout-key="-gc+3r+68-9q-29"
+                data-ad-client="ca-pub-5862324369257695" data-ad-slot="8118051131"></ins>
+        </div>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+
+        <div id="ad-unit-p3-2" class="ad-unit">
+            <ins class="adsbygoogle" style="display:block;" data-ad-format="fluid" data-ad-layout-key="-gc+3r+68-9q-29"
+                data-ad-client="ca-pub-5862324369257695" data-ad-slot="2039727945"></ins>
+        </div>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+        <div style="height: 10px;"></div>-->
+    </div>
+
+    <!-- 심상 코어 섹션 (innate.js 존재 캐릭터 전용, 기본 숨김) -->
+    <div class="innate-card card-style drag-me" style="display:none;">
+        <h2>심상 코어</h2>
+        <div class="skills-grid innate-grid">
+            <!-- 심상 코어 카드들이 동적으로 추가됨 -->
+        </div>
+    </div>
+
+
+    <!-- 추천 페르소나와 파티 섹션 -->
+    <div id="recommended-sections" style="display: none;">
+        <!-- 추천 페르소나 -->
+        <div class="recommended-persona-card card-style">
+            <h2>추천 조합</h2>
+            <div id="recommended-persona-content" class="recommended-persona-content">
+                <!-- 페르소나 내용이 여기에 동적으로 추가됨 -->
+            </div>
+        </div>
+
+        <!-- 추천 파티 -->
+        <div class="recommended-party-card card-style">
+            <h2>추천 파티</h2>
+            <div id="recommended-party-content" class="recommended-party-content">
+                <!-- 파티 내용이 여기에 동적으로 추가됨 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 택틱 예시 섹션 -->
+    <!--
+    <div id="character-tactic-examples" class="card-style" style="display:block;">
+        <div class="card-title-row">
+            <h2 id="tactic-examples-title" style="margin:0;">택틱 예시</h2>
+            <!-- 원래 카드 내 3개 프리뷰 로딩은 egress 비용 때문에 비활성화 -->
+    <!--<a id="tactic-examples-more" href="/tactic/tactics.html" style="font-size:13px; text-decoration:none; color:#fff; opacity:0.8;">+ 더보기</a>
+        </div>
+        <!-- egress 절감을 위해 목록 비활성화: 링크로 이동하여 필터 적용된 결과를 보도록 안내 -->
+    <!--<div id="tactic-examples-cta" style="margin-top:12px; font-size:14px; color:#bdbdbd;">
+            <script>
+                (function(){
+                    try {
+                        var name = new URLSearchParams(window.location.search).get('name') || window.__CHARACTER_DEFAULT || '';
+                        var link = document.getElementById('tactic-examples-more');
+                        if (link && name) {
+                            var url = new URL(link.getAttribute('href'), window.location.origin);
+                            url.searchParams.set('char', name);
+                            link.setAttribute('href', url.toString());
+                        }
+                    } catch(_) {}
+                })();
+            </script>
+            <span>아래 링크에서 이 캐릭터로 필터된 택틱을 확인하세요.</span>
+        </div>
+        <!-- <div id="tactic-examples-list" class="posts-list" style="margin-top:12px;"></div> -->
+    <!--</div>-->
+
+    <!-- 최하단 광고-->
+    <!--
+    <div style="height: 24px;"></div>
+
+    <div id="ad-unit-bottom" class="AD-bottom"
+        style="text-align: center; align-items: center; display: flex; justify-content: center;">
+        <ins class="adsbygoogle" style="display:inline-block;width:970px;height:90px"
+            data-ad-client="ca-pub-5862324369257695" data-ad-slot="9244892982"></ins>
+    </div>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <div style="height: 12px;"></div>
+    
+    <style>
+        @media (max-width: 1440px) {
+            .AD-bottom {
+                display: none !important;
+            }
+        }
+    </style>
+
+    <script>
+
+        function showAdAndPush(id) {
+            const el = document.getElementById(id);
+            if (!el) return;
+
+            el.style.display = 'block';
+
+            const checkAndPush = () => {
+                const ins = el.querySelector('.adsbygoogle');
+
+                if (!ins) return;
+
+                // adsbygoogle이 화면에 제대로 포함되어 있고, 최소 width 확보됐는지 확인
+                const isVisible = ins.offsetParent !== null;
+                const widthOk = ins.offsetWidth >= 250;
+
+                if (isVisible && widthOk) {
+                    try {
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    } catch (e) {
+                        console.warn("광고 푸시 중 오류 발생:", e, 'id:', id);
+                    }
+                } else {
+                    // 100ms 후 재시도 (최대 10회)
+                    if (!ins.__retryCount) ins.__retryCount = 0;
+                    if (ins.__retryCount < 10) {
+                        ins.__retryCount++;
+                        setTimeout(checkAndPush, 100);
+                    } else {
+                        console.warn(`${id} 광고 푸시 실패: width=${ins.offsetWidth}, visible=${isVisible}`);
+                    }
+                }
+            };
+
+            // 첫 시도
+            requestAnimationFrame(checkAndPush);
+        }
+
+        // push 광고 
+        function pushAdUnitsForCharacter(characterName) {
+            const character = characterData[characterName];
+            if (!character) return;
+
+            try {
+                // 조건에 따라 특정 광고 DOM만 표시 + push 실행
+                if (character.persona5) {
+                    //showAdAndPush('ad-unit-p5-1');
+                    //showAdAndPush('ad-unit-p5-2');
+
+                    const adsToHide = document.querySelectorAll('.ad-unit:not([id^="ad-unit-p5-"])');
+                    adsToHide.forEach(ad => {
+                        if (ad && ad.style) {
+                            ad.style.display = 'none';
+                        }
+                    });
+                } else if (character.persona3) {
+                    //showAdAndPush('ad-unit-p3-1');
+                    //showAdAndPush('ad-unit-p3-2');
+
+                    const adsToHide = document.querySelectorAll('.ad-unit:not([id^="ad-unit-p3-"])');
+                    adsToHide.forEach(ad => {
+                        if (ad && ad.style) {
+                            ad.style.display = 'none';
+                        }
+                    });
+                } else {
+                    //showAdAndPush('ad-unit-1');
+                    //showAdAndPush('ad-unit-2');
+
+                    const p5AdsToHide = document.querySelectorAll('[id^="ad-unit-p5-"]');
+                    const p3AdsToHide = document.querySelectorAll('[id^="ad-unit-p3-"]');
+
+                    p5AdsToHide.forEach(ad => {
+                        if (ad && ad.style) {
+                            ad.style.display = 'none';
+                        }
+                    });
+                    p3AdsToHide.forEach(ad => {
+                        if (ad && ad.style) {
+                            ad.style.display = 'none';
+                        }
+                    });
+                }
+            } catch (error) {
+                console.warn('광고 푸시 중 오류 발생:', error);
+            }
+        }
+
+        const characterName = new URLSearchParams(window.location.search).get('name') || window.__CHARACTER_DEFAULT || '';
+        if (characterName) {
+            // Update ads based on character's persona3, persona5 property
+            pushAdUnitsForCharacter(characterName);
+
+            // 광고 업데이트 후 툴팁 다시 적용
+            setTimeout(() => {
+                if (typeof addTooltips === 'function') {
+                    addTooltips();
+                }
+            }, 200);
+
+            // 광고 흰 박스 숨김
+            setTimeout(() => {
+                document.querySelectorAll(".adsbygoogle").forEach(el => {
+                    const status = el.getAttribute("data-ad-status");
+                    const adslot = el.getAttribute("data-ad-slot");
+                    //console.log("google status", status);
+                    //console.log("google adslot", adslot);
+                    if (status === "unfilled" || el.querySelector("iframe") === null) {
+                        el.style.display = "none";
+                    }
+                });
+            }, 2000);  // 광고 로딩 기다렸다가 1.5초 후 검사
+
+            
+            document.querySelectorAll(".adsbygoogle").forEach((adEl) => {
+                observer.observe(adEl, { attributes: true });
+            });
+        }
+    </script>
+    -->
+</div>
+
+
+
+<!-- 스크립트 ----------------------------------------------------------------------->
+
+<script>
+    function fetchWithRevalidate(url, options = {}) {
+        return fetch(url, { cache: 'no-cache', ...options });
+    }
+
+    (function initCharacterPerf() {
+        const enabled = new URLSearchParams(window.location.search).get('perf') === '1';
+        const store = window.__CHAR_PERF__ || {};
+        store.enabled = !!enabled;
+        store.marks = Array.isArray(store.marks) ? store.marks : [];
+        store.mark = function (label) {
+            if (!this.enabled) return;
+            const entry = { label, ts: Date.now() };
+            this.marks.push(entry);
+            try { console.log(`[CHAR_PERF] ${label}`, entry.ts); } catch (_) { }
+        };
+        window.__CHAR_PERF__ = store;
+    })();
+
+    const CHAR_TRANSLATE_DEBOUNCE_MS = 120;
+    let charTranslateTimer = null;
+    let charTranslateInFlight = false;
+    let charTranslateQueuedRoot = null;
+
+    function runTranslateNow(root = document) {
+        if (typeof window.translateStatTexts === 'function') {
+            window.translateStatTexts(root);
+            return;
+        }
+        if (window.I18NUtils && typeof I18NUtils.translateStatTexts === 'function') {
+            I18NUtils.translateStatTexts(root);
+        }
+    }
+
+    function scheduleTranslate(root = document) {
+        const targetRoot = root || document;
+        if (charTranslateTimer) clearTimeout(charTranslateTimer);
+        charTranslateTimer = setTimeout(() => {
+            if (charTranslateInFlight) {
+                charTranslateQueuedRoot = targetRoot;
+                return;
+            }
+            charTranslateInFlight = true;
+            try {
+                runTranslateNow(targetRoot);
+            } catch (e) {
+                console.warn('[SAFE:scheduleTranslate]', e);
+            } finally {
+                charTranslateInFlight = false;
+                if (charTranslateQueuedRoot) {
+                    const queued = charTranslateQueuedRoot;
+                    charTranslateQueuedRoot = null;
+                    scheduleTranslate(queued);
+                }
+            }
+        }, CHAR_TRANSLATE_DEBOUNCE_MS);
+    }
+
+    function runWhenIdle(task, timeout = 300) {
+        if (typeof task !== 'function') return;
+        if (typeof window.requestIdleCallback === 'function') {
+            window.requestIdleCallback(() => {
+                try { task(); } catch (e) { console.warn('[SAFE:runWhenIdle]', e); }
+            }, { timeout });
+            return;
+        }
+        setTimeout(() => {
+            try { task(); } catch (e) { console.warn('[SAFE:runWhenIdle]', e); }
+        }, 0);
+    }
+
+    window.scheduleTranslate = scheduleTranslate;
+
+    document.addEventListener('DOMContentLoaded', async function () {
+      try {
+        // 안전 실행 유틸리티: 개별 블록에서 오류가 나도 전체 흐름을 막지 않음
+        const safeRun = (name, fn) => { try { return fn && fn(); } catch (e) { console.warn(`[SAFE:${name}]`, e); } };
+        const safeAwait = async (name, promise) => { try { return await promise; } catch (e) { console.warn(`[SAFE:${name}]`, e); return undefined; } };
+        const safeAddEvent = (el, evt, handler, name = 'event') => {
+            try {
+                if (el && el.addEventListener) {
+                    el.addEventListener(evt, (...args) => { try { handler && handler(...args); } catch (e) { console.warn(`[SAFE:${name}:${evt}]`, e); } });
+                }
+            } catch (e) { console.warn(`[SAFE:addEvent:${name}]`, e); }
+        };
+
+        const pageLang = getCurrentLanguage();
+        const currentLang = pageLang;
+        try {
+            if (window.I18nService && typeof window.I18nService.init === 'function') {
+                await window.I18nService.init('character', pageLang);
+            }
+        } catch (e) { console.warn('[SAFE:I18nService.init]', e); }
+
+        try {
+            const homeLink = document.getElementById('character-home-link');
+            const listLink = document.getElementById('character-list-link');
+            if (homeLink) {
+                homeLink.href = `../../?v=${APP_VERSION}`;
+                homeLink.textContent = getCharacterI18nText('navHome', '홈');
+            }
+            if (listLink) {
+                listLink.href = `/character/?v=${APP_VERSION}`;
+                listLink.textContent = getCharacterI18nText('navCurrent', '괴도');
+            }
+        } catch (e) { console.warn('[SAFE:nav-i18n]', e); }
+
+        safeRun('Navigation.load', () => Navigation.load('character', 1));
+        safeRun('VersionChecker.check', () => VersionChecker.check());
+
+        // Get character name from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const characterName = urlParams.get('name') || window.__CHARACTER_DEFAULT || '';
+        // 이미지 로딩 완료 시에만 표시되도록 data-loaded 세팅
+        try {
+            const fallbackSrc = `{{ site.baseurl }}/assets/img/character-detail/character_bg.png`;
+            const thiefImg = document.querySelector('.thief-image');
+            const personaImg = document.querySelector('.persona-image');
+
+            const wireImage = (imgEl) => {
+                if (!imgEl) return;
+                // 로딩 우선순위 및 디코딩 힌트
+                try { imgEl.setAttribute('loading', 'eager'); } catch (_) { }
+                try { imgEl.setAttribute('decoding', 'sync'); } catch (_) { }
+                try { imgEl.setAttribute('fetchpriority', 'high'); } catch (_) { }
+                imgEl.addEventListener('load', () => {
+                    try {
+                        imgEl.setAttribute('data-loaded', 'true');
+                        if (imgEl.parentElement && imgEl.parentElement.classList.contains('thief-anim-wrapper')) {
+                            imgEl.parentElement.setAttribute('data-loaded', 'true');
+                        }
+                    } catch (_) { }
+                });
+                imgEl.addEventListener('error', () => {
+                    try {
+                        // 실패 시 플레이스홀더 이미지로 대체하고 강제로 표시
+                        imgEl.src = fallbackSrc;
+                        imgEl.setAttribute('data-loaded', 'true');
+                        if (imgEl.parentElement && imgEl.parentElement.classList.contains('thief-anim-wrapper')) {
+                            imgEl.parentElement.setAttribute('data-loaded', 'true');
+                        }
+                    } catch (_) { }
+                });
+                // 캐시된 이미지 즉시 처리
+                if (imgEl.complete && imgEl.naturalWidth > 0) {
+                    imgEl.setAttribute('data-loaded', 'true');
+                    if (imgEl.parentElement && imgEl.parentElement.classList.contains('thief-anim-wrapper')) {
+                        imgEl.parentElement.setAttribute('data-loaded', 'true');
+                    }
+                } else {
+                    // 일부 모바일 브라우저에서 load 이벤트 누락 대비 가드
+                    setTimeout(() => {
+                        if (!imgEl.hasAttribute('data-loaded')) {
+                            imgEl.setAttribute('data-loaded', 'true');
+                            if (imgEl.parentElement && imgEl.parentElement.classList.contains('thief-anim-wrapper')) {
+                                imgEl.parentElement.setAttribute('data-loaded', 'true');
+                            }
+                        }
+                    }, 1500);
+                }
+                // 최종 보증: 비동기 프리페치 후 DOM에 재주입 (레이스 대비)
+                setTimeout(() => {
+                    try {
+                        if (imgEl.naturalWidth === 0) {
+                            const tmp = new Image();
+                            tmp.onload = () => {
+                                try {
+                                    imgEl.src = tmp.src;
+                                    imgEl.setAttribute('data-loaded', 'true');
+                                    if (imgEl.parentElement && imgEl.parentElement.classList.contains('thief-anim-wrapper')) {
+                                        imgEl.parentElement.setAttribute('data-loaded', 'true');
+                                    }
+                                } catch (_) { }
+                            };
+                            tmp.onerror = () => {
+                                try {
+                                    imgEl.src = fallbackSrc;
+                                    imgEl.setAttribute('data-loaded', 'true');
+                                    if (imgEl.parentElement && imgEl.parentElement.classList.contains('thief-anim-wrapper')) {
+                                        imgEl.parentElement.setAttribute('data-loaded', 'true');
+                                    }
+                                } catch (_) { }
+                            };
+                            tmp.src = imgEl.currentSrc || imgEl.src;
+                        }
+                    } catch (_) { }
+                }, 800);
+            };
+
+            wireImage(thiefImg);
+            wireImage(personaImg);
+        } catch (_) { }
+
+        // 언어별 데이터 파일 동적 로드
+        // 통합 per-character 로더 (review / base_stats / operation / party)
+        async function loadPerCharacterResource(name, opts) {
+            const {
+                fileBase,          // 'review' | 'base_stats' | 'operation' | 'party'
+                globalVarName,     // 'characterReview' | 'basicStatsData' | 'operationData' | 'recommendParty'
+                scanPrefixes = []  // e.g., ['characterReview_']
+            } = opts || {};
+            if (!name || !fileBase || !globalVarName) return false;
+            try {
+                window[globalVarName] = window[globalVarName] || {};
+                const _BASE = (typeof window !== 'undefined' && window.BASE_URL) ? window.BASE_URL : '';
+                const baseJs = `${_BASE}/data/characters/${encodeURIComponent(name)}/${fileBase}.js?v=${APP_VERSION}`;
+
+                // party.js 는 없는 캐릭터가 많으므로, <script> 삽입 대신 fetch로 조용히 시도
+                if (fileBase === 'party' || fileBase === 'innate') {
+                    try {
+                        const resp = await fetchWithRevalidate(baseJs);
+                        if (!resp || !resp.ok) {
+                            // 파일이 없으면 조용히 실패 처리 (404 등 콘솔 에러 최소화)
+                            return false;
+                        }
+                        const scriptText = await resp.text();
+                        // 전역 컨텍스트에서 실행 (window.recommendParty[...] 채움)
+                        new Function(scriptText)();
+                        return !!(window[globalVarName] && window[globalVarName][name]);
+                    } catch (e) {
+                        console.warn(`[SAFE:loadPerCharacterResource:${fileBase}:fetch]`, e);
+                        return false;
+                    }
+                }
+                const loadJs = () => new Promise((resolve) => {
+                    try {
+                        const s = document.createElement('script');
+                        s.src = baseJs;
+                        s.onload = () => {
+                            // 표준 경로 체크
+                            if (window[globalVarName] && window[globalVarName][name]) {
+                                resolve(true);
+                                return;
+                            }
+
+                            // setting.js의 경우, characterSetting 객체의 모든 키를 확인하여 일치하는 키 찾기
+                            if (fileBase === 'setting' && globalVarName === 'characterSetting') {
+                                if (window.characterSetting) {
+                                    // 정확한 키로 확인
+                                    if (window.characterSetting[name]) {
+                                        resolve(true);
+                                        return;
+                                    }
+                                    // 모든 키를 확인하여 공백이나 특수문자 차이 무시하고 매칭
+                                    const keys = Object.keys(window.characterSetting);
+                                    const matchedKey = keys.find(key => {
+                                        // 정확히 일치하거나, 공백 정규화 후 일치
+                                        return key === name ||
+                                            key.trim() === name.trim() ||
+                                            key.replace(/\s+/g, ' ') === name.replace(/\s+/g, ' ');
+                                    });
+                                    if (matchedKey) {
+                                        // 매칭된 키로 데이터 복사 (원본 키는 유지)
+                                        window.characterSetting[name] = window.characterSetting[matchedKey];
+                                        resolve(true);
+                                        return;
+                                    }
+                                }
+                            }
+
+                            // 변수명 프리픽스 스캔 (레거시 파일 지원)
+                            try {
+                                if (Array.isArray(scanPrefixes) && scanPrefixes.length > 0) {
+                                    const keys = Object.keys(window).filter(k => scanPrefixes.some(p => k.startsWith(p)));
+                                    for (const k of keys) {
+                                        const val = window[k];
+                                        if (val && typeof val === 'object') {
+                                            window[globalVarName][name] = val;
+                                            break;
+                                        }
+                                    }
+                                }
+                            } catch (_) { }
+                            resolve(!!(window[globalVarName] && window[globalVarName][name]));
+                        };
+                        s.onerror = () => resolve(false);
+                        document.head.appendChild(s);
+                    } catch (e) {
+                        console.warn(`[SAFE:loadPerCharacterResource:${fileBase}:script]`, e);
+                        resolve(false);
+                    }
+                });
+                const ok = await loadJs();
+                if (ok) return true;
+
+            } catch (e) {
+                console.warn('[SAFE:loadPerCharacterResource]', e);
+            }
+            return false;
+        }
+
+        // 전역 스텁 보장(초기 실행 시 참조 오류 방지)
+        try {
+            window.characterReview = window.characterReview || {};
+            window.basicStatsData = window.basicStatsData || {};
+            window.operationData = window.operationData || {};
+            window.recommendParty = window.recommendParty || {};
+            window.characterSkillsData = window.characterSkillsData || {};
+            window.ritualData = window.ritualData || {};
+            window.WeaponData = window.WeaponData || {};
+            // 심상 코어(innate) 데이터 전역 스텁
+            window.innateData = window.innateData || {};
+            // 캐릭터 세팅 데이터 전역 스텁
+            window.characterSetting = window.characterSetting || {};
+            // 리코·매화 전용 계산기 전역 스텁
+            window.RikoCalc = window.RikoCalc || {};
+        } catch (e) { console.warn('[SAFE:init-globals]', e); }
+
+        async function loadCharacterDataAll(name) {
+            const tasks = [
+                loadPerCharacterResource(name, { fileBase: 'review', globalVarName: 'characterReview', scanPrefixes: ['characterReview_'] }),
+                loadPerCharacterResource(name, { fileBase: 'base_stats', globalVarName: 'basicStatsData' }),
+                loadPerCharacterResource(name, { fileBase: 'setting', globalVarName: 'characterSetting' }),
+                loadPerCharacterResource(name, { fileBase: 'operation', globalVarName: 'operationData' }),
+                loadPerCharacterResource(name, { fileBase: 'party', globalVarName: 'recommendParty' }),
+                loadPerCharacterResource(name, { fileBase: 'skill', globalVarName: 'characterSkillsData' }),
+                loadPerCharacterResource(name, { fileBase: 'ritual', globalVarName: 'ritualData' }),
+                loadPerCharacterResource(name, { fileBase: 'weapon', globalVarName: 'WeaponData' }),
+                // 심상 코어(innate) 데이터 로드
+                loadPerCharacterResource(name, { fileBase: 'innate', globalVarName: 'innateData' })
+            ];
+
+            // J&C 전용 아이콘 스크립트는 해당 캐릭터일 때만 로드
+            if (name === 'J&C' || name === '쥐스틴 & 카롤린' || name === '쥐스틴&카롤린') {
+                tasks.push(loadPerCharacterResource(name, { fileBase: 'JC_icons', globalVarName: 'JCIcons' }));
+            }
+
+            // 몽타뉴·백조 전용 모드 선택 스크립트 로드
+            if (name === '몽타뉴·백조' || name === '코토네 몽타뉴·백조') {
+                tasks.push(loadPerCharacterResource(name, { fileBase: 'MONT2_icons', globalVarName: 'MONT2Icons' }));
+            }
+
+            // 리코·매화 전용 스탯 계산기 로드
+            if (name === '리코·매화') {
+                tasks.push(loadPerCharacterResource(name, { fileBase: 'riko_calc', globalVarName: 'RikoCalc' }));
+            }
+
+            await Promise.all(tasks.map(t => safeAwait('loadPerCharacterResource', t)));
+        }
+
+        // 기본 스탯 렌더러 ('.stats-main .stats-grid' 채움)
+        function fillBasicStats(name) {
+            try {
+                const grid = document.querySelector('.stats-main .stats-grid');
+                if (!grid) return;
+                const data = (window.basicStatsData && window.basicStatsData[name]) ? window.basicStatsData[name] : null;
+                if (!data) return;
+                const pick = (obj) => {
+                    if (!obj || typeof obj !== 'object') return null;
+                    // 우선순위: a0_lv1 -> a0_lv80 -> a1_lv80 -> 최상위
+                    const candidate = obj.a0_lv1 || obj.a0_lv80 || obj.a1_lv80 || obj;
+                    const map = {
+                        '생명': candidate.HP ?? candidate.hp ?? 0,
+                        '공격력': candidate.attack ?? 0,
+                        '방어력': candidate.defense ?? 0,
+                        '속도': candidate.speed ?? 0,
+                        'SP': candidate.SP ?? candidate.sp ?? 0
+                    };
+                    return map;
+                };
+                const values = pick(data);
+                if (!values) return;
+                // 라벨별 값 주입
+                const rows = grid.querySelectorAll('.stat-row');
+                rows.forEach((row) => {
+                    const labelEl = row.querySelector('.label');
+                    const valueEl = row.querySelector('.value');
+                    if (!labelEl || !valueEl) return;
+                    const key = labelEl.textContent.trim();
+                    if (Object.prototype.hasOwnProperty.call(values, key)) {
+                        valueEl.textContent = values[key];
+                    }
+                });
+            } catch (e) {
+                console.warn('[SAFE:fillBasicStats]', e);
+            }
+        }
+
+        async function loadLanguageData() { return; }
+
+        if (!characterName || !characterData[characterName]) {
+            console.error('Character not found');
+            return;
+        }
+
+        // 이미지 우선 로딩: 다국어 데이터 로드와 상관없이 즉시 표시되도록 선행 주입
+        try {
+            const basicCharacter = characterData[characterName];
+            const thiefEl = document.querySelector('.thief-image');
+            const personaEl = document.querySelector('.persona-image');
+            const thiefFile = `${characterName}.webp`;
+            const personaFile = `${characterName} - ${basicCharacter.persona}.webp`;
+            const thiefSrc = `{{ site.baseurl }}/assets/img/character-detail/${thiefFile}`;
+            const personaSrc = `{{ site.baseurl }}/assets/img/character-detail/${personaFile}`;
+            if (thiefEl) { thiefEl.setAttribute('src', thiefSrc); thiefEl.setAttribute('fetchpriority', 'high'); thiefEl.setAttribute('loading', 'eager'); }
+            if (personaEl) { personaEl.setAttribute('src', personaSrc); personaEl.setAttribute('fetchpriority', 'high'); personaEl.setAttribute('loading', 'eager'); }
+            const preload1 = document.createElement('link');
+            preload1.rel = 'preload';
+            preload1.as = 'image';
+            preload1.href = thiefSrc;
+            document.head.appendChild(preload1);
+            const preload2 = document.createElement('link');
+            preload2.rel = 'preload';
+            preload2.as = 'image';
+            preload2.href = personaSrc;
+            document.head.appendChild(preload2);
+        } catch (e) { console.warn('[SAFE:early-image-load]', e); }
+
+        // 언어별 데이터 로드 후 캐릭터 정보 설정
+        await safeAwait('loadLanguageData', loadLanguageData());
+        // 계시 다국어 데이터도 먼저 로드 (EN/JP에서 최초 렌더부터 번역 적용)
+        await safeAwait('loadRevelationDataByLanguage', loadRevelationDataByLanguage());
+        safeRun('refreshRevelationDisplay', () => setTimeout(refreshRevelationDisplay, 100));
+
+        const character = characterData[characterName];
+
+        // 언어별 데이터 로드 (영어/일본어가 있는 경우 우선 사용)
+        // per-character 데이터 선 로드 (review/base_stats/operation/party)
+        await safeAwait('loadCharacterDataAll', loadCharacterDataAll(characterName));
+        // characterSetting 로드 후 fillSettingsInfo, fillRoleAndTag, applySkillPriorityBadges 재호출
+        safeRun('fillSettingsInfo-after-load', () => {
+            if (typeof window.fillSettingsInfo === 'function' && character) {
+                window.fillSettingsInfo(character);
+            }
+            if (typeof window.fillRoleAndTag === 'function') {
+                window.fillRoleAndTag();
+            }
+            if (typeof applySkillPriorityBadges === 'function') {
+                applySkillPriorityBadges();
+            }
+        });
+        // 기본 스탯 렌더
+        safeRun('fillBasicStats', () => fillBasicStats(characterName));
+        // 운영 즉시 렌더 (함수 노출 이후 재호출 가능)
+        safeRun('fillOperationInfo-immediate', () => {
+            if (typeof window.fillOperationInfo === 'function') {
+                window.fillOperationInfo(characterName);
+            }
+        });
+        // 스킬 정보 렌더는 per-character skill 로드 이후에 호출 (언어별 분기 포함)
+        safeRun('fillSkillsInfo', () => { if (typeof fillSkillsInfo === 'function') { fillSkillsInfo(characterName); } });
+        // 심상 코어(innate) 정보 렌더
+        safeRun('fillInnateInfo', () => { if (typeof fillInnateInfo === 'function') { fillInnateInfo(characterName); } });
+
+        // per-character 의식/스킬/무기(기본 KR) 준비
+        const ritual = (window.ritualData && window.ritualData[characterName]) ? window.ritualData[characterName] : {};
+
+        let localizedSkills = null;
+        let localizedRitual = null;
+        let localizedWeapon = null;
+
+        if (currentLang !== 'kr') {
+            // 언어별 데이터 파일 동적 로드
+            try {
+                if (currentLang === 'en') {
+                    // 영어 데이터는 window 객체에서 직접 접근
+                    if (window.enCharacterSkillsData && window.enCharacterSkillsData[characterName]) {
+                        localizedSkills = window.enCharacterSkillsData[characterName];
+                    }
+                    if (window.enCharacterRitualData && window.enCharacterRitualData[characterName]) {
+                        localizedRitual = window.enCharacterRitualData[characterName];
+                    }
+                    if (window.enCharacterWeaponData && window.enCharacterWeaponData[characterName]) {
+                        localizedWeapon = window.enCharacterWeaponData[characterName];
+                    }
+                } else if (currentLang === 'jp') {
+                    // 일본어 데이터는 window 객체에서 직접 접근
+                    if (window.jpCharacterSkillsData && window.jpCharacterSkillsData[characterName]) {
+                        localizedSkills = window.jpCharacterSkillsData[characterName];
+                    }
+                    if (window.jpCharacterRitualData && window.jpCharacterRitualData[characterName]) {
+                        localizedRitual = window.jpCharacterRitualData[characterName];
+                    }
+                    if (window.jpCharacterWeaponData && window.jpCharacterWeaponData[characterName]) {
+                        localizedWeapon = window.jpCharacterWeaponData[characterName];
+                    }
+                }
+
+                /*console.log('언어별 데이터 로드 결과:', {
+                    lang: currentLang,
+                    skills: !!localizedSkills,
+                    ritual: !!localizedRitual,
+                    weapon: !!localizedWeapon
+                });*/
+            } catch (e) {
+                console.log('언어별 데이터 로드 실패:', e);
+            }
+        }
+
+        // 캐릭터 리뷰 렌더링 함수
+
+        // 안전하게 리뷰 + Pros/Cons 렌더링
+        try {
+            const reviewContainer = document.getElementById('character-review');
+            if (!reviewContainer) throw new Error('reviewContainer not found');
+            const ReviewCard = document.querySelector('.review-card');
+            const characterReviewData = characterReview[characterName] || {};
+            const getLocalizedField = (baseKey) => {
+                if (currentLang === 'en' && typeof characterReviewData[`${baseKey}_en`] !== 'undefined') {
+                    return characterReviewData[`${baseKey}_en`];
+                } else if (currentLang === 'jp' && typeof characterReviewData[`${baseKey}_jp`] !== 'undefined') {
+                    return characterReviewData[`${baseKey}_jp`];
+                }
+                return characterReviewData[baseKey];
+            };
+
+            // 리뷰 본문 처리
+            let currentReview = getLocalizedField('review');
+            let hasReview = !!(currentReview && String(currentReview).trim().length > 0);
+            if (hasReview) {
+                const normalized = String(currentReview)
+                    .replace(/\uFF0A/g, '*')
+                    .replace(/\u2217/g, '*')
+                    .replace(/[\u200B-\u200D\uFEFF]/g, '')
+                    .replace(/[\u200E\u200F]/g, '')
+                    .replace(/[\u202A-\u202E]/g, '')
+                    .replace(/\u00AD/g, '')
+                    .replace(/\u2060/g, '')
+                    .replace(/\u00A0/g, ' ');
+
+                let htmlContent = marked.parse(normalized);
+                if (htmlContent.includes('**')) {
+                    htmlContent = htmlContent.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+                }
+                reviewContainer.innerHTML = htmlContent;
+                reviewContainer.style.display = '';
+            } else {
+                reviewContainer.innerHTML = '';
+                reviewContainer.style.display = 'none';
+            }
+
+            // Pros/Cons 처리
+            const rawPros = getLocalizedField('pros');
+            const rawCons = getLocalizedField('cons');
+            const normalizeListItems = (val) => {
+                if (!val) return [];
+                if (Array.isArray(val)) {
+                    return val.map((s) => String(s).trim()).filter((s) => s.length > 0);
+                }
+                return String(val)
+                    .split(/\r?\n/)
+                    .map((line) => line.trim().replace(/^[-*•]\s*/, ''))
+                    .filter((line) => line.length > 0);
+            };
+            const prosItems = normalizeListItems(rawPros);
+            const consItems = normalizeListItems(rawCons);
+            const hasProsOrCons = prosItems.length > 0 || consItems.length > 0;
+
+            // 라벨 (다국어)
+            const labelMap = {
+                'kr': { pros: '장점', cons: '단점' },
+                'en': { pros: 'Pros', cons: 'Cons' },
+                'jp': { pros: '長所', cons: '短所' }
+            };
+            const labels = labelMap[currentLang] || labelMap['kr'];
+
+            // 기존 Pros/Cons 섹션 제거 후 다시 생성 (중복 방지)
+            const existingPC = document.querySelector('.pros-cons-group');
+            if (existingPC && existingPC.parentNode) {
+                existingPC.parentNode.removeChild(existingPC);
+            }
+
+            if (hasProsOrCons && ReviewCard) {
+                const pcGroup = document.createElement('div');
+                pcGroup.className = 'setting-group pros-cons-group';
+
+                const makeSection = (title, items, type) => {
+                    const sec = document.createElement('div');
+                    sec.className = 'setting-section pros-cons-section';
+
+                    const h3 = document.createElement('h3');
+                    h3.className = `pros-cons-title ${type === 'pros' ? 'pros-title' : 'cons-title'}`;
+                    h3.textContent = title;
+                    sec.appendChild(h3);
+
+                    const listWrap = document.createElement('div');
+                    listWrap.className = 'pros-cons-list';
+                    const ul = document.createElement('ul');
+                    items.forEach((it) => {
+                        const li = document.createElement('li');
+                        li.textContent = it;
+                        ul.appendChild(li);
+                    });
+                    listWrap.appendChild(ul);
+                    sec.appendChild(listWrap);
+                    return sec;
+                };
+
+                if (prosItems.length > 0) {
+                    pcGroup.appendChild(makeSection(labels.pros, prosItems, 'pros'));
+                }
+                if (consItems.length > 0) {
+                    pcGroup.appendChild(makeSection(labels.cons, consItems, 'cons'));
+                }
+
+                // 리뷰 유무에 따라 pros/cons 상단 여백 조정
+                try {
+                    pcGroup.style.marginTop = hasReview ? '24px' : '0px';
+                } catch (_) { }
+
+                ReviewCard.appendChild(pcGroup);
+                ReviewCard.style.display = '';
+            } else {
+                if (!hasReview && ReviewCard) {
+                    ReviewCard.style.display = 'none';
+                }
+            }
+        } catch (e) { console.warn('[SAFE:render-review+proscons]', e); }
+
+
+        // 이미지 설정은 상단 early-image-load 블록에서 이미 수행됨 (fetchpriority=high, preload)
+        // 페르소나 이미지만 언어별 데이터 로드 후 갱신 필요 시 보정
+        try {
+            const personaImgEl = document.querySelector('.persona-image');
+            if (personaImgEl && character && character.persona) {
+                const personaFile = `${characterName} - ${character.persona}.webp`;
+                const expectedSrc = `{{ site.baseurl }}/assets/img/character-detail/${personaFile}`;
+                const encodedPersonaFile = encodeURIComponent(personaFile);
+                if (personaImgEl.src !== expectedSrc && !personaImgEl.src.endsWith(personaFile) && !personaImgEl.src.endsWith(encodedPersonaFile)) {
+                    personaImgEl.setAttribute('src', expectedSrc);
+                }
+            }
+        } catch (e) { console.warn('[SAFE:set-images]', e); }
+
+        // Set character name (en에서는 로딩 전에 skeleton 사용)
+        try {
+            const nameElement = document.querySelector('.character-name');
+            if (nameElement) {
+                if (currentLang === 'en') {
+                    nameElement.classList.add('skeleton');
+                    requestAnimationFrame(() => {
+                        try { nameElement.textContent = character.name_en || characterName; } catch (_) { }
+                        nameElement.classList.remove('skeleton');
+                    });
+                } else if (currentLang === 'jp' && character.name_jp) {
+                    nameElement.textContent = character.name_jp;
+                } else {
+                    nameElement.textContent = character.name;
+                }
+            }
+        } catch (e) { console.warn('[SAFE:set-name]', e); }
+
+        // 코드네임 설정
+        try {
+            const codeNameLabel = `${getCharacterI18nText('characterDetailCodeName', '코드네임')} `;
+            const codeEl = document.querySelector('.code-name');
+            if (codeEl) {
+                codeEl.innerHTML = `
+                    <span class="label">${codeNameLabel}</span><span class="value">${character.codename || ''}</span>
+                `;
+            }
+            const personaLabel = `${getCharacterI18nText('characterDetailPersona', '페르소나')} `;
+            const personaValue = currentLang === 'en' && character.persona_en ? character.persona_en :
+                currentLang === 'jp' && character.persona_jp ? character.persona_jp :
+                    character.persona || '';
+            const personaEl = document.querySelector('.persona-name');
+            if (personaEl) {
+                personaEl.innerHTML = `
+                    <span class="label">${personaLabel}</span><span class="value">${personaValue}</span>
+                `;
+            }
+        } catch (e) { console.warn('[SAFE:code-persona]', e); }
+
+        // 속성 아이콘 설정
+        try {
+            if (character.element) {
+                const elementIcons = document.querySelector('.element-icons');
+                if (elementIcons) elementIcons.innerHTML = `<img src="{{ site.baseurl }}/assets/img/character-cards/속성_${character.element}.png" alt="${character.element}">`;
+            }
+        } catch (e) { console.warn('[SAFE:element-icon]', e); }
+
+        // 직업 아이콘 및 이름 설정
+        try {
+            if (character.position) {
+                const positionIcon = document.querySelector('.position-icon');
+                if (positionIcon) positionIcon.innerHTML = `<img src="{{ site.baseurl }}/assets/img/character-cards/직업_${character.position}.png" alt="${character.position}">`;
+            }
+        } catch (e) { console.warn('[SAFE:position-icon]', e); }
+
+        // 약점/내성 설정 (데이터가 있을 경우에만)
+        const resistanceIcons = document.querySelector('.resistance-icons');
+        try {
+            if (character.resistances && Array.isArray(character.resistances)) {
+                character.resistances.forEach(res => {
+                    const icon = document.createElement('div');
+                    icon.className = `resistance-icon ${res.type}`;
+                    icon.innerHTML = `<img src="{{ site.baseurl }}/assets/img/character-cards/속성_${res.element}.png" alt="${res.element}">`;
+                    resistanceIcons.appendChild(icon);
+                });
+            }
+        } catch (e) { console.warn('[SAFE:resistances]', e); }
+
+        // 스탯 설정 (데이터가 있을 경우에만)
+        try {
+            if (character.stats) {
+                const statGrid = document.querySelector('.stat-grid');
+                if (!statGrid) throw new Error('statGrid not found');
+                statGrid.innerHTML = `
+                <div class="stat-item">
+                    <span class="stat-label">공격력</span>
+                    <span class="stat-value">${character.stats.attack || 0}</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">방어력</span>
+                    <span class="stat-value">${character.stats.defense || 0}</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">생명</span>
+                    <span class="stat-value">${character.stats.hp || 0}</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">SP</span>
+                    <span class="stat-value">${character.stats.sp || 0}</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">속도</span>
+                    <span class="stat-value">${character.stats.speed || 0}</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">크리티컬 확률</span>
+                    <span class="stat-value">${character.stats.critRate || 0}%</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">크리티컬 효과</span>
+                    <span class="stat-value">${character.stats.critDmg || 0}%</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">효과 명중</span>
+                    <span class="stat-value">${character.stats.effectHit || 0}%</span>
+                </div>
+            `;
+            }
+        } catch (e) { console.warn('[SAFE:stat-grid]', e); }
+
+
+        // 스킬 설정은 cha_detail.js에서 자동 처리됨
+        // 스킬 우선순위 뱃지 적용
+        function applySkillPriorityBadges() {
+            try {
+                const baseData = characterData && characterData[characterName];
+                if (!baseData) return;
+                // characterSetting에서 skill_priority 병합
+                const setting = (characterName && window.characterSetting && window.characterSetting[characterName]) ? window.characterSetting[characterName] : {};
+                const data = { ...baseData, ...setting };
+                if (!data || !data.skill_priority) return;
+                // 기존 뱃지 제거(중복 방지)
+                document.querySelectorAll('.skill-level .label .priority-badge').forEach(function (el) {
+                    if (el && el.parentNode) el.parentNode.removeChild(el);
+                });
+                // "3>1>2>4" 형태 파싱
+                const order = String(data.skill_priority)
+                    .split('>')
+                    .map(function (s) { return parseInt((s || '').trim(), 10); })
+                    .filter(function (n) { return n >= 1 && n <= 4; });
+                if (!order.length) return;
+                // 역매핑: skillNumber(1~4) -> rank(1~4)
+                const skillToRank = {};
+                order.forEach(function (skillNum, idx) { skillToRank[skillNum] = idx + 1; });
+                // 라벨
+                const getBadgeText = function (rank) {
+                    var suffix = rank === 1 ? 'st' : rank === 2 ? 'nd' : rank === 3 ? 'rd' : 'th';
+                    return rank + suffix;
+                };
+                const labels = document.querySelectorAll('.skill-level .label');
+                if (!labels || labels.length === 0) return;
+                labels.forEach(function (labelEl, idx) {
+                    const skillNum = idx + 1; // 1~4 (4는 하이라이트)
+                    const rank = skillToRank[skillNum];
+                    if (!rank) return;
+                    const badge = document.createElement('span');
+                    badge.className = 'priority-badge';
+                    badge.classList.add('rank-' + rank);
+                    badge.textContent = getBadgeText(rank);
+                    labelEl.appendChild(badge);
+                });
+            } catch (e) {
+                console.warn('[SAFE:skill-priority-badges]', e);
+            }
+        }
+        try { applySkillPriorityBadges(); } catch (e) { console.warn('[SAFE:applySkillPriorityBadges:init]', e); }
+        // 비동기 데이터 로드/번역 이후도 한번 더 보정
+        setTimeout(function () {
+            try { applySkillPriorityBadges(); } catch (e) { console.warn('[SAFE:applySkillPriorityBadges:timeout]', e); }
+        }, 300);
+        // 의식 정보 설정
+        const ritualItems = document.querySelectorAll('.ritual-item');
+
+        function updateAllRitualContent() {
+            // 언어별 의식 데이터 우선 사용
+            const ritualToUse = localizedRitual || ritual;
+
+            ritualItems.forEach(item => {
+                const level = item.getAttribute('data-ritual');
+                const title = item.querySelector('.ritual-title');
+                const description = item.querySelector('.ritual-description');
+
+                title.textContent = ritualToUse[`r${level}`] || '';
+                description.innerHTML = ritualToUse[`r${level}_detail`] || '';
+            });
+
+        }
+
+        // 초기 의식 내용 설정
+        try { updateAllRitualContent(); } catch (e) { console.warn('[SAFE:updateAllRitualContent]', e); }
+
+        // J&C 의식 설명에도 아이콘 적용
+        try {
+            if ((characterName === 'J&C' || characterName === '쥐스틴 & 카롤린' || characterName === '쥐스틴&카롤린') &&
+                typeof window.applyJCIcons === 'function') {
+                window.applyJCIcons();
+            }
+        } catch (e) { console.warn('[SAFE:applyJCIcons:ritual]', e); }
+
+        // 몽타뉴·백조 모드 선택 UI 적용
+        try {
+            if ((characterName === '몽타뉴·백조' || characterName === '코토네 몽타뉴·백조') &&
+                typeof window.applyMONT2Filter === 'function') {
+                window.applyMONT2Filter();
+            }
+        } catch (e) { console.warn('[SAFE:applyMONT2Filter]', e); }
+
+        // 전투 진입 시 요구 스탯 + 처리
+        const battlePlusStats = document.querySelector('.battle-plus-stats');
+        try {
+            if (!battlePlusStats) throw new Error('battlePlusStats not found');
+            // characterSetting에서 battle_plus_stats 데이터 병합
+            const setting = (characterName && window.characterSetting && window.characterSetting[characterName]) ? window.characterSetting[characterName] : {};
+            const mergedCharacter = { ...character, ...setting };
+            // 언어 별 battle-plus-stats
+            if (currentLang === 'en' && mergedCharacter.battle_plus_stats_en) {
+                battlePlusStats.textContent = mergedCharacter.battle_plus_stats_en;
+            } else if (currentLang === 'jp' && mergedCharacter.battle_plus_stats_jp) {
+                battlePlusStats.textContent = mergedCharacter.battle_plus_stats_jp;
+            } else {
+                battlePlusStats.textContent = mergedCharacter.battle_plus_stats;
+            }
+        } catch (e) { console.warn('[SAFE:battlePlus-init]', e); }
+
+        if (battlePlusStats && battlePlusStats.textContent && battlePlusStats.textContent !== 'nan') {
+            // console.log('Original battle_plus_stats:', character.battle_plus_stats);
+
+            // <b> 태그의 수 확인
+            const bTagCount = (battlePlusStats.textContent.match(/<b>/g) || []).length;
+            //console.log('bTagCount:', bTagCount);
+            //console.log('battlePlusStats.textContent:', battlePlusStats.textContent);
+            if (bTagCount >= 2) {
+                // 2열 레이아웃으로 변경
+                battlePlusStats.style.display = 'grid';
+                battlePlusStats.style.gridTemplateColumns = 'repeat(2, 1fr)';
+                battlePlusStats.style.gap = '20px';
+
+                // 마이팰리스 평점 버튼 추가를 위한 텍스트 정의
+                const ratingTexts = {
+                    kr: '마이팰리스 평점',
+                    en: 'Thieves Den Rating',
+                    jp: 'マイパレス評価'
+                };
+                const ratingText = ratingTexts[currentLang] || ratingTexts.kr;
+
+                // <b> 태그로 분할하여 각 섹션을 div로 래핑
+                const sections = battlePlusStats.textContent.split(/<b>/).filter(Boolean);
+                battlePlusStats.innerHTML = sections.map(section => {
+                    const processedSection = section.trim().replace(/\s*\/\s*/g, '<br>·');
+                    const finalSection = processedSection.replace(/<<br>·b><br>/, '</b>');
+                    // 마이팰리스 평점 텍스트가 있으면 버튼 추가 (섹션 스타일은 변경하지 않음)
+                    let sectionWithBtn = finalSection;
+                    if (finalSection.includes(ratingText)) {
+                        const btnHTML = `<button type="button" class="qevel-btn" onclick="if(typeof window.showQEVELModal==='function'){window.showQEVELModal();}else{console.warn('QEVEL.js not loaded');}" style="display: inline-block; width: 18px; height: 18px; padding: 0; margin-left: 6px; background: transparent; border: none; cursor: pointer; vertical-align: middle; line-height: 1; white-space: nowrap;" title="${currentLang === 'en' ? 'Open Qualia Lv Calculator' : (currentLang === 'jp' ? 'QEVEL計算機を開く' : 'QEVEL 계산기 열기')}"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1" fill="rgba(255,255,255,0.05)"></circle><path d="M5 9 L13 9 M9 5 L9 13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.3"></path></svg></button>`;
+                        // ·와 텍스트를 함께 찾아서 span으로 감싸기 (뒤의 <br>는 제거)
+                        const escapedRatingText = ratingText.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                        // 패턴: <br>·Thieves Den Rating<br> 또는 <br>·Thieves Den Rating (끝)
+                        sectionWithBtn = finalSection.replace(new RegExp(`(<br>)(·${escapedRatingText})(<br>|$)`, 'g'), `$1<span style="display: inline; white-space: nowrap;">$2${btnHTML}</span>`);
+                    }
+                    return `<div class="battle-stat-section"><b>${sectionWithBtn}</div>`;
+                }).join('');
+
+                // 이벤트 위임을 사용하여 버튼 클릭 처리 (2열 레이아웃)
+                // 즉시 이벤트 리스너 등록 (QEVEL.js는 나중에 로드될 수 있음)
+                // 중복 등록 방지를 위해 한 번만 등록
+                if (!battlePlusStats.hasAttribute('data-qevel-listener')) {
+                    battlePlusStats.setAttribute('data-qevel-listener', 'true');
+                    battlePlusStats.addEventListener('click', function (e) {
+                        const btn = e.target.closest('.qevel-btn');
+                        if (btn) {
+                            e.stopPropagation();
+                            e.preventDefault();
+                            if (typeof window.showQEVELModal === 'function') {
+                                try {
+                                    window.showQEVELModal();
+                                } catch (err) {
+                                    console.error('showQEVELModal 실행 오류:', err);
+                                }
+                            } else {
+                                console.warn('QEVEL.js가 아직 로드되지 않았습니다. 잠시 후 다시 시도해주세요.');
+                                // 재시도 로직
+                                let retries = 0;
+                                const checkAndOpen = setInterval(() => {
+                                    retries++;
+                                    if (typeof window.showQEVELModal === 'function') {
+                                        clearInterval(checkAndOpen);
+                                        window.showQEVELModal();
+                                    } else if (retries >= 50) {
+                                        clearInterval(checkAndOpen);
+                                        console.error('QEVEL.js 로드 실패');
+                                    }
+                                }, 100);
+                            }
+                        }
+                    });
+                }
+            } else {
+                // 기존 방식대로 한 열로 표시
+                let rawContent = battlePlusStats.textContent.trim();
+                // console.log('Raw content:', rawContent);
+
+                // / 기준으로 분할
+                let items = rawContent.split(/\s*\/\s*/);
+                // console.log('Split items:', items);
+
+                // 첫 번째 항목이 ·로 시작하지 않으면 추가
+                if (items[0] && !items[0].trim().startsWith('·')) {
+                    items[0] = '· ' + items[0].trim();
+                }
+
+                // 나머지 항목들 앞에 ·를 추가 (이미 있으면 제거 후 추가)
+                for (let i = 1; i < items.length; i++) {
+                    items[i] = '· ' + items[i].trim().replace(/^·\s*/, '');
+                }
+
+                // DOM 요소 직접 생성
+                battlePlusStats.innerHTML = '';
+
+                // 심상 번역 텍스트 정의
+                const mindTexts = {
+                    'kr': '심상5',
+                    'en': 'Mindscape5',
+                    'jp': 'イメジャリー5'
+                };
+
+                items.forEach((item, index) => {
+                    if (item.trim()) {
+                        const div = document.createElement('div');
+                        let processedItem = item.trim();
+                        // 심상 번역 처리
+                        processedItem = processedItem.replace(/심상5/g, mindTexts[currentLang] || '심상5');
+                        processedItem = processedItem.replace(/심상 5/g, mindTexts[currentLang] || '심상5');
+
+                        // 마이팰리스 평점 텍스트 확인 및 버튼 추가
+                        const ratingTexts = {
+                            kr: '마이팰리스 평점',
+                            en: 'Thieves Den Rating',
+                            jp: 'マイパレス評価'
+                        };
+                        const ratingText = ratingTexts[currentLang] || ratingTexts.kr;
+
+                        // 모든 언어의 텍스트를 확인 (원본 텍스트가 다른 언어일 수 있음)
+                        const allRatingTexts = Object.values(ratingTexts);
+                        let hasRating = false;
+                        let displayItem = processedItem;
+
+                        for (const text of allRatingTexts) {
+                            if (processedItem.includes(text) || processedItem.includes('· ' + text) || processedItem.includes('·' + text)) {
+                                hasRating = true;
+                                // 다른 언어의 텍스트를 현재 언어의 텍스트로 교체
+                                if (text !== ratingText) {
+                                    displayItem = processedItem.replace(text, ratingText);
+                                    displayItem = displayItem.replace('· ' + text, '· ' + ratingText);
+                                    displayItem = displayItem.replace('·' + text, '·' + ratingText);
+                                }
+                                break;
+                            }
+                        }
+
+                        if (hasRating) {
+                            // 텍스트와 버튼을 span으로 감싸서 같은 줄에 유지
+                            const wrapper = document.createElement('span');
+                            wrapper.style.display = 'inline';
+                            wrapper.style.whiteSpace = 'nowrap';
+
+                            const textNode = document.createTextNode(displayItem);
+                            wrapper.appendChild(textNode);
+
+                            const qevelBtn = document.createElement('button');
+                            qevelBtn.type = 'button';
+                            qevelBtn.className = 'qevel-btn';
+                            qevelBtn.style.cssText = 'display: inline-block; width: 18px; height: 18px; padding: 0; margin-left: 6px; background: transparent; border: none; cursor: pointer; vertical-align: middle; line-height: 1; white-space: nowrap;';
+                            qevelBtn.title = currentLang === 'en' ? 'Open Qualia Lv Calculator' : (currentLang === 'jp' ? 'QEVEL計算機を開く' : 'QEVEL 계산기 열기');
+
+                            // SVG 생성
+                            const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                            svg.setAttribute('width', '18'); svg.setAttribute('height', '18'); svg.setAttribute('viewBox', '0 0 18 18'); svg.setAttribute('fill', 'none'); svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+
+                            const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                            circle.setAttribute('cx', '9'); circle.setAttribute('cy', '9'); circle.setAttribute('r', '8.5'); circle.setAttribute('stroke', 'currentColor'); circle.setAttribute('stroke-opacity', '0.1'); circle.setAttribute('fill', 'rgba(255,255,255,0.05)');
+
+                            const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                            path.setAttribute('d', 'M5 9 L13 9 M9 5 L9 13'); path.setAttribute('stroke', 'currentColor'); path.setAttribute('stroke-width', '1.2'); path.setAttribute('stroke-linecap', 'round'); path.setAttribute('stroke-linejoin', 'round'); path.setAttribute('stroke-opacity', '0.3');
+
+                            svg.appendChild(circle); svg.appendChild(path); qevelBtn.appendChild(svg);
+
+                            // 직접 onclick 이벤트도 추가 (이중 보험)
+                            qevelBtn.onclick = function (e) {
+                                e.stopPropagation();
+                                e.preventDefault();
+                                if (typeof window.showQEVELModal === 'function') {
+                                    window.showQEVELModal();
+                                } else {
+                                    console.warn('QEVEL.js not loaded yet');
+                                }
+                            };
+
+                            wrapper.appendChild(qevelBtn);
+                            div.appendChild(wrapper);
+                        } else {
+                            div.textContent = processedItem;
+                        }
+                        battlePlusStats.appendChild(div);
+                    }
+                });
+
+                // console.log('Final items:', items);
+
+                // 이벤트 위임을 사용하여 버튼 클릭 처리 (1열 레이아웃)
+                // 즉시 이벤트 리스너 등록 (QEVEL.js는 나중에 로드될 수 있음)
+                // 중복 등록 방지를 위해 한 번만 등록
+                if (!battlePlusStats.hasAttribute('data-qevel-listener')) {
+                    battlePlusStats.setAttribute('data-qevel-listener', 'true');
+                    battlePlusStats.addEventListener('click', function (e) {
+                        const btn = e.target.closest('.qevel-btn');
+                        if (btn) {
+                            e.stopPropagation();
+                            e.preventDefault();
+                            if (typeof window.showQEVELModal === 'function') {
+                                try {
+                                    window.showQEVELModal();
+                                } catch (err) {
+                                    console.error('showQEVELModal 실행 오류:', err);
+                                }
+                            } else {
+                                console.warn('QEVEL.js가 아직 로드되지 않았습니다. 잠시 후 다시 시도해주세요.');
+                                // 재시도 로직
+                                let retries = 0;
+                                const checkAndOpen = setInterval(() => {
+                                    retries++;
+                                    if (typeof window.showQEVELModal === 'function') {
+                                        clearInterval(checkAndOpen);
+                                        window.showQEVELModal();
+                                    } else if (retries >= 50) {
+                                        clearInterval(checkAndOpen);
+                                        console.error('QEVEL.js 로드 실패');
+                                    }
+                                }, 100);
+                            }
+                        }
+                    });
+                }
+            }
+        } else if (battlePlusStats) {
+            battlePlusStats.textContent = '-';
+        }
+
+        // 수치 패턴 변환 함수
+        function transformEnhancementValues(description, stage, weaponStars) {
+            if (stage === 'all') {
+                return description.replace(
+                    /(\d+\.?\d*%?)\/(\d+\.?\d*%?)\/(\d+\.?\d*%?)\/(\d+\.?\d*%?)\/(\d+\.?\d*%?)\/(\d+\.?\d*%?)\/(\d+\.?\d*%?)/g,
+                    '<span class="enhancement-values">$1</span>/<span class="enhancement-values">$2</span>/<span class="enhancement-values">$3</span>/<span class="enhancement-values">$4</span>/<span class="enhancement-values">$5</span>/<span class="enhancement-values">$6</span>/<span class="enhancement-values">$7</span>'
+                );
+            } else if (stage === 'mixed') {
+                return description.replace(
+                    /(\d+\.?\d*%?)\/(\d+\.?\d*%?)\/(\d+\.?\d*%?)\/(\d+\.?\d*%?)\/(\d+\.?\d*%?)\/(\d+\.?\d*%?)\/(\d+\.?\d*%?)/g,
+                    (match, s0, s1, s2, s3, s4, s5, s6) => {
+                        return `<span class="enhancement-values">${weaponStars === 5 ? s0 : s6}</span>`;
+                    }
+                );
+            } else {
+                const stageNum = parseInt(stage);
+                return description.replace(
+                    /(\d+\.?\d*%?)\/(\d+\.?\d*%?)\/(\d+\.?\d*%?)\/(\d+\.?\d*%?)\/(\d+\.?\d*%?)\/(\d+\.?\d*%?)\/(\d+\.?\d*%?)/g,
+                    (match, s0, s1, s2, s3, s4, s5, s6) => {
+                        const values = [s0, s1, s2, s3, s4, s5, s6];
+                        return `<span class="enhancement-values">${values[stageNum]}</span>`;
+                    }
+                );
+            }
+        }
+
+        // 무기 설정 함수 수정
+        async function loadWeapons(characterName, stage = 'mixed') {
+            const weaponsContainer = document.querySelector('.weapons-container');
+            weaponsContainer.innerHTML = '';
+
+            // 언어별 무기 데이터 우선 사용
+            const weaponDataToUse = localizedWeapon || (window.WeaponData && window.WeaponData[characterName]) || {};
+            if (!weaponDataToUse) return;
+
+            const characterWeapons = weaponDataToUse;
+            const weaponTypes = [
+                { key: 'weapon5-1', suffix: '5-01', stars: 5 },
+                { key: 'weapon4-1', suffix: '4-01', stars: 4 },
+                { key: 'weapon4-2', suffix: '4-02', stars: 4 },
+                { key: 'weapon3-1', suffix: '3-01', stars: 3 }
+            ];
+
+            for (const weapon of weaponTypes) {
+                const imagePath = `{{ site.baseurl }}/assets/img/character-weapon/${characterName}-${weapon.suffix}.png`;
+
+                // 무기 데이터 가져오기 (현재 언어 데이터 우선)
+                const weaponData = characterWeapons[weapon.key];
+                // 한국어 원본 데이터의 highlight도 병합해서 사용
+                const krWeaponData = (window.WeaponData && window.WeaponData[characterName] && window.WeaponData[characterName][weapon.key]) || null;
+
+                // weaponData가 없으면 건너뛰기
+                if (!weaponData) continue;
+
+                const weaponItem = document.createElement('div');
+                weaponItem.className = 'weapon-item';
+                // highlight: true 이면 언어와 무관하게 하이라이트 스타일 적용
+                const isHighlighted = (weaponData && weaponData.highlight === true) || (krWeaponData && krWeaponData.highlight === true);
+                if (isHighlighted) weaponItem.classList.add('super-highlight');
+
+
+                // 무기 이미지
+                // img container 안에 img 추가
+                const weaponImageContainer = document.createElement('div');
+                weaponImageContainer.className = 'weapon-image-container';
+
+                const weaponImage = document.createElement('img');
+                weaponImage.src = imagePath;
+                weaponImage.alt = weaponData.name || '무기 이미지';
+                weaponImage.className = 'weapon-image';
+                // 이미지 로드 실패시 기본 이미지로 대체
+                /*
+                weaponImage.onerror = () => {
+                    weaponImage.src = '{{ site.baseurl }}/assets/img/character-weapon/default.png';
+                };*/
+
+                // 무기 정보 컨테이너
+                const weaponInfo = document.createElement('div');
+                weaponInfo.className = 'weapon-info';
+
+                // 무기 헤더 (이름 + 별)
+                const weaponHeader = document.createElement('div');
+                weaponHeader.className = 'weapon-header';
+
+                // 무기 이름과 스탯
+                const weaponName = document.createElement('span');
+                weaponName.className = `weapon-name${weapon.stars === 5 ? ' five-star' : ''}`;
+                weaponName.textContent = weaponData.name || '무기 이름';
+
+                // 스탯 정보
+                const weaponStats = document.createElement('div');
+                weaponStats.className = 'weapon-stats';
+                // 현재 언어 라벨 계산 (I18NUtils 폴백 포함)
+                const _lang = (typeof getCurrentLanguage === 'function') ? getCurrentLanguage() : 'kr';
+                const _fallbackStatLabel = {
+                    kr: { hp: 'HP', atk: 'ATK', def: 'DEF' },
+                    en: { hp: 'HP', atk: 'ATK', def: 'DEF' },
+                    jp: { hp: 'HP', atk: 'ATK', def: 'DEF' }
+                };
+                const _labelSet = _fallbackStatLabel[_lang] || _fallbackStatLabel.kr;
+                const _healthLabel = getCharacterI18nText('characterStatsLabelHp', _labelSet.hp);
+                const _attackLabel = getCharacterI18nText('characterStatsLabelAtk', _labelSet.atk);
+                const _defenseLabel = getCharacterI18nText('characterStatsLabelDef', _labelSet.def);
+
+                // 소숫점 스탯을 모두 정수로 반올림하여 표시
+                const _roundStat = (val) => {
+                    if (val === null || val === undefined || isNaN(val)) return 0;
+                    return Math.round(Number(val));
+                };
+                const _healthValue = _roundStat(weaponData.health);
+                const _attackValue = _roundStat(weaponData.attack);
+                const _defenseValue = _roundStat(weaponData.defense);
+
+                weaponStats.innerHTML = `
+                    <img src="{{ site.baseurl }}/assets/img/character-detail/weapon-health.png" alt="${_healthLabel}"><p>${_healthLabel} ${_healthValue}</p>
+                    <img src="{{ site.baseurl }}/assets/img/character-detail/weapon-attack.png" alt="${_attackLabel}"><p>${_attackLabel} ${_attackValue}</p>
+                    <img src="{{ site.baseurl }}/assets/img/character-detail/weapon-defense.png" alt="${_defenseLabel}"><p>${_defenseLabel} ${_defenseValue}</p>
+                `;
+
+                // 별 표시
+                const weaponStars = document.createElement('div');
+                weaponStars.className = 'weapon-stars';
+                for (let i = 0; i < weapon.stars; i++) {
+                    const star = document.createElement('img');
+                    star.src = `{{ site.baseurl }}/assets/img/character-detail/star${weapon.stars}.png`;
+                    star.alt = '★';
+                    weaponStars.appendChild(star);
+                }
+                // weapon.key가 weapon4-2라면 별 옆에 'EVENT' 텍스트를 추가한다.
+                //console.log(weapon.key);
+                if (weapon.key == "weapon4-2") {
+                    const eventText = document.createElement('span');
+                    eventText.className = 'event-text';
+                    eventText.textContent = 'EVENT';
+                    eventText.style.color = '#ecda81';
+                    eventText.style.fontSize = '10px';
+                    eventText.style.lineHeight = '1';
+                    eventText.style.margin = '1px 0 0 4px';
+                    weaponStars.appendChild(eventText);
+                }
+
+                // 스킬 정보
+                const weaponSkill = document.createElement('div');
+                weaponSkill.className = 'weapon-skill';
+                if (weaponData.skill_name || weaponData.description) {
+                    let description = weaponData.description || '';
+                    description = transformEnhancementValues(description, stage, weapon.stars);
+                    description = description.replace(/(?<!\d)\.(?!\d)(?!\s*<br>)(?!\s*\n)/g, '.\n');
+
+                    // 스킬명이 있으면 표시, 없으면 설명만 표시
+                    if (weaponData.skill_name) {
+                        weaponSkill.innerHTML = `
+                        <h4>${weaponData.skill_name}</h4>
+                        <p>${description}</p>
+                    `;
+                    } else if (description) {
+                        weaponSkill.innerHTML = `
+                            <p>${description}</p>
+                        `;
+                    }
+                }
+
+                weaponHeader.appendChild(weaponName);
+                weaponHeader.appendChild(weaponStars);
+
+                weaponInfo.appendChild(weaponHeader);
+                weaponInfo.appendChild(weaponStats);
+                weaponInfo.appendChild(weaponSkill);
+
+                weaponImageContainer.appendChild(weaponImage);
+                weaponItem.appendChild(weaponImageContainer);
+                weaponItem.appendChild(weaponInfo);
+
+                weaponsContainer.appendChild(weaponItem);
+
+            }
+
+            // 무기 렌더 이후 번역은 디바운스 큐로 합쳐서 실행
+            scheduleTranslate(document.querySelector('.weapons-card') || document);
+
+            addTooltips();
+
+        }
+
+        // 무기 섹션은 idle 시점에 지연 렌더
+        runWhenIdle(() => {
+            try { if (characterName && characterData[characterName]) { loadWeapons(characterName, 'mixed'); } } catch (e) { console.warn('[SAFE:loadWeapons-init]', e); }
+        });
+
+        // 글로벌 서버 캐릭터 목록/출시 상태를 먼저 반영
+        await safeAwait('loadCharacterList', loadCharacterList());
+        try {
+            const currentLang = getCurrentLanguage();
+            if (characterName && currentLang !== 'kr') {
+                const selfReleased = await isCharacterReleased(characterName);
+                if (!selfReleased) spoilerDisabled = true;
+            }
+        } catch (e) { console.warn('[SAFE:check-self-released]', e); }
+
+        // 하위 섹션(추천/툴팁)은 idle 시점에 지연 로드
+        runWhenIdle(() => {
+            try { loadRecommendations(characterName); } catch (e) { console.warn('[SAFE:loadRecommendations]', e); }
+            try { addTooltips(); } catch (e) { console.warn('[SAFE:addTooltips]', e); }
+        });
+
+        // 버튼 이벤트 리스너 추가
+        const enhancementButtons = document.querySelectorAll('.enhancement-btn');
+
+        enhancementButtons.forEach(button => {
+            try {
+                button.addEventListener('click', () => {
+                    try {
+                        enhancementButtons.forEach(btn => btn.classList.remove('active'));
+                        button.classList.add('active');
+                        const urlParams = new URLSearchParams(window.location.search);
+                        const characterName = urlParams.get('name') || window.__CHARACTER_DEFAULT || '';
+                        loadWeapons(characterName, button.dataset.stage);
+                    } catch (e) { console.warn('[SAFE:enhancement-click-inner]', e); }
+                });
+            } catch (e) { console.warn('[SAFE:enhancement-click]', e); }
+        });
+
+
+
+        // SEO 메타데이터 동적 업데이트
+        const baseUrl = 'https://lufel.net'; // 실제 도메인으로 변경 필요
+
+        // 언어별 캐릭터명 설정
+        let characterDisplayName = character.name;
+        if (currentLang === 'en' && character.name_en) {
+            characterDisplayName = character.name_en;
+        } else if (currentLang === 'jp' && character.name_jp) {
+            characterDisplayName = character.name_jp;
+        }
+
+        // 언어별 사이트 정보
+        const siteInfo = {
+            'kr': {
+                siteName: '육성 가이드 - 페르소나5 더 팬텀 X',
+                siteTitle: 'P5X 루페르넷',
+                description: '추천 세팅, 스킬, 의식, 전용무기 정보'
+            },
+            'en': {
+                siteName: 'Build & Guide - Persona 5: The Phantom X',
+                siteTitle: 'P5X LufelNet',
+                description: 'Recommended setup, skills, awareness, exclusive weapon info'
+            },
+            'jp': {
+                siteName: '攻略 - ペルソナ5 ザ・ファントム X',
+                siteTitle: 'P5X LufelNet',
+                description: 'おすすめ設定、スキル、意識、専用武器情報'
+            }
+        };
+
+        const currentSiteInfo = siteInfo[currentLang] || siteInfo['kr'];
+
+        // 타이틀 업데이트
+        try { document.title = `${characterDisplayName} ${currentSiteInfo.siteName}`; } catch (e) { console.warn('[SAFE:seo-title]', e); }
+
+        // 메타 태그 업데이트 (태그가 존재하는 경우에만)
+        const description = `${characterDisplayName}(${character.codename}) - ${currentSiteInfo.siteName} : ${currentSiteInfo.description}`;
+
+        const metaDescription = document.querySelector('meta[name="description"]');
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        const ogDescription = document.querySelector('meta[property="og:description"]');
+        const ogImage = document.querySelector('meta[property="og:image"]');
+        const ogUrl = document.querySelector('meta[property="og:url"]');
+        const canonicalLink = document.getElementById('canonical-link');
+
+        try {
+            if (metaDescription) metaDescription.setAttribute('content', description);
+            if (ogTitle) ogTitle.setAttribute('content', `${characterDisplayName} - ${currentSiteInfo.siteName}`);
+            if (ogDescription) ogDescription.setAttribute('content', description);
+            if (ogImage) ogImage.setAttribute('content', `${baseUrl}/img/character-detail/${characterName}.webp`);
+            if (ogUrl) ogUrl.setAttribute('content', `${baseUrl}/${currentLang}/character/character.html?name=${characterName}`);
+            if (canonicalLink) {
+                const canonicalUrl = `https://lufel.net/${currentLang}/character/character.html?name=${characterName}`;
+                canonicalLink.setAttribute('href', canonicalUrl);
+            }
+        } catch (e) { console.warn('[SAFE:seo-meta]', e); }
+
+        // 번역 적용 (캐릭터 데이터 로드 후)
+        try { applyTranslations(); } catch (e) { console.warn('[SAFE:applyTranslations]', e); }
+
+        // 번역 적용 후 레이아웃 재계산
+        setTimeout(() => {
+            try { if (typeof fillOperationInfo === 'function') { fillOperationInfo(characterName); } } catch (e) { console.warn('[SAFE:fillOperationInfo-timeout]', e); }
+            try {
+                if (window.innerWidth <= 1200) {
+                    const operationSettings = document.querySelector('.operation-settings');
+                    if (operationSettings) {
+                        operationSettings.style.gridTemplateColumns = '1fr';
+                        operationSettings.style.display = 'flex';
+                        operationSettings.style.flexDirection = 'column';
+                        operationSettings.style.gap = '20px';
+                    }
+                }
+            } catch (e) { console.warn('[SAFE:operationSettings-mobile]', e); }
+        }, 100);
+
+        // 영어/일본어에서 주의 메시지 표시
+        try {
+            if (currentLang === 'en' || currentLang === 'jp') {
+                const warningMessage = getCharacterI18nText(
+                    'characterDetailNoticeMessage',
+                    'The recommended settings are based on future content. Some features may not be currently available (Revelations, Mindscape, etc.)'
+                );
+                const warningDiv = document.createElement('div');
+                warningDiv.className = 'warning-message';
+                warningDiv.style.cssText = 'background: rgba(17, 17, 17, 0.2); color: #6c757d; padding: 10px; margin: 15px 0; border-radius: 4px; font-size: 13px; opacity: 0.5;';
+                warningDiv.innerHTML = `<strong>${getCharacterI18nText('characterDetailNoticeTitle', 'Notice')}</strong><br>${warningMessage}`;
+                const settingsCard = document.querySelector('.settings-card');
+                if (settingsCard) {
+                    settingsCard.insertBefore(warningDiv, settingsCard.firstChild.nextSibling);
+                }
+            }
+        } catch (e) { console.warn('[SAFE:lang-warning]', e); }
+
+
+
+
+        try {
+            const tagElements = document.querySelectorAll('.chracter-tag, .chracter-role');
+            tagElements.forEach(el => { if (el) el.style.display = ''; });
+        } catch (e) { console.warn('[SAFE:tag-display]', e); }
+
+        //role은 kr 아니면 숨기기
+        try {
+            const roleElement = document.querySelector('.chracter-role');
+            if (currentLang !== 'kr' && roleElement) { roleElement.style.display = 'none'; }
+        } catch (e) { console.warn('[SAFE:role-hide]', e); }
+
+        try {
+            const noteSection = document.querySelector('.operation-settings .setting-section:last-child');
+            const notes = noteSection ? noteSection.querySelector('.operation-notes') : null;
+            if (!notes || notes.innerHTML.trim() === '') {
+                if (noteSection) noteSection.style.display = 'none';
+                const operationSettings = document.querySelector('.operation-settings');
+                if (operationSettings) {
+                    operationSettings.style.gridTemplateColumns = '1fr';
+                    operationSettings.style.display = 'flex';
+                    operationSettings.style.flexDirection = 'column';
+                }
+            }
+        } catch (e) { console.warn('[SAFE:note-section]', e); }
+
+      } finally {
+        // Remove skeleton overlay now that i18n + data is applied (or handler errored/returned early)
+        document.documentElement.classList.remove('skel');
+      }
+    });
+
+
+    // MutationObserver를 사용해 동적 콘텐츠 변경 감지
+    const observer = new MutationObserver((mutations) => {
+        const shouldTranslate = mutations.some((mutation) =>
+            (mutation.type === 'childList' && mutation.addedNodes.length > 0)
+            || mutation.type === 'characterData'
+        );
+        if (!shouldTranslate) return;
+        scheduleTranslate(document.querySelector('.main-wrapper') || document);
+    });
+
+    // 관찰 시작
+    const observerTarget = document.querySelector('.main-wrapper');
+    if (observerTarget) {
+        observer.observe(observerTarget, {
+            childList: true,
+            characterData: true,
+            subtree: true
+        });
+    }
+
+    // 언어별 계시 데이터 로드
+    function loadRevelationDataByLanguage() {
+        const currentLang = getCurrentLanguage();
+
+        return new Promise((resolve) => {
+            if (currentLang === 'en') {
+                // 영어 계시 데이터 로드
+                fetchWithRevalidate(`${BASE_URL}/data/en/revelations/revelations.js?v=${APP_VERSION}`)
+                    .then(response => response.text())
+                    .then(scriptContent => {
+                        // revelationData를 enRevelationData로 변경해서 실행
+                        const modifiedScript = scriptContent.replace('const enRevelationData', 'window.enRevelationData');
+                        eval(modifiedScript);
+                        // console.log('영어 계시 데이터 로드 완료:', window.enRevelationData);
+                        resolve();
+                    })
+                    .catch(error => {
+                        console.error('영어 계시 데이터 로드 실패:', error);
+                        resolve(); // 실패해도 계속 진행
+                    });
+            } else if (currentLang === 'jp') {
+                // 일본어 계시 데이터는 영어 데이터와 동일하게 사용
+                fetchWithRevalidate(`${BASE_URL}/data/jp/revelations/revelations.js?v=${APP_VERSION}`)
+                    .then(response => response.text())
+                    .then(scriptContent => {
+                        // revelationData를 jpRevelationData로 변경해서 실행
+                        const modifiedScript = scriptContent.replace('const jpRevelationData', 'window.jpRevelationData');
+                        eval(modifiedScript);
+                        // console.log('일본어 계시 데이터 로드 완료:', window.jpRevelationData);
+                        resolve();
+                    })
+                    .catch(error => {
+                        console.error('일본어 계시 데이터 로드 실패:', error);
+                        resolve(); // 실패해도 계속 진행
+                    });
+            } else {
+                resolve(); // 한국어는 바로 완료
+            }
+        });
+    }
+
+    // 계시 데이터 로드 완료 후 캐릭터 정보 다시 렌더링
+    function refreshRevelationDisplay() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const characterName = urlParams.get('name') || window.__CHARACTER_DEFAULT || '';
+
+        if (!characterName) return;
+
+        // characterData 준비 전이면 재시도
+        if (typeof characterData === 'undefined' || !characterData[characterName]) {
+            setTimeout(refreshRevelationDisplay, 100);
+            return;
+        }
+
+        // cha_detail.js 의 createRevelationValue 준비 전이면 재시도
+        if (typeof window.createRevelationValue !== 'function') {
+            setTimeout(refreshRevelationDisplay, 100);
+            return;
+        }
+
+        const character = characterData[characterName];
+
+        // 계시 부분만 다시 렌더링
+        const mainRevelationValue = document.querySelector('.main-revelation .value');
+        const subRevelationValue = document.querySelector('.sub-revelation .value');
+
+        // characterSetting에서 계시 데이터 병합
+        const setting = (characterName && window.characterSetting && window.characterSetting[characterName]) ? window.characterSetting[characterName] : {};
+        const mergedCharacter = { ...character, ...setting };
+
+        // 메인 계시 설정
+        if (mergedCharacter.main_revelation && Array.isArray(mergedCharacter.main_revelation)) {
+            mainRevelationValue.textContent = '';
+            mainRevelationValue.appendChild(window.createRevelationValue(mergedCharacter.main_revelation, true));
+        }
+
+        // 서브 계시 설정
+        if (mergedCharacter.sub_revelation && Array.isArray(mergedCharacter.sub_revelation)) {
+            subRevelationValue.textContent = '';
+            subRevelationValue.appendChild(window.createRevelationValue(mergedCharacter.sub_revelation, false));
+        }
+    }
+
+    // 공통 번역 유틸로 적용 함수 위임 (중복 로직 제거)
+    try {
+        applyTranslations = function () {
+            try { if (window.CharI18N && typeof CharI18N.applySectionLabels === 'function') { CharI18N.applySectionLabels(); } } catch (e) { console.warn('[CharI18N:applySectionLabels]', e); }
+            try { if (typeof window.localizeCharacterStatsCard === 'function') { window.localizeCharacterStatsCard(); } } catch (e) { console.warn('[cha_stats:localizeCharacterStatsCard]', e); }
+            scheduleTranslate(document.querySelector('.main-wrapper') || document);
+        };
+    } catch (e) { console.warn('[I18N:override-applyTranslations]', e); }
+    // 추천 페르소나와 파티 로드 함수
+    async function loadRecommendations(characterName) {
+        // 추천 파티 이름이 항상 동일한 기준(KR 메타)으로 동작하도록 보장
+        await ensureKrNameData();
+        if (!characterName || !(window.recommendParty && window.recommendParty[characterName])) {
+            document.getElementById('recommended-sections').style.display = 'none';
+            return;
+        }
+
+        const data = window.recommendParty[characterName];
+        document.getElementById('recommended-sections').style.display = 'block';
+
+        // friends 유무 확인 (name이 하나라도 있을 때만 사용)
+        const hasFriends = Array.isArray(data.friends) && data.friends.some(function (f) {
+            return f && typeof f.name === 'string' && f.name.trim().length > 0;
+        });
+
+        // 파티 유무 확인 (멤버가 하나라도 있는 경우만 사용)
+        const hasParty = Array.isArray(data.party) && data.party.some(function (p) {
+            return p && Array.isArray(p.members) && p.members.some(function (m) {
+                return typeof m === 'string' && m.trim().length > 0;
+            });
+        });
+
+        // 추천 페르소나/무기 표시 여부 결정
+        const personaCardEl = document.querySelector('.recommended-persona-card');
+        const personaContentEl = document.getElementById('recommended-persona-content');
+        const partyCardEl = document.querySelector('.recommended-party-card');
+        const hasWeapon = Array.isArray(data.weapon) && data.weapon.some(function (w) { return typeof w === 'string' && w.trim().length > 0; });
+        const hasPersona = Array.isArray(data.persona) && data.persona.some(function (category) {
+            return Array.isArray(category.list) && category.list.some(function (p) { return typeof p === 'string' && p.trim().length > 0; });
+        });
+
+        // 섹션 제목 다국어 지원
+        updateSectionTitles();
+
+        // persona 또는 weapon 중 하나라도 있으면 카드 표시
+        if (hasWeapon || hasPersona) {
+            if (personaCardEl) personaCardEl.style.display = '';
+
+            // 다국어 안내 노트 (비한국어) - 페르소나 카드가 표시될 때만 추가
+            const currentLang = getCurrentLanguage();
+            if (currentLang !== 'kr' && !document.querySelector('.unreleased-note')) {
+                const noteContainer = document.createElement('div');
+                noteContainer.className = 'unreleased-note';
+                noteContainer.style.fontSize = '0.9em';
+                noteContainer.style.color = '#888';
+                noteContainer.style.marginBottom = '15px';
+                noteContainer.style.fontStyle = 'italic';
+
+                const noteText = document.createElement('p');
+                noteText.textContent = getCharacterI18nText(
+                    'characterDetailUnreleasedNote',
+                    'Note: Some recommended personas & weapons may not be released yet in your region.'
+                );
+
+                noteContainer.appendChild(noteText);
+                if (personaContentEl && personaContentEl.parentNode) {
+                    personaContentEl.parentNode.insertBefore(noteContainer, personaContentEl);
+                }
+            }
+
+            // 추천 페르소나/무기 로드
+            loadRecommendedPersona(data.persona);
+        } else {
+            // 둘 다 없으면 카드 숨김 및 내용 초기화, 기존 안내문도 제거
+            if (personaCardEl) personaCardEl.style.display = 'none';
+            if (personaContentEl) personaContentEl.innerHTML = '';
+            const existingNote = document.querySelector('.unreleased-note');
+            if (existingNote && existingNote.parentNode) existingNote.parentNode.removeChild(existingNote);
+        }
+
+        // friends 라인업 로드 (있을 때만)
+        try { loadFriendsLineup(data.friends, partyCardEl, hasFriends); } catch (e) { console.warn('[SAFE:loadFriendsLineup]', e); }
+
+        // 추천 파티 로드 (실제 파티 데이터가 있을 때만)
+        if (hasParty) {
+            loadRecommendedParty(data.party, hasFriends);
+        } else {
+            const container = document.getElementById('recommended-party-content');
+            if (container) container.innerHTML = '';
+        }
+    }
+
+    // 섹션 제목 다국어 지원
+    function updateSectionTitles() {
+        const personaTitle = document.querySelector('.recommended-persona-card h2');
+        const partyTitle = document.querySelector('.recommended-party-card h2');
+        if (personaTitle) personaTitle.textContent = getCharacterI18nText('characterDetailRecommendedCombination', '추천 조합');
+        if (partyTitle) partyTitle.textContent = getCharacterI18nText('characterDetailRecommendedPartyExample', '추천 파티 예시');
+    }
+
+    // 페르소나 이름 다국어 지원 (data/persona 기반)
+    function getLocalizedPersonaName(personaName) {
+        const currentLang = getCurrentLanguage();
+        const store = (typeof window !== 'undefined' && window.personaFiles && Object.keys(window.personaFiles).length)
+            ? window.personaFiles
+            : (typeof personaData !== 'undefined' ? personaData : (window.persona && window.persona.personaData) || {});
+        if (!store || !store[personaName]) {
+            return personaName;
+        }
+
+        const p = store[personaName];
+        if (currentLang === 'en' && p.name_en) {
+            return p.name_en;
+        } else if (currentLang === 'jp' && p.name_jp) {
+            return p.name_jp;
+        }
+        return personaName;
+    }
+
+    // KR 캐릭터 이름 메타 (추천 파티 이름용) - 비동기 로드 1회
+    let krNameData = null;
+    let krNameDataLoaded = false;
+
+    async function ensureKrNameData() {
+        if (krNameDataLoaded) return krNameData || {};
+        krNameDataLoaded = true;
+
+        // custom_data로 이미 로드된 기본 characterData를 우선 사용
+        if (window.characterData && Object.keys(window.characterData).length > 0) {
+            krNameData = window.characterData;
+            window.krNameData = krNameData;
+            return krNameData;
+        }
+
+        try {
+            const base = (typeof BASE_URL !== 'undefined') ? BASE_URL : '';
+            const url = `${base}/data/character_info.js?v=${APP_VERSION}`;
+            const res = await fetchWithRevalidate(url);
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            const text = await res.text();
+            const parsed = extractDataFromScript(text);
+            krNameData = (parsed && parsed.characterData) ? parsed.characterData : {};
+        } catch (e) {
+            console.warn('[SAFE:ensureKrNameData]', e);
+            krNameData = {};
+        }
+        // 전역에서도 접근 가능하도록 노출 (필요 시 디버그용)
+        window.krNameData = krNameData;
+        return krNameData;
+    }
+
+    // 캐릭터 이름 다국어 지원
+    function getLocalizedCharacterName(characterName) {
+        const currentLang = getCurrentLanguage();
+        const base = (krNameData && krNameData[characterName])
+            || (characterData && characterData[characterName])
+            || null;
+        if (!base) return characterName;
+
+        const c = (characterData && characterData[characterName]) || base;
+
+        // 영어: 우선 코드네임, 없으면 영어 이름, 그래도 없으면 원본
+        if (currentLang === 'en') {
+            if (c.codename) return c.codename;
+            if (c.name_en) return c.name_en;
+            if (base.codename) return base.codename;
+            if (base.name_en) return base.name_en;
+            return characterName;
+        }
+
+        // 일본어: 우선 일본어 이름, 없으면 영어 이름, 그래도 없으면 원본
+        if (currentLang === 'jp') {
+            if (c.name_jp) return c.name_jp;
+            if (c.name_en) return c.name_en;
+            if (base.name_jp) return base.name_jp;
+            if (base.name_en) return base.name_en;
+            return characterName;
+        }
+
+        // 한국어: 객체 키(원래 캐릭터 이름)를 그대로 사용
+        if (currentLang === 'kr') {
+            return characterName;
+        }
+
+        // 기타(방어적): KR 이름이 있으면 그걸 사용
+        return base.name || characterName;
+    }
+
+    function resolveCharacterSlug(characterName) {
+        try {
+            const map = window.__CHARACTER_SLUG_MAP;
+            if (!map || typeof map !== 'object' || !characterName) return null;
+            const rawName = String(characterName);
+            const name = rawName.trim();
+
+            if (map[name] && map[name].slug) return map[name].slug;
+
+            const keys = Object.keys(map);
+            for (let i = 0; i < keys.length; i++) {
+                const key = keys[i];
+                const entry = map[key];
+                if (!entry || !entry.slug) continue;
+                if (!Array.isArray(entry.aliases)) continue;
+                if (entry.aliases.includes(rawName) || entry.aliases.includes(name)) {
+                    return entry.slug;
+                }
+            }
+        } catch (e) {
+            console.warn('[SAFE:resolveCharacterSlug]', e);
+        }
+        return null;
+    }
+
+    function buildCharacterDetailUrl(characterName) {
+        const lang = getCurrentLanguage();
+        const safeName = characterName ? String(characterName).trim() : '';
+        if (!safeName) return '#';
+
+        const slug = resolveCharacterSlug(safeName);
+        if (slug) return `/${lang}/character/${slug}/`;
+
+        return `/character.html?name=${encodeURIComponent(safeName)}&lang=${lang}`;
+    }
+
+    function loadRecommendedPersona(personaData) {
+        const container = document.getElementById('recommended-persona-content');
+        container.innerHTML = '';
+
+        // Get character name from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const characterName = urlParams.get('name') || window.__CHARACTER_DEFAULT || '';
+        const currentLang = getCurrentLanguage();
+
+        // Add Wonder Weapons section if character has weapons
+        if (characterName && window.recommendParty && window.recommendParty[characterName]?.weapon?.length > 0) {
+            const weaponSection = document.createElement('div');
+            weaponSection.className = 'persona-attribute-section';
+
+            const title = document.createElement('h3');
+            title.textContent = currentLang === 'en' ? 'WONDER WEAPONS' :
+                (currentLang === 'jp' ? 'ウェポン' : 'WONDER WEAPONS');
+            weaponSection.appendChild(title);
+
+            const weaponList = document.createElement('div');
+            weaponList.className = 'persona-list';
+
+            (window.recommendParty && window.recommendParty[characterName]?.weapon || []).forEach(weaponName => {
+                const weaponItem = document.createElement('div');
+                weaponItem.className = 'persona-item';
+                // 이름 끝의 ! 표시 여부에 따라 하이라이트 적용
+                const hasHighlight = /!+$/.test(weaponName);
+                if (hasHighlight) weaponItem.classList.add('super-highlight');
+                weaponItem.style.cursor = 'pointer';
+                weaponName = weaponName.replace(/!+$/, '');
+
+                const img = document.createElement('img');
+                const imgSrc = `/assets/img/wonder-weapon/${weaponName}.webp`;
+                img.src = imgSrc;
+                img.alt = weaponName;
+                img.onerror = function () {
+                    this.onerror = null;
+                    this.src = '/assets/img/placeholder.png';
+                };
+
+                const name = document.createElement('span');
+                // Get localized weapon name from matchWeapons if available
+                let weaponNameText = weaponName;
+                if (matchWeapons && matchWeapons[weaponName]) {
+                    if (currentLang === 'en' && matchWeapons[weaponName].name_en) {
+                        weaponNameText = matchWeapons[weaponName].name_en;
+                    } else if (currentLang === 'jp' && matchWeapons[weaponName].name_jp) {
+                        weaponNameText = matchWeapons[weaponName].name_jp;
+                    }
+                }
+                // 표시 텍스트에서는 ! 제거
+                name.textContent = weaponNameText.replace(/!+$/, '');
+
+                // Add click handler to show weapon effect
+                weaponItem.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showWeaponEffect(weaponName, imgSrc, weaponNameText);
+                });
+
+                weaponItem.appendChild(img);
+                weaponItem.appendChild(name);
+                weaponList.appendChild(weaponItem);
+            });
+
+            weaponSection.appendChild(weaponList);
+            container.appendChild(weaponSection);
+        }
+
+        // 속성 이름 다국어 처리
+        const attributeTranslations = {
+            'BUFF': { 'en': 'BUFF', 'jp': 'バフ' },
+            'DEF': { 'en': 'DEF', 'jp': '防御' },
+            'ATK': { 'en': 'ATK', 'jp': '攻撃' },
+            'HEAL': { 'en': 'HEAL', 'jp': '回復' },
+            'DEBUFF': { 'en': 'DEBUFF', 'jp': 'デバフ' },
+            'SUPPORT': { 'en': 'SUPPORT', 'jp': 'サポート' },
+            'REDUCE DEF': { 'en': 'REDUCE DEF', 'jp': '防御低下' },
+            'CRITICAL': { 'en': 'CRITICAL', 'jp': 'クリティカル' }
+        };
+
+        // personaData가 없거나 비어있으면 이후 렌더링 생략
+        if (!Array.isArray(personaData) || personaData.length === 0) {
+            return;
+        }
+
+        personaData.forEach(category => {
+            const attributeSection = document.createElement('div');
+            attributeSection.className = 'persona-attribute-section';
+
+            const title = document.createElement('h3');
+            // 속성 이름 다국어 처리
+            const currentLang = getCurrentLanguage();
+            const attribute = category.type;
+
+            if (currentLang === 'en' && attributeTranslations[attribute]?.en) {
+                title.textContent = attributeTranslations[attribute].en;
+            } else if (currentLang === 'jp' && attributeTranslations[attribute]?.jp) {
+                title.textContent = attributeTranslations[attribute].jp;
+            } else {
+                title.textContent = attribute;
+            }
+            attributeSection.appendChild(title);
+
+            // 코멘트를 페르소나 리스트 위로 이동
+            const commentContainer = document.createElement('div');
+            commentContainer.className = 'comment-container';
+
+            if (category.comment || category.comment_en || category.comment_jp) {
+                const commentEl = document.createElement('p');
+                commentEl.className = 'persona-comment';
+
+                if (currentLang === 'en' && category.comment_en) {
+                    commentEl.textContent = category.comment_en;
+                } else if (currentLang === 'jp' && category.comment_jp) {
+                    commentEl.textContent = category.comment_jp;
+                } else {
+                    commentEl.textContent = category.comment;
+                }
+                commentContainer.appendChild(commentEl);
+            }
+
+            const personaList = document.createElement('div');
+            personaList.className = 'persona-list';
+
+            try {
+                category.list.forEach(personaName => {
+                    const personaItem = document.createElement('div');
+                    personaItem.className = 'persona-item';
+                    // 이름 끝의 ! 표시 여부에 따라 하이라이트 적용
+                    const hasHighlight = /!+$/.test(personaName);
+                    if (hasHighlight) personaItem.classList.add('super-highlight');
+
+                    personaName = personaName.replace(/!+$/, '');
+                    const personaLink = document.createElement('a');
+                    personaLink.href = '#';
+                    personaLink.onclick = function (e) {
+                        e.preventDefault();
+                        // Open persona page in new tab with search parameter
+                        const personaPageUrl = `${window.location.origin}/persona/?persona=${encodeURIComponent(personaName)}`;
+                        window.open(personaPageUrl, '_blank');
+                    };
+
+                    const img = document.createElement('img');
+                    img.src = `/assets/img/persona/${personaName}.webp`;
+                    img.alt = personaName;
+                    img.onerror = function () {
+                        this.onerror = null;
+                        this.src = '/assets/img/placeholder.png';
+                    };
+
+                    const name = document.createElement('span');
+                    // 표시 텍스트에서는 ! 제거 후 출력
+                    const localized = getLocalizedPersonaName(personaName);
+                    name.textContent = localized.replace(/!+$/, '');
+
+                    personaLink.appendChild(img);
+                    personaItem.appendChild(personaLink);
+                    personaItem.appendChild(name);
+                    personaList.appendChild(personaItem);
+                });
+
+                attributeSection.appendChild(personaList);
+                // 코멘트 컨테이너를 페르소나 리스트 아래에 추가
+                if (commentContainer.hasChildNodes()) {
+                    attributeSection.appendChild(commentContainer);
+                }
+                container.appendChild(attributeSection);
+            }
+            catch (error) {
+                // console.error('Error loading recommended persona:', error);
+                console.log('Error loading recommended persona');
+            }
+        });
+
+        // 레이아웃 보정: 홀수개 시 첫 섹션 전체 너비
+        try { adjustRecommendedPersonaLayout(); } catch (e) { console.warn('[SAFE:adjustRecommendedPersonaLayout]', e); }
+    }
+
+    // 추천 페르소나 레이아웃 보정 (PC에서 항목 수 홀수면 첫 항목 전체 너비)
+    function adjustRecommendedPersonaLayout() {
+        try {
+            const container = document.getElementById('recommended-persona-content');
+            if (!container) return;
+
+            // PC 화면(>1200px)에서만 적용
+            const isPC = window.innerWidth > 1200;
+
+            // 직계 자식 중 .persona-attribute-section만 카운트
+            const items = Array.from(container.children).filter(function (el) {
+                return el && el.classList && el.classList.contains('persona-attribute-section');
+            });
+
+            // 기존 상태 초기화
+            items.forEach(function (el) { el.classList.remove('span-full'); });
+
+            if (!isPC) return;
+            if (items.length === 0) return;
+
+            // 홀수개면 첫 항목을 가로 전체로
+            if (items.length % 2 === 1) {
+                items[0].classList.add('span-full');
+            }
+        } catch (e) {
+            console.warn('[SAFE:adjustRecommendedPersonaLayout]', e);
+        }
+    }
+
+    // 리사이즈 시에도 레이아웃 재보정
+    try {
+        window.addEventListener('resize', function () {
+            try { adjustRecommendedPersonaLayout(); } catch (_) { }
+        });
+    } catch (e) { console.warn('[SAFE:resize-listener]', e); }
+
+    // Extract data from script text (same as index.html)
+    function extractDataFromScript(scriptText) {
+        // characterData와 characterList를 추출하는 정규식
+        const characterDataMatch = scriptText.match(/const characterData = ({[\s\S]*?});/);
+        const characterListMatch = scriptText.match(/const characterList = ({[\s\S]*?});/);
+
+        if (characterDataMatch && characterListMatch) {
+            // JSON으로 파싱하기 위해 Function 생성자 사용
+            const characterData = new Function('return ' + characterDataMatch[1])();
+            const characterList = new Function('return ' + characterListMatch[1])();
+            return { characterData, characterList };
+        }
+
+        // 신규 포맷(window.characterList / window.characterData 병합형) 폴백
+        try {
+            const sandbox = {};
+            const resultWin = (new Function('window', `${scriptText}\n; return window;`))(sandbox);
+            const characterList = resultWin.characterList || resultWin.enCharacterList || resultWin.jpCharacterList || { mainParty: [], supportParty: [] };
+            const characterData = resultWin.characterData || resultWin.enCharacterData || resultWin.jpCharacterData || {};
+            if (!characterList || !characterData) throw new Error('missing keys');
+            return { characterData, characterList };
+        } catch (e) {
+            throw new Error('Failed to extract data from script');
+        }
+    }
+
+    // Load character list for the current language
+    let currentLangCharacterList = { mainParty: [], supportParty: [] };
+    let characterListLoaded = false;
+
+    async function loadCharacterList() {
+        const currentLang = getCurrentLanguage();
+        if (currentLang === 'kr') {
+            characterListLoaded = true;
+            return; // No need to load for Korean
+        }
+
+        try {
+            // console.log(`Loading ${currentLang} character list...`);
+            const base = (typeof BASE_URL !== 'undefined') ? BASE_URL : '';
+            const langDataPath = (currentLang === 'en' || currentLang === 'jp')
+                ? '/data/character_info_glb.js'
+                : `/data/${currentLang}/characters/characters.js`;
+            const langUrl = `${base}${langDataPath}?v=${APP_VERSION}`;
+            // console.log('Character list URL:', langUrl);
+
+            const langResponse = await fetchWithRevalidate(langUrl);
+            // console.log('Character list response status:', langResponse.status);
+
+            if (langResponse.ok) {
+                const langScriptText = await langResponse.text();
+
+                const { characterData: langCharacterData, characterList: langCharacterList } = extractDataFromScript(langScriptText);
+
+
+                // Store the character list
+                currentLangCharacterList = {
+                    mainParty: [...(langCharacterList.mainParty || [])],
+                    supportParty: [...(langCharacterList.supportParty || [])]
+                };
+                characterListLoaded = true;
+
+            } else {
+                console.error(`Failed to load ${currentLang} character list:`, langResponse.status);
+                characterListLoaded = true; // Mark as loaded to prevent blocking
+            }
+        } catch (error) {
+            console.error(`Error loading ${currentLang} character list:`, error);
+            characterListLoaded = true; // Mark as loaded to prevent blocking
+        }
+    }
+
+    // Check if a character exists in the current language's character list
+    let spoilerDisabled = false;
+
+    async function isCharacterReleased(koreanName) {
+        const currentLang = getCurrentLanguage();
+        if (currentLang === 'kr') return true; // Always show all characters in Korean
+
+        // 현재 페이지가 미출시 캐릭터면 스포일러 기능 전체 비활성화
+        if (spoilerDisabled) return true;
+
+        // If we haven't loaded the character list yet, assume it's not released
+        // The actual check will happen when the list is loaded
+        if (!characterListLoaded) {
+            return false;
+        }
+
+        // Check if the character is in either mainParty or supportParty
+        const isReleased = currentLangCharacterList.mainParty.includes(koreanName) ||
+            currentLangCharacterList.supportParty.includes(koreanName);
+
+        return isReleased;
+    }
+
+    // Check if character has persona5 or persona3 property and update ads visibility
+    /*
+    function updateAdsForPersona5(characterName) {
+        try {
+            const character = characterData[characterName];
+            if (!character) return;
+
+            // 기본적으로 모든 광고가 표시된 상태에서
+            // Persona 5 캐릭터인 경우 일반 광고를 숨기고, 아닌 경우 Persona 5 광고를 숨김
+            if (character.persona5) {
+                // 일반 광고 숨기기
+                const adsToHide = document.querySelectorAll('.ad-unit:not([id^="ad-unit-p5-"])');
+                adsToHide.forEach(ad => {
+                    if (ad && ad.style) {
+                        ad.style.display = 'none';
+                    }
+                });
+                // Persona 5 광고는 이미 표시된 상태 유지
+            }
+            else if (character.persona3) {
+                // 일반 광고 숨기기
+                const adsToHide = document.querySelectorAll('.ad-unit:not([id^="ad-unit-p3-"])');
+                adsToHide.forEach(ad => {
+                    if (ad && ad.style) {
+                        ad.style.display = 'none';
+                    }
+                });
+                // Persona 3 광고는 이미 표시된 상태 유지
+            }
+            else {
+                // Persona 3, 5 광고 숨기기
+                const p5AdsToHide = document.querySelectorAll('[id^="ad-unit-p5-"]');
+                const p3AdsToHide = document.querySelectorAll('[id^="ad-unit-p3-"]');
+
+                p5AdsToHide.forEach(ad => {
+                    if (ad && ad.style) {
+                        ad.style.display = 'none';
+                    }
+                });
+                p3AdsToHide.forEach(ad => {
+                    if (ad && ad.style) {
+                        ad.style.display = 'none';
+                    }
+                });
+                // 일반 광고는 이미 표시된 상태 유지
+            }
+        } catch (error) {
+            console.warn('광고 업데이트 중 오류 발생:', error);
+            // 오류가 발생해도 다른 기능에 영향을 주지 않도록 함
+        }
+    }*/
+
+
+    function loadFriendsLineup(friendsData, partyCardEl, hasFriends) {
+        try {
+            if (!partyCardEl) return;
+            // 기존 라인업 제거
+            const existing = partyCardEl.querySelector('.friends-lineup');
+            if (existing && existing.parentNode) {
+                existing.parentNode.removeChild(existing);
+            }
+            if (!hasFriends || !Array.isArray(friendsData)) return;
+
+            const lineupSection = document.createElement('div');
+            lineupSection.className = 'friends-lineup';
+
+            const title = document.createElement('h3');
+            title.className = 'friends-title';
+            title.textContent = getCharacterI18nText('characterDetailLineup', '라인업');
+            lineupSection.appendChild(title);
+
+            const list = document.createElement('div');
+            list.className = 'friends-list';
+
+            const currentLang = getCurrentLanguage();
+
+            const currentPageChar = new URLSearchParams(window.location.search).get('name') || window.__CHARACTER_DEFAULT || '';
+
+            friendsData.forEach(function (friend) {
+                if (!friend || typeof friend.name !== 'string' || !friend.name.trim()) return;
+
+                const item = document.createElement('div');
+                item.className = 'friend-item';
+
+                const imgWrap = document.createElement('div');
+                imgWrap.className = 'friend-image-wrapper';
+
+                const img = document.createElement('img');
+                img.src = `/assets/img/tier/${friend.name}.webp`;
+                img.alt = friend.name;
+                img.onerror = function () { this.style.display = 'none'; };
+                imgWrap.appendChild(img);
+
+                // A 값(의식 레벨)이 있는 경우 하단에 의식 아이콘 표시
+                if (friend.A !== undefined && friend.A !== null && String(friend.A).trim() !== '') {
+                    const ritualIndex = String(friend.A).trim();
+                    const ritualIcon = document.createElement('img');
+                    ritualIcon.className = 'friend-ritual-icon';
+                    ritualIcon.src = `{{ site.baseurl }}/assets/img/character-detail/ritual${ritualIndex}.png`;
+                    ritualIcon.alt = `A${ritualIndex}`;
+                    ritualIcon.loading = 'lazy';
+                    imgWrap.appendChild(ritualIcon);
+                }
+
+                const textWrap = document.createElement('div');
+                textWrap.className = 'friend-text';
+
+                // 이름 + 역할 아이콘 행
+                const nameRow = document.createElement('div');
+                nameRow.className = 'friend-name-row';
+
+                const nameEl = document.createElement('div');
+                nameEl.className = 'friend-name';
+                nameEl.textContent = getLocalizedCharacterName(friend.name);
+                nameRow.appendChild(nameEl);
+
+                // 속성/역할 아이콘
+                try {
+                    // KR 기준 메타 데이터 우선 사용 (언어별 characterData가 덮어쓴 경우 대비)
+                    const friendChar =
+                        (typeof krNameData !== 'undefined' && krNameData && krNameData[friend.name]) ||
+                        (typeof characterData !== 'undefined' && characterData && characterData[friend.name]) ||
+                        null;
+                    if (friendChar) {
+                        // 속성 아이콘
+                        if (friendChar.element) {
+                            const elemIcon = document.createElement('img');
+                            elemIcon.className = 'friend-element-icon';
+                            elemIcon.src = `{{ site.baseurl }}/assets/img/character-cards/속성_${friendChar.element}.png`;
+                            elemIcon.alt = friendChar.element;
+                            elemIcon.loading = 'lazy';
+                            nameRow.appendChild(elemIcon);
+                        }
+                        // 역할(포지션) 아이콘
+                        if (friendChar.position) {
+                            const roleIcon = document.createElement('img');
+                            roleIcon.className = 'friend-role-icon';
+                            roleIcon.src = `{{ site.baseurl }}/assets/img/character-cards/직업_${friendChar.position}.png`;
+                            roleIcon.alt = friendChar.position;
+                            roleIcon.loading = 'lazy';
+                            nameRow.appendChild(roleIcon);
+                        }
+                    }
+                } catch (e) { console.warn('[SAFE:friend-role-icon]', e); }
+
+                const commentEl = document.createElement('div');
+                commentEl.className = 'friend-comment';
+                let commentText = '';
+                if (currentLang === 'en' && friend.comment_en) {
+                    commentText = friend.comment_en;
+                } else if (currentLang === 'jp' && friend.comment_jp) {
+                    commentText = friend.comment_jp;
+                } else if (friend.comment) {
+                    commentText = friend.comment;
+                }
+
+                textWrap.appendChild(nameRow);
+                if (commentText) {
+                    commentEl.textContent = commentText;
+                    textWrap.appendChild(commentEl);
+                }
+
+                // 카드 클릭 시 캐릭터 페이지로 이동 + 스포일러 처리
+                // 단, 친구가 '원더'인 경우에는 클릭 링크를 만들지 않음
+                try {
+                    const isWonderFriend = (friend.name === '원더' || friend.name === 'Wonder');
+                    if (!isWonderFriend) {
+                        const targetUrl = buildCharacterDetailUrl(friend.name);
+
+                        const handleClick = (e) => {
+                            try {
+                                // 코멘트 영역 클릭은 아무 동작도 하지 않음
+                                if (e && e.target && e.target.closest('.friend-comment')) {
+                                    return;
+                                }
+                                // 스포일러가 걸려 있으면 첫 클릭에서만 해제
+                                if (item.classList.contains('spoiler')) {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    item.classList.remove('spoiler');
+                                    item.dataset.spoilerRevealed = '1';
+                                    return;
+                                }
+                                if (e) { e.preventDefault(); }
+                                window.location.href = targetUrl;
+                            } catch (_) { window.location.assign(targetUrl); }
+                        };
+
+                        item.style.cursor = 'pointer';
+                        item.addEventListener('click', handleClick);
+                    } else {
+                        // 원더는 클릭 불가 표시
+                        item.style.cursor = 'default';
+                    }
+                } catch (e) { console.warn('[SAFE:friend-click]', e); }
+
+                // 라인업 스포일러 처리 (언어별 출시 여부 기준)
+                try {
+                    if (typeof isCharacterReleased === 'function' && friend.name !== currentPageChar) {
+                        isCharacterReleased(friend.name).then((released) => {
+                            try {
+                                if (!released && !item.dataset.spoilerRevealed) {
+                                    item.classList.add('spoiler');
+                                }
+                            } catch (_) { }
+                        }).catch(() => { });
+                    }
+                } catch (e) { console.warn('[SAFE:friend-spoiler]', e); }
+
+                item.appendChild(imgWrap);
+                item.appendChild(textWrap);
+                list.appendChild(item);
+            });
+
+            if (!list.children.length) return;
+
+            lineupSection.appendChild(list);
+
+            const partyContent = partyCardEl.querySelector('#recommended-party-content');
+            if (partyContent && partyContent.parentNode === partyCardEl) {
+                partyCardEl.insertBefore(lineupSection, partyContent);
+            } else if (partyContent) {
+                partyContent.parentNode.insertBefore(lineupSection, partyContent);
+            } else {
+                partyCardEl.appendChild(lineupSection);
+            }
+        } catch (e) {
+            console.warn('[SAFE:loadFriendsLineup-inner]', e);
+        }
+    }
+
+    function loadRecommendedParty(partyData, hasFriends) {
+        const container = document.getElementById('recommended-party-content');
+        container.innerHTML = '';
+
+        // friends 여부에 따라 레이아웃 클래스 토글 (PC에서는 항상 2열, 모바일 1열)
+        if (hasFriends) {
+            container.classList.add('party-grid-layout');
+        } else {
+            container.classList.remove('party-grid-layout');
+        }
+
+        // friends가 있을 경우 파티 리스트 위에 '파티' 라벨 추가 (다국어)
+        if (hasFriends) {
+            const partyLabel = document.createElement('h3');
+            partyLabel.className = 'party-label';
+            partyLabel.textContent = getCharacterI18nText('characterDetailParties', '파티');
+            container.appendChild(partyLabel);
+        }
+
+        partyData.forEach((party, index) => {
+            const partySection = document.createElement('div');
+            partySection.className = 'party-section';
+
+            // 파티 코멘트 컨테이너 생성 (나중에 추가하기 위해)
+            let commentEl = null;
+            if (party.comment || party.comment_en || party.comment_jp) {
+                const currentLang = getCurrentLanguage();
+                commentEl = document.createElement('p');
+                commentEl.className = 'party-comment';
+
+                if (currentLang === 'en' && party.comment_en) {
+                    commentEl.textContent = party.comment_en;
+                } else if (currentLang === 'jp' && party.comment_jp) {
+                    commentEl.textContent = party.comment_jp;
+                } else {
+                    commentEl.textContent = party.comment;
+                }
+            }
+
+            const partyList = document.createElement('div');
+            partyList.className = 'party-list';
+            // 코멘트가 없는 파티는 멤버 카드가 가로 폭을 꽉 채우도록 별도 레이아웃 클래스 부여
+            if (!commentEl) {
+                partyList.classList.add('no-comment');
+            }
+
+            // Process each member asynchronously
+            const processMembers = async () => {
+                const currentPageChar = new URLSearchParams(window.location.search).get('name') || window.__CHARACTER_DEFAULT || '';
+                const members = party.members;
+                const totalMembers = members.length;
+                const isFiveMemberParty = totalMembers === 5;
+
+                for (let i = 0; i < totalMembers; i++) {
+                    const memberName = members[i];
+                    if (!memberName) continue;
+
+                    // Case: 4th member in a 5-member party -> Combine with 5th
+                    if (isFiveMemberParty && i === 3) {
+                        const nextMemberName = members[i + 1];
+                        if (nextMemberName) {
+                            const memberItem = document.createElement('a');
+                            memberItem.className = 'party-member';
+                            memberItem.href = buildCharacterDetailUrl(memberName);
+
+                            // Spoiler check for main member
+                            const isReleased = await isCharacterReleased(memberName);
+                            if (!isReleased && memberName !== currentPageChar) {
+                                memberItem.classList.add('spoiler');
+                                memberItem.addEventListener('click', function (e) {
+                                    if (this.classList.contains('spoiler')) {
+                                        e.preventDefault();
+                                        e.stopPropagation();
+                                        this.classList.remove('spoiler');
+                                    }
+                                });
+                            }
+                            if (memberName === currentPageChar) {
+                                memberItem.classList.remove('spoiler');
+                            }
+
+                            const link = document.createElement('a');
+                            link.href = buildCharacterDetailUrl(memberName);
+
+                            const img = document.createElement('img');
+                            img.src = `/assets/img/tier/${memberName}.webp`;
+                            img.alt = memberName;
+                            img.onerror = function () { this.style.display = 'none'; };
+                            link.appendChild(img);
+                            memberItem.appendChild(link);
+
+                            // Sub Member Badge (5th member)
+                            const subBadge = document.createElement('div');
+                            subBadge.className = 'sub-member-badge';
+                            // Add title/tooltip for 5th member name
+                            subBadge.title = getLocalizedCharacterName(nextMemberName);
+
+                            const subImg = document.createElement('img');
+                            subImg.src = `/assets/img/tier/${nextMemberName}.webp`;
+                            subImg.alt = nextMemberName;
+                            subBadge.appendChild(subImg);
+                            memberItem.appendChild(subBadge);
+
+                            const name = document.createElement('span');
+                            name.className = 'character-name';
+                            name.textContent = getLocalizedCharacterName(memberName);
+                            memberItem.appendChild(name);
+
+                            partyList.appendChild(memberItem);
+
+                            // Skip next iteration
+                            i++;
+                            continue;
+                        }
+                    }
+
+                    const memberItem = document.createElement('a');
+                    memberItem.className = 'party-member';
+                    if (memberName !== "") {
+                        memberItem.href = buildCharacterDetailUrl(memberName);
+                    }
+
+                    const isReleased = await isCharacterReleased(memberName);
+
+                    if (!isReleased && memberName !== currentPageChar && memberName !== "") {
+                        memberItem.classList.add('spoiler');
+                        memberItem.addEventListener('click', function (e) {
+                            if (this.classList.contains('spoiler')) {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                this.classList.remove('spoiler');
+                            }
+                        });
+                    }
+                    if (memberName === currentPageChar) {
+                        memberItem.classList.remove('spoiler');
+                    }
+
+                    const link = document.createElement('a');
+                    link.href = buildCharacterDetailUrl(memberName);
+
+                    const img = document.createElement('img');
+                    img.src = `/assets/img/tier/${memberName}.webp`;
+                    img.alt = memberName;
+                    img.onerror = function () { this.style.display = 'none'; };
+
+                    const name = document.createElement('span');
+                    name.className = 'character-name';
+                    name.textContent = getLocalizedCharacterName(memberName);
+
+                    link.appendChild(img);
+                    memberItem.appendChild(link);
+                    memberItem.appendChild(name);
+                    partyList.appendChild(memberItem);
+                }
+            };
+
+            // Start processing members
+            processMembers();
+
+            partySection.appendChild(partyList);
+
+            // 파티 리스트 아래에 코멘트 추가 (friends가 없는 경우에만 표시)
+            if (commentEl && !hasFriends) {
+                const commentContainer = document.createElement('div');
+                commentContainer.className = 'comment-container';
+                commentContainer.appendChild(commentEl);
+                partySection.appendChild(commentContainer);
+            }
+
+            container.appendChild(partySection);
+        });
+    }
+
+    // Weapon Effect Modal Functions
+    function showWeaponEffect(weaponId, imageUrl, weaponName) {
+        const modal = document.getElementById('weapon-effect-modal');
+        const modalImage = document.getElementById('weapon-effect-image');
+        const modalTitle = document.getElementById('weapon-effect-title');
+        const modalDescription = document.getElementById('weapon-effect-description');
+
+        // Set the weapon image and name
+        modalImage.src = imageUrl;
+        modalImage.alt = weaponName;
+        modalTitle.textContent = weaponName;
+
+        // Get the effect text based on current language
+        let effectText = 'No effect information available.';
+        if (matchWeapons && matchWeapons[weaponId]) {
+            if (currentLang === 'en' && matchWeapons[weaponId].effect_en) {
+                effectText = matchWeapons[weaponId].effect_en;
+            } else if (currentLang === 'jp' && matchWeapons[weaponId].effect_jp) {
+                effectText = matchWeapons[weaponId].effect_jp;
+            } else if (matchWeapons[weaponId].effect) {
+                effectText = matchWeapons[weaponId].effect; // Default to Korean
+            }
+        }
+
+        // Set the effect text with proper line breaks
+        modalDescription.innerHTML = effectText.replace(/\n/g, '<br>');
+
+        // modaDescription에 <br> 추가
+        const br = document.createElement('br');
+        modalDescription.appendChild(br);
+
+        // modalDescription에 아래 'Detail' 추가하고 링크 걸기 /wonder-weapon
+        const detailLink = document.createElement('a');
+        detailLink.href = `/wonder-weapon/`;
+        detailLink.textContent = getCharacterI18nText('characterDetailLinkLabel', 'Detail →');
+        detailLink.target = '_blank';
+        modalDescription.appendChild(detailLink);
+
+        // Show the modal
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+    }
+
+    // Close modal when clicking the close button
+    document.addEventListener('click', function (e) {
+        if (e.target.closest('.weapon-effect-close')) {
+            closeWeaponEffectModal();
+            return;
+        }
+
+        // Close modal when clicking outside the modal content
+        const modal = document.getElementById('weapon-effect-modal');
+        const modalContent = document.querySelector('.weapon-effect-modal-content');
+        if (modal.classList.contains('show') && !e.target.closest('.weapon-effect-modal-content') && !e.target.closest('.persona-item')) {
+            closeWeaponEffectModal();
+        }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function (e) {
+        const modal = document.getElementById('weapon-effect-modal');
+        if (e.key === 'Escape' && modal.classList.contains('show')) {
+            closeWeaponEffectModal();
+        }
+    });
+
+    function closeWeaponEffectModal() {
+        const modal = document.getElementById('weapon-effect-modal');
+        modal.classList.remove('show');
+        document.body.style.overflow = '';
+    }
+    // 실수로 포커스가 들어오면 즉시 떼기(드래그는 유지됨)
+    document.querySelectorAll('.drag-me').forEach(el => {
+        el.addEventListener('focus', () => el.blur());
+    });
+
+</script>
+
+<!-- Weapon Effect Modal -->
+<div id="weapon-effect-modal" class="weapon-effect-modal">
+    <div class="weapon-effect-modal-content">
+        <span class="weapon-effect-close">&times;</span>
+        <div class="weapon-effect-header">
+            <img id="weapon-effect-image" src="" alt="Weapon" class="weapon-effect-image">
+            <h3 id="weapon-effect-title"></h3>
+        </div>
+        <div id="weapon-effect-description" class="weapon-effect-description"></div>
+    </div>
+</div>
+
+<!-- Help Modal -->
+<div id="help-modal" class="weapon-effect-modal">
+    <div class="help-modal-content weapon-effect-modal-content">
+        <span class="help-close weapon-effect-close">&times;</span>
+        <div class="help-header weapon-effect-header">
+            <h3 id="help-modal-title"></h3>
+        </div>
+        <div id="help-modal-description" class="help-description weapon-effect-description"></div>
+    </div>
+</div>

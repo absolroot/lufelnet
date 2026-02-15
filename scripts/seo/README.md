@@ -30,8 +30,8 @@ scripts/seo/generate-{app}-pages.mjs ← generator script
 
 Each item gets its own page per language.
 
-- Reference generator: `scripts/seo/generate-synergy-pages.mjs`
-- Reference body: `_includes/synergy-body.html`
+- Reference generators: `scripts/seo/generate-synergy-pages.mjs`, `scripts/seo/generate-character-pages.mjs`
+- Reference body: `_includes/synergy-body.html`, `_includes/character-detail-body.html`
 - Reference seo-meta: `i18n/pages/synergy/seo-meta.json` (uses `{name}` placeholder)
 - Generated output: `pages/synergy/{kr,en,jp}/{codename}.html`
 - Also generates: `pages/synergy/roots/*.html` (language root redirects), `pages/synergy/redirects/*.html` (legacy redirects)
@@ -282,6 +282,7 @@ if (/^\/(kr|en|jp)\//.test(window.location.pathname)) return;
 | `scripts/seo/generate-home-pages.mjs` | Reference: single-page generator (Type B) |
 | `_includes/synergy-body.html` | Reference: per-item body include |
 | `_includes/wonder-weapon-body.html` | Reference: per-item body include |
+| `_includes/character-detail-body.html` | Character detail body include with URL rewrite |
 | `_includes/home-body.html` | Reference: single-page body include with replaceState |
 | `i18n/pages/synergy/seo-meta.json` | Reference: seo-meta with `{name}` placeholder |
 | `i18n/pages/home/seo-meta.json` | Reference: seo-meta without placeholder |
@@ -295,7 +296,7 @@ if (/^\/(kr|en|jp)\//.test(window.location.pathname)) return;
 | home | B (single-page) | `generate-home-pages.mjs` | Done |
 | synergy | A (per-item) | `generate-synergy-pages.mjs` | Done |
 | wonder-weapon | A (per-item) | `generate-wonder-weapon-pages.mjs` | Done |
-| character | A (per-item) | — | Not started |
+| character | A (per-item) | `generate-character-pages.mjs` | Done |
 | persona | A (per-item) | — | Not started |
 | maps | A (per-item) | — | Not started |
 
@@ -306,9 +307,23 @@ if (/^\/(kr|en|jp)\//.test(window.location.pathname)) return;
 | Home | `/` (kr default), `/kr/`, `/en/`, `/jp/` |
 | Synergy | `/kr/synergy/{codename}/`, `/en/synergy/{codename}/`, `/jp/synergy/{codename}/` |
 | Wonder Weapon | `/kr/wonder-weapon/{slug}/`, `/en/wonder-weapon/{slug}/`, `/jp/wonder-weapon/{slug}/` |
+| Character (detail) | `/kr/character/{slug}/`, `/en/character/{slug}/`, `/jp/character/{slug}/` |
+| Character (list) | `/character/` (default), `/kr/character/`, `/en/character/`, `/jp/character/` |
 
 Legacy URLs redirect to canonical via generated stub pages (`layout: null`).
 Language root URLs (`/{lang}/{app}/`) redirect to `/{app}/?lang={lang}` via generated root stubs.
+
+### URL Rewriting (replaceState)
+
+Legacy query-based URLs are rewritten to clean path-based URLs via `history.replaceState` on page load. This updates the URL bar without a page reload or redirect.
+
+| Legacy URL | Rewritten to |
+|-----------|-------------|
+| `/?lang=en` | `/en/` |
+| `/character.html?name=렌&lang=en` | `/en/character/joker/` |
+| `/character/?lang=en` | `/en/character/` |
+
+The rewrite scripts are placed at the top of the body include or page, before any other scripts, so they run early. They use the `__*_SLUG_MAP` data (injected via Jekyll) to resolve slugs.
 
 ## Encoding and File Safety
 

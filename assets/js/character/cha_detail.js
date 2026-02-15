@@ -146,8 +146,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function fillSettingsInfo(character) {
         // characterSetting에서 데이터 병합
         const urlParams = new URLSearchParams(window.location.search);
-        const characterName = urlParams.get('name');
-        
+        const characterName = urlParams.get('name') || window.__CHARACTER_DEFAULT || '';
+
         // characterSetting에서 데이터 찾기 (정확한 키 매칭 시도)
         let setting = {};
         if (characterName && window.characterSetting) {
@@ -684,7 +684,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // 한국어: 기존 아이콘 사용, 텍스트 배지 제거
             if (parentEl) { try { parentEl.querySelectorAll('.char-el-badge').forEach(n => n.remove()); } catch (_) { } }
             const urlParams3 = new URLSearchParams(window.location.search);
-            const characterName3 = urlParams3.get('name');
+            const characterName3 = urlParams3.get('name') || window.__CHARACTER_DEFAULT || '';
             const setting3 = (characterName3 && window.characterSetting && window.characterSetting[characterName3]) ? window.characterSetting[characterName3] : {};
             const mergedChar3 = { ...character, ...setting3 };
             if (resistanceIcon && mergedChar3.element_resistance) {
@@ -712,7 +712,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // URL에서 캐릭터 이름을 가져와서 현재 페이지 표시
     const urlParams = new URLSearchParams(window.location.search);
-    const characterName = urlParams.get('name');
+    const characterName = urlParams.get('name') || window.__CHARACTER_DEFAULT || '';
 
     if (characterName && characterData[characterName]) {
         const character = characterData[characterName];
@@ -858,7 +858,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const currentLang = getCurrentLanguage();
             const urlParams2 = new URLSearchParams(window.location.search);
-            const characterName2 = urlParams2.get('name');
+            const characterName2 = urlParams2.get('name') || window.__CHARACTER_DEFAULT || '';
             if (!characterName2 || !characterData || !characterData[characterName2]) return;
             
             const characterData2 = characterData[characterName2];

@@ -1,23 +1,35 @@
 <script>
 (function () {
   var params = new URLSearchParams(window.location.search);
-  var lang = params.get('lang');
-  if (!lang) return;
-
   var path = window.location.pathname;
-  // / 에서 /?lang=xx → /{lang}/ 로 정규화
+  var lang = params.get('lang');
+
+  // / 에서 /?lang=xx -> /{lang}/ 로 정규화 (+ v 숨김)
   if (path === '/' && ['kr', 'en', 'jp'].indexOf(lang) !== -1) {
     params.delete('lang');
-    var remaining = params.toString();
-    history.replaceState(null, '', '/' + lang + '/' + (remaining ? '?' + remaining : ''));
+    params.delete('v');
+    var remainingRoot = params.toString();
+    history.replaceState(null, '', '/' + lang + '/' + (remainingRoot ? '?' + remainingRoot : ''));
     return;
   }
 
-  // /{lang}/ 에서 ?lang= strip (path에 이미 언어 있음)
-  if (/^\/(kr|en|jp)\//.test(path)) {
+  // /{lang}/ 에서는 lang, v 를 표시 URL에서 제거
+  if (/^\/(kr|en|jp)(\/|$)/.test(path)) {
+    var before = params.toString();
     params.delete('lang');
+    params.delete('v');
     var remaining = params.toString();
-    history.replaceState(null, '', path + (remaining ? '?' + remaining : ''));
+    if (before !== remaining) {
+      history.replaceState(null, '', path + (remaining ? '?' + remaining : ''));
+    }
+    return;
+  }
+
+  // 루트 홈(/)에서도 v는 표시 URL에서 숨김
+  if (path === '/' && params.has('v')) {
+    params.delete('v');
+    var remainingBase = params.toString();
+    history.replaceState(null, '', '/' + (remainingBase ? '?' + remainingBase : ''));
   }
 })();
 </script>

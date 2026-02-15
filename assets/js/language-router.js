@@ -4,7 +4,7 @@ class LanguageRouter {
 
     static parseSeoDetailPath(pathname) {
         const path = String(pathname || '');
-        const match = path.match(/^\/(?:(kr|en|jp|cn)\/)?(synergy|wonder-weapon)\/([^/]+)\/?$/i);
+        const match = path.match(/^\/(?:(kr|en|jp|cn)\/)?(synergy|wonder-weapon|character)\/([^/]+)\/?$/i);
         if (!match) return null;
 
         const prefix = (match[1] || '').toLowerCase();
@@ -142,8 +142,8 @@ class LanguageRouter {
         const patterns = [
             // Home SEO roots (e.g. /kr/, /en/, /jp/)
             /^\/(kr|en|jp|cn)\/?$/i,
-            /^\/(kr|en|jp|cn)\/(synergy|wonder-weapon)\/[^/]+\/?$/i,
-            /^\/(synergy|wonder-weapon)\/[^/]+\/?$/i
+            /^\/(kr|en|jp|cn)\/(synergy|wonder-weapon|character)\/[^/]+\/?$/i,
+            /^\/(synergy|wonder-weapon|character)\/[^/]+\/?$/i
         ];
         return patterns.some((re) => re.test(path));
     }
@@ -371,40 +371,23 @@ class LanguageRouter {
                     // 현재 경로 분석
                     let currentPath = window.location.pathname;
                     let currentParams = new URLSearchParams(window.location.search);
-                    const seoDetail = LanguageRouter.parseSeoDetailPath(currentPath);
-                    if (seoDetail) {
-                        const usePrefix = lang === 'en' || lang === 'jp';
-                        const nextPath = usePrefix
-                            ? `/${lang}/${seoDetail.app}/${seoDetail.slug}/`
-                            : `/${seoDetail.app}/${seoDetail.slug}/`;
 
-                        if (usePrefix || lang === 'kr') {
-                            currentParams.delete('lang');
-                        } else {
-                            currentParams.set('lang', lang);
-                        }
+                    // path-based language URL: /{lang}/... → 단순히 lang prefix 교체
+                    const langPrefixMatch = currentPath.match(/^\/(kr|en|jp|cn)(\/.*)?$/);
+                    if (langPrefixMatch) {
+                        const remainingPath = langPrefixMatch[2] || '/';
+                        const nextPath = `/${lang}${remainingPath}`;
+                        currentParams.delete('lang');
                         currentParams.delete('weapon');
-
                         const query = currentParams.toString();
                         const newUrl = `${nextPath}${query ? `?${query}` : ''}`;
                         window.location.href = newUrl;
                         return;
                     }
 
-                    // 기존 언어 디렉토리 경로를 루트로 변경
-                    const langPrefixMatch = currentPath.match(/^\/(kr|en|jp|cn)(\/.*)?$/);
-                    if (langPrefixMatch) {
-                        const [, , remainingPath] = langPrefixMatch;
-                        currentPath = remainingPath || '/';
-                    }
-
-                    // 언어 파라미터 설정
+                    // query-based language URL: ?lang= 파라미터 변경
                     currentParams.set('lang', lang);
-
-                    // 새로운 URL 생성
                     const newUrl = `${currentPath}?${currentParams.toString()}`;
-
-                    // 페이지 이동
                     window.location.href = newUrl;
                 };
             }

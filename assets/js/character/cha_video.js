@@ -329,7 +329,7 @@
 
     function getCharacterFromUrl() {
         const params = new URLSearchParams(window.location.search);
-        const name = params.get('name');
+        const name = params.get('name') || window.__CHARACTER_DEFAULT || '';
         const character = (name && window.characterData) ? window.characterData[name] : null;
         // characterSetting에서 video 데이터 병합
         const setting = (name && window.characterSetting && window.characterSetting[name]) ? window.characterSetting[name] : {};

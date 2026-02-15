@@ -3,10 +3,28 @@ layout: default
 custom_css: [character]
 custom_js: [character/spoiler-state]
 permalink: /character/
-redirect_from:
-- /kr/character/
-- /kr/character/index.html
+redirect_from: []
 ---
+
+<!-- URL rewrite: /character/?lang=en → /en/character/ -->
+<script>
+(function(){
+  var params = new URLSearchParams(window.location.search);
+  var lang = params.get('lang');
+  if (!lang) return;
+  var path = window.location.pathname;
+  // Only rewrite from /character/ (not from /{lang}/character/ which is already path-based)
+  if (/^\/(kr|en|jp)\//.test(path)) return;
+  if (['kr','en','jp'].indexOf(lang) === -1) return;
+  // Set SEO flag so LanguageRouter skips redirect logic after replaceState
+  window.__SEO_PATH_LANG__ = lang;
+  var newPath = '/' + lang + '/character/';
+  params.delete('lang');
+  params.delete('v');
+  var remaining = params.toString();
+  history.replaceState(null, '', newPath + (remaining ? '?' + remaining : ''));
+})();
+</script>
 
 <div class="main-wrapper">
     <!-- 언어 안내 메시지 -->
@@ -1002,7 +1020,8 @@ redirect_from:
         Navigation.load('character'); // nav active
         VersionChecker.check();
 
-        if (typeof LanguageRouter !== 'undefined' && !window.location.search.includes('lang=')) {
+        if (typeof LanguageRouter !== 'undefined' && !window.location.search.includes('lang=')
+            && !/^\/(kr|en|jp)\//.test(window.location.pathname)) {
             const currentUrl = new URL(window.location);
             currentUrl.searchParams.set('lang', 'kr');
             window.history.replaceState({}, '', currentUrl);

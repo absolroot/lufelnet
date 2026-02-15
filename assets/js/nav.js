@@ -688,31 +688,24 @@ class Navigation {
 
         // 현재 URL 구성
         const currentPath = window.location.pathname;
-        const currentSearch = window.location.search;
+        const currentParams = new URLSearchParams(window.location.search);
 
-        // URL 파라미터 구성
-        const params = new URLSearchParams(currentSearch);
-        params.set('lang', lang);
-
-        // 경로 정리 (기존 언어 디렉토리 제거)
-        let cleanPath = currentPath;
-        const pathSegments = currentPath.split('/').filter(Boolean);
-
-        // 첫 번째 세그먼트가 언어 코드인 경우 제거
-        if (pathSegments.length > 0 && ['kr', 'en', 'jp', 'cn'].includes(pathSegments[0])) {
-            pathSegments.shift();
-            cleanPath = '/' + pathSegments.join('/');
+        // path-based language URL: /{lang}/... → lang prefix 교체
+        const langPrefixMatch = currentPath.match(/^\/(kr|en|jp|cn)(\/.*)?$/);
+        if (langPrefixMatch) {
+            const remainingPath = langPrefixMatch[2] || '/';
+            const nextPath = `/${lang}${remainingPath}`;
+            currentParams.delete('lang');
+            currentParams.delete('weapon');
+            const query = currentParams.toString();
+            const newUrl = `${nextPath}${query ? `?${query}` : ''}`;
+            window.location.href = newUrl;
+            return;
         }
 
-        // 빈 경로면 루트로
-        if (cleanPath === '/' || cleanPath === '') {
-            cleanPath = '/';
-        }
-
-        // 새 URL 생성
-        const newUrl = cleanPath + '?' + params.toString();
-
-        // 페이지 이동 
+        // query-based language URL: ?lang= 파라미터 변경
+        currentParams.set('lang', lang);
+        const newUrl = `${currentPath}?${currentParams.toString()}`;
         window.location.href = newUrl;
     }
 

@@ -251,6 +251,58 @@
     return 'kr';
   }
 
+  function isWonderWeaponRootPath(pathname) {
+    const path = String(pathname || '').toLowerCase();
+    if (/^\/wonder-weapon\/?$/.test(path)) return true;
+    if (/^\/(kr|en|jp|cn)\/wonder-weapon\/?$/.test(path)) return true;
+    return false;
+  }
+
+  function getRootCanonicalLanguage() {
+    const pathname = String(window.location.pathname || '').toLowerCase();
+    if (pathname.startsWith('/kr/')) return 'kr';
+    if (pathname.startsWith('/en/')) return 'en';
+    if (pathname.startsWith('/jp/')) return 'jp';
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const langParam = String(urlParams.get('lang') || '').toLowerCase();
+    if (langParam === 'kr' || langParam === 'en' || langParam === 'jp') {
+      return langParam;
+    }
+
+    return '';
+  }
+
+  function syncRootUrlToCanonicalLanguagePath() {
+    if (!isWonderWeaponRootPath(window.location.pathname)) return;
+
+    const lang = getRootCanonicalLanguage();
+    if (!lang) return;
+
+    const nextUrl = new URL(window.location.href);
+    nextUrl.pathname = `/${lang}/wonder-weapon/`;
+    nextUrl.searchParams.delete('lang');
+    nextUrl.searchParams.delete('v');
+
+    const currentPathAndQuery = `${window.location.pathname}${window.location.search}`;
+    const nextPathAndQuery = `${nextUrl.pathname}${nextUrl.search}`;
+    if (currentPathAndQuery === nextPathAndQuery) return;
+
+    window.history.replaceState({}, '', nextUrl);
+  }
+
+  function stripVersionParamFromVisibleUrl() {
+    const nextUrl = new URL(window.location.href);
+    if (!nextUrl.searchParams.has('v')) return;
+
+    nextUrl.searchParams.delete('v');
+    const currentPathAndQuery = `${window.location.pathname}${window.location.search}`;
+    const nextPathAndQuery = `${nextUrl.pathname}${nextUrl.search}`;
+    if (currentPathAndQuery === nextPathAndQuery) return;
+
+    window.history.replaceState({}, '', nextUrl);
+  }
+
   function getCanonicalWeaponPath(krName) {
     const map = (typeof matchWeapons !== 'undefined' && matchWeapons) ? matchWeapons : null;
     const entry = map && map[krName] ? map[krName] : null;
@@ -269,6 +321,7 @@
     }
     nextUrl.searchParams.delete('weapon');
     nextUrl.searchParams.delete('lang');
+    nextUrl.searchParams.delete('v');
 
     const currentPathAndQuery = `${window.location.pathname}${window.location.search}`;
     const nextPathAndQuery = `${nextUrl.pathname}${nextUrl.search}`;
@@ -1321,6 +1374,9 @@
   // DOMContentLoaded 이벤트 핸들러
   document.addEventListener('DOMContentLoaded', async () => {
     try {
+      syncRootUrlToCanonicalLanguagePath();
+      stripVersionParamFromVisibleUrl();
+
       // i18n 초기화
       if (typeof window.initPageI18n === 'function') {
         await window.initPageI18n('wonder-weapon');

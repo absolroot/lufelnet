@@ -560,6 +560,13 @@ document.addEventListener('DOMContentLoaded', () => {
             setValueWithFormatting(valueSpan, field.value);
         });
 
+        // GLB 행이 동적으로 추가된 뒤 라벨 인덱스를 다시 맞춘다.
+        try {
+            if (window.CharI18N && typeof window.CharI18N.applySectionLabels === 'function') {
+                window.CharI18N.applySectionLabels();
+            }
+        } catch (_) {}
+
         // 레어도 섹션 설정
         const raritySection = document.querySelector('.rarity-section');
         if (character.rarity) {

@@ -15,6 +15,23 @@
         return fallback;
     }
 
+    function getLangSafe() {
+        try {
+            if (typeof window.getCurrentLanguage === 'function') {
+                return window.getCurrentLanguage();
+            }
+            if (window.I18nService && typeof window.I18nService.getCurrentLanguageSafe === 'function') {
+                return window.I18nService.getCurrentLanguageSafe();
+            }
+        } catch (_) {}
+        return 'kr';
+    }
+
+    function fallbackByLang(map) {
+        const lang = getLangSafe();
+        return map[lang] || map.kr;
+    }
+
     const CharI18N = {
         applySectionLabels(){
             const set = (sel, key, fallback, withHelp) => {
@@ -62,22 +79,33 @@
                 if (priority[idx]) el.textContent = priority[idx];
             });
 
-            const mindStats = [
-                tx('characterDetailMindStat1', '진급강화 1'),
-                tx('characterDetailMindStat2', '진급강화 2'),
-                tx('characterDetailMindSkill1', '스킬깨달음 1'),
-                tx('characterDetailMindSkill2', '스킬깨달음 2')
+            const mindStatLabels = [
+                tx('characterDetailMindStat1', fallbackByLang({ kr: '진급강화 1', en: 'Stats 1', jp: '進級強化 1' })),
+                tx('characterDetailMindStat2', fallbackByLang({ kr: '진급강화 2', en: 'Stats 2', jp: '進級強化 2' }))
             ];
-            document.querySelectorAll('.mind-stats .stat-row .label, .mind-skills .skill-row .label').forEach((el, idx) => {
-                if (el.hasAttribute('data-glb-index')) return;
-                if (mindStats[idx]) el.textContent = mindStats[idx];
+            const mindSkillLabels = [
+                tx('characterDetailMindSkill1', fallbackByLang({ kr: '스킬깨달음 1', en: 'Skill Enforce 1', jp: 'スキル覚醒 1' })),
+                tx('characterDetailMindSkill2', fallbackByLang({ kr: '스킬깨달음 2', en: 'Skill Enforce 2', jp: 'スキル覚醒 2' }))
+            ];
+
+            document.querySelectorAll('.mind-stats .stat-row .label:not([data-glb-index])').forEach((el, idx) => {
+                if (mindStatLabels[idx]) el.textContent = mindStatLabels[idx];
+            });
+            document.querySelectorAll('.mind-skills .skill-row .label:not([data-glb-index])').forEach((el, idx) => {
+                if (mindSkillLabels[idx]) el.textContent = mindSkillLabels[idx];
             });
 
             const glbSuffix = ' (GLB)';
+            const glbBaseLabels = {
+                0: mindStatLabels[0],
+                1: mindStatLabels[1],
+                2: mindSkillLabels[0],
+                3: mindSkillLabels[1]
+            };
             document.querySelectorAll('.label[data-glb-index]').forEach(el => {
                 const baseIndex = parseInt(el.getAttribute('data-glb-index'), 10);
-                if (mindStats[baseIndex]) {
-                    el.textContent = mindStats[baseIndex] + glbSuffix;
+                if (glbBaseLabels[baseIndex]) {
+                    el.textContent = glbBaseLabels[baseIndex] + glbSuffix;
                 }
             });
 

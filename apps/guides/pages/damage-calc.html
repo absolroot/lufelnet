@@ -16,14 +16,26 @@ image: /apps/guides/data/assets/damage-calc/damage.gif
 
 <div class="main-wrapper">
     <div class="guide-view-container" id="guide-view-container">
-        <div class="guides-loading">Loading guide</div>
+        <div class="guides-loading" data-i18n="loadingGuide">Loading guide...</div>
     </div>
 </div>
 
+<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-    Navigation.load('article');
-    VersionChecker.check();
-    Guides.loadGuide('damage-calc');
-});
+    document.addEventListener('DOMContentLoaded', async () => {
+        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+        if (typeof initPageI18n === 'function') {
+            await initPageI18n('guides');
+            if (typeof setLang === 'function') {
+                await setLang(currentLang);
+            }
+        } else if (window.I18nService && typeof window.I18nService.init === 'function') {
+            await window.I18nService.init('guides', currentLang);
+        }
+
+        Navigation.load('article');
+        VersionChecker.check();
+        Guides.loadGuide('damage-calc');
+    });
 </script>
+

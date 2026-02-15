@@ -1,0 +1,23 @@
+window.I18N_PAGE_GUIDES_KR = {
+    navHome: '홈',
+    navCurrent: '가이드',
+    pageTitle: '가이드',
+    searchPlaceholder: '검색...',
+    filterAll: '전체',
+    loadingGuides: '가이드를 불러오는 중...',
+    loadingGuide: '가이드를 불러오는 중...',
+    noGuidesYet: '아직 등록된 가이드가 없습니다',
+    noResults: '결과가 없습니다',
+    guideNotFound: '가이드를 찾을 수 없습니다',
+    backToList: '목록으로',
+    untitled: '제목 없음',
+    siteName: '루페르넷',
+    oldGuideLabel: '루페르넷 가이드',
+    seoListTitle: '가이드 - 페르소나5 더 팬텀 X 루페르넷',
+    seoListDescription: '페르소나5 더 팬텀 X 공략 가이드',
+    dateMinutesAgo: '{value}분 전',
+    dateHoursAgo: '{value}시간 전',
+    dateDaysAgo: '{value}일 전',
+    dateWeeksAgoSingular: '{value}주 전',
+    dateWeeksAgoPlural: '{value}주 전'
+};

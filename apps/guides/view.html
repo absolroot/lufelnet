@@ -18,12 +18,33 @@ image: /assets/img/home/seo.png
 <div class="main-wrapper">
     <!-- Guide View Container -->
     <div class="guide-view-container" id="guide-view-container">
-        <div class="guides-loading">Loading guide</div>
+        <div class="guides-loading" data-i18n="loadingGuide">Loading guide...</div>
     </div>
 </div>
 
+<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    function getI18nText(key, fallback = '') {
+        if (typeof window.t === 'function') {
+            return window.t(key, fallback);
+        }
+        if (window.I18nService && typeof window.I18nService.t === 'function') {
+            return window.I18nService.t(key, fallback);
+        }
+        return fallback || key;
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+        if (typeof initPageI18n === 'function') {
+            await initPageI18n('guides');
+            if (typeof setLang === 'function') {
+                await setLang(currentLang);
+            }
+        } else if (window.I18nService && typeof window.I18nService.init === 'function') {
+            await window.I18nService.init('guides', currentLang);
+        }
+
         Navigation.load('article');
         VersionChecker.check();
 
@@ -34,7 +55,7 @@ image: /assets/img/home/seo.png
             document.getElementById('guide-view-container').innerHTML = `
             <div class="guides-empty">
                 <div class="guides-empty-icon">404</div>
-                <div class="guides-empty-text">Guide not found</div>
+                <div class="guides-empty-text">${getI18nText('guideNotFound', 'Guide not found')}</div>
             </div>
         `;
         }

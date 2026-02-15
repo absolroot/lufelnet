@@ -18,7 +18,7 @@ window.I18N_PAGE_CRITICAL_CALC_KR = {
     "selfSum": "자신 합계",
     "needed": "필요 수치",
     "totalLabel": "크리티컬 확률 합계",
-    "spoiler": "스포일러 보기",
+    "spoiler": "Show Spoilers",
     "defenseI18n": {
         "nav_home": "홈",
         "nav_current": "방어력 계산",

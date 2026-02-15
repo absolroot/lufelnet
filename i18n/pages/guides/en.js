@@ -1,0 +1,23 @@
+window.I18N_PAGE_GUIDES_EN = {
+    navHome: 'Home',
+    navCurrent: 'Guides',
+    pageTitle: 'Guides',
+    searchPlaceholder: 'Search...',
+    filterAll: 'All',
+    loadingGuides: 'Loading guides...',
+    loadingGuide: 'Loading guide...',
+    noGuidesYet: 'No guides available yet',
+    noResults: 'No results found',
+    guideNotFound: 'Guide not found',
+    backToList: 'Back to list',
+    untitled: 'Untitled',
+    siteName: 'Lufelnet',
+    oldGuideLabel: 'Lufelnet Guide',
+    seoListTitle: 'Guides - Persona 5: The Phantom X Lufelnet',
+    seoListDescription: 'Persona 5: The Phantom X Strategy Guides',
+    dateMinutesAgo: '{value} min ago',
+    dateHoursAgo: '{value} hours ago',
+    dateDaysAgo: '{value} days ago',
+    dateWeeksAgoSingular: '{value} week ago',
+    dateWeeksAgoPlural: '{value} weeks ago'
+};

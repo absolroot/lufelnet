@@ -11,6 +11,8 @@ const Guides = {
     activeCategory: 'all',
     searchQuery: '',
     isComposing: false,
+    currentView: 'list',
+    currentGuideId: null,
 
     /**
      * Initialize the guides system
@@ -21,22 +23,91 @@ const Guides = {
     },
 
     /**
-     * Detect current language from URL or localStorage
+     * Resolve text through integrated i18n service
+     */
+    getI18nText(key, fallback = '') {
+        try {
+            if (typeof window.t === 'function') {
+                return window.t(key, fallback);
+            }
+        } catch (_) {}
+
+        try {
+            if (window.I18nService && typeof window.I18nService.t === 'function') {
+                return window.I18nService.t(key, fallback);
+            }
+        } catch (_) {}
+
+        return fallback || key;
+    },
+
+    /**
+     * Replace token values in i18n strings
+     */
+    formatTemplate(template, value) {
+        const safeTemplate = String(template || '');
+        return safeTemplate.replace(/\{value\}/g, String(value));
+    },
+
+    /**
+     * Detect current language from i18n service or URL/storage fallback
      */
     detectLanguage() {
+        const supported = ['kr', 'en', 'jp'];
+
+        try {
+            if (typeof window.getCurrentLang === 'function') {
+                const lang = window.getCurrentLang();
+                if (supported.includes(lang)) {
+                    this.currentLang = lang;
+                    return;
+                }
+            }
+        } catch (_) {}
+
+        try {
+            if (window.I18nService && typeof window.I18nService.getCurrentLanguage === 'function') {
+                const lang = window.I18nService.getCurrentLanguage();
+                if (supported.includes(lang)) {
+                    this.currentLang = lang;
+                    return;
+                }
+            }
+        } catch (_) {}
+
         const urlParams = new URLSearchParams(window.location.search);
         const urlLang = urlParams.get('lang');
-        const storedLang = localStorage.getItem('selectedLanguage');
-        this.currentLang = urlLang || storedLang || 'kr';
+        if (urlLang && supported.includes(urlLang)) {
+            this.currentLang = urlLang;
+            return;
+        }
+
+        const storedLang = localStorage.getItem('preferredLanguage');
+        this.currentLang = supported.includes(storedLang) ? storedLang : 'kr';
+    },
+
+    /**
+     * Handle language change
+     */
+    handleLanguageChange(newLang) {
+        if (!newLang || this.currentLang === newLang) return;
+        this.currentLang = newLang;
+        this.refresh();
     },
 
     /**
      * Listen for language changes
      */
     setupLanguageListener() {
+        if (window.I18nService && typeof window.I18nService.onLanguageChange === 'function') {
+            window.I18nService.onLanguageChange((oldLang, newLang) => {
+                this.handleLanguageChange(newLang);
+            });
+        }
+
+        // Backward compatibility with legacy events
         document.addEventListener('languageChanged', (e) => {
-            this.currentLang = e.detail.lang;
-            this.refresh();
+            this.handleLanguageChange(e?.detail?.lang);
         });
     },
 
@@ -46,7 +117,10 @@ const Guides = {
     refresh() {
         if (this.currentView === 'list') {
             this.renderList();
-        } else if (this.currentView === 'single') {
+            return;
+        }
+
+        if (this.currentView === 'single' && this.currentGuideId) {
             this.loadGuide(this.currentGuideId);
         }
     },
@@ -69,7 +143,7 @@ const Guides = {
      * Get category label by id
      */
     getCategoryLabel(categoryId, lang) {
-        const cat = this.categories.find(c => c.id === categoryId);
+        const cat = this.categories.find((entry) => entry.id === categoryId);
         if (cat) return cat.labels[lang] || cat.labels.kr || categoryId;
         return categoryId || '';
     },
@@ -82,7 +156,7 @@ const Guides = {
         const container = document.getElementById('guides-container');
         if (!container) return;
 
-        container.innerHTML = '<div class="guides-loading">Loading guides</div>';
+        container.innerHTML = `<div class="guides-loading">${this.getI18nText('loadingGuides', 'Loading guides...')}</div>`;
 
         try {
             await this.loadCategories();
@@ -97,7 +171,7 @@ const Guides = {
             container.innerHTML = `
                 <div class="guides-empty">
                     <div class="guides-empty-icon">📄</div>
-                    <div class="guides-empty-text">No guides available yet</div>
+                    <div class="guides-empty-text">${this.getI18nText('noGuidesYet', 'No guides available yet')}</div>
                 </div>
             `;
         }
@@ -111,24 +185,14 @@ const Guides = {
         if (!container) return;
 
         const lang = this.currentLang;
-
-        // Update page title i18n
-        const pageTitles = {
-            kr: '가이드 - 페르소나5 더 팬텀 X 루페르넷',
-            en: 'Guides - Persona 5: The Phantom X Lufelnet',
-            jp: 'ガイド - ペルソナ5 ザ・ファントムX ルフェルネット'
-        };
-        const pageDescs = {
-            kr: '페르소나5 더 팬텀 X 공략 가이드',
-            en: 'Persona 5: The Phantom X Strategy Guides',
-            jp: 'ペルソナ5 ザ・ファントムX 攻略ガイド'
-        };
-        this.updateMeta(pageTitles[lang] || pageTitles.kr, pageDescs[lang] || pageDescs.kr);
+        this.updateMeta(
+            this.getI18nText('seoListTitle', 'Guides - Persona 5: The Phantom X Lufelnet'),
+            this.getI18nText('seoListDescription', 'Persona 5: The Phantom X Strategy Guides')
+        );
         this.updateLanguageTexts();
 
-        // Build search bar
-        const searchLabels = { kr: '검색...', en: 'Search...', jp: '検索...' };
-        const allLabels = { kr: '전체', en: 'All', jp: 'すべて' };
+        const searchPlaceholder = this.getI18nText('searchPlaceholder', 'Search...');
+        const allLabel = this.getI18nText('filterAll', 'All');
 
         let html = `
             <div class="guides-search">
@@ -136,14 +200,14 @@ const Guides = {
                     <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
                 </svg>
                 <input type="text" class="guides-search-input" id="guides-search-input"
-                       placeholder="${searchLabels[lang] || searchLabels.kr}"
+                       placeholder="${searchPlaceholder}"
                        value="${this.searchQuery}">
             </div>
             <div class="guides-category-tabs" id="guides-category-tabs">
                 <button class="guides-tab${this.activeCategory === 'all' ? ' active' : ''}" data-cat="all">
-                    ${allLabels[lang] || allLabels.kr}
+                    ${allLabel}
                 </button>
-                ${this.categories.map(cat => `
+                ${this.categories.map((cat) => `
                     <button class="guides-tab${this.activeCategory === cat.id ? ' active' : ''}" data-cat="${cat.id}">
                         ${cat.labels[lang] || cat.labels.kr}
                     </button>
@@ -151,21 +215,19 @@ const Guides = {
             </div>
         `;
 
-        // Filter and sort
-        let filtered = this.getFilteredList(lang);
+        const filtered = this.getFilteredList(lang);
 
         html += '<div class="guides-results">';
         if (filtered.length === 0) {
-            const noResultLabels = { kr: '결과가 없습니다', en: 'No results found', jp: '結果が見つかりません' };
             html += `
                 <div class="guides-empty" style="margin-top:var(--guide-space-lg)">
-                    <div class="guides-empty-text">${noResultLabels[lang] || noResultLabels.kr}</div>
+                    <div class="guides-empty-text">${this.getI18nText('noResults', 'No results found')}</div>
                 </div>
             `;
         } else {
             html += `
                 <div class="guides-grid">
-                    ${filtered.map(guide => this.renderCard(guide, lang)).join('')}
+                    ${filtered.map((guide) => this.renderCard(guide, lang)).join('')}
                 </div>
             `;
         }
@@ -173,7 +235,6 @@ const Guides = {
 
         container.innerHTML = html;
 
-        // Search input handler (with IME composition support)
         const searchInput = document.getElementById('guides-search-input');
         if (searchInput) {
             searchInput.addEventListener('compositionstart', () => {
@@ -191,16 +252,14 @@ const Guides = {
             });
         }
 
-        // Category tab handlers
-        container.querySelectorAll('.guides-tab').forEach(btn => {
+        container.querySelectorAll('.guides-tab').forEach((btn) => {
             btn.addEventListener('click', () => {
                 this.activeCategory = btn.dataset.cat;
                 this.renderList();
             });
         });
 
-        // Card click handlers
-        container.querySelectorAll('.guide-card').forEach(card => {
+        container.querySelectorAll('.guide-card').forEach((card) => {
             card.addEventListener('click', (e) => {
                 e.preventDefault();
                 window.location.href = card.getAttribute('href');
@@ -218,28 +277,25 @@ const Guides = {
         if (!container) return;
 
         const lang = this.currentLang;
-        let filtered = this.getFilteredList(lang);
-
+        const filtered = this.getFilteredList(lang);
         const gridContainer = container.querySelector('.guides-results');
         if (!gridContainer) return;
 
         if (filtered.length === 0) {
-            const noResultLabels = { kr: '결과가 없습니다', en: 'No results found', jp: '結果が見つかりません' };
             gridContainer.innerHTML = `
                 <div class="guides-empty" style="margin-top:var(--guide-space-lg)">
-                    <div class="guides-empty-text">${noResultLabels[lang] || noResultLabels.kr}</div>
+                    <div class="guides-empty-text">${this.getI18nText('noResults', 'No results found')}</div>
                 </div>
             `;
         } else {
             gridContainer.innerHTML = `
                 <div class="guides-grid">
-                    ${filtered.map(guide => this.renderCard(guide, lang)).join('')}
+                    ${filtered.map((guide) => this.renderCard(guide, lang)).join('')}
                 </div>
             `;
         }
 
-        // Re-bind card click handlers
-        gridContainer.querySelectorAll('.guide-card').forEach(card => {
+        gridContainer.querySelectorAll('.guide-card').forEach((card) => {
             card.addEventListener('click', (e) => {
                 e.preventDefault();
                 window.location.href = card.getAttribute('href');
@@ -256,15 +312,15 @@ const Guides = {
         let filtered = [...this.list];
 
         if (this.activeCategory !== 'all') {
-            filtered = filtered.filter(g => g.category === this.activeCategory);
+            filtered = filtered.filter((guide) => guide.category === this.activeCategory);
         }
 
         if (this.searchQuery) {
-            const q = this.searchQuery.toLowerCase();
-            filtered = filtered.filter(g => {
-                const title = (g.titles?.[lang] || g.titles?.kr || '').toLowerCase();
-                const searchContent = (g.searchContent?.[lang] || g.searchContent?.kr || '').toLowerCase();
-                return title.includes(q) || searchContent.includes(q);
+            const query = this.searchQuery.toLowerCase();
+            filtered = filtered.filter((guide) => {
+                const title = (guide.titles?.[lang] || guide.titles?.kr || '').toLowerCase();
+                const searchContent = (guide.searchContent?.[lang] || guide.searchContent?.kr || '').toLowerCase();
+                return title.includes(query) || searchContent.includes(query);
             });
         }
 
@@ -283,25 +339,19 @@ const Guides = {
     },
 
     /**
-     * Render a single guide card
-     */
-    /**
      * Get optimized thumbnail URL
      */
     getOptimizedThumbnail(url, width) {
         if (!url) return '';
-        // Skip optimization for local dev to avoid broken broken images if not public
         if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
             return url;
         }
 
-        // Construct full URL if relative
         let fullUrl = url;
         if (url.startsWith('/')) {
             fullUrl = window.location.origin + url;
         }
 
-        // wsrv.nl format
         return `//wsrv.nl/?url=${encodeURIComponent(fullUrl)}&w=${width}&output=webp`;
     },
 
@@ -309,7 +359,8 @@ const Guides = {
      * Render a single guide card
      */
     renderCard(guide, lang) {
-        const title = guide.titles?.[lang] || guide.titles?.kr || guide.title || 'Untitled';
+        const untitled = this.getI18nText('untitled', 'Untitled');
+        const title = guide.titles?.[lang] || guide.titles?.kr || guide.title || untitled;
         const excerpt = guide.excerpts?.[lang] || guide.excerpts?.kr || '';
         const categoryLabel = this.getCategoryLabel(guide.category, lang);
         const catClass = guide.category ? ` cat-${guide.category}` : '';
@@ -319,12 +370,9 @@ const Guides = {
 
         let thumbHtml = '';
         if (thumbnail) {
-            // Optimize to 300px WebP (static)
             const optimizedThumb = this.getOptimizedThumbnail(thumbnail, 300);
-            // Store original GIF URL in data-gif if it is a GIF
             const isGif = thumbnail.toLowerCase().endsWith('.gif');
             const dataAttrs = isGif ? ` data-gif="${thumbnail}" data-static="${optimizedThumb}"` : '';
-
             thumbHtml = `<img class="guide-card-thumbnail" src="${optimizedThumb}" alt="${title}"${dataAttrs} loading="lazy">`;
         }
 
@@ -348,16 +396,16 @@ const Guides = {
      * Setup GIF hover effects using pre-calculated paths
      */
     setupGifThumbnails(container) {
-        container.querySelectorAll('.guide-card-thumbnail[data-gif]').forEach(img => {
+        container.querySelectorAll('.guide-card-thumbnail[data-gif]').forEach((img) => {
             const card = img.closest('.guide-card');
-            if (card) {
-                card.addEventListener('mouseenter', () => {
-                    img.src = img.getAttribute('data-gif');
-                });
-                card.addEventListener('mouseleave', () => {
-                    img.src = img.getAttribute('data-static');
-                });
-            }
+            if (!card) return;
+
+            card.addEventListener('mouseenter', () => {
+                img.src = img.getAttribute('data-gif');
+            });
+            card.addEventListener('mouseleave', () => {
+                img.src = img.getAttribute('data-static');
+            });
         });
     },
 
@@ -371,7 +419,7 @@ const Guides = {
         const container = document.getElementById('guide-view-container');
         if (!container) return;
 
-        container.innerHTML = '<div class="guides-loading">Loading guide</div>';
+        container.innerHTML = `<div class="guides-loading">${this.getI18nText('loadingGuide', 'Loading guide...')}</div>`;
 
         try {
             await this.loadCategories();
@@ -386,7 +434,7 @@ const Guides = {
             container.innerHTML = `
                 <div class="guides-empty">
                     <div class="guides-empty-icon">404</div>
-                    <div class="guides-empty-text">Guide not found</div>
+                    <div class="guides-empty-text">${this.getI18nText('guideNotFound', 'Guide not found')}</div>
                 </div>
             `;
         }
@@ -400,44 +448,42 @@ const Guides = {
         if (!container) return;
 
         const lang = this.currentLang;
-        const title = guide.titles?.[lang] || guide.titles?.kr || guide.title || 'Untitled';
+        const untitled = this.getI18nText('untitled', 'Untitled');
+        const title = guide.titles?.[lang] || guide.titles?.kr || guide.title || untitled;
         const content = guide.contents?.[lang] || guide.contents?.kr || '';
         const categoryLabel = this.getCategoryLabel(guide.category, lang);
         const date = this.formatDate(guide.date, lang);
         const author = guide.author || '';
         let thumbnail = guide.thumbnail || '';
 
-        // Hide thumbnail if same as first content image
         if (thumbnail) {
-            // Check if content starts with image that matches thumbnail
             const tmp = document.createElement('div');
             tmp.innerHTML = content;
             const firstImg = tmp.querySelector('img');
             if (firstImg) {
                 const firstSrc = firstImg.getAttribute('src') || '';
-                // Simple check for matching filenames
                 if (firstSrc && (firstSrc === thumbnail || firstSrc.endsWith(thumbnail) || thumbnail.endsWith(firstSrc))) {
                     thumbnail = '';
                 }
             }
         }
 
-        // Update page title & SEO
         const excerpt = guide.excerpts?.[lang] || guide.excerpts?.kr || '';
         const fullThumb = thumbnail && thumbnail.startsWith('/') ? window.location.origin + thumbnail : thumbnail;
-        const siteLabels = { kr: '루페르넷', en: 'Lufelnet', jp: 'ルフェルネット' };
+        const siteName = this.getI18nText('siteName', 'Lufelnet');
         this.updateMeta(
-            `${title} - ${siteLabels[lang] || siteLabels.kr}`,
+            `${title} - ${siteName}`,
             excerpt || title,
             fullThumb || null
         );
 
+        const backToList = this.getI18nText('backToList', 'Back to list');
         const html = `
             <a class="guide-back" href="/article/?lang=${lang}">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M19 12H5M12 19l-7-7 7-7"/>
                 </svg>
-                <span data-kr="목록으로" data-en="Back to list" data-jp="一覧へ">목록으로</span>
+                <span>${backToList}</span>
             </a>
 
             <article class="guide-article">
@@ -458,22 +504,16 @@ const Guides = {
         `;
 
         container.innerHTML = html;
-
-        // Update back link text based on language
         this.updateLanguageTexts();
-
-        // No special GIF handling for single view (let it play)
     },
 
     /**
      * Update texts based on current language
      */
     updateLanguageTexts() {
-        const lang = this.currentLang;
-        document.querySelectorAll('[data-kr]').forEach(el => {
-            const text = el.getAttribute(`data-${lang}`) || el.getAttribute('data-kr');
-            if (text) el.textContent = text;
-        });
+        if (window.I18nService && typeof window.I18nService.updateDOM === 'function') {
+            window.I18nService.updateDOM();
+        }
     },
 
     /**
@@ -483,8 +523,10 @@ const Guides = {
         document.title = title;
 
         const setMeta = (selector, content) => {
-            const el = document.querySelector(selector);
-            if (el) el.setAttribute('content', content);
+            const element = document.querySelector(selector);
+            if (element) {
+                element.setAttribute('content', content);
+            }
         };
 
         if (description) {
@@ -492,8 +534,10 @@ const Guides = {
             setMeta('meta[property="og:description"]', description);
             setMeta('meta[name="twitter:description"]', description);
         }
+
         setMeta('meta[property="og:title"]', title);
         setMeta('meta[name="twitter:title"]', title);
+
         if (image) {
             setMeta('meta[property="og:image"]', image);
             setMeta('meta[name="twitter:image"]', image);
@@ -503,45 +547,49 @@ const Guides = {
     /**
      * Format date based on language
      */
-    /**
-     * Format date based on language
-     */
     formatDate(dateStr, lang) {
         if (!dateStr) return '';
 
         const date = new Date(dateStr);
+        if (Number.isNaN(date.getTime())) return '';
+
         const now = new Date();
-        const diff = now - date;
+        const diff = Math.max(now - date, 0);
         const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const currentYear = now.getFullYear();
-        const targetYear = date.getFullYear();
 
         if (days === 0) {
             const hours = Math.floor(diff / (1000 * 60 * 60));
             if (hours === 0) {
                 const minutes = Math.floor(diff / (1000 * 60));
-                if (lang === 'en') return `${minutes} min ago`;
-                if (lang === 'jp') return `${minutes}分前`;
-                return `${minutes}분 전`;
+                return this.formatTemplate(
+                    this.getI18nText('dateMinutesAgo', '{value} min ago'),
+                    minutes
+                );
             }
-            if (lang === 'en') return `${hours} hours ago`;
-            if (lang === 'jp') return `${hours}時間前`;
-            return `${hours}시간 전`;
-        } else if (days < 7) {
-            if (lang === 'en') return `${days} days ago`;
-            if (lang === 'jp') return `${days}日前`;
-            return `${days}일 전`;
-        } else if (days < 14) {
-            const weeks = Math.floor(days / 7);
-            if (lang === 'en') return `${weeks} week${weeks > 1 ? 's' : ''} ago`;
-            if (lang === 'jp') return `${weeks}週間前`;
-            return `${weeks}주 전`;
+
+            return this.formatTemplate(
+                this.getI18nText('dateHoursAgo', '{value} hours ago'),
+                hours
+            );
         }
 
-        // Unified string for older guides (> 2 weeks)
-        if (lang === 'kr') return '루페르넷 가이드';
-        if (lang === 'jp') return 'Lufelnet Guide';
-        return 'Lufelnet Guide';
+        if (days < 7) {
+            return this.formatTemplate(
+                this.getI18nText('dateDaysAgo', '{value} days ago'),
+                days
+            );
+        }
+
+        if (days < 14) {
+            const weeks = Math.floor(days / 7);
+            const weekKey = lang === 'en' && weeks > 1 ? 'dateWeeksAgoPlural' : 'dateWeeksAgoSingular';
+            return this.formatTemplate(
+                this.getI18nText(weekKey, '{value} weeks ago'),
+                weeks
+            );
+        }
+
+        return this.getI18nText('oldGuideLabel', 'Lufelnet Guide');
     },
 
     /**

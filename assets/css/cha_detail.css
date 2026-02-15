@@ -2497,3 +2497,101 @@ h2 {
     /* 위치를 살짝 옮겨서 보라색 그림자처럼 보이게 */
     transform: translate(6px, 5px);
 }
+
+/* =============================================
+   Skeleton loading for non-KR languages
+   Hides hardcoded Korean text until i18n loads
+   ============================================= */
+
+@keyframes skel-sweep {
+    0%   { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+@keyframes skel-pulse {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: .6; }
+}
+
+/* Skeleton bone: shimmer text */
+html.skel .navigation-path a,
+html.skel .navigation-path .current-page,
+html.skel .character-name,
+html.skel .sub-info .code-name,
+html.skel .sub-info .persona-name,
+html.skel .review-card h2,
+html.skel .settings-card h2,
+html.skel .skills-card h2,
+html.skel .ritual-card h2,
+html.skel .stats-card h2,
+html.skel .weapons-card h2,
+html.skel .innate-card h2,
+html.skel .recommended-persona-card h2,
+html.skel .recommended-party-card h2,
+html.skel .settings-card h3,
+html.skel .stats-card h3 {
+    color: transparent !important;
+    -webkit-text-stroke: 0 !important;
+    text-shadow: none !important;
+    background: linear-gradient(
+        100deg,
+        rgba(255,255,255,0.04) 0%,
+        rgba(255,255,255,0.04) 40%,
+        rgba(255,255,255,0.10) 50%,
+        rgba(255,255,255,0.04) 60%,
+        rgba(255,255,255,0.04) 100%
+    );
+    background-size: 200% 100%;
+    animation: skel-sweep 1.8s ease-in-out infinite, skel-pulse 2.4s ease-in-out infinite;
+    border-radius: 6px;
+    pointer-events: none;
+}
+
+/* Hide elements that flash Korean and don't need skeleton shimmer */
+html.skel .chracter-tag,
+html.skel .chracter-role {
+    visibility: hidden;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* Hide P5-layer pseudo-elements on character-name */
+html.skel .character-name::before,
+html.skel .character-name::after {
+    display: none !important;
+}
+
+/* ---- Layout stability ---- */
+
+/* Review area */
+html.skel .review-card {
+    min-height: 200px;
+}
+
+html.skel .review-card .review-content {
+    min-height: 100px;
+    border-radius: 8px;
+    background: linear-gradient(
+        100deg,
+        rgba(255,255,255,0.03) 0%,
+        rgba(255,255,255,0.03) 40%,
+        rgba(255,255,255,0.07) 50%,
+        rgba(255,255,255,0.03) 60%,
+        rgba(255,255,255,0.03) 100%
+    );
+    background-size: 200% 100%;
+    animation: skel-sweep 1.8s ease-in-out infinite, skel-pulse 2.4s ease-in-out infinite;
+}
+
+/* Mobile */
+@media (max-width: 1200px) {
+    html.skel .review-card {
+        min-height: 150px;
+    }
+
+    html.skel .review-card .review-content {
+        min-height: 60px;
+    }
+}

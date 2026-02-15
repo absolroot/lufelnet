@@ -61,7 +61,7 @@ window.I18N_PAGE_TACTIC_MAKER_KR = {
     actionDragMoveTooltip: "드래그하여 이동",
     duplicate: "복제",
     resetFilter: "필터 초기화",
-    showSpoilersLabel: "스포일러 보기",
+    showSpoilersLabel: "Show Spoilers",
     roleChangeTooltip: "직업 변경",
     revelationSetEffectLabel: "세트 효과",
     revelationSet2Label: "2세트",

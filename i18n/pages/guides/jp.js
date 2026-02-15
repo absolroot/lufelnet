@@ -1,0 +1,23 @@
+window.I18N_PAGE_GUIDES_JP = {
+    navHome: 'ホーム',
+    navCurrent: 'ガイド',
+    pageTitle: 'ガイド',
+    searchPlaceholder: '検索...',
+    filterAll: 'すべて',
+    loadingGuides: 'ガイドを読み込み中...',
+    loadingGuide: 'ガイドを読み込み中...',
+    noGuidesYet: 'まだガイドがありません',
+    noResults: '結果が見つかりません',
+    guideNotFound: 'ガイドが見つかりません',
+    backToList: '一覧へ',
+    untitled: '無題',
+    siteName: 'ルフェルネット',
+    oldGuideLabel: 'Lufelnet Guide',
+    seoListTitle: 'ガイド - ペルソナ5 ザ・ファントムX ルフェルネット',
+    seoListDescription: 'ペルソナ5 ザ・ファントムX 攻略ガイド',
+    dateMinutesAgo: '{value}分前',
+    dateHoursAgo: '{value}時間前',
+    dateDaysAgo: '{value}日前',
+    dateWeeksAgoSingular: '{value}週間前',
+    dateWeeksAgoPlural: '{value}週間前'
+};

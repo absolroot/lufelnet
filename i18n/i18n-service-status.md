@@ -1,7 +1,7 @@
 ﻿# 서비스별 i18n 처리 현황
 
 기준일: 2026-02-15  
-점검 범위: `apps` 하위 26개 서비스 + 기존 `통합 i18n 완료` 14개 서비스 재점검
+점검 범위: `apps` 하위 26개 서비스 전체 재점검
 
 ## 0. i18n 불필요 서비스
 - `article-editor`
@@ -20,6 +20,7 @@
 | `critical-calc` | 완료(경미 초기값 잔존) | 통합 번들 사용(`apps/critical-calc/index.html:180`), 초기 하드코딩(`apps/critical-calc/index.html:27`)은 `assets/js/defense/defense-i18n.js:236`에서 런타임 치환 |
 | `defense-calc` | 완료(경미 초기값 잔존) | 통합 번들 사용(`apps/defense-calc/index.html:363`), 초기 하드코딩(`apps/defense-calc/index.html:49`)은 `assets/js/defense/defense-i18n.js:236`에서 런타임 치환 |
 | `gallery` | 완료 | `apps/gallery/index.html:104`, `apps/gallery/gallery-tags.js:30`에서 `initPageI18n('gallery')` + `window.t()` 사용 |
+| `guides` | 완료 | 신규 페이지 번들 + 통합 초기화로 목록/동적상세/정적상세 진입점 통합(`i18n/pages/guides/kr.js:1`, `apps/guides/index.html:41`, `apps/guides/view.html:40`, `apps/guides/pages/books.html:28`, `apps/guides/guides.js:28`, `apps/article-editor/editor.js:320`) |
 | `login` | 완료 | `apps/login/index.html:133`, `apps/login/index.html:138`에서 `initPageI18n('login')`/`I18nService.init('login')` 호출 |
 | `maps` | 완료 | `MapsI18n` 경로를 유지하면서 언어 선택기/모바일 ARIA/백업 툴팁/에러 문구/적 정보 fallback을 페이지 번들 키 조회로 통합하고 KR direct 참조 제거(`apps/maps/index.html:78`, `apps/maps/object-filter-panel.js:34`, `apps/maps/map-select-panel.js:21`, `apps/maps/maps-core.js:44`, `apps/maps/object-click-handler.js:33`, `i18n/pages/maps/kr.js:18`) |
 | `persona` | 완료 | 통합 초기화 이후 스킬 라벨/배지/접근성 ARIA/상세 SEO fallback을 페이지 번들·공통 키 조회로 통합(`apps/persona/persona-list.js:49`, `apps/persona/persona-list.js:393`, `apps/persona/persona-list.js:710`, `apps/persona/persona-list.js:896`, `apps/persona/skillfrom.js:117`, `apps/persona/skillfrom.js:237`, `apps/persona/index.html:94`, `i18n/pages/persona/kr.js:18`) |
@@ -41,7 +42,6 @@
 
 | 서비스 | 상태 | 근거 |
 | --- | --- | --- |
-| `guides` | 미구현(서비스 내부 로컬 i18n) | 로컬 번역 객체 사용(`apps/guides/guides.js:116`, `apps/guides/guides.js:130`, `apps/guides/guides.js:523`) |
 | `home` | 미구현(공통 번역 일부 + 로컬 맵) | 공통 번역 로드 후 로컬 데이터 조합(`apps/home/index.html:456`, `apps/home/index.html:462`), 로컬 라벨 맵(`apps/home/js/quick-grid.js:45`) |
 | `material-calc` | 미구현(로컬 i18n) | 로컬 `I18N` 맵/`t()` 사용(`apps/material-calc/material-planner.js:68`, `apps/material-calc/material-planner.js:137`) |
 | `pull-tracker` | 미구현(로컬 i18n) | 로컬 메시지/맵 사용(`apps/pull-tracker/js/pull-tracker.js:3`, `apps/pull-tracker/js/global-stats.js:13`, `apps/pull-tracker/url-guide.html:656`) |
@@ -65,7 +65,7 @@
 | `defense-calc` | 완료(경미 잔존) |
 | `dmg-calc` | 불필요 |
 | `gallery` | 완료 |
-| `guides` | 미구현 |
+| `guides` | 완료 |
 | `home` | 미구현 |
 | `login` | 완료 |
 | `maps` | 완료 |
@@ -84,6 +84,6 @@
 | `wonder-weapon` | 완료 |
 
 ## 6. 결론
-- 재점검 기준 통합 i18n 완료(경미 초기값 잔존 포함): `about`, `astrolabe`, `character`, `critical-calc`, `defense-calc`, `gallery`, `login`, `maps`, `persona`, `pull-calc`, `revelations`, `schedule`, `synergy`, `tactic-maker`, `tier`, `wonder-weapon`
-- 우선 정리 대상(미구현): `guides`, `home`, `material-calc`, `pull-tracker`
+- 재점검 기준 통합 i18n 완료(경미 초기값 잔존 포함): `about`, `astrolabe`, `character`, `critical-calc`, `defense-calc`, `gallery`, `guides`, `login`, `maps`, `persona`, `pull-calc`, `revelations`, `schedule`, `synergy`, `tactic-maker`, `tier`, `wonder-weapon`
+- 우선 정리 대상(미구현): `home`, `material-calc`, `pull-tracker`
 - 부분 잔존 정리 대상: `tactic`

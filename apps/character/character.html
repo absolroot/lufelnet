@@ -11,6 +11,18 @@ language: kr
 title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
 ---
 
+<script>
+// Skeleton: hide Korean text flash for non-KR languages (runs before first paint)
+(function(){
+    var p = new URLSearchParams(window.location.search).get('lang');
+    if (p && p !== 'kr') {
+        document.documentElement.classList.add('skel');
+        // Safety: remove skeleton after 3s even if DOMContentLoaded handler fails
+        setTimeout(function(){ document.documentElement.classList.remove('skel'); }, 3000);
+    }
+})();
+</script>
+
 {% include supabase-config.html %}
 
 <script src="{{ site.baseurl }}/data/persona/order.js?v={{ site.time | date: '%s' }}"></script>
@@ -781,6 +793,7 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
     window.scheduleTranslate = scheduleTranslate;
 
     document.addEventListener('DOMContentLoaded', async function () {
+      try {
         // 안전 실행 유틸리티: 개별 블록에서 오류가 나도 전체 흐름을 막지 않음
         const safeRun = (name, fn) => { try { return fn && fn(); } catch (e) { console.warn(`[SAFE:${name}]`, e); } };
         const safeAwait = async (name, promise) => { try { return await promise; } catch (e) { console.warn(`[SAFE:${name}]`, e); return undefined; } };
@@ -2111,6 +2124,10 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
             }
         } catch (e) { console.warn('[SAFE:note-section]', e); }
 
+      } finally {
+        // Remove skeleton overlay now that i18n + data is applied (or handler errored/returned early)
+        document.documentElement.classList.remove('skel');
+      }
     });
 
 

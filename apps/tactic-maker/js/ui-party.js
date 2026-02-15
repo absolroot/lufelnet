@@ -487,7 +487,7 @@ export class PartyUI {
             ? window.I18nService.getCurrentLanguage() 
             : 'kr';
         const showSpoilerToggle = currentLang !== 'kr';
-        const spoilerLabelText = getTacticMakerText('showSpoilersLabel', '스포일러 보기');
+        const spoilerLabelText = getTacticMakerText('showSpoilersLabel', 'Show Spoilers');
 
         bar.innerHTML = `
             <div class="roster-filter-search">

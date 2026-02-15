@@ -906,7 +906,7 @@ class TacticsViewer {
                 filter_char: '캐릭터 필터',
                 signed_in_as: '로그인:',
                 logout: '로그아웃',
-                spoiler: '스포일러 보기',
+                spoiler: 'Show Spoilers',
                 type: { '흉몽': '흉몽', '바다': '바다', '이벤트': '이벤트', '기타': '기타' }
             },
             en: {
@@ -946,7 +946,7 @@ class TacticsViewer {
                 type: { '흉몽': '閼兇夢', '바다': '心の海', '이벤트': 'イベント', '기타': 'その他' }
             }
         }[this.currentLang] || {
-            search: '제목 검색...', ranking: '순위', weekly: '주간', monthly: '월간', alltime: '역대', title: '택틱 도서관', nav_home: '홈', nav_current: '택틱 / 택틱 도서관', prev: '이전', next: '다음', upload: '택틱 업로드', filter_char: '캐릭터 필터', spoiler: '스포일러 보기', type: { '흉몽': '흉몽', '바다': '바다', '이벤트': '이벤트', '기타': '기타' }
+            search: '제목 검색...', ranking: '순위', weekly: '주간', monthly: '월간', alltime: '역대', title: '택틱 도서관', nav_home: '홈', nav_current: '택틱 / 택틱 도서관', prev: '이전', next: '다음', upload: '택틱 업로드', filter_char: '캐릭터 필터', spoiler: 'Show Spoilers', type: { '흉몽': '흉몽', '바다': '바다', '이벤트': '이벤트', '기타': '기타' }
         };
 
         const searchInput = document.getElementById('searchInput');

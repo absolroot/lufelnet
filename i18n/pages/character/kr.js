@@ -9,7 +9,7 @@ window.I18N_PAGE_CHARACTER_KR = {
     filterPosition: '직업',
     filterType: '유형',
     filterTag: '태그',
-    showSpoilers: '스포일러 보기',
+    showSpoilers: 'Show Spoilers',
     notReleased: '미출시',
     characterDetailReview: '캐릭터 리뷰',
     characterDetailRecommendedSetup: '추천 세팅',

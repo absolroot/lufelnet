@@ -47,7 +47,7 @@ window.I18N_PAGE_TIER_KR = {
     tierFailedParseJsonFile: 'JSON 파일을 파싱하지 못했습니다.',
 
     // Spoiler toggle
-    showSpoilers: '스포일러 보기',
+    showSpoilers: 'Show Spoilers',
 
     // Tier Criteria
     tierCriteriaTitle: '티어 기준',

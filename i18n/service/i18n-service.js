@@ -28,7 +28,7 @@
  * ```
  */
 
-console.log('[I18nService] Script started loading...');
+// console.log('[I18nService] Script started loading...');
 
 (function () {
     // 싱글톤 패턴: 이미 초기화되어 있다면 재실행 방지
@@ -67,7 +67,7 @@ console.log('[I18nService] Script started loading...');
                 const serviceIndex = src.indexOf('/service/i18n-service.js');
                 if (serviceIndex !== -1) {
                     this.basePath = src.substring(0, serviceIndex);
-                    console.log('[I18nService] Auto-detected basePath:', this.basePath);
+                    // console.log('[I18nService] Auto-detected basePath:', this.basePath);
                 }
             }
 
@@ -82,7 +82,7 @@ console.log('[I18nService] Script started loading...');
                 this.debug = new URLSearchParams(window.location.search).get('i18nDebug') === '1';
             } catch (_) { }
 
-            console.log('[I18nService] Detected language:', this.currentLang);
+            // console.log('[I18nService] Detected language:', this.currentLang);
         }
 
 
@@ -142,7 +142,7 @@ console.log('[I18nService] Script started loading...');
                     await this.loadPageTranslations(pageName);
                 }
 
-                console.log(`[I18nService] Initialized with language: ${this.currentLang}, page: ${pageName || 'none'}`);
+                // console.log(`[I18nService] Initialized with language: ${this.currentLang}, page: ${pageName || 'none'}`);
             } catch (error) {
                 console.error('[I18nService] Initialization failed:', error);
                 // 초기화 실패해도 기본 동작은 가능하도록
@@ -307,13 +307,13 @@ console.log('[I18nService] Script started loading...');
 
             try {
                 const scriptPath = `${this.basePath}/pages/${pageName}/${targetLang}.js`;
-                console.log(`[I18nService] Loading page translations from: ${scriptPath}`);
+                // console.log(`[I18nService] Loading page translations from: ${scriptPath}`);
 
                 // 스크립트 태그로 로드
                 await this._loadScript(scriptPath);
 
                 const translations = window[globalVarName] || {};
-                console.log(`[I18nService] Loaded translations for ${pageName}/${targetLang}`, translations ? Object.keys(translations).length : 'empty');
+                // console.log(`[I18nService] Loaded translations for ${pageName}/${targetLang}`, translations ? Object.keys(translations).length : 'empty');
 
                 // 캐시에 저장
                 if (!this.cache[targetLang]) {
@@ -368,7 +368,7 @@ console.log('[I18nService] Script started loading...');
             const lang = this.currentLang;
 
             // Debug log for key lookup
-            console.log(`[I18nService] Translating '${key}' for lang '${lang}' (Page: ${this.currentPage})`);
+            // console.log(`[I18nService] Translating '${key}' for lang '${lang}' (Page: ${this.currentPage})`);
 
             // 1. 페이지별 번역에서 찾기
             if (this.currentPage) {
@@ -855,11 +855,11 @@ console.log('[I18nService] Script started loading...');
 
 
     // 싱글톤 인스턴스 생성
-    console.log('[I18nService] Creating singleton instance...');
+    // console.log('[I18nService] Creating singleton instance...');
     const i18nService = new _I18nService();
 
     // 전역 노출
     window.I18nService = i18nService;
-    console.log('[I18nService] Script loaded successfully, window.I18nService =', typeof window.I18nService);
+    // console.log('[I18nService] Script loaded successfully, window.I18nService =', typeof window.I18nService);
 
 })();

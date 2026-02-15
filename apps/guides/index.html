@@ -18,23 +18,34 @@ image: /assets/img/home/seo.png
 <div class="main-wrapper">
     <!-- navigation path -->
     <div class="navigation-path">
-        <script>document.write(`<a href="/?v=${APP_VERSION}" data-kr="홈" data-en="Home" data-jp="ホーム">홈</a>`);</script>
+        <script>document.write(`<a href="/?v=${APP_VERSION}" id="nav-home" data-i18n="navHome">홈</a>`);</script>
         <span class="separator">/</span>
-        <span class="current-page" data-kr="가이드" data-en="Guides" data-jp="ガイド">가이드</span>
+        <span class="current-page" id="nav-current" data-i18n="navCurrent">가이드</span>
     </div>
 
     <div class="header-container">
-        <h1 data-kr="가이드" data-en="Guides" data-jp="ガイド">가이드</h1>
+        <h1 data-i18n="pageTitle">가이드</h1>
     </div>
 
     <!-- Guides List Container -->
     <div class="guides-container" id="guides-container">
-        <div class="guides-loading">Loading guides</div>
+        <div class="guides-loading" data-i18n="loadingGuides">Loading guides...</div>
     </div>
 </div>
 
+<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', async () => {
+        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+        if (typeof initPageI18n === 'function') {
+            await initPageI18n('guides');
+            if (typeof setLang === 'function') {
+                await setLang(currentLang);
+            }
+        } else if (window.I18nService && typeof window.I18nService.init === 'function') {
+            await window.I18nService.init('guides', currentLang);
+        }
+
         Navigation.load('article');
         VersionChecker.check();
         Guides.loadList();

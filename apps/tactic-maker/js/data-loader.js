@@ -317,7 +317,10 @@ export class DataLoader {
         const version = (typeof window.APP_VERSION !== 'undefined' && window.APP_VERSION)
             ? `?v=${encodeURIComponent(String(window.APP_VERSION))}`
             : '';
-        const url = `${baseUrl}/data/${lang}/characters/characters.js${version}`;
+        const dataPath = (lang === 'en' || lang === 'jp')
+            ? '/data/character_info_glb.js'
+            : `/data/${lang}/characters/characters.js`;
+        const url = `${baseUrl}${dataPath}${version}`;
 
         try {
             const response = await fetch(url);

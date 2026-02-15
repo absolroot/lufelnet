@@ -173,6 +173,143 @@ function addDaysToDateString(dateStr, days) {
     return `${y}-${m}-${d}`;
 }
 
+function getI18nServiceInstance() {
+    if (typeof window === 'undefined') return null;
+    return window.__I18nService__ || window.I18nService || null;
+}
+
+function getNestedValue(obj, key) {
+    if (!obj || !key) return undefined;
+    return key.split('.').reduce((current, part) => {
+        if (current && current[part] !== undefined) {
+            return current[part];
+        }
+        return undefined;
+    }, obj);
+}
+
+function getTranslationByLang(lang, key) {
+    const service = getI18nServiceInstance();
+    if (!service || !service.cache) return undefined;
+
+    const pageTranslation = getNestedValue(service.cache[lang]?.pages?.['pull-calc'], key);
+    if (pageTranslation !== undefined) return pageTranslation;
+
+    return getNestedValue(service.cache[lang]?.common, key);
+}
+
+function resolveTranslation(translator, key) {
+    const missingToken = '__PULL_CALC_I18N_MISSING__';
+    const translated = translator(key, missingToken);
+    return translated === missingToken ? undefined : translated;
+}
+
+function getI18nText(key, fallback) {
+    if (typeof window.t === 'function') {
+        const translated = resolveTranslation(window.t, key);
+        if (translated !== undefined) return translated;
+    }
+
+    const service = getI18nServiceInstance();
+    if (service && typeof service.t === 'function') {
+        const translated = resolveTranslation((k, defaultValue) => service.t(k, defaultValue), key);
+        if (translated !== undefined) return translated;
+    }
+
+    const krTranslation = getTranslationByLang('kr', key);
+    if (krTranslation !== undefined) return krTranslation;
+
+    return fallback || key;
+}
+
+function getCurrentPullCalcLanguage() {
+    const service = getI18nServiceInstance();
+    if (service && typeof service.getCurrentLanguage === 'function') {
+        const lang = service.getCurrentLanguage();
+        if (lang) return lang;
+    }
+
+    if (typeof window.getCurrentLang === 'function') {
+        const lang = window.getCurrentLang();
+        if (lang) return lang;
+    }
+
+    if (typeof window.getCurrentLanguage === 'function') {
+        const lang = window.getCurrentLanguage();
+        if (lang) return lang;
+    }
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const langFromQuery = urlParams.get('lang');
+    if (langFromQuery && ['kr', 'en', 'jp'].includes(langFromQuery)) {
+        return langFromQuery;
+    }
+
+    const savedLang = localStorage.getItem('preferredLanguage');
+    if (savedLang && ['kr', 'en', 'jp'].includes(savedLang)) {
+        return savedLang;
+    }
+
+    return 'kr';
+}
+
+function upsertMetaByName(name, content) {
+    let tag = document.querySelector(`meta[name="${name}"]`);
+    if (!tag) {
+        tag = document.createElement('meta');
+        tag.setAttribute('name', name);
+        document.head.appendChild(tag);
+    }
+    tag.setAttribute('content', content);
+}
+
+function upsertMetaByProperty(property, content) {
+    let tag = document.querySelector(`meta[property="${property}"]`);
+    if (!tag) {
+        tag = document.createElement('meta');
+        tag.setAttribute('property', property);
+        document.head.appendChild(tag);
+    }
+    tag.setAttribute('content', content);
+}
+
+function updatePullCalcSEOTags(lang = null) {
+    const currentLang = lang || getCurrentPullCalcLanguage();
+    const baseUrl = 'https://lufel.net';
+    const currentUrl = `${baseUrl}/pull-calc/?lang=${currentLang}`;
+
+    const seoTitle = getI18nText('seoTitle', '가챠 플래너 - 페르소나5 더 팬텀 X 루페르넷');
+    const seoDescription = getI18nText('seoDescription', '페르소나5 더 팬텀 X 가챠 계획 시뮬레이터. 향후 캐릭터 출시에 맞춰 필요한 재화를 계산하고 계약 계획을 수립할 수 있습니다.');
+    const seoKeywords = getI18nText('seoKeywords', 'P5X, 페르소나5X, 가챠 플래너, 가챠 계산기, 가챠 시뮬레이터, P5X 계산기, 계약 계획');
+    const seoOgLocale = getI18nText('seoOgLocale', 'ko_KR');
+
+    document.title = seoTitle;
+
+    upsertMetaByName('description', seoDescription);
+    upsertMetaByName('keywords', seoKeywords);
+    upsertMetaByName('twitter:card', 'summary_large_image');
+    upsertMetaByName('twitter:title', seoTitle);
+    upsertMetaByName('twitter:description', seoDescription);
+    upsertMetaByName('twitter:image', `${baseUrl}/assets/img/home/seo.png`);
+
+    upsertMetaByProperty('og:title', seoTitle);
+    upsertMetaByProperty('og:description', seoDescription);
+    upsertMetaByProperty('og:url', currentUrl);
+    upsertMetaByProperty('og:locale', seoOgLocale);
+    upsertMetaByProperty('og:type', 'website');
+    upsertMetaByProperty('og:image', `${baseUrl}/assets/img/home/seo.png`);
+
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+        canonical = document.createElement('link');
+        canonical.setAttribute('rel', 'canonical');
+        document.head.appendChild(canonical);
+    }
+    canonical.setAttribute('href', currentUrl);
+
+    document.documentElement.setAttribute('lang', currentLang === 'jp' ? 'ja' : currentLang === 'kr' ? 'ko' : 'en');
+}
+
 /**
  * Apply or remove SEA server delay to ReleaseScheduleData
  * @param {boolean} isSea - If true, apply +7 days shift; if false, restore original
@@ -385,10 +522,7 @@ class PullSimulator {
         const fallback = defaultValue || key;
         const lang = this.getLang();
         this.lang = lang;
-        if (typeof window.t === 'function') {
-            return window.t(key, fallback);
-        }
-        return fallback;
+        return getI18nText(key, fallback);
     }
 
     applyI18n() {
@@ -1667,11 +1801,29 @@ class PullSimulator {
 
 }
 
+let pullCalcSeoLanguageHookBound = false;
+
 // Initialize
 document.addEventListener('DOMContentLoaded', async () => {
+    if (typeof Navigation !== 'undefined' && typeof Navigation.load === 'function') {
+        Navigation.load('pull-calc');
+    }
+
     // Initialize i18n first
     if (typeof initPageI18n === 'function') {
         await initPageI18n('pull-calc');
+    } else if (window.I18nService && typeof window.I18nService.init === 'function') {
+        await window.I18nService.init('pull-calc');
+    }
+
+    updatePullCalcSEOTags();
+
+    const i18nService = getI18nServiceInstance();
+    if (i18nService && typeof i18nService.onLanguageChange === 'function' && !pullCalcSeoLanguageHookBound) {
+        i18nService.onLanguageChange(() => {
+            updatePullCalcSEOTags();
+        });
+        pullCalcSeoLanguageHookBound = true;
     }
 
     const checkAndInit = () => {

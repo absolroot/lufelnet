@@ -24,7 +24,10 @@
                     { mainParty: [], supportParty: [] };
                 return { characterList: globalList };
             }
-            const url = `${BASE_URL}/data/${l}/characters/characters.js?v=${APP_VERSION}`;
+            const dataPath = (l === 'en' || l === 'jp')
+                ? '/data/character_info_glb.js'
+                : `/data/${l}/characters/characters.js`;
+            const url = `${BASE_URL}${dataPath}?v=${APP_VERSION}`;
             try {
                 const resp = await fetch(url);
                 if (!resp.ok) throw new Error('HTTP ' + resp.status);

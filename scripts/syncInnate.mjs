@@ -532,9 +532,11 @@ async function main() {
   if (fs.existsSync(krCharsPath)) {
     charKey = findCharacterKeyByCodename(krCharsPath, local);
   }
-  // 그 다음 현재 언어 characters.js에서도 시도 (혹시 다르게 정의된 경우)
+  // 그 다음 현재 언어 캐릭터 데이터에서도 시도 (EN/JP는 glb 파일, 그 외는 언어별 characters.js)
   if (!charKey) {
-    const charsPath = path.join('data', lang, 'characters', 'characters.js');
+    const charsPath = (lang === 'en' || lang === 'jp')
+      ? path.join('data', 'character_info_glb.js')
+      : path.join('data', lang, 'characters', 'characters.js');
     if (fs.existsSync(charsPath)) {
       charKey = findCharacterKeyByCodename(charsPath, local);
     }

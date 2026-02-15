@@ -267,7 +267,10 @@
         const v = window.APP_VERSION || Date.now();
 
         const kr = await fetchCharactersData(`${window.BASE_URL || ''}/data/character_info.js?v=${v}`);
-        const lg = (lang === 'kr') ? kr : await fetchCharactersData(`${window.BASE_URL || ''}/data/${lang}/characters/characters.js?v=${v}`);
+        const lgDataPath = (lang === 'en' || lang === 'jp')
+            ? '/data/character_info_glb.js'
+            : `/data/${lang}/characters/characters.js`;
+        const lg = (lang === 'kr') ? kr : await fetchCharactersData(`${window.BASE_URL || ''}${lgDataPath}?v=${v}`);
 
         const krCharacterData = (kr && kr.characterData) ? kr.characterData : {};
         const langCharacterData = (lg && lg.characterData) ? lg.characterData : {};

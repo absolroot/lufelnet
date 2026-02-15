@@ -49,7 +49,17 @@
   dataEditorEntryIndex: 0,
   dataEditorDirty: false,
   selectedParts: new Set(),
-  showChangedLinesOnly: false
+  showChangedLinesOnly: false,
+  revelationAdmin: {
+    revision: '',
+    cards: [],
+    options: { main: [], sub: [] },
+    selectedId: '',
+    detail: null,
+    draft: null,
+    dirty: false,
+    createOpen: false
+  }
 };
 
 const DOMAIN_PARTS = {
@@ -86,7 +96,7 @@ const FALLBACK_CAPABILITIES = [
 const APP_VERSION = 'patch-console v0.12.3';
 const VIEW_KEY = 'patch-console.activeView';
 const DATA_EDITOR_MODE_KEY = 'patch-console.dataEditorMode';
-const VALID_VIEWS = new Set(['work', 'ignored', 'editor']);
+const VALID_VIEWS = new Set(['work', 'ignored', 'editor', 'revelation-admin']);
 
 const dom = {
   domainTabs: document.getElementById('domain-tabs'),
@@ -94,6 +104,7 @@ const dom = {
   panelWork: document.getElementById('panel-work'),
   panelIgnored: document.getElementById('panel-ignored'),
   panelEditor: document.getElementById('panel-editor'),
+  panelRevelationAdmin: document.getElementById('panel-revelation-admin'),
   currentDomain: document.getElementById('current-domain'),
   addCharacterGroup: document.getElementById('add-character-group'),
   addRevelationGroup: document.getElementById('add-revelation-group'),
@@ -186,7 +197,62 @@ const dom = {
   newRevelationSet4Jp: document.getElementById('new-revelation-set4-jp'),
   newRevelationSet2Cn: document.getElementById('new-revelation-set2-cn'),
   newRevelationSet4Cn: document.getElementById('new-revelation-set4-cn'),
-  btnAddRevelation: document.getElementById('btn-add-revelation')
+  btnAddRevelation: document.getElementById('btn-add-revelation'),
+  revAdminSearch: document.getElementById('rev-admin-search'),
+  revAdminKindFilter: document.getElementById('rev-admin-kind-filter'),
+  revAdminUnreleasedFilter: document.getElementById('rev-admin-unreleased-filter'),
+  btnRevAdminRefresh: document.getElementById('btn-rev-admin-refresh'),
+  btnRevAdminNewToggle: document.getElementById('btn-rev-admin-new-toggle'),
+  revAdminCardList: document.getElementById('rev-admin-card-list'),
+  revAdminEmpty: document.getElementById('rev-admin-empty'),
+  revAdminDetail: document.getElementById('rev-admin-detail'),
+  revAdminDirtyState: document.getElementById('rev-admin-dirty-state'),
+  revAdminCardId: document.getElementById('rev-admin-card-id'),
+  revAdminCardKind: document.getElementById('rev-admin-card-kind'),
+  revAdminNameKr: document.getElementById('rev-admin-name-kr'),
+  revAdminNameEn: document.getElementById('rev-admin-name-en'),
+  revAdminNameJp: document.getElementById('rev-admin-name-jp'),
+  revAdminNameCn: document.getElementById('rev-admin-name-cn'),
+  btnRevAdminRenameKr: document.getElementById('btn-rev-admin-rename-kr'),
+  revAdminTypes: document.getElementById('rev-admin-types'),
+  revAdminUnreleased: document.getElementById('rev-admin-unreleased'),
+  revAdminMainFields: document.getElementById('rev-admin-main-fields'),
+  revAdminSubFields: document.getElementById('rev-admin-sub-fields'),
+  revAdminMainSubOptions: document.getElementById('rev-admin-main-sub-options'),
+  revAdminMainEffects: document.getElementById('rev-admin-main-effects'),
+  revAdminSubMainRefs: document.getElementById('rev-admin-sub-main-refs'),
+  revAdminSubSet2Kr: document.getElementById('rev-admin-sub-set2-kr'),
+  revAdminSubSet4Kr: document.getElementById('rev-admin-sub-set4-kr'),
+  revAdminSubSet2En: document.getElementById('rev-admin-sub-set2-en'),
+  revAdminSubSet4En: document.getElementById('rev-admin-sub-set4-en'),
+  revAdminSubSet2Jp: document.getElementById('rev-admin-sub-set2-jp'),
+  revAdminSubSet4Jp: document.getElementById('rev-admin-sub-set4-jp'),
+  revAdminSubSet2Cn: document.getElementById('rev-admin-sub-set2-cn'),
+  revAdminSubSet4Cn: document.getElementById('rev-admin-sub-set4-cn'),
+  btnRevAdminSave: document.getElementById('btn-rev-admin-save'),
+  btnRevAdminReset: document.getElementById('btn-rev-admin-reset'),
+  revAdminCreate: document.getElementById('rev-admin-create'),
+  revAdminCreateKind: document.getElementById('rev-admin-create-kind'),
+  revAdminCreateNameKr: document.getElementById('rev-admin-create-name-kr'),
+  revAdminCreateNameEn: document.getElementById('rev-admin-create-name-en'),
+  revAdminCreateNameJp: document.getElementById('rev-admin-create-name-jp'),
+  revAdminCreateNameCn: document.getElementById('rev-admin-create-name-cn'),
+  revAdminCreateTypes: document.getElementById('rev-admin-create-types'),
+  revAdminCreateUnreleased: document.getElementById('rev-admin-create-unreleased'),
+  revAdminCreateMainFields: document.getElementById('rev-admin-create-main-fields'),
+  revAdminCreateSubFields: document.getElementById('rev-admin-create-sub-fields'),
+  revAdminCreateMainSubOptions: document.getElementById('rev-admin-create-main-sub-options'),
+  revAdminCreateMainEffects: document.getElementById('rev-admin-create-main-effects'),
+  revAdminCreateSubSet2Kr: document.getElementById('rev-admin-create-sub-set2-kr'),
+  revAdminCreateSubSet4Kr: document.getElementById('rev-admin-create-sub-set4-kr'),
+  revAdminCreateSubSet2En: document.getElementById('rev-admin-create-sub-set2-en'),
+  revAdminCreateSubSet4En: document.getElementById('rev-admin-create-sub-set4-en'),
+  revAdminCreateSubSet2Jp: document.getElementById('rev-admin-create-sub-set2-jp'),
+  revAdminCreateSubSet4Jp: document.getElementById('rev-admin-create-sub-set4-jp'),
+  revAdminCreateSubSet2Cn: document.getElementById('rev-admin-create-sub-set2-cn'),
+  revAdminCreateSubSet4Cn: document.getElementById('rev-admin-create-sub-set4-cn'),
+  btnRevAdminCreateSubmit: document.getElementById('btn-rev-admin-create-submit'),
+  btnRevAdminCreateCancel: document.getElementById('btn-rev-admin-create-cancel')
 };
 
 function appendLog(message) {
@@ -201,6 +267,7 @@ function getUrlView() {
     const url = new URL(window.location.href);
     const path = String(url.pathname || '').toLowerCase();
     const pathEnd = path.split('/').filter(Boolean).pop() || '';
+    if (pathEnd === 'revelation-admin') return 'revelation-admin';
     if (pathEnd === 'ignored') return 'ignored';
     if (pathEnd === 'editor') return 'editor';
     if (pathEnd === 'work') return 'work';
@@ -230,7 +297,7 @@ function getViewPath(view) {
   try {
     const url = new URL(window.location.href);
     const normalizedPath = String(url.pathname || '/')
-      .replace(/\/(work|ignored|editor|index\.html)?\/?$/, '/')
+      .replace(/\/(work|ignored|editor|revelation-admin|index\.html)?\/?$/, '/')
       .replace(/\/+/g, '/');
     return `${normalizedPath}${next}`;
   } catch {
@@ -243,6 +310,7 @@ function setActiveView(view) {
   if (dom.panelWork) dom.panelWork.classList.toggle('hidden', state.activeView !== 'work');
   if (dom.panelIgnored) dom.panelIgnored.classList.toggle('hidden', state.activeView !== 'ignored');
   if (dom.panelEditor) dom.panelEditor.classList.toggle('hidden', state.activeView !== 'editor');
+  if (dom.panelRevelationAdmin) dom.panelRevelationAdmin.classList.toggle('hidden', state.activeView !== 'revelation-admin');
 
   const sidebars = document.querySelectorAll('.view-sidebar');
   for (const sidebar of sidebars) {
@@ -250,7 +318,7 @@ function setActiveView(view) {
     sidebar.classList.toggle('hidden', target !== state.activeView);
   }
 
-  document.body.classList.remove('view-work', 'view-ignored', 'view-editor');
+  document.body.classList.remove('view-work', 'view-ignored', 'view-editor', 'view-revelation-admin');
   document.body.classList.add(`view-${state.activeView}`);
 
   if (dom.viewTabs) {
@@ -285,6 +353,9 @@ function setActiveView(view) {
 
   if (state.activeView === 'editor') {
     setDataEditorMode(getStoredDataEditorMode(), { renderOnly: true });
+  }
+  if (state.activeView === 'revelation-admin' && state.domain === 'revelation') {
+    ensureRevelationAdminBootstrapped();
   }
   renderCounts();
 }
@@ -493,7 +564,10 @@ async function requestJson(url, options = {}) {
   const payload = await response.json().catch(() => ({}));
   if (!response.ok || !payload.ok) {
     const message = payload.error || `HTTP ${response.status}`;
-    throw new Error(message);
+    const error = new Error(message);
+    error.status = response.status;
+    error.payload = payload;
+    throw error;
   }
   return payload;
 }

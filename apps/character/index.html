@@ -489,7 +489,10 @@ redirect_from:
 
             // 2) 언어 데이터 로드 및 병합(샌드박스 평가로 전역 오염 방지)
             if (currentLang !== 'kr') {
-                const langUrl = `/data/${currentLang}/characters/characters.js?v=${APP_VERSION}`;
+                const langDataPath = (currentLang === 'en' || currentLang === 'jp')
+                    ? '/data/character_info_glb.js'
+                    : `/data/${currentLang}/characters/characters.js`;
+                const langUrl = `${langDataPath}?v=${APP_VERSION}`;
                 const lang = await fetchCharactersData(langUrl);
                 if (lang) {
                     const langCharacterData = lang.characterData || {};

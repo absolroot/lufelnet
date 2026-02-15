@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
@@ -15,12 +15,11 @@
       <div class="brand-block">
         <p class="kicker">Patch Console Admin</p>
         <h1>Local Patch Console</h1>
-      </div>
-
-      <nav class="view-tabs" role="tablist" aria-label="관리자 메뉴">
-        <button class="view-tab active" data-view="work" type="button" aria-selected="true" aria-controls="panel-work" tabindex="0">패치 작업</button>
-        <button class="view-tab" data-view="ignored" type="button" aria-selected="false" aria-controls="panel-ignored" tabindex="-1">무시 목록</button>
-        <button class="view-tab" data-view="editor" type="button" aria-selected="false" aria-controls="panel-editor" tabindex="-1">데이터 편집기</button>
+      </div>      <nav class="view-tabs" role="tablist" aria-label="Patch Console Views">
+        <button class="view-tab active" data-view="work" type="button" aria-selected="true" aria-controls="panel-work" tabindex="0">Patch Work</button>
+        <button class="view-tab" data-view="ignored" type="button" aria-selected="false" aria-controls="panel-ignored" tabindex="-1">Ignored</button>
+        <button class="view-tab" data-view="editor" type="button" aria-selected="false" aria-controls="panel-editor" tabindex="-1">Data Editor</button>
+        <button class="view-tab" data-view="revelation-admin" type="button" aria-selected="false" aria-controls="panel-revelation-admin" tabindex="-1">Revelation Admin</button>
       </nav>
 
       <section class="header-domain">
@@ -30,8 +29,8 @@
             id="btn-header-refresh"
             class="header-refresh-btn"
             type="button"
-            title="목록 · 리포트 · 무시 목록 새로고침"
-            aria-label="목록 · 리포트 · 무시 목록 새로고침"
+            title="紐⑸줉 쨌 由ы룷??쨌 臾댁떆 紐⑸줉 ?덈줈怨좎묠"
+            aria-label="紐⑸줉 쨌 由ы룷??쨌 臾댁떆 紐⑸줉 ?덈줈怨좎묠"
           >
             <svg class="header-refresh-icon" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M20 12a8 8 0 0 1-13.66 5.66M4 12A8 8 0 0 1 17.66 6.34M4 4v4h4M16 16h4v4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
@@ -47,18 +46,18 @@
         <section id="panel-work" class="view-panel active">
           <details class="group work-controls-accordion">
             <summary>
-              <span>패치 작업 컨트롤</span>
-              <small>언어/범위/파트</small>
+              <span>?⑥튂 ?묒뾽 而⑦듃濡?/span>
+              <small>?몄뼱/踰붿쐞/?뚰듃</small>
             </summary>
             <div class="work-controls-body">
-              <p class="muted small">필요할 때만 펼쳐서 사용하세요. 새로고침은 상단 아이콘 하나로 처리됩니다.</p>
+              <p class="muted small">?꾩슂???뚮쭔 ?쇱퀜???ъ슜?섏꽭?? ?덈줈怨좎묠? ?곷떒 ?꾩씠肄??섎굹濡?泥섎━?⑸땲??</p>
               <div class="control-grid">
                 <div class="field">
-                  <label>언어</label>
+                  <label>?몄뼱</label>
                   <input id="langs-input" type="text" value="kr,en,jp" placeholder="kr,en,jp,cn">
                 </div>
                 <div class="field">
-                  <label>범위 모드</label>
+                  <label>踰붿쐞 紐⑤뱶</label>
                   <select id="scope-mode">
                     <option value="all">all</option>
                     <option value="nums">nums</option>
@@ -67,13 +66,13 @@
                   </select>
                 </div>
                 <div class="field">
-                  <label>범위 값</label>
-                  <input id="scope-value" type="text" placeholder="예: 3,7-9 or MESSA">
+                  <label>踰붿쐞 媛?/label>
+                  <input id="scope-value" type="text" placeholder="?? 3,7-9 or MESSA">
                 </div>
                 <div class="field">
-                  <label>파트(선택)</label>
+                  <label>?뚰듃(?좏깮)</label>
                   <div class="parts-picker" id="parts-picker">
-                    <button id="parts-toggle" class="parts-toggle" type="button">전체 파트</button>
+                    <button id="parts-toggle" class="parts-toggle" type="button">?꾩껜 ?뚰듃</button>
                     <div id="parts-menu" class="parts-menu hidden"></div>
                   </div>
                 </div>
@@ -83,37 +82,37 @@
 
           <section class="work-layout">
             <aside class="group work-list-panel">
-              <h2>대상 목록</h2>
+              <h2>???紐⑸줉</h2>
               <div class="field">
-                <input id="list-search" type="text" placeholder="api/local/key 검색">
+                <input id="list-search" type="text" placeholder="api/local/key 寃??>
               </div>
               <div class="char-list" id="char-list">
-                <p class="muted" style="padding:10px;">로딩 전 목록이 없습니다.</p>
+                <p class="muted" style="padding:10px;">濡쒕뵫 ??紐⑸줉???놁뒿?덈떎.</p>
               </div>
             </aside>
 
             <div class="work-main-panel">
               <section class="group table-section">
-                <div class="table-stats" aria-label="작업 요약">
-                  <p>목록 <strong id="list-count">0</strong></p>
-                  <p>리포트 <strong id="report-count">0</strong></p>
-                  <p>선택 행 <strong id="selected-count">0</strong></p>
-                  <p>선택 Diff <strong id="selected-diff-count">0</strong></p>
-                  <p>무시 규칙 활성 <strong id="ignored-active-count">0</strong> / 숨김 <strong id="ignored-hidden-count">0</strong> / 전체 <strong id="ignored-total-count">0</strong></p>
-                  <p>현재 표시 무시 <strong id="ignored-count">0</strong></p>
-                  <p>리포트 파일 <strong id="report-file">-</strong></p>
+                <div class="table-stats" aria-label="?묒뾽 ?붿빟">
+                  <p>紐⑸줉 <strong id="list-count">0</strong></p>
+                  <p>由ы룷??<strong id="report-count">0</strong></p>
+                  <p>?좏깮 ??<strong id="selected-count">0</strong></p>
+                  <p>?좏깮 Diff <strong id="selected-diff-count">0</strong></p>
+                  <p>臾댁떆 洹쒖튃 ?쒖꽦 <strong id="ignored-active-count">0</strong> / ?④? <strong id="ignored-hidden-count">0</strong> / ?꾩껜 <strong id="ignored-total-count">0</strong></p>
+                  <p>?꾩옱 ?쒖떆 臾댁떆 <strong id="ignored-count">0</strong></p>
+                  <p>由ы룷???뚯씪 <strong id="report-file">-</strong></p>
                 </div>
                 <div class="table-topbar">
-                  <p class="toolbar-note muted small">테이블에서 행을 클릭하면 선택/상세가 고정됩니다.</p>
+                  <p class="toolbar-note muted small">?뚯씠釉붿뿉???됱쓣 ?대┃?섎㈃ ?좏깮/?곸꽭媛 怨좎젙?⑸땲??</p>
                   <div class="actions">
-                    <button id="btn-select-all" class="btn ghost small">전체 선택</button>
-                    <button id="btn-clear-select" class="btn ghost small">선택 해제</button>
-                    <button id="btn-patch-selected" class="btn danger small">선택 행 실제 반영</button>
-                    <button id="btn-ignore-selected" class="btn ghost small">선택 행 Diff 무시</button>
+                    <button id="btn-select-all" class="btn ghost small">?꾩껜 ?좏깮</button>
+                    <button id="btn-clear-select" class="btn ghost small">?좏깮 ?댁젣</button>
+                    <button id="btn-patch-selected" class="btn danger small">?좏깮 ???ㅼ젣 諛섏쁺</button>
+                    <button id="btn-ignore-selected" class="btn ghost small">?좏깮 ??Diff 臾댁떆</button>
                   </div>
                 </div>
                 <div class="table-tools">
-                  <input id="report-search" type="text" placeholder="리포트 검색">
+                  <input id="report-search" type="text" placeholder="由ы룷??寃??>
                 </div>
                 <div class="table-wrap">
                   <table>
@@ -131,7 +130,7 @@
                       </tr>
                     </thead>
                     <tbody id="report-tbody">
-                      <tr><td colspan="9" class="empty">리포트 데이터가 없습니다. 조건을 선택해 주세요.</td></tr>
+                      <tr><td colspan="9" class="empty">由ы룷???곗씠?곌? ?놁뒿?덈떎. 議곌굔???좏깮??二쇱꽭??</td></tr>
                     </tbody>
                   </table>
                 </div>
@@ -141,19 +140,19 @@
                 <header class="detail-header">
                   <div class="detail-avatar" id="detail-avatar">N/A</div>
                   <div>
-                    <h2>상세</h2>
-                    <p id="detail-title" class="muted">행을 클릭하면 상세 내용을 볼 수 있습니다.</p>
+                    <h2>?곸꽭</h2>
+                    <p id="detail-title" class="muted">?됱쓣 ?대┃?섎㈃ ?곸꽭 ?댁슜??蹂????덉뒿?덈떎.</p>
                   </div>
                 </header>
                 <div id="detail-content" class="detail-content">
-                  <p class="muted">선택한 행을 클릭하면 상세 정보가 표시됩니다.</p>
+                  <p class="muted">?좏깮???됱쓣 ?대┃?섎㈃ ?곸꽭 ?뺣낫媛 ?쒖떆?⑸땲??</p>
                 </div>
               </section>
 
               <section class="group logs">
                 <div class="log-head">
-                  <h2>실행 로그</h2>
-                  <button id="btn-clear-log" class="btn ghost small">로그 비우기</button>
+                  <h2>?ㅽ뻾 濡쒓렇</h2>
+                  <button id="btn-clear-log" class="btn ghost small">濡쒓렇 鍮꾩슦湲?/button>
                 </div>
                 <pre id="log-output"></pre>
               </section>
@@ -164,56 +163,56 @@
         <section id="panel-ignored" class="view-panel hidden">
           <section class="group">
             <div class="group-head">
-              <h2>무시 목록 운영</h2>
-              <p class="muted small">1) 빠른 필터로 좁히고 2) 선택/필터 기준 작업을 실행하세요.</p>
+              <h2>臾댁떆 紐⑸줉 ?댁쁺</h2>
+              <p class="muted small">1) 鍮좊Ⅸ ?꾪꽣濡?醫곹엳怨?2) ?좏깮/?꾪꽣 湲곗? ?묒뾽???ㅽ뻾?섏꽭??</p>
             </div>
-            <div class="ignored-overview" aria-label="무시 목록 요약">
-              <p>활성 <strong id="ignored-active-count-ignored">0</strong></p>
-              <p>숨김 <strong id="ignored-hidden-count-ignored">0</strong></p>
-              <p>전체 <strong id="ignored-total-count-ignored">0</strong></p>
-              <p>표시 <strong id="ignored-count-ignored">0</strong> / 총 <strong id="ignored-total-count-ignored-all">0</strong></p>
-              <p>정렬 <strong id="ignored-sort-label">created_desc</strong></p>
+            <div class="ignored-overview" aria-label="臾댁떆 紐⑸줉 ?붿빟">
+              <p>?쒖꽦 <strong id="ignored-active-count-ignored">0</strong></p>
+              <p>?④? <strong id="ignored-hidden-count-ignored">0</strong></p>
+              <p>?꾩껜 <strong id="ignored-total-count-ignored">0</strong></p>
+              <p>?쒖떆 <strong id="ignored-count-ignored">0</strong> / 珥?<strong id="ignored-total-count-ignored-all">0</strong></p>
+              <p>?뺣젹 <strong id="ignored-sort-label">created_desc</strong></p>
             </div>
             <div class="ignored-toolbar-grid">
               <div class="field">
-                <label>표시 범위</label>
+                <label>?쒖떆 踰붿쐞</label>
                 <select id="ignored-show" class="ignored-filter-input">
-                  <option value="active">활성만</option>
-                  <option value="hidden">숨김만</option>
-                  <option value="all">전체</option>
+                  <option value="active">?쒖꽦留?/option>
+                  <option value="hidden">?④?留?/option>
+                  <option value="all">?꾩껜</option>
                 </select>
               </div>
               <div class="field">
-                <label>검색</label>
+                <label>寃??/label>
                 <div class="field-inline">
-                  <input id="ignored-search" type="text" placeholder="무시 항목 검색">
-                  <button id="btn-clear-ignored-search" class="btn ghost">초기화</button>
+                  <input id="ignored-search" type="text" placeholder="臾댁떆 ??ぉ 寃??>
+                  <button id="btn-clear-ignored-search" class="btn ghost">珥덇린??/button>
                 </div>
               </div>
               <div class="field">
-                <label>정렬</label>
+                <label>?뺣젹</label>
                 <select id="ignored-sort" class="ignored-filter-input">
-                  <option value="created_desc">생성일 ↓</option>
-                  <option value="created_asc">생성일 ↑</option>
-                  <option value="index_desc">index ↓</option>
-                  <option value="index_asc">index ↑</option>
+                  <option value="created_desc">?앹꽦????/option>
+                  <option value="created_asc">?앹꽦????/option>
+                  <option value="index_desc">index ??/option>
+                  <option value="index_asc">index ??/option>
                 </select>
               </div>
             </div>
-            <p class="muted small ignored-action-caption">선택 또는 필터 결과에 적용할 작업</p>
+            <p class="muted small ignored-action-caption">?좏깮 ?먮뒗 ?꾪꽣 寃곌낵???곸슜???묒뾽</p>
             <div class="actions ignored-actions">
-              <button id="btn-unignore-filtered" class="btn warn">필터 결과 무시 해제</button>
-              <button id="btn-unignore-selected" class="btn ghost">선택 무시 해제</button>
-              <button id="btn-hide-selected-ignored" class="btn ghost">선택 숨김</button>
-              <button id="btn-unhide-selected-ignored" class="btn ghost">선택 숨김 해제</button>
-              <button id="btn-edit-ignored-note" class="btn ghost">선택 메모 편집</button>
+              <button id="btn-unignore-filtered" class="btn warn">?꾪꽣 寃곌낵 臾댁떆 ?댁젣</button>
+              <button id="btn-unignore-selected" class="btn ghost">?좏깮 臾댁떆 ?댁젣</button>
+              <button id="btn-hide-selected-ignored" class="btn ghost">?좏깮 ?④?</button>
+              <button id="btn-unhide-selected-ignored" class="btn ghost">?좏깮 ?④? ?댁젣</button>
+              <button id="btn-edit-ignored-note" class="btn ghost">?좏깮 硫붾え ?몄쭛</button>
             </div>
           </section>
 
           <section class="group">
             <details class="ignored-advanced">
-              <summary>상세 필터 (고급)</summary>
-              <p class="muted small">입력값은 즉시 적용됩니다. 필요한 항목만 사용하세요.</p>
+              <summary>?곸꽭 ?꾪꽣 (怨좉툒)</summary>
+              <p class="muted small">?낅젰媛믪? 利됱떆 ?곸슜?⑸땲?? ?꾩슂????ぉ留??ъ슜?섏꽭??</p>
               <div class="ignored-filter-grid">
                 <input id="ignored-filter-index" class="ignored-filter-input" type="text" placeholder="index">
                 <input id="ignored-filter-lang" class="ignored-filter-input" type="text" placeholder="lang (kr/en/jp...)">
@@ -228,18 +227,18 @@
                 <input id="ignored-filter-created-to" class="ignored-filter-input" type="date" placeholder="created to">
               </div>
               <div class="actions" style="margin-top: 10px;">
-                <button id="btn-clear-ignored-filters" class="btn ghost">상세 필터 초기화</button>
+                <button id="btn-clear-ignored-filters" class="btn ghost">?곸꽭 ?꾪꽣 珥덇린??/button>
               </div>
             </details>
           </section>
 
           <section class="group">
             <div class="group-head">
-              <h2>무시 항목</h2>
-              <p class="muted small">체크박스로 여러 항목을 선택한 뒤 위 작업 버튼을 사용하세요.</p>
+              <h2>臾댁떆 ??ぉ</h2>
+              <p class="muted small">泥댄겕諛뺤뒪濡??щ윭 ??ぉ???좏깮???????묒뾽 踰꾪듉???ъ슜?섏꽭??</p>
             </div>
             <div class="char-list ignored-list" id="ignored-list">
-              <p class="muted" style="padding:10px;">저장된 무시 항목이 없습니다.</p>
+              <p class="muted" style="padding:10px;">??λ맂 臾댁떆 ??ぉ???놁뒿?덈떎.</p>
             </div>
           </section>
         </section>
@@ -247,79 +246,79 @@
         <section id="panel-editor" class="view-panel hidden">
           <section class="editor-layout">
             <section class="group editor-side-panel">
-              <h2>파일 탐색</h2>
+              <h2>?뚯씪 ?먯깋</h2>
               <div class="field">
-                <label>루트</label>
+                <label>猷⑦듃</label>
                 <select id="data-root"></select>
               </div>
               <div class="field">
-                <label>파일 검색</label>
+                <label>?뚯씪 寃??/label>
                 <div class="field-inline">
-                  <input id="data-file-search" type="text" placeholder="예: profile.js">
-                  <button id="btn-load-data-files" class="btn ghost">조회</button>
+                  <input id="data-file-search" type="text" placeholder="?? profile.js">
+                  <button id="btn-load-data-files" class="btn ghost">議고쉶</button>
                 </div>
               </div>
               <div class="field">
-                <label>파일 목록</label>
+                <label>?뚯씪 紐⑸줉</label>
                 <div class="data-file-list" id="data-file-list">
-                  <p class="muted" style="padding:10px;">먼저 조회하세요.</p>
+                  <p class="muted" style="padding:10px;">癒쇱? 議고쉶?섏꽭??</p>
                 </div>
               </div>
             </section>
 
             <div class="editor-main-panel">
               <section class="group">
-                <h2>데이터 편집기</h2>
+                <h2>?곗씠???몄쭛湲?/h2>
                 <div class="field">
-                  <label>현재 파일</label>
+                  <label>?꾩옱 ?뚯씪</label>
                   <div class="field-inline">
                     <input id="data-file-path" type="text" readonly>
-                    <button id="btn-load-data-file" class="btn ghost">로드</button>
-                    <button id="btn-reload-data-file" class="btn ghost">새로고침</button>
+                    <button id="btn-load-data-file" class="btn ghost">濡쒕뱶</button>
+                    <button id="btn-reload-data-file" class="btn ghost">?덈줈怨좎묠</button>
                   </div>
                 </div>
                 <div class="field">
-                  <label>편집 방식</label>
+                  <label>?몄쭛 諛⑹떇</label>
                   <div class="data-editor-mode-switch">
-                    <button id="btn-data-mode-form" class="btn ghost small active" type="button" data-mode="form">GUI 편집</button>
-                    <button id="btn-data-mode-raw" class="btn ghost small" type="button" data-mode="raw">원문 편집</button>
+                    <button id="btn-data-mode-form" class="btn ghost small active" type="button" data-mode="form">GUI ?몄쭛</button>
+                    <button id="btn-data-mode-raw" class="btn ghost small" type="button" data-mode="raw">?먮Ц ?몄쭛</button>
                   </div>
-                  <div id="data-editor-meta" class="muted small">파일을 선택하면 편집 가능합니다.</div>
-                  <p id="data-editor-status" class="muted small">선택된 항목: 없음</p>
+                  <div id="data-editor-meta" class="muted small">?뚯씪???좏깮?섎㈃ ?몄쭛 媛?ν빀?덈떎.</div>
+                  <p id="data-editor-status" class="muted small">?좏깮????ぉ: ?놁쓬</p>
                   <div id="data-editor-form-wrap" class="data-editor-form-wrap hidden">
                     <div id="data-editor-entry-info" class="muted small"></div>
                     <select id="data-editor-entry-select" class="hidden"></select>
                     <div id="data-editor-form" class="data-editor-form"></div>
                   </div>
                   <div id="data-editor-raw-wrap">
-                    <textarea id="data-editor" spellcheck="false" placeholder="파일 내용을 불러오면 수정 가능합니다."></textarea>
+                    <textarea id="data-editor" spellcheck="false" placeholder="?뚯씪 ?댁슜??遺덈윭?ㅻ㈃ ?섏젙 媛?ν빀?덈떎."></textarea>
                   </div>
-                  <button id="btn-save-data-file" class="btn primary">저장</button>
+                  <button id="btn-save-data-file" class="btn primary">???/button>
                 </div>
               </section>
 
               <section class="group" id="add-character-group">
-                <h2>캐릭터 추가</h2>
+                <h2>罹먮┃??異붽?</h2>
                 <div class="add-character-grid">
                   <div class="field">
-                    <label>API 이름</label>
-                    <input id="new-api" type="text" placeholder="예: aigis">
+                    <label>API ?대쫫</label>
+                    <input id="new-api" type="text" placeholder="?? aigis">
                   </div>
                   <div class="field">
-                    <label>LOCAL 이름</label>
-                    <input id="new-local" type="text" placeholder="예: AIGIS">
+                    <label>LOCAL ?대쫫</label>
+                    <input id="new-local" type="text" placeholder="?? AIGIS">
                   </div>
                   <div class="field">
                     <label>Character Key</label>
-                    <input id="new-key" type="text" placeholder="예: 에이기스">
+                    <input id="new-key" type="text" placeholder="?? ?먯씠湲곗뒪">
                   </div>
                 </div>
-                <button id="btn-add-character" class="btn primary">신규 캐릭터 생성</button>
-                <p class="muted small">codename.json에 { api, local, key }가 있어야 생성 가능합니다.</p>
+                <button id="btn-add-character" class="btn primary">?좉퇋 罹먮┃???앹꽦</button>
+                <p class="muted small">codename.json??{ api, local, key }媛 ?덉뼱???앹꽦 媛?ν빀?덈떎.</p>
               </section>
 
               <section class="group hidden" id="add-revelation-group">
-                <h2>계시 추가</h2>
+                <h2>怨꾩떆 異붽?</h2>
                 <div class="add-revelation-grid add-revelation-grid-main">
                   <div class="field">
                     <label>Kind</label>
@@ -330,40 +329,40 @@
                   </div>
                   <div class="field">
                     <label>KR</label>
-                    <input id="new-revelation-kr" type="text" placeholder="예: 신규 계시">
+                    <input id="new-revelation-kr" type="text" placeholder="?? ?좉퇋 怨꾩떆">
                   </div>
                   <div class="field">
                     <label>EN</label>
-                    <input id="new-revelation-en" type="text" placeholder="예: New Revelation">
+                    <input id="new-revelation-en" type="text" placeholder="?? New Revelation">
                   </div>
                   <div class="field">
                     <label>JP</label>
-                    <input id="new-revelation-jp" type="text" placeholder="예: 日本語名">
+                    <input id="new-revelation-jp" type="text" placeholder="?? ?ζ쑍沃욃릫">
                   </div>
                   <div class="field">
                     <label>CN</label>
-                    <input id="new-revelation-cn" type="text" placeholder="例: 简体中文名">
+                    <input id="new-revelation-cn" type="text" placeholder="堊? 嶸鵝볞릎?뉐릫">
                   </div>
                   <div class="field">
                     <label>Type Tags (CSV)</label>
-                    <input id="new-revelation-types" type="text" placeholder="버프,화염">
+                    <input id="new-revelation-types" type="text" placeholder="踰꾪봽,?붿뿼">
                   </div>
                   <label class="field checkbox-field">
-                    <span>EN/JP 미출시 태그</span>
+                    <span>EN/JP 誘몄텧???쒓렇</span>
                     <input id="new-revelation-unreleased" type="checkbox">
                   </label>
                 </div>
 
                 <details class="revelation-subtext-wrap">
-                  <summary>sub 계시 set2/set4 텍스트 (선택)</summary>
+                  <summary>sub 怨꾩떆 set2/set4 ?띿뒪??(?좏깮)</summary>
                   <div class="add-revelation-grid add-revelation-grid-sub">
                     <div class="field">
                       <label>KR set2</label>
-                      <textarea id="new-revelation-set2-kr" rows="2" placeholder="KR 2세트 효과"></textarea>
+                      <textarea id="new-revelation-set2-kr" rows="2" placeholder="KR 2?명듃 ?④낵"></textarea>
                     </div>
                     <div class="field">
                       <label>KR set4</label>
-                      <textarea id="new-revelation-set4-kr" rows="2" placeholder="KR 4세트 효과"></textarea>
+                      <textarea id="new-revelation-set4-kr" rows="2" placeholder="KR 4?명듃 ?④낵"></textarea>
                     </div>
                     <div class="field">
                       <label>EN set2</label>
@@ -375,25 +374,259 @@
                     </div>
                     <div class="field">
                       <label>JP set2</label>
-                      <textarea id="new-revelation-set2-jp" rows="2" placeholder="JP 2セット効果"></textarea>
+                      <textarea id="new-revelation-set2-jp" rows="2" placeholder="JP 2?삠긿?덂듅??></textarea>
                     </div>
                     <div class="field">
                       <label>JP set4</label>
-                      <textarea id="new-revelation-set4-jp" rows="2" placeholder="JP 4セット効果"></textarea>
+                      <textarea id="new-revelation-set4-jp" rows="2" placeholder="JP 4?삠긿?덂듅??></textarea>
                     </div>
                     <div class="field">
                       <label>CN set2</label>
-                      <textarea id="new-revelation-set2-cn" rows="2" placeholder="CN 2件套效果"></textarea>
+                      <textarea id="new-revelation-set2-cn" rows="2" placeholder="CN 2餓뜹쪞?덃옖"></textarea>
                     </div>
                     <div class="field">
                       <label>CN set4</label>
-                      <textarea id="new-revelation-set4-cn" rows="2" placeholder="CN 4件套效果"></textarea>
+                      <textarea id="new-revelation-set4-cn" rows="2" placeholder="CN 4餓뜹쪞?덃옖"></textarea>
                     </div>
                   </div>
                 </details>
 
-                <button id="btn-add-revelation" class="btn primary">신규 계시 생성</button>
-                <p class="muted small">EN/JP 미출시 태그는 동시 반영됩니다. CN은 KR과 같은 출시 기준으로 미출시 태그를 사용하지 않습니다.</p>
+                <button id="btn-add-revelation" class="btn primary">?좉퇋 怨꾩떆 ?앹꽦</button>
+                <p class="muted small">EN/JP 誘몄텧???쒓렇???숈떆 諛섏쁺?⑸땲?? CN? KR怨?媛숈? 異쒖떆 湲곗??쇰줈 誘몄텧???쒓렇瑜??ъ슜?섏? ?딆뒿?덈떎.</p>
+              </section>
+            </div>
+          </section>
+
+        <section id="panel-revelation-admin" class="view-panel hidden">
+          <section class="revelation-admin-layout">
+            <aside class="group revelation-admin-list-panel">
+              <div class="group-head">
+                <h2>Revelation Cards</h2>
+                <p class="muted small">Card list + quick filters</p>
+              </div>
+              <div class="field">
+                <label>Search</label>
+                <input id="rev-admin-search" type="text" placeholder="KR/EN/JP/CN name, KR key">
+              </div>
+              <div class="revelation-admin-filter-row">
+                <div class="field">
+                  <label>Kind</label>
+                  <select id="rev-admin-kind-filter">
+                    <option value="all">all</option>
+                    <option value="main">main</option>
+                    <option value="sub">sub</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label>Unreleased</label>
+                  <select id="rev-admin-unreleased-filter">
+                    <option value="all">all</option>
+                    <option value="yes">yes</option>
+                    <option value="no">no</option>
+                  </select>
+                </div>
+              </div>
+              <div class="actions revelation-admin-list-actions">
+                <button id="btn-rev-admin-refresh" class="btn ghost">Refresh</button>
+                <button id="btn-rev-admin-new-toggle" class="btn primary">New Card</button>
+              </div>
+              <div class="revelation-admin-card-list" id="rev-admin-card-list">
+                <p class="muted" style="padding:10px;">Select revelation domain to load cards.</p>
+              </div>
+            </aside>
+
+            <div class="revelation-admin-main-panel">
+              <section class="group" id="rev-admin-empty">
+                <h2>Revelation Admin</h2>
+                <p class="muted">Pick a card from the list to edit details.</p>
+              </section>
+
+              <section class="group hidden" id="rev-admin-detail">
+                <div class="group-head">
+                  <h2>Card Detail</h2>
+                  <p id="rev-admin-dirty-state" class="muted small">saved</p>
+                </div>
+
+                <div class="revelation-admin-meta">
+                  <span id="rev-admin-card-id">-</span>
+                  <span id="rev-admin-card-kind">-</span>
+                </div>
+
+                <div class="revelation-admin-grid names-grid">
+                  <div class="field">
+                    <label>KR (read-only)</label>
+                    <div class="field-inline">
+                      <input id="rev-admin-name-kr" type="text" readonly>
+                      <button id="btn-rev-admin-rename-kr" class="btn ghost" type="button">Rename KR</button>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label>EN</label>
+                    <input id="rev-admin-name-en" type="text">
+                  </div>
+                  <div class="field">
+                    <label>JP</label>
+                    <input id="rev-admin-name-jp" type="text">
+                  </div>
+                  <div class="field">
+                    <label>CN</label>
+                    <input id="rev-admin-name-cn" type="text">
+                  </div>
+                </div>
+
+                <div class="revelation-admin-grid common-grid">
+                  <div class="field">
+                    <label>Type Tags (CSV)</label>
+                    <input id="rev-admin-types" type="text" placeholder="버프,화염">
+                  </div>
+                  <label class="field checkbox-field">
+                    <span>EN/JP unreleased</span>
+                    <input id="rev-admin-unreleased" type="checkbox">
+                  </label>
+                </div>
+
+                <section id="rev-admin-main-fields" class="revelation-admin-branch hidden">
+                  <h3>Main Relations</h3>
+                  <div id="rev-admin-main-sub-options" class="revelation-admin-sub-options"></div>
+                  <h3>Main Effects By Sub</h3>
+                  <div id="rev-admin-main-effects" class="revelation-admin-main-effects"></div>
+                </section>
+
+                <section id="rev-admin-sub-fields" class="revelation-admin-branch hidden">
+                  <h3>Related Main (read-only)</h3>
+                  <div id="rev-admin-sub-main-refs" class="revelation-admin-chip-list"></div>
+                  <h3>Sub Effects</h3>
+                  <div class="revelation-admin-grid sub-effects-grid">
+                    <div class="field">
+                      <label>set2 KR</label>
+                      <textarea id="rev-admin-sub-set2-kr" rows="2"></textarea>
+                    </div>
+                    <div class="field">
+                      <label>set4 KR</label>
+                      <textarea id="rev-admin-sub-set4-kr" rows="2"></textarea>
+                    </div>
+                    <div class="field">
+                      <label>set2 EN</label>
+                      <textarea id="rev-admin-sub-set2-en" rows="2"></textarea>
+                    </div>
+                    <div class="field">
+                      <label>set4 EN</label>
+                      <textarea id="rev-admin-sub-set4-en" rows="2"></textarea>
+                    </div>
+                    <div class="field">
+                      <label>set2 JP</label>
+                      <textarea id="rev-admin-sub-set2-jp" rows="2"></textarea>
+                    </div>
+                    <div class="field">
+                      <label>set4 JP</label>
+                      <textarea id="rev-admin-sub-set4-jp" rows="2"></textarea>
+                    </div>
+                    <div class="field">
+                      <label>set2 CN</label>
+                      <textarea id="rev-admin-sub-set2-cn" rows="2"></textarea>
+                    </div>
+                    <div class="field">
+                      <label>set4 CN</label>
+                      <textarea id="rev-admin-sub-set4-cn" rows="2"></textarea>
+                    </div>
+                  </div>
+                </section>
+
+                <div class="actions">
+                  <button id="btn-rev-admin-save" class="btn primary">Save Card</button>
+                  <button id="btn-rev-admin-reset" class="btn ghost">Reset Draft</button>
+                </div>
+              </section>
+
+              <section class="group hidden" id="rev-admin-create">
+                <div class="group-head">
+                  <h2>Create Card</h2>
+                  <p class="muted small">Create main/sub card with localized names</p>
+                </div>
+
+                <div class="revelation-admin-grid create-top-grid">
+                  <div class="field">
+                    <label>Kind</label>
+                    <select id="rev-admin-create-kind">
+                      <option value="sub">sub</option>
+                      <option value="main">main</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <label>KR</label>
+                    <input id="rev-admin-create-name-kr" type="text">
+                  </div>
+                  <div class="field">
+                    <label>EN</label>
+                    <input id="rev-admin-create-name-en" type="text">
+                  </div>
+                  <div class="field">
+                    <label>JP</label>
+                    <input id="rev-admin-create-name-jp" type="text">
+                  </div>
+                  <div class="field">
+                    <label>CN</label>
+                    <input id="rev-admin-create-name-cn" type="text">
+                  </div>
+                  <div class="field">
+                    <label>Type Tags (CSV)</label>
+                    <input id="rev-admin-create-types" type="text" placeholder="버프,화염">
+                  </div>
+                  <label class="field checkbox-field">
+                    <span>EN/JP unreleased</span>
+                    <input id="rev-admin-create-unreleased" type="checkbox">
+                  </label>
+                </div>
+
+                <section id="rev-admin-create-main-fields" class="revelation-admin-branch hidden">
+                  <h3>Initial Sub Relations</h3>
+                  <div id="rev-admin-create-main-sub-options" class="revelation-admin-sub-options"></div>
+                  <h3>Main Effects By Sub</h3>
+                  <div id="rev-admin-create-main-effects" class="revelation-admin-main-effects"></div>
+                </section>
+
+                <section id="rev-admin-create-sub-fields" class="revelation-admin-branch">
+                  <h3>Sub Effects</h3>
+                  <div class="revelation-admin-grid sub-effects-grid">
+                    <div class="field">
+                      <label>set2 KR</label>
+                      <textarea id="rev-admin-create-sub-set2-kr" rows="2"></textarea>
+                    </div>
+                    <div class="field">
+                      <label>set4 KR</label>
+                      <textarea id="rev-admin-create-sub-set4-kr" rows="2"></textarea>
+                    </div>
+                    <div class="field">
+                      <label>set2 EN</label>
+                      <textarea id="rev-admin-create-sub-set2-en" rows="2"></textarea>
+                    </div>
+                    <div class="field">
+                      <label>set4 EN</label>
+                      <textarea id="rev-admin-create-sub-set4-en" rows="2"></textarea>
+                    </div>
+                    <div class="field">
+                      <label>set2 JP</label>
+                      <textarea id="rev-admin-create-sub-set2-jp" rows="2"></textarea>
+                    </div>
+                    <div class="field">
+                      <label>set4 JP</label>
+                      <textarea id="rev-admin-create-sub-set4-jp" rows="2"></textarea>
+                    </div>
+                    <div class="field">
+                      <label>set2 CN</label>
+                      <textarea id="rev-admin-create-sub-set2-cn" rows="2"></textarea>
+                    </div>
+                    <div class="field">
+                      <label>set4 CN</label>
+                      <textarea id="rev-admin-create-sub-set4-cn" rows="2"></textarea>
+                    </div>
+                  </div>
+                </section>
+
+                <div class="actions">
+                  <button id="btn-rev-admin-create-submit" class="btn primary">Create Card</button>
+                  <button id="btn-rev-admin-create-cancel" class="btn ghost">Cancel</button>
+                </div>
               </section>
             </div>
           </section>
@@ -404,3 +637,7 @@
   <script src="./patch-console.js?v=0.12.4"></script>
 </body>
 </html>
+
+
+
+

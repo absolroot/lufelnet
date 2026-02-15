@@ -7,6 +7,10 @@ window.I18N_PAGE_PULL_CALC_EN = {
     pageTitle: 'Pull Planner',
     navHome: 'Home',
     navCurrent: 'Pull Planner',
+    seoTitle: 'Pull Planner - Persona 5 The Phantom X | lufel.net',
+    seoDescription: 'Pull planning simulator for Persona 5 The Phantom X. Calculate required resources and plan your pulls for upcoming character releases.',
+    seoKeywords: 'P5X, Persona 5X, Pull Planner, Gacha Calculator, Pull Simulator, Pull Calculator, Gacha Planning',
+    seoOgLocale: 'en_US',
 
     // Section titles
     assetsTitle: 'Current Assets',

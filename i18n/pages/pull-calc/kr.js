@@ -7,6 +7,10 @@ window.I18N_PAGE_PULL_CALC_KR = {
     pageTitle: '가챠 플래너',
     navHome: '홈',
     navCurrent: '가챠 플래너',
+    seoTitle: '가챠 플래너 - 페르소나5 더 팬텀 X 루페르넷',
+    seoDescription: '페르소나5 더 팬텀 X 가챠 계획 시뮬레이터. 향후 캐릭터 출시에 맞춰 필요한 재화를 계산하고 계약 계획을 수립할 수 있습니다.',
+    seoKeywords: 'P5X, 페르소나5X, 가챠 플래너, 가챠 계산기, 가챠 시뮬레이터, P5X 계산기, 계약 계획',
+    seoOgLocale: 'ko_KR',
 
     // 섹션 제목
     assetsTitle: '보유 자산',

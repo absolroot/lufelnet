@@ -155,7 +155,9 @@
         const primaryLang = useKrFull ? 'kr' : lang;
         const primaryUrl = (primaryLang === 'kr')
             ? `${BASE_URL}/data/character_info.js?v=${APP_VERSION}`
-            : `${BASE_URL}/data/${primaryLang}/characters/characters.js?v=${APP_VERSION}`;
+            : ((primaryLang === 'en' || primaryLang === 'jp')
+                ? `${BASE_URL}/data/character_info_glb.js?v=${APP_VERSION}`
+                : `${BASE_URL}/data/${primaryLang}/characters/characters.js?v=${APP_VERSION}`);
         const krUrl = `${BASE_URL}/data/character_info.js?v=${APP_VERSION}`;
 
         async function evalCharacters(text) {

@@ -120,7 +120,9 @@ async function setupTranslations() {
         if (!window.languageData[lang].characterList) {
           const chUrl = (lang === 'kr')
             ? `${base}/data/character_info.js${ver}`
-            : `${base}/data/${lang}/characters/characters.js${ver}`;
+            : ((lang === 'en' || lang === 'jp')
+              ? `${base}/data/character_info_glb.js${ver}`
+              : `${base}/data/${lang}/characters/characters.js${ver}`);
           const chRes = await fetch(chUrl);
           if (!chRes.ok) throw new Error(`Failed to load characters for ${lang}`);
           let chTxt = await chRes.text();

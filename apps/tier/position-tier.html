@@ -620,7 +620,10 @@ description: P5X 랭커의 티어 리스트를 확인하세요.
             // 2. 언어별 데이터 로딩 (한국어가 아닌 경우)
             if (currentLang !== 'kr') {
                 try {
-                    const lang = await fetchCharactersData(`/data/${currentLang}/characters/characters.js?v=${APP_VERSION}`);
+                    const langDataPath = (currentLang === 'en' || currentLang === 'jp')
+                        ? '/data/character_info_glb.js'
+                        : `/data/${currentLang}/characters/characters.js`;
+                    const lang = await fetchCharactersData(`${langDataPath}?v=${APP_VERSION}`);
                     if (!lang) throw new Error('lang load failed');
                     const langCharacterData = lang.characterData || {};
                     const langCharacterList = lang.characterList || { mainParty: [], supportParty: [] };

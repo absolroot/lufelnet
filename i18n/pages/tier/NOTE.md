@@ -13,7 +13,10 @@
 ## 별도 관리 항목
 
 ### 1. 캐릭터 데이터
-**파일**: `/data/{lang}/characters/characters.js`
+**파일**:
+- KR: `/data/character_info.js`
+- EN/JP: `/data/character_info_glb.js`
+- 기타 언어(예: CN): `/data/{lang}/characters/characters.js` (fallback)
 
 - 캐릭터 이름, 속성, 직업 등 콘텐츠 데이터
-- i18n 페이지 번들이 아닌 언어별 데이터 파일로 유지
+- i18n 페이지 번들이 아닌 데이터 파일로 유지

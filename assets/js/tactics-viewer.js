@@ -85,7 +85,10 @@ async function ensureCharacterDataLoaded() {
     }
 
     // 2) 언어 데이터 로드
-    const lg = await fetchCharactersData(`/data/${lang}/characters/characters.js?v=${APP_VERSION}`);
+    const langDataPath = (lang === 'en' || lang === 'jp')
+        ? '/data/character_info_glb.js'
+        : `/data/${lang}/characters/characters.js`;
+    const lg = await fetchCharactersData(`${langDataPath}?v=${APP_VERSION}`);
 
     let langCharacterList = { mainParty: [], supportParty: [] };
     let langCharacterData = {};

@@ -2588,7 +2588,10 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         try {
             // console.log(`Loading ${currentLang} character list...`);
             const base = (typeof BASE_URL !== 'undefined') ? BASE_URL : '';
-            const langUrl = `${base}/data/${currentLang}/characters/characters.js?v=${Date.now()}`;
+            const langDataPath = (currentLang === 'en' || currentLang === 'jp')
+                ? '/data/character_info_glb.js'
+                : `/data/${currentLang}/characters/characters.js`;
+            const langUrl = `${base}${langDataPath}?v=${Date.now()}`;
             // console.log('Character list URL:', langUrl);
 
             const langResponse = await fetch(langUrl);

@@ -1365,6 +1365,244 @@ td.empty {
   font-weight: 700;
 }
 
+.revelation-admin-layout {
+  display: grid;
+  grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+}
+
+.revelation-admin-list-panel {
+  position: sticky;
+  top: 118px;
+}
+
+.revelation-admin-main-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.revelation-admin-filter-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.revelation-admin-list-actions {
+  margin-bottom: 8px;
+}
+
+.revelation-admin-card-list {
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: #fff;
+  overflow: auto;
+  max-height: 640px;
+}
+
+.revelation-admin-card-item {
+  border-bottom: 1px solid var(--border);
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  gap: 8px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.revelation-admin-card-item:last-child {
+  border-bottom: 0;
+}
+
+.revelation-admin-card-item:hover {
+  background: #f8fafc;
+}
+
+.revelation-admin-card-item.active {
+  background: #dbeafe;
+}
+
+.revelation-admin-card-main {
+  min-width: 0;
+}
+
+.revelation-admin-card-main strong {
+  display: block;
+  font-size: 0.82rem;
+  color: #0f172a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.revelation-admin-card-subline {
+  margin: 0;
+  font-size: 0.74rem;
+  color: var(--muted-foreground);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.revelation-admin-badges {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.revelation-admin-badge {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 2px 7px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #334155;
+  background: #f8fafc;
+}
+
+.revelation-admin-badge.main {
+  color: #1d4ed8;
+  border-color: #93c5fd;
+  background: #eff6ff;
+}
+
+.revelation-admin-badge.sub {
+  color: #047857;
+  border-color: #6ee7b7;
+  background: #ecfdf5;
+}
+
+.revelation-admin-badge.unreleased {
+  color: #991b1b;
+  border-color: #fecaca;
+  background: #fef2f2;
+}
+
+.revelation-admin-badge.dirty {
+  color: #92400e;
+  border-color: #fed7aa;
+  background: #fff7ed;
+}
+
+.revelation-admin-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+
+.revelation-admin-meta span {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 3px 8px;
+  font-size: 0.72rem;
+  color: #334155;
+  background: #f8fafc;
+}
+
+.revelation-admin-grid {
+  display: grid;
+  gap: 8px;
+}
+
+.names-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.common-grid {
+  grid-template-columns: minmax(0, 1fr) 220px;
+}
+
+.create-top-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.sub-effects-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.revelation-admin-branch {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 8px;
+  background: #fff;
+}
+
+.revelation-admin-branch h3 {
+  margin: 0 0 8px;
+  font-size: 0.84rem;
+  color: #334155;
+}
+
+.revelation-admin-sub-options {
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 8px;
+  max-height: 220px;
+  overflow: auto;
+  display: grid;
+  gap: 6px;
+}
+
+.revelation-admin-sub-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: #334155;
+}
+
+.revelation-admin-main-effects {
+  display: grid;
+  gap: 8px;
+}
+
+.revelation-admin-main-effect-row {
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 8px;
+  background: #f8fafc;
+}
+
+.revelation-admin-main-effect-row h4 {
+  margin: 0 0 8px;
+  font-size: 0.76rem;
+  color: #334155;
+}
+
+.revelation-admin-main-effect-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.revelation-admin-chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.revelation-admin-chip {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 3px 8px;
+  font-size: 0.72rem;
+  color: #334155;
+  background: #f8fafc;
+}
+
 .muted {
   color: var(--muted-foreground);
 }
@@ -1425,6 +1663,18 @@ td.empty {
   .editor-side-panel {
     position: static;
   }
+
+  .revelation-admin-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .revelation-admin-list-panel {
+    position: static;
+  }
+
+  .create-top-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 1060px) {
@@ -1472,6 +1722,15 @@ td.empty {
   .add-revelation-grid-sub {
     grid-template-columns: 1fr;
   }
+
+  .names-grid,
+  .common-grid,
+  .sub-effects-grid,
+  .revelation-admin-main-effect-grid,
+  .create-top-grid,
+  .revelation-admin-filter-row {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 760px) {
@@ -1490,7 +1749,7 @@ td.empty {
   .view-tabs {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .view-tab {

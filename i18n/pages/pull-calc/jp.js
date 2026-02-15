@@ -7,6 +7,10 @@ window.I18N_PAGE_PULL_CALC_JP = {
     pageTitle: 'ガチャプランナー',
     navHome: 'ホーム',
     navCurrent: 'ガチャプランナー',
+    seoTitle: 'ガチャプランナー - ペルソナ5 ザ・ファントム X | lufel.net',
+    seoDescription: 'ペルソナ5 ザ・ファントム Xのガチャ計画シミュレーター。今後のキャラクターリリースに合わせて必要な資源を計算し、ガチャ計画を立てることができます。',
+    seoKeywords: 'P5X, ペルソナ5X, ガチャプランナー, ガチャ計算機, ガチャシミュレーター, P5X計算機, ガチャ計画',
+    seoOgLocale: 'ja_JP',
 
     // セクションタイトル
     assetsTitle: '保有資産',

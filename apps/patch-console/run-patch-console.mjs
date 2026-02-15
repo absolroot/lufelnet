@@ -7,6 +7,13 @@ import process from 'process';
 import crypto from 'crypto';
 import { fileURLToPath } from 'url';
 import { spawn } from 'child_process';
+import {
+  loadRevelationAdminBootstrap,
+  loadRevelationAdminCard,
+  saveRevelationAdminCard,
+  createRevelationAdminCard,
+  renameRevelationAdminKr
+} from './lib/revelation-admin-store.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -829,6 +836,18 @@ function sendText(res, statusCode, payload) {
     'Cache-Control': 'no-store'
   });
   res.end(payload);
+}
+
+function sendRevelationAdminError(res, error) {
+  const status = Number(error?.status);
+  const statusCode = Number.isInteger(status) && status > 0 ? status : 500;
+  const payload = {
+    ok: false,
+    error: String(error?.message || 'revelation_admin_failed')
+  };
+  if (error?.code) payload.code = String(error.code);
+  if (error?.details != null) payload.details = error.details;
+  sendJson(res, statusCode, payload);
 }
 
 function ensureDir(dirPath) {
@@ -2037,6 +2056,110 @@ async function handleCreateEntry(res, payload) {
   }
 }
 
+function resolveRevelationAdminIcon(card) {
+  const names = card && typeof card === 'object' ? card.names || {} : {};
+  return resolveRowIcon(
+    {
+      key: String(names.kr || ''),
+      local: String(card?.kind || ''),
+      api: String(names.en || names.jp || names.cn || names.kr || '')
+    },
+    'revelation'
+  );
+}
+
+function withRevelationAdminCardIcon(card) {
+  if (!card || typeof card !== 'object') return card;
+  const out = { ...card };
+  if (!out.icon) out.icon = resolveRevelationAdminIcon(out);
+  return out;
+}
+
+function withRevelationAdminCardsIcon(cards) {
+  if (!Array.isArray(cards)) return [];
+  return cards.map((card) => withRevelationAdminCardIcon(card));
+}
+
+async function handleRevelationAdminBootstrap(res) {
+  try {
+    const result = loadRevelationAdminBootstrap();
+    sendJson(res, 200, {
+      ok: true,
+      revision: result.revision,
+      cards: withRevelationAdminCardsIcon(result.cards),
+      options: result.options
+    });
+  } catch (error) {
+    sendRevelationAdminError(res, error);
+  }
+}
+
+async function handleRevelationAdminCard(res, urlObj) {
+  const id = String(urlObj.searchParams.get('id') || '').trim();
+  if (!id) {
+    sendJson(res, 400, { ok: false, error: 'id is required' });
+    return;
+  }
+  try {
+    const result = loadRevelationAdminCard(id);
+    sendJson(res, 200, {
+      ok: true,
+      revision: result.revision,
+      card: withRevelationAdminCardIcon(result.card),
+      options: result.options
+    });
+  } catch (error) {
+    sendRevelationAdminError(res, error);
+  }
+}
+
+async function handleRevelationAdminSaveCard(res, payload) {
+  try {
+    const result = saveRevelationAdminCard(payload || {});
+    sendJson(res, 200, {
+      ok: true,
+      revision: result.revision,
+      card: withRevelationAdminCardIcon(result.card),
+      cards: withRevelationAdminCardsIcon(result.cards),
+      options: result.options
+    });
+  } catch (error) {
+    sendRevelationAdminError(res, error);
+  }
+}
+
+async function handleRevelationAdminCreateCard(res, payload) {
+  try {
+    const result = createRevelationAdminCard(payload || {});
+    sendJson(res, 200, {
+      ok: true,
+      revision: result.revision,
+      id: result.id,
+      card: withRevelationAdminCardIcon(result.card),
+      cards: withRevelationAdminCardsIcon(result.cards),
+      options: result.options
+    });
+  } catch (error) {
+    sendRevelationAdminError(res, error);
+  }
+}
+
+async function handleRevelationAdminRenameKr(res, payload) {
+  try {
+    const result = renameRevelationAdminKr(payload || {});
+    sendJson(res, 200, {
+      ok: true,
+      revision: result.revision,
+      newId: result.newId,
+      card: withRevelationAdminCardIcon(result.card),
+      cards: withRevelationAdminCardsIcon(result.cards),
+      options: result.options
+    });
+  } catch (error) {
+    sendRevelationAdminError(res, error);
+  }
+}
+
 function serveFileFromBase(res, baseDir, requestPath, { defaultIndex = null } = {}) {
   let target = requestPath;
   if (defaultIndex && requestPath === '/') {
@@ -2066,7 +2189,12 @@ async function requestHandler(req, res) {
   const urlObj = new URL(req.url || '/', `http://${host}`);
   let pathname = urlObj.pathname;
   const normalizedPathname = String(pathname || '').replace(/\/+$/u, '') || '/';
-  if (normalizedPathname === '/work' || normalizedPathname === '/ignored' || normalizedPathname === '/editor') {
+  if (
+    normalizedPathname === '/work'
+    || normalizedPathname === '/ignored'
+    || normalizedPathname === '/editor'
+    || normalizedPathname === '/revelation-admin'
+  ) {
     pathname = '/';
   }
 
@@ -2088,6 +2216,34 @@ async function requestHandler(req, res) {
 
   if (pathname === '/api/health' && req.method === 'GET') {
     sendJson(res, 200, { ok: true });
+    return;
+  }
+
+  if (pathname === '/api/revelation-admin/bootstrap' && req.method === 'GET') {
+    await handleRevelationAdminBootstrap(res);
+    return;
+  }
+
+  if (pathname === '/api/revelation-admin/card' && req.method === 'GET') {
+    await handleRevelationAdminCard(res, urlObj);
+    return;
+  }
+
+  if (pathname === '/api/revelation-admin/save-card' && req.method === 'POST') {
+    const body = await readBody(req);
+    await handleRevelationAdminSaveCard(res, body);
+    return;
+  }
+
+  if (pathname === '/api/revelation-admin/create-card' && req.method === 'POST') {
+    const body = await readBody(req);
+    await handleRevelationAdminCreateCard(res, body);
+    return;
+  }
+
+  if (pathname === '/api/revelation-admin/rename-kr' && req.method === 'POST') {
+    const body = await readBody(req);
+    await handleRevelationAdminRenameKr(res, body);
     return;
   }
 

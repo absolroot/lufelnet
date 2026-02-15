@@ -496,7 +496,10 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
             __ensureCharacterDataLoadedPromise = null;
             return true;
           }
-          const lg = await fetchCharactersData(`/data/${lang}/characters/characters.js?v=${APP_VERSION}`);
+          const langDataPath = (lang === 'en' || lang === 'jp')
+            ? '/data/character_info_glb.js'
+            : `/data/${lang}/characters/characters.js`;
+          const lg = await fetchCharactersData(`${langDataPath}?v=${APP_VERSION}`);
           if (!lg) {
             window.characterData = kr.characterData || {};
             window.characterList = kr.characterList || { mainParty: [], supportParty: [] };

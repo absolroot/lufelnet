@@ -1074,10 +1074,16 @@ async function main() {
 
   const extTarget = loadExternal(lang, local);
 
-  // find character key via codename in target language data (fallback to KR global data)
+  // find character key via codename in target language data
+  // - kr: data/character_info.js
+  // - en/jp: data/character_info_glb.js
+  // - others: data/{lang}/characters/characters.js
+  // fallback: KR global data
   const charsPath = (lang === 'kr')
     ? path.join('data', 'character_info.js')
-    : path.join('data', lang, 'characters', 'characters.js');
+    : ((lang === 'en' || lang === 'jp')
+      ? path.join('data', 'character_info_glb.js')
+      : path.join('data', lang, 'characters', 'characters.js'));
   let key = null;
   if (fs.existsSync(charsPath)) {
     key = findCharacterKeyByCodename(charsPath, local);
@@ -1127,4 +1133,3 @@ async function main() {
 }
 
 main();
-

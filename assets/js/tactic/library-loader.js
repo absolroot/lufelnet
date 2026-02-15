@@ -111,7 +111,6 @@
 
     // 다국어 토글 버튼 라벨 갱신
     setTimeout(() => {
-      try { if (typeof translateUI === 'function') translateUI(); } catch(_) {}
       try {
         const t = (typeof window.getTacticToggleLabels === 'function')
           ? window.getTacticToggleLabels()

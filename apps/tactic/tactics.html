@@ -15,18 +15,18 @@ description: 페르소나5 더 팬텀 X 택틱들을 확인하세요.
 <div class="main-wrapper">
     <!-- 네비게이션 경로 -->
     <div class="navigation-path">
-        <script>document.write(`<a id="nav-home" href="../../?v=${APP_VERSION}">홈</a>`);</script>
+        <script>document.write(`<a id="nav-home" data-i18n="nav_home" href="../../?v=${APP_VERSION}">-</a>`);</script>
         <span class="separator">/</span>
-        <span class="current-page" id="nav-current">택틱 / 택틱 도서관</span>
+        <span class="current-page" id="nav-current" data-i18n="nav_current">-</span>
     </div>
     <div class="header-container">
-        <h1 id="page-title">택틱 도서관</h1>
+        <h1 id="page-title" data-i18n="page_title">-</h1>
     </div>
     <!-- 로그인 사용자 정보 바 -->
     <div id="userInfoBar" class="user-info-bar" style="display:none; margin-top:8px;">
-        <span class="user-label">로그인:</span>
+        <span class="user-label" data-i18n="signed_in_as">로그인:</span>
         <span id="userDisplayName"></span>
-        <button id="logoutButton" class="logout-btn">로그아웃</button>
+        <button id="logoutButton" class="logout-btn" data-i18n="logout">로그아웃</button>
     </div>
 
     <!-- 상단 필터: 지역 -->
@@ -38,18 +38,18 @@ description: 페르소나5 더 팬텀 X 택틱들을 확인하세요.
                 <button class="tab-button" data-region="GLB">GLB</button>
                 <button class="tab-button" data-region="JP">JP</button>
             </div>
-            <a href="/tactic/tactic-upload.html" id="uploadButton" class="upload-btn">택틱 업로드</a>
+            <a href="/tactic/tactic-upload.html" id="uploadButton" class="upload-btn" data-i18n="upload_button">택틱 업로드</a>
         </div>
     </div>
 
     <div class="top-container">
         <div class="ranking-container">
             <div class="ranking-header">
-                <h3 class="ranking-title-text">순위</h3>
+                <h3 class="ranking-title-text" data-i18n="ranking_title">순위</h3>
                 <div class="ranking-tabs">
-                    <button class="ranking-tab active" data-period="weekly">주간</button>
-                    <button class="ranking-tab" data-period="monthly">월간</button>
-                    <button class="ranking-tab" data-period="all">역대</button>
+                    <button class="ranking-tab active" data-period="weekly" data-i18n="ranking_weekly">주간</button>
+                    <button class="ranking-tab" data-period="monthly" data-i18n="ranking_monthly">월간</button>
+                    <button class="ranking-tab" data-period="all" data-i18n="ranking_all">역대</button>
                 </div>
             </div>
             <div class="ranking-list">
@@ -58,11 +58,11 @@ description: 페르소나5 더 팬텀 X 택틱들을 확인하세요.
         </div>
         <div class="character-filter-card">
             <div class="card-header" style="display:flex; align-items:center; justify-content:space-between;">
-                <h3 id="charFilterTitle" style="margin:0;">캐릭터 필터</h3>
+                <h3 id="charFilterTitle" style="margin:0;" data-i18n="character_filter_title">캐릭터 필터</h3>
                 <div class="spoiler-toggle-container" style="display:none;">
                     <label class="spoiler-toggle-label">
                         <input type="checkbox" id="spoilerToggle" class="spoiler-toggle-checkbox">
-                        <span class="spoiler-toggle-text" id="spoilerToggleText">Show Spoilers</span>
+                        <span class="spoiler-toggle-text" id="spoilerToggleText" data-i18n="spoiler_toggle">Show Spoilers</span>
                     </label>
                 </div>
             </div>
@@ -75,7 +75,7 @@ description: 페르소나5 더 팬텀 X 택틱들을 확인하세요.
     <div class="tactic-controls">
         <div class="search-container">
             <div class="search-section">
-                <input type="text" id="searchInput" placeholder="제목 검색..." />
+                <input type="text" id="searchInput" data-i18n-placeholder="search_placeholder" placeholder="제목 검색..." />
                 <button id="searchButton">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -87,15 +87,15 @@ description: 페르소나5 더 팬텀 X 택틱들을 확인하세요.
         </div>
         <!-- 타입 필터 (텍스트형) -->
         <div class="inline-filters" id="typeButtons">
-            <span class="filter-item active" data-type="ALL">전체</span>
+            <span class="filter-item active" data-type="ALL" data-i18n="type_all">전체</span>
             <span class="filter-divider"></span>
-            <span class="filter-item" data-type="흉몽">흉몽</span>
+            <span class="filter-item" data-type="흉몽" data-i18n="type_nightmare">흉몽</span>
             <span class="filter-divider"></span>
-            <span class="filter-item" data-type="바다">바다</span>
+            <span class="filter-item" data-type="바다" data-i18n="type_sea">바다</span>
             <span class="filter-divider"></span>
-            <span class="filter-item" data-type="이벤트">이벤트</span>
+            <span class="filter-item" data-type="이벤트" data-i18n="type_event">이벤트</span>
             <span class="filter-divider"></span>
-            <span class="filter-item" data-type="기타">기타</span>
+            <span class="filter-item" data-type="기타" data-i18n="type_etc">기타</span>
         </div>
     </div>
 
@@ -103,12 +103,13 @@ description: 페르소나5 더 팬텀 X 택틱들을 확인하세요.
     <div class="posts-container">
         <div class="posts-list" id="postsList"></div>
         <div class="pagination">
-            <button id="prevPage" disabled>이전</button>
+            <button id="prevPage" disabled data-i18n="prev_page">이전</button>
             <span id="currentPage">1</span>
-            <button id="nextPage">다음</button>
+            <button id="nextPage" data-i18n="next_page">다음</button>
         </div>
     </div>
 
 </div>
 
+<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
 <script src="/assets/js/tactics-viewer.js?v=${APP_VERSION}"></script>

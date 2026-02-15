@@ -135,20 +135,20 @@ description: 페르소나5 더 팬텀 X 택틱을 업로드하세요.
     <div id="successModal" class="modal" style="display: none;">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 id="successModalTitle">업로드 완료</h3>
+                <h3 id="successModalTitle" data-i18n="success_upload_completed">업로드 완료</h3>
                 <button class="modal-close success-close">&times;</button>
             </div>
             <div class="modal-body">
-                <p id="successMessageText">택틱이 성공적으로 업로드되었습니다!</p>
+                <p id="successMessageText" data-i18n="success_upload">택틱이 성공적으로 업로드되었습니다!</p>
                 <div class="success-row">
-                    <span class="label" id="accessLabel">다음 주소로 접근할 수 있습니다:</span>
+                    <span class="label" id="accessLabel" data-i18n="success_access_label">다음 주소로 접근할 수 있습니다:</span>
                     <a id="publicLinkEl" class="link" href="#" target="_blank" rel="noopener noreferrer"></a>
                 </div>
             </div>
             <div class="modal-footer">
                 <button class="modal-close-btn success-close" data-i18n="close">닫기</button>
-                <button id="copyUrlBtnModal" class="modal-close-btn">URL 복사</button>
-                <button id="goListBtnModal" class="modal-close-btn">목록으로</button>
+                <button id="copyUrlBtnModal" class="modal-close-btn" data-i18n="success_copy_url">URL 복사</button>
+                <button id="goListBtnModal" class="modal-close-btn" data-i18n="success_go_list">목록으로</button>
             </div>
         </div>
     </div>
@@ -513,6 +513,10 @@ class TacticUploader {
         return 'kr';
     }
 
+    i18n(key, fallback = '') {
+        return getI18nText(key, fallback);
+    }
+
     async init() {
         if (typeof initPageI18n === 'function') {
             await initPageI18n('tactic-upload');
@@ -563,7 +567,7 @@ class TacticUploader {
                                 <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
                                 <polyline points="22 4 12 14.01 9 11.01"/>
                             </svg>
-                            <span>${this.currentLang === 'en' ? 'Data loaded from Tactic Maker' : this.currentLang === 'jp' ? 'タクティクスメーカーからデータをロードしました' : '택틱 메이커에서 데이터를 불러왔습니다'}</span>
+                            <span>${this.i18n('from_maker_loaded', '택틱 메이커에서 데이터를 불러왔습니다')}</span>
                         </div>
                     `;
                 }
@@ -724,7 +728,7 @@ class TacticUploader {
                     // 로그아웃 후 리다이렉트
                     window.location.replace(`/login/?redirect=${encodeURIComponent('/tactic/tactic-upload.html')}`);
                 } catch (e) {
-                    alert('로그아웃에 실패했습니다.');
+                    alert(this.i18n('error_logout_failed', '로그아웃에 실패했습니다.'));
                 }
             });
         }
@@ -776,12 +780,12 @@ class TacticUploader {
                 .eq('id', id)
                 .maybeSingle();
             if (error || !data) {
-                alert(this.currentLang === 'en' ? 'Post not found.' : this.currentLang === 'jp' ? '投稿が見つかりません。' : '게시물을 찾을 수 없습니다.');
+                alert(this.i18n('error_post_not_found', '게시물을 찾을 수 없습니다.'));
                 window.location.href = '/tactic/tactics.html';
                 return;
             }
             if (!this.currentUser || (data.user_id && data.user_id !== this.currentUser.id)) {
-                alert(this.currentLang === 'en' ? 'You do not have permission to edit this post.' : this.currentLang === 'jp' ? 'この投稿を編集する権限がありません。' : '이 게시물을 수정할 권한이 없습니다.');
+                alert(this.i18n('error_no_edit_permission', '이 게시물을 수정할 권한이 없습니다.'));
                 window.location.href = '/tactic/tactics.html';
                 return;
             }
@@ -801,22 +805,22 @@ class TacticUploader {
             } catch (_) {}
             this.enableEditUI();
         } catch (e) {
-            alert(this.currentLang === 'en' ? 'Failed to load the post.' : this.currentLang === 'jp' ? '投稿の読み込みに失敗しました。' : '게시물 불러오기에 실패했습니다.');
+            alert(this.i18n('error_load_post_failed', '게시물 불러오기에 실패했습니다.'));
             window.location.href = '/tactic/tactics.html';
         }
     }
 
     enableEditUI() {
         const pageTitle = document.getElementById('page-title');
-        if (pageTitle) pageTitle.textContent = (this.currentLang === 'en' ? 'Edit Tactic' : this.currentLang === 'jp' ? 'タクティック編集' : '택틱 수정');
+        if (pageTitle) pageTitle.textContent = this.i18n('edit_page_title', '택틱 수정');
         const navCurrent = document.getElementById('nav-current');
-        if (navCurrent) navCurrent.textContent = (this.currentLang === 'en' ? 'Tactics / Edit' : this.currentLang === 'jp' ? 'タクティック / 編集' : '택틱 / 수정');
+        if (navCurrent) navCurrent.textContent = this.i18n('edit_nav_current', '택틱 / 수정');
         const actions = document.querySelector('.form-actions');
         if (actions) {
             actions.innerHTML = `
-                <button type="button" id="saveButton" class="submit-btn">${this.currentLang === 'en' ? 'Save' : this.currentLang === 'jp' ? '保存' : '저장'}</button>
-                <button type="button" id="deleteButton" class="preview-btn" style="border-color:#ff6b6b;color:#ff6b6b;">${this.currentLang === 'en' ? 'Delete' : this.currentLang === 'jp' ? '削除' : '삭제'}</button>
-                <button type="button" id="cancelButton" class="preview-btn">${this.currentLang === 'en' ? 'Cancel' : this.currentLang === 'jp' ? '取消' : '취소'}</button>
+                <button type="button" id="saveButton" class="submit-btn">${this.i18n('edit_save', '저장')}</button>
+                <button type="button" id="deleteButton" class="preview-btn" style="border-color:#ff6b6b;color:#ff6b6b;">${this.i18n('edit_delete', '삭제')}</button>
+                <button type="button" id="cancelButton" class="preview-btn">${this.i18n('edit_cancel', '취소')}</button>
             `;
             document.getElementById('saveButton').onclick = () => this.saveEdit();
             document.getElementById('deleteButton').onclick = () => this.deleteEdit();
@@ -842,10 +846,10 @@ class TacticUploader {
                 .eq('id', this.editPostId)
                 .eq('user_id', this.currentUser.id);
             if (error) throw error;
-            alert(this.currentLang === 'en' ? 'Saved.' : this.currentLang === 'jp' ? '保存しました。' : '저장되었습니다.');
+            alert(this.i18n('alert_saved', '저장되었습니다.'));
             window.location.href = '/tactic/tactics.html';
         } catch (e) {
-            alert(this.currentLang === 'en' ? 'Save failed.' : this.currentLang === 'jp' ? '保存に失敗しました。' : '저장에 실패했습니다.');
+            alert(this.i18n('alert_save_failed', '저장에 실패했습니다.'));
         } finally {
             this.showLoading(false, 'save');
         }
@@ -853,7 +857,7 @@ class TacticUploader {
 
     async deleteEdit() {
         if (!this.editMode || !this.editPostId) return;
-        const confirmMsg = this.currentLang === 'en' ? 'Delete this tactic?' : this.currentLang === 'jp' ? 'このタクティックを削除しますか？' : '이 택틱을 삭제할까요?';
+        const confirmMsg = this.i18n('confirm_delete_tactic', '이 택틱을 삭제할까요?');
         if (!confirm(confirmMsg)) return;
         this.showLoading(true, 'delete');
         try {
@@ -863,10 +867,10 @@ class TacticUploader {
                 .eq('id', this.editPostId)
                 .eq('user_id', this.currentUser.id);
             if (error) throw error;
-            alert(this.currentLang === 'en' ? 'Deleted.' : this.currentLang === 'jp' ? '削除しました。' : '삭제되었습니다.');
+            alert(this.i18n('alert_deleted', '삭제되었습니다.'));
             window.location.href = '/tactic/tactics.html';
         } catch (e) {
-            alert(this.currentLang === 'en' ? 'Delete failed.' : this.currentLang === 'jp' ? '削除に失敗しました。' : '삭제에 실패했습니다.');
+            alert(this.i18n('alert_delete_failed', '삭제에 실패했습니다.'));
         } finally {
             this.showLoading(false, 'delete');
         }
@@ -917,10 +921,7 @@ class TacticUploader {
             }
             
         } catch (error) {
-            const errorMessage = this.currentLang === 'en' ? 'Failed to read JSON file. Please check if the format is correct.' :
-                               this.currentLang === 'jp' ? 'JSONファイルの読み取りに失敗しました。形式が正しいか確認してください。' :
-                               'JSON 파일을 읽는데 실패했습니다. 올바른 형식인지 확인해주세요.';
-            alert(errorMessage);
+            alert(this.i18n('error_json_read_failed', 'JSON 파일을 읽는데 실패했습니다. 올바른 형식인지 확인해주세요.'));
             console.error('JSON 파싱 오류:', error);
         }
     }
@@ -985,7 +986,7 @@ class TacticUploader {
                 const ritualImg = document.createElement('img');
                 ritualImg.className = 'ritual-img';
                 ritualImg.src = `${BASE_URL}/assets/img/ritual/num${ritualLevel}.png`;
-                ritualImg.alt = `의식 ${ritualLevel}`;
+                ritualImg.alt = this.i18n('ritual_alt', `의식 ${ritualLevel}`).replace('{value}', String(ritualLevel));
                 container.appendChild(ritualImg);
             }
 
@@ -1000,9 +1001,7 @@ class TacticUploader {
 
     showPreview() {
         if (!this.tacticData) {
-            this.showError(this.currentLang === 'en' ? 'Please upload a JSON file first.' :
-                         this.currentLang === 'jp' ? '最初にJSONファイルをアップロードしてください。' :
-                         '먼저 JSON 파일을 업로드해주세요.');
+            this.showError(this.i18n('error_upload_json_first', '먼저 JSON 파일을 업로드해주세요.'));
             return;
         }
         
@@ -1014,9 +1013,7 @@ class TacticUploader {
             }
         } catch (error) {
             console.error('Invalid tactic data:', error);
-            this.showError(this.currentLang === 'en' ? 'Invalid tactic data: No character information found.' :
-                          this.currentLang === 'jp' ? '無効なデータです。怪盗情報が見つかりません。' :
-                          '유효하지 않은 택틱 데이터입니다. 캐릭터 정보를 찾을 수 없습니다.');
+            this.showError(this.i18n('error_invalid_tactic_data', '유효하지 않은 택틱 데이터입니다. 캐릭터 정보를 찾을 수 없습니다.'));
             return;
         }
 
@@ -1045,14 +1042,14 @@ class TacticUploader {
                     <div class="post-meta">
                         <span class="post-author">${formData.author}</span>
                         <span class="separator">|</span>
-                        <span class="post-date">방금 전</span>
+                        <span class="post-date">${this.i18n('preview_now', '방금 전')}</span>
                     </div>
                     ${formData.comment ? `<div class="post-comment">${formData.comment}</div>` : ''}
                 </div>
                 
                 <div class="post-content">
                     <div class="post-link">
-                        <a href="${tacticUrl}" target="_blank" rel="noopener noreferrer">택틱 보기</a>
+                        <a href="${tacticUrl}" target="_blank" rel="noopener noreferrer">${this.i18n('view_tactic', '택틱 보기')}</a>
                     </div>
                     <div class="tactic-preview-container"></div>
                 </div>
@@ -1099,7 +1096,7 @@ class TacticUploader {
 
     async handleSubmit() {
         if (!this.tacticData) {
-            alert('JSON 파일을 업로드해주세요.');
+            alert(this.i18n('error_upload_json_required', 'JSON 파일을 업로드해주세요.'));
             return;
         }
 
@@ -1108,10 +1105,7 @@ class TacticUploader {
         // 유효성 검사 (URL은 자동 생성되므로 제외)
         const originalTitle = document.getElementById('tacticTitle').value;
         if (!formData.type || !originalTitle || !formData.author || !formData.region) {
-            const message = this.currentLang === 'en' ? 'Please fill in all required fields.' :
-                           this.currentLang === 'jp' ? '必須項目をすべて入力してください。' :
-                           '필수 항목을 모두 입력해주세요.';
-            alert(message);
+            alert(this.i18n('error_required_fields', '필수 항목을 모두 입력해주세요.'));
             return;
         }
 
@@ -1151,9 +1145,7 @@ class TacticUploader {
                 }
             }
 
-            const successMessage = this.currentLang === 'en' ? 'Tactic uploaded successfully!' :
-                                  this.currentLang === 'jp' ? 'タクティックが正常にアップロードされました！' :
-                                  '택틱이 성공적으로 업로드되었습니다!';
+            const successMessage = this.i18n('success_upload', '택틱이 성공적으로 업로드되었습니다!');
             // 성공 팝업(모달)로 URL 안내 표시 - v3는 새 택틱 메이커로, legacy는 기존 택틱 메이커로
             const urlCode = formData.url;
             const publicLink = tacticVersion === 'v3' 
@@ -1168,22 +1160,22 @@ class TacticUploader {
             const goListBtnM = document.getElementById('goListBtnModal');
             const closeBtnM = modal ? modal.querySelector('.modal-footer .success-close') : document.querySelector('.modal-footer .success-close');
 
-            if (titleEl) titleEl.textContent = (this.currentLang === 'en' ? 'Upload Completed' : this.currentLang === 'jp' ? 'アップロード完了' : '업로드 완료');
+            if (titleEl) titleEl.textContent = this.i18n('success_upload_completed', '업로드 완료');
             if (msgEl) msgEl.textContent = successMessage;
-            if (accessLabel) accessLabel.textContent = (this.currentLang === 'en' ? 'You can access it at:' : this.currentLang === 'jp' ? '以下のURLでアクセスできます:' : '다음 주소로 접근할 수 있습니다:');
+            if (accessLabel) accessLabel.textContent = this.i18n('success_access_label', '다음 주소로 접근할 수 있습니다:');
             if (linkEl) { linkEl.href = publicLink; linkEl.textContent = publicLink; }
             // 닫기 버튼 (footer) 텍스트 설정
             if (closeBtnM) {
-                closeBtnM.textContent = (this.currentLang === 'en' ? 'Close' : this.currentLang === 'jp' ? '閉じる' : '닫기');
+                closeBtnM.textContent = this.i18n('close', '닫기');
             }
             if (copyBtnM) {
-                copyBtnM.textContent = (this.currentLang === 'en' ? 'Copy URL' : this.currentLang === 'jp' ? 'URLをコピー' : 'URL 복사');
+                copyBtnM.textContent = this.i18n('success_copy_url', 'URL 복사');
                 copyBtnM.onclick = async () => {
-                    try { await navigator.clipboard.writeText(publicLink); alert(this.currentLang === 'en' ? 'Copied!' : this.currentLang === 'jp' ? 'コピーしました！' : '복사되었습니다!'); } catch(_) {}
+                    try { await navigator.clipboard.writeText(publicLink); alert(this.i18n('success_copied', '복사되었습니다!')); } catch(_) {}
                 };
             }
             if (goListBtnM) {
-                goListBtnM.textContent = (this.currentLang === 'en' ? 'Go to list' : this.currentLang === 'jp' ? '一覧へ' : '목록으로');
+                goListBtnM.textContent = this.i18n('success_go_list', '목록으로');
                 goListBtnM.onclick = () => { window.location.href = '/tactic/tactics.html'; };
             }
             document.querySelectorAll('.success-close').forEach(el => el.onclick = () => { modal.style.display = 'none'; });
@@ -1191,17 +1183,14 @@ class TacticUploader {
             if (modal) {
                 const footerCloseBtns = modal.querySelectorAll('.modal-footer .success-close');
                 footerCloseBtns.forEach(btn => {
-                    btn.textContent = (this.currentLang === 'en' ? 'Close' : this.currentLang === 'jp' ? '閉じる' : '닫기');
+                    btn.textContent = this.i18n('close', '닫기');
                 });
                 modal.style.display = 'flex';
             }
             
         } catch (error) {
             console.error('업로드 실패:', error);
-            const errorMessage = this.currentLang === 'en' ? 'An error occurred during upload. Please try again.' :
-                               this.currentLang === 'jp' ? 'アップロード中にエラーが発生しました。再試行してください。' :
-                               '업로드 중 오류가 발생했습니다. 다시 시도해주세요.';
-            alert(errorMessage);
+            alert(this.i18n('error_upload_failed', '업로드 중 오류가 발생했습니다. 다시 시도해주세요.'));
         } finally {
             this.showLoading(false);
         }
@@ -1227,6 +1216,10 @@ class TacticUploader {
         if (saveBtn) saveBtn.disabled = show;
         const deleteBtn = document.getElementById('deleteButton');
         if (deleteBtn) deleteBtn.disabled = show;
+    }
+
+    showError(message) {
+        alert(message);
     }
 
     escapeHtml(text) {

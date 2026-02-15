@@ -1,4 +1,14 @@
       /* ========== 전체 렌더링 ========== */
+function getTurnI18nText(key, fallback = '') {
+  if (typeof window.t === 'function') {
+    return window.t(key, fallback);
+  }
+  if (window.I18nService && typeof window.I18nService.t === 'function') {
+    return window.I18nService.t(key, fallback);
+  }
+  return fallback || key;
+}
+
 function renderTurns() {
   const turnsContainer = document.getElementById("turns");
   if (!turnsContainer) return;
@@ -97,24 +107,20 @@ function renderTurns() {
     menu.className = 'menu';
     const styleButton = (btn)=>{ btn.style.width='100%'; btn.style.maxWidth='120px'; btn.style.textAlign='left'; btn.style.padding='8px 10px'; btn.style.background='transparent'; btn.style.border='none'; btn.style.cursor='pointer'; };
 
-    // 다국어 라벨
-    const _lang = (typeof getCurrentLanguage === 'function') ? getCurrentLanguage() : 'kr';
-    const L = (ko, en, jp) => (_lang === 'en' ? en : (_lang === 'jp' ? jp : ko));
-
     const renameBtn = document.createElement('button');
-    renameBtn.textContent = L('턴 이름 수정', 'Rename turn', 'ターン名を変更');
+    renameBtn.textContent = getTurnI18nText('turnMenuRename', '턴 이름 수정');
     styleButton(renameBtn);
 
     const addTurnMenuBtn = document.createElement('button');
-    addTurnMenuBtn.textContent = L('턴 추가', 'Add turn', 'ターン追加');
+    addTurnMenuBtn.textContent = getTurnI18nText('turnMenuAdd', '턴 추가');
     styleButton(addTurnMenuBtn);
 
     const duplicateBtn = document.createElement('button');
-    duplicateBtn.textContent = L('턴 복제', 'Duplicate turn', 'ターン複製');
+    duplicateBtn.textContent = getTurnI18nText('turnMenuDuplicate', '턴 복제');
     styleButton(duplicateBtn);
 
     const deleteBtn = document.createElement('button');
-    deleteBtn.textContent = L('턴 삭제', 'Delete turn', 'ターン削除');
+    deleteBtn.textContent = getTurnI18nText('turnMenuDelete', '턴 삭제');
     deleteBtn.style.color = 'tomato';
     styleButton(deleteBtn);
 
@@ -145,7 +151,7 @@ function renderTurns() {
     // 메뉴 핸들러
     renameBtn.onclick = ()=>{
       const currentLabel = turn.customName || `${turn.turn}Turn`;
-      const next = prompt(L('새 턴 이름을 입력하세요', 'Enter new turn name', '新しいターン名を入力してください'), currentLabel);
+      const next = prompt(getTurnI18nText('turnPromptRename', '새 턴 이름을 입력하세요'), currentLabel);
       if(next === null) return; // cancel
       const trimmed = String(next).trim();
       if(trimmed) {

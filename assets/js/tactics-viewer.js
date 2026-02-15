@@ -15,6 +15,24 @@ function getCurrentLanguage() {
     return 'kr';
 }
 
+function getI18nText(key, fallback = '') {
+    if (typeof window.t === 'function') {
+        return window.t(key, fallback);
+    }
+    if (window.I18nService && typeof window.I18nService.t === 'function') {
+        return window.I18nService.t(key, fallback);
+    }
+    return fallback || key;
+}
+
+function formatI18nTemplate(template, replacements = {}) {
+    let result = String(template || '');
+    Object.entries(replacements).forEach(([key, value]) => {
+        result = result.replace(new RegExp(`\\{${key}\\}`, 'g'), String(value));
+    });
+    return result;
+}
+
 async function fetchCharactersData(url) {
     try {
         const res = await fetch(url, { cache: 'no-store' });
@@ -162,6 +180,14 @@ class TacticsViewer {
         this.initRanking();
         this.renderTactics();
         this.loadRanking();
+    }
+
+    t(key, fallback = '') {
+        return getI18nText(key, fallback || key);
+    }
+
+    template(key, fallback, replacements = {}) {
+        return formatI18nTemplate(this.t(key, fallback), replacements);
     }
 
     // 모바일에서 Ranking/캐릭터 필터 접기/펼치기
@@ -435,10 +461,10 @@ class TacticsViewer {
             ${tactic.comment ? `<div class="post-comment">${this.escapeHtml(tactic.comment)}</div>` : ''}
         </div>
         
-        <div class="post-content">
+                <div class="post-content">
             ${libraryLink ? `
                 <div class="post-link">
-                    <a href="${libraryLink}" target="_blank" rel="noopener noreferrer">택틱 보기</a>
+                    <a href="${libraryLink}" target="_blank" rel="noopener noreferrer">${this.t('view_tactic', '택틱 보기')}</a>
                 </div>
             ` : ''}
             <div class="tactic-preview-container"></div>
@@ -447,7 +473,7 @@ class TacticsViewer {
         <div class="post-footer">
             <div class="likes-section">
                 <button onclick="tacticsViewer.handleLike('${tactic.id}')" class="like-button ${tactic.isLiked ? 'liked' : ''}" ${tactic.isLiked ? 'disabled' : ''}>
-                    <img src="${BASE_URL}/assets/img/tactic-share/like.png" alt="좋아요">
+                    <img src="${BASE_URL}/assets/img/tactic-share/like.png" alt="${this.t('like_alt', '좋아요')}">
                 </button>
                 <div class="likes-count-wrapper">
                     <span class="likes-count">${tactic.likes}</span>
@@ -509,12 +535,8 @@ class TacticsViewer {
 
     renderTypeBadge(type) {
         if (!type || type === 'ALL') return '';
-        const map = {
-            kr: { '흉몽': '흉몽', '바다': '바다', '이벤트': '이벤트', '기타': '기타' },
-            en: { '흉몽': 'NTMR', '바다': 'SoS', '이벤트': 'Event', '기타': 'ETC' },
-            jp: { '흉몽': '閼兇夢', '바다': '心の海', '이벤트': 'イベント', '기타': 'その他' }
-        };
-        const label = (map[this.currentLang] || map.kr)[type] || type;
+        const labels = this.getTypeLabels();
+        const label = labels[type] || type;
         return `<span class="type-badge">${label}</span>`;
     }
 
@@ -648,7 +670,7 @@ class TacticsViewer {
                 const ritualImg = document.createElement('img');
                 ritualImg.className = 'ritual-img';
                 ritualImg.src = `${BASE_URL}/assets/img/ritual/num${ritualLevel}.png`;
-                ritualImg.alt = `의식 ${ritualLevel}`;
+                ritualImg.alt = this.template('ritual_alt', '의식 {value}', { value: ritualLevel });
                 container.appendChild(ritualImg);
             }
 
@@ -675,7 +697,7 @@ class TacticsViewer {
             const recent = (likeRow?.recent_like && typeof likeRow.recent_like === 'object') ? likeRow.recent_like : {};
             const last = recent[this.userIP] ? new Date(recent[this.userIP]).getTime() : 0;
             if (last && (Date.now() - last) < 24 * 60 * 60 * 1000) {
-                alert(this.currentLang === 'en' ? 'You already liked this within 24 hours.' : this.currentLang === 'jp' ? '24時間以内に既にいいねしました。' : '24시간 내 이미 좋아요 했습니다.');
+                alert(this.t('error_already_liked_24h', '24시간 내 이미 좋아요 했습니다.'));
                 return;
             }
             likes += 1;
@@ -769,12 +791,13 @@ class TacticsViewer {
     }
 
     getTypeLabels() {
-        if (this.currentLang === 'en') {
-            return { ALL: 'All', '흉몽': 'NTMR', '바다': 'SoS', '이벤트': 'Event', '기타': 'ETC' };
-        } else if (this.currentLang === 'jp') {
-            return { ALL: '全体', '흉몽': '閼兇夢', '바다': '心の海', '이벤트': 'イベント', '기타': 'その他' };
-        }
-        return { ALL: '전체', '흉몽': '흉몽', '바다': '바다', '이벤트': '이벤트', '기타': '기타' };
+        return {
+            ALL: this.t('type_all', '전체'),
+            '흉몽': this.t('type_nightmare', '흉몽'),
+            '바다': this.t('type_sea', '바다'),
+            '이벤트': this.t('type_event', '이벤트'),
+            '기타': this.t('type_etc', '기타')
+        };
     }
 
     // 캐릭터 필터 초기화
@@ -890,113 +913,11 @@ class TacticsViewer {
 
     // 언어별 UI 텍스트 초기화
     initLanguageTexts() {
-        const t = {
-            kr: {
-                search: '제목 검색...',
-                ranking: '순위',
-                weekly: '주간',
-                monthly: '월간',
-                alltime: '역대',
-                title: '택틱 도서관',
-                nav_home: '홈',
-                nav_current: '택틱 / 택틱 도서관',
-                prev: '이전',
-                next: '다음',
-                upload: '택틱 업로드',
-                filter_char: '캐릭터 필터',
-                signed_in_as: '로그인:',
-                logout: '로그아웃',
-                spoiler: 'Show Spoilers',
-                type: { '흉몽': '흉몽', '바다': '바다', '이벤트': '이벤트', '기타': '기타' }
-            },
-            en: {
-                search: 'Search title...',
-                ranking: 'Ranking',
-                weekly: 'Weekly',
-                monthly: 'Monthly',
-                alltime: 'Alltime',
-                title: 'Tactics Library',
-                nav_home: 'Home',
-                nav_current: 'Tactics / Library',
-                prev: 'Prev',
-                next: 'Next',
-                upload: 'Upload Tactic',
-                filter_char: 'Character Filter',
-                signed_in_as: 'Signed in as:',
-                logout: 'Logout',
-                spoiler: 'Show Spoilers',
-                type: { '흉몽': 'NTMR', '바다': 'SoS', '이벤트': 'Event', '기타': 'ETC' }
-            },
-            jp: {
-                search: 'タイトル検索...',
-                ranking: '順位',
-                weekly: '週間',
-                monthly: '月間',
-                alltime: '通算',
-                title: 'タクティクスライブラリー',
-                nav_home: 'ホーム',
-                nav_current: 'タクティクス / ライブラリー',
-                prev: '前',
-                next: '次',
-                upload: 'タクティクスをアップロード',
-                filter_char: '怪盗フィルター',
-                signed_in_as: 'ログイン：',
-                logout: 'ログアウト',
-                spoiler: 'ネタバレ表示',
-                type: { '흉몽': '閼兇夢', '바다': '心の海', '이벤트': 'イベント', '기타': 'その他' }
-            }
-        }[this.currentLang] || {
-            search: '제목 검색...', ranking: '순위', weekly: '주간', monthly: '월간', alltime: '역대', title: '택틱 도서관', nav_home: '홈', nav_current: '택틱 / 택틱 도서관', prev: '이전', next: '다음', upload: '택틱 업로드', filter_char: '캐릭터 필터', spoiler: 'Show Spoilers', type: { '흉몽': '흉몽', '바다': '바다', '이벤트': '이벤트', '기타': '기타' }
-        };
+        if (window.I18nService && typeof window.I18nService.updateDOM === 'function') {
+            window.I18nService.updateDOM();
+        }
 
-        const searchInput = document.getElementById('searchInput');
-        if (searchInput) searchInput.placeholder = t.search;
-
-        const rankingTitle = document.querySelector('.ranking-title-text');
-        if (rankingTitle) rankingTitle.textContent = t.ranking;
-
-        const tabs = document.querySelectorAll('.ranking-tab');
-        tabs.forEach(tab => {
-            const period = tab.getAttribute('data-period');
-            if (period === 'weekly') tab.textContent = t.weekly;
-            if (period === 'monthly') tab.textContent = t.monthly;
-            if (period === 'all') tab.textContent = t.alltime;
-        });
-
-        // 헤더/네비/페이지네이션 텍스트
-        const pageTitle = document.getElementById('page-title');
-        if (pageTitle) pageTitle.textContent = t.title;
-        const navHome = document.getElementById('nav-home');
-        const navCurrent = document.getElementById('nav-current');
-        if (navHome) navHome.textContent = t.nav_home;
-        if (navCurrent) navCurrent.textContent = t.nav_current;
-        const prevBtn = document.getElementById('prevPage');
-        const nextBtn = document.getElementById('nextPage');
-        if (prevBtn) prevBtn.textContent = t.prev;
-        if (nextBtn) nextBtn.textContent = t.next;
-
-        const uploadBtn = document.getElementById('uploadButton');
-        if (uploadBtn) uploadBtn.textContent = t.upload;
-        const charFilterTitle = document.getElementById('charFilterTitle');
-        if (charFilterTitle) charFilterTitle.textContent = t.filter_char;
-
-        // 로그인 정보 바 언어 적용
-        const userLabel = document.querySelector('#userInfoBar .user-label');
-        const logoutBtn = document.getElementById('logoutButton');
-        if (userLabel) userLabel.textContent = t.signed_in_as;
-        if (logoutBtn) logoutBtn.textContent = t.logout;
-
-        const spoilerLabel = document.getElementById('spoilerToggleText');
-        if (spoilerLabel) spoilerLabel.textContent = t.spoiler;
-
-        // 타입 필터 라벨 현지화
-        const typeItems = document.querySelectorAll('#typeButtons .filter-item');
-        typeItems.forEach(el => {
-            const key = el.dataset.type;
-            if (t.type[key]) el.textContent = t.type[key];
-        });
-
-        // 영어(JP)에서 랭킹 탭 폰트 사이즈 조정
+        // 영어에서 랭킹 탭 폰트 사이즈 조정
         const rankingTabs = document.querySelectorAll('.ranking-tab');
         rankingTabs.forEach(btn => {
             if (this.currentLang === 'en') {
@@ -1006,34 +927,22 @@ class TacticsViewer {
             }
         });
 
-        // SEO 업데이트
-        this.updateSEO(t);
+        this.updateSEO();
     }
 
-    updateSEO(t) {
-        const seoMap = {
-            kr: {
-                title: '택틱 도서관 - 페르소나5 더 팬텀 X 루페르넷',
-                description: '페르소나5 더 팬텀 X 택틱들을 확인하세요.'
-            },
-            en: {
-                title: 'Tactics Library - Persona 5: The Phantom X LufelNet',
-                description: 'Browse community tactics for Persona 5: The Phantom X.'
-            },
-            jp: {
-                title: 'タクティクスライブラリー - ペルソナ5 ザ・ファントム X LufelNet',
-                description: 'ペルソナ5 ザ・ファントム X の戦術を閲覧できます。'
-            }
-        };
-        const lang = this.currentLang in seoMap ? this.currentLang : 'kr';
-        const meta = seoMap[lang];
-        document.title = meta.title;
+    updateSEO() {
+        const fallbackTitle = '택틱 도서관 - 페르소나5 더 팬텀 X 루페르넷';
+        const fallbackDescription = '페르소나5 더 팬텀 X 택틱들을 확인하세요.';
+        const seoTitle = this.t('seo_title', fallbackTitle);
+        const seoDescription = this.t('seo_desc', fallbackDescription);
+
+        document.title = seoTitle;
         const metaDesc = document.querySelector('meta[name="description"]');
         const ogTitle = document.querySelector('meta[property="og:title"]');
         const ogDesc = document.querySelector('meta[property="og:description"]');
-        if (metaDesc) metaDesc.setAttribute('content', meta.description);
-        if (ogTitle) ogTitle.setAttribute('content', meta.title);
-        if (ogDesc) ogDesc.setAttribute('content', meta.description);
+        if (metaDesc) metaDesc.setAttribute('content', seoDescription);
+        if (ogTitle) ogTitle.setAttribute('content', seoTitle);
+        if (ogDesc) ogDesc.setAttribute('content', seoDescription);
     }
 
     async getUserIP() {
@@ -1184,37 +1093,18 @@ class TacticsViewer {
     }
 
     getI18n() {
-        const lang = this.currentLang || 'kr';
-        if (lang === 'en') {
-            return {
-                rankingStats: (posts, likes) => `${posts} Tactics · ${likes} Likes`,
-                relative: {
-                    minutes: (m) => `${m} min ago`,
-                    hours: (h) => `${h} hours ago`,
-                    days: (d) => `${d} days ago`
-                },
-                dateLocale: 'en-US'
-            };
-        } else if (lang === 'jp') {
-            return {
-                rankingStats: (posts, likes) => `タクティクス ${posts}件 ・ いいね ${likes}件`,
-                relative: {
-                    minutes: (m) => `${m}分前`,
-                    hours: (h) => `${h}時間前`,
-                    days: (d) => `${d}日前`
-                },
-                dateLocale: 'ja-JP'
-            };
-        }
-        // default kr
         return {
-            rankingStats: (posts, likes) => `택틱 ${posts}개 · 좋아요 ${likes}개`,
+            rankingStats: (posts, likes) => this.template(
+                'ranking_stats',
+                '택틱 {posts}개 · 좋아요 {likes}개',
+                { posts, likes }
+            ),
             relative: {
-                minutes: (m) => `${m}분 전`,
-                hours: (h) => `${h}시간 전`,
-                days: (d) => `${d}일 전`
+                minutes: (m) => this.template('relative_minutes', '{value}분 전', { value: m }),
+                hours: (h) => this.template('relative_hours', '{value}시간 전', { value: h }),
+                days: (d) => this.template('relative_days', '{value}일 전', { value: d })
             },
-            dateLocale: 'ko-KR'
+            dateLocale: this.t('date_locale', 'ko-KR')
         };
     }
 
@@ -1226,7 +1116,16 @@ class TacticsViewer {
 }
 
 // 페이지 로드 시 초기화
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    const currentLang = getCurrentLanguage();
+    if (typeof initPageI18n === 'function') {
+        await initPageI18n('tactics');
+        if (typeof setLang === 'function') {
+            await setLang(currentLang);
+        }
+    } else if (window.I18nService && typeof window.I18nService.init === 'function') {
+        await window.I18nService.init('tactics', currentLang);
+    }
     Navigation.load('tactics');
     window.tacticsViewer = new TacticsViewer();
 });

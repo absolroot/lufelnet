@@ -114,17 +114,6 @@
             jp: buildMustReadContent(i18nService, 'jp', pageName)
         };
 
-        console.log('[i18n-adapter] Initialized successfully');
-        console.log('[i18n-adapter] Page:', pageName || 'common only');
-        console.log('[i18n-adapter] Current language:', i18nService.getCurrentLanguage());
-        console.log('[i18n-adapter] I18N.kr keys count:', Object.keys(window.I18N.kr).length);
-        console.log('[i18n-adapter] I18N.en keys count:', Object.keys(window.I18N.en).length);
-        console.log('[i18n-adapter] I18N.jp keys count:', Object.keys(window.I18N.jp).length);
-        //console.log('[i18n-adapter] Sample tooltip keys (kr):', Object.keys(window.I18N.kr).filter(k => k.startsWith('tooltip')).slice(0, 5));
-        //console.log('[i18n-adapter] Sample tooltip keys (en):', Object.keys(window.I18N.en).filter(k => k.startsWith('tooltip')).slice(0, 5));
-        //console.log('[i18n-adapter] tooltipTicket (kr):', window.I18N.kr.tooltipTicket);
-        //console.log('[i18n-adapter] tooltipTicket (en):', window.I18N.en.tooltipTicket);
-
         // === 함수형 API (권장) ===
         // 모든 페이지에서 일관되게 사용할 수 있는 전역 함수
         window.t = (key, defaultValue) => {

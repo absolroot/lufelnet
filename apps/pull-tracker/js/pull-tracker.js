@@ -1,111 +1,95 @@
-(() => {
-    // Simple local i18n
-    const messages = {
-        kr: {
-            navhome: '홈',
-            pageTitle: '계약 트래커 (beta)',
-            navCurrent: '계약 트래커',
-            inputLabel: 'URL 획득 방법',
-            placeholder: '여기에 주소를 붙여넣기...',
-            start: '가져오기',
-            clear: '초기화',
-            infoReady: '가챠 기록 URL을 입력하고 가져오기를 누르세요.',
-            infoNotice: '최근 90일 동안의 기록만 가져옵니다. 이전 기록은 게임 서버에서 제공되지 않습니다.\n가챠 시도 횟수가 많은 경우 로딩에 5분 이상 걸릴 수 있습니다. 각 URL은 유효 기간이 있어 만료될 경우 새로 가져와야 합니다.\n※ 현재 기록을 추가 업데이트하는 과정이 불안정합니다. URL을 추가 제출하기 전에 내보내기를 통해 기존 데이터를 보존해주세요.',
-            loadingTitle: '서버에서 기록을 조회 중입니다...',
-            loadingDetail: '네트워크 상태와 서버 부하에 따라 시간이 걸릴 수 있습니다.',
-            noticeLong: '최근 90일 뽑기 횟수에 따라 10분 이상 소요될 수 있습니다. 처리 중에는 브라우저 창을 닫지 말아주세요.',
-            elapsed: (m, s) => `경과 시간: ${m}분 ${s}초`,
-            sending: '요청 전송 중...',
-            waiting: '서버 응답 대기 중...',
-            tryGet: '진행 중...', // POST 실패 GET 진행 
-            invalidUrl: '유효한 URL을 입력하세요.',
-            done: (bytes) => `완료 (응답 바이트: ${bytes})`,
-            failed: '요청 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.',
-            confirmReset: '정말 초기화할까요?\n이 작업은 이 브라우저에 저장된 가챠 데이터(마지막 URL/응답 포함)를 모두 삭제합니다.\n※ Google Drive 백업은 영향을 받지 않습니다.',
-            loadedDrive: '클라우드(Drive)에서 불러왔습니다.',
-            loadedLocal: '로컬 브라우저에서 불러왔습니다.',
-            savedDrive: '클라우드(Drive)에 저장되었습니다.',
-            savedLocal: '로컬 브라우저에 저장되었습니다.',
-            deletedDrive: '클라우드(Drive)에서 삭제했습니다.',
-            deleteDriveFailed: '클라우드(Drive) 삭제에 실패했습니다.',
-            allDeleted: '브라우저에 저장된 데이터를 삭제했습니다.',
-            driveForbidden: 'Google Drive 접근이 거부되었습니다. (403) 권한 또는 설정을 확인하세요.',
-            driveNeedConsent: '드라이브 접근 권한이 필요합니다. 상단 로그인 버튼을 눌러 권한을 승인해 주세요.',
-            driveNoData: '드라이브에 저장된 데이터가 없습니다.',
-            noData: '저장된 데이터가 없습니다.'
-        },
-        en: {
-            navhome: 'Home',
-            pageTitle: 'Pull Tracker (beta)',
-            navCurrent: 'Pull Tracker',
-            inputLabel: 'How to get URL',
-            placeholder: 'Paste the link here...',
-            start: 'Get Data',
-            clear: 'Clear',
-            infoReady: 'Paste your gacha records URL and press Fetch.',
-            infoNotice: 'Only the last 90 days of records can be fetched. Older records are not provided by game servers.\nIf you have many pulls, loading may take 5+ minutes. Each URL has an expiration date and must be refetched when it expires.\n<div style="color:#fffff1;"><b>※ Adding new records is currently unstable. Please export data to preserve it before submitting additional URLs.</b></div>',
-            loadingTitle: 'Fetching records from the server...',
-            loadingDetail: 'Depending on network and server load, it can take some time.',
-            noticeLong: 'If you have many pulls in the last 90 days, it may take 10+ minutes. Please keep the browser open during processing.',
-            elapsed: (m, s) => `Elapsed: ${m}m ${s}s`,
-            sending: 'Sending request...',
-            waiting: 'Waiting for server response...',
-            tryGet: 'Processing...',
-            invalidUrl: 'Please enter a valid URL.',
-            done: (bytes) => `Done (response bytes: ${bytes})`,
-            failed: 'Something went wrong. Please try again later.',
-            confirmReset: 'Are you sure you want to reset?\nThis will delete all gacha data stored in this browser (including last URL/response).\n※ Google Drive backups are not affected.',
-            loadedDrive: 'Loaded from Drive.',
-            loadedLocal: 'Loaded from local cache.',
-            savedDrive: 'Saved to Drive.',
-            savedLocal: 'Saved locally.',
-            deletedDrive: 'Deleted from Drive.',
-            deleteDriveFailed: 'Failed to delete from Drive.',
-            allDeleted: 'All browser-stored data has been deleted.',
-            driveForbidden: 'Google Drive access forbidden (403). Please review permissions/settings.',
-            driveNeedConsent: 'Drive permission is required. Click Login to grant access.',
-            driveNoData: 'No saved data found on Drive.',
-            noData: 'No saved data.'
-        },
-        jp: {
-            navhome: 'ホーム',
-            pageTitle: 'ガチャ履歴 (beta)',
-            navCurrent: 'ガチャ履歴',
-            inputLabel: 'URL取得方法',
-            placeholder: 'ここにリンクを貼り付けてください...',
-            start: '取得',
-            clear: 'クリア',
-            infoReady: '契約履歴のURLを貼り付けて、"取得"ボタンを押してください。',
-            infoNotice: '直近90日の履歴のみ取得できます。それ以前の履歴は、ゲームサーバーから取得できません。\n契約回数が多い場合、読込に5分以上かかる可能性があります。各URLには有効期限があるため、期限が切れた場合は再取得が必要です。',
-            loadingTitle: 'サーバーから履歴を取得しています...',
-            loadingDetail: 'ネットワーク状況やサーバー負荷により時間がかかる場合があります。',
-            noticeLong: '直近90日のガチャ数によっては10分以上かかる場合があります。処理中はブラウザを閉じないでください。',
-            elapsed: (m, s) => `経過時間: ${m}分 ${s}秒`,
-            sending: 'リクエスト送信中...',
-            waiting: 'サーバーの応答を待機中...',
-            tryGet: '処理中...',
-            invalidUrl: '有効なURLを入力してください。',
-            done: (bytes) => `完了（応答バイト数: ${bytes}）`,
-            failed: 'エラーが発生しました。時間をおいて再度お試しください。',
-            confirmReset: '本当に初期化しますか？\nこの操作により、このブラウザに保存されたガチャデータ(最後のURL/レスポンスを含む)がすべて削除されます。\n※ Google Drive のバックアップには影響しません。',
-            loadedDrive: 'Drive から読み込みました。',
-            loadedLocal: 'ローカルから読み込みました。',
-            savedDrive: 'Drive に保存しました。',
-            savedLocal: 'ローカルに保存しました。',
-            deletedDrive: 'Drive から削除しました。',
-            deleteDriveFailed: 'Drive の削除に失敗しました。',
-            allDeleted: 'ブラウザに保存されたすべてのデータを削除しました。',
-            driveForbidden: 'Google Drive へのアクセスが拒否されました（403）。権限や設定をご確認ください。',
-            driveNeedConsent: 'Drive へのアクセス許可が必要です。上部のログインを押して許可してください。',
-            driveNoData: 'Drive に保存されたデータがありません。',
-            noData: '保存されたデータはありません。'
-        }
-    };
+(async () => {
+    try { await (window.__pullI18nReady || Promise.resolve()); } catch (_) { }
 
-    const lang = (new URLSearchParams(location.search).get('lang') || 'kr').toLowerCase();
+    function tr(key, fallback) {
+        try {
+            if (window.PullTrackerI18n && typeof window.PullTrackerI18n.t === 'function') {
+                return window.PullTrackerI18n.t(key, fallback);
+            }
+        } catch (_) { }
+        return fallback || key;
+    }
+
+    function formatTemplate(template, vars = {}) {
+        let out = String(template || '');
+        Object.entries(vars).forEach(([k, v]) => {
+            out = out.replaceAll(`{${k}}`, String(v));
+        });
+        return out;
+    }
+
+    const lang = (() => {
+        try {
+            if (window.PullTrackerI18n && typeof window.PullTrackerI18n.lang === 'function') {
+                return window.PullTrackerI18n.lang();
+            }
+            return (new URLSearchParams(location.search).get('lang') || 'kr').toLowerCase();
+        } catch (_) {
+            return 'kr';
+        }
+    })();
     const DEBUG = false;
     const VERBOSE_LOG = false; // DEBUG 출력 중 상세 로그는 별도 플래그로 제어
-    const t = messages[lang] || messages.kr;
+    const t = {
+        get navhome() { return tr('individual.nav.home', '홈'); },
+        get pageTitle() { return tr('individual.pageTitle', '계약 트래커 (beta)'); },
+        get navCurrent() { return tr('individual.nav.current', '계약 트래커'); },
+        get inputLabel() { return tr('individual.inputLabel', 'URL 획득 방법'); },
+        get placeholder() { return tr('individual.placeholder', '여기에 주소를 붙여넣기...'); },
+        get start() { return tr('individual.buttons.start', '가져오기'); },
+        get clear() { return tr('individual.buttons.clear', '초기화'); },
+        get infoReady() { return tr('individual.info.ready', '가챠 기록 URL을 입력하고 가져오기를 누르세요.'); },
+        get infoNotice() { return tr('individual.info.notice'); },
+        get loadingTitle() { return tr('individual.loading.title', '서버에서 기록을 조회 중입니다...'); },
+        get loadingDetail() { return tr('individual.loading.detail'); },
+        get noticeLong() { return tr('individual.loading.noticeLong'); },
+        elapsed: (m, s) => formatTemplate(tr('individual.loading.elapsed', '경과 시간: {m}분 {s}초'), { m, s }),
+        get sending() { return tr('individual.status.sending', '요청 전송 중...'); },
+        get waiting() { return tr('individual.status.waiting', '서버 응답 대기 중...'); },
+        get tryGet() { return tr('individual.status.tryGet', '진행 중...'); },
+        get invalidUrl() { return tr('individual.status.invalidUrl', '유효한 URL을 입력하세요.'); },
+        done: (bytes) => formatTemplate(tr('individual.status.done', '완료 (응답 바이트: {bytes})'), { bytes }),
+        get failed() { return tr('individual.status.failed', '요청 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.'); },
+        get complete() { return tr('individual.status.complete', '✅ Complete'); },
+        get confirmReset() { return tr('individual.confirm.reset', '정말 초기화할까요?'); },
+        get loadedDrive() { return tr('individual.status.loadedDrive', '클라우드(Drive)에서 불러왔습니다.'); },
+        get loadedLocal() { return tr('individual.status.loadedLocal', '로컬 브라우저에서 불러왔습니다.'); },
+        get savedDrive() { return tr('individual.status.savedDrive', '클라우드(Drive)에 저장되었습니다.'); },
+        get savedLocal() { return tr('individual.status.savedLocal', '로컬 브라우저에 저장되었습니다.'); },
+        get deletedDrive() { return tr('individual.status.deletedDrive', '클라우드(Drive)에서 삭제했습니다.'); },
+        get deleteDriveFailed() { return tr('individual.status.deleteDriveFailed', '클라우드(Drive) 삭제에 실패했습니다.'); },
+        get allDeleted() { return tr('individual.status.allDeleted', '브라우저에 저장된 데이터를 삭제했습니다.'); },
+        get driveForbidden() { return tr('individual.status.driveForbidden', 'Google Drive 접근이 거부되었습니다. (403) 권한 또는 설정을 확인하세요.'); },
+        get driveNeedConsent() { return tr('individual.status.driveNeedConsent', '드라이브 접근 권한이 필요합니다. 상단 로그인 버튼을 눌러 권한을 승인해 주세요.'); },
+        get driveNoData() { return tr('individual.status.driveNoData', '드라이브에 저장된 데이터가 없습니다.'); },
+        get noData() { return tr('individual.status.noData', '저장된 데이터가 없습니다.'); },
+        get driveQuotaExceeded() { return tr('individual.status.driveQuotaExceeded', 'Google 드라이브 저장 용량이 초과되었습니다. 공간을 확보해주세요.'); },
+        get exampleApplyFailed() { return tr('individual.status.exampleApplyFailed', '예시 적용 실패'); },
+        get recordAdded() { return tr('individual.status.recordAdded', '기록이 추가되었습니다.'); },
+        get recordUpdated() { return tr('individual.status.recordUpdated', '기록이 수정되었습니다.'); },
+        get recordDeleted() { return tr('individual.status.recordDeleted', '기록이 삭제되었습니다.'); },
+        get adjustmentSaved() { return tr('individual.status.adjustmentSaved', '보정값이 저장되었습니다.'); },
+        get cardsTitle() { return tr('individual.cardsTitle', '요약 카드 (최근 90일)'); },
+        get hideUnder4() { return tr('individual.buttons.hideUnder4', '4★ 이하 숨기기'); },
+        get authSignedIn() { return tr('individual.auth.signedIn', '로그인:'); },
+        get authLogin() { return tr('individual.auth.login', '로그인'); },
+        get authLogout() { return tr('individual.auth.logout', '로그아웃'); },
+        get authScopeNote() { return tr('individual.auth.scopeNote', '※ 이 사이트에서 생성한 파일만 읽고 쓸 수 있습니다.'); },
+        get pullsUnit() { return tr('individual.overview.pullsUnit', '회'); },
+        get limited5() { return tr('individual.overview.limited5', '5성 한정'); },
+        overviewSection: (key, fallback) => tr(`individual.overview.section.${key}`, fallback),
+        bannerName: (key, fallback) => tr(`individual.bannerNames.${key}`, fallback || key),
+        table: (key, fallback) => tr(`individual.table.${key}`, fallback || key),
+        get manualTag() { return tr('individual.manual.tag', '수동'); },
+        get lowAndBelow() { return tr('individual.lower.andBelow', '이하'); },
+        mergeTitle: (source) => source === 'file'
+            ? tr('individual.merge.fileTitle', '파일 가져오기')
+            : tr('individual.merge.driveTitle', 'Drive 불러오기'),
+        get mergeMessage() { return tr('individual.merge.message', '새 데이터 적용 방식 선택:\n\n병합: 기존 기록에 새 데이터를 합치기\n덮어쓰기: 현재 기록을 새 데이터로 교체하기'); },
+        get mergeCancel() { return tr('individual.merge.cancel', '취소'); },
+        get mergeMerge() { return tr('individual.merge.merge', '병합'); },
+        get mergeOverwrite() { return tr('individual.merge.overwrite', '덮어쓰기'); }
+    };
 
     const els = {
         home: document.getElementById('navhome'),
@@ -137,32 +121,22 @@
         if (els.clear) els.clear.textContent = t.clear;
         if (els.info) els.info.innerHTML = `${t.infoReady}<br>${t.infoNotice}`;
         const hide4 = document.getElementById('hide4Label');
-        if (hide4) hide4.textContent = (lang === 'en' ? 'Hide under 4★' : (lang === 'jp' ? '4★ 以下を隠す' : '4★ 이하 숨기기'));
-        if (els.cardsTitle) {
-            const map = { kr: '요약 카드 (최근 90일)', en: 'Stats (Last 90 Days)', jp: '統計（直近90日）' };
-            els.cardsTitle.textContent = map[lang] || map.kr;
-        }
+        if (hide4) hide4.textContent = t.hideUnder4;
+        if (els.cardsTitle) els.cardsTitle.textContent = t.cardsTitle;
         // auth bar labels
         try {
             const signed = document.getElementById('ptUserSignedAs');
             const loginBtn = document.getElementById('ptLoginBtn');
             const logoutBtn = document.getElementById('ptLogoutBtn');
             const scopeNote = document.getElementById('ptScopeNote');
-            if (signed) signed.textContent = (lang === 'en' ? 'Signed in:' : (lang === 'jp' ? 'ログイン:' : '로그인:'));
-            if (loginBtn) loginBtn.textContent = (lang === 'en' ? 'Login' : (lang === 'jp' ? 'ログイン' : '로그인'));
-            if (logoutBtn) logoutBtn.textContent = (lang === 'en' ? 'Logout' : (lang === 'jp' ? 'ログアウト' : '로그아웃'));
-            if (scopeNote) {
-                scopeNote.textContent = (lang === 'en'
-                    ? '※ lufel.net can only read/write files created by this site.'
-                    : (lang === 'jp'
-                        ? '※ このサイトで作成したファイルのみ読み書きできます。'
-                        : '※ 이 사이트에서 생성한 파일만 읽고 쓸 수 있습니다.'));
-            }
+            if (signed) signed.textContent = t.authSignedIn;
+            if (loginBtn) loginBtn.textContent = t.authLogin;
+            if (logoutBtn) logoutBtn.textContent = t.authLogout;
+            if (scopeNote) scopeNote.textContent = t.authScopeNote;
         } catch (_) { }
     }
 
-    // DEBUG 예시 UI 바인딩 (DOM 생성 이후)
-    document.addEventListener('DOMContentLoaded', function () {
+    function bindRuntimeUi() {
         try {
             // URL 가이드 버튼 이동
             const gbtn = document.getElementById('openGuideBtn');
@@ -193,12 +167,19 @@
                         localStorage.setItem('pull-tracker:merged', JSON.stringify(merged));
                         renderCardsFromExample(merged);
                         __dataSource = 'local';
-                        setStatus(`${t.savedLocal} ${nowStamp()}\n✅ 완료`);
-                    } catch (e) { setStatus('예시 적용 실패'); }
+                        setStatus(`${t.savedLocal} ${nowStamp()}\n${t.complete}`);
+                    } catch (e) { setStatus(t.exampleApplyFailed); }
                 });
             }
         } catch (_) { }
-    });
+    }
+
+    // i18n 초기화 대기 후 이 코드가 실행되므로, DOMContentLoaded가 이미 끝났을 수 있다.
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', bindRuntimeUi, { once: true });
+    } else {
+        bindRuntimeUi();
+    }
 
     // --- Google Drive 로그인/동기화 ---
     let __googleAuthed = false;
@@ -305,7 +286,7 @@
             if (res.status === 403) {
                 const txt = await res.clone().text();
                 if (/storageQuotaExceeded/i.test(txt)) {
-                    setStatus(lang === 'en' ? 'Google Drive storage quota exceeded. Please free up space.' : (lang === 'jp' ? 'Google ドライブの保存容量が上限に達しました。空き容量を確保してください。' : 'Google 드라이브 저장 용량이 초과되었습니다. 공간을 확보해주세요.'));
+                    setStatus(t.driveQuotaExceeded);
                 }
             }
         } catch (_) { }
@@ -609,7 +590,7 @@
                 if (titleIcon) { const ic = document.createElement('img'); ic.src = titleIcon; ic.alt = key; ic.className = 'card-title-icon'; titleWrap.appendChild(ic); }
                 el.appendChild(titleWrap);
                 // top stats: 총 뽑기 N회 / {jewel} cost
-                const pullsSuffix = lang === 'en' ? 'pulls' : (lang === 'jp' ? '回' : '회');
+                const pullsSuffix = t.pullsUnit;
                 const topRow = document.createElement('div'); topRow.className = 'stat'; topRow.style.fontSize = '13px'; topRow.style.justifyContent = 'flex-start'; topRow.style.gap = '16px';
                 // const l = document.createElement('span'); l.textContent = textFor('total');
                 const r = document.createElement('strong');
@@ -662,22 +643,22 @@
             const pickupWin = (Number(blocks.pickup[0]?.summary?.win5050) || 0) + (Number(blocks.pickup[1]?.summary?.win5050) || 0);
             const pickupRate = (pickup.t5 > 0) ? (pickupWin / pickup.t5 * 100) : null;
             const pickupAvg = (pickupWin > 0) ? (pickup.effTotal / pickupWin) : null;
-            const pickupLabel = `  └ ${lang === 'en' ? '5★ Limited' : (lang === 'jp' ? '★5 限定' : '5성 한정')}`;
+            const pickupLabel = `  └ ${t.limited5}`;
             const pickupExtra = `<div class=\"tr fifty\"><div class=\"td\">${pickupLabel}</div><div class=\"td\">${numberFmt(pickupWin)}</div><div class=\"td\">${pickupRate != null ? numberFmt(pickupRate, 2) + '%' : '-'}</div><div class=\"td\">${pickupAvg != null ? numberFmt(pickupAvg, 2) : '-'}</div></div>`;
 
             // Weapon만 50:50 계산, Weapon_Confirmed는 제외
             const weaponWin = (Number(blocks.weapon[0]?.summary?.win5050) || 0);
             const weaponTotal5 = (Number(blocks.weapon[0]?.summary?.total5Star) || 0) + (Number(blocks.weapon[1]?.summary?.total5Star) || 0);
-            const weaponLabel = `  └ ${lang === 'en' ? '5★ Limited' : (lang === 'jp' ? '★5 限定' : '5성 한정')}`;
+            const weaponLabel = `  └ ${t.limited5}`;
             const weaponAvg = weaponWin > 0 ? (weapon.effTotal / weaponWin) : null;
             const weaponExtra = `<div class=\"tr fifty\"><div class=\"td\">${weaponLabel}</div><div class=\"td\">${numberFmt(weaponWin)}</div><div class=\"td\">${weaponTotal5 > 0 ? numberFmt(weaponWin / weaponTotal5 * 100, 2) + '%' : '-'}</div><div class=\"td\">${weaponAvg != null ? numberFmt(weaponAvg, 2) : '-'}</div></div>`;
 
             const wrap = els.overview;
             wrap.innerHTML = '';
             const iconMap = { pickup: '정해진 운명.png', weapon: '정해진 코인.png', standard: '미래의 운명.png' };
-            wrap.appendChild(makeCard('pickup', (lang === 'en' ? 'Character' : (lang === 'jp' ? 'キャラクター' : '캐릭터')), pickup, pickupExtra, `${base}/assets/img/pay/${iconMap.pickup}`));
-            wrap.appendChild(makeCard('weapon', (lang === 'en' ? 'Weapon' : (lang === 'jp' ? '武器' : '무기')), weapon, weaponExtra, `${base}/assets/img/pay/${iconMap.weapon}`));
-            wrap.appendChild(makeCard('standard', (lang === 'en' ? 'Standard' : (lang === 'jp' ? '通常' : '일반')), standard, null, `${base}/assets/img/pay/${iconMap.standard}`));
+            wrap.appendChild(makeCard('pickup', t.overviewSection('character', 'Character'), pickup, pickupExtra, `${base}/assets/img/pay/${iconMap.pickup}`));
+            wrap.appendChild(makeCard('weapon', t.overviewSection('weapon', 'Weapon'), weapon, weaponExtra, `${base}/assets/img/pay/${iconMap.weapon}`));
+            wrap.appendChild(makeCard('standard', t.overviewSection('standard', 'Standard'), standard, null, `${base}/assets/img/pay/${iconMap.standard}`));
         } catch (_) { }
     }
 
@@ -1147,7 +1128,7 @@
                             const success = window.RecordManager.addRecord(record, panelKey);
                             if (success) {
                                 window.RecordManager.triggerRerender();
-                                setStatus((lang === 'en' ? 'Record added.' : (lang === 'jp' ? '記録を追加しました。' : '기록이 추가되었습니다.')) + ' ' + nowStamp());
+                                setStatus(`${t.recordAdded} ${nowStamp()}`);
                             }
                         }
                     });
@@ -1173,7 +1154,7 @@
                             if (window.RecordManager && window.RecordManager.setAdjustment) {
                                 window.RecordManager.setAdjustment(key, additionalPulls, progressAdjust);
                                 window.RecordManager.triggerRerender();
-                                setStatus((lang === 'en' ? 'Adjustment saved.' : (lang === 'jp' ? '補正を保存しました。' : '보정값이 저장되었습니다.')) + ' ' + nowStamp());
+                                setStatus(`${t.adjustmentSaved} ${nowStamp()}`);
                             }
                         });
                     });
@@ -1274,7 +1255,7 @@
                     if (isManual) {
                         const tag = document.createElement('span');
                         tag.className = 'five-manual-tag';
-                        tag.textContent = lang === 'en' ? 'Manual' : (lang === 'jp' ? '手動' : '수동');
+                        tag.textContent = t.manualTag;
                         tag.style.cssText = 'font-size:10px; padding:2px 6px; background:rgba(100,200,100,0.2); color:#8f8; border-radius:4px; margin-left:6px;';
                         left.appendChild(tag);
                     }
@@ -1300,14 +1281,14 @@
                                 (updated, pk) => {
                                     if (window.RecordManager && window.RecordManager.updateRecord(updated, pk)) {
                                         window.RecordManager.triggerRerender();
-                                        setStatus((lang === 'en' ? 'Record updated.' : (lang === 'jp' ? '記録を更新しました。' : '기록이 수정되었습니다.')) + ' ' + nowStamp());
+                                        setStatus(`${t.recordUpdated} ${nowStamp()}`);
                                     }
                                 },
                                 // onDelete
                                 (deleted, pk) => {
                                     if (window.RecordManager && window.RecordManager.deleteRecord(deleted, pk)) {
                                         window.RecordManager.triggerRerender();
-                                        setStatus((lang === 'en' ? 'Record deleted.' : (lang === 'jp' ? '記録を削除しました。' : '기록이 삭제되었습니다.')) + ' ' + nowStamp());
+                                        setStatus(`${t.recordDeleted} ${nowStamp()}`);
                                     }
                                 }
                             );
@@ -1370,95 +1351,11 @@
     }
 
     function toDisplayName(key) {
-        const map = {
-            kr: { gold: '일반', fortune: '운명', weapon: '무기', weapon_confirmed: '무기 확정', confirmed: '확정', newcomer: '신규' },
-            en: { gold: 'Gold', fortune: 'Chance', weapon: 'Weapon', weapon_confirmed: 'Weapon Confirmed', confirmed: 'Target', newcomer: 'Newcomer' },
-            jp: { gold: 'ゴールド', fortune: 'フォーチュン', weapon: '武器', weapon_confirmed: '武器確定', confirmed: '確定', newcomer: '新米怪盗サポート' }
-        };
-        const dict = map[lang] || map.kr;
-        return dict[key] || key;
+        return t.bannerName(key, key);
     }
 
     function textFor(key) {
-        const dicts = {
-            kr: {
-                total: '총 뽑기',
-                totalInProgress: '총 뽑기 / 진행 중',
-                count: '합계',
-                rate: '확률',
-                avg: '평균 횟수',
-                win: '성공',
-                rule: '보장 규칙',
-                fiveStarHistory: '5★ 상세 기록',
-                timesSuffix: '회',
-                tooltip_confirmed: '확정: 5★ 110회 보장, 4★ 10회 보장.\n5★ 확률은 (총 뽑기 - 진행 중) 기준으로 계산됩니다.',
-                tooltip_fortune: '운명: 5★ 80회 보장, 4★ 10회 보장 (50% 규칙).\n5★ 확률은 (총 뽑기 - 진행 중) 기준으로 계산됩니다.\n\n50% 성공 여부는 현재 게임 서버에서 제공되지 않아 한정 캐릭터 여부를 통해 성공 여부를 판정합니다. 따라서 특정 상황에 따라 정확도가 떨어집니다.\n\n50%에 실패할 경우 다음은 무조건 성공하므로, 횟수가 많아지면 기댓값은 66.6%입니다.',
-                tooltip_gold: '일반: 5★ 80회 보장, 4★ 10회 보장.\n5★ 확률은 (총 뽑기 - 진행 중) 기준으로 계산됩니다.',
-                tooltip_weapon: '무기: 5★ 70회 보장, 4★ 10회 보장 (50% 규칙).\n5★ 확률은 (총 뽑기 - 진행 중) 기준으로 계산됩니다.\n\n50% 성공 여부는 현재 게임 서버에서 제공되지 않아 한정 캐릭터 여부를 통해 성공 여부를 판정합니다. 따라서 특정 상황에 따라 정확도가 떨어집니다.\n\n50%에 실패할 경우 다음은 무조건 성공하므로, 횟수가 많아지면 기댓값은 66.6%입니다.',
-                tooltip_weapon_confirmed: '무기 확정: 5★ 95회 보장, 4★ 10회 보장.\n5★ 확률은 (총 뽑기 - 진행 중) 기준으로 계산됩니다.',
-                tooltip_newcomer: '신규: 5★ 50회 보장, 4★ 10회 보장.\n5★ 확률은 (총 뽑기 - 진행 중) 기준으로 계산됩니다.',
-                fiveTotal: '5★ 총 횟수',
-                fivePityRate: '5★ 확률',
-                fiveAvg: '5★ 평균 횟수',
-                win5050Count: '한정 (횟수)',
-                win5050Rate: '한정 (확률)',
-                fourTotal: '4★ 총 횟수',
-                fourPityRate: '4★ 확률',
-                fourAvg: '4★ 평균 횟수'
-            },
-            en: {
-                total: 'Total Pulls',
-                totalInProgress: 'Total / In Progress',
-                count: 'Count',
-                rate: 'Rate',
-                avg: 'Avg Pulls',
-                win: 'Win',
-                rule: 'Guarantee',
-                fiveStarHistory: '5★ History',
-                timesSuffix: 'pulls',
-                tooltip_confirmed: 'Confirmed: 5★ at 110, 4★ at 10.\n5★ Rates are calculated using (Total - In Progress).',
-                tooltip_fortune: 'Fortune: 5★ at 80, 4★ at 10 (50:50 rule).\n5★Rates and 50:50 use (Total - In Progress).\n50:50 success is not provided by the game server; we infer it using featured/limited status, so accuracy may be reduced in some situations.\n\nIf it loses 50% of the time, the next time it will always win, so the expectation is 66.6% as the number of times increases.',
-                tooltip_gold: 'Standard: 5★ at 80, 4★ at 10.\n5★ Rates use (Total - In Progress).',
-                tooltip_weapon: 'Weapon: 5★ at 70, 4★ at 10 (50:50 rule).\n5★ Rates and 50:50 use (Total - In Progress).\n50:50 success is not provided by the game server; we infer it using featured/limited status, so accuracy may be reduced in some situations.\n\nIf it loses 50% of the time, the next time it will always win, so the expectation is 66.6% as the number of times increases.',
-                tooltip_weapon_confirmed: 'Weapon Confirmed: 5★ at 95, 4★ at 10.\n5★ Rates are calculated using (Total - In Progress).',
-                tooltip_newcomer: 'Newcomer: 5★ at 50, 4★ at 10.\n5★ Rates use (Total - In Progress).',
-                fiveTotal: '5★ Count',
-                fivePityRate: '5★ Rate',
-                fiveAvg: '5★ Avg Pulls',
-                win5050Count: 'Limited (Count)',
-                win5050Rate: 'Limited (Rate)',
-                fourTotal: '4★ Count',
-                fourPityRate: '4★ Rate',
-                fourAvg: '4★ Avg Pulls'
-            },
-            jp: {
-                total: '総ガチャ数',
-                totalInProgress: '総数 / 進行中',
-                count: '合計',
-                rate: '割合',
-                avg: '平均回数',
-                win: '勝利',
-                rule: '保証',
-                fiveStarHistory: '5★ 詳細',
-                timesSuffix: '回',
-                tooltip_confirmed: '確定: 5★ 110回, 4★ 10回。\n5★確率および50%勝利は(総数 - 進行中)で計算します。',
-                tooltip_fortune: 'フォーチュン: 5★ 80回, 4★ 10回 (50% ルール)。\n5★確率および50%勝利は(総数 - 進行中)で計算。\n50%勝利の可否はゲームサーバーが提供していないため、限定キャラクターかどうかで推定しています。状況によっては正確性が低下する場合があります。\n\n50%に失敗した場合、次は無条件で成功するので、回数が増えると期待値は66.6%になります。',
-                tooltip_gold: '通常: 5★ 80回, 4★ 10回。\n5★確率は(総数 - 進行中)で計算。',
-                tooltip_weapon: '武器: 5★ 70回, 4★ 10回 (50% ルール)。\n5★確率および50%勝利は(総数 - 進行中)で計算。\n50%勝利の可否はゲームサーバーが提供していないため、限定キャラクターかどうかで推定しています。状況によっては正確性が低下する場合があります。\n\n50%に失敗した場合、次は無条件で成功するので、回数が増えると期待値は66.6%になります。',
-                tooltip_weapon_confirmed: '武器確定: 5★ 95回, 4★ 10回。\n5★確率は(総数 - 進行中)で計算します。',
-                tooltip_newcomer: '新米怪盗サポート: 5★ 50回, 4★ 10回。\n5★確率は(総数 - 進行中)で計算。',
-                fiveTotal: '5★ 回数',
-                fivePityRate: '5★ 率',
-                fiveAvg: '5★ 平均回数',
-                win5050Count: '50% 勝利(回数)',
-                win5050Rate: '50% 勝利(率)',
-                fourTotal: '4★ 回数',
-                fourPityRate: '4★ 率',
-                fourAvg: '4★ 平均回数'
-            }
-        };
-        const dict = dicts[lang] || dicts.kr;
-        return dict[key] || key;
+        return t.table(key, key);
     }
 
     function numberFmt(n, frac = 0) {
@@ -1505,30 +1402,15 @@
                         : label === 'weapon_confirmed' ? 'tooltip_weapon_confirmed'
                             : label === 'newcomer' ? 'tooltip_newcomer'
                                 : null;
-        const dict = {
-            kr: textFor(key),
-            en: textFor(key),
-            jp: textFor(key)
-        };
-        return dict[lang] || '';
+        return key ? textFor(key) : '';
     }
 
     // 병합 / 덮어쓰기 선택용 간단 다이얼로그
     async function chooseMergeMode(source) {
         try {
             return await new Promise((resolve) => {
-                const l = lang;
-                const isFile = source === 'file';
-                const title = (l === 'en')
-                    ? (isFile ? 'Import from file' : 'Load from Drive')
-                    : (l === 'jp'
-                        ? (isFile ? 'ファイルから読み込み' : 'Drive から読み込み')
-                        : (isFile ? '파일 가져오기' : 'Drive 불러오기'));
-                const msg = (l === 'en')
-                    ? 'How do you want to apply the new data?\n\nMerge: Combine with existing records\nOverwrite: Replace current records with new data'
-                    : (l === 'jp'
-                        ? '新しいデータをどのように適用しますか？\n\nマージ: 既存の記録と結合\n上書き: 現在の記録を新しいデータで置き換え'
-                        : '새 데이터 적용 방식 선택:\n\n병합: 기존 기록에 새 데이터를 합치기\n덮어쓰기: 현재 기록을 새 데이터로 교체하기');
+                const title = t.mergeTitle(source);
+                const msg = t.mergeMessage;
                 const backdrop = document.createElement('div');
                 backdrop.style.position = 'fixed';
                 backdrop.style.inset = '0';
@@ -1565,27 +1447,23 @@
                 btnRow.style.justifyContent = 'flex-end';
                 btnRow.style.gap = '8px';
 
-                const cancelLabel = (l === 'en') ? 'Cancel' : (l === 'jp' ? 'キャンセル' : '취소');
-                const mergeLabel = (l === 'en') ? 'Merge' : (l === 'jp' ? 'マージ' : '병합');
-                const overwriteLabel = (l === 'en') ? 'Overwrite' : (l === 'jp' ? '上書き' : '덮어쓰기');
-
                 function close(val) {
                     try { document.body.removeChild(backdrop); } catch (_) { }
                     resolve(val);
                 }
 
                 const cancelBtn = document.createElement('button');
-                cancelBtn.textContent = cancelLabel;
+                cancelBtn.textContent = t.mergeCancel;
                 cancelBtn.className = 'url-btn secondary';
                 cancelBtn.onclick = () => close(null);
 
                 const mergeBtn = document.createElement('button');
-                mergeBtn.textContent = mergeLabel;
+                mergeBtn.textContent = t.mergeMerge;
                 mergeBtn.className = 'url-btn secondary';
                 mergeBtn.onclick = () => close('merge');
 
                 const overwriteBtn = document.createElement('button');
-                overwriteBtn.textContent = overwriteLabel;
+                overwriteBtn.textContent = t.mergeOverwrite;
                 overwriteBtn.className = 'url-btn primary';
                 overwriteBtn.onclick = () => close('overwrite');
 
@@ -1681,14 +1559,14 @@
                                     (updated, pk) => {
                                         if (window.RecordManager.updateRecord(updated, pk)) {
                                             window.RecordManager.triggerRerender();
-                                            setStatus((lang === 'en' ? 'Record updated.' : (lang === 'jp' ? '記録を更新しました。' : '기록이 수정되었습니다.')) + ' ' + nowStamp());
+                                            setStatus(`${t.recordUpdated} ${nowStamp()}`);
                                         }
                                     },
                                     // onDelete
                                     (deleted, pk) => {
                                         if (window.RecordManager.deleteRecord(deleted, pk)) {
                                             window.RecordManager.triggerRerender();
-                                            setStatus((lang === 'en' ? 'Record deleted.' : (lang === 'jp' ? '記録を削除しました。' : '기록이 삭제되었습니다.')) + ' ' + nowStamp());
+                                            setStatus(`${t.recordDeleted} ${nowStamp()}`);
                                         }
                                     }
                                 );
@@ -1702,7 +1580,6 @@
             // 3★ 이하 totals
             const total3 = sumMap(byGrade[3]);
             const total2 = sumMap(byGrade[2]);
-            const lowLabel = lang === 'jp' ? '以下' : (lang === 'en' ? 'and below' : '이하');
             if (total3 > 0 && !hide4) addPill(container, `3★ ${total3}`);
             if (total2 > 0 && !hide4) addPill(container, `2★ ${total2}`);
         } catch (_) { }

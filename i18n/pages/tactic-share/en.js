@@ -15,7 +15,7 @@ window.I18N_PAGE_TACTIC_SHARE_EN = {
     submit_button: 'Submit',
     ranking_weekly: 'Weekly',
     ranking_monthly: 'Monthly',
-    ranking_all: 'All-Time',
+    ranking_all: 'AllTime',
     search_placeholder: 'Search title...',
     view_all: 'All',
     view_best: 'Best',

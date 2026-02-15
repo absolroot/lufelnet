@@ -1,31 +1,24 @@
 // drive-sync.js - 수동 Google Drive 저장/불러오기 컨트롤러
 (() => {
-  function lang() {
-    try { return (new URLSearchParams(location.search).get('lang') || 'kr').toLowerCase(); }
-    catch(_) { return 'kr'; }
+  function tr(key, fallback) {
+    try {
+      if (window.PullTrackerI18n && typeof window.PullTrackerI18n.t === 'function') {
+        return window.PullTrackerI18n.t(key, fallback);
+      }
+    } catch (_) { }
+    return fallback || key;
   }
 
   function labels() {
-    const l = lang();
-    const base = {
-      save:  { kr:'Drive 저장', en:'Save to Drive',  jp:'Drive 保存' },
-      load:  { kr:'Drive 불러오기', en:'Load from Drive', jp:'Drive 読み込み' },
-      saved: { kr:'드라이브에 저장했습니다.', en:'Saved to Drive.', jp:'Drive に保存しました。' },
-      loadedOk: { kr:'드라이브에서 불러왔습니다.', en:'Loaded from Drive.', jp:'Drive から読み込みました。' },
-      loadedNone: { kr:'드라이브에 저장된 데이터가 없습니다.', en:'No data on Drive.', jp:'Drive に保存されたデータがありません。' },
-      noLocal: { kr:'저장할 로컬 데이터가 없습니다.', en:'No local data to save.', jp:'保存するローカルデータがありません。' },
-      needLogin: { kr:'먼저 상단 로그인 버튼으로 Google Drive에 로그인해 주세요.', en:'Please login to Google Drive first.', jp:'まず上部のログインボタンから Google Drive にログインしてください。' },
-      failed: { kr:'작업에 실패했습니다. 잠시 후 다시 시도해 주세요.', en:'Operation failed. Please try again later.', jp:'操作に失敗しました。時間をおいて再度お試しください。' }
-    };
     return {
-      save: base.save[l] || base.save.kr,
-      load: base.load[l] || base.load.kr,
-      saved: base.saved[l] || base.saved.kr,
-      loadedOk: base.loadedOk[l] || base.loadedOk.kr,
-      loadedNone: base.loadedNone[l] || base.loadedNone.kr,
-      noLocal: base.noLocal[l] || base.noLocal.kr,
-      needLogin: base.needLogin[l] || base.needLogin.kr,
-      failed: base.failed[l] || base.failed.kr
+      save: tr('io.drive.saveLabel', 'Drive 저장'),
+      load: tr('io.drive.loadLabel', 'Drive 불러오기'),
+      saved: tr('io.drive.saved', '드라이브에 저장했습니다.'),
+      loadedOk: tr('io.drive.loadedOk', '드라이브에서 불러왔습니다.'),
+      loadedNone: tr('io.drive.loadedNone', '드라이브에 저장된 데이터가 없습니다.'),
+      noLocal: tr('io.drive.noLocal', '저장할 로컬 데이터가 없습니다.'),
+      needLogin: tr('io.drive.needLogin', '먼저 상단 로그인 버튼으로 Google Drive에 로그인해 주세요.'),
+      failed: tr('io.drive.failed', '작업에 실패했습니다. 잠시 후 다시 시도해 주세요.')
     };
   }
 
@@ -112,9 +105,15 @@
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initButtons);
+    document.addEventListener('DOMContentLoaded', async () => {
+      try { await (window.__pullI18nReady || Promise.resolve()); } catch (_) { }
+      initButtons();
+    });
   } else {
-    initButtons();
+    (async () => {
+      try { await (window.__pullI18nReady || Promise.resolve()); } catch (_) { }
+      initButtons();
+    })();
   }
 })();
 

@@ -9,94 +9,27 @@
     // 유틸리티
     // ─────────────────────────────────────────────────────────────
     function lang() {
-        try { return (new URLSearchParams(location.search).get('lang') || 'kr').toLowerCase(); }
-        catch (_) { return 'kr'; }
+        try {
+            if (window.PullTrackerI18n && typeof window.PullTrackerI18n.lang === 'function') {
+                return window.PullTrackerI18n.lang();
+            }
+            return (new URLSearchParams(location.search).get('lang') || 'kr').toLowerCase();
+        } catch (_) {
+            return 'kr';
+        }
     }
 
-    const i18n = {
-        kr: {
-            addRecord: '기록 추가',
-            editRecord: '기록 수정',
-            get5Star: '5★ 추가',
-            get4Star: '4★ 추가',
-            character: '캐릭터',
-            weapon: '무기',
-            dateTime: '날짜/시간',
-            atPity: 'At pity',
-            atPityUnit: '회',
-            grade: '등급',
-            save: '저장',
-            cancel: '취소',
-            delete: '삭제',
-            close: '닫기',
-            search: '검색...',
-            maxPity: '최대',
-            originalReadonly: '자동으로 가져온 데이터는 삭제만 가능합니다',
-            confirmDelete: '이 기록을 삭제하시겠습니까?',
-            selectCharacter: '캐릭터 선택',
-            selectWeapon: '무기 선택',
-            noResults: '검색 결과 없음',
-            historyTitle: '획득 기록',
-            manualTag: '수동',
-            autoTag: '자동'
-        },
-        en: {
-            addRecord: 'Add Record',
-            editRecord: 'Edit Record',
-            get5Star: 'Add 5★',
-            get4Star: 'Add 4★',
-            character: 'Character',
-            weapon: 'Weapon',
-            dateTime: 'Date/Time',
-            atPity: 'At pity',
-            atPityUnit: 'pulls',
-            grade: 'Grade',
-            save: 'Save',
-            cancel: 'Cancel',
-            delete: 'Delete',
-            close: 'Close',
-            search: 'Search...',
-            maxPity: 'max',
-            originalReadonly: 'Auto-imported data can only be deleted',
-            confirmDelete: 'Delete this record?',
-            selectCharacter: 'Select Character',
-            selectWeapon: 'Select Weapon',
-            noResults: 'No results',
-            historyTitle: 'History',
-            manualTag: 'Manual',
-            autoTag: 'Auto'
-        },
-        jp: {
-            addRecord: '記録追加',
-            editRecord: '記録編集',
-            get5Star: '5★ 追加',
-            get4Star: '4★ 追加',
-            character: 'キャラクター',
-            weapon: '武器',
-            dateTime: '日時',
-            atPity: '天井',
-            atPityUnit: '回',
-            grade: 'レア度',
-            save: '保存',
-            cancel: 'キャンセル',
-            delete: '削除',
-            close: '閉じる',
-            search: '検索...',
-            maxPity: '最大',
-            originalReadonly: '自動取得データは削除のみ可能です',
-            confirmDelete: 'この記録を削除しますか？',
-            selectCharacter: 'キャラクター選択',
-            selectWeapon: '武器選択',
-            noResults: '結果なし',
-            historyTitle: '獲得履歴',
-            manualTag: '手動',
-            autoTag: '自動'
-        }
-    };
+    function tr(path, fallback) {
+        try {
+            if (window.PullTrackerI18n && typeof window.PullTrackerI18n.t === 'function') {
+                return window.PullTrackerI18n.t(path, fallback);
+            }
+        } catch (_) { }
+        return fallback || path;
+    }
 
     function t(key) {
-        const l = lang();
-        return (i18n[l] || i18n.kr)[key] || key;
+        return tr(`manualEditor.${key}`, key);
     }
 
     // 패널별 최대 pity
@@ -1329,45 +1262,8 @@
     // 보정 모달 (총 뽑기/진행 중 조정)
     // ─────────────────────────────────────────────────────────────
 
-    const adjustI18n = {
-        kr: {
-            title: '횟수 보정',
-            originalTotal: '기존 총 뽑기',
-            additionalPulls: '추가 횟수',
-            displayTotal: '표시될 총 뽑기',
-            originalProgress: '기존 진행 중',
-            progressAdjust: '진행 중 조정',
-            displayProgress: '표시될 진행 중',
-            note: '※ 기존 데이터는 유지되며, 표시만 조정됩니다.',
-            reset: '초기화'
-        },
-        en: {
-            title: 'Adjust Counts',
-            originalTotal: 'Original Total',
-            additionalPulls: 'Additional Pulls',
-            displayTotal: 'Displayed Total',
-            originalProgress: 'Original In Progress',
-            progressAdjust: 'Progress Adjust',
-            displayProgress: 'Displayed Progress',
-            note: '※ Original data is preserved; only display is adjusted.',
-            reset: 'Reset'
-        },
-        jp: {
-            title: '回数補正',
-            originalTotal: '元の総数',
-            additionalPulls: '追加回数',
-            displayTotal: '表示される総数',
-            originalProgress: '元の進行中',
-            progressAdjust: '進行中調整',
-            displayProgress: '表示される進行中',
-            note: '※ 元データは保持され、表示のみ調整されます。',
-            reset: 'リセット'
-        }
-    };
-
     function ta(key) {
-        const l = lang();
-        return (adjustI18n[l] || adjustI18n.kr)[key] || key;
+        return tr(`adjustModal.${key}`, key);
     }
 
     function openAdjustModal(panelKey, originalTotal, originalProgress, onSave) {

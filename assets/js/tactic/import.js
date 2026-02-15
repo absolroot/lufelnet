@@ -1,3 +1,13 @@
+function getImportI18nText(key, fallback = '') {
+  if (typeof window.t === 'function') {
+    return window.t(key, fallback);
+  }
+  if (window.I18nService && typeof window.I18nService.t === 'function') {
+    return window.I18nService.t(key, fallback);
+  }
+  return fallback || key;
+}
+
 // 공통 적용 함수: 파일이든 외부 데이터든 동일 로직으로 UI에 주입
 window.applyImportedData = function(payload, options = {}) {
   try {
@@ -15,7 +25,7 @@ window.applyImportedData = function(payload, options = {}) {
     const titleInput = document.querySelector('.title-input');
     if (titleInput) {
       if (titleOverride) titleInput.value = titleOverride;
-      else titleInput.value = data.title || "페르소나5X 택틱 메이커";
+      else titleInput.value = data.title || getImportI18nText('pageTitle', '페르소나5X 택틱 메이커');
     }
 
     // 원더 페르소나 데이터 설정
@@ -414,7 +424,7 @@ window.applyImportedData = function(payload, options = {}) {
     } catch(_) {}
   } catch (error) {
     console.error('Invalid file data:', error);
-    alert('파일 형식이 올바르지 않습니다.');
+    alert(getImportI18nText('errorInvalidFileFormat', '파일 형식이 올바르지 않습니다.'));
   } finally {
     // 임포트 완료
     window.__IS_APPLYING_IMPORT = false;
@@ -435,7 +445,7 @@ function importData() {
       window.applyImportedData(text);
     } catch (error) {
       console.error('Invalid file data:', error);
-      alert('파일 형식이 올바르지 않습니다.');
+      alert(getImportI18nText('errorInvalidFileFormat', '파일 형식이 올바르지 않습니다.'));
     }
   };
 

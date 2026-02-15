@@ -36,6 +36,16 @@ function getCurrentLanguage() {
   return 'kr';
 }
 
+function getWonderI18nText(key, fallback = '') {
+  if (typeof window.t === 'function') {
+    return window.t(key, fallback);
+  }
+  if (window.I18nService && typeof window.I18nService.t === 'function') {
+    return window.I18nService.t(key, fallback);
+  }
+  return fallback || key;
+}
+
 // 페이지 스크롤 잠금/해제 유틸
 // (removed) scroll lock utilities were causing delayed scroll jumps
 
@@ -423,7 +433,7 @@ function ensureGlobalPortal() {
   closeBtn.style.fontSize = '18px';
   closeBtn.style.cursor = 'pointer';
   closeBtn.style.lineHeight = '1';
-  closeBtn.setAttribute('aria-label', 'Close');
+  closeBtn.setAttribute('aria-label', getWonderI18nText('portalCloseAria', '닫기'));
   closeBtn.addEventListener('click', () => closePortal());
   header.appendChild(title);
   header.appendChild(closeBtn);
@@ -488,18 +498,12 @@ function openPortal(type, inputEl, ctx = {}) {
 
   // 헤더 타이틀 설정
   if (__globalDropdownTitle) {
-    const currentLang = getCurrentLanguage();
-    const tPersona = currentLang === 'jp' ? 'ペルソナ選択' : (currentLang === 'en' ? 'Select Persona' : '페르소나 선택');
-    const tSkill = currentLang === 'jp' ? 'スキル選択' : (currentLang === 'en' ? 'Select Skill' : '스킬 선택');
-    const tCharacter = currentLang === 'jp' ? 'キャラクター選択' : (currentLang === 'en' ? 'Select Character' : '캐릭터 선택');
-    const tRevMain = currentLang === 'jp' ? '主の啓示を選択' : (currentLang === 'en' ? 'Select Main Revelation' : '주 계시 선택');
-    const tRevSub = currentLang === 'jp' ? '日月星辰を選択' : (currentLang === 'en' ? 'Select Sub Revelation' : '일월성진 선택');
-    let title = tSkill;
-    if (type === 'persona') title = tPersona;
-    else if (type === 'skill') title = tSkill;
-    else if (type === 'character') title = tCharacter;
-    else if (type === 'rev-main') title = tRevMain;
-    else if (type === 'rev-sub') title = tRevSub;
+    let title = getWonderI18nText('portalTitleSkill', '스킬 선택');
+    if (type === 'persona') title = getWonderI18nText('portalTitlePersona', '페르소나 선택');
+    else if (type === 'skill') title = getWonderI18nText('portalTitleSkill', '스킬 선택');
+    else if (type === 'character') title = getWonderI18nText('portalTitleCharacter', '캐릭터 선택');
+    else if (type === 'rev-main') title = getWonderI18nText('portalTitleRevMain', '주 계시 선택');
+    else if (type === 'rev-sub') title = getWonderI18nText('portalTitleRevSub', '일월성진 선택');
     __globalDropdownTitle.textContent = title;
   }
 
@@ -522,8 +526,7 @@ function openPortal(type, inputEl, ctx = {}) {
   }
 
   const search = portal.querySelector('.portal-search-input');
-  const currentLang = getCurrentLanguage();
-  search.placeholder = currentLang === 'jp' ? '検索' : (currentLang === 'en' ? 'Search' : '검색');
+  search.placeholder = getWonderI18nText('portalSearchPlaceholder', '검색');
   search.value = '';
   // 캐릭터/계시 목록은 데이터 로딩 후 렌더링해야 EN/JP에서 한글 이름이 먼저 보이는 현상을 방지할 수 있음
   if (type === 'character') {
@@ -740,7 +743,6 @@ function renderPortalList(filter) {
   } else if (type === 'character') {
     // 캐릭터 목록 (setparty.js와 동일 로직 기반)
     let items = [];
-    const currentLang = getCurrentLanguage();
     let forceKR = false;
     try { forceKR = localStorage.getItem('forceKRList') === 'true'; } catch(_) { forceKR = false; }
     const partyIndex = __globalDropdownCtx.partyIndex;
@@ -927,7 +929,7 @@ function renderPortalList(filter) {
     if (!main || !revelationData.main[main]) {
       const warn = document.createElement('div');
       warn.className = 'dropdown-item';
-      warn.textContent = currentLang === 'jp' ? '先にメインを選択' : (currentLang === 'en' ? 'Select main first' : '먼저 주 계시를 선택');
+      warn.textContent = getWonderI18nText('portalSelectMainFirst', '먼저 주 계시를 선택');
       list.appendChild(warn);
       return;
     }

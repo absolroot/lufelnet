@@ -188,7 +188,6 @@
 
       // UI 텍스트 번역 함수
       function getUIText(key) {
-        const currentLang = getCurrentLanguage();
         const keyMap = {
           reference: 'uiReference',
           persona: 'uiPersona',
@@ -198,12 +197,12 @@
           select: 'uiSelect'
         };
         const fallbackMap = {
-          reference: currentLang === 'en' ? 'Reference' : (currentLang === 'jp' ? '参考事項' : '참고사항'),
-          persona: currentLang === 'en' ? 'Persona' : (currentLang === 'jp' ? 'ペルソナ' : '페르소나'),
-          details: currentLang === 'en' ? 'Details' : (currentLang === 'jp' ? '詳細' : '세부사항'),
-          enterDetails: currentLang === 'en' ? 'Enter details' : (currentLang === 'jp' ? '詳細を入力' : '세부사항 입력'),
-          confirm: currentLang === 'en' ? 'Confirm' : (currentLang === 'jp' ? '確認' : '확인'),
-          select: currentLang === 'en' ? 'Select' : (currentLang === 'jp' ? '選択' : '선택')
+          reference: '참고사항',
+          persona: '페르소나',
+          details: '세부사항',
+          enterDetails: '세부사항 입력',
+          confirm: '확인',
+          select: '선택'
         };
         const i18nKey = keyMap[key];
         const fallback = fallbackMap[key] || key;

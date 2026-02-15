@@ -378,16 +378,26 @@ function shareURL() {
   return shareURL.toString();
 }
 
+function getShareI18nText(key, fallback = '') {
+  if (typeof window.t === 'function') {
+    return window.t(key, fallback);
+  }
+  if (window.I18nService && typeof window.I18nService.t === 'function') {
+    return window.I18nService.t(key, fallback);
+  }
+  return fallback || key;
+}
+
 // shareURL 함수 수정
 function handleShare() {
     // exportData와 동일한 데이터 구조 사용
     const url = shareURL();
     navigator.clipboard.writeText(url)
         .then(() => {
-        alert('공유 URL이 클립보드에 복사되었습니다.');
+        alert(getShareI18nText('alertShareUrlCopied', '공유 URL이 클립보드에 복사되었습니다.'));
         })
         .catch(err => {
-        alert('URL 복사에 실패했습니다. 수동으로 복사해주세요.');
+        alert(getShareI18nText('alertShareUrlCopyFailed', 'URL 복사에 실패했습니다. 수동으로 복사해주세요.'));
         console.error('Failed to copy: ', err);
         });
 

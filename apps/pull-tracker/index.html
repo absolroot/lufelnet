@@ -111,6 +111,14 @@ description: "P5X 가챠 Pull Tracker (URL 입력 후 서버에서 기록 조회
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <script src="https://apis.google.com/js/api.js" async defer></script>
     <script>window.GOOGLE_CLIENT_ID = window.GOOGLE_CLIENT_ID || '42431189158-0quc6ja0qm079r5gt4b6f56m4lqb930e.apps.googleusercontent.com';</script>
+    <script type="module" src="{{ site.baseurl }}/i18n/service/i18n-service.js?v={{ site.time | date: '%s' }}"></script>
+    <script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
+    <script src="{{ site.baseurl }}/apps/pull-tracker/js/i18n-runtime.js?v={{ site.time | date: '%s' }}"></script>
+    <script>
+        window.__pullI18nReady = (async () => {
+            try { if (window.PullTrackerI18n) await window.PullTrackerI18n.init('individual'); } catch (_) { }
+        })();
+    </script>
     <script src="{{ site.baseurl }}/apps/pull-tracker/js/merge-engine.js?v={{ site.time | date: '%s' }}"></script>
     <script src="{{ site.baseurl }}/apps/pull-tracker/js/lostlist.js?v={{ site.time | date: '%s' }}"></script>
     <script src="{{ site.baseurl }}/apps/pull-tracker/js/charts.js?v={{ site.time | date: '%s' }}"></script>
@@ -122,44 +130,50 @@ description: "P5X 가챠 Pull Tracker (URL 입력 후 서버에서 기록 조회
     <script src="{{ site.baseurl }}/apps/pull-tracker/js/pull-tracker.js?v={{ site.time | date: '%s' }}"></script>
     <script src="{{ site.baseurl }}/apps/pull-tracker/js/drive-sync.js?v={{ site.time | date: '%s' }}"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', async () => {
+            try { window.BASE_URL = '{{ site.baseurl }}'; } catch (_) { }
+            try { await (window.__pullI18nReady || Promise.resolve()); } catch (_) { }
+
+            const tr = (key, fallback) => {
+                try {
+                    if (window.PullTrackerI18n && typeof window.PullTrackerI18n.t === 'function') {
+                        return window.PullTrackerI18n.t(key, fallback);
+                    }
+                } catch (_) { }
+                return (fallback !== undefined) ? fallback : key;
+            };
+
+            const setMeta = (selector, attrName, attrValue, content) => {
+                let el = document.querySelector(selector);
+                if (!el) {
+                    el = document.createElement('meta');
+                    el.setAttribute(attrName, attrValue);
+                    document.head.appendChild(el);
+                }
+                el.setAttribute('content', content);
+            };
+
+            try {
+                const seoTitle = tr('seo.individual.title', document.title);
+                const descMeta = document.querySelector('meta[name="description"]');
+                const currentDesc = descMeta ? (descMeta.getAttribute('content') || '') : '';
+                const seoDesc = tr('seo.individual.description', currentDesc);
+                const seoLocale = tr('seo.individual.ogLocale', 'ko_KR');
+                document.title = seoTitle;
+                setMeta('meta[name="description"]', 'name', 'description', seoDesc);
+                setMeta('meta[property="og:title"]', 'property', 'og:title', seoTitle);
+                setMeta('meta[property="og:description"]', 'property', 'og:description', seoDesc);
+                setMeta('meta[property="og:locale"]', 'property', 'og:locale', seoLocale);
+            } catch (_) { }
+
+            try {
+                const helpEl = document.getElementById('ptHelpText');
+                if (helpEl) helpEl.textContent = tr('individual.info.helpText');
+            } catch (_) { }
 
             try { if (typeof Navigation !== 'undefined' && Navigation.load) { Navigation.load('pullTracker_individual'); } } catch (_) { }
             try { if (typeof VersionChecker !== 'undefined' && VersionChecker.check) { VersionChecker.check(); } } catch (_) { }
-
-            // expose base url to JS
-            try { window.BASE_URL = '{{ site.baseurl }}'; } catch (_) { }
-            // init Google auth bar
             try { if (window.pullTrackerInitAuth) window.pullTrackerInitAuth(); } catch (_) { }
-            // SEO: 언어별 제목/설명/og 자동 설정
-            try {
-                const params = new URLSearchParams(location.search);
-                const lang = (params.get('lang') || 'kr').toLowerCase();
-                const meta = {
-                    kr: { title: '계약 통계 - 페르소나5 더 팬텀 X', desc: 'P5X 가챠 계약 정보를 기록하고 통계를 확인하세요.' },
-                    en: { title: 'Pull Tracker - Persona 5: The Phantom X', desc: 'P5X Gacha Pull Tracker' },
-                    jp: { title: 'ガチャ履歴 - ペルソナ5 ザ・ファントムX', desc: 'P5Xガチャの契約情報を記録し、統計を確認してください。' }
-                };
-                const cur = meta[lang] || meta.kr;
-                document.title = cur.title;
-                const ensure = (sel, attr, prop) => {
-                    let el = document.querySelector(sel); if (!el) { el = document.createElement('meta'); if (prop) el.setAttribute('property', prop); document.head.appendChild(el); } return el;
-                };
-                let d = document.querySelector('meta[name="description"]');
-                if (!d) { d = document.createElement('meta'); d.setAttribute('name', 'description'); document.head.appendChild(d); }
-                d.setAttribute('content', cur.desc);
-                let ogt = document.querySelector('meta[property="og:title"]'); if (!ogt) { ogt = document.createElement('meta'); ogt.setAttribute('property', 'og:title'); document.head.appendChild(ogt); } ogt.setAttribute('content', cur.title);
-                let ogd = document.querySelector('meta[property="og:description"]'); if (!ogd) { ogd = document.createElement('meta'); ogd.setAttribute('property', 'og:description'); document.head.appendChild(ogd); } ogd.setAttribute('content', cur.desc);
-            } catch (_) { }
-            // Help text i18n
-            try {
-                const el = document.getElementById('ptHelpText');
-                const lang = (new URLSearchParams(location.search).get('lang') || 'kr').toLowerCase();
-                const KR = `·  로컬 데이터는 개인 브라우저에 저장되며 인터넷 기록을 모두 삭제할 경우 데이터는 삭제됩니다.\n·  구글 드라이브 로그인을 통해 여러분의 Google Drive에서 내용을 저장하고 동기화할 수 있습니다.\n·  URL을 통해 제출된 정보는 계정 정보를 비롯한 어떤 유저 식별자도 포함하지 않으며, 데이터는 통계(iant.kr/gacha)에 사용될 수 있습니다.\n·  Special Thanks To : Iant / TheROoNCo`;
-                const EN = `·  Local data is stored in your browser and will be deleted if you clear browsing data.\n·  By signing in with Google Drive, you can save and sync your data in your Google Drive.\n·  Data submitted via URL does not include account information; it may be used for statistics (iant.kr/gacha).\n·  Special Thanks To : Iant / TheROoNCo`;
-                const JP = `·  ローカルデータはお使いのブラウザに保存され、閲覧データをすべて削除すると消去されます。\n·  Google ドライブにログインすると、ご自身の Google Drive に保存・同期できます。\n·  URL で送信される情報にアカウント情報は含まれません。データは統計（iant.kr/gacha）に利用される場合があります。\n·  Special Thanks To : Iant / TheROoNCo`;
-                if (el) el.textContent = (lang === 'en' ? EN : (lang === 'jp' ? JP : KR));
-            } catch (_) { }
         });
     </script>
 

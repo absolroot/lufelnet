@@ -517,112 +517,101 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
         return await __ensureCharacterDataLoadedPromise;
       };
 
-      // UI 번역 함수
-      function translateUI() {
-        const currentLang = getCurrentLanguage();
-        if (currentLang === 'kr') return; // 한국어는 기본값이므로 번역 불필요
+      function setTextNodePreserveChildren(element, text) {
+        if (!element || text == null) return;
+        const textNode = Array.from(element.childNodes).find(node => node.nodeType === Node.TEXT_NODE);
+        if (textNode) {
+          textNode.nodeValue = text;
+        } else {
+          element.insertBefore(document.createTextNode(text), element.firstChild);
+        }
+      }
 
-        const langTranslations = getI18nValue('uiMap', {});
-        if (!langTranslations || typeof langTranslations !== 'object' || Object.keys(langTranslations).length === 0) return;
-        
-        // 텍스트 번역
-        function translateText(element, originalText, translatedText) {
-          if (element && element.textContent.trim() === originalText) {
-            element.textContent = translatedText;
-          }
-        }
-        
-        // placeholder 번역
-        function translatePlaceholder(element, originalText, translatedText) {
-          if (element && element.placeholder === originalText) {
-            element.placeholder = translatedText;
-          }
-        }
-        
-        // label 내부 텍스트 번역 (childNodes 사용)
-        function translateLabelText(element, originalText, translatedText) {
-          if (element && element.tagName === 'LABEL') {
-            element.childNodes.forEach(node => {
-              if (node.nodeType === Node.TEXT_NODE && node.textContent.trim() === originalText) {
-                node.textContent = translatedText;
-              }
-            });
-          }
-        }
+      function setLabelText(selector, key, fallback) {
+        const label = document.querySelector(selector);
+        if (!label) return;
+        setTextNodePreserveChildren(label, getI18nValue(key, fallback));
+      }
 
-        function setHeaderTextPreserveChildren(element, translatedText) {
-          if (!element || !translatedText) return;
-          const textNode = Array.from(element.childNodes).find(node => node.nodeType === Node.TEXT_NODE);
-          if (textNode) {
-            textNode.nodeValue = translatedText;
-          } else {
-            element.insertBefore(document.createTextNode(translatedText), element.firstChild);
-          }
-        }
-        
-        // 각 요소별 번역 적용
-        Object.entries(langTranslations).forEach(([original, translated]) => {
-          // 일반 텍스트 요소들
-          const elements = document.querySelectorAll('*');
-          elements.forEach(element => {
-            if (element.children.length === 0) { // 텍스트만 있는 요소
-              translateText(element, original, translated);
-            }
-          });
-          
-          // label 요소들 (무기, 페르소나1, 페르소나2, 페르소나3 등)
-          const labelElements = document.querySelectorAll('label');
-          labelElements.forEach(element => {
-            translateLabelText(element, original, translated);
-          });
-          
-          // placeholder 속성
-          const inputElements = document.querySelectorAll('input[placeholder]');
-          inputElements.forEach(element => {
-            translatePlaceholder(element, original, translated);
-          });
-          
-          // value 속성 (버튼 등)
-          const buttonElements = document.querySelectorAll('button, input[type="button"]');
-          buttonElements.forEach(element => {
-            if (element.textContent.trim() === original) {
-              element.textContent = translated;
-            }
-          });
-        });
-        
-        // 동적으로 생성되는 홈 링크 번역 (지연 실행)
-        setTimeout(() => {
-          const homeLink = document.querySelector('.navigation-path a');
-          const translatedHome = langTranslations['홈'];
-          if (homeLink && homeLink.textContent.trim() === '홈' && translatedHome) {
-            homeLink.textContent = translatedHome;
-          }
-        }, 100);
-        
-        // 제목 번역
+      function setInputPlaceholder(selector, key, fallback) {
+        const input = document.querySelector(selector);
+        if (!input) return;
+        input.placeholder = getI18nValue(key, fallback);
+      }
+
+      function applyPartyRowLabels(index, firstLabelKey, firstLabelFallback) {
+        const row = document.querySelector(`.party-member[data-index="${index}"]`);
+        if (!row) return;
+        const labels = row.querySelectorAll('.input-group > label');
+        if (labels[0]) setTextNodePreserveChildren(labels[0], getI18nValue(firstLabelKey, firstLabelFallback));
+        if (labels[1]) setTextNodePreserveChildren(labels[1], getI18nValue('labelRitual', '의식'));
+        if (labels[2]) setTextNodePreserveChildren(labels[2], getI18nValue('labelOrder', '순서'));
+        if (labels[3]) setTextNodePreserveChildren(labels[3], getI18nValue('labelMain', '주'));
+        if (labels[4]) setTextNodePreserveChildren(labels[4], getI18nValue('labelSub', '일월성진'));
+      }
+
+      function applyStaticI18nTexts() {
+        const navHome = document.querySelector('.navigation-path a');
+        if (navHome) navHome.textContent = getI18nValue('navHome', '홈');
+
+        const navCurrent = document.querySelector('.navigation-path .current-page');
+        if (navCurrent) navCurrent.textContent = getI18nValue('navCurrent', '택틱 / 택틱 메이커');
+
         const titleInput = document.querySelector('.title-input');
-        const translatedTitle = langTranslations['페르소나5X 택틱 메이커'];
-        if (titleInput && titleInput.value === '페르소나5X 택틱 메이커' && translatedTitle) {
-          titleInput.value = translatedTitle;
-        }
-        
-        // 네비게이션 경로 번역
-        const currentPageSpan = document.querySelector('.current-page');
-        const translatedPath = langTranslations['택틱 / 택틱 메이커'];
-        if (currentPageSpan && translatedPath) {
-          currentPageSpan.textContent = translatedPath;
+        if (titleInput) {
+          const defaults = new Set([
+            '페르소나5X 택틱 메이커',
+            'P5X Tactic Maker',
+            'P5X タクティックメーカー'
+          ]);
+          if (!titleInput.value || defaults.has(titleInput.value.trim())) {
+            titleInput.value = getI18nValue('pageTitle', '페르소나5X 택틱 메이커');
+          }
         }
 
-        // 아코디언 화살표(span)가 들어간 h2도 번역 유지
-        setHeaderTextPreserveChildren(
-          document.querySelector('#wonder-config h2'),
-          langTranslations['원더 설정']
-        );
-        setHeaderTextPreserveChildren(
-          document.querySelector('#party-selection h2'),
-          langTranslations['괴도단']
-        );
+        const exportBtn = document.querySelector('button[onclick="exportData()"]');
+        if (exportBtn) exportBtn.textContent = getI18nValue('buttonExport', '내보내기');
+        const importBtn = document.querySelector('button[onclick="importData()"]');
+        if (importBtn) importBtn.textContent = getI18nValue('buttonImport', '가져오기');
+        const captureBtn = document.querySelector('button.capture-btn');
+        if (captureBtn) captureBtn.textContent = getI18nValue('buttonCapture', '화면 캡처');
+        const mobileLockBtn = document.querySelector('.mobile-lock-btn');
+        if (mobileLockBtn) mobileLockBtn.textContent = getI18nValue('buttonLockOrder', '순서 이동 잠금');
+
+        const krDesktopLabel = document.querySelector('.kr-toggle-label');
+        const krMobileLabel = document.querySelector('.kr-toggle-mobile-label');
+        const krDesktopWrap = document.querySelector('.kr-toggle-container');
+        const krLabel = getI18nValue('krListLabel', 'KR character list');
+        if (krDesktopLabel) krDesktopLabel.textContent = krLabel;
+        if (krMobileLabel) krMobileLabel.textContent = krLabel;
+        if (krDesktopWrap) krDesktopWrap.setAttribute('title', krLabel);
+
+        setTextNodePreserveChildren(document.querySelector('#wonder-config h2'), getI18nValue('sectionWonder', '원더 설정'));
+        setTextNodePreserveChildren(document.querySelector('#party-selection h2'), getI18nValue('sectionParty', '괴도단'));
+
+        setLabelText('#wonder-config .weapon-container > label', 'labelWeapon', '무기');
+        setInputPlaceholder('#wonder-config .wonder-weapon-input', 'placeholderSelectOrInput', '선택 또는 입력');
+
+        setLabelText('#wonder-config .persona-container:nth-of-type(2) > label', 'labelPersona1', '페르소나1');
+        setLabelText('#wonder-config .persona-container:nth-of-type(3) > label', 'labelPersona2', '페르소나2');
+        setLabelText('#wonder-config .persona-container:nth-of-type(4) > label', 'labelPersona3', '페르소나3');
+
+        setInputPlaceholder('#wonder-config .persona-skill-input[data-persona-index="0"][data-skill-slot="0"]', 'placeholderUniqueSkill', '고유스킬');
+        setInputPlaceholder('#wonder-config .persona-skill-input[data-persona-index="0"][data-skill-slot="1"]', 'placeholderSkill2', '스킬 2');
+        setInputPlaceholder('#wonder-config .persona-skill-input[data-persona-index="0"][data-skill-slot="2"]', 'placeholderSkill3', '스킬 3');
+        setInputPlaceholder('#wonder-config .persona-skill-input[data-persona-index="1"][data-skill-slot="0"]', 'placeholderUniqueSkill', '고유스킬');
+        setInputPlaceholder('#wonder-config .persona-skill-input[data-persona-index="1"][data-skill-slot="1"]', 'placeholderSkill2', '스킬 2');
+        setInputPlaceholder('#wonder-config .persona-skill-input[data-persona-index="1"][data-skill-slot="2"]', 'placeholderSkill3', '스킬 3');
+        setInputPlaceholder('#wonder-config .persona-skill-input[data-persona-index="2"][data-skill-slot="0"]', 'placeholderUniqueSkill', '고유스킬');
+        setInputPlaceholder('#wonder-config .persona-skill-input[data-persona-index="2"][data-skill-slot="1"]', 'placeholderSkill2', '스킬 2');
+        setInputPlaceholder('#wonder-config .persona-skill-input[data-persona-index="2"][data-skill-slot="2"]', 'placeholderSkill3', '스킬 3');
+
+        applyPartyRowLabels(0, 'labelThief1', '괴도 1');
+        applyPartyRowLabels(1, 'labelThief2', '괴도 2');
+        applyPartyRowLabels(2, 'labelThief3', '괴도 3');
+        applyPartyRowLabels(3, 'labelThief4', '괴도 4');
+        applyPartyRowLabels(4, 'labelSupport', '해명 -');
+        applyPartyRowLabels(5, 'labelThief5', '괴도 5');
       }
 
       
@@ -694,7 +683,7 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
         }
 
         // 먼저 UI 텍스트/레이블을 현재 언어에 맞게 번역 (데이터 로딩과 분리)
-        translateUI();
+        applyStaticI18nTexts();
         updateToggleUILabels();
         // CSS에서 언어별 스타일 분기를 위해 <html>에 data-lang 설정
         try { document.documentElement.setAttribute('data-lang', getCurrentLanguage()); } catch(_) {}
@@ -730,14 +719,6 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
           try { saved = localStorage.getItem('forceKRList') === 'true'; } catch(_) {}
           if (desktopChk) desktopChk.checked = saved;
           if (mobileChk) mobileChk.checked = saved;
-
-          // Label translation (EN default already set). JP translation
-          if (currentLang === 'jp') {
-            const dl = document.querySelector('.kr-toggle-label');
-            const ml = document.querySelector('.kr-toggle-mobile-label');
-            if (dl) dl.textContent = 'KRキャラクター一覧を使用';
-            if (ml) ml.textContent = 'KRキャラクター一覧を使用';
-          }
 
           async function applyChange(val){
             try { localStorage.setItem('forceKRList', String(val)); } catch(_) {}
@@ -1123,8 +1104,7 @@ description: 페르소나5 더 팬텀 X 택틱 메이커
                     // 참고사항 옵션이 없으면 추가
                     const hasReferenceOption = Array.from(charSelect.options).some(opt => opt.value === '');
                     if (!hasReferenceOption) {
-                      const currentLang = (typeof getCurrentLanguage === 'function') ? getCurrentLanguage() : 'kr';
-                      const referenceText = currentLang === 'en' ? 'Reference' : (currentLang === 'jp' ? '参考事項' : '참고사항');
+                      const referenceText = getI18nValue('uiReference', '참고사항');
                       const refOption = document.createElement('option');
                       refOption.value = '';
                       refOption.textContent = referenceText;

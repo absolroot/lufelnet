@@ -12,6 +12,16 @@ function getCurrentLanguage() {
   return 'kr';
 }
 
+function getPartyI18nText(key, fallback = '') {
+  if (typeof window.t === 'function') {
+    return window.t(key, fallback);
+  }
+  if (window.I18nService && typeof window.I18nService.t === 'function') {
+    return window.I18nService.t(key, fallback);
+  }
+  return fallback || key;
+}
+
 function getCharacterDisplayName(charName) {
   const currentLang = getCurrentLanguage();
   if (currentLang === 'kr' || !charName) {
@@ -1031,14 +1041,11 @@ function ensureExtraThiefSlot() {
   // DOM 생성
   const host = document.getElementById('party-selection');
   if (!host) return;
-  // 언어별 라벨 로컬라이즈
-  const lang = (typeof getCurrentLanguage === 'function') ? getCurrentLanguage() : 'kr';
-  const L = (ko, en, jp) => (lang === 'en' ? en : (lang === 'jp' ? jp : ko));
-  const lblThief5 = L('괴도 5', 'P5', '怪盗5');
-  const lblRitual = L('의식', 'A', '意識');
-  const lblOrder = L('순서', 'Order', '順序');
-  const lblMain = L('주', 'Uni.', '宙');
-  const lblSub = L('일월성진', 'S/M/S/P', '旭月星天');
+  const lblThief5 = getPartyI18nText('labelThief5', '괴도 5');
+  const lblRitual = getPartyI18nText('labelRitual', '의식');
+  const lblOrder = getPartyI18nText('labelOrder', '순서');
+  const lblMain = getPartyI18nText('labelMain', '주');
+  const lblSub = getPartyI18nText('labelSub', '일월성진');
   const block = document.createElement('div');
   block.className = 'party-member';
   block.setAttribute('data-index', '5');

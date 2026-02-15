@@ -1,19 +1,18 @@
 (() => {
-    function lang() { try { return (new URLSearchParams(location.search).get('lang') || 'kr').toLowerCase(); } catch(_) { return 'kr'; } }
-    function t() {
-        const l = lang();
-        return {
-            kr: { export: '내보내기', import: '가져오기' },
-            en: { export: 'Export', import: 'Import' },
-            jp: { export: 'エクスポート', import: 'インポート' }
-        }[l] || { export: '내보내기', import: '가져오기' };
+    function tr(key, fallback) {
+        try {
+            if (window.PullTrackerI18n && typeof window.PullTrackerI18n.t === 'function') {
+                return window.PullTrackerI18n.t(key, fallback);
+            }
+        } catch (_) { }
+        return fallback || key;
     }
 
     function setImportButtonText(){
         try {
             const btn = document.getElementById('importBtn');
             if (!btn) return;
-            const label = t().import;
+            const label = tr('io.import.label', '가져오기');
             // clean upload-tray icon
             btn.innerHTML = '<span class="help-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" xmlns="http://www.w3.org/2000/svg" fill="none"><path d="M12 21v-9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M8.5 11.3L12 8l3.5 3.3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><rect x="4" y="4" width="16" height="4" rx="1.5" stroke="currentColor" stroke-width="1.6"/></svg></span>'
                 + '<span style="margin-left:6px;">' + label + '</span>';
@@ -104,19 +103,19 @@
             if (window.renderCardsFromExample) window.renderCardsFromExample(merged);
             // 상태 메시지
             try {
-                const langNow = lang();
-                const msg = (langNow==='en')?'Imported from file.':(langNow==='jp'?'ファイルから読み込みました。':'파일에서 가져왔습니다.');
+                const msg = tr('io.import.imported', '파일에서 가져왔습니다.');
                 const setStatus = window.__pull_setStatus || (m=>{ try{ const el=document.getElementById('status'); if (el) el.textContent=m; } catch(_){} });
                 setStatus(msg);
             } catch(_) {}
         } catch(e) {
-            alert((lang()==='en')?'Import failed.':(lang()==='jp'?'インポートに失敗しました。':'가져오기에 실패했습니다.'));
+            alert(tr('io.import.failed', '가져오기에 실패했습니다.'));
         } finally {
             try { ev.target.value = ''; } catch(_) {}
         }
     }
 
-    document.addEventListener('DOMContentLoaded', function(){
+    document.addEventListener('DOMContentLoaded', async function(){
+        try { await (window.__pullI18nReady || Promise.resolve()); } catch (_) { }
         setImportButtonText();
         const ib = document.getElementById('importBtn');
         const fi = document.getElementById('importFile');

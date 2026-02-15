@@ -100,28 +100,55 @@ description: "P5X 계약 전체 통계 (캐릭터/한정/무기)"
 </div>
 
 
+<script type="module" src="{{ site.baseurl }}/i18n/service/i18n-service.js?v={{ site.time | date: '%s' }}"></script>
+<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/pull-tracker/js/i18n-runtime.js?v={{ site.time | date: '%s' }}"></script>
 <script>
-  // 언어별 SEO/메타 동적 설정 및 제목/내비 텍스트 적용
-  (function () {
+  window.__pullI18nReady = (async () => {
+    try { if (window.PullTrackerI18n) await window.PullTrackerI18n.init('global'); } catch (_) { }
+  })();
+
+  (async function () {
+    try { await (window.__pullI18nReady || Promise.resolve()); } catch (_) { }
+
+    const tr = (key, fallback) => {
+      try {
+        if (window.PullTrackerI18n && typeof window.PullTrackerI18n.t === 'function') {
+          return window.PullTrackerI18n.t(key, fallback);
+        }
+      } catch (_) { }
+      return (fallback !== undefined) ? fallback : key;
+    };
+
+    const setMeta = (selector, attrName, attrValue, content) => {
+      let el = document.querySelector(selector);
+      if (!el) {
+        el = document.createElement('meta');
+        el.setAttribute(attrName, attrValue);
+        document.head.appendChild(el);
+      }
+      el.setAttribute('content', content);
+    };
+
     try {
-      const params = new URLSearchParams(location.search);
-      const lang = (params.get('lang') || 'kr').toLowerCase();
-      const meta = {
-        kr: { title: '전체 통계 - 페르소나5 더 팬텀 X', desc: 'P5X 계약 전체 통계와 일별 추이를 확인하세요.' },
-        en: { title: 'Global Stats - Persona 5: The Phantom X', desc: 'View P5X global gacha statistics and daily trends.' },
-        jp: { title: '全体統計 - ペルソナ5 ザ・ファントムX', desc: 'P5Xガチャの全体統計と日別推移を確認できます。' }
-      };
-      const cur = meta[lang] || meta.kr;
-      document.title = cur.title;
-      let d = document.querySelector('meta[name="description"]');
-      if (!d) { d = document.createElement('meta'); d.setAttribute('name', 'description'); document.head.appendChild(d); }
-      d.setAttribute('content', cur.desc);
-      let ogt = document.querySelector('meta[property="og:title"]'); if (!ogt) { ogt = document.createElement('meta'); ogt.setAttribute('property', 'og:title'); document.head.appendChild(ogt); } ogt.setAttribute('content', cur.title);
-      let ogd = document.querySelector('meta[property="og:description"]'); if (!ogd) { ogd = document.createElement('meta'); ogd.setAttribute('property', 'og:description'); document.head.appendChild(ogd); } ogd.setAttribute('content', cur.desc);
-      // 페이지 타이틀/내비 텍스트
-      const t = (lang === 'en' ? 'Global Stats' : (lang === 'jp' ? '全体統計' : '전체 통계'));
-      const titleEl = document.getElementById('pageTitle'); if (titleEl) titleEl.textContent = t;
-      const navCur = document.getElementById('navCurrent'); if (navCur) navCur.textContent = t;
+      const seoTitle = tr('seo.global.title', document.title);
+      const descMeta = document.querySelector('meta[name="description"]');
+      const currentDesc = descMeta ? (descMeta.getAttribute('content') || '') : '';
+      const seoDesc = tr('seo.global.description', currentDesc);
+      const seoLocale = tr('seo.global.ogLocale', 'ko_KR');
+      document.title = seoTitle;
+      setMeta('meta[name="description"]', 'name', 'description', seoDesc);
+      setMeta('meta[property="og:title"]', 'property', 'og:title', seoTitle);
+      setMeta('meta[property="og:description"]', 'property', 'og:description', seoDesc);
+      setMeta('meta[property="og:locale"]', 'property', 'og:locale', seoLocale);
+    } catch (_) { }
+
+    try {
+      const pageTitle = tr('global.pageTitle', 'Global Stats');
+      const titleEl = document.getElementById('pageTitle');
+      if (titleEl) titleEl.textContent = pageTitle;
+      const navCur = document.getElementById('navCurrent');
+      if (navCur) navCur.textContent = pageTitle;
     } catch (_) { }
   })();
 </script>

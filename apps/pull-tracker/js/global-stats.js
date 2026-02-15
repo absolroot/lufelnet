@@ -1,32 +1,71 @@
 // global-stats.js
-(function(){
+(async function(){
+  try { await (window.__pullI18nReady || Promise.resolve()); } catch (_) { }
   const qs = (sel)=>document.querySelector(sel);
-  const lang = (new URLSearchParams(location.search).get('lang')||'kr').toLowerCase();
+  const lang = (() => {
+    try {
+      if (window.PullTrackerI18n && typeof window.PullTrackerI18n.lang === 'function') {
+        return window.PullTrackerI18n.lang();
+      }
+      return (new URLSearchParams(location.search).get('lang')||'kr').toLowerCase();
+    } catch (_) {
+      return 'kr';
+    }
+  })();
+
+  function tr(key, fallback) {
+    try {
+      if (window.PullTrackerI18n && typeof window.PullTrackerI18n.t === 'function') {
+        return window.PullTrackerI18n.t(key, fallback);
+      }
+    } catch (_) { }
+    return (fallback !== undefined) ? fallback : key;
+  }
+
+  function format(template, vars = {}) {
+    let out = String(template || '');
+    Object.entries(vars).forEach(([k, v]) => {
+      out = out.replaceAll(`{${k}}`, String(v));
+    });
+    return out;
+  }
 
   const LABELS = {
-    kr: { navhome: '홈', title: '전체 통계', avg: '평균', count: '5★ 합계', loseRate: '50:50 패배율', pullsByDay: '5★ 일별 횟수', charAvg:'캐릭터 5★ 평균', charLimitedAvg:'캐릭터 한정 5★ 평균', charCnt:'캐릭터 5★ 획득 수', weapAvg:'무기 5★ 평균', weapLimitedAvg:'무기 한정 5★ 평균', weapCnt:'무기 5★ 획득 수' },
-    en: { navhome: 'Home', title: 'Global Stats', avg: 'Avg', count: '5★ Count', loseRate: 'Lose 50:50 %', pullsByDay: '5★ Pulls By Day', charAvg:'Character 5★ Avg', charLimitedAvg:'Char Limited 5★ Avg', charCnt:'Character 5★ Count', weapAvg:'Weapon 5★ Avg', weapLimitedAvg:'Weapon Limited 5★ Avg', weapCnt:'Weapon 5★ Count' },
-    jp: { navhome: 'ホーム', title: '全体統計', avg: '平均', count: '★5 合計', loseRate: '50:50 敗北率', pullsByDay: '★5 日別回数', charAvg:'キャラ ★5 平均', charLimitedAvg:'キャラ限定 ★5 平均', charCnt:'キャラ ★5 獲得数', weapAvg:'武器 ★5 平均', weapLimitedAvg:'武器限定 ★5 平均', weapCnt:'武器 ★5 獲得数' }
-  }[lang] || { title:'전체 통계', avg:'평균', count:'5★ 합계', loseRate:'50:50 패배율', pullsByDay:'5★ 일별 횟수', charAvg:'캐릭터 5★ 평균', charLimitedAvg:'캐릭터 한정 5★ 평균', charCnt:'캐릭터 5★ 획득 수', weapAvg:'무기 5★ 평균', weapLimitedAvg:'무기 한정 5★ 평균', weapCnt:'무기 5★ 획득 수' };
+    navhome: tr('global.nav.home', '홈'),
+    title: tr('global.pageTitle', '전체 통계'),
+    avg: tr('global.labels.avg', '평균'),
+    count: tr('global.labels.count', '5★ 합계'),
+    loseRate: tr('global.labels.loseRate', '50:50 패배율'),
+    pullsByDay: tr('global.labels.pullsByDay', '5★ 일별 횟수'),
+    charAvg: tr('global.labels.charAvg', '캐릭터 5★ 평균'),
+    charLimitedAvg: tr('global.labels.charLimitedAvg', '캐릭터 한정 5★ 평균'),
+    charCnt: tr('global.labels.charCnt', '캐릭터 5★ 획득 수'),
+    weapAvg: tr('global.labels.weapAvg', '무기 5★ 평균'),
+    weapLimitedAvg: tr('global.labels.weapLimitedAvg', '무기 한정 5★ 평균'),
+    weapCnt: tr('global.labels.weapCnt', '무기 5★ 획득 수')
+  };
 
-  // i18n phrases
-  const I18N = {
-    en: { unitTimes: 'pulls', unitCount: '', obtained: 'obtained', pickupSuccess: 'Limited' },
-    jp: { unitTimes: '回', unitCount: '回', obtained: '獲得', pickupSuccess: '成功' },
-    kr: { unitTimes: '회', unitCount: '번', obtained: '획득', pickupSuccess: '한정 비율' }
+  const WORDS = {
+    unitTimes: tr('global.words.unitTimes', '회'),
+    unitCount: tr('global.words.unitCount', '번'),
+    obtained: tr('global.words.obtained', '획득'),
+    pickupSuccess: tr('global.words.pickupSuccess', '한정 비율')
   };
 
   const NAME = {
-    kr: { Confirmed:'확정', Fortune:'운명', Gold:'일반', Weapon:'무기', Weapon_Confirmed:'무기 확정', Newcomer:'신규' },
-    en: { Confirmed:'Target', Fortune:'Chance', Gold:'Gold', Weapon:'Weapon', Weapon_Confirmed:'Weapon Confirmed', Newcomer:'Newcomer' },
-    jp: { Confirmed:'TARGET', Fortune:'CHANCE', Gold:'通常', Weapon:'武器', Weapon_Confirmed:'武器確定', Newcomer:'新米怪盗サポート' }
-  }[lang] || { Confirmed:'확정', Fortune:'운명', Gold:'일반', Weapon:'무기', Weapon_Confirmed:'무기 확정', Newcomer:'신규' };
+    Confirmed: tr('global.names.Confirmed', '확정'),
+    Fortune: tr('global.names.Fortune', '운명'),
+    Gold: tr('global.names.Gold', '일반'),
+    Weapon: tr('global.names.Weapon', '무기'),
+    Weapon_Confirmed: tr('global.names.Weapon_Confirmed', '무기 확정'),
+    Newcomer: tr('global.names.Newcomer', '신규')
+  };
 
   const ICONS = { Confirmed:'정해진 운명.png', Fortune:'정해진 운명.png', Gold:'미래의 운명.png', Weapon:'정해진 코인.png', Weapon_Confirmed:'정해진 코인.png', Newcomer:'미래의 운명.png' };
 
   const homeEl = qs('#navhome');
   const regionEl = qs('#globalRegion');
-  const titleEl = qs('#globalStatsTitle');
+  const titleEl = qs('#pageTitle');
   const cardsWrap = qs('#globalCards');
   const infoWrap = qs('#globalInfoCards');
   const chartCanvas = qs('#globalDailyChart');
@@ -35,6 +74,9 @@
   // tooltip helpers
   function makeTooltipHost(canvas){ try { const host = canvas && canvas.parentElement; if (!host) return null; if (getComputedStyle(host).position === 'static') host.style.position = 'relative'; let tip = host.querySelector('.chart-tip'); if (!tip){ tip = document.createElement('div'); tip.className='chart-tip'; tip.style.position='absolute'; tip.style.pointerEvents='none'; tip.style.background='rgba(0,0,0,0.8)'; tip.style.border='1px solid rgba(255,255,255,0.25)'; tip.style.borderRadius='6px'; tip.style.padding='6px 8px'; tip.style.fontSize='12px'; tip.style.color='#fff'; tip.style.whiteSpace='pre-line'; tip.style.transform='translate(8px, -32px)'; tip.style.display='none'; host.appendChild(tip);} return tip; } catch(_) { return null; } }
   const dailyTipEl = chartCanvas ? makeTooltipHost(chartCanvas) : null;
+
+  // Shared include safety: skip execution outside global-stats page.
+  if (!regionEl) return;
 
   if (homeEl) homeEl.textContent = LABELS.navhome;
   if (titleEl) titleEl.textContent = LABELS.title;
@@ -46,12 +88,7 @@
   try {
     const note = document.getElementById('globalStatsNote');
     if (note) {
-      const texts = {
-        kr: 'lufel.net/iant.kr 유저들의 제출 데이터를 기반하여 계산됩니다.\n※ P5X서버 기록은 50% 반천장(Win) 정보를 제공하지 않아, 현재는 한정 캐릭터를 성공으로 계산하고 있습니다. 따라서 마유미, 루우나 등은 성공 기준에 포함되지 않아 수치가 높게/낮게 보일 수 있습니다.',
-        en: 'Based on submissions from lufel.net/iant.kr users.\' submissions\n※ P5X server do not provide 50:50 Win data. Currently treat [Limited] characters as wins. Therefore, like PHOEBE or MARIAN are not included as wins, which may make the success avg appear higher/lower.',
-        jp: 'lufel.net/iant.krのユーザーからの投稿データに基づきます。\n※ P5Xサーバーの記録は50:50勝利の情報を提供していません。現在は限定キャラを勝利として計算しています。そのため、PHOEBEやMARIANなどは勝利基準に含まれず、数値が高く/低く見える場合があります。'
-      };
-      note.textContent = texts[lang] || texts.kr;
+      note.textContent = tr('global.note');
     }
   } catch(_) {}
 
@@ -222,7 +259,10 @@
     const card = document.createElement('div'); card.className='rank-card';
     const h = document.createElement('h3'); h.textContent = title; card.appendChild(h);
     const total = entries.reduce((s,it)=> s+it.count, 0) || 1;
-    const head = document.createElement('div'); head.className='rank-row rank-head'; head.innerHTML = `<div>Name</div><div style="text-align:right">Total</div><div style="text-align:right">%</div>`; card.appendChild(head);
+    const head = document.createElement('div');
+    head.className='rank-row rank-head';
+    head.innerHTML = `<div>${tr('global.list.header.name', 'Name')}</div><div style="text-align:right">${tr('global.list.header.total', 'Total')}</div><div style="text-align:right">${tr('global.list.header.percent', '%')}</div>`;
+    card.appendChild(head);
     const renderRow = (it)=>{
       const row = document.createElement('div'); row.className='rank-row';
       const left = document.createElement('div'); left.className='rank-name';
@@ -247,7 +287,7 @@
     if (entries.length > initial.length){
       const foot = document.createElement('div'); foot.className='rank-more';
       const btn = document.createElement('button'); btn.className='more-btn';
-      const text = (lang==='en'? 'More' : (lang==='jp'? 'もっと見る' : '더보기'));
+      const text = tr('global.list.more', 'More');
       btn.innerHTML = `${text} <svg viewBox="0 0 18 18" width="16" height="16" xmlns="http://www.w3.org/2000/svg"><path d="M4 7l5 5 5-5" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
       btn.addEventListener('click', ()=>{
         for (const it of entries.slice(initial.length)) renderRow(it);
@@ -274,14 +314,14 @@
 
       const ag = aggregateCharacters(json);
       threeListsWrap.innerHTML = '';
-      const tLimited = (lang==='en'? '5★ Limited List' : (lang==='jp'? '★5 限定リスト' : '5★ 한정 리스트'));
-      const tStandard = (lang==='en'? '5★ Standard List' : (lang==='jp'? '★5 通常リスト' : '5★ 통상 리스트'));
-      const tWeapon = (lang==='en'? '5★ Weapon List' : (lang==='jp'? '★5 武器リスト' : '5★ 무기 리스트'));
+      const tLimited = tr('global.list.titles.limited', '5★ Limited List');
+      const tStandard = tr('global.list.titles.standard', '5★ Standard List');
+      const tWeapon = tr('global.list.titles.weapon', '5★ Weapon List');
       threeListsWrap.appendChild(createListCard(tLimited, ag.limited, 'character', 10));
       threeListsWrap.appendChild(createListCard(tStandard, ag.standard, 'character', 10));
       threeListsWrap.appendChild(createListCard(tWeapon, ag.weapon, 'weapon', 10));
     } catch(_) {
-      threeListsWrap.innerHTML = '<div class="rank-card">Load failed</div>';
+      threeListsWrap.innerHTML = `<div class="rank-card">${tr('global.status.loadFailed', 'Load failed')}</div>`;
     }
   }
 
@@ -289,10 +329,10 @@
     if (!tabsWrap) return;
     tabsWrap.innerHTML = '';
     const items = [
-      { key:'all', label: (lang==='en'?'All':(lang==='jp'?'全体':'전체')) },
-      { key:'3w',  label: (lang==='en'?'3 Weeks':(lang==='jp'?'3週':'3주')) },
-      { key:'6w',  label: (lang==='en'?'6 Weeks':(lang==='jp'?'6週':'6주')) },
-      { key:'9w',  label: (lang==='en'?'9 Weeks':(lang==='jp'?'9週':'9주')) },
+      { key:'all', label: tr('global.tabs.all', 'All') },
+      { key:'3w',  label: tr('global.tabs.w3', '3 Weeks') },
+      { key:'6w',  label: tr('global.tabs.w6', '6 Weeks') },
+      { key:'9w',  label: tr('global.tabs.w9', '9 Weeks') },
       //{ key:'1m',  label: (lang==='en'?'1 Month':(lang==='jp'?'1ヶ月':'1개월')) },
     ];
     for (const it of items){
@@ -492,8 +532,8 @@
       ctx.fillStyle = 'rgba(255,255,255,0.9)'; ctx.fillText(text, lx + offset, legendY + 9);
       lx += ctx.measureText(text).width + 72;
     };
-    legend('#4da3ff', 'Chance %');
-    legend('#ffdd6b', 'Total Pull 5★', 84);
+    legend('#4da3ff', tr('global.pity.legendChance', 'Chance %'));
+    legend('#ffdd6b', tr('global.pity.legendTotal5', 'Total Pull 5★'), 84);
     // cache for hover
     pityRenderCache = { kind, maxX, bars, acc, padL, padR, padT, padB, cssW, cssH };
   }
@@ -523,16 +563,14 @@
 
     const big = document.createElement('p'); big.className='big ' + (kind==='Weapon'?'weapon':'char');
     const small = document.createElement('span'); small.textContent = '★5 '; small.style.opacity = .9; small.style.fontSize='12px'; small.style.marginRight='4px';
-    const UNIT_TIMES = (I18N[lang]||I18N.kr).unitTimes;
-    big.textContent = avg!=null? `${numberFmt(avg,1)} ${UNIT_TIMES}` : '-';
+    big.textContent = avg!=null? `${numberFmt(avg,1)} ${WORDS.unitTimes}` : '-';
     big.prepend(small);
     el.appendChild(big);
 
     const sub = document.createElement('div'); sub.className='sub';
     const success = (lose!=null) ? (1 - lose) : null;
-    const words = (I18N[lang]||I18N.kr);
-    const successTxt = (success!=null) ? `, ${words.pickupSuccess} ${numberFmt(success*100,1)}%` : '';
-    sub.textContent = `${cnt!=null? numberFmt(cnt):'-'}${words.unitCount} ${words.obtained}${successTxt}`;
+    const successTxt = (success!=null) ? `, ${WORDS.pickupSuccess} ${numberFmt(success*100,1)}%` : '';
+    sub.textContent = `${cnt!=null? numberFmt(cnt):'-'}${WORDS.unitCount} ${WORDS.obtained}${successTxt}`;
     el.appendChild(sub);
     return el;
   }
@@ -601,11 +639,11 @@
 
     infoWrap.innerHTML = '';
     const items = [
-      { label: LABELS.charAvg, value: charAvg!=null? numberFmt(charAvg,1):'-', unit:(lang==='jp'?' 回':(lang==='en'?'':' 회')), cls:'val-char' },
-      { label: LABELS.charLimitedAvg, value: charLimitedAvg!=null? numberFmt(charLimitedAvg,1):'-', unit:(lang==='jp'?' 回':(lang==='en'?'':' 회')), cls:'val-char' },
+      { label: LABELS.charAvg, value: charAvg!=null? numberFmt(charAvg,1):'-', unit:tr('global.units.avgSuffix'), cls:'val-char' },
+      { label: LABELS.charLimitedAvg, value: charLimitedAvg!=null? numberFmt(charLimitedAvg,1):'-', unit:tr('global.units.avgSuffix'), cls:'val-char' },
       { label: LABELS.charCnt, value: numberFmt(charCnt), unit:'', cls:'val-char' },
-      { label: LABELS.weapAvg, value: weapAvg!=null? numberFmt(weapAvg,1):'-', unit:(lang==='jp'?' 回':(lang==='en'?'':' 회')), cls:'val-weapon' },
-      { label: LABELS.weapLimitedAvg, value: weapLimitedAvg!=null? numberFmt(weapLimitedAvg,1):'-', unit:(lang==='jp'?' 回':(lang==='en'?'':' 회')), cls:'val-weapon' },
+      { label: LABELS.weapAvg, value: weapAvg!=null? numberFmt(weapAvg,1):'-', unit:tr('global.units.avgSuffix'), cls:'val-weapon' },
+      { label: LABELS.weapLimitedAvg, value: weapLimitedAvg!=null? numberFmt(weapLimitedAvg,1):'-', unit:tr('global.units.avgSuffix'), cls:'val-weapon' },
       { label: LABELS.weapCnt, value: numberFmt(weapCnt), unit:'', cls:'val-weapon' }
     ];
     for (const it of items){
@@ -764,7 +802,7 @@
       await ensureWeaponsLoaded();
       await renderThreeLists(region);
     } catch(err){
-      if (cardsWrap) cardsWrap.innerHTML = '<div class="global-card">Load failed</div>';
+      if (cardsWrap) cardsWrap.innerHTML = `<div class="global-card">${tr('global.status.loadFailed', 'Load failed')}</div>`;
       try { console.error('[global-stats]', err); } catch(_) {}
     }
   }
@@ -773,8 +811,59 @@
   if (pityTabs) renderPityTabs();
   if (regionEl){ refreshAll(); refreshPity(); }
   // hover handlers
-  function attachDailyHover(){ if (!chartCanvas || !dailyTipEl) return; chartCanvas.addEventListener('mouseleave', ()=>{ dailyTipEl.style.display='none'; }); chartCanvas.addEventListener('mousemove', (ev)=>{ try { if (!dailyRenderCache) return; const rect = chartCanvas.getBoundingClientRect(); const x = ev.clientX - rect.left; const { labels, values, padL, padR, padT, padB, width, height } = dailyRenderCache; const W = (width||chartCanvas.clientWidth) - padL - padR; const H = (height||chartCanvas.clientHeight) - padT - padB; if (W<=0) return; const idx = Math.max(0, Math.min(labels.length-1, Math.round(((x - padL)/W)*(labels.length-1)))); const lx = padL + (labels.length<=1?0:(idx*(W/(labels.length-1)))); const ly = padT + (H - (values[idx]/Math.max(1, Math.max(...values,1)))*H); dailyTipEl.style.left = `${lx}px`; dailyTipEl.style.top = `${ly}px`; dailyTipEl.style.display = 'block'; dailyTipEl.textContent = `${labels[idx]}\nTotal 5★: ${numberFmt(values[idx])}`; } catch(_){} }); }
-  function attachPityHover(){ if (!pityCanvas || !pityTipEl) return; pityCanvas.addEventListener('mouseleave', ()=>{ pityTipEl.style.display='none'; }); pityCanvas.addEventListener('mousemove', (ev)=>{ try { if (!pityRenderCache) return; const { kind, maxX, bars, acc, padL, padR, padT, padB, cssW, cssH } = pityRenderCache; const rect = pityCanvas.getBoundingClientRect(); const x = ev.clientX - rect.left; const W = (cssW||pityCanvas.clientWidth) - padL - padR; const colW = W / maxX; const idx = Math.max(1, Math.min(maxX, Math.round((x - padL)/colW + 0.5))); const bx = padL + (idx - 0.5)*colW; const by = padT + 8; pityTipEl.style.left = `${bx}px`; pityTipEl.style.top = `${by}px`; pityTipEl.style.display='block'; const chance = acc[idx-1]||0; const cnt = bars[idx-1]||0; pityTipEl.textContent = `Pity ${idx}\nChance%: ${numberFmt(chance,2)}\nTotal Pull 5★: ${numberFmt(cnt)}`; } catch(_){} }); }
+  function attachDailyHover(){
+    if (!chartCanvas || !dailyTipEl) return;
+    chartCanvas.addEventListener('mouseleave', ()=>{ dailyTipEl.style.display='none'; });
+    chartCanvas.addEventListener('mousemove', (ev)=>{
+      try {
+        if (!dailyRenderCache) return;
+        const rect = chartCanvas.getBoundingClientRect();
+        const x = ev.clientX - rect.left;
+        const { labels, values, padL, padR, padT, padB, width, height } = dailyRenderCache;
+        const W = (width||chartCanvas.clientWidth) - padL - padR;
+        const H = (height||chartCanvas.clientHeight) - padT - padB;
+        if (W<=0) return;
+        const idx = Math.max(0, Math.min(labels.length-1, Math.round(((x - padL)/W)*(labels.length-1))));
+        const lx = padL + (labels.length<=1?0:(idx*(W/(labels.length-1))));
+        const ly = padT + (H - (values[idx]/Math.max(1, Math.max(...values,1)))*H);
+        dailyTipEl.style.left = `${lx}px`;
+        dailyTipEl.style.top = `${ly}px`;
+        dailyTipEl.style.display = 'block';
+        dailyTipEl.textContent = format(tr('global.hover.daily', '{date}\nTotal 5★: {count}'), {
+          date: labels[idx],
+          count: numberFmt(values[idx])
+        });
+      } catch(_){}
+    });
+  }
+
+  function attachPityHover(){
+    if (!pityCanvas || !pityTipEl) return;
+    pityCanvas.addEventListener('mouseleave', ()=>{ pityTipEl.style.display='none'; });
+    pityCanvas.addEventListener('mousemove', (ev)=>{
+      try {
+        if (!pityRenderCache) return;
+        const { kind, maxX, bars, acc, padL, padR, padT, padB, cssW, cssH } = pityRenderCache;
+        const rect = pityCanvas.getBoundingClientRect();
+        const x = ev.clientX - rect.left;
+        const W = (cssW||pityCanvas.clientWidth) - padL - padR;
+        const colW = W / maxX;
+        const idx = Math.max(1, Math.min(maxX, Math.round((x - padL)/colW + 0.5)));
+        const bx = padL + (idx - 0.5)*colW;
+        const by = padT + 8;
+        pityTipEl.style.left = `${bx}px`;
+        pityTipEl.style.top = `${by}px`;
+        pityTipEl.style.display='block';
+        const chance = acc[idx-1]||0;
+        const cnt = bars[idx-1]||0;
+        pityTipEl.textContent = format(tr('global.hover.pity', 'Pity {pity}\nChance%: {chance}\nTotal Pull 5★: {count}'), {
+          pity: idx,
+          chance: numberFmt(chance, 2),
+          count: numberFmt(cnt)
+        });
+      } catch(_){}
+    });
+  }
   attachDailyHover();
   attachPityHover();
 })();

@@ -1,24 +1,29 @@
 /* eslint-disable */
 (function () {
-    const LANG = (typeof getCurrentLanguage === 'function') ? getCurrentLanguage() : 'kr';
-    const STATE = {
-        plans: [], // {id, name, rarity, image, inputs:{...}, materials:{id,count}}
-        totals: {},
-        lang: LANG,
-        spoiler: false,
-        characterData: null,
-        characterList: null,
-        // 정렬 키 (localStorage로 유지). release/name + asc/desc
-        sortKey: 'release_desc',
-        inventory: { // 사용자 보유 수량
+    function createDefaultInventory() {
+        return {
             lv_exp1: 0, lv_exp2: 0, lv_exp3: 0,
             lv_limit1: 0, lv_limit2: 0, lv_limit3: 0,
             wp_exp1: 0, wp_exp2: 0, wp_exp3: 0,
             wp_limit1: 0, wp_limit2: 0, wp_limit3: 0,
             skill_lv_1: 0, skill_lv_2: 0, skill_lv_3: 0, skill_rose: 0,
             skill_item1: 0, skill_item2: 0, skill_item3: 0, skill_item4: 0, skill_item5: 0, skill_item6: 0,
+            konpaku_gem: 0,
+            md_mercury: 0, md_bell: 0, md_stat1: 0, md_stat2: 0, md_skill1: 0, md_skill2: 0,
             mindscape_core: 0, emblem_5star: 0, innate_seed: 0
-        }
+        };
+    }
+
+    const STATE = {
+        plans: [], // {id, name, rarity, image, inputs:{...}, materials:{id,count}}
+        totals: {},
+        lang: getPlannerLanguage(),
+        spoiler: false,
+        characterData: null,
+        characterList: null,
+        // 정렬 키 (localStorage로 유지). release/name + asc/desc
+        sortKey: 'release_desc',
+        inventory: createDefaultInventory() // 사용자 보유 수량
     };
     let isApplyingSpoiler = false;
 
@@ -91,79 +96,34 @@
         innate_seed: '/assets/img/character-detail/innate/innate_seed.png'
     };
 
-    // 다국어 텍스트
-    const I18N = {
-        kr: {
-            pageTitle: '육성 계산기', addCharacter: '캐릭터 추가', selectCharacter: '캐릭터 선택',
-            materialSummary: '재료 합산', showSpoiler: '스포일러 포함 (KR 전체 목록 사용)',
-            level: '레벨', current: '괴도', current2: '현재', target: '목표', weapon: '무기', skills: '스킬',
-            mind: '심상', enableAll: '12개 전체 활성화', mindBase: '심상', mindStat1: '심상 스탯 1', mindStat2: '심상 스탯 2',
-            mindSkill1: '심상 스킬 1', mindSkill2: '심상 스킬 2', mindAttr: '속성 강화', cancel: '취소', save: '저장',
-            mindscapeCore: '심상 활성화', enableMindscape: '활성화', resonance1: '속성 공명 1', resonance2: '속성 공명 2',
-            mindscapeCoreItem: '심상 코어', emblem5StarItem: '엠블럼 ★5', innateSeedItem: '향기의 씨앗',
-            remove: '삭제', details: '상세', home: '홈', viewDetails: '상세', edit: '수정',
-            confirm: '확인', deleteConfirmTitle: '삭제 확인', deleteConfirmMessage: '이 캐릭터의 플랜을 삭제합니다. 이 작업은 되돌릴 수 없습니다. 계속하시겠습니까?',
-            helpText: '개인 브라우저에 저장되며 인터넷 기록을 모두 삭제할 경우 데이터는 삭제됩니다.\nP5X는 계정 정보 연동을 지원하지 않습니다. 보유 중인 재료는 수동으로 입력해주세요.',
-            reset: '초기화', resetConfirmTitle: '초기화 확인', resetConfirmMessage: '모든 플랜을 초기화합니다. 이 작업은 되돌릴 수 없습니다. 계속하시겠습니까?',
-            // filter / sort UI
-            filter: '필터', sort: '정렬',
-            'sort.releaseAsc': '출시 순 ↑', 'sort.releaseDesc': '출시 순 ↓',
-            'sort.nameAsc': '이름 순 ↑', 'sort.nameDesc': '이름 순 ↓',
-            'sort.custom': '사용자 지정',
-            'filterGroup.element': '속성', 'filterGroup.position': '직업', 'filterGroup.rarity': '등급',
-            includeInSummary: '합산 포함',
-            priority: '우선순위',
-            dragToChangeOrder: '드래그하여 순서 변경'
-        },
-        en: {
-            pageTitle: 'Progression Calculator', addCharacter: 'Add Character', selectCharacter: 'Select Character',
-            materialSummary: 'Material Summary', showSpoiler: 'Show spoiler (use KR full list)',
-            level: 'Level', current: 'Character', current2: 'Current', target: 'Target', weapon: 'Weapon', skills: 'Skills',
-            mind: 'Mindscape', enableAll: 'Enable all 12', mindBase: 'Mind Base', mindStat1: 'Mind Stat 1', mindStat2: 'Mind Stat 2',
-            mindSkill1: 'Mind Skill 1', mindSkill2: 'Mind Skill 2', mindAttr: 'Mind Attribute', cancel: 'Cancel', save: 'Save',
-            mindscapeCore: 'Mindscape Core', enableMindscape: 'Enable', resonance1: 'Attribute Resonance 1', resonance2: 'Attribute Resonance 2',
-            mindscapeCoreItem: 'Mindscape Core', emblem5StarItem: 'Emblem ★5', innateSeedItem: 'Fragrant Seed',
-            remove: 'Remove', details: 'Details', home: 'Home', viewDetails: 'View Details', edit: 'Edit',
-            confirm: 'Confirm', deleteConfirmTitle: 'Delete Plan', deleteConfirmMessage: 'This character plan will be deleted. This action cannot be undone. Continue?',
-            helpText: 'Data is saved in your browser and will be deleted if you clear your browser data.\nP5X does not support account information linking. Please enter your owned materials manually.',
-            reset: 'Reset', resetConfirmTitle: 'Reset Confirm', resetConfirmMessage: 'All plans will be reset. This action cannot be undone. Continue?',
-            // filter / sort UI
-            filter: 'Filter', sort: 'Sort',
-            'sort.releaseAsc': 'Release ↑', 'sort.releaseDesc': 'Release ↓',
-            'sort.nameAsc': 'Name ↑', 'sort.nameDesc': 'Name ↓',
-            'sort.custom': 'Custom',
-            'filterGroup.element': 'Element', 'filterGroup.position': 'Role', 'filterGroup.rarity': 'Rarity',
-            includeInSummary: 'Include in Material Summary',
-            priority: 'Priority',
-            dragToChangeOrder: 'Drag to change order'
-        },
-        jp: {
-            pageTitle: '育成計算機', addCharacter: 'キャラ追加', selectCharacter: 'キャラを選択',
-            materialSummary: '素材サマリー', showSpoiler: 'ネタバレ含む（KR全リスト）',
-            level: 'レベル', current: '怪盗', current2: '現在', target: '目標', weapon: '武器', skills: 'スキル',
-            mind: 'イメジャリー', enableAll: '12個 全て有効', mindBase: 'イメジャリー 基本', mindStat1: 'ステ1', mindStat2: 'ステ2',
-            mindSkill1: 'スキル1', mindSkill2: 'スキル2', mindAttr: '属性強化', cancel: 'キャンセル', save: '保存',
-            mindscapeCore: 'イメジャリー コア', enableMindscape: '有効化', resonance1: '属性共鳴 1', resonance2: '属性共鳴 2',
-            mindscapeCoreItem: 'イメジャリー コア', emblem5StarItem: 'エンブレム ★5', innateSeedItem: '香りの種',
-            remove: '削除', details: '詳細', home: 'ホーム', viewDetails: '詳細', edit: '編集',
-            confirm: '確認', deleteConfirmTitle: '削除の確認', deleteConfirmMessage: 'このキャラクターのプランを削除します。元に戻すことはできません。続行しますか?',
-            helpText: 'データはブラウザに保存され、ブラウザの履歴をクリアすると削除されます。\nP5Xはアカウント情報の連携に対応していません。所持している素材は手動で入力してください。',
-            reset: 'リセット', resetConfirmTitle: 'リセットの確認', resetConfirmMessage: 'すべてのプランをリセットします。この操作は元に戻すことができません。続行しますか?',
-            // filter / sort UI
-            filter: 'フィルター', sort: 'ソート',
-            'sort.releaseAsc': '実装順 ↑', 'sort.releaseDesc': '実装順 ↓',
-            'sort.nameAsc': '名前 ↑', 'sort.nameDesc': '名前 ↓',
-            'sort.custom': 'カスタム',
-            'filterGroup.element': '属性', 'filterGroup.position': '役割', 'filterGroup.rarity': 'レアリティ',
-            includeInSummary: 'サマリーに含める',
-            priority: '優先順位',
-            dragToChangeOrder: 'ドラッグして順序を変更'
+    function getPlannerLanguage() {
+        if (typeof window.getCurrentLang === 'function') {
+            const lang = window.getCurrentLang();
+            if (lang) return lang;
         }
-    };
+        if (window.I18nService && typeof window.I18nService.getCurrentLanguage === 'function') {
+            const lang = window.I18nService.getCurrentLanguage();
+            if (lang) return lang;
+        }
+        if (typeof getCurrentLanguage === 'function') {
+            const lang = getCurrentLanguage();
+            if (lang) return lang;
+        }
+        return 'kr';
+    }
 
-    function t(key) {
-        const pack = I18N[STATE.lang] || I18N.kr;
-        return pack[key] || key;
+    function t(key, fallback = '') {
+        if (typeof window.t === 'function') {
+            return window.t(key, fallback || key);
+        }
+        return fallback || key;
+    }
+
+    function translateTerm(text) {
+        if (window.I18nService && typeof window.I18nService.translateTerm === 'function') {
+            return window.I18nService.translateTerm(text);
+        }
+        return text;
     }
 
     // help text 콘텐츠 다국어로 바꾸기
@@ -173,6 +133,41 @@
             // \n이 있을 경우 줄바꿈
             helpText.innerHTML = t('helpText').replace(/\n/g, '<br>');
         }
+    }
+
+    function applyStaticUiLocalization() {
+        const collapse = document.getElementById('collapseSummary');
+        if (collapse) {
+            const label = t('summaryToggleTitle', 'Toggle summary');
+            collapse.title = label;
+            collapse.setAttribute('aria-label', label);
+        }
+
+        const customOrderBtn = document.getElementById('plannerSortCustomBtn');
+        if (customOrderBtn) {
+            const label = t('customOrderButtonTitle', 'Custom order');
+            customOrderBtn.title = label;
+            customOrderBtn.setAttribute('aria-label', label);
+        }
+
+        const filterIcon = document.querySelector('#plannerFilterToggle img');
+        if (filterIcon) {
+            filterIcon.alt = t('filterLabel', 'Filter');
+        }
+
+        const resetIcon = document.querySelector('#plannerFilterReset img');
+        if (resetIcon) {
+            resetIcon.alt = t('reset', 'Reset');
+        }
+
+        document.querySelectorAll('#plannerFilterContent input[name="element"]').forEach(cb => {
+            const icon = cb.closest('label')?.querySelector('img');
+            if (icon) icon.alt = translateTerm(cb.value);
+        });
+        document.querySelectorAll('#plannerFilterContent input[name="position"]').forEach(cb => {
+            const icon = cb.closest('label')?.querySelector('img');
+            if (icon) icon.alt = translateTerm(cb.value);
+        });
     }
 
     // 데이터 로드 (언어별 목록 + 스포일러 처리, window.* 포맷 대응)
@@ -1429,16 +1424,12 @@
 
     // 이벤트/초기화
     async function boot() {
-        // 다국어 문구 적용
-        STATE.lang = (typeof getCurrentLanguage === 'function' ? getCurrentLanguage() : 'kr') || 'kr';
+        // 현재 언어 동기화
+        STATE.lang = getPlannerLanguage();
         if (window.SpoilerState && typeof window.SpoilerState.get === 'function') {
             STATE.spoiler = !!window.SpoilerState.get();
         }
-        document.querySelectorAll('[data-lang-key]').forEach(el => {
-            const key = el.getAttribute('data-lang-key');
-            el.textContent = t(key);
-        });
-        const ttl = document.getElementById('plannerTitle'); if (ttl) ttl.textContent = t('pageTitle');
+        applyStaticUiLocalization();
 
         // spoiler 토글 (EN/JP만 표시)
         const spoilerWrap = document.getElementById('spoilerContainer');
@@ -1467,39 +1458,60 @@
             }
         }
 
+        if (window.I18nService && typeof window.I18nService.onLanguageChange === 'function' && !window.__materialCalcPlannerLangHookBound) {
+            window.__materialCalcPlannerLangHookBound = true;
+            window.I18nService.onLanguageChange(async (_, newLang) => {
+                STATE.lang = newLang || getPlannerLanguage();
+                applyStaticUiLocalization();
+                updateHelpText();
+                await loadCharacterData();
+                recalcTotals();
+                renderSummary();
+                renderPlans();
+                const modal = document.getElementById('characterSelectModal');
+                if (modal && modal.getAttribute('aria-hidden') === 'false') {
+                    renderCharacterSelect();
+                }
+            });
+        }
+
         // 데이터 로드
         await loadCharacterData();
         await ensureCosts();
 
         updateHelpText();
+        applyStaticUiLocalization();
 
         // 버튼 바인딩
-        document.getElementById('addCharacterBtn').onclick = () => { openModal('characterSelectModal'); renderCharacterSelect(); };
+        const addCharacterBtn = document.getElementById('addCharacterBtn');
+        if (addCharacterBtn) {
+            addCharacterBtn.onclick = () => { openModal('characterSelectModal'); renderCharacterSelect(); };
+        }
 
         const resetBtn = document.getElementById('resetBtn');
         if (resetBtn) {
             resetBtn.textContent = t('reset');
+            resetBtn.onclick = () => {
+                const title = t('resetConfirmTitle');
+                const msg = t('resetConfirmMessage');
+                // 기본 confirm 사용 (각 언어 메시지 지원)
+                // 필요 시 커스텀 모달로 교체 가능
+                if (window.confirm(`${title}\n\n${msg}`)) {
+                    STATE.plans = [];
+                    STATE.inventory = createDefaultInventory();
+                    saveState();
+                    window.location.reload();
+                    renderPlans();
+                }
+            };
         }
-        resetBtn.onclick = () => {
-            const title = t('resetConfirmTitle');
-            const msg = t('resetConfirmMessage');
-            // 기본 confirm 사용 (각 언어 메시지 지원)
-            // 필요 시 커스텀 모달로 교체 가능
-            if (window.confirm(`${title}\n\n${msg}`)) {
-                STATE.plans = [];
-                STATE.inventory = {};
-                saveState();
-                window.location.reload();
-                renderPlans();
-            }
-        };
 
         document.querySelectorAll('[data-close]').forEach(btn => btn.addEventListener('click', e => {
             const modal = e.target.closest('.modal'); if (modal) modal.setAttribute('aria-hidden', 'true');
         }));
         const collapse = document.getElementById('collapseSummary');
         const summaryHeader = document.querySelector('.summary-header');
-        if (collapse) {
+        if (collapse && summaryHeader) {
             summaryHeader.onclick = () => {
                 const grid = document.getElementById('summaryGrid');
                 const open = collapse.getAttribute('aria-expanded') === 'true';
@@ -1679,37 +1691,41 @@
         if (!form) return;
         form.innerHTML = '';
         await ensureMaterialInfo();
+        const setModalTitle = (key, fallback) => {
+            if (title) title.textContent = t(key, fallback);
+            if (hint) hint.textContent = '';
+        };
         let rows = [];
         if (type === 'lv_exp') {
-            title.textContent = 'Character EXP'; hint.textContent = '';
+            setModalTitle('inventoryCharacterExp', 'Character EXP');
             rows = [
                 { key: 'lv_exp3', label: materialInfoFor('lv_exp3').name, icon: MATERIAL_ICONS.lv_exp3 },
                 { key: 'lv_exp2', label: materialInfoFor('lv_exp2').name, icon: MATERIAL_ICONS.lv_exp2 },
                 { key: 'lv_exp1', label: materialInfoFor('lv_exp1').name, icon: MATERIAL_ICONS.lv_exp1 }
             ];
         } else if (type === 'lv_limit') {
-            title.textContent = 'Character Level Break'; hint.textContent = '';
+            setModalTitle('inventoryCharacterLevelBreak', 'Character Level Break');
             rows = [
                 { key: 'lv_limit3', label: materialInfoFor('lv_limit3').name, icon: MATERIAL_ICONS.lv_limit3 },
                 { key: 'lv_limit2', label: materialInfoFor('lv_limit2').name, icon: MATERIAL_ICONS.lv_limit2 },
                 { key: 'lv_limit1', label: materialInfoFor('lv_limit1').name, icon: MATERIAL_ICONS.lv_limit1 }
             ];
         } else if (type === 'wp_exp') {
-            title.textContent = 'Weapon EXP'; hint.textContent = '';
+            setModalTitle('inventoryWeaponExp', 'Weapon EXP');
             rows = [
                 { key: 'wp_exp3', label: materialInfoFor('wp_exp3').name, icon: MATERIAL_ICONS.wp_exp3 },
                 { key: 'wp_exp2', label: materialInfoFor('wp_exp2').name, icon: MATERIAL_ICONS.wp_exp2 },
                 { key: 'wp_exp1', label: materialInfoFor('wp_exp1').name, icon: MATERIAL_ICONS.wp_exp1 }
             ];
         } else if (type === 'wp_limit') {
-            title.textContent = 'Weapon Level Break'; hint.textContent = '';
+            setModalTitle('inventoryWeaponLevelBreak', 'Weapon Level Break');
             rows = [
                 { key: 'wp_limit3', label: materialInfoFor('wp_limit3').name, icon: MATERIAL_ICONS.wp_limit3 },
                 { key: 'wp_limit2', label: materialInfoFor('wp_limit2').name, icon: MATERIAL_ICONS.wp_limit2 },
                 { key: 'wp_limit1', label: materialInfoFor('wp_limit1').name, icon: MATERIAL_ICONS.wp_limit1 }
             ];
         } else if (type === 'skill') {
-            title.textContent = 'Skills'; hint.textContent = '';
+            setModalTitle('inventorySkills', 'Skills');
             rows = [
                 { key: 'skill_lv_3', label: materialInfoFor('skill_lv_3').name, icon: MATERIAL_ICONS.skill_lv_3 },
                 { key: 'skill_lv_2', label: materialInfoFor('skill_lv_2').name, icon: MATERIAL_ICONS.skill_lv_2 },
@@ -1723,10 +1739,10 @@
                 { key: 'skill_item6', label: materialInfoFor('skill_item6').name, icon: MATERIAL_ICONS.skill_item6 }
             ];
         } else if (type === 'gem') {
-            title.textContent = 'Konpaku Gem'; hint.textContent = '';
-            rows = [{ key: 'konpaku_gem', label: 'Gem', icon: MATERIAL_ICONS.konpaku_gem }];
+            setModalTitle('inventoryKonpakuGem', 'Konpaku Gem');
+            rows = [{ key: 'konpaku_gem', label: t('inventoryGem', 'Gem'), icon: MATERIAL_ICONS.konpaku_gem }];
         } else if (type === 'mind') {
-            title.textContent = t('mind'); hint.textContent = '';
+            setModalTitle('mind', 'Mind');
             rows = [
                 { key: 'md_mercury', label: materialInfoFor('md_mercury').name, icon: MATERIAL_ICONS.md_mercury },
                 { key: 'md_bell', label: materialInfoFor('md_bell').name, icon: MATERIAL_ICONS.md_bell },
@@ -1736,7 +1752,7 @@
                 { key: 'md_skill2', label: materialInfoFor('md_skill2').name, icon: MATERIAL_ICONS.md_skill2 }
             ];
         } else if (type === 'mindscape') {
-            title.textContent = t('mindscapeCore'); hint.textContent = '';
+            setModalTitle('mindscapeCore', 'Mindscape Core');
             rows = [
                 { key: 'mindscape_core', label: materialInfoFor('mindscape_core', t('mindscapeCoreItem')).name, icon: MATERIAL_ICONS.mindscape_core },
                 { key: 'emblem_5star', label: materialInfoFor('emblem_5star', t('emblem5StarItem')).name, icon: MATERIAL_ICONS.emblem_5star },
@@ -1747,7 +1763,7 @@
         // 헤더: 선택한 재료의 큰 아이콘 + 이름/설명 (가능하면)
         if (focusKey) {
             const header = document.createElement('div'); header.className = 'inv-header';
-            const icon = document.createElement('img'); icon.className = 'inv-header-icon'; icon.src = MATERIAL_ICONS[focusKey] || MATERIAL_ICONS.money;
+            const icon = document.createElement('img'); icon.className = 'inv-header-icon'; icon.src = MATERIAL_ICONS[focusKey] || MATERIAL_ICONS.money; icon.alt = focusKey;
             const textBox = document.createElement('div'); textBox.className = 'inv-header-text';
             const firstRow = rows.find(r => r.key === focusKey) || rows[0];
             const info = materialInfoFor(focusKey, firstRow?.label || focusKey);
@@ -1759,7 +1775,7 @@
         }
         rows.forEach(r => {
             const row = document.createElement('div'); row.className = 'row inv-row';
-            const img = document.createElement('img'); img.src = r.icon; img.style.width = '28px'; img.style.height = '28px';
+            const img = document.createElement('img'); img.src = r.icon; img.alt = r.label; img.style.width = '28px'; img.style.height = '28px';
             const lab = document.createElement('label'); lab.textContent = r.label; lab.style.minWidth = '80px';
             const input = document.createElement('input'); input.type = 'number'; input.min = '0'; input.step = '1'; input.value = String(STATE.inventory[r.key] || 0); input.dataset.key = r.key;
             row.appendChild(img); row.appendChild(lab); row.appendChild(document.createTextNode(': ')); row.appendChild(input);

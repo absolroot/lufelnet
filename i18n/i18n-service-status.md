@@ -23,6 +23,7 @@
 | `guides` | 완료 | 신규 페이지 번들 + 통합 초기화로 목록/동적상세/정적상세 진입점 통합(`i18n/pages/guides/kr.js:1`, `apps/guides/index.html:41`, `apps/guides/view.html:40`, `apps/guides/pages/books.html:28`, `apps/guides/guides.js:28`, `apps/article-editor/editor.js:320`) |
 | `login` | 완료 | `apps/login/index.html:133`, `apps/login/index.html:138`에서 `initPageI18n('login')`/`I18nService.init('login')` 호출 |
 | `maps` | 완료 | `MapsI18n` 경로를 유지하면서 언어 선택기/모바일 ARIA/백업 툴팁/에러 문구/적 정보 fallback을 페이지 번들 키 조회로 통합하고 KR direct 참조 제거(`apps/maps/index.html:78`, `apps/maps/object-filter-panel.js:34`, `apps/maps/map-select-panel.js:21`, `apps/maps/maps-core.js:44`, `apps/maps/object-click-handler.js:33`, `i18n/pages/maps/kr.js:18`) |
+| `material-calc` | 완료 | 페이지 번들 추가 + 통합 초기화 이후 `window.t()` 기반으로 모달/버튼/도움말/SEO를 통합하고 로컬 `I18N` 맵 제거(`apps/material-calc/index.html:628`, `apps/material-calc/material-planner.js:123`, `apps/material-calc/material-planner-export.js:7`, `i18n/pages/material-calc/kr.js:1`) |
 | `persona` | 완료 | 통합 초기화 이후 스킬 라벨/배지/접근성 ARIA/상세 SEO fallback을 페이지 번들·공통 키 조회로 통합(`apps/persona/persona-list.js:49`, `apps/persona/persona-list.js:393`, `apps/persona/persona-list.js:710`, `apps/persona/persona-list.js:896`, `apps/persona/skillfrom.js:117`, `apps/persona/skillfrom.js:237`, `apps/persona/index.html:94`, `i18n/pages/persona/kr.js:18`) |
 | `pull-calc` | 완료 | `initPageI18n('pull-calc')` 이후 SEO 태그를 페이지 번들 키(`seoTitle/seoDescription/seoKeywords/seoOgLocale`) 조회로 통합하고 언어 변경 훅으로 재반영(`apps/pull-calc/pull-calc.js:1814`, `apps/pull-calc/pull-calc.js:276`, `apps/pull-calc/pull-calc.js:1822`, `i18n/pages/pull-calc/kr.js:10`) |
 | `pull-tracker` | 완료 | 3개 진입점 + 연관 JS를 `PullTrackerI18n` 경유로 통합하고 FAQ fetch/인라인 로컬 맵 제거, 초기화 레이스/폴백 체인을 안정화(`apps/pull-tracker/index.html:114`, `apps/pull-tracker/global-stats.html:103`, `apps/pull-tracker/url-guide.html:504`, `apps/pull-tracker/js/i18n-runtime.js:1`, `apps/pull-tracker/js/pull-tracker.js:4`, `apps/pull-tracker/js/global-stats.js:15`, `apps/pull-tracker/js/manual-editor.js:22`, `i18n/pages/pull-tracker/kr.js:1`, `i18n/pages/pull-tracker/en.js:1`, `i18n/pages/pull-tracker/jp.js:1`) |
@@ -45,7 +46,6 @@
 | 서비스 | 상태 | 근거 |
 | --- | --- | --- |
 | `home` | 미구현(공통 번역 일부 + 로컬 맵) | 공통 번역 로드 후 로컬 데이터 조합(`apps/home/index.html:456`, `apps/home/index.html:462`), 로컬 라벨 맵(`apps/home/js/quick-grid.js:45`) |
-| `material-calc` | 미구현(로컬 i18n) | 로컬 `I18N` 맵/`t()` 사용(`apps/material-calc/material-planner.js:68`, `apps/material-calc/material-planner.js:137`) |
 
 ## 4. 레거시/중복 잔존
 
@@ -70,7 +70,7 @@
 | `home` | 미구현 |
 | `login` | 완료 |
 | `maps` | 완료 |
-| `material-calc` | 미구현 |
+| `material-calc` | 완료 |
 | `patch-console` | 불필요 |
 | `pay-calc` | 불필요 |
 | `persona` | 완료 |
@@ -85,5 +85,5 @@
 | `wonder-weapon` | 완료 |
 
 ## 6. 결론
-- 재점검 기준 통합 i18n 완료(경미 초기값 잔존 포함): `about`, `astrolabe`, `character`, `critical-calc`, `defense-calc`, `gallery`, `guides`, `login`, `maps`, `persona`, `pull-calc`, `pull-tracker`, `revelations`, `schedule`, `synergy`, `tactic`, `tactic-maker`, `tier`, `wonder-weapon`
-- 우선 정리 대상(미구현): `home`, `material-calc`
+- 재점검 기준 통합 i18n 완료(경미 초기값 잔존 포함): `about`, `astrolabe`, `character`, `critical-calc`, `defense-calc`, `gallery`, `guides`, `login`, `maps`, `material-calc`, `persona`, `pull-calc`, `pull-tracker`, `revelations`, `schedule`, `synergy`, `tactic`, `tactic-maker`, `tier`, `wonder-weapon`
+- 우선 정리 대상(미구현): `home`

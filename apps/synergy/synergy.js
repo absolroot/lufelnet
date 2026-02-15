@@ -915,6 +915,7 @@
 
         tabs.forEach(tab => {
             let shouldShow = true;
+            const isSelectedTab = !!selectedCharacter && tab.dataset.character === selectedCharacter;
 
             // 1. 시간 필터
             if (timeFilter !== 'all') {
@@ -943,7 +944,8 @@
             // 3. 언어 필터
             if (shouldShow && currentLanguage !== 'kr' && !showSpoiler) {
                 const hasLanguageFile = tab.dataset.hasLanguageFile === 'true';
-                if (!hasLanguageFile) {
+                // URL로 직접 진입해 선택된 캐릭터는 언어 파일이 없어도 KR 폴백 렌더링을 위해 유지
+                if (!hasLanguageFile && !isSelectedTab) {
                     shouldShow = false;
                 }
             }
@@ -2306,4 +2308,3 @@
         init();
     }
 })();
-

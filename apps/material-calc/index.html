@@ -9,26 +9,27 @@ description: P5X 캐릭터 육성 재료 계산기 (레벨/무기/스킬/심상)
 ---
 <link rel="stylesheet" href="/apps/material-calc/material-planner.css">
 <script src="/apps/material-calc/material-planner.js"></script>
+<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
 
 <div class="main-wrapper">
     <div class="navigation-path">
-        <script>document.write(`<a href="${BASE_URL}/?v=${APP_VERSION}"><span data-lang-key="home">-</span></a>`);</script>
+        <script>document.write(`<a href="${BASE_URL}/?v=${APP_VERSION}"><span data-i18n="navHome">-</span></a>`);</script>
         <span class="separator">/</span>
-        <span class="current-page" data-lang-key="pageTitle">-</span>
+        <span class="current-page" data-i18n="navCurrent">-</span>
     </div>
 
     <div class="header-container">
-        <h1 id="plannerTitle">Progression Calculator</h1>
+        <h1 id="plannerTitle" data-i18n="pageTitle">-</h1>
         <div class="planner-toolbar">
-            <button id="resetBtn" class="primary-btn" style="padding: 8px 10px;">초기화</button>
+            <button id="resetBtn" class="primary-btn" style="padding: 8px 10px;" data-i18n="reset">-</button>
             <!-- Backup / Load buttons (hidden on <=768px) -->
-            <button id="backupBtn" class="primary-btn desktop-only" style="padding: 8px 10px;">Backup</button>
-            <button id="loadBtn" class="primary-btn desktop-only" style="padding: 8px 10px;">Load</button>
-            <button id="addCharacterBtn" class="primary-btn">+ <span data-lang-key="addCharacter">캐릭터 추가</span></button>
+            <button id="backupBtn" class="primary-btn desktop-only" style="padding: 8px 10px;" data-i18n="backupButton">-</button>
+            <button id="loadBtn" class="primary-btn desktop-only" style="padding: 8px 10px;" data-i18n="loadButton">-</button>
+            <button id="addCharacterBtn" class="primary-btn">+ <span data-i18n="addCharacter">-</span></button>
             <!--
             <label class="spoiler-toggle" id="spoilerContainer" style="display:none;">
                 <input type="checkbox" id="spoilerToggle">
-                <span data-lang-key="showSpoiler">스포일러 포함 (KR 전체 목록 사용)</span>
+                <span data-i18n="showSpoiler">-</span>
             </label>-->
         </div>
     </div>
@@ -36,8 +37,8 @@ description: P5X 캐릭터 육성 재료 계산기 (레벨/무기/스킬/심상)
     <!-- 상단 합산 요약 -->
     <section class="summary-card card-style">
         <div class="summary-header">
-            <h2 data-lang-key="materialSummary">재료 합산</h2>
-            <button id="collapseSummary" aria-expanded="true" class="icon-btn" title="toggle">▾</button>
+            <h2 data-i18n="materialSummary">-</h2>
+            <button id="collapseSummary" aria-expanded="true" class="icon-btn" title="-" data-i18n-aria="summaryToggleTitle">▾</button>
         </div>
         <div id="summaryGrid" class="material-grid"></div>
     </section>
@@ -47,21 +48,21 @@ description: P5X 캐릭터 육성 재료 계산기 (레벨/무기/스킬/심상)
         <div class="filter-header" style="display:flex;align-items:center;gap:8px;">
             <button class="filter-toggle-btn" id="plannerFilterToggle">
                 <img src="{{ site.baseurl }}/assets/img/character-cards/filter.png" alt="필터" />
-                <span data-lang-key="filter">필터</span>
+                <span data-i18n="filterLabel">-</span>
             </button>
             <div style="flex:1"></div>
             <!-- 정렬 드롭다운 -->
             <label style="display:flex;align-items:center;gap:6px;color:rgba(255,255,255,.8);font-size:14px;">
-                <span id="sortLabel" data-lang-key="sort">정렬</span>
+                <span id="sortLabel" data-i18n="sortLabel">-</span>
                 <select id="plannerSortSelect"
                     style="background:var(--card-background);border: none;color:#ffffffeb;padding:6px 8px;border-radius:4px;">
-                    <option value="release_asc" data-lang-key="sort.releaseAsc">출시 순 ↑</option>
-                    <option value="release_desc" data-lang-key="sort.releaseDesc">출시 순 ↓</option>
-                    <option value="name_asc" data-lang-key="sort.nameAsc">이름 순 ↑</option>
-                    <option value="name_desc" data-lang-key="sort.nameDesc">이름 순 ↓</option>
-                    <option value="custom" data-lang-key="sort.custom">사용자 지정</option>
+                    <option value="release_asc" data-i18n="sortReleaseAsc">-</option>
+                    <option value="release_desc" data-i18n="sortReleaseDesc">-</option>
+                    <option value="name_asc" data-i18n="sortNameAsc">-</option>
+                    <option value="name_desc" data-i18n="sortNameDesc">-</option>
+                    <option value="custom" data-i18n="sortCustom">-</option>
                 </select>
-                <button id="plannerSortCustomBtn" class="icon-btn" title="Custom order"
+                <button id="plannerSortCustomBtn" class="icon-btn" title="-" data-i18n-aria="customOrderButtonTitle"
                     style="display:none;padding:6px 6px;line-height:0;">
                     <!-- sliders icon -->
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
@@ -83,7 +84,7 @@ description: P5X 캐릭터 육성 재료 계산기 (레벨/무기/스킬/심상)
         <div class="filter-content" id="plannerFilterContent" style="display: none;">
             <!-- 일단 캐릭터 페이지의 구조를 간략히 유지(추후 실제 필터 로직 연결 예정) -->
             <div class="filter-group">
-                <h3 data-lang-key="filterGroup.element">속성</h3>
+                <h3 data-i18n="filterGroupElement">-</h3>
                 <div class="filter-options">
                     <label><input type="checkbox" name="element" value="물리"><img
                             src="{{ site.baseurl }}/assets/img/character-cards/속성_물리.png" alt="물리"><span></span></label>
@@ -110,7 +111,7 @@ description: P5X 캐릭터 육성 재료 계산기 (레벨/무기/스킬/심상)
                 </div>
             </div>
             <div class="filter-group">
-                <h3 data-lang-key="filterGroup.position">직업</h3>
+                <h3 data-i18n="filterGroupPosition">-</h3>
                 <div class="filter-options">
                     <label><input type="checkbox" name="position" value="지배"><img
                             src="{{ site.baseurl }}/assets/img/character-cards/직업_지배.png" alt="지배"></label>
@@ -129,7 +130,7 @@ description: P5X 캐릭터 육성 재료 계산기 (레벨/무기/스킬/심상)
                 </div>
             </div>
             <div class="filter-group">
-                <h3 data-lang-key="filterGroup.rarity">등급</h3>
+                <h3 data-i18n="filterGroupRarity">-</h3>
                 <div class="filter-options tag-options">
                     <label>
                         <input type="checkbox" name="rarity" value="5" hidden>
@@ -246,15 +247,15 @@ description: P5X 캐릭터 육성 재료 계산기 (레벨/무기/스킬/심상)
 <div id="loadConfirmModal" class="modal" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-header">
-            <h3 id="loadConfirmTitle">Load Confirm</h3>
+            <h3 id="loadConfirmTitle" data-i18n="loadConfirmTitle">-</h3>
             <button class="icon-btn close" data-close>✕</button>
         </div>
         <div class="modal-body">
-            <p id="loadConfirmMessage">Your current inventory will be replaced. Continue?</p>
+            <p id="loadConfirmMessage" data-i18n="loadConfirmMessage">-</p>
         </div>
         <div class="modal-footer">
-            <button id="loadYesBtn" class="primary-btn">Yes</button>
-            <button id="loadNoBtn" class="secondary-btn">No</button>
+            <button id="loadYesBtn" class="primary-btn" data-i18n="yes">-</button>
+            <button id="loadNoBtn" class="secondary-btn" data-i18n="no">-</button>
         </div>
     </div>
 </div>
@@ -263,12 +264,12 @@ description: P5X 캐릭터 육성 재료 계산기 (레벨/무기/스킬/심상)
 <div id="characterSelectModal" class="modal" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-header">
-            <h3 data-lang-key="selectCharacter">캐릭터 선택</h3>
+            <h3 data-i18n="selectCharacter">-</h3>
             <button class="icon-btn close" data-close>✕</button>
         </div>
         <div class="modal-body">
             <div class="character-filter">
-                <input type="text" id="characterSearch" placeholder="Search" autocomplete="off">
+                <input type="text" id="characterSearch" data-i18n-placeholder="searchPlaceholder" placeholder="-" autocomplete="off">
             </div>
             <div id="characterGrid" class="character-grid"></div>
             <!--
@@ -342,15 +343,15 @@ description: P5X 캐릭터 육성 재료 계산기 (레벨/무기/스킬/심상)
         <div class="modal-body">
             <div class="setup-grid">
                 <div class="setup-section">
-                    <h4 data-lang-key="level">레벨</h4>
+                    <h4 data-i18n="level">-</h4>
                     <div class="setting-row">
-                        <label><span data-lang-key="current">캐릭터</span> LV</label>
+                        <label><span data-i18n="current">-</span> LV</label>
                         <input id="lvFrom" type="number" min="1" max="80" value="1">
                         <span class="arrow">→</span>
                         <input id="lvTo" type="number" min="1" max="80" value="80">
                     </div>
                     <div class="setting-row">
-                        <label><span data-lang-key="weapon">무기</span> LV</label>
+                        <label><span data-i18n="weapon">-</span> LV</label>
                         <input id="wpFrom" type="number" min="1" max="80" value="1">
                         <span class="arrow">→</span>
                         <input id="wpTo" type="number" min="1" max="80" value="80">
@@ -358,7 +359,7 @@ description: P5X 캐릭터 육성 재료 계산기 (레벨/무기/스킬/심상)
                 </div>
 
                 <div class="setup-section">
-                    <h4 data-lang-key="skills">스킬</h4>
+                    <h4 data-i18n="skills">-</h4>
                     <div class="skill-list">
                         <div class="setting-row">
                             <label>S1</label>
@@ -388,37 +389,37 @@ description: P5X 캐릭터 육성 재료 계산기 (레벨/무기/스킬/심상)
                 </div>
 
                 <div class="setup-section">
-                    <h4 data-lang-key="mind">심상</h4>
+                    <h4 data-i18n="mind">-</h4>
                     <div class="setting-row align-center">
-                        <!--<label><input id="mindAllToggle" type="checkbox" checked> <span data-lang-key="enableAll">기본 12개 활성화</span></label>-->
+                        <!--<label><input id="mindAllToggle" type="checkbox" checked> <span data-i18n="enableAll">기본 12개 활성화</span></label>-->
                     </div>
                     <div id="mindBaseGrid" class="mind-grid"></div>
                     <div class="setting-row">
-                        <label data-lang-key="mindStat1">심상 스탯 1</label>
+                        <label data-i18n="mindStat1">-</label>
                         <input id="mindStat1From" type="number" min="0" max="5" value="0">
                         <span class="arrow">→</span>
                         <input id="mindStat1To" type="number" min="0" max="5" value="5">
                     </div>
                     <div class="setting-row">
-                        <label data-lang-key="mindSkill1">심상 스킬 1</label>
+                        <label data-i18n="mindSkill1">-</label>
                         <input id="mindSkill1From" type="number" min="0" max="5" value="0">
                         <span class="arrow">→</span>
                         <input id="mindSkill1To" type="number" min="0" max="5" value="5">
                     </div>
                     <div class="setting-row">
-                        <label data-lang-key="mindAttr">심상 속성 강화</label>
+                        <label data-i18n="mindAttr">-</label>
                         <input id="mindAttrFrom" type="number" min="0" max="12" value="0">
                         <span class="arrow">→</span>
                         <input id="mindAttrTo" type="number" min="0" max="12" value="12">
                     </div>
                     <div class="setting-row">
-                        <label data-lang-key="mindStat2">심상 스탯 2</label>
+                        <label data-i18n="mindStat2">-</label>
                         <input id="mindStat2From" type="number" min="0" max="5" value="0">
                         <span class="arrow">→</span>
                         <input id="mindStat2To" type="number" min="0" max="5" value="5">
                     </div>
                     <div class="setting-row">
-                        <label data-lang-key="mindSkill2">심상 스킬 2</label>
+                        <label data-i18n="mindSkill2">-</label>
                         <input id="mindSkill2From" type="number" min="0" max="5" value="0">
                         <span class="arrow">→</span>
                         <input id="mindSkill2To" type="number" min="0" max="5" value="5">
@@ -427,28 +428,28 @@ description: P5X 캐릭터 육성 재료 계산기 (레벨/무기/스킬/심상)
                 </div>
 
                 <div class="setup-section">
-                    <h4 data-lang-key="mindscapeCore">심상 활성화</h4>
+                    <h4 data-i18n="mindscapeCore">-</h4>
                     <div class="setting-row align-center">
                         <label>
                             <input id="mindscapeEnabled" type="checkbox">
-                            <span data-lang-key="enableMindscape">활성화</span>
+                            <span data-i18n="enableMindscape">-</span>
                         </label>
                     </div>
                     <div id="mindscapeOptions" style="display: none;">
                         <div class="setting-row">
-                            <label data-lang-key="level">레벨</label>
+                            <label data-i18n="level">-</label>
                             <input id="mindscapeLevelFrom" type="number" min="80" max="100" value="80" disabled>
                             <span class="arrow">→</span>
                             <input id="mindscapeLevelTo" type="number" min="80" max="100" value="100" disabled>
                         </div>
                         <div class="setting-row">
-                            <label data-lang-key="resonance1">속성 공명 1</label>
+                            <label data-i18n="resonance1">-</label>
                             <input id="resonance1From" type="number" min="0" max="2" value="0" disabled>
                             <span class="arrow">→</span>
                             <input id="resonance1To" type="number" min="0" max="2" value="2" disabled>
                         </div>
                         <div class="setting-row">
-                            <label data-lang-key="resonance2">속성 공명 2</label>
+                            <label data-i18n="resonance2">-</label>
                             <input id="resonance2From" type="number" min="0" max="2" value="0" disabled>
                             <span class="arrow">→</span>
                             <input id="resonance2To" type="number" min="0" max="2" value="2" disabled>
@@ -458,8 +459,8 @@ description: P5X 캐릭터 육성 재료 계산기 (레벨/무기/스킬/심상)
             </div>
         </div>
         <div class="modal-footer">
-            <button class="secondary-btn" data-close data-lang-key="cancel">취소</button>
-            <button id="savePlanBtn" class="primary-btn" data-lang-key="save">저장</button>
+            <button class="secondary-btn" data-close data-i18n="cancel">-</button>
+            <button id="savePlanBtn" class="primary-btn" data-i18n="save">-</button>
         </div>
     </div>
 </div>
@@ -468,7 +469,7 @@ description: P5X 캐릭터 육성 재료 계산기 (레벨/무기/스킬/심상)
 <div id="inventoryModal" class="modal" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-header">
-            <h3 id="inventoryModalTitle">Inventory</h3>
+            <h3 id="inventoryModalTitle">-</h3>
             <button class="icon-btn close" data-close>✕</button>
         </div>
         <div class="modal-body">
@@ -476,8 +477,8 @@ description: P5X 캐릭터 육성 재료 계산기 (레벨/무기/스킬/심상)
             <p id="inventoryHint" style="opacity:.8;margin-top:8px;font-size:12px;"></p>
         </div>
         <div class="modal-footer">
-            <button class="secondary-btn" data-close data-lang-key="cancel">취소</button>
-            <button id="saveInventoryBtn" class="primary-btn" data-lang-key="save">저장</button>
+            <button class="secondary-btn" data-close data-i18n="cancel">-</button>
+            <button id="saveInventoryBtn" class="primary-btn" data-i18n="save">-</button>
         </div>
     </div>
 </div>
@@ -486,16 +487,16 @@ description: P5X 캐릭터 육성 재료 계산기 (레벨/무기/스킬/심상)
 <div id="customOrderModal" class="modal" aria-hidden="true">
     <div class="modal-dialog large">
         <div class="modal-header">
-            <h3 id="customOrderTitle">Priority</h3>
+            <h3 id="customOrderTitle" data-i18n="priority">-</h3>
             <button class="icon-btn close" data-close>✕</button>
         </div>
         <div class="modal-body">
-            <div style="opacity:.8;margin-bottom:8px;" id="customOrderHint">Drag to change order</div>
+            <div style="opacity:.8;margin-bottom:8px;" id="customOrderHint" data-i18n="dragToChangeOrder">-</div>
             <div id="customList" class="priority-col single"></div>
         </div>
         <div class="modal-footer">
-            <button id="customOrderCancel" class="secondary-btn" data-lang-key="cancel">취소</button>
-            <button id="customOrderSave" class="primary-btn" data-lang-key="save">저장</button>
+            <button id="customOrderCancel" class="secondary-btn" data-i18n="cancel">-</button>
+            <button id="customOrderSave" class="primary-btn" data-i18n="save">-</button>
         </div>
     </div>
 </div>
@@ -586,66 +587,90 @@ description: P5X 캐릭터 육성 재료 계산기 (레벨/무기/스킬/심상)
 </style>
 
 <script>
-    // 언어별 SEO 설정 함수
-    function updateSEOContent() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const currentLang = urlParams.get('lang') || 'kr';
+    let materialCalcSeoHookBound = false;
 
-        const seoData = {
-            'kr': {
-                title: '육성 계산기 - 페르소나5 더 팬텀 X 루페르넷',
-                description: '페르소나5 더 팬텀 X 캐릭터 육성 재료 계산기 (레벨/무기/스킬/심상)'
-            },
-            'en': {
-                title: 'Progression Calculator - Persona 5: The Phantom X LufelNet',
-                description: 'Persona 5: The Phantom X character progression material calculator (level/weapon/skill/mindscape)'
-            },
-            'jp': {
-                title: '育成計算機 - ペルソナ5 ザ・ファントムX LufelNet',
-                description: 'ペルソナ5 ザ・ファントムX キャラクター育成素材計算機（レベル／武器／スキル／イメジャリー）'
-            }
-        };
-
-        const currentSEO = seoData[currentLang] || seoData['kr'];
-
-        // 타이틀 업데이트
-        document.title = currentSEO.title;
-
-        // 메타 태그 업데이트
-        let metaDescription = document.querySelector('meta[name="description"]');
-        if (!metaDescription) {
-            metaDescription = document.createElement('meta');
-            metaDescription.name = 'description';
-            document.head.appendChild(metaDescription);
+    function getMaterialCalcLang() {
+        if (typeof window.getCurrentLang === 'function') {
+            const lang = window.getCurrentLang();
+            if (lang) return lang;
         }
-        metaDescription.setAttribute('content', currentSEO.description);
-
-        let ogTitle = document.querySelector('meta[property="og:title"]');
-        if (!ogTitle) {
-            ogTitle = document.createElement('meta');
-            ogTitle.setAttribute('property', 'og:title');
-            document.head.appendChild(ogTitle);
+        if (typeof window.getCurrentLanguage === 'function') {
+            const lang = window.getCurrentLanguage();
+            if (lang) return lang;
         }
-        ogTitle.setAttribute('content', currentSEO.title);
-
-        let ogDescription = document.querySelector('meta[property="og:description"]');
-        if (!ogDescription) {
-            ogDescription = document.createElement('meta');
-            ogDescription.setAttribute('property', 'og:description');
-            document.head.appendChild(ogDescription);
-        }
-        ogDescription.setAttribute('content', currentSEO.description);
+        return 'kr';
     }
 
+    function upsertMetaByName(name, content) {
+        let tag = document.querySelector(`meta[name="${name}"]`);
+        if (!tag) {
+            tag = document.createElement('meta');
+            tag.setAttribute('name', name);
+            document.head.appendChild(tag);
+        }
+        tag.setAttribute('content', content);
+    }
+
+    function upsertMetaByProperty(property, content) {
+        let tag = document.querySelector(`meta[property="${property}"]`);
+        if (!tag) {
+            tag = document.createElement('meta');
+            tag.setAttribute('property', property);
+            document.head.appendChild(tag);
+        }
+        tag.setAttribute('content', content);
+    }
+
+    function updateMaterialCalcSEOTags(lang = null) {
+        const currentLang = lang || getMaterialCalcLang();
+        const baseUrl = 'https://lufel.net';
+        const currentUrl = `${baseUrl}/material-calc/?lang=${currentLang}`;
+        const t = (key, fallback) => (typeof window.t === 'function' ? window.t(key, fallback) : fallback);
+
+        const seoTitle = t('seoTitle', '육성 계산기 - 페르소나5 더 팬텀 X 루페르넷');
+        const seoDescription = t('seoDescription', '페르소나5 더 팬텀 X 캐릭터 육성 재료 계산기 (레벨/무기/스킬/심상)');
+        const seoKeywords = t('seoKeywords', 'P5X, 페르소나5X, 육성 계산기, 재료 계산기, 캐릭터 육성');
+        const seoOgLocale = t('seoOgLocale', currentLang === 'jp' ? 'ja_JP' : currentLang === 'en' ? 'en_US' : 'ko_KR');
+
+        document.title = seoTitle;
+        upsertMetaByName('description', seoDescription);
+        upsertMetaByName('keywords', seoKeywords);
+        upsertMetaByProperty('og:title', seoTitle);
+        upsertMetaByProperty('og:description', seoDescription);
+        upsertMetaByProperty('og:url', currentUrl);
+        upsertMetaByProperty('og:locale', seoOgLocale);
+    }
 </script>
 
 <!-- Export/Import handler -->
 <script src="/apps/material-calc/material-planner-export.js?v={{ site.time | date: '%s' }}"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        Navigation.load('material-calc');
-        updateSEOContent();
-        window.MaterialPlanner && window.MaterialPlanner.init();
-    });
+    document.addEventListener('DOMContentLoaded', async () => {
+        if (typeof window.initPageI18n === 'function') {
+            await window.initPageI18n('material-calc');
+        } else if (window.I18nService && typeof window.I18nService.init === 'function') {
+            await window.I18nService.init('material-calc');
+        }
 
+        if (typeof Navigation !== 'undefined') {
+            Navigation.load('material-calc');
+        }
+
+        updateMaterialCalcSEOTags();
+
+        if (window.MaterialPlanner && typeof window.MaterialPlanner.init === 'function') {
+            await window.MaterialPlanner.init();
+        }
+
+        if (window.MaterialPlannerExport && typeof window.MaterialPlannerExport.init === 'function') {
+            window.MaterialPlannerExport.init();
+        }
+
+        if (window.I18nService && typeof window.I18nService.onLanguageChange === 'function' && !materialCalcSeoHookBound) {
+            window.I18nService.onLanguageChange(() => {
+                updateMaterialCalcSEOTags();
+            });
+            materialCalcSeoHookBound = true;
+        }
+    });
 </script>

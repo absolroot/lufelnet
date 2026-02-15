@@ -4,7 +4,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "patch-console": "node apps/patch-console/run-patch-console.mjs"
+    "patch-console": "node apps/patch-console/run-patch-console.mjs",
+    "seo:synergy:generate": "node scripts/seo/generate-synergy-pages.mjs",
+    "seo:synergy:check": "node scripts/seo/generate-synergy-pages.mjs --check"
   },
   "keywords": [],
   "author": "",

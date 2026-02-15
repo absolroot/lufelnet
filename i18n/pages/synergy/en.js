@@ -62,7 +62,7 @@ window.I18N_PAGE_SYNERGY_EN = {
     soulmateNotice: 'In this event, you will make an important decision in addition to the choices above.',
     patchPendingSuffix: '(Patch Pending)',
     msgKrFallbackNotice: 'Content that has not been released or updated by the administrator may be displayed in Korean. Separate translation work is not planned, and we ask that you use a translator even if it is inconvenient.',
-    pageTitleGuidePrefix: 'P5X Synergy guide',
+    pageTitleGuidePrefix: 'P5X Synergy',
     pageTitleSiteSuffix: 'Persona 5 The Phantom X Lufelnet',
     currencyArcadeKeywords: ['게임 센터', 'Arcade', 'ゲーム', 'ゲームセンター'],
     currencyCashKeywords: ['현금', 'Money', '所持金'],

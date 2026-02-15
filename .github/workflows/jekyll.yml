@@ -30,6 +30,18 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+
+    - name: Set up Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+
+    - name: Check generated synergy SEO pages (PR only)
+      if: github.event_name == 'pull_request'
+      run: npm run seo:synergy:check
+
+    - name: Generate synergy SEO pages
+      run: npm run seo:synergy:generate
     
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1

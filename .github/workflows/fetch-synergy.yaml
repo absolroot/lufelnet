@@ -38,6 +38,9 @@ jobs:
             node scripts/fetch-synergy.mjs
           }
 
+      - name: Generate synergy SEO pages
+        run: npm run seo:synergy:generate
+
       - name: Commit & Push
         run: |
           set -euo pipefail
@@ -55,7 +58,7 @@ jobs:
             exit 0
           fi
 
-          git commit -m "chore(data): update synergy json [skip ci]"
+          git commit -m "chore(data): update synergy json + seo pages [skip ci]"
 
           BRANCH="${GITHUB_REF_NAME:-main}"
           for attempt in 1 2 3; do

@@ -41,7 +41,9 @@ window.personaFiles["오로바스"] = {
       "name_jp": "熱狂の予言者",
       "desc": "효과 명중이 7% 증가한다. 적에게 스킬 시전 시 2턴 동안 적이 받는 화염 속성 대미지가 7.1% 증가한다.",
       "desc_en": "Increase ailment accuracy by 7%. After using a skill on a foe, increase Fire damage taken by 7.1% for 2 turns.",
-      "desc_jp": "状態異常命中が７%上昇する。敵にスキルを使用した時、２ターンの間、対象の火炎属性の被ダメージを７.１%上昇する。"
+      "desc_jp": "状態異常命中が７%上昇する。敵にスキルを使用した時、２ターンの間、対象の火炎属性の被ダメージを７.１%上昇する。",
+      "name_cn": "狂热的卜者",
+      "desc_cn": "效果命中提升7%。以敌人为目标释放人格面具技能后，使其受到的火焰伤害提升7.1%，效果持续2回合。"
     },
     {
       "name": "열광적인 점쟁이Ⅰ",
@@ -49,7 +51,9 @@ window.personaFiles["오로바스"] = {
       "name_jp": "熱狂の予言者Ⅰ",
       "desc": "효과 명중이 7% 증가한다. 적에게 스킬 시전 시 2턴 동안 적이 받는 화염 속성 대미지가 8.2% 증가한다.",
       "desc_en": "Increase ailment accuracy by 7%. After using a skill on a foe, increase Fire damage taken by 8.2% for 2 turns.",
-      "desc_jp": "状態異常命中が７%上昇する。敵にスキルを使用した時、２ターンの間、対象の火炎属性の被ダメージを８.２%上昇する。"
+      "desc_jp": "状態異常命中が７%上昇する。敵にスキルを使用した時、２ターンの間、対象の火炎属性の被ダメージを８.２%上昇する。",
+      "name_cn": "狂热的卜者Ⅰ",
+      "desc_cn": "效果命中提升7%。以敌人为目标释放人格面具技能后，使其受到的火焰伤害提升8.2%，效果持续2回合。"
     }
   ],
   "uniqueSkill": {
@@ -61,7 +65,9 @@ window.personaFiles["오로바스"] = {
     "desc_jp": "２ターンの間、敵単体の火炎耐性を打ち消す。",
     "priority": 3,
     "icon": "디버프",
-    "icon_gl": "버프"
+    "icon_gl": "버프",
+    "name_cn": "消除火焰耐性",
+    "desc_cn": "使1名敌人的火焰耐性消除，效果持续2回合。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -70,7 +76,9 @@ window.personaFiles["오로바스"] = {
     "desc": "모든 적에게 공격력 90.0%/96.3%/102.6%의 화염 속성 대미지를 주며, 적이 받는 대미지가 19.6%/21.0%/22.3% 증가한다. 효과는 2턴 동안 지속된다.",
     "desc_en": "Deal Fire damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
     "desc_jp": "敵全体に攻撃力90.0%/96.3%/102.6%の火炎属性ダメージを与える。さらに２ターンの間、被ダメージが19.6%/21.0%/22.3%上昇する。",
-    "priority": 1
+    "priority": 1,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "对所有敌人造成90.0%/96.3%/102.6%攻击力的火焰属性伤害，并使其受到的伤害提升19.6%/21.0%/22.3%，效果持续2回合。"
   },
   "innate_skill": [
     {
@@ -82,7 +90,9 @@ window.personaFiles["오로바스"] = {
       "desc_jp": "スキルのＳＰ消費量が２.４%低下する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "4"
+      "learn_level": "4",
+      "name_cn": "魔术的资质Ⅰ",
+      "desc_cn": "技能消耗的SP降低2.4%。"
     },
     {
       "name": "질풍 간파Ⅰ",
@@ -93,7 +103,9 @@ window.personaFiles["오로바스"] = {
       "desc_jp": "疾風属性の被ダメージを４.７%低下させる。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "8"
+      "learn_level": "8",
+      "name_cn": "疾风识破Ⅰ",
+      "desc_cn": "受到的疾风属性伤害降低4.7%。"
     },
     {
       "name": "스쿠카쟈",
@@ -104,7 +116,10 @@ window.personaFiles["오로바스"] = {
       "desc_jp": "３ターンの間、味方単体の状態異常命中、状態異常抵抗が9.3%/9.8%/10.2%上昇し、速さが５上昇する。自身の状態異常命中が２５%ごとに、味方の状態異常命中がさらに1.6%/1.7%/1.8%上昇する（最大6.4%/6.7%/7.0%まで）。",
       "cost": "SP 22",
       "level": "6/7/8",
-      "learn_level": "12"
+      "learn_level": "12",
+      "name_cn": "斯库卡加",
+      "desc_cn": "使1名同伴的效果命中、效果抵抗提升9.3%/9.8%/10.2%，自身每25%效果命中额外提升1.6%/1.7%/1.8%，上限6.4%/6.7%/7.0%。效果持续3回合。"
     }
-  ]
+  ],
+  "name_cn": "欧若博司"
 };

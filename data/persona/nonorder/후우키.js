@@ -27,7 +27,9 @@ window.personaFiles["후우키"] = {
       "name_jp": "使役の旋風",
       "desc": "공격력이 8.7% 증가한다. 적 처치 후 자신이 주는 질풍 속성 대미지가 6% 영구 증가한다(3회 중첩 가능).",
       "desc_en": "Increase Attack by 8.7%. After defeating a foe, permanently increase Wind damage by 6%. Stacks up to 3 times.",
-      "desc_jp": "攻撃力が８.７%上昇する。敵を倒した時、自身の疾風属性の与ダメージが永続的に６%上昇する。この効果は最大３つまで累積できる。"
+      "desc_jp": "攻撃力が８.７%上昇する。敵を倒した時、自身の疾風属性の与ダメージが永続的に６%上昇する。この効果は最大３つまで累積できる。",
+      "name_cn": "使役的飓风",
+      "desc_cn": "攻击力提升8.7%。击败敌人后，使自身造成的疾风属性伤害永久提升6%，可叠加3层。"
     },
     {
       "name": "사역의 허리케인Ⅰ",
@@ -35,7 +37,9 @@ window.personaFiles["후우키"] = {
       "name_jp": "使役の旋風Ⅰ",
       "desc": "공격력이 8.7% 증가한다. 적 처치 후 자신이 주는 질풍 속성 대미지가 7% 영구 증가하고, 최대 3회 중첩된다.",
       "desc_en": "Increase Attack by 8.7%. After defeating a foe, permanently increase Wind damage by 7%. Stacks up to 3 times.",
-      "desc_jp": "攻撃力が８.７%上昇する。敵を倒した時、自身の疾風属性の与ダメージが永続的に７%上昇する。この効果は最大３つまで累積できる。"
+      "desc_jp": "攻撃力が８.７%上昇する。敵を倒した時、自身の疾風属性の与ダメージが永続的に７%上昇する。この効果は最大３つまで累積できる。",
+      "name_cn": "使役的飓风Ⅰ",
+      "desc_cn": "攻击力提升8.7%。击败敌人后，使自身造成的疾风属性伤害永久提升7%，可叠加3层。"
     }
   ],
   "innate_skill": [
@@ -48,7 +52,9 @@ window.personaFiles["후우키"] = {
       "desc_jp": "３ターンの間、味方単体の攻撃力が15.5%/16.3%/17.0%上昇する。自身の攻撃力が５００ごとに、味方の攻撃力がさらに1.3%/1.4%/1.4%上昇する（最大10.4%/10.9%/11.4%まで）。",
       "cost": "SP 22",
       "level": "6/7/8",
-      "learn_level": "5"
+      "learn_level": "5",
+      "name_cn": "塔尔卡加",
+      "desc_cn": "使1名同伴的攻击力提升15.5%/16.3%/17.0%，自身每500攻击力额外提升1.3%/1.4%/1.4%，上限10.4%/10.9%/11.4%。效果持续3回合。"
     },
     {
       "name": "정교한 타격Ⅱ",
@@ -59,7 +65,9 @@ window.personaFiles["후우키"] = {
       "desc_jp": "クリティカルダメージが１０%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "10"
+      "learn_level": "10",
+      "name_cn": "精准打击Ⅱ",
+      "desc_cn": "暴击效果提升10%。"
     },
     {
       "name": "질풍 강화Ⅱ",
@@ -70,7 +78,9 @@ window.personaFiles["후우키"] = {
       "desc_jp": "疾風属性の与ダメージが６.７%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "15"
+      "learn_level": "15",
+      "name_cn": "疾风强化Ⅱ",
+      "desc_cn": "疾风属性伤害提升6.7%。"
     },
     {
       "name": "질풍 간파Ⅱ",
@@ -81,7 +91,9 @@ window.personaFiles["후우키"] = {
       "desc_jp": "疾風属性の被ダメージを６.７%低下させる。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "20"
+      "learn_level": "20",
+      "name_cn": "疾风识破Ⅱ",
+      "desc_cn": "受到的疾风属性伤害降低6.7%。"
     }
   ],
   "uniqueSkill": {
@@ -93,7 +105,9 @@ window.personaFiles["후우키"] = {
     "desc_jp": "敵単体に攻撃力114.0/119.7/125.4%の疾風属性ダメージを与える。63.3/66.5/69.6%の確率で敵を２ターンの間、風襲状態にする。",
     "priority": 0,
     "icon": "Default",
-    "icon_gl": ""
+    "icon_gl": "",
+    "name_cn": "加尔拉",
+    "desc_cn": "对1名敌人造成114.0/119.7/125.4%攻击力的疾风属性伤害，有63.3/66.5/69.6%基础概率使敌人陷入风袭状态，效果持续2回合。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -102,6 +116,9 @@ window.personaFiles["후우키"] = {
     "desc": "1명의 적에게 공격력 360.0%/385.2%/410.4%의 질풍 속성 대미지를 준다.",
     "desc_en": "Deal Wind damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
     "desc_jp": "敵単体に攻撃力360.0%/385.2%/410.4%の疾風属性ダメージを与える。",
-    "priority": 0
-  }
+    "priority": 0,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "对1名敌人造成360.0%/385.2%/410.4%攻击力的疾风属性伤害。"
+  },
+  "name_cn": "风鬼"
 };

@@ -27,7 +27,9 @@ window.personaFiles["실키"] = {
       "name_jp": "慈愛の家守",
       "desc": "생명이 3.5% 증가한다. 정신 이상 제거 시 목표의 공격력 12.5%의 생명을 회복한다.",
       "desc_en": "Increase max HP by 3.5%. After removing a spiritual ailment, restore target's HP by 12.5% of Attack.",
-      "desc_jp": "ＨＰが３.５%上昇する。行動異常を治療した時、対象のＨＰを攻撃力の１２.５%回復する。"
+      "desc_jp": "ＨＰが３.５%上昇する。行動異常を治療した時、対象のＨＰを攻撃力の１２.５%回復する。",
+      "name_cn": "怜爱的霜护",
+      "desc_cn": "生命值提升3.5%。驱散精神异常时，恢复目标12.5%攻击力的生命值。"
     },
     {
       "name": "아련한 서리의 보호Ⅰ",
@@ -35,7 +37,9 @@ window.personaFiles["실키"] = {
       "name_jp": "慈愛の家守Ⅰ",
       "desc": "생명이 3.5% 증가한다. 정신 이상 제거 시 목표의 공격력 14.5%의 생명을 회복한다.",
       "desc_en": "Increase max HP by 3.5%. After removing a spiritual ailment, retore target's HP by 14.5% of Attack.",
-      "desc_jp": "ＨＰが３.５%上昇する。行動異常を治療した時、対象のＨＰを攻撃力の１４.５%回復する。"
+      "desc_jp": "ＨＰが３.５%上昇する。行動異常を治療した時、対象のＨＰを攻撃力の１４.５%回復する。",
+      "name_cn": "怜爱的霜护Ⅰ",
+      "desc_cn": "生命值提升3.5%。驱散精神异常时，恢复目标14.5%攻击力的生命值。"
     }
   ],
   "innate_skill": [
@@ -48,7 +52,9 @@ window.personaFiles["실키"] = {
       "desc_jp": "味方単体のＨＰを攻撃力の33.1/34.8/36.4%＋1001/1239/1495回復する。",
       "cost": "SP 23",
       "level": "6/7/8",
-      "learn_level": "4"
+      "learn_level": "4",
+      "name_cn": "迪亚",
+      "desc_cn": "使1名同伴恢复33.1/34.8/36.4%攻击力+1001/1239/1495的生命值。"
     },
     {
       "name": "부흐",
@@ -59,7 +65,9 @@ window.personaFiles["실키"] = {
       "desc_jp": "敵単体に攻撃力106.2/111.5/116.8%の氷結属性ダメージを与える。59.0/62.0/64.9%の確率で敵を２ターンの間、凍結状態にする。",
       "cost": "SP 19",
       "level": "6/7/8",
-      "learn_level": "8"
+      "learn_level": "8",
+      "name_cn": "布芙",
+      "desc_cn": "对1名敌人造成106.2/111.5/116.8%攻击力的冰冻属性伤害，有59.0/62.0/64.9%基础概率使敌人陷入冻结状态，效果持续2回合。"
     }
   ],
   "uniqueSkill": {
@@ -71,7 +79,9 @@ window.personaFiles["실키"] = {
     "desc_jp": "味方単体の目眩、睡眠、忘却を治療する。",
     "priority": 0,
     "icon": "치료",
-    "icon_gl": ""
+    "icon_gl": "",
+    "name_cn": "帕特拉",
+    "desc_cn": "驱散1名同伴的晕眩、睡眠、遗忘效果。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -80,6 +90,9 @@ window.personaFiles["실키"] = {
     "desc": "모든 동료가 공격력 48.6%/52.0%/55.4%+1471/1854/2275의 생명을 회복한다.",
     "desc_en": "Restore HP to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275.",
     "desc_jp": "味方全体のＨＰを攻撃力48.6%/52.0%/55.4%＋1471/1854/2275回復する。",
-    "priority": 0
-  }
+    "priority": 0,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "使所有同伴恢复48.6%/52.0%/55.4%攻击力+1471/1854/2275的生命值。"
+  },
+  "name_cn": "希路奇"
 };

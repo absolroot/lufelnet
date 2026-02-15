@@ -27,7 +27,9 @@ window.personaFiles["다키니"] = {
       "name_jp": "尸林の鬼女",
       "desc": "공격력이 17.7% 증가한다. 정신 이상을 부여한 후 목표가 받는 물리 속성 대미지가 5.7% 증가한다. 효과는 무한으로 지속된다.",
       "desc_en": "Increase Attack by 17.7%. After inflicting a spiritual ailment, permanently increase target's Physical damage taken by 5.7%.",
-      "desc_jp": "攻撃力が１７.７%上昇する。行動異常にした時、対象の物理属性の被ダメージを永続的に５.７%上昇する。"
+      "desc_jp": "攻撃力が１７.７%上昇する。行動異常にした時、対象の物理属性の被ダメージを永続的に５.７%上昇する。",
+      "name_cn": "不满的叱责",
+      "desc_cn": "攻击力提升17.7%。造成精神异常后，使目标受到的物理属性伤害提升5.7%，效果持续时间无限。"
     },
     {
       "name": "불만스러운 질책Ⅰ",
@@ -35,7 +37,9 @@ window.personaFiles["다키니"] = {
       "name_jp": "尸林の鬼女Ⅰ",
       "desc": "공격력이 17.7% 증가한다. 정신 이상을 부여한 후 목표가 받는 물리 속성 대미지가 6.5% 증가한다. 효과는 무한으로 지속된다.",
       "desc_en": "Increase Attack by 17.7%. After inflicting a spiritual ailment, permanently increase target's Physical damage taken by 6.5%.",
-      "desc_jp": "攻撃力が１７.７%上昇する。行動異常にした時、対象の物理属性の被ダメージを永続的に６.５%上昇する。"
+      "desc_jp": "攻撃力が１７.７%上昇する。行動異常にした時、対象の物理属性の被ダメージを永続的に６.５%上昇する。",
+      "name_cn": "不满的叱责Ⅰ",
+      "desc_cn": "攻击力提升17.7%。造成精神异常后，使目标受到的物理属性伤害提升6.5%，效果持续时间无限。"
     },
     {
       "name": "불만스러운 질책Ⅱ",
@@ -43,7 +47,9 @@ window.personaFiles["다키니"] = {
       "name_jp": "尸林の鬼女Ⅱ",
       "desc": "공격력이 17.7% 증가한다. 정신 이상을 부여한 후 목표가 받는 물리 속성 대미지가 7.3% 증가한다. 효과는 무한으로 지속된다.",
       "desc_en": "Increase Attack by 17.7%. After inflicting a spiritual ailment, permanently increase target's Physical damage taken by 7.3%.",
-      "desc_jp": "攻撃力が１７.７%上昇する。行動異常にした時、対象の物理属性の被ダメージを永続的に７.３%上昇する。"
+      "desc_jp": "攻撃力が１７.７%上昇する。行動異常にした時、対象の物理属性の被ダメージを永続的に７.３%上昇する。",
+      "name_cn": "不满的叱责Ⅱ",
+      "desc_cn": "攻击力提升17.7%。造成精神异常后，使目标受到的物理属性伤害提升7.3%，效果持续时间无限。"
     }
   ],
   "innate_skill": [
@@ -56,7 +62,9 @@ window.personaFiles["다키니"] = {
       "desc_jp": "速さが１２上昇し、防御力が８%低下する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "6"
+      "learn_level": "6",
+      "name_cn": "敏捷的心得Ⅲ",
+      "desc_cn": "速度提升12点，防御力降低8%。"
     },
     {
       "name": "장대비 베기",
@@ -67,7 +75,9 @@ window.personaFiles["다키니"] = {
       "desc_jp": "敵単体に攻撃力36.9/38.7/40.6%の物理属性ダメージを３～５回与える。",
       "cost": "체력 7.0%",
       "level": "6/7/8",
-      "learn_level": "12"
+      "learn_level": "12",
+      "name_cn": "五月雨斩",
+      "desc_cn": "对1名敌人造成3~5次36.9/38.7/40.6%攻击力的物理属性伤害。"
     },
     {
       "name": "리벨리온",
@@ -78,7 +88,9 @@ window.personaFiles["다키니"] = {
       "desc_jp": "３ターンの間、味方単体のクリティカル率が9.3%/9.8%/10.2%上昇する。自身のクリティカル率が１０%ごとに、味方のクリティカル率がさらに1.6%/1.7%/1.8%上昇する（最大6.4%/6.7%/7.0%まで）。",
       "cost": "SP 22",
       "level": "6/7/8",
-      "learn_level": "18"
+      "learn_level": "18",
+      "name_cn": "反叛",
+      "desc_cn": "使1名同伴的暴击率提升9.3%/9.8%/10.2%，自身每10%暴击率额外提升1.6%/1.7%/1.8%，上限6.4%/6.7%/7.0%。效果持续3回合。"
     },
     {
       "name": "물리 강화Ⅲ",
@@ -89,7 +101,9 @@ window.personaFiles["다키니"] = {
       "desc_jp": "物理属性の与ダメージが８.７%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "25"
+      "learn_level": "25",
+      "name_cn": "物理强化Ⅲ",
+      "desc_cn": "物理属性伤害提升8.7%。"
     }
   ],
   "uniqueSkill": {
@@ -101,7 +115,9 @@ window.personaFiles["다키니"] = {
     "desc_jp": "敵全体に攻撃力40.8/42.8/44.9%の物理属性ダメージを与える。1.5/1.6/1.6%の確率で敵を３ターンの間、絶望状態にする。",
     "priority": 0,
     "icon": "물리광역",
-    "icon_gl": ""
+    "icon_gl": "",
+    "name_cn": "绝望敲打",
+    "desc_cn": "对所有敌人造成40.8/42.8/44.9%攻击力的物理属性伤害，有1.5/1.6/1.6%基础概率使敌人陷入绝望状态，效果持续3回合。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -110,6 +126,9 @@ window.personaFiles["다키니"] = {
     "desc": "모든 적에게 공격력 90.0%/96.3%/102.6%의 물리 속성 대미지를 주며, 적이 받는 대미지가 19.6%/21.0%/22.3% 증가한다. 효과는 2턴 동안 지속된다.",
     "desc_en": "Deal Physical damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
     "desc_jp": "敵全体に攻撃力90.0%/96.3%/102.6%の物理属性ダメージを与える。さらに２ターンの間、被ダメージが19.6%/21.0%/22.3%上昇する。",
-    "priority": 0
-  }
+    "priority": 0,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "对所有敌人造成90.0%/96.3%/102.6%攻击力的物理属性伤害，并使其受到的伤害提升19.6%/21.0%/22.3%，效果持续2回合。"
+  },
+  "name_cn": "荼吉尼"
 };

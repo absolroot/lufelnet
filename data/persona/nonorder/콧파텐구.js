@@ -27,7 +27,9 @@ window.personaFiles["콧파텐구"] = {
       "name_jp": "神隠しの舞",
       "desc": "크리티컬 확률이 3.5% 증가한다. 광노 상태의 적 공격 시 공격력이 35% 증가한다.",
       "desc_en": "Increase critical rate by 3.5%. When attacking an Enraged foe, increase Attack by 35%.",
-      "desc_jp": "クリティカル率が３.５%上昇する。激怒状態の敵を攻撃する時、攻撃力が３５%上昇する。"
+      "desc_jp": "クリティカル率が３.５%上昇する。激怒状態の敵を攻撃する時、攻撃力が３５%上昇する。",
+      "name_cn": "神隐的狂舞",
+      "desc_cn": "暴击率提升3.5%。攻击处于狂怒状态的敌人时，攻击力提升35%。"
     },
     {
       "name": "신은의 광무Ⅰ",
@@ -35,7 +37,9 @@ window.personaFiles["콧파텐구"] = {
       "name_jp": "神隠しの舞Ⅰ",
       "desc": "크리티컬 확률이 3.5% 증가한다. 광노 상태의 적 공격 시 공격력이 40% 증가한다.",
       "desc_en": "Increase critical rate by 3.5%. When attacking an Enraged foe, increase Attack by 40%.",
-      "desc_jp": "クリティカル率が３.５%上昇する。激怒状態の敵を攻撃する時、攻撃力が４０%上昇する。"
+      "desc_jp": "クリティカル率が３.５%上昇する。激怒状態の敵を攻撃する時、攻撃力が４０%上昇する。",
+      "name_cn": "神隐的狂舞Ⅰ",
+      "desc_cn": "暴击率提升3.5%。攻击处于狂怒状态的敌人时，攻击力提升40%。"
     }
   ],
   "innate_skill": [
@@ -48,7 +52,9 @@ window.personaFiles["콧파텐구"] = {
       "desc_jp": "銃撃属性の与ダメージが４.７%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "4"
+      "learn_level": "4",
+      "name_cn": "精密射击Ⅰ",
+      "desc_cn": "枪械伤害提升4.7%。"
     },
     {
       "name": "지탄",
@@ -59,7 +65,9 @@ window.personaFiles["콧파텐구"] = {
       "desc_jp": "このスキルのクリティカル率を１６%上昇させ、敵単体に攻撃力92.2/96.8/101.4%の銃撃属性ダメージを与える。",
       "cost": "체력 6.0%",
       "level": "6/7/8",
-      "learn_level": "8"
+      "learn_level": "8",
+      "name_cn": "指弹",
+      "desc_cn": "对1名敌人造成92.2/96.8/101.4%攻击力的射击属性伤害，暴击率提升16%。"
     },
     {
       "name": "질풍률 UPⅠ",
@@ -70,7 +78,9 @@ window.personaFiles["콧파텐구"] = {
       "desc_jp": "風襲の命中率が８.８%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "12"
+      "learn_level": "12",
+      "name_cn": "疾风率UPⅠ",
+      "desc_cn": "造成风袭效果时，效果命中提升8.8%。"
     }
   ],
   "uniqueSkill": {
@@ -82,7 +92,9 @@ window.personaFiles["콧파텐구"] = {
     "desc_jp": "敵単体に攻撃力106.2/111.5/116.8%の疾風属性ダメージを与える。59.0/62.0/64.9%の確率で敵を２ターンの間、風襲状態にする。",
     "priority": 0,
     "icon": "질풍",
-    "icon_gl": ""
+    "icon_gl": "",
+    "name_cn": "加尔",
+    "desc_cn": "对1名敌人造成106.2/111.5/116.8%攻击力的疾风属性伤害，有59.0/62.0/64.9%基础概率使敌人陷入风袭状态，效果持续2回合。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -91,6 +103,9 @@ window.personaFiles["콧파텐구"] = {
     "desc": "1명의 적에게 공격력 360.0%/385.2%/410.4%의 질풍 속성 대미지를 준다.",
     "desc_en": "Deal Wind damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
     "desc_jp": "敵単体に攻撃力360.0%/385.2%/410.4%の疾風属性ダメージを与える。",
-    "priority": 0
-  }
+    "priority": 0,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "对1名敌人造成360.0%/385.2%/410.4%攻击力的疾风属性伤害。"
+  },
+  "name_cn": "木叶天狗"
 };

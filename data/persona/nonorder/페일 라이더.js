@@ -27,7 +27,9 @@ window.personaFiles["페일 라이더"] = {
       "name_jp": "蒼白の審判",
       "desc": "효과 명중이 25.4% 증가한다. 모든 동료가 디버프 효과를 부여할 때 효과 명중이 25% 증가한다.",
       "desc_en": "Increase ailment resistance by 25.4%. When an ally is inflicted with a debuff, increase target's ailment accuracy by 25%.",
-      "desc_jp": "状態異常命中が２５.４%上昇する。味方が弱体効果を付与する時、対象の状態異常命中が２５%上昇する。"
+      "desc_jp": "状態異常命中が２５.４%上昇する。味方が弱体効果を付与する時、対象の状態異常命中が２５%上昇する。",
+      "name_cn": "苍白的审判",
+      "desc_cn": "效果命中提升25.4%。使所有同伴在造成减益效果时，效果命中提升25%。"
     },
     {
       "name": "창백의 심판Ⅰ",
@@ -35,7 +37,9 @@ window.personaFiles["페일 라이더"] = {
       "name_jp": "蒼白の審判Ⅰ",
       "desc": "효과 명중이 25.4% 증가한다. 모든 동료가 디버프 효과를 부여할 때 효과 명중이 28.5% 증가한다.",
       "desc_en": "Increase ailment resistance by 25.4%. When an ally is inflicted with a debuff, increase target's ailment resistance by 28.5%.",
-      "desc_jp": "状態異常命中が２５.４%上昇する。味方が弱体効果を付与する時、対象の状態異常命中が２８.５%上昇する。"
+      "desc_jp": "状態異常命中が２５.４%上昇する。味方が弱体効果を付与する時、対象の状態異常命中が２８.５%上昇する。",
+      "name_cn": "苍白的审判Ⅰ",
+      "desc_cn": "效果命中提升25.4%。使所有同伴在造成减益效果时，效果命中提升28.5%。"
     },
     {
       "name": "창백의 심판Ⅱ",
@@ -43,7 +47,9 @@ window.personaFiles["페일 라이더"] = {
       "name_jp": "蒼白の審判Ⅱ",
       "desc": "효과 명중이 25.4% 증가한다. 모든 동료가 디버프 효과를 부여할 때 효과 명중이 31.5% 증가한다.",
       "desc_en": "Increase ailment resistance by 25.4%. When an ally is inflicted with a debuff, increase target's ailment resistance by 31.5%.",
-      "desc_jp": "状態異常命中が２５.４%上昇する。味方が弱体効果を付与する時、対象の状態異常命中が３１.５%上昇する。"
+      "desc_jp": "状態異常命中が２５.４%上昇する。味方が弱体効果を付与する時、対象の状態異常命中が３１.５%上昇する。",
+      "name_cn": "苍白的审判Ⅱ",
+      "desc_cn": "效果命中提升25.4%。使所有同伴在造成减益效果时，效果命中提升31.5%。"
     },
     {
       "name": "창백의 심판Ⅲ",
@@ -51,7 +57,9 @@ window.personaFiles["페일 라이더"] = {
       "name_jp": "蒼白の審判Ⅲ",
       "desc": "효과 명중이 25.4% 증가한다. 모든 동료가 디버프 효과를 부여할 때 효과 명중이 35% 증가한다.",
       "desc_en": "Increase ailment resistance by 25.4%. When an ally is inflicted with a debuff, increase target's ailment resistance by 35%.",
-      "desc_jp": "状態異常命中が２５.４%上昇する。味方が弱体効果を付与する時、対象の状態異常命中が３５%上昇する。"
+      "desc_jp": "状態異常命中が２５.４%上昇する。味方が弱体効果を付与する時、対象の状態異常命中が３５%上昇する。",
+      "name_cn": "苍白的审判Ⅲ",
+      "desc_cn": "效果命中提升25.4%。使所有同伴在造成减益效果时，效果命中提升35%。"
     }
   ],
   "innate_skill": [
@@ -64,7 +72,9 @@ window.personaFiles["페일 라이더"] = {
       "desc_jp": "敵単体に攻撃力132.5/140.8/149.1%の呪怨属性ダメージを与える。敵に１～２つの呪印を付与する。",
       "cost": "SP 21",
       "level": "6/7/8",
-      "learn_level": "8"
+      "learn_level": "8",
+      "name_cn": "耶加翁",
+      "desc_cn": "对1名敌人造成132.5/140.8/149.1%攻击力的诅咒属性伤害，使敌人获得1~2个诅咒效果。"
     },
     {
       "name": "마인드 슬라이스",
@@ -75,7 +85,9 @@ window.personaFiles["페일 라이더"] = {
       "desc_jp": "敵全体に攻撃力40.8/42.8/44.9%の物理属性ダメージを与える。3.4/3.6/3.7%の確率で敵を２ターンの間、混乱状態にする。",
       "cost": "체력 8.0%",
       "level": "6/7/8",
-      "learn_level": "16"
+      "learn_level": "16",
+      "name_cn": "心念切断",
+      "desc_cn": "对所有敌人造成40.8/42.8/44.9%攻击力的物理属性伤害，有3.4/3.6/3.7%基础概率使敌人陷入混乱状态，效果持续2回合，"
     },
     {
       "name": "마술의 소양Ⅲ",
@@ -86,7 +98,9 @@ window.personaFiles["페일 라이더"] = {
       "desc_jp": "スキルのＳＰ消費量が４.８%低下する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "24"
+      "learn_level": "24",
+      "name_cn": "魔术的资质Ⅲ",
+      "desc_cn": "技能消耗的SP降低4.8%。"
     },
     {
       "name": "명중 강화Ⅲ",
@@ -97,7 +111,9 @@ window.personaFiles["페일 라이더"] = {
       "desc_jp": "状態異常命中が１３%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "32"
+      "learn_level": "32",
+      "name_cn": "命中强化Ⅲ",
+      "desc_cn": "效果命中提升13%。"
     }
   ],
   "uniqueSkill": {
@@ -109,7 +125,9 @@ window.personaFiles["페일 라이더"] = {
     "desc_jp": "敵単体に攻撃力82.4/86.5/90.6%の物理属性ダメージを与える。4.7/4.9/5.2%の確率で敵を２ターンの間、洗脳状態にする。",
     "priority": 0,
     "icon": "물리광역",
-    "icon_gl": ""
+    "icon_gl": "",
+    "name_cn": "头脑震撼",
+    "desc_cn": "对1名敌人造成82.4/86.5/90.6%攻击力的物理属性伤害，有4.7/4.9/5.2%基础概率使敌人陷入洗脑状态，效果持续2回合。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -118,6 +136,9 @@ window.personaFiles["페일 라이더"] = {
     "desc": "모든 적에게 공격력 90.0%/96.3%/102.6%의 주원 속성 대미지를 주며, 적이 받는 대미지가 19.6%/21.0%/22.3% 증가한다. 효과는 2턴 동안 지속된다.",
     "desc_en": "Deal Curse damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
     "desc_jp": "敵全体に攻撃力90.0%/96.3%/102.6%の呪怨属性ダメージを与える。さらに２ターンの間、被ダメージが19.6%/21.0%/22.3%上昇する。",
-    "priority": 0
-  }
+    "priority": 0,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "对所有敌人造成90.0%/96.3%/102.6%攻击力的诅咒属性伤害，并使其受到的伤害提升19.6%/21.0%/22.3%，效果持续2回合。"
+  },
+  "name_cn": "苍白骑士"
 };

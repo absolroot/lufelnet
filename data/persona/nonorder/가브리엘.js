@@ -27,7 +27,9 @@ window.personaFiles["가브리엘"] = {
       "name_jp": "ガブリエルの特性０",
       "desc": "생명이 50% 미만인 적에게 주는 액티브 스킬 대미지가 10% 증가한다.",
       "desc_en": "Increase skill damage to foes below 50% HP by 10%.",
-      "desc_jp": "ＨＰが５０%未満の敵へのスキルダメージが１０%上昇する。"
+      "desc_jp": "ＨＰが５０%未満の敵へのスキルダメージが１０%上昇する。",
+      "name_cn": "加百列特性0",
+      "desc_cn": "对生命值低于50%的敌人，造成的主动技能伤害提升10%。"
     },
     {
       "name": "가브리엘 특성1",
@@ -35,7 +37,9 @@ window.personaFiles["가브리엘"] = {
       "name_jp": "ガブリエルの特性１",
       "desc": "생명이 50% 미만인 적에게 주는 액티브 스킬 대미지가 20% 증가한다.",
       "desc_en": "Increase skill damage to foes below 50% HP by 20%.",
-      "desc_jp": "ＨＰが５０%未満の敵へのスキルダメージが２０%上昇する。"
+      "desc_jp": "ＨＰが５０%未満の敵へのスキルダメージが２０%上昇する。",
+      "name_cn": "加百列特性1",
+      "desc_cn": "对生命值低于50%的敌人，造成的主动技能伤害提升20%。"
     },
     {
       "name": "가브리엘 특성2",
@@ -43,7 +47,9 @@ window.personaFiles["가브리엘"] = {
       "name_jp": "ガブリエルの特性２",
       "desc": "빙결 속성 공격이 증가한다.",
       "desc_en": "Increase Ice damage.",
-      "desc_jp": "氷結属性の与ダメージが上昇する。"
+      "desc_jp": "氷結属性の与ダメージが上昇する。",
+      "name_cn": "加百列特性2",
+      "desc_cn": "冰冻属性攻击提升。"
     },
     {
       "name": "가브리엘 특성3",
@@ -51,7 +57,9 @@ window.personaFiles["가브리엘"] = {
       "name_jp": "ガブリエルの特性３",
       "desc": "빙결 속성 대미지를 입힌 후 목표물의 생명이 5% 미만일 경우 즉시 해당 적을 참살한다.",
       "desc_en": "After dealing Ice damage, insta-kill foe if the foe's HP is below 5%.",
-      "desc_jp": "氷結属性ダメージを与えた後、敵のＨＰが５%未満の場合、敵を即死させる。"
+      "desc_jp": "氷結属性ダメージを与えた後、敵のＨＰが５%未満の場合、敵を即死させる。",
+      "name_cn": "加百列特性3",
+      "desc_cn": "造成冰冻属性伤害后，若目标敌人血量低于5%，则直接斩杀该目标。"
     },
     {
       "name": "가브리엘 특성4",
@@ -59,7 +67,9 @@ window.personaFiles["가브리엘"] = {
       "name_jp": "ガブリエルの特性４",
       "desc": "받는 주원 속성 대미지가 감소한다.",
       "desc_en": "Decrease Curse damage taken.",
-      "desc_jp": "呪怨属性の被ダメージが低下する。"
+      "desc_jp": "呪怨属性の被ダメージが低下する。",
+      "name_cn": "加百列特性4",
+      "desc_cn": "受到诅咒属性伤害减少。"
     },
     {
       "name": "가브리엘 특성5",
@@ -67,7 +77,9 @@ window.personaFiles["가브리엘"] = {
       "name_jp": "ガブリエルの特性５",
       "desc": "다운 시 2턴 동안 자신의 빙결 대미지가 10% 증가한다.",
       "desc_en": "After knocking down a foe, increase user's Freeze damage by 10% for 2 turns.",
-      "desc_jp": "敵をダウンさせた時、２ターンの間、自身の凍結ダメージが１０%上昇する。"
+      "desc_jp": "敵をダウンさせた時、２ターンの間、自身の凍結ダメージが１０%上昇する。",
+      "name_cn": "加百列特性5",
+      "desc_cn": "造成击倒时，自身提升10%冻结伤害，持续2回合。"
     },
     {
       "name": "가브리엘 특성6",
@@ -75,7 +87,9 @@ window.personaFiles["가브리엘"] = {
       "name_jp": "ガブリエルの特性６",
       "desc": "빙결 속성 대미지를 입힌 후 목표물의 생명이 10% 미만일 경우 즉시 해당 적을 참살한다.",
       "desc_en": "After dealing Ice damage, insta-kill foe if the foe's HP is below 10%.",
-      "desc_jp": "氷結属性ダメージを与えた後、敵のＨＰが１０%未満の場合、敵を即死させる。"
+      "desc_jp": "氷結属性ダメージを与えた後、敵のＨＰが１０%未満の場合、敵を即死させる。",
+      "name_cn": "加百列特性6",
+      "desc_cn": "造成冰冻属性伤害后，若目标敌人血量低于10%，则直接斩杀该目标。"
     }
   ],
   "innate_skill": [
@@ -88,7 +102,9 @@ window.personaFiles["가브리엘"] = {
       "desc_jp": "攻撃力が５.８%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "1"
+      "learn_level": "1",
+      "name_cn": "攻击强化Ⅰ",
+      "desc_cn": "攻击力提升5.8%。"
     },
     {
       "name": "정교한 타격Ⅰ",
@@ -99,7 +115,9 @@ window.personaFiles["가브리엘"] = {
       "desc_jp": "クリティカルダメージが７%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "30"
+      "learn_level": "30",
+      "name_cn": "精准打击Ⅰ",
+      "desc_cn": "暴击效果提升7%。"
     },
     {
       "name": "물리 강화Ⅰ",
@@ -110,7 +128,9 @@ window.personaFiles["가브리엘"] = {
       "desc_jp": "物理属性の与ダメージが４.７%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "50"
+      "learn_level": "50",
+      "name_cn": "物理强化Ⅰ",
+      "desc_cn": "物理属性伤害提升4.7%。"
     }
   ],
   "uniqueSkill": {
@@ -122,7 +142,9 @@ window.personaFiles["가브리엘"] = {
     "desc_jp": "敵単体に氷結属性ダメージを与える。このスキルで敵を倒した場合、他の敵に対して攻撃力２００%の氷結属性ダメージを与える。",
     "priority": 0,
     "icon": "Default",
-    "icon_gl": ""
+    "icon_gl": "",
+    "name_cn": "审判号角",
+    "desc_cn": "单体冰冻属性伤害，若该技能击败敌人，则对其他敌人造成200%攻击点冰冻属性伤害"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -131,6 +153,9 @@ window.personaFiles["가브리엘"] = {
     "desc": "1명의 적에게 공격력 360.0%/385.2%/410.4%의 빙결 속성 대미지를 준다.",
     "desc_en": "Deal Ice damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
     "desc_jp": "敵単体に攻撃力360.0%/385.2%/410.4%の氷結属性ダメージを与える。",
-    "priority": 0
-  }
+    "priority": 0,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "对1名敌人造成360.0%/385.2%/410.4%攻击力的冰冻属性伤害。"
+  },
+  "name_cn": "加百列"
 };

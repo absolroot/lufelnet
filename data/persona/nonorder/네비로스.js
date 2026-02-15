@@ -27,7 +27,9 @@ window.personaFiles["네비로스"] = {
       "name_jp": "呪われた血統",
       "desc": "효과 저항이 29.7% 증가한다. 주원 속성 스킬 시전 시 소모하는 SP가 40% 감소한다.",
       "desc_en": "Increase ailment resistance by 29.7%. Decrease SP cost of Curse skills by 40%.",
-      "desc_jp": "状態異常抵抗が２９.７%上昇する。呪怨属性スキルのＳＰ消費量を４０%低下させる。"
+      "desc_jp": "状態異常抵抗が２９.７%上昇する。呪怨属性スキルのＳＰ消費量を４０%低下させる。",
+      "name_cn": "被诅咒的血统",
+      "desc_cn": "效果抵抗提升29.7%。释放诅咒属性技能时，消耗的精力值降低40%。"
     },
     {
       "name": "저주받은 혈통Ⅰ",
@@ -35,7 +37,9 @@ window.personaFiles["네비로스"] = {
       "name_jp": "呪われた血統Ⅰ",
       "desc": "효과 저항이 29.7% 증가한다. 주원 속성 스킬 시전 시 소모하는 SP가 45% 감소한다.",
       "desc_en": "Increase ailment resistance by 29.7%. Decrease SP cost of Curse skills by 45%.",
-      "desc_jp": "状態異常抵抗が２９.７%上昇する。呪怨属性スキルのＳＰ消費量を４５%低下させる。"
+      "desc_jp": "状態異常抵抗が２９.７%上昇する。呪怨属性スキルのＳＰ消費量を４５%低下させる。",
+      "name_cn": "被诅咒的血统Ⅰ",
+      "desc_cn": "效果抵抗提升29.7%。释放诅咒属性技能时，消耗的精力值降低45%。"
     },
     {
       "name": "저주받은 혈통Ⅱ",
@@ -43,7 +47,9 @@ window.personaFiles["네비로스"] = {
       "name_jp": "呪われた血統Ⅱ",
       "desc": "효과 저항이 29.7% 증가한다. 주원 속성 스킬 시전 시 소모하는 SP가 50% 감소한다.",
       "desc_en": "Increase ailment resistance by 29.7%. Decrease SP cost of Curse skills by 50%.",
-      "desc_jp": "状態異常抵抗が２９.７%上昇する。呪怨属性スキルのＳＰ消費量を５０%低下させる。"
+      "desc_jp": "状態異常抵抗が２９.７%上昇する。呪怨属性スキルのＳＰ消費量を５０%低下させる。",
+      "name_cn": "被诅咒的血统Ⅱ",
+      "desc_cn": "效果抵抗提升29.7%。释放诅咒属性技能时，消耗的精力值降低50%。"
     },
     {
       "name": "저주받은 혈통Ⅲ",
@@ -51,7 +57,9 @@ window.personaFiles["네비로스"] = {
       "name_jp": "呪われた血統Ⅲ",
       "desc": "효과 저항이 29.7% 증가한다. 주원 속성 스킬 시전 시 소모하는 SP가 55% 감소한다.",
       "desc_en": "Increase ailment resistance by 29.7%. Decrease SP cost of Curse skills by 55%.",
-      "desc_jp": "状態異常抵抗が２９.７%上昇する。呪怨属性スキルのＳＰ消費量を５５%低下させる。"
+      "desc_jp": "状態異常抵抗が２９.７%上昇する。呪怨属性スキルのＳＰ消費量を５５%低下させる。",
+      "name_cn": "被诅咒的血统Ⅲ",
+      "desc_cn": "效果抵抗提升29.7%。释放诅咒属性技能时，消耗的精力值降低55%。"
     }
   ],
   "innate_skill": [
@@ -64,7 +72,9 @@ window.personaFiles["네비로스"] = {
       "desc_jp": "呪怨属性の与ダメージが１０.８%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "9"
+      "learn_level": "9",
+      "name_cn": "诅咒强化Ⅳ",
+      "desc_cn": "诅咒属性伤害提升10.8%。"
     },
     {
       "name": "공격의 마음가짐Ⅳ",
@@ -75,7 +85,9 @@ window.personaFiles["네비로스"] = {
       "desc_jp": "戦闘開始時、２ターンの間、自身の攻撃力が１９.６%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "18"
+      "learn_level": "18",
+      "name_cn": "攻击的心得Ⅳ",
+      "desc_cn": "战斗开始时攻击力提升19.6%，持续2回合。"
     },
     {
       "name": "어드바이스Ⅳ",
@@ -86,7 +98,9 @@ window.personaFiles["네비로스"] = {
       "desc_jp": "クリティカル率が８.１%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "27"
+      "learn_level": "27",
+      "name_cn": "建言Ⅳ",
+      "desc_cn": "暴击率提升8.1%。"
     },
     {
       "name": "악마의 심판",
@@ -97,7 +111,9 @@ window.personaFiles["네비로스"] = {
       "desc_jp": "敵単体に攻撃力142.5/151.8/161.1%の呪怨属性ダメージを与える。敵に２つの呪印を付与する。",
       "cost": "SP 22",
       "level": "6/7/8",
-      "learn_level": "36"
+      "learn_level": "36",
+      "name_cn": "恶魔审判",
+      "desc_cn": "对1名敌人造成142.5/151.8/161.1%攻击力的诅咒属性伤害，使敌人获得2个诅咒效果。"
     }
   ],
   "uniqueSkill": {
@@ -109,7 +125,9 @@ window.personaFiles["네비로스"] = {
     "desc_jp": "３ターンの間、敵単体の攻撃力、防御力、状態異常命中、状態異常抵抗が7.8%/8.2%/8.6%低下し、速さが５低下する。",
     "priority": 0,
     "icon": "버프",
-    "icon_gl": "버프"
+    "icon_gl": "버프",
+    "name_cn": "女巫诅咒",
+    "desc_cn": "使1名敌方攻击、防御、效果命中、效果抵抗降低7.8%/8.2%/8.6%，效果持续3回合。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -118,6 +136,9 @@ window.personaFiles["네비로스"] = {
     "desc": "모든 적에게 공격력 90.0%/96.3%/102.6%의 주원 속성 대미지를 주며, 적이 받는 대미지가 19.6%/21.0%/22.3% 증가한다. 효과는 2턴 동안 지속된다.",
     "desc_en": "Deal Curse damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
     "desc_jp": "敵全体に攻撃力90.0%/96.3%/102.6%の呪怨属性ダメージを与える。さらに２ターンの間、被ダメージが19.6%/21.0%/22.3%上昇する。",
-    "priority": 0
-  }
+    "priority": 0,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "对所有敌人造成90.0%/96.3%/102.6%攻击力的诅咒属性伤害，并使其受到的伤害提升19.6%/21.0%/22.3%，效果持续2回合。"
+  },
+  "name_cn": "奈比洛斯"
 };

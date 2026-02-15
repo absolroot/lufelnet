@@ -187,7 +187,7 @@ function normalizeDomain(raw) {
 
 function defaultLangCsvForDomain(domain) {
   const d = normalizeDomain(domain);
-  if (d === 'wonder_weapon' || d === 'revelation') return 'kr,en,jp,cn';
+  if (d === 'persona' || d === 'wonder_weapon' || d === 'revelation') return 'kr,en,jp,cn';
   return 'kr,en,jp';
 }
 

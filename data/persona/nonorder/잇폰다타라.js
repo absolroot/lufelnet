@@ -27,7 +27,9 @@ window.personaFiles["잇폰다타라"] = {
       "name_jp": "一眼一足の隠者",
       "desc": "크리티컬 효과가 7% 증가한다. 현기증 상태의 적에게 가하는 크리티컬 확률이 21% 증가한다.",
       "desc_en": "Increase critical damage by 7%. Increase critical rate on Dizzy foes by 21%.",
-      "desc_jp": "クリティカルダメージが７%上昇する。目眩状態の敵へのクリティカル率が２１%上昇する。"
+      "desc_jp": "クリティカルダメージが７%上昇する。目眩状態の敵へのクリティカル率が２１%上昇する。",
+      "name_cn": "只眼只足的隐士",
+      "desc_cn": "暴击效果提升7%。对处于晕眩状态的敌人暴击率提升21%。"
     },
     {
       "name": "외눈 외발의 은둔자Ⅰ",
@@ -35,7 +37,9 @@ window.personaFiles["잇폰다타라"] = {
       "name_jp": "一眼一足の隠者Ⅰ",
       "desc": "크리티컬 효과가 7% 증가한다. 현기증 상태의 적에게 가하는 크리티컬 확률이 24% 증가한다.",
       "desc_en": "Increase critical damage by 7%. Increase critical rate on Dizzy foes by 24%.",
-      "desc_jp": "クリティカルダメージが７%上昇する。目眩状態の敵へのクリティカル率が２４%上昇する。"
+      "desc_jp": "クリティカルダメージが７%上昇する。目眩状態の敵へのクリティカル率が２４%上昇する。",
+      "name_cn": "只眼只足的隐士Ⅰ",
+      "desc_cn": "暴击效果提升7%。对处于晕眩状态的敌人暴击率提升24%。"
     }
   ],
   "innate_skill": [
@@ -48,7 +52,9 @@ window.personaFiles["잇폰다타라"] = {
       "desc_jp": "戦闘開始時、２ターンもしくはペルソナを切り替えるまでの間、味方全体の攻撃力が４.２%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "4"
+      "learn_level": "4",
+      "name_cn": "自动玛哈塔尔卡Ⅰ",
+      "desc_cn": "战斗开始时全员攻击力提升4.2%，持续2回合或持续至切换面具。"
     },
     {
       "name": "현기증 내성Ⅰ",
@@ -59,7 +65,9 @@ window.personaFiles["잇폰다타라"] = {
       "desc_jp": "目眩の抵抗率が８.８%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "8"
+      "learn_level": "8",
+      "name_cn": "晕眩耐性Ⅰ",
+      "desc_cn": "受到晕眩效果时，效果抵抗提升8.8%。"
     },
     {
       "name": "난동 부리기",
@@ -70,7 +78,9 @@ window.personaFiles["잇폰다타라"] = {
       "desc_jp": "敵全体に攻撃力30.0/31.5/33.0%の物理属性ダメージを１～３回与える。",
       "cost": "체력 6.0%",
       "level": "6/7/8",
-      "learn_level": "12"
+      "learn_level": "12",
+      "name_cn": "横冲直撞",
+      "desc_cn": "对所有敌人造成30.0/31.5/33.0%攻击力的1~3次物理属性伤害。"
     }
   ],
   "uniqueSkill": {
@@ -82,7 +92,9 @@ window.personaFiles["잇폰다타라"] = {
     "desc_jp": "敵単体に攻撃力82.4/86.5/90.6%の物理属性ダメージを与える。9.3/9.8/10.2%の確率で敵を２ターンの間、目眩状態にする。",
     "priority": 0,
     "icon": "물리",
-    "icon_gl": ""
+    "icon_gl": "",
+    "name_cn": "猛烈巨锤",
+    "desc_cn": "对1名敌人造成82.4/86.5/90.6%攻击力的物理属性伤害，有9.3/9.8/10.2%基础概率使敌人陷入晕眩状态，效果持续2回合。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -91,6 +103,9 @@ window.personaFiles["잇폰다타라"] = {
     "desc": "1명의 적에게 공격력 360.0%/385.2%/410.4%의 물리 속성 대미지를 준다.",
     "desc_en": "Deal Physical damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
     "desc_jp": "敵単体に攻撃力360.0%/385.2%/410.4%の物理属性ダメージを与える。",
-    "priority": 0
-  }
+    "priority": 0,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "对1名敌人造成360.0%/385.2%/410.4%攻击力的物理属性伤害。"
+  },
+  "name_cn": "一本踏鞴"
 };

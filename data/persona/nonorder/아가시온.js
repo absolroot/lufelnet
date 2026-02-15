@@ -27,7 +27,9 @@ window.personaFiles["아가시온"] = {
       "name_jp": "瓶中の恩",
       "desc": "방어력이 4.4% 증가한다. 자신을 목표로 하는 경우 치료량이 27% 증가한다.",
       "desc_en": "Increase Defense by 4.4%. When receiving healing, increase healing by 27%.",
-      "desc_jp": "防御力が４.４%上昇する。自身を回復した時、回復量が２７%上昇する。"
+      "desc_jp": "防御力が４.４%上昇する。自身を回復した時、回復量が２７%上昇する。",
+      "name_cn": "瓶居之恩",
+      "desc_cn": "防御力提升4.4%。以自身为目标时，治疗量提升27%。"
     },
     {
       "name": "병 속 은혜Ⅰ",
@@ -35,7 +37,9 @@ window.personaFiles["아가시온"] = {
       "name_jp": "瓶中の恩Ⅰ",
       "desc": "방어력이 4.4% 증가한다. 자신을 목표로 하는 경우 치료량이 31% 증가한다.",
       "desc_en": "Increase Defense by 4.4%. When receiving healing, increase healing by 31%.",
-      "desc_jp": "防御力が４.４%上昇する。自身を回復した時、回復量が３１%上昇する。"
+      "desc_jp": "防御力が４.４%上昇する。自身を回復した時、回復量が３１%上昇する。",
+      "name_cn": "瓶居之恩Ⅰ",
+      "desc_cn": "防御力提升4.4%。以自身为目标时，治疗量提升31%。"
     }
   ],
   "innate_skill": [
@@ -48,7 +52,9 @@ window.personaFiles["아가시온"] = {
       "desc_jp": "敵単体に攻撃力106.2/111.5/116.8%の電撃属性ダメージを与える。59.0/62.0/64.9%の確率で敵を２ターンの間、感電状態にする。",
       "cost": "SP 19",
       "level": "6/7/8",
-      "learn_level": "4"
+      "learn_level": "4",
+      "name_cn": "吉欧",
+      "desc_cn": "对1名敌人造成106.2/111.5/116.8%攻击力的电击属性伤害，有59.0/62.0/64.9%基础概率使敌人陷入触电状态，效果持续2回合。"
     },
     {
       "name": "방어 강화Ⅰ",
@@ -59,7 +65,9 @@ window.personaFiles["아가시온"] = {
       "desc_jp": "防御力が８.８%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "8"
+      "learn_level": "8",
+      "name_cn": "防御强化Ⅰ",
+      "desc_cn": "防御力提升8.8%。"
     }
   ],
   "uniqueSkill": {
@@ -71,7 +79,9 @@ window.personaFiles["아가시온"] = {
     "desc_jp": "味方単体のＨＰを攻撃力の33.1/34.8/36.4%＋1001/1239/1495回復する。",
     "priority": 0,
     "icon": "치료",
-    "icon_gl": ""
+    "icon_gl": "",
+    "name_cn": "迪亚",
+    "desc_cn": "使1名同伴恢复33.1/34.8/36.4%攻击力+1001/1239/1495的生命值。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -80,6 +90,9 @@ window.personaFiles["아가시온"] = {
     "desc": "모든 동료가 공격력 48.6%/52.0%/55.4%+1471/1854/2275의 생명을 회복한다.",
     "desc_en": "Restore HP to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275.",
     "desc_jp": "味方全体のＨＰを攻撃力48.6%/52.0%/55.4%＋1471/1854/2275回復する。",
-    "priority": 0
-  }
+    "priority": 0,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "使所有同伴恢复48.6%/52.0%/55.4%攻击力+1471/1854/2275的生命值。"
+  },
+  "name_cn": "阿珈席翁"
 };

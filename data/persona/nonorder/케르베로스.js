@@ -27,7 +27,9 @@ window.personaFiles["케르베로스"] = {
       "name_jp": "拝火の血統",
       "desc": "크리티컬 확률이 12.7% 증가한다. 화염 속성 스킬 시전 시 소모하는 SP가 37% 감소한다.",
       "desc_en": "Increase critical rate by 12.7%. Decrease SP cost of Fire skills by 37%.",
-      "desc_jp": "クリティカル率が１２.７%上昇する。火炎属性スキルのＳＰ消費量を３７%低下させる。"
+      "desc_jp": "クリティカル率が１２.７%上昇する。火炎属性スキルのＳＰ消費量を３７%低下させる。",
+      "name_cn": "拜火的血统",
+      "desc_cn": "暴击率提升12.7%。使用火焰属性技能时，消耗的精力值降低37%。"
     },
     {
       "name": "배화의 혈통Ⅰ",
@@ -35,7 +37,9 @@ window.personaFiles["케르베로스"] = {
       "name_jp": "拝火の血統Ⅰ",
       "desc": "크리티컬 확률이 12.7% 증가한다. 화염 속성 스킬 시전 시 소모하는 SP가 42% 감소한다.",
       "desc_en": "Increase critical rate by 12.7%. Decrease SP cost of Fire skills by 42%.",
-      "desc_jp": "クリティカル率が１２.７%上昇する。火炎属性スキルのＳＰ消費量を４２%低下させる。"
+      "desc_jp": "クリティカル率が１２.７%上昇する。火炎属性スキルのＳＰ消費量を４２%低下させる。",
+      "name_cn": "拜火的血统Ⅰ",
+      "desc_cn": "暴击率提升12.7%。使用火焰属性技能时，消耗的精力值降低42%。"
     },
     {
       "name": "배화의 혈통Ⅱ",
@@ -43,7 +47,9 @@ window.personaFiles["케르베로스"] = {
       "name_jp": "拝火の血統Ⅱ",
       "desc": "크리티컬 확률이 12.7% 증가한다. 화염 속성 스킬 시전 시 소모하는 SP가 47% 감소한다.",
       "desc_en": "Increase critical rate by 12.7%. Decrease SP cost of Fire skills by 47%.",
-      "desc_jp": "クリティカル率が１２.７%上昇する。火炎属性スキルのＳＰ消費量を４７%低下させる。"
+      "desc_jp": "クリティカル率が１２.７%上昇する。火炎属性スキルのＳＰ消費量を４７%低下させる。",
+      "name_cn": "拜火的血统Ⅱ",
+      "desc_cn": "暴击率提升12.7%。使用火焰属性技能时，消耗的精力值降低47%。"
     },
     {
       "name": "배화의 혈통Ⅲ",
@@ -51,7 +57,9 @@ window.personaFiles["케르베로스"] = {
       "name_jp": "拝火の血統Ⅲ",
       "desc": "크리티컬 확률이 12.7% 증가한다. 화염 속성 스킬 시전 시 소모하는 SP가 52% 감소한다.",
       "desc_en": "Increase critical rate by 12.7%. Decrease SP cost of Fire skills by 52%.",
-      "desc_jp": "クリティカル率が１２.７%上昇する。火炎属性スキルのＳＰ消費量を５２%低下させる。"
+      "desc_jp": "クリティカル率が１２.７%上昇する。火炎属性スキルのＳＰ消費量を５２%低下させる。",
+      "name_cn": "拜火的血统Ⅲ",
+      "desc_cn": "暴击率提升12.7%。使用火焰属性技能时，消耗的精力值降低52%。"
     }
   ],
   "innate_skill": [
@@ -64,7 +72,9 @@ window.personaFiles["케르베로스"] = {
       "desc_jp": "攻撃力が１０.８%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "8"
+      "learn_level": "8",
+      "name_cn": "攻击强化Ⅲ",
+      "desc_cn": "攻击力提升10.8%。"
     },
     {
       "name": "메가톤 레이드",
@@ -75,7 +85,9 @@ window.personaFiles["케르베로스"] = {
       "desc_jp": "敵単体に攻撃力154.5/162.2/170.0%の物理属性ダメージを与える。",
       "cost": "체력 9.0%",
       "level": "6/7/8",
-      "learn_level": "16"
+      "learn_level": "16",
+      "name_cn": "百万吨袭击",
+      "desc_cn": "对1名敌人造成154.5/162.2/170.0%攻击力的物理属性伤害。"
     },
     {
       "name": "핵열 간파Ⅲ",
@@ -86,7 +98,9 @@ window.personaFiles["케르베로스"] = {
       "desc_jp": "核熱属性の被ダメージを８.７%低下させる。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "24"
+      "learn_level": "24",
+      "name_cn": "核热识破Ⅲ",
+      "desc_cn": "受到的核热属性伤害降低8.7%。"
     },
     {
       "name": "공격의 마음가짐Ⅲ",
@@ -97,7 +111,9 @@ window.personaFiles["케르베로스"] = {
       "desc_jp": "戦闘開始時、２ターンの間、自身の攻撃力が１５.７%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "32"
+      "learn_level": "32",
+      "name_cn": "攻击的心得Ⅲ",
+      "desc_cn": "战斗开始时攻击力提升15.7%，持续2回合。"
     }
   ],
   "uniqueSkill": {
@@ -109,7 +125,9 @@ window.personaFiles["케르베로스"] = {
     "desc_jp": "敵全体に攻撃力60.8/63.8/66.9%の火炎属性ダメージを与える。33.8/35.5/37.2%の確率で敵を２ターンの間、炎上状態にする。",
     "priority": 0,
     "icon": "Default",
-    "icon_gl": ""
+    "icon_gl": "",
+    "name_cn": "玛哈亚基达因",
+    "desc_cn": "对所有敌人造成60.8/63.8/66.9%攻击力的火焰属性伤害，有33.8/35.5/37.2%基础概率使敌人陷入燃烧状态，效果持续2回合。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -118,6 +136,9 @@ window.personaFiles["케르베로스"] = {
     "desc": "모든 적에게 공격력 180.0%/192.6%/205.2%의 화염 속성 대미지를 준다.",
     "desc_en": "Deal Fire damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
     "desc_jp": "敵全体に攻撃力180.0%/192.6%/205.2%の火炎属性ダメージを与える。",
-    "priority": 0
-  }
+    "priority": 0,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "对所有敌人造成180.0%/192.6%/205.2%攻击力的火焰属性伤害。"
+  },
+  "name_cn": "克鲁贝洛斯"
 };

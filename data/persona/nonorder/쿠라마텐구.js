@@ -27,7 +27,9 @@ window.personaFiles["쿠라마텐구"] = {
       "name_jp": "脅威の翼",
       "desc": "질풍 속성 대미지를 입힐 경우 80%의 고정 확률로 적의 최대 생명 4.2%의 대미지를 추가로 입히며, 최대 공격력 33.6%의 대미지를 가한다.",
       "desc_en": "When dealing Wind damage to a foe, 80% chance to deal bonus damage equal to 4.2% of the foe's max HP (up to 33.6% of Attack).",
-      "desc_jp": "敵に疾風属性ダメージを与える時、８０%の確率で、追加で敵の最大ＨＰの４.２%のダメージ（最大で攻撃力の３３.６%）を与える。"
+      "desc_jp": "敵に疾風属性ダメージを与える時、８０%の確率で、追加で敵の最大ＨＰの４.２%のダメージ（最大で攻撃力の３３.６%）を与える。",
+      "name_cn": "恐吓之翼",
+      "desc_cn": "造成疾风属性伤害时，有80%固定概率额外造成4.2%敌人最大生命值的伤害，最多造成33.6%攻击力的伤害。"
     },
     {
       "name": "질풍 강화Ⅲ",
@@ -35,7 +37,9 @@ window.personaFiles["쿠라마텐구"] = {
       "name_jp": "疾風ブースタⅢ",
       "desc": "질풍 속성 대미지가 3.1% 증가한다.",
       "desc_en": "Increase Wind damage by 3.1%.",
-      "desc_jp": "疾風属性の与ダメージが３.１%上昇する。"
+      "desc_jp": "疾風属性の与ダメージが３.１%上昇する。",
+      "name_cn": "疾风强化Ⅲ",
+      "desc_cn": "疾风属性伤害提升3.1%。"
     },
     {
       "name": "마술의 소양Ⅲ",
@@ -43,7 +47,9 @@ window.personaFiles["쿠라마텐구"] = {
       "name_jp": "魔術の素養Ⅲ",
       "desc": "스킬 사용 시 소모하는 SP가 7.0% 감소한다.",
       "desc_en": "Decrease SP cost of skills by 7.0%.",
-      "desc_jp": "スキルのＳＰ消費量を７.０%低下させる。"
+      "desc_jp": "スキルのＳＰ消費量を７.０%低下させる。",
+      "name_cn": "魔术的资质Ⅲ",
+      "desc_cn": "使用技能时消耗的精力值降低7.0%。"
     },
     {
       "name": "강력한 위협의 날개",
@@ -51,7 +57,9 @@ window.personaFiles["쿠라마텐구"] = {
       "name_jp": "脅威の翼・大",
       "desc": "질풍 속성 대미지를 입힐 경우 100%의 고정 확률로 적의 최대 생명 4.2%의 대미지를 추가로 입히며, 최대 공격력 33.6%의 대미지를 가한다.",
       "desc_en": "When dealing Wind damage to a foe, deal bonus damage equal to 4.2% of the foe's max HP (up to 33.6% of Attack).",
-      "desc_jp": "敵に疾風属性ダメージを与える時、追加で敵の最大ＨＰの４.２%のダメージ（最大で攻撃力の３３.６%）を与える。"
+      "desc_jp": "敵に疾風属性ダメージを与える時、追加で敵の最大ＨＰの４.２%のダメージ（最大で攻撃力の３３.６%）を与える。",
+      "name_cn": "大恐吓之翼",
+      "desc_cn": "造成疾风属性伤害时，有100%固定概率额外造成4.2%敌人最大生命值的伤害，最多造成33.6%攻击力的伤害。"
     },
     {
       "name": "질풍률 UPⅢ",
@@ -59,7 +67,9 @@ window.personaFiles["쿠라마텐구"] = {
       "name_jp": "疾風率ＵＰIII",
       "desc": "적이 풍습에 걸릴 확률이 6.3% 증가한다.",
       "desc_en": "Increase chance of inflicting Windswept by 6.3%.",
-      "desc_jp": "敵を風襲にする確率が６.３%上昇する。"
+      "desc_jp": "敵を風襲にする確率が６.３%上昇する。",
+      "name_cn": "疾风率UP Ⅲ",
+      "desc_cn": "使敌人风袭的概率提升6.3%。"
     },
     {
       "name": "질풍 격려Ⅲ",
@@ -67,7 +77,9 @@ window.personaFiles["쿠라마텐구"] = {
       "name_jp": "疾風の激励Ⅲ",
       "desc": "적 다운 시 질풍 속성 대미지가 2턴 동안 11.5% 증가한다.",
       "desc_en": "After knocking down a foe, increase Wind damage by 11.5% for 2 turns.",
-      "desc_jp": "敵をダウンさせた時、２ターンの間、疾風属性の与ダメージが１１.５%上昇する。"
+      "desc_jp": "敵をダウンさせた時、２ターンの間、疾風属性の与ダメージが１１.５%上昇する。",
+      "name_cn": "疾风激励Ⅲ",
+      "desc_cn": "造成击倒时，疾风属性伤害提升11.5%，效果持续2回合。"
     },
     {
       "name": "폭풍 언덕의 주인",
@@ -75,7 +87,9 @@ window.personaFiles["쿠라마텐구"] = {
       "name_jp": "鞍馬山の主",
       "desc": "질풍 속성 대미지를 입힐 경우 100%의 고정 확률로 적의 최대 생명 5.2%의 대미지를 추가로 입히며, 최대 공격력 41.6%의 대미지를 가한다.",
       "desc_en": "When dealing Wind damage to a foe, deal bonus damage equal to 5.2% of the foe's max HP (up to 41.6% of Attack).",
-      "desc_jp": "敵に疾風属性ダメージを与える時、追加で敵の最大ＨＰの５.２%のダメージ（最大で攻撃力の４１.６%）を与える。"
+      "desc_jp": "敵に疾風属性ダメージを与える時、追加で敵の最大ＨＰの５.２%のダメージ（最大で攻撃力の４１.６%）を与える。",
+      "name_cn": "呼啸山之主",
+      "desc_cn": "造成疾风属性伤害时，有100%固定概率额外造成5.2%敌人最大生命值的伤害，最多造成41.6%攻击力伤害。"
     }
   ],
   "innate_skill": [
@@ -88,7 +102,9 @@ window.personaFiles["쿠라마텐구"] = {
       "desc_jp": "敵単体に攻撃力121.7/127.8/133.9%の疾風属性ダメージを与える。67.6/71.0/74.4%の確率で敵を２ターンの間、風襲状態にする。",
       "cost": "SP 21",
       "level": "6/7/8",
-      "learn_level": "8"
+      "learn_level": "8",
+      "name_cn": "加尔达因",
+      "desc_cn": "对1名敌人造成121.7/127.8/133.9%攻击力的疾风属性伤害，有67.6/71.0/74.4%基础概率使敌人陷入风袭状态，效果持续2回合。"
     },
     {
       "name": "마카쟈마",
@@ -99,7 +115,9 @@ window.personaFiles["쿠라마텐구"] = {
       "desc_jp": "65.1/68.4/71.6%の確率で敵単体を２ターンの間、忘却状態にする。",
       "cost": "SP 22",
       "level": "6/7/8",
-      "learn_level": "16"
+      "learn_level": "16",
+      "name_cn": "玛卡加玛",
+      "desc_cn": "有65.1/68.4/71.6%基础概率使1名敌人陷入遗忘，效果持续2回合。"
     },
     {
       "name": "코칭Ⅲ",
@@ -110,7 +128,9 @@ window.personaFiles["쿠라마텐구"] = {
       "desc_jp": "被クリティカル率が６.５%低下させる。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "24"
+      "learn_level": "24",
+      "name_cn": "教练Ⅲ",
+      "desc_cn": "受到的暴击率降低6.5%。"
     },
     {
       "name": "질풍 강화Ⅲ",
@@ -121,7 +141,9 @@ window.personaFiles["쿠라마텐구"] = {
       "desc_jp": "疾風属性の与ダメージが８.７%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "32"
+      "learn_level": "32",
+      "name_cn": "疾风强化Ⅲ",
+      "desc_cn": "疾风属性伤害提升8.7%。"
     }
   ],
   "uniqueSkill": {
@@ -133,7 +155,9 @@ window.personaFiles["쿠라마텐구"] = {
     "desc_jp": "敵全体に攻撃力60.8/63.8/66.9%の疾風属性ダメージを与える。33.8/35.5/37.2%の確率で敵を２ターンの間、風襲状態にする。",
     "priority": 0,
     "icon": "Default",
-    "icon_gl": ""
+    "icon_gl": "",
+    "name_cn": "玛哈加尔达因",
+    "desc_cn": "对所有敌人造成60.8/63.8/66.9%攻击力的疾风属性伤害，有33.8/35.5/37.2%基础概率使敌人陷入风袭状态，持续2回合。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -142,6 +166,9 @@ window.personaFiles["쿠라마텐구"] = {
     "desc": "모든 적에게 공격력 180.0%/192.6%/205.2%의 질풍 속성 대미지를 준다.",
     "desc_en": "Deal Wind damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
     "desc_jp": "敵全体に攻撃力180.0%/192.6%/205.2%の疾風属性ダメージを与える。",
-    "priority": 0
-  }
+    "priority": 0,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "对所有敌人造成180.0%/192.6%/205.2%攻击力的疾风属性伤害。"
+  },
+  "name_cn": "鞍马天狗"
 };

@@ -27,7 +27,9 @@ window.personaFiles["백호"] = {
       "name_jp": "戦意昂揚",
       "desc": "크리티컬 확률이 12.5% 증가한다. 턴 종료 시 『전의』를 획득하여 공격력이 10% 증가하고, 최대 6회 중첩된다. 적 격파 시 『전의』 2중첩을 획득한다.",
       "desc_en": "Increase critical rate by 12.5%. At the end of the turn, gain Fighting Spirit, increasing Attack by 10%. After defeating a foe, gain 2 Fighting Spirit stacks. Stacks up to 6 times.",
-      "desc_jp": "クリティカル率が１２.５%上昇する。ターン終了時に『戦意』を獲得する。攻撃力が１０%上昇する。この効果は最大６つまで累積できる。敵を倒した時に『戦意』を２つ獲得する。"
+      "desc_jp": "クリティカル率が１２.５%上昇する。ターン終了時に『戦意』を獲得する。攻撃力が１０%上昇する。この効果は最大６つまで累積できる。敵を倒した時に『戦意』を２つ獲得する。",
+      "name_cn": "战意的奔涌",
+      "desc_cn": "暴击率提升12.5%。回合结束时，获得『战意』，提升10%攻击力，最多叠加6层，击败敌人时，获得2层『战意』。"
     },
     {
       "name": "전의의 용솟음Ⅰ",
@@ -35,7 +37,9 @@ window.personaFiles["백호"] = {
       "name_jp": "戦意昂揚Ⅰ",
       "desc": "크리티컬 확률이 12.5% 증가한다. 턴 종료 시 『전의』를 획득하여 공격력이 11.5% 증가하고, 최대 6회 중첩된다. 적 격파 시 『전의』 2중첩을 획득한다.",
       "desc_en": "Increase critical rate by 12.5%. At the end of the turn, gain Fighting Spirit, increasing Attack by 11.5%. After defeating a foe, gain 2 Fighting Spirit stacks. Stacks up to 6 times.",
-      "desc_jp": "クリティカル率が１２.５%上昇する。ターン終了時に『戦意』を獲得する。攻撃力が１１.５%上昇する。この効果は最大６つまで累積できる。敵を倒した時に『戦意』を２つ獲得する。"
+      "desc_jp": "クリティカル率が１２.５%上昇する。ターン終了時に『戦意』を獲得する。攻撃力が１１.５%上昇する。この効果は最大６つまで累積できる。敵を倒した時に『戦意』を２つ獲得する。",
+      "name_cn": "战意的奔涌Ⅰ",
+      "desc_cn": "暴击率提升12.5%。回合结束时，获得『战意』，提升11.5%攻击力，最多叠加6层，击败敌人时，获得2层『战意』。"
     },
     {
       "name": "전의의 용솟음Ⅱ",
@@ -43,7 +47,9 @@ window.personaFiles["백호"] = {
       "name_jp": "戦意昂揚Ⅱ",
       "desc": "크리티컬 확률이 12.5% 증가한다. 턴 종료 시 『전의』를 획득하여 공격력이 11.5%, 크리티컬 확률이 1.2% 증가하고, 최대 6회 중첩된다. 적 처치 시 『전의』 2중첩을 획득한다.",
       "desc_en": "Increase critical rate by 12.5%. At the end of the turn, gain Fighting Spirit, increasing Attack by 11.5% and critical rate by 1.2%. After defeating a foe, gain 2 Fighting Spirit stacks. Stacks up to 6 times.",
-      "desc_jp": "クリティカル率が１２.５%上昇する。ターン終了時に『戦意』を獲得する。攻撃力が１１.５%上昇し、クリティカル率が１.２%上昇する。この効果は最大６つまで累積できる。敵を倒した時に『戦意』を２つ獲得する。"
+      "desc_jp": "クリティカル率が１２.５%上昇する。ターン終了時に『戦意』を獲得する。攻撃力が１１.５%上昇し、クリティカル率が１.２%上昇する。この効果は最大６つまで累積できる。敵を倒した時に『戦意』を２つ獲得する。",
+      "name_cn": "战意的奔涌Ⅱ",
+      "desc_cn": "暴击率提升12.5%。回合结束时，获得『战意』，提升11.5%攻击力，1.2%暴击率，最多叠加6层，击败敌人时，获得2层『战意』。"
     }
   ],
   "innate_skill": [
@@ -56,7 +62,9 @@ window.personaFiles["백호"] = {
       "desc_jp": "敵単体に攻撃力121.7/127.8/133.9%の氷結属性ダメージを与える。67.6/71.0/74.4%の確率で敵を２ターンの間、凍結状態にする。",
       "cost": "SP 21",
       "level": "6/7/8",
-      "learn_level": "6"
+      "learn_level": "6",
+      "name_cn": "布芙达因",
+      "desc_cn": "对1名敌人造成121.7/127.8/133.9%攻击力的冰冻属性伤害，有67.6/71.0/74.4%基础概率使敌人陷入冻结状态，效果持续2回合。"
     },
     {
       "name": "빙결 강화Ⅲ",
@@ -67,7 +75,9 @@ window.personaFiles["백호"] = {
       "desc_jp": "氷結属性の与ダメージが８.７%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "12"
+      "learn_level": "12",
+      "name_cn": "冰冻强化Ⅲ",
+      "desc_cn": "冰冻属性伤害提升8.7%。"
     },
     {
       "name": "물리 강화Ⅲ",
@@ -78,7 +88,9 @@ window.personaFiles["백호"] = {
       "desc_jp": "物理属性の与ダメージが８.７%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "18"
+      "learn_level": "18",
+      "name_cn": "物理强化Ⅲ",
+      "desc_cn": "物理属性伤害提升8.7%。"
     },
     {
       "name": "어드바이스Ⅲ",
@@ -89,7 +101,9 @@ window.personaFiles["백호"] = {
       "desc_jp": "クリティカル率が６.５%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "25"
+      "learn_level": "25",
+      "name_cn": "建言Ⅲ",
+      "desc_cn": "暴击率提升6.5%。"
     }
   ],
   "uniqueSkill": {
@@ -101,7 +115,9 @@ window.personaFiles["백호"] = {
     "desc_jp": "敵単体に攻撃力148.0%/155.4%/162.8%の物理属性ダメージを与える。敵のＨＰが５０%未満になると、この与ダメージがさらに４０%上昇する。",
     "priority": 0,
     "icon": "물리",
-    "icon_gl": ""
+    "icon_gl": "",
+    "name_cn": "利爪强袭",
+    "desc_cn": "对1名敌人造成148.0%/155.4%/162.8%攻击力的物理属性伤害。若敌人生命值低于50%，则该伤害额外提升40%。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -110,6 +126,9 @@ window.personaFiles["백호"] = {
     "desc": "1명의 적에게 공격력 360.0%/385.2%/410.4%의 물리 속성 대미지를 준다.",
     "desc_en": "Deal Physical damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
     "desc_jp": "敵単体に攻撃力360.0%/385.2%/410.4%の物理属性ダメージを与える。",
-    "priority": 0
-  }
+    "priority": 0,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "对1名敌人造成360.0%/385.2%/410.4%攻击力的物理属性伤害。"
+  },
+  "name_cn": "白虎"
 };

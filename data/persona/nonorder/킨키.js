@@ -27,7 +27,9 @@ window.personaFiles["킨키"] = {
       "name_jp": "金城鉄壁",
       "desc": "방어력이 15.9% 증가한다. 적 다운 시 공격력 15%의 생명을 회복한다.",
       "desc_en": "Increase Defense by 15.9%. After knocking down a foe, restore user's HP by 15% of Attack.",
-      "desc_jp": "防御力が１５.９%上昇する。敵をダウンさせた時、自身のＨＰを攻撃力の１５%回復する。"
+      "desc_jp": "防御力が１５.９%上昇する。敵をダウンさせた時、自身のＨＰを攻撃力の１５%回復する。",
+      "name_cn": "刀枪不入的坚固",
+      "desc_cn": "防御力提升15.9%。击倒敌人时，使自身回复15%攻击力的生命值。"
     },
     {
       "name": "뚫을 수 없는 단단함Ⅰ",
@@ -35,7 +37,9 @@ window.personaFiles["킨키"] = {
       "name_jp": "金城鉄壁Ⅰ",
       "desc": "방어력이 15.9% 증가한다. 적 다운 시 공격력 18%의 생명을 회복한다.",
       "desc_en": "Increase Defense by 15.9%. After knocking down a foe, restore user's HP by 18% of Attack.",
-      "desc_jp": "防御力が１５.９%上昇する。敵をダウンさせた時、自身のＨＰを攻撃力の１８%回復する。"
+      "desc_jp": "防御力が１５.９%上昇する。敵をダウンさせた時、自身のＨＰを攻撃力の１８%回復する。",
+      "name_cn": "刀枪不入的坚固Ⅰ",
+      "desc_cn": "防御力提升15.9%。击倒敌人时，使自身回复18%攻击力的生命值。"
     }
   ],
   "innate_skill": [
@@ -48,7 +52,9 @@ window.personaFiles["킨키"] = {
       "desc_jp": "３ターンの間、味方単体の防御力が23.3%/24.5%/25.6%上昇する。自身の防御力が５００ごとに、味方の防御力がさらに3.9%/4.1%/4.3%上昇する（最大15.6%/16.4%/17.2%まで）。",
       "cost": "SP 22",
       "level": "6/7/8",
-      "learn_level": "5"
+      "learn_level": "5",
+      "name_cn": "拉库卡加",
+      "desc_cn": "使1名同伴的防御力提升23.3%/24.5%/25.6%，自身每500防御力额外提升3.9%/4.1%/4.3%，上限15.6%/16.4%/17.2%。效果持续3回合。"
     },
     {
       "name": "어드바이스Ⅱ",
@@ -59,7 +65,9 @@ window.personaFiles["킨키"] = {
       "desc_jp": "クリティカル率が５%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "10"
+      "learn_level": "10",
+      "name_cn": "建言Ⅱ",
+      "desc_cn": "暴击率提升5%。"
     },
     {
       "name": "치료 촉진Ⅱ",
@@ -70,7 +78,9 @@ window.personaFiles["킨키"] = {
       "desc_jp": "毎ターン開始時に最大ＨＰの２.７%を回復する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "15"
+      "learn_level": "15",
+      "name_cn": "治疗促进Ⅱ",
+      "desc_cn": "每回合开始时，回复2.7%最大生命值。"
     },
     {
       "name": "염동 간파Ⅱ",
@@ -81,7 +91,9 @@ window.personaFiles["킨키"] = {
       "desc_jp": "念動属性の被ダメージを６.７%低下させる。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "20"
+      "learn_level": "20",
+      "name_cn": "念动识破Ⅱ",
+      "desc_cn": "受到的念动属性伤害降低6.7%。"
     }
   ],
   "uniqueSkill": {
@@ -93,7 +105,9 @@ window.personaFiles["킨키"] = {
     "desc_jp": "敵全体に攻撃力53.1/55.8/58.4%の物理属性ダメージを与える。",
     "priority": 0,
     "icon": "물리광역",
-    "icon_gl": ""
+    "icon_gl": "",
+    "name_cn": "金刚迸发",
+    "desc_cn": "对所有敌人造成53.1/55.8/58.4%攻击力的物理属性伤害。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -102,6 +116,9 @@ window.personaFiles["킨키"] = {
     "desc": "모든 적에게 공격력 180.0%/192.6%/205.2%의 물리 속성 대미지를 준다.",
     "desc_en": "Deal Physical damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
     "desc_jp": "敵全体に攻撃力180.0%/192.6%/205.2%の物理属性ダメージを与える。",
-    "priority": 0
-  }
+    "priority": 0,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "对所有敌人造成180.0%/192.6%/205.2%攻击力的物理属性伤害。"
+  },
+  "name_cn": "金鬼"
 };

@@ -27,7 +27,9 @@ window.personaFiles["안즈"] = {
       "name_jp": "ダイブハント",
       "desc": "공격력이 10.6% 증가한다. 페르소나 스킬 시전 시 스킬의 메인 목표에게 풍습 효과를 주면 효과 명중이 45% 증가한다.",
       "desc_en": "Increase Attack by 10.6%. When inflicting Windswept, increase accuracy by 45% to main target.",
-      "desc_jp": "攻撃力が１０.６%上昇する。スキルで選択した対象への風襲の命中率が４５%上昇する。"
+      "desc_jp": "攻撃力が１０.６%上昇する。スキルで選択した対象への風襲の命中率が４５%上昇する。",
+      "name_cn": "俯冲的猎杀",
+      "desc_cn": "攻击力提升10.6%。释放人格面具技能时，对技能主目标造成风袭效果时，效果命中提升45%。"
     },
     {
       "name": "급강하 사냥Ⅰ",
@@ -35,7 +37,9 @@ window.personaFiles["안즈"] = {
       "name_jp": "ダイブハントⅠ",
       "desc": "공격력이 10.6% 증가한다. 페르소나 스킬 시전 시 스킬의 메인 목표에게 풍습 효과를 주면 효과 명중이 50% 증가한다.",
       "desc_en": "Increase Attack by 10.6%. When inflicting Windswept, increase accuracy by 50% to main target.",
-      "desc_jp": "攻撃力が１０.６%上昇する。スキルで選択した対象への風襲の命中率が５０%上昇する。"
+      "desc_jp": "攻撃力が１０.６%上昇する。スキルで選択した対象への風襲の命中率が５０%上昇する。",
+      "name_cn": "俯冲的猎杀Ⅰ",
+      "desc_cn": "攻击力提升10.6%。释放人格面具技能时，对技能主目标造成风袭效果时，效果命中提升50%。"
     }
   ],
   "innate_skill": [
@@ -48,7 +52,9 @@ window.personaFiles["안즈"] = {
       "desc_jp": "敵単体に攻撃力141.8/148.9/156.0%の物理属性ダメージを与える。",
       "cost": "체력 8.0%",
       "level": "6/7/8",
-      "learn_level": "5"
+      "learn_level": "5",
+      "name_cn": "俯冲突击",
+      "desc_cn": "对1名敌人造成141.8/148.9/156.0%攻击力的物理属性伤害。"
     },
     {
       "name": "히트 업Ⅱ",
@@ -59,7 +65,9 @@ window.personaFiles["안즈"] = {
       "desc_jp": "先制時に最大ＨＰの５.０%とＳＰを６回復する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "10"
+      "learn_level": "10",
+      "name_cn": "亢奋Ⅱ",
+      "desc_cn": "先制攻击时回复5.0%最大生命值和6点精力值。"
     },
     {
       "name": "민첩의 마음가짐Ⅱ",
@@ -70,7 +78,9 @@ window.personaFiles["안즈"] = {
       "desc_jp": "速さが９上昇し、防御力が４%低下する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "15"
+      "learn_level": "15",
+      "name_cn": "敏捷的心得Ⅱ",
+      "desc_cn": "速度提升9点，防御力降低4%。"
     },
     {
       "name": "생명 강화Ⅱ",
@@ -81,7 +91,9 @@ window.personaFiles["안즈"] = {
       "desc_jp": "ＨＰが８.３%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "20"
+      "learn_level": "20",
+      "name_cn": "生命强化Ⅱ",
+      "desc_cn": "生命值提升8.3%。"
     }
   ],
   "uniqueSkill": {
@@ -93,7 +105,9 @@ window.personaFiles["안즈"] = {
     "desc_jp": "敵全体に攻撃力57.0/59.8/62.7%の疾風属性ダメージを与える。31.7/33.3/34.9%の確率で敵を２ターンの間、風襲状態にする。",
     "priority": 0,
     "icon": "Default",
-    "icon_gl": ""
+    "icon_gl": "",
+    "name_cn": "玛哈加尔拉",
+    "desc_cn": "对所有敌人造成57.0/59.8/62.7%攻击力的疾风属性伤害，有31.7/33.3/34.9%基础概率使敌人陷入风袭状态，持续2回合。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -102,6 +116,9 @@ window.personaFiles["안즈"] = {
     "desc": "모든 적에게 공격력 180.0%/192.6%/205.2%의 질풍 속성 대미지를 준다.",
     "desc_en": "Deal Wind damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
     "desc_jp": "敵全体に攻撃力180.0%/192.6%/205.2%の疾風属性ダメージを与える。",
-    "priority": 0
-  }
+    "priority": 0,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "对所有敌人造成180.0%/192.6%/205.2%攻击力的疾风属性伤害。"
+  },
+  "name_cn": "安祖"
 };

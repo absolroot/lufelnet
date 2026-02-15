@@ -27,7 +27,9 @@ window.personaFiles["사키미타마"] = {
       "name_jp": "愛の本質",
       "desc": "생명이 2.9% 증가한다. 치료 효과를 부여한 후 자신의 SP를 2포인트 회복한다.",
       "desc_en": "Increase max HP by 2.9%. After healing, restore user's SP by 2.",
-      "desc_jp": "ＨＰが２.９%上昇する。回復効果を与えた時、自身のＳＰが２回復する。"
+      "desc_jp": "ＨＰが２.９%上昇する。回復効果を与えた時、自身のＳＰが２回復する。",
+      "name_cn": "爱的本质",
+      "desc_cn": "生命值提升2.9%。造成治疗效果后，回复自身2点精力值。"
     },
     {
       "name": "사랑의 본질Ⅰ",
@@ -35,7 +37,9 @@ window.personaFiles["사키미타마"] = {
       "name_jp": "愛の本質Ⅰ",
       "desc": "생명이 2.9% 증가한다. 치료 효과를 부여한 후 자신의 SP를 3포인트 회복한다.",
       "desc_en": "Increase max HP by 2.9%. After healing, restore user's SP by 3.",
-      "desc_jp": "ＨＰが２.９%上昇する。回復効果を与えた時、自身のＳＰが３回復する。"
+      "desc_jp": "ＨＰが２.９%上昇する。回復効果を与えた時、自身のＳＰが３回復する。",
+      "name_cn": "爱的本质Ⅰ",
+      "desc_cn": "生命值提升2.9%。造成治疗效果后，回复自身3点精力值。"
     }
   ],
   "innate_skill": [
@@ -48,7 +52,9 @@ window.personaFiles["사키미타마"] = {
       "desc_jp": "敵単体に攻撃力106.2/111.5/116.8%の氷結属性ダメージを与える。59.0/62.0/64.9%の確率で敵を２ターンの間、凍結状態にする。",
       "cost": "SP 19",
       "level": "6/7/8",
-      "learn_level": "4"
+      "learn_level": "4",
+      "name_cn": "布芙",
+      "desc_cn": "对1名敌人造成106.2/111.5/116.8%攻击力的冰冻属性伤害，有59.0/62.0/64.9%基础概率使敌人陷入冻结状态，效果持续2回合。"
     },
     {
       "name": "기공Ⅰ",
@@ -59,7 +65,9 @@ window.personaFiles["사키미타마"] = {
       "desc_jp": "ＳＰ回復率が３.１%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "8"
+      "learn_level": "8",
+      "name_cn": "气功Ⅰ",
+      "desc_cn": "精力回复效率提升3.1%。"
     }
   ],
   "uniqueSkill": {
@@ -71,7 +79,9 @@ window.personaFiles["사키미타마"] = {
     "desc_jp": "味方単体のＨＰを攻撃力の33.1/34.8/36.4%＋1001/1239/1495回復する。",
     "priority": 0,
     "icon": "치료",
-    "icon_gl": ""
+    "icon_gl": "",
+    "name_cn": "迪亚",
+    "desc_cn": "使1名同伴恢复33.1/34.8/36.4%攻击力+1001/1239/1495的生命值。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -80,6 +90,9 @@ window.personaFiles["사키미타마"] = {
     "desc": "모든 동료가 공격력 48.6%/52.0%/55.4%+1471/1854/2275의 생명을 회복한다.",
     "desc_en": "Restore HP to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275.",
     "desc_jp": "味方全体のＨＰを攻撃力48.6%/52.0%/55.4%＋1471/1854/2275回復する。",
-    "priority": 0
-  }
+    "priority": 0,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "使所有同伴恢复48.6%/52.0%/55.4%攻击力+1471/1854/2275的生命值。"
+  },
+  "name_cn": "幸魂"
 };

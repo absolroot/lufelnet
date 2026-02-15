@@ -27,7 +27,9 @@ window.personaFiles["오르트로스"] = {
       "name_jp": "火引の躯",
       "desc": "크리티컬 효과가 12.7% 증가한다. 화상 효과 부여 시 2턴 동안 자신의 공격력이 22% 증가한다.",
       "desc_en": "Increase critical damage by 12.7%. After inflicting Burn, increase user's Attack by 22% for 2 turns.",
-      "desc_jp": "クリティカルダメージが１２.７%上昇する。炎上状態にした時、２ターンの間、自身の攻撃力が２２%上昇する。"
+      "desc_jp": "クリティカルダメージが１２.７%上昇する。炎上状態にした時、２ターンの間、自身の攻撃力が２２%上昇する。",
+      "name_cn": "引火之躯",
+      "desc_cn": "暴击效果提升12.7%。造成燃烧效果后，提升自身22%攻击力，效果持续2回合。"
     },
     {
       "name": "인화의 몸Ⅰ",
@@ -35,7 +37,9 @@ window.personaFiles["오르트로스"] = {
       "name_jp": "火引の躯Ⅰ",
       "desc": "크리티컬 효과가 12.7% 증가한다. 화상 효과 부여 시 2턴 동안 자신의 공격력이 25% 증가한다.",
       "desc_en": "Increase critical damage by 12.7%. After inflicting Burn, increase user's Attack by 25% for 2 turns.",
-      "desc_jp": "クリティカルダメージが１２.７%上昇する。炎上状態にした時、２ターンの間、自身の攻撃力が２５%上昇する。"
+      "desc_jp": "クリティカルダメージが１２.７%上昇する。炎上状態にした時、２ターンの間、自身の攻撃力が２５%上昇する。",
+      "name_cn": "引火之躯Ⅰ",
+      "desc_cn": "暴击效果提升12.7%。造成燃烧效果后，提升自身25%攻击力，效果持续2回合。"
     }
   ],
   "innate_skill": [
@@ -48,7 +52,9 @@ window.personaFiles["오르트로스"] = {
       "desc_jp": "敵全体に攻撃力57.0/59.8/62.7%の火炎属性ダメージを与える。31.7/33.3/34.9%の確率で敵を２ターンの間、炎上状態にする。",
       "cost": "SP 20",
       "level": "6/7/8",
-      "learn_level": "5"
+      "learn_level": "5",
+      "name_cn": "玛哈拉基翁",
+      "desc_cn": "对所有敌人造成57.0/59.8/62.7%攻击力的火焰属性伤害，有31.7/33.3/34.9%基础概率使敌人陷入燃烧状态，效果持续2回合。"
     },
     {
       "name": "궁서아",
@@ -59,7 +65,9 @@ window.personaFiles["오르트로스"] = {
       "desc_jp": "敵単体に攻撃力129.1/135.6/142.0%の物理属性ダメージを与える。",
       "cost": "체력 7.0%",
       "level": "6/7/8",
-      "learn_level": "10"
+      "learn_level": "10",
+      "name_cn": "穷鼠之牙",
+      "desc_cn": "对1名敌人造成129.1/135.6/142.0%攻击力的物理属性伤害。"
     },
     {
       "name": "화상률 UPⅡ",
@@ -70,7 +78,9 @@ window.personaFiles["오르트로스"] = {
       "desc_jp": "炎上の命中率が１２.５%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "15"
+      "learn_level": "15",
+      "name_cn": "燃烧率UPⅡ",
+      "desc_cn": "造成燃烧效果时，效果命中提升12.5%。"
     },
     {
       "name": "민첩의 마음가짐Ⅱ",
@@ -81,7 +91,9 @@ window.personaFiles["오르트로스"] = {
       "desc_jp": "速さが９上昇し、防御力が４%低下する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "20"
+      "learn_level": "20",
+      "name_cn": "敏捷的心得Ⅱ",
+      "desc_cn": "速度提升9点，防御力降低4%。"
     }
   ],
   "uniqueSkill": {
@@ -93,7 +105,9 @@ window.personaFiles["오르트로스"] = {
     "desc_jp": "敵単体に攻撃力114.0/119.7/125.4%の火炎属性ダメージを与える。63.3/66.5/69.6%の確率で敵を２ターンの間、炎上状態にする。",
     "priority": 0,
     "icon": "Default",
-    "icon_gl": ""
+    "icon_gl": "",
+    "name_cn": "亚基拉欧",
+    "desc_cn": "对1名敌人造成114.0/119.7/125.4%攻击力的火焰属性伤害，有63.3/66.5/69.6%基础概率使敌人陷入燃烧状态，效果持续2回合。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -102,6 +116,9 @@ window.personaFiles["오르트로스"] = {
     "desc": "1명의 적에게 공격력 360.0%/385.2%/410.4%의 화염 속성 대미지를 준다.",
     "desc_en": "Deal Fire damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
     "desc_jp": "敵単体に攻撃力360.0%/385.2%/410.4%の火炎属性ダメージを与える。",
-    "priority": 0
-  }
+    "priority": 0,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "对1名敌人造成360.0%/385.2%/410.4%攻击力的火焰属性伤害。"
+  },
+  "name_cn": "欧特鲁斯"
 };

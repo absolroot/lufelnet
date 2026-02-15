@@ -64,7 +64,9 @@ window.personaFiles["광목천"] = {
       "name_jp": "天王の眼力",
       "desc": "효과 명중이 21.2% 증가한다. 전투 시작 시 공격력이 가장 높은 괴도 공격력이 10% 증가하며 크리티컬 확률이 4% 증가한다. 효과는 3턴 동안 지속되며 반항/지배 직업을 우선 선택한다.",
       "desc_en": "Increase ailment accuracy by 21.2%. At the start of battle, increase the Attack of the ally with the highest Attack by 10% and their critical rate by 4% for 3 turns (prioritize Assassins and Sweepers).",
-      "desc_jp": "状態異常命中が２１.２%上昇する。戦闘開始時、３ターンの間、攻撃力が最も高い味方（反抗または支配ロールを優先）の攻撃力が１０%上昇し、クリティカル率が４%上昇する。"
+      "desc_jp": "状態異常命中が２１.２%上昇する。戦闘開始時、３ターンの間、攻撃力が最も高い味方（反抗または支配ロールを優先）の攻撃力が１０%上昇し、クリティカル率が４%上昇する。",
+      "name_cn": "天王的注视",
+      "desc_cn": "效果命中提升21.2%。战斗开始时，使攻击力最高的怪盗攻击力提升10%，暴击率提升4%，效果持续3回合，优先选择反抗/支配职业。"
     },
     {
       "name": "천왕의 주시Ⅰ",
@@ -72,7 +74,9 @@ window.personaFiles["광목천"] = {
       "name_jp": "天王の眼力Ⅰ",
       "desc": "효과 명중이 21.2% 증가한다. 전투 시작 시 공격력이 가장 높은 괴도 공격력이 12% 증가하며 크리티컬 확률이 5% 증가한다. 효과는 3턴 동안 지속되며 반항/지배 직업을 우선 선택한다.",
       "desc_en": "Increase ailment accuracy by 21.2%. At the start of battle, increase the Attack of the ally with the highest Attack by 12% and their critical rate by 5% for 3 turns (prioritize Assassins and Sweepers).",
-      "desc_jp": "状態異常命中が２１.２%上昇する。戦闘開始時、３ターンの間、攻撃力が最も高い味方（反抗または支配ロールを優先）の攻撃力が１２%上昇し、クリティカル率が５%上昇する。"
+      "desc_jp": "状態異常命中が２１.２%上昇する。戦闘開始時、３ターンの間、攻撃力が最も高い味方（反抗または支配ロールを優先）の攻撃力が１２%上昇し、クリティカル率が５%上昇する。",
+      "name_cn": "天王的注视Ⅰ",
+      "desc_cn": "效果命中提升21.2%。战斗开始时，使攻击力最高的怪盗攻击力提升12%，暴击率提升5%，效果持续3回合，优先选择反抗/支配职业。"
     },
     {
       "name": "천왕의 주시Ⅱ",
@@ -80,7 +84,9 @@ window.personaFiles["광목천"] = {
       "name_jp": "天王の眼力Ⅱ",
       "desc": "효과 명중이 21.2% 증가한다. 전투 시작 시 공격력이 가장 높은 괴도 공격력이 14% 증가하며 크리티컬 확률이 6% 증가한다. 효과는 3턴 동안 지속되며 반항/지배 직업을 우선 선택한다.",
       "desc_en": "Increase ailment accuracy by 21.2%. At the start of battle, increase the Attack of the ally with the highest Attack by 14% and their critical rate by 6% for 3 turns (prioritize Assassins and Sweepers).",
-      "desc_jp": "状態異常命中が２１.２%上昇する。戦闘開始時、３ターンの間、攻撃力が最も高い味方（反抗または支配ロールを優先）の攻撃力が１４%上昇し、クリティカル率が６%上昇する。"
+      "desc_jp": "状態異常命中が２１.２%上昇する。戦闘開始時、３ターンの間、攻撃力が最も高い味方（反抗または支配ロールを優先）の攻撃力が１４%上昇し、クリティカル率が６%上昇する。",
+      "name_cn": "天王的注视Ⅱ",
+      "desc_cn": "效果命中提升21.2%。战斗开始时，使攻击力最高的怪盗攻击力提升14%，暴击率提升6%，效果持续3回合，优先选择反抗/支配职业。"
     }
   ],
   "uniqueSkill": {
@@ -92,7 +98,9 @@ window.personaFiles["광목천"] = {
     "desc_jp": "３ターンの間、味方全体のクリティカル率が6.5%/6.8%/7.2%上昇する。自身のクリティカル率が１０%ごとに、味方のクリティカル率がさらに1.1%/1.2%/1.2%上昇する（最大4.4%/4.6%/4.8%まで）。",
     "priority": 2,
     "icon": "버프광역",
-    "icon_gl": ""
+    "icon_gl": "",
+    "name_cn": "革命",
+    "desc_cn": "使所有同伴的暴击率提升6.5%/6.8%/7.2%，自身每10%暴击率额外提升1.1%/1.2%/1.2%，上限4.4%/4.6%/4.8%。效果持续3回合。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -101,7 +109,9 @@ window.personaFiles["광목천"] = {
     "desc": "모든 동료의 주는 대미지가 29.5%/31.6%/33.6% 증가하며 2턴 동안 지속된다.",
     "desc_en": "Increase party's damage by 29.5%/31.6%/33.6% for 2 turns.",
     "desc_jp": "２ターンの間、味方全体の与ダメージが29.5%/31.6%/33.6%上昇する。",
-    "priority": 1
+    "priority": 1,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "使所有同伴造成的伤害提升29.5%/31.6%/33.6%，效果持续2回合。"
   },
   "innate_skill": [
     {
@@ -113,7 +123,9 @@ window.personaFiles["광목천"] = {
       "desc_jp": "戦闘開始時、２ターンもしくはペルソナを切り替えるまでの間、味方全体の攻撃力が７.９%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "6"
+      "learn_level": "6",
+      "name_cn": "自动玛哈塔尔卡Ⅲ",
+      "desc_cn": "战斗开始时全员攻击力提升7.9%，持续2回合或持续至切换面具。"
     },
     {
       "name": "치료 촉진Ⅲ",
@@ -124,7 +136,9 @@ window.personaFiles["광목천"] = {
       "desc_jp": "毎ターン開始時に最大ＨＰの３.５%を回復する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "12"
+      "learn_level": "12",
+      "name_cn": "治疗促进Ⅲ",
+      "desc_cn": "每回合开始时，回复3.5%最大生命值。"
     },
     {
       "name": "굳건한 산Ⅲ",
@@ -135,7 +149,9 @@ window.personaFiles["광목천"] = {
       "desc_jp": "速さが１２低下し、ＨＰが２９%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "18"
+      "learn_level": "18",
+      "name_cn": "不动如山Ⅲ",
+      "desc_cn": "速度降低12点，生命值提升29%。"
     },
     {
       "name": "코칭Ⅲ",
@@ -146,7 +162,10 @@ window.personaFiles["광목천"] = {
       "desc_jp": "被クリティカル率が６.５%低下させる。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "25"
+      "learn_level": "25",
+      "name_cn": "教练Ⅲ",
+      "desc_cn": "受到的暴击率降低6.5%。"
     }
-  ]
+  ],
+  "name_cn": "广目天王"
 };

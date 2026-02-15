@@ -27,7 +27,9 @@ window.personaFiles["온모라키"] = {
       "name_jp": "飢餓の怨念",
       "desc": "공격력이 5.8% 증가한다. 필드에 적이 1명이면 모든 동료가 주는 주원 속성 대미지가 12% 증가한다.",
       "desc_en": "Increase Attack by 5.8%. When only 1 foe is on the field, increase party's Curse damage by 12%.",
-      "desc_jp": "攻撃力が５.８%上昇する。敵が１体しかいない場合、味方全体の呪怨属性の与ダメージが１２%上昇する。"
+      "desc_jp": "攻撃力が５.８%上昇する。敵が１体しかいない場合、味方全体の呪怨属性の与ダメージが１２%上昇する。",
+      "name_cn": "饿肚子的怨气",
+      "desc_cn": "攻击力提升5.8%。场上只有1名敌人时，使所有同伴造成的诅咒属性伤害提升12%。"
     },
     {
       "name": "배고픔의 원한Ⅰ",
@@ -35,7 +37,9 @@ window.personaFiles["온모라키"] = {
       "name_jp": "飢餓の怨念Ⅰ",
       "desc": "공격력이 5.8% 증가한다. 필드에 적이 1명이면 모든 동료가 주는 주원 속성 대미지가 14% 증가한다.",
       "desc_en": "Increase Attack by 5.8%. When only 1 foe is on the field, increase party's Curse damage by 14%.",
-      "desc_jp": "攻撃力が５.８%上昇する。敵が１体しかいない場合、味方全体の呪怨属性の与ダメージが１４%上昇する。"
+      "desc_jp": "攻撃力が５.８%上昇する。敵が１体しかいない場合、味方全体の呪怨属性の与ダメージが１４%上昇する。",
+      "name_cn": "饿肚子的怨气Ⅰ",
+      "desc_cn": "攻击力提升5.8%。场上只有1名敌人时，使所有同伴造成的诅咒属性伤害提升14%。"
     }
   ],
   "innate_skill": [
@@ -48,7 +52,9 @@ window.personaFiles["온모라키"] = {
       "desc_jp": "敵単体に攻撃力106.2/111.5/116.8%の火炎属性ダメージを与える。59.0/62.0/64.9%の確率で敵を２ターンの間、炎上状態にする。",
       "cost": "SP 19",
       "level": "6/7/8",
-      "learn_level": "4"
+      "learn_level": "4",
+      "name_cn": "亚基",
+      "desc_cn": "对1名敌人造成106.2/111.5/116.8%攻击力的火焰属性伤害，有59.0/62.0/64.9%基础概率使敌人陷入燃烧状态，效果持续2回合。"
     },
     {
       "name": "민첩의 마음가짐Ⅰ",
@@ -59,7 +65,9 @@ window.personaFiles["온모라키"] = {
       "desc_jp": "速さが６上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "8"
+      "learn_level": "8",
+      "name_cn": "敏捷的心得Ⅰ",
+      "desc_cn": "速度提升6点。"
     },
     {
       "name": "마도의 재능Ⅰ",
@@ -70,7 +78,9 @@ window.personaFiles["온모라키"] = {
       "desc_jp": "与ダメージが４.７%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "12"
+      "learn_level": "12",
+      "name_cn": "魔导的才能Ⅰ",
+      "desc_cn": "造成的伤害提升4.7%。"
     }
   ],
   "uniqueSkill": {
@@ -82,7 +92,9 @@ window.personaFiles["온모라키"] = {
     "desc_jp": "敵単体に攻撃力116.5/123.2/129.9%の呪怨属性ダメージを与える。敵に０～１つの呪印を付与する。",
     "priority": 0,
     "icon": "주원",
-    "icon_gl": ""
+    "icon_gl": "",
+    "name_cn": "耶哈",
+    "desc_cn": "对1名敌人造成116.5/123.2/129.9%攻击力的诅咒属性伤害，使敌人获得0~1个诅咒效果。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -91,6 +103,9 @@ window.personaFiles["온모라키"] = {
     "desc": "1명의 적에게 공격력 360.0%/385.2%/410.4%의 주원 속성 대미지를 준다.",
     "desc_en": "Deal Curse damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
     "desc_jp": "敵単体に攻撃力360.0%/385.2%/410.4%の呪怨属性ダメージを与える。",
-    "priority": 0
-  }
+    "priority": 0,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "对1名敌人造成360.0%/385.2%/410.4%攻击力的诅咒属性伤害。"
+  },
+  "name_cn": "阴摩罗鬼"
 };

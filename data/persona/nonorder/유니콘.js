@@ -27,7 +27,9 @@ window.personaFiles["유니콘"] = {
       "name_jp": "精霊の加護",
       "desc": "주는 치료 효과가 12% 증가한다. 디버프 효과가 없는 동료가 대미지를 받을 때 방어력이 26% 증가한다.",
       "desc_en": "Increase healing effect by 12%. When allies with no debuffs take damage, increase Defense by 26%.",
-      "desc_jp": "回復量が１２%上昇する。さらに弱体状態ではない味方がダメージを受けた時、防御力を２６%上昇させる。"
+      "desc_jp": "回復量が１２%上昇する。さらに弱体状態ではない味方がダメージを受けた時、防御力を２６%上昇させる。",
+      "name_cn": "仙灵的驯守",
+      "desc_cn": "造成的治疗效果提升12%。使得身上没有减益效果的同伴受到伤害时防御力提升26%。"
     },
     {
       "name": "선령의 돌봄Ⅰ",
@@ -35,7 +37,9 @@ window.personaFiles["유니콘"] = {
       "name_jp": "精霊の加護Ⅰ",
       "desc": "주는 치료 효과가 12% 증가한다. 디버프 효과가 없는 동료가 대미지를 받을 때 방어력이 29% 증가한다.",
       "desc_en": "Increase healing effect by 12%. When allies with no debuffs take damage, increase Defense by 29%.",
-      "desc_jp": "回復量が１２%上昇する。さらに弱体状態ではない味方がダメージを受けた時、防御力を２９%上昇させる。"
+      "desc_jp": "回復量が１２%上昇する。さらに弱体状態ではない味方がダメージを受けた時、防御力を２９%上昇させる。",
+      "name_cn": "仙灵的驯守Ⅰ",
+      "desc_cn": "造成的治疗效果提升12%。使得身上没有减益效果的同伴受到伤害时防御力提升29%。"
     },
     {
       "name": "선령의 돌봄Ⅱ",
@@ -43,7 +47,9 @@ window.personaFiles["유니콘"] = {
       "name_jp": "精霊の加護Ⅱ",
       "desc": "주는 치료 효과가 12% 증가한다. 디버프 효과가 없는 동료가 대미지를 받을 때 방어력이 32% 증가하고, 대미지를 줄 때 공격력이 5.5% 증가한다.",
       "desc_en": "Increase healing effect by 12%. When allies with no debuffs take damage, increase Defense by 32%. After dealing damage, increase Attack by 5.5%.",
-      "desc_jp": "回復量が１２%上昇する。さらに弱体状態ではない味方がダメージを受けた時、防御力を３２%上昇させ、ダメージを与えた時、攻撃力を５.５%上昇させる。"
+      "desc_jp": "回復量が１２%上昇する。さらに弱体状態ではない味方がダメージを受けた時、防御力を３２%上昇させ、ダメージを与えた時、攻撃力を５.５%上昇させる。",
+      "name_cn": "仙灵的驯守Ⅱ",
+      "desc_cn": "造成的治疗效果提升12%。使得身上没有减益效果的同伴受到伤害时防御力提升32%,造成伤害时攻击力提升5.5%。"
     }
   ],
   "innate_skill": [
@@ -56,7 +62,9 @@ window.personaFiles["유니콘"] = {
       "desc_jp": "味方単体の目眩、睡眠、忘却を治療する。",
       "cost": "SP 25",
       "level": "6/7/8",
-      "learn_level": "5"
+      "learn_level": "5",
+      "name_cn": "帕特拉",
+      "desc_cn": "驱散1名同伴的晕眩、睡眠、遗忘效果。"
     },
     {
       "name": "바이스디",
@@ -67,7 +75,9 @@ window.personaFiles["유니콘"] = {
       "desc_jp": "味方単体の炎上、凍結、感電、風襲を治療する。",
       "cost": "SP 25",
       "level": "6/7/8",
-      "learn_level": "10"
+      "learn_level": "10",
+      "name_cn": "拜斯提",
+      "desc_cn": "驱散1名同伴的燃烧、冻结、触电、风袭效果。"
     },
     {
       "name": "생명 강화Ⅱ",
@@ -78,7 +88,9 @@ window.personaFiles["유니콘"] = {
       "desc_jp": "ＨＰが８.３%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "15"
+      "learn_level": "15",
+      "name_cn": "生命强化Ⅱ",
+      "desc_cn": "生命值提升8.3%。"
     },
     {
       "name": "치료 강화Ⅱ",
@@ -89,7 +101,9 @@ window.personaFiles["유니콘"] = {
       "desc_jp": "回復量が６%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "20"
+      "learn_level": "20",
+      "name_cn": "治疗强化Ⅱ",
+      "desc_cn": "造成治疗效果提升6%。"
     }
   ],
   "uniqueSkill": {
@@ -101,7 +115,9 @@ window.personaFiles["유니콘"] = {
     "desc_jp": "味方単体のＨＰを攻撃力16.2%/17.7%/19.2%＋490/631/788回復し、さらに、ランダムな弱体効果を１つ打ち消す。弱体を打ち消した時、追加で攻撃力10.8%/11.8%/12.8%＋326/420/525のＨＰを回復する。",
     "priority": 0,
     "icon": "치료",
-    "icon_gl": ""
+    "icon_gl": "",
+    "name_cn": "不染尘埃",
+    "desc_cn": "使1名同伴恢复16.2%/17.7%/19.2%攻击力+490/631/788的生命值，并有100%基础概率驱散其身上的一个随机减益效果。驱散成功后，额外恢复其10.8%/11.8%/12.8%攻击力+326/420/525的生命值。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -110,6 +126,9 @@ window.personaFiles["유니콘"] = {
     "desc": "모든 동료가 공격력 48.6%/52.0%/55.4%+1471/1854/2275의 생명을 회복한다.",
     "desc_en": "Restore HP to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275.",
     "desc_jp": "味方全体のＨＰを攻撃力48.6%/52.0%/55.4%＋1471/1854/2275回復する。",
-    "priority": 0
-  }
+    "priority": 0,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "使所有同伴恢复48.6%/52.0%/55.4%攻击力+1471/1854/2275的生命值。"
+  },
+  "name_cn": "独角兽"
 };

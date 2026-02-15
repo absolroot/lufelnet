@@ -27,7 +27,9 @@ window.personaFiles["나가라자"] = {
       "name_jp": "雷呼びの血統",
       "desc": "크리티컬 효과가 20.9% 증가한다. 전격 속성 스킬 시전 시 소모하는 SP가 31% 감소한다.",
       "desc_en": "Increase critical damage by 20.9%. Decrease SP cost of Electric skills by 31%.",
-      "desc_jp": "クリティカルダメージが２０.９%上昇する。電撃属性スキルのＳＰ消費量を３１%低下させる。"
+      "desc_jp": "クリティカルダメージが２０.９%上昇する。電撃属性スキルのＳＰ消費量を３１%低下させる。",
+      "name_cn": "招雷的血统",
+      "desc_cn": "暴击效果提升20.9%。使用电击属性技能时，消耗的精力值降低31%。"
     },
     {
       "name": "소뢰의 혈통Ⅰ",
@@ -35,7 +37,9 @@ window.personaFiles["나가라자"] = {
       "name_jp": "雷呼びの血統Ⅰ",
       "desc": "크리티컬 효과가 20.9% 증가한다. 전격 속성 스킬 시전 시 소모하는 SP가 35% 감소한다.",
       "desc_en": "Increase critical damage by 20.9%. Decrease SP cost of Electric skills by 35%.",
-      "desc_jp": "クリティカルダメージが２０.９%上昇する。電撃属性スキルのＳＰ消費量を３５%低下させる。"
+      "desc_jp": "クリティカルダメージが２０.９%上昇する。電撃属性スキルのＳＰ消費量を３５%低下させる。",
+      "name_cn": "招雷的血统Ⅰ",
+      "desc_cn": "暴击效果提升20.9%。使用电击属性技能时，消耗的精力值降低35%。"
     },
     {
       "name": "소뢰의 혈통Ⅱ",
@@ -43,7 +47,9 @@ window.personaFiles["나가라자"] = {
       "name_jp": "雷呼びの血統Ⅱ",
       "desc": "크리티컬 효과가 20.9% 증가한다. 전격 속성 스킬 시전 시 소모하는 SP가 39% 감소한다.",
       "desc_en": "Increase critical damage by 20.9%. Decrease SP cost of Electric skills by 39%.",
-      "desc_jp": "クリティカルダメージが２０.９%上昇する。電撃属性スキルのＳＰ消費量を３９%低下させる。"
+      "desc_jp": "クリティカルダメージが２０.９%上昇する。電撃属性スキルのＳＰ消費量を３９%低下させる。",
+      "name_cn": "招雷的血统Ⅱ",
+      "desc_cn": "暴击效果提升20.9%。使用电击属性技能时，消耗的精力值降低39%。"
     },
     {
       "name": "소뢰의 혈통Ⅲ",
@@ -51,7 +57,9 @@ window.personaFiles["나가라자"] = {
       "name_jp": "招雷の血統Ⅲ",
       "desc": "크리티컬 효과가 20.9% 증가한다. 전격 속성 스킬 시전 시 소모하는 SP가 43% 감소한다.",
       "desc_en": "Increase critical damage by 20.9%. Decrease SP cost of Electric skills by 43%.",
-      "desc_jp": "クリティカルダメージが２０.９%上昇する。電撃属性スキルのＳＰ消費量を４３%低下させる。"
+      "desc_jp": "クリティカルダメージが２０.９%上昇する。電撃属性スキルのＳＰ消費量を４３%低下させる。",
+      "name_cn": "招雷的血统Ⅲ",
+      "desc_cn": "暴击效果提升20.9%。使用电击属性技能时，消耗的精力值降低43%。"
     }
   ],
   "innate_skill": [
@@ -64,7 +72,9 @@ window.personaFiles["나가라자"] = {
       "desc_jp": "感電の命中率が１６.３%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "8"
+      "learn_level": "8",
+      "name_cn": "触电率UPⅢ",
+      "desc_cn": "造成触电效果时，效果命中提升16.3%。"
     },
     {
       "name": "전격 간파Ⅲ",
@@ -75,7 +85,9 @@ window.personaFiles["나가라자"] = {
       "desc_jp": "電撃属性の被ダメージを８.７%低下させる。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "16"
+      "learn_level": "16",
+      "name_cn": "电击识破Ⅲ",
+      "desc_cn": "受到的电击属性伤害降低8.7%。"
     },
     {
       "name": "비의 노래Ⅲ",
@@ -86,7 +98,9 @@ window.personaFiles["나가라자"] = {
       "desc_jp": "雨の時は被ダメージを１１.３%低下させる。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "24"
+      "learn_level": "24",
+      "name_cn": "雨歌Ⅲ",
+      "desc_cn": "下雨时受到的伤害降低11.3%。"
     },
     {
       "name": "민첩의 마음가짐Ⅲ",
@@ -97,7 +111,9 @@ window.personaFiles["나가라자"] = {
       "desc_jp": "速さが１２上昇し、防御力が８%低下する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "32"
+      "learn_level": "32",
+      "name_cn": "敏捷的心得Ⅲ",
+      "desc_cn": "速度提升12点，防御力降低8%。"
     }
   ],
   "uniqueSkill": {
@@ -109,7 +125,9 @@ window.personaFiles["나가라자"] = {
     "desc_jp": "敵全体に攻撃力60.8/63.8/66.9%の電撃属性ダメージを与える。33.8/35.5/37.2%の確率で敵を２ターンの間、感電状態にする。",
     "priority": 0,
     "icon": "Default",
-    "icon_gl": ""
+    "icon_gl": "",
+    "name_cn": "玛哈吉欧达因",
+    "desc_cn": "对所有敌人造成60.8/63.8/66.9%攻击力的电击属性伤害，有33.8/35.5/37.2%基础概率使敌人陷入触电状态，效果持续2回合。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -118,6 +136,9 @@ window.personaFiles["나가라자"] = {
     "desc": "모든 적에게 공격력 180.0%/192.6%/205.2%의 전격 속성 대미지를 준다.",
     "desc_en": "Deal Electric damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
     "desc_jp": "敵全体に攻撃力180.0%/192.6%/205.2%の電撃属性ダメージを与える。",
-    "priority": 0
-  }
+    "priority": 0,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "对所有敌人造成180.0%/192.6%/205.2%攻击力的电击属性伤害。"
+  },
+  "name_cn": "那伽王"
 };

@@ -27,7 +27,9 @@ window.personaFiles["헤카톤케일"] = {
       "name_jp": "百腕の防御",
       "desc": "생명이 14.5% 증가한다. 모든 동료의 생명이 50% 미만일 시 받는 대미지가 19% 감소한다.",
       "desc_en": "Increase HP by 14.5%. When all allies' HP is below 50%, decrease damage taken by 19%.",
-      "desc_jp": "ＨＰが１４.５%上昇する。味方全体がＨＰ５０%未満の場合、被ダメージを１９%低下させる。"
+      "desc_jp": "ＨＰが１４.５%上昇する。味方全体がＨＰ５０%未満の場合、被ダメージを１９%低下させる。",
+      "name_cn": "百次的阻拦",
+      "desc_cn": "生命值提升14.5%。所有同伴生命值低于50%时，受到的伤害降低19%。"
     },
     {
       "name": "100회의 제지Ⅰ",
@@ -35,7 +37,9 @@ window.personaFiles["헤카톤케일"] = {
       "name_jp": "百腕の防御Ⅰ",
       "desc": "생명이 14.5% 증가한다. 모든 동료의 생명이 50% 미만일 시 받는 대미지가 21% 감소한다.",
       "desc_en": "Increase HP by 14.5%. When all allies' HP is below 50%, decrease damage taken by 21%.",
-      "desc_jp": "ＨＰが１４.５%上昇する。味方全体がＨＰ５０%未満の場合、被ダメージを２１%低下させる。"
+      "desc_jp": "ＨＰが１４.５%上昇する。味方全体がＨＰ５０%未満の場合、被ダメージを２１%低下させる。",
+      "name_cn": "百次的阻拦Ⅰ",
+      "desc_cn": "生命值提升14.5%。所有同伴生命值低于50%时，受到的伤害降低21%。"
     },
     {
       "name": "100회의 제지Ⅱ",
@@ -43,7 +47,9 @@ window.personaFiles["헤카톤케일"] = {
       "name_jp": "百腕の防御Ⅱ",
       "desc": "생명이 14.5% 증가한다. 모든 동료의 생명이 50% 미만일 시 받는 대미지가 23% 감소한다.",
       "desc_en": "Increase HP by 14.5%. When all allies' HP is below 50%, decrease damage taken by 23%.",
-      "desc_jp": "ＨＰが１４.５%上昇する。味方全体がＨＰ５０%未満の場合、被ダメージを２３%低下させる。"
+      "desc_jp": "ＨＰが１４.５%上昇する。味方全体がＨＰ５０%未満の場合、被ダメージを２３%低下させる。",
+      "name_cn": "百次的阻拦Ⅱ",
+      "desc_cn": "生命值提升14.5%。所有同伴生命值低于50%时，受到的伤害降低23%。"
     }
   ],
   "innate_skill": [
@@ -56,7 +62,9 @@ window.personaFiles["헤카톤케일"] = {
       "desc_jp": "防御力が１６.３%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "6"
+      "learn_level": "6",
+      "name_cn": "防御强化Ⅲ",
+      "desc_cn": "防御力提升16.3%。"
     },
     {
       "name": "대미지 면역Ⅲ",
@@ -67,7 +75,9 @@ window.personaFiles["헤카톤케일"] = {
       "desc_jp": "被ダメージを８.７%低下させる。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "12"
+      "learn_level": "12",
+      "name_cn": "免伤强化Ⅲ",
+      "desc_cn": "受到的伤害降低8.7%。"
     },
     {
       "name": "실드 강화Ⅲ",
@@ -78,7 +88,9 @@ window.personaFiles["헤카톤케일"] = {
       "desc_jp": "シールドが７.８%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "18"
+      "learn_level": "18",
+      "name_cn": "护盾强化Ⅲ",
+      "desc_cn": "护盾效果提升7.8%。"
     },
     {
       "name": "데카쟈",
@@ -89,7 +101,9 @@ window.personaFiles["헤카톤케일"] = {
       "desc_jp": "敵全体のステータス上昇効果を１つ打ち消す。",
       "cost": "SP skillLv*-1+28",
       "level": "6/7/8",
-      "learn_level": "25"
+      "learn_level": "25",
+      "name_cn": "迪卡加",
+      "desc_cn": "驱散所有敌人的1个属性提升效果。"
     }
   ],
   "uniqueSkill": {
@@ -101,7 +115,9 @@ window.personaFiles["헤카톤케일"] = {
     "desc_jp": "３ターンの間、味方全体の防御力が16.3%/17.1%/17.9%上昇する。自身の防御力が５００ごとに、味方の防御力がさらに2.7%/2.8%/3.0%上昇する（最大10.8%/11.3%/11.9%まで）。",
     "priority": 0,
     "icon": "Default",
-    "icon_gl": ""
+    "icon_gl": "",
+    "name_cn": "玛哈拉库卡加",
+    "desc_cn": "使所有同伴的防御力提升16.3%/17.1%/17.9%，自身每500防御力额外提升2.7%/2.8%/3.0%，上限10.8%/11.3%/11.9%。效果持续3回合。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -110,6 +126,9 @@ window.personaFiles["헤카톤케일"] = {
     "desc": "모든 동료가 공격력 48.6%/52.0%/55.4%+1471/1854/2275의 실드를 획득하며 2턴 동안 지속된다.",
     "desc_en": "Grant a shield to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275 for 2 turns.",
     "desc_jp": "２ターンの間、味方全体に攻撃力48.6%/52.0%/55.4%＋1471/1854/2275のシールドを付与する。",
-    "priority": 0
-  }
+    "priority": 0,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "使所有同伴获得48.6%/52.0%/55.4%攻击力+1471/1854/2275的护盾，效果持续2回合。"
+  },
+  "name_cn": "百臂巨人"
 };

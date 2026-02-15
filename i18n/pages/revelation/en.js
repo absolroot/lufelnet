@@ -23,6 +23,11 @@ window.I18N_PAGE_REVELATION_EN = {
     set_effect_2: "2-Set",
     set_effect_4: "4-Set",
     label_characters: "Characters",
+    label_not_released: "Not Released",
+    tooltip_view_characters: "View Characters",
+    msg_load_error_general: "An error occurred while loading data. Please refresh the page.",
+    msg_load_error_revelation_data: "An error occurred while loading revelation data. Please refresh the page.",
+    reset_filter: "Reset Filters",
 
     // SEO
     seo_title: "Revelations Card Guide - Persona 5: The Phantom X LufelNet",

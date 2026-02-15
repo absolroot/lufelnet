@@ -27,7 +27,9 @@ window.personaFiles["클로토"] = {
       "name_jp": "幸運の創造",
       "desc": "효과 명중이 10.5% 증가한다. 적 처치 후 자신이 축복 효과 1개를 획득하고, 50%의 확률로 축복 효과 1개를 추가 획득한다.",
       "desc_en": "Increase ailment accuracy by 10.5%. After defeating a foe, gain 1 Blessing stack. 50% chance to gain 1 more Blessing.",
-      "desc_jp": "状態異常命中が１０.５%上昇する。敵を倒した時、自身に祝印を１つ獲得する。５０%の確率で、祝印をさらに１つ獲得する。"
+      "desc_jp": "状態異常命中が１０.５%上昇する。敵を倒した時、自身に祝印を１つ獲得する。５０%の確率で、祝印をさらに１つ獲得する。",
+      "name_cn": "福运的创造",
+      "desc_cn": "效果命中提升10.5%。击败敌人后，使自己获得1个祝福效果，有50%概率额外获得1个祝福效果。"
     },
     {
       "name": "복운의 창조Ⅰ",
@@ -35,7 +37,9 @@ window.personaFiles["클로토"] = {
       "name_jp": "幸運の創造Ⅰ",
       "desc": "효과 명중이 10.5% 증가한다. 적 격파 시 자신이 축복 효과 2개를 획득한다.",
       "desc_en": "Increase ailment accuracy by 10.5%. After defeating a foe, gain 2 Blessing stacks.",
-      "desc_jp": "状態異常命中が１０.５%上昇する。敵を倒した時、自身に祝印を２つ獲得する。"
+      "desc_jp": "状態異常命中が１０.５%上昇する。敵を倒した時、自身に祝印を２つ獲得する。",
+      "name_cn": "福运的创造Ⅰ",
+      "desc_cn": "效果命中提升10.5%。击败敌人后，使自己获得2个祝福效果。"
     }
   ],
   "innate_skill": [
@@ -48,7 +52,9 @@ window.personaFiles["클로토"] = {
       "desc_jp": "味方単体の目眩、睡眠、忘却を治療する。",
       "cost": "SP 25",
       "level": "6/7/8",
-      "learn_level": "5"
+      "learn_level": "5",
+      "name_cn": "帕特拉",
+      "desc_cn": "驱散1名同伴的晕眩、睡眠、遗忘效果。"
     },
     {
       "name": "기공Ⅱ",
@@ -59,7 +65,9 @@ window.personaFiles["클로토"] = {
       "desc_jp": "ＳＰ回復率が４.４%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "10"
+      "learn_level": "10",
+      "name_cn": "气功Ⅱ",
+      "desc_cn": "精力回复效率提升4.4%。"
     },
     {
       "name": "하마 성공률 UPⅠ",
@@ -70,7 +78,9 @@ window.personaFiles["클로토"] = {
       "desc_jp": "即死スキルの成功率が２.９%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "15"
+      "learn_level": "15",
+      "name_cn": "哈玛成功率UPⅠ",
+      "desc_cn": "即死技能成功率上升2.9%。"
     },
     {
       "name": "마하코우가",
@@ -81,7 +91,9 @@ window.personaFiles["클로토"] = {
       "desc_jp": "敵全体に攻撃力61.3/65.0/68.7%の祝福属性ダメージを与える。自身に１～２つの祝印を獲得する。",
       "cost": "SP 20",
       "level": "6/7/8",
-      "learn_level": "20"
+      "learn_level": "20",
+      "name_cn": "玛哈克加",
+      "desc_cn": "对所有敌人造成61.3/65.0/68.7%攻击力的祝福属性伤害，使自己获得1~2个祝福效果。"
     }
   ],
   "uniqueSkill": {
@@ -93,7 +105,9 @@ window.personaFiles["클로토"] = {
     "desc_jp": "敵単体に攻撃力90.6/99.3/108.0%の祝福属性ダメージを与える。ＨＰ５０%以下の敵に低確率で祝福属性の即死効果を与える。敵のＨＰが低いほど確率が上がる。",
     "priority": 0,
     "icon": "Default",
-    "icon_gl": ""
+    "icon_gl": "",
+    "name_cn": "哈玛翁",
+    "desc_cn": "对1名敌人造成90.6/99.3/108.0%攻击力的祝福属性伤害，对50%生命值以下的敌人附加低几率祝福属性即死效果，生命值越低概率越高。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -102,6 +116,9 @@ window.personaFiles["클로토"] = {
     "desc": "1명의 적에게 공격력 360.0%/385.2%/410.4%의 축복 속성 대미지를 준다.",
     "desc_en": "Deal Bless damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
     "desc_jp": "敵単体に攻撃力360.0%/385.2%/410.4%の祝福属性ダメージを与える。",
-    "priority": 0
-  }
+    "priority": 0,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "对1名敌人造成360.0%/385.2%/410.4%攻击力的祝福属性伤害。"
+  },
+  "name_cn": "克洛托"
 };

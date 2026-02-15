@@ -27,7 +27,9 @@ window.personaFiles["바이콘"] = {
       "name_jp": "風の舞踏",
       "desc": "공격력이 2.9% 증가한다. 적 다운 시 2턴 동안 주는 질풍 속성 대미지가 20% 증가한다.",
       "desc_en": "Increase Attack by 2.9%. After knocking down a foe, increase Wind damage by 20% for 2 turns.",
-      "desc_jp": "攻撃力が２.９%上昇する。敵をダウンさせた時、２ターンの間、自身の疾風属性の与ダメージが２０%上昇する。"
+      "desc_jp": "攻撃力が２.９%上昇する。敵をダウンさせた時、２ターンの間、自身の疾風属性の与ダメージが２０%上昇する。",
+      "name_cn": "风行的舞踏",
+      "desc_cn": "攻击力提升2.9%。造成击倒后，造成的疾风属性伤害提升20%，效果持续2回合。"
     },
     {
       "name": "풍행의 부토Ⅰ",
@@ -35,7 +37,9 @@ window.personaFiles["바이콘"] = {
       "name_jp": "風の舞踏Ⅰ",
       "desc": "공격력이 2.9% 증가한다. 적 다운 시 2턴 동안 주는 질풍 속성 대미지가 23% 증가한다.",
       "desc_en": "Increase Attack by 2.9%. After knocking down a foe, increase Wind damage by 23% for 2 turns.",
-      "desc_jp": "攻撃力が２.９%上昇する。敵をダウンさせた時、２ターンの間、自身の疾風属性の与ダメージが２３%上昇する。"
+      "desc_jp": "攻撃力が２.９%上昇する。敵をダウンさせた時、２ターンの間、自身の疾風属性の与ダメージが２３%上昇する。",
+      "name_cn": "风行的舞踏Ⅰ",
+      "desc_cn": "攻击力提升2.9%。造成击倒后，造成的疾风属性伤害提升23%，效果持续2回合。"
     }
   ],
   "innate_skill": [
@@ -48,7 +52,9 @@ window.personaFiles["바이콘"] = {
       "desc_jp": "速さが６上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "4"
+      "learn_level": "4",
+      "name_cn": "敏捷的心得Ⅰ",
+      "desc_cn": "速度提升6点。"
     },
     {
       "name": "어드바이스Ⅰ",
@@ -59,7 +65,9 @@ window.personaFiles["바이콘"] = {
       "desc_jp": "クリティカル率が３.５%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "8"
+      "learn_level": "8",
+      "name_cn": "建言Ⅰ",
+      "desc_cn": "暴击率提升3.5%。"
     }
   ],
   "uniqueSkill": {
@@ -71,7 +79,9 @@ window.personaFiles["바이콘"] = {
     "desc_jp": "敵単体に攻撃力106.2/111.5/116.8%の疾風属性ダメージを与える。59.0/62.0/64.9%の確率で敵を２ターンの間、風襲状態にする。",
     "priority": 0,
     "icon": "질풍",
-    "icon_gl": ""
+    "icon_gl": "",
+    "name_cn": "加尔",
+    "desc_cn": "对1名敌人造成106.2/111.5/116.8%攻击力的疾风属性伤害，有59.0/62.0/64.9%基础概率使敌人陷入风袭状态，效果持续2回合。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -80,6 +90,9 @@ window.personaFiles["바이콘"] = {
     "desc": "1명의 적에게 공격력 360.0%/385.2%/410.4%의 질풍 속성 대미지를 준다.",
     "desc_en": "Deal Wind damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
     "desc_jp": "敵単体に攻撃力360.0%/385.2%/410.4%の疾風属性ダメージを与える。",
-    "priority": 0
-  }
+    "priority": 0,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "对1名敌人造成360.0%/385.2%/410.4%攻击力的疾风属性伤害。"
+  },
+  "name_cn": "双角兽"
 };

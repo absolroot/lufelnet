@@ -27,7 +27,9 @@ window.personaFiles["잭 프로스트"] = {
       "name_jp": "雪だるまつくる？",
       "desc": "크리티컬 확률이 4.2% 증가한다. 적 다운 시 빙결 속성 대미지가 2턴 동안 26% 증가한다.",
       "desc_en": "Increase critical rate by 4.2%. After knocking down a foe, increase Ice damage by 26% for 2 turns.",
-      "desc_jp": "クリティカル率が４.２%上昇する。敵をダウンさせた時、２ターンの間、氷結属性の与ダメージが２６%上昇する。"
+      "desc_jp": "クリティカル率が４.２%上昇する。敵をダウンさせた時、２ターンの間、氷結属性の与ダメージが２６%上昇する。",
+      "name_cn": "来堆雪人吧",
+      "desc_cn": "暴击率提升4.2%。造成击倒后，造成的冰冻属性伤害提升26%，效果持续2回合。"
     },
     {
       "name": "눈사람 만들기Ⅰ",
@@ -35,7 +37,9 @@ window.personaFiles["잭 프로스트"] = {
       "name_jp": "雪だるまつくる？Ⅰ",
       "desc": "크리티컬 확률이 4.2% 증가한다. 적 다운 시 빙결 속성 대미지가 2턴 동안 31% 증가한다.",
       "desc_en": "Increase critical rate by 4.2%. After knocking down a foe, increase Ice damage by 31% for 2 turns.",
-      "desc_jp": "クリティカル率が４.２%上昇する。敵をダウンさせた時、２ターンの間、氷結属性の与ダメージが３１%上昇する。"
+      "desc_jp": "クリティカル率が４.２%上昇する。敵をダウンさせた時、２ターンの間、氷結属性の与ダメージが３１%上昇する。",
+      "name_cn": "来堆雪人吧Ⅰ",
+      "desc_cn": "暴击率提升4.2%。造成击倒后，造成的冰冻属性伤害提升31%，效果持续2回合。"
     }
   ],
   "innate_skill": [
@@ -48,7 +52,9 @@ window.personaFiles["잭 프로스트"] = {
       "desc_jp": "敵単体に攻撃力106.2/111.5/116.8%の氷結属性ダメージを与える。59.0/62.0/64.9%の確率で敵を２ターンの間、凍結状態にする。",
       "cost": "SP 19",
       "level": "6/7/8",
-      "learn_level": "4"
+      "learn_level": "4",
+      "name_cn": "布芙",
+      "desc_cn": "对1名敌人造成106.2/111.5/116.8%攻击力的冰冻属性伤害，有59.0/62.0/64.9%基础概率使敌人陷入冻结状态，效果持续2回合。"
     },
     {
       "name": "빙결 강화Ⅰ",
@@ -59,7 +65,9 @@ window.personaFiles["잭 프로스트"] = {
       "desc_jp": "氷結属性の与ダメージが４.７%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "8"
+      "learn_level": "8",
+      "name_cn": "冰冻强化Ⅰ",
+      "desc_cn": "冰冻属性伤害提升4.7%。"
     },
     {
       "name": "마술의 소양Ⅰ",
@@ -70,7 +78,9 @@ window.personaFiles["잭 프로스트"] = {
       "desc_jp": "スキルのＳＰ消費量が２.４%低下する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "12"
+      "learn_level": "12",
+      "name_cn": "魔术的资质Ⅰ",
+      "desc_cn": "技能消耗的SP降低2.4%。"
     }
   ],
   "uniqueSkill": {
@@ -82,7 +92,9 @@ window.personaFiles["잭 프로스트"] = {
     "desc_jp": "敵全体に攻撃力53.1/55.8/58.4%の氷結属性ダメージを与える。29.5/31.0/32.4%の確率で敵を２ターンの間、凍結状態にする。",
     "priority": 0,
     "icon": "빙결광역",
-    "icon_gl": ""
+    "icon_gl": "",
+    "name_cn": "玛哈布芙",
+    "desc_cn": "对所有敌人造成53.1/55.8/58.4%攻击力的冰冻属性伤害，有29.5/31.0/32.4%基础概率使敌人陷入冻结状态，效果持续2回合。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -91,6 +103,9 @@ window.personaFiles["잭 프로스트"] = {
     "desc": "모든 적에게 공격력 180.0%/192.6%/205.2%의 빙결 속성 대미지를 준다.",
     "desc_en": "Deal Ice damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
     "desc_jp": "敵全体に攻撃力180.0%/192.6%/205.2%の氷結属性ダメージを与える。",
-    "priority": 0
-  }
+    "priority": 0,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "对所有敌人造成180.0%/192.6%/205.2%攻击力的冰冻属性伤害。"
+  },
+  "name_cn": "杰克霜精"
 };

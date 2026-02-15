@@ -27,7 +27,9 @@ window.personaFiles["화백"] = {
       "name_jp": "焚き木の鞭",
       "desc": "공격력이 2.9% 증가한다. 화상 상태의 적 공격 시 공격력이 25% 증가한다.",
       "desc_en": "Increase Attack by 2.9%. When attacking a Burning foe, increase Attack by 25%.",
-      "desc_jp": "攻撃力が２.９%上昇する。炎上状態の敵を攻撃する時、攻撃力が２５%上昇する。"
+      "desc_jp": "攻撃力が２.９%上昇する。炎上状態の敵を攻撃する時、攻撃力が２５%上昇する。",
+      "name_cn": "焚枝的鞭笞",
+      "desc_cn": "攻击力提升2.9%。攻击处于燃烧状态的敌人时，攻击力提升25%。"
     },
     {
       "name": "불타는 매질Ⅰ",
@@ -35,7 +37,9 @@ window.personaFiles["화백"] = {
       "name_jp": "焚き木の鞭Ⅰ",
       "desc": "공격력이 2.9% 증가한다. 화상 상태의 적 공격 시 공격력이 28% 증가한다.",
       "desc_en": "Increase Attack by 2.9%. When attacking a Burning foe, increase Attack by 28%.",
-      "desc_jp": "攻撃力が２.９%上昇する。炎上状態の敵を攻撃する時、攻撃力が２８%上昇する。"
+      "desc_jp": "攻撃力が２.９%上昇する。炎上状態の敵を攻撃する時、攻撃力が２８%上昇する。",
+      "name_cn": "焚枝的鞭笞Ⅰ",
+      "desc_cn": "攻击力提升2.9%。攻击处于燃烧状态的敌人时，攻击力提升28%。"
     }
   ],
   "innate_skill": [
@@ -48,7 +52,9 @@ window.personaFiles["화백"] = {
       "desc_jp": "炎上の命中率が８.８%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "4"
+      "learn_level": "4",
+      "name_cn": "燃烧率UPⅠ",
+      "desc_cn": "造成燃烧效果时，效果命中提升8.8%。"
     },
     {
       "name": "마하라기",
@@ -59,7 +65,9 @@ window.personaFiles["화백"] = {
       "desc_jp": "敵全体に攻撃力53.1/55.8/58.4%の火炎属性ダメージを与える。29.5/31.0/32.4%の確率で敵を２ターンの間、炎上状態にする。",
       "cost": "SP 19",
       "level": "6/7/8",
-      "learn_level": "8"
+      "learn_level": "8",
+      "name_cn": "玛哈拉基",
+      "desc_cn": "对所有敌人造成53.1/55.8/58.4%攻击力的火焰属性伤害，有29.5/31.0/32.4%基础概率使敌人陷入燃烧状态，效果持续2回合。"
     }
   ],
   "uniqueSkill": {
@@ -71,7 +79,9 @@ window.personaFiles["화백"] = {
     "desc_jp": "敵単体に攻撃力106.2/111.5/116.8%の火炎属性ダメージを与える。59.0/62.0/64.9%の確率で敵を２ターンの間、炎上状態にする。",
     "priority": 0,
     "icon": "화염",
-    "icon_gl": ""
+    "icon_gl": "",
+    "name_cn": "亚基",
+    "desc_cn": "对1名敌人造成106.2/111.5/116.8%攻击力的火焰属性伤害，有59.0/62.0/64.9%基础概率使敌人陷入燃烧状态，效果持续2回合。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -80,6 +90,9 @@ window.personaFiles["화백"] = {
     "desc": "1명의 적에게 공격력 360.0%/385.2%/410.4%의 화염 속성 대미지를 준다.",
     "desc_en": "Deal Fire damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
     "desc_jp": "敵単体に攻撃力360.0%/385.2%/410.4%の火炎属性ダメージを与える。",
-    "priority": 0
-  }
+    "priority": 0,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "对1名敌人造成360.0%/385.2%/410.4%攻击力的火焰属性伤害。"
+  },
+  "name_cn": "花魄"
 };

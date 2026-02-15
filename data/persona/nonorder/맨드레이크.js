@@ -27,7 +27,9 @@ window.personaFiles["맨드레이크"] = {
       "name_jp": "地を裂く絶叫",
       "desc": "공격력이 2.9% 증가한다. 전투 시작 시 3턴 동안 공격력이 15% 증가한다.",
       "desc_en": "Increase Attack by 2.9%. At the start of battle, increase Attack by 15%. Lasts for 3 turns.",
-      "desc_jp": "攻撃力が２.９%上昇する。戦闘開始時、３ターンの間、攻撃力が１５%上昇する。"
+      "desc_jp": "攻撃力が２.９%上昇する。戦闘開始時、３ターンの間、攻撃力が１５%上昇する。",
+      "name_cn": "破土而出的尖叫",
+      "desc_cn": "攻击力提升2.9%。战斗开始时攻击力提升15%，效果持续3回合。"
     },
     {
       "name": "뚫고 나오는 비명Ⅰ",
@@ -35,7 +37,9 @@ window.personaFiles["맨드레이크"] = {
       "name_jp": "地を裂く絶叫Ⅰ",
       "desc": "공격력이 2.9% 증가한다. 전투 시작 시 공격력이 3턴 동안 17.5% 증가한다.",
       "desc_en": "Increase Attack by 2.9%. At the start of battle, increase Attack by 17.5%. Lasts for 3 turns.",
-      "desc_jp": "攻撃力が２.９%上昇する。戦闘開始時、３ターンの間、攻撃力が１７.５%上昇する。"
+      "desc_jp": "攻撃力が２.９%上昇する。戦闘開始時、３ターンの間、攻撃力が１７.５%上昇する。",
+      "name_cn": "破土而出的尖叫Ⅰ",
+      "desc_cn": "攻击力提升2.9%。战斗开始时攻击力提升17.5%，效果持续3回合。"
     }
   ],
   "innate_skill": [
@@ -48,7 +52,9 @@ window.personaFiles["맨드레이크"] = {
       "desc_jp": "目眩の抵抗率が８.８%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "4"
+      "learn_level": "4",
+      "name_cn": "晕眩耐性Ⅰ",
+      "desc_cn": "受到晕眩效果时，效果抵抗提升8.8%。"
     },
     {
       "name": "공격 강화Ⅰ",
@@ -59,7 +65,9 @@ window.personaFiles["맨드레이크"] = {
       "desc_jp": "攻撃力が５.８%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "8"
+      "learn_level": "8",
+      "name_cn": "攻击强化Ⅰ",
+      "desc_cn": "攻击力提升5.8%。"
     }
   ],
   "uniqueSkill": {
@@ -71,7 +79,9 @@ window.personaFiles["맨드레이크"] = {
     "desc_jp": "敵単体に攻撃力116.4/122.2/128.0%の物理属性ダメージを与える。",
     "priority": 0,
     "icon": "물리",
-    "icon_gl": ""
+    "icon_gl": "",
+    "name_cn": "突击",
+    "desc_cn": "对1名敌人造成116.4/122.2/128.0%攻击力的物理属性伤害。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -80,6 +90,9 @@ window.personaFiles["맨드레이크"] = {
     "desc": "1명의 적에게 공격력 360.0%/385.2%/410.4%의 물리 속성 대미지를 준다.",
     "desc_en": "Deal Physical damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
     "desc_jp": "敵単体に攻撃力360.0%/385.2%/410.4%の物理属性ダメージを与える。",
-    "priority": 0
-  }
+    "priority": 0,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "对1名敌人造成360.0%/385.2%/410.4%攻击力的物理属性伤害。"
+  },
+  "name_cn": "曼陀罗"
 };

@@ -27,7 +27,9 @@ window.personaFiles["바롱"] = {
       "name_jp": "怒りの雷霆",
       "desc": "크리티컬 확률이 10.5% 증가한다. 1명의 적을 목표로 전격 속성 페르소나 스킬 시전 후, 공격력 37%의 추가 전격 대미지를 준다.",
       "desc_en": "Increase critical rate by 10.5%. After using an Electric skill on 1 foe, deal bonus Electric damage equal to 37% of Attack.",
-      "desc_jp": "クリティカル率が１０.５%上昇する。単体の電撃属性のスキルを使用した時、追加で攻撃力３７%の電撃属性ダメージを与える。"
+      "desc_jp": "クリティカル率が１０.５%上昇する。単体の電撃属性のスキルを使用した時、追加で攻撃力３７%の電撃属性ダメージを与える。",
+      "name_cn": "雷霆的愤怒",
+      "desc_cn": "暴击率提升10.5%。以1名敌人为目标释放电击属性人格面具技能后，对其造成37%攻击力的额外电击属性伤害。"
     },
     {
       "name": "뇌정의 분노Ⅰ",
@@ -35,7 +37,9 @@ window.personaFiles["바롱"] = {
       "name_jp": "怒りの雷霆Ⅰ",
       "desc": "크리티컬 확률이 10.5% 증가한다. 1명의 적을 목표로 전격 속성 페르소나 스킬 시전 후, 공격력 42%의 추가 전격 대미지를 준다.",
       "desc_en": "Increase critical rate by 10.5%. After using an Electric skill on 1 foe, deal bonus Electric damage equal to 42% of Attack.",
-      "desc_jp": "クリティカル率が１０.５%上昇する。単体の電撃属性のスキルを使用した時、追加で攻撃力４２%の電撃属性ダメージを与える。"
+      "desc_jp": "クリティカル率が１０.５%上昇する。単体の電撃属性のスキルを使用した時、追加で攻撃力４２%の電撃属性ダメージを与える。",
+      "name_cn": "雷霆的愤怒Ⅰ",
+      "desc_cn": "暴击率提升10.5%。以1名敌人为目标释放电击属性人格面具技能后，对其造成42%攻击力的额外电击属性伤害。"
     },
     {
       "name": "뇌정의 분노Ⅱ",
@@ -43,7 +47,9 @@ window.personaFiles["바롱"] = {
       "name_jp": "怒りの雷霆Ⅱ",
       "desc": "크리티컬 확률이 10.5% 증가한다. 1명의 적을 목표로 전격 속성 페르소나 스킬 시전 후, 공격력 47%의 추가 전격 대미지를 준다.",
       "desc_en": "Increase critical rate by 10.5%. After using an Electric skill on 1 foe, deal bonus Electric damage equal to 47% of Attack.",
-      "desc_jp": "クリティカル率が１０.５%上昇する。単体の電撃属性のスキルを使用した時、追加で攻撃力４７%の電撃属性ダメージを与える。"
+      "desc_jp": "クリティカル率が１０.５%上昇する。単体の電撃属性のスキルを使用した時、追加で攻撃力４７%の電撃属性ダメージを与える。",
+      "name_cn": "雷霆的愤怒Ⅱ",
+      "desc_cn": "暴击率提升10.5%。以1名敌人为目标释放电击属性人格面具技能后，对其造成47%攻击力的额外电击属性伤害。"
     },
     {
       "name": "뇌정의 분노Ⅲ",
@@ -51,7 +57,9 @@ window.personaFiles["바롱"] = {
       "name_jp": "怒りの雷霆Ⅲ",
       "desc": "크리티컬 확률이 10.5% 증가한다. 1명의 적을 목표로 전격 속성 페르소나 스킬 시전 후, 공격력 51%의 추가 전격 대미지를 준다.",
       "desc_en": "Increase critical rate by 10.5%. After using an Electric skill on 1 foe, deal bonus Electric damage equal to 51% of Attack.",
-      "desc_jp": "クリティカル率が１０.５%上昇する。単体の電撃属性のスキルを使用した時、追加で攻撃力５１%の電撃属性ダメージを与える。"
+      "desc_jp": "クリティカル率が１０.５%上昇する。単体の電撃属性のスキルを使用した時、追加で攻撃力５１%の電撃属性ダメージを与える。",
+      "name_cn": "雷霆的愤怒Ⅲ",
+      "desc_cn": "暴击率提升10.5%。以1名敌人为目标释放电击属性人格面具技能后，对其造成51%攻击力的额外电击属性伤害。"
     }
   ],
   "innate_skill": [
@@ -64,7 +72,9 @@ window.personaFiles["바롱"] = {
       "desc_jp": "16.3/17.1/17.9%の確率で敵全体を２ターンの間、目眩状態にする。",
       "cost": "SP 22",
       "level": "6/7/8",
-      "learn_level": "8"
+      "learn_level": "8",
+      "name_cn": "暗夜的闪光",
+      "desc_cn": "有16.3/17.1/17.9%基础概率使所有敌人陷入晕眩，效果持续2回合。"
     },
     {
       "name": "히트 업Ⅲ",
@@ -75,7 +85,9 @@ window.personaFiles["바롱"] = {
       "desc_jp": "先制時に最大ＨＰの６.０%とＳＰを８回復する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "16"
+      "learn_level": "16",
+      "name_cn": "亢奋Ⅲ",
+      "desc_cn": "先制攻击时回复6.0%最大生命值和8点精力值。"
     },
     {
       "name": "기공Ⅲ",
@@ -86,7 +98,9 @@ window.personaFiles["바롱"] = {
       "desc_jp": "ＳＰ回復率が５.７%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "24"
+      "learn_level": "24",
+      "name_cn": "气功Ⅲ",
+      "desc_cn": "精力回复效率提升5.7%。"
     },
     {
       "name": "마도의 재능Ⅲ",
@@ -97,7 +111,9 @@ window.personaFiles["바롱"] = {
       "desc_jp": "与ダメージが８.７%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "32"
+      "learn_level": "32",
+      "name_cn": "魔导的才能Ⅲ",
+      "desc_cn": "造成的伤害提升8.7%。"
     }
   ],
   "uniqueSkill": {
@@ -109,7 +125,9 @@ window.personaFiles["바롱"] = {
     "desc_jp": "敵単体に攻撃力121.7/127.8/133.9%の電撃属性ダメージを与える。67.6/71.0/74.4%の確率で敵を２ターンの間、感電状態にする。",
     "priority": 0,
     "icon": "Default",
-    "icon_gl": ""
+    "icon_gl": "",
+    "name_cn": "吉欧达因",
+    "desc_cn": "对1名敌人造成121.7/127.8/133.9%攻击力的电击属性伤害，有67.6/71.0/74.4%基础概率使敌人陷入触电状态，效果持续2回合。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -118,6 +136,9 @@ window.personaFiles["바롱"] = {
     "desc": "1명의 적에게 공격력 360.0%/385.2%/410.4%의 전격 속성 대미지를 준다.",
     "desc_en": "Deal Electric damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
     "desc_jp": "敵単体に攻撃力360.0%/385.2%/410.4%の電撃属性ダメージを与える。",
-    "priority": 0
-  }
+    "priority": 0,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "对1名敌人造成360.0%/385.2%/410.4%攻击力的电击属性伤害。"
+  },
+  "name_cn": "巴隆"
 };

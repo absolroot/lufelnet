@@ -23,6 +23,11 @@ window.I18N_PAGE_REVELATION_KR = {
     set_effect_2: "2세트",
     set_effect_4: "4세트",
     label_characters: "사용 캐릭터",
+    label_not_released: "미출시",
+    tooltip_view_characters: "사용 캐릭터 보기",
+    msg_load_error_general: "데이터를 불러오는 중 오류가 발생했습니다. 페이지를 새로고침해주세요.",
+    msg_load_error_revelation_data: "계시 데이터를 불러오는 중 오류가 발생했습니다. 페이지를 새로고침해주세요.",
+    reset_filter: "필터 초기화",
 
     // SEO (Excluded from i18n update per user request, but kept for reference or future use if needed, though unused in code)
     seo_title: "계시 - 페르소나5 더 팬텀 X 루페르넷",

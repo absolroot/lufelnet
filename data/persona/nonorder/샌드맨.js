@@ -27,7 +27,9 @@ window.personaFiles["샌드맨"] = {
       "name_jp": "今夜の安眠",
       "desc": "효과 명중이 10.5% 증가한다. 수면 효과를 줄 때 효과 명중이 45% 증가한다.",
       "desc_en": "Increase ailment accuracy by 10.5%. Increase accuracy of Sleep by 45%.",
-      "desc_jp": "状態異常命中が１０.５%上昇する。睡眠の命中率が４５%上昇する。"
+      "desc_jp": "状態異常命中が１０.５%上昇する。睡眠の命中率が４５%上昇する。",
+      "name_cn": "今夜的安眠",
+      "desc_cn": "效果命中提升10.5%。造成睡眠效果时，效果命中提升45%。"
     },
     {
       "name": "금야의 안면Ⅰ",
@@ -35,7 +37,9 @@ window.personaFiles["샌드맨"] = {
       "name_jp": "今夜の安眠Ⅰ",
       "desc": "효과 명중이 10.5% 증가한다. 수면 효과를 줄 때 효과 명중이 50% 증가한다.",
       "desc_en": "Increase ailment accuracy by 10.5%. Increase accuracy of Sleep by 50%.",
-      "desc_jp": "状態異常命中が１０.５%上昇する。睡眠の命中率が５０%上昇する。"
+      "desc_jp": "状態異常命中が１０.５%上昇する。睡眠の命中率が５０%上昇する。",
+      "name_cn": "今夜的安眠Ⅰ",
+      "desc_cn": "效果命中提升10.5%。造成睡眠效果时，效果命中提升50%。"
     }
   ],
   "innate_skill": [
@@ -48,7 +52,9 @@ window.personaFiles["샌드맨"] = {
       "desc_jp": "状態異常抵抗が１０%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "5"
+      "learn_level": "5",
+      "name_cn": "抵抗强化Ⅱ",
+      "desc_cn": "效果抵抗提升10%。"
     },
     {
       "name": "갈라",
@@ -59,7 +65,9 @@ window.personaFiles["샌드맨"] = {
       "desc_jp": "敵単体に攻撃力114.0/119.7/125.4%の疾風属性ダメージを与える。63.3/66.5/69.6%の確率で敵を２ターンの間、風襲状態にする。",
       "cost": "SP 20",
       "level": "6/7/8",
-      "learn_level": "10"
+      "learn_level": "10",
+      "name_cn": "加尔拉",
+      "desc_cn": "对1名敌人造成114.0/119.7/125.4%攻击力的疾风属性伤害，有63.3/66.5/69.6%基础概率使敌人陷入风袭状态，效果持续2回合。"
     },
     {
       "name": "수면 내성Ⅱ",
@@ -70,7 +78,9 @@ window.personaFiles["샌드맨"] = {
       "desc_jp": "睡眠の抵抗率が１２.５%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "15"
+      "learn_level": "15",
+      "name_cn": "睡眠耐性Ⅱ",
+      "desc_cn": "受到睡眠效果时，效果抵抗提升12.5%。"
     },
     {
       "name": "도르민 러시",
@@ -81,7 +91,9 @@ window.personaFiles["샌드맨"] = {
       "desc_jp": "敵全体に攻撃力40.8/42.8/44.9%の物理属性ダメージを与える。4.5/4.7/5.0%の確率で敵を２ターンの間、睡眠状態にする。",
       "cost": "체력 8.0%",
       "level": "6/7/8",
-      "learn_level": "20"
+      "learn_level": "20",
+      "name_cn": "永眠突袭",
+      "desc_cn": "对所有敌人造成40.8/42.8/44.9%攻击力的物理属性伤害，有4.5/4.7/5.0%基础概率使敌人陷入睡眠状态，效果持续2回合。"
     }
   ],
   "uniqueSkill": {
@@ -93,7 +105,9 @@ window.personaFiles["샌드맨"] = {
     "desc_jp": "43.6/45.8/48.0%の確率で敵単体を２ターンの間、睡眠状態にする。",
     "priority": 0,
     "icon": "Default",
-    "icon_gl": ""
+    "icon_gl": "",
+    "name_cn": "永眠",
+    "desc_cn": "有43.6/45.8/48.0%基础概率使1名敌人陷入睡眠，效果持续2回合。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -102,6 +116,9 @@ window.personaFiles["샌드맨"] = {
     "desc": "모든 적에게 공격력 90.0%/96.3%/102.6%의 질풍 속성 대미지를 주며, 적이 받는 대미지가 19.6%/21.0%/22.3% 증가한다. 효과는 2턴 동안 지속된다.",
     "desc_en": "Deal Wind damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
     "desc_jp": "敵全体に攻撃力90.0%/96.3%/102.6%の疾風属性ダメージを与える。さらに２ターンの間、被ダメージが19.6%/21.0%/22.3%上昇する。",
-    "priority": 0
-  }
+    "priority": 0,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "对所有敌人造成90.0%/96.3%/102.6%攻击力的疾风属性伤害，并使其受到的伤害提升19.6%/21.0%/22.3%，效果持续2回合。"
+  },
+  "name_cn": "睡魔"
 };

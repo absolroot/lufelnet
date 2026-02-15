@@ -27,7 +27,9 @@ window.personaFiles["마라"] = {
       "name_jp": "ハンティング",
       "desc": "모든 동료가 『조준』을 가진 적 공격 시 공격력이 15% 증가한다.",
       "desc_en": "When any ally attacks a Marked foe, increase Attack by 15%.",
-      "desc_jp": "味方全体が『標的』を付与された敵を攻撃する時、攻撃力１５%上昇する。"
+      "desc_jp": "味方全体が『標的』を付与された敵を攻撃する時、攻撃力１５%上昇する。",
+      "name_cn": "余孽收割",
+      "desc_cn": "所有同伴攻击带有『瞄准』的敌人时，攻击力提升15%。"
     },
     {
       "name": "잔당의 수확Ⅰ",
@@ -35,7 +37,9 @@ window.personaFiles["마라"] = {
       "name_jp": "ハンティングⅠ",
       "desc": "AAAAAA==",
       "desc_en": "AAAAAA==",
-      "desc_jp": "AAAAAA=="
+      "desc_jp": "AAAAAA==",
+      "name_cn": "余孽收割Ⅰ",
+      "desc_cn": "AAAAAA=="
     },
     {
       "name": "잔당의 수확Ⅱ",
@@ -43,7 +47,9 @@ window.personaFiles["마라"] = {
       "name_jp": "ハンティングⅡ",
       "desc": "AAAAAA==",
       "desc_en": "AAAAAA==",
-      "desc_jp": "AAAAAA=="
+      "desc_jp": "AAAAAA==",
+      "name_cn": "余孽收割Ⅱ",
+      "desc_cn": "AAAAAA=="
     },
     {
       "name": "잔당의 수확Ⅲ",
@@ -51,7 +57,9 @@ window.personaFiles["마라"] = {
       "name_jp": "ハンティングⅢ",
       "desc": "AAAAAA==",
       "desc_en": "AAAAAA==",
-      "desc_jp": "AAAAAA=="
+      "desc_jp": "AAAAAA==",
+      "name_cn": "余孽收割Ⅲ",
+      "desc_cn": "AAAAAA=="
     },
     {
       "name": "잔당의 수확Ⅳ",
@@ -59,7 +67,9 @@ window.personaFiles["마라"] = {
       "name_jp": "ハンティングⅣ",
       "desc": "AAAAAA==",
       "desc_en": "AAAAAA==",
-      "desc_jp": "AAAAAA=="
+      "desc_jp": "AAAAAA==",
+      "name_cn": "余孽收割Ⅳ",
+      "desc_cn": "AAAAAA=="
     },
     {
       "name": "잔당의 수확Ⅴ",
@@ -67,7 +77,9 @@ window.personaFiles["마라"] = {
       "name_jp": "ハンティングⅤ",
       "desc": "크리티컬 확률, 크리티컬 효과가 7.5% 증가한다.",
       "desc_en": "Increase critical rate and critical damage 7.5%.",
-      "desc_jp": "クリティカル率とクリティカルダメージが７.５%上昇する。"
+      "desc_jp": "クリティカル率とクリティカルダメージが７.５%上昇する。",
+      "name_cn": "余孽收割Ⅴ",
+      "desc_cn": "暴击率、暴击效果提升7.5%"
     },
     {
       "name": "잔당의 수확Ⅵ",
@@ -75,7 +87,9 @@ window.personaFiles["마라"] = {
       "name_jp": "ハンティングⅥ",
       "desc": "『조준』을 가진 적 공격 시 공격력 20%의 총격 속성 대미지를 1회 준다.",
       "desc_en": "When attacking a foe Marked by the user, deal bonus Gun damage equal to 20% of Attack.",
-      "desc_jp": "自身が『標的』を付与された敵を攻撃した時、追加で攻撃力２０%の銃撃属性ダメージを与える。"
+      "desc_jp": "自身が『標的』を付与された敵を攻撃した時、追加で攻撃力２０%の銃撃属性ダメージを与える。",
+      "name_cn": "余孽收割Ⅵ",
+      "desc_cn": "自身攻击有『瞄准』的敌人时，造成1次20%攻击力的射击属性伤害。"
     }
   ],
   "innate_skill": [
@@ -88,7 +102,9 @@ window.personaFiles["마라"] = {
       "desc_jp": "攻撃力が５.８%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "1"
+      "learn_level": "1",
+      "name_cn": "攻击强化Ⅰ",
+      "desc_cn": "攻击力提升5.8%。"
     },
     {
       "name": "정교한 타격Ⅰ",
@@ -99,7 +115,9 @@ window.personaFiles["마라"] = {
       "desc_jp": "クリティカルダメージが７%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "30"
+      "learn_level": "30",
+      "name_cn": "精准打击Ⅰ",
+      "desc_cn": "暴击效果提升7%。"
     },
     {
       "name": "물리 강화Ⅰ",
@@ -110,7 +128,9 @@ window.personaFiles["마라"] = {
       "desc_jp": "物理属性の与ダメージが４.７%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "50"
+      "learn_level": "50",
+      "name_cn": "物理强化Ⅰ",
+      "desc_cn": "物理属性伤害提升4.7%。"
     }
   ],
   "uniqueSkill": {
@@ -122,7 +142,9 @@ window.personaFiles["마라"] = {
     "desc_jp": "敵全体に攻撃力23.4%/25.5%/27.7%の銃撃属性ダメージを３回与える。『標的』状態の敵がいる時、与ダメージが30.0%/32.7%/35.4%、クリティカルダメージが36.0%/39.2%/42.5%上昇する。",
     "priority": 0,
     "icon": "Default",
-    "icon_gl": ""
+    "icon_gl": "",
+    "name_cn": "子弹时间",
+    "desc_cn": "对所有敌人造成3段23.4%/25.5%/27.7%攻击力的射击属性伤害，若场上存在具有『瞄准』的敌人，则该技能的攻击力提升30.0%/32.7%/35.4%，暴击效果提升36.0%/39.2%/42.5%。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -131,6 +153,9 @@ window.personaFiles["마라"] = {
     "desc": "1명의 적에게 공격력 360.0%/385.2%/410.4%의 화염 속성 대미지를 준다.",
     "desc_en": "Deal Fire damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
     "desc_jp": "敵単体に攻撃力360.0%/385.2%/410.4%の火炎属性ダメージを与える。",
-    "priority": 0
-  }
+    "priority": 0,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "对1名敌人造成360.0%/385.2%/410.4%攻击力的火焰属性伤害。"
+  },
+  "name_cn": "魔罗"
 };

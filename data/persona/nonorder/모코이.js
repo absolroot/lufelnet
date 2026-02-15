@@ -27,7 +27,9 @@ window.personaFiles["모코이"] = {
       "name_jp": "崩壊の感触",
       "desc": "효과 명중이 3.5% 증가한다. 현기증 효과를 줄 때 효과 명중이 30% 증가한다.",
       "desc_en": "Increase ailment accuracy by 3.5%. Increase Dizzy accuracy by 30%.",
-      "desc_jp": "状態異常命中が３.５%上昇する。目眩の命中率が３０%上昇する。"
+      "desc_jp": "状態異常命中が３.５%上昇する。目眩の命中率が３０%上昇する。",
+      "name_cn": "崩溃的触碰",
+      "desc_cn": "效果命中提升3.5%。造成晕眩效果时，效果命中提升30%。"
     },
     {
       "name": "붕괴의 충돌Ⅰ",
@@ -35,7 +37,9 @@ window.personaFiles["모코이"] = {
       "name_jp": "崩壊の感触Ⅰ",
       "desc": "효과 명중이 3.5% 증가한다. 현기증 효과를 줄 때 효과 명중이 35% 증가한다.",
       "desc_en": "Increase ailment accuracy by 3.5%. Increase Dizzy accuracy by 35%.",
-      "desc_jp": "状態異常命中が３.５%上昇する。目眩の命中率が３５%上昇する。"
+      "desc_jp": "状態異常命中が３.５%上昇する。目眩の命中率が３５%上昇する。",
+      "name_cn": "崩溃的触碰Ⅰ",
+      "desc_cn": "效果命中提升3.5%。造成晕眩效果时，效果命中提升35%。"
     }
   ],
   "innate_skill": [
@@ -48,7 +52,9 @@ window.personaFiles["모코이"] = {
       "desc_jp": "敵単体に攻撃力82.4/86.5/90.6%の物理属性ダメージを与える。9.3/9.8/10.2%の確率で敵を２ターンの間、混乱状態にする。",
       "cost": "체력 7.0%",
       "level": "6/7/8",
-      "learn_level": "4"
+      "learn_level": "4",
+      "name_cn": "栽倒痛击",
+      "desc_cn": "对1名敌人造成82.4/86.5/90.6%攻击力的物理属性伤害，有9.3/9.8/10.2%基础概率使敌人陷入混乱状态，效果持续2回合。"
     },
     {
       "name": "현기증률 UPⅠ",
@@ -59,7 +65,9 @@ window.personaFiles["모코이"] = {
       "desc_jp": "目眩の命中率が８.８%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "8"
+      "learn_level": "8",
+      "name_cn": "晕眩率UPⅠ",
+      "desc_cn": "造成晕眩效果时，效果命中提升8.8%。"
     }
   ],
   "uniqueSkill": {
@@ -71,7 +79,9 @@ window.personaFiles["모코이"] = {
     "desc_jp": "32.6/34.2/35.9%の確率で敵単体を２ターンの間、目眩状態にする。",
     "priority": 0,
     "icon": "디버프",
-    "icon_gl": ""
+    "icon_gl": "",
+    "name_cn": "晕眩",
+    "desc_cn": "有32.6/34.2/35.9%基础概率使1名敌人陷入晕眩，效果持续2回合。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -80,6 +90,9 @@ window.personaFiles["모코이"] = {
     "desc": "모든 적에게 공격력 90.0%/96.3%/102.6%의 물리 속성 대미지를 주며, 적이 받는 대미지가 19.6%/21.0%/22.3% 증가한다. 효과는 2턴 동안 지속된다.",
     "desc_en": "Deal Physical damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
     "desc_jp": "敵全体に攻撃力90.0%/96.3%/102.6%の物理属性ダメージを与える。さらに２ターンの間、被ダメージが19.6%/21.0%/22.3%上昇する。",
-    "priority": 0
-  }
+    "priority": 0,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "对所有敌人造成90.0%/96.3%/102.6%攻击力的物理属性伤害，并使其受到的伤害提升19.6%/21.0%/22.3%，效果持续2回合。"
+  },
+  "name_cn": "莫克伊"
 };

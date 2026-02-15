@@ -30,7 +30,7 @@ const MAPPING_FILE = path.join(EXTERNAL_PERSONA_DIR, 'mapping.json');
 
 const DEFAULT_REPORT_JSON_FILE = path.join(PROJECT_ROOT, 'scripts', 'reports', 'persona-patch-diff.json');
 
-const SUPPORTED_LANGS = ['kr', 'en', 'jp'];
+const SUPPORTED_LANGS = ['kr', 'en', 'jp', 'cn'];
 const SUPPORTED_PARTS = ['profile', 'innate_skill', 'passive_skill', 'uniqueSkill', 'highlight'];
 
 function log(message) {
@@ -48,9 +48,9 @@ function fail(message) {
 
 function usage() {
   log(`Usage:
-  node apps/patch-console/patch-persona.mjs list [--langs kr,en,jp] [--nums 101,120-130] [--api TEXT] [--local ordered|nonorder|missing]
-  node apps/patch-console/patch-persona.mjs report-json [--langs kr,en,jp] [--all|--nums ...|--api ...|--local ...] [--parts profile,innate_skill] [--json-file scripts/reports/persona-patch-diff.json]
-  node apps/patch-console/patch-persona.mjs patch [--langs kr,en,jp] [--all|--nums ...|--api ...|--local ...] [--parts ...] [--dry-run] [--no-report]
+  node apps/patch-console/patch-persona.mjs list [--langs kr,en,jp,cn] [--nums 101,120-130] [--api TEXT] [--local ordered|nonorder|missing]
+  node apps/patch-console/patch-persona.mjs report-json [--langs kr,en,jp,cn] [--all|--nums ...|--api ...|--local ...] [--parts profile,innate_skill] [--json-file scripts/reports/persona-patch-diff.json]
+  node apps/patch-console/patch-persona.mjs patch [--langs kr,en,jp,cn] [--all|--nums ...|--api ...|--local ...] [--parts ...] [--dry-run] [--no-report]
   node apps/patch-console/patch-persona.mjs apply-diff-json --input-file scripts/reports/apply-diff-request.json [--dry-run]
   node apps/patch-console/patch-persona.mjs help
 `);
@@ -222,7 +222,8 @@ function loadRows() {
       status: {
         kr: hasExternal('kr', index) ? 'Y' : 'N',
         en: hasExternal('en', index) ? 'Y' : 'N',
-        jp: hasExternal('jp', index) ? 'Y' : 'N'
+        jp: hasExternal('jp', index) ? 'Y' : 'N',
+        cn: hasExternal('cn', index) ? 'Y' : 'N'
       },
       mapData,
       localPath: resolved.filePath
@@ -287,6 +288,9 @@ function buildProfilePatch({ index, lang, mapData, localType, ext }) {
       patch.name = nameKr;
     }
   }
+  if (lang === 'cn') {
+    patch.name_cn = mapData.name_cn || ext.cn?.name;
+  }
 
   if (localType === 'nonorder') {
     if (lang === 'en') {
@@ -299,12 +303,14 @@ function buildProfilePatch({ index, lang, mapData, localType, ext }) {
   return keepDefinedFields(patch);
 }
 
-function buildInnatePatch({ lang, ext }) {
-  const sourceKr = Array.isArray(ext.kr?.innate_skill) ? ext.kr.innate_skill : [];
-  if (sourceKr.length === 0) return null;
-  return sourceKr.map((krEntry, idx) => {
+function buildInnatePatch({ lang, ext, localData }) {
+  const localLen = Array.isArray(localData?.innate_skill) ? localData.innate_skill.length : 0;
+  if (localLen <= 0) return null;
+  return Array.from({ length: localLen }, (_, idx) => {
+    const krEntry = ext.kr?.innate_skill?.[idx];
     const enEntry = ext.en?.innate_skill?.[idx];
     const jpEntry = ext.jp?.innate_skill?.[idx];
+    const cnEntry = ext.cn?.innate_skill?.[idx];
     if (lang === 'kr') {
       return keepDefinedFields({
         name: krEntry?.name,
@@ -326,17 +332,25 @@ function buildInnatePatch({ lang, ext }) {
         desc_jp: jpEntry?.desc
       });
     }
+    if (lang === 'cn') {
+      return keepDefinedFields({
+        name_cn: cnEntry?.name,
+        desc_cn: cnEntry?.desc
+      });
+    }
     return {};
   });
 }
 
-function buildPassivePatch({ lang, localType, ext }) {
-  if (localType !== 'nonorder') return null;
-  const sourceKr = Array.isArray(ext.kr?.passive_skill) ? ext.kr.passive_skill : [];
-  if (sourceKr.length === 0) return null;
-  return sourceKr.map((krEntry, idx) => {
+function buildPassivePatch({ lang, localType, ext, localData }) {
+  if (lang !== 'cn' && localType !== 'nonorder') return null;
+  const localLen = Array.isArray(localData?.passive_skill) ? localData.passive_skill.length : 0;
+  if (localLen <= 0) return null;
+  return Array.from({ length: localLen }, (_, idx) => {
+    const krEntry = ext.kr?.passive_skill?.[idx];
     const enEntry = ext.en?.passive_skill?.[idx];
     const jpEntry = ext.jp?.passive_skill?.[idx];
+    const cnEntry = ext.cn?.passive_skill?.[idx];
     if (lang === 'kr') {
       return keepDefinedFields({
         name: krEntry?.name,
@@ -355,43 +369,71 @@ function buildPassivePatch({ lang, localType, ext }) {
         desc_jp: jpEntry?.desc
       });
     }
+    if (lang === 'cn') {
+      return keepDefinedFields({
+        name_cn: cnEntry?.name,
+        desc_cn: cnEntry?.desc
+      });
+    }
     return {};
   });
 }
 
 function buildUniqueSkillPatch({ lang, localType, ext }) {
-  if (localType !== 'nonorder') return null;
-  if (!ext.kr?.fixed_skill) return null;
+  if (lang !== 'cn' && localType !== 'nonorder') return null;
+  const fixedByLang = {
+    kr: ext.kr?.fixed_skill,
+    en: ext.en?.fixed_skill,
+    jp: ext.jp?.fixed_skill,
+    cn: ext.cn?.fixed_skill
+  };
+  const fixed = fixedByLang[lang];
+  if (!fixed) return null;
   const patch = {};
   if (lang === 'kr') {
-    patch.name = ext.kr.fixed_skill?.name;
-    patch.desc = ext.kr.fixed_skill?.desc;
+    patch.name = fixed?.name;
+    patch.desc = fixed?.desc;
   }
   if (lang === 'en') {
-    patch.name_en = ext.en?.fixed_skill?.name;
-    patch.desc_en = ext.en?.fixed_skill?.desc;
+    patch.name_en = fixed?.name;
+    patch.desc_en = fixed?.desc;
   }
   if (lang === 'jp') {
-    patch.name_jp = ext.jp?.fixed_skill?.name;
-    patch.desc_jp = ext.jp?.fixed_skill?.desc;
+    patch.name_jp = fixed?.name;
+    patch.desc_jp = fixed?.desc;
+  }
+  if (lang === 'cn') {
+    patch.name_cn = fixed?.name;
+    patch.desc_cn = fixed?.desc;
   }
   return keepDefinedFields(patch);
 }
 
 function buildHighlightPatch({ lang, localType, ext }) {
-  if (localType !== 'nonorder') return null;
-  if (!ext.kr?.showtime_skill) return null;
+  if (lang !== 'cn' && localType !== 'nonorder') return null;
+  const showtimeByLang = {
+    kr: ext.kr?.showtime_skill,
+    en: ext.en?.showtime_skill,
+    jp: ext.jp?.showtime_skill,
+    cn: ext.cn?.showtime_skill
+  };
+  const showtime = showtimeByLang[lang];
+  if (!showtime) return null;
   const patch = {};
-  if (lang === 'kr') patch.desc = ext.kr.showtime_skill?.desc;
-  if (lang === 'en') patch.desc_en = ext.en?.showtime_skill?.desc;
-  if (lang === 'jp') patch.desc_jp = ext.jp?.showtime_skill?.desc;
+  if (lang === 'kr') patch.desc = showtime?.desc;
+  if (lang === 'en') patch.desc_en = showtime?.desc;
+  if (lang === 'jp') patch.desc_jp = showtime?.desc;
+  if (lang === 'cn') {
+    patch.name_cn = showtime?.name;
+    patch.desc_cn = showtime?.desc;
+  }
   return keepDefinedFields(patch);
 }
 
-function buildPartPatch({ part, index, lang, mapData, localType, ext }) {
+function buildPartPatch({ part, index, lang, mapData, localType, ext, localData }) {
   if (part === 'profile') return buildProfilePatch({ index, lang, mapData, localType, ext });
-  if (part === 'innate_skill') return buildInnatePatch({ lang, ext });
-  if (part === 'passive_skill') return buildPassivePatch({ lang, localType, ext });
+  if (part === 'innate_skill') return buildInnatePatch({ lang, ext, localData });
+  if (part === 'passive_skill') return buildPassivePatch({ lang, localType, ext, localData });
   if (part === 'uniqueSkill') return buildUniqueSkillPatch({ lang, localType, ext });
   if (part === 'highlight') return buildHighlightPatch({ lang, localType, ext });
   return null;
@@ -455,7 +497,8 @@ function collectReportRows({ rows, langs, parts, scope }) {
           lang,
           mapData: row.mapData || {},
           localType: row.local,
-          ext
+          ext,
+          localData
         });
         if (patchValue === null || patchValue === undefined) continue;
         const diff = buildPartDiff({
@@ -496,7 +539,8 @@ function applyPartsToPersona({ row, lang, parts, ext, baseData, selectedPathsByP
       lang,
       mapData: row.mapData || {},
       localType: row.local,
-      ext
+      ext,
+      localData: nextData
     });
     if (patchValue === null || patchValue === undefined) {
       skippedParts.push(part);

@@ -27,7 +27,9 @@ window.personaFiles["가네샤"] = {
       "name_jp": "福祐の加護",
       "desc": "방어력이 31.8% 증가한다. 동료를 목표로 스킬 시전 시 1턴 동안 받는 치료 효과가 8.1% 증가한다. 또한 자신이 받는 치료 효과가 4.8% 추가 증가한다.",
       "desc_en": "Increase Defense by 31.8%. When using a skill on an ally, increase target's healing received by 8.1% for 1 turn. Increase user's healing received by 4.8%.",
-      "desc_jp": "防御力が３１.８%上昇する。味方にスキルを使用した時、１ターンの間、被回復量を８.１%上昇させる。さらに自身の被回復量が４.８%上昇する。"
+      "desc_jp": "防御力が３１.８%上昇する。味方にスキルを使用した時、１ターンの間、被回復量を８.１%上昇させる。さらに自身の被回復量が４.８%上昇する。",
+      "name_cn": "福祉的庇佑",
+      "desc_cn": "防御力提升31.8%。以同伴为目标释放技能后，使其受到的治疗效果提升8.1%，效果持续1回合。并使自身受到的治疗效果额外提升4.8%。"
     },
     {
       "name": "행복의 비호Ⅰ",
@@ -35,7 +37,9 @@ window.personaFiles["가네샤"] = {
       "name_jp": "福祐の加護Ⅰ",
       "desc": "방어력이 31.8% 증가한다. 동료를 목표로 스킬 시전 시 1턴 동안 받는 치료 효과가 9.2% 증가한다. 또한 자신이 받는 치료 효과가 5.4% 추가 증가한다.",
       "desc_en": "Increase Defense by 31.8%. When using a skill on an ally, increase target's healing received by 9.2% for 1 turn. Increase user's healing received by 5.4%.",
-      "desc_jp": "防御力が３１.８%上昇する。味方にスキルを使用した時、１ターンの間、被回復量を９.２%上昇させる。さらに自身の被回復量が５.４%上昇する。"
+      "desc_jp": "防御力が３１.８%上昇する。味方にスキルを使用した時、１ターンの間、被回復量を９.２%上昇させる。さらに自身の被回復量が５.４%上昇する。",
+      "name_cn": "福祉的庇佑Ⅰ",
+      "desc_cn": "防御力提升31.8%。以同伴为目标释放技能后，使其受到的治疗效果提升9.2%，效果持续1回合。并使自身受到的治疗效果额外提升5.4%。"
     },
     {
       "name": "행복의 비호Ⅱ",
@@ -43,7 +47,9 @@ window.personaFiles["가네샤"] = {
       "name_jp": "福祐の加護Ⅱ",
       "desc": "방어력이 31.8% 증가한다. 동료를 목표로 스킬 시전 시 1턴 동안 받는 치료 효과가 10.3% 증가한다. 또한 자신이 받는 치료 효과가 6% 추가 증가한다.",
       "desc_en": "Increase Defense by 31.8%. When using a skill on an ally, increase target's healing received by 10.3% for 1 turn. Increase user's healing received by 6%.",
-      "desc_jp": "防御力が３１.８%上昇する。味方にスキルを使用した時、１ターンの間、被回復量を１０.３%上昇させる。さらに自身の被回復量が６%上昇する。"
+      "desc_jp": "防御力が３１.８%上昇する。味方にスキルを使用した時、１ターンの間、被回復量を１０.３%上昇させる。さらに自身の被回復量が６%上昇する。",
+      "name_cn": "福祉的庇佑Ⅱ",
+      "desc_cn": "防御力提升31.8%。以同伴为目标释放技能后，使其受到的治疗效果提升10.3%，效果持续1回合。并使自身受到的治疗效果额外提升6%。"
     },
     {
       "name": "행복의 비호Ⅲ",
@@ -51,7 +57,9 @@ window.personaFiles["가네샤"] = {
       "name_jp": "福祐の加護Ⅲ",
       "desc": "방어력이 31.8% 증가한다. 동료를 목표로 스킬 시전 시 1턴 동안 받는 치료 효과가 11.4% 증가한다. 또한 자신이 받는 치료 효과가 6.6% 추가 증가한다.",
       "desc_en": "Increase Defense by 31.8%. When using a skill on an ally, increase target's healing received by 11.4% for 1 turn. Increase user's healing received by 6.6%.",
-      "desc_jp": "防御力が３１.８%上昇する。味方にスキルを使用した時、１ターンの間、被回復量を１１.４%上昇させる。さらに自身の被回復量が６.６%上昇する。"
+      "desc_jp": "防御力が３１.８%上昇する。味方にスキルを使用した時、１ターンの間、被回復量を１１.４%上昇させる。さらに自身の被回復量が６.６%上昇する。",
+      "name_cn": "福祉的庇佑Ⅲ",
+      "desc_cn": "防御力提升31.8%。以同伴为目标释放技能后，使其受到的治疗效果提升11.4%，效果持续1回合。并使自身受到的治疗效果额外提升6.6%。"
     }
   ],
   "innate_skill": [
@@ -64,7 +72,9 @@ window.personaFiles["가네샤"] = {
       "desc_jp": "ＨＰが１０.８%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "8"
+      "learn_level": "8",
+      "name_cn": "生命强化Ⅲ",
+      "desc_cn": "生命值提升10.8%。"
     },
     {
       "name": "대미지 면역Ⅲ",
@@ -75,7 +85,9 @@ window.personaFiles["가네샤"] = {
       "desc_jp": "被ダメージを８.７%低下させる。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "16"
+      "learn_level": "16",
+      "name_cn": "免伤强化Ⅲ",
+      "desc_cn": "受到的伤害降低8.7%。"
     },
     {
       "name": "마하라쿠카 오토Ⅲ",
@@ -86,7 +98,9 @@ window.personaFiles["가네샤"] = {
       "desc_jp": "戦闘開始時、２ターンもしくはペルソナを切り替えるまでの間、味方全体の防御力が１１.８%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "24"
+      "learn_level": "24",
+      "name_cn": "自动玛哈拉库卡Ⅲ",
+      "desc_cn": "战斗开始时全员防御力提升11.8%，持续2回合或持续至切换面具。"
     },
     {
       "name": "굳건한 산Ⅲ",
@@ -97,7 +111,9 @@ window.personaFiles["가네샤"] = {
       "desc_jp": "速さが１２低下し、ＨＰが２９%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "32"
+      "learn_level": "32",
+      "name_cn": "不动如山Ⅲ",
+      "desc_cn": "速度降低12点，生命值提升29%。"
     }
   ],
   "uniqueSkill": {
@@ -109,7 +125,9 @@ window.personaFiles["가네샤"] = {
     "desc_jp": "３ターンの間、味方単体の防御力が23.3%/24.5%/25.6%上昇する。自身の防御力が５００ごとに、味方の防御力がさらに3.9%/4.1%/4.3%上昇する（最大15.6%/16.4%/17.2%まで）。",
     "priority": 0,
     "icon": "Default",
-    "icon_gl": ""
+    "icon_gl": "",
+    "name_cn": "拉库卡加",
+    "desc_cn": "使1名同伴的防御力提升23.3%/24.5%/25.6%，自身每500防御力额外提升3.9%/4.1%/4.3%，上限15.6%/16.4%/17.2%。效果持续3回合。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -118,6 +136,9 @@ window.personaFiles["가네샤"] = {
     "desc": "모든 동료가 공격력 48.6%/52.0%/55.4%+1471/1854/2275의 실드를 획득하며 2턴 동안 지속된다.",
     "desc_en": "Grant a shield to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275 for 2 turns.",
     "desc_jp": "２ターンの間、味方全体に攻撃力48.6%/52.0%/55.4%＋1471/1854/2275のシールドを付与する。",
-    "priority": 0
-  }
+    "priority": 0,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "使所有同伴获得48.6%/52.0%/55.4%攻击力+1471/1854/2275的护盾，效果持续2回合。"
+  },
+  "name_cn": "葛内舍"
 };

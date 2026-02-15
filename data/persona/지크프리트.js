@@ -33,7 +33,9 @@ window.personaFiles["지크프리트"] = {
       "name_jp": "竜血の勇者",
       "desc": "공격력이 29.1% 증가한다. 전투 시작 시 「용혈」을 획득한다. 자신이 물리 속성 스킬 시전 시 3턴 동안 공격력이 7% 증가한다. 고유 스킬 사용 시 「용혈」 상태를 강화하며, 물리 속성 스킬을 시전하면 대미지가 18%, 크리티컬 효과가 18% 추가로 증가한다.",
       "desc_en": "Increase Attack by 29.1%. At the beginning of battle, gain Dragon's Blood.\nDragon's Blood: When dealing Physical Damage, increase Attack by 7%. Lasts for 3 turns.\nAlso, after using a unique skill, enhance the effect of Dragon's Blood: When using a Physical skill, increase the damage 18% more, and critical damage by 18%.",
-      "desc_jp": "攻撃力が２９.１%上昇し、戦闘開始時に『竜血』を獲得する。\n『竜血』：３ターンの間、自身が物理属性スキルを発動する時、攻撃力が７%上昇する。\nさらに固有スキルを使用した後、『竜血』の効果が強化され、物理属性スキルを発動する時、追加で与ダメージが１８%、クリティカルダメージが１８%上昇する。"
+      "desc_jp": "攻撃力が２９.１%上昇し、戦闘開始時に『竜血』を獲得する。\n『竜血』：３ターンの間、自身が物理属性スキルを発動する時、攻撃力が７%上昇する。\nさらに固有スキルを使用した後、『竜血』の効果が強化され、物理属性スキルを発動する時、追加で与ダメージが１８%、クリティカルダメージが１８%上昇する。",
+      "name_cn": "勇者的无畏杀意",
+      "desc_cn": "攻击力提升29.1%。战斗开始时获得「龙血」：自身释放物理属性技能，攻击力提升7%，持续3回合。使用固有技能后，会强化「龙血」状态，释放物理属性技能额外提高18%伤害、18%暴击效果。"
     },
     {
       "name": "용사의 살의Ⅰ",
@@ -41,7 +43,9 @@ window.personaFiles["지크프리트"] = {
       "name_jp": "竜血の勇者 I",
       "desc": "공격력이 29.1% 증가한다. 전투 시작 시 「용혈」을 획득한다. 자신이 물리 속성 스킬 시전 시 3턴 동안 공격력이 10% 증가한다. 고유 스킬 사용 시 「용혈」 상태를 강화하며, 물리 속성 스킬을 시전하면 대미지가 18%, 크리티컬 효과가 18% 추가로 증가한다.",
       "desc_en": "Increase Attack by 29.1%. At the beginning of battle, gain Dragon's Blood.\nDragon's Blood: When dealing Physical Damage, increase Attack by 10%. Lasts for 3 turns.\nAlso, after using a unique skill, enhance the effect of Dragon's Blood: When using a Physical skill, increase the damage 18% more, and critical damage by 18%.",
-      "desc_jp": "攻撃力が２９.１%上昇し、戦闘開始時に『竜血』を獲得する。\n『竜血』：３ターンの間、自身が物理属性スキルを発動する時、攻撃力が１０%上昇する。\nさらに固有スキルを使用した後、『竜血』の効果が強化され、物理属性スキルを発動する時、追加で与ダメージが１８%、クリティカルダメージが１８%上昇する。"
+      "desc_jp": "攻撃力が２９.１%上昇し、戦闘開始時に『竜血』を獲得する。\n『竜血』：３ターンの間、自身が物理属性スキルを発動する時、攻撃力が１０%上昇する。\nさらに固有スキルを使用した後、『竜血』の効果が強化され、物理属性スキルを発動する時、追加で与ダメージが１８%、クリティカルダメージが１８%上昇する。",
+      "name_cn": "勇者的无畏杀意Ⅰ",
+      "desc_cn": "攻击力提升29.1%。战斗开始时获得「龙血」：自身释放物理属性技能，攻击力提升10%，持续3回合。使用固有技能后，会强化「龙血」状态，释放物理属性技能额外提高18%伤害、18%暴击效果。"
     },
     {
       "name": "용사의 살의Ⅱ",
@@ -49,7 +53,9 @@ window.personaFiles["지크프리트"] = {
       "name_jp": "竜血の勇者 II",
       "desc": "공격력이 29.1% 증가한다. 전투 시작 시 「용혈」을 획득한다. 자신이 물리 속성 스킬 시전 시 3턴 동안 공격력이 10% 증가한다. 고유 스킬 사용 시 「용혈」 상태를 강화하며, 물리 속성 스킬을 시전하면 대미지가 28%, 크리티컬 효과가 18% 추가로 증가한다.",
       "desc_en": "Increase Attack by 29.1%. At the beginning of battle, gain Dragon's Blood.\nDragon's Blood: When dealing Physical Damage, increase Attack by 10%. Lasts for 3 turns.\nAlso, after using a unique skill, enhance the effect of Dragon's Blood: When using a Physical skill, increase the damage 28% more, and critical damage by 18%.",
-      "desc_jp": "攻撃力が２９.１%上昇し、戦闘開始時に『竜血』を獲得する。\n『竜血』：３ターンの間、自身が物理属性スキルを発動する時、攻撃力が１０%上昇する。\nさらに固有スキルを使用した後、『竜血』の効果が強化され、物理属性スキルを発動する時、追加で与ダメージが２８%、クリティカルダメージが１８%上昇する。"
+      "desc_jp": "攻撃力が２９.１%上昇し、戦闘開始時に『竜血』を獲得する。\n『竜血』：３ターンの間、自身が物理属性スキルを発動する時、攻撃力が１０%上昇する。\nさらに固有スキルを使用した後、『竜血』の効果が強化され、物理属性スキルを発動する時、追加で与ダメージが２８%、クリティカルダメージが１８%上昇する。",
+      "name_cn": "勇者的无畏杀意Ⅱ",
+      "desc_cn": "攻击力提升29.1%。战斗开始时获得「龙血」：自身释放物理属性技能，攻击力提升10%，持续3回合。使用固有技能后，会强化「龙血」状态，释放物理属性技能额外提高28%伤害、18%暴击效果。"
     },
     {
       "name": "용사의 살의Ⅲ",
@@ -57,7 +63,9 @@ window.personaFiles["지크프리트"] = {
       "name_jp": "竜血の勇者 III",
       "desc": "공격력이 29.1% 증가한다. 전투 시작 시 「용혈」을 획득한다. 자신이 물리 속성 스킬 시전 시 3턴 동안 공격력이 10% 증가한다. 고유 스킬 사용 시 「용혈」 상태를 강화하며, 물리 속성 스킬을 시전하면 대미지가 28%, 크리티컬 효과가 28% 추가로 증가한다.",
       "desc_en": "Increase Attack by 29.1%. At the beginning of battle, gain Dragon's Blood.\nDragon's Blood: When dealing Physical Damage, increase Attack by 10%. Lasts for 3 turns.\nAlso, after using a unique skill, enhance the effect of Dragon's Blood: When using a Physical skill, increase the damage 28% more, and critical damage by 28%.",
-      "desc_jp": "攻撃力が２９.１%上昇し、戦闘開始時に『竜血』を獲得する。\n『竜血』：３ターンの間、自身が物理属性スキルを発動する時、攻撃力が１０%上昇する。\nさらに固有スキルを使用した後、『竜血』の効果が強化され、物理属性スキルを発動する時、追加で与ダメージが２８%、クリティカルダメージが２８%上昇する。"
+      "desc_jp": "攻撃力が２９.１%上昇し、戦闘開始時に『竜血』を獲得する。\n『竜血』：３ターンの間、自身が物理属性スキルを発動する時、攻撃力が１０%上昇する。\nさらに固有スキルを使用した後、『竜血』の効果が強化され、物理属性スキルを発動する時、追加で与ダメージが２８%、クリティカルダメージが２８%上昇する。",
+      "name_cn": "勇者的无畏杀意Ⅲ",
+      "desc_cn": "攻击力提升29.1%。战斗开始时获得「龙血」：自身释放物理属性技能，攻击力提升10%，持续3回合。使用固有技能后，会强化「龙血」状态，释放物理属性技能额外提高28%伤害、28%暴击效果。"
     }
   ],
   "uniqueSkill": {
@@ -69,7 +77,9 @@ window.personaFiles["지크프리트"] = {
     "desc_jp": "敵全体に攻撃力95.0%/99.8%/104.5%の物理属性ダメージを与える。\n『竜血』を獲得していない時、『竜血』を獲得する。\n『竜血』を獲得している時、持続時間をリセットし、『竜血』を強化する。",
     "priority": 0,
     "icon": "물리광역",
-    "icon_gl": ""
+    "icon_gl": "",
+    "name_cn": "以斩龙之姿",
+    "desc_cn": "对所有敌人造成95.0%/99.8%/104.5%攻击力的物理属性伤害。若自身没有「龙血」状态，给予自身「龙血」。若自身处于「龙血」状态，则强化「龙血」状态并刷新持续时间。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -78,7 +88,9 @@ window.personaFiles["지크프리트"] = {
     "desc": "모든 적에게 공격력 180.0%/192.6%/205.2%의 물리 속성 대미지를 준다.",
     "desc_en": "Deal Physical damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
     "desc_jp": "敵全体に攻撃力180.0%/192.6%/205.2%の物理属性ダメージを与える。",
-    "priority": 0
+    "priority": 0,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "对所有敌人造成180.0%/192.6%/205.2%攻击力的物理属性伤害。"
   },
   "innate_skill": [
     {
@@ -90,7 +102,9 @@ window.personaFiles["지크프리트"] = {
       "name_en": "Masukukaja",
       "desc_en": "Increase party's ailment accuracy and ailment resistance by 6.5%/6.8%/7.2%, and Speed by 3 for 3 turns. For every 25% of the user's ailment accuracy, increase party's ailment accuracy by 1.1%/1.2%/1.2% more, up to 4.4%/4.6%/4.8%.",
       "name_jp": "マハスクカジャ",
-      "desc_jp": "３ターンの間、味方全体の状態異常命中、状態異常抵抗が6.5%/6.8%/7.2%上昇し、速さが３上昇する。自身の状態異常命中が２５%ごとに、味方の状態異常命中がさらに1.1%/1.2%/1.2%上昇する（最大4.4%/4.6%/4.8%まで）。"
+      "desc_jp": "３ターンの間、味方全体の状態異常命中、状態異常抵抗が6.5%/6.8%/7.2%上昇し、速さが３上昇する。自身の状態異常命中が２５%ごとに、味方の状態異常命中がさらに1.1%/1.2%/1.2%上昇する（最大4.4%/4.6%/4.8%まで）。",
+      "name_cn": "玛哈斯库卡加",
+      "desc_cn": "使所有同伴的效果命中、效果抵抗提升6.5%/6.8%/7.2%，自身每25%效果命中额外提升1.1%/1.2%/1.2%，上限4.4%/4.6%/4.8%。效果持续3回合。"
     },
     {
       "name": "고압 전류Ⅳ",
@@ -101,7 +115,9 @@ window.personaFiles["지크프리트"] = {
       "name_en": "Fortified Moxy IV",
       "desc_en": "Increase critical rate by 9.7% when ambushing.",
       "name_jp": "ハイボルテージⅣ",
-      "desc_jp": "先制時のクリティカル率が９.７%上昇する。"
+      "desc_jp": "先制時のクリティカル率が９.７%上昇する。",
+      "name_cn": "高压电流Ⅳ",
+      "desc_cn": "先制攻击时暴击率提升9.7%。"
     },
     {
       "name": "차지",
@@ -112,7 +128,9 @@ window.personaFiles["지크프리트"] = {
       "name_en": "Charge",
       "desc_en": "Increase Physical and Gun damage (excluding 1 More) by 52.1%/54.7%/57.3% for 1 turn.",
       "name_jp": "チャージ",
-      "desc_jp": "１ターンの間、自身が次に与える１ＭＯＲＥを除く物理属性ダメージと銃撃属性ダメージが52.1%/54.7%/57.3%上昇する。"
+      "desc_jp": "１ターンの間、自身が次に与える１ＭＯＲＥを除く物理属性ダメージと銃撃属性ダメージが52.1%/54.7%/57.3%上昇する。",
+      "name_cn": "蓄力",
+      "desc_cn": "使自身下1次造成的物理属性伤害提升52.1%/54.7%/57.3%，效果持续1回合。"
     },
     {
       "name": "어드바이스Ⅳ",
@@ -123,7 +141,10 @@ window.personaFiles["지크프리트"] = {
       "name_en": "Apt Pupil IV",
       "desc_en": "Increase critical rate by 8.1%.",
       "name_jp": "アドバイスⅣ",
-      "desc_jp": "クリティカル率が８.１%上昇する。"
+      "desc_jp": "クリティカル率が８.１%上昇する。",
+      "name_cn": "建言Ⅳ",
+      "desc_cn": "暴击率提升8.1%。"
     }
-  ]
+  ],
+  "name_cn": "齐格飞"
 };

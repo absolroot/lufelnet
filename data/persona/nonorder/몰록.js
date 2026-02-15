@@ -27,7 +27,9 @@ window.personaFiles["몰록"] = {
       "name_jp": "浄火の護り",
       "desc": "효과 저항이 25.4% 증가한다. 모든 동료가 이상 효과를 받을 때 효과 저항이 25% 증가한다.",
       "desc_en": "Increase ailment resistance by 25.4%. When an ally is inflicted with a debuff, increase target's ailment resistance by 25%.",
-      "desc_jp": "状態異常抵抗が２５.４%上昇する。味方が弱体効果を付与される時、対象の状態異常抵抗が２５%上昇する。"
+      "desc_jp": "状態異常抵抗が２５.４%上昇する。味方が弱体効果を付与される時、対象の状態異常抵抗が２５%上昇する。",
+      "name_cn": "火焰的庇佑",
+      "desc_cn": "效果抵抗提升25.4%。使所有同伴在受到异常效果时，效果抵抗提升25%。"
     },
     {
       "name": "화염의 비호Ⅰ",
@@ -35,7 +37,9 @@ window.personaFiles["몰록"] = {
       "name_jp": "浄火の護りⅠ",
       "desc": "효과 저항이 25.4% 증가한다. 모든 동료가 이상 효과를 받을 때 효과 저항이 28.5% 증가한다.",
       "desc_en": "Increase ailment resistance by 25.4%. When an ally is inflicted with a debuff, increase target's ailment resistance by 28.5%.",
-      "desc_jp": "状態異常抵抗が２５.４%上昇する。味方が弱体効果を付与される時、対象の状態異常抵抗が２８.５%上昇する。"
+      "desc_jp": "状態異常抵抗が２５.４%上昇する。味方が弱体効果を付与される時、対象の状態異常抵抗が２８.５%上昇する。",
+      "name_cn": "火焰的庇佑Ⅰ",
+      "desc_cn": "效果抵抗升25.4%。使所有同伴在受到异常效果时，效果抵抗提升28.5%。"
     },
     {
       "name": "화염의 비호Ⅱ",
@@ -43,7 +47,9 @@ window.personaFiles["몰록"] = {
       "name_jp": "浄火の護りⅡ",
       "desc": "효과 저항이 25.4% 증가한다. 모든 동료가 이상 효과를 받을 때 효과 저항이 31.5% 증가한다.",
       "desc_en": "Increase ailment resistance by 25.4%. When an ally is inflicted with a debuff, increase target's ailment resistance by 31.5%.",
-      "desc_jp": "状態異常抵抗が２５.４%上昇する。味方が弱体効果を付与される時、対象の状態異常抵抗が３１.５%上昇する。"
+      "desc_jp": "状態異常抵抗が２５.４%上昇する。味方が弱体効果を付与される時、対象の状態異常抵抗が３１.５%上昇する。",
+      "name_cn": "火焰的庇佑Ⅱ",
+      "desc_cn": "效果抵抗提升25.4%。使所有同伴在受到异常效果时，效果抵抗提升31.5%。"
     },
     {
       "name": "화염의 비호Ⅲ",
@@ -51,7 +57,9 @@ window.personaFiles["몰록"] = {
       "name_jp": "浄火の護りⅢ",
       "desc": "효과 저항이 25.4% 증가한다. 모든 동료가 이상 효과를 받을 때 효과 저항이 35% 증가한다.",
       "desc_en": "Increase ailment resistance by 25.4%. When an ally is inflicted with a debuff, increase target's ailment resistance by 35%.",
-      "desc_jp": "状態異常抵抗が２５.４%上昇する。味方が弱体効果を付与される時、対象の状態異常抵抗が３５%上昇する。"
+      "desc_jp": "状態異常抵抗が２５.４%上昇する。味方が弱体効果を付与される時、対象の状態異常抵抗が３５%上昇する。",
+      "name_cn": "火焰的庇佑Ⅲ",
+      "desc_cn": "效果抵抗提升25.4%。使所有同伴在受到异常效果时，效果抵抗提升35%。"
     }
   ],
   "innate_skill": [
@@ -64,7 +72,9 @@ window.personaFiles["몰록"] = {
       "desc_jp": "敵単体に攻撃力121.7/127.8/133.9%の火炎属性ダメージを与える。67.6/71.0/74.4%の確率で敵を２ターンの間、炎上状態にする。",
       "cost": "SP 21",
       "level": "6/7/8",
-      "learn_level": "8"
+      "learn_level": "8",
+      "name_cn": "亚基达因",
+      "desc_cn": "对1名敌人造成121.7/127.8/133.9%攻击力的火焰属性伤害，有67.6/71.0/74.4%基础概率使敌人陷入燃烧状态，效果持续2回合。"
     },
     {
       "name": "화염 간파Ⅲ",
@@ -75,7 +85,9 @@ window.personaFiles["몰록"] = {
       "desc_jp": "火炎属性の被ダメージを８.７%低下させる。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "16"
+      "learn_level": "16",
+      "name_cn": "火焰识破Ⅲ",
+      "desc_cn": "受到的火焰属性伤害降低8.7%。"
     },
     {
       "name": "신들의 비호Ⅲ",
@@ -86,7 +98,9 @@ window.personaFiles["몰록"] = {
       "desc_jp": "被回復量が４.３%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "24"
+      "learn_level": "24",
+      "name_cn": "诸神庇护Ⅲ",
+      "desc_cn": "受到的治疗效果提升4.3%。"
     },
     {
       "name": "마하라기다인",
@@ -97,7 +111,9 @@ window.personaFiles["몰록"] = {
       "desc_jp": "敵全体に攻撃力60.8/63.8/66.9%の火炎属性ダメージを与える。33.8/35.5/37.2%の確率で敵を２ターンの間、炎上状態にする。",
       "cost": "SP 21",
       "level": "6/7/8",
-      "learn_level": "32"
+      "learn_level": "32",
+      "name_cn": "玛哈亚基达因",
+      "desc_cn": "对所有敌人造成60.8/63.8/66.9%攻击力的火焰属性伤害，有33.8/35.5/37.2%基础概率使敌人陷入燃烧状态，效果持续2回合。"
     }
   ],
   "uniqueSkill": {
@@ -109,7 +125,9 @@ window.personaFiles["몰록"] = {
     "desc_jp": "３ターンの間、味方全体の防御力が16.3%/17.1%/17.9%上昇する。自身の防御力が５００ごとに、味方の防御力がさらに2.7%/2.8%/3.0%上昇する（最大10.8%/11.3%/11.9%まで）。",
     "priority": 0,
     "icon": "Default",
-    "icon_gl": ""
+    "icon_gl": "",
+    "name_cn": "玛哈拉库卡加",
+    "desc_cn": "使所有同伴的防御力提升16.3%/17.1%/17.9%，自身每500防御力额外提升2.7%/2.8%/3.0%，上限10.8%/11.3%/11.9%。效果持续3回合。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -118,6 +136,9 @@ window.personaFiles["몰록"] = {
     "desc": "모든 동료가 공격력 48.6%/52.0%/55.4%+1471/1854/2275의 실드를 획득하며 2턴 동안 지속된다.",
     "desc_en": "Grant a shield to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275 for 2 turns.",
     "desc_jp": "２ターンの間、味方全体に攻撃力48.6%/52.0%/55.4%＋1471/1854/2275のシールドを付与する。",
-    "priority": 0
-  }
+    "priority": 0,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "使所有同伴获得48.6%/52.0%/55.4%攻击力+1471/1854/2275的护盾，效果持续2回合。"
+  },
+  "name_cn": "摩洛"
 };

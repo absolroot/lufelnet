@@ -27,7 +27,9 @@ window.personaFiles["플라로우스"] = {
       "name_jp": "恐怖の豹",
       "desc": "생명이 8.7% 증가한다. 자신의 생명이 70%보다 높을 시 주는 대미지가 26% 증가한다.",
       "desc_en": "Increase max HP by 8.7%. If user's HP is above 70%, increase damage by 26%.",
-      "desc_jp": "ＨＰが８.７%上昇する。自身のＨＰが７０%を超えると、与ダメージが２６%上昇する。"
+      "desc_jp": "ＨＰが８.７%上昇する。自身のＨＰが７０%を超えると、与ダメージが２６%上昇する。",
+      "name_cn": "可怖的凶豹",
+      "desc_cn": "生命值提升8.7%。自身生命值高于70%时，造成的伤害提升26%。"
     },
     {
       "name": "무시무시한 표범Ⅰ",
@@ -35,7 +37,9 @@ window.personaFiles["플라로우스"] = {
       "name_jp": "恐怖の豹Ⅰ",
       "desc": "생명이 8.7% 증가한다. 자신의 생명이 70%보다 높을 시 주는 대미지가 30% 증가한다.",
       "desc_en": "Increase max HP by 8.7%. If user's HP is above 70%, increase damage by 30%.",
-      "desc_jp": "ＨＰが８.７%上昇する。自身のＨＰが７０%を超えると、与ダメージが３０%上昇する。"
+      "desc_jp": "ＨＰが８.７%上昇する。自身のＨＰが７０%を超えると、与ダメージが３０%上昇する。",
+      "name_cn": "可怖的凶豹Ⅰ",
+      "desc_cn": "生命值提升8.7%。自身生命值高于70%时，造成的伤害提升30%。"
     }
   ],
   "innate_skill": [
@@ -48,7 +52,9 @@ window.personaFiles["플라로우스"] = {
       "desc_jp": "敵単体に攻撃力129.1/135.6/142.0%の物理属性ダメージを与える。",
       "cost": "체력 7.0%",
       "level": "6/7/8",
-      "learn_level": "5"
+      "learn_level": "5",
+      "name_cn": "穷鼠之牙",
+      "desc_cn": "对1名敌人造成129.1/135.6/142.0%攻击力的物理属性伤害。"
     },
     {
       "name": "몽향침",
@@ -59,7 +65,9 @@ window.personaFiles["플라로우스"] = {
       "desc_jp": "敵単体に攻撃力82.4/86.5/90.6%の物理属性ダメージを与える。12.5/13.1/13.8%の確率で敵を２ターンの間、睡眠状態にする。",
       "cost": "체력 7.0%",
       "level": "6/7/8",
-      "learn_level": "10"
+      "learn_level": "10",
+      "name_cn": "梦乡针",
+      "desc_cn": "对1名敌人造成82.4/86.5/90.6%攻击力的物理属性伤害，有12.5/13.1/13.8%基础概率使敌人陷入睡眠状态，效果持续2回合。"
     },
     {
       "name": "코칭Ⅱ",
@@ -70,7 +78,9 @@ window.personaFiles["플라로우스"] = {
       "desc_jp": "被クリティカル率が５%低下させる。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "15"
+      "learn_level": "15",
+      "name_cn": "教练Ⅱ",
+      "desc_cn": "受到的暴击率降低5%。"
     },
     {
       "name": "물리 강화Ⅱ",
@@ -81,7 +91,9 @@ window.personaFiles["플라로우스"] = {
       "desc_jp": "物理属性の与ダメージが６.７%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "20"
+      "learn_level": "20",
+      "name_cn": "物理强化Ⅱ",
+      "desc_cn": "物理属性伤害提升6.7%。"
     }
   ],
   "uniqueSkill": {
@@ -93,7 +105,9 @@ window.personaFiles["플라로우스"] = {
     "desc_jp": "敵単体に攻撃力129.1/135.6/142.0%の物理属性ダメージを与える。",
     "priority": 0,
     "icon": "Default",
-    "icon_gl": ""
+    "icon_gl": "",
+    "name_cn": "大切断",
+    "desc_cn": "对1名敌人造成129.1/135.6/142.0%攻击力的物理属性伤害。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -102,6 +116,9 @@ window.personaFiles["플라로우스"] = {
     "desc": "1명의 적에게 공격력 360.0%/385.2%/410.4%의 물리 속성 대미지를 준다.",
     "desc_en": "Deal Physical damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
     "desc_jp": "敵単体に攻撃力360.0%/385.2%/410.4%の物理属性ダメージを与える。",
-    "priority": 0
-  }
+    "priority": 0,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "对1名敌人造成360.0%/385.2%/410.4%攻击力的物理属性伤害。"
+  },
+  "name_cn": "佛劳洛斯"
 };

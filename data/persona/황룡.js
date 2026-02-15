@@ -28,7 +28,9 @@ window.personaFiles["황룡"] = {
       "name_jp": "瑞兆の主",
       "desc": "공격력이 29.1% 증가한다. 백업 출전 시에도 유효: 모든 동료가 각 속성의 대미지를 줄 때마다 황룡이 『사상』을 1중첩 획득한다(4회 중첩 가능). 자신의 턴 시작 시 만약 『사상』을 최소 4중첩 보유하면 모든 『사상』이 제거되고 『사상의 힘』을 획득한다. 『사상의 힘』: 1턴 동안 자신의 공격력이 20% 증가하고, 모든 아군 동료의 공격력이 10% 증가하며, 자신의 스킬이 진화한다.",
       "desc_en": "Increase Attack by 29.1%. Activate even in reserve: Each time an ally deals damage of a different attribute, grant Kohryu 1 stack of Four Gods. Stacks up to 4 times. When user has 4 stacks of Four Gods at the start of their turn, spend all stacks to gain Four Gods' Might. Four Gods' Might: Increase user's Attack by 20%, and increase party's Attack by 10% for 1 turn. Change Kohryu's skills.",
-      "desc_jp": "攻撃力が２９.１%上昇する。次の効果は控えの場合でも発動する：味方全体が異なる属性でダメージを与えるごとに、コウリュウは『四神』を１つ付与する。この効果は最大４つまで累積できる。自身のターン開始時に『四神』が４つの時、すべての『四神』を消費して『四神の力』を獲得する。『四神の力』：１ターンの間、自身の攻撃力が２０%上昇し、味方全体の攻撃力が１０%上昇する。また、コウリュウのスキルが進化する。"
+      "desc_jp": "攻撃力が２９.１%上昇する。次の効果は控えの場合でも発動する：味方全体が異なる属性でダメージを与えるごとに、コウリュウは『四神』を１つ付与する。この効果は最大４つまで累積できる。自身のターン開始時に『四神』が４つの時、すべての『四神』を消費して『四神の力』を獲得する。『四神の力』：１ターンの間、自身の攻撃力が２０%上昇し、味方全体の攻撃力が１０%上昇する。また、コウリュウのスキルが進化する。",
+      "name_cn": "祥瑞之主",
+      "desc_cn": "攻击力提升29.1%。处于后台时也能生效：所有同伴每造成1种不同属性的伤害，使黄龙获得1层『四象』，上限4层。自身回合开始时，若拥有至少4层『四象』，则清空所有『四象』获得『四象之力』：使自身攻击力提升20%，所有友方同伴攻击力提升10%，并进化自身技能，持续1回合。"
     },
     {
       "name": "길조의 주인Ⅰ",
@@ -36,7 +38,9 @@ window.personaFiles["황룡"] = {
       "name_jp": "瑞兆の主Ⅰ",
       "desc": "공격력이 29.1% 증가한다. 백업 출전 시에도 유효: 모든 동료가 각 속성의 대미지를 줄 때마다 황룡이 『사상』을 1중첩 획득한다(4회 중첩 가능). 자신의 턴 시작 시 만약 『사상』을 최소 4중첩 보유하면 모든 『사상』이 제거되고 『사상의 힘』을 획득한다. 『사상의 힘』: 2턴 동안 자신의 공격력이 20% 증가하고, 모든 아군 동료의 공격력이 10% 증가하며, 자신의 스킬이 진화한다.",
       "desc_en": "Increase Attack by 29.1%. Activate even in reserve: Each time an ally deals damage of a different attribute, grant Kohryu 1 stack of Four Gods. Stacks up to 4 times. When user has 4 stacks of Four Gods at the start of their turn, spend all stacks to gain Four Gods' Might. Four Gods' Might: Increase user's Attack by 20%, and increase party's Attack by 10% for 2 turns. Change Kohryu's skills.",
-      "desc_jp": "攻撃力が２９.１%上昇する。次の効果は控えの場合でも発動する：味方全体が異なる属性でダメージを与えるごとに、コウリュウは『四神』を１つ付与する。この効果は最大４つまで累積できる。自身のターン開始時に『四神』が４つの時、すべての『四神』を消費して『四神の力』を獲得する。『四神の力』：２ターンの間、自身の攻撃力が２０%上昇し、味方全体の攻撃力が１０%上昇する。また、コウリュウのスキルが進化する。"
+      "desc_jp": "攻撃力が２９.１%上昇する。次の効果は控えの場合でも発動する：味方全体が異なる属性でダメージを与えるごとに、コウリュウは『四神』を１つ付与する。この効果は最大４つまで累積できる。自身のターン開始時に『四神』が４つの時、すべての『四神』を消費して『四神の力』を獲得する。『四神の力』：２ターンの間、自身の攻撃力が２０%上昇し、味方全体の攻撃力が１０%上昇する。また、コウリュウのスキルが進化する。",
+      "name_cn": "祥瑞之主Ⅰ",
+      "desc_cn": "攻击力提升29.1%。处于后台时也能生效：所有同伴每造成1种不同属性的伤害，使黄龙获得1层『四象』，上限4层。自身回合开始时，若拥有至少4层『四象』，则清空所有『四象』获得『四象之力』：使自身攻击力提升20%，所有友方同伴攻击力提升10%，并进化自身技能，持续2回合。"
     },
     {
       "name": "길조의 주인Ⅱ",
@@ -44,7 +48,9 @@ window.personaFiles["황룡"] = {
       "name_jp": "瑞兆の主Ⅱ",
       "desc": "공격력이 29.1% 증가한다. 백업 출전 시에도 유효: 모든 동료가 각 속성의 대미지를 줄 때마다 황룡이 『사상』을 1중첩 획득한다(4회 중첩 가능). 자신의 턴 시작 시 만약 『사상』을 최소 4중첩 보유하면 모든 『사상』이 제거되고 『사상의 힘』을 획득한다. 『사상의 힘』: 2턴 동안 자신의 공격력이 30% 증가하고, 모든 아군 동료의 공격력이 10% 증가하며, 자신의 스킬이 진화한다.",
       "desc_en": "Increase Attack by 29.1%. Activates even in reserve: Each time an ally deals damage of a different attribute, grant Kohryu 1 stack of Four Gods. Stacks up to 4 times. When user has 4 stacks at the start of their turn, spend all stacks to gain Four Gods' Might. Four Gods' Might: Increase user's Attack by 30%, and increase party's Attack by 10% for 2 turns. Change Kohryu's skills.",
-      "desc_jp": "攻撃力が２９.１%上昇する。次の効果は控えの場合でも発動する：味方全体が異なる属性でダメージを与えるごとに、コウリュウは『四神』を１つ付与する。この効果は最大４つまで累積できる。自身のターン開始時に『四神』が４つの時、すべての『四神』を消費して『四神の力』を獲得する。『四神の力』：２ターンの間、自身の攻撃力が３０%上昇し、味方全体の攻撃力が１０%上昇する。また、コウリュウのスキルが進化する。"
+      "desc_jp": "攻撃力が２９.１%上昇する。次の効果は控えの場合でも発動する：味方全体が異なる属性でダメージを与えるごとに、コウリュウは『四神』を１つ付与する。この効果は最大４つまで累積できる。自身のターン開始時に『四神』が４つの時、すべての『四神』を消費して『四神の力』を獲得する。『四神の力』：２ターンの間、自身の攻撃力が３０%上昇し、味方全体の攻撃力が１０%上昇する。また、コウリュウのスキルが進化する。",
+      "name_cn": "祥瑞之主Ⅱ",
+      "desc_cn": "攻击力提升29.1%。处于后台时也能生效：所有同伴每造成1种不同属性的伤害，使黄龙获得1层『四象』，上限4层。自身回合开始时，若拥有至少4层『四象』，则清空所有『四象』获得『四象之力』：使自身攻击力提升30%，所有友方同伴攻击力提升10%，并进化自身技能，持续2回合。"
     },
     {
       "name": "길조의 주인Ⅲ",
@@ -52,7 +58,9 @@ window.personaFiles["황룡"] = {
       "name_jp": "瑞兆の主Ⅲ",
       "desc": "공격력이 29.1% 증가한다. 백업 출전 시에도 유효: 모든 동료가 각 속성의 대미지를 줄 때마다 황룡이 『사상』을 1중첩 획득한다(4회 중첩 가능). 자신의 턴 시작 시 만약 『사상』을 최소 4중첩 보유하면 모든 『사상』이 제거되고 『사상의 힘』을 획득한다. 『사상의 힘』: 2턴 동안 자신의 공격력이 30% 증가하고, 모든 아군 동료의 공격력이 15% 증가하며, 자신의 스킬이 진화한다.",
       "desc_en": "Increase Attack by 29.1%. Activate even in reserve: Each time an ally deals damage of a different attribute, grant Kohryu 1 stack of Four Gods. Stacks up to 4 times. When user has 4 stacks at the start of their turn, spend all stacks to gain Four Gods' Might. Four Gods' Might: Increase user's Attack by 30%, and increase other allies' Attack by 15% for 2 turns. Change Kohryu's skills.",
-      "desc_jp": "攻撃力が２９.１%上昇する。次の効果は控えの場合でも発動する：味方全体が異なる属性でダメージを与えるごとに、コウリュウは『四神』を１つ付与する。この効果は最大４つまで累積できる。自身のターン開始時に『四神』が４つの時、すべての『四神』を消費して『四神の力』を獲得する。『四神の力』：２ターンの間、自身の攻撃力が３０%上昇し、味方全体の攻撃力が１５%上昇する。また、コウリュウのスキルが進化する。"
+      "desc_jp": "攻撃力が２９.１%上昇する。次の効果は控えの場合でも発動する：味方全体が異なる属性でダメージを与えるごとに、コウリュウは『四神』を１つ付与する。この効果は最大４つまで累積できる。自身のターン開始時に『四神』が４つの時、すべての『四神』を消費して『四神の力』を獲得する。『四神の力』：２ターンの間、自身の攻撃力が３０%上昇し、味方全体の攻撃力が１５%上昇する。また、コウリュウのスキルが進化する。",
+      "name_cn": "祥瑞之主Ⅲ",
+      "desc_cn": "攻击力提升29.1%。处于后台时也能生效：所有同伴每造成1种不同属性的伤害，使黄龙获得1层『四象』，上限4层。自身回合开始时，若拥有至少4层『四象』，则清空所有『四象』获得『四象之力』：使自身攻击力提升30%，所有友方同伴攻击力提升15%，并进化自身技能，持续2回合。"
     }
   ],
   "uniqueSkill": {
@@ -64,7 +72,9 @@ window.personaFiles["황룡"] = {
     "desc_jp": "敵全体に攻撃力101.4%/106.5%/111.5%の念動属性ダメージを与える。",
     "priority": 0,
     "icon": "염동광역",
-    "icon_gl": ""
+    "icon_gl": "",
+    "name_cn": "心魔击",
+    "desc_cn": "对所有敌人造成101.4%/106.5%/111.5%攻击力的念动属性伤害。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -73,7 +83,9 @@ window.personaFiles["황룡"] = {
     "desc": "모든 적에게 공격력 180.0%/192.6%/205.2%의 염동 속성 대미지를 준다.",
     "desc_en": "Deal Psychokinesis damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
     "desc_jp": "敵全体に攻撃力180.0%/192.6%/205.2%の念動属性ダメージを与える。",
-    "priority": 0
+    "priority": 0,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "对所有敌人造成180.0%/192.6%/205.2%攻击力的念动属性伤害。"
   },
   "innate_skill": [
     {
@@ -85,7 +97,9 @@ window.personaFiles["황룡"] = {
       "desc_jp": "敵全体に攻撃力77.1/80.6/84.1%の念動属性ダメージを与える。行動異常の敵に対してテクニカルが発生しダメージが５０%上昇する。",
       "cost": "SP 22",
       "level": "6/7/8",
-      "learn_level": "10"
+      "learn_level": "10",
+      "name_cn": "念动力",
+      "desc_cn": "对所有敌人造成77.1/80.6/84.1%攻击点念动属性伤害，对处于精神异常状态的敌人造成TECHNICAL，技能伤害提升50%。"
     },
     {
       "name": "마도의 재능Ⅳ",
@@ -96,7 +110,9 @@ window.personaFiles["황룡"] = {
       "desc_jp": "与ダメージが１０.８%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "20"
+      "learn_level": "20",
+      "name_cn": "魔导的才能Ⅳ",
+      "desc_cn": "造成的伤害提升10.8%。"
     },
     {
       "name": "승리의 숨결Ⅳ",
@@ -107,7 +123,9 @@ window.personaFiles["황룡"] = {
       "desc_jp": "戦闘勝利後に６.５%の最大ＨＰとＳＰを回復する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "30"
+      "learn_level": "30",
+      "name_cn": "胜利的气息Ⅳ",
+      "desc_cn": "战斗胜利后回复6.5%最大生命值和精力值。"
     },
     {
       "name": "마술의 소양Ⅳ",
@@ -118,7 +136,10 @@ window.personaFiles["황룡"] = {
       "desc_jp": "スキルのＳＰ消費量が６%低下する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "40"
+      "learn_level": "40",
+      "name_cn": "魔术的资质Ⅳ",
+      "desc_cn": "技能消耗的SP降低6%。"
     }
-  ]
+  ],
+  "name_cn": "黄龙"
 };

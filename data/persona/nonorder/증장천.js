@@ -27,7 +27,9 @@ window.personaFiles["증장천"] = {
       "name_jp": "仏法の南",
       "desc": "크리티컬 효과가 14% 증가한다. 물리 속성 스킬 시전 시 목표의 생명이 50%보다 낮은 경우 크리티컬 확률이 25% 증가한다.",
       "desc_en": "Increase critical damage by 14%. When using a Physical skill, if target's HP is below 50%, increase critical rate by 25%.",
-      "desc_jp": "クリティカルダメージが１４%上昇する。物理属性スキルを使用する時、対象のＨＰが５０%未満の場合、クリティカル率が２５%上昇する。"
+      "desc_jp": "クリティカルダメージが１４%上昇する。物理属性スキルを使用する時、対象のＨＰが５０%未満の場合、クリティカル率が２５%上昇する。",
+      "name_cn": "正法之南",
+      "desc_cn": "暴击效果提升14%。释放物理属性技能时，若目标生命值低于50%，则暴击率提升25%。"
     },
     {
       "name": "정법지남Ⅰ",
@@ -35,7 +37,9 @@ window.personaFiles["증장천"] = {
       "name_jp": "仏法の南Ⅰ",
       "desc": "크리티컬 효과가 14% 증가한다. 물리 속성 스킬 시전 시 목표의 생명이 50%보다 낮은 경우 크리티컬 확률이 27.5% 증가한다.",
       "desc_en": "Increase critical damage by 14%. When using a Physical skill, if target's HP is below 50%, increase critical rate by 27.5%.",
-      "desc_jp": "クリティカルダメージが１４%上昇する。物理属性スキルを使用する時、対象のＨＰが５０%未満の場合、クリティカル率が２７.５%上昇する。"
+      "desc_jp": "クリティカルダメージが１４%上昇する。物理属性スキルを使用する時、対象のＨＰが５０%未満の場合、クリティカル率が２７.５%上昇する。",
+      "name_cn": "正法之南Ⅰ",
+      "desc_cn": "暴击效果提升14%。释放物理属性技能时，若目标生命值低于50%，则暴击率提升27.5%。"
     },
     {
       "name": "정법지남Ⅱ",
@@ -43,7 +47,9 @@ window.personaFiles["증장천"] = {
       "name_jp": "仏法の南Ⅱ",
       "desc": "크리티컬 효과가 14% 증가한다. 물리 속성 스킬 시전 시 목표의 생명이 50%보다 낮은 경우 크리티컬 확률이 30% 증가한다.",
       "desc_en": "Increase critical damage by 14%. When using a Physical skill, if target's HP is below 50%, increase critical rate by 30%.",
-      "desc_jp": "クリティカルダメージが１４%上昇する。物理属性スキルを使用する時、対象のＨＰが５０%未満の場合、クリティカル率が３０%上昇する。"
+      "desc_jp": "クリティカルダメージが１４%上昇する。物理属性スキルを使用する時、対象のＨＰが５０%未満の場合、クリティカル率が３０%上昇する。",
+      "name_cn": "正法之南Ⅱ",
+      "desc_cn": "暴击效果提升14%。释放物理属性技能时，若目标生命值低于50%，则暴击率提升30%。"
     }
   ],
   "innate_skill": [
@@ -56,7 +62,9 @@ window.personaFiles["증장천"] = {
       "desc_jp": "敵単体に攻撃力114.0/119.7/125.4%の電撃属性ダメージを与える。63.3/66.5/69.6%の確率で敵を２ターンの間、感電状態にする。",
       "cost": "SP 20",
       "level": "6/7/8",
-      "learn_level": "5"
+      "learn_level": "5",
+      "name_cn": "吉欧加",
+      "desc_cn": "对1名敌人造成114.0/119.7/125.4%攻击力的电击属性伤害，有63.3/66.5/69.6%基础概率使敌人陷入触电状态，效果持续2回合。"
     },
     {
       "name": "전광석화",
@@ -67,7 +75,9 @@ window.personaFiles["증장천"] = {
       "desc_jp": "敵全体に攻撃力15.2/16.0/16.7%の物理属性ダメージを３～４回与える。",
       "cost": "체력 6.0%",
       "level": "6/7/8",
-      "learn_level": "10"
+      "learn_level": "10",
+      "name_cn": "电光石火",
+      "desc_cn": "对所有敌人造成3~4次15.2/16.0/16.7%攻击力的物理属性伤害。"
     },
     {
       "name": "정교한 타격Ⅱ",
@@ -78,7 +88,9 @@ window.personaFiles["증장천"] = {
       "desc_jp": "クリティカルダメージが１０%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "15"
+      "learn_level": "15",
+      "name_cn": "精准打击Ⅱ",
+      "desc_cn": "暴击效果提升10%。"
     },
     {
       "name": "물리 강화Ⅱ",
@@ -89,7 +101,9 @@ window.personaFiles["증장천"] = {
       "desc_jp": "物理属性の与ダメージが６.７%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "20"
+      "learn_level": "20",
+      "name_cn": "物理强化Ⅱ",
+      "desc_cn": "物理属性伤害提升6.7%。"
     }
   ],
   "uniqueSkill": {
@@ -101,7 +115,9 @@ window.personaFiles["증장천"] = {
     "desc_jp": "敵単体に攻撃力129.1/135.6/142.0%の物理属性ダメージを与える。",
     "priority": 0,
     "icon": "Default",
-    "icon_gl": ""
+    "icon_gl": "",
+    "name_cn": "大切断",
+    "desc_cn": "对1名敌人造成129.1/135.6/142.0%攻击力的物理属性伤害。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -110,6 +126,9 @@ window.personaFiles["증장천"] = {
     "desc": "1명의 적에게 공격력 360.0%/385.2%/410.4%의 전격 속성 대미지를 준다.",
     "desc_en": "Deal Electric damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
     "desc_jp": "敵単体に攻撃力360.0%/385.2%/410.4%の電撃属性ダメージを与える。",
-    "priority": 0
-  }
+    "priority": 0,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "对1名敌人造成360.0%/385.2%/410.4%攻击力的电击属性伤害。"
+  },
+  "name_cn": "增长天王"
 };

@@ -27,7 +27,9 @@ window.personaFiles["모스맨"] = {
       "name_jp": "未確認吸血生命",
       "desc": "효과 명중이 14% 증가한다. 정신 이상 부여 시 공격력 20%의 생명을 회복한다.",
       "desc_en": "Increase ailment accuracy by 14%. After inflicting a spritual ailment, restore user's HP by 20% of Attack.",
-      "desc_jp": "状態異常命中が１４%上昇する。行動異常にした時、自身のＨＰを攻撃力の２０%回復する。"
+      "desc_jp": "状態異常命中が１４%上昇する。行動異常にした時、自身のＨＰを攻撃力の２０%回復する。",
+      "name_cn": "外星的吸血鬼",
+      "desc_cn": "效果命中提升14%。造成精神异常后，使自身恢复20%攻击力的生命值。"
     },
     {
       "name": "외계 흡혈귀Ⅰ",
@@ -35,7 +37,9 @@ window.personaFiles["모스맨"] = {
       "name_jp": "未確認吸血生命Ⅰ",
       "desc": "효과 명중이 14% 증가한다. 정신 이상 부여 시 공격력 23%의 생명을 회복한다.",
       "desc_en": "Increase ailment accuracy by 14%. After inflicting a spiritual ailment, restore user's HP by 23% of Attack.",
-      "desc_jp": "状態異常命中が１４%上昇する。行動異常にした時、自身のＨＰを攻撃力の２３%回復する。"
+      "desc_jp": "状態異常命中が１４%上昇する。行動異常にした時、自身のＨＰを攻撃力の２３%回復する。",
+      "name_cn": "外星的吸血鬼Ⅰ",
+      "desc_cn": "效果命中提升14%。造成精神异常后，使自身恢复23%攻击力的生命值。"
     },
     {
       "name": "외계 흡혈귀Ⅱ",
@@ -43,7 +47,9 @@ window.personaFiles["모스맨"] = {
       "name_jp": "未確認吸血生命Ⅱ",
       "desc": "효과 명중이 14% 증가한다. 정신 이상 부여 시 공격력 26%의 생명을 회복한다.",
       "desc_en": "Increase ailment accuracy by 14%. After inflicting a spiritual ailment, restore user's HP by 26% of Attack.",
-      "desc_jp": "状態異常命中が１４%上昇する。行動異常にした時、自身のＨＰを攻撃力の２６%回復する。"
+      "desc_jp": "状態異常命中が１４%上昇する。行動異常にした時、自身のＨＰを攻撃力の２６%回復する。",
+      "name_cn": "外星的吸血鬼Ⅱ",
+      "desc_cn": "效果命中提升14%。造成精神异常后，使自身恢复26%攻击力的生命值。"
     }
   ],
   "innate_skill": [
@@ -56,7 +62,9 @@ window.personaFiles["모스맨"] = {
       "desc_jp": "敵全体に攻撃力57.0/59.8/62.7%の電撃属性ダメージを与える。31.7/33.3/34.9%の確率で敵を２ターンの間、感電状態にする。",
       "cost": "SP 20",
       "level": "6/7/8",
-      "learn_level": "5"
+      "learn_level": "5",
+      "name_cn": "玛哈吉欧加",
+      "desc_cn": "对所有敌人造成57.0/59.8/62.7%攻击力的电击属性伤害，有31.7/33.3/34.9%基础概率使敌人陷入触电状态，效果持续2回合。"
     },
     {
       "name": "우중충한 하늘Ⅱ",
@@ -67,7 +75,9 @@ window.personaFiles["모스맨"] = {
       "desc_jp": "雨の時、状態異常命中が１３%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "10"
+      "learn_level": "10",
+      "name_cn": "天公不作美Ⅱ",
+      "desc_cn": "下雨时，造成异常效果时，效果命中提升13%。"
     },
     {
       "name": "마카쟈마온",
@@ -78,7 +88,9 @@ window.personaFiles["모스맨"] = {
       "desc_jp": "32.6/34.2/35.9%の確率で敵全体を２ターンの間、忘却状態にする。",
       "cost": "SP 22",
       "level": "6/7/8",
-      "learn_level": "15"
+      "learn_level": "15",
+      "name_cn": "玛卡加玛翁",
+      "desc_cn": "有32.6/34.2/35.9%基础概率使所有敌人陷入遗忘，效果持续2回合。"
     },
     {
       "name": "망각률 UPⅡ",
@@ -89,7 +101,9 @@ window.personaFiles["모스맨"] = {
       "desc_jp": "忘却の命中率が１２.５%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "20"
+      "learn_level": "20",
+      "name_cn": "遗忘率UPⅡ",
+      "desc_cn": "造成遗忘效果时，效果命中提升12.5%。"
     }
   ],
   "uniqueSkill": {
@@ -101,7 +115,9 @@ window.personaFiles["모스맨"] = {
     "desc_jp": "敵全体に攻撃力40.8/42.8/44.9%の物理属性ダメージを与える。3.4/3.6/3.7%の確率で敵を２ターンの間、目眩状態にする。",
     "priority": 0,
     "icon": "Default",
-    "icon_gl": ""
+    "icon_gl": "",
+    "name_cn": "闪光炸弹",
+    "desc_cn": "对所有敌人造成40.8/42.8/44.9%攻击力的物理属性伤害，有3.4/3.6/3.7%基础概率使敌人陷入晕眩状态，效果持续2回合。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -110,6 +126,9 @@ window.personaFiles["모스맨"] = {
     "desc": "모든 적에게 공격력 180.0%/192.6%/205.2%의 전격 속성 대미지를 준다.",
     "desc_en": "Deal Electric damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
     "desc_jp": "敵全体に攻撃力180.0%/192.6%/205.2%の電撃属性ダメージを与える。",
-    "priority": 0
-  }
+    "priority": 0,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "对所有敌人造成180.0%/192.6%/205.2%攻击力的电击属性伤害。"
+  },
+  "name_cn": "天蛾人"
 };

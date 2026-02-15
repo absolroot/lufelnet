@@ -416,38 +416,29 @@ jp: /revelations/?lang=jp
         window.i18nSetEffect4 = I18nService.t('set_effect_4');
     }
 
+    function getI18nText(key, fallback) {
+        if (typeof I18nService !== 'undefined' && I18nService && typeof I18nService.t === 'function') {
+            return I18nService.t(key, fallback);
+        }
+        return fallback || key;
+    }
+
     // 언어별 SEO 설정 함수
     function updateSEOContent() {
-        const currentLang = (typeof LanguageRouter !== 'undefined' && LanguageRouter) ? LanguageRouter.getCurrentLanguage() : 'kr';
-
-        const seoData = {
-            'kr': {
-                title: '계시 - 페르소나5 더 팬텀 X 루페르넷',
-                description: '페르소나5 더 팬텀 X의 계시 정보. 세트 효과와 추가 효과를 확인하세요.'
-            },
-            'en': {
-                title: 'Revelations Card Guide - Persona 5: The Phantom X LufelNet',
-                description: 'Revelation information for Persona 5: The Phantom X. Check set effects and additional effects.'
-            },
-            'jp': {
-                title: '啓示 - ペルソナ5 ザ・ファントム X LufelNet',
-                description: 'ペルソナ5 ザ・ファントム Xの啓示情報。セット効果と追加効果をご確認ください。'
-            }
-        };
-
-        const currentSEO = seoData[currentLang] || seoData['kr'];
+        const seoTitle = getI18nText('seo_title', '계시 - 페르소나5 더 팬텀 X 루페르넷');
+        const seoDescription = getI18nText('seo_description', '페르소나5 더 팬텀 X의 계시 정보. 세트 효과와 추가 효과를 확인하세요.');
 
         // 타이틀 업데이트
-        document.title = currentSEO.title;
+        document.title = seoTitle;
 
         // 메타 태그 업데이트
         const metaDescription = document.querySelector('meta[name="description"]');
         const ogTitle = document.querySelector('meta[property="og:title"]');
         const ogDescription = document.querySelector('meta[property="og:description"]');
 
-        if (metaDescription) metaDescription.setAttribute('content', currentSEO.description);
-        if (ogTitle) ogTitle.setAttribute('content', currentSEO.title);
-        if (ogDescription) ogDescription.setAttribute('content', currentSEO.description);
+        if (metaDescription) metaDescription.setAttribute('content', seoDescription);
+        if (ogTitle) ogTitle.setAttribute('content', seoTitle);
+        if (ogDescription) ogDescription.setAttribute('content', seoDescription);
     }
 
     // 계시 스탯 i18n 및 데이터 - Removed local revI18n, using I18nService now.
@@ -653,7 +644,7 @@ jp: /revelations/?lang=jp
             // 에러 메시지 표시
             const errorDiv = document.createElement('div');
             errorDiv.className = 'error-message';
-            errorDiv.textContent = '데이터를 불러오는 중 오류가 발생했습니다. 페이지를 새로고침해주세요.';
+            errorDiv.textContent = getI18nText('msg_load_error_general', '데이터를 불러오는 중 오류가 발생했습니다. 페이지를 새로고침해주세요.');
             document.querySelector('.main-wrapper').prepend(errorDiv);
         }
     });
@@ -693,7 +684,7 @@ jp: /revelations/?lang=jp
             console.error('Revelation data not loaded properly:', currentRevelationData);
             const errorDiv = document.createElement('div');
             errorDiv.className = 'error-message';
-            errorDiv.textContent = '계시 데이터를 불러오는 중 오류가 발생했습니다. 페이지를 새로고침해주세요.';
+            errorDiv.textContent = getI18nText('msg_load_error_revelation_data', '계시 데이터를 불러오는 중 오류가 발생했습니다. 페이지를 새로고침해주세요.');
             cardsContainer.appendChild(errorDiv);
             return;
         }
@@ -843,7 +834,7 @@ jp: /revelations/?lang=jp
             if (currentLang !== 'kr' && isUnreleased(revelation)) {
                 const notReleasedLabel = document.createElement('div');
                 notReleasedLabel.className = 'not-released-label';
-                notReleasedLabel.textContent = currentLang === 'en' ? 'Not Released' : 'リリース前';
+                notReleasedLabel.textContent = getI18nText('label_not_released', 'Not Released');
                 typeLabelContent.appendChild(notReleasedLabel);
             }
             typeLabel.appendChild(typeLabelContent);
@@ -1003,7 +994,7 @@ jp: /revelations/?lang=jp
             });
 
             // Make the header interactive-looking
-            header.title = "사용 캐릭터 보기";
+            header.title = getI18nText('tooltip_view_characters', '사용 캐릭터 보기');
 
             accordion.appendChild(header);
             accordion.appendChild(content);
@@ -1028,6 +1019,7 @@ jp: /revelations/?lang=jp
         // Add Reset Filter Button
         const filterSection = document.querySelector('.filter-section');
         const resetBtnContainer = document.createElement('div');
+        const resetFilterLabel = getI18nText('reset_filter', '필터 초기화');
         resetBtnContainer.className = 'reset-filter-container';
         resetBtnContainer.style.display = 'none';
         resetBtnContainer.innerHTML = `
@@ -1035,7 +1027,7 @@ jp: /revelations/?lang=jp
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/>
                 </svg>
-                <span data-i18n="reset_filter">필터 초기화</span>
+                <span>${resetFilterLabel}</span>
             </button>
         `;
 

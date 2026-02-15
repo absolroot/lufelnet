@@ -27,7 +27,9 @@ window.personaFiles["엘리고르"] = {
       "name_jp": "騎士の眼光",
       "desc": "크리티컬 효과가 10% 증가한다. 1명의 적을 목표로 물리 속성 대미지를 줄 시 공격력이 17%, 크리티컬 확률이 10% 증가한다.",
       "desc_en": "Increase critical damage by 10%. When dealing Physical damage to 1 foe, increase Attack by 17% and increase critical rate by 10%.",
-      "desc_jp": "クリティカルダメージが１０%上昇する。敵単体に物理属性ダメージを与える時、攻撃力が１７%上昇し、クリティカル率が１０%上昇する。"
+      "desc_jp": "クリティカルダメージが１０%上昇する。敵単体に物理属性ダメージを与える時、攻撃力が１７%上昇し、クリティカル率が１０%上昇する。",
+      "name_cn": "骑士的锐利目光",
+      "desc_cn": "暴击效果提升10%。以1名敌人为目标造成物理属性伤害时，攻击力提升17%，暴击率提升10%。"
     },
     {
       "name": "기사의 날카로운 눈빛Ⅰ",
@@ -35,7 +37,9 @@ window.personaFiles["엘리고르"] = {
       "name_jp": "騎士の眼光Ⅰ",
       "desc": "크리티컬 효과가 10% 증가한다. 1명의 적을 목표로 물리 속성 대미지를 줄 시 공격력이 20%, 크리티컬 확률이 12% 증가한다.",
       "desc_en": "Increase critical damage by 10%. When dealing Physical damage to 1 foe, increase Attack by 20% and increase critical rate by 12%.",
-      "desc_jp": "クリティカルダメージが１０%上昇する。敵単体に物理属性ダメージを与える時、攻撃力が２０%上昇し、クリティカル率が１２%上昇する。"
+      "desc_jp": "クリティカルダメージが１０%上昇する。敵単体に物理属性ダメージを与える時、攻撃力が２０%上昇し、クリティカル率が１２%上昇する。",
+      "name_cn": "骑士的锐利目光Ⅰ",
+      "desc_cn": "暴击效果提升10%。以1名敌人为目标造成物理属性伤害时，攻击力提升20%，暴击率提升12%。"
     }
   ],
   "innate_skill": [
@@ -48,7 +52,9 @@ window.personaFiles["엘리고르"] = {
       "desc_jp": "敵単体に攻撃力58.2/61.1/64.0%の物理属性ダメージを２回与える。",
       "cost": "체력 6.0%",
       "level": "6/7/8",
-      "learn_level": "4"
+      "learn_level": "4",
+      "name_cn": "二连牙",
+      "desc_cn": "对1名敌人造成2次58.2/61.1/64.0%攻击力的物理属性伤害。"
     },
     {
       "name": "망각률 UPⅠ",
@@ -59,7 +65,9 @@ window.personaFiles["엘리고르"] = {
       "desc_jp": "忘却の命中率が８.８%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "8"
+      "learn_level": "8",
+      "name_cn": "遗忘率UPⅠ",
+      "desc_cn": "造成遗忘效果时，效果命中提升8.8%。"
     },
     {
       "name": "망살 러시",
@@ -70,7 +78,9 @@ window.personaFiles["엘리고르"] = {
       "desc_jp": "敵全体に攻撃力40.8/42.8/44.9%の物理属性ダメージを与える。6.7/7.0/7.4%の確率で敵を２ターンの間、忘却状態にする。",
       "cost": "체력 8.0%",
       "level": "6/7/8",
-      "learn_level": "12"
+      "learn_level": "12",
+      "name_cn": "忘杀突袭",
+      "desc_cn": "对所有敌人造成40.8/42.8/44.9%攻击力的物理属性伤害，有6.7/7.0/7.4%基础概率使敌人陷入遗忘状态，效果持续2回合。"
     }
   ],
   "uniqueSkill": {
@@ -82,7 +92,9 @@ window.personaFiles["엘리고르"] = {
     "desc_jp": "敵単体に攻撃力152.0%/159.6%/167.2%の物理属性ダメージを与える。敵が１体しかいない場合は、このスキルの与ダメージが２５%上昇する。",
     "priority": 0,
     "icon": "물리",
-    "icon_gl": ""
+    "icon_gl": "",
+    "name_cn": "荣耀冲击",
+    "desc_cn": "对1名敌人造成152.0%/159.6%/167.2%攻击力的物理属性伤害，场上只有1名敌人时，该技能造成的伤害提升25%。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -91,6 +103,9 @@ window.personaFiles["엘리고르"] = {
     "desc": "1명의 적에게 공격력 360.0%/385.2%/410.4%의 물리 속성 대미지를 준다.",
     "desc_en": "Deal Physical damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
     "desc_jp": "敵単体に攻撃力360.0%/385.2%/410.4%の物理属性ダメージを与える。",
-    "priority": 0
-  }
+    "priority": 0,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "对1名敌人造成360.0%/385.2%/410.4%攻击力的物理属性伤害。"
+  },
+  "name_cn": "埃力格"
 };

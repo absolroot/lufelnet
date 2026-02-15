@@ -23,6 +23,11 @@ window.I18N_PAGE_REVELATION_JP = {
     set_effect_2: "2セット",
     set_effect_4: "4セット",
     label_characters: "使用キャラ",
+    label_not_released: "リリース前",
+    tooltip_view_characters: "使用キャラを見る",
+    msg_load_error_general: "データの読み込み中にエラーが発生しました。ページを再読み込みしてください。",
+    msg_load_error_revelation_data: "啓示データの読み込み中にエラーが発生しました。ページを再読み込みしてください。",
+    reset_filter: "フィルター初期化",
 
     // SEO
     seo_title: "啓示 - ペルソナ5 ザ・ファントム X LufelNet",

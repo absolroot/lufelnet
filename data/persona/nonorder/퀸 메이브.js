@@ -27,7 +27,9 @@ window.personaFiles["퀸 메이브"] = {
       "name_jp": "愉悦の夢",
       "desc": "공격력이 17.7% 증가한다. 스킬을 시전해 적 공격 시, 대상이 화상 또는 동결 상태일 경우 자신의 공격력이 20% 증가한다. 화상과 동결 상태가 모두 있을 경우 해당 효과가 100% 증가한다.",
       "desc_en": "Increase Attack by 17.7%. When using a skill to attack a Burning or Frozen foe, increase Attack by 20%. If the foe is both Burning and Frozen, increase effect by 100%.",
-      "desc_jp": "攻撃力が１７.７%上昇する。炎上、または凍結状態の敵をスキルで攻撃した時、自身の攻撃力が２０%上昇し、炎上と凍結両方の状態の時は１００%上昇する。"
+      "desc_jp": "攻撃力が１７.７%上昇する。炎上、または凍結状態の敵をスキルで攻撃した時、自身の攻撃力が２０%上昇し、炎上と凍結両方の状態の時は１００%上昇する。",
+      "name_cn": "愉悦的美梦",
+      "desc_cn": "攻击力提升17.7%。释放技能攻击敌人时，若其处于燃烧或冻结状态，则使自身的攻击力提升20%，若其同时处于燃烧以及冻结状态，则该效果提升100%。"
     },
     {
       "name": "유쾌한 꿈Ⅰ",
@@ -35,7 +37,9 @@ window.personaFiles["퀸 메이브"] = {
       "name_jp": "愉悦の夢Ⅰ",
       "desc": "공격력이 17.7% 증가한다. 스킬을 시전해 적 공격 시, 대상이 화상 또는 동결 상태일 경우 자신의 공격력이 24% 증가한다. 화상과 동결 상태가 모두 있을 경우 해당 효과가 100% 증가한다.",
       "desc_en": "Increase Attack by 17.7%. When using a skill to attack a Burning or Frozen foe, increase Attack by 24%. If the foe is both Burning and Frozen, increase effect by 100%.",
-      "desc_jp": "攻撃力が１７.７%上昇する。炎上、または凍結状態の敵をスキルで攻撃した時、自身の攻撃力が２４%上昇し、炎上と凍結両方の状態の時は１００%上昇する。"
+      "desc_jp": "攻撃力が１７.７%上昇する。炎上、または凍結状態の敵をスキルで攻撃した時、自身の攻撃力が２４%上昇し、炎上と凍結両方の状態の時は１００%上昇する。",
+      "name_cn": "愉悦的美梦Ⅰ",
+      "desc_cn": "攻击力提升17.7%。释放技能攻击敌人时，若其处于燃烧或冻结状态，则使自身的攻击力提升24%，若其同时处于燃烧以及冻结状态，则该效果提升100%。"
     },
     {
       "name": "유쾌한 꿈Ⅱ",
@@ -43,7 +47,9 @@ window.personaFiles["퀸 메이브"] = {
       "name_jp": "愉悦の夢Ⅱ",
       "desc": "공격력이 17.7% 증가한다. 스킬을 시전해 적 공격 시, 대상이 화상 또는 동결 상태일 경우 자신의 공격력이 28% 증가한다. 화상과 동결 상태가 모두 있을 경우 해당 효과가 100% 증가한다.",
       "desc_en": "Increase Attack by 17.7%. When using a skill to attack a Burning or Frozen foe, increase Attack by 28%. If the foe is both Burning and Frozen, increase effect by 100%.",
-      "desc_jp": "攻撃力が１７.７%上昇する。炎上、または凍結状態の敵をスキルで攻撃した時、自身の攻撃力が２８%上昇し、炎上と凍結両方の状態の時は１００%上昇する。"
+      "desc_jp": "攻撃力が１７.７%上昇する。炎上、または凍結状態の敵をスキルで攻撃した時、自身の攻撃力が２８%上昇し、炎上と凍結両方の状態の時は１００%上昇する。",
+      "name_cn": "愉悦的美梦Ⅱ",
+      "desc_cn": "攻击力提升17.7%。释放技能攻击敌人时，若其处于燃烧或冻结状态，则使自身的攻击力提升28%，若其同时处于燃烧以及冻结状态，则该效果提升100%。"
     }
   ],
   "innate_skill": [
@@ -56,7 +62,9 @@ window.personaFiles["퀸 메이브"] = {
       "desc_jp": "敵全体に攻撃力60.8/63.8/66.9%の火炎属性ダメージを与える。33.8/35.5/37.2%の確率で敵を２ターンの間、炎上状態にする。",
       "cost": "SP 21",
       "level": "6/7/8",
-      "learn_level": "6"
+      "learn_level": "6",
+      "name_cn": "玛哈亚基达因",
+      "desc_cn": "对所有敌人造成60.8/63.8/66.9%攻击力的火焰属性伤害，有33.8/35.5/37.2%基础概率使敌人陷入燃烧状态，效果持续2回合。"
     },
     {
       "name": "마하부흐다인",
@@ -67,7 +75,9 @@ window.personaFiles["퀸 메이브"] = {
       "desc_jp": "敵全体に攻撃力60.8/63.8/66.9%の氷結属性ダメージを与える。33.8/35.5/37.2%の確率で敵を２ターンの間、凍結状態にする。",
       "cost": "SP 21",
       "level": "6/7/8",
-      "learn_level": "12"
+      "learn_level": "12",
+      "name_cn": "玛哈布芙达因",
+      "desc_cn": "对所有敌人造成60.8/63.8/66.9%攻击力的冰冻属性伤害，有33.8/35.5/37.2%基础概率使敌人陷入冻结状态，效果持续2回合。"
     },
     {
       "name": "화염 강화Ⅲ",
@@ -78,7 +88,9 @@ window.personaFiles["퀸 메이브"] = {
       "desc_jp": "火炎属性の与ダメージが８.７%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "18"
+      "learn_level": "18",
+      "name_cn": "火焰强化Ⅲ",
+      "desc_cn": "火焰属性伤害提升8.7%。"
     },
     {
       "name": "빙결 강화Ⅲ",
@@ -89,7 +101,9 @@ window.personaFiles["퀸 메이브"] = {
       "desc_jp": "氷結属性の与ダメージが８.７%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "25"
+      "learn_level": "25",
+      "name_cn": "冰冻强化Ⅲ",
+      "desc_cn": "冰冻属性伤害提升8.7%。"
     }
   ],
   "uniqueSkill": {
@@ -101,7 +115,9 @@ window.personaFiles["퀸 메이브"] = {
     "desc_jp": "敵全体に防御力無視の攻撃力40.7/42.7/44.8%の万能属性ダメージを与える。",
     "priority": 0,
     "icon": "Default",
-    "icon_gl": ""
+    "icon_gl": "",
+    "name_cn": "玛哈米吉多",
+    "desc_cn": "对所有敌人造成40.7/42.7/44.8%攻击力的万能属性伤害，无视其防御力。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -110,6 +126,9 @@ window.personaFiles["퀸 메이브"] = {
     "desc": "모든 적에게 공격력 180.0%/192.6%/205.2%의 화염 속성 대미지를 준다.",
     "desc_en": "Deal Fire damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
     "desc_jp": "敵全体に攻撃力180.0%/192.6%/205.2%の火炎属性ダメージを与える。",
-    "priority": 0
-  }
+    "priority": 0,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "对所有敌人造成180.0%/192.6%/205.2%攻击力的火焰属性伤害。"
+  },
+  "name_cn": "妖精女王"
 };

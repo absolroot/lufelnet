@@ -27,7 +27,9 @@ window.personaFiles["아라미타마"] = {
       "name_jp": "剛毅の本質",
       "desc": "공격력이 11.6% 증가한다. 핵열 속성 스킬 시전 시 소모하는 SP가 27% 감소한다.",
       "desc_en": "Increase Attack by 11.6%. Decrease SP cost of Nuclear skills by 27%.",
-      "desc_jp": "攻撃力が１１.６%上昇する。核熱属性スキルのＳＰ消費量を２７%低下させる。"
+      "desc_jp": "攻撃力が１１.６%上昇する。核熱属性スキルのＳＰ消費量を２７%低下させる。",
+      "name_cn": "毅勇的本质",
+      "desc_cn": "攻击力提升11.6%。释放核热属性技能时，消耗的精力值降低27%。"
     },
     {
       "name": "용맹의 본질Ⅰ",
@@ -35,7 +37,9 @@ window.personaFiles["아라미타마"] = {
       "name_jp": "剛毅の本質Ⅰ",
       "desc": "공격력이 11.6% 증가한다. 핵열 속성 스킬 시전 시 소모하는 SP가 31% 감소한다.",
       "desc_en": "Increase Attack by 11.6%. Decrease SP cost of Nuclear skills by 31%.",
-      "desc_jp": "攻撃力が１１.６%上昇する。核熱属性スキルのＳＰ消費量を３１%低下させる。"
+      "desc_jp": "攻撃力が１１.６%上昇する。核熱属性スキルのＳＰ消費量を３１%低下させる。",
+      "name_cn": "毅勇的本质Ⅰ",
+      "desc_cn": "攻击力提升11.6%。释放核热属性技能时，消耗的精力值降低31%。"
     },
     {
       "name": "용맹의 본질Ⅱ",
@@ -43,7 +47,9 @@ window.personaFiles["아라미타마"] = {
       "name_jp": "剛毅の本質Ⅱ",
       "desc": "공격력이 11.6% 증가한다. 핵열 속성 스킬 시전 시 소모하는 SP가 35% 감소한다.",
       "desc_en": "Increase Attack by 11.6%. Decrease SP cost of Nuclear skills by 35%.",
-      "desc_jp": "攻撃力が１１.６%上昇する。核熱属性スキルのＳＰ消費量を３５%低下させる。"
+      "desc_jp": "攻撃力が１１.６%上昇する。核熱属性スキルのＳＰ消費量を３５%低下させる。",
+      "name_cn": "毅勇的本质Ⅱ",
+      "desc_cn": "攻击力提升11.6%。释放核热属性技能时，消耗的精力值降低35%。"
     }
   ],
   "innate_skill": [
@@ -56,7 +62,9 @@ window.personaFiles["아라미타마"] = {
       "desc_jp": "先制時に最大ＨＰの５.０%とＳＰを６回復する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "5"
+      "learn_level": "5",
+      "name_cn": "亢奋Ⅱ",
+      "desc_cn": "先制攻击时回复5.0%最大生命值和6点精力值。"
     },
     {
       "name": "마술의 소양Ⅱ",
@@ -67,7 +75,9 @@ window.personaFiles["아라미타마"] = {
       "desc_jp": "スキルのＳＰ消費量が３.６%低下する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "10"
+      "learn_level": "10",
+      "name_cn": "魔术的资质Ⅱ",
+      "desc_cn": "技能消耗的SP降低3.6%。"
     },
     {
       "name": "마하프레이라",
@@ -78,7 +88,9 @@ window.personaFiles["아라미타마"] = {
       "desc_jp": "敵全体に攻撃力61.8/64.2/66.6%の核熱属性ダメージを与える。属性異常の敵に対してテクニカルが発生しダメージが１８%上昇する。",
       "cost": "SP 20",
       "level": "6/7/8",
-      "learn_level": "15"
+      "learn_level": "15",
+      "name_cn": "玛哈芙雷拉",
+      "desc_cn": "对所有敌人造成61.8/64.2/66.6%攻击力的核热属性伤害，对处于元素异常状态的敌人造成TECHNICAL，技能伤害提升18%。"
     },
     {
       "name": "코칭Ⅱ",
@@ -89,7 +101,9 @@ window.personaFiles["아라미타마"] = {
       "desc_jp": "被クリティカル率が５%低下させる。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "20"
+      "learn_level": "20",
+      "name_cn": "教练Ⅱ",
+      "desc_cn": "受到的暴击率降低5%。"
     }
   ],
   "uniqueSkill": {
@@ -101,7 +115,9 @@ window.personaFiles["아라미타마"] = {
     "desc_jp": "敵単体に攻撃力124.2/129.1/134.0%の核熱属性ダメージを与える。属性異常の敵に対してテクニカルが発生しダメージが１８%上昇する。",
     "priority": 0,
     "icon": "Default",
-    "icon_gl": ""
+    "icon_gl": "",
+    "name_cn": "芙雷拉",
+    "desc_cn": "对1名敌人造成124.2/129.1/134.0%攻击力的核热属性伤害，对处于元素异常状态的敌人造成TECHNICAL，技能伤害提升18%。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -110,6 +126,9 @@ window.personaFiles["아라미타마"] = {
     "desc": "1명의 적에게 공격력 360.0%/385.2%/410.4%의 핵열 속성 대미지를 준다.",
     "desc_en": "Deal Nuclear damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
     "desc_jp": "敵単体に攻撃力360.0%/385.2%/410.4%の核熱属性ダメージを与える。",
-    "priority": 0
-  }
+    "priority": 0,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "对1名敌人造成360.0%/385.2%/410.4%攻击力的核热属性伤害。"
+  },
+  "name_cn": "荒魂"
 };

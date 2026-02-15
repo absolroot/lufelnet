@@ -28,7 +28,9 @@ window.personaFiles["기리메칼라"] = {
       "name_jp": "魔象の邪眼",
       "desc": "효과 저항이 17.4% 증가한다. 모든 동료가 디버프 효과를 가진 적에게 받는 대미지가 16% 감소한다.",
       "desc_en": "Increase ailment resistance by 17.4%. Decrease party's damage taken from foes with debuffs by 16%.",
-      "desc_jp": "状態異常抵抗が１７.４%上昇する。味方全体の、弱体状態の敵から受けるダメージが１６%低下する。"
+      "desc_jp": "状態異常抵抗が１７.４%上昇する。味方全体の、弱体状態の敵から受けるダメージが１６%低下する。",
+      "name_cn": "巨象的凝视",
+      "desc_cn": "效果抵抗提升17.4%。所有同伴受到身上有任意减益效果的敌人的伤害降低16%。"
     },
     {
       "name": "코끼리의 응시Ⅰ",
@@ -36,7 +38,9 @@ window.personaFiles["기리메칼라"] = {
       "name_jp": "魔象の邪眼Ⅰ",
       "desc": "효과 저항이 17.4% 증가한다. 모든 동료가 디버프 효과를 가진 적에게 받는 대미지가 18% 감소한다.",
       "desc_en": "Increase ailment resistance by 17.4%. Decrease party's damage taken from foes with debuffs by 18%.",
-      "desc_jp": "状態異常抵抗が１７.４%上昇する。味方全体の、弱体状態の敵から受けるダメージが１８%低下する。"
+      "desc_jp": "状態異常抵抗が１７.４%上昇する。味方全体の、弱体状態の敵から受けるダメージが１８%低下する。",
+      "name_cn": "巨象的凝视Ⅰ",
+      "desc_cn": "效果抵抗提升17.4%。所有同伴受到身上有任意减益效果的敌人的伤害降低18%。"
     },
     {
       "name": "코끼리의 응시Ⅱ",
@@ -44,7 +48,9 @@ window.personaFiles["기리메칼라"] = {
       "name_jp": "魔象の邪眼Ⅱ",
       "desc": "효과 저항이 17.4% 증가한다. 모든 동료가 디버프 효과를 가진 적에게 받는 대미지가 20% 감소한다.",
       "desc_en": "Increase ailment resistance by 17.4%. Decrease party's damage taken from foes with debuffs by 20%.",
-      "desc_jp": "状態異常抵抗が１７.４%上昇する。味方全体の、弱体状態の敵から受けるダメージが２０%低下する。"
+      "desc_jp": "状態異常抵抗が１７.４%上昇する。味方全体の、弱体状態の敵から受けるダメージが２０%低下する。",
+      "name_cn": "巨象的凝视Ⅱ",
+      "desc_cn": "效果抵抗提升17.4%。所有同伴受到身上有任意减益效果的敌人的伤害降低20%。"
     }
   ],
   "uniqueSkill": {
@@ -56,7 +62,9 @@ window.personaFiles["기리메칼라"] = {
     "desc_jp": "３ターンの間、敵全体の攻撃力を18.1%/19.0%/19.9%低下させる。",
     "priority": 0,
     "icon": "디버프광역",
-    "icon_gl": "버프광역"
+    "icon_gl": "버프광역",
+    "name_cn": "玛哈塔伦达",
+    "desc_cn": "使所有敌人的攻击力降低18.1%/19.0%/19.9%，效果持续3回合。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -65,7 +73,9 @@ window.personaFiles["기리메칼라"] = {
     "desc": "모든 동료가 공격력 48.6%/52.0%/55.4%+1471/1854/2275의 실드를 획득하며 2턴 동안 지속된다.",
     "desc_en": "Grant a shield to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275 for 2 turns.",
     "desc_jp": "２ターンの間、味方全体に攻撃力48.6%/52.0%/55.4%＋1471/1854/2275のシールドを付与する。",
-    "priority": 0
+    "priority": 0,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "使所有同伴获得48.6%/52.0%/55.4%攻击力+1471/1854/2275的护盾，效果持续2回合。"
   },
   "innate_skill": [
     {
@@ -77,7 +87,9 @@ window.personaFiles["기리메칼라"] = {
       "desc_jp": "物理属性の被ダメージを８.７%低下させる。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "6"
+      "learn_level": "6",
+      "name_cn": "物理识破Ⅲ",
+      "desc_cn": "受到的物理属性伤害降低8.7%。"
     },
     {
       "name": "총격 간파Ⅲ",
@@ -88,7 +100,9 @@ window.personaFiles["기리메칼라"] = {
       "desc_jp": "銃撃属性の被ダメージを８.７%低下させる。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "12"
+      "learn_level": "12",
+      "name_cn": "枪械识破Ⅲ",
+      "desc_cn": "受到的射击属性伤害降低8.7%。"
     },
     {
       "name": "화염 간파Ⅲ",
@@ -99,7 +113,9 @@ window.personaFiles["기리메칼라"] = {
       "desc_jp": "火炎属性の被ダメージを８.７%低下させる。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "18"
+      "learn_level": "18",
+      "name_cn": "火焰识破Ⅲ",
+      "desc_cn": "受到的火焰属性伤害降低8.7%。"
     },
     {
       "name": "주원 간파Ⅲ",
@@ -110,7 +126,10 @@ window.personaFiles["기리메칼라"] = {
       "desc_jp": "呪怨属性の被ダメージを８.７%低下させる。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "25"
+      "learn_level": "25",
+      "name_cn": "诅咒识破Ⅲ",
+      "desc_cn": "受到的诅咒属性伤害降低8.7%。"
     }
-  ]
+  ],
+  "name_cn": "基力梅卡拉"
 };

@@ -27,7 +27,9 @@ window.personaFiles["이누가미"] = {
       "name_jp": "憑依する狂気",
       "desc": "효과 명중이 7% 증가한다. 정신 이상 부여 시 2턴 동안 목표의 방어력이 10.5% 감소한다.",
       "desc_en": "Increase ailment accuracy by 7%. After inflicting a spiritual ailment, decrease target's Defense by 10.5% for 2 turns.",
-      "desc_jp": "状態異常命中が７%上昇する。行動異常にした時、２ターンの間、対象の防御力を１０.５%低下させる。"
+      "desc_jp": "状態異常命中が７%上昇する。行動異常にした時、２ターンの間、対象の防御力を１０.５%低下させる。",
+      "name_cn": "失控的乱舞者",
+      "desc_cn": "效果命中提升7%。造成精神异常后，降低目标10.5%防御力，效果持续2回合。"
     },
     {
       "name": "통제 불능의 난무자Ⅰ",
@@ -35,7 +37,9 @@ window.personaFiles["이누가미"] = {
       "name_jp": "憑依する狂気Ⅰ",
       "desc": "효과 명중이 7% 증가한다. 정신 이상 부여 시 2턴 동안 목표의 방어력이 12.3% 감소한다.",
       "desc_en": "Increase ailment accuracy by 7%. After inflicting a spiritual ailment, decrease target's Defense by 12.3% for 2 turns.",
-      "desc_jp": "状態異常命中が７%上昇する。行動異常にした時、２ターンの間、対象の防御力を１２.３%低下させる。"
+      "desc_jp": "状態異常命中が７%上昇する。行動異常にした時、２ターンの間、対象の防御力を１２.３%低下させる。",
+      "name_cn": "失控的乱舞者Ⅰ",
+      "desc_cn": "效果命中提升7%。造成精神异常后，降低目标12.3%防御力，效果持续2回合。"
     }
   ],
   "innate_skill": [
@@ -48,7 +52,9 @@ window.personaFiles["이누가미"] = {
       "desc_jp": "敵単体に攻撃力129.1/135.6/142.0%の物理属性ダメージを与える。",
       "cost": "체력 7.0%",
       "level": "6/7/8",
-      "learn_level": "4"
+      "learn_level": "4",
+      "name_cn": "大切断",
+      "desc_cn": "对1名敌人造成129.1/135.6/142.0%攻击力的物理属性伤害。"
     },
     {
       "name": "무도의 마음가짐Ⅰ",
@@ -59,7 +65,9 @@ window.personaFiles["이누가미"] = {
       "desc_jp": "スキルのＨＰ消費量が３.２%低下する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "8"
+      "learn_level": "8",
+      "name_cn": "武道的心得Ⅰ",
+      "desc_cn": "技能消耗的HP降低3.2%。"
     },
     {
       "name": "럭키 펀치",
@@ -70,7 +78,9 @@ window.personaFiles["이누가미"] = {
       "desc_jp": "敵単体に攻撃力108.3/113.7/119.1%の物理属性ダメージを与える。クリティカル率が２０%上昇し、命中率が２０%低下する。",
       "cost": "체력 6.0%",
       "level": "6/7/8",
-      "learn_level": "12"
+      "learn_level": "12",
+      "name_cn": "幸运拳",
+      "desc_cn": "对1名敌人造成108.3/113.7/119.1%攻击力的物理属性伤害，暴击率提升20%，命中率降低20%"
     }
   ],
   "uniqueSkill": {
@@ -82,7 +92,9 @@ window.personaFiles["이누가미"] = {
     "desc_jp": "敵単体に攻撃力82.4/86.5/90.6%の物理属性ダメージを与える。12.5/13.1/13.8%の確率で敵を２ターンの間、睡眠状態にする。",
     "priority": 0,
     "icon": "물리",
-    "icon_gl": ""
+    "icon_gl": "",
+    "name_cn": "梦乡针",
+    "desc_cn": "对1名敌人造成82.4/86.5/90.6%攻击力的物理属性伤害，有12.5/13.1/13.8%基础概率使敌人陷入睡眠状态，效果持续2回合。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -91,6 +103,9 @@ window.personaFiles["이누가미"] = {
     "desc": "모든 적에게 공격력 90.0%/96.3%/102.6%의 물리 속성 대미지를 주며, 적이 받는 대미지가 19.6%/21.0%/22.3% 증가한다. 효과는 2턴 동안 지속된다.",
     "desc_en": "Deal Physical damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
     "desc_jp": "敵全体に攻撃力90.0%/96.3%/102.6%の物理属性ダメージを与える。さらに２ターンの間、被ダメージが19.6%/21.0%/22.3%上昇する。",
-    "priority": 0
-  }
+    "priority": 0,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "对所有敌人造成90.0%/96.3%/102.6%攻击力的物理属性伤害，并使其受到的伤害提升19.6%/21.0%/22.3%，效果持续2回合。"
+  },
+  "name_cn": "犬神"
 };

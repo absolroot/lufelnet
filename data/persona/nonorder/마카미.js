@@ -27,7 +27,9 @@ window.personaFiles["마카미"] = {
       "name_jp": "執拗な追跡者",
       "desc": "공격력이 5.8% 증가한다. 배턴 터치하여 공격 시 1턴 동안 핵열 속성 대미지가 23% 증가한다.",
       "desc_en": "Increase Attack 5.8%. After a Baton Pass, increase Nuclear damage by 23% for 1 turn.",
-      "desc_jp": "攻撃力が５.８%上昇する。バトンタッチ後、１ターンの間、核熱属性の与ダメージが２３%上昇する。"
+      "desc_jp": "攻撃力が５.８%上昇する。バトンタッチ後、１ターンの間、核熱属性の与ダメージが２３%上昇する。",
+      "name_cn": "导热的追击者",
+      "desc_cn": "攻击力提升5.8%。换手后，造成的核热属性伤害提升23%，效果持续1回合。"
     },
     {
       "name": "열전도 추격자Ⅰ",
@@ -35,7 +37,9 @@ window.personaFiles["마카미"] = {
       "name_jp": "執拗な追跡者Ⅰ",
       "desc": "공격력이 5.8% 증가한다. 배턴 터치하여 공격 시 1턴 동안 핵열 속성 대미지가 27% 증가한다.",
       "desc_en": "Increase Attack 5.8%. After a Baton Pass, increase Nuclear damage by 27% for 1 turn.",
-      "desc_jp": "攻撃力が５.８%上昇する。バトンタッチ後、１ターンの間、核熱属性の与ダメージが２７%上昇する。"
+      "desc_jp": "攻撃力が５.８%上昇する。バトンタッチ後、１ターンの間、核熱属性の与ダメージが２７%上昇する。",
+      "name_cn": "导热的追击者Ⅰ",
+      "desc_cn": "攻击力提升5.8%。换手后，造成的核热属性伤害提升27%，效果持续1回合。"
     }
   ],
   "innate_skill": [
@@ -48,7 +52,9 @@ window.personaFiles["마카미"] = {
       "desc_jp": "敵単体に攻撃力58.2/61.1/64.0%の物理属性ダメージを２回与える。",
       "cost": "체력 6.0%",
       "level": "6/7/8",
-      "learn_level": "4"
+      "learn_level": "4",
+      "name_cn": "二连牙",
+      "desc_cn": "对1名敌人造成2次58.2/61.1/64.0%攻击力的物理属性伤害。"
     },
     {
       "name": "핵열 강화Ⅰ",
@@ -59,7 +65,9 @@ window.personaFiles["마카미"] = {
       "desc_jp": "核熱属性の与ダメージが４.７%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "8"
+      "learn_level": "8",
+      "name_cn": "核热强化Ⅰ",
+      "desc_cn": "核热属性伤害提升4.7%。"
     },
     {
       "name": "역경의 각오Ⅰ",
@@ -70,7 +78,9 @@ window.personaFiles["마카미"] = {
       "desc_jp": "ピンチエンカウント時のクリティカル率が４.６%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "12"
+      "learn_level": "12",
+      "name_cn": "逆境的觉悟Ⅰ",
+      "desc_cn": "被包围时暴击率提升4.6%。"
     }
   ],
   "uniqueSkill": {
@@ -82,7 +92,9 @@ window.personaFiles["마카미"] = {
     "desc_jp": "敵単体に攻撃力114.8/118.7/122.6%の核熱属性ダメージを与える。属性異常の敵に対してテクニカルが発生しダメージが１６%上昇する。",
     "priority": 0,
     "icon": "핵열",
-    "icon_gl": ""
+    "icon_gl": "",
+    "name_cn": "芙雷",
+    "desc_cn": "对1名敌人造成114.8/118.7/122.6%攻击力的核热属性伤害，对处于元素异常状态的敌人造成TECHNICAL，技能伤害提升16%。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -91,6 +103,9 @@ window.personaFiles["마카미"] = {
     "desc": "1명의 적에게 공격력 360.0%/385.2%/410.4%의 핵열 속성 대미지를 준다.",
     "desc_en": "Deal Nuclear damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
     "desc_jp": "敵単体に攻撃力360.0%/385.2%/410.4%の核熱属性ダメージを与える。",
-    "priority": 0
-  }
+    "priority": 0,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "对1名敌人造成360.0%/385.2%/410.4%攻击力的核热属性伤害。"
+  },
+  "name_cn": "真神"
 };

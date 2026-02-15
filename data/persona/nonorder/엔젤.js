@@ -27,7 +27,9 @@ window.personaFiles["엔젤"] = {
       "name_jp": "見習い神使",
       "desc": "생명이 7% 증가한다. 원소 이상 제거 시 목표 공격력 9%의 생명을 추가로 회복한다.",
       "desc_en": "Increase HP by 7%. After removing an elemental ailment, restore target's HP by 9% of Attack.",
-      "desc_jp": "ＨＰが７%上昇する。属性異常を治療した時、対象のＨＰを攻撃力の９%回復する。"
+      "desc_jp": "ＨＰが７%上昇する。属性異常を治療した時、対象のＨＰを攻撃力の９%回復する。",
+      "name_cn": "实习的神使",
+      "desc_cn": "生命值提升7%。驱散元素异常时，额外使目标回复9%攻击力的生命值。"
     },
     {
       "name": "실습의 신사Ⅰ",
@@ -35,7 +37,9 @@ window.personaFiles["엔젤"] = {
       "name_jp": "見習い神使Ⅰ",
       "desc": "생명이 7% 증가한다. 원소 이상 제거 시 목표 공격력 11%의 생명을 추가로 회복한다.",
       "desc_en": "Increase max HP by 7%. After removing an elemental ailment, restore target's HP by 11% of Attack.",
-      "desc_jp": "ＨＰが７%上昇する。属性異常を治療した時、対象のＨＰを攻撃力の１１%回復する。"
+      "desc_jp": "ＨＰが７%上昇する。属性異常を治療した時、対象のＨＰを攻撃力の１１%回復する。",
+      "name_cn": "实习的神使Ⅰ",
+      "desc_cn": "生命值提升7%。驱散元素异常时，额外使目标回复11%攻击力的生命值。"
     }
   ],
   "innate_skill": [
@@ -48,7 +52,9 @@ window.personaFiles["엔젤"] = {
       "desc_jp": "敵単体に攻撃力115.8/122.5/129.2%の祝福属性ダメージを与える。自身に０～１つの祝印を獲得する。",
       "cost": "SP 19",
       "level": "6/7/8",
-      "learn_level": "4"
+      "learn_level": "4",
+      "name_cn": "克哈",
+      "desc_cn": "对1名敌人造成115.8/122.5/129.2%攻击力的祝福属性伤害，使自己获得0~1个祝福效果。"
     },
     {
       "name": "신들의 비호Ⅰ",
@@ -59,7 +65,9 @@ window.personaFiles["엔젤"] = {
       "desc_jp": "被回復量が２.３%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "8"
+      "learn_level": "8",
+      "name_cn": "诸神庇护Ⅰ",
+      "desc_cn": "受到的治疗效果提升2.3%。"
     },
     {
       "name": "메디아",
@@ -70,7 +78,9 @@ window.personaFiles["엔젤"] = {
       "desc_jp": "味方全体のＨＰを攻撃力の16.6/17.4/18.3%＋502/621/749回復する。",
       "cost": "SP 23",
       "level": "6/7/8",
-      "learn_level": "12"
+      "learn_level": "12",
+      "name_cn": "梅迪亚",
+      "desc_cn": "使所有同伴恢复16.6/17.4/18.3%攻击力+502/621/749的生命值。"
     }
   ],
   "uniqueSkill": {
@@ -82,7 +92,9 @@ window.personaFiles["엔젤"] = {
     "desc_jp": "味方単体のＨＰを攻撃力25.7/27.0/28.3%＋777/962/1161回復する。さらに属性異常を１つ治療する。",
     "priority": 0,
     "icon": "치료",
-    "icon_gl": ""
+    "icon_gl": "",
+    "name_cn": "欧洛斯",
+    "desc_cn": "使1名同伴恢复25.7/27.0/28.3%攻击力+777/962/1161的生命值，并驱散1个元素异常效果。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -91,6 +103,9 @@ window.personaFiles["엔젤"] = {
     "desc": "모든 동료가 공격력 48.6%/52.0%/55.4%+1471/1854/2275의 생명을 회복한다.",
     "desc_en": "Restore HP to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275.",
     "desc_jp": "味方全体のＨＰを攻撃力48.6%/52.0%/55.4%＋1471/1854/2275回復する。",
-    "priority": 0
-  }
+    "priority": 0,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "使所有同伴恢复48.6%/52.0%/55.4%攻击力+1471/1854/2275的生命值。"
+  },
+  "name_cn": "天使"
 };

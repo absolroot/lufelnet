@@ -27,7 +27,9 @@ window.personaFiles["주작"] = {
       "name_jp": "南方からの陽光",
       "desc": "크리티컬 효과가 7% 증가한다. 광역을 목표로 핵열 속성 스킬 시전 시 공격력이 27% 증가한다.",
       "desc_en": "Increase critical damage by 7%. When using Nuclear skills on all foes, increase Attack by 27%.",
-      "desc_jp": "クリティカルダメージが７%上昇する。敵全体に核熱属性スキルを使用する時、攻撃力が２７%上昇する。"
+      "desc_jp": "クリティカルダメージが７%上昇する。敵全体に核熱属性スキルを使用する時、攻撃力が２７%上昇する。",
+      "name_cn": "南方主的日照",
+      "desc_cn": "暴击效果提升7%。以群体为目标释放核热属性技能时，攻击力提升27%。"
     },
     {
       "name": "남방주의 햇살Ⅰ",
@@ -35,7 +37,9 @@ window.personaFiles["주작"] = {
       "name_jp": "南方からの陽光Ⅰ",
       "desc": "크리티컬 효과가 7% 증가한다. 광역을 목표로 핵열 속성 스킬 시전 시 공격력이 31% 증가한다.",
       "desc_en": "Increase critical damage by 7%. When using Nuclear skills on all foes, increase Attack by 31%.",
-      "desc_jp": "クリティカルダメージが７%上昇する。敵全体に核熱属性スキルを使用する時、攻撃力が３１%上昇する。"
+      "desc_jp": "クリティカルダメージが７%上昇する。敵全体に核熱属性スキルを使用する時、攻撃力が３１%上昇する。",
+      "name_cn": "南方主的日照Ⅰ",
+      "desc_cn": "暴击效果提升7%。以群体为目标释放核热属性技能时，攻击力提升31%。"
     }
   ],
   "innate_skill": [
@@ -48,7 +52,9 @@ window.personaFiles["주작"] = {
       "desc_jp": "毎ターン開始時に最大ＨＰの１.９%を回復する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "4"
+      "learn_level": "4",
+      "name_cn": "治疗促进Ⅰ",
+      "desc_cn": "每回合开始时，回复1.9%最大生命值。"
     },
     {
       "name": "프레이",
@@ -59,7 +65,9 @@ window.personaFiles["주작"] = {
       "desc_jp": "敵単体に攻撃力114.8/118.7/122.6%の核熱属性ダメージを与える。属性異常の敵に対してテクニカルが発生しダメージが１６%上昇する。",
       "cost": "SP 19",
       "level": "6/7/8",
-      "learn_level": "8"
+      "learn_level": "8",
+      "name_cn": "芙雷",
+      "desc_cn": "对1名敌人造成114.8/118.7/122.6%攻击力的核热属性伤害，对处于元素异常状态的敌人造成TECHNICAL，技能伤害提升16%。"
     },
     {
       "name": "핵열 간파Ⅰ",
@@ -70,7 +78,9 @@ window.personaFiles["주작"] = {
       "desc_jp": "核熱属性の被ダメージを４.７%低下させる。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "12"
+      "learn_level": "12",
+      "name_cn": "核热识破Ⅰ",
+      "desc_cn": "受到的核热属性伤害降低4.7%。"
     }
   ],
   "uniqueSkill": {
@@ -82,7 +92,9 @@ window.personaFiles["주작"] = {
     "desc_jp": "敵全体に攻撃力57.7/59.7/61.7%の核熱属性ダメージを与える。属性異常の敵に対してテクニカルが発生しダメージが１６%上昇する。",
     "priority": 0,
     "icon": "핵열광역",
-    "icon_gl": ""
+    "icon_gl": "",
+    "name_cn": "玛哈芙雷",
+    "desc_cn": "对所有敌人造成57.7/59.7/61.7%攻击力的核热属性伤害，对处于元素异常状态的敌人造成TECHNICAL，技能伤害提升16%。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -91,6 +103,9 @@ window.personaFiles["주작"] = {
     "desc": "모든 적에게 공격력 180.0%/192.6%/205.2%의 핵열 속성 대미지를 준다.",
     "desc_en": "Deal Nuclear damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
     "desc_jp": "敵全体に攻撃力180.0%/192.6%/205.2%の核熱属性ダメージを与える。",
-    "priority": 0
-  }
+    "priority": 0,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "对所有敌人造成180.0%/192.6%/205.2%攻击力的核热属性伤害。"
+  },
+  "name_cn": "朱雀"
 };

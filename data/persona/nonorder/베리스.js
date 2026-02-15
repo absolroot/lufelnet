@@ -27,7 +27,9 @@ window.personaFiles["베리스"] = {
       "name_jp": "公爵の威圧",
       "desc": "방어력이 5.3% 증가한다. 자신이 받는 약점 대미지가 24% 감소한다.",
       "desc_en": "Increase Defense by 5.3%. Decrease weakness damage by 24%.",
-      "desc_jp": "防御力が５.３%上昇する。自身の弱点被ダメージを２４%低下させる。"
+      "desc_jp": "防御力が５.３%上昇する。自身の弱点被ダメージを２４%低下させる。",
+      "name_cn": "公爵的威吓",
+      "desc_cn": "防御力提升5.3%。自身受到的弱点伤害降低24%。"
     },
     {
       "name": "공작의 으름장Ⅰ",
@@ -35,7 +37,9 @@ window.personaFiles["베리스"] = {
       "name_jp": "公爵の威圧Ⅰ",
       "desc": "방어력이 5.3% 증가한다. 자신이 받는 약점 대미지가 28% 감소한다.",
       "desc_en": "Increase Defense by 5.3%. Decrease weakness damage by 28%.",
-      "desc_jp": "防御力が５.３%上昇する。自身の弱点被ダメージを２８%低下させる。"
+      "desc_jp": "防御力が５.３%上昇する。自身の弱点被ダメージを２８%低下させる。",
+      "name_cn": "公爵的威吓Ⅰ",
+      "desc_cn": "防御力提升5.3%。自身受到的弱点伤害降低28%。"
     }
   ],
   "innate_skill": [
@@ -48,7 +52,9 @@ window.personaFiles["베리스"] = {
       "desc_jp": "敵単体に攻撃力116.4/122.2/128.0%の物理属性ダメージを与える。",
       "cost": "체력 6.0%",
       "level": "6/7/8",
-      "learn_level": "4"
+      "learn_level": "4",
+      "name_cn": "斩击",
+      "desc_cn": "对1名敌人造成116.4/122.2/128.0%攻击力的物理属性伤害。"
     },
     {
       "name": "화염 간파Ⅰ",
@@ -59,7 +65,9 @@ window.personaFiles["베리스"] = {
       "desc_jp": "火炎属性の被ダメージを４.７%低下させる。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "8"
+      "learn_level": "8",
+      "name_cn": "火焰识破Ⅰ",
+      "desc_cn": "受到的火焰属性伤害降低4.7%。"
     }
   ],
   "uniqueSkill": {
@@ -71,7 +79,9 @@ window.personaFiles["베리스"] = {
     "desc_jp": "３ターンの間、味方単体の攻撃力が15.5%/16.3%/17.0%上昇する。自身の攻撃力が５００ごとに、味方の攻撃力がさらに1.3%/1.4%/1.4%上昇する（最大10.4%/10.9%/11.4%まで）。",
     "priority": 0,
     "icon": "버프",
-    "icon_gl": ""
+    "icon_gl": "",
+    "name_cn": "塔尔卡加",
+    "desc_cn": "使1名同伴的攻击力提升15.5%/16.3%/17.0%，自身每500攻击力额外提升1.3%/1.4%/1.4%，上限10.4%/10.9%/11.4%。效果持续3回合。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -80,6 +90,9 @@ window.personaFiles["베리스"] = {
     "desc": "모든 동료의 주는 대미지가 29.5%/31.6%/33.6% 증가하며 2턴 동안 지속된다.",
     "desc_en": "Increase party's damage by 29.5%/31.6%/33.6% for 2 turns.",
     "desc_jp": "２ターンの間、味方全体の与ダメージが29.5%/31.6%/33.6%上昇する。",
-    "priority": 0
-  }
+    "priority": 0,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "使所有同伴造成的伤害提升29.5%/31.6%/33.6%，效果持续2回合。"
+  },
+  "name_cn": "比利士"
 };

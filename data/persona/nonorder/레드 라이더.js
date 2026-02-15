@@ -27,7 +27,9 @@ window.personaFiles["레드 라이더"] = {
       "name_jp": "略奪の悦び",
       "desc": "효과 명중이 17.4% 증가한다. 필드에 디버프 상태에 빠진 적이 1명 있을 때마다 자신의 효과 명중이 8% 증가한다. 최대 5회 중첩된다.",
       "desc_en": "Increase ailment accuracy by 17.4%. For each foe with a debuff, increase user's ailment accuracy by 8%. Stacks up to 5 times.",
-      "desc_jp": "状態異常命中が１７.４%上昇する。弱体状態の敵が１体いるごとに、自身の状態異常命中が８%上昇する。この効果は最大５つまで累積できる。"
+      "desc_jp": "状態異常命中が１７.４%上昇する。弱体状態の敵が１体いるごとに、自身の状態異常命中が８%上昇する。この効果は最大５つまで累積できる。",
+      "name_cn": "褫夺的力量",
+      "desc_cn": "效果命中提升17.4%。场上每有1个敌人处于减益状态。则自身效果命中提升8%。上限5层。"
     },
     {
       "name": "박탈의 힘Ⅰ",
@@ -35,7 +37,9 @@ window.personaFiles["레드 라이더"] = {
       "name_jp": "略奪の悦びⅠ",
       "desc": "효과 명중이 17.4% 증가한다. 필드에 디버프 상태에 빠진 적이 1명 있을 때마다 자신의 효과 명중이 10% 증가한다. 최대 5회 중첩된다.",
       "desc_en": "Increase ailment accuracy by 17.4%. For each foe with a debuff, increase user's ailment accuracy by 10%. Stacks up to 5 times.",
-      "desc_jp": "状態異常命中が１７.４%上昇する。弱体状態の敵が１体いるごとに、自身の状態異常命中が１０%上昇する。この効果は最大５つまで累積できる。"
+      "desc_jp": "状態異常命中が１７.４%上昇する。弱体状態の敵が１体いるごとに、自身の状態異常命中が１０%上昇する。この効果は最大５つまで累積できる。",
+      "name_cn": "褫夺的力量Ⅰ",
+      "desc_cn": "效果命中提升17.4%。场上每有1个敌人处于减益状态。则自身效果命中提升10%。上限5层。"
     },
     {
       "name": "박탈의 힘Ⅱ",
@@ -43,7 +47,9 @@ window.personaFiles["레드 라이더"] = {
       "name_jp": "略奪の悦びⅡ",
       "desc": "효과 명중이 17.4% 증가한다. 필드에 디버프 상태에 빠진 적이 1명 있을 때마다 자신의 효과 명중이 12% 증가한다. 최대 5회 중첩된다.",
       "desc_en": "Increase ailment accuracy by 17.4%. For each foe with a debuff, increase user's ailment accuracy by 12%. Stacks up to 5 times.",
-      "desc_jp": "状態異常命中が１７.４%上昇する。弱体状態の敵が１体いるごとに、自身の状態異常命中が１２%上昇する。この効果は最大５つまで累積できる。"
+      "desc_jp": "状態異常命中が１７.４%上昇する。弱体状態の敵が１体いるごとに、自身の状態異常命中が１２%上昇する。この効果は最大５つまで累積できる。",
+      "name_cn": "褫夺的力量Ⅱ",
+      "desc_cn": "效果命中提升17.4%。场上每有1个敌人处于减益状态。则自身效果命中提升12%。上限5层。"
     }
   ],
   "innate_skill": [
@@ -56,7 +62,9 @@ window.personaFiles["레드 라이더"] = {
       "desc_jp": "敵単体に攻撃力130.5/136.4/142.3%の念動属性ダメージを与える。行動異常の敵に対してテクニカルが発生しダメージが４５%上昇する。",
       "cost": "SP 21",
       "level": "6/7/8",
-      "learn_level": "6"
+      "learn_level": "6",
+      "name_cn": "赛达因",
+      "desc_cn": "对1名敌人造成130.5/136.4/142.3%攻击力的念动属性伤害，对处于精神异常状态的敌人造成TECHNICAL，技能伤害提升45%。"
     },
     {
       "name": "염동 강화Ⅲ",
@@ -67,7 +75,9 @@ window.personaFiles["레드 라이더"] = {
       "desc_jp": "念動属性の与ダメージが８.７%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "12"
+      "learn_level": "12",
+      "name_cn": "念动强化Ⅲ",
+      "desc_cn": "念动属性伤害提升8.7%。"
     },
     {
       "name": "고압 전류Ⅲ",
@@ -78,7 +88,9 @@ window.personaFiles["레드 라이더"] = {
       "desc_jp": "先制時のクリティカル率が７.８%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "18"
+      "learn_level": "18",
+      "name_cn": "高压电流Ⅲ",
+      "desc_cn": "先制攻击时暴击率提升7.8%。"
     },
     {
       "name": "우중충한 하늘Ⅲ",
@@ -89,7 +101,9 @@ window.personaFiles["레드 라이더"] = {
       "desc_jp": "雨の時、状態異常命中が１６.９%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "25"
+      "learn_level": "25",
+      "name_cn": "天公不作美Ⅲ",
+      "desc_cn": "下雨时，造成异常效果时，效果命中提升16.9%。"
     }
   ],
   "uniqueSkill": {
@@ -101,7 +115,9 @@ window.personaFiles["레드 라이더"] = {
     "desc_jp": "敵単体に攻撃力82.4/86.5/90.6%の物理属性ダメージを与える。4.2/4.4/4.6%の確率で敵を３ターンの間、絶望状態にする。",
     "priority": 0,
     "icon": "물리",
-    "icon_gl": ""
+    "icon_gl": "",
+    "name_cn": "负面意识堆栈",
+    "desc_cn": "对1名敌人造成82.4/86.5/90.6%攻击力的物理属性伤害，有4.2/4.4/4.6%基础概率使敌人陷入绝望状态，效果持续3回合。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -110,6 +126,9 @@ window.personaFiles["레드 라이더"] = {
     "desc": "모든 적에게 공격력 90.0%/96.3%/102.6%의 염동 속성 대미지를 주며, 적이 받는 대미지가 19.6%/21.0%/22.3% 증가한다. 효과는 2턴 동안 지속된다.",
     "desc_en": "Deal Psychokinesis damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
     "desc_jp": "敵全体に攻撃力90.0%/96.3%/102.6%の念動属性ダメージを与える。さらに２ターンの間、被ダメージが19.6%/21.0%/22.3%上昇する。",
-    "priority": 0
-  }
+    "priority": 0,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "对所有敌人造成90.0%/96.3%/102.6%攻击力的念动属性伤害，并使其受到的伤害提升19.6%/21.0%/22.3%，效果持续2回合。"
+  },
+  "name_cn": "红骑士"
 };

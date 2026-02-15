@@ -45,7 +45,9 @@ window.personaFiles["아라하바키"] = {
       "name_jp": "鉄製の身体",
       "desc": "방어력이 21.2% 증가한다. 모든 동료가 받는 약점 대미지가 18% 감소한다.",
       "desc_en": "Increase Defense by 21.2%. Decrease party's weakness damage taken by 18%.",
-      "desc_jp": "防御力が２１.２%上昇する。味方全体の弱点被ダメージを１８%低下させる。"
+      "desc_jp": "防御力が２１.２%上昇する。味方全体の弱点被ダメージを１８%低下させる。",
+      "name_cn": "铁铸之身",
+      "desc_cn": "防御力提升21.2%。使所有同伴受到的弱点伤害降低18%。"
     },
     {
       "name": "철로 만든 몸Ⅰ",
@@ -53,7 +55,9 @@ window.personaFiles["아라하바키"] = {
       "name_jp": "鉄製の身体Ⅰ",
       "desc": "방어력이 21.2% 증가한다. 모든 동료가 받는 약점 대미지가 20.5% 감소한다.",
       "desc_en": "Increase Defense by 21.2%. Decrease party's weakness damage taken by 20.5%.",
-      "desc_jp": "防御力が２１.２%上昇する。味方全体の弱点被ダメージを２０.５%低下させる。"
+      "desc_jp": "防御力が２１.２%上昇する。味方全体の弱点被ダメージを２０.５%低下させる。",
+      "name_cn": "铁铸之身Ⅰ",
+      "desc_cn": "防御力提升21.2%。使所有同伴受到的弱点伤害降低20.5%。"
     },
     {
       "name": "철로 만든 몸Ⅱ",
@@ -61,7 +65,9 @@ window.personaFiles["아라하바키"] = {
       "name_jp": "鉄製の身体Ⅱ",
       "desc": "방어력이 21.2% 증가한다. 모든 동료가 받는 약점 대미지가 23% 감소한다.",
       "desc_en": "Increase Defense by 21.2%. Decrease party's weakness damage taken by 23%.",
-      "desc_jp": "防御力が２１.２%上昇する。味方全体の弱点被ダメージを２３%低下させる。"
+      "desc_jp": "防御力が２１.２%上昇する。味方全体の弱点被ダメージを２３%低下させる。",
+      "name_cn": "铁铸之身Ⅱ",
+      "desc_cn": "防御力提升21.2%。使所有同伴受到的弱点伤害降低23%。"
     }
   ],
   "uniqueSkill": {
@@ -73,7 +79,9 @@ window.personaFiles["아라하바키"] = {
     "desc_jp": "３ターンの間、敵単体の攻撃力が25.8%/27.1%/28.4%低下する。",
     "priority": 0,
     "icon": "디버프",
-    "icon_gl": "버프"
+    "icon_gl": "버프",
+    "name_cn": "塔伦达",
+    "desc_cn": "使1名敌人的攻击力降低25.8%/27.1%/28.4%，效果持续3回合。"
   },
   "highlight": {
     "name": "HIGHLIGHT",
@@ -82,7 +90,9 @@ window.personaFiles["아라하바키"] = {
     "desc": "모든 동료가 공격력 48.6%/52.0%/55.4%+1471/1854/2275의 실드를 획득하며 2턴 동안 지속된다.",
     "desc_en": "Grant a shield to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275 for 2 turns.",
     "desc_jp": "２ターンの間、味方全体に攻撃力48.6%/52.0%/55.4%＋1471/1854/2275のシールドを付与する。",
-    "priority": 0
+    "priority": 0,
+    "name_cn": "HIGHLIGHT",
+    "desc_cn": "使所有同伴获得48.6%/52.0%/55.4%攻击力+1471/1854/2275的护盾，效果持续2回合。"
   },
   "innate_skill": [
     {
@@ -94,7 +104,9 @@ window.personaFiles["아라하바키"] = {
       "desc_jp": "味方全体のステータス低下効果を１つ打ち消す。",
       "cost": "SP skillLv*-1+28",
       "level": "6/7/8",
-      "learn_level": "5"
+      "learn_level": "5",
+      "name_cn": "迪坤达",
+      "desc_cn": "驱散所有同伴的1个属性降低效果。"
     },
     {
       "name": "어설트 다이브",
@@ -105,7 +117,9 @@ window.personaFiles["아라하바키"] = {
       "desc_jp": "敵単体に攻撃力141.8/148.9/156.0%の物理属性ダメージを与える。",
       "cost": "체력 8.0%",
       "level": "6/7/8",
-      "learn_level": "10"
+      "learn_level": "10",
+      "name_cn": "俯冲突击",
+      "desc_cn": "对1名敌人造成141.8/148.9/156.0%攻击力的物理属性伤害。"
     },
     {
       "name": "방어의 마음가짐Ⅱ",
@@ -116,7 +130,9 @@ window.personaFiles["아라하바키"] = {
       "desc_jp": "戦闘開始時、２ターンの間、自身の防御力が１８.１%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "15"
+      "learn_level": "15",
+      "name_cn": "防御的心得Ⅱ",
+      "desc_cn": "战斗开始时防御力提升18.1%，持续2回合。"
     },
     {
       "name": "방어 강화Ⅱ",
@@ -127,7 +143,10 @@ window.personaFiles["아라하바키"] = {
       "desc_jp": "防御力が１２.５%上昇する。",
       "cost": "",
       "level": "6/7/8",
-      "learn_level": "20"
+      "learn_level": "20",
+      "name_cn": "防御强化Ⅱ",
+      "desc_cn": "防御力提升12.5%。"
     }
-  ]
+  ],
+  "name_cn": "荒霸吐"
 };

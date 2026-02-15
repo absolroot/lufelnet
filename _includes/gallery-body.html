@@ -1,0 +1,181 @@
+<script>
+(function () {
+  var params = new URLSearchParams(window.location.search || '');
+  var path = String(window.location.pathname || '/');
+  var lowerPath = path.toLowerCase();
+
+  var pathLangMatch = lowerPath.match(/^\/(kr|en|jp)(\/|$)/);
+  var pathLang = pathLangMatch ? pathLangMatch[1] : '';
+  var queryLang = String(params.get('lang') || '').toLowerCase();
+  var effectiveLang = pathLang || (['kr', 'en', 'jp'].indexOf(queryLang) !== -1 ? queryLang : '');
+
+  var isLegacyRoot = /^\/gallery\/?$/.test(lowerPath);
+  var isCanonicalPath = /^\/(kr|en|jp)\/gallery\/?$/.test(lowerPath);
+
+  if (isLegacyRoot && effectiveLang) {
+    window.__SEO_PATH_LANG__ = effectiveLang;
+    params.delete('lang');
+    params.delete('v');
+    var remainingLegacy = params.toString();
+    history.replaceState(null, '', '/' + effectiveLang + '/gallery/' + (remainingLegacy ? '?' + remainingLegacy : ''));
+    return;
+  }
+
+  if (isCanonicalPath) {
+    window.__SEO_PATH_LANG__ = pathLang;
+    var before = params.toString();
+    params.delete('lang');
+    params.delete('v');
+    var remainingCanonical = params.toString();
+    if (before !== remainingCanonical) {
+      history.replaceState(null, '', path + (remainingCanonical ? '?' + remainingCanonical : ''));
+    }
+    return;
+  }
+
+  if (isLegacyRoot && params.has('v')) {
+    params.delete('v');
+    var remainingRoot = params.toString();
+    history.replaceState(null, '', '/gallery/' + (remainingRoot ? '?' + remainingRoot : ''));
+  }
+})();
+</script>
+{% if page.alternate_urls %}
+{% for alt in page.alternate_urls %}
+<link rel="alternate" hreflang="{{ alt[0] }}" href="{{ site.url }}{{ alt[1] }}" />
+{% endfor %}
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.alternate_urls['ko'] | default: page.alternate_urls.first[1] }}" />
+{% endif %}
+
+
+<div class="main-wrapper">
+  <div class="gallery-header">
+    <div class="navigation-path">
+      <script>document.write(`<a href="${BASE_URL}/?v=${APP_VERSION}" id="nav-home" data-i18n="navHome">-</a>`);</script>
+      <span class="separator">/</span>
+      <span class="current-page" id="nav-current" data-i18n="navCurrent">-</span>
+    </div>
+    <div class="header-container">
+      <h1 id="gallery-title" data-i18n="pageTitle">-</h1>
+    </div>
+    <!-- 
+    <p id="gallery-desc" class="korean-content">썸네일을 클릭하면 원본 이미지를 모달로 확인할 수 있습니다.</p>
+    <p id="gallery-desc-en" class="english-content" style="display:none;">Click a thumbnail to view the original image in a modal.</p>
+    <p id="gallery-desc-jp" class="japanese-content" style="display:none;">サムネイルをクリックすると、原寸画像をモーダルで表示します。</p>
+    -->
+  </div>
+
+  <div class="gallery-toolbar">
+    <div class="filters">
+      <input id="search-input" style="display:none;" type="text" placeholder="검색..." aria-label="Search"
+        data-i18n-placeholder="searchPlaceholder" />
+      <select id="category-select" aria-label="Category">
+        <option value="" data-i18n="filterAll">전체</option>
+      </select>
+      <select id="tag-select" aria-label="Tag">
+        <option value="" data-i18n="filterAllTags">모든 태그</option>
+      </select>
+    </div>
+    <div class="sort" style="display:none;">
+      <select id="sort-select" aria-label="Sort">
+        <option value="order_desc" data-i18n="sortOrderDesc">순서 ↓</option>
+        <option value="order_asc" data-i18n="sortOrderAsc">순서 ↑</option>
+        <option value="name_asc" data-i18n="sortNameAsc">이름 A→Z</option>
+        <option value="name_desc" data-i18n="sortNameDesc">이름 Z→A</option>
+      </select>
+    </div>
+  </div>
+
+  <div id="gallery-grid" class="gallery-grid" aria-live="polite"></div>
+  <div id="gallery-loader">
+    <div class="gallery-spinner"></div>
+  </div>
+
+</div>
+
+<!-- 이미지 모달 -->
+<div id="image-modal" class="gallery-modal" aria-hidden="true" role="dialog" aria-label="image viewer">
+  <button class="modal-close" id="modal-close" aria-label="close" data-i18n-aria="modalClose">×</button>
+  <button class="modal-nav modal-prev" id="modal-prev" aria-label="previous" data-i18n-aria="modalPrevious" disabled>
+    <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
+      <path fill="currentColor" d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+    </svg>
+  </button>
+  <button class="modal-nav modal-next" id="modal-next" aria-label="next" data-i18n-aria="modalNext" disabled>
+    <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
+      <path fill="currentColor" d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6z" />
+    </svg>
+  </button>
+  <img id="modal-image" alt="" />
+  <div class="modal-caption" id="modal-caption"></div>
+</div>
+
+
+<!-- 갤러리 전용 CSS/JS 로딩 -->
+<link rel="stylesheet" href="{{ site.baseurl }}/apps/gallery/gallery.css?v={{ site.time | date: '%s' }}">
+
+<!-- i18n 서비스 -->
+<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
+
+<script src="{{ site.baseurl }}/apps/gallery/gallery-i18n.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/gallery/gallery-tags.js?v={{ site.time | date: '%s' }}" defer></script>
+
+<script>
+  function detectGalleryLang() {
+    const pathMatch = window.location.pathname.match(/^\/(kr|en|jp)(\/|$)/i);
+    if (pathMatch) return pathMatch[1].toLowerCase();
+
+    const params = new URLSearchParams(window.location.search);
+    const queryLang = String(params.get('lang') || '').toLowerCase();
+    if (['kr', 'en', 'jp'].indexOf(queryLang) !== -1) return queryLang;
+
+    if (typeof getCurrentLang === 'function') {
+      const helperLang = String(getCurrentLang() || '').toLowerCase();
+      if (['kr', 'en', 'jp'].indexOf(helperLang) !== -1) return helperLang;
+    }
+
+    if (typeof LanguageRouter !== 'undefined' && typeof LanguageRouter.getCurrentLanguage === 'function') {
+      const routerLang = String(LanguageRouter.getCurrentLanguage() || '').toLowerCase();
+      if (['kr', 'en', 'jp'].indexOf(routerLang) !== -1) return routerLang;
+    }
+
+    return 'kr';
+  }
+
+  function applyGallerySeoMeta(lang) {
+    const baseUrl = 'https://lufel.net';
+    const isPathLang = /^\/(kr|en|jp)(\/|$)/i.test(window.location.pathname);
+    const currentUrl = isPathLang ? `${baseUrl}/${lang}/gallery/` : `${baseUrl}/gallery/`;
+    const locale = lang === 'jp' ? 'ja_JP' : lang === 'en' ? 'en_US' : 'ko_KR';
+
+    const canonical = document.querySelector('link[rel="canonical"]');
+    const ogUrl = document.querySelector('meta[property="og:url"]');
+    const ogLocale = document.querySelector('meta[property="og:locale"]');
+
+    if (canonical) canonical.setAttribute('href', currentUrl);
+    if (ogUrl) ogUrl.setAttribute('content', currentUrl);
+    if (ogLocale) ogLocale.setAttribute('content', locale);
+    document.documentElement.setAttribute('lang', lang === 'jp' ? 'ja' : lang === 'en' ? 'en' : 'ko');
+  }
+
+  document.addEventListener('DOMContentLoaded', async () => {
+    const currentLang = detectGalleryLang();
+
+    // Initialize i18n first
+    if (typeof initPageI18n === 'function') {
+      await initPageI18n('gallery');
+      if (typeof setLang === 'function') {
+        await setLang(currentLang);
+      }
+    } else if (window.I18nService && typeof window.I18nService.init === 'function') {
+      await window.I18nService.init('gallery', currentLang);
+    }
+
+    applyGallerySeoMeta(currentLang);
+
+    // Then load navigation
+    if (typeof Navigation !== 'undefined') {
+      Navigation.load('gallery');
+    }
+  });
+</script>

@@ -1,0 +1,137 @@
+<script>
+(function () {
+    var params = new URLSearchParams(window.location.search || '');
+    var path = String(window.location.pathname || '/');
+    var lowerPath = path.toLowerCase();
+
+    var pathLangMatch = lowerPath.match(/^\/(kr|en|jp)(\/|$)/);
+    var pathLang = pathLangMatch ? pathLangMatch[1] : '';
+    var queryLang = String(params.get('lang') || '').toLowerCase();
+    var effectiveLang = pathLang || (['kr', 'en', 'jp'].indexOf(queryLang) !== -1 ? queryLang : '');
+
+    var isLegacyRoot = /^\/article\/?$/.test(lowerPath);
+    var isCanonicalPath = /^\/(kr|en|jp)\/article\/?$/.test(lowerPath);
+
+    if (isLegacyRoot && effectiveLang) {
+        window.__SEO_PATH_LANG__ = effectiveLang;
+        params.delete('lang');
+        params.delete('v');
+        var remainingLegacy = params.toString();
+        history.replaceState(null, '', '/' + effectiveLang + '/article/' + (remainingLegacy ? '?' + remainingLegacy : ''));
+        return;
+    }
+
+    if (isCanonicalPath) {
+        window.__SEO_PATH_LANG__ = pathLang;
+        var before = params.toString();
+        params.delete('lang');
+        params.delete('v');
+        var remainingCanonical = params.toString();
+        if (before !== remainingCanonical) {
+            history.replaceState(null, '', path + (remainingCanonical ? '?' + remainingCanonical : ''));
+        }
+        return;
+    }
+
+    if (isLegacyRoot && params.has('v')) {
+        params.delete('v');
+        var remainingRoot = params.toString();
+        history.replaceState(null, '', '/article/' + (remainingRoot ? '?' + remainingRoot : ''));
+    }
+})();
+</script>
+{% if page.alternate_urls %}
+{% for alt in page.alternate_urls %}
+<link rel="alternate" hreflang="{{ alt[0] }}" href="{{ site.url }}{{ alt[1] }}" />
+{% endfor %}
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.alternate_urls['ko'] | default: page.alternate_urls.first[1] }}" />
+{% endif %}
+
+<link rel="stylesheet" href="/apps/guides/guides.css">
+<script src="/apps/guides/guides.js"></script>
+
+<!-- main contents -->
+<div class="main-wrapper">
+    <!-- navigation path -->
+    <div class="navigation-path">
+        <script>document.write(`<a href="/?v=${APP_VERSION}" id="nav-home" data-i18n="navHome">-</a>`);</script>
+        <span class="separator">/</span>
+        <span class="current-page" id="nav-current" data-i18n="navCurrent">-</span>
+    </div>
+
+    <div class="header-container">
+        <h1 data-i18n="pageTitle">-</h1>
+    </div>
+
+    <!-- Guides List Container -->
+    <div class="guides-container" id="guides-container">
+        <div class="guides-loading" data-i18n="loadingGuides">Loading guides...</div>
+    </div>
+</div>
+
+<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
+<script>
+    function detectArticleLang() {
+        const pathMatch = window.location.pathname.match(/^\/(kr|en|jp)(\/|$)/i);
+        if (pathMatch) {
+            return pathMatch[1].toLowerCase();
+        }
+
+        const params = new URLSearchParams(window.location.search);
+        const queryLang = String(params.get('lang') || '').toLowerCase();
+        if (['kr', 'en', 'jp'].indexOf(queryLang) !== -1) {
+            return queryLang;
+        }
+
+        if (typeof getCurrentLang === 'function') {
+            const helperLang = String(getCurrentLang() || '').toLowerCase();
+            if (['kr', 'en', 'jp'].indexOf(helperLang) !== -1) {
+                return helperLang;
+            }
+        }
+
+        if (typeof LanguageRouter !== 'undefined' && typeof LanguageRouter.getCurrentLanguage === 'function') {
+            const routerLang = String(LanguageRouter.getCurrentLanguage() || '').toLowerCase();
+            if (['kr', 'en', 'jp'].indexOf(routerLang) !== -1) {
+                return routerLang;
+            }
+        }
+
+        return 'kr';
+    }
+
+    function applyArticleSeoMeta(lang) {
+        const baseUrl = 'https://lufel.net';
+        const isPathLang = /^\/(kr|en|jp)(\/|$)/i.test(window.location.pathname);
+        const currentUrl = isPathLang ? `${baseUrl}/${lang}/article/` : `${baseUrl}/article/`;
+        const locale = lang === 'jp' ? 'ja_JP' : lang === 'en' ? 'en_US' : 'ko_KR';
+
+        const canonical = document.querySelector('link[rel="canonical"]');
+        const ogUrl = document.querySelector('meta[property="og:url"]');
+        const ogLocale = document.querySelector('meta[property="og:locale"]');
+
+        if (canonical) canonical.setAttribute('href', currentUrl);
+        if (ogUrl) ogUrl.setAttribute('content', currentUrl);
+        if (ogLocale) ogLocale.setAttribute('content', locale);
+        document.documentElement.setAttribute('lang', lang === 'jp' ? 'ja' : lang === 'en' ? 'en' : 'ko');
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+        const currentLang = detectArticleLang();
+
+        if (typeof initPageI18n === 'function') {
+            await initPageI18n('guides');
+            if (typeof setLang === 'function') {
+                await setLang(currentLang);
+            }
+        } else if (window.I18nService && typeof window.I18nService.init === 'function') {
+            await window.I18nService.init('guides', currentLang);
+        }
+
+        applyArticleSeoMeta(currentLang);
+
+        Navigation.load('article');
+        VersionChecker.check();
+        Guides.loadList();
+    });
+</script>

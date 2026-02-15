@@ -16,7 +16,13 @@
     "seo:tier:generate": "node scripts/seo/generate-tier-pages.mjs",
     "seo:tier:check": "node scripts/seo/generate-tier-pages.mjs --check",
     "seo:schedule:generate": "node scripts/seo/generate-schedule-pages.mjs",
-    "seo:schedule:check": "node scripts/seo/generate-schedule-pages.mjs --check"
+    "seo:schedule:check": "node scripts/seo/generate-schedule-pages.mjs --check",
+    "seo:about:generate": "node scripts/seo/generate-about-pages.mjs",
+    "seo:about:check": "node scripts/seo/generate-about-pages.mjs --check",
+    "seo:gallery:generate": "node scripts/seo/generate-gallery-pages.mjs",
+    "seo:gallery:check": "node scripts/seo/generate-gallery-pages.mjs --check",
+    "seo:article:generate": "node scripts/seo/generate-article-pages.mjs",
+    "seo:article:check": "node scripts/seo/generate-article-pages.mjs --check"
   },
   "keywords": [],
   "author": "",

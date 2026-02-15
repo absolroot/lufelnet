@@ -20,6 +20,7 @@
 | `defense-calc` | 완료(경미 초기값 잔존) | 통합 번들 사용(`apps/defense-calc/index.html:363`), 초기 하드코딩(`apps/defense-calc/index.html:49`)은 `assets/js/defense/defense-i18n.js:236`에서 런타임 치환 |
 | `gallery` | 완료 | `apps/gallery/index.html:104`, `apps/gallery/gallery-tags.js:30`에서 `initPageI18n('gallery')` + `window.t()` 사용 |
 | `login` | 완료 | `apps/login/index.html:133`, `apps/login/index.html:138`에서 `initPageI18n('login')`/`I18nService.init('login')` 호출 |
+| `persona` | 완료 | 통합 초기화 이후 스킬 라벨/배지/접근성 ARIA/상세 SEO fallback을 페이지 번들·공통 키 조회로 통합(`apps/persona/persona-list.js:49`, `apps/persona/persona-list.js:393`, `apps/persona/persona-list.js:710`, `apps/persona/persona-list.js:896`, `apps/persona/skillfrom.js:117`, `apps/persona/skillfrom.js:237`, `apps/persona/index.html:94`, `i18n/pages/persona/kr.js:18`) |
 | `pull-calc` | 완료 | `initPageI18n('pull-calc')` 이후 SEO 태그를 페이지 번들 키(`seoTitle/seoDescription/seoKeywords/seoOgLocale`) 조회로 통합하고 언어 변경 훅으로 재반영(`apps/pull-calc/pull-calc.js:1814`, `apps/pull-calc/pull-calc.js:276`, `apps/pull-calc/pull-calc.js:1822`, `i18n/pages/pull-calc/kr.js:10`) |
 | `revelations` | 완료 | 통합 초기화 + SEO/미출시 라벨/에러 메시지/아코디언 title/reset 버튼을 페이지 번들 키 조회로 통합(`apps/revelations/index.html:615`, `apps/revelations/index.html:428`, `apps/revelations/index.html:837`, `apps/revelations/index.html:647`, `apps/revelations/index.html:687`, `apps/revelations/index.html:997`, `apps/revelations/index.html:1022`, `i18n/pages/revelation/kr.js:26`) |
 | `schedule` | 완료 | `apps/schedule/index.html:203` `initPageI18n('schedule')`, `apps/schedule/index.html:114` `window.t()` 사용 |
@@ -33,7 +34,6 @@
 | --- | --- | --- |
 | `character` | 부분 잔존 | 상세 상단/섹션 라벨은 통합 키 조회로 전환(`apps/character/character.html:735`, `assets/js/character/character-i18n.js:31`)했으나 도움말/보조 모듈 로컬 맵(`assets/js/character/helpmodal.js:13`, `assets/js/character/QEVEL.js:27`) 잔존 |
 | `maps` | 부분 잔존 | 페이지 번들 + `MapsI18n` 사용(`apps/maps/maps-i18n.js:48`) 중이나 언어 선택기 라벨 하드코딩(`apps/maps/index.html:78`, `apps/maps/object-filter-panel.js:493`) 잔존 |
-| `persona` | 부분 잔존 | 통합 초기화(`apps/persona/persona-list.js:49`) 이후에도 fallback 문자열/배지 하드코딩(`apps/persona/persona-list.js:393`, `apps/persona/skillfrom.js:214`, `apps/persona/skillfrom.js:236`) 잔존 |
 | `tactic-maker` | 부분 잔존 | need-stat 카드 라벨은 통합 키 조회로 전환(`apps/tactic-maker/js/need-stat-state.js:133`, `apps/tactic-maker/js/ui-critical-card.js:1806`)했으나 액션 라벨 로컬 맵(`apps/tactic-maker/js/ui-tactic.js:2351`) 잔존 |
 
 ## 3. 통합 i18n 미구현 서비스
@@ -71,7 +71,7 @@
 | `material-calc` | 미구현 |
 | `patch-console` | 불필요 |
 | `pay-calc` | 불필요 |
-| `persona` | 부분 잔존 |
+| `persona` | 완료 |
 | `pull-calc` | 완료 |
 | `pull-tracker` | 미구현 |
 | `revelations` | 완료 |
@@ -83,6 +83,6 @@
 | `wonder-weapon` | 완료 |
 
 ## 6. 결론
-- 재점검 기준 통합 i18n 완료(경미 초기값 잔존 포함): `about`, `astrolabe`, `critical-calc`, `defense-calc`, `gallery`, `login`, `pull-calc`, `revelations`, `schedule`, `synergy`, `tier`, `wonder-weapon`
+- 재점검 기준 통합 i18n 완료(경미 초기값 잔존 포함): `about`, `astrolabe`, `critical-calc`, `defense-calc`, `gallery`, `login`, `persona`, `pull-calc`, `revelations`, `schedule`, `synergy`, `tier`, `wonder-weapon`
 - 우선 정리 대상(미구현): `guides`, `home`, `material-calc`, `pull-tracker`
-- 부분 잔존 정리 대상: `character`, `maps`, `persona`, `tactic-maker`, `tactic`
+- 부분 잔존 정리 대상: `character`, `maps`, `tactic-maker`, `tactic`

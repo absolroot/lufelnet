@@ -15,6 +15,9 @@ window.I18N_PAGE_PERSONA_KR = {
     // SEO
     seoTitle: "주요 페르소나 - 페르소나5 더 팬텀 X",
     seoDescription: "페르소나5 더 팬텀 X의 주요 페르소나 정보. 본능, 고유 스킬, 추천 스킬 정보를 확인하세요.",
+    seoPersonaPrefix: "페르소나 ",
+    seoSiteSuffix: "페르소나5 더 팬텀 X 루페르넷",
+    seoPersonaDefaultDescription: "{name} 정보 및 스킬",
 
     // Labels
     highlight: "HIGHLIGHT",
@@ -41,6 +44,7 @@ window.I18N_PAGE_PERSONA_KR = {
     acqColorBlue: "파랑",
     acqColorWhite: "화이트",
     acqColorRainbow: "무지개",
+    krOnlyBadge: "KR 전용",
 
     // Sort
     sortTier: "티어 순",

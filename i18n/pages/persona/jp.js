@@ -15,6 +15,9 @@ window.I18N_PAGE_PERSONA_JP = {
     // SEO
     seoTitle: "ペルソナ 攻略 - ペルソナ5 ザ・ファントム X",
     seoDescription: "ペルソナ ティア、スキル、固有スキル、推奨スキル情報をご確認ください。| ペルソナ5 ザ・ファントム X",
+    seoPersonaPrefix: "ペルソナ ",
+    seoSiteSuffix: "P5X Lufelnet",
+    seoPersonaDefaultDescription: "{name} 情報とスキル",
 
     // Labels
     highlight: "HIGHLIGHT",
@@ -41,6 +44,7 @@ window.I18N_PAGE_PERSONA_JP = {
     acqColorBlue: "青",
     acqColorWhite: "白",
     acqColorRainbow: "虹",
+    krOnlyBadge: "KR専用",
 
     // Sort
     sortTier: "ティア順",

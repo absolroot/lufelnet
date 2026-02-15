@@ -15,6 +15,9 @@ window.I18N_PAGE_PERSONA_EN = {
     // SEO
     seoTitle: "Personas Build & Guide - Persona 5: The Phantom X",
     seoDescription: "Persona Tiers, Skills, and Talent for Persona 5: The Phantom X.",
+    seoPersonaPrefix: "Persona ",
+    seoSiteSuffix: "P5X Lufelnet",
+    seoPersonaDefaultDescription: "{name} Info & Skills",
 
     // Labels
     highlight: "HIGHLIGHT",
@@ -41,6 +44,7 @@ window.I18N_PAGE_PERSONA_EN = {
     acqColorBlue: "Blue",
     acqColorWhite: "White",
     acqColorRainbow: "Rainbow",
+    krOnlyBadge: "KR Only",
 
     // Sort
     sortTier: "Tier",

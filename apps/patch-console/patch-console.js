@@ -292,6 +292,16 @@ function normalizeView(view) {
   return VALID_VIEWS.has(String(view || '')) ? String(view) : 'work';
 }
 
+function syncViewTabsForDomain() {
+  if (!dom.viewTabs?.length) return;
+  for (const tab of dom.viewTabs) {
+    const view = String(tab.dataset.view || '').trim();
+    const visible = view !== 'revelation-admin' || state.domain === 'revelation';
+    tab.classList.toggle('hidden', !visible);
+    tab.disabled = !visible;
+  }
+}
+
 function getViewPath(view) {
   const next = normalizeView(view);
   try {
@@ -306,7 +316,9 @@ function getViewPath(view) {
 }
 
 function setActiveView(view) {
-  state.activeView = normalizeView(view);
+  const normalized = normalizeView(view);
+  state.activeView = (normalized === 'revelation-admin' && state.domain !== 'revelation') ? 'work' : normalized;
+  syncViewTabsForDomain();
   if (dom.panelWork) dom.panelWork.classList.toggle('hidden', state.activeView !== 'work');
   if (dom.panelIgnored) dom.panelIgnored.classList.toggle('hidden', state.activeView !== 'ignored');
   if (dom.panelEditor) dom.panelEditor.classList.toggle('hidden', state.activeView !== 'editor');
@@ -1392,6 +1404,7 @@ function domainSupports(feature) {
 
 function updateDomainDependentUi() {
   if (dom.currentDomain) dom.currentDomain.textContent = state.domain;
+  syncViewTabsForDomain();
   if (dom.addCharacterGroup) {
     dom.addCharacterGroup.classList.toggle('hidden', state.domain !== 'character');
   }
@@ -2187,6 +2200,12 @@ async function loadCapabilities() {
   } finally {
     resetSelectedParts(state.domain);
     setLangInputForDomain(state.domain);
+    if (state.domain === 'revelation' && state.activeView !== 'revelation-admin') {
+      state.activeView = 'revelation-admin';
+    }
+    if (state.domain !== 'revelation' && state.activeView === 'revelation-admin') {
+      state.activeView = 'work';
+    }
     renderPartsMenu();
     updatePartsToggleLabel();
     renderDomainTabs();
@@ -2684,6 +2703,561 @@ async function addRevelation() {
     await generateReport();
   }
 }
+
+function cloneData(value) {
+  if (value === undefined) return undefined;
+  return JSON.parse(JSON.stringify(value));
+}
+
+function revelationAdminState() {
+  return state.revelationAdmin;
+}
+
+function revelationAdminOptionById(id) {
+  const rev = revelationAdminState();
+  const all = [...(rev.options.main || []), ...(rev.options.sub || [])];
+  return all.find((item) => String(item.id || '') === String(id || '')) || null;
+}
+
+function revelationNameById(id, lang = 'kr') {
+  const card = revelationAdminOptionById(id);
+  if (!card) return String(id || '');
+  return String(card.names?.[lang] || card.names?.kr || id || '');
+}
+
+function revelationParseCardId(id) {
+  const text = String(id || '').trim();
+  const idx = text.indexOf(':');
+  if (idx <= 0) return { kind: '', kr: text };
+  return {
+    kind: text.slice(0, idx).trim(),
+    kr: text.slice(idx + 1).trim()
+  };
+}
+
+function revelationDraftSignature(value) {
+  try {
+    return JSON.stringify(value ?? null);
+  } catch {
+    return '';
+  }
+}
+
+function updateRevelationAdminDirtyState() {
+  const rev = revelationAdminState();
+  const before = revelationDraftSignature(rev.detail);
+  const after = revelationDraftSignature(rev.draft);
+  rev.dirty = Boolean(rev.draft) && before !== after;
+  if (dom.revAdminDirtyState) {
+    dom.revAdminDirtyState.textContent = rev.dirty ? 'dirty (save required)' : 'saved';
+  }
+}
+
+function applyRevelationAdminDraftMutation(mutator, { refreshList = false, refreshDetail = false } = {}) {
+  const rev = revelationAdminState();
+  if (!rev.draft || typeof rev.draft !== 'object') return;
+  mutator(rev.draft);
+  updateRevelationAdminDirtyState();
+  if (refreshList) renderRevelationAdminCardList();
+  if (refreshDetail) renderRevelationAdminDetail();
+}
+
+function clearRevelationAdminState() {
+  const rev = revelationAdminState();
+  rev.revision = '';
+  rev.cards = [];
+  rev.options = { main: [], sub: [] };
+  rev.selectedId = '';
+  rev.detail = null;
+  rev.draft = null;
+  rev.dirty = false;
+}
+
+async function handleRevelationAdminAction(action, actionLabel) {
+  try {
+    await action();
+    return true;
+  } catch (error) {
+    if (Number(error?.status) === 409) {
+      appendLog(`[revelation] ${actionLabel} failed: stale revision. reloading latest data.`);
+      try {
+        await loadRevelationAdminBootstrap({ preserveSelection: true });
+      } catch (reloadError) {
+        appendLog(`[revelation] reload after conflict failed: ${reloadError.message}`);
+      }
+      return false;
+    }
+    appendLog(`[revelation] ${actionLabel} failed: ${error.message}`);
+    return false;
+  }
+}
+
+function ensureMainEffectEntry(draft, subId) {
+  if (!draft.effects || typeof draft.effects !== 'object') draft.effects = {};
+  if (!draft.effects.bySubId || typeof draft.effects.bySubId !== 'object') draft.effects.bySubId = {};
+  if (!draft.effects.bySubId[subId] || typeof draft.effects.bySubId[subId] !== 'object') {
+    draft.effects.bySubId[subId] = { kr: '', en: '', jp: '', cn: '' };
+  }
+  for (const lang of ['kr', 'en', 'jp', 'cn']) {
+    if (draft.effects.bySubId[subId][lang] == null) draft.effects.bySubId[subId][lang] = '';
+  }
+  return draft.effects.bySubId[subId];
+}
+
+function normalizeRevelationDraftShape(draft) {
+  if (!draft || typeof draft !== 'object') return null;
+  if (!draft.names || typeof draft.names !== 'object') draft.names = { kr: '', en: '', jp: '', cn: '' };
+  for (const lang of ['kr', 'en', 'jp', 'cn']) {
+    if (draft.names[lang] == null) draft.names[lang] = '';
+  }
+  if (!Array.isArray(draft.types)) draft.types = parseCsv(draft.types || '');
+  if (!draft.relations || typeof draft.relations !== 'object') draft.relations = {};
+  if (!Array.isArray(draft.relations.subIds)) draft.relations.subIds = [];
+  if (!Array.isArray(draft.relations.mainIds)) draft.relations.mainIds = [];
+  if (!draft.effects || typeof draft.effects !== 'object') draft.effects = {};
+  if (draft.kind === 'main') {
+    if (!draft.effects.bySubId || typeof draft.effects.bySubId !== 'object') draft.effects.bySubId = {};
+  } else {
+    if (!draft.effects.set2 || typeof draft.effects.set2 !== 'object') draft.effects.set2 = { kr: '', en: '', jp: '', cn: '' };
+    if (!draft.effects.set4 || typeof draft.effects.set4 !== 'object') draft.effects.set4 = { kr: '', en: '', jp: '', cn: '' };
+    for (const lang of ['kr', 'en', 'jp', 'cn']) {
+      if (draft.effects.set2[lang] == null) draft.effects.set2[lang] = '';
+      if (draft.effects.set4[lang] == null) draft.effects.set4[lang] = '';
+    }
+  }
+  return draft;
+}
+
+function filteredRevelationAdminCards() {
+  const rev = revelationAdminState();
+  const q = String(dom.revAdminSearch?.value || '').trim().toLowerCase();
+  const kindFilter = String(dom.revAdminKindFilter?.value || 'all').trim().toLowerCase();
+  const unreleasedFilter = String(dom.revAdminUnreleasedFilter?.value || 'all').trim().toLowerCase();
+
+  return (Array.isArray(rev.cards) ? rev.cards : []).filter((card) => {
+    const kindMatch = kindFilter === 'all' || String(card.kind || '') === kindFilter;
+    if (!kindMatch) return false;
+
+    if (unreleasedFilter === 'yes' && !card.unreleased) return false;
+    if (unreleasedFilter === 'no' && card.unreleased) return false;
+
+    if (!q) return true;
+    const source = `${card.id || ''} ${card.names?.kr || ''} ${card.names?.en || ''} ${card.names?.jp || ''} ${card.names?.cn || ''} ${(card.types || []).join(' ')}`.toLowerCase();
+    return source.includes(q);
+  });
+}
+
+function renderRevelationAdminCardList() {
+  if (!dom.revAdminCardList) return;
+  const rev = revelationAdminState();
+  const rows = filteredRevelationAdminCards();
+  if (rows.length === 0) {
+    dom.revAdminCardList.innerHTML = '<p class="muted" style="padding:10px;">No cards to display.</p>';
+    return;
+  }
+
+  dom.revAdminCardList.innerHTML = rows.map((card) => {
+    const active = String(card.id || '') === String(rev.selectedId || '') ? 'active' : '';
+    const icon = card.icon
+      ? `<img class="char-icon" src="${escapeHtml(card.icon)}" alt="">`
+      : '<div class="char-icon-fallback">N/A</div>';
+    const badges = [
+      `<span class="revelation-admin-badge ${escapeHtml(card.kind)}">${escapeHtml(card.kind)}</span>`,
+      card.unreleased ? '<span class="revelation-admin-badge unreleased">unreleased</span>' : '',
+      (rev.dirty && String(card.id || '') === String(rev.selectedId || ''))
+        ? '<span class="revelation-admin-badge dirty">dirty</span>'
+        : '',
+      `<span class="revelation-admin-badge">links:${Number(card.relationCount || 0)}</span>`
+    ].filter(Boolean).join('');
+    return `
+      <div class="revelation-admin-card-item ${active}" data-card-id="${escapeHtml(card.id)}">
+        ${icon}
+        <div class="revelation-admin-card-main">
+          <strong>${escapeHtml(card.names?.kr || card.id)}</strong>
+          <p class="revelation-admin-card-subline">${escapeHtml(card.names?.en || '-')} | ${escapeHtml(card.names?.jp || '-')} | ${escapeHtml(card.names?.cn || '-')}</p>
+          <div class="revelation-admin-badges">${badges}</div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function renderRevelationAdminMainFields(draft) {
+  if (!dom.revAdminMainSubOptions || !dom.revAdminMainEffects) return;
+  const rev = revelationAdminState();
+  const selected = new Set(Array.isArray(draft.relations?.subIds) ? draft.relations.subIds : []);
+  const options = Array.isArray(rev.options.sub) ? rev.options.sub : [];
+
+  dom.revAdminMainSubOptions.innerHTML = options.map((item) => {
+    const checked = selected.has(item.id) ? 'checked' : '';
+    const label = `${item.names?.kr || item.id} | ${item.names?.en || '-'} | ${item.names?.jp || '-'} | ${item.names?.cn || '-'}`;
+    return `<label class="revelation-admin-sub-option"><input class="rev-admin-main-sub-check" type="checkbox" data-sub-id="${escapeHtml(item.id)}" ${checked}> <span>${escapeHtml(label)}</span></label>`;
+  }).join('');
+
+  const selectedIds = Array.isArray(draft.relations?.subIds) ? draft.relations.subIds : [];
+  const rows = selectedIds.map((subId) => {
+    const effect = ensureMainEffectEntry(draft, subId);
+    const title = revelationNameById(subId, 'kr');
+    return `
+      <div class="revelation-admin-main-effect-row">
+        <h4>${escapeHtml(title)}</h4>
+        <div class="revelation-admin-main-effect-grid">
+          <div class="field"><label>KR</label><textarea class="rev-admin-main-effect-text" data-sub-id="${escapeHtml(subId)}" data-lang="kr" rows="2">${escapeHtml(effect.kr || '')}</textarea></div>
+          <div class="field"><label>EN</label><textarea class="rev-admin-main-effect-text" data-sub-id="${escapeHtml(subId)}" data-lang="en" rows="2">${escapeHtml(effect.en || '')}</textarea></div>
+          <div class="field"><label>JP</label><textarea class="rev-admin-main-effect-text" data-sub-id="${escapeHtml(subId)}" data-lang="jp" rows="2">${escapeHtml(effect.jp || '')}</textarea></div>
+          <div class="field"><label>CN</label><textarea class="rev-admin-main-effect-text" data-sub-id="${escapeHtml(subId)}" data-lang="cn" rows="2">${escapeHtml(effect.cn || '')}</textarea></div>
+        </div>
+      </div>
+    `;
+  });
+
+  dom.revAdminMainEffects.innerHTML = rows.length > 0
+    ? rows.join('')
+    : '<p class="muted small">Select at least one sub card to edit main effects.</p>';
+}
+
+function renderRevelationAdminSubFields(draft) {
+  if (!dom.revAdminSubMainRefs) return;
+  const mainIds = Array.isArray(draft.relations?.mainIds) ? draft.relations.mainIds : [];
+  dom.revAdminSubMainRefs.innerHTML = mainIds.length > 0
+    ? mainIds.map((id) => `<span class="revelation-admin-chip">${escapeHtml(revelationNameById(id, 'kr'))}</span>`).join('')
+    : '<span class="muted small">No linked main cards.</span>';
+
+  if (dom.revAdminSubSet2Kr) dom.revAdminSubSet2Kr.value = String(draft.effects?.set2?.kr || '');
+  if (dom.revAdminSubSet4Kr) dom.revAdminSubSet4Kr.value = String(draft.effects?.set4?.kr || '');
+  if (dom.revAdminSubSet2En) dom.revAdminSubSet2En.value = String(draft.effects?.set2?.en || '');
+  if (dom.revAdminSubSet4En) dom.revAdminSubSet4En.value = String(draft.effects?.set4?.en || '');
+  if (dom.revAdminSubSet2Jp) dom.revAdminSubSet2Jp.value = String(draft.effects?.set2?.jp || '');
+  if (dom.revAdminSubSet4Jp) dom.revAdminSubSet4Jp.value = String(draft.effects?.set4?.jp || '');
+  if (dom.revAdminSubSet2Cn) dom.revAdminSubSet2Cn.value = String(draft.effects?.set2?.cn || '');
+  if (dom.revAdminSubSet4Cn) dom.revAdminSubSet4Cn.value = String(draft.effects?.set4?.cn || '');
+}
+
+function renderRevelationAdminDetail() {
+  const rev = revelationAdminState();
+  if (!dom.revAdminEmpty || !dom.revAdminDetail) return;
+
+  const draft = normalizeRevelationDraftShape(cloneData(rev.draft));
+  if (!draft) {
+    dom.revAdminEmpty.classList.remove('hidden');
+    dom.revAdminDetail.classList.add('hidden');
+    renderRevelationAdminCardList();
+    return;
+  }
+
+  rev.draft = draft;
+  dom.revAdminEmpty.classList.add('hidden');
+  dom.revAdminDetail.classList.remove('hidden');
+
+  if (dom.revAdminCardId) dom.revAdminCardId.textContent = String(draft.id || '-');
+  if (dom.revAdminCardKind) dom.revAdminCardKind.textContent = String(draft.kind || '-');
+  if (dom.revAdminNameKr) dom.revAdminNameKr.value = String(draft.names?.kr || '');
+  if (dom.revAdminNameEn) dom.revAdminNameEn.value = String(draft.names?.en || '');
+  if (dom.revAdminNameJp) dom.revAdminNameJp.value = String(draft.names?.jp || '');
+  if (dom.revAdminNameCn) dom.revAdminNameCn.value = String(draft.names?.cn || '');
+  if (dom.revAdminTypes) dom.revAdminTypes.value = parseCsv(draft.types || []).join(',');
+  if (dom.revAdminUnreleased) dom.revAdminUnreleased.checked = Boolean(draft.unreleased);
+
+  const isMain = draft.kind === 'main';
+  if (dom.revAdminMainFields) dom.revAdminMainFields.classList.toggle('hidden', !isMain);
+  if (dom.revAdminSubFields) dom.revAdminSubFields.classList.toggle('hidden', isMain);
+  if (isMain) renderRevelationAdminMainFields(draft);
+  else renderRevelationAdminSubFields(draft);
+
+  updateRevelationAdminDirtyState();
+  renderRevelationAdminCardList();
+}
+
+function renderRevelationAdminCreateMainFields() {
+  if (!dom.revAdminCreateMainSubOptions || !dom.revAdminCreateMainEffects) return;
+  const rev = revelationAdminState();
+  const options = Array.isArray(rev.options.sub) ? rev.options.sub : [];
+
+  const oldChecked = new Set(
+    Array.from(dom.revAdminCreateMainSubOptions.querySelectorAll('input.rev-admin-create-main-sub-check:checked'))
+      .map((input) => String(input.dataset.subId || ''))
+      .filter(Boolean)
+  );
+
+  dom.revAdminCreateMainSubOptions.innerHTML = options.map((item) => {
+    const checked = oldChecked.has(item.id) ? 'checked' : '';
+    const label = `${item.names?.kr || item.id} | ${item.names?.en || '-'} | ${item.names?.jp || '-'} | ${item.names?.cn || '-'}`;
+    return `<label class="revelation-admin-sub-option"><input class="rev-admin-create-main-sub-check" type="checkbox" data-sub-id="${escapeHtml(item.id)}" ${checked}> <span>${escapeHtml(label)}</span></label>`;
+  }).join('');
+
+  const prevValue = {};
+  for (const textarea of dom.revAdminCreateMainEffects.querySelectorAll('textarea.rev-admin-create-main-effect-text')) {
+    const subId = String(textarea.dataset.subId || '');
+    const lang = String(textarea.dataset.lang || '');
+    if (!subId || !lang) continue;
+    prevValue[`${subId}:${lang}`] = textarea.value || '';
+  }
+
+  const selectedIds = Array.from(dom.revAdminCreateMainSubOptions.querySelectorAll('input.rev-admin-create-main-sub-check:checked'))
+    .map((input) => String(input.dataset.subId || ''))
+    .filter(Boolean);
+
+  const rows = selectedIds.map((subId) => `
+      <div class="revelation-admin-main-effect-row">
+        <h4>${escapeHtml(revelationNameById(subId, 'kr'))}</h4>
+        <div class="revelation-admin-main-effect-grid">
+          <div class="field"><label>KR</label><textarea class="rev-admin-create-main-effect-text" data-sub-id="${escapeHtml(subId)}" data-lang="kr" rows="2">${escapeHtml(prevValue[`${subId}:kr`] || '')}</textarea></div>
+          <div class="field"><label>EN</label><textarea class="rev-admin-create-main-effect-text" data-sub-id="${escapeHtml(subId)}" data-lang="en" rows="2">${escapeHtml(prevValue[`${subId}:en`] || '')}</textarea></div>
+          <div class="field"><label>JP</label><textarea class="rev-admin-create-main-effect-text" data-sub-id="${escapeHtml(subId)}" data-lang="jp" rows="2">${escapeHtml(prevValue[`${subId}:jp`] || '')}</textarea></div>
+          <div class="field"><label>CN</label><textarea class="rev-admin-create-main-effect-text" data-sub-id="${escapeHtml(subId)}" data-lang="cn" rows="2">${escapeHtml(prevValue[`${subId}:cn`] || '')}</textarea></div>
+        </div>
+      </div>
+    `);
+
+  dom.revAdminCreateMainEffects.innerHTML = rows.length > 0
+    ? rows.join('')
+    : '<p class="muted small">Select sub cards to enter main effects.</p>';
+}
+
+function resetRevelationAdminCreateForm() {
+  if (dom.revAdminCreateKind) dom.revAdminCreateKind.value = 'sub';
+  if (dom.revAdminCreateNameKr) dom.revAdminCreateNameKr.value = '';
+  if (dom.revAdminCreateNameEn) dom.revAdminCreateNameEn.value = '';
+  if (dom.revAdminCreateNameJp) dom.revAdminCreateNameJp.value = '';
+  if (dom.revAdminCreateNameCn) dom.revAdminCreateNameCn.value = '';
+  if (dom.revAdminCreateTypes) dom.revAdminCreateTypes.value = '';
+  if (dom.revAdminCreateUnreleased) dom.revAdminCreateUnreleased.checked = false;
+  if (dom.revAdminCreateSubSet2Kr) dom.revAdminCreateSubSet2Kr.value = '';
+  if (dom.revAdminCreateSubSet4Kr) dom.revAdminCreateSubSet4Kr.value = '';
+  if (dom.revAdminCreateSubSet2En) dom.revAdminCreateSubSet2En.value = '';
+  if (dom.revAdminCreateSubSet4En) dom.revAdminCreateSubSet4En.value = '';
+  if (dom.revAdminCreateSubSet2Jp) dom.revAdminCreateSubSet2Jp.value = '';
+  if (dom.revAdminCreateSubSet4Jp) dom.revAdminCreateSubSet4Jp.value = '';
+  if (dom.revAdminCreateSubSet2Cn) dom.revAdminCreateSubSet2Cn.value = '';
+  if (dom.revAdminCreateSubSet4Cn) dom.revAdminCreateSubSet4Cn.value = '';
+  if (dom.revAdminCreateMainSubOptions) dom.revAdminCreateMainSubOptions.innerHTML = '';
+  if (dom.revAdminCreateMainEffects) dom.revAdminCreateMainEffects.innerHTML = '';
+}
+
+function renderRevelationAdminCreatePanel() {
+  const rev = revelationAdminState();
+  if (!dom.revAdminCreate) return;
+  dom.revAdminCreate.classList.toggle('hidden', !rev.createOpen);
+  if (!rev.createOpen) return;
+
+  const kind = String(dom.revAdminCreateKind?.value || 'sub').trim().toLowerCase();
+  const isMain = kind === 'main';
+  if (dom.revAdminCreateMainFields) dom.revAdminCreateMainFields.classList.toggle('hidden', !isMain);
+  if (dom.revAdminCreateSubFields) dom.revAdminCreateSubFields.classList.toggle('hidden', isMain);
+  if (isMain) renderRevelationAdminCreateMainFields();
+}
+
+function renderRevelationAdminCreateToggle() {
+  if (!dom.btnRevAdminNewToggle) return;
+  const rev = revelationAdminState();
+  dom.btnRevAdminNewToggle.textContent = rev.createOpen ? 'Close New Card' : 'New Card';
+}
+
+function setRevelationAdminCreateOpen(open) {
+  const rev = revelationAdminState();
+  rev.createOpen = Boolean(open);
+  renderRevelationAdminCreateToggle();
+  renderRevelationAdminCreatePanel();
+}
+
+async function loadRevelationAdminCard(id, { confirmDirty = true } = {}) {
+  const rev = revelationAdminState();
+  const nextId = String(id || '').trim();
+  if (!nextId) return;
+  if (confirmDirty && rev.dirty && rev.selectedId && rev.selectedId !== nextId) {
+    const ok = window.confirm('Current draft is not saved. Discard changes and move to another card?');
+    if (!ok) return;
+  }
+
+  const result = await requestJson(`/api/revelation-admin/card?id=${encodeURIComponent(nextId)}`);
+  rev.revision = String(result.revision || rev.revision || '');
+  rev.options = result.options || { main: [], sub: [] };
+  rev.selectedId = nextId;
+  rev.detail = cloneData(result.card);
+  rev.draft = cloneData(result.card);
+  rev.dirty = false;
+  renderRevelationAdminDetail();
+}
+
+async function loadRevelationAdminBootstrap({ preserveSelection = true } = {}) {
+  const rev = revelationAdminState();
+  const selected = preserveSelection ? String(rev.selectedId || '').trim() : '';
+  const result = await requestJson('/api/revelation-admin/bootstrap');
+  rev.revision = String(result.revision || '');
+  rev.cards = Array.isArray(result.cards) ? result.cards : [];
+  rev.options = result.options || { main: [], sub: [] };
+
+  if (selected && rev.cards.some((card) => String(card.id || '') === selected)) {
+    await loadRevelationAdminCard(selected, { confirmDirty: false });
+    return;
+  }
+
+  rev.selectedId = '';
+  rev.detail = null;
+  rev.draft = null;
+  rev.dirty = false;
+  renderRevelationAdminDetail();
+  renderRevelationAdminCardList();
+}
+
+async function ensureRevelationAdminBootstrapped(force = false) {
+  if (state.domain !== 'revelation') return;
+  const rev = revelationAdminState();
+  if (!force && Array.isArray(rev.cards) && rev.cards.length > 0) {
+    renderRevelationAdminCardList();
+    renderRevelationAdminDetail();
+    return;
+  }
+  try {
+    await loadRevelationAdminBootstrap({ preserveSelection: true });
+  } catch (error) {
+    appendLog(`[revelation] admin bootstrap failed: ${error.message}`);
+  }
+}
+
+async function saveRevelationAdminCard() {
+  const rev = revelationAdminState();
+  if (state.domain !== 'revelation') return;
+  if (!rev.selectedId || !rev.draft) {
+    appendLog('[revelation] select a card before saving.');
+    return;
+  }
+  const result = await requestJson('/api/revelation-admin/save-card', {
+    method: 'POST',
+    body: {
+      id: rev.selectedId,
+      revision: rev.revision,
+      draft: rev.draft
+    }
+  });
+  rev.revision = String(result.revision || rev.revision || '');
+  rev.cards = Array.isArray(result.cards) ? result.cards : rev.cards;
+  rev.options = result.options || rev.options;
+  rev.selectedId = String(result.card?.id || rev.selectedId);
+  rev.detail = cloneData(result.card);
+  rev.draft = cloneData(result.card);
+  rev.dirty = false;
+  renderRevelationAdminDetail();
+  renderRevelationAdminCardList();
+  appendLog(`[revelation] card saved: ${rev.selectedId}`);
+}
+
+function resetRevelationAdminDraft() {
+  const rev = revelationAdminState();
+  if (!rev.detail) return;
+  rev.draft = cloneData(rev.detail);
+  rev.dirty = false;
+  renderRevelationAdminDetail();
+}
+
+async function renameRevelationAdminKr() {
+  const rev = revelationAdminState();
+  if (!rev.selectedId || !rev.detail) return;
+  const parsed = revelationParseCardId(rev.selectedId);
+  const nextKr = window.prompt('New KR key', parsed.kr || '');
+  if (nextKr == null) return;
+  const trimmed = String(nextKr || '').trim();
+  if (!trimmed || trimmed === parsed.kr) return;
+
+  const result = await requestJson('/api/revelation-admin/rename-kr', {
+    method: 'POST',
+    body: {
+      id: rev.selectedId,
+      revision: rev.revision,
+      nextKr: trimmed
+    }
+  });
+  rev.revision = String(result.revision || rev.revision || '');
+  rev.cards = Array.isArray(result.cards) ? result.cards : rev.cards;
+  rev.options = result.options || rev.options;
+  rev.selectedId = String(result.newId || result.card?.id || rev.selectedId);
+  rev.detail = cloneData(result.card);
+  rev.draft = cloneData(result.card);
+  rev.dirty = false;
+  renderRevelationAdminDetail();
+  renderRevelationAdminCardList();
+  appendLog(`[revelation] KR renamed: ${parsed.kr} -> ${trimmed}`);
+}
+
+function collectCreateMainPayload() {
+  const subIds = Array.from(dom.revAdminCreateMainSubOptions?.querySelectorAll('input.rev-admin-create-main-sub-check:checked') || [])
+    .map((input) => String(input.dataset.subId || ''))
+    .filter(Boolean);
+  const bySubId = {};
+  for (const textarea of dom.revAdminCreateMainEffects?.querySelectorAll('textarea.rev-admin-create-main-effect-text') || []) {
+    const subId = String(textarea.dataset.subId || '');
+    const lang = String(textarea.dataset.lang || '');
+    if (!subId || !lang) continue;
+    if (!bySubId[subId]) bySubId[subId] = { kr: '', en: '', jp: '', cn: '' };
+    bySubId[subId][lang] = String(textarea.value || '').trim();
+  }
+  return { subIds, bySubId };
+}
+
+function collectCreateSubPayload() {
+  return {
+    set2: {
+      kr: String(dom.revAdminCreateSubSet2Kr?.value || '').trim(),
+      en: String(dom.revAdminCreateSubSet2En?.value || '').trim(),
+      jp: String(dom.revAdminCreateSubSet2Jp?.value || '').trim(),
+      cn: String(dom.revAdminCreateSubSet2Cn?.value || '').trim()
+    },
+    set4: {
+      kr: String(dom.revAdminCreateSubSet4Kr?.value || '').trim(),
+      en: String(dom.revAdminCreateSubSet4En?.value || '').trim(),
+      jp: String(dom.revAdminCreateSubSet4Jp?.value || '').trim(),
+      cn: String(dom.revAdminCreateSubSet4Cn?.value || '').trim()
+    }
+  };
+}
+
+async function createRevelationAdminCard() {
+  const rev = revelationAdminState();
+  const kind = String(dom.revAdminCreateKind?.value || '').trim().toLowerCase();
+  const names = {
+    kr: String(dom.revAdminCreateNameKr?.value || '').trim(),
+    en: String(dom.revAdminCreateNameEn?.value || '').trim(),
+    jp: String(dom.revAdminCreateNameJp?.value || '').trim(),
+    cn: String(dom.revAdminCreateNameCn?.value || '').trim()
+  };
+  if (!kind || !names.kr || !names.en || !names.jp || !names.cn) {
+    appendLog('[revelation] create failed: kind and all localized names are required.');
+    return;
+  }
+
+  const payload = {
+    revision: rev.revision,
+    kind,
+    names,
+    types: parseCsv(String(dom.revAdminCreateTypes?.value || '')),
+    unreleased: Boolean(dom.revAdminCreateUnreleased?.checked),
+    payload: {}
+  };
+
+  if (kind === 'main') {
+    payload.payload.main = collectCreateMainPayload();
+  } else {
+    payload.payload.sub = collectCreateSubPayload();
+  }
+
+  const result = await requestJson('/api/revelation-admin/create-card', {
+    method: 'POST',
+    body: payload
+  });
+
+  rev.revision = String(result.revision || rev.revision || '');
+  rev.cards = Array.isArray(result.cards) ? result.cards : rev.cards;
+  rev.options = result.options || rev.options;
+  rev.selectedId = String(result.id || result.card?.id || '');
+  rev.detail = cloneData(result.card);
+  rev.draft = cloneData(result.card);
+  rev.dirty = false;
+  setRevelationAdminCreateOpen(false);
+  resetRevelationAdminCreateForm();
+  renderRevelationAdminDetail();
+  renderRevelationAdminCardList();
+  appendLog(`[revelation] card created: ${rev.selectedId}`);
+}
 function bindPartsPicker() {
   if (!dom.partsToggle || !dom.partsMenu || !dom.partsPicker) return;
   renderPartsMenu();
@@ -2736,11 +3310,19 @@ function bindDomainEvents() {
     state.activeRowId = null;
     state.activeListIndex = null;
     state.ignoredCount = 0;
+    setRevelationAdminCreateOpen(false);
     clearIgnoredFilterInputs();
     resetSelectedParts(state.domain);
     setLangInputForDomain(state.domain);
     state.dataDomain = state.domain;
     state.dataRoot = '';
+
+    if (state.domain === 'revelation') {
+      setActiveView('revelation-admin');
+    } else if (state.activeView === 'revelation-admin') {
+      setActiveView('work');
+    }
+    if (state.domain !== 'revelation') clearRevelationAdminState();
 
     renderDomainTabs();
     updateDomainDependentUi();
@@ -2759,6 +3341,12 @@ function bindDomainEvents() {
 
     await refreshPatchWorkspace();
 
+    if (state.domain === 'revelation') {
+      await ensureRevelationAdminBootstrapped(true);
+      resetRevelationAdminCreateForm();
+      renderRevelationAdminCreatePanel();
+    }
+
     try {
       await loadDataFileList();
     } catch (error) {
@@ -2775,6 +3363,10 @@ function bindEvents() {
         if (!target) return;
         const nextView = target.dataset.view;
         if (!nextView) return;
+        if (nextView === 'revelation-admin' && state.domain !== 'revelation') {
+          appendLog('[revelation] Revelation Admin view is only available in revelation domain.');
+          return;
+        }
         setActiveView(nextView);
       });
     }
@@ -2803,6 +3395,227 @@ function bindEvents() {
   dom.reportSearch?.addEventListener('input', () => {
     state.reportSearch = dom.reportSearch.value || '';
     renderReportTable();
+  });
+
+  dom.revAdminSearch?.addEventListener('input', () => {
+    renderRevelationAdminCardList();
+  });
+
+  dom.revAdminKindFilter?.addEventListener('change', () => {
+    renderRevelationAdminCardList();
+  });
+
+  dom.revAdminUnreleasedFilter?.addEventListener('change', () => {
+    renderRevelationAdminCardList();
+  });
+
+  dom.btnRevAdminRefresh?.addEventListener('click', async () => {
+    if (state.domain !== 'revelation') return;
+    try {
+      setPending(dom.btnRevAdminRefresh, true);
+      await loadRevelationAdminBootstrap({ preserveSelection: true });
+      appendLog('[revelation] admin cards refreshed.');
+    } catch (error) {
+      appendLog(`[revelation] admin refresh failed: ${error.message}`);
+    } finally {
+      setPending(dom.btnRevAdminRefresh, false);
+    }
+  });
+
+  dom.btnRevAdminNewToggle?.addEventListener('click', () => {
+    if (state.domain !== 'revelation') return;
+    const rev = revelationAdminState();
+    const nextOpen = !rev.createOpen;
+    if (nextOpen) resetRevelationAdminCreateForm();
+    setRevelationAdminCreateOpen(nextOpen);
+  });
+
+  dom.revAdminCardList?.addEventListener('click', async (event) => {
+    const item = closestFromTarget(event.target, '.revelation-admin-card-item');
+    if (!item) return;
+    const id = String(item.dataset.cardId || '').trim();
+    if (!id) return;
+    await handleRevelationAdminAction(async () => {
+      await loadRevelationAdminCard(id);
+    }, `card load (${id})`);
+  });
+
+  const revealNameInputs = [
+    ['en', dom.revAdminNameEn],
+    ['jp', dom.revAdminNameJp],
+    ['cn', dom.revAdminNameCn]
+  ];
+  for (const [lang, input] of revealNameInputs) {
+    input?.addEventListener('input', () => {
+      applyRevelationAdminDraftMutation((draft) => {
+        if (!draft.names || typeof draft.names !== 'object') draft.names = { kr: '', en: '', jp: '', cn: '' };
+        draft.names[lang] = String(input.value || '');
+      }, { refreshList: true });
+    });
+  }
+
+  dom.revAdminTypes?.addEventListener('input', () => {
+    applyRevelationAdminDraftMutation((draft) => {
+      draft.types = parseCsv(dom.revAdminTypes?.value || '');
+    }, { refreshList: true });
+  });
+
+  dom.revAdminUnreleased?.addEventListener('change', () => {
+    applyRevelationAdminDraftMutation((draft) => {
+      draft.unreleased = Boolean(dom.revAdminUnreleased?.checked);
+    }, { refreshList: true });
+  });
+
+  dom.revAdminSubSet2Kr?.addEventListener('input', () => {
+    applyRevelationAdminDraftMutation((draft) => {
+      if (!draft.effects || typeof draft.effects !== 'object') draft.effects = {};
+      if (!draft.effects.set2 || typeof draft.effects.set2 !== 'object') draft.effects.set2 = { kr: '', en: '', jp: '', cn: '' };
+      draft.effects.set2.kr = String(dom.revAdminSubSet2Kr?.value || '');
+    });
+  });
+  dom.revAdminSubSet4Kr?.addEventListener('input', () => {
+    applyRevelationAdminDraftMutation((draft) => {
+      if (!draft.effects || typeof draft.effects !== 'object') draft.effects = {};
+      if (!draft.effects.set4 || typeof draft.effects.set4 !== 'object') draft.effects.set4 = { kr: '', en: '', jp: '', cn: '' };
+      draft.effects.set4.kr = String(dom.revAdminSubSet4Kr?.value || '');
+    });
+  });
+  dom.revAdminSubSet2En?.addEventListener('input', () => {
+    applyRevelationAdminDraftMutation((draft) => {
+      if (!draft.effects || typeof draft.effects !== 'object') draft.effects = {};
+      if (!draft.effects.set2 || typeof draft.effects.set2 !== 'object') draft.effects.set2 = { kr: '', en: '', jp: '', cn: '' };
+      draft.effects.set2.en = String(dom.revAdminSubSet2En?.value || '');
+    });
+  });
+  dom.revAdminSubSet4En?.addEventListener('input', () => {
+    applyRevelationAdminDraftMutation((draft) => {
+      if (!draft.effects || typeof draft.effects !== 'object') draft.effects = {};
+      if (!draft.effects.set4 || typeof draft.effects.set4 !== 'object') draft.effects.set4 = { kr: '', en: '', jp: '', cn: '' };
+      draft.effects.set4.en = String(dom.revAdminSubSet4En?.value || '');
+    });
+  });
+  dom.revAdminSubSet2Jp?.addEventListener('input', () => {
+    applyRevelationAdminDraftMutation((draft) => {
+      if (!draft.effects || typeof draft.effects !== 'object') draft.effects = {};
+      if (!draft.effects.set2 || typeof draft.effects.set2 !== 'object') draft.effects.set2 = { kr: '', en: '', jp: '', cn: '' };
+      draft.effects.set2.jp = String(dom.revAdminSubSet2Jp?.value || '');
+    });
+  });
+  dom.revAdminSubSet4Jp?.addEventListener('input', () => {
+    applyRevelationAdminDraftMutation((draft) => {
+      if (!draft.effects || typeof draft.effects !== 'object') draft.effects = {};
+      if (!draft.effects.set4 || typeof draft.effects.set4 !== 'object') draft.effects.set4 = { kr: '', en: '', jp: '', cn: '' };
+      draft.effects.set4.jp = String(dom.revAdminSubSet4Jp?.value || '');
+    });
+  });
+  dom.revAdminSubSet2Cn?.addEventListener('input', () => {
+    applyRevelationAdminDraftMutation((draft) => {
+      if (!draft.effects || typeof draft.effects !== 'object') draft.effects = {};
+      if (!draft.effects.set2 || typeof draft.effects.set2 !== 'object') draft.effects.set2 = { kr: '', en: '', jp: '', cn: '' };
+      draft.effects.set2.cn = String(dom.revAdminSubSet2Cn?.value || '');
+    });
+  });
+  dom.revAdminSubSet4Cn?.addEventListener('input', () => {
+    applyRevelationAdminDraftMutation((draft) => {
+      if (!draft.effects || typeof draft.effects !== 'object') draft.effects = {};
+      if (!draft.effects.set4 || typeof draft.effects.set4 !== 'object') draft.effects.set4 = { kr: '', en: '', jp: '', cn: '' };
+      draft.effects.set4.cn = String(dom.revAdminSubSet4Cn?.value || '');
+    });
+  });
+
+  dom.revAdminMainSubOptions?.addEventListener('change', (event) => {
+    const target = event.target;
+    if (!(target instanceof HTMLInputElement)) return;
+    if (!target.classList.contains('rev-admin-main-sub-check')) return;
+    applyRevelationAdminDraftMutation((draft) => {
+      const selectedSet = new Set(
+        Array.from(dom.revAdminMainSubOptions?.querySelectorAll('input.rev-admin-main-sub-check:checked') || [])
+          .map((input) => String(input.dataset.subId || ''))
+          .filter(Boolean)
+      );
+      const order = (revelationAdminState().options.sub || [])
+        .map((item) => String(item.id || ''))
+        .filter(Boolean);
+      draft.relations.subIds = order.filter((id) => selectedSet.has(id));
+
+      if (!draft.effects || typeof draft.effects !== 'object') draft.effects = {};
+      if (!draft.effects.bySubId || typeof draft.effects.bySubId !== 'object') draft.effects.bySubId = {};
+      const nextBySub = {};
+      for (const subId of draft.relations.subIds) {
+        nextBySub[subId] = ensureMainEffectEntry(draft, subId);
+      }
+      draft.effects.bySubId = nextBySub;
+    }, { refreshDetail: true, refreshList: true });
+  });
+
+  dom.revAdminMainEffects?.addEventListener('input', (event) => {
+    const target = event.target;
+    if (!(target instanceof HTMLTextAreaElement)) return;
+    if (!target.classList.contains('rev-admin-main-effect-text')) return;
+    const subId = String(target.dataset.subId || '').trim();
+    const lang = String(target.dataset.lang || '').trim();
+    if (!subId || !lang) return;
+    applyRevelationAdminDraftMutation((draft) => {
+      const entry = ensureMainEffectEntry(draft, subId);
+      entry[lang] = String(target.value || '');
+    });
+  });
+
+  dom.btnRevAdminRenameKr?.addEventListener('click', async () => {
+    try {
+      setPending(dom.btnRevAdminRenameKr, true);
+      await handleRevelationAdminAction(async () => {
+        await renameRevelationAdminKr();
+      }, 'KR rename');
+    } finally {
+      setPending(dom.btnRevAdminRenameKr, false);
+    }
+  });
+
+  dom.btnRevAdminSave?.addEventListener('click', async () => {
+    try {
+      setPending(dom.btnRevAdminSave, true);
+      await handleRevelationAdminAction(async () => {
+        await saveRevelationAdminCard();
+      }, 'save');
+    } finally {
+      setPending(dom.btnRevAdminSave, false);
+    }
+  });
+
+  dom.btnRevAdminReset?.addEventListener('click', () => {
+    const rev = revelationAdminState();
+    if (!rev.dirty) return;
+    const ok = window.confirm('Discard unsaved draft changes?');
+    if (!ok) return;
+    resetRevelationAdminDraft();
+  });
+
+  dom.revAdminCreateKind?.addEventListener('change', () => {
+    renderRevelationAdminCreatePanel();
+  });
+
+  dom.revAdminCreateMainSubOptions?.addEventListener('change', (event) => {
+    const target = event.target;
+    if (!(target instanceof HTMLInputElement)) return;
+    if (!target.classList.contains('rev-admin-create-main-sub-check')) return;
+    renderRevelationAdminCreateMainFields();
+  });
+
+  dom.btnRevAdminCreateSubmit?.addEventListener('click', async () => {
+    try {
+      setPending(dom.btnRevAdminCreateSubmit, true);
+      await handleRevelationAdminAction(async () => {
+        await createRevelationAdminCard();
+      }, 'create');
+    } finally {
+      setPending(dom.btnRevAdminCreateSubmit, false);
+    }
+  });
+
+  dom.btnRevAdminCreateCancel?.addEventListener('click', () => {
+    setRevelationAdminCreateOpen(false);
+    resetRevelationAdminCreateForm();
   });
 
   dom.charList?.addEventListener('click', async (event) => {
@@ -3235,6 +4048,7 @@ async function bootstrap() {
   } catch (error) {
     appendLog(`초기 capabilities 로드 실패: ${error.message}`);
   }
+  renderActiveView();
   state.dataDomain = state.domain;
 
   try {

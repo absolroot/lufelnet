@@ -390,7 +390,7 @@ async function initializePageContent() {
         const lvl = (typeof globalSkillLevel === 'number' && globalSkillLevel !== null) ? globalSkillLevel : 'ALL';
         const btnClass = (l) => `skill-level-btn${lvl === l ? ' active' : ''}`;
 
-        const labelText = window.t('skillLevelLabel', (currentLang === 'en') ? 'Skill Level' : ((currentLang === 'jp') ? 'スキルレベル' : '스킬 레벨'));
+        const labelText = window.t('skillLevelLabel', '스킬 레벨');
 
         rightDiv.innerHTML = `
             <div class="skill-level-toggle" style="margin-left:auto;">
@@ -711,12 +711,8 @@ async function initializePageContent() {
         // Title: "Persona Name - Site Name"
         // Base title is usually "주요 페르소나 - 페르소나5 더 팬텀 X 루페르넷"
         // We will keep the suffix or just "Name - P5X Lufelnet"
-        const siteSuffix = (currentLang === 'en' || currentLang === 'jp') ? 'P5X Lufelnet' : '페르소나5 더 팬텀 X 루페르넷';
-
-        // Prefix logic
-        let prefix = '페르소나 ';
-        if (currentLang === 'en') prefix = 'Persona ';
-        else if (currentLang === 'jp') prefix = 'ペルソナ ';
+        const siteSuffix = window.t('seoSiteSuffix', '페르소나5 더 팬텀 X 루페르넷');
+        const prefix = window.t('seoPersonaPrefix', '페르소나 ');
 
         const pageTitle = `${prefix}${localizedName} - ${siteSuffix}`;
 
@@ -732,7 +728,11 @@ async function initializePageContent() {
         setMeta('meta[name="twitter:title"]', pageTitle);
 
         // Description: Use persona comment or fallback
-        const desc = description ? description.replace(/<[^>]*>/g, '') : `${localizedName} Info & Skills`;
+        const defaultDescTemplate = window.t('seoPersonaDefaultDescription', '{name} 정보 및 스킬');
+        const fallbackDesc = defaultDescTemplate.includes('{name}')
+            ? defaultDescTemplate.replace('{name}', localizedName)
+            : `${localizedName} ${defaultDescTemplate}`;
+        const desc = description ? description.replace(/<[^>]*>/g, '') : fallbackDesc;
         setMeta('meta[name="description"]', desc);
         setMeta('meta[property="og:description"]', desc);
         setMeta('meta[name="twitter:description"]', desc);
@@ -893,7 +893,7 @@ async function initializePageContent() {
             if (iconSrc) iconHtml = `<img src="${iconSrc}" alt="" onerror="this.style.display='none'">`;
 
             const textHtml = text ? `<span>${text}</span>` : '';
-            tag.innerHTML = `${iconHtml}${textHtml}<button class="filter-tag-close" aria-label="Remove">×</button>`;
+            tag.innerHTML = `${iconHtml}${textHtml}<button class="filter-tag-close" aria-label="${window.t('common.remove', '제거')}">×</button>`;
 
             tag.querySelector('.filter-tag-close').addEventListener('click', (e) => {
                 e.stopPropagation(); // Prevent bubbling

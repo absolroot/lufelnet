@@ -114,7 +114,7 @@
             </div>
             <div id="skillSourceSubtitle" class="skill-source-subtitle"></div>
           </div>
-          <button class="skill-source-close" aria-label="Close" data-close="1">×</button>
+          <button class="skill-source-close" aria-label="${(window.t && window.t('common.close', '닫기')) || '닫기'}" data-close="1">×</button>
         </div>
         <div class="skill-source-content" id="skillSourceContent"></div>
       </div>
@@ -226,6 +226,7 @@
       function renderSources(list) {
         if (!list || list.length === 0) return `<div class="skill-source-empty">${noSourcesText}</div>`;
         const labelKey = currentLang === 'en' ? 'en' : (currentLang === 'jp' ? 'jp' : 'kr');
+        const krOnlyBadgeText = (window.t && window.t('krOnlyBadge', 'KR 전용')) || 'KR 전용';
         return `<div class="skill-source-list">${list.map(s => {
           const display = (s[labelKey] || s.kr).trim();
           const sourceKr = (s.kr || '').trim();
@@ -233,7 +234,7 @@
           const iconName = encodeURIComponent(sourceKr) + '.png';
           const iconPath = `${siteBase}/apps/persona/persona_icon/${iconName}`;
           const isKrOnly = (sourceKr === '결제 이벤트') || sourceKr.startsWith('와일드 엠블럼') || sourceEn.startsWith('Repression Medal');
-          const krOnlyBadge = (isKrOnly && currentLang !== 'kr') ? (currentLang === 'jp' ? '<span class="kr-only-badge">(KR専用)</span>' : '<span class="kr-only-badge">(KR Only)</span>') : '';
+          const krOnlyBadge = (isKrOnly && currentLang !== 'kr') ? `<span class="kr-only-badge">(${krOnlyBadgeText})</span>` : '';
           return `<div class="skill-source-item"><img class="source-icon" src="${iconPath}" alt="" onerror="this.style.display='none'" /><span class="source-label">${display}</span>${krOnlyBadge}</div>`;
         }).join('')}</div>`;
       }

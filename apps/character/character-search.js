@@ -7,7 +7,9 @@
         sortedCharacters: [],
         searchIndex: {},
         setDataset: null,
-        refresh: null
+        refresh: null,
+        cachedCards: null,       // cached .card NodeList
+        debounceTimer: null      // debounce timer for search input
     });
 
     const nicknameMap = {
@@ -64,6 +66,17 @@
             }
         }
     };
+
+    function getCachedCards() {
+        if (!state.cachedCards || state.cachedCards.length === 0) {
+            state.cachedCards = Array.from(document.querySelectorAll('.card'));
+        }
+        return state.cachedCards;
+    }
+
+    function invalidateCardCache() {
+        state.cachedCards = null;
+    }
 
     function getCurrentLang() {
         try {
@@ -205,9 +218,15 @@
         const selectedTags = Array.from(document.querySelectorAll('input[name="tag"]:checked')).map((cb) => cb.value);
 
         let visibleCount = 0;
-        const cards = document.querySelectorAll('.card');
+        const cards = getCachedCards();
 
-        cards.forEach((card) => {
+        const noElementFilter = selectedElements.length === 0;
+        const noPositionFilter = selectedPositions.length === 0;
+        const noRarityFilter = selectedRarities.length === 0;
+        const noTagFilter = selectedTags.length === 0;
+
+        for (let i = 0, len = cards.length; i < len; i++) {
+            const card = cards[i];
             const element = card.dataset.element;
             const position = card.dataset.position;
             const rarity = Number(card.dataset.rarity);
@@ -216,47 +235,48 @@
             const isLimited = card.dataset.limit === 'true';
             const characterTags = card.dataset.tags || '';
 
-            const elementMatch = selectedElements.length === 0
+            const elementMatch = noElementFilter
                 || selectedElements.includes(element)
                 || (element === '질풍빙결' && (selectedElements.includes('질풍') || selectedElements.includes('빙결')));
-            const positionMatch = selectedPositions.length === 0 || selectedPositions.includes(position);
-            const rarityMatch = selectedRarities.length === 0 || selectedRarities.includes(rarity);
-            const tagMatch = selectedTags.length === 0 || selectedTags.every((tag) => hasTag(characterTags, tag, isPersona3, isPersona5, isLimited));
+            const positionMatch = noPositionFilter || selectedPositions.includes(position);
+            const rarityMatch = noRarityFilter || selectedRarities.includes(rarity);
+            const tagMatch = noTagFilter || selectedTags.every((tag) => hasTag(characterTags, tag, isPersona3, isPersona5, isLimited));
 
-            const shouldShow = elementMatch && positionMatch && rarityMatch && tagMatch && !card.classList.contains('hidden-by-search');
-            card.style.display = shouldShow ? 'block' : 'none';
-            if (shouldShow) visibleCount += 1;
-        });
+            const shouldHide = !(elementMatch && positionMatch && rarityMatch && tagMatch) || card.classList.contains('hidden-by-search');
+            card.classList.toggle('hidden-by-filter', shouldHide);
+            if (!shouldHide) visibleCount += 1;
+        }
 
         updateSearchCount(visibleCount);
     }
 
     function filterBySearch(searchValue) {
         const query = String(searchValue || '').toLowerCase().trim();
-        const cards = document.querySelectorAll('.card');
+        const cards = getCachedCards();
 
         if (!query) {
-            cards.forEach((card) => card.classList.remove('hidden-by-search'));
+            for (let i = 0, len = cards.length; i < len; i++) {
+                cards[i].classList.remove('hidden-by-search');
+            }
             applyFilters();
             return;
         }
 
         const matched = new Set();
-        Object.keys(state.searchIndex).forEach((name) => {
-            if (state.searchIndex[name].includes(query)) {
-                matched.add(name);
+        const idx = state.searchIndex;
+        const names = Object.keys(idx);
+        for (let i = 0, len = names.length; i < len; i++) {
+            if (idx[names[i]].includes(query)) {
+                matched.add(names[i]);
             }
-        });
+        }
 
-        cards.forEach((card) => {
-            const img = card.querySelector('.character-img, .character-img.loaded');
+        for (let i = 0, len = cards.length; i < len; i++) {
+            const card = cards[i];
+            const img = card.querySelector('.character-img');
             const characterName = img ? img.alt : '';
-            if (matched.has(characterName)) {
-                card.classList.remove('hidden-by-search');
-            } else {
-                card.classList.add('hidden-by-search');
-            }
-        });
+            card.classList.toggle('hidden-by-search', !matched.has(characterName));
+        }
 
         applyFilters();
     }
@@ -350,7 +370,11 @@
             searchInput.addEventListener('input', (event) => {
                 const value = String(event.target.value || '');
                 renderDropdown(value);
-                filterBySearch(value.toLowerCase());
+                // Debounce filter execution (150ms) to avoid excessive DOM updates
+                if (state.debounceTimer) clearTimeout(state.debounceTimer);
+                state.debounceTimer = setTimeout(() => {
+                    filterBySearch(value.toLowerCase());
+                }, 150);
             });
 
             searchInput.addEventListener('blur', () => {
@@ -363,6 +387,7 @@
 
     function initializeFiltersAndSearch(sortedCharacters) {
         state.sortedCharacters = Array.isArray(sortedCharacters) ? sortedCharacters : [];
+        invalidateCardCache();
         buildSearchIndex();
         bindOnce();
 
@@ -377,6 +402,7 @@
 
         state.setDataset = function setDataset(nextSortedCharacters) {
             state.sortedCharacters = Array.isArray(nextSortedCharacters) ? nextSortedCharacters : [];
+            invalidateCardCache();
             buildSearchIndex();
         };
 

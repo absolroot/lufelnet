@@ -34,6 +34,10 @@
     transition: all 0.1s;
 }
 
+.card.hidden-by-filter {
+    display: none;
+}
+
 .card::before {
     content: '';
     position: absolute;

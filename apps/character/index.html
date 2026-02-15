@@ -454,7 +454,7 @@ redirect_from:
     // 언어별 characters.js를 샌드박스에서 평가해 순수 데이터만 추출
     async function fetchCharactersData(url) {
         try {
-            const res = await fetch(url, { cache: 'no-store' });
+            const res = await fetch(url, { cache: 'no-cache' });
             if (!res.ok) throw new Error('HTTP ' + res.status);
             const text = await res.text();
             const sandbox = {};
@@ -730,7 +730,32 @@ redirect_from:
         searchCount.textContent = `${countText} ${sortedCharacters.length}${countUnit}`;
 
 
-        // Create card for each character
+        // IntersectionObserver for lazy image loading
+        const imageObserver = ('IntersectionObserver' in window) ? new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    const realSrc = img.dataset.src;
+                    if (realSrc) {
+                        const realImage = new Image();
+                        realImage.onload = () => {
+                            img.src = realSrc;
+                            img.classList.add('loaded');
+                        };
+                        realImage.src = realSrc;
+                        delete img.dataset.src;
+                    }
+                    imageObserver.unobserve(img);
+                }
+            });
+        }, { rootMargin: '200px' }) : null;
+
+        // Create card for each character using DocumentFragment (single reflow)
+        const fragment = document.createDocumentFragment();
+        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+        const spoilerEnabled = isSpoilerEnabled();
+        const originalCharacterList = (spoilerEnabled && currentLang !== 'kr') ? (window.originalLangCharacterList || []) : null;
+
         sortedCharacters.forEach((characterName, index) => {
 
             const charData = characterData[characterName];
@@ -738,8 +763,6 @@ redirect_from:
                 return;
             }
 
-
-            // 속성 값 디버그
             const element = charData.element;
             const position = charData.position;
             const rarity = charData.rarity;
@@ -763,7 +786,6 @@ redirect_from:
             card.dataset.tags = charData.tag || '';
 
             // Create link wrapper - 언어 파라미터 추가
-            const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
             const link = document.createElement('a');
             link.href = `/character.html?name=${encodeURIComponent(characterName)}&lang=${currentLang}&v=${APP_VERSION}`;
             link.style.textDecoration = 'none';
@@ -780,21 +802,12 @@ redirect_from:
             positionIcon.alt = charData.position_display || position || 'undefined';
             positionIcon.className = 'position-icon';
 
-            // Character image
+            // Character image (lazy loaded via IntersectionObserver)
             const img = document.createElement('img');
             img.src = `{{ site.baseurl }}/assets/img/character-cards/card_skeleton.webp`;
             img.alt = characterName;
             img.className = 'character-img';
-
-            // 실제 이미지 로드
-            const realImage = new Image();
-            realImage.src = `{{ site.baseurl }}/assets/img/character-cards/${characterName}.webp`;
-            realImage.alt = characterName;
-            realImage.className = 'character-img';
-            realImage.onload = () => {
-                img.src = realImage.src;
-                img.classList.add('loaded');
-            };
+            img.dataset.src = `{{ site.baseurl }}/assets/img/character-cards/${characterName}.webp`;
 
             // Element icon
             const elementIcon = document.createElement('img');
@@ -806,7 +819,6 @@ redirect_from:
             // Add name
             const nameText = document.createElement('span');
             // 스포일러 모드와 언어에 따른 이름 표시 로직
-            const spoilerEnabled = isSpoilerEnabled();
             if (currentLang === 'en' && charData.codename) {
                 nameText.textContent = charData.codename;
             } else if (currentLang === 'jp' && spoilerEnabled && charData.name_jp) {
@@ -821,19 +833,14 @@ redirect_from:
             nameText.dataset.persona5 = charData.persona5;
 
             // 스포일러 모드에서 미출시 캐릭터 태그 추가
-            if (spoilerEnabled && currentLang !== 'kr') {
-                // 원본 언어별 characterList에 없는 캐릭터를 미출시로 판단
-                const originalCharacterList = window.originalLangCharacterList || [];
+            if (originalCharacterList) {
                 const isUnreleased = !originalCharacterList.includes(characterName);
-
-                // console.log(`Checking ${characterName}: originalList includes = ${originalCharacterList.includes(characterName)}, isUnreleased = ${isUnreleased}`);
 
                 if (isUnreleased) {
                     const notReleasedTag = document.createElement('div');
                     notReleasedTag.className = 'not-released-tag';
                     notReleasedTag.textContent = getI18nText('notReleased', 'Not Released');
                     link.appendChild(notReleasedTag);
-                    console.log(`Added Not Released tag for ${characterName}`);
                 }
             }
 
@@ -843,8 +850,20 @@ redirect_from:
             link.appendChild(elementIcon);
             link.appendChild(nameText);
             card.appendChild(link);
-            cardsContainer.appendChild(card);
+            fragment.appendChild(card);
+
+            // Observe image for lazy loading
+            if (imageObserver) {
+                imageObserver.observe(img);
+            } else {
+                // Fallback: load immediately if IntersectionObserver not supported
+                const realImage = new Image();
+                realImage.onload = () => { img.src = img.dataset.src; img.classList.add('loaded'); };
+                realImage.src = img.dataset.src;
+            }
         });
+        // Single DOM insertion (1 reflow instead of 45+)
+        cardsContainer.appendChild(fragment);
 
         // 필터 및 검색 기능 초기화
         if (window.CharacterSearch && typeof window.CharacterSearch.setSearchDataset === 'function') {

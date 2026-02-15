@@ -1315,19 +1315,15 @@ title : 괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷
         } catch (e) { console.warn('[SAFE:render-review+proscons]', e); }
 
 
-        // 이미지 설정
-        // 이미지 세팅 보호 (URL 인코딩 포함)
+        // 이미지 설정은 상단 early-image-load 블록에서 이미 수행됨 (fetchpriority=high, preload)
+        // 페르소나 이미지만 언어별 데이터 로드 후 갱신 필요 시 보정
         try {
-            const thiefImgEl = document.querySelector('.thief-image');
-            const thiefFile = `${characterName}.webp`;
-            if (thiefImgEl) thiefImgEl.src = `{{ site.baseurl }}/assets/img/character-detail/${thiefFile}`;
             const personaImgEl = document.querySelector('.persona-image');
-            const personaFile = (character && character.persona) ? `${characterName} - ${character.persona}.webp` : '';
-            if (personaImgEl) {
-                if (personaFile) {
-                    personaImgEl.src = `{{ site.baseurl }}/assets/img/character-detail/${personaFile}`;
-                } else {
-                    personaImgEl.removeAttribute('src');
+            if (personaImgEl && character && character.persona) {
+                const personaFile = `${characterName} - ${character.persona}.webp`;
+                const expectedSrc = `{{ site.baseurl }}/assets/img/character-detail/${personaFile}`;
+                if (personaImgEl.src !== expectedSrc && !personaImgEl.src.endsWith(encodeURIComponent(personaFile))) {
+                    personaImgEl.src = expectedSrc;
                 }
             }
         } catch (e) { console.warn('[SAFE:set-images]', e); }

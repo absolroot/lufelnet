@@ -1,0 +1,100 @@
+{% if page.wonder_weapon_key %}
+<script>
+  window.__WONDER_WEAPON_DEFAULT = {{ page.wonder_weapon_key | jsonify }};
+</script>
+{% endif %}
+{% if site.data.wonder_weapon_slugs %}
+<script>
+  window.__WONDER_WEAPON_SLUG_MAP = {{ site.data.wonder_weapon_slugs | jsonify }};
+</script>
+{% endif %}
+
+{% if page.alternate_urls %}
+{% assign wonder_alt_ko = page.alternate_urls['ko'] | default: '/wonder-weapon/' %}
+<link rel="alternate" hreflang="ko" href="{{ site.url }}{{ wonder_alt_ko }}" />
+{% for lang in page.alternate_urls %}
+{% if lang[0] != 'ko' %}
+<link rel="alternate" hreflang="{{ lang[0] }}" href="{{ site.url }}{{ lang[1] }}" />
+{% endif %}
+{% endfor %}
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ wonder_alt_ko }}" />
+{% endif %}
+
+<div class="main-wrapper">
+  <!--
+  <div id="language-notice" class="language-notice" style="display: none;">
+    <p id="language-notice-text"></p>
+  </div>-->
+
+  <div class="navigation-path">
+    <script>document.write(`<a href="../../?v=${APP_VERSION}" id="nav-home" data-i18n="navHome">-</a>`);</script>
+    <span class="separator">/</span>
+    <span class="current-page" id="nav-current" data-i18n="navCurrent">-</span>
+  </div>
+
+  <div class="header-container">
+    <h1 id="page-title" data-i18n="pageTitle">-</h1>
+  </div>
+
+  <!-- Filter section -->
+  <div class="filter-section">
+    <div class="filter-header">
+      <div class="source-filter">
+        <button class="source-filter-btn active" data-source="all" id="filter-all" data-i18n="filterAll">전체</button>
+        <button class="source-filter-btn" data-source="Shop" id="filter-shop" data-i18n="filterShop">교환</button>
+        <button class="source-filter-btn" data-source="story" id="filter-story" data-i18n="filterStory">스토리</button>
+      </div>
+      <div class="search-container">
+        <div class="search-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z"
+              fill="rgba(255, 255, 255, 0.6)" />
+          </svg>
+        </div>
+        <input type="text" id="weaponSearch" data-i18n-placeholder="searchPlaceholder" placeholder="무기 검색..."
+          autocomplete="off">
+      </div>
+    </div>
+  </div>
+
+  <!-- Separator line -->
+  <div class="separator-line"></div>
+
+  <!-- Tab section -->
+  <div class="weapon-container">
+    <div class="weapon-tabs" id="weaponTabs">
+      <!-- 탭은 JavaScript로 동적 생성 -->
+    </div>
+
+    <!-- Detail section -->
+    <div class="weapon-detail" id="weaponDetail">
+      <div class="detail-placeholder">
+        <div class="loading-spinner"></div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .inline-ad {
+      margin: 16px 0 0px 0;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    @media (max-width: 1440px) {
+      .inline-ad {
+        display: none !important;
+      }
+    }
+  </style>
+</div>
+
+<!-- i18n 서비스 -->
+<script type="module" src="{{ site.baseurl }}/i18n/service/i18n-service.js?v={{ site.time | date: '%s' }}"></script>
+<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
+
+<script src="{{ site.baseurl }}/assets/js/collapsible-sections.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/wonder-weapon/wonder-weapon.js?v={{ site.time | date: '%s' }}"></script>

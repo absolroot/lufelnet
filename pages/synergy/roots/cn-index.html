@@ -1,6 +1,26 @@
 ---
 layout: null
 permalink: /cn/synergy/
-redirect_to: /synergy/?lang=cn
 sitemap: false
 ---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Redirecting...</title>
+</head>
+<body>
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search || "");
+      params.set("lang", "cn");
+      var query = params.toString();
+      var next = "/synergy/" + (query ? ("?" + query) : "");
+      window.location.replace(next);
+    })();
+  </script>
+  <noscript><meta http-equiv="refresh" content="0; url=/synergy/?lang=cn"></noscript>
+  <a href="/synergy/?lang=cn">Continue</a>
+</body>
+</html>

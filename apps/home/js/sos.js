@@ -12,6 +12,10 @@
 
   function mapLangToRegion(lang) { const l = (lang||'').toLowerCase(); return REGIONS.includes(l) ? l : null; }
   function detectLang() {
+    if (window.HomeI18n && typeof window.HomeI18n.detectRawLang === 'function') {
+      const rawLang = window.HomeI18n.detectRawLang();
+      if (REGIONS.includes(rawLang)) return rawLang;
+    }
     try {
       const urlLang = new URLSearchParams(window.location.search).get('lang');
       if (urlLang && ['kr','en','jp','cn','tw','sea'].includes(urlLang)) return urlLang;
@@ -23,6 +27,32 @@
       if (saved && ['kr','en','jp','cn','tw','sea'].includes(saved)) return saved;
     } catch (_) {}
     return 'kr';
+  }
+  function resolveUiLang(rawLang) {
+    if (window.HomeI18n && typeof window.HomeI18n.resolveUiLang === 'function') {
+      return window.HomeI18n.resolveUiLang(rawLang);
+    }
+    if (rawLang === 'en' || rawLang === 'jp') return rawLang;
+    return 'kr';
+  }
+  function t(key, fallback, rawLang) {
+    if (window.HomeI18n && typeof window.HomeI18n.t === 'function') {
+      return window.HomeI18n.t(key, fallback, rawLang);
+    }
+    return fallback;
+  }
+  function pickFallbackByRawLang(fallbackMap, rawLang) {
+    const uiLang = resolveUiLang(rawLang);
+    if (fallbackMap && Object.prototype.hasOwnProperty.call(fallbackMap, uiLang)) {
+      return fallbackMap[uiLang];
+    }
+    return fallbackMap.kr || '';
+  }
+  async function waitHomeI18nReady() {
+    if (!window.__HOME_I18N_READY__) return;
+    try {
+      await window.__HOME_I18N_READY__;
+    } catch (_) {}
   }
   function loadRegion() {
     try { const saved = localStorage.getItem('carousel_region'); if (saved && REGIONS.includes(saved)) return saved; } catch(_) {}
@@ -47,12 +77,15 @@
     return new Date(millis);
   }
   function formatCountdown(ms, lang){
-    if (ms<=0) return (lang==='en'?'Ended':(lang==='jp'?'終了':'종료'));
+    if (ms<=0) return t('countdown_ended', '종료', lang);
     const s=Math.floor(ms/1000), d=Math.floor(s/86400), h=Math.floor((s%86400)/3600), m=Math.floor((s%3600)/60), sec=s%60;
-    if (d>0){ if(lang==='en')return `${d}d ${pad2(h)}:${pad2(m)}:${pad2(sec)}`; if(lang==='jp')return `${d}日 ${pad2(h)}:${pad2(m)}:${pad2(sec)}`; return `${d}일 ${pad2(h)}:${pad2(m)}:${pad2(sec)}`; }
+    if (d>0){
+      const daysUnit = t('countdown_days_unit', '일', lang);
+      return `${d}${daysUnit} ${pad2(h)}:${pad2(m)}:${pad2(sec)}`;
+    }
     return `${pad2(h)}:${pad2(m)}:${pad2(sec)}`;
   }
-  function remainingLabel(lang){ if(lang==='en')return 'Time left'; if(lang==='jp')return '残り時間'; return '남은 시간'; }
+  function remainingLabel(lang){ return t('countdown_time_left', '남은 시간', lang); }
 
   async function fetchSOS(region) {
     const baseUrl = `${BASE}/data/external/sos/${region}.json${APP_VER ? `?v=${APP_VER}` : ''}`;
@@ -76,8 +109,8 @@
     throw lastErr || new Error('Failed to load sos: ' + region);
   }
 
-  function titleByLang(){ const l=detectLang(); if(l==='en')return 'Boss'; if(l==='jp')return 'ボス'; return '보스'; }
-  function seaLabel(){ const l=detectLang(); if(l==='en')return 'Sea of Souls'; if(l==='jp')return '魂の海'; return '마음의 바다'; }
+  function titleByLang(){ const l=detectLang(); return t('boss_title', '보스', l); }
+  function seaLabel(){ const l=detectLang(); return t('boss_mode_sos', '마음의 바다', l); }
 
   function renderSOS(container, data, region){
     const lang = detectLang();
@@ -115,7 +148,16 @@
 
     // buff as mode
     const buff = data && data.data && data.data.buff; let bn='', bd='';
-    if (typeof buff === 'string') { const idx=buff.indexOf(':'); if (idx>=0){ bn=buff.slice(0,idx).trim(); bd=buff.slice(idx+1).trim(); } else { bn='Buff'; bd=buff; } }
+    if (typeof buff === 'string') {
+      const idx=buff.indexOf(':');
+      if (idx>=0){
+        bn=buff.slice(0,idx).trim();
+        bd=buff.slice(idx+1).trim();
+      } else {
+        bn=t('boss_buff_default', 'Buff', lang);
+        bd=buff;
+      }
+    }
     const modeEl=document.createElement('div'); modeEl.className='bosses-mode';
     const bnEl=document.createElement('div'); bnEl.className='bosses-mode-name'; bnEl.textContent=`${seaLabel()} - ${bn}`;
     const localCd=document.createElement('div'); localCd.className='bosses-countdown local'; localCd.id='sos-countdown';
@@ -154,9 +196,15 @@
         try {
           const build = (typeof window.buildAdaptSprite === 'function') ? window.buildAdaptSprite : (function(){
             const elementNameMap = { Phys:'물리', Gun:'총격', Fire:'화염', Ice:'빙결', Electric:'전격', Wind:'질풍', Psychokinesis:'염동', Nuclear:'핵열', Bless:'축복', Curse:'주원' };
-            const ADAPT_LABELS = { Weak:{kr:'약',en:'Wk',jp:'弱',cls:'weak'}, Resistant:{kr:'내',en:'Res',jp:'耐',cls:'res'}, Nullify:{kr:'무',en:'Nul',jp:'無',cls:'nul'}, Absorb:{kr:'흡',en:'Abs',jp:'吸',cls:'abs'}, Reflect:{kr:'반',en:'Rpl',jp:'反',cls:'rpl'} };
+            const ADAPT_LABELS = {
+              Weak:{key:'adapt_weak',fallback:{kr:'약',en:'Wk',jp:'弱'},cls:'weak'},
+              Resistant:{key:'adapt_resistant',fallback:{kr:'내',en:'Res',jp:'耐'},cls:'res'},
+              Nullify:{key:'adapt_nullify',fallback:{kr:'무',en:'Nul',jp:'無'},cls:'nul'},
+              Absorb:{key:'adapt_absorb',fallback:{kr:'흡',en:'Abs',jp:'吸'},cls:'abs'},
+              Reflect:{key:'adapt_reflect',fallback:{kr:'반',en:'Rpl',jp:'反'},cls:'rpl'}
+            };
             function elementOffsetPx(kr){ const map={ '물리':15, '총격':43, '화염':75, '빙결':100, '전격':124, '질풍':149, '염동':175, '핵열':205, '축복':235, '주원':263 }; return map[kr]||0; }
-            return function localBuild(ad){ const l=detectLang(); const wrap=document.createElement('div'); wrap.className='elements-line'; const img=document.createElement('img'); img.className='elements-sprite'; img.alt='elements'; img.src=`${BASE}/assets/img/character-detail/elements.png`; wrap.appendChild(img); Object.keys(ADAPT_LABELS).forEach(k=>{ const list=(ad&&ad[k])||[]; const info=ADAPT_LABELS[k]; const text=(l==='en'?info.en:(l==='jp'?info.jp:info.kr)); list.forEach(en=>{ const kr=elementNameMap[en]||en; const x=elementOffsetPx(kr); const mark=document.createElement('span'); mark.className=`el-mark ${info.cls}`; mark.textContent=text; mark.title=`${k}: ${kr}`; mark.style.left=`${x}px`; if (text.length<=3) mark.classList.add('short'); wrap.appendChild(mark); }); }); return wrap; };
+            return function localBuild(ad){ const l=detectLang(); const wrap=document.createElement('div'); wrap.className='elements-line'; const img=document.createElement('img'); img.className='elements-sprite'; img.alt='elements'; img.src=`${BASE}/assets/img/character-detail/elements.png`; wrap.appendChild(img); Object.keys(ADAPT_LABELS).forEach(k=>{ const list=(ad&&ad[k])||[]; const info=ADAPT_LABELS[k]; const fallback=pickFallbackByRawLang(info.fallback, l); const text=t(info.key, fallback, l); list.forEach(en=>{ const kr=elementNameMap[en]||en; const x=elementOffsetPx(kr); const mark=document.createElement('span'); mark.className=`el-mark ${info.cls}`; mark.textContent=text; mark.title=`${k}: ${kr}`; mark.style.left=`${x}px`; if (text.length<=3) mark.classList.add('short'); wrap.appendChild(mark); }); }); return wrap; };
           })();
           right.appendChild(build(adapt));
         } catch(_) {}
@@ -187,12 +235,13 @@
   async function init(){
     const root = document.getElementById(ROOT_ID);
     if (!root) return;
-    try { const region=loadRegion(); const data=await fetchSOS(region); renderSOS(root, data, region); } catch(e) { try{console.error(e);}catch(_){} }
+    try { await waitHomeI18nReady(); const region=loadRegion(); const data=await fetchSOS(region); renderSOS(root, data, region); } catch(e) { try{console.error(e);}catch(_){} }
   }
 
   window.reloadHomeSOS = async function(){
     const root=document.getElementById(ROOT_ID); if(!root) return;
     try{
+      await waitHomeI18nReady();
       // cleanup sos section to avoid duplicates
       const card = root.querySelector('.bosses-card');
       const old = card && card.querySelector('.sos-section');

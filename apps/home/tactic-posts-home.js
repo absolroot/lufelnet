@@ -1,18 +1,69 @@
 // =====================
 // Supabase 기반 홈 택틱 로더
 // =====================
+const HOME_TACTIC_RAW_LANGS = ['kr', 'en', 'jp', 'cn', 'tw', 'sea'];
+
+function detectHomeTacticRawLang() {
+  if (window.HomeI18n && typeof window.HomeI18n.detectRawLang === 'function') {
+    const rawLang = window.HomeI18n.detectRawLang();
+    if (HOME_TACTIC_RAW_LANGS.includes(rawLang)) return rawLang;
+  }
+
+  let lang = (window.__HOME_LANG__ || '').toLowerCase();
+  if (lang && HOME_TACTIC_RAW_LANGS.includes(lang)) return lang;
+
+  try {
+    const urlLang = (new URLSearchParams(window.location.search).get('lang') || '').toLowerCase();
+    if (urlLang && HOME_TACTIC_RAW_LANGS.includes(urlLang)) return urlLang;
+  } catch (_) { }
+  if (typeof LanguageRouter !== 'undefined' && LanguageRouter.getCurrentLanguage) {
+    try {
+      const routerLang = String(LanguageRouter.getCurrentLanguage() || '').toLowerCase();
+      if (HOME_TACTIC_RAW_LANGS.includes(routerLang)) return routerLang;
+    } catch (_) { }
+  }
+  try {
+    const savedLang = String(localStorage.getItem('preferredLanguage') || '').toLowerCase();
+    if (savedLang && HOME_TACTIC_RAW_LANGS.includes(savedLang)) return savedLang;
+  } catch (_) { }
+  return 'kr';
+}
+
+function homeTacticT(key, fallback, rawLang) {
+  if (window.HomeI18n && typeof window.HomeI18n.t === 'function') {
+    return window.HomeI18n.t(key, fallback, rawLang);
+  }
+  return fallback;
+}
+
+function formatTemplate(template, value) {
+  return String(template || '').replace(/\{value\}/g, String(value));
+}
+
+async function waitHomeTacticI18nReady() {
+  if (!window.__HOME_I18N_READY__) return;
+  try {
+    await window.__HOME_I18N_READY__;
+  } catch (_) { }
+}
+
 window.loadHomeTacticsFromSupabase = async function (currentLang) {
   try {
+    await waitHomeTacticI18nReady();
     const postsListEl = document.getElementById('postsList');
     if (!postsListEl || typeof supabase === 'undefined') return;
+    const rawLang = HOME_TACTIC_RAW_LANGS.includes(String(currentLang || '').toLowerCase())
+      ? String(currentLang).toLowerCase()
+      : detectHomeTacticRawLang();
+    window.__HOME_LANG__ = rawLang || 'kr';
 
     let query = supabase.from('tactics').select('*').order('created_at', { ascending: false }).limit(3);
-    if (currentLang === 'kr') query = query.eq('region', 'kr');
-    else if (currentLang === 'jp') query = query.eq('region', 'jp');
-    else if (currentLang === 'en') query = query.in('region', ['en', 'sea']);
+    if (rawLang === 'kr') query = query.eq('region', 'kr');
+    else if (rawLang === 'jp') query = query.eq('region', 'jp');
+    else if (rawLang === 'en') query = query.in('region', ['en', 'sea']);
 
     let { data, error } = await query;
-    if (!error && data && data.length === 0 && (currentLang === 'en' || currentLang === 'jp')) {
+    if (!error && data && data.length === 0 && (rawLang === 'en' || rawLang === 'jp')) {
       const res2 = await supabase.from('tactics').select('*').in('region', ['en', 'sea']).order('created_at', { ascending: false }).limit(3);
       data = res2.data || [];
     }
@@ -20,7 +71,6 @@ window.loadHomeTacticsFromSupabase = async function (currentLang) {
 
     // IP/언어/좋아요 맵 준비
     try {
-      window.__HOME_LANG__ = currentLang || 'kr';
       const ipRes = await fetch('https://api.ipify.org?format=json');
       const ipJson = await ipRes.json();
       window.__HOME_IP = ipJson.ip || '';
@@ -68,7 +118,7 @@ window.loadHomeTacticsFromSupabase = async function (currentLang) {
         <div class="post-footer">
           <div class="likes-section">
             <button onclick="homeHandleLike('${String(t.id)}')" class="like-button ${likedByMe ? 'liked' : ''}" ${likedByMe ? 'disabled' : ''}>
-              <img src="${BASE_URL}/assets/img/tactic-share/like.png" alt="좋아요">
+              <img src="${BASE_URL}/assets/img/tactic-share/like.png" alt="${homeTacticT('tactic_like_alt', '좋아요', rawLang)}">
             </button>
             <div class="likes-count-wrapper">
               <span class="likes-count">${likeCount}</span>
@@ -90,21 +140,11 @@ window.loadHomeTacticsFromSupabase = async function (currentLang) {
 
 function formatHomeDate(date) {
   try {
-    // Detect current language for home list
-    let lang = (window.__HOME_LANG__ || '').toLowerCase();
-    if (!lang) {
-      try {
-        const urlLang = new URLSearchParams(window.location.search).get('lang');
-        if (urlLang) lang = urlLang;
-      } catch (_) { }
-      if (!lang && typeof LanguageRouter !== 'undefined' && LanguageRouter.getCurrentLanguage) {
-        try { lang = LanguageRouter.getCurrentLanguage(); } catch (_) { }
-      }
-      if (!lang) {
-        try { lang = localStorage.getItem('preferredLanguage') || 'kr'; } catch (_) { lang = 'kr'; }
-      }
+    const rawLang = detectHomeTacticRawLang();
+
+    if (window.HomeI18n && typeof window.HomeI18n.formatRelativeDate === 'function') {
+      return window.HomeI18n.formatRelativeDate(date, { rawLang, includeWeeks: true });
     }
-    if (!['kr', 'en', 'jp'].includes(lang)) lang = 'kr';
 
     const now = new Date();
     const diff = now - date;
@@ -113,19 +153,24 @@ function formatHomeDate(date) {
       const hours = Math.floor(diff / (1000 * 60 * 60));
       if (hours === 0) {
         const minutes = Math.floor(diff / (1000 * 60));
-        if (lang === 'en') return `${minutes} min ago`;
-        if (lang === 'jp') return `${minutes}分前`;
+        if (rawLang === 'en') return `${minutes} min ago`;
+        if (rawLang === 'jp') return `${minutes}分前`;
         return `${minutes}분 전`;
       }
-      if (lang === 'en') return `${hours} hours ago`;
-      if (lang === 'jp') return `${hours}時間前`;
+      if (rawLang === 'en') return `${hours} hours ago`;
+      if (rawLang === 'jp') return `${hours}時間前`;
       return `${hours}시간 전`;
     } else if (days < 7) {
-      if (lang === 'en') return `${days} days ago`;
-      if (lang === 'jp') return `${days}日前`;
+      if (rawLang === 'en') return `${days} days ago`;
+      if (rawLang === 'jp') return `${days}日前`;
       return `${days}일 전`;
+    } else if (days < 30) {
+      const weeks = Math.floor(days / 7);
+      if (rawLang === 'en') return `${weeks} week${weeks > 1 ? 's' : ''} ago`;
+      if (rawLang === 'jp') return `${weeks}週間前`;
+      return `${weeks}주 전`;
     }
-    const locale = (lang === 'en') ? 'en-US' : (lang === 'jp') ? 'ja-JP' : 'ko-KR';
+    const locale = (rawLang === 'en') ? 'en-US' : (rawLang === 'jp') ? 'ja-JP' : 'ko-KR';
     return date.toLocaleDateString(locale);
   } catch (_) { return ''; }
 }
@@ -170,7 +215,8 @@ function createHomePreviewFromQuery(tacticData) {
       const ritualImg = document.createElement('img');
       ritualImg.className = 'ritual-img';
       ritualImg.src = `${BASE_URL}/assets/img/ritual/num${ritualLevel}.png`;
-      ritualImg.alt = `의식 ${ritualLevel}`;
+      const rawLang = detectHomeTacticRawLang();
+      ritualImg.alt = formatTemplate(homeTacticT('tactic_ritual_alt', '의식 {value}', rawLang), ritualLevel);
       container.appendChild(ritualImg);
     }
 
@@ -195,8 +241,8 @@ window.homeHandleLike = async function (tacticId) {
     const recent = (likeRow?.recent_like && typeof likeRow.recent_like === 'object') ? likeRow.recent_like : {};
     const last = recent[ip] ? new Date(recent[ip]).getTime() : 0;
     if (last && (Date.now() - last) < 24 * 60 * 60 * 1000) {
-      const lang = window.__HOME_LANG__ || 'kr';
-      const msg = lang === 'en' ? 'You already liked this within 24 hours.' : lang === 'jp' ? '24時間以内に既にいいねしました。' : '24시간 내 이미 좋아요 했습니다.';
+      const rawLang = detectHomeTacticRawLang();
+      const msg = homeTacticT('tactic_like_already_24h', '24시간 내 이미 좋아요 했습니다.', rawLang);
       alert(msg);
       return;
     }

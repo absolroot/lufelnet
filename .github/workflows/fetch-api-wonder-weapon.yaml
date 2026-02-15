@@ -19,6 +19,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
       - name: Install jq
         run: sudo apt-get update && sudo apt-get install -y jq
 
@@ -29,13 +34,16 @@ jobs:
         run: |
           bash scripts/fetch-external-data.sh
 
+      - name: Generate wonder-weapon SEO pages
+        run: npm run seo:wonder-weapon:generate
+
       - name: Commit & Push
         run: |
           if [ -n "$(git status --porcelain)" ]; then
             git config user.name  "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add -A
-            git commit -m "chore(data): update external wonder weapon json [skip ci]" || echo "No changes to commit"
+            git commit -m "chore(data): update external wonder weapon json + seo pages [skip ci]" || echo "No changes to commit"
             git push || echo "Nothing to push or push skipped."
           else
             echo "No changes found."

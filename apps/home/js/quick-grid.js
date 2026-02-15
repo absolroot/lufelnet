@@ -1,5 +1,51 @@
 /* Quick Grid: Home launcher (2x6 desktop, 3x4 mobile) */
 (function () {
+    'use strict';
+
+    const HOME_RAW_LANGS = ['kr', 'en', 'jp', 'cn', 'tw', 'sea'];
+    const LABEL_KEY_MAP = {
+        character: 'quick_character',
+        persona: 'quick_persona',
+        revelations: 'quick_revelations',
+        wonderweapon: 'quick_wonderweapon',
+        pullTracker: 'quick_pull_tracker',
+        pullTracker_global: 'quick_pull_tracker_global',
+        materialCalc: 'quick_material_calc',
+        defenseCalc: 'quick_defense_calc',
+        criticalCalc: 'quick_critical_calc',
+        tacticLibrary: 'quick_tactic_library',
+        tacticMaker: 'quick_tactic_maker',
+        tier: 'quick_tier',
+        guide: 'quick_guide',
+        gallery: 'quick_gallery',
+        synergy: 'quick_synergy',
+        schedule: 'quick_schedule',
+        maps: 'quick_maps',
+        pullCalc: 'quick_pull_calc',
+        astrolabe: 'quick_astrolabe'
+    };
+    const LABEL_FALLBACK_MAP = {
+        character: '캐릭터',
+        persona: '페르소나',
+        revelations: '계시',
+        wonderweapon: '원더 무기',
+        pullTracker: '계약 트래커',
+        pullTracker_global: '계약 통계',
+        materialCalc: '육성 계산기',
+        defenseCalc: '방어력 계산기',
+        criticalCalc: '크리티컬 계산기',
+        tacticLibrary: '택틱 도서관',
+        tacticMaker: '택틱 메이커',
+        tier: '티어',
+        guide: '가이드',
+        gallery: '갤러리',
+        synergy: '협력자',
+        schedule: '스케줄',
+        maps: '지도',
+        pullCalc: '가챠 플래너',
+        astrolabe: '성좌의 시련'
+    };
+
     const injectStyles = () => {
         if (document.getElementById('quick-grid-styles')) return;
         const style = document.createElement('style');
@@ -26,46 +72,40 @@
     /* .quick-label { margin-top: 2px; color: #fff; font-size: 13px; font-weight: 800; letter-spacing: .2px; text-align: center; line-height: 1.25; white-space: normal; word-break: keep-all; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; text-shadow: 0 0 2px #000, 0 1px 0 #000, 1px 0 0 #000, -1px 0 0 #000, 0 -1px 0 #000, 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000; }*/
 
     const getCurrentLanguage = () => {
+        if (window.HomeI18n && typeof window.HomeI18n.detectRawLang === 'function') {
+            const rawLang = window.HomeI18n.detectRawLang();
+            if (HOME_RAW_LANGS.includes(rawLang)) return rawLang;
+        }
         try {
             const urlParams = new URLSearchParams(window.location.search);
-            const urlLang = urlParams.get('lang');
-            if (urlLang && ['kr', 'en', 'jp', 'cn'].includes(urlLang)) return urlLang;
+            const urlLang = (urlParams.get('lang') || '').toLowerCase();
+            if (urlLang && HOME_RAW_LANGS.includes(urlLang)) return urlLang;
             const pathLang = window.location.pathname.split('/')[1];
-            if (['kr', 'en', 'jp', 'cn'].includes(pathLang)) return pathLang;
-            const savedLang = localStorage.getItem('preferredLanguage');
-            if (savedLang && ['kr', 'en', 'jp', 'cn'].includes(savedLang)) return savedLang;
+            if (HOME_RAW_LANGS.includes(pathLang)) return pathLang;
+            const savedLang = (localStorage.getItem('preferredLanguage') || '').toLowerCase();
+            if (savedLang && HOME_RAW_LANGS.includes(savedLang)) return savedLang;
             const browserLang = navigator.language.toLowerCase();
             if (browserLang.startsWith('ko')) return 'kr';
             if (browserLang.startsWith('ja')) return 'jp';
             if (browserLang.startsWith('en')) return 'en';
+            if (browserLang.startsWith('zh')) return 'cn';
         } catch (_) { }
         return 'kr';
     };
 
-    const texts = {
-        kr: {
-            character: '캐릭터', persona: '페르소나', revelations: '계시', wonderweapon: '원더 무기',
-            pullTracker: '계약 트래커', pullTracker_global: '계약 통계',
-            materialCalc: '육성 계산기', defenseCalc: '방어력 계산기', criticalCalc: '크리티컬 계산기',
-            tacticLibrary: '택틱 도서관', tacticMaker: '택틱 메이커',
-            tier: '티어', guide: '가이드', gallery: '갤러리', synergy: '협력자', schedule: '스케줄',
-            maps: '지도', pullCalc: '가챠 플래너', astrolabe: '성좌의 시련'
-        },
-        en: {
-            character: 'Character', persona: 'Persona', revelations: 'Revelations', wonderweapon: 'Wonder Daggers',
-            pullTracker: 'Pull Tracker', pullTracker_global: 'Pull Global Stats',
-            materialCalc: 'Progression Calc', defenseCalc: 'Defense Calc', criticalCalc: 'Critical Calc',
-            tacticLibrary: 'Tactics Library', tacticMaker: 'Tactic Maker',
-            tier: 'Tiers', guide: 'Guides', gallery: 'Gallery', schedule: 'Schedule', synergy: 'Synergy', maps: 'Maps', pullCalc: 'Pull Planner', astrolabe: 'Astrolabe'
-        },
-        jp: {
-            character: '怪盗', persona: 'ペルソナ', revelations: '啓示', wonderweapon: 'ワンダー武器',
-            pullTracker: 'ガチャ履歴', pullTracker_global: '全体統計',
-            materialCalc: '育成計算機', defenseCalc: '防御力減少計算機', criticalCalc: 'クリティカル計算機',
-            tacticLibrary: 'タクティクスライブラリー', tacticMaker: 'タクティクスメーカー',
-            tier: 'ティア', guide: 'ガイド', gallery: 'ギャラリー', schedule: 'スケジュール', synergy: 'シナジー', maps: '地図', pullCalc: 'ガチャプランナー', astrolabe: 'アストロラーベ'
+    function quickT(key, fallback, rawLang) {
+        if (window.HomeI18n && typeof window.HomeI18n.t === 'function') {
+            return window.HomeI18n.t(key, fallback, rawLang);
         }
-    };
+        return fallback;
+    }
+
+    function getLabelByKey(itemKey, rawLang) {
+        const i18nKey = LABEL_KEY_MAP[itemKey];
+        const fallback = LABEL_FALLBACK_MAP[itemKey] || itemKey;
+        if (!i18nKey) return fallback;
+        return quickT(i18nKey, fallback, rawLang);
+    }
 
     const iconMap = {
         character: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/guaidao.png`,
@@ -142,14 +182,14 @@
         injectStyles();
         const lang = getCurrentLanguage();
         const order = getItems(lang);
-        const dict = texts[lang] || texts.kr;
         root.innerHTML = '';
         order.forEach(key => {
+            const labelText = getLabelByKey(key, lang);
             const a = document.createElement('a');
             a.className = 'quick-link';
             a.href = buildHref(key, lang);
             a.setAttribute('data-key', key);
-            a.setAttribute('aria-label', dict[key] || key);
+            a.setAttribute('aria-label', labelText || key);
 
             const iconWrap = document.createElement('div');
             iconWrap.className = 'quick-icon-wrap';
@@ -169,13 +209,13 @@
                 const badge = document.createElement('div');
                 badge.className = 'quick-new-badge';
                 badge.textContent = 'N';
-                badge.setAttribute('aria-label', 'New');
+                badge.setAttribute('aria-label', quickT('quick_new_aria', '신규', lang));
                 iconWrap.appendChild(badge);
             }
 
             const label = document.createElement('div');
             label.className = 'quick-label';
-            label.textContent = dict[key] || key;
+            label.textContent = labelText || key;
 
 
 
@@ -195,9 +235,23 @@
     };
 
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', render);
+        document.addEventListener('DOMContentLoaded', async () => {
+            if (window.__HOME_I18N_READY__) {
+                try { await window.__HOME_I18N_READY__; } catch (_) { }
+            }
+            render();
+        });
     } else {
-        render();
+        (async () => {
+            if (window.__HOME_I18N_READY__) {
+                try { await window.__HOME_I18N_READY__; } catch (_) { }
+            }
+            render();
+        })();
     }
+
+    document.addEventListener('languageChanged', () => {
+        render();
+    });
 })();
 

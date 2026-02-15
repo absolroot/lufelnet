@@ -53,6 +53,20 @@
     return REGIONS.includes(l) ? l : null;
   }
 
+  function t(key, fallback, rawLang) {
+    if (window.HomeI18n && typeof window.HomeI18n.t === 'function') {
+      return window.HomeI18n.t(key, fallback, rawLang);
+    }
+    return fallback;
+  }
+
+  async function waitHomeI18nReady() {
+    if (!window.__HOME_I18N_READY__) return;
+    try {
+      await window.__HOME_I18N_READY__;
+    } catch (_) { }
+  }
+
   function loadRegion() {
     // 1) Saved selection (highest priority)
     try {
@@ -217,21 +231,24 @@
   }
 
   function formatCountdown(ms, lang) {
-    if (ms <= 0) return (lang === 'en' ? 'Ended' : (lang === 'jp' ? '終了' : '종료'));
+    if (ms <= 0) return t('countdown_ended', '종료', lang);
     const totalSec = Math.floor(ms / 1000);
     const days = Math.floor(totalSec / 86400);
     const hrs = Math.floor((totalSec % 86400) / 3600);
     const mins = Math.floor((totalSec % 3600) / 60);
     const secs = totalSec % 60;
     if (days > 0) {
-      if (lang === 'en') return `${days}d ${pad2(hrs)}:${pad2(mins)}:${pad2(secs)}`;
-      if (lang === 'jp') return `${days}日 ${pad2(hrs)}:${pad2(mins)}:${pad2(secs)}`;
-      return `${days}일 ${pad2(hrs)}:${pad2(mins)}:${pad2(secs)}`;
+      const daysUnit = t('countdown_days_unit', '일', lang);
+      return `${days}${daysUnit} ${pad2(hrs)}:${pad2(mins)}:${pad2(secs)}`;
     }
     return `${pad2(hrs)}:${pad2(mins)}:${pad2(secs)}`;
   }
 
   function detectLang() {
+    if (window.HomeI18n && typeof window.HomeI18n.detectRawLang === 'function') {
+      const rawLang = window.HomeI18n.detectRawLang();
+      if (['kr', 'en', 'jp', 'cn', 'tw', 'sea'].includes(rawLang)) return rawLang;
+    }
     try {
       const urlLang = new URLSearchParams(window.location.search).get('lang');
       if (urlLang && ['kr', 'en', 'jp', 'cn', 'tw', 'sea'].includes(urlLang)) return urlLang;
@@ -246,9 +263,7 @@
   }
 
   function remainingLabel(lang) {
-    if (lang === 'en') return 'Time left';
-    if (lang === 'jp') return '残り時間';
-    return '남은 시간';
+    return t('countdown_time_left', '남은 시간', lang);
   }
 
   // Data
@@ -955,14 +970,15 @@
 
     const nav = document.createElement('div');
     nav.className = 'carousel-nav';
+    const rawLang = detectLang();
     const prev = document.createElement('button');
     prev.className = 'carousel-btn';
-    prev.setAttribute('aria-label', 'Prev');
+    prev.setAttribute('aria-label', t('carousel_nav_prev_aria', 'Prev', rawLang));
     prev.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 6L9 12L15 18" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
     prev.addEventListener('click', prevSlide);
     const next = document.createElement('button');
     next.className = 'carousel-btn';
-    next.setAttribute('aria-label', 'Next');
+    next.setAttribute('aria-label', t('carousel_nav_next_aria', 'Next', rawLang));
     next.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 6L15 12L9 18" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
     next.addEventListener('click', nextSlide);
     nav.appendChild(prev);
@@ -1082,14 +1098,16 @@
   async function reloadSlides() {
     const root = document.getElementById(ROOT_ID);
     if (!root) return;
+    await waitHomeI18nReady();
 
     // Rebuild character index to ensure we have latest characterData
     characterIndex = buildCharacterReverseIndex();
 
+    const rawLang = detectLang();
     root.innerHTML = '';
     const loading = document.createElement('div');
     loading.style.cssText = 'padding: 12px 8px; color: #999;';
-    loading.textContent = '캐러셀 로딩 중...';
+    loading.textContent = t('carousel_loading', '캐러셀 로딩 중...', rawLang);
     root.appendChild(loading);
 
     try {
@@ -1154,15 +1172,12 @@
 
       // If no slides available, show maintenance slide
       if (slides.length === 0) {
-        const lang = detectLang();
-        const maintenanceText = lang === 'en' ? 'Under Maintenance' : (lang === 'jp' ? 'メンテナンス中' : '배너 점검 중');
+        const maintenanceText = t('carousel_maintenance_title', '배너 점검 중', rawLang);
         slides.push({
           kind: 'custom',
           name: maintenanceText,
           subtitle: '',
-          body: '조치 중입니다.',
-          body_en: 'Under maintenance.',
-          body_jp: 'メンテナンス中です。',
+          body: t('carousel_maintenance_body', '조치 중입니다.', rawLang),
           customColor: null,
           customImage: `${BASE}/assets/img/home/banner/under2.png`,
           customBgImage: `${BASE}/assets/img/home/banner/under.png`,
@@ -1182,7 +1197,7 @@
       root.innerHTML = '';
       const errEl = document.createElement('div');
       errEl.style.cssText = 'padding: 12px 8px; color: #f88;';
-      errEl.textContent = '캐러셀 데이터를 불러오지 못했습니다.';
+      errEl.textContent = t('carousel_error', '캐러셀 데이터를 불러오지 못했습니다.', rawLang);
       root.appendChild(errEl);
       // eslint-disable-next-line no-console
       try { console.error(err); } catch (_) { }
@@ -1201,5 +1216,3 @@
     init();
   }
 })();
-
-

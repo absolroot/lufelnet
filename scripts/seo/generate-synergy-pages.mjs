@@ -22,7 +22,7 @@ const OUTPUT_DIR = path.join(ROOT, 'pages', 'synergy');
 const ROOT_STUB_DIR = path.join(OUTPUT_DIR, 'roots');
 
 const CHARACTER_LANGS = ['kr', 'en', 'jp'];
-const ROOT_REDIRECT_LANGS = ['en', 'jp', 'cn'];
+const ROOT_REDIRECT_LANGS = ['kr', 'en', 'jp', 'cn'];
 
 const friendNumPath = path.join(ROOT, 'apps', 'synergy', 'friends', 'friend_num.json');
 const charInfoPath = path.join(ROOT, 'data', 'character_info.js');
@@ -160,17 +160,10 @@ function isActiveCharacter(entry) {
 }
 
 function renderCharacterPage({ lang, codename, title, description, imagePath }) {
-  const permalink = lang === 'kr' ? `/synergy/${codename}/` : `/${lang}/synergy/${codename}/`;
-  const altKo = `/synergy/${codename}/`;
+  const permalink = lang === 'kr' ? `/kr/synergy/${codename}/` : `/${lang}/synergy/${codename}/`;
+  const altKo = `/kr/synergy/${codename}/`;
   const altEn = `/en/synergy/${codename}/`;
   const altJp = `/jp/synergy/${codename}/`;
-  const redirectFromLines = lang === 'kr'
-    ? [
-      'redirect_from:',
-      `  - /kr/synergy/${codename}/`,
-      `  - /kr/synergy/${codename}/index.html`
-    ]
-    : [];
 
   return [
     '---',
@@ -180,7 +173,6 @@ function renderCharacterPage({ lang, codename, title, description, imagePath }) 
     `image: ${yamlQuote(imagePath)}`,
     `language: ${lang}`,
     `permalink: ${permalink}`,
-    ...redirectFromLines,
     `synergy_character: ${codename}`,
     'alternate_urls:',
     `  ko: ${altKo}`,
@@ -192,14 +184,80 @@ function renderCharacterPage({ lang, codename, title, description, imagePath }) 
   ].join('\n');
 }
 
-function renderRootRedirectPage(lang) {
+function renderRootRedirectPage(lang, permalinkPath = `/${lang}/synergy/`) {
   return [
     '---',
     'layout: null',
-    `permalink: /${lang}/synergy/`,
-    `redirect_to: /synergy/?lang=${lang}`,
+    `permalink: ${permalinkPath}`,
     'sitemap: false',
     '---',
+    '<!doctype html>',
+    '<html lang="en">',
+    '<head>',
+    '  <meta charset="utf-8">',
+    '  <meta name="robots" content="noindex,nofollow">',
+    '  <title>Redirecting...</title>',
+    '</head>',
+    '<body>',
+    '  <script>',
+    '    (function () {',
+    '      var params = new URLSearchParams(window.location.search || "");',
+    `      params.set("lang", "${lang}");`,
+    '      var query = params.toString();',
+    '      var next = "/synergy/" + (query ? ("?" + query) : "");',
+    '      window.location.replace(next);',
+    '    })();',
+    '  </script>',
+    `  <noscript><meta http-equiv="refresh" content="0; url=/synergy/?lang=${lang}"></noscript>`,
+    `  <a href="/synergy/?lang=${lang}">Continue</a>`,
+    '</body>',
+    '</html>',
+    ''
+  ].join('\n');
+}
+
+function toRedirectStubFilePath(fromPath) {
+  let token = String(fromPath || '')
+    .replace(/^\/+|\/+$/g, '')
+    .replace(/\/+/g, '--')
+    .replace(/[^a-zA-Z0-9\-_.]/g, '_');
+  if (token.endsWith('.html')) {
+    token = token.slice(0, -5);
+  }
+  const fileName = `${token || 'root'}.html`;
+  return path.join(OUTPUT_DIR, 'redirects', fileName);
+}
+
+function renderDetailRedirectStub({ fromPath, toPath }) {
+  return [
+    '---',
+    'layout: null',
+    `permalink: ${fromPath}`,
+    'sitemap: false',
+    '---',
+    '<!doctype html>',
+    '<html lang="en">',
+    '<head>',
+    '  <meta charset="utf-8">',
+    '  <meta name="robots" content="noindex,nofollow">',
+    '  <title>Redirecting...</title>',
+    '</head>',
+    '<body>',
+    '  <script>',
+    '    (function () {',
+    '      var params = new URLSearchParams(window.location.search || "");',
+    '      params.delete("lang");',
+    '      params.delete("character");',
+    `      var nextPath = ${JSON.stringify(toPath)};`,
+    '      var query = params.toString();',
+    '      var next = nextPath + (query ? ("?" + query) : "");',
+    '      window.location.replace(next);',
+    '    })();',
+    '  </script>',
+    `  <noscript><meta http-equiv="refresh" content="0; url=${toPath}"></noscript>`,
+    `  <a href="${toPath}">Continue</a>`,
+    '</body>',
+    '</html>',
     ''
   ].join('\n');
 }
@@ -207,6 +265,30 @@ function renderRootRedirectPage(lang) {
 function buildExpectedFiles(friendNum, characterData, seoMeta) {
   const expected = new Map();
   const codenameOwner = new Map();
+  const redirectOwner = new Map();
+
+  const addRedirectStub = (fromPath, toPath) => {
+    const from = fromPath.endsWith('.html')
+      ? fromPath
+      : (fromPath.endsWith('/') ? fromPath : `${fromPath}/`);
+    const to = toPath.endsWith('.html')
+      ? toPath
+      : (toPath.endsWith('/') ? toPath : `${toPath}/`);
+    const previous = redirectOwner.get(from);
+    if (previous && previous !== to) {
+      throw new Error(`Redirect collision: "${from}" points to both "${previous}" and "${to}".`);
+    }
+    redirectOwner.set(from, to);
+
+    const fileRel = toPosix(path.relative(ROOT, toRedirectStubFilePath(from)));
+    const content = normalizeNewline(
+      renderDetailRedirectStub({
+        fromPath: from,
+        toPath: to
+      })
+    );
+    expected.set(fileRel, content);
+  };
 
   const activeKrNames = sortByCodePoint(
     Object.keys(friendNum).filter((krName) => isActiveCharacter(friendNum[krName]))
@@ -242,12 +324,15 @@ function buildExpectedFiles(friendNum, characterData, seoMeta) {
       );
       expected.set(fileRel, content);
     }
+
+    const canonicalKoPath = `/kr/synergy/${codename}/`;
+    addRedirectStub(`/synergy/${codename}/`, canonicalKoPath);
   }
 
   for (const lang of ROOT_REDIRECT_LANGS) {
-    const fileRel = toPosix(path.relative(ROOT, path.join(ROOT_STUB_DIR, `${lang}-index.html`)));
-    const content = normalizeNewline(renderRootRedirectPage(lang));
-    expected.set(fileRel, content);
+    const rootFileRel = toPosix(path.relative(ROOT, path.join(ROOT_STUB_DIR, `${lang}-index.html`)));
+    const rootContent = normalizeNewline(renderRootRedirectPage(lang, `/${lang}/synergy/`));
+    expected.set(rootFileRel, rootContent);
   }
 
   return expected;

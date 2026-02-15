@@ -6,7 +6,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "patch-console": "node apps/patch-console/run-patch-console.mjs",
     "seo:synergy:generate": "node scripts/seo/generate-synergy-pages.mjs",
-    "seo:synergy:check": "node scripts/seo/generate-synergy-pages.mjs --check"
+    "seo:synergy:check": "node scripts/seo/generate-synergy-pages.mjs --check",
+    "seo:wonder-weapon:generate": "node scripts/seo/generate-wonder-weapon-pages.mjs",
+    "seo:wonder-weapon:check": "node scripts/seo/generate-wonder-weapon-pages.mjs --check"
   },
   "keywords": [],
   "author": "",

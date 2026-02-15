@@ -1,5 +1,21 @@
 // 언어별 페이지 라우팅 관리
 class LanguageRouter {
+    static parseSeoDetailPath(pathname) {
+        const path = String(pathname || '');
+        const match = path.match(/^\/(?:(kr|en|jp|cn)\/)?(synergy|wonder-weapon)\/([^/]+)\/?$/i);
+        if (!match) return null;
+
+        const prefix = (match[1] || '').toLowerCase();
+        const app = (match[2] || '').toLowerCase();
+        const slug = match[3];
+
+        return {
+            app,
+            slug,
+            lang: (prefix === 'en' || prefix === 'jp' || prefix === 'cn') ? prefix : 'kr'
+        };
+    }
+
     static async init() {
         try {
             // 즉시 리다이렉트 처리
@@ -19,6 +35,10 @@ class LanguageRouter {
 
     // 언어 감지 초기화
     static async initializeLanguageDetection() {
+        if (this.isSeoDetailPath(window.location.pathname)) {
+            return;
+        }
+
         // 첫 방문자이고 언어 설정이 없는 경우에만 IP 감지 실행
         const hasLanguagePreference = localStorage.getItem('preferredLanguage');
         const hasLanguageDetected = localStorage.getItem('languageDetected');
@@ -54,6 +74,9 @@ class LanguageRouter {
         // /kr/, /en/, /jp/ 경로를 즉시 리다이렉트
         const langPrefixMatch = path.match(/^\/(kr|en|jp|cn)(\/.*)?$/);
         if (langPrefixMatch) {
+            if (this.isSeoDetailPath(path)) {
+                return;
+            }
             const [, langPrefix, remainingPath] = langPrefixMatch;
             let newPath = remainingPath || '/';
 
@@ -101,7 +124,20 @@ class LanguageRouter {
     }
 
     // 현재 언어 감지
+    static isSeoDetailPath(pathname) {
+        const path = String(pathname || '');
+        const patterns = [
+            /^\/(kr|en|jp|cn)\/(synergy|wonder-weapon)\/[^/]+\/?$/i,
+            /^\/(synergy|wonder-weapon)\/[^/]+\/?$/i
+        ];
+        return patterns.some((re) => re.test(path));
+    }
     static getCurrentLanguage() {
+        const seoDetail = this.parseSeoDetailPath(window.location.pathname);
+        if (seoDetail) {
+            return seoDetail.lang;
+        }
+
         // URL 파라미터에서 언어 확인
         const urlParams = new URLSearchParams(window.location.search);
         const urlLang = urlParams.get('lang');
@@ -242,6 +278,9 @@ class LanguageRouter {
         // 기존 언어 디렉토리 구조 (/kr/, /en/, /jp/)를 새로운 방식으로 리다이렉션
         const langPrefixMatch = path.match(/^\/(kr|en|jp|cn)(\/.*)?$/);
         if (langPrefixMatch) {
+            if (this.isSeoDetailPath(path)) {
+                return;
+            }
             const [, langPrefix, remainingPath] = langPrefixMatch;
             let newPath = remainingPath || '/';
 
@@ -317,6 +356,25 @@ class LanguageRouter {
                     // 현재 경로 분석
                     let currentPath = window.location.pathname;
                     let currentParams = new URLSearchParams(window.location.search);
+                    const seoDetail = LanguageRouter.parseSeoDetailPath(currentPath);
+                    if (seoDetail) {
+                        const usePrefix = lang === 'en' || lang === 'jp';
+                        const nextPath = usePrefix
+                            ? `/${lang}/${seoDetail.app}/${seoDetail.slug}/`
+                            : `/${seoDetail.app}/${seoDetail.slug}/`;
+
+                        if (usePrefix || lang === 'kr') {
+                            currentParams.delete('lang');
+                        } else {
+                            currentParams.set('lang', lang);
+                        }
+                        currentParams.delete('weapon');
+
+                        const query = currentParams.toString();
+                        const newUrl = `${nextPath}${query ? `?${query}` : ''}`;
+                        window.location.href = newUrl;
+                        return;
+                    }
 
                     // 기존 언어 디렉토리 경로를 루트로 변경
                     const langPrefixMatch = currentPath.match(/^\/(kr|en|jp|cn)(\/.*)?$/);
@@ -340,6 +398,10 @@ class LanguageRouter {
 
     // 현재 페이지가 해당 언어에 맞는 올바른 페이지인지 확인
     static isCorrectPageForLanguage(path, lang) {
+        if (this.isSeoDetailPath(path)) {
+            return true;
+        }
+
         // 이미 언어 파라미터가 있는 URL이면 올바른 페이지로 간주
         if (window.location.search.includes('lang=')) {
             return true;
@@ -395,6 +457,10 @@ if (typeof window !== 'undefined') {
 
     // 페이지 완전 로드 후에도 한 번 더 확인
     window.addEventListener('load', () => {
+        if (LanguageRouter.isSeoDetailPath(window.location.pathname)) {
+            return;
+        }
+
         // 첫 방문자이고 언어 설정이 없는 경우 강제 감지
         const hasLanguagePreference = localStorage.getItem('preferredLanguage');
         const hasLanguageDetected = localStorage.getItem('languageDetected');

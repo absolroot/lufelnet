@@ -57,6 +57,10 @@
   }
 
   function detectLang() {
+    if (window.HomeI18n && typeof window.HomeI18n.detectRawLang === 'function') {
+      const rawLang = window.HomeI18n.detectRawLang();
+      if (REGIONS.includes(rawLang)) return rawLang;
+    }
     try {
       const urlLang = new URLSearchParams(window.location.search).get('lang');
       if (urlLang && ['kr','en','jp','cn','tw','sea'].includes(urlLang)) return urlLang;
@@ -70,10 +74,38 @@
     return 'kr';
   }
 
+  function resolveUiLang(rawLang) {
+    if (window.HomeI18n && typeof window.HomeI18n.resolveUiLang === 'function') {
+      return window.HomeI18n.resolveUiLang(rawLang);
+    }
+    if (rawLang === 'en' || rawLang === 'jp') return rawLang;
+    return 'kr';
+  }
+
+  function t(key, fallback, rawLang) {
+    if (window.HomeI18n && typeof window.HomeI18n.t === 'function') {
+      return window.HomeI18n.t(key, fallback, rawLang);
+    }
+    return fallback;
+  }
+
+  function pickFallbackByRawLang(fallbackMap, rawLang) {
+    const uiLang = resolveUiLang(rawLang);
+    if (fallbackMap && Object.prototype.hasOwnProperty.call(fallbackMap, uiLang)) {
+      return fallbackMap[uiLang];
+    }
+    return fallbackMap.kr || '';
+  }
+
+  async function waitHomeI18nReady() {
+    if (!window.__HOME_I18N_READY__) return;
+    try {
+      await window.__HOME_I18N_READY__;
+    } catch (_) {}
+  }
+
   function remainingLabel(lang) {
-    if (lang === 'en') return 'Time left';
-    if (lang === 'jp') return '残り時間';
-    return '남은 시간';
+    return t('countdown_time_left', '남은 시간', lang);
   }
 
   function loadRegion() {
@@ -105,16 +137,15 @@
   }
 
   function formatCountdown(ms, lang) {
-    if (ms <= 0) return (lang === 'en' ? 'Ended' : (lang === 'jp' ? '終了' : '종료'));
+    if (ms <= 0) return t('countdown_ended', '종료', lang);
     const totalSec = Math.floor(ms / 1000);
     const days = Math.floor(totalSec / 86400);
     const hrs = Math.floor((totalSec % 86400) / 3600);
     const mins = Math.floor((totalSec % 3600) / 60);
     const secs = totalSec % 60;
     if (days > 0) {
-      if (lang === 'en') return `${days}d ${pad2(hrs)}:${pad2(mins)}:${pad2(secs)}`;
-      if (lang === 'jp') return `${days}日 ${pad2(hrs)}:${pad2(mins)}:${pad2(secs)}`;
-      return `${days}일 ${pad2(hrs)}:${pad2(mins)}:${pad2(secs)}`;
+      const daysUnit = t('countdown_days_unit', '일', lang);
+      return `${days}${daysUnit} ${pad2(hrs)}:${pad2(mins)}:${pad2(secs)}`;
     }
     return `${pad2(hrs)}:${pad2(mins)}:${pad2(secs)}`;
   }
@@ -136,11 +167,11 @@
     Wind: '질풍', Psychokinesis: '염동', Nuclear: '핵열', Bless: '축복', Curse: '주원'
   };
   const ADAPT_LABELS = {
-    Weak:   { kr: '약', en: 'Wk',  jp: '弱',  cls: 'weak' },
-    Resistant: { kr: '내', en: 'Res', jp: '耐',  cls: 'res' },
-    Nullify:   { kr: '무', en: 'Nul', jp: '無',  cls: 'nul' },
-    Absorb:    { kr: '흡', en: 'Abs', jp: '吸',  cls: 'abs' },
-    Reflect:   { kr: '반', en: 'Rpl', jp: '反',  cls: 'rpl' },
+    Weak:   { key: 'adapt_weak', fallback: { kr: '약', en: 'Wk', jp: '弱' }, cls: 'weak' },
+    Resistant: { key: 'adapt_resistant', fallback: { kr: '내', en: 'Res', jp: '耐' }, cls: 'res' },
+    Nullify:   { key: 'adapt_nullify', fallback: { kr: '무', en: 'Nul', jp: '無' }, cls: 'nul' },
+    Absorb:    { key: 'adapt_absorb', fallback: { kr: '흡', en: 'Abs', jp: '吸' }, cls: 'abs' },
+    Reflect:   { key: 'adapt_reflect', fallback: { kr: '반', en: 'Rpl', jp: '反' }, cls: 'rpl' },
   };
 
   function buildAdaptSprite(adapt) {
@@ -156,7 +187,8 @@
     Object.keys(ADAPT_LABELS).forEach(key => {
       const list = (adapt && adapt[key]) || [];
       const labelInfo = ADAPT_LABELS[key];
-      const text = (lang === 'en' ? labelInfo.en : (lang === 'jp' ? labelInfo.jp : labelInfo.kr));
+      const fallback = pickFallbackByRawLang(labelInfo.fallback, lang);
+      const text = t(labelInfo.key, fallback, lang);
       (list || []).forEach(enName => {
         const kr = elementNameMap[enName] || enName;
         const x = elementOffsetPx(kr);
@@ -218,16 +250,12 @@
 
   function bossesTitle() {
     const lang = detectLang();
-    if (lang === 'en') return 'Boss';
-    if (lang === 'jp') return 'ボス';
-    return '보스';
+    return t('boss_title', '보스', lang);
   }
 
   function nightmareLabel() {
     const lang = detectLang();
-    if (lang === 'en') return 'Nightmare\'s Gateway';
-    if (lang === 'jp') return '閼兇夢の扉';
-    return '흉몽의 문';
+    return t('boss_mode_nightmare', '흉몽의 문', lang);
   }
 
   function renderGuildBoss(root, data, region, affixMap) {
@@ -312,10 +340,15 @@
         const chip = document.createElement('span');
         chip.className = 'affix-chip';
         let displayName = a.name;
-        if (displayName === 'Special Effect') {
+        const specialEffectLabel = t('boss_special_effect', 'Special Effect', lang);
+        if (displayName === 'Special Effect' || displayName === specialEffectLabel) {
           const key = normalizeDesc(a.detail || a.description || '');
           const map = affixMap || affixDescToName || {};
-          if (key && map[key]) displayName = map[key];
+          if (key && map[key]) {
+            displayName = map[key];
+          } else {
+            displayName = specialEffectLabel;
+          }
         }
         chip.textContent = displayName;
         if (a.detail) chip.setAttribute('data-tooltip', a.detail);
@@ -380,6 +413,7 @@
     const root = document.getElementById(ROOT_ID);
     if (!root) return;
     try {
+      await waitHomeI18nReady();
       const region = loadRegion();
       const [affixMap, data] = await Promise.all([
         loadAffixMap(),
@@ -397,6 +431,7 @@
     const root = document.getElementById(ROOT_ID);
     if (!root) return;
     try {
+      await waitHomeI18nReady();
       const region = loadRegion();
       const [affixMap, data] = await Promise.all([
         loadAffixMap(),

@@ -323,6 +323,9 @@ jp: /?lang=jp
     </div>
 </div>
 
+<!-- Home i18n bootstrap -->
+<script src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
+<script src="/apps/home/js/home-i18n.js?v={{ site.time | date: '%s' }}"></script>
 <!-- Carousel JS -->
 <script src="/apps/home/js/carousel.js?v={{ site.time | date: '%s' }}"></script>
 <!-- Tooltip (for affix hover) -->
@@ -337,10 +340,6 @@ jp: /?lang=jp
 
 
 <script>
-
-    // 다국어 데이터 로드
-    window.i18nData = null;
-
 
     // 오버레이 추가 함수
     function addComingSoonOverlay(cardId, text) {
@@ -445,315 +444,96 @@ jp: /?lang=jp
         }
     }
 
-    async function loadI18nData() {
-        if (window.i18nData) return window.i18nData;
-
+    async function waitHomeI18nReady() {
+        if (!window.__HOME_I18N_READY__) return;
         try {
-            // I18nService가 로드되어 있으면 사용
-            if (window.I18nService) {
-                // 공통 번역 로드 (모든 언어)
-                await Promise.all([
-                    window.I18nService.loadCommonTranslations('kr'),
-                    window.I18nService.loadCommonTranslations('en'),
-                    window.I18nService.loadCommonTranslations('jp')
-                ]);
+            await window.__HOME_I18N_READY__;
+        } catch (_) { }
+    }
 
-                // i18nData 호환 형식으로 변환
-                const buildLangData = (lang) => {
-                    const common = window.I18nService.cache?.[lang]?.common || {};
-                    const home = common.home || {};
-                    return {
-                        language_notice: home.languageNotice || '',
-                        site_title: home.siteTitle || 'P5X Lufelnet',
-                        menu_character: home.menuCharacter || '',
-                        menu_persona: home.menuPersona || '',
-                        menu_revelations: home.menuRevelations || '',
-                        menu_tactic: home.menuTactic || '',
-                        menu_article: home.menuArticle || '',
-                        menu_tier: home.menuTier || '',
-                        menu_character_desc_desktop: home.menuCharacterDescDesktop || '',
-                        menu_character_desc_mobile: home.menuCharacterDescMobile || '',
-                        menu_persona_desc_desktop: home.menuPersonaDescDesktop || '',
-                        menu_persona_desc_mobile: home.menuPersonaDescMobile || '',
-                        menu_revelations_desc_desktop: home.menuRevelationsDescDesktop || '',
-                        menu_revelations_desc_mobile: home.menuRevelationsDescMobile || '',
-                        menu_tactic_desc_desktop: home.menuTacticDescDesktop || '',
-                        menu_tactic_desc_mobile: home.menuTacticDescMobile || '',
-                        menu_article_desc_desktop: home.menuArticleDescDesktop || '',
-                        menu_article_desc_mobile: home.menuArticleDescMobile || '',
-                        menu_tier_desc_desktop: home.menuTierDescDesktop || '',
-                        menu_tier_desc_mobile: home.menuTierDescMobile || '',
-                        menu_goto: home.menuGoto || '',
-                        popular_characters: home.popularCharacters || '',
-                        recent_updates: home.recentUpdates || '',
-                        guides: home.guides || '',
-                        guide_city: home.guideCity || '',
-                        guide_growth: home.guideGrowth || '',
-                        guide_battle: home.guideBattle || '',
-                        tactic_workshop: home.tacticWorkshop || '',
-                        show_more: home.showMore || ''
-                    };
-                };
-
-                window.i18nData = {
-                    kr: buildLangData('kr'),
-                    en: buildLangData('en'),
-                    jp: buildLangData('jp')
-                };
-
-                return window.i18nData;
-            }
-
-            // 폴백: I18nService가 없는 경우 기본 한국어 데이터
-            window.i18nData = {
-                kr: {
-                    language_notice: "",
-                    site_title: "P5X 루페르넷",
-                    menu_character: "괴도",
-                    menu_persona: "페르소나",
-                    menu_revelations: "계시",
-                    menu_tactic: "택틱",
-                    menu_article: "가이드",
-                    menu_tier: "티어",
-                    menu_character_desc_desktop: "보다 높은 점수, 보다 쉬운 클리어를 위한<br>괴도별 육성 전략을 만나보세요",
-                    menu_character_desc_mobile: "괴도별 육성 전략을 만나보세요",
-                    menu_persona_desc_desktop: "핵심 페르소나 추천과 더불어<br>각 페르소나에 어울리는 스킬 세팅까지",
-                    menu_persona_desc_mobile: "핵심 페르소나 추천과 스킬 세팅까지",
-                    menu_revelations_desc_desktop: "계시 정보들을 한 눈에!<br>속성별, 일월성진별 원하는 대로 매칭",
-                    menu_revelations_desc_mobile: "계시 정보들을 한 눈에!",
-                    menu_tactic_desc_desktop: "본인만의 택틱을 만들고 공유하고,<br>바다와 흉몽에서 높은 점수를 쟁취하세요",
-                    menu_tactic_desc_mobile: "본인만의 택틱을 만들고 공유하세요",
-                    menu_article_desc_desktop: "게임에서 알려주지 않는 정보들을 정리했습니다.",
-                    menu_article_desc_mobile: "게임에서 알려주지 않는 정보들",
-                    menu_tier_desc_desktop: "티어표를 참고해서 괴도를 육성해보세요.",
-                    menu_tier_desc_mobile: "티어표를 참고해서 괴도를 육성",
-                    menu_goto: "바로가기",
-                    popular_characters: "인기 괴도",
-                    recent_updates: "최신 업데이트",
-                    guides: "가이드",
-                    guide_city: "도시 생활",
-                    guide_growth: "육성 및 재화",
-                    guide_battle: "전투 및 팰리스",
-                    tactic_workshop: "택틱 도서관",
-                    show_more: "더보기"
-                },
-                en: {},
-                jp: {}
-            };
-
-            return window.i18nData;
-        } catch (error) {
-            console.error('Failed to load i18n data:', error);
-            return null;
+    function detectHomeRawLang() {
+        if (window.HomeI18n && typeof window.HomeI18n.detectRawLang === 'function') {
+            return window.HomeI18n.detectRawLang();
         }
+        return 'kr';
+    }
+
+    function homeT(key, fallback, rawLang) {
+        if (window.HomeI18n && typeof window.HomeI18n.t === 'function') {
+            return window.HomeI18n.t(key, fallback, rawLang);
+        }
+        return fallback;
+    }
+
+    function getLanguageLabel(rawLang) {
+        const labels = {
+            kr: homeT('language_name_kr', '한국어', rawLang),
+            en: homeT('language_name_en', 'English', rawLang),
+            jp: homeT('language_name_jp', '日本語', rawLang),
+            cn: homeT('language_name_cn', '中文', rawLang)
+        };
+        return labels[rawLang] || labels.kr;
     }
 
     // 다국어 지원 함수
     async function updateLanguageContent() {
-        // URL 파라미터에서 직접 언어 확인 (우선순위)
-        const urlParams = new URLSearchParams(window.location.search);
-        const urlLang = urlParams.get('lang');
+        await waitHomeI18nReady();
+        const currentLang = detectHomeRawLang();
 
-        let currentLang = 'kr'; // 기본값
-
-        if (urlLang && ['kr', 'en', 'jp', 'cn'].includes(urlLang)) {
-            currentLang = urlLang;
-        } else if (typeof LanguageRouter !== 'undefined') {
-            currentLang = LanguageRouter.getCurrentLanguage();
-        } else {
-            // localStorage에서 확인
-            const savedLang = localStorage.getItem('preferredLanguage');
-            if (savedLang && ['kr', 'en', 'jp', 'cn'].includes(savedLang)) {
-                currentLang = savedLang;
-            }
-        }
-
-        //console.log('🌐 현재 언어 설정:', currentLang);
-
-        // 다국어 데이터 로드
-        await loadI18nData();
-        const i18n = window.i18nData;
-
-        if (!i18n || !i18n[currentLang]) return;
-
-        const data = i18n[currentLang];
-
-        // 언어 안내 메시지
-        /*
-        if (currentLang !== 'kr') {
-            const notice = document.getElementById('language-notice');
-            const noticeText = document.getElementById('language-notice-text');
-            if (notice && noticeText && data.language_notice) {
-                noticeText.textContent = data.language_notice;
-                notice.style.display = 'block';
-            }
-        }*/
-
-        // 사이트 제목
         const siteTitle = document.getElementById('site-title');
-        if (siteTitle && data.site_title) {
-            siteTitle.textContent = data.site_title;
+        if (siteTitle) {
+            siteTitle.textContent = homeT('site_title', 'P5X 루페르넷', currentLang);
         }
 
-        // 메뉴 카드 제목들
-        const menuTitles = {
-            'menu-character-title': data.menu_character,
-            'menu-persona-title': data.menu_persona,
-            'menu-revelations-title': data.menu_revelations,
-            'menu-tactic-title': data.menu_tactic,
-            'menu-article-title': data.menu_article,
-            'menu-tier-title': data.menu_tier
-        };
-
-        Object.keys(menuTitles).forEach(id => {
-            const element = document.getElementById(id);
-            if (element && menuTitles[id]) {
-                const icon = element.querySelector('img');
-                element.textContent = menuTitles[id] + ' ';
-                if (icon) element.appendChild(icon);
-            }
-        });
-
-        // 메뉴 설명들
-        const menuDescs = {
-            'menu-character-desc-desktop': data.menu_character_desc_desktop,
-            'menu-character-desc-mobile': data.menu_character_desc_mobile,
-            'menu-persona-desc-desktop': data.menu_persona_desc_desktop,
-            'menu-persona-desc-mobile': data.menu_persona_desc_mobile,
-            'menu-revelations-desc-desktop': data.menu_revelations_desc_desktop,
-            'menu-revelations-desc-mobile': data.menu_revelations_desc_mobile,
-            'menu-tactic-desc-desktop': data.menu_tactic_desc_desktop,
-            'menu-tactic-desc-mobile': data.menu_tactic_desc_mobile,
-            'menu-article-desc-desktop': data.menu_article_desc_desktop,
-            'menu-article-desc-mobile': data.menu_article_desc_mobile,
-            'menu-tier-desc-desktop': data.menu_tier_desc_desktop,
-            'menu-tier-desc-mobile': data.menu_tier_desc_mobile
-        };
-
-        Object.keys(menuDescs).forEach(id => {
-            const element = document.getElementById(id);
-            if (element && menuDescs[id]) {
-                element.innerHTML = menuDescs[id];
-            }
-        });
-
-        // 버튼 텍스트들
-        const buttons = {
-            'menu-character-btn': data.menu_goto,
-            'menu-persona-btn': data.menu_goto,
-            'menu-revelations-btn': data.menu_goto,
-            'menu-tactic-btn': data.menu_goto,
-            'menu-article-btn': data.menu_goto,
-            'menu-tier-btn': data.menu_goto
-        };
-
-        Object.keys(buttons).forEach(id => {
-            const element = document.getElementById(id);
-            if (element && buttons[id]) {
-                element.textContent = buttons[id] + ' →';
-            }
-        });
-
-        // 섹션 제목들
         const sectionTitles = {
-            'popular-characters-title': data.popular_characters,
-            'recent-updates-title': data.recent_updates,
-            'guides-title': data.guides
+            'popular-characters-title': homeT('popular_characters', '인기 괴도', currentLang),
+            'guides-title': homeT('guides', '가이드', currentLang),
+            'tactic-workshop-title': homeT('tactic_workshop', '택틱 도서관', currentLang)
         };
 
-        Object.keys(sectionTitles).forEach(id => {
+        Object.keys(sectionTitles).forEach((id) => {
             const element = document.getElementById(id);
             if (element && sectionTitles[id]) {
                 element.textContent = sectionTitles[id];
             }
         });
 
-        // 가이드 카드 제목들
-        const guideTitles = {
-            'guide-city-title': data.guide_city,
-            'guide-growth-title': data.guide_growth,
-            'guide-battle-title': data.guide_battle
-        };
-
-        Object.keys(guideTitles).forEach(id => {
-            const element = document.getElementById(id);
-            if (element && guideTitles[id]) {
-                element.textContent = guideTitles[id];
-            }
-        });
-
-        // 택틱 관련 텍스트
-        const tacticTitle = document.getElementById('tactic-workshop-title');
-        if (tacticTitle && data.tactic_workshop) {
-            tacticTitle.textContent = data.tactic_workshop;
-        }
-
-        /*
-        const showMoreBtn = document.getElementById('show-more-posts-btn');
-        if (showMoreBtn && data.show_more) {
-            showMoreBtn.textContent = data.show_more + ' ＋';
-        }
-
-        // 더보기 버튼
-        
-        const moreUpdatesBtn = document.getElementById('show-more-updates-btn');
-        if (moreUpdatesBtn && data.show_more) {
-            moreUpdatesBtn.textContent = data.show_more;
-            moreUpdatesBtn.setAttribute('data-text-more', data.show_more);
-        }*/
-
         // 모든 링크에 현재 언어 파라미터 추가
         updateLinksWithLanguage(currentLang);
 
-        // 언어별 메뉴 제한
+        // 언어별 메뉴 제한 (기존 동작 유지)
         if (currentLang === 'en' || currentLang === 'jp') {
-            // Persona 메뉴 활성화 (오버레이 제거)
             removeComingSoonOverlay('menu-persona-card');
             removeComingSoonOverlay('menu-revelations-card');
             removeComingSoonOverlay('menu-tactic-card');
 
-            // 오버레이 추가 예시
-            // const tacticOverlayText = currentLang === 'en' ? 'Coming Soon' : '準備中';
-            // addComingSoonOverlay('menu-tactic-card', tacticOverlayText);
-
-            // main-content 아래 모든 섹션 숨기기
             const middleContainer = document.querySelector('.middle-container');
-            const guidesContainer = document.querySelector('.guides-container');
-
             if (middleContainer) {
                 middleContainer.style.display = 'none';
             }
-
-
         } else {
-            // 한국어인 경우 모든 메뉴 활성화
             const tacticCard = document.getElementById('menu-tactic-card');
             if (tacticCard) {
                 tacticCard.style.display = 'block';
             }
 
-            // 오버레이 제거
             removeComingSoonOverlay('menu-persona-card');
             removeComingSoonOverlay('menu-revelations-card');
             removeComingSoonOverlay('menu-tactic-card');
 
-            // 택틱 도서관 섹션 표시
             const postsContainer = document.getElementById('posts-container');
             if (postsContainer) {
                 postsContainer.style.display = 'block';
-                // 오버레이 제거
                 const overlay = postsContainer.querySelector('.coming-soon-overlay');
                 if (overlay) {
                     overlay.remove();
                 }
-                // 링크 활성화
                 const links = postsContainer.querySelectorAll('a');
-                links.forEach(link => {
+                links.forEach((link) => {
                     link.style.pointerEvents = 'auto';
                 });
             }
 
-            // main-content 아래 모든 섹션 표시
             const middleContainer = document.querySelector('.middle-container');
             const guidesContainer = document.querySelector('.guides-container');
 
@@ -767,53 +547,21 @@ jp: /?lang=jp
     }
 
     // 언어별 SEO 설정 함수
-    function updateSEOContent() {
-        // URL 파라미터에서 직접 언어 확인 (우선순위)
-        const urlParams = new URLSearchParams(window.location.search);
-        const urlLang = urlParams.get('lang');
+    async function updateSEOContent() {
+        await waitHomeI18nReady();
+        const currentLang = detectHomeRawLang();
+        const seoTitle = homeT('seo_title', '페르소나5 더 팬텀 X - 루페르넷', currentLang);
+        const seoDescription = homeT('seo_description', '페르소나5 더 팬텀 X의 모든 정보를 한 곳에서 확인하세요. 캐릭터, 페르소나, 스킬, 공략 가이드를 제공합니다.', currentLang);
 
-        let currentLang = 'kr'; // 기본값
+        document.title = seoTitle;
 
-        if (urlLang && ['kr', 'en', 'jp', 'cn'].includes(urlLang)) {
-            currentLang = urlLang;
-        } else if (typeof LanguageRouter !== 'undefined') {
-            currentLang = LanguageRouter.getCurrentLanguage();
-        } else {
-            // localStorage에서 확인
-            const savedLang = localStorage.getItem('preferredLanguage');
-            if (savedLang && ['kr', 'en', 'jp', 'cn'].includes(savedLang)) {
-                currentLang = savedLang;
-            }
-        }
-
-        const seoData = {
-            'kr': {
-                title: '페르소나5 더 팬텀 X - 루페르넷',
-                description: '페르소나5 더 팬텀 X의 모든 정보를 한 곳에서 확인하세요. 캐릭터, 페르소나, 스킬, 공략 가이드를 제공합니다.'
-            },
-            'en': {
-                title: 'Persona 5: The Phantom X - LufelNet',
-                description: 'Comprehensive guide for Persona 5: The Phantom X. Wiki, Characters, Personas, skills, and strategy guides all in one place.'
-            },
-            'jp': {
-                title: 'ペルソナ5 ザ・ファントム X - LufelNet',
-                description: 'ペルソナ5 ザ・ファントム Xの総合攻略サイト。怪盗、ペルソナ、スキル、戦略ガイドを一箇所で確認できます。'
-            }
-        };
-
-        const currentSEO = seoData[currentLang] || seoData['kr'];
-
-        // 타이틀 업데이트
-        document.title = currentSEO.title;
-
-        // 메타 태그 업데이트
         const metaDescription = document.querySelector('meta[name="description"]');
         const ogTitle = document.querySelector('meta[property="og:title"]');
         const ogDescription = document.querySelector('meta[property="og:description"]');
 
-        if (metaDescription) metaDescription.setAttribute('content', currentSEO.description);
-        if (ogTitle) ogTitle.setAttribute('content', currentSEO.title);
-        if (ogDescription) ogDescription.setAttribute('content', currentSEO.description);
+        if (metaDescription) metaDescription.setAttribute('content', seoDescription);
+        if (ogTitle) ogTitle.setAttribute('content', seoTitle);
+        if (ogDescription) ogDescription.setAttribute('content', seoDescription);
     }
 
     // 첫 방문자 언어 감지 함수
@@ -918,20 +666,19 @@ jp: /?lang=jp
         await updateLanguageContent();
 
         // SEO 설정 업데이트
-        updateSEOContent();
+        await updateSEOContent();
 
         // 헤더의 언어 선택기 초기화
-        const currentLang = getCurrentLanguage();
+        const currentLang = detectHomeRawLang();
         const headerSelectedOption = document.querySelector('.header-container .selected-option');
         if (headerSelectedOption) {
             // 현재 언어로 선택된 옵션 업데이트
             const flagImg = headerSelectedOption.querySelector('.flag-icon');
             const langText = headerSelectedOption.querySelector('span');
-            if (flagImg) flagImg.src = `${BASE_URL}/assets/img/flags/${currentLang}.png`;
+            const displayFlagLang = ['kr', 'en', 'jp', 'cn', 'tw'].includes(currentLang) ? currentLang : 'kr';
+            if (flagImg) flagImg.src = `${BASE_URL}/assets/img/flags/${displayFlagLang}.png`;
             if (langText) {
-                langText.textContent = currentLang === 'kr' ? '한국어' :
-                    currentLang === 'en' ? 'English' :
-                        currentLang === 'jp' ? '日本語' : '中文';
+                langText.textContent = getLanguageLabel(currentLang);
             }
 
             // 클릭 이벤트 추가
@@ -965,13 +712,12 @@ jp: /?lang=jp
             LanguageRouter.init().then(async () => {
                 // 언어 라우터 초기화 후 다시 한 번 업데이트
                 await updateLanguageContent();
-                updateSEOContent();
+                await updateSEOContent();
             });
         }
 
         // 홈 택틱 미리보기: tactic-posts-home.js의 공용 함수로 일원화
-        const urlParams = new URLSearchParams(window.location.search);
-        const currentLangFromUrl = urlParams.get('lang') || (typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr');
+        const currentLangFromUrl = detectHomeRawLang();
         if (typeof window.loadHomeTacticsFromSupabase === 'function') {
             window.loadHomeTacticsFromSupabase(currentLangFromUrl);
         }
@@ -993,7 +739,7 @@ jp: /?lang=jp
         // 약간의 지연 후 최종 업데이트 (모든 스크립트 로드 완료 후)
         setTimeout(async () => {
             await updateLanguageContent();
-            updateSEOContent();
+            await updateSEOContent();
             //console.log('🔄 페이지 로드 완료 후 언어 콘텐츠 최종 업데이트');
         }, 100);
 
@@ -1020,41 +766,15 @@ jp: /?lang=jp
         return div.innerHTML;
     }
     function formatDate(date) {
-        // detect current language: URL -> LanguageRouter -> localStorage -> 'kr'
-        let lang = 'kr';
         try {
-            const urlLang = new URLSearchParams(window.location.search).get('lang');
-            if (urlLang) lang = urlLang.toLowerCase();
-            else if (typeof LanguageRouter !== 'undefined' && LanguageRouter.getCurrentLanguage) {
-                lang = (LanguageRouter.getCurrentLanguage() || 'kr').toLowerCase();
-            } else {
-                const saved = localStorage.getItem('preferredLanguage');
-                if (saved) lang = saved.toLowerCase();
+            if (window.HomeI18n && typeof window.HomeI18n.formatRelativeDate === 'function') {
+                return window.HomeI18n.formatRelativeDate(date);
             }
         } catch (_) { }
-        if (!['kr', 'en', 'jp'].includes(lang)) lang = 'kr';
-
-        const now = new Date();
-        const diff = now.getTime() - date.getTime();
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        if (days === 0) {
-            const hours = Math.floor(diff / (1000 * 60 * 60));
-            if (hours === 0) {
-                const minutes = Math.floor(diff / (1000 * 60));
-                if (lang === 'en') return `${minutes} min ago`;
-                if (lang === 'jp') return `${minutes}分前`;
-                return `${minutes}분 전`;
-            }
-            if (lang === 'en') return `${hours} hours ago`;
-            if (lang === 'jp') return `${hours}時間前`;
-            return `${hours}시간 전`;
-        } else if (days < 7) {
-            if (lang === 'en') return `${days} days ago`;
-            if (lang === 'jp') return `${days}日前`;
-            return `${days}일 전`;
-        } else {
-            const locale = lang === 'en' ? 'en-US' : (lang === 'jp' ? 'ja-JP' : 'ko-KR');
-            return date.toLocaleDateString(locale);
+        try {
+            return date.toLocaleDateString('ko-KR');
+        } catch (_) {
+            return '';
         }
     }
 </script>

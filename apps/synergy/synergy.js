@@ -19,6 +19,19 @@
 
     // 현재 언어 감지 (전역으로 노출 - synergy_search.js에서 사용)
     function getCurrentLanguage() {
+        if (typeof LanguageRouter !== 'undefined' && LanguageRouter && typeof LanguageRouter.getCurrentLanguage === 'function') {
+            const routedLang = LanguageRouter.getCurrentLanguage();
+            if (['kr', 'en', 'jp'].includes(routedLang)) {
+                return routedLang;
+            }
+        }
+
+        const pathname = String(window.location.pathname || '').toLowerCase();
+        if (pathname.startsWith('/en/')) return 'en';
+        if (pathname.startsWith('/jp/')) return 'jp';
+        if (pathname.startsWith('/kr/synergy/')) return 'kr';
+        if (/^\/synergy\/[^/]+\/?$/.test(pathname)) return 'kr';
+
         const urlParams = new URLSearchParams(window.location.search);
         const urlLang = urlParams.get('lang');
         if (urlLang && ['kr', 'en', 'jp'].includes(urlLang)) {
@@ -1066,7 +1079,7 @@
         }
 
         // 경로 기반 URL 업데이트 (코드네임 사용)
-        const langPrefix = currentLanguage === 'kr' ? '' : `/${currentLanguage}`;
+        const langPrefix = currentLanguage === 'kr' ? '/kr' : `/${currentLanguage}`;
         const newPath = `${langPrefix}/synergy/${charCodeName}/`;
         window.history.pushState({ character: characterName }, '', newPath);
 

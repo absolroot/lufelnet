@@ -21,6 +21,7 @@
 | `defense-calc` | 완료(경미 초기값 잔존) | 통합 번들 사용(`apps/defense-calc/index.html:363`), 초기 하드코딩(`apps/defense-calc/index.html:49`)은 `assets/js/defense/defense-i18n.js:236`에서 런타임 치환 |
 | `gallery` | 완료 | `apps/gallery/index.html:104`, `apps/gallery/gallery-tags.js:30`에서 `initPageI18n('gallery')` + `window.t()` 사용 |
 | `guides` | 완료 | 신규 페이지 번들 + 통합 초기화로 목록/동적상세/정적상세 진입점 통합(`i18n/pages/guides/kr.js:1`, `apps/guides/index.html:41`, `apps/guides/view.html:40`, `apps/guides/pages/books.html:28`, `apps/guides/guides.js:28`, `apps/article-editor/editor.js:320`) |
+| `home` | 완료 | 홈 전용 번들/헬퍼 신설 후 `initPageI18n('home')` 부트스트랩, 헤더/SEO/퀵그리드/가이드/택틱/보스/SOS/캐러셀 문구를 키 조회로 통합하고 `cn/tw/sea` 텍스트 KR 폴백 유지(`i18n/pages/home/kr.js:1`, `i18n/pages/home/en.js:1`, `i18n/pages/home/jp.js:1`, `apps/home/js/home-i18n.js:1`, `apps/home/index.html:327`, `apps/home/js/quick-grid.js:7`, `apps/home/js/guides-home.js:59`, `apps/home/tactic-posts-home.js:121`, `apps/home/js/bosses.js:140`, `apps/home/js/sos.js:80`, `apps/home/js/carousel.js:1110`) |
 | `login` | 완료 | `apps/login/index.html:133`, `apps/login/index.html:138`에서 `initPageI18n('login')`/`I18nService.init('login')` 호출 |
 | `maps` | 완료 | `MapsI18n` 경로를 유지하면서 언어 선택기/모바일 ARIA/백업 툴팁/에러 문구/적 정보 fallback을 페이지 번들 키 조회로 통합하고 KR direct 참조 제거(`apps/maps/index.html:78`, `apps/maps/object-filter-panel.js:34`, `apps/maps/map-select-panel.js:21`, `apps/maps/maps-core.js:44`, `apps/maps/object-click-handler.js:33`, `i18n/pages/maps/kr.js:18`) |
 | `material-calc` | 완료 | 페이지 번들 추가 + 통합 초기화 이후 `window.t()` 기반으로 모달/버튼/도움말/SEO를 통합하고 로컬 `I18N` 맵 제거(`apps/material-calc/index.html:628`, `apps/material-calc/material-planner.js:123`, `apps/material-calc/material-planner-export.js:7`, `i18n/pages/material-calc/kr.js:1`) |
@@ -45,7 +46,7 @@
 
 | 서비스 | 상태 | 근거 |
 | --- | --- | --- |
-| `home` | 미구현(공통 번역 일부 + 로컬 맵) | 공통 번역 로드 후 로컬 데이터 조합(`apps/home/index.html:456`, `apps/home/index.html:462`), 로컬 라벨 맵(`apps/home/js/quick-grid.js:45`) |
+| 없음 | - | - |
 
 ## 4. 레거시/중복 잔존
 
@@ -67,7 +68,7 @@
 | `dmg-calc` | 불필요 |
 | `gallery` | 완료 |
 | `guides` | 완료 |
-| `home` | 미구현 |
+| `home` | 완료 |
 | `login` | 완료 |
 | `maps` | 완료 |
 | `material-calc` | 완료 |
@@ -85,5 +86,5 @@
 | `wonder-weapon` | 완료 |
 
 ## 6. 결론
-- 재점검 기준 통합 i18n 완료(경미 초기값 잔존 포함): `about`, `astrolabe`, `character`, `critical-calc`, `defense-calc`, `gallery`, `guides`, `login`, `maps`, `material-calc`, `persona`, `pull-calc`, `pull-tracker`, `revelations`, `schedule`, `synergy`, `tactic`, `tactic-maker`, `tier`, `wonder-weapon`
-- 우선 정리 대상(미구현): `home`
+- 재점검 기준 통합 i18n 완료(경미 초기값 잔존 포함): `about`, `astrolabe`, `character`, `critical-calc`, `defense-calc`, `gallery`, `guides`, `home`, `login`, `maps`, `material-calc`, `persona`, `pull-calc`, `pull-tracker`, `revelations`, `schedule`, `synergy`, `tactic`, `tactic-maker`, `tier`, `wonder-weapon`
+- 우선 정리 대상(미구현): 없음

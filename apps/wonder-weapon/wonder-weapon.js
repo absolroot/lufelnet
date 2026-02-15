@@ -115,6 +115,34 @@
     if (ogDescription) ogDescription.setAttribute('content', seoDescription);
   }
 
+  function buildWeaponSeoTitle(krName) {
+    const lang = (typeof LanguageRouter !== 'undefined' && LanguageRouter)
+      ? LanguageRouter.getCurrentLanguage()
+      : getPathLanguageHint();
+    const displayName = getLocalizedName(krName, lang) || krName;
+    const pageTitle = t('pageTitle', '');
+    const baseSeoTitle = t('seoTitle', pageTitle || document.title || '');
+
+    if (!displayName) return baseSeoTitle || '';
+    if (baseSeoTitle && baseSeoTitle.includes(displayName)) return baseSeoTitle;
+
+    if (pageTitle && baseSeoTitle && baseSeoTitle.includes(pageTitle)) {
+      return baseSeoTitle.replace(pageTitle, `${pageTitle} ${displayName}`);
+    }
+    if (baseSeoTitle) {
+      return `${baseSeoTitle} ${displayName}`.trim();
+    }
+    return `${pageTitle} ${displayName}`.trim();
+  }
+
+  function updateSelectedWeaponSeoTitle(krName) {
+    const nextTitle = buildWeaponSeoTitle(krName);
+    if (!nextTitle) return;
+    document.title = nextTitle;
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.setAttribute('content', nextTitle);
+  }
+
   // Update static labels per language - now uses i18n system
   function updateStaticTexts() {
     // i18n 서비스가 data-i18n 속성으로 자동 처리하므로
@@ -128,6 +156,129 @@
   function normWeaponName(name) {
     if (!name) return '';
     return String(name).replace(/!/g, '').trim();
+  }
+
+  function normalizeWeaponToken(value) {
+    return String(value || '')
+      .normalize('NFC')
+      .replace(/\uCA8C/g, '\u00B7')
+      .replace(/\+/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  function slugifyWeaponName(value) {
+    return String(value || '')
+      .trim()
+      .toLowerCase()
+      .replace(/['".]/g, '')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+  }
+
+  function getWeaponSlugEntry(krName) {
+    const map = (typeof window !== 'undefined' && window.__WONDER_WEAPON_SLUG_MAP && typeof window.__WONDER_WEAPON_SLUG_MAP === 'object')
+      ? window.__WONDER_WEAPON_SLUG_MAP
+      : null;
+    const raw = map ? map[krName] : null;
+
+    if (raw && typeof raw === 'object' && !Array.isArray(raw)) {
+      return {
+        slug: normalizeWeaponToken(raw.slug || ''),
+        aliases: Array.isArray(raw.aliases) ? raw.aliases.map((x) => normalizeWeaponToken(x)).filter(Boolean) : []
+      };
+    }
+    if (typeof raw === 'string') {
+      return {
+        slug: normalizeWeaponToken(raw),
+        aliases: []
+      };
+    }
+    return { slug: '', aliases: [] };
+  }
+
+  function resolveWeaponKey(input) {
+    const token = normalizeWeaponToken(input);
+    if (!token) return '';
+    const map = (typeof matchWeapons !== 'undefined' && matchWeapons) ? matchWeapons : null;
+    if (!map || typeof map !== 'object') return token;
+    if (Object.prototype.hasOwnProperty.call(map, token)) return token;
+
+    const tokenLower = token.toLowerCase();
+    const tokenSlug = slugifyWeaponName(token);
+    for (const [krName, entry] of Object.entries(map)) {
+      const kr = normalizeWeaponToken(krName);
+      const en = normalizeWeaponToken(entry?.name_en || '');
+      const jp = normalizeWeaponToken(entry?.name_jp || '');
+      const slugEntry = getWeaponSlugEntry(krName);
+      const stableSlug = normalizeWeaponToken(slugEntry.slug);
+      const stableAliases = slugEntry.aliases;
+      const enSlug = slugifyWeaponName(en);
+      if (kr.toLowerCase() === tokenLower || en.toLowerCase() === tokenLower || jp.toLowerCase() === tokenLower) {
+        return krName;
+      }
+      if (stableSlug && tokenLower === stableSlug.toLowerCase()) {
+        return krName;
+      }
+      if (stableAliases.some((alias) => tokenLower === alias.toLowerCase())) {
+        return krName;
+      }
+      if (tokenSlug && enSlug && tokenSlug === enSlug) {
+        return krName;
+      }
+    }
+    return token;
+  }
+
+  function isWonderWeaponDetailPath(pathname) {
+    const path = String(pathname || '').toLowerCase();
+    if (/^\/(kr|en|jp|cn)\/wonder-weapon\/[^/]+\/?$/.test(path)) return true;
+    if (/^\/wonder-weapon\/[^/]+\/?$/.test(path)) return true;
+    return false;
+  }
+
+  function getPathLanguageHint() {
+    const pathname = String(window.location.pathname || '').toLowerCase();
+    if (pathname.startsWith('/en/')) return 'en';
+    if (pathname.startsWith('/jp/')) return 'jp';
+
+    // For canonical detail pages, path language wins over query lang.
+    if (isWonderWeaponDetailPath(pathname)) return 'kr';
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const langParam = String(urlParams.get('lang') || '').toLowerCase();
+    if (langParam === 'en' || langParam === 'jp') return langParam;
+    return 'kr';
+  }
+
+  function getCanonicalWeaponPath(krName) {
+    const map = (typeof matchWeapons !== 'undefined' && matchWeapons) ? matchWeapons : null;
+    const entry = map && map[krName] ? map[krName] : null;
+    const slugEntry = getWeaponSlugEntry(krName);
+    const slug = slugEntry.slug || slugifyWeaponName(entry?.name_en || '');
+    if (!slug) return '';
+    const lang = getPathLanguageHint();
+    return lang === 'kr' ? `/kr/wonder-weapon/${slug}/` : `/${lang}/wonder-weapon/${slug}/`;
+  }
+
+  function syncUrlToCanonicalWeapon(krName, replace = false) {
+    const nextUrl = new URL(window.location.href);
+    const canonicalPath = getCanonicalWeaponPath(krName);
+    if (canonicalPath) {
+      nextUrl.pathname = canonicalPath;
+    }
+    nextUrl.searchParams.delete('weapon');
+    nextUrl.searchParams.delete('lang');
+
+    const currentPathAndQuery = `${window.location.pathname}${window.location.search}`;
+    const nextPathAndQuery = `${nextUrl.pathname}${nextUrl.search}`;
+    if (currentPathAndQuery === nextPathAndQuery) return;
+
+    if (replace) {
+      window.history.replaceState({}, '', nextUrl);
+      return;
+    }
+    window.history.pushState({}, '', nextUrl);
   }
 
   // Shard 체크 상태 관리 함수들
@@ -427,18 +578,34 @@
 
       // 1. URL 파라미터 체크
       const urlParams = new URLSearchParams(window.location.search);
-      const weaponParam = urlParams.get('weapon');
+      const weaponParamRaw = urlParams.get('weapon');
+      const weaponParam = resolveWeaponKey(weaponParamRaw);
+      const defaultWeaponRaw = (typeof window !== 'undefined' && typeof window.__WONDER_WEAPON_DEFAULT === 'string')
+        ? window.__WONDER_WEAPON_DEFAULT.trim()
+        : '';
+      const defaultWeapon = resolveWeaponKey(defaultWeaponRaw);
 
       let targetWeapon = null;
+      let shouldReplaceUrl = false;
 
       if (weaponParam) {
         const targetTab = document.querySelector(`.weapon-tab[data-weapon="${weaponParam}"]`);
         if (targetTab && targetTab.style.display !== 'none') {
           targetWeapon = weaponParam;
+          shouldReplaceUrl = true;
         }
       }
 
       // 2. 선택된 무기가 없고 URL 파라미터도 유효하지 않으면 첫 번째 탭 선택
+      if (!targetWeapon && defaultWeapon) {
+        const targetTab = document.querySelector(`.weapon-tab[data-weapon="${defaultWeapon}"]`);
+        if (targetTab && targetTab.style.display !== 'none') {
+          targetWeapon = defaultWeapon;
+          if (urlParams.has('lang')) {
+            shouldReplaceUrl = true;
+          }
+        }
+      }
       if (!targetWeapon && !selectedWeapon && visibleTabs.length > 0) {
         targetWeapon = visibleTabs[0].dataset.weapon;
       }
@@ -447,21 +614,32 @@
       const finalWeapon = targetWeapon || selectedWeapon;
 
       if (finalWeapon) {
-        selectWeapon(finalWeapon, false);
+        selectWeapon(finalWeapon, false, shouldReplaceUrl ? 'replace' : 'none');
       }
     }, 0);
   }
 
   // 무기 선택 함수
-  async function selectWeapon(krName, userInitiated = false) {
+  async function selectWeapon(krName, userInitiated = false, historyMode = 'auto') {
     if (selectedWeapon === krName) return;
 
     selectedWeapon = krName;
 
-    if (userInitiated) {
-      const url = new URL(window.location);
-      url.searchParams.set('weapon', krName);
-      window.history.pushState({}, '', url);
+    const resolvedHistoryMode = historyMode === 'auto'
+      ? (userInitiated ? 'push' : 'none')
+      : historyMode;
+
+    if (resolvedHistoryMode === 'replace') {
+      syncUrlToCanonicalWeapon(krName, true);
+    } else if (resolvedHistoryMode === 'push') {
+      syncUrlToCanonicalWeapon(krName, false);
+    }
+
+    const isSeoDetailPage = !!(typeof window !== 'undefined'
+      && typeof window.__WONDER_WEAPON_DEFAULT === 'string'
+      && window.__WONDER_WEAPON_DEFAULT.trim());
+    if (resolvedHistoryMode !== 'none' || isSeoDetailPage) {
+      updateSelectedWeaponSeoTitle(krName);
     }
 
     // 탭 활성화
@@ -1155,7 +1333,12 @@
         VersionChecker.check();
       }
 
-      updateSEO();
+      const isSeoDetailPage = !!(typeof window !== 'undefined'
+        && typeof window.__WONDER_WEAPON_DEFAULT === 'string'
+        && window.__WONDER_WEAPON_DEFAULT.trim());
+      if (!isSeoDetailPage) {
+        updateSEO();
+      }
       await loadDataFiles();
       updateStaticTexts();
       await loadAllPartyData();

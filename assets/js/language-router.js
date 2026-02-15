@@ -1,5 +1,7 @@
 // 언어별 페이지 라우팅 관리
 class LanguageRouter {
+    static initPromise = null;
+
     static parseSeoDetailPath(pathname) {
         const path = String(pathname || '');
         const match = path.match(/^\/(?:(kr|en|jp|cn)\/)?(synergy|wonder-weapon)\/([^/]+)\/?$/i);
@@ -17,20 +19,28 @@ class LanguageRouter {
     }
 
     static async init() {
-        try {
-            // 즉시 리다이렉트 처리
-            await this.handleImmediateRedirect();
-
-            // 첫 방문자의 경우 IP 기반 언어 감지
-            await this.initializeLanguageDetection();
-
-            await this.handleLanguageRouting();
-            await this.setupLanguageRedirection();
-        } catch (error) {
-            console.error('Language router initialization failed:', error);
-            // 기본 언어로 폴백
-            return 'kr';
+        if (this.initPromise) {
+            return this.initPromise;
         }
+
+        this.initPromise = (async () => {
+            try {
+                // 즉시 리다이렉트 처리
+                await this.handleImmediateRedirect();
+
+                // 첫 방문자의 경우 IP 기반 언어 감지
+                await this.initializeLanguageDetection();
+
+                await this.handleLanguageRouting();
+                await this.setupLanguageRedirection();
+            } catch (error) {
+                console.error('Language router initialization failed:', error);
+                // 기본 언어로 폴백
+                return 'kr';
+            }
+        })();
+
+        return this.initPromise;
     }
 
     // 언어 감지 초기화
@@ -446,9 +456,6 @@ class LanguageRouter {
         //console.log('🔄 Language settings reset. Reload the page to detect language again.');
     }
 }
-
-// 스크립트 로드 시 즉시 실행
-LanguageRouter.handleImmediateRedirect();
 
 // 페이지 로드 시 초기화
 if (typeof window !== 'undefined') {

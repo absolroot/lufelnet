@@ -5,19 +5,8 @@
   if (!lang) return;
 
   var path = window.location.pathname;
-  var targetPath = '/' + lang + '/';
-  var canUsePathLang = false;
-
-  try {
-    if (typeof window.__SEO_PATH_LANG__ === 'string') {
-      canUsePathLang = true;
-    } else if (window.LanguageRouter && typeof window.LanguageRouter.isSeoDetailPath === 'function') {
-      canUsePathLang = !!window.LanguageRouter.isSeoDetailPath(targetPath);
-    }
-  } catch (_) { /* noop */ }
-
   // / 에서 /?lang=xx → /{lang}/ 로 정규화
-  if (canUsePathLang && path === '/' && ['kr', 'en', 'jp'].indexOf(lang) !== -1) {
+  if (path === '/' && ['kr', 'en', 'jp'].indexOf(lang) !== -1) {
     params.delete('lang');
     var remaining = params.toString();
     history.replaceState(null, '', '/' + lang + '/' + (remaining ? '?' + remaining : ''));
@@ -25,7 +14,7 @@
   }
 
   // /{lang}/ 에서 ?lang= strip (path에 이미 언어 있음)
-  if (canUsePathLang && /^\/(kr|en|jp)\//.test(path)) {
+  if (/^\/(kr|en|jp)\//.test(path)) {
     params.delete('lang');
     var remaining = params.toString();
     history.replaceState(null, '', path + (remaining ? '?' + remaining : ''));

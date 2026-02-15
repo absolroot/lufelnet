@@ -164,6 +164,13 @@ function renderCharacterPage({ lang, codename, title, description, imagePath }) 
   const altKo = `/synergy/${codename}/`;
   const altEn = `/en/synergy/${codename}/`;
   const altJp = `/jp/synergy/${codename}/`;
+  const redirectFromLines = lang === 'kr'
+    ? [
+      'redirect_from:',
+      `  - /kr/synergy/${codename}/`,
+      `  - /kr/synergy/${codename}/index.html`
+    ]
+    : [];
 
   return [
     '---',
@@ -173,6 +180,7 @@ function renderCharacterPage({ lang, codename, title, description, imagePath }) 
     `image: ${yamlQuote(imagePath)}`,
     `language: ${lang}`,
     `permalink: ${permalink}`,
+    ...redirectFromLines,
     `synergy_character: ${codename}`,
     'alternate_urls:',
     `  ko: ${altKo}`,

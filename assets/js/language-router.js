@@ -130,6 +130,8 @@ class LanguageRouter {
 
         const path = String(pathname || '');
         const patterns = [
+            // Home SEO roots (e.g. /kr/, /en/, /jp/)
+            /^\/(kr|en|jp|cn)\/?$/i,
             /^\/(kr|en|jp|cn)\/(synergy|wonder-weapon)\/[^/]+\/?$/i,
             /^\/(synergy|wonder-weapon)\/[^/]+\/?$/i
         ];

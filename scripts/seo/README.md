@@ -323,6 +323,7 @@ if (/^\/(kr|en|jp)\//.test(window.location.pathname)) return;
 | wonder-weapon | A (per-item) | `generate-wonder-weapon-pages.mjs` | Done |
 | character | A (per-item) | `generate-character-pages.mjs` | Done |
 | tier | B (single-page) | `generate-tier-pages.mjs` | Done |
+| schedule | B (single-page) | `generate-schedule-pages.mjs` | Done |
 | persona | A (per-item) | — | Not started |
 | maps | A (per-item) | — | Not started |
 
@@ -337,6 +338,7 @@ if (/^\/(kr|en|jp)\//.test(window.location.pathname)) return;
 | Character (list) | `/character/` (default), `/kr/character/`, `/en/character/`, `/jp/character/` |
 | Tier (list) | `/kr/tier/`, `/en/tier/`, `/jp/tier/` |
 | Tier Maker | `/kr/tier-maker/`, `/en/tier-maker/`, `/jp/tier-maker/` |
+| Schedule | `/kr/schedule/`, `/en/schedule/`, `/jp/schedule/` |
 
 Legacy URLs redirect to canonical via generated stub pages (`layout: null`).
 Language root URLs (`/{lang}/{app}/`) redirect to `/{app}/?lang={lang}` via generated root stubs.
@@ -355,6 +357,7 @@ Legacy query-based URLs are rewritten to clean path-based URLs via `history.repl
 | `/en/wonder-weapon/?v=4.4.7` | `/en/wonder-weapon/` |
 | `/tier/position-tier/?lang=en&v=4.4.8` | `/en/tier/` |
 | `/tier/position-tier/?lang=en&list=false&v=4.4.8` | `/en/tier-maker/` |
+| `/schedule/?lang=en&v=4.4.8` | `/en/schedule/` |
 
 The rewrite scripts are placed at the top of the body include or page, before any other scripts, so they run early. They use the `__*_SLUG_MAP` data (injected via Jekyll) to resolve slugs.
 

@@ -1,4 +1,4 @@
-﻿/**
+/**
  * P5X Release Schedule Renderer
  * Renders the character release timeline
  * 
@@ -109,9 +109,19 @@
         if (revelationDataLoading) return revelationDataLoading;
 
         revelationDataLoading = new Promise((resolve) => {
-            // Get language from URL directly (don't use getCurrentLang to avoid dependency)
+            // Detect language from path first (SEO URLs), then query, then i18n helper.
+            const pathMatch = window.location.pathname.match(/^\/(kr|en|jp)(\/|$)/i);
+            const pathLang = pathMatch ? pathMatch[1].toLowerCase() : '';
             const urlParams = new URLSearchParams(window.location.search);
-            const lang = urlParams.get('lang') || 'en';
+            const queryLang = String(urlParams.get('lang') || '').toLowerCase();
+            const helperLang = typeof getCurrentLang === 'function'
+                ? String(getCurrentLang() || '').toLowerCase()
+                : '';
+            const lang = ['kr', 'en', 'jp'].includes(pathLang)
+                ? pathLang
+                : (['kr', 'en', 'jp'].includes(queryLang)
+                    ? queryLang
+                    : (['kr', 'en', 'jp'].includes(helperLang) ? helperLang : 'en'));
 
             // Always load Korean data first for mapping
             let krDataLoaded = false;

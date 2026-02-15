@@ -1,0 +1,259 @@
+<script>
+(function () {
+    var params = new URLSearchParams(window.location.search || '');
+    var path = String(window.location.pathname || '/');
+    var lowerPath = path.toLowerCase();
+
+    var pathLangMatch = lowerPath.match(/^\/(kr|en|jp)(\/|$)/);
+    var pathLang = pathLangMatch ? pathLangMatch[1] : '';
+    var queryLang = String(params.get('lang') || '').toLowerCase();
+    var effectiveLang = pathLang || (['kr', 'en', 'jp'].indexOf(queryLang) !== -1 ? queryLang : '');
+
+    var isLegacyRoot = /^\/schedule\/?$/.test(lowerPath);
+    var isCanonicalPath = /^\/(kr|en|jp)\/schedule\/?$/.test(lowerPath);
+
+    if (isLegacyRoot && effectiveLang) {
+        window.__SEO_PATH_LANG__ = effectiveLang;
+        params.delete('lang');
+        params.delete('v');
+        var remainingLegacy = params.toString();
+        history.replaceState(null, '', '/' + effectiveLang + '/schedule/' + (remainingLegacy ? '?' + remainingLegacy : ''));
+        return;
+    }
+
+    if (isCanonicalPath) {
+        window.__SEO_PATH_LANG__ = pathLang;
+        var before = params.toString();
+        params.delete('lang');
+        params.delete('v');
+        var remainingCanonical = params.toString();
+        if (before !== remainingCanonical) {
+            history.replaceState(null, '', path + (remainingCanonical ? '?' + remainingCanonical : ''));
+        }
+        return;
+    }
+
+    if (isLegacyRoot && params.has('v')) {
+        params.delete('v');
+        var remainingRoot = params.toString();
+        history.replaceState(null, '', '/schedule/' + (remainingRoot ? '?' + remainingRoot : ''));
+    }
+})();
+</script>
+{% if page.alternate_urls %}
+{% for alt in page.alternate_urls %}
+<link rel="alternate" hreflang="{{ alt[0] }}" href="{{ site.url }}{{ alt[1] }}" />
+{% endfor %}
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.alternate_urls['ko'] | default: page.alternate_urls.first[1] }}" />
+{% endif %}
+
+<!-- Schedule Page CSS -->
+<link rel="stylesheet" href="{{ site.baseurl }}/apps/schedule/schedule.css?v={{ site.time | date: '%s' }}">
+
+<!-- Main content -->
+<div class="main-wrapper schedule-page">
+    <!-- Navigation path -->
+    <div class="navigation-path">
+        <script>document.write(`<a href="../../?v=${APP_VERSION}" id="nav-home" data-i18n="navHome">-</a>`);</script>
+        <span class="separator">/</span>
+        <span class="current-page" id="nav-current" data-i18n="navCurrent">-</span>
+    </div>
+
+    <!-- Header -->
+    <div class="header-container">
+        <h1 id="page-title" data-i18n="pageTitle">-</h1>
+    </div>
+
+    <!-- Notice Banner -->
+    <div class="schedule-notice" id="schedule-notice">
+        <p class="notice-text" id="notice-text" data-i18n-html="noticeHtml">
+            Be careful with spoilers.<br>
+            This schedule is for GLB/JP servers.<br>
+            Until version 4.0, new characters release every 2 weeks; after 4.0, the interval changes to 3 weeks. <br>
+            This schedule and character release order is based on previous Asia server releases, but may be subject to
+            change at any time due to unexpected circumstances or events.<br>
+            Character release order is not guaranteed to match Asia server or remain the same.<br>
+            For detailed patch history, see <a
+                href="https://docs.google.com/spreadsheets/d/1KmLUs1Cpp2WuDQZYHCW1xzCVCThWCB6R2VR5pFuLixE/edit?usp=sharing"
+                target="_blank">P5X Patch History by Sages</a>.
+        </p>
+    </div>
+
+    <!-- Current Release Banner -->
+    <div id="current-banner" class="current-banner">
+        <div class="loading">
+            <div class="loading-spinner"></div>
+        </div>
+    </div>
+
+    <!-- Filter Section -->
+    <div class="filter-section">
+        <button class="filter-btn active" data-filter="all" id="filter-all" data-i18n="filterAll">All</button>
+        <button class="filter-btn" data-filter="released" id="filter-released"
+            data-i18n="filterReleased">Released</button>
+        <button class="filter-btn" data-filter="current" id="filter-current" data-i18n="filterCurrent">Current</button>
+        <button class="filter-btn" data-filter="upcoming" id="filter-upcoming"
+            data-i18n="filterUpcoming">Upcoming</button>
+        <button class="filter-btn" data-filter="future" id="filter-future" data-i18n="filterFuture">Future</button>
+    </div>
+
+    <!-- Timeline -->
+    <div id="timeline-container" class="timeline-container">
+        <div class="loading">
+            <div class="loading-spinner"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Weapon Effect Modal -->
+<div id="weapon-effect-modal" class="weapon-effect-modal">
+    <div class="weapon-effect-modal-content">
+        <span class="weapon-effect-close">&times;</span>
+        <div class="weapon-effect-header">
+            <img id="weapon-effect-image" src="" alt="Weapon" class="weapon-effect-image">
+            <h3 id="weapon-effect-title"></h3>
+        </div>
+        <div id="weapon-effect-description" class="weapon-effect-description"></div>
+    </div>
+</div>
+
+<!-- Load i18n Service (MUST be loaded before schedule.js) -->
+<script src="{{ site.baseurl }}/i18n/service/i18n-service.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
+
+<!-- Load Schedule Data & Renderer -->
+<script src="{{ site.baseurl }}/apps/schedule/data.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/schedule/schedule.js?v={{ site.time | date: '%s' }}"></script>
+
+<script>
+    (function () {
+        function detectLang() {
+            const pathMatch = window.location.pathname.match(/^\/(kr|en|jp)(\/|$)/i);
+            if (pathMatch) {
+                return pathMatch[1].toLowerCase();
+            }
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const queryLang = String(urlParams.get('lang') || '').toLowerCase();
+            if (['kr', 'en', 'jp'].indexOf(queryLang) !== -1) {
+                return queryLang;
+            }
+
+            if (typeof getCurrentLang === 'function') {
+                const current = String(getCurrentLang() || '').toLowerCase();
+                if (['kr', 'en', 'jp'].indexOf(current) !== -1) {
+                    return current;
+                }
+            }
+
+            return 'en';
+        }
+
+        function getI18nText(key, fallback = '') {
+            if (typeof window.t === 'function') {
+                return window.t(key, fallback);
+            }
+            return fallback;
+        }
+
+        function updateSEOTags(lang) {
+            const baseUrl = 'https://lufel.net';
+            const isPathLang = /^\/(kr|en|jp)(\/|$)/i.test(window.location.pathname);
+            const currentUrl = isPathLang
+                ? `${baseUrl}/${lang}/schedule/`
+                : `${baseUrl}/schedule/`;
+            const seoTitle = getI18nText('seoTitle', document.title);
+            const seoDescription = getI18nText('seoDescription', '');
+            const seoKeywords = getI18nText('seoKeywords', '');
+            const seoOgLocale = getI18nText('seoOgLocale', lang === 'jp' ? 'ja_JP' : lang === 'kr' ? 'ko_KR' : 'en_US');
+
+            // Update document title
+            if (seoTitle) {
+                document.title = seoTitle;
+            }
+
+            // Update meta description
+            let metaDesc = document.querySelector('meta[name="description"]');
+            if (!metaDesc) {
+                metaDesc = document.createElement('meta');
+                metaDesc.setAttribute('name', 'description');
+                document.head.appendChild(metaDesc);
+            }
+            metaDesc.setAttribute('content', seoDescription);
+
+            // Update meta keywords
+            let metaKeywords = document.querySelector('meta[name="keywords"]');
+            if (!metaKeywords) {
+                metaKeywords = document.createElement('meta');
+                metaKeywords.setAttribute('name', 'keywords');
+                document.head.appendChild(metaKeywords);
+            }
+            metaKeywords.setAttribute('content', seoKeywords);
+
+            // Update Open Graph tags
+            function updateOGTag(property, content) {
+                let tag = document.querySelector(`meta[property="${property}"]`);
+                if (!tag) {
+                    tag = document.createElement('meta');
+                    tag.setAttribute('property', property);
+                    document.head.appendChild(tag);
+                }
+                tag.setAttribute('content', content);
+            }
+
+            updateOGTag('og:title', seoTitle);
+            updateOGTag('og:description', seoDescription);
+            updateOGTag('og:url', currentUrl);
+            updateOGTag('og:locale', seoOgLocale);
+            updateOGTag('og:type', 'website');
+            updateOGTag('og:image', `${baseUrl}/assets/img/home/SEO.png`);
+
+            // Update Twitter Card tags
+            function updateTwitterTag(name, content) {
+                let tag = document.querySelector(`meta[name="${name}"]`);
+                if (!tag) {
+                    tag = document.createElement('meta');
+                    tag.setAttribute('name', name);
+                    document.head.appendChild(tag);
+                }
+                tag.setAttribute('content', content);
+            }
+
+            updateTwitterTag('twitter:card', 'summary_large_image');
+            updateTwitterTag('twitter:title', seoTitle);
+            updateTwitterTag('twitter:description', seoDescription);
+            updateTwitterTag('twitter:image', `${baseUrl}/assets/img/home/SEO.png`);
+
+            // Update canonical URL
+            let canonical = document.querySelector('link[rel="canonical"]');
+            if (!canonical) {
+                canonical = document.createElement('link');
+                canonical.setAttribute('rel', 'canonical');
+                document.head.appendChild(canonical);
+            }
+            canonical.setAttribute('href', currentUrl);
+
+            // Update HTML lang attribute
+            document.documentElement.setAttribute('lang', lang === 'jp' ? 'ja' : lang === 'kr' ? 'ko' : 'en');
+        }
+
+        // Initialize on DOM ready
+        document.addEventListener('DOMContentLoaded', async function () {
+            const lang = detectLang();
+
+            // Initialize i18n
+            if (typeof initPageI18n === 'function') {
+                await initPageI18n('schedule');
+            }
+
+            // Update SEO after i18n initialization
+            const currentLang = (typeof getCurrentLang === 'function') ? getCurrentLang() : lang;
+            updateSEOTags(currentLang);
+
+            // Load navigation
+            if (typeof Navigation !== 'undefined') {
+                Navigation.load('schedule-release');
+            }
+        });
+    })();
+</script>

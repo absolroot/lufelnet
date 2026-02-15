@@ -14,7 +14,9 @@
     "seo:character:generate": "node scripts/seo/generate-character-pages.mjs",
     "seo:character:check": "node scripts/seo/generate-character-pages.mjs --check",
     "seo:tier:generate": "node scripts/seo/generate-tier-pages.mjs",
-    "seo:tier:check": "node scripts/seo/generate-tier-pages.mjs --check"
+    "seo:tier:check": "node scripts/seo/generate-tier-pages.mjs --check",
+    "seo:schedule:generate": "node scripts/seo/generate-schedule-pages.mjs",
+    "seo:schedule:check": "node scripts/seo/generate-schedule-pages.mjs --check"
   },
   "keywords": [],
   "author": "",

@@ -23,19 +23,19 @@ defaults:
 
   # 리다이렉트 설정
   - scope:
-      path: "*/character"
+      path: "apps/character"
     values:
       redirect_from: /character
   - scope:
-      path: "*/persona"
+      path: "apps/persona"
     values:
       redirect_from: /persona
   - scope:
-      path: "*/revelations"
+      path: "apps/revelations"
     values:
       redirect_from: /revelations
   - scope:
-      path: "*/tactic"
+      path: "apps/tactic"
     values:
       redirect_from: /tactic
 

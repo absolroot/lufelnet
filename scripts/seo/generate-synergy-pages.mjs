@@ -43,20 +43,20 @@ const characterData = parseCharacterData(charInfoSrc);
 // 3) i18n title strings (hardcoded from the JS files to avoid eval)
 const i18nTitles = {
     kr: {
-        prefix: 'P5X 협력자 가이드',
-        suffix: '페르소나5 더 팬텀 X 루페르넷',
+        prefix: 'P5X 협력자',
+        suffix: '루페르넷',
         descPrefix: '페르소나5 더 팬텀 X',
         descSuffix: '의 협력자(시너지) 가이드',
     },
     en: {
-        prefix: 'P5X Synergy guide',
-        suffix: 'Persona 5 The Phantom X Lufelnet',
+        prefix: 'P5X Synergy',
+        suffix: 'Lufelnet',
         descPrefix: 'Persona 5 The Phantom X',
         descSuffix: 'synergy guide',
     },
     jp: {
         prefix: 'P5X シナジーガイド',
-        suffix: 'Persona 5 The Phantom X Lufelnet',
+        suffix: 'Lufelnet',
         descPrefix: 'Persona 5 The Phantom X',
         descSuffix: 'シナジーガイド',
     },

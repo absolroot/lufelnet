@@ -1,163 +1,314 @@
 # SEO Generator Playbook (`scripts/seo`)
 
-This directory is not only for `synergy`.  
-It is the shared playbook for building SEO generators for any app (`character`, `persona`, `maps`, `synergy`, ...).
+This file is a machine-readable playbook for Claude.
+When the user requests SEO page generation for any app, read this file first.
 
-## Goals
+---
 
-- Generate stable, crawlable SEO pages from source-of-truth data.
-- Keep runtime UI behavior unchanged while improving static URL coverage.
-- Make generation deterministic so CI drift checks are reliable.
-- Keep i18n-compatible structure for `kr`, `en`, `jp` now, and `cn` later.
+## Architecture Overview
 
-## Current Implementation
+```
+_layouts/default.html
+  └─ sets window.__SEO_PATH_LANG__ when page.url starts with /{lang}/
+  └─ loads assets/js/language-router.js
 
-- Synergy
-  - Generator: `scripts/seo/generate-synergy-pages.mjs`
-  - Commands:
-    - `npm run seo:synergy:generate`
-    - `npm run seo:synergy:check`
-  - Output:
-    - Character pages: `pages/synergy/{kr,en,jp}/*.html`
-    - Root redirects: `pages/synergy/roots/*.html`
-    - Legacy detail redirects: `pages/synergy/redirects/*.html`
-- Wonder Weapon
-  - Generator: `scripts/seo/generate-wonder-weapon-pages.mjs`
-  - Commands:
-    - `npm run seo:wonder-weapon:generate`
-    - `npm run seo:wonder-weapon:check`
-  - Stable slug map:
-    - `_data/wonder_weapon_slugs.json`
-  - Output:
-    - Weapon pages: `pages/wonder-weapon/{kr,en,jp}/*.html`
-    - Root redirects: `pages/wonder-weapon/roots/*.html`
-    - Legacy detail redirects: `pages/wonder-weapon/redirects/*.html`
+assets/js/language-router.js
+  └─ isSeoDetailPath() checks __SEO_PATH_LANG__ flag first
+  └─ skips all redirect/detection logic for flagged pages
+  └─ NO hardcoded app patterns needed — layout flag is generic
 
-## URL Compatibility Policy
+apps/{app}/index.html          ← original app page (permalink: /{app}/ or /)
+_includes/{app}-body.html      ← extracted body content (shared across languages)
+pages/{app}/{lang}/*.html      ← generated SEO pages (permalink: /{lang}/{app}/...)
+i18n/pages/{app}/seo-meta.json ← SEO title/description templates per language
+scripts/seo/generate-{app}-pages.mjs ← generator script
+```
 
-For every generated app, define:
+## Two App Types
 
-1. Canonical permalink
-2. Legacy compatibility paths (prefer explicit redirect stubs)
-3. Language-root redirects (root stub pages)
+### Type A: Per-Item Apps (synergy, wonder-weapon, character, persona, ...)
 
-Synergy example:
+Each item gets its own page per language.
 
-- Canonical KR character path: `/kr/synergy/{codename}/`
-- Legacy compatibility path: `/synergy/{codename}/`
-- Language root redirects:
-  - `/kr/synergy/` -> `/synergy/?lang=kr`
-  - `/en/synergy/` -> `/synergy/?lang=en`
-  - `/jp/synergy/` -> `/synergy/?lang=jp`
-  - `/cn/synergy/` -> `/synergy/?lang=cn`
+- Reference generator: `scripts/seo/generate-synergy-pages.mjs`
+- Reference body: `_includes/synergy-body.html`
+- Reference seo-meta: `i18n/pages/synergy/seo-meta.json` (uses `{name}` placeholder)
+- Generated output: `pages/synergy/{kr,en,jp}/{codename}.html`
+- Also generates: `pages/synergy/roots/*.html` (language root redirects), `pages/synergy/redirects/*.html` (legacy redirects)
+- Permalink pattern: `/{lang}/synergy/{codename}/`
+- Front matter includes: `layout: default`, `title`, `description`, `image`, `language`, `permalink`, `alternate_urls`, app-specific keys (e.g. `synergy_character`)
+- Body: `{% include synergy-body.html %}`
 
-Detail URL normalization policy (for generated detail pages):
+### Type B: Single-Page Apps (home)
 
-1. Canonical detail URL must be path-based.
-2. Canonical KR detail URL should use `/kr/{app}/{slug}/` for language-prefix consistency.
-3. Do not keep `lang` query on path-based detail URLs.
-4. Legacy query params (`?weapon=...`, `?character=...`) may be accepted for backward compatibility, but runtime must normalize to canonical path via `replaceState`.
-5. Legacy detail paths/slugs must be handled by generated redirect stub pages (`layout: null` + relative `window.location.replace`), not plugin-generated absolute redirects.
+One page per language, no per-item iteration.
 
-Language-root redirect implementation policy:
+- Reference generator: `scripts/seo/generate-home-pages.mjs`
+- Reference body: `_includes/home-body.html`
+- Reference seo-meta: `i18n/pages/home/seo-meta.json` (no `{name}` placeholder)
+- Generated output: `pages/home/{kr,en,jp}/index.html`
+- No root redirects or legacy redirects needed
+- Permalink pattern: `/{lang}/`
+- Front matter includes: `layout: default`, `custom_css`, `custom_js`, `custom_data`, `title`, `description`, `image`, `language`, `permalink`, `alternate_urls`
+- Body: `{% include home-body.html %}`
 
-1. Do not use `redirect_to` for language-root stubs (`/en/{app}/`, `/jp/{app}/`, ...).
-2. Generate `layout: null` HTML stubs that redirect with relative paths via `window.location.replace(...)`.
-3. Preserve existing query params (e.g. `v`) and override only `lang`.
-4. Do not generate both `/{path}/` and `/{path}/index.html` as separate pages. They resolve to the same output target in Jekyll and can collide.
-5. Keep `<noscript>` fallback to relative URL.
-6. This prevents local host mismatch issues (`127.0.0.1` vs `0.0.0.0`) during development.
+---
 
-## Recommended Structure for New Apps
+## Step-by-Step: Adding SEO Pages for a New App
 
-When adding a new app generator, use this pattern:
+### 1. Read the original app page
 
-1. Generator script:
-   - `scripts/seo/generate-{app}-pages.mjs`
-2. SEO i18n template:
-   - `i18n/pages/{app}/seo-meta.json`
-3. Generated output:
-   - `pages/{app}/{lang}/*.html`
-   - optional: `pages/{app}/roots/*.html`
-4. NPM scripts:
-   - `seo:{app}:generate`
-   - `seo:{app}:check`
-5. CI integration:
-   - data sync workflow: run `seo:{app}:generate`
-   - deploy workflow: run `seo:{app}:check` (PR), `seo:{app}:generate` (build)
+Read `apps/{app}/index.html` to understand:
+- Front matter fields (`layout`, `custom_css`, `custom_js`, `custom_data`, `permalink`, `language`, `redirect_from`)
+- Body content (everything after the `---` closing)
+- What data sources it uses
 
-## Generator Contract (All Apps)
+### 2. Create seo-meta.json
 
-Every generator should implement:
+Create `i18n/pages/{app}/seo-meta.json`.
 
-1. `generate` mode (write files)
-2. `check` mode (no writes, non-zero on drift)
-3. deterministic ordering
-4. deterministic output format
-5. collision detection for URL keys/slugs
-6. strict source validation (fail fast on missing required fields)
-7. URL key stability policy (fixed map or immutable key), with alias support when key changes
+For per-item apps (Type A) — use `{name}` placeholder:
+```json
+{
+  "kr": {
+    "title": "... {name} ...",
+    "description": "... {name} ..."
+  },
+  "en": {
+    "title": "... {name} ...",
+    "description": "... {name} ..."
+  },
+  "jp": {
+    "title": "... {name} ...",
+    "description": "... {name} ..."
+  }
+}
+```
 
-## i18n and Naming Rules
+For single-page apps (Type B) — direct strings, no placeholder:
+```json
+{
+  "kr": { "title": "...", "description": "..." },
+  "en": { "title": "...", "description": "..." },
+  "jp": { "title": "...", "description": "..." }
+}
+```
 
-- SEO title/description must come from `i18n/pages/{app}/seo-meta.json`.
-- Use `{name}`-style placeholders instead of hardcoded text in script.
-- Supported now: `kr`, `en`, `jp`.
-- `cn` can be route-ready before full content release.
-- Proper nouns must not be freely paraphrased.  
-  If source name is unclear, stop and confirm before fixing slug/name mapping.
+Source the title/description from existing `i18n/pages/{app}/kr.js`, `en.js`, `jp.js` (`seo_title`, `seo_description` keys) or from the original front matter.
 
-## Source Priority Design
+### 3. Extract body into include
 
-Define source priority per app and document it in the generator.
+Create `_includes/{app}-body.html` with ALL content from `apps/{app}/index.html` below the front matter `---`.
 
-Synergy baseline:
+Use the synergy-body.html hreflang pattern at the top:
+```html
+{% if page.alternate_urls %}
+{% for alt in page.alternate_urls %}
+<link rel="alternate" hreflang="{{ alt[0] }}" href="{{ site.url }}{{ alt[1] }}" />
+{% endfor %}
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.alternate_urls['ko'] | default: page.alternate_urls.first[1] }}" />
+{% endif %}
+```
 
-1. truth source: `apps/synergy/friends/friend_num.json`
-2. primary URL key: `data/character_info.js` -> `codename`
-3. fallback URL key: `friend_num.json.name_en` -> slug
+For home only: add the replaceState URL normalization script at the very top of `_includes/home-body.html`:
+```html
+<script>
+(function () {
+  var params = new URLSearchParams(window.location.search);
+  var lang = params.get('lang');
+  if (!lang) return;
+  var path = window.location.pathname;
+  if (path === '/' && ['kr', 'en', 'jp'].indexOf(lang) !== -1) {
+    params.delete('lang');
+    var remaining = params.toString();
+    history.replaceState(null, '', '/' + lang + '/' + (remaining ? '?' + remaining : ''));
+    return;
+  }
+  if (/^\/(kr|en|jp)\//.test(path)) {
+    params.delete('lang');
+    var remaining = params.toString();
+    history.replaceState(null, '', path + (remaining ? '?' + remaining : ''));
+  }
+})();
+</script>
+```
 
-If both primary and fallback are missing, generation must fail.
+For per-item apps: add `?lang=` stripping via replaceState in the body include if the app page uses `?lang=` query params at runtime. The pattern:
+- On `/{lang}/{app}/{slug}/` paths, if `?lang=` is present, strip it via `replaceState`.
+- Path-based URLs must not retain `lang` query.
 
-Wonder Weapon baseline:
+If the body include has IP-based language detection (like `checkAndDetectLanguage`), add a guard to skip on path-based language pages:
+```javascript
+if (/^\/(kr|en|jp)\//.test(window.location.pathname)) return;
+```
 
-1. truth source: `data/kr/wonder/weapons.js`
-2. primary URL key: `_data/wonder_weapon_slugs.json` -> `slug`
-3. legacy URL aliases: `_data/wonder_weapon_slugs.json` -> `aliases[]` -> explicit redirect stubs
-4. fallback URL key: `name_en` is display-only, not URL key
+### 4. Update the original app page
 
-## Stable Slug Policy (Wonder Weapon)
+Rewrite `apps/{app}/index.html` to:
+```yaml
+---
+layout: default
+custom_css: [...]
+custom_js: [...]
+custom_data: [...]
+permalink: /{app}/   # or / for home
+language: kr
+title: "..."
+description: "..."
+image: "/assets/img/{app}/SEO.png"
+alternate_urls:
+  ko: /kr/{app}/
+  en: /en/{app}/
+  jp: /jp/{app}/
+---
+{% include {app}-body.html %}
+```
 
-Use `_data/wonder_weapon_slugs.json` as URL source of truth.
+Critical changes from the original:
+- **Remove `redirect_from`** entries that conflict with generated SEO page permalinks (e.g. remove `/kr/` if generating a page at `/kr/`)
+- **Update `alternate_urls`** from query-style (`/?lang=en`) to path-style (`/en/`)
+- **Add `image`** field
+- **Replace body** with `{% include {app}-body.html %}`
 
-When translated names (`name_en`, `name_jp`) change:
+### 5. Create the generator script
 
-1. Keep existing `slug` unchanged (preferred).
-2. If slug must change, move old slug into `aliases` before updating `slug`.
-3. Run:
-   - `npm run seo:wonder-weapon:generate`
-   - `npm run seo:wonder-weapon:check`
-4. Verify old URLs redirect via generated redirect stubs.
+Create `scripts/seo/generate-{app}-pages.mjs`.
 
-## Runtime SEO Behavior Contract
+Copy from the closest reference:
+- Per-item app → copy `generate-synergy-pages.mjs` or `generate-wonder-weapon-pages.mjs`
+- Single-page app → copy `generate-home-pages.mjs`
 
-For pages with tab/selection UI:
+Key elements every generator must have:
+- `normalizeNewline()`, `yamlQuote()`, `toPosix()`, `readJson()` utilities
+- `ensureSeoMetaShape()` — validate seo-meta.json structure
+- `renderPage()` — generate front matter + `{% include {app}-body.html %}`
+- `buildExpectedFiles()` — map of `relativePath -> content`
+- `listExistingFiles()` — walk the output directory
+- `runCheck()` — compare expected vs actual, exit 1 on drift
+- `runGenerate()` — delete output dir, write all files
+- `parseMode()` — handle `--check` flag
+- `main()` — orchestrate
 
-1. Initial deep-link (legacy query or canonical path) must select the matching tab/item.
-2. On deep-link normalization, use `replaceState` to avoid duplicate history entries.
-3. On user tab change, update URL to canonical path (`pushState`).
-4. Browser tab title (`document.title`) must reflect the selected item on detail context.
-5. Path-based detail URLs must not retain `lang` query after normalization.
+Generated page front matter must include:
+```yaml
+layout: default
+title: "..."
+description: "..."
+image: "..."
+language: {lang}
+permalink: /{lang}/{app}/{slug}/
+alternate_urls:
+  ko: /kr/{app}/{slug}/
+  en: /en/{app}/{slug}/
+  jp: /jp/{app}/{slug}/
+```
 
-Language router compatibility contract:
+For per-item apps, also include app-specific keys (e.g. `synergy_character`, `wonder_weapon_key`).
+Preserve `custom_css`, `custom_js`, `custom_data` from the original app page if the layout/body needs them.
 
-1. Global language router must not rewrite SEO detail paths from `/{lang}/{app}/{slug}/` to query-style URLs.
-2. Global language router must treat `/{app}/{slug}/` as a valid direct-access page and must not auto-append `?lang=...`.
-3. Legacy-prefix detail URLs (`/kr/{app}/{slug}/`) should be normalized by SEO redirect stubs, not by generic language-router rewrites.
-4. `initializeLanguageDetection()` and first-load IP fallback logic must skip SEO detail paths.
-5. For SEO detail pages, language resolution must be path-first (`/{en|jp}/{app}/{slug}/` -> that language, `/{app}/{slug}/` -> `kr`) and must ignore query `lang`.
-6. Language switch action on SEO detail pages should navigate to canonical detail paths for supported route languages (`kr`,`en`,`jp`), not force query-style rewriting.
-7. App-level language helpers (e.g. `synergy.js` local `getCurrentLanguage`) must follow the same path-first rule as the global router.
+### 6. Add npm scripts
+
+In `package.json`, add:
+```json
+"seo:{app}:generate": "node scripts/seo/generate-{app}-pages.mjs",
+"seo:{app}:check": "node scripts/seo/generate-{app}-pages.mjs --check"
+```
+
+### 7. Run and verify
+
+```bash
+npm run seo:{app}:generate
+npm run seo:{app}:check
+```
+
+---
+
+## Language Router Integration
+
+**You do NOT need to modify `assets/js/language-router.js` when adding new apps.**
+
+The mechanism:
+
+1. `_layouts/default.html` has this block (already present):
+   ```liquid
+   {% assign _seg1 = page.url | remove_first: '/' | split: '/' | first %}
+   {% if _seg1 == 'kr' or _seg1 == 'en' or _seg1 == 'jp' or _seg1 == 'cn' %}
+   var __SEO_PATH_LANG__ = '{{ _seg1 }}';
+   {% endif %}
+   ```
+2. `LanguageRouter.isSeoDetailPath()` checks `window.__SEO_PATH_LANG__` first.
+3. When the flag is set, the router skips: `handleImmediateRedirect`, `initializeLanguageDetection`, `handleLanguageRouting`.
+
+This means any page with permalink `/{lang}/...` and `layout: default` is automatically recognized as an SEO page. No router changes needed.
+
+---
+
+## Critical Gotchas
+
+### redirect_from conflicts
+If the original `apps/{app}/index.html` has `redirect_from: [/kr/, /kr/index.html]`, **remove those entries**. They conflict with generated SEO pages that use those permalinks.
+
+### Infinite redirect loops
+These happen when:
+1. `language-router.js` sees `/{lang}/` and tries to redirect to `/?lang={lang}` (old behavior)
+2. Page code sees `?lang={lang}` and replaceState back to `/{lang}/`
+3. Router runs again on DOMContentLoaded/load events
+
+Prevention: the `__SEO_PATH_LANG__` flag prevents step 1. Ensure it is set BEFORE language-router.js loads (it is — both are in the same `<script>` block in the layout).
+
+### replaceState vs location.replace
+- ALWAYS use `history.replaceState` for URL normalization on SEO pages.
+- NEVER use `window.location.replace` — it causes page reload and potential loops.
+
+### lang query stripping
+Path-based language pages (`/{lang}/...`) must strip `?lang=` from the URL via `replaceState`. The language is in the path; the query param is redundant and confusing.
+
+### IP detection skip
+Any IP-based language detection code in body includes (`checkAndDetectLanguage` or similar) must skip on path-based language pages. Add this guard:
+```javascript
+if (/^\/(kr|en|jp)\//.test(window.location.pathname)) return;
+```
+
+---
+
+## Key Files Reference
+
+| File | Purpose |
+|------|---------|
+| `_layouts/default.html` | Sets `__SEO_PATH_LANG__`, loads language-router.js |
+| `assets/js/language-router.js` | Global routing, `isSeoDetailPath()` with flag check |
+| `scripts/seo/generate-synergy-pages.mjs` | Reference: per-item generator (Type A) |
+| `scripts/seo/generate-wonder-weapon-pages.mjs` | Reference: per-item generator with slug map (Type A) |
+| `scripts/seo/generate-home-pages.mjs` | Reference: single-page generator (Type B) |
+| `_includes/synergy-body.html` | Reference: per-item body include |
+| `_includes/wonder-weapon-body.html` | Reference: per-item body include |
+| `_includes/home-body.html` | Reference: single-page body include with replaceState |
+| `i18n/pages/synergy/seo-meta.json` | Reference: seo-meta with `{name}` placeholder |
+| `i18n/pages/home/seo-meta.json` | Reference: seo-meta without placeholder |
+| `apps/home/index.html` | Reference: updated original page using include |
+| `package.json` | npm scripts for generate/check |
+
+## Current Implementation Status
+
+| App | Type | Generator | Status |
+|-----|------|-----------|--------|
+| home | B (single-page) | `generate-home-pages.mjs` | Done |
+| synergy | A (per-item) | `generate-synergy-pages.mjs` | Done |
+| wonder-weapon | A (per-item) | `generate-wonder-weapon-pages.mjs` | Done |
+| character | A (per-item) | — | Not started |
+| persona | A (per-item) | — | Not started |
+| maps | A (per-item) | — | Not started |
+
+## URL Patterns
+
+| Page | Canonical URLs |
+|------|---------------|
+| Home | `/` (kr default), `/kr/`, `/en/`, `/jp/` |
+| Synergy | `/kr/synergy/{codename}/`, `/en/synergy/{codename}/`, `/jp/synergy/{codename}/` |
+| Wonder Weapon | `/kr/wonder-weapon/{slug}/`, `/en/wonder-weapon/{slug}/`, `/jp/wonder-weapon/{slug}/` |
+
+Legacy URLs redirect to canonical via generated stub pages (`layout: null`).
+Language root URLs (`/{lang}/{app}/`) redirect to `/{app}/?lang={lang}` via generated root stubs.
 
 ## Encoding and File Safety
 
@@ -166,55 +317,7 @@ Language router compatibility contract:
 - Avoid locale-dependent sorting.
 - Keep YAML front matter stable to avoid noisy diffs.
 
-## CI Pattern (Dual Safety Net)
+## Supported Languages
 
-Use both:
-
-1. Data workflow generation
-   - ensures commits contain updated generated pages.
-2. Deploy workflow generation
-   - ensures deployment never misses generated pages even if commit was stale.
-
-Optional but recommended:
-
-- Run `seo:{app}:check` on PR to block drift.
-
-## Validation Checklist for Any New App
-
-1. `npm run seo:{app}:generate` produces expected files.
-2. `npm run seo:{app}:check` passes after generation.
-3. Canonical URLs resolve correctly.
-4. Legacy URLs redirect correctly.
-5. Language root URLs do not 404.
-6. `_site` output contains expected redirect/canonical pages.
-7. BOM check passes on generated and config files.
-8. Local redirect safety check:
-   - access `http://127.0.0.1:4000/en/{app}/`
-   - ensure redirect target stays on `127.0.0.1` (no forced `0.0.0.0`)
-   - access `http://127.0.0.1:4000/kr/{app}/`
-   - ensure `kr` root exists and redirects consistently
-9. Local KR-detail canonical safety check:
-   - access `http://127.0.0.1:4000/kr/{app}/{slug}/`
-   - ensure URL stays on `/kr/{app}/{slug}/` (no forced downgrade to unprefixed KR path)
-10. Local language-preference safety check:
-   - set `localStorage.preferredLanguage='en'` and access `http://127.0.0.1:4000/kr/{app}/{slug}/`
-   - ensure final URL is KR canonical detail path (no detour to another slug, no forced `?lang=en`)
-
-## Troubleshooting (Local)
-
-1. If redirect behavior seems impossible/unexpected after code changes, clear browser redirect cache (or test in Incognito).
-2. Rebuild from clean state when debugging routing:
-   - `bundle exec jekyll clean`
-   - `bundle exec jekyll serve --host 127.0.0.1 --port 4000`
-3. Verify generated source first (`pages/{app}/...`) and then verify `_site/...` output for the same path.
-
-## Rollout Order Recommendation
-
-When extending beyond synergy:
-
-1. `character`
-2. `persona`
-3. `maps`
-4. others
-
-Use the same generator contract and CI pattern for each app.
+- `kr`, `en`, `jp` — full support now.
+- `cn` — route-ready for root redirects only. Not included in SEO page generation yet.

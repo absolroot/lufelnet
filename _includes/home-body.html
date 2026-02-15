@@ -1,0 +1,790 @@
+<script>
+(function () {
+  var params = new URLSearchParams(window.location.search);
+  var lang = params.get('lang');
+  if (!lang) return;
+
+  var path = window.location.pathname;
+
+  // / 에서 /?lang=xx → /{lang}/ 로 정규화
+  if (path === '/' && ['kr', 'en', 'jp'].indexOf(lang) !== -1) {
+    params.delete('lang');
+    var remaining = params.toString();
+    history.replaceState(null, '', '/' + lang + '/' + (remaining ? '?' + remaining : ''));
+    return;
+  }
+
+  // /{lang}/ 에서 ?lang= strip (path에 이미 언어 있음)
+  if (/^\/(kr|en|jp)\//.test(path)) {
+    params.delete('lang');
+    var remaining = params.toString();
+    history.replaceState(null, '', path + (remaining ? '?' + remaining : ''));
+  }
+})();
+</script>
+<link rel="stylesheet" href="/apps/home/home.css">
+<script src="/apps/home/tactic-posts-home.js"></script>
+<script src="/apps/home/js/popular-characters.js"></script>
+<script src="/apps/home/js/guides-home.js"></script>
+
+{% if page.alternate_urls %}
+{% for alt in page.alternate_urls %}
+<link rel="alternate" hreflang="{{ alt[0] }}" href="{{ site.url }}{{ alt[1] }}" />
+{% endfor %}
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.alternate_urls['ko'] | default: page.alternate_urls.first[1] }}" />
+{% endif %}
+
+{% include supabase-config.html %}
+
+<style>
+    .header-container .language-selector-container {
+        max-width: 120px;
+        margin: 0 0 4px 4px;
+        padding: 0;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        border: none;
+        /* 추가 */
+    }
+
+    .header-container .language-selector-container .options-container {
+        top: 100%;
+        /* 상단에서 100% 위치에 배치 (아래로) */
+        bottom: auto;
+        /* 기존 bottom 속성 제거 */
+        margin-top: 5px;
+        /* 선택기와의 간격 */
+    }
+
+    /* Quick Grid styles moved to assets/js/home/quick-grid.js */
+</style>
+
+
+<div class="main-wrapper">
+    <!-- 언어 안내 메시지 -->
+    <div id="language-notice" class="language-notice" style="display: none;">
+        <p id="language-notice-text"></p>
+    </div>
+
+    <!-- Header (logo, etc.) -->
+    <div class="header-container">
+        <h1 id="site-title">P5X 루페르넷</h1> <span class="beta-text"></span>
+        <div class="language-selector-container">
+            <div class="custom-select">
+                <div class="selected-option">
+                    <img src="{{ site.baseurl }}/assets/img/flags/kr.png" alt="kr" class="flag-icon">
+                    <span>한국어</span>
+                </div>
+                <div class="options-container">
+                    <div class="option ${currentLang === 'kr' ? 'selected' : ''}" data-value="kr" role="button"
+                        tabindex="0" onclick="return false;">
+                        <img src="{{ site.baseurl }}/assets/img/flags/kr.png" alt="kr" class="flag-icon">
+                        <span>한국어</span>
+                    </div>
+
+                    <div class="option ${currentLang === 'en' ? 'selected' : ''}" data-value="en" role="button"
+                        tabindex="0" onclick="return false;">
+                        <img src="{{ site.baseurl }}/assets/img/flags/en.png" alt="en" class="flag-icon">
+                        <span>English</span>
+                    </div>
+                    <div class="option ${currentLang === 'jp' ? 'selected' : ''}" data-value="jp" role="button"
+                        tabindex="0" onclick="return false;">
+                        <img src="{{ site.baseurl }}/assets/img/flags/jp.png" alt="jp" class="flag-icon">
+                        <span>日本語</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Carousel: inserted above menu-cards -->
+    <div id="home-carousel-root" style="width: 100%;"></div>
+
+    <!--<div class="separator-line"></div>-->
+    <!-- Main content -->
+    <div class="main-content">
+        <!-- Quick Launcher Grid -->
+        <div class="quick-grid" id="quick-grid"></div>
+        <div class="update-notice"></div>
+    </div>
+    <div class="separator-line"></div>
+    <div class="popular-content" data-max-count="10">
+        <div class="posts-header">
+            <h2><a href="/character/" style="text-decoration: none; color: inherit;" id="popular-characters-title">인기
+                    괴도</a></h2>
+            <a href="/character/" class="show-more-characters-btn" style="text-decoration: none; color: inherit;"
+                id="show-more-characters-btn"><img src="{{ site.baseurl }}/assets/img/home/news_more2.png" alt="logo"
+                    style="
+                max-height: 11px; opacity: 0.75;
+            "></a>
+        </div>
+        <div class="character-cards" id="popular-character-cards"></div>
+    </div>
+    <!-- Guild Bosses Section -->
+    <div id="home-bosses-root"></div>
+    <div class="separator-line"></div>
+    <div class="guides-container">
+        <div class="posts-header">
+            <h2><a href="/article/" style="text-decoration: none; color: inherit;" id="guides-title">가이드</a></h2>
+            <a href="/article/" class="show-more-characters-btn" style="text-decoration: none; color: inherit;"
+                id="show-more-guides-btn"><img src="{{ site.baseurl }}/assets/img/home/news_more2.png" alt="logo"
+                    style="max-height: 11px; opacity: 0.75;"></a>
+        </div>
+        <div class="guides-list" id="guides-list"></div>
+    </div>
+
+    <div class="posts-container" id="posts-container">
+        <div class="posts-header">
+            <h2><a href="./tactic/tactics" style="text-decoration: none; color: inherit;" id="tactic-workshop-title">택틱
+                    도서관 NEW</a></h2>
+            <a href="./tactic/tactics" class="show-more-posts-btn" style="text-decoration: none; color: inherit;"
+                id="show-more-posts-btn"><img src="{{ site.baseurl }}/assets/img/home/news_more2.png" alt="logo" style="
+                max-height: 11px; opacity: 0.75;
+            "></a>
+        </div>
+        <div class="posts-list" id="postsList"></div>
+    </div>
+
+    <!-- 광고 -->
+    <!--
+    <div class="ads-container responsive-padding">
+        <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-format="fluid"
+        data-ad-layout-key="-gc+3n+7a-ag-4h"
+        data-ad-client="ca-pub-5862324369257695"
+        data-ad-slot="5373524213"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>-->
+
+    <!--광고-->
+    <!--
+    <div id="ad-unit-bottom" class="AD-bottom" style="width:100%; margin-top: 32px; text-align: center; align-items: center; display: flex; justify-content: center;">
+    <ins class="adsbygoogle"
+        style="display:inline-block;width:970px;height:90px"
+        data-ad-client="ca-pub-5862324369257695"
+        data-ad-slot="9244892982"></ins>
+    </div>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <div style="height: 20px;"></div>
+
+    <style>
+        @media (max-width: 1440px) {
+            .AD-bottom {
+                display: none !important;
+            }
+        }
+        @media (min-width: 1440px) {
+            .ads-container {
+                display: none !important;
+            }
+        }
+        .responsive-padding { margin: 20px 20px 20px 0; padding: 0 0; }
+        @media (max-width: 1200px) { .responsive-padding {margin: 20px 0 0px 0; padding: 0; } }
+    </style>
+    -->
+</div>
+</div>
+
+<!-- Support Modal Styles for Mobile Centering -->
+<style>
+    @media (max-width: 768px) {
+
+        #supportModalJP .modal-content,
+        #supportModalKR .modal-content,
+        #kakaoPayModalHome .modal-content {
+            margin: 0 !important;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+</style>
+
+<!-- Support Modal for JP -->
+<div id="supportModalJP" class="modal"
+    style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4);">
+    <div class="modal-content"
+        style="background-color: #2a2a2a; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 500px; border-radius: 8px; color: white;">
+        <span class="close-button" onclick="document.getElementById('supportModalJP').style.display='none'"
+            style="color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer;">&times;</span>
+        <h3 style="margin-top: 0; margin-bottom: 20px; text-align: center;">サポート</h3>
+        <div style="display: flex; flex-direction: column; gap: 15px;">
+            <a href="https://absolroot.fanbox.cc/plans" target="_blank" style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 10px;
+                    background-color: #F5F5F5;
+                    color: #333;
+                    text-decoration: none;
+                    font-weight: bold;
+                    padding: 15px;
+                    border-radius: 8px;
+                    transition: transform 0.2s;
+                " onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                <img src="https://img.icons8.com/color/48/pixiv.png" alt="pixiv" style="width: 32px; height: 32px;">
+                <span style="font-size: 1.1em;">pixivFANBOXで支援する</span>
+            </a>
+
+            <a href="https://ko-fi.com/S6S11F0PUN" target="_blank" style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 10px;
+                    background-color: #72a4f2;
+                    color: white;
+                    text-decoration: none;
+                    font-weight: bold;
+                    padding: 15px;
+                    border-radius: 8px;
+                    transition: transform 0.2s;
+                " onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                <img src="https://storage.ko-fi.com/cdn/cup-border.png" alt="Ko-fi" style="width: 32px; height: auto;">
+                <span style="font-size: 1.1em;">Ko-fiで支援する</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Support Modal for KR -->
+<div id="supportModalKR" class="modal"
+    style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4);">
+    <div class="modal-content"
+        style="background-color: #2a2a2a; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 500px; border-radius: 8px; color: white;">
+        <span class="close-button" onclick="document.getElementById('supportModalKR').style.display='none'"
+            style="color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer;">&times;</span>
+        <h3 style="margin-top: 0; margin-bottom: 20px; text-align: center;">서포트</h3>
+        <!-- <p style="text-align: center; margin-bottom: 20px; word-break: keep-all;">
+            루페르넷은 여러분의 후원으로만 운영됩니다.<br>
+        </p>-->
+        <div style="display: flex; flex-direction: column; gap: 15px;">
+            <!-- KakaoPay Button -->
+            <button
+                onclick="document.getElementById('supportModalKR').style.display='none'; document.getElementById('kakaoPayModalHome').style.display='block';"
+                style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 10px;
+                    background-color: #ffeb00;
+                    color: #000;
+                    border: none;
+                    font-weight: bold;
+                    padding: 15px;
+                    border-radius: 8px;
+                    cursor: pointer;
+                    width: 100%;
+                    font-size: 1rem;
+                    transition: transform 0.2s;
+                " onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                <img src="{{ site.baseurl }}/assets/img/logo/kakaopay-logo.png" alt="kakaopay"
+                    style="height: 24px; vertical-align: middle;">
+                <span>카카오페이</span>
+            </button>
+
+            <!-- Ko-fi Button -->
+            <a href="https://ko-fi.com/S6S11F0PUN" target="_blank" style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 10px;
+                    background-color: #72a4f2;
+                    color: white;
+                    text-decoration: none;
+                    font-weight: bold;
+                    padding: 15px;
+                    border-radius: 8px;
+                    transition: transform 0.2s;
+                " onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                <img src="https://storage.ko-fi.com/cdn/cup-border.png" alt="Ko-fi" style="width: 32px; height: auto;">
+                <span style="font-size: 1.1em;">Support me on Ko-fi</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- KakaoPay QR Modal (Home) -->
+<div id="kakaoPayModalHome" class="modal"
+    style="display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4);">
+    <div class="modal-content"
+        style="background-color: #2a2a2a; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 400px; border-radius: 8px; color: white; text-align: center;">
+        <span class="close-button" onclick="document.getElementById('kakaoPayModalHome').style.display='none'"
+            style="color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer;">&times;</span>
+        <h3 style="margin-top: 0; margin-bottom: 20px;">KakaoPay QR</h3>
+        <div style="background: white; padding: 20px; border-radius: 8px; display: inline-block;">
+            <img src="{{ site.baseurl }}/assets/img/logo/kakaopay.png" alt="카카오페이 QR"
+                style="width: 100%; max-width: 250px; height: auto;">
+        </div>
+        <p style="margin-top: 15px; color: #ccc; font-size: 0.9em;">
+            스마트폰 카메라 또는 카카오톡으로 스캔해주세요.
+        </p>
+    </div>
+</div>
+
+<!-- Home i18n bootstrap -->
+<script src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
+<script src="/apps/home/js/home-i18n.js?v={{ site.time | date: '%s' }}"></script>
+<!-- Carousel JS -->
+<script src="/apps/home/js/carousel.js?v={{ site.time | date: '%s' }}"></script>
+<!-- Tooltip (for affix hover) -->
+<script src="{{ site.baseurl }}/assets/js/tooltip.js?v={{ site.time | date: '%s' }}"></script>
+<!-- Bosses JS -->
+<script src="/apps/home/js/bosses.js?v={{ site.time | date: '%s' }}"></script>
+<!-- SOS JS -->
+<script src="/apps/home/js/sos.js?v={{ site.time | date: '%s' }}"></script>
+<!-- Quick Grid JS -->
+<script src="/apps/home/js/quick-grid.js?v={{ site.time | date: '%s' }}"></script>
+<link rel="stylesheet" href="/apps/home/js/carousel.css?v={{ site.time | date: '%s' }}">
+
+
+<script>
+
+    // 오버레이 추가 함수
+    function addComingSoonOverlay(cardId, text) {
+        const card = document.getElementById(cardId);
+        if (!card) return;
+
+        // 이미 오버레이가 있으면 제거
+        const existingOverlay = card.querySelector('.coming-soon-overlay');
+        if (existingOverlay) {
+            existingOverlay.remove();
+        }
+
+        // 카드를 상대 위치로 설정
+        card.style.position = 'relative';
+
+        // 오버레이 생성
+        const overlay = document.createElement('div');
+        overlay.className = 'coming-soon-overlay';
+        overlay.style.cssText = `
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            z-index: 10;
+            border-radius: inherit;
+            cursor: not-allowed;
+        `;
+        overlay.textContent = text;
+
+        // 링크 비활성화
+        const link = card.querySelector('a');
+        if (link) {
+            link.style.pointerEvents = 'none';
+        }
+
+        card.appendChild(overlay);
+    }
+
+    // 오버레이 제거 함수
+    function removeComingSoonOverlay(cardId) {
+        const card = document.getElementById(cardId);
+        if (!card) return;
+
+        // 오버레이 제거
+        const overlay = card.querySelector('.coming-soon-overlay');
+        if (overlay) {
+            overlay.remove();
+        }
+
+        // 링크 활성화
+        const link = card.querySelector('a');
+        if (link) {
+            link.style.pointerEvents = 'auto';
+        }
+    }
+
+    // 모든 링크에 언어 파라미터 추가 함수
+    function updateLinksWithLanguage(currentLang) {
+        // 메뉴 카드 링크들 업데이트
+        const menuLinks = [
+            { selector: '.menu-card a[href*="./character/"]', path: './character/' },
+            { selector: '.menu-card a[href*="./persona/"]', path: './persona/' },
+            { selector: '.menu-card a[href*="./revelations/"]', path: './revelations/' },
+            { selector: '.menu-card a[href*="./tactic"]', path: './tactic/tactics' }
+        ];
+
+        menuLinks.forEach(linkInfo => {
+            const link = document.querySelector(linkInfo.selector);
+            if (link) {
+                const url = new URL(linkInfo.path + `?lang=${currentLang}&v=${APP_VERSION}`, window.location.origin);
+                link.href = url.pathname + url.search;
+            }
+        });
+
+        // 인기 캐릭터 링크들 업데이트
+        const characterLinks = document.querySelectorAll('.character-card-img a[href*="/character/character.html"]');
+        characterLinks.forEach(link => {
+            const url = new URL(link.href);
+            url.searchParams.set('lang', currentLang);
+            link.href = url.pathname + url.search;
+        });
+
+        // 택틱 도서관 링크들 업데이트 (홈 목록 이동 버튼)
+        const tacticLinks = document.querySelectorAll('a[href*="./tactic/tactics"]');
+        tacticLinks.forEach(link => {
+            const url = new URL('./tactic/tactics' + `?lang=${currentLang}&v=${APP_VERSION}`, window.location.origin);
+            link.href = url.pathname + url.search;
+        });
+
+        // 과금효율 계산 링크 업데이트
+        const payCalcLink = document.querySelector('a[href*="https://lufel.net/pay-calc"]');
+        if (payCalcLink) {
+            payCalcLink.href = `https://lufel.net/pay-calc/?lang=${currentLang}&v=${APP_VERSION}`;
+        }
+    }
+
+    async function waitHomeI18nReady() {
+        if (!window.__HOME_I18N_READY__) return;
+        try {
+            await window.__HOME_I18N_READY__;
+        } catch (_) { }
+    }
+
+    function detectHomeRawLang() {
+        if (window.HomeI18n && typeof window.HomeI18n.detectRawLang === 'function') {
+            return window.HomeI18n.detectRawLang();
+        }
+        return 'kr';
+    }
+
+    function homeT(key, fallback, rawLang) {
+        if (window.HomeI18n && typeof window.HomeI18n.t === 'function') {
+            return window.HomeI18n.t(key, fallback, rawLang);
+        }
+        return fallback;
+    }
+
+    function getLanguageLabel(rawLang) {
+        const labels = {
+            kr: homeT('language_name_kr', '한국어', rawLang),
+            en: homeT('language_name_en', 'English', rawLang),
+            jp: homeT('language_name_jp', '日本語', rawLang),
+            cn: homeT('language_name_cn', '中文', rawLang)
+        };
+        return labels[rawLang] || labels.kr;
+    }
+
+    // 다국어 지원 함수
+    async function updateLanguageContent() {
+        await waitHomeI18nReady();
+        const currentLang = detectHomeRawLang();
+
+        const siteTitle = document.getElementById('site-title');
+        if (siteTitle) {
+            siteTitle.textContent = homeT('site_title', 'P5X 루페르넷', currentLang);
+        }
+
+        const sectionTitles = {
+            'popular-characters-title': homeT('popular_characters', '인기 괴도', currentLang),
+            'guides-title': homeT('guides', '가이드', currentLang),
+            'tactic-workshop-title': homeT('tactic_workshop', '택틱 도서관', currentLang)
+        };
+
+        Object.keys(sectionTitles).forEach((id) => {
+            const element = document.getElementById(id);
+            if (element && sectionTitles[id]) {
+                element.textContent = sectionTitles[id];
+            }
+        });
+
+        // 모든 링크에 현재 언어 파라미터 추가
+        updateLinksWithLanguage(currentLang);
+
+        // 언어별 메뉴 제한 (기존 동작 유지)
+        if (currentLang === 'en' || currentLang === 'jp') {
+            removeComingSoonOverlay('menu-persona-card');
+            removeComingSoonOverlay('menu-revelations-card');
+            removeComingSoonOverlay('menu-tactic-card');
+
+            const middleContainer = document.querySelector('.middle-container');
+            if (middleContainer) {
+                middleContainer.style.display = 'none';
+            }
+        } else {
+            const tacticCard = document.getElementById('menu-tactic-card');
+            if (tacticCard) {
+                tacticCard.style.display = 'block';
+            }
+
+            removeComingSoonOverlay('menu-persona-card');
+            removeComingSoonOverlay('menu-revelations-card');
+            removeComingSoonOverlay('menu-tactic-card');
+
+            const postsContainer = document.getElementById('posts-container');
+            if (postsContainer) {
+                postsContainer.style.display = 'block';
+                const overlay = postsContainer.querySelector('.coming-soon-overlay');
+                if (overlay) {
+                    overlay.remove();
+                }
+                const links = postsContainer.querySelectorAll('a');
+                links.forEach((link) => {
+                    link.style.pointerEvents = 'auto';
+                });
+            }
+
+            const middleContainer = document.querySelector('.middle-container');
+            const guidesContainer = document.querySelector('.guides-container');
+
+            if (middleContainer) {
+                middleContainer.style.display = 'grid';
+            }
+            if (guidesContainer) {
+                guidesContainer.style.display = 'block';
+            }
+        }
+    }
+
+    // 언어별 SEO 설정 함수
+    async function updateSEOContent() {
+        await waitHomeI18nReady();
+        const currentLang = detectHomeRawLang();
+        const seoTitle = homeT('seo_title', '페르소나5 더 팬텀 X - 루페르넷', currentLang);
+        const seoDescription = homeT('seo_description', '페르소나5 더 팬텀 X의 모든 정보를 한 곳에서 확인하세요. 캐릭터, 페르소나, 스킬, 공략 가이드를 제공합니다.', currentLang);
+
+        document.title = seoTitle;
+
+        const metaDescription = document.querySelector('meta[name="description"]');
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        const ogDescription = document.querySelector('meta[property="og:description"]');
+
+        if (metaDescription) metaDescription.setAttribute('content', seoDescription);
+        if (ogTitle) ogTitle.setAttribute('content', seoTitle);
+        if (ogDescription) ogDescription.setAttribute('content', seoDescription);
+    }
+
+    // 첫 방문자 언어 감지 함수
+    async function checkAndDetectLanguage() {
+        // path 기반 언어 페이지에서는 IP 감지 스킵
+        if (/^\/(kr|en|jp)\/$/.test(window.location.pathname)) return;
+
+        const hasLanguagePreference = localStorage.getItem('preferredLanguage');
+        const hasLanguageDetected = localStorage.getItem('languageDetected');
+        const urlParams = new URLSearchParams(window.location.search);
+        const hasUrlLang = urlParams.get('lang');
+
+        // 첫 방문자이고 언어 설정이 없는 경우에만 감지
+        if (!hasLanguagePreference && !hasLanguageDetected && !hasUrlLang) {
+            //console.log('👋 첫 방문자 감지, IP 기반 언어 설정 시작...');
+
+            try {
+                const apis = [
+                    'https://ipapi.co/json/',
+                    'https://ipinfo.io/json'
+                ];
+
+                let detectedLang = 'kr'; // 기본값
+
+                for (const api of apis) {
+                    try {
+                        const controller = new AbortController();
+                        const timeoutId = setTimeout(() => controller.abort(), 3000);
+
+                        const response = await fetch(api, { signal: controller.signal });
+                        clearTimeout(timeoutId);
+
+                        if (response.ok) {
+                            const data = await response.json();
+                            const countryCode = data.country_code || data.country;
+
+                            //console.log(`🌍 감지된 국가: ${countryCode}`);
+
+                            if (countryCode === 'KR') {
+                                detectedLang = 'kr';
+                                //console.log('🇰🇷 한국 사용자 감지');
+                            } else if (countryCode === 'JP') {
+                                detectedLang = 'jp';
+                                //console.log('🇯🇵 일본 사용자 감지');
+                            } else {
+                                detectedLang = 'en';
+                                //console.log('🌎 해외 사용자 감지');
+                            }
+
+                            break; // 첫 번째 성공한 API로 결정
+                        }
+                    } catch (error) {
+                        //console.log(`❌ ${api} 실패:`, error.message);
+                        continue;
+                    }
+                }
+
+                // 언어 설정 저장
+                localStorage.setItem('preferredLanguage', detectedLang);
+                localStorage.setItem('languageDetected', 'true');
+
+                //console.log(`✅ 감지된 언어: ${detectedLang}`);
+
+                // 한국어가 아닌 경우 리다이렉트
+                if (detectedLang !== 'kr') {
+                    //console.log(`🔄 ${detectedLang} 언어로 리다이렉트...`);
+                    const newUrl = new URL(window.location);
+                    newUrl.searchParams.set('lang', detectedLang);
+                    window.location.replace(newUrl.toString());
+                    return;
+                }
+
+            } catch (error) {
+                //console.log('❌ 언어 감지 실패:', error);
+                // 폴백: 브라우저 언어 확인
+                const browserLang = navigator.language.toLowerCase();
+                let fallbackLang = 'kr';
+
+                if (browserLang.startsWith('ja')) {
+                    fallbackLang = 'jp';
+                } else if (browserLang.startsWith('en')) {
+                    fallbackLang = 'en';
+                }
+
+                localStorage.setItem('preferredLanguage', fallbackLang);
+                localStorage.setItem('languageDetected', 'true');
+
+                if (fallbackLang !== 'kr') {
+                    const newUrl = new URL(window.location);
+                    newUrl.searchParams.set('lang', fallbackLang);
+                    window.location.replace(newUrl.toString());
+                }
+            }
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+        Navigation.load('home');
+        VersionChecker.check();
+
+        // 첫 방문자 언어 감지 (홈페이지에서만)
+        await checkAndDetectLanguage();
+
+        // 언어 콘텐츠 업데이트 (우선 실행)
+        await updateLanguageContent();
+
+        // SEO 설정 업데이트
+        await updateSEOContent();
+
+        // 헤더의 언어 선택기 초기화
+        const currentLang = detectHomeRawLang();
+        const headerSelectedOption = document.querySelector('.header-container .selected-option');
+        if (headerSelectedOption) {
+            // 현재 언어로 선택된 옵션 업데이트
+            const flagImg = headerSelectedOption.querySelector('.flag-icon');
+            const langText = headerSelectedOption.querySelector('span');
+            const displayFlagLang = ['kr', 'en', 'jp', 'cn', 'tw'].includes(currentLang) ? currentLang : 'kr';
+            if (flagImg) flagImg.src = `${BASE_URL}/assets/img/flags/${displayFlagLang}.png`;
+            if (langText) {
+                langText.textContent = getLanguageLabel(currentLang);
+            }
+
+            // 클릭 이벤트 추가
+            headerSelectedOption.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const optionsContainer = headerSelectedOption.nextElementSibling;
+                if (optionsContainer) {
+                    optionsContainer.classList.toggle('active');
+                }
+            });
+        }
+
+        // 헤더의 언어 옵션 이벤트 처리
+        document.querySelectorAll('.header-container .option').forEach(option => {
+            option.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                if (this.classList.contains('disabled')) {
+                    return;
+                }
+
+                const lang = this.getAttribute('data-value');
+                Navigation.selectLanguage(lang, e);
+            });
+        });
+
+        // 언어 라우터 초기화
+        if (typeof LanguageRouter !== 'undefined') {
+            LanguageRouter.init().then(async () => {
+                // 언어 라우터 초기화 후 다시 한 번 업데이트
+                await updateLanguageContent();
+                await updateSEOContent();
+            });
+        }
+
+        // 홈 택틱 미리보기: tactic-posts-home.js의 공용 함수로 일원화
+        const currentLangFromUrl = detectHomeRawLang();
+        if (typeof window.loadHomeTacticsFromSupabase === 'function') {
+            window.loadHomeTacticsFromSupabase(currentLangFromUrl);
+        }
+
+        // 클릭 이벤트 감지하여 언어 선택기 닫기
+        document.addEventListener('click', (e) => {
+            const optionsContainers = document.querySelectorAll('.options-container');
+            optionsContainers.forEach(container => {
+                if (!container.contains(e.target) &&
+                    !e.target.closest('.selected-option')) {
+                    container.classList.remove('active');
+                }
+            });
+        });
+    });
+
+    // 페이지 완전 로드 후 최종 언어 콘텐츠 업데이트
+    window.addEventListener('load', async () => {
+        // 약간의 지연 후 최종 업데이트 (모든 스크립트 로드 완료 후)
+        setTimeout(async () => {
+            await updateLanguageContent();
+            await updateSEOContent();
+            //console.log('🔄 페이지 로드 완료 후 언어 콘텐츠 최종 업데이트');
+        }, 100);
+
+
+        // 광고 흰 박스 숨김
+        /*
+        setTimeout(() => {
+            document.querySelectorAll(".adsbygoogle").forEach(el => {
+                const status = el.getAttribute("data-ad-status");
+                const adslot = el.getAttribute("data-ad-slot");
+                //console.log("google status", status);
+                //console.log("google adslot", adslot);
+                if (status === "unfilled" || el.querySelector("iframe") === null) {
+                    el.style.display = "none";
+                }
+            });
+        }, 2000); */ // 광고 로딩 기다렸다가 2초 후 검사
+    });
+
+    // 유틸
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+    function formatDate(date) {
+        try {
+            if (window.HomeI18n && typeof window.HomeI18n.formatRelativeDate === 'function') {
+                return window.HomeI18n.formatRelativeDate(date);
+            }
+        } catch (_) { }
+        try {
+            return date.toLocaleDateString('ko-KR');
+        } catch (_) {
+            return '';
+        }
+    }
+</script>

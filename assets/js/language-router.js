@@ -125,6 +125,9 @@ class LanguageRouter {
 
     // 현재 언어 감지
     static isSeoDetailPath(pathname) {
+        // Layout-driven: default.html sets __SEO_PATH_LANG__ when permalink starts with /{lang}/
+        if (typeof window.__SEO_PATH_LANG__ === 'string') return true;
+
         const path = String(pathname || '');
         const patterns = [
             /^\/(kr|en|jp|cn)\/(synergy|wonder-weapon)\/[^/]+\/?$/i,

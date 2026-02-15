@@ -57,6 +57,7 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - README.md
+  - scripts/seo/README.md
   - package.json
   - package-lock.json
   - .jekyll-cache

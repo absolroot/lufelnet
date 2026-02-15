@@ -8,7 +8,9 @@
     "seo:synergy:generate": "node scripts/seo/generate-synergy-pages.mjs",
     "seo:synergy:check": "node scripts/seo/generate-synergy-pages.mjs --check",
     "seo:wonder-weapon:generate": "node scripts/seo/generate-wonder-weapon-pages.mjs",
-    "seo:wonder-weapon:check": "node scripts/seo/generate-wonder-weapon-pages.mjs --check"
+    "seo:wonder-weapon:check": "node scripts/seo/generate-wonder-weapon-pages.mjs --check",
+    "seo:home:generate": "node scripts/seo/generate-home-pages.mjs",
+    "seo:home:check": "node scripts/seo/generate-home-pages.mjs --check"
   },
   "keywords": [],
   "author": "",

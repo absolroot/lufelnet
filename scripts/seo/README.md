@@ -115,19 +115,32 @@ For home only: add the replaceState URL normalization script at the very top of 
 <script>
 (function () {
   var params = new URLSearchParams(window.location.search);
-  var lang = params.get('lang');
-  if (!lang) return;
   var path = window.location.pathname;
+  var lang = params.get('lang');
+
   if (path === '/' && ['kr', 'en', 'jp'].indexOf(lang) !== -1) {
     params.delete('lang');
-    var remaining = params.toString();
-    history.replaceState(null, '', '/' + lang + '/' + (remaining ? '?' + remaining : ''));
+    params.delete('v');
+    var remainingRoot = params.toString();
+    history.replaceState(null, '', '/' + lang + '/' + (remainingRoot ? '?' + remainingRoot : ''));
     return;
   }
-  if (/^\/(kr|en|jp)\//.test(path)) {
+
+  if (/^\/(kr|en|jp)(\/|$)/.test(path)) {
+    var before = params.toString();
     params.delete('lang');
+    params.delete('v');
     var remaining = params.toString();
-    history.replaceState(null, '', path + (remaining ? '?' + remaining : ''));
+    if (before !== remaining) {
+      history.replaceState(null, '', path + (remaining ? '?' + remaining : ''));
+    }
+    return;
+  }
+
+  if (path === '/' && params.has('v')) {
+    params.delete('v');
+    var remainingBase = params.toString();
+    history.replaceState(null, '', '/' + (remainingBase ? '?' + remainingBase : ''));
   }
 })();
 </script>
@@ -136,6 +149,7 @@ For home only: add the replaceState URL normalization script at the very top of 
 For per-item apps: add `?lang=` stripping via replaceState in the body include if the app page uses `?lang=` query params at runtime. The pattern:
 - On `/{lang}/{app}/{slug}/` paths, if `?lang=` is present, strip it via `replaceState`.
 - Path-based URLs must not retain `lang` query.
+- If `?v=` is present (cache/version param), strip it from the visible URL too.
 
 If the body include has IP-based language detection (like `checkAndDetectLanguage`), add a guard to skip on path-based language pages:
 ```javascript
@@ -263,6 +277,12 @@ Prevention: the `__SEO_PATH_LANG__` flag prevents step 1. Ensure it is set BEFOR
 ### lang query stripping
 Path-based language pages (`/{lang}/...`) must strip `?lang=` from the URL via `replaceState`. The language is in the path; the query param is redundant and confusing.
 
+### version query stripping
+Path-based canonical URLs should also strip `?v=` via `replaceState`. Keep `v` for resource loading, but do not keep it in the final visible page URL.
+
+### root canonicalization for wonder-weapon
+`/{lang}/wonder-weapon/` currently uses generated root stubs that may land on `/wonder-weapon/?lang={lang}` first. The app must normalize back to `/{lang}/wonder-weapon/` early via `replaceState`, and remove `lang`/`v` from the final URL.
+
 ### IP detection skip
 Any IP-based language detection code in body includes (`checkAndDetectLanguage` or similar) must skip on path-based language pages. Add this guard:
 ```javascript
@@ -312,6 +332,7 @@ if (/^\/(kr|en|jp)\//.test(window.location.pathname)) return;
 
 Legacy URLs redirect to canonical via generated stub pages (`layout: null`).
 Language root URLs (`/{lang}/{app}/`) redirect to `/{app}/?lang={lang}` via generated root stubs.
+For canonical UX, runtime scripts can still normalize this to `/{lang}/{app}/` using `history.replaceState`.
 
 ### URL Rewriting (replaceState)
 
@@ -320,8 +341,10 @@ Legacy query-based URLs are rewritten to clean path-based URLs via `history.repl
 | Legacy URL | Rewritten to |
 |-----------|-------------|
 | `/?lang=en` | `/en/` |
+| `/?lang=en&v=4.4.7` | `/en/` |
 | `/character.html?name=렌&lang=en` | `/en/character/joker/` |
 | `/character/?lang=en` | `/en/character/` |
+| `/en/wonder-weapon/?v=4.4.7` | `/en/wonder-weapon/` |
 
 The rewrite scripts are placed at the top of the body include or page, before any other scripts, so they run early. They use the `__*_SLUG_MAP` data (injected via Jekyll) to resolve slugs.
 

@@ -2,16 +2,63 @@
 (function() {
     'use strict';
 
+    function getI18nServiceInstance() {
+        if (window.__I18nService__) return window.__I18nService__;
+        if (window.I18nService) return window.I18nService;
+        return null;
+    }
+
+    function getNestedValue(obj, key) {
+        if (!obj || !key) return undefined;
+
+        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+            return obj[key];
+        }
+
+        if (typeof key !== 'string' || !key.includes('.')) {
+            return undefined;
+        }
+
+        return key.split('.').reduce((current, part) => {
+            if (current && Object.prototype.hasOwnProperty.call(current, part)) {
+                return current[part];
+            }
+            return undefined;
+        }, obj);
+    }
+
+    function getTranslationByLang(lang, key) {
+        const service = getI18nServiceInstance();
+        if (!service || !service.cache || !lang) return undefined;
+
+        const pageValue = getNestedValue(service.cache[lang]?.pages?.synergy, key);
+        if (pageValue !== undefined) return pageValue;
+
+        const commonValue = getNestedValue(service.cache[lang]?.common, key);
+        if (commonValue !== undefined) return commonValue;
+
+        return undefined;
+    }
+
     function t(key, fallback) {
         if (window.t && typeof window.t === 'function') {
-            const translated = window.t(key, fallback || key);
+            const translated = window.t(key, key);
             if (translated !== key) {
                 return translated;
             }
         }
-        const fallbackKr = window.I18N?.kr?.[key];
+
+        const service = getI18nServiceInstance();
+        if (service && typeof service.t === 'function') {
+            const translated = service.t(key, key);
+            if (translated !== key) {
+                return translated;
+            }
+        }
+
+        const fallbackKr = getTranslationByLang('kr', key);
         if (fallbackKr !== undefined) return fallbackKr;
-        return fallback || key;
+        return fallback !== undefined ? fallback : key;
     }
 
     // RANK 14→15 선택지 하단에 소울 메이트/절친 표시 추가

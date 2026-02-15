@@ -21,6 +21,7 @@
 | `gallery` | 완료 | `apps/gallery/index.html:104`, `apps/gallery/gallery-tags.js:30`에서 `initPageI18n('gallery')` + `window.t()` 사용 |
 | `login` | 완료 | `apps/login/index.html:133`, `apps/login/index.html:138`에서 `initPageI18n('login')`/`I18nService.init('login')` 호출 |
 | `schedule` | 완료 | `apps/schedule/index.html:203` `initPageI18n('schedule')`, `apps/schedule/index.html:114` `window.t()` 사용 |
+| `synergy` | 완료 | 통합 초기화 이후 레거시 `window.I18N` fallback 제거 및 `I18nService.cache` 기반 KR 의미 폴백으로 통합(`apps/synergy/synergy.js:60`, `apps/synergy/item_from.js:10`, `apps/synergy/soulmate.js:5`) |
 | `tier` | 완료 | 타이틀/소스 토글/SEO/모달·툴바 라벨을 페이지 번들 키 조회로 통합(`apps/tier/position-tier.html:428`, `apps/tier/position-tier.html:473`, `apps/tier/position-tier.html:709`, `apps/tier/position-tiers.js:1711`, `apps/tier/capture.js:150`) |
 | `wonder-weapon` | 완료 | `apps/wonder-weapon/wonder-weapon.js:1148` `initPageI18n('wonder-weapon')`, `apps/wonder-weapon/wonder-weapon.js:86` `window.t()` 사용 |
 
@@ -33,7 +34,6 @@
 | `persona` | 부분 잔존 | 통합 초기화(`apps/persona/persona-list.js:49`) 이후에도 fallback 문자열/배지 하드코딩(`apps/persona/persona-list.js:393`, `apps/persona/skillfrom.js:214`, `apps/persona/skillfrom.js:236`) 잔존 |
 | `pull-calc` | 부분 잔존 | 통합 초기화(`apps/pull-calc/pull-calc.js:1674`)되었으나 로컬 SEO 맵(`apps/pull-calc/index.html:471`) 잔존 |
 | `revelations` | 부분 잔존 | 통합 초기화(`apps/revelations/index.html:624`)되었으나 로컬 SEO 맵/상태 라벨 하드코딩(`apps/revelations/index.html:423`, `apps/revelations/index.html:846`) 잔존 |
-| `synergy` | 부분 잔존 | 통합 초기화(`apps/synergy/synergy.js:2165`)되었으나 레거시 `window.I18N` fallback 경로(`apps/synergy/synergy.js:67`, `apps/synergy/item_from.js:17`, `apps/synergy/soulmate.js:12`) 잔존 |
 | `tactic-maker` | 부분 잔존 | need-stat 카드 라벨은 통합 키 조회로 전환(`apps/tactic-maker/js/need-stat-state.js:133`, `apps/tactic-maker/js/ui-critical-card.js:1806`)했으나 액션 라벨 로컬 맵(`apps/tactic-maker/js/ui-tactic.js:2351`) 잔존 |
 
 ## 3. 통합 i18n 미구현 서비스
@@ -76,13 +76,13 @@
 | `pull-tracker` | 미구현 |
 | `revelations` | 부분 잔존 |
 | `schedule` | 완료 |
-| `synergy` | 부분 잔존 |
+| `synergy` | 완료 |
 | `tactic` | 레거시/중복 잔존 |
 | `tactic-maker` | 부분 잔존 |
 | `tier` | 완료 |
 | `wonder-weapon` | 완료 |
 
 ## 6. 결론
-- 재점검 기준 통합 i18n 완료(경미 초기값 잔존 포함): `about`, `astrolabe`, `critical-calc`, `defense-calc`, `gallery`, `login`, `schedule`, `tier`, `wonder-weapon`
+- 재점검 기준 통합 i18n 완료(경미 초기값 잔존 포함): `about`, `astrolabe`, `critical-calc`, `defense-calc`, `gallery`, `login`, `schedule`, `synergy`, `tier`, `wonder-weapon`
 - 우선 정리 대상(미구현): `guides`, `home`, `material-calc`, `pull-tracker`
-- 부분 잔존 정리 대상: `character`, `maps`, `persona`, `pull-calc`, `revelations`, `synergy`, `tactic-maker`, `tactic`
+- 부분 잔존 정리 대상: `character`, `maps`, `persona`, `pull-calc`, `revelations`, `tactic-maker`, `tactic`

@@ -6,17 +6,64 @@
 
     const BASE_URL = (typeof window !== 'undefined' && window.BASE_URL) || '';
 
+    function getI18nServiceInstance() {
+        if (window.__I18nService__) return window.__I18nService__;
+        if (window.I18nService) return window.I18nService;
+        return null;
+    }
+
+    function getNestedValue(obj, key) {
+        if (!obj || !key) return undefined;
+
+        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+            return obj[key];
+        }
+
+        if (typeof key !== 'string' || !key.includes('.')) {
+            return undefined;
+        }
+
+        return key.split('.').reduce((current, part) => {
+            if (current && Object.prototype.hasOwnProperty.call(current, part)) {
+                return current[part];
+            }
+            return undefined;
+        }, obj);
+    }
+
+    function getTranslationByLang(lang, key) {
+        const service = getI18nServiceInstance();
+        if (!service || !service.cache || !lang) return undefined;
+
+        const pageValue = getNestedValue(service.cache[lang]?.pages?.synergy, key);
+        if (pageValue !== undefined) return pageValue;
+
+        const commonValue = getNestedValue(service.cache[lang]?.common, key);
+        if (commonValue !== undefined) return commonValue;
+
+        return undefined;
+    }
+
     // i18n 텍스트 헬퍼
     function t(key, fallback) {
         if (window.t && typeof window.t === 'function') {
-            const translated = window.t(key, fallback || key);
+            const translated = window.t(key, key);
             if (translated !== key) {
                 return translated;
             }
         }
-        const fallbackKr = window.I18N?.kr?.[key];
+
+        const service = getI18nServiceInstance();
+        if (service && typeof service.t === 'function') {
+            const translated = service.t(key, key);
+            if (translated !== key) {
+                return translated;
+            }
+        }
+
+        const fallbackKr = getTranslationByLang('kr', key);
         if (fallbackKr !== undefined) return fallbackKr;
-        return fallback || key;
+        return fallback !== undefined ? fallback : key;
     }
 
     function addStringToSet(set, value) {
@@ -29,20 +76,31 @@
         const values = new Set();
         const langs = ['kr', 'en', 'jp'];
 
-        if (window.I18N) {
-            langs.forEach(lang => {
-                const value = window.I18N[lang]?.[key];
-                if (Array.isArray(value)) {
-                    value.forEach(v => addStringToSet(values, v));
-                } else {
-                    addStringToSet(values, value);
+        langs.forEach(lang => {
+            const value = getTranslationByLang(lang, key);
+            if (Array.isArray(value)) {
+                value.forEach(v => addStringToSet(values, v));
+            } else {
+                addStringToSet(values, value);
+            }
+        });
+
+        let currentValue = fallback;
+        if (window.t && typeof window.t === 'function') {
+            const translated = window.t(key, key);
+            if (translated !== key) {
+                currentValue = translated;
+            }
+        } else {
+            const service = getI18nServiceInstance();
+            if (service && typeof service.t === 'function') {
+                const translated = service.t(key, key);
+                if (translated !== key) {
+                    currentValue = translated;
                 }
-            });
+            }
         }
 
-        const currentValue = (window.t && typeof window.t === 'function')
-            ? window.t(key, fallback)
-            : fallback;
         if (Array.isArray(currentValue)) {
             currentValue.forEach(v => addStringToSet(values, v));
         } else {

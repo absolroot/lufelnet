@@ -20,7 +20,7 @@ window.characterList = window.characterList || {
     color : 택틱 메이커 등에서 나타날 대표 색상
     element : 속성
     rarity : 4성/5성 
-    position : 지배/굴복/구원/반항/해명/우월/구원/반항/해명
+    position : 지배/굴복/구원/반항/우월/해명
     release_order : 캐릭터 출시 순서
     codename : 코드네임
     persona : 페르소나 이름

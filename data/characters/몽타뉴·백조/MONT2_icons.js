@@ -437,8 +437,13 @@
 
   function applyMONT2Filter() {
     try {
-      const params = new URLSearchParams(window.location.search);
-      const name = params.get('name');
+      let name = '';
+      try {
+        const params = new URLSearchParams(window.location.search);
+        name = params.get('name') || window.__CHARACTER_DEFAULT || '';
+      } catch (_) {
+        name = window.__CHARACTER_DEFAULT || '';
+      }
 
       if (name !== '몽타뉴·백조' && name !== '코토네 몽타뉴·백조') return;
 

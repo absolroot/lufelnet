@@ -717,8 +717,13 @@
 
   /* ── Init ───────────────────────────────────────── */
   function init() {
-    var params = new URLSearchParams(window.location.search);
-    var name = params.get('name');
+    var name = '';
+    try {
+      var params = new URLSearchParams(window.location.search);
+      name = params.get('name') || window.__CHARACTER_DEFAULT || '';
+    } catch (_) {
+      name = window.__CHARACTER_DEFAULT || '';
+    }
     if (name !== '리코·매화') return;
 
     loadState();

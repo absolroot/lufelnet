@@ -331,6 +331,7 @@ if (/^\/(kr|en|jp)\//.test(window.location.pathname)) return;
 | pull-tracker (individual/global/guide) | Hybrid (multi single-page) | `generate-pull-tracker-pages.mjs` | Done |
 | about | B (single-page) | `generate-about-pages.mjs` | Done |
 | gallery | B (single-page) | `generate-gallery-pages.mjs` | Done |
+| astrolabe | B (single-page) | `generate-astrolabe-pages.mjs` | Done |
 | article (guides list + detail) | Hybrid (single-page + per-item) | `generate-article-pages.mjs` | Done |
 | persona | A (per-item) | `generate-persona-pages.mjs` | Done |
 | maps | A (per-item) | — | Not started |
@@ -408,4 +409,4 @@ For app paths not listed in `LanguageRouter.isSeoDetailPath()` (e.g. `tier`), se
 ## Supported Languages
 
 - `kr`, `en`, `jp` — full support now.
-- `cn` — route-ready for root redirects only. Not included in SEO page generation yet.
+- `cn` — route-ready globally. SEO page generation is currently enabled for `astrolabe`.

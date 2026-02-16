@@ -48,6 +48,10 @@ jobs:
       if: github.event_name == 'pull_request'
       run: npm run seo:character:check
 
+    - name: Check generated persona SEO pages (PR only)
+      if: github.event_name == 'pull_request'
+      run: npm run seo:persona:check
+
     - name: Generate synergy SEO pages
       run: npm run seo:synergy:generate
 
@@ -56,6 +60,9 @@ jobs:
 
     - name: Generate character SEO pages
       run: npm run seo:character:generate
+
+    - name: Generate persona SEO pages
+      run: npm run seo:persona:generate
     
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1

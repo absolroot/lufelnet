@@ -1,0 +1,25 @@
+---
+layout: default
+custom_css: [character]
+custom_js: [character/spoiler-state]
+title: "괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷"
+description: "페르소나5 더 팬텀 X의 괴도별 육성 가이드. 추천 세팅, 스킬, 의식, 전용무기 정보를 확인하세요."
+image: "/assets/img/home/SEO_character.png"
+language: kr
+permalink: /kr/character/
+alternate_urls:
+  ko: /kr/character/
+  en: /en/character/
+  jp: /jp/character/
+---
+<script>
+(function () {
+  var params = new URLSearchParams(window.location.search || "");
+  params.set("lang", "kr");
+  var query = params.toString();
+  var next = "/character/" + (query ? ("?" + query) : "");
+  window.location.replace(next);
+})();
+</script>
+  <noscript><meta http-equiv="refresh" content="0; url=/character/?lang=kr"></noscript>
+  <a href="/character/?lang=kr">Continue</a>

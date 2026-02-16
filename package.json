@@ -36,7 +36,9 @@
     "seo:article:generate": "node scripts/seo/generate-article-pages.mjs",
     "seo:article:check": "node scripts/seo/generate-article-pages.mjs --check",
     "seo:persona:generate": "node scripts/seo/generate-persona-pages.mjs",
-    "seo:persona:check": "node scripts/seo/generate-persona-pages.mjs --check"
+    "seo:persona:check": "node scripts/seo/generate-persona-pages.mjs --check",
+    "seo:astrolabe:generate": "node scripts/seo/generate-astrolabe-pages.mjs",
+    "seo:astrolabe:check": "node scripts/seo/generate-astrolabe-pages.mjs --check"
   },
   "keywords": [],
   "author": "",

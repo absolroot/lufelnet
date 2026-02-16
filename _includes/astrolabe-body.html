@@ -1,0 +1,174 @@
+<script>
+(function () {
+    var params = new URLSearchParams(window.location.search || '');
+    var path = String(window.location.pathname || '/');
+    var lowerPath = path.toLowerCase();
+
+    var pathLangMatch = lowerPath.match(/^\/(kr|en|jp|cn)(\/|$)/);
+    var pathLang = pathLangMatch ? pathLangMatch[1] : '';
+    var queryLang = String(params.get('lang') || '').toLowerCase();
+    var supportedLangs = ['kr', 'en', 'jp', 'cn'];
+    var effectiveLang = pathLang || (supportedLangs.indexOf(queryLang) !== -1 ? queryLang : '');
+
+    var isLegacyRoot = /^\/astrolabe\/?$/.test(lowerPath);
+    var isCanonicalPath = /^\/(kr|en|jp|cn)\/astrolabe\/?$/.test(lowerPath);
+
+    if (isLegacyRoot && effectiveLang) {
+        window.__SEO_PATH_LANG__ = effectiveLang;
+        params.delete('lang');
+        params.delete('v');
+        var remainingLegacy = params.toString();
+        history.replaceState(null, '', '/' + effectiveLang + '/astrolabe/' + (remainingLegacy ? '?' + remainingLegacy : ''));
+        return;
+    }
+
+    if (isCanonicalPath) {
+        window.__SEO_PATH_LANG__ = pathLang;
+        var before = params.toString();
+        params.delete('lang');
+        params.delete('v');
+        var remainingCanonical = params.toString();
+        if (before !== remainingCanonical) {
+            history.replaceState(null, '', path + (remainingCanonical ? '?' + remainingCanonical : ''));
+        }
+        return;
+    }
+
+    if (isLegacyRoot && params.has('v')) {
+        params.delete('v');
+        var remainingRoot = params.toString();
+        history.replaceState(null, '', '/astrolabe/' + (remainingRoot ? '?' + remainingRoot : ''));
+    }
+})();
+</script>
+{% if page.alternate_urls %}
+{% for alt in page.alternate_urls %}
+<link rel="alternate" hreflang="{{ alt[0] }}" href="{{ site.url }}{{ alt[1] }}" />
+{% endfor %}
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.alternate_urls['ko'] | default: page.alternate_urls.first[1] }}" />
+{% endif %}
+
+<link rel="stylesheet" href="{{ site.baseurl }}/apps/astrolabe/css/style.css?v={{ site.time | date: '%s' }}">
+
+<style>
+    /* Override container styles for full-screen canvas */
+    .container {
+        max-width: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .footer-container {
+        display: none !important;
+    }
+</style>
+
+<div id="nav-container"></div>
+<div class="astrolabe-wrapper">
+    <!-- Navigation path - overlay on top left -->
+    <!-- UI Overlay container (1200px centered) -->
+
+    <!-- Mobile Breadcrumb (Map Style) -->
+    <div id="mobile-breadcrumb" class="mobile-breadcrumb">
+        <div class="mobile-breadcrumb-logo" onclick="location.href='{{ site.baseurl }}/'">
+            <img src="{{ site.baseurl }}/assets/img/logo/lufel.webp" alt="logo">
+            <img src="{{ site.baseurl }}/assets/img/logo/lufelnet.png" alt="logo-text">
+        </div>
+        <div class="mobile-breadcrumb-items">
+            <span class="breadcrumb-item" onclick="location.href='{{ site.baseurl }}/'">홈</span>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-item active">성좌의 시련</span>
+        </div>
+    </div>
+
+    <div class="astrolabe-ui-container">
+        <!-- Navigation path -->
+        <div class="astrolabe-nav-path">
+            <script>document.write(`<a href="../../?v=${APP_VERSION}" id="nav-home">홈</a>`);</script>
+            <span class="separator">/</span>
+            <span class="current-page" id="astrolabe-title-nav">성좌의 시련</span>
+        </div>
+
+        <!-- Header -->
+        <div class="astrolabe-header">
+            <div class="astrolabe-header-left">
+                <h1 class="astrolabe-title" id="astrolabe-title">성좌의 시련</h1>
+            </div>
+            <div class="astrolabe-header-right">
+                <div class="countdown-display">
+                    <span id="time-label">남은 시간:</span>
+                    <span id="countdown-value">--:--:--</span>
+                </div>
+                <select class="region-selector" id="region-selector">
+                    <option value="kr">KR</option>
+                    <option value="en">EN</option>
+                    <option value="jp">JP</option>
+                    <option value="cn">CN</option>
+                    <option value="tw">TW</option>
+                    <option value="sea">SEA</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shooting Stars Layer -->
+    <div class="shooting-star-container" id="shooting-star-container"></div>
+
+    <!-- Canvas Container - full screen -->
+    <div class="canvas-container">
+        <canvas id="astrolabe-canvas"></canvas>
+        <!-- Pin Element (DOM Overlay) -->
+        <div id="astrolabe-pin" class="astrolabe-pin"></div>
+
+        <!-- Loading Overlay -->
+        <div class="loading-overlay" id="astrolabe-loading">
+            <div class="loading-spinner"></div>
+        </div>
+
+        <!-- Error Message -->
+        <div class="error-message" id="astrolabe-error"></div>
+
+        <!-- Zoom Controls -->
+        <div class="zoom-controls">
+            <button class="zoom-btn" id="zoom-in-btn" title="확대">+</button>
+            <button class="zoom-btn" id="zoom-out-btn" title="축소">−</button>
+            <button class="zoom-btn" id="reset-btn" title="리셋">⟲</button>
+        </div>
+    </div>
+
+    <!-- Node Detail Panel -->
+    <div class="node-detail-panel" id="node-detail-panel">
+        <div class="detail-content">
+            <!-- Content will be dynamically generated -->
+        </div>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script>
+    // Global configuration for nav.js
+    window.BASE_URL = "{{ site.baseurl }}";
+    window.APP_VERSION = "{{ site.time | date: '%s' }}";
+</script>
+<!-- Nav script removed, assumed included by layout -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Initialize Navigation
+        if (typeof Navigation !== 'undefined') {
+            Navigation.load('home'); // or 'character' etc.
+        }
+    });
+</script>
+<script src="{{ site.baseurl }}/apps/astrolabe/js/config.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/i18n/pages/astrolabe/kr.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/i18n/pages/astrolabe/en.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/i18n/pages/astrolabe/jp.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/i18n/pages/astrolabe/cn.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/i18n/pages/astrolabe/tw.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/i18n/pages/astrolabe/sea.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/astrolabe/js/i18n.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/astrolabe/js/data-loader.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/astrolabe/js/adapt-sprite.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/astrolabe/js/canvas-renderer.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/astrolabe/js/node-detail.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/astrolabe/js/main.js?v={{ site.time | date: '%s' }}"></script>

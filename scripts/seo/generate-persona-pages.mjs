@@ -24,11 +24,17 @@ const OUTPUT_DIR = path.join(ROOT, 'pages', 'persona');
 const ROOT_STUB_DIR = path.join(OUTPUT_DIR, 'roots');
 
 const DETAIL_LANGS = ['kr', 'en', 'jp'];
-const ROOT_REDIRECT_LANGS = ['kr', 'en', 'jp', 'cn'];
+const LIST_PAGE_LANGS = ['kr', 'en', 'jp'];
+const ROOT_REDIRECT_LANGS = ['cn'];
 
 const orderPath = path.join(ROOT, 'data', 'persona', 'order.js');
 const nonorderPath = path.join(ROOT, 'data', 'persona', 'nonorder.js');
 const seoMetaPath = path.join(ROOT, 'i18n', 'pages', 'persona', 'seo-meta.json');
+const listI18nPaths = {
+  kr: path.join(ROOT, 'i18n', 'pages', 'persona', 'kr.js'),
+  en: path.join(ROOT, 'i18n', 'pages', 'persona', 'en.js'),
+  jp: path.join(ROOT, 'i18n', 'pages', 'persona', 'jp.js')
+};
 const slugMapPath = path.join(ROOT, '_data', 'persona_slugs.json');
 
 function normalizeNewline(text) {
@@ -82,6 +88,37 @@ function ensureSeoMetaShape(meta) {
       throw new Error(`i18n/pages/persona/seo-meta.json missing valid description template for ${lang}.`);
     }
   }
+}
+
+function loadPersonaListSeoMetaFromI18n() {
+  const out = {};
+
+  for (const lang of LIST_PAGE_LANGS) {
+    const i18nPath = listI18nPaths[lang];
+    if (!fs.existsSync(i18nPath)) {
+      throw new Error(`Missing persona i18n file for ${lang}: ${toPosix(path.relative(ROOT, i18nPath))}`);
+    }
+
+    const code = fs.readFileSync(i18nPath, 'utf8');
+    const sandbox = { window: {} };
+    vm.runInNewContext(code, sandbox, { timeout: 5000 });
+
+    const key = `I18N_PAGE_PERSONA_${lang.toUpperCase()}`;
+    const dict = sandbox.window[key];
+    if (!dict || typeof dict !== 'object') {
+      throw new Error(`Missing i18n dictionary ${key} in ${toPosix(path.relative(ROOT, i18nPath))}`);
+    }
+
+    const title = normalizeName(dict.seoTitle);
+    const description = normalizeName(dict.seoDescription);
+    if (!title || !description) {
+      throw new Error(`Invalid seoTitle/seoDescription in ${toPosix(path.relative(ROOT, i18nPath))}`);
+    }
+
+    out[lang] = { title, description };
+  }
+
+  return out;
 }
 
 function ensureSlugValue(rawSlug, contextLabel) {
@@ -232,6 +269,29 @@ function renderPersonaPage({ lang, slug, personaKrName, title, description, imag
   ].join('\n');
 }
 
+function renderPersonaListPage({ lang, title, description }) {
+  const permalink = `/${lang}/persona/`;
+  return [
+    '---',
+    'layout: default',
+    'custom_css: []',
+    'custom_js: [tooltip]',
+    'custom_data: [tooltip.js, wonder/skills.js]',
+    `title: ${yamlQuote(title)}`,
+    `description: ${yamlQuote(description)}`,
+    'image: "/assets/img/home/SEO.png"',
+    `language: ${lang}`,
+    `permalink: ${permalink}`,
+    'alternate_urls:',
+    '  ko: /kr/persona/',
+    '  en: /en/persona/',
+    '  jp: /jp/persona/',
+    '---',
+    '{% include persona-body.html %}',
+    ''
+  ].join('\n');
+}
+
 function toRedirectStubFilePath(fromPath) {
   let token = String(fromPath || '')
     .replace(/^\/+|\/+$/g, '')
@@ -310,7 +370,7 @@ function renderRootRedirectPage(lang, permalinkPath = `/${lang}/persona/`) {
   ].join('\n');
 }
 
-function buildExpectedFiles(allPersonas, personaData, seoMeta, slugMap) {
+function buildExpectedFiles(allPersonas, personaData, seoMeta, listSeoMeta, slugMap) {
   const expected = new Map();
   const slugOwner = new Map();
   const redirectOwner = new Map();
@@ -337,6 +397,22 @@ function buildExpectedFiles(allPersonas, personaData, seoMeta, slugMap) {
     );
     expected.set(fileRel, content);
   };
+
+  for (const lang of LIST_PAGE_LANGS) {
+    const listMeta = listSeoMeta[lang];
+    if (!listMeta || typeof listMeta !== 'object') {
+      throw new Error(`Missing persona list SEO meta for language: ${lang}`);
+    }
+    const fileRel = toPosix(path.relative(ROOT, path.join(OUTPUT_DIR, lang, 'index.html')));
+    const content = normalizeNewline(
+      renderPersonaListPage({
+        lang,
+        title: listMeta.title,
+        description: listMeta.description
+      })
+    );
+    expected.set(fileRel, content);
+  }
 
   for (const krName of personaNames) {
     const personaEntry = personaData[krName];
@@ -538,8 +614,9 @@ function main() {
   const slugMap = loadSlugMap(allPersonas);
   const seoMeta = readJson(seoMetaPath);
   ensureSeoMetaShape(seoMeta);
+  const listSeoMeta = loadPersonaListSeoMetaFromI18n();
 
-  const expectedFiles = buildExpectedFiles(allPersonas, personaData, seoMeta, slugMap);
+  const expectedFiles = buildExpectedFiles(allPersonas, personaData, seoMeta, listSeoMeta, slugMap);
 
   if (mode.check) {
     runCheck(expectedFiles);

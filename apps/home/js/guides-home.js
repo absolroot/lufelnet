@@ -39,6 +39,13 @@ function homeGuideT(key, fallback, rawLang) {
     return fallback;
 }
 
+function resolveGuidePathLang(rawLang) {
+    const normalized = String(rawLang || '').toLowerCase();
+    if (normalized === 'en') return 'en';
+    if (normalized === 'jp') return 'jp';
+    return 'kr';
+}
+
 async function waitHomeGuideI18nReady() {
     if (!window.__HOME_I18N_READY__) return;
     try {
@@ -105,9 +112,11 @@ function createGuideItem(guide, rawLang) {
 
     // Determine URL
     const baseUrl = window.SITE_BASEURL || '';
+    const pathLang = resolveGuidePathLang(rawLang);
+    const guideId = encodeURIComponent(String(guide.id || '').trim());
     const url = guide.hasPage !== false
-        ? `${baseUrl}/article/${guide.id}/?lang=${rawLang}`
-        : `${baseUrl}/article/view/?id=${guide.id}&lang=${rawLang}`;
+        ? `${baseUrl}/${pathLang}/article/${guideId}/`
+        : `${baseUrl}/article/view/?id=${guideId}&lang=${pathLang}`;
 
     // Styling overrides for guide items to distinguish or fit better
     item.style.cursor = 'pointer';

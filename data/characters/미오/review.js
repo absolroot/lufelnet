@@ -17,7 +17,7 @@ TECHNICAL 속성별 효과가 등장한 첫 캐릭터로 빙결 속성 TECHNICAL
 - 『화염 돌풍』이 주는 추가 대미지가 6% 증가한다.
 - 『얼음 봉인』의 기본 확률이 2.5% 증가한다.
 
-해당 메커니즘에 대한 자세한 이해를 원한다면 가이드를 참조하세요 : [TECHNICAL 강화 - 스킬 마스터](/article/technical-master/?lang=kr)
+해당 메커니즘에 대한 자세한 이해를 원한다면 가이드를 참조하세요 : [TECHNICAL 강화 - 스킬 마스터](/kr/article/technical-master/)
    
         `,
                 review_en: `A **TECHNICAL-focused AoE DEF Down debuffer specialized in Burn setups**.
@@ -36,7 +36,7 @@ Technical Precision: Influences the potency of additional TECHNICAL effects. For
 - “Windburn”: Additional damage increases by 6%.  
 - “Deepfreeze”: Base activation rate increases by 2.5%.
 
-For a detailed understanding of this mechanism, please refer to the guide: [TECHNICAL Enhancement - Technical Precision](/article/technical-master/?lang=en)
+For a detailed understanding of this mechanism, please refer to the guide: [TECHNICAL Enhancement - Technical Precision](/en/article/technical-master/)
 `,
                 review_jp: `**TECHNICAL攻撃と火傷（バーン）に特化した、範囲防御力デバッファー。**
 
@@ -54,7 +54,7 @@ TECHNICAL属性効果が初めて実装されたキャラクターであり、�
 - 『風焼』の追加ダメージが6%上昇。  
 - 『寒獄』の基本発動率が2.5%上昇。
 
-このメカニズムについて詳しく知りたい場合は、以下のガイドを参照してください：[TECHNICAL強化 - テクニカル精度](/article/technical-master/?lang=jp)
+このメカニズムについて詳しく知りたい場合は、以下のガイドを参照してください：[TECHNICAL強化 - テクニカル精度](/jp/article/technical-master/)
 `,
                 pros: ["방어력 감소 수치가 높다.", "TECHNICAL 효과를 강화할 수 있다."],
                 pros_en: ["Provides high DEF Down values.", "Can enhance TECHNICAL effects."],
@@ -64,5 +64,4 @@ TECHNICAL属性効果が初めて実装されたキャラクターであり、�
                 cons_jp: ["敵に火傷を付与する必要がある。"],
         };
 })();
-
 

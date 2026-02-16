@@ -324,9 +324,11 @@ if (/^\/(kr|en|jp)\//.test(window.location.pathname)) return;
 | character | A (per-item) | `generate-character-pages.mjs` | Done |
 | tier | B (single-page) | `generate-tier-pages.mjs` | Done |
 | schedule | B (single-page) | `generate-schedule-pages.mjs` | Done |
+| defense-calc | B (single-page) | `generate-defense-calc-pages.mjs` | Done |
+| critical-calc | B (single-page) | `generate-critical-calc-pages.mjs` | Done |
 | about | B (single-page) | `generate-about-pages.mjs` | Done |
 | gallery | B (single-page) | `generate-gallery-pages.mjs` | Done |
-| article (guides list) | B (single-page) | `generate-article-pages.mjs` | Done |
+| article (guides list + detail) | Hybrid (single-page + per-item) | `generate-article-pages.mjs` | Done |
 | persona | A (per-item) | — | Not started |
 | maps | A (per-item) | — | Not started |
 
@@ -342,9 +344,12 @@ if (/^\/(kr|en|jp)\//.test(window.location.pathname)) return;
 | Tier (list) | `/kr/tier/`, `/en/tier/`, `/jp/tier/` |
 | Tier Maker | `/kr/tier-maker/`, `/en/tier-maker/`, `/jp/tier-maker/` |
 | Schedule | `/kr/schedule/`, `/en/schedule/`, `/jp/schedule/` |
+| Defense Calc | `/kr/defense-calc/`, `/en/defense-calc/`, `/jp/defense-calc/` |
+| Critical Calc | `/kr/critical-calc/`, `/en/critical-calc/`, `/jp/critical-calc/` |
 | About | `/kr/about/`, `/en/about/`, `/jp/about/` |
 | Gallery | `/kr/gallery/`, `/en/gallery/`, `/jp/gallery/` |
 | Article (guides list) | `/kr/article/`, `/en/article/`, `/jp/article/` |
+| Article (guide detail) | `/kr/article/{id}/`, `/en/article/{id}/`, `/jp/article/{id}/` |
 
 Legacy URLs redirect to canonical via generated stub pages (`layout: null`).
 Language root URLs (`/{lang}/{app}/`) redirect to `/{app}/?lang={lang}` via generated root stubs.
@@ -364,9 +369,13 @@ Legacy query-based URLs are rewritten to clean path-based URLs via `history.repl
 | `/tier/position-tier/?lang=en&v=4.4.8` | `/en/tier/` |
 | `/tier/position-tier/?lang=en&list=false&v=4.4.8` | `/en/tier-maker/` |
 | `/schedule/?lang=en&v=4.4.8` | `/en/schedule/` |
+| `/defense-calc/?lang=en&v=4.4.8` | `/en/defense-calc/` |
+| `/critical-calc/?lang=en&v=4.4.8` | `/en/critical-calc/` |
 | `/about/?lang=en&v=4.4.8` | `/en/about/` |
 | `/gallery/?lang=en&v=4.4.8` | `/en/gallery/` |
 | `/article/?lang=en&v=4.4.8` | `/en/article/` |
+| `/article/technical-master/?lang=en&v=4.4.8` | `/en/article/technical-master/` |
+| `/article/view/?id=technical-master&lang=en&v=4.4.8` | `/en/article/technical-master/` |
 
 The rewrite scripts are placed at the top of the body include or page, before any other scripts, so they run early. They use the `__*_SLUG_MAP` data (injected via Jekyll) to resolve slugs.
 

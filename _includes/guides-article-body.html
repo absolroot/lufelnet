@@ -1,0 +1,188 @@
+<script>
+(function () {
+    function sanitizeGuideId(value) {
+        return String(value || '').trim().replace(/[^A-Za-z0-9_-]/g, '');
+    }
+
+    var params = new URLSearchParams(window.location.search || '');
+    var path = String(window.location.pathname || '/');
+    var lowerPath = path.toLowerCase();
+
+    var pathLangMatch = lowerPath.match(/^\/(kr|en|jp)(\/|$)/);
+    var pathLang = pathLangMatch ? pathLangMatch[1] : '';
+    var queryLang = String(params.get('lang') || '').toLowerCase();
+    var effectiveLang = pathLang || (['kr', 'en', 'jp'].indexOf(queryLang) !== -1 ? queryLang : '');
+
+    var canonicalGuideId = sanitizeGuideId({{ page.guide_id | jsonify }});
+    var isLegacyView = /^\/article\/view\/?$/.test(lowerPath);
+    var legacyDetailMatch = path.match(/^\/article\/([^\/?#]+)\/?$/i);
+    var canonicalDetailMatch = path.match(/^\/(kr|en|jp)\/article\/([^\/?#]+)\/?$/i);
+
+    if (isLegacyView && effectiveLang) {
+        var queryGuideId = sanitizeGuideId(params.get('id'));
+        if (queryGuideId) {
+            window.__SEO_PATH_LANG__ = effectiveLang;
+            params.delete('id');
+            params.delete('lang');
+            params.delete('v');
+            var viewQuery = params.toString();
+            history.replaceState(null, '', '/' + effectiveLang + '/article/' + queryGuideId + '/' + (viewQuery ? '?' + viewQuery : ''));
+            return;
+        }
+    }
+
+    if (legacyDetailMatch && effectiveLang) {
+        var legacyGuideId = sanitizeGuideId(legacyDetailMatch[1]);
+        if (legacyGuideId && legacyGuideId.toLowerCase() !== 'view') {
+            window.__SEO_PATH_LANG__ = effectiveLang;
+            params.delete('lang');
+            params.delete('v');
+            var legacyQuery = params.toString();
+            history.replaceState(null, '', '/' + effectiveLang + '/article/' + legacyGuideId + '/' + (legacyQuery ? '?' + legacyQuery : ''));
+            return;
+        }
+    }
+
+    if (canonicalDetailMatch) {
+        var canonicalLang = canonicalDetailMatch[1].toLowerCase();
+        var pathGuideId = sanitizeGuideId(canonicalDetailMatch[2]);
+        window.__SEO_PATH_LANG__ = canonicalLang;
+
+        params.delete('lang');
+        params.delete('v');
+        params.delete('id');
+
+        var canonicalPath = path;
+        if (canonicalGuideId && pathGuideId && canonicalGuideId !== pathGuideId) {
+            canonicalPath = '/' + canonicalLang + '/article/' + canonicalGuideId + '/';
+        }
+
+        var canonicalQuery = params.toString();
+        var nextUrl = canonicalPath + (canonicalQuery ? '?' + canonicalQuery : '');
+        var currentUrl = path + (window.location.search || '');
+        if (nextUrl !== currentUrl) {
+            history.replaceState(null, '', nextUrl);
+        }
+    }
+})();
+</script>
+{% if page.alternate_urls %}
+{% for alt in page.alternate_urls %}
+<link rel="alternate" hreflang="{{ alt[0] }}" href="{{ site.url }}{{ alt[1] }}" />
+{% endfor %}
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.alternate_urls['ko'] | default: page.alternate_urls.first[1] }}" />
+{% endif %}
+
+<link rel="stylesheet" href="/apps/guides/guides.css">
+<script src="/apps/guides/guides.js"></script>
+
+<div class="main-wrapper">
+    <div class="guide-view-container" id="guide-view-container">
+        <div class="guides-loading" data-i18n="loadingGuide">Loading guide...</div>
+    </div>
+</div>
+
+<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
+<script>
+    function detectGuideArticleLang() {
+        const pathMatch = window.location.pathname.match(/^\/(kr|en|jp)(\/|$)/i);
+        if (pathMatch) {
+            return pathMatch[1].toLowerCase();
+        }
+
+        const params = new URLSearchParams(window.location.search);
+        const queryLang = String(params.get('lang') || '').toLowerCase();
+        if (['kr', 'en', 'jp'].indexOf(queryLang) !== -1) {
+            return queryLang;
+        }
+
+        if (typeof getCurrentLang === 'function') {
+            const helperLang = String(getCurrentLang() || '').toLowerCase();
+            if (['kr', 'en', 'jp'].indexOf(helperLang) !== -1) {
+                return helperLang;
+            }
+        }
+
+        if (typeof LanguageRouter !== 'undefined' && typeof LanguageRouter.getCurrentLanguage === 'function') {
+            const routerLang = String(LanguageRouter.getCurrentLanguage() || '').toLowerCase();
+            if (['kr', 'en', 'jp'].indexOf(routerLang) !== -1) {
+                return routerLang;
+            }
+        }
+
+        return 'kr';
+    }
+
+    function getGuideArticleI18nText(key, fallback = '') {
+        if (typeof window.t === 'function') {
+            try {
+                return window.t(key, fallback);
+            } catch (_) { }
+        }
+
+        if (window.I18nService && typeof window.I18nService.t === 'function') {
+            try {
+                return window.I18nService.t(key, fallback);
+            } catch (_) { }
+        }
+
+        return fallback || key;
+    }
+
+    function applyGuideArticleSeoMeta(lang, guideId) {
+        const baseUrl = 'https://lufel.net';
+        const pathGuideId = String(guideId || '').trim();
+        const currentUrl = pathGuideId
+            ? `${baseUrl}/${lang}/article/${pathGuideId}/`
+            : `${baseUrl}/${lang}/article/`;
+        const locale = lang === 'jp' ? 'ja_JP' : lang === 'en' ? 'en_US' : 'ko_KR';
+
+        const canonical = document.querySelector('link[rel="canonical"]');
+        const ogUrl = document.querySelector('meta[property="og:url"]');
+        const ogLocale = document.querySelector('meta[property="og:locale"]');
+
+        if (canonical) canonical.setAttribute('href', currentUrl);
+        if (ogUrl) ogUrl.setAttribute('content', currentUrl);
+        if (ogLocale) ogLocale.setAttribute('content', locale);
+        document.documentElement.setAttribute('lang', lang === 'jp' ? 'ja' : lang === 'en' ? 'en' : 'ko');
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+        const currentLang = detectGuideArticleLang();
+        const guideIdFromPage = String({{ page.guide_id | jsonify }} || '').trim();
+
+        if (typeof initPageI18n === 'function') {
+            await initPageI18n('guides');
+            if (typeof setLang === 'function') {
+                await setLang(currentLang);
+            }
+        } else if (window.I18nService && typeof window.I18nService.init === 'function') {
+            await window.I18nService.init('guides', currentLang);
+        }
+
+        applyGuideArticleSeoMeta(currentLang, guideIdFromPage);
+
+        Navigation.load('article');
+        VersionChecker.check();
+
+        let guideId = guideIdFromPage;
+        if (!guideId && typeof Guides !== 'undefined' && typeof Guides.getGuideIdFromUrl === 'function') {
+            guideId = Guides.getGuideIdFromUrl() || '';
+        }
+
+        if (guideId && typeof Guides !== 'undefined' && typeof Guides.loadGuide === 'function') {
+            Guides.loadGuide(guideId);
+            return;
+        }
+
+        const container = document.getElementById('guide-view-container');
+        if (container) {
+            container.innerHTML = `
+                <div class="guides-empty">
+                    <div class="guides-empty-icon">404</div>
+                    <div class="guides-empty-text">${getGuideArticleI18nText('guideNotFound', 'Guide not found')}</div>
+                </div>
+            `;
+        }
+    });
+</script>

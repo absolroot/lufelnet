@@ -3,7 +3,7 @@
 /**
  * generate-article-pages.mjs
  *
- * Generates static SEO pages for the guides/article list in each supported language.
+ * Generates static SEO pages for guides/article list + detail pages in each supported language.
  *
  * Usage:
  *   node scripts/seo/generate-article-pages.mjs
@@ -12,6 +12,7 @@
 
 import fs from 'fs';
 import path from 'path';
+import vm from 'vm';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -23,6 +24,12 @@ const LANGS = ['kr', 'en', 'jp'];
 const IMAGE_PATH = '/assets/img/home/SEO.png';
 
 const seoMetaPath = path.join(ROOT, 'i18n', 'pages', 'guides', 'seo-meta.json');
+const guidesListPath = path.join(ROOT, 'apps', 'guides', 'data', 'guides-list.json');
+const guidesI18nPaths = {
+  kr: path.join(ROOT, 'i18n', 'pages', 'guides', 'kr.js'),
+  en: path.join(ROOT, 'i18n', 'pages', 'guides', 'en.js'),
+  jp: path.join(ROOT, 'i18n', 'pages', 'guides', 'jp.js')
+};
 
 function normalizeNewline(text) {
   return String(text).replace(/\r\n/g, '\n').replace(/\r/g, '\n');
@@ -41,6 +48,20 @@ function readJson(filePath) {
   return JSON.parse(raw);
 }
 
+function cleanText(value) {
+  return String(value || '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function pickFirstText(...values) {
+  for (const value of values) {
+    const cleaned = cleanText(value);
+    if (cleaned) return cleaned;
+  }
+  return '';
+}
+
 function ensureSeoMetaShape(meta) {
   for (const lang of LANGS) {
     const langMeta = meta?.[lang];
@@ -56,7 +77,82 @@ function ensureSeoMetaShape(meta) {
   }
 }
 
-function renderArticlePage({ lang, title, description }) {
+function loadGuidesSiteNames() {
+  const siteNames = {};
+
+  for (const lang of LANGS) {
+    const filePath = guidesI18nPaths[lang];
+    const code = fs.readFileSync(filePath, 'utf8');
+    const sandbox = { window: {} };
+    vm.runInNewContext(code, sandbox, { timeout: 5000 });
+
+    const key = `I18N_PAGE_GUIDES_${lang.toUpperCase()}`;
+    const dict = sandbox.window?.[key];
+    if (!dict || typeof dict !== 'object') {
+      throw new Error(`Failed to parse guides i18n dictionary: ${path.relative(ROOT, filePath)}`);
+    }
+
+    const siteName = cleanText(dict.siteName);
+    siteNames[lang] = siteName || 'Lufelnet';
+  }
+
+  return siteNames;
+}
+
+function loadGuides() {
+  const raw = readJson(guidesListPath);
+  if (!Array.isArray(raw) || raw.length === 0) {
+    throw new Error('apps/guides/data/guides-list.json is empty or invalid.');
+  }
+
+  const lowerIdMap = new Map();
+  const guides = [];
+
+  for (const item of raw) {
+    if (!item || typeof item !== 'object') {
+      throw new Error('Invalid guide entry in guides-list.json (must be object).');
+    }
+
+    const id = cleanText(item.id);
+    if (!id) {
+      throw new Error('Guide entry missing non-empty id in guides-list.json.');
+    }
+
+    const lowerId = id.toLowerCase();
+    const existingId = lowerIdMap.get(lowerId);
+    if (existingId && existingId !== id) {
+      throw new Error(`Guide id collision by case-insensitive path: "${existingId}" and "${id}"`);
+    }
+    lowerIdMap.set(lowerId, id);
+
+    if (item.hasPage === false) continue;
+
+    const titles = {};
+    const descriptions = {};
+    for (const lang of LANGS) {
+      const title = pickFirstText(item?.titles?.[lang], item?.titles?.kr, item.title, id);
+      const description = pickFirstText(item?.excerpts?.[lang], item?.excerpts?.kr, title);
+      titles[lang] = title;
+      descriptions[lang] = description;
+    }
+
+    const thumbnail = pickFirstText(item.thumbnail);
+    guides.push({
+      id,
+      titles,
+      descriptions,
+      image: thumbnail || IMAGE_PATH
+    });
+  }
+
+  if (guides.length === 0) {
+    throw new Error('No guides with hasPage != false were found in guides-list.json.');
+  }
+
+  return guides;
+}
+
+function renderArticleListPage({ lang, title, description }) {
   const permalink = `/${lang}/article/`;
   const altKo = '/kr/article/';
   const altEn = '/en/article/';
@@ -83,18 +179,65 @@ function renderArticlePage({ lang, title, description }) {
   ].join('\n');
 }
 
-function buildExpectedFiles(seoMeta) {
+function renderArticleDetailPage({ lang, guideId, title, description, image }) {
+  const permalink = `/${lang}/article/${guideId}/`;
+  const altKo = `/kr/article/${guideId}/`;
+  const altEn = `/en/article/${guideId}/`;
+  const altJp = `/jp/article/${guideId}/`;
+
+  return [
+    '---',
+    'layout: default',
+    'custom_css: []',
+    'custom_js: []',
+    'custom_data: ["/data/character_info.js"]',
+    `title: ${yamlQuote(title)}`,
+    `description: ${yamlQuote(description)}`,
+    `image: ${yamlQuote(image)}`,
+    `language: ${lang}`,
+    `guide_id: ${yamlQuote(guideId)}`,
+    `permalink: ${permalink}`,
+    'alternate_urls:',
+    `  ko: ${altKo}`,
+    `  en: ${altEn}`,
+    `  jp: ${altJp}`,
+    '---',
+    '{% include guides-article-body.html %}',
+    ''
+  ].join('\n');
+}
+
+function buildExpectedFiles(seoMeta, guides, siteNames) {
   const expected = new Map();
 
   for (const lang of LANGS) {
-    const title = seoMeta[lang].title;
-    const description = seoMeta[lang].description;
+    {
+      const title = seoMeta[lang].title;
+      const description = seoMeta[lang].description;
+      const fileRel = toPosix(path.relative(ROOT, path.join(OUTPUT_DIR, lang, 'index.html')));
+      const content = normalizeNewline(
+        renderArticleListPage({ lang, title, description })
+      );
+      expected.set(fileRel, content);
+    }
 
-    const fileRel = toPosix(path.relative(ROOT, path.join(OUTPUT_DIR, lang, 'index.html')));
-    const content = normalizeNewline(
-      renderArticlePage({ lang, title, description })
-    );
-    expected.set(fileRel, content);
+    for (const guide of guides) {
+      const displayTitle = guide.titles[lang];
+      const siteName = siteNames[lang] || 'Lufelnet';
+      const pageTitle = cleanText(`${displayTitle} - ${siteName}`);
+      const description = guide.descriptions[lang] || displayTitle;
+      const fileRel = toPosix(path.relative(ROOT, path.join(OUTPUT_DIR, lang, `${guide.id}.html`)));
+      const content = normalizeNewline(
+        renderArticleDetailPage({
+          lang,
+          guideId: guide.id,
+          title: pageTitle,
+          description,
+          image: guide.image
+        })
+      );
+      expected.set(fileRel, content);
+    }
   }
 
   return expected;
@@ -191,8 +334,10 @@ function main() {
 
   const seoMeta = readJson(seoMetaPath);
   ensureSeoMetaShape(seoMeta);
+  const guides = loadGuides();
+  const siteNames = loadGuidesSiteNames();
 
-  const expectedFiles = buildExpectedFiles(seoMeta);
+  const expectedFiles = buildExpectedFiles(seoMeta, guides, siteNames);
 
   if (mode.check) {
     runCheck(expectedFiles);

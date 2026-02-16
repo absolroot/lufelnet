@@ -88,6 +88,11 @@ class DefenseCalc {
 
     getCurrentLang() {
         try {
+            const pathMatch = String(window.location.pathname || '').match(/^\/(kr|en|jp)(\/|$)/i);
+            if (pathMatch && pathMatch[1]) {
+                return this.normalizeCalcLang(pathMatch[1]);
+            }
+
             const urlLang = new URLSearchParams(window.location.search).get('lang');
             if (urlLang) return this.normalizeCalcLang(urlLang);
 

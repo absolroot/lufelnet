@@ -18,6 +18,7 @@ const Guides = {
      * Initialize the guides system
      */
     init() {
+        this.normalizeLegacyDetailPath();
         this.detectLanguage();
         this.setupLanguageListener();
     },
@@ -50,10 +51,88 @@ const Guides = {
     },
 
     /**
+     * Normalize language value to supported set
+     */
+    normalizeLang(lang) {
+        const supported = ['kr', 'en', 'jp'];
+        const normalized = String(lang || '').toLowerCase();
+        return supported.includes(normalized) ? normalized : 'kr';
+    },
+
+    /**
+     * Get language from SEO path if present
+     */
+    getPathLang() {
+        const pathMatch = String(window.location.pathname || '').match(/^\/(kr|en|jp)(\/|$)/i);
+        return pathMatch ? pathMatch[1].toLowerCase() : '';
+    },
+
+    /**
+     * Normalize legacy detail URLs to canonical path-based URLs
+     */
+    normalizeLegacyDetailPath() {
+        const sanitizeGuideId = (value) => String(value || '').trim().replace(/[^A-Za-z0-9_-]/g, '');
+        const params = new URLSearchParams(window.location.search || '');
+        const path = String(window.location.pathname || '/');
+        const lowerPath = path.toLowerCase();
+        const supported = ['kr', 'en', 'jp'];
+
+        const pathLang = this.getPathLang();
+        const queryLang = String(params.get('lang') || '').toLowerCase();
+        const effectiveLang = pathLang || (supported.includes(queryLang) ? queryLang : '');
+
+        const isLegacyView = /^\/article\/view\/?$/.test(lowerPath);
+        const legacyDetailMatch = path.match(/^\/article\/([^\/?#]+)\/?$/i);
+        const canonicalDetailMatch = path.match(/^\/(kr|en|jp)\/article\/([^\/?#]+)\/?$/i);
+
+        if (isLegacyView && effectiveLang) {
+            const queryGuideId = sanitizeGuideId(params.get('id'));
+            if (queryGuideId) {
+                window.__SEO_PATH_LANG__ = effectiveLang;
+                params.delete('id');
+                params.delete('lang');
+                params.delete('v');
+                const query = params.toString();
+                history.replaceState(null, '', `/${effectiveLang}/article/${queryGuideId}/${query ? `?${query}` : ''}`);
+                return;
+            }
+        }
+
+        if (legacyDetailMatch && effectiveLang) {
+            const legacyGuideId = sanitizeGuideId(legacyDetailMatch[1]);
+            if (legacyGuideId && legacyGuideId.toLowerCase() !== 'view') {
+                window.__SEO_PATH_LANG__ = effectiveLang;
+                params.delete('lang');
+                params.delete('v');
+                const query = params.toString();
+                history.replaceState(null, '', `/${effectiveLang}/article/${legacyGuideId}/${query ? `?${query}` : ''}`);
+                return;
+            }
+        }
+
+        if (canonicalDetailMatch) {
+            window.__SEO_PATH_LANG__ = canonicalDetailMatch[1].toLowerCase();
+            const before = params.toString();
+            params.delete('lang');
+            params.delete('id');
+            params.delete('v');
+            const after = params.toString();
+            if (before !== after) {
+                history.replaceState(null, '', `${path}${after ? `?${after}` : ''}`);
+            }
+        }
+    },
+
+    /**
      * Detect current language from i18n service or URL/storage fallback
      */
     detectLanguage() {
         const supported = ['kr', 'en', 'jp'];
+        const pathLang = this.getPathLang();
+        if (supported.includes(pathLang)) {
+            this.currentLang = pathLang;
+            return;
+        }
 
         try {
             if (typeof window.getCurrentLang === 'function') {
@@ -76,7 +155,7 @@ const Guides = {
         } catch (_) {}
 
         const urlParams = new URLSearchParams(window.location.search);
-        const urlLang = urlParams.get('lang');
+        const urlLang = String(urlParams.get('lang') || '').toLowerCase();
         if (urlLang && supported.includes(urlLang)) {
             this.currentLang = urlLang;
             return;
@@ -332,10 +411,17 @@ const Guides = {
      * Get the URL for a guide
      */
     getGuideUrl(guide, lang) {
-        if (guide.hasPage !== false) {
-            return `/article/${guide.id}/?lang=${lang}`;
+        const safeLang = this.normalizeLang(lang);
+        const guideId = encodeURIComponent(String(guide?.id || '').trim());
+
+        if (!guideId) {
+            return `/${safeLang}/article/`;
         }
-        return `/article/view/?id=${guide.id}&lang=${lang}`;
+
+        if (guide.hasPage !== false) {
+            return `/${safeLang}/article/${guideId}/`;
+        }
+        return `/article/view/?id=${guideId}&lang=${safeLang}`;
     },
 
     /**
@@ -478,8 +564,9 @@ const Guides = {
         );
 
         const backToList = this.getI18nText('backToList', 'Back to list');
+        const listUrl = `/${this.normalizeLang(lang)}/article/`;
         const html = `
-            <a class="guide-back" href="/article/?lang=${lang}">
+            <a class="guide-back" href="${listUrl}">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M19 12H5M12 19l-7-7 7-7"/>
                 </svg>
@@ -596,8 +683,34 @@ const Guides = {
      * Get guide ID from URL
      */
     getGuideIdFromUrl() {
+        const path = String(window.location.pathname || '');
+
+        const canonicalMatch = path.match(/^\/(?:kr|en|jp)\/article\/([^\/?#]+)\/?$/i);
+        if (canonicalMatch && canonicalMatch[1]) {
+            try {
+                return decodeURIComponent(canonicalMatch[1]);
+            } catch (_) {
+                return canonicalMatch[1];
+            }
+        }
+
+        const legacyDetailMatch = path.match(/^\/article\/([^\/?#]+)\/?$/i);
+        if (legacyDetailMatch && legacyDetailMatch[1] && legacyDetailMatch[1].toLowerCase() !== 'view') {
+            try {
+                return decodeURIComponent(legacyDetailMatch[1]);
+            } catch (_) {
+                return legacyDetailMatch[1];
+            }
+        }
+
         const urlParams = new URLSearchParams(window.location.search);
-        return urlParams.get('id');
+        const id = urlParams.get('id');
+        if (!id) return null;
+        try {
+            return decodeURIComponent(id);
+        } catch (_) {
+            return id;
+        }
     }
 };
 

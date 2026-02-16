@@ -27,7 +27,8 @@
         const modalTitle = document.getElementById('help-modal-title');
         const modalDescription = document.getElementById('help-modal-description');
         const currentLang = getLangSafe();
-        const revelationOptionsLink = `<a href="../../article/Revelation-Options/?lang=${currentLang}" target="_blank">lufel.net/article/Revelation-Options</a>`;
+        const safeLang = ['kr', 'en', 'jp'].includes(currentLang) ? currentLang : 'kr';
+        const revelationOptionsLink = `<a href="/${safeLang}/article/Revelation-Options/" target="_blank">lufel.net/${safeLang}/article/Revelation-Options/</a>`;
 
         const helpConfig = {
             'revelation': {

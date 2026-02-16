@@ -1,0 +1,293 @@
+<script>
+(function () {
+    var params = new URLSearchParams(window.location.search || '');
+    var path = String(window.location.pathname || '/');
+    var lowerPath = path.toLowerCase();
+
+    var pathLangMatch = lowerPath.match(/^\/(kr|en|jp)(\/|$)/);
+    var pathLang = pathLangMatch ? pathLangMatch[1] : '';
+    var queryLang = String(params.get('lang') || '').toLowerCase();
+    var effectiveLang = pathLang || (['kr', 'en', 'jp'].indexOf(queryLang) !== -1 ? queryLang : '');
+
+    var isLegacyRoot = /^\/critical-calc\/?$/.test(lowerPath);
+    var isCanonicalPath = /^\/(kr|en|jp)\/critical-calc\/?$/.test(lowerPath);
+
+    if (isLegacyRoot && effectiveLang) {
+        window.__SEO_PATH_LANG__ = effectiveLang;
+        params.delete('lang');
+        params.delete('v');
+        var remainingLegacy = params.toString();
+        history.replaceState(null, '', '/' + effectiveLang + '/critical-calc/' + (remainingLegacy ? '?' + remainingLegacy : ''));
+        return;
+    }
+
+    if (isCanonicalPath) {
+        window.__SEO_PATH_LANG__ = pathLang;
+        var before = params.toString();
+        params.delete('lang');
+        params.delete('v');
+        var remainingCanonical = params.toString();
+        if (before !== remainingCanonical) {
+            history.replaceState(null, '', path + (remainingCanonical ? '?' + remainingCanonical : ''));
+        }
+        return;
+    }
+
+    if (isLegacyRoot && params.has('v')) {
+        params.delete('v');
+        var remainingRoot = params.toString();
+        history.replaceState(null, '', '/critical-calc/' + (remainingRoot ? '?' + remainingRoot : ''));
+    }
+})();
+</script>
+
+<link rel="stylesheet" href="/apps/critical-calc/critical-calc.css">
+<script src="/apps/critical-calc/table-renderer.js"></script>
+<script src="/apps/critical-calc/critical-calc.js"></script>
+
+{% if page.alternate_urls %}
+{% for alt in page.alternate_urls %}
+<link rel="alternate" hreflang="{{ alt[0] }}" href="{{ site.url }}{{ alt[1] }}" />
+{% endfor %}
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.alternate_urls['ko'] | default: page.alternate_urls.first[1] }}" />
+{% endif %}
+
+<!-- 메인 컨텐츠 -->
+<div class="main-wrapper">
+    <!-- 네비게이션 경로 -->
+    <div class="navigation-path">
+        <script>document.write(`<a href="../../?v=${APP_VERSION}" id="nav-home">-</a>`);</script>
+        <span class="separator">/</span>
+        <span class="current-page" id="navCurrent">-</span>
+    </div>
+    <div class="header-container">
+        <h1 id="page-title">-</h1>
+        <label id="spoilerToggleWrap"
+            style="display:flex; align-items:center; cursor:pointer; font-size:13px; opacity:0.85;">
+            <input type="checkbox" id="showSpoilerToggle"> <span id="showSpoilerLabel"
+                style="margin-left: 4px; color:#ededed;">Show Spoilers</span>
+        </label>
+    </div>
+
+    <!-- 상단 카드 컨테이너 -->
+    <div class="top-cards">
+        <!-- 크리티컬 입력 카드 -->
+        <div class="stat-card card-style">
+            <div class="critical-input-container">
+                <div class="critical-input-group">
+                    <label id="revelationSumLabel">
+                        <img src="{{ site.baseurl }}/assets/img/nav/qishi.png" alt="계시" class="input-label-icon">
+                        계시 합계
+                    </label>
+                    <input type="number" id="revelationCritical" min="0" step="0.1" value="0">
+                    <span>%</span>
+                </div>
+                <div class="critical-input-group">
+                    <label id="explanationPowerLabel">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/직업_해명.png" alt="해명" class="input-label-icon">
+                        해명의 힘
+                    </label>
+                    <input type="number" id="explanationPower" min="0" step="0.1" value="0">
+                    <span>%</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 크리티컬 확률 합계 카드 -->
+        <div class="stat-card card-style">
+            <div class="critical-sum-stats">
+                <div class="critical-sum-total">
+                    <div class="critical-sum-total-label">
+                        <img src="{{ site.baseurl }}/assets/img/stat-icon/크리티컬 확률.png" alt="크리티컬" class="critical-sum-icon">
+                        <span class="critical-sum-total-text" id="totalLabel">크리티컬 확률 합계</span>
+                    </div>
+                    <span class="total-value" id="totalValue">0%</span>
+                </div>
+                <div class="critical-sum-items">
+                    <div class="critical-sum-item">
+                        <div class="critical-sum-label" id="buffSumLabel">
+                            <span class="critical-sum-label-text">버프 합계</span>
+                        </div>
+                        <div class="critical-sum-value critical-sum-buff" id="buffSumValue">0%</div>
+                    </div>
+                    <div class="critical-sum-item">
+                        <div class="critical-sum-label" id="selfSumLabel">
+                            <span class="critical-sum-label-text">자신 합계</span>
+                        </div>
+                        <div class="critical-sum-value" id="selfSumValue">0%</div>
+                    </div>
+                    <div class="critical-sum-item">
+                        <div class="critical-sum-label" id="neededLabel">
+                            <span class="critical-sum-label-text">필요 수치</span>
+                        </div>
+                        <div class="critical-sum-value critical-sum-needed" id="neededValue">100%</div>
+                    </div>
+                </div>
+            </div>
+            <div class="total-value-description">
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 데이터 테이블 -->
+    <div class="table-tabs card-style">
+        <div class="tab-buttons">
+            <button class="tab-button active" data-tab="buff" id="tabBuff">버프</button>
+            <button class="tab-button" data-tab="self" id="tabSelf">자신</button>
+        </div>
+
+        <!-- 버프 테이블 -->
+        <div class="tab-content active" id="buff-tab">
+            <table class="critical-table">
+                <thead>
+                    <tr>
+                        <th class="check-column" id="thSelect1">선택</th>
+                        <th class="target-column" id="thTarget1">목표</th>
+                        <th class="skill-icon-column"></th>
+                        <th class="skill-name-column" id="thName1">이름</th>
+                        <th class="option-column" id="thOption1">옵션</th>
+                        <th class="value-column" id="thValue1">수치</th>
+                        <th class="duration-column" id="thDuration1">지속시간</th>
+                        <th class="note-column" id="thNote1">비고</th>
+                    </tr>
+                </thead>
+                <tbody id="buffTableBody">
+                    <!-- JavaScript로 동적 생성됨 -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 자신 테이블 -->
+        <div class="tab-content" id="self-tab">
+            <table class="critical-table">
+                <thead>
+                    <tr>
+                        <th class="check-column" id="thSelect2">선택</th>
+                        <th class="target-column" id="thTarget2">목표</th>
+                        <th class="skill-icon-column"></th>
+                        <th class="skill-name-column" id="thName2">이름</th>
+                        <th class="option-column" id="thOption2">옵션</th>
+                        <th class="value-column" id="thValue2">수치</th>
+                        <th class="duration-column" id="thDuration2">지속시간</th>
+                        <th class="note-column" id="thNote2">비고</th>
+                    </tr>
+                </thead>
+                <tbody id="selfTableBody">
+                    <!-- JavaScript로 동적 생성됨 -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- 광고 -->
+    <!--
+  <div class="ads-container responsive-padding">
+    <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-format="fluid"
+      data-ad-layout-key="-gc+3n+7a-ag-4h"
+      data-ad-client="ca-pub-5862324369257695"
+      data-ad-slot="5373524213"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+    
+    <div id="ad-unit-bottom" class="AD-bottom" style="margin-top: 24px; text-align: center; align-items: center; display: flex; justify-content: center;"> 
+    <ins class="adsbygoogle"
+        style="display:inline-block;width:970px;height:90px"
+        data-ad-client="ca-pub-5862324369257695"
+        data-ad-slot="9244892982"></ins>
+    </div>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <div style="height: 12px;"></div>
+    <style>
+        @media (max-width: 1440px) {
+            .AD-bottom {
+                display: none !important;
+            }
+        }
+        @media (min-width: 1440px) {
+            .ads-container {
+                display: none !important;
+            }
+        }
+        .responsive-padding { margin: 20px 20px 20px 0; padding: 0 0; }
+        @media (max-width: 1200px) { .responsive-padding {margin: 20px 0 0px 0; padding: 0; } }
+    </style>
+    -->
+</div>
+
+<script src="{{ site.baseurl }}/i18n/pages/critical-calc/kr.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/i18n/pages/critical-calc/en.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/i18n/pages/critical-calc/jp.js?v={{ site.time | date: '%s' }}"></script>
+<script>
+    function detectCriticalCalcLang() {
+        const pathMatch = window.location.pathname.match(/^\/(kr|en|jp)(\/|$)/i);
+        if (pathMatch) {
+            return pathMatch[1].toLowerCase();
+        }
+
+        if (typeof LanguageRouter !== 'undefined' && typeof LanguageRouter.getCurrentLanguage === 'function') {
+            const routerLang = String(LanguageRouter.getCurrentLanguage() || '').toLowerCase();
+            if (['kr', 'en', 'jp', 'cn', 'tw', 'sea'].indexOf(routerLang) !== -1) {
+                return routerLang;
+            }
+        }
+
+        const params = new URLSearchParams(window.location.search || '');
+        const queryLang = String(params.get('lang') || '').toLowerCase();
+        if (queryLang) {
+            return queryLang;
+        }
+
+        return 'kr';
+    }
+
+    function updateSEOContent(lang) {
+        const currentLang = String(lang || detectCriticalCalcLang()).toLowerCase();
+        const seoVarMap = {
+            kr: 'I18N_PAGE_CRITICAL_CALC_KR',
+            en: 'I18N_PAGE_CRITICAL_CALC_EN',
+            jp: 'I18N_PAGE_CRITICAL_CALC_JP',
+            cn: 'I18N_PAGE_CRITICAL_CALC_EN',
+            tw: 'I18N_PAGE_CRITICAL_CALC_EN',
+            sea: 'I18N_PAGE_CRITICAL_CALC_EN'
+        };
+        const fallbackPack = window.I18N_PAGE_CRITICAL_CALC_KR || {};
+        const pack = window[seoVarMap[currentLang] || seoVarMap.kr] || fallbackPack;
+        const title = pack.seoTitle || fallbackPack.seoTitle || document.title;
+        const description = pack.seoDescription || fallbackPack.seoDescription || '';
+        const baseUrl = 'https://lufel.net';
+        const effectiveLang = ['kr', 'en', 'jp'].indexOf(currentLang) !== -1 ? currentLang : 'kr';
+        const isPathLang = /^\/(kr|en|jp)(\/|$)/i.test(window.location.pathname);
+        const currentUrl = isPathLang
+            ? (baseUrl + '/' + effectiveLang + '/critical-calc/')
+            : (baseUrl + '/critical-calc/');
+
+        document.title = title;
+        const metaDescription = document.querySelector('meta[name="description"]');
+        const metaKeywords = document.querySelector('meta[name="keywords"]');
+        const canonical = document.querySelector('link[rel="canonical"]');
+        const ogUrl = document.querySelector('meta[property="og:url"]');
+        const ogLocale = document.querySelector('meta[property="og:locale"]');
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        const ogDescription = document.querySelector('meta[property="og:description"]');
+        if (metaDescription) metaDescription.setAttribute('content', description);
+        if (metaKeywords && pack.seoKeywords) metaKeywords.setAttribute('content', pack.seoKeywords);
+        if (canonical) canonical.setAttribute('href', currentUrl);
+        if (ogUrl) ogUrl.setAttribute('content', currentUrl);
+        if (ogLocale && pack.seoOgLocale) ogLocale.setAttribute('content', pack.seoOgLocale);
+        if (ogTitle) ogTitle.setAttribute('content', title);
+        if (ogDescription) ogDescription.setAttribute('content', description);
+        document.documentElement.setAttribute('lang', effectiveLang === 'jp' ? 'ja' : effectiveLang === 'en' ? 'en' : 'ko');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const currentLang = detectCriticalCalcLang();
+        Navigation.load('critical-calc', 1);
+        VersionChecker.check();
+        updateSEOContent(currentLang);
+        new CriticalCalc();
+    });
+</script>

@@ -1,0 +1,298 @@
+
+
+<script>
+(function () {
+    var params = new URLSearchParams(window.location.search || '');
+    var path = String(window.location.pathname || '/');
+    var lowerPath = path.toLowerCase();
+
+    var pathLangMatch = lowerPath.match(/^\/(kr|en|jp)(\/|$)/);
+    var pathLang = pathLangMatch ? pathLangMatch[1] : '';
+    var queryLang = String(params.get('lang') || '').toLowerCase();
+    var effectiveLang = pathLang || (['kr', 'en', 'jp'].indexOf(queryLang) !== -1 ? queryLang : '');
+
+    var isLegacyRoot = /^\/pull-tracker\/?$/.test(lowerPath);
+    var isCanonicalPath = /^\/(kr|en|jp)\/pull-tracker\/?$/.test(lowerPath);
+
+    if (isLegacyRoot && effectiveLang) {
+        window.__SEO_PATH_LANG__ = effectiveLang;
+        params.delete('lang');
+        params.delete('v');
+        var remainingLegacy = params.toString();
+        history.replaceState(null, '', '/' + effectiveLang + '/pull-tracker/' + (remainingLegacy ? '?' + remainingLegacy : ''));
+        return;
+    }
+
+    if (isCanonicalPath) {
+        window.__SEO_PATH_LANG__ = pathLang;
+        var before = params.toString();
+        params.delete('lang');
+        params.delete('v');
+        var remainingCanonical = params.toString();
+        if (before !== remainingCanonical) {
+            history.replaceState(null, '', path + (remainingCanonical ? '?' + remainingCanonical : ''));
+        }
+        return;
+    }
+
+    if (isLegacyRoot && params.has('v')) {
+        params.delete('v');
+        var remainingRoot = params.toString();
+        history.replaceState(null, '', '/pull-tracker/' + (remainingRoot ? '?' + remainingRoot : ''));
+    }
+})();
+</script>
+{% if page.alternate_urls %}
+{% for alt in page.alternate_urls %}
+<link rel="alternate" hreflang="{{ alt[0] }}" href="{{ site.url }}{{ alt[1] }}" />
+{% endfor %}
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.alternate_urls['ko'] | default: page.alternate_urls.first[1] }}" />
+{% endif %}
+
+<div class="main-wrapper">
+    <div class="navigation-path">
+        <script>document.write(`<a href="../../?v=${APP_VERSION}" id="navhome">홈</a>`);</script>
+        <span class="separator">/</span>
+        <span class="current-page" id="navCurrent">Pull Tracker</span>
+    </div>
+
+    <div class="header-container">
+        <h1 id="pageTitle">Pull Tracker</h1>
+    </div>
+
+    <!-- User Bar -->
+    <div id="ptUserBar" class="user-info-bar" style="display:none;">
+        <img src="{{ site.baseurl }}/apps/pull-tracker/Google_Drive_Logo.png" alt="Google Drive"
+            class="google-drive-logo" style="height:18px;">
+        <span class="user-label" id="ptUserSignedAs">로그인:</span>
+        <span id="ptUserName"></span>
+        <button id="ptLoginBtn" class="auth-btn">로그인</button>
+        <button id="ptLogoutBtn" class="auth-btn" style="display:none;">로그아웃</button>
+        <span id="ptScopeNote" class="scope-note">※ 이 사이트에서 생성한 파일만 읽고 쓸 수 있습니다.</span>
+    </div>
+
+    <section class="card-style" style="padding:16px; position:relative;">
+        <div style="display:flex; flex-direction:column; gap:12px; max-width:860px;">
+            <div class="url-row" style="gap:8px;">
+                <div style="display:flex;gap:8px;align-items:center;flex-wrap: wrap;">
+                    <button id="openGuideBtn" class="url-btn"><span class="help-icon"><svg viewBox="0 0 18 18"
+                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1"
+                                    fill="rgba(255,255,255,0.05)" />
+                                <path
+                                    d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2"
+                                    stroke="currentColor" stroke-width="1.2" stroke-linecap="round"
+                                    stroke-linejoin="round" stroke-opacity="0.3" />
+                            </svg></span><span style="margin-left:6px;">URL 획득방법</span></button>
+                </div>
+                <div style="display:flex;gap:8px;align-items:center;flex-wrap: wrap;">
+                    <input id="sourceUrl" type="url" inputmode="url" placeholder="https://..." class="url-input">
+                    <button id="startBtn" class="url-btn primary">가져오기</button>
+                    <button id="clearBtn" class="url-btn secondary">초기화</button>
+                </div>
+            </div>
+            <!-- DEBUG 전용 예시 적용 -->
+            <div id="debugExamples" style="display:none; align-items:center; gap:8px;">
+                <label for="exampleSelect" style="opacity:.85; font-size:13px;">DEBUG 예시:</label>
+                <select id="exampleSelect" class="url-input" style="flex:0 0 200px; padding:8px 10px; font-size:13px;">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="-mrstasilo">-mrstasilo</option>
+                    <option value="-mrstasilo-twice">-mrstasilo-twice</option>
+                    <option value="-add">-add</option>
+                </select>
+                <button id="applyExampleBtn" class="url-btn">예시 적용</button>
+            </div>
+            <!-- Drive / Import / Export Row -->
+            <div class="url-row" style="gap:8px;">
+                <div style="display:flex;gap:8px;align-items:center;flex-wrap: wrap;">
+                    <button id="driveSaveBtn" class="url-btn secondary"></button>
+                    <button id="driveLoadBtn" class="url-btn secondary"></button>
+                    <button id="exportBtn" class="url-btn secondary"></button>
+                    <button id="importBtn" class="url-btn secondary"></button>
+                    <input id="importFile" type="file" accept="application/json" style="display:none;" />
+                </div>
+            </div>
+            <div id="info" class="url-info"></div>
+            <div id="status" class="url-status"></div>
+            <pre id="result" class="raw-response" style="display:none;"></pre>
+        </div>
+    </section>
+
+    <!-- Overview Cards -->
+    <section class="summary-cards" style="margin-top:16px;">
+        <div id="overview" class="overview-grid"></div>
+    </section>
+    <div class="section-divider"></div>
+
+    <!-- Stats Cards Controls -->
+    <section class="summary-cards" style="margin-top:12px;">
+        <label class="hide4-toggle"><input id="hide4Chk" type="checkbox" style="vertical-align:-2px; margin-right:6px;">
+            <span id="hide4Label">4★ 숨기기</span></label>
+    </section>
+
+    <!-- Stats Cards -->
+    <section class="summary-cards" style="margin-top:8px;">
+        <!--<h2 id="cardsTitle" style="margin:0 0 12px 0;">Stats (Last 90 Days)</h2>-->
+        <div id="cards" class="cards-grid" data-example="{{ site.baseurl }}/apps/pull-tracker/example.json"></div>
+    </section>
+
+    <!-- Help Text -->
+    <section class="summary-cards" style="margin-top:12px;">
+        <div id="ptHelpText" class="help-text"></div>
+    </section>
+
+
+
+    <link rel="stylesheet" href="{{ site.baseurl }}/apps/pull-tracker/pull-tracker.css?v={{ site.time | date: '%s' }}">
+
+    <!-- modal loader removed; using inline spinner near status -->
+    <!-- Google Identity Services & GAPI for Drive API -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://apis.google.com/js/api.js" async defer></script>
+    <script>window.GOOGLE_CLIENT_ID = window.GOOGLE_CLIENT_ID || '42431189158-0quc6ja0qm079r5gt4b6f56m4lqb930e.apps.googleusercontent.com';</script>
+    <script type="module" src="{{ site.baseurl }}/i18n/service/i18n-service.js?v={{ site.time | date: '%s' }}"></script>
+    <script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
+    <script src="{{ site.baseurl }}/apps/pull-tracker/js/i18n-runtime.js?v={{ site.time | date: '%s' }}"></script>
+    <script>
+        window.__pullI18nReady = (async () => {
+            try { if (window.PullTrackerI18n) await window.PullTrackerI18n.init('individual'); } catch (_) { }
+        })();
+    </script>
+    <script src="{{ site.baseurl }}/apps/pull-tracker/js/merge-engine.js?v={{ site.time | date: '%s' }}"></script>
+    <script src="{{ site.baseurl }}/apps/pull-tracker/js/lostlist.js?v={{ site.time | date: '%s' }}"></script>
+    <script src="{{ site.baseurl }}/apps/pull-tracker/js/charts.js?v={{ site.time | date: '%s' }}"></script>
+    <script src="{{ site.baseurl }}/apps/pull-tracker/js/global-stats.js?v={{ site.time | date: '%s' }}"></script>
+    <script src="{{ site.baseurl }}/apps/pull-tracker/js/export.js?v={{ site.time | date: '%s' }}"></script>
+    <script src="{{ site.baseurl }}/apps/pull-tracker/js/import.js?v={{ site.time | date: '%s' }}"></script>
+    <script src="{{ site.baseurl }}/apps/pull-tracker/js/manual-editor.js?v={{ site.time | date: '%s' }}"></script>
+    <script src="{{ site.baseurl }}/apps/pull-tracker/js/record-manager.js?v={{ site.time | date: '%s' }}"></script>
+    <script src="{{ site.baseurl }}/apps/pull-tracker/js/pull-tracker.js?v={{ site.time | date: '%s' }}"></script>
+    <script src="{{ site.baseurl }}/apps/pull-tracker/js/drive-sync.js?v={{ site.time | date: '%s' }}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            try { window.BASE_URL = '{{ site.baseurl }}'; } catch (_) { }
+            try { await (window.__pullI18nReady || Promise.resolve()); } catch (_) { }
+
+            const tr = (key, fallback) => {
+                try {
+                    if (window.PullTrackerI18n && typeof window.PullTrackerI18n.t === 'function') {
+                        return window.PullTrackerI18n.t(key, fallback);
+                    }
+                } catch (_) { }
+                return (fallback !== undefined) ? fallback : key;
+            };
+
+            const setMeta = (selector, attrName, attrValue, content) => {
+                let el = document.querySelector(selector);
+                if (!el) {
+                    el = document.createElement('meta');
+                    el.setAttribute(attrName, attrValue);
+                    document.head.appendChild(el);
+                }
+                el.setAttribute('content', content);
+            };
+
+            const detectPageLang = () => {
+                const pathMatch = window.location.pathname.match(/^\/(kr|en|jp)(\/|$)/i);
+                if (pathMatch) return pathMatch[1].toLowerCase();
+
+                const params = new URLSearchParams(window.location.search || '');
+                const queryLang = String(params.get('lang') || '').toLowerCase();
+                if (['kr', 'en', 'jp'].indexOf(queryLang) !== -1) return queryLang;
+
+                if (typeof getCurrentLang === 'function') {
+                    const helperLang = String(getCurrentLang() || '').toLowerCase();
+                    if (['kr', 'en', 'jp'].indexOf(helperLang) !== -1) return helperLang;
+                }
+
+                if (typeof LanguageRouter !== 'undefined' && typeof LanguageRouter.getCurrentLanguage === 'function') {
+                    const routerLang = String(LanguageRouter.getCurrentLanguage() || '').toLowerCase();
+                    if (['kr', 'en', 'jp'].indexOf(routerLang) !== -1) return routerLang;
+                }
+
+                return 'kr';
+            };
+
+            try {
+                const seoTitle = tr('seo.individual.title', document.title);
+                const descMeta = document.querySelector('meta[name="description"]');
+                const currentDesc = descMeta ? (descMeta.getAttribute('content') || '') : '';
+                const seoDesc = tr('seo.individual.description', currentDesc);
+                const pageLang = detectPageLang();
+                const isPathLang = /^\/(kr|en|jp)(\/|$)/i.test(window.location.pathname);
+                const baseUrl = 'https://lufel.net';
+                const currentUrl = isPathLang ? `${baseUrl}/${pageLang}/pull-tracker/` : `${baseUrl}/pull-tracker/`;
+                const seoLocale = tr('seo.individual.ogLocale', pageLang === 'jp' ? 'ja_JP' : pageLang === 'en' ? 'en_US' : 'ko_KR');
+
+                document.title = seoTitle;
+                setMeta('meta[name="description"]', 'name', 'description', seoDesc);
+                setMeta('meta[property="og:title"]', 'property', 'og:title', seoTitle);
+                setMeta('meta[property="og:description"]', 'property', 'og:description', seoDesc);
+                setMeta('meta[property="og:locale"]', 'property', 'og:locale', seoLocale);
+                setMeta('meta[property="og:url"]', 'property', 'og:url', currentUrl);
+
+                let canonical = document.querySelector('link[rel="canonical"]');
+                if (!canonical) {
+                    canonical = document.createElement('link');
+                    canonical.setAttribute('rel', 'canonical');
+                    document.head.appendChild(canonical);
+                }
+                canonical.setAttribute('href', currentUrl);
+                document.documentElement.setAttribute('lang', pageLang === 'jp' ? 'ja' : pageLang === 'en' ? 'en' : 'ko');
+            } catch (_) { }
+
+            try {
+                const helpEl = document.getElementById('ptHelpText');
+                if (helpEl) helpEl.textContent = tr('individual.info.helpText');
+            } catch (_) { }
+
+            try { if (typeof Navigation !== 'undefined' && Navigation.load) { Navigation.load('pullTracker_individual'); } } catch (_) { }
+            try { if (typeof VersionChecker !== 'undefined' && VersionChecker.check) { VersionChecker.check(); } } catch (_) { }
+            try { if (window.pullTrackerInitAuth) window.pullTrackerInitAuth(); } catch (_) { }
+        });
+    </script>
+
+
+
+    <!-- 광고 -->
+    <!--
+    <div class="ads-container responsive-padding">
+        <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-format="fluid"
+        data-ad-layout-key="-gc+3n+7a-ag-4h"
+        data-ad-client="ca-pub-5862324369257695"
+        data-ad-slot="5373524213"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+        
+    <div id="ad-unit-bottom" class="AD-bottom" style="margin-top: 24px; text-align: center; align-items: center; display: flex; justify-content: center;"> 
+    <ins class="adsbygoogle"
+        style="display:inline-block;width:970px;height:90px"
+        data-ad-client="ca-pub-5862324369257695"
+        data-ad-slot="9244892982"></ins>
+    </div>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <div style="height: 12px;"></div>
+    
+    <style>
+        @media (max-width: 1200px) {
+            .AD-bottom {
+                display: none !important;
+            }
+        }
+        @media (min-width: 1200px) {
+            .ads-container {
+                display: none !important;
+            }
+        }
+        .responsive-padding { margin: 20px 20px 20px 0; padding: 0 0; }
+        @media (max-width: 1200px) { .responsive-padding {margin: 20px 0 0px 0; padding: 0; } }
+    </style>
+    -->
+</div>
+</div>

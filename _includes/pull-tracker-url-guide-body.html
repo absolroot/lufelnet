@@ -1,0 +1,742 @@
+<script>
+(function () {
+  var params = new URLSearchParams(window.location.search || '');
+  var path = String(window.location.pathname || '/');
+  var lowerPath = path.toLowerCase();
+
+  var pathLangMatch = lowerPath.match(/^\/(kr|en|jp)(\/|$)/);
+  var pathLang = pathLangMatch ? pathLangMatch[1] : '';
+  var queryLang = String(params.get('lang') || '').toLowerCase();
+  var effectiveLang = pathLang || (['kr', 'en', 'jp'].indexOf(queryLang) !== -1 ? queryLang : '');
+
+  var isLegacyRoot = /^\/pull-tracker\/url-guide\/?$/.test(lowerPath);
+  var isCanonicalPath = /^\/(kr|en|jp)\/pull-tracker\/url-guide\/?$/.test(lowerPath);
+
+  if (isLegacyRoot && effectiveLang) {
+    window.__SEO_PATH_LANG__ = effectiveLang;
+    params.delete('lang');
+    params.delete('v');
+    var remainingLegacy = params.toString();
+    history.replaceState(null, '', '/' + effectiveLang + '/pull-tracker/url-guide/' + (remainingLegacy ? '?' + remainingLegacy : ''));
+    return;
+  }
+
+  if (isCanonicalPath) {
+    window.__SEO_PATH_LANG__ = pathLang;
+    var before = params.toString();
+    params.delete('lang');
+    params.delete('v');
+    var remainingCanonical = params.toString();
+    if (before !== remainingCanonical) {
+      history.replaceState(null, '', path + (remainingCanonical ? '?' + remainingCanonical : ''));
+    }
+    return;
+  }
+
+  if (isLegacyRoot && params.has('v')) {
+    params.delete('v');
+    var remainingRoot = params.toString();
+    history.replaceState(null, '', '/pull-tracker/url-guide/' + (remainingRoot ? '?' + remainingRoot : ''));
+  }
+})();
+</script>
+{% if page.alternate_urls %}
+{% for alt in page.alternate_urls %}
+<link rel="alternate" hreflang="{{ alt[0] }}" href="{{ site.url }}{{ alt[1] }}" />
+{% endfor %}
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.alternate_urls['ko'] | default: page.alternate_urls.first[1] }}" />
+{% endif %}
+
+<div class="main-wrapper guide-page">
+  <div class="navigation-path">
+    <script>document.write(`<a href="${BASE_URL}/?v=${APP_VERSION}" id="navhome"><span data-lang-key="home">Home</span></a>`);</script>
+    <span class="separator">/</span>
+    <a href="../"><span id="navBack">Pull Tracker</span></a>
+    <span class="separator">/</span>
+    <span class="current-page" id="guideCurrent">URL Guide</span>
+  </div>
+
+  <div class="header-container guide-header">
+    <h1 id="pageTitle">URL Guide</h1>
+  </div>
+
+  <div class="guide-shell">
+    <div class="step-row">
+      <div class="content guide-card" data-step="1">
+        <p class="guide-text" id="s2intro">Windows instructions are currently available.</p>
+      </div>
+    </div>
+
+    <div class="step-row">
+      <div class="content guide-card" data-step="2">
+        <p class="guide-text" id="s1">Check the FAQ first.</p>
+        <button id="openFaq" class="btn-outline" type="button" data-i18n="btnFaq">FAQ</button>
+      </div>
+    </div>
+
+    <div class="step-row">
+      <div class="content guide-card" data-step="3">
+        <p class="guide-text" id="s2">Select your device platform.</p>
+        <div class="pill-row">
+          <button class="pill active" id="osWin" type="button" aria-pressed="true">Windows</button>
+          <button class="pill" id="osIOS" type="button" aria-pressed="false">iOS</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-row" id="methodStep">
+      <div class="content guide-card" data-step="4">
+        <p class="guide-text" id="s3">Select a method.</p>
+        <div class="pill-row" id="methodPills">
+          <button class="pill active" id="m1" type="button" aria-pressed="true">1</button>
+          <button class="pill" id="m2" type="button" aria-pressed="false">2</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="m1block">
+      <div class="step-row">
+        <div class="content guide-card" data-step="5">
+          <p class="guide-text" id="m1s1">Open P5X on your PC.</p>
+        </div>
+      </div>
+
+      <div class="step-row">
+        <div class="content guide-card" data-step="6">
+          <p class="guide-text" id="m1s2">Download and run the helper program.</p>
+          <div class="pill-row">
+            <a class="pill" id="downloadBtn" href="https://github.com/iantCode/P5X_Gacha_Link/releases" target="_blank"
+              rel="noopener noreferrer">Program Download</a>
+            <button class="btn-outline" id="openProgInfo" type="button">About Program</button>
+            <button class="btn-outline" id="openTroubleshoot" type="button">Troubleshooting</button>
+          </div>
+          <a class="guide-link" id="sourceCodeLink" href="https://github.com/iantCode/P5X_Gacha_Link" target="_blank"
+            rel="noopener noreferrer">source code</a>
+        </div>
+      </div>
+
+      <div class="step-row">
+        <div class="content guide-card" data-step="7">
+          <p class="guide-text" id="m1s3">Open your pull history in-game. Some delay is normal.</p>
+        </div>
+      </div>
+
+      <div class="step-row">
+        <div class="content guide-card" data-step="8">
+          <p class="guide-text" id="m1s4">Select your region, run "Try Find URL", then copy the URL.</p>
+          <img src="{{ site.baseurl }}/apps/pull-tracker/program.png" alt="Program Screenshot" class="guide-image">
+        </div>
+      </div>
+
+      <div class="step-row">
+        <div class="content guide-card" data-step="9">
+          <p class="guide-text" id="m1s5">Close the helper program.</p>
+        </div>
+      </div>
+
+      <div class="step-row">
+        <div class="content guide-card" data-step="10">
+          <p class="guide-text" id="m1s6">Paste the copied URL into Pull Tracker.</p>
+          <a class="pill" id="goInput1" href="../">Go Back</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="m2block" style="display: none;">
+      <div class="step-row">
+        <div class="content guide-card" data-step="5">
+          <p class="guide-text" id="m2s1">Follow the external method guide.</p>
+          <a class="pill" href="https://github.com/mpvio/p5xsummons" target="_blank" rel="noopener noreferrer">p5xsummons</a>
+        </div>
+      </div>
+
+      <div class="step-row">
+        <div class="content guide-card" data-step="6">
+          <p class="guide-text" id="m2s2">Paste the copied URL into Pull Tracker.</p>
+          <a class="pill" id="goInput2" href="../">Go Back</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="iosBlock" style="display: none;">
+      <div class="step-row">
+        <div class="content guide-card" data-step="5">
+          <p class="guide-text" id="ios1">Install Stream from the App Store.</p>
+          <a class="pill" id="streamBtn" href="https://apps.apple.com/hk/app/stream/id1312141691" target="_blank"
+            rel="noopener noreferrer">Stream Install Page</a>
+          <div class="pill-row">
+            <a class="pill" id="videoBtn" href="https://www.youtube.com/watch?v=m833g8ZNWVA" target="_blank"
+              rel="noopener noreferrer">Video Help</a>
+            <span id="videoNote" class="guide-muted video-note">(Video UI may differ by version.)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-row">
+        <div class="content guide-card" data-step="6">
+          <p class="guide-text" id="ios2">Tap Sniff Now in Stream and allow VPN/CA setup.</p>
+        </div>
+      </div>
+
+      <div class="step-row">
+        <div class="content guide-card" data-step="7">
+          <p class="guide-text" id="ios3">Open the pull history page in P5X.</p>
+        </div>
+      </div>
+
+      <div class="step-row">
+        <div class="content guide-card" data-step="8">
+          <p class="guide-text multiline" id="ios4">Find the matching request in Sniff History and copy the full URL.
+(KR) nsywl-krcard.wmupd.com
+(CN) nsywl-gfcard.wmupd.com
+(TW) wwwidcweb.p5x.com.tw
+(JP) web.p5xjpupd.com
+(EN) euweb.p5xjpupd.com
+(SEA) web.p5x-sea.com</p>
+        </div>
+      </div>
+
+      <div class="step-row">
+        <div class="content guide-card" data-step="9">
+          <p class="guide-text" id="ios5">Paste the copied URL into Pull Tracker.</p>
+          <a class="pill" id="goInputIOS" href="../">Go Back</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .guide-page .navigation-path,
+  .guide-page .header-container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .guide-shell {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  #m1block,
+  #m2block,
+  #iosBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .step-row {
+    margin: 0;
+  }
+
+  .guide-card {
+    position: relative;
+    background: var(--card-background);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 12px 12px 12px 46px;
+  }
+
+  .guide-card::before {
+    content: attr(data-step);
+    position: absolute;
+    left: 12px;
+    top: 11px;
+    width: 22px;
+    height: 22px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.92);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  .guide-text {
+    color: #f1f1f1;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .guide-muted {
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  .video-note {
+    margin-left: 6px;
+  }
+
+  .multiline {
+    white-space: pre-line;
+  }
+
+  .pill-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+    align-items: center;
+  }
+
+  .pill,
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    min-height: 34px;
+    padding: 7px 11px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.15);
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 13px;
+    line-height: 1;
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+
+  .pill:hover,
+  .btn-outline:hover {
+    background: rgba(0, 0, 0, 0.24);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .pill.active {
+    border-color: #6d4a37;
+    background: rgba(109, 74, 55, 0.26);
+  }
+
+  .pill:focus-visible,
+  .btn-outline:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+  }
+
+  .pill {
+    border-radius: 999px;
+  }
+
+  #methodPills .pill {
+    min-width: 42px;
+    font-weight: 700;
+  }
+
+  .guide-link {
+    display: inline-block;
+    margin-top: 6px;
+    color: #ffb76d;
+    text-decoration: none;
+    font-size: 13px;
+    line-height: 1.2;
+  }
+
+  .guide-link:hover {
+    text-decoration: underline;
+  }
+
+  .guide-image {
+    display: block;
+    width: min(100%, 500px);
+    max-height: 220px;
+    margin-top: 8px;
+    object-fit: contain;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(0, 0, 0, 0.3);
+    padding: 4px;
+  }
+
+  .link {
+    color: #8ab4ff;
+    text-decoration: none;
+  }
+
+  .link:hover {
+    text-decoration: underline;
+  }
+
+  .guide-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 7vh 16px 20px;
+    background: rgba(0, 0, 0, 0.65);
+  }
+
+  .guide-modal {
+    width: min(100%, 800px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: #171717;
+    box-shadow: 0 16px 30px rgba(0, 0, 0, 0.45);
+    padding: 14px 14px 12px;
+  }
+
+  .guide-modal-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  .guide-modal-title {
+    margin: 0;
+    color: #fff;
+    font-size: 18px;
+  }
+
+  .guide-modal-close {
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    padding: 5px 10px;
+    background: rgba(255, 255, 255, 0.04);
+    cursor: pointer;
+  }
+
+  .guide-modal-close:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+
+  .guide-modal-body {
+    color: #ddd;
+    line-height: 1.75;
+    font-size: 14px;
+  }
+
+  .faq-q {
+    margin: 8px 0 4px;
+    color: #ffd4ad;
+  }
+
+  .faq-a {
+    margin-bottom: 8px;
+  }
+
+  @media (max-width: 768px) {
+    .guide-card {
+      padding: 10px 10px 10px 40px;
+    }
+
+    .guide-card::before {
+      left: 10px;
+      top: 10px;
+      width: 20px;
+      height: 20px;
+      font-size: 10px;
+    }
+
+    .pill-row {
+      gap: 6px;
+      margin-top: 7px;
+    }
+
+    .pill,
+    .btn-outline {
+      min-height: 32px;
+      padding: 6px 10px;
+      font-size: 12px;
+    }
+
+    .video-note {
+      margin-left: 0;
+      margin-top: 6px;
+      width: 100%;
+      display: block;
+    }
+  }
+</style>
+
+<script type="module" src="{{ site.baseurl }}/i18n/service/i18n-service.js?v={{ site.time | date: '%s' }}"></script>
+<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/pull-tracker/js/i18n-runtime.js?v={{ site.time | date: '%s' }}"></script>
+<script>
+  window.__pullI18nReady = (async () => {
+    try { if (window.PullTrackerI18n) await window.PullTrackerI18n.init('guide'); } catch (_) { }
+  })();
+
+  document.addEventListener('DOMContentLoaded', async () => {
+    try { window.BASE_URL = '{{ site.baseurl }}'; } catch (_) { }
+    try { if (window.Navigation && typeof Navigation.load === 'function') { Navigation.load('pullTracker'); } } catch (_) { }
+    try { await (window.__pullI18nReady || Promise.resolve()); } catch (_) { }
+
+    const tr = (key, fallback) => {
+      try {
+        if (window.PullTrackerI18n && typeof window.PullTrackerI18n.t === 'function') {
+          return window.PullTrackerI18n.t(key, fallback);
+        }
+      } catch (_) { }
+      return (fallback !== undefined) ? fallback : key;
+    };
+
+    const setMeta = (selector, attrName, attrValue, content) => {
+      let el = document.querySelector(selector);
+      if (!el) {
+        el = document.createElement('meta');
+        el.setAttribute(attrName, attrValue);
+        document.head.appendChild(el);
+      }
+      el.setAttribute('content', content);
+    };
+
+    const setText = (id, value) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = value;
+    };
+
+    const setPressed = (el, isPressed) => {
+      if (el) el.setAttribute('aria-pressed', isPressed ? 'true' : 'false');
+    };
+
+    const escapeHtml = (text) => String(text || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+
+    const linkify = (text) => String(text || '')
+      .replace(/(https?:\/\/[^\s<]+)/g, '<a class="link" href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
+
+    const openModal = ({ title, bodyHtml, maxWidth = '720px', bodyStyle = '' }) => {
+      const overlay = document.createElement('div');
+      overlay.className = 'guide-modal-overlay';
+
+      const modal = document.createElement('div');
+      modal.className = 'guide-modal';
+      modal.style.maxWidth = maxWidth;
+
+      const closeLabel = tr('guide.modal.close', 'Close');
+      modal.innerHTML = `<div class="guide-modal-head"><h3 class="guide-modal-title">${title}</h3><button id="guideModalClose" class="guide-modal-close" type="button">${closeLabel}</button></div><div id="guideModalBody" class="guide-modal-body"></div>`;
+      overlay.appendChild(modal);
+      document.body.appendChild(overlay);
+
+      const close = () => { try { overlay.remove(); } catch (_) { } };
+      overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
+      const closeBtn = modal.querySelector('#guideModalClose');
+      if (closeBtn) closeBtn.addEventListener('click', close);
+      const body = modal.querySelector('#guideModalBody');
+      if (body) {
+        if (bodyStyle) body.style.cssText = bodyStyle;
+        body.innerHTML = bodyHtml;
+      }
+    };
+
+    try {
+      const pathMatch = window.location.pathname.match(/^\/(kr|en|jp)(\/|$)/i);
+      const pageLang = pathMatch ? pathMatch[1].toLowerCase() : 'kr';
+      const isPathLang = /^\/(kr|en|jp)(\/|$)/i.test(window.location.pathname);
+      const baseUrl = 'https://lufel.net';
+      const currentUrl = isPathLang ? `${baseUrl}/${pageLang}/pull-tracker/url-guide/` : `${baseUrl}/pull-tracker/url-guide/`;
+
+      const seoTitle = tr('seo.guide.title', document.title);
+      const descMeta = document.querySelector('meta[name="description"]');
+      const currentDesc = descMeta ? (descMeta.getAttribute('content') || '') : '';
+      const seoDesc = tr('seo.guide.description', currentDesc);
+      const seoLocale = tr('seo.guide.ogLocale', pageLang === 'jp' ? 'ja_JP' : pageLang === 'en' ? 'en_US' : 'ko_KR');
+
+      document.title = seoTitle;
+      setMeta('meta[name="description"]', 'name', 'description', seoDesc);
+      setMeta('meta[property="og:title"]', 'property', 'og:title', seoTitle);
+      setMeta('meta[property="og:description"]', 'property', 'og:description', seoDesc);
+      setMeta('meta[property="og:locale"]', 'property', 'og:locale', seoLocale);
+      setMeta('meta[property="og:url"]', 'property', 'og:url', currentUrl);
+
+      let canonical = document.querySelector('link[rel="canonical"]');
+      if (!canonical) {
+        canonical = document.createElement('link');
+        canonical.setAttribute('rel', 'canonical');
+        document.head.appendChild(canonical);
+      }
+      canonical.setAttribute('href', currentUrl);
+      document.documentElement.setAttribute('lang', pageLang === 'jp' ? 'ja' : pageLang === 'en' ? 'en' : 'ko');
+    } catch (_) { }
+
+    try {
+      setText('navhome', tr('guide.nav.home', 'Home'));
+      setText('navBack', tr('guide.nav.back', 'Pull Tracker'));
+      setText('guideCurrent', tr('guide.nav.current', 'URL Guide'));
+      setText('pageTitle', tr('guide.pageTitle', 'URL Guide'));
+      setText('s2intro', tr('guide.introWindows'));
+      setText('s1', tr('guide.s1'));
+      setText('s2', tr('guide.s2'));
+      setText('s3', tr('guide.s3'));
+      setText('m1s1', tr('guide.m1s1'));
+      setText('m1s2', tr('guide.m1s2'));
+      setText('m1s3', tr('guide.m1s3'));
+      setText('m1s4', tr('guide.m1s4'));
+      setText('m1s5', tr('guide.m1s5'));
+      setText('m1s6', tr('guide.m1s6'));
+      setText('m2s1', tr('guide.m2s1'));
+      setText('m2s2', tr('guide.m2s2'));
+      setText('ios1', tr('guide.ios1'));
+      setText('ios2', tr('guide.ios2'));
+      setText('ios3', tr('guide.ios3'));
+      setText('ios4', tr('guide.ios4'));
+      setText('ios5', tr('guide.ios5'));
+      setText('openFaq', tr('guide.modal.faqTitle', 'FAQ'));
+      setText('downloadBtn', tr('guide.downloadLabel', 'Program Link'));
+      setText('sourceCodeLink', tr('guide.sourceCode', 'source code'));
+      setText('openProgInfo', tr('guide.programTitle', 'About the Program'));
+      setText('openTroubleshoot', tr('guide.troubleshootButton', 'Troubleshooting'));
+      setText('osWin', tr('guide.os.win', 'Windows'));
+      setText('osIOS', tr('guide.os.ios', 'iOS'));
+      setText('videoBtn', tr('guide.videoLabel', 'Video Help'));
+      setText('videoNote', tr('guide.videoNote'));
+      setText('streamBtn', tr('guide.streamOpen', 'Open Stream Install Page'));
+      setText('goInput1', tr('guide.goBack', 'Go Back'));
+      setText('goInput2', tr('guide.goBack', 'Go Back'));
+      setText('goInputIOS', tr('guide.goBack', 'Go Back'));
+    } catch (_) { }
+
+    const faqBtn = document.getElementById('openFaq');
+    if (faqBtn) {
+      faqBtn.addEventListener('click', () => {
+        const raw = tr('guide.faq.text1');
+        const html = linkify(escapeHtml(raw))
+          .split('\n')
+          .map((line) => {
+            const l = line.trim();
+            if (/^Q[.:\s]/i.test(l)) return `<div class="faq-q"><strong>${l}</strong></div>`;
+            return `<div class="faq-a">${l}</div>`;
+          })
+          .join('');
+        openModal({
+          title: tr('guide.modal.faqTitle', 'FAQ'),
+          bodyHtml: html,
+          maxWidth: '720px',
+          bodyStyle: 'line-height:1.9'
+        });
+      });
+    }
+
+    const progBtn = document.getElementById('openProgInfo');
+    if (progBtn) {
+      progBtn.addEventListener('click', () => {
+        const raw = tr('guide.faq.text2');
+        const html = linkify(escapeHtml(raw)).replace(/\n/g, '<br>');
+        openModal({
+          title: tr('guide.modal.programTitle', 'About the Program'),
+          bodyHtml: html,
+          maxWidth: '720px',
+          bodyStyle: 'white-space:pre-line'
+        });
+      });
+    }
+
+    const tsBtn = document.getElementById('openTroubleshoot');
+    if (tsBtn) {
+      tsBtn.addEventListener('click', () => {
+        const raw = tr('guide.troubleshoot.body');
+        const html = linkify(escapeHtml(raw))
+          .replace(/(C:\\Windows\\System32\\drivers\\etc\\hosts)/g, '<span style="color:#ffcc88">$1</span>')
+          .replace(/(127\.0\.0\.1[\s\S]*web\.p5x-sea\.com)/, '<pre style="background:#0f0d0b;border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:8px;white-space:pre-line">$1</pre>');
+        openModal({
+          title: tr('guide.troubleshoot.title', tr('guide.modal.troubleshootTitle', 'Troubleshooting')),
+          bodyHtml: html,
+          maxWidth: '800px',
+          bodyStyle: 'white-space:pre-line'
+        });
+      });
+    }
+
+    const copyBtn = document.getElementById('copyScript');
+    const pre = document.getElementById('psScript');
+    if (copyBtn && pre) {
+      copyBtn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(pre.textContent || '');
+          copyBtn.style.opacity = '0.7';
+          setTimeout(() => { copyBtn.style.opacity = '1'; }, 500);
+        } catch (_) { }
+      });
+    }
+
+    const b1 = document.getElementById('m1');
+    const b2 = document.getElementById('m2');
+    const blk1 = document.getElementById('m1block');
+    const blk2 = document.getElementById('m2block');
+    const blkIOS = document.getElementById('iosBlock');
+    const osWin = document.getElementById('osWin');
+    const osIOS = document.getElementById('osIOS');
+
+    function setTab(which) {
+      try {
+        [b1, b2].forEach((b) => { if (b) b.classList.remove('active'); });
+        if (which === 1) {
+          if (b1) b1.classList.add('active');
+          if (blk1) blk1.style.display = '';
+          if (blk2) blk2.style.display = 'none';
+        } else {
+          if (b2) b2.classList.add('active');
+          if (blk1) blk1.style.display = 'none';
+          if (blk2) blk2.style.display = '';
+        }
+        setPressed(b1, which === 1);
+        setPressed(b2, which === 2);
+      } catch (_) { }
+    }
+
+    function setOSTab(which) {
+      try {
+        [osWin, osIOS].forEach((b) => { if (b) b.classList.remove('active'); });
+        const method = document.getElementById('methodPills');
+        const methodStep = document.getElementById('methodStep');
+        if (which === 'win') {
+          if (osWin) osWin.classList.add('active');
+          if (method) method.style.display = '';
+          if (methodStep) methodStep.style.display = '';
+          const steps = [5, 6, 7, 8, 9];
+          ['ios1', 'ios2', 'ios3', 'ios4', 'ios5'].forEach((id, idx) => {
+            const el = document.getElementById(id);
+            if (el) {
+              const card = el.closest('.content');
+              if (card) card.setAttribute('data-step', String(steps[idx]));
+            }
+          });
+          const showMethod2 = !!(b2 && b2.classList.contains('active'));
+          if (blk1) blk1.style.display = showMethod2 ? 'none' : '';
+          if (blk2) blk2.style.display = showMethod2 ? '' : 'none';
+          if (blkIOS) blkIOS.style.display = 'none';
+        } else {
+          if (osIOS) osIOS.classList.add('active');
+          if (method) method.style.display = 'none';
+          if (methodStep) methodStep.style.display = 'none';
+          const steps = [4, 5, 6, 7, 8];
+          ['ios1', 'ios2', 'ios3', 'ios4', 'ios5'].forEach((id, idx) => {
+            const el = document.getElementById(id);
+            if (el) {
+              const card = el.closest('.content');
+              if (card) card.setAttribute('data-step', String(steps[idx]));
+            }
+          });
+          if (blk1) blk1.style.display = 'none';
+          if (blk2) blk2.style.display = 'none';
+          if (blkIOS) blkIOS.style.display = '';
+        }
+        setPressed(osWin, which === 'win');
+        setPressed(osIOS, which === 'ios');
+      } catch (_) { }
+    }
+
+    if (b1) b1.addEventListener('click', () => setTab(1));
+    if (b2) b2.addEventListener('click', () => setTab(2));
+    if (osWin) osWin.addEventListener('click', () => setOSTab('win'));
+    if (osIOS) osIOS.addEventListener('click', () => setOSTab('ios'));
+    setOSTab('win');
+    setTab(1);
+  });
+</script>

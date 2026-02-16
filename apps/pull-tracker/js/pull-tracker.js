@@ -143,7 +143,8 @@
             if (gbtn) {
                 gbtn.addEventListener('click', () => {
                     const base = (typeof window.BASE_URL !== 'undefined') ? window.BASE_URL : '';
-                    location.href = `${base}/pull-tracker/url-guide/?lang=${lang}`;
+                    const targetLang = ['kr', 'en', 'jp'].includes(lang) ? lang : 'kr';
+                    location.href = `${base}/${targetLang}/pull-tracker/url-guide/`;
                 });
             }
             const box = document.getElementById('debugExamples');

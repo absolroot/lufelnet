@@ -129,9 +129,9 @@ sitemap:
     <lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ko" href="{{ site.url }}/pull-tracker/global-stats/?lang=kr" />
-    <xhtml:link rel="alternate" hreflang="en" href="{{ site.url }}/pull-tracker/global-stats/?lang=en" />
-    <xhtml:link rel="alternate" hreflang="ja" href="{{ site.url }}/pull-tracker/global-stats/?lang=jp" />
+    <xhtml:link rel="alternate" hreflang="ko" href="{{ site.url }}/kr/pull-tracker/global-stats/" />
+    <xhtml:link rel="alternate" hreflang="en" href="{{ site.url }}/en/pull-tracker/global-stats/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="{{ site.url }}/jp/pull-tracker/global-stats/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}/pull-tracker/global-stats/" />
   </url>
 

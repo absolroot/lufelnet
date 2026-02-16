@@ -1,0 +1,240 @@
+<script>
+(function () {
+  var params = new URLSearchParams(window.location.search || '');
+  var path = String(window.location.pathname || '/');
+  var lowerPath = path.toLowerCase();
+
+  var pathLangMatch = lowerPath.match(/^\/(kr|en|jp)(\/|$)/);
+  var pathLang = pathLangMatch ? pathLangMatch[1] : '';
+  var queryLang = String(params.get('lang') || '').toLowerCase();
+  var effectiveLang = pathLang || (['kr', 'en', 'jp'].indexOf(queryLang) !== -1 ? queryLang : '');
+
+  var isLegacyRoot = /^\/pull-tracker\/global-stats\/?$/.test(lowerPath);
+  var isCanonicalPath = /^\/(kr|en|jp)\/pull-tracker\/global-stats\/?$/.test(lowerPath);
+
+  if (isLegacyRoot && effectiveLang) {
+    window.__SEO_PATH_LANG__ = effectiveLang;
+    params.delete('lang');
+    params.delete('v');
+    var remainingLegacy = params.toString();
+    history.replaceState(null, '', '/' + effectiveLang + '/pull-tracker/global-stats/' + (remainingLegacy ? '?' + remainingLegacy : ''));
+    return;
+  }
+
+  if (isCanonicalPath) {
+    window.__SEO_PATH_LANG__ = pathLang;
+    var before = params.toString();
+    params.delete('lang');
+    params.delete('v');
+    var remainingCanonical = params.toString();
+    if (before !== remainingCanonical) {
+      history.replaceState(null, '', path + (remainingCanonical ? '?' + remainingCanonical : ''));
+    }
+    return;
+  }
+
+  if (isLegacyRoot && params.has('v')) {
+    params.delete('v');
+    var remainingRoot = params.toString();
+    history.replaceState(null, '', '/pull-tracker/global-stats/' + (remainingRoot ? '?' + remainingRoot : ''));
+  }
+})();
+</script>
+{% if page.alternate_urls %}
+{% for alt in page.alternate_urls %}
+<link rel="alternate" hreflang="{{ alt[0] }}" href="{{ site.url }}{{ alt[1] }}" />
+{% endfor %}
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.alternate_urls['ko'] | default: page.alternate_urls.first[1] }}" />
+{% endif %}
+
+<link rel="stylesheet" href="{{ site.baseurl }}/apps/pull-tracker/pull-tracker.css?v={{ site.time | date: '%s' }}">
+
+<div class="main-wrapper">
+  <div class="navigation-path">
+    <script>document.write(`<a href="${BASE_URL}/?v=${APP_VERSION}"><span data-lang-key="home" id="navhome">홈</span></a>`);</script>
+    <span class="separator">/</span>
+    <span class="current-page" id="navCurrent">Global Stats</span>
+  </div>
+
+  <div class="header-container">
+    <div style="display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
+      <h1 id="pageTitle">Global Stats</h1>
+      <select id="globalRegion" class="url-input" style="flex:0 0 140px; padding:8px 10px; font-size:13px;">
+        <option value="EN">EN</option>
+        <option value="JP">JP</option>
+        <option value="SEA">SEA</option>
+        <option value="KR">KR</option>
+        <option value="CN">CN</option>
+        <option value="TW">TW</option>
+      </select>
+    </div>
+  </div>
+
+  <section class="summary-cards" style="margin-top:8px;">
+    <div class="global-header">
+      <span id="globalStatsNote" class="global-note"></span>
+      <span id="gsStatus" style="opacity:.75; font-size:12px;"></span>
+    </div>
+  </section>
+
+  <!-- Overview + Info cards + Chart 
+       (moved from index, driven by global-stats.js) -->
+  <section class="summary-cards" style="margin-top:10px;">
+    <div id="globalInfoCards" class="info-cards-grid"></div>
+  </section>
+  <div class="card-style chart-card">
+    <canvas id="globalDailyChart" class="overview-chart" style="height:180px;margin-top:0px;"></canvas>
+  </div>
+  <!-- Pity distribution chart -->
+  <div class="card-style chart-card">
+    <div id="pityTabs" class="gs-tabs" style="margin-bottom:16px;"></div>
+    <canvas id="pityChart" class="overview-chart" style="height:220px;margin-top:0px;"></canvas>
+  </div>
+  <section class="summary-cards" style="margin-top:10px;">
+    <div id="globalCards" class="global-cards"></div>
+  </section>
+  <div class="section-divider"></div>
+  <!-- 3-column lists -->
+  <section class="summary-cards" style="margin-top:10px;">
+    <div id="gsTabs" class="gs-tabs"></div>
+    <div id="gsCards" class="gs-lists"></div>
+  </section>
+
+  <!-- 광고 -->
+  <!--
+<div class="ads-container responsive-padding">
+    <ins class="adsbygoogle"
+    style="display:block"
+    data-ad-format="fluid"
+    data-ad-layout-key="-gc+3n+7a-ag-4h"
+    data-ad-client="ca-pub-5862324369257695"
+    data-ad-slot="5373524213"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+    
+<div id="ad-unit-bottom" class="AD-bottom" style="margin-top: 48px; text-align: center; align-items: center; display: flex; justify-content: center;"> 
+<ins class="adsbygoogle"
+    style="display:inline-block;width:970px;height:90px"
+    data-ad-client="ca-pub-5862324369257695"
+    data-ad-slot="9244892982"></ins>
+</div>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<div style="height: 12px;"></div>
+
+<style>
+    @media (max-width: 1200px) {
+        .AD-bottom {
+            display: none !important;
+        }
+    }
+    @media (min-width: 1200px) {
+        .ads-container {
+            display: none !important;
+        }
+    }
+    .responsive-padding { margin: 20px 20px 20px 0; padding: 0 0; }
+    @media (max-width: 1200px) { .responsive-padding {margin: 20px 0 0px 0; padding: 0; } }
+</style>
+-->
+</div>
+
+
+<script type="module" src="{{ site.baseurl }}/i18n/service/i18n-service.js?v={{ site.time | date: '%s' }}"></script>
+<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/pull-tracker/js/i18n-runtime.js?v={{ site.time | date: '%s' }}"></script>
+<script>
+  window.__pullI18nReady = (async () => {
+    try { if (window.PullTrackerI18n) await window.PullTrackerI18n.init('global'); } catch (_) { }
+  })();
+
+  (async function () {
+    try { await (window.__pullI18nReady || Promise.resolve()); } catch (_) { }
+
+    const tr = (key, fallback) => {
+      try {
+        if (window.PullTrackerI18n && typeof window.PullTrackerI18n.t === 'function') {
+          return window.PullTrackerI18n.t(key, fallback);
+        }
+      } catch (_) { }
+      return (fallback !== undefined) ? fallback : key;
+    };
+
+    const setMeta = (selector, attrName, attrValue, content) => {
+      let el = document.querySelector(selector);
+      if (!el) {
+        el = document.createElement('meta');
+        el.setAttribute(attrName, attrValue);
+        document.head.appendChild(el);
+      }
+      el.setAttribute('content', content);
+    };
+
+    const detectPageLang = () => {
+      const pathMatch = window.location.pathname.match(/^\/(kr|en|jp)(\/|$)/i);
+      if (pathMatch) return pathMatch[1].toLowerCase();
+
+      const params = new URLSearchParams(window.location.search || '');
+      const queryLang = String(params.get('lang') || '').toLowerCase();
+      if (['kr', 'en', 'jp'].indexOf(queryLang) !== -1) return queryLang;
+
+      if (typeof getCurrentLang === 'function') {
+        const helperLang = String(getCurrentLang() || '').toLowerCase();
+        if (['kr', 'en', 'jp'].indexOf(helperLang) !== -1) return helperLang;
+      }
+
+      if (typeof LanguageRouter !== 'undefined' && typeof LanguageRouter.getCurrentLanguage === 'function') {
+        const routerLang = String(LanguageRouter.getCurrentLanguage() || '').toLowerCase();
+        if (['kr', 'en', 'jp'].indexOf(routerLang) !== -1) return routerLang;
+      }
+
+      return 'kr';
+    };
+
+    try {
+      const seoTitle = tr('seo.global.title', document.title);
+      const descMeta = document.querySelector('meta[name="description"]');
+      const currentDesc = descMeta ? (descMeta.getAttribute('content') || '') : '';
+      const seoDesc = tr('seo.global.description', currentDesc);
+      const pageLang = detectPageLang();
+      const isPathLang = /^\/(kr|en|jp)(\/|$)/i.test(window.location.pathname);
+      const baseUrl = 'https://lufel.net';
+      const currentUrl = isPathLang ? `${baseUrl}/${pageLang}/pull-tracker/global-stats/` : `${baseUrl}/pull-tracker/global-stats/`;
+      const seoLocale = tr('seo.global.ogLocale', pageLang === 'jp' ? 'ja_JP' : pageLang === 'en' ? 'en_US' : 'ko_KR');
+      document.title = seoTitle;
+      setMeta('meta[name="description"]', 'name', 'description', seoDesc);
+      setMeta('meta[property="og:title"]', 'property', 'og:title', seoTitle);
+      setMeta('meta[property="og:description"]', 'property', 'og:description', seoDesc);
+      setMeta('meta[property="og:locale"]', 'property', 'og:locale', seoLocale);
+      setMeta('meta[property="og:url"]', 'property', 'og:url', currentUrl);
+
+      let canonical = document.querySelector('link[rel="canonical"]');
+      if (!canonical) {
+        canonical = document.createElement('link');
+        canonical.setAttribute('rel', 'canonical');
+        document.head.appendChild(canonical);
+      }
+      canonical.setAttribute('href', currentUrl);
+      document.documentElement.setAttribute('lang', pageLang === 'jp' ? 'ja' : pageLang === 'en' ? 'en' : 'ko');
+    } catch (_) { }
+
+    try {
+      const pageTitle = tr('global.pageTitle', 'Global Stats');
+      const titleEl = document.getElementById('pageTitle');
+      if (titleEl) titleEl.textContent = pageTitle;
+      const navCur = document.getElementById('navCurrent');
+      if (navCur) navCur.textContent = pageTitle;
+    } catch (_) { }
+  })();
+</script>
+
+<script src="{{ site.baseurl }}/data/character_info.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/pull-tracker/js/lostlist.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/pull-tracker/js/global-stats.js?v={{ site.time | date: '%s' }}"></script>
+<script>
+  // Initialize navigation (guarded)
+  try { if (typeof Navigation !== 'undefined' && Navigation.load) { Navigation.load('pullTracker_global'); } } catch (_) { }
+  try { if (typeof VersionChecker !== 'undefined' && VersionChecker.check) { VersionChecker.check(); } } catch (_) { }
+</script>
+</div>

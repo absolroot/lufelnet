@@ -737,14 +737,19 @@ async function initializePageContent() {
         setMeta('meta[property="og:description"]', desc);
         setMeta('meta[name="twitter:description"]', desc);
 
-        // Canonical URL (optional, good for SEO if strictly using query params)
-        // Update canonical to include ?name=...
+        // Canonical URL update
         const linkCanonical = document.querySelector('link[rel="canonical"]');
         if (linkCanonical) {
-            const baseUrl = window.SITE_BASEURL || window.location.origin + window.location.pathname;
-            // Clean base url (remove index.html if present)
-            const cleanBase = baseUrl.replace('index.html', '');
-            linkCanonical.href = `${cleanBase}?name=${encodeURIComponent(originalName)}`;
+            const slugMap = window.__PERSONA_SLUG_MAP;
+            const pathMatch = window.location.pathname.match(/^\/(kr|en|jp)\/persona\//);
+            if (slugMap && slugMap[originalName] && pathMatch) {
+                var lang = pathMatch[1];
+                linkCanonical.href = window.location.origin + '/' + lang + '/persona/' + slugMap[originalName].slug + '/';
+            } else {
+                const baseUrl = window.SITE_BASEURL || window.location.origin + window.location.pathname;
+                const cleanBase = baseUrl.replace('index.html', '');
+                linkCanonical.href = `${cleanBase}?name=${encodeURIComponent(originalName)}`;
+            }
         }
     }
 
@@ -770,12 +775,22 @@ async function initializePageContent() {
 
                     // 3. Update URL (SEO / Deep Linking)
                     const targetName = container.dataset.name;
-                    const url = new URL(window.location);
-                    if (url.searchParams.get('name') !== targetName) {
-                        url.searchParams.set('name', targetName);
-                        // Delete legacy param if exists
-                        url.searchParams.delete('persona');
-                        window.history.pushState({ name: targetName }, '', url);
+                    const slugMap = window.__PERSONA_SLUG_MAP;
+                    const pathMatch = window.location.pathname.match(/^\/(kr|en|jp)\/persona\//);
+                    if (slugMap && slugMap[targetName] && pathMatch) {
+                        var lang = pathMatch[1];
+                        var newPath = '/' + lang + '/persona/' + slugMap[targetName].slug + '/';
+                        if (window.location.pathname !== newPath) {
+                            window.history.pushState({ name: targetName }, '', newPath);
+                        }
+                    } else {
+                        const url = new URL(window.location);
+                        if (url.searchParams.get('name') !== targetName) {
+                            url.searchParams.set('name', targetName);
+                            // Delete legacy param if exists
+                            url.searchParams.delete('persona');
+                            window.history.pushState({ name: targetName }, '', url);
+                        }
                     }
                 };
             });

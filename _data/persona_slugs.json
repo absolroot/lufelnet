@@ -1,0 +1,614 @@
+{
+  "가네샤": {
+    "slug": "ganesha",
+    "aliases": []
+  },
+  "가루다": {
+    "slug": "garuda",
+    "aliases": []
+  },
+  "광목천": {
+    "slug": "koumokuten",
+    "aliases": []
+  },
+  "기리메칼라": {
+    "slug": "girimehkala",
+    "aliases": []
+  },
+  "나가": {
+    "slug": "naga",
+    "aliases": []
+  },
+  "나가라자": {
+    "slug": "raja-naga",
+    "aliases": []
+  },
+  "나르키소스": {
+    "slug": "narcissus",
+    "aliases": []
+  },
+  "네비로스": {
+    "slug": "nebiros",
+    "aliases": []
+  },
+  "네코마타": {
+    "slug": "nekomata",
+    "aliases": []
+  },
+  "네코쇼군": {
+    "slug": "neko-shogun",
+    "aliases": []
+  },
+  "년수": {
+    "slug": "nian",
+    "aliases": []
+  },
+  "노른": {
+    "slug": "norn",
+    "aliases": []
+  },
+  "누에": {
+    "slug": "nue",
+    "aliases": []
+  },
+  "니기미타마": {
+    "slug": "nigi-mitama",
+    "aliases": []
+  },
+  "다키니": {
+    "slug": "dakini",
+    "aliases": []
+  },
+  "대승정": {
+    "slug": "daisoujou",
+    "aliases": []
+  },
+  "데카라비아": {
+    "slug": "decarabia",
+    "aliases": []
+  },
+  "도미니온": {
+    "slug": "dominion",
+    "aliases": []
+  },
+  "디오니소스": {
+    "slug": "dionysus",
+    "aliases": []
+  },
+  "라미아": {
+    "slug": "lamia",
+    "aliases": []
+  },
+  "라케시스": {
+    "slug": "lachesis",
+    "aliases": []
+  },
+  "락샤사": {
+    "slug": "rakshasa",
+    "aliases": []
+  },
+  "락슈미": {
+    "slug": "lakshmi",
+    "aliases": []
+  },
+  "랑다": {
+    "slug": "rangda",
+    "aliases": []
+  },
+  "랴난시": {
+    "slug": "leanan-sidhe",
+    "aliases": []
+  },
+  "레드 라이더": {
+    "slug": "red-rider",
+    "aliases": []
+  },
+  "릴리스": {
+    "slug": "lilith",
+    "aliases": []
+  },
+  "릴림": {
+    "slug": "lilim",
+    "aliases": []
+  },
+  "마카미": {
+    "slug": "makami",
+    "aliases": []
+  },
+  "마카브르": {
+    "slug": "macabre",
+    "aliases": []
+  },
+  "마타도르": {
+    "slug": "matador",
+    "aliases": []
+  },
+  "맨드레이크": {
+    "slug": "mandrake",
+    "aliases": []
+  },
+  "멜키세덱": {
+    "slug": "melchizedek",
+    "aliases": []
+  },
+  "모스맨": {
+    "slug": "mothman",
+    "aliases": []
+  },
+  "모코이": {
+    "slug": "mokoi",
+    "aliases": []
+  },
+  "몰록": {
+    "slug": "moloch",
+    "aliases": []
+  },
+  "미트라": {
+    "slug": "mitra",
+    "aliases": []
+  },
+  "미트라스": {
+    "slug": "mithras",
+    "aliases": []
+  },
+  "바롱": {
+    "slug": "barong",
+    "aliases": []
+  },
+  "바스키": {
+    "slug": "vasuki",
+    "aliases": []
+  },
+  "바이콘": {
+    "slug": "bicorn",
+    "aliases": []
+  },
+  "바포멧": {
+    "slug": "baphomet",
+    "aliases": []
+  },
+  "발키리": {
+    "slug": "valkyrie",
+    "aliases": []
+  },
+  "백호": {
+    "slug": "byakko",
+    "aliases": []
+  },
+  "벅스": {
+    "slug": "bugs",
+    "aliases": []
+  },
+  "베리스": {
+    "slug": "berith",
+    "aliases": []
+  },
+  "벨리알": {
+    "slug": "belial",
+    "aliases": []
+  },
+  "벨페고르": {
+    "slug": "belphegor",
+    "aliases": []
+  },
+  "봉황": {
+    "slug": "phoenix",
+    "aliases": []
+  },
+  "블랙 라이더": {
+    "slug": "black-rider",
+    "aliases": []
+  },
+  "블랙 우즈": {
+    "slug": "black-ooze",
+    "aliases": []
+  },
+  "비사문천": {
+    "slug": "bishamonten",
+    "aliases": []
+  },
+  "비슈누": {
+    "slug": "vishnu",
+    "aliases": []
+  },
+  "사라스바티": {
+    "slug": "sarasvati",
+    "aliases": []
+  },
+  "사악한 프로스트": {
+    "slug": "black-frost",
+    "aliases": []
+  },
+  "사키미타마": {
+    "slug": "saki-mitama",
+    "aliases": []
+  },
+  "사히모치노카미": {
+    "slug": "sahimochi-no-kami",
+    "aliases": []
+  },
+  "산달폰": {
+    "slug": "sandalphon",
+    "aliases": []
+  },
+  "샌드맨": {
+    "slug": "sandman",
+    "aliases": []
+  },
+  "서큐버스": {
+    "slug": "succubus",
+    "aliases": []
+  },
+  "세탄타": {
+    "slug": "setanta",
+    "aliases": []
+  },
+  "세트": {
+    "slug": "seth",
+    "aliases": []
+  },
+  "수르트": {
+    "slug": "surt",
+    "aliases": []
+  },
+  "스다마": {
+    "slug": "sudama",
+    "aliases": []
+  },
+  "스라오샤": {
+    "slug": "sraosha",
+    "aliases": []
+  },
+  "스이키": {
+    "slug": "sui-ki",
+    "aliases": []
+  },
+  "스카디": {
+    "slug": "skadi",
+    "aliases": []
+  },
+  "스카아하": {
+    "slug": "scathach",
+    "aliases": []
+  },
+  "슬라임": {
+    "slug": "slime",
+    "aliases": []
+  },
+  "시바": {
+    "slug": "shiva",
+    "aliases": []
+  },
+  "시사": {
+    "slug": "shiisaa",
+    "aliases": []
+  },
+  "시키오우지": {
+    "slug": "shiki-ouji",
+    "aliases": []
+  },
+  "실키": {
+    "slug": "silky",
+    "aliases": []
+  },
+  "아가시온": {
+    "slug": "agathion",
+    "aliases": []
+  },
+  "아누비스": {
+    "slug": "anubis",
+    "aliases": []
+  },
+  "아라미타마": {
+    "slug": "ara-mitama",
+    "aliases": []
+  },
+  "아라하바키": {
+    "slug": "arahabaki",
+    "aliases": []
+  },
+  "아메노우즈메": {
+    "slug": "ame-no-uzume",
+    "aliases": []
+  },
+  "아크엔젤": {
+    "slug": "archangel",
+    "aliases": []
+  },
+  "아트로포스": {
+    "slug": "atropos",
+    "aliases": []
+  },
+  "아프사라스": {
+    "slug": "apsaras",
+    "aliases": []
+  },
+  "안드라스": {
+    "slug": "andras",
+    "aliases": []
+  },
+  "안즈": {
+    "slug": "anzu",
+    "aliases": []
+  },
+  "앨리스": {
+    "slug": "alice",
+    "aliases": []
+  },
+  "야노식": {
+    "slug": "janosik",
+    "aliases": []
+  },
+  "야마타노오로치": {
+    "slug": "yamata-no-orochi",
+    "aliases": []
+  },
+  "야크시니": {
+    "slug": "yaksini",
+    "aliases": []
+  },
+  "야타가라스": {
+    "slug": "yatagarasu",
+    "aliases": []
+  },
+  "엔젤": {
+    "slug": "angel",
+    "aliases": []
+  },
+  "엘리고르": {
+    "slug": "eligor",
+    "aliases": []
+  },
+  "오니": {
+    "slug": "oni",
+    "aliases": []
+  },
+  "오로바스": {
+    "slug": "orobas",
+    "aliases": []
+  },
+  "오르트로스": {
+    "slug": "orthrus",
+    "aliases": []
+  },
+  "오바리욘": {
+    "slug": "obariyon",
+    "aliases": []
+  },
+  "오베론": {
+    "slug": "oberon",
+    "aliases": []
+  },
+  "오세": {
+    "slug": "ose",
+    "aliases": []
+  },
+  "오오쿠니누시": {
+    "slug": "okuninushi",
+    "aliases": []
+  },
+  "온모라키": {
+    "slug": "onmoraki",
+    "aliases": []
+  },
+  "요시츠네": {
+    "slug": "yoshitsune",
+    "aliases": []
+  },
+  "유니콘": {
+    "slug": "unicorn",
+    "aliases": []
+  },
+  "유룽": {
+    "slug": "yurlungur",
+    "aliases": []
+  },
+  "이누가미": {
+    "slug": "inugami",
+    "aliases": []
+  },
+  "이시스": {
+    "slug": "isis",
+    "aliases": []
+  },
+  "인큐버스": {
+    "slug": "incubus",
+    "aliases": []
+  },
+  "잇폰다타라": {
+    "slug": "ippon-datara",
+    "aliases": []
+  },
+  "자오우곤겐": {
+    "slug": "zaou-gongen",
+    "aliases": []
+  },
+  "자타유": {
+    "slug": "jatayu",
+    "aliases": []
+  },
+  "잭 오 랜턴": {
+    "slug": "jack-o-lantern",
+    "aliases": []
+  },
+  "잭 프로스트": {
+    "slug": "jack-frost",
+    "aliases": []
+  },
+  "주작": {
+    "slug": "suzaku",
+    "aliases": []
+  },
+  "증장천": {
+    "slug": "zouchouten",
+    "aliases": []
+  },
+  "지국천": {
+    "slug": "jikokuten",
+    "aliases": []
+  },
+  "지크프리트": {
+    "slug": "siegfried",
+    "aliases": []
+  },
+  "청룡": {
+    "slug": "seiryu",
+    "aliases": []
+  },
+  "체르노보그": {
+    "slug": "chernobog",
+    "aliases": []
+  },
+  "케르베로스": {
+    "slug": "cerberus",
+    "aliases": []
+  },
+  "케완": {
+    "slug": "kaiwan",
+    "aliases": []
+  },
+  "케찰코아틀": {
+    "slug": "quetzalcoatl",
+    "aliases": []
+  },
+  "켈피": {
+    "slug": "kelpie",
+    "aliases": []
+  },
+  "코다마": {
+    "slug": "kodama",
+    "aliases": []
+  },
+  "코로포클": {
+    "slug": "koropokguru",
+    "aliases": []
+  },
+  "콧파텐구": {
+    "slug": "koppa-tengu",
+    "aliases": []
+  },
+  "쿠 훌린": {
+    "slug": "cu-chulainn",
+    "aliases": []
+  },
+  "쿠반다": {
+    "slug": "kumbhanda",
+    "aliases": []
+  },
+  "쿠시나다히메": {
+    "slug": "kushinada",
+    "aliases": []
+  },
+  "쿠시미타마": {
+    "slug": "kushi-mitama",
+    "aliases": []
+  },
+  "퀸 메이브": {
+    "slug": "queen-mab",
+    "aliases": []
+  },
+  "클로토": {
+    "slug": "clotho",
+    "aliases": []
+  },
+  "키쿠리히메": {
+    "slug": "kikuri-hime",
+    "aliases": []
+  },
+  "킨키": {
+    "slug": "kin-ki",
+    "aliases": []
+  },
+  "킹 프로스트": {
+    "slug": "king-frost",
+    "aliases": []
+  },
+  "토르": {
+    "slug": "thor",
+    "aliases": []
+  },
+  "토트": {
+    "slug": "thoth",
+    "aliases": []
+  },
+  "트럼페터": {
+    "slug": "trumpeter",
+    "aliases": []
+  },
+  "트론": {
+    "slug": "throne",
+    "aliases": []
+  },
+  "티타니아": {
+    "slug": "titania",
+    "aliases": []
+  },
+  "파르바티": {
+    "slug": "parvati",
+    "aliases": []
+  },
+  "파워": {
+    "slug": "power",
+    "aliases": []
+  },
+  "파즈스": {
+    "slug": "pazuzu",
+    "aliases": []
+  },
+  "페일 라이더": {
+    "slug": "pale-rider",
+    "aliases": []
+  },
+  "프린시펄리티": {
+    "slug": "principality",
+    "aliases": []
+  },
+  "플라로우스": {
+    "slug": "flauros",
+    "aliases": []
+  },
+  "픽시": {
+    "slug": "pixie",
+    "aliases": []
+  },
+  "하리티": {
+    "slug": "hariti",
+    "aliases": []
+  },
+  "하이픽시": {
+    "slug": "high-pixie",
+    "aliases": []
+  },
+  "헤카톤케일": {
+    "slug": "hecatoncheires",
+    "aliases": []
+  },
+  "헬즈 엔젤": {
+    "slug": "hell-biker",
+    "aliases": []
+  },
+  "현무": {
+    "slug": "genbu",
+    "aliases": []
+  },
+  "호루스": {
+    "slug": "horus",
+    "aliases": []
+  },
+  "화백": {
+    "slug": "hua-po",
+    "aliases": []
+  },
+  "화이트 라이더": {
+    "slug": "white-rider",
+    "aliases": []
+  },
+  "황룡": {
+    "slug": "kohryu",
+    "aliases": []
+  },
+  "후우키": {
+    "slug": "fuu-ki",
+    "aliases": []
+  }
+}

@@ -1,6 +1,6 @@
 export function handlePersonaRouting() {
     const urlParams = new URLSearchParams(window.location.search);
-    const personaName = urlParams.get('persona') || urlParams.get('name');
+    const personaName = urlParams.get('persona') || urlParams.get('name') || window.__PERSONA_DEFAULT;
 
     if (!personaName) return;
 

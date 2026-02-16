@@ -44,11 +44,18 @@ jobs:
       if: github.event_name == 'pull_request'
       run: npm run seo:wonder-weapon:check
 
+    - name: Check generated character SEO pages (PR only)
+      if: github.event_name == 'pull_request'
+      run: npm run seo:character:check
+
     - name: Generate synergy SEO pages
       run: npm run seo:synergy:generate
 
     - name: Generate wonder-weapon SEO pages
       run: npm run seo:wonder-weapon:generate
+
+    - name: Generate character SEO pages
+      run: npm run seo:character:generate
     
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1

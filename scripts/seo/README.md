@@ -332,7 +332,7 @@ if (/^\/(kr|en|jp)\//.test(window.location.pathname)) return;
 | about | B (single-page) | `generate-about-pages.mjs` | Done |
 | gallery | B (single-page) | `generate-gallery-pages.mjs` | Done |
 | article (guides list + detail) | Hybrid (single-page + per-item) | `generate-article-pages.mjs` | Done |
-| persona | A (per-item) | — | Not started |
+| persona | A (per-item) | `generate-persona-pages.mjs` | Done |
 | maps | A (per-item) | — | Not started |
 
 ## URL Patterns
@@ -358,6 +358,8 @@ if (/^\/(kr|en|jp)\//.test(window.location.pathname)) return;
 | Gallery | `/kr/gallery/`, `/en/gallery/`, `/jp/gallery/` |
 | Article (guides list) | `/kr/article/`, `/en/article/`, `/jp/article/` |
 | Article (guide detail) | `/kr/article/{id}/`, `/en/article/{id}/`, `/jp/article/{id}/` |
+| Persona (detail) | `/kr/persona/{slug}/`, `/en/persona/{slug}/`, `/jp/persona/{slug}/` |
+| Persona (list) | `/persona/` (default), `/kr/persona/`, `/en/persona/`, `/jp/persona/` |
 
 Legacy URLs redirect to canonical via generated stub pages (`layout: null`).
 Language root URLs (`/{lang}/{app}/`) redirect to `/{app}/?lang={lang}` via generated root stubs.
@@ -389,6 +391,8 @@ Legacy query-based URLs are rewritten to clean path-based URLs via `history.repl
 | `/article/?lang=en&v=4.4.8` | `/en/article/` |
 | `/article/technical-master/?lang=en&v=4.4.8` | `/en/article/technical-master/` |
 | `/article/view/?id=technical-master&lang=en&v=4.4.8` | `/en/article/technical-master/` |
+| `/persona/?name=야노식&lang=en` | `/en/persona/janosik/` |
+| `/persona/?lang=en&v=4.4.9` | `/en/persona/` |
 
 The rewrite scripts are placed at the top of the body include or page, before any other scripts, so they run early. They use the `__*_SLUG_MAP` data (injected via Jekyll) to resolve slugs.
 

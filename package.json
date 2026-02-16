@@ -11,8 +11,10 @@
     "seo:wonder-weapon:check": "node scripts/seo/generate-wonder-weapon-pages.mjs --check",
     "seo:home:generate": "node scripts/seo/generate-home-pages.mjs",
     "seo:home:check": "node scripts/seo/generate-home-pages.mjs --check",
-    "seo:character:generate": "node scripts/seo/generate-character-pages.mjs",
-    "seo:character:check": "node scripts/seo/generate-character-pages.mjs --check",
+    "seo:character:sync-slugs": "node scripts/seo/sync-character-slugs.mjs",
+    "seo:character:sync-slugs:check": "node scripts/seo/sync-character-slugs.mjs --check",
+    "seo:character:generate": "npm run seo:character:sync-slugs && node scripts/seo/generate-character-pages.mjs",
+    "seo:character:check": "npm run seo:character:sync-slugs:check && node scripts/seo/generate-character-pages.mjs --check",
     "seo:tier:generate": "node scripts/seo/generate-tier-pages.mjs",
     "seo:tier:check": "node scripts/seo/generate-tier-pages.mjs --check",
     "seo:schedule:generate": "node scripts/seo/generate-schedule-pages.mjs",
@@ -32,7 +34,9 @@
     "seo:pull-tracker:generate": "node scripts/seo/generate-pull-tracker-pages.mjs",
     "seo:pull-tracker:check": "node scripts/seo/generate-pull-tracker-pages.mjs --check",
     "seo:article:generate": "node scripts/seo/generate-article-pages.mjs",
-    "seo:article:check": "node scripts/seo/generate-article-pages.mjs --check"
+    "seo:article:check": "node scripts/seo/generate-article-pages.mjs --check",
+    "seo:persona:generate": "node scripts/seo/generate-persona-pages.mjs",
+    "seo:persona:check": "node scripts/seo/generate-persona-pages.mjs --check"
   },
   "keywords": [],
   "author": "",

@@ -25,6 +25,8 @@
     "seo:defense-calc:check": "node scripts/seo/generate-defense-calc-pages.mjs --check",
     "seo:critical-calc:generate": "node scripts/seo/generate-critical-calc-pages.mjs",
     "seo:critical-calc:check": "node scripts/seo/generate-critical-calc-pages.mjs --check",
+    "seo:material-calc:generate": "node scripts/seo/generate-material-calc-pages.mjs",
+    "seo:material-calc:check": "node scripts/seo/generate-material-calc-pages.mjs --check",
     "seo:article:generate": "node scripts/seo/generate-article-pages.mjs",
     "seo:article:check": "node scripts/seo/generate-article-pages.mjs --check"
   },

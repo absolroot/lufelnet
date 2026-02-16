@@ -1,0 +1,731 @@
+<script>
+(function () {
+    var params = new URLSearchParams(window.location.search || '');
+    var path = String(window.location.pathname || '/');
+    var lowerPath = path.toLowerCase();
+
+    var pathLangMatch = lowerPath.match(/^\/(kr|en|jp)(\/|$)/);
+    var pathLang = pathLangMatch ? pathLangMatch[1] : '';
+    var queryLang = String(params.get('lang') || '').toLowerCase();
+    var effectiveLang = pathLang || (['kr', 'en', 'jp'].indexOf(queryLang) !== -1 ? queryLang : '');
+
+    var isLegacyRoot = /^\/material-calc\/?$/.test(lowerPath);
+    var isCanonicalPath = /^\/(kr|en|jp)\/material-calc\/?$/.test(lowerPath);
+
+    if (isLegacyRoot && effectiveLang) {
+        window.__SEO_PATH_LANG__ = effectiveLang;
+        params.delete('lang');
+        params.delete('v');
+        var remainingLegacy = params.toString();
+        history.replaceState(null, '', '/' + effectiveLang + '/material-calc/' + (remainingLegacy ? '?' + remainingLegacy : ''));
+        return;
+    }
+
+    if (isCanonicalPath) {
+        window.__SEO_PATH_LANG__ = pathLang;
+        var before = params.toString();
+        params.delete('lang');
+        params.delete('v');
+        var remainingCanonical = params.toString();
+        if (before !== remainingCanonical) {
+            history.replaceState(null, '', path + (remainingCanonical ? '?' + remainingCanonical : ''));
+        }
+        return;
+    }
+
+    if (isLegacyRoot && params.has('v')) {
+        params.delete('v');
+        var remainingRoot = params.toString();
+        history.replaceState(null, '', '/material-calc/' + (remainingRoot ? '?' + remainingRoot : ''));
+    }
+})();
+</script>
+
+<link rel="stylesheet" href="/apps/material-calc/material-planner.css">
+<script src="/apps/material-calc/material-planner.js"></script>
+<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
+
+{% if page.alternate_urls %}
+{% for alt in page.alternate_urls %}
+<link rel="alternate" hreflang="{{ alt[0] }}" href="{{ site.url }}{{ alt[1] }}" />
+{% endfor %}
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.alternate_urls['ko'] | default: page.alternate_urls.first[1] }}" />
+{% endif %}
+
+<div class="main-wrapper">
+    <div class="navigation-path">
+        <script>document.write(`<a href="${BASE_URL}/?v=${APP_VERSION}"><span data-i18n="navHome">-</span></a>`);</script>
+        <span class="separator">/</span>
+        <span class="current-page" data-i18n="navCurrent">-</span>
+    </div>
+
+    <div class="header-container">
+        <h1 id="plannerTitle" data-i18n="pageTitle">-</h1>
+        <div class="planner-toolbar">
+            <button id="resetBtn" class="primary-btn" style="padding: 8px 10px;" data-i18n="reset">-</button>
+            <!-- Backup / Load buttons (hidden on <=768px) -->
+            <button id="backupBtn" class="primary-btn desktop-only" style="padding: 8px 10px;" data-i18n="backupButton">-</button>
+            <button id="loadBtn" class="primary-btn desktop-only" style="padding: 8px 10px;" data-i18n="loadButton">-</button>
+            <button id="addCharacterBtn" class="primary-btn">+ <span data-i18n="addCharacter">-</span></button>
+            <!--
+            <label class="spoiler-toggle" id="spoilerContainer" style="display:none;">
+                <input type="checkbox" id="spoilerToggle">
+                <span data-i18n="showSpoiler">-</span>
+            </label>-->
+        </div>
+    </div>
+
+    <!-- 상단 합산 요약 -->
+    <section class="summary-card card-style">
+        <div class="summary-header">
+            <h2 data-i18n="materialSummary">-</h2>
+            <button id="collapseSummary" aria-expanded="true" class="icon-btn" title="-" data-i18n-aria="summaryToggleTitle">▾</button>
+        </div>
+        <div id="summaryGrid" class="material-grid"></div>
+    </section>
+
+    <!-- 필터/정렬 영역 (summary 아래) -->
+    <div class="filter-section" id="plannerFilterSection">
+        <div class="filter-header" style="display:flex;align-items:center;gap:8px;">
+            <button class="filter-toggle-btn" id="plannerFilterToggle">
+                <img src="{{ site.baseurl }}/assets/img/character-cards/filter.png" alt="필터" />
+                <span data-i18n="filterLabel">-</span>
+            </button>
+            <div style="flex:1"></div>
+            <!-- 정렬 드롭다운 -->
+            <label style="display:flex;align-items:center;gap:6px;color:rgba(255,255,255,.8);font-size:14px;">
+                <span id="sortLabel" data-i18n="sortLabel">-</span>
+                <select id="plannerSortSelect"
+                    style="background:var(--card-background);border: none;color:#ffffffeb;padding:6px 8px;border-radius:4px;">
+                    <option value="release_asc" data-i18n="sortReleaseAsc">-</option>
+                    <option value="release_desc" data-i18n="sortReleaseDesc">-</option>
+                    <option value="name_asc" data-i18n="sortNameAsc">-</option>
+                    <option value="name_desc" data-i18n="sortNameDesc">-</option>
+                    <option value="custom" data-i18n="sortCustom">-</option>
+                </select>
+                <button id="plannerSortCustomBtn" class="icon-btn" title="-" data-i18n-aria="customOrderButtonTitle"
+                    style="display:none;padding:6px 6px;line-height:0;">
+                    <!-- sliders icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="4" y1="6" x2="20" y2="6" />
+                        <circle cx="10" cy="6" r="2" />
+                        <line x1="4" y1="12" x2="20" y2="12" />
+                        <circle cx="14" cy="12" r="2" />
+                        <line x1="4" y1="18" x2="20" y2="18" />
+                        <circle cx="8" cy="18" r="2" />
+                    </svg>
+                </button>
+            </label>
+            <button class="filter-reset-btn" id="plannerFilterReset" style="display:none;">
+                <img src="{{ site.baseurl }}/assets/img/character-cards/reset.png" alt="초기화" />
+            </button>
+        </div>
+
+        <div class="filter-content" id="plannerFilterContent" style="display: none;">
+            <!-- 일단 캐릭터 페이지의 구조를 간략히 유지(추후 실제 필터 로직 연결 예정) -->
+            <div class="filter-group">
+                <h3 data-i18n="filterGroupElement">-</h3>
+                <div class="filter-options">
+                    <label><input type="checkbox" name="element" value="물리"><img
+                            src="{{ site.baseurl }}/assets/img/character-cards/속성_물리.png" alt="물리"><span></span></label>
+                    <label><input type="checkbox" name="element" value="총격"><img
+                            src="{{ site.baseurl }}/assets/img/character-cards/속성_총격.png" alt="총격"><span></span></label>
+                    <label><input type="checkbox" name="element" value="화염"><img
+                            src="{{ site.baseurl }}/assets/img/character-cards/속성_화염.png" alt="화염"><span></span></label>
+                    <label><input type="checkbox" name="element" value="빙결"><img
+                            src="{{ site.baseurl }}/assets/img/character-cards/속성_빙결.png" alt="빙결"><span></span></label>
+                    <label><input type="checkbox" name="element" value="전격"><img
+                            src="{{ site.baseurl }}/assets/img/character-cards/속성_전격.png" alt="전격"><span></span></label>
+                    <label><input type="checkbox" name="element" value="질풍"><img
+                            src="{{ site.baseurl }}/assets/img/character-cards/속성_질풍.png" alt="질풍"><span></span></label>
+                    <label><input type="checkbox" name="element" value="염동"><img
+                            src="{{ site.baseurl }}/assets/img/character-cards/속성_염동.png" alt="염동"><span></span></label>
+                    <label><input type="checkbox" name="element" value="핵열"><img
+                            src="{{ site.baseurl }}/assets/img/character-cards/속성_핵열.png" alt="핵열"><span></span></label>
+                    <label><input type="checkbox" name="element" value="축복"><img
+                            src="{{ site.baseurl }}/assets/img/character-cards/속성_축복.png" alt="축복"><span></span></label>
+                    <label><input type="checkbox" name="element" value="주원"><img
+                            src="{{ site.baseurl }}/assets/img/character-cards/속성_주원.png" alt="주원"><span></span></label>
+                    <label><input type="checkbox" name="element" value="만능"><img
+                            src="{{ site.baseurl }}/assets/img/character-cards/속성_만능.png" alt="만능"><span></span></label>
+                </div>
+            </div>
+            <div class="filter-group">
+                <h3 data-i18n="filterGroupPosition">-</h3>
+                <div class="filter-options">
+                    <label><input type="checkbox" name="position" value="지배"><img
+                            src="{{ site.baseurl }}/assets/img/character-cards/직업_지배.png" alt="지배"></label>
+                    <label><input type="checkbox" name="position" value="반항"><img
+                            src="{{ site.baseurl }}/assets/img/character-cards/직업_반항.png" alt="반항"></label>
+                    <label><input type="checkbox" name="position" value="우월"><img
+                            src="{{ site.baseurl }}/assets/img/character-cards/직업_우월.png" alt="우월"></label>
+                    <label><input type="checkbox" name="position" value="굴복"><img
+                            src="{{ site.baseurl }}/assets/img/character-cards/직업_굴복.png" alt="굴복"></label>
+                    <label><input type="checkbox" name="position" value="방위"><img
+                            src="{{ site.baseurl }}/assets/img/character-cards/직업_방위.png" alt="방위"></label>
+                    <label><input type="checkbox" name="position" value="구원"><img
+                            src="{{ site.baseurl }}/assets/img/character-cards/직업_구원.png" alt="구원"></label>
+                    <label><input type="checkbox" name="position" value="해명"><img
+                            src="{{ site.baseurl }}/assets/img/character-cards/직업_해명.png" alt="해명"></label>
+                </div>
+            </div>
+            <div class="filter-group">
+                <h3 data-i18n="filterGroupRarity">-</h3>
+                <div class="filter-options tag-options">
+                    <label>
+                        <input type="checkbox" name="rarity" value="5" hidden>
+                        <div class="star-container">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star5.png" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star5.png" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star5.png" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star5.png" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star5.png" alt="★">
+                        </div>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="rarity" value="4" hidden>
+                        <div class="star-container">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star4.png" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star4.png" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star4.png" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star4.png" alt="★">
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 캐릭터별 플랜 카드 컨테이너 -->
+    <section id="plansContainer" class="plans-grid"></section>
+
+    <!-- 개인 브라우저에 저장되며 인터넷 기록을 모두 삭제할 경우 데이터는 삭제됩니다. -->
+    <div class="help-text">
+        <p>개인 브라우저에 저장되며 인터넷 기록을 모두 삭제할 경우 데이터는 삭제됩니다.</p>
+    </div>
+
+    <!-- 광고 -->
+    <!--
+  <div class="ads-container responsive-padding">
+    <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-format="fluid"
+      data-ad-layout-key="-gc+3n+7a-ag-4h"
+      data-ad-client="ca-pub-5862324369257695"
+      data-ad-slot="5373524213"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+    
+    <div id="ad-unit-bottom" class="AD-bottom" style="margin-top: 24px; text-align: center; align-items: center; display: flex; justify-content: center;"> 
+    <ins class="adsbygoogle"
+        style="display:inline-block;width:970px;height:90px"
+        data-ad-client="ca-pub-5862324369257695"
+        data-ad-slot="9244892982"></ins>
+    </div>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <div style="height: 12px;"></div>
+   
+    <style>
+        /* Hide backup/load on mobile */
+        .desktop-only { display:inline-flex; }
+        @media (max-width: 768px) { .desktop-only { display:none !important; } }
+        @media (max-width: 1440px) {
+            .AD-bottom {
+                display: none !important;
+            }
+        }
+        @media (min-width: 1440px) {
+            .ads-container {
+                display: none !important;
+            }
+        }
+        .responsive-padding { margin: 20px 20px 20px 0; padding: 0 0; }
+        @media (max-width: 1200px) { .responsive-padding {margin: 20px 0 0px 0; padding: 0; } }
+    </style>
+    -->
+    <!--
+    <script>
+
+        setTimeout(() => {
+            document.querySelectorAll(".adsbygoogle").forEach(el => { // width가 900 이상인것만만
+                const status = el.getAttribute("data-ad-status");
+                const adslot = el.getAttribute("data-ad-slot");
+                //console.log("google status", status);
+                //console.log("google adslot", adslot);
+                if ((status === "unfilled" || !el.querySelector("iframe")) && el.style.width === "970px") {
+                    el.style.display = "none";
+                }
+            });
+        }, 2000);  // 광고 로딩 기다렸다가 2초 후 검사
+
+        setTimeout(() => {
+            document.querySelectorAll(".adsbygoogle").forEach(el => {
+                const status = el.getAttribute("data-ad-status");
+                const adslot = el.getAttribute("data-ad-slot");
+                if ((status === "unfilled" || !el.querySelector("iframe")) && el.style.width === "970px") {
+                    el.style.display = "none";
+                }
+            });
+        }, 4000);  // 광고 로딩 기다렸다가 4초 후 검사
+
+        setTimeout(() => {
+            document.querySelectorAll(".adsbygoogle").forEach(el => {
+                const status = el.getAttribute("data-ad-status");
+                const adslot = el.getAttribute("data-ad-slot");
+                if ((status === "unfilled" || !el.querySelector("iframe")) && el.style.width === "970px") {
+                    el.style.display = "none";
+                }
+            });
+        }, 6000);  // 광고 로딩 기다렸다가 6초 후 검사
+    </script>
+    -->
+</div>
+
+<!-- 불러오기 확인 모달 -->
+<div id="loadConfirmModal" class="modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-header">
+            <h3 id="loadConfirmTitle" data-i18n="loadConfirmTitle">-</h3>
+            <button class="icon-btn close" data-close>✕</button>
+        </div>
+        <div class="modal-body">
+            <p id="loadConfirmMessage" data-i18n="loadConfirmMessage">-</p>
+        </div>
+        <div class="modal-footer">
+            <button id="loadYesBtn" class="primary-btn" data-i18n="yes">-</button>
+            <button id="loadNoBtn" class="secondary-btn" data-i18n="no">-</button>
+        </div>
+    </div>
+</div>
+
+<!-- 캐릭터 선택 모달 -->
+<div id="characterSelectModal" class="modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-header">
+            <h3 data-i18n="selectCharacter">-</h3>
+            <button class="icon-btn close" data-close>✕</button>
+        </div>
+        <div class="modal-body">
+            <div class="character-filter">
+                <input type="text" id="characterSearch" data-i18n-placeholder="searchPlaceholder" placeholder="-" autocomplete="off">
+            </div>
+            <div id="characterGrid" class="character-grid"></div>
+            <!--
+            <div id="ad-unit-bottom" class="AD-bottom"
+                style="margin: 40px 0 20px 0; text-align: center; align-items: center; display: flex; justify-content: center;">
+                <ins class="adsbygoogle" style="display:inline-block;width:468px;height:60px"
+                    data-ad-client="ca-pub-5862324369257695" data-ad-slot="9244892982"></ins>
+            </div>
+            
+            <script>
+                // Push ad only when modal is opened (visible)
+                (function () {
+                    const modal = document.getElementById('characterSelectModal');
+                    if (!modal) return;
+                    const ins = modal.querySelector('.adsbygoogle');
+                    if (!ins) return;
+
+                    function tryPushOnce() {
+                        if (!ins || ins.dataset.pushed === '1') return;
+                        // Ensure the ad has layout (modal visible, width secured)
+                        const isVisible = modal.offsetParent !== null || modal.getAttribute('aria-hidden') === 'false';
+                        const widthOk = ins.offsetWidth >= 250; // minimal width gate
+                        if (isVisible && widthOk) {
+                            try { (adsbygoogle = window.adsbygoogle || []).push({}); ins.dataset.pushed = '1'; } catch (_) { }
+                        } else {
+                            // retry a few times shortly after open
+                            if (!ins.__retryCount) ins.__retryCount = 0;
+                            if (ins.__retryCount < 10) { ins.__retryCount++; setTimeout(tryPushOnce, 120); }
+                        }
+                    }
+
+                    // Observe modal visibility changes via aria-hidden/class/style
+                    const obs = new MutationObserver(() => {
+                        const hidden = modal.getAttribute('aria-hidden');
+                        // Trigger when aria-hidden becomes 'false' or removed
+                        if (hidden === 'false' || hidden === null) {
+                            // small delay to allow layout
+                            setTimeout(tryPushOnce, 100);
+                            // schedule unfilled hide checks
+                            const hideIfUnfilled = () => {
+                                const status = ins.getAttribute('data-ad-status');
+                                if (status === 'unfilled' || !ins.querySelector('iframe')) {
+                                    ins.style.display = 'none';
+                                }
+                            };
+                            setTimeout(hideIfUnfilled, 1000);
+                            setTimeout(hideIfUnfilled, 2000);
+                            setTimeout(hideIfUnfilled, 4000);
+                            setTimeout(hideIfUnfilled, 6000);
+                        }
+                    });
+                    try { obs.observe(modal, { attributes: true, attributeFilter: ['aria-hidden', 'style', 'class'] }); } catch (_) { }
+
+                    // Also hook focus to ensure push on manual open flows
+                    modal.addEventListener('transitionend', tryPushOnce, { once: false });
+                    modal.addEventListener('mouseenter', tryPushOnce, { once: false });
+                })();
+            </script>
+            -->
+        </div>
+    </div>
+</div>
+
+<!-- 캐릭터 설정 모달 -->
+<div id="characterSetupModal" class="modal" aria-hidden="true">
+    <div class="modal-dialog large">
+        <div class="modal-header">
+            <h3 id="setupModalTitle">Setup</h3>
+            <button class="icon-btn close" data-close>✕</button>
+        </div>
+        <div class="modal-body">
+            <div class="setup-grid">
+                <div class="setup-section">
+                    <h4 data-i18n="level">-</h4>
+                    <div class="setting-row">
+                        <label><span data-i18n="current">-</span> LV</label>
+                        <input id="lvFrom" type="number" min="1" max="80" value="1">
+                        <span class="arrow">→</span>
+                        <input id="lvTo" type="number" min="1" max="80" value="80">
+                    </div>
+                    <div class="setting-row">
+                        <label><span data-i18n="weapon">-</span> LV</label>
+                        <input id="wpFrom" type="number" min="1" max="80" value="1">
+                        <span class="arrow">→</span>
+                        <input id="wpTo" type="number" min="1" max="80" value="80">
+                    </div>
+                </div>
+
+                <div class="setup-section">
+                    <h4 data-i18n="skills">-</h4>
+                    <div class="skill-list">
+                        <div class="setting-row">
+                            <label>S1</label>
+                            <input id="s1From" type="number" min="1" max="10" value="1">
+                            <span class="arrow">→</span>
+                            <input id="s1To" type="number" min="1" max="10" value="10">
+                        </div>
+                        <div class="setting-row">
+                            <label>S2</label>
+                            <input id="s2From" type="number" min="1" max="10" value="1">
+                            <span class="arrow">→</span>
+                            <input id="s2To" type="number" min="1" max="10" value="10">
+                        </div>
+                        <div class="setting-row">
+                            <label>S3</label>
+                            <input id="s3From" type="number" min="1" max="10" value="1">
+                            <span class="arrow">→</span>
+                            <input id="s3To" type="number" min="1" max="10" value="10">
+                        </div>
+                        <div class="setting-row">
+                            <label>HL</label>
+                            <input id="s4From" type="number" min="1" max="10" value="1">
+                            <span class="arrow">→</span>
+                            <input id="s4To" type="number" min="1" max="10" value="10">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="setup-section">
+                    <h4 data-i18n="mind">-</h4>
+                    <div class="setting-row align-center">
+                        <!--<label><input id="mindAllToggle" type="checkbox" checked> <span data-i18n="enableAll">기본 12개 활성화</span></label>-->
+                    </div>
+                    <div id="mindBaseGrid" class="mind-grid"></div>
+                    <div class="setting-row">
+                        <label data-i18n="mindStat1">-</label>
+                        <input id="mindStat1From" type="number" min="0" max="5" value="0">
+                        <span class="arrow">→</span>
+                        <input id="mindStat1To" type="number" min="0" max="5" value="5">
+                    </div>
+                    <div class="setting-row">
+                        <label data-i18n="mindSkill1">-</label>
+                        <input id="mindSkill1From" type="number" min="0" max="5" value="0">
+                        <span class="arrow">→</span>
+                        <input id="mindSkill1To" type="number" min="0" max="5" value="5">
+                    </div>
+                    <div class="setting-row">
+                        <label data-i18n="mindAttr">-</label>
+                        <input id="mindAttrFrom" type="number" min="0" max="12" value="0">
+                        <span class="arrow">→</span>
+                        <input id="mindAttrTo" type="number" min="0" max="12" value="12">
+                    </div>
+                    <div class="setting-row">
+                        <label data-i18n="mindStat2">-</label>
+                        <input id="mindStat2From" type="number" min="0" max="5" value="0">
+                        <span class="arrow">→</span>
+                        <input id="mindStat2To" type="number" min="0" max="5" value="5">
+                    </div>
+                    <div class="setting-row">
+                        <label data-i18n="mindSkill2">-</label>
+                        <input id="mindSkill2From" type="number" min="0" max="5" value="0">
+                        <span class="arrow">→</span>
+                        <input id="mindSkill2To" type="number" min="0" max="5" value="5">
+                    </div>
+
+                </div>
+
+                <div class="setup-section">
+                    <h4 data-i18n="mindscapeCore">-</h4>
+                    <div class="setting-row align-center">
+                        <label>
+                            <input id="mindscapeEnabled" type="checkbox">
+                            <span data-i18n="enableMindscape">-</span>
+                        </label>
+                    </div>
+                    <div id="mindscapeOptions" style="display: none;">
+                        <div class="setting-row">
+                            <label data-i18n="level">-</label>
+                            <input id="mindscapeLevelFrom" type="number" min="80" max="100" value="80" disabled>
+                            <span class="arrow">→</span>
+                            <input id="mindscapeLevelTo" type="number" min="80" max="100" value="100" disabled>
+                        </div>
+                        <div class="setting-row">
+                            <label data-i18n="resonance1">-</label>
+                            <input id="resonance1From" type="number" min="0" max="2" value="0" disabled>
+                            <span class="arrow">→</span>
+                            <input id="resonance1To" type="number" min="0" max="2" value="2" disabled>
+                        </div>
+                        <div class="setting-row">
+                            <label data-i18n="resonance2">-</label>
+                            <input id="resonance2From" type="number" min="0" max="2" value="0" disabled>
+                            <span class="arrow">→</span>
+                            <input id="resonance2To" type="number" min="0" max="2" value="2" disabled>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="secondary-btn" data-close data-i18n="cancel">-</button>
+            <button id="savePlanBtn" class="primary-btn" data-i18n="save">-</button>
+        </div>
+    </div>
+</div>
+
+<!-- 보유량 입력 모달 (EXP/한계돌파 그룹 편집) -->
+<div id="inventoryModal" class="modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-header">
+            <h3 id="inventoryModalTitle">-</h3>
+            <button class="icon-btn close" data-close>✕</button>
+        </div>
+        <div class="modal-body">
+            <div id="inventoryForm" class="setup-section"></div>
+            <p id="inventoryHint" style="opacity:.8;margin-top:8px;font-size:12px;"></p>
+        </div>
+        <div class="modal-footer">
+            <button class="secondary-btn" data-close data-i18n="cancel">-</button>
+            <button id="saveInventoryBtn" class="primary-btn" data-i18n="save">-</button>
+        </div>
+    </div>
+</div>
+
+<!-- 커스텀 정렬(우선순위) 모달 -->
+<div id="customOrderModal" class="modal" aria-hidden="true">
+    <div class="modal-dialog large">
+        <div class="modal-header">
+            <h3 id="customOrderTitle" data-i18n="priority">-</h3>
+            <button class="icon-btn close" data-close>✕</button>
+        </div>
+        <div class="modal-body">
+            <div style="opacity:.8;margin-bottom:8px;" id="customOrderHint" data-i18n="dragToChangeOrder">-</div>
+            <div id="customList" class="priority-col single"></div>
+        </div>
+        <div class="modal-footer">
+            <button id="customOrderCancel" class="secondary-btn" data-i18n="cancel">-</button>
+            <button id="customOrderSave" class="primary-btn" data-i18n="save">-</button>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Priority modal layout */
+    .priority-col {
+        background: #121015;
+        border: 1px solid rgba(255, 255, 255, .1);
+        border-radius: 8px;
+        padding: 10px;
+        max-height: 70vh;
+        overflow: auto;
+    }
+
+    /*.priority-col.single { width:100%; max-width:none; }*/
+    .order-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: #1a1720;
+        border: 1px solid rgba(255, 255, 255, .1);
+        border-radius: 8px;
+        padding: 8px;
+        margin-bottom: 8px;
+        cursor: grab;
+    }
+
+    .order-item:active {
+        cursor: grabbing;
+    }
+
+    .order-num {
+        width: 28px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #4b3b2c;
+        color: #fff;
+        border-radius: 6px;
+        font-weight: 700;
+    }
+
+    .order-avatar {
+        width: 30px;
+        height: 30px;
+        object-fit: cover;
+        border-radius: 6px;
+    }
+
+    .order-label {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .order-placeholder {
+        border: 2px dashed rgba(255, 255, 255, .3);
+        border-radius: 8px;
+        height: 46px;
+        margin-bottom: 8px;
+    }
+
+    @media (max-width: 760px) {
+        .priority-col.single {
+            width: 100%;
+        }
+    }
+
+    /* Limit scroll to the list only */
+    #customOrderModal .modal-body {
+        max-height: 70vh;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    #customOrderModal #customList {
+        flex: 1 1 auto;
+        min-height: 0;
+        overflow: auto;
+    }
+
+    #customOrderModal .priority-col {
+        max-height: none;
+    }
+</style>
+
+<script>
+    let materialCalcSeoHookBound = false;
+
+    function getMaterialCalcLang() {
+        const pathMatch = window.location.pathname.match(/^\/(kr|en|jp)(\/|$)/i);
+        if (pathMatch) return pathMatch[1].toLowerCase();
+
+        const params = new URLSearchParams(window.location.search || '');
+        const queryLang = String(params.get('lang') || '').toLowerCase();
+        if (['kr', 'en', 'jp'].indexOf(queryLang) !== -1) return queryLang;
+
+        if (typeof window.getCurrentLang === 'function') {
+            const lang = window.getCurrentLang();
+            if (['kr', 'en', 'jp'].indexOf(lang) !== -1) return lang;
+        }
+        if (typeof window.getCurrentLanguage === 'function') {
+            const lang = window.getCurrentLanguage();
+            if (['kr', 'en', 'jp'].indexOf(lang) !== -1) return lang;
+        }
+        return 'kr';
+    }
+
+    function upsertMetaByName(name, content) {
+        let tag = document.querySelector(`meta[name="${name}"]`);
+        if (!tag) {
+            tag = document.createElement('meta');
+            tag.setAttribute('name', name);
+            document.head.appendChild(tag);
+        }
+        tag.setAttribute('content', content);
+    }
+
+    function upsertMetaByProperty(property, content) {
+        let tag = document.querySelector(`meta[property="${property}"]`);
+        if (!tag) {
+            tag = document.createElement('meta');
+            tag.setAttribute('property', property);
+            document.head.appendChild(tag);
+        }
+        tag.setAttribute('content', content);
+    }
+
+    function updateMaterialCalcSEOTags(lang = null) {
+        const currentLang = lang || getMaterialCalcLang();
+        const effectiveLang = ['kr', 'en', 'jp'].indexOf(currentLang) !== -1 ? currentLang : 'kr';
+        const baseUrl = 'https://lufel.net';
+        const isPathLang = /^\/(kr|en|jp)(\/|$)/i.test(window.location.pathname);
+        const currentUrl = isPathLang
+            ? `${baseUrl}/${effectiveLang}/material-calc/`
+            : `${baseUrl}/material-calc/`;
+        const t = (key, fallback) => (typeof window.t === 'function' ? window.t(key, fallback) : fallback);
+
+        const seoTitle = t('seoTitle', '육성 계산기 - 페르소나5 더 팬텀 X 루페르넷');
+        const seoDescription = t('seoDescription', '페르소나5 더 팬텀 X 캐릭터 육성 재료 계산기 (레벨/무기/스킬/심상)');
+        const seoKeywords = t('seoKeywords', 'P5X, 페르소나5X, 육성 계산기, 재료 계산기, 캐릭터 육성');
+        const seoOgLocale = t('seoOgLocale', effectiveLang === 'jp' ? 'ja_JP' : effectiveLang === 'en' ? 'en_US' : 'ko_KR');
+        const canonical = document.querySelector('link[rel="canonical"]');
+
+        document.title = seoTitle;
+        upsertMetaByName('description', seoDescription);
+        upsertMetaByName('keywords', seoKeywords);
+        upsertMetaByProperty('og:title', seoTitle);
+        upsertMetaByProperty('og:description', seoDescription);
+        upsertMetaByProperty('og:url', currentUrl);
+        upsertMetaByProperty('og:locale', seoOgLocale);
+        if (canonical) canonical.setAttribute('href', currentUrl);
+        document.documentElement.setAttribute('lang', effectiveLang === 'jp' ? 'ja' : effectiveLang === 'en' ? 'en' : 'ko');
+    }
+</script>
+
+<!-- Export/Import handler -->
+<script src="/apps/material-calc/material-planner-export.js?v={{ site.time | date: '%s' }}"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', async () => {
+        if (typeof window.initPageI18n === 'function') {
+            await window.initPageI18n('material-calc');
+        } else if (window.I18nService && typeof window.I18nService.init === 'function') {
+            await window.I18nService.init('material-calc');
+        }
+
+        if (typeof Navigation !== 'undefined') {
+            Navigation.load('material-calc');
+        }
+
+        updateMaterialCalcSEOTags();
+
+        if (window.MaterialPlanner && typeof window.MaterialPlanner.init === 'function') {
+            await window.MaterialPlanner.init();
+        }
+
+        if (window.MaterialPlannerExport && typeof window.MaterialPlannerExport.init === 'function') {
+            window.MaterialPlannerExport.init();
+        }
+
+        if (window.I18nService && typeof window.I18nService.onLanguageChange === 'function' && !materialCalcSeoHookBound) {
+            window.I18nService.onLanguageChange(() => {
+                updateMaterialCalcSEOTags();
+            });
+            materialCalcSeoHookBound = true;
+        }
+    });
+</script>

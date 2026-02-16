@@ -1,0 +1,1639 @@
+<script>
+(function () {
+    var params = new URLSearchParams(window.location.search || '');
+    var path = String(window.location.pathname || '/');
+    var lowerPath = path.toLowerCase();
+
+    var pathLangMatch = lowerPath.match(/^\/(kr|en|jp)(\/|$)/);
+    var pathLang = pathLangMatch ? pathLangMatch[1] : '';
+    var queryLang = String(params.get('lang') || '').toLowerCase();
+    var effectiveLang = pathLang || (['kr', 'en', 'jp'].indexOf(queryLang) !== -1 ? queryLang : '');
+
+    var isLegacyRoot = /^\/tactic\/?$/.test(lowerPath);
+    var isCanonicalPath = /^\/(kr|en|jp)\/tactic\/?$/.test(lowerPath);
+
+    if (isLegacyRoot && effectiveLang) {
+        window.__SEO_PATH_LANG__ = effectiveLang;
+        params.delete('lang');
+        params.delete('v');
+        var remainingLegacy = params.toString();
+        var canonicalFromLegacy = '/' + effectiveLang + '/tactic/';
+        history.replaceState(null, '', canonicalFromLegacy + (remainingLegacy ? '?' + remainingLegacy : ''));
+        return;
+    }
+
+    if (isCanonicalPath) {
+        window.__SEO_PATH_LANG__ = pathLang;
+        var before = params.toString();
+        params.delete('lang');
+        params.delete('v');
+        var remainingCanonical = params.toString();
+        var canonicalPath = '/' + pathLang + '/tactic/';
+        if (path !== canonicalPath || before !== remainingCanonical) {
+            history.replaceState(null, '', canonicalPath + (remainingCanonical ? '?' + remainingCanonical : ''));
+        }
+        return;
+    }
+
+    if (isLegacyRoot && params.has('v')) {
+        params.delete('v');
+        var remainingRoot = params.toString();
+        history.replaceState(null, '', '/tactic/' + (remainingRoot ? '?' + remainingRoot : ''));
+    }
+})();
+</script>
+{% if page.alternate_urls %}
+{% for alt in page.alternate_urls %}
+<link rel="alternate" hreflang="{{ alt[0] }}" href="{{ site.url }}{{ alt[1] }}" />
+{% endfor %}
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.alternate_urls['ko'] | default: page.alternate_urls.first[1] }}" />
+{% endif %}
+
+{% include supabase-config.html %}
+
+  <!-- 페르소나 순서 및 로더 (window.personaFiles 구성) -->
+  <script src="{{ site.baseurl }}/data/persona/order.js?v={{ site.time | date: '%s' }}"></script>
+  <script src="{{ site.baseurl }}/assets/js/persona-loader.js?v={{ site.time | date: '%s' }}"></script>
+  <script>
+    if (typeof ensurePersonaFilesLoaded === 'function') {
+      ensurePersonaFilesLoaded();
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.min.js"></script>
+
+    <div class="main-wrapper">
+      <!-- navigation path -->
+      <div class="navigation-path">
+        <script>document.write(`<a href="../../?v=${APP_VERSION}">홈</a>`);</script>
+        <span class="separator">/</span>
+        <span class="current-page">택틱 / 택틱 메이커</span>
+    </div>
+    <div class="header-container">
+      <div class="logo-container-tactic"> <!-- link to current page -->
+        <!--
+        <a href="../index.html">
+          <img src="../img/logo/P5Xlogo.png" alt="Persona5X Logo" />
+        </a>-->
+        <div class="title-input-container">
+          <input type="text" 
+                 class="title-input" 
+                 value="페르소나5X 택틱 메이커" 
+                 style="color: white;">
+        </div>
+      </div>
+      <div class="top-buttons">
+        <!-- KR List Toggle (Desktop) - placed just left of Export -->
+        <label class="kr-toggle-container" title="Force party dropdown to use KR list">
+          <input type="checkbox" id="forceKRListToggleDesktop" />
+          <span class="kr-toggle-label">KR character list</span>
+        </label>
+        <button class="export-import-btn" onclick="exportData()">내보내기</button>
+        <button class="export-import-btn" onclick="importData()">가져오기</button>
+        <!--<button class="export-import-btn" onclick="handleShare()">공유하기</button>-->
+        <button class="export-import-btn capture-btn" onclick="captureAndDownload()">화면 캡처</button>
+        <button class="export-import-btn toggle-ui-btn" onclick="toggleUI()"></button>
+      </div>
+      <!-- KR List Toggle (Mobile) - a new row under export/import -->
+      <div class="kr-toggle-mobile">
+        <label>
+          <input type="checkbox" id="forceKRListToggleMobile" />
+          <span class="kr-toggle-mobile-label">KR character list</span>
+        </label>
+      </div>
+    </div>
+    
+    <!-- tab button (under header-container) development-->
+    <!--
+    <div class="tab-container">
+      <button class="tab-button active" data-tab="tactic">택틱 설정</button>
+      <button class="tab-button" data-tab="simulator">시뮬레이터</button>
+    </div>
+    -->
+    <!-- tab content area -->
+    <div class="tab-content">
+      <!-- tactic setting tab -->
+      <div id="tactic" class="tab-pane active">
+        <!-- top container: (1) wonder setting, (2) party selection -->
+        <div id="top-container">
+          <!-- wonder setting card -->
+          <div class="card wonder-setting" id="wonder-config">
+            <h2>원더 설정</h2>
+            <div class="weapon-container">
+              <label>무기
+                <input type="text" class="wonder-weapon-input" list="weapon-list" placeholder="선택 또는 입력" />
+              </label>
+              <datalist id="weapon-list">
+                <!-- JavaScript will fill this -->
+              </datalist>
+            </div>
+            <div class="persona-container">
+              <label>페르소나1
+                <input type="text" class="wonder-persona-input" data-persona-index="0" />
+              </label>
+              <div class="skill-inputs">
+                <input type="text" class="persona-skill-input" data-persona-index="0" data-skill-slot="0" list="persona-skills-list" placeholder="고유스킬" />
+                <input type="text" class="persona-skill-input" data-persona-index="0" data-skill-slot="1" list="persona-skills-list" placeholder="스킬 2" />
+                <input type="text" class="persona-skill-input" data-persona-index="0" data-skill-slot="2" list="persona-skills-list" placeholder="스킬 3" />
+              </div>
+            </div>
+            <div class="persona-container">
+              <label>페르소나2
+                <input type="text" class="wonder-persona-input" data-persona-index="1" />
+              </label>
+              <div class="skill-inputs">
+                <input type="text" class="persona-skill-input" data-persona-index="1" data-skill-slot="0" list="persona-skills-list" placeholder="고유스킬" />
+                <input type="text" class="persona-skill-input" data-persona-index="1" data-skill-slot="1" list="persona-skills-list" placeholder="스킬 2" />
+                <input type="text" class="persona-skill-input" data-persona-index="1" data-skill-slot="2" list="persona-skills-list" placeholder="스킬 3" />
+              </div>
+            </div>
+            <div class="persona-container">
+              <label>페르소나3
+                <input type="text" class="wonder-persona-input" data-persona-index="2" />
+              </label>
+              <div class="skill-inputs">
+                <input type="text" class="persona-skill-input" data-persona-index="2" data-skill-slot="0" list="persona-skills-list" placeholder="고유스킬" />
+                <input type="text" class="persona-skill-input" data-persona-index="2" data-skill-slot="1" list="persona-skills-list" placeholder="스킬 2" />
+                <input type="text" class="persona-skill-input" data-persona-index="2" data-skill-slot="2" list="persona-skills-list" placeholder="스킬 3" />
+              </div>
+            </div>
+          </div>
+          
+          <!-- party selection card -->
+          <div class="card" id="party-selection">
+            <h2>괴도단</h2>
+            <div class="party-member" data-index="0">
+              <div class="input-group">
+                <label>괴도 1</label>
+                <select class="party-name">
+                  <option value="">-</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label>의식</label>
+                <select class="party-ritual" style="width: 50px;">
+                  <option value="0" selected>0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label>순서</label>
+                <select class="party-order" style="width: 50px;">
+                  <option value="1" selected>1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label>주</label>
+                <select class="main-revelation">
+                  <option value="">-</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label>일월성진</label>
+                <select class="sub-revelation" disabled>
+                  <option value="">-</option>
+                </select>
+              </div>
+            </div>
+            <div class="party-member" data-index="1">
+              <div class="input-group">
+                <label>괴도 2</label>
+                <select class="party-name">
+                  <option value="">-</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label>의식</label>
+                <select class="party-ritual" style="width: 50px;">
+                  <option value="0" selected>0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label>순서</label>
+                <select class="party-order" style="width: 50px;">
+                  <option value="1">1</option>
+                  <option value="2" selected>2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label>주</label>
+                <select class="main-revelation">
+                  <option value="">-</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label>일월성진</label>
+                <select class="sub-revelation" disabled>
+                  <option value="">-</option>
+                </select>
+              </div>
+            </div>
+            <div class="party-member" data-index="2">
+              <div class="input-group">
+                <label>괴도 3</label>
+                <select class="party-name">
+                  <option value="">-</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label>의식</label>
+                <select class="party-ritual" style="width: 50px;">
+                  <option value="0" selected>0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label>순서</label>
+                <select class="party-order" style="width: 50px;">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3" selected>3</option>
+                  <option value="4">4</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label>주</label>
+                <select class="main-revelation">
+                  <option value="">-</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label>일월성진</label>
+                <select class="sub-revelation" disabled>
+                  <option value="">-</option>
+                </select>
+              </div>
+            </div>
+            <div class="party-member" data-index="3">
+              <div class="input-group">
+                <label>괴도 4</label>
+                <select class="party-name">
+                  <option value="">-</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label>의식</label>
+                <select class="party-ritual" style="width: 50px;">
+                  <option value="0" selected>0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label>순서</label>
+                <select class="party-order" style="width: 50px;">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4" selected>4</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label>주</label>
+                <select class="main-revelation">
+                  <option value="">-</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label>일월성진</label>
+                <select class="sub-revelation" disabled>
+                  <option value="">-</option>
+                </select>
+              </div>
+            </div>
+            <div class="party-member" data-index="4">
+              <div class="input-group">
+                <label>해명 -</label>
+                <select class="party-name">
+                  <option value="">-</option>
+                  <!-- supportParty 목록은 JavaScript에서 동적으로 채워짐 -->
+                </select>
+              </div>
+              <div class="input-group">
+                <label>의식</label>
+                <select class="party-ritual" style="width: 50px;">
+                  <option value="0" selected>0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label>순서</label>
+                <select class="party-order" style="width: 50px;">
+                  <option value="-" selected>-</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label>주</label>
+                <select class="main-revelation">
+                  <option value="">-</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label>일월성진</label>
+                <select class="sub-revelation" disabled>
+                  <option value="">-</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- container for party images -->
+        <div class = "middle-contianer">
+          <div class="party-images-container">
+            <div class="party-images"></div>
+          </div>
+          <!--<div class="madeby">.</div>-->
+        </div>
+
+        <!-- turn area (6 turns) -->
+        <div class="mobile-buttons">
+          <button class="mobile-lock-btn" onclick="toggleTurnsLock()">순서 이동 잠금</button>
+          <button class="toggle-ui-btn" onclick="toggleUI()"></button>
+        </div>
+        <div id="turns">
+          <!-- existing turn content -->
+        </div>
+      </div>
+
+      
+      </div>
+    </div>
+
+    <!-- SortableJS (drag and drop library) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
+    <script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
+    <script>
+      /* ========== Global data ========== */
+      // Wonder persona 3 slots
+      let wonderPersonas = ["","",""];
+      
+      // Party member info (5 members)
+      let partyMembers = [
+        { index: 0, name: "원더", order: "1", ritual: "" },
+        { index: 1, name: "", order: "2", ritual: "" },
+        { index: 2, name: "", order: "3", ritual: "" },
+        { index: 3, name: "", order: "4", ritual: "" },
+        { index: 4, name: "", order: "-", ritual: "" }
+      ];
+      
+      // Turn data (6 turns). Each turn contains an actions array (auto+manual actions).
+      let turns = [];
+      for (let i = 0; i < 6; i++) {
+        turns.push({
+          turn: i + 1,
+          actions: [
+            /* Example: { type: 'auto', character: 'Wonder', action: '', wonderPersona: '' } */
+          ]
+        });
+      }
+
+      // 현재 언어 감지 함수
+      function getCurrentLanguage() {
+        if (typeof LanguageRouter !== 'undefined' && typeof LanguageRouter.getCurrentLanguage === 'function') {
+          const routedLang = LanguageRouter.getCurrentLanguage();
+          if (routedLang && ['kr', 'en', 'jp'].includes(routedLang)) {
+            return routedLang;
+          }
+        }
+
+        // URL 파라미터 체크
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlLang = urlParams.get('lang');
+        if (urlLang && ['kr', 'en', 'jp'].includes(urlLang)) {
+          return urlLang;
+        }
+        
+        // localStorage 체크
+        const savedLang = localStorage.getItem('preferredLanguage');
+        if (savedLang && ['kr', 'en', 'jp'].includes(savedLang)) {
+          return savedLang;
+        }
+        
+        // 기본값
+        return 'kr';
+      }
+
+      function getI18nValue(key, fallback = '') {
+        if (typeof window.t === 'function') {
+          return window.t(key, fallback);
+        }
+        if (window.I18nService && typeof window.I18nService.t === 'function') {
+          return window.I18nService.t(key, fallback);
+        }
+        return fallback;
+      }
+
+      function getTacticToggleLabels() {
+        return {
+          off: getI18nValue('toggleUiHide', '🕶️ 편집 UI 숨김'),
+          on: getI18nValue('toggleUiShow', '🔍 편집 UI 표시'),
+          title: getI18nValue('toggleUiTitle', '편집 UI 토글')
+        };
+      }
+
+      window.getTacticToggleLabels = getTacticToggleLabels;
+
+      // 언어별 characters.js를 샌드박스에서 평가해 순수 데이터만 추출
+      async function fetchCharactersData(url) {
+        try {
+          const res = await fetch(url, { cache: 'no-store' });
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          const text = await res.text();
+          const sandbox = {};
+          const win = (new Function('window', `${text}\n; return window;`))(sandbox);
+          const list = win.characterList || { mainParty: [], supportParty: [] };
+          const data = win.characterData || {};
+          return { characterList: list, characterData: data };
+        } catch (e) {
+          return null;
+        }
+      }
+
+      // KR 데이터를 기본으로, 언어 데이터가 제공하는 표시용 필드만 덮어씀
+      function mergeCharacterData(krData, langData) {
+        const mergedData = {};
+        const currentLang = getCurrentLanguage();
+        
+        // KR 데이터의 모든 키를 먼저 복사하고, 언어별 name 설정
+        Object.keys(krData || {}).forEach(key => {
+          mergedData[key] = { ...krData[key] };
+          const krChar = krData[key];
+          // 언어별 name 필드 설정 (kr 데이터의 name_en/name_jp 사용)
+          if (currentLang === 'en' && krChar.name_en) {
+            mergedData[key].name = krChar.name_en;
+          } else if (currentLang === 'jp' && krChar.name_jp) {
+            mergedData[key].name = krChar.name_jp;
+          }
+          // kr일 때는 원본 name 유지 (이미 복사됨)
+        });
+        
+        // langData의 키로 추가 필드 업데이트 (role, tag, release_order 등)
+        Object.keys(langData || {}).forEach(key => {
+          const langChar = langData[key];
+          if (!mergedData[key]) return; // krData에 없는 캐릭터는 무시
+          if (langChar?.role) mergedData[key].role = langChar.role;
+          if (langChar?.tag) mergedData[key].tag = langChar.tag;
+          if (typeof langChar?.release_order !== 'undefined' && langChar.release_order !== 0) {
+            mergedData[key].release_order = langChar.release_order;
+          }
+        });
+        
+        
+        return mergedData;
+      }
+
+      // 전역 window.characterData/window.characterList를 언어/토글에 맞게 준비
+      // setparty.js에서 접근 가능하도록 전역 노출
+      let __ensureCharacterDataLoadedPromise = null;
+      window.ensureCharacterDataLoaded = async function ensureCharacterDataLoaded() {
+        // 이미 실행 중이면 기다림
+        if (__ensureCharacterDataLoadedPromise) {
+          return await __ensureCharacterDataLoadedPromise;
+        }
+        
+        __ensureCharacterDataLoadedPromise = (async () => {
+          const lang = getCurrentLanguage();
+          let forceKR = false;
+          try { forceKR = localStorage.getItem('forceKRList') === 'true'; } catch (_) {}
+          const kr = await fetchCharactersData(`/data/character_info.js?v=${APP_VERSION}`);
+          if (!kr) {
+            __ensureCharacterDataLoadedPromise = null;
+            return false;
+          }
+          if (lang === 'kr') {
+            window.characterData = kr.characterData || {};
+            window.characterList = kr.characterList || { mainParty: [], supportParty: [] };
+            __ensureCharacterDataLoadedPromise = null;
+            return true;
+          }
+          const langDataPath = (lang === 'en' || lang === 'jp')
+            ? '/data/character_info_glb.js'
+            : `/data/${lang}/characters/characters.js`;
+          const lg = await fetchCharactersData(`${langDataPath}?v=${APP_VERSION}`);
+          if (!lg) {
+            window.characterData = kr.characterData || {};
+            window.characterList = kr.characterList || { mainParty: [], supportParty: [] };
+            __ensureCharacterDataLoadedPromise = null;
+            return true;
+          }
+          const merged = mergeCharacterData(kr.characterData || {}, lg.characterData || {});
+          window.characterData = merged;
+          window.characterList = forceKR ? (kr.characterList || { mainParty: [], supportParty: [] })
+                                         : (lg.characterList || { mainParty: [], supportParty: [] });
+          __ensureCharacterDataLoadedPromise = null;
+          return true;
+        })();
+        
+        return await __ensureCharacterDataLoadedPromise;
+      };
+
+      function setTextNodePreserveChildren(element, text) {
+        if (!element || text == null) return;
+        const textNode = Array.from(element.childNodes).find(node => node.nodeType === Node.TEXT_NODE);
+        if (textNode) {
+          textNode.nodeValue = text;
+        } else {
+          element.insertBefore(document.createTextNode(text), element.firstChild);
+        }
+      }
+
+      function setLabelText(selector, key, fallback) {
+        const label = document.querySelector(selector);
+        if (!label) return;
+        setTextNodePreserveChildren(label, getI18nValue(key, fallback));
+      }
+
+      function setInputPlaceholder(selector, key, fallback) {
+        const input = document.querySelector(selector);
+        if (!input) return;
+        input.placeholder = getI18nValue(key, fallback);
+      }
+
+      function applyPartyRowLabels(index, firstLabelKey, firstLabelFallback) {
+        const row = document.querySelector(`.party-member[data-index="${index}"]`);
+        if (!row) return;
+        const labels = row.querySelectorAll('.input-group > label');
+        if (labels[0]) setTextNodePreserveChildren(labels[0], getI18nValue(firstLabelKey, firstLabelFallback));
+        if (labels[1]) setTextNodePreserveChildren(labels[1], getI18nValue('labelRitual', '의식'));
+        if (labels[2]) setTextNodePreserveChildren(labels[2], getI18nValue('labelOrder', '순서'));
+        if (labels[3]) setTextNodePreserveChildren(labels[3], getI18nValue('labelMain', '주'));
+        if (labels[4]) setTextNodePreserveChildren(labels[4], getI18nValue('labelSub', '일월성진'));
+      }
+
+      function applyStaticI18nTexts() {
+        const navHome = document.querySelector('.navigation-path a');
+        if (navHome) navHome.textContent = getI18nValue('navHome', '홈');
+
+        const navCurrent = document.querySelector('.navigation-path .current-page');
+        if (navCurrent) navCurrent.textContent = getI18nValue('navCurrent', '택틱 / 택틱 메이커');
+
+        const titleInput = document.querySelector('.title-input');
+        if (titleInput) {
+          const defaults = new Set([
+            '페르소나5X 택틱 메이커',
+            'P5X Tactic Maker',
+            'P5X タクティックメーカー'
+          ]);
+          if (!titleInput.value || defaults.has(titleInput.value.trim())) {
+            titleInput.value = getI18nValue('pageTitle', '페르소나5X 택틱 메이커');
+          }
+        }
+
+        const exportBtn = document.querySelector('button[onclick="exportData()"]');
+        if (exportBtn) exportBtn.textContent = getI18nValue('buttonExport', '내보내기');
+        const importBtn = document.querySelector('button[onclick="importData()"]');
+        if (importBtn) importBtn.textContent = getI18nValue('buttonImport', '가져오기');
+        const captureBtn = document.querySelector('button.capture-btn');
+        if (captureBtn) captureBtn.textContent = getI18nValue('buttonCapture', '화면 캡처');
+        const mobileLockBtn = document.querySelector('.mobile-lock-btn');
+        if (mobileLockBtn) mobileLockBtn.textContent = getI18nValue('buttonLockOrder', '순서 이동 잠금');
+
+        const krDesktopLabel = document.querySelector('.kr-toggle-label');
+        const krMobileLabel = document.querySelector('.kr-toggle-mobile-label');
+        const krDesktopWrap = document.querySelector('.kr-toggle-container');
+        const krLabel = getI18nValue('krListLabel', 'KR character list');
+        if (krDesktopLabel) krDesktopLabel.textContent = krLabel;
+        if (krMobileLabel) krMobileLabel.textContent = krLabel;
+        if (krDesktopWrap) krDesktopWrap.setAttribute('title', krLabel);
+
+        setTextNodePreserveChildren(document.querySelector('#wonder-config h2'), getI18nValue('sectionWonder', '원더 설정'));
+        setTextNodePreserveChildren(document.querySelector('#party-selection h2'), getI18nValue('sectionParty', '괴도단'));
+
+        setLabelText('#wonder-config .weapon-container > label', 'labelWeapon', '무기');
+        setInputPlaceholder('#wonder-config .wonder-weapon-input', 'placeholderSelectOrInput', '선택 또는 입력');
+
+        setLabelText('#wonder-config .persona-container:nth-of-type(2) > label', 'labelPersona1', '페르소나1');
+        setLabelText('#wonder-config .persona-container:nth-of-type(3) > label', 'labelPersona2', '페르소나2');
+        setLabelText('#wonder-config .persona-container:nth-of-type(4) > label', 'labelPersona3', '페르소나3');
+
+        setInputPlaceholder('#wonder-config .persona-skill-input[data-persona-index="0"][data-skill-slot="0"]', 'placeholderUniqueSkill', '고유스킬');
+        setInputPlaceholder('#wonder-config .persona-skill-input[data-persona-index="0"][data-skill-slot="1"]', 'placeholderSkill2', '스킬 2');
+        setInputPlaceholder('#wonder-config .persona-skill-input[data-persona-index="0"][data-skill-slot="2"]', 'placeholderSkill3', '스킬 3');
+        setInputPlaceholder('#wonder-config .persona-skill-input[data-persona-index="1"][data-skill-slot="0"]', 'placeholderUniqueSkill', '고유스킬');
+        setInputPlaceholder('#wonder-config .persona-skill-input[data-persona-index="1"][data-skill-slot="1"]', 'placeholderSkill2', '스킬 2');
+        setInputPlaceholder('#wonder-config .persona-skill-input[data-persona-index="1"][data-skill-slot="2"]', 'placeholderSkill3', '스킬 3');
+        setInputPlaceholder('#wonder-config .persona-skill-input[data-persona-index="2"][data-skill-slot="0"]', 'placeholderUniqueSkill', '고유스킬');
+        setInputPlaceholder('#wonder-config .persona-skill-input[data-persona-index="2"][data-skill-slot="1"]', 'placeholderSkill2', '스킬 2');
+        setInputPlaceholder('#wonder-config .persona-skill-input[data-persona-index="2"][data-skill-slot="2"]', 'placeholderSkill3', '스킬 3');
+
+        applyPartyRowLabels(0, 'labelThief1', '괴도 1');
+        applyPartyRowLabels(1, 'labelThief2', '괴도 2');
+        applyPartyRowLabels(2, 'labelThief3', '괴도 3');
+        applyPartyRowLabels(3, 'labelThief4', '괴도 4');
+        applyPartyRowLabels(4, 'labelSupport', '해명 -');
+        applyPartyRowLabels(5, 'labelThief5', '괴도 5');
+      }
+
+      
+
+      // 언어별 SEO 설정 함수
+      function updateSEOContent() {
+          const fallbackTitle = document.title || '택틱 메이커 - 페르소나5 더 팬텀 X 루페르넷';
+          let metaDescription = document.querySelector('meta[name="description"]');
+          const fallbackDescription = (metaDescription && metaDescription.getAttribute('content')) || '';
+          const seoTitle = getI18nValue('seoTitle', fallbackTitle);
+          const seoDescription = getI18nValue('seoDescription', fallbackDescription);
+
+          document.title = seoTitle;
+
+          metaDescription = document.querySelector('meta[name="description"]');
+          if (!metaDescription) {
+              metaDescription = document.createElement('meta');
+              metaDescription.name = 'description';
+              document.head.appendChild(metaDescription);
+          }
+          metaDescription.setAttribute('content', seoDescription);
+          
+          let ogTitle = document.querySelector('meta[property="og:title"]');
+          if (!ogTitle) {
+              ogTitle = document.createElement('meta');
+              ogTitle.setAttribute('property', 'og:title');
+              document.head.appendChild(ogTitle);
+          }
+          ogTitle.setAttribute('content', seoTitle);
+          
+          let ogDescription = document.querySelector('meta[property="og:description"]');
+          if (!ogDescription) {
+              ogDescription = document.createElement('meta');
+              ogDescription.setAttribute('property', 'og:description');
+              document.head.appendChild(ogDescription);
+          }
+          ogDescription.setAttribute('content', seoDescription);
+      }
+
+
+
+
+      // 모바일 토글 버튼 라벨 설정 (다국어)
+      function updateToggleUILabels() {
+        const labels = getTacticToggleLabels();
+        const mobileToggleBtn = document.querySelector('.mobile-buttons .toggle-ui-btn');
+        if (mobileToggleBtn) {
+          mobileToggleBtn.setAttribute('data-label', labels.off);
+          mobileToggleBtn.setAttribute('data-label-active', labels.on);
+        }
+
+        // 데스크톱 토글 버튼은 스위치형(텍스트 없음)이지만 접근성/힌트를 위해 title 제공
+        const desktopToggleBtn = document.querySelector('.header-container .toggle-ui-btn');
+        if (desktopToggleBtn) {
+          desktopToggleBtn.setAttribute('title', labels.title);
+        }
+      }
+
+      // DOM is loaded, initialize initial settings
+      document.addEventListener("DOMContentLoaded", async () => {
+        const currentLang = getCurrentLanguage();
+        if (typeof initPageI18n === 'function') {
+          await initPageI18n('tactic');
+          if (typeof setLang === 'function') {
+            await setLang(currentLang);
+          }
+        } else if (window.I18nService && typeof window.I18nService.init === 'function') {
+          await window.I18nService.init('tactic', currentLang);
+        }
+
+        // 먼저 UI 텍스트/레이블을 현재 언어에 맞게 번역 (데이터 로딩과 분리)
+        applyStaticI18nTexts();
+        updateToggleUILabels();
+        // CSS에서 언어별 스타일 분기를 위해 <html>에 data-lang 설정
+        try { document.documentElement.setAttribute('data-lang', getCurrentLanguage()); } catch(_) {}
+
+        // 언어별 캐릭터 데이터 준비 (전역 주입)
+        await ensureCharacterDataLoaded();
+
+        // Initialize KR list toggle UI (desktop + mobile)
+        (function initKRListToggle(){
+          const currentLang = getCurrentLanguage();
+          const desktopWrap = document.querySelector('.kr-toggle-container');
+          const mobileWrap = document.querySelector('.kr-toggle-mobile');
+          const desktopChk = document.getElementById('forceKRListToggleDesktop');
+          const mobileChk = document.getElementById('forceKRListToggleMobile');
+
+          // Hide entirely when KR
+          const hideForKR = currentLang === 'kr';
+          if (desktopWrap) desktopWrap.style.display = hideForKR ? 'none' : '';
+          if (mobileWrap) mobileWrap.style.display = hideForKR ? 'none' : '';
+
+          // Show only one depending on viewport
+          function applyViewportVisibility() {
+            if (hideForKR) return; // already hidden
+            const isMob = (window.innerWidth < 1200);
+            if (desktopWrap) desktopWrap.style.display = isMob ? 'none' : '';
+            if (mobileWrap) mobileWrap.style.display = isMob ? '' : 'none';
+          }
+          applyViewportVisibility();
+          window.addEventListener('resize', applyViewportVisibility);
+
+          // Load state
+          let saved = false;
+          try { saved = localStorage.getItem('forceKRList') === 'true'; } catch(_) {}
+          if (desktopChk) desktopChk.checked = saved;
+          if (mobileChk) mobileChk.checked = saved;
+
+          async function applyChange(val){
+            try { localStorage.setItem('forceKRList', String(val)); } catch(_) {}
+            // Close any open dropdowns by blurring focused input to refresh on next open
+            if (document.activeElement && document.activeElement.blur) {
+              document.activeElement.blur();
+            }
+            // Live refresh party dropdowns: ensure translations ready first
+            try {
+              // 전역 characterList를 토글 상태에 맞춰 갱신
+              await ensureCharacterDataLoaded();
+              // characterData 준비 완료 알림
+              if (typeof window.notifyCharacterDataReady === 'function') {
+                window.notifyCharacterDataReady();
+              }
+              if (typeof setupTranslations === 'function') {
+                setupTranslations()
+                  .then(() => { try { if (typeof setupPartySelection === 'function') setupPartySelection(); } catch(_) {} })
+                  .catch(() => { try { if (typeof setupPartySelection === 'function') setupPartySelection(); } catch(_) {} });
+              } else {
+                if (typeof setupPartySelection === 'function') { setupPartySelection(); }
+              }
+            } catch(_) {}
+          }
+
+          // Sync handlers
+          if (desktopChk) desktopChk.addEventListener('change', (e)=>{
+            const v = e.target.checked;
+            if (mobileChk) mobileChk.checked = v;
+            applyChange(v);
+          });
+          if (mobileChk) mobileChk.addEventListener('change', (e)=>{
+            const v = e.target.checked;
+            if (desktopChk) desktopChk.checked = v;
+            applyChange(v);
+          });
+        })();
+
+        // Initialize navigation (guarded)
+        try { if (typeof Navigation !== 'undefined' && Navigation.load) { Navigation.load('tactic'); } } catch(_) {}
+        try { if (typeof VersionChecker !== 'undefined' && VersionChecker.check) { VersionChecker.check(); } } catch(_) {}
+        updateSEOContent();
+
+        function isMobile() {
+          return window.innerWidth < 1200;
+        }
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const sharedData = urlParams.get('data');
+        const libraryParam = urlParams.get('library');
+        
+        // 번역 데이터를 먼저 로드하는 함수
+        async function loadTranslationData() {
+          const currentLang = getCurrentLanguage();
+          if (currentLang !== 'kr') {
+            // setparty.js의 setupTranslations 함수가 있으면 호출
+            if (typeof setupTranslations === 'function') {
+              await setupTranslations();
+            }
+          }
+        }
+        
+        if (sharedData) {
+          // 번역 데이터를 먼저 로드한 후 공유 데이터 처리
+          loadTranslationData().then(() => {
+            const decodedData = processSharedData(sharedData);
+
+            if (isMobile()) {
+              const lockBtn = document.querySelector('.mobile-lock-btn');
+              const turnsContainer = document.getElementById('turns');
+              if (lockBtn && turnsContainer) {
+                lockBtn.classList.add('active');
+                turnsContainer.classList.add('turns-locked');
+                localStorage.setItem('turnsLocked', true);
+              }
+            }
+            
+            // If shared data, set UI to hidden state by default (guarded)
+            const containerEl = document.querySelector('.container');
+            if (containerEl) { containerEl.classList.add('hide-ui'); }
+            const desktopToggleBtn = document.querySelector('.header-container .toggle-ui-btn');
+            const mobileToggleBtn = document.querySelector('.mobile-buttons .toggle-ui-btn');
+            if (desktopToggleBtn) desktopToggleBtn.classList.add('active');
+            if (mobileToggleBtn) mobileToggleBtn.classList.add('active');
+
+            //console.log(decodedData);
+
+            if (decodedData) {
+              // Add title setting
+              document.querySelector('.title-input').value = decodedData.title;
+              
+              // Set Wonder persona data
+              wonderPersonas = decodedData.w;
+              
+              // Set Wonder persona data
+              const wonderInputs = document.querySelectorAll(".wonder-persona-input");
+              wonderInputs.forEach((input, idx) => {
+                input.value = wonderPersonas[idx] || "";
+              });
+
+              // Set Wonder weapon
+              document.querySelector(".wonder-weapon-input").value = decodedData.weapon;
+
+              // Set persona skills
+              const skillInputs = document.querySelectorAll(".persona-skill-input");
+              let normalSkillIndex = 0;  // Normal skill index
+
+              skillInputs.forEach((input, index) => {
+                  // Unique skill slot
+                  if (index % 3 === 0) {
+                      const personaIndex = Math.floor(index / 3);
+                      const selectedPersona = decodedData.w[personaIndex];
+                      try {
+                          const store = (typeof window !== 'undefined' && window.personaFiles && Object.keys(window.personaFiles).length)
+                            ? window.personaFiles
+                            : (typeof personaData !== 'undefined' ? personaData : (window.persona && window.persona.personaData) || {});
+                          if (selectedPersona && store[selectedPersona] && store[selectedPersona].uniqueSkill) {
+                              input.value = store[selectedPersona].uniqueSkill.name;
+                              input.disabled = true;
+                              input.classList.add('unique-skill');
+                          }
+                      } catch (_) { /* noop */ }
+                  } 
+                  // Normal skill slot
+                  else {
+                      if (decodedData.personaSkills[normalSkillIndex]) {
+                          input.value = decodedData.personaSkills[normalSkillIndex];
+                      }
+                      normalSkillIndex++;
+                  }
+              });
+              
+              // Restore partyMembers data
+              decodedData.p.forEach((p, idx) => {
+                partyMembers[idx].name = p.name;
+                partyMembers[idx].order = p.order;
+                partyMembers[idx].ritual = p.ritual;
+                
+                // Update party member name input field
+                const partyDiv = document.querySelector(`.party-member[data-index="${idx}"]`);
+                if (partyDiv) {
+                  const nameInput = partyDiv.querySelector(".party-name-input");
+                  const orderSelect = partyDiv.querySelector(".party-order");
+                  const ritualSelect = partyDiv.querySelector(".party-ritual");
+                  const mainRevSelect = partyDiv.querySelector(".main-revelation");
+                  const subRevSelect = partyDiv.querySelector(".sub-revelation");
+                  
+                  if (nameInput) nameInput.value = p.name || "";
+                  if (orderSelect) orderSelect.value = p.order || "";
+                  if (ritualSelect) ritualSelect.value = p.ritual || "0";
+                  
+                  // Set revelation
+                  if (mainRevSelect && p.mainRev) {
+                    mainRevSelect.value = p.mainRev;
+                    // When main revelation is selected, activate sub revelation
+                    if (p.mainRev && revelationData.main[p.mainRev]) {
+                      subRevSelect.disabled = false;
+                      // Set sub revelation options
+                      subRevSelect.innerHTML = '<option value="">-</option>';
+                      revelationData.main[p.mainRev].forEach(subRev => {
+                        const opt = document.createElement("option");
+                        opt.value = subRev;
+                        opt.textContent = subRev;
+                        subRevSelect.appendChild(opt);
+                      });
+                      // Set sub revelation value
+                      if (p.subRev) {
+                        subRevSelect.value = p.subRev;
+                      }
+                    }
+                  }
+                  
+                  // If Wonder, disable ritual and revelation
+                  if (p.n === "원더") {
+                    if (ritualSelect) {
+                      ritualSelect.disabled = true;
+                      ritualSelect.value = "0";
+                    }
+                    if (mainRevSelect) mainRevSelect.disabled = true;
+                    if (subRevSelect) subRevSelect.disabled = true;
+                  }
+                }
+              });
+              
+              // Restore turn data
+              turns = decodedData.t;
+              
+              // Default UI settings
+              setupWonderConfig();
+              try {
+                if (typeof setupTranslations === 'function') {
+                  setupTranslations()
+                    .then(() => { try { setupPartySelection(); } catch(_) {} })
+                    .catch(() => { try { setupPartySelection(); } catch(_) {} });
+                } else {
+                  setupPartySelection();
+                }
+              } catch(_) { setupPartySelection(); }
+
+              // 번역 적용 (공유 데이터 로드 후)
+              const currentLang = getCurrentLanguage();
+              if (currentLang !== 'kr') {
+                // 원더 무기 번역 적용
+                const weaponInput = document.querySelector('.wonder-weapon-input');
+                if (weaponInput && weaponInput.value) {
+                  // 번역된 무기 이름으로 표시하되, 실제 값은 한국어 유지
+                  const weaponName = weaponInput.value;
+                  const inputContainer = weaponInput.closest('.input-container');
+                  if (inputContainer && matchWeapons[weaponName]) {
+                    const weapon = matchWeapons[weaponName];
+                    let displayName = weaponName;
+                    if (currentLang === 'en' && weapon.name_en) {
+                      displayName = weapon.name_en;
+                    } else if (currentLang === 'jp' && weapon.name_jp) {
+                      displayName = weapon.name_jp;
+                    }
+                    inputContainer.setAttribute('data-display-text', displayName);
+                    inputContainer.classList.add('show-translation');
+                  }
+                }
+
+                // 페르소나 고유 스킬 번역 적용
+                const skillInputs = document.querySelectorAll('.persona-skill-input');
+                skillInputs.forEach((input, index) => {
+                  if (index % 3 === 0 && input.value) { // 고유 스킬 슬롯
+                    const personaIndex = Math.floor(index / 3);
+                    const selectedPersona = decodedData.w[personaIndex];
+                    const store = (typeof window !== 'undefined' && window.personaFiles && Object.keys(window.personaFiles).length)
+                      ? window.personaFiles
+                      : (typeof personaData !== 'undefined' ? personaData : (window.persona && window.persona.personaData) || {});
+                    if (selectedPersona && store[selectedPersona]) {
+                      const persona = store[selectedPersona];
+                      const u = persona.uniqueSkill || {};
+                      let displayName = input.value;
+                      if (currentLang === 'en' && u.name_en) {
+                        displayName = u.name_en;
+                      } else if (currentLang === 'jp' && u.name_jp) {
+                        displayName = u.name_jp;
+                      }
+                      const inputContainer = input.closest('.input-container');
+                      if (inputContainer) {
+                        inputContainer.setAttribute('data-display-text', displayName);
+                        inputContainer.classList.add('show-translation');
+                      }
+                    }
+                  }
+                });
+
+                // 파티원 캐릭터 이름 번역 적용
+                document.querySelectorAll('.party-name-input').forEach(input => {
+                  if (input.value) {
+                    const charName = input.value;
+                    const inputContainer = input.closest('.input-container');
+                    // window.characterData만 사용 (병합된 데이터, 전역 characterData는 사용하지 않음)
+                    const charData = (typeof window !== 'undefined' && window.characterData) ? window.characterData : null;
+                    if (inputContainer && charData && charData[charName]) {
+                      const char = charData[charName];
+                      // 병합된 데이터의 name 필드 우선 사용 (이미 언어별로 설정됨)
+                      let displayName = (char.name && char.name !== charName) ? char.name : charName;
+                      // 폴백: name 필드가 없거나 원본과 같으면 name_en/name_jp 확인
+                      if (displayName === charName) {
+                        if (currentLang === 'en' && char.name_en) {
+                          displayName = char.name_en;
+                        } else if (currentLang === 'jp' && char.name_jp) {
+                          displayName = char.name_jp;
+                        }
+                      }
+                      inputContainer.setAttribute('data-display-text', displayName);
+                      inputContainer.classList.add('show-translation');
+                    }
+                  }
+                });
+              }
+
+              // Reset revelation values
+              decodedData.p.forEach((p, idx) => {
+                const partyDiv = document.querySelector(`.party-member[data-index="${idx}"]`);
+                if (partyDiv && p.mainRev) {
+                  const mainRevSelect = partyDiv.querySelector(".main-revelation");
+                  const subRevSelect = partyDiv.querySelector(".sub-revelation");
+                  
+                  if (mainRevSelect) {
+                    mainRevSelect.value = p.mainRev;
+                    
+                    if (revelationData.main[p.mainRev]) {
+                      subRevSelect.disabled = false;
+                      subRevSelect.innerHTML = '<option value="">-</option>';
+                      revelationData.main[p.mainRev].forEach(subRev => {
+                        const opt = document.createElement("option");
+                        opt.value = subRev;
+                        opt.textContent = subRev;
+                        subRevSelect.appendChild(opt);
+                      });
+                      
+                      // 계시 옵션 생성 후 번역 적용
+                      if (currentLang !== 'kr') {
+                        for (const option of subRevSelect.options) {
+                          if (option.value) {
+                            // 번역 데이터가 있으면 번역 적용
+                            if (window.languageData && window.languageData[currentLang] && window.languageData[currentLang].revelationMapping) {
+                              option.textContent = window.languageData[currentLang].revelationMapping[option.value] || option.value;
+                            }
+                          }
+                        }
+                      }
+                      
+                      if (p.subRev) {
+                        subRevSelect.value = p.subRev;
+                      }
+                    }
+                  }
+                }
+              });
+
+              // 계시 번역 적용 (공유 데이터 로드 후)
+              if (currentLang !== 'kr') {
+                // 계시 번역 함수
+                function getRevelationDisplayName(revName) {
+                  if (!window.languageData || !window.languageData[currentLang] || !window.languageData[currentLang].revelationMapping) {
+                    return revName;
+                  }
+                  const translated = window.languageData[currentLang].revelationMapping[revName] || revName;
+                  return translated;
+                }
+
+                
+                // 계시 번역 데이터가 없으면 강제로 로드 시도
+                if (!window.languageData || !window.languageData[currentLang] || !window.languageData[currentLang].revelationMapping) {
+                  // setparty.js의 setupTranslations 함수 호출
+                  if (typeof setupTranslations === 'function') {
+                    setupTranslations().then(() => {
+                      // 번역 데이터 로드 후 다시 시도
+                      document.querySelectorAll('.main-revelation, .sub-revelation').forEach(select => {
+                        for (const option of select.options) {
+                          if (option.value) {
+                            option.textContent = getRevelationDisplayName(option.value);
+                          }
+                        }
+                      });
+                    });
+                  }
+                } else {
+                  // 모든 계시 선택기의 옵션 텍스트 번역
+                  document.querySelectorAll('.main-revelation, .sub-revelation').forEach(select => {
+                    for (const option of select.options) {
+                      if (option.value) {
+                        option.textContent = getRevelationDisplayName(option.value);
+                      }
+                    }
+                  });
+                }
+              }
+
+              // characterData 준비 후 렌더링
+              const renderAfterDataReady = () => {
+                const charData = window.characterData || (typeof characterData !== 'undefined' ? characterData : null);
+                const currentLang = (typeof getCurrentLanguage === 'function') ? getCurrentLanguage() : 'kr';
+                if (currentLang === 'kr' || (charData && (charData['원더'] || charData['렌'] || charData['레오']))) {
+                  updatePartyImages();
+                  renderTurns();
+                } else {
+                  // characterData 대기 후 재시도
+                  setTimeout(renderAfterDataReady, 200);
+                }
+              };
+              renderAfterDataReady();
+              
+              // Restore action data for each turn
+              turns.forEach((turn, turnIndex) => {
+                const turnContainer = document.querySelector(`.turn-container[data-turn-index="${turnIndex}"]`);
+                if (!turnContainer) return;
+
+                const actionsList = turnContainer.querySelector('.actions');
+                if (!actionsList) return;
+
+                turn.actions.forEach((action, actionIndex) => {
+                  const actionItem = actionsList.children[actionIndex]; 
+                  if (!actionItem) return;
+
+                  // Select character
+                  const charSelect = actionItem.querySelector('.action-character');
+                  if (charSelect) {
+                    // 참고사항 옵션이 없으면 추가
+                    const hasReferenceOption = Array.from(charSelect.options).some(opt => opt.value === '');
+                    if (!hasReferenceOption) {
+                      const referenceText = getI18nValue('uiReference', '참고사항');
+                      const refOption = document.createElement('option');
+                      refOption.value = '';
+                      refOption.textContent = referenceText;
+                      charSelect.insertBefore(refOption, charSelect.firstChild);
+                    }
+                    charSelect.value = action.character || '';
+                  }
+
+                  // Select Wonder persona or skill
+                  if (action.character === "원더") {
+                    const personaSelect = actionItem.querySelector('.wonder-persona-select');
+                    if (personaSelect) {
+                      personaSelect.value = action.wonderPersona;
+                    }
+                  } else {
+                    const skillSelect = actionItem.querySelector('.action-skill');
+                    if (skillSelect) {
+                      skillSelect.value = action.action;
+                    }
+                  }
+
+                  // Input memo
+                  const memoInput = actionItem.querySelector('.action-memo');
+                  if (memoInput) {
+                    memoInput.value = action.memo || "";
+                  }
+                });
+              });
+              
+              // Update auto actions last
+              updateAutoActions();
+              
+            } 
+          });
+        } else {
+          setupWonderConfig();
+          try {
+            if (typeof setupTranslations === 'function') {
+              setupTranslations()
+                .then(async () => {
+                  try {
+                    if (typeof setupPartySelection === 'function') setupPartySelection();
+                  } catch(_) {}
+                  // 캐릭터/계시 번역 데이터가 준비된 이후 파티 이름 번역을 한 번 더 적용
+                  try {
+                    if (typeof initializePartyTranslations === 'function') await initializePartyTranslations();
+                  } catch(_) {}
+                })
+                .catch(async () => {
+                  try {
+                    if (typeof setupPartySelection === 'function') setupPartySelection();
+                  } catch(_) {}
+                  try {
+                    if (typeof initializePartyTranslations === 'function') await initializePartyTranslations();
+                  } catch(_) {}
+                });
+            } else {
+              if (typeof setupPartySelection === 'function') { setupPartySelection(); }
+              try {
+                if (typeof initializePartyTranslations === 'function') await initializePartyTranslations();
+              } catch(_) {}
+            }
+          } catch(_) {
+            if (typeof setupPartySelection === 'function') { setupPartySelection(); }
+            try {
+              if (typeof initializePartyTranslations === 'function') await initializePartyTranslations();
+            } catch(_) {}
+          }
+          updateAutoActions();
+          // characterData 준비 후 렌더링
+          const renderAfterDataReady = () => {
+            const charData = window.characterData || (typeof characterData !== 'undefined' ? characterData : null);
+            const currentLang = (typeof getCurrentLanguage === 'function') ? getCurrentLanguage() : 'kr';
+            if (currentLang === 'kr' || (charData && (charData['원더'] || charData['렌'] || charData['레오']))) {
+              updatePartyImages();
+              renderTurns();
+            } else {
+              // characterData 대기 후 재시도
+              setTimeout(renderAfterDataReady, 200);
+            }
+          };
+          renderAfterDataReady();
+
+          // 데이터도 라이브러리도 없는 순수 진입 시, 편집 UI를 기본으로 보이고 토글 버튼 비활성화
+          if (!libraryParam) {
+            const containerEl = document.querySelector('.container');
+            if (containerEl) containerEl.classList.remove('hide-ui');
+            const desktopToggleBtn = document.querySelector('.header-container .toggle-ui-btn');
+            const mobileToggleBtn = document.querySelector('.mobile-buttons .toggle-ui-btn');
+            if (desktopToggleBtn) desktopToggleBtn.classList.remove('active');
+            if (mobileToggleBtn) mobileToggleBtn.classList.remove('active');
+            try { localStorage.setItem('uiHidden', false); } catch(_) {}
+          }
+        }
+
+        // Add skill list to datalist
+        const skillsList = document.getElementById('persona-skills-list');
+        
+        // Add all skills from personaSkillList to datalist
+        Object.keys(personaSkillList).forEach(skillName => {
+          const option = document.createElement('option');
+          option.value = skillName;
+          skillsList.appendChild(option);
+        });
+
+        // Select searchable dropdown elements
+        const searchableInputs = document.querySelectorAll('input[list]');
+        
+        searchableInputs.forEach(input => {
+          // Handle dropdown arrow click with mousedown event
+          input.addEventListener('mousedown', function(e) {
+            // Detect dropdown arrow click (right 20px area of input field)
+            if (e.offsetX > this.offsetWidth - 20) {
+              // Clear value and keep focus
+              this.value = '';
+            }
+          });
+        });
+
+        const inputFields = document.querySelectorAll('input[type="text"], textarea');
+        let lastScrollPosition = 0;
+
+        inputFields.forEach(field => {
+            // Use only focus event
+            field.addEventListener('focus', function() {
+                // Allow natural keyboard display without interfering with default behavior
+                setTimeout(() => {
+                    const fieldRect = this.getBoundingClientRect();
+                    const offset = fieldRect.top - 150;
+                    
+                    window.scrollTo({
+                        top: window.scrollY + offset,
+                        behavior: 'auto'
+                    });
+                }, 300);
+            });
+        });
+
+        // Initialize keyboard detection on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            // Update viewport meta tag
+            const meta = document.querySelector('meta[name="viewport"]');
+            if (meta) {
+                meta.setAttribute('content', 
+                    'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover'
+                );
+            }
+        });
+
+        // 화면 크기에 따라 캡처 버튼 표시 여부 설정
+        function updateCaptureButtonVisibility() {
+          const captureBtn = document.querySelector('.capture-btn');
+          if (captureBtn) {
+            if (window.innerWidth <= 1440) {
+              captureBtn.style.display = 'none';
+            } else {
+              captureBtn.style.display = '';
+            }
+          }
+        }
+        
+        // 초기 로드 시 실행
+        updateCaptureButtonVisibility();
+        
+        // 화면 크기가 변경될 때마다 실행
+        window.addEventListener('resize', updateCaptureButtonVisibility);
+
+      });
+
+
+      // Basic URL function
+      function getBaseUrl() {
+        // Return the base URL of the current page (excluding query parameters)
+        return window.location.href.split('?')[0];
+      }
+
+
+      // UI toggle
+      function toggleUI() {
+        const container = document.querySelector('.container');
+        const desktopToggleBtn = document.querySelector('.header-container .toggle-ui-btn');
+        const mobileToggleBtn = document.querySelector('.mobile-buttons .toggle-ui-btn');
+        
+        container.classList.toggle('hide-ui');
+        
+        // Handle both desktop and mobile buttons
+        if (desktopToggleBtn) desktopToggleBtn.classList.toggle('active');
+        if (mobileToggleBtn) mobileToggleBtn.classList.toggle('active');
+        
+        // Save toggle state
+        localStorage.setItem('uiHidden', container.classList.contains('hide-ui'));
+      }
+
+      // Restore previous state on page load
+      document.addEventListener('DOMContentLoaded', () => {
+        const uiHidden = localStorage.getItem('uiHidden') === 'true';
+        const desktopToggleBtn = document.querySelector('.header-container .toggle-ui-btn');
+        const mobileToggleBtn = document.querySelector('.mobile-buttons .toggle-ui-btn');
+        
+        if (uiHidden) {
+          document.querySelector('.container').classList.add('hide-ui');
+          if (desktopToggleBtn) desktopToggleBtn.classList.add('active');
+          if (mobileToggleBtn) mobileToggleBtn.classList.add('active');
+        }
+
+        /* ========================
+           계시 커스텀 드롭다운 초기화
+           - 원본 select(.main-revelation, .sub-revelation)는 그대로 유지(클래스명 불변)
+           - UI만 커스텀, 이미지 표시 및 다국어 표시 유지(getRevelationDisplayName 사용)
+        =========================*/
+        (function initRevelationCustomDropdowns(){
+          // 스타일은 assets/css/tactic.css에 정의됨
+
+          const BASE = (typeof BASE_URL !== 'undefined' && BASE_URL) ? BASE_URL : '';
+
+          function getRevDisplayText(value){
+            try { return (typeof getRevelationDisplayName === 'function') ? getRevelationDisplayName(value) : value; } catch(_) { return value; }
+          }
+
+          function buildOptions(select, listEl){
+            listEl.innerHTML = '';
+            for (const opt of select.options) {
+              const val = opt.value;
+              const text = val ? getRevDisplayText(val) : '-';
+              const item = document.createElement('div');
+              item.className = 'rev-option';
+              if (val) {
+                const img = document.createElement('img');
+                img.src = `${BASE}/assets/img/revelation/${val}.webp`;
+                img.alt = '';
+                img.onerror = function(){ this.style.display = 'none'; };
+                item.appendChild(img);
+              }
+              const span = document.createElement('span');
+              span.textContent = text;
+              item.appendChild(span);
+              item.addEventListener('click', () => {
+                select.value = val;
+                // change 이벤트 전파 (기존 로직 유지)
+                select.dispatchEvent(new Event('change', { bubbles: true }));
+                updateDisplay(select);
+                listEl.classList.remove('active');
+              });
+              listEl.appendChild(item);
+            }
+          }
+
+          function updateDisplay(select){
+            const wrap = select.closest('.rev-select-wrap');
+            if (!wrap) return;
+            const disp = wrap.querySelector('.rev-display');
+            if (!disp) return;
+            const current = select.value;
+            const text = current ? getRevDisplayText(current) : '-';
+            disp.innerHTML = '';
+            if (current) {
+              const img = document.createElement('img');
+              img.src = `${BASE}/assets/img/revelation/${current}.webp`;
+              img.alt = '';
+              img.onerror = function(){ this.style.display = 'none'; };
+              disp.appendChild(img);
+            }
+            const span = document.createElement('span');
+            span.textContent = text;
+            disp.appendChild(span);
+
+            // disabled 상태 반영
+            disp.style.opacity = select.disabled ? '0.6' : '1';
+            disp.style.pointerEvents = select.disabled ? 'none' : 'auto';
+          }
+
+          function enhanceSelect(select){
+            if (!select || select.closest('.rev-select-wrap')) return; // 중복 방지
+            const group = select.closest('.input-group') || select.parentElement;
+            if (!group) return;
+
+            const wrap = document.createElement('div');
+            wrap.className = 'rev-select-wrap';
+
+            const display = document.createElement('div');
+            display.className = 'rev-display';
+
+            const list = document.createElement('div');
+            list.className = 'rev-options';
+
+            // 클릭 토글
+            display.addEventListener('click', (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              if (select.disabled) return;
+              // 우선 전역 포탈 사용 (일관된 UI)
+              if (typeof openPortal === 'function') {
+                try { select.blur(); } catch(_) {}
+                const type = select.classList.contains('main-revelation') ? 'rev-main' : 'rev-sub';
+                const ctx = type === 'rev-sub' ? { mainForSub: (group.querySelector('select.main-revelation') || {}).value } : {};
+                openPortal(type, select, {
+                  ...ctx,
+                  onSelect: (value /* KR */) => {
+                    select.value = value;
+                    select.dispatchEvent(new Event('change', { bubbles: true }));
+                    // 포탈 내부에서 닫힘 처리됨
+                  }
+                });
+                return;
+              }
+              // 포탈이 없다면 기존 로컬 목록 토글로 폴백
+              const isActive = list.classList.contains('active');
+              document.querySelectorAll('.rev-options.active').forEach(el => el.classList.remove('active'));
+              if (!isActive) list.classList.add('active');
+            });
+            document.addEventListener('click', () => list.classList.remove('active'));
+
+            // 구성 삽입: label 다음에 wrap을 넣고 select 이동
+            const label = group.querySelector('label');
+            if (label && label.nextSibling) group.insertBefore(wrap, label.nextSibling); else group.appendChild(wrap);
+            wrap.appendChild(display);
+            wrap.appendChild(list);
+            wrap.appendChild(select); // 원본 select 유지(클래스/이벤트 그대로)
+
+            // 초기 표시/옵션 구성
+            updateDisplay(select);
+            buildOptions(select, list);
+
+            // select 변경 시 표시 갱신
+            select.addEventListener('change', () => updateDisplay(select));
+
+            // 옵션 변화 감지 (주 변경 후 일월성진 옵션 갱신 대응)
+            const mo = new MutationObserver(() => {
+              buildOptions(select, list);
+              updateDisplay(select);
+            });
+            mo.observe(select, { childList: true });
+
+            // disabled/값 변화도 주기적으로 동기화 (저빈도 폴링)
+            let lastDisabled = select.disabled;
+            let lastValue = select.value;
+            setInterval(() => {
+              let need = false;
+              if (select.disabled !== lastDisabled) {
+                lastDisabled = select.disabled;
+                need = true;
+              }
+              if (select.value !== lastValue) {
+                lastValue = select.value;
+                need = true;
+              }
+              if (need) updateDisplay(select);
+            }, 300);
+          }
+
+          function initAll(){
+            document.querySelectorAll('select.main-revelation, select.sub-revelation').forEach(enhanceSelect);
+          }
+
+          // 초기 시도: DOMContentLoaded 직후 + 약간 지연 후 재시도(동적 옵션 채움 대비)
+          initAll();
+          setTimeout(initAll, 400);
+          setTimeout(initAll, 1000);
+        })();
+
+      });
+
+      function toggleTurnsLock() {
+        const lockBtn = document.querySelector('.mobile-lock-btn');
+        const turnsContainer = document.getElementById('turns');
+        
+        lockBtn.classList.toggle('active');
+        turnsContainer.classList.toggle('turns-locked');
+        
+        // Save lock state
+        localStorage.setItem('turnsLocked', turnsContainer.classList.contains('turns-locked'));
+
+        renderTurns();
+      }
+
+      // Restore previous lock state on page load
+      document.addEventListener('DOMContentLoaded', () => {
+        const turnsLocked = localStorage.getItem('turnsLocked') === 'true';
+        const lockBtn = document.querySelector('.mobile-lock-btn');
+        const turnsContainer = document.getElementById('turns');
+        
+        // PC 환경(1200px 이상)에서는 잠금 해제
+        if (window.innerWidth >= 1200) {
+          if (turnsLocked) {
+            localStorage.setItem('turnsLocked', false);
+          }
+          if (lockBtn) lockBtn.classList.remove('active');
+          if (turnsContainer) turnsContainer.classList.remove('turns-locked');
+        } else if (turnsLocked) {
+          // 모바일에서는 이전 잠금 상태 유지
+          if (lockBtn) lockBtn.classList.add('active');
+          if (turnsContainer) turnsContainer.classList.add('turns-locked');
+        }
+
+        // 화면 크기 변경 시에도 적용
+        window.addEventListener('resize', () => {
+          if (window.innerWidth >= 1200) {
+            if (lockBtn) lockBtn.classList.remove('active');
+            if (turnsContainer) turnsContainer.classList.remove('turns-locked');
+            localStorage.setItem('turnsLocked', false);
+          }
+        });
+      });
+
+    </script>
+    <script>
+      // Mobile/PC accordion for Wonder and Party cards
+      (function(){
+        const svgArrow = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+        const isMobile = () => window.innerWidth <= 1200;
+        const sections = {};
+
+        function initSection(cardId){
+          const card = document.getElementById(cardId);
+          if(!card) return;
+          const header = card.querySelector('h2');
+          if(!header) return;
+          const bodyEls = Array.from(card.children).filter(el => el.tagName && el.tagName.toLowerCase() !== 'h2');
+          if(!header.querySelector('.accordion-arrow')){
+            const arrow = document.createElement('span');
+            arrow.className = 'accordion-arrow';
+            arrow.innerHTML = svgArrow;
+            arrow.style.display = 'inline-flex';
+            arrow.style.marginLeft = '8px';
+            arrow.style.transition = 'transform .15s ease';
+            header.style.display = 'flex';
+            header.style.alignItems = 'center';
+            header.appendChild(arrow);
+            sections[cardId] = { card, header, bodyEls, arrow, collapsed: false, userToggled: false };
+
+            const apply = (s) => {
+              s.bodyEls.forEach(el => el.style.display = s.collapsed ? 'none' : '');
+              s.arrow.style.transform = s.collapsed ? 'rotate(180deg)' : 'rotate(0deg)';
+            };
+
+            const syncWithViewport = () => {
+              // Only set default based on viewport if user hasn't interacted yet.
+              if (!sections[cardId].userToggled) {
+                if (window.__forceAccordionCollapse === true) {
+                  sections[cardId].collapsed = true;
+                } else if (isMobile()) {
+                  sections[cardId].collapsed = true;
+                } else {
+                  sections[cardId].collapsed = false;
+                }
+              }
+              apply(sections[cardId]);
+            };
+
+            // initial
+            syncWithViewport();
+
+            header.addEventListener('click', () => {
+              if (!isMobile()) {
+                // Desktop: toggle both together
+                const targetState = !sections[cardId].collapsed;
+                Object.values(sections).forEach(s => { s.collapsed = targetState; s.userToggled = true; apply(s); });
+              } else {
+                // Mobile: toggle this only
+                sections[cardId].collapsed = !sections[cardId].collapsed;
+                sections[cardId].userToggled = true;
+                apply(sections[cardId]);
+              }
+            });
+
+            window.addEventListener('resize', syncWithViewport);
+
+            // expose global controller
+            if (typeof window.setAccordionCollapsed !== 'function') {
+              window.setAccordionCollapsed = function(collapsed){
+                Object.values(sections).forEach(s => { s.collapsed = !!collapsed; s.userToggled = true; apply(s); });
+              };
+            }
+          }
+        }
+
+        document.addEventListener('DOMContentLoaded', function(){
+          initSection('wonder-config');
+          initSection('party-selection');
+          // If forced collapse was set before init, apply once
+          if (window.__forceAccordionCollapse === true && typeof window.setAccordionCollapsed === 'function') {
+            window.setAccordionCollapsed(true);
+          }
+        });
+      })();
+    </script>
+
+  <!-- datalist --> 
+  <datalist id="persona-skills-list">
+    <!-- JavaScript will fill this -->
+  </datalist>

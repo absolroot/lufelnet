@@ -334,7 +334,7 @@ if (/^\/(kr|en|jp)\//.test(window.location.pathname)) return;
 | astrolabe | B (single-page) | `generate-astrolabe-pages.mjs` | Done |
 | article (guides list + detail) | Hybrid (single-page + per-item) | `generate-article-pages.mjs` | Done |
 | persona | A (per-item) | `generate-persona-pages.mjs` | Done |
-| maps | A (per-item) | — | Not started |
+| maps | B (single-page) | `generate-maps-pages.mjs` | Done |
 
 ## URL Patterns
 
@@ -357,6 +357,7 @@ if (/^\/(kr|en|jp)\//.test(window.location.pathname)) return;
 | Pull Tracker (guide) | `/kr/pull-tracker/url-guide/`, `/en/pull-tracker/url-guide/`, `/jp/pull-tracker/url-guide/` |
 | About | `/kr/about/`, `/en/about/`, `/jp/about/` |
 | Gallery | `/kr/gallery/`, `/en/gallery/`, `/jp/gallery/` |
+| Maps | `/kr/maps/`, `/en/maps/`, `/jp/maps/` |
 | Article (guides list) | `/kr/article/`, `/en/article/`, `/jp/article/` |
 | Article (guide detail) | `/kr/article/{id}/`, `/en/article/{id}/`, `/jp/article/{id}/` |
 | Persona (detail) | `/kr/persona/{slug}/`, `/en/persona/{slug}/`, `/jp/persona/{slug}/` |
@@ -389,6 +390,8 @@ Legacy query-based URLs are rewritten to clean path-based URLs via `history.repl
 | `/pull-tracker/url-guide/?lang=en&v=4.4.8` | `/en/pull-tracker/url-guide/` |
 | `/about/?lang=en&v=4.4.8` | `/en/about/` |
 | `/gallery/?lang=en&v=4.4.8` | `/en/gallery/` |
+| `/maps/?lang=en&v=4.4.8` | `/en/maps/` |
+| `/en/maps/?lang=en&v=4.4.8` | `/en/maps/` |
 | `/article/?lang=en&v=4.4.8` | `/en/article/` |
 | `/article/technical-master/?lang=en&v=4.4.8` | `/en/article/technical-master/` |
 | `/article/view/?id=technical-master&lang=en&v=4.4.8` | `/en/article/technical-master/` |
@@ -398,6 +401,77 @@ Legacy query-based URLs are rewritten to clean path-based URLs via `history.repl
 The rewrite scripts are placed at the top of the body include or page, before any other scripts, so they run early. They use the `__*_SLUG_MAP` data (injected via Jekyll) to resolve slugs.
 
 For app paths not listed in `LanguageRouter.isSeoDetailPath()` (e.g. `tier`), set `window.__SEO_PATH_LANG__ = lang` before `replaceState` when rewriting query URLs to path URLs.
+
+## Sitemap Policy (Canonical-Only)
+
+### Architecture
+
+- `sitemap.xml` is now an index file only.
+- Child sitemaps are split by scope/language:
+  - `sitemaps/sitemap-core.xml`
+  - `sitemaps/sitemap-ko.xml`
+  - `sitemaps/sitemap-en.xml`
+  - `sitemaps/sitemap-ja.xml`
+  - `sitemaps/sitemap-zh.xml`
+
+### Inclusion Rules
+
+A page is included only when all of the following are true:
+
+- `layout != null`
+- `sitemap != false`
+- `sitemap.exclude != true`
+- URL does not contain `.xml`, `assets`, or `?`
+- URL matches canonical path style (legacy redirect paths are excluded by rule)
+
+### hreflang Normalization
+
+Sitemap hreflang is emitted through `_includes/sitemap-hreflang-links.xml` only.
+Input keys from `alternate_urls` are normalized:
+
+- `ko` or `kr` -> `ko`
+- `en` -> `en`
+- `ja` or `jp` -> `ja`
+- `zh-CN` or `cn` -> `zh-CN`
+- `zh-TW` or `tw` -> `zh-TW`
+
+`x-default` uses `ko` alternate first; if missing, it falls back to the page's own canonical URL.
+
+### Metadata Policy
+
+- `<lastmod>` is emitted only when `page.sitemap.lastmod` exists.
+- `<changefreq>` is emitted only when `page.sitemap.changefreq` exists.
+- `<priority>` is emitted only when `page.sitemap.priority` exists.
+- No global default date/frequency/priority is injected.
+
+### Redirect Contract
+
+All redirect/stub pages must include:
+
+- `sitemap: false`
+- `<meta name="robots" content="noindex,nofollow">`
+
+This includes generated root and legacy redirect stubs, and any JS redirect list stubs.
+
+### Commands
+
+- Generate all SEO pages (maps excluded):
+  - `npm run seo:all:generate`
+- Check all SEO generated pages (maps excluded):
+  - `npm run seo:all:check`
+- Validate built sitemap outputs:
+  - `npm run seo:sitemap:check`
+
+`seo:sitemap:check` validates:
+
+- sitemap index references exactly 5 child sitemaps
+- no duplicate `<loc>` per child sitemap
+- no query URLs (`?lang=` 포함) in `<loc>`
+- no legacy non-language detail URLs (`/character/{slug}/` etc.)
+- no forbidden hreflang (`jp`, `kr`, `cn`, `tw`)
+- `sitemap: false` pages are not present in sitemap outputs
+- CN sitemap stays canonical and currently centered on `/cn/astrolabe/`
+- UTF-8 without BOM for sitemap-related source/output files
 
 ## Encoding and File Safety
 

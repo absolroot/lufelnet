@@ -141,7 +141,7 @@
         materialCalc: '/material-calc',
         defenseCalc: '/defense-calc',
         criticalCalc: '/critical-calc',
-        tacticLibrary: '/tactic/tactics.html',
+        tacticLibrary: '/tactic/library/',
         tacticMaker: '/tactic-maker',
         tier: '/tier/',
         guide: '/article',

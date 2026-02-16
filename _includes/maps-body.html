@@ -1,0 +1,302 @@
+<script>
+(function () {
+    var params = new URLSearchParams(window.location.search || '');
+    var path = String(window.location.pathname || '/');
+    var lowerPath = path.toLowerCase();
+
+    var pathLangMatch = lowerPath.match(/^\/(kr|en|jp)(\/|$)/);
+    var pathLang = pathLangMatch ? pathLangMatch[1] : '';
+    var queryLang = String(params.get('lang') || '').toLowerCase();
+    var effectiveLang = pathLang || (['kr', 'en', 'jp'].indexOf(queryLang) !== -1 ? queryLang : '');
+
+    var isLegacyRoot = /^\/maps\/?$/.test(lowerPath);
+    var isCanonicalPath = /^\/(kr|en|jp)\/maps\/?$/.test(lowerPath);
+
+    if (isLegacyRoot && effectiveLang) {
+        window.__SEO_PATH_LANG__ = effectiveLang;
+        params.delete('lang');
+        params.delete('v');
+        var remainingLegacy = params.toString();
+        history.replaceState(null, '', '/' + effectiveLang + '/maps/' + (remainingLegacy ? '?' + remainingLegacy : ''));
+        return;
+    }
+
+    if (isCanonicalPath) {
+        window.__SEO_PATH_LANG__ = pathLang;
+        var before = params.toString();
+        params.delete('lang');
+        params.delete('v');
+        var remainingCanonical = params.toString();
+        if (before !== remainingCanonical) {
+            history.replaceState(null, '', path + (remainingCanonical ? '?' + remainingCanonical : ''));
+        }
+        return;
+    }
+
+    if (isLegacyRoot && params.has('v')) {
+        params.delete('v');
+        var remainingRoot = params.toString();
+        history.replaceState(null, '', '/maps/' + (remainingRoot ? '?' + remainingRoot : ''));
+    }
+})();
+</script>
+{% if page.alternate_urls %}
+{% for alt in page.alternate_urls %}
+<link rel="alternate" hreflang="{{ alt[0] }}" href="{{ site.url }}{{ alt[1] }}" />
+{% endfor %}
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.alternate_urls['ko'] | default: page.alternate_urls.first[1] }}" />
+{% endif %}
+<div id="map-container">
+    <div id="loading">
+        <img id="loading-gif" src="" alt="로딩 중">
+        <div id="loading-text">지도를 불러오는 중...</div>
+    </div>
+
+    <!-- 좌측 상단: 로고 컨테이너 -->
+    <div class="maps-logo-container"></div>
+
+    <!-- 좌측: 오브젝트 필터 패널 -->
+    <div id="object-filter-panel" class="side-panel">
+        <h2 id="object-filter-title">오브젝트 필터</h2>
+        <div class="filter-controls">
+            <button class="filter-control-btn select-all" id="select-all-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 11l3 3L22 4"></path>
+                    <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h7"></path>
+                </svg>
+                <span id="select-all-text">전체 선택</span>
+            </button>
+            <button class="filter-control-btn reset" id="reset-filter-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 12a9 9 0 019-9 9.75 9.75 0 016.74 2.74L21 8"></path>
+                    <path d="M21 3v5h-5"></path>
+                    <path d="M21 12a9 9 0 01-9 9 9.75 9.75 0 01-6.74-2.74L3 16"></path>
+                    <path d="M3 21v-5h5"></path>
+                </svg>
+                <span id="reset-filter-text">초기화</span>
+            </button>
+        </div>
+        <div id="filter-container"></div>
+        <div class="control-group">
+            <label>줌</label>
+            <div class="zoom-controls">
+                <button class="zoom-btn" id="zoom-in">+</button>
+                <button class="zoom-btn" id="zoom-out">-</button>
+                <button class="zoom-btn" id="zoom-reset">리셋</button>
+            </div>
+        </div>
+        <div class="info-text">
+            <div class="info-item">
+                <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 9l-3 3 3 3M9 5l3-3 3 3M9 19l3 3 3-3M19 9l3 3-3 3"></path>
+                </svg>
+                <span id="move-text">드래그 / WASD / 방향키: 이동</span>
+            </div>
+            <div class="info-item">
+                <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    <line x1="8" y1="11" x2="14" y2="11"></line>
+                    <line x1="11" y1="8" x2="11" y2="14"></line>
+                </svg>
+                <span id="zoom-text">휠 / +/-: 줌</span>
+            </div>
+        </div>
+        <!-- language selector -->
+        <div class="language-selector-container">
+            <div class="custom-select">
+                <div class="selected-option">
+                    <img src="" alt="" class="flag-icon">
+                    <span></span>
+                </div>
+                <div class="options-container">
+                    <div class="option" data-value="kr" role="button" tabindex="0">
+                        <img src="" alt="kr" class="flag-icon">
+                        <span data-lang-label="kr"></span>
+                    </div>
+                    <div class="option" data-value="en" role="button" tabindex="0">
+                        <img src="" alt="en" class="flag-icon">
+                        <span data-lang-label="en"></span>
+                    </div>
+                    <div class="option" data-value="jp" role="button" tabindex="0">
+                        <img src="" alt="jp" class="flag-icon">
+                        <span data-lang-label="jp"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 모바일용 상단 브레드크럼 네비게이션 -->
+    <div id="mobile-breadcrumb" class="mobile-breadcrumb">
+        <div class="mobile-breadcrumb-logo"></div>
+        <div class="mobile-breadcrumb-items">
+            <span class="breadcrumb-item" data-level="tab">팰리스</span>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-item" data-level="category">-</span>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-item" data-level="map">-</span>
+            <span class="breadcrumb-separator breadcrumb-submap-sep" style="display:none;">›</span>
+            <span class="breadcrumb-item breadcrumb-submap" data-level="submap" style="display:none;">-</span>
+        </div>
+    </div>
+
+    <!-- 모바일용 바텀시트 오버레이 -->
+    <div id="mobile-overlay" class="mobile-overlay"></div>
+
+    <!-- 모바일용 하단 플로팅 버튼 -->
+    <div id="mobile-floating-buttons" class="mobile-floating-buttons">
+        <button id="mobile-filter-btn" class="mobile-fab" aria-label="오브젝트 필터" data-i18n-aria-key="objectFilter">
+            <img src="{{ site.baseurl }}/apps/maps/fenbaoxiazai-icon-tongyong-new.png" alt="필터" class="mobile-fab-icon">
+            <span>필터</span>
+        </button>
+        <button id="mobile-map-btn" class="mobile-fab" aria-label="맵 선택" data-i18n-aria-key="mapSelect">
+            <img src="{{ site.baseurl }}/apps/maps/fenbaoxiazai-icon-ditu-new.png" alt="맵" class="mobile-fab-icon">
+            <span>맵</span>
+        </button>
+    </div>
+
+    <!-- 우측: 맵 선택 패널 -->
+    <div id="map-select-panel" class="side-panel">
+        <!-- 탭 -->
+        <div id="map-tabs">
+            <button class="map-tab active" data-map-id="palace">팰리스</button>
+            <button class="map-tab" data-map-id="mementoes">메멘토스</button>
+        </div>
+
+        <!-- 카테고리 드롭다운 -->
+        <div id="category-select-container">
+            <div id="category-select" class="custom-category-select">
+                <div class="selected-category-option">
+                    <img src="" alt="" class="category-icon" id="selected-category-icon" style="display: none;">
+                    <span id="selected-category-text"></span>
+                    <span class="dropdown-arrow"></span>
+                </div>
+                <div class="category-options-container" id="category-options-container" style="display: none;">
+                    <!-- 옵션들이 여기에 동적으로 추가됨 -->
+                </div>
+            </div>
+        </div>
+
+        <!-- 맵 리스트 -->
+        <div id="map-list-container">
+            <div id="map-list"></div>
+        </div>
+    </div>
+</div>
+
+<script src="https://pixijs.download/release/pixi.min.js"></script>
+<script src="{{ site.baseurl }}/i18n/pages/maps/kr.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/i18n/pages/maps/en.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/i18n/pages/maps/jp.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/maps/maps-i18n.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/maps/maps-debug.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/maps/object-click-handler.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/maps/maps-core.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/maps/object-filter-panel.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/maps/map-select-panel.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/maps/maps-seo.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/maps/map-exception-handling.js?v={{ site.time | date: '%s' }}"></script>
+
+<script>
+    // 초기화
+    (async () => {
+        // 로딩 GIF 경로 설정
+        const BASE_URL = typeof window.BASE_URL !== 'undefined' ? window.BASE_URL : '';
+        function normalizePath(base, path) {
+            const cleanBase = base.replace(/\/+$/, '');
+            const cleanPath = path.replace(/^\/+/, '');
+            return cleanBase ? `${cleanBase}/${cleanPath}` : `/${cleanPath}`;
+        }
+
+        const loadingGif = document.getElementById('loading-gif');
+        if (loadingGif) {
+            const gifPath = normalizePath(BASE_URL, 'apps/maps/p5xkr_walk_960.gif');
+            loadingGif.src = gifPath;
+        }
+
+        // UI 번역
+        if (window.ObjectFilterPanel) {
+            window.ObjectFilterPanel.translateUI();
+        }
+        if (window.MapSelectPanel) {
+            window.MapSelectPanel.translateUI();
+        }
+
+        // 언어 변경 감지
+        let lastLang = window.MapsI18n ? window.MapsI18n.getCurrentLanguage() : 'kr';
+        setInterval(() => {
+            if (!window.MapsI18n) return;
+            const currentLang = window.MapsI18n.getCurrentLanguage();
+            if (currentLang !== lastLang) {
+                lastLang = currentLang;
+                if (window.ObjectFilterPanel) {
+                    window.ObjectFilterPanel.translateUI();
+                }
+                if (window.MapSelectPanel) {
+                    window.MapSelectPanel.translateUI();
+                    window.MapSelectPanel.updateCategoryDropdown();
+                    window.MapSelectPanel.updateMapList();
+                }
+            }
+        }, 100);
+
+        // PixiJS 초기화
+        const initSuccess = await window.MapsCore.initPixi();
+        if (initSuccess) {
+            // 오브젝트 필터 패널 초기화
+            if (window.ObjectFilterPanel) {
+                window.ObjectFilterPanel.init();
+            }
+
+            // 맵 선택 패널 초기화
+            if (window.MapSelectPanel) {
+                window.MapSelectPanel.init();
+            }
+
+            // 맵 목록 로드
+            try {
+                const paths = window.MapsCore.getPaths();
+                const response = await fetch(paths.MAPS_LIST_PATH);
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                const mapsListData = await response.json();
+                window.MapsCore.setMapsListData(mapsListData);
+
+                // 맵 선택 패널 UI 구축
+                if (window.MapSelectPanel) {
+                    window.MapSelectPanel.buildMapUI();
+
+                    // URL 파라미터에서 맵 로드 시도
+                    let loadedFromURL = false;
+                    if (window.MapsSEO) {
+                        loadedFromURL = await window.MapsSEO.loadMapFromURL();
+                    }
+
+                    // URL에서 로드하지 못한 경우 첫 번째 맵 자동 선택
+                    if (!loadedFromURL) {
+                        await window.MapSelectPanel.autoSelectFirstMap();
+                    }
+                }
+            } catch (error) {
+                console.error('맵 목록 로드 실패:', error);
+                const loadingText = document.getElementById('loading-text');
+                if (loadingText) {
+                    const lang = window.MapsI18n ? window.MapsI18n.getCurrentLanguage() : 'kr';
+                    const fallbackPack = (window.MapsI18n && window.MapsI18n.getPack)
+                        ? window.MapsI18n.getPack('kr')
+                        : {};
+                    let message = fallbackPack.mapListLoadError || '맵 목록을 불러올 수 없습니다.';
+                    if (window.MapsI18n && window.MapsI18n.getText) {
+                        const translated = window.MapsI18n.getText(lang, 'mapListLoadError');
+                        if (translated && translated !== 'mapListLoadError') {
+                            message = translated;
+                        }
+                    }
+                    loadingText.textContent = message;
+                }
+            }
+        }
+    })();
+</script>

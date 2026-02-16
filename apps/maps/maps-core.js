@@ -27,6 +27,11 @@
 
     // 현재 언어 감지
     function getCurrentLanguage() {
+        const pathMatch = window.location.pathname.match(/^\/(kr|en|jp)(\/|$)/i);
+        if (pathMatch) {
+            return pathMatch[1].toLowerCase();
+        }
+
         const urlParams = new URLSearchParams(window.location.search);
         const urlLang = urlParams.get('lang');
         if (urlLang && ['kr', 'en', 'jp'].includes(urlLang)) {

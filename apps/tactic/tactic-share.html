@@ -1,166 +1,31 @@
 ---
-layout: default
-custom_css: [tactic, tactic-share]
-custom_js: [tooltip, tactic/share, tactic-preview, tactic-share]
-custom_data: [tooltip.js, /data/character_info.js, revelations/revelations.js, tactic/pattern.js, wonder/weapons.js, wonder/skills.js]
+layout: null
 permalink: /tactic/tactic-share.html
-language: kr
-title : 택틱 대장간 - 페르소나5 더 팬텀 X 루페르넷
-description: 페르소나5 더 팬텀 X 택틱을 자유롭게 공유하세요.
+sitemap: false
 ---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Redirecting...</title>
+</head>
+<body>
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search || '');
+      var lang = String(params.get('lang') || '').toLowerCase();
+      var target = (lang === 'kr' || lang === 'en' || lang === 'jp')
+        ? ('/' + lang + '/tactic/library/')
+        : '/tactic/library/';
 
-
-
-
-<!-- 메인 컨텐츠 -->
-<div class="main-wrapper">
-    <!-- 네비게이션 경로 -->
-    <div class="navigation-path">
-        <script>document.write(`<a id="nav-home" data-i18n="nav_home" href="../../?v=${APP_VERSION}">홈</a>`);</script>
-        <span class="separator">/</span>
-        <span class="current-page" id="nav-current" data-i18n="nav_current">택틱 / 택틱 대장간</span>
-    </div>
-    <div class="header-container">
-        <h1 id="page-title" data-i18n="page_title">택틱 대장간</h1>
-    </div>
-
-    <!-- 게시물 작성 폼 -->  
-    <div class="top-container">
-        <div class="post-form">
-            <h2 data-i18n="form_title">택틱 메이커로 만든 작품을 등록하세요</h2>
-            <form id="tacticForm">
-                <div class="tacticUrl">
-                    <p data-i18n="share_url_label">공유 URL*</p>
-                    <input type="text" id="tacticUrl" data-i18n-placeholder="share_url_placeholder" placeholder="https://lufel.net/tactic/?data=*" required>
-                </div>
-                <div class="tacticTitle">
-                    <p data-i18n="title_label">제목*</p>
-                    <input type="text" id="title" data-i18n-placeholder="title_placeholder" placeholder="[첩첩 흉몽/허약 흉몽/마음의 바다/이벤트 이름] 보스 이름 (점수)" required>
-                </div>
-                <div class="tacticAuthor">
-                    <p data-i18n="author_label">작성자*</p>
-                    <input type="text" id="author" data-i18n-placeholder="author_placeholder" placeholder="닉네임" required>
-                </div>
-                <div class="tacticComment">
-                    <p data-i18n="comment_label">코멘트</p>
-                    <input type="text" id="comment" data-i18n-placeholder="comment_placeholder" placeholder="원본 링크/유튜브 링크/참고 사항 등">
-                </div>
-                <div class="submit-container">
-                    <div class="submit-text">
-                        <p data-i18n="submit_notice">※ 신규 등록은 택틱 도서관에서 실시해주세요.</p>
-                    </div>
-                    <button type="submit" disabled data-i18n="submit_button">등록</button>
-                </div>
-            </form>
-        </div>
-
-        <div class="ranking-container">
-            <div class="ranking-header">
-                <img src="{{ site.baseurl }}/assets/img/tactic-share/rank.png" alt="랭킹" class="ranking-title-icon">
-                <div class="ranking-tabs">
-                    <button class="ranking-tab active" data-period="weekly" data-i18n="ranking_weekly">주간</button>
-                    <button class="ranking-tab" data-period="monthly" data-i18n="ranking_monthly">월간</button>
-                    <button class="ranking-tab" data-period="all" data-i18n="ranking_all">역대</button>
-                </div>
-            </div>
-            <div class="ranking-list">
-                <!-- 랭킹은 JavaScript로 동적 생성됨 -->
-            </div>
-        </div>
-    </div>
-
-    <div class="tactic-controls">
-        <div class="search-container">
-            <div class="search-section">
-                <input type="text" id="searchInput" data-i18n-placeholder="search_placeholder" placeholder="제목 검색..." />
-                <button id="searchButton">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z" fill="rgba(255, 255, 255, 0.6)"/>
-                    </svg>
-                </button>
-            </div>
-        </div>
-        <div class="view-tabs">
-            <button class="tab-button active" data-view="all" data-i18n="view_all">전체</button>
-            <button class="tab-button" data-view="best" data-i18n="view_best">베스트</button>
-        </div>
-    </div>
-
-    <!-- 게시물 목록 -->
-    <div class="posts-container">
-        <div class="posts-list" id="postsList"></div>
-        <div class="pagination">
-            <button id="prevPage" disabled data-i18n="prev_page">이전</button>
-            <span id="currentPage">1</span>
-            <button id="nextPage" data-i18n="next_page">다음</button>
-        </div>
-    </div>
-</div>
-
-<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
-<script>
-    function getI18nText(key, fallback = '') {
-        if (typeof window.t === 'function') {
-            return window.t(key, fallback);
-        }
-        if (window.I18nService && typeof window.I18nService.t === 'function') {
-            return window.I18nService.t(key, fallback);
-        }
-        return fallback || key;
-    }
-
-    function detectCurrentLanguage() {
-        if (typeof LanguageRouter !== 'undefined' && typeof LanguageRouter.getCurrentLanguage === 'function') {
-            const routedLang = LanguageRouter.getCurrentLanguage();
-            if (routedLang && ['kr', 'en', 'jp'].includes(routedLang)) {
-                return routedLang;
-            }
-        }
-
-        const urlParams = new URLSearchParams(window.location.search);
-        const langParam = urlParams.get('lang');
-        if (langParam && ['kr', 'en', 'jp'].includes(langParam)) {
-            return langParam;
-        }
-
-        const savedLang = localStorage.getItem('preferredLanguage');
-        if (savedLang && ['kr', 'en', 'jp'].includes(savedLang)) {
-            return savedLang;
-        }
-
-        return 'kr';
-    }
-
-    function updateSEOContent() {
-        const metaDesc = document.querySelector('meta[name="description"]');
-        const ogTitle = document.querySelector('meta[property="og:title"]');
-        const ogDesc = document.querySelector('meta[property="og:description"]');
-        const fallbackTitle = document.title || '택틱 대장간 - 페르소나5 더 팬텀 X 루페르넷';
-        const fallbackDesc = (metaDesc && metaDesc.getAttribute('content')) || '';
-        const seoTitle = getI18nText('seo_title', fallbackTitle);
-        const seoDesc = getI18nText('seo_desc', fallbackDesc);
-
-        document.title = seoTitle;
-        if (metaDesc) metaDesc.setAttribute('content', seoDesc);
-        if (ogTitle) ogTitle.setAttribute('content', seoTitle);
-        if (ogDesc) ogDesc.setAttribute('content', seoDesc);
-    }
-
-    // 페이지 로드 시 네비게이션 초기화 및 TacticShare 인스턴스 생성
-    document.addEventListener('DOMContentLoaded', async () => {
-        Navigation.load('tactic-share');
-        const currentLang = detectCurrentLanguage();
-
-        if (typeof initPageI18n === 'function') {
-            await initPageI18n('tactic-share');
-            if (typeof setLang === 'function') {
-                await setLang(currentLang);
-            }
-        } else if (window.I18nService && typeof window.I18nService.init === 'function') {
-            await window.I18nService.init('tactic-share', currentLang);
-        }
-
-        updateSEOContent();
-        window.tacticShare = new TacticShare({ lang: currentLang }); // 전역 객체로 설정
-    });
-</script>
+      params.delete('lang');
+      params.delete('v');
+      var query = params.toString();
+      window.location.replace(target + (query ? ('?' + query) : ''));
+    })();
+  </script>
+  <noscript><meta http-equiv="refresh" content="0; url=/tactic/library/"></noscript>
+  <a href="/tactic/library/">Continue</a>
+</body>
+</html>

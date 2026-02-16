@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             const params = new URLSearchParams();
             params.set('char', characterName || '');
             params.set('lang', currentLang);
-            moreEl.href = `/tactic/tactics.html?${params.toString()}`;
+            moreEl.href = `/tactic/library/?${params.toString()}`;
         }
 
         // 예시 택틱 로드 (페이지네이션으로 최대 2000개 탐색)

@@ -1,0 +1,31 @@
+{% assign alt_urls = include.page.alternate_urls %}
+{% if alt_urls %}
+  {% assign x_default_path = include.default_path %}
+  {% assign seen_codes = "|" %}
+  {% for alt in alt_urls %}
+    {% assign raw_code = alt[0] | downcase %}
+    {% assign mapped_code = "" %}
+    {% if raw_code == "ko" or raw_code == "kr" %}
+      {% assign mapped_code = "ko" %}
+      {% assign x_default_path = alt[1] %}
+    {% elsif raw_code == "en" %}
+      {% assign mapped_code = "en" %}
+    {% elsif raw_code == "ja" or raw_code == "jp" %}
+      {% assign mapped_code = "ja" %}
+    {% elsif raw_code == "zh-cn" or raw_code == "cn" %}
+      {% assign mapped_code = "zh-CN" %}
+    {% elsif raw_code == "zh-tw" or raw_code == "tw" %}
+      {% assign mapped_code = "zh-TW" %}
+    {% endif %}
+    {% if mapped_code != "" %}
+      {% assign token = "|" | append: mapped_code | append: "|" %}
+      {% unless seen_codes contains token %}
+        <xhtml:link rel="alternate" hreflang="{{ mapped_code }}" href="{{ site.url }}{{ alt[1] }}" />
+        {% assign seen_codes = seen_codes | append: mapped_code | append: "|" %}
+      {% endunless %}
+    {% endif %}
+  {% endfor %}
+  {% if x_default_path %}
+    <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ x_default_path }}" />
+  {% endif %}
+{% endif %}

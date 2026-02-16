@@ -1,0 +1,14 @@
+{% assign loc_path = include.page.url | remove: "index.html" %}
+<url>
+  <loc>{{ site.url }}{{ loc_path }}</loc>
+  {% if include.page.sitemap.lastmod %}
+    <lastmod>{{ include.page.sitemap.lastmod | date: "%Y-%m-%d" }}</lastmod>
+  {% endif %}
+  {% if include.page.sitemap.changefreq %}
+    <changefreq>{{ include.page.sitemap.changefreq }}</changefreq>
+  {% endif %}
+  {% if include.page.sitemap.priority %}
+    <priority>{{ include.page.sitemap.priority }}</priority>
+  {% endif %}
+  {% include sitemap-hreflang-links.xml page=include.page default_path=loc_path %}
+</url>

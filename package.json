@@ -20,6 +20,8 @@
     "seo:tier:check": "node scripts/seo/generate-tier-pages.mjs --check",
     "seo:schedule:generate": "node scripts/seo/generate-schedule-pages.mjs",
     "seo:schedule:check": "node scripts/seo/generate-schedule-pages.mjs --check",
+    "seo:tactic:generate": "node scripts/seo/generate-tactic-pages.mjs",
+    "seo:tactic:check": "node scripts/seo/generate-tactic-pages.mjs --check",
     "seo:revelations:generate": "node scripts/seo/generate-revelations-pages.mjs",
     "seo:revelations:check": "node scripts/seo/generate-revelations-pages.mjs --check",
     "seo:about:generate": "node scripts/seo/generate-about-pages.mjs",
@@ -41,7 +43,12 @@
     "seo:persona:generate": "node scripts/seo/generate-persona-pages.mjs",
     "seo:persona:check": "node scripts/seo/generate-persona-pages.mjs --check",
     "seo:astrolabe:generate": "node scripts/seo/generate-astrolabe-pages.mjs",
-    "seo:astrolabe:check": "node scripts/seo/generate-astrolabe-pages.mjs --check"
+    "seo:astrolabe:check": "node scripts/seo/generate-astrolabe-pages.mjs --check",
+    "seo:maps:generate": "node scripts/seo/generate-maps-pages.mjs",
+    "seo:maps:check": "node scripts/seo/generate-maps-pages.mjs --check",
+    "seo:all:generate": "node scripts/seo/run-all.mjs",
+    "seo:all:check": "node scripts/seo/run-all.mjs --check",
+    "seo:sitemap:check": "node scripts/seo/check-sitemaps.mjs"
   },
   "keywords": [],
   "author": "",

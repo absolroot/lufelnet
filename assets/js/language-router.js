@@ -92,8 +92,7 @@ class LanguageRouter {
 
             // 특별한 경로 매핑 처리
             const pathMappings = {
-                '/character/character.html': '/character.html',
-                '/tactic/tactic-share.html': '/tactic/tactic-share.html'
+                '/character/character.html': '/character.html'
             };
 
             if (pathMappings[newPath]) {
@@ -301,8 +300,7 @@ class LanguageRouter {
 
             // 특별한 경로 매핑 처리
             const pathMappings = {
-                '/character/character.html': '/character.html',
-                '/tactic/tactic-share.html': '/tactic/tactic-share.html'
+                '/character/character.html': '/character.html'
             };
 
             if (pathMappings[newPath]) {

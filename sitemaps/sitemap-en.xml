@@ -1,0 +1,21 @@
+---
+layout: null
+sitemap:
+  exclude: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  {% for page in site.pages %}
+    {% assign first_segment = page.url | remove_first: "/" | split: "/" | first %}
+    {% if page.layout and page.layout != "null" %}
+      {% unless page.sitemap == false or page.sitemap == "false" or page.sitemap.exclude == true %}
+        {% unless page.url contains ".xml" or page.url contains "assets" or page.url contains "?" %}
+          {% if first_segment == "en" %}
+            {% include sitemap-url-entry.xml page=page %}
+          {% endif %}
+        {% endunless %}
+      {% endunless %}
+    {% endif %}
+  {% endfor %}
+</urlset>

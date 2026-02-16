@@ -25,6 +25,12 @@
         if (window.MapsCore && window.MapsCore.getCurrentLanguage) {
             return window.MapsCore.getCurrentLanguage();
         }
+
+        const pathMatch = window.location.pathname.match(/^\/(kr|en|jp)(\/|$)/i);
+        if (pathMatch) {
+            return pathMatch[1].toLowerCase();
+        }
+
         const urlParams = new URLSearchParams(window.location.search);
         const urlLang = urlParams.get('lang');
         if (urlLang && SUPPORTED_LANGS.includes(urlLang)) {

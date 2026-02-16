@@ -266,7 +266,7 @@ class Navigation {
                         <a href="${BASE_URL}/tactic-maker?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="tactic-maker">
                             <span data-text="${texts.tacticMaker}">◈　${texts.tacticMaker}</span>
                         </a>
-                        <a href="${BASE_URL}/tactic/tactics.html?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="tactics">
+                        <a href="${BASE_URL}/tactic/library/?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="tactics">
                             <span data-text="${texts.tacticLibrary}">◈　${texts.tacticLibrary}</span>
                         </a>
                     </div>
@@ -464,7 +464,7 @@ class Navigation {
             }
 
             // 택틱 관련 페이지인 경우 추가 처리
-            if (activePage === 'tactic' || activePage === 'tactic-maker' || activePage === 'tactic-share' || activePage === 'tactics') {
+            if (activePage === 'tactic' || activePage === 'tactic-maker' || activePage === 'tactics') {
                 const tacticMenu = document.querySelector('[data-nav="tactic"]');
                 if (tacticMenu) {
                     tacticMenu.classList.add('active');
@@ -473,8 +473,6 @@ class Navigation {
                     let activeSubItem;
                     if (activePage === 'tactic' || activePage === 'tactic-maker') {
                         activeSubItem = document.querySelector('[data-nav="tactic-maker"]');
-                    } else if (activePage === 'tactic-share') {
-                        activeSubItem = document.querySelector('[data-nav="tactic-share"]');
                     } else if (activePage === 'tactics') {
                         activeSubItem = document.querySelector('[data-nav="tactics"]');
                     }

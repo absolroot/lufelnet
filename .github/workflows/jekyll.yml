@@ -36,33 +36,12 @@ jobs:
       with:
         node-version: 20
 
-    - name: Check generated synergy SEO pages (PR only)
+    - name: Check all generated SEO pages (PR only)
       if: github.event_name == 'pull_request'
-      run: npm run seo:synergy:check
+      run: npm run seo:all:check
 
-    - name: Check generated wonder-weapon SEO pages (PR only)
-      if: github.event_name == 'pull_request'
-      run: npm run seo:wonder-weapon:check
-
-    - name: Check generated character SEO pages (PR only)
-      if: github.event_name == 'pull_request'
-      run: npm run seo:character:check
-
-    - name: Check generated persona SEO pages (PR only)
-      if: github.event_name == 'pull_request'
-      run: npm run seo:persona:check
-
-    - name: Generate synergy SEO pages
-      run: npm run seo:synergy:generate
-
-    - name: Generate wonder-weapon SEO pages
-      run: npm run seo:wonder-weapon:generate
-
-    - name: Generate character SEO pages
-      run: npm run seo:character:generate
-
-    - name: Generate persona SEO pages
-      run: npm run seo:persona:generate
+    - name: Generate all SEO pages
+      run: npm run seo:all:generate
     
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
@@ -80,6 +59,9 @@ jobs:
     
     - name: Build site
       run: bundle exec jekyll build
+
+    - name: Validate sitemap outputs
+      run: npm run seo:sitemap:check
 
     - name: Remove local admin console artifacts from site output
       run: |

@@ -8,8 +8,18 @@
             if (window.MapsI18n && window.MapsI18n.getCurrentLanguage) {
                 return window.MapsI18n.getCurrentLanguage();
             }
+
+            const pathMatch = window.location.pathname.match(/^\/(kr|en|jp)(\/|$)/i);
+            if (pathMatch) {
+                return pathMatch[1].toLowerCase();
+            }
+
             const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get('lang') || 'kr';
+            const urlLang = String(urlParams.get('lang') || '').toLowerCase();
+            if (['kr', 'en', 'jp'].includes(urlLang)) {
+                return urlLang;
+            }
+            return 'kr';
         },
 
         // URL에서 맵 ID 읽기

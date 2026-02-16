@@ -151,9 +151,9 @@
 
     <div class="posts-container" id="posts-container">
         <div class="posts-header">
-            <h2><a href="./tactic/tactics" style="text-decoration: none; color: inherit;" id="tactic-workshop-title">택틱
+            <h2><a href="./tactic/library" style="text-decoration: none; color: inherit;" id="tactic-workshop-title">택틱
                     도서관 NEW</a></h2>
-            <a href="./tactic/tactics" class="show-more-posts-btn" style="text-decoration: none; color: inherit;"
+            <a href="./tactic/library" class="show-more-posts-btn" style="text-decoration: none; color: inherit;"
                 id="show-more-posts-btn"><img src="{{ site.baseurl }}/assets/img/home/news_more2.png" alt="logo" style="
                 max-height: 11px; opacity: 0.75;
             "></a>
@@ -429,7 +429,7 @@
             { selector: '.menu-card a[href*="./character/"]', path: './character/' },
             { selector: '.menu-card a[href*="./persona/"]', path: './persona/' },
             { selector: '.menu-card a[href*="./revelations/"]', path: './revelations/' },
-            { selector: '.menu-card a[href*="./tactic"]', path: './tactic/tactics' }
+            { selector: '.menu-card a[href*="./tactic"]', path: './tactic/library' }
         ];
 
         menuLinks.forEach(linkInfo => {
@@ -449,9 +449,9 @@
         });
 
         // 택틱 도서관 링크들 업데이트 (홈 목록 이동 버튼)
-        const tacticLinks = document.querySelectorAll('a[href*="./tactic/tactics"]');
+        const tacticLinks = document.querySelectorAll('a[href*="./tactic/library"]');
         tacticLinks.forEach(link => {
-            const url = new URL('./tactic/tactics' + `?lang=${currentLang}&v=${APP_VERSION}`, window.location.origin);
+            const url = new URL('./tactic/library' + `?lang=${currentLang}&v=${APP_VERSION}`, window.location.origin);
             link.href = url.pathname + url.search;
         });
 

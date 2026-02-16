@@ -1,0 +1,27 @@
+---
+layout: null
+permalink: /en/tactic/tactics.html
+sitemap: false
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Redirecting...</title>
+</head>
+<body>
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search || "");
+      var target = "/en/tactic/library/";
+      params.delete("lang");
+      params.delete("v");
+      var query = params.toString();
+      window.location.replace(target + (query ? ("?" + query) : ""));
+    })();
+  </script>
+  <noscript><meta http-equiv="refresh" content="0; url=/en/tactic/library/"></noscript>
+  <a href="/en/tactic/library/">Continue</a>
+</body>
+</html>

@@ -1,4 +1,4 @@
-﻿/**
+/**
  * P5X Pull Calculator
  * 뽑기 계획 시뮬레이터 - 재화 및 수입 기반 다중 목표 계획 수립
  */
@@ -223,6 +223,11 @@ function getI18nText(key, fallback) {
 }
 
 function getCurrentPullCalcLanguage() {
+    const pathMatch = window.location.pathname.match(/^\/(kr|en|jp)(\/|$)/i);
+    if (pathMatch) {
+        return pathMatch[1].toLowerCase();
+    }
+
     const service = getI18nServiceInstance();
     if (service && typeof service.getCurrentLanguage === 'function') {
         const lang = service.getCurrentLanguage();
@@ -275,13 +280,17 @@ function upsertMetaByProperty(property, content) {
 
 function updatePullCalcSEOTags(lang = null) {
     const currentLang = lang || getCurrentPullCalcLanguage();
+    const effectiveLang = ['kr', 'en', 'jp'].includes(currentLang) ? currentLang : 'kr';
     const baseUrl = 'https://lufel.net';
-    const currentUrl = `${baseUrl}/pull-calc/?lang=${currentLang}`;
+    const isPathLang = /^\/(kr|en|jp)(\/|$)/i.test(window.location.pathname);
+    const currentUrl = isPathLang
+        ? `${baseUrl}/${effectiveLang}/pull-calc/`
+        : `${baseUrl}/pull-calc/`;
 
     const seoTitle = getI18nText('seoTitle', '가챠 플래너 - 페르소나5 더 팬텀 X 루페르넷');
     const seoDescription = getI18nText('seoDescription', '페르소나5 더 팬텀 X 가챠 계획 시뮬레이터. 향후 캐릭터 출시에 맞춰 필요한 재화를 계산하고 계약 계획을 수립할 수 있습니다.');
     const seoKeywords = getI18nText('seoKeywords', 'P5X, 페르소나5X, 가챠 플래너, 가챠 계산기, 가챠 시뮬레이터, P5X 계산기, 계약 계획');
-    const seoOgLocale = getI18nText('seoOgLocale', 'ko_KR');
+    const seoOgLocale = getI18nText('seoOgLocale', effectiveLang === 'jp' ? 'ja_JP' : effectiveLang === 'en' ? 'en_US' : 'ko_KR');
 
     document.title = seoTitle;
 
@@ -290,14 +299,14 @@ function updatePullCalcSEOTags(lang = null) {
     upsertMetaByName('twitter:card', 'summary_large_image');
     upsertMetaByName('twitter:title', seoTitle);
     upsertMetaByName('twitter:description', seoDescription);
-    upsertMetaByName('twitter:image', `${baseUrl}/assets/img/home/seo.png`);
+    upsertMetaByName('twitter:image', `${baseUrl}/assets/img/home/SEO.png`);
 
     upsertMetaByProperty('og:title', seoTitle);
     upsertMetaByProperty('og:description', seoDescription);
     upsertMetaByProperty('og:url', currentUrl);
     upsertMetaByProperty('og:locale', seoOgLocale);
     upsertMetaByProperty('og:type', 'website');
-    upsertMetaByProperty('og:image', `${baseUrl}/assets/img/home/seo.png`);
+    upsertMetaByProperty('og:image', `${baseUrl}/assets/img/home/SEO.png`);
 
     let canonical = document.querySelector('link[rel="canonical"]');
     if (!canonical) {
@@ -307,7 +316,7 @@ function updatePullCalcSEOTags(lang = null) {
     }
     canonical.setAttribute('href', currentUrl);
 
-    document.documentElement.setAttribute('lang', currentLang === 'jp' ? 'ja' : currentLang === 'kr' ? 'ko' : 'en');
+    document.documentElement.setAttribute('lang', effectiveLang === 'jp' ? 'ja' : effectiveLang === 'kr' ? 'ko' : 'en');
 }
 
 /**

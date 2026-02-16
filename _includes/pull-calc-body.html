@@ -1,0 +1,492 @@
+<script>
+(function () {
+    var params = new URLSearchParams(window.location.search || '');
+    var path = String(window.location.pathname || '/');
+    var lowerPath = path.toLowerCase();
+
+    var pathLangMatch = lowerPath.match(/^\/(kr|en|jp)(\/|$)/);
+    var pathLang = pathLangMatch ? pathLangMatch[1] : '';
+    var queryLang = String(params.get('lang') || '').toLowerCase();
+    var effectiveLang = pathLang || (['kr', 'en', 'jp'].indexOf(queryLang) !== -1 ? queryLang : '');
+
+    var isLegacyRoot = /^\/pull-calc\/?$/.test(lowerPath);
+    var isCanonicalPath = /^\/(kr|en|jp)\/pull-calc\/?$/.test(lowerPath);
+
+    if (isLegacyRoot && effectiveLang) {
+        window.__SEO_PATH_LANG__ = effectiveLang;
+        params.delete('lang');
+        params.delete('v');
+        var remainingLegacy = params.toString();
+        history.replaceState(null, '', '/' + effectiveLang + '/pull-calc/' + (remainingLegacy ? '?' + remainingLegacy : ''));
+        return;
+    }
+
+    if (isCanonicalPath) {
+        window.__SEO_PATH_LANG__ = pathLang;
+        var before = params.toString();
+        params.delete('lang');
+        params.delete('v');
+        var remainingCanonical = params.toString();
+        if (before !== remainingCanonical) {
+            history.replaceState(null, '', path + (remainingCanonical ? '?' + remainingCanonical : ''));
+        }
+        return;
+    }
+
+    if (isLegacyRoot && params.has('v')) {
+        params.delete('v');
+        var remainingRoot = params.toString();
+        history.replaceState(null, '', '/pull-calc/' + (remainingRoot ? '?' + remainingRoot : ''));
+    }
+})();
+</script>
+
+<!-- Pull Calc CSS -->
+<link rel="stylesheet" href="{{ site.baseurl }}/apps/pull-calc/pull-calc.css?v={{ site.time | date: '%s' }}">
+
+<!-- Schedule Data -->
+<script src="{{ site.baseurl }}/apps/schedule/data.js?v={{ site.time | date: '%s' }}"></script>
+
+<!-- SEO Meta Tags -->
+{% if page.alternate_urls %}
+{% for alt in page.alternate_urls %}
+<link rel="alternate" hreflang="{{ alt[0] }}" href="{{ site.url }}{{ alt[1] }}" />
+{% endfor %}
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.alternate_urls['ko'] | default: page.alternate_urls.first[1] }}" />
+{% endif %}
+
+<!-- Main Content -->
+<div class="main-wrapper pull-calc-page">
+    <!-- Navigation Path -->
+    <div class="navigation-path">
+        <script>document.write(`<a href="../../?v=${APP_VERSION}" id="nav-home">-</a>`);</script>
+        <span class="separator">/</span>
+        <span class="current-page" id="nav-current">-</span>
+    </div>
+
+    <!-- Header -->
+    <div class="header-container">
+        <h1 id="page-title">-</h1>
+    </div>
+
+    <!-- Must Read Accordion -->
+    <div class="settings-container">
+        <div class="accordion-section" id="mustReadAccordion">
+            <div class="accordion-header" data-target="mustReadContent">
+                <h3 id="mustReadTitle">계산기 기준 및 안내</h3>
+                <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </div>
+            <div class="accordion-content" id="mustReadContent">
+                <div class="mustread-content" id="mustReadText">
+                    <!-- Content will be populated by JavaScript based on language -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Accordions -->
+    <div class="settings-container settings-grid">
+        <!-- Assets Accordion -->
+        <div class="accordion-section expanded" id="assetsAccordion">
+            <div class="accordion-header" data-target="assetsContent">
+                <h3 id="assetsTitle">보유 자산</h3>
+                <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </div>
+            <div class="accordion-content" id="assetsContent">
+                <div class="input-row">
+                    <div class="input-group">
+                        <label class="input-label">
+                            <img src="{{ site.baseurl }}/assets/img/pay/이계 수정.png" alt="" class="input-icon">
+                            <span id="labelPaidEmber">유료 엠버</span>
+                        </label>
+                        <input type="number" id="inputPaidEmber" class="modal-input" value="0" min="0">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label">
+                            <img src="{{ site.baseurl }}/assets/img/pay/이계 엠버.png" alt="" class="input-icon">
+                            <span id="labelEmber">이계 엠버</span>
+                        </label>
+                        <input type="number" id="inputEmber" class="modal-input" value="0" min="0">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label">
+                            <img src="{{ site.baseurl }}/assets/img/pay/인지 단면.png" alt="" class="input-icon">
+                            <span id="labelCognigem">인지 결정</span>
+                            <span class="tooltip-icon" data-i18n-tooltip="tooltipCognigem"
+                                data-tooltip="10개 = 100 엠버 (글로벌판)">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1"
+                                        fill="rgba(255,255,255,0.05)"></circle>
+                                    <path
+                                        d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2"
+                                        stroke="currentColor" stroke-width="1.2" stroke-linecap="round"
+                                        stroke-linejoin="round" stroke-opacity="0.3"></path>
+                                </svg>
+                            </span>
+                        </label>
+                        <input type="number" id="inputCognigem" class="modal-input" value="0" min="0">
+                    </div>
+                </div>
+
+                <div class="input-row">
+                    <div class="input-group">
+                        <label class="input-label">
+                            <img src="{{ site.baseurl }}/assets/img/pay/정해진 운명.png" alt="" class="input-icon">
+                            <span id="labelTicket">계약 티켓</span>
+                            <span class="tooltip-icon" data-i18n-tooltip="tooltipTicket" data-tooltip="1장 = 150 엠버">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1"
+                                        fill="rgba(255,255,255,0.05)"></circle>
+                                    <path
+                                        d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2"
+                                        stroke="currentColor" stroke-width="1.2" stroke-linecap="round"
+                                        stroke-linejoin="round" stroke-opacity="0.3"></path>
+                                </svg>
+                            </span>
+                        </label>
+                        <input type="number" id="inputTicket" class="modal-input" value="0" min="0">
+                    </div>
+
+                    <div class="input-group">
+                        <label class="input-label">
+                            <img src="{{ site.baseurl }}/assets/img/pay/정해진 코인.png" alt="" class="input-icon">
+                            <span id="labelWeaponTicket">무기 티켓</span>
+                            <span class="tooltip-icon" data-i18n-tooltip="tooltipWeaponTicket"
+                                data-tooltip="1장 = 100 엠버">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1"
+                                        fill="rgba(255,255,255,0.05)"></circle>
+                                    <path
+                                        d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2"
+                                        stroke="currentColor" stroke-width="1.2" stroke-linecap="round"
+                                        stroke-linejoin="round" stroke-opacity="0.3"></path>
+                                </svg>
+                            </span>
+                        </label>
+                        <input type="number" id="inputWeaponTicket" class="modal-input" value="0" min="0">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pity Accordion -->
+        <div class="accordion-section expanded" id="pityAccordion">
+            <div class="accordion-header" data-target="pityContent">
+                <h3 id="pityTitle">피티 설정</h3>
+                <div class="pity-summary">
+                    <span id="charMedianValue">110회</span>
+                    <span class="pity-sep">/</span>
+                    <span id="weaponMedianValue">70회</span>
+                </div>
+                <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </div>
+            <div class="accordion-content" id="pityContent">
+                <div class="input-row">
+                    <div class="input-group">
+                        <label class="input-label">
+                            <img src="{{ site.baseurl }}/assets/img/pay/정해진 운명.png" alt="" class="input-icon">
+                            <span id="labelCharPity">캐릭터 진행 중</span>
+                            <span class="pity-max">/110</span>
+                            <span class="tooltip-icon" data-i18n-tooltip="tooltipCharPity"
+                                data-tooltip="캐릭터 배너에서 마지막 5성을 뽑은 후 경과한 뽑기 수입니다. 110회는 하드 피티(천장 확정)입니다.">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1"
+                                        fill="rgba(255,255,255,0.05)"></circle>
+                                    <path
+                                        d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2"
+                                        stroke="currentColor" stroke-width="1.2" stroke-linecap="round"
+                                        stroke-linejoin="round" stroke-opacity="0.3"></path>
+                                </svg>
+                            </span>
+                        </label>
+                        <input type="number" id="inputCharPity" class="modal-input" value="0" min="0" max="110">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label">
+                            <img src="{{ site.baseurl }}/assets/img/pay/정해진 코인.png" alt="" class="input-icon">
+                            <span id="labelWeaponPity">무기 진행 중</span>
+                            <span class="pity-max">/70</span>
+                            <span class="tooltip-icon" data-i18n-tooltip="tooltipWeaponPity"
+                                data-tooltip="무기 배너에서 마지막 5성을 뽑은 후 경과한 뽑기 수입니다. 70회는 하드 피티(천장)입니다.">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1"
+                                        fill="rgba(255,255,255,0.05)"></circle>
+                                    <path
+                                        d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2"
+                                        stroke="currentColor" stroke-width="1.2" stroke-linecap="round"
+                                        stroke-linejoin="round" stroke-opacity="0.3"></path>
+                                </svg>
+                            </span>
+                        </label>
+                        <input type="number" id="inputWeaponPity" class="modal-input" value="0" min="0" max="70">
+                    </div>
+                </div>
+                <div class="checkbox-row">
+                    <div class="input-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="inputWeapon5050Failed">
+                            <span id="labelWeapon5050Failed">무기 50:50 실패</span>
+                            <span class="tooltip-icon" data-i18n-tooltip="tooltipWeapon5050Failed"
+                                data-tooltip="무기 배너에서 50% 확률로 한정 무기를 뽑지 못했는지 여부입니다. 실패 시 다음 5성은 반드시 픽업 무기입니다.">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1"
+                                        fill="rgba(255,255,255,0.05)"></circle>
+                                    <path
+                                        d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2"
+                                        stroke="currentColor" stroke-width="1.2" stroke-linecap="round"
+                                        stroke-linejoin="round" stroke-opacity="0.3"></path>
+                                </svg>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+                <div class="input-row">
+                    <div class="input-group">
+                        <label class="input-label">
+                            <span id="labelWeaponScenario">무기 계산 시나리오</span>
+                            <span class="tooltip-icon" data-i18n-tooltip="tooltipWeaponScenario"
+                                data-tooltip="무기 50:50의 운을 기준으로 필요 엠버량을 계산합니다. 최선: 모든 50:50 성공, 평균: 절반 성공, 최악: 모든 50:50 실패">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1"
+                                        fill="rgba(255,255,255,0.05)"></circle>
+                                    <path
+                                        d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2"
+                                        stroke="currentColor" stroke-width="1.2" stroke-linecap="round"
+                                        stroke-linejoin="round" stroke-opacity="0.3"></path>
+                                </svg>
+                            </span>
+                        </label>
+                        <!-- 기본값은 Worst-->
+                        <select id="inputWeaponScenario" class="modal-input">
+                            <option value="best" id="optionBest">최선 (모든 50:50 성공)</option>
+                            <option value="average" id="optionAverage">평균 (절반 성공)</option>
+                            <option value="worst" selected id="optionWorst">최악 (모든 50:50 실패)</option>
+                        </select>
+                    </div>
+                </div>
+                <!--
+                <p class="pity-source" id="pitySource">
+                    Pity 중간값은 iantCode의 P5X 가챠 통계 데이터를 기반으로 산정됩니다.
+                </p>
+                -->
+            </div>
+        </div>
+
+        <!-- Income Accordion -->
+        <div class="accordion-section expanded" id="incomeAccordion">
+            <div class="accordion-header" data-target="incomeContent">
+                <h3 id="incomeTitle">수입 설정</h3>
+                <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </div>
+            <div class="accordion-content" id="incomeContent">
+                <div class="input-row">
+                    <div class="input-group">
+                        <label class="input-label">
+                            <img src="{{ site.baseurl }}/assets/img/pay/패스.png" alt="" class="input-icon">
+                            <span id="labelDailyMission">일일 미션</span>
+                            <span class="tooltip-icon" data-i18n-tooltip="tooltipDailyMission"
+                                data-tooltip="매일 획득 가능한 엠버. 기본값 80.">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1"
+                                        fill="rgba(255,255,255,0.05)"></circle>
+                                    <path
+                                        d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2"
+                                        stroke="currentColor" stroke-width="1.2" stroke-linecap="round"
+                                        stroke-linejoin="round" stroke-opacity="0.3"></path>
+                                </svg>
+                            </span>
+                        </label>
+                        <input type="number" id="inputDailyMission" class="modal-input" value="80" min="0">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label">
+                            <img src="{{ site.baseurl }}/assets/img/pay/이벤트.png" alt="" class="input-icon">
+                            <span id="labelVersionIncome">버전별 수입</span>
+                            <span class="tooltip-icon" data-i18n-tooltip="tooltipVersionIncome"
+                                data-tooltip="각 버전(패치)마다 지급되는 수입. 흉몽(NTMR), 바다(SoS) 등 주간 콘텐츠 합계를 버전 기간으로 나눈 값 + 점검 보상, 리딤 코드, 이벤트 등. 4.0 이후는 3주 간격이므로 1.5배 적용.">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1"
+                                        fill="rgba(255,255,255,0.05)"></circle>
+                                    <path
+                                        d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2"
+                                        stroke="currentColor" stroke-width="1.2" stroke-linecap="round"
+                                        stroke-linejoin="round" stroke-opacity="0.3"></path>
+                                </svg>
+                            </span>
+                        </label>
+                        <input type="number" id="inputVersionIncome" class="modal-input" value="6000" min="0">
+                    </div>
+                </div>
+                <div class="input-row">
+                    <div class="input-group">
+                        <label class="input-label">
+                            <input type="checkbox" id="inputMonthlySubEnabled">
+                            <img src="{{ site.baseurl }}/assets/img/pay/월정액.png" alt="" class="input-icon">
+                            <span id="labelMonthlySub">월정액 (엠버/일)</span>
+                            <span class="tooltip-icon" data-i18n-tooltip="tooltipMonthlySub"
+                                data-tooltip="월정액 구매 시 매일 획득하는 엠버. 기본값 100.">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1"
+                                        fill="rgba(255,255,255,0.05)"></circle>
+                                    <path
+                                        d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2"
+                                        stroke="currentColor" stroke-width="1.2" stroke-linecap="round"
+                                        stroke-linejoin="round" stroke-opacity="0.3"></path>
+                                </svg>
+                            </span>
+                        </label>
+                        <input type="number" id="inputMonthlySubAmount" class="modal-input" value="100" min="0">
+                    </div>
+                    <div class="input-group">
+                        <!-- Battle Pass - DISABLED -->
+                        <!-- <label class="input-label">
+                            <input type="checkbox" id="inputBattlePassEnabled">
+                            <img src="{{ site.baseurl }}/assets/img/pay/디럭스 패스.png" alt="" class="input-icon">
+                            <span id="labelBattlePass">배틀 패스 (엠버/패치)</span>
+                            <span class="tooltip-icon" data-i18n-tooltip="tooltipBattlePass" data-tooltip="배틀 패스 구매 시 각 패치마다 획득하는 엠버. 기본값 1430 (한정 티켓 5장 + 유료 엠버 680).">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1" fill="rgba(255,255,255,0.05)"></circle>
+                                    <path d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.3"></path>
+                                </svg>
+                            </span>
+                        </label>
+                        <input type="number" id="inputBattlePassAmount" class="modal-input" value="1430" min="0"> -->
+                    </div>
+                </div>
+                <div class="checkbox-row">
+                    <div class="input-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="inputRecursive">
+                            <img src="{{ site.baseurl }}/assets/img/pay/인지 단면.png" alt="" class="input-icon">
+                            <span id="labelRecursive">인지 단면 재귀적 변환</span>
+                            <span class="tooltip-icon" data-i18n-tooltip="tooltipRecursive"
+                                data-tooltip="모든 4성 캐릭터 풀돌(A6) 상태를 가정합니다. 4성, 5성 캐릭터를 뽑을 때 획득하는 인지 단면을 즉시 엠버로 변환(10개=100엠버)하여 다시 뽑기에 사용합니다.">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1"
+                                        fill="rgba(255,255,255,0.05)"></circle>
+                                    <path
+                                        d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2"
+                                        stroke="currentColor" stroke-width="1.2" stroke-linecap="round"
+                                        stroke-linejoin="round" stroke-opacity="0.3"></path>
+                                </svg>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Extra Income Accordion -->
+        <div class="accordion-section expanded" id="extraIncomeAccordion">
+            <div class="accordion-header" data-target="extraIncomeContent">
+                <h3>
+                    <span id="extraIncomeTitle">추가 수입</span>
+                    <button type="button" class="extra-income-add-inline" id="extraIncomeAddBtn">+</button>
+                    <span class="tooltip-icon" data-i18n-tooltip="tooltipExtraIncome"
+                        data-tooltip="Weekly income counts Mondays, and Monthly income counts the 1st day of the month between the current and next banner.">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1"
+                                fill="rgba(255,255,255,0.05)"></circle>
+                            <path
+                                d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2"
+                                stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-opacity="0.3"></path>
+                        </svg>
+                    </span>
+                </h3>
+                <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </div>
+            <div class="accordion-content" id="extraIncomeContent">
+                <div id="extraIncomeRoot"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Timeline Section -->
+    <section class="timeline-section">
+        <div class="timeline-container" id="timelineContainer">
+            <!-- Timeline will be rendered here -->
+            <div class="timeline-loading">
+                <span id="loadingText">로딩 중...</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Balance Chart Section -->
+    <section class="chart-section">
+        <div class="section-header">
+            <h2 id="chartTitle">재화 변화 그래프</h2>
+            <span class="tooltip-icon" data-i18n-tooltip="tooltipChart"
+                data-tooltip="시간에 따른 재화 변화를 보여줍니다. 빨간색 영역은 재화가 부족한 구간입니다.">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1"
+                        fill="rgba(255,255,255,0.05)"></circle>
+                    <path
+                        d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2"
+                        stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-opacity="0.3"></path>
+                </svg>
+            </span>
+        </div>
+        <div class="chart-container" id="chartContainer">
+            <canvas id="balanceChart"></canvas>
+            <div class="chart-empty" id="chartEmpty">
+                <span id="chartEmptyText">타임라인에서 캐릭터를 선택하세요</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plan Section -->
+    <section class="plan-section">
+        <div class="section-header">
+            <h2 id="planTitle">뽑기 계획</h2>
+            <span class="plan-count" id="planCount">(0)</span>
+        </div>
+        <div class="plan-description" id="planDescription">
+            타임라인에서 캐릭터를 클릭하여 계획에 추가하세요.
+        </div>
+        <div class="plan-list" id="planList">
+            <!-- Plan items will be rendered here -->
+        </div>
+    </section>
+</div>
+
+<!-- Chart.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+<!-- Navigation -->
+<script src="{{ site.baseurl }}/assets/js/nav.js?v={{ site.time | date: '%s' }}"></script>
+
+<!-- Pull Calc JS -->
+<script type="module" src="{{ site.baseurl }}/i18n/service/i18n-service.js?v={{ site.time | date: '%s' }}"></script>
+<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/pull-calc/pull-calc.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/pull-calc/pull-calc-extra.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/pull-calc/pull-calc-plan.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/pull-calc/pull-calc-graph.js?v={{ site.time | date: '%s' }}"></script>

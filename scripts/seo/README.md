@@ -327,6 +327,7 @@ if (/^\/(kr|en|jp)\//.test(window.location.pathname)) return;
 | defense-calc | B (single-page) | `generate-defense-calc-pages.mjs` | Done |
 | critical-calc | B (single-page) | `generate-critical-calc-pages.mjs` | Done |
 | material-calc | B (single-page) | `generate-material-calc-pages.mjs` | Done |
+| pull-calc | B (single-page) | `generate-pull-calc-pages.mjs` | Done |
 | about | B (single-page) | `generate-about-pages.mjs` | Done |
 | gallery | B (single-page) | `generate-gallery-pages.mjs` | Done |
 | article (guides list + detail) | Hybrid (single-page + per-item) | `generate-article-pages.mjs` | Done |
@@ -348,6 +349,7 @@ if (/^\/(kr|en|jp)\//.test(window.location.pathname)) return;
 | Defense Calc | `/kr/defense-calc/`, `/en/defense-calc/`, `/jp/defense-calc/` |
 | Critical Calc | `/kr/critical-calc/`, `/en/critical-calc/`, `/jp/critical-calc/` |
 | Material Calc | `/kr/material-calc/`, `/en/material-calc/`, `/jp/material-calc/` |
+| Pull Calc | `/kr/pull-calc/`, `/en/pull-calc/`, `/jp/pull-calc/` |
 | About | `/kr/about/`, `/en/about/`, `/jp/about/` |
 | Gallery | `/kr/gallery/`, `/en/gallery/`, `/jp/gallery/` |
 | Article (guides list) | `/kr/article/`, `/en/article/`, `/jp/article/` |
@@ -374,6 +376,7 @@ Legacy query-based URLs are rewritten to clean path-based URLs via `history.repl
 | `/defense-calc/?lang=en&v=4.4.8` | `/en/defense-calc/` |
 | `/critical-calc/?lang=en&v=4.4.8` | `/en/critical-calc/` |
 | `/material-calc/?lang=en&v=4.4.8` | `/en/material-calc/` |
+| `/pull-calc/?lang=en&v=4.4.8` | `/en/pull-calc/` |
 | `/about/?lang=en&v=4.4.8` | `/en/about/` |
 | `/gallery/?lang=en&v=4.4.8` | `/en/gallery/` |
 | `/article/?lang=en&v=4.4.8` | `/en/article/` |

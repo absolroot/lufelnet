@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "dev:local": "node scripts/dev-local.mjs",
     "patch-console": "node apps/patch-console/run-patch-console.mjs",
     "seo:synergy:generate": "node scripts/seo/generate-synergy-pages.mjs",
     "seo:synergy:check": "node scripts/seo/generate-synergy-pages.mjs --check",
@@ -19,6 +20,8 @@
     "seo:tier:check": "node scripts/seo/generate-tier-pages.mjs --check",
     "seo:schedule:generate": "node scripts/seo/generate-schedule-pages.mjs",
     "seo:schedule:check": "node scripts/seo/generate-schedule-pages.mjs --check",
+    "seo:revelations:generate": "node scripts/seo/generate-revelations-pages.mjs",
+    "seo:revelations:check": "node scripts/seo/generate-revelations-pages.mjs --check",
     "seo:about:generate": "node scripts/seo/generate-about-pages.mjs",
     "seo:about:check": "node scripts/seo/generate-about-pages.mjs --check",
     "seo:gallery:generate": "node scripts/seo/generate-gallery-pages.mjs",

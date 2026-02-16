@@ -1,0 +1,1322 @@
+<script>
+(function () {
+    var params = new URLSearchParams(window.location.search || '');
+    var path = String(window.location.pathname || '/');
+    var lowerPath = path.toLowerCase();
+
+    var pathLangMatch = lowerPath.match(/^\/(kr|en|jp)(\/|$)/);
+    var pathLang = pathLangMatch ? pathLangMatch[1] : '';
+    var queryLang = String(params.get('lang') || '').toLowerCase();
+    var effectiveLang = pathLang || (['kr', 'en', 'jp'].indexOf(queryLang) !== -1 ? queryLang : '');
+
+    var isLegacyRoot = /^\/revelations\/?$/.test(lowerPath);
+    var isCanonicalPath = /^\/(kr|en|jp)\/revelations\/?$/.test(lowerPath);
+
+    if (isLegacyRoot && effectiveLang) {
+        window.__SEO_PATH_LANG__ = effectiveLang;
+        params.delete('lang');
+        params.delete('v');
+        var remainingLegacy = params.toString();
+        history.replaceState(null, '', '/' + effectiveLang + '/revelations/' + (remainingLegacy ? '?' + remainingLegacy : ''));
+        return;
+    }
+
+    if (isCanonicalPath) {
+        window.__SEO_PATH_LANG__ = pathLang;
+        var before = params.toString();
+        params.delete('lang');
+        params.delete('v');
+        var remainingCanonical = params.toString();
+        if (before !== remainingCanonical) {
+            history.replaceState(null, '', path + (remainingCanonical ? '?' + remainingCanonical : ''));
+        }
+        return;
+    }
+
+    if (isLegacyRoot && params.has('v')) {
+        params.delete('v');
+        var remainingRoot = params.toString();
+        history.replaceState(null, '', '/revelations/' + (remainingRoot ? '?' + remainingRoot : ''));
+    }
+})();
+</script>
+{% if page.alternate_urls %}
+{% for alt in page.alternate_urls %}
+<link rel="alternate" hreflang="{{ alt[0] }}" href="{{ site.url }}{{ alt[1] }}" />
+{% endfor %}
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.alternate_urls['ko'] | default: page.alternate_urls.first[1] }}" />
+{% endif %}
+
+<!-- Main content -->
+<div class="main-wrapper">
+    <!-- 언어 안내 메시지 -->
+    <div id="language-notice" class="language-notice" style="display: none;">
+        <p id="language-notice-text" data-i18n="language_notice"></p>
+    </div>
+
+    <!-- Navigation path -->
+    <div class="navigation-path">
+        <script>document.write(`<a href="../../?v=${APP_VERSION}" id="nav-home" data-i18n="nav_home">-</a>`);</script>
+        <span class="separator">/</span>
+        <span class="current-page" id="nav-current" data-i18n="nav_current">-</span>
+    </div>
+    <div class="header-container">
+        <h1 id="page-title" data-i18n="page_title">-</h1>
+    </div>
+
+    <!-- Filter section -->
+    <div class="filter-section">
+        <div class="filter-content">
+            <!-- Revelation type filter -->
+            <div class="filter-group">
+                <h3 id="filter-type-label" data-i18n="filter_type">분류</h3>
+                <div class="filter-options">
+                    <label>
+                        <input type="checkbox" name="type" value="main">
+                        <img src="{{ site.baseurl }}/assets/img/revelation/icon-주.png" alt="주 성위">
+                    </label>
+                    <label>
+                        <input type="checkbox" name="type" value="sub">
+                        <div class="sub-icons">
+                            <img src="{{ site.baseurl }}/assets/img/revelation/icon-일.png" alt="일월성진">
+                            <img src="{{ site.baseurl }}/assets/img/revelation/icon-월.png" alt="일월성진">
+                            <img src="{{ site.baseurl }}/assets/img/revelation/icon-성.png" alt="일월성진">
+                            <img src="{{ site.baseurl }}/assets/img/revelation/icon-진.png" alt="일월성진">
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Element filter -->
+            <div class="filter-group">
+                <h3 id="filter-element-label" data-i18n="filter_element">속성</h3>
+                <div class="filter-options">
+                    <label>
+                        <input type="checkbox" name="element" value="물리">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_물리.png" alt="물리">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="총격">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_총격.png" alt="총격">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="화염">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_화염.png" alt="화염">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="빙결">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_빙결.png" alt="빙결">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="전격">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_전격.png" alt="전격">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="질풍">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_질풍.png" alt="질풍">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="염동">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_염동.png" alt="염동">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="핵열">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_핵열.png" alt="핵열">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="축복">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_축복.png" alt="축복">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="주원">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_주원.png" alt="주원">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="만능">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_만능.png" alt="만능">
+                        <span></span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Type filter -->
+            <div class="filter-group">
+                <h3 id="filter-effect-label" data-i18n="filter_effect">타입</h3>
+                <div class="filter-options">
+                    <label>
+                        <input type="checkbox" name="effect" value="버프">
+                        <p id="effect-buff" data-i18n="effect_buff">버프</p>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="effect" value="디버프">
+                        <p id="effect-debuff" data-i18n="effect_debuff">디버프</p>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="effect" value="추가 효과">
+                        <p id="effect-additional" data-i18n="effect_additional">추가 효과</p>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="effect" value="HL 25%">
+                        <p id="effect-hl" data-i18n="effect_hl">HL 25%</p>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="effect" value="치료">
+                        <p id="effect-heal" data-i18n="effect_heal">치료</p>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Separator line -->
+    <div class="separator-line"></div>
+
+    <!-- Search section -->
+    <div class="search-section">
+        <div class="search-container">
+            <div class="search-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z"
+                        fill="rgba(255, 255, 255, 0.6)" />
+                </svg>
+            </div>
+            <input type="text" id="revelationSearch" data-i18n-placeholder="search_placeholder" placeholder="계시 검색..."
+                autocomplete="off">
+            <div id="searchDropdown" class="search-dropdown"></div>
+        </div>
+        <div class="search-count">
+            <span id="filteredCount" data-i18n="filtered_count">전체 0개</span>
+        </div>
+    </div>
+
+    <!-- Revelation Stats (Accordion) -->
+    <div id="revelation-stats" class="rev-stats-section">
+        <button class="rev-accordion" id="rev-accordion-btn">
+            <span id="rev-stats-title" data-i18n="stats_title">계시 스탯</span>
+            <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </svg>
+        </button>
+        <div class="rev-panel" id="rev-panel" style="display:none;">
+            <!-- Tabs -->
+            <div class="rev-tabs" role="tablist">
+                <button class="rev-tab active" data-tab="uni" role="tab"><img
+                        src="{{ site.baseurl }}/assets/img/revelation/icon-주.png" alt="주" /> <span class="tab-text-uni"
+                        data-i18n="tab_uni">주</span></button>
+                <button class="rev-tab" data-tab="sun" role="tab"><img
+                        src="{{ site.baseurl }}/assets/img/revelation/icon-일.png" alt="일" /> <span class="tab-text-sun"
+                        data-i18n="tab_sun">일</span></button>
+                <button class="rev-tab" data-tab="moon" role="tab"><img
+                        src="{{ site.baseurl }}/assets/img/revelation/icon-월.png" alt="월" /> <span class="tab-text-moon"
+                        data-i18n="tab_moon">월</span></button>
+                <button class="rev-tab" data-tab="star" role="tab"><img
+                        src="{{ site.baseurl }}/assets/img/revelation/icon-성.png" alt="성" /> <span class="tab-text-star"
+                        data-i18n="tab_star">성</span></button>
+                <button class="rev-tab" data-tab="sky" role="tab"><img
+                        src="{{ site.baseurl }}/assets/img/revelation/icon-진.png" alt="진" /> <span class="tab-text-sky"
+                        data-i18n="tab_sky">진</span></button>
+            </div>
+
+            <!-- Tab panels -->
+            <div class="rev-tab-panels">
+                <div class="rev-tab-panel" data-panel="uni"></div>
+                <div class="rev-tab-panel" data-panel="sun" style="display:none;"></div>
+                <div class="rev-tab-panel" data-panel="moon" style="display:none;"></div>
+                <div class="rev-tab-panel" data-panel="star" style="display:none;"></div>
+                <div class="rev-tab-panel" data-panel="sky" style="display:none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- moved styles to assets/css/revelations.css -->
+
+    <!-- Revelation card container -->
+    <div class="revelation-cards drag-me" id="revelationCards">
+        <!-- Dynamically generated by JavaScript -->
+    </div>
+
+    <!-- 광고 -->
+    <!--
+  <div class="ads-container responsive-padding">
+    <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-format="fluid"
+      data-ad-layout-key="-gc+3n+7a-ag-4h"
+      data-ad-client="ca-pub-5862324369257695"
+      data-ad-slot="5373524213"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+    
+    <div id="ad-unit-bottom" class="AD-bottom" style="margin-top: 24px; text-align: center; align-items: center; display: flex; justify-content: center;"> 
+    <ins class="adsbygoogle"
+        style="display:inline-block;width:970px;height:90px"
+        data-ad-client="ca-pub-5862324369257695"
+        data-ad-slot="9244892982"></ins>
+    </div>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <div style="height: 12px;"></div>
+    
+    <style>
+        @media (max-width: 1440px) {
+            .AD-bottom {
+                display: none !important;
+            }
+        }
+        @media (min-width: 1440px) {
+            .ads-container {
+                display: none !important;
+            }
+        }
+        .responsive-padding { margin: 20px 20px 20px 0; padding: 0 0; }
+        @media (max-width: 1200px) { .responsive-padding {margin: 20px 0 0px 0; padding: 0; } }
+    </style>
+    -->
+</div>
+
+
+
+<!-- i18n 서비스 -->
+<script src="{{ site.baseurl }}/i18n/service/i18n-service.js?v={{ site.time | date: '%s' }}"></script>
+<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
+
+<script>
+    // 전역 변수 초기화
+    if (window.revelationData) delete window.revelationData;
+    if (window.tooltipData) delete window.tooltipData;
+
+    // 동적 데이터 로딩 함수 (콘텐츠 데이터)
+    async function loadLanguageData(lang) {
+        return new Promise((resolve, reject) => {
+            const dataFiles = {
+                'kr': '/data/kr/revelations/revelations.js',
+                'en': '/data/en/revelations/revelations.js',
+                'jp': '/data/jp/revelations/revelations.js'
+            };
+
+            const scriptSrc = dataFiles[lang] || dataFiles['kr'];
+
+            // 기존 스크립트 제거 (중복 방지)
+            const existingTooltip = document.querySelector('script[src="/data/kr/tooltip.js"]');
+            if (existingTooltip) existingTooltip.remove();
+
+            // 모든 기존 revelation 스크립트 제거
+            document.querySelectorAll('script[src*="revelations.js"]').forEach(script => script.remove());
+
+            // tooltip.js 로드
+            const tooltipScript = document.createElement('script');
+            tooltipScript.src = '/data/kr/tooltip.js';
+            tooltipScript.onload = () => {
+                // tooltip.js 로드 후 revelations 데이터 로드
+                const dataScript = document.createElement('script');
+                dataScript.src = scriptSrc;
+                dataScript.onload = () => {
+                    // 언어별 전역 변수 설정
+                    setTimeout(() => {
+                        if (lang === 'en' && typeof enRevelationData !== 'undefined') {
+                            window.enRevelationData = enRevelationData;
+                            //console.log('English revelation data loaded:', enRevelationData);
+                        } else if (lang === 'jp' && typeof jpRevelationData !== 'undefined') {
+                            window.jpRevelationData = jpRevelationData;
+                            //console.log('Japanese revelation data loaded:', jpRevelationData);
+                        } else if (lang === 'kr' && typeof revelationData !== 'undefined') {
+                            //console.log('Korean revelation data loaded:', revelationData);
+                        } else {
+                            console.warn('No revelation data found for language:', lang);
+                        }
+
+                        // 데이터 로드 후 addTooltips 함수 정의
+                        window.addTooltips = function () {
+                            const tooltips = document.querySelectorAll('[data-tooltip]');
+                            tooltips.forEach(element => {
+                                const tooltipText = element.getAttribute('data-tooltip');
+                                // 툴팁 로직 구현
+                                element.title = tooltipText;
+                            });
+                        };
+                        resolve();
+                    }, 100); // 100ms 지연으로 데이터 로딩 완료 보장
+                };
+                dataScript.onerror = () => reject(new Error(`Failed to load ${scriptSrc}`));
+                document.head.appendChild(dataScript);
+            };
+            tooltipScript.onerror = () => reject(new Error('Failed to load tooltip.js'));
+            document.head.appendChild(tooltipScript);
+        });
+    }
+
+    // 캐릭터 데이터 로더 (KR 데이터 사용)
+    async function loadCharacterData() {
+        return new Promise((resolve, reject) => {
+            // 중복 로딩 방지
+            document.querySelectorAll('script[src*="/data/character_info.js"]').forEach(s => s.remove());
+            const s = document.createElement('script');
+            s.src = '/data/character_info.js';
+            s.onload = () => resolve();
+            s.onerror = () => reject(new Error('Failed to load /data/character_info.js'));
+            document.head.appendChild(s);
+        });
+    }
+
+    // 모든 캐릭터의 setting.js 파일 로드
+    async function loadAllCharacterSettings() {
+        if (typeof characterData === 'undefined') {
+            console.warn('characterData not loaded yet');
+            return;
+        }
+
+        // characterSetting 초기화
+        if (!window.characterSetting) {
+            window.characterSetting = {};
+        }
+
+        // 모든 캐릭터 이름 가져오기
+        const characterNames = Object.keys(characterData);
+
+        // 각 캐릭터의 setting.js 로드 (병렬 처리)
+        const loadPromises = characterNames.map(charName => {
+            return new Promise((resolve) => {
+                // 이미 로드된 경우 스킵
+                if (window.characterSetting[charName]) {
+                    resolve();
+                    return;
+                }
+
+                // setting.js 파일 경로
+                const scriptSrc = `/data/characters/${encodeURIComponent(charName)}/setting.js`;
+
+                // 중복 로딩 방지: 이미 같은 스크립트가 로드 중이거나 로드된 경우
+                const existingScript = document.querySelector(`script[src="${scriptSrc}"]`);
+                if (existingScript) {
+                    resolve();
+                    return;
+                }
+
+                const script = document.createElement('script');
+                script.src = scriptSrc;
+                script.onload = () => {
+                    // characterSetting에 데이터가 로드되었는지 확인
+                    if (window.characterSetting && window.characterSetting[charName]) {
+                        resolve();
+                    } else {
+                        // 로드 실패해도 계속 진행 (해당 캐릭터만 스킵)
+                        console.warn(`Failed to load setting for ${charName}`);
+                        resolve();
+                    }
+                };
+                script.onerror = () => {
+                    // 로드 실패해도 계속 진행
+                    console.warn(`Setting file not found for ${charName}`);
+                    resolve();
+                };
+                document.head.appendChild(script);
+            });
+        });
+
+        await Promise.all(loadPromises);
+    }
+
+    // 다국어 지원 함수
+    async function updateLanguageContent() {
+        const currentLang = I18nService.getCurrentLanguage();
+        I18nService.updateDOM();
+
+        // 필터 카운트 텍스트 업데이트를 위한 전역 변수 설정
+        window.i18nFilteredCount = I18nService.t('filtered_count');
+        window.i18nCountUnit = I18nService.t('count_unit');
+        window.i18nSetEffect2 = I18nService.t('set_effect_2');
+        window.i18nSetEffect4 = I18nService.t('set_effect_4');
+    }
+
+    function getI18nText(key, fallback) {
+        if (typeof I18nService !== 'undefined' && I18nService && typeof I18nService.t === 'function') {
+            return I18nService.t(key, fallback);
+        }
+        return fallback || key;
+    }
+
+    // 언어별 SEO 설정 함수
+    function updateSEOContent() {
+        const seoTitle = getI18nText('seo_title', '계시 - 페르소나5 더 팬텀 X 루페르넷');
+        const seoDescription = getI18nText('seo_description', '페르소나5 더 팬텀 X의 계시 정보. 세트 효과와 추가 효과를 확인하세요.');
+
+        // 타이틀 업데이트
+        document.title = seoTitle;
+
+        // 메타 태그 업데이트
+        const metaDescription = document.querySelector('meta[name="description"]');
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        const ogDescription = document.querySelector('meta[property="og:description"]');
+
+        if (metaDescription) metaDescription.setAttribute('content', seoDescription);
+        if (ogTitle) ogTitle.setAttribute('content', seoTitle);
+        if (ogDescription) ogDescription.setAttribute('content', seoDescription);
+    }
+
+    // 계시 스탯 i18n 및 데이터 - Removed local revI18n, using I18nService now.
+
+    // Sub stats values sourced from the article (KR/EN/JP identical numerically)
+    // Sub stats values sourced from the article (KR/EN/JP identical numerically)
+    // Data is now loaded from revelation_stats.json to avoid duplication
+    let subStatsData = {};
+
+    // Map English sub stat keys to I18n keys
+    const subStatKeyMap = {
+        'Crit Rate': 'sub_crit_rate',
+        'Crit Mult.': 'sub_crit_mult',
+        'Pierce Rate': 'sub_pierce_rate',
+        'Attack Mult.': 'sub_attack_mult',
+        'Attack %': 'sub_attack_percent',
+        'Attack': 'sub_attack',
+        'HP %': 'sub_hp_percent',
+        'HP': 'sub_hp',
+        'Defense %': 'sub_defense_percent',
+        'Defense': 'sub_defense',
+        'Ailment Accuracy': 'sub_ailment_accuracy',
+        'SP Recovery': 'sub_sp_recovery',
+        'Speed': 'sub_speed',
+        'Healing Effect': 'sub_healing_effect'
+    };
+
+    // Placeholder main stats ranges (fill exact values later from image)
+    // Placeholder main stats ranges (fill exact values later from image)
+    // Data is now loaded from revelation_stats.json to avoid duplication
+    let mainStatsData = {};
+
+    // Helper: determine if a main stat label should be pink-highlighted for a given tab and language
+    // Helper: determine if a main stat label should be pink-highlighted for a given tab
+    // Now uses I18nService keys to avoid hardcoded strings per language
+    function isRevPinkLabel(lang, slotKey, label) {
+        // Define which stats (by i18n key) should be pink for each slot
+        const pinkKeys = {
+            moon: ['sub_attack_mult', 'sub_healing_effect'],
+            star: ['sub_crit_rate', 'sub_crit_mult', 'sub_ailment_accuracy'],
+            sky: ['sub_sp_recovery', 'sub_speed']
+        };
+
+        const keys = pinkKeys[slotKey];
+        if (!keys) return false;
+
+        // Check if the current label matches the translation of any pink key
+        // Note: This assumes 'label' (from stats JSON) matches the I18nService translation
+        return keys.some(key => I18nService.t(key) === label);
+    }
+
+    function renderMainTable(lang, slotKey) {
+        // lang is kept for mainStatsData lookup logic if needed, but headers use I18nService
+        const langData = mainStatsData[lang] || mainStatsData.kr || {};
+        const rows = langData[slotKey] || [];
+        const title = I18nService.t('main_title');
+        const header = `<div class="rev-subsection-title">${title}</div>`;
+
+        const colOption = I18nService.t('col_option');
+        const colMax = I18nService.t('col_max');
+        const colMin = I18nService.t('col_min');
+
+        // Show bigger values first (Max -> Min)
+        const table = [`<div class="rev-table-wrap"><table class="rev-table rev-table-main"><thead><tr><th>${colOption}</th><th>${colMax}</th><th>${colMin}</th></tr></thead><tbody>`,
+        ...rows.map(r => {
+            const pink = isRevPinkLabel(lang, slotKey, r[0]);
+            const label = pink ? `<span class="rev-label-pink">${r[0]}</span>` : r[0];
+            return `<tr><td>${label}</td><td>${r[2]}</td><td>${r[1]}</td></tr>`;
+        }),
+            `</tbody></table></div>`].join('');
+        return header + table;
+    }
+
+    // Load stats JSON from same app folder
+    async function loadRevStatsData() {
+        const url = '/apps/revelations/revelation_stats.json';
+        try {
+            const res = await fetch(url, { cache: 'no-cache' });
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            const json = await res.json();
+            if (json && json.sub_stats) subStatsData = json.sub_stats;
+            if (json && json.main_stats) mainStatsData = json.main_stats;
+        } catch (err) {
+            console.warn('Revelation stats JSON load failed, using fallback:', err);
+        }
+    }
+
+    function renderSubTable(lang, group) {
+        const data = (group === 'universal' ? subStatsData.universal : subStatsData.universe) || [];
+
+        const title = I18nService.t('sub_title');
+        const colOption = I18nService.t('col_option');
+        const col1st = I18nService.t('col_1st');
+        const col2nd = I18nService.t('col_2nd');
+        const col3rd = I18nService.t('col_3rd');
+        const col4th = I18nService.t('col_4th');
+        const col5th = I18nService.t('col_5th');
+
+        const header = `<div class="rev-subsection-title">${title}</div>`;
+        const head = `<thead><tr><th>${colOption}</th><th>${col1st}</th><th>${col2nd}</th><th>${col3rd}</th><th>${col4th}</th><th>${col5th}</th></tr></thead>`;
+        const body = data.map(row => {
+            // Map English key to I18n key, then translate
+            const i18nKey = subStatKeyMap[row[0]];
+            const label = i18nKey ? I18nService.t(i18nKey) : row[0];
+
+            return `<tr><td>${label}</td><td>${row[1]}</td><td>${row[2]}</td><td>${row[3]}</td><td>${row[4]}</td><td>${row[5]}</td></tr>`;
+        }).join('');
+        return header + `<div class="rev-table-wrap"><table class="rev-table rev-table-sub">${head}<tbody>${body}</tbody></table></div>`;
+    }
+
+    function buildRevStatsUI(currentLang) {
+        // Headers and tabs are now handled by data-i18n in HTML and I18nService.updateDOM()
+        // We just need to re-render the tables here.
+
+        const lang = currentLang || I18nService.getCurrentLanguage();
+
+        // Fill panels
+        const panels = {
+            uni: document.querySelector('.rev-tab-panel[data-panel="uni"]'),
+            sun: document.querySelector('.rev-tab-panel[data-panel="sun"]'),
+            moon: document.querySelector('.rev-tab-panel[data-panel="moon"]'),
+            star: document.querySelector('.rev-tab-panel[data-panel="star"]'),
+            sky: document.querySelector('.rev-tab-panel[data-panel="sky"]'),
+        };
+
+        if (panels.uni) panels.uni.innerHTML = renderMainTable(lang, 'uni') + renderSubTable(lang, 'universe');
+        if (panels.sun) panels.sun.innerHTML = renderMainTable(lang, 'sun') + renderSubTable(lang, 'universal');
+        if (panels.moon) panels.moon.innerHTML = renderMainTable(lang, 'moon') + renderSubTable(lang, 'universal');
+        if (panels.star) panels.star.innerHTML = renderMainTable(lang, 'star') + renderSubTable(lang, 'universal');
+        if (panels.sky) panels.sky.innerHTML = renderMainTable(lang, 'sky') + renderSubTable(lang, 'universal');
+
+        // Events
+        const accBtn = document.getElementById('rev-accordion-btn');
+        const panel = document.getElementById('rev-panel');
+        if (accBtn && panel && !accBtn.dataset.bound) {
+            accBtn.addEventListener('click', () => {
+                const open = panel.style.display !== 'none';
+                panel.style.display = open ? 'none' : 'block';
+                accBtn.classList.toggle('open', !open);
+            });
+            accBtn.dataset.bound = '1';
+        }
+        document.querySelectorAll('.rev-tab').forEach(btn => {
+            if (btn.dataset.bound) return;
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.rev-tab').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const key = btn.getAttribute('data-tab');
+                document.querySelectorAll('.rev-tab-panel').forEach(p => p.style.display = 'none');
+                const target = document.querySelector(`.rev-tab-panel[data-panel="${key}"]`);
+                if (target) target.style.display = 'block';
+            });
+            btn.dataset.bound = '1';
+        });
+    }
+
+    // Initialize navigation on page load
+    document.addEventListener('DOMContentLoaded', async () => {
+        try {
+            // 현재 언어 확인
+            const currentLang = (typeof LanguageRouter !== 'undefined' && LanguageRouter) ? LanguageRouter.getCurrentLanguage() : 'kr';
+
+            // 네비게이션 초기화
+            if (typeof Navigation !== 'undefined') {
+                Navigation.load('revelations', 1);
+            }
+
+            if (typeof VersionChecker !== 'undefined') {
+                VersionChecker.check();
+            }
+
+            // I18nService 초기화
+            if (typeof window.I18nService !== 'undefined') {
+                await window.I18nService.init('revelation');
+            } else {
+                console.error('I18nService is not defined!');
+            }
+
+            // 언어 콘텐츠 업데이트 (데이터 로드 전 UI 먼저 적용)
+            await updateLanguageContent();
+
+            // SEO 설정 업데이트 (Excluded from i18n update per user request)
+            if (typeof updateSEOContent === 'function') {
+                updateSEOContent();
+            }
+
+            // 데이터 로드
+            await loadLanguageData(currentLang);
+            // 캐릭터 데이터 로드
+            await loadCharacterData();
+            // 모든 캐릭터의 setting.js 로드
+            await loadAllCharacterSettings();
+            // Load external stats JSON (non-blocking for rest of page build)
+            await loadRevStatsData();
+
+            // 페이지 초기화
+            initializePageContent();
+            // Build Revelation Stats UI (after language is ready)
+            buildRevStatsUI(currentLang);
+
+        } catch (error) {
+            console.error('Failed to load language data:', error);
+            // 에러 메시지 표시
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error-message';
+            errorDiv.textContent = getI18nText('msg_load_error_general', '데이터를 불러오는 중 오류가 발생했습니다. 페이지를 새로고침해주세요.');
+            document.querySelector('.main-wrapper').prepend(errorDiv);
+        }
+    });
+
+    // 현재 언어에 맞는 revelation 데이터 가져오기
+    function getCurrentRevelationData() {
+        const currentLang = (typeof LanguageRouter !== 'undefined' && LanguageRouter) ? LanguageRouter.getCurrentLanguage() : 'kr';
+
+        let data = null;
+        switch (currentLang) {
+            case 'en':
+                data = window.enRevelationData || (typeof enRevelationData !== 'undefined' ? enRevelationData : null);
+                break;
+            case 'jp':
+                data = window.jpRevelationData || (typeof jpRevelationData !== 'undefined' ? jpRevelationData : null);
+                break;
+            default:
+                data = window.revelationData || (typeof revelationData !== 'undefined' ? revelationData : null);
+        }
+
+        // 데이터가 없으면 기본 revelationData 사용
+        return data || window.revelationData || (typeof revelationData !== 'undefined' ? revelationData : { main: {}, sub: {}, sub_effects: {}, set_effects: {} });
+    }
+
+    function initializePageContent() {
+        const cardsContainer = document.getElementById('revelationCards');
+        const searchCount = document.querySelector('.search-count');
+
+        // 현재 언어 확인
+        const currentLang = (typeof LanguageRouter !== 'undefined' && LanguageRouter) ? LanguageRouter.getCurrentLanguage() : 'kr';
+
+        // 현재 언어에 맞는 데이터 가져오기
+        const currentRevelationData = getCurrentRevelationData();
+
+        // 데이터 유효성 검사
+        if (!currentRevelationData || !currentRevelationData.main || !currentRevelationData.sub) {
+            console.error('Revelation data not loaded properly:', currentRevelationData);
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error-message';
+            errorDiv.textContent = getI18nText('msg_load_error_revelation_data', '계시 데이터를 불러오는 중 오류가 발생했습니다. 페이지를 새로고침해주세요.');
+            cardsContainer.appendChild(errorDiv);
+            return;
+        }
+
+        // Build stats UI in case language finished after
+        try { buildRevStatsUI(); } catch (e) { /* noop */ }
+
+        // Separate main revelations and sub revelations
+        const mainRevelations = Object.keys(currentRevelationData.main);
+        const subRevelations = Object.keys(currentRevelationData.sub);
+
+        // Function to check if a revelation is unreleased
+        const isUnreleased = (revelation) => {
+            if (currentLang === 'kr') return false;
+
+            if (revelation.type === 'sub') {
+                const effects = currentRevelationData.sub_effects && currentRevelationData.sub_effects[revelation.name];
+                return effects && effects.type && effects.type.includes('미출시');
+            } else {
+                const mainEffects = currentRevelationData.set_effects && currentRevelationData.set_effects[revelation.name];
+                return mainEffects && mainEffects.type && mainEffects.type.includes('미출시');
+            }
+        };
+
+        // Create array of all revelations (sub revelations first, then main revelations)
+        // and sort to put unreleased items at the end of their respective sections
+        const allRevelations = [
+            // Sub revelations - unreleased at the end
+            ...subRevelations
+                .map(name => ({ name, type: 'sub' }))
+                .sort((a, b) => {
+                    const aUnreleased = isUnreleased(a);
+                    const bUnreleased = isUnreleased(b);
+                    if (aUnreleased && !bUnreleased) return 1;
+                    if (!aUnreleased && bUnreleased) return -1;
+                    return 0;
+                }),
+            // Main revelations - unreleased at the end
+            ...mainRevelations
+                .map(name => ({ name, type: 'main' }))
+                .sort((a, b) => {
+                    const aUnreleased = isUnreleased(a);
+                    const bUnreleased = isUnreleased(b);
+                    if (aUnreleased && !bUnreleased) return 1;
+                    if (!aUnreleased && bUnreleased) return -1;
+                    return 0;
+                })
+        ];
+
+        // 초기 검색 결과 수 표시
+        const countText = window.i18nFilteredCount || '전체';
+        const countUnit = window.i18nCountUnit !== undefined ? window.i18nCountUnit : (currentLang === 'kr' ? '개' : '');
+        searchCount.textContent = `${countText} ${allRevelations.length}${countUnit}`;
+
+        // Create card for each revelation
+        allRevelations.forEach((revelation, index) => {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.dataset.type = revelation.type;
+            card.dataset.name = revelation.name;
+
+            // Get Korean name for image path (using reverse mapping)
+            let koreanName = revelation.name;
+
+            // If not Korean, find Korean name from mapping
+            if (currentLang !== 'kr') {
+                if (currentLang === 'jp' && currentRevelationData.mapping_jp) {
+                    // Find Korean name from Japanese mapping
+                    const koreanKey = Object.keys(currentRevelationData.mapping_jp).find(key =>
+                        currentRevelationData.mapping_jp[key] === revelation.name
+                    );
+                    if (koreanKey) koreanName = koreanKey;
+                } else if (currentLang === 'en' && currentRevelationData.mapping_en) {
+                    // Find Korean name from English mapping
+                    const koreanKey = Object.keys(currentRevelationData.mapping_en).find(key =>
+                        currentRevelationData.mapping_en[key] === revelation.name
+                    );
+                    if (koreanKey) koreanName = koreanKey;
+                }
+            }
+            // If Korean, koreanName is already correct (revelation.name)
+
+            // Image container
+            const imgContainer = document.createElement('div');
+            imgContainer.className = 'img-container';
+
+            // Revelation image - use Korean name for file path
+            const img = document.createElement('img');
+            img.src = `{{ site.baseurl }}/assets/img/revelation/${koreanName}.webp`;
+            img.alt = revelation.name;
+            img.className = 'revelation-img';
+
+            // Name image - use Korean name for file path
+            const nameImg = document.createElement('img');
+            nameImg.src = `{{ site.baseurl }}/assets/img/revelation/${koreanName}.png`;
+            nameImg.alt = revelation.name;
+            nameImg.className = 'name-img';
+
+            imgContainer.appendChild(img);
+
+            if (currentLang == 'kr') {
+                imgContainer.appendChild(nameImg);
+            }
+
+            // Info container
+            const infoContainer = document.createElement('div');
+            infoContainer.className = 'info-container';
+
+            // Type label
+            const typeLabel = document.createElement('div');
+            typeLabel.className = 'type-label';
+
+            // Container for text and icons
+            const typeLabelContent = document.createElement('div');
+            typeLabelContent.className = 'type-label-content';
+
+            // Add text
+            const typeText = document.createElement('span');
+            typeText.textContent = revelation.name;  // Changed to revelation name
+
+            // Icon container
+            const iconContainer = document.createElement('div');
+            iconContainer.className = 'type-icons';
+
+            if (revelation.type === 'main') {
+                // For main revelations
+                const mainIcon = document.createElement('img');
+                mainIcon.src = '{{ site.baseurl }}/assets/img/revelation/icon-주.png';
+                mainIcon.alt = '주';
+                mainIcon.className = 'type-icon';
+                iconContainer.appendChild(mainIcon);
+            } else {
+                // For sub revelations
+                ['일', '월', '성', '진'].forEach(type => {
+                    const icon = document.createElement('img');
+                    icon.src = `{{ site.baseurl }}/assets/img/revelation/icon-${type}.png`;
+                    icon.alt = type;
+                    icon.className = 'type-icon';
+                    iconContainer.appendChild(icon);
+                });
+            }
+
+            typeLabelContent.appendChild(typeText);
+            typeLabelContent.appendChild(iconContainer);
+
+            // Add "not released" indicator for unreleased revelations in EN/JP
+            if (currentLang !== 'kr' && isUnreleased(revelation)) {
+                const notReleasedLabel = document.createElement('div');
+                notReleasedLabel.className = 'not-released-label';
+                notReleasedLabel.textContent = getI18nText('label_not_released', 'Not Released');
+                typeLabelContent.appendChild(notReleasedLabel);
+            }
+            typeLabel.appendChild(typeLabelContent);
+
+            // Effect description
+            const effectsContainer = document.createElement('div');
+            effectsContainer.className = 'effects-container';
+
+            if (revelation.type === 'sub') {
+                // For sub revelations, show 2-set and 4-set effects
+                const effects = currentRevelationData.sub_effects && currentRevelationData.sub_effects[revelation.name];
+                if (effects) {
+                    const setLabel2 = window.i18nSetEffect2 || '2세트';
+                    const setLabel4 = window.i18nSetEffect4 || '4세트';
+
+                    effectsContainer.innerHTML = `
+                        <div class="effect-set">
+                            <div class="set-label">${setLabel2}</div>
+                            <div class="set-desc">${effects.set2 || ''}</div>
+                        </div>
+                        <div class="effect-set">
+                            <div class="set-label">${setLabel4}</div>
+                            <div class="set-desc">${effects.set4 || ''}</div>
+                        </div>
+                    `;
+                }
+            } else {
+                // For main revelations, show set_effects
+                const mainEffects = currentRevelationData.set_effects && currentRevelationData.set_effects[revelation.name];
+                if (mainEffects) {
+                    // subName이 type이 아닌 것들만
+                    effectsContainer.innerHTML = Object.entries(mainEffects)
+                        .filter(([subName]) => subName !== 'type')
+                        .map(([subName, effect]) => {
+                            return `
+                            <div class="effect-set">
+                                <div class="set-label">${subName}</div>
+                                <div class="set-desc">${effect}</div>
+                            </div>
+                        `;
+                        }).join('');
+                }
+            }
+
+            infoContainer.appendChild(typeLabel);
+            infoContainer.appendChild(effectsContainer);
+
+            // ---- Characters Accordion ----
+            // i18n label
+            const tLabel = I18nService.t('label_characters');
+
+            // Helpers
+            function getCharacterLabel(koreanCharName, lang) {
+                const c = (typeof characterData !== 'undefined') ? characterData[koreanCharName] : null;
+                if (!c) return koreanCharName;
+                if (lang === 'en' && c.codename) return c.codename;
+                if (lang === 'jp' && c.name_jp) return c.name_jp;
+                return koreanCharName;
+            }
+            function findUsersOfRevelation(koreanRevName) {
+                if (typeof characterData === 'undefined') return [];
+                const users = [];
+
+                // characterData의 모든 캐릭터를 순회
+                Object.keys(characterData).forEach((charName) => {
+                    // characterSetting에서 해당 캐릭터의 설정 가져오기
+                    const setting = (window.characterSetting && window.characterSetting[charName]) ? window.characterSetting[charName] : null;
+
+                    if (setting) {
+                        const mains = Array.isArray(setting.main_revelation) ? setting.main_revelation : [];
+                        const subs = Array.isArray(setting.sub_revelation) ? setting.sub_revelation : [];
+
+                        if (mains.includes(koreanRevName) || subs.includes(koreanRevName)) {
+                            users.push(charName);
+                        }
+                    }
+                });
+
+                // sort by name
+                users.sort((a, b) => a.localeCompare(b, 'ko'));
+                return users;
+            }
+
+            const accordion = document.createElement('div');
+            accordion.className = 'accordion';
+            const header = document.createElement('div');
+            header.className = 'accordion-header';
+            header.setAttribute('aria-expanded', 'false');
+            header.innerHTML = `<span>${tLabel}</span><span>+</span>`;
+            const content = document.createElement('div');
+            content.className = 'accordion-content';
+
+            const users = findUsersOfRevelation(koreanName);
+            if (users.length) {
+                const grid = document.createElement('div');
+                grid.className = 'user-list';
+                const lang = (typeof LanguageRouter !== 'undefined' && LanguageRouter) ? LanguageRouter.getCurrentLanguage() : 'kr';
+                users.forEach(u => {
+                    const a = document.createElement('a');
+                    a.className = 'character-link';
+                    a.href = `/character.html?name=${encodeURIComponent(u)}`;
+
+                    const cimg = document.createElement('img');
+                    cimg.className = 'character-img';
+                    cimg.src = `{{ site.baseurl }}/assets/img/tier/${u}.webp`;
+                    cimg.alt = u;
+                    cimg.loading = 'lazy';
+                    cimg.onerror = function () { this.onerror = null; this.src = `{{ site.baseurl }}/assets/img/character-half/${u}.webp`; };
+
+                    const icons = document.createElement('span');
+                    icons.className = 'char-icons';
+                    const cdata = (typeof characterData !== 'undefined') ? characterData[u] : null;
+                    const pos = cdata && cdata.position ? cdata.position : '';
+                    const ele = cdata && cdata.element ? cdata.element : '';
+                    if (pos) {
+                        const pi = document.createElement('img');
+                        pi.src = `{{ site.baseurl }}/assets/img/character-cards/직업_${pos}.png`;
+                        pi.alt = pos;
+                        pi.loading = 'lazy';
+                        pi.className = 'char-icon';
+                        icons.appendChild(pi);
+                    }
+                    if (ele) {
+                        const ei = document.createElement('img');
+                        ei.src = `{{ site.baseurl }}/assets/img/character-cards/속성_${ele}.png`;
+                        ei.alt = ele;
+                        ei.loading = 'lazy';
+                        ei.className = 'char-icon';
+                        icons.appendChild(ei);
+                    }
+
+                    const label = document.createElement('span');
+                    label.className = 'character-name';
+                    label.textContent = getCharacterLabel(u, lang);
+
+                    a.appendChild(cimg);
+                    a.appendChild(icons);
+                    a.appendChild(label);
+                    grid.appendChild(a);
+                });
+                content.appendChild(grid);
+            } else {
+                content.textContent = '-';
+            }
+
+            // Toggle on card click (ignore interactive elements)
+            // Removed: card.addEventListener('click'...) - logic moved to separate handlers
+
+            // Also allow toggling by clicking the accordion header directly
+            header.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = content.classList.toggle('open');
+                header.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                header.lastElementChild.textContent = isOpen ? '−' : '+';
+                // Use 'expanded' class for visual style to not conflict with 'active' (filter)
+                card.classList.toggle('expanded', isOpen);
+            });
+
+            // Make the header interactive-looking
+            header.title = getI18nText('tooltip_view_characters', '사용 캐릭터 보기');
+
+            accordion.appendChild(header);
+            accordion.appendChild(content);
+            infoContainer.appendChild(accordion);
+
+            card.appendChild(imgContainer);
+            card.appendChild(infoContainer);
+            cardsContainer.appendChild(card);
+        });
+
+        addTooltips();
+
+        // Add filtering functionality
+        const checkboxes = document.querySelectorAll('.filter-options input[type="checkbox"]');
+
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                applyFilters();
+            });
+        });
+
+        // Add Reset Filter Button
+        const filterSection = document.querySelector('.filter-section');
+        const resetBtnContainer = document.createElement('div');
+        const resetFilterLabel = getI18nText('reset_filter', '필터 초기화');
+        resetBtnContainer.className = 'reset-filter-container';
+        resetBtnContainer.style.display = 'none';
+        resetBtnContainer.innerHTML = `
+            <button id="resetFilterBtn" class="reset-filter-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/>
+                </svg>
+                <span>${resetFilterLabel}</span>
+            </button>
+        `;
+
+        // Insert after filter options but before separator
+        filterSection.appendChild(resetBtnContainer);
+
+        // Setup Reset Button Event
+        document.getElementById('resetFilterBtn').addEventListener('click', () => {
+            deactivateFilter();
+        });
+
+        function applyFilters() {
+            // Also hide reset button if no active card (normal filtering)
+            if (!activeCard) {
+                resetBtnContainer.style.display = 'none';
+            }
+
+            const selectedTypes = Array.from(document.querySelectorAll('input[name="type"]:checked')).map(cb => cb.value);
+            const selectedElements = Array.from(document.querySelectorAll('input[name="element"]:checked')).map(cb => cb.value);
+            const selectedEffects = Array.from(document.querySelectorAll('input[name="effect"]:checked')).map(cb => cb.value);
+
+            const cards = document.querySelectorAll('.card');
+            let visibleCount = 0;
+
+            // 현재 언어에 맞는 데이터 가져오기
+            const currentRevelationData = getCurrentRevelationData();
+
+            // List of filtered sub revelations
+            let filteredSubRevelations = [];
+            if (currentRevelationData.sub_effects) {
+                filteredSubRevelations = Object.entries(currentRevelationData.sub_effects).filter(([name, effects]) => {
+                    const elementMatch = selectedElements.length === 0 ||
+                        (effects.type && selectedElements.some(element => effects.type.includes(element)));
+                    const effectMatch = selectedEffects.length === 0 ||
+                        (effects.type && selectedEffects.some(effect => effects.type.includes(effect)));
+                    return elementMatch && effectMatch;
+                }).map(([name]) => name);
+            }
+
+            // Find main revelations related to filtered sub revelations
+            let relatedMainRevelations = new Set();
+            if (currentRevelationData.main) {
+                Object.entries(currentRevelationData.main).forEach(([mainName, subNames]) => {
+                    if (Array.isArray(subNames) && subNames.some(subName => filteredSubRevelations.includes(subName))) {
+                        relatedMainRevelations.add(mainName);
+                    }
+                });
+            }
+
+            cards.forEach(card => {
+                const type = card.dataset.type;
+                const name = card.dataset.name;
+
+                const typeMatch = selectedTypes.length === 0 || selectedTypes.includes(type);
+                const nameMatch = type === 'sub' ?
+                    filteredSubRevelations.includes(name) :
+                    relatedMainRevelations.has(name);
+
+                if (typeMatch && nameMatch) {
+                    card.style.display = 'flex';
+                    card.style.visibility = 'visible';
+                    card.style.opacity = '1';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                    card.style.visibility = 'hidden';
+                    card.style.opacity = '0';
+                }
+            });
+
+            // Update search count
+            const countText = window.i18nFilteredCount || '전체';
+            const countUnit = window.i18nCountUnit !== undefined ? window.i18nCountUnit : (currentLang === 'kr' ? '개' : '');
+            searchCount.textContent = `${countText} ${visibleCount}${countUnit}`;
+        }
+
+        // Search functionality implementation
+        const searchInput = document.getElementById('revelationSearch');
+        const dropdown = document.getElementById('searchDropdown');
+        const cards = document.querySelectorAll('.card');
+
+        searchInput.addEventListener('input', (e) => {
+            const searchValue = e.target.value.toLowerCase();
+            dropdown.innerHTML = '';
+
+            // Dropdown autocomplete handling
+            if (searchValue.length > 0) {
+                const matches = allRevelations.filter(revelation => {
+                    const revelationName = revelation.name.toLowerCase();
+                    return revelationName.includes(searchValue);
+                });
+
+                if (matches.length > 0) {
+                    dropdown.style.display = 'block';
+                    matches.forEach(revelation => {
+                        const div = document.createElement('div');
+                        div.className = 'dropdown-item';
+                        div.textContent = revelation.name;
+                        div.addEventListener('click', () => {
+                            searchInput.value = revelation.name;
+                            dropdown.style.display = 'none';
+                            filterBySearch(revelation.name.toLowerCase());
+                        });
+                        dropdown.appendChild(div);
+                    });
+                } else {
+                    dropdown.style.display = 'none';
+                }
+            } else {
+                dropdown.style.display = 'none';
+                filterBySearch('');
+            }
+
+            // Filter by search term
+            filterBySearch(searchValue);
+        });
+
+        // Search filtering function
+        function filterBySearch(searchValue) {
+            let visibleCount = 0;
+
+            cards.forEach(card => {
+                const name = card.dataset.name;
+                const shouldShow = searchValue === '' || name.toLowerCase().includes(searchValue);
+
+                if (shouldShow) {
+                    card.style.display = 'flex';
+                    card.style.visibility = 'visible';
+                    card.style.opacity = '1';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                    card.style.visibility = 'hidden';
+                    card.style.opacity = '0';
+                }
+            });
+
+            // Update search count
+            const countText = window.i18nFilteredCount || '전체';
+            const countUnit = window.i18nCountUnit !== undefined ? window.i18nCountUnit : (currentLang === 'kr' ? '개' : '');
+            searchCount.textContent = `${countText} ${visibleCount}${countUnit}`;
+        }
+
+        let activeCard = null; // Track currently active card
+
+        // Handle card click events (For Filter/Selection Only)
+        cards.forEach(card => {
+            card.addEventListener('click', (e) => {
+                // Prevent bubbling if clicking inside specific interactive elements
+                const target = e.target;
+                if (target.closest('.accordion-header') || target.closest('a') || target.closest('button')) {
+                    // These interactions are handled separately
+                    return;
+                }
+
+                const clickedName = card.getAttribute('data-name');
+                const cardType = card.getAttribute('data-type');
+
+                // Toggle selection
+                if (activeCard === card) {
+                    deactivateFilter();
+                } else {
+                    activateFilter(card, clickedName, cardType);
+                }
+            });
+        });
+
+        function activateFilter(card, name, type) {
+            if (activeCard) {
+                activeCard.classList.remove('active');
+            }
+
+            activeCard = card;
+            card.classList.add('active');
+
+            // Show reset button
+            resetBtnContainer.style.display = 'flex';
+
+            // Scroll to top of cards container nicely
+            const containerTop = document.getElementById('revelationCards').offsetTop - 100;
+            window.scrollTo({ top: containerTop, behavior: 'smooth' });
+
+            // 현재 언어에 맞는 데이터 가져오기
+            const currentRevelationData = getCurrentRevelationData();
+
+            let relatedRevelations = [];
+            if (type === 'main' && currentRevelationData.main) {
+                // For main revelations, get all connected sub revelations
+                relatedRevelations = currentRevelationData.main[name] || [];
+                relatedRevelations.push(name);
+            } else if (type === 'sub' && currentRevelationData.main) {
+                // For sub revelations, find all main revelations that include this sub revelation
+                Object.entries(currentRevelationData.main).forEach(([mainName, subNames]) => {
+                    if (Array.isArray(subNames) && subNames.includes(name)) {
+                        relatedRevelations.push(mainName);
+                    }
+                });
+                relatedRevelations.push(name);
+            }
+
+            let visibleCount = 0;
+            cards.forEach(c => {
+                const cardName = c.getAttribute('data-name');
+                const shouldShow = relatedRevelations.includes(cardName);
+
+                if (shouldShow) {
+                    c.style.display = 'flex';
+                    c.style.visibility = 'visible';
+                    c.style.opacity = '1';
+                    visibleCount++;
+                } else {
+                    c.style.display = 'none';
+                    c.style.visibility = 'hidden';
+                    c.style.opacity = '0';
+                }
+            });
+
+            // Update search count for related revelations
+            const countText = window.i18nFilteredCount || '전체';
+            const countUnit = window.i18nCountUnit !== undefined ? window.i18nCountUnit : (currentLang === 'kr' ? '개' : '');
+            searchCount.textContent = `${countText} ${visibleCount}${countUnit}`;
+        }
+
+        function deactivateFilter() {
+            // Remove active card style
+            if (activeCard) {
+                // Also collapse the details if open
+                const content = activeCard.querySelector('.accordion-content');
+                const header = activeCard.querySelector('.accordion-header');
+
+                if (content) content.classList.remove('open');
+                if (header) {
+                    header.setAttribute('aria-expanded', 'false');
+                    if (header.lastElementChild) header.lastElementChild.textContent = '+';
+                }
+
+                activeCard.classList.remove('expanded');
+                activeCard.classList.remove('active');
+                activeCard = null;
+            }
+
+            // Hide reset button
+            resetBtnContainer.style.display = 'none';
+
+            // Show all cards
+            applyFilters();
+        }
+    } // initializePageContent 함수 종료
+</script>
+
+
+<style>
+    .not-released-label {
+        position: absolute;
+        top: 10px;
+        right: -1px;
+        background: #c62323;
+        color: #000;
+        font-size: 8px;
+        font-weight: bold;
+        padding: 2px 6px;
+        border-radius: 0px;
+        z-index: 10;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+</style>

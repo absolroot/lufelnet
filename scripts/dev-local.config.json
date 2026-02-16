@@ -1,0 +1,27 @@
+{
+  "jekyll": {
+    "host": "0.0.0.0",
+    "port": 4000,
+    "baseArgs": [
+      "--force_polling"
+    ]
+  },
+  "modes": {
+    "full": {
+      "drafts": true,
+      "future": true,
+      "unpublished": true,
+      "livereload": true
+    },
+    "fast": {
+      "drafts": false,
+      "future": false,
+      "unpublished": false,
+      "livereload": false
+    }
+  },
+  "patch": {
+    "enabledOnStart": true,
+    "port": 4173
+  }
+}

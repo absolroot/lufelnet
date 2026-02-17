@@ -406,10 +406,10 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
         const searchInput = document.getElementById('characterSearch');
 
         if (navHome) {
-            navHome.textContent = getI18nText('navHome', navHome.textContent || '');
+            navHome.textContent = getI18nText('nav.home', navHome.textContent || '');
         }
         if (navCurrent) {
-            navCurrent.textContent = getI18nText('navCurrent', navCurrent.textContent || '');
+            navCurrent.textContent = getI18nText('nav.character', navCurrent.textContent || '');
         }
         if (pageTitle) {
             pageTitle.textContent = getI18nText('pageTitle', pageTitle.textContent || '');

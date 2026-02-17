@@ -490,7 +490,7 @@ class PullSimulator {
         if (pageTitleEl) pageTitleEl.textContent = t('pageTitle');
 
         const navHome = document.getElementById('nav-home');
-        if (navHome) navHome.textContent = t('navHome');
+        if (navHome) navHome.textContent = t('nav.home');
 
         const navCurrent = document.getElementById('nav-current');
         if (navCurrent) navCurrent.textContent = t('navCurrent');

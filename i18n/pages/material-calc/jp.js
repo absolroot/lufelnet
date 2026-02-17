@@ -1,5 +1,4 @@
 window.I18N_PAGE_MATERIAL_CALC_JP = {
-    navHome: 'ホーム',
     navCurrent: '育成計算機',
     pageTitle: '育成計算機',
     pageTitleFull: '育成計算機 - ペルソナ5 ザ・ファントムX LufelNet',

@@ -5,7 +5,6 @@
 
 window.I18N_PAGE_PULL_CALC_KR = {
     pageTitle: '가챠 플래너',
-    navHome: '홈',
     navCurrent: '가챠 플래너',
     seoKeywords: 'P5X, 페르소나5X, 가챠 플래너, 가챠 계산기, 가챠 시뮬레이터, P5X 계산기, 계약 계획',
     seoOgLocale: 'ko_KR',

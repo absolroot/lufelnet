@@ -51,6 +51,7 @@
     if (first === 'schedule') return { domain: 'schedule', mode: 'list' };
     if (first === 'revelations') return { domain: 'revelation', mode: 'list' };
     if (first === 'material-calc') return { domain: 'material-calc', mode: 'list' };
+    if (first === 'pay-calc') return { domain: 'pay-calc', mode: 'list' };
     if (first === 'critical-calc') return { domain: 'critical-calc', mode: 'list' };
     if (first === 'defense-calc') return { domain: 'defense-calc', mode: 'list' };
     if (first === 'pull-calc') return { domain: 'pull-calc', mode: 'list' };

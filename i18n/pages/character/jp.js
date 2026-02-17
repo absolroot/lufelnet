@@ -1,6 +1,4 @@
 window.I18N_PAGE_CHARACTER_JP = {
-    navHome: 'ホーム',
-    navCurrent: '怪盗',
     pageTitle: '怪盗育成',
     filteredCount: '全体',
     countUnit: '名',
@@ -16,7 +14,6 @@ window.I18N_PAGE_CHARACTER_JP = {
     characterDetailSkills: 'スキル',
     characterDetailRitual: '意識',
     characterDetailWeapon: '専用武器',
-    characterDetailRevelation: '啓示',
     characterDetailMainOption: '主属性',
     characterDetailSubOption: '副属性',
     characterDetailRecommendedStats: '推奨育成ステータス',
@@ -44,7 +41,6 @@ window.I18N_PAGE_CHARACTER_JP = {
     characterDetailStar: '星',
     characterDetailSky: '天',
     characterDetailCodeName: 'コードネーム',
-    characterDetailPersona: 'ペルソナ',
     characterDetailUnreleasedNote: '※推奨されているペルソナとウェポンの一部は、現在の地域ではリリースされていない可能性があります。',
     characterDetailRecommendedCombination: '推奨コンビネーション',
     characterDetailRecommendedPartyExample: '推奨パーティ例',

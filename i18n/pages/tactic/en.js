@@ -1,5 +1,4 @@
 window.I18N_PAGE_TACTIC_EN = {
-    navHome: 'Home',
     navCurrent: 'Tactic / Tactic Maker',
     pageTitle: 'P5X Tactic Maker',
     buttonExport: 'Export',

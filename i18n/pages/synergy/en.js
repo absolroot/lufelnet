@@ -3,7 +3,6 @@ window.I18N_PAGE_SYNERGY_EN = {
     pageTitle: 'Synergy',
 
     // Navigation
-    navHome: 'Home',
     navCurrent: 'Synergy',
 
     // Filters

@@ -1,6 +1,5 @@
 window.I18N_PAGE_GALLERY_KR = {
     pageTitle: '갤러리',
-    navHome: '홈',
     navCurrent: '갤러리',
 
     // Filters

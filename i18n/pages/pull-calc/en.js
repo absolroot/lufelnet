@@ -5,7 +5,6 @@
 
 window.I18N_PAGE_PULL_CALC_EN = {
     pageTitle: 'Pull Planner',
-    navHome: 'Home',
     navCurrent: 'Pull Planner',
     seoKeywords: 'P5X, Persona 5X, Pull Planner, Gacha Calculator, Pull Simulator, Pull Calculator, Gacha Planning',
     seoOgLocale: 'en_US',

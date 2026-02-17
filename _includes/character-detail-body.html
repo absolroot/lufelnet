@@ -875,7 +875,7 @@
             }
             if (listLink) {
                 listLink.href = `/${navLang}/character/`;
-                listLink.textContent = getCharacterI18nText('navCurrent', '괴도');
+                listLink.textContent = getCharacterI18nText('nav.character', '괴도');
             }
         } catch (e) { console.warn('[SAFE:nav-i18n]', e); }
 
@@ -1438,7 +1438,7 @@
                     <span class="label">${codeNameLabel}</span><span class="value">${character.codename || ''}</span>
                 `;
             }
-            const personaLabel = `${getCharacterI18nText('characterDetailPersona', '페르소나')} `;
+            const personaLabel = `${getCharacterI18nText('gameTerms.persona', '페르소나')} `;
             const personaValue = currentLang === 'en' && character.persona_en ? character.persona_en :
                 currentLang === 'jp' && character.persona_jp ? character.persona_jp :
                     currentLang === 'cn' && character.persona_cn ? character.persona_cn :

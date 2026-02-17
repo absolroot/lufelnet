@@ -104,8 +104,8 @@ const PERSONA_NONORDER_SUBDIR = 'nonorder';
 const WONDER_INTERNAL_ROOT_ID = 'wonder_internal';
 const REVELATION_LANGS = ['kr', 'en', 'jp', 'cn'];
 const DOMAIN_DEFAULT_LANGS = {
-  character: 'kr,en,jp',
-  persona: 'kr,en,jp',
+  character: 'kr,en,jp,cn',
+  persona: 'kr,en,jp,cn',
   wonder_weapon: 'kr,en,jp,cn',
   revelation: 'kr,en,jp,cn'
 };

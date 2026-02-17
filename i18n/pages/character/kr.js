@@ -1,6 +1,4 @@
 window.I18N_PAGE_CHARACTER_KR = {
-    navHome: '홈',
-    navCurrent: '괴도',
     pageTitle: '괴도 육성',
     filteredCount: '전체',
     countUnit: '명',
@@ -16,7 +14,6 @@ window.I18N_PAGE_CHARACTER_KR = {
     characterDetailSkills: '스킬',
     characterDetailRitual: '의식',
     characterDetailWeapon: '전용 무기',
-    characterDetailRevelation: '계시',
     characterDetailMainOption: '주 옵션',
     characterDetailSubOption: '부 옵션',
     characterDetailRecommendedStats: '권장 육성 스탯',
@@ -44,7 +41,6 @@ window.I18N_PAGE_CHARACTER_KR = {
     characterDetailStar: '성',
     characterDetailSky: '진',
     characterDetailCodeName: '코드네임',
-    characterDetailPersona: '페르소나',
     characterDetailUnreleasedNote: '안내: 일부 추천 페르소나 및 무기는 현재 지역에서 아직 출시되지 않았을 수 있습니다.',
     characterDetailRecommendedCombination: '추천 조합',
     characterDetailRecommendedPartyExample: '추천 파티 예시',

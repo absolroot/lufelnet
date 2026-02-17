@@ -1,5 +1,4 @@
 window.I18N_PAGE_MATERIAL_CALC_KR = {
-    navHome: '홈',
     navCurrent: '육성 계산기',
     pageTitle: '육성 계산기',
     pageTitleFull: '육성 계산기 - 페르소나5 더 팬텀 X 루페르넷',

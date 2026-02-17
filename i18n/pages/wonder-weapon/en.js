@@ -1,6 +1,5 @@
 window.I18N_PAGE_WONDER_WEAPON_EN = {
     // Navigation
-    navHome: 'Home',
     navCurrent: 'Wonder Daggers',
     pageTitle: 'Wonder Daggers',
 

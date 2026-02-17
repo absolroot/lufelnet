@@ -32,7 +32,7 @@
 
         const helpConfig = {
             'revelation': {
-                titleKey: 'characterDetailRevelation',
+                titleKey: 'gameTerms.revelation',
                 titleFallback: '계시',
                 contentKey: 'helpRevelationContent',
                 contentFallback: '추천 계시 목록입니다. 파티 구성과 상대 적에 따라 추천이 달라질 수 있으니, 각 계시 효과를 확인해 적절한 계시를 선택하세요.'

@@ -1,5 +1,4 @@
 window.I18N_PAGE_MATERIAL_CALC_EN = {
-    navHome: 'Home',
     navCurrent: 'Progression Calculator',
     pageTitle: 'Progression Calculator',
     pageTitleFull: 'Progression Calculator - Persona 5: The Phantom X LufelNet',

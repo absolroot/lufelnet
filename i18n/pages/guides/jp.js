@@ -1,5 +1,4 @@
 window.I18N_PAGE_GUIDES_JP = {
-    navHome: 'ホーム',
     navCurrent: 'ガイド',
     pageTitle: 'ガイド',
     searchPlaceholder: '検索...',

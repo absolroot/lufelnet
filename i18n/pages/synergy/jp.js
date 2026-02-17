@@ -3,7 +3,6 @@ window.I18N_PAGE_SYNERGY_JP = {
     pageTitle: '協力者',
 
     // Navigation
-    navHome: 'ホーム',
     navCurrent: '協力者',
 
     // Filters

@@ -1,5 +1,4 @@
 window.I18N_PAGE_GUIDES_EN = {
-    navHome: 'Home',
     navCurrent: 'Guides',
     pageTitle: 'Guides',
     searchPlaceholder: 'Search...',

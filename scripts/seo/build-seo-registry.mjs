@@ -30,6 +30,7 @@ const DOMAIN_PARAM_POLICY = {
   guides: { remove: ['lang', 'v', 'id'], modeParam: null, detailParam: 'id' },
   maps: { remove: ['lang', 'v', 'map', 'category'], modeParam: null, detailParam: 'map' },
   'material-calc': { remove: ['lang', 'v'], modeParam: null, detailParam: null },
+  'pay-calc': { remove: ['lang', 'v'], modeParam: null, detailParam: null },
   persona: { remove: ['lang', 'v', 'name', 'persona'], modeParam: null, detailParam: 'name' },
   'pull-calc': { remove: ['lang', 'v'], modeParam: null, detailParam: null },
   'pull-tracker': { remove: ['lang', 'v'], modeParam: 'view', detailParam: null },

@@ -1,6 +1,5 @@
 window.I18N_PAGE_TIER_EN = {
     // Navigation
-    navHome: 'Home',
     navCurrent: 'Tier Maker',
 
     // Page title

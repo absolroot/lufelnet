@@ -1,5 +1,4 @@
 window.I18N_PAGE_TACTIC_JP = {
-    navHome: 'ホーム',
     navCurrent: 'タクティック / タクティックメーカー',
     pageTitle: 'P5X タクティックメーカー',
     buttonExport: 'エクスポート',

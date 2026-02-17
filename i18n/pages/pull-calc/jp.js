@@ -5,7 +5,6 @@
 
 window.I18N_PAGE_PULL_CALC_JP = {
     pageTitle: 'ガチャプランナー',
-    navHome: 'ホーム',
     navCurrent: 'ガチャプランナー',
     seoKeywords: 'P5X, ペルソナ5X, ガチャプランナー, ガチャ計算機, ガチャシミュレーター, P5X計算機, ガチャ計画',
     seoOgLocale: 'ja_JP',

@@ -1,5 +1,4 @@
 window.I18N_PAGE_GUIDES_KR = {
-    navHome: '홈',
     navCurrent: '가이드',
     pageTitle: '가이드',
     searchPlaceholder: '검색...',

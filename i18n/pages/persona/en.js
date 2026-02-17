@@ -1,5 +1,4 @@
 window.I18N_PAGE_PERSONA_EN = {
-    navHome: "Home",
     navCurrent: "Personas",
     pageTitle: "Persona",
     filteredCount: "Total",

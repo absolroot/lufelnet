@@ -1,6 +1,5 @@
 window.I18N_PAGE_SCHEDULE_JP = {
     // Navigation
-    navHome: 'ホーム',
     navCurrent: 'スケジュール',
     pageTitle: 'リリーススケジュール',
 

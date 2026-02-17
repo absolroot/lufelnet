@@ -1,6 +1,5 @@
 window.I18N_PAGE_SCHEDULE_KR = {
     // Navigation
-    navHome: '홈',
     navCurrent: '스케줄',
     pageTitle: '출시 스케줄',
 

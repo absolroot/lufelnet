@@ -1,6 +1,5 @@
 window.I18N_PAGE_TIER_KR = {
     // Navigation
-    navHome: '홈',
     navCurrent: '티어 메이커',
 
     // Page title

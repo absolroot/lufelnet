@@ -1,5 +1,4 @@
 window.I18N_PAGE_PERSONA_JP = {
-    navHome: "ホーム",
     navCurrent: "ペルソナ",
     pageTitle: "ペルソナ",
     filteredCount: "全体",

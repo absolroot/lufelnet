@@ -104,6 +104,10 @@
       url.pathname = '/' + lang + '/material-calc/';
       return true;
     }
+    if (domain === 'pay-calc' && /^\/pay-calc\/?$/i.test(url.pathname)) {
+      url.pathname = '/kr/pay-calc/';
+      return true;
+    }
     if (domain === 'critical-calc' && /^\/critical-calc\/?$/i.test(url.pathname)) {
       url.pathname = '/' + lang + '/critical-calc/';
       return true;

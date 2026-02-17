@@ -1,5 +1,4 @@
 window.I18N_PAGE_TACTIC_KR = {
-    navHome: '홈',
     navCurrent: '택틱 / 택틱 메이커',
     pageTitle: '페르소나5X 택틱 메이커',
     buttonExport: '내보내기',

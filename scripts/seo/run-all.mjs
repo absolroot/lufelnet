@@ -21,6 +21,7 @@ const SCRIPT_TARGETS = [
   'maps',
   'material-calc',
   'persona',
+  'pay-calc',
   'pull-calc',
   'pull-tracker',
   'revelations',

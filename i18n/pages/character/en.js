@@ -1,6 +1,4 @@
 window.I18N_PAGE_CHARACTER_EN = {
-    navHome: 'Home',
-    navCurrent: 'Characters',
     pageTitle: 'Character Build',
     filteredCount: 'Total',
     countUnit: '',
@@ -16,7 +14,6 @@ window.I18N_PAGE_CHARACTER_EN = {
     characterDetailSkills: 'Skills',
     characterDetailRitual: 'Awareness',
     characterDetailWeapon: 'Exclusive Weapon',
-    characterDetailRevelation: 'Revelation',
     characterDetailMainOption: 'Main Options',
     characterDetailSubOption: 'Sub Options',
     characterDetailRecommendedStats: 'Recommended Stats',
@@ -44,7 +41,6 @@ window.I18N_PAGE_CHARACTER_EN = {
     characterDetailStar: 'Star',
     characterDetailSky: 'Sky',
     characterDetailCodeName: 'CodeName',
-    characterDetailPersona: 'Persona',
     characterDetailUnreleasedNote: 'Note: Some recommended personas & weapons may not be released yet in your region.',
     characterDetailRecommendedCombination: 'Recommended Combination',
     characterDetailRecommendedPartyExample: 'Recommended Parties Example',

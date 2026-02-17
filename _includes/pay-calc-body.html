@@ -1,0 +1,482 @@
+<script>
+(function () {
+    var params = new URLSearchParams(window.location.search || "");
+    var path = String(window.location.pathname || "/");
+    var lowerPath = path.toLowerCase();
+
+    var isLegacyRoot = /^\/pay-calc\/?$/.test(lowerPath);
+    var isCanonicalPath = /^\/kr\/pay-calc\/?$/.test(lowerPath);
+
+    if (isLegacyRoot) {
+        window.__SEO_PATH_LANG__ = "kr";
+        params.delete("lang");
+        params.delete("v");
+        var remainingLegacy = params.toString();
+        history.replaceState(null, "", "/kr/pay-calc/" + (remainingLegacy ? "?" + remainingLegacy : ""));
+        return;
+    }
+
+    if (isCanonicalPath) {
+        window.__SEO_PATH_LANG__ = "kr";
+        var before = params.toString();
+        params.delete("lang");
+        params.delete("v");
+        var remainingCanonical = params.toString();
+        if (before !== remainingCanonical) {
+            history.replaceState(null, "", path + (remainingCanonical ? "?" + remainingCanonical : ""));
+        }
+    }
+})();
+</script>
+
+{% if page.alternate_urls %}
+{% for alt in page.alternate_urls %}
+<link rel="alternate" hreflang="{{ alt[0] }}" href="{{ site.url }}{{ alt[1] }}" />
+{% endfor %}
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.alternate_urls['ko'] | default: page.alternate_urls.first[1] }}" />
+{% endif %}
+<link rel="stylesheet" href="/apps/pay-calc/pay-calc.css">
+<script src="/apps/pay-calc/pay-calc.js"></script>
+
+<!-- main contents -->
+<div class="main-wrapper">
+    <!-- navigation path -->
+    <div class="navigation-path">
+        <script>document.write(`<a href="../../">홈</a>`);</script>
+        <span class="separator">/</span>
+        <span class="current-page">과금 계산</span>
+    </div>
+    <div class="header-container">
+        <h1>과금 계산기</h1>
+    </div>
+
+    <!-- top cards -->
+    <div class="top-cards">
+        <!-- 총 구매 가격 -->
+        <div class="total-card card-style">
+            <div class="card-header">
+                <h2>총 금액</h2>
+                <label class="payback-checkbox">
+                    <input type="checkbox" id="paybackCheckbox">
+                    <img src="/assets/img/ui/check-off.png" class="checkbox-img" id="paybackCheckImg">
+                    <span>페이백 30%</span>
+                </label>
+            </div>
+            <div class="total-value" id="totalPrice">0원</div>
+            <div class="total-description">할인 적용 후 금액</div>
+        </div>
+
+        <!-- 엠버 1개당 가격 -->
+        <div class="total-card card-style">
+            <h2>엠버 1개당</h2>
+            <div class="total-value" id="pricePerAmber">0원</div>
+            <div class="total-description">모든 재화 포함</div>
+        </div>
+
+        <!-- 엠버 1개당 가격 (미래의 운명 제외) -->
+        <div class="total-card card-style">
+            <h2>엠버 1개당</h2>
+            <div class="total-value" id="pricePerAmberExcludeFuture">0원</div>
+            <div class="total-description">
+                <img src="/assets/img/pay/미래의 운명.png" alt="미래의 운명" class="description-icon">
+                미래의 운명 제외
+            </div>
+        </div>
+
+        <!-- 기존 보유 재화 -->
+        <div class="total-card card-style">
+            <h2>기존 보유 재화</h2>
+            <div class="resources-grid">
+                <div class="resource-item">
+                    <img src="/assets/img/pay/이계 수정.png" alt="이계 수정">
+                    <input type="number" id="baseCrystal" class="resource-input" min="0" step="1" value="0">
+                    <span class="resource-unit">개</span>
+                </div>
+                <div class="resource-item">
+                    <img src="/assets/img/pay/이계 엠버.png" alt="이계 앰버">
+                    <input type="number" id="baseAmber" class="resource-input" min="0" step="1" value="0">
+                    <span class="resource-unit">개</span>
+                </div>
+                <div class="resource-item">
+                    <img src="/assets/img/pay/정해진 운명.png" alt="정해진 운명">
+                    <input type="number" id="baseDestiny" class="resource-input" min="0" step="1" value="0">
+                    <span class="resource-unit">개</span>
+                </div>
+                <div class="resource-item">
+                    <img src="/assets/img/pay/정해진 코인.png" alt="정해진 코인">
+                    <input type="number" id="baseDestinyCoins" class="resource-input" min="0" step="1" value="0">
+                    <span class="resource-unit">개</span>
+                </div>
+                <div class="resource-item">
+                    <img src="/assets/img/pay/미래의 운명.png" alt="미래의 운명">
+                    <input type="number" id="baseFutureDestiny" class="resource-input" min="0" step="1" value="0">
+                    <span class="resource-unit">개</span>
+                </div>
+                <div class="resource-item">
+                    <img src="/assets/img/pay/인지 단면.png" alt="인지 단면">
+                    <input type="number" id="baseCognition" class="resource-input" min="0" step="1" value="0">
+                    <span class="resource-unit">개</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 획득 재화 -->
+        <div class="total-card card-style">
+            <h2>획득 재화</h2>
+            <div class="resources-grid">
+                <div class="resource-item">
+                    <img src="/assets/img/pay/이계 수정.png" alt="이계 수정">
+                    <span id="gainedCrystal">0개</span>
+                </div>
+                <div class="resource-item">
+                    <img src="/assets/img/pay/이계 엠버.png" alt="이계 앰버">
+                    <span id="gainedAmber">0개</span>
+                </div>
+                <div class="resource-item">
+                    <img src="/assets/img/pay/정해진 운명.png" alt="정해진 운명">
+                    <span id="gainedDestiny">0개</span>
+                </div>
+                <div class="resource-item">
+                    <img src="/assets/img/pay/정해진 코인.png" alt="정해진 코인">
+                    <span id="gainedDestinyCoins">0개</span>
+                </div>
+                <div class="resource-item">
+                    <img src="/assets/img/pay/미래의 운명.png" alt="미래의 운명">
+                    <span id="gainedFutureDestiny">0개</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 총 재화 -->
+        <div class="total-card card-style">
+            <div class="card-header">
+                <h2>총 획득 재화</h2>
+                <div class="all-convert-controls">
+                    <label class="convert-checkbox">
+                        <img src="/assets/img/ui/check-off.png" class="checkbox-img" id="destinyAllCheckImg">
+                        <img src="/assets/img/pay/정해진 운명.png" alt="정해진 운명" class="convert-icon">
+                        <span>ALL</span>
+                        <input type="checkbox" id="destinyAllCheckbox">
+                    </label>
+                    <label class="convert-checkbox">
+                        <img src="/assets/img/ui/check-off.png" class="checkbox-img" id="coinsAllCheckImg">
+                        <img src="/assets/img/pay/정해진 코인.png" alt="정해진 코인" class="convert-icon">
+                        <span>ALL</span>
+                        <input type="checkbox" id="coinsAllCheckbox">
+                    </label>
+                </div>
+            </div>
+            <div class="resources-grid">
+                <div class="resource-item">
+                    <img src="/assets/img/pay/이계 수정.png" alt="이계 수정">
+                    <span id="totalCrystal">0개</span>
+                </div>
+                <div class="resource-item">
+                    <img src="/assets/img/pay/이계 엠버.png" alt="이계 앰버">
+                    <span id="totalAmber">0개</span>
+                </div>
+                <div class="resource-item">
+                    <img src="/assets/img/pay/정해진 운명.png" alt="정해진 운명">
+                    <span id="totalDestiny">0개</span>
+                </div>
+                <div class="resource-item">
+                    <img src="/assets/img/pay/정해진 코인.png" alt="정해진 코인">
+                    <span id="totalDestinyCoins">0개</span>
+                </div>
+                <div class="resource-item">
+                    <img src="/assets/img/pay/미래의 운명.png" alt="미래의 운명">
+                    <span id="totalFutureDestiny">0개</span>
+                </div>
+                <div class="resource-item">
+                    <img src="/assets/img/pay/인지 단면.png" alt="인지 단면">
+                    <span id="totalCognition">0개</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 기대값 요약 -->
+    <div class="expectation-row card-style">
+        <h2 class="expectation-main-title">기댓값</h2>
+        <div class="expectation-grid">
+        <div class="expectation-item">
+            <div class="expectation-header">
+                <span class="expectation-title">
+                    한정 캐릭터<span class="expectation-median" id="limitedCharMedianLabel"></span>
+                    <span class="tooltip-icon tooltip-text"
+                          data-tooltip="현재 정해진 운명과 인지 단면(15개당 운명 1개 환급), 5성과 4성에서 발생하는 인지 단면 환급을 무한 반복한다고 가정했을 때의 기대 횟수입니다. 4성은 모두 의식6 이상이며, 첫 5성 획득은 인지 단면 환급이 없어 이를 제외한 값입니다. 확률이므로 실제로는 더 많거나 적은 횟수가 필요할 수 있습니다.">?</span>
+                </span>
+            </div>
+            <div class="expectation-value">
+                <span id="expectedLimitedChar">0회</span>
+                <span class="expectation-separator"> / </span>
+                <span class="expectation-currency">
+                    <img src="/assets/img/pay/정해진 운명.png" alt="정해진 운명" class="expectation-icon">
+                    <span id="expectedLimitedCharDestiny">0개</span>
+                </span> 
+            </div>
+        </div>
+        <div class="expectation-item">
+            <div class="expectation-header">
+                <span class="expectation-title">
+                    전체 무기<span class="expectation-median" id="allWeaponMedianLabel"></span>
+                    <span class="tooltip-icon tooltip-text"
+                          data-tooltip="현재 정해진 코인과 인지 단면(10개당 코인 1개 환급), 5성과 4성에서 발생하는 인지 단면 환급을 무한 반복한다고 가정했을 때의 기대 횟수입니다. 확률이므로 실제로는 더 많거나 적은 횟수가 필요할 수 있습니다.">?</span>
+                </span>
+            </div>
+            <div class="expectation-value">
+                <span id="expectedAllWeapon">0회</span>
+                <span class="expectation-separator"> / </span>
+                <span class="expectation-currency">
+                    <img src="/assets/img/pay/정해진 코인.png" alt="정해진 코인" class="expectation-icon">
+                    <span id="expectedAllWeaponCoins">0개</span>
+                </span>
+            </div>
+        </div>
+        <div class="expectation-item">
+            <div class="expectation-header">
+                <span class="expectation-title">
+                    한정 무기<span class="expectation-median" id="limitedWeaponMedianLabel"></span>
+                    <span class="tooltip-icon tooltip-text"
+                          data-tooltip="전체 무기 기대 횟수 × (반천장 2/3)을 적용한 값입니다. 확률이므로 실제로는 더 많거나 적은 횟수가 필요할 수 있습니다.">?</span>
+                </span>
+            </div>
+            <div class="expectation-value">
+                <span id="expectedLimitedWeapon">0회</span>
+                <span class="expectation-separator"> / </span>
+                <span class="expectation-currency">
+                    <img src="/assets/img/pay/정해진 코인.png" alt="정해진 코인" class="expectation-icon">
+                    <span id="expectedLimitedWeaponCoins">0개</span>
+                </span>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- 패키지 테이블 -->
+    <div class="table-tabs card-style">
+        <div class="tab-header">
+            <div class="tab-buttons">
+                <button class="tab-button active" data-tab="package">패키지</button>
+                <button class="tab-button" data-tab="crystal">이계 수정</button>
+            </div>
+            <div class="filter-dropdown">
+                <button class="filter-button">
+                    <svg width="16px" height="16px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M16 5.25C16.2029 5.25 16.3972 5.33222 16.5384 5.47789L20.5384 9.60289C20.8268 9.90025 20.8195 10.3751 20.5221 10.6634C20.2247 10.9518 19.7499 10.9445 19.4616 10.6471L16.75 7.8508L16.75 18C16.75 18.4142 16.4142 18.75 16 18.75C15.5858 18.75 15.25 18.4142 15.25 18L15.25 7.8508L12.5384 10.6471C12.2501 10.9445 11.7753 10.9518 11.4779 10.6634C11.1805 10.3751 11.1732 9.90025 11.4616 9.60289L15.4616 5.47789C15.6028 5.33222 15.7971 5.25 16 5.25ZM8 5.25C8.41421 5.25 8.75 5.58579 8.75 6L8.75 16.1492L11.4616 13.3529C11.7499 13.0555 12.2247 13.0482 12.5221 13.3366C12.8195 13.6249 12.8268 14.0997 12.5384 14.3971L8.53843 18.5221C8.39717 18.6678 8.20291 18.75 8 18.75C7.79709 18.75 7.60283 18.6678 7.46158 18.5221L3.46158 14.3971C3.17322 14.0997 3.18053 13.6249 3.47789 13.3366C3.77526 13.0482 4.25007 13.0555 4.53843 13.3529L7.25 16.1492L7.25 6C7.25 5.58579 7.58579 5.25 8 5.25Z"
+                            fill="currentColor" />
+                    </svg>
+                    <span class="current-sort">기본</span>
+                </button>
+                <div class="dropdown-content">
+                    <div class="dropdown-item" data-sort="price">가격 순</div>
+                    <div class="dropdown-item" data-sort="efficiency">엠버 효율 순</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="package-tab" class="tab-content active">
+            <div class="table-responsive">
+                <table class="package-table" id="package-table">
+                    <thead>
+                        <tr>
+                            <th class="check-column">선택</th>
+                            <th class="img-column">이미지</th>
+                            <th>패키지명</th>
+                            <th>가격</th>
+                            <th><img src="/assets/img/pay/이계 수정.png" alt="이계 수정" class="resource-icon"></th>
+                            <th><img src="/assets/img/pay/이계 엠버.png" alt="이계 앰버" class="resource-icon"></th>
+                            <th><img src="/assets/img/pay/정해진 운명.png" alt="정해진 운명" class="resource-icon"></th>
+                            <th><img src="/assets/img/pay/정해진 코인.png" alt="정해진 코인" class="resource-icon"></th>
+                            <th><img src="/assets/img/pay/미래의 운명.png" alt="미래의 운명" class="resource-icon"></th>
+                            <th>수량</th>
+                            <th>할인</th>
+                            <th>메모</th>
+                        </tr>
+                    </thead>
+                    <tbody id="packageTableBody">
+                        <!-- JavaScript로 생성됨 -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="crystal-tab" class="tab-content">
+            <div class="table-responsive">
+                <table class="package-table" id="crystal-table">
+                    <thead>
+                        <tr>
+                            <th class="check-column">선택</th>
+                            <th class="img-column">이미지</th>
+                            <th>패키지명</th>
+                            <th>가격</th>
+                            <th><img src="/assets/img/pay/이계 수정.png" alt="이계 수정" class="resource-icon"></th>
+                            <th><img src="/assets/img/pay/이계 엠버.png" alt="이계 앰버" class="resource-icon"></th>
+                            <th><img src="/assets/img/pay/정해진 운명.png" alt="정해진 운명" class="resource-icon"></th>
+                            <th><img src="/assets/img/pay/정해진 코인.png" alt="정해진 코인" class="resource-icon"></th>
+                            <th><img src="/assets/img/pay/미래의 운명.png" alt="미래의 운명" class="resource-icon"></th>
+                            <th>수량</th>
+                            <th>할인</th>
+                            <th>메모</th>
+                        </tr>
+                    </thead>
+                    <tbody id="crystalTableBody">
+                        <!-- JavaScript로 생성됨 -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- 광고 -->
+    <!--
+  <div class="ads-container responsive-padding">
+    <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-format="fluid"
+      data-ad-layout-key="-gc+3n+7a-ag-4h"
+      data-ad-client="ca-pub-5862324369257695"
+      data-ad-slot="5373524213"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+    
+    <div id="ad-unit-bottom" class="AD-bottom" style="margin-top: 24px; text-align: center; align-items: center; display: flex; justify-content: center;"> 
+    <ins class="adsbygoogle"
+        style="display:inline-block;width:970px;height:90px"
+        data-ad-client="ca-pub-5862324369257695"
+        data-ad-slot="9244892982"></ins>
+    </div>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <div style="height: 12px;"></div>
+    
+    <style>
+        @media (max-width: 1440px) {
+            .AD-bottom {
+                display: none !important;
+            }
+        }
+        @media (min-width: 1440px) {
+            .ads-container {
+                display: none !important;
+            }
+        }
+        .responsive-padding { margin: 20px 20px 20px 0; padding: 0 0; }
+        @media (max-width: 1200px) { .responsive-padding {margin: 20px 0 0px 0; padding: 0; } }
+    </style>
+    -->
+</div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        Navigation.load('pay-calc');
+        VersionChecker.check();
+
+        // 드롭다운 토글 기능 추가
+        const filterButton = document.querySelector('.filter-button');
+        const dropdownContent = document.querySelector('.dropdown-content');
+
+        filterButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdownContent.classList.toggle('show');
+        });
+
+        // 문서 어디든 클릭하면 드롭다운 닫기
+        document.addEventListener('click', () => {
+            dropdownContent.classList.remove('show');
+        });
+
+        // 드롭다운 내부 클릭은 이벤트 전파 중단
+        dropdownContent.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
+        // 정렬 기능 구현
+        const dropdownItems = document.querySelectorAll('.dropdown-item');
+        let currentSort = {
+            type: 'default',
+            direction: 'asc'
+        };
+
+        // 초기 정렬 상태 설정
+        const currentSortText = document.querySelector('.current-sort');
+        currentSortText.textContent = '기본';
+
+        dropdownItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const sortType = item.dataset.sort;
+                const tableBody = document.querySelector('.active .package-table tbody');
+                const rows = Array.from(tableBody.querySelectorAll('tr'));
+                const currentSortText = document.querySelector('.current-sort');
+
+                // 정렬 방향 결정
+                if (currentSort.type === sortType) {
+                    currentSort.direction = currentSort.direction === 'asc' ? 'desc' : 'asc';
+                } else {
+                    currentSort.type = sortType;
+                    currentSort.direction = 'asc';
+                }
+
+                // 정렬 실행
+                rows.sort((a, b) => {
+                    let aValue, bValue;
+
+                    if (sortType === 'price') {
+                        // price-main 클래스에서 가격 가져오기
+                        aValue = parseInt(a.querySelector('.price-main').textContent.replace(/[^0-9]/g, ''));
+                        bValue = parseInt(b.querySelector('.price-main').textContent.replace(/[^0-9]/g, ''));
+                    } else if (sortType === 'efficiency') {
+                        // efficiency-pc 또는 efficiency-mobile 클래스에서 엠버 효율 가져오기
+                        const aEfficiency = a.querySelector('.efficiency-pc, .efficiency-mobile').textContent;
+                        const bEfficiency = b.querySelector('.efficiency-pc, .efficiency-mobile').textContent;
+                        aValue = parseFloat(aEfficiency.replace(/[^0-9.]/g, ''));
+                        bValue = parseFloat(bEfficiency.replace(/[^0-9.]/g, ''));
+                    } else {
+                        // 기본 정렬 (release_order 기준)
+                        aValue = parseInt(a.dataset.releaseOrder || 0);
+                        bValue = parseInt(b.dataset.releaseOrder || 0);
+                    }
+
+                    // NaN 값 처리 (엠버 효율이 없는 경우)
+                    if (isNaN(aValue)) aValue = Infinity;
+                    if (isNaN(bValue)) bValue = Infinity;
+
+                    return currentSort.direction === 'asc' ? aValue - bValue : bValue - aValue;
+                });
+
+                // 정렬된 행을 테이블에 다시 추가
+                rows.forEach(row => tableBody.appendChild(row));
+
+                // 현재 정렬 상태 업데이트
+                dropdownItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+                currentSortText.textContent = item.textContent;
+
+                // 드롭다운 닫기
+                dropdownContent.classList.remove('show');
+            });
+        });
+
+        // 탭 전환 기능
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('click', () => {
+                // 모든 탭 버튼에서 active 클래스 제거
+                document.querySelectorAll('.tab-button').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+
+                // 모든 탭 콘텐츠에서 active 클래스 제거
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+
+                // 클릭된 버튼과 해당 콘텐츠에 active 클래스 추가
+                button.classList.add('active');
+                const tabId = button.getAttribute('data-tab');
+                document.getElementById(`${tabId}-tab`).classList.add('active');
+            });
+        });
+    });
+</script>

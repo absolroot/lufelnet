@@ -1,5 +1,4 @@
 window.I18N_PAGE_PERSONA_KR = {
-    navHome: "홈",
     navCurrent: "페르소나",
     pageTitle: "페르소나",
     filteredCount: "전체",

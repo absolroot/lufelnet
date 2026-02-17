@@ -433,6 +433,39 @@
       "source": "i18n/pages/not-found/seo-meta.json",
       "type": "simple"
     },
+    "pay-calc": {
+      "langs": [
+        "en",
+        "jp",
+        "kr"
+      ],
+      "meta": {
+        "en": {
+          "description": "Persona 5: The Phantom X payment calculator.",
+          "title": "Payment Calculator | Lufelnet Persona 5: The Phantom X"
+        },
+        "jp": {
+          "description": "Persona 5: The Phantom X payment calculator.",
+          "title": "Payment Calculator | Lufelnet Persona 5: The Phantom X"
+        },
+        "kr": {
+          "description": "페르소나5 더 팬텀 X 과금 계산기",
+          "title": "과금 계산기 - 페르소나5 더 팬텀 X 루페르넷"
+        }
+      },
+      "modeKeys": [],
+      "paramPolicy": {
+        "detailParam": null,
+        "modeParam": null,
+        "remove": [
+          "lang",
+          "v"
+        ]
+      },
+      "placeholder": null,
+      "source": "i18n/pages/pay-calc/seo-meta.json",
+      "type": "simple"
+    },
     "persona": {
       "langs": [
         "en",
@@ -978,7 +1011,7 @@
       "type": "template"
     }
   },
-  "generatedAt": "2026-02-17T12:42:14.512Z",
+  "generatedAt": "2026-02-17T14:46:26.818Z",
   "localeMap": {
     "cn": "zh_CN",
     "en": "en_US",

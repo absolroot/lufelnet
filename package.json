@@ -38,6 +38,8 @@
     "seo:material-calc:check": "node scripts/seo/generate-material-calc-pages.mjs --check",
     "seo:pull-calc:generate": "node scripts/seo/generate-pull-calc-pages.mjs",
     "seo:pull-calc:check": "node scripts/seo/generate-pull-calc-pages.mjs --check",
+    "seo:pay-calc:generate": "node scripts/seo/generate-pay-calc-pages.mjs",
+    "seo:pay-calc:check": "node scripts/seo/generate-pay-calc-pages.mjs --check",
     "seo:pull-tracker:generate": "node scripts/seo/generate-pull-tracker-pages.mjs",
     "seo:pull-tracker:check": "node scripts/seo/generate-pull-tracker-pages.mjs --check",
     "seo:article:generate": "node scripts/seo/generate-article-pages.mjs",

@@ -1,6 +1,5 @@
 window.I18N_PAGE_SCHEDULE_EN = {
     // Navigation
-    navHome: 'Home',
     navCurrent: 'Schedule',
     pageTitle: 'Release Schedule',
 

@@ -1,6 +1,5 @@
 window.I18N_PAGE_GALLERY_JP = {
     pageTitle: 'ギャラリー',
-    navHome: 'ホーム',
     navCurrent: 'ギャラリー',
 
     // Filters

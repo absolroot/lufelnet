@@ -50,7 +50,7 @@
             set('.skills-card h2', 'characterDetailSkills', '스킬');
             set('.ritual-card h2', 'characterDetailRitual', '의식');
             set('.weapons-card h2', 'characterDetailWeapon', '전용 무기');
-            set('.revelation-settings h3', 'characterDetailRevelation', '계시', 'revelation');
+            set('.revelation-settings h3', 'gameTerms.revelation', '계시', 'revelation');
             set('.revelation-settings .setting-section:nth-child(2) h3', 'characterDetailMainOption', '주 옵션', 'main-option');
             set('.revelation-settings .setting-section:nth-child(3) h3', 'characterDetailSubOption', '부 옵션', 'sub-option');
             set('.stats-requirements h3:first-child', 'characterDetailRecommendedStats', '권장 육성 스탯', 'recommended-stats');

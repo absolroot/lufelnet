@@ -76,7 +76,7 @@
     // Navigation path 번역
     const navHomeEl = document.getElementById('nav-home');
     const navCurEl = document.getElementById('nav-current');
-    if (navHomeEl) navHomeEl.textContent = getI18nText('navHome', '홈');
+    if (navHomeEl) navHomeEl.textContent = getI18nText('nav.home', '홈');
     if (navCurEl) navCurEl.textContent = getI18nText('navCurrent', '갤러리');
   }
 

@@ -3,7 +3,6 @@ window.I18N_PAGE_SYNERGY_KR = {
     pageTitle: '협력자',
 
     // Navigation
-    navHome: '홈',
     navCurrent: '협력자',
 
     // Filters

@@ -1,44 +1,58 @@
 {
   "kr": {
     "individual": {
-      "title": "계약 통계 - 페르소나5 더 팬텀 X",
+      "title": "계약 통계 | 루페르넷 페르소나5 더 팬텀 X",
       "description": "P5X 가챠 계약 정보를 기록하고 통계를 확인하세요."
     },
     "global": {
-      "title": "전체 통계 - 페르소나5 더 팬텀 X",
+      "title": "전체 통계 | 루페르넷 페르소나5 더 팬텀 X",
       "description": "P5X 계약 전체 통계와 일별 추이를 확인하세요."
     },
     "guide": {
-      "title": "Pull Tracker URL 가이드",
+      "title": "Pull Tracker URL 가이드 | 루페르넷 페르소나5 더 팬텀 X",
       "description": "가챠 기록 URL을 얻는 방법 안내"
     }
   },
   "en": {
     "individual": {
-      "title": "Pull Tracker - Persona 5: The Phantom X",
+      "title": "Pull Tracker | Lufelnet Persona 5: The Phantom X",
       "description": "P5X Gacha Pull Tracker"
     },
     "global": {
-      "title": "Global Stats - Persona 5: The Phantom X",
+      "title": "Global Stats | Lufelnet Persona 5: The Phantom X",
       "description": "View P5X global gacha statistics and daily trends."
     },
     "guide": {
-      "title": "Pull Tracker URL Guide",
+      "title": "Pull Tracker URL Guide | Lufelnet Persona 5: The Phantom X",
       "description": "How to get your gacha history URL"
     }
   },
   "jp": {
     "individual": {
-      "title": "ガチャ履歴 - ペルソナ5 ザ・ファントムX",
+      "title": "ガチャ履歴 | Lufelnet ペルソナ5 ザ・ファントム X",
       "description": "P5Xガチャの契約情報を記録し、統計を確認してください。"
     },
     "global": {
-      "title": "全体統計 - ペルソナ5 ザ・ファントムX",
+      "title": "全体統計 | Lufelnet ペルソナ5 ザ・ファントム X",
       "description": "P5Xガチャの全体統計と日別推移を確認できます。"
     },
     "guide": {
-      "title": "Pull Tracker URL ガイド",
+      "title": "Pull Tracker URL ガイド | Lufelnet ペルソナ5 ザ・ファントム X",
       "description": "ガチャ履歴URL取得方法の案内"
+    }
+  },
+  "cn": {
+    "individual": {
+      "title": "",
+      "description": ""
+    },
+    "global": {
+      "title": "",
+      "description": ""
+    },
+    "guide": {
+      "title": "",
+      "description": ""
     }
   }
 }

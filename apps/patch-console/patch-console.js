@@ -67,8 +67,12 @@ const state = {
     history: [],
     showCn: false,
     dirty: false,
-    lastFocusedField: null,
-    scopeFilter: ''
+    scopeFilter: '',
+    suffixConfig: {
+      version: 1,
+      updatedAt: '',
+      titleSuffix: { kr: '', en: '', jp: '', cn: '' }
+    }
   },
   revelationAdmin: {
     revision: '',
@@ -305,11 +309,11 @@ const dom = {
   seoScopeFilter: document.getElementById('seo-scope-filter'),
   seoToggleCn: document.getElementById('seo-toggle-cn'),
   btnSeoLoad: document.getElementById('btn-seo-load'),
-  btnSeoCopyKr: document.getElementById('btn-seo-copy-kr'),
-  btnSeoInsertName: document.getElementById('btn-seo-insert-name'),
-  btnSeoInsertPath: document.getElementById('btn-seo-insert-path'),
-  btnSeoBatchSuffix: document.getElementById('btn-seo-batch-suffix'),
-  btnSeoBatchReleased: document.getElementById('btn-seo-batch-released'),
+  seoSuffixKr: document.getElementById('seo-suffix-kr'),
+  seoSuffixEn: document.getElementById('seo-suffix-en'),
+  seoSuffixJp: document.getElementById('seo-suffix-jp'),
+  seoSuffixCn: document.getElementById('seo-suffix-cn'),
+  btnSeoSuffixApply: document.getElementById('btn-seo-suffix-apply'),
   btnSeoValidate: document.getElementById('btn-seo-validate'),
   btnSeoSave: document.getElementById('btn-seo-save'),
   seoStatus: document.getElementById('seo-status'),
@@ -667,6 +671,28 @@ async function requestJson(url, options = {}) {
   return payload;
 }
 
+function appendSeoFailedCheckDetails(checks, context = '[seo]') {
+  if (!checks.length) return;
+  for (const item of checks) {
+    const status = String(item?.status || '').toLowerCase();
+    if (status !== 'failed') continue;
+    const script = String(item?.script || '-');
+    const code = Number(item?.code);
+    appendLog(`${context} check failed: ${script} (code: ${Number.isFinite(code) ? code : '-'})`);
+    const stderr = String(item?.stderr || '').trim();
+    if (!stderr) continue;
+    const preview = stderr.split(/\r?\n/).slice(0, 6).join(' | ');
+    if (preview) {
+      appendLog(`${context} check stderr: ${preview}`);
+    }
+  }
+}
+
+function appendSeoCheckFailureDetails(error, context = '[seo]') {
+  const checks = Array.isArray(error?.payload?.checks) ? error.payload.checks : [];
+  appendSeoFailedCheckDetails(checks, context);
+}
+
 function renderCounts() {
   if (dom.listCount) dom.listCount.textContent = String(state.listRows.length);
   if (dom.reportCount) dom.reportCount.textContent = String(state.reportRows.length);
@@ -709,6 +735,85 @@ function renderCounts() {
 
 function seoStateRef() {
   return state.seoState;
+}
+
+const SEO_SUFFIX_LANGS = ['kr', 'en', 'jp', 'cn'];
+
+function normalizeSeoSuffixConfig(rawConfig) {
+  const parsed = rawConfig && typeof rawConfig === 'object' ? rawConfig : {};
+  const titleSuffixRaw = parsed.titleSuffix && typeof parsed.titleSuffix === 'object'
+    ? parsed.titleSuffix
+    : {};
+  const titleSuffix = {};
+  for (const lang of SEO_SUFFIX_LANGS) {
+    titleSuffix[lang] = String(titleSuffixRaw[lang] == null ? '' : titleSuffixRaw[lang]).replace(/\s+$/u, '');
+  }
+  return {
+    version: 1,
+    updatedAt: String(parsed.updatedAt || ''),
+    titleSuffix
+  };
+}
+
+function readSeoSuffixConfigFromInputs() {
+  return normalizeSeoSuffixConfig({
+    titleSuffix: {
+      kr: String(dom.seoSuffixKr?.value || ''),
+      en: String(dom.seoSuffixEn?.value || ''),
+      jp: String(dom.seoSuffixJp?.value || ''),
+      cn: String(dom.seoSuffixCn?.value || '')
+    }
+  });
+}
+
+function renderSeoSuffixConfigInputs() {
+  const seo = seoStateRef();
+  const config = normalizeSeoSuffixConfig(seo.suffixConfig);
+  seo.suffixConfig = config;
+  if (dom.seoSuffixKr) dom.seoSuffixKr.value = String(config.titleSuffix.kr || '');
+  if (dom.seoSuffixEn) dom.seoSuffixEn.value = String(config.titleSuffix.en || '');
+  if (dom.seoSuffixJp) dom.seoSuffixJp.value = String(config.titleSuffix.jp || '');
+  if (dom.seoSuffixCn) dom.seoSuffixCn.value = String(config.titleSuffix.cn || '');
+}
+
+function stripAllSeoTitleSuffixSegments(title) {
+  let current = String(title || '').trim();
+  const separators = [' | ', ' - ', '|'];
+  for (let i = 0; i < 8; i += 1) {
+    let bestIndex = -1;
+    let bestSep = '';
+    for (const sep of separators) {
+      const idx = current.lastIndexOf(sep);
+      if (idx > bestIndex) {
+        bestIndex = idx;
+        bestSep = sep;
+      }
+    }
+    if (bestIndex < 0) break;
+    const head = current.slice(0, bestIndex).trimEnd();
+    if (!head) break;
+    current = head;
+  }
+  return current;
+}
+
+function applySeoTitleSuffix(title, suffix) {
+  const base = stripAllSeoTitleSuffixSegments(title);
+  const normalizedSuffix = String(suffix || '').replace(/\s+$/u, '');
+  if (!base) return base;
+  if (!normalizedSuffix) return base;
+  return `${base}${normalizedSuffix}`;
+}
+
+async function saveSeoSuffixConfigData() {
+  const seo = seoStateRef();
+  const nextConfig = readSeoSuffixConfigFromInputs();
+  const result = await requestJson('/api/seo/suffix-config', {
+    method: 'POST',
+    body: { config: nextConfig }
+  });
+  seo.suffixConfig = normalizeSeoSuffixConfig(result.config || nextConfig);
+  renderSeoSuffixConfigInputs();
 }
 
 function normalizeSeoRows(rows, langs) {
@@ -768,6 +873,38 @@ function seoIsCellChanged(scope, lang, field) {
   return beforeValue !== draftValue;
 }
 
+function seoIsScopeChanged(scope) {
+  const seo = seoStateRef();
+  const safeScope = String(scope || '').trim();
+  if (!safeScope) return false;
+  const langs = Array.isArray(seo.langs) && seo.langs.length ? seo.langs : ['kr', 'en', 'jp', 'cn'];
+  for (const lang of langs) {
+    if (seoIsCellChanged(safeScope, lang, 'title')) return true;
+    if (seoIsCellChanged(safeScope, lang, 'description')) return true;
+    if (seoIsCellChanged(safeScope, lang, 'released')) return true;
+  }
+  return false;
+}
+
+function buildSeoRowsForScopeSave(scope) {
+  const seo = seoStateRef();
+  const safeScope = String(scope || '').trim();
+  if (!safeScope) return null;
+  const draftRow = getSeoRowByScope(seo.draft, safeScope);
+  if (!draftRow) return null;
+
+  const baseRows = normalizeSeoRows(cloneData(seo.rows), seo.langs);
+  const rowIndex = baseRows.findIndex((row) => String(row?.scope || '') === safeScope);
+  if (rowIndex < 0) return null;
+
+  const normalizedDraftRow = normalizeSeoRows([cloneData(draftRow)], seo.langs)[0];
+  baseRows[rowIndex] = normalizedDraftRow;
+  return {
+    scope: safeScope,
+    rows: baseRows
+  };
+}
+
 function getSeoChangeSummary() {
   const seo = seoStateRef();
   const langs = getSeoLangsForView();
@@ -814,6 +951,9 @@ function renderSeoControlState() {
   }
   if (dom.btnSeoValidate) {
     dom.btnSeoValidate.disabled = !seo.activeDomain;
+  }
+  if (dom.btnSeoSuffixApply) {
+    dom.btnSeoSuffixApply.disabled = !seo.activeDomain;
   }
 }
 
@@ -904,7 +1044,9 @@ function renderSeoHistory() {
   dom.seoHistoryList.innerHTML = items
     .map((item) => {
       const status = String(item.status || 'unknown').toLowerCase();
-      const cls = status === 'passed' ? 'passed' : (status === 'failed' ? 'failed' : 'running');
+      const cls = status === 'passed'
+        ? 'passed'
+        : (status === 'failed' ? 'failed' : (status === 'warning' ? 'warning' : 'running'));
       const created = String(item.createdAt || '').replace('T', ' ').slice(0, 19);
       const summary = String(item.summary || '-');
       const kind = String(item.kind || '-');
@@ -945,6 +1087,10 @@ function renderSeoMatrix() {
   dom.seoMatrixBody.innerHTML = rows
     .map((row) => {
       const scope = String(row.scope || '');
+      const scopeChanged = seoIsScopeChanged(scope);
+      const scopeSaveTitle = scopeChanged
+        ? `${scope || '-'} 행만 저장`
+        : '변경된 항목이 없습니다.';
       const langRows = langs
         .map((lang) => {
           const values = row.values?.[lang] || { title: '', description: '' };
@@ -994,8 +1140,20 @@ function renderSeoMatrix() {
       return `
         <div class="seo-scope-card" data-seo-scope-row="${escapeHtml(scope)}">
           <div class="seo-scope-header">
-            <span class="seo-scope-name">${escapeHtml(scope || '-')}</span>
-            ${row.placeholder ? `<span class="seo-scope-placeholder">placeholder: ${escapeHtml(row.placeholder)}</span>` : ''}
+            <div class="seo-scope-header-left">
+              <span class="seo-scope-name">${escapeHtml(scope || '-')}</span>
+              ${row.placeholder ? `<span class="seo-scope-placeholder">placeholder: ${escapeHtml(row.placeholder)}</span>` : ''}
+            </div>
+            <div class="seo-scope-header-actions">
+              <button
+                class="btn primary small seo-scope-save-btn"
+                type="button"
+                data-seo-action="save-row"
+                data-seo-scope-row="${escapeHtml(scope)}"
+                title="${escapeHtml(scopeSaveTitle)}"
+                ${scopeChanged ? '' : 'disabled'}
+              >행 저장</button>
+            </div>
           </div>
           ${langRows}
         </div>
@@ -1052,6 +1210,8 @@ async function loadSeoBootstrapData() {
   const result = await requestJson('/api/seo/bootstrap');
   const seo = seoStateRef();
   seo.domains = Array.isArray(result.domains) ? result.domains : [];
+  seo.suffixConfig = normalizeSeoSuffixConfig(result.suffixConfig || seo.suffixConfig);
+  renderSeoSuffixConfigInputs();
   if (!seo.activeDomain) {
     seo.activeDomain = String(result.defaultDomain || seo.domains[0]?.id || '');
   }
@@ -1156,124 +1316,105 @@ async function runSeoSave() {
   renderSeoCiStatus();
   renderSeoMatrix();
   await loadSeoHistoryData();
-  appendLog(`[seo] save completed (${seo.activeDomain})`);
+  const failedChecks = Array.isArray(result?.checks)
+    ? result.checks.filter((item) => String(item?.status || '').toLowerCase() === 'failed')
+    : [];
+  if (failedChecks.length) {
+    appendLog(`[seo] save completed with check warnings (${seo.activeDomain})`);
+    appendSeoFailedCheckDetails(failedChecks, '[seo]');
+  } else {
+    appendLog(`[seo] save completed (${seo.activeDomain})`);
+  }
   if (seo.ciJob) {
     pollSeoCiStatus().catch((error) => appendLog(`[seo] ci poll failed: ${error.message}`));
   }
 }
 
-function runSeoCopyKrToEnJp() {
+async function runSeoSaveScope(scope) {
   const seo = seoStateRef();
-  for (const row of seo.draft) {
-    const krTitle = String(row?.values?.kr?.title || '');
-    const krDesc = String(row?.values?.kr?.description || '');
-    if (!row.values.en) row.values.en = { title: '', description: '' };
-    if (!row.values.jp) row.values.jp = { title: '', description: '' };
-    row.values.en.title = krTitle;
-    row.values.en.description = krDesc;
-    row.values.jp.title = krTitle;
-    row.values.jp.description = krDesc;
+  if (!seo.activeDomain) return;
+  const payloadRows = buildSeoRowsForScopeSave(scope);
+  if (!payloadRows) {
+    throw new Error('seo_scope_not_found');
   }
-  updateSeoDirtyState();
-  renderSeoMatrix();
-}
 
-function insertSeoToken(token) {
-  const seo = seoStateRef();
-  const el = seo.lastFocusedField;
-  if (!(el instanceof HTMLTextAreaElement)) {
-    appendLog(`[seo] token insert skipped: no active textarea (${token})`);
-    return;
+  const validateResult = await requestJson('/api/seo/validate', {
+    method: 'POST',
+    body: {
+      domain: seo.activeDomain,
+      rows: payloadRows.rows
+    }
+  });
+  seo.validation = {
+    valid: Boolean(validateResult.valid),
+    errors: Array.isArray(validateResult.errors) ? validateResult.errors : [],
+    warnings: Array.isArray(validateResult.warnings) ? validateResult.warnings : []
+  };
+  renderSeoValidation();
+  if (!seo.validation.valid) {
+    throw new Error('seo_validation_failed_before_scope_save');
   }
-  const start = typeof el.selectionStart === 'number' ? el.selectionStart : el.value.length;
-  const end = typeof el.selectionEnd === 'number' ? el.selectionEnd : el.value.length;
-  const prev = el.value;
-  const next = `${prev.slice(0, start)}${token}${prev.slice(end)}`;
-  el.value = next;
-  const caret = start + token.length;
-  el.selectionStart = caret;
-  el.selectionEnd = caret;
-  el.dispatchEvent(new Event('input', { bubbles: true }));
+
+  const result = await requestJson('/api/seo/save', {
+    method: 'POST',
+    body: {
+      domain: seo.activeDomain,
+      etag: seo.etag,
+      rows: payloadRows.rows
+    }
+  });
+  seo.saveStatus = 'saved';
+  seo.etag = String(result.etag || seo.etag);
+  seo.rows = normalizeSeoRows(cloneData(payloadRows.rows), seo.langs);
+  updateSeoDirtyState();
+  seo.ciJob = String(result?.ciJob?.id || '');
+  seo.ciStatus = String(result?.ciJob?.status || '');
+  renderSeoCiStatus();
+  renderSeoMatrix();
+  await loadSeoHistoryData();
+  const failedChecks = Array.isArray(result?.checks)
+    ? result.checks.filter((item) => String(item?.status || '').toLowerCase() === 'failed')
+    : [];
+  if (failedChecks.length) {
+    appendLog(`[seo] scope save completed with check warnings (${seo.activeDomain}/${payloadRows.scope})`);
+    appendSeoFailedCheckDetails(failedChecks, `[seo:${payloadRows.scope}]`);
+  } else {
+    appendLog(`[seo] scope save completed (${seo.activeDomain}/${payloadRows.scope})`);
+  }
+  if (seo.ciJob) {
+    pollSeoCiStatus().catch((error) => appendLog(`[seo] ci poll failed: ${error.message}`));
+  }
 }
 
 function runSeoBatchSuffix() {
   const seo = seoStateRef();
   if (!seo.draft.length) {
-    appendLog('[seo] batch suffix skipped: no draft rows');
+    appendLog('[seo] suffix apply skipped: no draft rows');
     return;
   }
-  const suffix = window.prompt('접미사 텍스트를 입력하세요 (예: " | P5X - Punishing: Gray Raven")');
-  if (suffix == null || !suffix.trim()) return;
-
-  const fieldChoice = window.prompt('대상 필드를 선택하세요: title / description / both', 'both');
-  if (fieldChoice == null) return;
-  const fields = fieldChoice.trim().toLowerCase() === 'both'
-    ? ['title', 'description']
-    : [fieldChoice.trim().toLowerCase()];
-  if (!fields.every((f) => f === 'title' || f === 'description')) {
-    appendLog(`[seo] batch suffix: invalid field "${fieldChoice}"`);
-    return;
-  }
-
-  const langChoice = window.prompt('대상 언어를 선택하세요: all / kr / en / jp / cn', 'all');
-  if (langChoice == null) return;
-  const viewLangs = getSeoLangsForView();
-  const targetLangs = langChoice.trim().toLowerCase() === 'all'
-    ? viewLangs
-    : langChoice.split(',').map((l) => l.trim().toLowerCase()).filter((l) => viewLangs.includes(l));
-  if (!targetLangs.length) {
-    appendLog(`[seo] batch suffix: no valid langs from "${langChoice}"`);
-    return;
-  }
-
+  const config = readSeoSuffixConfigFromInputs();
+  seo.suffixConfig = config;
   const visibleRows = getSeoRowsForMatrix();
+  const targetLangs = SEO_SUFFIX_LANGS.filter((lang) => String(config.titleSuffix?.[lang] || '').trim());
+  if (!targetLangs.length) {
+    appendLog('[seo] suffix apply skipped: all language suffixes are empty');
+    return;
+  }
+
   let applied = 0;
   for (const row of visibleRows) {
     for (const lang of targetLangs) {
-      for (const field of fields) {
-        const current = String(row.values?.[lang]?.[field] || '');
-        if (current.includes(suffix)) continue;
-        if (!row.values[lang]) row.values[lang] = { title: '', description: '' };
-        row.values[lang][field] = current + suffix;
-        applied += 1;
-      }
+      if (!row.values?.[lang]) continue;
+      const current = String(row.values?.[lang]?.title || '');
+      const next = applySeoTitleSuffix(current, config.titleSuffix[lang]);
+      if (next === current) continue;
+      row.values[lang].title = next;
+      applied += 1;
     }
   }
   updateSeoDirtyState();
   renderSeoMatrix();
-  appendLog(`[seo] batch suffix applied: ${applied} cells updated with "${suffix}"`);
-}
-
-function runSeoBatchReleased() {
-  const seo = seoStateRef();
-  if (!seo.draft.length) {
-    appendLog('[seo] batch released skipped: no draft rows');
-    return;
-  }
-  const langChoice = window.prompt('Released를 변경할 언어를 선택하세요: kr / en / jp / cn / all', 'all');
-  if (langChoice == null) return;
-  const viewLangs = getSeoLangsForView();
-  const targetLangs = langChoice.trim().toLowerCase() === 'all'
-    ? viewLangs
-    : langChoice.split(',').map((l) => l.trim().toLowerCase()).filter((l) => viewLangs.includes(l));
-  if (!targetLangs.length) {
-    appendLog(`[seo] batch released: no valid langs from "${langChoice}"`);
-    return;
-  }
-
-  const valueChoice = window.prompt('Released 값을 선택하세요: on / off', 'on');
-  if (valueChoice == null) return;
-  const value = valueChoice.trim().toLowerCase() === 'on';
-
-  const visibleRows = getSeoRowsForMatrix();
-  for (const row of visibleRows) {
-    for (const lang of targetLangs) {
-      row.released[lang] = value;
-    }
-  }
-  updateSeoDirtyState();
-  renderSeoMatrix();
-  appendLog(`[seo] batch released ${value ? 'ON' : 'OFF'}: ${targetLangs.join(',')} (${visibleRows.length} rows)`);
+  appendLog(`[seo] suffix unified: ${targetLangs.join(',')} (${visibleRows.length} rows / ${applied} titles updated)`);
 }
 
 async function ensureSeoAdminBootstrapped(force = false) {
@@ -4178,16 +4319,35 @@ function bindEvents() {
     }
   });
 
-  dom.btnSeoCopyKr?.addEventListener('click', () => {
-    runSeoCopyKrToEnJp();
-    appendLog('[seo] KR -> EN/JP copy applied');
+  dom.btnSeoSuffixApply?.addEventListener('click', async () => {
+    try {
+      setPending(dom.btnSeoSuffixApply, true);
+      await saveSeoSuffixConfigData();
+      appendLog('[seo] suffix config saved');
+      runSeoBatchSuffix();
+      const seo = seoStateRef();
+      if (seo.dirty) {
+        await runSeoSave();
+        appendLog(`[seo] suffix apply + save completed (${seo.activeDomain})`);
+      } else {
+        appendLog('[seo] suffix apply skipped: no title changes');
+      }
+    } catch (error) {
+      if (error?.message === 'seo_validation_failed_before_save') {
+        appendLog('[seo] suffix apply save blocked: validation failed. fix matrix errors first.');
+      }
+      appendLog(`[seo] suffix apply failed: ${error.message}`);
+      appendSeoCheckFailureDetails(error, '[seo:suffix]');
+      if (error?.status === 409) {
+        const seo = seoStateRef();
+        appendLog('[seo] etag mismatch - latest domain data will be reloaded.');
+        await loadSeoDomainData(seo.activeDomain).catch(() => {});
+      }
+    } finally {
+      setPending(dom.btnSeoSuffixApply, false);
+      renderSeoControlState();
+    }
   });
-
-  dom.btnSeoInsertName?.addEventListener('click', () => insertSeoToken('{name}'));
-  dom.btnSeoInsertPath?.addEventListener('click', () => insertSeoToken('{path}'));
-
-  dom.btnSeoBatchSuffix?.addEventListener('click', () => runSeoBatchSuffix());
-  dom.btnSeoBatchReleased?.addEventListener('click', () => runSeoBatchReleased());
 
   dom.btnSeoValidate?.addEventListener('click', async () => {
     try {
@@ -4214,6 +4374,7 @@ function bindEvents() {
         appendLog('[seo] save blocked: validation failed. fix matrix errors first.');
       }
       appendLog(`[seo] save failed: ${error.message}`);
+      appendSeoCheckFailureDetails(error, '[seo]');
       if (error?.status === 409) {
         appendLog('[seo] etag mismatch - latest domain data will be reloaded.');
         await loadSeoDomainData(seo.activeDomain).catch(() => {});
@@ -4255,13 +4416,31 @@ function bindEvents() {
     renderSeoMatrix();
   });
 
-  dom.seoMatrixBody?.addEventListener('focusin', (event) => {
+  dom.seoMatrixBody?.addEventListener('click', async (event) => {
     const target = event.target;
-    if (!(target instanceof HTMLTextAreaElement)) return;
-    const parsed = readSeoMatrixEventTarget(target);
-    if (!parsed || parsed.field === 'released') return;
-    const seo = seoStateRef();
-    seo.lastFocusedField = target;
+    if (!(target instanceof HTMLElement)) return;
+    const button = target.closest('button[data-seo-action="save-row"]');
+    if (!(button instanceof HTMLButtonElement)) return;
+    const scope = String(button.getAttribute('data-seo-scope-row') || '').trim();
+    if (!scope) return;
+    try {
+      setPending(button, true);
+      await runSeoSaveScope(scope);
+    } catch (error) {
+      if (error?.message === 'seo_validation_failed_before_scope_save') {
+        appendLog(`[seo] scope save blocked: validation failed (${scope})`);
+      }
+      appendLog(`[seo] scope save failed (${scope}): ${error.message}`);
+      appendSeoCheckFailureDetails(error, `[seo:${scope}]`);
+      if (error?.status === 409) {
+        const seo = seoStateRef();
+        appendLog('[seo] etag mismatch - latest domain data will be reloaded.');
+        await loadSeoDomainData(seo.activeDomain).catch(() => {});
+      }
+    } finally {
+      setPending(button, false);
+      renderSeoControlState();
+    }
   });
 
   dom.btnClearLog?.addEventListener('click', clearLog);

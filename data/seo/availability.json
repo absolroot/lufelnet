@@ -1,4 +1,221 @@
 {
   "version": 1,
-  "entries": {}
+  "entries": {
+    "about/main": {
+      "kr": true,
+      "en": true,
+      "jp": true,
+      "cn": false
+    },
+    "astrolabe/main": {
+      "kr": true,
+      "en": true,
+      "jp": true,
+      "cn": false
+    },
+    "character/list": {
+      "kr": true,
+      "en": true,
+      "jp": true,
+      "cn": false
+    },
+    "character/detail": {
+      "kr": true,
+      "en": true,
+      "jp": true,
+      "cn": false
+    },
+    "critical-calc/main": {
+      "kr": true,
+      "en": true,
+      "jp": true,
+      "cn": false
+    },
+    "defense-calc/main": {
+      "kr": true,
+      "en": true,
+      "jp": true,
+      "cn": false
+    },
+    "gallery/main": {
+      "kr": true,
+      "en": true,
+      "jp": true,
+      "cn": false
+    },
+    "guides/main": {
+      "kr": true,
+      "en": true,
+      "jp": true,
+      "cn": false
+    },
+    "home/main": {
+      "kr": true,
+      "en": true,
+      "jp": true,
+      "cn": false
+    },
+    "login/main": {
+      "kr": true,
+      "en": true,
+      "jp": true,
+      "cn": false
+    },
+    "maps/list": {
+      "kr": true,
+      "en": true,
+      "jp": true,
+      "cn": false
+    },
+    "maps/detail": {
+      "kr": true,
+      "en": true,
+      "jp": true,
+      "cn": false
+    },
+    "material-calc/main": {
+      "kr": true,
+      "en": true,
+      "jp": true,
+      "cn": false
+    },
+    "not-found/main": {
+      "kr": true,
+      "en": true,
+      "jp": true,
+      "cn": false
+    },
+    "persona/list": {
+      "kr": true,
+      "en": true,
+      "jp": true,
+      "cn": false
+    },
+    "persona/detail": {
+      "kr": true,
+      "en": true,
+      "jp": true,
+      "cn": false
+    },
+    "pull-calc/main": {
+      "kr": true,
+      "en": true,
+      "jp": true,
+      "cn": false
+    },
+    "pull-tracker/individual": {
+      "kr": true,
+      "en": true,
+      "jp": true,
+      "cn": false
+    },
+    "pull-tracker/global": {
+      "kr": true,
+      "en": true,
+      "jp": true,
+      "cn": false
+    },
+    "pull-tracker/guide": {
+      "kr": true,
+      "en": true,
+      "jp": true,
+      "cn": false
+    },
+    "revelation/main": {
+      "kr": true,
+      "en": true,
+      "jp": true,
+      "cn": false
+    },
+    "schedule/main": {
+      "kr": true,
+      "en": true,
+      "jp": true,
+      "cn": false
+    },
+    "synergy/list": {
+      "kr": true,
+      "en": true,
+      "jp": true,
+      "cn": false
+    },
+    "synergy/detail": {
+      "kr": true,
+      "en": true,
+      "jp": true,
+      "cn": false
+    },
+    "tactic/maker": {
+      "kr": true,
+      "en": true,
+      "jp": true,
+      "cn": false
+    },
+    "tactic/share": {
+      "kr": true,
+      "en": true,
+      "jp": true,
+      "cn": false
+    },
+    "tactic/upload": {
+      "kr": true,
+      "en": true,
+      "jp": true,
+      "cn": false
+    },
+    "tactic/tactics": {
+      "kr": true,
+      "en": true,
+      "jp": true,
+      "cn": false
+    },
+    "tactic-maker/main": {
+      "kr": true,
+      "en": true,
+      "jp": true,
+      "cn": false
+    },
+    "tactic-share/main": {
+      "kr": true,
+      "en": true,
+      "jp": true,
+      "cn": false
+    },
+    "tactic-upload/main": {
+      "kr": true,
+      "en": true,
+      "jp": true,
+      "cn": false
+    },
+    "tactics/main": {
+      "kr": true,
+      "en": true,
+      "jp": true,
+      "cn": false
+    },
+    "tier/list": {
+      "kr": true,
+      "en": true,
+      "jp": true,
+      "cn": false
+    },
+    "tier/maker": {
+      "kr": true,
+      "en": true,
+      "jp": true,
+      "cn": false
+    },
+    "wonder-weapon/list": {
+      "kr": true,
+      "en": true,
+      "jp": true,
+      "cn": false
+    },
+    "wonder-weapon/detail": {
+      "kr": true,
+      "en": true,
+      "jp": true,
+      "cn": false
+    }
+  }
 }

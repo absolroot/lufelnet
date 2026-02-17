@@ -8,37 +8,17 @@ sitemap: false
 <head>
   <meta charset="utf-8">
   <meta name="robots" content="noindex,nofollow">
-  <title>괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷</title>
+  <title>괴도 육성 가이드 | 루페르넷 페르소나5 더 팬텀 X</title>
   <meta name="description" content="페르소나5 더 팬텀 X의 괴도별 육성 가이드. 추천 세팅, 스킬, 의식, 전용무기 정보를 확인하세요.">
 </head>
 <body>
   <script>
     (function () {
       var params = new URLSearchParams(window.location.search || "");
-      params.delete("lang");
-      params.delete("v");
+      params.set("lang", "kr");
       var query = params.toString();
-      try { localStorage.setItem("preferredLanguage", "kr"); } catch (e) {}
-      var source = "/character/" + (query ? ("?" + query) : "");
-
-      if (typeof fetch !== "function") {
-        window.location.replace(source);
-        return;
-      }
-
-      fetch(source, { credentials: "same-origin" })
-        .then(function (response) {
-          if (!response.ok) throw new Error("HTTP " + response.status);
-          return response.text();
-        })
-        .then(function (html) {
-          document.open();
-          document.write(html);
-          document.close();
-        })
-        .catch(function () {
-          window.location.replace(source);
-        });
+      var next = "/character/" + (query ? ("?" + query) : "");
+      window.location.replace(next);
     })();
   </script>
   <noscript><meta http-equiv="refresh" content="0; url=/character/?lang=kr"></noscript>

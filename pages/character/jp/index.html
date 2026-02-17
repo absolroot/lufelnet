@@ -8,37 +8,17 @@ sitemap: false
 <head>
   <meta charset="utf-8">
   <meta name="robots" content="noindex,nofollow">
-  <title>怪盗育成ガイド - ペルソナ5: The Phantom X LufelNet</title>
+  <title>怪盗育成ガイド | Lufelnet ペルソナ5 ザ・ファントム X</title>
   <meta name="description" content="ペルソナ5: The Phantom Xの怪盗育成ガイド。推奨セット、スキル、意識、専用武器情報を確認できます。">
 </head>
 <body>
   <script>
     (function () {
       var params = new URLSearchParams(window.location.search || "");
-      params.delete("lang");
-      params.delete("v");
+      params.set("lang", "jp");
       var query = params.toString();
-      try { localStorage.setItem("preferredLanguage", "jp"); } catch (e) {}
-      var source = "/character/" + (query ? ("?" + query) : "");
-
-      if (typeof fetch !== "function") {
-        window.location.replace(source);
-        return;
-      }
-
-      fetch(source, { credentials: "same-origin" })
-        .then(function (response) {
-          if (!response.ok) throw new Error("HTTP " + response.status);
-          return response.text();
-        })
-        .then(function (html) {
-          document.open();
-          document.write(html);
-          document.close();
-        })
-        .catch(function () {
-          window.location.replace(source);
-        });
+      var next = "/character/" + (query ? ("?" + query) : "");
+      window.location.replace(next);
     })();
   </script>
   <noscript><meta http-equiv="refresh" content="0; url=/character/?lang=jp"></noscript>

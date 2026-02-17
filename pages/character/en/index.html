@@ -8,37 +8,17 @@ sitemap: false
 <head>
   <meta charset="utf-8">
   <meta name="robots" content="noindex,nofollow">
-  <title>Character Build Guide - Persona 5: The Phantom X LufelNet</title>
+  <title>Character Build Guide | Lufelnet Persona 5: The Phantom X</title>
   <meta name="description" content="Character development guide for Persona 5: The Phantom X. Check recommended setup, skills, awareness, and exclusive weapon info.">
 </head>
 <body>
   <script>
     (function () {
       var params = new URLSearchParams(window.location.search || "");
-      params.delete("lang");
-      params.delete("v");
+      params.set("lang", "en");
       var query = params.toString();
-      try { localStorage.setItem("preferredLanguage", "en"); } catch (e) {}
-      var source = "/character/" + (query ? ("?" + query) : "");
-
-      if (typeof fetch !== "function") {
-        window.location.replace(source);
-        return;
-      }
-
-      fetch(source, { credentials: "same-origin" })
-        .then(function (response) {
-          if (!response.ok) throw new Error("HTTP " + response.status);
-          return response.text();
-        })
-        .then(function (html) {
-          document.open();
-          document.write(html);
-          document.close();
-        })
-        .catch(function () {
-          window.location.replace(source);
-        });
+      var next = "/character/" + (query ? ("?" + query) : "");
+      window.location.replace(next);
     })();
   </script>
   <noscript><meta http-equiv="refresh" content="0; url=/character/?lang=en"></noscript>

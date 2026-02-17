@@ -1,56 +1,74 @@
 {
   "kr": {
     "maker": {
-      "title": "택틱 메이커 - 페르소나5 더 팬텀 X 루페르넷",
+      "title": "택틱 메이커 | 루페르넷 페르소나5 더 팬텀 X",
       "description": "페르소나5 더 팬텀 X 택틱 메이커"
     },
     "share": {
-      "title": "택틱 대장간 - 페르소나5 더 팬텀 X 루페르넷",
+      "title": "택틱 대장간 | 루페르넷 페르소나5 더 팬텀 X",
       "description": "페르소나5 더 팬텀 X 택틱을 자유롭게 공유하세요."
     },
     "upload": {
-      "title": "택틱 업로드 - 페르소나5 더 팬텀 X 루페르넷",
+      "title": "택틱 업로드 | 루페르넷 페르소나5 더 팬텀 X",
       "description": "페르소나5 더 팬텀 X 택틱을 업로드하세요."
     },
     "tactics": {
-      "title": "택틱 도서관 - 페르소나5 더 팬텀 X 루페르넷",
+      "title": "택틱 도서관 | 루페르넷 페르소나5 더 팬텀 X",
       "description": "페르소나5 더 팬텀 X 택틱들을 확인하세요."
     }
   },
   "en": {
     "maker": {
-      "title": "Tactic Maker - Persona 5: The Phantom X LufelNet",
+      "title": "Tactic Maker | Lufelnet Persona 5: The Phantom X",
       "description": "Persona 5: The Phantom X Tactic Maker"
     },
     "share": {
-      "title": "Tactic Forge - Persona 5: The Phantom X LufelNet",
+      "title": "Tactic Forge | Lufelnet Persona 5: The Phantom X",
       "description": "Freely share your Persona 5: The Phantom X tactics."
     },
     "upload": {
-      "title": "Upload Tactic - Persona 5: The Phantom X LufelNet",
+      "title": "Upload Tactic | Lufelnet Persona 5: The Phantom X",
       "description": "Upload your tactics for Persona 5: The Phantom X."
     },
     "tactics": {
-      "title": "Tactic Library - Persona 5: The Phantom X LufelNet",
+      "title": "Tactic Library | Lufelnet Persona 5: The Phantom X",
       "description": "Browse tactics for Persona 5: The Phantom X."
     }
   },
   "jp": {
     "maker": {
-      "title": "タクティクスメーカー - ペルソナ5 ザ・ファントムX LufelNet",
+      "title": "タクティクスメーカー | Lufelnet ペルソナ5 ザ・ファントム X",
       "description": "ペルソナ5 ザ・ファントムX タクティクスメーカー"
     },
     "share": {
-      "title": "タクティクス工房 - ペルソナ5 ザ・ファントム X LufelNet",
+      "title": "タクティクス工房 | Lufelnet ペルソナ5 ザ・ファントム X",
       "description": "ペルソナ5 ザ・ファントム X のタクティクスを自由に共有しましょう。"
     },
     "upload": {
-      "title": "タクティックをアップロード - ペルソナ5 ザ・ファントム X LufelNet",
+      "title": "タクティックをアップロード | Lufelnet ペルソナ5 ザ・ファントム X",
       "description": "ペルソナ5 ザ・ファントム X のタクティックをアップロードしてください。"
     },
     "tactics": {
-      "title": "タクティック一覧 - ペルソナ5 ザ・ファントム X LufelNet",
+      "title": "タクティック一覧 | Lufelnet ペルソナ5 ザ・ファントム X",
       "description": "ペルソナ5 ザ・ファントム X のタクティックを確認できます。"
+    }
+  },
+  "cn": {
+    "maker": {
+      "title": "",
+      "description": ""
+    },
+    "share": {
+      "title": "",
+      "description": ""
+    },
+    "upload": {
+      "title": "",
+      "description": ""
+    },
+    "tactics": {
+      "title": "",
+      "description": ""
     }
   }
 }

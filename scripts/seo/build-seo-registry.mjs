@@ -92,6 +92,43 @@ function assertNonEmptyString(value, message) {
   }
 }
 
+function isBlank(value) {
+  return !String(value == null ? '' : value).trim();
+}
+
+function isSkippableOptionalMeta({ type, domain, langMeta }) {
+  if (langMeta == null) return true;
+  if (!langMeta || typeof langMeta !== 'object' || Array.isArray(langMeta)) return false;
+
+  if (type === 'simple') {
+    return isBlank(langMeta.title) && isBlank(langMeta.description);
+  }
+
+  if (type === 'template') {
+    return isBlank(langMeta.title)
+      && isBlank(langMeta.description)
+      && isBlank(langMeta.list_title)
+      && isBlank(langMeta.list_description);
+  }
+
+  if (type === 'mode') {
+    const modeKeys = MODE_DOMAIN_KEYS[domain] || [];
+    return modeKeys.every((modeKey) => {
+      const modeMeta = langMeta?.[modeKey];
+      return isBlank(modeMeta?.title) && isBlank(modeMeta?.description);
+    });
+  }
+
+  if (type === 'tier') {
+    return isBlank(langMeta.title)
+      && isBlank(langMeta.description)
+      && isBlank(langMeta.maker_title)
+      && isBlank(langMeta.maker_description);
+  }
+
+  return false;
+}
+
 function validateAndNormalizeSimple(domain, lang, langMeta) {
   assertNonEmptyString(langMeta?.title, `${domain}.${lang}.title must be a non-empty string`);
   assertNonEmptyString(langMeta?.description, `${domain}.${lang}.description must be a non-empty string`);
@@ -169,6 +206,10 @@ function normalizeDomainMeta(domain, rawMeta) {
   const normalizedMeta = {};
   for (const lang of langs) {
     const langMeta = rawMeta[lang];
+    const isOptional = !REQUIRED_LANGS.includes(lang);
+    if (isOptional && isSkippableOptionalMeta({ type, domain, langMeta })) {
+      continue;
+    }
     if (!langMeta || typeof langMeta !== 'object' || Array.isArray(langMeta)) {
       throw new Error(`${domain}.${lang} must be an object`);
     }
@@ -184,9 +225,11 @@ function normalizeDomainMeta(domain, rawMeta) {
     }
   }
 
+  const normalizedLangs = Object.keys(normalizedMeta).sort();
+
   return {
     type,
-    langs,
+    langs: normalizedLangs,
     placeholder: type === 'template' ? '{name}' : (domain === 'maps' ? '{path}' : null),
     modeKeys: type === 'mode' ? MODE_DOMAIN_KEYS[domain] : (type === 'tier' ? ['list', 'maker'] : []),
     paramPolicy: DOMAIN_PARAM_POLICY[domain] || { remove: ['lang', 'v'], modeParam: null, detailParam: null },

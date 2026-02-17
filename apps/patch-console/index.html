@@ -467,17 +467,34 @@
                 <button id="btn-seo-load" class="btn ghost">도메인 로드</button>
               </div>
               <div class="seo-action-group">
-                <span class="seo-action-group-label">일괄편집</span>
-                <button id="btn-seo-copy-kr" class="btn ghost" title="KR 언어의 Title/Description을 EN·JP에 동일하게 복사합니다">KR 내용을 EN·JP에 복사</button>
-                <button id="btn-seo-insert-name" class="btn ghost">{name} 삽입</button>
-                <button id="btn-seo-insert-path" class="btn ghost">{path} 삽입</button>
-                <button id="btn-seo-batch-suffix" class="btn ghost" title="모든 Title/Description 끝에 공통 텍스트를 추가합니다">접미사 일괄 추가</button>
-                <button id="btn-seo-batch-released" class="btn ghost" title="표시된 모든 행의 Released 상태를 한 번에 ON/OFF 합니다">Released 일괄 변경</button>
+                <span class="seo-action-group-label">접미사</span>
+                <button id="btn-seo-suffix-apply" class="btn ghost" title="접미사 설정 저장 + 표시된 행 제목 통일 적용 + SEO 저장을 한 번에 수행합니다">접미사 저장+적용</button>
               </div>
               <div class="seo-action-group">
                 <span class="seo-action-group-label">저장</span>
                 <button id="btn-seo-validate" class="btn warn">검증</button>
                 <button id="btn-seo-save" class="btn primary">저장</button>
+              </div>
+            </div>
+            <div class="seo-suffix-panel">
+              <p class="muted small">언어별 공통 제목 접미사입니다. 예: <code> - 페르소나5 더 팬텀 X 루페르넷</code>, <code> | 루페르넷</code></p>
+              <div class="seo-suffix-grid">
+                <label class="field">
+                  <span>KR</span>
+                  <input id="seo-suffix-kr" type="text" placeholder="예:  - 페르소나5 더 팬텀 X 루페르넷">
+                </label>
+                <label class="field">
+                  <span>EN</span>
+                  <input id="seo-suffix-en" type="text" placeholder="e.g.  - Persona 5: The Phantom X Lufelnet">
+                </label>
+                <label class="field">
+                  <span>JP</span>
+                  <input id="seo-suffix-jp" type="text" placeholder="例:  - ペルソナ5 ザ・ファントム X LufelNet">
+                </label>
+                <label class="field">
+                  <span>CN</span>
+                  <input id="seo-suffix-cn" type="text" placeholder="선택 입력">
+                </label>
               </div>
             </div>
             <div class="seo-status-row">

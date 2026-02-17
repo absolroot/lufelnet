@@ -56,6 +56,7 @@ const DATA_TEXT_EXTS = ['.js', '.json', '.md', '.txt', '.csv', '.yml', '.yaml', 
 const DATA_FILE_MAX_BYTES = 2 * 1024 * 1024;
 const SEO_AVAILABILITY_FILE = path.join(PROJECT_ROOT, 'data', 'seo', 'availability.json');
 const SEO_REGISTRY_FILE = path.join(PROJECT_ROOT, 'data', 'seo', 'registry.json');
+const SEO_SUFFIX_CONFIG_FILE = path.join(PROJECT_ROOT, 'data', 'seo', 'suffix-config.json');
 const SEO_HISTORY_FILE = path.join(APP_STATE_ROOT, 'seo-history.json');
 const SEO_HISTORY_MAX_ITEMS = 300;
 
@@ -1032,11 +1033,66 @@ function listSeoHistoryItems(limit = 80) {
   return (Array.isArray(store.items) ? store.items : []).slice(0, safeLimit);
 }
 
+function defaultSeoSuffixConfig() {
+  return {
+    version: 1,
+    updatedAt: '',
+    titleSuffix: {
+      kr: ' - 페르소나5 더 팬텀 X 루페르넷',
+      en: ' - Persona 5: The Phantom X Lufelnet',
+      jp: ' - ペルソナ5 ザ・ファントム X LufelNet',
+      cn: ''
+    }
+  };
+}
+
+function normalizeSeoSuffixConfig(raw) {
+  const fallback = defaultSeoSuffixConfig();
+  const parsed = isPlainObject(raw) ? raw : {};
+  const titleSuffixRaw = isPlainObject(parsed.titleSuffix) ? parsed.titleSuffix : {};
+  const titleSuffix = {};
+  for (const lang of ['kr', 'en', 'jp', 'cn']) {
+    const value = hasOwn(titleSuffixRaw, lang) ? titleSuffixRaw[lang] : fallback.titleSuffix[lang];
+    titleSuffix[lang] = String(value == null ? '' : value).replace(/\s+$/u, '');
+  }
+  return {
+    version: 1,
+    updatedAt: String(parsed.updatedAt || ''),
+    titleSuffix
+  };
+}
+
+function loadSeoSuffixConfig() {
+  const fallback = defaultSeoSuffixConfig();
+  if (!fs.existsSync(SEO_SUFFIX_CONFIG_FILE)) {
+    return fallback;
+  }
+  try {
+    const parsed = JSON.parse(stripBom(fs.readFileSync(SEO_SUFFIX_CONFIG_FILE, 'utf8')));
+    return normalizeSeoSuffixConfig(parsed);
+  } catch {
+    return fallback;
+  }
+}
+
+function saveSeoSuffixConfig(rawConfig) {
+  const normalized = normalizeSeoSuffixConfig(rawConfig);
+  const withMeta = {
+    ...normalized,
+    updatedAt: new Date().toISOString()
+  };
+  writeTextUtf8(SEO_SUFFIX_CONFIG_FILE, serializeJson(withMeta));
+  return withMeta;
+}
+
 function ensureSeoSupportFiles() {
   ensureDir(path.dirname(SEO_AVAILABILITY_FILE));
   ensureDir(path.dirname(SEO_HISTORY_FILE));
   if (!fs.existsSync(SEO_AVAILABILITY_FILE)) {
     writeTextUtf8(SEO_AVAILABILITY_FILE, serializeJson({ version: 1, entries: {} }));
+  }
+  if (!fs.existsSync(SEO_SUFFIX_CONFIG_FILE)) {
+    writeTextUtf8(SEO_SUFFIX_CONFIG_FILE, serializeJson(defaultSeoSuffixConfig()));
   }
   if (!fs.existsSync(SEO_HISTORY_FILE)) {
     saveSeoHistoryStore({ version: 1, updatedAt: '', items: [] });
@@ -1067,7 +1123,8 @@ function loadSeoBootstrapPayload() {
     optionalLangs: [...SEO_OPTIONAL_LANGS],
     phase1Domains: [...SEO_PHASE1_DOMAINS],
     domains,
-    cnDefaultVisible: false
+    cnDefaultVisible: false,
+    suffixConfig: loadSeoSuffixConfig()
   };
 }
 
@@ -1103,6 +1160,13 @@ function sanitizeSeoRows(rows) {
         released: isPlainObject(row?.released) ? row.released : {}
       }))
     : [];
+}
+
+function toSeoGenerateScript(scriptName) {
+  const value = String(scriptName || '').trim();
+  if (!value) return null;
+  if (value.endsWith(':check')) return `${value.slice(0, -6)}:generate`;
+  return null;
 }
 
 async function runNpmScript(scriptName, { timeoutMs = 30 * 60 * 1000 } = {}) {
@@ -2146,6 +2210,47 @@ async function handleSeoBootstrap(res) {
   sendJson(res, 200, { ok: true, ...payload });
 }
 
+async function handleSeoSuffixConfig(res) {
+  sendJson(res, 200, {
+    ok: true,
+    config: loadSeoSuffixConfig()
+  });
+}
+
+async function handleSeoSuffixConfigSave(res, payload) {
+  try {
+    const nextConfig = normalizeSeoSuffixConfig(payload?.config || payload);
+    for (const [lang, value] of Object.entries(nextConfig.titleSuffix || {})) {
+      if (containsBom(value)) {
+        sendJson(res, 400, { ok: false, error: `UTF-8 BOM is not allowed (${lang})` });
+        return;
+      }
+      if (String(value || '').length > 120) {
+        sendJson(res, 400, { ok: false, error: `suffix too long (${lang}, max 120)` });
+        return;
+      }
+      if (String(value || '').includes('\n')) {
+        sendJson(res, 400, { ok: false, error: `suffix must be single line (${lang})` });
+        return;
+      }
+    }
+    const saved = saveSeoSuffixConfig(nextConfig);
+    addSeoHistoryItem({
+      kind: 'suffix-config',
+      domain: '-',
+      status: 'passed',
+      durationMs: 0,
+      summary: 'SEO suffix config saved'
+    });
+    sendJson(res, 200, {
+      ok: true,
+      config: saved
+    });
+  } catch (error) {
+    sendJson(res, 500, { ok: false, error: String(error?.message || error) });
+  }
+}
+
 async function handleSeoDomain(res, urlObj) {
   const domain = String(urlObj.searchParams.get('domain') || '').trim().toLowerCase();
   const matched = resolveSeoDomain(domain);
@@ -2286,14 +2391,29 @@ async function handleSeoSave(res, payload) {
 
     const domainCheckScript = getSeoCheckScript(matched.id);
     if (domainCheckScript) {
-      const run = await runNpmScript(domainCheckScript, { timeoutMs: 300000 });
+      const domainGenerateScript = toSeoGenerateScript(domainCheckScript);
+      const primaryScript = domainGenerateScript || domainCheckScript;
+      const run = await runNpmScript(primaryScript, { timeoutMs: 300000 });
       blockingChecks.push({
-        script: domainCheckScript,
+        script: primaryScript,
+        checkScript: domainCheckScript,
         code: run.code,
         status: run.code === 0 ? 'passed' : 'failed',
         stdout: run.stdout,
         stderr: run.stderr
       });
+
+      if (run.code === 0 && domainGenerateScript) {
+        const verify = await runNpmScript(domainCheckScript, { timeoutMs: 300000 });
+        blockingChecks.push({
+          script: domainCheckScript,
+          checkScript: domainCheckScript,
+          code: verify.code,
+          status: verify.code === 0 ? 'passed' : 'failed',
+          stdout: verify.stdout,
+          stderr: verify.stderr
+        });
+      }
     } else {
       blockingChecks.push({
         script: null,
@@ -2306,38 +2426,16 @@ async function handleSeoSave(res, payload) {
     }
 
     const hasFailedBlocking = blockingChecks.some((item) => item.status === 'failed');
-    if (hasFailedBlocking) {
-      writeTextUtf8(sourcePath, currentMetaRaw);
-      writeTextUtf8(SEO_AVAILABILITY_FILE, currentAvailabilityRaw);
-      if (currentRegistryRaw.trim()) {
-        writeTextUtf8(SEO_REGISTRY_FILE, currentRegistryRaw);
-      } else if (fs.existsSync(SEO_REGISTRY_FILE)) {
-        fs.unlinkSync(SEO_REGISTRY_FILE);
-      }
-      addSeoHistoryItem({
-        kind: 'save',
-        domain: matched.id,
-        status: 'failed',
-        durationMs: Date.now() - startedAt,
-        summary: 'SEO save failed on blocking checks',
-        checks: blockingChecks.map((item) => ({ script: item.script, status: item.status, code: item.code }))
-      });
-      sendJson(res, 500, {
-        ok: false,
-        error: 'blocking_check_failed',
-        checks: blockingChecks
-      });
-      return;
-    }
-
     const ciJob = startSeoCiJob(matched.id);
     const nextState = prepareSeoDomainPayload(matched.id);
     addSeoHistoryItem({
       kind: 'save',
       domain: matched.id,
-      status: 'passed',
+      status: hasFailedBlocking ? 'warning' : 'passed',
       durationMs: Date.now() - startedAt,
-      summary: 'SEO meta saved successfully',
+      summary: hasFailedBlocking
+        ? 'SEO meta saved with check warnings'
+        : 'SEO meta saved successfully',
       ciJobId: ciJob.id,
       checks: blockingChecks.map((item) => ({ script: item.script, status: item.status, code: item.code }))
     });
@@ -2346,6 +2444,7 @@ async function handleSeoSave(res, payload) {
       ok: true,
       domain: matched.id,
       etag: nextState.etag,
+      checkStatus: hasFailedBlocking ? 'warning' : 'passed',
       checks: blockingChecks,
       ciJob: {
         id: ciJob.id,
@@ -2761,6 +2860,17 @@ async function requestHandler(req, res) {
 
   if (pathname === '/api/seo/bootstrap' && req.method === 'GET') {
     await handleSeoBootstrap(res);
+    return;
+  }
+
+  if (pathname === '/api/seo/suffix-config' && req.method === 'GET') {
+    await handleSeoSuffixConfig(res);
+    return;
+  }
+
+  if (pathname === '/api/seo/suffix-config' && req.method === 'POST') {
+    const body = await readBody(req);
+    await handleSeoSuffixConfigSave(res, body);
     return;
   }
 

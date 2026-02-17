@@ -1,32 +1,42 @@
 {
   "kr": {
     "list": {
-      "title": "P5X 맵스 - 루페르넷",
+      "title": "P5X 맵스 | 루페르넷 페르소나5 더 팬텀 X",
       "description": "P5X 맵 뷰어. 팰리스와 메멘토스의 모든 맵을 확인하세요."
     },
     "detail": {
-      "title": "{path} - P5X 맵스 - 루페르넷",
+      "title": "{path} | 루페르넷 페르소나5 더 팬텀 X",
       "description": "{path} 맵 정보. P5X 팰리스와 메멘토스의 상세 맵을 확인하세요."
     }
   },
   "en": {
     "list": {
-      "title": "P5X Maps - Lufelnet",
+      "title": "P5X Maps | Lufelnet Persona 5: The Phantom X",
       "description": "Explore all P5X Palaces and Mementos."
     },
     "detail": {
-      "title": "{path} - P5X Maps - Lufelnet",
+      "title": "{path} | Lufelnet Persona 5: The Phantom X",
       "description": "{path} map info. Explore detailed maps of P5X Palaces and Mementos."
     }
   },
   "jp": {
     "list": {
-      "title": "P5X マップス - ルフェルネット",
+      "title": "P5X マップス | Lufelnet ペルソナ5 ザ・ファントム X",
       "description": "P5X マップビューアー。パレスとメメントスの全マップを確認してください"
     },
     "detail": {
-      "title": "{path} - P5X マップス - ルフェルネット",
+      "title": "{path} | Lufelnet ペルソナ5 ザ・ファントム X",
       "description": "{path} マップ情報。P5Xパレスとメメントスの詳細マップを確認してください。"
+    }
+  },
+  "cn": {
+    "list": {
+      "title": "",
+      "description": ""
+    },
+    "detail": {
+      "title": "",
+      "description": ""
     }
   }
 }

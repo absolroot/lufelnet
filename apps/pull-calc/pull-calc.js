@@ -257,66 +257,17 @@ function getCurrentPullCalcLanguage() {
 
     return 'kr';
 }
-
-function upsertMetaByName(name, content) {
-    let tag = document.querySelector(`meta[name="${name}"]`);
-    if (!tag) {
-        tag = document.createElement('meta');
-        tag.setAttribute('name', name);
-        document.head.appendChild(tag);
-    }
-    tag.setAttribute('content', content);
-}
-
-function upsertMetaByProperty(property, content) {
-    let tag = document.querySelector(`meta[property="${property}"]`);
-    if (!tag) {
-        tag = document.createElement('meta');
-        tag.setAttribute('property', property);
-        document.head.appendChild(tag);
-    }
-    tag.setAttribute('content', content);
-}
-
 function updatePullCalcSEOTags(lang = null) {
-    const currentLang = lang || getCurrentPullCalcLanguage();
-    const effectiveLang = ['kr', 'en', 'jp'].includes(currentLang) ? currentLang : 'kr';
-    const baseUrl = 'https://lufel.net';
-    const isPathLang = /^\/(kr|en|jp)(\/|$)/i.test(window.location.pathname);
-    const currentUrl = isPathLang
-        ? `${baseUrl}/${effectiveLang}/pull-calc/`
-        : `${baseUrl}/pull-calc/`;
-
-    const seoTitle = getI18nText('seoTitle', '가챠 플래너 - 페르소나5 더 팬텀 X 루페르넷');
-    const seoDescription = getI18nText('seoDescription', '페르소나5 더 팬텀 X 가챠 계획 시뮬레이터. 향후 캐릭터 출시에 맞춰 필요한 재화를 계산하고 계약 계획을 수립할 수 있습니다.');
-    const seoKeywords = getI18nText('seoKeywords', 'P5X, 페르소나5X, 가챠 플래너, 가챠 계산기, 가챠 시뮬레이터, P5X 계산기, 계약 계획');
-    const seoOgLocale = getI18nText('seoOgLocale', effectiveLang === 'jp' ? 'ja_JP' : effectiveLang === 'en' ? 'en_US' : 'ko_KR');
-
-    document.title = seoTitle;
-
-    upsertMetaByName('description', seoDescription);
-    upsertMetaByName('keywords', seoKeywords);
-    upsertMetaByName('twitter:card', 'summary_large_image');
-    upsertMetaByName('twitter:title', seoTitle);
-    upsertMetaByName('twitter:description', seoDescription);
-    upsertMetaByName('twitter:image', `${baseUrl}/assets/img/home/SEO.png`);
-
-    upsertMetaByProperty('og:title', seoTitle);
-    upsertMetaByProperty('og:description', seoDescription);
-    upsertMetaByProperty('og:url', currentUrl);
-    upsertMetaByProperty('og:locale', seoOgLocale);
-    upsertMetaByProperty('og:type', 'website');
-    upsertMetaByProperty('og:image', `${baseUrl}/assets/img/home/SEO.png`);
-
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) {
-        canonical = document.createElement('link');
-        canonical.setAttribute('rel', 'canonical');
-        document.head.appendChild(canonical);
+    if (window.SeoEngine && typeof window.SeoEngine.setContextHint === 'function') {
+        window.SeoEngine.setContextHint({
+            domain: 'pull-calc',
+            mode: 'list'
+        }, { rerun: true });
+        return;
     }
-    canonical.setAttribute('href', currentUrl);
-
-    document.documentElement.setAttribute('lang', effectiveLang === 'jp' ? 'ja' : effectiveLang === 'kr' ? 'ko' : 'en');
+    if (window.SeoEngine && typeof window.SeoEngine.run === 'function') {
+        window.SeoEngine.run();
+    }
 }
 
 /**

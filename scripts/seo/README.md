@@ -94,7 +94,7 @@ For single-page apps (Type B) — direct strings, no placeholder:
 }
 ```
 
-Source the title/description from existing `i18n/pages/{app}/kr.js`, `en.js`, `jp.js` (`seo_title`, `seo_description` keys) or from the original front matter.
+Source the title/description from `i18n/pages/{app}/seo-meta.json` only.
 
 ### 3. Extract body into include
 
@@ -324,6 +324,7 @@ if (/^\/(kr|en|jp)\//.test(window.location.pathname)) return;
 | character | A (per-item) | `generate-character-pages.mjs` | Done |
 | tier | B (single-page) | `generate-tier-pages.mjs` | Done |
 | schedule | B (single-page) | `generate-schedule-pages.mjs` | Done |
+| tactic-maker | B (single-page) | `generate-tactic-maker-pages.mjs` | Done |
 | defense-calc | B (single-page) | `generate-defense-calc-pages.mjs` | Done |
 | critical-calc | B (single-page) | `generate-critical-calc-pages.mjs` | Done |
 | material-calc | B (single-page) | `generate-material-calc-pages.mjs` | Done |
@@ -347,6 +348,7 @@ if (/^\/(kr|en|jp)\//.test(window.location.pathname)) return;
 | Character (list) | `/character/` (default), `/kr/character/`, `/en/character/`, `/jp/character/` |
 | Tier (list) | `/kr/tier/`, `/en/tier/`, `/jp/tier/` |
 | Tier Maker | `/kr/tier-maker/`, `/en/tier-maker/`, `/jp/tier-maker/` |
+| Tactic Maker | `/kr/tactic-maker/`, `/en/tactic-maker/`, `/jp/tactic-maker/` |
 | Schedule | `/kr/schedule/`, `/en/schedule/`, `/jp/schedule/` |
 | Defense Calc | `/kr/defense-calc/`, `/en/defense-calc/`, `/jp/defense-calc/` |
 | Critical Calc | `/kr/critical-calc/`, `/en/critical-calc/`, `/jp/critical-calc/` |
@@ -380,6 +382,8 @@ Legacy query-based URLs are rewritten to clean path-based URLs via `history.repl
 | `/en/wonder-weapon/?v=4.4.7` | `/en/wonder-weapon/` |
 | `/tier/position-tier/?lang=en&v=4.4.8` | `/en/tier/` |
 | `/tier/position-tier/?lang=en&list=false&v=4.4.8` | `/en/tier-maker/` |
+| `/tactic-maker/?lang=en&v=4.4.8` | `/en/tactic-maker/` |
+| `/en/tactic-maker/?lang=en&v=4.4.8` | `/en/tactic-maker/` |
 | `/schedule/?lang=en&v=4.4.8` | `/en/schedule/` |
 | `/defense-calc/?lang=en&v=4.4.8` | `/en/defense-calc/` |
 | `/critical-calc/?lang=en&v=4.4.8` | `/en/critical-calc/` |

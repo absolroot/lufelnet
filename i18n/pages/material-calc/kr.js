@@ -70,8 +70,6 @@ window.I18N_PAGE_MATERIAL_CALC_KR = {
     mindscapeCoreItem: '심상 코어',
     emblem5StarItem: '엠블럼 ★5',
     innateSeedItem: '향기의 씨앗',
-    seoTitle: '육성 계산기 - 페르소나5 더 팬텀 X 루페르넷',
-    seoDescription: '페르소나5 더 팬텀 X 캐릭터 육성 재료 계산기 (레벨/무기/스킬/심상)',
     seoKeywords: 'P5X, 페르소나5X, 육성 계산기, 재료 계산기, 캐릭터 육성',
     seoOgLocale: 'ko_KR'
 };

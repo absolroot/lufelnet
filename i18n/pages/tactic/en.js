@@ -52,6 +52,4 @@ window.I18N_PAGE_TACTIC_EN = {
     toggleUiHide: '🕶️ Hide Edit UI',
     toggleUiShow: '🔍 Show Edit UI',
     toggleUiTitle: 'Toggle edit UI',
-    seoTitle: 'Tactic Maker - Persona 5: The Phantom X LufelNet',
-    seoDescription: 'Persona 5: The Phantom X Tactic Maker'
 };

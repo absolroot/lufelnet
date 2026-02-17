@@ -95,12 +95,13 @@
     AstrolabeI18n.setLang(AstrolabeI18n.detectLang());
     await AstrolabeI18n.ensurePacksReady();
 
-    // Page Title & Meta
-    document.title = AstrolabeI18n.t('title') + " - P5X lufel.net";
-
-    const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) {
-      metaDesc.setAttribute('content', AstrolabeI18n.t('description'));
+    if (window.SeoEngine && typeof window.SeoEngine.setContextHint === 'function') {
+      window.SeoEngine.setContextHint({
+        domain: 'astrolabe',
+        mode: 'list'
+      }, { rerun: true });
+    } else if (window.SeoEngine && typeof window.SeoEngine.run === 'function') {
+      window.SeoEngine.run();
     }
 
     // Title

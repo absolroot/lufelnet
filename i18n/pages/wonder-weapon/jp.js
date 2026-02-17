@@ -31,8 +31,6 @@ window.I18N_PAGE_WONDER_WEAPON_JP = {
     errorMessage: 'データの読み込み中にエラーが発生しました。ページを更新してください。',
 
     // SEO
-    seoTitle: 'ワンダー武器 - ペルソナ5 ザ・ファントム X LufelNet',
-    seoDescription: 'P5Xのワンダー武器情報。入手方法・効果・使用キャラを確認。',
 
     // Source map
     sourceMap: {

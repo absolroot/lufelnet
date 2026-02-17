@@ -1,8 +1,6 @@
 window.I18N_PAGE_CRITICAL_CALC_JP = {
     "navCurrent": "クリ率計算機",
     "pageTitle": "クリ率計算機",
-    "seoTitle": "クリ率計算機 - ペルソナ5 ザ・ファントム X LufelNet",
-    "seoDescription": "ペルソナ5 ザ・ファントム X クリ率計算機",
     "seoKeywords": "P5X, ペルソナ5X, クリ率計算機, クリティカル率",
     "seoOgLocale": "ja_JP",
     "tabBuff": "バフ",

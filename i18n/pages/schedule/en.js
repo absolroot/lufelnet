@@ -76,8 +76,6 @@ window.I18N_PAGE_SCHEDULE_EN = {
     noticeHtml: 'Be careful with spoilers.<br>This schedule is for GLB/JP servers.<br>Until version 4.0, new characters release every 2 weeks; after 4.0, the interval changes to 3 weeks.<br>This schedule and character release order is based on previous Asia server releases, but may be subject to change at any time due to unexpected circumstances or events.<br>Character release order is not guaranteed to match Asia server or remain the same.<br>For detailed patch history, see <a href="https://docs.google.com/spreadsheets/d/1KmLUs1Cpp2WuDQZYHCW1xzCVCThWCB6R2VR5pFuLixE/edit?usp=sharing" target="_blank">P5X Patch History by Sages</a>.',
 
     // SEO
-    seoTitle: 'Release Schedule - Persona 5 The Phantom X | lufel.net',
-    seoDescription: 'Release schedule for Persona 5 The Phantom X characters. Track upcoming character releases, current banners, and patch history.',
     seoKeywords: 'P5X, Persona 5X, Release Schedule, Character Release, Banner Schedule, P5X Schedule, GLB Server, JP Server',
     seoOgLocale: 'en_US',
 

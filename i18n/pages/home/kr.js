@@ -9,8 +9,6 @@ window.I18N_PAGE_HOME_KR = {
     language_name_jp: '日本語',
     language_name_cn: '中文',
 
-    seo_title: '페르소나5 더 팬텀 X - 루페르넷',
-    seo_description: '페르소나5 더 팬텀 X의 모든 정보를 한 곳에서 확인하세요. 캐릭터, 페르소나, 스킬, 공략 가이드를 제공합니다.',
 
     quick_character: '캐릭터',
     quick_persona: '페르소나',
@@ -71,7 +69,6 @@ window.I18N_PAGE_HOME_KR = {
     carousel_maintenance_title: '배너 점검 중',
     carousel_maintenance_body: '조치 중입니다.',
 
-    notfound_seo_title: '404 - 페이지를 찾을 수 없습니다 | P5X 루페르넷',
     notfound_title: '페이지를 찾을 수 없습니다',
     notfound_description: '요청하신 주소가 변경되었거나 삭제되었을 수 있습니다.',
     notfound_path_label: '요청 경로',

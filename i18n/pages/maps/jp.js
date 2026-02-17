@@ -37,9 +37,6 @@ window.I18N_PAGE_MAPS_JP = {
     enemyUndo: '元に戻す',
     enemyRelativeLevel: '主人公のレベルに応じてモンスターのレベルが変化します。（主人公レベル + {level}）',
     enemyElementFallback: '属性',
-    seoDefaultTitle: 'P5X マップス - ルフェルネット',
-    seoDefaultDescription: 'P5X マップビューアー。パレスとメメントスの全マップを確認してください',
-    seoMapDescriptionTemplate: '{path} マップ情報。P5Xパレスとメメントスの詳細マップを確認してください。',
     adaptLabels: {
         Weak: { text: '弱', cls: 'weak' },
         Resistant: { text: '耐', cls: 'res' },

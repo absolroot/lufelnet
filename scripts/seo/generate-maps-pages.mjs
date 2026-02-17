@@ -47,11 +47,25 @@ function ensureSeoMetaShape(meta) {
     if (!langMeta || typeof langMeta !== 'object') {
       throw new Error(`Missing seo meta language entry: ${lang}`);
     }
-    if (typeof langMeta.title !== 'string' || !langMeta.title) {
-      throw new Error(`i18n/pages/maps/seo-meta.json missing valid title for ${lang}.`);
+    const listMeta = langMeta.list;
+    const detailMeta = langMeta.detail;
+    if (!listMeta || typeof listMeta !== 'object') {
+      throw new Error(`i18n/pages/maps/seo-meta.json missing list mode for ${lang}.`);
     }
-    if (typeof langMeta.description !== 'string' || !langMeta.description) {
-      throw new Error(`i18n/pages/maps/seo-meta.json missing valid description for ${lang}.`);
+    if (!detailMeta || typeof detailMeta !== 'object') {
+      throw new Error(`i18n/pages/maps/seo-meta.json missing detail mode for ${lang}.`);
+    }
+    if (typeof listMeta.title !== 'string' || !listMeta.title.trim()) {
+      throw new Error(`i18n/pages/maps/seo-meta.json missing valid list.title for ${lang}.`);
+    }
+    if (typeof listMeta.description !== 'string' || !listMeta.description.trim()) {
+      throw new Error(`i18n/pages/maps/seo-meta.json missing valid list.description for ${lang}.`);
+    }
+    if (typeof detailMeta.title !== 'string' || !detailMeta.title.includes('{path}')) {
+      throw new Error(`i18n/pages/maps/seo-meta.json missing valid detail.title with {path} for ${lang}.`);
+    }
+    if (typeof detailMeta.description !== 'string' || !detailMeta.description.includes('{path}')) {
+      throw new Error(`i18n/pages/maps/seo-meta.json missing valid detail.description with {path} for ${lang}.`);
     }
   }
 }
@@ -84,8 +98,8 @@ function buildExpectedFiles(seoMeta) {
   const expected = new Map();
 
   for (const lang of LANGS) {
-    const title = seoMeta[lang].title;
-    const description = seoMeta[lang].description;
+    const title = seoMeta[lang].list.title;
+    const description = seoMeta[lang].list.description;
 
     const fileRel = toPosix(path.relative(ROOT, path.join(OUTPUT_DIR, lang, 'index.html')));
     const content = normalizeNewline(

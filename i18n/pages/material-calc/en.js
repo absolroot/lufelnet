@@ -70,8 +70,6 @@ window.I18N_PAGE_MATERIAL_CALC_EN = {
     mindscapeCoreItem: 'Mindscape Core',
     emblem5StarItem: 'Emblem ★5',
     innateSeedItem: 'Fragrant Seed',
-    seoTitle: 'Progression Calculator - Persona 5: The Phantom X LufelNet',
-    seoDescription: 'Persona 5: The Phantom X character progression material calculator (level/weapon/skill/mindscape)',
     seoKeywords: 'P5X, Persona 5X, progression calculator, material calculator, character progression',
     seoOgLocale: 'en_US'
 };

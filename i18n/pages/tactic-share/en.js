@@ -21,8 +21,6 @@ window.I18N_PAGE_TACTIC_SHARE_EN = {
     view_best: 'Best',
     prev_page: 'Prev',
     next_page: 'Next',
-    seo_title: 'Tactic Forge - Persona 5: The Phantom X LufelNet',
-    seo_desc: 'Freely share your Persona 5: The Phantom X tactics.',
     empty_title: 'No shared tactics yet.',
     empty_subtitle: 'Be the first to share a tactic!',
     view_tactic: 'View Tactic',

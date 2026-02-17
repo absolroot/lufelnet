@@ -52,6 +52,4 @@ window.I18N_PAGE_TACTIC_JP = {
     toggleUiHide: '🕶️ 編集UIを非表示',
     toggleUiShow: '🔍 編集UIを表示',
     toggleUiTitle: '編集UIの表示切替',
-    seoTitle: 'タクティクスメーカー - ペルソナ5 ザ・ファントムX LufelNet',
-    seoDescription: 'ペルソナ5 ザ・ファントムX タクティクスメーカー'
 };

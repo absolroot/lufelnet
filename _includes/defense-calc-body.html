@@ -464,46 +464,22 @@
     }
 
     // 언어별 SEO 설정
-    function updateSEOContent(lang) {
+        function updateSEOContent(lang) {
         const currentLang = String(lang || detectDefenseCalcLang()).toLowerCase();
-        const seoVarMap = {
-            kr: 'I18N_PAGE_DEFENSE_CALC_KR',
-            en: 'I18N_PAGE_DEFENSE_CALC_EN',
-            jp: 'I18N_PAGE_DEFENSE_CALC_JP',
-            cn: 'I18N_PAGE_DEFENSE_CALC_EN',
-            tw: 'I18N_PAGE_DEFENSE_CALC_EN',
-            sea: 'I18N_PAGE_DEFENSE_CALC_EN'
-        };
-        const fallbackPack = window.I18N_PAGE_DEFENSE_CALC_KR || {};
-        const pack = window[seoVarMap[currentLang] || seoVarMap.kr] || fallbackPack;
-        const title = pack.seoTitle || fallbackPack.seoTitle || document.title;
-        const description = pack.seoDescription || fallbackPack.seoDescription || '';
-        const baseUrl = 'https://lufel.net';
-        const effectiveLang = ['kr', 'en', 'jp'].indexOf(currentLang) !== -1 ? currentLang : 'kr';
-        const isPathLang = /^\/(kr|en|jp)(\/|$)/i.test(window.location.pathname);
-        const currentUrl = isPathLang
-            ? (baseUrl + '/' + effectiveLang + '/defense-calc/')
-            : (baseUrl + '/defense-calc/');
-
-        document.title = title;
-        const metaDescription = document.querySelector('meta[name="description"]');
-        const metaKeywords = document.querySelector('meta[name="keywords"]');
-        const canonical = document.querySelector('link[rel="canonical"]');
-        const ogUrl = document.querySelector('meta[property="og:url"]');
-        const ogLocale = document.querySelector('meta[property="og:locale"]');
-        const ogTitle = document.querySelector('meta[property="og:title"]');
-        const ogDescription = document.querySelector('meta[property="og:description"]');
-        if (metaDescription) metaDescription.setAttribute('content', description);
-        if (metaKeywords && pack.seoKeywords) metaKeywords.setAttribute('content', pack.seoKeywords);
-        if (canonical) canonical.setAttribute('href', currentUrl);
-        if (ogUrl) ogUrl.setAttribute('content', currentUrl);
-        if (ogLocale && pack.seoOgLocale) ogLocale.setAttribute('content', pack.seoOgLocale);
-        if (ogTitle) ogTitle.setAttribute('content', title);
-        if (ogDescription) ogDescription.setAttribute('content', description);
-        document.documentElement.setAttribute('lang', effectiveLang === 'jp' ? 'ja' : effectiveLang === 'en' ? 'en' : 'ko');
+        if (window.SeoEngine && typeof window.SeoEngine.setContextHint === 'function') {
+            window.SeoEngine.setContextHint({
+                domain: 'defense-calc',
+                mode: 'list',
+                lang: currentLang
+            }, { rerun: true });
+            return;
+        }
+        if (window.SeoEngine && typeof window.SeoEngine.run === 'function') {
+            window.SeoEngine.run();
+        }
     }
 
-    // ?? ??
+    // 광고 체크
     setTimeout(() => {
         document.querySelectorAll(".adsbygoogle").forEach(el => {
             const status = el.getAttribute("data-ad-status");

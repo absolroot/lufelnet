@@ -101,19 +101,18 @@
     }
 
     function applyArticleSeoMeta(lang) {
-        const baseUrl = 'https://lufel.net';
-        const isPathLang = /^\/(kr|en|jp)(\/|$)/i.test(window.location.pathname);
-        const currentUrl = isPathLang ? `${baseUrl}/${lang}/article/` : `${baseUrl}/article/`;
-        const locale = lang === 'jp' ? 'ja_JP' : lang === 'en' ? 'en_US' : 'ko_KR';
-
-        const canonical = document.querySelector('link[rel="canonical"]');
-        const ogUrl = document.querySelector('meta[property="og:url"]');
-        const ogLocale = document.querySelector('meta[property="og:locale"]');
-
-        if (canonical) canonical.setAttribute('href', currentUrl);
-        if (ogUrl) ogUrl.setAttribute('content', currentUrl);
-        if (ogLocale) ogLocale.setAttribute('content', locale);
-        document.documentElement.setAttribute('lang', lang === 'jp' ? 'ja' : lang === 'en' ? 'en' : 'ko');
+        if (window.SeoEngine && typeof window.SeoEngine.setContextHint === 'function') {
+            window.SeoEngine.setContextHint({
+                domain: 'guides',
+                mode: 'list',
+                lang: lang,
+                entityKey: null
+            }, { rerun: true });
+            return;
+        }
+        if (window.SeoEngine && typeof window.SeoEngine.run === 'function') {
+            window.SeoEngine.run();
+        }
     }
 
     document.addEventListener('DOMContentLoaded', async () => {

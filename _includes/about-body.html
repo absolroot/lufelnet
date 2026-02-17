@@ -584,33 +584,19 @@
     }
 
     // 언어별 SEO 설정 함수
-    function updateSEOContent() {
-        const metaDescription = document.querySelector('meta[name="description"]');
-        const ogTitle = document.querySelector('meta[property="og:title"]');
-        const ogDescription = document.querySelector('meta[property="og:description"]');
-        const ogUrl = document.querySelector('meta[property="og:url"]');
-        const ogLocale = document.querySelector('meta[property="og:locale"]');
-        const canonical = document.querySelector('link[rel="canonical"]');
-        const fallbackTitle = document.title || 'About - 페르소나5 더 팬텀 X 루페르넷';
-        const fallbackDescription = (metaDescription && metaDescription.getAttribute('content')) || '';
-        const seoTitle = getI18nText('seoTitle', fallbackTitle);
-        const seoDescription = getI18nText('seoDescription', fallbackDescription);
+        function updateSEOContent() {
         const currentLang = detectAboutLang();
-        const baseUrl = 'https://lufel.net';
-        const isPathLang = /^\/(kr|en|jp)(\/|$)/i.test(window.location.pathname);
-        const currentUrl = isPathLang
-            ? `${baseUrl}/${currentLang}/about/`
-            : `${baseUrl}/about/`;
-        const locale = currentLang === 'jp' ? 'ja_JP' : currentLang === 'en' ? 'en_US' : 'ko_KR';
-
-        document.title = seoTitle;
-        if (metaDescription) metaDescription.setAttribute('content', seoDescription);
-        if (ogTitle) ogTitle.setAttribute('content', seoTitle);
-        if (ogDescription) ogDescription.setAttribute('content', seoDescription);
-        if (ogUrl) ogUrl.setAttribute('content', currentUrl);
-        if (ogLocale) ogLocale.setAttribute('content', locale);
-        if (canonical) canonical.setAttribute('href', currentUrl);
-        document.documentElement.setAttribute('lang', currentLang === 'jp' ? 'ja' : currentLang === 'en' ? 'en' : 'ko');
+        if (window.SeoEngine && typeof window.SeoEngine.setContextHint === 'function') {
+            window.SeoEngine.setContextHint({
+                domain: 'about',
+                mode: 'list',
+                lang: currentLang
+            }, { rerun: true });
+            return;
+        }
+        if (window.SeoEngine && typeof window.SeoEngine.run === 'function') {
+            window.SeoEngine.run();
+        }
     }
 
     document.addEventListener('DOMContentLoaded', async () => {

@@ -101,46 +101,38 @@
 
   // SEO metadata from i18n bundle
   function updateSEO() {
-    const pageTitle = t('pageTitle', '');
-    const seoTitle = t('seoTitle', pageTitle);
-    const seoDescription = t('seoDescription', '');
-    if (seoTitle) {
-      document.title = seoTitle;
+    if (window.SeoEngine && typeof window.SeoEngine.setContextHint === 'function') {
+      window.SeoEngine.setContextHint({
+        domain: 'wonder-weapon',
+        mode: 'list',
+        entityKey: null,
+        entityName: null
+      }, { rerun: true });
+      return;
     }
-    const metaDescription = document.querySelector('meta[name="description"]');
-    const ogTitle = document.querySelector('meta[property="og:title"]');
-    const ogDescription = document.querySelector('meta[property="og:description"]');
-    if (metaDescription) metaDescription.setAttribute('content', seoDescription);
-    if (ogTitle) ogTitle.setAttribute('content', seoTitle);
-    if (ogDescription) ogDescription.setAttribute('content', seoDescription);
+    if (window.SeoEngine && typeof window.SeoEngine.run === 'function') {
+      window.SeoEngine.run();
+    }
   }
 
-  function buildWeaponSeoTitle(krName) {
+  function updateSelectedWeaponSeoTitle(krName) {
     const lang = (typeof LanguageRouter !== 'undefined' && LanguageRouter)
       ? LanguageRouter.getCurrentLanguage()
       : getPathLanguageHint();
     const displayName = getLocalizedName(krName, lang) || krName;
-    const pageTitle = t('pageTitle', '');
-    const baseSeoTitle = t('seoTitle', pageTitle || document.title || '');
+    const slugEntry = getWeaponSlugEntry(krName);
+    const entityKey = slugEntry.slug || krName;
 
-    if (!displayName) return baseSeoTitle || '';
-    if (baseSeoTitle && baseSeoTitle.includes(displayName)) return baseSeoTitle;
-
-    if (pageTitle && baseSeoTitle && baseSeoTitle.includes(pageTitle)) {
-      return baseSeoTitle.replace(pageTitle, `${pageTitle} ${displayName}`);
+    if (window.SeoEngine && typeof window.SeoEngine.setContextHint === 'function') {
+      window.SeoEngine.setContextHint({
+        domain: 'wonder-weapon',
+        mode: 'detail',
+        entityKey: entityKey,
+        entityName: displayName
+      }, { rerun: true });
+    } else if (window.SeoEngine && typeof window.SeoEngine.run === 'function') {
+      window.SeoEngine.run();
     }
-    if (baseSeoTitle) {
-      return `${baseSeoTitle} ${displayName}`.trim();
-    }
-    return `${pageTitle} ${displayName}`.trim();
-  }
-
-  function updateSelectedWeaponSeoTitle(krName) {
-    const nextTitle = buildWeaponSeoTitle(krName);
-    if (!nextTitle) return;
-    document.title = nextTitle;
-    const ogTitle = document.querySelector('meta[property="og:title"]');
-    if (ogTitle) ogTitle.setAttribute('content', nextTitle);
   }
 
   // Update static labels per language - now uses i18n system

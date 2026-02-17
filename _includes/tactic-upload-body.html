@@ -663,14 +663,17 @@ class TacticUploader {
     }
 
     updateLanguageTextsAndSEO() {
-        document.title = getI18nText('seo_title', document.title || '택틱 업로드 - 페르소나5 더 팬텀 X 루페르넷');
-        const metaDesc = document.querySelector('meta[name="description"]');
-        const ogTitle = document.querySelector('meta[property="og:title"]');
-        const ogDesc = document.querySelector('meta[property="og:description"]');
-        const seoDesc = getI18nText('seo_desc', (metaDesc && metaDesc.getAttribute('content')) || '');
-        if (metaDesc) metaDesc.setAttribute('content', seoDesc);
-        if (ogTitle) ogTitle.setAttribute('content', document.title);
-        if (ogDesc) ogDesc.setAttribute('content', seoDesc);
+        if (window.SeoEngine && typeof window.SeoEngine.setContextHint === 'function') {
+            window.SeoEngine.setContextHint({
+                domain: 'tactic-upload',
+                mode: 'list',
+                lang: this.currentLang
+            }, { rerun: true });
+            return;
+        }
+        if (window.SeoEngine && typeof window.SeoEngine.run === 'function') {
+            window.SeoEngine.run();
+        }
     }
 
     initRegionDropdown() {

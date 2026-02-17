@@ -30,8 +30,6 @@ window.I18N_PAGE_REVELATION_JP = {
     reset_filter: "フィルター初期化",
 
     // SEO
-    seo_title: "啓示 - ペルソナ5 ザ・ファントム X LufelNet",
-    seo_description: "ペルソナ5 ザ・ファントム Xの啓示情報。セット効果と追加効果をご確認ください。",
 
     // Revelation Stats
     stats_title: '啓示ステータス',

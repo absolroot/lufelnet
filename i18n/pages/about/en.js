@@ -42,6 +42,4 @@ Your donation will be a great driving force for improving the site.<br>
 LufelNet is made possible entirely by your support. Thank you sincerely.`,
 
     // SEO
-    seoTitle: 'About - Persona 5: The Phantom X LufelNet',
-    seoDescription: 'Lufelnet is an unofficial information site for Persona 5: The Phantom X players. Check site introduction and contact information.'
 };

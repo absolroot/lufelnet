@@ -28,6 +28,4 @@ window.I18N_PAGE_TACTICS_KR = {
     relative_days: '{value}일 전',
     date_locale: 'ko-KR',
     error_already_liked_24h: '24시간 내 이미 좋아요 했습니다.',
-    seo_title: '택틱 도서관 - 페르소나5 더 팬텀 X 루페르넷',
-    seo_desc: '페르소나5 더 팬텀 X 택틱들을 확인하세요.'
 };

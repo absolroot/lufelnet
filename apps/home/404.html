@@ -8,11 +8,27 @@ layout: null
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="description" content="요청하신 주소가 변경되었거나 삭제되었을 수 있습니다.">
+    <meta name="robots" content="noindex,nofollow">
     <meta name="color-scheme" content="dark">
     <title>404 - 페이지를 찾을 수 없습니다 | P5X 루페르넷</title>
     <script>
         window.SITE_BASEURL = '{{ site.baseurl }}';
+        window.BASE_URL = '{{ site.baseurl }}';
+        (function () {
+            var pathMatch = String(window.location.pathname || '').match(/^\/(kr|en|jp|cn)(\/|$)/i);
+            var lang = pathMatch ? String(pathMatch[1] || '').toLowerCase() : 'kr';
+            window.__SEO_PATH_LANG__ = lang;
+            window.__SEO_CONTEXT_HINT__ = {
+                domain: 'not-found',
+                mode: 'list',
+                lang: lang
+            };
+        })();
     </script>
+    <script src="{{ site.baseurl }}/assets/js/seo/context-resolver.js?v={{ site.time | date: '%s' }}"></script>
+    <script src="{{ site.baseurl }}/assets/js/seo/url-normalizer.js?v={{ site.time | date: '%s' }}"></script>
+    <script src="{{ site.baseurl }}/assets/js/seo/engine.js?v={{ site.time | date: '%s' }}"></script>
     <script src="{{ site.baseurl }}/i18n/service/i18n-service.js"></script>
     <script src="{{ site.baseurl }}/i18n/service/i18n-adapter.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -185,7 +201,6 @@ layout: null
     <script>
         (function () {
             var FALLBACK_TEXT = {
-                notfound_seo_title: '404 - 페이지를 찾을 수 없습니다 | P5X 루페르넷',
                 notfound_title: '페이지를 찾을 수 없습니다',
                 notfound_description: '요청하신 주소가 변경되었거나 삭제되었을 수 있습니다.',
                 notfound_path_label: '요청 경로',
@@ -226,11 +241,17 @@ layout: null
                 var backButton = document.getElementById('go-back');
                 var pathElement = document.getElementById('missing-path');
 
-                document.title = tr('notfound_seo_title', FALLBACK_TEXT.notfound_seo_title);
                 if (title) title.textContent = tr('notfound_title', FALLBACK_TEXT.notfound_title);
                 if (description) description.textContent = tr('notfound_description', FALLBACK_TEXT.notfound_description);
                 if (homeLink) homeLink.textContent = tr('notfound_home', FALLBACK_TEXT.notfound_home);
                 if (backButton) backButton.textContent = tr('notfound_back', FALLBACK_TEXT.notfound_back);
+                if (window.SeoEngine && typeof window.SeoEngine.setContextHint === 'function') {
+                    window.SeoEngine.setContextHint({
+                        domain: 'not-found',
+                        mode: 'list',
+                        lang: langCode
+                    }, { rerun: true });
+                }
 
                 if (pathElement) {
                     var currentPath = window.location.pathname || '/';

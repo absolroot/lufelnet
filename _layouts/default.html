@@ -38,7 +38,7 @@
   {% endfor %}
   {% endif %}
 
-  <link rel="canonical" href="{{ site.url }}{{ current_url }}{{ canonical_params }}" />
+  <link rel="canonical" id="canonical-link" href="{{ site.url }}{{ current_url }}{{ canonical_params }}" />
 
 
 
@@ -137,6 +137,53 @@
     var __SEO_PATH_LANG__ = '{{ _seg1 }}';
     {% endif %}
 
+    // SEO context hint for SeoEngine
+    window.__SEO_CONTEXT_HINT__ = window.__SEO_CONTEXT_HINT__ || {};
+    {% if page.character_slug %}
+    window.__SEO_CONTEXT_HINT__.domain = 'character';
+    window.__SEO_CONTEXT_HINT__.mode = 'detail';
+    window.__SEO_CONTEXT_HINT__.entityKey = '{{ page.character_slug }}';
+    {% if page.character_kr_name %}window.__SEO_CONTEXT_HINT__.entityName = {{ page.character_kr_name | jsonify }};{% endif %}
+    {% elsif page.persona_slug %}
+    window.__SEO_CONTEXT_HINT__.domain = 'persona';
+    window.__SEO_CONTEXT_HINT__.mode = 'detail';
+    window.__SEO_CONTEXT_HINT__.entityKey = '{{ page.persona_slug }}';
+    {% if page.persona_kr_name %}window.__SEO_CONTEXT_HINT__.entityName = {{ page.persona_kr_name | jsonify }};{% endif %}
+    {% elsif page.synergy_character %}
+    window.__SEO_CONTEXT_HINT__.domain = 'synergy';
+    window.__SEO_CONTEXT_HINT__.mode = 'detail';
+    window.__SEO_CONTEXT_HINT__.entityKey = '{{ page.synergy_character }}';
+    {% elsif page.wonder_weapon_slug %}
+    window.__SEO_CONTEXT_HINT__.domain = 'wonder-weapon';
+    window.__SEO_CONTEXT_HINT__.mode = 'detail';
+    window.__SEO_CONTEXT_HINT__.entityKey = '{{ page.wonder_weapon_slug }}';
+    {% if page.wonder_weapon_key %}window.__SEO_CONTEXT_HINT__.entityName = {{ page.wonder_weapon_key | jsonify }};{% endif %}
+    {% elsif page.guide_id %}
+    window.__SEO_CONTEXT_HINT__.domain = 'guides';
+    window.__SEO_CONTEXT_HINT__.mode = 'detail';
+    window.__SEO_CONTEXT_HINT__.entityKey = '{{ page.guide_id }}';
+    {% elsif page.pull_tracker_page %}
+    window.__SEO_CONTEXT_HINT__.domain = 'pull-tracker';
+    window.__SEO_CONTEXT_HINT__.mode = '{{ page.pull_tracker_page }}';
+    {% elsif page.tactic_page %}
+    {% if page.tactic_page == 'upload' %}
+    window.__SEO_CONTEXT_HINT__.domain = 'tactic-upload';
+    window.__SEO_CONTEXT_HINT__.mode = 'list';
+    {% elsif page.tactic_page == 'share' %}
+    window.__SEO_CONTEXT_HINT__.domain = 'tactic-share';
+    window.__SEO_CONTEXT_HINT__.mode = 'list';
+    {% elsif page.tactic_page == 'tactics' %}
+    window.__SEO_CONTEXT_HINT__.domain = 'tactics';
+    window.__SEO_CONTEXT_HINT__.mode = 'list';
+    {% else %}
+    window.__SEO_CONTEXT_HINT__.domain = 'tactic';
+    window.__SEO_CONTEXT_HINT__.mode = '{{ page.tactic_page }}';
+    {% endif %}
+    {% elsif page.tier_mode %}
+    window.__SEO_CONTEXT_HINT__.domain = 'tier';
+    window.__SEO_CONTEXT_HINT__.mode = '{{ page.tier_mode }}';
+    {% endif %}
+
     // 기본 CSS 및 JS 파일 로드
     document.write('<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/default/common.css?v=' + APP_VERSION + '">');
     document.write('<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/default/nav.css?v=' + APP_VERSION + '">');
@@ -146,6 +193,9 @@
     document.write('<script src="{{ site.baseurl }}/i18n/service/i18n-compat.js?v=' + APP_VERSION + '"><\/script>');
     document.write('<script src="{{ site.baseurl }}/assets/js/nav.js?v=' + APP_VERSION + '"><\/script>');
     document.write('<script src="{{ site.baseurl }}/assets/js/top_button.js?v=' + APP_VERSION + '"><\/script>');
+    document.write('<script src="{{ site.baseurl }}/assets/js/seo/context-resolver.js?v=' + APP_VERSION + '"><\/script>');
+    document.write('<script src="{{ site.baseurl }}/assets/js/seo/url-normalizer.js?v=' + APP_VERSION + '"><\/script>');
+    document.write('<script src="{{ site.baseurl }}/assets/js/seo/engine.js?v=' + APP_VERSION + '"><\/script>');
 
     // 페이지별 CSS 파일 로드
     {% if page.custom_css %}

@@ -659,37 +659,16 @@
 
       // 언어별 SEO 설정 함수
       function updateSEOContent() {
-          const fallbackTitle = document.title || '택틱 메이커 - 페르소나5 더 팬텀 X 루페르넷';
-          let metaDescription = document.querySelector('meta[name="description"]');
-          const fallbackDescription = (metaDescription && metaDescription.getAttribute('content')) || '';
-          const seoTitle = getI18nValue('seoTitle', fallbackTitle);
-          const seoDescription = getI18nValue('seoDescription', fallbackDescription);
-
-          document.title = seoTitle;
-
-          metaDescription = document.querySelector('meta[name="description"]');
-          if (!metaDescription) {
-              metaDescription = document.createElement('meta');
-              metaDescription.name = 'description';
-              document.head.appendChild(metaDescription);
+          if (window.SeoEngine && typeof window.SeoEngine.setContextHint === 'function') {
+              window.SeoEngine.setContextHint({
+                  domain: 'tactic',
+                  mode: 'maker'
+              }, { rerun: true });
+              return;
           }
-          metaDescription.setAttribute('content', seoDescription);
-          
-          let ogTitle = document.querySelector('meta[property="og:title"]');
-          if (!ogTitle) {
-              ogTitle = document.createElement('meta');
-              ogTitle.setAttribute('property', 'og:title');
-              document.head.appendChild(ogTitle);
+          if (window.SeoEngine && typeof window.SeoEngine.run === 'function') {
+              window.SeoEngine.run();
           }
-          ogTitle.setAttribute('content', seoTitle);
-          
-          let ogDescription = document.querySelector('meta[property="og:description"]');
-          if (!ogDescription) {
-              ogDescription = document.createElement('meta');
-              ogDescription.setAttribute('property', 'og:description');
-              document.head.appendChild(ogDescription);
-          }
-          ogDescription.setAttribute('content', seoDescription);
       }
 
 
@@ -1289,7 +1268,6 @@
             // Update viewport meta tag
             const meta = document.querySelector('meta[name="viewport"]');
             if (meta) {
-                meta.setAttribute('content', 
                     'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover'
                 );
             }

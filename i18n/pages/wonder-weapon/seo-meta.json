@@ -1,14 +1,20 @@
 {
   "kr": {
     "title": "원더 무기 {name} - 페르소나5 더 팬텀 X 루페르넷",
-    "description": "페르소나5 더 팬텀 X의 원더 무기 {name} 정보. 획득처, 효과, 사용 캐릭터를 확인하세요."
+    "description": "페르소나5 더 팬텀 X의 원더 무기 {name} 정보. 획득처, 효과, 사용 캐릭터를 확인하세요.",
+    "list_title": "원더 무기 - 페르소나5 더 팬텀 X 루페르넷",
+    "list_description": "페르소나5 더 팬텀 X의 원더 무기 정보. 획득처, 효과, 사용 캐릭터를 확인하세요."
   },
   "en": {
     "title": "Wonder Daggers {name} - Persona 5: The Phantom X LufelNet",
-    "description": "Wonder weapon information for {name} in Persona 5: The Phantom X. See source, effect, and characters."
+    "description": "Wonder weapon information for {name} in Persona 5: The Phantom X. See source, effect, and characters.",
+    "list_title": "Wonder Daggers - Persona 5: The Phantom X LufelNet",
+    "list_description": "Wonder weapon information for Persona 5: The Phantom X. See source, effect, and characters."
   },
   "jp": {
     "title": "ワンダー武器 {name} - ペルソナ5 ザ・ファントム X LufelNet",
-    "description": "P5Xのワンダー武器「{name}」情報。入手方法・効果・使用キャラを確認。"
+    "description": "P5Xのワンダー武器「{name}」情報。入手方法・効果・使用キャラを確認。",
+    "list_title": "ワンダー武器 - ペルソナ5 ザ・ファントム X LufelNet",
+    "list_description": "P5Xのワンダー武器情報。入手方法・効果・使用キャラを確認。"
   }
 }

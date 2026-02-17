@@ -13,8 +13,6 @@ window.I18N_PAGE_PERSONA_JP = {
     tooltipSkillLevel: "J&C所有時LV7、J&C意識6の場合LV8",
 
     // SEO
-    seoTitle: "ペルソナ 攻略 - ペルソナ5 ザ・ファントム X",
-    seoDescription: "ペルソナ ティア、スキル、固有スキル、推奨スキル情報をご確認ください。| ペルソナ5 ザ・ファントム X",
     seoPersonaPrefix: "ペルソナ ",
     seoSiteSuffix: "P5X Lufelnet",
     seoPersonaDefaultDescription: "{name} 情報とスキル",

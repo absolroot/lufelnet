@@ -568,18 +568,17 @@
     async function updateSEOContent() {
         await waitHomeI18nReady();
         const currentLang = detectHomeRawLang();
-        const seoTitle = homeT('seo_title', '페르소나5 더 팬텀 X - 루페르넷', currentLang);
-        const seoDescription = homeT('seo_description', '페르소나5 더 팬텀 X의 모든 정보를 한 곳에서 확인하세요. 캐릭터, 페르소나, 스킬, 공략 가이드를 제공합니다.', currentLang);
-
-        document.title = seoTitle;
-
-        const metaDescription = document.querySelector('meta[name="description"]');
-        const ogTitle = document.querySelector('meta[property="og:title"]');
-        const ogDescription = document.querySelector('meta[property="og:description"]');
-
-        if (metaDescription) metaDescription.setAttribute('content', seoDescription);
-        if (ogTitle) ogTitle.setAttribute('content', seoTitle);
-        if (ogDescription) ogDescription.setAttribute('content', seoDescription);
+        if (window.SeoEngine && typeof window.SeoEngine.setContextHint === 'function') {
+            window.SeoEngine.setContextHint({
+                domain: 'home',
+                mode: 'list',
+                lang: currentLang
+            }, { rerun: true });
+            return;
+        }
+        if (window.SeoEngine && typeof window.SeoEngine.run === 'function') {
+            window.SeoEngine.run();
+        }
     }
 
     // 첫 방문자 언어 감지 함수

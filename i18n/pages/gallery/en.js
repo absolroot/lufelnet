@@ -25,8 +25,6 @@ window.I18N_PAGE_GALLERY_EN = {
     loadError: 'Failed to load gallery data.',
 
     // SEO
-    seoTitle: 'Gallery - Persona 5: The Phantom X LufelNet',
-    seoDescription: 'P5X Gallery. Click a thumbnail to view original image in a modal.',
 
     // Gallery Tags (special non-character tags)
     tags: {

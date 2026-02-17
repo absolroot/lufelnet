@@ -30,8 +30,6 @@ window.I18N_PAGE_REVELATION_EN = {
     reset_filter: "Reset Filters",
 
     // SEO
-    seo_title: "Revelations Card Guide - Persona 5: The Phantom X LufelNet",
-    seo_description: "Revelation information for Persona 5: The Phantom X. Check set effects and additional effects.",
 
     // Revelation Stats
     stats_title: 'Revelation Stats',

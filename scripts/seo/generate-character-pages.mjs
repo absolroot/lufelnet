@@ -28,11 +28,6 @@ const ROOT_REDIRECT_LANGS = ['cn'];
 
 const characterInfoPath = path.join(ROOT, 'data', 'character_info.js');
 const seoMetaPath = path.join(ROOT, 'i18n', 'pages', 'character', 'seo-meta.json');
-const listI18nPaths = {
-  kr: path.join(ROOT, 'i18n', 'pages', 'character', 'kr.js'),
-  en: path.join(ROOT, 'i18n', 'pages', 'character', 'en.js'),
-  jp: path.join(ROOT, 'i18n', 'pages', 'character', 'jp.js')
-};
 const slugMapPath = path.join(ROOT, '_data', 'character_slugs.json');
 
 function normalizeNewline(text) {
@@ -85,38 +80,13 @@ function ensureSeoMetaShape(meta) {
     if (typeof langMeta.description !== 'string' || !langMeta.description.includes('{name}')) {
       throw new Error(`i18n/pages/character/seo-meta.json missing valid description template for ${lang}.`);
     }
+    if (typeof langMeta.list_title !== 'string' || !langMeta.list_title.trim()) {
+      throw new Error(`i18n/pages/character/seo-meta.json missing valid list_title for ${lang}.`);
+    }
+    if (typeof langMeta.list_description !== 'string' || !langMeta.list_description.trim()) {
+      throw new Error(`i18n/pages/character/seo-meta.json missing valid list_description for ${lang}.`);
+    }
   }
-}
-
-function loadCharacterListSeoMetaFromI18n() {
-  const out = {};
-
-  for (const lang of LIST_PAGE_LANGS) {
-    const i18nPath = listI18nPaths[lang];
-    if (!fs.existsSync(i18nPath)) {
-      throw new Error(`Missing character i18n file for ${lang}: ${toPosix(path.relative(ROOT, i18nPath))}`);
-    }
-
-    const code = fs.readFileSync(i18nPath, 'utf8');
-    const sandbox = { window: {} };
-    vm.runInNewContext(code, sandbox, { timeout: 5000 });
-
-    const key = `I18N_PAGE_CHARACTER_${lang.toUpperCase()}`;
-    const dict = sandbox.window[key];
-    if (!dict || typeof dict !== 'object') {
-      throw new Error(`Missing i18n dictionary ${key} in ${toPosix(path.relative(ROOT, i18nPath))}`);
-    }
-
-    const title = normalizeName(dict.seoTitle);
-    const description = normalizeName(dict.seoDescription);
-    if (!title || !description) {
-      throw new Error(`Invalid seoTitle/seoDescription in ${toPosix(path.relative(ROOT, i18nPath))}`);
-    }
-
-    out[lang] = { title, description };
-  }
-
-  return out;
 }
 
 function ensureSlugValue(rawSlug, contextLabel) {
@@ -348,7 +318,7 @@ function renderRootRedirectPage(lang, permalinkPath = `/${lang}/character/`) {
   ].join('\n');
 }
 
-function buildExpectedFiles(allCharacters, characterData, seoMeta, listSeoMeta, slugMap) {
+function buildExpectedFiles(allCharacters, characterData, seoMeta, slugMap) {
   const expected = new Map();
   const slugOwner = new Map();
   const redirectOwner = new Map();
@@ -377,16 +347,16 @@ function buildExpectedFiles(allCharacters, characterData, seoMeta, listSeoMeta, 
   };
 
   for (const lang of LIST_PAGE_LANGS) {
-    const listMeta = listSeoMeta[lang];
-    if (!listMeta || typeof listMeta !== 'object') {
-      throw new Error(`Missing character list SEO meta for language: ${lang}`);
+    const langMeta = seoMeta[lang];
+    if (!langMeta || typeof langMeta !== 'object') {
+      throw new Error(`Missing character seo-meta language: ${lang}`);
     }
     const fileRel = toPosix(path.relative(ROOT, path.join(OUTPUT_DIR, lang, 'index.html')));
     const content = normalizeNewline(
       renderCharacterListPage({
         lang,
-        title: listMeta.title,
-        description: listMeta.description
+        title: langMeta.list_title,
+        description: langMeta.list_description
       })
     );
     expected.set(fileRel, content);
@@ -553,9 +523,7 @@ function main() {
   const slugMap = loadSlugMap(allCharacters);
   const seoMeta = readJson(seoMetaPath);
   ensureSeoMetaShape(seoMeta);
-  const listSeoMeta = loadCharacterListSeoMetaFromI18n();
-
-  const expectedFiles = buildExpectedFiles(allCharacters, characterData, seoMeta, listSeoMeta, slugMap);
+  const expectedFiles = buildExpectedFiles(allCharacters, characterData, seoMeta, slugMap);
 
   if (mode.check) {
     runCheck(expectedFiles);

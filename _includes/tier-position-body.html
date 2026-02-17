@@ -804,24 +804,16 @@ window.__TIER_PAGE_MODE__ = {{ page.tier_mode | default: '' | jsonify }};
     }
 
     // 언어별 SEO 설정 함수
-    function updateSEOContent() {
+        function updateSEOContent() {
         const shouldLoadList = isTierListMode();
-        const metaDescription = document.querySelector('meta[name="description"]');
-        const titleKey = shouldLoadList ? 'tierListSeoTitle' : 'tierMakerSeoTitle';
-        const descriptionKey = shouldLoadList ? 'tierListSeoDescription' : 'tierMakerSeoDescription';
-        const seoTitle = getTierText(titleKey, document.title || '');
-        const seoDescription = getTierText(descriptionKey, (metaDescription && metaDescription.getAttribute('content')) || '');
-
-        // 타이틀 업데이트
-        document.title = seoTitle;
-
-        // 메타 태그 업데이트
-        const ogTitle = document.querySelector('meta[property="og:title"]');
-        const ogDescription = document.querySelector('meta[property="og:description"]');
-
-        if (metaDescription) metaDescription.setAttribute('content', seoDescription);
-        if (ogTitle) ogTitle.setAttribute('content', seoTitle);
-        if (ogDescription) ogDescription.setAttribute('content', seoDescription);
+        if (window.SeoEngine && typeof window.SeoEngine.setContextHint === 'function') {
+            window.SeoEngine.setContextHint({
+                domain: 'tier',
+                mode: shouldLoadList ? 'list' : 'maker'
+            }, { rerun: true });
+        } else if (window.SeoEngine && typeof window.SeoEngine.run === 'function') {
+            window.SeoEngine.run();
+        }
     }
 
     // 중복 실행 방지를 위한 플래그

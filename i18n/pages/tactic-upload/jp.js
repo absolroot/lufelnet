@@ -37,8 +37,6 @@ window.I18N_PAGE_TACTIC_UPLOAD_JP = {
     nav_home: 'ホーム',
     nav_current: 'タクティック / アップロード',
     page_title: 'タクティックをアップロード',
-    seo_title: 'タクティックをアップロード - ペルソナ5 ザ・ファントム X LufelNet',
-    seo_desc: 'ペルソナ5 ザ・ファントム X のタクティックをアップロードしてください。',
     from_maker_loaded: 'タクティクスメーカーからデータをロードしました',
     error_logout_failed: 'ログアウトに失敗しました。',
     error_post_not_found: '投稿が見つかりません。',

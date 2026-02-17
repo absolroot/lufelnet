@@ -1,6 +1,4 @@
 window.I18N_PAGE_DEFENSE_CALC_KR = {
-    "seoTitle": "방어력 감소 계산기 - 페르소나5 더 팬텀 X 루페르넷",
-    "seoDescription": "페르소나5 더 팬텀 X 방어력 감소 계산기",
     "seoKeywords": "P5X, 페르소나5X, 방어력 감소 계산기, 방어 계산",
     "seoOgLocale": "ko_KR",
     "defenseI18n": {

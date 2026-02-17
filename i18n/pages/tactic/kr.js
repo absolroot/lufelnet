@@ -52,6 +52,4 @@ window.I18N_PAGE_TACTIC_KR = {
     toggleUiHide: '🕶️ 편집 UI 숨김',
     toggleUiShow: '🔍 편집 UI 표시',
     toggleUiTitle: '편집 UI 토글',
-    seoTitle: '택틱 메이커 - 페르소나5 더 팬텀 X 루페르넷',
-    seoDescription: '페르소나5 더 팬텀 X 택틱 메이커'
 };

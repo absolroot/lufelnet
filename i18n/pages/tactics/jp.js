@@ -28,6 +28,4 @@ window.I18N_PAGE_TACTICS_JP = {
     relative_days: '{value}日前',
     date_locale: 'ja-JP',
     error_already_liked_24h: '24時間以内にすでに「いいね」しました。',
-    seo_title: 'タクティック一覧 - ペルソナ5 ザ・ファントム X LufelNet',
-    seo_desc: 'ペルソナ5 ザ・ファントム X のタクティックを確認できます。'
 };

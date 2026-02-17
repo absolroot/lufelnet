@@ -1083,10 +1083,16 @@
         const newPath = `${langPrefix}/synergy/${charCodeName}/`;
         window.history.pushState({ character: characterName }, '', newPath);
 
-        // 타이틀 업데이트
-        const titlePrefix = getI18nText('pageTitleGuidePrefix');
-        const titleSuffix = getI18nText('pageTitleSiteSuffix');
-        document.title = `${titlePrefix} ${displayCharName} | ${titleSuffix}`;
+        if (window.SeoEngine && typeof window.SeoEngine.setContextHint === 'function') {
+            window.SeoEngine.setContextHint({
+                domain: 'synergy',
+                mode: 'detail',
+                entityKey: charCodeName,
+                entityName: displayCharName
+            }, { rerun: true });
+        } else if (window.SeoEngine && typeof window.SeoEngine.run === 'function') {
+            window.SeoEngine.run();
+        }
     }
 
     // 상세 정보 렌더링

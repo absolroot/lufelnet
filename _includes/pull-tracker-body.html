@@ -184,63 +184,15 @@
                 return (fallback !== undefined) ? fallback : key;
             };
 
-            const setMeta = (selector, attrName, attrValue, content) => {
-                let el = document.querySelector(selector);
-                if (!el) {
-                    el = document.createElement('meta');
-                    el.setAttribute(attrName, attrValue);
-                    document.head.appendChild(el);
-                }
-                el.setAttribute('content', content);
-            };
-
-            const detectPageLang = () => {
-                const pathMatch = window.location.pathname.match(/^\/(kr|en|jp)(\/|$)/i);
-                if (pathMatch) return pathMatch[1].toLowerCase();
-
-                const params = new URLSearchParams(window.location.search || '');
-                const queryLang = String(params.get('lang') || '').toLowerCase();
-                if (['kr', 'en', 'jp'].indexOf(queryLang) !== -1) return queryLang;
-
-                if (typeof getCurrentLang === 'function') {
-                    const helperLang = String(getCurrentLang() || '').toLowerCase();
-                    if (['kr', 'en', 'jp'].indexOf(helperLang) !== -1) return helperLang;
-                }
-
-                if (typeof LanguageRouter !== 'undefined' && typeof LanguageRouter.getCurrentLanguage === 'function') {
-                    const routerLang = String(LanguageRouter.getCurrentLanguage() || '').toLowerCase();
-                    if (['kr', 'en', 'jp'].indexOf(routerLang) !== -1) return routerLang;
-                }
-
-                return 'kr';
-            };
-
             try {
-                const seoTitle = tr('seo.individual.title', document.title);
-                const descMeta = document.querySelector('meta[name="description"]');
-                const currentDesc = descMeta ? (descMeta.getAttribute('content') || '') : '';
-                const seoDesc = tr('seo.individual.description', currentDesc);
-                const pageLang = detectPageLang();
-                const isPathLang = /^\/(kr|en|jp)(\/|$)/i.test(window.location.pathname);
-                const baseUrl = 'https://lufel.net';
-                const currentUrl = isPathLang ? `${baseUrl}/${pageLang}/pull-tracker/` : `${baseUrl}/pull-tracker/`;
-                const seoLocale = tr('seo.individual.ogLocale', pageLang === 'jp' ? 'ja_JP' : pageLang === 'en' ? 'en_US' : 'ko_KR');
-
-                document.title = seoTitle;
-                setMeta('meta[name="description"]', 'name', 'description', seoDesc);
-                setMeta('meta[property="og:title"]', 'property', 'og:title', seoTitle);
-                setMeta('meta[property="og:description"]', 'property', 'og:description', seoDesc);
-                setMeta('meta[property="og:locale"]', 'property', 'og:locale', seoLocale);
-                setMeta('meta[property="og:url"]', 'property', 'og:url', currentUrl);
-
-                let canonical = document.querySelector('link[rel="canonical"]');
-                if (!canonical) {
-                    canonical = document.createElement('link');
-                    canonical.setAttribute('rel', 'canonical');
-                    document.head.appendChild(canonical);
+                if (window.SeoEngine && typeof window.SeoEngine.setContextHint === 'function') {
+                    window.SeoEngine.setContextHint({
+                        domain: 'pull-tracker',
+                        mode: 'individual'
+                    }, { rerun: true });
+                } else if (window.SeoEngine && typeof window.SeoEngine.run === 'function') {
+                    window.SeoEngine.run();
                 }
-                canonical.setAttribute('href', currentUrl);
-                document.documentElement.setAttribute('lang', pageLang === 'jp' ? 'ja' : pageLang === 'en' ? 'en' : 'ko');
             } catch (_) { }
 
             try {

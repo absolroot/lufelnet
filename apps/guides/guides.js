@@ -264,10 +264,7 @@ const Guides = {
         if (!container) return;
 
         const lang = this.currentLang;
-        this.updateMeta(
-            this.getI18nText('seoListTitle', 'Guides - Persona 5: The Phantom X Lufelnet'),
-            this.getI18nText('seoListDescription', 'Persona 5: The Phantom X Strategy Guides')
-        );
+        this.updateMeta('', '');
         this.updateLanguageTexts();
 
         const searchPlaceholder = this.getI18nText('searchPlaceholder', 'Search...');
@@ -554,14 +551,8 @@ const Guides = {
             }
         }
 
-        const excerpt = guide.excerpts?.[lang] || guide.excerpts?.kr || '';
         const fullThumb = thumbnail && thumbnail.startsWith('/') ? window.location.origin + thumbnail : thumbnail;
-        const siteName = this.getI18nText('siteName', 'Lufelnet');
-        this.updateMeta(
-            `${title} - ${siteName}`,
-            excerpt || title,
-            fullThumb || null
-        );
+        this.updateMeta('', '', fullThumb || null);
 
         const backToList = this.getI18nText('backToList', 'Back to list');
         const listUrl = `/${this.normalizeLang(lang)}/article/`;
@@ -607,27 +598,25 @@ const Guides = {
      * Update SEO meta tags dynamically
      */
     updateMeta(title, description, image) {
-        document.title = title;
-
-        const setMeta = (selector, content) => {
-            const element = document.querySelector(selector);
-            if (element) {
-                element.setAttribute('content', content);
-            }
+        const guideId = this.getGuideIdFromUrl();
+        const mode = guideId ? 'detail' : 'list';
+        const hint = {
+            domain: 'guides',
+            mode: mode,
+            entityKey: guideId || null
         };
 
-        if (description) {
-            setMeta('meta[name="description"]', description);
-            setMeta('meta[property="og:description"]', description);
-            setMeta('meta[name="twitter:description"]', description);
+        if (window.SeoEngine && typeof window.SeoEngine.setContextHint === 'function') {
+            window.SeoEngine.setContextHint(hint, { rerun: true }).then(() => {
+                if (image && window.SeoEngine && typeof window.SeoEngine.run === 'function') {
+                    window.SeoEngine.run({ override: { image: image } });
+                }
+            });
+            return;
         }
 
-        setMeta('meta[property="og:title"]', title);
-        setMeta('meta[name="twitter:title"]', title);
-
-        if (image) {
-            setMeta('meta[property="og:image"]', image);
-            setMeta('meta[name="twitter:image"]', image);
+        if (window.SeoEngine && typeof window.SeoEngine.run === 'function') {
+            window.SeoEngine.run({ hint: hint, override: image ? { image: image } : null });
         }
     },
 

@@ -53,8 +53,6 @@ window.I18N_PAGE_CHARACTER_JP = {
     characterDetailLinkLabel: '詳細 →',
     characterDetailNoticeTitle: '注意',
     characterDetailNoticeMessage: '推奨設定は将来のコンテンツを基準に提示されます。現在は存在しないコンテンツが含まれる可能性があります（啓示、イメジャリーなど）',
-    seoTitle: '怪盗育成ガイド - ペルソナ5: The Phantom X LufelNet',
-    seoDescription: 'ペルソナ5: The Phantom Xの怪盗育成ガイド。推奨セット、スキル、意識、専用武器情報を確認できます。',
     helpRevelationContent: 'おすすめ啓示の一覧です。編成や敵に応じて最適が変わるため、各啓示の効果を確認して選択してください。',
     helpMainOptionContent: '啓示の位置ごとのおすすめオプションです。意識(Awareness)、武器、編成によって優先度が変わる場合があります。',
     helpSubOptionContent: 'キャラごとに優先される啓示のサブオプションです。サブオプション範囲は {link} を参照してください。意識、武器、編成によって優先度が変わる場合があります。',

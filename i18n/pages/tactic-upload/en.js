@@ -37,8 +37,6 @@ window.I18N_PAGE_TACTIC_UPLOAD_EN = {
     nav_home: 'Home',
     nav_current: 'Tactic / Upload',
     page_title: 'Upload Tactic',
-    seo_title: 'Upload Tactic - Persona 5: The Phantom X LufelNet',
-    seo_desc: 'Upload your tactics for Persona 5: The Phantom X.',
     from_maker_loaded: 'Data loaded from Tactic Maker',
     error_logout_failed: 'Failed to log out.',
     error_post_not_found: 'Post not found.',

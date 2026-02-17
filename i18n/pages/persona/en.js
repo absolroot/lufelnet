@@ -13,8 +13,6 @@ window.I18N_PAGE_PERSONA_EN = {
     tooltipSkillLevel: "LV7 with J&C, LV8 with J&C Awareness 6",
 
     // SEO
-    seoTitle: "Personas Build & Guide - Persona 5: The Phantom X",
-    seoDescription: "Persona Tiers, Skills, and Talent for Persona 5: The Phantom X.",
     seoPersonaPrefix: "Persona ",
     seoSiteSuffix: "P5X Lufelnet",
     seoPersonaDefaultDescription: "{name} Info & Skills",

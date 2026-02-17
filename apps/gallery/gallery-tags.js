@@ -64,15 +64,14 @@
     }
 
     // SEO 타이틀/메타 업데이트
-    const seoTitle = getI18nText('seoTitle', `${pageTitle} - P5X 루페르넷`);
-    const seoDescription = getI18nText('seoDescription', '');
-    document.title = seoTitle;
-    const metaD = document.querySelector('meta[name="description"]');
-    const ogT = document.querySelector('meta[property="og:title"]');
-    const ogD = document.querySelector('meta[property="og:description"]');
-    if (metaD) metaD.setAttribute('content', seoDescription);
-    if (ogT) ogT.setAttribute('content', seoTitle);
-    if (ogD) ogD.setAttribute('content', seoDescription);
+    if (window.SeoEngine && typeof window.SeoEngine.setContextHint === 'function') {
+      window.SeoEngine.setContextHint({
+        domain: 'gallery',
+        mode: 'list'
+      }, { rerun: true });
+    } else if (window.SeoEngine && typeof window.SeoEngine.run === 'function') {
+      window.SeoEngine.run();
+    }
 
     // Navigation path 번역
     const navHomeEl = document.getElementById('nav-home');

@@ -37,9 +37,6 @@ window.I18N_PAGE_MAPS_EN = {
     enemyUndo: 'Undo',
     enemyRelativeLevel: 'Monster level varies with protagonist level. (Protagonist Level + {level})',
     enemyElementFallback: 'Element',
-    seoDefaultTitle: 'P5X Maps - Lufelnet',
-    seoDefaultDescription: 'Explore all P5X Palaces and Mementos.',
-    seoMapDescriptionTemplate: '{path} map info. Explore detailed maps of P5X Palaces and Mementos.',
     adaptLabels: {
         Weak: { text: 'Wk', cls: 'weak' },
         Resistant: { text: 'Res', cls: 'res' },

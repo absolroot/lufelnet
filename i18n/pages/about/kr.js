@@ -39,6 +39,4 @@ window.I18N_PAGE_ABOUT_KR = {
     donationInlineText: '',
 
     // SEO
-    seoTitle: 'About - 페르소나5 더 팬텀 X 루페르넷',
-    seoDescription: '루페르넷은 페르소나5 더 팬텀 X 플레이어를 위한 비공식 정보 사이트입니다. 사이트 소개 및 문의 정보를 확인하세요.'
 };

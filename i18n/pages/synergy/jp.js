@@ -62,8 +62,6 @@ window.I18N_PAGE_SYNERGY_JP = {
     soulmateNotice: 'このイベントでは、上記の選択肢に加えて重要な決定を下すことになります。',
     patchPendingSuffix: '(パッチ予定)',
     msgKrFallbackNotice: '管理者が更新・公開していないコンテンツは韓国語で表示される場合があります。別途の翻訳作業は予定されておらず、ご不便をおかけしますが、翻訳機のご利用をお願いします。',
-    pageTitleGuidePrefix: 'P5X シナジーガイド',
-    pageTitleSiteSuffix: 'Persona 5 The Phantom X Lufelnet',
     currencyArcadeKeywords: ['게임 센터', 'Arcade', 'ゲーム', 'ゲームセンター'],
     currencyCashKeywords: ['현금', 'Money', '所持金'],
     currencyBattingKeywords: ['야구 포인트', 'Batting Points', 'バッティングポイント'],

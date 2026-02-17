@@ -1,8 +1,6 @@
 window.I18N_PAGE_CRITICAL_CALC_KR = {
     "navCurrent": "크리티컬 확률 계산기",
     "pageTitle": "크리티컬 확률 계산기",
-    "seoTitle": "크리티컬 계산기 - 페르소나5 더 팬텀 X 루페르넷",
-    "seoDescription": "페르소나5 더 팬텀 X 크리티컬 확률 계산기",
     "seoKeywords": "P5X, 페르소나5X, 크리티컬 계산기, 크리티컬 확률",
     "seoOgLocale": "ko_KR",
     "tabBuff": "버프",

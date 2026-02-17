@@ -53,8 +53,6 @@ window.I18N_PAGE_CHARACTER_KR = {
     characterDetailLinkLabel: '상세 보기 →',
     characterDetailNoticeTitle: '안내',
     characterDetailNoticeMessage: '추천 세팅은 향후 콘텐츠를 기준으로 작성되었습니다. 일부 항목은 현재 사용할 수 없을 수 있습니다. (계시, 심상 등)',
-    seoTitle: '괴도 육성 가이드 - 페르소나5 더 팬텀 X 루페르넷',
-    seoDescription: '페르소나5 더 팬텀 X의 괴도별 육성 가이드. 추천 세팅, 스킬, 의식, 전용무기 정보를 확인하세요.',
     helpRevelationContent: '추천 계시 목록입니다. 파티 구성과 상대 적에 따라 추천이 달라질 수 있으니, 각 계시 효과를 확인해 적절한 계시를 선택하세요.',
     helpMainOptionContent: '계시 위치별 추천 옵션입니다. 의식(Awareness), 무기, 파티 구성에 따라 우선순위가 달라질 수 있습니다.',
     helpSubOptionContent: '캐릭터별 계시에서 우선하는 부 옵션입니다. 부 옵션 범위는 {link}를 참고하세요. 의식, 무기, 파티 구성에 따라 우선순위가 달라질 수 있습니다.',

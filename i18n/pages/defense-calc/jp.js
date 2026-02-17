@@ -1,6 +1,4 @@
 window.I18N_PAGE_DEFENSE_CALC_JP = {
-    "seoTitle": "防御力減少計算機 - ペルソナ5 ザ・ファントム X LufelNet",
-    "seoDescription": "ペルソナ5 ザ・ファントム X 防御力減少計算機",
     "seoKeywords": "P5X, ペルソナ5X, 防御力減少計算機, 防御計算",
     "seoOgLocale": "ja_JP",
     "defenseI18n": {

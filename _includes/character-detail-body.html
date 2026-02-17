@@ -2051,10 +2051,7 @@
 
 
 
-        // SEO 메타데이터 동적 업데이트
-        const baseUrl = 'https://lufel.net'; // 실제 도메인으로 변경 필요
-
-        // 언어별 캐릭터명 설정
+        // SEO context update
         let characterDisplayName = character.name;
         if (currentLang === 'en' && character.name_en) {
             characterDisplayName = character.name_en;
@@ -2062,49 +2059,29 @@
             characterDisplayName = character.name_jp;
         }
 
-        // 언어별 사이트 정보
-        const siteInfo = {
-            'kr': {
-                siteName: '육성 가이드 - 페르소나5 더 팬텀 X',
-                siteTitle: 'P5X 루페르넷',
-                description: '추천 세팅, 스킬, 의식, 전용무기 정보'
-            },
-            'en': {
-                siteName: 'Build & Guide - Persona 5: The Phantom X',
-                siteTitle: 'P5X LufelNet',
-                description: 'Recommended setup, skills, awareness, exclusive weapon info'
-            },
-            'jp': {
-                siteName: '攻略 - ペルソナ5 ザ・ファントム X',
-                siteTitle: 'P5X LufelNet',
-                description: 'おすすめ設定、スキル、意識、専用武器情報'
-            }
-        };
-
-        const currentSiteInfo = siteInfo[currentLang] || siteInfo['kr'];
-
-        // 타이틀 업데이트
-        try { document.title = `${characterDisplayName} ${currentSiteInfo.siteName}`; } catch (e) { console.warn('[SAFE:seo-title]', e); }
-
-        // 메타 태그 업데이트 (태그가 존재하는 경우에만)
-        const description = `${characterDisplayName}(${character.codename}) - ${currentSiteInfo.siteName} : ${currentSiteInfo.description}`;
-
-        const metaDescription = document.querySelector('meta[name="description"]');
-        const ogTitle = document.querySelector('meta[property="og:title"]');
-        const ogDescription = document.querySelector('meta[property="og:description"]');
-        const ogImage = document.querySelector('meta[property="og:image"]');
-        const ogUrl = document.querySelector('meta[property="og:url"]');
-        const canonicalLink = document.getElementById('canonical-link');
+        let characterEntityKey = '';
+        const slugMap = window.__CHARACTER_SLUG_MAP || null;
+        const slugEntry = slugMap ? slugMap[characterName] : null;
+        if (slugEntry && typeof slugEntry === 'object' && slugEntry.slug) {
+            characterEntityKey = String(slugEntry.slug);
+        } else if (typeof slugEntry === 'string') {
+            characterEntityKey = slugEntry;
+        } else if (character.codename) {
+            characterEntityKey = String(character.codename).toLowerCase();
+        } else {
+            characterEntityKey = characterName;
+        }
 
         try {
-            if (metaDescription) metaDescription.setAttribute('content', description);
-            if (ogTitle) ogTitle.setAttribute('content', `${characterDisplayName} - ${currentSiteInfo.siteName}`);
-            if (ogDescription) ogDescription.setAttribute('content', description);
-            if (ogImage) ogImage.setAttribute('content', `${baseUrl}/img/character-detail/${characterName}.webp`);
-            if (ogUrl) ogUrl.setAttribute('content', `${baseUrl}/${currentLang}/character/character.html?name=${characterName}`);
-            if (canonicalLink) {
-                const canonicalUrl = `https://lufel.net/${currentLang}/character/character.html?name=${characterName}`;
-                canonicalLink.setAttribute('href', canonicalUrl);
+            if (window.SeoEngine && typeof window.SeoEngine.setContextHint === 'function') {
+                window.SeoEngine.setContextHint({
+                    domain: 'character',
+                    mode: 'detail',
+                    entityKey: characterEntityKey,
+                    entityName: characterDisplayName
+                }, { rerun: true });
+            } else if (window.SeoEngine && typeof window.SeoEngine.run === 'function') {
+                window.SeoEngine.run();
             }
         } catch (e) { console.warn('[SAFE:seo-meta]', e); }
 

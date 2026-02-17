@@ -5,22 +5,18 @@ window.t = window.t || function (key, defaultValue) { return defaultValue || key
 // 다국어 지원 함수
 // 언어별 SEO 설정 함수
 function updateSEOContent() {
-    if (!window.t) return;
-
-    const title = window.t('seoTitle', '주요 페르소나 - 페르소나5 더 팬텀 X');
-    const description = window.t('seoDescription', '페르소나5 더 팬텀 X의 주요 페르소나 정보. 본능, 고유 스킬, 추천 스킬 정보를 확인하세요.');
-
-    // 타이틀 업데이트
-    document.title = title;
-
-    // 메타 태그 업데이트
-    const metaDescription = document.querySelector('meta[name="description"]');
-    const ogTitle = document.querySelector('meta[property="og:title"]');
-    const ogDescription = document.querySelector('meta[property="og:description"]');
-
-    if (metaDescription) metaDescription.setAttribute('content', description);
-    if (ogTitle) ogTitle.setAttribute('content', title);
-    if (ogDescription) ogDescription.setAttribute('content', description);
+    if (window.SeoEngine && typeof window.SeoEngine.setContextHint === 'function') {
+        window.SeoEngine.setContextHint({
+            domain: 'persona',
+            mode: 'list',
+            entityKey: null,
+            entityName: null
+        }, { rerun: true });
+        return;
+    }
+    if (window.SeoEngine && typeof window.SeoEngine.run === 'function') {
+        window.SeoEngine.run();
+    }
 }
 
 // URL에서 검색 파라미터를 가져와서 검색을 실행하는 함수
@@ -708,51 +704,25 @@ async function initializePageContent() {
 
     // Update Page Title & Meta Tags
     function updatePageSEO(originalName, localizedName, description) {
-        // Title: "Persona Name - Site Name"
-        // Base title is usually "주요 페르소나 - 페르소나5 더 팬텀 X 루페르넷"
-        // We will keep the suffix or just "Name - P5X Lufelnet"
-        const siteSuffix = window.t('seoSiteSuffix', '페르소나5 더 팬텀 X 루페르넷');
-        const prefix = window.t('seoPersonaPrefix', '페르소나 ');
+        const slugMap = window.__PERSONA_SLUG_MAP;
+        const pathMatch = window.location.pathname.match(/^\/(kr|en|jp)\/persona\//);
+        let entityKey = originalName;
 
-        const pageTitle = `${prefix}${localizedName} - ${siteSuffix}`;
+        if (slugMap && slugMap[originalName] && pathMatch) {
+            entityKey = slugMap[originalName].slug || originalName;
+        }
 
-        document.title = pageTitle;
-
-        // Meta Tags
-        const setMeta = (selector, content) => {
-            const el = document.querySelector(selector);
-            if (el) el.setAttribute('content', content);
-        };
-
-        setMeta('meta[property="og:title"]', pageTitle);
-        setMeta('meta[name="twitter:title"]', pageTitle);
-
-        // Description: Use persona comment or fallback
-        const defaultDescTemplate = window.t('seoPersonaDefaultDescription', '{name} 정보 및 스킬');
-        const fallbackDesc = defaultDescTemplate.includes('{name}')
-            ? defaultDescTemplate.replace('{name}', localizedName)
-            : `${localizedName} ${defaultDescTemplate}`;
-        const desc = description ? description.replace(/<[^>]*>/g, '') : fallbackDesc;
-        setMeta('meta[name="description"]', desc);
-        setMeta('meta[property="og:description"]', desc);
-        setMeta('meta[name="twitter:description"]', desc);
-
-        // Canonical URL update
-        const linkCanonical = document.querySelector('link[rel="canonical"]');
-        if (linkCanonical) {
-            const slugMap = window.__PERSONA_SLUG_MAP;
-            const pathMatch = window.location.pathname.match(/^\/(kr|en|jp)\/persona\//);
-            if (slugMap && slugMap[originalName] && pathMatch) {
-                var lang = pathMatch[1];
-                linkCanonical.href = window.location.origin + '/' + lang + '/persona/' + slugMap[originalName].slug + '/';
-            } else {
-                const baseUrl = window.SITE_BASEURL || window.location.origin + window.location.pathname;
-                const cleanBase = baseUrl.replace('index.html', '');
-                linkCanonical.href = `${cleanBase}?name=${encodeURIComponent(originalName)}`;
-            }
+        if (window.SeoEngine && typeof window.SeoEngine.setContextHint === 'function') {
+            window.SeoEngine.setContextHint({
+                domain: 'persona',
+                mode: 'detail',
+                entityKey: entityKey,
+                entityName: localizedName
+            }, { rerun: true });
+        } else if (window.SeoEngine && typeof window.SeoEngine.run === 'function') {
+            window.SeoEngine.run();
         }
     }
-
 
     // 카드 클릭 인터랙션 (Selection -> Detail View)
     function wireCardInteractions() {

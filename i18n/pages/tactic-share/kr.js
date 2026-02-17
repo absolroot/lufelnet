@@ -21,8 +21,6 @@ window.I18N_PAGE_TACTIC_SHARE_KR = {
     view_best: '베스트',
     prev_page: '이전',
     next_page: '다음',
-    seo_title: '택틱 대장간 - 페르소나5 더 팬텀 X 루페르넷',
-    seo_desc: '페르소나5 더 팬텀 X 택틱을 자유롭게 공유하세요.',
     empty_title: '아직 공유된 택틱이 없습니다.',
     empty_subtitle: '첫 번째 택틱을 공유해보세요!',
     view_tactic: '택틱 보기',

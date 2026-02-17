@@ -50,20 +50,18 @@ function getButtonLabelHTML(lang) {
 
 function applyLoginTexts(lang) {
   const titleText = getI18nText('title', '로그인');
-  // h2
   const titleEl = document.querySelector('.auth-box h2');
   if (titleEl) titleEl.textContent = titleText;
-  // document title
-  document.title = getI18nText('seoTitle', titleText);
-  const metaDescription = document.querySelector('meta[name="description"]');
-  const ogTitle = document.querySelector('meta[property="og:title"]');
-  const ogDescription = document.querySelector('meta[property="og:description"]');
-  const fallbackDescription = (metaDescription && metaDescription.getAttribute('content')) || '';
-  const seoDescription = getI18nText('seoDescription', fallbackDescription);
-  if (metaDescription) metaDescription.setAttribute('content', seoDescription);
-  if (ogTitle) ogTitle.setAttribute('content', document.title);
-  if (ogDescription) ogDescription.setAttribute('content', seoDescription);
-  // button
+
+  if (window.SeoEngine && typeof window.SeoEngine.setContextHint === 'function') {
+    window.SeoEngine.setContextHint({
+      domain: 'login',
+      mode: 'list'
+    }, { rerun: true });
+  } else if (window.SeoEngine && typeof window.SeoEngine.run === 'function') {
+    window.SeoEngine.run();
+  }
+
   const btn = document.getElementById('googleLogin');
   if (btn) btn.innerHTML = getButtonLabelHTML(lang);
 }

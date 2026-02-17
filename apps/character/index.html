@@ -431,19 +431,18 @@ redirect_from: []
     }
 
     function updateSEOContent() {
-        const metaDescription = document.querySelector('meta[name="description"]');
-        const ogTitle = document.querySelector('meta[property="og:title"]');
-        const ogDescription = document.querySelector('meta[property="og:description"]');
-
-        const fallbackTitle = document.title || 'Character Build Guide - Persona 5: The Phantom X LufelNet';
-        const fallbackDescription = (metaDescription && metaDescription.getAttribute('content')) || '';
-        const seoTitle = getI18nText('seoTitle', fallbackTitle);
-        const seoDescription = getI18nText('seoDescription', fallbackDescription);
-
-        document.title = seoTitle;
-        if (metaDescription) metaDescription.setAttribute('content', seoDescription);
-        if (ogTitle) ogTitle.setAttribute('content', seoTitle);
-        if (ogDescription) ogDescription.setAttribute('content', seoDescription);
+        if (window.SeoEngine && typeof window.SeoEngine.setContextHint === 'function') {
+            window.SeoEngine.setContextHint({
+                domain: 'character',
+                mode: 'list',
+                entityKey: null,
+                entityName: null
+            }, { rerun: true });
+            return;
+        }
+        if (window.SeoEngine && typeof window.SeoEngine.run === 'function') {
+            window.SeoEngine.run();
+        }
     }
 
     // Initialize navigation on page load

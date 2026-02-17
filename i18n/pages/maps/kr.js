@@ -37,9 +37,6 @@ window.I18N_PAGE_MAPS_KR = {
     enemyUndo: '되돌리기',
     enemyRelativeLevel: '주인공 레벨에 따라 몬스터의 레벨이 달라집니다. (주인공 레벨 + {level})',
     enemyElementFallback: '속성',
-    seoDefaultTitle: 'P5X 맵스 - 루페르넷',
-    seoDefaultDescription: 'P5X 맵 뷰어. 팰리스와 메멘토스의 모든 맵을 확인하세요.',
-    seoMapDescriptionTemplate: '{path} 맵 정보. P5X 팰리스와 메멘토스의 상세 맵을 확인하세요.',
     adaptLabels: {
         Weak: { text: '약', cls: 'weak' },
         Resistant: { text: '내', cls: 'res' },

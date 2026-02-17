@@ -28,11 +28,6 @@ const ROOT_REDIRECT_LANGS = ['cn'];
 
 const wonderPath = path.join(ROOT, 'data', 'kr', 'wonder', 'weapons.js');
 const seoMetaPath = path.join(ROOT, 'i18n', 'pages', 'wonder-weapon', 'seo-meta.json');
-const listI18nPaths = {
-  kr: path.join(ROOT, 'i18n', 'pages', 'wonder-weapon', 'kr.js'),
-  en: path.join(ROOT, 'i18n', 'pages', 'wonder-weapon', 'en.js'),
-  jp: path.join(ROOT, 'i18n', 'pages', 'wonder-weapon', 'jp.js')
-};
 const slugMapPath = path.join(ROOT, '_data', 'wonder_weapon_slugs.json');
 
 function normalizeNewline(text) {
@@ -85,38 +80,13 @@ function ensureSeoMetaShape(meta) {
     if (typeof langMeta.description !== 'string' || !langMeta.description.includes('{name}')) {
       throw new Error(`i18n/pages/wonder-weapon/seo-meta.json missing valid description template for ${lang}.`);
     }
+    if (typeof langMeta.list_title !== 'string' || !langMeta.list_title.trim()) {
+      throw new Error(`i18n/pages/wonder-weapon/seo-meta.json missing valid list_title for ${lang}.`);
+    }
+    if (typeof langMeta.list_description !== 'string' || !langMeta.list_description.trim()) {
+      throw new Error(`i18n/pages/wonder-weapon/seo-meta.json missing valid list_description for ${lang}.`);
+    }
   }
-}
-
-function loadWonderListSeoMetaFromI18n() {
-  const out = {};
-
-  for (const lang of LIST_PAGE_LANGS) {
-    const i18nPath = listI18nPaths[lang];
-    if (!fs.existsSync(i18nPath)) {
-      throw new Error(`Missing wonder-weapon i18n file for ${lang}: ${toPosix(path.relative(ROOT, i18nPath))}`);
-    }
-
-    const code = fs.readFileSync(i18nPath, 'utf8');
-    const sandbox = { window: {} };
-    vm.runInNewContext(code, sandbox, { timeout: 5000 });
-
-    const key = `I18N_PAGE_WONDER_WEAPON_${lang.toUpperCase()}`;
-    const dict = sandbox.window[key];
-    if (!dict || typeof dict !== 'object') {
-      throw new Error(`Missing i18n dictionary ${key} in ${toPosix(path.relative(ROOT, i18nPath))}`);
-    }
-
-    const title = normalizeName(dict.seoTitle);
-    const description = normalizeName(dict.seoDescription);
-    if (!title || !description) {
-      throw new Error(`Invalid seoTitle/seoDescription in ${toPosix(path.relative(ROOT, i18nPath))}`);
-    }
-
-    out[lang] = { title, description };
-  }
-
-  return out;
 }
 
 function ensureSlugValue(rawSlug, contextLabel) {
@@ -342,7 +312,7 @@ function renderRootRedirectPage(lang, permalinkPath = `/${lang}/wonder-weapon/`)
   ].join('\n');
 }
 
-function buildExpectedFiles(wonderData, seoMeta, listSeoMeta, slugMap) {
+function buildExpectedFiles(wonderData, seoMeta, slugMap) {
   const expected = new Map();
   const slugOwner = new Map();
   const redirectOwner = new Map();
@@ -371,16 +341,16 @@ function buildExpectedFiles(wonderData, seoMeta, listSeoMeta, slugMap) {
   };
 
   for (const lang of LIST_PAGE_LANGS) {
-    const listMeta = listSeoMeta[lang];
-    if (!listMeta || typeof listMeta !== 'object') {
-      throw new Error(`Missing wonder-weapon list SEO meta for language: ${lang}`);
+    const langMeta = seoMeta[lang];
+    if (!langMeta || typeof langMeta !== 'object') {
+      throw new Error(`Missing wonder-weapon seo-meta language: ${lang}`);
     }
     const fileRel = toPosix(path.relative(ROOT, path.join(OUTPUT_DIR, lang, 'index.html')));
     const content = normalizeNewline(
       renderWeaponListPage({
         lang,
-        title: listMeta.title,
-        description: listMeta.description
+        title: langMeta.list_title,
+        description: langMeta.list_description
       })
     );
     expected.set(fileRel, content);
@@ -547,9 +517,7 @@ function main() {
   const slugMap = loadSlugMap(wonderData);
   const seoMeta = readJson(seoMetaPath);
   ensureSeoMetaShape(seoMeta);
-  const listSeoMeta = loadWonderListSeoMetaFromI18n();
-
-  const expectedFiles = buildExpectedFiles(wonderData, seoMeta, listSeoMeta, slugMap);
+  const expectedFiles = buildExpectedFiles(wonderData, seoMeta, slugMap);
 
   if (mode.check) {
     runCheck(expectedFiles);

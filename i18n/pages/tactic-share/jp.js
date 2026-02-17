@@ -21,8 +21,6 @@ window.I18N_PAGE_TACTIC_SHARE_JP = {
     view_best: 'ベスト',
     prev_page: '前へ',
     next_page: '次へ',
-    seo_title: 'タクティクス工房 - ペルソナ5 ザ・ファントム X LufelNet',
-    seo_desc: 'ペルソナ5 ザ・ファントム X のタクティクスを自由に共有しましょう。',
     empty_title: 'まだ共有されたタクティクスがありません。',
     empty_subtitle: '最初のタクティクスを共有してみましょう！',
     view_tactic: 'タクティクスを見る',

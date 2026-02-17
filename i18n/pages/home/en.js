@@ -9,8 +9,6 @@ window.I18N_PAGE_HOME_EN = {
     language_name_jp: '日本語',
     language_name_cn: '中文',
 
-    seo_title: 'Persona 5: The Phantom X - LufelNet',
-    seo_description: 'Comprehensive guide for Persona 5: The Phantom X. Wiki, Characters, Personas, skills, and strategy guides all in one place.',
 
     quick_character: 'Character',
     quick_persona: 'Persona',
@@ -71,7 +69,6 @@ window.I18N_PAGE_HOME_EN = {
     carousel_maintenance_title: 'Under Maintenance',
     carousel_maintenance_body: 'Under maintenance.',
 
-    notfound_seo_title: '404 - Page Not Found | P5X Lufelnet',
     notfound_title: 'Page not found',
     notfound_description: 'The address you entered may have changed or no longer exists.',
     notfound_path_label: 'Requested path',

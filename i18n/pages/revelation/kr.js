@@ -30,8 +30,6 @@ window.I18N_PAGE_REVELATION_KR = {
     reset_filter: "필터 초기화",
 
     // SEO (Excluded from i18n update per user request, but kept for reference or future use if needed, though unused in code)
-    seo_title: "계시 - 페르소나5 더 팬텀 X 루페르넷",
-    seo_description: "페르소나5 더 팬텀 X의 계시 정보. 세트 효과와 추가 효과를 확인하세요.",
 
     // 계시 스탯
     stats_title: '계시 스탯',

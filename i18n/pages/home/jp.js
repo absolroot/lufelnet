@@ -9,8 +9,6 @@ window.I18N_PAGE_HOME_JP = {
     language_name_jp: '日本語',
     language_name_cn: '中文',
 
-    seo_title: 'ペルソナ5 ザ・ファントム X - LufelNet',
-    seo_description: 'ペルソナ5 ザ・ファントム Xの総合攻略サイト。怪盗、ペルソナ、スキル、戦略ガイドを一箇所で確認できます。',
 
     quick_character: '怪盗',
     quick_persona: 'ペルソナ',
@@ -71,7 +69,6 @@ window.I18N_PAGE_HOME_JP = {
     carousel_maintenance_title: 'メンテナンス中',
     carousel_maintenance_body: 'メンテナンス中です。',
 
-    notfound_seo_title: '404 - ページが見つかりません | P5X Lufelnet',
     notfound_title: 'ページが見つかりません',
     notfound_description: '入力したアドレスは変更または削除された可能性があります。',
     notfound_path_label: 'リクエストパス',

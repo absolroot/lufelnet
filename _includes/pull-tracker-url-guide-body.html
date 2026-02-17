@@ -484,16 +484,6 @@
       return (fallback !== undefined) ? fallback : key;
     };
 
-    const setMeta = (selector, attrName, attrValue, content) => {
-      let el = document.querySelector(selector);
-      if (!el) {
-        el = document.createElement('meta');
-        el.setAttribute(attrName, attrValue);
-        document.head.appendChild(el);
-      }
-      el.setAttribute('content', content);
-    };
-
     const setText = (id, value) => {
       const el = document.getElementById(id);
       if (el) el.textContent = value;
@@ -536,33 +526,14 @@
     };
 
     try {
-      const pathMatch = window.location.pathname.match(/^\/(kr|en|jp)(\/|$)/i);
-      const pageLang = pathMatch ? pathMatch[1].toLowerCase() : 'kr';
-      const isPathLang = /^\/(kr|en|jp)(\/|$)/i.test(window.location.pathname);
-      const baseUrl = 'https://lufel.net';
-      const currentUrl = isPathLang ? `${baseUrl}/${pageLang}/pull-tracker/url-guide/` : `${baseUrl}/pull-tracker/url-guide/`;
-
-      const seoTitle = tr('seo.guide.title', document.title);
-      const descMeta = document.querySelector('meta[name="description"]');
-      const currentDesc = descMeta ? (descMeta.getAttribute('content') || '') : '';
-      const seoDesc = tr('seo.guide.description', currentDesc);
-      const seoLocale = tr('seo.guide.ogLocale', pageLang === 'jp' ? 'ja_JP' : pageLang === 'en' ? 'en_US' : 'ko_KR');
-
-      document.title = seoTitle;
-      setMeta('meta[name="description"]', 'name', 'description', seoDesc);
-      setMeta('meta[property="og:title"]', 'property', 'og:title', seoTitle);
-      setMeta('meta[property="og:description"]', 'property', 'og:description', seoDesc);
-      setMeta('meta[property="og:locale"]', 'property', 'og:locale', seoLocale);
-      setMeta('meta[property="og:url"]', 'property', 'og:url', currentUrl);
-
-      let canonical = document.querySelector('link[rel="canonical"]');
-      if (!canonical) {
-        canonical = document.createElement('link');
-        canonical.setAttribute('rel', 'canonical');
-        document.head.appendChild(canonical);
+      if (window.SeoEngine && typeof window.SeoEngine.setContextHint === 'function') {
+        window.SeoEngine.setContextHint({
+          domain: 'pull-tracker',
+          mode: 'guide'
+        }, { rerun: true });
+      } else if (window.SeoEngine && typeof window.SeoEngine.run === 'function') {
+        window.SeoEngine.run();
       }
-      canonical.setAttribute('href', currentUrl);
-      document.documentElement.setAttribute('lang', pageLang === 'jp' ? 'ja' : pageLang === 'en' ? 'en' : 'ko');
     } catch (_) { }
 
     try {

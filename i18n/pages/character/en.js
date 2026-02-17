@@ -53,8 +53,6 @@ window.I18N_PAGE_CHARACTER_EN = {
     characterDetailLinkLabel: 'Detail →',
     characterDetailNoticeTitle: 'Notice',
     characterDetailNoticeMessage: 'The recommended settings are based on future content. Some features may not be currently available (Revelations, Mindscape, etc.)',
-    seoTitle: 'Character Build Guide - Persona 5: The Phantom X LufelNet',
-    seoDescription: 'Character development guide for Persona 5: The Phantom X. Check recommended setup, skills, awareness, and exclusive weapon info.',
     helpRevelationContent: 'Recommended revelation list. The recommended revelations may change depending on party composition and enemies, so click each revelation to review effects and choose the right one.',
     helpMainOptionContent: 'Recommended options for each revelation slot. Priority may change depending on Awareness, weapons, and party composition.',
     helpSubOptionContent: 'These are prioritized sub-options for each character revelation setup. See {link} for the sub-option pool. Priority may change by Awareness, weapons, and party composition.',

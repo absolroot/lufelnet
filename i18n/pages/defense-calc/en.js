@@ -1,6 +1,4 @@
 window.I18N_PAGE_DEFENSE_CALC_EN = {
-    "seoTitle": "Defense Reduction Calculator - Persona 5: The Phantom X LufelNet",
-    "seoDescription": "Persona 5: The Phantom X Defense Reduction Calculator",
     "seoKeywords": "P5X, Persona 5X, Defense Reduction Calculator, Defense Calculator",
     "seoOgLocale": "en_US",
     "defenseI18n": {

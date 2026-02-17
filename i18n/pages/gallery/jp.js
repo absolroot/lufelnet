@@ -25,8 +25,6 @@ window.I18N_PAGE_GALLERY_JP = {
     loadError: 'ギャラリーデータの読み込みに失敗しました。',
 
     // SEO
-    seoTitle: 'ギャラリー - ペルソナ5 ザ・ファントム X LufelNet',
-    seoDescription: 'P5X ギャラリー。サムネイルをクリックして原寸画像を表示します。',
 
     // Gallery Tags (special non-character tags)
     tags: {

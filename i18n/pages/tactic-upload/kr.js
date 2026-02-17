@@ -37,8 +37,6 @@ window.I18N_PAGE_TACTIC_UPLOAD_KR = {
     nav_home: '홈',
     nav_current: '택틱 / 택틱 업로드',
     page_title: '택틱 업로드',
-    seo_title: '택틱 업로드 - 페르소나5 더 팬텀 X 루페르넷',
-    seo_desc: '페르소나5 더 팬텀 X 택틱을 업로드하세요.',
     from_maker_loaded: '택틱 메이커에서 데이터를 불러왔습니다',
     error_logout_failed: '로그아웃에 실패했습니다.',
     error_post_not_found: '게시물을 찾을 수 없습니다.',

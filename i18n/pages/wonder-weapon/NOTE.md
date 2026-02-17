@@ -3,12 +3,11 @@
 ## 통합 i18n 적용 항목
 
 ### 1. SEO 메타데이터
-**번들 키**: `seoTitle`, `seoDescription`  
-**파일**: `i18n/pages/wonder-weapon/kr.js`, `i18n/pages/wonder-weapon/en.js`, `i18n/pages/wonder-weapon/jp.js`  
-**적용 코드**: `apps/wonder-weapon/wonder-weapon.js`의 `updateSEO()`
+**단일 소스**: `i18n/pages/wonder-weapon/seo-meta.json`  
+**적용 코드**: `assets/js/seo/engine.js`, `apps/wonder-weapon/wonder-weapon.js`
 
-- SEO 제목/설명은 페이지 번들 키 조회(`t`)로 처리
-- JS 내부 언어별 SEO 하드코딩 객체 제거
+- SEO 제목/설명은 `seo-meta.json` 템플릿(`title`/`description`)과 리스트 메타(`list_title`/`list_description`)로 관리
+- 페이지 코드는 `SeoEngine.setContextHint()`만 호출하고 직접 메타를 작성하지 않음
 
 ### 2. Source 매핑
 **번들 키**: `sourceMap`  

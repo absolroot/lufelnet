@@ -76,8 +76,6 @@ window.I18N_PAGE_SCHEDULE_JP = {
     noticeHtml: 'スポイラーに注意してください。<br>このスケジュールはGLB/JPサーバー用です。<br>バージョン4.0までは2週間ごと、4.0以降は3週間ごとのリリースです。イベント・祝日により変更される場合があります。<strong style="color:rgb(255, 255, 0);">キャラクターリリース順序は変更される場合があります。</strong><br>詳細なパッチ履歴は<a href="https://docs.google.com/spreadsheets/d/1KmLUs1Cpp2WuDQZYHCW1xzCVCThWCB6R2VR5pFuLixE/edit?usp=sharing" target="_blank">P5X Patch History by Sages</a>をご覧ください。',
 
     // SEO
-    seoTitle: 'リリーススケジュール - ペルソナ5 ザ・ファントム X | lufel.net',
-    seoDescription: 'ペルソナ5 ザ・ファントム Xキャラクターリリーススケジュール。今後のキャラクターリリース、現在のバナー、パッチ履歴を追跡できます。',
     seoKeywords: 'P5X, ペルソナ5X, リリーススケジュール, キャラクターリリース, バナースケジュール, P5Xスケジュール, GLBサーバー, JPサーバー',
     seoOgLocale: 'ja_JP',
 

@@ -42,6 +42,4 @@ window.I18N_PAGE_ABOUT_JP = {
 ルフェルネットは、皆様のご支援によってのみ運営されています。心から感謝いたします。`,
 
     // SEO
-    seoTitle: 'About - ペルソナ5 ザ・ファントム X LufelNet',
-    seoDescription: 'Lufelnetはペルソナ5 ザ・ファントム Xプレイヤーのための非公式情報サイトです。サイト紹介とお問い合わせ情報をご確認ください。'
 };

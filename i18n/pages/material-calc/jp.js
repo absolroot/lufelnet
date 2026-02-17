@@ -70,8 +70,6 @@ window.I18N_PAGE_MATERIAL_CALC_JP = {
     mindscapeCoreItem: 'イメジャリー コア',
     emblem5StarItem: 'エンブレム ★5',
     innateSeedItem: '香りの種',
-    seoTitle: '育成計算機 - ペルソナ5 ザ・ファントムX LufelNet',
-    seoDescription: 'ペルソナ5 ザ・ファントムX キャラクター育成素材計算機（レベル／武器／スキル／イメジャリー）',
     seoKeywords: 'P5X, ペルソナ5X, 育成計算機, 素材計算機, キャラクター育成',
     seoOgLocale: 'ja_JP'
 };

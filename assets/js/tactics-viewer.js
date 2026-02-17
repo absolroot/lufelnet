@@ -931,18 +931,17 @@ class TacticsViewer {
     }
 
     updateSEO() {
-        const fallbackTitle = '택틱 도서관 - 페르소나5 더 팬텀 X 루페르넷';
-        const fallbackDescription = '페르소나5 더 팬텀 X 택틱들을 확인하세요.';
-        const seoTitle = this.t('seo_title', fallbackTitle);
-        const seoDescription = this.t('seo_desc', fallbackDescription);
-
-        document.title = seoTitle;
-        const metaDesc = document.querySelector('meta[name="description"]');
-        const ogTitle = document.querySelector('meta[property="og:title"]');
-        const ogDesc = document.querySelector('meta[property="og:description"]');
-        if (metaDesc) metaDesc.setAttribute('content', seoDescription);
-        if (ogTitle) ogTitle.setAttribute('content', seoTitle);
-        if (ogDesc) ogDesc.setAttribute('content', seoDescription);
+        if (window.SeoEngine && typeof window.SeoEngine.setContextHint === 'function') {
+            window.SeoEngine.setContextHint({
+                domain: 'tactics',
+                mode: 'list',
+                lang: this.currentLang
+            }, { rerun: true });
+            return;
+        }
+        if (window.SeoEngine && typeof window.SeoEngine.run === 'function') {
+            window.SeoEngine.run();
+        }
     }
 
     async getUserIP() {

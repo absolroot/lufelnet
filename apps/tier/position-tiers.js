@@ -1723,21 +1723,13 @@ window.initPositionTierMaker = () => {
   }, 1000);
 
   // 제목과 설명 동적 변경 (언어별 제목은 여기서 설정하지 않음 - updateLanguageContent에서 처리)
-  const metaTitle = document.querySelector('title');
-  const metaDescription = document.querySelector('meta[name="description"]');
-  const tierListSeoTitle = getTierI18nText('tierListSeoTitle', '티어 리스트 - 페르소나5 더 팬텀 X 루페르넷');
-  const tierListSeoDescription = getTierI18nText('tierListSeoDescription', 'P5X 캐릭터 포지션별 티어 리스트를 확인하세요.');
-  const tierMakerSeoTitle = getTierI18nText('tierMakerSeoTitle', '티어 메이커 - 페르소나5 더 팬텀 X 루페르넷');
-  const tierMakerSeoDescription = getTierI18nText('tierMakerSeoDescription', '포지션별로 P5X 캐릭터 티어 리스트를 만들어 보세요.');
-
-  if (shouldLoadList) {
-    // 기본: 티어 리스트 모드
-    if (metaTitle) metaTitle.textContent = tierListSeoTitle;
-    if (metaDescription) metaDescription.setAttribute('content', tierListSeoDescription);
-  } else {
-    // list=false: 티어 메이커 모드
-    if (metaTitle) metaTitle.textContent = tierMakerSeoTitle;
-    if (metaDescription) metaDescription.setAttribute('content', tierMakerSeoDescription);
+    if (window.SeoEngine && typeof window.SeoEngine.setContextHint === 'function') {
+    window.SeoEngine.setContextHint({
+      domain: 'tier',
+      mode: shouldLoadList ? 'list' : 'maker'
+    }, { rerun: true });
+  } else if (window.SeoEngine && typeof window.SeoEngine.run === 'function') {
+    window.SeoEngine.run();
   }
 
   // 이미 초기화된 경우 중복 실행 방지

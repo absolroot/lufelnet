@@ -28,6 +28,4 @@ window.I18N_PAGE_TACTICS_EN = {
     relative_days: '{value}d ago',
     date_locale: 'en-US',
     error_already_liked_24h: 'You already liked this within 24 hours.',
-    seo_title: 'Tactic Library - Persona 5: The Phantom X LufelNet',
-    seo_desc: 'Browse tactics for Persona 5: The Phantom X.'
 };

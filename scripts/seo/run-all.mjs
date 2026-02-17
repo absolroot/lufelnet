@@ -18,6 +18,7 @@ const SCRIPT_TARGETS = [
   'critical-calc',
   'defense-calc',
   'gallery',
+  'maps',
   'material-calc',
   'persona',
   'pull-calc',
@@ -26,6 +27,7 @@ const SCRIPT_TARGETS = [
   'schedule',
   'synergy',
   'tactic',
+  'tactic-maker',
   'tier',
   'wonder-weapon'
 ];

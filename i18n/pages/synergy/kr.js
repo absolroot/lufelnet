@@ -62,8 +62,6 @@ window.I18N_PAGE_SYNERGY_KR = {
     soulmateNotice: '이번 이벤트에는 위 선택지 외에 중요한 결정을 내리게 됩니다.',
     patchPendingSuffix: '(패치 예정)',
     msgKrFallbackNotice: '관리자가 업데이트/공개하지 않은 콘텐츠는 한국어로 표시될 수 있습니다. 별도 번역 작업은 예정되어 있지 않으며, 불편하시더라도 번역기 사용을 부탁드립니다.',
-    pageTitleGuidePrefix: 'P5X 협력자 가이드',
-    pageTitleSiteSuffix: '페르소나5 더 팬텀 X 루페르넷',
     currencyArcadeKeywords: ['게임 센터', 'Arcade', 'ゲーム', 'ゲームセンター'],
     currencyCashKeywords: ['현금', 'Money', '所持金'],
     currencyBattingKeywords: ['야구 포인트', 'Batting Points', 'バッティングポイント'],

@@ -450,21 +450,18 @@
 
     // 언어별 SEO 설정 함수
     function updateSEOContent() {
-        const seoTitle = getI18nText('seo_title', '계시 - 페르소나5 더 팬텀 X 루페르넷');
-        const seoDescription = getI18nText('seo_description', '페르소나5 더 팬텀 X의 계시 정보. 세트 효과와 추가 효과를 확인하세요.');
-
-        // 타이틀 업데이트
-        document.title = seoTitle;
-
-        // 메타 태그 업데이트
-        const metaDescription = document.querySelector('meta[name="description"]');
-        const ogTitle = document.querySelector('meta[property="og:title"]');
-        const ogDescription = document.querySelector('meta[property="og:description"]');
-
-        if (metaDescription) metaDescription.setAttribute('content', seoDescription);
-        if (ogTitle) ogTitle.setAttribute('content', seoTitle);
-        if (ogDescription) ogDescription.setAttribute('content', seoDescription);
+        if (window.SeoEngine && typeof window.SeoEngine.setContextHint === 'function') {
+            window.SeoEngine.setContextHint({
+                domain: 'revelation',
+                mode: 'list'
+            }, { rerun: true });
+            return;
+        }
+        if (window.SeoEngine && typeof window.SeoEngine.run === 'function') {
+            window.SeoEngine.run();
+        }
     }
+
 
     // 계시 스탯 i18n 및 데이터 - Removed local revI18n, using I18nService now.
 

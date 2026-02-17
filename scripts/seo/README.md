@@ -24,6 +24,15 @@ i18n/pages/{app}/seo-meta.json ← SEO title/description templates per language
 scripts/seo/generate-{app}-pages.mjs ← generator script
 ```
 
+## Source of Truth (Important)
+
+- Edit SEO title/description only in `i18n/pages/{app}/seo-meta.json`.
+- `data/seo/registry.json` is generated output. Do not edit it manually.
+- Regenerate registry after seo-meta changes:
+  - `npm run seo:registry:generate`
+  - or `npm run seo:all:generate`
+- Patch Console SEO save also regenerates `data/seo/registry.json`.
+
 ## Two App Types
 
 ### Type A: Per-Item Apps (synergy, wonder-weapon, character, persona, ...)

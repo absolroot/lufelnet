@@ -617,7 +617,7 @@
             // 5. document.title 업데이트 (pageTitleFull 키 사용)
             if (rootElement === document) {
                 const pageTitle = this.t('pageTitleFull');
-                if (pageTitle && pageTitle !== 'pageTitleFull') {
+                if ((!document.title || !document.title.trim()) && pageTitle && pageTitle !== 'pageTitleFull') {
                     document.title = pageTitle;
                 }
             }

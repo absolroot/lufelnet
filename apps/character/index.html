@@ -26,6 +26,12 @@ redirect_from: []
 })();
 </script>
 
+{% if site.data.character_slugs %}
+<script>
+window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
+</script>
+{% endif %}
+
 <div class="main-wrapper">
     <!-- 언어 안내 메시지 -->
     <!--
@@ -804,7 +810,21 @@ redirect_from: []
 
             // Create link wrapper - 언어 파라미터 추가
             const link = document.createElement('a');
-            link.href = `/character.html?name=${encodeURIComponent(characterName)}`;
+            const safeLang = ['kr', 'en', 'jp', 'cn'].includes(currentLang) ? currentLang : 'kr';
+            const slugMap = window.__CHARACTER_SLUG_MAP || null;
+            const slugEntry = slugMap ? slugMap[characterName] : null;
+            const resolvedSlug = (slugEntry && typeof slugEntry === 'object' && slugEntry.slug)
+                ? String(slugEntry.slug)
+                : (typeof slugEntry === 'string' ? slugEntry : '');
+            if (resolvedSlug) {
+                link.href = `/${safeLang}/character/${resolvedSlug}/`;
+            } else {
+                const detailParams = new URLSearchParams({
+                    name: characterName,
+                    lang: safeLang
+                });
+                link.href = `/character.html?${detailParams.toString()}`;
+            }
             link.style.textDecoration = 'none';
             link.style.color = 'inherit';
 

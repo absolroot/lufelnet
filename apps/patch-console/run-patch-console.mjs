@@ -14,6 +14,24 @@ import {
   createRevelationAdminCard,
   renameRevelationAdminKr
 } from './lib/revelation-admin-store.mjs';
+import {
+  SEO_REQUIRED_LANGS,
+  SEO_OPTIONAL_LANGS,
+  SEO_PHASE1_DOMAINS,
+  normalizeNewline,
+  stripBom,
+  containsBom,
+  serializeJson,
+  loadSeoAvailability,
+  listSeoDomains,
+  buildSeoDomainState,
+  resolveSeoMetaPath,
+  matrixRowsToMeta,
+  normalizeAvailabilityFromRows,
+  validateSeoRows,
+  getSeoCheckScript,
+  buildSeoEtag
+} from './seo-console-utils.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -36,6 +54,10 @@ const REVELATION_ICON_DIR = path.join(PROJECT_ROOT, 'assets', 'img', 'revelation
 const ICON_EXTS = ['.webp', '.png', '.jpg', '.jpeg', '.svg'];
 const DATA_TEXT_EXTS = ['.js', '.json', '.md', '.txt', '.csv', '.yml', '.yaml', '.html', '.css', '.ts'];
 const DATA_FILE_MAX_BYTES = 2 * 1024 * 1024;
+const SEO_AVAILABILITY_FILE = path.join(PROJECT_ROOT, 'data', 'seo', 'availability.json');
+const SEO_REGISTRY_FILE = path.join(PROJECT_ROOT, 'data', 'seo', 'registry.json');
+const SEO_HISTORY_FILE = path.join(APP_STATE_ROOT, 'seo-history.json');
+const SEO_HISTORY_MAX_ITEMS = 300;
 
 const DOMAIN_CAPABILITIES = [
   {
@@ -152,6 +174,7 @@ let tierIconIndexCache = null;
 let personaIconIndexCache = null;
 let wonderWeaponIconIndexCache = null;
 let revelationIconIndexCache = null;
+const seoCiJobs = new Map();
 
 function hasOwn(obj, key) {
   return Object.prototype.hasOwnProperty.call(obj || {}, key);
@@ -940,6 +963,259 @@ function readBody(req) {
     });
     req.on('error', reject);
   });
+}
+
+function normalizeUtf8NoBom(text) {
+  const stripped = stripBom(String(text == null ? '' : text));
+  return normalizeNewline(stripped);
+}
+
+function readTextUtf8(filePath, fallback = '') {
+  if (!fs.existsSync(filePath)) return fallback;
+  return normalizeUtf8NoBom(fs.readFileSync(filePath, 'utf8'));
+}
+
+function writeTextUtf8(filePath, content) {
+  const normalized = normalizeUtf8NoBom(content);
+  fs.writeFileSync(filePath, normalized.endsWith('\n') ? normalized : `${normalized}\n`, 'utf8');
+}
+
+function loadSeoHistoryStore() {
+  const fallback = {
+    version: 1,
+    updatedAt: '',
+    items: []
+  };
+  if (!fs.existsSync(SEO_HISTORY_FILE)) {
+    return fallback;
+  }
+  try {
+    const parsed = JSON.parse(stripBom(fs.readFileSync(SEO_HISTORY_FILE, 'utf8')));
+    const version = Number(parsed?.version || 1);
+    const items = Array.isArray(parsed?.items) ? parsed.items : [];
+    const updatedAt = String(parsed?.updatedAt || '');
+    return {
+      version: Number.isInteger(version) && version > 0 ? version : 1,
+      updatedAt,
+      items
+    };
+  } catch {
+    return fallback;
+  }
+}
+
+function saveSeoHistoryStore(store) {
+  const payload = {
+    version: 1,
+    updatedAt: new Date().toISOString(),
+    items: Array.isArray(store?.items) ? store.items.slice(0, SEO_HISTORY_MAX_ITEMS) : []
+  };
+  writeTextUtf8(SEO_HISTORY_FILE, serializeJson(payload));
+}
+
+function addSeoHistoryItem(item) {
+  const store = loadSeoHistoryStore();
+  const nextItem = {
+    id: shortHash(`${Date.now()}|${Math.random()}|${item?.domain || ''}|${item?.kind || ''}`),
+    createdAt: new Date().toISOString(),
+    ...item
+  };
+  store.items = [nextItem, ...(Array.isArray(store.items) ? store.items : [])]
+    .slice(0, SEO_HISTORY_MAX_ITEMS);
+  saveSeoHistoryStore(store);
+  return nextItem;
+}
+
+function listSeoHistoryItems(limit = 80) {
+  const safeLimit = Math.min(Math.max(Number(limit) || 80, 1), SEO_HISTORY_MAX_ITEMS);
+  const store = loadSeoHistoryStore();
+  return (Array.isArray(store.items) ? store.items : []).slice(0, safeLimit);
+}
+
+function ensureSeoSupportFiles() {
+  ensureDir(path.dirname(SEO_AVAILABILITY_FILE));
+  ensureDir(path.dirname(SEO_HISTORY_FILE));
+  if (!fs.existsSync(SEO_AVAILABILITY_FILE)) {
+    writeTextUtf8(SEO_AVAILABILITY_FILE, serializeJson({ version: 1, entries: {} }));
+  }
+  if (!fs.existsSync(SEO_HISTORY_FILE)) {
+    saveSeoHistoryStore({ version: 1, updatedAt: '', items: [] });
+  }
+}
+
+function loadSeoBootstrapPayload() {
+  const domains = listSeoDomains(PROJECT_ROOT).map((entry) => {
+    const phase = SEO_PHASE1_DOMAINS.includes(entry.id) ? 'phase1' : 'phase2';
+    return {
+      id: entry.id,
+      type: entry.type,
+      modeKeys: Array.isArray(entry.modeKeys) ? entry.modeKeys : [],
+      placeholder: entry.placeholder || null,
+      source: entry.source,
+      langs: Array.isArray(entry.langs) ? entry.langs : SEO_REQUIRED_LANGS,
+      phase
+    };
+  });
+
+  const defaultDomain = domains.find((item) => item.phase === 'phase1')?.id
+    || domains[0]?.id
+    || 'home';
+
+  return {
+    defaultDomain,
+    requiredLangs: [...SEO_REQUIRED_LANGS],
+    optionalLangs: [...SEO_OPTIONAL_LANGS],
+    phase1Domains: [...SEO_PHASE1_DOMAINS],
+    domains,
+    cnDefaultVisible: false
+  };
+}
+
+function resolveSeoDomain(rawDomain) {
+  const domain = String(rawDomain || '').trim().toLowerCase();
+  if (!domain) return null;
+  const domains = listSeoDomains(PROJECT_ROOT);
+  return domains.find((item) => item.id === domain) || null;
+}
+
+function prepareSeoDomainPayload(domain) {
+  const availability = loadSeoAvailability(SEO_AVAILABILITY_FILE);
+  const state = buildSeoDomainState({
+    projectRoot: PROJECT_ROOT,
+    domain,
+    availabilityEntries: availability.entries || {}
+  });
+  const metaRaw = readTextUtf8(state.sourcePath, '');
+  const availabilityRaw = readTextUtf8(SEO_AVAILABILITY_FILE, '');
+  const etag = buildSeoEtag({ metaRaw, availabilityRaw });
+  return {
+    ...state,
+    etag
+  };
+}
+
+function sanitizeSeoRows(rows) {
+  return Array.isArray(rows)
+    ? rows.map((row) => ({
+        scope: String(row?.scope || '').trim(),
+        placeholder: row?.placeholder == null ? null : String(row.placeholder),
+        values: isPlainObject(row?.values) ? row.values : {},
+        released: isPlainObject(row?.released) ? row.released : {}
+      }))
+    : [];
+}
+
+async function runNpmScript(scriptName, { timeoutMs = 30 * 60 * 1000 } = {}) {
+  const npmExecPath = process.env.npm_execpath;
+  let command;
+  let args;
+  if (npmExecPath) {
+    command = process.execPath;
+    args = [npmExecPath, 'run', scriptName];
+  } else if (process.platform === 'win32') {
+    command = process.env.ComSpec || 'cmd.exe';
+    args = ['/d', '/s', '/c', 'npm', 'run', scriptName];
+  } else {
+    command = 'npm';
+    args = ['run', scriptName];
+  }
+
+  return new Promise((resolve) => {
+    const child = spawn(command, args, {
+      cwd: PROJECT_ROOT,
+      shell: false
+    });
+
+    let stdout = '';
+    let stderr = '';
+    let done = false;
+    const timer = setTimeout(() => {
+      if (done) return;
+      done = true;
+      child.kill('SIGTERM');
+      resolve({
+        code: -1,
+        stdout,
+        stderr: `${stderr}\n[timeout] npm run ${scriptName} killed after ${timeoutMs}ms`.trim(),
+        args
+      });
+    }, timeoutMs);
+
+    child.stdout.on('data', (chunk) => {
+      stdout += chunk.toString('utf8');
+    });
+    child.stderr.on('data', (chunk) => {
+      stderr += chunk.toString('utf8');
+    });
+    child.on('close', (code) => {
+      if (done) return;
+      done = true;
+      clearTimeout(timer);
+      resolve({ code, stdout, stderr, args });
+    });
+    child.on('error', (error) => {
+      if (done) return;
+      done = true;
+      clearTimeout(timer);
+      resolve({
+        code: -1,
+        stdout,
+        stderr: `${stderr}\n${error.message}`.trim(),
+        args
+      });
+    });
+  });
+}
+
+function startSeoCiJob(domain) {
+  const jobId = shortHash(`${Date.now()}|${domain}|${Math.random()}`);
+  const now = new Date().toISOString();
+  const job = {
+    id: jobId,
+    domain,
+    status: 'running',
+    createdAt: now,
+    updatedAt: now,
+    code: null,
+    stdout: '',
+    stderr: ''
+  };
+  seoCiJobs.set(jobId, job);
+  runNpmScript('seo:ci:check', { timeoutMs: 30 * 60 * 1000 })
+    .then((run) => {
+      const next = seoCiJobs.get(jobId);
+      if (!next) return;
+      next.status = run.code === 0 ? 'passed' : 'failed';
+      next.updatedAt = new Date().toISOString();
+      next.code = run.code;
+      next.stdout = run.stdout || '';
+      next.stderr = run.stderr || '';
+      addSeoHistoryItem({
+        kind: 'ci',
+        domain,
+        status: next.status,
+        jobId,
+        code: next.code,
+        summary: next.status === 'passed' ? 'seo:ci:check passed' : 'seo:ci:check failed'
+      });
+    })
+    .catch((error) => {
+      const next = seoCiJobs.get(jobId);
+      if (!next) return;
+      next.status = 'failed';
+      next.updatedAt = new Date().toISOString();
+      next.code = -1;
+      next.stderr = String(error?.message || error || 'unknown error');
+      addSeoHistoryItem({
+        kind: 'ci',
+        domain,
+        status: next.status,
+        jobId,
+        code: next.code,
+        summary: next.stderr
+      });
+    });
+  return job;
 }
 
 function parseCsv(value) {
@@ -1865,6 +2141,269 @@ async function handleDataFileSave(res, payload) {
   });
 }
 
+async function handleSeoBootstrap(res) {
+  const payload = loadSeoBootstrapPayload();
+  sendJson(res, 200, { ok: true, ...payload });
+}
+
+async function handleSeoDomain(res, urlObj) {
+  const domain = String(urlObj.searchParams.get('domain') || '').trim().toLowerCase();
+  const matched = resolveSeoDomain(domain);
+  if (!matched) {
+    sendJson(res, 404, { ok: false, error: `Unknown SEO domain: ${domain}` });
+    return;
+  }
+  try {
+    const state = prepareSeoDomainPayload(matched.id);
+    sendJson(res, 200, {
+      ok: true,
+      domain: state.domain,
+      type: state.type,
+      source: state.source,
+      langs: state.langs,
+      modeKeys: state.modeKeys,
+      placeholder: state.placeholder,
+      rows: state.rows,
+      etag: state.etag
+    });
+  } catch (error) {
+    sendJson(res, 500, { ok: false, error: String(error?.message || error) });
+  }
+}
+
+async function handleSeoValidate(res, payload) {
+  const domain = String(payload?.domain || '').trim().toLowerCase();
+  const matched = resolveSeoDomain(domain);
+  if (!matched) {
+    sendJson(res, 404, { ok: false, error: `Unknown SEO domain: ${domain}` });
+    return;
+  }
+
+  try {
+    const current = prepareSeoDomainPayload(matched.id);
+    const rows = sanitizeSeoRows(payload?.rows);
+    const validation = validateSeoRows({ domainState: current, rows });
+    let nextMeta = null;
+    let nextAvailability = null;
+    if (validation.valid) {
+      const availabilityStore = loadSeoAvailability(SEO_AVAILABILITY_FILE);
+      nextMeta = matrixRowsToMeta({ domainState: current, rows });
+      nextAvailability = normalizeAvailabilityFromRows({
+        domainState: current,
+        rows,
+        currentEntries: availabilityStore.entries || {}
+      });
+    }
+
+    sendJson(res, 200, {
+      ok: true,
+      domain: current.domain,
+      valid: validation.valid,
+      errors: validation.errors,
+      warnings: validation.warnings,
+      nextMeta,
+      nextAvailability
+    });
+  } catch (error) {
+    sendJson(res, 500, { ok: false, error: String(error?.message || error) });
+  }
+}
+
+async function handleSeoSave(res, payload) {
+  const domain = String(payload?.domain || '').trim().toLowerCase();
+  const matched = resolveSeoDomain(domain);
+  if (!matched) {
+    sendJson(res, 404, { ok: false, error: `Unknown SEO domain: ${domain}` });
+    return;
+  }
+
+  const startedAt = Date.now();
+  const sourcePath = resolveSeoMetaPath(PROJECT_ROOT, matched.id);
+  const currentMetaRaw = readTextUtf8(sourcePath, '');
+  const currentAvailabilityRaw = readTextUtf8(SEO_AVAILABILITY_FILE, '');
+  const currentRegistryRaw = readTextUtf8(SEO_REGISTRY_FILE, '');
+  const currentEtag = buildSeoEtag({
+    metaRaw: currentMetaRaw,
+    availabilityRaw: currentAvailabilityRaw
+  });
+
+  const providedEtag = String(payload?.etag || '').trim();
+  if (providedEtag && providedEtag !== currentEtag) {
+    sendJson(res, 409, {
+      ok: false,
+      error: 'etag_mismatch',
+      expected: currentEtag,
+      provided: providedEtag
+    });
+    return;
+  }
+
+  try {
+    const current = prepareSeoDomainPayload(matched.id);
+    const rows = sanitizeSeoRows(payload?.rows);
+    const validation = validateSeoRows({ domainState: current, rows });
+    if (!validation.valid) {
+      sendJson(res, 400, {
+        ok: false,
+        error: 'validation_failed',
+        errors: validation.errors,
+        warnings: validation.warnings
+      });
+      return;
+    }
+
+    const availabilityStore = loadSeoAvailability(SEO_AVAILABILITY_FILE);
+    const nextMeta = matrixRowsToMeta({ domainState: current, rows });
+    const nextAvailabilityEntries = normalizeAvailabilityFromRows({
+      domainState: current,
+      rows,
+      currentEntries: availabilityStore.entries || {}
+    });
+    const nextAvailability = {
+      version: 1,
+      entries: nextAvailabilityEntries
+    };
+
+    const nextMetaText = serializeJson(nextMeta);
+    const nextAvailabilityText = serializeJson(nextAvailability);
+    if (containsBom(nextMetaText) || containsBom(nextAvailabilityText)) {
+      sendJson(res, 400, { ok: false, error: 'UTF-8 BOM is not allowed' });
+      return;
+    }
+
+    writeTextUtf8(sourcePath, nextMetaText);
+    writeTextUtf8(SEO_AVAILABILITY_FILE, nextAvailabilityText);
+
+    const blockingChecks = [];
+    const registryRun = await runNpmScript('seo:registry:generate', { timeoutMs: 180000 });
+    blockingChecks.push({
+      script: 'seo:registry:generate',
+      code: registryRun.code,
+      status: registryRun.code === 0 ? 'passed' : 'failed',
+      stdout: registryRun.stdout,
+      stderr: registryRun.stderr
+    });
+
+    const domainCheckScript = getSeoCheckScript(matched.id);
+    if (domainCheckScript) {
+      const run = await runNpmScript(domainCheckScript, { timeoutMs: 300000 });
+      blockingChecks.push({
+        script: domainCheckScript,
+        code: run.code,
+        status: run.code === 0 ? 'passed' : 'failed',
+        stdout: run.stdout,
+        stderr: run.stderr
+      });
+    } else {
+      blockingChecks.push({
+        script: null,
+        code: 0,
+        status: 'skipped',
+        stdout: '',
+        stderr: '',
+        reason: 'No domain-specific check script mapped'
+      });
+    }
+
+    const hasFailedBlocking = blockingChecks.some((item) => item.status === 'failed');
+    if (hasFailedBlocking) {
+      writeTextUtf8(sourcePath, currentMetaRaw);
+      writeTextUtf8(SEO_AVAILABILITY_FILE, currentAvailabilityRaw);
+      if (currentRegistryRaw.trim()) {
+        writeTextUtf8(SEO_REGISTRY_FILE, currentRegistryRaw);
+      } else if (fs.existsSync(SEO_REGISTRY_FILE)) {
+        fs.unlinkSync(SEO_REGISTRY_FILE);
+      }
+      addSeoHistoryItem({
+        kind: 'save',
+        domain: matched.id,
+        status: 'failed',
+        durationMs: Date.now() - startedAt,
+        summary: 'SEO save failed on blocking checks',
+        checks: blockingChecks.map((item) => ({ script: item.script, status: item.status, code: item.code }))
+      });
+      sendJson(res, 500, {
+        ok: false,
+        error: 'blocking_check_failed',
+        checks: blockingChecks
+      });
+      return;
+    }
+
+    const ciJob = startSeoCiJob(matched.id);
+    const nextState = prepareSeoDomainPayload(matched.id);
+    addSeoHistoryItem({
+      kind: 'save',
+      domain: matched.id,
+      status: 'passed',
+      durationMs: Date.now() - startedAt,
+      summary: 'SEO meta saved successfully',
+      ciJobId: ciJob.id,
+      checks: blockingChecks.map((item) => ({ script: item.script, status: item.status, code: item.code }))
+    });
+
+    sendJson(res, 200, {
+      ok: true,
+      domain: matched.id,
+      etag: nextState.etag,
+      checks: blockingChecks,
+      ciJob: {
+        id: ciJob.id,
+        status: ciJob.status,
+        createdAt: ciJob.createdAt
+      }
+    });
+  } catch (error) {
+    try {
+      writeTextUtf8(sourcePath, currentMetaRaw);
+      writeTextUtf8(SEO_AVAILABILITY_FILE, currentAvailabilityRaw);
+      if (currentRegistryRaw.trim()) {
+        writeTextUtf8(SEO_REGISTRY_FILE, currentRegistryRaw);
+      } else if (fs.existsSync(SEO_REGISTRY_FILE)) {
+        fs.unlinkSync(SEO_REGISTRY_FILE);
+      }
+    } catch (rollbackError) {
+      warn(`[seo-save] rollback failed: ${rollbackError.message}`);
+    }
+    addSeoHistoryItem({
+      kind: 'save',
+      domain: matched.id,
+      status: 'failed',
+      durationMs: Date.now() - startedAt,
+      summary: String(error?.message || error || 'unknown error')
+    });
+    sendJson(res, 500, { ok: false, error: String(error?.message || error) });
+  }
+}
+
+async function handleSeoCiStatus(res, urlObj) {
+  const jobId = String(urlObj.searchParams.get('jobId') || '').trim();
+  if (jobId) {
+    const item = seoCiJobs.get(jobId);
+    if (!item) {
+      sendJson(res, 404, { ok: false, error: `Unknown jobId: ${jobId}` });
+      return;
+    }
+    sendJson(res, 200, { ok: true, job: item });
+    return;
+  }
+
+  const jobs = Array.from(seoCiJobs.values())
+    .sort((a, b) => String(b.createdAt || '').localeCompare(String(a.createdAt || '')))
+    .slice(0, 40);
+  sendJson(res, 200, { ok: true, jobs });
+}
+
+async function handleSeoHistory(res, urlObj) {
+  const limit = Number(urlObj.searchParams.get('limit') || 80);
+  const items = listSeoHistoryItems(limit);
+  sendJson(res, 200, {
+    ok: true,
+    count: items.length,
+    items
+  });
+}
+
 async function handleIgnoreDiffs(res, payload) {
   const domain = normalizeDomain(payload.domain);
   const diffs = Array.isArray(payload.diffs) ? payload.diffs : [];
@@ -2193,6 +2732,7 @@ async function requestHandler(req, res) {
     normalizedPathname === '/work'
     || normalizedPathname === '/ignored'
     || normalizedPathname === '/editor'
+    || normalizedPathname === '/seo-admin'
     || normalizedPathname === '/revelation-admin'
   ) {
     pathname = '/';
@@ -2216,6 +2756,38 @@ async function requestHandler(req, res) {
 
   if (pathname === '/api/health' && req.method === 'GET') {
     sendJson(res, 200, { ok: true });
+    return;
+  }
+
+  if (pathname === '/api/seo/bootstrap' && req.method === 'GET') {
+    await handleSeoBootstrap(res);
+    return;
+  }
+
+  if (pathname === '/api/seo/domain' && req.method === 'GET') {
+    await handleSeoDomain(res, urlObj);
+    return;
+  }
+
+  if (pathname === '/api/seo/validate' && req.method === 'POST') {
+    const body = await readBody(req);
+    await handleSeoValidate(res, body);
+    return;
+  }
+
+  if (pathname === '/api/seo/save' && req.method === 'POST') {
+    const body = await readBody(req);
+    await handleSeoSave(res, body);
+    return;
+  }
+
+  if (pathname === '/api/seo/ci-status' && req.method === 'GET') {
+    await handleSeoCiStatus(res, urlObj);
+    return;
+  }
+
+  if (pathname === '/api/seo/history' && req.method === 'GET') {
+    await handleSeoHistory(res, urlObj);
     return;
   }
 
@@ -2364,6 +2936,7 @@ function main() {
   const port = parsePort(process.argv);
   ensureDir(APP_STATE_ROOT);
   ensureDir(APP_REPORT_DIR);
+  ensureSeoSupportFiles();
   if (!ALLOW_REMOTE_ACCESS) {
     log('Patch Console is local-only. Set PATCH_CONSOLE_ALLOW_REMOTE=1 only for explicit remote access testing.');
   } else if (REQUIRE_REMOTE_TOKEN) {

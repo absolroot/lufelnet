@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
@@ -6,45 +6,71 @@
   <title>Patch Console</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Noto+Sans+KR:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./patch-console.css?v=0.12.5">
+  <link rel="stylesheet" href="./patch-console.css?v=0.15.0">
 </head>
 <body>
   <div class="app-shell">
-    <header class="app-header panel">
-      <div class="brand-block">
-        <p class="kicker">Patch Console Admin</p>
-        <h1>Local Patch Console</h1>
+    <aside class="app-sidebar panel">
+      <div class="sidebar-brand">
+        <div class="brand-block">
+          <p class="kicker">Patch Console Admin</p>
+          <h1>Local Patch Console</h1>
+        </div>
+        <p class="muted small">패치/SEO 운영을 위한 관리자 콘솔</p>
       </div>
 
-      <nav class="view-tabs" role="tablist" aria-label="관리자 메뉴">
-        <button class="view-tab active" data-view="work" type="button" aria-selected="true" aria-controls="panel-work" tabindex="0">패치 작업</button>
-        <button class="view-tab" data-view="ignored" type="button" aria-selected="false" aria-controls="panel-ignored" tabindex="-1">무시 목록</button>
-        <button class="view-tab" data-view="editor" type="button" aria-selected="false" aria-controls="panel-editor" tabindex="-1">데이터 편집기</button>
-        <button class="view-tab" data-view="revelation-admin" type="button" aria-selected="false" aria-controls="panel-revelation-admin" tabindex="-1">Revelation Admin</button>
-      </nav>
-
-      <section class="header-domain">
-        <div class="header-controls">
-          <div id="domain-tabs" class="domain-tabs"></div>
-          <button
-            id="btn-header-refresh"
-            class="header-refresh-btn"
-            type="button"
-            title="목록 · 리포트 · 무시 목록 새로고침"
-            aria-label="목록 · 리포트 · 무시 목록 새로고침"
-          >
-            <svg class="header-refresh-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M20 12a8 8 0 0 1-13.66 5.66M4 12A8 8 0 0 1 17.66 6.34M4 4v4h4M16 16h4v4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </button>
-        </div>
-        <span id="current-domain" class="sr-only">character</span>
+      <section class="sidebar-section" aria-labelledby="view-cluster-work">
+        <p id="view-cluster-work" class="sidebar-label">Patch Workflows</p>
+        <nav class="sidebar-nav" role="tablist" aria-label="패치 작업 뷰">
+          <button class="view-tab active" data-view="work" type="button" aria-selected="true" aria-controls="panel-work" tabindex="0">패치 작업</button>
+          <button class="view-tab" data-view="ignored" type="button" aria-selected="false" aria-controls="panel-ignored" tabindex="-1">무시 목록</button>
+          <button class="view-tab" data-view="editor" type="button" aria-selected="false" aria-controls="panel-editor" tabindex="-1">데이터 편집기</button>
+        </nav>
       </section>
-    </header>
 
-    <main class="app-main">
-      <section class="panel main">
+      <section class="sidebar-section" aria-labelledby="view-cluster-ops">
+        <p id="view-cluster-ops" class="sidebar-label">Operations</p>
+        <nav class="sidebar-nav sidebar-nav-ops" role="tablist" aria-label="운영 관리 뷰">
+          <button class="view-tab" data-view="seo-admin" type="button" aria-selected="false" aria-controls="panel-seo-admin" tabindex="-1">SEO Admin</button>
+          <button class="view-tab" data-view="revelation-admin" type="button" aria-selected="false" aria-controls="panel-revelation-admin" tabindex="-1">Revelation Admin</button>
+        </nav>
+      </section>
+
+      <section class="sidebar-section sidebar-domain-section">
+        <div class="sidebar-domain-head">
+          <p class="sidebar-label">Domain</p>
+          <span id="current-domain" class="sidebar-domain-current">character</span>
+        </div>
+        <div id="domain-tabs" class="domain-tabs sidebar-domain-tabs"></div>
+      </section>
+    </aside>
+
+    <div class="app-workspace">
+      <header class="app-header panel">
+        <div class="header-main">
+          <div class="header-title-wrap">
+            <p class="kicker">Active Workspace</p>
+            <h2 id="active-view-title">패치 작업</h2>
+            <p id="active-view-description" class="muted small">API/로컬 diff를 조회하고 선택 반영합니다.</p>
+          </div>
+          <div class="header-actions">
+            <button
+              id="btn-header-refresh"
+              class="header-refresh-btn"
+              type="button"
+              title="목록 · 리포트 · 무시 목록 새로고침"
+              aria-label="목록 · 리포트 · 무시 목록 새로고침"
+            >
+              <svg class="header-refresh-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20 12a8 8 0 0 1-13.66 5.66M4 12A8 8 0 0 1 17.66 6.34M4 4v4h4M16 16h4v4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <main class="app-main">
+        <section class="panel main">
         <section id="panel-work" class="view-panel active">
           <details class="group work-controls-accordion">
             <summary>
@@ -400,6 +426,100 @@
           </section>
         </section>
 
+        <section id="panel-seo-admin" class="view-panel hidden seo-admin-view">
+          <section class="group seo-admin-hero">
+            <div class="seo-admin-head">
+              <div>
+                <h2>SEO Admin</h2>
+                <p class="muted small">도메인별 제목/설명/출시여부 통합 관리</p>
+              </div>
+              <div class="seo-stat-grid" style="grid-template-columns: repeat(3, minmax(0, 1fr));">
+                <article class="seo-stat-card">
+                  <span>Domain</span>
+                  <strong id="seo-stat-domain">-</strong>
+                </article>
+                <article class="seo-stat-card">
+                  <span>Rows</span>
+                  <strong id="seo-stat-rows">0</strong>
+                </article>
+                <article class="seo-stat-card">
+                  <span>Changed</span>
+                  <strong id="seo-stat-dirty">0</strong>
+                </article>
+              </div>
+            </div>
+
+            <div id="seo-domain-list" class="seo-domain-list"></div>
+
+            <div class="seo-toolbar">
+              <div class="field">
+                <label>Scope Filter</label>
+                <input id="seo-scope-filter" type="text" placeholder="scope / placeholder 검색">
+              </div>
+              <label class="field checkbox-field">
+                <span>CN 컬럼 표시</span>
+                <input id="seo-toggle-cn" type="checkbox">
+              </label>
+            </div>
+            <div class="seo-action-bar">
+              <div class="seo-action-group">
+                <span class="seo-action-group-label">데이터</span>
+                <button id="btn-seo-load" class="btn ghost">도메인 로드</button>
+              </div>
+              <div class="seo-action-group">
+                <span class="seo-action-group-label">일괄편집</span>
+                <button id="btn-seo-copy-kr" class="btn ghost" title="KR 언어의 Title/Description을 EN·JP에 동일하게 복사합니다">KR 내용을 EN·JP에 복사</button>
+                <button id="btn-seo-insert-name" class="btn ghost">{name} 삽입</button>
+                <button id="btn-seo-insert-path" class="btn ghost">{path} 삽입</button>
+                <button id="btn-seo-batch-suffix" class="btn ghost" title="모든 Title/Description 끝에 공통 텍스트를 추가합니다">접미사 일괄 추가</button>
+                <button id="btn-seo-batch-released" class="btn ghost" title="표시된 모든 행의 Released 상태를 한 번에 ON/OFF 합니다">Released 일괄 변경</button>
+              </div>
+              <div class="seo-action-group">
+                <span class="seo-action-group-label">저장</span>
+                <button id="btn-seo-validate" class="btn warn">검증</button>
+                <button id="btn-seo-save" class="btn primary">저장</button>
+              </div>
+            </div>
+            <div class="seo-status-row">
+              <p id="seo-status" class="seo-status-item muted small">SEO 도메인을 선택하세요.</p>
+              <p id="seo-validation" class="seo-status-item muted small">검증 결과 없음</p>
+              <p id="seo-ci-status" class="seo-status-item muted small">CI 상태 없음</p>
+            </div>
+          </section>
+
+          <section class="seo-admin-main">
+            <div class="group-head" style="margin-bottom:10px;">
+              <h2>SEO Matrix Editor</h2>
+              <p id="seo-visible-count" class="muted small">표시 0 / 전체 0</p>
+            </div>
+            <div class="seo-matrix-wrap">
+              <div id="seo-matrix-body" class="seo-scope-card-list">
+                <p class="muted" style="padding:10px;">도메인을 로드하세요.</p>
+              </div>
+            </div>
+          </section>
+
+          <details class="group seo-details-panel">
+            <summary>운영 가이드</summary>
+            <ul class="seo-help-list">
+              <li>`detail`/템플릿 스코프는 `{name}` 토큰을 유지하세요.</li>
+              <li>`maps.detail` 계열은 `{path}` 토큰이 필요합니다.</li>
+              <li>저장 전 `검증`으로 누락 토큰을 먼저 차단하세요.</li>
+              <li>`Ctrl + S`(또는 `Cmd + S`)로 저장할 수 있습니다.</li>
+            </ul>
+          </details>
+
+          <details class="group seo-details-panel">
+            <summary>
+              <span>SEO 저장 이력</span>
+              <button id="btn-seo-refresh-history" class="btn ghost small seo-details-action" type="button">새로고침</button>
+            </summary>
+            <div id="seo-history-list" class="seo-history-list">
+              <p class="muted" style="padding:10px;">아직 저장 이력이 없습니다.</p>
+            </div>
+          </details>
+        </section>
+
         <section id="panel-revelation-admin" class="view-panel hidden">
           <section class="revelation-admin-layout">
             <aside class="group revelation-admin-list-panel">
@@ -643,9 +763,10 @@
             </div>
           </section>
         </section>
-      </section>
-    </main>
+        </section>
+      </main>
+    </div>
   </div>
-  <script src="./patch-console.js?v=0.12.4"></script>
+  <script src="./patch-console.js?v=0.15.0"></script>
 </body>
 </html>

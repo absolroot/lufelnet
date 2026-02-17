@@ -1,4 +1,4 @@
-﻿const state = {
+const state = {
   domain: 'character',
   activeView: 'work',
   capabilities: [],
@@ -50,6 +50,26 @@
   dataEditorDirty: false,
   selectedParts: new Set(),
   showChangedLinesOnly: false,
+  seoState: {
+    initialized: false,
+    domains: [],
+    activeDomain: '',
+    domainType: '',
+    rows: [],
+    draft: [],
+    langs: ['kr', 'en', 'jp'],
+    modeKeys: [],
+    etag: '',
+    validation: { valid: null, errors: [], warnings: [] },
+    saveStatus: 'idle',
+    ciJob: '',
+    ciStatus: '',
+    history: [],
+    showCn: false,
+    dirty: false,
+    lastFocusedField: null,
+    scopeFilter: ''
+  },
   revelationAdmin: {
     revision: '',
     cards: [],
@@ -93,10 +113,32 @@ const FALLBACK_CAPABILITIES = [
   { id: 'revelation', label: 'Revelation', enabled: true, features: ['list', 'report', 'patch', 'create'], parts: DOMAIN_PARTS.revelation }
 ];
 
-const APP_VERSION = 'patch-console v0.12.3';
+const APP_VERSION = 'patch-console v0.15.0';
 const VIEW_KEY = 'patch-console.activeView';
 const DATA_EDITOR_MODE_KEY = 'patch-console.dataEditorMode';
-const VALID_VIEWS = new Set(['work', 'ignored', 'editor', 'revelation-admin']);
+const VALID_VIEWS = new Set(['work', 'ignored', 'editor', 'seo-admin', 'revelation-admin']);
+const VIEW_META = {
+  work: {
+    title: '패치 작업',
+    description: 'API/로컬 diff를 조회하고 선택 반영합니다.'
+  },
+  ignored: {
+    title: '무시 목록',
+    description: '누적된 무시 규칙을 조회하고 복구/정리합니다.'
+  },
+  editor: {
+    title: '데이터 편집기',
+    description: '도메인 데이터를 Form/Raw 모드로 직접 편집합니다.'
+  },
+  'seo-admin': {
+    title: 'SEO Admin',
+    description: 'seo-meta 기반으로 타이틀/설명/출시 여부를 운영합니다.'
+  },
+  'revelation-admin': {
+    title: 'Revelation Admin',
+    description: 'Revelation 카드 데이터 운영 전용 화면입니다.'
+  }
+};
 
 const dom = {
   domainTabs: document.getElementById('domain-tabs'),
@@ -104,7 +146,10 @@ const dom = {
   panelWork: document.getElementById('panel-work'),
   panelIgnored: document.getElementById('panel-ignored'),
   panelEditor: document.getElementById('panel-editor'),
+  panelSeoAdmin: document.getElementById('panel-seo-admin'),
   panelRevelationAdmin: document.getElementById('panel-revelation-admin'),
+  activeViewTitle: document.getElementById('active-view-title'),
+  activeViewDescription: document.getElementById('active-view-description'),
   currentDomain: document.getElementById('current-domain'),
   addCharacterGroup: document.getElementById('add-character-group'),
   addRevelationGroup: document.getElementById('add-revelation-group'),
@@ -255,7 +300,28 @@ const dom = {
   revAdminCreateSubSet2Cn: document.getElementById('rev-admin-create-sub-set2-cn'),
   revAdminCreateSubSet4Cn: document.getElementById('rev-admin-create-sub-set4-cn'),
   btnRevAdminCreateSubmit: document.getElementById('btn-rev-admin-create-submit'),
-  btnRevAdminCreateCancel: document.getElementById('btn-rev-admin-create-cancel')
+  btnRevAdminCreateCancel: document.getElementById('btn-rev-admin-create-cancel'),
+  seoDomainList: document.getElementById('seo-domain-list'),
+  seoScopeFilter: document.getElementById('seo-scope-filter'),
+  seoToggleCn: document.getElementById('seo-toggle-cn'),
+  btnSeoLoad: document.getElementById('btn-seo-load'),
+  btnSeoCopyKr: document.getElementById('btn-seo-copy-kr'),
+  btnSeoInsertName: document.getElementById('btn-seo-insert-name'),
+  btnSeoInsertPath: document.getElementById('btn-seo-insert-path'),
+  btnSeoBatchSuffix: document.getElementById('btn-seo-batch-suffix'),
+  btnSeoBatchReleased: document.getElementById('btn-seo-batch-released'),
+  btnSeoValidate: document.getElementById('btn-seo-validate'),
+  btnSeoSave: document.getElementById('btn-seo-save'),
+  seoStatus: document.getElementById('seo-status'),
+  seoValidation: document.getElementById('seo-validation'),
+  seoCiStatus: document.getElementById('seo-ci-status'),
+  seoMatrixBody: document.getElementById('seo-matrix-body'),
+  seoStatDomain: document.getElementById('seo-stat-domain'),
+  seoStatRows: document.getElementById('seo-stat-rows'),
+  seoStatDirty: document.getElementById('seo-stat-dirty'),
+  seoVisibleCount: document.getElementById('seo-visible-count'),
+  btnSeoRefreshHistory: document.getElementById('btn-seo-refresh-history'),
+  seoHistoryList: document.getElementById('seo-history-list')
 };
 
 function appendLog(message) {
@@ -270,6 +336,7 @@ function getUrlView() {
     const url = new URL(window.location.href);
     const path = String(url.pathname || '').toLowerCase();
     const pathEnd = path.split('/').filter(Boolean).pop() || '';
+    if (pathEnd === 'seo-admin') return 'seo-admin';
     if (pathEnd === 'revelation-admin') return 'revelation-admin';
     if (pathEnd === 'ignored') return 'ignored';
     if (pathEnd === 'editor') return 'editor';
@@ -305,12 +372,18 @@ function syncViewTabsForDomain() {
   }
 }
 
+function renderActiveViewHeader() {
+  const meta = VIEW_META[state.activeView] || VIEW_META.work;
+  if (dom.activeViewTitle) dom.activeViewTitle.textContent = meta.title;
+  if (dom.activeViewDescription) dom.activeViewDescription.textContent = meta.description;
+}
+
 function getViewPath(view) {
   const next = normalizeView(view);
   try {
     const url = new URL(window.location.href);
     const normalizedPath = String(url.pathname || '/')
-      .replace(/\/(work|ignored|editor|revelation-admin|index\.html)?\/?$/, '/')
+      .replace(/\/(work|ignored|editor|seo-admin|revelation-admin|index\.html)?\/?$/, '/')
       .replace(/\/+/g, '/');
     return `${normalizedPath}${next}`;
   } catch {
@@ -322,9 +395,11 @@ function setActiveView(view) {
   const normalized = normalizeView(view);
   state.activeView = (normalized === 'revelation-admin' && state.domain !== 'revelation') ? 'work' : normalized;
   syncViewTabsForDomain();
+  renderActiveViewHeader();
   if (dom.panelWork) dom.panelWork.classList.toggle('hidden', state.activeView !== 'work');
   if (dom.panelIgnored) dom.panelIgnored.classList.toggle('hidden', state.activeView !== 'ignored');
   if (dom.panelEditor) dom.panelEditor.classList.toggle('hidden', state.activeView !== 'editor');
+  if (dom.panelSeoAdmin) dom.panelSeoAdmin.classList.toggle('hidden', state.activeView !== 'seo-admin');
   if (dom.panelRevelationAdmin) dom.panelRevelationAdmin.classList.toggle('hidden', state.activeView !== 'revelation-admin');
 
   const sidebars = document.querySelectorAll('.view-sidebar');
@@ -333,7 +408,7 @@ function setActiveView(view) {
     sidebar.classList.toggle('hidden', target !== state.activeView);
   }
 
-  document.body.classList.remove('view-work', 'view-ignored', 'view-editor', 'view-revelation-admin');
+  document.body.classList.remove('view-work', 'view-ignored', 'view-editor', 'view-seo-admin', 'view-revelation-admin');
   document.body.classList.add(`view-${state.activeView}`);
 
   if (dom.viewTabs) {
@@ -368,6 +443,11 @@ function setActiveView(view) {
 
   if (state.activeView === 'editor') {
     setDataEditorMode(getStoredDataEditorMode(), { renderOnly: true });
+  }
+  if (state.activeView === 'seo-admin') {
+    ensureSeoAdminBootstrapped().catch((error) => {
+      appendLog(`[seo] bootstrap failed: ${error.message}`);
+    });
   }
   if (state.activeView === 'revelation-admin' && state.domain === 'revelation') {
     ensureRevelationAdminBootstrapped();
@@ -625,6 +705,586 @@ function renderCounts() {
 
   const ignoreSortLabel = document.getElementById('ignored-sort-label');
   if (ignoreSortLabel) ignoreSortLabel.textContent = String(state.ignoredSort || 'created_desc');
+}
+
+function seoStateRef() {
+  return state.seoState;
+}
+
+function normalizeSeoRows(rows, langs) {
+  const safeRows = Array.isArray(rows) ? rows : [];
+  const safeLangs = Array.isArray(langs) ? langs : ['kr', 'en', 'jp'];
+  return safeRows.map((row) => {
+    const next = {
+      scope: String(row?.scope || '').trim(),
+      placeholder: row?.placeholder == null ? null : String(row.placeholder),
+      values: {},
+      released: {}
+    };
+    for (const lang of safeLangs) {
+      const values = row?.values?.[lang] || {};
+      next.values[lang] = {
+        title: String(values.title || ''),
+        description: String(values.description || '')
+      };
+      next.released[lang] = Boolean(row?.released?.[lang]);
+    }
+    return next;
+  });
+}
+
+function getSeoLangsForView() {
+  const seo = seoStateRef();
+  const langs = ['kr', 'en', 'jp'];
+  if (seo.showCn) langs.push('cn');
+  return langs.filter((lang) => seo.langs.includes(lang) || lang === 'cn');
+}
+
+function getSeoRowByScope(rows, scope) {
+  return (Array.isArray(rows) ? rows : []).find((row) => String(row?.scope || '') === String(scope || '')) || null;
+}
+
+function getSeoRowsForMatrix() {
+  const seo = seoStateRef();
+  const rows = Array.isArray(seo.draft) ? seo.draft : [];
+  const query = String(seo.scopeFilter || '').trim().toLowerCase();
+  if (!query) return rows;
+  return rows.filter((row) => {
+    const text = `${row?.scope || ''} ${row?.placeholder || ''}`.toLowerCase();
+    return text.includes(query);
+  });
+}
+
+function seoIsCellChanged(scope, lang, field) {
+  const seo = seoStateRef();
+  const beforeRow = getSeoRowByScope(seo.rows, scope);
+  const draftRow = getSeoRowByScope(seo.draft, scope);
+  if (!beforeRow || !draftRow) return false;
+  if (field === 'released') {
+    return Boolean(beforeRow.released?.[lang]) !== Boolean(draftRow.released?.[lang]);
+  }
+  const beforeValue = String(beforeRow.values?.[lang]?.[field] || '');
+  const draftValue = String(draftRow.values?.[lang]?.[field] || '');
+  return beforeValue !== draftValue;
+}
+
+function getSeoChangeSummary() {
+  const seo = seoStateRef();
+  const langs = getSeoLangsForView();
+  let changedRows = 0;
+  let changedCells = 0;
+  for (const row of (seo.draft || [])) {
+    const scope = String(row?.scope || '');
+    let rowChanged = false;
+    for (const lang of langs) {
+      if (seoIsCellChanged(scope, lang, 'title')) {
+        rowChanged = true;
+        changedCells += 1;
+      }
+      if (seoIsCellChanged(scope, lang, 'description')) {
+        rowChanged = true;
+        changedCells += 1;
+      }
+      if (seoIsCellChanged(scope, lang, 'released')) {
+        rowChanged = true;
+        changedCells += 1;
+      }
+    }
+    if (rowChanged) changedRows += 1;
+  }
+  return { changedRows, changedCells };
+}
+
+function renderSeoStats() {
+  const seo = seoStateRef();
+  const totalRows = Array.isArray(seo.draft) ? seo.draft.length : 0;
+  const visibleRows = getSeoRowsForMatrix().length;
+  const { changedRows } = getSeoChangeSummary();
+  if (dom.seoStatDomain) dom.seoStatDomain.textContent = seo.activeDomain || '-';
+  if (dom.seoStatRows) dom.seoStatRows.textContent = String(totalRows);
+  if (dom.seoStatDirty) dom.seoStatDirty.textContent = String(changedRows);
+  if (dom.seoVisibleCount) dom.seoVisibleCount.textContent = `표시 ${visibleRows} / 전체 ${totalRows}`;
+}
+
+function renderSeoControlState() {
+  const seo = seoStateRef();
+  if (dom.btnSeoSave) {
+    dom.btnSeoSave.disabled = !seo.activeDomain || !seo.dirty;
+    dom.btnSeoSave.title = seo.dirty ? '저장' : '변경된 항목이 없습니다.';
+  }
+  if (dom.btnSeoValidate) {
+    dom.btnSeoValidate.disabled = !seo.activeDomain;
+  }
+}
+
+function updateSeoDirtyState() {
+  const seo = seoStateRef();
+  const before = JSON.stringify(seo.rows || []);
+  const draft = JSON.stringify(seo.draft || []);
+  seo.dirty = before !== draft;
+  if (dom.seoStatus && seo.activeDomain) {
+    const base = `${seo.activeDomain} (${seo.domainType || '-'})`;
+    dom.seoStatus.textContent = seo.dirty
+      ? `${base} - 변경됨 (저장 필요)`
+      : `${base} - 저장됨`;
+    dom.seoStatus.dataset.state = seo.dirty ? 'running' : 'passed';
+  } else if (dom.seoStatus) {
+    dom.seoStatus.dataset.state = 'idle';
+  }
+  renderSeoStats();
+  renderSeoControlState();
+}
+
+function renderSeoDomainOptions() {
+  const seo = seoStateRef();
+  if (!dom.seoDomainList) return;
+  const domains = Array.isArray(seo.domains) ? seo.domains : [];
+  if (!seo.activeDomain && domains[0]) seo.activeDomain = domains[0].id;
+  dom.seoDomainList.innerHTML = domains
+    .map((item) => {
+      const active = item.id === seo.activeDomain ? ' active' : '';
+      return `<button class="seo-domain-tab${active}" data-seo-domain="${escapeHtml(item.id)}" type="button">${escapeHtml(item.id)}</button>`;
+    })
+    .join('');
+  renderSeoStats();
+  renderSeoControlState();
+}
+
+function renderSeoValidation() {
+  const seo = seoStateRef();
+  if (!dom.seoValidation) return;
+  const validation = seo.validation || {};
+  if (validation.valid == null) {
+    dom.seoValidation.textContent = '검증 결과 없음';
+    dom.seoValidation.dataset.state = 'idle';
+    return;
+  }
+  const errors = Array.isArray(validation.errors) ? validation.errors : [];
+  const warnings = Array.isArray(validation.warnings) ? validation.warnings : [];
+  if (validation.valid) {
+    dom.seoValidation.textContent = `검증 통과 (warnings: ${warnings.length})`;
+    dom.seoValidation.dataset.state = 'passed';
+    return;
+  }
+  const first = errors[0];
+  const head = first
+    ? `${first.scope}/${first.lang}/${first.field}: ${first.message}`
+    : 'unknown error';
+  dom.seoValidation.textContent = `검증 실패 ${errors.length}건 - ${head}`;
+  dom.seoValidation.dataset.state = 'failed';
+}
+
+function renderSeoCiStatus() {
+  const seo = seoStateRef();
+  if (!dom.seoCiStatus) return;
+  if (!seo.ciJob) {
+    dom.seoCiStatus.textContent = 'CI 상태 없음';
+    dom.seoCiStatus.dataset.state = 'idle';
+    return;
+  }
+  const text = seo.ciStatus || 'running';
+  dom.seoCiStatus.textContent = `CI job ${seo.ciJob}: ${text}`;
+  if (text === 'passed' || text === 'success') {
+    dom.seoCiStatus.dataset.state = 'passed';
+  } else if (text === 'failed' || text === 'error') {
+    dom.seoCiStatus.dataset.state = 'failed';
+  } else {
+    dom.seoCiStatus.dataset.state = 'running';
+  }
+}
+
+function renderSeoHistory() {
+  const seo = seoStateRef();
+  if (!dom.seoHistoryList) return;
+  const items = Array.isArray(seo.history) ? seo.history : [];
+  if (!items.length) {
+    dom.seoHistoryList.innerHTML = '<p class="muted" style="padding:10px;">아직 저장 이력이 없습니다.</p>';
+    return;
+  }
+  dom.seoHistoryList.innerHTML = items
+    .map((item) => {
+      const status = String(item.status || 'unknown').toLowerCase();
+      const cls = status === 'passed' ? 'passed' : (status === 'failed' ? 'failed' : 'running');
+      const created = String(item.createdAt || '').replace('T', ' ').slice(0, 19);
+      const summary = String(item.summary || '-');
+      const kind = String(item.kind || '-');
+      const domain = String(item.domain || '-');
+      const jobId = item.jobId || item.ciJobId ? ` job=${item.jobId || item.ciJobId}` : '';
+      return `
+        <article class="seo-history-item">
+          <span class="status ${cls}">${escapeHtml(status)}</span>
+          <p><strong>${escapeHtml(kind)}</strong> / ${escapeHtml(domain)}</p>
+          <p>${escapeHtml(summary)}</p>
+          <p class="meta">${escapeHtml(created)}${escapeHtml(jobId)}</p>
+        </article>
+      `;
+    })
+    .join('');
+}
+
+function renderSeoMatrix() {
+  const seo = seoStateRef();
+  if (!dom.seoMatrixBody) return;
+  const draftRows = Array.isArray(seo.draft) ? seo.draft : [];
+  const rows = getSeoRowsForMatrix();
+  const langs = getSeoLangsForView();
+  if (!draftRows.length || !langs.length) {
+    dom.seoMatrixBody.innerHTML = '<p class="muted" style="padding:10px;">도메인을 로드하세요.</p>';
+    renderSeoStats();
+    renderSeoControlState();
+    return;
+  }
+
+  if (!rows.length) {
+    dom.seoMatrixBody.innerHTML = '<p class="muted" style="padding:10px;">필터 결과가 없습니다. Scope Filter를 조정하세요.</p>';
+    renderSeoStats();
+    renderSeoControlState();
+    return;
+  }
+
+  dom.seoMatrixBody.innerHTML = rows
+    .map((row) => {
+      const scope = String(row.scope || '');
+      const langRows = langs
+        .map((lang) => {
+          const values = row.values?.[lang] || { title: '', description: '' };
+          const titleChanged = seoIsCellChanged(scope, lang, 'title') ? 'changed' : '';
+          const descChanged = seoIsCellChanged(scope, lang, 'description') ? 'changed' : '';
+          const releasedChanged = seoIsCellChanged(scope, lang, 'released') ? ' changed' : '';
+          const checked = row.released?.[lang] ? 'checked' : '';
+          return `
+            <div class="seo-lang-row">
+              <div class="seo-lang-tag">${escapeHtml(lang.toUpperCase())}</div>
+              <div class="seo-lang-fields">
+                <div class="seo-field-wrap">
+                  <label>Title</label>
+                  <textarea
+                    class="seo-cell ${titleChanged}"
+                    data-seo-scope="${escapeHtml(scope)}"
+                    data-seo-lang="${escapeHtml(lang)}"
+                    data-seo-field="title"
+                    spellcheck="false"
+                  >${escapeHtml(values.title || '')}</textarea>
+                </div>
+                <div class="seo-field-wrap">
+                  <label>Description</label>
+                  <textarea
+                    class="seo-cell ${descChanged}"
+                    data-seo-scope="${escapeHtml(scope)}"
+                    data-seo-lang="${escapeHtml(lang)}"
+                    data-seo-field="description"
+                    spellcheck="false"
+                  >${escapeHtml(values.description || '')}</textarea>
+                </div>
+                <label class="seo-released-wrap${releasedChanged}">
+                  <span>Released</span>
+                  <input
+                    type="checkbox"
+                    data-seo-scope="${escapeHtml(scope)}"
+                    data-seo-lang="${escapeHtml(lang)}"
+                    data-seo-field="released"
+                    ${checked}
+                  >
+                </label>
+              </div>
+            </div>
+          `;
+        })
+        .join('');
+      return `
+        <div class="seo-scope-card" data-seo-scope-row="${escapeHtml(scope)}">
+          <div class="seo-scope-header">
+            <span class="seo-scope-name">${escapeHtml(scope || '-')}</span>
+            ${row.placeholder ? `<span class="seo-scope-placeholder">placeholder: ${escapeHtml(row.placeholder)}</span>` : ''}
+          </div>
+          ${langRows}
+        </div>
+      `;
+    })
+    .join('');
+  renderSeoStats();
+  renderSeoControlState();
+}
+
+function updateSeoDraftField(scope, lang, field, value) {
+  const seo = seoStateRef();
+  const row = getSeoRowByScope(seo.draft, scope);
+  if (!row) return;
+  if (field === 'released') {
+    row.released[lang] = Boolean(value);
+    updateSeoDirtyState();
+    return;
+  }
+  if (!row.values[lang]) {
+    row.values[lang] = { title: '', description: '' };
+  }
+  row.values[lang][field] = String(value || '');
+  updateSeoDirtyState();
+}
+
+function patchSeoChangedClass(target) {
+  if (!(target instanceof HTMLElement)) return;
+  const scope = String(target.getAttribute('data-seo-scope') || '').trim();
+  const lang = String(target.getAttribute('data-seo-lang') || '').trim();
+  const field = String(target.getAttribute('data-seo-field') || '').trim();
+  if (!scope || !lang || !field) return;
+  if (field === 'released') return;
+  const changed = seoIsCellChanged(scope, lang, field);
+  target.classList.toggle('changed', changed);
+}
+
+function readSeoMatrixEventTarget(target) {
+  if (!(target instanceof HTMLElement)) return null;
+  const scope = String(target.getAttribute('data-seo-scope') || '').trim();
+  const lang = String(target.getAttribute('data-seo-lang') || '').trim();
+  const field = String(target.getAttribute('data-seo-field') || '').trim();
+  if (!scope || !lang || !field) return null;
+  return { scope, lang, field };
+}
+
+function setSeoStatusText(text) {
+  if (!dom.seoStatus) return;
+  dom.seoStatus.textContent = String(text || '');
+  dom.seoStatus.dataset.state = text ? 'running' : 'idle';
+}
+
+async function loadSeoBootstrapData() {
+  const result = await requestJson('/api/seo/bootstrap');
+  const seo = seoStateRef();
+  seo.domains = Array.isArray(result.domains) ? result.domains : [];
+  if (!seo.activeDomain) {
+    seo.activeDomain = String(result.defaultDomain || seo.domains[0]?.id || '');
+  }
+  renderSeoDomainOptions();
+}
+
+async function loadSeoDomainData(domain = null) {
+  const seo = seoStateRef();
+  const targetDomain = String(domain || seo.activeDomain || '').trim().toLowerCase();
+  if (!targetDomain) return;
+  const result = await requestJson(`/api/seo/domain?domain=${encodeURIComponent(targetDomain)}`);
+  seo.activeDomain = String(result.domain || targetDomain);
+  seo.domainType = String(result.type || '');
+  seo.langs = Array.isArray(result.langs) ? result.langs : ['kr', 'en', 'jp'];
+  seo.modeKeys = Array.isArray(result.modeKeys) ? result.modeKeys : [];
+  seo.rows = normalizeSeoRows(result.rows, seo.langs);
+  seo.draft = normalizeSeoRows(cloneData(seo.rows), seo.langs);
+  seo.etag = String(result.etag || '');
+  seo.validation = { valid: null, errors: [], warnings: [] };
+  seo.saveStatus = 'loaded';
+  seo.ciJob = '';
+  seo.ciStatus = '';
+  seo.dirty = false;
+  seo.scopeFilter = '';
+  if (dom.seoScopeFilter) dom.seoScopeFilter.value = '';
+  // update active state on domain tabs
+  if (dom.seoDomainList) {
+    for (const tab of dom.seoDomainList.querySelectorAll('.seo-domain-tab')) {
+      tab.classList.toggle('active', tab.dataset.seoDomain === seo.activeDomain);
+    }
+  }
+  updateSeoDirtyState();
+  renderSeoMatrix();
+  renderSeoValidation();
+  renderSeoCiStatus();
+  appendLog(`[seo] domain loaded: ${seo.activeDomain}`);
+}
+
+async function loadSeoHistoryData() {
+  const result = await requestJson('/api/seo/history?limit=80');
+  const seo = seoStateRef();
+  seo.history = Array.isArray(result.items) ? result.items : [];
+  renderSeoHistory();
+}
+
+async function runSeoValidate() {
+  const seo = seoStateRef();
+  if (!seo.activeDomain) return;
+  const result = await requestJson('/api/seo/validate', {
+    method: 'POST',
+    body: {
+      domain: seo.activeDomain,
+      rows: seo.draft
+    }
+  });
+  seo.validation = {
+    valid: Boolean(result.valid),
+    errors: Array.isArray(result.errors) ? result.errors : [],
+    warnings: Array.isArray(result.warnings) ? result.warnings : []
+  };
+  renderSeoValidation();
+  appendLog(`[seo] validate: ${seo.validation.valid ? 'passed' : 'failed'} (${seo.activeDomain})`);
+}
+
+async function pollSeoCiStatus() {
+  const seo = seoStateRef();
+  if (!seo.ciJob) return;
+  const result = await requestJson(`/api/seo/ci-status?jobId=${encodeURIComponent(seo.ciJob)}`);
+  const job = result.job || {};
+  seo.ciStatus = String(job.status || 'running');
+  renderSeoCiStatus();
+  if (seo.ciStatus === 'running') {
+    window.setTimeout(() => {
+      pollSeoCiStatus().catch((error) => appendLog(`[seo] ci poll failed: ${error.message}`));
+    }, 2500);
+  } else {
+    loadSeoHistoryData().catch((error) => appendLog(`[seo] history refresh failed: ${error.message}`));
+  }
+}
+
+async function runSeoSave() {
+  const seo = seoStateRef();
+  if (!seo.activeDomain) return;
+  await runSeoValidate();
+  if (!seo.validation.valid) {
+    throw new Error('seo_validation_failed_before_save');
+  }
+  const result = await requestJson('/api/seo/save', {
+    method: 'POST',
+    body: {
+      domain: seo.activeDomain,
+      etag: seo.etag,
+      rows: seo.draft
+    }
+  });
+  seo.saveStatus = 'saved';
+  seo.etag = String(result.etag || seo.etag);
+  seo.rows = normalizeSeoRows(cloneData(seo.draft), seo.langs);
+  updateSeoDirtyState();
+  seo.ciJob = String(result?.ciJob?.id || '');
+  seo.ciStatus = String(result?.ciJob?.status || '');
+  renderSeoCiStatus();
+  renderSeoMatrix();
+  await loadSeoHistoryData();
+  appendLog(`[seo] save completed (${seo.activeDomain})`);
+  if (seo.ciJob) {
+    pollSeoCiStatus().catch((error) => appendLog(`[seo] ci poll failed: ${error.message}`));
+  }
+}
+
+function runSeoCopyKrToEnJp() {
+  const seo = seoStateRef();
+  for (const row of seo.draft) {
+    const krTitle = String(row?.values?.kr?.title || '');
+    const krDesc = String(row?.values?.kr?.description || '');
+    if (!row.values.en) row.values.en = { title: '', description: '' };
+    if (!row.values.jp) row.values.jp = { title: '', description: '' };
+    row.values.en.title = krTitle;
+    row.values.en.description = krDesc;
+    row.values.jp.title = krTitle;
+    row.values.jp.description = krDesc;
+  }
+  updateSeoDirtyState();
+  renderSeoMatrix();
+}
+
+function insertSeoToken(token) {
+  const seo = seoStateRef();
+  const el = seo.lastFocusedField;
+  if (!(el instanceof HTMLTextAreaElement)) {
+    appendLog(`[seo] token insert skipped: no active textarea (${token})`);
+    return;
+  }
+  const start = typeof el.selectionStart === 'number' ? el.selectionStart : el.value.length;
+  const end = typeof el.selectionEnd === 'number' ? el.selectionEnd : el.value.length;
+  const prev = el.value;
+  const next = `${prev.slice(0, start)}${token}${prev.slice(end)}`;
+  el.value = next;
+  const caret = start + token.length;
+  el.selectionStart = caret;
+  el.selectionEnd = caret;
+  el.dispatchEvent(new Event('input', { bubbles: true }));
+}
+
+function runSeoBatchSuffix() {
+  const seo = seoStateRef();
+  if (!seo.draft.length) {
+    appendLog('[seo] batch suffix skipped: no draft rows');
+    return;
+  }
+  const suffix = window.prompt('접미사 텍스트를 입력하세요 (예: " | P5X - Punishing: Gray Raven")');
+  if (suffix == null || !suffix.trim()) return;
+
+  const fieldChoice = window.prompt('대상 필드를 선택하세요: title / description / both', 'both');
+  if (fieldChoice == null) return;
+  const fields = fieldChoice.trim().toLowerCase() === 'both'
+    ? ['title', 'description']
+    : [fieldChoice.trim().toLowerCase()];
+  if (!fields.every((f) => f === 'title' || f === 'description')) {
+    appendLog(`[seo] batch suffix: invalid field "${fieldChoice}"`);
+    return;
+  }
+
+  const langChoice = window.prompt('대상 언어를 선택하세요: all / kr / en / jp / cn', 'all');
+  if (langChoice == null) return;
+  const viewLangs = getSeoLangsForView();
+  const targetLangs = langChoice.trim().toLowerCase() === 'all'
+    ? viewLangs
+    : langChoice.split(',').map((l) => l.trim().toLowerCase()).filter((l) => viewLangs.includes(l));
+  if (!targetLangs.length) {
+    appendLog(`[seo] batch suffix: no valid langs from "${langChoice}"`);
+    return;
+  }
+
+  const visibleRows = getSeoRowsForMatrix();
+  let applied = 0;
+  for (const row of visibleRows) {
+    for (const lang of targetLangs) {
+      for (const field of fields) {
+        const current = String(row.values?.[lang]?.[field] || '');
+        if (current.includes(suffix)) continue;
+        if (!row.values[lang]) row.values[lang] = { title: '', description: '' };
+        row.values[lang][field] = current + suffix;
+        applied += 1;
+      }
+    }
+  }
+  updateSeoDirtyState();
+  renderSeoMatrix();
+  appendLog(`[seo] batch suffix applied: ${applied} cells updated with "${suffix}"`);
+}
+
+function runSeoBatchReleased() {
+  const seo = seoStateRef();
+  if (!seo.draft.length) {
+    appendLog('[seo] batch released skipped: no draft rows');
+    return;
+  }
+  const langChoice = window.prompt('Released를 변경할 언어를 선택하세요: kr / en / jp / cn / all', 'all');
+  if (langChoice == null) return;
+  const viewLangs = getSeoLangsForView();
+  const targetLangs = langChoice.trim().toLowerCase() === 'all'
+    ? viewLangs
+    : langChoice.split(',').map((l) => l.trim().toLowerCase()).filter((l) => viewLangs.includes(l));
+  if (!targetLangs.length) {
+    appendLog(`[seo] batch released: no valid langs from "${langChoice}"`);
+    return;
+  }
+
+  const valueChoice = window.prompt('Released 값을 선택하세요: on / off', 'on');
+  if (valueChoice == null) return;
+  const value = valueChoice.trim().toLowerCase() === 'on';
+
+  const visibleRows = getSeoRowsForMatrix();
+  for (const row of visibleRows) {
+    for (const lang of targetLangs) {
+      row.released[lang] = value;
+    }
+  }
+  updateSeoDirtyState();
+  renderSeoMatrix();
+  appendLog(`[seo] batch released ${value ? 'ON' : 'OFF'}: ${targetLangs.join(',')} (${visibleRows.length} rows)`);
+}
+
+async function ensureSeoAdminBootstrapped(force = false) {
+  const seo = seoStateRef();
+  if (seo.initialized && !force) return;
+  await loadSeoBootstrapData();
+  if (seo.activeDomain) {
+    await loadSeoDomainData(seo.activeDomain);
+  }
+  await loadSeoHistoryData();
+  seo.initialized = true;
 }
 
 function filteredIgnoredItems() {
@@ -2203,7 +2863,7 @@ async function loadCapabilities() {
   } finally {
     resetSelectedParts(state.domain);
     setLangInputForDomain(state.domain);
-    if (state.domain === 'revelation' && state.activeView !== 'revelation-admin') {
+    if (state.domain === 'revelation' && state.activeView !== 'revelation-admin' && state.activeView !== 'seo-admin') {
       state.activeView = 'revelation-admin';
     }
     if (state.domain !== 'revelation' && state.activeView === 'revelation-admin') {
@@ -3416,7 +4076,7 @@ function bindDomainEvents() {
     state.dataDomain = state.domain;
     state.dataRoot = '';
 
-    if (state.domain === 'revelation') {
+    if (state.domain === 'revelation' && state.activeView !== 'seo-admin') {
       setActiveView('revelation-admin');
     } else if (state.activeView === 'revelation-admin') {
       setActiveView('work');
@@ -3471,6 +4131,139 @@ function bindEvents() {
     }
   }
 
+  dom.seoDomainList?.addEventListener('click', async (event) => {
+    const tab = event.target.closest('.seo-domain-tab');
+    if (!tab) return;
+    const domain = String(tab.dataset.seoDomain || '').trim();
+    if (!domain) return;
+    const seo = seoStateRef();
+    seo.activeDomain = domain;
+    // update active class immediately
+    for (const t of dom.seoDomainList.querySelectorAll('.seo-domain-tab')) {
+      t.classList.toggle('active', t.dataset.seoDomain === domain);
+    }
+    try {
+      setPending(dom.btnSeoLoad, true);
+      await loadSeoDomainData(domain);
+    } catch (error) {
+      appendLog(`[seo] domain load failed: ${error.message}`);
+    } finally {
+      setPending(dom.btnSeoLoad, false);
+      renderSeoControlState();
+    }
+  });
+
+  dom.seoToggleCn?.addEventListener('change', () => {
+    const seo = seoStateRef();
+    seo.showCn = Boolean(dom.seoToggleCn?.checked);
+    renderSeoMatrix();
+  });
+
+  dom.seoScopeFilter?.addEventListener('input', () => {
+    const seo = seoStateRef();
+    seo.scopeFilter = String(dom.seoScopeFilter?.value || '');
+    renderSeoMatrix();
+  });
+
+  dom.btnSeoLoad?.addEventListener('click', async () => {
+    try {
+      setPending(dom.btnSeoLoad, true);
+      await ensureSeoAdminBootstrapped();
+      await loadSeoDomainData();
+    } catch (error) {
+      appendLog(`[seo] load failed: ${error.message}`);
+    } finally {
+      setPending(dom.btnSeoLoad, false);
+      renderSeoControlState();
+    }
+  });
+
+  dom.btnSeoCopyKr?.addEventListener('click', () => {
+    runSeoCopyKrToEnJp();
+    appendLog('[seo] KR -> EN/JP copy applied');
+  });
+
+  dom.btnSeoInsertName?.addEventListener('click', () => insertSeoToken('{name}'));
+  dom.btnSeoInsertPath?.addEventListener('click', () => insertSeoToken('{path}'));
+
+  dom.btnSeoBatchSuffix?.addEventListener('click', () => runSeoBatchSuffix());
+  dom.btnSeoBatchReleased?.addEventListener('click', () => runSeoBatchReleased());
+
+  dom.btnSeoValidate?.addEventListener('click', async () => {
+    try {
+      setPending(dom.btnSeoValidate, true);
+      await runSeoValidate();
+    } catch (error) {
+      appendLog(`[seo] validate failed: ${error.message}`);
+    } finally {
+      setPending(dom.btnSeoValidate, false);
+      renderSeoControlState();
+    }
+  });
+
+  dom.btnSeoSave?.addEventListener('click', async () => {
+    const seo = seoStateRef();
+    if (!seo.activeDomain) return;
+    const ok = window.confirm(`${seo.activeDomain} SEO 변경사항을 저장할까요?`);
+    if (!ok) return;
+    try {
+      setPending(dom.btnSeoSave, true);
+      await runSeoSave();
+    } catch (error) {
+      if (error?.message === 'seo_validation_failed_before_save') {
+        appendLog('[seo] save blocked: validation failed. fix matrix errors first.');
+      }
+      appendLog(`[seo] save failed: ${error.message}`);
+      if (error?.status === 409) {
+        appendLog('[seo] etag mismatch - latest domain data will be reloaded.');
+        await loadSeoDomainData(seo.activeDomain).catch(() => {});
+      }
+    } finally {
+      setPending(dom.btnSeoSave, false);
+      renderSeoControlState();
+    }
+  });
+
+  dom.btnSeoRefreshHistory?.addEventListener('click', async () => {
+    try {
+      setPending(dom.btnSeoRefreshHistory, true);
+      await loadSeoHistoryData();
+    } catch (error) {
+      appendLog(`[seo] history refresh failed: ${error.message}`);
+    } finally {
+      setPending(dom.btnSeoRefreshHistory, false);
+    }
+  });
+
+  dom.seoMatrixBody?.addEventListener('input', (event) => {
+    const target = event.target;
+    if (!(target instanceof HTMLTextAreaElement)) return;
+    const parsed = readSeoMatrixEventTarget(target);
+    if (!parsed) return;
+    updateSeoDraftField(parsed.scope, parsed.lang, parsed.field, target.value);
+    patchSeoChangedClass(target);
+  });
+
+  dom.seoMatrixBody?.addEventListener('change', (event) => {
+    const target = event.target;
+    if (!(target instanceof HTMLElement)) return;
+    const parsed = readSeoMatrixEventTarget(target);
+    if (!parsed) return;
+    if (parsed.field !== 'released') return;
+    const nextValue = target instanceof HTMLInputElement ? Boolean(target.checked) : false;
+    updateSeoDraftField(parsed.scope, parsed.lang, parsed.field, nextValue);
+    renderSeoMatrix();
+  });
+
+  dom.seoMatrixBody?.addEventListener('focusin', (event) => {
+    const target = event.target;
+    if (!(target instanceof HTMLTextAreaElement)) return;
+    const parsed = readSeoMatrixEventTarget(target);
+    if (!parsed || parsed.field === 'released') return;
+    const seo = seoStateRef();
+    seo.lastFocusedField = target;
+  });
+
   dom.btnClearLog?.addEventListener('click', clearLog);
   dom.btnHeaderRefresh?.addEventListener('click', async () => {
     try {
@@ -3485,6 +4278,16 @@ function bindEvents() {
 
   dom.btnSelectAll?.addEventListener('click', () => setVisibleSelection(true));
   dom.btnClearSelect?.addEventListener('click', () => setVisibleSelection(false));
+
+  document.addEventListener('keydown', (event) => {
+    const key = String(event.key || '').toLowerCase();
+    if (key !== 's') return;
+    if (!(event.ctrlKey || event.metaKey)) return;
+    if (state.activeView !== 'seo-admin') return;
+    event.preventDefault();
+    if (!dom.btnSeoSave || dom.btnSeoSave.disabled) return;
+    dom.btnSeoSave.click();
+  });
 
   dom.listSearch?.addEventListener('input', () => {
     state.listSearch = dom.listSearch.value || '';
@@ -4145,10 +4948,15 @@ function bindEvents() {
 
 async function bootstrap() {
   state.activeView = normalizeView(getUrlView() || getStoredView() || 'work');
+  if (dom.seoToggleCn) dom.seoToggleCn.checked = Boolean(state.seoState.showCn);
+  if (dom.seoScopeFilter) dom.seoScopeFilter.value = String(state.seoState.scopeFilter || '');
   resetSelectedParts(state.domain);
   bindPartsPicker();
   bindEvents();
   bindDomainEvents();
+  renderActiveViewHeader();
+  renderSeoStats();
+  renderSeoControlState();
   renderCounts();
   renderCharList();
   renderReportTable();

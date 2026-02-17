@@ -14,11 +14,8 @@ sitemap: false
   <script>
     (function () {
       var params = new URLSearchParams(window.location.search || "");
-      params.delete("lang");
-      params.delete("v");
+      params.set("lang", "cn");
       var query = params.toString();
-      try { sessionStorage.setItem("__PATH_LANG_HINT__", "cn"); } catch (e) {}
-      try { localStorage.setItem("preferredLanguage", "cn"); } catch (e) {}
       var next = "/wonder-weapon/" + (query ? ("?" + query) : "");
       window.location.replace(next);
     })();

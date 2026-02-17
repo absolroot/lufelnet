@@ -104,7 +104,7 @@ window.__TIER_PAGE_MODE__ = {{ page.tier_mode | default: '' | jsonify }};
 
     <!-- Navigation path -->
     <div class="navigation-path">
-        <script>document.write(`<a href="{{ site.baseurl }}/?v=${APP_VERSION}" id="nav-home" data-i18n="navHome">-</a>`);</script>
+        <script>document.write(`<a href="{{ site.baseurl }}/" id="nav-home" data-i18n="navHome">-</a>`);</script>
         <span class="separator">/</span>
         <span class="current-page" id="nav-current" data-i18n="navCurrent">-</span>
     </div>
@@ -923,31 +923,9 @@ window.__TIER_PAGE_MODE__ = {{ page.tier_mode | default: '' | jsonify }};
         // SEO 설정 업데이트
         updateSEOContent();
 
-        // 언어 라우터 초기화 및 콘텐츠 업데이트
-        if (typeof LanguageRouter !== 'undefined') {
-            // path 기반 SEO URL(/kr|/en|/jp|/cn)에서는 lang 쿼리를 강제하지 않음
-            const hasLangParam = window.location.search.includes('lang=');
-            const isPathLanguagePage = /^\/(kr|en|jp|cn)(\/|$)/.test(window.location.pathname);
-            if (hasLangParam || isPathLanguagePage) {
-                // 언어 파라미터가 있으면 바로 콘텐츠 로드
-                await updateLanguageContent();
-                initPositionSpoilerToggle();
-                await initializePageContent();
-            } else {
-                // 언어 파라미터가 없으면 기본 한국어로 설정
-                const currentUrl = new URL(window.location);
-                currentUrl.searchParams.set('lang', 'kr');
-                window.history.replaceState({}, '', currentUrl);
-
-                await updateLanguageContent();
-                initPositionSpoilerToggle();
-                await initializePageContent();
-            }
-        } else {
-            await updateLanguageContent();
-            initPositionSpoilerToggle();
-            await initializePageContent();
-        }
+        await updateLanguageContent();
+        initPositionSpoilerToggle();
+        await initializePageContent();
 
         // 티어 소스 버튼 이벤트 연결 (en/jp 전용)
         const btnGlobal = document.getElementById('btn-global-tier');

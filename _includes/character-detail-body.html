@@ -20,7 +20,7 @@
   var entry = map[name];
   if (!entry || !entry.slug) return;
   var lang = params.get('lang') || 'kr';
-  if (['kr','en','jp'].indexOf(lang) === -1) lang = 'kr';
+  if (['kr','en','jp','cn'].indexOf(lang) === -1) lang = 'kr';
   // Set __CHARACTER_DEFAULT so get('name') fallbacks work after replaceState
   window.__CHARACTER_DEFAULT = name;
   // Set SEO flag so LanguageRouter skips redirect logic after replaceState
@@ -38,10 +38,11 @@
 <script>
 (function(){
   var path = window.location.pathname;
-  if (!/^\/(kr|en|jp)\//.test(path)) return;
+  if (!/^\/(kr|en|jp|cn)\//.test(path)) return;
   var params = new URLSearchParams(window.location.search);
-  if (!params.has('lang')) return;
+  if (!params.has('lang') && !params.has('v')) return;
   params.delete('lang');
+  params.delete('v');
   var remaining = params.toString();
   history.replaceState(null, '', path + (remaining ? '?' + remaining : ''));
 })();
@@ -61,7 +62,9 @@
 <script>
 // Skeleton: hide Korean text flash for non-KR languages (runs before first paint)
 (function(){
-    var p = new URLSearchParams(window.location.search).get('lang');
+    var pathMatch = String(window.location.pathname || '').match(/^\/(kr|en|jp|cn)(\/|$)/);
+    var pathLang = pathMatch ? pathMatch[1] : '';
+    var p = pathLang || new URLSearchParams(window.location.search).get('lang') || '';
     if (p && p !== 'kr') {
         document.documentElement.classList.add('skel');
         // Safety: remove skeleton after 3s even if DOMContentLoaded handler fails
@@ -92,14 +95,16 @@
                 <script>
                     // 현재 언어 확인
                     function getCurrentLanguage() {
+                        const path = window.location.pathname;
+                        if (/^\/kr(\/|$)/.test(path)) return 'kr';
+                        if (/^\/en(\/|$)/.test(path)) return 'en';
+                        if (/^\/jp(\/|$)/.test(path)) return 'jp';
+                        if (/^\/cn(\/|$)/.test(path)) return 'cn';
+
                         const urlParams = new URLSearchParams(window.location.search);
                         const langParam = urlParams.get('lang');
                         if (langParam) return langParam;
 
-                        const path = window.location.pathname;
-                        if (path.includes('/kr/')) return 'kr';
-                        if (path.includes('/en/')) return 'en';
-                        if (path.includes('/jp/')) return 'jp';
                         return 'kr';
                     }
 
@@ -863,12 +868,13 @@
         try {
             const homeLink = document.getElementById('character-home-link');
             const listLink = document.getElementById('character-list-link');
+            const navLang = getCurrentLanguage();
             if (homeLink) {
-                homeLink.href = `../../?v=${APP_VERSION}`;
+                homeLink.href = `/${navLang}/`;
                 homeLink.textContent = getCharacterI18nText('navHome', '홈');
             }
             if (listLink) {
-                listLink.href = `/character/?v=${APP_VERSION}`;
+                listLink.href = `/${navLang}/character/`;
                 listLink.textContent = getCharacterI18nText('navCurrent', '괴도');
             }
         } catch (e) { console.warn('[SAFE:nav-i18n]', e); }
@@ -2481,7 +2487,7 @@
         const slug = resolveCharacterSlug(safeName);
         if (slug) return `/${lang}/character/${slug}/`;
 
-        return `/character.html?name=${encodeURIComponent(safeName)}&lang=${lang}`;
+        return `/character.html?name=${encodeURIComponent(safeName)}`;
     }
 
     function loadRecommendedPersona(personaData) {

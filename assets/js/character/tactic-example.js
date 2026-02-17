@@ -20,10 +20,16 @@ document.addEventListener('DOMContentLoaded', async function() {
 
         // 언어 결정
         const currentLang = (function(){
+            if (typeof LanguageRouter !== 'undefined' && typeof LanguageRouter.getCurrentLanguage === 'function') {
+                const routedLang = LanguageRouter.getCurrentLanguage();
+                if (routedLang && ['kr', 'en', 'jp', 'cn'].includes(routedLang)) return routedLang;
+            }
+            const pathLang = window.location.pathname.split('/')[1];
+            if (pathLang && ['kr', 'en', 'jp', 'cn'].includes(pathLang)) return pathLang;
             const urlLang = urlParams.get('lang');
-            if (urlLang && ['kr','en','jp'].includes(urlLang)) return urlLang;
+            if (urlLang && ['kr','en','jp','cn'].includes(urlLang)) return urlLang;
             const saved = localStorage.getItem('preferredLanguage');
-            if (saved && ['kr','en','jp'].includes(saved)) return saved;
+            if (saved && ['kr','en','jp','cn'].includes(saved)) return saved;
             return 'kr';
         })();
 
@@ -53,8 +59,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             moreEl.textContent = moreMap[currentLang] || moreMap.kr;
             const params = new URLSearchParams();
             params.set('char', characterName || '');
-            params.set('lang', currentLang);
-            moreEl.href = `/tactic/library/?${params.toString()}`;
+            moreEl.href = `/${currentLang}/tactic/library/?${params.toString()}`;
         }
 
         // 예시 택틱 로드 (페이지네이션으로 최대 2000개 탐색)

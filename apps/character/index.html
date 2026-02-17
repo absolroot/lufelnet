@@ -14,8 +14,8 @@ redirect_from: []
   if (!lang) return;
   var path = window.location.pathname;
   // Only rewrite from /character/ (not from /{lang}/character/ which is already path-based)
-  if (/^\/(kr|en|jp)\//.test(path)) return;
-  if (['kr','en','jp'].indexOf(lang) === -1) return;
+  if (/^\/(kr|en|jp|cn)\//.test(path)) return;
+  if (['kr','en','jp','cn'].indexOf(lang) === -1) return;
   // Set SEO flag so LanguageRouter skips redirect logic after replaceState
   window.__SEO_PATH_LANG__ = lang;
   var newPath = '/' + lang + '/character/';
@@ -34,7 +34,7 @@ redirect_from: []
     </div>-->
 
     <div class="navigation-path">
-        <script>document.write(`<a href="../?v=${APP_VERSION}" id="nav-home">-</a>`);</script>
+        <script>document.write(`<a href="../" id="nav-home">-</a>`);</script>
         <span class="separator">/</span>
         <span class="current-page" id="nav-current">-</span> 
     </div>
@@ -804,7 +804,7 @@ redirect_from: []
 
             // Create link wrapper - 언어 파라미터 추가
             const link = document.createElement('a');
-            link.href = `/character.html?name=${encodeURIComponent(characterName)}&lang=${currentLang}&v=${APP_VERSION}`;
+            link.href = `/character.html?name=${encodeURIComponent(characterName)}`;
             link.style.textDecoration = 'none';
             link.style.color = 'inherit';
 
@@ -1018,13 +1018,6 @@ redirect_from: []
     document.addEventListener('DOMContentLoaded', async () => {
         Navigation.load('character'); // nav active
         VersionChecker.check();
-
-        if (typeof LanguageRouter !== 'undefined' && !window.location.search.includes('lang=')
-            && !/^\/(kr|en|jp)\//.test(window.location.pathname)) {
-            const currentUrl = new URL(window.location);
-            currentUrl.searchParams.set('lang', 'kr');
-            window.history.replaceState({}, '', currentUrl);
-        }
 
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
 

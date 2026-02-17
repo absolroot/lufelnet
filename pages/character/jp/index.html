@@ -15,10 +15,30 @@ sitemap: false
   <script>
     (function () {
       var params = new URLSearchParams(window.location.search || "");
-      params.set("lang", "jp");
+      params.delete("lang");
+      params.delete("v");
       var query = params.toString();
-      var next = "/character/" + (query ? ("?" + query) : "");
-      window.location.replace(next);
+      try { localStorage.setItem("preferredLanguage", "jp"); } catch (e) {}
+      var source = "/character/" + (query ? ("?" + query) : "");
+
+      if (typeof fetch !== "function") {
+        window.location.replace(source);
+        return;
+      }
+
+      fetch(source, { credentials: "same-origin" })
+        .then(function (response) {
+          if (!response.ok) throw new Error("HTTP " + response.status);
+          return response.text();
+        })
+        .then(function (html) {
+          document.open();
+          document.write(html);
+          document.close();
+        })
+        .catch(function () {
+          window.location.replace(source);
+        });
     })();
   </script>
   <noscript><meta http-equiv="refresh" content="0; url=/character/?lang=jp"></noscript>

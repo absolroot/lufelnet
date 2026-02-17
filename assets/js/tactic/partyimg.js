@@ -78,8 +78,7 @@
         if (member.name !== "원더") {
           container.style.cursor = "pointer";
           container.addEventListener("click", () => {
-            const currentLang = getCurrentLanguage();
-            const characterUrl = `${BASE_URL}/character.html?name=${encodeURIComponent(member.name)}&lang=${currentLang}&v=${APP_VERSION}`;
+            const characterUrl = `${BASE_URL}/character.html?name=${encodeURIComponent(member.name)}`;
             window.open(characterUrl, '_blank');
           });
         }

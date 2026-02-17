@@ -810,7 +810,18 @@
             if (!updateList || !showMoreBtn) return;
 
             try {
-                const response = await fetch(`${BASE_URL}/data/kr/updates.csv?v=${APP_VERSION}`);
+                const configuredPath = (typeof window.APP_UPDATES_CSV_PATH === 'string')
+                    ? window.APP_UPDATES_CSV_PATH.trim()
+                    : '';
+                const updatesPath = configuredPath || '/assets/version/updates.csv';
+                const rawUpdatesUrl = /^https?:\/\//i.test(updatesPath)
+                    ? updatesPath
+                    : `${BASE_URL}${updatesPath.startsWith('/') ? updatesPath : `/${updatesPath}`}`;
+                const updatesUrl = (window.VersionRuntime && typeof window.VersionRuntime.assetUrl === 'function')
+                    ? window.VersionRuntime.assetUrl(rawUpdatesUrl)
+                    : `${rawUpdatesUrl}?v=${APP_VERSION}`;
+
+                const response = await fetch(updatesUrl);
                 const data = await response.text();
                 allUpdates = data.split('\n')
                     .slice(1)

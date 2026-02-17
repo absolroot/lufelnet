@@ -1,6 +1,27 @@
-const APP_VERSION = '4.4.9';  // 현재 앱 버전
+var APP_VERSION = (typeof window !== 'undefined' && typeof window.APP_VERSION === 'string' && window.APP_VERSION.trim())
+    ? window.APP_VERSION.trim()
+    : '4.5.0';
+
+if (typeof window !== 'undefined') {
+    window.APP_VERSION = APP_VERSION;
+}
 
 class VersionChecker {
+    static getUpdatesCsvRawUrl() {
+        const base = (typeof BASE_URL !== 'undefined') ? BASE_URL : '';
+        const configuredPath = (typeof window !== 'undefined' && typeof window.APP_UPDATES_CSV_PATH === 'string')
+            ? window.APP_UPDATES_CSV_PATH.trim()
+            : '';
+        const path = configuredPath || '/assets/version/updates.csv';
+
+        if (/^https?:\/\//i.test(path)) {
+            return path;
+        }
+
+        const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+        return `${base}${normalizedPath}`;
+    }
+
     static check() {
         // 로컬 스토리지에서 마지막으로 확인한 버전 가져오기
         const lastVersion = localStorage.getItem('appVersion');
@@ -107,8 +128,10 @@ class VersionChecker {
     }
 
     static async loadUpdatesCSV() {
-        const base = (typeof BASE_URL !== 'undefined') ? BASE_URL : '';
-        const url = `${base}/data/kr/updates.csv?v=${APP_VERSION}`;
+        const rawUrl = this.getUpdatesCsvRawUrl();
+        const url = (typeof window !== 'undefined' && window.VersionRuntime && typeof window.VersionRuntime.assetUrl === 'function')
+            ? window.VersionRuntime.assetUrl(rawUrl)
+            : `${rawUrl}?v=${APP_VERSION}`;
         try {
             const res = await fetch(url, { cache: 'no-cache' });
             if (!res.ok) throw new Error(`HTTP ${res.status}`);

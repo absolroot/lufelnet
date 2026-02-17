@@ -43,6 +43,7 @@ function resolveGuidePathLang(rawLang) {
     const normalized = String(rawLang || '').toLowerCase();
     if (normalized === 'en') return 'en';
     if (normalized === 'jp') return 'jp';
+    if (normalized === 'cn') return 'cn';
     return 'kr';
 }
 
@@ -116,7 +117,7 @@ function createGuideItem(guide, rawLang) {
     const guideId = encodeURIComponent(String(guide.id || '').trim());
     const url = guide.hasPage !== false
         ? `${baseUrl}/${pathLang}/article/${guideId}/`
-        : `${baseUrl}/article/view/?id=${guideId}&lang=${pathLang}`;
+        : `${baseUrl}/article/view/?id=${guideId}`;
 
     // Styling overrides for guide items to distinguish or fit better
     item.style.cursor = 'pointer';

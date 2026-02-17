@@ -131,38 +131,31 @@
 
     const pathMap = {
         character: '/character/',
-        persona: '/persona',
-        revelations: '/revelations',
-        wonderweapon: '/wonder-weapon',
-        maps: '/maps',
+        persona: '/persona/',
+        revelations: '/revelations/',
+        wonderweapon: '/wonder-weapon/',
+        maps: '/maps/',
         astrolabe: '/astrolabe/',
-        pullTracker: '/pull-tracker',
-        pullTracker_global: '/pull-tracker/global-stats',
-        materialCalc: '/material-calc',
-        defenseCalc: '/defense-calc',
-        criticalCalc: '/critical-calc',
+        pullTracker: '/pull-tracker/',
+        pullTracker_global: '/pull-tracker/global-stats/',
+        materialCalc: '/material-calc/',
+        defenseCalc: '/defense-calc/',
+        criticalCalc: '/critical-calc/',
         tacticLibrary: '/tactic/library/',
-        tacticMaker: '/tactic-maker',
+        tacticMaker: '/tactic-maker/',
         tier: '/tier/',
-        guide: '/article',
-        gallery: '/gallery',
-        schedule: '/schedule',
-        synergy: '/synergy',
-        pullCalc: '/pull-calc'
+        guide: '/article/',
+        gallery: '/gallery/',
+        schedule: '/schedule/',
+        synergy: '/synergy/',
+        pullCalc: '/pull-calc/'
     };
 
     const buildHref = (key, lang) => {
         const base = typeof BASE_URL !== 'undefined' ? BASE_URL : '';
-        if (key === 'tier') {
-            return `${base}/${lang}/tier/`;
-        }
-        const ver = typeof APP_VERSION !== 'undefined' ? APP_VERSION : (Date.now().toString());
         const path = pathMap[key] || '/';
-        const url = new URL(base + path, window.location.origin);
-
-        url.searchParams.set('lang', lang);
-        url.searchParams.set('v', ver);
-        return url.pathname + url.search;
+        const url = new URL(`${base}/${lang}${path}`, window.location.origin);
+        return url.pathname;
     };
 
     const getItems = (lang) => {

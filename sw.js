@@ -1,5 +1,13 @@
 // Service Worker for PWA
-const SW_VERSION = 'v3-js-css-no-cache';
+const SW_FALLBACK_VERSION = 'v3-js-css-no-cache';
+const SW_VERSION = (() => {
+  try {
+    const url = new URL(self.location.href);
+    return url.searchParams.get('v') || SW_FALLBACK_VERSION;
+  } catch (_) {
+    return SW_FALLBACK_VERSION;
+  }
+})();
 const IMAGE_CACHE = 'lufelnet-images-v1';
 const IMAGE_EXTENSIONS = ['.png', '.jpg', '.jpeg', '.webp', '.gif', '.svg', '.ico'];
 

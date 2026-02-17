@@ -1069,12 +1069,7 @@ const attachDragListeners = (element, force = false) => {
             const characterName = targetImage.alt;
 
             // SEO path(/en/...)와 query 기반 URL 모두에서 현재 언어를 안전하게 가져옴
-            const currentLang = (typeof LanguageRouter !== 'undefined' && typeof LanguageRouter.getCurrentLanguage === 'function')
-              ? LanguageRouter.getCurrentLanguage()
-              : (new URLSearchParams(window.location.search).get('lang') || 'kr');
-
-            // 언어 파라미터를 유지하며 캐릭터 상세 페이지로 이동
-            window.location.href = `/character.html?name=${encodeURIComponent(characterName)}&lang=${currentLang}`;
+            window.location.href = `/character.html?name=${encodeURIComponent(characterName)}`;
           }
         }
       }, 200); // 더블클릭 감지를 위한 지연

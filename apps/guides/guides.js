@@ -54,7 +54,7 @@ const Guides = {
      * Normalize language value to supported set
      */
     normalizeLang(lang) {
-        const supported = ['kr', 'en', 'jp'];
+        const supported = ['kr', 'en', 'jp', 'cn'];
         const normalized = String(lang || '').toLowerCase();
         return supported.includes(normalized) ? normalized : 'kr';
     },
@@ -75,7 +75,7 @@ const Guides = {
         const params = new URLSearchParams(window.location.search || '');
         const path = String(window.location.pathname || '/');
         const lowerPath = path.toLowerCase();
-        const supported = ['kr', 'en', 'jp'];
+        const supported = ['kr', 'en', 'jp', 'cn'];
 
         const pathLang = this.getPathLang();
         const queryLang = String(params.get('lang') || '').toLowerCase();
@@ -127,7 +127,7 @@ const Guides = {
      * Detect current language from i18n service or URL/storage fallback
      */
     detectLanguage() {
-        const supported = ['kr', 'en', 'jp'];
+        const supported = ['kr', 'en', 'jp', 'cn'];
         const pathLang = this.getPathLang();
         if (supported.includes(pathLang)) {
             this.currentLang = pathLang;
@@ -418,7 +418,7 @@ const Guides = {
         if (guide.hasPage !== false) {
             return `/${safeLang}/article/${guideId}/`;
         }
-        return `/article/view/?id=${guideId}&lang=${safeLang}`;
+        return `/article/view/?id=${guideId}`;
     },
 
     /**

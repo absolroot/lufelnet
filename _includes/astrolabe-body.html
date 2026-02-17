@@ -84,7 +84,7 @@
     <div class="astrolabe-ui-container">
         <!-- Navigation path -->
         <div class="astrolabe-nav-path">
-            <script>document.write(`<a href="../../?v=${APP_VERSION}" id="nav-home">홈</a>`);</script>
+            <script>document.write(`<a href="../../" id="nav-home">홈</a>`);</script>
             <span class="separator">/</span>
             <span class="current-page" id="astrolabe-title-nav">성좌의 시련</span>
         </div>
@@ -148,7 +148,7 @@
 <script>
     // Global configuration for nav.js
     window.BASE_URL = "{{ site.baseurl }}";
-    window.APP_VERSION = "{{ site.time | date: '%s' }}";
+    window.APP_VERSION = window.APP_VERSION || "{{ site.time | date: '%s' }}";
 </script>
 <!-- Nav script removed, assumed included by layout -->
 <script>

@@ -604,46 +604,35 @@
         
         // 언어 선택 함수
         selectLanguage(lang) {
-            // 드롭다운 닫기
             const optionsContainer = document.querySelector('#object-filter-panel .options-container');
             if (optionsContainer) {
                 optionsContainer.classList.remove('active');
             }
-            
-            // 선호 언어 저장
+
             localStorage.setItem('preferredLanguage', lang);
-            
-            // 현재 URL 구성
-            const currentPath = window.location.pathname;
-            const currentSearch = window.location.search;
-            
-            // URL 파라미터 구성
-            const params = new URLSearchParams(currentSearch);
-            params.set('lang', lang);
-            
-            // 경로 정리 (기존 언어 디렉토리 제거)
-            let cleanPath = currentPath;
-            const pathSegments = currentPath.split('/').filter(Boolean);
-            
-            // 첫 번째 세그먼트가 언어 코드인 경우 제거
-            if (pathSegments.length > 0 && ['kr', 'en', 'jp', 'cn'].includes(pathSegments[0])) {
-                pathSegments.shift();
-                cleanPath = '/' + pathSegments.join('/');
+
+            const currentUrl = new URL(window.location.href);
+            const params = new URLSearchParams(currentUrl.search);
+            params.delete('lang');
+            params.delete('v');
+
+            let nextPath = currentUrl.pathname;
+            const langPrefixMatch = nextPath.match(/^\/(kr|en|jp|cn)(\/.*)?$/i);
+            if (langPrefixMatch) {
+                const restPath = langPrefixMatch[2] || '/';
+                nextPath = `/${lang}${restPath}`;
+            } else if (nextPath === '/') {
+                nextPath = `/${lang}/`;
+            } else {
+                nextPath = `/${lang}${nextPath}`;
             }
-            
-            // 빈 경로면 루트로
-            if (cleanPath === '/' || cleanPath === '') {
-                cleanPath = '/';
-            }
-            
-            // 새 URL 생성
-            const newUrl = cleanPath + '?' + params.toString();
-            
-            // 페이지 이동
-            window.location.href = newUrl;
+
+            const query = params.toString();
+            const hash = currentUrl.hash || '';
+            window.location.href = `${nextPath}${query ? `?${query}` : ''}${hash}`;
         },
 
-        // 전체 선택
+        // ?꾩껜 ?좏깮
         selectAll() {
             const filterItems = document.querySelectorAll('.filter-item');
             filterItems.forEach(item => {
@@ -821,7 +810,6 @@
         // 로고 컨테이너 초기화
         initLogoContainer() {
             const BASE_URL = typeof window.BASE_URL !== 'undefined' ? window.BASE_URL : '';
-            const APP_VERSION = typeof window.APP_VERSION !== 'undefined' ? window.APP_VERSION : '';
             const currentLang = window.MapsI18n ? window.MapsI18n.getCurrentLanguage() : 'kr';
 
             // PC 로고 컨테이너 초기화
@@ -836,8 +824,7 @@
                 // 클릭 이벤트 처리 (한 번만 바인딩)
                 if (!logoContainer.hasAttribute('data-event-bound')) {
                     logoContainer.addEventListener('click', () => {
-                        const versionParam = APP_VERSION ? `&v=${APP_VERSION}` : '';
-                        window.location.href = `${BASE_URL}/?lang=${currentLang}${versionParam}`;
+                        window.location.href = `${BASE_URL}/${currentLang}/`;
                     });
                     logoContainer.setAttribute('data-event-bound', 'true');
                 }
@@ -855,8 +842,7 @@
                 // 클릭 이벤트 처리 (한 번만 바인딩)
                 if (!mobileBreadcrumbLogo.hasAttribute('data-event-bound')) {
                     mobileBreadcrumbLogo.addEventListener('click', () => {
-                        const versionParam = APP_VERSION ? `&v=${APP_VERSION}` : '';
-                        window.location.href = `${BASE_URL}/?lang=${currentLang}${versionParam}`;
+                        window.location.href = `${BASE_URL}/${currentLang}/`;
                     });
                     mobileBreadcrumbLogo.setAttribute('data-event-bound', 'true');
                 }

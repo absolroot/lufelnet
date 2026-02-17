@@ -853,7 +853,7 @@
             : `<span class="rarity-star">${'★'.repeat(rarity)}</span>`;
 
         // Character page URL
-        const charUrl = `${BASE_URL}/character.html?name=${encodeURIComponent(charName)}&lang=${lang}`;
+        const charUrl = `${BASE_URL}/character.html?name=${encodeURIComponent(charName)}`;
 
         // Codename HTML (작고 흐리게)
         const codenameHtml = codename
@@ -1001,7 +1001,7 @@
 
                 if (charName) {
                     const lang = getCurrentLang();
-                    const charUrl = `${BASE_URL}/character.html?name=${encodeURIComponent(charName)}&lang=${lang}`;
+                    const charUrl = `${BASE_URL}/character.html?name=${encodeURIComponent(charName)}`;
 
                     if (!firstCharUrl) {
                         firstCharUrl = charUrl;
@@ -1106,7 +1106,7 @@
                 const displayName = charData?.name || charName;
 
                 const lang = getCurrentLang();
-                const charUrl = `${BASE_URL}/character.html?name=${encodeURIComponent(charName)}&lang=${lang}`;
+                const charUrl = `${BASE_URL}/character.html?name=${encodeURIComponent(charName)}`;
 
                 return `
                     <a href="${charUrl}" class="mindscape-core-item" style="cursor: pointer;" onclick="event.stopPropagation();">

@@ -5,7 +5,7 @@
   var lang = params.get('lang');
 
   // / 에서 /?lang=xx -> /{lang}/ 로 정규화 (+ v 숨김)
-  if (path === '/' && ['kr', 'en', 'jp'].indexOf(lang) !== -1) {
+  if (path === '/' && ['kr', 'en', 'jp', 'cn'].indexOf(lang) !== -1) {
     params.delete('lang');
     params.delete('v');
     var remainingRoot = params.toString();
@@ -14,7 +14,7 @@
   }
 
   // /{lang}/ 에서는 lang, v 를 표시 URL에서 제거
-  if (/^\/(kr|en|jp)(\/|$)/.test(path)) {
+  if (/^\/(kr|en|jp|cn)(\/|$)/.test(path)) {
     var before = params.toString();
     params.delete('lang');
     params.delete('v');
@@ -424,41 +424,58 @@
 
     // 모든 링크에 언어 파라미터 추가 함수
     function updateLinksWithLanguage(currentLang) {
-        // 메뉴 카드 링크들 업데이트
+        const toLangPath = (rawPath) => {
+            const source = String(rawPath || '/').trim();
+            const withoutDot = source.replace(/^\.\/+/, '/');
+            const withoutLang = withoutDot.replace(/^\/(kr|en|jp|cn)(?=\/|$)/i, '');
+            const normalized = withoutLang || '/';
+
+            if (normalized === '/' || normalized === '') {
+                return `/${currentLang}/`;
+            }
+            return `/${currentLang}${normalized.startsWith('/') ? normalized : `/${normalized}`}`;
+        };
+
         const menuLinks = [
-            { selector: '.menu-card a[href*="./character/"]', path: './character/' },
-            { selector: '.menu-card a[href*="./persona/"]', path: './persona/' },
-            { selector: '.menu-card a[href*="./revelations/"]', path: './revelations/' },
-            { selector: '.menu-card a[href*="./tactic"]', path: './tactic/library' }
+            { selector: '.menu-card a[href*="./character/"]', path: '/character/' },
+            { selector: '.menu-card a[href*="./persona/"]', path: '/persona/' },
+            { selector: '.menu-card a[href*="./revelations/"]', path: '/revelations/' },
+            { selector: '.menu-card a[href*="./tactic"]', path: '/tactic/library/' }
         ];
 
-        menuLinks.forEach(linkInfo => {
+        menuLinks.forEach((linkInfo) => {
             const link = document.querySelector(linkInfo.selector);
             if (link) {
-                const url = new URL(linkInfo.path + `?lang=${currentLang}&v=${APP_VERSION}`, window.location.origin);
-                link.href = url.pathname + url.search;
+                link.href = toLangPath(linkInfo.path);
             }
         });
 
-        // 인기 캐릭터 링크들 업데이트
-        const characterLinks = document.querySelectorAll('.character-card-img a[href*="/character/character.html"]');
-        characterLinks.forEach(link => {
-            const url = new URL(link.href);
-            url.searchParams.set('lang', currentLang);
-            link.href = url.pathname + url.search;
+        const characterLinks = document.querySelectorAll('.character-card-img a[href]');
+        characterLinks.forEach((link) => {
+            const url = new URL(link.href, window.location.origin);
+            const pathMatch = url.pathname.match(/^\/(?:(kr|en|jp|cn)\/)?character\/([^/]+)\/?$/i);
+
+            if (pathMatch && pathMatch[2]) {
+                link.href = `/${currentLang}/character/${pathMatch[2]}/`;
+                return;
+            }
+
+            const name = url.searchParams.get('name');
+            if (name) {
+                const fallbackUrl = new URL('/character.html', window.location.origin);
+                fallbackUrl.searchParams.set('name', name);
+                link.href = fallbackUrl.pathname + fallbackUrl.search;
+            }
         });
 
-        // 택틱 도서관 링크들 업데이트 (홈 목록 이동 버튼)
-        const tacticLinks = document.querySelectorAll('a[href*="./tactic/library"]');
-        tacticLinks.forEach(link => {
-            const url = new URL('./tactic/library' + `?lang=${currentLang}&v=${APP_VERSION}`, window.location.origin);
-            link.href = url.pathname + url.search;
+        const tacticLinks = document.querySelectorAll('a[href*="./tactic/library"], a[href*="/tactic/library"]');
+        tacticLinks.forEach((link) => {
+            link.href = `/${currentLang}/tactic/library/`;
         });
 
-        // 과금효율 계산 링크 업데이트
         const payCalcLink = document.querySelector('a[href*="https://lufel.net/pay-calc"]');
         if (payCalcLink) {
-            payCalcLink.href = `https://lufel.net/pay-calc/?lang=${currentLang}&v=${APP_VERSION}`;
+            payCalcLink.href = `https://lufel.net/${currentLang}/pay-calc/`;
         }
     }
 
@@ -584,7 +601,7 @@
     // 첫 방문자 언어 감지 함수
     async function checkAndDetectLanguage() {
         // path 기반 언어 페이지에서는 IP 감지 스킵
-        if (/^\/(kr|en|jp)\/$/.test(window.location.pathname)) return;
+        if (/^\/(kr|en|jp|cn)\/$/.test(window.location.pathname)) return;
 
         const hasLanguagePreference = localStorage.getItem('preferredLanguage');
         const hasLanguageDetected = localStorage.getItem('languageDetected');
@@ -645,9 +662,11 @@
                 // 한국어가 아닌 경우 리다이렉트
                 if (detectedLang !== 'kr') {
                     //console.log(`🔄 ${detectedLang} 언어로 리다이렉트...`);
-                    const newUrl = new URL(window.location);
-                    newUrl.searchParams.set('lang', detectedLang);
-                    window.location.replace(newUrl.toString());
+                    const params = new URLSearchParams(window.location.search);
+                    params.delete('lang');
+                    params.delete('v');
+                    const query = params.toString();
+                    window.location.replace(`/${detectedLang}/${query ? `?${query}` : ''}`);
                     return;
                 }
 
@@ -667,9 +686,11 @@
                 localStorage.setItem('languageDetected', 'true');
 
                 if (fallbackLang !== 'kr') {
-                    const newUrl = new URL(window.location);
-                    newUrl.searchParams.set('lang', fallbackLang);
-                    window.location.replace(newUrl.toString());
+                    const params = new URLSearchParams(window.location.search);
+                    params.delete('lang');
+                    params.delete('v');
+                    const query = params.toString();
+                    window.location.replace(`/${fallbackLang}/${query ? `?${query}` : ''}`);
                 }
             }
         }

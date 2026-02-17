@@ -14,8 +14,11 @@ sitemap: false
   <script>
     (function () {
       var params = new URLSearchParams(window.location.search || "");
-      params.set("lang", "kr");
+      params.delete("lang");
+      params.delete("v");
       var query = params.toString();
+      try { sessionStorage.setItem("__PATH_LANG_HINT__", "kr"); } catch (e) {}
+      try { localStorage.setItem("preferredLanguage", "kr"); } catch (e) {}
       var next = "/synergy/" + (query ? ("?" + query) : "");
       window.location.replace(next);
     })();

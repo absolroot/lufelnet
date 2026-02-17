@@ -40,6 +40,10 @@
   <meta id="twitter-title" name="twitter:title" content="{% if lang == 'en' %}P5X Maps - Lufelnet{% elsif lang == 'jp' %}P5X マップス - ルフェルネット{% else %}P5X 맵스 - 루페르넷{% endif %}">
   <meta id="twitter-description" name="twitter:description" content="{% if lang == 'en' %}Explore all P5X Palaces and Mementos.{% elsif lang == 'jp' %}P5X マップビューアー{% else %}P5X 맵 뷰어{% endif %}">
 
+  <script src="{{ site.baseurl }}/assets/js/version-manifest.js?v={{ site.time | date: '%s' }}"></script>
+  <script src="{{ site.baseurl }}/assets/js/version-runtime.js?v={{ site.time | date: '%s' }}"></script>
+  <script src="{{ site.baseurl }}/assets/js/version.js?v={{ site.time | date: '%s' }}"></script>
+
   <script>
     // BASE_URL을 전역으로 설정
     window.BASE_URL = '{{ site.baseurl }}';

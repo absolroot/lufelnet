@@ -161,49 +161,49 @@ class Navigation {
                     <img src="${BASE_URL}/assets/img/logo/lufelnet.png" alt="logo-text" />
                 </div>
                 ${currentMenus.includes('home') ? `
-                <a href="${BASE_URL}/?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="home">
+                <a href="${BASE_URL}/${currentLang}/" class="nav-link" data-nav="home">
                     <img src="${BASE_URL}/assets/img/nav/home.png" alt="home" style="width: 28px; height: 28px; object-fit: contain;" />
                     <span data-text="${texts.home}">${texts.home}</span>
                 </a>
                 ` : ''}
                 ${currentMenus.includes('character') ? `
-                <a href="${BASE_URL}/character/?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="character">
+                <a href="${BASE_URL}/${currentLang}/character/" class="nav-link" data-nav="character">
                     <img src="${BASE_URL}/assets/img/nav/guaidao.png" alt="guaidao" style="width: 28px; height: 28px; object-fit: contain;" />
                     <span data-text="${texts.character}">${texts.character}</span>
                 </a>
                 ` : ''}
                 ${currentMenus.includes('persona') ? `
-                <a href="${BASE_URL}/persona?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="persona">
+                <a href="${BASE_URL}/${currentLang}/persona/" class="nav-link" data-nav="persona">
                     <img src="${BASE_URL}/assets/img/nav/persona.png" alt="persona" style="width: 28px; height: 28px; object-fit: contain;" />
                     <span data-text="${texts.persona}">${texts.persona}</span>
                 </a>
                 ` : ''}
                 ${currentMenus.includes('revelations') ? `
-                <a href="${BASE_URL}/revelations?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="revelations">
+                <a href="${BASE_URL}/${currentLang}/revelations/" class="nav-link" data-nav="revelations">
                     <img src="${BASE_URL}/assets/img/nav/qishi.png" alt="qishi" style="width: 28px; height: 28px; object-fit: contain;" />
                     <span data-text="${texts.revelations}">${texts.revelations}</span>
                 </a>
                 ` : ''}
                 ${currentMenus.includes('synergy') ? `
-                <a href="${BASE_URL}/synergy?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="synergy">
+                <a href="${BASE_URL}/${currentLang}/synergy/" class="nav-link" data-nav="synergy">
                     <img src="${BASE_URL}/assets/img/nav/synergy.png" alt="synergy" style="width: 28px; height: 28px; object-fit: contain;" />
                     <span data-text="${texts.synergy}">${texts.synergy}</span>
                 </a>
                 ` : ''}
                 ${currentMenus.includes('wonderweapon') ? `
-                <a href="${BASE_URL}/wonder-weapon?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="wonderweapon">
+                <a href="${BASE_URL}/${currentLang}/wonder-weapon/" class="nav-link" data-nav="wonderweapon">
                     <img src="${BASE_URL}/assets/img/nav/wonder-weapon.png" alt="wonderweapon" style="width: 28px; height: 28px; object-fit: contain;" />
                     <span data-text="${texts.wonderweapon}">${texts.wonderweapon}</span>
                 </a>
                 ` : ''}
                 ${currentMenus.includes('maps') ? `
-                <a href="${BASE_URL}/maps?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="maps">
+                <a href="${BASE_URL}/${currentLang}/maps/" class="nav-link" data-nav="maps">
                     <img src="${BASE_URL}/assets/img/nav/maps.png" alt="maps" style="width: 28px; height: 28px; object-fit: contain;" />
                     <span data-text="${texts.maps}">${texts.maps}</span>
                 </a>
                 ` : ''}
                 ${currentMenus.includes('astrolabe') ? `
-                <a href="${BASE_URL}/astrolabe/?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="astrolabe">
+                <a href="${BASE_URL}/${currentLang}/astrolabe/" class="nav-link" data-nav="astrolabe">
                     <img src="${BASE_URL}/assets/img/nav/astrolabe.png" alt="astrolabe" style="width: 28px; height: 28px; object-fit: contain;" />
                     <span data-text="${texts.astrolabe}">${texts.astrolabe}</span>
                 </a>
@@ -216,17 +216,17 @@ class Navigation {
                     </div>
                     <div class="submenu">
                         ${currentLang !== 'kr' ? `
-                        <a href="${BASE_URL}/schedule/?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="schedule-release">
+                        <a href="${BASE_URL}/${currentLang}/schedule/" class="nav-sub-item" data-nav="schedule-release">
                             <span data-text="${texts.scheduleRelease}">◈　${texts.scheduleRelease}</span>
                         </a>
-                        <a href="${BASE_URL}/pull-calc/?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="pull-calc">
+                        <a href="${BASE_URL}/${currentLang}/pull-calc/" class="nav-sub-item" data-nav="pull-calc">
                             <span data-text="${texts.pullPlanner}">◈　${texts.pullPlanner}</span>
                         </a>
                         ` : ''}
-                        <a href="${BASE_URL}/pull-tracker?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="pullTracker_individual">
+                        <a href="${BASE_URL}/${currentLang}/pull-tracker/" class="nav-sub-item" data-nav="pullTracker_individual">
                             <span data-text="${texts.pullTracker_individual}">◈　${texts.pullTracker_individual}</span>
                         </a>
-                        <a href="${BASE_URL}/pull-tracker/global-stats?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="pullTracker_global">
+                        <a href="${BASE_URL}/${currentLang}/pull-tracker/global-stats/" class="nav-sub-item" data-nav="pullTracker_global">
                             <span data-text="${texts.pullTracker_global}">◈　${texts.pullTracker_global}</span>
                         </a>
                     </div>
@@ -239,17 +239,17 @@ class Navigation {
                         <span data-text="${texts.calculator}">${texts.calculator}</span>
                     </div>
                     <div class="submenu">
-                        <a href="${BASE_URL}/material-calc?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="material-calc">
+                        <a href="${BASE_URL}/${currentLang}/material-calc/" class="nav-sub-item" data-nav="material-calc">
                             <span data-text="${texts.materialCalc}">◈　${texts.materialCalc}</span>
                         </a>
-                        <a href="${BASE_URL}/defense-calc?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="defense-calc">
+                        <a href="${BASE_URL}/${currentLang}/defense-calc/" class="nav-sub-item" data-nav="defense-calc">
                             <span data-text="${texts.defenseCalc}">◈　${texts.defenseCalc}</span>
                         </a>
-                        <a href="${BASE_URL}/critical-calc?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="critical-calc">
+                        <a href="${BASE_URL}/${currentLang}/critical-calc/" class="nav-sub-item" data-nav="critical-calc">
                             <span data-text="${texts.criticalCalc}">◈　${texts.criticalCalc}</span>
                         </a>
                         ${currentLang === 'kr' ? `
-                        <a href="${BASE_URL}/pay-calc?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="pay-calc">
+                        <a href="${BASE_URL}/${currentLang}/pay-calc/" class="nav-sub-item" data-nav="pay-calc">
                             <span data-text="${texts.payCalc}">◈　${texts.payCalc}</span>
                         </a>
                         ` : ''}
@@ -263,23 +263,23 @@ class Navigation {
                         <span data-text="${texts.tactic}">${texts.tactic}</span>
                     </div>
                     <div class="submenu">
-                        <a href="${BASE_URL}/tactic-maker?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="tactic-maker">
+                        <a href="${BASE_URL}/${currentLang}/tactic-maker/" class="nav-sub-item" data-nav="tactic-maker">
                             <span data-text="${texts.tacticMaker}">◈　${texts.tacticMaker}</span>
                         </a>
-                        <a href="${BASE_URL}/tactic/library/?lang=${currentLang}&v=${APP_VERSION}" class="nav-sub-item" data-nav="tactics">
+                        <a href="${BASE_URL}/${currentLang}/tactic/library/" class="nav-sub-item" data-nav="tactics">
                             <span data-text="${texts.tacticLibrary}">◈　${texts.tacticLibrary}</span>
                         </a>
                     </div>
                 </div>
                 ` : ''}
                 ${currentMenus.includes('tactic-maker') ? `
-                <a href="${BASE_URL}/tactic?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="tactic-maker">
+                <a href="${BASE_URL}/${currentLang}/tactic/" class="nav-link" data-nav="tactic-maker">
                     <img src="${BASE_URL}/assets/img/nav/tactic.png" alt="tactic" style="width: 28px; height: 28px; object-fit: contain;" />
                     <span data-text="${texts.tacticMaker}">${texts.tacticMaker}</span>
                 </a>
                 ` : ''}
                 ${currentMenus.includes('article') ? `
-                    <a href="${BASE_URL}/article/?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="article">
+                    <a href="${BASE_URL}/${currentLang}/article/" class="nav-link" data-nav="article">
                         <img src="${BASE_URL}/assets/img/nav/article.png" alt="article" style="width: 28px; height: 28px; object-fit: contain;" />
                         <span data-text="${texts.article}">${texts.article}</span>
                     </a>
@@ -302,13 +302,13 @@ class Navigation {
                 ` : ''}
 
                 ${currentMenus.includes('gallery') ? `
-                    <a href="${BASE_URL}/gallery/?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="gallery">
+                    <a href="${BASE_URL}/${currentLang}/gallery/" class="nav-link" data-nav="gallery">
                         <img src="${BASE_URL}/assets/img/nav/gallery.png" alt="gallery" style="width: 28px; height: 28px; object-fit: contain;" />
                         <span data-text="${texts.gallery}">${texts.gallery}</span>
                     </a>
                     ` : ''}
                 ${currentMenus.includes('about') ? `
-                <a href="${BASE_URL}/about?lang=${currentLang}&v=${APP_VERSION}" class="nav-link" data-nav="about">
+                <a href="${BASE_URL}/${currentLang}/about/" class="nav-link" data-nav="about">
                     <img src="${BASE_URL}/assets/img/nav/about.png" alt="about" style="width: 28px; height: 28px; object-fit: contain;" />
                     <span data-text="${texts.about}">${texts.about}</span>
                 </a>
@@ -370,7 +370,7 @@ class Navigation {
         if (!document.querySelector('.logo-container').hasAttribute('data-event-bound')) {
             // 로고 클릭 이벤트 처리
             document.querySelector('.logo-container').addEventListener('click', () => {
-                window.location.href = `${BASE_URL}/?lang=${currentLang}&v=${APP_VERSION}`;
+                window.location.href = `${BASE_URL}/${currentLang}/`;
             });
             document.querySelector('.logo-container').setAttribute('data-event-bound', 'true');
         }
@@ -378,7 +378,7 @@ class Navigation {
         if (!document.querySelector('.mobile-logo-container').hasAttribute('data-event-bound')) {
             // 모바일 로고 클릭 이벤트 처리
             document.querySelector('.mobile-logo-container').addEventListener('click', () => {
-                window.location.href = `${BASE_URL}/?lang=${currentLang}&v=${APP_VERSION}`;
+                window.location.href = `${BASE_URL}/${currentLang}/`;
             });
             document.querySelector('.mobile-logo-container').setAttribute('data-event-bound', 'true');
         }
@@ -632,79 +632,79 @@ class Navigation {
 
     // 현재 언어 감지 함수
     static getCurrentLanguage() {
-        // URL 파라미터에서 언어 확인
+        const pathLang = window.location.pathname.split('/')[1];
+        if (['kr', 'en', 'jp', 'cn'].includes(pathLang)) {
+            return pathLang;
+        }
+
         const urlParams = new URLSearchParams(window.location.search);
         const urlLang = urlParams.get('lang');
         if (urlLang && ['kr', 'en', 'jp', 'cn'].includes(urlLang)) {
             return urlLang;
         }
 
-        // URL 경로에서 언어 확인 (기존 /kr/, /en/ 방식 호환)
-        const pathLang = window.location.pathname.split('/')[1];
-        if (['kr', 'en', 'jp', 'cn'].includes(pathLang)) {
-            return pathLang;
-        }
-
-        // 로컬 스토리지에서 언어 확인
         const savedLang = localStorage.getItem('preferredLanguage');
         if (savedLang && ['kr', 'en', 'jp', 'cn'].includes(savedLang)) {
             return savedLang;
         }
 
-        // 브라우저 언어 감지
         const browserLang = navigator.language.toLowerCase();
         if (browserLang.startsWith('ko')) return 'kr';
         if (browserLang.startsWith('ja')) return 'jp';
         if (browserLang.startsWith('zh')) return 'cn';
         if (browserLang.startsWith('en')) return 'en';
 
-        return 'kr'; // 기본값
+        return 'kr';
     }
 
-    // sleep 함수 추가
     static sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 
     // 언어 선택 함수
     static async selectLanguage(lang, event) {
-        // 이벤트 전파 중단
         if (event) {
             event.preventDefault();
             event.stopPropagation();
             event.stopImmediatePropagation();
         }
 
-        // 드롭다운 닫기
+        const safeLang = ['kr', 'en', 'jp', 'cn'].includes(String(lang || '').toLowerCase())
+            ? String(lang).toLowerCase()
+            : 'kr';
+
         const optionsContainer = document.querySelector('.options-container');
         if (optionsContainer) {
             optionsContainer.classList.remove('active');
         }
 
-        // 선호 언어 저장
-        localStorage.setItem('preferredLanguage', lang);
+        localStorage.setItem('preferredLanguage', safeLang);
 
-        // 현재 URL 구성
-        const currentPath = window.location.pathname;
-        const currentParams = new URLSearchParams(window.location.search);
+        const currentUrl = new URL(window.location.href);
+        const currentPath = currentUrl.pathname;
+        const currentParams = new URLSearchParams(currentUrl.search);
+        currentParams.delete('lang');
+        currentParams.delete('v');
+        currentParams.delete('weapon');
 
-        // path-based language URL: /{lang}/... → lang prefix 교체
-        const langPrefixMatch = currentPath.match(/^\/(kr|en|jp|cn)(\/.*)?$/);
+        let nextPath = currentPath;
+        const langPrefixMatch = currentPath.match(/^\/(kr|en|jp|cn)(\/.*)?$/i);
+
         if (langPrefixMatch) {
             const remainingPath = langPrefixMatch[2] || '/';
-            const nextPath = `/${lang}${remainingPath}`;
-            currentParams.delete('lang');
-            currentParams.delete('weapon');
-            const query = currentParams.toString();
-            const newUrl = `${nextPath}${query ? `?${query}` : ''}`;
-            window.location.href = newUrl;
-            return;
+            nextPath = `/${safeLang}${remainingPath}`;
+        } else if (currentPath === '/') {
+            nextPath = `/${safeLang}/`;
+        } else {
+            const isDetailFallback = /^\/character\.html$/i.test(currentPath) || /^\/article\/view\/?$/i.test(currentPath);
+            if (!isDetailFallback) {
+                nextPath = `/${safeLang}${currentPath}`;
+            }
         }
 
-        // query-based language URL: ?lang= 파라미터 변경
-        currentParams.set('lang', lang);
-        const newUrl = `${currentPath}?${currentParams.toString()}`;
-        window.location.href = newUrl;
+        const query = currentParams.toString();
+        const hash = currentUrl.hash || '';
+        window.location.href = `${nextPath}${query ? `?${query}` : ''}${hash}`;
     }
 
     static initSwordAnimation() {

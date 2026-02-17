@@ -96,22 +96,22 @@
 
     function getCurrentLang() {
         try {
-            const urlLang = new URLSearchParams(window.location.search).get('lang');
-            if (urlLang && ['kr', 'en', 'jp'].includes(urlLang)) return urlLang;
-        } catch (_) { }
-        try {
             if (typeof LanguageRouter !== 'undefined' && LanguageRouter.getCurrentLanguage) {
                 const lr = LanguageRouter.getCurrentLanguage();
-                if (lr && ['kr', 'en', 'jp'].includes(lr)) return lr;
+                if (lr && ['kr', 'en', 'jp', 'cn'].includes(lr)) return lr;
             }
         } catch (_) { }
         try {
+            const urlLang = new URLSearchParams(window.location.search).get('lang');
+            if (urlLang && ['kr', 'en', 'jp', 'cn'].includes(urlLang)) return urlLang;
+        } catch (_) { }
+        try {
             const saved = localStorage.getItem('preferredLanguage');
-            if (saved && ['kr', 'en', 'jp'].includes(saved)) return saved;
+            if (saved && ['kr', 'en', 'jp', 'cn'].includes(saved)) return saved;
         } catch (_) { }
         try {
             const saved2 = localStorage.getItem('preferred_language');
-            if (saved2 && ['kr', 'en', 'jp'].includes(saved2)) return saved2;
+            if (saved2 && ['kr', 'en', 'jp', 'cn'].includes(saved2)) return saved2;
         } catch (_) { }
         return 'kr';
     }
@@ -154,6 +154,37 @@
         if (lang === 'en') return kr.codename || characterKey;
         if (lang === 'jp') return kr.name_jp || characterKey;
         return kr.name || characterKey;
+    }
+
+    function resolveCharacterSlug(characterKey) {
+        try {
+            const map = window.__CHARACTER_SLUG_MAP;
+            if (!map || typeof map !== 'object') return null;
+
+            const entry = map[characterKey];
+            if (entry && entry.slug) return entry.slug;
+
+            const keys = Object.keys(map);
+            for (let i = 0; i < keys.length; i += 1) {
+                const info = map[keys[i]];
+                if (!info || !info.slug || !Array.isArray(info.aliases)) continue;
+                if (info.aliases.includes(characterKey)) return info.slug;
+            }
+        } catch (_) {
+            // no-op
+        }
+        return null;
+    }
+
+    function buildCharacterHref(characterKey, lang) {
+        const slug = resolveCharacterSlug(characterKey);
+        if (slug) {
+            return `/${lang}/character/${slug}/`;
+        }
+
+        const url = new URL(`${window.BASE_URL || ''}/character.html`, window.location.origin);
+        url.searchParams.set('name', characterKey);
+        return url.pathname + url.search;
     }
 
     function buildReleaseOrderMap(langCharacterData) {
@@ -226,11 +257,7 @@
             if (badge === 'HOT') card.classList.add('hot');
 
             const link = document.createElement('a');
-            const url = new URL(`${window.BASE_URL || ''}/character.html`, window.location.origin);
-            url.searchParams.set('name', characterKey);
-            url.searchParams.set('lang', lang);
-            url.searchParams.set('v', window.APP_VERSION || Math.random().toString(36).substr(2, 5));
-            link.href = url.pathname + url.search;
+            link.href = buildCharacterHref(characterKey, lang);
             link.style.textDecoration = 'none';
             link.style.color = 'inherit';
 

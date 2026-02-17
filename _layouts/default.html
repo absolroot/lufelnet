@@ -111,9 +111,9 @@
 
 
   <!-- 버전 관리 스크립트 -->
-  <script>
-    document.write('<script src="{{ site.baseurl }}/assets/js/version.js?v=' + new Date().getTime() + '"><\/script>');
-  </script>
+  <script src="{{ site.baseurl }}/assets/js/version-manifest.js?v={{ site.time | date: '%s' }}"></script>
+  <script src="{{ site.baseurl }}/assets/js/version-runtime.js?v={{ site.time | date: '%s' }}"></script>
+  <script src="{{ site.baseurl }}/assets/js/version.js?v={{ site.time | date: '%s' }}"></script>
 
   <link rel="icon" type="image/x-icon" href="{{ site.baseurl }}/assets/img/favicon/favicon.ico">
   <link rel="icon" type="image/png" href="{{ site.baseurl }}/assets/img/favicon/favicon-96x96.png" sizes="96x96" />
@@ -396,7 +396,7 @@
 
     if ('serviceWorker' in navigator && !isLocalhost) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('{{ site.baseurl }}/sw.js')
+        navigator.serviceWorker.register('{{ site.baseurl }}/sw.js?v=' + encodeURIComponent(APP_VERSION))
           .then((registration) => {
             console.log('[PWA] Service Worker 등록 성공:', registration.scope);
 

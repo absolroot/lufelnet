@@ -139,3 +139,46 @@ window.jpCharacterSkillsData["세이지"] = {
     "cool": 0
   }
 };
+window.cnCharacterSkillsData = window.cnCharacterSkillsData || {};
+
+window.cnCharacterSkillsData["세이지"] = {
+  "name": "白鸟诚司",
+  "skill1": {
+    "name": "风之呼啸",
+    "element": "질풍",
+    "sp": 16,
+    "cool": 0,
+    "description": "对1名敌人造成4次42.9%/47.3%/44.7%/49.0%攻击力的疾风属性伤害，有19.2%/19.2%/20.0%/20.0%基础概率使敌人陷入风袭状态，效果持续两回合。"
+  },
+  "skill2": {
+    "name": "优雅暴风",
+    "element": "질풍",
+    "sp": 19,
+    "cool": 0,
+    "description": "对所有敌人造成3次24.2%/26.6%/25.2%/27.6%攻击力的疾风属性伤害。根据攻击时敌人数量有（敌人数量*48.8%/48.8%/50.8%/50.8%）基础概率获得『激励』状态。"
+  },
+  "skill3": {
+    "name": "无影直刺",
+    "element": "질풍",
+    "sp": 18,
+    "cool": 0,
+    "description": "对1名敌人造成3次53.2%/58.6%/55.4%/60.8%攻击力的疾风属性伤害，『激励』状态不少于3层时该技能造成额外1次伤害，且暴击率提升20%。"
+  },
+  "passive1": {
+    "name": "焦点",
+    "element": "패시브",
+    "cool": 0,
+    "description": "使用技能『无影直刺』对处于风袭状态下敌人造成伤害时有100.0%固定概率造成额外1次伤害。"
+  },
+  "passive2": {
+    "name": "沉抑",
+    "element": "패시브",
+    "cool": 0,
+    "description": "回合结束时，有60.0%固定概率使自己获得1层『激励』。"
+  },
+  "skill_highlight": {
+    "element": "질풍",
+    "cool": 4,
+    "description": "对1名敌人造成4次58.6%/64.6%/61.0%/67.0%攻击力的疾风属性伤害，释放该技能时，若自身持有三层及以上『激励』状态，则伤害次数增加1次。"
+  }
+};

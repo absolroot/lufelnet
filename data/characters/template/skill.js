@@ -130,3 +130,48 @@ window.jpCharacterSkillsData[""] = {
     "description": ""
   }
 };
+window.cnCharacterSkillsData = window.cnCharacterSkillsData || {};
+window.cnCharacterSkillsData[""] = {
+  "name": "",
+  "skill1": {
+    "name": "",
+    "element": "",
+    "type": "",
+    "sp": 0,
+    "cool": 0,
+    "description": ""
+  },
+  "skill2": {
+    "name": "",
+    "element": "",
+    "type": "",
+    "sp": 0,
+    "cool": 0,
+    "description": ""
+  },
+  "skill3": {
+    "name": "",
+    "element": "",
+    "type": "",
+    "sp": 0,
+    "cool": 0,
+    "description": ""
+  },
+  "skill_highlight": {
+    "name": "",
+    "element": "",
+    "type": "",
+    "cool": 0,
+    "description": ""
+  },
+  "passive1": {
+    "name": "",
+    "element": "",
+    "description": ""
+  },
+  "passive2": {
+    "name": "",
+    "element": "",
+    "description": ""
+  }
+};

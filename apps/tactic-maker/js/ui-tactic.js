@@ -234,6 +234,8 @@ export class TacticUI {
             return charData.codename || charData.name_en || charData.name || charKey;
         } else if (lang === 'jp') {
             return charData.name_jp || charData.name || charKey;
+        } else if (lang === 'cn') {
+            return charData.name_cn || charData.name || charKey;
         }
         return charKey;
     }
@@ -1062,6 +1064,8 @@ export class TacticUI {
             skillsData = window.enCharacterSkillsData[charName];
         } else if (lang === 'jp' && window.jpCharacterSkillsData?.[charName]) {
             skillsData = window.jpCharacterSkillsData[charName];
+        } else if (lang === 'cn' && window.cnCharacterSkillsData?.[charName]) {
+            skillsData = window.cnCharacterSkillsData[charName];
         } else {
             skillsData = window.characterSkillsData?.[charName];
         }

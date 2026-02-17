@@ -157,3 +157,53 @@ window.jpCharacterSkillsData["사나다"] = {
     "description": "真田 明彦がクリティカルを与えるたび、3ターンの間攻撃力が13.5%上昇する（最大3スタック）。"
   }
 };
+window.cnCharacterSkillsData = window.cnCharacterSkillsData || {};
+
+window.cnCharacterSkillsData["사나다"] = {
+  "name": "真田明彦",
+  "skill1": {
+    "name": "电光阵",
+    "element": "전격",
+    "sp": 20,
+    "cool": 0,
+    "description": "自身获得1层『斗志』，对所有敌人造成122.8%/135.4%/130.3%/142.9%攻击力的电击属性伤害，自身暴击效果提高23.4%/25.8%/24.9%/27.3%，持续3回合。"
+  },
+  "skill2": {
+    "name": "电光冲击",
+    "element": "전격",
+    "sp": 20,
+    "cool": 0,
+    "description": "自身获得1层『斗志』，对所有敌人造成92.1%/101.6%/97.8%/107.2%攻击力的电击属性伤害，自身获得2层『执念』。"
+  },
+  "skill3": {
+    "name": "雷拳一闪",
+    "element": "전격",
+    "sp": 24,
+    "cool": 2,
+    "description": "对所有敌人造成136.4%/150.4%/144.8%/158.8%攻击力的电击属性伤害，若自身存在2层及以上的『斗志』则消耗所有『斗志』，每消耗1层『斗志』使该技能倍率提升40.9%/45.1%/43.4%/47.6%。"
+  },
+  "skill_support": {
+    "name": "援助技能",
+    "element": "버프",
+    "cool": 0,
+    "description": "使1名同伴暴击效果提升20%，持续1回合。"
+  },
+  "passive1": {
+    "name": "热血",
+    "element": "패시브",
+    "cool": 0,
+    "description": "自身对处于倒地状态的敌人造成伤害时，造成伤害提升30.0%。"
+  },
+  "passive2": {
+    "name": "贯彻",
+    "element": "패시브",
+    "cool": 0,
+    "description": "自身造成暴击后，攻击力提升13.5%，持续3回合，上限3层。"
+  },
+  "skill_highlight": {
+    "name": "雷电圆球",
+    "element": "전격",
+    "cool": 0,
+    "description": "释放条件：140点神通法能量\n对所有敌人造成255.4%/281.6%/271.1%/297.3%攻击力的电击属性伤害，该技能『必定暴击』，暴击效果固定为200%。"
+  }
+};

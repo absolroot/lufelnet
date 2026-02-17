@@ -1334,6 +1334,8 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (currentLang === 'jp' && typeof window.jpCharacterSkillsData !== 'undefined' && window.jpCharacterSkillsData[characterName]) {
             character = window.jpCharacterSkillsData[characterName];
             // console.log('일본어 스킬 데이터 사용:', character);
+        } else if (currentLang === 'cn' && typeof window.cnCharacterSkillsData !== 'undefined' && window.cnCharacterSkillsData[characterName]) {
+            character = window.cnCharacterSkillsData[characterName];
         } else {
             character = characterSkillsData[characterName];
             // console.log('한국어 스킬 데이터 사용:', character);
@@ -1683,6 +1685,8 @@ document.addEventListener('DOMContentLoaded', () => {
             character = window.enCharacterSkillsData[characterName];
         } else if (currentLang === 'jp' && typeof window.jpCharacterSkillsData !== 'undefined' && window.jpCharacterSkillsData[characterName]) {
             character = window.jpCharacterSkillsData[characterName];
+        } else if (currentLang === 'cn' && typeof window.cnCharacterSkillsData !== 'undefined' && window.cnCharacterSkillsData[characterName]) {
+            character = window.cnCharacterSkillsData[characterName];
         } else {
             character = (typeof window.characterSkillsData !== 'undefined' && window.characterSkillsData[characterName])
                 ? window.characterSkillsData[characterName]

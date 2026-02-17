@@ -1,0 +1,26 @@
+{
+  "character": {
+    "cn": {
+      "ignore": [
+        "LUCE\u00B7Night",
+        "MONT\u00B7Swan",
+        "WIND\u00B7Vast"
+      ],
+      "alias": {},
+      "unresolved": []
+    }
+  },
+  "weapon": {
+    "cn": {
+      "ignore": [
+        "LUCE\u00B7Night",
+        "MONT\u00B7Swan",
+        "SOY\u00B7Frontier",
+        "WIND\u00B7Vast",
+        "wonder"
+      ],
+      "alias": {},
+      "unresolved": []
+    }
+  }
+}

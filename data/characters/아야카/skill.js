@@ -136,3 +136,46 @@ window.jpCharacterSkillsData["아야카"] = {
     "cool": 0
   }
 };
+window.cnCharacterSkillsData = window.cnCharacterSkillsData || {};
+
+window.cnCharacterSkillsData["아야카"] = {
+  "name": "坂井绫香",
+  "skill1": {
+    "name": "激情鸣奏",
+    "element": "전격",
+    "sp": 20,
+    "cool": 0,
+    "description": "对所有敌人造成85.4%/94.2%/90.6%/99.4%攻击力的电击属性伤害，有80%的基础概率使主目标陷入触电状态。若存在『忠实听众』，则『忠实听众』对技能主目标额外造成1次基于『忠实听众』83.3%/91.8%/88.4%/96.9%攻击力的电击属性附加伤害。"
+  },
+  "skill2": {
+    "name": "即兴独奏",
+    "element": "버프",
+    "sp": 20,
+    "cool": 0,
+    "description": "选择1名同伴成为『忠实听众』，『忠实听众』的攻击力提升相当于坂井绫香攻击力的24%，上限1220/1345/1295/1420，持续3回合。同时只能拥有1个『忠实听众』。"
+  },
+  "skill3": {
+    "name": "终曲：音域全开",
+    "element": "버프",
+    "sp": 25,
+    "cool": 1,
+    "description": "选择1名同伴，立刻释放其HIGHLIGHT技能，同时提升78.1%/86.1%/82.9%/90.9%本次HIGHLIGHT的伤害。通过该技能使用的HIGHLIGHT不会计入角色的HIGHLIGHT冷却时间。若目标为S.E.E.S.成员，则改为使其下一次神通法获得19.5%/19.5%/20.7%/20.7%最终伤害增幅。"
+  },
+  "passive1": {
+    "name": "重音",
+    "element": "패시브",
+    "cool": 0,
+    "description": "友方怪盗使用HIGHLIGHT/神通法时，立刻提升其24.0%攻击力，持续1回合；如果此人是忠实听众则效果提升为1.5倍。"
+  },
+  "passive2": {
+    "name": "扫弦",
+    "element": "패시브",
+    "cool": 0,
+    "description": "友方怪盗使用HIGHLIGHT/神通法后，坂井绫香立刻对生命值百分比最低的同伴恢复相当于坂井15.0%攻击力+1350的生命值。"
+  },
+  "skill_highlight": {
+    "element": "버프",
+    "cool": 4,
+    "description": "所有同伴获得45.5%/50.1%/48.3%/52.9%伤害加成，持续4个怪盗行动。期间我方怪盗行动后回复10%HIGHLIGHT能量，最多回复40%。"
+  }
+};

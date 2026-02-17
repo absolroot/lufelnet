@@ -98,10 +98,10 @@
   // --- Character/Weapon helpers (reused from pull-tracker.js logic) ---
   function getCharData(){ try { return (typeof characterData !== 'undefined') ? characterData : (window.characterData||null); } catch(_) { return null; } }
   function getWeaponData(){ try { return (typeof WeaponData !== 'undefined') ? WeaponData : (window.WeaponData||null); } catch(_) { return null; } }
-  function charNameByLang(info){ if(!info) return ''; if(lang==='en') return String(info.codename||info.name_en||info.name||'').trim(); if(lang==='jp') return String(info.name_jp||info.name||'').trim(); return String(info.name||'').trim(); }
+  function charNameByLang(info){ if(!info) return ''; if(lang==='en') return String(info.codename||info.name_en||info.name||'').trim(); if(lang==='jp') return String(info.name_jp||info.name||'').trim(); if(lang==='cn') return String(info.name_cn||info.name||'').trim(); return String(info.name||'').trim(); }
   function candidateNames(info){
     if (!info) return [];
-    const base=[info.name,info.name_en,info.name_jp,info.codename].map(v=>v?String(v).trim():'').filter(Boolean);
+    const base=[info.name,info.name_en,info.name_jp,info.name_cn,info.codename].map(v=>v?String(v).trim():'').filter(Boolean);
     if (lang==='jp'){
       const extra=[]; for (const s of base){ try{ const no=String(s).replace(/[\s\u3000]+/g,''); if(no && no!==s) extra.push(no);}catch(_){} }
       return Array.from(new Set(base.concat(extra)));
@@ -140,6 +140,7 @@
       const kr = getWeaponData(); if (kr) datasets.push(kr);
       if (window.enCharacterWeaponData) datasets.push(window.enCharacterWeaponData);
       if (window.jpCharacterWeaponData) datasets.push(window.jpCharacterWeaponData);
+      if (window.cnCharacterWeaponData) datasets.push(window.cnCharacterWeaponData);
       const needle = String(name||'').trim(); if (!needle) return null;
       const baseOf = (s)=> String(s).split('·')[0].trim();
       const needleBase = baseOf(needle);
@@ -171,6 +172,7 @@
     try {
       const db = (lang==='en') ? (window.enCharacterWeaponData||getWeaponData())
                : (lang==='jp') ? (window.jpCharacterWeaponData||getWeaponData())
+               : (lang==='cn') ? (window.cnCharacterWeaponData||getWeaponData())
                : getWeaponData();
       const entry = db && db[ownerKey] && db[ownerKey][weaponKey];
       const n = entry && entry.name ? String(entry.name).trim() : '';
@@ -771,6 +773,7 @@
         window.WeaponData = window.WeaponData || {};
         window.enCharacterWeaponData = window.enCharacterWeaponData || {};
         window.jpCharacterWeaponData = window.jpCharacterWeaponData || {};
+        window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
         const base = (typeof window.BASE_URL !== 'undefined') ? window.BASE_URL : '';
         const ver = (typeof window.APP_VERSION !== 'undefined') ? window.APP_VERSION : Date.now();
         const chars = (typeof characterData !== 'undefined' && characterData)

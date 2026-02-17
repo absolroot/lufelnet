@@ -1072,6 +1072,9 @@
             window.characterSkillsData = window.characterSkillsData || {};
             window.ritualData = window.ritualData || {};
             window.WeaponData = window.WeaponData || {};
+            window.cnCharacterSkillsData = window.cnCharacterSkillsData || {};
+            window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+            window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
             // 심상 코어(innate) 데이터 전역 스텁
             window.innateData = window.innateData || {};
             // 캐릭터 세팅 데이터 전역 스텁
@@ -1248,6 +1251,16 @@
                     if (window.jpCharacterWeaponData && window.jpCharacterWeaponData[characterName]) {
                         localizedWeapon = window.jpCharacterWeaponData[characterName];
                     }
+                } else if (currentLang === 'cn') {
+                    if (window.cnCharacterSkillsData && window.cnCharacterSkillsData[characterName]) {
+                        localizedSkills = window.cnCharacterSkillsData[characterName];
+                    }
+                    if (window.cnCharacterRitualData && window.cnCharacterRitualData[characterName]) {
+                        localizedRitual = window.cnCharacterRitualData[characterName];
+                    }
+                    if (window.cnCharacterWeaponData && window.cnCharacterWeaponData[characterName]) {
+                        localizedWeapon = window.cnCharacterWeaponData[characterName];
+                    }
                 }
 
                 /*console.log('언어별 데이터 로드 결과:', {
@@ -1408,6 +1421,8 @@
                     });
                 } else if (currentLang === 'jp' && character.name_jp) {
                     nameElement.textContent = character.name_jp;
+                } else if (currentLang === 'cn' && character.name_cn) {
+                    nameElement.textContent = character.name_cn;
                 } else {
                     nameElement.textContent = character.name;
                 }
@@ -1426,6 +1441,7 @@
             const personaLabel = `${getCharacterI18nText('characterDetailPersona', '페르소나')} `;
             const personaValue = currentLang === 'en' && character.persona_en ? character.persona_en :
                 currentLang === 'jp' && character.persona_jp ? character.persona_jp :
+                    currentLang === 'cn' && character.persona_cn ? character.persona_cn :
                     character.persona || '';
             const personaEl = document.querySelector('.persona-name');
             if (personaEl) {
@@ -2063,6 +2079,8 @@
             characterDisplayName = character.name_en;
         } else if (currentLang === 'jp' && character.name_jp) {
             characterDisplayName = character.name_jp;
+        } else if (currentLang === 'cn' && character.name_cn) {
+            characterDisplayName = character.name_cn;
         }
 
         let characterEntityKey = '';
@@ -2381,6 +2399,8 @@
             return p.name_en;
         } else if (currentLang === 'jp' && p.name_jp) {
             return p.name_jp;
+        } else if (currentLang === 'cn' && p.name_cn) {
+            return p.name_cn;
         }
         return personaName;
     }
@@ -2446,6 +2466,12 @@
         }
 
         // 한국어: 객체 키(원래 캐릭터 이름)를 그대로 사용
+        if (currentLang === 'cn') {
+            if (c.name_cn) return c.name_cn;
+            if (base.name_cn) return base.name_cn;
+            return base.name || characterName;
+        }
+
         if (currentLang === 'kr') {
             return characterName;
         }

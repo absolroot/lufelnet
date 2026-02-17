@@ -105,6 +105,7 @@
             // 무기 이름 번역
             const enData = window.enCharacterWeaponData || {};
             const jpData = window.jpCharacterWeaponData || {};
+            const cnData = window.cnCharacterWeaponData || {};
             const krData = getWeaponData();
             for (const [ownerKey, weapons] of Object.entries(krData)) {
                 if (!weapons) continue;
@@ -115,6 +116,8 @@
                             return enData[ownerKey][wKey].name || name;
                         } else if (l === 'jp' && jpData[ownerKey] && jpData[ownerKey][wKey]) {
                             return jpData[ownerKey][wKey].name || name;
+                        } else if (l === 'cn' && cnData[ownerKey] && cnData[ownerKey][wKey]) {
+                            return cnData[ownerKey][wKey].name || name;
                         }
                     }
                 }
@@ -128,6 +131,7 @@
                 if (info.name === name) {
                     if (l === 'en') return info.name_en || info.codename || name;
                     if (l === 'jp') return info.name_jp || name;
+                    if (l === 'cn') return info.name_cn || name;
                 }
             }
             return name;
@@ -146,6 +150,7 @@
             const l = lang();
             const displayName = (l === 'en') ? (info.name_en || info.codename || info.name || key)
                 : (l === 'jp') ? (info.name_jp || info.name || key)
+                    : (l === 'cn') ? (info.name_cn || info.name || key)
                     : (info.name || key);
             list.push({
                 key,
@@ -164,6 +169,7 @@
         const l = lang();
         const enWeaponData = window.enCharacterWeaponData || {};
         const jpWeaponData = window.jpCharacterWeaponData || {};
+        const cnWeaponData = window.cnCharacterWeaponData || {};
         const charData = getCharData();
         
         // 캐릭터 이름 가져오기 헬퍼
@@ -173,6 +179,7 @@
             if (!charInfo) return ownerKey; // 캐릭터 데이터가 없으면 키 그대로
             if (l === 'en') return charInfo.name_en || charInfo.codename || charInfo.name || ownerKey;
             if (l === 'jp') return charInfo.name_jp || charInfo.name || ownerKey;
+            if (l === 'cn') return charInfo.name_cn || charInfo.name || ownerKey;
             return charInfo.name || ownerKey;
         };
         
@@ -194,6 +201,8 @@
                     weaponName = enWeaponData[ownerKey][wKey].name || weaponName;
                 } else if (l === 'jp' && jpWeaponData[ownerKey] && jpWeaponData[ownerKey][wKey]) {
                     weaponName = jpWeaponData[ownerKey][wKey].name || weaponName;
+                } else if (l === 'cn' && cnWeaponData[ownerKey] && cnWeaponData[ownerKey][wKey]) {
+                    weaponName = cnWeaponData[ownerKey][wKey].name || weaponName;
                 }
                 
                 // 무기 이름이 없으면 건너뛰기 (weapon5-1 같은 키 이름 표시 방지)

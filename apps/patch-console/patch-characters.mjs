@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 
 import fs from 'fs';
 import path from 'path';
@@ -31,9 +31,10 @@ const PROJECT_ROOT = path.join(__dirname, '..', '..');
 const CHARACTER_ROOT = path.join(PROJECT_ROOT, 'data', 'characters');
 const TEMPLATE_ROOT = path.join(CHARACTER_ROOT, 'template');
 const CODENAME_FILE = path.join(PROJECT_ROOT, 'data', 'external', 'character', 'codename.json');
+const SOURCE_POLICY_FILE = path.join(PROJECT_ROOT, 'data', 'external', 'source-policy.json');
 const KR_CHARACTER_META_FILE = path.join(PROJECT_ROOT, 'data', 'character_info.js');
 
-const SUPPORTED_PATCH_LANGS = new Set(['kr', 'en', 'jp']);
+const SUPPORTED_PATCH_LANGS = new Set(['kr', 'en', 'jp', 'cn']);
 const ALL_EXTERNAL_LANGS = ['kr', 'en', 'jp', 'cn', 'tw', 'sea'];
 const DEFAULT_REPORT_FILE = path.join(PROJECT_ROOT, 'scripts', 'reports', 'character-patch-diff.md');
 const DEFAULT_REPORT_JSON_FILE = path.join(PROJECT_ROOT, 'scripts', 'reports', 'character-patch-diff.json');
@@ -42,17 +43,20 @@ const WINDOW_NAME_MAP = {
   ritual: {
     kr: 'ritualData',
     en: 'enCharacterRitualData',
-    jp: 'jpCharacterRitualData'
+    jp: 'jpCharacterRitualData',
+    cn: 'cnCharacterRitualData'
   },
   skill: {
     kr: 'characterSkillsData',
     en: 'enCharacterSkillsData',
-    jp: 'jpCharacterSkillsData'
+    jp: 'jpCharacterSkillsData',
+    cn: 'cnCharacterSkillsData'
   },
   weapon: {
     kr: 'WeaponData',
     en: 'enCharacterWeaponData',
-    jp: 'jpCharacterWeaponData'
+    jp: 'jpCharacterWeaponData',
+    cn: 'cnCharacterWeaponData'
   },
   base_stats: {
     kr: 'basicStatsData'
@@ -124,16 +128,16 @@ function fail(message, exitCode = 1) {
 function usage() {
   log(`Usage:
   node apps/patch-console/patch-characters.mjs list [--langs kr,en,jp,cn,tw,sea]
-  node apps/patch-console/patch-characters.mjs patch --langs kr,en,jp [--api api1,api2 | --local local1,local2 | --nums 1,3-5]
+  node apps/patch-console/patch-characters.mjs patch --langs kr,en,jp,cn [--all | --api api1,api2 | --local local1,local2 | --nums 1,3-5]
                                        [--parts ritual,skill,weapon,base_stats]
                                        [--dry-run] [--no-bootstrap]
                                        [--report-file scripts/reports/character-patch-diff.md] [--no-report]
-  node apps/patch-console/patch-characters.mjs report --langs kr,en,jp
+  node apps/patch-console/patch-characters.mjs report --langs kr,en,jp,cn
                                        [--api ... | --local ... | --nums ... | --all]
                                        [--exclude-api ... | --exclude-local ... | --exclude-nums ...]
                                        [--parts ritual,skill,weapon,base_stats]
                                        [--report-file scripts/reports/character-patch-diff.md]
-  node apps/patch-console/patch-characters.mjs report-json --langs kr,en,jp
+  node apps/patch-console/patch-characters.mjs report-json --langs kr,en,jp,cn
                                        [--api ... | --local ... | --nums ... | --all]
                                        [--exclude-api ... | --exclude-local ... | --exclude-nums ...]
                                        [--parts ritual,skill,weapon,base_stats]
@@ -403,6 +407,26 @@ function applyPartPatchPolicy(part, existingValue, nextValue) {
   return adjusted;
 }
 
+function applyCnSkillElementFallback(part, lang, nextValue, krSkillValue) {
+  if (part !== 'skill' || lang !== 'cn') return nextValue;
+  if (!isPlainObject(nextValue) || !isPlainObject(krSkillValue)) return nextValue;
+
+  let adjusted = nextValue;
+  for (const [key, krNode] of Object.entries(krSkillValue)) {
+    if (!isPlainObject(krNode)) continue;
+    const krElement = typeof krNode.element === 'string' ? krNode.element.trim() : '';
+    if (!krElement) continue;
+
+    const cnNode = isPlainObject(adjusted[key]) ? adjusted[key] : null;
+    const cnElement = cnNode && typeof cnNode.element === 'string' ? cnNode.element.trim() : '';
+    if (cnElement) continue;
+
+    const nextNode = { ...(cnNode || {}), element: krElement };
+    adjusted = { ...adjusted, [key]: nextNode };
+  }
+  return adjusted;
+}
+
 function normalizeCodeName(value) {
   return String(value || '')
     .trim()
@@ -449,6 +473,66 @@ function resolveCharacterKey(entry, characterKeyMap) {
 }
 
 const externalFileCache = new Map();
+const sourcePolicyCache = new Map();
+let sourcePolicyRawCache = null;
+
+function loadSourcePolicyRaw() {
+  if (sourcePolicyRawCache !== null) return sourcePolicyRawCache;
+  if (!fs.existsSync(SOURCE_POLICY_FILE)) {
+    sourcePolicyRawCache = {};
+    return sourcePolicyRawCache;
+  }
+
+  let parsed = {};
+  try {
+    const raw = fs.readFileSync(SOURCE_POLICY_FILE, 'utf8').replace(/^\uFEFF/, '');
+    parsed = JSON.parse(raw);
+  } catch (error) {
+    throw new Error(`Failed to parse source policy '${path.relative(PROJECT_ROOT, SOURCE_POLICY_FILE)}': ${error.message}`);
+  }
+
+  sourcePolicyRawCache = isPlainObject(parsed) ? parsed : {};
+  return sourcePolicyRawCache;
+}
+
+function normalizeStemSet(values) {
+  const out = new Set();
+  if (!Array.isArray(values)) return out;
+  for (const item of values) {
+    const stem = normalizeCodeName(item);
+    if (!stem) continue;
+    out.add(stem);
+  }
+  return out;
+}
+
+function getSourcePolicy(kind, lang) {
+  const cacheKey = `${kind}:${lang}`;
+  if (sourcePolicyCache.has(cacheKey)) return sourcePolicyCache.get(cacheKey);
+
+  const root = loadSourcePolicyRaw();
+  const rawKind = isPlainObject(root[kind]) ? root[kind] : {};
+  const rawPolicy = isPlainObject(rawKind[lang]) ? rawKind[lang] : {};
+  const ignore = normalizeStemSet(rawPolicy.ignore);
+  const unresolved = normalizeStemSet(rawPolicy.unresolved);
+
+  const aliasRaw = isPlainObject(rawPolicy.alias) ? rawPolicy.alias : {};
+  const alias = new Map();
+  const reverseAlias = new Map();
+  for (const [from, to] of Object.entries(aliasRaw)) {
+    const fromNorm = normalizeCodeName(from);
+    const toNorm = normalizeCodeName(to);
+    if (!fromNorm || !toNorm) continue;
+    alias.set(fromNorm, toNorm);
+    const list = reverseAlias.get(toNorm) || [];
+    list.push(fromNorm);
+    reverseAlias.set(toNorm, list);
+  }
+
+  const resolved = { ignore, unresolved, alias, reverseAlias };
+  sourcePolicyCache.set(cacheKey, resolved);
+  return resolved;
+}
 
 function getExternalFileMap(kind, lang) {
   const cacheKey = `${kind}:${lang}`;
@@ -467,9 +551,82 @@ function getExternalFileMap(kind, lang) {
   return map;
 }
 
-function readExternalJson(kind, lang, localCode) {
+function resolveExternalFilePath(kind, lang, localCode) {
   const fileMap = getExternalFileMap(kind, lang);
-  const filePath = fileMap.get(normalizeCodeName(localCode));
+  const localNorm = normalizeCodeName(localCode);
+  if (!localNorm) return null;
+
+  const direct = fileMap.get(localNorm);
+  if (direct) return direct;
+
+  const policy = getSourcePolicy(kind, lang);
+  const aliasTarget = policy.alias.get(localNorm);
+  if (aliasTarget && fileMap.has(aliasTarget)) {
+    return fileMap.get(aliasTarget);
+  }
+
+  const aliasCandidates = policy.reverseAlias.get(localNorm) || [];
+  for (const aliasStem of aliasCandidates) {
+    const candidate = fileMap.get(aliasStem);
+    if (candidate) return candidate;
+  }
+
+  return null;
+}
+
+function auditExternalSources({ codenameEntries, langs }) {
+  if (!langs.includes('cn')) return;
+  const entries = Array.isArray(codenameEntries) ? codenameEntries : loadCodenameEntries();
+  const codenameStems = new Set(entries.map((entry) => normalizeCodeName(entry.local)));
+
+  const issues = [];
+  for (const kind of ['character', 'weapon']) {
+    const fileMap = getExternalFileMap(kind, 'cn');
+    const policy = getSourcePolicy(kind, 'cn');
+    const unknown = [];
+    const unresolved = [];
+    const aliasInvalid = [];
+
+    for (const stem of fileMap.keys()) {
+      if (codenameStems.has(stem)) continue;
+      if (policy.ignore.has(stem)) continue;
+      if (policy.alias.has(stem)) {
+        const aliasTarget = policy.alias.get(stem);
+        if (!codenameStems.has(aliasTarget)) {
+          aliasInvalid.push(`${stem}->${aliasTarget}`);
+        }
+        continue;
+      }
+      if (policy.unresolved.has(stem)) {
+        unresolved.push(stem);
+        continue;
+      }
+      unknown.push(stem);
+    }
+
+    if (aliasInvalid.length > 0) {
+      issues.push(`[${kind}/cn] invalid alias targets: ${aliasInvalid.join(', ')}`);
+    }
+    if (unknown.length > 0) {
+      issues.push(`[${kind}/cn] unmapped external stems: ${unknown.join(', ')}`);
+    }
+    if (unresolved.length > 0) {
+      issues.push(`[${kind}/cn] unresolved policy stems: ${unresolved.join(', ')}`);
+    }
+  }
+
+  if (issues.length > 0) {
+    const policyPath = path.relative(PROJECT_ROOT, SOURCE_POLICY_FILE);
+    fail([
+      'CN external source audit failed.',
+      ...issues.map((line) => `- ${line}`),
+      `Update ${policyPath} (ignore/alias/unresolved) before retrying.`
+    ].join('\n'));
+  }
+}
+
+function readExternalJson(kind, lang, localCode) {
+  const filePath = resolveExternalFilePath(kind, lang, localCode);
   if (!filePath || !fs.existsSync(filePath)) {
     return { ok: false, reason: 'missing', filePath: null, json: null };
   }
@@ -832,13 +989,18 @@ function loadSources(localCode, lang) {
 }
 function runPatch(options) {
   const codenameEntries = loadCodenameEntries();
+  const langs = parseLangs(options.args.langs, 'kr', 'patch');
+  auditExternalSources({ codenameEntries, langs });
+
   const selectors = getSelectors(options.args);
-  const selected = pickEntriesBySelectors(codenameEntries, selectors);
+  const includeAll = Boolean(options.args.all);
+  const selected = includeAll
+    ? codenameEntries
+    : pickEntriesBySelectors(codenameEntries, selectors);
   if (selected.length === 0) {
-    fail('No target selected. Use --api / --local / --nums');
+    fail('No target selected. Use --all or --api / --local / --nums');
   }
 
-  const langs = parseLangs(options.args.langs, 'kr', 'patch');
   const parts = parseParts(options.args.parts, langs, 'patch');
   const characterKeyMap = loadCharacterKeyMapFromKr();
   const bootstrap = options.args['no-bootstrap'] ? false : true;
@@ -913,7 +1075,11 @@ function runPatch(options) {
           continue;
         }
         const mergedValue = deepMerge(existing, payload);
-        const nextValue = applyPartPatchPolicy(part, existing, mergedValue);
+        const policyValue = applyPartPatchPolicy(part, existing, mergedValue);
+        const krSkillValue = (part === 'skill' && lang === 'cn')
+          ? readWindowEntry(filePath, WINDOW_NAME_MAP.skill.kr, characterKey)
+          : null;
+        const nextValue = applyCnSkillElementFallback(part, lang, policyValue, krSkillValue);
         if (equals(existing, nextValue)) {
           row.skippedParts.push(`${part}:no_change`);
           continue;
@@ -975,7 +1141,11 @@ function buildDiffRecord(entry, characterKey, lang, part, sources) {
   const payload = createPatchPayload(part, lang, sources, current);
   if (!payload || Object.keys(payload).length === 0) return null;
   const mergedValue = deepMerge(current, payload);
-  const nextValue = applyPartPatchPolicy(part, current, mergedValue);
+  const policyValue = applyPartPatchPolicy(part, current, mergedValue);
+  const krSkillValue = (part === 'skill' && lang === 'cn')
+    ? readWindowEntry(filePath, WINDOW_NAME_MAP.skill.kr, characterKey)
+    : null;
+  const nextValue = applyCnSkillElementFallback(part, lang, policyValue, krSkillValue);
   if (equals(current, nextValue)) return null;
   const paths = diffPaths(current, nextValue).filter(Boolean);
   const samplePaths = paths;
@@ -1070,9 +1240,10 @@ function writePendingReport({ codenameEntries, characterKeyMap, langs, parts, ex
 }
 
 function runReport(options) {
+  const langs = parseLangs(options.args.langs, 'kr,en,jp', 'report');
+  auditExternalSources({ langs });
   const finalEntries = resolveReportTargets(options);
   const characterKeyMap = loadCharacterKeyMapFromKr();
-  const langs = parseLangs(options.args.langs, 'kr,en,jp', 'report');
   const parts = parseParts(options.args.parts, langs, 'report');
   const reportFile = options.args['report-file'] || DEFAULT_REPORT_FILE;
 
@@ -1109,9 +1280,10 @@ function resolveReportTargets(options) {
 }
 
 function runReportJson(options) {
+  const langs = parseLangs(options.args.langs, 'kr,en,jp', 'report');
+  auditExternalSources({ langs });
   const finalEntries = resolveReportTargets(options);
   const characterKeyMap = loadCharacterKeyMapFromKr();
-  const langs = parseLangs(options.args.langs, 'kr,en,jp', 'report');
   const parts = parseParts(options.args.parts, langs, 'report');
   const jsonFile = options.args['json-file'] || DEFAULT_REPORT_JSON_FILE;
   const rows = collectPendingRows({
@@ -1173,6 +1345,10 @@ function runApplyDiffJson(options) {
     const lang = String(task?.lang || '').trim().toLowerCase();
     if (!Number.isInteger(index) || !lang) {
       warn(`invalid task skipped: ${JSON.stringify(task)}`);
+      continue;
+    }
+    if (!SUPPORTED_PATCH_LANGS.has(lang)) {
+      warn(`unsupported lang in task skipped: index=${index}, lang=${lang}`);
       continue;
     }
 
@@ -1250,7 +1426,11 @@ function runApplyDiffJson(options) {
         continue;
       }
       const mergedValue = deepMerge(existing, partPayload);
-      const nextValue = applyPartPatchPolicy(part, existing, mergedValue);
+      const policyValue = applyPartPatchPolicy(part, existing, mergedValue);
+      const krSkillValue = (part === 'skill' && lang === 'cn')
+        ? readWindowEntry(filePath, WINDOW_NAME_MAP.skill.kr, characterKey)
+        : null;
+      const nextValue = applyCnSkillElementFallback(part, lang, policyValue, krSkillValue);
       if (equals(existing, nextValue)) {
         row.skippedParts.push(`${part}:no_change`);
         continue;

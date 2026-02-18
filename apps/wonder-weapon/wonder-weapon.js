@@ -189,6 +189,78 @@
     return { slug: '', aliases: [] };
   }
 
+  function resolveWeaponFromSlugToken(input) {
+    const slugToken = normalizeWeaponToken(input).toLowerCase();
+    if (!slugToken) return '';
+
+    const slugMap = (typeof window !== 'undefined' && window.__WONDER_WEAPON_SLUG_MAP && typeof window.__WONDER_WEAPON_SLUG_MAP === 'object')
+      ? window.__WONDER_WEAPON_SLUG_MAP
+      : null;
+    if (!slugMap) return '';
+
+    const keys = Object.keys(slugMap);
+    for (let i = 0; i < keys.length; i++) {
+      const krName = keys[i];
+      const slugEntry = getWeaponSlugEntry(krName);
+      const stableSlug = normalizeWeaponToken(slugEntry.slug).toLowerCase();
+      const stableAliases = Array.isArray(slugEntry.aliases)
+        ? slugEntry.aliases.map((alias) => normalizeWeaponToken(alias).toLowerCase()).filter(Boolean)
+        : [];
+      if (stableSlug && slugToken === stableSlug) return krName;
+      if (stableAliases.includes(slugToken)) return krName;
+    }
+
+    return '';
+  }
+
+  function resolveWeaponFromDetailPath(pathname) {
+    const path = String(pathname || '');
+    const match = path.match(/^\/(?:(kr|en|jp|cn)\/)?wonder-weapon\/([^/]+)\/?$/i);
+    if (!match) return '';
+
+    const slugToken = normalizeWeaponToken(match[2]).toLowerCase();
+    if (!slugToken) return '';
+
+    const byStableSlug = resolveWeaponFromSlugToken(slugToken);
+    if (byStableSlug) return byStableSlug;
+
+    const map = (typeof matchWeapons !== 'undefined' && matchWeapons) ? matchWeapons : null;
+    if (!map || typeof map !== 'object') return '';
+
+    const keys = Object.keys(map);
+    for (let i = 0; i < keys.length; i++) {
+      const krName = keys[i];
+      const slugEntry = getWeaponSlugEntry(krName);
+      const stableSlug = normalizeWeaponToken(slugEntry.slug).toLowerCase();
+      const stableAliases = Array.isArray(slugEntry.aliases)
+        ? slugEntry.aliases.map((alias) => normalizeWeaponToken(alias).toLowerCase()).filter(Boolean)
+        : [];
+      const enSlug = slugifyWeaponName(map[krName]?.name_en || '');
+
+      if (stableSlug && slugToken === stableSlug) return krName;
+      if (stableAliases.includes(slugToken)) return krName;
+      if (enSlug && slugToken === enSlug) return krName;
+    }
+
+    return '';
+  }
+
+  function resolveWeaponFromSeoContextHint() {
+    if (typeof window === 'undefined') return '';
+    const hint = (window.__SEO_CONTEXT_HINT__ && typeof window.__SEO_CONTEXT_HINT__ === 'object')
+      ? window.__SEO_CONTEXT_HINT__
+      : null;
+    if (!hint || hint.domain !== 'wonder-weapon') return '';
+
+    const rawEntityKey = normalizeWeaponToken(hint.entityKey || '');
+    if (!rawEntityKey) return '';
+
+    const bySlug = resolveWeaponFromSlugToken(rawEntityKey);
+    if (bySlug) return bySlug;
+
+    return resolveWeaponKey(rawEntityKey);
+  }
+
   function resolveWeaponKey(input) {
     const token = normalizeWeaponToken(input);
     if (!token) return '';
@@ -636,6 +708,9 @@
     // 초기 선택 (URL 파라미터 또는 첫 번째 항목)
     setTimeout(() => {
       const visibleTabs = Array.from(document.querySelectorAll('.weapon-tab:not([style*="display: none"])'));
+      const visibleWeaponSet = new Set(visibleTabs.map((tab) => String(tab.dataset.weapon || '')));
+      const pathWeapon = resolveWeaponFromDetailPath(window.location.pathname);
+      const seoHintWeapon = resolveWeaponFromSeoContextHint();
 
       // 1. URL 파라미터 체크
       const urlParams = new URLSearchParams(window.location.search);
@@ -649,22 +724,24 @@
       let targetWeapon = null;
       let shouldReplaceUrl = false;
 
-      if (weaponParam) {
-        const targetTab = document.querySelector(`.weapon-tab[data-weapon="${weaponParam}"]`);
-        if (targetTab && targetTab.style.display !== 'none') {
-          targetWeapon = weaponParam;
-          shouldReplaceUrl = true;
-        }
+      if (pathWeapon && visibleWeaponSet.has(pathWeapon)) {
+        targetWeapon = pathWeapon;
+      }
+
+      if (!targetWeapon && seoHintWeapon && visibleWeaponSet.has(seoHintWeapon)) {
+        targetWeapon = seoHintWeapon;
+      }
+
+      if (!targetWeapon && weaponParam && visibleWeaponSet.has(weaponParam)) {
+        targetWeapon = weaponParam;
+        shouldReplaceUrl = true;
       }
 
       // 2. 선택된 무기가 없고 URL 파라미터도 유효하지 않으면 첫 번째 탭 선택
-      if (!targetWeapon && defaultWeapon) {
-        const targetTab = document.querySelector(`.weapon-tab[data-weapon="${defaultWeapon}"]`);
-        if (targetTab && targetTab.style.display !== 'none') {
-          targetWeapon = defaultWeapon;
-          if (urlParams.has('lang')) {
-            shouldReplaceUrl = true;
-          }
+      if (!targetWeapon && defaultWeapon && visibleWeaponSet.has(defaultWeapon)) {
+        targetWeapon = defaultWeapon;
+        if (urlParams.has('lang')) {
+          shouldReplaceUrl = true;
         }
       }
       if (!targetWeapon && !selectedWeapon && visibleTabs.length > 0) {

@@ -2578,10 +2578,45 @@
         return null;
     }
 
+    function resolveWonderWeaponSlug(weaponName) {
+        const safeName = weaponName ? String(weaponName).trim() : '';
+        if (!safeName) return '';
+
+        const slugMap = (window.__WONDER_WEAPON_SLUG_MAP && typeof window.__WONDER_WEAPON_SLUG_MAP === 'object')
+            ? window.__WONDER_WEAPON_SLUG_MAP
+            : null;
+        if (!slugMap) return '';
+
+        const direct = slugMap[safeName];
+        if (direct && typeof direct === 'object' && direct.slug) {
+            return String(direct.slug).trim();
+        }
+        if (typeof direct === 'string') {
+            return direct.trim();
+        }
+
+        const keys = Object.keys(slugMap);
+        for (let i = 0; i < keys.length; i++) {
+            const key = keys[i];
+            const entry = slugMap[key];
+            if (!entry || typeof entry !== 'object' || !Array.isArray(entry.aliases)) continue;
+            if (entry.aliases.includes(safeName) && entry.slug) {
+                return String(entry.slug).trim();
+            }
+        }
+        return '';
+    }
+
     function buildWonderWeaponDetailUrl(weaponName) {
         const lang = getCurrentLanguage();
         const safeName = weaponName ? String(weaponName).trim() : '';
         if (!safeName) return `/${lang}/wonder-weapon/`;
+
+        const slug = resolveWonderWeaponSlug(safeName);
+        if (slug) {
+            return `/${lang}/wonder-weapon/${slug}/`;
+        }
+
         return `/${lang}/wonder-weapon/?weapon=${encodeURIComponent(safeName)}`;
     }
 

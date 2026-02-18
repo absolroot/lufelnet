@@ -649,22 +649,6 @@
         return 'kr';
     }
 
-        let tag = document.querySelector(`meta[name="${name}"]`);
-        if (!tag) {
-            tag = document.createElement('meta');
-            tag.setAttribute('name', name);
-            document.head.appendChild(tag);
-        }
-    }
-
-        let tag = document.querySelector(`meta[property="${property}"]`);
-        if (!tag) {
-            tag = document.createElement('meta');
-            tag.setAttribute('property', property);
-            document.head.appendChild(tag);
-        }
-    }
-
     function updateMaterialCalcSEOTags(lang = null) {
         const currentLang = lang || getMaterialCalcLang();
         if (window.SeoEngine && typeof window.SeoEngine.setContextHint === 'function') {

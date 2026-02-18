@@ -40,6 +40,67 @@ const getTierPageMode = () => {
     : 'list';
 };
 
+const getCurrentCharacterLinkLang = () => {
+  try {
+    const seoLang = String(window.__SEO_PATH_LANG__ || '').toLowerCase();
+    if (['kr', 'en', 'jp', 'cn'].includes(seoLang)) return seoLang;
+
+    if (typeof LanguageRouter !== 'undefined' && typeof LanguageRouter.getCurrentLanguage === 'function') {
+      const lang = String(LanguageRouter.getCurrentLanguage() || '').toLowerCase();
+      if (['kr', 'en', 'jp', 'cn'].includes(lang)) return lang;
+    }
+
+    const pathLangMatch = String(window.location.pathname || '').match(/^\/(kr|en|jp|cn)(\/|$)/i);
+    if (pathLangMatch && pathLangMatch[1]) {
+      const lang = String(pathLangMatch[1]).toLowerCase();
+      if (['kr', 'en', 'jp', 'cn'].includes(lang)) return lang;
+    }
+
+    const queryLang = String(new URLSearchParams(window.location.search || '').get('lang') || '').toLowerCase();
+    if (['kr', 'en', 'jp', 'cn'].includes(queryLang)) return queryLang;
+  } catch (_) { }
+
+  return 'kr';
+};
+
+const resolveCharacterSlug = (characterName) => {
+  try {
+    const map = window.__CHARACTER_SLUG_MAP;
+    if (!map || typeof map !== 'object') return null;
+
+    const entry = map[characterName];
+    if (entry && entry.slug) return entry.slug;
+
+    const keys = Object.keys(map);
+    for (let i = 0; i < keys.length; i += 1) {
+      const info = map[keys[i]];
+      if (!info || !info.slug || !Array.isArray(info.aliases)) continue;
+      if (info.aliases.includes(characterName)) return info.slug;
+    }
+  } catch (_) {
+    // no-op
+  }
+  return null;
+};
+
+const buildCharacterDetailHref = (characterName, lang) => {
+  const safeLang = ['kr', 'en', 'jp', 'cn'].includes(String(lang || '').toLowerCase())
+    ? String(lang).toLowerCase()
+    : 'kr';
+  const slug = resolveCharacterSlug(characterName);
+  const base = String(window.BASE_URL || '').replace(/\/+$/, '');
+
+  if (slug) {
+    return `${base}/${safeLang}/character/${encodeURIComponent(slug)}/`;
+  }
+
+  const legacyPath = `${base || ''}/character.html`;
+  const url = new URL(legacyPath.startsWith('/') ? legacyPath : `/${legacyPath}`, window.location.origin);
+  url.searchParams.set('name', characterName);
+  url.searchParams.set('lang', safeLang);
+  return url.pathname + url.search;
+};
+
 const getNewTierLabel = () => getTierI18nText('newTierLabel', 'New');
 
 // 필터링된 캐릭터들의 원래 위치를 저장하는 맵 (parent와 nextSibling 정보 포함)
@@ -1067,9 +1128,8 @@ const attachDragListeners = (element, force = false) => {
           const targetImage = newElement.tagName === 'IMG' ? newElement : newElement.querySelector('img');
           if (targetImage && targetImage.alt) {
             const characterName = targetImage.alt;
-
-            // SEO path(/en/...)와 query 기반 URL 모두에서 현재 언어를 안전하게 가져옴
-            window.location.href = `/character.html?name=${encodeURIComponent(characterName)}`;
+            const lang = getCurrentCharacterLinkLang();
+            window.location.href = buildCharacterDetailHref(characterName, lang);
           }
         }
       }, 200); // 더블클릭 감지를 위한 지연

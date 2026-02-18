@@ -1,6 +1,11 @@
 <script>
 window.__TIER_PAGE_MODE__ = {{ page.tier_mode | default: '' | jsonify }};
 </script>
+{% if site.data.character_slugs %}
+<script>
+window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
+</script>
+{% endif %}
 <script>
 (function () {
     var params = new URLSearchParams(window.location.search || '');

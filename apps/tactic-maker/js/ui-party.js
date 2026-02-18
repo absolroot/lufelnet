@@ -26,6 +26,44 @@ function getTacticMakerText(key, fallback = '') {
     return fallback || key;
 }
 
+function resolveCharacterSlug(characterName) {
+    try {
+        const map = window.__CHARACTER_SLUG_MAP;
+        if (!map || typeof map !== 'object') return null;
+
+        const entry = map[characterName];
+        if (entry && entry.slug) return entry.slug;
+
+        const keys = Object.keys(map);
+        for (let i = 0; i < keys.length; i += 1) {
+            const info = map[keys[i]];
+            if (!info || !info.slug || !Array.isArray(info.aliases)) continue;
+            if (info.aliases.includes(characterName)) return info.slug;
+        }
+    } catch (_) {
+        // no-op
+    }
+    return null;
+}
+
+function buildCharacterDetailHref(characterName, lang, baseUrl = '') {
+    const safeLang = ['kr', 'en', 'jp', 'cn'].includes(String(lang || '').toLowerCase())
+        ? String(lang).toLowerCase()
+        : 'kr';
+    const slug = resolveCharacterSlug(characterName);
+    const base = String(baseUrl || '').replace(/\/+$/, '');
+
+    if (slug) {
+        return `${base}/${safeLang}/character/${encodeURIComponent(slug)}/`;
+    }
+
+    const legacyPath = `${base || ''}/character.html`;
+    const url = new URL(legacyPath.startsWith('/') ? legacyPath : `/${legacyPath}`, window.location.origin);
+    url.searchParams.set('name', characterName);
+    url.searchParams.set('lang', safeLang);
+    return url.pathname + url.search;
+}
+
 /**
  * Get revelation tooltip text based on current language
  * For main revelation: show set effect with sub revelations
@@ -871,6 +909,7 @@ export class PartyUI {
         };
 
         const lang = getCurrentLang();
+        const characterHref = buildCharacterDetailHref(data.name, lang, this.baseUrl);
         // kr: use key name (아이템명). non-kr: prefer localized/full name if available.
         let displayName = data.name;
         if (lang !== 'kr') {
@@ -908,7 +947,7 @@ export class PartyUI {
 
         slotContent.innerHTML = `
             <div class="slot-char-info">
-                <a href="${this.baseUrl}/character.html?name=${encodeURIComponent(data.name)}" target="_blank" class="slot-char-link">
+                <a href="${characterHref}" target="_blank" class="slot-char-link">
                     <img src="${imgPath}" class="slot-char-img"
                          onerror="this.src='${this.baseUrl}/assets/img/tier/${data.name}.webp'">
                 </a>

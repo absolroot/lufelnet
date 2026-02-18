@@ -42,6 +42,11 @@
     }
 })();
 </script>
+{% if site.data.character_slugs %}
+<script>
+window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
+</script>
+{% endif %}
 {% if page.alternate_urls %}
 {% for alt in page.alternate_urls %}
 <link rel="alternate" hreflang="{{ alt[0] }}" href="{{ site.url }}{{ alt[1] }}" />

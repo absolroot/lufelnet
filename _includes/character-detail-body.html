@@ -1609,6 +1609,43 @@
             }
         } catch (e) { console.warn('[SAFE:applyMONT2Filter]', e); }
 
+        function escapeRegExp(text) {
+            return String(text).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        }
+
+        function normalizeBattlePlusText(rawText, lang) {
+            if (typeof rawText !== 'string' || !rawText.trim()) return rawText;
+
+            const localizedMyPalace = getCharacterI18nText(
+                'gameTerms.myPalace',
+                lang === 'en' ? 'Thieves Den' : (lang === 'jp' ? 'マイパレス' : '마이팰리스')
+            );
+            const localizedMyPalaceRating = getCharacterI18nText(
+                'gameTerms.myPalaceRating',
+                lang === 'en' ? 'Thieves Den Rating' : (lang === 'jp' ? 'マイパレス評価' : '마이팰리스 평점')
+            );
+
+            const replacements = [
+                {
+                    variants: ['마이팰리스 평점', 'Thieves Den Rating', 'マイパレス評価', 'マイパレス 評価'],
+                    translated: localizedMyPalaceRating
+                },
+                {
+                    variants: ['마이팰리스', 'Thieves Den', 'マイパレス'],
+                    translated: localizedMyPalace
+                }
+            ];
+
+            let normalized = rawText;
+            replacements.forEach(({ variants, translated }) => {
+                if (!translated) return;
+                variants.forEach((variant) => {
+                    normalized = normalized.replace(new RegExp(escapeRegExp(variant), 'g'), translated);
+                });
+            });
+            return normalized;
+        }
+
         // 전투 진입 시 요구 스탯 + 처리
         const battlePlusStats = document.querySelector('.battle-plus-stats');
         try {
@@ -1617,13 +1654,15 @@
             const setting = (characterName && window.characterSetting && window.characterSetting[characterName]) ? window.characterSetting[characterName] : {};
             const mergedCharacter = { ...character, ...setting };
             // 언어 별 battle-plus-stats
+            let battlePlusText = '';
             if (currentLang === 'en' && mergedCharacter.battle_plus_stats_en) {
-                battlePlusStats.textContent = mergedCharacter.battle_plus_stats_en;
+                battlePlusText = mergedCharacter.battle_plus_stats_en;
             } else if (currentLang === 'jp' && mergedCharacter.battle_plus_stats_jp) {
-                battlePlusStats.textContent = mergedCharacter.battle_plus_stats_jp;
+                battlePlusText = mergedCharacter.battle_plus_stats_jp;
             } else {
-                battlePlusStats.textContent = mergedCharacter.battle_plus_stats;
+                battlePlusText = mergedCharacter.battle_plus_stats;
             }
+            battlePlusStats.textContent = normalizeBattlePlusText(battlePlusText || '', currentLang);
         } catch (e) { console.warn('[SAFE:battlePlus-init]', e); }
 
         if (battlePlusStats && battlePlusStats.textContent && battlePlusStats.textContent !== 'nan') {
@@ -2516,6 +2555,13 @@
         return `/character.html?name=${encodeURIComponent(safeName)}`;
     }
 
+    function buildPersonaDetailUrl(personaName) {
+        const lang = getCurrentLanguage();
+        const safeName = personaName ? String(personaName).trim() : '';
+        if (!safeName) return '#';
+        return `/${lang}/persona/?persona=${encodeURIComponent(safeName)}`;
+    }
+
     function loadRecommendedPersona(personaData) {
         const container = document.getElementById('recommended-persona-content');
         container.innerHTML = '';
@@ -2653,8 +2699,7 @@
                     personaLink.href = '#';
                     personaLink.onclick = function (e) {
                         e.preventDefault();
-                        // Open persona page in new tab with search parameter
-                        const personaPageUrl = `${window.location.origin}/persona/?persona=${encodeURIComponent(personaName)}`;
+                        const personaPageUrl = buildPersonaDetailUrl(personaName);
                         window.open(personaPageUrl, '_blank');
                     };
 

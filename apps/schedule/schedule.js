@@ -90,6 +90,55 @@
 
     // Use global getCurrentLang() and t() functions from i18n service
 
+    function getScheduleLang() {
+        if (typeof LanguageRouter !== 'undefined'
+            && LanguageRouter
+            && typeof LanguageRouter.getCurrentLanguage === 'function') {
+            return LanguageRouter.getCurrentLanguage();
+        }
+
+        if (typeof getCurrentLang === 'function') {
+            const helperLang = String(getCurrentLang() || '').toLowerCase();
+            if (['kr', 'en', 'jp', 'cn'].includes(helperLang)) return helperLang;
+        }
+
+        const pathMatch = String(window.location.pathname || '').match(/^\/(kr|en|jp|cn)(\/|$)/i);
+        if (pathMatch) return String(pathMatch[1]).toLowerCase();
+
+        const queryLang = String(new URLSearchParams(window.location.search).get('lang') || '').toLowerCase();
+        if (['kr', 'en', 'jp', 'cn'].includes(queryLang)) return queryLang;
+
+        return 'kr';
+    }
+
+    function buildCharacterDetailUrl(charName) {
+        const safeName = String(charName || '').trim();
+        if (!safeName) return '#';
+
+        const lang = getScheduleLang();
+        if (typeof LanguageRouter !== 'undefined'
+            && LanguageRouter
+            && typeof LanguageRouter.buildCharacterDetailUrl === 'function') {
+            return LanguageRouter.buildCharacterDetailUrl(safeName, lang);
+        }
+
+        return `${BASE_URL}/character.html?name=${encodeURIComponent(safeName)}&lang=${lang}`;
+    }
+
+    function buildWonderWeaponUrl(weaponName) {
+        const lang = getScheduleLang();
+        const safeWeaponName = String(weaponName || '').trim();
+        if (!safeWeaponName) return `${BASE_URL}/${lang}/wonder-weapon/`;
+        return `${BASE_URL}/${lang}/wonder-weapon/?weapon=${encodeURIComponent(safeWeaponName)}`;
+    }
+
+    function buildPersonaUrl(personaName) {
+        const lang = getScheduleLang();
+        const safePersonaName = String(personaName || '').trim();
+        if (!safePersonaName) return `${BASE_URL}/${lang}/persona/`;
+        return `${BASE_URL}/persona/?name=${encodeURIComponent(safePersonaName)}&lang=${lang}`;
+    }
+
     // Persona CSV translation cache
     let personaCsvMap = null;
     let personaCsvLoading = null;
@@ -853,7 +902,7 @@
             : `<span class="rarity-star">${'★'.repeat(rarity)}</span>`;
 
         // Character page URL
-        const charUrl = `${BASE_URL}/character.html?name=${encodeURIComponent(charName)}`;
+        const charUrl = buildCharacterDetailUrl(charName);
 
         // Codename HTML (작고 흐리게)
         const codenameHtml = codename
@@ -1000,8 +1049,7 @@
                 }
 
                 if (charName) {
-                    const lang = getCurrentLang();
-                    const charUrl = `${BASE_URL}/character.html?name=${encodeURIComponent(charName)}`;
+                    const charUrl = buildCharacterDetailUrl(charName);
 
                     if (!firstCharUrl) {
                         firstCharUrl = charUrl;
@@ -1051,7 +1099,7 @@
                 const stampAttr = hasStamp ? 'data-weapon-has-stamp="true"' : '';
                 // Weapon click handler (Prevent modal, go to link) -> a 태그로 변경
                 const tag = clickable ? 'a' : 'div';
-                const hrefAttr = clickable ? `href="${BASE_URL}/wonder-weapon/?weapon=${encodeURIComponent(weaponName)}"` : '';
+                const hrefAttr = clickable ? `href="${buildWonderWeaponUrl(weaponName)}"` : '';
                 const onClickAttr = clickable ? `onclick="event.stopPropagation();"` : '';
                 const lightningStampLabel = t('labelLightningStamp');
 
@@ -1105,8 +1153,7 @@
                 const charData = window.characterData?.[charName];
                 const displayName = charData?.name || charName;
 
-                const lang = getCurrentLang();
-                const charUrl = `${BASE_URL}/character.html?name=${encodeURIComponent(charName)}`;
+                const charUrl = buildCharacterDetailUrl(charName);
 
                 return `
                     <a href="${charUrl}" class="mindscape-core-item" style="cursor: pointer;" onclick="event.stopPropagation();">
@@ -1135,7 +1182,7 @@
 
                 // 사악한 프로스트는 링크 막기
                 const isBlackFrost = cleanPersonaName === '사악한 프로스트' || cleanPersonaName === 'Black Frost' || cleanPersonaName === 'ジャアクフロスト';
-                const personaPageUrl = isBlackFrost ? '#' : `${BASE_URL}/persona/?name=${encodeURIComponent(cleanPersonaName)}`;
+                const personaPageUrl = isBlackFrost ? '#' : buildPersonaUrl(cleanPersonaName);
 
                 // CSV에서 combination 및 rank 정보 가져오기
                 const personaData = personaCsvMap && personaCsvMap[cleanPersonaName] ? personaCsvMap[cleanPersonaName] : null;

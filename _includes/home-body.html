@@ -440,7 +440,9 @@
             { selector: '.menu-card a[href*="./character/"]', path: '/character/' },
             { selector: '.menu-card a[href*="./persona/"]', path: '/persona/' },
             { selector: '.menu-card a[href*="./revelations/"]', path: '/revelations/' },
-            { selector: '.menu-card a[href*="./tactic"]', path: '/tactic/library/' }
+            { selector: '.menu-card a[href*="./tactic"]', path: '/tactic/library/' },
+            { selector: '#popular-characters-title', path: '/character/' },
+            { selector: '#show-more-characters-btn', path: '/character/' }
         ];
 
         menuLinks.forEach((linkInfo) => {
@@ -462,9 +464,16 @@
 
             const name = url.searchParams.get('name');
             if (name) {
-                const fallbackUrl = new URL('/character.html', window.location.origin);
-                fallbackUrl.searchParams.set('name', name);
-                link.href = fallbackUrl.pathname + fallbackUrl.search;
+                if (typeof LanguageRouter !== 'undefined'
+                    && LanguageRouter
+                    && typeof LanguageRouter.buildCharacterDetailUrl === 'function') {
+                    link.href = LanguageRouter.buildCharacterDetailUrl(name, currentLang);
+                } else {
+                    const fallbackUrl = new URL('/character.html', window.location.origin);
+                    fallbackUrl.searchParams.set('name', name);
+                    fallbackUrl.searchParams.set('lang', currentLang);
+                    link.href = fallbackUrl.pathname + fallbackUrl.search;
+                }
             }
         });
 

@@ -2549,10 +2549,16 @@
         const safeName = characterName ? String(characterName).trim() : '';
         if (!safeName) return '#';
 
+        if (typeof LanguageRouter !== 'undefined'
+            && LanguageRouter
+            && typeof LanguageRouter.buildCharacterDetailUrl === 'function') {
+            return LanguageRouter.buildCharacterDetailUrl(safeName, lang);
+        }
+
         const slug = resolveCharacterSlug(safeName);
         if (slug) return `/${lang}/character/${slug}/`;
 
-        return `/character.html?name=${encodeURIComponent(safeName)}`;
+        return `/character.html?name=${encodeURIComponent(safeName)}&lang=${lang}`;
     }
 
     function buildPersonaDetailUrl(personaName) {
@@ -2560,6 +2566,23 @@
         const safeName = personaName ? String(personaName).trim() : '';
         if (!safeName) return '#';
         return `/${lang}/persona/?persona=${encodeURIComponent(safeName)}`;
+    }
+
+    function getWonderWeaponMap() {
+        if (window.matchWeapons && typeof window.matchWeapons === 'object') {
+            return window.matchWeapons;
+        }
+        if (typeof matchWeapons !== 'undefined' && matchWeapons && typeof matchWeapons === 'object') {
+            return matchWeapons;
+        }
+        return null;
+    }
+
+    function buildWonderWeaponDetailUrl(weaponName) {
+        const lang = getCurrentLanguage();
+        const safeName = weaponName ? String(weaponName).trim() : '';
+        if (!safeName) return `/${lang}/wonder-weapon/`;
+        return `/${lang}/wonder-weapon/?weapon=${encodeURIComponent(safeName)}`;
     }
 
     function loadRecommendedPersona(personaData) {
@@ -2583,6 +2606,7 @@
 
             const weaponList = document.createElement('div');
             weaponList.className = 'persona-list';
+            const wonderWeaponMap = getWonderWeaponMap();
 
             (window.recommendParty && window.recommendParty[characterName]?.weapon || []).forEach(weaponName => {
                 const weaponItem = document.createElement('div');
@@ -2605,11 +2629,11 @@
                 const name = document.createElement('span');
                 // Get localized weapon name from matchWeapons if available
                 let weaponNameText = weaponName;
-                if (matchWeapons && matchWeapons[weaponName]) {
-                    if (currentLang === 'en' && matchWeapons[weaponName].name_en) {
-                        weaponNameText = matchWeapons[weaponName].name_en;
-                    } else if (currentLang === 'jp' && matchWeapons[weaponName].name_jp) {
-                        weaponNameText = matchWeapons[weaponName].name_jp;
+                if (wonderWeaponMap && wonderWeaponMap[weaponName]) {
+                    if (currentLang === 'en' && wonderWeaponMap[weaponName].name_en) {
+                        weaponNameText = wonderWeaponMap[weaponName].name_en;
+                    } else if (currentLang === 'jp' && wonderWeaponMap[weaponName].name_jp) {
+                        weaponNameText = wonderWeaponMap[weaponName].name_jp;
                     }
                 }
                 // 표시 텍스트에서는 ! 제거
@@ -3281,6 +3305,8 @@
         const modalImage = document.getElementById('weapon-effect-image');
         const modalTitle = document.getElementById('weapon-effect-title');
         const modalDescription = document.getElementById('weapon-effect-description');
+        const currentLang = getCurrentLanguage();
+        const wonderWeaponMap = getWonderWeaponMap();
 
         // Set the weapon image and name
         modalImage.src = imageUrl;
@@ -3289,13 +3315,13 @@
 
         // Get the effect text based on current language
         let effectText = 'No effect information available.';
-        if (matchWeapons && matchWeapons[weaponId]) {
-            if (currentLang === 'en' && matchWeapons[weaponId].effect_en) {
-                effectText = matchWeapons[weaponId].effect_en;
-            } else if (currentLang === 'jp' && matchWeapons[weaponId].effect_jp) {
-                effectText = matchWeapons[weaponId].effect_jp;
-            } else if (matchWeapons[weaponId].effect) {
-                effectText = matchWeapons[weaponId].effect; // Default to Korean
+        if (wonderWeaponMap && wonderWeaponMap[weaponId]) {
+            if (currentLang === 'en' && wonderWeaponMap[weaponId].effect_en) {
+                effectText = wonderWeaponMap[weaponId].effect_en;
+            } else if (currentLang === 'jp' && wonderWeaponMap[weaponId].effect_jp) {
+                effectText = wonderWeaponMap[weaponId].effect_jp;
+            } else if (wonderWeaponMap[weaponId].effect) {
+                effectText = wonderWeaponMap[weaponId].effect; // Default to Korean
             }
         }
 
@@ -3308,9 +3334,10 @@
 
         // modalDescription에 아래 'Detail' 추가하고 링크 걸기 /wonder-weapon
         const detailLink = document.createElement('a');
-        detailLink.href = `/wonder-weapon/`;
+        detailLink.href = buildWonderWeaponDetailUrl(weaponId);
         detailLink.textContent = getCharacterI18nText('characterDetailLinkLabel', 'Detail →');
         detailLink.target = '_blank';
+        detailLink.rel = 'noopener noreferrer';
         modalDescription.appendChild(detailLink);
 
         // Show the modal

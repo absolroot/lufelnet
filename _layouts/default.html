@@ -186,6 +186,10 @@
     window.__SEO_CONTEXT_HINT__.mode = '{{ page.tier_mode }}';
     {% endif %}
 
+    {% if site.data.character_slugs %}
+    window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
+    {% endif %}
+
     // 기본 CSS 및 JS 파일 로드
     document.write('<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/default/common.css?v=' + APP_VERSION + '">');
     document.write('<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/default/nav.css?v=' + APP_VERSION + '">');

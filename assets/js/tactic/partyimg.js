@@ -18,6 +18,20 @@
       return 'kr';
     }
 
+    function buildCharacterDetailUrl(charName) {
+      const safeName = String(charName || '').trim();
+      if (!safeName) return '#';
+
+      const lang = getCurrentLanguage();
+      if (typeof window !== 'undefined'
+        && window.LanguageRouter
+        && typeof window.LanguageRouter.buildCharacterDetailUrl === 'function') {
+        return window.LanguageRouter.buildCharacterDetailUrl(safeName, lang);
+      }
+
+      return `${BASE_URL}/character.html?name=${encodeURIComponent(safeName)}&lang=${lang}`;
+    }
+
     // 캐릭터 이름 번역 함수
     function getCharacterDisplayName(charName) {
       // 전역 함수가 있으면 사용, 없으면 로컬 구현
@@ -78,7 +92,7 @@
         if (member.name !== "원더") {
           container.style.cursor = "pointer";
           container.addEventListener("click", () => {
-            const characterUrl = `${BASE_URL}/character.html?name=${encodeURIComponent(member.name)}`;
+            const characterUrl = buildCharacterDetailUrl(member.name);
             window.open(characterUrl, '_blank');
           });
         }
@@ -322,4 +336,3 @@
   if (typeof window.whenCharacterDataReady === 'function') {
     window.whenCharacterDataReady(updatePartyImages);
   }
-

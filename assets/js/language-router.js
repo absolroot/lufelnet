@@ -56,6 +56,48 @@ class LanguageRouter {
         return `/${safeLang}${withoutLang}`;
     }
 
+    static resolveCharacterSlug(characterName) {
+        if (typeof window === 'undefined') return '';
+
+        const map = window.__CHARACTER_SLUG_MAP;
+        if (!map || typeof map !== 'object') return '';
+
+        const rawName = String(characterName || '');
+        const trimmedName = rawName.trim();
+        if (!trimmedName) return '';
+
+        const direct = map[trimmedName] || map[rawName];
+        if (direct && typeof direct === 'object' && direct.slug) {
+            return String(direct.slug);
+        }
+
+        const keys = Object.keys(map);
+        for (let i = 0; i < keys.length; i++) {
+            const key = keys[i];
+            const entry = map[key];
+            if (!entry || typeof entry !== 'object' || !entry.slug) continue;
+            if (!Array.isArray(entry.aliases)) continue;
+            if (entry.aliases.includes(rawName) || entry.aliases.includes(trimmedName)) {
+                return String(entry.slug);
+            }
+        }
+
+        return '';
+    }
+
+    static buildCharacterDetailUrl(characterName, lang) {
+        const safeName = String(characterName || '').trim();
+        if (!safeName) return '#';
+
+        const safeLang = this.normalizeLang(lang) || this.getCurrentLanguage() || 'kr';
+        const slug = this.resolveCharacterSlug(safeName);
+        if (slug) {
+            return `/${safeLang}/character/${slug}/`;
+        }
+
+        return `/character.html?name=${encodeURIComponent(safeName)}&lang=${safeLang}`;
+    }
+
     static getBrowserLanguage() {
         const browserLang = (navigator.language || '').toLowerCase();
         if (browserLang.startsWith('ko')) return 'kr';

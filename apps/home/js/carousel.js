@@ -186,6 +186,46 @@
     return key || null;
   }
 
+  function getPageLanguage() {
+    if (typeof LanguageRouter !== 'undefined'
+      && LanguageRouter
+      && typeof LanguageRouter.getCurrentLanguage === 'function') {
+      return LanguageRouter.getCurrentLanguage();
+    }
+
+    const pathMatch = String(window.location.pathname || '').match(/^\/(kr|en|jp|cn)(\/|$)/i);
+    if (pathMatch) return String(pathMatch[1]).toLowerCase();
+
+    const queryLang = String(new URLSearchParams(window.location.search).get('lang') || '').toLowerCase();
+    if (['kr', 'en', 'jp', 'cn'].includes(queryLang)) return queryLang;
+
+    try {
+      const savedLang = String(localStorage.getItem('preferredLanguage') || '').toLowerCase();
+      if (['kr', 'en', 'jp', 'cn'].includes(savedLang)) return savedLang;
+    } catch (_) { }
+
+    return 'kr';
+  }
+
+  function buildCharacterDetailUrl(topKey) {
+    const safeName = String(topKey || '').trim();
+    if (!safeName) return '#';
+
+    const lang = getPageLanguage();
+    if (typeof LanguageRouter !== 'undefined'
+      && LanguageRouter
+      && typeof LanguageRouter.buildCharacterDetailUrl === 'function') {
+      return LanguageRouter.buildCharacterDetailUrl(safeName, lang);
+    }
+
+    return `${BASE}/character.html?name=${encodeURIComponent(safeName)}&lang=${lang}`;
+  }
+
+  function buildCharacterListUrl() {
+    const lang = getPageLanguage();
+    return `${BASE}/${lang}/character/`;
+  }
+
   function getDisplayNameByLang(topKey, lang) {
     try {
       const item = (typeof characterData !== 'undefined' ? characterData : window.characterData || {})[topKey];
@@ -880,11 +920,11 @@
       if (names.length === 1 && mappedKeys.length === 1) {
         link = document.createElement('a');
         link.className = 'slide-link';
-        link.href = `${BASE}/character.html?name=${encodeURIComponent(mappedKeys[0])}`;
+        link.href = buildCharacterDetailUrl(mappedKeys[0]);
       } else if (mappedKeys.length >= 1) {
         link = document.createElement('a');
         link.className = 'slide-link';
-        link.href = `${BASE}/character/`;
+        link.href = buildCharacterListUrl();
       }
     }
 

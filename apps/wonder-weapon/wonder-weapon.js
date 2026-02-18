@@ -231,15 +231,17 @@
 
   function getPathLanguageHint() {
     const pathname = String(window.location.pathname || '').toLowerCase();
+    if (pathname.startsWith('/cn/')) return 'cn';
     if (pathname.startsWith('/en/')) return 'en';
     if (pathname.startsWith('/jp/')) return 'jp';
+    if (pathname.startsWith('/kr/')) return 'kr';
 
     // For canonical detail pages, path language wins over query lang.
     if (isWonderWeaponDetailPath(pathname)) return 'kr';
 
     const urlParams = new URLSearchParams(window.location.search);
     const langParam = String(urlParams.get('lang') || '').toLowerCase();
-    if (langParam === 'en' || langParam === 'jp') return langParam;
+    if (langParam === 'kr' || langParam === 'en' || langParam === 'jp' || langParam === 'cn') return langParam;
     return 'kr';
   }
 
@@ -427,6 +429,20 @@
   }
 
   // Character helpers
+  function buildCharacterDetailUrl(koreanCharName, lang) {
+    const safeName = String(koreanCharName || '').trim();
+    if (!safeName || safeName === '원더') return '#';
+
+    const safeLang = (typeof lang === 'string' && lang) ? lang : getPathLanguageHint();
+    if (typeof LanguageRouter !== 'undefined'
+      && LanguageRouter
+      && typeof LanguageRouter.buildCharacterDetailUrl === 'function') {
+      return LanguageRouter.buildCharacterDetailUrl(safeName, safeLang);
+    }
+
+    return `/character.html?name=${encodeURIComponent(safeName)}&lang=${safeLang}`;
+  }
+
   function getCharacterLabel(koreanCharName, lang) {
     const c = (typeof characterData !== 'undefined') ? characterData[koreanCharName] : null;
     if (!c) return koreanCharName;
@@ -953,7 +969,7 @@
         const pos = cdata && cdata.position ? cdata.position : '';
         const ele = cdata && cdata.element ? cdata.element : '';
         const charLabel = getCharacterLabel(u, lang);
-        const href = u === '원더' ? '#' : `/character.html?name=${encodeURIComponent(u)}`;
+        const href = buildCharacterDetailUrl(u, lang);
 
         html += `
           <a href="${href}" class="character-link${isPriority ? ' priority' : ''}">
@@ -1127,7 +1143,7 @@
         `;
       } else {
         const charLabel = getCharacterLabel(releaseVal, lang);
-        const href = releaseVal === '원더' ? '#' : `/character.html?name=${encodeURIComponent(releaseVal)}`;
+        const href = buildCharacterDetailUrl(releaseVal, lang);
 
         html += `
           <a href="${href}" class="dialog-choice">
@@ -1165,7 +1181,7 @@
               (lang === 'jp' && stamp.name_jp) ? stamp.name_jp :
                 stamp.name || '';
           const charLabel = getCharacterLabel(charName, lang);
-          const href = charName === '원더' ? '#' : `/character.html?name=${encodeURIComponent(charName)}`;
+          const href = buildCharacterDetailUrl(charName, lang);
 
           html += `
             <div class="dialog-choice-group">

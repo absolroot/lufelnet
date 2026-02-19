@@ -743,7 +743,17 @@
                 slotState.mainOption = '';
             }
             if (slot.id !== 'uni' && !slotState.mainOption && mainRows.length > 0) {
-                slotState.mainOption = mainRows[0][0];
+                let defaultMainOption = mainRows[0][0];
+
+                // For 일월성진, prefer Attack % on the 진(sky) slot.
+                if (slot.id === 'sky' && state.subRev === '\uC77C\uC6D4\uC131\uC9C4') {
+                    const attackPercentRow = mainRows.find((row) => toCanonicalStatKey(row && row[0]) === 'Attack %');
+                    if (attackPercentRow && attackPercentRow[0]) {
+                        defaultMainOption = attackPercentRow[0];
+                    }
+                }
+
+                slotState.mainOption = defaultMainOption;
             }
             enforceSubOptionRestrictions(slot.id);
             applyDefaultSubOptions(slot.id);

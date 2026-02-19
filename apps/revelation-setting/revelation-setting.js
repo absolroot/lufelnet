@@ -2604,6 +2604,7 @@
             sanitizePresetName,
             clonePackedBuild,
             buildGlobalPresetId,
+            isGlobalPresetId,
             normalizeBackupEntries,
             onStatus: (status) => {
                 if (status !== 404) {
@@ -2628,6 +2629,31 @@
         ensurePresetState();
 
         const usedIds = new Set();
+        const usedNames = new Set();
+
+        // Rebuild global presets from source so legacy duplicates do not accumulate.
+        const retainedOrder = [];
+        state.presetOrder.forEach((presetId) => {
+            const id = String(presetId || '').trim();
+            if (!isGlobalPresetId(id)) {
+                retainedOrder.push(id);
+                return;
+            }
+            delete state.presetMap[id];
+            delete state.presetNameMap[id];
+        });
+        state.presetOrder = retainedOrder.length ? retainedOrder : [DEFAULT_PRESET_ID];
+
+        // Reserve existing local names to avoid local/global duplicate labels.
+        state.presetOrder.forEach((presetId) => {
+            const id = String(presetId || '').trim();
+            if (!id) return;
+            const existingName = sanitizePresetName(state.presetNameMap[id]);
+            const normalizedExistingName = normalizePresetLabelForCompare(existingName);
+            if (normalizedExistingName) {
+                usedNames.add(normalizedExistingName);
+            }
+        });
 
         globalPresets.forEach((item) => {
             if (!item || typeof item !== 'object') return;
@@ -2635,22 +2661,19 @@
             const presetId = String(item.id || '').trim();
             if (!presetId || presetId === DEFAULT_PRESET_ID || presetId === PRESET_ADD_ACTION) return;
             if (usedIds.has(presetId)) return;
-            usedIds.add(presetId);
 
             const packedBuild = clonePackedBuild(item.build);
             const customName = sanitizePresetName(item.name);
+            const normalizedName = normalizePresetLabelForCompare(customName);
+            if (!customName || !normalizedName || usedNames.has(normalizedName)) return;
 
-            if (!state.presetOrder.includes(presetId)) {
-                if (state.presetOrder.length >= PRESET_MAX_COUNT) return;
-                state.presetOrder.push(presetId);
-            }
+            if (state.presetOrder.length >= PRESET_MAX_COUNT) return;
+            state.presetOrder.push(presetId);
+            usedIds.add(presetId);
+            usedNames.add(normalizedName);
 
             state.presetMap[presetId] = packedBuild;
-            if (customName) {
-                state.presetNameMap[presetId] = customName;
-            } else {
-                delete state.presetNameMap[presetId];
-            }
+            state.presetNameMap[presetId] = customName;
         });
 
         const normalized = normalizePresetStorePayload({

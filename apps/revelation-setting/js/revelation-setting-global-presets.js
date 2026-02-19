@@ -27,6 +27,13 @@
         const buildGlobalPresetId = typeof opts.buildGlobalPresetId === 'function'
             ? opts.buildGlobalPresetId
             : (presetId) => String(presetId || '').trim();
+        const isGlobalPresetId = typeof opts.isGlobalPresetId === 'function'
+            ? opts.isGlobalPresetId
+            : () => false;
+
+        function normalizePresetNameKey(value) {
+            return String(value || '').trim().toLowerCase();
+        }
 
         Object.keys(entries).forEach((storageKey) => {
             const key = String(storageKey || '');
@@ -48,14 +55,18 @@
 
             const list = [];
             const seenIds = new Set();
+            const seenNames = new Set();
 
             normalized.order.forEach((sourcePresetId) => {
                 const sourceId = String(sourcePresetId || '').trim();
                 if (!sourceId || sourceId === defaultPresetId || sourceId === presetAddAction) return;
+                if (isGlobalPresetId(sourceId)) return;
 
                 const presetName = sanitizePresetName((normalized.names || {})[sourceId]);
                 if (!presetName) return;
                 if (presetName.toLowerCase().indexOf(keyword) === -1) return;
+                const presetNameKey = normalizePresetNameKey(presetName);
+                if (!presetNameKey || seenNames.has(presetNameKey)) return;
 
                 const globalId = buildGlobalPresetId(sourceId);
                 if (!globalId || seenIds.has(globalId)) return;
@@ -64,6 +75,7 @@
                 if (!build) return;
 
                 seenIds.add(globalId);
+                seenNames.add(presetNameKey);
                 list.push({
                     id: globalId,
                     name: presetName,

@@ -163,7 +163,7 @@ export function bindPierceEvents(container, ui, penetrateSelfItems, penetrateBuf
         const totalDefenseReduce = defenseReduceFromItems + ui.extraDefenseReduce;
         const pierceTotal = penetrateFromItems + ui.revelationSumPierce + ui.extraSumPierce + getGlobalElucidatorPierce();
 
-        const defenseStats = calculateDefenseStats(penetrateFromItems, totalDefenseReduce);
+        const defenseStats = calculateDefenseStats(pierceTotal, totalDefenseReduce);
         const remainingDefense = defenseStats.remainingDefense;
         const pierceTarget = parseFloat(defenseStats.pierceTarget);
         const pierceNeeded = parseFloat(defenseStats.pierceNeeded);

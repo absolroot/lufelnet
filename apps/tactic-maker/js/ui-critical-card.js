@@ -1180,7 +1180,7 @@ export class NeedStatCardUI {
             pierceTotal = penetrateFromItems + this.revelationSumPierce + this.extraSumPierce + getGlobalElucidatorPierce();
 
             // Calculate target and needed pierce based on defense stats
-            const defenseStats = this.calculateDefenseStats(penetrateFromItems, totalDefenseReduce);
+            const defenseStats = this.calculateDefenseStats(pierceTotal, totalDefenseReduce);
             pierceTarget = parseFloat(defenseStats.pierceTarget);
             pierceNeeded = parseFloat(defenseStats.pierceNeeded);
         }
@@ -1660,7 +1660,7 @@ export class NeedStatCardUI {
         const pierceTotal = penetrateFromItems + this.revelationSumPierce + this.extraSumPierce + getGlobalElucidatorPierce();
 
         // Calculate remaining defense and pierce target/needed
-        const defenseStats = this.calculateDefenseStats(penetrateFromItems, totalDefenseReduce);
+        const defenseStats = this.calculateDefenseStats(pierceTotal, totalDefenseReduce);
         const remainingDefense = defenseStats.remainingDefense;
         const pierceTarget = parseFloat(defenseStats.pierceTarget);
         const pierceNeeded = parseFloat(defenseStats.pierceNeeded);
@@ -2125,7 +2125,7 @@ export class NeedStatCardUI {
                     // Update defense info display
                     const defenseReduceItems = this.getApplicableDefenseReduceItems(this.slotCharData);
                     const defenseReduceFromItems = this.calculateDefenseReduceTotal(defenseReduceItems);
-                    const { remainingDefense, pierceTarget } = this.calculateDefenseStats(penetrateFromItems, defenseReduceFromItems);
+                    const { remainingDefense, pierceTarget } = this.calculateDefenseStats(total, defenseReduceFromItems);
                     const neededPierce = Math.max(0, parseFloat(pierceTarget) - total);
 
                     // Update header displays
@@ -2176,7 +2176,7 @@ export class NeedStatCardUI {
                     // Update defense info display
                     const defenseReduceItems = this.getApplicableDefenseReduceItems(this.slotCharData);
                     const defenseReduceFromItems = this.calculateDefenseReduceTotal(defenseReduceItems);
-                    const { remainingDefense, pierceTarget: extraPierceTarget } = this.calculateDefenseStats(penetrateFromItems, defenseReduceFromItems);
+                    const { remainingDefense, pierceTarget: extraPierceTarget } = this.calculateDefenseStats(total, defenseReduceFromItems);
                     const neededPierce = Math.max(0, parseFloat(extraPierceTarget) - total);
 
                     // Update header displays
@@ -2357,7 +2357,7 @@ export class NeedStatCardUI {
             const totalDefenseReduce = defenseReduceFromItems + this.extraDefenseReduce;
             const pierceTotal = penetrateFromItems + this.revelationSumPierce + this.extraSumPierce + getGlobalElucidatorPierce();
 
-            const defenseStats = this.calculateDefenseStats(penetrateFromItems, totalDefenseReduce);
+            const defenseStats = this.calculateDefenseStats(pierceTotal, totalDefenseReduce);
             const remainingDefense = defenseStats.remainingDefense;
             const pierceTarget = parseFloat(defenseStats.pierceTarget);
             const pierceNeeded = parseFloat(defenseStats.pierceNeeded);

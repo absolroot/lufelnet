@@ -1,13 +1,13 @@
 {
   "data": {
-    "endTime": "2026-02-19 05:00:00",
+    "endTime": "2026-03-21 05:00:00",
     "nodes": {
-      "1501": {
+      "1601": {
         "affix": [
           {
-            "desc": "反抗怪盜最終傷害提高60%",
-            "name": "反抗磁場",
-            "sn": 4501
+            "desc": "念動/核熱/祝福/詛咒屬性隊員最終傷害提高60%",
+            "name": "屬性磁場Ⅱ",
+            "sn": 4512
           }
         ],
         "award": [
@@ -45,22 +45,22 @@
             "stat": {}
           }
         ],
-        "id": 1501,
+        "id": 1601,
         "img": "tianerong-xingpan-point03.png",
         "isActive": true,
-        "name": "監測點·τ",
+        "name": "監測點·α",
         "pos": [
-          160.0,
+          0.0,
           -400.0
         ],
         "unlockCond": null
       },
-      "1502": {
+      "1602": {
         "affix": [
           {
-            "desc": "支配怪盜最終傷害提高60%",
-            "name": "支配磁場",
-            "sn": 4502
+            "desc": "物理/射擊/萬能屬性隊員最終傷害提高60%",
+            "name": "屬性磁場Ⅲ",
+            "sn": 4513
           }
         ],
         "award": [
@@ -86,7 +86,7 @@
           }
         ],
         "connected": [
-          1501
+          1601
         ],
         "enemy": [
           {
@@ -97,11 +97,11 @@
               "Resistant": [],
               "Weak": []
             },
-            "image": "B-guaiwutouxiang-klotho.png",
+            "image": "B-guaiwutouxiang-jatayu.png",
             "level": "72",
-            "name": "躁動的可羅索",
-            "skill": "1404,406",
-            "sn": 640811,
+            "name": "躁動的佳塔由",
+            "skill": "403,407",
+            "sn": 640721,
             "stat": {}
           },
           {
@@ -112,45 +112,30 @@
               "Resistant": [],
               "Weak": []
             },
-            "image": "B-guaiwutouxiang-lachesis.png",
+            "image": "B-guaiwutouxiang-garuda.png",
             "level": "72",
-            "name": "躁動的拉克西斯",
-            "skill": "1408,206,202",
-            "sn": 640812,
-            "stat": {}
-          },
-          {
-            "adapt": {
-              "Absorb": [],
-              "Nullify": [],
-              "Reflect": [],
-              "Resistant": [],
-              "Weak": []
-            },
-            "image": "B-guaiwutouxiang-atropos.png",
-            "level": "72",
-            "name": "躁動的阿特羅波斯",
-            "skill": "303,306,1506",
-            "sn": 640813,
+            "name": "躁動的迦樓羅",
+            "skill": "403,406,1085",
+            "sn": 640722,
             "stat": {}
           }
         ],
-        "id": 1502,
+        "id": 1602,
         "img": "tianerong-xingpan-point03.png",
         "isActive": true,
-        "name": "監測點·λ",
+        "name": "監測點·δ",
         "pos": [
-          -8.0,
-          -168.00000000000003
+          0.0,
+          -216.0
         ],
         "unlockCond": null
       },
-      "1503": {
+      "1603": {
         "affix": [
           {
-            "desc": "所有怪盜每次受到護盾後，最終傷害提升8%，持續3回合，可疊加8層",
-            "name": "護盾磁場",
-            "sn": 4541
+            "desc": "隊伍中編入2名及以上反抗/支配怪盜時，全體怪盜最終傷害提高60%",
+            "name": "輸出磁場",
+            "sn": 4503
           }
         ],
         "award": [
@@ -176,7 +161,7 @@
           }
         ],
         "connected": [
-          1502
+          1602
         ],
         "enemy": [
           {
@@ -187,11 +172,11 @@
               "Resistant": [],
               "Weak": []
             },
-            "image": "B-guaiwutouxiang-dominion.png",
+            "image": "B-guaiwutouxiang-asura.png",
             "level": "76",
-            "name": "兇惡的主天使",
-            "skill": "905,902",
-            "sn": 643011,
+            "name": "兇惡的阿修羅王",
+            "skill": "607,1023,603,604",
+            "sn": 643021,
             "stat": {}
           },
           {
@@ -202,60 +187,30 @@
               "Resistant": [],
               "Weak": []
             },
-            "image": "B-guaiwutouxiang-power.png",
+            "image": "B-guaiwutouxiang-lakshmi.png",
             "level": "76",
-            "name": "兇惡的能天使",
-            "skill": "707,1008,1406",
-            "sn": 643012,
-            "stat": {}
-          },
-          {
-            "adapt": {
-              "Absorb": [],
-              "Nullify": [],
-              "Reflect": [],
-              "Resistant": [],
-              "Weak": []
-            },
-            "image": "B-guaiwutouxiang-principality.png",
-            "level": "76",
-            "name": "兇惡的權天使",
-            "skill": "1025,456,452",
-            "sn": 643013,
-            "stat": {}
-          },
-          {
-            "adapt": {
-              "Absorb": [],
-              "Nullify": [],
-              "Reflect": [],
-              "Resistant": [],
-              "Weak": []
-            },
-            "image": "B-guaiwutouxiang-archangel.png",
-            "level": "76",
-            "name": "兇惡的大天使",
-            "skill": "1003,1019,1010",
-            "sn": 643014,
+            "name": "兇惡的吉祥天",
+            "skill": "203,1503,1507",
+            "sn": 643022,
             "stat": {}
           }
         ],
-        "id": 1503,
+        "id": 1603,
         "img": "tianerong-xingpan-point01.png",
         "isActive": true,
-        "name": "監測點·η",
+        "name": "監測點·ι",
         "pos": [
-          -80.0,
-          224.0
+          176.0,
+          -24.0
         ],
         "unlockCond": null
       },
-      "1504": {
+      "1604": {
         "affix": [
           {
-            "desc": "所有敵人處於倒地狀態時，受最終傷害提升100%",
-            "name": "倒地磁場",
-            "sn": 4601
+            "desc": "『心之怪盜團』成員最終傷害提升60%",
+            "name": "心之磁場",
+            "sn": 4591
           }
         ],
         "award": [
@@ -281,7 +236,7 @@
           }
         ],
         "connected": [
-          1503
+          1603
         ],
         "enemy": [
           {
@@ -315,22 +270,22 @@
             "stat": {}
           }
         ],
-        "id": 1504,
+        "id": 1604,
         "img": "tianerong-xingpan-point03.png",
         "isActive": true,
-        "name": "監測點·γ",
+        "name": "監測點·θ",
         "pos": [
-          184.0,
-          200.0
+          176.0,
+          112.0
         ],
         "unlockCond": null
       },
-      "1505": {
+      "1605": {
         "affix": [
           {
-            "desc": "所有怪盜使用普通攻擊/槍械攻擊時，最終傷害提高100%",
-            "name": "刀槍磁場",
-            "sn": 4534
+            "desc": "所有怪盜處於額外回合時，最終傷害提高120%",
+            "name": "再動磁場",
+            "sn": 4551
           }
         ],
         "award": [
@@ -356,7 +311,7 @@
           }
         ],
         "connected": [
-          1504
+          1604
         ],
         "enemy": [
           {
@@ -367,75 +322,30 @@
               "Resistant": [],
               "Weak": []
             },
-            "image": "B-guaiwutouxiang-jikokuten.png",
+            "image": "B-guaiwutouxiang-koryu.png",
             "level": "82",
-            "name": "兇惡的持國天",
-            "skill": "2309,1408,1005,1084,1019,1002",
-            "sn": 645211,
-            "stat": {}
-          },
-          {
-            "adapt": {
-              "Absorb": [],
-              "Nullify": [],
-              "Reflect": [],
-              "Resistant": [],
-              "Weak": []
-            },
-            "image": "B-guaiwutouxiang-zouchouten.png",
-            "level": "82",
-            "name": "兇惡的增長天",
-            "skill": "302,1025,2310,1002",
-            "sn": 645212,
-            "stat": {}
-          },
-          {
-            "adapt": {
-              "Absorb": [],
-              "Nullify": [],
-              "Reflect": [],
-              "Resistant": [],
-              "Weak": []
-            },
-            "image": "B-guaiwutouxiang-koumokuten.png",
-            "level": "82",
-            "name": "兇惡的廣目天",
-            "skill": "2311,1005,1011,1002",
-            "sn": 645213,
-            "stat": {}
-          },
-          {
-            "adapt": {
-              "Absorb": [],
-              "Nullify": [],
-              "Reflect": [],
-              "Resistant": [],
-              "Weak": []
-            },
-            "image": "B-guaiwutouxiang-bishamonten.png",
-            "level": "82",
-            "name": "兇惡的毘沙門天",
-            "skill": "2313,603,607,601,1005",
-            "sn": 645214,
+            "name": "兇惡的黃龍",
+            "skill": "504,507,1423",
+            "sn": 645111,
             "stat": {}
           }
         ],
-        "id": 1505,
+        "id": 1605,
         "img": "tianerong-xingpan-point02.png",
         "isActive": true,
-        "name": "監測點·α",
+        "name": "監測點·γ",
         "pos": [
-          384.0,
-          400.0
+          336.0,
+          128.0
         ],
         "unlockCond": null
       },
-      "1506": {
+      "1606": {
         "affix": [
           {
-            "desc": "WONDER最終傷害提高100%",
-            "name": "主角磁場",
-            "sn": 4504
+            "desc": "所有怪盜受到追加治療後，最終傷害提升30%，持續2回合，可疊加2層",
+            "name": "治癒磁場",
+            "sn": 4542
           }
         ],
         "award": [
@@ -461,7 +371,7 @@
           }
         ],
         "connected": [
-          1503
+          1601
         ],
         "enemy": [
           {
@@ -472,11 +382,11 @@
               "Resistant": [],
               "Weak": []
             },
-            "image": "B-guaiwutouxiang-kingfrost.png",
+            "image": "B-guaiwutouxiang-whiterider.png",
             "level": "80",
-            "name": "乖戾的霜精之王",
-            "skill": "203,207,1006",
-            "sn": 641911,
+            "name": "乖戾的白騎士",
+            "skill": "1103,806",
+            "sn": 641931,
             "stat": {}
           },
           {
@@ -487,11 +397,11 @@
               "Resistant": [],
               "Weak": []
             },
-            "image": "B-guaiwutouxiang-jaakufrost.png",
+            "image": "B-guaiwutouxiang-blackrider.png",
             "level": "80",
-            "name": "乖戾的邪惡霜精",
-            "skill": "207,204,1013,1102",
-            "sn": 641912,
+            "name": "乖戾的黑騎士",
+            "skill": "1090,1032,807",
+            "sn": 641932,
             "stat": {}
           },
           {
@@ -502,30 +412,45 @@
               "Resistant": [],
               "Weak": []
             },
-            "image": "B-guaiwutouxiang-jaakufrost.png",
+            "image": "B-guaiwutouxiang-palerider.png",
             "level": "80",
-            "name": "乖戾的邪惡霜精",
-            "skill": "207,204,1013,1102",
-            "sn": 641913,
+            "name": "乖戾的蒼白騎士",
+            "skill": "1026,902,803",
+            "sn": 641933,
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-redrider.png",
+            "level": "80",
+            "name": "乖戾的紅騎士",
+            "skill": "1010,506",
+            "sn": 641934,
             "stat": {}
           }
         ],
-        "id": 1506,
+        "id": 1606,
         "img": "tianerong-xingpan-point03.png",
         "isActive": true,
-        "name": "監測點·φ",
+        "name": "監測點·υ",
         "pos": [
-          -272.0,
-          -112.0
+          -216.0,
+          -175.99999999999997
         ],
         "unlockCond": null
       },
-      "1507": {
+      "1607": {
         "affix": [
           {
-            "desc": "所有怪盜處於額外回合時，最終傷害提高120%",
-            "name": "再動磁場",
-            "sn": 4551
+            "desc": "所有角色使用降神後，最終傷害提高60%，持續2回合",
+            "name": "神通磁場",
+            "sn": 4536
           }
         ],
         "award": [
@@ -551,7 +476,7 @@
           }
         ],
         "connected": [
-          1506
+          1606
         ],
         "enemy": [
           {
@@ -562,43 +487,93 @@
               "Resistant": [],
               "Weak": []
             },
-            "image": "B-guaiwutouxiang-yoshitune.png",
+            "image": "B-guaiwutouxiang-siva.png",
             "level": "82",
-            "name": "兇惡的義經",
-            "skill": "1028,1427,303",
-            "sn": 644011,
+            "name": "兇惡的濕婆",
+            "skill": "307,905,508,1104",
+            "sn": 644211,
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-vishnu.png",
+            "level": "82",
+            "name": "兇惡的毗濕奴",
+            "skill": "407,905,408,1104",
+            "sn": 644212,
             "stat": {}
           }
         ],
-        "id": 1507,
+        "id": 1607,
         "img": "tianerong-xingpan-point01.png",
         "isActive": true,
-        "name": "監測點·ψ1",
+        "name": "監測點·φ",
         "pos": [
-          -200.0,
-          -304.0
+          -320.0,
+          -144.0
         ],
         "unlockCond": null
       },
-      "1508": {
+      "1608": {
         "affix": [],
         "award": [],
         "connected": [
-          1505
+          1607
         ],
         "enemy": [],
-        "id": 1508,
+        "id": 1608,
         "img": "tianerong-xingpan-point03.png",
         "isActive": false,
-        "name": "監測點·β",
+        "name": "監測點·τ",
         "pos": [
-          760.0,
-          336.0
+          -320.0,
+          -40.0
+        ],
+        "unlockCond": null
+      },
+      "1609": {
+        "affix": [],
+        "award": [],
+        "connected": [
+          1605
+        ],
+        "enemy": [],
+        "id": 1609,
+        "img": "tianerong-xingpan-point03.png",
+        "isActive": false,
+        "name": "監測點·λ",
+        "pos": [
+          400.0,
+          16.0
+        ],
+        "unlockCond": null
+      },
+      "1610": {
+        "affix": [],
+        "award": [],
+        "connected": [
+          1609,
+          1603
+        ],
+        "enemy": [],
+        "id": 1610,
+        "img": "tianerong-xingpan-point03.png",
+        "isActive": false,
+        "name": "監測點·κ",
+        "pos": [
+          320.0,
+          -80.0
         ],
         "unlockCond": null
       }
     },
-    "startTime": "2026-01-20 05:00:00"
+    "startTime": "2026-02-19 05:00:00"
   },
   "msg": "OK",
   "status": 0

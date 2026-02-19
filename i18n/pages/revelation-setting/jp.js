@@ -11,7 +11,9 @@ window.I18N_PAGE_REVELATION_SETTING_JP = {
     preset_default: 'デフォルト',
     preset_numbered: 'プリセット {n}',
     preset_add: '+ プリセット追加',
+    preset_copy_suffix: 'コピー',
     button_preset_rename: 'プリセット名を変更',
+    button_preset_duplicate: 'プリセット複製',
     button_preset_delete: 'プリセット削除',
     modal_preset_rename_title: 'プリセット名の変更',
     placeholder_preset_name: 'プリセット名を入力',
@@ -33,16 +35,16 @@ window.I18N_PAGE_REVELATION_SETTING_JP = {
     button_copy_png: '画像コピー',
     button_backup: 'バックアップ',
     button_load: '読み込み',
-    button_share: '共有',
+    button_share: 'シェア',
     button_downloading: '生成中...',
 
     slot_uni: '主',
-    slot_sun: '日',
+    slot_sun: '旭',
     slot_moon: '月',
     slot_star: '星',
-    slot_sky: '辰',
+    slot_sky: '天',
 
-    label_sub_slots: '日月星辰',
+    label_sub_slots: '旭月星天',
 
     label_main_option: 'メインオプション',
     label_sub_option: 'サブオプション',
@@ -90,9 +92,9 @@ window.I18N_PAGE_REVELATION_SETTING_JP = {
     msg_sub_option_conflict_main: 'メインオプションと同じサブオプションは選択できません。',
 
     sub_crit_rate: 'CRT発生率',
-    sub_crit_mult: 'CRT効果',
+    sub_crit_mult: 'CRT倍率',
     sub_pierce_rate: '貫通',
-    sub_attack_mult: '攻撃倍率',
+    sub_attack_mult: '攻撃倍率+',
     sub_attack_percent: '攻撃力 %',
     sub_attack: '攻撃力',
     sub_hp_percent: 'HP %',
@@ -100,7 +102,7 @@ window.I18N_PAGE_REVELATION_SETTING_JP = {
     sub_defense_percent: '防御力 %',
     sub_defense: '防御力',
     sub_ailment_accuracy: '状態異常命中',
-    sub_sp_recovery: 'SP回復',
-    sub_speed: '速度',
-    sub_healing_effect: '回復効果'
+    sub_sp_recovery: 'SP 回復',
+    sub_speed: '速さ',
+    sub_healing_effect: 'HP回復量'
 };

@@ -105,6 +105,11 @@
     const settingPromiseCache = new Map();
     const STORAGE_PREFIX_V1 = 'revelation-setting:v1:';
     const STORAGE_PREFIX_V2 = 'revelation-setting:v2:';
+    const STORAGE_PREFIX_MODIFIED_FALLBACK = 'revelation-setting:modified:v2:';
+    const STORAGE_PREFIX_MODIFIED_LEGACY = 'revelation-setting:modified:';
+    const GLOBAL_PRESET_ID_PREFIX = 'lufel-global-';
+    const GLOBAL_PRESET_SOURCE_PATH = '/apps/revelation-setting/global-preset.json';
+    const GLOBAL_PRESET_NAME_KEYWORD = 'lufel.net';
     const DEFAULT_PRESET_ID = 'default';
     const PRESET_ID_PREFIX = 'preset-';
     const PRESET_ADD_ACTION = '__add_preset__';
@@ -138,15 +143,19 @@
         presetOrder: [DEFAULT_PRESET_ID],
         presetMap: {},
         presetNameMap: {},
-        activePresetId: DEFAULT_PRESET_ID
+        activePresetId: DEFAULT_PRESET_ID,
+        characterModificationCache: new Map(),
+        globalPresetMap: {}
     };
 
     const dom = {};
     let globalEventsBound = false;
-    let openDropdownRoot = null;
+    let dropdownManager = null;
     let toastTimerId = null;
-    let disposeCharacterSpoilerBinding = null;
+    let characterUiController = null;
     let activePresetRenameDialog = null;
+    let captureController = null;
+    let shareBackupController = null;
 
     function createInitialSlotState() {
         const out = {};
@@ -755,11 +764,36 @@
         state.subRev = subRev;
     }
 
-    function closeOpenDropdown() {
-        if (openDropdownRoot) {
-            openDropdownRoot.classList.remove('open');
-            openDropdownRoot = null;
+    function getDropdownManager() {
+        if (dropdownManager) return dropdownManager;
+
+        const helper = window.RevelationSettingDropdown;
+        if (!helper || typeof helper.createManager !== 'function') {
+            dropdownManager = {
+                closeOpenDropdown: () => { },
+                buildCustomDropdown: () => { }
+            };
+            return dropdownManager;
         }
+
+        dropdownManager = helper.createManager({
+            derivePngFromWebp
+        }) || {
+            closeOpenDropdown: () => { },
+            buildCustomDropdown: () => { }
+        };
+
+        return dropdownManager;
+    }
+
+    function closeOpenDropdown() {
+        const manager = getDropdownManager();
+        manager.closeOpenDropdown();
+    }
+
+    function buildCustomDropdown(config) {
+        const manager = getDropdownManager();
+        manager.buildCustomDropdown(config);
     }
 
     function setCharacterPanelOpen(isOpen) {
@@ -768,6 +802,13 @@
         dom.characterPanel.hidden = !nextOpen;
         if (dom.editorPanel) {
             dom.editorPanel.hidden = nextOpen;
+        }
+        if (dom.statsSummary) {
+            if (nextOpen) {
+                dom.statsSummary.hidden = true;
+            } else {
+                renderStatsSummary();
+            }
         }
         if (dom.characterField) {
             dom.characterField.classList.toggle('open', nextOpen);
@@ -803,537 +844,70 @@
         });
     }
 
-    function buildCustomDropdown(config) {
-        const host = config.host;
-        if (!host) return;
+    function getCharacterUiController() {
+        if (characterUiController) return characterUiController;
 
-        host.innerHTML = '';
-
-        const items = Array.isArray(config.items) ? config.items : [];
-        const includeEmpty = !!config.includeEmptyOption;
-        const disabled = !!config.disabled;
-        const currentValue = String(config.value || '');
-        const placeholder = config.placeholder || '';
-
-        const allItems = includeEmpty
-            ? [{ value: '', label: placeholder, icon: '' }, ...items]
-            : items;
-
-        const root = document.createElement('div');
-        root.className = 'rs-custom-dropdown';
-
-        const button = document.createElement('button');
-        button.type = 'button';
-        button.className = 'rs-dropdown-button';
-        if (disabled) {
-            button.disabled = true;
-            button.classList.add('is-disabled');
+        const helper = window.RevelationSettingCharacterUI;
+        if (!helper || typeof helper.createController !== 'function') {
+            characterUiController = {
+                updateCharacterFilterResetState: () => { },
+                renderCharacterFilterUI: () => { },
+                renderCharacterList: () => { },
+                renderCharacterSelector: () => { },
+                renderTopSelectorIcons: () => { }
+            };
+            return characterUiController;
         }
 
-        const icon = document.createElement('img');
-        icon.className = 'rs-dropdown-icon';
-        icon.alt = '';
-        icon.hidden = true;
+        characterUiController = helper.createController({
+            state,
+            dom,
+            t,
+            escapeHtml,
+            elementOrder: ELEMENT_ORDER,
+            positionOrder: POSITION_ORDER,
+            getCharacterLabel,
+            getCharacterImagePath,
+            getSlotIconPath,
+            getSubSlotIds,
+            hasCharacterModifiedSetting,
+            handleCharacterSelection,
+            setCharacterPanelOpen,
+            loadCharacterNames
+        }) || {
+            updateCharacterFilterResetState: () => { },
+            renderCharacterFilterUI: () => { },
+            renderCharacterList: () => { },
+            renderCharacterSelector: () => { },
+            renderTopSelectorIcons: () => { }
+        };
 
-        const text = document.createElement('span');
-        text.className = 'rs-dropdown-text';
-
-        const arrow = document.createElement('span');
-        arrow.className = 'rs-dropdown-arrow';
-        arrow.setAttribute('aria-hidden', 'true');
-
-        button.appendChild(icon);
-        button.appendChild(text);
-        button.appendChild(arrow);
-
-        const menu = document.createElement('div');
-        menu.className = 'rs-dropdown-menu';
-
-        function setButtonView(value) {
-            const selected = allItems.find((item) => String(item.value) === String(value));
-            const isPlaceholder = !selected || String(selected.value) === '';
-            const label = selected ? selected.label : placeholder;
-            const iconPath = selected ? (selected.icon || '') : '';
-
-            button.classList.toggle('is-placeholder', isPlaceholder);
-            text.textContent = label || placeholder;
-
-            if (iconPath) {
-                icon.src = iconPath;
-                icon.hidden = false;
-                icon.onerror = function onIconError() {
-                    const fallback = derivePngFromWebp(this.src);
-                    if (fallback && this.src !== fallback) {
-                        this.src = fallback;
-                        return;
-                    }
-                    this.hidden = true;
-                };
-            } else {
-                icon.removeAttribute('src');
-                icon.hidden = true;
-            }
-        }
-
-        allItems.forEach((item) => {
-            const option = document.createElement('button');
-            option.type = 'button';
-            option.className = 'rs-dropdown-option';
-            const optionDisabled = !!item.disabled;
-            if (String(item.value) === currentValue) {
-                option.classList.add('active');
-            }
-            if (optionDisabled) {
-                option.classList.add('is-disabled');
-                option.disabled = true;
-                option.setAttribute('aria-disabled', 'true');
-            }
-
-            const optionIcon = document.createElement('img');
-            optionIcon.className = 'rs-dropdown-icon';
-            optionIcon.alt = '';
-            if (item.icon) {
-                optionIcon.src = item.icon;
-                optionIcon.hidden = false;
-                optionIcon.onerror = function onIconError() {
-                    const fallback = derivePngFromWebp(this.src);
-                    if (fallback && this.src !== fallback) {
-                        this.src = fallback;
-                        return;
-                    }
-                    this.hidden = true;
-                };
-            } else {
-                optionIcon.hidden = true;
-            }
-
-            const optionLabel = document.createElement('span');
-            optionLabel.className = 'rs-dropdown-option-label';
-            optionLabel.textContent = item.label || '';
-
-            option.appendChild(optionIcon);
-            option.appendChild(optionLabel);
-
-            const itemAction = item && typeof item.action === 'object' ? item.action : null;
-            if (itemAction && itemAction.type && !optionDisabled) {
-                option.classList.add('has-action');
-
-                const actionButton = document.createElement('span');
-                actionButton.className = 'rs-dropdown-option-action';
-                actionButton.setAttribute('role', 'button');
-                actionButton.setAttribute('tabindex', '0');
-                actionButton.setAttribute('aria-label', String(itemAction.label || ''));
-                actionButton.title = String(itemAction.label || '');
-                actionButton.textContent = String(itemAction.iconText || '✎');
-
-                const triggerAction = (event) => {
-                    event.preventDefault();
-                    event.stopPropagation();
-                    if (typeof config.onItemAction === 'function') {
-                        config.onItemAction(String(item.value || ''), String(itemAction.type || ''), item);
-                    }
-                };
-
-                actionButton.addEventListener('click', triggerAction);
-                actionButton.addEventListener('keydown', (event) => {
-                    if (event.key !== 'Enter' && event.key !== ' ') return;
-                    triggerAction(event);
-                });
-
-                option.appendChild(actionButton);
-            }
-
-            option.addEventListener('click', (event) => {
-                event.preventDefault();
-                if (optionDisabled) return;
-                if (typeof config.onChange === 'function') {
-                    config.onChange(String(item.value || ''));
-                }
-                closeOpenDropdown();
-            });
-
-            menu.appendChild(option);
-        });
-
-        button.addEventListener('click', (event) => {
-            event.preventDefault();
-            event.stopPropagation();
-            if (disabled) return;
-
-            if (openDropdownRoot && openDropdownRoot !== root) {
-                openDropdownRoot.classList.remove('open');
-            }
-
-            const nextOpen = !root.classList.contains('open');
-            root.classList.toggle('open', nextOpen);
-            openDropdownRoot = nextOpen ? root : null;
-        });
-
-        setButtonView(currentValue);
-
-        root.appendChild(button);
-        root.appendChild(menu);
-        host.appendChild(root);
-    }
-
-    function getCharacterMeta(name) {
-        return (window.characterData || {})[name] || {};
-    }
-
-    function translateGameTerm(value) {
-        const text = String(value || '').trim();
-        if (!text) return '';
-        if (window.I18nService && typeof window.I18nService.translateTerm === 'function') {
-            const translated = window.I18nService.translateTerm(text);
-            return translated || text;
-        }
-        return text;
-    }
-
-    function getCharacterElementIconPath(element) {
-        const key = String(element || '').trim();
-        if (!key) return '';
-        return `${state.baseUrl}/assets/img/character-cards/${encodeURIComponent(`속성_${key}`)}.png`;
-    }
-
-    function getCharacterPositionIconPath(position) {
-        const key = String(position || '').trim();
-        if (!key) return '';
-        return `${state.baseUrl}/assets/img/character-cards/${encodeURIComponent(`직업_${key}`)}.png`;
-    }
-
-    function getCharacterStarIconPath(rarity) {
-        const count = Number(rarity || 0);
-        if (!count) return '';
-        const starType = count === 4 ? 'star4.png' : 'star5.png';
-        return `${state.baseUrl}/assets/img/character-detail/${starType}`;
-    }
-
-    function buildSelectedCharacterNameHtml(characterLabel, meta) {
-        const safeName = escapeHtml(characterLabel || '');
-        const element = String((meta && meta.element) || '').trim();
-        const position = String((meta && meta.position) || '').trim();
-        const rarity = Number((meta && meta.rarity) || 0);
-
-        const elementIcon = getCharacterElementIconPath(element);
-        const positionIcon = getCharacterPositionIconPath(position);
-        const starIcon = getCharacterStarIconPath(rarity);
-        const translatedElement = translateGameTerm(element);
-        const translatedPosition = translateGameTerm(position);
-        const safeStarLabel = escapeHtml(t('common_star', 'Star'));
-
-        const metaItems = [];
-        if (positionIcon) {
-            metaItems.push(`
-                <img
-                    class="rs-character-meta-icon rs-character-meta-position"
-                    src="${escapeHtml(positionIcon)}"
-                    alt="${escapeHtml(translatedPosition || position)}"
-                    title="${escapeHtml(translatedPosition || position)}"
-                >
-            `);
-        }
-        if (elementIcon) {
-            metaItems.push(`
-                <img
-                    class="rs-character-meta-icon rs-character-meta-element"
-                    src="${escapeHtml(elementIcon)}"
-                    alt="${escapeHtml(translatedElement || element)}"
-                    title="${escapeHtml(translatedElement || element)}"
-                >
-            `);
-        }
-        if (starIcon && rarity > 0) {
-            const stars = Array.from({ length: rarity }, () => `
-                <img class="rs-character-meta-star" src="${escapeHtml(starIcon)}" alt="${safeStarLabel}">
-            `).join('');
-            metaItems.push(`<span class="rs-character-meta-stars" title="${escapeHtml(`${rarity}${t('common_star', 'Star')}`)}">${stars}</span>`);
-        }
-
-        return `
-            <span class="rs-selected-character-label">${safeName}</span>
-            <span class="rs-selected-character-meta">${metaItems.join('')}</span>
-        `;
-    }
-
-    function getAvailableCharacterFilters() {
-        const elements = new Set();
-        const positions = new Set();
-        state.characterList.forEach((name) => {
-            const meta = getCharacterMeta(name);
-            if (meta.element) elements.add(meta.element);
-            if (meta.position) positions.add(meta.position);
-        });
-
-        const sortedElements = Array.from(elements).sort((a, b) => {
-            const ai = ELEMENT_ORDER.indexOf(a);
-            const bi = ELEMENT_ORDER.indexOf(b);
-            if (ai === -1 && bi === -1) return String(a).localeCompare(String(b), 'ko');
-            if (ai === -1) return 1;
-            if (bi === -1) return -1;
-            return ai - bi;
-        });
-
-        const sortedPositions = Array.from(positions).sort((a, b) => {
-            const ai = POSITION_ORDER.indexOf(a);
-            const bi = POSITION_ORDER.indexOf(b);
-            if (ai === -1 && bi === -1) return String(a).localeCompare(String(b), 'ko');
-            if (ai === -1) return 1;
-            if (bi === -1) return -1;
-            return ai - bi;
-        });
-
-        return { elements: sortedElements, positions: sortedPositions };
+        return characterUiController;
     }
 
     function updateCharacterFilterResetState() {
-        if (!dom.characterFilterReset) return;
-        const hasFilter = state.characterFilters.query.length > 0
-            || state.characterFilters.elements.size > 0
-            || state.characterFilters.positions.size > 0;
-        dom.characterFilterReset.classList.toggle('active', hasFilter);
-    }
-
-    async function handleCharacterSpoilerToggleChanged() {
-        await loadCharacterNames();
-        renderCharacterFilterUI();
-        renderCharacterList();
+        const controller = getCharacterUiController();
+        controller.updateCharacterFilterResetState();
     }
 
     function renderCharacterFilterUI() {
-        const available = getAvailableCharacterFilters();
-
-        if (dom.elementFilters) {
-            dom.elementFilters.innerHTML = available.elements.map((value) => `
-                <label class="rs-filter-chip">
-                    <input type="checkbox" data-kind="element" value="${escapeHtml(value)}" ${state.characterFilters.elements.has(value) ? 'checked' : ''}>
-                    <img src="${escapeHtml(state.baseUrl)}/assets/img/character-cards/${encodeURIComponent(`속성_${value}`)}.png" alt="${escapeHtml(value)}">
-                </label>
-            `).join('');
-        }
-
-        if (dom.positionFilters) {
-            const showSpoilerToggle = state.lang !== 'kr';
-            const spoilerToggleHtml = showSpoilerToggle
-                ? `
-                    <div class="rs-spoiler-toggle">
-                        <label class="rs-spoiler-toggle-label">
-                            <input type="checkbox" id="rsCharacterSpoilerToggle" class="rs-spoiler-toggle-checkbox">
-                            <span class="rs-spoiler-toggle-text">${escapeHtml(t('show_spoilers_label', 'Show Spoilers'))}</span>
-                        </label>
-                    </div>
-                `
-                : '';
-
-            const resetButtonHtml = `
-                <button id="rsCharacterFilterReset" type="button" class="rs-filter-reset" title="${escapeHtml(t('label_reset_filter', '필터 초기화'))}" aria-label="${escapeHtml(t('label_reset_filter', '필터 초기화'))}">
-                    &#10227;
-                </button>
-            `;
-
-            const chipHtml = available.positions.map((value) => `
-                <label class="rs-filter-chip">
-                    <input type="checkbox" data-kind="position" value="${escapeHtml(value)}" ${state.characterFilters.positions.has(value) ? 'checked' : ''}>
-                    <img src="${escapeHtml(state.baseUrl)}/assets/img/character-cards/${encodeURIComponent(`직업_${value}`)}.png" alt="${escapeHtml(value)}">
-                </label>
-            `).join('');
-
-            dom.positionFilters.innerHTML = `${chipHtml}${resetButtonHtml}${spoilerToggleHtml}`;
-            dom.characterFilterReset = document.getElementById('rsCharacterFilterReset');
-        }
-
-        document.querySelectorAll('#rsCharacterPanel input[type="checkbox"][data-kind]').forEach((checkbox) => {
-            checkbox.addEventListener('change', () => {
-                const kind = checkbox.getAttribute('data-kind');
-                const val = checkbox.value;
-                const targetSet = kind === 'element'
-                    ? state.characterFilters.elements
-                    : state.characterFilters.positions;
-                if (checkbox.checked) targetSet.add(val);
-                else targetSet.delete(val);
-                updateCharacterFilterResetState();
-                renderCharacterList();
-            });
-        });
-
-        if (dom.characterFilterReset) {
-            dom.characterFilterReset.addEventListener('click', () => {
-                state.characterFilters.query = '';
-                state.characterFilters.elements.clear();
-                state.characterFilters.positions.clear();
-                if (dom.characterSearchInput) {
-                    dom.characterSearchInput.value = '';
-                }
-                updateCharacterFilterResetState();
-                renderCharacterFilterUI();
-                renderCharacterList();
-            });
-        }
-
-        const spoilerToggle = document.getElementById('rsCharacterSpoilerToggle');
-        if (disposeCharacterSpoilerBinding) {
-            try { disposeCharacterSpoilerBinding(); } catch (_) { }
-            disposeCharacterSpoilerBinding = null;
-        }
-        if (spoilerToggle) {
-            if (window.SpoilerState && typeof window.SpoilerState.bindCheckbox === 'function') {
-                disposeCharacterSpoilerBinding = window.SpoilerState.bindCheckbox({
-                    checkbox: spoilerToggle,
-                    lang: state.lang,
-                    source: 'revelation-setting-character-panel',
-                    onChange: () => {
-                        handleCharacterSpoilerToggleChanged();
-                    }
-                });
-            } else {
-                let savedState = false;
-                try {
-                    savedState = window.localStorage && window.localStorage.getItem('spoilerToggle') === 'true';
-                } catch (_) { }
-                spoilerToggle.checked = savedState;
-                spoilerToggle.onchange = () => {
-                    const enabled = !!spoilerToggle.checked;
-                    try {
-                        if (window.localStorage) {
-                            window.localStorage.setItem('spoilerToggle', enabled ? 'true' : 'false');
-                        }
-                    } catch (_) { }
-                    handleCharacterSpoilerToggleChanged();
-                };
-            }
-        }
-
-        updateCharacterFilterResetState();
-    }
-
-    function getFilteredCharacters() {
-        const query = String(state.characterFilters.query || '').toLowerCase();
-        const activeElements = state.characterFilters.elements;
-        const activePositions = state.characterFilters.positions;
-
-        return state.characterList.filter((name) => {
-            const meta = getCharacterMeta(name);
-            if (activeElements.size > 0 && !activeElements.has(meta.element)) return false;
-            if (activePositions.size > 0 && !activePositions.has(meta.position)) return false;
-            if (!query) return true;
-
-            const searchText = [
-                name,
-                meta.name || '',
-                meta.name_en || '',
-                meta.name_jp || '',
-                meta.codename || ''
-            ].join(' ').toLowerCase();
-            return searchText.includes(query);
-        });
+        const controller = getCharacterUiController();
+        controller.renderCharacterFilterUI();
     }
 
     function renderCharacterList() {
-        if (!dom.characterList) return;
-        const names = getFilteredCharacters();
-        dom.characterList.innerHTML = '';
-        names.forEach((name) => {
-            const button = document.createElement('button');
-            button.type = 'button';
-            button.className = 'rs-character-item';
-            if (name === state.selectedCharacter) {
-                button.classList.add('active');
-            }
-
-            const img = document.createElement('img');
-            img.src = getCharacterImagePath(name);
-            img.alt = getCharacterLabel(name);
-            img.onerror = function onCharacterItemIconError() {
-                this.hidden = true;
-            };
-
-            const label = document.createElement('span');
-            label.textContent = getCharacterLabel(name);
-
-            button.appendChild(img);
-            button.appendChild(label);
-            button.addEventListener('click', async () => {
-                await handleCharacterSelection(name);
-                setCharacterPanelOpen(false);
-            });
-
-            dom.characterList.appendChild(button);
-        });
+        const controller = getCharacterUiController();
+        controller.renderCharacterList();
     }
 
     function renderCharacterSelector() {
-        if (!dom.characterList) return;
-
-        if (state.selectedCharacter) {
-            const characterLabel = getCharacterLabel(state.selectedCharacter);
-            const characterMeta = getCharacterMeta(state.selectedCharacter);
-            if (dom.selectedCharacterName) {
-                dom.selectedCharacterName.innerHTML = buildSelectedCharacterNameHtml(characterLabel, characterMeta);
-                dom.selectedCharacterName.querySelectorAll('img').forEach((img) => {
-                    img.onerror = function onCharacterMetaIconError() {
-                        this.hidden = true;
-                    };
-                });
-            }
-            if (dom.characterPill) {
-                dom.characterPill.setAttribute('aria-label', characterLabel);
-            }
-            if (dom.characterPillIcon) {
-                dom.characterPillIcon.src = getCharacterImagePath(state.selectedCharacter);
-                dom.characterPillIcon.hidden = false;
-                dom.characterPillIcon.onerror = function onCharacterIconError() {
-                    this.hidden = true;
-                };
-            }
-            if (dom.characterPillEmpty) {
-                dom.characterPillEmpty.hidden = true;
-            }
-        } else {
-            const fallback = t('placeholder_select_character', 'Select character');
-            if (dom.selectedCharacterName) {
-                dom.selectedCharacterName.textContent = fallback;
-            }
-            if (dom.characterPill) {
-                dom.characterPill.setAttribute('aria-label', fallback);
-            }
-            if (dom.characterPillIcon) {
-                dom.characterPillIcon.removeAttribute('src');
-                dom.characterPillIcon.hidden = true;
-            }
-            if (dom.characterPillEmpty) {
-                dom.characterPillEmpty.hidden = false;
-            }
-        }
-
-        if (dom.characterSearchInput) {
-            dom.characterSearchInput.value = state.characterFilters.query;
-        }
-
-        renderCharacterFilterUI();
-        renderCharacterList();
+        const controller = getCharacterUiController();
+        controller.renderCharacterSelector();
     }
 
     function renderTopSelectorIcons() {
-        if (dom.mainRevSlotIcon) {
-            dom.mainRevSlotIcon.src = getSlotIconPath('uni');
-            dom.mainRevSlotIcon.hidden = false;
-            dom.mainRevSlotIcon.onerror = function onMainSlotIconError() {
-                this.hidden = true;
-            };
-        }
-
-        if (dom.subRevSlotIcons) {
-            dom.subRevSlotIcons.innerHTML = '';
-            getSubSlotIds().forEach((slotId) => {
-                const img = document.createElement('img');
-                img.src = getSlotIconPath(slotId);
-                img.alt = t(`slot_${slotId}`, slotId.toUpperCase());
-                img.onerror = function onSubSlotIconError() {
-                    this.hidden = true;
-                };
-                dom.subRevSlotIcons.appendChild(img);
-            });
-        }
+        const controller = getCharacterUiController();
+        controller.renderTopSelectorIcons();
     }
 
     function sanitizePresetName(value) {
@@ -1363,6 +937,89 @@
         if (!id) return getDefaultPresetLabel(id);
         const customName = sanitizePresetName(state.presetNameMap[id]);
         return customName || getDefaultPresetLabel(id);
+    }
+
+    function isGlobalPresetId(presetId) {
+        const id = String(presetId || '').trim();
+        return id.indexOf(GLOBAL_PRESET_ID_PREFIX) === 0;
+    }
+
+    function buildGlobalPresetId(sourcePresetId) {
+        const sourceId = String(sourcePresetId || '').trim();
+        if (!sourceId) return '';
+        return `${GLOBAL_PRESET_ID_PREFIX}${encodeURIComponent(sourceId)}`;
+    }
+
+    function normalizePresetLabelForCompare(value) {
+        return String(value || '')
+            .replace(/\s+/g, ' ')
+            .trim()
+            .toLowerCase();
+    }
+
+    function buildDuplicatePresetName(sourcePresetId) {
+        const sourceId = String(sourcePresetId || '').trim();
+        const baseLabel = sanitizePresetName(getPresetLabel(sourceId) || getDefaultPresetLabel(sourceId))
+            || t('preset_default', 'Default');
+        const copySuffix = sanitizePresetName(t('preset_copy_suffix', 'copy')) || 'copy';
+
+        const existingLabels = new Set(
+            state.presetOrder
+                .filter((presetId) => presetId !== sourceId)
+                .map((presetId) => normalizePresetLabelForCompare(getPresetLabel(presetId)))
+                .filter(Boolean)
+        );
+
+        let candidate = sanitizePresetName(`${baseLabel} ${copySuffix}`);
+        if (candidate && !existingLabels.has(normalizePresetLabelForCompare(candidate))) {
+            return candidate;
+        }
+
+        for (let n = 2; n < 1000; n += 1) {
+            candidate = sanitizePresetName(`${baseLabel} ${copySuffix} ${n}`);
+            if (!candidate) continue;
+            if (!existingLabels.has(normalizePresetLabelForCompare(candidate))) {
+                return candidate;
+            }
+        }
+
+        return sanitizePresetName(`${baseLabel} ${copySuffix} ${Date.now()}`) || baseLabel;
+    }
+
+    function createPresetFromBuild(sourceBuild, customName) {
+        if (!state.selectedCharacter) return false;
+
+        ensurePresetState();
+
+        if (state.presetOrder.length >= PRESET_MAX_COUNT) {
+            showToast(t('msg_preset_limit_reached', 'You can add up to 20 presets per character.'), 'error');
+            return false;
+        }
+
+        syncActivePresetFromEditorState();
+
+        const nextId = getNextPresetId();
+        state.presetMap[nextId] = clonePackedBuild(sourceBuild || createEmptyPackedBuild());
+        state.presetOrder.push(nextId);
+
+        const nextName = sanitizePresetName(customName);
+        if (nextName && nextName !== getDefaultPresetLabel(nextId)) {
+            state.presetNameMap[nextId] = nextName;
+        } else {
+            delete state.presetNameMap[nextId];
+        }
+
+        state.activePresetId = nextId;
+
+        applyPackedBuildToEditorState(state.presetMap[nextId]);
+        persistSelectedCharacterSetting();
+
+        renderPresetDropdown();
+        renderMainRevelationDropdown();
+        renderSubRevelationDropdown();
+        renderSlotCards();
+        renderPreview();
+        return true;
     }
 
     function deletePreset(targetPresetId) {
@@ -1413,6 +1070,7 @@
     function openPresetRenameModal(presetId) {
         const targetPresetId = String(presetId || '').trim();
         if (!targetPresetId || !state.presetMap[targetPresetId]) return;
+        if (isGlobalPresetId(targetPresetId)) return;
 
         closeOpenDropdown();
 
@@ -1559,35 +1217,46 @@
         renderPreview();
     }
 
-    function handleAddPreset() {
+    async function buildRecommendedPackedBuild(characterName) {
+        const selectedName = String(characterName || '').trim();
+        if (!selectedName) return createEmptyPackedBuild();
+
+        const snapshot = serializeCurrentCharacterSetting();
+
+        try {
+            state.mainRev = '';
+            state.subRev = '';
+            state.slots = createInitialSlotState();
+            await applyAutoRevelation(selectedName);
+            ensureSlotDefaults();
+            return sanitizePackedBuild(serializeCurrentCharacterSetting());
+        } catch (error) {
+            console.warn('[revelation-setting] failed to build recommended preset:', error);
+            return createEmptyPackedBuild();
+        } finally {
+            applyPackedBuildToEditorState(snapshot);
+        }
+    }
+
+    async function handleAddPreset() {
         if (!state.selectedCharacter) return;
 
+        closeOpenDropdown();
+        const recommendedBuild = await buildRecommendedPackedBuild(state.selectedCharacter);
+        createPresetFromBuild(recommendedBuild, '');
+    }
+
+    function handleDuplicatePreset(presetId) {
+        const sourceId = String(presetId || '').trim();
+        if (!sourceId || !state.presetMap[sourceId]) return;
+
+        closeOpenDropdown();
         ensurePresetState();
-
-        if (state.presetOrder.length >= PRESET_MAX_COUNT) {
-            showToast(t('msg_preset_limit_reached', 'You can add up to 20 presets per character.'), 'error');
-            return;
-        }
-
         syncActivePresetFromEditorState();
 
-        const nextId = getNextPresetId();
-        const sourceId = state.presetMap[state.activePresetId] ? state.activePresetId : DEFAULT_PRESET_ID;
-        const sourceBuild = state.presetMap[sourceId] || serializeCurrentCharacterSetting();
-
-        state.presetMap[nextId] = clonePackedBuild(sourceBuild);
-        state.presetOrder.push(nextId);
-        delete state.presetNameMap[nextId];
-        state.activePresetId = nextId;
-
-        applyPackedBuildToEditorState(state.presetMap[nextId]);
-        persistSelectedCharacterSetting();
-
-        renderPresetDropdown();
-        renderMainRevelationDropdown();
-        renderSubRevelationDropdown();
-        renderSlotCards();
-        renderPreview();
+        const sourceBuild = state.presetMap[sourceId] || createEmptyPackedBuild();
+        const duplicateName = buildDuplicatePresetName(sourceId);
+        createPresetFromBuild(sourceBuild, duplicateName);
     }
 
     function renderPresetDropdown() {
@@ -1596,16 +1265,30 @@
         ensurePresetState();
 
         const renameLabel = t('button_preset_rename', 'Rename');
+        const duplicateLabel = t('button_preset_duplicate', 'Duplicate');
         const items = state.presetOrder.map((presetId) => ({
             value: presetId,
             label: getPresetLabel(presetId),
             icon: '',
-            action: {
-                type: 'rename',
-                label: renameLabel,
-                iconText: '✎'
-            }
+            actions: [
+                {
+                    type: 'rename',
+                    label: renameLabel,
+                    iconText: '✎'
+                },
+                {
+                    type: 'duplicate',
+                    label: duplicateLabel,
+                    iconText: '⧉'
+                }
+            ]
         }));
+
+        items.forEach((item) => {
+            if (!isGlobalPresetId(item.value)) return;
+            const actions = Array.isArray(item.actions) ? item.actions : [];
+            item.actions = actions.filter((action) => String((action && action.type) || '') !== 'rename');
+        });
 
         items.push({
             value: PRESET_ADD_ACTION,
@@ -1629,7 +1312,12 @@
             },
             onItemAction: (value, actionType) => {
                 if (actionType === 'rename' && value && value !== PRESET_ADD_ACTION) {
+                    if (isGlobalPresetId(value)) return;
                     openPresetRenameModal(value);
+                    return;
+                }
+                if (actionType === 'duplicate' && value && value !== PRESET_ADD_ACTION) {
+                    handleDuplicatePreset(value);
                 }
             }
         });
@@ -1749,6 +1437,86 @@
 
     function getStorageKeyV2(characterName) {
         return `${STORAGE_PREFIX_V2}${encodeURIComponent(String(characterName || '').trim())}`;
+    }
+
+    function getStorageKeyModified(characterName) {
+        const helper = window.RevelationSettingModifiedStore;
+        if (helper && typeof helper.buildKey === 'function') {
+            return helper.buildKey(characterName);
+        }
+        return `${STORAGE_PREFIX_MODIFIED_FALLBACK}${encodeURIComponent(String(characterName || '').trim())}`;
+    }
+
+    function setCharacterModifiedFlag(characterName, modified) {
+        const name = String(characterName || '').trim();
+        if (!name) return;
+
+        const isModified = !!modified;
+        state.characterModificationCache.set(name, isModified);
+        updateCharacterModifiedDotInList(name, isModified);
+
+        const helper = window.RevelationSettingModifiedStore;
+        if (helper && typeof helper.setFlag === 'function') {
+            helper.setFlag(name, isModified);
+            return;
+        }
+
+        if (typeof window.localStorage === 'undefined') return;
+        try {
+            const key = getStorageKeyModified(name);
+            if (isModified) window.localStorage.setItem(key, '1');
+            else window.localStorage.removeItem(key);
+            window.localStorage.removeItem(`${STORAGE_PREFIX_MODIFIED_LEGACY}${encodeURIComponent(name)}`);
+        } catch (_) { }
+    }
+
+    function hasCharacterModifiedSetting(characterName) {
+        const name = String(characterName || '').trim();
+        if (!name) return false;
+
+        if (state.characterModificationCache.has(name)) {
+            return !!state.characterModificationCache.get(name);
+        }
+
+        let isModified = false;
+
+        const helper = window.RevelationSettingModifiedStore;
+        if (helper && typeof helper.getFlag === 'function') {
+            isModified = !!helper.getFlag(name);
+        } else if (typeof window.localStorage !== 'undefined') {
+            try {
+                const modifiedFlag = window.localStorage.getItem(getStorageKeyModified(name));
+                isModified = modifiedFlag === '1';
+            } catch (_) {
+                isModified = false;
+            }
+        }
+
+        state.characterModificationCache.set(name, isModified);
+        return isModified;
+    }
+
+    function updateCharacterModifiedDotInList(characterName, isModified) {
+        if (!dom.characterList) return;
+        const name = String(characterName || '').trim();
+        if (!name) return;
+
+        const items = dom.characterList.querySelectorAll('.rs-character-item');
+        items.forEach((item) => {
+            if (String(item.getAttribute('data-character') || '') !== name) return;
+            const existingDot = item.querySelector('.rs-character-modified-dot');
+
+            if (isModified) {
+                if (!existingDot) {
+                    const modifiedDot = document.createElement('span');
+                    modifiedDot.className = 'rs-character-modified-dot';
+                    modifiedDot.setAttribute('aria-hidden', 'true');
+                    item.appendChild(modifiedDot);
+                }
+            } else if (existingDot) {
+                existingDot.remove();
+            }
+        });
     }
 
     function encodeStoragePayload(payload) {
@@ -2020,9 +1788,13 @@
         return true;
     }
 
-    function persistSelectedCharacterSetting() {
+    function persistSelectedCharacterSetting(options) {
         const name = String(state.selectedCharacter || '').trim();
         if (!name || typeof window.localStorage === 'undefined') return;
+
+        const opts = (options && typeof options === 'object') ? options : {};
+        const shouldMarkModified = opts.markModified !== false;
+
         try {
             syncActivePresetFromEditorState();
             const payload = normalizePresetStorePayload({
@@ -2037,6 +1809,11 @@
             const encoded = encodeStoragePayload(payload);
             if (!encoded) return;
             window.localStorage.setItem(getStorageKeyV2(name), encoded);
+            if (shouldMarkModified) {
+                setCharacterModifiedFlag(name, true);
+            } else {
+                state.characterModificationCache.delete(name);
+            }
         } catch (error) {
             console.warn('[revelation-setting] persist setting failed:', error);
         }
@@ -2629,213 +2406,78 @@
         dom.statsSummary.hidden = false;
     }
 
-    function sanitizeFileToken(value) {
-        return String(value || '')
-            .trim()
-            .replace(/[<>:"/\\|?*\x00-\x1F]/g, '_')
-            .replace(/\s+/g, '_')
-            .slice(0, 40) || 'unknown';
-    }
+    function getCaptureController() {
+        if (captureController) return captureController;
 
-    async function ensureHtmlToImage() {
-        if (window.htmlToImage) return;
-        await new Promise((resolve, reject) => {
-            const s = document.createElement('script');
-            s.src = 'https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.min.js';
-            s.onload = resolve;
-            s.onerror = () => {
-                const s2 = document.createElement('script');
-                s2.src = 'https://unpkg.com/html-to-image@1.11.11/dist/html-to-image.js';
-                s2.onload = resolve;
-                s2.onerror = reject;
-                document.head.appendChild(s2);
-            };
-            document.head.appendChild(s);
-        });
-    }
-
-    function loadImageAsCanvas(src) {
-        return new Promise((resolve) => {
-            const img = new Image();
-            img.crossOrigin = 'anonymous';
-            img.onload = () => resolve(img);
-            img.onerror = () => resolve(null);
-            img.src = src;
-        });
-    }
-
-    async function withZeroUpgradeHiddenForCapture(captureNode, task) {
-        if (!captureNode || typeof task !== 'function') {
-            return task ? task() : null;
+        const helper = window.RevelationSettingCapture;
+        if (!helper || typeof helper.createController !== 'function') {
+            captureController = {};
+            return captureController;
         }
 
-        const zeroUpgradeInputs = Array.from(
-            captureNode.querySelectorAll('.rs-sub-upgrade-input')
-        ).filter((input) => {
-            const text = String(input.value || '').trim();
-            if (!text) return true;
-            return parseUpgradeValue(text) === 0;
-        });
+        captureController = helper.createController({
+            state,
+            dom,
+            t,
+            showToast,
+            parseUpgradeValue
+        }) || {};
 
-        zeroUpgradeInputs.forEach((input) => {
-            input.classList.add('rs-capture-zero-hidden');
-        });
-
-        try {
-            return await task();
-        } finally {
-            zeroUpgradeInputs.forEach((input) => {
-                input.classList.remove('rs-capture-zero-hidden');
-            });
-        }
-    }
-
-    async function captureToCanvas(captureNode) {
-        await ensureHtmlToImage();
-        if (!window.htmlToImage || typeof window.htmlToImage.toPng !== 'function') {
-            throw new Error('Capture library missing');
-        }
-
-        const bodyBg = getComputedStyle(document.body).backgroundColor || '#222222';
-        const pixelRatio = Math.min(3, (window.devicePixelRatio || 1) * 2);
-        const pad = 16;
-        const watermarkH = 28;
-
-        let dataUrl = '';
-        captureNode.classList.add('rs-capture-mode');
-        try {
-            dataUrl = await window.htmlToImage.toPng(captureNode, {
-                backgroundColor: bodyBg,
-                pixelRatio,
-                cacheBust: true,
-                skipFonts: true,
-                filter: (node) => {
-                    if (!(node instanceof HTMLElement)) return true;
-                    if (node.hidden) return false;
-                    if (node.classList && node.classList.contains('rs-character-panel')) return false;
-                    if (node.classList && node.classList.contains('rs-dropdown-menu')) return false;
-                    if (node.classList && node.classList.contains('rs-dropdown-arrow')) return false;
-                    if (node.tagName === 'LINK' && node.rel === 'stylesheet' && node.href && !node.href.startsWith(window.location.origin)) return false;
-                    return true;
-                }
-            });
-        } finally {
-            captureNode.classList.remove('rs-capture-mode');
-        }
-
-        const srcImg = await loadImageAsCanvas(dataUrl);
-        if (!srcImg) throw new Error('Failed to load captured image');
-
-        const cw = srcImg.width + pad * 2 * pixelRatio;
-        const ch = srcImg.height + (pad * 2 + watermarkH) * pixelRatio;
-
-        const canvas = document.createElement('canvas');
-        canvas.width = cw;
-        canvas.height = ch;
-        const ctx = canvas.getContext('2d');
-
-        ctx.fillStyle = bodyBg;
-        ctx.fillRect(0, 0, cw, ch);
-        ctx.drawImage(srcImg, pad * pixelRatio, pad * pixelRatio);
-
-        const logoSrc = (state.baseUrl || '') + '/assets/img/logo/lufel.webp';
-        const logoImg = await loadImageAsCanvas(logoSrc);
-        const logoSize = 16 * pixelRatio;
-        const textSize = 11 * pixelRatio;
-        const wmY = srcImg.height + (pad * 1.5) * pixelRatio;
-
-        ctx.font = `500 ${textSize}px "Noto Sans", sans-serif`;
-        ctx.fillStyle = 'rgba(255,255,255,0.35)';
-        const label = 'lufel.net';
-        const textW = ctx.measureText(label).width;
-        const wmX = cw - pad * pixelRatio - textW;
-
-        ctx.fillText(label, wmX, wmY + logoSize * 0.75);
-
-        if (logoImg) {
-            const logoX = wmX - logoSize - 5 * pixelRatio;
-            ctx.drawImage(logoImg, logoX, wmY, logoSize, logoSize);
-        }
-
-        return canvas;
+        return captureController;
     }
 
     async function handleDownloadPng() {
-        if (!state.selectedCharacter) {
-            alert(t('msg_preview_empty', 'Please select a character first.'));
-            return;
-        }
-
-        const captureNode = dom.configLayout || document.querySelector('.rs-config-layout');
-        if (!captureNode) return;
-
-        if (dom.downloadBtn) dom.downloadBtn.disabled = true;
-
-        try {
-            const canvas = await withZeroUpgradeHiddenForCapture(
-                captureNode,
-                () => captureToCanvas(captureNode)
-            );
-            const dataUrl = canvas.toDataURL('image/png');
-
-            const characterToken = sanitizeFileToken(state.selectedCharacter || 'unknown');
-            const fileName = `revelation-share_${characterToken}_${Date.now()}.png`;
-
-            const anchor = document.createElement('a');
-            anchor.href = dataUrl;
-            anchor.download = fileName;
-            document.body.appendChild(anchor);
-            anchor.click();
-            anchor.remove();
-            showToast(t('msg_capture_success', 'PNG downloaded.'));
-        } catch (error) {
-            console.error('[revelation-setting] capture failed:', error);
-            alert(t('msg_capture_failed', 'Failed to capture image. (' + (error.message || error) + ')'));
-        } finally {
-            if (dom.downloadBtn) dom.downloadBtn.disabled = false;
-        }
+        const controller = getCaptureController();
+        if (!controller || typeof controller.handleDownloadPng !== 'function') return;
+        await controller.handleDownloadPng();
     }
 
     async function handleCopyPng() {
-        if (!state.selectedCharacter) {
-            alert(t('msg_preview_empty', 'Please select a character first.'));
-            return;
-        }
+        const controller = getCaptureController();
+        if (!controller || typeof controller.handleCopyPng !== 'function') return;
+        await controller.handleCopyPng();
+    }
 
-        const captureNode = dom.configLayout || document.querySelector('.rs-config-layout');
-        if (!captureNode) return;
-
-        if (dom.copyBtn) dom.copyBtn.disabled = true;
-
-        try {
-            const canvas = await withZeroUpgradeHiddenForCapture(
-                captureNode,
-                () => captureToCanvas(captureNode)
-            );
-            const blob = await new Promise((resolve) => canvas.toBlob(resolve, 'image/png'));
-            if (!blob) throw new Error('Failed to create blob');
-
-            await navigator.clipboard.write([
-                new ClipboardItem({ 'image/png': blob })
-            ]);
-            showToast(t('msg_copy_success', 'Image copied to clipboard.'));
-        } catch (error) {
-            console.error('[revelation-setting] copy failed:', error);
-            alert(t('msg_copy_failed', 'Failed to copy image. (' + (error.message || error) + ')'));
-        } finally {
-            if (dom.copyBtn) dom.copyBtn.disabled = false;
-        }
+    function getStorageUtilsHelper() {
+        const helper = window.RevelationSettingStorageUtils;
+        return (helper && typeof helper === 'object') ? helper : null;
     }
 
     function isRevelationSettingStorageKey(key) {
+        const helper = getStorageUtilsHelper();
+        if (helper && typeof helper.isStorageKey === 'function') {
+            return helper.isStorageKey(key, {
+                storagePrefixV1: STORAGE_PREFIX_V1,
+                storagePrefixV2: STORAGE_PREFIX_V2,
+                storagePrefixModifiedFallback: STORAGE_PREFIX_MODIFIED_FALLBACK,
+                storagePrefixModifiedLegacy: STORAGE_PREFIX_MODIFIED_LEGACY,
+                modifiedHelper: window.RevelationSettingModifiedStore
+            });
+        }
+
         const text = String(key || '');
-        return text.indexOf(STORAGE_PREFIX_V1) === 0 || text.indexOf(STORAGE_PREFIX_V2) === 0;
+        const modifiedHelper = window.RevelationSettingModifiedStore;
+        const isModifiedKey = modifiedHelper && typeof modifiedHelper.isModifiedKey === 'function'
+            ? !!modifiedHelper.isModifiedKey(text)
+            : (text.indexOf(STORAGE_PREFIX_MODIFIED_FALLBACK) === 0 || text.indexOf(STORAGE_PREFIX_MODIFIED_LEGACY) === 0);
+
+        return text.indexOf(STORAGE_PREFIX_V1) === 0
+            || text.indexOf(STORAGE_PREFIX_V2) === 0
+            || isModifiedKey;
     }
 
     function collectRevelationSettingStorageEntries() {
-        const entries = {};
-        if (typeof window.localStorage === 'undefined') return entries;
+        if (typeof window.localStorage === 'undefined') return {};
 
+        const helper = getStorageUtilsHelper();
+        if (helper && typeof helper.collectEntries === 'function') {
+            return helper.collectEntries({
+                storage: window.localStorage,
+                isStorageKeyFn: isRevelationSettingStorageKey
+            });
+        }
+
+        const entries = {};
         for (let i = 0; i < window.localStorage.length; i += 1) {
             const key = window.localStorage.key(i);
             if (!isRevelationSettingStorageKey(key)) continue;
@@ -2846,6 +2488,17 @@
 
     function clearRevelationSettingStorageEntries() {
         if (typeof window.localStorage === 'undefined') return;
+
+        const helper = getStorageUtilsHelper();
+        if (helper && typeof helper.clearEntries === 'function') {
+            helper.clearEntries({
+                storage: window.localStorage,
+                isStorageKeyFn: isRevelationSettingStorageKey
+            });
+            state.characterModificationCache.clear();
+            return;
+        }
+
         const removeKeys = [];
         for (let i = 0; i < window.localStorage.length; i += 1) {
             const key = window.localStorage.key(i);
@@ -2855,9 +2508,17 @@
         removeKeys.forEach((key) => {
             window.localStorage.removeItem(key);
         });
+        state.characterModificationCache.clear();
     }
 
     function normalizeBackupEntries(payload) {
+        const helper = getStorageUtilsHelper();
+        if (helper && typeof helper.normalizeBackupEntries === 'function') {
+            return helper.normalizeBackupEntries(payload, {
+                isStorageKeyFn: isRevelationSettingStorageKey
+            });
+        }
+
         if (!payload || typeof payload !== 'object') return null;
         if (String(payload.format || '') !== 'revelation-setting-backup') return null;
         if (!payload.entries || typeof payload.entries !== 'object') return null;
@@ -2872,343 +2533,160 @@
         return out;
     }
 
-    async function handleBackupExport() {
-        if (typeof window.localStorage === 'undefined') {
-            showToast(t('msg_backup_failed', 'Backup failed.'), 'error');
+    async function loadGlobalPresetMap() {
+        state.globalPresetMap = {};
+
+        const helper = window.RevelationSettingGlobalPresets;
+        if (!helper || typeof helper.loadGlobalPresetMap !== 'function') {
             return;
         }
-        if (dom.backupBtn) dom.backupBtn.disabled = true;
 
-        try {
-            const payload = {
-                format: 'revelation-setting-backup',
-                version: 1,
-                exported_at: new Date().toISOString(),
-                entries: collectRevelationSettingStorageEntries()
-            };
-
-            const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
-            const objectUrl = URL.createObjectURL(blob);
-            const anchor = document.createElement('a');
-            anchor.href = objectUrl;
-            anchor.download = `revelation-setting-backup_${Date.now()}.json`;
-            document.body.appendChild(anchor);
-            anchor.click();
-            anchor.remove();
-            URL.revokeObjectURL(objectUrl);
-
-            showToast(t('msg_backup_success', 'Backup downloaded.'));
-        } catch (error) {
-            console.error('[revelation-setting] backup export failed:', error);
-            showToast(t('msg_backup_failed', 'Backup failed.'), 'error');
-        } finally {
-            if (dom.backupBtn) dom.backupBtn.disabled = false;
-        }
-    }
-
-    async function handleBackupImportFromFile(file) {
-        if (!file) return;
-        if (typeof window.localStorage === 'undefined') {
-            showToast(t('msg_load_backup_failed', 'Failed to load backup.'), 'error');
-            return;
-        }
-        if (dom.loadBtn) dom.loadBtn.disabled = true;
-
-        try {
-            const fileText = await file.text();
-            const parsed = JSON.parse(fileText);
-            const entries = normalizeBackupEntries(parsed);
-            if (!entries) {
-                showToast(t('msg_load_backup_invalid', 'Invalid backup file format.'), 'error');
-                return;
-            }
-
-            clearRevelationSettingStorageEntries();
-            Object.keys(entries).forEach((key) => {
-                window.localStorage.setItem(key, entries[key]);
-            });
-
-            if (state.selectedCharacter) {
-                await handleCharacterSelection(state.selectedCharacter);
-            } else {
-                renderPresetDropdown();
-                renderMainRevelationDropdown();
-                renderSubRevelationDropdown();
-                renderSlotCards();
-                renderPreview();
-            }
-
-            showToast(t('msg_load_backup_success', 'Backup loaded.'));
-        } catch (error) {
-            console.error('[revelation-setting] backup import failed:', error);
-            showToast(t('msg_load_backup_failed', 'Failed to load backup.'), 'error');
-        } finally {
-            if (dom.backupFileInput) {
-                dom.backupFileInput.value = '';
-            }
-            if (dom.loadBtn) dom.loadBtn.disabled = false;
-        }
-    }
-
-    function handleBackupImportClick() {
-        if (!dom.backupFileInput) return;
-        dom.backupFileInput.click();
-    }
-
-    function buildSharePresetStoreFromActivePreset() {
-        syncActivePresetFromEditorState();
-        const activePresetId = String(state.activePresetId || '').trim();
-        const sourceBuild = state.presetMap[activePresetId]
-            || state.presetMap[DEFAULT_PRESET_ID]
-            || createEmptyPackedBuild();
-
-        return {
-            v: 2,
-            active: DEFAULT_PRESET_ID,
-            order: [DEFAULT_PRESET_ID],
-            map: {
-                [DEFAULT_PRESET_ID]: clonePackedBuild(sourceBuild)
+        state.globalPresetMap = await helper.loadGlobalPresetMap({
+            baseUrl: state.baseUrl || '',
+            sourcePath: GLOBAL_PRESET_SOURCE_PATH,
+            version: state.version || '',
+            keyword: GLOBAL_PRESET_NAME_KEYWORD,
+            storagePrefixV2: STORAGE_PREFIX_V2,
+            defaultPresetId: DEFAULT_PRESET_ID,
+            presetAddAction: PRESET_ADD_ACTION,
+            decodeStoragePayload,
+            normalizePresetStorePayload,
+            sanitizePresetName,
+            clonePackedBuild,
+            buildGlobalPresetId,
+            normalizeBackupEntries,
+            onStatus: (status) => {
+                if (status !== 404) {
+                    console.warn('[revelation-setting] global preset load failed:', status);
+                }
             },
-            names: {}
-        };
-    }
-
-    function createSharePayload() {
-        const characterName = String(state.selectedCharacter || '').trim();
-        if (!characterName) return null;
-
-        return {
-            'revelation-setting-share-ver': SHARE_PAYLOAD_VERSION,
-            character: characterName,
-            store: buildSharePresetStoreFromActivePreset()
-        };
-    }
-
-    function parseSharePayload(rawData) {
-        let jsonString = String(rawData || '').trim();
-        if (!jsonString) return null;
-
-        if (typeof LZString !== 'undefined') {
-            const decompressed = LZString.decompressFromEncodedURIComponent(jsonString);
-            if (decompressed) {
-                jsonString = decompressed;
+            onError: (error) => {
+                console.warn('[revelation-setting] global preset load failed:', error);
             }
-        }
-
-        let payload = null;
-        try {
-            payload = JSON.parse(jsonString);
-        } catch (error) {
-            return null;
-        }
-
-        if (!payload || typeof payload !== 'object') return null;
-        const payloadVersion = Number(payload['revelation-setting-share-ver']);
-        if (!Number.isFinite(payloadVersion) || payloadVersion < 1) return null;
-
-        const characterName = String(payload.character || '').trim();
-        if (!characterName) return null;
-
-        const normalizedStore = normalizePresetStorePayload(payload.store);
-        if (!normalizedStore) return null;
-
-        return {
-            character: characterName,
-            store: normalizedStore
-        };
+        });
     }
 
-    function applySharedPayload(sharedPayload) {
-        if (!sharedPayload || typeof sharedPayload !== 'object') return false;
+    function mergeGlobalPresetsForCharacter(characterName) {
+        const name = String(characterName || '').trim();
+        if (!name) return false;
 
-        const characterName = String(sharedPayload.character || '').trim();
-        if (!characterName) return false;
+        const globalPresets = state.globalPresetMap && Array.isArray(state.globalPresetMap[name])
+            ? state.globalPresetMap[name]
+            : [];
+        if (!globalPresets.length) return false;
 
-        const normalizedStore = normalizePresetStorePayload(sharedPayload.store);
-        if (!normalizedStore) return false;
+        ensurePresetState();
 
-        state.selectedCharacter = characterName;
-        state.mainRev = '';
-        state.subRev = '';
-        state.slots = createInitialSlotState();
+        const usedIds = new Set();
 
-        applyPresetStoreToState(normalizedStore);
-        const activeBuild = state.presetMap[state.activePresetId]
-            || state.presetMap[DEFAULT_PRESET_ID]
-            || createEmptyPackedBuild();
-        applyPackedBuildToEditorState(activeBuild);
-        ensureSlotDefaults();
+        globalPresets.forEach((item) => {
+            if (!item || typeof item !== 'object') return;
 
-        renderCharacterSelector();
-        renderPresetDropdown();
-        renderMainRevelationDropdown();
-        renderSubRevelationDropdown();
-        renderSlotCards();
-        renderPreview();
-        setCharacterPanelOpen(false);
-        clearError();
+            const presetId = String(item.id || '').trim();
+            if (!presetId || presetId === DEFAULT_PRESET_ID || presetId === PRESET_ADD_ACTION) return;
+            if (usedIds.has(presetId)) return;
+            usedIds.add(presetId);
+
+            const packedBuild = clonePackedBuild(item.build);
+            const customName = sanitizePresetName(item.name);
+
+            if (!state.presetOrder.includes(presetId)) {
+                if (state.presetOrder.length >= PRESET_MAX_COUNT) return;
+                state.presetOrder.push(presetId);
+            }
+
+            state.presetMap[presetId] = packedBuild;
+            if (customName) {
+                state.presetNameMap[presetId] = customName;
+            } else {
+                delete state.presetNameMap[presetId];
+            }
+        });
+
+        const normalized = normalizePresetStorePayload({
+            v: 2,
+            active: state.activePresetId,
+            order: state.presetOrder,
+            map: state.presetMap,
+            names: state.presetNameMap
+        });
+
+        if (!normalized) return false;
+        applyPresetStoreToState(normalized);
         return true;
     }
 
+    function getShareBackupController() {
+        if (shareBackupController) return shareBackupController;
+
+        const helper = window.RevelationSettingShareBackup;
+        if (!helper || typeof helper.createController !== 'function') {
+            shareBackupController = {};
+            return shareBackupController;
+        }
+
+        shareBackupController = helper.createController({
+            state,
+            dom,
+            t,
+            showToast,
+            clearError,
+            collectRevelationSettingStorageEntries,
+            clearRevelationSettingStorageEntries,
+            normalizeBackupEntries,
+            handleCharacterSelection,
+            renderPresetDropdown,
+            renderMainRevelationDropdown,
+            renderSubRevelationDropdown,
+            renderSlotCards,
+            renderPreview,
+            renderCharacterSelector,
+            syncActivePresetFromEditorState,
+            clonePackedBuild,
+            createEmptyPackedBuild,
+            normalizePresetStorePayload,
+            applyPresetStoreToState,
+            applyPackedBuildToEditorState,
+            ensureSlotDefaults,
+            createInitialSlotState,
+            setCharacterPanelOpen,
+            defaultPresetId: DEFAULT_PRESET_ID,
+            sharePayloadVersion: SHARE_PAYLOAD_VERSION,
+            shareQueryKey: SHARE_QUERY_KEY,
+            gasUrl: GAS_URL
+        }) || {};
+
+        return shareBackupController;
+    }
+
+    async function handleBackupExport() {
+        const controller = getShareBackupController();
+        if (!controller || typeof controller.handleBackupExport !== 'function') return;
+        await controller.handleBackupExport();
+    }
+
+    async function handleBackupImportFromFile(file) {
+        const controller = getShareBackupController();
+        if (!controller || typeof controller.handleBackupImportFromFile !== 'function') return;
+        await controller.handleBackupImportFromFile(file);
+    }
+
+    function handleBackupImportClick() {
+        const controller = getShareBackupController();
+        if (!controller || typeof controller.handleBackupImportClick !== 'function') return;
+        controller.handleBackupImportClick();
+    }
+
     async function tryLoadSharedFromUrl() {
-        let binId = '';
-        try {
-            const params = new URLSearchParams(window.location.search || '');
-            binId = String(params.get(SHARE_QUERY_KEY) || '').trim();
-        } catch (_) {
-            return false;
-        }
-
-        if (!binId) return false;
-
-        try {
-            const response = await fetch(`${GAS_URL}?id=${encodeURIComponent(binId)}`);
-            if (!response.ok) {
-                throw new Error(`Failed to fetch shared payload: ${response.status}`);
-            }
-
-            const result = await response.json();
-            const encodedData = result && typeof result === 'object'
-                ? String(result.data || '').trim()
-                : '';
-            if (!encodedData) {
-                throw new Error('Shared payload not found');
-            }
-
-            const sharedPayload = parseSharePayload(encodedData);
-            if (!sharedPayload) {
-                throw new Error('Invalid shared payload');
-            }
-
-            return applySharedPayload(sharedPayload);
-        } catch (error) {
-            console.error('[revelation-setting] shared payload load failed:', error);
-            showToast(t('msg_share_load_failed', 'Failed to load shared link.'), 'error');
-            return false;
-        }
-    }
-
-    function hideShareLoadingModal() {
-        const modal = document.getElementById('rsShareLoadingModal');
-        if (modal) {
-            modal.remove();
-        }
-    }
-
-    function showShareLoadingModal() {
-        hideShareLoadingModal();
-
-        const modal = document.createElement('div');
-        modal.id = 'rsShareLoadingModal';
-        modal.style.cssText = [
-            'position:fixed',
-            'inset:0',
-            'background:rgba(0,0,0,0.7)',
-            'display:flex',
-            'align-items:center',
-            'justify-content:center',
-            'z-index:10000'
-        ].join(';');
-
-        const content = document.createElement('div');
-        content.style.cssText = [
-            'background:#2a2a2a',
-            'padding:32px',
-            'border-radius:12px',
-            'text-align:center',
-            'max-width:400px',
-            'box-shadow:0 4px 20px rgba(0, 0, 0, 0.5)'
-        ].join(';');
-
-        content.innerHTML = `
-            <div style="margin-bottom:20px;">
-                <div class="rs-share-loading-spinner" style="
-                    border:3px solid rgba(255, 255, 255, 0.1);
-                    border-top:3px solid #fff;
-                    border-radius:50%;
-                    width:40px;
-                    height:40px;
-                    margin:0 auto;
-                "></div>
-            </div>
-            <div style="color:#fff;font-size:16px;margin-bottom:16px;">
-                ${t('msg_share_generating', 'Generating share link...')}
-            </div>
-            <div style="color:rgba(255, 255, 255, 0.6);font-size:13px;line-height:1.6;">
-                ${t('msg_share_warning', 'This URL is a convenience feature and may be corrupted.<br>For safe backup, please use the backup feature.')}
-            </div>
-        `;
-
-        modal.appendChild(content);
-        document.body.appendChild(modal);
-
-        if (!document.getElementById('rsShareLoadingSpinnerStyle')) {
-            const style = document.createElement('style');
-            style.id = 'rsShareLoadingSpinnerStyle';
-            style.textContent = `
-                @keyframes rs-share-spin {
-                    0% { transform: rotate(0deg); }
-                    100% { transform: rotate(360deg); }
-                }
-                .rs-share-loading-spinner {
-                    animation: rs-share-spin 1s linear infinite;
-                }
-            `;
-            document.head.appendChild(style);
-        }
+        const controller = getShareBackupController();
+        if (!controller || typeof controller.tryLoadSharedFromUrl !== 'function') return false;
+        return controller.tryLoadSharedFromUrl();
     }
 
     async function handleShareClick() {
-        if (!state.selectedCharacter) {
-            showToast(t('msg_preview_empty', 'Please select a character first.'), 'error');
-            return;
-        }
-
-        const payload = createSharePayload();
-        if (!payload) {
-            showToast(t('msg_preview_empty', 'Please select a character first.'), 'error');
-            return;
-        }
-
-        showShareLoadingModal();
-        if (dom.shareBtn) {
-            dom.shareBtn.disabled = true;
-            dom.shareBtn.style.opacity = '0.6';
-        }
-
-        try {
-            let jsonString = JSON.stringify(payload);
-            if (typeof LZString !== 'undefined') {
-                jsonString = LZString.compressToEncodedURIComponent(jsonString);
-            }
-
-            const response = await fetch(GAS_URL, {
-                method: 'POST',
-                body: JSON.stringify({ data: jsonString })
-            });
-            if (!response.ok) {
-                throw new Error(`Failed to share payload: ${response.status}`);
-            }
-
-            const result = await response.json();
-            const binId = String((result && result.id) || '').trim();
-            if (!binId) {
-                throw new Error('No bin id returned from GAS');
-            }
-
-            const shareUrl = `${window.location.origin}${window.location.pathname}?${SHARE_QUERY_KEY}=${encodeURIComponent(binId)}`;
-            await navigator.clipboard.writeText(shareUrl);
-            showToast(t('msg_share_success', 'Link copied to clipboard!'));
-        } catch (error) {
-            console.error('[revelation-setting] share failed:', error);
-            showToast(t('msg_share_failed', 'Failed to share.'), 'error');
-        } finally {
-            hideShareLoadingModal();
-            if (dom.shareBtn) {
-                dom.shareBtn.disabled = false;
-                dom.shareBtn.style.opacity = '1';
-            }
-        }
+        const controller = getShareBackupController();
+        if (!controller || typeof controller.handleShareClick !== 'function') return;
+        await controller.handleShareClick();
     }
 
     async function handleCharacterSelection(characterName) {
@@ -3236,6 +2714,7 @@
         state.slots = createInitialSlotState();
         resetPresetState();
 
+        const modifiedBeforeSelect = hasCharacterModifiedSetting(selected);
         const restored = restoreCharacterSetting(selected);
 
         try {
@@ -3253,7 +2732,10 @@
         } else {
             initializePresetStateFromCurrentEditor();
         }
-        persistSelectedCharacterSetting();
+        mergeGlobalPresetsForCharacter(selected);
+
+        persistSelectedCharacterSetting({ markModified: false });
+        setCharacterModifiedFlag(selected, restored ? modifiedBeforeSelect : false);
 
         renderCharacterSelector();
         renderPresetDropdown();
@@ -3335,9 +2817,9 @@
 
     function initNavigation() {
         if (window.Navigation && typeof window.Navigation.load === 'function') {
-            window.Navigation.load('revelations');
+            window.Navigation.load('revelation-setting');
         } else if (typeof Navigation !== 'undefined' && Navigation && typeof Navigation.load === 'function') {
-            Navigation.load('revelations');
+            Navigation.load('revelation-setting');
         }
     }
 
@@ -3402,6 +2884,7 @@
             await loadStatsData();
             await loadRevelationData();
             await loadCharacterNames();
+            await loadGlobalPresetMap();
 
             ensureSlotDefaults();
             bindGlobalEvents();

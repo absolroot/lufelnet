@@ -11,7 +11,9 @@ window.I18N_PAGE_REVELATION_SETTING_KR = {
     preset_default: '기본',
     preset_numbered: '프리셋 {n}',
     preset_add: '+ 프리셋 추가',
+    preset_copy_suffix: '복제본',
     button_preset_rename: '프리셋 이름 수정',
+    button_preset_duplicate: '프리셋 복제',
     button_preset_delete: '프리셋 삭제',
     modal_preset_rename_title: '프리셋 이름 수정',
     placeholder_preset_name: '프리셋 이름을 입력해주세요',
@@ -92,7 +94,7 @@ window.I18N_PAGE_REVELATION_SETTING_KR = {
     sub_crit_rate: '크리티컬 확률',
     sub_crit_mult: '크리티컬 효과',
     sub_pierce_rate: '관통',
-    sub_attack_mult: '공격 배율',
+    sub_attack_mult: '대미지 보너스',
     sub_attack_percent: '공격력 %',
     sub_attack: '공격력',
     sub_hp_percent: '생명 %',
@@ -102,5 +104,5 @@ window.I18N_PAGE_REVELATION_SETTING_KR = {
     sub_ailment_accuracy: '효과 명중',
     sub_sp_recovery: 'SP 회복',
     sub_speed: '속도',
-    sub_healing_effect: '치료 효과'
+    sub_healing_effect: '치료효과'
 };

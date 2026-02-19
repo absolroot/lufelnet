@@ -34,6 +34,8 @@ class Navigation {
                 character: '캐릭터',
                 persona: '페르소나',
                 revelations: '계시',
+                revelationsInfo: '계시 정보',
+                revelationSetting: '계시 공유',
                 synergy: '협력자',
                 wonderweapon: '원더 무기',
                 tactic: '택틱',
@@ -64,6 +66,8 @@ class Navigation {
                 character: 'Character',
                 persona: 'Persona',
                 revelations: 'Revelations',
+                revelationsInfo: 'Card Info',
+                revelationSetting: 'Revelation Share',
                 synergy: 'Synergy',
                 wonderweapon: 'Wonder Daggers',
                 maps: 'Maps',
@@ -95,6 +99,8 @@ class Navigation {
                 character: '怪盗',
                 persona: 'ペルソナ',
                 revelations: '啓示',
+                revelationsInfo: '啓示情報',
+                revelationSetting: '啓示共有',
                 synergy: 'シナジー',
                 wonderweapon: 'ワンダー武器',
                 maps: '地図',
@@ -126,6 +132,8 @@ class Navigation {
                 character: '角色',
                 persona: '面具',
                 revelations: '觉醒',
+                revelationsInfo: '觉醒信息',
+                revelationSetting: '觉醒分享',
                 maps: '地图',
                 astrolabe: '天域星盘',
                 tactic: '战术',
@@ -179,10 +187,20 @@ class Navigation {
                 </a>
                 ` : ''}
                 ${currentMenus.includes('revelations') ? `
-                <a href="${BASE_URL}/${currentLang}/revelations/" class="nav-link" data-nav="revelations">
-                    <img src="${BASE_URL}/assets/img/nav/qishi.png" alt="qishi" style="width: 28px; height: 28px; object-fit: contain;" />
-                    <span data-text="${texts.revelations}">${texts.revelations}</span>
-                </a>
+                <div class="nav-item has-submenu" data-nav="revelations">
+                    <div class="nav-main-item">
+                        <img src="${BASE_URL}/assets/img/nav/qishi.png" alt="qishi" style="width: 28px; height: 28px; object-fit: contain;" />
+                        <span data-text="${texts.revelations}">${texts.revelations}</span>
+                    </div>
+                    <div class="submenu">
+                        <a href="${BASE_URL}/${currentLang}/revelations/" class="nav-sub-item" data-nav="revelations-info">
+                            <span data-text="${texts.revelationsInfo}">◈　${texts.revelationsInfo}</span>
+                        </a>
+                        <a href="${BASE_URL}/${currentLang}/revelation-setting/" class="nav-sub-item" data-nav="revelation-setting">
+                            <span data-text="${texts.revelationSetting}">◈　${texts.revelationSetting}</span>
+                        </a>
+                    </div>
+                </div>
                 ` : ''}
                 ${currentMenus.includes('synergy') ? `
                 <a href="${BASE_URL}/${currentLang}/synergy/" class="nav-link" data-nav="synergy">
@@ -459,6 +477,31 @@ class Navigation {
                     const parentMenu = activeItem.closest('.has-submenu');
                     if (parentMenu) {
                         parentMenu.classList.add('active');
+                    }
+                }
+            }
+
+            // 계시 관련 페이지인 경우 추가 처리
+            if (activePage === 'revelations' || activePage === 'revelations-info' || activePage === 'revelation-setting') {
+                const revelationsMenu = document.querySelector('[data-nav="revelations"]');
+                if (revelationsMenu) {
+                    revelationsMenu.classList.add('active');
+
+                    // 현재 활성화된 서브메뉴 아이템 찾기
+                    let activeSubItem;
+                    if (activePage === 'revelation-setting') {
+                        activeSubItem = document.querySelector('[data-nav="revelation-setting"]');
+                    } else {
+                        activeSubItem = document.querySelector('[data-nav="revelations-info"]');
+                    }
+
+                    if (activeSubItem) {
+                        // 다른 서브메뉴 아이템의 active 클래스 제거
+                        document.querySelectorAll('.nav-sub-item').forEach(item => {
+                            item.classList.remove('active');
+                        });
+                        // 현재 서브메뉴 아이템 활성화
+                        activeSubItem.classList.add('active');
                     }
                 }
             }

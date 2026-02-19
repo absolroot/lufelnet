@@ -22,7 +22,7 @@ window.I18N_PAGE_DEFENSE_CALC_KR = {
         "final_damage_increase": "최종 대미지",
         "boss_info_tip": "최고 난이도 기준의 참조용 데이터입니다. 같은 이름이라도 보스별 방어력 수치는 다를 수 있습니다. 중요: 이 값은 출시 초기 확보 데이터 기반이며, 현재는 정확한 수치를 구하거나 검증할 방법이 없습니다.",
         "boss_info_inline_badge": "초기 데이터",
-        "boss_info_inline": "출시 초기 확보 데이터 기반 / 현재 정확 수치 입수·검증 불가",
+        "boss_info_inline": "출시 초기 확보 데이터 기반 / 현재 정확한 수치 입수 및 검증이 불가합니다.",
         "tooltip_formula": "대미지 배수 : 1 - [방어력 × 방어 계수 / (방어력× 방어 계수 + 1400)]",
         "base_final_damage": "· 방어력에 의한 최종 대미지 배수:",
         "with_def_reduce": "· 방어력 감소 최종 대미지 배수:",

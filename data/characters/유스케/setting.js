@@ -30,6 +30,6 @@ window.characterSetting["유스케"] = {
     "skill_priority": "3>2>4>1",
     "mind_stats1": "대미지보너스 16%",
     "mind_stats2": "크리티컬 확률 12%!",
-    "mind_skill1": "S1/HL",
-    "mind_skill2": "S2/S3!"
+    "mind_skill1": "S3/HL!",
+    "mind_skill2": "S1/S2"
 };

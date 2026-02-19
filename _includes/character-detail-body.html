@@ -1616,6 +1616,14 @@
         function normalizeBattlePlusText(rawText, lang) {
             if (typeof rawText !== 'string' || !rawText.trim()) return rawText;
 
+            const localizedNaviPower = getCharacterI18nText(
+                'gameTerms.naviPower',
+                lang === 'en' ? 'Eludi. Stat Buff' : (lang === 'jp' ? 'ステータス強化' : '해명의힘')
+            );
+            const localizedLabor = getCharacterI18nText(
+                'gameTerms.labor',
+                lang === 'en' ? 'Labor' : (lang === 'jp' ? '職責' : '직책')
+            );
             const localizedMyPalace = getCharacterI18nText(
                 'gameTerms.myPalace',
                 lang === 'en' ? 'Thieves Den' : (lang === 'jp' ? 'マイパレス' : '마이팰리스')
@@ -1627,7 +1635,15 @@
 
             const replacements = [
                 {
-                    variants: ['마이팰리스 평점', 'Thieves Den Rating', 'マイパレス評価', 'マイパレス 評価'],
+                    variants: ['해명의힘', '해명의 힘', 'Eludi. Stat Buff', 'ステータス強化', '解明の力'],
+                    translated: localizedNaviPower
+                },
+                {
+                    variants: ['직책', 'Labor', 'Card-Labor', '職責', '労働'],
+                    translated: localizedLabor
+                },
+                {
+                    variants: ['마이팰리스 평점', 'Thieves Den Rating', 'Thieves Den Point', 'マイパレス評価', 'マイパレス 評価'],
                     translated: localizedMyPalaceRating
                 },
                 {
@@ -1639,10 +1655,23 @@
             let normalized = rawText;
             replacements.forEach(({ variants, translated }) => {
                 if (!translated) return;
-                variants.forEach((variant) => {
+                const sortedVariants = variants.slice().sort((a, b) => b.length - a.length);
+                sortedVariants.forEach((variant) => {
                     normalized = normalized.replace(new RegExp(escapeRegExp(variant), 'g'), translated);
                 });
             });
+
+            // 공통 i18n 역매핑 사전도 적용해 battle_plus_stats 내 한국어 용어 누락을 보정한다.
+            if (lang !== 'kr' && window.I18nService && typeof window.I18nService.getStatTranslations === 'function') {
+                const dict = window.I18nService.getStatTranslations() || {};
+                const sortedKeys = Object.keys(dict).sort((a, b) => b.length - a.length);
+                sortedKeys.forEach((koreanTerm) => {
+                    const translated = dict[koreanTerm];
+                    if (!translated || translated === koreanTerm) return;
+                    normalized = normalized.replace(new RegExp(escapeRegExp(koreanTerm), 'g'), translated);
+                });
+            }
+
             return normalized;
         }
 

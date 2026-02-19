@@ -640,6 +640,39 @@
       "source": "i18n/pages/revelation/seo-meta.json",
       "type": "simple"
     },
+    "revelation-setting": {
+      "langs": [
+        "en",
+        "jp",
+        "kr"
+      ],
+      "meta": {
+        "en": {
+          "description": "Set your character revelation build and generate a share image.",
+          "title": "Revelation Share | Lufelnet Persona 5: The Phantom X"
+        },
+        "jp": {
+          "description": "キャラクター別の啓示設定を入力し、共有画像を生成できます。",
+          "title": "啓示共有 | Lufelnet ペルソナ5 ザ・ファントム X"
+        },
+        "kr": {
+          "description": "캐릭터별 계시 세팅을 입력하고 공유 이미지를 생성하세요.",
+          "title": "계시 공유 | 루페르넷 페르소나5 더 팬텀 X"
+        }
+      },
+      "modeKeys": [],
+      "paramPolicy": {
+        "detailParam": null,
+        "modeParam": null,
+        "remove": [
+          "lang",
+          "v"
+        ]
+      },
+      "placeholder": null,
+      "source": "i18n/pages/revelation-setting/seo-meta.json",
+      "type": "simple"
+    },
     "schedule": {
       "langs": [
         "en",
@@ -1011,7 +1044,7 @@
       "type": "template"
     }
   },
-  "generatedAt": "2026-02-17T14:46:26.818Z",
+  "generatedAt": "2026-02-18T13:48:47.009Z",
   "localeMap": {
     "cn": "zh_CN",
     "en": "en_US",

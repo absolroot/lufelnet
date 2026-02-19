@@ -26,6 +26,8 @@
     "seo:tactic-maker:check": "node scripts/seo/generate-tactic-maker-pages.mjs --check",
     "seo:revelations:generate": "node scripts/seo/generate-revelations-pages.mjs",
     "seo:revelations:check": "node scripts/seo/generate-revelations-pages.mjs --check",
+    "seo:revelation-setting:generate": "node scripts/seo/generate-revelation-setting-pages.mjs",
+    "seo:revelation-setting:check": "node scripts/seo/generate-revelation-setting-pages.mjs --check",
     "seo:about:generate": "node scripts/seo/generate-about-pages.mjs",
     "seo:about:check": "node scripts/seo/generate-about-pages.mjs --check",
     "seo:gallery:generate": "node scripts/seo/generate-gallery-pages.mjs",

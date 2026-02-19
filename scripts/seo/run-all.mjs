@@ -25,6 +25,7 @@ const SCRIPT_TARGETS = [
   'pull-calc',
   'pull-tracker',
   'revelations',
+  'revelation-setting',
   'schedule',
   'synergy',
   'tactic',

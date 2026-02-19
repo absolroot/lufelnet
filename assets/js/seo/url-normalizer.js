@@ -100,6 +100,10 @@
       url.pathname = '/' + lang + '/revelations/';
       return true;
     }
+    if (domain === 'revelation-setting' && /^\/revelation-setting\/?$/i.test(url.pathname)) {
+      url.pathname = '/' + lang + '/revelation-setting/';
+      return true;
+    }
     if (domain === 'material-calc' && /^\/material-calc\/?$/i.test(url.pathname)) {
       url.pathname = '/' + lang + '/material-calc/';
       return true;

@@ -1,0 +1,172 @@
+<script>
+(function () {
+    var params = new URLSearchParams(window.location.search || '');
+    var path = String(window.location.pathname || '/');
+    var lowerPath = path.toLowerCase();
+
+    var pathLangMatch = lowerPath.match(/^\/(kr|en|jp)(\/|$)/);
+    var pathLang = pathLangMatch ? pathLangMatch[1] : '';
+    var queryLang = String(params.get('lang') || '').toLowerCase();
+    var effectiveLang = pathLang || (['kr', 'en', 'jp'].indexOf(queryLang) !== -1 ? queryLang : '');
+
+    var isLegacyRoot = /^\/revelation-setting\/?$/.test(lowerPath);
+    var isCanonicalPath = /^\/(kr|en|jp)\/revelation-setting\/?$/.test(lowerPath);
+
+    if (isLegacyRoot && effectiveLang) {
+        window.__SEO_PATH_LANG__ = effectiveLang;
+        params.delete('lang');
+        params.delete('v');
+        var remainingLegacy = params.toString();
+        history.replaceState(null, '', '/' + effectiveLang + '/revelation-setting/' + (remainingLegacy ? '?' + remainingLegacy : ''));
+        return;
+    }
+
+    if (isCanonicalPath) {
+        window.__SEO_PATH_LANG__ = pathLang;
+        var before = params.toString();
+        params.delete('lang');
+        params.delete('v');
+        var remainingCanonical = params.toString();
+        var canonicalPath = '/' + pathLang + '/revelation-setting/';
+        if (path !== canonicalPath || before !== remainingCanonical) {
+            history.replaceState(null, '', canonicalPath + (remainingCanonical ? '?' + remainingCanonical : ''));
+        }
+        return;
+    }
+
+    if (isLegacyRoot && params.has('v')) {
+        params.delete('v');
+        var remainingRoot = params.toString();
+        history.replaceState(null, '', '/revelation-setting/' + (remainingRoot ? '?' + remainingRoot : ''));
+    }
+})();
+</script>
+{% if page.alternate_urls %}
+{% for alt in page.alternate_urls %}
+<link rel="alternate" hreflang="{{ alt[0] }}" href="{{ site.url }}{{ alt[1] }}" />
+{% endfor %}
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.alternate_urls['ko'] | default: page.alternate_urls.first[1] }}" />
+{% endif %}
+<link rel="stylesheet" href="{{ site.baseurl }}/apps/revelation-setting/revelation-setting.css?v={{ site.time | date: '%s' }}">
+
+<div class="main-wrapper revelation-setting-page">
+    <div class="navigation-path">
+        <script>document.write(`<a href="${BASE_URL}/" data-i18n="nav_home">-</a>`);</script>
+        <span class="separator">/</span>
+        <span class="current-page" data-i18n="nav_current">-</span>
+    </div>
+
+    <div class="header-container">
+        <h1 data-i18n="page_title">-</h1>
+        <div class="rs-description-row">
+            <p class="rs-page-description" data-i18n="page_description">-</p>
+            <div class="rs-capture-btns">
+                <button id="rsBackupBtn" type="button" class="rs-download-icon-btn rs-btn-icon-hover" aria-label="Backup" data-tooltip="Backup">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M12 3a1 1 0 0 1 1 1v8.586l2.293-2.293a1 1 0 1 1 1.414 1.414l-4.007 4.007a1 1 0 0 1-1.414 0L7.279 11.707a1 1 0 1 1 1.414-1.414L11 12.586V4a1 1 0 0 1 1-1z"/>
+                        <path d="M5 18a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2a1 1 0 1 1 2 0v2a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4v-2a1 1 0 1 1 2 0v2z"/>
+                    </svg>
+                </button>
+                <button id="rsLoadBtn" type="button" class="rs-download-icon-btn rs-btn-icon-hover" aria-label="Load" data-tooltip="Load">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M12 16a1 1 0 0 0 1-1V6.414l2.293 2.293a1 1 0 0 0 1.414-1.414l-4.007-4.007a1 1 0 0 0-1.414 0L7.279 7.293a1 1 0 1 0 1.414 1.414L11 6.414V15a1 1 0 0 0 1 1z"/>
+                        <path d="M5 18a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2a1 1 0 1 1 2 0v2a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4v-2a1 1 0 1 1 2 0v2z"/>
+                    </svg>
+                </button>
+                <button id="rsCopyBtn" type="button" class="rs-download-icon-btn rs-btn-icon-hover" aria-label="Copy Image" data-tooltip="Copy Image">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
+                        <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </button>
+                <button id="rsDownloadBtn" type="button" class="rs-download-icon-btn rs-btn-icon-hover" aria-label="Capture Image" data-tooltip="Capture Image">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M12 15a3 3 0 100-6 3 3 0 000 6z"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M8.293 5.293A1 1 0 019 5h6a1 1 0 01.707.293l1.414 1.414A1 1 0 0017.828 7H20a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V9a2 2 0 012-2h2.172a1 1 0 00.707-.293l1.414-1.414zM12 17a5 5 0 100-10 5 5 0 000 10z"/>
+                    </svg>
+                </button>
+                <button id="rsShareBtn" type="button" class="rs-download-icon-btn rs-btn-icon-hover" aria-label="Share" data-tooltip="Share">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <circle cx="18" cy="5" r="3" stroke="currentColor" stroke-width="2"></circle>
+                        <circle cx="6" cy="12" r="3" stroke="currentColor" stroke-width="2"></circle>
+                        <circle cx="18" cy="19" r="3" stroke="currentColor" stroke-width="2"></circle>
+                        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" stroke="currentColor" stroke-width="2"></line>
+                        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" stroke="currentColor" stroke-width="2"></line>
+                    </svg>
+                </button>
+                <input id="rsBackupFileInput" type="file" accept=".json,application/json" hidden>
+            </div>
+        </div>
+    </div>
+
+    <section class="rs-config-layout">
+        <div class="rs-config-top-grid">
+            <aside class="rs-side-panel rs-top-config-panel">
+                <div class="rs-top-config-inner">
+                    <div class="rs-field rs-character-field">
+                        <button id="rsCharacterPill" type="button" class="rs-character-pill">
+                            <div class="rs-character-trigger-image">
+                                <img id="rsCharacterPillIcon" class="rs-character-pill-icon" alt="" hidden>
+                                <div id="rsCharacterPillEmpty" class="rs-character-pill-empty">+</div>
+                            </div>
+                        </button>
+                    </div>
+
+                    <div class="rs-top-rev-panel">
+                        <h3 id="rsSelectedCharacterName" class="rs-selected-character-name" data-i18n="placeholder_select_character">Select character</h3>
+                        <div class="rs-field rs-preset-field">
+                            <span data-i18n="label_preset">Preset</span>
+                            <div id="rsPresetDropdown" class="rs-dropdown-host"></div>
+                        </div>
+                        <div class="rs-rev-select-grid">
+                            <div class="rs-field rs-rev-select-field">
+                                <div class="rs-rev-select-icon-wrap">
+                                    <img id="rsMainRevSlotIcon" class="rs-mini-slot-icon" alt="" hidden>
+                                </div>
+                                <div id="rsMainRevDropdown" class="rs-dropdown-host"></div>
+                            </div>
+                            <div class="rs-field rs-rev-select-field">
+                                <div class="rs-rev-select-icon-wrap">
+                                    <div id="rsSubRevSlotIcons" class="rs-sub-slot-icon-group"></div>
+                                </div>
+                                <div id="rsSubRevDropdown" class="rs-dropdown-host"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <aside class="rs-top-effects-panel">
+                <div id="rsSubRevEffect" class="rs-set-effect-list"></div>
+            </aside>
+        </div>
+
+        <div class="rs-work-panel">
+            <div id="rsEditorPanel" class="rs-editor-panel">
+                <div id="rsSlotCards" class="rs-slot-cards"></div>
+            </div>
+
+            <div id="rsStatsSummary" class="rs-stats-summary" hidden></div>
+
+            <div id="rsCharacterPanel" class="rs-character-panel" hidden>
+                <div class="rs-character-panel-head">
+                    <h2 class="rs-section-title" data-i18n="label_character">Character</h2>
+                    <button id="rsCharacterPanelClose" type="button" class="rs-character-panel-close" aria-label="Close">x</button>
+                </div>
+                <div class="rs-character-filter-bar">
+                    <input id="rsCharacterSearch" type="text" class="rs-character-search-input" data-i18n-placeholder="placeholder_character_search" placeholder="Search characters...">
+                    <div id="rsElementFilters" class="rs-filter-group rs-filter-elements"></div>
+                    <div id="rsPositionFilters" class="rs-filter-group rs-filter-positions">
+                        <button id="rsCharacterFilterReset" type="button" class="rs-filter-reset" data-i18n-aria="label_reset_filter" title="Reset filters">
+                            &#10227;
+                        </button>
+                    </div>
+                </div>
+                <div id="rsCharacterList" class="rs-character-list"></div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.min.js"></script>
+<script src="{{ site.baseurl }}/apps/revelation-setting/revelation-setting.js?v={{ site.time | date: '%s' }}"></script>

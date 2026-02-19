@@ -1,5 +1,65 @@
 {
-  "data": null,
-  "msg": "SOS not found.",
-  "status": 100
+  "data": {
+    "boss": [
+      {
+        "bonusRule": "All ally Fire attack Score x 3",
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Ice",
+                "Bless",
+                "Curse"
+              ],
+              "Weak": [
+                "Fire"
+              ]
+            },
+            "image": "B-guaiwutouxiang-lilith.png",
+            "level": "89",
+            "name": "リリス",
+            "skill": "207,607,603",
+            "sn": "523101",
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 1.0,
+        "sn": "228401"
+      },
+      {
+        "bonusRule": "All ally Nuclear attack Score x 3",
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Ice"
+              ],
+              "Weak": [
+                "Nuclear"
+              ]
+            },
+            "image": "B-guaiwutouxiang-seiryu.png",
+            "level": "89",
+            "name": "セイリュウ",
+            "skill": "207,1404,203",
+            "sn": "523111",
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 2.0,
+        "sn": "228402"
+      }
+    ],
+    "buff": "灼熱の息吹: テクニカルを発生させるごとに味方全体が『強化の印』を１つ獲得する。\n『強化の印』：１つごとに最終ダメージが２０%上昇する。この効果は２ターン持続し、最大２つまで累積できる。",
+    "endTime": "2026-03-05 10:30:00",
+    "startTime": "2026-02-19 11:30:00"
+  },
+  "msg": "OK",
+  "status": 0
 }

@@ -153,7 +153,8 @@
         presetNameMap: {},
         activePresetId: DEFAULT_PRESET_ID,
         characterModificationCache: new Map(),
-        globalPresetMap: {}
+        globalPresetMap: {},
+        readonlyBySharedLink: false
     };
 
     const dom = {};
@@ -190,6 +191,10 @@
             return window.I18nService.t(key, fallback);
         }
         return fallback || key;
+    }
+
+    function isSharedReadonlyMode() {
+        return state.readonlyBySharedLink === true;
     }
 
     function getCurrentLang() {
@@ -999,6 +1004,7 @@
     }
 
     function createPresetFromBuild(sourceBuild, customName) {
+        if (isSharedReadonlyMode()) return false;
         if (!state.selectedCharacter) return false;
 
         ensurePresetState();
@@ -1035,6 +1041,7 @@
     }
 
     function deletePreset(targetPresetId) {
+        if (isSharedReadonlyMode()) return false;
         const id = String(targetPresetId || '').trim();
         if (!id || !state.presetMap[id]) return false;
 
@@ -1080,6 +1087,7 @@
     }
 
     function openPresetRenameModal(presetId) {
+        if (isSharedReadonlyMode()) return;
         const targetPresetId = String(presetId || '').trim();
         if (!targetPresetId || !state.presetMap[targetPresetId]) return;
         if (isGlobalPresetId(targetPresetId)) return;
@@ -1214,6 +1222,7 @@
     }
 
     function handlePresetSelection(presetId) {
+        if (isSharedReadonlyMode()) return;
         const nextId = String(presetId || '').trim();
         if (!nextId || !state.presetMap[nextId]) return;
 
@@ -1251,6 +1260,7 @@
     }
 
     async function handleAddPreset() {
+        if (isSharedReadonlyMode()) return;
         if (!state.selectedCharacter) return;
 
         closeOpenDropdown();
@@ -1259,6 +1269,7 @@
     }
 
     function handleDuplicatePreset(presetId) {
+        if (isSharedReadonlyMode()) return;
         const sourceId = String(presetId || '').trim();
         if (!sourceId || !state.presetMap[sourceId]) return;
 
@@ -1314,8 +1325,9 @@
             value: state.activePresetId,
             placeholder: t('preset_default', 'Default'),
             includeEmptyOption: false,
-            disabled: !state.selectedCharacter,
+            disabled: !state.selectedCharacter || isSharedReadonlyMode(),
             onChange: (value) => {
+                if (isSharedReadonlyMode()) return;
                 if (value === PRESET_ADD_ACTION) {
                     handleAddPreset();
                     return;
@@ -1323,6 +1335,7 @@
                 handlePresetSelection(value);
             },
             onItemAction: (value, actionType) => {
+                if (isSharedReadonlyMode()) return;
                 if (actionType === 'rename' && value && value !== PRESET_ADD_ACTION) {
                     if (isGlobalPresetId(value)) return;
                     openPresetRenameModal(value);
@@ -1348,8 +1361,9 @@
             value: state.mainRev,
             placeholder: t('placeholder_select_main_revelation', '주 계시를 선택하세요'),
             includeEmptyOption: false,
-            disabled: !state.selectedCharacter || options.length === 0,
+            disabled: !state.selectedCharacter || options.length === 0 || isSharedReadonlyMode(),
             onChange: (value) => {
+                if (isSharedReadonlyMode()) return;
                 state.mainRev = value;
                 const subOptions = getSubRevelationOptions(state.mainRev);
                 if (!subOptions.includes(state.subRev)) {
@@ -1378,8 +1392,9 @@
             value: state.subRev,
             placeholder: t('placeholder_select_sub_revelation', '서브 계시를 선택하세요'),
             includeEmptyOption: false,
-            disabled: !state.selectedCharacter || !state.mainRev || options.length === 0,
+            disabled: !state.selectedCharacter || !state.mainRev || options.length === 0 || isSharedReadonlyMode(),
             onChange: (value) => {
+                if (isSharedReadonlyMode()) return;
                 state.subRev = value;
                 persistSelectedCharacterSetting();
                 renderSubRevelationDropdown();
@@ -1801,6 +1816,7 @@
     }
 
     function persistSelectedCharacterSetting(options) {
+        if (isSharedReadonlyMode()) return;
         const name = String(state.selectedCharacter || '').trim();
         if (!name || typeof window.localStorage === 'undefined') return;
 
@@ -2039,8 +2055,9 @@
                 value: slotState.mainOption,
                 placeholder: t('placeholder_select_main_option', 'Select main option'),
                 includeEmptyOption: false,
-                disabled: mainItems.length === 0,
+                disabled: mainItems.length === 0 || isSharedReadonlyMode(),
                 onChange: (value) => {
+                    if (isSharedReadonlyMode()) return;
                     slotState.mainOption = value;
                     enforceSubOptionRestrictions(slot.id);
                     applyDefaultSubOptions(slot.id);
@@ -2076,8 +2093,9 @@
                 value: subRowState.option,
                 placeholder: t('label_none', '-'),
                 includeEmptyOption: true,
-                disabled: subOptions.length === 0,
+                disabled: subOptions.length === 0 || isSharedReadonlyMode(),
                 onChange: (value) => {
+                    if (isSharedReadonlyMode()) return;
                     const nextOption = String(value || '').trim();
                     const canonicalNext = toCanonicalStatKey(nextOption);
                     const canonicalMainBlocked = getMainBlockedSubOptions(slot.id);
@@ -2129,12 +2147,15 @@
             valueInput.type = 'text';
             valueInput.placeholder = t('placeholder_value', 'Value');
             valueInput.value = subRowState.value || '';
+            valueInput.disabled = isSharedReadonlyMode();
             valueInput.addEventListener('input', (event) => {
+                if (isSharedReadonlyMode()) return;
                 subRowState.value = String(event.target.value || '');
                 persistSelectedCharacterSetting();
                 renderPreview();
             });
             valueInput.addEventListener('blur', (event) => {
+                if (isSharedReadonlyMode()) return;
                 const formatted = normalizePercentValue(subRowState.option, event.target.value);
                 subRowState.value = formatted;
                 event.target.value = formatted;
@@ -2151,6 +2172,7 @@
             upgradeInput.inputMode = 'numeric';
             upgradeInput.placeholder = '0';
             upgradeInput.value = subRowState.upgrades || '';
+            upgradeInput.disabled = isSharedReadonlyMode();
 
             const upgradeWrap = document.createElement('div');
             upgradeWrap.className = 'rs-sub-upgrade-wrap';
@@ -2177,6 +2199,7 @@
             }
 
             upgradeInput.addEventListener('input', (event) => {
+                if (isSharedReadonlyMode()) return;
                 const normalized = normalizeUpgradeInput(event.target.value);
                 subRowState.upgrades = normalized;
                 event.target.value = normalized;
@@ -2821,6 +2844,7 @@
     function bindTopEvents() {
         if (dom.characterPill) {
             dom.characterPill.addEventListener('click', (event) => {
+                if (isSharedReadonlyMode()) return;
                 event.preventDefault();
                 event.stopPropagation();
                 toggleCharacterPanel();
@@ -2833,6 +2857,7 @@
         }
         if (dom.characterSearchInput) {
             dom.characterSearchInput.addEventListener('input', () => {
+                if (isSharedReadonlyMode()) return;
                 state.characterFilters.query = String(dom.characterSearchInput.value || '').trim();
                 updateCharacterFilterResetState();
                 renderCharacterList();
@@ -2848,10 +2873,14 @@
             const loadLabel = t('button_load', 'Load');
             dom.loadBtn.setAttribute('aria-label', loadLabel);
             dom.loadBtn.setAttribute('data-tooltip', loadLabel);
-            dom.loadBtn.addEventListener('click', handleBackupImportClick);
+            dom.loadBtn.addEventListener('click', () => {
+                if (isSharedReadonlyMode()) return;
+                handleBackupImportClick();
+            });
         }
         if (dom.backupFileInput) {
             dom.backupFileInput.addEventListener('change', (event) => {
+                if (isSharedReadonlyMode()) return;
                 const target = event.target;
                 const file = target && target.files && target.files[0] ? target.files[0] : null;
                 if (!file) return;
@@ -2938,6 +2967,24 @@
         dom.statsSummary = document.getElementById('rsStatsSummary');
     }
 
+    function applySharedReadonlyUi() {
+        const readonly = isSharedReadonlyMode();
+        if (dom.characterPill) {
+            dom.characterPill.classList.toggle('is-disabled', readonly);
+            dom.characterPill.setAttribute('aria-disabled', readonly ? 'true' : 'false');
+        }
+        if (dom.characterSearchInput) {
+            dom.characterSearchInput.disabled = readonly;
+        }
+        if (dom.loadBtn) {
+            dom.loadBtn.disabled = readonly;
+            dom.loadBtn.style.opacity = readonly ? '0.6' : '';
+        }
+        if (dom.backupFileInput && readonly) {
+            dom.backupFileInput.value = '';
+        }
+    }
+
     async function init() {
         bindDom();
         initNavigation();
@@ -2971,6 +3018,8 @@
             renderSlotCards();
             renderPreview();
             const sharedLoaded = await tryLoadSharedFromUrl();
+            state.readonlyBySharedLink = !!sharedLoaded;
+            applySharedReadonlyUi();
             setCharacterPanelOpen(sharedLoaded ? false : !state.selectedCharacter);
             clearError();
         } catch (error) {

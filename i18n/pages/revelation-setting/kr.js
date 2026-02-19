@@ -81,6 +81,7 @@ window.I18N_PAGE_REVELATION_SETTING_KR = {
     msg_load_backup_failed: '백업 불러오기에 실패했습니다.',
     msg_load_backup_invalid: '백업 파일 형식이 올바르지 않습니다.',
     msg_share_generating: '공유 링크 생성 중...',
+    msg_share_loading_shared: '\uACF5\uC720 \uC138\uD305 \uBD88\uB7EC\uC624\uB294 \uC911...',
     msg_share_warning: '해당 URL은 편의를 위한 기능으로 손상될 수 있습니다.<br>안전한 백업을 위해 백업 기능을 활용해주세요.',
     msg_share_success: '링크가 클립보드에 복사되었습니다!',
     msg_share_failed: '공유에 실패했습니다.',

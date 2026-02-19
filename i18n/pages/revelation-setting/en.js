@@ -87,6 +87,7 @@ window.I18N_PAGE_REVELATION_SETTING_EN = {
     msg_load_backup_failed: 'Failed to load backup.',
     msg_load_backup_invalid: 'Invalid backup file format.',
     msg_share_generating: 'Generating share link...',
+    msg_share_loading_shared: 'Loading shared setup...',
     msg_share_warning: 'This URL is a convenience feature and may be corrupted.<br>For safe backup, please use the backup feature.',
     msg_share_success: 'Link copied to clipboard!',
     msg_share_failed: 'Failed to share.',

@@ -158,6 +158,7 @@
             }
 
             if (!binId) return false;
+            showSharedLoadModal();
 
             try {
                 const response = await fetch(`${d.gasUrl}?id=${encodeURIComponent(binId)}`);
@@ -183,11 +184,20 @@
                 console.error('[revelation-setting] shared payload load failed:', error);
                 d.showToast(d.t('msg_share_load_failed', 'Failed to load shared link.'), 'error');
                 return false;
+            } finally {
+                hideSharedLoadModal();
             }
         }
 
         function hideShareLoadingModal() {
             const modal = document.getElementById('rsShareLoadingModal');
+            if (modal) {
+                modal.remove();
+            }
+        }
+
+        function hideSharedLoadModal() {
+            const modal = document.getElementById('rsSharedLoadModal');
             if (modal) {
                 modal.remove();
             }
@@ -234,6 +244,66 @@
                 </div>
                 <div style="color:rgba(255, 255, 255, 0.6);font-size:13px;line-height:1.6;">
                     ${d.t('msg_share_warning', 'This URL is a convenience feature and may be corrupted.<br>For safe backup, please use the backup feature.')}
+                </div>
+            `;
+
+            modal.appendChild(content);
+            document.body.appendChild(modal);
+
+            if (!document.getElementById('rsShareLoadingSpinnerStyle')) {
+                const style = document.createElement('style');
+                style.id = 'rsShareLoadingSpinnerStyle';
+                style.textContent = `
+                    @keyframes rs-share-spin {
+                        0% { transform: rotate(0deg); }
+                        100% { transform: rotate(360deg); }
+                    }
+                    .rs-share-loading-spinner {
+                        animation: rs-share-spin 1s linear infinite;
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+        }
+
+        function showSharedLoadModal() {
+            hideSharedLoadModal();
+
+            const modal = document.createElement('div');
+            modal.id = 'rsSharedLoadModal';
+            modal.style.cssText = [
+                'position:fixed',
+                'inset:0',
+                'background:rgba(0,0,0,0.7)',
+                'display:flex',
+                'align-items:center',
+                'justify-content:center',
+                'z-index:10000'
+            ].join(';');
+
+            const content = document.createElement('div');
+            content.style.cssText = [
+                'background:#2a2a2a',
+                'padding:28px',
+                'border-radius:12px',
+                'text-align:center',
+                'max-width:360px',
+                'box-shadow:0 4px 20px rgba(0, 0, 0, 0.5)'
+            ].join(';');
+
+            content.innerHTML = `
+                <div style="margin-bottom:14px;">
+                    <div class="rs-share-loading-spinner" style="
+                        border:3px solid rgba(255, 255, 255, 0.1);
+                        border-top:3px solid #fff;
+                        border-radius:50%;
+                        width:36px;
+                        height:36px;
+                        margin:0 auto;
+                    "></div>
+                </div>
+                <div style="color:#fff;font-size:15px;line-height:1.5;">
+                    ${d.t('msg_share_loading_shared', 'Loading shared setup...')}
                 </div>
             `;
 

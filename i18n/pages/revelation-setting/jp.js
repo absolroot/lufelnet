@@ -81,6 +81,7 @@ window.I18N_PAGE_REVELATION_SETTING_JP = {
     msg_load_backup_failed: 'バックアップの読み込みに失敗しました。',
     msg_load_backup_invalid: 'バックアップファイルの形式が正しくありません。',
     msg_share_generating: '共有リンク生成中...',
+    msg_share_loading_shared: '\u5171\u6709\u30BB\u30C3\u30C8\u3092\u8AAD\u307F\u8FBC\u307F\u4E2D...',
     msg_share_warning: 'このURLは便宜上の機能であり、破損する可能性があります。<br>安全なバックアップのため、バックアップ機能をご利用ください。',
     msg_share_success: 'リンクをクリップボードにコピーしました！',
     msg_share_failed: '共有に失敗しました。',

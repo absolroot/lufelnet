@@ -119,9 +119,17 @@
     const SHARE_QUERY_KEY = 'bin';
     const GAS_URL = 'https://script.google.com/macros/s/AKfycbzxSnf6_09q_LDRKIkmBvE2oTtQaLnK22M9ozrHMUAV0JnND9sc6CTILlnBS7_T8FIe/exec';
 
+    function resolveBaseUrl() {
+        const fromWindow = (typeof window !== 'undefined' && typeof window.BASE_URL !== 'undefined')
+            ? window.BASE_URL
+            : '';
+        const fromGlobalConst = (typeof BASE_URL !== 'undefined') ? BASE_URL : '';
+        return String(fromWindow || fromGlobalConst || '').trim().replace(/\/+$/, '');
+    }
+
     const state = {
         lang: 'kr',
-        baseUrl: window.BASE_URL || '',
+        baseUrl: resolveBaseUrl(),
         version: (typeof window.APP_VERSION !== 'undefined' && window.APP_VERSION)
             ? `?v=${encodeURIComponent(String(window.APP_VERSION))}`
             : '',
@@ -344,6 +352,10 @@
         const slot = SLOT_CONFIG.find((item) => item.id === slotId);
         if (!slot) return '';
         return `${state.baseUrl}/assets/img/revelation/${slot.icon}`;
+    }
+
+    function getUpgradeArrowIconPath() {
+        return `${state.baseUrl}/apps/revelation-setting/tianfu-new-jiantou.png`;
     }
 
     function getSubSlotIds() {
@@ -2139,16 +2151,46 @@
             upgradeInput.inputMode = 'numeric';
             upgradeInput.placeholder = '0';
             upgradeInput.value = subRowState.upgrades || '';
+
+            const upgradeWrap = document.createElement('div');
+            upgradeWrap.className = 'rs-sub-upgrade-wrap';
+
+            const upgradeBadge = document.createElement('span');
+            upgradeBadge.className = 'rs-sub-upgrade-badge';
+
+            const upgradeBadgeIcon = document.createElement('img');
+            upgradeBadgeIcon.className = 'rs-sub-upgrade-badge-icon';
+            upgradeBadgeIcon.src = getUpgradeArrowIconPath();
+            upgradeBadgeIcon.alt = '';
+
+            const upgradeBadgeValue = document.createElement('span');
+            upgradeBadgeValue.className = 'rs-sub-upgrade-badge-value';
+
+            upgradeBadge.appendChild(upgradeBadgeIcon);
+            upgradeBadge.appendChild(upgradeBadgeValue);
+
+            function syncUpgradeBadge() {
+                const upgradeNum = parseUpgradeValue(subRowState.upgrades);
+                upgradeWrap.classList.toggle('has-upgrade', upgradeNum > 0);
+                upgradeWrap.classList.toggle('is-zero', upgradeNum === 0);
+                upgradeBadgeValue.textContent = upgradeNum > 0 ? String(upgradeNum) : '';
+            }
+
             upgradeInput.addEventListener('input', (event) => {
                 const normalized = normalizeUpgradeInput(event.target.value);
                 subRowState.upgrades = normalized;
                 event.target.value = normalized;
+                syncUpgradeBadge();
                 persistSelectedCharacterSetting();
                 renderPreview();
             });
 
+            upgradeWrap.appendChild(upgradeInput);
+            upgradeWrap.appendChild(upgradeBadge);
+            syncUpgradeBadge();
+
             rowEl.appendChild(subDropdownHost);
-            rowEl.appendChild(upgradeInput);
+            rowEl.appendChild(upgradeWrap);
             rowEl.appendChild(valueInput);
             card.appendChild(rowEl);
         }
@@ -2247,7 +2289,15 @@
                 const optionLabel = row.option ? translateSubStatOption(row.option) : labelNone;
                 const valueLabel = row.value || labelNone;
                 const upgradeNum = parseUpgradeValue(row.upgrades);
-                const upgradeLabel = upgradeNum > 0 ? `+${upgradeNum}` : labelNone;
+                const upgradeIconPath = getUpgradeArrowIconPath();
+                const upgradeBadgeHtml = upgradeNum > 0
+                    ? `
+                        <span class="rs-preview-sub-upgrade rs-preview-sub-upgrade-badge">
+                            <img class="rs-preview-sub-upgrade-icon" src="${escapeHtml(upgradeIconPath)}" alt="">
+                            <span class="rs-preview-sub-upgrade-value">${escapeHtml(String(upgradeNum))}</span>
+                        </span>
+                    `
+                    : '<span class="rs-preview-sub-upgrade rs-preview-sub-upgrade-empty" aria-hidden="true"></span>';
                 const optionIcon = row.option ? getStatIconPath(row.option) : '';
 
                 return `
@@ -2256,7 +2306,7 @@
                             ${optionIcon ? `<img src="${escapeHtml(optionIcon)}" alt="">` : ''}
                             <span>${escapeHtml(optionLabel)}</span>
                         </span>
-                        <span class="rs-preview-sub-upgrade">${escapeHtml(upgradeLabel)}</span>
+                        ${upgradeBadgeHtml}
                         <span class="rs-preview-sub-value">${escapeHtml(valueLabel)}</span>
                     </div>
                 `;

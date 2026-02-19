@@ -3,7 +3,7 @@
 
     // Single source of truth for app version.
     if (typeof global.APP_VERSION !== 'string' || !global.APP_VERSION.trim()) {
-        global.APP_VERSION = '4.4.9';
+        global.APP_VERSION = '4.5.1';
     }
 
     // Single source of truth for updates history location.

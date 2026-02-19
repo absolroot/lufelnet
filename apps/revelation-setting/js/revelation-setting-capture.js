@@ -9,6 +9,17 @@
             .slice(0, 40) || 'unknown';
     }
 
+    function resolveBaseUrl(rawBaseUrl) {
+        const fromState = String(rawBaseUrl || '').trim();
+        const fromWindow = (typeof window !== 'undefined' && typeof window.BASE_URL !== 'undefined')
+            ? String(window.BASE_URL || '').trim()
+            : '';
+        const fromGlobalConst = (typeof BASE_URL !== 'undefined')
+            ? String(BASE_URL || '').trim()
+            : '';
+        return String(fromState || fromWindow || fromGlobalConst || '').replace(/\/+$/, '');
+    }
+
     async function ensureHtmlToImage() {
         if (window.htmlToImage) return;
         await new Promise((resolve, reject) => {
@@ -54,6 +65,22 @@
 
     function createController(deps) {
         const d = normalizeDependencies(deps);
+
+        function buildCaptureFileName() {
+            const characterToken = sanitizeFileToken(d.state.selectedCharacter || 'unknown');
+            return `revelation-share_${characterToken}_${Date.now()}.png`;
+        }
+
+        function downloadCanvas(canvas) {
+            const dataUrl = canvas.toDataURL('image/png');
+            const fileName = buildCaptureFileName();
+            const anchor = document.createElement('a');
+            anchor.href = dataUrl;
+            anchor.download = fileName;
+            document.body.appendChild(anchor);
+            anchor.click();
+            anchor.remove();
+        }
 
         async function withZeroUpgradeHiddenForCapture(captureNode, task) {
             if (!captureNode || typeof task !== 'function') {
@@ -129,7 +156,7 @@
             ctx.fillRect(0, 0, cw, ch);
             ctx.drawImage(srcImg, pad * pixelRatio, pad * pixelRatio);
 
-            const logoSrc = `${d.state.baseUrl || ''}/assets/img/logo/lufel.webp`;
+            const logoSrc = `${resolveBaseUrl(d.state.baseUrl)}/assets/img/logo/lufel.webp`;
             const logoImg = await loadImageAsCanvas(logoSrc);
             const logoSize = 16 * pixelRatio;
             const textSize = 11 * pixelRatio;
@@ -167,17 +194,7 @@
                     captureNode,
                     () => captureToCanvas(captureNode)
                 );
-                const dataUrl = canvas.toDataURL('image/png');
-
-                const characterToken = sanitizeFileToken(d.state.selectedCharacter || 'unknown');
-                const fileName = `revelation-share_${characterToken}_${Date.now()}.png`;
-
-                const anchor = document.createElement('a');
-                anchor.href = dataUrl;
-                anchor.download = fileName;
-                document.body.appendChild(anchor);
-                anchor.click();
-                anchor.remove();
+                downloadCanvas(canvas);
                 d.showToast(d.t('msg_capture_success', 'PNG downloaded.'));
             } catch (error) {
                 console.error('[revelation-setting] capture failed:', error);
@@ -198,11 +215,19 @@
 
             if (d.dom.copyBtn) d.dom.copyBtn.disabled = true;
 
+            let canvas = null;
             try {
-                const canvas = await withZeroUpgradeHiddenForCapture(
+                canvas = await withZeroUpgradeHiddenForCapture(
                     captureNode,
                     () => captureToCanvas(captureNode)
                 );
+
+                if (!navigator.clipboard || typeof navigator.clipboard.write !== 'function' || typeof window.ClipboardItem === 'undefined') {
+                    downloadCanvas(canvas);
+                    d.showToast(d.t('msg_capture_success', 'PNG downloaded.'));
+                    return;
+                }
+
                 const blob = await new Promise((resolve) => canvas.toBlob(resolve, 'image/png'));
                 if (!blob) throw new Error('Failed to create blob');
 
@@ -212,6 +237,15 @@
                 d.showToast(d.t('msg_copy_success', 'Image copied to clipboard.'));
             } catch (error) {
                 console.error('[revelation-setting] copy failed:', error);
+                if (canvas) {
+                    try {
+                        downloadCanvas(canvas);
+                        d.showToast(d.t('msg_capture_success', 'PNG downloaded.'));
+                        return;
+                    } catch (downloadError) {
+                        console.error('[revelation-setting] fallback download failed:', downloadError);
+                    }
+                }
                 alert(d.t('msg_copy_failed', `Failed to copy image. (${error.message || error})`));
             } finally {
                 if (d.dom.copyBtn) d.dom.copyBtn.disabled = false;

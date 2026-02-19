@@ -17,6 +17,12 @@
 
 
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+  {% assign page_path_for_fonts = page.permalink | default: page.url | downcase %}
+  {% if page_path_for_fonts contains 'revelation-setting' %}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@700&display=swap" rel="stylesheet">
+  {% endif %}
 
 
   <!-- 지역별 메타태그 동적 생성 스크립트 -->

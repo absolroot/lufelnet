@@ -1,5 +1,65 @@
 {
-  "data": null,
-  "msg": "SOS not found.",
-  "status": 100
+  "data": {
+    "boss": [
+      {
+        "bonusRule": "All ally Fire attack Score x 3",
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Ice",
+                "Bless",
+                "Curse"
+              ],
+              "Weak": [
+                "Fire"
+              ]
+            },
+            "image": "B-guaiwutouxiang-lilith.png",
+            "level": "89",
+            "name": "Lilith",
+            "skill": "207,607,603",
+            "sn": "523101",
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 1.0,
+        "sn": "228401"
+      },
+      {
+        "bonusRule": "All ally Nuclear attack Score x 3",
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Ice"
+              ],
+              "Weak": [
+                "Nuclear"
+              ]
+            },
+            "image": "B-guaiwutouxiang-seiryu.png",
+            "level": "89",
+            "name": "Seiryu",
+            "skill": "207,1404,203",
+            "sn": "523111",
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 2.0,
+        "sn": "228402"
+      }
+    ],
+    "buff": "Scorching Breath: Each time a Technical is activated, all allies gain 1 Seal of Power stack.\nSeal of Power: Increase final damage by 20% for each stack. Lasts for 2 turns. Stacks up to 2 times.",
+    "endTime": "2026-03-05 10:30:00",
+    "startTime": "2026-02-19 11:30:00"
+  },
+  "msg": "OK",
+  "status": 0
 }

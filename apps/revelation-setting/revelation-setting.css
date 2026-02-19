@@ -14,6 +14,7 @@
     --rs-accent: #730000;
     --rs-accent-bright: #d81e2f;
     --rs-accent-hover: #8a0000;
+    --rs-mono-font: 'Apple SD Gothic Neo', 'Noto Sans', sans-serif;
     max-width: 1080px;
 }
 
@@ -1013,7 +1014,7 @@
 .rs-summary-value {
     font-size: 13px;
     font-weight: 700;
-    font-family: ui-monospace;
+    font-family: var(--rs-mono-font);
     color: #ffd54f;
     white-space: nowrap;
     flex-shrink: 0;
@@ -1356,7 +1357,7 @@
     bottom: -2px;
     color: #ffd700;
     font-size: 13px;
-    font-family: ui-monospace;
+    font-family: var(--rs-mono-font);
     font-weight: 900;
     font-style:italic;
     line-height: 1;

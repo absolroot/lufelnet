@@ -806,6 +806,30 @@
     display: none !important;
 }
 
+.rs-capture-mode .rs-selected-character-label {
+    overflow: visible;
+    text-overflow: clip;
+}
+
+.rs-capture-mode .rs-tier-table-wrap {
+    overflow: visible;
+    scrollbar-width: none;
+}
+
+.rs-capture-mode .rs-tier-table-wrap::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+.rs-capture-mode .rs-tier-tooltip-icon,
+.rs-capture-mode .rs-tier-card-tools {
+    display: none !important;
+}
+
+.rs-capture-mode .rs-tier-card-title {
+    white-space: nowrap;
+}
+
 .rs-dropdown-menu {
     display: none;
     position: absolute;
@@ -1028,6 +1052,252 @@
     color: rgba(255, 255, 255, 0.45);
 }
 
+.rs-tier-summary-card {
+    background: var(--rs-bg-card);
+    border: 1px solid var(--rs-border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-top: 16px;
+}
+
+.rs-tier-card {
+    width: 100%;
+}
+
+.rs-tier-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.rs-tier-card-head-left {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+}
+
+.rs-tier-card-title {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--rs-text);
+}
+
+.rs-tier-tooltip-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    margin-left: 4px;
+    color: rgba(255, 255, 255, 0.5);
+    cursor: help;
+}
+
+.rs-tier-tooltip-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.rs-tier-tooltip-icon:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.rs-tier-card-tools {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: auto;
+}
+
+.rs-tier-sort-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.58);
+}
+
+.rs-tier-sort-icon svg {
+    width: 12px;
+    height: 12px;
+}
+
+.rs-tier-sort-toggle {
+    border: 0;
+    outline: 0;
+    background: transparent;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.86);
+    cursor: pointer;
+}
+
+.rs-tier-sort-text {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.rs-tier-sort-toggle:hover,
+.rs-tier-sort-toggle:focus-visible {
+    color: rgba(255, 255, 255, 0.98);
+}
+
+.rs-tier-sort-toggle:focus-visible {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.rs-tier-table-wrap {
+    overflow-x: auto;
+}
+
+.rs-tier-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.rs-tier-table th,
+.rs-tier-table td {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 7px 8px;
+    font-size: 12px;
+}
+
+.rs-tier-table th {
+    color: rgba(255, 255, 255, 0.72);
+    font-weight: 700;
+    text-align: center;
+    border-bottom-color: rgba(255, 255, 255, 0.14);
+}
+
+.rs-tier-table th:first-child,
+.rs-tier-table td:first-child {
+    text-align: left;
+    width: 28%;
+}
+
+.rs-tier-table th:last-child,
+.rs-tier-table td:last-child {
+    width: 8%;
+}
+
+.rs-tier-table th:nth-child(2),
+.rs-tier-table td:nth-child(2) {
+    width: 9%;
+    text-align: left;
+    padding-left: 2px;
+    padding-right: 6px;
+}
+
+.rs-tier-table th:nth-child(3),
+.rs-tier-table td:nth-child(3) {
+    width: 8%;
+    text-align: left;
+    padding-left: 2px;
+    padding-right: 4px;
+}
+
+.rs-tier-table th:nth-child(4),
+.rs-tier-table td:nth-child(4) {
+    width: 8%;
+    text-align: left;
+    padding-left: 2px;
+    padding-right: 4px;
+}
+
+.rs-tier-table th:nth-child(5),
+.rs-tier-table td:nth-child(5) {
+    border-left: 1px solid rgba(255, 255, 255, 0.12);
+    padding-left: 14px;
+}
+
+.rs-tier-table th:nth-child(n+5),
+.rs-tier-table td:nth-child(n+5) {
+    background: rgba(255, 255, 255, 0.015);
+}
+
+.rs-tier-td-num,
+.rs-tier-td-total {
+    text-align: center;
+    font-family: var(--rs-mono-font);
+    color: #ffd54f;
+    font-weight: 400;
+}
+
+.rs-tier-table td:nth-child(8).rs-tier-td-num:not(.is-zero),
+.rs-tier-table td:nth-child(9).rs-tier-td-num:not(.is-zero),
+.rs-tier-table td:nth-child(10).rs-tier-td-num:not(.is-zero) {
+    color: rgba(255, 255, 255, 0.62);
+}
+
+.rs-tier-td-s {
+    font-weight: 400;
+}
+
+.rs-tier-td-total {
+    font-weight: 700;
+}
+
+.rs-tier-td-value {
+    text-align: left;
+    font-family: var(--rs-mono-font);
+    color: rgba(255, 255, 255, 0.88);
+}
+
+.rs-tier-td-value-main,
+.rs-tier-td-value-sub {
+    color: rgba(255, 255, 255, 0.62);
+}
+
+.rs-tier-td-value-sum {
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 700;
+}
+
+.rs-tier-td-value.is-zero {
+    color: rgba(255, 255, 255, 0.22);
+}
+
+.rs-tier-td-num.is-zero,
+.rs-tier-td-total.is-zero {
+    color: rgba(255, 213, 79, 0.05);
+}
+
+.rs-tier-td-total.is-under-five {
+    color: rgba(255, 255, 255, 0.62);
+}
+
+.rs-tier-tr.is-low-confidence .rs-tier-td-num,
+.rs-tier-tr.is-low-confidence .rs-tier-td-total {
+    color: #f5b26b;
+}
+
+
+.rs-tier-tr.rs-tier-tr-minstat .rs-tier-label {
+    color: #7FDCC4;
+}
+
+.rs-tier-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+    color: var(--rs-text);
+}
+
+.rs-tier-low-confidence {
+    color: #f5b26b;
+    font-size: 11px;
+    font-style: normal;
+}
+
 /* ===== Slot Cards (Editor) ===== */
 
 .rs-slot-cards {
@@ -1118,6 +1388,19 @@
     padding: 0 8px;
     border-radius: 0;
     margin-bottom: 6px;
+}
+
+.rs-main-inline-row.rs-minstat-highlight,
+.rs-main-value-row.rs-minstat-highlight,
+.rs-main-pair-row.rs-minstat-highlight,
+.rs-sub-row.rs-minstat-highlight {
+    box-shadow: none;
+}
+
+.rs-main-inline-row.rs-minstat-highlight .rs-dropdown-text,
+.rs-main-value-row.rs-minstat-highlight .rs-main-value-row-label,
+.rs-sub-row.rs-minstat-highlight .rs-dropdown-text {
+    color: #7FDCC4;
 }
 
 .rs-main-inline-row .rs-dropdown-host {
@@ -1228,6 +1511,10 @@
 
 .rs-main-pair-row-label img + span {
     margin-left: 6px;
+}
+
+.rs-main-pair-token.is-highlight {
+    color: #7FDCC4;
 }
 
 .rs-main-pair-row-value {
@@ -2107,6 +2394,10 @@
 
     .rs-summary-grid {
         grid-template-columns: 1fr;
+    }
+
+    .rs-tier-summary-card {
+        padding: 12px;
     }
 
     .rs-slot-card {

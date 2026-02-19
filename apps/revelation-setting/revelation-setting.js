@@ -14,6 +14,9 @@
         'Crit Mult.': 'sub_crit_mult',
         'Pierce Rate': 'sub_pierce_rate',
         'Attack Mult.': 'sub_attack_mult',
+        'Attack Mult': 'sub_attack_mult',
+        'Damage Mult.': 'sub_attack_mult',
+        'Damage Mult': 'sub_attack_mult',
         'Attack %': 'sub_attack_percent',
         'Attack': 'sub_attack',
         'HP %': 'sub_hp_percent',
@@ -155,6 +158,7 @@
         activePresetId: DEFAULT_PRESET_ID,
         characterModificationCache: new Map(),
         globalPresetMap: {},
+        minimumStatsTargetSet: new Set(),
         readonlyBySharedLink: false
     };
 
@@ -166,6 +170,8 @@
     let activePresetRenameDialog = null;
     let captureController = null;
     let shareBackupController = null;
+    let tierEstimatorController = null;
+    let minimumStatsHighlightController = null;
 
     function createInitialSlotState() {
         const out = {};
@@ -258,6 +264,42 @@
         toastTimerId = window.setTimeout(() => {
             toast.classList.remove('is-show');
         }, 2200);
+    }
+
+    function getMinimumStatsHighlightController() {
+        if (minimumStatsHighlightController) return minimumStatsHighlightController;
+
+        const helper = window.RevelationSettingMinimumStatsHighlight;
+        if (!helper || typeof helper.createController !== 'function') {
+            minimumStatsHighlightController = {};
+            return minimumStatsHighlightController;
+        }
+
+        minimumStatsHighlightController = helper.createController({
+            toCanonicalStatKey
+        }) || {};
+
+        return minimumStatsHighlightController;
+    }
+
+    function updateMinimumStatsTargetSet(characterName) {
+        const name = String(characterName || '').trim();
+        state.minimumStatsTargetSet = new Set();
+        if (!name) return;
+
+        const controller = getMinimumStatsHighlightController();
+        if (!controller || typeof controller.buildTargetSet !== 'function') return;
+
+        const targetSet = controller.buildTargetSet(name);
+        if (targetSet && typeof targetSet.forEach === 'function') {
+            state.minimumStatsTargetSet = new Set(Array.from(targetSet));
+        }
+    }
+
+    function isMinimumTargetStatLabel(statLabel) {
+        const canonical = toCanonicalStatKey(statLabel);
+        if (!canonical) return false;
+        return state.minimumStatsTargetSet.has(canonical) || state.minimumStatsTargetSet.has(String(statLabel || '').trim());
     }
 
     function loadScript(src) {
@@ -650,6 +692,28 @@
         );
     }
 
+    function normalizeMainOptionForSlot(slotId, optionLabel) {
+        const raw = String(optionLabel || '').trim();
+        if (!raw) return '';
+
+        const rows = getMainStatRows(slotId);
+        if (!rows.length) return '';
+
+        const exact = rows.find((row) => String((row && row[0]) || '').trim() === raw);
+        if (exact && exact[0]) return String(exact[0]).trim();
+
+        const canonicalRaw = toCanonicalStatKey(raw);
+        if (!canonicalRaw) return '';
+
+        const byCanonical = rows.find((row) => {
+            const label = String((row && row[0]) || '').trim();
+            return label && toCanonicalStatKey(label) === canonicalRaw;
+        });
+        if (byCanonical && byCanonical[0]) return String(byCanonical[0]).trim();
+
+        return '';
+    }
+
     function getBlockedSubOptions(slotId, rowIndex) {
         const slotState = state.slots[slotId];
         if (!slotState) return new Set();
@@ -739,8 +803,8 @@
         SLOT_CONFIG.forEach((slot) => {
             const slotState = state.slots[slot.id];
             const mainRows = getMainStatRows(slot.id);
-            if (slot.id !== 'uni' && !mainRows.some((row) => row[0] === slotState.mainOption)) {
-                slotState.mainOption = '';
+            if (slot.id !== 'uni') {
+                slotState.mainOption = normalizeMainOptionForSlot(slot.id, slotState.mainOption);
             }
             if (slot.id !== 'uni' && !slotState.mainOption && mainRows.length > 0) {
                 let defaultMainOption = mainRows[0][0];
@@ -834,6 +898,7 @@
         if (dom.statsSummary) {
             if (nextOpen) {
                 dom.statsSummary.hidden = true;
+                if (dom.tierSummaryCard) dom.tierSummaryCard.hidden = true;
             } else {
                 renderStatsSummary();
             }
@@ -1761,8 +1826,7 @@
             const slotPacked = slotPayloads[slotIndex];
             if (!Array.isArray(slotPacked)) return;
 
-            slotState.mainOption = String(slotPacked[0] || '').trim();
-
+            slotState.mainOption = normalizeMainOptionForSlot(slot.id, slotPacked[0]);
             const packedSubs = Array.isArray(slotPacked[1]) ? slotPacked[1] : [];
             for (let i = 0; i < slotState.subs.length; i += 1) {
                 const subPacked = packedSubs[i];
@@ -1913,7 +1977,9 @@
         }
 
         const label = document.createElement('span');
-        label.textContent = optionLabel || t('label_none', '-');
+        label.textContent = optionLabel
+            ? translateSubStatOption(optionLabel)
+            : t('label_none', '-');
         labelWrap.appendChild(label);
 
         const value = document.createElement('strong');
@@ -1925,7 +1991,7 @@
         return row;
     }
 
-    function createMainPairValueRow(primaryOption, primaryValue, secondaryOption, secondaryValue) {
+    function createMainPairValueRow(primaryOption, primaryValue, secondaryOption, secondaryValue, primaryHighlighted, secondaryHighlighted) {
         const row = document.createElement('div');
         row.className = 'rs-main-pair-row';
 
@@ -1954,9 +2020,25 @@
             labelWrap.appendChild(icon);
         }
 
-        const label = document.createElement('span');
-        label.textContent = `${primaryOption || t('label_none', '-')} / ${secondaryOption || t('label_none', '-')}`;
-        labelWrap.appendChild(label);
+        const primaryLabel = document.createElement('span');
+        primaryLabel.className = 'rs-main-pair-token' + (primaryHighlighted ? ' is-highlight' : '');
+        primaryLabel.textContent = primaryOption
+            ? translateSubStatOption(primaryOption)
+            : t('label_none', '-');
+
+        const divider = document.createElement('span');
+        divider.className = 'rs-main-pair-divider';
+        divider.textContent = ' / ';
+
+        const secondaryLabel = document.createElement('span');
+        secondaryLabel.className = 'rs-main-pair-token' + (secondaryHighlighted ? ' is-highlight' : '');
+        secondaryLabel.textContent = secondaryOption
+            ? translateSubStatOption(secondaryOption)
+            : t('label_none', '-');
+
+        labelWrap.appendChild(primaryLabel);
+        labelWrap.appendChild(divider);
+        labelWrap.appendChild(secondaryLabel);
 
         const value = document.createElement('strong');
         value.className = 'rs-main-pair-row-value';
@@ -2029,17 +2111,30 @@
         if (slot.id === 'uni') {
             const first = mainDisplayRows[0] || {};
             const second = mainDisplayRows[1] || {};
-            card.appendChild(createMainPairValueRow(first.option, first.value, second.option, second.value));
+            const firstHighlighted = isMinimumTargetStatLabel(first.option);
+            const secondHighlighted = isMinimumTargetStatLabel(second.option);
+            const pairRow = createMainPairValueRow(first.option, first.value, second.option, second.value, firstHighlighted, secondHighlighted);
+            if (isMinimumTargetStatLabel(first.option) || isMinimumTargetStatLabel(second.option)) {
+                pairRow.classList.add('rs-minstat-highlight');
+            }
+            card.appendChild(pairRow);
         } else if (slot.id === 'sun') {
             const mainFixedList = document.createElement('div');
             mainFixedList.className = 'rs-main-fixed-list';
             mainDisplayRows.forEach((row) => {
-                mainFixedList.appendChild(createMainValueRow(row.option, row.value));
+                const mainRow = createMainValueRow(row.option, row.value);
+                if (isMinimumTargetStatLabel(row.option)) {
+                    mainRow.classList.add('rs-minstat-highlight');
+                }
+                mainFixedList.appendChild(mainRow);
             });
             card.appendChild(mainFixedList);
         } else {
             const mainInlineRow = document.createElement('div');
             mainInlineRow.className = 'rs-main-inline-row';
+            if (isMinimumTargetStatLabel(mainDisplayRows[0] && mainDisplayRows[0].option)) {
+                mainInlineRow.classList.add('rs-minstat-highlight');
+            }
 
             const mainDropdownHost = document.createElement('div');
             mainDropdownHost.className = 'rs-dropdown-host';
@@ -2056,7 +2151,7 @@
 
             const mainItems = getMainStatRows(slot.id).map((row) => ({
                 value: row[0],
-                label: row[0],
+                label: translateSubStatOption(row[0]),
                 icon: getStatIconPath(row[0])
             }));
 
@@ -2094,6 +2189,9 @@
 
             const rowEl = document.createElement('div');
             rowEl.className = 'rs-sub-row';
+            if (isMinimumTargetStatLabel(subRowState.option)) {
+                rowEl.classList.add('rs-minstat-highlight');
+            }
 
             const subDropdownHost = document.createElement('div');
             subDropdownHost.className = 'rs-dropdown-host';
@@ -2286,12 +2384,18 @@
                     ? (() => {
                         const attackRow = mainRows[0] || {};
                         const defenseRow = mainRows[1] || {};
-                        const attackLabel = attackRow.option || t('sub_attack', 'Attack');
-                        const defenseLabel = defenseRow.option || t('sub_defense', 'Defense');
+                        const attackOption = attackRow.option || '';
+                        const defenseOption = defenseRow.option || '';
+                        const attackLabel = attackOption
+                            ? translateSubStatOption(attackOption)
+                            : t('sub_attack', 'Attack');
+                        const defenseLabel = defenseOption
+                            ? translateSubStatOption(defenseOption)
+                            : t('sub_defense', 'Defense');
                         const attackValue = attackRow.value || labelNone;
                         const defenseValue = defenseRow.value || labelNone;
-                        const attackIcon = getStatIconPath(attackLabel);
-                        const defenseIcon = getStatIconPath(defenseLabel);
+                        const attackIcon = getStatIconPath(attackOption);
+                        const defenseIcon = getStatIconPath(defenseOption);
 
                         return `
                             <div class="rs-preview-main-option rs-preview-main-option-combined">
@@ -2307,11 +2411,12 @@
                     : mainRows.map((row) => {
                         const icon = getStatIconPath(row.option);
                         const value = row.value || labelNone;
+                        const optionLabel = row.option ? translateSubStatOption(row.option) : labelNone;
                         return `
                             <div class="rs-preview-main-option">
                                 <span class="rs-preview-sub-option">
                                     ${icon ? `<img src="${escapeHtml(icon)}" alt="">` : ''}
-                                    <span>${escapeHtml(row.option || labelNone)}</span>
+                                    <span>${escapeHtml(optionLabel)}</span>
                                 </span>
                                 <span class="rs-preview-sub-value">${escapeHtml(value)}</span>
                             </div>
@@ -2419,17 +2524,19 @@
     function renderStatsSummary() {
         if (!dom.statsSummary) return;
         if (!state.selectedCharacter) {
+            const tierController = getTierEstimatorController();
+            if (tierController && typeof tierController.renderInto === 'function') {
+                tierController.renderInto(dom.tierSummaryCard, null, {});
+            }
             dom.statsSummary.hidden = true;
+            if (dom.tierSummaryCard) dom.tierSummaryCard.hidden = true;
             return;
         }
 
         var totals = {};
-        var summaryGroups = [
-            ['Attack', 'Attack %', 'Defense', 'Defense %', 'HP', 'HP %', 'Speed'],
-            ['Crit Rate', 'Crit Mult.', 'Attack Mult.', 'Pierce Rate', 'SP Recovery', 'Ailment Accuracy', 'Healing Effect']
-        ];
-
-        function addStat(name, value) {
+        var mainTotals = {};
+        var subTotals = {};
+        function addToMap(targetMap, name, value) {
             var key = toCanonicalStatKey(name);
             if (!key) return;
 
@@ -2437,13 +2544,17 @@
             var num = parseFloat(valueText.replace(/[^0-9.\-]/g, ''));
             if (!Number.isFinite(num) || num === 0) return;
 
-            if (!totals[key]) {
-                totals[key] = { value: 0, isPercent: false };
+            if (!targetMap[key]) {
+                targetMap[key] = { value: 0, isPercent: false };
             }
             if (valueText.indexOf('%') !== -1 || PERCENT_STAT_CANONICAL.has(key)) {
-                totals[key].isPercent = true;
+                targetMap[key].isPercent = true;
             }
-            totals[key].value += num;
+            targetMap[key].value += num;
+        }
+
+        function addStat(name, value) {
+            addToMap(totals, name, value);
         }
 
         SLOT_CONFIG.forEach(function (slot) {
@@ -2453,41 +2564,35 @@
             var mainRows = getMainDisplayRows(slot.id, slotState.mainOption);
             mainRows.forEach(function (row) {
                 addStat(row.option, row.value);
+                addToMap(mainTotals, row.option, row.value);
             });
 
             slotState.subs.forEach(function (sub) {
                 addStat(sub.option, sub.value);
+                addToMap(subTotals, sub.option, sub.value);
             });
         });
 
-        var groupsHtml = summaryGroups.map(function (groupKeys, groupIndex) {
-            var rowsHtml = groupKeys.map(function (key) {
-                var icon = getStatIconPath(key);
-                var label = translateSubStatOption(key);
-                var statInfo = totals[key] || { value: 0, isPercent: PERCENT_STAT_CANONICAL.has(key) };
-                var val = Number(statInfo.value || 0);
-                var isPercent = !!statInfo.isPercent;
-                var isDisabled = Math.abs(val) < 0.000001;
-                var display = isPercent
-                    ? (isDisabled ? '0%' : (Math.round(val * 100) / 100) + '%')
-                    : (isDisabled ? '0' : String(Math.round(val)));
+        const tierController = getTierEstimatorController();
+        if (tierController && typeof tierController.buildSummaryEstimate === 'function' && typeof tierController.renderInto === 'function') {
+            const estimateData = tierController.buildSummaryEstimate(state);
+            tierController.renderInto(dom.tierSummaryCard, estimateData, {
+                t,
+                escapeHtml,
+                getStatIconPath,
+                translateSubStatOption,
+                minimumStatTargetSet: state.minimumStatsTargetSet,
+                isMinimumTargetStat: (key) => state.minimumStatsTargetSet.has(toCanonicalStatKey(key)),
+                statTotals: totals,
+                mainTotals,
+                subTotals
+            });
+        }
 
-                return '<div class="rs-summary-row' + (isDisabled ? ' is-disabled' : '') + '">'
-                    + '<span class="rs-summary-label">'
-                    + (icon ? '<img class="rs-summary-icon" src="' + escapeHtml(icon) + '" alt="">' : '')
-                    + '<span>' + escapeHtml(label) + '</span>'
-                    + '</span>'
-                    + '<span class="rs-summary-value">' + escapeHtml(display) + '</span>'
-                    + '</div>';
-            }).join('');
-
-            return '<div class="rs-summary-group' + (groupIndex > 0 ? ' is-secondary' : '') + '">'
-                + '<div class="rs-summary-grid">' + rowsHtml + '</div>'
-                + '</div>';
-        }).join('');
-
-        dom.statsSummary.innerHTML = '<div class="rs-summary-groups">' + groupsHtml + '</div>';
-        dom.statsSummary.hidden = false;
+        dom.statsSummary.hidden = true;
+        if (dom.tierSummaryCard) {
+            dom.tierSummaryCard.hidden = false;
+        }
     }
 
     function getCaptureController() {
@@ -2508,6 +2613,26 @@
         }) || {};
 
         return captureController;
+    }
+
+    function getTierEstimatorController() {
+        if (tierEstimatorController) return tierEstimatorController;
+
+        const helper = window.RevelationSettingTierEstimator;
+        if (!helper || typeof helper.createController !== 'function') {
+            tierEstimatorController = {};
+            return tierEstimatorController;
+        }
+
+        tierEstimatorController = helper.createController({
+            baseUrl: state.baseUrl,
+            version: state.version,
+            getStatsData: () => state.statsData,
+            toCanonicalStatKey,
+            parseUpgradeValue
+        }) || {};
+
+        return tierEstimatorController;
     }
 
     async function handleDownloadPng() {
@@ -2805,6 +2930,7 @@
             state.mainRev = '';
             state.subRev = '';
             state.slots = createInitialSlotState();
+            state.minimumStatsTargetSet = new Set();
             resetPresetState();
             renderCharacterSelector();
             renderPresetDropdown();
@@ -2820,6 +2946,11 @@
         state.subRev = '';
         state.slots = createInitialSlotState();
         resetPresetState();
+
+        try {
+            await loadCharacterSetting(selected);
+        } catch (_) { }
+        updateMinimumStatsTargetSet(selected);
 
         const modifiedBeforeSelect = hasCharacterModifiedSetting(selected);
         const restored = restoreCharacterSetting(selected);
@@ -2976,6 +3107,7 @@
         dom.shareBtn = document.getElementById('rsShareBtn');
         dom.backupFileInput = document.getElementById('rsBackupFileInput');
         dom.statsSummary = document.getElementById('rsStatsSummary');
+        dom.tierSummaryCard = document.getElementById('rsTierSummaryCard');
     }
 
     function applySharedReadonlyUi() {
@@ -3013,6 +3145,10 @@
             await initSeo();
 
             await loadStatsData();
+            const tierController = getTierEstimatorController();
+            if (tierController && typeof tierController.load === 'function') {
+                await tierController.load();
+            }
             await loadRevelationData();
             await loadCharacterNames();
             await loadGlobalPresetMap();

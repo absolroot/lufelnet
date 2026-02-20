@@ -24,6 +24,27 @@
         pullCalc: 'quick_pull_calc',
         astrolabe: 'quick_astrolabe'
     };
+    const TOOLTIP_KEY_MAP = {
+        character: 'quick_tip_character',
+        persona: 'quick_tip_persona',
+        revelations: 'quick_tip_revelations',
+        synergy: 'quick_tip_synergy',
+        wonderweapon: 'quick_tip_wonderweapon',
+        maps: 'quick_tip_maps',
+        astrolabe: 'quick_tip_astrolabe',
+        pullTracker: 'quick_tip_pull_tracker',
+        pullTracker_global: 'quick_tip_pull_tracker_global',
+        materialCalc: 'quick_tip_material_calc',
+        defenseCalc: 'quick_tip_defense_calc',
+        criticalCalc: 'quick_tip_critical_calc',
+        tacticLibrary: 'quick_tip_tactic_library',
+        tacticMaker: 'quick_tip_tactic_maker',
+        guide: 'quick_tip_guide',
+        tier: 'quick_tip_tier',
+        gallery: 'quick_tip_gallery',
+        schedule: 'quick_tip_schedule',
+        pullCalc: 'quick_tip_pull_calc'
+    };
     const LABEL_FALLBACK_MAP = {
         character: '캐릭터',
         persona: '페르소나',
@@ -44,6 +65,28 @@
         maps: '지도',
         pullCalc: '가챠 플래너',
         astrolabe: '성좌의 시련'
+    };
+
+    const TOOLTIP_FALLBACK_MAP = {
+        character: 'Browse character builds and recommendations.',
+        persona: 'Browse persona info and fusion paths.',
+        revelations: 'Check revelation options and setups.',
+        synergy: 'Find recommended team synergies.',
+        wonderweapon: 'Check Wonder weapon effects.',
+        maps: 'Track map collectibles and routes.',
+        astrolabe: 'Review astrolabe setup information.',
+        pullTracker: 'Analyze your pull records and stats.',
+        pullTracker_global: 'View global pull statistics.',
+        materialCalc: 'Calculate progression material costs.',
+        defenseCalc: 'Calculate defense-based damage changes.',
+        criticalCalc: 'Calculate critical chance values.',
+        tacticLibrary: 'Browse community tactic posts.',
+        tacticMaker: 'Create and share your own tactics.',
+        guide: 'Open system guides and tutorials.',
+        tier: 'Check the latest tier lists.',
+        gallery: 'Explore the image gallery.',
+        schedule: 'Check global release schedules.',
+        pullCalc: 'Plan pulls and currency usage.'
     };
 
     const injectStyles = () => {
@@ -103,6 +146,13 @@
     function getLabelByKey(itemKey, rawLang) {
         const i18nKey = LABEL_KEY_MAP[itemKey];
         const fallback = LABEL_FALLBACK_MAP[itemKey] || itemKey;
+        if (!i18nKey) return fallback;
+        return quickT(i18nKey, fallback, rawLang);
+    }
+
+    function getTooltipByKey(itemKey, rawLang) {
+        const i18nKey = TOOLTIP_KEY_MAP[itemKey];
+        const fallback = TOOLTIP_FALLBACK_MAP[itemKey] || '';
         if (!i18nKey) return fallback;
         return quickT(i18nKey, fallback, rawLang);
     }
@@ -181,11 +231,17 @@
         root.innerHTML = '';
         order.forEach(key => {
             const labelText = getLabelByKey(key, lang);
+            const tooltipText = getTooltipByKey(key, lang);
             const a = document.createElement('a');
             a.className = 'quick-link';
             a.href = buildHref(key, lang);
             a.setAttribute('data-key', key);
-            a.setAttribute('aria-label', labelText || key);
+            if (tooltipText) {
+                a.setAttribute('data-tooltip', tooltipText);
+                a.setAttribute('data-tooltip-mobile', 'longpress');
+                a.setAttribute('data-tooltip-longpress-ms', '380');
+            }
+            a.setAttribute('aria-label', tooltipText ? `${labelText || key} - ${tooltipText}` : (labelText || key));
 
             const iconWrap = document.createElement('div');
             iconWrap.className = 'quick-icon-wrap';
@@ -227,6 +283,9 @@
             item.className = 'quick-item';
             item.appendChild(a);
             root.appendChild(item);
+            if (tooltipText && typeof bindTooltipElement === 'function') {
+                bindTooltipElement(a);
+            }
         });
     };
 

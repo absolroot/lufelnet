@@ -67,25 +67,110 @@ function bindTooltipElement(el) {
             node.dataset.tooltipMode = 'mobile';
         }
 
-        node.addEventListener('click', function(e) {
-            try {
-                const tooltipText = this.getAttribute('data-tooltip');
-                if (!tooltipText) return;
-                const existingBanner = document.querySelector('.tooltip-mobile-banner');
-                if (existingBanner) existingBanner.remove();
-                const banner = document.createElement('div');
-                banner.className = 'tooltip-mobile-banner';
-                banner.innerHTML = tooltipText;
-                const closeButton = document.createElement('button');
-                closeButton.className = 'tooltip-banner-close';
-                closeButton.innerHTML = '×';
-                closeButton.onclick = () => { if (banner.parentElement) banner.remove(); };
-                banner.appendChild(closeButton);
-                if (document.body) document.body.appendChild(banner); else return;
-                setTimeout(() => { if (banner.parentElement) banner.remove(); }, 5000);
-                e.preventDefault(); e.stopPropagation();
-            } catch (error) { console.error('모바일 툴팁 배너 생성 중 오류:', error); }
-        });
+        const showMobileBanner = (tooltipText) => {
+            if (!tooltipText) return false;
+            const existingBanner = document.querySelector('.tooltip-mobile-banner');
+            if (existingBanner) existingBanner.remove();
+            const banner = document.createElement('div');
+            banner.className = 'tooltip-mobile-banner';
+            banner.innerHTML = tooltipText;
+            const closeButton = document.createElement('button');
+            closeButton.className = 'tooltip-banner-close';
+            closeButton.innerHTML = '&times;';
+            closeButton.onclick = () => { if (banner.parentElement) banner.remove(); };
+            banner.appendChild(closeButton);
+            if (!document.body) return false;
+            document.body.appendChild(banner);
+            setTimeout(() => { if (banner.parentElement) banner.remove(); }, 5000);
+            return true;
+        };
+
+        const mobileBehavior = (node.getAttribute('data-tooltip-mobile') || 'click').toLowerCase();
+        const parsedLongPressMs = parseInt(node.getAttribute('data-tooltip-longpress-ms') || '380', 10);
+        const longPressMs = Number.isFinite(parsedLongPressMs) && parsedLongPressMs > 0 ? parsedLongPressMs : 380;
+
+        if (mobileBehavior === 'longpress') {
+            const MOVE_THRESHOLD = 8;
+            let pressTimer = null;
+            let startX = 0;
+            let startY = 0;
+
+            const clearPressTimer = () => {
+                if (pressTimer) {
+                    clearTimeout(pressTimer);
+                    pressTimer = null;
+                }
+            };
+
+            const beginPress = (clientX, clientY) => {
+                startX = clientX;
+                startY = clientY;
+                node.dataset.tooltipLongpressTriggered = '0';
+                clearPressTimer();
+                pressTimer = setTimeout(() => {
+                    pressTimer = null;
+                    try {
+                        const tooltipText = node.getAttribute('data-tooltip');
+                        if (showMobileBanner(tooltipText)) {
+                            node.dataset.tooltipLongpressTriggered = '1';
+                        }
+                    } catch (error) {
+                        console.error('Failed to show long-press tooltip banner:', error);
+                    }
+                }, longPressMs);
+            };
+
+            const shouldCancelByMove = (clientX, clientY) => (
+                Math.abs(clientX - startX) > MOVE_THRESHOLD ||
+                Math.abs(clientY - startY) > MOVE_THRESHOLD
+            );
+
+            if (window.PointerEvent) {
+                node.addEventListener('pointerdown', function (e) {
+                    if (e.pointerType === 'mouse') return;
+                    beginPress(e.clientX, e.clientY);
+                });
+                node.addEventListener('pointermove', function (e) {
+                    if (e.pointerType === 'mouse' || !pressTimer) return;
+                    if (shouldCancelByMove(e.clientX, e.clientY)) clearPressTimer();
+                });
+                node.addEventListener('pointerup', clearPressTimer);
+                node.addEventListener('pointercancel', clearPressTimer);
+                node.addEventListener('pointerleave', clearPressTimer);
+            } else {
+                node.addEventListener('touchstart', function (e) {
+                    const touch = e.touches && e.touches[0];
+                    if (!touch) return;
+                    beginPress(touch.clientX, touch.clientY);
+                }, { passive: true });
+                node.addEventListener('touchmove', function (e) {
+                    if (!pressTimer) return;
+                    const touch = e.touches && e.touches[0];
+                    if (!touch) return;
+                    if (shouldCancelByMove(touch.clientX, touch.clientY)) clearPressTimer();
+                }, { passive: true });
+                node.addEventListener('touchend', clearPressTimer, { passive: true });
+                node.addEventListener('touchcancel', clearPressTimer, { passive: true });
+            }
+
+            node.addEventListener('click', function (e) {
+                if (this.dataset.tooltipLongpressTriggered === '1') {
+                    this.dataset.tooltipLongpressTriggered = '0';
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+            });
+        } else {
+            node.addEventListener('click', function(e) {
+                try {
+                    const tooltipText = this.getAttribute('data-tooltip');
+                    if (!tooltipText) return;
+                    if (!showMobileBanner(tooltipText)) return;
+                    e.preventDefault();
+                    e.stopPropagation();
+                } catch (error) { console.error('Mobile tooltip banner render failed:', error); }
+            });
+        }
 
         node.dataset.tooltipBound = '1';
     }

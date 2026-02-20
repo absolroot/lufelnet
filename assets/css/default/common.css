@@ -102,7 +102,7 @@ body {
 /* PC 환경의 배경 스타일 - 스크롤 성능 최적화 */
 @media screen and (min-width: 769px) {
     .container {
-        background: linear-gradient(to bottom, rgb(0 0 0 / 0%), rgb(0 0 0 / 13%)), linear-gradient(45deg, transparent 48%, rgba(255, 255, 255, 0.03) 49%, rgba(255, 255, 255, 0.03) 51%, transparent 52%), linear-gradient(-45deg, transparent 48%, rgba(255, 255, 255, 0.03) 49%, rgba(255, 255, 255, 0.03) 51%, transparent 52%), #111;
+        background: linear-gradient(to bottom, rgb(0 0 0 / 0%), rgb(0 0 0 / 13%)), linear-gradient(45deg, transparent 48%, rgba(255, 255, 255, 0.01) 49%, rgba(255, 255, 255, 0.01) 51%, transparent 52%), linear-gradient(-45deg, transparent 48%, rgba(255, 255, 255, 0.01) 49%, rgba(255, 255, 255, 0.01) 51%, transparent 52%), #111;
         background-size: 100% 100%, 30px 30px, 30px 30px, 100% 100%;
         background-attachment: scroll, scroll, scroll, scroll;
         background-position: 0 0, 0 0, 0 0, center center;
@@ -112,7 +112,7 @@ body {
 /* 모바일 환경의 단순화된 배경 스타일 */
 @media screen and (max-width: 1200px) {
     .container {
-        background: linear-gradient(to bottom, rgb(0 0 0 / 0%), rgb(0 0 0 / 13%)), linear-gradient(45deg, transparent 48%, rgba(255, 255, 255, 0.03) 49%, rgba(255, 255, 255, 0.03) 51%, transparent 52%), linear-gradient(-45deg, transparent 48%, rgba(255, 255, 255, 0.03) 49%, rgba(255, 255, 255, 0.03) 51%, transparent 52%), #111;
+        background: linear-gradient(to bottom, rgb(0 0 0 / 0%), rgb(0 0 0 / 13%)), linear-gradient(45deg, transparent 48%, rgba(255, 255, 255, 0.01) 49%, rgba(255, 255, 255, 0.01) 51%, transparent 52%), linear-gradient(-45deg, transparent 48%, rgba(255, 255, 255, 0.01) 49%, rgba(255, 255, 255, 0.01) 51%, transparent 52%), #111;
         background-size: 100% 100%, 30px 30px, 30px 30px, 100% 100%;
         background-attachment: scroll, scroll, scroll, scroll;
         background-position: 0 0, 0 0, 0 0, center center;

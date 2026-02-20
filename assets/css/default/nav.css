@@ -440,6 +440,13 @@
         width: var(--nav-collapsed-width);
         transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
         overflow-x: hidden;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .main-nav::-webkit-scrollbar {
+        width: 0;
+        height: 0;
     }
 
     /* 호버 시 확장 */
@@ -634,6 +641,11 @@
         display: flex;
         flex-direction: column;
         gap: 10px;
+        position: sticky;
+        bottom: 0;
+        margin-top: 0;
+        flex-shrink: 0;
+        z-index: 2;
     }
 
     .main-nav:hover .language-selector-container,
@@ -873,7 +885,49 @@
     }
 }
 
+/* tablet/desktop side panel: hide scrollbar by default, show on hover */
+@media screen and (min-width: 1201px) and (max-width: 1440px) {
+    .main-nav {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .main-nav::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+    }
+
+    .main-nav .language-selector-container {
+        position: sticky;
+        bottom: 0;
+        margin-top: 0;
+        flex-shrink: 0;
+        z-index: 2;
+    }
+}
+
 /* 토글 버튼 기본 숨김 (PC 외) */
+@media screen and (min-width: 1201px) {
+    .main-nav .nav-scroll-thumb {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 6px;
+        height: 0;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.25);
+        opacity: 0;
+        display: none;
+        transition: opacity 0.15s ease;
+        pointer-events: none;
+        z-index: 1100;
+    }
+
+    .main-nav:hover .nav-scroll-thumb {
+        opacity: 1;
+    }
+}
+
 .nav-toggle-btn {
     display: none;
 }
@@ -1047,7 +1101,7 @@
     text-align: center;
     width: 100%;
     box-sizing: border-box;
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: #131313;
     position: relative;
     /* 상대 위치 설정 */
     z-index: 1;

@@ -376,10 +376,12 @@ class Navigation {
                     </div>
                 </button>
                 </div>
+                <div class="nav-scroll-thumb" aria-hidden="true"></div>
             </nav>
         `;
 
         document.querySelector('#nav-container').innerHTML = navTemplate;
+        this.initNavScrollThumb();
 
         // 먼저 sword animation 초기화
         this.initSwordAnimation();
@@ -671,6 +673,67 @@ class Navigation {
 
         // Footer 번역 적용
         this.updateFooterTranslation();
+        requestAnimationFrame(() => this.initNavScrollThumb());
+    }
+
+    static initNavScrollThumb() {
+        const nav = document.querySelector('.main-nav');
+        if (!nav) return;
+
+        let thumb = nav.querySelector('.nav-scroll-thumb');
+        if (!thumb) {
+            thumb = document.createElement('div');
+            thumb.className = 'nav-scroll-thumb';
+            thumb.setAttribute('aria-hidden', 'true');
+            nav.appendChild(thumb);
+        }
+
+        const updateThumb = () => {
+            if (!nav.isConnected || !thumb.isConnected) return;
+
+            const scrollHeight = nav.scrollHeight;
+            const clientHeight = nav.clientHeight;
+            const maxScroll = scrollHeight - clientHeight;
+            const hasScroll = maxScroll > 0;
+            nav.classList.toggle('has-scroll', hasScroll);
+            const navRect = nav.getBoundingClientRect();
+            const thumbLeft = Math.round(navRect.right - 8);
+
+            if (!hasScroll || navRect.width <= 0 || navRect.height <= 0) {
+                thumb.style.display = 'none';
+                thumb.style.height = '0';
+                thumb.style.top = `${Math.round(navRect.top)}px`;
+                thumb.style.left = `${thumbLeft}px`;
+                return;
+            }
+
+            const minThumbHeight = 32;
+            const thumbHeight = Math.max(minThumbHeight, Math.round((clientHeight / scrollHeight) * clientHeight));
+            const maxTop = clientHeight - thumbHeight;
+            const thumbTop = maxTop > 0 ? Math.round((nav.scrollTop / maxScroll) * maxTop) : 0;
+
+            thumb.style.display = 'block';
+            thumb.style.height = `${thumbHeight}px`;
+            thumb.style.top = `${Math.round(navRect.top + thumbTop)}px`;
+            thumb.style.left = `${thumbLeft}px`;
+        };
+
+        updateThumb();
+
+        if (!nav.hasAttribute('data-scroll-thumb-bound')) {
+            nav.addEventListener('scroll', updateThumb, { passive: true });
+            nav.addEventListener('click', () => requestAnimationFrame(updateThumb));
+            nav.addEventListener('mouseenter', updateThumb);
+            nav.addEventListener('mousemove', updateThumb);
+            nav.addEventListener('transitionend', (e) => {
+                if (e.propertyName === 'width') {
+                    updateThumb();
+                }
+            });
+            window.addEventListener('resize', updateThumb);
+            window.addEventListener('load', updateThumb);
+            nav.setAttribute('data-scroll-thumb-bound', 'true');
+        }
     }
 
     // 현재 언어 감지 함수

@@ -51,7 +51,7 @@ window.I18N_PAGE_REVELATION_EN = {
     sub_crit_rate: 'Crit Rate',
     sub_crit_mult: 'Crit Mult.',
     sub_pierce_rate: 'Pierce Rate',
-    sub_attack_mult: 'Attack Mult.',
+    sub_attack_mult: 'Damage Mult',
     sub_attack_percent: 'Attack %',
     sub_attack: 'Attack',
     sub_hp_percent: 'HP %',

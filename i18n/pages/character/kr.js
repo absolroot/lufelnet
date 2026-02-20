@@ -41,6 +41,8 @@ window.I18N_PAGE_CHARACTER_KR = {
     characterDetailStar: '성',
     characterDetailSky: '진',
     characterDetailCodeName: '코드네임',
+    characterDetailNaviCodenameValue: 'NAVI / ORACLE',
+    characterDetailNaviCodenameTooltip: '아시아에서는 NAVI라고 불리지만 GLB에서는 ORACLE로 표기됩니다. 현 사이트에서는 공통적인 코드네임을 통해 기능하므로 NAVI로 명명합니다.',
     characterDetailUnreleasedNote: '안내: 일부 추천 페르소나 및 무기는 현재 지역에서 아직 출시되지 않았을 수 있습니다.',
     characterDetailRecommendedCombination: '추천 조합',
     characterDetailRecommendedPartyExample: '추천 파티 예시',

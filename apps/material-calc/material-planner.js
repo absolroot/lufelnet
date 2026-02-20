@@ -239,14 +239,31 @@
     }
 
     // 보조: 캐릭터 키 정규화 (KR 키로 정규화)
+    function isFutabaOracleAliasTarget(krKey, meta) {
+        if (krKey === '후타바') return true;
+        return String((meta && meta.codename) || '').toLowerCase() === 'navi';
+    }
+
+    function buildSearchQueries(value) {
+        const base = String(value || '').normalize('NFKC').toLowerCase().trim();
+        if (!base) return [];
+        const queries = [base];
+        if (base.includes('oracle')) {
+            queries.push(base.replace(/oracle/g, 'navi'));
+        }
+        return Array.from(new Set(queries));
+    }
+
     function resolveCharacterKey(name) {
         if (!STATE.characterData) return name;
         if (STATE.characterData[name]) return name;
         const lower = String(name).toLowerCase();
+        if (lower === 'oracle' && STATE.characterData['후타바']) return '후타바';
         for (const [kr, meta] of Object.entries(STATE.characterData)) {
             if (String(meta.name_en || '').toLowerCase() === lower) return kr;
             if (String(meta.name_jp || '').toLowerCase() === lower) return kr;
             if (String(meta.codename || '').toLowerCase() === lower) return kr;
+            if (lower === 'oracle' && isFutabaOracleAliasTarget(kr, meta)) return kr;
         }
         return name;
     }
@@ -275,14 +292,19 @@
         const planned = new Set(STATE.plans.map(p => p.name));
         names = names.filter(n => !planned.has(n));
         // 검색 필터: KR/EN/JP/코드네임(codename) 모두 검색
-        const q = (document.getElementById('characterSearch')?.value || '').trim().toLowerCase();
-        if (q) {
+        const queries = buildSearchQueries(document.getElementById('characterSearch')?.value || '');
+        if (queries.length > 0) {
             names = names.filter(n => {
                 const meta = STATE.characterData?.[n] || {};
-                const en = (meta.name_en || '').toLowerCase();
-                const jp = (meta.name_jp || '').toLowerCase();
-                const code = (meta.codename || '').toLowerCase();
-                return n.toLowerCase().includes(q) || en.includes(q) || jp.includes(q) || code.includes(q);
+                const searchText = [
+                    n,
+                    meta.name_en || '',
+                    meta.name_jp || '',
+                    meta.codename || '',
+                    isFutabaOracleAliasTarget(n, meta) ? 'oracle' : ''
+                ].join(' ').toLowerCase();
+                const alias = isFutabaOracleAliasTarget(n, meta) ? 'oracle' : '';
+                return queries.some(q => searchText.includes(q) || alias.includes(q));
             });
         }
         const seen = new Set();

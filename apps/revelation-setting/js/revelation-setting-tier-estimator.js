@@ -14,7 +14,9 @@
         'Speed': 341,
         'SP Recovery': 361,
         'Pierce Rate': 371,
-        'Attack Mult.': 411
+        'Attack Mult.': 411,
+        'Damage Mult.': 411,
+        'Damage Mult': 411
     };
 
     const PERCENT_STATS = new Set([
@@ -22,6 +24,8 @@
         'Crit Mult.',
         'Pierce Rate',
         'Attack Mult.',
+        'Damage Mult.',
+        'Damage Mult',
         'Attack %',
         'HP %',
         'Defense %',

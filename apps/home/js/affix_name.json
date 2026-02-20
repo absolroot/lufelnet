@@ -98,5 +98,13 @@
     {
         "description": "All allies' final damage is increased based on their ailment accuracy. Final damage is increased by a maximum of 15% at 150% ailment accuracy.",
         "name": "Ailment Accuracy +"
+    },
+    {
+        "description" : "When the party activates a Technical, Attack is increased by 25% and critical damage by 25%.",
+        "name": "Technical +"
+    },
+    {
+        "description" : "Foes inflicted with Burn take 20% increased damage.",
+        "name": "Burn +"
     }
 ]

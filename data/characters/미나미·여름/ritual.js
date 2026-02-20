@@ -23,7 +23,7 @@ window.enCharacterRitualData["미나미·여름"] = {
   "r0": "Stopping Time for You",
   "r0_detail": "Minami has 3 unlimited Exclusive Buff Items only she can use. When using [Faraway Flower], gain 1 [Flower of Dream] stack. Stacks up to 1 time. At the start of Minami's turn, she can spend 1 [Flower of Dream] to gain [Memory Prescription]. [Memory Prescription]: Can use item without spending an action, extend Buff Item effect by 1 turn, lose this effect after using 1 item.",
   "r1": "Past Memories",
-  "r1_detail": "When using [Faraway Flower], gain 1 [Flower of Dream] more. Increase the maximum number of [Flower of Dream] stacks to 2. Increase Minami's item effect by 24%.",
+  "r1_detail": "When using [Faraway Flower], gain 1 [Flower of Dream] more. Increase the maximum number of [Flower of Dream] stacks to 2. Increase Minami's item effect by 20%.",
   "r2": "Wind-Blown Flower",
   "r2_detail": "When using [Summer Gift Basket], inflict targets with [Flower's Embrace]: Decrease Defense by 25% and increase critical damage taken by 30%. Lasts for 3 turns.",
   "r3": "Blooming Under the Sun",

@@ -42,6 +42,10 @@
                     setRef.add('Defense');
                     setRef.add('Defense %');
                 }
+                if (baseKey === 'HP' || baseKey === 'HP %') {
+                    setRef.add('HP');
+                    setRef.add('HP %');
+                }
             }
 
             if (canonical) {

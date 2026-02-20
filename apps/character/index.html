@@ -1068,4 +1068,4 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
     });
 
 </script>
-<script src="{{ site.baseurl }}/apps/character/character-search.js?v=20240726"></script>
+<script src="{{ site.baseurl }}/apps/character/character-search.js?v={{ site.time | date: '%s' }}"></script>

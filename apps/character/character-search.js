@@ -91,6 +91,16 @@
         return String(value || '').toLowerCase().replace(/\s+/g, '');
     }
 
+    function buildSearchQueries(value) {
+        const base = String(value || '').normalize('NFKC').toLowerCase().trim();
+        if (!base) return [];
+        const queries = [base];
+        if (base.includes('oracle')) {
+            queries.push(base.replace(/oracle/g, 'navi'));
+        }
+        return Array.from(new Set(queries));
+    }
+
     function getDisplayName(characterName) {
         const charData = (window.characterData && window.characterData[characterName]) || {};
         const lang = getCurrentLang();
@@ -102,6 +112,11 @@
             return charData.name_jp || charData.name || characterName;
         }
         return charData.name || characterName;
+    }
+
+    function isFutabaOracleAliasTarget(characterName, charData) {
+        if (characterName === '후타바') return true;
+        return String((charData && charData.codename) || '').toLowerCase() === 'navi';
     }
 
     function buildSearchIndex() {
@@ -152,6 +167,10 @@
                     terms.push(nickname);
                 }
             });
+
+            if (isFutabaOracleAliasTarget(name, char)) {
+                terms.push('oracle');
+            }
 
             nextIndex[name] = terms.join(' ').toLowerCase();
         });
@@ -251,10 +270,10 @@
     }
 
     function filterBySearch(searchValue) {
-        const query = String(searchValue || '').toLowerCase().trim();
+        const queries = buildSearchQueries(searchValue);
         const cards = getCachedCards();
 
-        if (!query) {
+        if (queries.length === 0) {
             for (let i = 0, len = cards.length; i < len; i++) {
                 cards[i].classList.remove('hidden-by-search');
             }
@@ -266,7 +285,8 @@
         const idx = state.searchIndex;
         const names = Object.keys(idx);
         for (let i = 0, len = names.length; i < len; i++) {
-            if (idx[names[i]].includes(query)) {
+            const indexed = idx[names[i]];
+            if (queries.some((q) => indexed.includes(q))) {
                 matched.add(names[i]);
             }
         }
@@ -285,10 +305,10 @@
         const dropdown = document.getElementById('searchDropdown');
         if (!dropdown) return;
 
-        const query = String(searchValue || '').toLowerCase();
+        const queries = buildSearchQueries(searchValue);
         dropdown.innerHTML = '';
 
-        if (!query) {
+        if (queries.length === 0) {
             dropdown.style.display = 'none';
             return;
         }
@@ -301,10 +321,14 @@
             const codename = String(charData.codename || '').toLowerCase();
             const key = String(characterName || '').toLowerCase();
             const indexed = String(state.searchIndex[characterName] || '');
-            const nicknameMatch = Object.entries(nicknameMap).some(([nickname, realName]) => {
-                return nickname.toLowerCase().includes(query) && realName === characterName;
+            const queryMatch = queries.some((q) => {
+                return displayName.includes(q) || codename.includes(q) || key.includes(q) || indexed.includes(q);
             });
-            return displayName.includes(query) || codename.includes(query) || key.includes(query) || indexed.includes(query) || nicknameMatch;
+            const nicknameMatch = Object.entries(nicknameMap).some(([nickname, realName]) => {
+                const nick = nickname.toLowerCase();
+                return queries.some((q) => nick.includes(q)) && realName === characterName;
+            });
+            return queryMatch || nicknameMatch;
         });
 
         if (!matches.length) {

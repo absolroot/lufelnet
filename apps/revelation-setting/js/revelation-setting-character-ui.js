@@ -271,7 +271,8 @@
                     meta.name || '',
                     meta.name_en || '',
                     meta.name_jp || '',
-                    meta.codename || ''
+                    meta.codename || '',
+                    (name === '후타바' || String(meta.codename || '').toLowerCase() === 'navi') ? 'oracle' : ''
                 ].join(' ').toLowerCase();
                 return searchText.includes(query);
             });

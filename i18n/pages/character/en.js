@@ -41,6 +41,8 @@ window.I18N_PAGE_CHARACTER_EN = {
     characterDetailStar: 'Star',
     characterDetailSky: 'Sky',
     characterDetailCodeName: 'CodeName',
+    characterDetailNaviCodenameValue: 'NAVI / ORACLE',
+    characterDetailNaviCodenameTooltip: 'In Asia, she is called NAVI, but in GLB she is labeled ORACLE. This site uses shared codenames for feature compatibility, so she is named NAVI.',
     characterDetailUnreleasedNote: 'Note: Some recommended personas & weapons may not be released yet in your region.',
     characterDetailRecommendedCombination: 'Recommended Combination',
     characterDetailRecommendedPartyExample: 'Recommended Parties Example',

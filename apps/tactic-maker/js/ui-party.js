@@ -736,7 +736,8 @@ export class PartyUI {
             if (activeElements.size > 0 && !activeElements.has(charData.element)) return;
             if (activePositions.size > 0 && !activePositions.has(charData.position)) return;
             if (q) {
-                const text = `${name} ${charData.name || ''} ${charData.codename || ''}`.toLowerCase();
+                const alias = (name === '후타바' || String(charData.codename || '').toLowerCase() === 'navi') ? 'oracle' : '';
+                const text = `${name} ${charData.name || ''} ${charData.codename || ''} ${alias}`.toLowerCase();
                 if (!text.includes(q)) return;
             }
 

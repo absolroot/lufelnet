@@ -41,6 +41,8 @@ window.I18N_PAGE_CHARACTER_JP = {
     characterDetailStar: '星',
     characterDetailSky: '天',
     characterDetailCodeName: 'コードネーム',
+    characterDetailNaviCodenameValue: 'NAVI / ORACLE',
+    characterDetailNaviCodenameTooltip: 'アジアではNAVIと呼ばれますが、GLBではORACLE表記です。このサイトは共通コードネームで機能するため、NAVIで表記します。',
     characterDetailUnreleasedNote: '※推奨されているペルソナとウェポンの一部は、現在の地域ではリリースされていない可能性があります。',
     characterDetailRecommendedCombination: '推奨コンビネーション',
     characterDetailRecommendedPartyExample: '推奨パーティ例',

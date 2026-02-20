@@ -476,6 +476,9 @@
         'Crit Mult.': 'sub_crit_mult',
         'Pierce Rate': 'sub_pierce_rate',
         'Attack Mult.': 'sub_attack_mult',
+        'Attack Mult': 'sub_attack_mult',
+        'Damage Mult.': 'sub_attack_mult',
+        'Damage Mult': 'sub_attack_mult',
         'Attack %': 'sub_attack_percent',
         'Attack': 'sub_attack',
         'HP %': 'sub_hp_percent',
@@ -488,6 +491,10 @@
         'Healing Effect': 'sub_healing_effect'
     };
 
+    function resolveSubStatI18nKey(label) {
+        return subStatKeyMap[String(label || '').trim()] || '';
+    }
+
     // Placeholder main stats ranges (fill exact values later from image)
     // Placeholder main stats ranges (fill exact values later from image)
     // Data is now loaded from revelation_stats.json to avoid duplication
@@ -496,7 +503,7 @@
     // Helper: determine if a main stat label should be pink-highlighted for a given tab and language
     // Helper: determine if a main stat label should be pink-highlighted for a given tab
     // Now uses I18nService keys to avoid hardcoded strings per language
-    function isRevPinkLabel(lang, slotKey, label) {
+    function isRevPinkLabel(lang, slotKey, label, i18nKey) {
         // Define which stats (by i18n key) should be pink for each slot
         const pinkKeys = {
             moon: ['sub_attack_mult', 'sub_healing_effect'],
@@ -507,8 +514,10 @@
         const keys = pinkKeys[slotKey];
         if (!keys) return false;
 
-        // Check if the current label matches the translation of any pink key
-        // Note: This assumes 'label' (from stats JSON) matches the I18nService translation
+        if (i18nKey) {
+            return keys.indexOf(i18nKey) !== -1;
+        }
+
         return keys.some(key => I18nService.t(key) === label);
     }
 
@@ -526,8 +535,10 @@
         // Show bigger values first (Max -> Min)
         const table = [`<div class="rev-table-wrap"><table class="rev-table rev-table-main"><thead><tr><th>${colOption}</th><th>${colMax}</th><th>${colMin}</th></tr></thead><tbody>`,
         ...rows.map(r => {
-            const pink = isRevPinkLabel(lang, slotKey, r[0]);
-            const label = pink ? `<span class="rev-label-pink">${r[0]}</span>` : r[0];
+            const i18nKey = resolveSubStatI18nKey(r[0]);
+            const translatedLabel = i18nKey ? I18nService.t(i18nKey) : r[0];
+            const pink = isRevPinkLabel(lang, slotKey, r[0], i18nKey);
+            const label = pink ? `<span class="rev-label-pink">${translatedLabel}</span>` : translatedLabel;
             return `<tr><td>${label}</td><td>${r[2]}</td><td>${r[1]}</td></tr>`;
         }),
             `</tbody></table></div>`].join('');
@@ -563,7 +574,7 @@
         const head = `<thead><tr><th>${colOption}</th><th>${col1st}</th><th>${col2nd}</th><th>${col3rd}</th><th>${col4th}</th><th>${col5th}</th></tr></thead>`;
         const body = data.map(row => {
             // Map English key to I18n key, then translate
-            const i18nKey = subStatKeyMap[row[0]];
+            const i18nKey = resolveSubStatI18nKey(row[0]);
             const label = i18nKey ? I18nService.t(i18nKey) : row[0];
 
             return `<tr><td>${label}</td><td>${row[1]}</td><td>${row[2]}</td><td>${row[3]}</td><td>${row[4]}</td><td>${row[5]}</td></tr>`;

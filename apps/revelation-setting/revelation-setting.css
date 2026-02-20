@@ -1069,7 +1069,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 8px;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
 }
 
 .rs-tier-card-head-left {
@@ -1174,13 +1174,14 @@
     color: rgba(255, 255, 255, 0.72);
     font-weight: 700;
     text-align: center;
+    background: rgba(0, 0, 0, 0.2);
     border-bottom-color: rgba(255, 255, 255, 0.14);
 }
 
 .rs-tier-table th:first-child,
 .rs-tier-table td:first-child {
     text-align: left;
-    width: 28%;
+    width: 22%;
 }
 
 .rs-tier-table th:last-child,
@@ -1190,35 +1191,40 @@
 
 .rs-tier-table th:nth-child(2),
 .rs-tier-table td:nth-child(2) {
-    width: 9%;
-    text-align: left;
-    padding-left: 2px;
+    width: 11%;
+    text-align: center;
+    padding-left: 6px;
     padding-right: 6px;
+    border-right: 1px dotted rgba(255, 255, 255, 0.1);
 }
 
 .rs-tier-table th:nth-child(3),
 .rs-tier-table td:nth-child(3) {
-    width: 8%;
-    text-align: left;
-    padding-left: 2px;
-    padding-right: 4px;
+    width: 9%;
+    text-align: center;
+    padding-left: 6px;
+    padding-right: 6px;
 }
 
 .rs-tier-table th:nth-child(4),
 .rs-tier-table td:nth-child(4) {
-    width: 8%;
-    text-align: left;
-    padding-left: 2px;
-    padding-right: 4px;
+    width: 9%;
+    text-align: center;
+    padding-left: 6px;
+    padding-right: 6px;
 }
 
 .rs-tier-table th:nth-child(5),
 .rs-tier-table td:nth-child(5) {
-    border-left: 1px solid rgba(255, 255, 255, 0.12);
+    border-left: 2px solid rgba(255, 255, 255, 0.18);
+    border-right: 1px dotted rgba(255, 255, 255, 0.1);
     padding-left: 14px;
 }
 
-.rs-tier-table th:nth-child(n+5),
+.rs-tier-table th:nth-child(n+5) {
+    background: rgba(0, 0, 0, 0.2);
+}
+
 .rs-tier-table td:nth-child(n+5) {
     background: rgba(255, 255, 255, 0.015);
 }

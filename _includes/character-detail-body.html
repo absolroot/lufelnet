@@ -1081,6 +1081,8 @@
             window.characterSetting = window.characterSetting || {};
             // 리코·매화 전용 계산기 전역 스텁
             window.RikoCalc = window.RikoCalc || {};
+            // 후타바 전용 코드네임 아이콘 전역 스텁
+            window.NaviIcons = window.NaviIcons || {};
         } catch (e) { console.warn('[SAFE:init-globals]', e); }
 
         async function loadCharacterDataAll(name) {
@@ -1100,6 +1102,11 @@
             // J&C 전용 아이콘 스크립트는 해당 캐릭터일 때만 로드
             if (name === 'J&C' || name === '쥐스틴 & 카롤린' || name === '쥐스틴&카롤린') {
                 tasks.push(loadPerCharacterResource(name, { fileBase: 'JC_icons', globalVarName: 'JCIcons' }));
+            }
+
+            // 후타바 전용 코드네임(NAVI / ORACLE) 안내 아이콘 스크립트
+            if (name === '후타바') {
+                tasks.push(loadPerCharacterResource(name, { fileBase: 'navi_icon', globalVarName: 'NaviIcons' }));
             }
 
             // 몽타뉴·백조 전용 모드 선택 스크립트 로드
@@ -1448,6 +1455,11 @@
                 personaEl.innerHTML = `
                     <span class="label">${personaLabel}</span><span class="value">${personaValue}</span>
                 `;
+            }
+
+            // 후타바 전용 코드네임(NAVI / ORACLE) + 툴팁 오버라이드
+            if (typeof window.applyNaviCodenameOverride === 'function') {
+                window.applyNaviCodenameOverride();
             }
         } catch (e) { console.warn('[SAFE:code-persona]', e); }
 

@@ -34,6 +34,8 @@
         'Crit Mult.',
         'Pierce Rate',
         'Attack Mult.',
+        'Damage Mult.',
+        'Damage Mult',
         'Attack %',
         'HP %',
         'Defense %',
@@ -41,6 +43,13 @@
         'SP Recovery',
         'Healing Effect'
     ]);
+
+    const STAT_CANONICAL_ALIAS_MAP = {
+        attackmult: 'Attack Mult.',
+        'attackmult.': 'Attack Mult.',
+        damagemult: 'Attack Mult.',
+        'damagemult.': 'Attack Mult.'
+    };
 
     const STAT_ICON_ALIAS = {
         '공격력': '공격력',
@@ -585,9 +594,20 @@
     }
 
     function getSubStatMaxValue(slotId, optionLabel) {
-        const match = getSubStatRows(slotId).find((row) => row && row[0] === optionLabel);
-        if (!match) return '';
-        return String(match[1] || '');
+        const rows = getSubStatRows(slotId);
+        const raw = String(optionLabel || '').trim();
+        const exact = rows.find((row) => String((row && row[0]) || '').trim() === raw);
+        if (exact) return String(exact[1] || '');
+
+        const canonical = toCanonicalStatKey(raw);
+        if (!canonical) return '';
+
+        const byCanonical = rows.find((row) => {
+            const label = String((row && row[0]) || '').trim();
+            return label && toCanonicalStatKey(label) === canonical;
+        });
+        if (!byCanonical) return '';
+        return String(byCanonical[1] || '');
     }
 
     function normalizeStatKey(value) {
@@ -646,12 +666,19 @@
         const raw = String(name || '').trim();
         if (!raw) return '';
 
+        const normalizedRaw = normalizeStatKey(raw);
+        const directAlias = STAT_CANONICAL_ALIAS_MAP[normalizedRaw];
+        if (directAlias) return directAlias;
+
         if (!state.statCanonicalLookup) {
             state.statCanonicalLookup = buildStatCanonicalLookup();
         }
-        return state.statCanonicalLookup[raw]
-            || state.statCanonicalLookup[normalizeStatKey(raw)]
+
+        const resolved = state.statCanonicalLookup[raw]
+            || state.statCanonicalLookup[normalizedRaw]
             || raw;
+
+        return STAT_CANONICAL_ALIAS_MAP[normalizeStatKey(resolved)] || resolved;
     }
 
     function getMainDisplayRows(slotId, selectedOption) {

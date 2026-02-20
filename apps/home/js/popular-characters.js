@@ -16,13 +16,13 @@
         ],
         en: [
             { name: 'J&C', badge: 'HOT' },
+            { name: '리코·매화', badge: 'HOT' },
             { name: '아야카', badge: 'HOT' },
-            { name: '후타바', badge: 'HOT' },
         ],
         jp: [
             { name: 'J&C', badge: 'HOT' },
+            { name: '리코·매화', badge: 'HOT' },
             { name: '아야카', badge: 'HOT' },
-            { name: '후타바', badge: 'HOT' },
         ],
     };
 

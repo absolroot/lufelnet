@@ -1147,6 +1147,7 @@
         if (isSharedReadonlyMode()) return false;
         const id = String(targetPresetId || '').trim();
         if (!id || !state.presetMap[id]) return false;
+        if (id === DEFAULT_PRESET_ID) return false;
 
         ensurePresetState();
         syncActivePresetFromEditorState();
@@ -1189,11 +1190,37 @@
         return true;
     }
 
+    async function resetPresetToRecommended(targetPresetId) {
+        if (isSharedReadonlyMode()) return false;
+        const id = String(targetPresetId || '').trim();
+        if (!id || !state.presetMap[id]) return false;
+
+        ensurePresetState();
+        syncActivePresetFromEditorState();
+
+        const recommendedBuild = await buildRecommendedPackedBuild(state.selectedCharacter);
+        state.presetMap[id] = clonePackedBuild(recommendedBuild);
+        delete state.presetNameMap[id];
+
+        if (state.activePresetId === id) {
+            applyPackedBuildToEditorState(state.presetMap[id]);
+        }
+
+        persistSelectedCharacterSetting();
+        renderPresetDropdown();
+        renderMainRevelationDropdown();
+        renderSubRevelationDropdown();
+        renderSlotCards();
+        renderPreview();
+        return true;
+    }
+
     function openPresetRenameModal(presetId) {
         if (isSharedReadonlyMode()) return;
         const targetPresetId = String(presetId || '').trim();
         if (!targetPresetId || !state.presetMap[targetPresetId]) return;
         if (isGlobalPresetId(targetPresetId)) return;
+        const isDefaultPreset = targetPresetId === DEFAULT_PRESET_ID;
 
         closeOpenDropdown();
 
@@ -1244,14 +1271,27 @@
             closeDialog();
         };
 
-        const canDeletePreset = state.presetOrder.length > 1;
-        const submitDelete = () => {
+        const canDeletePreset = !isDefaultPreset && state.presetOrder.length > 1;
+        const submitPrimaryAction = async () => {
+            const presetLabel = getPresetLabel(targetPresetId);
+            if (isDefaultPreset) {
+                const confirmTemplate = t('msg_preset_reset_confirm', 'Are you sure you want to reset "{name}" preset?');
+                const confirmMessage = String(confirmTemplate).replace('{name}', presetLabel);
+                if (!window.confirm(confirmMessage)) {
+                    return;
+                }
+                closeDialog();
+                await resetPresetToRecommended(targetPresetId);
+                return;
+            }
+
             if (!canDeletePreset) {
                 showToast(t('msg_preset_delete_min', 'At least one preset must remain.'), 'error');
                 return;
             }
+
             const confirmTemplate = t('msg_preset_delete_confirm', 'Are you sure you want to delete "{name}" preset?');
-            const confirmMessage = String(confirmTemplate).replace('{name}', getPresetLabel(targetPresetId));
+            const confirmMessage = String(confirmTemplate).replace('{name}', presetLabel);
             if (!window.confirm(confirmMessage)) {
                 return;
             }
@@ -1262,12 +1302,18 @@
         titleEl.textContent = t('modal_preset_rename_title', 'Rename Preset');
         inputEl.placeholder = t('placeholder_preset_name', 'Enter preset name');
         inputEl.value = getPresetLabel(targetPresetId);
-        deleteBtn.textContent = t('button_preset_delete', 'Delete');
-        deleteBtn.disabled = !canDeletePreset;
+        deleteBtn.textContent = isDefaultPreset
+            ? t('button_preset_reset', 'Reset')
+            : t('button_preset_delete', 'Delete');
+        deleteBtn.disabled = isDefaultPreset ? false : !canDeletePreset;
         cancelBtn.textContent = t('button_cancel', 'Cancel');
         saveBtn.textContent = t('button_save', 'Save');
 
-        deleteBtn.addEventListener('click', submitDelete);
+        deleteBtn.addEventListener('click', () => {
+            submitPrimaryAction().catch((error) => {
+                console.warn('[revelation-setting] preset primary action failed:', error);
+            });
+        });
         cancelBtn.addEventListener('click', closeDialog);
         saveBtn.addEventListener('click', submitRename);
 

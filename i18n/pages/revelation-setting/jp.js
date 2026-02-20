@@ -15,6 +15,7 @@ window.I18N_PAGE_REVELATION_SETTING_JP = {
     button_preset_rename: 'プリセット名を変更',
     button_preset_duplicate: 'プリセット複製',
     button_preset_delete: 'プリセット削除',
+    button_preset_reset: 'プリセット初期化',
     modal_preset_rename_title: 'プリセット名の変更',
     placeholder_preset_name: 'プリセット名を入力',
     button_cancel: 'キャンセル',
@@ -102,6 +103,7 @@ window.I18N_PAGE_REVELATION_SETTING_JP = {
     msg_preset_limit_reached: 'キャラクターごとにプリセットは最大20個まで追加できます。',
     msg_preset_name_empty: 'プリセット名を入力してください。',
     msg_preset_delete_confirm: '「{name}」プリセットを削除しますか？',
+    msg_preset_reset_confirm: '「{name}」プリセットを初期化しますか？',
     msg_preset_delete_min: 'プリセットは最低1つ必要です。',
     msg_sub_option_conflict_main: 'メインオプションと同じサブオプションは選択できません。',
 

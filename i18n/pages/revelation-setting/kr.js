@@ -15,6 +15,7 @@ window.I18N_PAGE_REVELATION_SETTING_KR = {
     button_preset_rename: '프리셋 이름 수정',
     button_preset_duplicate: '프리셋 복제',
     button_preset_delete: '프리셋 삭제',
+    button_preset_reset: '프리셋 초기화',
     modal_preset_rename_title: '프리셋 이름 수정',
     placeholder_preset_name: '프리셋 이름을 입력해주세요',
     button_cancel: '취소',
@@ -102,6 +103,7 @@ window.I18N_PAGE_REVELATION_SETTING_KR = {
     msg_preset_limit_reached: '캐릭터당 프리셋은 최대 20개까지 추가할 수 있습니다.',
     msg_preset_name_empty: '프리셋 이름을 입력해주세요.',
     msg_preset_delete_confirm: '"{name}" 프리셋을 삭제하시겠습니까?',
+    msg_preset_reset_confirm: '"{name}" 프리셋을 초기화하시겠습니까?',
     msg_preset_delete_min: '프리셋은 최소 1개 이상 있어야 합니다.',
     msg_sub_option_conflict_main: '메인 옵션과 같은 부옵션은 선택할 수 없습니다.',
 

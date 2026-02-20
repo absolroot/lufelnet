@@ -15,6 +15,7 @@ window.I18N_PAGE_REVELATION_SETTING_EN = {
     button_preset_rename: 'Rename preset',
     button_preset_duplicate: 'Duplicate preset',
     button_preset_delete: 'Delete preset',
+    button_preset_reset: 'Reset preset',
     modal_preset_rename_title: 'Rename Preset',
     placeholder_preset_name: 'Enter preset name',
     button_cancel: 'Cancel',
@@ -108,6 +109,7 @@ window.I18N_PAGE_REVELATION_SETTING_EN = {
     msg_preset_limit_reached: 'You can add up to 20 presets per character.',
     msg_preset_name_empty: 'Preset name cannot be empty.',
     msg_preset_delete_confirm: 'Are you sure you want to delete "{name}" preset?',
+    msg_preset_reset_confirm: 'Are you sure you want to reset "{name}" preset?',
     msg_preset_delete_min: 'At least one preset must remain.',
     msg_sub_option_conflict_main: 'Main option cannot be selected as sub option.',
 

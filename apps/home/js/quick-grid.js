@@ -167,7 +167,7 @@
         pullTracker_global: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/pull-stat.png`,
         materialCalc: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/material.png`,
         defenseCalc: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/defense-calc.png`,
-        criticalCalc: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/calculator.png`,
+        criticalCalc: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/critical.png`,
         tacticLibrary: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/tactic.png`,
         tacticMaker: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/tactic-maker.png`,
         tier: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/tier.png`,

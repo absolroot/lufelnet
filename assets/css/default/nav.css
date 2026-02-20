@@ -72,6 +72,10 @@
     flex: 1 0 auto;
 }
 
+.main-nav.has-scroll .nav-spacer {
+    flex: 0 0 16px;
+}
+
 .logo-container {
     cursor: pointer;
     display: flex;

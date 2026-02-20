@@ -40,7 +40,7 @@ After using Skill 3, the user can consume a buff during their own turn to use an
 - Increases 1 ally's Additional Effect DMG by 10% for 1 turn
 - Increases 1 ally's ONE MORE / All-Out Attack DMG by 10% for 1 turn
 - Increases 1 ally's HIGHLIGHT / Theurgy DMG by 10% for 1 turn
-- Increases 1 ally's Skill Mastery by 600 for 1 turn
+- Increases 1 ally's Technical Precision by 600 for 1 turn
 `,
         review_jp: 
 `ダメージを高めるあらゆるバフを所持しており、その数値も高いため、**すべての主力アタッカーを支援可能**なサポーターです。
@@ -59,7 +59,7 @@ After using Skill 3, the user can consume a buff during their own turn to use an
 - 味方単体の追加効果ダメージを1ターンの間10%上昇
 - 味方単体のONE MORE／総攻撃ダメージを1ターンの間10%上昇
 - 味方単体のHIGHLIGHT／テウルギアダメージを1ターンの間10%上昇
-- 味方単体のスキルマスターを1ターンの間600上昇
+- 味方単体のテクニカル精度を1ターンの間600上昇 
 `,
         pros: ["독립적인 대미지 버킷 버프를 물약으로 추가 할 수 있다.", "모든 주력 딜러를 보조 가능하다.", "방어력 감소 효과와 축복을 제공한다."],
         pros_en: ["Can add independent damage bucket buffs through drugs.", "Can support all primary damage dealers.", "Can provide DEF Down and Blessing."],

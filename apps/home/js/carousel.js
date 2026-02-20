@@ -239,6 +239,26 @@
     }
   }
 
+  function getCharacterReleaseOrderByName(name) {
+    const topKey = getCharacterTopKey(name);
+    if (!topKey) return Number.NEGATIVE_INFINITY;
+    try {
+      const data = (typeof characterData !== 'undefined') ? characterData : (window.characterData || {});
+      const item = (data || {})[topKey];
+      const order = Number(item && item.release_order);
+      return Number.isFinite(order) ? order : Number.NEGATIVE_INFINITY;
+    } catch (_) {
+      return Number.NEGATIVE_INFINITY;
+    }
+  }
+
+  function getSingleBannerReleaseOrder(slide) {
+    const list = (slide && Array.isArray(slide.fiveStar)) ? slide.fiveStar : [];
+    if (list.length !== 1) return Number.NEGATIVE_INFINITY;
+    const firstName = list[0] && list[0].name;
+    return getCharacterReleaseOrderByName(firstName);
+  }
+
   // Time helpers
   function parseRegionLocalToUTC(tsStr, region) {
     // tsStr: 'YYYY-MM-DD HH:mm:ss' with no zone, interpret as region-local at REGION_BASE_UTC
@@ -1171,9 +1191,23 @@
         };
       }).filter(x => x.startUTC && x.endUTC);
 
-      // Order by most recent start time first; keep original order when equal
-      // Multiple-character banners always go after single-character banners
+      // For single-character banners, prefer later character release_order first
+      // Otherwise keep most-recent start/end time first
+      // Multiple-character ties go after single-character ties
       slides.sort((a, b) => {
+        // Compare character counts (used by single/multiple tie rules)
+        const aCount = Array.isArray(a.fiveStar) ? a.fiveStar.length : 0;
+        const bCount = Array.isArray(b.fiveStar) ? b.fiveStar.length : 0;
+        const aIsMultiple = aCount > 1;
+        const bIsMultiple = bCount > 1;
+
+        // If both are single-character banners, prefer later character release order
+        if (!aIsMultiple && !bIsMultiple && aCount === 1 && bCount === 1) {
+          const aReleaseOrder = getSingleBannerReleaseOrder(a);
+          const bReleaseOrder = getSingleBannerReleaseOrder(b);
+          if (bReleaseOrder !== aReleaseOrder) return bReleaseOrder - aReleaseOrder;
+        }
+
         // Compare start times (newer first)
         const ta = a.startUTC.getTime();
         const tb = b.startUTC.getTime();
@@ -1185,10 +1219,6 @@
         if (eb !== ea) return eb - ea;
 
         // All times equal: compare character counts (single comes first)
-        const aCount = Array.isArray(a.fiveStar) ? a.fiveStar.length : 0;
-        const bCount = Array.isArray(b.fiveStar) ? b.fiveStar.length : 0;
-        const aIsMultiple = aCount > 1;
-        const bIsMultiple = bCount > 1;
 
         if (aIsMultiple && !bIsMultiple) return 1; // a (multiple) goes after b (single)
         if (!aIsMultiple && bIsMultiple) return -1; // b (multiple) goes after a (single)

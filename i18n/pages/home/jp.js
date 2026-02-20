@@ -1,7 +1,7 @@
 window.I18N_PAGE_HOME_JP = {
     site_title: 'P5X Lufelnet',
     popular_characters: '人気怪盗',
-    guides: 'ガイド',
+    guides: '攻略記事',
     tactic_workshop: 'タクティクスライブラリー',
 
     language_name_kr: '한국어',
@@ -22,7 +22,7 @@ window.I18N_PAGE_HOME_JP = {
     quick_tactic_library: 'タクティクスライブラリー',
     quick_tactic_maker: 'タクティクスメーカー',
     quick_tier: 'ティア',
-    quick_guide: 'ガイド',
+    quick_guide: '攻略記事',
     quick_gallery: 'ギャラリー',
     quick_synergy: 'シナジー',
     quick_schedule: 'スケジュール',

@@ -78,7 +78,7 @@
     flex-direction: row;
     gap: 10px;
     align-items: center;
-    margin: 10px 0 0px 0;
+    margin: 0px 0 0px 0;
     padding: 12px 24px;
     outline: none;
     user-select: none;
@@ -141,7 +141,7 @@
 }
 
 .nav-section-label {
-    font-size: 11px;
+    font-size: 9px;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: rgba(255, 255, 255, 0.35);
@@ -208,6 +208,11 @@
     opacity: 0.85;
 }
 
+.nav-section-item[data-nav="revelation-setting"] .nav-item-icon {
+    transform: scale(1.1);
+    transform-origin: center;
+}
+
 .nav-section-item:hover .nav-item-icon {
     opacity: 1;
 }
@@ -223,7 +228,7 @@
 }
 
 .nav-section-item:hover {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: #222;
     color: #ffffff;
 }
 
@@ -341,8 +346,12 @@
 
     /* 로고 */
     .logo-container {
-        padding: 8px 20px;
+        padding: 18px 20px 8px 20px;
         gap: 10px;
+        position: sticky;
+        top: 0;
+        z-index: 3;
+        background-color: #171717;
     }
 
     .logo-container img[src*="lufel.webp"] {
@@ -460,7 +469,7 @@
     /* 활성 아이템 - 축소 상태에서 사각형 배경 */
     .nav-section-item.active {
         clip-path: none;
-        background-color: #800000;
+        background-color: #a00000;
     }
 
     /* 확장 상태: 폴리곤 배경 복원 */
@@ -746,6 +755,13 @@
         flex-shrink: 0;
         z-index: 2;
     }
+
+    .main-nav .logo-container {
+        position: sticky;
+        top: 0;
+        z-index: 3;
+        background-color: #171717;
+    }
 }
 
 /* 토글 버튼 기본 숨김 (PC 외) */
@@ -902,15 +918,6 @@
         right: 20px;
     }
 }
-
-
-/* hide tier-maker in mobile */
-@media (max-width: 1200px) {
-    .nav-section-item[data-nav="tier-maker"] {
-        display: none;
-    }
-}
-
 
 /* language selector */
 .language-selector-container {

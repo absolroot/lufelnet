@@ -58,6 +58,12 @@
 
     <div class="header-container">
         <h1 id="pageTitle">Pull Tracker</h1>
+        <div class="pull-tracker-header-tools">
+            <div id="pull-tracker-mode-tabs" class="pull-tracker-mode-tabs" role="tablist" aria-label="Pull tracker mode tabs">
+                <a id="pull-tracker-tab-individual" class="pull-tracker-mode-tab" role="tab" data-mode="individual" href="/pull-tracker/">Pull Tracker</a>
+                <a id="pull-tracker-tab-global" class="pull-tracker-mode-tab" role="tab" data-mode="global" href="/pull-tracker/global-stats/">Global Stats</a>
+            </div>
+        </div>
     </div>
 
     <!-- User Bar -->
@@ -184,6 +190,54 @@
                 return (fallback !== undefined) ? fallback : key;
             };
 
+            const getPullTrackerPathLanguage = () => {
+                const seoLang = String(window.__SEO_PATH_LANG__ || '').toLowerCase();
+                if (['kr', 'en', 'jp'].includes(seoLang)) return seoLang;
+
+                if (typeof LanguageRouter !== 'undefined' && typeof LanguageRouter.getCurrentLanguage === 'function') {
+                    const routerLang = String(LanguageRouter.getCurrentLanguage() || '').toLowerCase();
+                    if (['kr', 'en', 'jp'].includes(routerLang)) return routerLang;
+                }
+
+                const pathMatch = String(window.location.pathname || '').match(/^\/(kr|en|jp)(\/|$)/i);
+                if (pathMatch && pathMatch[1]) return String(pathMatch[1]).toLowerCase();
+                return 'kr';
+            };
+
+            const buildPullTrackerModeHref = (mode) => {
+                const lang = getPullTrackerPathLanguage();
+                const path = mode === 'global'
+                    ? `/${lang}/pull-tracker/global-stats/`
+                    : `/${lang}/pull-tracker/`;
+
+                const params = new URLSearchParams(window.location.search || '');
+                params.delete('lang');
+                params.delete('v');
+                const query = params.toString();
+                const hash = window.location.hash || '';
+                const base = String(window.BASE_URL || '').replace(/\/+$/, '');
+                return `${base}${path}${query ? `?${query}` : ''}${hash}`;
+            };
+
+            const updatePullTrackerModeTabs = (mode) => {
+                const individualTab = document.getElementById('pull-tracker-tab-individual');
+                const globalTab = document.getElementById('pull-tracker-tab-global');
+                if (!individualTab || !globalTab) return;
+
+                individualTab.textContent = tr('individual.nav.current', 'Pull Tracker');
+                globalTab.textContent = tr('global.nav.current', 'Global Stats');
+                individualTab.href = buildPullTrackerModeHref('individual');
+                globalTab.href = buildPullTrackerModeHref('global');
+
+                const isIndividual = mode !== 'global';
+                individualTab.classList.toggle('active', isIndividual);
+                globalTab.classList.toggle('active', !isIndividual);
+                individualTab.setAttribute('aria-current', isIndividual ? 'page' : 'false');
+                globalTab.setAttribute('aria-current', !isIndividual ? 'page' : 'false');
+            };
+
+            updatePullTrackerModeTabs('individual');
+
             try {
                 if (window.SeoEngine && typeof window.SeoEngine.setContextHint === 'function') {
                     window.SeoEngine.setContextHint({
@@ -200,7 +254,7 @@
                 if (helpEl) helpEl.textContent = tr('individual.info.helpText');
             } catch (_) { }
 
-            try { if (typeof Navigation !== 'undefined' && Navigation.load) { Navigation.load('pullTracker_individual'); } } catch (_) { }
+            try { if (typeof Navigation !== 'undefined' && Navigation.load) { Navigation.load('pullTracker'); } } catch (_) { }
             try { if (typeof VersionChecker !== 'undefined' && VersionChecker.check) { VersionChecker.check(); } } catch (_) { }
             try { if (window.pullTrackerInitAuth) window.pullTrackerInitAuth(); } catch (_) { }
         });

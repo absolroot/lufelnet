@@ -80,6 +80,7 @@
         <div class="pill-row">
           <button class="pill active" id="osWin" type="button" aria-pressed="true">Windows</button>
           <button class="pill" id="osIOS" type="button" aria-pressed="false">iOS</button>
+          <button class="pill" id="osLinux" type="button" aria-pressed="false">Linux / Steam Deck</button>
         </div>
       </div>
     </div>
@@ -203,6 +204,84 @@
         </div>
       </div>
     </div>
+
+    <div id="linuxBlock" style="display: none;">
+      <div class="step-row">
+        <div class="content guide-card" data-step="4">
+          <p class="guide-text" id="linux1">Install httptap. On Steam Deck, switch to Desktop Mode first.</p>
+          <div class="pill-row">
+            <a class="pill" id="httptapBtn" href="https://github.com/monasticacademy/httptap" target="_blank"
+              rel="noopener noreferrer">httptap GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-row">
+        <div class="content guide-card" data-step="5">
+          <p class="guide-text" id="linux2">Open a terminal and run the install command below.</p>
+          <pre class="guide-code"><code id="linuxInstallCmd">curl -L https://github.com/monasticacademy/httptap/releases/latest/download/httptap_linux_$(uname -m).tar.gz | tar xzf -</code></pre>
+        </div>
+      </div>
+
+      <div class="step-row">
+        <div class="content guide-card" data-step="6">
+          <p class="guide-text" id="linux3">Close Steam if it is running, then run the command below.</p>
+          <pre class="guide-code"><code id="linuxRunCmd">./httptap -- steam 2>/dev/null | grep "X"</code></pre>
+        </div>
+      </div>
+
+      <div class="step-row">
+        <div class="content guide-card" data-step="7">
+          <p class="guide-text multiline" id="linux4">Replace the "X" in grep with your server domain (keep the quotes).
+(KR) nsywl-krcard.wmupd.com
+(CN) nsywl-gfcard.wmupd.com
+(TW) wwwidcweb.p5x.com.tw
+(JP) web.p5xjpupd.com
+(EN) euweb.p5xjpupd.com
+(SEA) web.p5x-sea.com</p>
+        </div>
+      </div>
+
+      <div class="step-row">
+        <div class="content guide-card" data-step="8">
+          <p class="guide-text" id="linux5">Steam starts with SSL certificate warnings. You can ignore these warnings.</p>
+        </div>
+      </div>
+
+      <div class="step-row">
+        <div class="content guide-card" data-step="9">
+          <p class="guide-text" id="linux6">Open P5X and go to Gacha History.</p>
+        </div>
+      </div>
+
+      <div class="step-row">
+        <div class="content guide-card" data-step="10">
+          <p class="guide-text" id="linux7">Return to the terminal. The gacha history URL appears there (usually twice). Copy one full URL.</p>
+        </div>
+      </div>
+
+      <div class="step-row">
+        <div class="content guide-card" data-step="11">
+          <p class="guide-text multiline" id="linuxExplain">Command breakdown:
+./httptap -- steam: Launches Steam under httptap so HTTP requests from Steam/P5X are shown.
+2>/dev/null: Hides Steam debug logs.
+| grep "X": Filters output to lines containing your server domain.</p>
+        </div>
+      </div>
+
+      <div class="step-row">
+        <div class="content guide-card" data-step="12">
+          <p class="guide-text" id="linux8">Enter the copied URL via the link below.</p>
+          <a class="pill" id="goInputLinux" href="../">Go Back</a>
+        </div>
+      </div>
+
+      <div class="step-row">
+        <div class="content guide-card guide-card-note">
+          <p class="guide-muted" id="linuxCredit">Instructions provided by Dinjoralo.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -222,7 +301,8 @@
 
   #m1block,
   #m2block,
-  #iosBlock {
+  #iosBlock,
+  #linuxBlock {
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -269,6 +349,14 @@
     color: rgba(255, 255, 255, 0.65);
     font-size: 13px;
     line-height: 1.55;
+  }
+
+  .guide-card-note {
+    padding-left: 12px;
+  }
+
+  .guide-card-note::before {
+    display: none;
   }
 
   .video-note {
@@ -355,6 +443,23 @@
     border: 1px solid rgba(255, 255, 255, 0.12);
     background: rgba(0, 0, 0, 0.3);
     padding: 4px;
+  }
+
+  .guide-code {
+    margin: 8px 0 0;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 10px;
+    padding: 8px;
+    background: rgba(0, 0, 0, 0.35);
+    color: #f3f3f3;
+    font-size: 12px;
+    line-height: 1.55;
+    white-space: pre;
+    overflow-x: auto;
+  }
+
+  .guide-code code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   }
 
   .link {
@@ -558,6 +663,18 @@
       setText('ios3', tr('guide.ios3'));
       setText('ios4', tr('guide.ios4'));
       setText('ios5', tr('guide.ios5'));
+      setText('linux1', tr('guide.linux1'));
+      setText('linux2', tr('guide.linux2'));
+      setText('linux3', tr('guide.linux3'));
+      setText('linux4', tr('guide.linux4'));
+      setText('linux5', tr('guide.linux5'));
+      setText('linux6', tr('guide.linux6'));
+      setText('linux7', tr('guide.linux7'));
+      setText('linux8', tr('guide.linux8'));
+      setText('linuxInstallCmd', tr('guide.linuxInstallCmd'));
+      setText('linuxRunCmd', tr('guide.linuxRunCmd'));
+      setText('linuxExplain', tr('guide.linuxExplain'));
+      setText('linuxCredit', tr('guide.linuxCredit'));
       setText('openFaq', tr('guide.modal.faqTitle', 'FAQ'));
       setText('downloadBtn', tr('guide.downloadLabel', 'Program Link'));
       setText('sourceCodeLink', tr('guide.sourceCode', 'source code'));
@@ -565,12 +682,15 @@
       setText('openTroubleshoot', tr('guide.troubleshootButton', 'Troubleshooting'));
       setText('osWin', tr('guide.os.win', 'Windows'));
       setText('osIOS', tr('guide.os.ios', 'iOS'));
+      setText('osLinux', tr('guide.os.linux', 'Linux / Steam Deck'));
       setText('videoBtn', tr('guide.videoLabel', 'Video Help'));
       setText('videoNote', tr('guide.videoNote'));
       setText('streamBtn', tr('guide.streamOpen', 'Open Stream Install Page'));
+      setText('httptapBtn', tr('guide.linuxHttptapLink', 'httptap GitHub'));
       setText('goInput1', tr('guide.goBack', 'Go Back'));
       setText('goInput2', tr('guide.goBack', 'Go Back'));
       setText('goInputIOS', tr('guide.goBack', 'Go Back'));
+      setText('goInputLinux', tr('guide.goBack', 'Go Back'));
     } catch (_) { }
 
     const faqBtn = document.getElementById('openFaq');
@@ -641,8 +761,10 @@
     const blk1 = document.getElementById('m1block');
     const blk2 = document.getElementById('m2block');
     const blkIOS = document.getElementById('iosBlock');
+    const blkLinux = document.getElementById('linuxBlock');
     const osWin = document.getElementById('osWin');
     const osIOS = document.getElementById('osIOS');
+    const osLinux = document.getElementById('osLinux');
 
     function setTab(which) {
       try {
@@ -663,7 +785,7 @@
 
     function setOSTab(which) {
       try {
-        [osWin, osIOS].forEach((b) => { if (b) b.classList.remove('active'); });
+        [osWin, osIOS, osLinux].forEach((b) => { if (b) b.classList.remove('active'); });
         const method = document.getElementById('methodPills');
         const methodStep = document.getElementById('methodStep');
         if (which === 'win') {
@@ -682,7 +804,8 @@
           if (blk1) blk1.style.display = showMethod2 ? 'none' : '';
           if (blk2) blk2.style.display = showMethod2 ? '' : 'none';
           if (blkIOS) blkIOS.style.display = 'none';
-        } else {
+          if (blkLinux) blkLinux.style.display = 'none';
+        } else if (which === 'ios') {
           if (osIOS) osIOS.classList.add('active');
           if (method) method.style.display = 'none';
           if (methodStep) methodStep.style.display = 'none';
@@ -697,9 +820,19 @@
           if (blk1) blk1.style.display = 'none';
           if (blk2) blk2.style.display = 'none';
           if (blkIOS) blkIOS.style.display = '';
+          if (blkLinux) blkLinux.style.display = 'none';
+        } else {
+          if (osLinux) osLinux.classList.add('active');
+          if (method) method.style.display = 'none';
+          if (methodStep) methodStep.style.display = 'none';
+          if (blk1) blk1.style.display = 'none';
+          if (blk2) blk2.style.display = 'none';
+          if (blkIOS) blkIOS.style.display = 'none';
+          if (blkLinux) blkLinux.style.display = '';
         }
         setPressed(osWin, which === 'win');
         setPressed(osIOS, which === 'ios');
+        setPressed(osLinux, which === 'linux');
       } catch (_) { }
     }
 
@@ -707,6 +840,7 @@
     if (b2) b2.addEventListener('click', () => setTab(2));
     if (osWin) osWin.addEventListener('click', () => setOSTab('win'));
     if (osIOS) osIOS.addEventListener('click', () => setOSTab('ios'));
+    if (osLinux) osLinux.addEventListener('click', () => setOSTab('linux'));
     setOSTab('win');
     setTab(1);
   });

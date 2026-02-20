@@ -1,7 +1,7 @@
 window.I18N_PAGE_HOME_EN = {
     site_title: 'P5X Lufelnet',
     popular_characters: 'Popular Characters',
-    guides: 'Guides',
+    guides: 'Articles',
     tactic_workshop: 'Tactic Library',
 
     language_name_kr: '한국어',
@@ -22,7 +22,7 @@ window.I18N_PAGE_HOME_EN = {
     quick_tactic_library: 'Tactics Library',
     quick_tactic_maker: 'Tactic Maker',
     quick_tier: 'Tiers',
-    quick_guide: 'Guides',
+    quick_guide: 'Articles',
     quick_gallery: 'Gallery',
     quick_synergy: 'Synergy',
     quick_schedule: 'Schedule',

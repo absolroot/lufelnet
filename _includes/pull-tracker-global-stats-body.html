@@ -57,9 +57,13 @@
   </div>
 
   <div class="header-container">
-    <div style="display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
-      <h1 id="pageTitle">Global Stats</h1>
-      <select id="globalRegion" class="url-input" style="flex:0 0 140px; padding:8px 10px; font-size:13px;">
+    <h1 id="pageTitle">Global Stats</h1>
+    <div class="pull-tracker-header-tools">
+      <div id="pull-tracker-mode-tabs" class="pull-tracker-mode-tabs" role="tablist" aria-label="Pull tracker mode tabs">
+        <a id="pull-tracker-tab-individual" class="pull-tracker-mode-tab" role="tab" data-mode="individual" href="/pull-tracker/">Pull Tracker</a>
+        <a id="pull-tracker-tab-global" class="pull-tracker-mode-tab" role="tab" data-mode="global" href="/pull-tracker/global-stats/">Global Stats</a>
+      </div>
+      <select id="globalRegion" class="url-input pull-tracker-region-select">
         <option value="EN">EN</option>
         <option value="JP">JP</option>
         <option value="SEA">SEA</option>
@@ -150,6 +154,7 @@
   })();
 
   (async function () {
+    try { window.BASE_URL = '{{ site.baseurl }}'; } catch (_) { }
     try { await (window.__pullI18nReady || Promise.resolve()); } catch (_) { }
 
     const tr = (key, fallback) => {
@@ -159,6 +164,52 @@
         }
       } catch (_) { }
       return (fallback !== undefined) ? fallback : key;
+    };
+
+    const getPullTrackerPathLanguage = () => {
+      const seoLang = String(window.__SEO_PATH_LANG__ || '').toLowerCase();
+      if (['kr', 'en', 'jp'].includes(seoLang)) return seoLang;
+
+      if (typeof LanguageRouter !== 'undefined' && typeof LanguageRouter.getCurrentLanguage === 'function') {
+        const routerLang = String(LanguageRouter.getCurrentLanguage() || '').toLowerCase();
+        if (['kr', 'en', 'jp'].includes(routerLang)) return routerLang;
+      }
+
+      const pathMatch = String(window.location.pathname || '').match(/^\/(kr|en|jp)(\/|$)/i);
+      if (pathMatch && pathMatch[1]) return String(pathMatch[1]).toLowerCase();
+      return 'kr';
+    };
+
+    const buildPullTrackerModeHref = (mode) => {
+      const lang = getPullTrackerPathLanguage();
+      const path = mode === 'global'
+        ? `/${lang}/pull-tracker/global-stats/`
+        : `/${lang}/pull-tracker/`;
+
+      const params = new URLSearchParams(window.location.search || '');
+      params.delete('lang');
+      params.delete('v');
+      const query = params.toString();
+      const hash = window.location.hash || '';
+      const base = String(window.BASE_URL || '').replace(/\/+$/, '');
+      return `${base}${path}${query ? `?${query}` : ''}${hash}`;
+    };
+
+    const updatePullTrackerModeTabs = (mode) => {
+      const individualTab = document.getElementById('pull-tracker-tab-individual');
+      const globalTab = document.getElementById('pull-tracker-tab-global');
+      if (!individualTab || !globalTab) return;
+
+      individualTab.textContent = tr('individual.nav.current', 'Pull Tracker');
+      globalTab.textContent = tr('global.nav.current', 'Global Stats');
+      individualTab.href = buildPullTrackerModeHref('individual');
+      globalTab.href = buildPullTrackerModeHref('global');
+
+      const isIndividual = mode !== 'global';
+      individualTab.classList.toggle('active', isIndividual);
+      globalTab.classList.toggle('active', !isIndividual);
+      individualTab.setAttribute('aria-current', isIndividual ? 'page' : 'false');
+      globalTab.setAttribute('aria-current', !isIndividual ? 'page' : 'false');
     };
 
     try {
@@ -173,6 +224,7 @@
     } catch (_) { }
 
     try {
+      updatePullTrackerModeTabs('global');
       const pageTitle = tr('global.pageTitle', 'Global Stats');
       const titleEl = document.getElementById('pageTitle');
       if (titleEl) titleEl.textContent = pageTitle;
@@ -187,7 +239,7 @@
 <script src="{{ site.baseurl }}/apps/pull-tracker/js/global-stats.js?v={{ site.time | date: '%s' }}"></script>
 <script>
   // Initialize navigation (guarded)
-  try { if (typeof Navigation !== 'undefined' && Navigation.load) { Navigation.load('pullTracker_global'); } } catch (_) { }
+  try { if (typeof Navigation !== 'undefined' && Navigation.load) { Navigation.load('pullTracker'); } } catch (_) { }
   try { if (typeof VersionChecker !== 'undefined' && VersionChecker.check) { VersionChecker.check(); } } catch (_) { }
 </script>
 </div>

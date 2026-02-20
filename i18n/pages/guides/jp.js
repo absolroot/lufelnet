@@ -1,6 +1,6 @@
 window.I18N_PAGE_GUIDES_JP = {
-    navCurrent: 'ガイド',
-    pageTitle: 'ガイド',
+    navCurrent: '攻略記事',
+    pageTitle: '攻略記事',
     searchPlaceholder: '検索...',
     filterAll: 'すべて',
     loadingGuides: 'ガイドを読み込み中...',
@@ -12,7 +12,7 @@ window.I18N_PAGE_GUIDES_JP = {
     untitled: '無題',
     siteName: 'ルフェルネット',
     oldGuideLabel: 'Lufelnet Guide',
-    seoListTitle: 'ガイド - ペルソナ5 ザ・ファントムX ルフェルネット',
+    seoListTitle: '攻略記事 - ペルソナ5 ザ・ファントムX ルフェルネット',
     seoListDescription: 'ペルソナ5 ザ・ファントムX 攻略ガイド',
     dateMinutesAgo: '{value}分前',
     dateHoursAgo: '{value}時間前',

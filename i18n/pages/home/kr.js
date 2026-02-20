@@ -1,7 +1,7 @@
 window.I18N_PAGE_HOME_KR = {
     site_title: 'P5X 루페르넷',
     popular_characters: '인기 괴도',
-    guides: '가이드',
+    guides: '아티클',
     tactic_workshop: '택틱 도서관',
 
     language_name_kr: '한국어',
@@ -22,7 +22,7 @@ window.I18N_PAGE_HOME_KR = {
     quick_tactic_library: '택틱 도서관',
     quick_tactic_maker: '택틱 메이커',
     quick_tier: '티어',
-    quick_guide: '가이드',
+    quick_guide: '아티클',
     quick_gallery: '갤러리',
     quick_synergy: '협력자',
     quick_schedule: '스케줄',

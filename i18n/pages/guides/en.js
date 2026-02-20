@@ -1,6 +1,6 @@
 window.I18N_PAGE_GUIDES_EN = {
-    navCurrent: 'Guides',
-    pageTitle: 'Guides',
+    navCurrent: 'Articles',
+    pageTitle: 'Articles',
     searchPlaceholder: 'Search...',
     filterAll: 'All',
     loadingGuides: 'Loading guides...',
@@ -12,7 +12,7 @@ window.I18N_PAGE_GUIDES_EN = {
     untitled: 'Untitled',
     siteName: 'Lufelnet',
     oldGuideLabel: 'Lufelnet Guide',
-    seoListTitle: 'Guides - Persona 5: The Phantom X Lufelnet',
+    seoListTitle: 'Articles - Persona 5: The Phantom X Lufelnet',
     seoListDescription: 'Persona 5: The Phantom X Strategy Guides',
     dateMinutesAgo: '{value} min ago',
     dateHoursAgo: '{value} hours ago',

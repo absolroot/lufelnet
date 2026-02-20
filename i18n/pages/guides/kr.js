@@ -1,6 +1,6 @@
 window.I18N_PAGE_GUIDES_KR = {
-    navCurrent: '가이드',
-    pageTitle: '가이드',
+    navCurrent: '아티클',
+    pageTitle: '아티클',
     searchPlaceholder: '검색...',
     filterAll: '전체',
     loadingGuides: '가이드를 불러오는 중...',
@@ -12,7 +12,7 @@ window.I18N_PAGE_GUIDES_KR = {
     untitled: '제목 없음',
     siteName: '루페르넷',
     oldGuideLabel: '루페르넷 가이드',
-    seoListTitle: '가이드 - 페르소나5 더 팬텀 X 루페르넷',
+    seoListTitle: '아티클 - 페르소나5 더 팬텀 X 루페르넷',
     seoListDescription: '페르소나5 더 팬텀 X 공략 가이드',
     dateMinutesAgo: '{value}분 전',
     dateHoursAgo: '{value}시간 전',

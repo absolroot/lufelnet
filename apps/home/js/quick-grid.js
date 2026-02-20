@@ -58,7 +58,7 @@
         tacticLibrary: '택틱 도서관',
         tacticMaker: '택틱 메이커',
         tier: '티어',
-        guide: '가이드',
+        guide: '아티클',
         gallery: '갤러리',
         synergy: '협력자',
         schedule: '스케줄',
@@ -236,11 +236,15 @@
             a.className = 'quick-link';
             a.href = buildHref(key, lang);
             a.setAttribute('data-key', key);
+            // Temporarily disable quick-grid tooltip on hover/long-press.
+            // Keep this block commented so it can be restored quickly later.
+            /*
             if (tooltipText) {
                 a.setAttribute('data-tooltip', tooltipText);
                 a.setAttribute('data-tooltip-mobile', 'longpress');
                 a.setAttribute('data-tooltip-longpress-ms', '380');
             }
+            */
             a.setAttribute('aria-label', tooltipText ? `${labelText || key} - ${tooltipText}` : (labelText || key));
 
             const iconWrap = document.createElement('div');
@@ -283,9 +287,12 @@
             item.className = 'quick-item';
             item.appendChild(a);
             root.appendChild(item);
+            // Temporarily disable tooltip binding for quick-grid links.
+            /*
             if (tooltipText && typeof bindTooltipElement === 'function') {
                 bindTooltipElement(a);
             }
+            */
         });
     };
 

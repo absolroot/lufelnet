@@ -50,8 +50,7 @@ class Navigation {
                 pullTrackerIndividual: '계약 통계',
                 pullTrackerGlobal: '계약 통계 (전체)',
                 payCalc: '과금 계산기',
-                tierList: '티어 리스트',
-                tierMaker: '티어 메이커',
+                tier: '티어',
                 tacticLibrary: '택틱 도서관',
                 tacticMaker: '택틱 메이커',
                 astrolabe: '성좌의 시련',
@@ -78,8 +77,7 @@ class Navigation {
                 pullTrackerIndividual: 'Pull Stats',
                 pullTrackerGlobal: 'Pull Stats (Global)',
                 payCalc: 'Payment Calculator',
-                tierList: 'Tier List',
-                tierMaker: 'Tier Maker',
+                tier: 'Tier',
                 tacticLibrary: 'Tactics Library',
                 tacticMaker: 'Tactic Maker',
                 astrolabe: 'Astrolabe',
@@ -96,7 +94,7 @@ class Navigation {
                 synergy: 'シナジー',
                 wonderweapon: 'ワンダー武器',
                 maps: '地図',
-                article: 'ガイド',
+                article: '攻略記事',
                 scheduleRelease: 'リリース',
                 pullPlanner: 'ガチャプランナー',
                 materialCalc: '育成',
@@ -106,8 +104,7 @@ class Navigation {
                 pullTrackerIndividual: '個人統計',
                 pullTrackerGlobal: '全体統計',
                 payCalc: '課金',
-                tierList: 'ティアリスト',
-                tierMaker: 'ティアメーカー',
+                tier: 'ティア',
                 tacticLibrary: 'タクティクスライブラリー',
                 tacticMaker: 'タクティクスメーカー',
                 astrolabe: 'アストロラーベ',
@@ -134,8 +131,7 @@ class Navigation {
                 pullTrackerIndividual: '抽卡统计',
                 pullTrackerGlobal: '抽卡统计 (全服)',
                 payCalc: '充值计算',
-                tierList: '梯队列表',
-                tierMaker: '梯队制作',
+                tier: '梯队',
                 tacticLibrary: '战术图书馆',
                 tacticMaker: '战术制作',
                 astrolabe: '天域星盘',
@@ -149,20 +145,20 @@ class Navigation {
         const availableMenus = {
             kr: [
                 'character', 'persona', 'revelations-info', 'synergy', 'wonderweapon', 'maps', 'article',
-                'material-calc', 'defense-calc', 'critical-calc', 'revelation-setting', 'pullTracker_individual', 'pullTracker_global', 'pay-calc',
-                'tier-list', 'tier-maker', 'tactic-library', 'tactic-maker', 'astrolabe',
+                'material-calc', 'defense-calc', 'critical-calc', 'revelation-setting', 'pullTracker', 'pay-calc',
+                'tier', 'tactic-library', 'tactic-maker', 'astrolabe',
                 'about'
             ],
             en: [
                 'character', 'persona', 'revelations-info', 'synergy', 'wonderweapon', 'maps', 'article',
-                'schedule-release', 'pull-calc', 'material-calc', 'defense-calc', 'critical-calc', 'revelation-setting', 'pullTracker_individual', 'pullTracker_global',
-                'tier-list', 'tier-maker', 'tactic-library', 'tactic-maker', 'astrolabe',
+                'schedule-release', 'pull-calc', 'material-calc', 'defense-calc', 'critical-calc', 'revelation-setting', 'pullTracker',
+                'tier', 'tactic-library', 'tactic-maker', 'astrolabe',
                 'about'
             ],
             jp: [
                 'character', 'persona', 'revelations-info', 'synergy', 'wonderweapon', 'maps', 'article',
-                'schedule-release', 'pull-calc', 'material-calc', 'defense-calc', 'critical-calc', 'revelation-setting', 'pullTracker_individual', 'pullTracker_global',
-                'tier-list', 'tier-maker', 'tactic-library', 'tactic-maker', 'astrolabe',
+                'schedule-release', 'pull-calc', 'material-calc', 'defense-calc', 'critical-calc', 'revelation-setting', 'pullTracker',
+                'tier', 'tactic-library', 'tactic-maker', 'astrolabe',
                 'about'
             ],
             cn: ['character', 'article', 'about']
@@ -195,8 +191,7 @@ class Navigation {
                     { key: 'defense-calc', textKey: 'defenseCalc', icon: 'defense-calc.png', url: `/${currentLang}/defense-calc/` },
                     { key: 'critical-calc', textKey: 'criticalCalc', icon: 'critical.png', url: `/${currentLang}/critical-calc/` },
                     { key: 'revelation-setting', textKey: 'revelationSetting', icon: 'qishi2.png', url: `/${currentLang}/revelation-setting/` },
-                    { key: 'pullTracker_individual', textKey: 'pullTrackerIndividual', icon: 'pull-stat.png', url: `/${currentLang}/pull-tracker/` },
-                    { key: 'pullTracker_global', textKey: 'pullTrackerGlobal', icon: 'pull-stat.png', url: `/${currentLang}/pull-tracker/global-stats/` },
+                    { key: 'pullTracker', textKey: 'pullTracker', icon: 'pull.png', url: `/${currentLang}/pull-tracker/` },
                     { key: 'pay-calc', textKey: 'payCalc', icon: 'calculator.png', url: `/${currentLang}/pay-calc/` }
                 ]
             },
@@ -204,8 +199,7 @@ class Navigation {
                 key: 'meta',
                 labelKey: 'sectionMeta',
                 items: [
-                    { key: 'tier-list', textKey: 'tierList', icon: 'tier.png', url: `/${currentLang}/tier/` },
-                    { key: 'tier-maker', textKey: 'tierMaker', icon: 'tier.png', url: `/${currentLang}/tier-maker/` },
+                    { key: 'tier', textKey: 'tier', icon: 'tier.png', url: `/${currentLang}/tier/` },
                     { key: 'tactic-library', textKey: 'tacticLibrary', icon: 'tactic.png', url: `/${currentLang}/tactic/library/` },
                     { key: 'tactic-maker', textKey: 'tacticMaker', icon: 'tactic-maker.png', url: `/${currentLang}/tactic-maker/` },
                     { key: 'astrolabe', textKey: 'astrolabe', icon: 'astrolabe.png', url: `/${currentLang}/astrolabe/` }
@@ -222,6 +216,10 @@ class Navigation {
 
         // 섹션 HTML 생성
         const buildSectionsHtml = () => {
+            const pullTrackerFallbackText = currentLang === 'kr'
+                ? '\uacc4\uc57d \ud2b8\ub798\ucee4'
+                : (texts.pullTrackerIndividual || 'Pull Tracker');
+
             return sections.map(section => {
                 const visibleItems = section.items.filter(item => currentMenus.includes(item.key));
                 if (visibleItems.length === 0) return '';
@@ -237,7 +235,7 @@ class Navigation {
                             ${visibleItems.map(item => `
                                 <a href="${BASE_URL}${item.url}" class="nav-section-item" data-nav="${item.key}">
                                     <img src="${BASE_URL}/assets/img/nav/${item.icon}" alt="" class="nav-item-icon" />
-                                    <span>${texts[item.textKey]}</span>
+                                    <span>${texts[item.textKey] || (item.key === 'pullTracker' ? pullTrackerFallbackText : item.textKey)}</span>
                                 </a>
                             `).join('')}
                         </div>
@@ -246,8 +244,10 @@ class Navigation {
             }).join('');
         };
 
+        const shouldStartPinned = window.innerWidth > 1440 && localStorage.getItem('navPinned') !== 'false';
+
         const navTemplate = `
-            <nav class="main-nav">
+            <nav class="main-nav${shouldStartPinned ? ' nav-pinned' : ''}">
                 <div class="logo-container">
                     <img src="${BASE_URL}/assets/img/logo/lufel.webp" alt="logo" />
                     <img src="${BASE_URL}/assets/img/logo/lufelnet.png" alt="logo-text" />
@@ -405,7 +405,11 @@ class Navigation {
                 'tactic': 'tactic-maker',
                 'tactics': 'tactic-library',
                 'schedule': 'schedule-release',
-                'pullTracker': 'pullTracker_individual',
+                'pullTracker': 'pullTracker',
+                'pullTracker_individual': 'pullTracker',
+                'pullTracker_global': 'pullTracker',
+                'tier-list': 'tier',
+                'tier-maker': 'tier',
                 'home': null,
                 'gallery': null
             };

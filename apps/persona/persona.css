@@ -648,7 +648,7 @@ textarea {
     background: #ff0000d9;
     z-index: -1;
     border-radius: 0px;
-    animation: subtle-liquid 2s infinite linear;
+    animation: subtle-liquid-persona 2s infinite linear;
 }
 
 .persona-detail-container[style*="position: absolute"] {
@@ -1115,7 +1115,7 @@ textarea {
     }
 }
 
-@keyframes subtle-liquid {
+@keyframes subtle-liquid-persona {
     0% {
         clip-path: polygon(0% 2%, 99% 1%, 97% 99%, 2% 97%);
     }

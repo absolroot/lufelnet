@@ -115,6 +115,10 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
     </div>
     <div class="header-container">
         <h1 id="page-title" data-i18n="pageTitle">-</h1>
+        <div id="tier-mode-tabs" class="tier-mode-tabs" role="tablist" aria-label="Tier mode tabs">
+            <a id="tier-tab-list" class="tier-mode-tab" role="tab" data-mode="list" href="/tier/">티어 리스트</a>
+            <a id="tier-tab-maker" class="tier-mode-tab" role="tab" data-mode="maker" href="/tier-maker/">티어 메이커</a>
+        </div>
     </div>
 
     <!-- Filter section -->
@@ -516,6 +520,66 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
         return getTierPageMode() === 'list';
     }
 
+    function getTierPathLanguage() {
+        const seoLang = String(window.__SEO_PATH_LANG__ || '').toLowerCase();
+        if (['kr', 'en', 'jp', 'cn'].includes(seoLang)) {
+            return seoLang;
+        }
+
+        if (typeof LanguageRouter !== 'undefined' && typeof LanguageRouter.getCurrentLanguage === 'function') {
+            const routerLang = String(LanguageRouter.getCurrentLanguage() || '').toLowerCase();
+            if (['kr', 'en', 'jp', 'cn'].includes(routerLang)) {
+                return routerLang;
+            }
+        }
+
+        const pathMatch = String(window.location.pathname || '').match(/^\/(kr|en|jp|cn)(\/|$)/i);
+        if (pathMatch && pathMatch[1]) {
+            return String(pathMatch[1]).toLowerCase();
+        }
+
+        return 'kr';
+    }
+
+    function buildTierModeHref(mode) {
+        const lang = getTierPathLanguage();
+        const normalizedMode = mode === 'maker' ? 'maker' : 'list';
+        const path = normalizedMode === 'maker'
+            ? `/${lang}/tier-maker/`
+            : `/${lang}/tier/`;
+
+        const params = new URLSearchParams(window.location.search || '');
+        params.delete('lang');
+        params.delete('list');
+        params.delete('v');
+        const query = params.toString();
+        const hash = window.location.hash || '';
+        const base = String(window.BASE_URL || '').replace(/\/+$/, '');
+
+        return `${base}${path}${query ? `?${query}` : ''}${hash}`;
+    }
+
+    function updateTierModeTabs() {
+        const listTab = document.getElementById('tier-tab-list');
+        const makerTab = document.getElementById('tier-tab-maker');
+        if (!listTab || !makerTab) return;
+
+        const tierListTitle = getTierText('tierListTitle', '티어 리스트');
+        const tierMakerTitle = getTierText('tierMakerTitle', '티어 메이커');
+        listTab.textContent = tierListTitle;
+        makerTab.textContent = tierMakerTitle;
+
+        listTab.href = buildTierModeHref('list');
+        makerTab.href = buildTierModeHref('maker');
+
+        const mode = getTierPageMode();
+        const isList = mode === 'list';
+        listTab.classList.toggle('active', isList);
+        makerTab.classList.toggle('active', !isList);
+        listTab.setAttribute('aria-current', isList ? 'page' : 'false');
+        makerTab.setAttribute('aria-current', !isList ? 'page' : 'false');
+    }
+
     // 다국어 지원 함수
     async function updateLanguageContent() {
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
@@ -546,6 +610,8 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
             if (navCurrent) navCurrent.textContent = tierMakerTitle;
             if (pageTitle) pageTitle.textContent = tierMakerTitle;
         }
+
+        updateTierModeTabs();
 
         // 도움말 메시지 업데이트 (리스트 모드에서는 숨김)
         const helpText = document.querySelector('.help-text');
@@ -909,18 +975,14 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
     document.addEventListener('DOMContentLoaded', async () => {
         //console.log('DOMContentLoaded event fired');
 
+        updateTierModeTabs();
+
         // i18n 초기화 (제일 먼저)
         if (typeof initPageI18n === 'function') {
             await initPageI18n('tier');
         }
 
-        // 기본 초기화 작업
-        const isListMode = isTierListMode();
-        if (isListMode) {
-            Navigation.load('tier-list');
-        } else {
-            Navigation.load('tier-maker');
-        }
+        Navigation.load('tier');
 
         // 티어 기준 토글 기능 초기화
         initTierCriteriaToggle();

@@ -371,26 +371,48 @@
         margin-top: 8px;
         justify-content: center;
         overflow: hidden;
+        gap: 0;
     }
 
     .nav-section-label,
-    .nav-section-chevron,
     .nav-section-chevron-spacer {
         opacity: 0;
         visibility: hidden;
-        transition: opacity 0.2s ease, visibility 0.2s ease;
+        max-width: 0;
+        flex: 0;
+        overflow: hidden;
+        transition: opacity 0.2s ease, visibility 0.2s ease, max-width 0.3s ease, flex 0.3s ease;
+    }
+
+    .nav-section-chevron {
+        opacity: 0.4;
+        transition: opacity 0.2s ease;
     }
 
     .main-nav:hover .nav-section-header {
         padding: 6px 24px;
         justify-content: flex-start;
+        gap: 8px;
     }
 
-    .main-nav:hover .nav-section-label,
-    .main-nav:hover .nav-section-chevron,
+    .main-nav:hover .nav-section-label {
+        opacity: 1;
+        visibility: visible;
+        max-width: 200px;
+        flex: 1;
+        transition-delay: 0.15s;
+    }
+
+    .main-nav:hover .nav-section-chevron {
+        opacity: 1;
+        transition-delay: 0.15s;
+    }
+
     .main-nav:hover .nav-section-chevron-spacer {
         opacity: 1;
         visibility: visible;
+        max-width: 14px;
+        flex: 0 0 14px;
         transition-delay: 0.15s;
     }
 
@@ -648,13 +670,25 @@
     .main-nav.nav-pinned .nav-section-header {
         padding: 6px 24px;
         justify-content: flex-start;
+        gap: 8px;
     }
 
-    .main-nav.nav-pinned .nav-section-label,
-    .main-nav.nav-pinned .nav-section-chevron,
+    .main-nav.nav-pinned .nav-section-label {
+        opacity: 1;
+        visibility: visible;
+        max-width: 200px;
+        flex: 1;
+    }
+
+    .main-nav.nav-pinned .nav-section-chevron {
+        opacity: 1;
+    }
+
     .main-nav.nav-pinned .nav-section-chevron-spacer {
         opacity: 1;
         visibility: visible;
+        max-width: 14px;
+        flex: 0 0 14px;
     }
 
     .main-nav.nav-pinned .nav-section.collapsed .nav-section-items {

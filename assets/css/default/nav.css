@@ -28,15 +28,12 @@
     top: 0;
     left: 0;
     z-index: 100;
-    /* 오른쪽에 border 1px */
     box-sizing: border-box;
-    /* 언어 선택기 하단 패딩만큼 배경을 위로 겹치기 위한 변수 (태블릿/PC 기본 16px) */
     --ls-overlap: calc(24px + env(safe-area-inset-bottom));
     border-right: 1px solid rgba(255, 255, 255, 0.07);
 }
 
 /* background image */
-/* nav_before.css 방식으로 복원: 고정된 ::after 배경 사용 */
 .main-nav::after {
     content: '';
     position: fixed;
@@ -53,19 +50,16 @@
     z-index: -1;
 }
 
-/* sticky 방식은 비활성화하여 레이아웃 상호작용 제거 */
 .nav-bg {
     display: none;
 }
 
-/* 언어 선택기를 배경 위로 */
 .language-selector-container {
     position: relative;
     z-index: 1;
     border: none;
 }
 
-/* tablet/desktop: 언어 선택기 하단 여백 제거 (nav-bg가 공간 차지 X) */
 @media screen and (min-width: 769px) {
     .language-selector-container {
         margin-top: 0 !important;
@@ -74,12 +68,9 @@
     }
 }
 
-/* nav 내부 여백을 채우는 스페이서 (언어 선택기를 하단으로 밀어내기) */
 .nav-spacer {
     flex: 1 0 auto;
 }
-
-
 
 .logo-container {
     cursor: pointer;
@@ -87,7 +78,7 @@
     flex-direction: row;
     gap: 10px;
     align-items: center;
-    margin: 20px 0 0px 0;
+    margin: 10px 0 0px 0;
     padding: 12px 24px;
     outline: none;
     user-select: none;
@@ -112,324 +103,206 @@
     opacity: 0.9;
 }
 
-.nav-link {
-    display: flex;
-    align-items: center;
-    gap: 0px;
-    padding: 15px 24px;
-    color: #ffffff;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    position: relative;
-    z-index: 1;
+
+/* ===== 섹션 스타일 ===== */
+
+.nav-section {
     width: 100%;
     box-sizing: border-box;
-    outline: none;
-    -webkit-tap-highlight-color: transparent;
 }
 
-.nav-link img {
-    margin-right: 10px;
-    width: 28px;
-    height: 28px;
-    object-fit: contain;
+.nav-section + .nav-section {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.nav-link span,
-.nav-main-item span {
-    margin-left: 6px;
-    font-size: 13px;
-}
-
-.nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.05);
-}
-
-.nav-link.active {
-    background-color: #800000;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 15px 24px;
-    clip-path: polygon(0% 2%, 99% 11%, 95% 95%, 4% 94%);
-}
-
-.nav-link.active span {
-    color: #ffffff;
-    font-weight: 600;
-}
-
-.nav-link.active::after {
-    content: '';
-    position: absolute;
-    align-items: center;
-    margin-bottom: 4px;
-    right: 16px;
-    width: 32px;
-    height: 32px;
-    background-image: url('/assets/img/nav/select.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-/* 1. 애니메이션 정의: 기존 좌표에서 조금씩 비틀기 */
-@keyframes jitter-shape {
-    0% {
-        clip-path: polygon(0% 2%, 99% 11%, 95% 95%, 4% 94%);
-        /* [원본] */
-    }
-
-    25% {
-        /* 원본에서 각각 조금씩 다르게 (+3%, -2% 등) */
-        clip-path: polygon(3% 0%, 96% 13%, 98% 92%, 2% 97%);
-    }
-
-    50% {
-        clip-path: polygon(1% 5%, 100% 8%, 93% 98%, 6% 91%);
-    }
-
-    75% {
-        clip-path: polygon(4% 1%, 95% 15%, 97% 93%, 0% 95%);
-    }
-
-    100% {
-        clip-path: polygon(0% 2%, 99% 11%, 95% 95%, 4% 94%);
-        /* [원본 복귀] */
-    }
-}
-
-@keyframes subtle-liquid {
-    0% {
-        clip-path: polygon(0% 2%, 99% 9%, 94% 99%, 4% 94%);
-    }
-
-    10% {
-        clip-path: polygon(1% 1%, 98% 7%, 93% 100%, 5% 95%);
-    }
-
-    20% {
-        clip-path: polygon(-1% 3%, 100% 5%, 95% 98%, 3% 93%);
-    }
-
-    30% {
-        clip-path: polygon(0% 3%, 98% 2%, 93% 96%, 5% 95%);
-    }
-
-    40% {
-        clip-path: polygon(1% 1%, 99% -1%, 95% 98%, 4% 93%);
-    }
-
-    50% {
-        clip-path: polygon(0% 0%, 100% 2%, 93% 100%, 3% 95%);
-    }
-
-    60% {
-        clip-path: polygon(-1% 3%, 98% 1%, 94% 98%, 5% 94%);
-    }
-
-    70% {
-        clip-path: polygon(1% 2%, 99% -1%, 95% 96%, 4% 95%);
-    }
-
-    80% {
-        clip-path: polygon(0% 1%, 100% 2%, 93% 98%, 3% 93%);
-    }
-
-    90% {
-        clip-path: polygon(-1% 3%, 98% 4%, 94% 100%, 5% 95%);
-    }
-
-    100% {
-        clip-path: polygon(0% 2%, 99% 7%, 94% 99%, 4% 94%);
-    }
-}
-
-/* 2. 호버 시 애니메이션 실행 */
-.nav-link.active:hover,
-.nav-sub-item.active:hover {
-    animation: subtle-liquid 2s infinite linear;
-}
-
-
-.nav-main-item {
+.nav-section-header {
     display: flex;
     align-items: center;
-    gap: 0px;
-    padding: 15px 24px;
-    color: #ffffff;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    width: 100%;
-    box-sizing: border-box;
+    padding: 6px 24px;
+    margin-top: 8px;
     cursor: pointer;
-    outline: none;
+    user-select: none;
+    -webkit-user-select: none;
+    gap: 8px;
     -webkit-tap-highlight-color: transparent;
-    border-top: 1px solid transparent;
-    border-bottom: 1px solid transparent;
 }
 
-.nav-main-item:hover {
-    background-color: rgba(255, 255, 255, 0.05);
+.nav-section-header:hover {
+    background-color: rgba(255, 255, 255, 0.02);
 }
 
-.nav-main-item img {
-    margin-right: 10px;
+/* 1개 아이템 섹션은 접기 불가 → 호버 효과 없음 */
+.nav-section-header:has(+ .nav-section-items > :only-child) {
+    cursor: default;
 }
 
-.has-submenu.active .nav-main-item {
-    background-color: rgba(255, 255, 255, 0.05);
-    border-top-color: rgba(255, 255, 255, 0.1);
-    border-bottom-color: rgba(255, 255, 255, 0.1);
+.nav-section-header:has(+ .nav-section-items > :only-child):hover {
+    background-color: transparent;
 }
 
-.nav-item {
-    position: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0px;
-    padding: 12px 24px;
-    color: #ffffff;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    box-sizing: border-box;
+.nav-section-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.35);
+    font-weight: 700;
+    flex: 1;
+    white-space: nowrap;
 }
 
-.nav-item img[src*="defense-calc.png"] {
-    width: 24px !important;
-    height: 24px !important;
-    padding: 4px;
-    object-fit: contain !important;
+.nav-section-chevron {
+    width: 14px;
+    height: 14px;
+    color: rgba(255, 255, 255, 0.25);
+    transition: transform 0.25s ease;
+    flex-shrink: 0;
 }
 
-.nav-main-item img[src*="calculator.png"],
-.nav-link img[src*="calculator.png"],
-.nav-main-item img[src*="tactic.png"],
-.nav-link img[src*="tactic.png"],
-.nav-main-item img[src*="tier.png"],
-.nav-link img[src*="tier.png"],
-.nav-main-item img[src*="synergy.png"],
-.nav-link img[src*="synergy.png"] {
-    width: 26px !important;
-    height: 26px !important;
-    padding: 2px;
-    object-fit: contain !important;
+.nav-section-chevron-spacer {
+    width: 14px;
+    flex-shrink: 0;
 }
 
-.nav-item:hover {
-    background-color: rgba(255, 255, 255, 0.05);
+.nav-section.collapsed .nav-section-chevron {
+    transform: rotate(-90deg);
 }
 
-
-.nav-main-item.active img {
-    margin-right: 10px;
-}
-
-.nav-main-item.active span {
-    color: #ffffff;
-    font-weight: 600;
-    margin: 0;
-    padding: 0;
-}
-
-.nav-main-item:focus {
-    outline: none;
-}
-
-.nav-main-item:hover {
-    background-color: rgba(255, 255, 255, 0.05);
-}
-
-.submenu {
-    width: 100%;
-    outline: none;
-    -webkit-tap-highlight-color: transparent;
-    max-height: 0;
+/* 섹션 아이템 컨테이너 */
+.nav-section-items {
+    max-height: 800px;
     overflow: hidden;
     transition: max-height 0.3s ease-in-out;
+    padding-bottom: 6px;
 }
 
-.has-submenu.active .submenu {
-    display: block;
-    max-height: 200px;
-    /* 서브메뉴의 최대 높이 */
+.nav-section.collapsed .nav-section-items {
+    max-height: 0;
 }
 
-.nav-sub-item {
+/* 섹션 아이템 (링크) */
+.nav-section-item {
     display: flex;
     align-items: center;
-    padding: 12px 24px 12px 48px;
-    color: #ffffff;
+    gap: 0px;
+    padding: 10px 24px;
+    color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
+    position: relative;
+    z-index: 1;
     width: 100%;
     box-sizing: border-box;
     outline: none;
     -webkit-tap-highlight-color: transparent;
-    background-color: #121212;
     border-top: 1px solid transparent;
     border-bottom: 1px solid transparent;
 }
 
-.nav-sub-item:hover {
-    background-color: rgba(255, 255, 255, 0.05);
+/* 아이템 아이콘 */
+.nav-item-icon {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    flex-shrink: 0;
+    margin-right: 10px;
+    opacity: 0.85;
 }
 
-.nav-sub-item span {
-    margin-left: 0 !important;
-    font-size: 13px;
-}
-
-.nav-sub-item.active {
-    background-color: #800000;
-    border-top-color: rgba(255, 255, 255, 0.1);
-    border-bottom-color: rgba(255, 255, 255, 0.1);
-    clip-path: polygon(0% 2%, 99% 11%, 95% 95%, 4% 94%);
-}
-
-.nav-sub-item.active span {
-    color: #ffffff;
-    font-weight: 600;
-}
-
-.nav-sub-item.active::after {
-    content: '';
-    position: absolute;
-    align-items: center;
-    margin-bottom: 4px;
-    right: 16px;
-    width: 32px;
-    height: 32px;
-    background-image: url('/assets/img/nav/select.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.has-submenu.active .nav-sub-item.active::after {
+.nav-section-item:hover .nav-item-icon {
     opacity: 1;
 }
 
-.nav-item.has-submenu {
-    padding: 0;
+.nav-section-item.active .nav-item-icon {
+    opacity: 1;
 }
 
-/* has submenu main item , sword animation none*/
-.has-submenu.active .nav-main-item::after {
-    display: none;
+.nav-section-item span {
+    font-size: 13px;
+    white-space: nowrap;
+    margin-left: 2px;
 }
 
-.nav-icon {
-    font-size: 20px;
-    width: 24px;
-    text-align: center;
-    margin-right: 10px;
+.nav-section-item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
 }
 
+.nav-section-item.active {
+    background-color: #800000;
+    color: #ffffff;
+    font-weight: 600;
+    clip-path: polygon(3% 2%, 96% 11%, 92% 95%, 7% 94%);
+    border-top-color: rgba(255, 255, 255, 0.1);
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+    padding: 10px 24px;
+    animation: subtle-liquid 2s infinite linear;
+}
+
+.nav-section-item.active span {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.nav-section-item.active::after {
+    content: '';
+    position: absolute;
+    align-items: center;
+    margin-bottom: 4px;
+    right: 16px;
+    width: 28px;
+    height: 28px;
+    background-image: url('/assets/img/nav/select.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* 활성 아이템 상시 애니메이션 */
+@keyframes subtle-liquid {
+    0% {
+        clip-path: polygon(3% 2%, 96% 9%, 91% 99%, 7% 94%);
+    }
+
+    10% {
+        clip-path: polygon(4% 1%, 95% 7%, 90% 100%, 8% 95%);
+    }
+
+    20% {
+        clip-path: polygon(2% 3%, 97% 5%, 92% 98%, 6% 93%);
+    }
+
+    30% {
+        clip-path: polygon(3% 3%, 95% 2%, 90% 96%, 8% 95%);
+    }
+
+    40% {
+        clip-path: polygon(4% 1%, 96% -1%, 92% 98%, 7% 93%);
+    }
+
+    50% {
+        clip-path: polygon(3% 0%, 97% 2%, 90% 100%, 6% 95%);
+    }
+
+    60% {
+        clip-path: polygon(2% 3%, 95% 1%, 91% 98%, 8% 94%);
+    }
+
+    70% {
+        clip-path: polygon(4% 2%, 96% -1%, 92% 96%, 7% 95%);
+    }
+
+    80% {
+        clip-path: polygon(3% 1%, 97% 2%, 90% 98%, 6% 93%);
+    }
+
+    90% {
+        clip-path: polygon(2% 3%, 95% 4%, 91% 100%, 8% 95%);
+    }
+
+    100% {
+        clip-path: polygon(3% 2%, 96% 7%, 91% 99%, 7% 94%);
+    }
+}
 
 
 /* ===== PC Collapsible Sidebar (min-width: 1441px) ===== */
@@ -454,7 +327,7 @@
         width: var(--nav-expanded-width);
     }
 
-    /* 배경 이미지 - 축소 시 숨김, 확장 시 페이드인 */
+    /* 배경 이미지 */
     .main-nav::after {
         width: var(--nav-expanded-width);
         opacity: 0;
@@ -466,20 +339,18 @@
         transition-delay: 0.1s;
     }
 
-    /* 로고 컨테이너 - 고정 패딩 */
+    /* 로고 */
     .logo-container {
-        padding: 12px 20px;
+        padding: 8px 20px;
         gap: 10px;
     }
 
-    /* 로고 아이콘 - 항상 표시, 고정 크기 */
     .logo-container img[src*="lufel.webp"] {
         flex-shrink: 0;
         width: 40px;
         height: 40px;
     }
 
-    /* 로고 텍스트 - 축소 시 숨김 */
     .logo-container img[src*="lufelnet.png"] {
         opacity: 0;
         max-width: 0;
@@ -494,148 +365,110 @@
         transition-delay: 0.15s;
     }
 
-    /* 네비게이션 링크 - 고정 좌측 패딩 */
-    .nav-link {
-        padding: 12px 12px 12px 26px !important;
+    /* 섹션 헤더 - 축소 시 고정 높이 유지 (레이아웃 시프트 방지) */
+    .nav-section-header {
+        padding: 6px 0;
+        margin-top: 8px;
+        justify-content: center;
+        overflow: hidden;
     }
 
-    /* 네비게이션 아이콘 - 고정 크기, 고정 margin */
-    .nav-link img {
-        flex-shrink: 0 !important;
-        width: 28px !important;
-        height: 28px !important;
-        margin-right: 10px !important;
-    }
-
-    /* 축소 상태: 활성화된 메뉴는 사각형 배경, 높이 동일하게 유지 */
-    .nav-link.active {
-        clip-path: none;
-        padding: 12px 12px 12px 26px !important;
-    }
-
-    /* 확장 상태: 폴리곤 배경 복원 */
-    .main-nav:hover .nav-link.active {
-        clip-path: polygon(0% 2%, 99% 11%, 95% 95%, 4% 94%);
-        padding: 12px 24px !important;
-        animation: subtle-liquid 2s infinite linear;
-    }
-
-    /* 텍스트 요소 - 축소 시 숨김 */
-    .nav-link span,
-    .nav-main-item span {
+    .nav-section-label,
+    .nav-section-chevron,
+    .nav-section-chevron-spacer {
         opacity: 0;
         visibility: hidden;
-        white-space: nowrap;
+        transition: opacity 0.2s ease, visibility 0.2s ease;
+    }
+
+    .main-nav:hover .nav-section-header {
+        padding: 6px 24px;
+        justify-content: flex-start;
+    }
+
+    .main-nav:hover .nav-section-label,
+    .main-nav:hover .nav-section-chevron,
+    .main-nav:hover .nav-section-chevron-spacer {
+        opacity: 1;
+        visibility: visible;
+        transition-delay: 0.15s;
+    }
+
+    /* 섹션 아이템 - 아이콘 고정 위치, 텍스트만 나타남 */
+    .nav-section-item {
+        padding: 9px 12px 9px 29px !important;
+        justify-content: flex-start;
+    }
+
+    .nav-item-icon {
+        width: 22px;
+        height: 22px;
+        margin-right: 10px;
+    }
+
+    .main-nav:hover .nav-section-item {
+        padding: 9px 24px 9px 29px !important;
+    }
+
+    /* 텍스트 - 축소 시 숨김 */
+    .nav-section-item span {
+        opacity: 0;
+        visibility: hidden;
         max-width: 0;
         overflow: hidden;
         transition: opacity 0.15s ease, visibility 0.15s ease, max-width 0.3s ease;
     }
 
-    .main-nav:hover .nav-link span,
-    .main-nav:hover .nav-main-item span {
+    .main-nav:hover .nav-section-item span {
         opacity: 1;
         visibility: visible;
         max-width: 200px;
         transition-delay: 0.2s;
     }
 
-    /* 메인 메뉴 아이템 (서브메뉴 있는 경우) - 고정 좌측 패딩 */
-    .nav-main-item {
-        padding: 12px 12px 12px 26px !important;
-    }
-
-    .nav-main-item img {
-        flex-shrink: 0;
-        margin-right: 10px;
-    }
-
-    /* 서브메뉴 - 축소 시 숨김 (active 상태여도), 확장 시 딜레이 후 표시 */
-    .submenu {
+    /* 접힌 섹션의 아이템 - 축소 시에도 숨김 */
+    .nav-section.collapsed .nav-section-items {
         max-height: 0 !important;
-        overflow: hidden;
-        transition: max-height 0.25s ease-in-out;
-        transition-delay: 0s;
-        /* 축소 시: 즉시 숨김 */
     }
 
-    .main-nav:hover .has-submenu.active .submenu {
-        max-height: 500px !important;
-        transition-delay: 0.15s;
-        /* 확장 시: 너비 확장 후 표시 */
+    .main-nav:hover .nav-section.collapsed .nav-section-items {
+        max-height: 0 !important;
     }
 
-    /* 축소 상태: 활성화된 서브메뉴의 부모 메뉴도 빨간 배경 표시 */
-    .has-submenu.active .nav-main-item {
-        background-color: #800000;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    /* 확장 상태: 부모 메뉴 원래 스타일로 복원 */
-    .main-nav:hover .has-submenu.active .nav-main-item {
-        background-color: rgba(255, 255, 255, 0.05);
-        border-top-color: rgba(255, 255, 255, 0.1);
-        border-bottom-color: rgba(255, 255, 255, 0.1);
-    }
-
-    /* 서브메뉴 아이템 - 고정 좌측 패딩 */
-    .nav-sub-item {
-        padding: 12px 12px 12px 52px;
-    }
-
-    /* 축소 상태: 서브메뉴 활성화된 메뉴는 사각형 배경 */
-    .nav-sub-item.active {
+    /* 활성 아이템 - 축소 상태에서 사각형 배경 */
+    .nav-section-item.active {
         clip-path: none;
-        padding: 12px 12px 12px 52px;
+        background-color: #800000;
     }
 
-    /* 확장 상태: 폴리곤 배경 복원, 패딩 동일하게 유지 */
-    .main-nav:hover .nav-sub-item.active {
-        clip-path: polygon(0% 2%, 99% 11%, 95% 95%, 4% 94%);
-        padding: 12px 24px 12px 48px;
-        animation: subtle-liquid 2s infinite linear;
+    /* 확장 상태: 폴리곤 배경 복원 */
+    .main-nav:hover .nav-section-item.active {
+        clip-path: polygon(3% 2%, 96% 11%, 92% 95%, 7% 94%);
+        padding: 9px 24px 9px 29px !important;
     }
 
-    .nav-sub-item span {
-        opacity: 0;
-        visibility: hidden;
-        white-space: nowrap;
-        max-width: 0;
-        overflow: hidden;
-        transition: opacity 0.15s ease, visibility 0.15s ease, max-width 0.3s ease;
-    }
-
-    .main-nav:hover .nav-sub-item span {
-        opacity: 1;
-        visibility: visible;
-        max-width: 200px;
-        transition-delay: 0.35s;
-    }
-
-    /* 활성화된 메뉴의 칼 아이콘 숨김 (축소 상태) */
-    .nav-link.active::after {
+    /* 활성 아이템의 칼 아이콘 - 축소 시 숨김 */
+    .nav-section-item.active::after {
         opacity: 0;
         transition: opacity 0.2s ease;
     }
 
-    .main-nav:hover .nav-link.active::after {
+    .main-nav:hover .nav-section-item.active::after {
         opacity: 1;
         transition-delay: 0.2s;
     }
 
-    /* 서브메뉴 칼 아이콘 - 축소 상태에서 완전히 숨김 */
-    .nav-sub-item.active::after {
-        opacity: 0 !important;
-        visibility: hidden;
+    /* 섹션 구분선 */
+    .nav-section + .nav-section {
+        border-top-color: rgba(255, 255, 255, 0.03);
     }
 
-    .main-nav:hover .has-submenu.active .nav-sub-item.active::after {
-        opacity: 1 !important;
-        visibility: visible;
-        transition-delay: 0.2s;
+    .main-nav:hover .nav-section + .nav-section {
+        border-top-color: rgba(255, 255, 255, 0.05);
     }
 
-    /* 언어 선택기 컨테이너 - 축소/확장 레이아웃 (nav 내부만) */
+
+    /* ===== 언어 선택기 (PC 축소/확장) ===== */
     .main-nav .language-selector-container {
         padding: 15px 18px;
         display: flex;
@@ -660,19 +493,16 @@
         flex: 8;
     }
 
-    /* 선택된 옵션 - 축소 시 중앙 정렬 (nav 내부만) */
     .main-nav .selected-option {
-        padding: 8px;
-        justify-content: center;
+        padding: 8px 8px 8px 14px;
+        justify-content: flex-start;
     }
 
     .main-nav:hover .selected-option,
     .main-nav.nav-pinned .selected-option {
-        padding: 8px 10px;
-        justify-content: flex-start;
+        padding: 8px 10px 8px 14px;
     }
 
-    /* 언어 이름 텍스트 숨김 - 축소 상태 (nav 내부만) */
     .main-nav .selected-option span {
         opacity: 0;
         visibility: hidden;
@@ -690,25 +520,17 @@
         transition-delay: 0.2s;
     }
 
-    /* 플래그 아이콘 - 축소 시 margin 제거 (nav 내부만) */
     .main-nav .selected-option .flag-icon {
         flex-shrink: 0;
-        margin-right: 0;
-    }
-
-    .main-nav:hover .selected-option .flag-icon,
-    .main-nav.nav-pinned .selected-option .flag-icon {
         margin-right: 8px;
     }
 
-    /* 옵션 컨테이너 (nav 내부만) */
     .main-nav .options-container {
         left: 0;
         min-width: var(--nav-collapsed-width);
         width: 100%;
     }
 
-    /* 옵션 항목 - 고정 패딩 (nav 내부만) */
     .main-nav .option {
         padding: 8px 10px;
     }
@@ -729,7 +551,6 @@
         max-width: 100px;
     }
 
-    /* 옵션 플래그 아이콘 - 고정 margin (nav 내부만) */
     .main-nav .option .flag-icon {
         flex-shrink: 0;
         margin-right: 8px;
@@ -746,7 +567,6 @@
 
     .main-nav .nav-toggle-btn {
         display: none;
-        /* Changed: default is none to remove space */
         align-items: center;
         justify-content: center;
         width: 24px;
@@ -759,13 +579,10 @@
         flex: 0 0 24px;
         padding: 0;
         min-width: 24px;
-
-        /* Default hidden settings */
         opacity: 0;
         visibility: hidden;
     }
 
-    /* Show on hover or pinned */
     .main-nav:hover .nav-toggle-separator,
     .main-nav.nav-pinned .nav-toggle-separator {
         display: block;
@@ -774,7 +591,6 @@
     .main-nav:hover .nav-toggle-btn,
     .main-nav.nav-pinned .nav-toggle-btn {
         display: flex;
-        /* Restore flex display */
         opacity: 1;
         visibility: visible;
         transition-delay: 0.1s;
@@ -806,7 +622,6 @@
         display: none;
     }
 
-    /* Only switch icons when pinned, NOT on hover */
     .main-nav.nav-pinned .nav-toggle-icon.open {
         display: none;
     }
@@ -830,46 +645,39 @@
         visibility: visible;
     }
 
-    .main-nav.nav-pinned .nav-link span,
-    .main-nav.nav-pinned .nav-main-item span {
+    .main-nav.nav-pinned .nav-section-header {
+        padding: 6px 24px;
+        justify-content: flex-start;
+    }
+
+    .main-nav.nav-pinned .nav-section-label,
+    .main-nav.nav-pinned .nav-section-chevron,
+    .main-nav.nav-pinned .nav-section-chevron-spacer {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .main-nav.nav-pinned .nav-section.collapsed .nav-section-items {
+        max-height: 0 !important;
+    }
+
+    .main-nav.nav-pinned .nav-section-item span {
         opacity: 1;
         visibility: visible;
         max-width: 200px;
     }
 
-    .main-nav.nav-pinned .nav-link.active {
-        clip-path: polygon(0% 2%, 99% 11%, 95% 95%, 4% 94%);
-        padding: 12px 24px !important;
+    .main-nav.nav-pinned .nav-section-item {
+        padding: 9px 24px 9px 29px !important;
     }
 
-    .main-nav.nav-pinned .has-submenu.active .submenu {
-        max-height: 500px !important;
+    .main-nav.nav-pinned .nav-section-item.active {
+        clip-path: polygon(3% 2%, 96% 11%, 92% 95%, 7% 94%);
+        padding: 9px 24px 9px 29px !important;
     }
 
-    .main-nav.nav-pinned .has-submenu.active .nav-main-item {
-        background-color: rgba(255, 255, 255, 0.05);
-        border-top-color: rgba(255, 255, 255, 0.1);
-        border-bottom-color: rgba(255, 255, 255, 0.1);
-    }
-
-    .main-nav.nav-pinned .nav-sub-item span {
+    .main-nav.nav-pinned .nav-section-item.active::after {
         opacity: 1;
-        visibility: visible;
-        max-width: 200px;
-    }
-
-    .main-nav.nav-pinned .nav-sub-item.active {
-        clip-path: polygon(0% 2%, 99% 11%, 95% 95%, 4% 94%);
-        padding: 12px 24px 12px 48px;
-    }
-
-    .main-nav.nav-pinned .nav-link.active::after {
-        opacity: 1;
-    }
-
-    .main-nav.nav-pinned .has-submenu.active .nav-sub-item.active::after {
-        opacity: 1 !important;
-        visibility: visible;
     }
 
     .main-nav.nav-pinned .selected-option span {
@@ -885,7 +693,7 @@
     }
 }
 
-/* tablet/desktop side panel: hide scrollbar by default, show on hover */
+/* tablet/desktop side panel: hide scrollbar */
 @media screen and (min-width: 1201px) and (max-width: 1440px) {
     .main-nav {
         scrollbar-width: none;
@@ -925,15 +733,18 @@
 
     .main-nav:hover .nav-scroll-thumb {
         opacity: 1;
+        transition-delay: 0.4s;
+    }
+
+    .main-nav .nav-scroll-thumb {
+        transition: opacity 0.15s ease;
+        transition-delay: 0s;
     }
 }
 
 .nav-toggle-btn {
     display: none;
 }
-
-/* PC에서만 토글 버튼 표시 - Removed redundant query */
-/* The main visibility logic is handled in the main media query block above */
 
 /* tablet responsive (769px ~ 1440px) */
 @media screen and (max-width: 1440px) {
@@ -946,7 +757,6 @@
         z-index: 1000;
         visibility: hidden;
         opacity: 0;
-        /* 전체 화면 높이에 맞춘 스크롤 컨테이너 */
         top: 0;
         height: 100svh;
         overflow-y: auto;
@@ -961,8 +771,6 @@
         visibility: visible;
         opacity: 1;
     }
-
-    /* ::after 배경 유지 (nav_before.css와 동일 동작) */
 }
 
 /* sword animation */
@@ -1001,19 +809,7 @@
 }
 
 
-/* mobile: safe-area 포함 패딩으로 하단 바 대비 */
-/*
-@media (max-width: 768px) {
-  .main-nav {
-    position: fixed; top: 0; right: 0; bottom: 0; left: auto;
-    width: 100vw;
-    transform: translateX(100%); transition: transform .3s ease; will-change: transform;
-    overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; pointer-events: none;
-    z-index: 1000; padding-bottom: calc(24px + env(safe-area-inset-bottom)); scroll-padding-bottom: calc(24px + env(safe-area-inset-bottom));
-  }
-  .main-nav::after { display: none; }
-}*/
-
+/* mobile */
 @media screen and (max-width: 768px) {
     .mobile-header {
         display: block;
@@ -1064,15 +860,8 @@
         opacity: 0.5;
     }
 
-    .nav-item {
-        padding: 15px 28px;
-        margin: 0;
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    .nav-item.active::after {
-        display: none;
+    .nav-section-item {
+        padding: 12px 28px;
     }
 
     .hamburger-btn {
@@ -1081,16 +870,12 @@
 }
 
 
-/* hide specific nav button in mobile */
-
+/* hide tier-maker in mobile */
 @media (max-width: 1200px) {
-
-    /* Show the tier navigation item but hide the tier maker submenu item */
-    .nav-item[data-nav="tier"] .nav-sub-item[data-nav="tier-maker"] {
+    .nav-section-item[data-nav="tier-maker"] {
         display: none;
     }
 }
-
 
 
 /* language selector */
@@ -1103,10 +888,7 @@
     box-sizing: border-box;
     background-color: #131313;
     position: relative;
-    /* 상대 위치 설정 */
     z-index: 1;
-    /* 언어 선택기를 배경보다 위로 */
-    /* nav-bg와 동일 변수 사용으로 항상 정확히 겹치도록 */
     padding-bottom: var(--ls-overlap) !important;
 }
 
@@ -1139,11 +921,9 @@
     margin-right: 8px;
 }
 
-
 .options-container {
     position: absolute;
     bottom: 100%;
-    /* dropdown up */
     left: 0;
     width: 100%;
     background-color: var(--card-background);
@@ -1208,7 +988,6 @@
         margin: 0 auto;
     }
 
-    /* mobile dropdown: open upwards */
     .options-container {
         top: auto;
         bottom: 100%;
@@ -1245,30 +1024,4 @@
 
 .privacy-link:hover {
     color: inherit;
-}
-
-
-
-
-@media screen and (min-height: 960px) {
-    .nav-link {
-        padding: 12px 24px;
-    }
-
-    .nav-main-item {
-        padding: 12px 24px;
-    }
-
-    .nav-item {
-        padding: 12px 24px;
-    }
-
-    .nav-sub-item {
-        padding: 12px 24px 12px 48px;
-    }
-}
-
-/* schedule icon scale 0.9 */
-.nav-link[data-nav="schedule"] img {
-    transform: scale(0.9);
 }

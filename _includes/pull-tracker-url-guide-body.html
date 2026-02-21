@@ -1,50 +1,51 @@
-<script>
-(function () {
-  var params = new URLSearchParams(window.location.search || '');
-  var path = String(window.location.pathname || '/');
-  var lowerPath = path.toLowerCase();
+﻿<script>
+  (function () {
+    var params = new URLSearchParams(window.location.search || '');
+    var path = String(window.location.pathname || '/');
+    var lowerPath = path.toLowerCase();
 
-  var pathLangMatch = lowerPath.match(/^\/(kr|en|jp)(\/|$)/);
-  var pathLang = pathLangMatch ? pathLangMatch[1] : '';
-  var queryLang = String(params.get('lang') || '').toLowerCase();
-  var effectiveLang = pathLang || (['kr', 'en', 'jp'].indexOf(queryLang) !== -1 ? queryLang : '');
+    var pathLangMatch = lowerPath.match(/^\/(kr|en|jp)(\/|$)/);
+    var pathLang = pathLangMatch ? pathLangMatch[1] : '';
+    var queryLang = String(params.get('lang') || '').toLowerCase();
+    var effectiveLang = pathLang || (['kr', 'en', 'jp'].indexOf(queryLang) !== -1 ? queryLang : '');
 
-  var isLegacyRoot = /^\/pull-tracker\/url-guide\/?$/.test(lowerPath);
-  var isCanonicalPath = /^\/(kr|en|jp)\/pull-tracker\/url-guide\/?$/.test(lowerPath);
+    var isLegacyRoot = /^\/pull-tracker\/url-guide\/?$/.test(lowerPath);
+    var isCanonicalPath = /^\/(kr|en|jp)\/pull-tracker\/url-guide\/?$/.test(lowerPath);
 
-  if (isLegacyRoot && effectiveLang) {
-    window.__SEO_PATH_LANG__ = effectiveLang;
-    params.delete('lang');
-    params.delete('v');
-    var remainingLegacy = params.toString();
-    history.replaceState(null, '', '/' + effectiveLang + '/pull-tracker/url-guide/' + (remainingLegacy ? '?' + remainingLegacy : ''));
-    return;
-  }
-
-  if (isCanonicalPath) {
-    window.__SEO_PATH_LANG__ = pathLang;
-    var before = params.toString();
-    params.delete('lang');
-    params.delete('v');
-    var remainingCanonical = params.toString();
-    if (before !== remainingCanonical) {
-      history.replaceState(null, '', path + (remainingCanonical ? '?' + remainingCanonical : ''));
+    if (isLegacyRoot && effectiveLang) {
+      window.__SEO_PATH_LANG__ = effectiveLang;
+      params.delete('lang');
+      params.delete('v');
+      var remainingLegacy = params.toString();
+      history.replaceState(null, '', '/' + effectiveLang + '/pull-tracker/url-guide/' + (remainingLegacy ? '?' + remainingLegacy : ''));
+      return;
     }
-    return;
-  }
 
-  if (isLegacyRoot && params.has('v')) {
-    params.delete('v');
-    var remainingRoot = params.toString();
-    history.replaceState(null, '', '/pull-tracker/url-guide/' + (remainingRoot ? '?' + remainingRoot : ''));
-  }
-})();
+    if (isCanonicalPath) {
+      window.__SEO_PATH_LANG__ = pathLang;
+      var before = params.toString();
+      params.delete('lang');
+      params.delete('v');
+      var remainingCanonical = params.toString();
+      if (before !== remainingCanonical) {
+        history.replaceState(null, '', path + (remainingCanonical ? '?' + remainingCanonical : ''));
+      }
+      return;
+    }
+
+    if (isLegacyRoot && params.has('v')) {
+      params.delete('v');
+      var remainingRoot = params.toString();
+      history.replaceState(null, '', '/pull-tracker/url-guide/' + (remainingRoot ? '?' + remainingRoot : ''));
+    }
+  })();
 </script>
 {% if page.alternate_urls %}
 {% for alt in page.alternate_urls %}
 <link rel="alternate" hreflang="{{ alt[0] }}" href="{{ site.url }}{{ alt[1] }}" />
 {% endfor %}
-<link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.alternate_urls['ko'] | default: page.alternate_urls.first[1] }}" />
+<link rel="alternate" hreflang="x-default"
+  href="{{ site.url }}{{ page.alternate_urls['ko'] | default: page.alternate_urls.first[1] }}" />
 {% endif %}
 
 <div class="main-wrapper guide-page">
@@ -60,7 +61,7 @@
     <h1 id="pageTitle">URL Guide</h1>
   </div>
 
-  <div class="guide-shell">
+  <div class="guide-shell timeline-layout">
     <div class="step-row">
       <div class="content guide-card" data-step="1">
         <p class="guide-text" id="s2intro">Windows instructions are currently available.</p>
@@ -77,10 +78,10 @@
     <div class="step-row">
       <div class="content guide-card" data-step="3">
         <p class="guide-text" id="s2">Select your device platform.</p>
-        <div class="pill-row">
-          <button class="pill active" id="osWin" type="button" aria-pressed="true">Windows</button>
-          <button class="pill" id="osIOS" type="button" aria-pressed="false">iOS</button>
-          <button class="pill" id="osLinux" type="button" aria-pressed="false">Linux / Steam Deck</button>
+        <div class="premium-selector-row">
+          <button class="premium-pill active" id="osWin" type="button" aria-pressed="true">Windows</button>
+          <button class="premium-pill" id="osIOS" type="button" aria-pressed="false">iOS</button>
+          <button class="premium-pill" id="osLinux" type="button" aria-pressed="false">Linux / Steam Deck</button>
         </div>
       </div>
     </div>
@@ -88,9 +89,9 @@
     <div class="step-row" id="methodStep">
       <div class="content guide-card" data-step="4">
         <p class="guide-text" id="s3">Select a method.</p>
-        <div class="pill-row" id="methodPills">
-          <button class="pill active" id="m1" type="button" aria-pressed="true">1</button>
-          <button class="pill" id="m2" type="button" aria-pressed="false">2</button>
+        <div class="premium-selector-row" id="methodPills">
+          <button class="premium-pill active" id="m1" type="button" aria-pressed="true">1</button>
+          <button class="premium-pill" id="m2" type="button" aria-pressed="false">2</button>
         </div>
       </div>
     </div>
@@ -105,9 +106,9 @@
       <div class="step-row">
         <div class="content guide-card" data-step="6">
           <p class="guide-text" id="m1s2">Download and run the helper program.</p>
-          <div class="pill-row">
-            <a class="pill" id="downloadBtn" href="https://github.com/iantCode/P5X_Gacha_Link/releases" target="_blank"
-              rel="noopener noreferrer">Program Download</a>
+          <div class="premium-selector-row">
+            <a class="premium-pill" id="downloadBtn" href="https://github.com/iantCode/P5X_Gacha_Link/releases"
+              target="_blank" rel="noopener noreferrer">Program Download</a>
             <button class="btn-outline" id="openProgInfo" type="button">About Program</button>
             <button class="btn-outline" id="openTroubleshoot" type="button">Troubleshooting</button>
           </div>
@@ -138,7 +139,7 @@
       <div class="step-row">
         <div class="content guide-card" data-step="10">
           <p class="guide-text" id="m1s6">Paste the copied URL into Pull Tracker.</p>
-          <a class="pill" id="goInput1" href="../">Go Back</a>
+          <a class="premium-pill" id="goInput1" href="../">Go Back</a>
         </div>
       </div>
     </div>
@@ -147,14 +148,15 @@
       <div class="step-row">
         <div class="content guide-card" data-step="5">
           <p class="guide-text" id="m2s1">Follow the external method guide.</p>
-          <a class="pill" href="https://github.com/mpvio/p5xsummons" target="_blank" rel="noopener noreferrer">p5xsummons</a>
+          <a class="premium-pill" href="https://github.com/mpvio/p5xsummons" target="_blank"
+            rel="noopener noreferrer">p5xsummons</a>
         </div>
       </div>
 
       <div class="step-row">
         <div class="content guide-card" data-step="6">
           <p class="guide-text" id="m2s2">Paste the copied URL into Pull Tracker.</p>
-          <a class="pill" id="goInput2" href="../">Go Back</a>
+          <a class="premium-pill" id="goInput2" href="../">Go Back</a>
         </div>
       </div>
     </div>
@@ -163,10 +165,10 @@
       <div class="step-row">
         <div class="content guide-card" data-step="5">
           <p class="guide-text" id="ios1">Install Stream from the App Store.</p>
-          <a class="pill" id="streamBtn" href="https://apps.apple.com/hk/app/stream/id1312141691" target="_blank"
-            rel="noopener noreferrer">Stream Install Page</a>
-          <div class="pill-row">
-            <a class="pill" id="videoBtn" href="https://www.youtube.com/watch?v=m833g8ZNWVA" target="_blank"
+          <a class="premium-pill" id="streamBtn" href="https://apps.apple.com/hk/app/stream/id1312141691"
+            target="_blank" rel="noopener noreferrer">Stream Install Page</a>
+          <div class="premium-selector-row">
+            <a class="premium-pill" id="videoBtn" href="https://www.youtube.com/watch?v=m833g8ZNWVA" target="_blank"
               rel="noopener noreferrer">Video Help</a>
             <span id="videoNote" class="guide-muted video-note">(Video UI may differ by version.)</span>
           </div>
@@ -188,19 +190,19 @@
       <div class="step-row">
         <div class="content guide-card" data-step="8">
           <p class="guide-text multiline" id="ios4">Find the matching request in Sniff History and copy the full URL.
-(KR) nsywl-krcard.wmupd.com
-(CN) nsywl-gfcard.wmupd.com
-(TW) wwwidcweb.p5x.com.tw
-(JP) web.p5xjpupd.com
-(EN) euweb.p5xjpupd.com
-(SEA) web.p5x-sea.com</p>
+            (KR) nsywl-krcard.wmupd.com
+            (CN) nsywl-gfcard.wmupd.com
+            (TW) wwwidcweb.p5x.com.tw
+            (JP) web.p5xjpupd.com
+            (EN) euweb.p5xjpupd.com
+            (SEA) web.p5x-sea.com</p>
         </div>
       </div>
 
       <div class="step-row">
         <div class="content guide-card" data-step="9">
           <p class="guide-text" id="ios5">Paste the copied URL into Pull Tracker.</p>
-          <a class="pill" id="goInputIOS" href="../">Go Back</a>
+          <a class="premium-pill" id="goInputIOS" href="../">Go Back</a>
         </div>
       </div>
     </div>
@@ -209,8 +211,8 @@
       <div class="step-row">
         <div class="content guide-card" data-step="4">
           <p class="guide-text" id="linux1">Install httptap. On Steam Deck, switch to Desktop Mode first.</p>
-          <div class="pill-row">
-            <a class="pill" id="httptapBtn" href="https://github.com/monasticacademy/httptap" target="_blank"
+          <div class="premium-selector-row">
+            <a class="premium-pill" id="httptapBtn" href="https://github.com/monasticacademy/httptap" target="_blank"
               rel="noopener noreferrer">httptap GitHub</a>
           </div>
         </div>
@@ -219,7 +221,8 @@
       <div class="step-row">
         <div class="content guide-card" data-step="5">
           <p class="guide-text" id="linux2">Open a terminal and run the install command below.</p>
-          <pre class="guide-code"><code id="linuxInstallCmd">curl -L https://github.com/monasticacademy/httptap/releases/latest/download/httptap_linux_$(uname -m).tar.gz | tar xzf -</code></pre>
+          <pre
+            class="guide-code"><code id="linuxInstallCmd">curl -L https://github.com/monasticacademy/httptap/releases/latest/download/httptap_linux_$(uname -m).tar.gz | tar xzf -</code></pre>
         </div>
       </div>
 
@@ -233,18 +236,19 @@
       <div class="step-row">
         <div class="content guide-card" data-step="7">
           <p class="guide-text multiline" id="linux4">Replace the "X" in grep with your server domain (keep the quotes).
-(KR) nsywl-krcard.wmupd.com
-(CN) nsywl-gfcard.wmupd.com
-(TW) wwwidcweb.p5x.com.tw
-(JP) web.p5xjpupd.com
-(EN) euweb.p5xjpupd.com
-(SEA) web.p5x-sea.com</p>
+            (KR) nsywl-krcard.wmupd.com
+            (CN) nsywl-gfcard.wmupd.com
+            (TW) wwwidcweb.p5x.com.tw
+            (JP) web.p5xjpupd.com
+            (EN) euweb.p5xjpupd.com
+            (SEA) web.p5x-sea.com</p>
         </div>
       </div>
 
       <div class="step-row">
         <div class="content guide-card" data-step="8">
-          <p class="guide-text" id="linux5">Steam starts with SSL certificate warnings. You can ignore these warnings.</p>
+          <p class="guide-text" id="linux5">Steam starts with SSL certificate warnings. You can ignore these warnings.
+          </p>
         </div>
       </div>
 
@@ -256,23 +260,24 @@
 
       <div class="step-row">
         <div class="content guide-card" data-step="10">
-          <p class="guide-text" id="linux7">Return to the terminal. The gacha history URL appears there (usually twice). Copy one full URL.</p>
+          <p class="guide-text" id="linux7">Return to the terminal. The gacha history URL appears there (usually twice).
+            Copy one full URL.</p>
         </div>
       </div>
 
       <div class="step-row">
         <div class="content guide-card" data-step="11">
           <p class="guide-text multiline" id="linuxExplain">Command breakdown:
-./httptap -- steam: Launches Steam under httptap so HTTP requests from Steam/P5X are shown.
-2>/dev/null: Hides Steam debug logs.
-| grep "X": Filters output to lines containing your server domain.</p>
+            ./httptap -- steam: Launches Steam under httptap so HTTP requests from Steam/P5X are shown.
+            2>/dev/null: Hides Steam debug logs.
+            | grep "X": Filters output to lines containing your server domain.</p>
         </div>
       </div>
 
       <div class="step-row">
         <div class="content guide-card" data-step="12">
           <p class="guide-text" id="linux8">Enter the copied URL via the link below.</p>
-          <a class="pill" id="goInputLinux" href="../">Go Back</a>
+          <a class="premium-pill" id="goInputLinux" href="../">Go Back</a>
         </div>
       </div>
 
@@ -563,6 +568,263 @@
       margin-top: 6px;
       width: 100%;
       display: block;
+    }
+  }
+
+  /* Timeline Layout */
+  .timeline-layout {
+    position: relative;
+    padding-left: 20px;
+  }
+
+  .timeline-layout::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    bottom: 25px;
+    left: 31px;
+    /* 20px padding + 11px to center under the icon */
+    width: 2px;
+    background: rgba(163, 25, 25, 0.7);
+    /* Solid red line, removed gold gradient */
+    z-index: 1;
+  }
+
+  .guide-shell {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    /* Increased gap for timeline breathing room */
+    margin-bottom: 20px;
+  }
+
+  #m1block,
+  #m2block,
+  #iosBlock,
+  #linuxBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .step-row {
+    margin: 0;
+    position: relative;
+    z-index: 2;
+  }
+
+  .guide-card {
+    position: relative;
+    background: rgba(25, 23, 23, 0.6);
+    /* Glassmorphism dark background */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 16px 16px 16px 54px;
+    /* More padding for premium feel */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+
+  .guide-card:hover {
+    border-color: rgba(210, 173, 118, 0.3);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+  }
+
+  .guide-card::before {
+    content: attr(data-step);
+    position: absolute;
+    left: 0px;
+    /* Aligned with timeline line */
+    top: 16px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid #ff4d4d;
+    /* Red border instead of gold */
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    background: #a31919;
+    /* Solid red background */
+    z-index: 3;
+    transform: translateX(-50%);
+    /* Center on the left edge */
+  }
+
+  .guide-text {
+    color: #f1f1f1;
+    font-size: 14.5px;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .guide-muted {
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 13.5px;
+    line-height: 1.55;
+  }
+
+  .guide-card-note {
+    padding-left: 16px;
+    background: rgba(127, 20, 20, 0.05);
+    /* Subtle tinted note background */
+    border-left: 3px solid #7f1414;
+    border-radius: 8px 16px 16px 8px;
+    margin-left: 38px;
+  }
+
+  .guide-card-note::before {
+    display: none;
+  }
+
+  /* Premium Selectors */
+  .premium-selector-row {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 6px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .premium-pill,
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    min-height: 36px;
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 13.5px;
+    font-weight: 500;
+    line-height: 1;
+    transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+
+  .premium-pill:hover,
+  .btn-outline:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    transform: translateY(-1px);
+  }
+
+  .premium-pill.active {
+    background: #a31919;
+    /* Solid red */
+    border-color: #ff4d4d;
+    /* Red tint border */
+    color: #fff;
+    font-weight: 600;
+  }
+
+  #methodPills .premium-pill {
+    min-width: 48px;
+    font-weight: 600;
+  }
+
+  /* Linux Console Styling */
+  .guide-code {
+    margin: 12px 0 4px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 12px;
+    background: #0d1117;
+    /* GitHub darker mode feel */
+    color: #c9d1d9;
+    font-size: 13px;
+    line-height: 1.6;
+    white-space: pre;
+    overflow-x: auto;
+    position: relative;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.4);
+  }
+
+  .guide-code::before {
+    content: '❯';
+    color: #ff4d4d;
+    /* Red instead of gold */
+    margin-right: 8px;
+    font-weight: bold;
+    display: inline-block;
+  }
+
+  /* Specific Action Buttons */
+  #downloadBtn,
+  #streamBtn {
+    background: rgba(163, 25, 25, 0.15);
+    color: #ff4d4d;
+    border: 1px solid rgba(163, 25, 25, 0.4);
+  }
+
+  #downloadBtn:hover,
+  #streamBtn:hover {
+    background: rgba(163, 25, 25, 0.25);
+    transform: translateY(-2px);
+  }
+
+  /* Highly Visible Go Back Buttons */
+  a[id^="goInput"] {
+    display: inline-flex;
+    margin-top: 10px;
+    background: #a31919;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 12px 28px;
+    border-radius: 8px;
+    border: 1px solid #ff4d4d;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: background 0.2s ease, transform 0.2s ease;
+    text-decoration: none;
+  }
+
+  a[id^="goInput"]:hover {
+    background: #d12121;
+    color: #ffffff;
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 768px) {
+    .timeline-layout {
+      padding-left: 12px;
+    }
+
+    .timeline-layout::before {
+      left: 23px;
+    }
+
+    .guide-card {
+      padding: 14px 14px 14px 46px;
+    }
+
+    .guide-card::before {
+      top: 14px;
+      width: 22px;
+      height: 22px;
+      font-size: 11px;
+    }
+
+    .premium-selector-row {
+      padding: 4px;
+      gap: 4px;
+    }
+
+    .premium-pill,
+    .btn-outline {
+      padding: 6px 12px;
+      font-size: 12.5px;
     }
   }
 </style>

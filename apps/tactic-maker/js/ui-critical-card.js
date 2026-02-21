@@ -75,16 +75,35 @@ export class NeedStatCardUI {
         this.isElucidator = false;
         this.currentSlotIndex = null;
 
-        // Mutually exclusive item rules: only one can be checked at a time
-        // { ids: [id1, id2], priority: id1, category: 'defense' | 'pierce' }
-        this.mutuallyExclusiveRules = [
-            { ids: ['14', '14-2'], priority: '14', category: 'defense' },           // 후타바
-            { ids: ['katayama1', 'katayama2'], priority: 'katayama1', category: 'defense' }, // 카타야마
-            { ids: ['16', '17'], priority: '16', category: 'defense' },             // 루우나
-            { ids: ['19-1', '19-2'], priority: '19-1', category: 'defense' },       // 루우나
-            { ids: ['mio2', 'mio3'], priority: 'mio3', category: 'defense' },       // 미오
-            { ids: ['masaki1', 'masaki2'], priority: 'masaki1', category: 'pierce' }, // 마사키
-        ];
+        // Shared rule table from data/kr/calc/defense-mutually-exclusive-rules.js
+        this.mutuallyExclusiveRules = this.getSharedMutuallyExclusiveRules();
+    }
+
+    /**
+     * Get mutually exclusive rules from shared data file.
+     * Rules are normalized to string ids for safe comparison.
+     */
+    getSharedMutuallyExclusiveRules() {
+        let rules = null;
+
+        if (Array.isArray(window.defenseMutuallyExclusiveRules)) {
+            rules = window.defenseMutuallyExclusiveRules;
+        } else if (typeof defenseMutuallyExclusiveRules !== 'undefined' && Array.isArray(defenseMutuallyExclusiveRules)) {
+            rules = defenseMutuallyExclusiveRules;
+        }
+
+        if (!Array.isArray(rules)) {
+            console.warn('[NeedStatCardUI] defenseMutuallyExclusiveRules not loaded; using empty rule set.');
+            return [];
+        }
+
+        return rules
+            .map(rule => ({
+                ids: Array.isArray(rule.ids) ? rule.ids.map(id => String(id)) : [],
+                priority: String(rule.priority || ''),
+                category: String(rule.category || '')
+            }))
+            .filter(rule => rule.ids.length >= 2 && (rule.category === 'defense' || rule.category === 'pierce'));
     }
 
     /**
@@ -98,21 +117,25 @@ export class NeedStatCardUI {
     }
 
     /**
-     * Handle mutually exclusive check: uncheck the other item if exists
-     * @returns {string|null} The unchecked item id, or null
+     * Handle mutually exclusive check: uncheck every other checked item in the same rule group.
+     * @returns {string[]} The list of unchecked item ids
      */
     handleMutuallyExclusiveCheck(itemId, category, container) {
         const id = String(itemId);
         const rule = this.getMutuallyExclusiveRule(id, category);
-        if (!rule) return null;
+        if (!rule) return [];
 
-        const otherId = rule.ids.find(ruleId => ruleId !== id);
-        if (!otherId) return null;
+        const otherIds = rule.ids.filter(ruleId => ruleId !== id);
+        if (otherIds.length === 0) return [];
 
         const selectedSet = category === 'pierce' ? this.selectedPierceItems : this.selectedDefenseItems;
+        const uncheckedIds = [];
+        const sharedCategory = category === 'defense' ? 'defense' : null;
 
-        if (selectedSet.has(otherId)) {
+        otherIds.forEach(otherId => {
+            if (!selectedSet.has(otherId)) return;
             selectedSet.delete(otherId);
+            uncheckedIds.push(otherId);
 
             // Update UI if container is provided
             if (container) {
@@ -128,14 +151,12 @@ export class NeedStatCardUI {
             }
 
             // Also update global shared state if it's a shared item
-            const sharedCategory = category === 'defense' ? 'defense' : null;
             if (sharedCategory) {
                 setGlobalSharedCheck(sharedCategory, otherId, false);
             }
+        });
 
-            return otherId;
-        }
-        return null;
+        return uncheckedIds;
     }
 
     /**

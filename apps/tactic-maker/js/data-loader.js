@@ -108,6 +108,7 @@ export class DataLoader {
         const criticalSrc = `${baseUrl}/data/kr/calc/critical-data.js${version}`;
         const bossSrc = `${baseUrl}/data/kr/calc/boss.js${version}`;
         const defenseSrc = `${baseUrl}/data/kr/calc/defense-data.js${version}`;
+        const defenseMutualRulesSrc = `${baseUrl}/data/kr/calc/defense-mutually-exclusive-rules.js${version}`;
 
         const loadScript = (src) => new Promise((resolve) => {
             const script = document.createElement('script');
@@ -125,7 +126,10 @@ export class DataLoader {
             // Check if already loaded, otherwise load
             (window.criticalBuffData && window.criticalSelfData) ? Promise.resolve(true) : loadScript(criticalSrc),
             window.bossData ? Promise.resolve(true) : loadScript(bossSrc),
-            (window.penetrateData && window.defenseCalcData) ? Promise.resolve(true) : loadScript(defenseSrc)
+            (window.penetrateData && window.defenseCalcData) ? Promise.resolve(true) : loadScript(defenseSrc),
+            (window.defenseMutuallyExclusiveRules || typeof defenseMutuallyExclusiveRules !== 'undefined')
+                ? Promise.resolve(true)
+                : loadScript(defenseMutualRulesSrc)
         ]).then(() => {
             // bossData is declared as const in boss.js, so we need to assign it to window
             if (typeof bossData !== 'undefined' && !window.bossData) {
@@ -138,13 +142,17 @@ export class DataLoader {
             if (typeof defenseCalcData !== 'undefined' && !window.defenseCalcData) {
                 window.defenseCalcData = defenseCalcData;
             }
+            if (typeof defenseMutuallyExclusiveRules !== 'undefined' && !window.defenseMutuallyExclusiveRules) {
+                window.defenseMutuallyExclusiveRules = defenseMutuallyExclusiveRules;
+            }
             this._criticalDataLoaded = true;
             console.log('[DataLoader] Critical/Boss/Defense data loaded:', {
                 buffGroups: Object.keys(window.criticalBuffData || {}).length,
                 selfGroups: Object.keys(window.criticalSelfData || {}).length,
                 bosses: (window.bossData || []).length,
                 penetrateGroups: Object.keys(window.penetrateData || {}).length,
-                defenseGroups: Object.keys(window.defenseCalcData || {}).length
+                defenseGroups: Object.keys(window.defenseCalcData || {}).length,
+                defenseMutualRules: (window.defenseMutuallyExclusiveRules || []).length
             });
             return true;
         });

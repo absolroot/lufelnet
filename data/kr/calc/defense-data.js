@@ -1302,7 +1302,7 @@ const defenseCalcData = {
             },
             defaultOption: "개조5&6",
             value: 31.7,
-            duration: "2턴",
+            duration: "3턴",
             note: ""
         },
         {
@@ -1320,7 +1320,7 @@ const defenseCalcData = {
             },
             defaultOption: "개조5&6",
             value: 63.3,
-            duration: "2턴",
+            duration: "3턴",
             note: ""
         },
         {
@@ -1332,7 +1332,9 @@ const defenseCalcData = {
             options: [],
             value: 18.0,
             duration: "2턴",
-            note: "의식6 → 3턴"
+            note: "기본확률 60%",
+            note_en: "60% Chance",
+            note_jp: "60% 確率"
         },
         {
             id: "19-1",
@@ -1350,7 +1352,8 @@ const defenseCalcData = {
             defaultOption: "LV13+심상5",
             value: 58.7,
             duration: "2턴",
-            note: "의식6 → 3턴"
+            note: "의식6 → 3턴",
+            note_en: "A6 → 3T / Elemental"
         },
         {
             id: "19-2",
@@ -1368,7 +1371,8 @@ const defenseCalcData = {
             defaultOption: "LV13+심상5",
             value: 30.7,
             duration: "2턴",
-            note: "의식6 → 3턴"
+            note: "의식6 → 3턴",
+            note_en: "A6 → 3T"
         },
         {
             id: 20,
@@ -1386,7 +1390,8 @@ const defenseCalcData = {
             defaultOption: "LV13+심상5",
             value: 78.0,
             duration: "2턴",
-            note: "의식6 → 3턴"
+            note: "의식6 → 3턴",
+            note_en: "A6 → 3T"
         },
     ],
     "치즈코":[

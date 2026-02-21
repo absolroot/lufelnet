@@ -24,6 +24,7 @@ class DefenseCalc {
         this.finalDefenseCoefValue = document.getElementById('finalDefenseCoefValue');
         this.selectedItems = new Set(); // 초기 선택 항목 설정
         this.selectedPenetrateItems = new Set(); // 관통 선택 항목
+        this.mutuallyExclusiveRules = this.getMutuallyExclusiveRules();
         this.buildDatasets();
         // CSV 기반 이름 매핑 프리로드
         this._csvNameMap = null; // { krName: { en, jp } }
@@ -126,6 +127,72 @@ class DefenseCalc {
             return saved[itemId] || null;
         } catch (_) { }
         return null;
+    }
+
+    getMutuallyExclusiveRules() {
+        let rules = null;
+
+        if (Array.isArray(window.defenseMutuallyExclusiveRules)) {
+            rules = window.defenseMutuallyExclusiveRules;
+        } else if (typeof defenseMutuallyExclusiveRules !== 'undefined' && Array.isArray(defenseMutuallyExclusiveRules)) {
+            rules = defenseMutuallyExclusiveRules;
+        }
+
+        if (!Array.isArray(rules)) return [];
+
+        return rules
+            .map(rule => ({
+                ids: Array.isArray(rule.ids) ? rule.ids.map(id => String(id)) : [],
+                priority: String(rule.priority || ''),
+                category: String(rule.category || '')
+            }))
+            .filter(rule => rule.ids.length >= 2 && (rule.category === 'defense' || rule.category === 'pierce'));
+    }
+
+    getMutuallyExclusiveRule(itemId, category) {
+        const id = String(itemId);
+        return this.mutuallyExclusiveRules.find(rule =>
+            rule.category === category && rule.ids.includes(id)
+        );
+    }
+
+    findSelectedItemIdByString(selectedSet, itemId) {
+        const target = String(itemId);
+        for (const currentId of selectedSet) {
+            if (String(currentId) === target) return currentId;
+        }
+        return null;
+    }
+
+    uncheckMutuallyExclusivePair(itemId, category) {
+        const rule = this.getMutuallyExclusiveRule(itemId, category);
+        if (!rule) return [];
+
+        const id = String(itemId);
+        const otherIds = rule.ids.filter(ruleId => ruleId !== id);
+        if (otherIds.length === 0) return [];
+
+        const selectedSet = category === 'pierce' ? this.selectedPenetrateItems : this.selectedItems;
+        const uncheckedIds = [];
+
+        otherIds.forEach(otherId => {
+            const selectedOtherId = this.findSelectedItemIdByString(selectedSet, otherId);
+            if (selectedOtherId === null) return;
+
+            selectedSet.delete(selectedOtherId);
+            uncheckedIds.push(otherId);
+
+            const otherRow = document.querySelector(`tr[data-item-id="${otherId}"][data-category="${category}"]`);
+            if (otherRow) {
+                otherRow.classList.remove('selected');
+                const otherCheckbox = otherRow.querySelector('.check-column img');
+                if (otherCheckbox) {
+                    otherCheckbox.src = `${BASE_URL}/assets/img/ui/check-off.png`;
+                }
+            }
+        });
+
+        return uncheckedIds;
     }
 
     getBossDisplayName(boss) {
@@ -625,6 +692,8 @@ class DefenseCalc {
 
     createTableRow(data, isPenetrate = false, groupName = '') {
         const row = document.createElement('tr');
+        row.setAttribute('data-item-id', String(data.id));
+        row.setAttribute('data-category', isPenetrate ? 'pierce' : 'defense');
 
         // 초기 선택된 항목에 대해 selected 클래스 추가
         if (isPenetrate) {
@@ -919,7 +988,8 @@ class DefenseCalc {
 
     toggleCheck(checkbox, data) {
         const isChecked = checkbox.src.includes('check-on');
-        checkbox.src = `${BASE_URL}/assets/img/ui/check-${isChecked ? 'off' : 'on'}.png`;
+        const newChecked = !isChecked;
+        checkbox.src = `${BASE_URL}/assets/img/ui/check-${newChecked ? 'on' : 'off'}.png`;
 
         const row = checkbox.closest('tr');
 
@@ -929,6 +999,7 @@ class DefenseCalc {
         } else {
             this.selectedItems.add(data.id);
             row.classList.add('selected');
+            this.uncheckMutuallyExclusivePair(data.id, 'defense');
         }
 
         this.updateTotal();
@@ -936,7 +1007,8 @@ class DefenseCalc {
 
     togglePenetrateCheck(checkbox, data) {
         const isChecked = checkbox.src.includes('check-on');
-        checkbox.src = `${BASE_URL}/assets/img/ui/check-${isChecked ? 'off' : 'on'}.png`;
+        const newChecked = !isChecked;
+        checkbox.src = `${BASE_URL}/assets/img/ui/check-${newChecked ? 'on' : 'off'}.png`;
 
         const row = checkbox.closest('tr');
 
@@ -946,6 +1018,7 @@ class DefenseCalc {
         } else {
             this.selectedPenetrateItems.add(data.id);
             row.classList.add('selected');
+            this.uncheckMutuallyExclusivePair(data.id, 'pierce');
         }
 
         this.updatePenetrateTotal();

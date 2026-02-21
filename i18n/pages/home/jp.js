@@ -70,6 +70,7 @@ window.I18N_PAGE_HOME_JP = {
     tactic_like_alt: 'いいね',
     tactic_ritual_alt: '意識 {value}',
     tactic_like_already_24h: '24時間以内に既にいいねしました。',
+    tactic_like_ip_required: 'IPアドレスを確認できませんでした。しばらくしてから再試行してください。',
 
     boss_title: 'ボス',
     boss_mode_nightmare: '閼兇夢の扉',

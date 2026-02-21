@@ -159,6 +159,8 @@ class TacticsViewer {
         this.currentUser = null;
         this.selectedCharacters = [];
         this.isApplyingSpoiler = false;
+        this.queryCache = new Map();
+        this.renderVersion = 0;
 
         this.init();
     }
@@ -264,7 +266,7 @@ class TacticsViewer {
         try {
             let query = supabase
                 .from('tactics')
-                .select('*')
+                .select('id,title,author,comment,created_at,url,region,tactic_type,user_id,tactic_version')
                 .order('created_at', { ascending: false });
 
             if (this.currentRegion && this.currentRegion !== 'ALL') {
@@ -286,32 +288,33 @@ class TacticsViewer {
                 return;
             }
 
-            const tacticIds = data.map(t => String(t.id));
-            const likesMap = await this.loadLikesMap(tacticIds);
+            const tacticIds = (data || []).map(t => String(t.id));
+            const [likesMap, partyMap] = await Promise.all([
+                this.loadLikesMap(tacticIds),
+                this.loadPartyProjection(tacticIds)
+            ]);
 
-            this.allTactics = data.map(tactic => {
-                const query = typeof tactic.query === 'string' ? (tactic.query.startsWith('{') ? JSON.parse(tactic.query) : null) : tactic.query;
-                // Detect tactic version: from DB field or from query JSON's tactic-maker-ver
-                let tacticVersion = tactic.tactic_version || 'legacy';
-                if (tacticVersion === 'legacy' && query && query['tactic-maker-ver']) {
-                    const vNum = parseFloat(query['tactic-maker-ver']);
-                    if (vNum >= 3.0) tacticVersion = 'v3';
-                }
+            this.allTactics = (data || []).map(tactic => {
+                const tacticId = String(tactic.id);
+                const cachedQuery = this.queryCache.get(tacticId) || null;
+                const projectedParty = partyMap[tacticId];
+                const party = Array.isArray(projectedParty)
+                    ? projectedParty
+                    : (Array.isArray(cachedQuery?.party) ? cachedQuery.party : []);
                 return {
                     id: tactic.id,
                     title: tactic.title,
                     author: tactic.author,
                     comment: tactic.comment,
-                    likes: likesMap[String(tactic.id)]?.likes || 0,
-                    recentLikes: 0,
+                    likes: likesMap[tacticId]?.likes || 0,
                     createdAt: new Date(tactic.created_at),
-                    query,
+                    query: cachedQuery,
+                    party,
                     url: tactic.url,
-                    isLiked: this.isLikedByMe(likesMap[String(tactic.id)]),
                     region: tactic.region || null,
                     tactic_type: tactic.tactic_type || null,
                     user_id: tactic.user_id || null,
-                    tactic_version: tacticVersion
+                    tactic_version: this.resolveTacticVersion(tactic.tactic_version, cachedQuery)
                 };
             });
 
@@ -326,33 +329,138 @@ class TacticsViewer {
         if (!tacticIds || tacticIds.length === 0) return result;
         const { data, error } = await supabase
             .from('tactic_likes')
-            .select('id,tactic_id,likes,recent_like')
+            .select('tactic_id,likes')
             .in('tactic_id', tacticIds);
         if (error) {
             console.error('likes 로드 실패:', error);
             return result;
         }
-        data.forEach(row => {
-            result[row.tactic_id] = {
-                id: row.id,
-                likes: row.likes || 0,
-                recent_like: row.recent_like || null
+        (data || []).forEach(row => {
+            result[String(row.tactic_id)] = {
+                likes: row.likes || 0
             };
         });
         return result;
     }
 
-    isLikedByMe(likeRow) {
-        if (!likeRow || !likeRow.recent_like || !this.userIP) return false;
-        try {
-            const map = likeRow.recent_like;
-            const ts = map[this.userIP];
-            if (!ts) return false;
-            const last = new Date(ts).getTime();
-            return (Date.now() - last) < 24 * 60 * 60 * 1000;
-        } catch (e) {
-            return false;
+    async loadPartyProjection(tacticIds) {
+        const result = {};
+        if (!tacticIds || tacticIds.length === 0) return result;
+        const { data, error } = await supabase
+            .from('tactics')
+            .select('id,party:query->party')
+            .in('id', tacticIds);
+
+        if (error) {
+            console.error('party projection 로드 실패:', error);
+            return this.loadPartyProjectionFallback(tacticIds);
         }
+
+        (data || []).forEach(row => {
+            result[String(row.id)] = Array.isArray(row.party) ? row.party : [];
+        });
+        return result;
+    }
+
+    async loadPartyProjectionFallback(tacticIds) {
+        const result = {};
+        if (!tacticIds || tacticIds.length === 0) return result;
+        const { data, error } = await supabase
+            .from('tactics')
+            .select('id,query')
+            .in('id', tacticIds);
+
+        if (error) {
+            console.error('party fallback 로드 실패:', error);
+            return result;
+        }
+
+        (data || []).forEach(row => {
+            const parsedQuery = this.parseTacticQuery(row.query);
+            const party = Array.isArray(parsedQuery?.party) ? parsedQuery.party : [];
+            result[String(row.id)] = party;
+            this.queryCache.set(String(row.id), parsedQuery);
+        });
+
+        return result;
+    }
+
+    parseTacticQuery(rawQuery) {
+        if (!rawQuery) return null;
+        if (typeof rawQuery === 'object') return rawQuery;
+        if (typeof rawQuery !== 'string') return null;
+        if (!rawQuery.trim().startsWith('{')) return null;
+        try {
+            return JSON.parse(rawQuery);
+        } catch (_) {
+            return null;
+        }
+    }
+
+    resolveTacticVersion(tacticVersion, parsedQuery) {
+        let resolvedVersion = tacticVersion || 'legacy';
+        if (resolvedVersion === 'legacy' && parsedQuery && parsedQuery['tactic-maker-ver']) {
+            const parsedVersion = parseFloat(parsedQuery['tactic-maker-ver']);
+            if (!Number.isNaN(parsedVersion) && parsedVersion >= 3.0) {
+                resolvedVersion = 'v3';
+            }
+        }
+        return resolvedVersion;
+    }
+
+    async ensureQueriesLoaded(tactics) {
+        if (!Array.isArray(tactics) || tactics.length === 0) return;
+        const missingIds = [];
+
+        tactics.forEach(tactic => {
+            const tacticId = String(tactic.id);
+            if (this.queryCache.has(tacticId)) {
+                const cachedQuery = this.queryCache.get(tacticId) || null;
+                tactic.query = cachedQuery;
+                tactic.tactic_version = this.resolveTacticVersion(tactic.tactic_version, cachedQuery);
+                if (!Array.isArray(tactic.party) && Array.isArray(cachedQuery?.party)) {
+                    tactic.party = cachedQuery.party;
+                }
+            } else {
+                missingIds.push(tacticId);
+            }
+        });
+
+        if (missingIds.length === 0) return;
+
+        const { data, error } = await supabase
+            .from('tactics')
+            .select('id,query')
+            .in('id', missingIds);
+
+        if (error) {
+            console.error('query 로드 실패:', error);
+            return;
+        }
+
+        const loadedIds = new Set();
+        (data || []).forEach(row => {
+            const tacticId = String(row.id);
+            const parsedQuery = this.parseTacticQuery(row.query);
+            this.queryCache.set(tacticId, parsedQuery);
+            loadedIds.add(tacticId);
+        });
+
+        missingIds.forEach(tacticId => {
+            if (!loadedIds.has(tacticId)) {
+                this.queryCache.set(tacticId, null);
+            }
+        });
+
+        tactics.forEach(tactic => {
+            const tacticId = String(tactic.id);
+            const parsedQuery = this.queryCache.get(tacticId) || null;
+            tactic.query = parsedQuery;
+            tactic.tactic_version = this.resolveTacticVersion(tactic.tactic_version, parsedQuery);
+            if (!Array.isArray(tactic.party) && Array.isArray(parsedQuery?.party)) {
+                tactic.party = parsedQuery.party;
+            }
+        });
     }
 
     applyFilters() {
@@ -371,9 +479,9 @@ class TacticsViewer {
 
             filtered = filtered.filter(tactic => {
                 // 파티 멤버 확인
-                if (tactic.query && Array.isArray(tactic.query.party)) {
+                if (Array.isArray(tactic.party)) {
                     // 미출시 캐릭터가 하나라도 있으면 제외
-                    const hasUnreleased = tactic.query.party.some(member => {
+                    const hasUnreleased = tactic.party.some(member => {
                         // v3 format can have null party slots
                         if (!member || !member.name) return false;
                         // 원더 제외
@@ -391,7 +499,7 @@ class TacticsViewer {
         if (this.selectedCharacters && this.selectedCharacters.length > 0) {
             filtered = filtered.filter(tactic => {
                 try {
-                    const party = Array.isArray(tactic.query?.party) ? tactic.query.party : [];
+                    const party = Array.isArray(tactic.party) ? tactic.party : [];
                     return this.selectedCharacters.every(name => party.some(p => p && p.name === name));
                 } catch (e) { return false; }
             });
@@ -406,10 +514,13 @@ class TacticsViewer {
         this.currentPage = 1;
     }
 
-    renderTactics() {
+    async renderTactics() {
+        const currentRenderVersion = ++this.renderVersion;
         const startIndex = (this.currentPage - 1) * this.postsPerPage;
         const endIndex = startIndex + this.postsPerPage;
         const tacticsToShow = this.filteredTactics.slice(startIndex, endIndex);
+        await this.ensureQueriesLoaded(tacticsToShow);
+        if (currentRenderVersion !== this.renderVersion) return;
 
         const postsList = document.getElementById('postsList');
         postsList.innerHTML = '';
@@ -472,7 +583,7 @@ class TacticsViewer {
 
         <div class="post-footer">
             <div class="likes-section">
-                <button onclick="tacticsViewer.handleLike('${tactic.id}')" class="like-button ${tactic.isLiked ? 'liked' : ''}" ${tactic.isLiked ? 'disabled' : ''}>
+                <button onclick="tacticsViewer.handleLike('${tactic.id}')" class="like-button">
                     <img src="${BASE_URL}/assets/img/tactic-share/like.png" alt="${this.t('like_alt', '좋아요')}">
                 </button>
                 <div class="likes-count-wrapper">
@@ -483,7 +594,8 @@ class TacticsViewer {
     `;
 
         // 택틱 프리뷰 생성
-        this.addTacticPreview(postDiv, tactic.query);
+        const previewQuery = tactic.query || this.queryCache.get(String(tactic.id)) || null;
+        this.addTacticPreview(postDiv, previewQuery);
 
         // 편집 아이콘 클릭 처리
         if (canEdit) {
@@ -685,6 +797,14 @@ class TacticsViewer {
 
     async handleLike(tacticId) {
         try {
+            if (!this.userIP) {
+                await this.getUserIP();
+            }
+            if (!this.userIP) {
+                alert(this.t('error_like_ip_required', '좋아요 처리를 위해 IP 확인이 필요합니다. 잠시 후 다시 시도해주세요.'));
+                return;
+            }
+
             const { data: likeRow, error: likeErr } = await supabase
                 .from('tactic_likes')
                 .select('id,likes,recent_like')
@@ -726,7 +846,6 @@ class TacticsViewer {
             const tactic = this.allTactics.find(t => String(t.id) === String(tacticId));
             if (tactic) {
                 tactic.likes = likes;
-                tactic.isLiked = true;
             }
         } catch (error) {
             console.error('좋아요 처리 실패:', error);

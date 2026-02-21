@@ -28,4 +28,5 @@ window.I18N_PAGE_TACTICS_EN = {
     relative_days: '{value}d ago',
     date_locale: 'en-US',
     error_already_liked_24h: 'You already liked this within 24 hours.',
+    error_like_ip_required: 'Unable to verify your IP address. Please try again in a moment.',
 };

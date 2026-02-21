@@ -69,6 +69,7 @@ window.I18N_PAGE_HOME_EN = {
     tactic_like_alt: 'Like',
     tactic_ritual_alt: 'Awakening {value}',
     tactic_like_already_24h: 'You already liked this within 24 hours.',
+    tactic_like_ip_required: 'Unable to verify your IP address. Please try again in a moment.',
 
     boss_title: 'Boss',
     boss_mode_nightmare: 'Nightmare\'s Gateway',

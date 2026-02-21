@@ -28,4 +28,5 @@ window.I18N_PAGE_TACTICS_JP = {
     relative_days: '{value}日前',
     date_locale: 'ja-JP',
     error_already_liked_24h: '24時間以内にすでに「いいね」しました。',
+    error_like_ip_required: 'IPアドレスを確認できませんでした。しばらくしてから再試行してください。',
 };

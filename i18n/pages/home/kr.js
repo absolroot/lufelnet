@@ -70,6 +70,7 @@ window.I18N_PAGE_HOME_KR = {
     tactic_like_alt: '좋아요',
     tactic_ritual_alt: '의식 {value}',
     tactic_like_already_24h: '24시간 내 이미 좋아요 했습니다.',
+    tactic_like_ip_required: '좋아요 처리를 위해 IP 확인이 필요합니다. 잠시 후 다시 시도해주세요.',
 
     boss_title: '보스',
     boss_mode_nightmare: '흉몽의 문',

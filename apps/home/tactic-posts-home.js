@@ -47,6 +47,18 @@ async function waitHomeTacticI18nReady() {
   } catch (_) { }
 }
 
+async function ensureHomePublicIp() {
+  if (window.__HOME_IP) return window.__HOME_IP;
+  try {
+    const ipRes = await fetch('https://api.ipify.org?format=json');
+    const ipJson = await ipRes.json();
+    window.__HOME_IP = ipJson?.ip || '';
+  } catch (_) {
+    window.__HOME_IP = '';
+  }
+  return window.__HOME_IP;
+}
+
 window.loadHomeTacticsFromSupabase = async function (currentLang) {
   try {
     await waitHomeTacticI18nReady();
@@ -57,37 +69,36 @@ window.loadHomeTacticsFromSupabase = async function (currentLang) {
       : detectHomeTacticRawLang();
     window.__HOME_LANG__ = rawLang || 'kr';
 
-    let query = supabase.from('tactics').select('*').order('created_at', { ascending: false }).limit(3);
+    const tacticSelectColumns = 'id,title,author,comment,created_at,url,query,region,tactic_version';
+    let query = supabase.from('tactics').select(tacticSelectColumns).order('created_at', { ascending: false }).limit(3);
     if (rawLang === 'kr') query = query.eq('region', 'kr');
     else if (rawLang === 'jp') query = query.eq('region', 'jp');
     else if (rawLang === 'en') query = query.in('region', ['en', 'sea']);
 
     let { data, error } = await query;
     if (!error && data && data.length === 0 && (rawLang === 'en' || rawLang === 'jp')) {
-      const res2 = await supabase.from('tactics').select('*').in('region', ['en', 'sea']).order('created_at', { ascending: false }).limit(3);
-      data = res2.data || [];
+      const { data: fallbackData, error: fallbackError } = await supabase
+        .from('tactics')
+        .select(tacticSelectColumns)
+        .in('region', ['en', 'sea'])
+        .order('created_at', { ascending: false })
+        .limit(3);
+      if (fallbackError) { console.error('Supabase fallback load error:', fallbackError); return; }
+      data = fallbackData || [];
     }
     if (error) { console.error('Supabase load error:', error); return; }
-
-    // IP/언어/좋아요 맵 준비
-    try {
-      const ipRes = await fetch('https://api.ipify.org?format=json');
-      const ipJson = await ipRes.json();
-      window.__HOME_IP = ipJson.ip || '';
-    } catch (_) { window.__HOME_IP = ''; }
+    await ensureHomePublicIp();
     window.__HOME_LIKES_MAP = {};
     try {
       const ids = (data || []).map(t => String(t.id));
       if (ids.length > 0) {
         const { data: likeRows } = await supabase
           .from('tactic_likes')
-          .select('id,tactic_id,likes,recent_like')
+          .select('tactic_id,likes')
           .in('tactic_id', ids);
         (likeRows || []).forEach(row => {
           window.__HOME_LIKES_MAP[String(row.tactic_id)] = {
-            id: row.id,
-            likes: row.likes || 0,
-            recent_like: row.recent_like || null
+            likes: row.likes || 0
           };
         });
       }
@@ -101,7 +112,6 @@ window.loadHomeTacticsFromSupabase = async function (currentLang) {
       item.setAttribute('data-post-id', String(t.id));
       const likeRow = window.__HOME_LIKES_MAP[String(t.id)] || null;
       const likeCount = likeRow?.likes || 0;
-      const likedByMe = (function () { try { if (!likeRow || !likeRow.recent_like || !window.__HOME_IP) return false; const ts = likeRow.recent_like[window.__HOME_IP]; if (!ts) return false; const last = new Date(ts).getTime(); return (Date.now() - last) < 24 * 60 * 60 * 1000; } catch (_) { return false; } })();
       item.innerHTML = `
         <div class="post-header">
           <h3>
@@ -117,7 +127,7 @@ window.loadHomeTacticsFromSupabase = async function (currentLang) {
         <div class="tactic-preview-container" style="margin-left: auto; margin-right: 20px;"></div>
         <div class="post-footer">
           <div class="likes-section">
-            <button onclick="homeHandleLike('${String(t.id)}')" class="like-button ${likedByMe ? 'liked' : ''}" ${likedByMe ? 'disabled' : ''}>
+            <button onclick="homeHandleLike('${String(t.id)}')" class="like-button">
               <img src="${BASE_URL}/assets/img/tactic-share/like.png" alt="${homeTacticT('tactic_like_alt', '좋아요', rawLang)}">
             </button>
             <div class="likes-count-wrapper">
@@ -231,17 +241,24 @@ function createHomePreviewFromQuery(tacticData) {
 // 홈 좋아요 처리 (tactics.html과 동일 정책)
 window.homeHandleLike = async function (tacticId) {
   try {
-    const ip = window.__HOME_IP || '';
-    const { data: likeRow } = await supabase
+    const ip = await ensureHomePublicIp();
+    const rawLang = detectHomeTacticRawLang();
+    if (!ip) {
+      const msg = homeTacticT('tactic_like_ip_required', 'Unable to verify IP address. Please try again in a moment.', rawLang);
+      alert(msg);
+      return;
+    }
+
+    const { data: likeRow, error: likeError } = await supabase
       .from('tactic_likes')
       .select('id,likes,recent_like')
       .eq('tactic_id', String(tacticId))
       .maybeSingle();
+    if (likeError) throw likeError;
     let likes = likeRow?.likes || 0;
     const recent = (likeRow?.recent_like && typeof likeRow.recent_like === 'object') ? likeRow.recent_like : {};
     const last = recent[ip] ? new Date(recent[ip]).getTime() : 0;
     if (last && (Date.now() - last) < 24 * 60 * 60 * 1000) {
-      const rawLang = detectHomeTacticRawLang();
       const msg = homeTacticT('tactic_like_already_24h', '24시간 내 이미 좋아요 했습니다.', rawLang);
       alert(msg);
       return;
@@ -250,9 +267,11 @@ window.homeHandleLike = async function (tacticId) {
     recent[ip] = new Date().toISOString();
 
     if (likeRow && likeRow.id) {
-      await supabase.from('tactic_likes').update({ likes, recent_like: recent }).eq('id', likeRow.id);
+      const { error: updateError } = await supabase.from('tactic_likes').update({ likes, recent_like: recent }).eq('id', likeRow.id);
+      if (updateError) throw updateError;
     } else {
-      await supabase.from('tactic_likes').insert([{ tactic_id: String(tacticId), likes, recent_like: recent }]);
+      const { error: insertError } = await supabase.from('tactic_likes').insert([{ tactic_id: String(tacticId), likes, recent_like: recent }]);
+      if (insertError) throw insertError;
     }
 
     const wrapper = document.querySelector(`[data-post-id="${tacticId}"]`);

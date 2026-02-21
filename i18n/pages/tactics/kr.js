@@ -28,4 +28,5 @@ window.I18N_PAGE_TACTICS_KR = {
     relative_days: '{value}일 전',
     date_locale: 'ko-KR',
     error_already_liked_24h: '24시간 내 이미 좋아요 했습니다.',
+    error_like_ip_required: '좋아요 처리를 위해 IP 확인이 필요합니다. 잠시 후 다시 시도해주세요.',
 };

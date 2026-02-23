@@ -94,5 +94,17 @@ window.I18N_PAGE_HOME_KR = {
     notfound_description: '요청하신 주소가 변경되었거나 삭제되었을 수 있습니다.',
     notfound_path_label: '요청 경로',
     notfound_home: '홈으로 이동',
-    notfound_back: '이전 페이지'
+    notfound_back: '이전 페이지',
+    notice_modal_title: '저장 기능 안내',
+    notice_modal_body_grace: 'Lufelnet은 저장 관련 기능 테스트를 준비 중입니다. 기존 로컬 저장 데이터는 브라우저 데이터 정리 시 사라질 수 있으니, 각 페이지의 백업/내보내기 기능으로 중요한 데이터를 보관해 주세요. {date} 이후에는 로컬 데이터 보존을 보장하지 못할 수 있습니다.',
+    notice_modal_body_expired: 'Lufelnet은 저장 관련 기능 테스트를 준비 중입니다. 로컬 데이터 보존을 보장하지 못할 수 있으니, 사용 가능한 백업/내보내기 기능으로 중요한 데이터를 보관해 주세요.',
+    notice_modal_export_title: '백업 가능한 페이지',
+    notice_modal_export_maps: '지도: 백업 / 복원 (PC 전용)',
+    notice_modal_export_material: '육성 계산기: 백업 / 불러오기',
+    notice_modal_export_revelation_share: '계시 공유: 백업 / 불러오기 (PC 전용)',
+    notice_modal_export_tactic_maker: '택틱 메이커: 내보내기 / 가져오기',
+    notice_modal_export_pull_tracker: '계약 트래커: 내보내기 / 가져오기',
+    notice_modal_hide_day: '1일간 보지 않기',
+    notice_modal_hide_forever: '앞으로 보지 않기',
+    notice_modal_close: '닫기'
 };

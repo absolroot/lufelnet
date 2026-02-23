@@ -466,6 +466,20 @@ class TacticsViewer {
     applyFilters() {
         let filtered = [...this.allTactics];
 
+        if (this.currentRegion && this.currentRegion !== 'ALL') {
+            filtered = filtered.filter(tactic => {
+                const region = String(tactic.region || '').toLowerCase();
+                if (this.currentRegion === 'GLB') return region === 'en' || region === 'sea';
+                if (this.currentRegion === 'JP') return region === 'jp';
+                if (this.currentRegion === 'KR') return region === 'kr';
+                return true;
+            });
+        }
+
+        if (this.currentType && this.currentType !== 'ALL') {
+            filtered = filtered.filter(tactic => tactic.tactic_type === this.currentType);
+        }
+
         // 검색 필터
         if (this.searchKeyword) {
             filtered = filtered.filter(tactic =>
@@ -887,7 +901,9 @@ class TacticsViewer {
             item.classList.add('active');
             this.currentRegion = item.dataset.region;
             // 렌더 시점에서 region-badge는 renderRegionBadge에서 조건부 렌더링함
-            this.loadTactics().then(() => { this.applyFilters(); this.renderTactics(); this.loadRanking(); });
+            this.applyFilters();
+            this.renderTactics();
+            this.loadRanking();
         });
     }
 
@@ -905,7 +921,9 @@ class TacticsViewer {
             container.querySelectorAll('.filter-item').forEach(b => b.classList.remove('active'));
             item.classList.add('active');
             this.currentType = item.dataset.type;
-            this.loadTactics().then(() => { this.applyFilters(); this.renderTactics(); });
+            this.applyFilters();
+            this.renderTactics();
+            this.loadRanking();
         });
     }
 
@@ -1141,7 +1159,8 @@ class TacticsViewer {
             const filteredTactics = this.allTactics.filter(tactic => {
                 const inTime = tactic.createdAt >= startDate;
                 const inRegion = !regionSet || regionSet.has((tactic.region || '').toLowerCase());
-                return inTime && inRegion;
+                const inType = !this.currentType || this.currentType === 'ALL' || tactic.tactic_type === this.currentType;
+                return inTime && inRegion && inType;
             });
 
             const authorStats = new Map();

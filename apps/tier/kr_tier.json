@@ -15,12 +15,12 @@
       ],
       "우월": [
         {
-          "name": "미나미·여름"
-        },
-        {
           "name": "J&C",
           "Awareness": 1,
           "core": true
+        },
+        {
+          "name": "미나미·여름"
         }
       ],
       "굴복": [],
@@ -46,7 +46,9 @@
           "core": true
         },
         {
-          "name": "사나다"
+          "name": "J&C",
+          "Awareness": 1,
+          "core": true
         }
       ],
       "반항": [
@@ -54,13 +56,13 @@
           "name": "유키 마코토"
         },
         {
+          "name": "YUI·스텔라"
+        },
+        {
           "name": "미츠루"
         },
         {
           "name": "이치고"
-        },
-        {
-          "name": "YUI·스텔라"
         }
       ],
       "우월": [
@@ -108,17 +110,15 @@
     "positions": {
       "지배": [
         {
-          "name": "J&C",
-          "Awareness": 1,
+          "name": "렌",
           "core": true
+        },
+        {
+          "name": "사나다"
         },
         {
           "name": "아케치",
           "Awareness": 6
-        },
-        {
-          "name": "렌",
-          "core": true
         }
       ],
       "반항": [

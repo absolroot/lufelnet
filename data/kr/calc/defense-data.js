@@ -1342,6 +1342,8 @@ const defenseCalcData = {
             target: "광역",
             skillIcon: `${BASE_URL}/assets/img/skill-element/화염광역.png`,
             skillName: "뜨거운 악수 (화염)",
+            skillName_en: "Skill1 (Fire/Ice/Wind/Elec)",
+            skillName_jp: "スキル1 (火/氷/風/電)",
             options: ["LV10","LV10+심상5","LV13","LV13+심상5"],
             values: {
                 "LV10": 52.8,

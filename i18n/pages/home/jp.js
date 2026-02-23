@@ -94,5 +94,17 @@ window.I18N_PAGE_HOME_JP = {
     notfound_description: '入力したアドレスは変更または削除された可能性があります。',
     notfound_path_label: 'リクエストパス',
     notfound_home: 'ホームへ移動',
-    notfound_back: '前のページ'
+    notfound_back: '前のページ',
+    notice_modal_title: '保存機能のお知らせ',
+    notice_modal_body_grace: 'Lufelnetでは保存関連機能のテストを予定しています。既存のローカル保存データはブラウザデータ整理時に消える可能性があります。各ページのバックアップ/エクスポート機能で重要なデータを保管してください。{date}以降はローカルデータ保持を保証できない場合があります。',
+    notice_modal_body_expired: 'Lufelnetでは保存関連機能のテストを予定しています。ローカルデータ保持を保証できない場合があるため、利用可能なバックアップ/エクスポート機能で重要なデータを保管してください。',
+    notice_modal_export_title: 'バックアップ可能なページ',
+    notice_modal_export_maps: '地図: バックアップ / 復元 (PCのみ)',
+    notice_modal_export_material: '育成計算機: バックアップ / 読み込み',
+    notice_modal_export_revelation_share: '啓示共有: バックアップ / 読み込み (PCのみ)',
+    notice_modal_export_tactic_maker: 'タクティクスメーカー: エクスポート / インポート',
+    notice_modal_export_pull_tracker: 'ガチャ履歴: エクスポート / インポート',
+    notice_modal_hide_day: '1日間表示しない',
+    notice_modal_hide_forever: '今後表示しない',
+    notice_modal_close: '閉じる'
 };

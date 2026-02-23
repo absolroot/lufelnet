@@ -69,7 +69,7 @@ window.loadHomeTacticsFromSupabase = async function (currentLang) {
       : detectHomeTacticRawLang();
     window.__HOME_LANG__ = rawLang || 'kr';
 
-    const tacticSelectColumns = 'id,title,author,comment,created_at,url,query,region,tactic_version';
+    const tacticSelectColumns = 'id,title,author,comment,created_at,url,region,tactic_version,party:query->party';
     let query = supabase.from('tactics').select(tacticSelectColumns).order('created_at', { ascending: false }).limit(3);
     if (rawLang === 'kr') query = query.eq('region', 'kr');
     else if (rawLang === 'jp') query = query.eq('region', 'jp');
@@ -139,8 +139,15 @@ window.loadHomeTacticsFromSupabase = async function (currentLang) {
       postsListEl.appendChild(item);
       // 파티 프리뷰 렌더링
       try {
-        const q = typeof t.query === 'string' ? (t.query.startsWith('{') ? JSON.parse(t.query) : null) : t.query;
-        const previewEl = createHomePreviewFromQuery(q);
+        const party = Array.isArray(t.party)
+          ? t.party
+          : (() => {
+              const parsed = typeof t.query === 'string'
+                ? (t.query.startsWith('{') ? JSON.parse(t.query) : null)
+                : t.query;
+              return Array.isArray(parsed?.party) ? parsed.party : [];
+            })();
+        const previewEl = createHomePreviewFromParty(party);
         const container = item.querySelector('.tactic-preview-container');
         if (container && previewEl) container.appendChild(previewEl);
       } catch (_) { }
@@ -186,8 +193,8 @@ function formatHomeDate(date) {
 }
 
 // 홈 목록용 파티 프리뷰 (tactics.html의 미리보기와 동일 로직)
-function createHomePreviewFromQuery(tacticData) {
-  if (!tacticData || !Array.isArray(tacticData.party)) return null;
+function createHomePreviewFromParty(party) {
+  if (!Array.isArray(party)) return null;
   const previewDiv = document.createElement('div');
   previewDiv.className = 'tactic-preview';
 
@@ -197,7 +204,7 @@ function createHomePreviewFromQuery(tacticData) {
   const partyImagesDiv = document.createElement('div');
   partyImagesDiv.className = 'party-images';
 
-  const orderedParty = tacticData.party
+  const orderedParty = party
     .filter(pm => pm && pm.name && pm.name !== '')
     .sort((a, b) => {
       if (a.order === '-') return 1;

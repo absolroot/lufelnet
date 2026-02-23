@@ -93,5 +93,17 @@ window.I18N_PAGE_HOME_EN = {
     notfound_description: 'The address you entered may have changed or no longer exists.',
     notfound_path_label: 'Requested path',
     notfound_home: 'Go to Home',
-    notfound_back: 'Previous Page'
+    notfound_back: 'Previous Page',
+    notice_modal_title: 'Data Storage Notice',
+    notice_modal_body_grace: 'Lufelnet plans to test storage-related features. Existing local data may be lost when browser data is cleared. Please back up important data using each page backup/export feature. After {date}, local data retention may not be guaranteed.',
+    notice_modal_body_expired: 'Lufelnet plans to test storage-related features. Local data retention may not be guaranteed. Please back up important data using available backup/export features.',
+    notice_modal_export_title: 'Pages with backup/export',
+    notice_modal_export_maps: 'Maps: Backup / Restore (Desktop only)',
+    notice_modal_export_material: 'Progression Calc: Backup / Load',
+    notice_modal_export_revelation_share: 'Revelation Share: Backup / Load (Desktop only)',
+    notice_modal_export_tactic_maker: 'Tactic Maker: Export / Import',
+    notice_modal_export_pull_tracker: 'Pull Tracker: Export / Import',
+    notice_modal_hide_day: 'Do not show again for 1 day',
+    notice_modal_hide_forever: 'Do not show again',
+    notice_modal_close: 'Close'
 };

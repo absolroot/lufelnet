@@ -220,7 +220,7 @@
       @media (max-width: 768px) { .bosses-list.grid-3, .bosses-list.grid-2 { grid-template-columns: 1fr; } }
       .bosses-header { display:flex; gap:8px; align-items:baseline; margin-bottom:0px; grid-column: 1 / -1; }
       .bosses-title { font-weight:700; font-size: 18px; color: white; }
-      .bosses-countdown { font-weight:700; color:#ff4444; margin-left:auto; }
+      .bosses-countdown { font-weight:600; color:#ff4444; margin-left:auto; }
       .bosses-countdown.local { margin-left: 0; }
       .bosses-mode { margin:6px 0 12px; opacity:.95; display:grid; grid-template-columns: 1fr; grid-auto-rows: auto; grid-row-gap: 2px; align-items: center; justify-items: start; }
       .bosses-mode-name { font-weight:700; grid-column: 1; }

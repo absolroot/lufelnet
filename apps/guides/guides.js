@@ -400,7 +400,12 @@ const Guides = {
             });
         }
 
-        filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
+        filtered.sort((a, b) => {
+            const aNotice = a.category === 'notice' ? 0 : 1;
+            const bNotice = b.category === 'notice' ? 0 : 1;
+            if (aNotice !== bNotice) return aNotice - bNotice;
+            return new Date(b.date) - new Date(a.date);
+        });
         return filtered;
     },
 
@@ -554,6 +559,8 @@ const Guides = {
         const fullThumb = thumbnail && thumbnail.startsWith('/') ? window.location.origin + thumbnail : thumbnail;
         this.updateMeta('', '', fullThumb || null);
 
+        const { tocHtml, contentWithAnchors } = this.buildToc(content);
+
         const backToList = this.getI18nText('backToList', 'Back to list');
         const listUrl = `/${this.normalizeLang(lang)}/article/`;
         const html = `
@@ -573,16 +580,48 @@ const Guides = {
                         ${author ? `<span class="guide-meta-item">${author}</span>` : ''}
                     </div>
                     ${thumbnail ? `<img class="guide-thumbnail" src="${thumbnail}" alt="${title}">` : ''}
+                    ${tocHtml}
                 </header>
 
                 <div class="guide-content">
-                    ${content}
+                    ${contentWithAnchors}
                 </div>
             </article>
         `;
 
         container.innerHTML = html;
         this.updateLanguageTexts();
+    },
+
+    /**
+     * Build Table of Contents from h1 elements in content
+     */
+    buildToc(content) {
+        const tmp = document.createElement('div');
+        tmp.innerHTML = content;
+
+        const h1s = tmp.querySelectorAll('h1');
+        if (h1s.length === 0) return { tocHtml: '', contentWithAnchors: content };
+
+        const items = [];
+        h1s.forEach((h1, idx) => {
+            const text = h1.textContent.trim();
+            const id = `guide-section-${idx}`;
+            h1.setAttribute('id', id);
+            items.push({ id, text });
+        });
+
+        const tocItems = items.map((item) =>
+            `<li><a class="guide-toc-link" href="#${item.id}">${item.text}</a></li>`
+        ).join('');
+
+        const tocHtml = `
+            <nav class="guide-toc">
+                <ul class="guide-toc-list">${tocItems}</ul>
+            </nav>
+        `;
+
+        return { tocHtml, contentWithAnchors: tmp.innerHTML };
     },
 
     /**

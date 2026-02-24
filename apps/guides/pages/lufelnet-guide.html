@@ -1,0 +1,40 @@
+---
+layout: default
+custom_css: []
+custom_js: []
+permalink: /article/lufelnet-guide/
+language: kr
+title: 루페르넷 가이드 - 루페르넷
+description: "A brief overview of Lufelnet's features and frequently asked questions."
+image: /apps/guides/data/assets/lufelnet-guide/pasted-1771928260862.png
+---
+
+<head>
+    <link rel="stylesheet" href="/apps/guides/guides.css">
+    <script src="/apps/guides/guides.js"></script>
+</head>
+
+<div class="main-wrapper">
+    <div class="guide-view-container" id="guide-view-container">
+        <div class="guides-loading" data-i18n="loadingGuide">Loading guide...</div>
+    </div>
+</div>
+
+<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+    const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+    if (typeof initPageI18n === 'function') {
+        await initPageI18n('guides');
+        if (typeof setLang === 'function') {
+            await setLang(currentLang);
+        }
+    } else if (window.I18nService && typeof window.I18nService.init === 'function') {
+        await window.I18nService.init('guides', currentLang);
+    }
+
+    Navigation.load('article');
+    VersionChecker.check();
+    Guides.loadGuide('lufelnet-guide');
+});
+</script>

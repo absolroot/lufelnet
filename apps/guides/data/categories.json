@@ -1,5 +1,13 @@
 [
   {
+    "id": "notice",
+    "labels": {
+      "kr": "공지사항",
+      "en": "NOTICE",
+      "jp": "お知らせ"
+    }
+  },
+  {
     "id": "growth",
     "labels": {
       "kr": "육성",

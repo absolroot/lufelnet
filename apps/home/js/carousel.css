@@ -1,16 +1,41 @@
 /*이미지별 크기 조절*/
+
+/* 1명 배너 기본값 - 개별 설정이 없는 경우 */
+.char-img.single-banner {
+  right: 30%;
+  top: 77%;
+  transform: translateY(-50%) scale(1.65);
+  scale:1.1;
+}
+
 .char-img.middle[alt*="유카리"] {
   transform: translateY(-50%) scale(1.25) !important;
   right: 14% !important;
 }
 
+/* 미오 */
+.char-img.single-banner[src*="%EB%AF%B8%EC%98%A4"] { 
+  top: 65%;
+}
+
+/* 모토하 여름 */
+.char-img.single-banner[src*="%EB%AA%A8%ED%86%A0%ED%95%98%C2%B7%EC%97%AC%EB%A6%84"] { scale:1.13;}
+
+/* 토모코 여름 
+.char-img.single-banner[src*="%ED%86%A0%EB%AA%A8%EC%BD%94%C2%B7%EC%97%AC%EB%A6%84"] { }*/
+
+/* 나루미 
+.char-img.single-banner[src*="%ED%86%A0%EB%AA%A8%EC%BD%94%C2%B7%EC%97%AC%EB%A6%84"] { scale: 1.1;}*/
+
+/* 리코 매화 */
+.char-img.single-banner[src*="%EB%A6%AC%EC%BD%94%C2%B7%EB%A7%A4%ED%99%94"] { top: 97%;}
+
+
+
 .char-img.middle[alt*="사하라 미유·여름"] {
   scale: 0.75 !important;
 }
 
-.char-img.front[alt*="나시모토 나루미"] {
-  scale: 1.2 !important;
-}
 
 .char-img.front[src*="P5DSN_-_Caroline_and_Justine"] {
   transform: translateY(-25%) scale(1.4);

@@ -1,6 +1,7 @@
 window.I18N_PAGE_CRITICAL_CALC_KR = {
     "navCurrent": "크리티컬 확률 계산기",
     "pageTitle": "크리티컬 확률 계산기",
+    "pageDescription": "캐릭터 크리티컬 확률에 영향을 주는 요소들을 모아 최종 수치를 계산합니다.",
     "seoKeywords": "P5X, 페르소나5X, 크리티컬 계산기, 크리티컬 확률",
     "seoOgLocale": "ko_KR",
     "tabBuff": "버프",

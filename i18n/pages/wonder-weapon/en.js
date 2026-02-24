@@ -2,6 +2,7 @@ window.I18N_PAGE_WONDER_WEAPON_EN = {
     // Navigation
     navCurrent: 'Wonder Daggers',
     pageTitle: 'Wonder Daggers',
+    pageDescription: 'Check the effects, acquisition sources, and upgrade stages of Wonder exclusive weapons.',
 
     // Filters
     filterAll: 'All',

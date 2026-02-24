@@ -169,6 +169,58 @@ const getCharacterContainer = (img) => {
   return img.closest('.character-wrapper') || img;
 };
 
+const TIER_CHARACTER_DETAIL_ANCHOR_CLASS = 'character-detail-anchor';
+
+const getPrimaryCharacterImage = (element) => {
+  if (!element) return null;
+  if (element.tagName === 'IMG' &&
+    !element.classList.contains('character-ritual-icon') &&
+    !element.classList.contains('character-core-icon')) {
+    return element;
+  }
+  return element.querySelector('img:not(.character-ritual-icon):not(.character-core-icon)');
+};
+
+const removeCharacterDetailAnchor = (img) => {
+  if (!img || !img.parentElement) return;
+  const parent = img.parentElement;
+  if (!parent.matches || !parent.matches(`a.${TIER_CHARACTER_DETAIL_ANCHOR_CLASS}`)) return;
+  const grandParent = parent.parentElement;
+  if (!grandParent) return;
+  grandParent.insertBefore(img, parent);
+  grandParent.removeChild(parent);
+};
+
+const syncCharacterDetailAnchorForMode = (element) => {
+  const targetImage = getPrimaryCharacterImage(element);
+  if (!targetImage || !targetImage.alt) return;
+
+  if (!isTierListMode) {
+    removeCharacterDetailAnchor(targetImage);
+    return;
+  }
+
+  const lang = getCurrentCharacterLinkLang();
+  const href = buildCharacterDetailHref(targetImage.alt, lang);
+  const currentParent = targetImage.parentElement;
+
+  if (currentParent && currentParent.matches && currentParent.matches(`a.${TIER_CHARACTER_DETAIL_ANCHOR_CLASS}`)) {
+    currentParent.href = href;
+    currentParent.draggable = false;
+    return;
+  }
+
+  if (!currentParent) return;
+
+  const anchor = document.createElement('a');
+  anchor.className = TIER_CHARACTER_DETAIL_ANCHOR_CLASS;
+  anchor.href = href;
+  anchor.draggable = false;
+  anchor.addEventListener('dragstart', (event) => event.preventDefault());
+  currentParent.insertBefore(anchor, targetImage);
+  anchor.appendChild(targetImage);
+};
+
 // 7개의 직업 포지션 정의
 const positions = [
   { id: '지배', name: '', icon: `${BASE_URL}/assets/img/character-cards/직업_지배.png` },
@@ -1068,6 +1120,7 @@ const attachDragListeners = (element, force = false) => {
     newElement.style.cursor = 'grab';
     newElement.classList.remove('clickable-character');
   }
+  syncCharacterDetailAnchorForMode(newElement);
 
   // 새로운 이벤트 리스너 추가
   newElement.addEventListener("dragstart", (e) => {
@@ -1104,11 +1157,33 @@ const attachDragListeners = (element, force = false) => {
     }, 100);
   });
 
+  const getTargetImage = () => getPrimaryCharacterImage(newElement);
+
+  const openCharacterDetail = (openInNewTab = false) => {
+    const targetImage = getTargetImage();
+    if (!targetImage || !targetImage.alt) return;
+    const characterName = targetImage.alt;
+    const lang = getCurrentCharacterLinkLang();
+    const href = buildCharacterDetailHref(characterName, lang);
+
+    if (openInNewTab) {
+      window.open(href, '_blank', 'noopener');
+      return;
+    }
+
+    window.location.href = href;
+  };
+
+  let clickNavigateTimeout = null;
+
   // 더블클릭 이벤트는 이미지 또는 wrapper에 모두 적용
   newElement.addEventListener("dblclick", (e) => {
     e.preventDefault();
-    // wrapper인 경우 내부 이미지를 찾아서 전달
-    const targetImage = newElement.tagName === 'IMG' ? newElement : newElement.querySelector('img');
+    if (clickNavigateTimeout) {
+      clearTimeout(clickNavigateTimeout);
+      clickNavigateTimeout = null;
+    }
+    const targetImage = getTargetImage();
     if (targetImage) {
       openRitualModal(targetImage);
     }
@@ -1116,24 +1191,36 @@ const attachDragListeners = (element, force = false) => {
 
   // 캐릭터 클릭 시 상세 페이지로 이동 (티어 리스트 모드에서만)
   newElement.addEventListener("click", (e) => {
-    // 티어 리스트 모드가 아니면 클릭 네비게이션 비활성화
-    if (!isTierListMode) {
+    if (!isTierListMode || e.button !== 0) {
       return;
     }
-
-    // 드래그 중이거나 더블클릭 이벤트와 겹치지 않도록 처리
-    if (e.detail === 1) { // 단일 클릭만 처리
-      setTimeout(() => {
-        if (e.detail === 1) { // 더블클릭이 아닌 경우에만 실행
-          const targetImage = newElement.tagName === 'IMG' ? newElement : newElement.querySelector('img');
-          if (targetImage && targetImage.alt) {
-            const characterName = targetImage.alt;
-            const lang = getCurrentCharacterLinkLang();
-            window.location.href = buildCharacterDetailHref(characterName, lang);
-          }
-        }
-      }, 200); // 더블클릭 감지를 위한 지연
+    const clickedLink = e.target && typeof e.target.closest === 'function'
+      ? e.target.closest(`a.${TIER_CHARACTER_DETAIL_ANCHOR_CLASS}`)
+      : null;
+    if (clickedLink) {
+      e.preventDefault();
     }
+
+    if (clickNavigateTimeout) {
+      clearTimeout(clickNavigateTimeout);
+      clickNavigateTimeout = null;
+    }
+
+    clickNavigateTimeout = setTimeout(() => {
+      if (e.metaKey || e.ctrlKey || e.shiftKey) {
+        openCharacterDetail(true);
+      } else {
+        openCharacterDetail(false);
+      }
+      clickNavigateTimeout = null;
+    }, 200);
+  });
+
+  // 가운데 클릭 새 탭
+  newElement.addEventListener("auxclick", (e) => {
+    if (!isTierListMode || e.button !== 1) return;
+    e.preventDefault();
+    openCharacterDetail(true);
   });
 
   // 이벤트 리스너 추가 완료 표시

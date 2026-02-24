@@ -1,6 +1,7 @@
 window.I18N_PAGE_PERSONA_KR = {
     navCurrent: "페르소나",
     pageTitle: "페르소나",
+    pageDescription: "페르소나 티어와 추천 육성 스킬, 스킬 획득처를 확인할 수 있습니다.",
     filteredCount: "전체",
     searchPlaceholder: "페르소나, 스킬 검색...",
     filterElement: "속성",

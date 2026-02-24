@@ -1,5 +1,6 @@
 window.I18N_PAGE_CHARACTER_JP = {
     pageTitle: '怪盗育成',
+    pageDescription: '各キャラクターのおすすめ設定・ペルソナ・啓示・立ち回り順をまとめています。',
     filteredCount: '全体',
     countUnit: '名',
     searchPlaceholder: '怪盗検索...',

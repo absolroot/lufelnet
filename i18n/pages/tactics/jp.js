@@ -2,6 +2,7 @@ window.I18N_PAGE_TACTICS_JP = {
     nav_home: 'ホーム',
     nav_current: 'タクティック / タクティック一覧',
     page_title: 'タクティック一覧',
+    page_description: 'プレイヤーが直接共有したタクティックを探してみましょう。魂の海・悪夢の門の攻略に活用してください。',
     upload_button: 'タクティックをアップロード',
     ranking_title: 'ランキング',
     ranking_weekly: '週間',

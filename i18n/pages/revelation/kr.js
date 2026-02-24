@@ -3,6 +3,7 @@ window.I18N_PAGE_REVELATION_KR = {
     nav_home: "홈",
     nav_current: "계시",
     page_title: "계시",
+    page_description: "계시 세트 효과와 옵션 정보, 주로 사용하는 괴도를 확인합니다.",
     filtered_count: "전체",
     search_placeholder: "계시 검색...",
 

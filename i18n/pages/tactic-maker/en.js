@@ -102,7 +102,7 @@ window.I18N_PAGE_TACTIC_MAKER_EN = {
     uploadFailed: "Failed to upload.",
     // SEO
     pageTitleFull: "Tactic Maker - Persona 5: The Phantom X LufelNet",
-    pageDescription: "Persona 5: The Phantom X Tactic Maker. Set up your party and skill order to share.",
+    pageDescription: "Build and share your own custom tactics.",
     // Auto Save
     autoSave: "Save Draft",
     autoSaveTime: "Saved: {0}",

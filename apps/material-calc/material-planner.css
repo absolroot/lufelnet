@@ -1,6 +1,7 @@
 .header-container {
   display: flex;
   justify-content: space-between;
+  padding-bottom: 10px;
 }
 
 @media (max-width: 1200px) {

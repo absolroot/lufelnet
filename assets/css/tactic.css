@@ -36,10 +36,6 @@ body {
   color: #FFFFFF
 }
 
-.navigation-path {
-  padding: 0px 0px 10px 0px;
-}
-
 select,
 input[type="text"] {
   -webkit-appearance: none;

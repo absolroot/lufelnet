@@ -4,6 +4,7 @@ window.I18N_PAGE_TIER_EN = {
 
     // Page title
     pageTitle: 'Tier Maker',
+    pageDescription: 'Character tier list by position based on competitive content. Create your own tier list too.',
     tierListTitle: 'Tier List',
     tierMakerTitle: 'Tier Maker',
 

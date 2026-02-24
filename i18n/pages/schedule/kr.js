@@ -2,6 +2,7 @@ window.I18N_PAGE_SCHEDULE_KR = {
     // Navigation
     navCurrent: '스케줄',
     pageTitle: '출시 스케줄',
+    pageDescription: 'GLB/JP/SEA 서버 기준 예측 출시 스케줄입니다. 실제 일정과 다를 수 있습니다.',
 
     // Filters
     filterAll: '전체',

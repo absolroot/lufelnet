@@ -111,6 +111,8 @@
         if (els.home) els.home.textContent = t.navhome;
         if (els.title) els.title.textContent = t.pageTitle;
         if (els.navCurrent) els.navCurrent.textContent = t.navCurrent;
+        const pageDesc = document.getElementById('page-description');
+        if (pageDesc) pageDesc.textContent = tr('individual.pageDescription', '');
         const guideBtn = document.getElementById('openGuideBtn');
         if (guideBtn) {
             const svg = '<span class="help-icon" aria-hidden="true"><svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1" fill="rgba(255,255,255,0.05)"/><path d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.3"/></svg></span>';

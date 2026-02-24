@@ -1,6 +1,7 @@
 window.I18N_PAGE_GUIDES_JP = {
     navCurrent: '攻略記事',
     pageTitle: '攻略記事',
+    pageDescription: 'ゲーム内では教えてくれない攻略情報とヒントを提供します。',
     searchPlaceholder: '検索...',
     filterAll: 'すべて',
     loadingGuides: 'ガイドを読み込み中...',

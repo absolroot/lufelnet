@@ -1,6 +1,7 @@
 window.I18N_PAGE_DEFENSE_CALC_KR = {
     "seoKeywords": "P5X, 페르소나5X, 방어력 감소 계산기, 방어 계산",
     "seoOgLocale": "ko_KR",
+    "pageDescription": "보스별 방어력과 관통 효과를 적용한 최종 방어 계수를 계산합니다.",
     "defenseI18n": {
         "nav_home": "홈",
         "nav_current": "방어력 계산",

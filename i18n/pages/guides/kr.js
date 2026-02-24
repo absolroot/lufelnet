@@ -1,6 +1,7 @@
 window.I18N_PAGE_GUIDES_KR = {
     navCurrent: '아티클',
     pageTitle: '아티클',
+    pageDescription: '게임에서 알려주지 않는 공략 정보와 팁을 제공합니다.',
     searchPlaceholder: '검색...',
     filterAll: '전체',
     loadingGuides: '가이드를 불러오는 중...',

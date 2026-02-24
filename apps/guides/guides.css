@@ -74,7 +74,6 @@
     font-size: var(--guide-text-3xl);
     font-weight: 600;
     color: var(--guide-text-primary);
-    margin: 0;
     letter-spacing: -0.02em;
 }
 

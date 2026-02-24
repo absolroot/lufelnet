@@ -5,6 +5,7 @@
 
 window.I18N_PAGE_PULL_CALC_KR = {
     pageTitle: '가챠 플래너',
+    pageDescription: '예측 출시 스케줄 기반으로 목표 캐릭터 획득에 필요한 재화를 계산하고 계획을 세울 수 있습니다.',
     navCurrent: '가챠 플래너',
     seoKeywords: 'P5X, 페르소나5X, 가챠 플래너, 가챠 계산기, 가챠 시뮬레이터, P5X 계산기, 계약 계획',
     seoOgLocale: 'ko_KR',

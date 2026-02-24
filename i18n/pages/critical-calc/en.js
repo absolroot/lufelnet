@@ -1,6 +1,7 @@
 window.I18N_PAGE_CRITICAL_CALC_EN = {
     "navCurrent": "Critical Rate Calculator",
     "pageTitle": "Critical Rate Calculator",
+    "pageDescription": "Combine all factors affecting your character's critical rate to calculate the final value.",
     "seoKeywords": "P5X, Persona 5X, Critical Rate Calculator, Critical Chance",
     "seoOgLocale": "en_US",
     "tabBuff": "Buff",

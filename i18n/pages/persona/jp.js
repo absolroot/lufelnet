@@ -1,6 +1,7 @@
 window.I18N_PAGE_PERSONA_JP = {
     navCurrent: "ペルソナ",
     pageTitle: "ペルソナ",
+    pageDescription: "ペルソナのティアと推奨育成スキル、スキル入手先を確認できます。",
     filteredCount: "全体",
     searchPlaceholder: "ペルソナ、スキル検索...",
     filterElement: "属性",

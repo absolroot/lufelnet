@@ -1,6 +1,7 @@
 window.I18N_PAGE_MATERIAL_CALC_JP = {
     navCurrent: '育成計算機',
     pageTitle: '育成計算機',
+    pageDescription: 'キャラクターのレベルアップとスキル強化に必要な素材数を計算します。',
     pageTitleFull: '育成計算機 - ペルソナ5 ザ・ファントムX LufelNet',
     addCharacter: 'キャラ追加',
     selectCharacter: 'キャラを選択',

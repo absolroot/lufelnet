@@ -3,6 +3,7 @@ window.I18N_PAGE_REVELATION_EN = {
     nav_home: "Home",
     nav_current: "Revelations",
     page_title: "Revelations",
+    page_description: "Check Revelation set effects, option details, and which characters commonly use them.",
     filtered_count: "Total",
     search_placeholder: "Search revelations...",
 

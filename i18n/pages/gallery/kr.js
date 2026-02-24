@@ -1,5 +1,6 @@
 window.I18N_PAGE_GALLERY_KR = {
     pageTitle: '갤러리',
+    pageDescription: '게임 내 일러스트, 컷씬 등 다양한 이미지를 감상할 수 있습니다.',
     navCurrent: '갤러리',
 
     // Filters

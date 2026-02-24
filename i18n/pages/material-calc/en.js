@@ -1,6 +1,7 @@
 window.I18N_PAGE_MATERIAL_CALC_EN = {
     navCurrent: 'Progression Calculator',
     pageTitle: 'Progression Calculator',
+    pageDescription: 'Calculate the materials needed to level up characters and upgrade skills.',
     pageTitleFull: 'Progression Calculator - Persona 5: The Phantom X LufelNet',
     addCharacter: 'Add Character',
     selectCharacter: 'Select Character',

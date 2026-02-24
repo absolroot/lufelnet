@@ -5,6 +5,7 @@
 
 window.I18N_PAGE_PULL_CALC_EN = {
     pageTitle: 'Pull Planner',
+    pageDescription: 'Calculate resources needed to pull your target character based on the predicted release schedule.',
     navCurrent: 'Pull Planner',
     seoKeywords: 'P5X, Persona 5X, Pull Planner, Gacha Calculator, Pull Simulator, Pull Calculator, Gacha Planning',
     seoOgLocale: 'en_US',

@@ -4,6 +4,7 @@ window.I18N_PAGE_TIER_JP = {
 
     // Page title
     pageTitle: 'ティアメーカー',
+    pageDescription: 'コンペティティコンテンツ基準のポジション別ティアリスト。カスタムティア表の作成もできます。',
     tierListTitle: 'ティアリスト',
     tierMakerTitle: 'ティアメーカー',
 

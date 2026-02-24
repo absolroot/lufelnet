@@ -1,6 +1,7 @@
 window.I18N_PAGE_SYNERGY_KR = {
     // Page metadata
     pageTitle: '협력자',
+    pageDescription: '협력자별 선택지 정답, 선호 선물, 레벨별 효과를 확인합니다.',
 
     // Navigation
     navCurrent: '협력자',

@@ -1,6 +1,7 @@
 window.I18N_PAGE_DEFENSE_CALC_EN = {
     "seoKeywords": "P5X, Persona 5X, Defense Reduction Calculator, Defense Calculator",
     "seoOgLocale": "en_US",
+    "pageDescription": "Calculate the final defense coefficient with boss defense values and penetration effects applied.",
     "defenseI18n": {
         "nav_home": "Home",
         "nav_current": "Defense Calc",

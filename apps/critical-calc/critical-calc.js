@@ -83,6 +83,7 @@ class CriticalCalc {
                 const setText = (id, text) => { const el=document.getElementById(id); if (el) el.textContent = text; };
                 setText('navCurrent', texts.navCurrent);
                 setText('page-title', texts.page);
+                setText('page-description', pack.pageDescription || '');
                 // revelationSumLabel과 explanationPowerLabel은 defense-i18n.js에서 처리 (아이콘 보존)
                 // setText('revelationSumLabel', texts.rev); // 제거: defense-i18n.js에서 처리
                 // setText('explanationPowerLabel', texts.exp); // 제거: defense-i18n.js에서 처리

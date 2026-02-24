@@ -1,6 +1,7 @@
 window.I18N_PAGE_PERSONA_EN = {
     navCurrent: "Personas",
     pageTitle: "Persona",
+    pageDescription: "Check persona tiers, recommended skill builds, and skill acquisition sources.",
     filteredCount: "Total",
     searchPlaceholder: "Search Personas, Skills...",
     filterElement: "Element",

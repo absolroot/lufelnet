@@ -2,6 +2,7 @@ window.I18N_PAGE_TACTICS_KR = {
     nav_home: '홈',
     nav_current: '택틱 / 택틱 도서관',
     page_title: '택틱 도서관',
+    page_description: '유저들이 직접 공유한 택틱을 만나보세요. 마음의 바다·흉몽의 문 공략에 활용하세요.',
     upload_button: '택틱 업로드',
     ranking_title: '순위',
     ranking_weekly: '주간',

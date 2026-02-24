@@ -1,6 +1,7 @@
 window.I18N_PAGE_SYNERGY_EN = {
     // Page metadata
     pageTitle: 'Synergy',
+    pageDescription: 'Check correct dialogue choices, preferred gifts, and level-up effects for each confidant.',
 
     // Navigation
     navCurrent: 'Synergy',

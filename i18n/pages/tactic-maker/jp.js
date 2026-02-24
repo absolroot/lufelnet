@@ -136,7 +136,7 @@ window.I18N_PAGE_TACTIC_MAKER_JP = {
     uploadFailed: "アップロードに失敗しました。",
     // SEO
     pageTitleFull: "タクティクスメーカー - ペルソナ5 ザ・ファントム X LufelNet",
-    pageDescription: "ペルソナ5 ザ・ファントム X タクティクスメーカー。パーティとスキルの順序を設定して共有しましょう。",
+    pageDescription: "自分だけのタクティックを作成して共有できます。",
     // Auto Save
     autoSave: "一時保存",
     autoSaveTime: "保存済み: {0}",

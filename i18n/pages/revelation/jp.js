@@ -3,6 +3,7 @@ window.I18N_PAGE_REVELATION_JP = {
     nav_home: "ホーム",
     nav_current: "啓示",
     page_title: "啓示",
+    page_description: "啓示のセット効果・オプション情報・よく使われるキャラクターを確認できます。",
     filtered_count: "全体",
     search_placeholder: "啓示検索...",
 

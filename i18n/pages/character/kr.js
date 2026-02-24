@@ -1,5 +1,6 @@
 window.I18N_PAGE_CHARACTER_KR = {
     pageTitle: '괴도 육성',
+    pageDescription: '각 괴도의 추천 세팅, 페르소나, 계시, 운영 순서를 정리했습니다.',
     filteredCount: '전체',
     countUnit: '명',
     searchPlaceholder: '캐릭터 검색...',

@@ -22,6 +22,7 @@ window.I18N_PAGE_PULL_TRACKER_JP = {
       current: 'ガチャ履歴'
     },
     pageTitle: 'ガチャ履歴 (beta)',
+    pageDescription: 'ガチャ履歴を分析し、天井まで残りの回数と統計を確認できます。',
     cardsTitle: '統計（直近90日）',
     inputLabel: 'URL取得方法',
     placeholder: 'ここにリンクを貼り付けてください...',

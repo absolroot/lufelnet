@@ -2,6 +2,7 @@ window.I18N_PAGE_TACTICS_EN = {
     nav_home: 'Home',
     nav_current: 'Tactic / Tactics',
     page_title: 'Tactic Library',
+    page_description: 'Discover tactics shared by players. Use them to clear Sea of Souls and Nightmare Gate.',
     upload_button: 'Upload Tactic',
     ranking_title: 'Ranking',
     ranking_weekly: 'Weekly',

@@ -1,5 +1,6 @@
 window.I18N_PAGE_GALLERY_EN = {
     pageTitle: 'Gallery',
+    pageDescription: 'Browse in-game illustrations, cutscenes, and various images.',
     navCurrent: 'Gallery',
 
     // Filters

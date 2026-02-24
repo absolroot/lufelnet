@@ -46,6 +46,7 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
     </div>
     <div class="header-container">
         <h1 id="page-title">-</h1>
+        <p class="page-description" id="page-description"></p>
     </div>
     <!-- Filter section -->
     <div class="filter-section">
@@ -413,6 +414,10 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
         }
         if (pageTitle) {
             pageTitle.textContent = getI18nText('pageTitle', pageTitle.textContent || '');
+        }
+        const pageDesc = document.getElementById('page-description');
+        if (pageDesc) {
+            pageDesc.textContent = getI18nText('pageDescription', '');
         }
         if (searchInput) {
             searchInput.placeholder = getI18nText('searchPlaceholder', searchInput.placeholder || '');

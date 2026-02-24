@@ -223,7 +223,8 @@ function getI18nText(key, fallback) {
 }
 
 function getCurrentPullCalcLanguage() {
-    const pathMatch = window.location.pathname.match(/^\/(kr|en|jp)(\/|$)/i);
+    const supportedLangs = ['kr', 'en', 'jp', 'cn'];
+    const pathMatch = window.location.pathname.match(/^\/(kr|en|jp|cn)(\/|$)/i);
     if (pathMatch) {
         return pathMatch[1].toLowerCase();
     }
@@ -245,17 +246,37 @@ function getCurrentPullCalcLanguage() {
     }
 
     const urlParams = new URLSearchParams(window.location.search);
-    const langFromQuery = urlParams.get('lang');
-    if (langFromQuery && ['kr', 'en', 'jp'].includes(langFromQuery)) {
+    const langFromQuery = String(urlParams.get('lang') || '').toLowerCase();
+    if (langFromQuery && supportedLangs.includes(langFromQuery)) {
         return langFromQuery;
     }
 
-    const savedLang = localStorage.getItem('preferredLanguage');
-    if (savedLang && ['kr', 'en', 'jp'].includes(savedLang)) {
+    const savedLang = String(localStorage.getItem('preferredLanguage') || '').toLowerCase();
+    if (savedLang && supportedLangs.includes(savedLang)) {
         return savedLang;
     }
 
     return 'kr';
+}
+
+function buildPullCalcCharacterDetailHref(characterName, lang) {
+    const safeName = String(characterName || '').trim();
+    if (!safeName) return '#';
+
+    const safeLang = ['kr', 'en', 'jp', 'cn'].includes(String(lang || '').toLowerCase())
+        ? String(lang).toLowerCase()
+        : 'kr';
+
+    if (typeof LanguageRouter !== 'undefined' && typeof LanguageRouter.buildCharacterDetailUrl === 'function') {
+        return LanguageRouter.buildCharacterDetailUrl(safeName, safeLang);
+    }
+
+    const base = String(window.BASE_URL || '').replace(/\/+$/, '');
+    const legacyPath = `${base || ''}/character.html`;
+    const url = new URL(legacyPath.startsWith('/') ? legacyPath : `/${legacyPath}`, window.location.origin);
+    url.searchParams.set('name', safeName);
+    url.searchParams.set('lang', safeLang);
+    return `${url.pathname}${url.search}`;
 }
 function updatePullCalcSEOTags(lang = null) {
     if (window.SeoEngine && typeof window.SeoEngine.setContextHint === 'function') {
@@ -488,6 +509,9 @@ class PullSimulator {
     applyI18n() {
         const pageTitleEl = document.getElementById('page-title');
         if (pageTitleEl) pageTitleEl.textContent = t('pageTitle');
+
+        const pageDescEl = document.getElementById('page-description');
+        if (pageDescEl) pageDescEl.textContent = t('pageDescription', '');
 
         const navHome = document.getElementById('nav-home');
         if (navHome) navHome.textContent = t('nav.home');
@@ -1197,6 +1221,7 @@ class PullSimulator {
                 });
             }
         });
+        this.bindCharacterAvatarLinks(container);
 
         // Bind tooltips for income tooltip icons
         if (typeof bindTooltipElement !== 'undefined') {
@@ -1437,12 +1462,15 @@ class PullSimulator {
                 </div>
             `;
         }
+        const detailHref = this.getCharacterDetailHref(charName);
 
         return `
             <div class="char-card ${isSelected ? 'selected' : ''} ${isReleased ? 'released' : ''}"
                  data-character="${charName}" data-version="${version}" data-date="${date}">
-                <img class="char-avatar" src="${BASE_URL}/assets/img/tier/${charName}.webp" alt="${displayName}"
-                     onerror="this.src='${BASE_URL}/assets/img/character-cards/card_skeleton.webp'">
+                <a class="character-detail-anchor char-avatar-link" data-character="${charName}" href="${detailHref}">
+                    <img class="char-avatar" src="${BASE_URL}/assets/img/tier/${charName}.webp" alt="${displayName}"
+                         onerror="this.src='${BASE_URL}/assets/img/character-cards/card_skeleton.webp'">
+                </a>
                 <div class="char-info">
                     <div class="char-name">${displayName}</div>
                     <div class="char-meta">${metaHtml}</div>
@@ -1460,6 +1488,42 @@ class PullSimulator {
         if (lang === 'en' && charData.name_en) return charData.name_en;
         if (lang === 'jp' && charData.name_jp) return charData.name_jp;
         return charData.name || charName;
+    }
+
+    getCharacterDetailHref(charName) {
+        const lang = getCurrentPullCalcLanguage();
+        return buildPullCalcCharacterDetailHref(charName, lang);
+    }
+
+    openCharacterDetailInNewTab(charName) {
+        const href = this.getCharacterDetailHref(charName);
+        if (!href || href === '#') return;
+        window.open(href, '_blank', 'noopener');
+    }
+
+    bindCharacterAvatarLinks(root = document) {
+        if (!root || typeof root.querySelectorAll !== 'function') return;
+
+        const links = root.querySelectorAll('.char-avatar-link[data-character], .plan-item-avatar-link[data-character]');
+        links.forEach((link) => {
+            if (!link || link.dataset.characterLinkBound === 'true') return;
+
+            link.classList.add('character-detail-link');
+
+            link.addEventListener('click', (e) => {
+                if (e.button !== 0) return;
+                // 링크 기본 동작(일반 클릭/ctrl+클릭 등)은 유지하고
+                // 부모 카드의 선택 토글 이벤트로 전파만 막는다.
+                e.stopPropagation();
+            });
+
+            link.addEventListener('auxclick', (e) => {
+                if (e.button !== 1) return;
+                e.stopPropagation();
+            });
+
+            link.dataset.characterLinkBound = 'true';
+        });
     }
 
 

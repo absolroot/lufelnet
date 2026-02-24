@@ -1,6 +1,7 @@
 window.I18N_PAGE_DEFENSE_CALC_JP = {
     "seoKeywords": "P5X, ペルソナ5X, 防御力減少計算機, 防御計算",
     "seoOgLocale": "ja_JP",
+    "pageDescription": "ボスごとの防御力と貫通効果を適用した最終防御係数を計算します。",
     "defenseI18n": {
         "nav_home": "ホーム",
         "nav_current": "防御力計算",

@@ -5,6 +5,7 @@
 
 window.I18N_PAGE_PULL_CALC_JP = {
     pageTitle: 'ガチャプランナー',
+    pageDescription: '予測リリーススケジュールを基に、目標キャラクター獲得に必要なリソースを計算してプランを立てられます。',
     navCurrent: 'ガチャプランナー',
     seoKeywords: 'P5X, ペルソナ5X, ガチャプランナー, ガチャ計算機, ガチャシミュレーター, P5X計算機, ガチャ計画',
     seoOgLocale: 'ja_JP',

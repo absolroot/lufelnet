@@ -1,6 +1,7 @@
 window.I18N_PAGE_MATERIAL_CALC_KR = {
     navCurrent: '육성 계산기',
     pageTitle: '육성 계산기',
+    pageDescription: '캐릭터 레벨업과 스킬 강화에 필요한 재료 수량을 계산합니다.',
     pageTitleFull: '육성 계산기 - 페르소나5 더 팬텀 X 루페르넷',
     addCharacter: '캐릭터 추가',
     selectCharacter: '캐릭터 선택',

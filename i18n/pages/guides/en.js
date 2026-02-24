@@ -1,6 +1,7 @@
 window.I18N_PAGE_GUIDES_EN = {
     navCurrent: 'Articles',
     pageTitle: 'Articles',
+    pageDescription: 'Guides and tips on things the game doesn\'t tell you.',
     searchPlaceholder: 'Search...',
     filterAll: 'All',
     loadingGuides: 'Loading guides...',

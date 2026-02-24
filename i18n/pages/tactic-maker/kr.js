@@ -133,7 +133,7 @@ window.I18N_PAGE_TACTIC_MAKER_KR = {
     uploadFailed: "업로드에 실패했습니다.",
     // SEO
     pageTitleFull: "택틱 메이커 - 페르소나5 더 팬텀 X 루페르넷",
-    pageDescription: "페르소나5 더 팬텀 X 택틱 메이커. 파티와 스킬 순서를 설정하고 공유하세요.",
+    pageDescription: "나만의 택틱을 직접 만들고 공유할 수 있습니다.",
     // Auto Save
     autoSave: "임시저장",
     autoSaveTime: "저장됨: {0}",

@@ -4,6 +4,7 @@ window.I18N_PAGE_TIER_KR = {
 
     // Page title
     pageTitle: '티어 메이커',
+    pageDescription: '경쟁 콘텐츠 기준 포지션별 캐릭터 티어를 제공합니다. 직접 나만의 티어표를 만들 수도 있습니다.',
     tierListTitle: '티어 리스트',
     tierMakerTitle: '티어 메이커',
 

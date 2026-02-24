@@ -2,6 +2,7 @@ window.I18N_PAGE_WONDER_WEAPON_JP = {
     // Navigation
     navCurrent: 'ワンダー武器',
     pageTitle: 'ワンダー武器',
+    pageDescription: 'ワンダー専用武器の効果・入手先・改造段階の情報を確認できます。',
 
     // Filters
     filterAll: '全体',

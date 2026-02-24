@@ -22,6 +22,7 @@ window.I18N_PAGE_PULL_TRACKER_KR = {
       current: '계약 트래커'
     },
     pageTitle: '계약 트래커 (beta)',
+    pageDescription: '내 가챠 기록을 분석하고 천장까지 남은 개수와 통계를 확인합니다.',
     cardsTitle: '요약 카드 (최근 90일)',
     inputLabel: 'URL 획득 방법',
     placeholder: '여기에 주소를 붙여넣기...',

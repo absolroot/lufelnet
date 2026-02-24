@@ -2,6 +2,7 @@ window.I18N_PAGE_WONDER_WEAPON_KR = {
     // Navigation
     navCurrent: '원더 무기',
     pageTitle: '원더 무기',
+    pageDescription: '원더 전용 무기의 효과와 획득처, 개조 단계 정보를 제공합니다.',
 
     // Filters
     filterAll: '전체',

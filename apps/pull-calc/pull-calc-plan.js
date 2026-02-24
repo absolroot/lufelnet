@@ -561,13 +561,16 @@
             if (element) {
                 metaHtml += `<img src="${BASE_URL}/assets/img/character-cards/속성_${element}.png" alt="${element}" onerror="this.style.display='none'">`;
             }
+            const detailHref = this.getCharacterDetailHref(target.name);
 
             html += `
                 <div class="plan-item ${isSafe ? '' : 'warning'}" data-index="${index}">
                     <div class="plan-item-header">
                         <span class="plan-item-number">${index + 1}</span>
-                        <img class="plan-item-avatar" src="${BASE_URL}/assets/img/tier/${target.name}.webp" alt="${displayName}"
-                             onerror="this.src='${BASE_URL}/assets/img/character-cards/card_skeleton.webp'">
+                        <a class="character-detail-anchor plan-item-avatar-link" data-character="${target.name}" href="${detailHref}">
+                            <img class="plan-item-avatar" src="${BASE_URL}/assets/img/tier/${target.name}.webp" alt="${displayName}"
+                                 onerror="this.src='${BASE_URL}/assets/img/character-cards/card_skeleton.webp'">
+                        </a>
                         <div class="plan-item-info">
                             <div class="plan-item-info-col1">
                                 <div class="plan-item-subtitle">
@@ -697,6 +700,9 @@
         });
 
         container.innerHTML = html;
+        if (typeof this.bindCharacterAvatarLinks === 'function') {
+            this.bindCharacterAvatarLinks(container);
+        }
 
         // Bind events
 

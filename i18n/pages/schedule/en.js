@@ -2,6 +2,7 @@ window.I18N_PAGE_SCHEDULE_EN = {
     // Navigation
     navCurrent: 'Schedule',
     pageTitle: 'Release Schedule',
+    pageDescription: 'Predicted release schedule for GLB/JP/SEA servers. Actual dates may differ.',
 
     // Filters
     filterAll: 'All',

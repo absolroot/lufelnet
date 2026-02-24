@@ -22,6 +22,7 @@ window.I18N_PAGE_PULL_TRACKER_EN = {
       current: 'Pull Tracker'
     },
     pageTitle: 'Pull Tracker (beta)',
+    pageDescription: 'Analyze your gacha history and check how many pulls remain until pity.',
     cardsTitle: 'Stats (Last 90 Days)',
     inputLabel: 'How to get URL',
     placeholder: 'Paste the link here...',

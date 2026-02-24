@@ -2,6 +2,7 @@ window.I18N_PAGE_SCHEDULE_JP = {
     // Navigation
     navCurrent: 'スケジュール',
     pageTitle: 'リリーススケジュール',
+    pageDescription: 'GLB/JP/SEAサーバー基準の予測リリーススケジュールです。実際の日程と異なる場合があります。',
 
     // Filters
     filterAll: 'すべて',

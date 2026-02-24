@@ -13,7 +13,6 @@
 
 /* Header */
 .header-container {
-    display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 0px;
@@ -586,6 +585,28 @@
     border-radius: 6px;
     object-fit: cover;
     background: rgba(255, 255, 255, 0.05);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.char-avatar-link,
+.plan-item-avatar-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+    text-decoration: none;
+}
+
+.char-avatar-link.character-detail-link,
+.plan-item-avatar-link.character-detail-link {
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.char-avatar-link.character-detail-link:hover .char-avatar,
+.plan-item-avatar-link.character-detail-link:hover .plan-item-avatar {
+    transform: translateY(-1px);
+    box-shadow: 0 0 0 2px rgba(219, 0, 0, 0.35);
 }
 
 .char-info {
@@ -835,6 +856,7 @@
     border-radius: 6px;
     object-fit: cover;
     flex-shrink: 0;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .plan-item-info {

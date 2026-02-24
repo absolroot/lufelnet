@@ -1,6 +1,7 @@
 window.I18N_PAGE_CRITICAL_CALC_JP = {
     "navCurrent": "クリ率計算機",
     "pageTitle": "クリ率計算機",
+    "pageDescription": "キャラクターのクリティカル確率に影響する要素をまとめて最終数値を計算します。",
     "seoKeywords": "P5X, ペルソナ5X, クリ率計算機, クリティカル率",
     "seoOgLocale": "ja_JP",
     "tabBuff": "バフ",

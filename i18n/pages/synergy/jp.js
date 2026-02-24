@@ -1,6 +1,7 @@
 window.I18N_PAGE_SYNERGY_JP = {
     // Page metadata
     pageTitle: '協力者',
+    pageDescription: '協力者ごとの選択肢の正解・好みのギフト・レベル別効果を確認できます。',
 
     // Navigation
     navCurrent: '協力者',

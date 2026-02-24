@@ -114,7 +114,10 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
         <span class="current-page" id="nav-current" data-i18n="navCurrent">-</span>
     </div>
     <div class="header-container">
-        <h1 id="page-title" data-i18n="pageTitle">-</h1>
+        <div class="header-title">
+            <h1 id="page-title" data-i18n="pageTitle">-</h1>
+            <p class="page-description" id="page-description" data-i18n="pageDescription"></p>
+        </div>
         <div id="tier-mode-tabs" class="tier-mode-tabs" role="tablist" aria-label="Tier mode tabs">
             <a id="tier-tab-list" class="tier-mode-tab" role="tab" data-mode="list" href="/tier/">티어 리스트</a>
             <a id="tier-tab-maker" class="tier-mode-tab" role="tab" data-mode="maker" href="/tier-maker/">티어 메이커</a>

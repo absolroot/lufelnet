@@ -1,5 +1,6 @@
 window.I18N_PAGE_GALLERY_JP = {
     pageTitle: 'ギャラリー',
+    pageDescription: 'ゲーム内イラスト、カットシーンなどさまざまな画像を楽しめます。',
     navCurrent: 'ギャラリー',
 
     // Filters

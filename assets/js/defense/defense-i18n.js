@@ -205,6 +205,11 @@
             // defense-calc 페이지에서만 page-title 업데이트 (critical-calc는 critical-calc.js에서 처리)
             if (pageTitle && (window.location.pathname.includes('/defense-calc') || window.location.pathname.includes('defense-calc'))) {
                 pageTitle.textContent = tx('page_title', '방어력 감소 계산기');
+                const pageDesc = root.getElementById ? root.getElementById('page-description') : document.getElementById('page-description');
+                if (pageDesc) {
+                    const pack = window['I18N_PAGE_DEFENSE_CALC_' + currentLang.toUpperCase()];
+                    pageDesc.textContent = (pack && pack.pageDescription) || '';
+                }
             }
 
             const bossSelectPlaceholder = document.getElementById('bossSelectPlaceholder');

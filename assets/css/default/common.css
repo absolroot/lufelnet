@@ -1,5 +1,53 @@
+@font-face {
+    font-family: 'JapaneseFont';
+    src: url('https://fonts.gstatic.com/s/notosansjp/v53/-F6jfjtqLzI2JPCgQBnw7HFyzSD-AsregP8VFBEi75g.woff2') format('woff2');
+    font-weight: 400;
+    unicode-range: U+3000-303F, U+3040-309F, U+30A0-30FF, U+FF00-FFEF, U+4E00-9FFF, U+3400-4DBF;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'JapaneseFont';
+    src: url('https://fonts.gstatic.com/s/notosansjp/v53/-F6pfjtqLzI2JPCgQBnw7HFQaioq1H1hioHjkv-8wkqiFl3A0wZ5jA.woff2') format('woff2');
+    font-weight: 700;
+    unicode-range: U+3000-303F, U+3040-309F, U+30A0-30FF, U+FF00-FFEF, U+4E00-9FFF, U+3400-4DBF;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'EnglishFont';
+    src: url('https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2') format('woff2');
+    font-weight: 400;
+    unicode-range: U+0020-007E, U+00A0-00FF, U+0100-024F;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'EnglishFont';
+    src: url('https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuI6fAZ9hiA.woff2') format('woff2');
+    font-weight: 600;
+    unicode-range: U+0020-007E, U+00A0-00FF, U+0100-024F;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'EnglishFont';
+    src: url('https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuFuYAZ9hiA.woff2') format('woff2');
+    font-weight: 700;
+    unicode-range: U+0020-007E, U+00A0-00FF, U+0100-024F;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'EnglishFont';
+    src: url('https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuDyYAZ9hiA.woff2') format('woff2');
+    font-weight: 800;
+    unicode-range: U+0020-007E, U+00A0-00FF, U+0100-024F;
+    font-display: swap;
+}
+
 * {
-    font-family: 'Noto Sans', 'Apple SD Gothic Neo', "Open Sans", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: 'EnglishFont', 'JapaneseFont', 'Noto Sans', 'Apple SD Gothic Neo', "Open Sans", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     letter-spacing: -0.02em;
 }
 

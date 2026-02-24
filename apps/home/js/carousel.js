@@ -642,7 +642,7 @@
       .carousel-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.5); cursor: pointer; }
       .carousel-dot.active { background: #fff; }
       .slide-bg { position: absolute; inset: 0; background: radial-gradient(120% 120% at 80% 100%, rgba(255,255,255,0.08), rgba(255,255,255,0.02) 60%, rgba(0,0,0,0) 100%); }
-      .slide-bg.slide-bg-diamond::after { content: ''; position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='36'%3E%3Cpolygon points='12,0 24,18 12,36 0,18' fill='%23ffffff'/%3E%3C/svg%3E"); background-size: 24px 36px; background-repeat: repeat; pointer-events: none; opacity: 0.008; }
+      .slide-bg.slide-bg-diamond::after { content: ''; position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='45'%3E%3Cpolygon points='15,0 30,22.5 15,45 0,22.5' fill='%23ffffff'/%3E%3C/svg%3E"); background-size: 24px 36px; background-repeat: repeat; pointer-events: none; opacity: 0.01; }
       .slide-link { position: absolute; inset: 0; z-index: 6; text-decoration: none; pointer-events: auto; }
       .slide-left, .slide-right { position: relative; z-index: 4; }
       @media (max-width: 768px) {

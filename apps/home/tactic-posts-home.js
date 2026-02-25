@@ -224,6 +224,9 @@ function createHomePreviewFromParty(party) {
       charImg.src = `${BASE_URL}/assets/img/character-half/${member.name}.webp`;
       charImg.alt = member.name;
       charImg.title = member.name;
+      charImg.loading = 'lazy';
+      charImg.decoding = 'async';
+      charImg.setAttribute('fetchpriority', 'low');
       container.appendChild(charImg);
     }
 
@@ -234,6 +237,9 @@ function createHomePreviewFromParty(party) {
       ritualImg.src = `${BASE_URL}/assets/img/ritual/num${ritualLevel}.png`;
       const rawLang = detectHomeTacticRawLang();
       ritualImg.alt = formatTemplate(homeTacticT('tactic_ritual_alt', '의식 {value}', rawLang), ritualLevel);
+      ritualImg.loading = 'lazy';
+      ritualImg.decoding = 'async';
+      ritualImg.setAttribute('fetchpriority', 'low');
       container.appendChild(ritualImg);
     }
 

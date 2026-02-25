@@ -92,6 +92,11 @@ class TableRenderer {
             const img = document.createElement('img');
             img.src = `${BASE_URL}/assets/img/character-half/${groupName}.webp`;
             img.className = 'group-avatar';
+            img.loading = 'lazy';
+            img.decoding = 'async';
+            img.width = 28;
+            img.height = 28;
+            img.setAttribute('fetchpriority', 'low');
             infoWrap.appendChild(img);
             const nameSpan = document.createElement('span');
             nameSpan.className = 'group-name';

@@ -89,8 +89,19 @@
         pullCalc: 'Plan pulls and currency usage.'
     };
 
+    const hasStaticQuickGridStyles = () => {
+        try {
+            const marker = window.getComputedStyle(document.documentElement)
+                .getPropertyValue('--home-quick-grid-static')
+                .trim();
+            return marker === '1';
+        } catch (_) {
+            return false;
+        }
+    };
+
     const injectStyles = () => {
-        if (document.getElementById('quick-grid-styles')) return;
+        if (document.getElementById('quick-grid-styles') || hasStaticQuickGridStyles()) return;
         const style = document.createElement('style');
         style.id = 'quick-grid-styles';
         const base = typeof BASE_URL !== 'undefined' ? BASE_URL : '';
@@ -316,4 +327,3 @@
         render();
     });
 })();
-

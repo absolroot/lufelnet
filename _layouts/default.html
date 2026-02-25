@@ -116,8 +116,60 @@
 -->
 
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-57DTGQ5TR7"></script>
-  <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'G-57DTGQ5TR7');</script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    (function () {
+      const GA_ID = 'G-57DTGQ5TR7';
+      const triggerEvents = ['pointerdown', 'keydown', 'touchstart', 'scroll'];
+      let loaded = false;
+      let timerId = null;
+
+      const onTrigger = () => loadGtag();
+
+      function cleanup() {
+        triggerEvents.forEach((eventName) => {
+          window.removeEventListener(eventName, onTrigger);
+        });
+        if (timerId !== null) {
+          clearTimeout(timerId);
+          timerId = null;
+        }
+      }
+
+      function loadGtag() {
+        if (loaded) return;
+        loaded = true;
+        cleanup();
+
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+        script.onload = function () {
+          gtag('config', GA_ID);
+        };
+        document.head.appendChild(script);
+      }
+
+      triggerEvents.forEach((eventName) => {
+        window.addEventListener(eventName, onTrigger, { passive: true, once: true });
+      });
+
+      document.addEventListener('visibilitychange', function () {
+        if (document.visibilityState === 'hidden') {
+          loadGtag();
+        }
+      }, { once: true });
+
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadGtag, { timeout: 1500 });
+      } else {
+        timerId = window.setTimeout(loadGtag, 1500);
+      }
+    })();
+  </script>
 
 
   <!-- 버전 관리 스크립트 -->

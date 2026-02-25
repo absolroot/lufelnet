@@ -48,9 +48,18 @@
 <script src="{{ site.baseurl }}/data/persona/order.js?v={{ site.time | date: '%s' }}"></script>
 <script src="{{ site.baseurl }}/assets/js/persona-loader.js?v={{ site.time | date: '%s' }}"></script>
 <script>
-  if (typeof ensurePersonaFilesLoaded === 'function') {
-    ensurePersonaFilesLoaded();
-  }
+  (function () {
+    const loadPersonaFiles = function () {
+      if (typeof ensurePersonaFilesLoaded === 'function') {
+        ensurePersonaFilesLoaded();
+      }
+    };
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(loadPersonaFiles, { timeout: 1500 });
+    } else {
+      setTimeout(loadPersonaFiles, 0);
+    }
+  })();
 </script>
 
 {% if page.alternate_urls %}

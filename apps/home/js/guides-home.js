@@ -139,10 +139,12 @@ function createGuideItem(guide, rawLang) {
     // Thumbnail HTML
     let thumbnailHtml = '';
     if (thumbnail) {
-        const optimizedThumb = getOptimizedThumbnail(thumbnail, 300);
+        const optimizedThumbSmall = getOptimizedThumbnail(thumbnail, 160);
+        const optimizedThumb = getOptimizedThumbnail(thumbnail, 240);
+        const optimizedThumbLarge = getOptimizedThumbnail(thumbnail, 360);
         thumbnailHtml = `
             <div class="guide-thumbnail-container" style="flex-shrink: 0; width: 100px; height: 65px; border-radius: 6px; overflow: hidden; background: #222;">
-                <img src="${optimizedThumb}" alt="${title}" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
+                <img src="${optimizedThumb}" srcset="${optimizedThumbSmall} 160w, ${optimizedThumb} 240w, ${optimizedThumbLarge} 360w" sizes="(max-width: 768px) 42vw, 100px" alt="${title}" width="100" height="65" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async" fetchpriority="low">
             </div>
         `;
     }

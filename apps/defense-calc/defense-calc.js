@@ -568,6 +568,11 @@ class DefenseCalc {
             const img = document.createElement('img');
             img.src = `${BASE_URL}/assets/img/character-half/${groupName}.webp`;
             img.className = 'group-avatar';
+            img.loading = 'lazy';
+            img.decoding = 'async';
+            img.width = 28;
+            img.height = 28;
+            img.setAttribute('fetchpriority', 'low');
             infoWrap.appendChild(img);
             const nameSpan = document.createElement('span');
             nameSpan.className = 'group-name';
@@ -743,6 +748,11 @@ class DefenseCalc {
         if (data.skillIcon) {
             const skillIcon = document.createElement('img');
             skillIcon.src = this.transformIconSrcForLang(data.skillIcon);
+            skillIcon.loading = 'lazy';
+            skillIcon.decoding = 'async';
+            skillIcon.width = 24;
+            skillIcon.height = 24;
+            skillIcon.setAttribute('fetchpriority', 'low');
 
             // 스킬 관련 타입인 경우 skill-icon 클래스 추가
             if (data.type.includes('스킬') ||
@@ -1247,6 +1257,11 @@ class DefenseCalc {
                 icon.src = `${BASE_URL}/assets/img/enemy/${boss.img}`;
                 icon.alt = this.getBossDisplayName(boss);
                 icon.className = 'boss-list-icon';
+                icon.loading = 'lazy';
+                icon.decoding = 'async';
+                icon.width = 24;
+                icon.height = 24;
+                icon.setAttribute('fetchpriority', 'low');
                 icon.onerror = function () {
                     this.style.display = 'none';
                 };

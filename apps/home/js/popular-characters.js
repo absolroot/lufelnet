@@ -266,6 +266,11 @@
             const img = document.createElement('img');
             img.src = `${window.BASE_URL || ''}/assets/img/tier/${encodeURIComponent(characterKey)}.webp`;
             img.alt = characterKey;
+            img.width = 98;
+            img.height = 140;
+            img.loading = 'lazy';
+            img.decoding = 'async';
+            img.setAttribute('fetchpriority', 'low');
             img.draggable = false;
             imgWrap.appendChild(img);
             link.appendChild(imgWrap);

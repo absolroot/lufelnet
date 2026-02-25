@@ -48,12 +48,8 @@
     "color": "#e91e63",
     "link": "https://www.youtube.com/watch?v=uC3X6-kjbs4",
     "link_target": "_blank",
-    "visible_langs": [
-      
-    ],
-    "regions": [
-      
-    ]
+    "visible_langs": [],
+    "regions": []
   },
   {
     "kind": "custom",
@@ -107,7 +103,7 @@
     "body_en": "Your support fuels better guides and features.",
     "body_jp": "皆様の温かいご支援が、より良い攻略を作る原動力になります。",
     "image": "/assets/img/home/banner/support.webp",
-    "background_image": "/assets/img/home/banner/under.png",
+    "background_image": "/assets/img/home/banner/under.webp",
     "background_bottom": 0,
     "background_bottom_mobile": 0,
     "background_right": 0,

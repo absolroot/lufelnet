@@ -1,5 +1,5 @@
 // Service Worker for PWA
-const SW_FALLBACK_VERSION = 'v3-js-css-no-cache';
+const SW_FALLBACK_VERSION = 'v4-js-css-no-cache';
 const SW_VERSION = (() => {
   try {
     const url = new URL(self.location.href);
@@ -8,8 +8,73 @@ const SW_VERSION = (() => {
     return SW_FALLBACK_VERSION;
   }
 })();
-const IMAGE_CACHE = 'lufelnet-images-v1';
+const IMAGE_CACHE_PREFIX = 'lufelnet-images-';
+const IMAGE_CACHE_VERSION = 'runtime-v3';
+const IMAGE_CACHE = `${IMAGE_CACHE_PREFIX}${IMAGE_CACHE_VERSION}`;
 const IMAGE_EXTENSIONS = ['.png', '.jpg', '.jpeg', '.webp', '.gif', '.svg', '.ico'];
+const IMAGE_REVALIDATE_INTERVAL_MS = 12 * 60 * 60 * 1000; // 12h
+const IMAGE_CACHE_MAX_ENTRIES = 2000;
+const IMAGE_CACHEABLE_MAX_BYTES = 5 * 1024 * 1024; // 5MB
+const imageRevalidateAt = new Map();
+
+function isCacheableResponse(response) {
+  return response && response.status === 200 && response.type === 'basic';
+}
+
+function toNoCacheRequest(request) {
+  try {
+    return new Request(request, { cache: 'no-cache' });
+  } catch (_) {
+    return request;
+  }
+}
+
+function toImageCacheKey(request) {
+  try {
+    const url = new URL(request.url);
+    // Ignore runtime version query to avoid duplicate cache entries.
+    url.searchParams.delete('v');
+    return url.toString();
+  } catch (_) {
+    return request.url;
+  }
+}
+
+function getResponseLengthBytes(response) {
+  if (!response || !response.headers) return null;
+  const raw = response.headers.get('content-length');
+  if (!raw) return null;
+  const parsed = parseInt(raw, 10);
+  return Number.isFinite(parsed) && parsed >= 0 ? parsed : null;
+}
+
+function isCacheableImageResponse(response) {
+  if (!isCacheableResponse(response)) return false;
+  const size = getResponseLengthBytes(response);
+  if (size === null) return true;
+  return size <= IMAGE_CACHEABLE_MAX_BYTES;
+}
+
+function shouldRevalidateImage(cacheKey) {
+  const now = Date.now();
+  const lastAt = imageRevalidateAt.get(cacheKey) || 0;
+  if (now - lastAt < IMAGE_REVALIDATE_INTERVAL_MS) {
+    return false;
+  }
+  imageRevalidateAt.set(cacheKey, now);
+  return true;
+}
+
+async function pruneCacheEntries(cache, maxEntries) {
+  const keys = await cache.keys();
+  if (keys.length <= maxEntries) return;
+  const deleteCount = keys.length - maxEntries;
+  const oldKeys = keys.slice(0, deleteCount);
+  oldKeys.forEach((key) => {
+    imageRevalidateAt.delete(toImageCacheKey(key));
+  });
+  await Promise.all(oldKeys.map((key) => cache.delete(key)));
+}
 
 function isImageAsset(url) {
   return (
@@ -38,7 +103,10 @@ self.addEventListener('activate', (event) => {
             })
         )
       )
-      .then(() => self.clients.claim())
+      .then(() => {
+        imageRevalidateAt.clear();
+        return self.clients.claim();
+      })
       .then(() =>
         self.clients.matchAll().then((clients) => {
           clients.forEach((client) => {
@@ -58,19 +126,41 @@ self.addEventListener('fetch', (event) => {
 
   if (isImageAsset(url)) {
     event.respondWith(
-      caches.open(IMAGE_CACHE).then((cache) =>
-        cache.match(request).then((cachedResponse) => {
-          if (cachedResponse) return cachedResponse;
-          return fetch(request)
-            .then((response) => {
-              if (response && response.status === 200 && response.type === 'basic') {
-                cache.put(request, response.clone());
-              }
-              return response;
-            })
-            .catch(() => null);
-        })
-      )
+      caches.open(IMAGE_CACHE).then(async (cache) => {
+        const cacheKey = toImageCacheKey(request);
+        const cachedResponse = await cache.match(cacheKey);
+
+        if (cachedResponse) {
+          if (shouldRevalidateImage(cacheKey)) {
+            event.waitUntil(
+              fetch(toNoCacheRequest(request))
+                .then((response) => {
+                  if (!isCacheableImageResponse(response)) return null;
+                  return cache
+                    .put(cacheKey, response.clone())
+                    .then(() => pruneCacheEntries(cache, IMAGE_CACHE_MAX_ENTRIES));
+                })
+                .catch(() => null)
+            );
+          }
+          return cachedResponse;
+        }
+
+        try {
+          const response = await fetch(toNoCacheRequest(request));
+          if (isCacheableImageResponse(response)) {
+            event.waitUntil(
+              cache
+                .put(cacheKey, response.clone())
+                .then(() => pruneCacheEntries(cache, IMAGE_CACHE_MAX_ENTRIES))
+                .catch(() => null)
+            );
+          }
+          return response;
+        } catch (_) {
+          return cachedResponse || Response.error();
+        }
+      })
     );
     return;
   }
@@ -157,8 +247,18 @@ self.addEventListener('message', (event) => {
 
   if (event.data && event.data.type === 'CLEAR_IMAGE_CACHE') {
     console.log('[Service Worker] Received CLEAR_IMAGE_CACHE');
-    caches.delete(IMAGE_CACHE).then(() => {
-      console.log('[Service Worker] Image cache cleared');
-    });
+    caches
+      .keys()
+      .then((cacheNames) =>
+        Promise.all(
+          cacheNames
+            .filter((cacheName) => cacheName.startsWith(IMAGE_CACHE_PREFIX))
+            .map((cacheName) => caches.delete(cacheName))
+        )
+      )
+      .then(() => {
+        imageRevalidateAt.clear();
+        console.log('[Service Worker] Image cache cleared');
+      });
   }
 });

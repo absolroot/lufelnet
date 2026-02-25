@@ -14,6 +14,7 @@
   const REGION_BASE_UTC = { cn: 8, tw: 8, sea: 8, kr: 9, en: 9, jp: 9 };
   const SLIDE_INTERVAL_MS = 6000;
   const COUNTDOWN_INTERVAL_MS = 1000;
+  const LCP_PRELOAD_LINK_ID = 'home-carousel-lcp-preload';
 
   const BASE = (typeof window !== 'undefined' && (window.BASE_URL || window.SITE_BASEURL)) || '';
   const APP_VER = (typeof window !== 'undefined' && (window.APP_VERSION || '')) || '';
@@ -165,6 +166,49 @@
     if (key) return `${BASE}/assets/img/character-detail/${encodeURIComponent(key)}.webp`;
     // No match: hide by returning null
     return null;
+  }
+
+  function setImageLoadingPriority(img, prioritize) {
+    if (!img) return;
+    img.decoding = 'async';
+    if (prioritize) {
+      img.loading = 'eager';
+      try { img.fetchPriority = 'high'; } catch (_) { img.setAttribute('fetchpriority', 'high'); }
+      return;
+    }
+    img.loading = 'lazy';
+    try { img.fetchPriority = 'auto'; } catch (_) { img.setAttribute('fetchpriority', 'auto'); }
+  }
+
+  function getLcpCandidateImageUrl(slide) {
+    if (!slide) return null;
+    if (slide.kind === 'custom') {
+      return slide.customImage || slide.customBgImage || null;
+    }
+    const isMobile = window.matchMedia && window.matchMedia('(max-width: 520px)').matches;
+    const visualCandidates = (slide.fiveStar || []).slice(0, isMobile ? 2 : 3);
+    if (!visualCandidates.length) return null;
+    const firstVisual = (visualCandidates.length === 3) ? visualCandidates[1] : visualCandidates[0];
+    return firstVisual && firstVisual.name ? getCharacterImageUrl(firstVisual.name) : null;
+  }
+
+  function updateLcpPreload(url) {
+    if (!document || !document.head) return;
+    const existing = document.getElementById(LCP_PRELOAD_LINK_ID);
+    if (!url) {
+      if (existing) existing.remove();
+      return;
+    }
+
+    const href = String(url);
+    if (existing && existing.getAttribute('href') === href) return;
+
+    const link = existing || document.createElement('link');
+    link.id = LCP_PRELOAD_LINK_ID;
+    link.rel = 'preload';
+    link.as = 'image';
+    link.href = href;
+    if (!existing) document.head.appendChild(link);
   }
 
   function getCharacterTopKey(name) {
@@ -648,7 +692,7 @@
       @media (max-width: 768px) {
         .carousel-viewport { height: 250px; }
         .char-img { height: auto; width: auto; max-height: 100%; }
-        .char-img.front { transform: translateY(-60%) scale(2.5) !important; right: 15% !important; }
+        .char-img.front { transform: translateY(-60%) !important; right: 15% !important; }
         .char-img.middle { transform: translateX(-8%) translateY(-50%) scale(1.12) }
         .char-img.back { transform: translateY(-55%) scale(1.8); }
         .carousel-nav { display: none !important; }
@@ -742,6 +786,7 @@
     el.className = 'carousel-slide';
 
     const isMobile = window.matchMedia && window.matchMedia('(max-width: 520px)').matches;
+    const isPrioritySlide = index === state.currentIndex;
 
     const bg = document.createElement('div');
     bg.className = 'slide-bg';
@@ -854,7 +899,7 @@
     if (slide.kind === 'custom') {
       if (slide.customImage) {
         const img = document.createElement('img');
-        img.loading = 'lazy';
+        setImageLoadingPriority(img, isPrioritySlide);
         img.alt = slide.name || 'banner';
         img.src = slide.customImage;
         img.className = 'char-img front middle';
@@ -876,7 +921,8 @@
       order.forEach((origIdx, posIdx) => {
         const c = imgs[origIdx];
         const img = document.createElement('img');
-        img.loading = 'lazy';
+        const shouldPrioritize = isPrioritySlide && posIdx === 0;
+        setImageLoadingPriority(img, shouldPrioritize);
         img.alt = c.name || 'character';
         const src = getCharacterImageUrl(c.name);
         if (!src) return; // hide if no image match
@@ -1100,6 +1146,7 @@
 
   function goTo(i) {
     state.currentIndex = clamp(i, 0, Math.max(0, state.slides.length - 1));
+    updateLcpPreload(getLcpCandidateImageUrl(state.slides[state.currentIndex]));
     const root = document.getElementById(ROOT_ID);
     if (!root) return;
     const track = root.querySelector('.carousel-track');
@@ -1160,6 +1207,7 @@
     const root = document.getElementById(ROOT_ID);
     if (!root) return;
     await waitHomeI18nReady();
+    updateLcpPreload(null);
 
     // Rebuild character index to ensure we have latest characterData
     characterIndex = buildCharacterReverseIndex();
@@ -1251,7 +1299,7 @@
           body: t('carousel_maintenance_body', '조치 중입니다.', rawLang),
           customColor: null,
           customImage: `${BASE}/assets/img/home/banner/under2.png`,
-          customBgImage: `${BASE}/assets/img/home/banner/under.png`,
+          customBgImage: `${BASE}/assets/img/home/banner/under.webp`,
           customBgOffset: null,
           customBgOffsetMobile: null,
           customImgOffset: null,
@@ -1263,6 +1311,7 @@
 
       state.slides = slides;
       state.currentIndex = 0;
+      updateLcpPreload(getLcpCandidateImageUrl(state.slides[state.currentIndex]));
       render(root);
     } catch (err) {
       root.innerHTML = '';
@@ -1270,6 +1319,7 @@
       errEl.style.cssText = 'padding: 12px 8px; color: #f88;';
       errEl.textContent = t('carousel_error', '캐러셀 데이터를 불러오지 못했습니다.', rawLang);
       root.appendChild(errEl);
+      updateLcpPreload(null);
       // eslint-disable-next-line no-console
       try { console.error(err); } catch (_) { }
     }

@@ -1416,6 +1416,26 @@ const defenseCalcData = {
             note: ""
         },
         {
+            id: '21-2',
+            type: "4성무기", 
+            type_en: "4-star Weapon", 
+            type_jp: "4星武器", 
+            target: "단일",
+            skillIcon: `${BASE_URL}/assets/img/character-weapon/치즈코-4-01.png`,
+            skillName: "그래비티 소드",
+            options: ["개조0","개조1&2","개조3&4","개조5&6"],
+            values: {
+                "개조0": 19.2,
+                "개조1&2": 24.8,
+                "개조3&4": 30.4,
+                "개조5&6": 36.0
+            },
+            defaultOption: "개조5&6",
+            value: 36.0,
+            duration: "",
+            note: ""
+        },
+        {
             id: 22,
             type: "스킬1",
             target: "단일",

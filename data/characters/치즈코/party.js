@@ -23,14 +23,11 @@ window.recommendParty["치즈코"] = {
     "party": [
         {
             "members": [
-                "",
-                "",
-                "",
-                ""
+                "마코토",
+                "치즈코",
+                "레오",
+                "유우미"
             ],
-            "comment": "",
-            "comment_en": "",
-            "comment_jp": ""
         }
     ],
     "friends": [

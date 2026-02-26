@@ -193,6 +193,63 @@ function formatHomeDate(date) {
 }
 
 // 홈 목록용 파티 프리뷰 (tactics.html의 미리보기와 동일 로직)
+function isHomeFuukaElucidator(name) {
+  const target = String(name || '').toLowerCase();
+  return ['\uD6C4\uCE74', 'Fuuka', '\u30D5\u30FC\u30AB', '\u98A8\u82B1']
+    .some(v => v.toLowerCase() === target);
+}
+
+function normalizeHomePreviewParty(party) {
+  if (!Array.isArray(party)) return [];
+
+  const members = party
+    .map((member, index) => (member && typeof member === 'object') ? { ...member, __index: index } : null)
+    .filter(member => member && member.name);
+
+  const supportAtV3 = members.find(member => member.__index === 3 && String(member.order) === '-');
+  const supportAtLegacy = members.find(member => member.__index === 4 && String(member.order) === '-');
+  const supportMember = supportAtV3
+    || supportAtLegacy
+    || members.find(member => String(member.order) === '-')
+    || null;
+  const hasFuuka = supportMember ? isHomeFuukaElucidator(supportMember.name) : false;
+
+  if (hasFuuka) return members;
+
+  const isWonder = (name) => name === '\uC6D0\uB354' || name === 'Wonder';
+
+  const battleMembers = members
+    .filter(member => !isWonder(member.name) && String(member.order) !== '-')
+    .sort((a, b) => {
+      const aOrder = parseInt(a.order, 10);
+      const bOrder = parseInt(b.order, 10);
+      const aSafe = Number.isFinite(aOrder) ? aOrder : 99;
+      const bSafe = Number.isFinite(bOrder) ? bOrder : 99;
+      return aSafe - bSafe;
+    });
+
+  const battleInNormalRange = battleMembers.filter(member => {
+    const orderNumber = parseInt(member.order, 10);
+    return Number.isFinite(orderNumber) && orderNumber >= 1 && orderNumber <= 4;
+  });
+
+  const keptIndexes = new Set();
+  const battleToKeep = (battleInNormalRange.length > 0 ? battleInNormalRange : battleMembers).slice(0, 3);
+  battleToKeep.forEach(member => keptIndexes.add(member.__index));
+
+  if (supportMember && !isWonder(supportMember.name)) {
+    keptIndexes.add(supportMember.__index);
+  }
+
+  members.forEach(member => {
+    if (isWonder(member.name)) {
+      keptIndexes.add(member.__index);
+    }
+  });
+
+  return members.filter(member => keptIndexes.has(member.__index));
+}
+
 function createHomePreviewFromParty(party) {
   if (!Array.isArray(party)) return null;
   const previewDiv = document.createElement('div');
@@ -204,7 +261,8 @@ function createHomePreviewFromParty(party) {
   const partyImagesDiv = document.createElement('div');
   partyImagesDiv.className = 'party-images';
 
-  const orderedParty = party
+  const normalizedParty = normalizeHomePreviewParty(party);
+  const orderedParty = normalizedParty
     .filter(pm => pm && pm.name && pm.name !== '')
     .sort((a, b) => {
       if (a.order === '-') return 1;
@@ -213,7 +271,7 @@ function createHomePreviewFromParty(party) {
     });
 
   orderedParty.forEach(member => {
-    if (member.name === '원더') return;
+    if (member.name === '\uC6D0\uB354' || member.name === 'Wonder') return;
 
     const container = document.createElement('div');
     if (typeof characterData !== 'undefined' && characterData[member.name]) {

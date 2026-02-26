@@ -739,6 +739,62 @@ class TacticsViewer {
         }
     }
 
+    isFuukaElucidator(name) {
+        const target = String(name || '').toLowerCase();
+        return ['후카', 'Fuuka', 'フーカ', '風花'].some(v => v.toLowerCase() === target);
+    }
+
+    normalizePartyForLibraryPreview(party) {
+        if (!Array.isArray(party)) return [];
+
+        const members = party
+            .map((member, index) => (member && typeof member === 'object') ? { ...member, __index: index } : null)
+            .filter(member => member && member.name);
+
+        const supportAtV3 = members.find(member => member.__index === 3 && String(member.order) === '-');
+        const supportAtLegacy = members.find(member => member.__index === 4 && String(member.order) === '-');
+        const supportMember = supportAtV3
+            || supportAtLegacy
+            || members.find(member => String(member.order) === '-')
+            || null;
+        const hasFuuka = supportMember ? this.isFuukaElucidator(supportMember.name) : false;
+
+        if (hasFuuka) return members;
+
+        const isWonder = (name) => name === '원더' || name === 'Wonder';
+
+        const battleMembers = members
+            .filter(member => !isWonder(member.name) && String(member.order) !== '-')
+            .sort((a, b) => {
+                const aOrder = parseInt(a.order, 10);
+                const bOrder = parseInt(b.order, 10);
+                const aSafe = Number.isFinite(aOrder) ? aOrder : 99;
+                const bSafe = Number.isFinite(bOrder) ? bOrder : 99;
+                return aSafe - bSafe;
+            });
+
+        const battleInNormalRange = battleMembers.filter(member => {
+            const orderNumber = parseInt(member.order, 10);
+            return Number.isFinite(orderNumber) && orderNumber >= 1 && orderNumber <= 4;
+        });
+
+        const keptIndexes = new Set();
+        const battleToKeep = (battleInNormalRange.length > 0 ? battleInNormalRange : battleMembers).slice(0, 3);
+        battleToKeep.forEach(member => keptIndexes.add(member.__index));
+
+        if (supportMember && !isWonder(supportMember.name)) {
+            keptIndexes.add(supportMember.__index);
+        }
+
+        members.forEach(member => {
+            if (isWonder(member.name)) {
+                keptIndexes.add(member.__index);
+            }
+        });
+
+        return members.filter(member => keptIndexes.has(member.__index));
+    }
+
     createTacticPreview(tacticData) {
         if (!tacticData || !tacticData.party) return null;
 
@@ -760,7 +816,8 @@ class TacticsViewer {
         partyImagesDiv.className = 'party-images';
 
         // 파티원 정렬 및 이미지 생성 (v3 포맷은 null 멤버 포함 가능)
-        const orderedParty = tacticData.party
+        const normalizedParty = this.normalizePartyForLibraryPreview(tacticData.party);
+        const orderedParty = normalizedParty
             .filter(pm => pm && pm.name && pm.name !== "")
             .sort((a, b) => {
                 if (a.order === "-") return 1;

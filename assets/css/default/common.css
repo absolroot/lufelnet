@@ -80,7 +80,7 @@
 
 * {
     font-family: 'EnglishFont', 'JapaneseFont', 'Noto Sans', 'Apple SD Gothic Neo', "Open Sans", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.02rem;
 }
 
 /* 색 전역 선언 */

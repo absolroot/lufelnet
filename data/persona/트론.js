@@ -39,8 +39,8 @@ window.personaFiles["트론"] = {
     }
   ],
   "comment": "화상이 필수적인 캐릭터(ex. 미오)에게 사용하는 형태로 채용된다.",
-  "comment_en": "Adopted in a form used for characters who require burn effects (e.g., Mio).",
-  "comment_jp": "火傷が必須的な怪盗（例：ミオ）に使用する形で採用される。",
+  "comment_en": "Adopted in a form used for characters who require burn effects (e.g., Mio).\n※ When an ally uses a skill → When Wonder uses a skill to ally\n※ every 2 turns, inflict Burn → inflict Burn (even if in Sub-persona slot)",
+  "comment_jp": "火傷が必須な怪盗（例：ミオ、リン）のサポート役として採用。サブスロット編成時でも、バトル開始時に火傷付与の効果が発動する。",
   "passive_priority": 3,
   "passive_skill": [
     {

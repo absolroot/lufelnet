@@ -114,8 +114,11 @@ export function handlePersonaRouting() {
             || cardContainer.querySelector('.card')
             || cardContainer;
 
+        const wasSelected = cardContainer.classList.contains('selected');
         cardContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
         clickTarget.click();
+        const isSelected = cardContainer.classList.contains('selected');
+        if (!isSelected && !wasSelected) return false;
         window.__LAST_ROUTED_PERSONA__ = targetName;
         return true;
     };

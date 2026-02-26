@@ -39,6 +39,36 @@ function handleSearchParam() {
     }
 }
 
+function triggerPersonaRoutingWhenReady(maxAttempts = 80, delayMs = 100) {
+    if (window.__personaRoutingBootstrapTimer) return;
+
+    let attempts = 0;
+
+    const tryRoute = () => {
+        if (typeof window.handlePersonaRouting === 'function') {
+            if (window.__personaRoutingBootstrapTimer) {
+                clearTimeout(window.__personaRoutingBootstrapTimer);
+                window.__personaRoutingBootstrapTimer = null;
+            }
+            window.handlePersonaRouting();
+            return;
+        }
+
+        attempts += 1;
+        if (attempts >= maxAttempts) {
+            if (window.__personaRoutingBootstrapTimer) {
+                clearTimeout(window.__personaRoutingBootstrapTimer);
+                window.__personaRoutingBootstrapTimer = null;
+            }
+            return;
+        }
+
+        window.__personaRoutingBootstrapTimer = setTimeout(tryRoute, delayMs);
+    };
+
+    tryRoute();
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
     // 1. Initialize i18n
     if (typeof initPageI18n === 'function') {
@@ -54,7 +84,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const runInit = () => {
         initializePageContent().then(() => {
             setTimeout(handleSearchParam, 100);
-            setTimeout(() => { if (window.handlePersonaRouting) window.handlePersonaRouting(); }, 300);
+            triggerPersonaRoutingWhenReady();
             setupGlobalSkillLevelSelector();
             if (window.initPersonaSearch) window.initPersonaSearch();
         });
@@ -282,14 +312,10 @@ async function initializePageContent() {
                     searchInput.dispatchEvent(new Event('input', { bubbles: true }));
                 }
 
-                // Deep Link Routing (Check 'name' param)
-                if (urlParams.has('name') || urlParams.has('persona')) {
-                    if (typeof window.handlePersonaRouting === 'function') {
-                        window.handlePersonaRouting();
-                        window.hasInitialAutoSelected = true; // Prevent default auto-select
-                    }
-                }
             } catch (_) { /* no-op */ }
+
+            // Always attempt detail routing after cards are rendered and interactions are wired.
+            triggerPersonaRoutingWhenReady();
 
             // Initial Auto Select (Once) - Only if no deep link handled
             if (!window.hasInitialAutoSelected && containers.length > 0) {

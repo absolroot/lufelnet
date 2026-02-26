@@ -29,6 +29,8 @@
 
 .main-nav { background-color: #2e3142; }
 
+.main-nav .logo-container { background-color: #2e3142; }
+
 .nav-link.active span{ color: #8ad9e0; }
 
 .mobile-header { background-color: #2e3142; }

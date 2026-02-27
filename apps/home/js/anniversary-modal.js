@@ -19,7 +19,33 @@
         return Promise.resolve(window.__HOME_I18N_READY__).catch(function () { });
     }
 
+    const RAW_LANGS = ['kr', 'en', 'jp', 'cn', 'tw', 'sea'];
+
+    function normalizeLang(value) {
+        return String(value || '').trim().toLowerCase();
+    }
+
     function detectRawLang() {
+        try {
+            const queryLang = normalizeLang(new URLSearchParams(window.location.search).get('lang'));
+            if (RAW_LANGS.includes(queryLang)) return queryLang;
+        } catch (_) { }
+
+        try {
+            const path = String(window.location.pathname || '');
+            const match = path.match(/\/(kr|en|jp|cn|tw|sea)(\/|$)/i);
+            if (match && RAW_LANGS.includes(normalizeLang(match[1]))) {
+                return normalizeLang(match[1]);
+            }
+        } catch (_) { }
+
+        try {
+            if (typeof window.__SEO_PATH_LANG__ === 'string') {
+                const seoPathLang = normalizeLang(window.__SEO_PATH_LANG__);
+                if (RAW_LANGS.includes(seoPathLang)) return seoPathLang;
+            }
+        } catch (_) { }
+
         if (window.HomeI18n && typeof window.HomeI18n.detectRawLang === 'function') {
             return window.HomeI18n.detectRawLang();
         }

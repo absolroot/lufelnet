@@ -414,6 +414,7 @@
     line-height: 1.2;
     margin-bottom: var(--guide-space-md);
     letter-spacing: -0.025em;
+    margin-top: 0;
 }
 
 .guide-meta {
@@ -639,10 +640,24 @@
     font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', Consolas, monospace;
     font-size: 0.875em;
     padding: 2px 6px;
-    background: var(--guide-bg-tertiary);
-    border: 1px solid var(--guide-border-subtle);
+    /* Keep inline code visual consistent even when imported HTML has inline background styles */
+    background: var(--guide-bg-tertiary) !important;
+    border: 1px solid var(--guide-border-subtle) !important;
     border-radius: 4px;
-    color: #e8b865;
+    color: #e8b865 !important;
+}
+
+/* CJK fallback for inline/code blocks in guides */
+html[lang="ko"] .guide-content code,
+html[lang="kr"] .guide-content code,
+html[data-lang="kr"] .guide-content code {
+    font-family: 'JetBrains Mono', 'Fira Code', 'D2Coding', 'Noto Sans KR', 'Malgun Gothic', 'Apple SD Gothic Neo', 'SF Mono', Consolas, monospace;
+}
+
+html[lang="ja"] .guide-content code,
+html[lang="jp"] .guide-content code,
+html[data-lang="jp"] .guide-content code {
+    font-family: 'JetBrains Mono', 'Fira Code', 'BIZ UD Gothic', 'Yu Gothic', Meiryo, 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'SF Mono', Consolas, monospace;
 }
 
 .guide-content pre {
@@ -656,11 +671,11 @@
 
 .guide-content pre code {
     padding: 0;
-    background: none;
-    border: none;
+    background: none !important;
+    border: none !important;
     font-size: var(--guide-text-sm);
     line-height: 1.7;
-    color: var(--guide-text-secondary);
+    color: var(--guide-text-secondary) !important;
 }
 
 /* Horizontal Rule */

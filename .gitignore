@@ -21,6 +21,8 @@ wheels/
 *.egg
 .claude/
 .tmp/
+config_db/
+
 
 
 # Virtual Environment

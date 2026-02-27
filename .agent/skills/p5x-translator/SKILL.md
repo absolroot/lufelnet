@@ -6,6 +6,7 @@ description: P5X(페르소나 5더 팬텀 X)의 한국어 게임 데이터를 �
 # P5X Translator Skill
 
 이 스킬은 P5X 게임 데이터(캐릭터, 스킬, 무기, 의식 등) 내의 한국어 텍스트를 분석하여, 게임 내 공식 용어 설정을 준수하며 _en, _jp 필드나 영어 일본어 번역 파트를 채우는 역할을 합니다.
+출력의 양이 많을 경우 한번에 출력하지 않고, 분할해서 출력해 오류가 발생하지 않도록 합니다.
 
 ## Instructions
 
@@ -43,6 +44,7 @@ description: P5X(페르소나 5더 팬텀 X)의 한국어 게임 데이터를 �
    - 의식: 파일 명칭이나 데이터 키가 ritual이더라도, 영어 번역 시 용어는 Awareness를 사용합니다.
    - 의식&개조: 의식과 개조 뒤에 '의식6', '개조6'과 같이 숫자가 붙은 형태는 i18n/common/en.js, i18n/common/jp.js의 awarenessLevel.a(n), refinement.r(n)을 참조합니다.
    - 스킬: 설명 내에 '스킬1' '스킬 1' 과 같은 형태는 영어로 번역 시 'S1'으로 표현해도 무방합니다.
+   - 가이드(아티클)의 경우에는 번역 후에 scripts/seo/generate-article-pages.mjs를 실행하여 SEO 메타 데이터를 생성하고 apps/guides/data/guides-list.json을 함께 업데이트합니다.
 
 4. **예시**:
    - 아래 경로의 예시 파일들을 참조하여 번역 스타일을 학습하세요. 이외에도 동일한 구조를 가진 파일이 있을 경우 학습합니다.
@@ -51,6 +53,9 @@ description: P5X(페르소나 5더 팬텀 X)의 한국어 게임 데이터를 �
    - 의식: examples/ritual.js ~ ritual4.js 
    - 무기/리뷰: examples/weapon.js, examples/review.js 등
 
+5. **찾지 못했지만 고유명사의 경우**:
+   - /config_db 에 있는 각 언어별 Config 파일들에서 한국어나 해당 언어를 검색해보고 관련 sn이나 id를 추출하여 나머지 KR_Config, JP_Config, EN_Config에서 해당 sn이나 id를 찾아 번역합니다.
+   - 이러한 형태로 번역한 요소는 별도로 i18n common에 반영할지 항상 묻는 과정을 거칩니다.
 
 ## Guidelines
 - 일관성: 반드시 프로젝트 내 정의된 JS/CSV 파일의 용어와 100% 일치해야 합니다. 임의의 직역은 최대한 지양합니다.

@@ -18,30 +18,19 @@ window.recommendParty["야오링·사자무"] = {
             "list": [
                 "도미니온",
                 "광목천",
-                "지국천",
-                "황룡"
+                "지국천"
             ]
         },
         {
             "type": "REDUCE DEF",
             "list": [
                 "년수!",
-                "수르트"
+                "수르트",
+                "비슈누"
             ]
         }
     ],
     "party": [
-        {
-            "members": [
-                "야오링·사자무",
-                "미오",
-                "아케치",
-                "후타바"
-            ],
-            "comment": "",
-            "comment_en": "",
-            "comment_jp": ""
-        },
         {
             "members": [
                 "야오링·사자무",
@@ -52,7 +41,30 @@ window.recommendParty["야오링·사자무"] = {
             "comment": "",
             "comment_en": "",
             "comment_jp": ""
+        },
+        {
+            "members": [
+                "야오링·사자무",
+                "미오",
+                "리코·매화",
+                "후타바"
+            ],
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
+        },
+        {
+            "members": [
+                "야오링·사자무",
+                "미오",
+                "아케치",
+                "후타바"
+            ],
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
         }
+        
     ],
     "friends": [
         {

@@ -1,0 +1,40 @@
+---
+layout: default
+custom_css: []
+custom_js: []
+permalink: /article/make-party/
+language: kr
+title: 조합의 이해 - 루페르넷
+description: P5X에는 우선 다음과 같은 직업들이 존재하며 별도의 이름을 가지고 있다. 여기서는 어떠한 의식의 흐름에 따라 조합이 구성되는지를 가볍게 예시와 함께 안내해보고자 한다.P5X의 역할들은 일반적인 RPG 장르의 팀 구성과 비슷하면서도 각각의 특징을 지닌다. 역할군아이콘직...
+image: /apps/guides/data/assets/make-party/pasted-1772102393895.png
+---
+
+<head>
+    <link rel="stylesheet" href="/apps/guides/guides.css">
+    <script src="/apps/guides/guides.js"></script>
+</head>
+
+<div class="main-wrapper">
+    <div class="guide-view-container" id="guide-view-container">
+        <div class="guides-loading" data-i18n="loadingGuide">Loading guide...</div>
+    </div>
+</div>
+
+<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+    const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+    if (typeof initPageI18n === 'function') {
+        await initPageI18n('guides');
+        if (typeof setLang === 'function') {
+            await setLang(currentLang);
+        }
+    } else if (window.I18nService && typeof window.I18nService.init === 'function') {
+        await window.I18nService.init('guides', currentLang);
+    }
+
+    Navigation.load('article');
+    VersionChecker.check();
+    Guides.loadGuide('make-party');
+});
+</script>

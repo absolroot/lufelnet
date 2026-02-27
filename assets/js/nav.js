@@ -6,6 +6,10 @@ class Navigation {
         // 모바일 헤더 추가
         const mobileHeader = document.createElement('div');
         mobileHeader.className = 'mobile-header';
+        mobileHeader.style.position = 'fixed';
+        mobileHeader.style.top = '0';
+        mobileHeader.style.left = '0';
+        mobileHeader.style.width = '100%';
         document.body.insertBefore(mobileHeader, document.body.firstChild);
 
         // 로고 컨테이너 추가
@@ -296,6 +300,12 @@ class Navigation {
         `;
 
         document.querySelector('#nav-container').innerHTML = navTemplate;
+        const mainNavEl = document.querySelector('#nav-container .main-nav');
+        if (mainNavEl) {
+            // Prevent first-paint layout shift before nav CSS applies.
+            mainNavEl.style.position = 'fixed';
+            mainNavEl.style.top = '0';
+        }
         this.initNavScrollThumb();
 
         // sword animation 초기화

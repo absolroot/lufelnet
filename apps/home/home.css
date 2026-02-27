@@ -1,6 +1,6 @@
 .header-container {
     max-width: 1200px;
-    padding: 20px 0px 20px 0px;
+    padding: 10px 0px 20px 0px;
     width: 100%;
     margin: 0 auto;
     display: flex;
@@ -70,6 +70,7 @@
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
+    min-height: 319.31px;
     box-sizing: border-box;
     border-radius: 0px 0px 10px 10px;
     background-color: var(--card-background);
@@ -81,6 +82,120 @@
     max-width: 1200px;
     margin: 0 auto;
     min-height: 339.43px;
+}
+
+#home-carousel-root .home-carousel-skeleton {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 10px 10px 0 0;
+    background: #2e2e2e;
+}
+
+#home-carousel-root .home-carousel-skeleton-stage {
+    position: relative;
+    height: 300px;
+    display: flex;
+    align-items: stretch;
+    background: linear-gradient(125deg, rgba(73, 73, 73, 0.98) 0%, rgba(56, 56, 56, 0.98) 45%, rgba(44, 44, 44, 0.98) 100%);
+}
+
+@media (min-width: 1200px) {
+    #home-carousel-root .home-carousel-skeleton-stage {
+        height: 280px;
+    }
+}
+
+#home-carousel-root .home-carousel-skeleton-left {
+    flex: 1 1 100%;
+    min-width: 0;
+    padding: 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#home-carousel-root .home-carousel-skeleton-line {
+    border-radius: 8px;
+    background: linear-gradient(90deg, rgba(214, 214, 214, 0.4), rgba(177, 177, 177, 0.2));
+    animation: homeCarouselSkeletonPulse 1.5s ease-in-out infinite;
+}
+
+#home-carousel-root .home-carousel-skeleton-line.title {
+    width: 56%;
+    height: 30px;
+}
+
+#home-carousel-root .home-carousel-skeleton-line.wide {
+    width: 74%;
+    height: 14px;
+}
+
+#home-carousel-root .home-carousel-skeleton-line.short {
+    width: 46%;
+    height: 14px;
+}
+
+#home-carousel-root .home-carousel-skeleton-toolbar {
+    position: relative;
+    display: flex;
+    gap: 8px;
+    padding: 8px 12px;
+    padding-bottom: 24px;
+    justify-content: flex-end;
+    align-items: center;
+    background: var(--border-red);
+    clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
+}
+
+#home-carousel-root .home-carousel-skeleton-toolbar::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -26%;
+    bottom: 0;
+    width: 50%;
+    background-image: url('/assets/img/character-detail/character_bg.png');
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: cover;
+    opacity: 0.2;
+    z-index: 0;
+    filter: invert(1);
+}
+
+#home-carousel-root .home-carousel-skeleton-controls {
+    position: relative;
+    display: flex;
+    gap: 8px;
+    z-index: 1;
+}
+
+#home-carousel-root .home-carousel-skeleton-select {
+    display: block;
+    height: 24px;
+    border-radius: 6px;
+    background: rgba(31, 31, 31, 0.5);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+#home-carousel-root .home-carousel-skeleton-select:first-child {
+    width: 52px;
+}
+
+#home-carousel-root .home-carousel-skeleton-select:last-child {
+    width: 74px;
+}
+
+@keyframes homeCarouselSkeletonPulse {
+    0%,
+    100% {
+        opacity: 0.56;
+    }
+
+    50% {
+        opacity: 1;
+    }
 }
 
 :root {
@@ -211,8 +326,40 @@
 }
 
 @media (max-width: 768px) {
+    .main-content {
+        min-height: 500px;
+    }
+
     #home-carousel-root {
         min-height: 300px;
+    }
+
+    #home-carousel-root .home-carousel-skeleton-stage {
+        height: 250px;
+    }
+
+    #home-carousel-root .home-carousel-skeleton-left {
+        padding: 16px;
+        gap: 8px;
+    }
+
+    #home-carousel-root .home-carousel-skeleton-line.title {
+        width: 68%;
+        height: 24px;
+    }
+
+    #home-carousel-root .home-carousel-skeleton-line.wide {
+        width: 86%;
+        height: 12px;
+    }
+
+    #home-carousel-root .home-carousel-skeleton-line.short {
+        width: 58%;
+        height: 12px;
+    }
+
+    #home-carousel-root .home-carousel-skeleton-toolbar {
+        padding-bottom: 22px;
     }
 
     .quick-grid {
@@ -253,8 +400,6 @@
         left: -1px;
     }
 }
-
-
 
 .main-content h1 {
     font-size: 24px;

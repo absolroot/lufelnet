@@ -6,7 +6,7 @@ window.characterSetting["토모코"] = {
     "sub_revel2": ["공격력", "생명"],
     "sub_revel3": ["공격력", "생명"],
     "sub_revel4": ["공격력", "생명"],
-    "sub_option1": ["생명", "방어"],
+    "sub_option1": ["생명", "방어력"],
     "sub_option2": ["공격력"],
     "sub_option3": [],
     "minimum_stats": {

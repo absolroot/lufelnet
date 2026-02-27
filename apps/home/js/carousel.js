@@ -1213,11 +1213,6 @@
     characterIndex = buildCharacterReverseIndex();
 
     const rawLang = detectLang();
-    root.innerHTML = '';
-    const loading = document.createElement('div');
-    loading.style.cssText = 'padding: 12px 8px; color: #999;';
-    loading.textContent = t('carousel_loading', '캐러셀 로딩 중...', rawLang);
-    root.appendChild(loading);
 
     try {
       const [data, customRaw] = await Promise.all([

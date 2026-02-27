@@ -193,6 +193,7 @@
     // APP_VERSION을 사용하여 리소스 버전 관리
     const BASE_URL = '{{ site.baseurl }}';
 
+
     // SEO path-lang flag: permalink이 /{lang}/ 로 시작하면 path 기반 언어 페이지
     {% assign _seg1 = page.url | remove_first: '/' | split: '/' | first %}
     {% if _seg1 == 'kr' or _seg1 == 'en' or _seg1 == 'jp' or _seg1 == 'cn' %}
@@ -205,12 +206,12 @@
     window.__SEO_CONTEXT_HINT__.domain = 'character';
     window.__SEO_CONTEXT_HINT__.mode = 'detail';
     window.__SEO_CONTEXT_HINT__.entityKey = '{{ page.character_slug }}';
-    {% if page.character_kr_name %}window.__SEO_CONTEXT_HINT__.entityName = {{ page.character_kr_name | jsonify }};{% endif %}
+    {% if page.character_kr_name %} window.__SEO_CONTEXT_HINT__.entityName = {{ page.character_kr_name | jsonify }}; {% endif %}
     {% elsif page.persona_slug %}
     window.__SEO_CONTEXT_HINT__.domain = 'persona';
     window.__SEO_CONTEXT_HINT__.mode = 'detail';
     window.__SEO_CONTEXT_HINT__.entityKey = '{{ page.persona_slug }}';
-    {% if page.persona_kr_name %}window.__SEO_CONTEXT_HINT__.entityName = {{ page.persona_kr_name | jsonify }};{% endif %}
+    {% if page.persona_kr_name %} window.__SEO_CONTEXT_HINT__.entityName = {{ page.persona_kr_name | jsonify }}; {% endif %}
     {% elsif page.synergy_character %}
     window.__SEO_CONTEXT_HINT__.domain = 'synergy';
     window.__SEO_CONTEXT_HINT__.mode = 'detail';
@@ -219,7 +220,7 @@
     window.__SEO_CONTEXT_HINT__.domain = 'wonder-weapon';
     window.__SEO_CONTEXT_HINT__.mode = 'detail';
     window.__SEO_CONTEXT_HINT__.entityKey = '{{ page.wonder_weapon_slug }}';
-    {% if page.wonder_weapon_key %}window.__SEO_CONTEXT_HINT__.entityName = {{ page.wonder_weapon_key | jsonify }};{% endif %}
+    {% if page.wonder_weapon_key %} window.__SEO_CONTEXT_HINT__.entityName = {{ page.wonder_weapon_key | jsonify }}; {% endif %}
     {% elsif page.guide_id %}
     window.__SEO_CONTEXT_HINT__.domain = 'guides';
     window.__SEO_CONTEXT_HINT__.mode = 'detail';

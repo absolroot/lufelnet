@@ -355,6 +355,20 @@ window.I18N_COMMON_EN = {
         unsavedChanges: 'You have unsaved changes. Do you want to continue?'
     },
 
+    // 2026 April Fools event
+    event: {
+        aprilFoolsFutaba: {
+            title: 'Futaba Sakura has taken over the system.',
+            subtitle: 'Decode the passphrase to use this site.',
+            cipherLabel: 'Ciphertext',
+            hint: 'Decode the Caesar cipher (+3).',
+            inputPlaceholder: 'Enter answer',
+            submit: 'Unlock',
+            errorInvalid: 'Access denied. Incorrect passphrase.',
+            success: 'Authentication complete. Releasing lock...'
+        }
+    },
+
     // Labels
     labels: {
         total: 'Total',

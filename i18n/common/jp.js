@@ -355,6 +355,20 @@ window.I18N_COMMON_JP = {
         unsavedChanges: '保存されていない変更があります。続行しますか？'
     },
 
+    // 2026 エイプリルフールイベント
+    event: {
+        aprilFoolsFutaba: {
+            title: '佐倉 双葉がシステムを掌握しました。',
+            subtitle: 'サイトを使うには暗号を解読してください。',
+            cipherLabel: '暗号文',
+            hint: 'シーザー暗号（+3）を解読してください。',
+            inputPlaceholder: '解答を入力',
+            submit: 'ロック解除',
+            errorInvalid: 'アクセス拒否。パスフレーズが違います。',
+            success: '認証完了。ロックを解除します...'
+        }
+    },
+
     // ラベル
     labels: {
         total: '全体',

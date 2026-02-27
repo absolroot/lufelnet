@@ -365,6 +365,20 @@ window.I18N_COMMON_KR = {
         unsavedChanges: '저장하지 않은 변경사항이 있습니다. 계속하시겠습니까?'
     },
 
+    // 2026 만우절 이벤트
+    event: {
+        aprilFoolsFutaba: {
+            title: '사쿠라 후타바가 시스템을 장악했습니다.',
+            subtitle: '사이트를 사용하려면 암호를 해독하세요.',
+            cipherLabel: '암호문',
+            hint: '시저 암호(+3)를 해독하세요.',
+            inputPlaceholder: '정답 입력',
+            submit: '잠금 해제',
+            errorInvalid: '접근 거부. 암호가 올바르지 않습니다.',
+            success: '인증 완료. 잠금을 해제합니다...'
+        }
+    },
+
     // 레이블
     labels: {
         total: '전체',

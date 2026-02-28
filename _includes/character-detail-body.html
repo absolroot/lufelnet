@@ -2228,14 +2228,15 @@
 
 
         try {
-            const tagElements = document.querySelectorAll('.chracter-tag, .chracter-role');
-            tagElements.forEach(el => { if (el) el.style.display = ''; });
+            const hideTagByLanguage = (currentLang === 'en' || currentLang === 'jp');
+            const tagElement = document.querySelector('.chracter-tag');
+            if (tagElement) { tagElement.style.display = hideTagByLanguage ? 'none' : ''; }
         } catch (e) { console.warn('[SAFE:tag-display]', e); }
 
         //role은 kr 아니면 숨기기
         try {
             const roleElement = document.querySelector('.chracter-role');
-            if (currentLang !== 'kr' && roleElement) { roleElement.style.display = 'none'; }
+            if (roleElement) { roleElement.style.display = currentLang === 'kr' ? '' : 'none'; }
         } catch (e) { console.warn('[SAFE:role-hide]', e); }
 
         try {

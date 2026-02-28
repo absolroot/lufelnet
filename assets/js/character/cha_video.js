@@ -13,6 +13,10 @@
         return 'kr';
     }
 
+    function shouldHideTagByLanguage(lang) {
+        return lang === 'en' || lang === 'jp';
+    }
+
     function t(key, fallback) {
         if (typeof window.t === 'function') {
             try {
@@ -144,9 +148,11 @@
 
         removeExistingVideo(tagEl);
 
+        const currentLang = getCurrentLanguage();
+        const hideTagByLanguage = shouldHideTagByLanguage(currentLang);
         const videoIds = resolveVideoIds(character, characterName);
         if (!videoIds || videoIds.length === 0) {
-            tagEl.style.display = '';
+            tagEl.style.display = hideTagByLanguage ? 'none' : '';
             return;
         }
 

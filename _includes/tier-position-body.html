@@ -893,6 +893,7 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
     // 중복 실행 방지를 위한 플래그
     let isInitializing = false;
     let isInitialized = false;
+    let initializePageContentPromise = null;
 
     // 티어 메이커용 스포일러 토글 초기화
     function initPositionSpoilerToggle() {
@@ -933,9 +934,6 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
                     applySpoiler(enabled);
                 }
             });
-            if (typeof window.SpoilerState.get === 'function' && window.SpoilerState.get()) {
-                applySpoiler(true);
-            }
         } else {
             checkbox.checked = false;
             checkbox.addEventListener('change', function () {
@@ -945,33 +943,47 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
     }
 
     async function initializePageContent() {
-        // 중복 실행 방지
-        if (isInitializing || isInitialized) {
-            //console.log('initializePageContent already running or completed');
-            return;
-        }
+        // 이미 완료되었으면 즉시 반환
+        if (isInitialized) return true;
 
-        isInitializing = true;
+        // 초기화 진행 중이면 같은 Promise를 공유해 완료까지 대기
+        if (initializePageContentPromise) return initializePageContentPromise;
 
-        // 캐릭터 데이터 로딩 (기본은 언어별 리스트 기준; 스포일러 토글은 런타임에 풀만 다시 로드)
-        const dataLoaded = await loadCharacterData();
-        if (!dataLoaded || typeof window.characterData === 'undefined') {
-            console.error('characterData is not loaded');
-            isInitializing = false;
-            return;
-        }
+        initializePageContentPromise = (async () => {
+            isInitializing = true;
+            try {
+                const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+                const spoilerEnabled = !isTierListMode()
+                    && currentLang !== 'kr'
+                    && window.SpoilerState
+                    && typeof window.SpoilerState.get === 'function'
+                    && !!window.SpoilerState.get();
 
+                // 캐릭터 데이터 로딩 (기본은 언어별 리스트 기준; 스포일러 토글은 런타임에 풀만 다시 로드)
+                const dataLoaded = await loadCharacterData(spoilerEnabled ? 'kr' : undefined);
+                if (!dataLoaded || typeof window.characterData === 'undefined') {
+                    console.error('characterData is not loaded');
+                    return false;
+                }
 
-        // 포지션별 티어 메이커 초기화 (position-tiers.js에서 정의된 함수)
-        if (typeof window.initPositionTierMaker === 'function') {
-            window.initPositionTierMaker();
-        } else {
-            console.error('initPositionTierMaker function not found');
-        }
+                // 포지션별 티어 메이커 초기화 (position-tiers.js에서 정의된 함수)
+                if (typeof window.initPositionTierMaker === 'function') {
+                    window.initPositionTierMaker();
+                } else {
+                    console.error('initPositionTierMaker function not found');
+                    return false;
+                }
 
-        // 초기화 완료
-        isInitializing = false;
-        isInitialized = true;
+                // 초기화 완료
+                isInitialized = true;
+                return true;
+            } finally {
+                isInitializing = false;
+                initializePageContentPromise = null;
+            }
+        })();
+
+        return initializePageContentPromise;
     }
 
     // 페이지 로드 시 초기화
@@ -994,8 +1006,8 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
         updateSEOContent();
 
         await updateLanguageContent();
-        initPositionSpoilerToggle();
         await initializePageContent();
+        initPositionSpoilerToggle();
 
         // 티어 소스 버튼 이벤트 연결 (en/jp 전용)
         const btnGlobal = document.getElementById('btn-global-tier');

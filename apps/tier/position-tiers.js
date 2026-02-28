@@ -993,6 +993,25 @@ const initColorOptions = () => {
   });
 };
 
+const dedupeCharacterPool = () => {
+  const poolItems = Array.from(cardsContainer.querySelectorAll('.character-wrapper, img:not(.character-ritual-icon):not(.character-core-icon)'))
+    .filter(item => item.classList.contains('character-wrapper') || !item.closest('.character-wrapper'));
+  const seen = new Set();
+
+  poolItems.forEach(item => {
+    const img = item.tagName === 'IMG' ? item : item.querySelector('img:not(.character-ritual-icon):not(.character-core-icon)');
+    if (!img) return;
+    const rawSrc = img.getAttribute('src') || '';
+    const key = `${(img.alt || '').trim()}|${rawSrc.trim()}`;
+    if (!key || key === '|') return;
+    if (seen.has(key)) {
+      item.remove();
+      return;
+    }
+    seen.add(key);
+  });
+};
+
 const loadCharacterImages = () => {
   // 데이터 로딩 확인
   if (!window.characterData || !window.characterList) {
@@ -1000,11 +1019,21 @@ const loadCharacterImages = () => {
     return;
   }
 
+  // 기존 카드 풀에 이미 존재하는 캐릭터 이름 (중복 append 방지)
+  const existingPoolNames = new Set(
+    Array.from(cardsContainer.querySelectorAll('img:not(.character-ritual-icon):not(.character-core-icon)'))
+      .map(img => img.alt)
+      .filter(Boolean)
+  );
+
   // 정렬: release_order 내림차순, 같으면 rarity 내림차순
   const allCharacters = [...window.characterList.mainParty, ...window.characterList.supportParty]
     .filter(character => character !== "원더" && window.characterData[character]);
 
-  allCharacters.sort((a, b) => {
+  // 캐릭터 리스트 내 중복 키 방지
+  const uniqueCharacters = Array.from(new Set(allCharacters));
+
+  uniqueCharacters.sort((a, b) => {
     const aData = window.characterData[a];
     const bData = window.characterData[b];
     const aRarity = Number(aData.rarity) || 0;
@@ -1017,7 +1046,10 @@ const loadCharacterImages = () => {
     return bOrder - aOrder;
   });
 
-  allCharacters.forEach(character => {
+  uniqueCharacters.forEach(character => {
+    // 이미 카드 풀에 있으면 재생성하지 않음
+    if (existingPoolNames.has(character)) return;
+
     // 캐릭터 데이터 존재 확인
     if (!window.characterData[character]) {
       console.warn(`Character data not found for: ${character}`);
@@ -1039,7 +1071,11 @@ const loadCharacterImages = () => {
     }
     const wrapper = wrapCharacterImage(img);
     cardsContainer.appendChild(wrapper);
+    existingPoolNames.add(character);
   });
+
+  // 비동기 호출 순서가 겹쳐도 카드 풀에는 동일 캐릭터가 1개만 남도록 보정
+  dedupeCharacterPool();
 };
 
 // 티어 메이커용: 스포일러 토글에 따라 카드 풀만 다시 로드 (티어 행은 건드리지 않음)
@@ -1054,6 +1090,7 @@ window.reloadPositionTierCharacterPool = async function (useKROverride) {
     cardsContainer.innerHTML = '';
     loadCharacterImages();
     initDraggables();
+    dedupeCharacterPool();
   } catch (e) {
     console.error('Failed to reload character pool for spoiler toggle:', e);
   }

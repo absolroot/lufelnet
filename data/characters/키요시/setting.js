@@ -1,6 +1,9 @@
 window.characterSetting = window.characterSetting || {};
 window.characterSetting["키요시"] = {
     "role": "화염 서브딜러",
+    "video": ["92cLBEZ-a0M"],
+    "video_en": [""],
+    "video_jp": [""],
     "main_revelation": ["여정", "여정"],
     "sub_revelation": ["주권", "풍요"],
     "sub_revel2": ["생명"],

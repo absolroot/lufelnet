@@ -857,6 +857,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!roleElement || !tagElement) return;
 
             const currentLang = getCurrentLanguage();
+            const shouldHideTag = currentLang === 'en' || currentLang === 'jp';
             const urlParams2 = new URLSearchParams(window.location.search);
             const characterName2 = urlParams2.get('name') || window.__CHARACTER_DEFAULT || '';
             if (!characterName2 || !characterData || !characterData[characterName2]) return;
@@ -891,7 +892,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 return hasAnyVideoId(mergedCharacter2.video);
             })();
 
-            if (!hasVideoForLang) {
+            if (shouldHideTag) {
+                tagElement.textContent = '';
+                tagElement.innerHTML = '';
+                tagElement.style.display = 'none';
+            } else if (!hasVideoForLang) {
+                tagElement.style.display = '';
                 tagElement.textContent = characterData2.tag;
 
                 if (currentLang === 'en' && characterData2.tag_en) {

@@ -41,7 +41,7 @@ window.enCharacterWeaponData["야오링·사자무"] = {
   }
 };
 window.jpCharacterWeaponData["야오링·사자무"] = {
-  "name": "李瑤鈴·獅子舞",
+  "name": "瑤鈴・新春",
   "weapon4-1": {
     "name": "雪中の女",
     "health": 1791,

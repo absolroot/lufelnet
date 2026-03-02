@@ -1,6 +1,6 @@
 (function () {
     window.characterReview = window.characterReview || {};
-    window.characterReview["야오링·사자무"] = { name_en: "Yaoling·Lion Dance", name_jp: "李瑤鈴·獅子舞", codename: "RIN",
+    window.characterReview["야오링·사자무"] = { name_en: "Firecracker Yaoling", name_jp: "瑤鈴・新春", codename: "RIN·Firecracker",
         review: `화염 TECHNICAL 대미지를 주는 광역 화염 딜러다.
 
 1스킬로 스스로를 강화하고, 3스킬로 칼에 불을 붙인 뒤 강화 근접 공격을 통해 대미지를 준다. 3스킬은 변신만 수행할 뿐 턴을 소모하지 않는다.

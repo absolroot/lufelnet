@@ -473,10 +473,10 @@ Object.assign(window.characterData, {
         "persona_en": "Meng Po",
         "persona_jp": "モンポォー",
         "name": "리 야오링·사자무",
-        "name_en": "Yaoling·Lion Dance",
-        "name_jp": "李瑤鈴·獅子舞",
+        "name_en": "Firecracker Yaoling",
+        "name_jp": "瑤鈴・新春",
         "name_cn": "李瑶铃·太平乐",
-        "codename": "RIN·Lion Dance",
+        "codename": "RIN·Firecracker",
         "skill_item": 4
     },
     "리코·매화": {

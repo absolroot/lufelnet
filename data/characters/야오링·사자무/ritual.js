@@ -19,7 +19,7 @@ window.ritualData["야오링·사자무"] = {
   "r6_detail": "『철꽃의 춤』 상태의 지속 시간이 영구적으로 변하며, 『불꽃놀이 유성』이 『흐르는 별빛』으로 강화되어 주는 대미지가 80% 증가한다. 『흐르는 별빛』 사용 시 『철꽃의 춤』 상태는 계속 지속된다.\n『새해의 축복』의 『흐르는 별빛』에 대한 강화와 크리티컬 확률 증가의 지속 시간이 영구적으로 변하고, 『폭죽의 노래』의 『흐르는 별빛』에 대한 강화와 적이 보유한 화상 상태의 지속 시간이 1턴 연장한다."
 };
 window.enCharacterRitualData["야오링·사자무"] = {
-  "name": "Yaoling·Lion Dance",
+  "name": "Firecracker Yaoling",
   "r0": "Year Fire Farewell",
   "r0_detail": "Rin - Lion Dance can enchant your sword with flame, turning Melee Attack into [Fiery Shooting Star], dealing severe Fire TECHNICAL DMG. When triggering [Backdraft], increases TECHNICAL effects by 20%.\n\nFire TECHNICAL: Some Fire-type skills gain additional effects against enemies in certain conditions.\nWhen a Fire skill triggers a TECHNICAL on an enemy afflicted with Burn, it activates Backdraft, increasing skill damage by 2%.\nWhen a Fire skill triggers a TECHNICAL on an enemy afflicted with Freeze, it activates Flames of Ice, causing the target to take 5% increased Fire/Ice damage for 2 turns with a base probability of 50%.\nWhen a Fire skill triggers a TECHNICAL on an enemy afflicted with Wind Shear, it activates Flame Tempest, dealing additional Fire damage equal to 1% of the target’s max HP once.",
   "r1": "Booming Firecrackers",
@@ -29,14 +29,14 @@ window.enCharacterRitualData["야오링·사자무"] = {
   "r3": "Gather Around",
   "r3_detail": "[Crackling Firecrackers] Lv. +3, up to a maximum of Lv. 15.\n[Shooting Star Greetings] Lv. +3, up to a maximum of Lv. 15.",
   "r4": "Joyful Laughter",
-  "r4_detail": "HIGHLIGHT Effect Boost: Additionally increases CRIT DMG by 15% and extends the duration of Rin - Lion Dance's HIGHLIGHT buffs by 2 turns.",
+  "r4_detail": "HIGHLIGHT Effect Boost: Additionally increases CRIT DMG by 15% and extends the duration of Firecracker Rin's HIGHLIGHT buffs by 2 turns.",
   "r5": "Melting Ice",
   "r5_detail": "[Abundant World] Lv. +3, up to a maximum of Lv. 15.\n[Combat Skills] Lv. +3, up to a maximum of Lv. 15.",
   "r6": "New Year Afterglow",
   "r6_detail": "[Iron Flower Dance] is now permanent, and [Fiery Shooting Star] is upgraded to [Blazing Meteor], increases DMG Dealt by 80%. When Rin - Lion Dance uses [Blazing Meteor], she will not lose [Iron Flower Dance].]\nThe effect boosts from [Abundant World] are now permanent. Extends the Burn from [Crackling Firecrackers] by 1 turn."
 };
 window.jpCharacterRitualData["야오링·사자무"] = {
-  "name": "李瑤鈴·獅子舞",
+  "name": "瑤鈴・新春",
   "r0": "一路順風",
   "r0_detail": "李瑤鈴・獅子舞は槍を燃やし、近接攻撃を『花火流星』に強化し、強力な火炎属性ダメージと火炎属性TECHNICALを与える。『爆発燃焼』発動時、TECHNICAL効果が最大20％まで増加する。\n\n火炎属性TECHNICAL: 一部の火炎属性スキルは、特定の状態異常の敵に対して追加効果を発動する。\n火炎属性スキルが燃焼状態の敵にTECHNICALを与えると『爆発燃焼』が発動し、スキルダメージが2%上昇する。\n火炎属性スキルが氷結状態の敵にTECHNICALを与えると『氷の焔』が発動し、2ターンのあいだ基礎確率50%で対象が受ける火炎／氷結属性ダメージが5%増加する。\n火炎属性スキルが風襲状態の敵にTECHNICALを与えると『火炎旋風』が発動し、対象の最大HP1%に相当する火炎属性ダメージを1回追加で与える。",
   "r1": "楽しい爆竹の音",

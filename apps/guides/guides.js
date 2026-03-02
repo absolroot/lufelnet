@@ -14,6 +14,10 @@ const Guides = {
     currentView: 'list',
     currentGuideId: null,
 
+    // Pagination state
+    currentPage: 1,
+    itemsPerPage: 10,
+
     /**
      * Initialize the guides system
      */
@@ -31,13 +35,13 @@ const Guides = {
             if (typeof window.t === 'function') {
                 return window.t(key, fallback);
             }
-        } catch (_) {}
+        } catch (_) { }
 
         try {
             if (window.I18nService && typeof window.I18nService.t === 'function') {
                 return window.I18nService.t(key, fallback);
             }
-        } catch (_) {}
+        } catch (_) { }
 
         return fallback || key;
     },
@@ -142,7 +146,7 @@ const Guides = {
                     return;
                 }
             }
-        } catch (_) {}
+        } catch (_) { }
 
         try {
             if (window.I18nService && typeof window.I18nService.getCurrentLanguage === 'function') {
@@ -152,7 +156,7 @@ const Guides = {
                     return;
                 }
             }
-        } catch (_) {}
+        } catch (_) { }
 
         const urlParams = new URLSearchParams(window.location.search);
         const urlLang = String(urlParams.get('lang') || '').toLowerCase();
@@ -171,6 +175,7 @@ const Guides = {
     handleLanguageChange(newLang) {
         if (!newLang || this.currentLang === newLang) return;
         this.currentLang = newLang;
+        this.currentPage = 1; // Reset to page 1 on language change
         this.refresh();
     },
 
@@ -244,6 +249,7 @@ const Guides = {
             if (!response.ok) throw new Error('Failed to load guides list');
 
             this.list = await response.json();
+            this.currentPage = 1; // Reset pagination on initial load
             this.renderList();
         } catch (error) {
             console.error('Error loading guides:', error);
@@ -293,23 +299,12 @@ const Guides = {
 
         const filtered = this.getFilteredList(lang);
 
-        html += '<div class="guides-results">';
-        if (filtered.length === 0) {
-            html += `
-                <div class="guides-empty" style="margin-top:var(--guide-space-lg)">
-                    <div class="guides-empty-text">${this.getI18nText('noResults', 'No results found')}</div>
-                </div>
-            `;
-        } else {
-            html += `
-                <div class="guides-grid">
-                    ${filtered.map((guide) => this.renderCard(guide, lang)).join('')}
-                </div>
-            `;
-        }
-        html += '</div>';
+        html += '<div class="guides-results"></div>'; // Empty container, populated below
 
         container.innerHTML = html;
+
+        // Render the grid and pagination elements inside guides-results
+        this.renderGridAndPagination(container.querySelector('.guides-results'), filtered, lang);
 
         const searchInput = document.getElementById('guides-search-input');
         if (searchInput) {
@@ -319,11 +314,13 @@ const Guides = {
             searchInput.addEventListener('compositionend', (e) => {
                 this.isComposing = false;
                 this.searchQuery = e.target.value;
+                this.currentPage = 1; // Reset to page 1 on new search
                 this.updateFilteredList();
             });
             searchInput.addEventListener('input', (e) => {
                 if (this.isComposing) return;
                 this.searchQuery = e.target.value;
+                this.currentPage = 1; // Reset to page 1 on new search
                 this.updateFilteredList();
             });
         }
@@ -331,18 +328,10 @@ const Guides = {
         container.querySelectorAll('.guides-tab').forEach((btn) => {
             btn.addEventListener('click', () => {
                 this.activeCategory = btn.dataset.cat;
+                this.currentPage = 1; // Reset to page 1 on category change
                 this.renderList();
             });
         });
-
-        container.querySelectorAll('.guide-card').forEach((card) => {
-            card.addEventListener('click', (e) => {
-                e.preventDefault();
-                window.location.href = card.getAttribute('href');
-            });
-        });
-
-        this.setupGifThumbnails(container);
     },
 
     /**
@@ -357,20 +346,46 @@ const Guides = {
         const gridContainer = container.querySelector('.guides-results');
         if (!gridContainer) return;
 
-        if (filtered.length === 0) {
+        this.renderGridAndPagination(gridContainer, filtered, lang);
+    },
+
+    /**
+     * Renders the items for the current page and the pagination controls
+     */
+    renderGridAndPagination(gridContainer, filteredList, lang) {
+        if (filteredList.length === 0) {
             gridContainer.innerHTML = `
                 <div class="guides-empty" style="margin-top:var(--guide-space-lg)">
                     <div class="guides-empty-text">${this.getI18nText('noResults', 'No results found')}</div>
                 </div>
             `;
-        } else {
-            gridContainer.innerHTML = `
-                <div class="guides-grid">
-                    ${filtered.map((guide) => this.renderCard(guide, lang)).join('')}
-                </div>
-            `;
+            return;
         }
 
+        const totalPages = Math.ceil(filteredList.length / this.itemsPerPage);
+
+        // Safety check if current page exceeds total pages
+        if (this.currentPage > totalPages) {
+            this.currentPage = totalPages;
+        }
+
+        const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+        const endIndex = startIndex + this.itemsPerPage;
+        const pagedData = filteredList.slice(startIndex, endIndex);
+
+        let html = `
+            <div class="guides-grid">
+                ${pagedData.map((guide) => this.renderCard(guide, lang)).join('')}
+            </div>
+        `;
+
+        if (totalPages > 1) {
+            html += this.renderPagination(totalPages);
+        }
+
+        gridContainer.innerHTML = html;
+
+        // Card clicks
         gridContainer.querySelectorAll('.guide-card').forEach((card) => {
             card.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -378,7 +393,88 @@ const Guides = {
             });
         });
 
+        // Pagination clicks
+        gridContainer.querySelectorAll('.guides-page-btn').forEach((btn) => {
+            btn.addEventListener('click', (e) => {
+                const page = parseInt(e.currentTarget.dataset.page);
+                if (!isNaN(page) && page !== this.currentPage && page >= 1 && page <= totalPages) {
+                    this.currentPage = page;
+                    this.updateFilteredList();
+                    // Scroll to top of list container
+                    const container = document.getElementById('guides-container');
+                    if (container) {
+                        const topPos = container.getBoundingClientRect().top + window.scrollY - 100;
+                        window.scrollTo({ top: topPos, behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+
         this.setupGifThumbnails(gridContainer);
+    },
+
+    /**
+     * Build the pagination HTML
+     */
+    renderPagination(totalPages) {
+        if (totalPages <= 1) return '';
+
+        let buttons = '';
+
+        // Prev Button
+        const prevDisabled = this.currentPage === 1 ? 'disabled' : '';
+        buttons += `
+            <button class="guides-page-btn guides-page-nav" data-page="${this.currentPage - 1}" ${prevDisabled}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M15 18l-6-6 6-6"/>
+                </svg>
+            </button>
+        `;
+
+        // Page Numbers Logic
+        const maxPagesToShow = 5;
+        let startPage = Math.max(1, this.currentPage - Math.floor(maxPagesToShow / 2));
+        let endPage = startPage + maxPagesToShow - 1;
+
+        if (endPage > totalPages) {
+            endPage = totalPages;
+            startPage = Math.max(1, endPage - maxPagesToShow + 1);
+        }
+
+        if (startPage > 1) {
+            buttons += `<button class="guides-page-btn" data-page="1">1</button>`;
+            if (startPage > 2) {
+                buttons += `<span class="guides-page-dots">...</span>`;
+            }
+        }
+
+        for (let i = startPage; i <= endPage; i++) {
+            const activeClass = i === this.currentPage ? ' active' : '';
+            buttons += `<button class="guides-page-btn${activeClass}" data-page="${i}">${i}</button>`;
+        }
+
+        if (endPage < totalPages) {
+            if (endPage < totalPages - 1) {
+                buttons += `<span class="guides-page-dots">...</span>`;
+            }
+            buttons += `<button class="guides-page-btn" data-page="${totalPages}">${totalPages}</button>`;
+        }
+
+        // Next Button
+        const nextDisabled = this.currentPage === totalPages ? 'disabled' : '';
+        buttons += `
+            <button class="guides-page-btn guides-page-nav" data-page="${this.currentPage + 1}" ${nextDisabled}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 18l6-6-6-6"/>
+                </svg>
+            </button>
+        `;
+
+        return `
+            <div class="guides-pagination">
+                ${buttons}
+            </div>
+        `;
     },
 
     /**

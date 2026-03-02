@@ -1,5 +1,27 @@
 [
   {
+    "id": "schema-wonder",
+    "titles": {
+      "kr": "원더 영감 육성 순서",
+      "en": "Wonder Schema Progression Order",
+      "jp": "ワンダー スキーマ育成順序"
+    },
+    "excerpts": {
+      "kr": "'원더'는 영감이라는 별도의 육성 시스템이 존재한다.원더가 강해지는 속도보다 아군 딜러가 강해지는 속도가 훨씬 빠르기 때문에 원더는 대부분 서포터로 활용하지만 초기에는 제대로 세팅되지 않은 아군보다 원더의 대미지가 뛰어난 경우가 많아 고민이 깊어지곤한다.다음 예시에 따...",
+      "en": "'Wonder' has a separate progression system called Schema. Since allied dealers usually scale much faster than Wonder, he is mostly used as support. However, in the early game Wonder can often deal more damage than underbuilt allies, so investment order matters. Follow the example below...",
+      "jp": "『ワンダー』にはスキーマという独自の育成システムがある。味方ディーラーの伸びがワンダーより速いため基本はサポート運用だが、序盤は育成不足の味方よりワンダーの火力が高い場面も多く、育成順の判断が重要になる。以下の例に沿って進めよう..."
+    },
+    "searchContent": {
+      "kr": "'원더'는 영감이라는 별도의 육성 시스템이 존재한다.원더가 강해지는 속도보다 아군 딜러가 강해지는 속도가 훨씬 빠르기 때문에 원더는 대부분 서포터로 활용하지만 초기에는 제대로 세팅되지 않은 아군보다 원더의 대미지가 뛰어난 경우가 많아 고민이 깊어지곤한다.다음 예시에 따라 원더를 세팅하면 된다.세팅 순서노랑 아이콘기본적으로 아래 3개의 노란색 아이콘은 별도 요소로 메멘토스, 팰리스 탐색, 장인의 작품 등을 통해 획득 가능한 재화로 업그레이드가 가능하다. 가능하면 3순위보다는 1, 2순위에 우선 투자하는 것이 좋다.빨강 아이콘원더가 사용하는 페르소나 스킬 '타루카쟈'나 '리벨리온'과 같은 버프도 원더 자체의 공격력과 크리티컬 확률에 영향을 받기 때문에 최대한 빨리 관련 수치를 올려주는 것이 좋다.해당 재화는 페르소나를 획득하면 얻을 수 있기 때문에 페르소나 던전이 열리는 대로 모두 획득하고, 합성하는 과정이 중요하다. 페르소나 관련 코인은 초과해도 꾸준히 사용할 일이 있기 때문에 많이 반복한다해서 손해를 보는 경우는 거의 없다.페르소나 도감에서 우측하단 아이콘을 클릭하면 신규 페르소나에 따른 재화를 획득할 수 있다.예외 사항만일 비슈누와 같이 효과 명중이 중요한 페르소나를 사용할 경우에는 우선 순위가 역전되곤 한다.효과 명중은 확률만 올려주는 것으로 사실상 전투의 재 반복률을 낮출 뿐이지 실질적인 대미지를 올려주지는 않기 때문에 기호에 맞게 선택하면 된다.잘못 투자했더라도 적은 금액의 재화로 전체 초기화가 가능하기 때문에 너무 큰 부담을 느끼지 말고 필요에 따라 상황에 맞는 육성 트리를 구성하자.S-LV추가로 원더의 레벨이 80을 넘어가면 S-LV이 생기면서 추가로 원더의 생명, 공격력, 방어력을 지속적으로 상승시킬 수 있다. 앞서 가이드 시작부터 언급했다시피 원더는 현재까지 딜러로서 활용하기에는 정말 약하므로 생존성을 올려준다는 것에 초점을 맞추는 것이 좋다.",
+      "en": "'Wonder' has a separate progression system called Schema. Since allied dealers usually scale faster than Wonder, Wonder is mostly used as a support. However, in the early game Wonder can often outperform underbuilt allies in damage, so investment order matters. Follow the setup below. Setup Order Yellow Icons The three yellow icons below can be upgraded with separate resources obtained from Mementos, Palace exploration, and Craftsman's Works. If possible, prioritize the first and second options before the third. Red Icons Buffs from Wonder's Persona skills such as 'Tarukaja' and 'Rebellion' are also affected by Wonder's own Attack and Crit Rate, so raising related stats early is recommended. These materials are obtained when acquiring Personas, so collect Persona dungeon rewards as they open and prioritize fusion progress. Persona-related coins continue to have value even above surplus, so repeated farming is rarely a loss. You can also click the bottom-right icon in the Persona Compendium to obtain rewards tied to newly registered Personas. Exceptions If you are using a Persona where Effect Hit is important, such as Vishnu, priorities can be reversed. Effect Hit only raises probability and mainly reduces retry frequency in battle; it does not directly increase damage, so choose based on preference. Even if you invested incorrectly, you can reset everything with a relatively small amount of resources, so do not feel too pressured and build according to your current needs. S-LV After Wonder passes level 80, S-LV is unlocked, allowing additional and continuous increases to Wonder's HP, Attack, and Defense. As noted earlier, Wonder is currently quite weak as a pure dealer, so focusing on survivability is generally better.",
+      "jp": "『ワンダー』にはスキーマという独自の育成システムがある。味方ディーラーの成長速度がワンダーより速いため、基本的にワンダーはサポートとして使われるが、序盤は育成不足の味方よりワンダーのダメージが高い場面も多く、育成順の判断が重要になる。以下の例に沿って設定しよう。設定順序 黄色アイコン 下の3つの黄色アイコンは、メメントス・パレス探索・職人の作品などで獲得できる別系統の素材で強化できる。可能なら3番目よりも1番目と2番目を優先するのがおすすめ。赤色アイコン ワンダーが使うペルソナスキル『タルカジャ』や『リベリオン』のようなバフも、ワンダー自身の攻撃力とクリティカル率の影響を受けるため、関連ステータスはできるだけ早く上げるとよい。該当素材はペルソナ獲得時に入手できるため、ダンジョン解放後は取り逃しなく回収し、合成を進めることが重要。ペルソナ関連コインは余剰になっても使い道が続くため、周回して損になることはほとんどない。ペルソナ図鑑の右下アイコンをクリックすると、新規登録ペルソナに応じた素材も獲得できる。例外事項 ヴィシュヌのように効果命中が重要なペルソナを使う場合は優先度が逆転することがある。効果命中は確率を上げる要素で、実質的には再試行回数を減らす効果が中心であり、直接的なダメージ上昇にはつながらないため、好みに合わせて選択すればよい。投資を間違えても少量の素材で全体リセットが可能なので、状況に合わせた育成ツリーを組もう。S-LV ワンダーがレベル80を超えるとS-LVが解放され、HP・攻撃力・防御力を追加で継続的に上げられる。現時点のワンダーはディーラー運用ではかなり弱いため、生存力重視がおすすめ。"
+    },
+    "category": "growth",
+    "date": "2026-03-02",
+    "author": "AbsolRoot",
+    "thumbnail": "/apps/guides/data/assets/schema-wonder/pasted-1772433395225.png"
+  },
+  {
     "id": "make-party",
     "titles": {
       "kr": "조합의 이해",

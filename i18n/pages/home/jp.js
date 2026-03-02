@@ -66,6 +66,7 @@ window.I18N_PAGE_HOME_JP = {
     guides_error: 'ガイドを読み込めませんでした。',
     guides_untitled: '無題',
     guides_badge_new: 'NEW',
+    guides_badge_notice: '\u304a\u77e5\u3089\u305b',
 
     tactic_like_alt: 'いいね',
     tactic_ritual_alt: '意識 {value}',

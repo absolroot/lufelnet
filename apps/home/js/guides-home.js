@@ -74,8 +74,14 @@ window.loadHomeGuides = async function (currentLang) {
 
         let guides = await response.json();
 
-        // Sort by date (newest first)
-        guides.sort((a, b) => new Date(b.date) - new Date(a.date));
+        // Keep the same ordering rule as the article list page:
+        // notice first, then newest first within each group.
+        guides.sort((a, b) => {
+            const aNotice = a.category === 'notice' ? 0 : 1;
+            const bNotice = b.category === 'notice' ? 0 : 1;
+            if (aNotice !== bNotice) return aNotice - bNotice;
+            return new Date(b.date) - new Date(a.date);
+        });
 
         // Take top 5
         const recentGuides = guides.slice(0, 5);
@@ -89,8 +95,8 @@ window.loadHomeGuides = async function (currentLang) {
         }
 
         // Render guides
-        recentGuides.forEach(guide => {
-            const item = createGuideItem(guide, rawLang);
+        recentGuides.forEach((guide, index) => {
+            const item = createGuideItem(guide, rawLang, index, recentGuides.length);
             container.appendChild(item);
         });
 
@@ -100,7 +106,7 @@ window.loadHomeGuides = async function (currentLang) {
     }
 };
 
-function createGuideItem(guide, rawLang) {
+function createGuideItem(guide, rawLang, index = 0, total = 1) {
     const item = document.createElement('div');
     item.className = 'post-item guide-home-item'; // Reuse post-item for similar styling if compatible, add guide-home-item for overrides
 
@@ -129,6 +135,20 @@ function createGuideItem(guide, rawLang) {
     item.style.borderBottom = '1px solid rgba(255, 255, 255, 0.05)';
     item.style.transition = 'background-color 0.2s';
 
+    // Make the 5 guide rows look connected in one stack.
+    const isFirst = index === 0;
+    const isLast = index === total - 1;
+    if (total <= 1) {
+        item.style.borderRadius = '8px';
+    } else if (isFirst) {
+        item.style.borderRadius = '8px 8px 0 0';
+    } else if (isLast) {
+        item.style.borderRadius = '0 0 8px 8px';
+        item.style.borderBottom = 'none';
+    } else {
+        item.style.borderRadius = '0';
+    }
+
     // Hover effect handled by CSS injected in createGuideItem
 
     item.onclick = (e) => {
@@ -149,7 +169,17 @@ function createGuideItem(guide, rawLang) {
         `;
     }
 
-    // New badge logic (within 3 days)
+    // Notice badge + New badge logic
+    const defaultNoticeBadge = rawLang === 'en'
+        ? 'NOTICE'
+        : rawLang === 'jp'
+            ? '\u304a\u77e5\u3089\u305b'
+            : '\uacf5\uc9c0';
+    const noticeBadgeText = homeGuideT('guides_badge_notice', defaultNoticeBadge, rawLang);
+    const noticeBadge = guide.category === 'notice'
+        ? `<span style="background: #442bbc; color: white; font-size: 8px; padding: 2px 5px; border-radius: 4px; margin-right: 6px; vertical-align: middle;">${noticeBadgeText}</span>`
+        : '';
+
     const isNew = (Date.now() - new Date(guide.date).getTime()) < (3 * 24 * 60 * 60 * 1000);
     const newBadgeText = homeGuideT('guides_badge_new', 'NEW', rawLang);
     const newBadge = isNew ? `<span style="background: #d32f2f; color: white; font-size: 8px; padding: 2px 5px; border-radius: 4px; margin-right: 6px; vertical-align: middle;">${newBadgeText}</span>` : '';
@@ -158,6 +188,7 @@ function createGuideItem(guide, rawLang) {
         ${thumbnailHtml}
         <div class="guide-info" style="flex: 1; min-width: 0;">
             <div class="guide-header-line" style="display: flex; align-items: center; margin-bottom: 6px;">
+                ${noticeBadge}
                 ${newBadge}
                 <h3 style="margin: 0; font-size: 16px; font-weight: 600; color: #ececec; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; line-height: 1.2;">
                     ${title}
@@ -183,6 +214,25 @@ function createGuideItem(guide, rawLang) {
             }
             .guide-home-item:hover {
                 background-color: rgba(255, 255, 255, 0.02) !important;
+            }
+            @media (max-width: 670px) {
+                #guides-list .guide-home-item .guide-header-line {
+                    margin-bottom: 4px !important;
+                }
+                #guides-list .guide-home-item .guide-header-line h3 {
+                    font-size: 14px !important;
+                    line-height: 1.25 !important;
+                }
+                #guides-list .guide-home-item .guide-info > p {
+                    margin: 0 0 4px 0 !important;
+                    font-size: 12px !important;
+                    line-height: 1.4 !important;
+                    -webkit-line-clamp: 1 !important;
+                }
+                #guides-list .guide-home-item .guide-meta,
+                #guides-list .guide-home-item .guide-meta span {
+                    font-size: 11px !important;
+                }
             }
         `;
         document.head.appendChild(style);

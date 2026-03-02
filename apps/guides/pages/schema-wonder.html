@@ -1,0 +1,40 @@
+---
+layout: default
+custom_css: []
+custom_js: []
+permalink: /article/schema-wonder/
+language: kr
+title: 원더 영감 육성 순서 - 루페르넷
+description: '원더'는 영감이라는 별도의 육성 시스템이 존재한다.원더가 강해지는 속도보다 아군 딜러가 강해지는 속도가 훨씬 빠르기 때문에 원더는 대부분 서포터로 활용하지만 초기에는 제대로 세팅되지 않은 아군보다 원더의 대미지가 뛰어난 경우가 많아 고민이 깊어지곤한다.다음 예시에 따...
+image: /apps/guides/data/assets/schema-wonder/pasted-1772433395225.png
+---
+
+<head>
+    <link rel="stylesheet" href="/apps/guides/guides.css">
+    <script src="/apps/guides/guides.js"></script>
+</head>
+
+<div class="main-wrapper">
+    <div class="guide-view-container" id="guide-view-container">
+        <div class="guides-loading" data-i18n="loadingGuide">Loading guide...</div>
+    </div>
+</div>
+
+<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+    const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+    if (typeof initPageI18n === 'function') {
+        await initPageI18n('guides');
+        if (typeof setLang === 'function') {
+            await setLang(currentLang);
+        }
+    } else if (window.I18nService && typeof window.I18nService.init === 'function') {
+        await window.I18nService.init('guides', currentLang);
+    }
+
+    Navigation.load('article');
+    VersionChecker.check();
+    Guides.loadGuide('schema-wonder');
+});
+</script>

@@ -66,6 +66,7 @@ window.I18N_PAGE_HOME_KR = {
     guides_error: '가이드를 불러오지 못했습니다.',
     guides_untitled: '제목 없음',
     guides_badge_new: 'NEW',
+    guides_badge_notice: '\uacf5\uc9c0',
 
     tactic_like_alt: '좋아요',
     tactic_ritual_alt: '의식 {value}',

@@ -65,6 +65,7 @@ window.I18N_PAGE_HOME_EN = {
     guides_error: 'Failed to load guides.',
     guides_untitled: 'Untitled',
     guides_badge_new: 'NEW',
+    guides_badge_notice: 'NOTICE',
 
     tactic_like_alt: 'Like',
     tactic_ritual_alt: 'Awakening {value}',

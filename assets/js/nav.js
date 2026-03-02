@@ -13,8 +13,9 @@ class Navigation {
         document.body.insertBefore(mobileHeader, document.body.firstChild);
 
         // 로고 컨테이너 추가
-        const logoContainer = document.createElement('div');
+        const logoContainer = document.createElement('a');
         logoContainer.className = 'mobile-logo-container';
+        logoContainer.href = `${BASE_URL}/${currentLang}/`;
         logoContainer.innerHTML = `
             <img src="${BASE_URL}/assets/img/logo/lufel.webp" alt="logo" />
             <img src="${BASE_URL}/assets/img/logo/lufelnet.png" alt="logo-text" />
@@ -252,10 +253,10 @@ class Navigation {
 
         const navTemplate = `
             <nav class="main-nav${shouldStartPinned ? ' nav-pinned' : ''}">
-                <div class="logo-container">
+                <a class="logo-container" href="${BASE_URL}/${currentLang}/">
                     <img src="${BASE_URL}/assets/img/logo/lufel.webp" alt="logo" />
                     <img src="${BASE_URL}/assets/img/logo/lufelnet.png" alt="logo-text" />
-                </div>
+                </a>
                 ${buildSectionsHtml()}
                 <div class="nav-spacer"></div>
                 <div class="nav-bg"></div>
@@ -311,20 +312,7 @@ class Navigation {
         // sword animation 초기화
         this.initSwordAnimation();
 
-        // 로고 클릭 이벤트
-        if (!document.querySelector('.logo-container').hasAttribute('data-event-bound')) {
-            document.querySelector('.logo-container').addEventListener('click', () => {
-                window.location.href = `${BASE_URL}/${currentLang}/`;
-            });
-            document.querySelector('.logo-container').setAttribute('data-event-bound', 'true');
-        }
-
-        if (!document.querySelector('.mobile-logo-container').hasAttribute('data-event-bound')) {
-            document.querySelector('.mobile-logo-container').addEventListener('click', () => {
-                window.location.href = `${BASE_URL}/${currentLang}/`;
-            });
-            document.querySelector('.mobile-logo-container').setAttribute('data-event-bound', 'true');
-        }
+        // 로고는 기본 링크 동작을 사용 (중간 클릭/우클릭 메뉴 지원)
 
         // 언어 드롭다운 토글
         if (!document.querySelector('.selected-option').hasAttribute('data-event-bound')) {

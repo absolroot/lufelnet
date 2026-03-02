@@ -693,7 +693,7 @@
         .carousel-viewport { height: 250px; }
         .char-img { height: auto; width: auto; max-height: 100%; }
         .char-img.front { transform: translateY(-60%) !important; right: 15% !important; }
-        .char-img.middle { transform: translateX(-8%) translateY(-50%) scale(1.12) }
+        .char-img.middle { transform: translateX(-8%) translateY(-50%) scale(1.12) !important; }
         .char-img.back { transform: translateY(-55%) scale(1.8); }
         .carousel-nav { display: none !important; }
         /* Ensure text above images on mobile */

@@ -823,10 +823,11 @@
     .guide-cards {
         grid-template-columns: 1fr;
     }
-
-    /* 모바일에서 가이드 컨테이너 숨기기 */
-    .guides-container {
-        display: none;
+    
+    .guides-list {
+        overflow: hidden;
+        border-radius: 8px;
+        background: rgba(0, 0, 0, 0.12);
     }
 
     /* 모바일에서 택틱 대장간 섹션 숨기기 */

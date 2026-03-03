@@ -14,15 +14,57 @@ sitemap: false
   <script>
     (function () {
       var params = new URLSearchParams(window.location.search || "");
+      var requestedLang = params.get("lang");
       params.delete("lang");
       params.delete("character");
-      var nextPath = "/kr/synergy/pinky/";
+      var languageTargets = {"kr":"/kr/synergy/pinky/","en":"/en/synergy/pinky/","jp":"/jp/synergy/pinky/"};
+      var defaultPath = "/en/synergy/pinky/";
+      function normalizeLang(raw) {
+        var value = String(raw || "").toLowerCase();
+        if (value === "kr" || value === "en" || value === "jp") return value;
+        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        return "";
+      }
+      function detectReferrerLang() {
+        try {
+          var ref = document.referrer || "";
+          if (!ref) return "";
+          var refUrl = new URL(ref, window.location.origin);
+          if (refUrl.origin !== window.location.origin) return "";
+          var match = refUrl.pathname.match(/^\/(kr|en|jp|cn|tw|sea)(?:\/|$)/i);
+          return match ? normalizeLang(match[1]) : "";
+        } catch (_) {
+          return "";
+        }
+      }
+      function resolveLang() {
+        var queryLang = normalizeLang(requestedLang);
+        if (queryLang) return queryLang;
+        try {
+          var savedLang = normalizeLang(window.localStorage.getItem("preferredLanguage"));
+          if (savedLang) return savedLang;
+        } catch (_) {}
+        return detectReferrerLang();
+      }
+      var nextPath = defaultPath;
+      if (languageTargets && typeof languageTargets === "object") {
+        var effectiveLang = resolveLang();
+        if (effectiveLang && languageTargets[effectiveLang]) {
+          nextPath = languageTargets[effectiveLang];
+        } else if (languageTargets.en) {
+          nextPath = languageTargets.en;
+        } else if (languageTargets.kr) {
+          nextPath = languageTargets.kr;
+        } else if (languageTargets.jp) {
+          nextPath = languageTargets.jp;
+        }
+      }
       var query = params.toString();
       var next = nextPath + (query ? ("?" + query) : "");
       window.location.replace(next);
     })();
   </script>
-  <noscript><meta http-equiv="refresh" content="0; url=/kr/synergy/pinky/"></noscript>
-  <a href="/kr/synergy/pinky/">Continue</a>
+  <noscript><meta http-equiv="refresh" content="0; url=/en/synergy/pinky/"></noscript>
+  <a href="/en/synergy/pinky/">Continue</a>
 </body>
 </html>

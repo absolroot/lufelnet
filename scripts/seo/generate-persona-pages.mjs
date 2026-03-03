@@ -274,7 +274,20 @@ function toRedirectStubFilePath(fromPath) {
   return path.join(OUTPUT_DIR, 'redirects', fileName);
 }
 
-function renderDetailRedirectStub({ fromPath, toPath }) {
+function buildDetailLangTargets(domain, slug) {
+  return {
+    kr: `/kr/${domain}/${slug}/`,
+    en: `/en/${domain}/${slug}/`,
+    jp: `/jp/${domain}/${slug}/`
+  };
+}
+
+function renderDetailRedirectStub({ fromPath, toPath, languageTargets = null }) {
+  const fallbackPath = (languageTargets && (
+    languageTargets.en ||
+    languageTargets.kr ||
+    languageTargets.jp
+  )) || toPath;
   return [
     '---',
     'layout: null',
@@ -292,16 +305,59 @@ function renderDetailRedirectStub({ fromPath, toPath }) {
     '  <script>',
     '    (function () {',
     '      var params = new URLSearchParams(window.location.search || "");',
+    '      var requestedLang = params.get("lang");',
     '      params.delete("lang");',
     '      params.delete("name");',
-    `      var nextPath = ${JSON.stringify(toPath)};`,
+    '      params.delete("persona");',
+    `      var languageTargets = ${JSON.stringify(languageTargets)};`,
+    `      var defaultPath = ${JSON.stringify(fallbackPath)};`,
+    '      function normalizeLang(raw) {',
+    '        var value = String(raw || "").toLowerCase();',
+    '        if (value === "kr" || value === "en" || value === "jp") return value;',
+    '        if (value === "cn" || value === "tw" || value === "sea") return "en";',
+    '        return "";',
+    '      }',
+    '      function detectReferrerLang() {',
+    '        try {',
+    '          var ref = document.referrer || "";',
+    '          if (!ref) return "";',
+    '          var refUrl = new URL(ref, window.location.origin);',
+    '          if (refUrl.origin !== window.location.origin) return "";',
+    '          var match = refUrl.pathname.match(/^\\/(kr|en|jp|cn|tw|sea)(?:\\/|$)/i);',
+    '          return match ? normalizeLang(match[1]) : "";',
+    '        } catch (_) {',
+    '          return "";',
+    '        }',
+    '      }',
+    '      function resolveLang() {',
+    '        var queryLang = normalizeLang(requestedLang);',
+    '        if (queryLang) return queryLang;',
+    '        try {',
+    '          var savedLang = normalizeLang(window.localStorage.getItem("preferredLanguage"));',
+    '          if (savedLang) return savedLang;',
+    '        } catch (_) {}',
+    '        return detectReferrerLang();',
+    '      }',
+    '      var nextPath = defaultPath;',
+    '      if (languageTargets && typeof languageTargets === "object") {',
+    '        var effectiveLang = resolveLang();',
+    '        if (effectiveLang && languageTargets[effectiveLang]) {',
+    '          nextPath = languageTargets[effectiveLang];',
+    '        } else if (languageTargets.en) {',
+    '          nextPath = languageTargets.en;',
+    '        } else if (languageTargets.kr) {',
+    '          nextPath = languageTargets.kr;',
+    '        } else if (languageTargets.jp) {',
+    '          nextPath = languageTargets.jp;',
+    '        }',
+    '      }',
     '      var query = params.toString();',
     '      var next = nextPath + (query ? ("?" + query) : "");',
     '      window.location.replace(next);',
     '    })();',
     '  </script>',
-    `  <noscript><meta http-equiv="refresh" content="0; url=${toPath}"></noscript>`,
-    `  <a href="${toPath}">Continue</a>`,
+    `  <noscript><meta http-equiv="refresh" content="0; url=${fallbackPath}"></noscript>`,
+    `  <a href="${fallbackPath}">Continue</a>`,
     '</body>',
     '</html>',
     ''
@@ -345,13 +401,24 @@ function buildExpectedFiles(allPersonas, personaData, seoMeta, slugMap) {
   const slugOwner = new Map();
   const redirectOwner = new Map();
   const personaNames = sortByCodePoint(allPersonas);
-  const addRedirectStub = (fromPath, toPath) => {
+  const addRedirectStub = (fromPath, toPath, languageTargets = null) => {
     const from = fromPath.endsWith('.html')
       ? fromPath
       : (fromPath.endsWith('/') ? fromPath : `${fromPath}/`);
     const to = toPath.endsWith('.html')
       ? toPath
       : (toPath.endsWith('/') ? toPath : `${toPath}/`);
+    let normalizedTargets = null;
+    if (languageTargets && typeof languageTargets === 'object') {
+      normalizedTargets = {};
+      for (const [lang, targetPath] of Object.entries(languageTargets)) {
+        if (typeof targetPath !== 'string' || !targetPath.trim()) continue;
+        normalizedTargets[lang] = targetPath.endsWith('.html')
+          ? targetPath
+          : (targetPath.endsWith('/') ? targetPath : `${targetPath}/`);
+      }
+      if (Object.keys(normalizedTargets).length === 0) normalizedTargets = null;
+    }
     const previous = redirectOwner.get(from);
     if (previous && previous !== to) {
       throw new Error(`Redirect collision: "${from}" points to both "${previous}" and "${to}".`);
@@ -362,7 +429,8 @@ function buildExpectedFiles(allPersonas, personaData, seoMeta, slugMap) {
     const content = normalizeNewline(
       renderDetailRedirectStub({
         fromPath: from,
-        toPath: to
+        toPath: to,
+        languageTargets: normalizedTargets
       })
     );
     expected.set(fileRel, content);
@@ -433,10 +501,10 @@ function buildExpectedFiles(allPersonas, personaData, seoMeta, slugMap) {
     }
 
     const canonicalKoPath = `/kr/persona/${slug}/`;
-    addRedirectStub(`/persona/${slug}/`, canonicalKoPath);
+    addRedirectStub(`/persona/${slug}/`, canonicalKoPath, buildDetailLangTargets('persona', slug));
 
     for (const alias of aliasSlugs) {
-      addRedirectStub(`/persona/${alias}/`, canonicalKoPath);
+      addRedirectStub(`/persona/${alias}/`, canonicalKoPath, buildDetailLangTargets('persona', slug));
       addRedirectStub(`/kr/persona/${alias}/`, canonicalKoPath);
       addRedirectStub(`/en/persona/${alias}/`, `/en/persona/${slug}/`);
       addRedirectStub(`/jp/persona/${alias}/`, `/jp/persona/${slug}/`);

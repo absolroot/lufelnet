@@ -7,6 +7,13 @@
     return 'kr';
   }
 
+  function normalizeDetailLang(raw) {
+    var value = String(raw || '').toLowerCase();
+    if (value === 'cn' || value === 'tw' || value === 'sea') return 'en';
+    if (value === 'en' || value === 'jp' || value === 'kr') return value;
+    return 'en';
+  }
+
   function resolveSlug(map, key) {
     if (!map || typeof map !== 'object') return '';
     var entry = map[key];
@@ -80,6 +87,22 @@
 
   function normalizeLegacyRoot(url, context, lang) {
     var domain = context.domain;
+    if (domain === 'character' && /^\/character\/?$/i.test(url.pathname)) {
+      url.pathname = '/' + lang + '/character/';
+      return true;
+    }
+    if (domain === 'persona' && /^\/persona\/?$/i.test(url.pathname)) {
+      url.pathname = '/' + lang + '/persona/';
+      return true;
+    }
+    if (domain === 'synergy' && /^\/synergy\/?$/i.test(url.pathname)) {
+      url.pathname = '/' + lang + '/synergy/';
+      return true;
+    }
+    if (domain === 'wonder-weapon' && /^\/wonder-weapon\/?$/i.test(url.pathname)) {
+      url.pathname = '/' + lang + '/wonder-weapon/';
+      return true;
+    }
     if (domain === 'about' && /^\/about\/?$/i.test(url.pathname)) {
       url.pathname = '/' + lang + '/about/';
       return true;
@@ -158,13 +181,14 @@
   function normalizeUrl(context) {
     var safeContext = context || {};
     var lang = normalizeLang(safeContext.lang || global.__SEO_PATH_LANG__ || 'kr');
+    var detailLang = normalizeDetailLang(lang);
     var url = new URL(global.location.href);
     var before = url.pathname + url.search;
     var changed = false;
 
-    changed = normalizeCharacter(url, lang) || changed;
-    changed = normalizePersona(url, lang) || changed;
-    changed = normalizeWonderWeapon(url, lang) || changed;
+    changed = normalizeCharacter(url, detailLang) || changed;
+    changed = normalizePersona(url, detailLang) || changed;
+    changed = normalizeWonderWeapon(url, detailLang) || changed;
     changed = normalizeGuideDetail(url, lang) || changed;
     changed = normalizeTier(url, lang) || changed;
     changed = normalizeHome(url, lang) || changed;

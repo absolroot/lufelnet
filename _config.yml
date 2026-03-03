@@ -63,6 +63,7 @@ exclude:
   - .jekyll-cache
   - .jekyll-metadata
   - data/external/before
+  - config_db
   - "apps/patch-console/**"
 
 keep_files:

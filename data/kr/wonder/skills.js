@@ -2770,8 +2770,8 @@ const personaSkillList = {
         "icon_gl": "버프광역"
     },
     "음률의 침입": {
-        "name_jp": "音律の侵入",
-        "name_en": "Melodic Infiltration",
+        "name_jp": "音波干渉",
+        "name_en": "Sonic Interference",
         "name_cn": "音律侵入",
         "description": "3턴 동안 모든 적의 방어력이 32.0%/33.6%/35.2% 감소하고, 받는 대미지를 10%/10.5%/11.0% 증가시킨다.",
         "description_jp": "3ターンの間、敵全体の防御力を32.0%/33.6%/35.2%低下させ、受けるダメージを10.0%/10.5%/11.0%増加させる。",

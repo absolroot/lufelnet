@@ -1,0 +1,121 @@
+/* Related guides section (article detail only) */
+.guide-related {
+    margin: 0 var(--guide-space-2xl) var(--guide-space-2xl);
+    padding-top: var(--guide-space-xl);
+    border-top: 1px solid var(--guide-border-subtle);
+}
+
+.guide-related-title {
+    margin: 0 0 var(--guide-space-md);
+    font-size: var(--guide-text-xl);
+    font-weight: 700;
+    color: var(--guide-text-primary);
+    letter-spacing: -0.01em;
+}
+
+.guide-related-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--guide-space-sm);
+}
+
+.guide-related-item {
+    display: block;
+    text-decoration: none;
+    background: var(--guide-bg-tertiary);
+    border: 1px solid var(--guide-border-subtle);
+    border-radius: 10px;
+    padding: var(--guide-space-md);
+    transition: border-color var(--guide-transition-fast), background var(--guide-transition-fast), transform var(--guide-transition-fast);
+}
+
+.guide-related-item:hover {
+    border-color: var(--guide-border-default);
+    background: var(--guide-bg-elevated);
+    transform: translateY(-1px);
+}
+
+.guide-related-item-title {
+    margin: 0;
+    font-size: var(--guide-text-base);
+    line-height: 1.45;
+    font-weight: 600;
+    color: var(--guide-text-primary);
+}
+
+.guide-related-meta {
+    margin-top: var(--guide-space-sm);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--guide-space-sm);
+}
+
+.guide-related-category {
+    display: inline-flex;
+    align-items: center;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--guide-accent-gold);
+    background: var(--guide-accent-gold-dim);
+    border-radius: 4px;
+    padding: 2px 6px;
+}
+
+.guide-related-category.cat-growth {
+    color: #5ccc7f;
+    background: rgba(92, 204, 127, 0.12);
+}
+
+.guide-related-category.cat-combat {
+    color: #e85c5c;
+    background: rgba(232, 92, 92, 0.12);
+}
+
+.guide-related-category.cat-system {
+    color: #5c9eff;
+    background: rgba(92, 158, 255, 0.12);
+}
+
+.guide-related-category.cat-notice {
+    color: #e85cb0;
+    background: rgba(232, 92, 176, 0.12);
+}
+
+.guide-related-category.cat-citylife {
+    color: #8ad45b;
+    background: rgba(138, 212, 91, 0.12);
+}
+
+.guide-related-date {
+    font-size: var(--guide-text-xs);
+    color: var(--guide-text-tertiary);
+}
+
+.guide-related-empty {
+    margin: 0;
+    color: var(--guide-text-tertiary);
+    font-size: var(--guide-text-sm);
+    padding: var(--guide-space-sm) 0;
+}
+
+@media (max-width: 768px) {
+    .guide-related {
+        margin: 0 var(--guide-space-md) var(--guide-space-md);
+        padding-top: var(--guide-space-md);
+    }
+
+    .guide-related-title {
+        font-size: var(--guide-text-lg);
+    }
+
+    .guide-related-item {
+        padding: var(--guide-space-sm) var(--guide-space-md);
+    }
+
+    .guide-related-item-title {
+        font-size: var(--guide-text-sm);
+    }
+}

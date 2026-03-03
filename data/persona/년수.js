@@ -51,8 +51,8 @@ window.personaFiles["년수"] = {
     }
   ],
   "comment": "음률의 침입은 과금 이벤트를 통해 배포된 스킬 카드로 마하라쿤다로 대체 가능하다.",
-  "comment_en": "Melodic Infiltration is a skill card distributed through paid events(KR) and can be replaced with Marakunda.",
-  "comment_jp": "音律の侵入は課金イベントを通じて配布されたスキルカードでマハラクンダで代替可能である。",
+  "comment_en": "Sonic Interference is a skill card distributed through paid events(KR) and can be replaced with Marakunda.",
+  "comment_jp": "音波干渉は課金イベントを通じて配布されたスキルカードでマハラクンダで代替可能である。",
   "passive_priority": 3,
   "passive_skill": [
     {

@@ -19,5 +19,7 @@ window.I18N_PAGE_GUIDES_KR = {
     dateHoursAgo: '{value}시간 전',
     dateDaysAgo: '{value}일 전',
     dateWeeksAgoSingular: '{value}주 전',
-    dateWeeksAgoPlural: '{value}주 전'
+    dateWeeksAgoPlural: '{value}주 전',
+    relatedArticlesTitle: '\uB2E4\uC74C \uCD94\uCC9C \uC544\uD2F0\uD074',
+    relatedArticlesEmpty: '\uCD94\uCC9C\uD560 \uB2E4\uB978 \uC544\uD2F0\uD074\uC774 \uC5C6\uC2B5\uB2C8\uB2E4.'
 };

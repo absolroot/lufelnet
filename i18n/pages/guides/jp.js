@@ -19,5 +19,7 @@ window.I18N_PAGE_GUIDES_JP = {
     dateHoursAgo: '{value}時間前',
     dateDaysAgo: '{value}日前',
     dateWeeksAgoSingular: '{value}週間前',
-    dateWeeksAgoPlural: '{value}週間前'
+    dateWeeksAgoPlural: '{value}週間前',
+    relatedArticlesTitle: '\u304A\u3059\u3059\u3081\u8A18\u4E8B',
+    relatedArticlesEmpty: '\u304A\u3059\u3059\u3081\u3067\u304D\u308B\u4ED6\u306E\u8A18\u4E8B\u304C\u3042\u308A\u307E\u305B\u3093\u3002'
 };

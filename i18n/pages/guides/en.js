@@ -19,5 +19,7 @@ window.I18N_PAGE_GUIDES_EN = {
     dateHoursAgo: '{value} hours ago',
     dateDaysAgo: '{value} days ago',
     dateWeeksAgoSingular: '{value} week ago',
-    dateWeeksAgoPlural: '{value} weeks ago'
+    dateWeeksAgoPlural: '{value} weeks ago',
+    relatedArticlesTitle: 'Recommended Articles',
+    relatedArticlesEmpty: 'No other articles to recommend.'
 };

@@ -505,11 +505,21 @@ body {
         /* 태블릿에서도 헤더 표시 */
     }
 
+    .mobile-header.active {
+        pointer-events: none;
+    }
+
     /* 태블릿 햄버거 버튼 */
     .hamburger-btn {
         display: block !important;
         /* 강제로 표시 */
         left: 20px !important;
+        right: auto !important;
+    }
+
+    .mobile-header.active .hamburger-btn {
+        pointer-events: auto;
+        left: calc(var(--nav-expanded-width, 240px) + 12px) !important;
         right: auto !important;
     }
 

@@ -769,6 +769,9 @@
 
 <!-- 스크립트 ----------------------------------------------------------------------->
 
+<link rel="stylesheet" href="{{ site.baseurl }}/apps/character/character-toc.css?v={{ site.time | date: '%s' }}">
+<script src="{{ site.baseurl }}/apps/character/character-toc.js?v={{ site.time | date: '%s' }}"></script>
+
 <script>
     function fetchWithRevalidate(url, options = {}) {
         return fetch(url, { cache: 'no-cache', ...options });
@@ -840,6 +843,25 @@
         }, 0);
     }
 
+    function scheduleCharacterTocRefresh() {
+        try {
+            if (window.CharacterDetailTOC && typeof window.CharacterDetailTOC.scheduleRefresh === 'function') {
+                window.CharacterDetailTOC.scheduleRefresh();
+            }
+        } catch (e) {
+            console.warn('[SAFE:scheduleCharacterTocRefresh]', e);
+        }
+    }
+
+    try {
+        if (window.CharacterDetailTOC && typeof window.CharacterDetailTOC.init === 'function') {
+            window.CharacterDetailTOC.init();
+        }
+    } catch (e) {
+        console.warn('[SAFE:CharacterDetailTOC:init]', e);
+    }
+
+    window.scheduleCharacterTocRefresh = scheduleCharacterTocRefresh;
     window.scheduleTranslate = scheduleTranslate;
 
     document.addEventListener('DOMContentLoaded', async function () {
@@ -2130,6 +2152,7 @@
         runWhenIdle(() => {
             try { loadRecommendations(characterName); } catch (e) { console.warn('[SAFE:loadRecommendations]', e); }
             try { addTooltips(); } catch (e) { console.warn('[SAFE:addTooltips]', e); }
+            try { scheduleCharacterTocRefresh(); } catch (e) { console.warn('[SAFE:toc-after-recommendations-idle]', e); }
         });
 
         // 버튼 이벤트 리스너 추가
@@ -2253,9 +2276,12 @@
             }
         } catch (e) { console.warn('[SAFE:note-section]', e); }
 
+        safeRun('character-toc:refresh', () => scheduleCharacterTocRefresh());
+
       } finally {
         // Remove skeleton overlay now that i18n + data is applied (or handler errored/returned early)
         document.documentElement.classList.remove('skel');
+        try { scheduleCharacterTocRefresh(); } catch (e) { console.warn('[SAFE:toc-finally]', e); }
       }
     });
 
@@ -2268,6 +2294,7 @@
         );
         if (!shouldTranslate) return;
         scheduleTranslate(document.querySelector('.main-wrapper') || document);
+        scheduleCharacterTocRefresh();
     });
 
     // 관찰 시작
@@ -2369,6 +2396,7 @@
             try { if (window.CharI18N && typeof CharI18N.applySectionLabels === 'function') { CharI18N.applySectionLabels(); } } catch (e) { console.warn('[CharI18N:applySectionLabels]', e); }
             try { if (typeof window.localizeCharacterStatsCard === 'function') { window.localizeCharacterStatsCard(); } } catch (e) { console.warn('[cha_stats:localizeCharacterStatsCard]', e); }
             scheduleTranslate(document.querySelector('.main-wrapper') || document);
+            scheduleCharacterTocRefresh();
         };
     } catch (e) { console.warn('[I18N:override-applyTranslations]', e); }
     // 추천 페르소나와 파티 로드 함수
@@ -2377,6 +2405,7 @@
         await ensureKrNameData();
         if (!characterName || !(window.recommendParty && window.recommendParty[characterName])) {
             document.getElementById('recommended-sections').style.display = 'none';
+            scheduleCharacterTocRefresh();
             return;
         }
 
@@ -2453,6 +2482,8 @@
             const container = document.getElementById('recommended-party-content');
             if (container) container.innerHTML = '';
         }
+
+        scheduleCharacterTocRefresh();
     }
 
     // 섹션 제목 다국어 지원
@@ -2871,6 +2902,7 @@
     try {
         window.addEventListener('resize', function () {
             try { adjustRecommendedPersonaLayout(); } catch (_) { }
+            try { scheduleCharacterTocRefresh(); } catch (_) { }
         });
     } catch (e) { console.warn('[SAFE:resize-listener]', e); }
 

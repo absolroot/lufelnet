@@ -14,6 +14,7 @@ const SCRIPT_TARGETS = [
   'about',
   'article',
   'astrolabe',
+  'velvet-trial',
   'character',
   'critical-calc',
   'defense-calc',

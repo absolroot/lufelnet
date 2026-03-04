@@ -36,11 +36,16 @@
   function inferDomainAndMode(parts, query) {
     var first = parts[0] || '';
     var second = parts[1] || '';
+    var third = parts[2] || '';
 
     if (first === '404.html') return { domain: 'not-found', mode: 'list' };
     if (!first) return { domain: 'home', mode: 'list' };
     if (first === 'about') return { domain: 'about', mode: 'list' };
     if (first === 'astrolabe') return { domain: 'astrolabe', mode: 'list' };
+    if (first === 'velvet-trial') {
+      var isDetail = /^chapter-\d+$/i.test(second) && /^stage-\d+$/i.test(third);
+      return { domain: 'velvet-trial', mode: isDetail ? 'detail' : 'list' };
+    }
     if (first === 'character') return { domain: 'character', mode: second ? 'detail' : 'list' };
     if (first === 'persona') return { domain: 'persona', mode: second ? 'detail' : 'list' };
     if (first === 'synergy') return { domain: 'synergy', mode: second ? 'detail' : 'list' };
@@ -87,6 +92,17 @@
     if (domain === 'wonder-weapon' && mode === 'detail') return parts[1] || query.weapon || '';
     if (domain === 'guides' && mode === 'detail') return parts[1] || query.id || '';
     if (domain === 'maps') return query.map || '';
+    if (domain === 'velvet-trial' && mode === 'detail') {
+      if (/^chapter-\d+$/i.test(parts[1] || '') && /^stage-\d+$/i.test(parts[2] || '')) {
+        return `${parts[1]}/${parts[2]}`;
+      }
+      var chapter = String(query.chapter || query.ch || '').trim();
+      var stage = String(query.stage || query.level || '').trim();
+      if (/^\d+$/.test(chapter) && /^\d+$/.test(stage)) {
+        return `chapter-${chapter}/stage-${stage}`;
+      }
+      return '';
+    }
 
     if (/\/character\.html$/i.test(pathname)) return query.name || '';
     if (/\/persona\/?$/i.test(pathname)) return query.name || query.persona || '';

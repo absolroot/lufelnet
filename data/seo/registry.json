@@ -220,15 +220,15 @@
       "meta": {
         "en": {
           "description": "Persona 5: The Phantom X Strategy Guides",
-          "title": "Guides | Lufelnet Persona 5: The Phantom X"
+          "title": "Articles | Lufelnet Persona 5: The Phantom X"
         },
         "jp": {
           "description": "ペルソナ5 ザ・ファントムX 攻略ガイド",
-          "title": "ガイド | Lufelnet ペルソナ5 ザ・ファントム X"
+          "title": "攻略記事 | Lufelnet ペルソナ5 ザ・ファントム X"
         },
         "kr": {
           "description": "페르소나5 더 팬텀 X 공략 가이드",
-          "title": "가이드 | 루페르넷 페르소나5 더 팬텀 X"
+          "title": "아티클 | 루페르넷 페르소나5 더 팬텀 X"
         }
       },
       "modeKeys": [],
@@ -1003,6 +1003,49 @@
       "source": "i18n/pages/tier/seo-meta.json",
       "type": "tier"
     },
+    "velvet-trial": {
+      "langs": [
+        "en",
+        "jp",
+        "kr"
+      ],
+      "meta": {
+        "en": {
+          "description": "{name} | Persona 5: The Phantom X Velvet Trial stage conditions and boss information",
+          "list_description": "Persona 5: The Phantom X Velvet Trial stage conditions and boss information",
+          "list_title": "Velvet Trial | Lufelnet Persona 5: The Phantom X",
+          "title": "{name} | Velvet Trial | Lufelnet Persona 5: The Phantom X"
+        },
+        "jp": {
+          "description": "{name} | ペルソナ5 The Phantom X ベルベット試練の段階条件とボス情報",
+          "list_description": "ペルソナ5 The Phantom X ベルベット試練の段階条件とボス情報",
+          "list_title": "ベルベット試練 | Lufelnet ペルソナ5: The Phantom X",
+          "title": "{name} | ベルベット試練 | Lufelnet ペルソナ5: The Phantom X"
+        },
+        "kr": {
+          "description": "{name} | 페르소나5 더 팬텀 X 벨벳 시련 단계별 조건 및 보스 정보",
+          "list_description": "페르소나5 더 팬텀 X 벨벳 시련 단계별 조건 및 보스 정보",
+          "list_title": "벨벳 시련 | 루페르넷 페르소나5 더 팬텀 X",
+          "title": "{name} | 벨벳 시련 | 루페르넷 페르소나5 더 팬텀 X"
+        }
+      },
+      "modeKeys": [],
+      "paramPolicy": {
+        "detailParam": "stage",
+        "modeParam": null,
+        "remove": [
+          "lang",
+          "v",
+          "chapter",
+          "ch",
+          "stage",
+          "level"
+        ]
+      },
+      "placeholder": "{name}",
+      "source": "i18n/pages/velvet-trial/seo-meta.json",
+      "type": "template"
+    },
     "wonder-weapon": {
       "langs": [
         "en",
@@ -1044,7 +1087,7 @@
       "type": "template"
     }
   },
-  "generatedAt": "2026-02-18T13:48:47.009Z",
+  "generatedAt": "2026-03-04T05:09:56.514Z",
   "localeMap": {
     "cn": "zh_CN",
     "en": "en_US",

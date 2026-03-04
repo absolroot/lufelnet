@@ -1,0 +1,147 @@
+<script>
+(function () {
+    var params = new URLSearchParams(window.location.search || '');
+    var path = String(window.location.pathname || '/');
+    var lowerPath = path.toLowerCase();
+
+    function normalizeLang(raw) {
+        var value = String(raw || '').toLowerCase();
+        if (value === 'kr' || value === 'en' || value === 'jp') return value;
+        return '';
+    }
+
+    function toPositiveInt(raw) {
+        var text = String(raw || '').trim();
+        if (!/^\d+$/.test(text)) return 0;
+        var num = Number(text);
+        return Number.isFinite(num) && num > 0 ? num : 0;
+    }
+
+    var detailPathMatch = lowerPath.match(/^\/(kr|en|jp)\/velvet-trial\/chapter-(\d+)\/stage-(\d+)\/?$/);
+    var detailLegacyMatch = lowerPath.match(/^\/velvet-trial\/chapter-(\d+)\/stage-(\d+)\/?$/);
+    var rootPathMatch = lowerPath.match(/^\/(kr|en|jp)\/velvet-trial\/?$/);
+    var isLegacyRoot = /^\/velvet-trial\/?$/.test(lowerPath);
+
+    var pathLang = detailPathMatch
+        ? detailPathMatch[1]
+        : (rootPathMatch ? rootPathMatch[1] : '');
+    var queryLang = normalizeLang(params.get('lang'));
+    var effectiveLang = pathLang || queryLang || '';
+
+    var chapterParam = toPositiveInt(params.get('chapter'));
+    if (!chapterParam) chapterParam = toPositiveInt(params.get('ch'));
+    var stageParam = toPositiveInt(params.get('stage'));
+    if (!stageParam) stageParam = toPositiveInt(params.get('level'));
+
+    var targetPath = path;
+
+    if (detailPathMatch) {
+        targetPath = '/' + detailPathMatch[1] + '/velvet-trial/chapter-' + detailPathMatch[2] + '/stage-' + detailPathMatch[3] + '/';
+    } else if (detailLegacyMatch) {
+        effectiveLang = effectiveLang || 'kr';
+        targetPath = '/' + effectiveLang + '/velvet-trial/chapter-' + detailLegacyMatch[1] + '/stage-' + detailLegacyMatch[2] + '/';
+    } else if (rootPathMatch || isLegacyRoot) {
+        effectiveLang = effectiveLang || (isLegacyRoot ? 'kr' : rootPathMatch[1]);
+        if (chapterParam && stageParam) {
+            targetPath = '/' + effectiveLang + '/velvet-trial/chapter-' + chapterParam + '/stage-' + stageParam + '/';
+        } else {
+            targetPath = '/' + effectiveLang + '/velvet-trial/';
+        }
+    }
+
+    var beforeQuery = params.toString();
+    params.delete('lang');
+    params.delete('v');
+    params.delete('chapter');
+    params.delete('ch');
+    params.delete('stage');
+    params.delete('level');
+    var afterQuery = params.toString();
+
+    if (effectiveLang) {
+        window.__SEO_PATH_LANG__ = effectiveLang;
+    }
+
+    var currentFull = path + (window.location.search || '');
+    var nextFull = targetPath + (afterQuery ? ('?' + afterQuery) : '');
+    if (currentFull !== nextFull || beforeQuery !== afterQuery) {
+        history.replaceState(null, '', nextFull);
+    }
+})();
+</script>
+{% if page.alternate_urls %}
+{% for alt in page.alternate_urls %}
+<link rel="alternate" hreflang="{{ alt[0] }}" href="{{ site.url }}{{ alt[1] }}" />
+{% endfor %}
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.alternate_urls['ko'] | default: page.alternate_urls.first[1] }}" />
+{% endif %}
+
+<link rel="stylesheet" href="{{ site.baseurl }}/apps/velvet_trial/css/style.css?v={{ site.time | date: '%s' }}">
+
+<script>
+    window.BASE_URL = "{{ site.baseurl }}";
+    window.SITE_BASEURL = "{{ site.baseurl }}";
+    window.APP_VERSION = window.APP_VERSION || "{{ site.time | date: '%s' }}";
+</script>
+{% if site.data.character_slugs %}
+<script>
+    window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
+</script>
+{% endif %}
+{% if site.data.persona_slugs %}
+<script>
+    window.__PERSONA_SLUG_MAP = {{ site.data.persona_slugs | jsonify }};
+</script>
+{% endif %}
+{% if page.velvet_trial_entity_key %}
+<script>
+    window.__SEO_CONTEXT_HINT__ = window.__SEO_CONTEXT_HINT__ || {};
+    window.__SEO_CONTEXT_HINT__.domain = 'velvet-trial';
+    window.__SEO_CONTEXT_HINT__.mode = 'detail';
+    window.__SEO_CONTEXT_HINT__.entityKey = {{ page.velvet_trial_entity_key | jsonify }};
+    {% if page.velvet_trial_entity_name %}
+    window.__SEO_CONTEXT_HINT__.entityName = {{ page.velvet_trial_entity_name | jsonify }};
+    window.__SEO_CONTEXT_HINT__.templateVars = Object.assign({}, window.__SEO_CONTEXT_HINT__.templateVars || {}, {
+        name: {{ page.velvet_trial_entity_name | jsonify }}
+    });
+    {% endif %}
+</script>
+{% endif %}
+
+<div id="nav-container"></div>
+
+<div class="main-wrapper velvet-trial-shell">
+    <div class="navigation-path">
+        <a href="{{ site.baseurl }}/" id="vt-nav-home">Home</a>
+        <span class="separator">/</span>
+        <span class="current-page" id="vt-nav-current">Velvet Trial</span>
+    </div>
+
+    <div class="header-container">
+        <div class="header-title">
+            <h1 id="vt-page-title">Velvet Trial</h1>
+            <p class="page-description" id="vt-page-description">View chapter and stage conditions with boss data.</p>
+        </div>
+    </div>
+
+    <div id="vt-chapter-tabs" class="vt-tabs"></div>
+    <section id="vt-content" class="vt-content"></section>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        if (typeof Navigation !== 'undefined') {
+            Navigation.load('velvet-trial');
+        }
+    });
+</script>
+<script src="{{ site.baseurl }}/apps/velvet_trial/js/config.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/i18n/pages/velvet-trial/kr.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/i18n/pages/velvet-trial/en.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/i18n/pages/velvet-trial/jp.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/velvet_trial/js/i18n.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/velvet_trial/js/data-loader.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/velvet_trial/js/adapt-sprite.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/velvet_trial/js/render.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/velvet_trial/js/main.js?v={{ site.time | date: '%s' }}"></script>
+

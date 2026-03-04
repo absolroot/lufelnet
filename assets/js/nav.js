@@ -59,6 +59,7 @@ class Navigation {
                 tacticLibrary: '택틱 도서관',
                 tacticMaker: '택틱 메이커',
                 astrolabe: '성좌의 시련',
+                velvetTrial: '벨벳 시련',
                 about: '소개'
             },
             en: {
@@ -86,6 +87,7 @@ class Navigation {
                 tacticLibrary: 'Tactics Library',
                 tacticMaker: 'Tactic Maker',
                 astrolabe: 'Astrolabe',
+                velvetTrial: 'Velvet Trial',
                 about: 'About'
             },
             jp: {
@@ -113,6 +115,7 @@ class Navigation {
                 tacticLibrary: 'タクティクスライブラリー',
                 tacticMaker: 'タクティクスメーカー',
                 astrolabe: 'アストロラーベ',
+                velvetTrial: 'ベルベット試練',
                 about: '紹介'
             },
             cn: {
@@ -140,6 +143,7 @@ class Navigation {
                 tacticLibrary: '战术图书馆',
                 tacticMaker: '战术制作',
                 astrolabe: '天域星盘',
+                velvetTrial: '벨벳 시련',
                 about: '关于'
             }
         };
@@ -151,19 +155,19 @@ class Navigation {
             kr: [
                 'character', 'persona', 'revelations-info', 'synergy', 'wonderweapon', 'maps', 'article',
                 'material-calc', 'defense-calc', 'critical-calc', 'revelation-setting', 'pullTracker', 'pay-calc',
-                'tier', 'tactic-library', 'tactic-maker', 'astrolabe',
+                'tier', 'tactic-library', 'tactic-maker', 'astrolabe', 'velvet-trial',
                 'about'
             ],
             en: [
                 'character', 'persona', 'revelations-info', 'synergy', 'wonderweapon', 'maps', 'article',
                 'schedule-release', 'pull-calc', 'material-calc', 'defense-calc', 'critical-calc', 'revelation-setting', 'pullTracker',
-                'tier', 'tactic-library', 'tactic-maker', 'astrolabe',
+                'tier', 'tactic-library', 'tactic-maker', 'astrolabe', 'velvet-trial',
                 'about'
             ],
             jp: [
                 'character', 'persona', 'revelations-info', 'synergy', 'wonderweapon', 'maps', 'article',
                 'schedule-release', 'pull-calc', 'material-calc', 'defense-calc', 'critical-calc', 'revelation-setting', 'pullTracker',
-                'tier', 'tactic-library', 'tactic-maker', 'astrolabe',
+                'tier', 'tactic-library', 'tactic-maker', 'astrolabe', 'velvet-trial',
                 'about'
             ],
             cn: ['character', 'article', 'about']
@@ -178,12 +182,13 @@ class Navigation {
                 labelKey: 'sectionGuide',
                 items: [
                     { key: 'character', textKey: 'character', icon: 'guaidao.png', url: `/${currentLang}/character/` },
-                    { key: 'persona', textKey: 'persona', icon: 'persona.png', url: `/${currentLang}/persona/` },
+                    { key: 'persona', textKey: 'persona', icon: 'persona2.png', url: `/${currentLang}/persona/` },
                     { key: 'revelations-info', textKey: 'revelationsInfo', icon: 'qishi.png', url: `/${currentLang}/revelations/` },
                     { key: 'synergy', textKey: 'synergy', icon: 'synergy.png', url: `/${currentLang}/synergy/` },
                     { key: 'wonderweapon', textKey: 'wonderweapon', icon: 'wonder-weapon.png', url: `/${currentLang}/wonder-weapon/` },
                     { key: 'maps', textKey: 'maps', icon: 'maps.png', url: `/${currentLang}/maps/` },
-                    { key: 'article', textKey: 'article', icon: 'article.png', url: `/${currentLang}/article/` }
+                    { key: 'article', textKey: 'article', icon: 'article.png', url: `/${currentLang}/article/` },
+                    { key: 'velvet-trial', textKey: 'velvetTrial', icon: 'velvet-trial.png', url: `/${currentLang}/velvet-trial/` }
                 ]
             },
             {

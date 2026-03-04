@@ -112,7 +112,7 @@ const enRevelationData = {
     "main": {
         "Purity": ["Depravity"], // 순수
         "Nativity": ["Power"], // 탄생
-        "Agility": ["Satiety"], // 예리
+        "Agility": ["Satiety", "Hindrance"], // 예리
         "Perseverance": ["Sorrow", "Transformation", "Obtain"], //돌파
         "Hope": ["Labor", "Fixation", "Transformation"], // 희망
         "Creation": ["Worry", "Reconcilation","Tenacity"], // 창조 
@@ -149,7 +149,7 @@ const enRevelationData = {
         "Pleasure": ["Wisdom", "Integrity"], // 환희
         "Labor": ["Resolve", "Integrity", "Hope"], // 직책
         "Peace": ["Faith", "Acceptance"], // 평화
-        "Hindrance": ["Awareness", "Departure"], // 방해
+        "Hindrance": ["Awareness", "Departure", "Agility"], // 방해
         "Control": ["Awareness", "Departure"], // 주권
         "Renewal": ["Growth", "Trust"], // 변환
         "Courage": ["Meditation"], // 용맹
@@ -398,6 +398,7 @@ const enRevelationData = {
         },
         "Agility": {
             "Satiety": "Increase All-Out Attack DMG by 16%.",
+            "Hindrance": "During combat, increase Ailment Accuracy by 20%. When the user's Ailment Accuracy reaches 100%, increase all allies' ATK by 10%.",
             "type": ["미출시"]
         },
         "Nativity": { // 탄생

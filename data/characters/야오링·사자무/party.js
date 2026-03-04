@@ -63,6 +63,28 @@ window.recommendParty["야오링·사자무"] = {
             "comment": "",
             "comment_en": "",
             "comment_jp": ""
+        },
+        {
+            "members": [
+                "야오링·사자무",
+                "미오",
+                "J&C",
+                "후타바"
+            ],
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
+        },
+        {
+            "members": [
+                "야오링·사자무",
+                "준페이",
+                "미나미·여름",
+                "마나카"
+            ],
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
         }
         
     ],

@@ -28,6 +28,13 @@
     params.delete('v');
   }
 
+  function toPositiveInt(raw) {
+    var text = String(raw || '').trim();
+    if (!/^\d+$/.test(text)) return 0;
+    var num = Number(text);
+    return Number.isFinite(num) && num > 0 ? num : 0;
+  }
+
   function normalizeCharacter(url, lang) {
     if (!/\/character\.html$/i.test(url.pathname)) return false;
     var name = url.searchParams.get('name');
@@ -76,6 +83,42 @@
     var maker = url.searchParams.get('list') === 'false';
     url.pathname = maker ? '/' + lang + '/tier-maker/' : '/' + lang + '/tier/';
     url.searchParams.delete('list');
+    return true;
+  }
+
+  function normalizeVelvetTrial(url, lang) {
+    var lowerPath = String(url.pathname || '').toLowerCase();
+    var detailMatch = lowerPath.match(/^\/(?:((?:kr|en|jp|cn))\/)?velvet-trial\/chapter-(\d+)\/stage-(\d+)\/?$/i);
+    if (detailMatch) {
+      var detailLang = normalizeDetailLang(detailMatch[1] || lang);
+      url.pathname = '/' + detailLang + '/velvet-trial/chapter-' + detailMatch[2] + '/stage-' + detailMatch[3] + '/';
+      url.searchParams.delete('chapter');
+      url.searchParams.delete('ch');
+      url.searchParams.delete('stage');
+      url.searchParams.delete('level');
+      return true;
+    }
+
+    var isLangRoot = /^\/(kr|en|jp|cn)\/velvet-trial\/?$/i.test(lowerPath);
+    var isLegacyRoot = /^\/velvet-trial\/?$/i.test(lowerPath);
+    if (!isLangRoot && !isLegacyRoot) return false;
+
+    var chapter = toPositiveInt(url.searchParams.get('chapter')) || toPositiveInt(url.searchParams.get('ch'));
+    var stage = toPositiveInt(url.searchParams.get('stage')) || toPositiveInt(url.searchParams.get('level'));
+    var pathLangMatch = lowerPath.match(/^\/(kr|en|jp|cn)\/velvet-trial\/?$/i);
+    var pathLang = pathLangMatch ? pathLangMatch[1] : '';
+    var targetLang = normalizeDetailLang(pathLang || lang);
+
+    if (chapter && stage) {
+      url.pathname = '/' + targetLang + '/velvet-trial/chapter-' + chapter + '/stage-' + stage + '/';
+    } else {
+      url.pathname = '/' + targetLang + '/velvet-trial/';
+    }
+
+    url.searchParams.delete('chapter');
+    url.searchParams.delete('ch');
+    url.searchParams.delete('stage');
+    url.searchParams.delete('level');
     return true;
   }
 
@@ -175,6 +218,10 @@
       url.pathname = '/' + lang + '/astrolabe/';
       return true;
     }
+    if (domain === 'velvet-trial' && /^\/velvet-trial\/?$/i.test(url.pathname)) {
+      url.pathname = '/' + lang + '/velvet-trial/';
+      return true;
+    }
     return false;
   }
 
@@ -191,6 +238,7 @@
     changed = normalizeWonderWeapon(url, detailLang) || changed;
     changed = normalizeGuideDetail(url, lang) || changed;
     changed = normalizeTier(url, lang) || changed;
+    changed = normalizeVelvetTrial(url, lang) || changed;
     changed = normalizeHome(url, lang) || changed;
     changed = normalizeLegacyRoot(url, safeContext, lang) || changed;
 

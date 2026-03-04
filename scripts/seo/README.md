@@ -345,6 +345,7 @@ if (/^\/(kr|en|jp)\//.test(window.location.pathname)) return;
 | astrolabe | B (single-page) | `generate-astrolabe-pages.mjs` | Done |
 | article (guides list + detail) | Hybrid (single-page + per-item) | `generate-article-pages.mjs` | Done |
 | persona | A (per-item) | `generate-persona-pages.mjs` | Done |
+| velvet-trial | A (per-item by chapter/stage) | `generate-velvet-trial-pages.mjs` | Done |
 | maps | B (single-page) | `generate-maps-pages.mjs` | Done |
 
 ## URL Patterns
@@ -375,6 +376,8 @@ if (/^\/(kr|en|jp)\//.test(window.location.pathname)) return;
 | Article (guide detail) | `/kr/article/{id}/`, `/en/article/{id}/`, `/jp/article/{id}/` |
 | Persona (detail) | `/kr/persona/{slug}/`, `/en/persona/{slug}/`, `/jp/persona/{slug}/` |
 | Persona (list) | `/persona/` (default), `/kr/persona/`, `/en/persona/`, `/jp/persona/` |
+| Velvet Trial (detail) | `/kr/velvet-trial/chapter-{chapterSn}/stage-{stageNum}/`, `/en/velvet-trial/chapter-{chapterSn}/stage-{stageNum}/`, `/jp/velvet-trial/chapter-{chapterSn}/stage-{stageNum}/` |
+| Velvet Trial (list) | `/kr/velvet-trial/`, `/en/velvet-trial/`, `/jp/velvet-trial/` |
 
 Legacy URLs redirect to canonical via generated stub pages (`layout: null`).
 Language root URLs (`/{lang}/{app}/`) redirect to `/{app}/?lang={lang}` via generated root stubs.
@@ -413,6 +416,8 @@ Legacy query-based URLs are rewritten to clean path-based URLs via `history.repl
 | `/article/view/?id=technical-master&lang=en&v=4.4.8` | `/en/article/technical-master/` |
 | `/persona/?name=야노식&lang=en` | `/en/persona/janosik/` |
 | `/persona/?lang=en&v=4.4.9` | `/en/persona/` |
+| `/velvet-trial/?lang=en&chapter=1&stage=3&v=4.4.9` | `/en/velvet-trial/chapter-1/stage-3/` |
+| `/en/velvet-trial/?lang=en&v=4.4.9` | `/en/velvet-trial/` |
 
 The rewrite scripts are placed at the top of the body include or page, before any other scripts, so they run early. They use the `__*_SLUG_MAP` data (injected via Jekyll) to resolve slugs.
 

@@ -22,7 +22,8 @@
         schedule: 'quick_schedule',
         maps: 'quick_maps',
         pullCalc: 'quick_pull_calc',
-        astrolabe: 'quick_astrolabe'
+        astrolabe: 'quick_astrolabe',
+        velvetTrial: 'quick_velvet_trial'
     };
     const TOOLTIP_KEY_MAP = {
         character: 'quick_tip_character',
@@ -32,6 +33,7 @@
         wonderweapon: 'quick_tip_wonderweapon',
         maps: 'quick_tip_maps',
         astrolabe: 'quick_tip_astrolabe',
+        velvetTrial: 'quick_tip_velvet_trial',
         pullTracker: 'quick_tip_pull_tracker',
         pullTracker_global: 'quick_tip_pull_tracker_global',
         materialCalc: 'quick_tip_material_calc',
@@ -64,7 +66,8 @@
         schedule: '스케줄',
         maps: '지도',
         pullCalc: '가챠 플래너',
-        astrolabe: '성좌의 시련'
+        astrolabe: '성좌의 시련',
+        velvetTrial: '벨벳 시련'
     };
 
     const TOOLTIP_FALLBACK_MAP = {
@@ -75,6 +78,7 @@
         wonderweapon: 'Check Wonder weapon effects.',
         maps: 'Track map collectibles and routes.',
         astrolabe: 'Review astrolabe setup information.',
+        velvetTrial: 'Review velvet trial stage conditions and boss information.',
         pullTracker: 'Analyze your pull records and stats.',
         pullTracker_global: 'View global pull statistics.',
         materialCalc: 'Calculate progression material costs.',
@@ -170,7 +174,7 @@
 
     const iconMap = {
         character: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/guaidao.png`,
-        persona: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/persona.png`,
+        persona: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/persona2.png`,
         revelations: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/qishi.png`,
         wonderweapon: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/wonder-weapon.png`,
         maps: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/maps.png`,
@@ -187,7 +191,8 @@
         schedule: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/schedule.png`,
         synergy: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/synergy.png`,
         pullCalc: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/pull-calc.png`,
-        astrolabe: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/astrolabe.png`
+        astrolabe: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/astrolabe.png`,
+        velvetTrial: `${typeof BASE_URL !== 'undefined' ? BASE_URL : ''}/assets/img/nav/velvet-trial.png`
     };
 
     const pathMap = {
@@ -197,6 +202,7 @@
         wonderweapon: '/wonder-weapon/',
         maps: '/maps/',
         astrolabe: '/astrolabe/',
+        velvetTrial: '/velvet-trial/',
         pullTracker: '/pull-tracker/',
         pullTracker_global: '/pull-tracker/global-stats/',
         materialCalc: '/material-calc/',
@@ -221,17 +227,17 @@
 
     const getItems = (lang) => {
         if (lang === 'kr') {
-            return ['character', 'persona', 'revelations', 'synergy', 'wonderweapon', 'maps', 'astrolabe', 'pullTracker', 'pullTracker_global', 'materialCalc', 'defenseCalc', 'criticalCalc', 'tacticLibrary', 'tacticMaker', 'guide', 'tier', 'gallery'];
+            return ['character', 'persona', 'revelations', 'synergy', 'wonderweapon', 'maps', 'astrolabe', 'velvetTrial', 'pullTracker', 'pullTracker_global', 'materialCalc', 'defenseCalc', 'criticalCalc', 'tacticLibrary', 'tacticMaker', 'guide', 'tier', 'gallery'];
         }
         if (lang === 'jp' || lang === 'en') {
-            return ['character', 'persona', 'revelations', 'synergy', 'wonderweapon', 'maps', 'astrolabe', 'pullTracker', 'pullTracker_global', 'materialCalc', 'defenseCalc', 'criticalCalc', 'tacticLibrary', 'guide', 'tier', 'schedule', 'pullCalc', 'gallery'];
+            return ['character', 'persona', 'revelations', 'synergy', 'wonderweapon', 'maps', 'astrolabe', 'velvetTrial', 'pullTracker', 'materialCalc', 'defenseCalc', 'criticalCalc', 'tacticLibrary', 'guide', 'tier', 'schedule', 'pullCalc', 'gallery'];
         }
         // default to KR set
-        return ['character', 'persona', 'revelations', 'synergy', 'wonderweapon', 'maps', 'astrolabe', 'pullTracker', 'pullTracker_global', 'materialCalc', 'defenseCalc', 'criticalCalc', 'tacticLibrary', 'guide', 'tier', 'schedule', 'pullCalc', 'gallery'];
+        return ['character', 'persona', 'revelations', 'synergy', 'wonderweapon', 'maps', 'astrolabe', 'velvetTrial', 'pullTracker', 'pullTracker_global', 'materialCalc', 'defenseCalc', 'criticalCalc', 'tacticLibrary', 'guide', 'tier', 'schedule', 'pullCalc', 'gallery'];
     };
 
     // New 배지를 표시할 아이템 목록
-    const newItems = ['guide'];
+    const newItems = ['guide', 'velvetTrial'];
 
     const render = () => {
         const root = document.getElementById('quick-grid');

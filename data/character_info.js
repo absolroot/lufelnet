@@ -7,7 +7,7 @@ window.characterList = window.characterList || {
         "모토하", "모토하·여름", "몽타뉴", "몽타뉴·백조", "미오", "미츠루", "사나다", "쇼키", "쇼키·암야", "슌", "슌·프론티어",
         "세이지", "안", "아야카", "아케치", "야오링", "야오링·사자무",
         "원더", "유스케", "YUI", "YUI·스텔라", "유카리", "유키미", "유키 마코토", "이치고",
-        "준페이",
+        "준페이", "코로마루",
         "카스미", "카타야마", "키라", "키요시", "토모코", "토모코·여름", "토시야",
         "하루", "하루나", "치즈코", "J&C"
     ],
@@ -31,14 +31,14 @@ window.characterData = window.characterData || {};
 Object.assign(window.characterData, {
     "코로마루": {
         "limit": true,
-        "tag": "PREDICT - 스택형 디버퍼",
-        "tag_en": "PREDICT - Stack Debuffer",
-        "tag_jp": "PREDICT - スタックデバッファー",
+        "tag": "화염/전격/빙결 약점 강화 디버퍼",
+        "tag_en": "",
+        "tag_jp": "",
         "persona3": true,
         "color": "#e1e2ee",
-        "element": "",
+        "element": "주원",
         "rarity": 5,
-        "position": "",
+        "position": "굴복",
         "release_order": 42,
         "persona": "케르베로스",
         "persona_en": "Cerberus",

@@ -1101,6 +1101,8 @@
             window.characterSetting = window.characterSetting || {};
             // 리코·매화 전용 계산기 전역 스텁
             window.RikoCalc = window.RikoCalc || {};
+            // 코로마루 전용 계산기 전역 스텁
+            window.KoromaruCalc = window.KoromaruCalc || {};
             // 후타바 전용 코드네임 아이콘 전역 스텁
             window.NaviIcons = window.NaviIcons || {};
         } catch (e) { console.warn('[SAFE:init-globals]', e); }
@@ -1137,6 +1139,11 @@
             // 리코·매화 전용 스탯 계산기 로드
             if (name === '리코·매화') {
                 tasks.push(loadPerCharacterResource(name, { fileBase: 'riko_calc', globalVarName: 'RikoCalc' }));
+            }
+
+            // 코로마루 전용 효과명중 계산기 로드
+            if (name === '코로마루') {
+                tasks.push(loadPerCharacterResource(name, { fileBase: 'koromaru_calc', globalVarName: 'KoromaruCalc' }));
             }
 
             await Promise.all(tasks.map(t => safeAwait('loadPerCharacterResource', t)));

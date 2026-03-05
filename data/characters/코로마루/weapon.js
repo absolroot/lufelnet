@@ -22,20 +22,20 @@ window.WeaponData["코로마루"] = {
 window.enCharacterWeaponData["코로마루"] = {
   "name": "Koromaru",
   "weapon4-1": {
-    "name": "Guardian Dagger",
+    "name": "Dagger of Protection",
     "health": 1838.99,
     "attack": 539.4,
     "defense": 338.09,
-    "skill_name": "",
-    "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. Increase damage dealt to enemies affected by Elemental Ailments by 17.6%/23.2%/23.2%/28.8%/28.8%/34.4%/34.4%."
+    "skill_name": "Guard Dog Assault",
+    "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. \nWhen attacking a foe with an elemental ailment, increase damage by 17.6%/23.2%/23.2%/28.8%/28.8%/34.4%/34.4%."
   },
   "weapon5-1": {
-    "name": "Vajra",
+    "name": "Howl",
     "health": 2299.15,
     "attack": 673.89,
     "defense": 422.82,
-    "skill_name": "",
-    "description": "Increase Ailment Accuracy by 36.0%/36.0%/47.0%/47.0%/58.0%/58.0%/69.0%. After completing [Hound Co-Op] with [Master], or after user actively uses a Persona skill, permanently increase all allies' Attack by 11.3%/14.7%/14.7%/18.1%/18.1%/21.5%/21.5% (stacks up to 2 times). When inflicting [Affinity Degradation], increase all allies' critical damage by 18.1%/23.5%/23.5%/28.9%/28.9%/34.3%/34.3% for 2 turns."
+    "skill_name": "All-Out Chomp",
+    "description": "Increase ailment accuracy by 36.0%/36.0%/47.0%/47.0%/58.0%/58.0%/69.0%. After using [Hound's Hunt], or after Koromaru manually uses a Persona skill, permanently increase all allies' Attack by 11.3%/14.7%/14.7%/18.1%/18.1%/21.5%/21.5%. Stacks up to 2 times. \nWhen inflicting [Attribute Downgrade], increase all allies' critical damage by 18.1%/23.5%/23.5%/28.9%/28.9%/34.3%/34.3%. Lasts for 2 turns."
   }
 };
 window.jpCharacterWeaponData["코로마루"] = {

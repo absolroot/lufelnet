@@ -49,85 +49,91 @@ window.characterSkillsData["야오링·사자무"] = {
 window.enCharacterSkillsData["야오링·사자무"] = {
   "name": "Firecracker Yaoling",
   "skill1": {
-    "name": "Abundant World",
+    "name": "Scarlet Surprise",
     "element": "화염광역",
     "type": "광역피해",
     "sp": 20,
     "cool": 0,
-    "description": "Deals 120.4%/132.8%/127.8%/140.2% ATK as Fire DMG to all enemies and increases own CRIT Rate by 10% for 2 turns.\n[Fiery Shooting Star] Effect Boost: Additionally deals 72.8%/80.2%/77.3%/84.7% ATK as Fire DMG, effect boost lasts for 1 turn."
+    "description": "Deal Fire damage to all foes equal to 120.4%/132.8%/127.8%/140.2% of Attack, and increase Firecracker Yaoling's critical rate by 10% for 2 turns.\nAlso, for 1 turn, Yanhua Slash deals more Fire damage equal to 72.8%/80.3%/77.3%/84.7% of Attack."
   },
   "skill2": {
-    "name": "Crackling Firecrackers",
+    "name": "Firework Finale",
     "element": "화염광역",
     "type": "광역피해",
     "sp": 20,
     "cool": 0,
-    "description": "Deals 73.8%/81.4%/78.3%/85.9%  ATK as Fire DMG to all enemies, with a 75% chance to inflict Burn and [Year Fire] for 2 turns.\n[Fiery Shooting Star] Effect Boost: Inflicts the target with [Year Fire], effect boost lasts for 1 turn.\n[Year Fire]: Take Fire DMG based on 63.4%/69.9%/67.3%/73.8% ATK for 2 turns, up to 4 stacks."
+    "description": "Deal Fire damage to all foes equal to 73.8%/81.3%/78.3%/85.9% of Attack, with a 90% chance to inflict Burn, and a 90% chance to inflict 1 Year-End Flames stack for 2 turns.\nAlso, for 1 turn, Yanhua Slash has a 90% chance to inflict 1 Year-End Flames stack.\nYear-End Flames: Take Fire damage equal to 63.4%/69.9%/67.3%/73.8% of Firecracker Yaoling's Attack for 2 turns. Stacks up to 4 times."
   },
   "skill3": {
-    "name": "Shooting Star Greetings",
+    "name": "Orange Blossom Blade",
     "element": "버프",
     "type": "버프",
     "sp": 24,
     "cool": 1,
-    "description": "Enchants Rin's sword with flame, enters [Iron Flower Dance]: Increase DMG Dealt by 34.3%/37.8%/36.4%/39.9%, upgrade Rin's Melee Attack to [Fiery Shooting Star] for 1 turn or until you use [Fiery Shooting Star].\n[Fiery Shooting Star]: Deals 127.4%/140.4%/135.2%/148.2% ATK as Fire DMG to all enemies and triggers Fire TECHNICAL, when triggering [Backdraft], increases the effects of TECHNICAL by 20%.\nStarts with a 1 turn cooldown. Rin can still use other skills after using this skill. This skill is not seen as a Persona skill."
+    "description": "Gain Flaming Sword Dance: Increase damage by 34.3%/37.8%/36.4%/39.9%, and melee attack evolves to Yanhua Slash. After activating Yanhua Slash, or at the end of the turn, remove this effect.\nThis skill has a cooldown time of 1 turn, and after using it, other skills can be used on the same turn (this skill is not considered a normal skill).\nYanhua Slash: Deal Fire damage to all foes equal to 127.4%/140.4%/135.2%/148.2% of Attack, and can activate Fire Technicals. When Fireburn is activated, the damage increase effect becomes 20%."
   },
   "skill_highlight": {
     "element": "화염광역",
     "type": "광역피해",
-    "description": "Deals 205.9%/227.0%/218.6%/239.7% ATK as Fire DMG to all enemies, increases own ATK by 19.5%/21.5%/20.7%/22.7% and [Fiery Shooting Star] DMG Dealt by 19.5%/21.5%/20.7%/22.7% for 2 turns."
+    "description": "Deal Fire damage to all foes equal to 226.5%/249.7%/240.5%/263.7% of Attack.\nIncrease Firecracker Yaoling's Attack by 19.5%/21.5%/20.7%/22.7%, and damage dealt by Yanhua Slash by 19.5%/21.5%/20.7%/22.7% for 2 turns.",
+    "cool": 4
   },
   "passive1": {
-    "name": "Auspicious",
+    "name": "Prosperity in Red",
     "element": "패시브",
-    "description": "Increase DMG Dealt to enemies inflicted with Burn by 36.0%."
+    "description": "Increase damage to foes inflicted with Burn by 36.0%.",
+    "cool": 0
   },
   "passive2": {
-    "name": "Pleasantness",
+    "name": "Happy New Year!",
     "element": "패시브",
-    "description": "At the start of battle, increase own ATK by 30.0% for 2 turns; When any allies trigger TECHNICAL, refresh this duration and boost the effect to 45.0%."
+    "description": "At the start of battle, increase Attack by 42.0% for 2 turns. When Firecracker Yaoling or allies activate a Technical, this effect's duration is reset, and the increase effect becomes 51.0%.",
+    "cool": 0
   }
 };
 window.jpCharacterSkillsData["야오링·사자무"] = {
   "name": "瑤鈴・新春",
   "skill1": {
-    "name": "新年の祝福",
+    "name": "紅炎おとし玉",
     "element": "화염광역",
     "type": "광역피해",
     "sp": 20,
     "cool": 0,
-    "description": "全ての敵に瑤鈴・新春の攻撃力の120.4%/132.8%/127.8%/140.2%の火炎属性ダメージを与え、2ターンの間、自身のクリティカル率が10%上昇する。『花火流星』が強化され、1ターンの間、攻撃力の72.8%/80.2%/77.3%/84.7%の火炎属性ダメージを追加で与える。"
+    "description": "敵全体に攻撃力120.4%/132.8%/127.8%/140.2%の火炎属性ダメージを与え、２ターンの間、自身のクリティカル率が１０%上昇する。\nさらに１ターンの間、『焔花斬』が、追加で攻撃力72.8%/80.3%/77.3%/84.7%の火炎属性ダメージを与えるようになる。"
   },
   "skill2": {
-    "name": "花火の歌",
+    "name": "開歳爆竹",
     "element": "화염광역",
     "type": "광역피해",
     "sp": 20,
     "cool": 0,
-    "description": "全ての敵に瑤鈴・新春の攻撃力の73.8%/81.4%/78.3%/85.9%の火炎属性ダメージを与え、75%の基本確率で敵を燃焼および『時の炎』状態にする。『花火流星』が強化され、75%の基本確率で1ターンの間、敵を『時の炎』状態にする。\n『時の炎』: 毎ターン、瑤鈴・新春の攻撃力の63.4%/69.9%/67.3%/73.8%の火炎属性ダメージを受け、2ターン持続する（最大4重複）。"
+    "description": "敵全体に攻撃力73.8%/81.3%/78.3%/85.9%の火炎属性ダメージを与え、２ターンの間、対象を９０%の確率で炎上状態にし、９０%の確率で『歳火』を１つ付与する。\nさらに１ターンの間、『焔花斬』が、９０%の確率で『歳火』を１つ付与できるようになる。\n『歳火』：２ターンの間、瑤鈴・新春の攻撃力63.4%/69.9%/67.3%/73.8%の火炎属性ダメージを受ける。４つまで累積できる。"
   },
   "skill3": {
-    "name": "流星の炎",
+    "name": "燈火刀橙花",
     "element": "버프",
     "type": "버프",
     "sp": 24,
     "cool": 1,
-    "description": "剣に火を灯し、『鉄花の舞』状態に入り、与えるダメージが34.3%/37.8%/36.4%/39.9%上昇し、期間中は近接攻撃が『花火流星』に強化される。効果は1ターン、または『花火流星』を使用するまで持続する。\n『花火流星』: 全ての敵に攻撃力の127.4%/140.4%/135.2%/148.2%の火炎属性ダメージと火炎属性TECHNICALを与える。『爆発燃焼』発動時、TECHNICAL効果が最大20%まで上昇する。\n初期クールタイムは1ターン。このスキル使用ターン中に他のスキルも使用可能。このスキルはペルソナスキルとして扱われない。"
+    "description": "自身を『焔花刀舞』状態にする：与ダメージが34.3%/37.8%/36.4%/39.9%上昇し、近接攻撃を『焔花斬』に強化する。この状態は『焔花斬』発動後、またはターン終了時に解除される。\nこのスキルは１ターンのクールタイムを持ち、使用後も同ターン内に他のスキルを使用できる（このスキルは通常のスキルとは見なされない）。\n『焔花斬』：敵全体に攻撃力127.4%/140.4%/135.2%/148.2%の火炎属性ダメージを与え、火炎テクニカルが発生するようになる。炎焼が発動する時、そのダメージ上昇効果が２０%になる。"
   },
   "skill_highlight": {
     "element": "화염광역",
     "type": "광역피해",
-    "description": "全ての敵に瑤鈴・新春の攻撃力の205.9%/227.0%/218.6%/239.7%の火炎属性ダメージを与える。自身の攻撃力が19.5%/21.5%/20.7%/22.7%上昇し、『花火流星』のダメージが19.5%/21.5%/20.7%/22.7%上昇、効果は2ターン持続する。"
+    "description": "敵全体に攻撃力226.5%/249.7%/240.5%/263.7%の火炎属性ダメージを与える。\n２ターンの間、自身の攻撃力が19.5%/21.5%/20.7%/22.7%上昇し、『焔花斬』の与ダメージが19.5%/21.5%/20.7%/22.7%上昇する。",
+    "cool": 4
   },
   "passive1": {
-    "name": "吉祥",
+    "name": "謹賀の紅",
     "element": "패시브",
-    "description": "燃焼状態の敵に与えるダメージが36.0%上昇する。"
+    "description": "炎上状態の敵への与ダメージが36.0%上昇する。",
+    "cool": 0
   },
   "passive2": {
-    "name": "円満",
+    "name": "新年快楽",
     "element": "패시브",
-    "description": "戦闘開始時、自身の攻撃力が30.0%上昇し、2ターン持続する。自身または味方がTECHNICALを与えると、この効果の持続時間がリセットされ、効果が最大45.0%まで上昇する。"
+    "description": "戦闘開始時、２ターンの間、自身の攻撃力が42.0%上昇する。自身か味方がテクニカルを発生させた時、この効果の持続時間をリセットし、上昇効果が51.0%になる。",
+    "cool": 0
   }
 };
 window.cnCharacterSkillsData = window.cnCharacterSkillsData || {};

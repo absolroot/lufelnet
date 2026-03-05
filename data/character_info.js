@@ -46,7 +46,7 @@ Object.assign(window.characterData, {
         "name": "코로마루",
         "name_en": "Koromaru",
         "name_jp": "コロマル",
-        "name_cn": "",
+        "name_cn": "虎狼丸",
         "name_tw": "",
         "codename": "KOROMARU",
         "skill_item": 6
@@ -257,6 +257,8 @@ Object.assign(window.characterData, {
         "name": "사하라 미유·여름",
         "name_en": "Miyu·Summer",
         "name_jp": "佐原 海夕 夏",
+        "name_cn": "佐原海夕·夏日",
+        "name_tw": "佐原海夕·夏日",
         "codename": "PUPPET·Summer",
         "skill_item": 5
     },
@@ -317,6 +319,8 @@ Object.assign(window.characterData, {
         "name": "사나다 아키히코",
         "name_en": "Akihiko Sanada",
         "name_jp": "真田 明彦",
+        "name_cn": "真田明彥",
+        "name_tw": "真田明彥",
         "codename": "AKIHIKO",
         "skill_item": 4
     },
@@ -476,6 +480,7 @@ Object.assign(window.characterData, {
         "name_en": "Firecracker Yaoling",
         "name_jp": "瑤鈴・新春",
         "name_cn": "李瑶铃·太平乐",
+        "name_tw": "李瑤鈴·太平樂",
         "codename": "RIN·Firecracker",
         "skill_item": 4
     },
@@ -494,6 +499,7 @@ Object.assign(window.characterData, {
         "name_en": "Tempest Riko",
         "name_jp": "理子・生命欲の暴走",
         "name_cn": "多祢村理子·未央",
+        "name_tw": "多禰村理子·未央",
         "codename": "WIND·Tempest",
         "skill_item": 4
     },
@@ -513,6 +519,7 @@ Object.assign(window.characterData, {
         "name_en": "Kasumi Yoshizawa",
         "name_jp": "芳澤 かすみ",
         "name_cn": "芳泽霞",
+        "name_tw": "芳澤霞",
         "codename": "VIOLET",
         "skill_item": 3
     },

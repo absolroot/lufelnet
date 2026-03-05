@@ -24,39 +24,39 @@ window.WeaponData["야오링·사자무"] = {
 window.enCharacterWeaponData["야오링·사자무"] = {
   "name": "Yaoling·Lion Dance",
   "weapon4-1": {
-    "name": "Timely Snow",
-    "health": 1791,
-    "attack": 634,
-    "defense": 313,
-    "skill_name": "Echo in the Waning Year",
-    "description": "ATK is increased by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.When casting [Fiery Shooting Star], increase ATK by 22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0%."
+    "name": "Cleansing Blade",
+    "health": 1791.59,
+    "attack": 634.27,
+    "defense": 313.75,
+    "skill_name": "",
+    "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.\nWhen using Yanhua Slash, increase Attack by 22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0%."
   },
   "weapon5-1": {
-    "name": "Shining Sun",
-    "health": 2239,
-    "attack": 792,
-    "defense": 391,
-    "skill_name": "Scarlet Blade, Golden Phoenix",
-    "description": "ATK is increased by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%.During [Iron Flower Dance], increase CRIT Rate by 16.0%/21.0%/21.0%/26.0%/26.0%/31.0%/31.0%. Increase DMG dealt by 34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0% when dealing Fire TECHNICAL."
+    "name": "New Year's Light",
+    "health": 2239.65,
+    "attack": 792.82,
+    "defense": 391.98,
+    "skill_name": "",
+    "description": "Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%.\nWhen Flaming Sword Dance is active, increase critical rate by 16.0%/21.0%/21.0%/26.0%/26.0%/31.0%/31.0%.\nWhen a Fire Technical is activated, increase that damage by 34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0%."
   }
 };
 window.jpCharacterWeaponData["야오링·사자무"] = {
   "name": "瑤鈴・新春",
   "weapon4-1": {
-    "name": "雪中の女",
-    "health": 1791,
-    "attack": 634,
-    "defense": 313,
-    "skill_name": "年末の叫び",
-    "description": "攻撃力が12.0%/12.0%/16.0%/16.0%/36.0%/36.0%/24.0%増加する。『花火流星』を発動時、攻撃力が22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0%増加する。"
+    "name": "辟邪霊刀",
+    "health": 1791.59,
+    "attack": 634.27,
+    "defense": 313.75,
+    "skill_name": "",
+    "description": "攻撃力が12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%上昇する。\n『焔花斬』を発動する時、攻撃力が22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0%上昇する。"
   },
   "weapon5-1": {
-    "name": "暖かな春星",
-    "health": 2239,
-    "attack": 792,
-    "defense": 391,
-    "skill_name": "赤い刃の金鳥",
-    "description": "攻撃力が30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%増加する。『鉄花の舞』状態中、クリティカル率が16.0%/21.0%/21.0%/26.0%/26.0%/31.0%/31.0%増加する。炎属性TECHNICALダメージが34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0%増加する。"
+    "name": "元旦橙花刀",
+    "health": 2239.65,
+    "attack": 792.82,
+    "defense": 391.98,
+    "skill_name": "",
+    "description": "攻撃力が30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%上昇する。\n『焔花刀舞』状態の時、クリティカル率が16.0%/21.0%/21.0%/26.0%/26.0%/31.0%/31.0%上昇する。\n火炎テクニカルが発生した時、そのダメージが34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0%上昇する。"
   }
 };
 window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};

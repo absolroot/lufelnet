@@ -2,8 +2,8 @@ window.characterSetting = window.characterSetting || {};
 window.characterSetting["야오링·사자무"] = {
     "role": "화염 광역 딜러",
     "video": ["0FCv7kZyfpE", "XVkekmUVS4Y"],
-    "video_en": [""],
-    "video_jp": [""],
+    "video_en": ["uv-e4x_FxLI"],
+    "video_jp": ["uv-e4x_FxLI","jNzdkC3WMDY"],
     "main_revelation": ["수락"],
     "sub_revelation": ["분쟁"],
     "sub_revel2": ["공격력", "대미지보너스"],

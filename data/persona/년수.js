@@ -128,7 +128,11 @@ window.personaFiles["년수"] = {
       "level": "6/7/8",
       "learn_level": "10",
       "name_cn": "耶加翁",
-      "desc_cn": "对1名敌人造成132.5/140.8/149.1%攻击力的诅咒属性伤害，使敌人获得1~2个诅咒效果。"
+      "desc_cn": "对1名敌人造成132.5/140.8/149.1%攻击力的诅咒属性伤害，使敌人获得1~2个诅咒效果。",
+      "name_en": "Eigaon",
+      "desc_en": "Deal Curse damage to 1 foe equal to 132.5/140.8/149.1% of Attack. Inflict 1 to 2 Curse stacks on the foe.",
+      "name_jp": "エイガオン",
+      "desc_jp": "敵単体に攻撃力132.5/140.8/149.1%の呪怨属性ダメージを与える。敵に１～２つの呪印を付与する。"
     },
     {
       "name": "세월의 재앙",
@@ -137,7 +141,11 @@ window.personaFiles["년수"] = {
       "level": "6/7/8",
       "learn_level": "20",
       "name_cn": "岁暮降厄",
-      "desc_cn": "诅咒属性伤害提升8.7%。"
+      "desc_cn": "诅咒属性伤害提升8.7%。",
+      "name_en": "Year End Calamity",
+      "desc_en": "Increase Curse damage by 8.7%.",
+      "name_jp": "歳暮の厄災",
+      "desc_jp": "呪怨属性の与ダメージが８.７%上昇する。"
     },
     {
       "name": "마하에이가온",
@@ -146,7 +154,11 @@ window.personaFiles["년수"] = {
       "level": "6/7/8",
       "learn_level": "30",
       "name_cn": "玛哈耶加翁",
-      "desc_cn": "对所有敌人造成66.5/70.7/74.9%攻击力的诅咒属性伤害，有概率使敌人获得1个诅咒效果。"
+      "desc_cn": "对所有敌人造成66.5/70.7/74.9%攻击力的诅咒属性伤害，有概率使敌人获得1个诅咒效果。",
+      "name_en": "Maeigaon",
+      "desc_en": "Deal Curse damage to all foes equal to 66.5/70.7/74.9% of Attack. Chance to inflict 1 Curse stack on foes.",
+      "name_jp": "マハエイガオン",
+      "desc_jp": "敵全体に攻撃力66.5/70.7/74.9%の呪怨属性ダメージを与える。一定の確率で敵に１つの呪印を付与する。"
     },
     {
       "name": "수면 내성Ⅳ",
@@ -155,7 +167,11 @@ window.personaFiles["년수"] = {
       "level": "6/7/8",
       "learn_level": "40",
       "name_cn": "睡眠耐性Ⅳ",
-      "desc_cn": "受到睡眠效果时，效果抵抗提升20.3%。"
+      "desc_cn": "受到睡眠效果时，效果抵抗提升20.3%。",
+      "name_en": "Resist Sleep IV",
+      "desc_en": "Increase Sleep resistance by 20.3%.",
+      "name_jp": "睡眠耐性Ⅳ",
+      "desc_jp": "睡眠の抵抗率が２０.３%上昇する。"
     }
   ],
   "name_cn": "年兽"

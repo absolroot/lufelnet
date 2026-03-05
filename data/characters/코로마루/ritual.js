@@ -20,20 +20,20 @@ window.ritualData["코로마루"] = {
 };
 window.enCharacterRitualData["코로마루"] = {
   "name": "Koromaru",
-  "r0": "City's Most Popular Star",
-  "r0_detail": "At the start of battle, designate 1 ally as [Master] and execute [Hound Co-Op]. Then automatically cast Assist Skill. Add [Soul Hunt] through Theurgy, and when attacking, inflict targets with Fire/Elec/Ice [Affinity Degradation]. Grant all allies [Loyal Hound's Roar] for 2 turns.\n[Loyal Hound's Roar]: Increase Attack by 15%, damage by 15%, and Theurgy damage by 20%.\nAfter selecting [Master], Koromaru no longer takes his own turn, but his turn-start/turn-end effects still trigger at the start/end of [Master]'s turn.\nWhen [Master] is a S.E.E.S. ally: [Master] can command Koromaru to use a Persona skill through the Assist Skill command slot, and can still use other Assist Skills in the usual way afterward.\nWhen [Master] is a non-S.E.E.S. ally: at the start of [Master]'s turn, Koromaru automatically uses a Persona skill based on [Master]'s attribute.",
+  "r0": "City's Top Dog",
+  "r0_detail": "At the start of battle, Koromaru can manually select 1 ally as the [Owner] and can use [Hound's Hunt] based on [Specific Conditions]. After selecting the [Owner], Koromaru will automatically use Assist Skill. \nKoromaru's Theurgy can inflict targets with [Soul Hunt]. Inflict targets with Fire/Elec/Ice [Attribute Downgrade] when using certain Persona skills to attack foes with [Soul Hunt], then grant all allies [Loyal Howl]: Increase Attack by 15%, damage by 15%, and Theurgy Damage Amp by 20%. Lasts for 2 turns.\n  [Specific Conditions]: When selecting a S.E.E.S. member as the [Owner], they can use the Assist Skill menu to command Koromaru to use Persona skills. They can use other Assist Skills as normal. When not selecting a S.E.E.S. member as the [Owner], at the start of their turn, Koromaru will automatically use Persona skills based on their attribute. After selecting the [Owner], Koromaru will no longer have his own action, but can still activate Koromaru's start/end of turn effects at the [Owner]'s start/end of turn.\n[Attribute Downgrade]: Null, Repel, and Drain become Resist, Resist becomes Normal, and Normal becomes Weak. Weak attributes take 25% more weakness damage.",
   "r1": "Woof!",
-  "r1_detail": "After completing [Hound Co-Op] with [Master], or after Koromaru actively uses a Persona skill, all allies permanently gain 25% critical damage (stacks up to 2 times). When [Master] takes fatal damage, their HP cannot drop below 1 and they recover 50% max HP (once per battle).",
-  "r2": "Long-Howling Vigil",
-  "r2_detail": "When inflicting [Affinity Degradation], additionally inflict Burn, Shock, Freeze, and Curse on the target. [Loyal Hound's Roar] additionally increases Attack by 60% and Defense by 30%.",
+  "r1_detail": "After [Hound's Hunt] or after Koromaru manually uses a Persona skill, permanently increase all allies' critcal damage by 25%. Stacks up to 2 times.\nWhen the [Owner] takes damage that would KO them, survive the attack with 1 HP and restore 50% max HP to them. This effect activates once per battle.",
+  "r2": "Lasting Wait",
+  "r2_detail": "When inflicting [Attribute Downgrade], inflict targets with Burn, Shock, Freeze, and Curse. \n[Loyal Howl] increase Attack by 60% and Defense by 30% more.",
   "r3": "Night Stalker",
-  "r3_detail": "Increase the skill levels of [Pitch-Black Hellfire] and [Silver Moonfrost] by 3, up to a maximum of Lv. 15.",
-  "r4": "Moonshadow Roar",
-  "r4_detail": "Theurgy: Curse damage dealt ignores affinity, and additionally increases target's damage taken by 20% permanently.",
-  "r5": "Soul Resonance",
-  "r5_detail": "Increase the skill levels of [Red Flash] and [Thief Tactics] by 3, up to a maximum of Lv. 15.",
+  "r3_detail": "Increase the skill levels of Black Inferno and Silver Frost by 3.",
+  "r4": "Moonlight Howling",
+  "r4_detail": "Theurgy: When dealing Curse damage, ignore foes' Curse resistance, permanently increase targets' damage taken by 20%.",
+  "r5": "Soul Sync",
+  "r5_detail": "Increase the skill levels of Scarlet Flash and Thief Tactics by 3.",
   "r6": "Brave Warrior",
-  "r6_detail": "At the start of Koromaru's turn, automatically activate [Underworld Judgment]: inflict all enemies with Fire/Elec/Ice [Affinity Degradation] at the same time, additionally increase Fire/Elec/Ice weakness damage taken by 25% and Fire/Elec/Ice damage taken by 25%. Increase the stack limit of [Loyal Hound's Roar] to 2."
+  "r6_detail": "At the start of Koromaru's turn, automatically activate [Judgment of Hades]: Inflict all foes with Fire Electric Ice [Attribute Downgrade], additionally increase target's Fire Electric Ice weakness damage taken by 20% and Fire Electric Ice damage taken by 20%.\nIncrease the maximum stacks of [Loyal Howl] to 2."
 };
 window.jpCharacterRitualData["코로마루"] = {
   "name": "コロマル",

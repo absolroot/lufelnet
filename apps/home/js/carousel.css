@@ -20,6 +20,12 @@
   right: 14% !important;
 }
 
+
+/*코로마루*/
+.char-img.single-banner[src*="%EC%BD%94%EB%A1%9C%EB%A7%88%EB%A3%A8"] {
+  scale: 0.9;
+}
+
 /* 미오 */
 .char-img.single-banner[src*="%EB%AF%B8%EC%98%A4"] {
   top: 65%;
@@ -42,8 +48,8 @@
 }
 
 
-
-.char-img.middle[alt*="사하라 미유·여름"] {
+/* 사하라 미유·여름 */
+.char-img.middle[src*="%EB%AF%B8%EC%9C%A0%C2%B7%EC%97%AC%EB%A6%84"] {
   scale: 0.75 !important;
 }
 

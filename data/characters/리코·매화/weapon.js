@@ -29,7 +29,7 @@ window.enCharacterWeaponData["리코·매화"] = {
     "attack": 517.62,
     "defense": 338.09,
     "skill_name": "",
-    "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.\nWhen user restores SP with a skill, increase own critical damage by 8.7%/11.3%/11.3%/13.9%/13.9%/16.5%/16.5% for 2 turns. Stacks up to 2 times."
+    "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.\nWhen Tempest Riko restores SP with a skill, increase her critical damage by 8.7%/11.3%/11.3%/13.9%/13.9%/16.5%/16.5% for 2 turns. Stacks up to 2 times."
   },
   "weapon5-1": {
     "name": "Windplum Dance",

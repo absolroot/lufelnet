@@ -1,5 +1,97 @@
 {
-  "data": null,
-  "msg": "Gacha not found.",
-  "status": 100
+  "data": {
+    "thief": [
+      {
+        "endTime": "2026-04-02 10:59:59",
+        "fiveStar": [
+          {
+            "name": "瑤鈴・新春",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "ルフェル",
+            "type": "thief"
+          },
+          {
+            "name": "神山 嶺央",
+            "type": "thief"
+          },
+          {
+            "name": "富山 佳代",
+            "type": "thief"
+          }
+        ],
+        "name": "紅獅子の到来",
+        "startTime": "2026-03-05 11:30:00",
+        "type": "PICKUP怪ドル契約・TARGET"
+      },
+      {
+        "endTime": "2026-04-02 10:59:59",
+        "fiveStar": [
+          {
+            "name": "瑤鈴・新春",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "ルフェル",
+            "type": "thief"
+          },
+          {
+            "name": "神山 嶺央",
+            "type": "thief"
+          },
+          {
+            "name": "富山 佳代",
+            "type": "thief"
+          }
+        ],
+        "name": "紅獅子の到来",
+        "startTime": "2026-03-05 11:30:00",
+        "type": "PICKUP怪ドル契約・CHANCE"
+      }
+    ],
+    "weapon": [
+      {
+        "endTime": "2026-04-02 10:59:59",
+        "fiveStar": [
+          {
+            "name": "元旦橙花刀",
+            "type": "weapon",
+            "user": "瑤鈴"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "ラヴァ・フレイム",
+            "type": "weapon",
+            "user": "ルフェル"
+          },
+          {
+            "name": "ジャスティスランサー",
+            "type": "weapon",
+            "user": "神山"
+          },
+          {
+            "name": "エメラルドチャーム",
+            "type": "weapon",
+            "user": "富山"
+          },
+          {
+            "name": "辟邪霊刀",
+            "type": "weapon",
+            "user": "瑤鈴"
+          }
+        ],
+        "name": "無音の硝煙",
+        "startTime": "2026-03-05 11:30:00",
+        "type": "武器補給"
+      }
+    ]
+  },
+  "msg": "OK",
+  "status": 0
 }

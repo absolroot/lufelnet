@@ -92,7 +92,7 @@
       {
         "name": "Purgatory",
         "quality": 5,
-        "skill": "Increase Attack by 28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/60.7%.\nBaptism of Nothingness (Aura): Gain following effects based on number of Purging Blaze stacks.\n1 stack: Increase user's Attack by 180/240/240/300/300/360/360, and increase all other allies' Attack by 150/200/200/249/249/300/300.\n2 stacks: Increase user's damage by 8.0%/10.7%/10.7%/13.3%/13.3%/16.0%/16.0%, and increase all other allies' damage by 3.0%/4.0%/4.0%/5.0%/5.0%/6.0%/6.0%.\n3 stacks: Increase party's Fire damage by 7.0%/9.3%/9.3%/11.7%/11.7%/14.0%/14.0%.\nAt the start of battle, gain 2 Purging Blaze stacks. When party deals Fire damage to foes, gain 1 Purging Blaze stack. At the start of the user's turn, spend 1 Purging Blaze stack.",
+        "skill": "Increase Attack by 28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/60.7%.\nAt the start of battle, gain 2 Trial by Fire stacks. When an ally deals Fire damage to a foe, gain 1 Trial by Fire stack. At the start of the user's turn, lose 1 Trial by Fire stack.\nInferno of Nothingness (Aura): Gain following effects based on number of Trial by Fire stacks. Stacks up to 3 times.\n1 stack: Increase user's Attack by 180/240/240/300/300/360/360, and increase all other allies' Attack by 150/200/200/249/249/300/300.\n2 stacks: Increase user's damage by 8.0%/10.7%/10.7%/13.3%/13.3%/16.0%/16.0%, and increase all other allies' damage by 3.0%/4.0%/4.0%/5.0%/5.0%/6.0%/6.0%.\n3 stacks: Increase party's Fire damage by 7.0%/9.3%/9.3%/11.7%/11.7%/14.0%/14.0%.",
         "stat": {
           "attack": 654.08,
           "defense": 356.79,
@@ -101,9 +101,9 @@
         "user": "Wonder"
       },
       {
-        "name": "Starsplitter",
+        "name": "tdxct-[Weapon_name_200113]",
         "quality": 5,
-        "skill": "Increase Attack by 28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/60.7%.\nAt the start of battle, or after any ally deals damage with an Almighty skill, activate Sympathy for 2 turns.\nSympathy: Based on the number of Flames of Desire effects active on the current party, activate the following effects.\n1 or more: Increase user's Attack by 15.0%/20.0%/20.0%/25.0%/25.0%/30.0%/30.0% and Almighty damage by 6.0%/8.0%/8.0%/10.0%/10.0%/12.0%/12.0%. Grant 50% of this effect to party.\n2 or more: Increase party's critical damage by 9.0%/12.0%/12.0%/15.0%/15.0%/18.0%/18.0%.",
+        "skill": "tdxct-[Skill_desc_59041]",
         "stat": {
           "attack": 654.08,
           "defense": 356.79,

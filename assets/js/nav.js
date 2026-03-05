@@ -37,7 +37,7 @@ class Navigation {
             kr: {
                 sectionGuide: '가이드',
                 sectionTools: '도구',
-                sectionMeta: '메타',
+                sectionMeta: 'META/TRIAL',
                 sectionSite: '사이트',
                 character: '캐릭터',
                 persona: '페르소나',
@@ -65,7 +65,7 @@ class Navigation {
             en: {
                 sectionGuide: 'Guide',
                 sectionTools: 'Tools',
-                sectionMeta: 'Meta',
+                sectionMeta: 'META/TRIAL',
                 sectionSite: 'Site',
                 character: 'Character',
                 persona: 'Persona',
@@ -93,7 +93,7 @@ class Navigation {
             jp: {
                 sectionGuide: 'ガイド',
                 sectionTools: 'ツール',
-                sectionMeta: 'メタ',
+                sectionMeta: 'META/TRIAL',
                 sectionSite: 'サイト',
                 character: '怪盗',
                 persona: 'ペルソナ',
@@ -121,7 +121,7 @@ class Navigation {
             cn: {
                 sectionGuide: '指南',
                 sectionTools: '工具',
-                sectionMeta: '评测',
+                sectionMeta: 'META/TRIAL',
                 sectionSite: '网站',
                 character: '角色',
                 persona: '面具',
@@ -187,8 +187,7 @@ class Navigation {
                     { key: 'synergy', textKey: 'synergy', icon: 'synergy.png', url: `/${currentLang}/synergy/` },
                     { key: 'wonderweapon', textKey: 'wonderweapon', icon: 'wonder-weapon.png', url: `/${currentLang}/wonder-weapon/` },
                     { key: 'maps', textKey: 'maps', icon: 'maps.png', url: `/${currentLang}/maps/` },
-                    { key: 'article', textKey: 'article', icon: 'article.png', url: `/${currentLang}/article/` },
-                    { key: 'velvet-trial', textKey: 'velvetTrial', icon: 'velvet-trial.png', url: `/${currentLang}/velvet-trial/` }
+                    { key: 'article', textKey: 'article', icon: 'article.png', url: `/${currentLang}/article/` }
                 ]
             },
             {
@@ -212,7 +211,8 @@ class Navigation {
                     { key: 'tier', textKey: 'tier', icon: 'tier.png', url: `/${currentLang}/tier/` },
                     { key: 'tactic-library', textKey: 'tacticLibrary', icon: 'tactic.png', url: `/${currentLang}/tactic/library/` },
                     { key: 'tactic-maker', textKey: 'tacticMaker', icon: 'tactic-maker.png', url: `/${currentLang}/tactic-maker/` },
-                    { key: 'astrolabe', textKey: 'astrolabe', icon: 'astrolabe.png', url: `/${currentLang}/astrolabe/` }
+                    { key: 'astrolabe', textKey: 'astrolabe', icon: 'astrolabe.png', url: `/${currentLang}/astrolabe/` },
+                    { key: 'velvet-trial', textKey: 'velvetTrial', icon: 'velvet-trial.png', url: `/${currentLang}/velvet-trial/` }
                 ]
             },
             {

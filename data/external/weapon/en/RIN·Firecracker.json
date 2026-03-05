@@ -1,0 +1,33 @@
+{
+  "data": {
+    "fiveStar": [
+      {
+        "name": "New Year's Light",
+        "quality": 5,
+        "skill": "Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%.\nWhen Flaming Sword Dance is active, increase critical rate by 16.0%/21.0%/21.0%/26.0%/26.0%/31.0%/31.0%.\nWhen a Fire Technical is activated, increase that damage by 34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0%.",
+        "stat": {
+          "attack": 792.82,
+          "defense": 391.98,
+          "hp": 2239.65
+        },
+        "user": "Yaoling"
+      }
+    ],
+    "fourStar": [
+      {
+        "name": "Cleansing Blade",
+        "quality": 4,
+        "skill": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.\nWhen using Yanhua Slash, increase Attack by 22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0%.",
+        "stat": {
+          "attack": 634.27,
+          "defense": 313.75,
+          "hp": 1791.59
+        },
+        "user": "Yaoling"
+      }
+    ],
+    "name": "Yaoling"
+  },
+  "msg": "OK",
+  "status": 0
+}

@@ -1462,3 +1462,27 @@ html[data-lang="jp"] .guide-content code {
     padding: 0 var(--guide-space-xs);
     user-select: none;
 }
+
+/* Mobile horizontal padding compaction for guide pages */
+@media (max-width: 768px) {
+    .main-wrapper {
+        width: calc(100% - 16px);
+        padding-left: var(--guide-space-sm);
+        padding-right: var(--guide-space-sm);
+    }
+
+    .guide-view-container {
+        padding-left: var(--guide-space-sm);
+        padding-right: var(--guide-space-sm);
+    }
+
+    .guide-header {
+        padding-left: var(--guide-space-sm);
+        padding-right: var(--guide-space-sm);
+    }
+
+    .guide-content {
+        padding-left: var(--guide-space-sm);
+        padding-right: var(--guide-space-sm);
+    }
+}

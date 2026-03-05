@@ -779,6 +779,40 @@ const defenseCalcData = {
             note_jp: "축복"
         },
     ],
+    "코로마루":[
+        {
+            id: "koromaru1",
+            type: "테우르기아",
+            target: "광역",
+            skillIcon: `${BASE_URL}/assets/img/skill-element/주원광역.png`,
+            skillName: "블랙 하운드",
+            options: ["LV10","LV10+심상5","LV13","LV13+심상5"],
+            values: {
+                "LV10": 77.94,
+                "LV10+심상5": 85.92,
+                "LV13": 82.77,
+                "LV13+심상5": 90.76,
+            },
+            defaultOption: "LV13+심상5",
+            value: 90.76,
+            duration: "2턴",
+            note: "",
+            note_en: "",
+            note_jp: ""
+        },
+        {
+            id: "koromaru2",
+            type: "지원기술",
+            target: "광역",
+            skillIcon: `${BASE_URL}/assets/img/skill-element/디버프광역.png`,
+            skillName: "지원기술",
+            value: 30,
+            duration: "",
+            note: "",
+            note_en: "",
+            note_jp: ""
+        },
+    ],
     "준페이":[
         {
             id: "junpei1",

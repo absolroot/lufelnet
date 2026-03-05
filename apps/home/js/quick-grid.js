@@ -237,7 +237,7 @@
     };
 
     // New 배지를 표시할 아이템 목록
-    const newItems = ['guide', 'velvetTrial'];
+    const newItems = ['character', 'guide', 'velvetTrial'];
 
     const render = () => {
         const root = document.getElementById('quick-grid');

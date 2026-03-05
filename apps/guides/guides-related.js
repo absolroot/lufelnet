@@ -52,13 +52,8 @@
         return guide?.titles?.[lang] || guide?.titles?.kr || guide?.title || untitled;
     }
 
-    function getGuideUrl(guide, lang) {
-        if (hasGuides() && typeof Guides.getGuideUrl === 'function') {
-            return Guides.getGuideUrl(guide, lang);
-        }
-        const id = encodeURIComponent(normalizeGuideId(guide?.id));
-        if (!id) return '/kr/article/';
-        return `/${lang}/article/${id}/`;
+    function getGuideExcerpt(guide, lang) {
+        return guide?.excerpts?.[lang] || guide?.excerpts?.kr || '';
     }
 
     function getCategoryLabel(guide, lang) {
@@ -70,6 +65,15 @@
         return categoryId;
     }
 
+    function getGuideUrl(guide, lang) {
+        if (hasGuides() && typeof Guides.getGuideUrl === 'function') {
+            return Guides.getGuideUrl(guide, lang);
+        }
+        const id = encodeURIComponent(normalizeGuideId(guide?.id));
+        if (!id) return '/kr/article/';
+        return `/${lang}/article/${id}/`;
+    }
+
     function formatGuideDate(guide, lang) {
         const dateValue = String(guide?.date || '');
         if (!dateValue) return '';
@@ -77,6 +81,20 @@
             return Guides.formatDate(dateValue, lang);
         }
         return dateValue;
+    }
+
+    function getOptimizedThumbnail(url, width) {
+        if (!url) return '';
+
+        let fullUrl = String(url);
+        if (fullUrl.startsWith('/')) {
+            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                return fullUrl;
+            }
+            fullUrl = window.location.origin + fullUrl;
+        }
+
+        return `//wsrv.nl/?url=${encodeURIComponent(fullUrl)}&w=${width}&output=webp`;
     }
 
     function readViewedGuides() {
@@ -252,17 +270,40 @@
 
                 listEl.innerHTML = recommendations.map((item) => {
                     const title = getGuideTitle(item, lang);
-                    const url = getGuideUrl(item, lang);
-                    const date = formatGuideDate(item, lang);
+                    const excerpt = getGuideExcerpt(item, lang);
                     const categoryLabel = getCategoryLabel(item, lang);
                     const categoryClass = sanitizeClassToken(item?.category);
+                    const url = getGuideUrl(item, lang);
+                    const date = formatGuideDate(item, lang);
+                    const thumbnail = String(item?.thumbnail || '');
+                    const thumb160 = thumbnail ? getOptimizedThumbnail(thumbnail, 160) : '';
+                    const thumb240 = thumbnail ? getOptimizedThumbnail(thumbnail, 240) : '';
+                    const thumb360 = thumbnail ? getOptimizedThumbnail(thumbnail, 360) : '';
 
                     return `
-                        <a class="guide-related-item" href="${escapeHtml(url)}">
-                            <h3 class="guide-related-item-title">${escapeHtml(title)}</h3>
-                            <div class="guide-related-meta">
-                                ${categoryLabel ? `<span class="guide-related-category cat-${categoryClass}">${escapeHtml(categoryLabel)}</span>` : ''}
-                                ${date ? `<span class="guide-related-date">${escapeHtml(date)}</span>` : ''}
+                        <a class="guide-related-item${thumbnail ? '' : ' no-thumbnail'}" href="${escapeHtml(url)}">
+                            ${thumbnail ? `
+                                <div class="guide-related-thumb-wrap">
+                                    <img
+                                        class="guide-related-thumb"
+                                        src="${escapeHtml(thumb240)}"
+                                        srcset="${escapeHtml(thumb160)} 160w, ${escapeHtml(thumb240)} 240w, ${escapeHtml(thumb360)} 360w"
+                                        sizes="(max-width: 768px) 42vw, 100px"
+                                        alt="${escapeHtml(title)}"
+                                        width="100"
+                                        height="65"
+                                        loading="lazy"
+                                        decoding="async"
+                                        fetchpriority="low">
+                                </div>
+                            ` : ''}
+                            <div class="guide-related-info">
+                                <div class="guide-related-title-row">
+                                    ${categoryLabel ? `<span class="guide-related-category${categoryClass ? ` cat-${categoryClass}` : ''}">${escapeHtml(categoryLabel)}</span>` : ''}
+                                    <h3 class="guide-related-item-title">${escapeHtml(title)}</h3>
+                                </div>
+                                ${excerpt ? `<p class="guide-related-excerpt">${escapeHtml(excerpt)}</p>` : ''}
+                                ${date ? `<div class="guide-related-meta"><span class="guide-related-date">${escapeHtml(date)}</span></div>` : ''}
                             </div>
                         </a>
                     `;

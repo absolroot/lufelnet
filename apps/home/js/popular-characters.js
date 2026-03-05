@@ -6,9 +6,6 @@
     const POPULAR_CHARACTERS_OVERRIDE = { kr: null, en: null, jp: null };
     const POPULAR_CHARACTERS_FIXED = {
         kr: [
-            { name: '나루미', badge: 'NEW' },
-            { name: '렌', badge: 'NEW' },
-            { name: '야오링·사자무', badge: 'NEW' },
             { name: 'J&C', badge: 'HOT' },
             { name: '마나카', badge: 'HOT' },
             { name: '미나미·여름', badge: 'HOT' },

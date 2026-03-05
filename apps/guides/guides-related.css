@@ -14,50 +14,82 @@
 }
 
 .guide-related-list {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--guide-space-sm);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 10px;
+    border: 1px solid var(--guide-border-subtle);
+    background: rgba(255, 255, 255, 0.02);
 }
 
 .guide-related-item {
-    display: block;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
     text-decoration: none;
-    background: var(--guide-bg-tertiary);
-    border: 1px solid var(--guide-border-subtle);
-    border-radius: 10px;
-    padding: var(--guide-space-md);
-    transition: border-color var(--guide-transition-fast), background var(--guide-transition-fast), transform var(--guide-transition-fast);
+    color: inherit;
+    padding: 15px;
+    border-bottom: 1px solid var(--guide-border-subtle);
+    background: rgba(255, 255, 255, 0.01);
+    transition: background-color var(--guide-transition-fast);
+}
+
+.guide-related-item:first-child {
+    border-radius: 8px 8px 0 0;
+}
+
+.guide-related-item:last-child {
+    border-bottom: none;
+    border-radius: 0 0 8px 8px;
+}
+
+.guide-related-item:only-child {
+    border-radius: 8px;
 }
 
 .guide-related-item:hover {
-    border-color: var(--guide-border-default);
-    background: var(--guide-bg-elevated);
-    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.04);
 }
 
-.guide-related-item-title {
-    margin: 0;
-    font-size: var(--guide-text-base);
-    line-height: 1.45;
-    font-weight: 600;
-    color: var(--guide-text-primary);
+.guide-related-item.no-thumbnail {
+    gap: 0;
 }
 
-.guide-related-meta {
-    margin-top: var(--guide-space-sm);
+.guide-related-thumb-wrap {
+    flex-shrink: 0;
+    width: 100px;
+    height: 65px;
+    border-radius: 6px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.guide-related-thumb {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.guide-related-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.guide-related-title-row {
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
-    gap: var(--guide-space-sm);
+    gap: 6px;
+    min-width: 0;
 }
 
 .guide-related-category {
     display: inline-flex;
     align-items: center;
-    font-size: 10px;
+    flex-shrink: 0;
+    font-size: 8px;
     font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.02em;
     color: var(--guide-accent-gold);
     background: var(--guide-accent-gold-dim);
     border-radius: 4px;
@@ -89,21 +121,52 @@
     background: rgba(138, 212, 91, 0.12);
 }
 
+.guide-related-item-title {
+    margin: 0;
+    flex: 1;
+    min-width: 0;
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 600;
+    color: var(--guide-text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.guide-related-excerpt {
+    margin: 6px 0 0;
+    font-size: 12px;
+    color: #a0a0a0;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.guide-related-meta {
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    min-height: 16px;
+}
+
 .guide-related-date {
-    font-size: var(--guide-text-xs);
+    font-size: 12px;
     color: var(--guide-text-tertiary);
 }
 
 .guide-related-empty {
     margin: 0;
+    padding: 14px 16px;
     color: var(--guide-text-tertiary);
     font-size: var(--guide-text-sm);
-    padding: var(--guide-space-sm) 0;
 }
 
 @media (max-width: 768px) {
     .guide-related {
-        margin: 0 var(--guide-space-md) var(--guide-space-md);
+        margin: 0 var(--guide-space-sm) var(--guide-space-sm);
         padding-top: var(--guide-space-md);
     }
 
@@ -112,10 +175,33 @@
     }
 
     .guide-related-item {
-        padding: var(--guide-space-sm) var(--guide-space-md);
+        padding: 12px;
+        gap: 12px;
+    }
+
+    .guide-related-thumb-wrap {
+        width: 96px;
+        height: 62px;
     }
 
     .guide-related-item-title {
-        font-size: var(--guide-text-sm);
+        font-size: 14px;
+        line-height: 1.25;
+    }
+
+    .guide-related-excerpt {
+        margin-top: 4px;
+        font-size: 11px;
+        line-height: 1.4;
+    }
+
+    .guide-related-category {
+        font-size: 7px;
+        padding: 2px 5px;
+    }
+
+    .guide-related-meta,
+    .guide-related-date {
+        font-size: 11px;
     }
 }

@@ -398,7 +398,7 @@ const enRevelationData = {
         },
         "Agility": {
             "Satiety": "Increase All-Out Attack DMG by 16%.",
-            "Hindrance": "During combat, increase Ailment Accuracy by 20%. When the user's Ailment Accuracy reaches 100%, increase all allies' ATK by 10%.",
+            "Hindrance": "During combat, increase Ailment Accuracy by 20%, and grant all allies a DMG Bonus equal to 10% of the user's Ailment Accuracy (up to 10% DMG Bonus).",
             "type": ["미출시"]
         },
         "Nativity": { // 탄생

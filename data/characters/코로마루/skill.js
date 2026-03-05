@@ -4,153 +4,152 @@ window.jpCharacterSkillsData = window.jpCharacterSkillsData || {};
 window.characterSkillsData["코로마루"] = {
   "name": "코로마루",
   "skill1": {
-    "name": "칠흑의 지옥불꽃",
+    "name": "칠흑의 지옥불",
     "element": "주원광역",
-    "type": "광역 피해",
-    "sp": 20,
+    "type": "디버프",
+    "sp": 22,
     "cool": 0,
-    "description": "모든 적에게 공격력 비례 일정 수치의 주원 속성 피해를 가하며, 일정 턴 동안 받는 피해가 증가한다(코로마루 페르소나가 제공하는 동일 계열 효과와 중첩 불가).\n또한 받는 화염 피해가 증가한다. 동시에 일정 %의 기본 확률로 목표를 연소 상태에 빠뜨린다.\n목표가 『내성 강등』 상태일 경우, 내성을 무시하고 일정 수치의 다운 게이지를 감소시킨다.\n목표가 화염 속성 『내성 강등』 상태일 경우, 스킬 피해가 증가하고 내성을 무시하여 추가로 일정 수치의 다운 게이지를 감소시킨다."
+    "description": "모든 적에게 공격력 115.1%/126.9%/122.1%/133.9%의 주원 속성 대미지를 주고, 2턴 동안 받는 대미지가 3.9%/4.3%/4.1%/4.5% 증가(코로마루의 효과 명중 100%당 받는 대미지 추가로 9.14% 증가, 최대 170.8%/188.3%/181.3%/198.8%까지 계산)한다. 동시에 2턴 동안 받는 화염 속성 대미지가 3.9%/4.3%/4.1%/4.5% 증가(코로마루의 효과 명중 100%당 추가로 9.14% 증가, 최대 170.8%/188.3%/181.3%/198.8%까지 계산)한다. 동시에 97.6%/97.6%/103.6%/103.6%의 기본 확률로 화상을 부여한다. 목표가 『내성 강등』 상태일 경우 내성을 무시하고 다운 수치를 2포인트 감소시키며, 화염 속성 『내성 강등』 상태일 경우 스킬 대미지가 100% 증가하고 다운 수치를 추가로 2포인트 감소시킨다."
   },
   "skill2": {
-    "name": "홍섬격",
+    "name": "레드 플래시",
     "element": "주원광역",
-    "type": "광역 피해",
-    "sp": 0,
+    "type": "디버프",
+    "sp": 22,
     "cool": 0,
-    "description": "모든 적에게 공격력 비례 일정 수치의 주원 속성 피해를 가하며, 일정 턴 동안 받는 피해가 증가한다(코로마루 페르소나가 제공하는 동일 계열 효과와 중첩 불가).\n또한 받는 전격 피해가 증가한다. 동시에 일정 %의 기본 확률로 목표를 감전 상태에 빠뜨린다.\n목표가 『내성 강등』 상태일 경우, 내성을 무시하고 일정 수치의 다운 게이지를 감소시킨다.\n목표가 전격 속성 『내성 강등』 상태일 경우, 스킬 피해가 증가하고 내성을 무시하여 추가로 일정 수치의 다운 게이지를 감소시킨다."
+    "description": "모든 적에게 공격력 115.1%/126.9%/122.1%/133.9%의 주원 속성 대미지를 주고, 2턴 동안 받는 대미지가 3.9%/4.3%/4.1%/4.5% 증가(코로마루의 효과 명중 100%당 받는 대미지 추가로 9.14% 증가, 최대 170.8%/188.3%/181.3%/198.8%까지 계산하며 다른 페르소나 스킬 효과와 중첩 불가), 받는 전격 속성 대미지가 3.9%/4.3%/4.1%/4.5% 증가(코로마루의 효과 명중 100%당 추가로 9.14% 증가, 최대 170.8%/188.3%/181.3%/198.8%까지 계산)한다. 동시에 97.6%/97.6%/103.6%/103.6%의 기본 확률로 감전을 부여한다. 목표가 『내성 강등』 상태일 경우 내성을 무시하고 다운 수치를 2포인트 감소시키며, 전격 속성 『내성 강등』 상태일 경우 스킬 대미지가 100% 증가하고 다운 수치를 추가로 2포인트 감소시킨다."
   },
   "skill3": {
-    "name": "은월서리",
+    "name": "은색의 달그림자",
     "element": "주원광역",
-    "type": "광역 피해",
-    "sp": 24,
+    "type": "디버프",
+    "sp": 22,
     "cool": 0,
-    "description": "모든 적에게 공격력 비례 일정 수치의 주원 속성 피해를 가하며, 일정 턴 동안 받는 피해가 증가한다(코로마루 페르소나가 제공하는 동일 계열 효과와 중첩 불가).\n또한 받는 빙결 피해가 증가한다. 동시에 일정 %의 기본 확률로 목표를 빙결 상태에 빠뜨린다.\n목표가 『내성 강등』 상태일 경우, 내성을 무시하고 일정 수치의 다운 게이지를 감소시킨다.\n목표가 빙결 속성 『내성 강등』 상태일 경우, 스킬 피해가 증가하고 내성을 무시하여 추가로 일정 수치의 다운 게이지를 감소시킨다."
+    "description": "모든 적에게 공격력 115.1%/126.9%/122.1%/133.9%의 주원 속성 대미지를 주고, 2턴 동안 받는 대미지가 3.9%/4.3%/4.1%/4.5% 증가(코로마루의 효과 명중 100%당 받는 대미지 추가로 9.14% 증가, 최대 170.8%/188.3%/181.3%/198.8%까지 계산하며 다른 페르소나 스킬 효과와 중첩 불가), 받는 빙결 속성 대미지가 3.9%/4.3%/4.1%/4.5% 증가(코로마루의 효과 명중 100%당 추가로 9.14% 증가, 최대 170.8%/188.3%/181.3%/198.8%까지 계산)한다. 동시에 97.6%/97.6%/103.6%/103.6%의 기본 확률로 동결을 부여한다. 목표가 『내성 강등』 상태일 경우 내성을 무시하고 다운 수치를 2포인트 감소시키며, 빙결 속성 『내성 강등』 상태일 경우 스킬 대미지가 100% 증가하고 다운 수치를 추가로 2포인트 감소시킨다."
   },
   "skill_highlight": {
-    "name": "테우르기아 - 블랙 하운드",
+    "name": "블랙 하운드",
     "element": "주원광역",
-    "type": "광역 피해",
-    "cool": 0,
-    "description": "발동 조건: 테우르기아 게이지 70\n모든 적에게 공격력 비례 일정 수치의 주원 속성 피해를 가하고 『영혼 추적』을 부여하며, 동시에 목표의 방어력을 일정 % 감소시킨다. 일정 턴 지속된다."
+    "type": "디버프",
+    "description": "발동 조건: 테우르기아 에너지 70포인트\n모든 적에게 공격력 206.9%/228.1%/219.6%/240.8%의 주원 속성 대미지를 주고 『영혼의 추적』을 추가하며, 2턴 동안 목표의 방어력을 15.6%/17.2%/16.6%/18.2% 감소시킨다(코로마루의 효과 명중 100%당 방어력 추가로 36.5% 감소, 최대 170.8%/188.3%/181.3%/198.8%까지 계산)."
   },
   "skill_support": {
-    "name": "지원 스킬",
-    "element": "버프",
-    "type": "보조",
-    "description": "모든 적의 방어력을 영구적으로 일정 수치 감소시키고 자신의 테우르기아 에너지를 일정 수치 회복한다(상한을 초과하여 회복 가능).",
+    "name": "지원 기술",
+    "element": "디버프광역",
+    "type": "디버프",
+    "description": "모든 적의 방어력을 영구적으로 30% 감소시키고, 자신은 상한을 돌파할 수 있는 테우르기아 에너지를 70포인트 회복한다.",
     "cool": 0
   },
   "passive1": {
-    "name": "기민함",
+    "name": "기민",
     "element": "패시브",
-    "description": "연소/감전/빙결 상태를 부여할 때, 목표가 받는 화염/전격/빙결 피해가 일정 % 증가하며 2턴 지속된다."
+    "description": "화상/감전/동결 상태 추가 시 2턴 동안 목표가 받는 화염/전격/빙결 대미지가 24.0% 증가한다."
   },
   "passive2": {
     "name": "충견",
     "element": "패시브",
-    "description": "코로마루가 전장에 있을 때, 자신은 자신의 효과 명중 일정 수치에 해당하는 공격력 보너스를 획득하며, 다른 아군은 코로마루 효과 명중 일정 수치에 해당하는 공격력 보너스를 획득한다."
+    "description": "코로마루가 전장에 있을 때, 자신은 효과 명중의 30.0%에 해당하는 공격력 보너스를 획득하고, 다른 동료는 코로마루 효과 명중의 15.0%에 해당하는 공격력 보너스를 획득한다."
   }
 };
 window.enCharacterSkillsData["코로마루"] = {
-  "name": "",
+  "name": "Koromaru",
   "skill1": {
-    "name": "",
+    "name": "Pitch-Black Hellfire",
     "element": "주원광역",
     "type": "광역 피해",
-    "sp": 20,
+    "sp": 22,
     "cool": 0,
-    "description": ""
+    "description": "Deal Curse damage to all foes equal to 115.1%/126.9%/122.1%/133.9% of Attack, and increase damage taken by 3.9%/4.3%/4.1%/4.5% for 2 turns (for every 100% Ailment Accuracy Koromaru has, damage taken increases by an additional 9.14%, up to 170.8%/188.3%/181.3%/198.8% Ailment Accuracy counted). Increase Fire damage taken by 3.9%/4.3%/4.1%/4.5% (for every 100% Ailment Accuracy Koromaru has, additionally increases by 9.14%, up to 170.8%/188.3%/181.3%/198.8% Ailment Accuracy counted). At the same time, inflict Burn with a base chance of 97.6%/97.6%/103.6%/103.6%. If the target is in [Affinity Degradation], ignore affinity and decrease Down Points by 2. If the target is in Fire [Affinity Degradation], increase this skill's damage by 100% and additionally decrease Down Points by 2."
   },
   "skill2": {
-    "name": "",
+    "name": "Red Flash",
     "element": "주원광역",
     "type": "광역 피해",
-    "sp": 0,
+    "sp": 22,
     "cool": 0,
-    "description": ""
+    "description": "Deal Curse damage to all foes equal to 115.1%/126.9%/122.1%/133.9% of Attack, and increase damage taken by 3.9%/4.3%/4.1%/4.5% for 2 turns (for every 100% Ailment Accuracy Koromaru has, damage taken increases by an additional 9.14%, up to 170.8%/188.3%/181.3%/198.8% Ailment Accuracy counted; cannot stack with similar effects from Koromaru's Persona skills). Increase Elec damage taken by 3.9%/4.3%/4.1%/4.5% (for every 100% Ailment Accuracy Koromaru has, additionally increases by 9.14%, up to 170.8%/188.3%/181.3%/198.8% Ailment Accuracy counted). At the same time, inflict Shock with a base chance of 97.6%/97.6%/103.6%/103.6%. If the target is in [Affinity Degradation], ignore affinity and decrease Down Points by 2. If the target is in Elec [Affinity Degradation], increase this skill's damage by 100% and additionally decrease Down Points by 2."
   },
   "skill3": {
-    "name": "",
+    "name": "Silver Moonfrost",
     "element": "주원광역",
     "type": "광역 피해",
-    "sp": 24,
+    "sp": 22,
     "cool": 0,
-    "description": ""
+    "description": "Deal Curse damage to all foes equal to 115.1%/126.9%/122.1%/133.9% of Attack, and increase damage taken by 3.9%/4.3%/4.1%/4.5% for 2 turns (for every 100% Ailment Accuracy Koromaru has, damage taken increases by an additional 9.14%, up to 170.8%/188.3%/181.3%/198.8% Ailment Accuracy counted; cannot stack with similar effects from Koromaru's Persona skills). Increase Ice damage taken by 3.9%/4.3%/4.1%/4.5% (for every 100% Ailment Accuracy Koromaru has, additionally increases by 9.14%, up to 170.8%/188.3%/181.3%/198.8% Ailment Accuracy counted). At the same time, inflict Freeze with a base chance of 97.6%/97.6%/103.6%/103.6%. If the target is in [Affinity Degradation], ignore affinity and decrease Down Points by 2. If the target is in Ice [Affinity Degradation], increase this skill's damage by 100% and additionally decrease Down Points by 2."
   },
   "skill_highlight": {
-    "name": "",
+    "name": "Black Hound",
     "element": "주원광역",
     "type": "광역 피해",
     "cool": 0,
-    "description": ""
+    "description": "Use condition: 70 Theurgy Energy\nDeal Curse damage to all foes equal to 206.9%/228.1%/219.6%/240.8% of Attack and inflict [Soul Hunt]. Decrease target's Defense by 15.6%/17.2%/16.6%/18.2% for 2 turns (for every 100% Ailment Accuracy Koromaru has, Defense decreases by an additional 36.5%, up to 170.8%/188.3%/181.3%/198.8% Ailment Accuracy counted)."
   },
   "skill_support": {
-    "name": "",
+    "name": "Assist Skill",
     "element": "버프",
     "type": "보조",
-    "description": "",
+    "description": "Permanently decrease all foes' Defense by 30%, and restore 70 Theurgy Energy to self that can exceed the cap.",
     "cool": 0
   },
   "passive1": {
-    "name": "-",
+    "name": "Agility",
     "element": "패시브",
-    "description": ""
+    "description": "When inflicting Burn/Shock/Freeze, increase the target's Fire/Elec/Ice damage taken by 36.0% for 2 turns."
   },
   "passive2": {
-    "name": "-",
+    "name": "Loyal Hound",
     "element": "패시브",
-    "description": ""
+    "description": "When Koromaru is on the field, Koromaru gains an Attack bonus equal to 36.0% of his Ailment Accuracy, and other allies gain an Attack bonus equal to 18.0% of Koromaru's Ailment Accuracy."
   }
 };
 window.jpCharacterSkillsData["코로마루"] = {
-  "name": "",
+  "name": "コロマル",
   "skill1": {
-    "name": "",
+    "name": "漆黒の地獄火",
     "element": "주원광역",
     "type": "광역 피해",
-    "sp": 20,
+    "sp": 22,
     "cool": 0,
-    "description": ""
+    "description": "敵全体に攻撃力115.1%/126.9%/122.1%/133.9%の呪怨属性ダメージを与え、2ターンの間、被ダメージを3.9%/4.3%/4.1%/4.5%上昇させる（コロマルの効果命中100%ごとに被ダメージがさらに9.14%上昇、最大170.8%/188.3%/181.3%/198.8%まで計算）。さらに、受ける火炎属性ダメージを3.9%/4.3%/4.1%/4.5%上昇させる（コロマルの効果命中100%ごとにさらに9.14%上昇、最大170.8%/188.3%/181.3%/198.8%まで計算）。同時に、97.6%/97.6%/103.6%/103.6%の基礎確率で燃焼を付与する。対象が『適応性降級』状態の場合、適応性を無視してダウン値を2ポイント減少させる。対象が火炎属性『適応性降級』状態の場合、スキルダメージが100%上昇し、さらにダウン値を2ポイント減少させる。"
   },
   "skill2": {
-    "name": "",
+    "name": "レッドフラッシュ",
     "element": "주원광역",
     "type": "광역 피해",
-    "sp": 0,
+    "sp": 22,
     "cool": 0,
-    "description": ""
+    "description": "敵全体に攻撃力115.1%/126.9%/122.1%/133.9%の呪怨属性ダメージを与え、2ターンの間、被ダメージを3.9%/4.3%/4.1%/4.5%上昇させる（コロマルの効果命中100%ごとに被ダメージがさらに9.14%上昇、最大170.8%/188.3%/181.3%/198.8%まで計算。同系統のペルソナスキル効果とは重複不可）。さらに、受ける電撃属性ダメージを3.9%/4.3%/4.1%/4.5%上昇させる（コロマルの効果命中100%ごとにさらに9.14%上昇、最大170.8%/188.3%/181.3%/198.8%まで計算）。同時に、97.6%/97.6%/103.6%/103.6%の基礎確率で感電を付与する。対象が『適応性降級』状態の場合、適応性を無視してダウン値を2ポイント減少させる。対象が電撃属性『適応性降級』状態の場合、スキルダメージが100%上昇し、さらにダウン値を2ポイント減少させる。"
   },
   "skill3": {
-    "name": "",
+    "name": "銀の月霜",
     "element": "주원광역",
     "type": "광역 피해",
-    "sp": 24,
-    "cool": 1,
-    "description": ""
+    "sp": 22,
+    "cool": 0,
+    "description": "敵全体に攻撃力115.1%/126.9%/122.1%/133.9%の呪怨属性ダメージを与え、2ターンの間、被ダメージを3.9%/4.3%/4.1%/4.5%上昇させる（コロマルの効果命中100%ごとに被ダメージがさらに9.14%上昇、最大170.8%/188.3%/181.3%/198.8%まで計算。同系統のペルソナスキル効果とは重複不可）。さらに、受ける氷結属性ダメージを3.9%/4.3%/4.1%/4.5%上昇させる（コロマルの効果命中100%ごとにさらに9.14%上昇、最大170.8%/188.3%/181.3%/198.8%まで計算）。同時に、97.6%/97.6%/103.6%/103.6%の基礎確率で凍結を付与する。対象が『適応性降級』状態の場合、適応性を無視してダウン値を2ポイント減少させる。対象が氷結属性『適応性降級』状態の場合、スキルダメージが100%上昇し、さらにダウン値を2ポイント減少させる。"
   },
   "skill_highlight": {
-    "name": "",
+    "name": "黒き猟犬",
     "element": "주원광역",
     "type": "광역 피해",
     "cool": 0,
-    "description": ""
+    "description": "発動条件：テウルギアエネルギー70ポイント\n敵全体に攻撃力206.9%/228.1%/219.6%/240.8%の呪怨属性ダメージを与え、『魂追猟』を付与する。さらに2ターンの間、対象の防御力を15.6%/17.2%/16.6%/18.2%低下させる（コロマルの効果命中100%ごとに防御力がさらに36.5%低下、最大170.8%/188.3%/181.3%/198.8%まで計算）。"
   },
   "skill_support": {
-    "name": "",
+    "name": "サポートスキル",
     "element": "버프",
     "type": "보조",
-    "description": "",
+    "description": "敵全体の防御力を永続的に30%低下させ、自身は上限を突破可能なテウルギアエネルギーを70ポイント回復する。",
     "cool": 0
   },
   "passive1": {
-    "name": "-",
+    "name": "機敏",
     "element": "패시브",
-    "description": ""
+    "description": "燃焼/感電/凍結を付与した時、2ターンの間、対象が受ける火炎/電撃/氷結ダメージが36.0%上昇する。"
   },
   "passive2": {
-    "name": "-",
+    "name": "忠犬",
     "element": "패시브",
-    "description": ""
+    "description": "コロマルが戦場にいる時、自身は効果命中の36.0%に相当する攻撃力ボーナスを獲得し、他の味方はコロマルの効果命中の18.0%に相当する攻撃力ボーナスを獲得する。"
   }
 };

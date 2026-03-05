@@ -1,16 +1,16 @@
 window.basicStatsData = window.basicStatsData || {};
 window.basicStatsData["코로마루"] = {
     "a0_lv1": {
-        "HP": 0,
-        "SP": 0,
-        "attack": 0,
-        "defense": 0,
+        "HP": 310,
+        "SP": 100,
+        "attack": 90,
+        "defense": 56,
         "crit_rate": 5,
         "crit_mult": 150,
-        "speed": 0
+        "speed": 104
     },
     "awake7": {
-        "attack_per": 0
+        "ailment_accuracy": 34.9
     },
     "a0_lv80": {
         "HP": 0,

@@ -21,6 +21,11 @@
 }
 
 
+/*야오링 사자무*/
+.char-img.single-banner[src*="%EC%95%BC%EC%98%A4%EB%A7%81%C2%B7%EC%82%AC%EC%9E%90%EB%AC%B4"] {
+  top: 90%;
+}
+
 /*코로마루*/
 .char-img.single-banner[src*="%EC%BD%94%EB%A1%9C%EB%A7%88%EB%A3%A8"] {
   scale: 0.9;

@@ -51,7 +51,7 @@
   "nature": "Ice",
   "passive_skill": [
     {
-      "desc": "Increase Defense by 37.4%. When granting a shield to an ally, either increase target's Defense by 18% or increase target's Ice damage by 10% for 2 turns.",
+      "desc": "Increase Defense by 37.4%. When granting a shield to an ally, either increase main target's Defense by 18% or Ice damage by 10% for 2 turns.",
       "name": "Tundra's Judgment"
     },
     {

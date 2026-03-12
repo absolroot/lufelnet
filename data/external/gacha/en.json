@@ -2,6 +2,58 @@
   "data": {
     "thief": [
       {
+        "endTime": "2026-03-26 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Kira Kitazato",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Lufel",
+            "type": "thief"
+          },
+          {
+            "name": "Leo Kamiyama",
+            "type": "thief"
+          },
+          {
+            "name": "Kayo Tomiyama",
+            "type": "thief"
+          }
+        ],
+        "name": "Cynical Surgeon",
+        "startTime": "2026-03-12 11:30:00",
+        "type": "Targeted Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-03-26 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Kira Kitazato",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Lufel",
+            "type": "thief"
+          },
+          {
+            "name": "Leo Kamiyama",
+            "type": "thief"
+          },
+          {
+            "name": "Kayo Tomiyama",
+            "type": "thief"
+          }
+        ],
+        "name": "Cynical Surgeon",
+        "startTime": "2026-03-12 11:30:00",
+        "type": "Chance Most Wanted Idol Contracts"
+      },
+      {
         "endTime": "2026-04-02 10:59:59",
         "fiveStar": [
           {
@@ -55,6 +107,41 @@
       }
     ],
     "weapon": [
+      {
+        "endTime": "2026-03-26 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Bloodletter",
+            "type": "weapon",
+            "user": "Kira"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Lava Flame",
+            "type": "weapon",
+            "user": "Lufel"
+          },
+          {
+            "name": "Justice Lance",
+            "type": "weapon",
+            "user": "Kamiyama"
+          },
+          {
+            "name": "Emerald Charmer",
+            "type": "weapon",
+            "user": "Tomiyama"
+          },
+          {
+            "name": "Undying Embers",
+            "type": "weapon",
+            "user": "Kira"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2026-03-12 11:30:00",
+        "type": "Arms Deals"
+      },
       {
         "endTime": "2026-04-02 10:59:59",
         "fiveStar": [

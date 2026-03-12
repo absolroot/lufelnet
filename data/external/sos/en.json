@@ -1,5 +1,69 @@
 {
-  "data": null,
-  "msg": "SOS not found.",
-  "status": 100
+  "data": {
+    "boss": [
+      {
+        "bonusRule": "All ally Fire attack Score x 3",
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Ice",
+                "Bless",
+                "Curse"
+              ],
+              "Weak": [
+                "Fire"
+              ]
+            },
+            "image": "B-guaiwutouxiang-lilith.png",
+            "level": "89",
+            "name": "Lilith",
+            "skill": "207,607,603",
+            "sn": "522101",
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 1.0,
+        "sn": "238401"
+      },
+      {
+        "bonusRule": "All ally Wind attack Score x 3",
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Phys",
+                "Psychokinesis",
+                "Nuclear",
+                "Bless",
+                "Curse"
+              ],
+              "Weak": [
+                "Wind"
+              ]
+            },
+            "image": "B-guaiwutouxiang-melchizedek.png",
+            "level": "89",
+            "name": "Melchizedek",
+            "skill": "706,1004",
+            "sn": "522111",
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 2.0,
+        "sn": "238402"
+      }
+    ],
+    "buff": "Abstract Laser: At the start of each turn, gain 1 Cardiac Stimulation stack. Stacks up to 2 times. When using a melee attack or activating a Resonance, spend 1 Cardiac Stimulation stack.\nCardiac Stimulation: When spent, increase the final damage of this attack by 40%.",
+    "endTime": "2026-03-19 10:30:00",
+    "startTime": "2026-03-05 11:30:00"
+  },
+  "msg": "OK",
+  "status": 0
 }

@@ -10,6 +10,32 @@
               "Nullify": [],
               "Reflect": [],
               "Resistant": [
+                "Fire"
+              ],
+              "Weak": [
+                "Ice"
+              ]
+            },
+            "image": "B-guaiwutouxiang-surtr.png",
+            "level": "89",
+            "name": "조종당하는 수르트",
+            "skill": "108,103,1008",
+            "sn": 543101,
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 1.0,
+        "sn": 78401
+      },
+      {
+        "bonusRule": null,
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
                 "Phys",
                 "Fire",
                 "Wind",
@@ -23,46 +49,17 @@
             "level": "89",
             "name": "조종당하는 가네샤",
             "skill": "1013,1022",
-            "sn": 542101,
+            "sn": 543111,
             "stat": {}
           }
         ],
         "scoreRatio": 2.0,
-        "sn": 78401
-      },
-      {
-        "bonusRule": null,
-        "enemy": [
-          {
-            "adapt": {
-              "Absorb": [],
-              "Nullify": [],
-              "Reflect": [],
-              "Resistant": [
-                "Electric",
-                "Nuclear",
-                "Bless",
-                "Curse"
-              ],
-              "Weak": [
-                "Fire"
-              ]
-            },
-            "image": "B-guaiwutouxiang-lilith.png",
-            "level": "89",
-            "name": "조종당한 릴리스",
-            "skill": "607,603",
-            "sn": 542111,
-            "stat": {}
-          }
-        ],
-        "scoreRatio": 1.0,
         "sn": 78402
       }
     ],
-    "buff": "지각 붕괴: 약점 대미지를 줄 때, 자신은 1턴 동안 『암석 해체』를 얻는다. 『암석 해체』: 주는 최종 대미지가 20% 증가하며, 추가 턴 상태 또는 일반 공격 사용 시 주는 최종 대미지가 추가로 20% 증가한다.",
-    "endTime": "2026-03-12 07:30:00",
-    "startTime": "2026-02-12 08:30:00"
+    "buff": "암석화 유적: 『적합성 저하』 상태 추가 시 아군 전체에 『신비한 룬』을 추가한다. 추가 턴 획득 시 자신이 『신비한 룬』을 획득한다. 『신비한 룬』: 2턴 동안 최종 대미지가 1턴 동안 40% 증가한다.",
+    "endTime": "2026-04-09 07:30:00",
+    "startTime": "2026-03-12 08:30:00"
   },
   "msg": "OK",
   "status": 0

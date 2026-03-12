@@ -310,7 +310,7 @@ const enRevelationData = {
         "Tenacity": { //강인
             "set2": "Gun damage increased by 10%.",
             "set4": "Increase ATK by 25% for 2 turns; Gain this effect again when you cause a critical hit.",
-            "type": ["미출시"]
+            "type": ["총격","미출시"]
         },
     },
     "set_effects": {

@@ -773,12 +773,49 @@
         const countUnit = window.i18nCountUnit !== undefined ? window.i18nCountUnit : (currentLang === 'kr' ? '개' : '');
         searchCount.textContent = `${countText} ${allRevelations.length}${countUnit}`;
 
+        function normalizeSearchText(value) {
+            return String(value == null ? '' : value)
+                .toLowerCase()
+                .replace(/\s+/g, ' ')
+                .trim();
+        }
+
+        function buildSearchText(revelation) {
+            const searchParts = [revelation.name];
+
+            if (revelation.type === 'sub') {
+                const effects = currentRevelationData.sub_effects && currentRevelationData.sub_effects[revelation.name];
+                if (effects) {
+                    searchParts.push(effects.set2, effects.set4);
+                    if (Array.isArray(effects.type)) {
+                        searchParts.push(...effects.type);
+                    }
+                }
+            } else {
+                const mainEffects = currentRevelationData.set_effects && currentRevelationData.set_effects[revelation.name];
+                if (mainEffects) {
+                    Object.entries(mainEffects).forEach(([subName, effect]) => {
+                        if (subName === 'type') {
+                            if (Array.isArray(effect)) {
+                                searchParts.push(...effect);
+                            }
+                            return;
+                        }
+                        searchParts.push(subName, effect);
+                    });
+                }
+            }
+
+            return normalizeSearchText(searchParts.join(' '));
+        }
+
         // Create card for each revelation
         allRevelations.forEach((revelation, index) => {
             const card = document.createElement('div');
             card.className = 'card';
             card.dataset.type = revelation.type;
             card.dataset.name = revelation.name;
+            card.dataset.searchText = buildSearchText(revelation);
 
             // Get Korean name for image path (using reverse mapping)
             let koreanName = revelation.name;
@@ -1059,9 +1096,13 @@
 
         // Add filtering functionality
         const checkboxes = document.querySelectorAll('.filter-options input[type="checkbox"]');
+        const searchInput = document.getElementById('revelationSearch');
+        const dropdown = document.getElementById('searchDropdown');
+        const cards = document.querySelectorAll('.card');
 
         checkboxes.forEach(checkbox => {
             checkbox.addEventListener('change', () => {
+                clearActiveCardState();
                 applyFilters();
             });
         });
@@ -1089,136 +1130,147 @@
             deactivateFilter();
         });
 
+        function setCardVisibility(card, shouldShow) {
+            if (shouldShow) {
+                card.style.display = 'flex';
+                card.style.visibility = 'visible';
+                card.style.opacity = '1';
+                return;
+            }
+
+            card.style.display = 'none';
+            card.style.visibility = 'hidden';
+            card.style.opacity = '0';
+        }
+
+        function updateSearchCount(visibleCount) {
+            const countText = window.i18nFilteredCount || '전체';
+            const countUnit = window.i18nCountUnit !== undefined ? window.i18nCountUnit : (currentLang === 'kr' ? '개' : '');
+            searchCount.textContent = `${countText} ${visibleCount}${countUnit}`;
+        }
+
+        function clearActiveCardState() {
+            if (!activeCard) {
+                resetBtnContainer.style.display = 'none';
+                return;
+            }
+
+            const content = activeCard.querySelector('.accordion-content');
+            const header = activeCard.querySelector('.accordion-header');
+
+            if (content) content.classList.remove('open');
+            if (header) {
+                header.setAttribute('aria-expanded', 'false');
+                if (header.lastElementChild) header.lastElementChild.textContent = '+';
+            }
+
+            activeCard.classList.remove('expanded');
+            activeCard.classList.remove('active');
+            activeCard = null;
+            resetBtnContainer.style.display = 'none';
+        }
+
+        function getSelectedValues(name) {
+            return Array.from(document.querySelectorAll(`input[name="${name}"]:checked`)).map(cb => cb.value);
+        }
+
+        function getFilteredSubRevelations(selectedElements, selectedEffects) {
+            const hasSubFilters = selectedElements.length > 0 || selectedEffects.length > 0;
+            if (!hasSubFilters || !currentRevelationData.sub_effects) {
+                return new Set(Object.keys(currentRevelationData.sub || {}));
+            }
+
+            return new Set(
+                Object.entries(currentRevelationData.sub_effects)
+                    .filter(([, effects]) => {
+                        const elementMatch = selectedElements.length === 0 ||
+                            (effects.type && selectedElements.some(element => effects.type.includes(element)));
+                        const effectMatch = selectedEffects.length === 0 ||
+                            (effects.type && selectedEffects.some(effect => effects.type.includes(effect)));
+                        return elementMatch && effectMatch;
+                    })
+                    .map(([name]) => name)
+            );
+        }
+
+        function getRelatedMainRevelations(filteredSubRevelations) {
+            const relatedMainRevelations = new Set();
+            if (!currentRevelationData.main) {
+                return relatedMainRevelations;
+            }
+
+            Object.entries(currentRevelationData.main).forEach(([mainName, subNames]) => {
+                if (Array.isArray(subNames) && subNames.some(subName => filteredSubRevelations.has(subName))) {
+                    relatedMainRevelations.add(mainName);
+                }
+            });
+
+            return relatedMainRevelations;
+        }
+
+        function renderSearchDropdown() {
+            dropdown.innerHTML = '';
+            dropdown.style.display = 'none';
+        }
+
         function applyFilters() {
             // Also hide reset button if no active card (normal filtering)
             if (!activeCard) {
                 resetBtnContainer.style.display = 'none';
             }
 
-            const selectedTypes = Array.from(document.querySelectorAll('input[name="type"]:checked')).map(cb => cb.value);
-            const selectedElements = Array.from(document.querySelectorAll('input[name="element"]:checked')).map(cb => cb.value);
-            const selectedEffects = Array.from(document.querySelectorAll('input[name="effect"]:checked')).map(cb => cb.value);
+            const selectedTypes = getSelectedValues('type');
+            const selectedElements = getSelectedValues('element');
+            const selectedEffects = getSelectedValues('effect');
 
             const cards = document.querySelectorAll('.card');
+            const searchValue = normalizeSearchText(searchInput.value);
+            const hasSubFilters = selectedElements.length > 0 || selectedEffects.length > 0;
             let visibleCount = 0;
 
             // 현재 언어에 맞는 데이터 가져오기
             const currentRevelationData = getCurrentRevelationData();
 
             // List of filtered sub revelations
-            let filteredSubRevelations = [];
-            if (currentRevelationData.sub_effects) {
-                filteredSubRevelations = Object.entries(currentRevelationData.sub_effects).filter(([name, effects]) => {
-                    const elementMatch = selectedElements.length === 0 ||
-                        (effects.type && selectedElements.some(element => effects.type.includes(element)));
-                    const effectMatch = selectedEffects.length === 0 ||
-                        (effects.type && selectedEffects.some(effect => effects.type.includes(effect)));
-                    return elementMatch && effectMatch;
-                }).map(([name]) => name);
-            }
+            const filteredSubRevelations = getFilteredSubRevelations(selectedElements, selectedEffects);
 
             // Find main revelations related to filtered sub revelations
-            let relatedMainRevelations = new Set();
-            if (currentRevelationData.main) {
-                Object.entries(currentRevelationData.main).forEach(([mainName, subNames]) => {
-                    if (Array.isArray(subNames) && subNames.some(subName => filteredSubRevelations.includes(subName))) {
-                        relatedMainRevelations.add(mainName);
-                    }
-                });
-            }
+            const relatedMainRevelations = getRelatedMainRevelations(filteredSubRevelations);
 
             cards.forEach(card => {
                 const type = card.dataset.type;
                 const name = card.dataset.name;
+                const searchText = card.dataset.searchText || '';
 
                 const typeMatch = selectedTypes.length === 0 || selectedTypes.includes(type);
-                const nameMatch = type === 'sub' ?
-                    filteredSubRevelations.includes(name) :
-                    relatedMainRevelations.has(name);
+                const filterMatch = type === 'sub'
+                    ? (!hasSubFilters || filteredSubRevelations.has(name))
+                    : (!hasSubFilters || relatedMainRevelations.has(name));
+                const searchMatch = searchValue === '' || searchText.includes(searchValue);
+                const shouldShow = typeMatch && filterMatch && searchMatch;
 
-                if (typeMatch && nameMatch) {
-                    card.style.display = 'flex';
-                    card.style.visibility = 'visible';
-                    card.style.opacity = '1';
+                setCardVisibility(card, shouldShow);
+                if (shouldShow) {
                     visibleCount++;
-                } else {
-                    card.style.display = 'none';
-                    card.style.visibility = 'hidden';
-                    card.style.opacity = '0';
                 }
             });
 
             // Update search count
             const countText = window.i18nFilteredCount || '전체';
             const countUnit = window.i18nCountUnit !== undefined ? window.i18nCountUnit : (currentLang === 'kr' ? '개' : '');
-            searchCount.textContent = `${countText} ${visibleCount}${countUnit}`;
+            updateSearchCount(visibleCount);
         }
 
         // Search functionality implementation
-        const searchInput = document.getElementById('revelationSearch');
-        const dropdown = document.getElementById('searchDropdown');
-        const cards = document.querySelectorAll('.card');
-
-        searchInput.addEventListener('input', (e) => {
-            const searchValue = e.target.value.toLowerCase();
-            dropdown.innerHTML = '';
-
-            // Dropdown autocomplete handling
-            if (searchValue.length > 0) {
-                const matches = allRevelations.filter(revelation => {
-                    const revelationName = revelation.name.toLowerCase();
-                    return revelationName.includes(searchValue);
-                });
-
-                if (matches.length > 0) {
-                    dropdown.style.display = 'block';
-                    matches.forEach(revelation => {
-                        const div = document.createElement('div');
-                        div.className = 'dropdown-item';
-                        div.textContent = revelation.name;
-                        div.addEventListener('click', () => {
-                            searchInput.value = revelation.name;
-                            dropdown.style.display = 'none';
-                            filterBySearch(revelation.name.toLowerCase());
-                        });
-                        dropdown.appendChild(div);
-                    });
-                } else {
-                    dropdown.style.display = 'none';
-                }
-            } else {
-                dropdown.style.display = 'none';
-                filterBySearch('');
-            }
-
-            // Filter by search term
-            filterBySearch(searchValue);
+        searchInput.addEventListener('input', () => {
+            clearActiveCardState();
+            renderSearchDropdown();
+            applyFilters();
         });
 
         // Search filtering function
-        function filterBySearch(searchValue) {
-            let visibleCount = 0;
-
-            cards.forEach(card => {
-                const name = card.dataset.name;
-                const shouldShow = searchValue === '' || name.toLowerCase().includes(searchValue);
-
-                if (shouldShow) {
-                    card.style.display = 'flex';
-                    card.style.visibility = 'visible';
-                    card.style.opacity = '1';
-                    visibleCount++;
-                } else {
-                    card.style.display = 'none';
-                    card.style.visibility = 'hidden';
-                    card.style.opacity = '0';
-                }
-            });
-
-            // Update search count
-            const countText = window.i18nFilteredCount || '전체';
-            const countUnit = window.i18nCountUnit !== undefined ? window.i18nCountUnit : (currentLang === 'kr' ? '개' : '');
-            searchCount.textContent = `${countText} ${visibleCount}${countUnit}`;
+        function filterBySearch() {
+            applyFilters();
         }
 
         let activeCard = null; // Track currently active card
@@ -1283,48 +1335,25 @@
                 const cardName = c.getAttribute('data-name');
                 const shouldShow = relatedRevelations.includes(cardName);
 
+                setCardVisibility(c, shouldShow);
                 if (shouldShow) {
-                    c.style.display = 'flex';
-                    c.style.visibility = 'visible';
-                    c.style.opacity = '1';
                     visibleCount++;
-                } else {
-                    c.style.display = 'none';
-                    c.style.visibility = 'hidden';
-                    c.style.opacity = '0';
                 }
             });
 
             // Update search count for related revelations
             const countText = window.i18nFilteredCount || '전체';
             const countUnit = window.i18nCountUnit !== undefined ? window.i18nCountUnit : (currentLang === 'kr' ? '개' : '');
-            searchCount.textContent = `${countText} ${visibleCount}${countUnit}`;
+            updateSearchCount(visibleCount);
         }
 
         function deactivateFilter() {
-            // Remove active card style
-            if (activeCard) {
-                // Also collapse the details if open
-                const content = activeCard.querySelector('.accordion-content');
-                const header = activeCard.querySelector('.accordion-header');
-
-                if (content) content.classList.remove('open');
-                if (header) {
-                    header.setAttribute('aria-expanded', 'false');
-                    if (header.lastElementChild) header.lastElementChild.textContent = '+';
-                }
-
-                activeCard.classList.remove('expanded');
-                activeCard.classList.remove('active');
-                activeCard = null;
-            }
-
-            // Hide reset button
-            resetBtnContainer.style.display = 'none';
-
-            // Show all cards
+            clearActiveCardState();
+            dropdown.style.display = 'none';
             applyFilters();
         }
+
+        applyFilters();
     } // initializePageContent 함수 종료
 </script>
 

@@ -11,7 +11,7 @@ window.operationData["야오링·사자무"] = {
         },
         {
             "label": "의식 1 (3/6턴)",
-            "value": "근접 › 3 + 1 › 근접 › 근접 › 3 + 1 › 근접"
+            "value": "3 + 근접 › 1 › 3 + 근접 › 근접 › 3 + 1 › 근접"
         },
         {
             "label": "의식 6",
@@ -29,7 +29,7 @@ window.operationData["야오링·사자무"] = {
         },
         {
             "label": "A1 (3/6Turn)",
-            "value": "Melee › 3 + 1 › Melee › Melee › 3 + 1 › Melee"
+            "value": "3 + Melee › 1 › 3 + Melee › Melee › 3 + 1 › Melee"
         },
         {
             "label": "A6",
@@ -46,8 +46,8 @@ window.operationData["야오링·사자무"] = {
             "value": "1 › 3 + 接近 › 接近 › 1 › 3 + 接近 › 接近"
         },
         {
-            "label": "意識 1 (3/6턴Turn)",
-            "value": "接近 › 3 + 1 › 接近 › 接近 › 3 + 1 › 接近"
+            "label": "意識 1 (3/6Turn)",
+            "value": "3 + 接近 › 1 › 3 + 接近 › 接近 › 3 + 1 › 接近"
         },
         {
             "label": "意識 6",

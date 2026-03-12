@@ -307,7 +307,7 @@ Object.assign(window.characterData, {
         "persona3": true,
         "role_en": "Down, AOE Electric Dealer",
         "role_jp": "ダウン, 範囲電撃ディーラー",
-        "tag": "테우르기아, 다운, 관통",
+        "tag": "테우르기아, 다운, 관통, 추가 효과",
         "color": "#787878",
         "element": "전격",
         "rarity": 5,
@@ -1055,7 +1055,7 @@ Object.assign(window.characterData, {
     },
     "카요": {
         "limit": false,
-        "tag": "공격력, 효과 명중, 대미지보너스, 원소 이상, SP 회복",
+        "tag": "공격력, 효과 명중, 대미지보너스, 원소 이상, SP 회복, 추가 효과",
         "color": "#8b008b",
         "element": "버프",
         "rarity": 4,
@@ -1103,7 +1103,7 @@ Object.assign(window.characterData, {
     },
     "토시야": {
         "limit": false,
-        "tag": "주원, 지속 대미지",
+        "tag": "주원, 지속 대미지, 추가 효과",
         "color": "#5a46b4",
         "element": "주원",
         "rarity": 4,

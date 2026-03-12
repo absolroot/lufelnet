@@ -527,16 +527,33 @@ class Navigation {
             nav.appendChild(thumb);
         }
 
-        const updateThumb = () => {
-            if (!nav.isConnected || !thumb.isConnected) return;
-
+        const getThumbMetrics = () => {
             const scrollHeight = nav.scrollHeight;
             const clientHeight = nav.clientHeight;
             const maxScroll = scrollHeight - clientHeight;
             const hasScroll = maxScroll > 0;
+            const minThumbHeight = 32;
+            const thumbHeight = hasScroll
+                ? Math.max(minThumbHeight, Math.round((clientHeight / scrollHeight) * clientHeight))
+                : 0;
+
+            return {
+                hasScroll,
+                maxScroll,
+                thumbHeight,
+                maxThumbTop: Math.max(clientHeight - thumbHeight, 0)
+            };
+        };
+
+        let dragState = null;
+
+        const updateThumb = () => {
+            if (!nav.isConnected || !thumb.isConnected) return;
+
+            const { hasScroll, maxScroll, thumbHeight, maxThumbTop } = getThumbMetrics();
             nav.classList.toggle('has-scroll', hasScroll);
             const navRect = nav.getBoundingClientRect();
-            const thumbLeft = Math.round(navRect.right - 8);
+            const thumbLeft = Math.round(navRect.right - 11);
 
             if (!hasScroll || navRect.width <= 0 || navRect.height <= 0) {
                 thumb.style.display = 'none';
@@ -546,15 +563,47 @@ class Navigation {
                 return;
             }
 
-            const minThumbHeight = 32;
-            const thumbHeight = Math.max(minThumbHeight, Math.round((clientHeight / scrollHeight) * clientHeight));
-            const maxTop = clientHeight - thumbHeight;
-            const thumbTop = maxTop > 0 ? Math.round((nav.scrollTop / maxScroll) * maxTop) : 0;
+            const thumbTop = maxThumbTop > 0 ? Math.round((nav.scrollTop / maxScroll) * maxThumbTop) : 0;
 
             thumb.style.display = 'block';
             thumb.style.height = `${thumbHeight}px`;
             thumb.style.top = `${Math.round(navRect.top + thumbTop)}px`;
             thumb.style.left = `${thumbLeft}px`;
+        };
+
+        const syncScrollToPointer = (clientY) => {
+            if (!dragState) return;
+
+            const { hasScroll, maxScroll, maxThumbTop } = getThumbMetrics();
+            if (!hasScroll) return;
+
+            const navRect = nav.getBoundingClientRect();
+            const thumbTop = Math.min(
+                Math.max(clientY - navRect.top - dragState.pointerOffsetY, 0),
+                maxThumbTop
+            );
+
+            nav.scrollTop = maxThumbTop > 0
+                ? (thumbTop / maxThumbTop) * maxScroll
+                : 0;
+            updateThumb();
+        };
+
+        const endThumbDrag = (pointerId) => {
+            if (!dragState || (pointerId !== undefined && dragState.pointerId !== pointerId)) {
+                return;
+            }
+
+            const activePointerId = dragState.pointerId;
+            dragState = null;
+            nav.classList.remove('is-scroll-dragging');
+            thumb.classList.remove('is-dragging');
+
+            if (typeof thumb.hasPointerCapture === 'function' && thumb.hasPointerCapture(activePointerId)) {
+                thumb.releasePointerCapture(activePointerId);
+            }
+
+            requestAnimationFrame(updateThumb);
         };
 
         updateThumb();
@@ -568,6 +617,56 @@ class Navigation {
                 if (e.propertyName === 'width') {
                     updateThumb();
                 }
+            });
+
+            thumb.addEventListener('pointerdown', (event) => {
+                if (event.pointerType === 'mouse' && event.button !== 0) {
+                    return;
+                }
+
+                updateThumb();
+                if (thumb.style.display === 'none') {
+                    return;
+                }
+
+                const thumbRect = thumb.getBoundingClientRect();
+                dragState = {
+                    pointerId: event.pointerId,
+                    pointerOffsetY: Math.min(
+                        Math.max(event.clientY - thumbRect.top, 0),
+                        thumbRect.height || 0
+                    )
+                };
+
+                nav.classList.add('is-scroll-dragging');
+                thumb.classList.add('is-dragging');
+
+                if (typeof thumb.setPointerCapture === 'function') {
+                    thumb.setPointerCapture(event.pointerId);
+                }
+
+                event.preventDefault();
+                event.stopPropagation();
+                syncScrollToPointer(event.clientY);
+            });
+
+            thumb.addEventListener('pointermove', (event) => {
+                if (!dragState || dragState.pointerId !== event.pointerId) {
+                    return;
+                }
+
+                event.preventDefault();
+                syncScrollToPointer(event.clientY);
+            });
+
+            thumb.addEventListener('pointerup', (event) => {
+                endThumbDrag(event.pointerId);
+            });
+            thumb.addEventListener('pointercancel', (event) => {
+                endThumbDrag(event.pointerId);
+            });
+            thumb.addEventListener('lostpointercapture', () => {
+                endThumbDrag();
             });
             window.addEventListener('resize', updateThumb);
             window.addEventListener('load', updateThumb);

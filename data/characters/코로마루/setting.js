@@ -30,6 +30,6 @@ window.characterSetting["코로마루"] = {
     "skill_priority": "4>1>2>3",
     "mind_stats1": "효과명중 24%!",
     "mind_stats2": "대미지 보너스 16%",
-    "mind_skill1": "S1/TH",
-    "mind_skill2": "S2/S3"
+    "mind_skill1": "S2/TH!",
+    "mind_skill2": "S1/S3"
 };

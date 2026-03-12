@@ -337,6 +337,10 @@
         width: var(--nav-expanded-width);
     }
 
+    .main-nav.is-scroll-dragging {
+        width: var(--nav-expanded-width);
+    }
+
     /* 배경 이미지 */
     .main-nav::after {
         width: var(--nav-expanded-width);
@@ -347,6 +351,11 @@
     .main-nav:hover::after {
         opacity: 0.5;
         transition-delay: 0.1s;
+    }
+
+    .main-nav.is-scroll-dragging::after {
+        opacity: 0.5;
+        transition-delay: 0s;
     }
 
     /* 로고 */
@@ -775,20 +784,48 @@
         position: fixed;
         top: 0;
         left: 0;
-        width: 6px;
+        width: 12px;
         height: 0;
-        border-radius: 999px;
-        background: rgba(255, 255, 255, 0.25);
+        background: transparent;
         opacity: 0;
         display: none;
         transition: opacity 0.15s ease;
         pointer-events: none;
+        touch-action: none;
+        cursor: ns-resize;
         z-index: 1100;
     }
 
-    .main-nav:hover .nav-scroll-thumb {
+    .main-nav .nav-scroll-thumb::before {
+        content: '';
+        position: absolute;
+        inset: 0 3px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.25);
+        transition: background 0.15s ease;
+    }
+
+    .main-nav:hover .nav-scroll-thumb,
+    .main-nav.is-scroll-dragging .nav-scroll-thumb {
         opacity: 1;
+        pointer-events: auto;
+    }
+
+    .main-nav:hover .nav-scroll-thumb {
         transition-delay: 0.4s;
+    }
+
+    .main-nav.is-scroll-dragging .nav-scroll-thumb {
+        transition-delay: 0s;
+    }
+
+    .main-nav .nav-scroll-thumb:hover::before,
+    .main-nav .nav-scroll-thumb.is-dragging::before {
+        background: rgba(255, 255, 255, 0.45);
+    }
+
+    .main-nav .nav-scroll-thumb.is-dragging {
+        cursor: grabbing;
     }
 
     .main-nav .nav-scroll-thumb {

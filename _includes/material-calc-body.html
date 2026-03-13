@@ -84,7 +84,13 @@
             <h2 data-i18n="materialSummary">-</h2>
             <button id="collapseSummary" aria-expanded="true" class="icon-btn" title="-" data-i18n-aria="summaryToggleTitle">▾</button>
         </div>
-        <div id="summaryGrid" class="material-grid"></div>
+        <div id="summaryContent">
+            <div id="summaryGrid" class="material-grid"></div>
+            <details id="extraMaterialsSection" class="summary-extra" style="display:none;">
+                <summary data-i18n="extraMaterials">-</summary>
+                <div id="extraMaterialsGrid" class="material-grid"></div>
+            </details>
+        </div>
     </section>
 
     <!-- 필터/정렬 영역 (summary 아래) -->

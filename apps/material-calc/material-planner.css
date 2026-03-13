@@ -61,6 +61,42 @@
   font-size: 16px
 }
 
+.summary-extra {
+  margin-top: 6px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, .08)
+}
+
+.summary-extra summary {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, .82);
+  font-size: 13px;
+  user-select: none;
+  list-style: none
+}
+
+.summary-extra summary::-webkit-details-marker {
+  display: none
+}
+
+.summary-extra summary::before {
+  content: "▸";
+  font-size: 11px;
+  opacity: .85
+}
+
+.summary-extra[open] summary::before {
+  content: "▾"
+}
+
+.summary-extra .material-grid {
+  margin-top: 10px;
+  margin-bottom: 0
+}
+
 .icon-btn {
   background: transparent;
   border: 0px solid rgba(255, 255, 255, .2);

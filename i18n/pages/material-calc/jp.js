@@ -39,6 +39,7 @@ window.I18N_PAGE_MATERIAL_CALC_JP = {
     cancel: 'キャンセル',
     save: '保存',
     includeInSummary: 'サマリーに含める',
+    extraMaterials: '余剰素材',
     viewDetails: '詳細',
     edit: '編集',
     remove: '削除',

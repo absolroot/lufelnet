@@ -72,7 +72,7 @@ const MATERIAL_INFO = {
       }
     },
     wp_exp3: {
-      name: { kr: '대형 범용 부품', en: 'Weapon EXP 3', jp: 'ゴールドパーツ' },
+      name: { kr: '대형 범용 부품', en: 'Gold Parts', jp: 'ゴールドパーツ' },
       desc: {
         kr: '무기 경험치를 높이는 데 사용된다. 사용 시 즉시 2,000포인트가 증가한다.',
         en: 'Grants 2000 EXP to a weapon.',
@@ -152,7 +152,7 @@ const MATERIAL_INFO = {
       }
     },
     skill_item3: {
-      name: { kr: '노안 향기', en: 'Incense', jp: '愉悦の霊香' },
+      name: { kr: '노안 향기', en: 'Joyful Incense', jp: '愉悦の霊香' },
       desc: {
         kr: '스킬 레벨을 LV7-10으로 올리는 데 사용된다.',
         en: 'Raises an ally’s skill level (up to 10).',
@@ -160,7 +160,7 @@ const MATERIAL_INFO = {
       }
     },
     skill_item4: {
-      name: { kr: '꿈을 먹는 향', en: 'Incense', jp: '霊香（夢喰い）' },
+      name: { kr: '꿈을 먹는 향', en: 'Ephemeral Incense', jp: '霊香（夢喰い）' },
       desc: {
         kr: '스킬 레벨을 LV7-10으로 올리는 데 사용된다.',
         en: 'Raises an ally’s skill level (up to 10).',
@@ -184,7 +184,7 @@ const MATERIAL_INFO = {
       }
     },
     md_mercury: {
-      name: { kr: '영롱한 머큐리', en: 'Mercury', jp: '星屑の欠片' },
+      name: { kr: '영롱한 머큐리', en: 'Stardust Shard', jp: '星屑の欠片' },
       desc: {
         kr: '『괴도 심상·속성 증가』 육성에 사용되는 재료다.',
         en: '',
@@ -192,7 +192,7 @@ const MATERIAL_INFO = {
       }
     },
     md_bell: {
-      name: { kr: '별자리 방울', en: 'Zodiac Bell', jp: '星屑の鈴' },
+      name: { kr: '별자리 방울', en: 'Stardust Bell', jp: '星屑の鈴' },
       desc: {
         kr: '『괴도 심상·속성 강화』 육성에 사용되는 재료다.',
         en: '',
@@ -200,7 +200,7 @@ const MATERIAL_INFO = {
       }
     },
     md_stat1: {
-      name: { kr: '명성 수정구·하급', en: 'Blue Fame Crystal', jp: '星屑のボトル' },
+      name: { kr: '명성 수정구·하급', en: 'Stardust Bottle', jp: '星屑のボトル' },
       desc: {
         kr: '『괴도 심상·진급 강화』 육성에 사용되는 재료다.',
         en: '',
@@ -208,7 +208,7 @@ const MATERIAL_INFO = {
       }
     },
     md_stat2: {
-      name: { kr: '명성 수정구·고급', en: 'Purple Fame Crystal', jp: '明星のボトル' },
+      name: { kr: '명성 수정구·고급', en: 'Venus Bottle', jp: '明星のボトル' },
       desc: {
         kr: '『괴도 심상·진급 강화』 육성에 사용되는 재료다.',
         en: '',
@@ -216,7 +216,7 @@ const MATERIAL_INFO = {
       }
     },
     md_skill1: {
-      name: { kr: '별가루 병·하급', en: 'Blue Star Dust Vial', jp: '星屑晶珠' },
+      name: { kr: '별가루 병·하급', en: 'Stardust Gem', jp: '星屑晶珠' },
       desc: {
         kr: '『괴도 심상·스킬 깨달음』 육성에 사용되는 재료다.',
         en: '',
@@ -224,7 +224,7 @@ const MATERIAL_INFO = {
       }
     },
     md_skill2: {
-      name: { kr: '별가루 병·고급', en: 'Purple Star Dust Vial', jp: '明星晶珠' },
+      name: { kr: '별가루 병·고급', en: 'Venus Gem', jp: '明星晶珠' },
       desc: {
         kr: '『괴도 심상·스킬 깨달음』 육성에 사용되는 재료다.',
         en: '',
@@ -232,4 +232,3 @@ const MATERIAL_INFO = {
       }
     }
   };
-  

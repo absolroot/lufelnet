@@ -95,6 +95,7 @@
         emblem_5star: '/assets/img/character-detail/innate/emblem.png',
         innate_seed: '/assets/img/character-detail/innate/innate_seed.png'
     };
+    const MIND_MATERIAL_ORDER = ['md_mercury', 'md_stat2', 'md_stat1', 'md_skill2', 'md_skill1', 'md_bell'];
 
     function getPlannerLanguage() {
         if (typeof window.getCurrentLang === 'function') {
@@ -801,6 +802,92 @@
         return { name, desc };
     }
 
+    function sortMaterialEntries(materials) {
+        return Object.entries(materials || {}).sort((a, b) => {
+            const aa = materialSortOrder(a[0]);
+            const bb = materialSortOrder(b[0]);
+            if (aa !== bb) return aa - bb;
+            return a[0] > b[0] ? 1 : -1;
+        });
+    }
+
+    function countCheckedValues(values) {
+        return Array.isArray(values) ? values.filter(Boolean).length : 0;
+    }
+
+    function getMindBaseProgress(inputs) {
+        const hasCurrent = Array.isArray(inputs?.mindBaseCurrent);
+        const hasTarget = Array.isArray(inputs?.mindBaseTarget);
+        if (hasCurrent || hasTarget) {
+            return {
+                current: countCheckedValues(inputs?.mindBaseCurrent),
+                target: countCheckedValues(inputs?.mindBaseTarget)
+            };
+        }
+        if (Array.isArray(inputs?.mindBase)) {
+            return {
+                current: 0,
+                target: countCheckedValues(inputs.mindBase)
+            };
+        }
+        return { current: 0, target: 12 };
+    }
+
+    function handleMaterialChipClick(key) {
+        if (key.startsWith('lv_exp')) openInventoryModal('lv_exp', key);
+        else if (key.startsWith('lv_limit')) openInventoryModal('lv_limit', key);
+        else if (key.startsWith('wp_exp')) openInventoryModal('wp_exp', key);
+        else if (key.startsWith('wp_limit')) openInventoryModal('wp_limit', key);
+        else if (key.startsWith('skill_')) openInventoryModal('skill', key);
+        else if (key === 'konpaku_gem') openInventoryModal('gem', key);
+        else if (key.startsWith('md_')) openInventoryModal('mind', key);
+        else if (key === 'mindscape_core' || key === 'emblem_5star' || key === 'innate_seed') openInventoryModal('mindscape', key);
+    }
+
+    function appendCraftBadge(container, amount) {
+        if (!(amount > 0)) return;
+        const badge = document.createElement('div'); badge.className = 'craft-badge';
+        const icon = document.createElement('img'); icon.src = `${BASE_URL}/apps/material-calc/img/exchange.png`; icon.style.width = '12px'; icon.style.height = '12px';
+        const span = document.createElement('span'); span.textContent = String(amount);
+        badge.appendChild(icon); badge.appendChild(span); container.appendChild(badge);
+    }
+
+    function appendCraftBadgesForKey(container, key, limitSummary, skillSummary, wpLimitSummary) {
+        if (key === 'lv_limit3') appendCraftBadge(container, limitSummary.badge3);
+        if (key === 'lv_limit2') appendCraftBadge(container, limitSummary.badge2);
+        if (key === 'skill_lv_3') appendCraftBadge(container, skillSummary.badge3);
+        if (key === 'skill_lv_2') appendCraftBadge(container, skillSummary.badge2);
+        if (key === 'wp_limit3') appendCraftBadge(container, wpLimitSummary.badge3);
+        if (key === 'wp_limit2') appendCraftBadge(container, wpLimitSummary.badge2);
+    }
+
+    function getSummaryCoverageAmount(key, cnt, summaries) {
+        if (key.startsWith('lv_limit')) {
+            return summaries.limitSummary.visual[key] ?? 0;
+        }
+        if (key.startsWith('lv_exp')) {
+            return summaries.expSummary[key] ?? 0;
+        }
+        if (key.startsWith('wp_limit')) {
+            const mapKey = key.replace('wp_', 'lv_');
+            return summaries.wpLimitSummary.visual[mapKey] ?? 0;
+        }
+        if (key.startsWith('wp_exp')) {
+            const mapKey = key.replace('wp_', 'lv_');
+            return summaries.wpExpSummary[mapKey] ?? 0;
+        }
+        if (key === 'skill_lv_1') {
+            return summaries.skillSummary.visual.lv_limit1 ?? Math.min(cnt, STATE.inventory[key] || 0);
+        }
+        if (key === 'skill_lv_2') {
+            return summaries.skillSummary.visual.lv_limit2 ?? Math.min(cnt, STATE.inventory[key] || 0);
+        }
+        if (key === 'skill_lv_3') {
+            return summaries.skillSummary.visual.lv_limit3 ?? Math.min(cnt, STATE.inventory[key] || 0);
+        }
+        return Math.min(cnt, STATE.inventory[key] || 0);
+    }
+
     function addCount(dict, key, delta) { dict[key] = (dict[key] || 0) + delta; }
 
     function estimateMaterials(inputs, characterName) {
@@ -1017,14 +1104,11 @@
     // 렌더: 요약
     function renderSummary() {
         const grid = document.getElementById('summaryGrid');
+        const extraSection = document.getElementById('extraMaterialsSection');
+        const extraGrid = document.getElementById('extraMaterialsGrid');
         if (!grid) return;
         const frag = document.createDocumentFragment();
-        const entries = Object.entries(STATE.totals).sort((a, b) => {
-            const aa = materialSortOrder(a[0]);
-            const bb = materialSortOrder(b[0]);
-            if (aa !== bb) return aa - bb;
-            return a[0] > b[0] ? 1 : -1;
-        });
+        const entries = sortMaterialEntries(STATE.totals);
 
         // 그룹형 시뮬레이션(돌파/EXP)
         const n1 = STATE.totals['lv_limit1'] | 0, n2 = STATE.totals['lv_limit2'] | 0, n3 = STATE.totals['lv_limit3'] | 0;
@@ -1041,90 +1125,56 @@
         const we1 = STATE.totals['wp_exp1'] | 0, we2 = STATE.totals['wp_exp2'] | 0, we3 = STATE.totals['wp_exp3'] | 0;
         const winvExp = { lv_exp1: STATE.inventory.wp_exp1 | 0, lv_exp2: STATE.inventory.wp_exp2 | 0, lv_exp3: STATE.inventory.wp_exp3 | 0 };
         const wpExpSummary = computeExpVisual({ n1: we1, n2: we2, n3: we3 }, winvExp, true);
+        const summaries = { limitSummary, expSummary, skillSummary, wpLimitSummary, wpExpSummary };
 
         entries.forEach(([key, cnt]) => {
             const div = document.createElement('div');
             div.className = 'material-chip ' + chipLevelClass(key);
             const img = document.createElement('img');
             img.src = MATERIAL_ICONS[key] || MATERIAL_ICONS.money; // 폴백
-            let owned = STATE.inventory[key] || 0;
-            if (key.startsWith('lv_limit')) {
-                owned = limitSummary.visual[key] ?? 0;
-            } else if (key.startsWith('lv_exp')) {
-                owned = expSummary[key] ?? 0;
-            } else if (key.startsWith('wp_limit')) {
-                const mapKey = key.replace('wp_', 'lv_');
-                owned = wpLimitSummary.visual[mapKey] ?? 0;
-            } else if (key.startsWith('wp_exp')) {
-                const mapKey = key.replace('wp_', 'lv_');
-                owned = wpExpSummary[mapKey] ?? 0;
-            } else if (key === 'skill_lv_1') {
-                owned = skillSummary.visual.lv_limit1 ?? Math.min(cnt, STATE.inventory[key] || 0);
-            } else if (key === 'skill_lv_2') {
-                owned = skillSummary.visual.lv_limit2 ?? Math.min(cnt, STATE.inventory[key] || 0);
-            } else if (key === 'skill_lv_3') {
-                owned = skillSummary.visual.lv_limit3 ?? Math.min(cnt, STATE.inventory[key] || 0);
-            } else {
-                owned = Math.min(cnt, STATE.inventory[key] || 0);
-            }
+            const actualOwned = STATE.inventory[key] || 0;
+            const coveredOwned = getSummaryCoverageAmount(key, cnt, summaries);
             const p = document.createElement('div'); p.className = 'cnt';
             const ownSpan = document.createElement('span'); ownSpan.className = 'own';
-            ownSpan.textContent = (key === 'konpaku_gem') ? formatK(owned | 0) : String(owned | 0);
-            if ((owned | 0) < (cnt | 0)) ownSpan.classList.add('bad');
+            ownSpan.textContent = (key === 'konpaku_gem') ? formatK(actualOwned | 0) : String(actualOwned | 0);
+            if ((coveredOwned | 0) < (cnt | 0)) ownSpan.classList.add('bad');
             const sep = document.createTextNode('/');
             const needSpan = document.createElement('span'); needSpan.className = 'need'; needSpan.textContent = (key === 'konpaku_gem') ? formatK(cnt | 0) : String(cnt | 0);
             p.appendChild(ownSpan); p.appendChild(sep); p.appendChild(needSpan);
-            div.title = `${owned | 0} / ${cnt | 0}`;
-            if (key === 'lv_limit3' && limitSummary.badge3 > 0) {
-                const badge = document.createElement('div'); badge.className = 'craft-badge';
-                const icon = document.createElement('img'); icon.src = `${BASE_URL}/apps/material-calc/img/exchange.png`; icon.style.width = '12px'; icon.style.height = '12px';
-                const span = document.createElement('span'); span.textContent = String(limitSummary.badge3);
-                badge.appendChild(icon); badge.appendChild(span); div.appendChild(badge);
-            }
-            if (key === 'lv_limit2' && limitSummary.badge2 > 0) {
-                const badge2 = document.createElement('div'); badge2.className = 'craft-badge';
-                const icon2 = document.createElement('img'); icon2.src = `${BASE_URL}/apps/material-calc/img/exchange.png`; icon2.style.width = '12px'; icon2.style.height = '12px';
-                const span2 = document.createElement('span'); span2.textContent = String(limitSummary.badge2);
-                badge2.appendChild(icon2); badge2.appendChild(span2); div.appendChild(badge2);
-            }
-            if (key === 'skill_lv_3' && skillSummary.badge3 > 0) {
-                const badge = document.createElement('div'); badge.className = 'craft-badge';
-                const icon = document.createElement('img'); icon.src = `${BASE_URL}/apps/material-calc/img/exchange.png`; icon.style.width = '12px'; icon.style.height = '12px';
-                const span = document.createElement('span'); span.textContent = String(skillSummary.badge3);
-                badge.appendChild(icon); badge.appendChild(span); div.appendChild(badge);
-            }
-            if (key === 'skill_lv_2' && skillSummary.badge2 > 0) {
-                const badge2 = document.createElement('div'); badge2.className = 'craft-badge';
-                const icon2 = document.createElement('img'); icon2.src = `${BASE_URL}/apps/material-calc/img/exchange.png`; icon2.style.width = '12px'; icon2.style.height = '12px';
-                const span2 = document.createElement('span'); span2.textContent = String(skillSummary.badge2);
-                badge2.appendChild(icon2); badge2.appendChild(span2); div.appendChild(badge2);
-            }
-            if (key === 'wp_limit3' && wpLimitSummary.badge3 > 0) {
-                const badge = document.createElement('div'); badge.className = 'craft-badge';
-                const icon = document.createElement('img'); icon.src = `${BASE_URL}/apps/material-calc/img/exchange.png`; icon.style.width = '12px'; icon.style.height = '12px';
-                const span = document.createElement('span'); span.textContent = String(wpLimitSummary.badge3);
-                badge.appendChild(icon); badge.appendChild(span); div.appendChild(badge);
-            }
-            if (key === 'wp_limit2' && wpLimitSummary.badge2 > 0) {
-                const badge2 = document.createElement('div'); badge2.className = 'craft-badge';
-                const icon2 = document.createElement('img'); icon2.src = `${BASE_URL}/apps/material-calc/img/exchange.png`; icon2.style.width = '12px'; icon2.style.height = '12px';
-                const span2 = document.createElement('span'); span2.textContent = String(wpLimitSummary.badge2);
-                badge2.appendChild(icon2); badge2.appendChild(span2); div.appendChild(badge2);
-            }
+            div.title = `${actualOwned | 0} / ${cnt | 0}`;
+            appendCraftBadgesForKey(div, key, limitSummary, skillSummary, wpLimitSummary);
             // 클릭 시 그룹별 보유량 편집
-            div.addEventListener('click', () => {
-                if (key.startsWith('lv_exp')) openInventoryModal('lv_exp', key);
-                else if (key.startsWith('lv_limit')) openInventoryModal('lv_limit', key);
-                else if (key.startsWith('wp_exp')) openInventoryModal('wp_exp', key);
-                else if (key.startsWith('wp_limit')) openInventoryModal('wp_limit', key);
-                else if (key.startsWith('skill_')) openInventoryModal('skill', key);
-                else if (key === 'konpaku_gem') openInventoryModal('gem', key);
-                else if (key.startsWith('md_')) openInventoryModal('mind', key);
-                else if (key === 'mindscape_core' || key === 'emblem_5star' || key === 'innate_seed') openInventoryModal('mindscape', key);
-            });
+            div.addEventListener('click', () => { handleMaterialChipClick(key); });
             div.appendChild(img); div.appendChild(p); frag.appendChild(div);
         });
         grid.innerHTML = ''; grid.appendChild(frag);
+
+        if (extraSection && extraGrid) {
+            const extraEntries = sortMaterialEntries(Object.fromEntries(
+                Object.entries(STATE.inventory).filter(([key, owned]) => (owned | 0) > 0 && !(STATE.totals[key] > 0))
+            ));
+            extraGrid.innerHTML = '';
+            if (extraEntries.length === 0) {
+                extraSection.style.display = 'none';
+            } else {
+                const extraFrag = document.createDocumentFragment();
+                extraEntries.forEach(([key, owned]) => {
+                    const div = document.createElement('div');
+                    div.className = 'material-chip ' + chipLevelClass(key);
+                    const img = document.createElement('img');
+                    img.src = MATERIAL_ICONS[key] || MATERIAL_ICONS.money;
+                    const p = document.createElement('div'); p.className = 'cnt';
+                    const ownSpan = document.createElement('span'); ownSpan.className = 'own';
+                    ownSpan.textContent = (key === 'konpaku_gem') ? formatK(owned | 0) : String(owned | 0);
+                    p.appendChild(ownSpan);
+                    div.title = String(owned | 0);
+                    div.addEventListener('click', () => { handleMaterialChipClick(key); });
+                    div.appendChild(img); div.appendChild(p); extraFrag.appendChild(div);
+                });
+                extraGrid.appendChild(extraFrag);
+                extraSection.style.display = '';
+            }
+        }
     }
 
     // 렌더: 계획 카드들
@@ -1304,12 +1354,7 @@
             const sinv = { lv_limit1: STATE.inventory.skill_lv_1 | 0, lv_limit2: STATE.inventory.skill_lv_2 | 0, lv_limit3: STATE.inventory.skill_lv_3 | 0 };
             const skillSummary = computeLimitSummary({ n1: needS1, n2: needS2, n3: needS3 }, sinv);
 
-            Object.entries(Object.fromEntries(Object.entries(p.materials || {}).sort((a, b) => {
-                const aa = materialSortOrder(a[0]);
-                const bb = materialSortOrder(b[0]);
-                if (aa !== bb) return aa - bb;
-                return a[0] > b[0] ? 1 : -1;
-            }))).forEach(([k, c]) => {
+            sortMaterialEntries(p.materials || {}).forEach(([k, c]) => {
                 const div = document.createElement('div'); div.className = 'material-chip ' + chipLevelClass(k);
                 const img = document.createElement('img'); img.src = MATERIAL_ICONS[k] || MATERIAL_ICONS.money;
                 // 자동 충당(변환 적용)된 보이는 보유/필요 계산 (그룹 처리)
@@ -1340,68 +1385,16 @@
                 const needSpan2 = document.createElement('span'); needSpan2.className = 'need'; needSpan2.textContent = (k === 'konpaku_gem') ? formatK(c | 0) : String(c | 0);
                 txt.appendChild(ownSpan2); txt.appendChild(sep2); txt.appendChild(needSpan2);
                 // 돌파3 배지: 실제 상향 제작 수 표시
-                if (k === 'lv_limit3' && limitSummary.badge3 > 0) {
-                    const badge = document.createElement('div'); badge.className = 'craft-badge';
-                    const icon = document.createElement('img'); icon.src = `${BASE_URL}/apps/material-calc/img/exchange.png`; icon.style.width = '12px'; icon.style.height = '12px';
-                    const span = document.createElement('span'); span.textContent = String(limitSummary.badge3);
-                    badge.appendChild(icon); badge.appendChild(span); div.appendChild(badge);
-                }
-                if (k === 'lv_limit2' && limitSummary.badge2 > 0) {
-                    const badge2 = document.createElement('div'); badge2.className = 'craft-badge';
-                    const icon2 = document.createElement('img'); icon2.src = `${BASE_URL}/apps/material-calc/img/exchange.png`; icon2.style.width = '12px'; icon2.style.height = '12px';
-                    const span2 = document.createElement('span'); span2.textContent = String(limitSummary.badge2);
-                    badge2.appendChild(icon2); badge2.appendChild(span2); div.appendChild(badge2);
-                }
-                if (k === 'wp_limit3' && wpLimitSummary.badge3 > 0) {
-                    const badge = document.createElement('div'); badge.className = 'craft-badge';
-                    const icon = document.createElement('img'); icon.src = `${BASE_URL}/apps/material-calc/img/exchange.png`; icon.style.width = '12px'; icon.style.height = '12px';
-                    const span = document.createElement('span'); span.textContent = String(wpLimitSummary.badge3);
-                    badge.appendChild(icon); badge.appendChild(span); div.appendChild(badge);
-                }
-                if (k === 'wp_limit2' && wpLimitSummary.badge2 > 0) {
-                    const badge2 = document.createElement('div'); badge2.className = 'craft-badge';
-                    const icon2 = document.createElement('img'); icon2.src = `${BASE_URL}/apps/material-calc/img/exchange.png`; icon2.style.width = '12px'; icon2.style.height = '12px';
-                    const span2 = document.createElement('span'); span2.textContent = String(wpLimitSummary.badge2);
-                    badge2.appendChild(icon2); badge2.appendChild(span2); div.appendChild(badge2);
-                }
-                if (k === 'skill_lv_3' && skillSummary.badge3 > 0) {
-                    const badge = document.createElement('div'); badge.className = 'craft-badge';
-                    const icon = document.createElement('img'); icon.src = `${BASE_URL}/apps/material-calc/img/exchange.png`; icon.style.width = '12px'; icon.style.height = '12px';
-                    const span = document.createElement('span'); span.textContent = String(skillSummary.badge3);
-                    badge.appendChild(icon); badge.appendChild(span); div.appendChild(badge);
-                }
-                if (k === 'skill_lv_2' && skillSummary.badge2 > 0) {
-                    const badge = document.createElement('div'); badge.className = 'craft-badge';
-                    const icon = document.createElement('img'); icon.src = `${BASE_URL}/apps/material-calc/img/exchange.png`; icon.style.width = '12px'; icon.style.height = '12px';
-                    const span = document.createElement('span'); span.textContent = String(skillSummary.badge2);
-                    badge.appendChild(icon); badge.appendChild(span); div.appendChild(badge);
-                }
+                appendCraftBadgesForKey(div, k, limitSummary, skillSummary, wpLimitSummary);
                 div.title = `${visual | 0} / ${c | 0}`;
-                div.addEventListener('click', () => {
-                    if (k.startsWith('lv_exp')) openInventoryModal('lv_exp', k);
-                    else if (k.startsWith('lv_limit')) openInventoryModal('lv_limit', k);
-                    else if (k.startsWith('wp_exp')) openInventoryModal('wp_exp', k);
-                    else if (k.startsWith('wp_limit')) openInventoryModal('wp_limit', k);
-                    else if (k.startsWith('skill_')) openInventoryModal('skill', k);
-                    else if (k === 'konpaku_gem') openInventoryModal('gem', k);
-                    else if (k.startsWith('md_')) openInventoryModal('mind', k);
-                    else if (k === 'mindscape_core' || k === 'emblem_5star' || k === 'innate_seed') openInventoryModal('mindscape', k);
-                });
+                div.addEventListener('click', () => { handleMaterialChipClick(k); });
                 div.appendChild(img); div.appendChild(txt); matGrid.appendChild(div);
             });
             // details toggle
             const detailBtn = document.createElement('button'); detailBtn.className = 'mini-btn'; detailBtn.textContent = t('viewDetails');
             actions.insertBefore(detailBtn, menuBtn);
             const details = document.createElement('div'); details.className = 'plan-details'; details.style.display = 'none';
-            const mindBaseHtml = (() => {
-                const arr = (p.inputs.mindBase || []).slice(0, 12);
-                const items = arr.map((on, idx) => {
-                    const gi = ((idx) % 3) + 1;
-                    const op = on ? '1' : '0.35';
-                    return `<img src="${BASE_URL}/apps/material-calc/img/mind_base_${gi}.png" style="width:16px;height:16px;object-fit:contain;opacity:${op};margin-right:2px;">`;
-                }).join('');
-                return `<div class="mind-seq">${items}</div>`;
-            })();
+            const mindBaseProgress = getMindBaseProgress(p.inputs);
             details.innerHTML = `
                 <div class="row"><label>${t('level')}</label><div>${p.inputs.lvFrom}</div><div>→</div><div>${p.inputs.lvTo}</div></div>
                 <div class="row"><label>${t('weapon')}</label><div>${p.inputs.wpFrom}</div><div>→</div><div>${p.inputs.wpTo}</div></div>
@@ -1409,12 +1402,12 @@
                 <div class="row"><label>${t('skills')}2</label><div>${p.inputs.s2From}</div><div>→</div><div>${p.inputs.s2To}</div></div>
                 <div class="row"><label>${t('skills')}3</label><div>${p.inputs.s3From}</div><div>→</div><div>${p.inputs.s3To}</div></div>
                 <div class="row"><label>HL/TH</label><div>${p.inputs.s4From}</div><div>→</div><div>${p.inputs.s4To}</div></div>
-                <div class="row"><label>${t('mindBase')}</label><div style="grid-column: span 3; display:flex; align-items:center;">${mindBaseHtml}</div></div>
+                <div class="row"><label>${t('mindBase')}</label><div>${mindBaseProgress.current}/12</div><div>→</div><div>${mindBaseProgress.target}/12</div></div>
                 <div class="row"><label>${t('mindStat1')}</label><div>${p.inputs.mindStat1From}</div><div>→</div><div>${p.inputs.mindStat1To}</div></div>
-                <div class="row"><label>${t('mindStat2')}</label><div>${p.inputs.mindStat2From}</div><div>→</div><div>${p.inputs.mindStat2To}</div></div>
                 <div class="row"><label>${t('mindSkill1')}</label><div>${p.inputs.mindSkill1From}</div><div>→</div><div>${p.inputs.mindSkill1To}</div></div>
-                <div class="row"><label>${t('mindSkill2')}</label><div>${p.inputs.mindSkill2From}</div><div>→</div><div>${p.inputs.mindSkill2To}</div></div>
                 <div class="row"><label>${t('mindAttr')}</label><div>${p.inputs.mindAttrFrom}</div><div>→</div><div>${p.inputs.mindAttrTo}</div></div>
+                <div class="row"><label>${t('mindStat2')}</label><div>${p.inputs.mindStat2From}</div><div>→</div><div>${p.inputs.mindStat2To}</div></div>
+                <div class="row"><label>${t('mindSkill2')}</label><div>${p.inputs.mindSkill2From}</div><div>→</div><div>${p.inputs.mindSkill2To}</div></div>
                 ${p.inputs.mindscapeEnabled ? `
                 <div class="row"><label>${t('mindscapeCore')}</label><div>${p.inputs.mindscapeLevelFrom || 80}</div><div>→</div><div>${p.inputs.mindscapeLevelTo || 100}</div></div>
                 <div class="row"><label>${t('resonance1')}</label><div>${p.inputs.resonance1From || 0}</div><div>→</div><div>${p.inputs.resonance1To || 2}</div></div>
@@ -1535,10 +1528,10 @@
         const summaryHeader = document.querySelector('.summary-header');
         if (collapse && summaryHeader) {
             summaryHeader.onclick = () => {
-                const grid = document.getElementById('summaryGrid');
+                const content = document.getElementById('summaryContent');
                 const open = collapse.getAttribute('aria-expanded') === 'true';
                 collapse.setAttribute('aria-expanded', String(!open));
-                grid.style.display = open ? 'none' : 'grid';
+                if (content) content.style.display = open ? 'none' : 'block';
                 collapse.textContent = open ? '▸' : '▾';
             };
         }
@@ -1765,14 +1758,11 @@
             rows = [{ key: 'konpaku_gem', label: t('inventoryGem', 'Gem'), icon: MATERIAL_ICONS.konpaku_gem }];
         } else if (type === 'mind') {
             setModalTitle('mind', 'Mind');
-            rows = [
-                { key: 'md_mercury', label: materialInfoFor('md_mercury').name, icon: MATERIAL_ICONS.md_mercury },
-                { key: 'md_bell', label: materialInfoFor('md_bell').name, icon: MATERIAL_ICONS.md_bell },
-                { key: 'md_stat1', label: materialInfoFor('md_stat1').name, icon: MATERIAL_ICONS.md_stat1 },
-                { key: 'md_stat2', label: materialInfoFor('md_stat2').name, icon: MATERIAL_ICONS.md_stat2 },
-                { key: 'md_skill1', label: materialInfoFor('md_skill1').name, icon: MATERIAL_ICONS.md_skill1 },
-                { key: 'md_skill2', label: materialInfoFor('md_skill2').name, icon: MATERIAL_ICONS.md_skill2 }
-            ];
+            rows = MIND_MATERIAL_ORDER.map((key) => ({
+                key,
+                label: materialInfoFor(key).name,
+                icon: MATERIAL_ICONS[key]
+            }));
         } else if (type === 'mindscape') {
             setModalTitle('mindscapeCore', 'Mindscape Core');
             rows = [
@@ -2037,12 +2027,12 @@
         if (key === 'skill_item6') return 407;
         if (key === 'skill_rose') return 401;
         // mind base / lv / stat / skill
-        if (key === 'md_mercury') return 106; // mind base(기초 재화)
-        if (key === 'md_bell') return 105;   // mind lv(속성 강화)
-        if (key === 'md_stat1') return 101;
+        if (key === 'md_mercury') return 101;
         if (key === 'md_stat2') return 102;
-        if (key === 'md_skill1') return 103;
+        if (key === 'md_stat1') return 103;
         if (key === 'md_skill2') return 104;
+        if (key === 'md_skill1') return 105;
+        if (key === 'md_bell') return 106;
         if (key === 'konpaku_gem') return 50; // 통화는 항상 상단에 가까이 노출
         return 9999;
     }

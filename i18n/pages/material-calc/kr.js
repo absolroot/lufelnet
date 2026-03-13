@@ -39,6 +39,7 @@ window.I18N_PAGE_MATERIAL_CALC_KR = {
     cancel: '취소',
     save: '저장',
     includeInSummary: '합산 포함',
+    extraMaterials: '여분 재료',
     viewDetails: '상세',
     edit: '수정',
     remove: '삭제',

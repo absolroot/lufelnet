@@ -21,6 +21,11 @@
 }
 
 
+/*키라*/
+.char-img.single-banner[src*="%ED%82%A4%EB%9D%BC"]{
+  top: 95%;
+}
+
 /*야오링 사자무*/
 .char-img.single-banner[src*="%EC%95%BC%EC%98%A4%EB%A7%81%C2%B7%EC%82%AC%EC%9E%90%EB%AC%B4"] {
   top: 90%;

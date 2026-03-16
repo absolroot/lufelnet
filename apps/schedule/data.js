@@ -72,8 +72,8 @@ window.ReleaseScheduleData = {
         { version: "3.2.2", date: "2026-02-13", characters: ["미오"], persona: ["트론"], weapon: ["플라스마 섬멸자", "작열의 연옥"], days: 19 },
         { version: "3.3", characters: ["야오링·사자무"], persona: ["년수"], goldTicketUnlocks: ["PHOEBE"], note: "", days: 14 },
         { version: "3.4", characters: ["카스미"], persona: ["스라오샤"], days: 14 },
-        { version: "3.5", characters: ["아케치"], days: 14 },
-        { version: "3.6", characters: ["마유미"], days: 14 },
+        { version: "3.5", characters: ["마유미"], days: 14 },
+        { version: "3.6", characters: ["아케치"], days: 14 },
         // 4.0 이후 (3주 간격) - isThreeWeekStart 표시
         { version: "4.0", characters: ["마나카", "쇼키"], "main-story": "5-1", weapon: ["하이브 가드"], revelation: ["희망", "신중", "고집"], days: 21 },
         { version: "4.1.1", characters: ["유키 마코토"], persona: ["자오우곤겐"], days: 21 },

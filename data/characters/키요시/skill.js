@@ -50,8 +50,8 @@ window.enCharacterSkillsData["키요시"] = {
   "name": "Kiyoshi Kurotani",
   "skill1": {
     "name": "Ring of Fire",
-    "element": "버프",
-    "type": "버프",
+    "element": "화염",
+    "type": "화상",
     "sp": 18,
     "cool": 0,
     "description": "Deal Fire damage to 1 foe equal to 26.2%/28.8%/27.2%/29.9% of Kurotani's max HP and inflict Burn.\nIf the target is Burning, gain 1 Chosen One stack, change target to all foes, decrease damage dealt by half, and inflict Burn."

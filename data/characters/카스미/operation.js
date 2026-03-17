@@ -3,10 +3,6 @@ window.operationData["카스미"] = {
     "basic": [
         {
             "label": "의식 0",
-            "value": "2 › 1+변신 › 1+HL › 2 › 1 › 변신+1+HL"
-        },
-        {
-            "label": "의식 0",
             "value": "2 › 1+변신 › HL+3 › 2 › 1 › 변신+HL+3"
         },
         {
@@ -25,10 +21,6 @@ window.operationData["카스미"] = {
     "basic_en": [
         {
             "label": "A0",
-            "value": "2 › 1+ON › 1+HL › 2 › 1 › 1+ON+HL"
-        },
-        {
-            "label": "A0",
             "value": "2 › 1+ON › HL+3 › 2 › 1 › 3+ON+HL"
         },
         {
@@ -45,10 +37,6 @@ window.operationData["카스미"] = {
         }
     ],
     "basic_jp": [
-        {
-            "label": "意識 0",
-            "value": "2 › 1+変身 › 1+HL › 2 › 1 › 1+変身+HL"
-        },
         {
             "label": "意識 0",
             "value": "2 › 1+変身 › HL+3 › 2 › 1 › 3+変身+HL"

@@ -517,6 +517,8 @@ body:not(.tactic-edit-mode) .ritual-mod-wrapper {
 .slot-char-link {
     display: inline-block;
     line-height: 0;
+    position: relative;
+    overflow: visible;
 }
 
 .slot-char-img:hover{
@@ -1994,6 +1996,28 @@ body:not(.tactic-edit-mode) .ws-details {
     gap: 0px;
     margin-left: 4px;
     vertical-align: middle;
+}
+
+.slot-char-preset-icons {
+    position: absolute;
+    right: -6px;
+    bottom: -5px;
+    z-index: 2;
+    margin-left: 0;
+    padding: 1px 2px;
+    border-radius: 999px;
+    background: rgba(10, 14, 24, 0.82);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+    pointer-events: none;
+}
+
+.slot-char-preset-icons .preset-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.slot-char-preset-icons .preset-icon + .preset-icon {
+    margin-left: -2px;
 }
 
 .preset-icon {

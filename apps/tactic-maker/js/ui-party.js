@@ -951,11 +951,11 @@ export class PartyUI {
                 <a href="${characterHref}" target="_blank" class="slot-char-link">
                     <img src="${imgPath}" class="slot-char-img"
                          onerror="this.src='${this.baseUrl}/assets/img/tier/${data.name}.webp'">
+                    <span class="preset-icons slot-char-preset-icons"></span>
                 </a>
                 <div class="slot-char-details">
                     <div class="slot-char-name">
                         <span class="slot-name-text">${displayName}</span>
-                        <span class="preset-icons"></span>
                     </div>
                     <div class="slot-char-sub">
                         ${attrIcon ? `<img src="${attrIcon}" class="meta-icon" title="${DataLoader.getElementName(element)}" onerror="this.style.display='none'">` : ''}

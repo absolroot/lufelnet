@@ -73,7 +73,7 @@ window.I18N_PAGE_SCHEDULE_KR = {
     anniversaryCnTwoHalf: 'CN 2.5주년',
 
     // Notices
-    noticeHtml: '스포일러에 주의하세요.<br>이 스케줄은 GLB/JP 서버 기준입니다.<br>4.0 버전까지는 2주 간격, 이후는 3주 간격으로 출시됩니다. 이벤트/휴일에 따라 변경될 수 있으며, <strong style="color:rgb(255, 255, 0);">출시 순서는 변경될 수 있습니다.</strong><br>자세한 패치 히스토리는 <a href="https://docs.google.com/spreadsheets/d/1KmLUs1Cpp2WuDQZYHCW1xzCVCThWCB6R2VR5pFuLixE/edit?usp=sharing" target="_blank">P5X Patch History by Sages</a>를 참고하세요.',
+    noticeHtml: '스포일러에 주의하세요.<br>이 스케줄은 GLB/JP 서버 기준입니다.<br>아시아 서버에서는 4.0 버전까지 2주 간격, 이후는 3주 간격으로 출시됐지만 GLB/JP도 동일할지는 확정되지 않았습니다.<br>이 스케줄과 캐릭터 출시 순서는 이전 아시아 서버 출시 이력을 기반으로 하며, 예상치 못한 사정이나 이벤트에 따라 언제든지 변경될 수 있습니다.<br><strong style="color:rgb(255, 255, 0);">출시 순서는 아시아 서버와 동일하지 않을 수 있으며 변경될 수 있습니다.</strong><br>자세한 패치 히스토리는 <a href="https://docs.google.com/spreadsheets/d/1KmLUs1Cpp2WuDQZYHCW1xzCVCThWCB6R2VR5pFuLixE/edit?usp=sharing" target="_blank">P5X Patch History by Sages</a>를 참고하세요.',
 
     // SEO
     seoKeywords: 'P5X, 페르소나5X, 출시 스케줄, 캐릭터 출시, 배너 스케줄, P5X 스케줄, GLB 서버, JP 서버',

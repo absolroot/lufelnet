@@ -69,7 +69,9 @@ window.I18N_PAGE_DEFENSE_CALC_EN = {
         "의식4": "A4",
         "의식5": "A5",
         "의식6": "A6",
+        "총기": "Gun",
         "총격": "Gun",
+        "지원기술": "Assist Skill",
         "광역": "AoE",
         "단일": "Single"
     },

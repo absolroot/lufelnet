@@ -21,6 +21,10 @@
 <br>
 
 효과 명중을 올리면 아군의 공격력이 올라가는 패시브가 있는데 상한이 없으므로 **효과 명중을 최대한 높게 올리는 것이 좋다**.
+
+후카의 백업 캐릭터로 참가할 경우 해당 패시브와 '전투 중'에 해당하는 계시 세트 효과가 발동되지 않기 때문에 실질적으로 2가지 이상의 계시 조합을 준비해야한다.
+효과명중을 채워주는 좌절 + 자유 세트나 여정 + 풍요 세트 또한 선택지에 포함될 수 있으니 파티 상황에 맞게 채택을 권장한다.
+
 `,
     review_en: `An original P3 character, Koromaru is a debuffer who **enhances Fire, Elec, and Ice weaknesses**.
 
@@ -37,6 +41,9 @@ The three skills are identical except for which of Fire, Elec, or Ice damage tak
 <br>
 
 He also has a passive that increases allies' Attack based on his Ailment Accuracy. Since there is no cap, **it is best to stack as much Ailment Accuracy as possible**.
+
+When Koromaru enters as Fuuka's [Backup Character], that passive and Revelation set effects tied to "during battle" do not activate, so you effectively need to prepare at least two Revelation loadouts.
+Sets such as [Defeat] + [Freedom] or [Departure] + [Prosperity], which help fill out Ailment Accuracy, are also valid options, so it is recommended to choose based on the party setup.
 `,
     review_jp: `P3のオリジナルキャラクターで、**火炎・電撃・氷結属性の弱点を強化**するデバッファー。
 
@@ -53,6 +60,9 @@ He also has a passive that increases allies' Attack based on his Ailment Accurac
 <br>
 
 効果命中を上げると味方の攻撃力が上がるパッシブを持っており、上限がないため**効果命中をできるだけ高く積むのが望ましい**。
+
+風花の『候補キャラクター』として参加する場合、そのパッシブと『戦闘中』に該当する啓示セット効果は発動しないため、実質的に2種類以上の啓示構成を用意する必要がある。
+効果命中を補いやすい[敗北]＋[自由]セットや[旅立]＋[豊穣]セットも選択肢に入るため、パーティ状況に応じて採用することを勧める。
 `,
     pros: [
       "화염, 전격, 빙결 속성의 약점을 강화시킨다.",

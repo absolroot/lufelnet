@@ -806,6 +806,8 @@ const defenseCalcData = {
             target: "광역",
             skillIcon: `${BASE_URL}/assets/img/skill-element/디버프광역.png`,
             skillName: "지원기술",
+            skillName_en: "Assist Skill",
+            skillName_jp: "サポートスキル",
             value: 30,
             duration: "",
             note: "",

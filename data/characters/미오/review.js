@@ -17,7 +17,7 @@ TECHNICAL 속성별 효과가 등장한 첫 캐릭터로 빙결 속성 TECHNICAL
 - 『화염 돌풍』이 주는 추가 대미지가 6% 증가한다.
 - 『얼음 봉인』의 기본 확률이 2.5% 증가한다.
 
-해당 메커니즘에 대한 자세한 이해를 원한다면 가이드를 참조하세요 : [TECHNICAL 강화 - 스킬 마스터](/kr/article/technical-master/)
+해당 메커니즘에 대한 자세한 이해를 원한다면 가이드를 참조하면 좋다 : [TECHNICAL 강화 - 스킬 마스터](/kr/article/technical-master/)
    
         `,
                 review_en: `A **TECHNICAL-focused AoE DEF Down debuffer specialized in Burn setups**.

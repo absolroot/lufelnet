@@ -20,6 +20,10 @@
 - 카타야마는 자체 버프(패시브/스킬)가 여럿이지만, 적 턴 종료 시에 다운에서 일어나기 때문에 디버프가 사라져 본인이 그 효과를 활용하기 어렵다.
 - 방어력 감소가 HL에 묶여 **HL 강제 사용**이 필요한 상황이 생긴다.
 - 4성 무기는 적을 다운시 발동한다. 의식1 미만이면 효율이 급감하므로 **3성 무기**가 대안이 될 수 있다.
+
+<br>
+
+꾸준한 연구를 통해 의식6 후카와 정말로 사이클이 잘 맞는다는 평가가 이루어지며 상위권 기준 초기 출시 평가와 달리 적극적으로 활용됐다.
       `,
       review_en: `Debuffer who can **greatly reduce Down Points regardless of enemy weaknesses and increase the damage taken by Downed enemies**.
 
@@ -38,6 +42,10 @@ However, some limitations exist as listed below, so it's advisable to refer to t
 - DEF Down is tied to HL, causing **forced HL usage**.  
 - Her 4★ weapon activates when enemies are Downed, but without A1 the efficiency drops sharply—making the **3★ weapon** a reasonable alternative.
 
+<br>
+
+As research continued, players came to recognize that she truly syncs well with A6 Fuuka's cycle, and unlike her initial release evaluation, she became actively used in high-end play.
+
       `,
       review_jp: `敵の弱点に依存せずダウン値を大きく削り、ダウン中の敵が受けるダメージを増加させるデバッファー。
 
@@ -55,6 +63,10 @@ However, some limitations exist as listed below, so it's advisable to refer to t
 - 自己バフ（パッシブ／スキル）は多いものの、敵はターン終了時にダウンから立ち上がるためデバフが消え、効果を活かしにくい。  
 - 防御力ダウンがHLに紐づくため、**HLの強制発動**が起こりやすい。  
 - ★4武器は敵がダウンした際に発動するが、A1未満では発動率が低くなるため、**★3武器**が代替となる場合がある。
+
+<br>
+
+継続的な研究を通じて、A6風花と本当にサイクルが噛み合うと評価されるようになり、実装初期の評価とは異なり、上位環境では積極的に採用されるようになった。
       `,
       pros: ["적의 약점에 무관하게 다운 시킬 수 있다.", "다운 약화 효과를 강화시킨다."],
       pros_en: ["Can down enemies regardless of their weaknesses.", "Enhances the DOWN debuff."],

@@ -25,7 +25,7 @@ window.I18N_PAGE_TACTIC_EN = {
     labelRitual: 'A',
     labelOrder: 'Order',
     labelMain: 'Uni.',
-    labelSub: 'S/M/S/P',
+    labelSub: 'S/M/S/S',
     uiReference: 'Reference',
     uiPersona: 'Persona',
     uiDetails: 'Details',

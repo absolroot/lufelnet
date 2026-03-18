@@ -36,7 +36,7 @@ window.I18N_PAGE_CHARACTER_EN = {
     characterDetailEnhancementMixed: '5★ +0 / 4★ +6',
     characterDetailEnhancementAll: 'All',
     characterDetailMainLabel: 'Space',
-    characterDetailSunMoonStarEarth: 'S/M/S/P',
+    characterDetailSunMoonStarEarth: 'S/M/S/S',
     characterDetailSun: 'Sun',
     characterDetailMoon: 'Moon',
     characterDetailStar: 'Star',
@@ -138,4 +138,13 @@ window.I18N_PAGE_CHARACTER_EN = {
     characterAttrSupport: 'SUPPORT',
     characterAttrReduceDef: 'REDUCE DEF',
     characterAttrCritical: 'CRITICAL'
+    ,fukaRevelationStatusTitle: 'Backup Character Revelation Effect Status'
+    ,fukaRevelationStatusColActive: 'Active'
+    ,fukaRevelationStatusColMain: 'Main Card'
+    ,fukaRevelationStatusColSub: 'S/M/S/S'
+    ,fukaRevelationStatusColEffects: 'Effects'
+    ,fukaRevelationStatusMainEffect: 'Main Set Effect'
+    ,fukaRevelationStatusSubSet2: '2-Set'
+    ,fukaRevelationStatusSubSet4: '4-Set'
+    ,fukaRevelationStatusNote: 'Note'
 };

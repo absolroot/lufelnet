@@ -138,4 +138,13 @@ window.I18N_PAGE_CHARACTER_KR = {
     characterAttrSupport: '보조',
     characterAttrReduceDef: '방어력 감소',
     characterAttrCritical: '크리티컬'
+    ,fukaRevelationStatusTitle: '후보 캐릭터 계시 효과 발동 여부'
+    ,fukaRevelationStatusColActive: '발동'
+    ,fukaRevelationStatusColMain: '주 카드'
+    ,fukaRevelationStatusColSub: '일월성진'
+    ,fukaRevelationStatusColEffects: '효과'
+    ,fukaRevelationStatusMainEffect: '주 세트효과'
+    ,fukaRevelationStatusSubSet2: '2세트'
+    ,fukaRevelationStatusSubSet4: '4세트'
+    ,fukaRevelationStatusNote: '비고'
 };

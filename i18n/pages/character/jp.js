@@ -138,4 +138,13 @@ window.I18N_PAGE_CHARACTER_JP = {
     characterAttrSupport: 'サポート',
     characterAttrReduceDef: '防御低下',
     characterAttrCritical: 'クリティカル'
+    ,fukaRevelationStatusTitle: '控えキャラ啓示効果発動可否'
+    ,fukaRevelationStatusColActive: '発動'
+    ,fukaRevelationStatusColMain: '主カード'
+    ,fukaRevelationStatusColSub: '旭月星天'
+    ,fukaRevelationStatusColEffects: '効果'
+    ,fukaRevelationStatusMainEffect: '主セット効果'
+    ,fukaRevelationStatusSubSet2: '2セット'
+    ,fukaRevelationStatusSubSet4: '4セット'
+    ,fukaRevelationStatusNote: '備考'
 };

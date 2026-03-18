@@ -326,7 +326,7 @@ window.I18N_COMMON_KR = {
         sky: '진',
         space: '주',
         sunMoonStarSky: '일월성진',
-        sms: 'S/M/S/P',
+        sms: '일월성진',
 
         // 계시 종류
         common: '공통',

@@ -315,8 +315,8 @@ window.I18N_COMMON_EN = {
         star: 'Star',
         sky: 'Sky',
         space: 'Space',
-        sunMoonStarSky: 'Sun/Moon/Star/Sky',
-        sms: 'S/M/S/P',
+        sunMoonStarSky: 'S/M/S/S',
+        sms: 'S/M/S/S',
 
         // Revelation types
         common: 'Common',

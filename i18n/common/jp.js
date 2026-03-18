@@ -316,7 +316,7 @@ window.I18N_COMMON_JP = {
         sky: '天',
         space: '宙',
         sunMoonStarSky: '旭月星天',
-        sms: 'S/M/S/P',
+        sms: '旭月星天',
 
         // 啓示タイプ
         common: '共通',

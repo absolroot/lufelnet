@@ -3,10 +3,6 @@ window.operationData["카스미"] = {
     "basic": [
         {
             "label": "의식 0",
-            "value": "2 › 1+변신 › HL+3 › 2 › 1 › 변신+HL+3"
-        },
-        {
-            "label": "의식 1",
             "value": "2 › 1 › 변신+HL+3 › 2 › 1 › 변신+HL+3"
         },
         {
@@ -21,10 +17,6 @@ window.operationData["카스미"] = {
     "basic_en": [
         {
             "label": "A0",
-            "value": "2 › 1+ON › HL+3 › 2 › 1 › 3+ON+HL"
-        },
-        {
-            "label": "A1",
             "value": "2 › 1 › ON+HL+3 › 2 › 1 › ON+HL+3"
         },
         {
@@ -39,10 +31,6 @@ window.operationData["카스미"] = {
     "basic_jp": [
         {
             "label": "意識 0",
-            "value": "2 › 1+変身 › HL+3 › 2 › 1 › 3+変身+HL"
-        },
-        {
-            "label": "意識 1",
             "value": "2 › 1 › 変身+HL+3 › 2 › 1 › 変身+HL+3"
         },
         {
@@ -56,11 +44,11 @@ window.operationData["카스미"] = {
     ],
     "note": [
         "· 2스킬+1스킬 3회 스택 예열 이후 HL 사용",
-        "· 의식6 리코·매화와 함께 사용할 경우 2, 5턴에 스킬3 사용 가능"
+        "· 의식6 리코·매화, 의식1 J&C와 함께 사용할 경우 2, 5턴에 스킬3 사용 가능"
     ],
     "note_en": [
         "· Use HL after 3 stacks of skill 2+skill 1",
-        "· If used with WIND(5★) in A6, skill 3 can be used in 2nd and 5th turns"
+        "· If used with WIND(5★) in A6 OR J&C in A1, skill 3 can be used in 2nd and 5th turns"
     ],
     "note_jp": [
         "· スキル2+スキル1のスタックを3回予熱してからHLを使用する",

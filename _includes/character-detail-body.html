@@ -1103,6 +1103,7 @@
             window.RikoCalc = window.RikoCalc || {};
             // 코로마루 전용 계산기 전역 스텁
             window.KoromaruCalc = window.KoromaruCalc || {};
+            window.FukaRevelationStatus = window.FukaRevelationStatus || {};
             // 후타바 전용 코드네임 아이콘 전역 스텁
             window.NaviIcons = window.NaviIcons || {};
         } catch (e) { console.warn('[SAFE:init-globals]', e); }
@@ -1144,6 +1145,10 @@
             // 코로마루 전용 효과명중 계산기 로드
             if (name === '코로마루') {
                 tasks.push(loadPerCharacterResource(name, { fileBase: 'koromaru_calc', globalVarName: 'KoromaruCalc' }));
+            }
+
+            if (name === '후카') {
+                tasks.push(loadPerCharacterResource(name, { fileBase: 'fuka_revelation_status', globalVarName: 'FukaRevelationStatus' }));
             }
 
             await Promise.all(tasks.map(t => safeAwait('loadPerCharacterResource', t)));

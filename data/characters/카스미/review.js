@@ -11,9 +11,9 @@
 
 <br>
 
-의식1부터는 스킬2의 지속시간이 1턴 늘어나 자동으로 아군이 1스킬을 2번 사용하고, 이로 인해 3턴에 3스킬을 사용할 수 있는 여유를 획득하게 된다.
+의식1부터는 스킬2의 지속시간이 1턴 늘어나 자동으로 아군이 1스킬을 2번 사용하고, 이로 인해 아군에 무관하게 3턴에 4스택을 모두 채운 채로 HIGHLIGHT를 사용할 수 있다.
 
-3스킬의 계수가 높은 편에 속해 의식0에서도 3턴에 HL을 2번 발동하는 경우가 아닐 때는 3스킬을 발동시키는 것이 전체 구성에서 높은 대미지를 보여주기도 한다.
+3스킬의 계수가 높은 편에 속해 의식0에서도 3턴에 비록 HL에 충전된 스택이 3스택이어도 3스킬을 발동시키는 것이 전체 구성에서 높은 대미지를 보여주기도 한다.
 
 스킬2는 아군이 1턴에 2회 이상의 페르소나 스킬을 발동할 경우 2번 이상 카스미의 스킬1이 자동으로 발동되는 되는 특징이 있다.
 
@@ -42,9 +42,9 @@ Even if you use Skill 2, Skill 1 will automatically trigger when allies take act
 
 <br>
 
-From Awareness 1 onward, Skill 2’s duration is extended by 1 turn, causing allies to automatically trigger Skill 1 twice, which in turn gives you enough room to use Skill 3 on turn 3.
+From Awareness 1 onward, Skill 2’s duration is extended by 1 turn, causing allies to automatically trigger Skill 1 twice, which lets her use HIGHLIGHT on turn 3 with all 4 stacks fully built regardless of the ally lineup.
 
-Skill 3 has relatively high scaling, so even at Awareness 0, if you’re not in a situation where you can trigger HL twice on turn 3, using Skill 3 can sometimes result in higher overall damage in the rotation.
+Skill 3 has relatively high scaling, so even at Awareness 0, using Skill 3 can sometimes result in higher overall damage in the rotation, even if HIGHLIGHT has only 3 stacks charged on turn 3.
 
 Skill 2 also has a trait where, if allies activate Persona skills two or more times in a single turn, Kasumi’s Skill 1 automatically activates two or more times.
 
@@ -72,9 +72,9 @@ The main question is whether DEF reduction is sufficient; reducing the boss's de
 
 <br>
 
-意識1からはスキル2の持続時間が1ターン延長され、味方が自動でスキル1を2回使用するようになる。これにより、3ターン目にスキル3を使用できる余裕を得られる。
+意識1からはスキル2の持続時間が1ターン延長され、味方が自動でスキル1を2回使用するようになる。これにより、味方編成に関係なく3ターン目に4スタックをすべて溜めた状態でHIGHLIGHTを使用できる。
 
-スキル3は倍率が高めで、意識0でも3ターン目にHLを2回発動できる状況でない場合は、スキル3を発動したほうがローテ全体で高いダメージを出すこともある。
+スキル3は倍率が高めで、意識0でも3ターン目にHLのチャージが3スタックの状態であっても、スキル3を発動したほうがローテ全体で高いダメージを出すこともある。
 
 スキル2には、味方が1ターン内にペルソナスキルを2回以上発動した場合、かすみのスキル1が2回以上自動発動するという特徴がある。
 
@@ -114,4 +114,3 @@ The main question is whether DEF reduction is sufficient; reducing the boss's de
           ,
     };
 })();
-

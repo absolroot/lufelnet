@@ -5,7 +5,7 @@ window.characterSkillsData["코로마루"] = {
   "name": "코로마루",
   "skill1": {
     "name": "칠흑의 지옥불",
-    "element": "버프",
+    "element": "주원광역",
     "type": "버프",
     "sp": 22,
     "cool": 0,
@@ -13,7 +13,7 @@ window.characterSkillsData["코로마루"] = {
   },
   "skill2": {
     "name": "붉은 섬광",
-    "element": "버프",
+    "element": "주원광역",
     "type": "버프",
     "sp": 22,
     "cool": 0,
@@ -21,7 +21,7 @@ window.characterSkillsData["코로마루"] = {
   },
   "skill3": {
     "name": "은빛 달의 서리",
-    "element": "버프",
+    "element": "주원광역",
     "type": "버프",
     "sp": 22,
     "cool": 0,

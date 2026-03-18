@@ -351,7 +351,7 @@
       if (stored === '0') return false;
       if (stored === '1') return true;
     } catch (_) {}
-    return false;
+    return true;
   }
 
   function setStoredAccordionExpanded(expanded) {

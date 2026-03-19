@@ -106,5 +106,9 @@
     {
         "description" : "Foes inflicted with Burn take 20% increased damage.",
         "name": "Burn +"
+    },
+    {
+        "description" : "Party's Highlight damage is increased by 50%.",
+        "name": "Highlight +"
     }
 ]

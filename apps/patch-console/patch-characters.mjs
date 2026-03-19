@@ -391,6 +391,12 @@ function isIgnoredSkillElementAoeDiff(part, pathText, beforeValue, afterValue) {
   return stripped.length > 0 && stripped === afterText;
 }
 
+function isIgnoredSkillFieldDiff(part, pathText) {
+  if (part !== 'skill') return false;
+  const path = String(pathText || '').trim();
+  return /(^|\.)(element|type)$/i.test(path);
+}
+
 function applyPartPatchPolicy(part, existingValue, nextValue) {
   if (part !== 'skill') return nextValue;
   const changedPaths = diffPaths(existingValue, nextValue).filter(Boolean);
@@ -400,6 +406,10 @@ function applyPartPatchPolicy(part, existingValue, nextValue) {
   for (const pathText of changedPaths) {
     const before = getValueAtDiffPath(existingValue, pathText);
     const after = getValueAtDiffPath(adjusted, pathText);
+    if (isIgnoredSkillFieldDiff(part, pathText)) {
+      adjusted = setValueAtDiffPath(adjusted, pathText, before);
+      continue;
+    }
     if (isIgnoredSkillElementAoeDiff(part, pathText, before, after)) {
       adjusted = setValueAtDiffPath(adjusted, pathText, before);
     }

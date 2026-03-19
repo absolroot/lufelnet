@@ -50,87 +50,93 @@ window.characterSkillsData["카스미"] = {
 window.enCharacterSkillsData["카스미"] = {
   "name": "Kasumi Yoshizawa",
   "skill1": {
-    "name": "Glimmer of Night",
+    "name": "Cinderella Glow",
     "element": "축복",
     "type": "단일피해",
     "sp": 23,
     "cool": 0,
-    "description": "When you manually use this skill, deals 186.9%/206.1%/198.4%/217.5% ATK as Bless DMG to 1 enemy, and gains [Brave Step], up to a 3 stacks. When [Dance Partner] triggers this skill, deals 121.6%/134.1%/129.1%/141.5% ATK as Bless DMG to 1 enemy, and gains [Brave Step], up to 3 stacks."
+    "description": "Deal Bless damage to 1 foe equal to 186.9%/206.1%/198.4%/217.5% of Attack, and gain Lead Step.\nIf this skill is activated by an ally with Dance Partner, deal Bless damage to 1 foe equal to 121.6%/134.1%/129.1%/141.5%, and gain 1 Lead Step.\nLead Step stacks up to 3 times."
   },
   "skill2": {
-    "name": "Dancing in Hand",
+    "name": "Invitation",
     "element": "버프",
     "type": "버프",
     "sp": 22,
     "cool": 0,
-    "description": "Selects 1 ally to become the [Dance Partner] for 1 turn. Increases own and [Dance Partner]'s ATK by 32.4%/35.7%/34.4%/37.7% for 3 turns. Gains [Agile Step], up to 1 stack. After [Dance Partner] use a Persona skill, immediately use [Glimmer of Night] on 1 random enemy (If [Dance Partner] used a skill that target an enemy, change the main target of [Glimmer of Night] to that enemy). There can only be 1 [Dance Partner]."
+    "description": "Grant Dance Partner to 1 ally for 1 turn. Only 1 ally may have Dance Partner at one time.\nIncrease Attack of Kasumi and the selected ally by 32.4%/35.7%/34.4%/37.7% for 3 turns. Also, Kasumi gains Follow Step. This effect does not stack.\nWhen an ally with Dance Partner uses a skill, immediately activate Cinderella Glow 1 time on 1 random foe (if the skill is activated on a foe, activate Cinderella Glow 1 time on that foe)."
   },
   "skill3": {
-    "name": "Blooming Heart",
+    "name": "Midnight Magic",
     "element": "축복",
     "type": "단일피해",
     "sp": 27,
     "cool": 0,
-    "description": "Deals 214.7%/236.7%/227.9%/249.9% ATK as Bless DMG to 1 enemy. If you are in [Masquerade], additionally increases skill damage by 30% and CRIT DMG by 29.3%/29.3%/31.1%/31.1%."
+    "description": "Deal Bless damage to 1 foe equal to 249.1%/274.6%/264.4%/289.9% of Attack.\nWhen using this skill while in Masquerade mode, increase skill damage by 30%, and critical damage by 29.3%/29.3%/31.1%/31.1%."
   },
   "skill_highlight": {
     "element": "축복",
     "type": "단일피해",
     "unlock": "자신이 『가면무도회』 상태.",
-    "description": "[HIGHLIGHT] use condition: When you are in [Masquerade].\nDeals 243.8%/268.8%/258.8%/283.8% ATK as Bless DMG to 1 enemy. Based on own [Posture], gains the corresponding effects:\n- [Brave Step]: Each stack increases HIGHLIGHT skill damage by 15%. \n- [Agile Step]: Increases HIGHLIGHT CRIT Rate by 10% and CRIT DMG by 20%."
+    "description": "Can be activated in Masquerade mode. Deal Bless damage to 1 foe equal to 273.1%/301.0%/289.8%/317.8% of Attack. Also, with Step stacks, gain additional effects accordingly.\nLead Step: Increase Highlight damage by 15% for each stack.\nFollow Step: Increase Highlight critical rate by 10%, and critical damage by 20%.",
+    "cool": 0
   },
   "passive1": {
-    "name": "Faith",
+    "name": "Rhythm Count",
     "element": "패시브",
-    "description": "For every 1 stack of [Posture], increase Bless DMG by 10.0%, up to 30%."
+    "description": "For every Step stack, increase Bless damage by 15% (up to 45.0%).",
+    "cool": 0
   },
   "passive2": {
-    "name": "Determination",
+    "name": "Steps of Faith",
     "element": "패시브",
-    "description": "After other allies use HIGHLIGHT, increase own ATK by 45.0% for 2 turns, up to 2 stacks."
+    "description": "When an ally other than Kasumi uses a Highlight, increase Kasumi's Attack by 45.0% for 2 turns. Stacks up to 2 times.",
+    "cool": 0
   }
 };
 window.jpCharacterSkillsData["카스미"] = {
   "name": "芳澤 かすみ",
   "skill1": {
-    "name": "闇の中の光",
+    "name": "シンデレラ・グロー",
     "element": "축복",
     "type": "단일피해",
     "sp": 23,
     "cool": 0,
-    "description": "アクティブで使用時、敵1体に攻撃力186.9%/206.1%/198.4%/217.5%の祝福属性ダメージを与え、芳澤かすみが『ダンスムーブ』『ブレイブステップ』を獲得する(最大3スタック)。ダンスパートナーがこのスキルを使用すると、敵1体に攻撃力121.6%/134.1%/129.1%/141.5%の祝福属性ダメージを与え、芳澤かすみが『ダンスムーブ』『ブレイブステップ』を獲得する(最大3スタック)。"
+    "description": "敵単体に攻撃力186.9%/206.1%/198.4%/217.5%の祝福属性ダメージを与え、『リード・ステップ』を獲得する。\n『ダンスパートナー』状態の味方によってこのスキルが発動した時、敵単体に攻撃力121.6%/134.1%/129.1%/141.5%の祝福属性ダメージを与え、『リード・ステップ』を獲得する。\n『リード・ステップ』は最大３つまで累積できる。"
   },
   "skill2": {
-    "name": "共に踊る舞",
+    "name": "インヴィテーション",
     "element": "버프",
     "type": "버프",
     "sp": 22,
     "cool": 0,
-    "description": "1ターンの間、味方1人を『ダンスパートナー』に指定する。芳澤かすみと『ダンスパートナー』の攻撃力が3ターンの間32.4%/35.7%/34.4%/37.7%上昇する。芳澤かすみが『ダンスムーブ』『スウィフトステップ』を獲得する(1スタックまで)。『ダンスパートナー』がペルソナスキルを使用すると、芳澤かすみが即座に敵へ『闇の中の光』を1回発動する(パートナーのスキルが敵対象の場合は同一のメインターゲットに発動)。『ダンスパートナー』は1人のみ。"
+    "description": "１ターンの間、味方単体を『ダンスパートナー』状態にする。複数の味方を同時に『ダンスパートナー』状態にすることはできない。\n３ターンの間、自身と選択した味方の攻撃力が32.4%/35.7%/34.4%/37.7%上昇する。さらに自身は『フォロー・ステップ』を獲得する。この効果は累積しない。\n『ダンスパートナー』状態の味方がスキルを使用した時、即座にランダムな敵単体に『シンデレラ・グロー』を１回発動する（敵にスキルを発動した場合、その敵に『シンデレラ・グロー』を１回発動する）。"
   },
   "skill3": {
-    "name": "咲き誇る心",
+    "name": "ミッドナイトマジック",
     "element": "축복",
     "type": "단일피해",
     "sp": 27,
     "cool": 0,
-    "description": "敵1体に攻撃力214.7%/236.7%/227.9%/249.9%の祝福属性ダメージを与える。芳澤かすみが『仮面舞踏会』状態の時、このスキルのダメージが30%上昇し、CRT倍率が29.3%/29.3%/31.1%/31.1%上昇する。"
+    "description": "敵単体に攻撃力249.1%/274.6%/264.4%/289.9%の祝福属性ダメージを与える。\n『マスカレード』状態中にこのスキルを使用する時、スキルダメージが３０%上昇し、クリティカルダメージが29.3%/29.3%/31.1%/31.1%上昇する。"
   },
   "skill_highlight": {
     "element": "축복",
     "type": "단일피해",
     "unlock": "자신이 『가면무도회』 상태.",
-    "description": "発動条件：芳澤かすみが『仮面舞踏会』状態。\n敵1体に攻撃力243.8%/268.8%/258.8%/283.8%の祝福属性ダメージを与える。『ダンスムーブ』を持っている場合、以下の効果を得る：\n『ブレイブステップ』：スタック毎にHIGHLIGHTスキルダメージが15%上昇。\n『スウィフトステップ』：HIGHLIGHTのクリティカル率が10%上昇し、CRT倍率が20%上昇する。"
+    "description": "『マスカレード』状態の時に発動でき、敵単体に攻撃力273.1%/301.0%/289.8%/317.8%の祝福属性ダメージを与える。さらに『ステップ』を獲得している時、対応する強化効果を獲得する。\n『リード・ステップ』：１つごとにハイライトダメージが１５%上昇する。\n『フォロー・ステップ』：ハイライトのクリティカル率が１０%上昇し、クリティカルダメージが２０%上昇する。",
+    "cool": 0
   },
   "passive1": {
-    "name": "信念",
+    "name": "リズムカウント",
     "element": "패시브",
-    "description": "『ダンスムーブ』1スタックにつき祝福属性ダメージが10.0%上昇し、最大30.0%まで上昇する。"
+    "description": "『ステップ』１つごとに、祝福属性ダメージが15%上昇する（最大45.0%まで）。",
+    "cool": 0
   },
   "passive2": {
-    "name": "決意",
+    "name": "信念の足跡",
     "element": "패시브",
-    "description": "味方がHIGHLIGHT効果を発動すると、芳澤かすみの攻撃力が2ターンの間45.0%上昇する。"
+    "description": "自身以外の味方がハイライトを発動した時、２ターンの間、自身の攻撃力が45.0%上昇する。最大２つまで累積できる。",
+    "cool": 0
   }
 };
 window.cnCharacterSkillsData = window.cnCharacterSkillsData || {};

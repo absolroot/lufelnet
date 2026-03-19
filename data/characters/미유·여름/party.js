@@ -62,5 +62,11 @@ window.recommendParty["미유·여름"] = {
             "comment_en": "Can grant an independent bucket Resonance damage boost through item use.",
             "comment_jp": "アイテム使用によって、独立バケットの意識奏功ダメージ強化効果を付与できる。",
         },
+        {
+            "name": "코로마루",
+            "comment": "코로마루는 적 전체의 빙결 속성을 약점을 강화하고 아군 전체의 대미지를 강화할 수 있다.",
+            "comment_en": "Koromaru can enhance all enemies' Ice weakness and increase the entire party's damage.",
+            "comment_jp": "コロマルは敵全体の氷結属性の弱点を強化し、味方全体のダメージを増加させることができる。"
+        }
     ]
 };

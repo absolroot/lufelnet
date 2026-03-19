@@ -20,6 +20,13 @@
   right: 14% !important;
 }
 
+/*카스미*/
+.char-img.single-banner[src*="%EC%B9%B4%EC%8A%A4%EB%AF%B8"] {
+  top: 90%;
+  right: 45%;
+
+}
+
 
 /*키라*/
 .char-img.single-banner[src*="%ED%82%A4%EB%9D%BC"]{

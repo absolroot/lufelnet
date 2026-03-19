@@ -18,6 +18,17 @@
     return name.replace(/(?:\s+|)(I{1,3}|IV|V|Ⅰ|Ⅱ|Ⅲ|Ⅳ|Ⅴ)$/, '').trim();
   }
 
+  function normalizeSourceDisplayName(name) {
+    if (!name) return '';
+    return name.replace(/\s+KR$/, '').trim();
+  }
+
+  function isKrOnlySource(sourceKr, sourceEn) {
+    const rawKr = (sourceKr || '').trim();
+    const rawEn = (sourceEn || '').trim();
+    return rawKr.endsWith(' KR') || rawEn.endsWith(' KR');
+  }
+
   // Cache
   let skillSourceMap = null;
   let skillSourceMapLoading = null;
@@ -228,12 +239,12 @@
         const labelKey = currentLang === 'en' ? 'en' : (currentLang === 'jp' ? 'jp' : 'kr');
         const krOnlyBadgeText = (window.t && window.t('krOnlyBadge', 'KR 전용')) || 'KR 전용';
         return `<div class="skill-source-list">${list.map(s => {
-          const display = (s[labelKey] || s.kr).trim();
+          const display = normalizeSourceDisplayName((s[labelKey] || s.kr).trim());
           const sourceKr = (s.kr || '').trim();
           const sourceEn = (s.en || '').trim();
-          const iconName = encodeURIComponent(sourceKr) + '.png';
+          const iconName = encodeURIComponent(normalizeSourceDisplayName(sourceKr)) + '.png';
           const iconPath = `${siteBase}/apps/persona/persona_icon/${iconName}`;
-          const isKrOnly = (sourceKr === '결제 이벤트') || sourceKr.startsWith('와일드 엠블럼') || sourceEn.startsWith('Repression Medal');
+          const isKrOnly = isKrOnlySource(sourceKr, sourceEn);
           const krOnlyBadge = (isKrOnly && currentLang !== 'kr') ? `<span class="kr-only-badge">(${krOnlyBadgeText})</span>` : '';
           return `<div class="skill-source-item"><img class="source-icon" src="${iconPath}" alt="" onerror="this.style.display='none'" /><span class="source-label">${display}</span>${krOnlyBadge}</div>`;
         }).join('')}</div>`;

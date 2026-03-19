@@ -47,11 +47,13 @@ window.operationData["카스미"] = {
         "· 의식6 리코·매화, 의식1 J&C와 함께 사용할 경우 2, 5턴에 스킬3 사용 가능"
     ],
     "note_en": [
+        "· ON = Masquerade",
         "· Use HL after 3 stacks of skill 2+skill 1",
-        "· If used with WIND(5★) in A6 OR J&C in A1, skill 3 can be used in 2nd and 5th turns"
+        "· If used with WIND(5★) in A6 OR J&C in A1, skill 3 can be used in 2nd and 5th turns",
     ],
     "note_jp": [
+        "· 変身 = 『マスカレード』",
         "· スキル2+スキル1のスタックを3回予熱してからHLを使用する",
-        "· 意識6でWIND(5★)と共に使用する場合、スキル3は2ターン目と5ターン目に使用可能"
+        "· 意識6でWIND(5★)と共に使用する場合、スキル3は2ターン目と5ターン目に使用可能",  
     ]
 };

@@ -138,7 +138,7 @@ window.I18N_PAGE_CHARACTER_EN = {
     characterAttrSupport: 'SUPPORT',
     characterAttrReduceDef: 'REDUCE DEF',
     characterAttrCritical: 'CRITICAL'
-    ,fukaRevelationStatusTitle: 'Backup Character Revelation Effect Status'
+    ,fukaRevelationStatusTitle: 'Backup Revelation Effect Status'
     ,fukaRevelationStatusColActive: 'Active'
     ,fukaRevelationStatusColMain: 'Main Card'
     ,fukaRevelationStatusColSub: 'S/M/S/S'

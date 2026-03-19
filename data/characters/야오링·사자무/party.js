@@ -101,6 +101,17 @@ window.recommendParty["야오링·사자무"] = {
             "comment_en": "Applies an AoE DEF reduction, inflicts Burn, and increases enemies’ Fire damage taken.",
             "comment_jp": "広範囲に防御力を低下させ、敵を炎上状態にし、受ける火炎ダメージを増加させる。",
         },
-
+        {
+            "name": "준페이",
+            "comment": "화염 속성 딜러가 존재할 때 준페이의 가치가 크게 증가한다. 또한 준페이는 적에게 스킬3을 통해 화상을 부여할 수 있다.",
+            "comment_en": "Junpei Iori’s value increases significantly when a Fire attribute DPS is present. Additionally, Junpei Iori can inflict Burn on enemies by using Skill 3.",
+            "comment_jp": "火炎属性ダメージデュースがいる場合、伊織順平の価値が大幅に増加します。また、伊織順平はスキル3を使用して敵に火傷を与えることができます。"
+        },
+        {
+            "name": "코로마루",
+            "comment": "코로마루는 적 전체의 화염 속성을 약점을 강화하고 화상을 부여하며 아군 전체의 대미지를 강화할 수 있다.",
+            "comment_en": "Koromaru can enhance all enemies' Fire weakness, inflict Burn, and increase the entire party's damage.",
+            "comment_jp": "コロマルは敵全体の火炎属性の弱点を強化し、炎上状態を付与し、味方全体のダメージを増加させることができる。"
+        }
     ]
 };

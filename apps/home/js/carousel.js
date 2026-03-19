@@ -18,6 +18,7 @@
 
   const BASE = (typeof window !== 'undefined' && (window.BASE_URL || window.SITE_BASEURL)) || '';
   const APP_VER = (typeof window !== 'undefined' && (window.APP_VERSION || '')) || '';
+  const GLB_PRIORITY_LANGS = new Set(['en', 'jp', 'sea']);
 
   // State
   let state = {
@@ -66,6 +67,49 @@
     try {
       await window.__HOME_I18N_READY__;
     } catch (_) { }
+  }
+
+  async function fetchCharactersData(url) {
+    try {
+      const res = await fetch(url, { cache: 'no-store' });
+      if (!res.ok) throw new Error(`Failed to load character data: ${url}`);
+      const text = await res.text();
+      const sandbox = {};
+      const win = (new Function('window', `${text}\n; return window;`))(sandbox);
+      return {
+        characterList: win.characterList || { mainParty: [], supportParty: [] },
+        characterData: win.characterData || {},
+      };
+    } catch (_) {
+      return null;
+    }
+  }
+
+  function mergeCharacterData(baseData, priorityData) {
+    const merged = { ...(baseData || {}) };
+    Object.keys(priorityData || {}).forEach(key => {
+      merged[key] = { ...(baseData && baseData[key] ? baseData[key] : {}), ...(priorityData[key] || {}) };
+    });
+    return merged;
+  }
+
+  async function ensureHomeCharacterDataLoaded(rawLang) {
+    if (!GLB_PRIORITY_LANGS.has(rawLang)) return;
+
+    const version = APP_VER || Date.now();
+    const [kr, glb] = await Promise.all([
+      fetchCharactersData(`${BASE}/data/character_info.js${version ? `?v=${version}` : ''}`),
+      fetchCharactersData(`${BASE}/data/character_info_glb.js${version ? `?v=${version}` : ''}`),
+    ]);
+
+    const krCharacterData = (kr && kr.characterData) ? kr.characterData : (window.characterData || {});
+    const glbCharacterData = (glb && glb.characterData) ? glb.characterData : null;
+    if (!glbCharacterData) return;
+
+    window.characterData = mergeCharacterData(krCharacterData, glbCharacterData);
+    if (glb && glb.characterList) {
+      window.characterList = glb.characterList;
+    }
   }
 
   function loadRegion() {
@@ -1209,10 +1253,11 @@
     await waitHomeI18nReady();
     updateLcpPreload(null);
 
+    const rawLang = detectLang();
+    await ensureHomeCharacterDataLoaded(rawLang);
+
     // Rebuild character index to ensure we have latest characterData
     characterIndex = buildCharacterReverseIndex();
-
-    const rawLang = detectLang();
 
     try {
       const [data, customRaw] = await Promise.all([

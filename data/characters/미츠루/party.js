@@ -38,6 +38,12 @@ window.recommendParty["미츠루"] = {
             "comment": "해명 괴도 초기 행동 시간 4턴 감소 패시브의 영향을 받는다.",
             "comment_en": "Theuces the initial action time of the Elucidator by 4 turns.",
             "comment_jp": "怪盗の初期行動時間を4ターン減少させる。"
+        },
+        {
+            "name": "나루미",
+            "comment": "미츠루는 높은 수치의 방어력 감소와 더불어 나루미의 추가 턴마다 추가적인 대미지를 부여할 수 있다.",
+            "comment_en": "Mitsuru provides high Defense Reduction and deals additional Damage on every Additional Turn of Narumi.",
+            "comment_jp": "桐条 美鶴は高い数値の防御力減少に加え、梨本成瑠海の追加ターンごとに追加ダメージを与えることができる。",
         }
     ]
 };

@@ -1589,6 +1589,7 @@ h2 {
     margin: 0 0 0px 0;
     line-height: 1.5;
     padding: 8px 12px;
+    white-space: pre-line;
     background: rgba(0, 0, 0, 0.05);
     border-radius: 6px;
     border-left: 3px solid rgba(255, 255, 255, 0.1);
@@ -2150,6 +2151,12 @@ h2 {
     margin: 8px 0;
 }
 
+.review-content hr {
+    border: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    margin: 20px 0;
+}
+
 .review-content table {
     width: 100%;
     border-collapse: collapse;
@@ -2390,6 +2397,7 @@ h2 {
     font-size: 13px;
     color: #cdcdcd;
     line-height: 1.6;
+    white-space: pre-line;
     cursor: text;
     /* 클릭 불가 느낌을 주고, 텍스트 드래그는 가능하게 */
 }

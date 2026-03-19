@@ -24,8 +24,8 @@ window.recommendParty["준페이"] = {
         {
             "members": [
                 "준페이",
-                "유키 마코토",
                 "미츠루",
+                "유키 마코토",
                 "마나카"
             ],
             "comment": "",
@@ -35,8 +35,30 @@ window.recommendParty["준페이"] = {
         {
             "members": [
                 "준페이",
-                "유키 마코토",
                 "미나미·여름",
+                "유키 마코토",
+                "마나카"
+            ],
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
+        },
+        {
+            "members": [
+                "준페이",
+                "미나미·여름",
+                "야오링·사자무",
+                "마나카"
+            ],
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
+        },
+        {
+            "members": [
+                "준페이",
+                "슌·프론티어",
+                "야오링·사자무",
                 "마나카"
             ],
             "comment": "",

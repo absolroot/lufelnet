@@ -24,6 +24,7 @@ window.recommendParty["카스미"] = {
             "type": "REDUCE DEF",
             "list": [
                 "비슈누",
+                "년수",
                 "야노식"
             ]
         }
@@ -72,9 +73,16 @@ window.recommendParty["카스미"] = {
         },
         {
             "name": "리코·매화",
-            "comment": "카스미는 HIGHLIGHT가 크리티컬이 가능하고 리코는 높은 크리티컬 효과 버프를 제공한다. 리코의 패시브 효과를 얻기 위해서는 2턴 동안 5번 이상의 타격이 필요하므로 카스미에게 [여정]+[주권] 세트를 착용해 타수를 늘리는 형태가 있다.",
-            "comment_en": "Kasumi’s HIGHLIGHT can trigger CRITs, and Riko provides a strong CRIT DMG buff. Since Riko’s passive requires landing 5 or more hits within 2 turns to activate, one approach is to equip Kasumi with the [Departure] + [Control] sets to increase her total number of hits.",
-            "comment_jp": "かすみのHIGHLIGHTはクリティカルが可能で、理子は高いCRT倍率バフを付与する。理子のパッシブ効果を発動させるには2ターン以内に5回以上の攻撃が必要なため、かすみに[旅立]＋[支配]セットを装備させてヒット数を増やす構成が考えられる。",
+            "comment": "카스미는 HIGHLIGHT가 크리티컬이 가능하고 리코는 높은 크리티컬 효과 버프를 제공한다. 리코의 패시브 효과를 얻기 위해서는 2턴 동안 5번 이상의 타격이 필요하므로 카스미에게 [여정]+[주권] 세트를 착용해 타수를 늘리는 형태가 있다.\n의식6 효과로 스킬3에 의한 스킬1 자동 발동은 둘다 각각 카스미의 스킬2 효과 발동에 적용된다.",
+            "comment_en": "Kasumi’s HIGHLIGHT can trigger CRITs, and Riko provides a strong CRIT DMG buff. Since Riko’s passive requires landing 5 or more hits within 2 turns to activate, one approach is to equip Kasumi with the [Departure] + [Control] sets to increase her total number of hits.\nAt Awareness 6, both of the automatic Skill 1 activations granted by Skill 3 are each counted toward triggering Kasumi’s Skill 2 effect.",
+            "comment_jp": "かすみのHIGHLIGHTはクリティカルが可能で、理子は高いCRT倍率バフを付与する。理子のパッシブ効果を発動させるには2ターン以内に5回以上の攻撃が必要なため、かすみに[旅立ち]＋[支配]セットを装備させてヒット数を増やす構成が考えられる。\n意識6では、スキル3によるスキル1の自動発動2回が、それぞれかすみのスキル2効果の発動条件としてカウントされる。",
+        },
+        {
+            "name": "J&C",
+            "A": 1,
+            "comment": "[우월] J&C의 의식1을 통한 스킬3 자동 발동은 카스미의 스킬2를 통한 자동 스킬1 사용에 적용돼 한 번에 2번의 스킬1이 사용된다.",
+            "comment_en": "[Strategist] J&C’s automatic Skill 3 activation from Awareness 1 also applies to Kasumi’s automatic Skill 1 activation from Skill 2, allowing Skill 1 to be used twice at once.",
+            "comment_jp": "[優越]J&Cの意識1によるスキル3の自動発動は、かすみのスキル2によるスキル1の自動発動にも適用され、1度にスキル1を2回使用できる。"
         }
     ]
 };

@@ -24,39 +24,39 @@ window.WeaponData["카스미"] = {
 window.enCharacterWeaponData["카스미"] = {
   "name": "Kasumi Yoshizawa",
   "weapon4-1": {
-    "name": "Sword of Sinai",
-    "health": 1791,
-    "attack": 613,
-    "defense": 296,
+    "name": "Divine Sword of Sinai",
+    "health": 1791.59,
+    "attack": 613.28,
+    "defense": 296.11,
     "skill_name": "Blessing",
-    "description": "ATK is increased by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When [Posture] is at or above 2 stacks, increase DMG Dealt by 24.0%/31.0%/31.0%/38.0%/38.0%/45.0%/45.0%."
+    "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.\nWith 2 or more Step stacks, increase damage by 24.0%/31.0%/31.0%/38.0%/38.0%/45.0%/45.0%."
   },
   "weapon5-1": {
-    "name": "Aurelian Twilight",
-    "health": 2239,
-    "attack": 766,
+    "name": "Royal Étoile",
+    "health": 2239.65,
+    "attack": 766.41,
     "defense": 370,
     "skill_name": "Sunrise",
-    "description": "CRIT DMG is increased by 36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%. After obtaining any [Posture], ATK is increased by 21.0%/27.0%/27.0%/33.0%/33.0%/39.0%/39.0% for 2 turns and up to 1 stack. After any ally casts a HIGHLIGHT/Theurgy, obtain 1 stack of [Awakening], increasing DMG Dealt by 8.4%/11.1%/11.1%/13.8%/13.8%/16.5%/16.5% for 3 turns and up to 2 stacks. When [Awakening] reaches 2 stacks, additionally increase HIGHLIGHT DMG Dealt by 30.0%/39.0%/39.0%/48.0%/48.0%/57.0%/57.0%."
+    "description": "Increase critical damage by 36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%.\nWhen gaining a Step stack, increase Attack by 21.0%/27.0%/27.0%/33.0%/33.0%/39.0%/39.0% for 2 turns. This effect does not stack.\nWhen an ally activates a Highlight, gain 1 Glass Slipper stack, and increase Kasumi's damage by 8.4%/11.1%/11.1%/13.8%/13.8%/16.5%/16.5% for 3 turns. Stacks up to 2 times.\nWhen Glass Slipper is at 2 stacks, increase Kasumi's Highlight damage by 30.0%/39.0%/39.0%/48.0%/48.0%/57.0%/57.0% more."
   }
 };
 window.jpCharacterWeaponData["카스미"] = {
   "name": "芳澤 かすみ",
   "weapon4-1": {
     "name": "シナイの神剣",
-    "health": 1791,
-    "attack": 613,
-    "defense": 296,
+    "health": 1791.59,
+    "attack": 613.28,
+    "defense": 296.11,
     "skill_name": "祝福",
-    "description": "攻撃力が12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%増加する。自身の『舞のステップ』が2重以上のとき、ダメージが24.0%/31.0%/31.0%/38.0%/38.0%/45.0%/45.0%増加する。"
+    "description": "攻撃力が12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%上昇する。\n『ステップ』を２つ以上獲得している時、与ダメージが24.0%/31.0%/31.0%/38.0%/38.0%/45.0%/45.0%上昇する。"
   },
   "weapon5-1": {
-    "name": "黄金の陽光",
-    "health": 2239,
-    "attack": 766,
+    "name": "ロイヤル・エトワール",
+    "health": 2239.65,
+    "attack": 766.41,
     "defense": 370,
     "skill_name": "朝日",
-    "description": "CRT倍率が36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%増加する。『舞のステップ』を獲得するたびに、2ターンの間攻撃力が21.0%/27.0%/27.0%/33.0%/33.0%/39.0%/39.0%増加する（1回重複可能）。味方怪盗がHIGHLIGHTを使用すると『蘇生』を1重獲得し、3ターンの間自身の与えるダメージが8.4%/11.1%/11.1%/13.8%/13.8%/16.5%/16.5%増加する（2回重複可能）。『蘇生』が2重に達すると、自身のHIGHLIGHTダメージがさらに30.0%/39.0%/39.0%/48.0%/48.0%/57.0%/57.0%増加する。"
+    "description": "クリティカルダメージが36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%上昇する。\n『ステップ』を獲得した時、２ターンの間、攻撃力が21.0%/27.0%/27.0%/33.0%/33.0%/39.0%/39.0%上昇する。この効果は累積しない。\n味方がハイライトを発動した時、『ガラスのくつ』を１つ獲得し、３ターンの間、自身の与ダメージが8.4%/11.1%/11.1%/13.8%/13.8%/16.5%/16.5%上昇する。この効果は最大２つまで累積できる。\n『ガラスのくつ』を２つ獲得している時、自身のハイライトダメージが追加で30.0%/39.0%/39.0%/48.0%/48.0%/57.0%/57.0%上昇する。"
   }
 };
 window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};

@@ -33,7 +33,7 @@ window.enCharacterRitualData["미오"] = {
   "r5": "Wellspring of Grief",
   "r5_detail": "Increase the skill levels of Sub-Zero Torrent and Freezing Prison by 3.",
   "r6": "Firefighter's Soul",
-  "r6_detail": "If foes are Burning on Natsukawa's action, activate Sub-Zero Torrent on that foe 1 time (this effect will not be activated by Scald).\nAlso, when the same foe is attacked repeatedly with Extinguishing Guidance or Requiem Guidance, increase the target's damage taken by 25% more for 1 turn.\nThe maximum number of Damnation stacks becomes 6."
+  "r6_detail": "If foes have Burn or Scald on Natsukawa's action, activate Sub-Zero Torrent on that foe 1 time.\nAlso, when the same foe is attacked repeatedly with Extinguishing Guidance or Requiem Guidance, increase the target's damage taken by 25% more for 1 turn.\nThe maximum number of Damnation stacks becomes 6."
 };
 window.jpCharacterRitualData["미오"] = {
   "name": "夏川 澪",
@@ -50,7 +50,7 @@ window.jpCharacterRitualData["미오"] = {
   "r5": "嘆きの源泉",
   "r5_detail": "『零下の奔流』／『過冷の水牢』のスキルレベルが３上昇する。",
   "r6": "魂の火消し",
-  "r6_detail": "自身の行動時に炎上状態の敵がいると、その敵に『零下の奔流』を１回発動する（『熱傷』状態ではこの効果は発動しない）。\nさらに連続して同じ敵に『鎮火の水しるべ』か『鎮魂の水しるべ』で攻撃した時、１ターンの間、対象の被ダメージが追加で２５%上昇する。\n『責め苦』の累積最大数が６つになる。"
+  "r6_detail": "自身の行動時に炎上または『熱傷』状態の敵がいると、その敵に『零下の奔流』を１回発動する。\nさらに連続して同じ敵に『鎮火の水しるべ』か『鎮魂の水しるべ』で攻撃した時、１ターンの間、対象の被ダメージが追加で２５%上昇する。\n『責め苦』の累積最大数が６つになる。"
 };
 window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 

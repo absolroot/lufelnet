@@ -2,24 +2,22 @@
     'use strict';
 
     const DEFAULT_MAX_COUNT = 10;
+    const GLB_PRIORITY_LANGS = new Set(['en', 'jp', 'sea']);
 
     const POPULAR_CHARACTERS_OVERRIDE = { kr: null, en: null, jp: null };
     const POPULAR_CHARACTERS_FIXED = {
         kr: [
-            { name: 'J&C', badge: 'HOT' },
             { name: '마나카', badge: 'HOT' },
             { name: '미나미·여름', badge: 'HOT' },
             { name: '리코·매화', badge: 'HOT' },
         ],
         en: [
-            { name: 'J&C', badge: 'HOT' },
-            { name: '리코·매화', badge: 'HOT' },
-            { name: '아야카', badge: 'HOT' },
+            { name: '후타바', badge: 'HOT' },
+            { name: '리코·매화', badge: 'HOT' }
         ],
         jp: [
-            { name: 'J&C', badge: 'HOT' },
-            { name: '리코·매화', badge: 'HOT' },
-            { name: '아야카', badge: 'HOT' },
+            { name: '후타바', badge: 'HOT' },
+            { name: '리코·매화', badge: 'HOT' }
         ],
     };
 
@@ -95,20 +93,20 @@
         try {
             if (typeof LanguageRouter !== 'undefined' && LanguageRouter.getCurrentLanguage) {
                 const lr = LanguageRouter.getCurrentLanguage();
-                if (lr && ['kr', 'en', 'jp', 'cn'].includes(lr)) return lr;
+                if (lr && ['kr', 'en', 'jp', 'cn', 'sea'].includes(lr)) return lr;
             }
         } catch (_) { }
         try {
             const urlLang = new URLSearchParams(window.location.search).get('lang');
-            if (urlLang && ['kr', 'en', 'jp', 'cn'].includes(urlLang)) return urlLang;
+            if (urlLang && ['kr', 'en', 'jp', 'cn', 'sea'].includes(urlLang)) return urlLang;
         } catch (_) { }
         try {
             const saved = localStorage.getItem('preferredLanguage');
-            if (saved && ['kr', 'en', 'jp', 'cn'].includes(saved)) return saved;
+            if (saved && ['kr', 'en', 'jp', 'cn', 'sea'].includes(saved)) return saved;
         } catch (_) { }
         try {
             const saved2 = localStorage.getItem('preferred_language');
-            if (saved2 && ['kr', 'en', 'jp', 'cn'].includes(saved2)) return saved2;
+            if (saved2 && ['kr', 'en', 'jp', 'cn', 'sea'].includes(saved2)) return saved2;
         } catch (_) { }
         return 'kr';
     }
@@ -296,7 +294,7 @@
         const v = window.APP_VERSION || Date.now();
 
         const kr = await fetchCharactersData(`${window.BASE_URL || ''}/data/character_info.js?v=${v}`);
-        const lgDataPath = (lang === 'en' || lang === 'jp')
+        const lgDataPath = GLB_PRIORITY_LANGS.has(lang)
             ? '/data/character_info_glb.js'
             : `/data/${lang}/characters/characters.js`;
         const lg = (lang === 'kr') ? kr : await fetchCharactersData(`${window.BASE_URL || ''}${lgDataPath}?v=${v}`);

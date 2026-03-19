@@ -130,6 +130,7 @@ const criticalSelfData = {
   "카스미": [
     { id: "kasmi4", type: "HIGHLIGHT", type_en: "HIGHLIGHT", type_jp: "ハイライト", target: "자신", target_en: "Self", target_jp: "自分", skillIcon: "/assets/img/skill-element/버프.png", skillName: "HIGHLIGHT", skillName_en: "HIGHLIGHT", skillName_jp: "ハイライト", options: [], values: {}, value: 10, duration: "-", note: "『스위프트 스텝』 보유 시 하이라이트 한정", note_en: "HIGHLIGHT", note_jp: "ハイライト" },
     { id: "kasmi1", type: "의식0", type_en: "A0", type_jp: "意識0", target: "자신", target_en: "Self", target_jp: "自分", skillIcon: "/assets/img/character-detail/ritual0.png", skillName: "12시의 종소리", skillName_en: "A0", skillName_jp: "意識0", options: ["1중첩", "2중첩", "3중첩", "4중첩"], values: { "1중첩": 3, "2중첩": 6, "3중첩": 9, "4중첩": 12 }, defaultOption: "4중첩", value: 12, duration: "-", note: "『춤사위』", note_en: " ", note_jp: " " },
+    { id: "kasmi1-glb", type: "의식0", type_en: "A0", type_jp: "意識0", target: "자신", target_en: "Self", target_jp: "自分", skillIcon: "/assets/img/character-detail/ritual0.png", skillName: "12시의 종소리(GLB)", skillName_en: "A0 (GLB only)", skillName_jp: "意識0 (JPのみ)", options: ["1중첩", "2중첩", "3중첩", "4중첩"], values: { "1중첩": 4, "2중첩": 8, "3중첩": 12, "4중첩": 16 }, defaultOption: "4중첩", value: 16, duration: "-", note: "『춤사위』", note_en: " ", note_jp: " " },
     { id: "kasmi3", type: "심상", target: "자신", target_en: "Self", target_jp: "自分", skillIcon: "/assets/img/character-detail/item-mind_stat2.png", skillName: "진급강화", skillName_en: "Mindscape", skillName_jp: "イメジャリー", options: [], value: 12, duration: "-", note: "" }
   ],
   "몽타뉴·백조": [

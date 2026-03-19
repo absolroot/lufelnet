@@ -2,6 +2,58 @@
   "data": {
     "thief": [
       {
+        "endTime": "2026-04-16 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Kasumi Yoshizawa",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Motoha Arai",
+            "type": "thief"
+          },
+          {
+            "name": "Tomoko Noge",
+            "type": "thief"
+          },
+          {
+            "name": "Kiyoshi Kurotani",
+            "type": "thief"
+          }
+        ],
+        "name": "Faith Held Close",
+        "startTime": "2026-03-19 11:30:00",
+        "type": "Targeted Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-04-16 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Kasumi Yoshizawa",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Motoha Arai",
+            "type": "thief"
+          },
+          {
+            "name": "Tomoko Noge",
+            "type": "thief"
+          },
+          {
+            "name": "Kiyoshi Kurotani",
+            "type": "thief"
+          }
+        ],
+        "name": "Faith Held Close",
+        "startTime": "2026-03-19 11:30:00",
+        "type": "Chance Most Wanted Idol Contracts"
+      },
+      {
         "endTime": "2026-03-26 10:59:59",
         "fiveStar": [
           {
@@ -107,6 +159,41 @@
       }
     ],
     "weapon": [
+      {
+        "endTime": "2026-04-16 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Royal Étoile",
+            "type": "weapon",
+            "user": "Kasumi"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Crime and Punishment",
+            "type": "weapon",
+            "user": "Motoha"
+          },
+          {
+            "name": "Shadow Crowns",
+            "type": "weapon",
+            "user": "Tomoko"
+          },
+          {
+            "name": "Death Stinger",
+            "type": "weapon",
+            "user": "Kurotani"
+          },
+          {
+            "name": "Divine Sword of Sinai",
+            "type": "weapon",
+            "user": "Kasumi"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2026-03-19 11:30:00",
+        "type": "Arms Deals"
+      },
       {
         "endTime": "2026-03-26 10:59:59",
         "fiveStar": [

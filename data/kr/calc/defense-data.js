@@ -773,10 +773,10 @@ const defenseCalcData = {
             skillName: "스라오샤 - 고유스킬",
             options: [],
             value: 25.0,
-            duration: "1턴",
+            duration: "2턴",
             note: "축복 속성 한정",
-            note_en: "축복",
-            note_jp: "축복"
+            note_en: "Bless",
+            note_jp: "祝福"
         },
     ],
     "코로마루":[

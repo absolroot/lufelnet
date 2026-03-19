@@ -198,6 +198,19 @@ function loadExternalPersonaByLang(index) {
   return out;
 }
 
+function hasExcludedTestMarker(value) {
+  if (typeof value === 'string') {
+    return EXCLUDED_TEST_MARKERS.some((marker) => value.includes(marker));
+  }
+  if (Array.isArray(value)) {
+    return value.some((item) => hasExcludedTestMarker(item));
+  }
+  if (isPlainObject(value)) {
+    return Object.values(value).some((item) => hasExcludedTestMarker(item));
+  }
+  return false;
+}
+
 function loadRows() {
   const mapping = loadJson(MAPPING_FILE);
   const orderList = loadOrderList();
@@ -213,10 +226,8 @@ function loadRows() {
     const mapData = mapping[idText] && typeof mapping[idText] === 'object' ? mapping[idText] : {};
     const key = String(mapData.name_kr || '').trim();
     if (EXCLUDED_PERSONA_KEYS.has(key)) continue;
-    const hasExcludedTestMarker = Object.values(mapData).some((value) => (
-      typeof value === 'string' && EXCLUDED_TEST_MARKERS.some((marker) => value.includes(marker))
-    ));
-    if (hasExcludedTestMarker) continue;
+    const containsExcludedMarker = hasExcludedTestMarker(mapData);
+    if (containsExcludedMarker) continue;
     const api = String(mapData.name_en || '').trim() || `persona-${index}`;
     const resolved = resolveLocalPersona(key);
     const localType = resolved.localType;
@@ -493,6 +504,7 @@ function collectReportRows({ rows, langs, parts, scope }) {
 
     for (const lang of langs) {
       if (!ext[lang]) continue;
+      if (hasExcludedTestMarker(localData) || hasExcludedTestMarker(ext[lang])) continue;
       const partDiffs = [];
       for (const part of parts) {
         const patchValue = buildPartPatch({
@@ -662,6 +674,10 @@ function runPatch(args) {
         warn(`[patch] skip #${row.index} ${row.api}/${row.local} (${row.key}) lang=${lang}: external not found`);
         continue;
       }
+      if (hasExcludedTestMarker(workingData) || hasExcludedTestMarker(ext[lang])) {
+        log(`[patch] skip #${row.index} ${row.api}/${row.local} (${row.key}) lang=${lang}: excluded test marker`);
+        continue;
+      }
 
       const applied = applyPartsToPersona({
         row,
@@ -740,6 +756,10 @@ function runApplyDiffJson(args) {
     const ext = loadExternalPersonaByLang(index);
     if (!ext[lang]) {
       warn(`[apply-diff-json] skip #${index} ${row.api}/${row.local} (${row.key}) lang=${lang}: external not found`);
+      continue;
+    }
+    if (hasExcludedTestMarker(entry.data) || hasExcludedTestMarker(ext[lang])) {
+      log(`[apply-diff-json] skip #${index} ${row.api}/${row.local} (${row.key}) lang=${lang}: excluded test marker`);
       continue;
     }
 

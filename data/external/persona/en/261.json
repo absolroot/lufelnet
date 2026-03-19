@@ -53,19 +53,19 @@
   "nature": "Bless",
   "passive_skill": [
     {
-      "desc": "Increase Attack by 29.1%.\nAt the start of battle, gain 1 God's Ear stack. Lasts for 3 turns. Stacks up to 3 times. When an ally uses a Highlight, gain 1 God's Ear stack. If a Bless ally uses a Highlight, gain 1 more God's Ear stack.\nWhen using a unique skill, spend all God's Ear stacks, and increase foe's Bless damage taken by 4% for each stack. If God's Ear reaches 3 stacks, when a foe takes Bless damage, also decrease Defense by 16%. These debuffs last for 2 turns.",
+      "desc": "Increase Attack by 29.1%.\nAt the start of battle, gain 1 God's Ear stack. When an ally uses a Highlight, gain 1 God's Ear stack. When a Bless ally uses a Highlight, gain 1 more God's Ear stack.\nGod's Ear lasts for 3 turns and stacks up to 3 times. Can also gain stacks while in reserve.\nWhen using a unique skill, spend all God's Ear stacks, and increase target's Bless damage taken by 4% for each stack for 2 turns. Also, when spending 3 God's Ear stacks, when the target takes Bless damage, decrease Defense by 16% more for 2 turns.",
       "name": "Sinful Listener"
     },
     {
-      "desc": "Increase Attack by 29.1%.\nAt the start of battle, gain 2 God's Ear stacks. Lasts for 3 turns. Stacks up to 3 times. When an ally uses a Highlight, gain 1 God's Ear stack. If a Bless ally uses a Highlight, gain 1 more God's Ear stack.\nWhen using a unique skill, spend all God's Ear stacks, and increase foe's Bless damage taken by 4% for each stack. If God's Ear reaches 3 stacks, when a foe takes Bless damage, also decrease Defense by 16%. These debuffs last for 2 turns.",
+      "desc": "Increase Attack by 29.1%.\nAt the start of battle, gain 2 God's Ear stacks. When an ally uses a Highlight, gain 1 God's Ear stack. When a Bless ally uses a Highlight, gain 1 more God's Ear stack.\nGod's Ear lasts for 3 turns and stacks up to 3 times. Can also gain stacks while in reserve.\nWhen using a unique skill, spend all God's Ear stacks, and increase target's Bless damage taken by 4% for each stack for 2 turns. Also, when spending 3 God's Ear stacks, when the target takes Bless damage, decrease Defense by 16% more for 2 turns.",
       "name": "Sinful Listener I"
     },
     {
-      "desc": "Increase Attack by 29.1%.\nAt the start of battle, gain 2 God's Ear stacks. Lasts for 3 turns. Stacks up to 3 times. When an ally uses a Highlight, gain 1 God's Ear stack. If a Bless ally uses a Highlight, gain 1 more God's Ear stack.\nWhen using a unique skill, spend all God's Ear stacks, and increase foe's Bless damage taken by 6% for each stack. If God's Ear reaches 3 stacks, when a foe takes Bless damage, also decrease Defense by 16%. These debuffs last for 2 turns.",
+      "desc": "Increase Attack by 29.1%.\nAt the start of battle, gain 2 God's Ear stacks. When an ally uses a Highlight, gain 1 God's Ear stack. When a Bless ally uses a Highlight, gain 1 more God's Ear stack.\nGod's Ear lasts for 3 turns and stacks up to 3 times. Can also gain stacks while in reserve.\nWhen using a unique skill, spend all God's Ear stacks, and increase target's Bless damage taken by 6% for each stack for 2 turns. Also, when spending 3 God's Ear stacks, when the target takes Bless damage, decrease Defense by 16% more for 2 turns.",
       "name": "Sinful Listener II"
     },
     {
-      "desc": "Increase Attack by 29.1%.\nAt the start of battle, gain 2 God's Ear stacks. Lasts for 3 turns. Stacks up to 3 times. When an ally uses a Highlight, gain 1 God's Ear stack. If a Bless ally uses a Highlight, gain 1 more God's Ear stack.\nWhen using a unique skill, spend all God's Ear stacks, and increase foe's Bless damage taken by 6% for each stack. If God's Ear reaches 3 stacks, when a foe takes Bless damage, also decrease Defense by 25%. These debuffs last for 2 turns.",
+      "desc": "Increase Attack by 29.1%.\nAt the start of battle, gain 2 God's Ear stacks. When an ally uses a Highlight, gain 1 God's Ear stack. When a Bless ally uses a Highlight, gain 1 more God's Ear stack.\nGod's Ear lasts for 3 turns and stacks up to 3 times. Can also gain stacks while in reserve.\nWhen using a unique skill, spend all God's Ear stacks, and increase target's Bless damage taken by 6% for each stack for 2 turns. Also, when spending 3 God's Ear stacks, when the target takes Bless damage, decrease Defense by 25% more for 2 turns.",
       "name": "Sinful Listener III"
     }
   ],

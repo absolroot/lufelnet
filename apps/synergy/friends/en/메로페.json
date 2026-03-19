@@ -237,6 +237,15 @@
             "reducePriceCond": "Runa Dogenzaka LV.1",
             "resetType": "주간",
             "shopName": "Rocinante"
+          },
+          {
+            "isHidden": 1,
+            "mapName": null,
+            "maxBuy": -1,
+            "moneyName": "Arcade Exchange Voucher",
+            "price": 3720,
+            "resetType": "없음",
+            "shopName": "AAAAAA=="
           }
         ],
         "source": [
@@ -853,7 +862,7 @@
         "rank": 13
       },
       {
-        "description": "You may receive an extra seal when fusing a 2★ or 3★ Persona of Rank 4 or lower.",
+        "description": "You may receive an extra seal when fusing a 2★ or 3★ Persona of Rank IV or lower.",
         "icon": "xielizhe-icon-meiluopu-07.png",
         "name": "Full-Power Support",
         "rank": 15

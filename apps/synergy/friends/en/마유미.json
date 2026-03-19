@@ -5,12 +5,16 @@
         "good_answers": [
           [
             {
-              "content": "Your health is more important.",
-              "reward": 60
+              "content": "You've found your calling.",
+              "reward": 50
             },
             {
-              "content": "There's always tomorrow.",
-              "reward": 50
+              "content": "Think you can pull it off?",
+              "reward": 40
+            },
+            {
+              "content": "It fits you perfectly.",
+              "reward": 60
             }
           ]
         ],
@@ -24,12 +28,16 @@
         "good_answers": [
           [
             {
-              "content": "There's no rush.",
-              "reward": 50
+              "content": "The next step's figured out.",
+              "reward": 60
             },
             {
-              "content": "I'm happy to help anytime.",
-              "reward": 60
+              "content": "Might be easier said than done...",
+              "reward": 40
+            },
+            {
+              "content": "Looking forward to the vids.",
+              "reward": 50
             }
           ]
         ],
@@ -43,12 +51,16 @@
         "good_answers": [
           [
             {
-              "content": "Your voice is beautiful.",
+              "content": "Sure, I'll write something.",
               "reward": 40
             },
             {
-              "content": "Were you nervous?",
+              "content": "I wanna watch first...",
               "reward": 50
+            },
+            {
+              "content": "Like, comment, subscribe. Got it.",
+              "reward": 60
             }
           ]
         ],
@@ -62,12 +74,16 @@
         "good_answers": [
           [
             {
-              "content": "It was a good song.",
-              "reward": 60
+              "content": "Looks pretty awesome.",
+              "reward": 50
             },
             {
-              "content": "You really did!",
-              "reward": 50
+              "content": "See for yourself.",
+              "reward": 40
+            },
+            {
+              "content": "I couldn't take my eyes off you.",
+              "reward": 60
             }
           ]
         ],
@@ -81,15 +97,15 @@
         "good_answers": [
           [
             {
-              "content": "What do you want to say most?",
-              "reward": 50
-            },
-            {
-              "content": "Just keep trying stuff out.",
+              "content": "My arm are tired...",
               "reward": 40
             },
             {
-              "content": "Who are your songs for?",
+              "content": "No sweat.",
+              "reward": 50
+            },
+            {
+              "content": "Your smile kept me going.",
               "reward": 60
             }
           ]
@@ -104,15 +120,15 @@
         "good_answers": [
           [
             {
-              "content": "You didn't do anything wrong.",
+              "content": "The good viewers always win out.",
               "reward": 40
             },
             {
-              "content": "Is that all you want to say to her?",
+              "content": "Don't forget your supportive fans.",
               "reward": 60
             },
             {
-              "content": "What do you want to do?",
+              "content": "Let's show 'em the carefree Mayumi.",
               "reward": 50
             }
           ]
@@ -127,16 +143,12 @@
         "good_answers": [
           [
             {
-              "content": "I wanna hear you play at your best.",
-              "reward": 50
-            },
-            {
-              "content": "You must be imagining things.",
-              "reward": 40
-            },
-            {
-              "content": "I just want to cheer you up.",
+              "content": "You should be thanking yourself.",
               "reward": 60
+            },
+            {
+              "content": "I didn't do much.",
+              "reward": 50
             }
           ]
         ],
@@ -150,12 +162,12 @@
         "good_answers": [
           [
             {
-              "content": "Congrats!",
-              "reward": 50
+              "content": "You were pretty badass.",
+              "reward": 60
             },
             {
-              "content": "I wanna hear!",
-              "reward": 60
+              "content": "Are you okay?",
+              "reward": 50
             }
           ]
         ],
@@ -169,12 +181,16 @@
         "good_answers": [
           [
             {
-              "content": "Go ahead.",
-              "reward": 60
+              "content": "It's finally happening.",
+              "reward": 50
             },
             {
-              "content": "I'm sure she'll understand.",
-              "reward": 50
+              "content": "You nervous?",
+              "reward": 40
+            },
+            {
+              "content": "You're gonna crush it.",
+              "reward": 60
             }
           ]
         ],
@@ -185,17 +201,8 @@
         "unlock_cond": "Proficiency Lv.17"
       }
     ],
-    "can_romance": true,
-    "friend_lover_dialog": [
-      {
-        "content": "I support you as a fan.",
-        "is_romance": false
-      },
-      {
-        "content": "I feel the same way you do.",
-        "is_romance": true
-      }
-    ],
+    "can_romance": false,
+    "friend_lover_dialog": [],
     "item": [
       {
         "bonus_synergy": 38,
@@ -233,216 +240,151 @@
         "synergy": 38
       },
       {
-        "bonus_synergy": 12,
+        "bonus_synergy": 44,
         "compound": [],
-        "image": "item-303211.png",
-        "name": "ChocoStick Value Pack",
-        "new_gift_synergy": 24,
+        "image": "item-303204.png",
+        "name": "Hi-tech Headphones",
+        "new_gift_synergy": 88,
         "seed": [],
         "shop": [
           {
-            "discountPrice": 4650,
-            "isHidden": 0,
-            "mapName": null,
-            "maxBuy": 2,
-            "moneyName": "Money",
-            "price": 4890,
-            "reducePriceCond": "Runa Dogenzaka LV.9",
-            "resetType": "주간",
-            "shopName": "Zoshigaya Mart"
-          }
-        ],
-        "source": [
-          "shop"
-        ],
-        "synergy": 12
-      },
-      {
-        "bonus_synergy": 52,
-        "compound": [],
-        "image": "item-303252.png",
-        "name": "Electric Toothbrush",
-        "new_gift_synergy": 104,
-        "seed": [],
-        "shop": [
-          {
-            "discountPrice": 28800,
+            "discountPrice": 22800,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 1,
             "moneyName": "Money",
-            "price": 29800,
-            "reducePriceCond": "Runa Dogenzaka LV.1",
-            "resetType": "주간",
-            "shopName": "Triple Seven"
-          },
-          {
-            "discountPrice": 28800,
-            "isHidden": 0,
-            "mapName": null,
-            "maxBuy": 1,
-            "moneyName": "Money",
-            "price": 29800,
+            "price": 23800,
             "reducePriceCond": "Runa Dogenzaka LV.5",
             "resetType": "주간",
             "shopName": "Akindo"
+          },
+          {
+            "isHidden": 1,
+            "mapName": null,
+            "maxBuy": -1,
+            "moneyName": "Arcade Exchange Voucher",
+            "price": 4760,
+            "resetType": "없음",
+            "shopName": "AAAAAA=="
           }
         ],
         "source": [
           "shop"
         ],
-        "synergy": 52
+        "synergy": 44
       },
       {
-        "bonus_synergy": 3,
+        "bonus_synergy": 8,
         "compound": [],
-        "image": "item-303260.png",
-        "name": "Heart-Shaped Hand Mirror",
-        "new_gift_synergy": 6,
+        "image": "item-303247.png",
+        "name": "Rose Bath Set",
+        "new_gift_synergy": 16,
         "seed": [],
         "shop": [
           {
-            "discountPrice": 1140,
+            "discountPrice": 3040,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 4,
             "moneyName": "Money",
-            "price": 1200,
-            "reducePriceCond": "Runa Dogenzaka LV.7",
+            "price": 3200,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
             "resetType": "주간",
-            "shopName": "Kyouryuu Jewelry"
+            "shopName": "The Body Store"
+          },
+          {
+            "isHidden": 1,
+            "mapName": null,
+            "maxBuy": -1,
+            "moneyName": "Arcade Exchange Voucher",
+            "price": 640,
+            "resetType": "없음",
+            "shopName": "AAAAAA=="
           }
         ],
         "source": [
           "shop"
         ],
-        "synergy": 3
+        "synergy": 8
       },
       {
-        "bonus_synergy": 42,
+        "bonus_synergy": 17,
         "compound": [],
-        "image": "item-303267.png",
-        "name": "Harmonica",
-        "new_gift_synergy": 84,
+        "image": "item-303264.png",
+        "name": "Fuwamokko-kun Doll",
+        "new_gift_synergy": 34,
         "seed": [],
         "shop": [
           {
-            "discountPrice": 20800,
+            "discountPrice": 6460,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 1,
             "moneyName": "Money",
-            "personalityLimit": "Proficiency LV.10",
-            "price": 21800,
-            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "price": 6800,
+            "reducePriceCond": "Runa Dogenzaka LV.7",
             "resetType": "주간",
-            "shopName": "Taisho Store"
+            "shopName": "Triple Seven"
+          },
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": -1,
+            "moneyName": "Arcade Exchange Voucher",
+            "price": 1360,
+            "resetType": "없음",
+            "shopName": "AAAAAA=="
           }
         ],
         "source": [
           "shop"
         ],
-        "synergy": 42
+        "synergy": 17
       },
       {
-        "bonus_synergy": 12,
+        "bonus_synergy": 10,
         "compound": [],
-        "image": "item-303268.png",
-        "name": "Music Box",
-        "new_gift_synergy": 24,
+        "image": "item-303273.png",
+        "name": "Kids' Character Pillow",
+        "new_gift_synergy": 20,
         "seed": [],
         "shop": [
           {
-            "discountPrice": 4560,
+            "discountPrice": 3800,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 3,
             "moneyName": "Money",
-            "price": 4800,
-            "reducePriceCond": "Runa Dogenzaka LV.13",
-            "resetType": "주간",
-            "shopName": "Stationery Store"
-          }
-        ],
-        "source": [
-          "shop"
-        ],
-        "synergy": 12
-      },
-      {
-        "bonus_synergy": 15,
-        "compound": [],
-        "image": "item-303269.png",
-        "name": "Guitar Care Set",
-        "new_gift_synergy": 30,
-        "seed": [],
-        "shop": [
-          {
-            "discountPrice": 5700,
-            "isHidden": 0,
-            "mapName": null,
-            "maxBuy": 3,
-            "moneyName": "Money",
-            "price": 6000,
-            "reducePriceCond": "Runa Dogenzaka LV.1",
-            "resetType": "주간",
-            "shopName": "Taisho Store"
-          }
-        ],
-        "source": [
-          "shop"
-        ],
-        "synergy": 15
-      },
-      {
-        "bonus_synergy": 2,
-        "compound": [],
-        "image": "item-303270.png",
-        "name": "Weathered Teru Teru Bozu",
-        "new_gift_synergy": 4,
-        "seed": [],
-        "shop": [
-          {
-            "discountPrice": 760,
-            "isHidden": 0,
-            "mapName": null,
-            "maxBuy": 7,
-            "moneyName": "Money",
-            "price": 800,
+            "price": 4000,
             "reducePriceCond": "Runa Dogenzaka LV.1",
             "resetType": "주간",
             "shopName": "High Sense"
-          }
-        ],
-        "source": [
-          "shop"
-        ],
-        "synergy": 2
-      },
-      {
-        "bonus_synergy": 37,
-        "compound": [],
-        "image": "item-303271.png",
-        "name": "Choker",
-        "new_gift_synergy": 74,
-        "seed": [],
-        "shop": [
+          },
           {
-            "discountPrice": 17100,
+            "discountPrice": 3800,
             "isHidden": 0,
             "mapName": null,
-            "maxBuy": 1,
+            "maxBuy": 3,
             "moneyName": "Money",
-            "price": 18000,
-            "reducePriceCond": "Runa Dogenzaka LV.13",
+            "price": 4000,
+            "reducePriceCond": "Runa Dogenzaka LV.5",
             "resetType": "주간",
-            "shopName": "Crystal Healing"
+            "shopName": "Tokobushiya"
+          },
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": -1,
+            "moneyName": "Arcade Exchange Voucher",
+            "price": 800,
+            "resetType": "없음",
+            "shopName": "AAAAAA=="
           }
         ],
         "source": [
           "shop"
         ],
-        "synergy": 37
+        "synergy": 10
       },
       {
         "bonus_synergy": 8,
@@ -606,101 +548,185 @@
         "synergy": 28
       },
       {
-        "bonus_synergy": 13,
-        "compound": [
+        "bonus_synergy": 9,
+        "compound": [],
+        "image": "item-303288.png",
+        "name": "Anime Character Pin",
+        "new_gift_synergy": 18,
+        "seed": [],
+        "shop": [
           {
-            "item": {
-              "box": [],
-              "compound": [],
-              "content_bg": "<color=#ffffff>  </color>",
-              "icon": "item-306121.png",
-              "name": "Osmanthuses",
-              "seed": [
-                {
-                  "consume_ap": [
-                    15,
-                    13,
-                    10
-                  ],
-                  "count": "random(1,6)",
-                  "rate": "100%",
-                  "seed": {
-                    "box": [],
-                    "compound": [],
-                    "content_bg": "<color=#ffffff>  </color>",
-                    "icon": "item-306106.png",
-                    "name": "Osmanthus Seeds",
-                    "seed": [],
-                    "shop": [
-                      {
-                        "discountPrice": 820,
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 10,
-                        "moneyName": "Money",
-                        "personalityLimit": "Kindness LV.6",
-                        "price": 860,
-                        "reducePriceCond": "Runa Dogenzaka LV.7",
-                        "resetType": "일간",
-                        "shopName": "Flower Shop Sukebe"
-                      }
-                    ],
-                    "source": [
-                      "shop"
-                    ],
-                    "tips": "Can be planted in your home garden to bloom into osmanthus. Increases your Kindness when first harvested.",
-                    "type": "Seeds"
-                  }
-                }
-              ],
-              "shop": [],
-              "source": [
-                "seed"
-              ],
-              "tips": "[Osmanthus]\nCan be crafted at the workbench into an Osmanthus Bouquet and gifted to an accomplice.",
-              "type": "Flower"
-            },
-            "itemCount": 4
+            "discountPrice": 3330,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 3500,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "Rocinante"
           },
           {
-            "item": {
-              "box": [],
-              "compound": [],
-              "content_bg": "<color=#ffffff>  </color>",
-              "icon": "item-305932.png",
-              "name": "Gorgeous Packaging",
-              "seed": [],
-              "shop": [
-                {
-                  "discountPrice": 480,
-                  "isHidden": 0,
-                  "mapName": null,
-                  "maxBuy": 10,
-                  "moneyName": "Money",
-                  "price": 500,
-                  "reducePriceCond": "Runa Dogenzaka LV.1",
-                  "resetType": "일간",
-                  "shopName": "Rafflesia"
-                }
-              ],
-              "source": [
-                "shop"
-              ],
-              "tips": "Used to craft Camellia Tea, Osmanthus Tea, Preserved Flowers, Violet Bouquets, and Osmanthus Bouquets at the workbench.",
-              "type": "Material"
-            },
-            "itemCount": 1
+            "discountPrice": 3330,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 3500,
+            "reducePriceCond": "Runa Dogenzaka LV.5",
+            "resetType": "주간",
+            "shopName": "Tokobushiya"
+          },
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": -1,
+            "moneyName": "Arcade Exchange Voucher",
+            "price": 700,
+            "resetType": "없음",
+            "shopName": "AAAAAA=="
           }
         ],
-        "image": "item-305945.png",
-        "name": "Osmanthus Tea",
-        "new_gift_synergy": 26,
-        "seed": [],
-        "shop": [],
         "source": [
-          "compound"
+          "shop"
         ],
-        "synergy": 13
+        "synergy": 9
+      },
+      {
+        "bonus_synergy": 3,
+        "compound": [],
+        "image": "item-317005.png",
+        "name": "Auto Sports Magazine",
+        "new_gift_synergy": 6,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 950,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 5,
+            "moneyName": "Money",
+            "price": 1000,
+            "reducePriceCond": "Runa Dogenzaka LV.7",
+            "resetType": "주간",
+            "shopName": "Triple Seven"
+          },
+          {
+            "isHidden": 1,
+            "mapName": null,
+            "maxBuy": -1,
+            "moneyName": "Arcade Exchange Voucher",
+            "price": 200,
+            "resetType": "없음",
+            "shopName": "AAAAAA=="
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 3
+      },
+      {
+        "bonus_synergy": 19,
+        "compound": [],
+        "image": "item-317006.png",
+        "name": "Fighting Tournament Collection",
+        "new_gift_synergy": 38,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 7220,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 7600,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "Taisho Store"
+          },
+          {
+            "isHidden": 1,
+            "mapName": null,
+            "maxBuy": -1,
+            "moneyName": "Arcade Exchange Voucher",
+            "price": 1520,
+            "resetType": "없음",
+            "shopName": "AAAAAA=="
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 19
+      },
+      {
+        "bonus_synergy": 29,
+        "compound": [],
+        "image": "item-317007.png",
+        "name": "Featherman Figure",
+        "new_gift_synergy": 58,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 11970,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 12600,
+            "reducePriceCond": "Runa Dogenzaka LV.5",
+            "resetType": "주간",
+            "shopName": "Tokobushiya"
+          },
+          {
+            "isHidden": 1,
+            "mapName": null,
+            "maxBuy": -1,
+            "moneyName": "Arcade Exchange Voucher",
+            "price": 2520,
+            "resetType": "없음",
+            "shopName": "AAAAAA=="
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 29
+      },
+      {
+        "bonus_synergy": 56,
+        "compound": [],
+        "image": "item-317008.png",
+        "name": "Buildable Model Car",
+        "new_gift_synergy": 112,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 31800,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 32800,
+            "reducePriceCond": "Runa Dogenzaka LV.5",
+            "resetType": "주간",
+            "shopName": "Tokobushiya"
+          },
+          {
+            "isHidden": 1,
+            "mapName": null,
+            "maxBuy": -1,
+            "moneyName": "Arcade Exchange Voucher",
+            "price": 6560,
+            "resetType": "없음",
+            "shopName": "AAAAAA=="
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 56
       },
       {
         "bonus_synergy": 1000,
@@ -714,131 +740,116 @@
         "synergy": 999
       }
     ],
-    "name": "Ayaka Sakai",
-    "romance_dialog": [
-      {
-        "good_answers": [
-          [
-            {
-              "content": "Feel free to stay the night.",
-              "reward": 60
-            },
-            {
-              "content": "Let's play till dark.",
-              "reward": 50
-            }
-          ]
-        ]
-      }
-    ],
+    "name": "Mayumi Hashimoto",
+    "romance_dialog": [],
     "special_award": [
       {
-        "description": "It will be easier to get Perfect or Great notes.",
-        "icon": "xielizhe-icon-banjinglingxiang-01.png",
-        "name": "Solo Revolution",
+        "description": "Increase rate of winning plushies from the small crane game.",
+        "icon": "xielizhe-icon-turbo03.png",
+        "name": "Crane Game Tip 1",
         "rank": 1
       },
       {
-        "description": "A Miss will become a Perfect once every 10 seconds.",
-        "icon": "xielizhe-icon-banjinglingxiang-02.png",
-        "name": "Savior on Stage",
-        "rank": 5
+        "description": "Increase plushie win rate (medium crane game).",
+        "icon": "xielizhe-icon-turbo02.png",
+        "name": "Crane Game Tip 2",
+        "rank": 3
       },
       {
-        "description": "Unlock the song \"Seize the Light.\"",
-        "icon": "xielizhe-icon-banjinglingxiang-03.png",
-        "name": "Solo Rock",
+        "description": "New items added to the crane games.",
+        "icon": "xielizhe-icon-turbo01.png",
+        "name": "Crane Game Tip 3",
         "rank": 9
       },
       {
-        "description": "You can complete long notes without lifting your finger.",
-        "icon": "xielizhe-icon-banjinglingxiang-04.png",
-        "name": "Twelve-String Sunset",
+        "description": "Increase super-rare plushie win rate (small crane game).",
+        "icon": "xielizhe-icon-turbo03.png",
+        "name": "Crane Game Tip 4",
         "rank": 13
       },
       {
-        "description": "Unlock the song \"Wonder Light.\"",
-        "icon": "xielizhe-icon-banjinglingxiang-03.png",
-        "name": "With the Daybreak",
-        "rank": 20
+        "description": "Increase super-rare plushie win rate (medium crane game).",
+        "icon": "xielizhe-icon-turbo02.png",
+        "name": "Crane Game Tip 5",
+        "rank": 17
       }
     ],
     "time": "After School",
     "unlock_quest": {
-      "details": "I should talk to Ritsuka and hear her thoughts.",
-      "name": "Rocking with the Band Club 1"
+      "details": "I should head back to Akihabara and find Runa.",
+      "name": "Akihabara Mystery Map"
     },
     "visit_dialog": [
       {
-        "destination": "Inokashira Park",
+        "destination": "Shibuya",
         "good_answers": [
           [
             {
-              "content": "Breaks are important.",
+              "content": "Sure do.",
               "reward": 60
             },
             {
-              "content": "Would you prefer to be alone?",
+              "content": "Not really my thing...",
               "reward": 50
             }
           ]
         ]
       },
       {
-        "destination": "Miura Beach",
+        "destination": "Shinjuku",
         "good_answers": [
           [
             {
-              "content": "Thanks for inviting me.",
+              "content": "They can be fun.",
               "reward": 60
             },
             {
-              "content": "I'm kinda hungry...",
+              "content": "Not really my thing...",
               "reward": 50
             }
           ]
         ]
       },
       {
-        "destination": "Suidobashi",
+        "destination": "Ogikubo",
         "good_answers": [
           [
             {
-              "content": "How about the Ferris wheel?",
+              "content": "It was really good.",
               "reward": 60
             },
             {
-              "content": "Give the roller coaster a go!",
+              "content": "Ramen crawl?",
               "reward": 50
             }
           ]
         ]
       },
       {
-        "destination": "Yongen-Jaya",
+        "destination": "Jinbocho",
         "good_answers": [
           [
             {
-              "content": "Can't beat golden age movies.",
+              "content": "Dedicated as ever.",
               "reward": 60
             },
             {
-              "content": "I prefer modern flicks.",
+              "content": "Can't you just find them online?",
               "reward": 50
             }
           ]
         ]
       },
       {
-        "destination": "Seaside Park",
+        "destination": "Ueno",
         "good_answers": [
           [
             {
-              "content": "It's a wonderful place.",
+              "content": "Except me.",
               "reward": 60
             },
             {
-              "content": "I think it's a great spot.",
+              "content": "I get where you're coming from.",
               "reward": 50
             }
           ]

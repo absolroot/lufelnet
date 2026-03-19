@@ -102,7 +102,7 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "If foes are Burning on Natsukawa's action, activate Sub-Zero Torrent on that foe 1 time (this effect will not be activated by Scald).\nAlso, when the same foe is attacked repeatedly with Extinguishing Guidance or Requiem Guidance, increase the target's damage taken by 25% more for 1 turn.\nThe maximum number of Damnation stacks becomes 6.",
+        "desc": "If foes have Burn or Scald on Natsukawa's action, activate Sub-Zero Torrent on that foe 1 time.\nAlso, when the same foe is attacked repeatedly with Extinguishing Guidance or Requiem Guidance, increase the target's damage taken by 25% more for 1 turn.\nThe maximum number of Damnation stacks becomes 6.",
         "name": "Firefighter's Soul",
         "nature": null,
         "skill_lv": "3",

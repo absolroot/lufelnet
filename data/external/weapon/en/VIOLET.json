@@ -1,0 +1,33 @@
+{
+  "data": {
+    "fiveStar": [
+      {
+        "name": "Royal Étoile",
+        "quality": 5,
+        "skill": "Increase critical damage by 36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%.\nWhen gaining a Step stack, increase Attack by 21.0%/27.0%/27.0%/33.0%/33.0%/39.0%/39.0% for 2 turns. This effect does not stack.\nWhen an ally activates a Highlight, gain 1 Glass Slipper stack, and increase Kasumi's damage by 8.4%/11.1%/11.1%/13.8%/13.8%/16.5%/16.5% for 3 turns. Stacks up to 2 times.\nWhen Glass Slipper is at 2 stacks, increase Kasumi's Highlight damage by 30.0%/39.0%/39.0%/48.0%/48.0%/57.0%/57.0% more.",
+        "stat": {
+          "attack": 766.41,
+          "defense": 370.0,
+          "hp": 2239.65
+        },
+        "user": "Kasumi"
+      }
+    ],
+    "fourStar": [
+      {
+        "name": "Divine Sword of Sinai",
+        "quality": 4,
+        "skill": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.\nWith 2 or more Step stacks, increase damage by 24.0%/31.0%/31.0%/38.0%/38.0%/45.0%/45.0%.",
+        "stat": {
+          "attack": 613.28,
+          "defense": 296.11,
+          "hp": 1791.59
+        },
+        "user": "Kasumi"
+      }
+    ],
+    "name": "Kasumi"
+  },
+  "msg": "OK",
+  "status": 0
+}

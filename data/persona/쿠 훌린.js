@@ -78,7 +78,7 @@ window.personaFiles["쿠 훌린"] = {
       "name_en": "Fell Spear's Wielder III",
       "name_jp": "魔槍の使い手Ⅲ",
       "desc": "크리티컬 확률이 17.5% 증가한다. 크리티컬 시 적에게 「치명덫」을 추가하고, 다음 고유 스킬 공격으로 표식을 폭발시켜 스킬 대미지가 공격력의 87%만큼 추가 증가한다. 표식 폭발 시 낮은 확률로 즉사 효과가 발동된다.",
-      "desc_en": "Increase critical rate by 17.5%. After a critical hit, inflict Fatal Thorn on foe. On the next attack with a unique skill, spend Fatal Thorn to increase skill damage by 87% with a miniscule chance to insta-kill.",
+      "desc_en": "Increase critical rate by 17.5%. After a critical hit, inflict Fatal Thorn on foe. On the next attack with a unique skill, spend Fatal Thorn to increase skill damage by 87% with a low chance to insta-kill.",
       "desc_jp": "クリティカル率が１７.５%上昇する。クリティカルが発生した時、敵に『致命の棘』を付与する。次に固有スキルで攻撃する時、『致命の棘』を消費して、スキルダメージを攻撃力の８７%上昇させる。この時、低確率で即死効果が発動することがある。",
       "name_cn": "咆哮的猛犬Ⅲ",
       "desc_cn": "暴击率提升17.5%。暴击时为敌人附加「致命倒钩」，下次使用固有技能攻击引爆标记，使技能额外提升87%攻击力的伤害。引爆标记时有低概率触发即死效果。"

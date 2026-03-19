@@ -27,8 +27,8 @@ window.personaFiles["사악한 프로스트"] = {
       "name_en": "Nice Try",
       "name_jp": "ナイストライ",
       "desc": "공격력이 29.1% 증가한다. 자신이 페르소나 스킬을 사용해 적에게 대미지를 줄 때, 75%의 기본 확률로 메인 목표의 다운 수치를 1중첩 약화시킨다. 스킬을 사용해 적을 다운 상태에 빠뜨리면 「눈보라」 1중첩 획득: 2턴 동안 공격력이 15% 증가하고 빙결 대미지가 15% 증가한다(최대 2회 중첩 가능).",
-      "desc_en": "Increase Attack by 29.1%. When dealing skill damage to a foe, 75% chance to remove 1 Down Point. When knocking down a foe with a skill, gain 1 Blizzard stack: increase Attack by 15% and Ice damage by 15%. Lasts for 2 turns. Stacks up to 2 times.",
-      "desc_jp": "攻撃力が２９.１%上昇する。自身が敵にスキルダメージを与えた時、７５%の確率でダウン値を１減少させる。スキルを使用して敵をダウン状態にした時、自身に『暴風雪』１つ獲得する：２ターンの間、攻撃力が１５%上昇し、氷結属性の与ダメージが１５%上昇する。最大２つまで累積できる。",
+      "desc_en": "Increase Attack by 29.1%. When dealing skill damage to a foe, 75% chance to remove 1 Down Point. After using a skill to knock down a foe, gain 1 Blizzard. Blizzard: Increase Attack by 15% and increase Ice damage by 15% for 2 turns. Stacks up to 2 times.",
+      "desc_jp": "攻撃力が２９.１%上昇する。自身が敵にスキルダメージを与えた時、７５%の確率でダウン値を１減少させる。スキルを使用して敵をダウン状態にした時、『暴風雪』を１つ獲得する：２ターンの間、攻撃力が１５%上昇し、氷結属性の与ダメージが１５%上昇する。最大２つまで累積できる。",
       "name_cn": "得逞了吼",
       "desc_cn": "攻击力提升29.1%。自身对敌方使用人格面具技能造成伤害后，有75%的基础概率削弱主目标1层倒地值。自身使用技能使敌人陷入倒地状态后，获得1层「暴风雪」：攻击力提升15%、冰冻伤害提升15%，上限2层，持续时间2回合。"
     },
@@ -37,8 +37,8 @@ window.personaFiles["사악한 프로스트"] = {
       "name_en": "Nice Try I",
       "name_jp": "ナイストライⅠ",
       "desc": "공격력이 29.1% 증가한다. 자신이 페르소나 스킬을 사용해 적에게 대미지를 줄 때, 75%의 기본 확률로 메인 목표의 다운 수치를 1중첩 약화시킨다. 스킬을 사용해 적을 다운 상태에 빠뜨리면 「눈보라」 1중첩 획득: 2턴 동안 공격력이 25% 증가하고 빙결 대미지가 15% 증가한다(최대 2회 중첩 가능).",
-      "desc_en": "Increase Attack by 29.1%. When dealing skill damage to a foe, 75% chance to remove 1 Down Point. When knocking down a foe with a skill, gain 1 Blizzard stack: increase Attack by 25% and Ice damage by 15%. Lasts for 2 turns. Stacks up to 2 times.",
-      "desc_jp": "攻撃力が２９.１%上昇する。自身が敵にスキルダメージを与えた時、７５%の確率でダウン値を１減少させる。スキルを使用して敵をダウン状態にした時、自身に『暴風雪』１つ獲得する：２ターンの間、攻撃力が２５%上昇し、氷結属性の与ダメージが１５%上昇する。最大２つまで累積できる。",
+      "desc_en": "Increase Attack by 29.1%. When dealing skill damage to a foe, 75% chance to remove 1 Down Point. After using a skill to knock down a foe, gain 1 Blizzard. Blizzard: Increase Attack by 15% and increase Ice damage by 15% for 2 turns. Stacks up to 2 times.",
+      "desc_jp": "攻撃力が２９.１%上昇する。自身が敵にスキルダメージを与えた時、７５%の確率でダウン値を１減少させる。スキルを使用して敵をダウン状態にした時、『暴風雪』を１つ獲得する：２ターンの間、攻撃力が２５%上昇し、氷結属性の与ダメージが１５%上昇する。最大２つまで累積できる。",
       "name_cn": "得逞了吼Ⅰ",
       "desc_cn": "攻击力提升29.1%。自身对敌方使用人格面具技能造成伤害后，有75%的基础概率削弱主目标1层倒地值。自身使用技能使敌人陷入倒地状态后，获得1层「暴风雪」：攻击力提升25%、冰冻伤害提升15%，上限2层，持续时间2回合。"
     },
@@ -47,8 +47,8 @@ window.personaFiles["사악한 프로스트"] = {
       "name_en": "Nice Try II",
       "name_jp": "ナイストライⅡ",
       "desc": "공격력이 29.1% 증가한다. 자신이 페르소나 스킬을 사용해 적에게 대미지를 줄 때, 75%의 기본 확률로 메인 목표의 다운 수치를 1중첩 약화시킨다. 스킬을 사용해 적을 다운 상태에 빠뜨리면 「눈보라」 1중첩 획득: 2턴 동안 공격력이 25% 증가하고 빙결 대미지가 25% 증가한다(최대 2회 중첩 가능).",
-      "desc_en": "Increase Attack by 29.1%. When dealing skill damage to a foe, 75% chance to remove 1 Down Point. When knocking down a foe with a skill, gain 1 Blizzard stack: increase Attack by 25% and Ice damage by 25%. Lasts for 2 turns. Stacks up to 2 times.",
-      "desc_jp": "攻撃力が２９.１%上昇する。自身が敵にスキルダメージを与えた時、７５%の確率でダウン値を１減少させる。スキルを使用して敵をダウン状態にした時、自身に『暴風雪』１つ獲得する：２ターンの間、攻撃力が２５%上昇し、氷結属性の与ダメージが２５%上昇する。最大２つまで累積できる。",
+      "desc_en": "Increase Attack by 29.1%. When dealing skill damage to a foe, 75% chance to remove 1 Down Point. After using a skill to knock down a foe, gain 1 Blizzard. Blizzard: Increase Attack by 25% and increase Ice damage by 25% for 2 turns. Stacks up to 2 times.",
+      "desc_jp": "攻撃力が２９.１%上昇する。自身が敵にスキルダメージを与えた時、７５%の確率でダウン値を１減少させる。スキルを使用して敵をダウン状態にした時、『暴風雪』を１つ獲得する：２ターンの間、攻撃力が２５%上昇し、氷結属性の与ダメージが２５%上昇する。最大２つまで累積できる。",
       "name_cn": "得逞了吼Ⅱ",
       "desc_cn": "攻击力提升29.1%。自身对敌方使用人格面具技能造成伤害后，有75%的基础概率削弱主目标1层倒地值。自身使用技能使敌人陷入倒地状态后，获得1层「暴风雪」：攻击力提升25%、冰冻伤害提升25%，上限2层，持续时间2回合。"
     },
@@ -57,8 +57,8 @@ window.personaFiles["사악한 프로스트"] = {
       "name_en": "Nice Try III",
       "name_jp": "ナイストライⅢ",
       "desc": "공격력이 29.1% 증가한다. 자신이 페르소나 스킬을 사용해 적에게 대미지를 줄 시 75%의 기본 확률로 메인 목표의 다운 수치를 1회 약화시킨다. 스킬을 사용해 적을 다운 상태에 빠뜨리면 「눈보라」 1회 획득: 3턴 동안 공격력이 25% 증가하고 빙결 대미지가 25% 증가한다(3회 중첩 가능).",
-      "desc_en": "Increase Attack by 29.1%. When dealing skill damage to a foe, 75% chance to remove 1 Down Point. When knocking down a foe with a skill, gain 1 Blizzard stack: increase Attack by 25% and Ice damage by 25%. Lasts for 3 turns. Stacks up to 2 times.",
-      "desc_jp": "攻撃力が２９.１%上昇する。自身が敵にスキルダメージを与えた時、７５%の確率でダウン値を１減少させる。スキルを使用して敵をダウン状態にした時、自身に『暴風雪』１つ獲得する：３ターンの間、攻撃力が２５%上昇し、氷結属性の与ダメージが２５%上昇する。最大２つまで累積できる。",
+      "desc_en": "Increase Attack by 29.1%. When dealing skill damage to a foe, 75% chance to remove 1 Down Point. After using a skill to knock down a foe, gain 1 Blizzard. Blizzard: Increase Attack by 25% and increase Ice damage by 25% for 3 turns. Stacks up to 2 times.",
+      "desc_jp": "攻撃力が２９.１%上昇する。自身が敵にスキルダメージを与えた時、７５%の確率でダウン値を１減少させる。スキルを使用して敵をダウン状態にした時、『暴風雪』を１つ獲得する：３ターンの間、攻撃力が２５%上昇し、氷結属性の与ダメージが２５%上昇する。最大２つまで累積できる。",
       "name_cn": "得逞了吼Ⅲ",
       "desc_cn": "攻击力提升29.1%。自身对敌方使用人格面具技能造成伤害后，有75%的基础概率削弱主目标1层倒地值。自身使用技能使敌人陷入倒地状态后，获得1层「暴风雪」：攻击力提升25%、冰冻伤害提升25%，上限2层，持续时间3回合。"
     }

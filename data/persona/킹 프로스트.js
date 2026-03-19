@@ -40,8 +40,8 @@ window.personaFiles["킹 프로스트"] = {
       "name_en": "Tundra's Judgment",
       "name_jp": "氷雪の裁き",
       "desc": "방어력이 37.4% 증가한다. 동료에게 실드를 부여할 때 메인 목표는 방어력 18% 증가 또는 빙결 대미지 10% 증가 중 한 가지 효과를 획득하며 2턴 동안 지속된다.",
-      "desc_en": "Increase Defense by 37.4%. When granting a shield to an ally, either increase target's Defense by 18% or increase target's Ice damage by 10% for 2 turns.",
-      "desc_jp": "防御力が３７.４％上昇する。味方にシールドを付与する時、２ターンの間、選択した対象に防御力が１８％上昇、または氷結属性の与ダメージ１０％上昇のどちらかを付与する。",
+      "desc_en": "Increase Defense by 37.4%. When granting a shield to an ally, either increase main target's Defense by 18% or Ice damage by 10% for 2 turns.",
+      "desc_jp": "防御力が３７.４%上昇する。味方にシールドを付与する時、２ターンの間、選択した対象に防御力１８%上昇、または氷結属性の与ダメージ１０%上昇のどちらかを付与する。",
       "name_cn": "冰封的裁决",
       "desc_cn": "防御力提升37.4%。为队友添加护盾时，主要目标获得防御力提升18%或冰冻伤害提升10%其中一个效果，持续2回合。"
     },
@@ -51,7 +51,7 @@ window.personaFiles["킹 프로스트"] = {
       "name_jp": "氷雪の裁きⅠ",
       "desc": "방어력이 37.4% 증가한다. 동료에게 실드를 부여할 때 메인 목표는 방어력 18% 증가 또는 빙결 대미지 15% 증가 중 한 가지 효과를 획득하며 2턴 동안 지속된다.",
       "desc_en": "Increase Defense by 37.4%. When granting a shield to an ally, either increase main target's Defense by 18% or Ice damage by 15% for 2 turns.",
-      "desc_jp": "防御力が３７.４％上昇する。味方にシールドを付与する時、２ターンの間、選択した対象に防御力が１８％上昇、または氷結属性の与ダメージ１５％上昇のどちらかを付与する。",
+      "desc_jp": "防御力が３７.４%上昇する。味方にシールドを付与する時、２ターンの間、選択した対象に防御力１８%上昇、または氷結属性の与ダメージ１５%上昇のどちらかを付与する。",
       "name_cn": "冰封的裁决Ⅰ",
       "desc_cn": "防御力提升37.4%。为队友添加护盾时，主要目标获得防御力提升18%或冰冻伤害提升15%其中一个效果，持续2回合。"
     },
@@ -61,7 +61,7 @@ window.personaFiles["킹 프로스트"] = {
       "name_jp": "氷雪の裁きⅡ",
       "desc": "방어력이 37.4% 증가한다. 동료에게 실드를 부여할 때 메인 목표는 방어력 18% 증가와 빙결 대미지 15% 증가 두 가지 효과를 획득하며 2턴 동안 지속된다.",
       "desc_en": "Increase Defense by 37.4%. When granting a shield to an ally, increase main target's Defense by 18% and Ice damage by 15% for 2 turns.",
-      "desc_jp": "防御力が３７.４％上昇する。味方にシールドを付与する時、２ターンの間、選択した対象の防御力が１８％上昇し、氷結属性の与ダメージが１５％上昇する。",
+      "desc_jp": "防御力が３７.４%上昇する。味方にシールドを付与する時、２ターンの間、選択した対象の防御力が１８%上昇し、氷結属性の与ダメージが１５%上昇する。",
       "name_cn": "冰封的裁决Ⅱ",
       "desc_cn": "防御力提升37.4%。为队友添加护盾时，主要目标获得防御力提升18%和冰冻伤害提升15%两个效果，持续2回合。"
     },
@@ -71,7 +71,7 @@ window.personaFiles["킹 프로스트"] = {
       "name_jp": "氷雪の裁きⅢ",
       "desc": "방어력이 37.4% 증가한다. 동료에게 실드를 부여할 때 메인 목표는 방어력 25% 증가와 빙결 대미지 15% 증가 두 가지 효과를 획득하며 2턴 동안 지속된다.",
       "desc_en": "Increase Defense by 37.4%. When granting a shield to an ally, increase main target's Defense by 25% and Ice damage by 15% for 2 turns.",
-      "desc_jp": "防御力が３７.４％上昇する。味方にシールドを付与する時、２ターンの間、選択した対象の防御力が２５％上昇し、氷結属性の与ダメージが１５％上昇する。",
+      "desc_jp": "防御力が３７.４%上昇する。味方にシールドを付与する時、２ターンの間、選択した対象の防御力が２５%上昇し、氷結属性の与ダメージが１５%上昇する。",
       "name_cn": "冰封的裁决Ⅲ",
       "desc_cn": "防御力提升37.4%。为队友添加护盾时，主要目标获得防御力提升25%和冰冻伤害提升15%两个效果，持续2回合。"
     }

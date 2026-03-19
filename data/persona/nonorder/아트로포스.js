@@ -29,7 +29,7 @@ window.personaFiles["아트로포스"] = {
       "desc_en": "Increase ailment accuracy by 17%. After using a skill on user, increase Attack by 40% for 1 turn.",
       "desc_jp": "状態異常命中が１７%上昇する。自身にスキルを使用した時、１ターンの間、自身の攻撃力が４０%上昇する。",
       "name_cn": "命运的绞杀",
-      "desc_cn": "效果命中提升17%。以自身为目标释放技能后，使自身攻击力提升40%，效果持续1回合。"
+      "desc_cn": "效果命中提升17%。以自身为目标释放人格面具技能后，使自身攻击力提升40%，效果持续1回合。"
     },
     {
       "name": "운명의 교살Ⅰ",
@@ -39,7 +39,7 @@ window.personaFiles["아트로포스"] = {
       "desc_en": "Increase ailment accuracy by 17%. After using a skill on user, increase Attack by 46% for 1 turn.",
       "desc_jp": "状態異常命中が１７%上昇する。自身にスキルを使用した時、１ターンの間、自身の攻撃力が４６%上昇する。",
       "name_cn": "命运的绞杀Ⅰ",
-      "desc_cn": "效果命中提升17%。以自身为目标释放技能后，使自身攻击力提升46%，效果持续1回合。"
+      "desc_cn": "效果命中提升17%。以自身为目标释放人格面具技能后，使自身攻击力提升46%，效果持续1回合。"
     },
     {
       "name": "운명의 교살Ⅱ",
@@ -49,7 +49,7 @@ window.personaFiles["아트로포스"] = {
       "desc_en": "Increase ailment accuracy by 17%. After using a skill on user, increase Attack by 52% for 1 turn.",
       "desc_jp": "状態異常命中が１７%上昇する。自身にスキルを使用した時、１ターンの間、自身の攻撃力が５２%上昇する。",
       "name_cn": "命运的绞杀Ⅱ",
-      "desc_cn": "效果命中提升17%。以自身为目标释放技能后，使自身攻击力提升52%，效果持续1回合。"
+      "desc_cn": "效果命中提升17%。以自身为目标释放人格面具技能后，使自身攻击力提升52%，效果持续1回合。"
     }
   ],
   "innate_skill": [

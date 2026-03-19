@@ -32,6 +32,8 @@ const DEFAULT_REPORT_JSON_FILE = path.join(PROJECT_ROOT, 'scripts', 'reports', '
 
 const SUPPORTED_LANGS = ['kr', 'en', 'jp', 'cn'];
 const SUPPORTED_PARTS = ['profile', 'innate_skill', 'passive_skill', 'uniqueSkill', 'highlight'];
+const EXCLUDED_PERSONA_KEYS = new Set(['가짜 랑다', '???']);
+const EXCLUDED_TEST_MARKERS = ['AAAAAA=='];
 
 function log(message) {
   process.stdout.write(`${message}\n`);
@@ -210,6 +212,11 @@ function loadRows() {
     if (!Number.isInteger(index)) continue;
     const mapData = mapping[idText] && typeof mapping[idText] === 'object' ? mapping[idText] : {};
     const key = String(mapData.name_kr || '').trim();
+    if (EXCLUDED_PERSONA_KEYS.has(key)) continue;
+    const hasExcludedTestMarker = Object.values(mapData).some((value) => (
+      typeof value === 'string' && EXCLUDED_TEST_MARKERS.some((marker) => value.includes(marker))
+    ));
+    if (hasExcludedTestMarker) continue;
     const api = String(mapData.name_en || '').trim() || `persona-${index}`;
     const resolved = resolveLocalPersona(key);
     const localType = resolved.localType;
@@ -343,7 +350,6 @@ function buildInnatePatch({ lang, ext, localData }) {
 }
 
 function buildPassivePatch({ lang, localType, ext, localData }) {
-  if (lang !== 'cn' && localType !== 'nonorder') return null;
   const localLen = Array.isArray(localData?.passive_skill) ? localData.passive_skill.length : 0;
   if (localLen <= 0) return null;
   return Array.from({ length: localLen }, (_, idx) => {
@@ -380,7 +386,6 @@ function buildPassivePatch({ lang, localType, ext, localData }) {
 }
 
 function buildUniqueSkillPatch({ lang, localType, ext }) {
-  if (lang !== 'cn' && localType !== 'nonorder') return null;
   const fixedByLang = {
     kr: ext.kr?.fixed_skill,
     en: ext.en?.fixed_skill,
@@ -410,7 +415,6 @@ function buildUniqueSkillPatch({ lang, localType, ext }) {
 }
 
 function buildHighlightPatch({ lang, localType, ext }) {
-  if (lang !== 'cn' && localType !== 'nonorder') return null;
   const showtimeByLang = {
     kr: ext.kr?.showtime_skill,
     en: ext.en?.showtime_skill,

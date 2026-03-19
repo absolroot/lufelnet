@@ -29,7 +29,7 @@ window.personaFiles["가네샤"] = {
       "desc_en": "Increase Defense by 31.8%. When using a skill on an ally, increase target's healing received by 8.1% for 1 turn. Increase user's healing received by 4.8%.",
       "desc_jp": "防御力が３１.８%上昇する。味方にスキルを使用した時、１ターンの間、被回復量を８.１%上昇させる。さらに自身の被回復量が４.８%上昇する。",
       "name_cn": "福祉的庇佑",
-      "desc_cn": "防御力提升31.8%。以同伴为目标释放技能后，使其受到的治疗效果提升8.1%，效果持续1回合。并使自身受到的治疗效果额外提升4.8%。"
+      "desc_cn": "防御力提升31.8%。以同伴为目标释放人格面具技能后，使其受到的治疗效果提升8.1%，效果持续1回合。并使自身受到的治疗效果额外提升4.8%。"
     },
     {
       "name": "행복의 비호Ⅰ",
@@ -39,7 +39,7 @@ window.personaFiles["가네샤"] = {
       "desc_en": "Increase Defense by 31.8%. When using a skill on an ally, increase target's healing received by 9.2% for 1 turn. Increase user's healing received by 5.4%.",
       "desc_jp": "防御力が３１.８%上昇する。味方にスキルを使用した時、１ターンの間、被回復量を９.２%上昇させる。さらに自身の被回復量が５.４%上昇する。",
       "name_cn": "福祉的庇佑Ⅰ",
-      "desc_cn": "防御力提升31.8%。以同伴为目标释放技能后，使其受到的治疗效果提升9.2%，效果持续1回合。并使自身受到的治疗效果额外提升5.4%。"
+      "desc_cn": "防御力提升31.8%。以同伴为目标释放人格面具技能后，使其受到的治疗效果提升9.2%，效果持续1回合。并使自身受到的治疗效果额外提升5.4%。"
     },
     {
       "name": "행복의 비호Ⅱ",
@@ -49,7 +49,7 @@ window.personaFiles["가네샤"] = {
       "desc_en": "Increase Defense by 31.8%. When using a skill on an ally, increase target's healing received by 10.3% for 1 turn. Increase user's healing received by 6%.",
       "desc_jp": "防御力が３１.８%上昇する。味方にスキルを使用した時、１ターンの間、被回復量を１０.３%上昇させる。さらに自身の被回復量が６%上昇する。",
       "name_cn": "福祉的庇佑Ⅱ",
-      "desc_cn": "防御力提升31.8%。以同伴为目标释放技能后，使其受到的治疗效果提升10.3%，效果持续1回合。并使自身受到的治疗效果额外提升6%。"
+      "desc_cn": "防御力提升31.8%。以同伴为目标释放人格面具技能后，使其受到的治疗效果提升10.3%，效果持续1回合。并使自身受到的治疗效果额外提升6%。"
     },
     {
       "name": "행복의 비호Ⅲ",
@@ -59,7 +59,7 @@ window.personaFiles["가네샤"] = {
       "desc_en": "Increase Defense by 31.8%. When using a skill on an ally, increase target's healing received by 11.4% for 1 turn. Increase user's healing received by 6.6%.",
       "desc_jp": "防御力が３１.８%上昇する。味方にスキルを使用した時、１ターンの間、被回復量を１１.４%上昇させる。さらに自身の被回復量が６.６%上昇する。",
       "name_cn": "福祉的庇佑Ⅲ",
-      "desc_cn": "防御力提升31.8%。以同伴为目标释放技能后，使其受到的治疗效果提升11.4%，效果持续1回合。并使自身受到的治疗效果额外提升6.6%。"
+      "desc_cn": "防御力提升31.8%。以同伴为目标释放人格面具技能后，使其受到的治疗效果提升11.4%，效果持续1回合。并使自身受到的治疗效果额外提升6.6%。"
     }
   ],
   "innate_skill": [

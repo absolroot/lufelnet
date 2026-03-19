@@ -44,21 +44,21 @@ window.personaFiles["서큐버스"] = {
       "name": "황홀한 속삭임",
       "name_en": "Intoxicated Whisper",
       "name_jp": "酩酊のささやき",
-      "desc": "공격력이 3.5% 증가한다. 동료를 목표로 스킬 시전 시 1턴 동안 동료의 크리티컬 확률이 10.2% 증가한다.",
+      "desc": "공격력이 3.5% 증가한다. 동료를 목표로 페르소나 스킬 시전 시, 동료의 크리티컬 확률이 1턴 동안 10.2% 증가한다.",
       "desc_en": "Increase Attack by 3.5%. After an ally uses a skill, increase their critical rate by 10.2% for 1 turn.",
       "desc_jp": "攻撃力が３.５%上昇する。味方にスキルを使用した時、１ターンの間、対象のクリティカル率を１０.２%上昇させる。",
       "name_cn": "醉人的呢喃",
-      "desc_cn": "攻击力提升3.5%。以同伴为目标释放技能后，提升其10.2%暴击率，效果持续1回合。"
+      "desc_cn": "攻击力提升3.5%。以同伴为目标释放人格面具技能后，提升其10.2%暴击率，效果持续1回合。"
     },
     {
       "name": "황홀한 속삭임Ⅰ",
       "name_en": "Intoxicated Whisper I",
       "name_jp": "酩酊のささやきⅠ",
-      "desc": "공격력이 3.5% 증가한다. 동료를 목표로 스킬 시전 시 1턴 동안 동료의 크리티컬 확률이 11.7% 증가한다.",
+      "desc": "공격력이 3.5% 증가한다. 동료를 목표로 페르소나 스킬 시전 시, 동료의 크리티컬 확률이 1턴 동안 11.7% 증가한다.",
       "desc_en": "Increase Attack by 3.5%. After an ally uses a skill, increase their critical rate by 11.7% for 1 turn.",
       "desc_jp": "攻撃力が３.５%上昇する。味方にスキルを使用した時、１ターンの間、対象のクリティカル率を１１.７%上昇させる。",
       "name_cn": "醉人的呢喃Ⅰ",
-      "desc_cn": "攻击力提升3.5%。以同伴为目标释放技能后，提升其11.7%暴击率，效果持续1回合。"
+      "desc_cn": "攻击力提升3.5%。以同伴为目标释放人格面具技能后，提升其11.7%暴击率，效果持续1回合。"
     }
   ],
   "uniqueSkill": {

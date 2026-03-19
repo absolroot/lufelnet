@@ -2,8 +2,8 @@ window.characterSetting = window.characterSetting || {};
 window.characterSetting["카스미"] = {
     "role": "축복 단일 딜러",
     "video": ["zu8O2gSQrQE", "lWHaLYD1lb4"],
-    "video_en": [""],
-    "video_jp": [""],
+    "video_en": ["ddPOSrXKxQU"],
+    "video_jp": ["ddPOSrXKxQU"],
     "main_revelation": ["지혜", "여정"],
     "sub_revelation": ["미덕", "주권"],
     "sub_revel2": ["공격력", "대미지보너스"],

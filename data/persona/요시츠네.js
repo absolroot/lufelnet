@@ -13,6 +13,12 @@ window.personaFiles["요시츠네"] = {
   "wild_emblem_rainbow": true,
   "best_persona": false,
   "tier": "A",
+  "tier_desc": "원더를 메인 딜러로서 활용할 때 사용된다.",
+  "tier_desc_en": "Adopt this persona when using WONDER as main dealer.",
+  "tier_desc_jp": "WONDERをメインアタッカーとして利用する場合、このペルソナを採用する。",
+  "comment": "",
+  "comment_en": "",
+  "comment_jp": "",
   "added": "KR v2.1.1",
   "cost": null,
   "combination": null,
@@ -42,9 +48,6 @@ window.personaFiles["요시츠네"] = {
       "priority": 3
     }
   ],
-  "comment": "WONDER를 메인 딜러로 사용할 경우 이 페르소나를 채용한다.",
-  "comment_en": "Adopt this persona when using WONDER as main dealer.",
-  "comment_jp": "WONDERをメインアタッカーとして利用する場合、このペルソナを採用する。",
   "passive_priority": 3,
   "passive_skill": [
     {

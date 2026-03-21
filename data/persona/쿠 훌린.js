@@ -12,7 +12,13 @@ window.personaFiles["쿠 훌린"] = {
   "event": true,
   "wild_emblem_rainbow": true,
   "best_persona": false,
-  "tier": "B",
+  "tier": "C",
+  "tier_desc": "원더를 단일 물리 딜러로 활용할 때 채용한다.",
+  "tier_desc_en": "Used when Wonder is being run as a single-target Physical DPS.",
+  "tier_desc_jp": "ワンダーを単体物理アタッカーとして運用する時に採用する。",
+  "comment": "",
+  "comment_en": "",
+  "comment_jp": "",
   "added": "KR v2.2.0",
   "cost": null,
   "combination": null,
@@ -38,9 +44,6 @@ window.personaFiles["쿠 훌린"] = {
       "priority": 0
     }
   ],
-  "comment": "",
-  "comment_en": "",
-  "comment_jp": "",
   "passive_priority": 0,
   "passive_skill": [
     {

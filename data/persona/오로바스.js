@@ -13,6 +13,12 @@ window.personaFiles["오로바스"] = {
   "wild_emblem_rainbow": false,
   "best_persona": false,
   "tier": "A",
+  "tier_desc": "화염 내성 제거 효과라는 고유 스킬을 가지고 있으며, 단일 화염 딜러를 적의 내성에 무관하게 채용할 수 있게 해주는 주요 페르소나로서 활용된다.",
+  "tier_desc_en": "It has a unique skill that removes Fire resistance, making it a key Persona for enabling a single-target Fire attacker regardless of enemy resistance.",
+  "tier_desc_jp": "火炎耐性を解除する固有スキルを持ち、敵の耐性に関係なく単体火炎アタッカーを運用できるようにする重要なペルソナとして使われる。",
+  "comment": "",
+  "comment_en": "",
+  "comment_jp": "",
   "added": "",
   "cost": null,
   "combination": null,
@@ -30,9 +36,6 @@ window.personaFiles["오로바스"] = {
       "priority": 0
     }
   ],
-  "comment": "화염 내성 제거 효과가 필요할 때 채용한다.",
-  "comment_en": "Adopted when Fire Resistance Removal effects are needed.",
-  "comment_jp": "火炎耐性解除効果が必要な時に採用する。",
   "passive_priority": 1,
   "passive_skill": [
     {

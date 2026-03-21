@@ -69,6 +69,40 @@ function triggerPersonaRoutingWhenReady(maxAttempts = 80, delayMs = 100) {
     tryRoute();
 }
 
+function updatePersonaLoadingProgress(loaded, total) {
+    const progressEl = document.getElementById('personaLoadingProgress');
+    if (!progressEl) return;
+
+    const safeTotal = Number(total || 0);
+    if (!Number.isFinite(safeTotal) || safeTotal <= 0) {
+        progressEl.textContent = '';
+        progressEl.hidden = true;
+        return;
+    }
+
+    const safeLoaded = Math.max(0, Math.min(safeTotal, Number(loaded || 0)));
+    progressEl.hidden = false;
+    progressEl.textContent = `${safeLoaded}/${safeTotal}`;
+}
+
+function initializePersonaLoadingProgress() {
+    const initialTotal =
+        (Array.isArray(window.personaOrder) ? window.personaOrder.length : 0) +
+        (Array.isArray(window.personaNonOrder) ? window.personaNonOrder.length : 0);
+
+    updatePersonaLoadingProgress(0, initialTotal);
+
+    window.addEventListener('persona-loader-progress', (event) => {
+        const detail = event && event.detail ? event.detail : {};
+        updatePersonaLoadingProgress(detail.loaded, detail.total);
+    });
+
+    const state = window.__personaLoaderState;
+    if (state && Number(state.total || 0) > 0) {
+        updatePersonaLoadingProgress(state.loadedCount, state.total);
+    }
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
     // 1. Initialize i18n
     if (typeof initPageI18n === 'function') {
@@ -79,6 +113,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     Navigation.load('persona');
     VersionChecker.check();
     updateSEOContent();
+    initializePersonaLoadingProgress();
 
     // 3. Initialize Page Content
     const runInit = () => {
@@ -234,7 +269,7 @@ async function initializePageContent() {
             }
 
             // Tier Labels
-            // Logic: Use `tier` property ("S", "A", "B") directly
+            // Logic: Use `tier` property ("S", "A", "B", "C") directly
             const pTier = personaSource[personaName].tier;
             if (pTier) {
                 const tierLabel = document.createElement('div');
@@ -350,6 +385,7 @@ async function initializePageContent() {
         let uniqueSkillName = persona.uniqueSkill?.name || '';
         let uniqueSkillEffect = persona.uniqueSkill?.desc || persona.uniqueSkill?.effect || '';
         let highlightEffect = persona.highlight?.desc || persona.highlight?.effect || '';
+        let tierDesc = persona.tier_desc;
         let comment = persona.comment;
 
         if (currentLang === 'en') {
@@ -357,12 +393,14 @@ async function initializePageContent() {
             uniqueSkillName = persona.uniqueSkill?.name_en || persona.uniqueSkill?.name || uniqueSkillName;
             uniqueSkillEffect = persona.uniqueSkill?.desc_en || persona.uniqueSkill?.desc || persona.uniqueSkill?.effect_en || persona.uniqueSkill?.effect || uniqueSkillEffect;
             highlightEffect = persona.highlight?.desc_en || persona.highlight?.desc || persona.highlight?.effect_en || persona.highlight?.effect || highlightEffect;
+            tierDesc = persona.tier_desc_en || persona.tier_desc || tierDesc;
             comment = persona.comment_en || persona.comment;
         } else if (currentLang === 'jp') {
             displayName = persona.name_jp || personaName;
             uniqueSkillName = persona.uniqueSkill?.name_jp || persona.uniqueSkill?.name || uniqueSkillName;
             uniqueSkillEffect = persona.uniqueSkill?.desc_jp || persona.uniqueSkill?.desc || persona.uniqueSkill?.effect_jp || persona.uniqueSkill?.effect || uniqueSkillEffect;
             highlightEffect = persona.highlight?.desc_jp || persona.highlight?.desc || persona.highlight?.effect_jp || persona.highlight?.effect || highlightEffect;
+            tierDesc = persona.tier_desc_jp || persona.tier_desc || tierDesc;
             comment = persona.comment_jp || persona.comment;
         }
 
@@ -443,6 +481,53 @@ async function initializePageContent() {
 
         // Acquisition moved to bottom
 
+
+        const tier = persona.tier ? String(persona.tier).trim().toUpperCase() : '';
+        if (tier) {
+            const tierInfo = document.createElement('div');
+            tierInfo.className = 'persona-tier-info';
+            tierInfo.dataset.tier = tier.toLowerCase();
+
+            const tierHeader = document.createElement('div');
+            tierHeader.className = 'persona-tier-header';
+
+            const tierTitle = document.createElement('h3');
+            tierTitle.textContent = window.t('tierSectionTitle', 'TIER');
+
+            const tierBadge = document.createElement('span');
+            tierBadge.className = 'persona-tier-badge';
+            tierBadge.textContent = tier;
+
+            tierHeader.appendChild(tierTitle);
+            tierHeader.appendChild(tierBadge);
+            tierInfo.appendChild(tierHeader);
+
+            if (tierDesc && tierDesc.trim() !== '') {
+                const tierDescP = document.createElement('p');
+                tierDescP.className = 'persona-tier-desc';
+                tierDescP.textContent = tierDesc;
+                tierInfo.appendChild(tierDescP);
+            }
+
+            if (comment && comment.trim() !== '') {
+                const tipWrap = document.createElement('div');
+                tipWrap.className = 'persona-tier-tip';
+
+                const tipLabel = document.createElement('span');
+                tipLabel.className = 'persona-tier-tip-label';
+                tipLabel.textContent = window.t('tipLabel', 'TIP');
+
+                const tipText = document.createElement('p');
+                tipText.className = 'persona-tier-tip-text';
+                tipText.textContent = comment;
+
+                tipWrap.appendChild(tipLabel);
+                tipWrap.appendChild(tipText);
+                tierInfo.appendChild(tipWrap);
+            }
+
+            infoSection.appendChild(tierInfo);
+        }
 
         // Instinct / Passive
         const instinctInfo = document.createElement('div');
@@ -714,16 +799,8 @@ async function initializePageContent() {
             }
         } catch (e) { }
 
-        // Comment
-        if (comment && comment.trim() !== '') {
-            const commentDiv = document.createElement('div');
-            commentDiv.className = 'persona-comment';
-            commentDiv.innerHTML = `<div class="comment-container"><span class="comment-icon">💬</span><p>${comment}</p></div>`;
-            infoSection.appendChild(commentDiv);
-        }
-
         // Update Page Title and Meta Data (SEO)
-        updatePageSEO(personaName, displayName, comment);
+        updatePageSEO(personaName, displayName, tierDesc || comment);
 
         return infoSection;
     }
@@ -1008,6 +1085,7 @@ async function initializePageContent() {
             const orderedS = [];
             const orderedA = [];
             const orderedB = [];
+            const orderedC = [];
             const orderedOthers = [];
             const nonOrdered = [];
 
@@ -1016,7 +1094,7 @@ async function initializePageContent() {
             // Process Strict Order List
             strictOrderList.forEach(name => {
                 if (personaSource[name]) {
-                    const tier = personaSource[name].tier;
+                    const tier = String(personaSource[name].tier || '').trim().toUpperCase();
                     if (tier === 'S') {
                         orderedS.push(name);
                         processed.add(name);
@@ -1026,8 +1104,11 @@ async function initializePageContent() {
                     } else if (tier === 'B') {
                         orderedB.push(name);
                         processed.add(name);
+                    } else if (tier === 'C') {
+                        orderedC.push(name);
+                        processed.add(name);
                     } else {
-                        // No explicit tier (or not S/A/B).
+                        // No explicit tier (or not S/A/B/C).
                         // Do NOT add to processed.
                         // Treat as Non-Ordered (will be picked up by next loop and sorted by Rarity).
                     }
@@ -1049,7 +1130,7 @@ async function initializePageContent() {
                 return a.localeCompare(b);
             });
 
-            newSorted = [...orderedS, ...orderedA, ...orderedB, ...orderedOthers, ...nonOrdered];
+            newSorted = [...orderedS, ...orderedA, ...orderedB, ...orderedC, ...orderedOthers, ...nonOrdered];
 
         } else if (mode === 'rarity') {
             // Rarity Order: Star Descending, then Name

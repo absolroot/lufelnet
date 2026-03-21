@@ -13,6 +13,12 @@ window.personaFiles["바스키"] = {
   "wild_emblem_rainbow": true,
   "best_persona": false,
   "tier": "A",
+  "tier_desc": "지속 대미지를 증가시키는 페르소나로, 본능에 명시된 지속 대미지 증가 효과는 별도 계수로서 작용해 곱연산된다.",
+  "tier_desc_en": "A Persona that increases damage over time. The continuous damage increase listed in its talent functions as a separate multiplier and is multiplicative.",
+  "tier_desc_jp": "持続ダメージを強化するペルソナで、本能に記載された持続ダメージ増加効果は別係数として働き、乗算で計算される。",
+  "comment": "",
+  "comment_en": "",
+  "comment_jp": "",
   "added": "KR v4.2.1",
   "cost": null,
   "combination": null,
@@ -30,9 +36,6 @@ window.personaFiles["바스키"] = {
       "priority": 0
     }
   ],
-  "comment": "",
-  "comment_en": "",
-  "comment_jp": "",
   "passive_priority": 2,
   "passive_skill": [
     {

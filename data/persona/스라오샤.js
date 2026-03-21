@@ -12,7 +12,13 @@ window.personaFiles["스라오샤"] = {
   "event": false,
   "wild_emblem_rainbow": true,
   "best_persona": false,
-  "tier": "A",
+  "tier": "B",
+  "tier_desc": "괴도 카스미 특화 페르소나로 카스미의 주요 딜링 타이밍인 3, 6턴에 고유 스킬을 사용한다.",
+  "tier_desc_en": "A Persona specialized for Kasumi. Use its unique skill on turns 3 and 6, which are Kasumi's main damage turns.",
+  "tier_desc_jp": "かすみ特化のペルソナで、かすみの主な火力ターンである3ターン目と6ターン目に固有スキルを使用する。",
+  "comment": "선봉이 아닌 파티에 속해있기만 해도 『신의 귀』중첩을 획득 가능하다.",
+  "comment_en": "Can gain [God's Ear] stacks just by being in the party, not necessarily in the front line.",
+  "comment_jp": "先鋒でなくてもパーティに属しているだけで『神の耳』重複を獲得可能である。",
   "added": "KR v3.1.0",
   "cost": null,
   "combination": null,
@@ -50,9 +56,6 @@ window.personaFiles["스라오샤"] = {
       "priority": 0
     }
   ],
-  "comment": "선봉이 아닌 파티에 속해있기만 해도 『신의 귀』중첩을 획득 가능하다.",
-  "comment_en": "Can gain [God's Ear] stacks just by being in the party, not necessarily in the front line.",
-  "comment_jp": "先鋒でなくてもパーティに属しているだけで『神の耳』重複を獲得可能である。",
   "passive_priority": 3,
   "passive_skill": [
     {

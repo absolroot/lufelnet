@@ -13,6 +13,12 @@ window.personaFiles["야노식"] = {
   "wild_emblem_rainbow": false,
   "best_persona": true,
   "tier": "S",
+  "tier_desc": "원더의 기본 페르소나로 강화에 따라 등급이 변경된다.\n2턴 간 단일 적에게 『조준』이라는 디버프를 부여한다. P5X에서 방어력 감소는 정말로 높은 가치를 지니는데 방어력을 40% 이상 감소시킬 수 있을 뿐 아니라 받는 공격력 또한 증가시키는 디버프를 자동으로 부여한다는 특장점을 보유하고 있다.\n\n선봉으로 사용하지 않고 교체 후 페르소나 스킬 사용 시 '전투 시작 시 『조준』 획득' 이 발동 돼 『조준』이 적용된다 (최초 1회). 버프도 동일하게 『조준』이 발동되기 때문에 턴 제한이 있는 콘텐츠의 경우 마지막 턴 직전 턴에 야노식을 통해 아군 딜러에게 버프를 사용하고, 적에게는 『조준』을 자동으로 부여하는 형태로 자주 운용된다. 짧은 시간 내에 클리어해야하는 콘텐츠에서도 시작부터 『조준』을 부여하는 것도 유의미하다.",
+  "tier_desc_en": "Wonder's default Persona, and its tier changes as it is enhanced.\nIt applies the debuff [Marked] to a single enemy for 2 turns. Defense reduction is extremely valuable in P5X, and Janosik can reduce Defense by more than 40% while also automatically applying a debuff that increases damage taken, which gives it a major advantage.\n\nIf Janosik is not used in the vanguard and you switch to it mid-battle to use a Persona skill, the 'gain [Marked] at battle start' effect triggers and applies [Marked] once. Buff skills trigger [Marked] the same way, so in turn-limited content it is often used by casting a buff on the ally DPS with Janosik on the turn before the last, while automatically applying [Marked] to the enemy. Starting with [Marked] already applied is also meaningful in content that must be cleared quickly.",
+  "tier_desc_jp": "ワンダーの基本ペルソナであり、強化段階によって評価が変化する。\n単体の敵に2ターンの間『標的』というデバフを付与する。P5Xでは防御力減少の価値が非常に高く、防御力を40%以上下げられるだけでなく、被ダメージ増加デバフまで自動で付与できる点が大きな強みとなる。\n\n先頭で使わず、途中でヤノシークに切り替えてペルソナスキルを使うと、『戦闘開始時に「標的」を獲得』効果が発動して『標的』が1回だけ付与される。バフスキルでも同様に『標的』が発動するため、ターン制限のあるコンテンツでは最終ターンの直前にヤノシークで味方アタッカーへバフを使い、敵には自動で『標的』を付与する運用がよく行われる。短時間でクリアしなければならないコンテンツでも、開幕から『標的』を入れられる点は有効だ。",
+  "comment": "",
+  "comment_en": "※ IV Enhancement was released in KR v4.7",
+  "comment_jp": "※ IV Enhancement was released in KR v4.7",
   "added": "",
   "cost": null,
   "combination": null,
@@ -54,9 +60,6 @@ window.personaFiles["야노식"] = {
       "priority": 0
     }
   ],
-  "comment": "선봉으로 사용하지 않고 교체 후 페르소나 스킬 사용 시 '전투 시작 시 『조준』 획득' 이 발동 돼 『조준』이 적용된다 (최초 1회). 버프도 동일하게 『조준』이 발동된다.",
-  "comment_en": "If you don't use Janosik as the vanguard, when you use the Persona skill after replacing, the '『Marked』 is obtained at the start of battle' is triggered, and the '『Marked』' is applied (only once). The buff also triggers '『Marked』'.\n※ IV Enhancement was released in KR v4.7",
-  "comment_jp": "ヤノシークを先頭にしないで戦闘を開始して、戦闘中にヤノシークでスキル（バフスキルでも可）を利用すると、『ハンティング』の効果で『標的』が付与されます（1回のみ）。\n※ IV Enhancement was released in KR v4.7",
   "passive_priority": 3,
   "passive_skill": [
     {

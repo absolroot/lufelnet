@@ -467,7 +467,6 @@
     charGrid.appendChild(createInputRow('revSubSun', t('koromaruCalcRevSubSun', '계시 부가 옵션 - 일'), 'revSubSun', { iconKey: 'revSubSun' }));
     charGrid.appendChild(createInputRow('revSubMoon', t('koromaruCalcRevSubMoon', '계시 부가 옵션 - 월'), 'revSubMoon', { iconKey: 'revSubMoon' }));
     charGrid.appendChild(createInputRow('revSubSky', t('koromaruCalcRevSubSky', '계시 부가 옵션 - 진'), 'revSubSky', { iconKey: 'revSubSky' }));
-    charGrid.appendChild(createInputRow('revelationSet', t('koromaruCalcRevelationSetBonus', '계시 세트 효과'), 'revelationSet'));
     charSection.appendChild(charGrid);
     contentWrap.appendChild(charSection);
 
@@ -477,6 +476,7 @@
     battleSection.appendChild(battleHeader);
 
     var battleGrid = el('div', 'koro-calc-grid');
+    battleGrid.appendChild(createInputRow('revelationSet', t('koromaruCalcRevelationSetBonus', '계시 세트 효과'), 'revelationSet'));
     battleGrid.appendChild(createInputRow('myPalace', t('gameTerms.myPalace', '마이팰리스'), 'myPalace'));
     battleGrid.appendChild(createInputRow('myPalaceRating', t('gameTerms.myPalaceRating', '마이팰리스 평점'), 'myPalaceRating'));
     battleSection.appendChild(battleGrid);

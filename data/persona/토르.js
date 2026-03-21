@@ -13,6 +13,12 @@ window.personaFiles["토르"] = {
   "wild_emblem_rainbow": false,
   "best_persona": false,
   "tier": "A",
+  "tier_desc": "전격 속성 특화 페르소나로 전격 속성 딜러가 파티에 있을 경우 자주 채용된다.",
+  "tier_desc_en": "A Persona specialized for Electric damage, often used when the party has an Electric DPS.",
+  "tier_desc_jp": "電撃属性に特化したペルソナで、パーティに電撃アタッカーがいる時によく採用される。",
+  "comment": "",
+  "comment_en": "",
+  "comment_jp": "",
   "added": "",
   "cost": null,
   "combination": null,
@@ -42,9 +48,6 @@ window.personaFiles["토르"] = {
       "priority": 0
     }
   ],
-  "comment": "",
-  "comment_en": "",
-  "comment_jp": "",
   "passive_priority": 2,
   "passive_skill": [
     {

@@ -19,10 +19,11 @@ window.I18N_PAGE_PERSONA_JP = {
 
     // Labels
     highlight: "HIGHLIGHT",
+    tierSectionTitle: "TIER",
+    tipLabel: "TIP",
     uniqueSkill: "固有スキル",
     recommendedSkills: "推奨スキル",
     innateSkills: "習得スキル",
-    comment: "コメント",
     emptyStateMessage: "ペルソナを選択して詳細情報を確認してください。",
 
     // Skill Sources

@@ -178,7 +178,7 @@ function bindTooltipElement(el) {
 
 // 툴팁 기능 추가
 function addTooltips() {
-    const descriptions = document.querySelectorAll('.ritual-description, .weapon-skill p, .skill-description, .set-desc, .persona-instinct-info p, .persona-unique-skill-info p, .persona-highlight-info p');
+    const descriptions = document.querySelectorAll('.ritual-description, .weapon-skill p, .skill-description, .set-desc, .persona-tier-info p, .persona-instinct-info p, .persona-unique-skill-info p, .persona-highlight-info p');
     
     descriptions.forEach(desc => {
         let html = desc.innerHTML;

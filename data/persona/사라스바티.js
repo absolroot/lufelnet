@@ -13,7 +13,13 @@ window.personaFiles["사라스바티"] = {
   "wild_emblem_rainbow": false,
   "best_persona": false,
   "added": "",
-  "tier": "B",
+  "tier": "C",
+  "tier_desc": "",
+  "tier_desc_en": "",
+  "tier_desc_jp": "",
+  "comment": "공격 강화는 치료 수치에 적용된다. (영향력이 높지 않아 우선순위는 낮다)",
+  "comment_en": "Attack enhancement applies to healing values. (Low priority due to limited impact)",
+  "comment_jp": "アタックブースタは治療数値に適用される。（影響力が高くないため優先順位は低い）",
   "cost": null,
   "combination": null,
   "recommendSkill": [
@@ -38,9 +44,6 @@ window.personaFiles["사라스바티"] = {
       "priority": 0
     }
   ],
-  "comment": "",
-  "comment_en": "",
-  "comment_jp": "",
   "passive_priority": 2,
   "passive_skill": [
     {
@@ -78,14 +81,14 @@ window.personaFiles["사라스바티"] = {
     "name": "어머니의 음송",
     "name_en": "Mother Goddess' Chant",
     "name_jp": "母神の吟唱",
-    "desc": "2턴 동안 모든 동료가 공격력 19.2/20.2/21.1%+581/719/867의 생명을 회복하고, 모든 동료가 받는 대미지가 8.5/8.9/9.4% 감소한다.",
-    "desc_en": "Restore party's HP equal to 19.2/20.2/21.1% of Attack + 581/719/867. Decrease party's damage taken by 8.5/8.9/9.4% for 2 turns.",
-    "desc_jp": "味方全体のＨＰを攻撃力19.2/20.2/21.1%＋581/719/867回復する。さらに２ターンの間、味方全体の被ダメージを8.5/8.9/9.4%低下させる。",
+    "desc": "2턴 동안 모든 동료가 공격력 19.2/20.2/21.1%+581/719/867의 생명을 회복하고, 모든 동료가 받는 대미지가 8.5%/8.9%/9.4% 감소한다.",
+    "desc_en": "Restore party's HP equal to 19.2/20.2/21.1% of Attack + 581/719/867. Decrease party's damage taken by 8.5%/8.9%/9.4% for 2 turns.",
+    "desc_jp": "味方全体のＨＰを攻撃力19.2/20.2/21.1%＋581/719/867回復する。さらに２ターンの間、味方全体の被ダメージを8.5%/8.9%/9.4%低下させる。",
     "priority": 1,
     "icon": "치료광역",
     "icon_gl": "",
     "name_cn": "神母的吟诵",
-    "desc_cn": "使所有同伴恢复19.2/20.2/21.1%攻击力+581/719/867的生命值，并使所有同伴受到的伤害降低8.5/8.9/9.4%，效果持续2回合。"
+    "desc_cn": "使所有同伴恢复19.2/20.2/21.1%攻击力+581/719/867的生命值，并使所有同伴受到的伤害降低8.5%/8.9%/9.4%，效果持续2回合。"
   },
   "highlight": {
     "name": "HIGHLIGHT",

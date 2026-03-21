@@ -13,6 +13,12 @@ window.personaFiles["세탄타"] = {
   "wild_emblem_rainbow": false,
   "best_persona": false,
   "tier": "B",
+  "tier_desc": "요시츠네가 없을 경우 대용으로 사용한다.",
+  "tier_desc_en": "If Yoshitsune is not available, use this persona as a replacement.",
+  "tier_desc_jp": "ヨシツネがいない場合、このペルソナを代替として使用する。",
+  "comment": "",
+  "comment_en": "",
+  "comment_jp": "",
   "added": "",
   "cost": null,
   "combination": null,
@@ -42,9 +48,6 @@ window.personaFiles["세탄타"] = {
       "priority": 3
     }
   ],
-  "comment": "요시츠네가 없을 경우 대용으로 사용한다.",
-  "comment_en": "If Yoshitsune is not available, use this persona as a replacement.",
-  "comment_jp": "ヨシツネがいない場合、このペルソナを代替として使用する。",
   "passive_priority": 1,
   "passive_skill": [
     {

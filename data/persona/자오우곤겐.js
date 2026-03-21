@@ -13,6 +13,12 @@ window.personaFiles["자오우곤겐"] = {
   "wild_emblem_rainbow": true,
   "best_persona": false,
   "tier": "A",
+  "tier_desc": "페르소나3 주인공 유키 마코토와 함께 출시된 페르소나. 본능 효과도 훌륭하지만 고유스킬이 최대 24%의 크리티컬 효과 증가라는 뛰어난 디버프를 부여한다. 다만 화염 대미지와 더불어 여러 타수의 공격이 필수적으로 요구된다는 점에서 범용성은 부족하다.",
+  "tier_desc_en": "A Persona released alongside Persona 3 protagonist Makoto Yuki. Its talent effect is excellent, but its unique skill is especially notable for applying an outstanding debuff that increases critical damage taken by up to 24%. Its downside is low versatility, because it requires both Fire damage and multiple hits.",
+  "tier_desc_jp": "ペルソナ3主人公の結城理と同時に実装されたペルソナ。本能効果も優秀だが、固有スキルが最大24%の被クリティカルダメージ増加という非常に強力なデバフを付与できる点が特徴。ただし、火炎ダメージに加えて多段ヒットも要求されるため、汎用性はやや低い。",
+  "comment": "고유 스킬로 부여된 디버프는 3턴간 지속되며 트리거로서 작용하고, 3턴에 화염 대미지를 주었을 경우 생긴 크리티컬 효과 증가 디버프는 별개로서 다음 턴(4턴)까지 지속된다.",
+  "comment_en": "The debuff applied by the unique skill lasts 3 turns and serves as the trigger. If Fire damage is dealt on turn 3, the resulting critical damage taken increase is treated as a separate debuff and lasts until the following turn (turn 4).",
+  "comment_jp": "固有スキルで付与されるデバフは3ターン持続し、トリガーとして機能する。3ターン目に火炎ダメージを与えた場合に発生する被クリティカルダメージ増加デバフは別扱いとなり、次のターン（4ターン目）まで持続する。",
   "added": "KR v4.1.1",
   "cost": null,
   "combination": null,
@@ -42,9 +48,6 @@ window.personaFiles["자오우곤겐"] = {
       "priority": 0
     }
   ],
-  "comment": "",
-  "comment_en": "",
-  "comment_jp": "",
   "passive_priority": 3,
   "passive_skill": [
     {

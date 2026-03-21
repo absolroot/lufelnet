@@ -12,7 +12,13 @@ window.personaFiles["야마타노오로치"] = {
   "event": false,
   "wild_emblem_rainbow": false,
   "best_persona": false,
-  "tier": "B",
+  "tier": "C",
+  "tier_desc": "3턴 동안 적이 받는 TECH 대미지를 25% 강화시킨다. 그러나 TECH 대미지를 활용하는 캐릭터가 적어 가능성은 높으나 실질적으로 활용되고 있지는 않다.",
+  "tier_desc_en": "It increases TECH damage taken by enemies by 25% for 3 turns. However, few characters currently make practical use of TECH damage, so despite its potential it is not seeing real use.",
+  "tier_desc_jp": "3ターンの間、敵が受けるTECHダメージを25%増加させる。ただし、現状TECHダメージを実戦的に活用するキャラが少ないため、可能性はあっても実際の採用例はほとんどない。",
+  "comment": "",
+  "comment_en": "",
+  "comment_jp": "",
   "added": "",
   "cost": null,
   "combination": null,
@@ -38,9 +44,6 @@ window.personaFiles["야마타노오로치"] = {
       "priority": 0
     }
   ],
-  "comment": "",
-  "comment_en": "",
-  "comment_jp": "",
   "passive_priority": 1,
   "passive_skill": [
     {
@@ -88,14 +91,14 @@ window.personaFiles["야마타노오로치"] = {
     "name": "광풍 눈",
     "name_en": "Raging Blizzard",
     "name_jp": "狂雪",
-    "desc": "모든 적에게 공격력 100.0/105.0/110.0%의 빙결 속성 대미지를 주고, 2턴 동안 100.0/105.0/110.0%의 기본 확률로 모든 적을 동결 상태에 빠뜨린다.",
-    "desc_en": "Deal Ice damage to all foes equal to 100.0/105.0/110.0% of Attack. 100.0/105.0/110.0% chance to inflict Freeze on the main target for 2 turns.",
-    "desc_jp": "敵全体に攻撃力100.0/105.0/110.0%の氷結属性ダメージを与え、100.0/105.0/110.0%の確率で、２ターンの間、選択した対象を凍結状態にする。",
+    "desc": "모든 적에게 공격력 100.0%/105.0%/110.0%의 빙결 속성 대미지를 주고, 2턴 동안 100.0%/105.0%/110.0%의 기본 확률로 모든 적을 동결 상태에 빠뜨린다.",
+    "desc_en": "Deal Ice damage to all foes equal to 100.0%/105.0%/110.0% of Attack. 100.0%/105.0%/110.0% chance to inflict Freeze on the main target for 2 turns.",
+    "desc_jp": "敵全体に攻撃力100.0%/105.0%/110.0%の氷結属性ダメージを与え、100.0%/105.0%/110.0%の確率で、２ターンの間、選択した対象を凍結状態にする。",
     "priority": 1,
     "icon": "빙결광역",
     "icon_gl": "",
     "name_cn": "狂风雪",
-    "desc_cn": "对所有敌人造成100.0/105.0/110.0%攻击力的冰冻属性伤害，并有100.0/105.0/110.0%基础概率使所有敌人陷入冻结状态，效果持续2回合。"
+    "desc_cn": "对所有敌人造成100.0%/105.0%/110.0%攻击力的冰冻属性伤害，并有100.0%/105.0%/110.0%基础概率使所有敌人陷入冻结状态，效果持续2回合。"
   },
   "highlight": {
     "name": "HIGHLIGHT",

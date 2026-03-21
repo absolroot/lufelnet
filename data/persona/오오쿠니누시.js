@@ -13,6 +13,12 @@ window.personaFiles["오오쿠니누시"] = {
   "wild_emblem_rainbow": false,
   "best_persona": false,
   "tier": "B",
+  "tier_desc": "3턴이라는 긴 시간동안 적이 받는 염동 대미지를 증가시킬 수 있어 염동 속성 딜러와 함께 활용할 수 있다.",
+  "tier_desc_en": "It can increase the Psychokinesis damage enemies take for a long 3 turns, so it can be used alongside a Psychokinesis attacker.",
+  "tier_desc_jp": "3ターンという長時間、敵が受ける念動属性ダメージを増加させられるため、念動アタッカーと組み合わせて使える。",
+  "comment": "",
+  "comment_en": "",
+  "comment_jp": "",
   "added": "",
   "cost": null,
   "combination": null,
@@ -38,9 +44,6 @@ window.personaFiles["오오쿠니누시"] = {
       "priority": 0
     }
   ],
-  "comment": "",
-  "comment_en": "",
-  "comment_jp": "",
   "passive_priority": 2,
   "passive_skill": [
     {

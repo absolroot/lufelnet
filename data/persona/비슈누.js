@@ -13,6 +13,12 @@ window.personaFiles["비슈누"] = {
   "wild_emblem_rainbow": true,
   "best_persona": true,
   "tier": "A",
+  "tier_desc": "강력한 방어력 감소 효과를 지닌 페르소나. 관통이라는 대체 수단 스탯이 패치되면서 활용처가 줄어들었지만 여전히 좋은 페르소나다.",
+  "tier_desc_en": "A Persona with a strong Defense reduction effect. Its use cases declined after Pierce was added as an alternative stat, but it is still a strong Persona.",
+  "tier_desc_jp": "強力な防御力減少効果を持つペルソナ。代替手段となる貫通ステータスが実装されて活躍の場は減ったが、それでも依然として優秀だ。",
+  "comment": "마하갈다인을 통해 풍습 부여 시 광역 방어력 감소 효과를 적용할 수 있다.",
+  "comment_en": "Through Magarudyne, you can apply area-wide defense reduction effects when inflicting Windswept.",
+  "comment_jp": "マハガルダインを通じて風襲付与時に広域防御力減少効果を適用できる。",
   "added": "KR v2.3.2",
   "cost": {
     "blue": 0,
@@ -54,9 +60,6 @@ window.personaFiles["비슈누"] = {
       "priority": 0
     }
   ],
-  "comment": "강력한 방어력 감소 효과를 지닌 페르소나, 마하갈다인을 통해 풍습 부여 시 광역 방어력 감소 효과를 적용할 수 있다.",
-  "comment_en": "Persona with a powerful defense reduction effect. Through Magarudyne, you can apply area-wide defense reduction effects when inflicting Windswept.",
-  "comment_jp": "強力な防御力低下効果を持つペルソナ。マハガルダインを通じて風襲付与時に広域防御力減少効果を適用できる。",
   "passive_priority": 3,
   "passive_skill": [
     {

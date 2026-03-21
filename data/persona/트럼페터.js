@@ -13,6 +13,12 @@ window.personaFiles["트럼페터"] = {
   "wild_emblem_rainbow": true,
   "best_persona": false,
   "tier": "B",
+  "tier_desc": "정신 이상 특화 페르소나로 정신 이상 기믹이 필요할 때 채택한다.",
+  "tier_desc_en": "A Persona specialized in mental ailments, chosen when a mental ailment gimmick is needed.",
+  "tier_desc_jp": "精神異常に特化したペルソナで、精神異常ギミックが必要な時に採用される。",
+  "comment": "",
+  "comment_en": "",
+  "comment_jp": "",
   "added": "KR v4.2.1",
   "cost": null,
   "combination": null,
@@ -26,9 +32,6 @@ window.personaFiles["트럼페터"] = {
       "priority": 3
     }
   ],
-  "comment": "",
-  "comment_en": "",
-  "comment_jp": "",
   "passive_priority": 2,
   "passive_skill": [
     {

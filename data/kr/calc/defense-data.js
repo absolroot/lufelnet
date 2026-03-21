@@ -730,10 +730,18 @@ const defenseCalcData = {
             target: "단일",
             skillIcon: `${BASE_URL}/assets/img/tactic-persona/체르노보그.webp`,
             skillName: "체르노보그 - 고유스킬",
-            options: [],
-            value: 10.0,
+            options: ["1중첩","2중첩","3중첩"],
+            values: {
+                "1중첩": 10.0,
+                "2중첩": 20.0,
+                "3중첩": 30.0
+            },
+            defaultOption: "3중첩",
+            value: 30.0,
             duration: "2턴",
-            note: ""
+            note: "악몽 1중첩 당",
+            note_en: "Nightmare per stack",
+            note_jp: "悪夢 1重ごと"
         },
         {
             id: 11,
@@ -777,6 +785,32 @@ const defenseCalcData = {
             note: "축복 속성 한정",
             note_en: "Bless",
             note_jp: "祝福"
+        },
+        {
+            id: 14,
+            type: "페르소나",
+            target: "광역",
+            skillIcon: `${BASE_URL}/assets/img/tactic-persona/트럼페터.webp`,
+            skillName: "트럼페터",
+            options: [],
+            value: 12.0,
+            duration: "2턴",
+            note: "정신 이상",
+            note_en: "Mental Ailment",
+            note_jp: "精神異常"
+        },
+        {
+            id: 15,
+            type: "페르소나",
+            target: "단일",
+            skillIcon: `${BASE_URL}/assets/img/tactic-persona/티타니아.webp`,
+            skillName: "티타니아",
+            options: [],
+            value: 9.0,
+            duration: "2턴",
+            note: "치료",
+            note_en: "Healing",
+            note_jp: "治療"
         },
     ],
     "코로마루":[

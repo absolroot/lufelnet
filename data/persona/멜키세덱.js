@@ -13,6 +13,12 @@ window.personaFiles["멜키세덱"] = {
   "wild_emblem_rainbow": true,
   "best_persona": false,
   "tier": "A",
+  "tier_desc": "축복 속성 괴도들은 축복 스택에 영향을 받는 경우가 많아 자연스럽게 활용될 수 있다. 최우선적 선택보다는 1군 버프 페르소나들을 다른 파티에 우선적으로 배치했을 때 고려된다.",
+  "tier_desc_en": "Bless attackers often interact with Blessing stacks, so it can slot in naturally with them. It is considered when top-tier support Personas are already committed to other parties rather than as the first option.",
+  "tier_desc_jp": "祝福属性の怪盗は祝印スタックの影響を受けることが多く、自然に組み合わせやすい。最優先候補というよりは、一軍級の支援ペルソナを他パーティに先に回した時に検討される。",
+  "comment": "",
+  "comment_en": "",
+  "comment_jp": "",
   "added": "KR v1.3.1",
   "cost": {
     "blue": 0,
@@ -47,9 +53,6 @@ window.personaFiles["멜키세덱"] = {
       "priority": 0
     }
   ],
-  "comment": "",
-  "comment_en": "",
-  "comment_jp": "",
   "passive_priority": 1,
   "passive_skill": [
     {

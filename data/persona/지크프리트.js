@@ -13,6 +13,12 @@ window.personaFiles["지크프리트"] = {
   "wild_emblem_rainbow": true,
   "best_persona": false,
   "tier": "B",
+  "tier_desc": "원더가 물리 속성 딜러로서 활약할 때 페르소나를 전환하지 않으므로 2, 3번째 자리에 배치한다.",
+  "tier_desc_en": "When Wonder is acting as a Physical DPS, you generally do not switch Personas, so place it in the second or third slot.",
+  "tier_desc_jp": "ワンダーが物理アタッカーとして運用される時はペルソナを切り替えないため、2番目か3番目の枠に配置する。",
+  "comment": "파티에만 지니고 있어도 전투 시작 시 『용혈』을 획득한다",
+  "comment_en": "Gain Dragon's Blood at the start of battle just by having it in the party.",
+  "comment_jp": "パーティーに編成しているだけで、戦闘開始時に『竜血』を獲得する。",
   "added": "KR v3.2.0",
   "cost": null,
   "combination": null,
@@ -22,9 +28,6 @@ window.personaFiles["지크프리트"] = {
       "priority": 0
     }
   ],
-  "comment": "파티에만 지니고 있어도 전투 시작 시 『용혈』을 획득한다",
-  "comment_en": "Gains Dragon Blood at the start of battle just by being in the party",
-  "comment_jp": "パーティーに持っているだけでも戦闘開始時『竜血』を獲得する",
   "passive_priority": 2,
   "passive_skill": [
     {

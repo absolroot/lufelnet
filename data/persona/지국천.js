@@ -13,6 +13,12 @@ window.personaFiles["지국천"] = {
   "wild_emblem_rainbow": false,
   "best_persona": true,
   "tier": "S",
+  "tier_desc": "버프 스킬을 사용할 때 아군에게 추가적인 공격력 버프를 제공 가능하며, 페르소나 스킬에 국한돼있지 않고 HIGLIGHT를 통해서도 본능 효과 발동이 된다. 때문에 단순 HIGHLIGHT만을 위해서 채용되는 경우도 있다.",
+  "tier_desc_en": "When you use a buff skill, it can provide an additional Attack buff to allies, and its talent is not limited to Persona skills; it also triggers through HIGHLIGHT. Because of that, it is sometimes taken just for HIGHLIGHT.",
+  "tier_desc_jp": "バフスキルを使う時、味方に追加の攻撃力バフを付与できる。しかも本能効果はペルソナスキルに限られず、HIGHLIGHTでも発動するため、単にHIGHLIGHT目的で採用されることもある。",
+  "comment": "",
+  "comment_en": "",
+  "comment_jp": "",
   "added": "",
   "cost": null,
   "combination": null,
@@ -30,9 +36,6 @@ window.personaFiles["지국천"] = {
       "priority": 1
     }
   ],
-  "comment": "공격력 버프를 제공하며 HIGHLIGHT를 통해서도 효과가 발동된다.",
-  "comment_en": "Provides consistent ATK buffs to allies, especially effective for low HP allies. HIGHLIGHT also provides ATK buff to allies.",
-  "comment_jp": "味方に一貫したATKバフを提供し、特に低HPの味方に効果的である。HIGHLIGHTも味方にATKバフを提供する。",
   "passive_priority": 3,
   "passive_skill": [
     {

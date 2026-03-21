@@ -13,6 +13,12 @@ window.personaFiles["락슈미"] = {
   "wild_emblem_rainbow": false,
   "best_persona": false,
   "tier": "B",
+  "tier_desc": "『연화』라는 특수 스택을 통한 치료가 특징이다. 스킬의 치료 외에도 추가 치료가 가능하다는 점에서 일종의 오버 힐처럼 작동할 수 있어 체력 회복이 다수 필요한 캐릭터와의 연계가 가능하다.",
+  "tier_desc_en": "Its defining feature is healing through the special Lotus stacks. Since it can provide additional healing beyond the skill's initial heal, it can function like a kind of overheal and works well with characters that need frequent HP recovery.",
+  "tier_desc_jp": "『蓮華』という特殊スタックを通じた回復が特徴。スキル本体の回復とは別に追加回復が可能なため、一種のオーバーヒールのように機能し、HP回復を何度も必要とするキャラと相性が良い。",
+  "comment": "공격 강화는 치료 수치에 적용된다. (영향력이 높지 않아 우선순위는 낮다)",
+  "comment_en": "Attack enhancement applies to healing values. (Low priority due to limited impact)",
+  "comment_jp": "アタックブースタは治療数値に適用される。（影響力が高くないため優先順位は低い）",
   "added": "",
   "cost": null,
   "combination": null,
@@ -38,9 +44,6 @@ window.personaFiles["락슈미"] = {
       "priority": 0
     }
   ],
-  "comment": "",
-  "comment_en": "",
-  "comment_jp": "",
   "passive_priority": 0,
   "passive_skill": [
     {

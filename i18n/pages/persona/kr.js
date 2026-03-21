@@ -19,10 +19,11 @@ window.I18N_PAGE_PERSONA_KR = {
 
     // Labels
     highlight: "HIGHLIGHT",
+    tierSectionTitle: "TIER",
+    tipLabel: "TIP",
     uniqueSkill: "고유 스킬",
     recommendedSkills: "추천 스킬",
     innateSkills: "획득 스킬",
-    comment: "코멘트",
     emptyStateMessage: "페르소나를 선택하여 상세 정보를 확인하세요.",
 
     // Skill Sources

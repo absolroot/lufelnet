@@ -12,7 +12,13 @@ window.personaFiles["아누비스"] = {
   "event": false,
   "wild_emblem_rainbow": false,
   "best_persona": false,
-  "tier": "B",
+  "tier": "C",
+  "tier_desc": "적에게 주원 상태이상을 중첩시키는 파티에 활용된다.",
+  "tier_desc_en": "Used in parties that stack Curse ailments on enemies.",
+  "tier_desc_jp": "敵に呪怨系状態異常を重ねていくパーティで使われる。",
+  "comment": "주원 상태이상 대미지는 만능 대미지에 영향을 받는다.",
+  "comment_en": "Curse ailment damage is affected by Almighty damage.",
+  "comment_jp": "呪怨系状態異常ダメージは万能ダメージの影響を受ける。",
   "added": "",
   "cost": null,
   "combination": null,
@@ -30,9 +36,6 @@ window.personaFiles["아누비스"] = {
       "priority": 3
     }
   ],
-  "comment": "주원 상태이상 대미지는 만능 대미지에 영향을 받는다.",
-  "comment_en": "Curse damage is affected by Almighty damage.",
-  "comment_jp": "呪怨ダメージは万能ダメージに影響を受ける。",
   "passive_priority": 1,
   "passive_skill": [
     {

@@ -13,6 +13,12 @@ window.personaFiles["시바"] = {
   "wild_emblem_rainbow": true,
   "best_persona": false,
   "tier": "A",
+  "tier_desc": "염동 속성 특화 페르소나로 1중첩 효과만으로도 충분한 가치를 지니나 3중첩까지 모두 유용한 효과를 지니고 있다.",
+  "tier_desc_en": "A Persona specialized for Psychokinesis damage. Even its 1-stack effect has enough value on its own, and all the way up to 3 stacks remains useful.",
+  "tier_desc_jp": "念動属性に特化したペルソナで、1スタック効果だけでも十分に価値があり、3スタックまでどれも有用な効果を持っている。",
+  "comment": "",
+  "comment_en": "",
+  "comment_jp": "",
   "added": "KR v2.3.2",
   "cost": null,
   "combination": null,
@@ -46,9 +52,6 @@ window.personaFiles["시바"] = {
       "priority": 0
     }
   ],
-  "comment": "",
-  "comment_en": "",
-  "comment_jp": "",
   "passive_priority": 3,
   "passive_skill": [
     {

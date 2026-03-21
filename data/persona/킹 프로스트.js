@@ -13,6 +13,12 @@ window.personaFiles["킹 프로스트"] = {
   "wild_emblem_rainbow": true,
   "best_persona": false,
   "tier": "B",
+  "tier_desc": "실드와 방어력 증가에 특화된 페르소나로 아군의 생존력을 높인다.",
+  "tier_desc_en": "A Persona specialized in shields and Defense increase, improving the party's survivability.",
+  "tier_desc_jp": "シールドと防御力上昇に特化したペルソナで、味方の生存力を高める。",
+  "comment": "",
+  "comment_en": "",
+  "comment_jp": "",
   "added": "KR v1.3.1",
   "cost": null,
   "combination": null,
@@ -30,9 +36,6 @@ window.personaFiles["킹 프로스트"] = {
       "priority": 1
     }
   ],
-  "comment": "",
-  "comment_en": "",
-  "comment_jp": "",
   "passive_priority": 1,
   "passive_skill": [
     {

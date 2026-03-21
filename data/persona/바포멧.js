@@ -13,6 +13,12 @@ window.personaFiles["바포멧"] = {
   "wild_emblem_rainbow": false,
   "best_persona": false,
   "tier": "A",
+  "tier_desc": "화상 상태인 적이 있을 때 1턴 간 높은 수치의 화염 대미지 증가 디버프를 부여할 수 있다. 화상이라는 선제 조건이 필요하지만 화상을 부여가능한 옵션이 다양해지면서 조건을 만족시키기 쉬워졌다.",
+  "tier_desc_en": "If an enemy is already burned, it can inflict a powerful 1-turn debuff that increases Fire damage taken. It requires Burn as a precondition, but the growing number of ways to inflict Burn has made that condition easier to satisfy.",
+  "tier_desc_jp": "火傷状態の敵がいる時、1ターンの間、高倍率の火炎属性被ダメージ増加デバフを付与できる。火傷という事前条件は必要だが、火傷を付与できる手段が増えたことで条件を満たしやすくなった。",
+  "comment": "이미 화상 상태인 적에게 [극열 : 화염 대미지 or 엘 지하드 : 감전 추가] 본능 효과를 발동한다.",
+  "comment_en": "Triggers the talent effect on enemies already afflicted with Burn with [Red-Hot: Fire damage or Wild Thunder: inflict Shock].",
+  "comment_jp": "すでに火傷状態の敵に対して、[『極熱』: 火炎ダメージ / 『エル・ジハード』: 感電追加]の本能効果を発動する。",
   "added": "",
   "cost": null,
   "combination": null,
@@ -38,9 +44,6 @@ window.personaFiles["바포멧"] = {
       "priority": 0
     }
   ],
-  "comment": "이미 화상 상태인 적에게 [극열 : 화염 대미지 or 엘 지하드 : 감전 추가] 본능 효과를 발동한다.",
-  "comment_en": "Triggers talent effect on enemies already in Burn state with [Red-Hot: Fire damage or Wild Thunder: Shock addition].",
-  "comment_jp": "既に火傷状態の敵に[極熱：火炎ダメージ or エル・ジハード：感電追加]本能効果を発動する。",
   "passive_priority": 2,
   "passive_skill": [
     {

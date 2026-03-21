@@ -13,6 +13,12 @@ window.personaFiles["파르바티"] = {
   "wild_emblem_rainbow": false,
   "best_persona": false,
   "tier": "B",
+  "tier_desc": "치료 효과에 부가적인 버프가 존재하므로, 적의 대미지가 강할 때 치료를 수행하며 아군의 대미지를 상승시키고 싶을 때 활용 가능하다.",
+  "tier_desc_en": "Because its healing comes with an additional buff, it can be used when incoming enemy damage is high and you want your healer to also raise ally damage.",
+  "tier_desc_jp": "回復効果に追加バフも付いているため、敵のダメージが重い場面で回復しつつ、味方の火力も伸ばしたい時に活用できる。",
+  "comment": "하이라이트를 통한 치료에도 본능 효과가 발동된다. 공격 강화는 치료 수치에 적용된다. (영향력이 높지 않아 우선순위는 낮다)",
+  "comment_en": "The talent effect also triggers on healing through HIGHLIGHT. Attack enhancement applies to healing values. (Low priority due to limited impact)",
+  "comment_jp": "HIGHLIGHTによる回復にも本能効果が発動する。アタックブースタは治療数値に適用される。（影響力が高くないため優先順位は低い）",
   "added": "",
   "cost": null,
   "combination": null,
@@ -38,9 +44,6 @@ window.personaFiles["파르바티"] = {
       "priority": 0
     }
   ],
-  "comment": "하이라이트를 통한 치료에도 본능 효과가 발동된다. 공격 강화는 치료 수치에 적용된다. (영향력이 높지 않아 우선순위는 낮다)",
-  "comment_en": "Talent effect also triggers on healing through highlights. Attack enhancement applies to healing values. (Low priority due to limited impact)",
-  "comment_jp": "ハイライトによる治療にも本能効果が発動する。アタックブースタは治療数値に適用される。（影響力が高くないため優先順位は低い）",
   "passive_priority": 2,
   "passive_skill": [
     {

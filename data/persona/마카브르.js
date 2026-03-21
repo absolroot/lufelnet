@@ -13,6 +13,12 @@ window.personaFiles["마카브르"] = {
   "wild_emblem_rainbow": true,
   "best_persona": true,
   "tier": "S",
+  "tier_desc": "한국 서버 기준 4.7버전에 출시된 최초의 가챠 페르소나다. 인게임 재화로도 획득이 가능하고 가격은 비싸지만 값어치를 한다.\n지배(광역) 딜러가 공격할 경우 크리티컬 효과, 크리티컬 확률, 대미지 보너스라는 3가지 능력을 모두 상승시킬 뿐 아니라 희귀한 속성인 별도 계수 [총 대미지 증폭]을 3% 증가시키기 때문에 실질적으로 전체 대미지 3% 상승이라는 효과를 가져온다. 또한 본능, 고유 기술, HIGHLIGHT의 모든 지속 시간이 무려 3턴에 달해 사실상 광역 딜러를 활용할 경우에는 1순위로 추천된다.",
+  "tier_desc_en": "On the KR server, this was the first gacha Persona, released in version 4.7. It can also be obtained with in-game currency, and while expensive, it is worth the cost.\nWhen a Sweeper attacker deals damage, it raises critical damage, critical rate, and damage bonus all at once, and also increases the rare separate multiplier [total damage amplification] by 3%, which effectively translates to about 3% more total damage. In addition, its talent, unique skill, and HIGHLIGHT all last 3 turns, making it a top-priority recommendation for AoE attackers.",
+  "tier_desc_jp": "韓国サーバー基準で4.7バージョンに実装された、初のガチャペルソナ。ゲーム内通貨でも入手でき、価格は高いがそれだけの価値がある。\n支配ロールのアタッカーが攻撃する時、クリティカルダメージ、クリティカル率、ダメージボーナスの3要素を同時に高めるだけでなく、希少な別係数である『総ダメージ増幅』も3%上昇させるため、実質的に総ダメージが3%増える効果を持つ。さらに本能、固有スキル、HIGHLIGHTの持続時間がすべて3ターンと非常に長く、広域アタッカーを使うなら最優先級で推奨される。",
+  "comment": "",
+  "comment_en": "",
+  "comment_jp": "",
   "added": "KR v4.7.1",
   "cost": {
     "blue": 0,
@@ -50,9 +56,6 @@ window.personaFiles["마카브르"] = {
       "priority": 0
     }
   ],
-  "comment": "",
-  "comment_en": "",
-  "comment_jp": "",
   "passive_priority": 3,
   "passive_skill": [
     {

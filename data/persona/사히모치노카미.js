@@ -13,6 +13,12 @@ window.personaFiles["사히모치노카미"] = {
   "wild_emblem_rainbow": true,
   "best_persona": true,
   "tier": "S",
+  "tier_desc": "추가 효과 대미지 증폭이라는 별도 계수를 강화시키는 강력한 고유 스킬을 보유하고 있다. 고유 스킬이 아니더라도 2턴 동안 적이 받는 대미지를 증가시키는 디버프를 부여할 수 있기 때문에 다른 디버프 스킬을 활용할 범용성을 지니고 있다.",
+  "tier_desc_en": "It has a powerful unique skill that strengthens the separate multiplier for Additional Effect damage amplification. Even aside from its unique skill, it can inflict a 2-turn debuff that increases damage taken, giving it good flexibility with other debuff skills.",
+  "tier_desc_jp": "追加効果ダメージ増幅という別係数を強化する、強力な固有スキルを持っている。固有スキル以外でも、2ターンの間敵の被ダメージを増加させるデバフを付与できるため、他のデバフスキルと組み合わせやすい汎用性がある。",
+  "comment": "",
+  "comment_en": "",
+  "comment_jp": "",
   "added": "KR v4.3.2",
   "cost": null,
   "combination": null,
@@ -44,11 +50,12 @@ window.personaFiles["사히모치노카미"] = {
     {
       "name": "음률의 침입",
       "priority": 0
+    },
+    {
+      "name": "해체 역장",
+      "priority": 0
     }
   ],
-  "comment": "",
-  "comment_en": "",
-  "comment_jp": "",
   "passive_priority": 3,
   "passive_skill": [
     {

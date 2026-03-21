@@ -13,6 +13,12 @@ window.personaFiles["유룽"] = {
   "wild_emblem_rainbow": false,
   "best_persona": true,
   "tier": "S",
+  "tier_desc": "감전 효과를 주지 않아도 필드에 존재하는 것만으로도 크리티컬 효과 18%를 올릴 수 있다. 직접 감전 효과를 부여하기 보다는 주요 딜링 타이밍에 버프를 딜러에게 주는 형태로 운용된다.",
+  "tier_desc_en": "Even without inflicting Shock, simply being present on the field can increase Crit Mult by 18%. Rather than applying Shock itself, it is usually used by giving the DPS a buff on the key damage turn.",
+  "tier_desc_jp": "感電を付与しなくても、フィールドにいるだけでクリティカルダメージ倍率を18%上げられる。自ら感電を付与するよりも、主な火力ターンにアタッカーへバフを渡す形で運用されることが多い。",
+  "comment": "",
+  "comment_en": "",
+  "comment_jp": "",
   "added": "",
   "cost": null,
   "combination": null,
@@ -50,9 +56,6 @@ window.personaFiles["유룽"] = {
       "priority": 3
     }
   ],
-  "comment": "감전 효과를 주지 않아도 필드에 존재하는 것만으로도 크리티컬 효과 18%를 올릴 수 있다.",
-  "comment_en": "Even without applying the Shock effect, simply being present on the field can increase Crit Mult by 18%.",
-  "comment_jp": "感電効果を与えなくても、フィールドに存在するだけでCRT倍率を上昇させることができる。",
   "passive_priority": 3,
   "passive_skill": [
     {

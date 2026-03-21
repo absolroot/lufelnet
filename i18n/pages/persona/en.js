@@ -19,10 +19,11 @@ window.I18N_PAGE_PERSONA_EN = {
 
     // Labels
     highlight: "HIGHLIGHT",
+    tierSectionTitle: "TIER",
+    tipLabel: "TIP",
     uniqueSkill: "Unique Skill",
     recommendedSkills: "Recommended Skills",
     innateSkills: "Innate Skills",
-    comment: "Comment",
     emptyStateMessage: "Select a persona to view details.",
 
     // Skill Sources

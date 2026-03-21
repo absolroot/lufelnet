@@ -12,7 +12,13 @@ window.personaFiles["야타가라스"] = {
   "event": false,
   "wild_emblem_rainbow": false,
   "best_persona": false,
-  "tier": "B",
+  "tier": "C",
+  "tier_desc": "원더를 통한 화염 대미지를 부여할 때 채용한다.",
+  "tier_desc_en": "Adopted when granting Fire damage through Wonder.",
+  "tier_desc_jp": "ワンダーによる火炎ダメージを付与する時に採用する。",
+  "comment": "",
+  "comment_en": "",
+  "comment_jp": "",
   "added": "",
   "cost": null,
   "combination": null,
@@ -38,9 +44,6 @@ window.personaFiles["야타가라스"] = {
       "priority": 0
     }
   ],
-  "comment": "원더를 통한 화염 대미지를 부여할 때 채용한다.",
-  "comment_en": "Adopted when granting Fire damage through Wonder.",
-  "comment_jp": "ワンダーによる火炎ダメージを付与する時に採用する。",
   "passive_priority": 1,
   "passive_skill": [
     {

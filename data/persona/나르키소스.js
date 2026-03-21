@@ -13,6 +13,12 @@ window.personaFiles["나르키소스"] = {
   "wild_emblem_rainbow": false,
   "best_persona": false,
   "tier": "B",
+  "tier_desc": "페르소나 노른과 동일한 구성이지만, 대미지 보너스 버프보다는 방어력 감소의 가치가 더 높기 때문에 자주 채용되지 않으며 노른조차 상위 호환인 비슈누가 존재한다. 방어력 감소가 넘치면서 풍습을 부여하거나 또는 바람 속성 공격이 필요할 때 채용될 수 있다.",
+  "tier_desc_en": "Its kit is identical to Norn's, but defense reduction is generally more valuable than a damage bonus buff, so it is rarely chosen, and even Norn is outclassed by Vishnu. It can still be used when you already have enough defense reduction and need Windswept or Wind-element damage.",
+  "tier_desc_jp": "ノルンと同じ構成だが、ダメージボーナスバフより防御力減少の価値が高いため、採用頻度は低い。さらにノルン自体も上位互換のヴィシュヌが存在する。それでも防御力減少が十分に足りていて、風襲付与や疾風属性ダメージが必要な時には採用できる。",
+  "comment": "",
+  "comment_en": "",
+  "comment_jp": "",
   "added": "",
   "cost": null,
   "combination": null,
@@ -38,9 +44,6 @@ window.personaFiles["나르키소스"] = {
       "priority": 0
     }
   ],
-  "comment": "",
-  "comment_en": "",
-  "comment_jp": "",
   "passive_priority": 3,
   "passive_skill": [
     {

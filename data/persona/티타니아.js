@@ -12,7 +12,13 @@ window.personaFiles["티타니아"] = {
   "event": false,
   "wild_emblem_rainbow": false,
   "best_persona": false,
-  "tier": "B",
+  "tier": "C",
+  "tier_desc": "부가적인 효과는 존재하지만 큰 영향을 주지 않는다. 치료 효과를 주면서 원소 이상이 필요한 특수 케이스가 있을 때 채용될 수 있다.",
+  "tier_desc_en": "It has some extra effects, but they do not make a major impact. It can be used in niche cases where you need both healing and an elemental ailment.",
+  "tier_desc_jp": "追加効果はあるものの影響は大きくない。回復をしながら元素異常も必要になる特殊なケースで採用されることがある。",
+  "comment": "공격 강화는 치료 수치에 적용된다. (영향력이 높지 않아 우선순위는 낮다)",
+  "comment_en": "Attack enhancement applies to healing values. (Low priority due to limited impact)",
+  "comment_jp": "アタックブースタは治療数値に適用される。（影響力が高くないため優先順位は低い）",
   "added": "",
   "cost": null,
   "combination": null,
@@ -38,9 +44,6 @@ window.personaFiles["티타니아"] = {
       "priority": 0
     }
   ],
-  "comment": "공격 강화는 치료 수치에 적용된다. (영향력이 높지 않아 우선순위는 낮다)",
-  "comment_en": "Attack enhancement applies to healing values. (Low priority due to limited impact)",
-  "comment_jp": "アタックブースタは治療数値に適用される。（影響力が高くないため優先順位は低い）",
   "passive_priority": 1,
   "passive_skill": [
     {

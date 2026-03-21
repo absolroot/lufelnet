@@ -13,6 +13,12 @@ window.personaFiles["년수"] = {
   "wild_emblem_rainbow": true,
   "best_persona": true,
   "tier": "S",
+  "tier_desc": "적에게 페르소나 스킬을 사용하고 아무 캐릭터나 화염 대미지를 줄 경우 3턴이나 지속되는 받는 대미지 증가 효과를 부여할 수 있다. 또한 화상도 부여하기 때문에 화상이 필요한 캐릭터에게도 유용하다.",
+  "tier_desc_en": "After using a Persona skill on an enemy, if any character deals Fire damage, it can inflict a damage taken increase that lasts as long as 3 turns. It also inflicts Burn, making it useful for characters that require Burn.",
+  "tier_desc_jp": "敵にペルソナスキルを使用した後、誰でも火炎属性ダメージを与えれば、3ターンも持続する被ダメージ増加効果を付与できる。さらに火傷も付与できるため、火傷が必要なキャラにも有用だ。",
+  "comment": "화염 대미지를 준 시점으로부터 3턴 간 지속되는 디버프라 적에게 페르소나 스킬을 사용한 1턴에 화염 대미지를 주지 않고 2턴에 화염 대미지를 줄 경우 4턴까지 받는 대미지 증가를 얻게 된다.\n음률의 침입은 과금 이벤트를 통해 배포된 스킬 카드로 마하라쿤다 스킬 카드로 대체 가능하다.",
+  "comment_en": "Because the debuff lasts for 3 turns from the moment Fire damage is dealt, if you use the Persona skill on turn 1 but do not deal Fire damage until turn 2, the damage taken increase lasts through turn 4.\nSonic Interference is a skill card distributed through paid events and can be replaced with a Marakunda skill card.",
+  "comment_jp": "火炎属性ダメージを与えた時点から3ターン持続するデバフなので、1ターン目に敵へペルソナスキルを使い、2ターン目に火炎属性ダメージを与えた場合は4ターン目まで被ダメージ増加を維持できる。\n『音波干渉』は課金イベントで配布されたスキルカードで、『マハラクンダ』のスキルカードで代用可能。",
   "added": "KR v3.3.1",
   "cost": {
     "blue": 0,
@@ -50,9 +56,6 @@ window.personaFiles["년수"] = {
       "priority": 0
     }
   ],
-  "comment": "음률의 침입은 과금 이벤트를 통해 배포된 스킬 카드로 마하라쿤다로 대체 가능하다.",
-  "comment_en": "Sonic Interference is a skill card distributed through paid events and can be replaced with Marakunda.",
-  "comment_jp": "音波干渉は課金イベントを通じて配布されたスキルカードでマハラクンダで代替可能である。",
   "passive_priority": 3,
   "passive_skill": [
     {

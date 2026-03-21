@@ -272,7 +272,7 @@ class CriticalCalc {
                 .replace(/레벨/g, 'Lv')
                 .replace(/심상\s*코어/g, 'Mindscape Core')
                 .replace(/심상/g, 'MS')
-                .replace(/개조/g, 'Mod')
+                .replace(/개조/g, 'R')
                 .replace(/없음/g, 'None');
         } else if (lang === 'jp') {
             out = out

@@ -1,60 +1,116 @@
 window.I18N_PAGE_TACTIC_MAKER_JP = {
+
     pageTitle: "タクティクスメーカー",
+
     home: "ホーム",
+
     navPath: "タクティクス / タクティクスメーカー",
+
     wonder: "ワンダー",
+
     import: "インポート",
+
     export: "エクスポート",
+
     titlePlaceholder: "タイトルを入力",
+
     partySettings: "パーティ設定",
+
     slot1: "スロット 1",
+
     slot2: "スロット 2",
+
     slot3: "スロット 3",
+
     elucidator: "解明",
+
     slot4: "スロット 4",
+
     dragCharacter: "キャラクターを選択",
+
     roster: "キャラクターリスト",
+
     searchPlaceholder: "名前、コードネーム検索...",
+
     wonderSettings: "主人公設定",
+
     tacticTimeline: "タイムライン",
+
     editMode: "編集モード",
+
     turn: "ターン",
+
     addTurn: "ターン追加",
+
     order: "行動順",
+
     orderLabel: "行動順",
+
     weapon: "武器",
+
     weaponRefinement: "改造",
+
     persona1: "ペルソナ 1",
+
     persona2: "ペルソナ 2",
+
     persona3: "ペルソナ 3",
+
     cancel: "キャンセル",
+
     confirm: "確認",
+
     // New Keys
+
     memo: "メモ",
+
     search: "検索",
+
     searchPlaceholder: "名前、コードネームを検索...",
+
     noTurns: "ターンがありません。「+ ターン追加」ボタンを押してください。",
+
     orderLabel: "行動順",
+
     weaponLabel: "武器",
+
     refinementLabel: "改造",
+
     uniqueSkill: "固有スキル",
+
     personaName: "ペルソナ名",
+
     job: "職業",
+
     element: "属性",
+
     characters: "キャラクター",
+
     addDefaultPatternPrompt: "基本パターンを追加しますか？",
+
     yes: "はい",
+
     no: "いいえ",
+
     autoActionPrompt: "キャラクター選択時に基本パターン追加の確認を表示",
+
     showWonder: "ワンダーを表示",
+
     showParty: "パーティを表示",
+
     roleSelection: "役割選択",
+
     joker: "JOKER",
+
     crow: "CROW",
+
     // Actions
+
     action_attack: "攻撃",
+
     action_guard: "ガード",
     action_gun: "銃撃",
+
     action_highlight: "HIGHLIGHT",
     action_melee: "近接攻撃",
     action_support: "サポートスキル",
@@ -73,84 +129,161 @@ window.I18N_PAGE_TACTIC_MAKER_JP = {
     invalidTacticFileFormat: "有効な戦術JSONファイルを選択してください。",
     captureLibraryMissing: "画像キャプチャライブラリが読み込まれていません。ページを再読み込みしてください。",
     action_skill1: "スキル 1",
+
     action_skill2: "スキル 2",
+
     action_skill3: "スキル 3",
+
     action_unique: "固有スキル",
+
     notSelected: "選択なし",
+
     settings: "設定",
+
     defaultRitual: "デフォルト儀式",
+
     defaultModification: "デフォルト改造",
+
     ritualLabel: "儀式",
+
     modificationLabel: "改造",
+
     autoWonderWeapon: "ワンダー武器自動設定 (反逆/支配)",
+
     selectPersona: "ペルソナ選択",
+
     selectRole: "職業選択",
+
     autoActionPrompt: "自動行動追加プロンプト",
+
     // Action Modal
+
     addAction: "アクション追加",
+
     editAction: "アクション編集",
+
     delete: "削除",
+
     save: "保存",
+
     memoPlaceholder: "メモを入力...",
+
     character: "使用キャラクター",
+
     persona: "ペルソナ",
+
     action: "アクション/スキル",
+
     // Action Types
+
     action_common: "共通アクション",
+
     action_special: "特殊アクション",
+
     action_general: "通常攻撃",
+
     action_oneMore: "ONE MORE",
+
     action_item: "アイテム",
+
     action_theurgia: "テウルギア",
     action_guard: "ガード",
     action_gun: "銃撃",
     action_highlight: "HIGHLIGHT",
+
     // Persona Modal
+
     sort_tier: "ティア順",
+
     sort_rarity: "レアリティ順",
+
     sort_name: "名前順",
+
     filter: "フィルター",
+
     reset: "リセット",
+
     apply: "適用",
+
     total_count: "全 {0}個",
+
     // Turn Actions
+
     desc_duplicate_turn: "ターン複製",
+
     desc_remove_turn: "ターン削除",
+
     desc_drag_reorder: "ドラッグして並べ替え",
+
     confirmDeleteTurn: "このターンを削除しますか？",
+
     confirmDeleteAction: "このアクションを削除しますか？",
+
     // Capture
+
     capture: "キャプチャ",
+
     capturing: "キャプチャ中...",
+
     generatingImage: "画像生成中...",
+
     downloading: "ダウンロード中...",
+
     done: "完了！",
+
     captureFailed: "キャプチャ失敗",
+
     // Share
+
     share: "共有",
+
     sharing: "共有中...",
+
     shareSuccess: "リンクがクリップボードにコピーされました！",
+
     shareFailed: "共有に失敗しました。",
+
     // Upload
+
     upload: "アップロード",
+
     uploadFailed: "アップロードに失敗しました。",
+
     // SEO
+
     pageTitleFull: "タクティクスメーカー - ペルソナ5 ザ・ファントム X LufelNet",
-    pageDescription: "自分だけのタクティックを作成して共有できます。",
+
+    pageDescription: "ペルソナ5 ザ・ファントム X タクティクスメーカー。パーティとスキルの順序を設定して共有しましょう。",
+
     // Auto Save
+
     autoSave: "一時保存",
+
     autoSaveTime: "保存済み: {0}",
+
     resetData: "リセット",
+
     resetConfirm: "すべてのデータをリセットしますか？",
+
     // Tactic Memo
+
     tacticMemoPlaceholder: "タクティクス全体の説明を入力してください...",
+
     // Note Action
+
     noteAction: "メモ",
+
     // Critical Card
+
     criticalRate: "クリ率",
+
     criticalBuff: "バフ",
+
     criticalSelf: "自分",
+
     criticalNoItems: "該当なし",
+
+
 
     needStat: "必要ステ",
     needStatAttrImprove: "ステータス強化",
@@ -183,9 +316,16 @@ window.I18N_PAGE_TACTIC_MAKER_JP = {
     needStatBossBaseDefense: "基本防御",
     pending: "準備中",
     modLabel: "改造",
+
     stampLabel: "刻印",
+
     
+
     // Share function
+
     shareGenerating: "共有リンク生成中...",
+
     shareWarning: "このURLは便宜上の機能であり、破損する可能性があります。<br>安全なバックアップのため、エクスポートまたはサイトアップロード機能をご利用ください。"
+
 };
+

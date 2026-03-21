@@ -318,7 +318,7 @@ class DefenseCalc {
                 .replace(/레벨/g, 'Lv')
                 .replace(/심상\s*코어/g, 'Mindscape Core')
                 .replace(/심상/g, 'MS')
-                .replace(/개조/g, 'Mod')
+                .replace(/개조/g, 'R')
                 .replace(/원소\s*이상/g, 'Elemental Ailment')
                 .replace(/풍습/g, 'Windswept')
                 .replace(/추가\s*효과/g, 'Additional Effect')

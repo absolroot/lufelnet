@@ -1592,6 +1592,8 @@ const defenseCalcData = {
             skillIcon: `${BASE_URL}/assets/img/skill-element/물리.png`,
             skillName: "선봉 돌격",
             options: ["LV10","LV10(황야의 구세주)","LV12","LV12(황야의 구세주)"],
+            options_en: ["LV10","LV10(Desperado)","LV12","LV12(Desperado)"],
+            options_jp: ["LV10","LV10(タフガイ)","LV12","LV12(タフガイ)"],
             values: {
                 "LV10": 30.0,
                 "LV10(황야의 구세주)": 59.9,
@@ -1599,6 +1601,8 @@ const defenseCalcData = {
                 "LV12(황야의 구세주)": 62.4
             },
             defaultOption: "LV12(황야의 구세주)",
+            defaultOption_en: "LV12(Desperado)",
+            defaultOption_jp: "LV12(タフガイ)",
             value: 62.4,
             duration: "2턴",
             note: ""

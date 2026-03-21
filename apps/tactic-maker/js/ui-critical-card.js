@@ -533,7 +533,7 @@ export class NeedStatCardUI {
         const wonderWeapon = wonderConfig.weapon || '';
         const wonderPersonas = wonderConfig.personas || [];
         const personaNames = wonderPersonas.map(p => p?.name).filter(Boolean);
-        const personaSkills = wonderPersonas.flatMap(p => [p?.skill1, p?.skill2, p?.skill3].filter(Boolean));
+        const personaSkills = wonderPersonas.flatMap(p => Array.isArray(p?.skills) ? p.skills.filter(Boolean) : []);
 
         // Get all party members and their revelations (including all slots)
         const party = this.store.state.party || [];
@@ -668,7 +668,7 @@ export class NeedStatCardUI {
         const wonderWeapon = wonderConfig.weapon || '';
         const wonderPersonas = wonderConfig.personas || [];
         const personaNames = wonderPersonas.map(p => p?.name).filter(Boolean);
-        const personaSkills = wonderPersonas.flatMap(p => [p?.skill1, p?.skill2, p?.skill3].filter(Boolean));
+        const personaSkills = wonderPersonas.flatMap(p => Array.isArray(p?.skills) ? p.skills.filter(Boolean) : []);
 
         // Get all party members and their revelations
         const party = this.store.state.party || [];

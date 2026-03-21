@@ -138,7 +138,7 @@ export function getApplicablePenetrateItems(charData, store) {
     const wonderWeapon = wonderConfig.weapon || '';
     const wonderPersonas = wonderConfig.personas || [];
     const personaNames = wonderPersonas.map(p => p?.name).filter(Boolean);
-    const personaSkills = wonderPersonas.flatMap(p => [p?.skill1, p?.skill2, p?.skill3].filter(Boolean));
+    const personaSkills = wonderPersonas.flatMap(p => Array.isArray(p?.skills) ? p.skills.filter(Boolean) : []);
     
     const party = store.state.party || [];
     const partyCharNames = party.map(m => m?.name).filter(Boolean);
@@ -267,7 +267,7 @@ export function getApplicableDefenseReduceItems(charData, store) {
     const wonderWeapon = wonderConfig.weapon || '';
     const wonderPersonas = wonderConfig.personas || [];
     const personaNames = wonderPersonas.map(p => p?.name).filter(Boolean);
-    const personaSkills = wonderPersonas.flatMap(p => [p?.skill1, p?.skill2, p?.skill3].filter(Boolean));
+    const personaSkills = wonderPersonas.flatMap(p => Array.isArray(p?.skills) ? p.skills.filter(Boolean) : []);
     
     const party = store.state.party || [];
     const partyCharNames = party.map(m => m?.name).filter(Boolean);

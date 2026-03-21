@@ -1,13 +1,13 @@
 {
   "data": {
-    "endTime": "2026-03-21 05:00:00",
+    "endTime": "2026-04-20 05:00:00",
     "nodes": {
-      "1601": {
+      "1701": {
         "affix": [
           {
-            "desc": "念动/核热/祝福/诅咒属性队员最终伤害提高60%",
-            "name": "属性磁场Ⅱ",
-            "sn": 4512
+            "desc": "火焰/冰冻/电击/疾风属性队员最终伤害提高60%",
+            "name": "属性磁场Ⅰ",
+            "sn": 4511
           }
         ],
         "award": [
@@ -37,30 +37,45 @@
               "Resistant": [],
               "Weak": []
             },
-            "image": "B-guaiwutouxiang-arahabaki.png",
+            "image": "B-guaiwutouxiang-ganesha.png",
             "level": "66",
-            "name": "躁动的荒霸吐",
-            "skill": "806,1019",
-            "sn": 640311,
+            "name": "躁动的葛内舍",
+            "skill": "604,603,1019",
+            "sn": 640411,
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-girimekara.png",
+            "level": "66",
+            "name": "躁动的基力梅卡拉",
+            "skill": "1026,103",
+            "sn": 640412,
             "stat": {}
           }
         ],
-        "id": 1601,
+        "id": 1701,
         "img": "tianerong-xingpan-point03.png",
         "isActive": true,
-        "name": "监测点·α",
+        "name": "监测点·δ",
         "pos": [
-          0.0,
+          80.0,
           -400.0
         ],
         "unlockCond": null
       },
-      "1602": {
+      "1702": {
         "affix": [
           {
-            "desc": "物理/射击/万能属性队员最终伤害提高60%",
-            "name": "属性磁场Ⅲ",
-            "sn": 4513
+            "desc": "反抗怪盗最终伤害提高60%",
+            "name": "反抗磁场",
+            "sn": 4501
           }
         ],
         "award": [
@@ -86,7 +101,7 @@
           }
         ],
         "connected": [
-          1601
+          1701
         ],
         "enemy": [
           {
@@ -97,45 +112,30 @@
               "Resistant": [],
               "Weak": []
             },
-            "image": "B-guaiwutouxiang-jatayu.png",
+            "image": "B-guaiwutouxiang-thor.png",
             "level": "72",
-            "name": "躁动的佳塔由",
-            "skill": "403,407",
-            "sn": 640721,
-            "stat": {}
-          },
-          {
-            "adapt": {
-              "Absorb": [],
-              "Nullify": [],
-              "Reflect": [],
-              "Resistant": [],
-              "Weak": []
-            },
-            "image": "B-guaiwutouxiang-garuda.png",
-            "level": "72",
-            "name": "躁动的迦楼罗",
-            "skill": "403,406,1085",
-            "sn": 640722,
+            "name": "躁动的托尔",
+            "skill": "307,1006",
+            "sn": 640611,
             "stat": {}
           }
         ],
-        "id": 1602,
+        "id": 1702,
         "img": "tianerong-xingpan-point03.png",
         "isActive": true,
-        "name": "监测点·δ",
+        "name": "监测点·ε",
         "pos": [
-          0.0,
-          -216.0
+          32.0,
+          -240.0
         ],
         "unlockCond": null
       },
-      "1603": {
+      "1703": {
         "affix": [
           {
-            "desc": "队伍中编入2名及以上反抗/支配怪盗时，全体怪盗最终伤害提高60%",
-            "name": "输出磁场",
-            "sn": 4503
+            "desc": "所有角色当前生命值越低，最终伤害越高，40%生命值时获得最大最终伤害加成80%",
+            "name": "坚忍磁场",
+            "sn": 4525
           }
         ],
         "award": [
@@ -161,7 +161,7 @@
           }
         ],
         "connected": [
-          1602
+          1702
         ],
         "enemy": [
           {
@@ -172,11 +172,11 @@
               "Resistant": [],
               "Weak": []
             },
-            "image": "B-guaiwutouxiang-asura.png",
+            "image": "B-guaiwutouxiang-dominion.png",
             "level": "76",
-            "name": "凶恶的阿修罗王",
-            "skill": "607,1023,603,604",
-            "sn": 643021,
+            "name": "凶恶的主天使",
+            "skill": "905,902",
+            "sn": 643011,
             "stat": {}
           },
           {
@@ -187,30 +187,60 @@
               "Resistant": [],
               "Weak": []
             },
-            "image": "B-guaiwutouxiang-lakshmi.png",
+            "image": "B-guaiwutouxiang-power.png",
             "level": "76",
-            "name": "凶恶的吉祥天",
-            "skill": "203,1503,1507",
-            "sn": 643022,
+            "name": "凶恶的能天使",
+            "skill": "707,1008,1406",
+            "sn": 643012,
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-principality.png",
+            "level": "76",
+            "name": "凶恶的权天使",
+            "skill": "1025,456,452",
+            "sn": 643013,
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-archangel.png",
+            "level": "76",
+            "name": "凶恶的大天使",
+            "skill": "1003,1019,1010",
+            "sn": 643014,
             "stat": {}
           }
         ],
-        "id": 1603,
+        "id": 1703,
         "img": "tianerong-xingpan-point01.png",
         "isActive": true,
-        "name": "监测点·ι",
+        "name": "监测点·c",
         "pos": [
-          176.0,
-          -24.0
+          -256.0,
+          -112.0
         ],
         "unlockCond": null
       },
-      "1604": {
+      "1704": {
         "affix": [
           {
-            "desc": "『心之怪盗团』成员最终伤害提升60%",
-            "name": "心之磁场",
-            "sn": 4591
+            "desc": "WONDER最终伤害提高100%",
+            "name": "主角磁场",
+            "sn": 4504
           }
         ],
         "award": [
@@ -235,9 +265,7 @@
             "name": "速通券·日常"
           }
         ],
-        "connected": [
-          1603
-        ],
+        "connected": [],
         "enemy": [
           {
             "adapt": {
@@ -247,11 +275,11 @@
               "Resistant": [],
               "Weak": []
             },
-            "image": "B-guaiwutouxiang-oberon.png",
+            "image": "B-guaiwutouxiang-byako.png",
             "level": "78",
-            "name": "乖戾的奥伯隆",
-            "skill": "303,1404,1021,1016",
-            "sn": 641231,
+            "name": "乖戾的白虎",
+            "skill": "1025,206,203,1316",
+            "sn": 641411,
             "stat": {}
           },
           {
@@ -262,30 +290,50 @@
               "Resistant": [],
               "Weak": []
             },
-            "image": "B-guaiwutouxiang-titania.png",
+            "image": "B-guaiwutouxiang-cerberus.png",
             "level": "78",
-            "name": "乖戾的蒂妲妮亚",
-            "skill": "303,603,1507",
-            "sn": 641232,
+            "name": "乖戾的克鲁贝洛斯",
+            "skill": "103,1006,1411",
+            "sn": 641412,
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-orthos.png",
+            "level": "78",
+            "name": "乖戾的欧特鲁斯",
+            "skill": "102,1014,1404",
+            "sn": 641413,
             "stat": {}
           }
         ],
-        "id": 1604,
+        "id": 1704,
         "img": "tianerong-xingpan-point03.png",
         "isActive": true,
-        "name": "监测点·θ",
+        "name": "监测点·35",
         "pos": [
-          176.0,
-          112.0
+          -240.0,
+          48.00000000000006
         ],
-        "unlockCond": null
+        "unlockCond": [
+          {
+            "type": "clearSpecificNode",
+            "value": 1703
+          }
+        ]
       },
-      "1605": {
+      "1705": {
         "affix": [
           {
-            "desc": "所有怪盗处于额外回合时，最终伤害提高120%",
-            "name": "再动磁场",
-            "sn": 4551
+            "desc": "『S.E.E.S.』成员最终伤害提升60%",
+            "name": "月之磁场",
+            "sn": 4592
           }
         ],
         "award": [
@@ -311,7 +359,7 @@
           }
         ],
         "connected": [
-          1604
+          1703
         ],
         "enemy": [
           {
@@ -322,30 +370,35 @@
               "Resistant": [],
               "Weak": []
             },
-            "image": "B-guaiwutouxiang-koryu.png",
+            "image": "B-guaiwutouxiang-atabaku.png",
             "level": "82",
-            "name": "凶恶的黄龙",
-            "skill": "504,507,1423",
-            "sn": 645111,
+            "name": "凶恶的大元帅明王",
+            "skill": "2444,107,1008",
+            "sn": 645011,
             "stat": {}
           }
         ],
-        "id": 1605,
+        "id": 1705,
         "img": "tianerong-xingpan-point02.png",
         "isActive": true,
-        "name": "监测点·γ",
+        "name": "监测点·α",
         "pos": [
-          336.0,
-          128.0
+          56.00000000000001,
+          256.0
         ],
-        "unlockCond": null
+        "unlockCond": [
+          {
+            "type": "clearNodesCount",
+            "value": 4
+          }
+        ]
       },
-      "1606": {
+      "1706": {
         "affix": [
           {
-            "desc": "所有怪盗受到追加治疗后，最终伤害提升30%，持续2回合，可叠加2层",
-            "name": "治愈磁场",
-            "sn": 4542
+            "desc": "所有敌人每受到1次来自怪盗的伤害，使该名怪盗最终伤害提升4%，持续3回合，可叠加15层",
+            "name": "多重磁场",
+            "sn": 4571
           }
         ],
         "award": [
@@ -371,7 +424,7 @@
           }
         ],
         "connected": [
-          1601
+          1705
         ],
         "enemy": [
           {
@@ -382,75 +435,30 @@
               "Resistant": [],
               "Weak": []
             },
-            "image": "B-guaiwutouxiang-whiterider.png",
+            "image": "B-guaiwutouxiang-zaougongen.png",
             "level": "80",
-            "name": "乖戾的白骑士",
-            "skill": "1103,806",
-            "sn": 641931,
-            "stat": {}
-          },
-          {
-            "adapt": {
-              "Absorb": [],
-              "Nullify": [],
-              "Reflect": [],
-              "Resistant": [],
-              "Weak": []
-            },
-            "image": "B-guaiwutouxiang-blackrider.png",
-            "level": "80",
-            "name": "乖戾的黑骑士",
-            "skill": "1090,1032,807",
-            "sn": 641932,
-            "stat": {}
-          },
-          {
-            "adapt": {
-              "Absorb": [],
-              "Nullify": [],
-              "Reflect": [],
-              "Resistant": [],
-              "Weak": []
-            },
-            "image": "B-guaiwutouxiang-palerider.png",
-            "level": "80",
-            "name": "乖戾的苍白骑士",
-            "skill": "1026,902,803",
-            "sn": 641933,
-            "stat": {}
-          },
-          {
-            "adapt": {
-              "Absorb": [],
-              "Nullify": [],
-              "Reflect": [],
-              "Resistant": [],
-              "Weak": []
-            },
-            "image": "B-guaiwutouxiang-redrider.png",
-            "level": "80",
-            "name": "乖戾的红骑士",
-            "skill": "1010,506",
-            "sn": 641934,
+            "name": "乖戾的藏王权现",
+            "skill": "1009,108",
+            "sn": 641531,
             "stat": {}
           }
         ],
-        "id": 1606,
+        "id": 1706,
         "img": "tianerong-xingpan-point03.png",
         "isActive": true,
-        "name": "监测点·υ",
+        "name": "监测点·β",
         "pos": [
-          -216.0,
-          -175.99999999999997
+          224.00000000000003,
+          400.0
         ],
         "unlockCond": null
       },
-      "1607": {
+      "1707": {
         "affix": [
           {
-            "desc": "所有角色使用神通法后，最终伤害提高60%，持续2回合",
-            "name": "神通磁场",
-            "sn": 4536
+            "desc": "所有怪盗使用普通攻击/枪械攻击时，最终伤害提高100%",
+            "name": "刀枪磁场",
+            "sn": 4534
           }
         ],
         "award": [
@@ -476,7 +484,7 @@
           }
         ],
         "connected": [
-          1606
+          1706
         ],
         "enemy": [
           {
@@ -487,11 +495,11 @@
               "Resistant": [],
               "Weak": []
             },
-            "image": "B-guaiwutouxiang-siva.png",
+            "image": "B-guaiwutouxiang-anubis.png",
             "level": "82",
-            "name": "凶恶的湿婆",
-            "skill": "307,905,508,1104",
-            "sn": 644211,
+            "name": "凶恶的阿努比斯",
+            "skill": "706,806",
+            "sn": 644421,
             "stat": {}
           },
           {
@@ -502,78 +510,56 @@
               "Resistant": [],
               "Weak": []
             },
-            "image": "B-guaiwutouxiang-vishnu.png",
+            "image": "B-guaiwutouxiang-set.png",
             "level": "82",
-            "name": "凶恶的毗湿奴",
-            "skill": "407,905,408,1104",
-            "sn": 644212,
+            "name": "凶恶的赛特",
+            "skill": "103,1102",
+            "sn": 644422,
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-tooto.png",
+            "level": "82",
+            "name": "凶恶的托特",
+            "skill": "901,602",
+            "sn": 644423,
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-horus.png",
+            "level": "82",
+            "name": "凶恶的荷鲁斯",
+            "skill": "905,1082",
+            "sn": 644424,
             "stat": {}
           }
         ],
-        "id": 1607,
+        "id": 1707,
         "img": "tianerong-xingpan-point01.png",
         "isActive": true,
-        "name": "监测点·φ",
-        "pos": [
-          -320.0,
-          -144.0
-        ],
-        "unlockCond": null
-      },
-      "1608": {
-        "affix": [],
-        "award": [],
-        "connected": [
-          1607
-        ],
-        "enemy": [],
-        "id": 1608,
-        "img": "tianerong-xingpan-point03.png",
-        "isActive": false,
-        "name": "监测点·τ",
-        "pos": [
-          -320.0,
-          -40.0
-        ],
-        "unlockCond": null
-      },
-      "1609": {
-        "affix": [],
-        "award": [],
-        "connected": [
-          1605
-        ],
-        "enemy": [],
-        "id": 1609,
-        "img": "tianerong-xingpan-point03.png",
-        "isActive": false,
-        "name": "监测点·λ",
+        "name": "监测点·γ",
         "pos": [
           400.0,
-          16.0
-        ],
-        "unlockCond": null
-      },
-      "1610": {
-        "affix": [],
-        "award": [],
-        "connected": [
-          1609,
-          1603
-        ],
-        "enemy": [],
-        "id": 1610,
-        "img": "tianerong-xingpan-point03.png",
-        "isActive": false,
-        "name": "监测点·κ",
-        "pos": [
-          320.0,
-          -80.0
+          400.0
         ],
         "unlockCond": null
       }
     },
-    "startTime": "2026-02-19 05:00:00"
+    "startTime": "2026-03-21 05:00:00"
   },
   "msg": "OK",
   "status": 0

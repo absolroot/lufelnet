@@ -214,8 +214,10 @@ function addTooltips() {
             //console.log('Clean After text:', cleanAfterText);
             //console.log('Context:', fullContext);
             
+            
+            
             // 바로 뒤에 오는 텍스트 체크
-            if (/^(?:레벨|명|회|중첩|턴|잔|개)/.test(cleanAfterText)) {
+            if (/^(?:레벨|명|회|중첩|턴|잔|개|X|순위)/.test(cleanAfterText)) {
                 //console.log('Matched immediate pattern:', cleanAfterText);
                 return match;
             }

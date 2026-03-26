@@ -14,7 +14,7 @@ window.personaFiles["황룡"] = {
   "best_persona": false,
   "tier": "A",
   "tier_desc": "메로페의 협력자 효과 LV20에서 해금할 수 있다.\n다른 속성의 공격을 동료가 4번 수행하면 아군 동료에게 15%의 공격력 버프를 제공한다. 여러 속성을 기본적으로 사용하는 J&C나 아케치가 아니면 조건 달성이 까다롭다. 반대로 2개의 캐릭터를 활용하는 경우에는 백업 출전 상태로도 자동으로 공격력 15% 버프를 아군에게 부여 가능하기 때문에 꽤나 유용한 선택지가 된다. 직접적으로 교체해 공격으로 사용하는 경우는 크게 없다.",
-  "tier_desc_en": "Can be unlocked from Merope's collaborator effect at LV20.\nIf allies perform attacks of different elements four times, it grants allies a 15% Attack buff. Meeting that condition is difficult unless you are using units like J&C or Akechi, who naturally cover multiple elements. On the other hand, in teams that use two characters, it can automatically grant this 15% Attack buff even from backup deployment, making it a fairly useful option. It is rarely switched in to attack directly.",
+  "tier_desc_en": "Can be unlocked from Merope's synergy effect at LV20.\nIf allies perform attacks of different elements four times, it grants allies a 15% Attack buff. Meeting that condition is difficult unless you are using units like J&C or Akechi, who naturally cover multiple elements. On the other hand, in teams that use two characters, it can automatically grant this 15% Attack buff even from backup deployment, making it a fairly useful option. It is rarely switched in to attack directly.",
   "tier_desc_jp": "メロペの協力者効果LV20で解放できる。\n味方が異なる属性の攻撃を4回行うと、味方に15%の攻撃力バフを付与する。複数属性を自然に扱えるJ&Cや明智でなければ条件達成はやや難しい。一方で、2キャラ編成ではバックアップ出戦の状態でも自動でこの15%攻撃力バフを配れるため、かなり有用な選択肢になる。直接交代して攻撃役として使う場面は多くない。",
   "comment": "",
   "comment_en": "",

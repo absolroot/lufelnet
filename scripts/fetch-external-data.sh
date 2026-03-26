@@ -210,7 +210,7 @@ fetch_and_write_weapon() {
 
 fetch_and_write_wonder_weapon() {
   local region="$1"
-  local url="${BASE_URL}/weapon/${region}/wonder?is_prod=false"
+  local url="${BASE_URL}/weapon/${region}/wonder?source=lufelnet"
   local out="${ROOT_DIR}/weapon/${region}/wonder.json"
   local backup_dir="${ROOT_DIR}/before/weapon/${region}"
   local timestamp

@@ -834,7 +834,7 @@
 
     const bg = document.createElement('div');
     bg.className = 'slide-bg';
-    if (slide.kind !== 'custom') bg.classList.add('slide-bg-diamond');
+    if (slide.kind !== 'custom' || slide.__aprilFools) bg.classList.add('slide-bg-diamond');
     // custom background image takes precedence
     if (slide.kind === 'custom' && slide.customBgImage) {
       const isMobileBg = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
@@ -870,7 +870,9 @@
       if (baseColor) {
         const cStrong = rgba(baseColor, 0.6);
         const cSoft = rgba(baseColor, 0.18);
-        bg.style.background = `radial-gradient(120% 120% at 80% 100%, ${cStrong}, ${cSoft} 60%)`;
+        bg.style.background = slide.__aprilFools
+          ? `radial-gradient(120% 120% at 78% 18%, rgba(255, 214, 153, 0.18), rgba(255, 214, 153, 0) 42%), linear-gradient(135deg, rgba(255, 157, 42, 0.96), rgba(214, 92, 14, 0.94) 56%, rgba(108, 32, 0, 0.95))`
+          : `radial-gradient(120% 120% at 80% 100%, ${cStrong}, ${cSoft} 60%)`;
       }
     }
     el.appendChild(bg);
@@ -891,7 +893,9 @@
     const fivestarText = document.createElement('div');
     fivestarText.className = 'slide-fivestar';
     if (slide.kind === 'custom') {
-      if (slide.subtitle) {
+      if (slide.__aprilFools && slide.customFiveStarText) {
+        fivestarText.textContent = slide.customFiveStarText;
+      } else if (slide.subtitle) {
         const sub = document.createElement('div');
         sub.className = 'slide-subtitle';
         sub.textContent = slide.subtitle;
@@ -912,6 +916,7 @@
       }
     }
 
+    const shouldShowSchedule = slide.kind !== 'custom' || slide.__aprilFools;
     let time, countdown, bodyLine;
     if (slide.kind === 'custom') {
       if (slide.body) {
@@ -919,7 +924,8 @@
         bodyLine.className = 'slide-body';
         bodyLine.textContent = slide.body;
       }
-    } else {
+    }
+    if (shouldShowSchedule) {
       time = document.createElement('div');
       time.className = 'slide-time';
       time.setAttribute('data-slide-index', String(index));
@@ -946,7 +952,19 @@
         setImageLoadingPriority(img, isPrioritySlide);
         img.alt = slide.name || 'banner';
         img.src = slide.customImage;
-        img.className = 'char-img front middle';
+        img.className = slide.__aprilFools ? 'char-img front single-banner' : 'char-img front middle';
+        if (slide.__aprilFools) {
+          const isMobileBanner = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
+          if (isMobileBanner) {
+            img.style.right = '4%';
+            img.style.top = '70%';
+            img.style.transform = 'translateY(-58%) scale(1.72)';
+          } else {
+            img.style.right = '16%';
+            img.style.top = '66%';
+            img.style.transform = 'translateY(-50%) scale(1.12)';
+          }
+        }
         // Apply JSON-driven image offset if provided (px)
         if (slide.customImgOffset) {
           const o = slide.customImgOffset;
@@ -1327,6 +1345,13 @@
       });
       for (let i = withoutOrder.length - 1; i >= 0; i--) {
         slides.unshift(withoutOrder[i]);
+      }
+
+      const aprilFoolsSlide = (window.LufelAprilFools && typeof window.LufelAprilFools.getHomeCarouselSlide === 'function')
+        ? window.LufelAprilFools.getHomeCarouselSlide(rawLang, state.region)
+        : null;
+      if (aprilFoolsSlide) {
+        slides.unshift(aprilFoolsSlide);
       }
 
       // If no slides available, show maintenance slide

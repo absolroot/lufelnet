@@ -846,10 +846,14 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
 
             // Character image (lazy loaded via IntersectionObserver)
             const img = document.createElement('img');
+            const defaultCharacterCardSrc = `{{ site.baseurl }}/assets/img/character-cards/${characterName}.webp`;
+            const aprilFoolsCharacterCardSrc = (window.LufelAprilFools && typeof window.LufelAprilFools.getCharacterCardSrc === 'function')
+                ? window.LufelAprilFools.getCharacterCardSrc(characterName, defaultCharacterCardSrc)
+                : defaultCharacterCardSrc;
             img.src = `{{ site.baseurl }}/assets/img/character-cards/card_skeleton.webp`;
             img.alt = characterName;
             img.className = 'character-img';
-            img.dataset.src = `{{ site.baseurl }}/assets/img/character-cards/${characterName}.webp`;
+            img.dataset.src = aprilFoolsCharacterCardSrc;
 
             // Element icon
             const elementIcon = document.createElement('img');

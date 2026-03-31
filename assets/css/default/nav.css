@@ -92,14 +92,16 @@
     flex-shrink: 0;
 }
 
-.logo-container img[src*="lufel.webp"] {
+.logo-container img[src*="lufel.webp"],
+.logo-container img[data-april-fools-role="logo-mark"] {
     height: 40px;
     width: auto;
     filter: grayscale(100%) contrast(1.5);
     filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.9));
 }
 
-.logo-container img[src*="lufelnet.png"] {
+.logo-container img[src*="lufelnet.png"],
+.logo-container img[data-april-fools-role="logo-text"] {
     margin-top: 0px;
     width: 110px;
     object-fit: contain;

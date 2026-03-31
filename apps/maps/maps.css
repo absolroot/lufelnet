@@ -65,14 +65,16 @@ body {
   opacity: 0.8;
 }
 
-.maps-logo-container img[src*="lufel.webp"] {
+.maps-logo-container img[src*="lufel.webp"],
+.maps-logo-container img[data-april-fools-role="logo-mark"] {
   height: 32px;
   width: auto;
   filter: grayscale(100%) contrast(1.5);
   filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.9));
 }
 
-.maps-logo-container img[src*="lufelnet.png"] {
+.maps-logo-container img[src*="lufelnet.png"],
+.maps-logo-container img[data-april-fools-role="logo-text"] {
   width: 90px;
   object-fit: contain;
   filter: drop-shadow(0px 2px 0px rgba(255, 255, 255, 0.9)) invert(1);
@@ -153,14 +155,16 @@ body {
   gap: 6px;
 }
 
-.mobile-breadcrumb-logo img[src*="lufel.webp"] {
+.mobile-breadcrumb-logo img[src*="lufel.webp"],
+.mobile-breadcrumb-logo img[data-april-fools-role="logo-mark"] {
   height: 20px;
   width: auto;
   filter: grayscale(100%) contrast(1.5);
   filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.9));
 }
 
-.mobile-breadcrumb-logo img[src*="lufelnet.png"] {
+.mobile-breadcrumb-logo img[src*="lufelnet.png"],
+.mobile-breadcrumb-logo img[data-april-fools-role="logo-text"] {
   width: 55px;
   object-fit: contain;
   filter: drop-shadow(0px 2px 0px rgba(255, 255, 255, 0.9)) invert(1);

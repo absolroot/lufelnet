@@ -224,16 +224,58 @@
     try { img.fetchPriority = 'auto'; } catch (_) { img.setAttribute('fetchpriority', 'auto'); }
   }
 
+  function isVideoAssetUrl(url) {
+    return /\.(mp4|webm|ogg)([?#].*)?$/i.test(String(url || ''));
+  }
+
+  function getCoverOffsets(offsetSource) {
+    if (!offsetSource) return { offsetX: 0, offsetY: 0 };
+    const right = Number.isFinite(offsetSource.right) ? offsetSource.right : 0;
+    const left = Number.isFinite(offsetSource.left) ? offsetSource.left : 0;
+    const bottom = Number.isFinite(offsetSource.bottom) ? offsetSource.bottom : 0;
+    const top = Number.isFinite(offsetSource.top) ? offsetSource.top : 0;
+    return {
+      offsetX: right - left,
+      offsetY: bottom - top,
+    };
+  }
+
   function getLcpCandidateImageUrl(slide) {
     if (!slide) return null;
     if (slide.kind === 'custom') {
-      return slide.customImage || slide.customBgImage || null;
+      const customBgImage = isVideoAssetUrl(slide.customBgImage) ? null : slide.customBgImage;
+      return slide.customImage || customBgImage || null;
     }
     const isMobile = window.matchMedia && window.matchMedia('(max-width: 520px)').matches;
     const visualCandidates = (slide.fiveStar || []).slice(0, isMobile ? 2 : 3);
     if (!visualCandidates.length) return null;
     const firstVisual = (visualCandidates.length === 3) ? visualCandidates[1] : visualCandidates[0];
     return firstVisual && firstVisual.name ? getCharacterImageUrl(firstVisual.name) : null;
+  }
+
+  function applyCustomSlideVideoBackground(bg, slide, isMobileBg) {
+    if (!bg || !slide || !isVideoAssetUrl(slide.customBgImage)) return false;
+    const offsetSource = (isMobileBg && slide.customBgOffsetMobile) ? slide.customBgOffsetMobile : slide.customBgOffset;
+    const { offsetX, offsetY } = getCoverOffsets(offsetSource);
+    const video = document.createElement('video');
+    video.className = 'slide-bg-video';
+    video.src = slide.customBgImage;
+    video.autoplay = true;
+    video.muted = true;
+    video.loop = true;
+    video.playsInline = true;
+    video.preload = 'metadata';
+    video.tabIndex = -1;
+    video.setAttribute('aria-hidden', 'true');
+    video.setAttribute('disablepictureinpicture', '');
+    video.style.objectPosition = `calc(50% + ${offsetX}px) calc(50% + ${offsetY}px)`;
+    bg.appendChild(video);
+    if (isMobileBg) {
+      const overlay = document.createElement('div');
+      overlay.className = 'slide-bg-video-overlay';
+      bg.appendChild(overlay);
+    }
+    return true;
   }
 
   function updateLcpPreload(url) {
@@ -730,6 +772,8 @@
       .carousel-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.5); cursor: pointer; }
       .carousel-dot.active { background: #fff; }
       .slide-bg { position: absolute; inset: 0; background: radial-gradient(120% 120% at 80% 100%, rgba(255,255,255,0.08), rgba(255,255,255,0.02) 60%, rgba(0,0,0,0) 100%); }
+      .slide-bg-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      .slide-bg-video-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, #1111118c 0%, transparent 50%); pointer-events: none; }
       .slide-bg.slide-bg-diamond::after { content: ''; position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='45'%3E%3Cpolygon points='15,0 30,22.5 15,45 0,22.5' fill='%23ffffff'/%3E%3C/svg%3E"); background-size: 24px 36px; background-repeat: repeat; pointer-events: none; opacity: 0.01; }
       .slide-link { position: absolute; inset: 0; z-index: 6; text-decoration: none; pointer-events: auto; }
       .slide-left, .slide-right { position: relative; z-index: 4; }
@@ -838,7 +882,10 @@
     // custom background image takes precedence
     if (slide.kind === 'custom' && slide.customBgImage) {
       const isMobileBg = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
-      let bgImageCss = `url(${slide.customBgImage})`;
+      if (applyCustomSlideVideoBackground(bg, slide, isMobileBg)) {
+        // video backgrounds are rendered with a dedicated media element
+      } else {
+        let bgImageCss = `url(${slide.customBgImage})`;
       // 모바일 커스텀 슬라이드에는 반투명 그라디언트 오버레이 추가
       if (isMobileBg) {
         // 상단 50% 정도까지만 그라디언트가 보이도록 중간에 투명 처리
@@ -864,6 +911,7 @@
       // Set axis-specific properties as well for broader browser consistency
       bg.style.backgroundPositionX = `calc(50% + ${offsetX}px)`;
       bg.style.backgroundPositionY = `calc(50% + ${offsetY}px)`;
+      }
     } else {
       // color-based gradient if available
       const baseColor = getSlideBaseColor(slide);
@@ -1196,12 +1244,30 @@
     }
   }
 
+  function syncSlideVideoPlayback(root) {
+    if (!root) return;
+    const slides = root.querySelectorAll('.carousel-slide');
+    slides.forEach((slideEl, slideIndex) => {
+      const video = slideEl.querySelector('.slide-bg-video');
+      if (!(video instanceof HTMLVideoElement)) return;
+      if (slideIndex === state.currentIndex) {
+        const playPromise = video.play();
+        if (playPromise && typeof playPromise.catch === 'function') {
+          playPromise.catch(() => { });
+        }
+        return;
+      }
+      video.pause();
+    });
+  }
+
   function updateTrackPosition(track) {
     const offsetX = -state.currentIndex * 100;
     track.style.transform = `translateX(${offsetX}%)`;
     // Update dots active
     const root = document.getElementById(ROOT_ID);
     if (!root) return;
+    syncSlideVideoPlayback(root);
     const dots = root.querySelectorAll('.carousel-dot');
     dots.forEach((d, i) => d.classList.toggle('active', i === state.currentIndex));
   }

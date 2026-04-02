@@ -283,6 +283,21 @@ const penetrateData = {
             note_jp: "極熱 + 원소 이상 3"
         }
     ],
+    "모토하·청광": [
+        {
+            id: "motoha-sunny-passive1",
+            type: "패시브",
+            target: "자신",
+            skillIcon: `${BASE_URL}/assets/img/skill-element/패시브.png`,
+            skillName: "유금",
+            options: [],
+            value: 15.0,
+            duration: "2턴",
+            note: "스킬3",
+            note_en: "S3",
+            note_jp: "スキル3"
+        }
+    ],
     "쇼키·암야":[
         {
             id: "showki-notte1",
@@ -787,7 +802,7 @@ const defenseCalcData = {
             note_jp: "祝福"
         },
         {
-            id: 14,
+            id: "persona-mental-ailment",
             type: "페르소나",
             target: "광역",
             skillIcon: `${BASE_URL}/assets/img/tactic-persona/트럼페터.webp`,
@@ -800,7 +815,7 @@ const defenseCalcData = {
             note_jp: "精神異常"
         },
         {
-            id: 15,
+            id: "persona-healing",
             type: "페르소나",
             target: "단일",
             skillIcon: `${BASE_URL}/assets/img/tactic-persona/티타니아.webp`,
@@ -812,6 +827,35 @@ const defenseCalcData = {
             note_en: "Healing",
             note_jp: "治療"
         },
+    ],
+    "아란": [
+        {
+            id: "aran-sinful-act",
+            type: "스킬1",
+            target: "단일/광역",
+            skillIcon: `${BASE_URL}/assets/img/skill-element/주원.png`,
+            skillName: "금전의 식흔",
+            options: [
+            "LV10 4중첩", "LV10 6중첩(의식2)",
+            "LV10+5 4중첩", "LV10+5 6중첩(의식2)",
+            "LV12 4중첩", "LV12 6중첩(의식2)",
+            "LV12+5 4중첩", "LV12+5 6중첩(의식2)"
+            ],
+            values: {
+            "LV10 4중첩": 62.4,
+            "LV10 6중첩(의식2)": 93.6,
+            "LV10+5 4중첩": 68.8,
+            "LV10+5 6중첩(의식2)": 103.2,
+            "LV12 4중첩": 65.2,
+            "LV12 6중첩(의식2)": 97.8,
+            "LV12+5 4중첩": 71.6,
+            "LV12+5 6중첩(의식2)": 107.4
+            },
+            defaultOption: "LV12+5 6중첩(의식2)",
+            value: 107.4,
+            duration: "2턴",
+            note: "스킬1/스킬2"
+        }
     ],
     "코로마루":[
         {

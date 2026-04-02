@@ -1,4 +1,25 @@
 [
+    {
+      "kind": "custom",
+      "order": 0,
+      "title": "V5.0 기억과 진실",
+      "title_en": "V5.0 Memory and Truth",
+      "title_jp": "V5.0 記憶と真実",
+      "body": "메인 스토리 업데이트 (04.09)",
+      "body_en": "Main story update",
+      "body_jp": "メインストーリーの更新",
+      "background_image": "/assets/img/home/chapter5.mp4",
+      "background_bottom": 125,
+      "background_bottom_mobile": 0,
+      "color": "#e91e63",
+      "link": "",
+      "visible_langs": ["kr","en","jp"],
+      "regions": [
+        "kr",
+        "cn",
+        "tw"
+      ]
+    },
   {
     "kind": "custom",
     "order": 0,

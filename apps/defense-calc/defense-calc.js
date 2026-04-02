@@ -447,7 +447,7 @@ class DefenseCalc {
         this.idToReduceItem = new Map();
 
         // Helper to push items and index by id
-        const absorb = (groupsObj, flat, idMap) => {
+        const absorb = (groupsObj, flat, idMap, category) => {
             Object.keys(groupsObj).forEach(groupName => {
                 const list = groupsObj[groupName] || [];
                 list.forEach(item => {
@@ -456,13 +456,18 @@ class DefenseCalc {
                     // if (!item.charName) item.charName = groupName !== '계시' && groupName !== '원더' ? groupName : '';
                     if (!item.charImage && item.charName) item.charImage = `${item.charName}.webp`;
                     flat.push(item);
-                    if (item.id !== undefined) idMap.set(item.id, item);
+                    if (item.id !== undefined) {
+                        if (idMap.has(item.id)) {
+                            console.warn(`[defense-calc] Duplicate ${category} item id detected:`, item.id, groupName, item);
+                        }
+                        idMap.set(item.id, item);
+                    }
                 });
             });
         };
 
-        absorb(this.penetrateGroups, this.penetrateFlat, this.idToPenetrateItem);
-        absorb(this.reduceGroups, this.reduceFlat, this.idToReduceItem);
+        absorb(this.penetrateGroups, this.penetrateFlat, this.idToPenetrateItem, 'pierce');
+        absorb(this.reduceGroups, this.reduceFlat, this.idToReduceItem, 'defense');
     }
 
     initializeTable() {

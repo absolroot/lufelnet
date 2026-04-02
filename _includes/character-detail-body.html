@@ -1208,7 +1208,7 @@
             const personaFile = `${characterName} - ${basicCharacter.persona}.webp`;
             const thiefSrc = `{{ site.baseurl }}/assets/img/character-detail/${thiefFile}`;
             const personaSrc = `{{ site.baseurl }}/assets/img/character-detail/${personaFile}`;
-            if (thiefEl) { thiefEl.setAttribute('src', thiefSrc); thiefEl.setAttribute('fetchpriority', 'high'); thiefEl.setAttribute('loading', 'eager'); }
+            if (thiefEl) { thiefEl.setAttribute('src', thiefSrc); thiefEl.setAttribute('fetchpriority', 'high'); thiefEl.setAttribute('loading', 'eager'); thiefEl.setAttribute('data-character', characterName); }
             if (personaEl) { personaEl.setAttribute('src', personaSrc); personaEl.setAttribute('fetchpriority', 'high'); personaEl.setAttribute('loading', 'eager'); }
             const preload1 = document.createElement('link');
             preload1.rel = 'preload';

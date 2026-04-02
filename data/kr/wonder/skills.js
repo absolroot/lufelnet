@@ -2531,6 +2531,18 @@ const personaSkillList = {
         "target": "전체",
         "icon": "버프광역"
     },
+    "세계수의 진화": {
+        "name_jp": "世界樹の進化",
+        "name_en": "Yggdrasil Evolution",
+        "name_cn": "世界树的衍化",
+        "description": "6턴 동안 목표 동료 1명의 공격력이 12.0%/12.6%/13.2% 증가하고, 대미지가 12.0%/12.6%/13.2% 증가한다. 매 턴이 지날 때마다 추가로 크리티컬 효과를 8% 획득한다(최대 24%). 스킬 시전 후, 원더는 추가 턴을 1회 획득한다. (쿨타임: 6턴)",
+        "description_jp": "6ターンの間、味方1体の攻撃力が12.0%/12.6%/13.2%上昇し、与ダメージが12.0%/12.6%/13.2%上昇する。1ターン経過するごとに、追加でCRT倍率を8%獲得する(最大24%まで)。スキル発動後、WONDERは追加ターン를1回獲得する。(クールタイム：6ターン)",
+        "description_en": "Increase 1 ally's ATK and DMG by 12.0%/12.6%/13.2% for 6 turns. Each turn, additionally gain 8% Crit Effect (up to 24%). After use, WONDER gains 1 extra turn. (6-turn Cooldown)",
+        "description_cn": "使1名同伴攻击力提升12.0%/12.6%/13.2%，伤害提升12.0%/12.6%/13.2%，持续6回合，每经过1个回合，额外使其获得8%暴击效果，上限24%。使用该技能后，WONDER获得1个额外回合。(冷却时间：6回合)",
+        "type": "지원",
+        "target": "단일",
+        "icon": "버프"
+    },
     "응집": {
         "name_jp": "凝結",
         "name_en": "Cohesion",

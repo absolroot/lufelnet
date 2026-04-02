@@ -1,5 +1,6 @@
 function getWonderWeaponOptions() {
   return [
+    "카오스 헥스",
     "엔트로피·제로",
     "천상의 별",
     "태고의 역장",
@@ -19,6 +20,27 @@ function getWonderWeaponOptions() {
 }
 
 window.matchWeapons = {
+  "카오스 헥스": {
+    "element": "총격",
+    "name_en": "Chaos Hex",
+    "name_jp": "カオスヘックス",
+    "where_to_get": "Shop",
+    "release": "모토하·청광",
+    "order": "16",
+    "effect": "공격력이 28.0%/32.7%/37.3%/42.0%/46.7%/51.3%/56.0% 증가한다.\n원더가 페르소나 스킬 또는 총기 공격 사용 후, 1턴 동안 『치명적인 본능』을 획득한다.\n『치명적인 본능』: 턴 시작 시 탄환이 자동으로 가득 차며, 총기 공격 및 총격 속성 페르소나 스킬이 반드시 크리티컬이 된다. 주는 대미지가 9.5%/11.1%/12.7%/14.2%/15.8%/17.4%/19.0% 증가하고, 총기 공격이 주는 대미지가 추가로 9.5%/11.1%/12.7%/14.2%/15.8%/17.4%/19.0% 증가한다.\n원더가 『치명적인 본능』을 보유한 동안, 모든 동료의 공격력이 11.0%/12.8%/14.7%/16.5%/18.3%/20.2%/22.0% 증가하고, 총격 속성 대미지를 줄 때 크리티컬 효과가 10.0%/11.7%/13.3%/15.0%/16.7%/18.3%/20.0% 증가한다.",
+    "effect_en": "Increase Attack by 28.0%/32.7%/37.3%/42.0%/46.7%/51.3%/56.0%.\nAfter WONDER uses a Persona skill or Gun attack, gain [Deadly Instinct] for 1 turn.\n[Deadly Instinct]: At the start of the turn, automatically reload all bullets, and Gun attacks plus Gunshot Persona skills are guaranteed to crit. Damage dealt increases by 9.5%/11.1%/12.7%/14.2%/15.8%/17.4%/19.0%, and Gun attack damage additionally increases by 9.5%/11.1%/12.7%/14.2%/15.8%/17.4%/19.0%.\nWhile WONDER has [Deadly Instinct], all allies' Attack increases by 11.0%/12.8%/14.7%/16.5%/18.3%/20.2%/22.0%, and Critical Damage when dealing Gunshot damage increases by 10.0%/11.7%/13.3%/15.0%/16.7%/18.3%/20.0%.",
+    "effect_jp": "攻撃力が28.0%/32.7%/37.3%/42.0%/46.7%/51.3%/56.0%上昇する。\n主人公がペルソナスキルまたは銃撃攻撃を行った後、1ターンの間『致命本能』を獲得する。\n『致命本能』：ターン開始時に弾丸が自動で最大になり、銃撃攻撃および銃撃属性のペルソナスキルが必ずクリティカルになる。与ダメージが9.5%/11.1%/12.7%/14.2%/15.8%/17.4%/19.0%上昇し、銃撃攻撃による与ダメージがさらに9.5%/11.1%/12.7%/14.2%/15.8%/17.4%/19.0%上昇する。\n主人公が『致命本能』を所持している間、味方全体の攻撃力が11.0%/12.8%/14.7%/16.5%/18.3%/20.2%/22.0%上昇し、銃撃属性ダメージを与える時のクリティカル効果が10.0%/11.7%/13.3%/15.0%/16.7%/18.3%/20.0%上昇する。",
+    "shard": [
+      {
+        "desc": "교환 - 운명의 섬 {item-huobi-49.png} 800",
+        "desc_en": "Exchange - Land of Fortune {item-huobi-49.png} 800",
+        "dsec_jp": "交換 - {item-huobi-49.png} 800"
+      }
+    ],
+    "name_cn": "混沌海克斯",
+    "effect_cn": "攻击力提升28.0%/32.7%/37.3%/42.0%/46.7%/51.3%/56.0%。\nWONDER使用人格面具技能或枪械攻击后，获得持续1回合的『致命本能』。『致命本能』：回合开始时自动填满子弹且枪械攻击及射击属性人格面具技能必定暴击；伤害提升9.5%/11.1%/12.7%/14.2%/15.8%/17.4%/19.0%，枪械攻击造成伤害额外提升9.5%/11.1%/12.7%/14.2%/15.8%/17.4%/19.0%。\nWONDER拥有『致命本能』时，使所有同伴的攻击力提升11.0%/12.8%/14.7%/16.5%/18.3%/20.2%/22.0%、造成射击属性伤害时的暴击效果提升10.0%/11.7%/13.3%/15.0%/16.7%/18.3%/20.0%。"
+  },
+
   "엔트로피·제로": {
     "element": "핵열",
     "name_en": "Entropy Zero",
@@ -332,6 +354,22 @@ window.matchWeapons = {
     "effect": "공격력이 28.0%/32.7%/37.3%/42.0%/46.7%/51.3%/56.0% 증가한다.\n전투 진입 시 자신의 크리티컬 확률이 9.5%/11.1%/12.7%/14.2%/15.8%/17.4%/19.0% 증가한다.\n전투 중 임의의 캐릭터가 페르소나 스킬을 사용해 전격 속성 대미지를 준 후, 모든 캐릭터에 2턴 동안 지속되는 『자력 플라즈마』 를 추가한다. 『자력 플라즈마』: 주는 대미지가 9.0%/10.5%/12.0%/13.5%/15.0%/16.5%/18.0% 증가하고, 전격 속성 대미지를 줄 때 크리티컬 효과가 9.0%/10.5%/12.0%/13.5%/15.0%/16.5%/18.0% 증가한다.",
     "effect_en": "Increase Attack by 28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/56.0%.\nAt battle start, increase user's Critical Rate by 9.5%/11.1%/12.7%/14.2%/15.8%/17.4%/19.0%.\nAfter any ally deals Electric damage with a Persona skill, grant all allies Magnetic Plasma for 2 turns: Damage dealt +9.0%/10.5%/12.0%/13.5%/15.0%/16.5%/18.0% and Electric Critical Damage +9.0%/10.5%/12.0%/13.5%/15.0%/16.5%/18.0%.",
     "effect_jp": "攻撃力が28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/56.0%上昇する。\n戦闘開始時、クリティカル率が9.5%/11.1%/12.7%/14.2%/15.8%/17.4%/19.0%上昇。\n戦闘中、誰かがペルソナスキルで電撃ダメージを与えると、全員に『磁力プラズマ』2ターン：与ダメ+9.0%/10.5%/12.0%/13.5%/15.0%/16.5%/18.0%、電撃CRT倍率+9.0%/10.5%/12.0%/13.5%/15.0%/16.5%/18.0%。",
+        "lightning_stamp": [
+      {
+        "order": 3,
+        "name": "펄스 전격",
+        "name_en": "Pulse Shock",
+        "name_jp": "パルス電撃",
+        "stamp_img": "item-datu-302936.png",
+        "stamp_icon": "weaponEngraving-icon-4.png",
+          "effect": "임의의 동료가 스킬을 사용해 전격 속성 대미지를 줄 때, 해당 동료가 2턴 동안 『뇌문 격동』을 획득한다.\n『뇌문 격동』: HIGHLIGHT/테우르기아가 주는 대미지가 4.0%/8.0%/12.0%/16.0% 증가한다. HIGHLIGHT/테우르기아의 크리티컬 효과가 2.5%/5.0%/7.5%/10.0% 증가한다.",
+          "effect_en": "When any ally deals Electric damage with a skill, that ally gains [Thundercrest Surge] for 2 turns.\n[Thundercrest Surge]: Damage dealt by HIGHLIGHT/Theurgy is increased by 4.0%/8.0%/12.0%/16.0%. Critical Damage of HIGHLIGHT/Theurgy is increased by 2.5%/5.0%/7.5%/10.0%.",
+          "effect_jp": "味方の誰かがスキルで電撃属性ダメージを与えた時、その味方は2ターンの間『雷紋激蕩』を獲得する。\n『雷紋激蕩』：HIGHLIGHT/テウルギアによる与ダメージが4.0%/8.0%/12.0%/16.0%上昇する。HIGHLIGHT/テウルギアのクリティカル効果が2.5%/5.0%/7.5%/10.0%上昇する。",
+          "name_cn": "脉冲电击",
+          "desc_cn": "任意同伴使用技能造成电击属性伤害时，使该同伴获得持续2回合的『雷纹激荡』。『雷纹激荡』：HIGHLIGHT、神通法造成的伤害提升4.0%/8.0%/12.0%/16.0%；HIGHLIGHT、神通法的暴击效果提升2.5%/5.0%/7.5%/10.0%。",
+          "release": "모토하·청광"
+        }
+    ],
     "shard": [
       {
         "desc": "교환 - 운명의 섬 {item-huobi-49.png} 800",

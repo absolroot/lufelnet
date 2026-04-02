@@ -127,6 +127,10 @@
     transform: scale(var(--char-scale, 1));
 }
 
+.thief-image[data-character="모토하·청광"][data-loaded="true"] {
+    transform: scale(1.4) translateY(-70px);
+}
+
 /* 페르소나 이미지도 스케일 변수 적용 */
 .persona-image {
     transform: scale(var(--char-scale, 1));

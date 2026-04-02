@@ -110,7 +110,7 @@ const enRevelationData = {
         "강인": "Tenacity",
     },
     "main": {
-        "Purity": ["Depravity"], // 순수
+        "Purity": ["Depravity", "Transformation"], // 순수
         "Nativity": ["Power"], // 탄생
         "Agility": ["Satiety", "Hindrance"], // 예리
         "Perseverance": ["Sorrow", "Transformation", "Obtain"], //돌파
@@ -135,7 +135,7 @@ const enRevelationData = {
         "Satiety": ["Agility"], // 풍족
         "Obtain": ["Perseverance"], // 획득
         "Sorrow": ["Perseverance"], // 슬픔
-        "Transformation": ["Perseverance", "Hope"], // 변화
+        "Transformation": ["Perseverance", "Hope", "Purity"], // 변화
         "Prudence": ["Resolve"], // 신중
         "Fixation": ["Integrity", "Hope"], // 고집
         "Futility": ["Faith"], // 헛수고
@@ -406,6 +406,7 @@ const enRevelationData = {
         },
         "Purity": { // 순수
             "Depravity": "Gain 1 stack of [Devotion] for each different Persona skill cast. ATK increases by 10% for 2 turns, stacking up to 3 times. At 3 stacks, own Critical Effect increases by an additional 12%. The duration of [Devotion] from different Persona skills is calculated independently.",
+            "Transformation": "When using HIGHLIGHT, increases ATK by 30% and DMG Dealt by 25%.",
             "type": ["미출시"]
         }
     }

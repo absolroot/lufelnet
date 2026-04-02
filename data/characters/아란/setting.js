@@ -1,0 +1,35 @@
+window.characterSetting = window.characterSetting || {};
+window.characterSetting["아란"] = {
+    "role": "",
+    "video": [""],
+    "video_en": [""],
+    "video_jp": ["", ""],
+    "main_revelation": ["예리","창조"],
+    "sub_revelation": ["방해","화해"],
+    "sub_revel2": [""],
+    "sub_revel3": ["효과명중"],
+    "sub_revel4": [""],
+    "sub_option1": ["효과명중"],
+    "sub_option2": [""],
+    "sub_option3": [],
+    "minimum_stats": {
+        "LV10": "효과명중 161.0%",
+        "LV10+5": "효과명중 177.5%",
+        "LV12": "효과명중 167.6%",
+        "LV12+5": "효과명중 184.1%",
+        "LV13": false,
+        "LV13+5": false
+    },
+    "battle_plus_stats": "· 전용무기 : 효과명중 / 마이팰리스 2.3% / 마이팰리스 평점 / 계시 20%",
+    "element_weakness": "",
+    "element_resistance": "",
+    "skill1_lv": "MAX!",
+    "skill2_lv": "8",
+    "skill3_lv": "MAX!",
+    "skill4_lv": "MAX",
+    "skill_priority": "1>3>4>2",
+    "mind_stats1": "공격력 20%",
+    "mind_stats2": "효과명중 24%",
+    "mind_skill1": "S1/HL",
+    "mind_skill2": "S2/S3"
+};

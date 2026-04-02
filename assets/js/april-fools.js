@@ -1,6 +1,6 @@
 (function () {
     const config = {
-        enabled: true,
+        enabled: false,
         containerSelectors: [
             '.logo-container',
             '.mobile-logo-container',

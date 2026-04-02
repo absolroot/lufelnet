@@ -1082,8 +1082,11 @@
         const hasWeaponStamps = release.weapon_stamp && Array.isArray(release.weapon_stamp) && release.weapon_stamp.length > 0;
 
         if (hasWeapons || hasWeaponStamps) {
-            // weapon 필드가 있으면 weapon 목록 사용, 없으면 weapon_stamp만 사용
-            const weaponsToShow = hasWeapons ? release.weapon : release.weapon_stamp;
+            // Merge both arrays so stamp-only weapons also render as pills.
+            const weaponsToShow = [...new Set([
+                ...(hasWeapons ? release.weapon : []),
+                ...(hasWeaponStamps ? release.weapon_stamp : [])
+            ])];
             const weaponListHtml = weaponsToShow.map(weaponName => {
                 const localizedName = getLocalizedWeaponName(weaponName);
                 const hasStamp = hasWeaponStamps && release.weapon_stamp.includes(weaponName);

@@ -14,6 +14,14 @@
 
     console.log('PullSimulator plan module loaded');
 
+    function normalizeReleaseVersion(version) {
+        return String(version == null ? '' : version).trim().replace(/^v/i, '');
+    }
+
+    function isSameReleaseVersion(a, b) {
+        return normalizeReleaseVersion(a) === normalizeReleaseVersion(b);
+    }
+
     /**
      * Calculate income for a character card (daily + version + battle pass)
      * This is used by both timeline cards and pull plan
@@ -41,7 +49,7 @@
             return cur;
         })();
 
-        const idx = sorted.findIndex(r => r && r.date === charDate && String(r.version) === String(charVersion));
+        const idx = sorted.findIndex(r => r && r.date === charDate && isSameReleaseVersion(r.version, charVersion));
         const nextRelease = idx >= 0 ? sorted[idx + 1] : null;
         const prevRelease = idx >= 0 ? sorted[idx - 1] : null;
 
@@ -65,7 +73,7 @@
         // - For old past versions, count nothing
         const isCurrentRelease = !!currentRelease &&
             currentRelease.date === charDate &&
-            String(currentRelease.version) === String(charVersion);
+            isSameReleaseVersion(currentRelease.version, charVersion);
 
         const calcStartDate = new Date(startDate);
         if (isCurrentRelease) {
@@ -138,11 +146,7 @@
             if (!prevRelease || prevRelease.version == null) {
                 isNewVersion = true;
             } else {
-                const pv = parseFloat(prevRelease.version);
-                const cv = parseFloat(charVersion);
-                if (Number.isFinite(pv) && Number.isFinite(cv)) {
-                    isNewVersion = cv !== pv;
-                }
+                isNewVersion = !isSameReleaseVersion(prevRelease.version, charVersion);
             }
         } else {
             // fallback: preserve prior behavior if we cannot locate current release
@@ -150,11 +154,7 @@
             if (prevDate) {
                 const prevReleaseByDate = (Array.isArray(this.scheduleReleases) ? this.scheduleReleases : []).find(r => r && r.date === prevDate);
                 if (prevReleaseByDate && prevReleaseByDate.version != null) {
-                    const pv = parseFloat(prevReleaseByDate.version);
-                    const cv = parseFloat(charVersion);
-                    if (Number.isFinite(pv) && Number.isFinite(cv)) {
-                        isNewVersion = cv !== pv;
-                    }
+                    isNewVersion = !isSameReleaseVersion(prevReleaseByDate.version, charVersion);
                 } else {
                     isNewVersion = false;
                 }
@@ -162,7 +162,7 @@
         }
 
         // Once: apply to the current (ongoing) version's first 5★ card
-        const isOnceRelease = !!currentRelease && currentRelease.date === charDate && String(currentRelease.version) === String(charVersion);
+        const isOnceRelease = !!currentRelease && currentRelease.date === charDate && isSameReleaseVersion(currentRelease.version, charVersion);
         let isOnceTarget = false;
         if (isOnceRelease && charName && currentRelease && Array.isArray(currentRelease.characters)) {
             const firstFiveStar = currentRelease.characters.find(n => {

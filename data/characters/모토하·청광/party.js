@@ -25,7 +25,7 @@ window.recommendParty["모토하·청광"] = {
                 "모토하·청광",
                 "아야카",
                 "아란",
-                "마나카"
+                "후카"
             ],
             "comment": "",
             "comment_en": "",
@@ -36,7 +36,7 @@ window.recommendParty["모토하·청광"] = {
                 "모토하·청광",
                 "아야카",
                 "미나미·여름",
-                "마나카"
+                "후카"
             ],
             "comment": "",
             "comment_en": "",
@@ -58,12 +58,6 @@ window.recommendParty["모토하·청광"] = {
         },
         {
             "name": "미나미·여름",
-            "comment": "",
-            "comment_en": "",
-            "comment_jp": ""
-        },
-        {
-            "name": "마나카",
             "comment": "",
             "comment_en": "",
             "comment_jp": ""

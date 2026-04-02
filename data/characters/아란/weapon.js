@@ -24,20 +24,20 @@ window.WeaponData["아란"] = {
 
 window.enCharacterWeaponData["아란"] = {
   "weapon4-1": {
-    "name": "Final Settlement",
+    "name": "Final Reckoning",
     "health": 1776,
     "attack": 560,
     "defense": 331,
-    "skill_name": "",
-    "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When actively inflicting [Guilt], increase user's Curse damage by 17.6%/23.2%/23.2%/28.8%/28.8%/34.4%/34.4% for 2 turns."
+    "skill_name": "Coming Omen",
+    "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When user directly inflicts [Bad Karma], increase user's Curse damage by 17.6%/23.2%/23.2%/28.8%/28.8%/34.4%/34.4% for 2 turns."
   },
   "weapon5-1": {
-    "name": "Double Shadow in the Mirror",
+    "name": "Twin Reflections",
     "health": 2219,
     "attack": 700,
     "defense": 414,
-    "skill_name": "",
-    "description": "Increase ailment accuracy by 36.0%/36.0%/47.0%/47.0%/58.0%/58.0%/69.0%. Increase [Sin]'s conduction effect by 52.0%/68.0%/68.0%/84.0%/84.0%/100.0%/100.0%. Increase critical damage dealt by all allies to foes with [Sin] by 13.6%/17.7%/17.7%/21.8%/21.8%/25.9%/25.9%."
+    "skill_name": "Curse of Destruction",
+    "description": "Increase ailment accuracy by 36.0%/36.0%/47.0%/47.0%/58.0%/58.0%/69.0%.\nIncrease [Sin]'s Transfer Effect Amplification by 52.0%/68.0%/68.0%/84.0%/84.0%/100.0%/100.0%.\nIncrease all allies' critical damage dealt to foes with [Sin] by 13.6%/17.7%/17.7%/21.8%/21.8%/25.9%/25.9%."
   }
 };
 

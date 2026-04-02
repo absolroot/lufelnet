@@ -46,33 +46,34 @@ window.characterSkillsData["아란"] = {
   }
 };
 
+
 window.enCharacterSkillsData["아란"] = {
   "name": "Aran Hirano",
   "skill1": {
-    "name": "Forbidden Scars",
+    "name": "Forbidden Etching",
     "element": "주원",
     "type": "단일피해",
-    "description": "Deal Curse damage to 1 foe equal to 153.7%/169.5%/160.0%/175.8% of Attack. If the target has [Sin], inflict 2 [Guilt] stacks and copy the target's [Guilt] stacks to other foes with [Sin]. If the target already has [Guilt], increase this skill's damage by 20%.\n[Guilt]: Decrease Defense by 3.9%/4.3%/4.1%/4.5% + 161.0%/177.5%/167.6%/184.1% of Aran's ailment accuracy (up to 11.7%/12.9%/12.2%/13.4%) for 2 turns. Stacks up to 4 times."
+    "description": "Deal Curse damage to 1 foe equal to 153.7%/169.5%/160.0%/175.8% of Attack.\nIf the target has [Sin], inflict 2 [Bad Karma] stacks, then copy target's [Bad Karma] stacks to other foes with [Sin]. \nIf the target has [Bad Karma], increase this damage by 20%. \n[Bad Karma]: Decrease Defense by 3.9%/4.3%/4.1%/4.5% for 2 turns (based on Aran's ailment accuracy, up to 11.7%/12.9%/12.2%/13.4% bonus Defense Down at 161.0%/177.5%/167.6%/184.1% ailment accuracy). Stacks up to 4 times."
   },
   "skill2": {
     "name": "Mirror of Vengeance",
     "element": "버프",
     "type": "버프",
-    "description": "Change all allies' affinities to 'Reflect' and increase reflection ratio from 20% to 100% + 161.0%/177.5%/167.6%/184.1% of Aran's ailment accuracy (up to 97.6%/107.6%/101.6%/111.6%) for 2 turns. Disappears after Alan's next action or reflecting skill damage once. If the attacker has [Sin] when reflecting, inflict 2 [Guilt] stacks. This effect cannot nullify certain secondary debuff effects."
+    "description": "Change all allies' affinities to Repel and increase Repel ratio from 20% to 100% for 2 turns (based on Aran's ailment accuracy, up to 97.6%/107.6%/101.6%/111.6% bonus Repel ratio at 161.0%/177.5%/167.6%/184.1% ailment accuracy). Lose this effect at the start of Aran's next turn or after repelling 1 skill damage. \nWhen repelling damage, if foes have [Sin], inflict 2 [Bad Karma] stacks. This Repel effect does not nullify certain debuff effects from certain damage."
   },
   "skill3": {
-    "name": "Eyes of Judgment",
+    "name": "Eye of Condemnation",
     "element": "디버프",
     "type": "디버프",
-    "description": "Select 2 enemy targets and inflict [Sin] on each (can select the same target twice). Re-casting allows re-selecting targets. This skill does not consume a turn but can only be used once per turn.\nIncrease [Sin]'s conduction effect by 19.5%/21.5%/20.3%/22.3% + 161.0%/177.5%/167.6%/184.1% of Alan's ailment accuracy (up to 78.1%/86.1%/81.3%/89.3%)."
+    "description": "Select 2 foes and inflict [Sin] on them (can select the same target). \nReactivate: Change [Sin]'s targets.\nAfter using this skill, Aran can use other skills.\nIncrease [Sin]'s Transfer Effect Amplification by 19.5%/21.5%/20.3%/22.3% (based on Aran's ailment accuracy, up to 78.1%/86.1%/81.3%/89.3% bonus Transfer Effect Amplification at 161.0%/177.5%/167.6%/184.1% ailment accuracy)."
   },
   "skill_highlight": {
     "element": "주원",
     "type": "단일피해",
-    "description": "Deal Curse damage to 1 foe equal to 361.8%/398.9%/376.6%/413.7% of Attack. If the target has [Sin], increase HIGHLIGHT damage taken by 14.6%/16.1%/15.2%/16.7% for 3 turns, and copy this effect to other foes with [Sin]."
+    "description": "Deal Curse damage to 1 foe equal to 361.8%/398.9%/376.6%/413.7% of Attack.\nIf foes have [Sin], increase their HIGHLIGHT damage taken by 14.6%/16.1%/15.2%/16.7%. Lasts for 3 turns. Copy this effect to other foes with [Sin]."
   },
-  "passive1": { "name": "Reverse Blade", "element": "패시브", "description": "While Alan is on the field, increase damage dealt by all allies to foes with [Sin] by 24.0%." },
-  "passive2": { "name": "Sacrificial Flame", "element": "패시브", "description": "While Alan is on the field, for each foe with [Sin], increase all allies' Attack by 18.0%." }
+  "passive1": { "name": "Reverse Blade", "element": "패시브", "description": "When Aran is on the field, increase all allies' damage dealt to foes with [Sin] by 24.0%." },
+  "passive2": { "name": "Ritual Fire", "element": "패시브", "description": "When Aran is on the field, for each foe with [Sin], increase all allies' ATK by 18.0%." }
 };
 
 window.jpCharacterSkillsData["아란"] = {

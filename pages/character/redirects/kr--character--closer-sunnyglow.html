@@ -1,6 +1,6 @@
 ---
 layout: null
-permalink: /character/closer-sunnyglow/
+permalink: /kr/character/closer-sunnyglow/
 sitemap: false
 ---
 <!doctype html>
@@ -17,8 +17,8 @@ sitemap: false
       var requestedLang = params.get("lang");
       params.delete("lang");
       params.delete("name");
-      var languageTargets = {"kr":"/kr/character/closer-radiance/","en":"/en/character/closer-radiance/","jp":"/jp/character/closer-radiance/"};
-      var defaultPath = "/en/character/closer-radiance/";
+      var languageTargets = null;
+      var defaultPath = "/kr/character/closer-radiance/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
         if (value === "kr" || value === "en" || value === "jp") return value;
@@ -64,7 +64,7 @@ sitemap: false
       window.location.replace(next);
     })();
   </script>
-  <noscript><meta http-equiv="refresh" content="0; url=/en/character/closer-radiance/"></noscript>
-  <a href="/en/character/closer-radiance/">Continue</a>
+  <noscript><meta http-equiv="refresh" content="0; url=/kr/character/closer-radiance/"></noscript>
+  <a href="/kr/character/closer-radiance/">Continue</a>
 </body>
 </html>

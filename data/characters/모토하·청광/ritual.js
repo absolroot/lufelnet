@@ -20,21 +20,21 @@ window.ritualData["모토하·청광"] = {
 };
 
 window.enCharacterRitualData["모토하·청광"] = {
-  "name": "Sunnyglow Motoha",
-  "r0": "Flash Piercing the Dark",
-  "r0_detail": "Sunnyglow Motoha has a special HIGHLIGHT [Twilight Afterglow], which does not consume HIGHLIGHT energy, has no cooldown, can be stored multiple times, and can deal critical hits.\nAt the start of her turn, gain 1 [Light] stack. Using specific Persona skills grants [Light] or [Shadow] stacks (max total 6 stacks). When using [Twilight Afterglow], spend a total of 3 stacks to trigger additional effects based on the stacks consumed (Light is prioritized).",
-  "r1": "Solar Rotation",
-  "r1_detail": "[Light] and [Shadow] stacks are enhanced to [Flow of Light and Shadow]. Spending this stack with [Twilight Afterglow] triggers both Light and Shadow effects.\nUpon entering [Determined Girl] status, immediately gain 1 [Flow of Light and Shadow] stack. While in this status, increase critical rate by 15%.",
-  "r2": "Golden Ship of Night Tour",
-  "r2_detail": "All Persona skill damage dealt by Motoha is treated as HIGHLIGHT damage, benefiting from the HIGHLIGHT skill multiplier increase of the [Determined Girl] status.",
-  "r3": "Black Gold",
-  "r3_detail": "Increase the skill levels of [Unfailing Sun] and [Thief Tactics] by 3.",
+  "name": "Closer·Radiance",
+  "r0": "Piercing Light",
+  "r0_detail": "Motoha has a special HIGHLIGHT [Twilight Radiance], it does not deplete HIGHLIGHT Energy, does not have a cooldown, can be stored multiple times, and can activate critical hits.\n\nAt the start of Motoha's turn, gain 1 [Light] stack, gain [Light]/[Shadow] stack when activating specific Persona skills. Stacks up to 6 times.\nWhen activating [Twilight Radiance], spend 3 [Light]/[Shadow] stacks, then activate bonus effects based on [Light]/[Shadow] stack spent (Light will be spent first).",
+  "r1": "Solar Procession",
+  "r1_detail": "When Motoha gains [Light]/[Shadow], upgrade it to [Flowing Light]. When spending [Flowing Light] from [Twilight Radiance], the effects of [Light] and [Shadow] will both activate.\nWhen Motoha enters [Resolute Maiden] state, immediately gain 1 [Flowing Light] stack. When [Resolute Maiden] is active, increase critical rate by 15%.",
+  "r2": "Golden Nightsail",
+  "r2_detail": "Motoha's Persona skill damage counts as HIGHLIGHT damage, and can use [Resolute Maiden]'s HIGHLIGHT skill multiplier increase.",
+  "r3": "Ebon Gold",
+  "r3_detail": "Increase the skill levels of [Unsetting Sun] and [Thief Tactics] by 3.",
   "r4": "Svalinn's Shield",
-  "r4_detail": "HIGHLIGHT [Twilight Afterglow] Enhanced: For each [Flow of Light and Shadow] stack spent, additionally increase this skill's critical damage by 10%.",
-  "r5": "Spirit's Light",
-  "r5_detail": "Increase the skill levels of [Instant Thunder Strike] and [Soaring Lightning] by 3.",
-  "r6": "Crown of Reconstructed Fate",
-  "r6_detail": "Increase the maximum limit of [Flow of Light and Shadow] stacks by 9. At the start of battle, gain 9 [Flow of Light and Shadow] stacks.\nEach time [Twilight Afterglow] is cast, gain 1 [Remolding] stack. [Remolding]: Increase [Twilight Afterglow] skill damage by 5% (stacks up to 5 times, independent multiplier)."
+  "r4_detail": "HIGHLIGHT [Twilight Radiance] Enhanced: For each [Flowing Light] stack spent, additionally increase this skill's critical damage by 10%.",
+  "r5": "Elven Light",
+  "r5_detail": "Increase the skill levels of [Thunder Thrust] and [Skyfall Bolt] by 3.",
+  "r6": "Crown of Reshaped Destiny",
+  "r6_detail": "Increase the maximum stacks of [Flowing Light] to 9. At the start of battle, Motoha gains 9 [Flowing Light] stacks.\nWhen activating [Twilight Radiance], gain 1 [Reshape] stack: Increase [Twilight Radiance] Skill Damage by 5%. Stacks up to 5 times (this effect is an independent bonus)."
 };
 
 window.jpCharacterRitualData["모토하·청광"] = {

@@ -85,11 +85,11 @@ Object.assign(window.characterData, {
         "persona_en": "Awilda",
         "persona_jp": "アルビルダ",
         "name": "아라이 모토하·청광",
-        "name_en": "Sunnyglow Motoha",
+        "name_en": "Radiance Motoha",
         "name_jp": "素羽・晴光",
         "name_cn": "新井素羽·晴光",
         "name_tw": "",
-        "codename": "CLOSER·Sunnyglow",
+        "codename": "CLOSER·Radiance",
         "skill_item": 6
     },
     "코로마루": {

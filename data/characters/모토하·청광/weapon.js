@@ -24,20 +24,20 @@ window.WeaponData["모토하·청광"] = {
 
 window.enCharacterWeaponData["모토하·청광"] = {
   "weapon4-1": {
-    "name": "Sun-Wheel Ruler",
+    "name": "Ruler of Sun",
     "health": 1744,
     "attack": 618,
     "defense": 331,
-    "skill_name": "",
-    "description": "Increase Attack by 12.0\%/12.0\%/16.0\%/16.0\%/20.0\%/20.0\%/24.0\%. When consuming [Light], increase own Attack by 7.3\%/9.6\%/9.6\%/11.9\%/11.9\%/14.2\%/14.2\%. When consuming [Shadow], increase own Defense by 7.3\%/9.6\%/9.6\%/11.9\%/11.9\%/14.2\%/14.2\%. Stacks up to 3 times each and lasts for the duration of the battle."
+    "skill_name": "Noon Brilliance",
+    "description": "Increase Attack by 12.0\%/12.0\%/16.0\%/16.0\%/20.0\%/20.0\%/24.0\%. When spending [Light], increase user's Attack by 7.3\%/9.6\%/9.6\%/11.9\%/11.9\%/14.2\%/14.2\%. \nWhen spending [Shadow], increase user's Defense by 7.3\%/9.6\%/9.6\%/11.9\%/11.9\%/14.2\%/14.2\%. These effects are permanent and each stacks up to 3 times."
   },
   "weapon5-1": {
-    "name": "Expedition Pioneer",
+    "name": "Expedition's Edge",
     "health": 2180,
     "attack": 773,
     "defense": 414,
-    "skill_name": "",
-    "description": "Increase critical rate by 18.1\%/18.1\%/23.5\%/23.5\%/28.9\%/28.9\%/34.3\%. When casting HIGHLIGHT, increase critical damage by 32.8\%/42.8\%/42.8\%/52.8\%/52.8\%/62.8\%/62.8\%. Each time [Light] or [Shadow] is gained, increase HIGHLIGHT damage bonus by 2.0\%/2.6\%/2.6\%/3.2\%/3.2\%/3.8\%/3.8\% (up to 6 stacks, lasts for the duration of the battle)."
+    "skill_name": "Sunset Glow",
+    "description": "Increase critical rate by 18.1\%/18.1\%/23.5\%/23.5\%/28.9\%/28.9\%/34.3\%. \nWhen activating a HIGHLIGHT, increase critical damage by 32.8\%/42.8\%/42.8\%/52.8\%/52.8\%/62.8\%/62.8\%. \nFor each [Light]/[Shadow] stack gained, increase HIGHLIGHT Damage Amplification by 2.0\%/2.6\%/2.6\%/3.2\%/3.2\%/3.8\%/3.8\%. This effect is permanent and stacks up to 6 times."
   }
 };
 

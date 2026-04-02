@@ -21,20 +21,20 @@ window.ritualData["아란"] = {
 
 window.enCharacterRitualData["아란"] = {
   "name": "Aran Hirano",
-  "r0": "Susanna's Mirror",
-  "r0_detail": "Aran can inflict [Sin] on foes, with a maximum of 2 [Sin] stacks active on the field.\n[Sin]: 10% of damage taken by a foe with [Sin] is copied to other foes with [Sin]. If the target is the same unit, 5% of damage taken is copied to itself. When a foe with [Sin] is defeated, [Sin] transfers to another surviving unit. The conduction ratio of [Sin] is affected by conduction amplification effects.",
+  "r0": "Susanna's Spying Glass",
+  "r0_detail": "Aran can inflict foes with [Sin]. There can only be 2 foes with [Sin]. [Sin]: Copy 10% of damage taken by a foe with [Sin] to other foes with [Sin].\n[Sin]'s target can be the same foe: Copy 5% of the target's damage taken to the same target.\nWhen a foe with [Sin] is defeated, its [Sin] is past to other foes.\n[Sin]'s transfer ratio can be affected by Transfer Effect Amplification.",
   "r1": "Judith's Dagger",
-  "r1_detail": "Each [Guilt] stack additionally increases damage taken by 5%. Increase the base reflection ratio of [Mirror of Vengeance] to 400%.",
-  "r2": "Jael's Nail",
-  "r2_detail": "Increase [Guilt] stacks inflicted by [Forbidden Scars] and [Mirror of Vengeance] by 1. Increase the maximum limit of [Guilt] stacks by 2.",
-  "r3": "Composition of the Muse",
-  "r3_detail": "Increase the skill levels of [Forbidden Scars] and [Thief Tactics] by 2.",
-  "r4": "Saint Catherine's Wheel",
-  "r4_detail": "Highlight Enhanced: Restore 15 Highlight Energy. When a foe with [Sin] is hit by a HIGHLIGHT, increase the damage by 25% of Attack for 3 turns, and copy this effect to other foes with [Sin].",
+  "r1_detail": "Increase foes' damage taken by 5% for each [Bad Karma] stack. \nIncrease [Mirror of Vengeance]'s Repel ratio to 400%.",
+  "r2": "Jael's Hammer Scar",
+  "r2_detail": "[Forbidden Etching] and [Mirror of Vengeance] inflict 1 more [Bad Karma] stack. \nIncrease the maximum stacks of [Bad Karma] by 2.",
+  "r3": "Painting Goddess's Composition",
+  "r3_detail": "Increase the skill levels of [Forbidden Etching] and [Thief Tactics] by 2.",
+  "r4": "Saint Catherine's Wheel Mark",
+  "r4_detail": "HIGHLIGHT Enhanced: Regain 15 HIGHLIGHT Energy. When foes with [Sin] are attacked by a HIGHLIGHT, increase Attack for that damage by 25%. Lasts for 3 turns. Copy this effect to other foes with [Sin].",
   "r5": "Magdalene's Penance",
   "r5_detail": "Increase the skill levels of [Eyes of Judgment] and [Mirror of Vengeance] by 2.",
-  "r6": "Esther's Rebellious Throne",
-  "r6_detail": "When different foes with [Sin] are selected as damage targets simultaneously, increase conduction effect by 150%. Foes with [Sin] can also conduct Down Points damage, mental ailments, and elemental ailments to other foes with [Sin]."
+  "r6": "Esther's Throne of Rebellion",
+  "r6_detail": "When different [Sin] targets are selected as skill targets, increase Transfer Effect Amplification by 150% more. \nFoes with [Sin] can transfer Down Points damage, Mental Ailments, and Element Ailments to the other foes with [Sin]."
 };
 
 window.jpCharacterRitualData["아란"] = {

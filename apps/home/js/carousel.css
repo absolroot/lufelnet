@@ -75,9 +75,20 @@
   top: 95%;
 }
 
-
+/* 모토하 청광*/
 .char-img.single-banner[src*="%EB%AA%A8%ED%86%A0%ED%95%98%C2%B7%EC%B2%AD%EA%B4%91"] {
   top: 40%;
+}
+
+/* 마유미*/
+.char-img.single-banner[src*="%EB%A7%88%EC%9C%A0%EB%AF%B8"] {
+  top: 95%;
+}
+
+/* 후타바 */
+.char-img.single-banner[src*="%ED%9B%84%ED%83%80%EB%B0%94"] {
+  top: 60%;
+  transform: translateY(-50%) scale(1.5);
 }
 
 .char-img.front[src*="P5DSN_-_Caroline_and_Justine"] {

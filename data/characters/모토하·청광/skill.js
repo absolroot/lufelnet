@@ -46,40 +46,40 @@ window.characterSkillsData["모토하·청광"] = {
 };
 
 window.enCharacterSkillsData["모토하·청광"] = {
-  "name": "Sunnyglow Motoha",
+  "name": "Closer·Radiance",
   "skill1": {
-    "name": "Instant Thunder Strike",
+    "name": "Thunder Thrust",
     "element": "전격광역",
     "type": "광역피해",
-    "description": "Deal Electric damage to all enemies equal to 282.8%/311.8%/300.2%/329.2% of Attack. This damage is split equally among all enemies. Inflicts Electrify and [Flashover] for 2 turns. Gain 1 [Light] stack.\n[Flashover]: Increase damage taken by 39.0%/43.0%/41.4%/45.4%."
+    "description": "Deal Elec damage to all foes equal to 282.8%/311.8%/300.2%/329.2% of Attack, distribute this damage between all foes. Inflict targets with Shock and [Flashover] for 2 turns. Motoha gains [Light].\n[Flashover]: Increase damage taken by 39.0%/43.0%/41.4%/45.4%."
   },
   "skill2": {
-    "name": "Unfailing Sun",
+    "name": "Unsetting Sun",
     "element": "버프",
     "type": "버프",
-    "description": "All allies gain 1 Down Point and a 1561/1721/1657/1817 Shield. Taunt all enemies and decrease own damage taken by 39.0%/43.0%/41.4%/45.4% until the start of the next turn.\nAt the start of the next turn, automatically trigger [Instant Thunder Strike] damage on all enemies. For each time an enemy skill deals damage to Motoha during the effect, increase this [Instant Thunder Strike] damage by 5%. Gain 1 [Shadow] stack."
+    "description": "Grant a 1561/1721/1657/1817 Shield and 1 Down Points to all allies. Inflict all foes with Taunt, decrease Motoha's damage taken by 39.0%/43.0%/41.4%/45.4%. Lasts until the start of Motoha's next turn.\nAt the start of next turn, automatically activate [Thunder Thrust]'s damage, each time Motoha takes skill damage during this effect, increase that [Thunder Thrust]'s Skill Damage by 5%.\nMotoha gains [Shadow]."
   },
   "skill3": {
-    "name": "Soaring Lightning",
+    "name": "Skyfall Bolt",
     "element": "전격광역",
     "type": "단일피해",
-    "description": "Immediately enter [Determined Girl] status for 2 turns. Deal Electric damage to 2 enemy targets (can target the same enemy twice) equal to 162.9%/179.6%/172.9%/189.6% of Attack. If the target has [Flashover], increase skill damage to 120% of original value.\n[Determined Girl]: When activating HIGHLIGHT, increase skill multiplier by 55.8%/61.5%/59.3%/65.0%."
+    "description": "Immediately enter [Resolute Maiden] state. Lasts for 2 turns. \nDeal Elec damage to 2 targets equal to 162.9%/179.6%/172.9%/189.6% of Attack (can select the same target), if skill targets have [Flashover], increase Skill Damage to 120% of its normal damage.\n[Resolute Maiden]: When activating a HIGHLIGHT, increase skill multiplier by 55.8%."
   },
   "skill_highlight": {
-    "name": "Twilight Afterglow",
+    "name": "Twilight Radiance",
     "element": "전격광역",
     "type": "단일피해",
-    "description": "Activation condition: Have at least 3 stacks of [Light] or [Shadow].\nSelect 2 enemy targets (can target the same enemy twice) and release [Light Spear] and [Shadow Spear] respectively.\n[Light Spear]: Deal Electric damage equal to 223.3%/246.2%/237.0%/259.9% of Attack.\n[Shadow Spear]: Deal fixed damage equal to 100% of [Light Spear]'s damage and reduce the target's Down Point by 1, ignoring affinity.\nIf [Light Spear] and [Shadow Spear] hit 2 different enemies, increase skill damage to 115%. If they hit the same enemy, increase critical damage by 30% for this skill.\nSpend a total of 3 [Light/Shadow] stacks (Light is prioritized). Each [Light] stack spent increases Attack by 29.3%/32.3%/31.1%/34.1% when using [Light Spear]. Each [Shadow] stack spent grants all allies a 488/538/518/568 Shield for 2 turns."
+    "description": "Use condition: When Motoha has at least 3 [Light]/[Shadow] stacks. \nSelect 2 foes (can select the same target) and use [Spear of Light] and [Spear of Shadow] on them. \n[Spear of Light]: Deal Elec damage equal to 223.3%/246.2%/237.0%/259.9% of Attack.\n[Spear of Shadow]: Deal fixed damage equal of 100% of [Spear of Light]'s damage. Ignore all affinites and decrease Down Points by 1.\nIf [Spear of Light] and [Spear of Shadow] hit 2 foes, increase Skill Damage to 115% of its normal damage. If they hit the same foe, increase this skill's critical damage by 30%.\nSpend 3 [Light]/[Shadow] stacks (Light will be spent first), for each [Light] stack spent, increase [Spear of Light]'s Attack by 29.3%/32.3%/31.1%/34.1%. For each [Shadow] stack spent, grant a 488/538/518/568 Shield Shield to all allies. Lasts for 2 turns."
   },
   "passive1": {
-    "name": "Gilded",
+    "name": "Gilding",
     "element": "패시브",
-    "description": "At the start of battle, Sunnyglow Motoha enters [Determined Girl] for 2 turns. While in [Determined Girl], increase Pierce by 15.0%."
+    "description": "At the start of battle, Motoha enters [Resolute Maiden] state. Lasts for 2 turns. When [Resolute Maiden] is active, increase pierce rate by 15%."
   },
   "passive2": {
-    "name": "Indomitable",
+    "name": "Unyielding",
     "element": "패시브",
-    "description": "When dealing damage to enemies in [Flashover], increase Attack by 42.0%."
+    "description": "When dealing damage to foes with [Flashover], increase Attack by 42.0%."
   }
 };
 

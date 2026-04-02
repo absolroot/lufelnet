@@ -228,9 +228,9 @@
       }
     ],
     "rating": {
-      "Defense": 1200,
-      "HP": 20000,
-      "Unknown Attr": 0
+      "Defense": 1200.0,
+      "HP": 20000.0,
+      "Unknown Attr": 0.0
     },
     "stat": {
       "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
@@ -295,6 +295,6 @@
       }
     ]
   },
-  "msg": "TESTING",
+  "msg": "OK",
   "status": 0
 }

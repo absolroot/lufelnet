@@ -223,8 +223,8 @@
       }
     ],
     "rating": {
-      "HP": 13630,
-      "Unknown Attr": 0
+      "HP": 13630.0,
+      "Unknown Attr": 0.0
     },
     "stat": {
       "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
@@ -270,6 +270,6 @@
     "stat_100": null,
     "theurgia_skill": []
   },
-  "msg": "TESTING",
+  "msg": "OK",
   "status": 0
 }

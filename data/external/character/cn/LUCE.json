@@ -226,9 +226,9 @@
       }
     ],
     "rating": {
-      "Ailment Acc.": 1,
-      "Attack": 4500,
-      "Unknown Attr": 0
+      "Ailment Acc.": 1.0,
+      "Attack": 4500.0,
+      "Unknown Attr": 0.0
     },
     "stat": {
       "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
@@ -275,6 +275,6 @@
     "stat_100": null,
     "theurgia_skill": []
   },
-  "msg": "TESTING",
+  "msg": "OK",
   "status": 0
 }

@@ -229,7 +229,7 @@
       "Crit Mult.": 1.77,
       "Crit Rate": 0.37,
       "Damage Mult.": 0.43,
-      "Defense": 2320
+      "Defense": 2320.0
     },
     "stat": {
       "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
@@ -277,6 +277,6 @@
     "stat_100": null,
     "theurgia_skill": []
   },
-  "msg": "TESTING",
+  "msg": "OK",
   "status": 0
 }

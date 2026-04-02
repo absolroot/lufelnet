@@ -1,0 +1,277 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "At the start of battle, Mayumi gains 90 Velocity stacks. At the end of each ally's action, gain 4 Velocity stacks (if Mayumi's Speed is over 100, gain 1 more Velocity stack for every 10 points of Speed over 100; up to 6 stacks).\nAt the start of Mayumi's turn, if Velocity is over 120 stacks, can spend Velocity to gain an extra action at the end of her current action (cooldown: 1 turn). When total Velocity stacks gained during battle reach 100/220/350 stacks, activate level 1/2/3 of Torque Boost.\nTorque Boost: Increase party's pierce rate by 5%/10%/15%.",
+        "name": "Racing Game Lover",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 136140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "At the end of each ally's action, gain 10 more Velocity stacks.\nOn an extra action, when using a skill different from the one used immediately before, activate the following additional effects.\nShockwave: When activating a skill, increase critical damage by 50%.\nAero Setup: Increase shield by 30%. Also, increase party's Defense by 30% more.\nPower Setup: Increase main target's pierce rate by 10% more.",
+        "name": "Tire Change",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 136141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "When activating Torque Boost, activate the following additional effects.\nLevel 1: Increase party's critical damage by 20%.\nLevel 2: Increase party's damage by 20%.\nLevel 3: Increase party's Attack by 30%.",
+        "name": "High-Spec Engine",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 136142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase the skill levels of Power Setup and Thief Tactics by 3.",
+        "name": "Output Control",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 136143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Highlight Enhanced: Increase party's damage by 10% more. Also, extend the duration of the Highlight's buffs by 1 turn.",
+        "name": "Pole Position",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 136144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase the skill levels of Shockwave and Aero Setup by 3.",
+        "name": "Aerodynamic Control",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 136145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "The amount of Velocity stacks gained at the start of battle becomes 120. On Mayumi's extra action, spend 40 or 80 Velocity stacks, and activate the following additional effects the next time a skill is activated.\n40 Velocity spent\nShockwave: When activating a skill, increase Mayumi's critical rate by 20%. If the target is knocked down, increase party's Attack by 25% for 2 turns.\nAero Setup: Increase shield by 20%. Also, extend the shield duration by 1 turn.\nPower Setup: When used on an extra turn, change buff target from main target to all allies.\n80 Velocity spent\nShockwave: Increase party's damage dealt to downed foes by 15% for 1 turn.\nAero Setup: Decrease party's damage taken by 20% for 1 turn.\nPower Setup: Increase party's damage dealt by 25% for 1 turn.",
+        "name": "Circuit Queen",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 136146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "Weak",
+      "cooldown": 4,
+      "cost": "",
+      "desc": "Increase party's Attack by 5.9%/6.5%/6.2%/6.8% for 2 turns (for every 10 points of Speed, increase by 1.33% more, up to a maximum of 23.4%/25.8%/24.9%/27.3%). Also, increase party's damage by 5.9%/6.5%/6.2%/6.8% for 2 turns (for every 10 points of Speed, increase by 1.33% more, up to a maximum of 23.4%/25.8%/24.9%/27.3%). Also, when the selected ally of this Highlight next deals direct damage to foes, decrease the selected foe's Down Points by 1 more.",
+      "name": "Highlight",
+      "nature": "Heal",
+      "skill_lv": "10/10/13/13",
+      "sn": 136152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Ally",
+      "target_count": "All"
+    },
+    "innate": {
+      "Crit Rate": "0.12",
+      "Speed": "10"
+    },
+    "innate_awake_skill": [],
+    "name": "Mayumi Hashimoto",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "BeHitRatio",
+        "cooldown": 0,
+        "cost": "체력 8.0%",
+        "desc": "Deal Physical damage to all foes equal to 134.2%/148.0%/142.5%/156.2% of Attack.\nAlso, increase party's damage by 8.8%/9.7%/9.3%/10.2% for 2 turns (for every 10 points of Speed, increase by 2% more, up to a maximum of 35.1%/38.7%/37.3%/40.9%).\nWhen used on an extra action, increase skill damage by 50%, and activate a guaranteed critical hit on the main target.",
+        "name": "Shockwave",
+        "nature": "Phys",
+        "skill_lv": "10/10/13/13",
+        "sn": 136111,
+        "tags": [
+          "Multi-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "BeHitRatio",
+        "cooldown": 0,
+        "cost": "SP 22",
+        "desc": "Increase party's Attack by 8.8%/9.7%/9.3%/10.2% for 2 turns (for every 10 points of Speed, increase by 2% more, up to a maximum of 35.1%/38.7%/37.3%/40.9%). Also, increase party's Defense by 9.8%/10.8%/10.4%/11.4% for 2 turns (for every 10 points of Speed, increase by 2.22% more, up to a maximum of 39.0%/43.0%/41.4%/45.4%).\nWhen used on an extra action, grant a shield to all allies equal to 2204/2354/2294/2444. This effect lasts for 2 turns.",
+        "name": "Aero Setup",
+        "nature": "Heal",
+        "skill_lv": "10/10/13/13",
+        "sn": 136112,
+        "tags": [
+          "Buff"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "BeHitRatio",
+        "cooldown": 0,
+        "cost": "SP 25",
+        "desc": "Increase party's pierce rate by 1.0%/1.1%/1.0%/1.1% for 2 turns (for every 10 points of Speed, increase by 0.22% more, up to a maximum of 3.9%/4.3%/4.1%/4.5%). Also, increase party's Attack by 12.7%/14.0%/13.5%/14.8% for 2 turns (for every 10 points of Speed, increase by 2.89% more, up to a maximum of 50.8%/56.0%/53.9%/59.1%).\nWhen used on an extra action, also increase the main target's pierce rate by 2.0%/2.2%/2.1%/2.3% for 1 turn (for every 10 points of Speed, increase by 0.44% more, up to a maximum of 7.8%/8.6%/8.3%/9.1%).",
+        "name": "Power Setup",
+        "nature": "Heal",
+        "skill_lv": "10/10/13/13",
+        "sn": 136113,
+        "tags": [
+          "Buff"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "When Mayumi is present, increase party's damage during extra actions by 45.0%.",
+        "name": "Team Ambassador",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 136131,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "When Mayumi is present, increase party's damage dealt to downed foes by 30.0%. Also, when Mayumi knocks down a foe, deal more Physical damage equal to 60.0% of Attack.",
+        "name": "Overtaking",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 136132,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "rating": {
+      "Attack": 3710.0,
+      "Crit Rate": 0.12,
+      "Speed": 160.0,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1050.0 / 1069.2 / 1087.6 / 1106.8 / 1126.0 / 1144.4 / 1163.6",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "619.97 / 631.17 / 642.37 / 653.57 / 664.77 / 675.97 / 687.17",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3390.02 / 3450.82 / 3512.42 / 3573.22 / 3634.02 / 3694.82 / 3756.42",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "125.89 / 125.89 / 125.89 / 125.89 / 125.89 / 125.89 / 125.89",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

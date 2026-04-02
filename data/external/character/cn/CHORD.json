@@ -115,7 +115,27 @@
       }
     ],
     "assist_skill": [],
-    "final_innate": [],
+    "final_innate": [
+      [
+        {
+          "attr": "Final Damage Mult.",
+          "nature": "Electric",
+          "value": "0.02"
+        }
+      ],
+      [
+        {
+          "attr": "Electric Boost",
+          "nature": "Electric",
+          "value": "0.08"
+        },
+        {
+          "attr": "Electric Damage Taken",
+          "nature": "Electric",
+          "value": "-0.1"
+        }
+      ]
+    ],
     "highlight_skill": {
       "ascend": "0/5/0/5",
       "auto_select": "AICondition (Based on Unknown)",
@@ -136,7 +156,40 @@
       "Attack": "0.2",
       "Damage Down": "0.16"
     },
-    "innate_awake_skill": [],
+    "innate_awake_skill": [
+      {
+        "ascend": "0/0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『忠实听众』的攻击力提升10.0%/15.0%/20.0%。若目标是电击属性角色，则额外使其伤害提升15.0%/22.5%/30.0%、暴击效果提升25.0%/37.5%/50.0%。",
+        "name": "变调",
+        "nature": null,
+        "skill_lv": "1/2/3",
+        "sn": 132171,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "释放『终曲：音域全开』时，立刻使目标的HIGHLIGHT/神通法总伤害增幅提升5.0%/7.5%/10.0%+意识等级*3.67%，攻击力提升10.0%/15.0%/20.0%+意识等级*5%，持续2回合。",
+        "name": "过载",
+        "nature": null,
+        "skill_lv": "1/2/3",
+        "sn": 132172,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
     "name": "坂井绫香",
     "normal_skill": [
       {
@@ -274,7 +327,49 @@
       "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
     },
-    "stat_100": null,
+    "stat_100": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1336.14 / 1360.14 / 1385.14 / 1409.14 / 1433.14 / 1458.14 / 1482.14",
+      "Attack Increase": "37.3% / 37.3% / 37.3% / 37.3% / 37.3% / 37.3% / 37.3%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "725.77 / 738.77 / 751.77 / 765.77 / 778.77 / 791.77 / 804.77",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "4268.13 / 4346.13 / 4423.13 / 4501.13 / 4579.13 / 4656.13 / 4734.13",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
     "theurgia_skill": []
   },
   "msg": "OK",

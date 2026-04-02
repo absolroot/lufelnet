@@ -54,6 +54,58 @@
         "type": "PICKUP怪ドル契約・CHANCE"
       },
       {
+        "endTime": "2026-04-30 10:59:59",
+        "fiveStar": [
+          {
+            "name": "橋本 麻由美",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "富山 佳代",
+            "type": "thief"
+          },
+          {
+            "name": "藤川 雪実",
+            "type": "thief"
+          },
+          {
+            "name": "琴音・モンターニュ",
+            "type": "thief"
+          }
+        ],
+        "name": "サーキットガール",
+        "startTime": "2026-04-02 11:30:00",
+        "type": "PICKUP怪ドル契約・TARGET"
+      },
+      {
+        "endTime": "2026-04-30 10:59:59",
+        "fiveStar": [
+          {
+            "name": "橋本 麻由美",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "富山 佳代",
+            "type": "thief"
+          },
+          {
+            "name": "藤川 雪実",
+            "type": "thief"
+          },
+          {
+            "name": "琴音・モンターニュ",
+            "type": "thief"
+          }
+        ],
+        "name": "サーキットガール",
+        "startTime": "2026-04-02 11:30:00",
+        "type": "PICKUP怪ドル契約・CHANCE"
+      },
+      {
         "endTime": "2026-04-09 10:59:59",
         "fiveStar": [
           {
@@ -192,6 +244,41 @@
         ],
         "name": "無音の硝煙",
         "startTime": "2026-03-19 11:30:00",
+        "type": "武器補給"
+      },
+      {
+        "endTime": "2026-04-30 10:59:59",
+        "fiveStar": [
+          {
+            "name": "ヴァルキリーペノン",
+            "type": "weapon",
+            "user": "麻由美"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "エメラルドチャーム",
+            "type": "weapon",
+            "user": "富山"
+          },
+          {
+            "name": "ヘビーメタルペイン",
+            "type": "weapon",
+            "user": "雪実"
+          },
+          {
+            "name": "エーデルワイス",
+            "type": "weapon",
+            "user": "琴音"
+          },
+          {
+            "name": "フォーミュラペノン",
+            "type": "weapon",
+            "user": "麻由美"
+          }
+        ],
+        "name": "無音の硝煙",
+        "startTime": "2026-04-02 11:30:00",
         "type": "武器補給"
       },
       {

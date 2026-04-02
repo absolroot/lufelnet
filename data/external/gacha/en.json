@@ -54,6 +54,58 @@
         "type": "Chance Most Wanted Idol Contracts"
       },
       {
+        "endTime": "2026-04-30 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Mayumi Hashimoto",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Kayo Tomiyama",
+            "type": "thief"
+          },
+          {
+            "name": "Yukimi Fujikawa",
+            "type": "thief"
+          },
+          {
+            "name": "Kotone Montagne",
+            "type": "thief"
+          }
+        ],
+        "name": "Full Throttle",
+        "startTime": "2026-04-02 11:30:00",
+        "type": "Targeted Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-04-30 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Mayumi Hashimoto",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Kayo Tomiyama",
+            "type": "thief"
+          },
+          {
+            "name": "Yukimi Fujikawa",
+            "type": "thief"
+          },
+          {
+            "name": "Kotone Montagne",
+            "type": "thief"
+          }
+        ],
+        "name": "Full Throttle",
+        "startTime": "2026-04-02 11:30:00",
+        "type": "Chance Most Wanted Idol Contracts"
+      },
+      {
         "endTime": "2026-04-09 10:59:59",
         "fiveStar": [
           {
@@ -192,6 +244,41 @@
         ],
         "name": "Silent Pistol",
         "startTime": "2026-03-19 11:30:00",
+        "type": "Arms Deals"
+      },
+      {
+        "endTime": "2026-04-30 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Nebula Pennant",
+            "type": "weapon",
+            "user": "Mayumi"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Emerald Charmer",
+            "type": "weapon",
+            "user": "Tomiyama"
+          },
+          {
+            "name": "Heavy Metal Pain",
+            "type": "weapon",
+            "user": "Yukimi"
+          },
+          {
+            "name": "Edelweiss",
+            "type": "weapon",
+            "user": "Kotone"
+          },
+          {
+            "name": "Formula Pennant",
+            "type": "weapon",
+            "user": "Mayumi"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2026-04-02 11:30:00",
         "type": "Arms Deals"
       },
       {

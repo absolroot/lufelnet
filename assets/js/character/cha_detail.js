@@ -20,11 +20,38 @@ document.addEventListener('DOMContentLoaded', () => {
         const langParam = urlParams.get('lang');
         if (langParam === 'en') return 'en';
         if (langParam === 'jp') return 'jp';
+        if (langParam === 'cn') return 'cn';
 
         // 쿼리 파라미터가 없으면 경로 확인
         const path = window.location.pathname;
         if (path.includes('/en/')) return 'en';
         if (path.includes('/jp/')) return 'jp';
+        if (path.includes('/cn/')) return 'cn';
+
+        // 라우터/페이지 i18n 서비스가 이미 감지한 언어를 우선 사용
+        try {
+            if (window.LanguageRouter && typeof window.LanguageRouter.getCurrentLanguage === 'function') {
+                const routedLang = window.LanguageRouter.getCurrentLanguage();
+                if (routedLang === 'kr' || routedLang === 'en' || routedLang === 'jp' || routedLang === 'cn') {
+                    return routedLang;
+                }
+            }
+        } catch (_) {}
+
+        try {
+            if (window.I18nService && typeof window.I18nService.getCurrentLanguageSafe === 'function') {
+                const i18nLang = window.I18nService.getCurrentLanguageSafe();
+                if (i18nLang === 'kr' || i18nLang === 'en' || i18nLang === 'jp' || i18nLang === 'cn') {
+                    return i18nLang;
+                }
+            }
+        } catch (_) {}
+
+        // 최후 수단으로 html lang 속성 참고
+        const htmlLang = String(document.documentElement.lang || '').toLowerCase();
+        if (htmlLang.startsWith('en')) return 'en';
+        if (htmlLang.startsWith('ja') || htmlLang.startsWith('jp')) return 'jp';
+        if (htmlLang.startsWith('zh') || htmlLang.startsWith('cn')) return 'cn';
         return 'kr';
     }
 
@@ -1327,6 +1354,13 @@ document.addEventListener('DOMContentLoaded', () => {
         // console.log('fillSkillsInfo 호출됨:', characterName);
 
         const skillsGrid = document.querySelector('.skills-grid');
+        if (!skillsGrid) return;
+        const existingButtons = skillsGrid.parentElement
+            ? skillsGrid.parentElement.querySelector('.skill-level-buttons')
+            : null;
+        if (existingButtons) {
+            existingButtons.remove();
+        }
 
         // 현재 언어 확인
         const currentLang = getCurrentLanguage();
@@ -1501,6 +1535,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 100);
         }
     };
+
+    safeRun('fillSkillsInfo:languageDetected', () => {
+        window.addEventListener('languageDetected', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const characterName = urlParams.get('name') || window.__CHARACTER_DEFAULT || '';
+            if (!characterName || typeof window.fillSkillsInfo !== 'function') return;
+            window.fillSkillsInfo(characterName);
+        });
+    });
 
     // 심상 코어(innate) 정보 채우기
     window.fillInnateInfo = function (characterName) {

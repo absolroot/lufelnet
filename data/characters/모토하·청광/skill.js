@@ -9,7 +9,7 @@ window.characterSkillsData["모토하·청광"] = {
     "type": "광역피해",
     "sp": 20,
     "cool": 0,
-    "description": "모든 적에게 공격력 282.8%/311.8%/300.2%/329.2%의 전격 속성 대미지를 준다. 해당 대미지는 모든 적에게 균등하게 분할되며, 목표를 감전 및 『섬락』 상태에 빠뜨린다(2턴 지속). 자신이 『빛』을 획득한다."
+    "description": "모든 적에게 공격력 282.8%/311.8%/300.2%/329.2%의 전격 속성 대미지를 준다. 해당 대미지는 모든 적에게 균등하게 분할되며, 목표를 감전 및 『섬락』 상태에 빠뜨린다(2턴 지속). 자신이 『빛』을 획득한다.\n『섬락』: 받는 대미지가 39.0%/43.0%/41.4%/45.4% 증가한다."
   },
   "skill2": {
     "name": "지지 않는 태양",
@@ -51,7 +51,7 @@ window.enCharacterSkillsData["모토하·청광"] = {
     "name": "Instant Thunder Strike",
     "element": "전격광역",
     "type": "광역피해",
-    "description": "Deal Electric damage to all enemies equal to 282.8%/311.8%/300.2%/329.2% of Attack. This damage is split equally among all enemies. Inflicts Electrify and [Flashover] for 2 turns. Gain 1 [Light] stack."
+    "description": "Deal Electric damage to all enemies equal to 282.8%/311.8%/300.2%/329.2% of Attack. This damage is split equally among all enemies. Inflicts Electrify and [Flashover] for 2 turns. Gain 1 [Light] stack.\n[Flashover]: Increase damage taken by 39.0%/43.0%/41.4%/45.4%."
   },
   "skill2": {
     "name": "Unfailing Sun",
@@ -70,6 +70,16 @@ window.enCharacterSkillsData["모토하·청광"] = {
     "element": "전격광역",
     "type": "단일피해",
     "description": "Activation condition: Have at least 3 stacks of [Light] or [Shadow].\nSelect 2 enemy targets (can target the same enemy twice) and release [Light Spear] and [Shadow Spear] respectively.\n[Light Spear]: Deal Electric damage equal to 223.3%/246.2%/237.0%/259.9% of Attack.\n[Shadow Spear]: Deal fixed damage equal to 100% of [Light Spear]'s damage and reduce the target's Down Point by 1, ignoring affinity.\nIf [Light Spear] and [Shadow Spear] hit 2 different enemies, increase skill damage to 115%. If they hit the same enemy, increase critical damage by 30% for this skill.\nSpend a total of 3 [Light/Shadow] stacks (Light is prioritized). Each [Light] stack spent increases Attack by 29.3%/32.3%/31.1%/34.1% when using [Light Spear]. Each [Shadow] stack spent grants all allies a 488/538/518/568 Shield for 2 turns."
+  },
+  "passive1": {
+    "name": "Gilded",
+    "element": "패시브",
+    "description": "At the start of battle, Sunnyglow Motoha enters [Determined Girl] for 2 turns. While in [Determined Girl], increase Pierce by 15.0%."
+  },
+  "passive2": {
+    "name": "Indomitable",
+    "element": "패시브",
+    "description": "When dealing damage to enemies in [Flashover], increase Attack by 42.0%."
   }
 };
 
@@ -79,7 +89,7 @@ window.jpCharacterSkillsData["모토하·청광"] = {
     "name": "瞬雷槍撃",
     "element": "전격광역",
     "type": "광역피해",
-    "description": "敵全体に攻撃力の282.8%/311.8%/300.2%/329.2%の電撃属性ダメージを与える。このダメージは敵全体に均等に分配される。対象を感電および『閃絡』状態にする（2ターン持続）。自身は『光』を獲得する。"
+    "description": "敵全体に攻撃力の282.8%/311.8%/300.2%/329.2%の電撃属性ダメージを与える。このダメージは敵全体に均等に分配される。対象を感電および『閃絡』状態にする（2ターン持続）。自身は『光』を獲得する。\n『閃絡』：受けるダメージが39.0%/43.0%/41.4%/45.4%上昇する。"
   },
   "skill2": {
     "name": "不落の日",
@@ -98,6 +108,16 @@ window.jpCharacterSkillsData["모토하·청광"] = {
     "element": "전격광역",
     "type": "단일피해",
     "description": "発動条件：『光』または『影』を合計3スタック以上所持.\n敵2体（同一目標を重複選択可能）を選択し、それぞれに『光の槍』と『影の槍』を放つ.\n『光の槍』：攻撃力の223.3%/246.2%/237.0%/259.9%の電撃属性ダメージを与える.\n『影の槍』：『光の槍』の100%相当の固定ダメージを与え、耐性を無視して対象のダウン値を1ポイント削る.\n『光の槍』と『影의 槍』が同時に異なる敵2体に命中した場合、スキルダメージが元の115%に上昇する. 同一の敵に命中した場合、今回のクリティカル効果が30%上昇する.\n『光』または『影』を合計3スタック消費（光を優先的に消費）. 消費した『光』1つにつき『光の槍』の攻撃力が29.3%/32.3%/31.1%/34.1%上昇し、消費した『影』1つにつき味方全体に488/538/518/568のシールドを付与する（2턴 지속）."
+  },
+  "passive1": {
+    "name": "鎏金",
+    "element": "패시브",
+    "description": "戦闘開始時、素羽・晴光は『決意の少女』状態になる（2ターン持続）。『決意の少女』状態の間、貫通が15.0%上昇する。"
+  },
+  "passive2": {
+    "name": "不屈",
+    "element": "패시브",
+    "description": "『閃絡』状態の敵にダメージを与える時、攻撃力が42.0%上昇する。"
   }
 };
 window.cnCharacterSkillsData = window.cnCharacterSkillsData || {};

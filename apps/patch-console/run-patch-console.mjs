@@ -838,12 +838,77 @@ function parsePort(argv) {
   return 4173;
 }
 
+function buildPortCandidates(preferredPort) {
+  const candidates = [];
+  const seen = new Set();
+
+  function push(port) {
+    if (!Number.isInteger(port) || port < 0 || port > 65535) return;
+    if (seen.has(port)) return;
+    seen.add(port);
+    candidates.push(port);
+  }
+
+  push(preferredPort);
+  for (let offset = 1; offset <= 20; offset += 1) {
+    push(preferredPort + offset);
+  }
+  push(0);
+  return candidates;
+}
+
 function log(message) {
   process.stdout.write(`${message}\n`);
 }
 
 function warn(message) {
   process.stderr.write(`[warn] ${message}\n`);
+}
+
+function startServer(server, host, preferredPort) {
+  const candidates = buildPortCandidates(preferredPort);
+  let attemptIndex = 0;
+
+  return new Promise((resolve, reject) => {
+    function tryNext() {
+      if (attemptIndex >= candidates.length) {
+        reject(new Error(`Unable to start Patch Console on ${host} after trying ${candidates.length} port candidates.`));
+        return;
+      }
+
+      const port = candidates[attemptIndex];
+      attemptIndex += 1;
+
+      const handleListening = () => {
+        cleanup();
+        const address = server.address();
+        const activePort = address && typeof address === 'object' ? address.port : port;
+        resolve(activePort);
+      };
+
+      const handleError = (error) => {
+        cleanup();
+        if (error && (error.code === 'EACCES' || error.code === 'EADDRINUSE')) {
+          const target = port === 0 ? `${host}:ephemeral-port` : `${host}:${port}`;
+          warn(`Could not bind Patch Console to ${target} (${error.code}). Trying another port.`);
+          tryNext();
+          return;
+        }
+        reject(error);
+      };
+
+      function cleanup() {
+        server.off('listening', handleListening);
+        server.off('error', handleError);
+      }
+
+      server.once('listening', handleListening);
+      server.once('error', handleError);
+      server.listen(port, host);
+    }
+
+    tryNext();
+  });
 }
 
 function sendJson(res, statusCode, payload) {
@@ -3062,12 +3127,15 @@ function main() {
     });
   });
 
-  server.listen(port, host, () => {
-    log(`Patch Console running at http://${host}:${port}`);
+  startServer(server, host, port).then((activePort) => {
+    log(`Patch Console running at http://${host}:${activePort}`);
     for (const [domain, scriptRel] of Object.entries(DOMAIN_PATCH_SCRIPT)) {
       log(`Patch script [${domain}]: ${scriptRel.replace(/\\/g, '/')}`);
     }
     log(`Default report: ${DEFAULT_REPORT_REL.replace(/\\/g, '/')}`);
+  }).catch((error) => {
+    log(`[error] Failed to start Patch Console: ${error.message}`);
+    process.exit(1);
   });
 }
 

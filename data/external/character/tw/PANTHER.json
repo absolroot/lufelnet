@@ -226,7 +226,7 @@
       }
     ],
     "rating": {
-      "Attack": 3010.0,
+      "Attack": 3010,
       "Crit Mult.": 1.77,
       "Crit Rate": 0.37,
       "Damage Mult.": 0.67
@@ -277,6 +277,6 @@
     "stat_100": null,
     "theurgia_skill": []
   },
-  "msg": "OK",
+  "msg": "TESTING",
   "status": 0
 }

@@ -228,8 +228,8 @@
       }
     ],
     "rating": {
-      "Attack": 4060.0,
-      "Unknown Attr": 0.0
+      "Attack": 4060,
+      "Unknown Attr": 0
     },
     "stat": {
       "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
@@ -294,6 +294,6 @@
       }
     ]
   },
-  "msg": "OK",
+  "msg": "TESTING",
   "status": 0
 }

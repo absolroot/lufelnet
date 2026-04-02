@@ -282,6 +282,7 @@ Object.assign(window.characterData, {
         "name": "YUI·스텔라",
         "name_en": "YUI·Prism",
         "name_jp": "YUI·ステラ",
+        "name_cn": "YUI·幻彩",
         "codename": "BUI·Prism",
         "skill_item": 5
     },

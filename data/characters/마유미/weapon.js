@@ -24,39 +24,39 @@ window.WeaponData["마유미"] = {
 window.enCharacterWeaponData["마유미"] = {
   "name": "Mayumi Hashimoto",
   "weapon4-1": {
-    "name": "Trailblazing Pioneer",
-    "health": 1791,
-    "attack": 554,
-    "defense": 328,
+    "name": "Formula Pennant",
+    "health": 1791.59,
+    "attack": 554.96,
+    "defense": 328.02,
     "skill_name": "Wake Effect",
-    "description": "ATK is increased by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. After casting [Quantum Transmission], increase DMG Dealt by 18.0%/23.4%/23.4%/28.8%/28.8%/34.2%/34.2%."
+    "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.\nWhen activating Torque Boost, increase damage by 18.0%/23.4%/23.4%/28.8%/28.8%/34.2%/34.2%."
   },
   "weapon5-1": {
-    "name": "Victory Declaration",
-    "health": 2239,
-    "attack": 693,
-    "defense": 409,
+    "name": "Nebula Pennant",
+    "health": 2239.65,
+    "attack": 693.7,
+    "defense": 409.62,
     "skill_name": "Gravity Acceleration",
-    "description": "SPD is increased by 15/15/20/20/25/25/30. Every 10 SPD that exceeds 100 would increase ATK by 12.5%/16.2%/16.2%/20.0%/20.0%/23.8%/23.8%, up to 100.0%/130.0%/130.0%/160.0%/160.0%/190.0%/190.0%. After casting a Persona Skill, every 40 km/h [Velocity] would increase all allies' DMG Dealt by 3.4%/4.4%/4.4%/5.4%/5.4%/6.4%/6.4%, up to 17.0%/22.0%/22.0%/27.0%/27.0%/32.0%/32.0% for 2 turns."
+    "description": "Increase Speed by 15/15/20/20/25/25/30. When Mayumi's Speed is over 100, for every 10 points of Speed above 100, increase Attack by 12.5%/16.2%/16.2%/20.0%/20.0%/23.8%/23.8% (up to a maximum of 100.0%/130.0%/130.0%/160.0%/160.0%/190.0%/190.0%).\nAfter activating a skill, for every 40 stacks of total Velocity, increase party's damage by 3.4%/4.4%/4.4%/5.4%/5.4%/6.4%/6.4% for 2 turns (up to a maximum of 17.0%/22.0%/22.0%/27.0%/27.0%/32.0%/32.0%)."
   }
 };
 window.jpCharacterWeaponData["마유미"] = {
   "name": "橋本 麻由美",
   "weapon4-1": {
-    "name": "開拓者",
-    "health": 1791,
-    "attack": 554,
-    "defense": 328,
+    "name": "フォーミュラペノン",
+    "health": 1791.59,
+    "attack": 554.96,
+    "defense": 328.02,
     "skill_name": "風流効果",
-    "description": "攻撃力が12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%増加する。『急速光輪』発動後、自身のダメージが18.0%/23.4%/23.4%/28.8%/28.8%/34.2%/34.2%増加する。"
+    "description": "攻撃力が12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%上昇する。\n『トルクブースト』発動した時、与ダメージが18.0%/23.4%/23.4%/28.8%/28.8%/34.2%/34.2%上昇する。"
   },
   "weapon5-1": {
-    "name": "勝利宣言",
-    "health": 2239,
-    "attack": 693,
-    "defense": 409,
+    "name": "ヴァルキリーペノン",
+    "health": 2239.65,
+    "attack": 693.7,
+    "defense": 409.62,
     "skill_name": "重力加速",
-    "description": "速さが15.0/15.0/20.0/20.0/25.0/25.0/30.0増加する。速さが100を超える場合、超過分10ポイントごとに攻撃力が12.5%/16.3%/16.3%/20.0%/20.0%/23.8%/23.8%増加し、最大で100.0%/130.0%/130.0%/160.0%/160.0%/190.0%/190.0%増加する。\nペルソナスキル使用後、自身が『時速』を40km/h累積するごとに、2ターンの間味方全員のダメージが3.4%/4.4%/4.4%/5.5%/5.5%/6.6%/6.6%増加し、最大で17.0%/22.0%/22.0%/27.0%/27.0%/32.0%/32.0%増加する。"
+    "description": "速さが15/15/20/20/25/25/30上昇する。自身の速さが１００以上の時、１００超過分の速さ１０ごとに攻撃力が12.5%/16.2%/16.2%/20.0%/20.0%/23.8%/23.8%になるように上昇する（最大100.0%/130.0%/130.0%/160.0%/160.0%/190.0%/190.0%まで）。\nスキル発動後、２ターンの間、味方全体の与ダメージが戦闘中に獲得した『エンジン出力』の総数４０ごとに3.4%/4.4%/4.4%/5.4%/5.4%/6.4%/6.4%（最大17.0%/22.0%/22.0%/27.0%/27.0%/32.0%/32.0%まで）上昇する。"
   }
 };
 window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};

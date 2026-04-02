@@ -308,10 +308,10 @@
       }
     ],
     "rating": {
-      "Attack": 3700.0,
+      "Attack": 3700,
       "Crit Mult.": 1.9,
       "Damage Mult.": 0.3,
-      "Unknown Attr": 0.0
+      "Unknown Attr": 0
     },
     "stat": {
       "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
@@ -401,6 +401,6 @@
     },
     "theurgia_skill": []
   },
-  "msg": "OK",
+  "msg": "TESTING",
   "status": 0
 }

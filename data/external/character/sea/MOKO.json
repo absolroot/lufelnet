@@ -176,7 +176,7 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "SP 24",
-        "desc": "Spend 2 Greenleaf stacks for78.1%/86.1%/81.3%/89.3% chance to inflict Sleep on 1 foe for 1 turn. On success, increase foe's next attack damage taken by 29.3%/32.3%/30.5%/33.5%. On failure, increase next damage taken by 14.6%/16.1%/15.2%/16.7%.",
+        "desc": "Spend 2 Greenleaf stacks for 78.1%/86.1%/81.3%/89.3% chance to inflict Sleep on 1 foe for 1 turn. On success, increase foe's next attack damage taken by 29.3%/32.3%/30.5%/33.5% for 1 turn. On failure, increase next damage taken by 14.6%/16.1%/15.2%/16.7% for 1 turn.",
         "name": "Spirit's Lullaby",
         "nature": null,
         "skill_lv": "10/10/12/12",
@@ -224,8 +224,8 @@
     ],
     "rating": {
       "Ailment Acc.": 0.13,
-      "Attack": 4460.0,
-      "Unknown Attr": 0.0
+      "Attack": 4460,
+      "Unknown Attr": 0
     },
     "stat": {
       "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
@@ -272,6 +272,6 @@
     "stat_100": null,
     "theurgia_skill": []
   },
-  "msg": "OK",
+  "msg": "TESTING",
   "status": 0
 }

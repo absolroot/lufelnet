@@ -228,7 +228,7 @@
       }
     ],
     "rating": {
-      "Attack": 2970.0,
+      "Attack": 2970,
       "Crit Mult.": 2.15,
       "Crit Rate": 0.37,
       "Damage Mult.": 0.18
@@ -344,6 +344,6 @@
       }
     ]
   },
-  "msg": "OK",
+  "msg": "TESTING",
   "status": 0
 }

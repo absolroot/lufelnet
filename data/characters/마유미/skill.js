@@ -49,85 +49,91 @@ window.characterSkillsData["마유미"] = {
 window.enCharacterSkillsData["마유미"] = {
   "name": "Mayumi Hashimoto",
   "skill1": {
-    "name": "Vortex Suppression",
+    "name": "Shockwave",
     "element": "물리광역",
     "type": "광역피해",
     "hp": 8,
     "cool": 0,
-    "description": "Deals 134.2%/148.0%/142.5%/156.2% ATK as Phys DMG to all enemies, and increases all allies' DMG Bonus by 8.8%/9.7%/9.3%/10.2% (For every 10 SPD, additionally increases DMG Bonus by 2%, up to 35.1%/38.7%/37.3%/40.9%) for 2 turns;\nDuring Extra Turn: Increases skill DMG by 50%, will Always CRIT on the main target."
+    "description": "Deal Physical damage to all foes equal to 134.2%/148.0%/142.5%/156.2% of Attack.\nAlso, increase party's damage by 8.8%/9.7%/9.3%/10.2% for 2 turns (for every 10 points of Speed, increase by 2% more, up to a maximum of 35.1%/38.7%/37.3%/40.9%).\nWhen used on an extra action, increase skill damage by 50%, and activate a guaranteed critical hit on the main target."
   },
   "skill2": {
-    "name": "Overload Acceleration",
+    "name": "Aero Setup",
     "element": "버프광역",
     "type": "버프",
     "sp": 22,
     "cool": 0,
-    "description": "Increases all allies' ATK by 8.8%/9.7%/9.3%/10.2% (For every 10 SPD, additionally increases ATK by 2%, up to 35.1%/38.7%/37.3%/40.9%), DEF by 9.8%/10.9%/10.4%/11.4% (For every 10 SPD, additionally increases DEF by 2.22%, up to 39.0%/43.0%/41.4%/45.4%) for 2 turns;\nDuring Extra Turn: Gives all allies 1 stack of 1964/2114/2054/2204 Shield for 2 turns."
+    "description": "Increase party's Attack by 8.8%/9.7%/9.3%/10.2% for 2 turns (for every 10 points of Speed, increase by 2% more, up to a maximum of 35.1%/38.7%/37.3%/40.9%). Also, increase party's Defense by 9.8%/10.8%/10.4%/11.4% for 2 turns (for every 10 points of Speed, increase by 2.22% more, up to a maximum of 39.0%/43.0%/41.4%/45.4%).\nWhen used on an extra action, grant a shield to all allies equal to 2204/2354/2294/2444. This effect lasts for 2 turns."
   },
   "skill3": {
-    "name": "Roaring Engine",
+    "name": "Power Setup",
     "element": "버프광역",
     "type": "버프",
     "sp": 25,
     "cool": 0,
-    "description": "Increases all allies PEN by 1.0%/1.1%/1.0%/1.1% (For every 10 SPD, additionally increases PEN by 0.22%, up to 3.9%/4.3%/4.1%/4.5%), ATK by 12.7% (For every 10 SPD, additionally increases ATK by 2.89%, up to 50.8%/56.0%/53.9%/59.1%) for 2 turns;\nDuring Extra Turn: Increases the main target PEN by 2.0%/2.2%/2.1%/2.3% (For every 10 SPD, additionally increases PEN by 0.44%, up to 7.8%/8.6%/8.3%/9.1%) for 1 turn."
+    "description": "Increase party's pierce rate by 1.0%/1.1%/1.0%/1.1% for 2 turns (for every 10 points of Speed, increase by 0.22% more, up to a maximum of 3.9%/4.3%/4.1%/4.5%). Also, increase party's Attack by 12.7%/14.0%/13.5%/14.8% for 2 turns (for every 10 points of Speed, increase by 2.89% more, up to a maximum of 50.8%/56.0%/53.9%/59.1%).\nWhen used on an extra action, also increase the main target's pierce rate by 2.0%/2.2%/2.1%/2.3% for 1 turn (for every 10 points of Speed, increase by 0.44% more, up to a maximum of 7.8%/8.6%/8.3%/9.1%)."
   },
   "skill_highlight": {
     "element": "버프광역",
     "type": "버프",
-    "description": "Increases all allies' ATK by 5.9%/6.5%/6.2%/6.8% (For every 10 SPD, additionally increases ATK by 1.33%, up to 23.4%/25.8%/24.9%/27.3%) and DMG Bonus (For every 10 SPD, additionally increases DMG Bonus by 1.33%, up to 23.4%/25.8%/24.9%/27.3%) for 2 turns.\nWhen the main target deals DMG to enemies, additionally decreases the main target's Down Gauge by 1."
+    "description": "Increase party's Attack by 5.9%/6.5%/6.2%/6.8% for 2 turns (for every 10 points of Speed, increase by 1.33% more, up to a maximum of 23.4%/25.8%/24.9%/27.3%). Also, increase party's damage by 5.9%/6.5%/6.2%/6.8% for 2 turns (for every 10 points of Speed, increase by 1.33% more, up to a maximum of 23.4%/25.8%/24.9%/27.3%). Also, when the selected ally of this Highlight next deals direct damage to foes, decrease the selected foe's Down Points by 1 more.",
+    "cool": 4
   },
   "passive1": {
-    "name": "Lead",
+    "name": "Team Ambassador",
     "element": "패시브",
-    "description": "When Turbo is present, increase all allies' DMG Dealt during Extra Turn by 30.0%."
+    "description": "When Mayumi is present, increase party's damage during extra actions by 45.0%.",
+    "cool": 0
   },
   "passive2": {
-    "name": "Supercharge",
+    "name": "Overtaking",
     "element": "패시브",
-    "description": "When Turbo is present, increase all allies' DMG Dealt to Downed enemies by 24.0%. Turbo will deal an additional 48.0% ATK as Phys DMG to the main target when she Downs an enemy."
+    "description": "When Mayumi is present, increase party's damage dealt to downed foes by 30.0%. Also, when Mayumi knocks down a foe, deal more Physical damage equal to 60.0% of Attack.",
+    "cool": 0
   }
 };
 window.jpCharacterSkillsData["마유미"] = {
   "name": "橋本 麻由美",
   "skill1": {
-    "name": "渦巻く抑圧",
+    "name": "ショックウェイク",
     "element": "물리광역",
     "type": "광역피해",
     "hp": 8,
     "cool": 0,
-    "description": "全ての敵に攻撃力の134.2%/148.0%/142.5%/156.2%の物理属性ダメージを与え、2ターンの間味方全体の与ダメージが8.8%/9.7%/9.3%/10.2%上昇する（速さ10ごとにダメージがさらに2%上昇、最大35.1%/38.7%/37.3%/40.9%）。\n追加ターン時：スキルダメージが50%上昇し、メインターゲットに必ずクリティカルが発生する。"
+    "description": "敵全体に攻撃力134.2%/148.0%/142.5%/156.2%の物理属性ダメージを与える。\nさらに２ターンの間、味方全体の与ダメージが8.8%/9.7%/9.3%/10.2%上昇し、追加で速さ１０ごとに２%になるように上昇（追加上昇分は最大35.1%/38.7%/37.3%/40.9%まで）する。\n追加行動中に発動した時、スキルダメージが５０%上昇し、選択した対象に必ずクリティカルが発生する。"
   },
   "skill2": {
-    "name": "オーバーロード加速",
+    "name": "エアロ・セットアップ",
     "element": "버프광역",
     "type": "버프",
     "sp": 22,
     "cool": 0,
-    "description": "2ターンの間、味方全体の攻撃力が8.8%/9.7%/9.3%/10.2%上昇する（速さ10ごとに攻撃力がさらに2%上昇、最大35.1%/38.7%/37.3%/40.9%）、防御力が9.8%/10.9%/10.4%/11.4%上昇する（速さ10ごとに防御力がさらに2.22%上昇、最大39.0%/43.0%/41.4%/45.4%）。\n追加ターン時：味方全体が1964/2114/2054/2204ポイント分のダメージを防ぐシールドを2ターン獲得する。"
+    "description": "２ターンの間、味方全体の攻撃力が8.8%/9.7%/9.3%/10.2%上昇し、追加で速さ１０ごとに２%になるように上昇（追加上昇分は最大35.1%/38.7%/37.3%/40.9%まで）する。さらに２ターンの間、防御力が9.8%/10.8%/10.4%/11.4%上昇し、追加で速さ１０ごとに２.２２%になるように上昇（追加上昇分は最大39.0%/43.0%/41.4%/45.4%まで）する。\n追加行動中に発動した時、味方全体に2204/2354/2294/2444分のシールドを付与する。この効果は２ターン持続する。"
   },
   "skill3": {
-    "name": "エンジン轟音",
+    "name": "パワー・セットアップ",
     "element": "버프광역",
     "type": "버프",
     "sp": 25,
     "cool": 0,
-    "description": "2ターンの間、味方全体の貫通が1.0%/1.1%/1.0%/1.1%上昇する（速さ10ごとに貫通がさらに0.22%上昇、最大3.9%/4.3%/4.1%/4.5%）、攻撃力が12.7%/14.0%/13.5%/14.8%上昇する（速さ10ごとに攻撃力がさらに2.89%上昇、最大50.8%/56.0%/53.9%/59.1%）。\n追加ターン時：1ターンの間、メインターゲットの貫通が2.0%/2.2%/2.1%/2.3%上昇する（速さ10ごとに貫通がさらに0.44%上昇、最大7.8%/8.6%/8.3%/9.1%）。"
+    "description": "２ターンの間、味方全体の貫通が1.0%/1.1%/1.0%/1.1%上昇、追加で速さ１０ごとに０.２２%になるように上昇（追加上昇分は最大3.9%/4.3%/4.1%/4.5%まで）する。さらに２ターンの間、攻撃力が12.7%/14.0%/13.5%/14.8%上昇し、追加で速さ１０ごとに２.８９%になるように上昇（追加上昇分は最大50.8%/56.0%/53.9%/59.1%まで）する。\n追加行動中に発動した時、１ターンの間、選択した対象の貫通が2.0%/2.2%/2.1%/2.3%上昇し、追加で速さ１０ごとに０.４４%になるように上昇（追加上昇分は最大7.8%/8.6%/8.3%/9.1%まで）する。"
   },
   "skill_highlight": {
     "element": "버프광역",
     "type": "버프",
-    "description": "2ターンの間、味方全体の攻撃力が5.9%/6.5%/6.2%/6.8%上昇する（速さ10ごとに攻撃力がさらに1.33%上昇、最大23.4%/25.8%/24.9%/27.3%）、与ダメージが5.9%/6.5%/6.2%/6.8%上昇する（速さ10ごとにダメージがさらに1.33%上昇、最大23.4%/25.8%/24.9%/27.3%）。また、メインターゲットが次に敵にダメージを与えるとき、敵のダウンゲージが追加で1ポイント減少する。"
+    "description": "２ターンの間、味方全体の攻撃力が5.9%/6.5%/6.2%/6.8%上昇し、追加で速さ１０ごとに１.３３%になるように上昇（追加上昇分は最大23.4%/25.8%/24.9%/27.3%まで）する。さらに２ターンの間、与ダメージが5.9%/6.5%/6.2%/6.8%上昇し、追加で速さ１０ごとに１.３３%になるように上昇（追加上昇分は最大23.4%/25.8%/24.9%/27.3%まで）する。またハイライトで選択した味方が、次に敵へ能動的なダメージを与える時、選択した敵のダウン値を追加で１減少させる。",
+    "cool": 4
   },
   "passive1": {
-    "name": "先導",
+    "name": "チームアンバサダー",
     "element": "패시브",
-    "description": "橋本 麻由美がフィールドにいる場合、味方全体の追加ターン時の与ダメージが30.0%上昇する。"
+    "description": "自身が場にいる時、味方全体が追加行動中に与えるダメージが45.0%上昇する。",
+    "cool": 0
   },
   "passive2": {
-    "name": "加圧",
+    "name": "ポジション奪取",
     "element": "패시브",
-    "description": "橋本 麻由美がフィールドにいる場合、味方全体のダウン状態の敵への与ダメージが24.0%上昇する。橋本が敵をノックダウンさせた場合、その敵に攻撃力48.0%の物理属性ダメージを追加で与える。"
+    "description": "自身が場にいる時、味方全体のダウンしている敵への与ダメージを30.0%上昇させる。さらに自身が敵をダウンさせると、攻撃力60.0%の物理属性ダメージを追加で与える。",
+    "cool": 0
   }
 };
 window.cnCharacterSkillsData = window.cnCharacterSkillsData || {};

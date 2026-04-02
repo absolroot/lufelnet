@@ -223,8 +223,8 @@
       }
     ],
     "rating": {
-      "Attack": 3730.0,
-      "Unknown Attr": 0.0
+      "Attack": 3730,
+      "Unknown Attr": 0
     },
     "stat": {
       "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
@@ -271,6 +271,6 @@
     "stat_100": null,
     "theurgia_skill": []
   },
-  "msg": "OK",
+  "msg": "TESTING",
   "status": 0
 }

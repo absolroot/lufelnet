@@ -208,10 +208,10 @@
       }
     ],
     "rating": {
-      "Attack": 2740.0,
-      "Defense": 1900.0,
-      "HP": 7980.0,
-      "Unknown Attr": 0.0
+      "Attack": 2740,
+      "Defense": 1900,
+      "HP": 7980,
+      "Unknown Attr": 0
     },
     "stat": {
       "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
@@ -258,6 +258,6 @@
     "stat_100": null,
     "theurgia_skill": []
   },
-  "msg": "OK",
+  "msg": "TESTING",
   "status": 0
 }

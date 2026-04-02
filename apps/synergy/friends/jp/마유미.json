@@ -201,8 +201,17 @@
         "unlock_cond": "器用さ Lv.17"
       }
     ],
-    "can_romance": false,
-    "friend_lover_dialog": [],
+    "can_romance": true,
+    "friend_lover_dialog": [
+      {
+        "content": "もちろん気があった",
+        "is_romance": true
+      },
+      {
+        "content": "そんな気はない",
+        "is_romance": false
+      }
+    ],
     "item": [
       {
         "bonus_synergy": 38,
@@ -664,7 +673,7 @@
         "bonus_synergy": 29,
         "compound": [],
         "image": "item-317007.png",
-        "name": "フェザーマンフィギュア",
+        "name": "フェザーマン人形",
         "new_gift_synergy": 58,
         "seed": [],
         "shop": [
@@ -741,7 +750,32 @@
       }
     ],
     "name": "橋本麻由美",
-    "romance_dialog": [],
+    "romance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "構わないけど…",
+              "reward": 40
+            },
+            {
+              "content": "それはちょっと…",
+              "reward": 40
+            }
+          ],
+          [
+            {
+              "content": "晩御飯、食べてく？",
+              "reward": 60
+            },
+            {
+              "content": "ええっと…",
+              "reward": 50
+            }
+          ]
+        ]
+      }
+    ],
     "special_award": [
       {
         "description": "小型クレーンゲームでぬいぐるみを取れる確率が上がる",

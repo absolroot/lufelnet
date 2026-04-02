@@ -147,7 +147,7 @@
               "reward": 60
             },
             {
-              "content": "I didn't do much.",
+              "content": "I didn't do that much.",
               "reward": 50
             }
           ]
@@ -162,11 +162,11 @@
         "good_answers": [
           [
             {
-              "content": "You were pretty badass.",
+              "content": "That was pretty badass.",
               "reward": 60
             },
             {
-              "content": "Are you okay?",
+              "content": "You okay?",
               "reward": 50
             }
           ]
@@ -201,8 +201,17 @@
         "unlock_cond": "Proficiency Lv.17"
       }
     ],
-    "can_romance": false,
-    "friend_lover_dialog": [],
+    "can_romance": true,
+    "friend_lover_dialog": [
+      {
+        "content": "Guilty as charged.",
+        "is_romance": true
+      },
+      {
+        "content": "I'm sorry, it's not like that.",
+        "is_romance": false
+      }
+    ],
     "item": [
       {
         "bonus_synergy": 38,
@@ -664,7 +673,7 @@
         "bonus_synergy": 29,
         "compound": [],
         "image": "item-317007.png",
-        "name": "Featherman Figure",
+        "name": "Featherman Doll",
         "new_gift_synergy": 58,
         "seed": [],
         "shop": [
@@ -741,7 +750,32 @@
       }
     ],
     "name": "Mayumi Hashimoto",
-    "romance_dialog": [],
+    "romance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Go ahead... I guess?",
+              "reward": 40
+            },
+            {
+              "content": "I'd prefer you didn't...",
+              "reward": 40
+            }
+          ],
+          [
+            {
+              "content": "Wanna stay for dinner?",
+              "reward": 60
+            },
+            {
+              "content": "Good question...",
+              "reward": 50
+            }
+          ]
+        ]
+      }
+    ],
     "special_award": [
       {
         "description": "Increase rate of winning plushies from the small crane game.",

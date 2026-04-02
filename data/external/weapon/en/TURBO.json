@@ -1,0 +1,33 @@
+{
+  "data": {
+    "fiveStar": [
+      {
+        "name": "Nebula Pennant",
+        "quality": 5,
+        "skill": "Increase Speed by 15/15/20/20/25/25/30. When Mayumi's Speed is over 100, for every 10 points of Speed above 100, increase Attack by 12.5%/16.2%/16.2%/20.0%/20.0%/23.8%/23.8% (up to a maximum of 100.0%/130.0%/130.0%/160.0%/160.0%/190.0%/190.0%).\nAfter activating a skill, for every 40 stacks of total Velocity, increase party's damage by 3.4%/4.4%/4.4%/5.4%/5.4%/6.4%/6.4% for 2 turns (up to a maximum of 17.0%/22.0%/22.0%/27.0%/27.0%/32.0%/32.0%).",
+        "stat": {
+          "attack": 693.7,
+          "defense": 409.62,
+          "hp": 2239.65
+        },
+        "user": "Mayumi"
+      }
+    ],
+    "fourStar": [
+      {
+        "name": "Formula Pennant",
+        "quality": 4,
+        "skill": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.\nWhen activating Torque Boost, increase damage by 18.0%/23.4%/23.4%/28.8%/28.8%/34.2%/34.2%.",
+        "stat": {
+          "attack": 554.96,
+          "defense": 328.02,
+          "hp": 1791.59
+        },
+        "user": "Mayumi"
+      }
+    ],
+    "name": "Mayumi"
+  },
+  "msg": "OK",
+  "status": 0
+}

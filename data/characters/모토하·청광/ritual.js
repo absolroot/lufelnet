@@ -34,7 +34,7 @@ window.enCharacterRitualData["모토하·청광"] = {
   "r5": "Elven Light",
   "r5_detail": "Increase the skill levels of [Thunder Thrust] and [Skyfall Bolt] by 3.",
   "r6": "Crown of Reshaped Destiny",
-  "r6_detail": "Increase the maximum stacks of [Flowing Light] to 9. At the start of battle, Motoha gains 9 [Flowing Light] stacks.\nWhen activating [Twilight Radiance], gain 1 [Reshape] stack: Increase [Twilight Radiance] Skill Damage by 5%. Stacks up to 5 times (this effect is an independent bonus)."
+  "r6_detail": "Increase the maximum stacks of [Flowing Light] by 9. At the start of battle, Motoha gains 9 [Flowing Light] stacks.\nWhen activating [Twilight Radiance], gain 1 [Reshape] stack: Increase [Twilight Radiance] Skill Damage by 5%. Stacks up to 5 times (this effect is an independent bonus)."
 };
 
 window.jpCharacterRitualData["모토하·청광"] = {

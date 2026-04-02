@@ -10,21 +10,46 @@
               "Nullify": [],
               "Reflect": [],
               "Resistant": [
-                "Fire"
+                "Ice",
+                "Nuclear",
+                "Curse"
               ],
               "Weak": [
-                "Ice"
+                "Electric"
               ]
             },
-            "image": "B-guaiwutouxiang-surtr.png",
+            "image": "B-guaiwutouxiang-scathach.png",
             "level": "89",
-            "name": "被操控的斯尔特",
-            "skill": "108,103,1008",
-            "sn": 543101,
+            "name": "被操控的斯卡哈",
+            "skill": "1016,1404,207",
+            "sn": 544101,
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Phys",
+                "Gun",
+                "Wind",
+                "Nuclear",
+                "Bless"
+              ],
+              "Weak": [
+                "Electric"
+              ]
+            },
+            "image": "B-guaiwutouxiang-cuchulainn.png",
+            "level": "89",
+            "name": "被操控的库夫林",
+            "skill": "1023,1154",
+            "sn": 544102,
             "stat": {}
           }
         ],
-        "scoreRatio": 1.0,
+        "scoreRatio": 2.0,
         "sn": 78401
       },
       {
@@ -49,7 +74,7 @@
             "level": "89",
             "name": "被操控的葛内舍",
             "skill": "1013,1022",
-            "sn": 543111,
+            "sn": 544111,
             "stat": {}
           }
         ],
@@ -57,9 +82,9 @@
         "sn": 78402
       }
     ],
-    "buff": "岩画残垣: 添加『适应性降级』状态时，为所有同伴添加『神秘符文』；获得额外回合时，自身获得『神秘符文』。『神秘符文』：造成的最终伤害提升40%，持续2回合。",
-    "endTime": "2026-04-02 06:30:00",
-    "startTime": "2026-03-05 07:30:00"
+    "buff": "高压富氧: 进入战斗时，所有友方获得『狂热意志』。『狂热意志』：使用技能造成伤害时，每选择一个主目标，造成最终伤害提升20%；处在额外回合时，造成最终伤害额外提升20%；最多提升40%的最终伤害。",
+    "endTime": "2026-04-23 06:30:00",
+    "startTime": "2026-04-02 07:30:00"
   },
   "msg": "OK",
   "status": 0

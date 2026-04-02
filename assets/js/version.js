@@ -1,6 +1,6 @@
 var APP_VERSION = (typeof window !== 'undefined' && typeof window.APP_VERSION === 'string' && window.APP_VERSION.trim())
     ? window.APP_VERSION.trim()
-    : '4.6.5';
+    : '4.6.6';
 
 if (typeof window !== 'undefined') {
     window.APP_VERSION = APP_VERSION;

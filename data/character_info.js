@@ -77,7 +77,7 @@ Object.assign(window.characterData, {
         "tag_en": "",
         "tag_jp": "",
         "color": "#f6e27a",
-        "element": "축복",
+        "element": "전격",
         "rarity": 5,
         "position": "반항",
         "release_order": 44,

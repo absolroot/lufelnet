@@ -28,9 +28,9 @@
         ],
     };
 
-    function getAllowedCharacterSet() {
+    function getCharacterSetFromData(dataBox) {
         try {
-            const list = window.characterList;
+            const list = dataBox && dataBox.characterList;
             if (!list) return null;
             const main = Array.isArray(list.mainParty) ? list.mainParty : [];
             const sup = Array.isArray(list.supportParty) ? list.supportParty : [];
@@ -40,6 +40,35 @@
         } catch (_) {
             return null;
         }
+    }
+
+    function isSpoilerEnabled() {
+        try {
+            if (window.SpoilerState && typeof window.SpoilerState.get === 'function') {
+                return !!window.SpoilerState.get();
+            }
+        } catch (_) { }
+        try {
+            return localStorage.getItem('spoilerToggle') === 'true';
+        } catch (_) {
+            return false;
+        }
+    }
+
+    function getAllowedCharacterSet(rawLang, krData, glbData) {
+        if (isSpoilerEnabled()) {
+            return getCharacterSetFromData(krData);
+        }
+
+        if (rawLang === 'kr' || rawLang === 'cn' || rawLang === 'tw') {
+            return getCharacterSetFromData(krData);
+        }
+
+        if (rawLang === 'en' || rawLang === 'jp' || rawLang === 'sea') {
+            return getCharacterSetFromData(glbData);
+        }
+
+        return getCharacterSetFromData(krData);
     }
 
     function bindMouseDragScroll(container) {
@@ -347,19 +376,15 @@
         const v = window.APP_VERSION || Date.now();
 
         const kr = await fetchCharactersData(`${window.BASE_URL || ''}/data/character_info.js?v=${v}`);
-        const bucketDataPath = popularityBucket === 'en'
-            ? '/data/character_info_glb.js'
-            : '/data/character_info.js';
-        const bucketData = popularityBucket === 'kr'
-            ? kr
-            : await fetchCharactersData(`${window.BASE_URL || ''}${bucketDataPath}?v=${v}`);
+        const glb = await fetchCharactersData(`${window.BASE_URL || ''}/data/character_info_glb.js?v=${v}`);
+        const bucketData = popularityBucket === 'kr' ? kr : glb;
 
         const krCharacterData = (kr && kr.characterData) ? kr.characterData : {};
         const bucketCharacterData = (bucketData && bucketData.characterData) ? bucketData.characterData : {};
 
         const resolved = resolvePopularCharacters(popularityBucket, bucketCharacterData);
 
-        const allowedSet = getAllowedCharacterSet();
+        const allowedSet = getAllowedCharacterSet(rawLang, kr, glb);
         let orderedKeys = resolved.orderedKeys || [];
         let badgeMap = resolved.badgeMap || new Map();
         if (allowedSet) {

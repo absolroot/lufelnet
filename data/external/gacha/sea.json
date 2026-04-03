@@ -104,6 +104,110 @@
         "name": "A Lioness in Red",
         "startTime": "2026-03-13 10:30:00",
         "type": "Chance Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-04-17 09:59:59",
+        "fiveStar": [
+          {
+            "name": "Futaba Sakura",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Motoha Arai",
+            "type": "thief"
+          },
+          {
+            "name": "Tomoko Noge",
+            "type": "thief"
+          },
+          {
+            "name": "Kiyoshi Kurotani",
+            "type": "thief"
+          }
+        ],
+        "name": "Flawless Hacker",
+        "startTime": "2026-04-03 10:30:00",
+        "type": "Chance Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-04-17 09:59:59",
+        "fiveStar": [
+          {
+            "name": "Futaba Sakura",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Motoha Arai",
+            "type": "thief"
+          },
+          {
+            "name": "Tomoko Noge",
+            "type": "thief"
+          },
+          {
+            "name": "Kiyoshi Kurotani",
+            "type": "thief"
+          }
+        ],
+        "name": "Flawless Hacker",
+        "startTime": "2026-04-03 10:30:00",
+        "type": "Targeted Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-04-17 09:59:59",
+        "fiveStar": [
+          {
+            "name": "Haru Okumura",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Motoha Arai",
+            "type": "thief"
+          },
+          {
+            "name": "Tomoko Noge",
+            "type": "thief"
+          },
+          {
+            "name": "Kiyoshi Kurotani",
+            "type": "thief"
+          }
+        ],
+        "name": "Le Rouge et le Noir",
+        "startTime": "2026-04-03 10:30:00",
+        "type": "Chance Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-04-17 09:59:59",
+        "fiveStar": [
+          {
+            "name": "Haru Okumura",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Motoha Arai",
+            "type": "thief"
+          },
+          {
+            "name": "Tomoko Noge",
+            "type": "thief"
+          },
+          {
+            "name": "Kiyoshi Kurotani",
+            "type": "thief"
+          }
+        ],
+        "name": "Le Rouge et le Noir",
+        "startTime": "2026-04-03 10:30:00",
+        "type": "Targeted Most Wanted Idol Contracts"
       }
     ],
     "weapon": [
@@ -175,6 +279,76 @@
         ],
         "name": "Silent Pistol",
         "startTime": "2026-03-13 10:30:00",
+        "type": "Arms Deals"
+      },
+      {
+        "endTime": "2026-04-17 09:59:59",
+        "fiveStar": [
+          {
+            "name": "Technomage Ultra FS",
+            "type": "weapon",
+            "user": "Futaba"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Crime and Punishment",
+            "type": "weapon",
+            "user": "Motoha"
+          },
+          {
+            "name": "Shadow Crowns",
+            "type": "weapon",
+            "user": "Tomoko"
+          },
+          {
+            "name": "Death Stinger",
+            "type": "weapon",
+            "user": "Kurotani"
+          },
+          {
+            "name": "Cyberdeck Pro",
+            "type": "weapon",
+            "user": "Futaba"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2026-04-03 10:30:00",
+        "type": "Arms Deals"
+      },
+      {
+        "endTime": "2026-04-17 09:59:59",
+        "fiveStar": [
+          {
+            "name": "Last Quarter",
+            "type": "weapon",
+            "user": "Haru"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Crime and Punishment",
+            "type": "weapon",
+            "user": "Motoha"
+          },
+          {
+            "name": "Shadow Crowns",
+            "type": "weapon",
+            "user": "Tomoko"
+          },
+          {
+            "name": "Death Stinger",
+            "type": "weapon",
+            "user": "Kurotani"
+          },
+          {
+            "name": "Gilgamesh Axe",
+            "type": "weapon",
+            "user": "Haru"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2026-04-03 10:30:00",
         "type": "Arms Deals"
       }
     ]

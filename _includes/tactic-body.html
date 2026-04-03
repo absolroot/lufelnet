@@ -482,35 +482,17 @@
 
       // KR 데이터를 기본으로, 언어 데이터가 제공하는 표시용 필드만 덮어씀
       function mergeCharacterData(krData, langData) {
-        const mergedData = {};
         const currentLang = getCurrentLanguage();
-        
-        // KR 데이터의 모든 키를 먼저 복사하고, 언어별 name 설정
-        Object.keys(krData || {}).forEach(key => {
-          mergedData[key] = { ...krData[key] };
-          const krChar = krData[key];
-          // 언어별 name 필드 설정 (kr 데이터의 name_en/name_jp 사용)
-          if (currentLang === 'en' && krChar.name_en) {
-            mergedData[key].name = krChar.name_en;
-          } else if (currentLang === 'jp' && krChar.name_jp) {
-            mergedData[key].name = krChar.name_jp;
-          }
-          // kr일 때는 원본 name 유지 (이미 복사됨)
-        });
-        
-        // langData의 키로 추가 필드 업데이트 (role, tag, release_order 등)
-        Object.keys(langData || {}).forEach(key => {
-          const langChar = langData[key];
-          if (!mergedData[key]) return; // krData에 없는 캐릭터는 무시
-          if (langChar?.role) mergedData[key].role = langChar.role;
-          if (langChar?.tag) mergedData[key].tag = langChar.tag;
-          if (typeof langChar?.release_order !== 'undefined' && langChar.release_order !== 0) {
-            mergedData[key].release_order = langChar.release_order;
-          }
-        });
-        
-        
-        return mergedData;
+
+        if (window.CharacterDataUtils && typeof window.CharacterDataUtils.mergeCharacterData === 'function') {
+          return window.CharacterDataUtils.mergeCharacterData({
+            krData,
+            langData,
+            lang: currentLang
+          });
+        }
+
+        return { ...(krData || {}) };
       }
 
       // 전역 window.characterData/window.characterList를 언어/토글에 맞게 준비

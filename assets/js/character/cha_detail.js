@@ -169,6 +169,50 @@ document.addEventListener('DOMContentLoaded', () => {
         return values.map((item) => localizeOptionValueText(item));
     }
 
+    function renderRaritySection(character) {
+        const currentCharacterName = new URLSearchParams(window.location.search).get('name') || window.__CHARACTER_DEFAULT || '';
+        const latestCharacter = (currentCharacterName && typeof characterData !== 'undefined' && characterData && characterData[currentCharacterName])
+            ? characterData[currentCharacterName]
+            : null;
+        const renderCharacter = latestCharacter || character;
+        const raritySection = document.querySelector('.rarity-section');
+        if (!raritySection) return;
+
+        if (!renderCharacter || !renderCharacter.rarity) {
+            raritySection.innerHTML = '';
+            raritySection.style.display = 'none';
+            return;
+        }
+
+        raritySection.style.display = 'flex';
+        raritySection.style.gap = '2px';
+        raritySection.style.alignItems = 'center';
+
+        const starCount = renderCharacter.rarity;
+        const starType = renderCharacter.rarity === 4 ? 'star4.png' : 'star5.png';
+
+        raritySection.innerHTML = '';
+
+        for (let i = 0; i < starCount; i++) {
+            const star = document.createElement('img');
+            star.src = `${BASE_URL}/assets/img/character-detail/${starType}`;
+            star.alt = '★';
+            star.style.width = '20px';
+            star.style.height = '20px';
+            raritySection.appendChild(star);
+        }
+
+        try {
+            const limitImg = document.createElement('img');
+            limitImg.className = 'limit-icon';
+            limitImg.src = `${BASE_URL}/assets/img/character-detail/${renderCharacter.limit ? 'limit.png' : 'limit_non.png'}`;
+            limitImg.alt = renderCharacter.limit ? 'limit' : 'non_limit';
+            limitImg.style.width = '26px';
+            limitImg.style.margin = '4px 0 0 6px';
+            raritySection.appendChild(limitImg);
+        } catch (_) {}
+    }
+
     // 세팅 정보 채우기
     function fillSettingsInfo(character) {
         // characterSetting에서 데이터 병합
@@ -595,44 +639,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (_) {}
 
         // 레어도 섹션 설정
-        const raritySection = document.querySelector('.rarity-section');
-        if (character.rarity) {
-            raritySection.style.display = 'flex';
-            raritySection.style.gap = '2px';
-            raritySection.style.alignItems = 'center'; // 세로 가운데 정렬
-
-            const starCount = character.rarity;
-            const starType = character.rarity === 4 ? 'star4.png' : 'star5.png';
-
-            // 기존 내용 제거
-            raritySection.innerHTML = '';
-
-            // 별 이미지 추가
-            for (let i = 0; i < starCount; i++) {
-                const star = document.createElement('img');
-                star.src = `${BASE_URL}/assets/img/character-detail/${starType}`;
-                star.alt = '★';
-                star.style.width = '20px';
-                star.style.height = '20px';
-                raritySection.appendChild(star);
-            }
-
-            // 한정 여부 아이콘을 rarity-section 내부(오른쪽)에 추가
-            try {
-                // 기존 아이콘 제거 (중복 방지)
-                const oldIcon = raritySection.querySelector('img.limit-icon');
-                if (oldIcon) oldIcon.remove();
-
-                const limitImg = document.createElement('img');
-                limitImg.className = 'limit-icon';
-                limitImg.src = `${BASE_URL}/assets/img/character-detail/${character.limit ? 'limit.png' : 'limit_non.png'}`;
-                limitImg.alt = character.limit ? 'limit' : 'non_limit';
-                limitImg.style.width = '26px';
-                limitImg.style.margin = '4px 0 0 6px';
-
-                raritySection.appendChild(limitImg);
-            } catch (_) { }
-        }
+        renderRaritySection(character);
 
         // 속성 위치 계산
         function setElementPositions(elementType) {
@@ -743,6 +750,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (characterName && characterData[characterName]) {
         const character = characterData[characterName];
+        const getRenderableCharacter = () => {
+            if (typeof characterData !== 'undefined' && characterData && characterData[characterName]) {
+                return characterData[characterName];
+            }
+            return character;
+        };
 
         // 페르소나3 캐릭터 스타일/텍스트 적용 (안전 실행)
         safeRun('persona3-css-and-text', () => {
@@ -780,7 +793,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // 한국어는 바로 실행
             if (lang === 'kr') {
-                fillSettingsInfo(character);
+                fillSettingsInfo(getRenderableCharacter());
                 return;
             }
 
@@ -791,7 +804,7 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             if (isReady()) {
-                fillSettingsInfo(character);
+                fillSettingsInfo(getRenderableCharacter());
                 return;
             }
 
@@ -802,7 +815,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const tick = () => {
                 if (isReady() || attempts++ >= maxAttempts) {
                     // 준비되었거나 타임아웃이면 일단 렌더 (타임아웃이면 한국어 이름일 수 있음)
-                    fillSettingsInfo(character);
+                    fillSettingsInfo(getRenderableCharacter());
                 } else {
                     setTimeout(tick, 50);
                 }
@@ -875,6 +888,29 @@ document.addEventListener('DOMContentLoaded', () => {
             window.addEventListener('languageDetected', () => {
                 waitForLocalizedNameAndApply();
             });
+        });
+        safeRun('characterDataReady', () => {
+            const rerenderCharacterMeta = () => {
+                const updatedCharacter = (typeof characterData !== 'undefined' && characterData && characterData[characterName])
+                    ? characterData[characterName]
+                    : null;
+                if (!updatedCharacter) return;
+                fillSettingsInfo(updatedCharacter);
+                waitForLocalizedNameAndApply();
+                if (typeof window.fillRoleAndTag === 'function') {
+                    window.fillRoleAndTag();
+                }
+            };
+
+            window.addEventListener('characterDataReady', (event) => {
+                const detailName = event && event.detail ? event.detail.characterName : '';
+                if (detailName && detailName !== characterName) return;
+                rerenderCharacterMeta();
+            });
+
+            if (window.__CHARACTER_DATA_READY__ && (!window.__CHARACTER_DATA_READY__.characterName || window.__CHARACTER_DATA_READY__.characterName === characterName)) {
+                rerenderCharacterMeta();
+            }
         });
 
         // role과 tag 정보 채우기 함수

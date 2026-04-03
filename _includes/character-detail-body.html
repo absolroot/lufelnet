@@ -1192,7 +1192,97 @@
             }
         }
 
-        async function loadLanguageData() { return; }
+        async function loadLanguageData() {
+            const currentLang = getCurrentLanguage();
+            if (currentLang === 'kr') return;
+
+            try {
+                if (window.CharacterDataUtils && typeof window.CharacterDataUtils.prepareCharacterData === 'function') {
+                    const prepared = await window.CharacterDataUtils.prepareCharacterData({
+                        lang: currentLang,
+                        spoilerEnabled: false,
+                        version: APP_VERSION
+                    });
+
+                    if (prepared && prepared.characterData) {
+                        window.characterData = prepared.characterData;
+                        window.__CHARACTER_DATA_READY__ = {
+                            lang: currentLang,
+                            characterName: characterName
+                        };
+                        try {
+                            window.dispatchEvent(new CustomEvent('characterDataReady', {
+                                detail: {
+                                    lang: currentLang,
+                                    characterName: characterName
+                                }
+                            }));
+                        } catch (_) {}
+                    }
+                }
+            } catch (e) {
+                console.warn('[SAFE:loadLanguageData]', e);
+            }
+        }
+
+        function syncCharacterLimitIcon() {
+            try {
+                if (!characterName || !characterData || !characterData[characterName]) return;
+
+                const currentCharacter = characterData[characterName];
+                const raritySection = document.querySelector('.rarity-section');
+                if (!raritySection) return;
+
+                let limitIcon = raritySection.querySelector('img.limit-icon');
+                if (!limitIcon && typeof window.fillSettingsInfo === 'function') {
+                    window.fillSettingsInfo(currentCharacter);
+                    limitIcon = raritySection.querySelector('img.limit-icon');
+                }
+                if (!limitIcon) return;
+
+                const iconName = currentCharacter.limit ? 'limit.png' : 'limit_non.png';
+                const expectedSrc = `{{ site.baseurl }}/assets/img/character-detail/${iconName}`;
+                const expectedAlt = currentCharacter.limit ? 'limit' : 'non_limit';
+                if (limitIcon.getAttribute('src') !== expectedSrc) {
+                    limitIcon.setAttribute('src', expectedSrc);
+                }
+                if (limitIcon.getAttribute('alt') !== expectedAlt) {
+                    limitIcon.setAttribute('alt', expectedAlt);
+                }
+            } catch (e) {
+                console.warn('[SAFE:syncCharacterLimitIcon]', e);
+            }
+        }
+
+        function ensureCharacterLimitIconObserver() {
+            try {
+                if (window.__characterLimitIconObserver) return;
+
+                const raritySection = document.querySelector('.rarity-section');
+                if (!raritySection || typeof MutationObserver === 'undefined') return;
+
+                const observer = new MutationObserver(() => {
+                    syncCharacterLimitIcon();
+                });
+
+                observer.observe(raritySection, {
+                    childList: true,
+                    subtree: true,
+                    attributes: true,
+                    attributeFilter: ['src', 'alt']
+                });
+
+                window.__characterLimitIconObserver = observer;
+            } catch (e) {
+                console.warn('[SAFE:ensureCharacterLimitIconObserver]', e);
+            }
+        }
+
+        function scheduleCharacterLimitIconSync() {
+            [0, 100, 500, 2500].forEach((delay) => {
+                setTimeout(syncCharacterLimitIcon, delay);
+            });
+        }
 
         if (!characterName || !characterData[characterName]) {
             console.error('Character not found');
@@ -1224,6 +1314,8 @@
 
         // 언어별 데이터 로드 후 캐릭터 정보 설정
         await safeAwait('loadLanguageData', loadLanguageData());
+        safeRun('ensureCharacterLimitIconObserver:post-language', ensureCharacterLimitIconObserver);
+        safeRun('scheduleCharacterLimitIconSync:post-language', scheduleCharacterLimitIconSync);
         // 계시 다국어 데이터도 먼저 로드 (EN/JP에서 최초 렌더부터 번역 적용)
         await safeAwait('loadRevelationDataByLanguage', loadRevelationDataByLanguage());
         safeRun('refreshRevelationDisplay', () => setTimeout(refreshRevelationDisplay, 100));
@@ -1245,6 +1337,8 @@
                 applySkillPriorityBadges();
             }
         });
+        safeRun('ensureCharacterLimitIconObserver:after-fill', ensureCharacterLimitIconObserver);
+        safeRun('scheduleCharacterLimitIconSync:after-fill', scheduleCharacterLimitIconSync);
         // 기본 스탯 렌더
         safeRun('fillBasicStats', () => fillBasicStats(characterName));
         // 운영 즉시 렌더 (함수 노출 이후 재호출 가능)

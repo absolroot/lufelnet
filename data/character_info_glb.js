@@ -90,12 +90,14 @@ Object.assign(window.characterData, {
         "role": "",
         "tag": "",
         "persona": "",
+        "limit": true,
         "release_order": 4
     },
     "YUI": {
         "role": "",
         "tag": "",
         "persona": "",
+        "limit": true,
         "release_order": 3
     },
     "미나미": {
@@ -108,6 +110,7 @@ Object.assign(window.characterData, {
         "role": "",
         "tag": "",
         "persona": "아르센",
+        "limit": true,
         "release_order": 1
     },
     "루페르": {

@@ -2,9 +2,10 @@
     'use strict';
 
     const DEFAULT_MAX_COUNT = 10;
-    const GLB_PRIORITY_LANGS = new Set(['en', 'jp', 'sea']);
+    const RAW_LANGS = ['kr', 'en', 'jp', 'cn', 'tw', 'sea'];
+    const REGIONS = ['cn', 'tw', 'sea', 'kr', 'en', 'jp'];
 
-    const POPULAR_CHARACTERS_OVERRIDE = { kr: null, en: null, jp: null };
+    const POPULAR_CHARACTERS_OVERRIDE = { kr: null, en: null };
     const POPULAR_CHARACTERS_FIXED = {
         kr: [
             { name: '모토하·청광', badge: 'NEW' },
@@ -95,26 +96,70 @@
         }, true);
     }
 
-    function getCurrentLang() {
+    function mapLangToRegion(lang) {
+        const normalized = String(lang || '').trim().toLowerCase();
+        return REGIONS.includes(normalized) ? normalized : null;
+    }
+
+    function getCurrentRawLang() {
         try {
             if (typeof LanguageRouter !== 'undefined' && LanguageRouter.getCurrentLanguage) {
-                const lr = LanguageRouter.getCurrentLanguage();
-                if (lr && ['kr', 'en', 'jp', 'cn', 'sea'].includes(lr)) return lr;
+                const lr = String(LanguageRouter.getCurrentLanguage() || '').trim().toLowerCase();
+                if (RAW_LANGS.includes(lr)) return lr;
             }
         } catch (_) { }
         try {
-            const urlLang = new URLSearchParams(window.location.search).get('lang');
-            if (urlLang && ['kr', 'en', 'jp', 'cn', 'sea'].includes(urlLang)) return urlLang;
+            const urlLang = String(new URLSearchParams(window.location.search).get('lang') || '').trim().toLowerCase();
+            if (RAW_LANGS.includes(urlLang)) return urlLang;
         } catch (_) { }
         try {
-            const saved = localStorage.getItem('preferredLanguage');
-            if (saved && ['kr', 'en', 'jp', 'cn', 'sea'].includes(saved)) return saved;
+            const saved = String(localStorage.getItem('preferredLanguage') || '').trim().toLowerCase();
+            if (RAW_LANGS.includes(saved)) return saved;
         } catch (_) { }
         try {
-            const saved2 = localStorage.getItem('preferred_language');
-            if (saved2 && ['kr', 'en', 'jp', 'cn', 'sea'].includes(saved2)) return saved2;
+            const saved2 = String(localStorage.getItem('preferred_language') || '').trim().toLowerCase();
+            if (RAW_LANGS.includes(saved2)) return saved2;
         } catch (_) { }
         return 'kr';
+    }
+
+    function getCurrentRegion() {
+        try {
+            const saved = String(localStorage.getItem('carousel_region') || '').trim().toLowerCase();
+            if (REGIONS.includes(saved)) return saved;
+        } catch (_) { }
+        try {
+            const candidates = [];
+            const urlLang = String(new URLSearchParams(window.location.search).get('lang') || '').trim().toLowerCase();
+            if (urlLang) candidates.push(urlLang);
+
+            const pathLang = String((window.location.pathname || '').split('/')[1] || '').trim().toLowerCase();
+            if (pathLang) candidates.push(pathLang);
+
+            if (typeof LanguageRouter !== 'undefined' && LanguageRouter.getCurrentLanguage) {
+                candidates.push(String(LanguageRouter.getCurrentLanguage() || '').trim().toLowerCase());
+            }
+
+            try {
+                const savedLang = String(localStorage.getItem('preferredLanguage') || '').trim().toLowerCase();
+                if (savedLang) candidates.push(savedLang);
+            } catch (_) { }
+
+            try {
+                const savedLangAlt = String(localStorage.getItem('preferred_language') || '').trim().toLowerCase();
+                if (savedLangAlt) candidates.push(savedLangAlt);
+            } catch (_) { }
+
+            for (let i = 0; i < candidates.length; i += 1) {
+                const region = mapLangToRegion(candidates[i]);
+                if (region) return region;
+            }
+        } catch (_) { }
+        return 'kr';
+    }
+
+    function mapRegionToPopularityBucket(region) {
+        return ['en', 'sea', 'jp'].includes(region) ? 'en' : 'kr';
     }
 
     function getMaxCountFromDom(popularRoot) {
@@ -207,8 +252,8 @@
         });
     }
 
-    function resolvePopularCharacters(lang, langCharacterData) {
-        const overrideItems = normalizeItems(POPULAR_CHARACTERS_OVERRIDE[lang]);
+    function resolvePopularCharacters(bucket, bucketCharacterData) {
+        const overrideItems = normalizeItems(POPULAR_CHARACTERS_OVERRIDE[bucket]);
         if (overrideItems) {
             return {
                 orderedKeys: overrideItems.map(x => x.name),
@@ -216,11 +261,11 @@
             };
         }
 
-        const fixedItems = normalizeItems(POPULAR_CHARACTERS_FIXED[lang]) || [];
+        const fixedItems = normalizeItems(POPULAR_CHARACTERS_FIXED[bucket]) || [];
         const fixedKeys = fixedItems.map(x => x.name);
         const fixedSet = new Set(fixedKeys);
 
-        const releaseOrderMap = buildReleaseOrderMap(langCharacterData);
+        const releaseOrderMap = buildReleaseOrderMap(bucketCharacterData);
         const orderedAuto = sortByReleaseOrderDesc(Object.keys(releaseOrderMap), releaseOrderMap);
 
         const topAuto = orderedAuto[0];
@@ -295,20 +340,24 @@
 
         bindMouseDragScroll(container);
 
-        const lang = getCurrentLang();
+        const rawLang = getCurrentRawLang();
+        const region = getCurrentRegion();
+        const popularityBucket = mapRegionToPopularityBucket(region);
         const maxCount = getMaxCountFromDom(popularRoot);
         const v = window.APP_VERSION || Date.now();
 
         const kr = await fetchCharactersData(`${window.BASE_URL || ''}/data/character_info.js?v=${v}`);
-        const lgDataPath = GLB_PRIORITY_LANGS.has(lang)
+        const bucketDataPath = popularityBucket === 'en'
             ? '/data/character_info_glb.js'
-            : `/data/${lang}/characters/characters.js`;
-        const lg = (lang === 'kr') ? kr : await fetchCharactersData(`${window.BASE_URL || ''}${lgDataPath}?v=${v}`);
+            : '/data/character_info.js';
+        const bucketData = popularityBucket === 'kr'
+            ? kr
+            : await fetchCharactersData(`${window.BASE_URL || ''}${bucketDataPath}?v=${v}`);
 
         const krCharacterData = (kr && kr.characterData) ? kr.characterData : {};
-        const langCharacterData = (lg && lg.characterData) ? lg.characterData : {};
+        const bucketCharacterData = (bucketData && bucketData.characterData) ? bucketData.characterData : {};
 
-        const resolved = resolvePopularCharacters(lang, langCharacterData);
+        const resolved = resolvePopularCharacters(popularityBucket, bucketCharacterData);
 
         const allowedSet = getAllowedCharacterSet();
         let orderedKeys = resolved.orderedKeys || [];
@@ -322,7 +371,7 @@
             badgeMap = filtered;
         }
 
-        renderPopularCards(container, lang, orderedKeys, badgeMap, maxCount, krCharacterData);
+        renderPopularCards(container, rawLang, orderedKeys, badgeMap, maxCount, krCharacterData);
     }
 
     document.addEventListener('DOMContentLoaded', () => {

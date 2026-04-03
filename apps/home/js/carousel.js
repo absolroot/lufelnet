@@ -96,6 +96,20 @@
   async function ensureHomeCharacterDataLoaded(rawLang) {
     if (!GLB_PRIORITY_LANGS.has(rawLang)) return;
 
+    if (window.CharacterDataUtils && typeof window.CharacterDataUtils.prepareCharacterData === 'function') {
+      const prepared = await window.CharacterDataUtils.prepareCharacterData({
+        lang: rawLang,
+        spoilerEnabled: false,
+        version: APP_VER || Date.now()
+      });
+
+      if (prepared && prepared.characterData) {
+        window.characterData = prepared.characterData;
+        window.characterList = prepared.characterList || window.characterList;
+        return;
+      }
+    }
+
     const version = APP_VER || Date.now();
     const [kr, glb] = await Promise.all([
       fetchCharactersData(`${BASE}/data/character_info.js${version ? `?v=${version}` : ''}`),

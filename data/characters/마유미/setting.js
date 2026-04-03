@@ -13,7 +13,7 @@ window.characterSetting["마유미"] = {
     "sub_option2": ["크리티컬 확률"],
     "sub_option3": ["크리티컬 효과", "대미지 보너스"],
     "minimum_stats": {
-        "LV10": "속도 176 (전용무기 180)",
+        "LV10": "속도 176 (180)",
         "LV10+5": "속도 194",
         "LV12": false,
         "LV12+5": false,
@@ -29,7 +29,7 @@ window.characterSetting["마유미"] = {
     "skill4_lv": "MAX!",
     "skill_priority": "3>1>2>4",
     "mind_stats1": "속도 10!",
-    "mind_stats2": "크리티컬 확률 12%",
+    "mind_stats2": "크리티컬 확률 12%!",
     "mind_skill1": "S1/S2",
     "mind_skill2": "S3/HL!"
 };

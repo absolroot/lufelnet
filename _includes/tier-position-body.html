@@ -842,39 +842,16 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
 
     // 캐릭터 데이터 병합 함수
     function mergeCharacterData(krData, langData) {
-        // KR 전체를 기본으로 두고, 언어 데이터가 존재하는 항목만 필요한 필드를 덮어쓴다
-        const mergedData = {};
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+        if (window.CharacterDataUtils && typeof window.CharacterDataUtils.mergeCharacterData === 'function') {
+            return window.CharacterDataUtils.mergeCharacterData({
+                krData,
+                langData,
+                lang: currentLang
+            });
+        }
 
-        // 1) KR 데이터 전부 복사
-        Object.keys(krData || {}).forEach(key => {
-            mergedData[key] = { ...krData[key] };
-        });
-
-        // 2) 언어 데이터가 제공되면 필요한 필드만 덮어쓰기
-        Object.keys(langData || {}).forEach(characterKey => {
-            const krChar = krData[characterKey];
-            const langChar = langData[characterKey];
-            if (!krChar) return; // KR에 없는 키는 무시
-
-            // 이름 현지화: KR 데이터에 별도 현지화 필드가 있으면 우선, 없으면 언어 데이터의 name
-            if (currentLang === 'en') {
-                if (krChar.name_en) mergedData[characterKey].name = krChar.name_en;
-                else if (langChar?.name) mergedData[characterKey].name = langChar.name;
-            } else if (currentLang === 'jp') {
-                if (krChar.name_jp) mergedData[characterKey].name = krChar.name_jp;
-                else if (langChar?.name) mergedData[characterKey].name = langChar.name;
-            }
-
-            // 보조 필드 덮어쓰기 (값이 있을 때만)
-            if (langChar?.role) mergedData[characterKey].role = langChar.role;
-            if (langChar?.tag) mergedData[characterKey].tag = langChar.tag;
-            if (typeof langChar?.release_order !== 'undefined' && langChar.release_order !== 0) {
-                mergedData[characterKey].release_order = langChar.release_order;
-            }
-        });
-
-        return mergedData;
+        return { ...(krData || {}) };
     }
 
     // 언어별 SEO 설정 함수

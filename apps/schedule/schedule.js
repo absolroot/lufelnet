@@ -111,6 +111,33 @@
         return 'kr';
     }
 
+    async function ensureScheduleCharacterData() {
+        const lang = getScheduleLang();
+        if (lang === 'kr') {
+            await waitForCharacterData();
+            return;
+        }
+
+        try {
+            if (window.CharacterDataUtils && typeof window.CharacterDataUtils.prepareCharacterData === 'function') {
+                const prepared = await window.CharacterDataUtils.prepareCharacterData({
+                    lang,
+                    spoilerEnabled: false,
+                    version: window.APP_VERSION
+                });
+
+                if (prepared && prepared.characterData) {
+                    window.characterData = prepared.characterData;
+                    window.characterList = prepared.characterList || window.characterList;
+                }
+            }
+        } catch (error) {
+            console.error('Failed to prepare schedule character data:', error);
+        }
+
+        await waitForCharacterData();
+    }
+
     function buildCharacterDetailUrl(charName) {
         const safeName = String(charName || '').trim();
         if (!safeName) return '#';
@@ -1670,7 +1697,7 @@
         try {
             // Load SEA Server Mode state from localStorage
             await Promise.all([
-                waitForCharacterData(),
+                ensureScheduleCharacterData(),
                 loadPersonaCsv(),
                 loadWeaponsData(),
                 loadRevelationData()

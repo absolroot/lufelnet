@@ -24,17 +24,22 @@ window.matchWeapons = {
     "element": "총격",
     "name_en": "Chaos Hex",
     "name_jp": "カオスヘックス",
-    "where_to_get": "Shop",
-    "release": "모토하·청광",
+    "where_to_get": "Palace 6",
+    "release": "Palace 6",
     "order": "16",
     "effect": "공격력이 28.0%/32.7%/37.3%/42.0%/46.7%/51.3%/56.0% 증가한다.\n원더가 페르소나 스킬 또는 총기 공격 사용 후, 1턴 동안 『치명적인 본능』을 획득한다.\n『치명적인 본능』: 턴 시작 시 탄환이 자동으로 가득 차며, 총기 공격 및 총격 속성 페르소나 스킬이 반드시 크리티컬이 된다. 주는 대미지가 9.5%/11.1%/12.7%/14.2%/15.8%/17.4%/19.0% 증가하고, 총기 공격이 주는 대미지가 추가로 9.5%/11.1%/12.7%/14.2%/15.8%/17.4%/19.0% 증가한다.\n원더가 『치명적인 본능』을 보유한 동안, 모든 동료의 공격력이 11.0%/12.8%/14.7%/16.5%/18.3%/20.2%/22.0% 증가하고, 총격 속성 대미지를 줄 때 크리티컬 효과가 10.0%/11.7%/13.3%/15.0%/16.7%/18.3%/20.0% 증가한다.",
     "effect_en": "Increase Attack by 28.0%/32.7%/37.3%/42.0%/46.7%/51.3%/56.0%.\nAfter WONDER uses a Persona skill or Gun attack, gain [Deadly Instinct] for 1 turn.\n[Deadly Instinct]: At the start of the turn, automatically reload all bullets, and Gun attacks plus Gunshot Persona skills are guaranteed to crit. Damage dealt increases by 9.5%/11.1%/12.7%/14.2%/15.8%/17.4%/19.0%, and Gun attack damage additionally increases by 9.5%/11.1%/12.7%/14.2%/15.8%/17.4%/19.0%.\nWhile WONDER has [Deadly Instinct], all allies' Attack increases by 11.0%/12.8%/14.7%/16.5%/18.3%/20.2%/22.0%, and Critical Damage when dealing Gunshot damage increases by 10.0%/11.7%/13.3%/15.0%/16.7%/18.3%/20.0%.",
     "effect_jp": "攻撃力が28.0%/32.7%/37.3%/42.0%/46.7%/51.3%/56.0%上昇する。\n主人公がペルソナスキルまたは銃撃攻撃を行った後、1ターンの間『致命本能』を獲得する。\n『致命本能』：ターン開始時に弾丸が自動で最大になり、銃撃攻撃および銃撃属性のペルソナスキルが必ずクリティカルになる。与ダメージが9.5%/11.1%/12.7%/14.2%/15.8%/17.4%/19.0%上昇し、銃撃攻撃による与ダメージがさらに9.5%/11.1%/12.7%/14.2%/15.8%/17.4%/19.0%上昇する。\n主人公が『致命本能』を所持している間、味方全体の攻撃力が11.0%/12.8%/14.7%/16.5%/18.3%/20.2%/22.0%上昇し、銃撃属性ダメージを与える時のクリティカル効果が10.0%/11.7%/13.3%/15.0%/16.7%/18.3%/20.0%上昇する。",
     "shard": [
       {
-        "desc": "교환 - 운명의 섬 {item-huobi-49.png} 800",
-        "desc_en": "Exchange - Land of Fortune {item-huobi-49.png} 800",
-        "dsec_jp": "交換 - {item-huobi-49.png} 800"
+        "desc": "교환 - 비밀의 장소 {item-huobi-46.png} 500",
+        "desc_en": "Exchange - The Velvet Shop {item-huobi-46.png} 500",
+        "dsec_jp": "交換 - {item-huobi-46.png} 500"
+      },
+      {
+        "desc": "교환 - 낙원 백화 {item-huobi-50.png} 500",
+        "desc_en": "Exchange - Companio Shop {item-huobi-50.png} 500",
+        "dsec_jp": "交換 - {item-huobi-50.png} 500"
       }
     ],
     "name_cn": "混沌海克斯",

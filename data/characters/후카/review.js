@@ -6,7 +6,7 @@
 
 기존의 NAVI나 ANGE와 다르게 방어력 감소 메커니즘이 존재하지 않아 아군 구성에 유의해야 한다.
 
-후카는 의식0일 경우 기본적으로 2라운드/6라운드에 교체가 강제된다. 의식1에 교체 기회를 한번 더 얻게 되고, 의식 6이면 6라운드 기준 추가 턴이 없을 경우 교체가 4번까지 가능하다.
+후카는 의식0일 경우 기본적으로 2라운드/6라운드에 교체가 강제된다. 의식 6이면 6라운드 기준 추가 턴이 없을 경우 교체가 4번까지 가능하다.
 
 <br>
 
@@ -40,7 +40,7 @@ Fuuka is a Thief with the unique ability to swap party members using [Oracle Shi
 
 Unlike Oracle or Ange, Fuuka provides no Defense down debuffs or pierce rate buffs, so you must be careful with your team composition.
 
-At A0, Fuuka is basically forced to swap on rounds 2 and 6. At A1, she gains one more swap opportunity, and at A6, if there are no extra turns by round 6, she can swap up to 4 times.
+At A0, Fuuka is basically forced to swap on rounds 2 and 6. At A6, if there are no extra turns by round 6, she can swap up to 4 times.
 
 <br>
 
@@ -75,7 +75,7 @@ review_jp: `
 
 従来のNAVIやANGEと異なり、防御力低下のメカニズムが存在しないため、編成には留意が必要。
 
-A0の場合、基本的に2ラウンド目と6ラウンド目に交代が強制される。A1で交代機会をさらに1回得られ、A6なら6ラウンド目までに追加ターンがない場合、最大4回まで交代できる。
+A0の場合、基本的に2ラウンド目と6ラウンド目に交代が強制される。A6なら6ラウンド目までに追加ターンがない場合、最大4回まで交代できる。
 
 
 **交代メカニズムの概要**

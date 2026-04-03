@@ -516,51 +516,29 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
         const spoilerEnabled = isSpoilerEnabled();
 
-        // 스포일러 모드에서 미출시 캐릭터 감지를 위해 원본 언어별 캐릭터 리스트 저장
-        let originalLangCharacterList = null;
-
         try {
-            // 1) KR 원본 데이터는 매번 샌드박스 fetch로 고정 로드
-            // (window 전역 재사용 시 토글 전환에 따라 기준 목록이 섞이는 문제 방지)
-            const kr = await fetchCharactersData(`/data/character_info.js?v=${APP_VERSION}`);
-            if (!kr) {
-                throw new Error('Failed to load KR character data');
-            }
-            const krCharacterData = kr.characterData || {};
-            const krCharacterList = kr.characterList || { mainParty: [], supportParty: [] };
+            if (window.CharacterDataUtils && typeof window.CharacterDataUtils.prepareCharacterData === 'function') {
+                const prepared = await window.CharacterDataUtils.prepareCharacterData({
+                    lang: currentLang,
+                    spoilerEnabled,
+                    version: APP_VERSION
+                });
 
-            // 2) 언어 데이터 로드 및 병합(샌드박스 평가로 전역 오염 방지)
-            if (currentLang !== 'kr') {
-                const langDataPath = (currentLang === 'en' || currentLang === 'jp')
-                    ? '/data/character_info_glb.js'
-                    : `/data/${currentLang}/characters/characters.js`;
-                const langUrl = `${langDataPath}?v=${APP_VERSION}`;
-                const lang = await fetchCharactersData(langUrl);
-                if (lang) {
-                    const langCharacterData = lang.characterData || {};
-                    const langCharacterList = lang.characterList || { mainParty: [], supportParty: [] };
-                    originalLangCharacterList = [...(langCharacterList.mainParty || []), ...(langCharacterList.supportParty || [])];
-                    if (!spoilerEnabled) {
-                        const mergedData = mergeCharacterData(krCharacterData, langCharacterData);
-                        window.characterData = mergedData;
-                        window.characterList = langCharacterList;
-                    } else {
-                        window.characterData = krCharacterData;
-                        window.characterList = krCharacterList;
-                    }
-                } else {
-                    // 언어별 데이터 로드 실패 시 KR 사용
-                    originalLangCharacterList = [...(krCharacterList?.mainParty || []), ...(krCharacterList?.supportParty || [])];
-                    window.characterData = krCharacterData;
-                    window.characterList = krCharacterList;
+                if (!prepared) {
+                    throw new Error('Failed to prepare character data');
                 }
-            } else {
-                window.characterData = krCharacterData;
-                window.characterList = krCharacterList;
+
+                window.characterData = prepared.characterData || {};
+                window.characterList = prepared.characterList || { mainParty: [], supportParty: [] };
+                window.originalLangCharacterList = prepared.originalLangCharacterList || null;
+                return true;
             }
 
-            // 스포일러 모드에서 미출시 캐릭터 감지를 위해 원본 리스트를 전역 변수에 저장
-            window.originalLangCharacterList = originalLangCharacterList;
+            const fallback = await fetchCharactersData(`/data/character_info.js?v=${APP_VERSION}`);
+            if (!fallback) throw new Error('Failed to load fallback KR character data');
+            window.characterData = fallback.characterData || {};
+            window.characterList = fallback.characterList || { mainParty: [], supportParty: [] };
+            window.originalLangCharacterList = [...(window.characterList.mainParty || []), ...(window.characterList.supportParty || [])];
 
             return true;
 
@@ -568,106 +546,6 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
             console.error('Failed to load character data:', error);
             return false;
         }
-    }
-
-    // 캐릭터 데이터 병합 함수 (하이브리드 방식)
-    function mergeCharacterData(krData, langData) {
-        const mergedData = {};
-        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
-
-
-        // 샘플 데이터 확인
-        const firstKrKey = Object.keys(krData)[0];
-        const firstLangKey = Object.keys(langData)[0];
-
-        // 언어별 데이터에 있는 캐릭터만 포함 (langData 기준으로 필터링)
-        for (const characterKey in langData) {
-            //console.log('Merging character:', characterKey);
-
-            if (krData[characterKey]) {
-                //console.log(`✅ Found KR data for ${characterKey}`);
-                // 한국어 데이터를 기본으로 완전히 복사 (모든 속성 보존)
-                mergedData[characterKey] = { ...krData[characterKey] };
-
-                const langChar = langData[characterKey];
-                const krChar = krData[characterKey];
-
-                // name 처리: 현재 언어에 따라 적절한 이름 사용
-                if (currentLang === 'en') {
-                    if (krChar.name_en) {
-                        mergedData[characterKey].name = krChar.name_en;
-                    } else if (langChar.name && langChar.name !== '') {
-                        mergedData[characterKey].name = langChar.name;
-                    }
-                } else if (currentLang === 'jp') {
-                    if (krChar.name_jp) {
-                        mergedData[characterKey].name = krChar.name_jp;
-                    } else if (langChar.name && langChar.name !== '') {
-                        mergedData[characterKey].name = langChar.name;
-                    } else {
-                    }
-                } else {
-                    // KR 언어일 때는 기본 KR 이름 사용
-                }
-
-                // persona 처리: 현재 언어에 따라 적절한 페르소나 이름 사용
-                if (currentLang === 'en') {
-                    if (krChar.persona_en) {
-                        mergedData[characterKey].persona = krChar.persona_en;
-                    } else if (langChar.persona && langChar.persona !== '') {
-                        mergedData[characterKey].persona = langChar.persona;
-                    }
-                } else if (currentLang === 'jp') {
-                    if (krChar.persona_jp) {
-                        mergedData[characterKey].persona = krChar.persona_jp;
-                        //console.log(`Using KR JP persona for ${characterKey}: ${krChar.persona_jp}`);
-                    } else if (langChar.persona && langChar.persona !== '') {
-                        mergedData[characterKey].persona = langChar.persona;
-                        //console.log(`Using Lang JP persona for ${characterKey}: ${langChar.persona}`);
-                    }
-                }
-
-                // 속성 번역 처리 (element 필드는 그대로 유지하되, 표시용 번역 추가)
-                if (currentLang !== 'kr') {
-                    const translatedElement = translateTermSafe(mergedData[characterKey].element);
-                    if (translatedElement && translatedElement !== mergedData[characterKey].element) {
-                        mergedData[characterKey].element_display = translatedElement;
-                    }
-
-                    const translatedPosition = translateTermSafe(mergedData[characterKey].position);
-                    if (translatedPosition && translatedPosition !== mergedData[characterKey].position) {
-                        mergedData[characterKey].position_display = translatedPosition;
-                    }
-                }
-
-                // 다른 필드들은 언어별 데이터에 값이 있고 빈 문자열이 아닐 때만 덮어쓰기
-                // 중요: element, position, rarity 등은 절대 덮어쓰지 않음 (한국어 데이터 유지)
-                // role은 characterSetting으로 이동했으므로 여기서는 처리하지 않음
-                if (langChar.tag && langChar.tag !== '') {
-                    mergedData[characterKey].tag = langChar.tag;
-                }
-                // release_order는 언어별 데이터에 있으면 무조건 사용 (0도 유효한 값)
-                if (langChar.release_order !== undefined) {
-                    mergedData[characterKey].release_order = langChar.release_order;
-                    //console.log(`Using Lang release_order for ${characterKey}: ${langChar.release_order}`);
-                }
-
-                // 중요한 속성들이 제대로 보존되었는지 확인
-                if (!mergedData[characterKey].element || !mergedData[characterKey].position || !mergedData[characterKey].rarity) {
-                    console.warn(`Missing critical data for ${characterKey}:`, {
-                        element: mergedData[characterKey].element,
-                        position: mergedData[characterKey].position,
-                        rarity: mergedData[characterKey].rarity
-                    });
-                }
-
-            } else {
-                console.warn(`❌ Character ${characterKey} not found in KR data`);
-                console.warn('Available KR characters:', Object.keys(krData).slice(0, 10), '... (showing first 10)');
-            }
-        }
-
-        return mergedData;
     }
 
     // P3 필터 표시 여부 확인

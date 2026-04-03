@@ -837,7 +837,7 @@ Object.assign(window.characterData, {
         "skill_item": 2
     },
     "유스케": {
-        "limit": true,
+        "limit": false,
         "persona5": true,
         "tag": "반격, 추가 효과, 방어력, 관통",
         "color": "#00bfff",
@@ -855,7 +855,7 @@ Object.assign(window.characterData, {
         "skill_item": 2
     },
     "YUI": {
-        "limit": true,
+        "limit": false,
         "tag": "추가 효과, 감전, 크리티컬 확률",
         "color": "#60f7de",
         "element": "전격",
@@ -889,7 +889,7 @@ Object.assign(window.characterData, {
         "skill_item": 2
     },
     "렌": {
-        "limit": true,
+        "limit": false,
         "persona5": true,
         "role_en": "Curse AOE Dealer",
         "role_jp": "呪い範囲ディーラー",

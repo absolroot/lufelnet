@@ -175,60 +175,31 @@
     async function loadCharacterData() {
         const lang = STATE.lang;
         const useKrFull = (lang !== 'kr' && STATE.spoiler);
-        const primaryLang = useKrFull ? 'kr' : lang;
-        const primaryUrl = (primaryLang === 'kr')
-            ? `${BASE_URL}/data/character_info.js?v=${APP_VERSION}`
-            : ((primaryLang === 'en' || primaryLang === 'jp')
-                ? `${BASE_URL}/data/character_info_glb.js?v=${APP_VERSION}`
-                : `${BASE_URL}/data/${primaryLang}/characters/characters.js?v=${APP_VERSION}`);
-        const krUrl = `${BASE_URL}/data/character_info.js?v=${APP_VERSION}`;
+        if (window.CharacterDataUtils && typeof window.CharacterDataUtils.prepareCharacterData === 'function') {
+            const prepared = await window.CharacterDataUtils.prepareCharacterData({
+                lang,
+                spoilerEnabled: useKrFull,
+                version: APP_VERSION
+            });
 
-        async function evalCharacters(text) {
-            if (!text) return { characterList: { mainParty: [], supportParty: [] }, characterData: {} };
-            // window.characterList / window.characterData 패턴을 샌드박스에서 평가
-            const sandbox = {};
-            try {
-                const win = (new Function('window', `${text}\n; return window;`))(sandbox);
-                return {
-                    characterList: (win && win.characterList) || { mainParty: [], supportParty: [] },
-                    characterData: (win && win.characterData) || {}
-                };
-            } catch (e) {
-                // 구형 포맷(const characterList = ...) 폴백
-                const out = {};
-                try {
-                    new Function('out', `${text};
-                        out.characterList = (typeof characterList!=='undefined') ? characterList : { mainParty:[], supportParty:[] };
-                        out.characterData = (typeof characterData!=='undefined') ? characterData : {};
-                    `)(out);
-                } catch (_) { }
-                return {
-                    characterList: out.characterList || { mainParty: [], supportParty: [] },
-                    characterData: out.characterData || {}
-                };
+            if (prepared) {
+                STATE.characterList = prepared.characterList || { mainParty: [], supportParty: [] };
+                STATE.characterData = prepared.characterData || {};
+                STATE.krCharacterList = prepared.krCharacterList || { mainParty: [], supportParty: [] };
+                return;
             }
         }
 
-        const [primaryText, krText] = await Promise.all([
-            fetch(primaryUrl).then(r => r.ok ? r.text() : '').catch(() => ''),
-            fetch(krUrl).then(r => r.ok ? r.text() : '').catch(() => '')
-        ]);
+        const fallback = await fetch(`${BASE_URL}/data/character_info.js?v=${APP_VERSION}`)
+            .then(r => r.ok ? r.text() : '')
+            .catch(() => '');
+        const parsed = (window.CharacterDataUtils && typeof window.CharacterDataUtils.parseCharacterScriptData === 'function')
+            ? window.CharacterDataUtils.parseCharacterScriptData(fallback)
+            : { characterList: { mainParty: [], supportParty: [] }, characterData: {} };
 
-        const tmp = await evalCharacters(primaryText);
-        const krBox = await evalCharacters(krText);
-
-        STATE.characterList = tmp.characterList || { mainParty: [], supportParty: [] };
-
-        // 캐릭터 메타 병합: 키별로 KR 메타가 우선(특히 name_en/name_jp), 언어별 메타의 필드가 있으면 보조로 유지
-        const merged = { ...(tmp.characterData || {}) };
-        const krMap = krBox.characterData || {};
-        for (const k in krMap) {
-            if (!Object.prototype.hasOwnProperty.call(merged, k)) merged[k] = {};
-            merged[k] = { ...(merged[k] || {}), ...(krMap[k] || {}) };
-        }
-        STATE.characterData = merged;
-        // KR 전용 캐릭터 리스트(특히 support_party)를 보관
-        STATE.krCharacterList = krBox.characterList || { mainParty: [], supportParty: [] };
+        STATE.characterList = parsed.characterList || { mainParty: [], supportParty: [] };
+        STATE.characterData = parsed.characterData || {};
+        STATE.krCharacterList = parsed.characterList || { mainParty: [], supportParty: [] };
     }
 
     // 모달 유틸

@@ -78,6 +78,7 @@
 /* 모토하 청광*/
 .char-img.single-banner[src*="%EB%AA%A8%ED%86%A0%ED%95%98%C2%B7%EC%B2%AD%EA%B4%91"] {
   top: 40%;
+  transform: translateY(-50%) scale(2);
 }
 
 /* 마유미*/

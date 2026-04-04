@@ -448,6 +448,62 @@
     transform: translateY(-1px);
 }
 
+.limit-transition-badge {
+    gap: 6px;
+    flex-wrap: wrap;
+    order: 99;
+}
+
+.limit-transition-state-icon {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.limit-transition-arrow {
+    width: 14px;
+    height: 14px;
+    color: rgba(255, 255, 255, 0.55);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.limit-transition-arrow svg {
+    width: 14px;
+    height: 14px;
+    display: block;
+}
+
+.limit-transition-characters {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+.limit-transition-character-link {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s;
+}
+
+.limit-transition-character-link:hover {
+    transform: translateY(-1px);
+}
+
+.limit-transition-character-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: cover;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
 /* Weapon Badge - 원더 웨폰 뱃지 */
 .weapon-list {
     display: flex;
@@ -1022,6 +1078,20 @@ a.mindscape-core-item {
 
     .content-label {
         font-size: 11px;
+    }
+
+    .limit-transition-badge {
+        gap: 5px;
+    }
+
+    .limit-transition-arrow {
+        width: 12px;
+        height: 12px;
+    }
+
+    .limit-transition-arrow svg {
+        width: 12px;
+        height: 12px;
     }
 
     .persona-list {

@@ -1385,6 +1385,10 @@ document.addEventListener('DOMContentLoaded', () => {
     window.createRevelationValue = createRevelationValue;
     window.translateRevelationName = translateRevelationName;
 
+    function isJnCCharacter(characterName, characterInfo) {
+        return characterName === 'J&C' || (characterInfo && characterInfo.codename === 'J&C');
+    }
+
     // 스킬 정보 채우기 (전역 함수로 설정)
     window.fillSkillsInfo = function (characterName) {
         // console.log('fillSkillsInfo 호출됨:', characterName);
@@ -1473,7 +1477,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // 스킬 순서 정의
         let skillTypes = ['skill1', 'skill2', 'skill3', 'skill_highlight', 'passive1', 'passive2'];
 
-        if (characterInfo.name === "J&C" || characterInfo.name === "쥐스틴 & 카롤린" || characterInfo.name === "쥐스틴&카롤린") {
+        if (isJnCCharacter(characterName, characterInfo)) {
             skillTypes = ['skill1', 'skill2', 'skill3', 'skill4', 'skill5', 'skill_highlight', 'passive1', 'passive2'];
         }
 
@@ -1788,7 +1792,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let skillTypes = ['skill1', 'skill2', 'skill3', 'skill_highlight', 'passive1', 'passive2'];
 
         // 쥐스틴 & 카롤린 (J&C) 전용: skill4, skill5 포함
-        if (characterInfo.name === "J&C" || characterInfo.name === "쥐스틴 & 카롤린" || characterInfo.name === "쥐스틴&카롤린") {
+        if (isJnCCharacter(characterName, characterInfo)) {
             skillTypes = ['skill1', 'skill2', 'skill3', 'skill4', 'skill5', 'skill_highlight', 'passive1', 'passive2'];
         }
 

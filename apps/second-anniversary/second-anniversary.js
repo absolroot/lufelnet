@@ -97,12 +97,51 @@
         return character.shortName || (ALIASES[character.name] && ALIASES[character.name].kr) || character.name;
     }
 
+    function resolveCharacterSlug(character) {
+        if (!character || typeof window === 'undefined') return '';
+
+        const slugMap = window.__CHARACTER_SLUG_MAP;
+        if (!slugMap || typeof slugMap !== 'object') return '';
+
+        const candidates = [
+            character.shortName,
+            (ALIASES[character.name] && ALIASES[character.name].kr) || '',
+            character.name,
+            character.name_en
+        ].map((value) => String(value || '').trim()).filter(Boolean);
+
+        for (let i = 0; i < candidates.length; i += 1) {
+            const key = candidates[i];
+            const direct = slugMap[key];
+            if (direct && typeof direct === 'object' && direct.slug) {
+                return String(direct.slug).trim();
+            }
+        }
+
+        const keys = Object.keys(slugMap);
+        for (let i = 0; i < keys.length; i += 1) {
+            const entry = slugMap[keys[i]];
+            if (!entry || typeof entry !== 'object' || !entry.slug || !Array.isArray(entry.aliases)) continue;
+            for (let j = 0; j < candidates.length; j += 1) {
+                if (entry.aliases.includes(candidates[j])) {
+                    return String(entry.slug).trim();
+                }
+            }
+        }
+
+        return '';
+    }
+
     function getCharacterLink(character) {
         if (!character) return '#';
-        if (window.LanguageRouter && typeof window.LanguageRouter.buildCharacterDetailUrl === 'function') {
-            return window.LanguageRouter.buildCharacterDetailUrl(character.name, currentLang);
+        const slug = resolveCharacterSlug(character);
+        if (slug) {
+            return `/${currentLang}/character/${encodeURIComponent(slug)}/`;
         }
-        return '#';
+        if (window.LanguageRouter && typeof window.LanguageRouter.buildCharacterDetailUrl === 'function') {
+            return window.LanguageRouter.buildCharacterDetailUrl(getTierMatchName(character), currentLang);
+        }
+        return `/character.html?name=${encodeURIComponent(getTierMatchName(character))}&lang=${encodeURIComponent(currentLang)}`;
     }
 
     function encodeFileName(fileName) {

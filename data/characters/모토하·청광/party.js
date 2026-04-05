@@ -24,8 +24,33 @@ window.recommendParty["모토하·청광"] = {
             "members": [
                 "모토하·청광",
                 "아야카",
+                "J&C",
+                "후카",
+                "코로마루"
+            ],
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
+        },
+        {
+            "members": [
+                "모토하·청광",
+                "아야카",
                 "아란",
-                "후카"
+                "후카",
+                "코로마루"
+            ],
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
+        },
+        {
+            "members": [
+                "모토하·청광",
+                "아야카",
+                "카타야마",
+                "후카",
+                "코로마루"
             ],
             "comment": "",
             "comment_en": "",
@@ -36,7 +61,8 @@ window.recommendParty["모토하·청광"] = {
                 "모토하·청광",
                 "아야카",
                 "미나미·여름",
-                "후카"
+                "후카",
+                "코로마루"
             ],
             "comment": "",
             "comment_en": "",
@@ -52,12 +78,38 @@ window.recommendParty["모토하·청광"] = {
         },
         {
             "name": "아란",
+            "A": 6,
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
+        },
+        {
+            "name": "J&C",
+            "A": 1,
             "comment": "",
             "comment_en": "",
             "comment_jp": ""
         },
         {
             "name": "미나미·여름",
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
+        },
+        {
+            "name": "카타야마",
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
+        },
+        {
+            "name": "후카",
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
+        },
+        {
+            "name": "코로마루",
             "comment": "",
             "comment_en": "",
             "comment_jp": ""

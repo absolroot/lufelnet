@@ -1,6 +1,6 @@
 window.characterSetting = window.characterSetting || {};
 window.characterSetting["모토하·청광"] = {
-    "role": "",
+    "role": "2체 타게팅 HILGIHT 딜러",
     "video": ["I5tky0jXdXA"],
     "video_en": [""],
     "video_jp": ["", ""],

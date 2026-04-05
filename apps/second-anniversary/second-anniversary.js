@@ -40,7 +40,7 @@
     };
 
     const SLOT_DEFS = [
-        { id: 'reroll', ticket: 'reroll', pool: 'rerollPool', scopeChar: '아라이 모토하·청광', titleRaw: '리세마라 목표 (선택)' },
+        { id: 'reroll', ticket: 'reroll', pool: 'rerollPool', scopeChar: '아라이 모토하·청광', titleRaw: '리세마라 (선택)' },
         { id: 'event1', ticket: 'event', pool: 'eventMakoto', scopeChar: '유키 마코토', titleRaw: '이벤트 선택권 1' },
         { id: 'event2', ticket: 'event', pool: 'eventMakoto', scopeChar: '유키 마코토', titleRaw: '이벤트 선택권 2' },
         { id: 'katayama', ticket: 'katayama', pool: 'katayama', scopeChar: '카타야마 쿠미', titleRaw: '이벤트 선택권 3' },
@@ -202,19 +202,19 @@
 
     function renderHeader() {
         return `
+            <h1>2주년 뉴비 선택 가이드</h1>
             <div class="sa-header-panel">
                 <div class="sa-header-content">
-                    <div class="sa-kicker">2nd Anniversary</div>
-                    <h1>2주년 뉴비 선택 가이드</h1>
-                    <p>2주년 출시 캐릭터 모토하 청광을 획득하고, 이외는 범용적으로 사용 가능한 버퍼와 서포트 괴도들을 획득을 목표로 하는 방법. 아니면 리세마라를 패스하고 1명의 좋은 딜러를 획득하는 형태로 시작할 수 있습니다.</p>
+                    <p>2주년 출시 캐릭터 모토하 청광을 획득하고, 이외는 범용적으로 사용 가능한 버퍼와 서포트 괴도들을 획득을 목표로 하는 방법.
+아니면 리세마라를 패스하고 1명의 좋은 딜러를 선택하는 형태로 시작할 수 있습니다.</p>
                     <div class="sa-core-rules">
                         <div class="sa-core-rule" style="background:rgba(216, 184, 91, 0.08); border-color:rgba(216, 184, 91, 0.2);">
                             <img src="${TICKET_ICONS.login}" alt="">
-                            <span>첫날 80 + 10일 누적 80개 = <strong>선택권 2장 분량</strong></span>
+                            <span>첫날 80 + 10일 누적 80개 = <strong>한정 선택권 2장</strong></span>
                         </div>
                         <div class="sa-core-rule">
-                            <i class="fas fa-envelope" style="color:var(--sa-gold-strong); font-size:1.1rem; margin-top:2px;"></i>
-                            <span>우편 수령 = <strong>선택권 2장 추가</strong> (통상 1 + 한정 1(~카타야마))</span>
+                            <span aria-hidden="true" style="color:var(--sa-gold-strong); font-size:1rem; margin-top:1px;">✉</span>
+                            <span>우편 수령 = <strong>한정 선택권 1장 + 통상 선택권 1장</strong></span>
                         </div>
                     </div>
                 </div>
@@ -228,8 +228,8 @@
                 ${SLOT_DEFS.map(slot => {
             if (slot.id === 'qa') {
                 return `
-                        <button type="button" class="sa-tab-btn ${currentTab === slot.id ? 'is-active' : ''}" data-tab="${slot.id}" style="margin-top:20px;">
-                            <div class="sa-tab-icons-stack" style="width:36px; height:36px;">
+                        <button type="button" class="sa-tab-btn sa-tab-btn-single ${currentTab === slot.id ? 'is-active' : ''}" data-tab="${slot.id}" style="margin-top:20px;">
+                            <div class="sa-tab-icons-stack" style="width:36px; height:36px; display:flex; align-items:center; justify-content:center;">
                                 <div style="font-size:1.8rem;">💡</div>
                             </div>
                             <div class="sa-tab-content" style="justify-content:center;">
@@ -247,27 +247,63 @@
 
             let faceHtml = '';
             if (rank1Char) {
-                faceHtml = `<img src="${getCharacterImage(rank1Char, 'half')}" class="sa-tab-front-icon" alt="" onerror="this.style.display='none'">`;
+                faceHtml = `
+                    <div class="sa-tab-visual">
+                        <div class="sa-tab-icons-stack" style="width:46px; align-items:center; justify-content:center; display:flex;">
+                            <img src="${getCharacterImage(rank1Char, 'half')}" class="sa-tab-front-icon" alt="" onerror="this.style.display='none'">
+                        </div>
+                        <span class="sa-tab-character-name">${escapeHtml(getShortName(rank1Char))}</span>
+                    </div>
+                `;
             }
 
             let scopeContent = '';
-            if (['event1', 'event2'].includes(slot.id)) {
-                scopeContent = `<div class="sa-tab-scope"><span style="margin-right:2px;">~</span> <img src="${getCharacterImage(findCharacter(slot.scopeChar), 'half')}" class="sa-tab-scope-face"> <span>${escapeHtml(getShortName(findCharacter(slot.scopeChar)))}</span></div> <div class="sa-tab-hint"><img src="${TICKET_ICONS.login}" class="sa-currency-icon" alt=""> 80 티켓 교환</div>`;
+            let hintContent = '';
+            if (slot.id === 'reroll') {
+                scopeContent = `
+                    <div class="sa-tab-scope-stack">
+                        <div class="sa-tab-scope-row">
+                            <span class="sa-tab-meta-label">범위</span>
+                            <div class="sa-tab-scope">
+                                <span style="margin-right:2px;">~</span>
+                                <img src="${getCharacterImage(findCharacter('야마기시 후카'), 'half')}" class="sa-tab-scope-face">
+                                <span>${escapeHtml(getShortName(findCharacter('야마기시 후카')))}</span>
+                            </div>
+                        </div>
+                        <div class="sa-tab-scope-row sa-tab-scope-row-indent">
+                            <div class="sa-tab-scope">
+                                <span style="margin-right:2px;">+</span>
+                                <img src="${getCharacterImage(findCharacter('아라이 모토하·청광'), 'half')}" class="sa-tab-scope-face">
+                                <span>${escapeHtml(getShortName(findCharacter('아라이 모토하·청광')))}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                hintContent = `<div class="sa-tab-hint"><span class="sa-tab-meta-label">획득</span><div class="sa-tab-hint-box"><img src="${TICKET_ICONS.reroll}" class="sa-currency-icon" alt=""> 계약(운명)</div></div>`;
+            } else if (['event1', 'event2'].includes(slot.id)) {
+                scopeContent = `<span class="sa-tab-meta-label">범위</span><div class="sa-tab-scope"><span style="margin-right:2px;">~</span> <img src="${getCharacterImage(findCharacter(slot.scopeChar), 'half')}" class="sa-tab-scope-face"> <span>${escapeHtml(getShortName(findCharacter(slot.scopeChar)))}</span></div>`;
+                hintContent = `<div class="sa-tab-hint"><span class="sa-tab-meta-label">획득</span><div class="sa-tab-hint-box"><img src="${TICKET_ICONS.login}" class="sa-currency-icon" alt=""> 80 티켓 교환</div></div>`;
             } else if (['standard', 'katayama'].includes(slot.id)) {
-                scopeContent = `<div class="sa-tab-scope"><span style="margin-right:2px;">~</span> <img src="${getCharacterImage(findCharacter(slot.scopeChar), 'half')}" class="sa-tab-scope-face"> <span>${escapeHtml(getShortName(findCharacter(slot.scopeChar)))}</span></div> <div class="sa-tab-hint"><i class="fas fa-envelope" style="margin-right:4px;"></i> 우편 수령</div>`;
+                scopeContent = `<span class="sa-tab-meta-label">범위</span><div class="sa-tab-scope"><span style="margin-right:2px;">~</span> <img src="${getCharacterImage(findCharacter(slot.scopeChar), 'half')}" class="sa-tab-scope-face"> <span>${escapeHtml(getShortName(findCharacter(slot.scopeChar)))}</span></div>`;
+                hintContent = `<div class="sa-tab-hint"><span class="sa-tab-meta-label">획득</span><div class="sa-tab-hint-box"><span aria-hidden="true">✉</span> 우편 수령</div></div>`;
             }
             return `
                     <button type="button" class="sa-tab-btn ${currentTab === slot.id ? 'is-active' : ''}" data-tab="${slot.id}">
-                        ${faceHtml ? `<div class="sa-tab-icons-stack" style="width:46px; align-items:center; justify-content:center; display:flex;">${faceHtml}</div>` : ''}
-                        <div class="sa-tab-content">
-                            <div class="sa-tab-header-box" style="margin-bottom:6px;">
-                                <strong style="font-size: 1.15rem; display:flex; align-items:center; gap:6px;">
-                                    <img src="${TICKET_ICONS[slot.ticket]}" style="width:20px; height:20px; object-fit:contain;" alt="">
-                                    ${escapeHtml(slot.titleRaw)}
-                                </strong>
-                            </div>
-                            <div class="sa-tab-scope-box">
-                                ${scopeContent}
+                        <strong class="sa-tab-title" style="font-size: 1.15rem; display:flex; align-items:center; gap:6px;">
+                            <img src="${TICKET_ICONS[slot.ticket]}" style="width:24px; height:20px; object-fit:contain;" alt="">
+                            ${escapeHtml(slot.titleRaw)}
+                        </strong>
+                        <div class="sa-tab-body">
+                            ${faceHtml}
+                            <div class="sa-tab-content">
+                                <div class="sa-tab-header-box">
+                                    <div class="sa-tab-meta-row">
+                                        <div class="sa-tab-scope-box">
+                                            ${scopeContent}
+                                        </div>
+                                    </div>
+                                    ${hintContent}
+                                </div>
                             </div>
                         </div>
                     </button>
@@ -291,7 +327,7 @@
             return `
             <div class="sa-candidate-view">
                 <div class="sa-candidate-header">
-                    <h2 style="margin-bottom: 8px;">초보자 통합 Q&A</h2>
+                    <h2 style="margin-bottom: 8px;">뉴비 Q&A</h2>
                 </div>
                 <div class="sa-qa-list" style="display:flex; flex-direction:column; gap:20px; margin-top:24px;">
                     ${qaData.map(qa => `
@@ -326,19 +362,22 @@
                     <div class="sa-guide-card" style="${isRank1 ? 'border-color: rgba(216, 184, 91, 0.4); background: linear-gradient(145deg, rgba(216, 184, 91, 0.1), rgba(0,0,0,0.3)); box-shadow: 0 8px 32px rgba(216, 184, 91, 0.12);' : ''}">
                         <div class="sa-guide-profile">
                             <img src="${getCharacterImage(character, 'half')}" class="sa-guide-profile-img" alt="">
-                            <div class="sa-guide-meta">
-                                <span class="sa-guide-rank-pill" style="align-self: flex-start; color:${isRank1 ? 'var(--sa-gold-strong)' : '#ddd'}; background:rgba(255,255,255,0.06); padding:4px 10px; border-radius:6px; font-size:0.85rem; font-weight:700; border:1px solid ${isRank1 ? 'rgba(216,184,91,0.3)' : 'rgba(255,255,255,0.1)'}; margin-bottom: 6px;">${g.rank}순위 추천</span>
-                                <h4 style="margin:0 0 6px 0;">${escapeHtml(getShortName(character) || g.name)}</h4>
-                                <div class="sa-guide-subtext">
-                                    <img src="${getElementIcon(elName)}" alt="${escapeHtml(elName)}" class="sa-guide-tiny-icon">
-                                    <img src="${getPositionIcon(posName)}" alt="${escapeHtml(posName)}" class="sa-guide-tiny-icon">
-                                    <span>${posName === '해명' ? escapeHtml(explanation) : `${escapeHtml(elName)} ${escapeHtml(explanation)}`}</span>
+                            <div class="sa-guide-content">
+                                <div class="sa-guide-meta">
+                                    <span class="sa-guide-rank-pill" style="align-self: flex-start; color:${isRank1 ? 'var(--sa-gold-strong)' : '#ddd'}; background:rgba(255,255,255,0.06); padding:4px 10px; border-radius:6px; font-size:0.85rem; font-weight:700; border:1px solid ${isRank1 ? 'rgba(216,184,91,0.3)' : 'rgba(255,255,255,0.1)'};">${g.rank}순위</span>
+                                    <div class="sa-guide-heading">
+                                        <h4 style="margin:0;">${escapeHtml(getShortName(character) || g.name)}</h4>
+                                        <div class="sa-guide-subtext">
+                                            <img src="${getElementIcon(elName)}" alt="${escapeHtml(elName)}" class="sa-guide-tiny-icon">
+                                            <img src="${getPositionIcon(posName)}" alt="${escapeHtml(posName)}" class="sa-guide-tiny-icon">
+                                            <span>${posName === '해명' ? escapeHtml(explanation) : `${escapeHtml(elName)} ${escapeHtml(explanation)}`}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sa-guide-text">
+                                    <p style="margin-bottom:8px; color:rgba(255,255,255,0.9); font-size:1rem;">${escapeHtml(g.review)}</p>
                                 </div>
                             </div>
-                        </div>
-                        <div class="sa-guide-text">
-                            <p style="margin-bottom:8px; color:rgba(255,255,255,0.9); font-size:1rem;">${escapeHtml(g.review)}</p>
-                            <p style="color:var(--sa-text-muted); font-size:0.9rem;"><strong>선택 이유:</strong> ${escapeHtml(g.why)}</p>
                         </div>
                     </div>
                     `

@@ -551,6 +551,148 @@
     margin: 0px auto 0px auto;
 }
 
+.home-anniversary-banner {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 20px auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+    gap: 20px;
+    padding: 24px 28px;
+    border-radius: 12px;
+    background:
+        radial-gradient(circle at top right, rgba(216, 184, 91, 0.16), transparent 34%),
+        linear-gradient(135deg, rgba(46, 46, 46, 0.98), rgba(31, 31, 31, 0.98));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: solid 3px var(--border-red);
+    box-sizing: border-box;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.home-anniversary-banner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(90deg, rgba(157, 23, 29, 0.1), transparent 26%),
+        url('/assets/img/character-detail/character_bg.png') no-repeat right -40px center / 360px auto;
+    opacity: 0.22;
+    pointer-events: none;
+}
+
+.home-anniversary-banner:hover {
+    transform: translateY(-2px);
+    border-color: var(--border-red);
+    background:
+        radial-gradient(circle at top right, rgba(216, 184, 91, 0.2), transparent 38%),
+        linear-gradient(135deg, rgba(54, 54, 54, 0.98), rgba(34, 34, 34, 0.98));
+}
+
+.home-anniversary-banner-copy,
+.home-anniversary-banner-visual {
+    position: relative;
+    z-index: 1;
+}
+
+.home-anniversary-banner-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+}
+
+.home-anniversary-banner-kicker {
+    display: inline-flex;
+    width: fit-content;
+    margin-bottom: 12px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    color: #f0d6aa;
+}
+
+.home-anniversary-banner-copy h2 {
+    margin: 0;
+    font-size: 30px;
+    line-height: 1.2;
+    color: #ffffff;
+    letter-spacing: -0.03em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.home-anniversary-banner-copy h2 img {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.home-anniversary-banner-copy p {
+    margin: 12px 0 0 0;
+    max-width: 620px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.76);
+}
+
+.home-anniversary-banner-cta {
+    display: inline-flex;
+    width: fit-content;
+    margin-top: 18px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.28);
+    border: 1px solid rgba(216, 184, 91, 0.25);
+    color: #f0d6aa;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.home-anniversary-banner-visual {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    min-height: 160px;
+    padding-right: 0;
+}
+
+.home-anniversary-banner-faces {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    gap: 14px;
+    width: auto;
+    padding-top: 0;
+}
+
+.home-anniversary-banner-faces img {
+    width: 96px;
+    height: 130px;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: 10px 10px 0 0;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    position: relative;
+    z-index: 1;
+}
+
+.home-anniversary-banner-faces img:nth-child(2) {
+    width: 96px;
+    height: 130px;
+}
+
+.home-anniversary-banner-faces img:nth-child(3) {
+    width: 96px;
+    height: 130px;
+}
+
 .character-cards {
     display: flex;
     flex-direction: row;
@@ -838,6 +980,54 @@
     .popular-content {
         padding: 16px;
         border-radius: 12px;
+    }
+
+    .home-anniversary-banner {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 20px 18px;
+    }
+
+    .home-anniversary-banner::before {
+        background:
+            linear-gradient(180deg, rgba(157, 23, 29, 0.08), transparent 30%),
+            url('/assets/img/character-detail/character_bg.png') no-repeat right -80px top / 260px auto;
+    }
+
+    .home-anniversary-banner-copy h2 {
+        font-size: 24px;
+    }
+
+    .home-anniversary-banner-copy h2 img {
+        width: 36px;
+        height: 36px;
+    }
+
+    .home-anniversary-banner-visual {
+        min-height: auto;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 8px;
+    }
+
+    .home-anniversary-banner-faces {
+        justify-content: flex-start;
+        gap: 10px;
+    }
+
+    .home-anniversary-banner-faces img {
+        width: 76px;
+        height: 100px;
+    }
+
+    .home-anniversary-banner-faces img:nth-child(2) {
+        width: 76px;
+        height: 100px;
+    }
+
+    .home-anniversary-banner-faces img:nth-child(3) {
+        width: 76px;
+        height: 100px;
     }
 
     .character-cards {

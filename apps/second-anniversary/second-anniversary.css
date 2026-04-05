@@ -114,6 +114,87 @@
 @media (max-width: 900px) {
     .sa-app-layout {
         grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    
+    .sa-header-panel,
+    .sa-candidate-view {
+        padding: 20px 16px;
+    }
+
+    .sa-sidebar {
+        flex-direction: row;
+        position: relative;
+        top: 0;
+        overflow-x: auto;
+        padding-bottom: 4px;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    
+    .sa-sidebar::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .sa-tab-btn {
+        flex: 0 0 auto;
+        padding: 10px 18px;
+        border-radius: 24px;
+    }
+    
+    .sa-tab-body {
+        display: none !important;
+    }
+    
+    .sa-tab-title {
+        font-size: 0.95rem !important;
+    }
+    
+    .sa-tab-btn-single {
+        margin-top: 0 !important;
+        padding: 10px 18px !important;
+        border-radius: 24px !important;
+    }
+    
+    .sa-tab-btn-single .sa-tab-icons-stack {
+        display: none !important;
+    }
+    
+    .sa-tab-btn-single .sa-tab-header-box strong {
+        font-size: 0.95rem !important;
+        white-space: nowrap;
+    }
+    
+    .sa-tab-btn-single .sa-tab-header-box strong::before {
+        content: "💡 ";
+    }
+
+    .sa-guide-profile {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .sa-guide-job-desc {
+        display: none;
+    }
+
+    .sa-mobile-tab-info {
+        display: flex !important;
+    }
+
+    .sa-candidate-grid {
+        grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+        gap: 10px;
+    }
+
+    .sa-candidate-pill-name {
+        font-size: 0.8rem;
+        padding: 6px 2px 2px;
+    }
+
+    .sa-candidate-pill-desc {
+        font-size: 0.7rem;
     }
 }
 

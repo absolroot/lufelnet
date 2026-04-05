@@ -409,7 +409,7 @@
                                         <div class="sa-guide-subtext">
                                             <img src="${getElementIcon(elName)}" alt="${escapeHtml(elName)}" class="sa-guide-tiny-icon">
                                             <img src="${getPositionIcon(posName)}" alt="${escapeHtml(posName)}" class="sa-guide-tiny-icon">
-                                            <span>${posName === '해명' ? escapeHtml(explanation) : `${escapeHtml(elName)} ${escapeHtml(explanation)}`}</span>
+                                            <span class="sa-guide-job-desc">${posName === '해명' ? escapeHtml(explanation) : `${escapeHtml(elName)} ${escapeHtml(explanation)}`}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -425,10 +425,29 @@
             `;
         }
 
+        let mobileInfoHtml = '';
+        if (slot.id !== 'qa') {
+            let scopeContent = '';
+            let hintContent = '';
+            if (slot.id === 'reroll') {
+                scopeContent = '<div class="sa-tab-scope-row" style="display:flex; align-items:center; gap:8px;"><span class="sa-tab-meta-label">범위</span><div class="sa-tab-scope" style="margin-top:0;"><span style="margin-right:2px;">~</span><img src="' + getCharacterImage(findCharacter('야마기시 후카'), 'half') + '" class="sa-tab-scope-face"> <span>' + escapeHtml(getShortName(findCharacter('야마기시 후카'))) + '</span> <span style="margin:0 4px; color:var(--sa-text-soft);">+</span> <img src="' + getCharacterImage(findCharacter('아라이 모토하·청광'), 'half') + '" class="sa-tab-scope-face"> <span>' + escapeHtml(getShortName(findCharacter('아라이 모토하·청광'))) + '</span></div></div>';
+                hintContent = '<div class="sa-tab-hint" style="margin-top:0;"><span class="sa-tab-meta-label">획득</span><div class="sa-tab-hint-box"><img src="' + TICKET_ICONS.reroll + '" class="sa-currency-icon" alt=""> 계약(운명)</div></div>';
+            } else if (['event1', 'event2'].includes(slot.id)) {
+                scopeContent = '<div class="sa-tab-scope-row" style="display:flex; align-items:center; gap:8px;"><span class="sa-tab-meta-label">범위</span><div class="sa-tab-scope" style="margin-top:0;"><span style="margin-right:2px;">~</span> <img src="' + getCharacterImage(findCharacter(slot.scopeChar), 'half') + '" class="sa-tab-scope-face"> <span>' + escapeHtml(getShortName(findCharacter(slot.scopeChar))) + '</span></div></div>';
+                hintContent = '<div class="sa-tab-hint" style="margin-top:0;"><span class="sa-tab-meta-label">획득</span><div class="sa-tab-hint-box"><img src="' + TICKET_ICONS.login + '" class="sa-currency-icon" alt=""> 80 티켓 교환</div></div>';
+            } else if (['standard', 'katayama'].includes(slot.id)) {
+                scopeContent = '<div class="sa-tab-scope-row" style="display:flex; align-items:center; gap:8px;"><span class="sa-tab-meta-label">범위</span><div class="sa-tab-scope" style="margin-top:0;"><span style="margin-right:2px;">~</span> <img src="' + getCharacterImage(findCharacter(slot.scopeChar), 'half') + '" class="sa-tab-scope-face"> <span>' + escapeHtml(getShortName(findCharacter(slot.scopeChar))) + '</span></div></div>';
+                hintContent = '<div class="sa-tab-hint" style="margin-top:0;"><span class="sa-tab-meta-label">획득</span><div class="sa-tab-hint-box"><span aria-hidden="true" style="margin-right:4px;">✉</span> 우편 수령</div></div>';
+            }
+            if (scopeContent || hintContent) {
+                mobileInfoHtml = `\n                    <div class="sa-mobile-tab-info" style="display:none; flex-wrap:wrap; gap:12px; margin-bottom:12px; margin-top:12px; background:rgba(0,0,0,0.25); padding:10px 14px; border-radius:8px; border:1px solid rgba(255,255,255,0.05);">\n                        ${scopeContent}\n                        ${hintContent}\n                    </div>`;
+            }
+        }
+
         return `
             <div class="sa-candidate-view">
                 <div class="sa-candidate-header" style="${guidesHtml ? 'border-bottom:none; margin-bottom:0;' : ''}">
-                    <h2 style="margin-bottom: 8px;">${escapeHtml(slot.titleRaw)} 목록</h2>
+                    <h2 style="margin-bottom: 0px;">${escapeHtml(slot.titleRaw)} 목록</h2>${mobileInfoHtml}
                     <p style="color:var(--sa-text-muted); font-size:0.95rem; line-height:1.5;">최상단에 기재된 순위를 위주로 선택하는 것이 좋습니다.</p>
                     ${slot.id === 'standard' ? `<p style="color:var(--sa-gold-strong); font-size:0.9rem; margin-top:6px;">* 한정 괴도 유스케, YUI, 렌의 통상(상시) 편입이 함께 진행됐습니다.</p>` : ''}
                 </div>

@@ -18,6 +18,8 @@ window.characterSetting["마유미"] = {
         "LV12": false,
         "LV12+5": false,
         "LV13": "속도 189",
+        "LV12+5": false,
+        "LV13": "속도 189",
         "LV13+5": "속도 207"
     },
     "battle_plus_stats": "· 마이팰리스 1 / 마이팰리스 평점",

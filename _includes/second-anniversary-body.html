@@ -1,0 +1,120 @@
+<script>
+(function () {
+    var params = new URLSearchParams(window.location.search || '');
+    var path = String(window.location.pathname || '/');
+    var lowerPath = path.toLowerCase();
+
+    var pathLangMatch = lowerPath.match(/^\/(kr|en|jp)(\/|$)/);
+    var pathLang = pathLangMatch ? pathLangMatch[1] : '';
+    var queryLang = String(params.get('lang') || '').toLowerCase();
+    var effectiveLang = pathLang || (['kr', 'en', 'jp'].indexOf(queryLang) !== -1 ? queryLang : '');
+
+    var isLegacyRoot = /^\/2nd-anniversary\/?$/.test(lowerPath);
+    var isCanonicalPath = /^\/(kr|en|jp)\/2nd-anniversary\/?$/.test(lowerPath);
+
+    if (isLegacyRoot && effectiveLang) {
+        window.__SEO_PATH_LANG__ = effectiveLang;
+        params.delete('lang');
+        params.delete('v');
+        var remainingLegacy = params.toString();
+        history.replaceState(null, '', '/' + effectiveLang + '/2nd-anniversary/' + (remainingLegacy ? '?' + remainingLegacy : ''));
+        return;
+    }
+
+    if (isCanonicalPath) {
+        window.__SEO_PATH_LANG__ = pathLang;
+        var before = params.toString();
+        params.delete('lang');
+        params.delete('v');
+        var remainingCanonical = params.toString();
+        if (before !== remainingCanonical) {
+            history.replaceState(null, '', path + (remainingCanonical ? '?' + remainingCanonical : ''));
+        }
+        return;
+    }
+
+    if (isLegacyRoot && params.has('v')) {
+        params.delete('v');
+        var remainingRoot = params.toString();
+        history.replaceState(null, '', '/2nd-anniversary/' + (remainingRoot ? '?' + remainingRoot : ''));
+    }
+})();
+</script>
+{% if page.alternate_urls %}
+{% for alt in page.alternate_urls %}
+<link rel="alternate" hreflang="{{ alt[0] }}" href="{{ site.url }}{{ alt[1] }}" />
+{% endfor %}
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.alternate_urls['ko'] | default: page.alternate_urls.first[1] }}" />
+{% endif %}
+
+<link rel="stylesheet" href="{{ site.baseurl }}/apps/second-anniversary/second-anniversary.css?v={{ site.time | date: '%s' }}">
+
+<div class="main-wrapper second-anniversary-page">
+    <div class="navigation-path">
+        <script>document.write('<a href="../../" id="nav-home" data-i18n="nav.home">-</a>');</script>
+        <span class="separator">/</span>
+        <span class="current-page" id="nav-current" data-i18n="navCurrent">-</span>
+    </div>
+
+    <div id="second-anniversary-root" class="second-anniversary-root">
+        <div class="second-anniversary-loading">Loading...</div>
+    </div>
+</div>
+
+<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/second-anniversary/second-anniversary.js?v={{ site.time | date: '%s' }}"></script>
+<script>
+    (function () {
+        function detectPageLang() {
+            var pathMatch = window.location.pathname.match(/^\/(kr|en|jp)(\/|$)/i);
+            if (pathMatch) {
+                return pathMatch[1].toLowerCase();
+            }
+
+            var params = new URLSearchParams(window.location.search);
+            var queryLang = String(params.get('lang') || '').toLowerCase();
+            if (['kr', 'en', 'jp'].indexOf(queryLang) !== -1) {
+                return queryLang;
+            }
+
+            if (typeof getCurrentLang === 'function') {
+                var helperLang = String(getCurrentLang() || '').toLowerCase();
+                if (['kr', 'en', 'jp'].indexOf(helperLang) !== -1) {
+                    return helperLang;
+                }
+            }
+
+            if (typeof LanguageRouter !== 'undefined' && typeof LanguageRouter.getCurrentLanguage === 'function') {
+                var routerLang = String(LanguageRouter.getCurrentLanguage() || '').toLowerCase();
+                if (['kr', 'en', 'jp'].indexOf(routerLang) !== -1) {
+                    return routerLang;
+                }
+            }
+
+            return 'kr';
+        }
+
+        document.addEventListener('DOMContentLoaded', async function () {
+            var lang = detectPageLang();
+
+            if (typeof initPageI18n === 'function') {
+                await initPageI18n('second-anniversary');
+                if (typeof setLang === 'function') {
+                    await setLang(lang);
+                }
+            } else if (window.I18nService && typeof window.I18nService.init === 'function') {
+                await window.I18nService.init('second-anniversary', lang);
+            }
+
+            if (typeof Navigation !== 'undefined') {
+                Navigation.load('home');
+            }
+            if (typeof VersionChecker !== 'undefined') {
+                VersionChecker.check();
+            }
+            if (window.SecondAnniversaryPage && typeof window.SecondAnniversaryPage.init === 'function') {
+                window.SecondAnniversaryPage.init();
+            }
+        });
+    })();
+</script>

@@ -28,6 +28,7 @@ const SCRIPT_TARGETS = [
   'revelations',
   'revelation-setting',
   'schedule',
+  'second-anniversary',
   'synergy',
   'tactic',
   'tactic-maker',

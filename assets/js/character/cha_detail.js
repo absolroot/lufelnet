@@ -1482,7 +1482,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // 페르소나3 캐릭터인 경우 추가 스킬 포함
-        if (characterInfo.persona3 && characterInfo.name === "유키 마코토") {
+        if (characterInfo.persona3 && characterInfo.codename === "MAKOTO") {
             skillTypes = ['skill1', 'skill2', 'skill3', 'skill_highlight', 'skill_highlight2', 'skill_support', 'passive1', 'passive2'];
         }
 
@@ -1797,10 +1797,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // 페르소나3 캐릭터인 경우 추가 스킬 포함
-        if (characterInfo.persona3 && characterInfo.name === "유키 마코토") {
+        if (characterInfo.persona3 && characterInfo.codename === "MAKOTO") {
             skillTypes = ['skill1', 'skill2', 'skill3', 'skill_highlight', 'skill_highlight2', 'skill_support', 'passive1', 'passive2'];
         }
-        else if (characterInfo.persona3 && characterInfo.name === "야마기시 후카") {
+        else if (characterInfo.persona3 && characterInfo.codename === "FUKA") {
             skillTypes = ['skill1', 'skill2', 'skill3', 'skill_highlight', 'passive1', 'passive2'];
         }
         else if (characterInfo.persona3) {

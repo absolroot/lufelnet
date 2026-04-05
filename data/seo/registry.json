@@ -706,6 +706,39 @@
       "source": "i18n/pages/schedule/seo-meta.json",
       "type": "simple"
     },
+    "second-anniversary": {
+      "langs": [
+        "en",
+        "jp",
+        "kr"
+      ],
+      "meta": {
+        "en": {
+          "description": "Plan your anniversary reroll target and selector ticket priorities for new accounts in one place.",
+          "title": "2nd Anniversary Starter Picker Guide - Persona 5: The Phantom X Lufelnet"
+        },
+        "jp": {
+          "description": "2周年から始めるプレイヤー向けに、リセマラ目標と交換券の優先順位を1ページで整理したガイド。",
+          "title": "2周年スタート選択ガイド - ペルソナ5: The Phantom X ルフェルネット"
+        },
+        "kr": {
+          "description": "2주년 유입 뉴비를 위한 리세마라 목표와 캐릭터 선택권 추천 루트를 한 페이지에서 정리한 가이드.",
+          "title": "2주년 뉴비 선택 가이드 - 페르소나5 더 팬텀 X 루페르넷"
+        }
+      },
+      "modeKeys": [],
+      "paramPolicy": {
+        "detailParam": null,
+        "modeParam": null,
+        "remove": [
+          "lang",
+          "v"
+        ]
+      },
+      "placeholder": null,
+      "source": "i18n/pages/second-anniversary/seo-meta.json",
+      "type": "simple"
+    },
     "synergy": {
       "langs": [
         "en",
@@ -1087,7 +1120,7 @@
       "type": "template"
     }
   },
-  "generatedAt": "2026-03-04T05:09:56.514Z",
+  "generatedAt": "2026-04-04T07:07:22.373Z",
   "localeMap": {
     "cn": "zh_CN",
     "en": "en_US",

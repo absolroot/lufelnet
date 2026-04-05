@@ -20,6 +20,8 @@
     "seo:tier:check": "node scripts/seo/generate-tier-pages.mjs --check",
     "seo:schedule:generate": "node scripts/seo/generate-schedule-pages.mjs",
     "seo:schedule:check": "node scripts/seo/generate-schedule-pages.mjs --check",
+    "seo:second-anniversary:generate": "node scripts/seo/generate-second-anniversary-pages.mjs",
+    "seo:second-anniversary:check": "node scripts/seo/generate-second-anniversary-pages.mjs --check",
     "seo:tactic:generate": "node scripts/seo/generate-tactic-pages.mjs",
     "seo:tactic:check": "node scripts/seo/generate-tactic-pages.mjs --check",
     "seo:tactic-maker:generate": "node scripts/seo/generate-tactic-maker-pages.mjs",

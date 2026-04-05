@@ -38,6 +38,7 @@ const DOMAIN_PARAM_POLICY = {
   revelation: { remove: ['lang', 'v'], modeParam: null, detailParam: null },
   'revelation-setting': { remove: ['lang', 'v'], modeParam: null, detailParam: null },
   schedule: { remove: ['lang', 'v'], modeParam: null, detailParam: null },
+  'second-anniversary': { remove: ['lang', 'v'], modeParam: null, detailParam: null },
   synergy: { remove: ['lang', 'v', 'character'], modeParam: null, detailParam: 'character' },
   tactic: { remove: ['lang', 'v'], modeParam: 'mode', detailParam: null },
   'tactic-maker': { remove: ['lang', 'v'], modeParam: null, detailParam: null },

@@ -10,6 +10,9 @@
       ],
       "반항": [
         {
+          "name": "모토하·청광"
+        },
+        {
           "name": "나루미"
         }
       ],
@@ -18,9 +21,6 @@
           "name": "J&C",
           "Awareness": 1,
           "core": true
-        },
-        {
-          "name": "미나미·여름"
         }
       ],
       "굴복": [],
@@ -60,18 +60,11 @@
         },
         {
           "name": "미츠루"
-        },
-        {
-          "name": "이치고"
         }
       ],
       "우월": [
         {
-          "name": "리코·매화",
-          "Awareness": 1
-        },
-        {
-          "name": "마유미"
+          "name": "미나미·여름"
         }
       ],
       "굴복": [
@@ -113,39 +106,45 @@
     "positions": {
       "지배": [
         {
-          "name": "렌",
-          "core": true
-        },
-        {
           "name": "사나다"
         },
         {
-          "name": "아케치",
-          "Awareness": 6
+          "name": "유스케",
+          "core": true
+        },
+        {
+          "name": "렌",
+          "core": true
         }
       ],
       "반항": [
         {
+          "name": "이치고"
+        },
+        {
           "name": "J&C",
           "Awareness": 1,
           "core": true
-        },
-        {
-          "name": "YUI",
-          "Awareness": 6,
-          "core": true
-        },
-        {
-          "name": "카스미"
         }
       ],
       "우월": [
         {
-          "name": "아야카"
+          "name": "아야카",
+          "core": true
+        },
+        {
+          "name": "리코·매화",
+          "Awareness": 1
+        },
+        {
+          "name": "마유미"
         }
       ],
       "굴복": [
-        
+        {
+          "name": "아란",
+          "Awareness": 6
+        }
       ],
       "방위": [
         {
@@ -178,24 +177,22 @@
     "positions": {
       "지배": [
         {
+          "name": "아케치",
+          "Awareness": 6
+        },
+        {
           "name": "하루"
         }
       ],
       "반항": [
         {
-          "name": "몽타뉴·백조"
+          "name": "카스미"
         },
         {
-          "name": "YUI",
-          "core": true
+          "name": "몽타뉴·백조"
         }
       ],
-      "우월": [
-        {
-          "name": "레오",
-          "Awareness": 6
-        }
-      ],
+      "우월": [],
       "굴복": [
         {
           "name": "미오"
@@ -236,10 +233,18 @@
           "name": "마코토"
         },
         {
+          "name": "YUI",
+          "core": true
+        },
+        {
           "name": "키라"
         }
       ],
       "우월": [
+        {
+          "name": "레오",
+          "Awareness": 6
+        },
         {
           "name": "쇼키",
           "Awareness": 6
@@ -265,9 +270,6 @@
     "color": "#6b7280",
     "positions": {
       "지배": [
-        {
-          "name": "유스케"
-        },
         {
           "name": "모토하"
         }

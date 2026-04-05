@@ -54,6 +54,7 @@
     if (first === 'maps') return { domain: 'maps', mode: query.map ? 'detail' : 'list' };
     if (first === 'gallery') return { domain: 'gallery', mode: 'list' };
     if (first === 'schedule') return { domain: 'schedule', mode: 'list' };
+    if (first === '2nd-anniversary') return { domain: 'second-anniversary', mode: 'list' };
     if (first === 'revelations') return { domain: 'revelation', mode: 'list' };
     if (first === 'revelation-setting') return { domain: 'revelation-setting', mode: 'list' };
     if (first === 'material-calc') return { domain: 'material-calc', mode: 'list' };

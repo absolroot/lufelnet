@@ -1,7 +1,7 @@
 window.characterSetting = window.characterSetting || {};
 window.characterSetting["모토하·청광"] = {
     "role": "",
-    "video": [""],
+    "video": ["I5tky0jXdXA"],
     "video_en": [""],
     "video_jp": ["", ""],
     "main_revelation": ["순수"],

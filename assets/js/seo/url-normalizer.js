@@ -162,6 +162,10 @@
       url.pathname = '/' + lang + '/schedule/';
       return true;
     }
+    if (domain === 'second-anniversary' && /^\/2nd-anniversary\/?$/i.test(url.pathname)) {
+      url.pathname = '/' + lang + '/2nd-anniversary/';
+      return true;
+    }
     if (domain === 'revelation' && /^\/revelations\/?$/i.test(url.pathname)) {
       url.pathname = '/' + lang + '/revelations/';
       return true;

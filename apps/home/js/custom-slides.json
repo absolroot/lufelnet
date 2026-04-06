@@ -119,12 +119,15 @@
     "title": "루페르넷이 도움이 되셨나요?",
     "title_en": "Did Lufel.net help you?",
     "title_jp": "ルフェルネットは役に立ちましたか？",
+    "title_cn": "Lufel.net 对你有帮助吗？",
     "subtitle": "루페르넷은 광고 없는 P5X만을 위한 사이트입니다.",
     "subtitle_en": "An ad-free community dedicated solely to P5X.",
     "subtitle_jp": "ルフェルネットは広告なしで運営されるP5X専門サイトです。",
+    "subtitle_cn": "Lufel.net 是一个无广告、专注于 P5X 的社区网站。",
     "body": "여러분의 지원이 사이트를 만드는 원동력이 됩니다.",
     "body_en": "Your support fuels better guides and features.",
     "body_jp": "皆様の温かいご支援が、より良い攻略を作る原動力になります。",
+    "body_cn": "你的支持，是网站持续更新攻略与功能的动力。",
     "image": "/assets/img/home/banner/support.webp",
     "background_image": "/assets/img/home/banner/under.webp",
     "background_bottom": 0,
@@ -134,11 +137,13 @@
     "link": "#supportModalKR",
     "link_en": "https://ko-fi.com/S6S11F0PUN",
     "link_jp": "#supportModalJP",
+    "link_cn": "#supportModalCN",
     "link_target": "_blank",
     "visible_langs": [
       "kr",
       "en",
-      "jp"
+      "jp",
+      "cn"
     ],
     "regions": [
       "kr",

@@ -253,10 +253,25 @@
 
 <!-- Support Modal Styles for Mobile Centering -->
 <style>
+    @media (min-width: 769px) {
+
+        #supportModalJP .modal-content,
+        #supportModalKR .modal-content,
+        #supportModalCN .modal-content,
+        #kakaoPayModalHome .modal-content {
+            margin: 0 !important;
+            position: absolute;
+            top: 50%;
+            left: calc(50% + 120px);
+            transform: translate(-50%, -50%);
+        }
+    }
+
     @media (max-width: 768px) {
 
         #supportModalJP .modal-content,
         #supportModalKR .modal-content,
+        #supportModalCN .modal-content,
         #kakaoPayModalHome .modal-content {
             margin: 0 !important;
             position: absolute;
@@ -308,6 +323,35 @@
                 " onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
                 <img src="https://storage.ko-fi.com/cdn/cup-border.png" alt="Ko-fi" style="width: 32px; height: auto;">
                 <span style="font-size: 1.1em;">Ko-fiで支援する</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Support Modal for CN -->
+<div id="supportModalCN" class="modal"
+    style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4);">
+    <div class="modal-content"
+        style="background-color: #2a2a2a; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 500px; border-radius: 8px; color: white;">
+        <span class="close-button" onclick="document.getElementById('supportModalCN').style.display='none'"
+            style="color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer;">&times;</span>
+        <h3 style="margin-top: 0; margin-bottom: 20px; text-align: center;">支持</h3>
+        <div style="display: flex; flex-direction: column; gap: 15px;">
+            <a href="https://ko-fi.com/S6S11F0PUN" target="_blank" style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 10px;
+                    background-color: #72a4f2;
+                    color: white;
+                    text-decoration: none;
+                    font-weight: bold;
+                    padding: 15px;
+                    border-radius: 8px;
+                    transition: transform 0.2s;
+                " onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                <img src="https://storage.ko-fi.com/cdn/cup-border.png" alt="Ko-fi" style="width: 32px; height: auto;">
+                <span style="font-size: 1.1em;">通过 Ko-fi 支持</span>
             </a>
         </div>
     </div>

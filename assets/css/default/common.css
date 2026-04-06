@@ -15,6 +15,20 @@
 }
 
 @font-face {
+    font-family: 'ChineseFont';
+    src: url('https://fonts.gstatic.com/ea/notosanssc/v1/NotoSansSC-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ChineseFont';
+    src: url('https://fonts.gstatic.com/ea/notosanssc/v1/NotoSansSC-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
     font-family: 'EnglishFont';
     src: url('https://fonts.gstatic.com/s/geist/v4/gyByhwUxId8gMEwSGFWfOw.woff2') format('woff2');
     font-weight: 400;
@@ -81,6 +95,12 @@
 * {
     font-family: 'EnglishFont', 'JapaneseFont', 'Noto Sans', 'Apple SD Gothic Neo', "Open Sans", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     letter-spacing: -0.02rem;
+}
+
+html[lang="zh"] *,
+html[lang="zh-CN"] *,
+html[data-lang="cn"] * {
+    font-family: 'ChineseFont', 'EnglishFont', 'JapaneseFont', 'Noto Sans', 'Apple SD Gothic Neo', "Open Sans", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 /* 색 전역 선언 */

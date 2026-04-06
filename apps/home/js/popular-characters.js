@@ -109,6 +109,10 @@
             if (urlLang && ['kr', 'en', 'jp', 'cn'].includes(urlLang)) return urlLang;
         } catch (_) { }
         try {
+            const pathLang = String(window.location.pathname || '').split('/')[1];
+            if (pathLang && ['kr', 'en', 'jp', 'cn'].includes(pathLang)) return pathLang;
+        } catch (_) { }
+        try {
             if (typeof LanguageRouter !== 'undefined' && LanguageRouter.getCurrentLanguage) {
                 const lr = LanguageRouter.getCurrentLanguage();
                 if (lr && ['kr', 'en', 'jp', 'cn'].includes(lr)) return lr;

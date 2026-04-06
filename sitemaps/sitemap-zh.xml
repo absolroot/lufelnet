@@ -11,7 +11,7 @@ sitemap:
     {% if page.layout and page.layout != "null" %}
       {% unless page.sitemap == false or page.sitemap == "false" or page.sitemap.exclude == true %}
         {% unless page.url contains ".xml" or page.url contains "assets" or page.url contains "?" %}
-          {% if first_segment == "cn" %}
+          {% if page.url == "/cn/astrolabe/" %}
             {% include sitemap-url-entry.xml page=page %}
           {% endif %}
         {% endunless %}

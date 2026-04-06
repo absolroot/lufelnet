@@ -80,6 +80,9 @@
                 <br><br>
                 <strong>このサイトで提供される攻略情報は、韓国サーバーの上位ランカーによって提供されています。</strong>
             </p>
+            <p id="site-description-cn" class="chinese-content" style="display: none;">
+                路菲尔网是由个人创建的《女神异闻录5：夜幕魅影》非官方资讯站，希望能让更多人更轻松地享受 P5X。
+            </p>
         </div>
 
         <div class="about-section">
@@ -101,6 +104,12 @@
                 <a href="https://discord.gg/8S8pnv2MsH" target="_blank" class="discord-link"><span
                         class="discord-icon"></span>Discord</a> または
                 <a href="mailto:superphil722@gmail.com" class="email-link">superphil722@gmail.com</a>までお問い合わせください。
+            </p>
+            <p id="contact-description-cn" class="chinese-content" style="display: none;">
+                如果你发现 bug、错误数据，或有任何反馈，欢迎通过
+                <a href="https://discord.gg/8S8pnv2MsH" target="_blank" class="discord-link"><span
+                        class="discord-icon"></span>Discord</a> 或
+                <a href="mailto:superphil722@gmail.com" class="email-link">superphil722@gmail.com</a> 联系。
             </p>
             <a href="https://x.com/Absolroot" target="_blank" class="twitter-link"
                 style="text-decoration: none; font-weight: bold;"><span class="twitter-icon"></span>Twitter
@@ -124,6 +133,7 @@
                 entirely by your support.</p>
             <p id="donate-description-jp" class="japanese-content" style="display: none;">ルフェルネットは、皆様のご支援によってのみ運営されています。
             </p>
+            <p id="donate-description-cn" class="chinese-content" style="display: none;">路菲尔网仅依靠大家的支持运营。</p>
         </div>
 
         <!-- Inline donate (EN/JP only) -->
@@ -164,6 +174,9 @@
             </p>
             <p id="thanks-description-jp" class="japanese-content" style="display: none;">
                 <button class="show-supporters-btn" onclick="showSupporters()">サポーターリスト</button>
+            </p>
+            <p id="thanks-description-cn" class="chinese-content" style="display: none;">
+                <button class="show-supporters-btn" onclick="showSupporters()">支持者名单</button>
             </p>
         </div>
 
@@ -476,6 +489,15 @@
         return 'kr';
     }
 
+    function getAboutPageText(lang, key, fallback = '') {
+        const normalizedLang = String(lang || '').toUpperCase();
+        const pagePack = window[`I18N_PAGE_ABOUT_${normalizedLang}`];
+        if (pagePack && pagePack[key] !== undefined) {
+            return pagePack[key];
+        }
+        return fallback;
+    }
+
     function getI18nText(key, fallback = '') {
         if (typeof window.t === 'function') {
             return window.t(key, fallback);
@@ -489,6 +511,13 @@
     // 다국어 지원 함수
     async function updateLanguageContent() {
         const currentLang = detectAboutLang();
+        const aboutText = (key, fallback = '') => {
+            const pageText = getAboutPageText(currentLang, key);
+            if (pageText !== undefined && pageText !== '') {
+                return pageText;
+            }
+            return getI18nText(key, fallback);
+        };
 
         // 제목 업데이트
         const siteTitle = document.getElementById('site-title');
@@ -502,17 +531,20 @@
         const siteDescription = document.getElementById('site-description');
         const contactDescription = document.getElementById('contact-description');
         const donateDescription = document.getElementById('donate-description');
+        const siteDescriptionCn = document.getElementById('site-description-cn');
+        const contactDescriptionCn = document.getElementById('contact-description-cn');
+        const donateDescriptionCn = document.getElementById('donate-description-cn');
         const donationMessageKr = document.getElementById('donation-message-kr');
         const languageNoticeText = document.getElementById('language-notice-text');
 
-        if (siteTitle) siteTitle.textContent = getI18nText('siteTitle', siteTitle.textContent || '');
-        if (contactTitle) contactTitle.textContent = getI18nText('contactTitle', contactTitle.textContent || '');
-        if (thanksTitle) thanksTitle.textContent = getI18nText('thanksTitle', thanksTitle.textContent || '');
-        if (donateButton) donateButton.textContent = getI18nText('donateButton', donateButton.textContent || '');
-        if (recentUpdatesTitle) recentUpdatesTitle.textContent = getI18nText('recentUpdatesTitle', recentUpdatesTitle.textContent || '');
-        if (showMoreUpdatesBtn) showMoreUpdatesBtn.textContent = getI18nText('showMoreButton', showMoreUpdatesBtn.textContent || '');
+        if (siteTitle) siteTitle.textContent = aboutText('siteTitle', siteTitle.textContent || '');
+        if (contactTitle) contactTitle.textContent = aboutText('contactTitle', contactTitle.textContent || '');
+        if (thanksTitle) thanksTitle.textContent = aboutText('thanksTitle', thanksTitle.textContent || '');
+        if (donateButton) donateButton.textContent = aboutText('donateButton', donateButton.textContent || '');
+        if (recentUpdatesTitle) recentUpdatesTitle.textContent = aboutText('recentUpdatesTitle', recentUpdatesTitle.textContent || '');
+        if (showMoreUpdatesBtn) showMoreUpdatesBtn.textContent = aboutText('showMoreButton', showMoreUpdatesBtn.textContent || '');
         if (supportersButtons.length > 0) {
-            const supportersText = getI18nText('supportersButton', '');
+            const supportersText = aboutText('supportersButton', '');
             if (supportersText) {
                 supportersButtons.forEach(btn => {
                     btn.textContent = supportersText;
@@ -520,33 +552,38 @@
             }
         }
         if (supportersTitle) {
-            supportersTitle.textContent = getI18nText('supportersModalTitle', supportersTitle.textContent || '');
+            supportersTitle.textContent = aboutText('supportersModalTitle', supportersTitle.textContent || '');
         }
 
         const notice = document.getElementById('language-notice');
         if (languageNoticeText) {
-            languageNoticeText.innerHTML = getI18nText('languageNotice', '');
+            languageNoticeText.innerHTML = aboutText('languageNotice', '');
         }
         if (notice) {
             notice.style.display = 'none';
         }
 
         if (currentLang === 'cn') {
-            if (siteDescription) siteDescription.innerHTML = getI18nText('siteDescription', siteDescription.innerHTML || '');
-            if (contactDescription) contactDescription.innerHTML = getI18nText('contactDescription', contactDescription.innerHTML || '');
-            if (donateDescription) donateDescription.innerHTML = getI18nText('donateDescription', donateDescription.innerHTML || '');
-            if (donationMessageKr) donationMessageKr.innerHTML = getI18nText('donationMessage', donationMessageKr.innerHTML || '');
+            if (siteDescription) siteDescription.innerHTML = aboutText('siteDescription', siteDescription.innerHTML || '');
+            if (contactDescription) contactDescription.innerHTML = aboutText('contactDescription', contactDescription.innerHTML || '');
+            if (donateDescription) donateDescription.innerHTML = aboutText('donateDescription', donateDescription.innerHTML || '');
+            if (siteDescriptionCn) siteDescriptionCn.innerHTML = aboutText('siteDescription', siteDescriptionCn.innerHTML || '');
+            if (contactDescriptionCn) contactDescriptionCn.innerHTML = aboutText('contactDescription', contactDescriptionCn.innerHTML || '');
+            if (donateDescriptionCn) donateDescriptionCn.innerHTML = aboutText('donateDescription', donateDescriptionCn.innerHTML || '');
+            if (donationMessageKr) donationMessageKr.innerHTML = aboutText('donationMessage', donationMessageKr.innerHTML || '');
         }
 
         // 언어별 콘텐츠 표시/숨김
         const koreanContent = document.querySelectorAll('.korean-content');
         const englishContent = document.querySelectorAll('.english-content');
         const japaneseContent = document.querySelectorAll('.japanese-content');
+        const chineseContent = document.querySelectorAll('.chinese-content');
 
         // 모든 언어 콘텐츠 숨김
         koreanContent.forEach(el => el.style.display = 'none');
         englishContent.forEach(el => el.style.display = 'none');
         japaneseContent.forEach(el => el.style.display = 'none');
+        chineseContent.forEach(el => el.style.display = 'none');
 
         // 현재 언어 콘텐츠만 표시
         if ((window.isKrLikeLanguage && window.isKrLikeLanguage(currentLang)) || currentLang === 'kr') {
@@ -556,7 +593,7 @@
         } else if (currentLang === 'jp') {
             japaneseContent.forEach(el => el.style.display = 'block');
         } else if (currentLang === 'cn') {
-            koreanContent.forEach(el => el.style.display = 'block');
+            chineseContent.forEach(el => el.style.display = 'block');
         }
 
         // 외국어 사용자에게는 KR 교환코드, 카카오페이, 모달형 후원 숨김, 인라인 Ko-fi 표시

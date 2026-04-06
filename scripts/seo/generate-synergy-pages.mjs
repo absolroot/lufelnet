@@ -22,7 +22,8 @@ const OUTPUT_DIR = path.join(ROOT, 'pages', 'synergy');
 const ROOT_STUB_DIR = path.join(OUTPUT_DIR, 'roots');
 
 const CHARACTER_LANGS = ['kr', 'en', 'jp', 'cn'];
-const ROOT_REDIRECT_LANGS = ['en', 'jp', 'cn'];
+const LIST_PAGE_LANGS = ['kr', 'en', 'jp', 'cn'];
+const ROOT_REDIRECT_LANGS = [];
 
 const friendNumPath = path.join(ROOT, 'apps', 'synergy', 'friends', 'friend_num.json');
 const charInfoPath = path.join(ROOT, 'data', 'character_info.js');
@@ -74,6 +75,12 @@ function ensureSeoMetaShape(meta) {
     }
     if (typeof langMeta.description !== 'string' || !langMeta.description.includes('{name}')) {
       throw new Error(`i18n/pages/synergy/seo-meta.json missing valid description template for ${lang}.`);
+    }
+    if (typeof langMeta.list_title !== 'string' || !langMeta.list_title.trim()) {
+      throw new Error(`i18n/pages/synergy/seo-meta.json missing valid list_title for ${lang}.`);
+    }
+    if (typeof langMeta.list_description !== 'string' || !langMeta.list_description.trim()) {
+      throw new Error(`i18n/pages/synergy/seo-meta.json missing valid list_description for ${lang}.`);
     }
   }
 }
@@ -189,6 +196,29 @@ function renderCharacterPage({ lang, codename, title, description, imagePath }) 
     `  en: ${altEn}`,
     `  jp: ${altJp}`,
     `  'zh-CN': ${altCn}`,
+    '---',
+    '{% include synergy-body.html %}',
+    ''
+  ].join('\n');
+}
+
+function renderListPage({ lang, title, description }) {
+  const permalink = lang === 'kr' ? '/kr/synergy/' : `/${lang}/synergy/`;
+  return [
+    '---',
+    'layout: default',
+    'custom_css: []',
+    'custom_js: []',
+    `title: ${yamlQuote(title)}`,
+    `description: ${yamlQuote(description)}`,
+    'image: "/assets/img/home/SEO.png"',
+    `language: ${lang}`,
+    `permalink: ${permalink}`,
+    'alternate_urls:',
+    '  ko: /kr/synergy/',
+    '  en: /en/synergy/',
+    '  jp: /jp/synergy/',
+    "  'zh-CN': /cn/synergy/",
     '---',
     '{% include synergy-body.html %}',
     ''
@@ -406,6 +436,18 @@ function buildExpectedFiles(friendNum, characterData, seoMeta) {
 
     const canonicalKoPath = `/kr/synergy/${codename}/`;
     addRedirectStub(`/synergy/${codename}/`, canonicalKoPath, buildDetailLangTargets('synergy', codename));
+  }
+
+  for (const lang of LIST_PAGE_LANGS) {
+    const fileRel = toPosix(path.relative(ROOT, path.join(OUTPUT_DIR, lang, 'index.html')));
+    const content = normalizeNewline(
+      renderListPage({
+        lang,
+        title: seoMeta[lang].list_title,
+        description: seoMeta[lang].list_description
+      })
+    );
+    expected.set(fileRel, content);
   }
 
   for (const lang of ROOT_REDIRECT_LANGS) {

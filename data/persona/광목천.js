@@ -20,6 +20,7 @@ window.personaFiles["광목천"] = {
   "comment": "전투 시작 시 가장 맨 앞에 배치해야 한다. ",
   "comment_en": "Must be placed in the front row at the start of battle.",
   "comment_jp": "戦闘開始時、1体目のペルソナにしておくべきである。",
+    "comment_cn": "战斗开始时必须放在最前排。",
   "added": "",
   "cost": {
     "blue": 0,

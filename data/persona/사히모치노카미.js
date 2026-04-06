@@ -20,6 +20,7 @@ window.personaFiles["사히모치노카미"] = {
   "comment": "",
   "comment_en": "",
   "comment_jp": "",
+    "comment_cn": "",
   "added": "KR v4.3.2",
   "cost": null,
   "combination": null,

@@ -36,7 +36,7 @@ window.I18N_PAGE_MATERIAL_CALC_CN = {
     "enableMindscape": "激活",
     "resonance1": "属性共鸣1",
     "resonance2": "属性共鸣2",
-    "showSpoiler": "包含剧透（使用 KR 全列表）",
+    "showSpoiler": "包含剧透（使用 CN 全列表）",
     "cancel": "取消",
     "save": "保存",
     "includeInSummary": "计入合计",

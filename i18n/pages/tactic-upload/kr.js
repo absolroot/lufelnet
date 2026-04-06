@@ -29,6 +29,7 @@ window.I18N_PAGE_TACTIC_UPLOAD_KR = {
     saving: '저장 중...',
     deleting: '삭제 중...',
     lang_kr: '한국 (KR)',
+    lang_cn: '중국 (CN)',
     lang_en: '글로벌 (EN)',
     lang_jp: '일본 (JP)',
     lang_sea: '동남아 (SEA)',

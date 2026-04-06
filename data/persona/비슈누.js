@@ -20,6 +20,7 @@ window.personaFiles["비슈누"] = {
   "comment": "마하갈다인을 통해 풍습 부여 시 광역 방어력 감소 효과를 적용할 수 있다.",
   "comment_en": "Through Magarudyne, you can apply area-wide defense reduction effects when inflicting Windswept.",
   "comment_jp": "マハガルダインを通じて風襲付与時に広域防御力減少効果を適用できる。",
+    "comment_cn": "通过玛哈加尔达因附加风袭时，也可以同时施加群体防御力降低效果。",
   "added": "KR v2.3.2",
   "cost": {
     "blue": 0,

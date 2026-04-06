@@ -19,6 +19,21 @@ function updateSEOContent() {
     }
 }
 
+function localizeCnServerLabel(text) {
+    if (typeof text !== 'string' || !text) return text;
+    return text
+        .replace(/\bKR\s+v(?=\d)/gi, 'CN v')
+        .replace(/\bKR\s+V(?=\d)/g, 'CN V')
+        .replace(/\bKR(?=\s+\d)/g, 'CN')
+        .replace(/\[KR\]/g, '[CN]')
+        .replace(/\bKR 전용\b/g, 'CN 专用')
+        .replace(/\bKR Only\b/gi, 'CN Only')
+        .replace(/\bKR 서버\b/g, 'CN 服务器')
+        .replace(/\bKR version\b/gi, 'CN version')
+        .replace(/\bKR Version\b/g, 'CN Version')
+        .replace(/\bKR\b/g, 'CN');
+}
+
 // URL에서 검색 파라미터를 가져와서 검색을 실행하는 함수
 function handleSearchParam() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -287,6 +302,8 @@ async function initializePageContent() {
                 displayName = persona.name_en || personaName;
             } else if (currentLang === 'jp') {
                 displayName = persona.name_jp || personaName;
+            } else if (currentLang === 'cn') {
+                displayName = persona.name_cn || personaName;
             }
 
             // Collapsed-mode name caption under the card
@@ -402,6 +419,15 @@ async function initializePageContent() {
             highlightEffect = persona.highlight?.desc_jp || persona.highlight?.desc || persona.highlight?.effect_jp || persona.highlight?.effect || highlightEffect;
             tierDesc = persona.tier_desc_jp || persona.tier_desc || tierDesc;
             comment = persona.comment_jp || persona.comment;
+        } else if (currentLang === 'cn') {
+            displayName = persona.name_cn || personaName;
+            uniqueSkillName = persona.uniqueSkill?.name_cn || persona.uniqueSkill?.name || uniqueSkillName;
+            uniqueSkillEffect = persona.uniqueSkill?.desc_cn || persona.uniqueSkill?.desc || persona.uniqueSkill?.effect_cn || persona.uniqueSkill?.effect || uniqueSkillEffect;
+            highlightEffect = persona.highlight?.desc_cn || persona.highlight?.desc || persona.highlight?.effect_cn || persona.highlight?.effect || highlightEffect;
+            tierDesc = persona.tier_desc_cn || persona.tier_desc || tierDesc;
+            comment = persona.comment_cn || persona.comment;
+            tierDesc = localizeCnServerLabel(tierDesc);
+            comment = localizeCnServerLabel(comment);
         }
 
         // Header Info (Updated with Skill Toggle)
@@ -542,6 +568,7 @@ async function initializePageContent() {
                 const priority = typeof persona.passive_priority === 'number' ? persona.passive_priority : 0;
                 if (currentLang === 'en') { name = p.name_en || name; effects = p.desc_en || effects; }
                 else if (currentLang === 'jp') { name = p.name_jp || name; effects = p.desc_jp || effects; }
+                else if (currentLang === 'cn') { name = p.name_cn || name; effects = p.desc_cn || effects; }
                 let baseName = name; let roman = '';
                 const m = name && name.match(/\s+([IVX]+)$/);
                 if (m) { roman = m[1]; baseName = name.slice(0, m.index).trim(); }
@@ -553,6 +580,7 @@ async function initializePageContent() {
                 let name = src.name; let effects = src.effects; let priority = src.priority;
                 if (currentLang === 'en') { name = src.name_en || name; effects = src.effects_en || effects; }
                 else if (currentLang === 'jp') { name = src.name_jp || name; effects = src.effects_jp || effects; }
+                else if (currentLang === 'cn') { name = src.name_cn || name; effects = src.effects_cn || src.desc_cn || effects; }
                 let baseName = name; let roman = '';
                 const m = name && name.match(/\s+([IVX]+)$/);
                 if (m) { roman = m[1]; baseName = name.slice(0, m.index).trim(); }
@@ -624,7 +652,7 @@ async function initializePageContent() {
         const uniqueSkillInfo = document.createElement('div');
         uniqueSkillInfo.className = 'persona-unique-skill-info';
 
-        let uniqueSkillIconName = (currentLang === 'en' || currentLang === 'jp')
+        let uniqueSkillIconName = (currentLang === 'en' || currentLang === 'jp' || currentLang === 'cn')
             ? (persona.uniqueSkill.icon_gl || persona.uniqueSkill.icon) : persona.uniqueSkill.icon;
 
         // Fallback for Default icon: lookup in skills.js using original Korean name
@@ -698,8 +726,9 @@ async function initializePageContent() {
                     let skillName = skill.name; let skillDescription = skillInfo.description;
                     if (currentLang === 'en') { skillName = skillInfo.name_en || skill.name; skillDescription = skillInfo.description_en || skillInfo.description; }
                     else if (currentLang === 'jp') { skillName = skillInfo.name_jp || skill.name; skillDescription = skillInfo.description_jp || skillInfo.description; }
+                    else if (currentLang === 'cn') { skillName = skillInfo.name_cn || skill.name; skillDescription = skillInfo.description_cn || skillInfo.description; }
 
-                    let iconName = (currentLang === 'en' || currentLang === 'jp') ? (skillInfo.icon_gl || skillInfo.icon) : skillInfo.icon;
+                    let iconName = (currentLang === 'en' || currentLang === 'jp' || currentLang === 'cn') ? (skillInfo.icon_gl || skillInfo.icon) : skillInfo.icon;
                     if (iconName === 'Default') {
                         if (skillInfo.icon && skillInfo.icon !== 'Default') iconName = skillInfo.icon;
                         // Sometimes skillInfo IS the source, if it says Default we are stuck unless we have another mapping. 
@@ -753,6 +782,7 @@ async function initializePageContent() {
             const validSkills = persona.innate_skill.filter(skill => {
                 if (currentLang === 'en') return !!skill.name_en;
                 if (currentLang === 'jp') return !!skill.name_jp;
+                if (currentLang === 'cn') return !!skill.name_cn;
                 return !!skill.name; // default kr
             });
 
@@ -771,9 +801,12 @@ async function initializePageContent() {
                         } else if (currentLang === 'jp') {
                             skillName = skill.name_jp;
                             skillDescription = skill.desc_jp;
+                        } else if (currentLang === 'cn') {
+                            skillName = skill.name_cn;
+                            skillDescription = skill.desc_cn;
                         }
 
-                        const iconName = (currentLang === 'en' || currentLang === 'jp') ? (skillInfo.icon_gl || skillInfo.icon) : skillInfo.icon;
+                        const iconName = (currentLang === 'en' || currentLang === 'jp' || currentLang === 'cn') ? (skillInfo.icon_gl || skillInfo.icon) : skillInfo.icon;
                         const safeIcon = iconName || '패시브';
 
                         return `<li>
@@ -1152,6 +1185,9 @@ async function initializePageContent() {
                 } else if (currentLang === 'jp') {
                     nameA = personaSource[a].name_jp || a;
                     nameB = personaSource[b].name_jp || b;
+                } else if (currentLang === 'cn') {
+                    nameA = personaSource[a].name_cn || a;
+                    nameB = personaSource[b].name_cn || b;
                 }
                 return nameA.localeCompare(nameB, undefined, { sensitivity: 'base' });
             });

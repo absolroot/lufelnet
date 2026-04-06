@@ -20,6 +20,7 @@ window.personaFiles["파즈스"] = {
   "comment": "주원 효과 대미지는 만능 대미지에 영향을 받는다.",
   "comment_en": "Curse effect damage is affected by Almighty damage.",
   "comment_jp": "呪印ダメージは万能属性ダメージとして扱われる。",
+    "comment_cn": "咒怨效果伤害会受到万能伤害的影响。",
   "added": "",
   "cost": null,
   "combination": null,

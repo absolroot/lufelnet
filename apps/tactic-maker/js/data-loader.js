@@ -305,6 +305,10 @@ export class DataLoader {
         return lang === 'kr' || lang === 'cn';
     }
 
+    static usesLocalizedRevelationMapping(lang = this.getCurrentLang()) {
+        return lang === 'en' || lang === 'jp' || lang === 'cn';
+    }
+
     /**
      * Load language-specific character list for spoiler filtering
      * Sets window.originalLangCharacterList for non-KR languages
@@ -499,7 +503,7 @@ export class DataLoader {
         const lang = DataLoader.getCurrentLang();
         console.log('[DataLoader] loadRevelationMapping called. Lang:', lang);
 
-        if (DataLoader.isKrLikeLang(lang)) {
+        if (!DataLoader.usesLocalizedRevelationMapping(lang)) {
             console.log('[DataLoader] Korean language, skipping revelation mapping');
             return;
         }
@@ -546,6 +550,11 @@ export class DataLoader {
                     // Remove const declarations
                     patchedText = patchedText.replace('const window.__tmpJpRevelationData', 'window.__tmpJpRevelationData');
                     patchedText = patchedText.replace('const window.__tmpMappingJp', 'window.__tmpMappingJp');
+                } else if (lang === 'cn') {
+                    patchedText = patchedText.replaceAll('cnRevelationData', 'window.__tmpCnRevelationData');
+                    patchedText = patchedText.replaceAll('mapping_cn', 'window.__tmpMappingCn');
+                    patchedText = patchedText.replace('const window.__tmpCnRevelationData', 'window.__tmpCnRevelationData');
+                    patchedText = patchedText.replace('const window.__tmpMappingCn', 'window.__tmpMappingCn');
                 }
 
                 console.log('[DataLoader] Executing patched script...');
@@ -580,6 +589,18 @@ export class DataLoader {
                         (window.__tmpJpRevelationData && window.__tmpJpRevelationData.mapping_jp) || {};
                     try { delete window.__tmpMappingJp; } catch (_) { }
                     try { delete window.__tmpJpRevelationData; } catch (_) { }
+                } else if (lang === 'cn') {
+                    console.log('[DataLoader] CN - __tmpMappingCn exists:', !!window.__tmpMappingCn);
+                    console.log('[DataLoader] CN - __tmpCnRevelationData exists:', !!window.__tmpCnRevelationData);
+                    if (window.__tmpCnRevelationData) {
+                        console.log('[DataLoader] CN - mapping_cn in data:', !!window.__tmpCnRevelationData.mapping_cn);
+                        DataLoader._localizedSubEffects = window.__tmpCnRevelationData.sub_effects || {};
+                        DataLoader._localizedSetEffects = window.__tmpCnRevelationData.set_effects || {};
+                    }
+                    DataLoader._revelationMapping = window.__tmpMappingCn ||
+                        (window.__tmpCnRevelationData && window.__tmpCnRevelationData.mapping_cn) || {};
+                    try { delete window.__tmpMappingCn; } catch (_) { }
+                    try { delete window.__tmpCnRevelationData; } catch (_) { }
                 }
 
                 DataLoader._revelationMappingLoaded = true;
@@ -603,7 +624,7 @@ export class DataLoader {
         const lang = DataLoader.getCurrentLang();
 
         // For non-Korean, use loaded mapping
-        if (!DataLoader.isKrLikeLang(lang)) {
+        if (DataLoader.usesLocalizedRevelationMapping(lang)) {
             const mappingKeys = DataLoader._revelationMapping ? Object.keys(DataLoader._revelationMapping).length : 0;
             // console.log('[DataLoader] getRevelationName called. Lang:', lang, 'Rev:', rawRev, 'MappingSize:', mappingKeys, 'Loaded:', DataLoader._revelationMappingLoaded);
 

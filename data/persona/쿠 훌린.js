@@ -20,6 +20,7 @@ window.personaFiles["쿠 훌린"] = {
   "comment": "",
   "comment_en": "",
   "comment_jp": "",
+    "comment_cn": "",
   "added": "KR v2.2.0",
   "cost": null,
   "combination": null,

@@ -20,6 +20,7 @@ window.personaFiles["요시츠네"] = {
   "comment": "",
   "comment_en": "",
   "comment_jp": "",
+    "comment_cn": "",
   "added": "KR v2.1.1",
   "cost": null,
   "combination": null,

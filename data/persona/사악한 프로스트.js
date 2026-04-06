@@ -20,6 +20,7 @@ window.personaFiles["사악한 프로스트"] = {
   "comment": "",
   "comment_en": "",
   "comment_jp": "",
+    "comment_cn": "",
   "added": "",
   "cost": null,
   "combination": null,

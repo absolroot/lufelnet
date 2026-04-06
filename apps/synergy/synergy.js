@@ -342,7 +342,8 @@
         }
 
         try {
-            const lang = isKrLikeLanguage(currentLanguage) ? 'kr' : currentLanguage;
+            // CN pages should prefer CN synergy data and only fall back to KR when missing.
+            const lang = currentLanguage;
             const fileName = encodeURIComponent(characterName);
             let response = await fetch(`${BASE_URL}/apps/synergy/friends/${lang}/${fileName}.json?v=${APP_VERSION}`);
             let data = null;

@@ -40,9 +40,9 @@
 
     function getCharacterDataPath(lang) {
         const normalized = normalizeLang(lang);
-        if (normalized === 'kr') return '/data/character_info.js';
+        if (normalized === 'kr' || normalized === 'cn') return '/data/character_info.js';
         if (normalized === 'en' || normalized === 'jp') return '/data/character_info_glb.js';
-        return `/data/${normalized}/characters/characters.js`;
+        return '/data/character_info.js';
     }
 
     function translateTerm(term) {

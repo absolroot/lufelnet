@@ -280,11 +280,11 @@ window.I18N_COMMON_CN = {
         "unsavedChanges": "有未保存的更改。要继续吗？"
     },
     "cnBetaNotice": {
-        "title": "中文本地化 Beta 说明",
-        "bodyPrimary": "当前中文页面主要通过翻译提供，部分句子可能不够自然，个别游戏术语也可能不够准确。",
-        "bodySecondary": "另外，部分页面或文案可能仍未完成翻译，或暂时保留韩文，敬请理解。",
+        "title": "中文 Beta 服务说明",
+        "bodyPrimary": "当前中文页面以 Beta 服务形式提供，并通过翻译工具生成，因此部分内容可能存在误译或意译。",
+        "bodySecondary": "另外，部分内容暂未提供中文翻译，因此可能仍会以韩文显示。",
         "dismissForever": "不再显示",
-        "close": "我知道了"
+        "close": "确认"
     },
     "labels": {
         "total": "全部",

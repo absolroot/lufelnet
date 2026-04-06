@@ -221,37 +221,35 @@
                         domain: 'pull-tracker',
                         mode: 'individual'
                     }, { rerun: true });
-                    return;
-                }
-                if (window.SeoEngine && typeof window.SeoEngine.run === 'function') {
+                } else if (window.SeoEngine && typeof window.SeoEngine.run === 'function') {
                     window.SeoEngine.run();
-                    return;
-                }
-                const seoTitle = tr('seo.individual.title', document.title);
-                const descMeta = document.querySelector('meta[name="description"]');
-                const currentDesc = descMeta ? (descMeta.getAttribute('content') || '') : '';
-                const seoDesc = tr('seo.individual.description', currentDesc);
-                const pageLang = detectPageLang();
-                const isPathLang = /^\/(kr|en|jp|cn)(\/|$)/i.test(window.location.pathname);
-                const baseUrl = 'https://lufel.net';
-                const currentUrl = isPathLang ? `${baseUrl}/${pageLang}/pull-tracker/` : `${baseUrl}/pull-tracker/`;
-                const seoLocale = tr('seo.individual.ogLocale', pageLang === 'jp' ? 'ja_JP' : pageLang === 'en' ? 'en_US' : pageLang === 'cn' ? 'zh_CN' : 'ko_KR');
+                } else {
+                    const seoTitle = tr('seo.individual.title', document.title);
+                    const descMeta = document.querySelector('meta[name="description"]');
+                    const currentDesc = descMeta ? (descMeta.getAttribute('content') || '') : '';
+                    const seoDesc = tr('seo.individual.description', currentDesc);
+                    const pageLang = detectPageLang();
+                    const isPathLang = /^\/(kr|en|jp|cn)(\/|$)/i.test(window.location.pathname);
+                    const baseUrl = 'https://lufel.net';
+                    const currentUrl = isPathLang ? `${baseUrl}/${pageLang}/pull-tracker/` : `${baseUrl}/pull-tracker/`;
+                    const seoLocale = tr('seo.individual.ogLocale', pageLang === 'jp' ? 'ja_JP' : pageLang === 'en' ? 'en_US' : pageLang === 'cn' ? 'zh_CN' : 'ko_KR');
 
-                document.title = seoTitle;
-                setMeta('meta[name="description"]', 'name', 'description', seoDesc);
-                setMeta('meta[property="og:title"]', 'property', 'og:title', seoTitle);
-                setMeta('meta[property="og:description"]', 'property', 'og:description', seoDesc);
-                setMeta('meta[property="og:locale"]', 'property', 'og:locale', seoLocale);
-                setMeta('meta[property="og:url"]', 'property', 'og:url', currentUrl);
+                    document.title = seoTitle;
+                    setMeta('meta[name="description"]', 'name', 'description', seoDesc);
+                    setMeta('meta[property="og:title"]', 'property', 'og:title', seoTitle);
+                    setMeta('meta[property="og:description"]', 'property', 'og:description', seoDesc);
+                    setMeta('meta[property="og:locale"]', 'property', 'og:locale', seoLocale);
+                    setMeta('meta[property="og:url"]', 'property', 'og:url', currentUrl);
 
-                let canonical = document.querySelector('link[rel="canonical"]');
-                if (!canonical) {
-                    canonical = document.createElement('link');
-                    canonical.setAttribute('rel', 'canonical');
-                    document.head.appendChild(canonical);
+                    let canonical = document.querySelector('link[rel="canonical"]');
+                    if (!canonical) {
+                        canonical = document.createElement('link');
+                        canonical.setAttribute('rel', 'canonical');
+                        document.head.appendChild(canonical);
+                    }
+                    canonical.setAttribute('href', currentUrl);
+                    document.documentElement.setAttribute('lang', pageLang === 'jp' ? 'ja' : pageLang === 'en' ? 'en' : pageLang === 'cn' ? 'zh' : 'ko');
                 }
-                canonical.setAttribute('href', currentUrl);
-                document.documentElement.setAttribute('lang', pageLang === 'jp' ? 'ja' : pageLang === 'en' ? 'en' : pageLang === 'cn' ? 'zh' : 'ko');
             } catch (_) { }
 
             try {

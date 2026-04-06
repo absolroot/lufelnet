@@ -499,6 +499,11 @@
         const showMoreUpdatesBtn = document.getElementById('show-more-updates-btn');
         const supportersButtons = document.querySelectorAll('.show-supporters-btn');
         const supportersTitle = document.getElementById('supporters-title');
+        const siteDescription = document.getElementById('site-description');
+        const contactDescription = document.getElementById('contact-description');
+        const donateDescription = document.getElementById('donate-description');
+        const donationMessageKr = document.getElementById('donation-message-kr');
+        const languageNoticeText = document.getElementById('language-notice-text');
 
         if (siteTitle) siteTitle.textContent = getI18nText('siteTitle', siteTitle.textContent || '');
         if (contactTitle) contactTitle.textContent = getI18nText('contactTitle', contactTitle.textContent || '');
@@ -519,8 +524,18 @@
         }
 
         const notice = document.getElementById('language-notice');
+        if (languageNoticeText) {
+            languageNoticeText.innerHTML = getI18nText('languageNotice', '');
+        }
         if (notice) {
             notice.style.display = 'none';
+        }
+
+        if (currentLang === 'cn') {
+            if (siteDescription) siteDescription.innerHTML = getI18nText('siteDescription', siteDescription.innerHTML || '');
+            if (contactDescription) contactDescription.innerHTML = getI18nText('contactDescription', contactDescription.innerHTML || '');
+            if (donateDescription) donateDescription.innerHTML = getI18nText('donateDescription', donateDescription.innerHTML || '');
+            if (donationMessageKr) donationMessageKr.innerHTML = getI18nText('donationMessage', donationMessageKr.innerHTML || '');
         }
 
         // 언어별 콘텐츠 표시/숨김
@@ -540,6 +555,8 @@
             englishContent.forEach(el => el.style.display = 'block');
         } else if (currentLang === 'jp') {
             japaneseContent.forEach(el => el.style.display = 'block');
+        } else if (currentLang === 'cn') {
+            koreanContent.forEach(el => el.style.display = 'block');
         }
 
         // 외국어 사용자에게는 KR 교환코드, 카카오페이, 모달형 후원 숨김, 인라인 Ko-fi 표시
@@ -575,7 +592,7 @@
             }
         } else {
             if (exchangeCodeSection) exchangeCodeSection.style.display = '';
-            if (kakaoPayContainer) kakaoPayContainer.style.display = '';
+            if (kakaoPayContainer) kakaoPayContainer.style.display = currentLang === 'cn' ? 'none' : '';
             if (donateInline) donateInline.style.display = 'none';
             if (donateButton) donateButton.style.display = '';
             if (donateButtonSection) donateButtonSection.style.display = '';
@@ -836,23 +853,28 @@
             if (!updateList || !showMoreBtn) return;
 
             try {
-                const response = await fetch(`${BASE_URL}/data/kr/updates.csv?v=${APP_VERSION}`);
-                const data = await response.text();
-                allUpdates = data.split('\n')
-                    .slice(1)
-                    .filter(line => line.trim())
-                    .map(line => {
-                        const parts = line.split(',');
-                        if (parts.length < 3) return null;
-                        const [date, version, content] = parts;
-
+                const updates = (typeof VersionChecker !== 'undefined' && typeof VersionChecker.loadUpdatesCSV === 'function')
+                    ? await VersionChecker.loadUpdatesCSV()
+                    : [];
+                allUpdates = (Array.isArray(updates) ? updates : [])
+                    .filter(update => update && update.content)
+                    .map(update => {
                         // content가 undefined이거나 비어있는 경우 처리
-                        if (!content) return null;
+                        if (!update.content) return null;
 
-                        const formattedDate = date.replace(/^20/, '');
-                        return { date: formattedDate, version, content: content.replace('|', ', ') };
+                        return {
+                            date: String(update.date || '').replace(/^20/, ''),
+                            version: String(update.version || ''),
+                            content: String(update.content || '')
+                        };
                     })
                     .filter(item => item !== null);
+
+                if (!allUpdates.length) {
+                    updateList.innerHTML = '';
+                    showMoreBtn.style.display = 'none';
+                    return;
+                }
 
                 showMoreUpdates();
 
@@ -860,8 +882,10 @@
                 showMoreBtn.addEventListener('click', () => {
                     showMoreBtn.style.display = 'none';
                     showAllUpdates();
-                });
+                }, { once: true });
             } catch (error) {
+                updateList.innerHTML = '';
+                showMoreBtn.style.display = 'none';
                 console.error('Failed to load update history:', error);
             }
         }

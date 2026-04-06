@@ -20,6 +20,7 @@ window.personaFiles["마카브르"] = {
   "comment": "",
   "comment_en": "",
   "comment_jp": "",
+    "comment_cn": "",
   "added": "KR v4.7.1",
   "cost": {
     "blue": 0,

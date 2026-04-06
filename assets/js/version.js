@@ -1,12 +1,26 @@
 var APP_VERSION = (typeof window !== 'undefined' && typeof window.APP_VERSION === 'string' && window.APP_VERSION.trim())
     ? window.APP_VERSION.trim()
-    : '4.6.8';
+    : '4.6.9';
 
 if (typeof window !== 'undefined') {
     window.APP_VERSION = APP_VERSION;
 }
 
 class VersionChecker {
+    static localizeCnServerLabel(text) {
+        if (typeof text !== 'string' || !text) return text;
+        return text
+            .replace(/\[KR\]/g, '[CN]')
+            .replace(/\(KR\)/g, '(CN)')
+            .replace(/\bKR\s+v(?=\d)/gi, 'CN v')
+            .replace(/\bKR\s+V(?=\d)/g, 'CN V')
+            .replace(/\bKR(?=\s+\d)/g, 'CN')
+            .replace(/\bKR 서버\b/g, 'CN 服务器')
+            .replace(/\bKR version\b/gi, 'CN version')
+            .replace(/\bKR Version\b/g, 'CN Version')
+            .replace(/\bKR\b/g, 'CN');
+    }
+
     static getUpdatesCsvRawUrl() {
         const base = (typeof BASE_URL !== 'undefined') ? BASE_URL : '';
         const configuredPath = (typeof window !== 'undefined' && typeof window.APP_UPDATES_CSV_PATH === 'string')
@@ -235,7 +249,10 @@ class VersionChecker {
                     between.forEach(u => {
                         const el = document.createElement('div');
                         el.className = 'update-item';
-                        const safeContent = (u.content || '').split('\\n').join('<br>');
+                        const displayContent = currentLang === 'cn'
+                            ? this.localizeCnServerLabel(u.content || '')
+                            : (u.content || '');
+                        const safeContent = displayContent.split('\\n').join('<br>');
                         el.innerHTML = `
                             <div class="update-item-head" style="font-weight:600; margin-top:6px;">${u.version} <span style="opacity:.7; font-weight:400;">${u.date}</span></div>
                             <div class="update-item-body" style="margin:2px 0 6px 0; line-height:1.4;">${safeContent}</div>

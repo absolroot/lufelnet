@@ -215,6 +215,8 @@
           normalizeName(v.name) === normalized ||
           normalizeName(v.name_en) === normalized ||
           normalizeName(v.name_jp) === normalized ||
+          normalizeName(v.name_cn) === normalized ||
+          normalizeName(v.name_tw) === normalized ||
           normalizeName(v.codename) === normalized) {
           key = k;
           break;
@@ -321,6 +323,8 @@
           normalizeName(v.name) === normalized ||
           normalizeName(v.name_en) === normalized ||
           normalizeName(v.name_jp) === normalized ||
+          normalizeName(v.name_cn) === normalized ||
+          normalizeName(v.name_tw) === normalized ||
           normalizeName(v.codename) === normalized) {
           key = k;
           break;
@@ -376,7 +380,8 @@
       if (!item) return topKey;
       if (lang === 'en') return item.name_en || item.name || topKey;
       if (lang === 'jp') return item.name_jp || item.name || topKey;
-      // default kr
+      if (lang === 'cn') return item.name_cn || item.name || topKey;
+      if (lang === 'tw') return item.name_tw || item.name_cn || item.name || topKey;
       return item.name || item.name_en || item.name_jp || item.name_cn || item.name_tw || topKey;
     } catch (_) {
       return topKey;
@@ -761,7 +766,7 @@
       .carousel-slide { position: relative; min-width: 100%; height: 100%; display: flex; align-items: stretch; color: #fff; overflow: hidden; }
       .slide-left { flex: 1 1 58%; min-width: 0; padding: 64px; display: flex; flex-direction: column; gap: 10px; z-index: 2; }
       .slide-left.slide-left-center-fivestar { justify-content: center; }
-      .slide-name { font-size: 1.4rem; font-weight: 800; text-shadow: 0 2px 6px rgba(0,0,0,1), 0 0 2px rgba(0,0,0,0.8); }
+      .slide-name { font-size: 1.4rem; font-weight: 800; text-shadow: 0 2px 2px rgba(0,0,0,1), 0 0 2px rgba(0,0,0,0.8); }
       @media (min-width: 768px) { .slide-name { font-size: 2rem; } }
       .slide-types { line-height: 1.2; opacity: 0.85; white-space: pre-line; }
       .slide-fivestar { font-size: 0.95rem; opacity: 0.95; }

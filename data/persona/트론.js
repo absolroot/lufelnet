@@ -20,6 +20,7 @@ window.personaFiles["트론"] = {
   "comment": "",
   "comment_en": "※ When an ally uses a skill → When Wonder uses a skill to ally\n※ every 2 turns, inflict Burn → inflict Burn (even if in Sub-persona slot)",
   "comment_jp": "サブスロット編成時でも、バトル開始時に火傷付与の効果が発動する。",
+    "comment_cn": "",
   "added": "KR v3.4.2",
   "cost": null,
   "combination": null,

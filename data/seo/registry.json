@@ -813,11 +813,16 @@
     },
     "second-anniversary": {
       "langs": [
+        "cn",
         "en",
         "jp",
         "kr"
       ],
       "meta": {
+        "cn": {
+          "description": "为2周年入坑新手整理刷初始目标与自选券推荐路线的一页式指南。",
+          "title": "2周年新手选角指南 - 女神异闻录5: The Phantom X Lufelnet"
+        },
         "en": {
           "description": "Plan your anniversary reroll target and selector ticket priorities for new accounts in one place.",
           "title": "2nd Anniversary Starter Picker Guide - Persona 5: The Phantom X Lufelnet"

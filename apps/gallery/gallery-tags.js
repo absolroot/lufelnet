@@ -123,8 +123,11 @@
   // 캐릭터 이름 현지화 (characters.js 전역 characterData 사용)
   function localizeCharacterTag(tag, lang){
     try {
-      if (typeof characterData !== 'object') return tag;
-      const entry = characterData[tag];
+      const data = (typeof window !== 'undefined' && window.characterData && typeof window.characterData === 'object')
+        ? window.characterData
+        : (typeof characterData === 'object' ? characterData : null);
+      if (!data) return tag;
+      const entry = data[tag];
       if (!entry) return tag;
       if (lang === 'en' && entry.name_en){
         // space바로 나뉜 텍스트 중 앞 단어만 사용
@@ -132,6 +135,7 @@
         return words[0];
       }
       if (lang === 'jp' && entry.name_jp) return entry.name_jp;
+      if (lang === 'cn' && entry.name_cn) return entry.name_cn;
       return tag;
     } catch(_) { return tag; }
   }

@@ -139,7 +139,7 @@ const penetrateData = {
       "duration": "2턴",
       "note": "",
       "skillName_cn": "贯穿时空的轮转",
-      "note_cn": "",
+      "note_cn": "[CN] 付费活动限定",
       "type_cn": "技能3",
       "target_cn": "群体",
       "duration_cn": "2回合",

@@ -35,6 +35,14 @@ function isKrLikeLang(lang) {
     return lang === 'kr' || lang === 'cn';
 }
 
+function getLocalizedCharacterName(charData, name, lang) {
+    if (!charData) return name;
+    if (lang === 'en') return charData.codename || charData.name_en || charData.name || name;
+    if (lang === 'jp') return charData.name_jp || charData.name || name;
+    if (lang === 'cn') return charData.name_cn || charData.name || name;
+    return charData.name || name;
+}
+
 /**
  * Get revelation tooltip text based on current language
  * For main revelation: show set effect with sub revelations
@@ -723,12 +731,7 @@ export class PartyUI {
                 return 'kr';
             };
             const lang = getCurrentLang();
-            let displayName = charData.name || name;
-            if (!isKrLikeLang(lang)) {
-                if (lang === 'en') displayName = charData.codename || charData.name_en || charData.name || name;
-                else if (lang === 'jp') displayName = charData.name_jp || charData.name || name;
-                else displayName = charData.name_cn || charData.name || name;
-            }
+            const displayName = getLocalizedCharacterName(charData, name, lang);
 
             // Logic copied from dmg-calc/roster.js
             const element = charData.element || '';
@@ -881,12 +884,7 @@ export class PartyUI {
 
         const lang = getCurrentLang();
         // kr: use key name (아이템명). non-kr: prefer localized/full name if available.
-        let displayName = data.name;
-        if (!isKrLikeLang(lang)) {
-            if (lang === 'en') displayName = charInfo.codename || charInfo.name_en || charInfo.name || data.name;
-            else if (lang === 'jp') displayName = charInfo.name_jp || charInfo.name || data.name;
-            else displayName = charInfo.name_cn || charInfo.name || data.name;
-        }
+        const displayName = getLocalizedCharacterName(charInfo, data.name, lang);
         // Updated to use tier image as requested
         const imgPath = `${this.baseUrl}/assets/img/tier/${data.name}.webp`;
 

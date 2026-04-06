@@ -32,6 +32,35 @@
   // Cache
   let skillSourceMap = null;
   let skillSourceMapLoading = null;
+  let personaSourceNameMap = null;
+  let personaSourceNameMapLoading = null;
+
+  const specialSourceNamesCn = {
+    '결제 이벤트': '付费活动',
+    '와일드 엠블럼 하늘': '不羁纹章·空',
+    '와일드 엠블럼 빛': '不羁纹章·耀',
+    '와일드 엠블럼 무지개': '不羁纹章·虹',
+    '와일드 엠블럼 화이트': '不羁纹章·空',
+    '와일드 엠블럼 하얀': '不羁纹章·空'
+  };
+
+  function getSpecialSourceNameCn(sourceKr) {
+    const normalized = normalizeSourceDisplayName(String(sourceKr || '').trim());
+    if (!normalized) return '';
+
+    const emblemMatch = normalized.match(/^(와일드 엠블럼 (?:하늘|빛|무지개|화이트|하얀))(?:\s+(\d+))?(?:\s+\[최초 획득 필요\])?$/);
+    if (emblemMatch) {
+      const base = emblemMatch[1];
+      const amount = emblemMatch[2] || '';
+      const baseCn = specialSourceNamesCn[base] || '';
+      if (!baseCn) return '';
+      const amountText = amount ? ` ${amount}` : '';
+      const firstObtainText = /\[최초 획득 필요\]$/.test(normalized) ? ' [需首次获得]' : '';
+      return `${baseCn}${amountText}${firstObtainText}`;
+    }
+
+    return specialSourceNamesCn[normalized] || '';
+  }
 
   // Shared global ad rotation (used by multiple modals)
   function getSharedAdRotation() {
@@ -65,6 +94,55 @@
     return skillSourceMapLoading;
   }
 
+  async function loadPersonaSourceNameMap() {
+    if (personaSourceNameMap) return personaSourceNameMap;
+    if (personaSourceNameMapLoading) return personaSourceNameMapLoading;
+
+    const cacheVer = (typeof APP_VERSION !== 'undefined' ? APP_VERSION : '1');
+    const base = (typeof SITE_BASEURL !== 'undefined' ? SITE_BASEURL : '{{ site.baseurl }}');
+    const url = `${base}/data/external/persona/mapping.json?v=${cacheVer}`;
+    personaSourceNameMapLoading = fetch(url)
+      .then(res => res.json())
+      .then(json => {
+        const out = {};
+        Object.values(json || {}).forEach((entry) => {
+          const kr = String((entry && entry.name_kr) || '').trim();
+          if (!kr) return;
+          out[kr] = {
+            en: String(entry.name_en || '').trim(),
+            jp: String(entry.name_jp || '').trim(),
+            cn: String(entry.name_cn || '').trim()
+          };
+        });
+        personaSourceNameMap = out;
+        return out;
+      })
+      .catch(err => {
+        console.error('Failed to load persona source name map:', err);
+        return {};
+      });
+    return personaSourceNameMapLoading;
+  }
+
+  function getLocalizedSourceName(source, lang, personaMap) {
+    const sourceKr = String((source && source.kr) || '').trim();
+    const sourceEn = String((source && source.en) || '').trim();
+    const sourceJp = String((source && source.jp) || '').trim();
+    const sourceCn = String((source && source.cn) || '').trim();
+    const normalizedKr = normalizeSourceDisplayName(sourceKr);
+
+    if (lang === 'en') return sourceEn || normalizedKr;
+    if (lang === 'jp') return sourceJp || normalizedKr;
+    if (lang === 'cn') {
+      if (sourceCn) return sourceCn;
+      const specialCn = getSpecialSourceNameCn(normalizedKr);
+      if (specialCn) return specialCn;
+      if (personaMap && personaMap[normalizedKr] && personaMap[normalizedKr].cn) return personaMap[normalizedKr].cn;
+      return normalizedKr;
+    }
+    return normalizedKr;
+  }
+
   function parseSkillSourceCSV(csvText) {
     const lines = csvText.split(/\r?\n/).filter(l => l.trim().length);
     if (lines.length === 0) return {};
@@ -85,7 +163,7 @@
       let skillStartIdx = 3;
       if (/^\d+$/.test(cols[3])) skillStartIdx = 4;
 
-      const sourceObj = { kr: sourceKr, en: sourceEn, jp: sourceJp };
+      const sourceObj = { kr: sourceKr, en: sourceEn, jp: sourceJp, cn: '' };
 
       for (let c = skillStartIdx; c < cols.length; c++) {
         const skillFullKr = cols[c];
@@ -205,7 +283,7 @@
       const siteBase = (typeof window !== 'undefined' && window.SITE_BASEURL) ? window.SITE_BASEURL : '';
       // Choose icon based on language (use icon_gl for en/jp when available)
       const iconKey = (skillInfo)
-        ? ((currentLang === 'en' || currentLang === 'jp')
+        ? ((currentLang === 'en' || currentLang === 'jp' || currentLang === 'cn')
           ? (skillInfo.icon_gl || skillInfo.icon || '')
           : (skillInfo.icon || ''))
         : '';
@@ -214,10 +292,14 @@
       if (skillInfo) {
         if (currentLang === 'en') subtitle = skillInfo.description_en || skillInfo.description || '';
         else if (currentLang === 'jp') subtitle = skillInfo.description_jp || skillInfo.description || '';
+        else if (currentLang === 'cn') subtitle = skillInfo.description_cn || skillInfo.description || '';
         else subtitle = skillInfo.description || '';
       }
 
-      const map = await loadSkillSourceMap();
+      const [map, personaMap] = await Promise.all([
+        loadSkillSourceMap(),
+        loadPersonaSourceNameMap()
+      ]);
       const entry = map[baseKor];
 
       const title = (nameEl.textContent || baseKor).trim();
@@ -236,16 +318,15 @@
 
       function renderSources(list) {
         if (!list || list.length === 0) return `<div class="skill-source-empty">${noSourcesText}</div>`;
-        const labelKey = currentLang === 'en' ? 'en' : (currentLang === 'jp' ? 'jp' : 'kr');
         const krOnlyBadgeText = (window.t && window.t('krOnlyBadge', 'KR 전용')) || 'KR 전용';
         return `<div class="skill-source-list">${list.map(s => {
-          const display = normalizeSourceDisplayName((s[labelKey] || s.kr).trim());
+          const display = normalizeSourceDisplayName(getLocalizedSourceName(s, currentLang, personaMap));
           const sourceKr = (s.kr || '').trim();
           const sourceEn = (s.en || '').trim();
           const iconName = encodeURIComponent(normalizeSourceDisplayName(sourceKr)) + '.png';
           const iconPath = `${siteBase}/apps/persona/persona_icon/${iconName}`;
           const isKrOnly = isKrOnlySource(sourceKr, sourceEn);
-          const krOnlyBadge = (isKrOnly && currentLang !== 'kr') ? `<span class="kr-only-badge">(${krOnlyBadgeText})</span>` : '';
+          const krOnlyBadge = (isKrOnly && currentLang !== 'kr' && currentLang !== 'cn') ? `<span class="kr-only-badge">(${krOnlyBadgeText})</span>` : '';
           return `<div class="skill-source-item"><img class="source-icon" src="${iconPath}" alt="" onerror="this.style.display='none'" /><span class="source-label">${display}</span>${krOnlyBadge}</div>`;
         }).join('')}</div>`;
       }

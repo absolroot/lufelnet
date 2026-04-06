@@ -20,6 +20,7 @@ window.personaFiles["체르노보그"] = {
   "comment": "",
   "comment_en": "",
   "comment_jp": "",
+    "comment_cn": "",
   "added": "KR v2.1.1",
   "cost": null,
   "combination": null,

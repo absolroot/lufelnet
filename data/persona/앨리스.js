@@ -20,6 +20,7 @@ window.personaFiles["앨리스"] = {
   "comment": "기본 명중 80% + 명중 강화 IV 16.2% + 우중충한 하늘 16.9% + 본능 34.9% + 마이팰리스 2.3% = 150.3% 로 '죽어 줄래?' 상한 10%를 채울 수 있다. (우중충한 하늘 적용 여부 미확인)",
   "comment_en": "Base accuracy 80% + Accuracy Enhancement IV 16.2% + Gloomy Sky 16.9% + Talent 34.9% + My Palace 2.3% = 150.3%, which can reach the 'Die For Me!' upper limit of 10%. (Gloomy Sky application unconfirmed)",
   "comment_jp": "基本命中率80%+異常命中ブースタIV 16.2% + 浮かない空 16.9% + 再生の呪い 34.9% + マイパレス効果 2.3% = 150.3%で、『死んでくれる？』の最大効果10%を満たすことができる（浮かない空の適用可否は未確認）",
+    "comment_cn": "基础效果命中80% + 命中强化 IV 16.2% + 天公不作美 16.9% + 本能 34.9% + My Palace 2.3% = 150.3%，可以吃满『可以为我而死吗』额外10%的上限。（天公不作美是否生效尚未确认）",
   "added": "",
   "cost": null,
   "combination": null,

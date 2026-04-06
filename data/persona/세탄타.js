@@ -20,6 +20,7 @@ window.personaFiles["세탄타"] = {
   "comment": "",
   "comment_en": "",
   "comment_jp": "",
+    "comment_cn": "",
   "added": "",
   "cost": null,
   "combination": null,

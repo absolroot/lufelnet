@@ -6,7 +6,7 @@ window.I18N_PAGE_TACTIC_CN = {
     "buttonImport": "导入",
     "buttonCapture": "截图",
     "buttonLockOrder": "锁定顺序移动",
-    "krListLabel": "KR 怪盗列表",
+    "krListLabel": "CN 怪盗列表",
     "sectionWonder": "WONDER 设置",
     "sectionParty": "怪盗团",
     "labelWeapon": "武器",

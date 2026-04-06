@@ -1,3 +1,37 @@
+const BOSS_NAME_OVERRIDES_CN = {
+    1: '单体首领（示例）',
+    2: '群体首领（示例）',
+    9: '毗湿奴 / 化身',
+    10: '巴力',
+    11: '韦驮天',
+    12: '韦驮天 / 迦楼罗',
+    13: '韦驮天 / 佳塔由',
+    14: '韦驮天 / 荷鲁斯',
+    15: '韦驮天 / 八咫乌',
+    16: '八束水臣津野命',
+    17: '法夫纳',
+    20: '大元帅明王',
+    21: '八房',
+    29: '尼德霍格',
+    30: '尼德霍格 / 虹蛇',
+    220: '单体首领（示例）',
+    221: '群体首领（示例）'
+};
+
+const BOSS_NAME_PART_OVERRIDES_CN = {
+    '단일 보스 (예시)': '单体首领（示例）',
+    '광역 보스 (예시)': '群体首领（示例）',
+    '화신': '化身',
+    '바알': '巴力',
+    '위타천': '韦驮天',
+    '야츠카미즈오미츠누': '八束水臣津野命',
+    '파프니르': '法夫纳',
+    '아타바크': '大元帅明王',
+    '야츠후사': '八房',
+    '니드호그': '尼德霍格',
+    '유룽': '虹蛇'
+};
+
 class DefenseCalc {
     constructor() {
         this.tableBody = document.getElementById('defenseTableBody');
@@ -29,6 +63,8 @@ class DefenseCalc {
         // CSV 기반 이름 매핑 프리로드
         this._csvNameMap = null; // { krName: { en, jp } }
         this._csvLoadPromise = null;
+        this._cnBossNameMap = null;
+        this._cnBossNameLoadPromise = null;
         this.initializeBossSelect(); // 보스 선택 초기화를 먼저 실행
         this.initializeTable(); // 그 다음 테이블 초기화
         this.initializePenetrateTable(); // 관통 테이블 초기화
@@ -75,6 +111,12 @@ class DefenseCalc {
 
         // J&C 전용 추가 계산 스크립트가 분리되어 있으므로, 동적으로 로드 후 헤더에 컨트롤 부착
         try { this.ensureJCCalcLoadedAndAttach(); } catch (_) { }
+
+        if (this.getCurrentLang() === 'cn') {
+            this.ensureCnBossNameMapLoaded().then(() => {
+                this.renderBossList();
+            }).catch(() => { });
+        }
     }
 
     normalizeCalcLang(rawLang) {
@@ -216,6 +258,7 @@ class DefenseCalc {
         let baseName = boss.name;
         if (lang === 'en' && boss.name_en) baseName = boss.name_en;
         else if (lang === 'jp' && boss.name_jp) baseName = boss.name_jp;
+        else if (lang === 'cn') baseName = boss.name_cn || BOSS_NAME_OVERRIDES_CN[boss.id] || this.mapBossNameToCn(boss.name) || boss.name;
 
         // CSV 이름 매핑 적용 (단일/복합 모두). 제공된 name_en/name_jp를 우선 적용한 뒤, 매핑이 가능하면 매핑으로 대체
         try {
@@ -227,6 +270,43 @@ class DefenseCalc {
         } catch (_) { }
 
         return baseName;
+    }
+
+    async ensureCnBossNameMapLoaded() {
+        if (this._cnBossNameMap) return this._cnBossNameMap;
+        if (!this._cnBossNameLoadPromise) {
+            const url = `${BASE_URL}/data/external/persona/mapping.json?v=${typeof APP_VERSION !== 'undefined' ? APP_VERSION : '1'}`;
+            this._cnBossNameLoadPromise = fetch(url)
+                .then(r => r.json())
+                .then(data => {
+                    const map = {};
+                    Object.values(data || {}).forEach((entry) => {
+                        const kr = String(entry?.name_kr || '').trim();
+                        const cn = String(entry?.name_cn || '').trim();
+                        if (kr && cn) map[kr] = cn;
+                    });
+                    this._cnBossNameMap = map;
+                    return map;
+                })
+                .catch(() => (this._cnBossNameMap = {}));
+        }
+        return this._cnBossNameLoadPromise;
+    }
+
+    mapBossNameToCn(nameKr) {
+        if (!nameKr) return null;
+        const sourceMap = this._cnBossNameMap || {};
+        const normalizedName = String(nameKr).trim();
+        const parts = normalizedName.split('/').map(part => part.trim()).filter(Boolean);
+        const mappedParts = parts.map((part) => (
+            BOSS_NAME_PART_OVERRIDES_CN[part]
+            || sourceMap[part]
+            || null
+        ));
+        if (mappedParts.length && mappedParts.every(Boolean)) {
+            return mappedParts.join(' / ');
+        }
+        return BOSS_NAME_PART_OVERRIDES_CN[normalizedName] || sourceMap[normalizedName] || null;
     }
 
     async ensureCsvNameMapLoaded() {

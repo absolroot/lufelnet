@@ -29,6 +29,7 @@ window.I18N_PAGE_TACTIC_UPLOAD_CN = {
     "saving": "保存中...",
     "deleting": "删除中...",
     "lang_kr": "韩服 (KR)",
+    "lang_cn": "国服 (CN)",
     "lang_en": "国际服 (EN)",
     "lang_jp": "日服 (JP)",
     "lang_sea": "东南亚服 (SEA)",

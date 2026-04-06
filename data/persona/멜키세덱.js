@@ -20,6 +20,7 @@ window.personaFiles["멜키세덱"] = {
   "comment": "",
   "comment_en": "",
   "comment_jp": "",
+    "comment_cn": "",
   "added": "KR v1.3.1",
   "cost": {
     "blue": 0,

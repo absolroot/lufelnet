@@ -20,6 +20,7 @@ window.personaFiles["릴리스"] = {
   "comment": "고유 스킬 설명에는 만능 대미지 이후 주원 대미지라고 명시돼있지만, 주원 대미지를 준 이후 만능 대미지가 들어가게 된다.",
   "comment_en": "The unique skill description says it deals Curse damage after Almighty damage, but in practice the Curse damage is dealt first, followed by Almighty damage.",
   "comment_jp": "固有スキルの説明では万能ダメージの後に呪怨ダメージが入ると書かれているが、実際には呪怨ダメージが先に入り、その後に万能ダメージが発生する。",
+    "comment_cn": "固有技能说明中写的是先造成万能伤害，再造成咒怨伤害，但实际结算顺序是先造成咒怨伤害，之后才结算万能伤害。",
   "added": "KR v2.1.1",
   "cost": null,
   "combination": null,

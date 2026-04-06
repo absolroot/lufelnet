@@ -60,8 +60,10 @@ window.JCCalc = (function () {
     }
 
     function getLabelText() {
-        const lang = getLang();
+        const rawLang = String(getLang() || '').toLowerCase();
+        const lang = (rawLang === 'zh' || rawLang === 'zh-cn' || rawLang === 'zh-hans') ? 'cn' : rawLang;
         if (lang === 'en') return 'Desire level';
+        if (lang === 'cn') return '人格面具性能';
         if (lang === 'jp') return 'デザイアレベル';
         return '페르소나 성능';
     }

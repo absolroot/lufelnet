@@ -20,6 +20,7 @@ window.personaFiles["아메노우즈메"] = {
   "comment": "",
   "comment_en": "",
   "comment_jp": "",
+    "comment_cn": "",
   "added": "",
   "cost": null,
   "combination": null,

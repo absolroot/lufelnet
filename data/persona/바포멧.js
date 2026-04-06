@@ -20,6 +20,7 @@ window.personaFiles["바포멧"] = {
   "comment": "이미 화상 상태인 적에게 [극열 : 화염 대미지 or 엘 지하드 : 감전 추가] 본능 효과를 발동한다.",
   "comment_en": "Triggers the talent effect on enemies already afflicted with Burn with [Red-Hot: Fire damage or Wild Thunder: inflict Shock].",
   "comment_jp": "すでに火傷状態の敵に対して、[『極熱』: 火炎ダメージ / 『エル・ジハード』: 感電追加]の本能効果を発動する。",
+    "comment_cn": "对已处于灼烧状态的敌人时，可触发本能效果【极热：火焰伤害 / 崇高圣战：追加感电】。",
   "added": "",
   "cost": null,
   "combination": null,

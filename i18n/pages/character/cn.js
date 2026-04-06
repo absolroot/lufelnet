@@ -132,7 +132,7 @@ window.I18N_PAGE_CHARACTER_CN = {
     "characterSkillCooldownAction": "行动",
     "characterInnateCoreTitle": "心象核心",
     "characterInnateAmplification": "心象强化",
-    "characterInnateGlobalNote": "※ 这是 KR v4.7 上线的功能。需要解锁该功能后才能达到 LV100。",
+    "characterInnateGlobalNote": "※ 这是 CN v4.7 上线的功能。需要解锁该功能后才能达到 LV100。",
     "characterOperationAwarenessPrefixEn": "A",
     "characterOperationAwarenessPrefixJp": "意識",
     "characterOperationAwarenessPrefixCn": "意识",

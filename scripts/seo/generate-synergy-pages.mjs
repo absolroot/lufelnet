@@ -22,7 +22,7 @@ const OUTPUT_DIR = path.join(ROOT, 'pages', 'synergy');
 const ROOT_STUB_DIR = path.join(OUTPUT_DIR, 'roots');
 
 const CHARACTER_LANGS = ['kr', 'en', 'jp', 'cn'];
-const ROOT_REDIRECT_LANGS = [];
+const ROOT_REDIRECT_LANGS = ['en', 'jp', 'cn'];
 
 const friendNumPath = path.join(ROOT, 'apps', 'synergy', 'friends', 'friend_num.json');
 const charInfoPath = path.join(ROOT, 'data', 'character_info.js');

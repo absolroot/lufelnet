@@ -39,7 +39,7 @@ window.I18N_PAGE_PERSONA_CN = {
     "acqColorBlue": "蓝色",
     "acqColorWhite": "白色",
     "acqColorRainbow": "彩虹",
-    "krOnlyBadge": "KR 专用",
+    "krOnlyBadge": "CN 专用",
     "sortTier": "按强度排序",
     "sortRarity": "按稀有度排序",
     "sortName": "按名称排序",

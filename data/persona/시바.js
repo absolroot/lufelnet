@@ -20,6 +20,7 @@ window.personaFiles["시바"] = {
   "comment": "",
   "comment_en": "",
   "comment_jp": "",
+    "comment_cn": "",
   "added": "KR v2.3.2",
   "cost": null,
   "combination": null,

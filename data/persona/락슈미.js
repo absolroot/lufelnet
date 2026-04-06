@@ -20,6 +20,7 @@ window.personaFiles["락슈미"] = {
   "comment": "공격 강화는 치료 수치에 적용된다. (영향력이 높지 않아 우선순위는 낮다)",
   "comment_en": "Attack enhancement applies to healing values. (Low priority due to limited impact)",
   "comment_jp": "アタックブースタは治療数値に適用される。（影響力が高くないため優先順位は低い）",
+    "comment_cn": "攻击强化会作用于治疗数值。（影响不大，优先级较低）",
   "added": "",
   "cost": null,
   "combination": null,

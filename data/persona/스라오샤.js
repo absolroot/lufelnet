@@ -20,6 +20,7 @@ window.personaFiles["스라오샤"] = {
   "comment": "선봉이 아닌 파티에 속해있기만 해도 『신의 귀』중첩을 획득 가능하다.",
   "comment_en": "Can gain [God's Ear] stacks just by being in the party, not necessarily in the front line.",
   "comment_jp": "先鋒でなくてもパーティに属しているだけで『神の耳』重複を獲得可能である。",
+    "comment_cn": "即使不在前锋位，只要编入队伍，也能获得『神之耳』层数。",
   "added": "KR v3.1.0",
   "cost": null,
   "combination": null,

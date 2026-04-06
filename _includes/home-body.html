@@ -154,13 +154,13 @@
         <div class="update-notice"></div>
     </div>
     <div class="separator-line"></div>
-    {% if page.language == 'kr' %}
-    <a href="/2nd-anniversary/" class="home-anniversary-banner" aria-label="2주년 뉴비 가이드 바로가기">
+    {% if page.language == 'kr' or page.language == 'cn' %}
+    <a href="/{{ page.language }}/2nd-anniversary/" class="home-anniversary-banner" aria-label="{% if page.language == 'cn' %}前往 2 周年新手指南{% else %}2주년 뉴비 가이드 바로가기{% endif %}">
         <div class="home-anniversary-banner-copy">
             <span class="home-anniversary-banner-kicker">2ND ANNIVERSARY</span>
-            <h2><img src="{{ site.baseurl }}/assets/img/2nd-aniv/item-190091.png" alt="">2주년 뉴비 선택권 가이드</h2>
-            <p>리세마라 목표와 선택권 우선순위를 한 페이지에서 바로 확인하세요. (한정 선택권 3장 + 통상 선택권 1장)</p>
-            <span class="home-anniversary-banner-cta">2주년 선택 가이드 보러가기</span>
+            <h2><img src="{{ site.baseurl }}/assets/img/2nd-aniv/item-190091.png" alt="">{% if page.language == 'cn' %}2周年新手选角指南{% else %}2주년 뉴비 선택권 가이드{% endif %}</h2>
+            <p>{% if page.language == 'cn' %}在一页内快速确认刷初始目标与自选券优先级。 (活动自选券 3 张 + 常驻自选券 1 张){% else %}리세마라 목표와 선택권 우선순위를 한 페이지에서 바로 확인하세요. (한정 선택권 3장 + 통상 선택권 1장){% endif %}</p>
+            <span class="home-anniversary-banner-cta">{% if page.language == 'cn' %}查看 2 周年指南{% else %}2주년 선택 가이드 보러가기{% endif %}</span>
         </div>
         <div class="home-anniversary-banner-visual" aria-hidden="true">
             <div class="home-anniversary-banner-faces">

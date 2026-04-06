@@ -98,6 +98,30 @@
   // --- Character/Weapon helpers (reused from pull-tracker.js logic) ---
   function getCharData(){ try { return (typeof characterData !== 'undefined') ? characterData : (window.characterData||null); } catch(_) { return null; } }
   function getWeaponData(){ try { return (typeof WeaponData !== 'undefined') ? WeaponData : (window.WeaponData||null); } catch(_) { return null; } }
+  function getWeaponManifestNames(){
+    try {
+      if (Array.isArray(window.WEAPON_FILE_CHARACTER_NAMES) && window.WEAPON_FILE_CHARACTER_NAMES.length) {
+        return new Set(window.WEAPON_FILE_CHARACTER_NAMES);
+      }
+    } catch(_) {}
+    return null;
+  }
+  let __weaponManifestPromise = null;
+  function ensureWeaponManifestLoaded(){
+    if (getWeaponManifestNames()) return Promise.resolve();
+    if (__weaponManifestPromise) return __weaponManifestPromise;
+    __weaponManifestPromise = new Promise((resolve) => {
+      try {
+        const base = (typeof window.BASE_URL !== 'undefined') ? window.BASE_URL : '';
+        const s = document.createElement('script');
+        s.src = `${base}/data/weapon-manifest.js?v=${Date.now()}`;
+        s.onload = () => resolve();
+        s.onerror = () => resolve();
+        document.head.appendChild(s);
+      } catch(_) { resolve(); }
+    });
+    return __weaponManifestPromise;
+  }
   function charNameByLang(info){ if(!info) return ''; if(lang==='en') return String(info.codename||info.name_en||info.name||'').trim(); if(lang==='jp') return String(info.name_jp||info.name||'').trim(); if(lang==='cn') return String(info.name_cn||info.name||'').trim(); return String(info.name||'').trim(); }
   function candidateNames(info){
     if (!info) return [];
@@ -776,19 +800,26 @@
         window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
         const base = (typeof window.BASE_URL !== 'undefined') ? window.BASE_URL : '';
         const ver = (typeof window.APP_VERSION !== 'undefined') ? window.APP_VERSION : Date.now();
+        await ensureWeaponManifestLoaded();
+        const weaponManifest = getWeaponManifestNames();
         const chars = (typeof characterData !== 'undefined' && characterData)
           ? Object.keys(characterData)
           : (window.characterData ? Object.keys(window.characterData) : []);
-        if (!chars.length) return;
-        const tasks = chars.map((name) => new Promise((res) => {
+        const filteredChars = chars.filter((name) => !weaponManifest || weaponManifest.has(name));
+        if (!filteredChars.length) return;
+        const tasks = filteredChars.map(async (name) => {
           try {
+            const url = `${base}/data/characters/${encodeURIComponent(name)}/weapon.js?v=${ver}`;
+            const response = await fetch(url, { cache: 'no-store' });
+            if (!response.ok) return;
+            const code = await response.text();
+            if (!code) return;
             const s = document.createElement('script');
-            s.src = `${base}/data/characters/${encodeURIComponent(name)}/weapon.js?v=${ver}`;
-            s.onload = () => res();
-            s.onerror = () => res();
+            s.text = `${code}\n//# sourceURL=${url}`;
             document.head.appendChild(s);
-          } catch(_) { res(); }
-        }));
+            s.remove();
+          } catch(_) {}
+        });
         await Promise.all(tasks);
       } catch(_) {}
     })();

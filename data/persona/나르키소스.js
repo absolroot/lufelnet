@@ -20,6 +20,7 @@ window.personaFiles["나르키소스"] = {
   "comment": "",
   "comment_en": "",
   "comment_jp": "",
+    "comment_cn": "",
   "added": "",
   "cost": null,
   "combination": null,

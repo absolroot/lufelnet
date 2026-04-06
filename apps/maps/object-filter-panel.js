@@ -583,7 +583,7 @@
             });
             
             // 영어/일본어 사용자에게 안내 메시지 표시 (language-selector 뒤에 추가)
-            if (currentLang === 'en' || currentLang === 'jp') {
+            if (currentLang === 'en' || currentLang === 'jp' || currentLang === 'cn') {
                 const noticeText = this.getMapsText('localizationNotice', '');
                 if (noticeText) {
                     const prevNotice = document.querySelector('#object-filter-panel .localization-notice');

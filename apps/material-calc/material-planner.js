@@ -264,6 +264,7 @@
         // name_en/name_jp는 KR 데이터에만 존재하므로, EN/JP에서도 KR 메타를 참조하도록 병합을 이미 수행함
         if (STATE.lang === 'en' && meta.name_en) return meta.name_en;
         if (STATE.lang === 'jp' && meta.name_jp) return meta.name_jp;
+        if (STATE.lang === 'cn' && meta.name_cn) return meta.name_cn;
         return krKey;
     }
 
@@ -358,6 +359,7 @@
         const cd = STATE.characterData?.[name];
         if (STATE.lang === 'en' && cd?.name_en) displayName = cd.name_en;
         else if (STATE.lang === 'jp' && cd?.name_jp) displayName = cd.name_jp;
+        else if (STATE.lang === 'cn' && cd?.name_cn) displayName = cd.name_cn;
 
         title.textContent = `${displayName}`;
         // 초기화 값 유지(기본 채움)
@@ -1139,6 +1141,7 @@
             const meta = STATE.characterData?.[krKey] || {};
             if (STATE.lang === 'en' && meta.name_en) return meta.name_en;
             if (STATE.lang === 'jp' && meta.name_jp) return meta.name_jp;
+            if (STATE.lang === 'cn' && meta.name_cn) return meta.name_cn;
             return krKey;
         };
         const getRelease = (anyName) => {
@@ -1201,6 +1204,7 @@
             const cd = STATE.characterData?.[p.name];
             if (STATE.lang === 'en' && cd?.name_en) displayName = cd.name_en;
             else if (STATE.lang === 'jp' && cd?.name_jp) displayName = cd.name_jp;
+            else if (STATE.lang === 'cn' && cd?.name_cn) displayName = cd.name_cn;
 
             // 좌측 아바타
             const avatar = document.createElement('img');
@@ -2150,7 +2154,8 @@
             const label = document.createElement('div'); label.className = 'order-label';
             label.textContent = (STATE.lang === 'en' && STATE.characterData?.[plan.name]?.name_en) ? STATE.characterData[plan.name].name_en
                 : (STATE.lang === 'jp' && STATE.characterData?.[plan.name]?.name_jp) ? STATE.characterData[plan.name].name_jp
-                    : plan.name;
+                    : (STATE.lang === 'cn' && STATE.characterData?.[plan.name]?.name_cn) ? STATE.characterData[plan.name].name_cn
+                        : plan.name;
             el.appendChild(num); el.appendChild(img); el.appendChild(label);
             return el;
         }

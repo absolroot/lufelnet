@@ -20,6 +20,7 @@ window.personaFiles["서큐버스"] = {
   "comment": "리벨리온의 최대 효과를 위해 크리티컬 확률 패시브를 챙긴다. 설명은 10% 단위지만 0.1% 단위로도 효과가 적용된다.",
   "comment_en": "Take the Crit Rate passive to maximize Rebellion's effect. The description is written in 10% units, but the effect is actually applied in 0.1% units.",
   "comment_jp": "リベリオンの最大効果を得るために、クリティカル率パッシブを採用する。説明は10%単位だが、効果自体は0.1%単位で適用される。",
+    "comment_cn": "为了吃满反叛的最大收益，需要携带暴击率被动。说明虽然以10%为单位记载，但0.1%为单位也会生效。",
   "added": "",
   "cost": {
     "blue": true,

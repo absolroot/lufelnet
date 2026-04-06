@@ -32,7 +32,7 @@ window.I18N_PAGE_MAPS_CN = {
     "mapListLoadError": "无法加载地图列表。",
     "mapLoadError": "加载地图失败。",
     "pixiInitError": "PixiJS 初始化失败",
-    "localizationNotice": "部分未上线内容可能暂时显示为韩语，人工更新可能会稍有延迟。",
+    "localizationNotice": "中文地图暂未正式支持，将显示为韩语。",
     "enemyInfoTitle": "敌人信息",
     "enemyDefeated": "已击败",
     "enemyUndo": "撤销",

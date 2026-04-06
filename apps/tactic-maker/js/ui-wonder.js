@@ -149,12 +149,14 @@ export class WonderUI extends EventEmitter {
                 const uniqueNameKr = unique.name || '';
                 const uniqueNameEn = unique.name_en || '';
                 const uniqueNameJp = unique.name_jp || '';
+                const uniqueNameCn = unique.name_cn || '';
                 
                 // Check if skillName matches unique skill name in any language
-                if (skillName === uniqueNameKr || skillName === uniqueNameEn || skillName === uniqueNameJp) {
+                if (skillName === uniqueNameKr || skillName === uniqueNameEn || skillName === uniqueNameJp || skillName === uniqueNameCn) {
                     let desc = '';
                     if (lang === 'en' && unique.desc_en) desc = unique.desc_en;
                     else if (lang === 'jp' && unique.desc_jp) desc = unique.desc_jp;
+                    else if (lang === 'cn' && unique.desc_cn) desc = unique.desc_cn;
                     else desc = unique.desc || '';
                     
                     if (desc) return highlightNums(desc);
@@ -168,6 +170,7 @@ export class WonderUI extends EventEmitter {
             let desc = '';
             if (lang === 'en' && skillData.description_en) desc = skillData.description_en;
             else if (lang === 'jp' && skillData.description_jp) desc = skillData.description_jp;
+            else if (lang === 'cn' && skillData.description_cn) desc = skillData.description_cn;
             else desc = skillData.description || '';
             
             if (desc) return highlightNums(desc);
@@ -207,6 +210,9 @@ export class WonderUI extends EventEmitter {
             } else if (lang === 'jp') {
                 name = p.name_jp || name;
                 desc = p.desc_jp || desc;
+            } else if (lang === 'cn') {
+                name = p.name_cn || name;
+                desc = p.desc_cn || desc;
             }
             return `<b>${name}</b><br>${highlightNums(desc)}`;
         });
@@ -781,6 +787,7 @@ export class WonderUI extends EventEmitter {
         if (personaData && personaData.uniqueSkill) {
             if (lang === 'en') uniqueName = personaData.uniqueSkill.name_en || uniqueName;
             else if (lang === 'jp') uniqueName = personaData.uniqueSkill.name_jp || personaData.uniqueSkill.name_en || uniqueName;
+            else if (lang === 'cn') uniqueName = personaData.uniqueSkill.name_cn || uniqueName;
         }
 
         // Fallback: if persona unique skill icon is missing (or 'Default'), use personaSkillList lookup
@@ -930,6 +937,7 @@ export class WonderUI extends EventEmitter {
             const lang = getLang();
             if (lang === 'jp') return 'ja-JP';
             if (lang === 'en') return 'en';
+            if (lang === 'cn') return 'zh-CN';
             return 'ko-KR';
         };
 

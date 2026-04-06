@@ -166,14 +166,14 @@
 
 .post-item a.post-title:hover { text-decoration: none; color: rgb(255, 255, 255, 0.9); }
 
-.post-title { cursor: pointer; font-size: 18px; display: flex; align-items: center; gap: 4px; color: var(--text-color); text-decoration: none; transition: color 0.2s; }
+.post-title { cursor: pointer; font-size: 18px; display: flex; align-items: center; gap: 4px; color: var(--text-color); text-decoration: none; transition: color 0.2s; min-width: 0; }
 
 /* 제목 텍스트는 최대 2줄로 표시하고 넘치면 말줄임 */
-.post-title-text{ display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
+.post-title-text{ display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; max-width: 100%; min-width: 0; flex: 1 1 auto; }
 
-.type-badge{ display: inline-block; background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9); border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; padding: 2px 6px; font-size: 11px; margin-right: 6px; min-width: 19.8px; }
+.type-badge{ display: inline-block; background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9); border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; padding: 2px 6px; font-size: 11px; margin-right: 6px; min-width: 19.8px; white-space: nowrap; flex-shrink: 0; }
 
-.region-badge{ display: inline-block; background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9); border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; padding: 2px 6px; font-size: 11px; margin-right: 0px; min-width: 14px; }
+.region-badge{ display: inline-block; background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9); border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; padding: 2px 6px; font-size: 11px; margin-right: 0px; min-width: 14px; white-space: nowrap; flex-shrink: 0; }
 
 .post-title:hover { color: var(--accent-color); }
 

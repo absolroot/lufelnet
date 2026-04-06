@@ -1,5 +1,13 @@
 // 언어별 캐릭터 데이터 동적 로딩 함수들
 function getCurrentLanguage() {
+    const seoLang = String(window.__SEO_PATH_LANG__ || '').toLowerCase();
+    if (['kr', 'en', 'jp', 'cn'].includes(seoLang)) {
+        return seoLang;
+    }
+    const pathMatch = String(window.location.pathname || '').match(/^\/(kr|en|jp|cn)(\/|$)/i);
+    if (pathMatch) {
+        return String(pathMatch[1] || '').toLowerCase();
+    }
     const urlParams = new URLSearchParams(window.location.search);
     const urlLang = urlParams.get('lang');
     if (urlLang && ['kr', 'en', 'jp', 'cn'].includes(urlLang)) {
@@ -57,8 +65,32 @@ function mergeCharacterData(krData, langData) {
             lang: currentLang
         });
     }
+    const mergedData = {};
+    Object.keys(krData || {}).forEach((key) => {
+        const krChar = krData[key] || {};
+        const langChar = (langData || {})[key] || {};
+        const mergedChar = { ...krChar };
 
-    return { ...(krData || {}) };
+        if (currentLang === 'en') {
+            if (krChar.name_en) mergedChar.name = krChar.name_en;
+            else if (langChar.name) mergedChar.name = langChar.name;
+            if (krChar.persona_en) mergedChar.persona = krChar.persona_en;
+            else if (langChar.persona) mergedChar.persona = langChar.persona;
+        } else if (currentLang === 'jp') {
+            if (krChar.name_jp) mergedChar.name = krChar.name_jp;
+            else if (langChar.name) mergedChar.name = langChar.name;
+            if (krChar.persona_jp) mergedChar.persona = krChar.persona_jp;
+            else if (langChar.persona) mergedChar.persona = langChar.persona;
+        } else if (currentLang === 'cn') {
+            if (krChar.name_cn) mergedChar.name = krChar.name_cn;
+            else if (langChar.name) mergedChar.name = langChar.name;
+            if (krChar.persona_cn) mergedChar.persona = krChar.persona_cn;
+            else if (langChar.persona) mergedChar.persona = langChar.persona;
+        }
+
+        mergedData[key] = mergedChar;
+    });
+    return mergedData;
 }
 
 function isSpoilerEnabled() {
@@ -254,6 +286,8 @@ class TacticsViewer {
             if (this.currentRegion && this.currentRegion !== 'ALL') {
                 if (this.currentRegion === 'GLB') {
                     query = query.in('region', ['en', 'sea']);
+                } else if (this.currentRegion === 'CN') {
+                    query = query.eq('region', 'cn');
                 } else if (this.currentRegion === 'JP') {
                     query = query.eq('region', 'jp');
                 } else if (this.currentRegion === 'KR') {
@@ -452,6 +486,7 @@ class TacticsViewer {
             filtered = filtered.filter(tactic => {
                 const region = String(tactic.region || '').toLowerCase();
                 if (this.currentRegion === 'GLB') return region === 'en' || region === 'sea';
+                if (this.currentRegion === 'CN') return region === 'cn';
                 if (this.currentRegion === 'JP') return region === 'jp';
                 if (this.currentRegion === 'KR') return region === 'kr';
                 return true;
@@ -1006,7 +1041,9 @@ class TacticsViewer {
             // 언어에 따른 타이틀/대체 텍스트 (병합된 데이터의 name 필드 사용)
             const ch = charData?.[name];
             // 병합된 데이터의 name 필드 사용 (이미 언어별로 설정됨)
-            const displayTitle = ch?.name || name;
+            const displayTitle = this.currentLang === 'cn'
+                ? (ch?.name_cn || ch?.name || name)
+                : (ch?.name || name);
 
             img.alt = displayTitle;
             img.title = displayTitle;
@@ -1192,6 +1229,7 @@ class TacticsViewer {
             // 현재 지역 필터에 따라 집계 대상 선택
             let regionSet = null;
             if (this.currentRegion === 'KR') regionSet = new Set(['kr']);
+            if (this.currentRegion === 'CN') regionSet = new Set(['cn']);
             if (this.currentRegion === 'GLB') regionSet = new Set(['en', 'sea']);
             if (this.currentRegion === 'JP') regionSet = new Set(['jp']);
 

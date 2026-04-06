@@ -4,6 +4,16 @@
 
   let acqMap = null; // { [krPersonaName]: { combination1, combination2, combination3, names: {kr,en,jp} } }
   let loadingPromise = null;
+  let personaNameMap = null;
+  let personaNameMapLoading = null;
+
+  const specialEmblemNamesCn = {
+    '와일드 엠블럼 하늘': '不羁纹章·空',
+    '와일드 엠블럼 빛': '不羁纹章·耀',
+    '와일드 엠블럼 무지개': '不羁纹章·虹',
+    '와일드 엠블럼 화이트': '不羁纹章·空',
+    '와일드 엠블럼 하얀': '不羁纹章·空'
+  };
   // Shared global ad rotation (used by multiple modals)
   function getSharedAdRotation() {
     const w = (typeof window !== 'undefined') ? window : globalThis;
@@ -30,6 +40,21 @@
     return defaultValue || key;
   }
 
+  function localizeCnServerLabel(text) {
+    if (typeof text !== 'string' || !text) return text;
+    return text
+      .replace(/\bKR\s+v(?=\d)/gi, 'CN v')
+      .replace(/\bKR\s+V(?=\d)/g, 'CN V')
+      .replace(/\bKR(?=\s+\d)/g, 'CN')
+      .replace(/\[KR\]/g, '[CN]')
+      .replace(/\bKR 전용\b/g, 'CN 专用')
+      .replace(/\bKR Only\b/gi, 'CN Only')
+      .replace(/\bKR 서버\b/g, 'CN 服务器')
+      .replace(/\bKR version\b/gi, 'CN version')
+      .replace(/\bKR Version\b/g, 'CN Version')
+      .replace(/\bKR\b/g, 'CN');
+  }
+
   async function loadAcqMap() {
     if (acqMap) return acqMap;
     if (loadingPromise) return loadingPromise;
@@ -54,6 +79,40 @@
       acqMap = {}; return acqMap;
     })();
     return loadingPromise;
+  }
+
+  async function loadPersonaNameMap() {
+    if (personaNameMap) return personaNameMap;
+    if (personaNameMapLoading) return personaNameMapLoading;
+
+    const ver = (typeof APP_VERSION !== 'undefined' ? APP_VERSION : '1');
+    const url = `${BASE()}/data/external/persona/mapping.json?v=${ver}`;
+    personaNameMapLoading = fetch(url, { cache: 'no-cache' })
+      .then(res => {
+        if (!res.ok) throw new Error(`${res.status}`);
+        return res.json();
+      })
+      .then(json => {
+        const map = {};
+        Object.values(json || {}).forEach((entry) => {
+          const kr = String((entry && entry.name_kr) || '').trim();
+          if (!kr) return;
+          map[normalizeName(kr)] = {
+            kr,
+            en: String(entry.name_en || '').trim(),
+            jp: String(entry.name_jp || '').trim(),
+            cn: String(entry.name_cn || '').trim()
+          };
+        });
+        personaNameMap = map;
+        return map;
+      })
+      .catch((err) => {
+        console.error('Failed to load persona name map:', err);
+        personaNameMap = {};
+        return personaNameMap;
+      });
+    return personaNameMapLoading;
   }
 
   function parseCSV(csv) {
@@ -115,12 +174,18 @@
       if (kind === 'rainbow') return '와일드 엠블럼 무지개';
       return '와일드 엠블럼 화이트';
     })();
+    const localizedLabel = (function () {
+      if (lang === 'cn' && specialEmblemNamesCn[iconNameKr]) return specialEmblemNamesCn[iconNameKr];
+      return iconNameKr;
+    })();
     const wrap = document.createElement('span');
     wrap.className = 'acq-emblem';
+    wrap.title = localizedLabel;
     const img = document.createElement('img');
     img.className = 'acq-icon';
     img.src = `${BASE()}/apps/persona/persona_icon/${encodeURIComponent(iconNameKr)}.png`;
-    img.alt = iconNameKr;
+    img.alt = localizedLabel;
+    img.title = localizedLabel;
     img.loading = 'lazy';
     const numEl = document.createElement('span');
     numEl.className = 'acq-emblem-num';
@@ -158,8 +223,14 @@
     const lang = getCurrentLang();
     if (lang === 'kr') return krName;
     try {
+      const normalizedKey = normalizeName(krName);
+      if (lang === 'cn') {
+        if (specialEmblemNamesCn[krName]) return specialEmblemNamesCn[krName];
+        const personaRec = personaNameMap && personaNameMap[normalizedKey];
+        if (personaRec && personaRec.cn) return personaRec.cn;
+      }
       if (acqMap) {
-        const key = normalizeName(krName);
+        const key = normalizedKey;
         let rec = acqMap[key];
         if (!rec) {
           // also try compact (no-space) match
@@ -877,7 +948,7 @@
   }
 
   async function populate(container, personaKrName) {
-    try { await loadAcqMap(); } catch (_) { /* ignore */ }
+    try { await Promise.all([loadAcqMap(), loadPersonaNameMap()]); } catch (_) { /* ignore */ }
     const body = container.querySelector('.acq-body');
     if (!body) return;
     body.innerHTML = '';
@@ -907,7 +978,7 @@
     // Append persona.js added text as an extra acquisition if exists
     const addedText = findAddedText(personaKrName);
     if (addedText) {
-      combos.push({ textOnly: true, text: addedText });
+      combos.push({ textOnly: true, text: getCurrentLang() === 'cn' ? localizeCnServerLabel(addedText) : addedText });
     }
     if (combos.length) {
       body.appendChild(renderRowGroup(combos));

@@ -20,6 +20,7 @@ window.personaFiles["야노식"] = {
   "comment": "",
   "comment_en": "※ IV Enhancement was released in KR v4.7",
   "comment_jp": "※ IV Enhancement was released in KR v4.7",
+    "comment_cn": "",
   "added": "",
   "cost": null,
   "combination": null,

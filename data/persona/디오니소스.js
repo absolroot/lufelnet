@@ -20,6 +20,7 @@ window.personaFiles["디오니소스"] = {
   "comment": "메디아라한을 통한 치료에도 본능 크리티컬 효과 30% 증가가 적용된다.\n본능을 통해 크리티컬 확률을 확보하고 해명 괴도를 통해 추가로 받으므로 다른 페르소나와 달리 리벨리온 스킬의 최대치 효율을 위한 별도 어드바이스 패시브가 필요하지 않다.",
   "comment_en": "The talent's 30% critical damage increase also applies to healing through Mediarahan.\nBecause it secures Crit Rate through its talent and gains more from the Elucidator, it does not need a separate Advice passive to fully capitalize on Rebellion, unlike other Personas.",
   "comment_jp": "メディアラハンによる回復にも、本能のクリティカルダメージ30%増加が適用される。\n本能でクリティカル率を確保し、さらに解明怪盗から追加で受け取れるため、他のペルソナと違って、リベリオンの最大効率のために別途アドバイス系パッシブを用意する必要がない。",
+    "comment_cn": "通过梅迪亚拉翰进行治疗时，也会适用本能提供的30%暴击效果提升。\n由于可通过本能确保暴击率，并从解明怪盗处额外获得暴击率，因此和其他人格面具不同，不需要额外携带Advice类被动来吃满反叛的最大收益。",
   "added": "",
   "cost": {
     "blue": 0,

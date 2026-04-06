@@ -20,6 +20,7 @@ window.personaFiles["지크프리트"] = {
   "comment": "파티에만 지니고 있어도 전투 시작 시 『용혈』을 획득한다",
   "comment_en": "Gain Dragon's Blood at the start of battle just by having it in the party.",
   "comment_jp": "パーティーに編成しているだけで、戦闘開始時に『竜血』を獲得する。",
+    "comment_cn": "即使只是编入队伍，战斗开始时也会获得『龙血』。",
   "added": "KR v3.2.0",
   "cost": null,
   "combination": null,

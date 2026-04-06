@@ -11,8 +11,8 @@ window.I18N_PAGE_TIER_CN = {
     "filterTag": "标签",
     "addTierButton": "添加新梯级",
     "tierSourceGlobal": "国际服",
-    "tierSourceGlobalOnKr": "国际服（以KR为准）",
-    "tierSourceKrSpoiler": "[剧透] KR",
+    "tierSourceGlobalOnKr": "国际服（以CN为准）",
+    "tierSourceKrSpoiler": "[剧透] CN",
     "newTierLabel": "新梯级",
     "deleteRow": "删除行",
     "clearRow": "清空行",
@@ -55,7 +55,7 @@ window.I18N_PAGE_TIER_CN = {
         },
         {
             "q": "Q. 怪盗左下角的三角形图标是什么？",
-            "a": "这是以 KR V4.7.1 为准新增的心象核心材料，表示角色可扩展至 100 级。获得额外被动后，梯级也可能会发生变化。"
+            "a": "这是以 CN V4.7.1 为准新增的心象核心材料，表示角色可扩展至 100 级。获得额外被动后，梯级也可能会发生变化。"
         }
     ],
     "tierListSeoTitle": "梯级列表 - 女神异闻录5: 夜幕魅影 路菲尔网",

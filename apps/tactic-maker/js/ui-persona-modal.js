@@ -367,6 +367,9 @@ export class PersonaModal extends EventEmitter {
                 } else if (currentLang === 'jp') {
                     nameA = this.personaSource[a].name_jp || a;
                     nameB = this.personaSource[b].name_jp || b;
+                } else if (currentLang === 'cn') {
+                    nameA = this.personaSource[a].name_cn || a;
+                    nameB = this.personaSource[b].name_cn || b;
                 }
                 return nameA.localeCompare(nameB, undefined, { sensitivity: 'base' });
             });
@@ -398,6 +401,7 @@ export class PersonaModal extends EventEmitter {
                 let displayName = personaName;
                 if (currentLang === 'en') displayName = persona.name_en || personaName;
                 else if (currentLang === 'jp') displayName = persona.name_jp || personaName;
+                else if (currentLang === 'cn') displayName = persona.name_cn || personaName;
 
                 if (!displayName.toLowerCase().includes(query) && !personaName.toLowerCase().includes(query)) {
                     return false;
@@ -439,6 +443,7 @@ export class PersonaModal extends EventEmitter {
             let displayName = personaName;
             if (currentLang === 'en') displayName = persona.name_en || personaName;
             else if (currentLang === 'jp') displayName = persona.name_jp || personaName;
+            else if (currentLang === 'cn') displayName = persona.name_cn || personaName;
 
             const bgImg = `${this.baseUrl}/assets/img/persona/persona-card-${element}.webp`;
             const pImg = `${this.baseUrl}/assets/img/persona/${personaName}.webp`;

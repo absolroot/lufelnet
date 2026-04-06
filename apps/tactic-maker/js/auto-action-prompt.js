@@ -278,6 +278,8 @@ export class AutoActionPrompt {
                 displayName = charData.codename;
             } else if (lang === 'jp' && charData.name_jp) {
                 displayName = charData.name_jp;
+            } else if (lang === 'cn' && charData.name_cn) {
+                displayName = charData.name_cn;
             }
         }
 

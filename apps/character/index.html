@@ -870,6 +870,8 @@ redirect_from: []
             } else if (currentLang === 'jp' && spoilerEnabled && charData.name_jp) {
                 // 스포일러 모드에서 일본어 이름 사용
                 nameText.textContent = charData.name_jp;
+            } else if (currentLang === 'cn' && charData.name_cn) {
+                nameText.textContent = charData.name_cn;
             } else {
                 nameText.textContent = charData.name;
             }

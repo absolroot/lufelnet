@@ -484,6 +484,7 @@
     if (!data) return koreanName;
     if (lang === 'en' && data.name_en) return data.name_en;
     if (lang === 'jp' && data.name_jp) return data.name_jp;
+    if (lang === 'cn' && data.name_cn) return data.name_cn;
     return koreanName;
   }
 
@@ -492,6 +493,7 @@
     if (!data) return '';
     if (lang === 'en' && data.effect_en) return data.effect_en;
     if (lang === 'jp' && data.effect_jp) return data.effect_jp;
+    if (lang === 'cn' && data.effect_cn) return data.effect_cn;
     return data.effect || '';
   }
 
@@ -521,6 +523,7 @@
     if (!c) return koreanCharName;
     if (lang === 'en' && c.codename) return c.codename;
     if (lang === 'jp' && c.name_jp) return c.name_jp;
+    if (lang === 'cn' && c.name_cn) return c.name_cn;
     return koreanCharName; // default KR label
   }
 
@@ -626,11 +629,13 @@
         const nameKr = krName.toLowerCase();
         const nameEn = (data.name_en || '').toLowerCase();
         const nameJp = (data.name_jp || '').toLowerCase();
+        const nameCn = (data.name_cn || '').toLowerCase();
         const displayNameLower = displayName.toLowerCase();
 
         if (!nameKr.includes(query) &&
           !nameEn.includes(query) &&
           !nameJp.includes(query) &&
+          !nameCn.includes(query) &&
           !displayNameLower.includes(query)) {
           shouldShow = false;
         }
@@ -642,6 +647,7 @@
       tab.dataset.weaponNameKr = krName;
       tab.dataset.weaponNameEn = data.name_en || '';
       tab.dataset.weaponNameJp = data.name_jp || '';
+      tab.dataset.weaponNameCn = data.name_cn || '';
       tab.dataset.displayName = displayName;
       tab.dataset.whereToGet = whereToGet;
 
@@ -826,11 +832,13 @@
         const nameKr = (tab.dataset.weaponNameKr || '').toLowerCase();
         const nameEn = (tab.dataset.weaponNameEn || '').toLowerCase();
         const nameJp = (tab.dataset.weaponNameJp || '').toLowerCase();
+        const nameCn = (tab.dataset.weaponNameCn || '').toLowerCase();
         const displayName = (tab.dataset.displayName || '').toLowerCase();
 
         if (!nameKr.includes(query) &&
           !nameEn.includes(query) &&
           !nameJp.includes(query) &&
+          !nameCn.includes(query) &&
           !displayName.includes(query)) {
           shouldShow = false;
         }
@@ -983,10 +991,12 @@
         const stampName =
           (lang === 'en' && stamp.name_en) ? stamp.name_en :
             (lang === 'jp' && stamp.name_jp) ? stamp.name_jp :
+              (lang === 'cn' && stamp.name_cn) ? stamp.name_cn :
               stamp.name || '';
         const stampEffect =
           (lang === 'en' && stamp.effect_en) ? stamp.effect_en :
             (lang === 'jp' && stamp.effect_jp) ? stamp.effect_jp :
+              (lang === 'cn' && stamp.effect_cn) ? stamp.effect_cn :
               stamp.effect || '';
 
         // 각 stamp의 stamp_icon 사용 (없으면 기본값)
@@ -1163,6 +1173,7 @@
         const shardDesc =
           (lang === 'en' && shardItem.desc_en) ? shardItem.desc_en :
             (lang === 'jp' && (shardItem.desc_jp || shardItem.dsec_jp)) ? (shardItem.desc_jp || shardItem.dsec_jp) :
+              (lang === 'cn' && shardItem.desc_cn) ? shardItem.desc_cn :
               shardItem.desc || '';
 
         // 체크 상태 확인
@@ -1257,6 +1268,7 @@
           const stampNameLabel =
             (lang === 'en' && stamp.name_en) ? stamp.name_en :
               (lang === 'jp' && stamp.name_jp) ? stamp.name_jp :
+                (lang === 'cn' && stamp.name_cn) ? stamp.name_cn :
                 stamp.name || '';
           const charLabel = getCharacterLabel(charName, lang);
           const href = buildCharacterDetailUrl(charName, lang);
@@ -1320,6 +1332,7 @@
         const stampEffect =
           (lang === 'en' && stamp.effect_en) ? stamp.effect_en :
             (lang === 'jp' && stamp.effect_jp) ? stamp.effect_jp :
+              (lang === 'cn' && stamp.effect_cn) ? stamp.effect_cn :
               stamp.effect || '';
 
         const fourSplitReplace = /(\d+(?:\.\d+)?%?)(?:\s*\/\s*(\d+(?:\.\d+)?%?)){3}/g;

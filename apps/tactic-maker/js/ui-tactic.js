@@ -1237,11 +1237,13 @@ export class TacticUI {
                 const uniqueNameKr = unique.name || '';
                 const uniqueNameEn = unique.name_en || '';
                 const uniqueNameJp = unique.name_jp || '';
+                const uniqueNameCn = unique.name_cn || '';
 
-                if (skillName === uniqueNameKr || skillName === uniqueNameEn || skillName === uniqueNameJp) {
+                if (skillName === uniqueNameKr || skillName === uniqueNameEn || skillName === uniqueNameJp || skillName === uniqueNameCn) {
                     let desc = '';
                     if (lang === 'en' && unique.desc_en) desc = unique.desc_en;
                     else if (lang === 'jp' && unique.desc_jp) desc = unique.desc_jp;
+                    else if (lang === 'cn' && unique.desc_cn) desc = unique.desc_cn;
                     else desc = unique.desc || '';
 
                     if (desc) return highlightNums(desc) + lvNote;
@@ -1255,6 +1257,7 @@ export class TacticUI {
             let desc = '';
             if (lang === 'en' && skillData.description_en) desc = skillData.description_en;
             else if (lang === 'jp' && skillData.description_jp) desc = skillData.description_jp;
+            else if (lang === 'cn' && skillData.description_cn) desc = skillData.description_cn;
             else desc = skillData.description || '';
 
             if (desc) return highlightNums(desc) + lvNote;
@@ -1294,12 +1297,14 @@ export class TacticUI {
                         const isUnique = !!(uniqueSkill && uniqueBaseName && (
                             skill === uniqueBaseName ||
                             (uniqueSkill.name_en && skill === uniqueSkill.name_en) ||
-                            (uniqueSkill.name_jp && skill === uniqueSkill.name_jp)
+                            (uniqueSkill.name_jp && skill === uniqueSkill.name_jp) ||
+                            (uniqueSkill.name_cn && skill === uniqueSkill.name_cn)
                         ));
 
                         if (isUnique) {
                             if (lang === 'en') dispSkill = uniqueSkill.name_en || uniqueSkill.name || dispSkill;
                             else if (lang === 'jp') dispSkill = uniqueSkill.name_jp || uniqueSkill.name_en || uniqueSkill.name || dispSkill;
+                            else if (lang === 'cn') dispSkill = uniqueSkill.name_cn || uniqueSkill.name || dispSkill;
                             else dispSkill = uniqueSkill.name || dispSkill;
                         }
 
@@ -2439,12 +2444,14 @@ export class TacticUI {
                         const isUnique = !!(uniqueSkill && uniqueBaseName && (
                             skill === uniqueBaseName ||
                             (uniqueSkill.name_en && skill === uniqueSkill.name_en) ||
-                            (uniqueSkill.name_jp && skill === uniqueSkill.name_jp)
+                            (uniqueSkill.name_jp && skill === uniqueSkill.name_jp) ||
+                            (uniqueSkill.name_cn && skill === uniqueSkill.name_cn)
                         ));
 
                         if (isUnique) {
                             if (lang === 'en') dispSkill = uniqueSkill.name_en || uniqueSkill.name || dispSkill;
                             else if (lang === 'jp') dispSkill = uniqueSkill.name_jp || uniqueSkill.name_en || uniqueSkill.name || dispSkill;
+                            else if (lang === 'cn') dispSkill = uniqueSkill.name_cn || uniqueSkill.name || dispSkill;
                             else dispSkill = uniqueSkill.name || dispSkill;
                         }
 

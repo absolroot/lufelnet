@@ -673,7 +673,7 @@
             await loadRevStatsData();
 
             // 페이지 초기화
-            initializePageContent();
+            await initializePageContent();
             // Build Revelation Stats UI (after language is ready)
             buildRevStatsUI(currentLang);
 
@@ -710,7 +710,7 @@
         return data || window.revelationData || (typeof revelationData !== 'undefined' ? revelationData : { main: {}, sub: {}, sub_effects: {}, set_effects: {} });
     }
 
-    function initializePageContent() {
+    async function initializePageContent() {
         const cardsContainer = document.getElementById('revelationCards');
         const searchCount = document.querySelector('.search-count');
 
@@ -732,6 +732,109 @@
 
         // Build stats UI in case language finished after
         try { buildRevStatsUI(); } catch (e) { /* noop */ }
+
+        function getPageLanguage() {
+            try {
+                if (typeof getCurrentLanguage === 'function') {
+                    const lang = String(getCurrentLanguage() || '').toLowerCase();
+                    if (lang) return lang;
+                }
+            } catch (_) { }
+            try {
+                if (window.I18nService && typeof window.I18nService.getCurrentLanguage === 'function') {
+                    const lang = String(window.I18nService.getCurrentLanguage() || '').toLowerCase();
+                    if (lang) return lang;
+                }
+            } catch (_) { }
+            try {
+                const savedLang = String(localStorage.getItem('preferredLanguage') || '').toLowerCase();
+                if (savedLang) return savedLang;
+            } catch (_) { }
+            return 'kr';
+        }
+
+        async function loadVisibleCharacterNamesForCurrentLanguage() {
+            const lang = getPageLanguage();
+            if (lang !== 'en' && lang !== 'jp') return null;
+
+            const version = window.APP_VERSION ? `?v=${encodeURIComponent(String(window.APP_VERSION))}` : '';
+            const url = `${BASE_URL}/data/character_info_glb.js${version}`;
+
+            try {
+                const response = await fetch(url, { cache: 'no-store' });
+                if (!response.ok) return null;
+                const text = await response.text();
+                const sandbox = {};
+                let parsedList = null;
+
+                try {
+                    const win = (new Function('window', `${text}\n; return window;`))(sandbox);
+                    parsedList = win && win.characterList ? win.characterList : null;
+                } catch (_) { }
+
+                if (!parsedList) {
+                    const match = text.match(/(?:window\.)?characterList\s*=\s*(?:window\.characterList\s*\|\|\s*)?({[\s\S]*?});/);
+                    if (match && match[1]) {
+                        parsedList = new Function(`return (${match[1]});`)();
+                    }
+                }
+
+                if (!parsedList) return null;
+
+                return new Set([
+                    ...(parsedList.mainParty || []),
+                    ...(parsedList.supportParty || [])
+                ]);
+            } catch (_) {
+                return null;
+            }
+        }
+
+        let visibleCharacterNames = await loadVisibleCharacterNamesForCurrentLanguage();
+
+        function isSpoilerEnabled() {
+            try {
+                if (window.SpoilerState && typeof window.SpoilerState.get === 'function') {
+                    return !!window.SpoilerState.get();
+                }
+            } catch (_) { }
+            try {
+                return localStorage.getItem('spoilerToggle') === 'true';
+            } catch (_) {
+                return false;
+            }
+        }
+
+        function shouldHideCharacter(koreanCharName) {
+            if (isSpoilerEnabled()) return false;
+            if (!(visibleCharacterNames instanceof Set)) return false;
+            return !visibleCharacterNames.has(koreanCharName);
+        }
+
+        function bindSpoilerLink(link) {
+            if (!link || link.dataset.spoilerBound === '1') return;
+            link.dataset.spoilerBound = '1';
+            link.addEventListener('click', (event) => {
+                if (!link.classList.contains('spoiler')) return;
+                event.preventDefault();
+                event.stopPropagation();
+                link.classList.remove('spoiler');
+            });
+        }
+
+        function applyUserListSpoilers(root) {
+            const scope = root || document;
+            scope.querySelectorAll('.user-list .character-link[data-character-name]').forEach((link) => {
+                const koreanCharName = link.dataset.characterName || '';
+                const shouldHide = shouldHideCharacter(koreanCharName);
+                link.classList.toggle('spoiler', shouldHide);
+
+                if (shouldHide) {
+                    bindSpoilerLink(link);
+                    return;
+                }
+            });
+        }
 
         // Separate main revelations and sub revelations
         const mainRevelations = Object.keys(currentRevelationData.main);
@@ -1032,10 +1135,19 @@
                 const grid = document.createElement('div');
                 grid.className = 'user-list';
                 const lang = (typeof LanguageRouter !== 'undefined' && LanguageRouter) ? LanguageRouter.getCurrentLanguage() : 'kr';
-                users.forEach(u => {
+                users
+                    .slice()
+                    .sort((a, b) => {
+                        const aHidden = shouldHideCharacter(a);
+                        const bHidden = shouldHideCharacter(b);
+                        if (aHidden !== bHidden) return aHidden ? 1 : -1;
+                        return a.localeCompare(b, 'ko');
+                    })
+                    .forEach(u => {
                     const a = document.createElement('a');
                     a.className = 'character-link';
                     a.href = buildCharacterDetailUrl(u, lang);
+                    a.dataset.characterName = u;
 
                     const cimg = document.createElement('img');
                     cimg.className = 'character-img';
@@ -1073,6 +1185,10 @@
                     a.appendChild(cimg);
                     a.appendChild(icons);
                     a.appendChild(label);
+                    if (shouldHideCharacter(u)) {
+                        a.classList.add('spoiler');
+                        bindSpoilerLink(a);
+                    }
                     grid.appendChild(a);
                 });
                 content.appendChild(grid);
@@ -1106,6 +1222,19 @@
         });
 
         addTooltips();
+        applyUserListSpoilers(cardsContainer);
+
+        if (!window.__revelationSpoilerSyncBound && window.SpoilerState && typeof window.SpoilerState.subscribe === 'function') {
+            window.__revelationSpoilerSyncBound = true;
+            window.SpoilerState.subscribe(async () => {
+                try {
+                    visibleCharacterNames = await loadVisibleCharacterNamesForCurrentLanguage();
+                } catch (_) {
+                    visibleCharacterNames = null;
+                }
+                applyUserListSpoilers(cardsContainer);
+            });
+        }
 
         // Add filtering functionality
         const checkboxes = document.querySelectorAll('.filter-options input[type="checkbox"]');

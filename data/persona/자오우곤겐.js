@@ -20,6 +20,7 @@ window.personaFiles["자오우곤겐"] = {
   "comment": "고유 스킬로 부여된 디버프는 3턴간 지속되며 트리거로서 작용하고, 3턴에 화염 대미지를 주었을 경우 생긴 크리티컬 효과 증가 디버프는 별개로서 다음 턴(4턴)까지 지속된다.",
   "comment_en": "The debuff applied by the unique skill lasts 3 turns and serves as the trigger. If Fire damage is dealt on turn 3, the resulting critical damage taken increase is treated as a separate debuff and lasts until the following turn (turn 4).",
   "comment_jp": "固有スキルで付与されるデバフは3ターン持続し、トリガーとして機能する。3ターン目に火炎ダメージを与えた場合に発生する被クリティカルダメージ増加デバフは別扱いとなり、次のターン（4ターン目）まで持続する。",
+    "comment_cn": "固有技能施加的减益会持续3回合，并作为触发条件存在。若在第3回合造成火焰伤害，则由此产生的受暴击效果提升减益会作为独立效果，持续到下一回合（第4回合）。",
   "added": "KR v4.1.1",
   "cost": null,
   "combination": null,

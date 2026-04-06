@@ -701,6 +701,32 @@
         return window.WeaponData || null;
     }
 
+    function getWeaponManifestNames() {
+        try {
+            if (Array.isArray(window.WEAPON_FILE_CHARACTER_NAMES) && window.WEAPON_FILE_CHARACTER_NAMES.length) {
+                return new Set(window.WEAPON_FILE_CHARACTER_NAMES);
+            }
+        } catch (_) { }
+        return null;
+    }
+
+    let __weaponManifestLoading = null;
+    async function loadWeaponManifest() {
+        if (getWeaponManifestNames()) return;
+        if (__weaponManifestLoading) return __weaponManifestLoading;
+        __weaponManifestLoading = new Promise((resolve) => {
+            try {
+                const base = (typeof window.BASE_URL !== 'undefined') ? window.BASE_URL : '';
+                const s = document.createElement('script');
+                s.src = `${base}/data/weapon-manifest.js?v=${Date.now()}`;
+                s.onload = () => resolve();
+                s.onerror = () => resolve();
+                document.head.appendChild(s);
+            } catch (_) { resolve(); }
+        });
+        return __weaponManifestLoading;
+    }
+
     async function loadCharacters() {
         if (getCharData()) return;
         await new Promise((resolve) => {
@@ -736,22 +762,28 @@
 
                 const base = (typeof window.BASE_URL !== 'undefined') ? window.BASE_URL : '';
                 const ver = (typeof window.APP_VERSION !== 'undefined') ? window.APP_VERSION : Date.now();
-                const chars = Object.keys(getCharData() || {});
+                await loadWeaponManifest();
+                const weaponManifest = getWeaponManifestNames();
+                const chars = Object.keys(getCharData() || {}).filter((name) => !weaponManifest || weaponManifest.has(name));
                 if (!chars.length) return;
 
-                const tasks = chars.map((name) => new Promise((res) => {
+                const tasks = chars.map(async (name) => {
                     try {
+                        const url = `${base}/data/characters/${encodeURIComponent(name)}/weapon.js?v=${ver}`;
+                        const response = await fetch(url, { cache: 'no-store' });
+                        if (!response.ok) return;
+                        const code = await response.text();
+                        if (!code) return;
                         const s = document.createElement('script');
-                        s.src = `${base}/data/characters/${encodeURIComponent(name)}/weapon.js?v=${ver}`;
-                        s.onload = () => res();
+                        s.text = `${code}\n//# sourceURL=${url}`;
                         // 404 등 에러는 무시하고 계속 진행 (콘솔 에러는 브라우저가 표시하지만 프로세스는 계속됨)
-                        s.onerror = () => res();
                         document.head.appendChild(s);
+                        s.remove();
                     } catch (_) {
                         // 에러 발생해도 계속 진행
-                        res();
+                        
                     }
-                }));
+                });
                 await Promise.all(tasks);
                 // 스크립트 로드 후 데이터가 설정될 시간을 약간 대기
                 await new Promise(resolve => setTimeout(resolve, 100));

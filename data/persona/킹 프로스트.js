@@ -20,6 +20,7 @@ window.personaFiles["킹 프로스트"] = {
   "comment": "",
   "comment_en": "",
   "comment_jp": "",
+    "comment_cn": "",
   "added": "KR v1.3.1",
   "cost": null,
   "combination": null,

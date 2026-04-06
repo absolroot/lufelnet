@@ -3,75 +3,115 @@
         {
             "rank": 1,
             "name": "아라이 모토하·청광",
-            "review": "(4월 9일 이후) 2주년 기념으로 출시된 캐릭터로 현재 가장 강력한 대미지를 선보이는 딜러입니다."
+            "review": "(4월 9일 이후) 2주년 기념으로 출시된 캐릭터로 현재 가장 강력한 대미지를 선보이는 딜러입니다.",
+            "review_en": "(KR/TW from Apr 9) Released for the 2nd anniversary, she is currently one of the strongest damage dealers available.",
+            "review_jp": "（KR/TW 4月9日以降）2周年記念で実装されたキャラクターで、現在もっとも強力な火力を出せるアタッカーです。",
+            "review_cn": "2周年实装角色，目前是最强势的输出之一。"
         },
         {
             "rank": 2,
             "name": "코로마루",
-            "review": "(4월 9일 이전) 전격, 화염, 빙결 속성의 적 내성을 일반으로, 일반은 약점으로 바꾸는 강력한 디버퍼입니다. 후카의 교체 메커니즘에 가장 알맞은 캐릭터 중 하나로 평가받으며, 모토하·청광과도 좋은 합을 선보입니다."
+            "review": "(4월 9일 이전) 전격, 화염, 빙결 속성의 적 내성을 일반으로, 일반은 약점으로 바꾸는 강력한 디버퍼입니다. 후카의 교체 메커니즘에 가장 알맞은 캐릭터 중 하나로 평가받으며, 모토하·청광과도 좋은 합을 선보입니다.",
+            "review_en": "(Before KR/TW Apr 9) A powerful debuffer that turns Elec, Fire, and Ice resistances into normal affinities and normal affinities into weaknesses. He fits Fuuka's swap mechanic especially well and also pairs well with Radiance Motoha.",
+            "review_jp": "（KR/TW 4月9日以前）電撃・火炎・氷結耐性を通常に、通常を弱点に変える強力なデバッファーです。風花の交代メカニクスとも相性が良く、素羽・晴光とも噛み合います。",
+            "review_cn": "可将电击、火焰、冰冻耐性压到更容易处理的区间，是很强的减益角色。与山岸风花的换人机制契合度很高，和新井素羽·晴光的配合也不错。",
+            "hidden_langs": ["cn"]
         },
         {
             "rank": 2,
             "name": "야마기시 후카",
-            "review": "(4월 9일 이후) 복각 계약에서 등장합니다. 후카는 파티 전체의 전개를 안정적으로 도와주는 서포터입니다. 직접적인 리세 목표는 아니지만 시작 구간에서 함께 고려할 만한 범위 끝 캐릭터입니다."
+            "review": "(4월 9일 이후) 복각 계약에서 등장합니다. 후카는 파티 전체의 전개를 안정적으로 도와주는 서포터입니다. 직접적인 리세 목표는 아니지만 시작 구간에서 함께 고려할 만한 범위 끝 캐릭터입니다.",
+            "review_en": "(KR/TW from Apr 9) She appears on the rerun contract. Fuuka is a support who stabilizes the whole party flow. She is not the direct reroll target, but she is still a notable edge-of-range option for a fresh start.",
+            "review_jp": "（KR/TW 4月9日以降）復刻契約で登場します。風花はパーティ全体の展開を安定させるサポーターです。直接のリセマラ目標ではありませんが、スタート時に一緒に考える価値のある範囲端のキャラです。",
+            "review_cn": "她会在复刻契约中出现。山岸风花能稳定支撑全队运转，虽然不是最直接的刷初始目标，但开局时依然值得顺手一起关注。"
         }
     ],
     "event1": [
         {
             "rank": 1,
             "name": "나가오 마나카",
-            "review": "턴 회귀를 통해 핵심 캐릭터 1명을 한 번 더 행동하게 만들 수 있어 계정 성장 전체에 오래 남는 최고급 버퍼입니다."
+            "review": "턴 회귀를 통해 핵심 캐릭터 1명을 한 번 더 행동하게 만들 수 있어 계정 성장 전체에 오래 남는 최고급 버퍼입니다.",
+            "review_en": "Turn Revert lets one core character act again, which makes her a premium buffer whose value lasts across the whole account lifecycle.",
+            "review_jp": "ターン回帰で主力キャラ1人をもう一度行動させられるため、アカウント全体に長く価値が残る最上級バッファーです。",
+            "review_cn": "她能通过回归回合让核心角色再行动一次，是能长期陪伴账号成长的顶级辅助。"
         }
     ],
     "event2": [
         {
             "rank": 1,
             "name": "사카이 아야카",
-            "review": "핵심 딜러의 HIGHLIGHT를 더 빠르게 돌릴 수 있게 해주는 강력한 서포터입니다. 모토하·청광과 특히 잘 맞아 2주년 시작 파티의 핵심 조합으로 묶입니다."
+            "review": "핵심 딜러의 HIGHLIGHT를 더 빠르게 돌릴 수 있게 해주는 강력한 서포터입니다. 모토하·청광과 특히 잘 맞아 2주년 시작 파티의 핵심 조합으로 묶입니다.",
+            "review_en": "A powerful support who helps your main dealer cycle HIGHLIGHT faster. She pairs especially well with Radiance Motoha and forms one of the cleanest anniversary opening cores.",
+            "review_jp": "主力アタッカーのHIGHLIGHT回転を早められる強力なサポーターです。素羽・晴光との相性が特に良く、2周年スタートの中核コンビになります。",
+            "review_cn": "她能明显加快核心输出的 HIGHLIGHT 循环，和新井素羽·晴光尤其合拍，是2周年开局最顺手的核心组合之一。"
         },
         {
             "rank": 2,
             "name": "유키 마코토",
-            "review": "강력한 화염 단일 딜러로 자체 성능은 여전히 뛰어납니다. 다만 모토하·청광을 리세마라에서 확보했다면 우선순위는 조금 내려갑니다."
+            "review": "강력한 화염 단일 딜러로 자체 성능은 여전히 뛰어납니다. 다만 모토하·청광을 리세마라에서 확보했다면 우선순위는 조금 내려갑니다.",
+            "review_en": "He is still an excellent Fire single-target dealer on his own. If you already secured Radiance Motoha through reroll, however, his priority drops a bit.",
+            "review_jp": "強力な火炎単体アタッカーで、単体性能は今でも非常に高いです。ただし素羽・晴光をリセマラで確保しているなら優先度は少し下がります。",
+            "review_cn": "他依然是很强的火焰单体输出，只是如果你已经刷到了新井素羽·晴光，他的优先级就会稍微往后排。"
         },
         {
             "rank": 2,
             "name": "리 야오링·사자무",
-            "review": "강력한 광역 속성 딜러로 최근 콘텐츠에서도 활용 가치가 높습니다. 리세마라를 패스했거나 광역 딜러가 급하면 선택할 만합니다."
+            "review": "강력한 광역 속성 딜러로 최근 콘텐츠에서도 활용 가치가 높습니다. 리세마라를 패스했거나 광역 딜러가 급하면 선택할 만합니다.",
+            "review_en": "A strong AOE elemental dealer who still has real value in recent content. She is worth considering if you skipped rerolling or urgently need wave clear.",
+            "review_jp": "強力な全体属性アタッカーで、最近のコンテンツでも十分価値があります。リセマラを省略したか、全体火力が急ぎで欲しい時の候補です。",
+            "review_cn": "她是强力的群攻属性输出，在近期内容里也很有发挥空间。如果你跳过刷初始，或者急缺群攻主C，可以考虑她。"
         },
         {
             "rank": 2,
             "name": "타네무라 리코·매화",
-            "review": "핵심 캐릭터의 화력과 파티 전개를 전반적으로 끌어올려 주는 범용 버퍼입니다. 여러 파티에서 넓게 활용할 수 있습니다."
+            "review": "핵심 캐릭터의 화력과 파티 전개를 전반적으로 끌어올려 주는 범용 버퍼입니다. 여러 파티에서 넓게 활용할 수 있습니다.",
+            "review_en": "A universal buffer who raises both your core damage and overall team flow. She remains usable across a wide range of parties.",
+            "review_jp": "主力キャラの火力とパーティ全体の回しを底上げできる汎用バッファーです。多くの編成で広く使えます。",
+            "review_cn": "她是能同时抬高核心输出和全队运转效率的泛用辅助，适用队伍非常广。"
         }
     ],
     "katayama": [
         {
             "rank": 1,
             "name": "미야시타 미나미·여름",
-            "review": "가장 최근에 추가된 우월 계열 버퍼 중 하나로, 기본 스킬과 아이템 운용을 통해 매우 높은 범용 버프를 제공합니다. 거의 모든 파티 축에 잘 맞습니다."
+            "review": "가장 최근에 추가된 우월 계열 버퍼 중 하나로, 기본 스킬과 아이템 운용을 통해 매우 높은 범용 버프를 제공합니다. 거의 모든 파티 축에 잘 맞습니다.",
+            "review_en": "One of the newest Buffer-type supports, and she provides extremely broad buffs through both her baseline kit and item management. She fits almost every team shell.",
+            "review_jp": "比較的新しい優越系バッファーの1人で、基本スキルとアイテム運用の両面から非常に幅広いバフを供給できます。ほぼあらゆる編成軸に噛み合います。",
+            "review_cn": "她是较新的增益系辅助之一，基础技能和道具运转都能提供非常全面的增益，几乎适配所有主流队伍。"
         },
         {
             "rank": 2,
             "name": "사하라 미유·여름",
-            "review": "빙결 광역 딜러로 통상 선택권의 유스케와 함께 파티를 짜면 광역 빙결 조합을 구성할 수 있습니다."
+            "review": "빙결 광역 딜러로 통상 선택권의 유스케와 함께 파티를 짜면 광역 빙결 조합을 구성할 수 있습니다.",
+            "review_en": "An Ice AOE dealer who can form a wide-area freeze lineup together with standard-selector Yusuke.",
+            "review_jp": "氷結全体アタッカーで、恒常選択券の祐介と組ませると広域氷結編成を作れます。",
+            "review_cn": "她是冰冻群攻输出，和常驻自选里的喜多川祐介一起用时，可以组成很顺手的冰冻群攻队。"
         }
     ],
     "standard": [
         {
             "rank": 1,
             "name": "하시모토 마유미",
-            "review": "P5X에서 높은 대미지를 위해서는 딜러의 관통 수치를 올리거나 적의 방어력을 깎는 지원이 중요합니다. 마유미는 강력한 관통 버프를 제공해 다양한 콘텐츠에서 꾸준히 쓰입니다."
+            "review": "P5X에서 높은 대미지를 위해서는 딜러의 관통 수치를 올리거나 적의 방어력을 깎는 지원이 중요합니다. 마유미는 강력한 관통 버프를 제공해 다양한 콘텐츠에서 꾸준히 쓰입니다.",
+            "review_en": "In P5X, high damage often depends on raising your carry's Pierce or reducing enemy defense. Mayumi supplies a strong Pierce buff and stays useful across many kinds of content.",
+            "review_jp": "P5Xで高火力を出すには、主力の貫通を伸ばすか敵防御を削る支援が重要です。麻由美は強力な貫通バフを供給でき、幅広いコンテンツで安定して使えます。",
+            "review_cn": "在 P5X 里，想打高伤通常离不开提高主C穿透或削减敌方防御。桥本麻由美能提供很强的穿透增益，因此在很多内容里都能长期上场。"
         },
         {
             "rank": 2,
             "name": "키타가와 유스케",
-            "review": "예전에는 평가가 낮았지만 최근 심상 버프와 콘텐츠 변화로 평가가 크게 좋아졌습니다. 안정성과 화력 양쪽을 모두 기대할 수 있는 광역 딜러입니다."
+            "review": "예전에는 평가가 낮았지만 최근 심상 버프와 콘텐츠 변화로 평가가 크게 좋아졌습니다. 안정성과 화력 양쪽을 모두 기대할 수 있는 광역 딜러입니다.",
+            "review_en": "He used to rate lower, but recent awareness buffs and content changes improved him a lot. He is now an AOE dealer with both stability and respectable damage.",
+            "review_jp": "以前は評価が低めでしたが、最近の心象バフとコンテンツ変化で大きく見直されました。安定感と火力の両方を期待できる全体アタッカーです。",
+            "review_cn": "他以前评价不高，但最近随着心象加强和环境变化，整体强度提升了不少。现在已经是兼顾稳定性和火力的群攻输出。"
         },
         {
             "rank": 3,
             "name": "아마미야 렌",
-            "review": "P5의 주인공으로 광역 주원 스킬과 추가 턴을 얻는 메커니즘을 가지고 있습니다. 현재 메타 최상위는 아니지만 특정 조합과 콘텐츠에서 다시 평가가 좋아진 상태입니다."
+            "review": "P5의 주인공으로 광역 주원 스킬과 추가 턴을 얻는 메커니즘을 가지고 있습니다. 현재 메타 최상위는 아니지만 특정 조합과 콘텐츠에서 다시 평가가 좋아진 상태입니다.",
+            "review_en": "The P5 protagonist brings wide Curse damage and extra-turn mechanics. He is not at the very top of the meta, but specific teams and content have made him look better again.",
+            "review_jp": "P5主人公で、全体呪怨スキルと追加ターン獲得メカニクスを持っています。現環境の最上位ではありませんが、特定編成や一部コンテンツでは再評価が進んでいます。",
+            "review_cn": "作为 P5 主角，他拥有群体咒怨技能和追加回合机制。虽然现在不是绝对的顶级答案，但在某些队伍和内容里又重新有了不错的评价。"
         }
     ]
 }

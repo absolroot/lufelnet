@@ -2160,6 +2160,16 @@
         // 타이틀 업데이트
         try { document.title = `${characterDisplayName} ${currentSiteInfo.siteName}`; } catch (e) { console.warn('[SAFE:seo-title]', e); }
 
+        // Keep SEO registry templates aligned with the localized runtime name.
+        if (window.SeoEngine && typeof window.SeoEngine.setContextHint === 'function' && characterDisplayName) {
+            window.SeoEngine.setContextHint({
+                entityName: characterDisplayName,
+                templateVars: { name: characterDisplayName }
+            }, { rerun: true }).catch(function (e) {
+                console.warn('[SAFE:seo-context-hint]', e);
+            });
+        }
+
         // 메타 태그 업데이트 (태그가 존재하는 경우에만)
         const description = `${characterDisplayName}(${character.codename}) - ${currentSiteInfo.siteName} : ${currentSiteInfo.description}`;
 
@@ -2203,7 +2213,7 @@
 
         // 영어/일본어에서 주의 메시지 표시
         try {
-            if (currentLang === 'en' || currentLang === 'jp' || currentLang === 'cn') {
+            if (currentLang === 'en' || currentLang === 'jp') {
                 const warningMessage = getCharacterI18nText(
                     'characterDetailNoticeMessage',
                     'The recommended settings are based on future content. Some features may not be currently available (Revelations, Mindscape, etc.)'

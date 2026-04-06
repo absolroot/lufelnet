@@ -46,7 +46,7 @@ class Navigation {
             kr: {
                 sectionGuide: '가이드',
                 sectionTools: '도구',
-                sectionMeta: 'META/TRIAL',
+                sectionMeta: '메타',
                 sectionSite: '사이트',
                 character: '캐릭터',
                 persona: '페르소나',
@@ -102,7 +102,7 @@ class Navigation {
             jp: {
                 sectionGuide: 'ガイド',
                 sectionTools: 'ツール',
-                sectionMeta: 'META/TRIAL',
+                sectionMeta: 'メタ/試練',
                 sectionSite: 'サイト',
                 character: '怪盗',
                 persona: 'ペルソナ',
@@ -130,7 +130,7 @@ class Navigation {
             cn: {
                 sectionGuide: '攻略',
                 sectionTools: '工具',
-                sectionMeta: 'META/TRIAL',
+                sectionMeta: '配队/试炼',
                 sectionSite: '网站',
                 character: '怪盗',
                 persona: '人格面具',

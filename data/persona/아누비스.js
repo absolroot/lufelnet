@@ -20,6 +20,7 @@ window.personaFiles["아누비스"] = {
   "comment": "주원 상태이상 대미지는 만능 대미지에 영향을 받는다.",
   "comment_en": "Curse ailment damage is affected by Almighty damage.",
   "comment_jp": "呪怨系状態異常ダメージは万能ダメージの影響を受ける。",
+    "comment_cn": "咒怨异常伤害会受到万能伤害的影响。",
   "added": "",
   "cost": null,
   "combination": null,

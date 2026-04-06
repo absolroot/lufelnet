@@ -29,6 +29,7 @@ window.I18N_PAGE_TACTIC_UPLOAD_JP = {
     saving: '保存中...',
     deleting: '削除中...',
     lang_kr: 'KR',
+    lang_cn: 'CN',
     lang_en: 'EN',
     lang_jp: 'JP',
     lang_sea: 'SEA',

@@ -9,7 +9,7 @@ const __dirname = path.dirname(__filename);
 const ROOT = path.resolve(__dirname, '..', '..');
 
 const OUTPUT_DIR = path.join(ROOT, 'pages', '2nd-anniversary');
-const LANGS = ['kr', 'en', 'jp'];
+const LANGS = ['kr', 'en', 'jp', 'cn'];
 const IMAGE_PATH = '/assets/img/home/SEO.png';
 const seoMetaPath = path.join(ROOT, 'i18n', 'pages', 'second-anniversary', 'seo-meta.json');
 
@@ -60,6 +60,7 @@ function renderPage({ lang, title, description }) {
     '  ko: /kr/2nd-anniversary/',
     '  en: /en/2nd-anniversary/',
     '  jp: /jp/2nd-anniversary/',
+    '  cn: /cn/2nd-anniversary/',
     '---',
     '{% include second-anniversary-body.html %}',
     ''

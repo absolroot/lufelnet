@@ -26,7 +26,7 @@
 
             const dataPath = (l === 'en' || l === 'jp')
                 ? '/data/character_info_glb.js'
-                : `/data/${l}/characters/characters.js`;
+                : '/data/character_info.js';
             const url = `${BASE_URL}${dataPath}?v=${APP_VERSION}`;
 
             try {

@@ -1,26 +1,62 @@
 [
     {
         "q": "기존 페르소나 5 본가와는 무엇이 다른가요?",
-        "a": "페르소나 5의 세계관을 공유하지만 다른 차원의 이야기를 배경으로 펼쳐지는 게임입니다. 독자적인 팰리스와 스토리를 가지고 있으며 현재 페르소나 5 시리즈, 페르소나 3 시리즈의 주인공들과도 만나서 함께 활동하는 스토리도 구성돼있습니다."
+        "a": "페르소나 5의 세계관을 공유하지만 다른 차원의 이야기를 배경으로 펼쳐지는 게임입니다. 독자적인 팰리스와 스토리를 가지고 있으며 현재 페르소나 5 시리즈, 페르소나 3 시리즈의 주인공들과도 만나서 함께 활동하는 스토리도 구성돼있습니다.",
+        "q_en": "How is this different from the original Persona 5?",
+        "a_en": "It shares the Persona 5 universe, but tells a story set in a different dimension. It has its own Palaces and story arc, and it also includes scenarios where you meet and work with protagonists from both Persona 5 and Persona 3.",
+        "q_jp": "元のペルソナ5とは何が違いますか？",
+        "a_jp": "ペルソナ5と世界観は共有していますが、別次元の物語を舞台にしたゲームです。独自のパレスとストーリーがあり、現在はペルソナ5シリーズやペルソナ3シリーズの主人公たちと共闘する展開もあります。",
+        "q_cn": "它和原版《女神异闻录5》有什么不同？",
+        "a_cn": "它与《女神异闻录5》共享世界观，但故事发生在另一个维度。游戏拥有独立的宫殿与剧情，现在也有与 Persona 5、Persona 3 系列主角相遇并共同活动的内容。"
     },
     {
         "q": "리세마라는 필수인가요?",
-        "a": "필수가 아닙니다. 그러나 본인이 보다 좋은 캐릭터와 우선적으로 함께하고 싶다면 수행하면 됩니다. 관련 방법은 다른 많은 커뮤니티에서 안내하고 있으니 참고해 주시길 바랍니다."
+        "a": "필수가 아닙니다. 그러나 본인이 보다 좋은 캐릭터와 우선적으로 함께하고 싶다면 수행하면 됩니다. 관련 방법은 다른 많은 커뮤니티에서 안내하고 있으니 참고해 주시길 바랍니다.",
+        "q_en": "Is rerolling mandatory?",
+        "a_en": "No. If you want to start with stronger characters right away, you can do it, but it is not required. Many other communities already explain the reroll process in detail.",
+        "q_jp": "リセマラは必須ですか？",
+        "a_jp": "必須ではありません。ただ、より良いキャラでスタートしたいならやっておいて損はありません。方法自体は他のコミュニティでも詳しく案内されています。",
+        "q_cn": "刷初始是必须的吗？",
+        "a_cn": "不是必须的。如果你想从更强的角色开局，可以去刷，但并不是硬性要求。具体方法很多社区都有更详细的教程。"
     },
     {
         "q": "P2W(돈을 써야 이기는 게임) 인가요?",
-        "a": "아니요. 랭킹 콘텐츠를 제외하고서는 높은 강화의 캐릭터의 사용처가 압도적으로 적은 편으로, 육성 방향과 전투에 대한 이해만 있다면 시간을 통한 육성을 통해 모두가 클리어할 수 있는 난이도로 구성돼 있습니다."
+        "a": "아니요. 랭킹 콘텐츠를 제외하고서는 높은 강화의 캐릭터의 사용처가 압도적으로 적은 편으로, 육성 방향과 전투에 대한 이해만 있다면 시간을 통한 육성을 통해 모두가 클리어할 수 있는 난이도로 구성돼 있습니다.",
+        "q_en": "Is this a P2W game?",
+        "a_en": "No. Outside of ranking content, the game rarely demands heavily invested characters. If you understand team building and combat flow, the content is balanced so that players can clear it through steady progression.",
+        "q_jp": "いわゆる P2W のゲームですか？",
+        "a_jp": "いいえ。ランキング系コンテンツを除けば、高凸キャラを強く要求される場面はかなり少なめです。育成方針と戦闘理解があれば、時間をかけた育成で十分攻略できます。",
+        "q_cn": "这是那种不氪就玩不了的 P2W 游戏吗？",
+        "a_cn": "不是。除去排行榜类内容，游戏很少会强制要求高练度角色。只要理解养成方向和战斗思路，大多数内容都能靠持续培养顺利通关。"
     },
     {
         "q": "특정 한정 캐릭터나 무기를 한 번 놓치면 진행이 불가능해지나요?",
-        "a": "절대 그렇지 않습니다. 특정 캐릭터가 없어서 메인 스토리를 못 밀거나 이벤트를 완전히 못 깨는 경우는 없습니다. 파티 구성의 기본 조합만 이해하시면 지급되는 통상 캐릭터 조합만으로도 주요 보상을 모두 획득할 수 있습니다."
+        "a": "절대 그렇지 않습니다. 특정 캐릭터가 없어서 메인 스토리를 못 밀거나 이벤트를 완전히 못 깨는 경우는 없습니다. 파티 구성의 기본 조합만 이해하시면 지급되는 통상 캐릭터 조합만으로도 주요 보상을 모두 획득할 수 있습니다.",
+        "q_en": "If I miss a limited character or weapon once, does progression become impossible?",
+        "a_en": "Not at all. Missing one specific character will not block the main story or make events impossible. If you understand the basics of party building, even the standard characters you receive are enough for the important rewards.",
+        "q_jp": "限定キャラや武器を一度逃すと進行不能になりますか？",
+        "a_jp": "まったくそんなことはありません。特定キャラがいないせいでメインストーリーが進まない、イベントを完走できないということはありません。編成の基本だけ理解していれば、配布や恒常中心でも主要報酬は十分回収できます。",
+        "q_cn": "如果错过某个限定角色或武器，会不会就没法推进了？",
+        "a_cn": "完全不会。少了某个特定角色，不会卡主线，也不会导致活动完全打不过。只要理解队伍搭配的基本思路，用系统送的常驻角色也能拿到主要奖励。"
     },
     {
         "q": "게임 시스템이 낯선데, 기초 공략을 어디서 보나요?",
-        "a": "신규 콘텐츠가 열릴 때마다 게임 내 아이콘 옆에 붙어 있는 전용 [설명] 버튼이 상세히 안내해 줍니다. 복잡한 시스템이나 파티, 캐릭터 육성 등은 현재 사이트(lufel.net)의 가이드와 추천 세팅을 참고하시면 됩니다."
+        "a": "신규 콘텐츠가 열릴 때마다 게임 내 아이콘 옆에 붙어 있는 전용 [설명] 버튼이 상세히 안내해 줍니다. 복잡한 시스템이나 파티, 캐릭터 육성 등은 현재 사이트(lufel.net)의 가이드와 추천 세팅을 참고하시면 됩니다.",
+        "q_en": "The system feels unfamiliar. Where should I look for beginner guides?",
+        "a_en": "Whenever new content opens, the in-game [Guide] button next to the icon explains it in detail. For more complex systems, team building, and character growth, the guides and recommended setups on lufel.net are a good place to start.",
+        "q_jp": "ゲームシステムに慣れていないのですが、基礎攻略はどこで見ればいいですか？",
+        "a_jp": "新しいコンテンツが開放されるたびに、ゲーム内アイコン横の専用[説明]ボタンで詳細を確認できます。複雑なシステムや編成、キャラ育成については、現在のサイト(lufel.net)のガイドと推奨設定を参考にしてください。",
+        "q_cn": "游戏系统有点陌生，基础攻略该去哪里看？",
+        "a_cn": "每次有新内容开放时，游戏内图标旁边都会带一个专用的[说明]按钮，可以先看那个。更复杂的系统、队伍搭配和角色养成，则可以参考 lufel.net 里的攻略与推荐配置。"
     },
     {
         "q": "모바일만 지원하나요? PC로도 할 수 있나요?",
-        "a": "모바일뿐 아니라 PC도 지원합니다. PC 버전 다운로드는 공식 홈페이지에서 가능하며, 팰리스 볼륨이 상당하고 플레이 시간이 길어지는 구간이 많아서 가능하면 PC로 플레이하는 편이 더 편합니다."
+        "a": "모바일뿐 아니라 PC도 지원합니다. PC 버전 다운로드는 공식 홈페이지에서 가능하며, 팰리스 볼륨이 상당하고 플레이 시간이 길어지는 구간이 많아서 가능하면 PC로 플레이하는 편이 더 편합니다.",
+        "q_en": "Is it mobile only, or can I play on PC too?",
+        "a_en": "It supports both mobile and PC. The PC client can be downloaded from the official site, and because many sections are lengthy and Palace exploration can take a while, PC is usually the more comfortable option.",
+        "q_jp": "モバイル専用ですか？ PCでも遊べますか？",
+        "a_jp": "モバイルだけでなくPCでも遊べます。PC版は公式サイトからダウンロード可能で、パレスのボリュームやプレイ時間の長い区間を考えると、可能ならPCの方が快適です。",
+        "q_cn": "只有手机版吗？也能在 PC 上玩吗？",
+        "a_cn": "支持手机和 PC 双端。PC 版可以在官网下载安装，而且很多关卡流程较长、宫殿内容也比较重，能用 PC 玩的话通常会更舒服。"
     }
 ]

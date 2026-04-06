@@ -20,6 +20,7 @@ window.personaFiles["트럼페터"] = {
   "comment": "",
   "comment_en": "",
   "comment_jp": "",
+    "comment_cn": "",
   "added": "KR v4.2.1",
   "cost": null,
   "combination": null,

@@ -20,6 +20,7 @@ window.personaFiles["도미니온"] = {
   "comment": "",
   "comment_en": "",
   "comment_jp": "",
+    "comment_cn": "",
   "added": "",
   "cost": {
     "blue": 0,

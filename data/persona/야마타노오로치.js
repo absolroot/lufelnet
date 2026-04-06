@@ -20,6 +20,7 @@ window.personaFiles["야마타노오로치"] = {
   "comment": "",
   "comment_en": "",
   "comment_jp": "",
+    "comment_cn": "",
   "added": "",
   "cost": null,
   "combination": null,

@@ -13,7 +13,7 @@ window.I18N_PAGE_WONDER_WEAPON_CN = {
     "labelShard": "结晶",
     "labelRelease": "上线时期",
     "labelLightningStamp": "光之刻印",
-    "labelLightningStampDesc": "该功能以 KR 服务器 v4.7.1 为准，可进一步强化武器。",
+    "labelLightningStampDesc": "该功能以 CN 服务器 v4.7.1 为准，可进一步强化武器。",
     "labelWeaponRelease": "武器",
     "labelStampRelease": "光之刻印",
     "sortReleaseDesc": "上线顺序 ↓",

@@ -20,6 +20,7 @@ window.personaFiles["파르바티"] = {
   "comment": "하이라이트를 통한 치료에도 본능 효과가 발동된다. 공격 강화는 치료 수치에 적용된다. (영향력이 높지 않아 우선순위는 낮다)",
   "comment_en": "The talent effect also triggers on healing through HIGHLIGHT. Attack enhancement applies to healing values. (Low priority due to limited impact)",
   "comment_jp": "HIGHLIGHTによる回復にも本能効果が発動する。アタックブースタは治療数値に適用される。（影響力が高くないため優先順位は低い）",
+    "comment_cn": "通过HIGHLIGHT进行治疗时，本能效果也会触发。攻击强化会作用于治疗数值。（影响不大，优先级较低）",
   "added": "",
   "cost": null,
   "combination": null,

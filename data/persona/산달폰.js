@@ -20,6 +20,7 @@ window.personaFiles["산달폰"] = {
   "comment": "백업 출전으로 10.5%의 방어력 보너스를 부여할 수 있다.",
   "comment_en": "Can provide 10.5% defense bonus through backup deployment.",
   "comment_jp": "バックアップ出戦で10.5%の防御力ボーナスを付与できる。",
+    "comment_cn": "作为后备出战时，也可以提供10.5%的防御力加成。",
   "added": "KR v2.3.2",
   "cost": null,
   "combination": null,

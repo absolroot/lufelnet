@@ -29,6 +29,7 @@ window.I18N_PAGE_TACTIC_UPLOAD_EN = {
     saving: 'Saving...',
     deleting: 'Deleting...',
     lang_kr: 'KR',
+    lang_cn: 'CN',
     lang_en: 'EN',
     lang_jp: 'JP',
     lang_sea: 'SEA',

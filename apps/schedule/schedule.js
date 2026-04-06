@@ -12,6 +12,15 @@
     const BASE_URL = window.BASE_URL || '';
     const data = window.ReleaseScheduleData;
 
+    function isKrLikeLang(lang) {
+        try {
+            if (typeof window.isKrLikeLanguage === 'function') {
+                return !!window.isKrLikeLanguage(lang);
+            }
+        } catch (_) { }
+        return lang === 'kr' || lang === 'cn';
+    }
+
     /**
      * Helper function: Add days to a date string (YYYY-MM-DD format)
      * @param {string} dateStr - Date string in YYYY-MM-DD format
@@ -186,18 +195,18 @@
 
         revelationDataLoading = new Promise((resolve) => {
             // Detect language from path first (SEO URLs), then query, then i18n helper.
-            const pathMatch = window.location.pathname.match(/^\/(kr|en|jp)(\/|$)/i);
+            const pathMatch = window.location.pathname.match(/^\/(kr|en|jp|cn)(\/|$)/i);
             const pathLang = pathMatch ? pathMatch[1].toLowerCase() : '';
             const urlParams = new URLSearchParams(window.location.search);
             const queryLang = String(urlParams.get('lang') || '').toLowerCase();
             const helperLang = typeof getCurrentLang === 'function'
                 ? String(getCurrentLang() || '').toLowerCase()
                 : '';
-            const lang = ['kr', 'en', 'jp'].includes(pathLang)
+            const lang = ['kr', 'en', 'jp', 'cn'].includes(pathLang)
                 ? pathLang
-                : (['kr', 'en', 'jp'].includes(queryLang)
+                : (['kr', 'en', 'jp', 'cn'].includes(queryLang)
                     ? queryLang
-                    : (['kr', 'en', 'jp'].includes(helperLang) ? helperLang : 'en'));
+                    : (['kr', 'en', 'jp', 'cn'].includes(helperLang) ? helperLang : 'en'));
 
             // Always load Korean data first for mapping
             let krDataLoaded = false;
@@ -226,7 +235,7 @@
                         currentLangDataLoaded = true;
                         res();
                         return;
-                    } else if (!isKorean && lang === 'kr') {
+                    } else if (!isKorean && isKrLikeLang(lang)) {
                         // Korean is already loaded
                         currentLangDataLoaded = true;
                         res();
@@ -259,7 +268,7 @@
             // Load Korean data first (for mapping)
             loadScript('/data/kr/revelations/revelations.js', true).then(() => {
                 // Then load current language data if not Korean
-                if (lang === 'kr') {
+                if (isKrLikeLang(lang)) {
                     revelationDataCache = loadedData.kr || {};
                     resolve(revelationDataCache);
                 } else {
@@ -290,6 +299,9 @@
         const lang = getCurrentLang();
 
         // If Korean, return as is
+        if (lang === 'cn' && window.I18nService && typeof window.I18nService.translateTerm === 'function') {
+            return window.I18nService.translateTerm(revelationName);
+        }
         if (lang === 'kr') {
             return revelationName;
         }
@@ -381,7 +393,7 @@
                     set4Text = effectData.set4;
                     setTypes = effectData.type;
                 }
-            } else if (currentLang === 'kr' && typeof revelationData !== 'undefined' && revelationData.sub_effects && revelationData.sub_effects[koreanName]) {
+            } else if (isKrLikeLang(currentLang) && typeof revelationData !== 'undefined' && revelationData.sub_effects && revelationData.sub_effects[koreanName]) {
                 effectData = revelationData.sub_effects[koreanName];
                 set2Text = effectData.set2;
                 set4Text = effectData.set4;
@@ -425,7 +437,7 @@
                 if (translationData.set_effects[japaneseMainKey]) {
                     setEffectsData = translationData.set_effects[japaneseMainKey];
                 }
-            } else if (currentLang === 'kr' && typeof revelationData !== 'undefined' && revelationData.set_effects && revelationData.set_effects[koreanName]) {
+            } else if (isKrLikeLang(currentLang) && typeof revelationData !== 'undefined' && revelationData.set_effects && revelationData.set_effects[koreanName]) {
                 setEffectsData = revelationData.set_effects[koreanName];
             }
 
@@ -678,6 +690,8 @@
 
         if (lang === 'jp') {
             return date.toLocaleDateString('ja-JP', options);
+        } else if (lang === 'cn') {
+            return date.toLocaleDateString('zh-CN', options);
         } else if (lang === 'kr') {
             return date.toLocaleDateString('ko-KR', options);
         }

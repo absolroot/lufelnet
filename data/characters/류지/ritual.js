@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["류지"] = {
   "name": "사카모토 류지",
   "r0": "오장폭발권",
@@ -18,6 +20,7 @@ window.ritualData["류지"] = {
   "r6": "초신절살",
   "r6_detail": "『차지 일격』 스킬을 시전하여 적에게 대미지를 줄 경우 목표에게 『두려움』 효과 1개를 부여한다. 류지의 다음 스킬 시전 시 해당 적에게 주는 총 대미지가 60% 증가한다(해당 효과는 독립적으로 추가됨). 전투 중 처음으로 치명적인 대미지를 받았을 때, 본인 생명이 1 이상이면 최대 생명의 25%를 회복한다."
 };
+
 window.enCharacterRitualData["류지"] = {
   "name": "Ryuji Sakamoto",
   "r0": "Wounded Glory",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["류지"] = {
   "r6": "Comeback Kid",
   "r6_detail": "During battle, survive fatal damage 1 time and recover 25% of HP.\nAfter damaging a foe with God Hand Burst, inflict Cower on the target.\nCower: Increase next skill damage taken from Ryuji by 60%."
 };
+
 window.jpCharacterRitualData["류지"] = {
   "name": "坂本 竜司",
   "r0": "傷だらけの栄光",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["류지"] = {
   "r6": "成り上がり伝説",
   "r6_detail": "戦闘中、一度だけ致死ダメージに耐えてＨＰを２５%回復する。\nまた、『ゴッドハンドバースト』で敵にダメージを与えた時、対象を『畏縮』状態にする。\n『畏縮』：次に竜司から受けるスキルのダメージが６０%上昇する。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["류지"] = {
   "name": "坂本龙司",
@@ -71,3 +74,4 @@ window.cnCharacterRitualData["류지"] = {
   "r6": "超神绝杀",
   "r6_detail": "释放『蓄力一击』技能对敌人造成伤害时，使目标获得1个『畏惧』效果：使龙司下一次对其释放的技能总伤害提升60%（此效果为独立加成）。战斗中首次受到致命伤害时，自身血量不会低于1点，并恢复25%最大生命值的血量。"
 };
+

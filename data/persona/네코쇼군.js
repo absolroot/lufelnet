@@ -16,6 +16,7 @@ window.personaFiles["네코쇼군"] = {
   "tier_desc": "효과명중 증가에 치중된 버퍼, 일반적으로 효과 명중을 올리는 것보다 공격력이나 대미지 보너스 등 다른 버프를 올리는 것이 더 효율적이기 때문에 자주 활용되지 않는다.",
   "tier_desc_en": "A buffer focused on ailment accuracy. In general, raising Attack or damage bonus is more efficient than raising ailment accuracy, so it is rarely used.",
   "tier_desc_jp": "状態異常命中の上昇に特化したバッファー。一般的には状態異常命中よりも、攻撃力やダメージボーナスなど他のバフを伸ばした方が効率的なため、採用頻度は低い。",
+  "tier_desc_cn": "是偏向效果命中的辅助。一般来说，比起堆效果命中，提升攻击力或伤害加成等其他增益会更有效率，因此不常使用。",
   "comment": "",
   "comment_en": "",
   "comment_jp": "",

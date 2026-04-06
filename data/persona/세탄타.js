@@ -16,6 +16,7 @@ window.personaFiles["세탄타"] = {
   "tier_desc": "요시츠네가 없을 경우 대용으로 사용한다.",
   "tier_desc_en": "If Yoshitsune is not available, use this persona as a replacement.",
   "tier_desc_jp": "ヨシツネがいない場合、このペルソナを代替として使用する。",
+  "tier_desc_cn": "没有义经时可作为替代使用。",
   "comment": "",
   "comment_en": "",
   "comment_jp": "",

@@ -16,6 +16,7 @@ window.personaFiles["벨페고르"] = {
   "tier_desc": "원더를 통한 빙결 대미지를 부여할 때 채용한다.",
   "tier_desc_en": "Used when Wonder needs to deal Ice damage.",
   "tier_desc_jp": "ワンダーで氷結属性ダメージを与えたい時に採用する。",
+  "tier_desc_cn": "在需要由 WONDER 造成冰冻伤害时会采用。",
   "comment": "",
   "comment_en": "",
   "comment_jp": "",

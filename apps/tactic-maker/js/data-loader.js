@@ -104,7 +104,7 @@ export class DataLoader {
         const version = (typeof window.APP_VERSION !== 'undefined' && window.APP_VERSION)
             ? `?v=${encodeURIComponent(String(window.APP_VERSION))}`
             : '';
-
+        // Calc data is unified under data/kr/calc and carries en/jp/cn fields together.
         const criticalSrc = `${baseUrl}/data/kr/calc/critical-data.js${version}`;
         const bossSrc = `${baseUrl}/data/kr/calc/boss.js${version}`;
         const defenseSrc = `${baseUrl}/data/kr/calc/defense-data.js${version}`;
@@ -296,13 +296,22 @@ export class DataLoader {
         return 'kr';
     }
 
+    static isKrLikeLang(lang = this.getCurrentLang()) {
+        try {
+            if (typeof window.isKrLikeLanguage === 'function') {
+                return !!window.isKrLikeLanguage(lang);
+            }
+        } catch (_) { }
+        return lang === 'kr' || lang === 'cn';
+    }
+
     /**
      * Load language-specific character list for spoiler filtering
      * Sets window.originalLangCharacterList for non-KR languages
      */
     static async loadLangCharacterList() {
         const lang = this.getCurrentLang();
-        if (lang === 'kr') return; // KR doesn't need spoiler filtering
+        if (this.isKrLikeLang(lang)) return; // KR-like languages don't need spoiler filtering
 
         // Use CharacterListLoader if available
         if (typeof window.CharacterListLoader !== 'undefined') {
@@ -363,6 +372,8 @@ export class DataLoader {
             return charData.codename || charData.name_en || charData.name || charName;
         } else if (lang === 'jp') {
             return charData.name_en || charData.name || charName;
+        } else if (lang === 'cn') {
+            return charData.name_cn || charData.name || charName;
         }
         return charData.name || charName;
     }
@@ -379,6 +390,8 @@ export class DataLoader {
             return weaponData.name_en || weaponData.name || weaponName;
         } else if (lang === 'jp') {
             return weaponData.name_jp || weaponData.name_en || weaponData.name || weaponName;
+        } else if (lang === 'cn') {
+            return weaponData.name_cn || weaponData.name || weaponName;
         }
         return weaponData.name || weaponName;
     }
@@ -395,6 +408,8 @@ export class DataLoader {
             return personaData.name_en || personaData.name || personaName;
         } else if (lang === 'jp') {
             return personaData.name_jp || personaData.name_en || personaData.name || personaName;
+        } else if (lang === 'cn') {
+            return personaData.name_cn || personaData.name || personaName;
         }
         return personaData.name || personaName;
     }
@@ -412,6 +427,8 @@ export class DataLoader {
             return skillData.name_en || skillData.name || skillName;
         } else if (lang === 'jp') {
             return skillData.name_jp || skillData.name_en || skillData.name || skillName;
+        } else if (lang === 'cn') {
+            return skillData.name_cn || skillData.name || skillName;
         }
         return skillData.name || skillName;
     }
@@ -482,7 +499,7 @@ export class DataLoader {
         const lang = DataLoader.getCurrentLang();
         console.log('[DataLoader] loadRevelationMapping called. Lang:', lang);
 
-        if (lang === 'kr') {
+        if (DataLoader.isKrLikeLang(lang)) {
             console.log('[DataLoader] Korean language, skipping revelation mapping');
             return;
         }
@@ -586,7 +603,7 @@ export class DataLoader {
         const lang = DataLoader.getCurrentLang();
 
         // For non-Korean, use loaded mapping
-        if (lang !== 'kr') {
+        if (!DataLoader.isKrLikeLang(lang)) {
             const mappingKeys = DataLoader._revelationMapping ? Object.keys(DataLoader._revelationMapping).length : 0;
             // console.log('[DataLoader] getRevelationName called. Lang:', lang, 'Rev:', rawRev, 'MappingSize:', mappingKeys, 'Loaded:', DataLoader._revelationMappingLoaded);
 
@@ -623,6 +640,9 @@ export class DataLoader {
             if (translated && translated !== key) {
                 return translated;
             }
+        }
+        if (lang === 'cn' && window.I18nService && typeof window.I18nService.translateTerm === 'function') {
+            return window.I18nService.translateTerm(rawRev);
         }
         return rawRev;
     }

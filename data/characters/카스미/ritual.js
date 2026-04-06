@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["카스미"] = {
   "name": "요시자와 카스미",
   "r0": "12시의 종소리",
@@ -18,6 +20,7 @@ window.ritualData["카스미"] = {
   "r6": "모든 구석, 모든 문",
   "r6_detail": "자신이 HIGHLIGHT를 능동적으로 시전한 후 『가장무도회』 상태 종료 전까지 HIGHLIGHT를 1회 추가로 시전할 수 있으며, 해당 대미지는 고유 HIGHLIGHT의 80%이다. 해당 효과는 매회 『가장무도회』 상태 동안 1회만 발동된다."
 };
+
 window.enCharacterRitualData["카스미"] = {
   "name": "Kasumi Yoshizawa",
   "r0": "Masked Ball",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["카스미"] = {
   "r6": "Unmasked Ball",
   "r6_detail": "After Kasumi activates her Highlight, she can activate her Highlight 1 more time while in Masquerade mode. This Highlight has 80% of its normal damage, and can be activated 1 time each time Masquerade mode is entered. Also, it will not activate automatically when Masquerade mode ends."
 };
+
 window.jpCharacterRitualData["카스미"] = {
   "name": "芳澤 かすみ",
   "r0": "仮面の舞踏会",
@@ -52,16 +56,15 @@ window.jpCharacterRitualData["카스미"] = {
   "r6": "素顔の舞踏会",
   "r6_detail": "自身がハイライトを発動した後、『マスカレード』状態中に、追加でハイライトを１回発動できるようになる。このハイライトは通常の８０%分のダメージで『マスカレード』状態になるごとに１回だけ発動でき、『マスカレード』終了時に自動発動はしない。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["카스미"] = {
   "name": "芳泽霞",
   "r0": "十二点的钟声",
-  "r0_detail": "芳泽霞的HIGHLIGHT不消耗HIGHLIGHT能量且可以发生暴击。我方任意怪盗回合，若芳泽霞的舞姿层数大于等于2层，可以变身进入『化装舞会』状态，并可以使用1次HIGHLIGHT（变身拥有3回合的冷却时间），持续至进入『化装舞会』状态后芳泽霞的第二个回合开始。『化装舞会』状态下，每有一层舞姿，芳泽霞的攻击力提升10%、暴击率提升3%。『化装舞会』状态结束时清除自身所有舞姿。（若『化装舞会』状态结束时自身没有释放HIGHLIGHT，则会对随机目标自动释放HIGHLIGHT。）",
+  "r0_detail": "芳泽霞的HIGHLIGHT不消耗HIGHLIGHT能量且可以发生暴击。我方任意怪盗回合，若芳泽霞的舞姿层数大于等于2层，可以变身进入『化装舞会』状态，并可以使用1次HIGHLIGHT（变身拥有3回合的冷却时间），持续至进入『化装舞会』状态后芳泽霞的第二个回合开始。『化装舞会』状态下，每有一层舞姿，芳泽霞的攻击力提升10%、暴击率提升4%。『化装舞会』状态结束时清除自身所有舞姿。（若『化装舞会』状态结束时自身没有释放HIGHLIGHT，则会对随机目标自动释放HIGHLIGHT。）",
   "r1": "破碎的裙摆与她的影子",
   "r1_detail": "『舞伴』的持续时间延长1回合。使用『携手共舞』后，自身和『舞伴』的暴击率额外提升15%，持续3回合。",
   "r2": "对那场舞会的向往",
-  "r2_detail": "自身舞姿达到2层时，攻击力提升33%，达到3层时，暴击效果提升33%。",
+  "r2_detail": "自身舞姿达到2层时，攻击力提升33%，持续时间永久；\n舞姿达到3层时，暴击效果提升33%，持续时间永久。",
   "r3": "仙女的轻声吟唱",
   "r3_detail": "『战斗技巧』、『黑夜微光』的技能等级提升3级，至多提升至15级。",
   "r4": "王子的目光",
@@ -69,5 +72,6 @@ window.cnCharacterRitualData["카스미"] = {
   "r5": "被遗忘的水晶鞋",
   "r5_detail": "『携手共舞』、『心绪绽放』的技能等级提升3级，至多提升至15级。",
   "r6": "每个角落，每一扇门",
-  "r6_detail": "自身主动释放HIGHLIGHT后，到『化装舞会』状态结束前，可以额外释放1次HIGHLIGHT，伤害为固有HIGHLIGHT的70%。该效果每次『化装舞会』状态持续时间内仅能触发1次。"
+  "r6_detail": "自身主动释放HIGHLIGHT后，到『化装舞会』状态结束前，可以额外释放1次HIGHLIGHT，伤害为固有HIGHLIGHT的80%。该效果每次『化装舞会』状态持续时间内仅能触发1次。"
 };
+

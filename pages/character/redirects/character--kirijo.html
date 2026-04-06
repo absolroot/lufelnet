@@ -17,12 +17,12 @@ sitemap: false
       var requestedLang = params.get("lang");
       params.delete("lang");
       params.delete("name");
-      var languageTargets = {"kr":"/kr/character/kirijo/","en":"/en/character/kirijo/","jp":"/jp/character/kirijo/"};
+      var languageTargets = {"kr":"/kr/character/kirijo/","en":"/en/character/kirijo/","jp":"/jp/character/kirijo/","cn":"/cn/character/kirijo/"};
       var defaultPath = "/en/character/kirijo/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

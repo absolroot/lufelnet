@@ -17,12 +17,12 @@ sitemap: false
       var requestedLang = params.get("lang");
       params.delete("lang");
       params.delete("name");
-      var languageTargets = {"kr":"/kr/character/berry/","en":"/en/character/berry/","jp":"/jp/character/berry/"};
+      var languageTargets = {"kr":"/kr/character/berry/","en":"/en/character/berry/","jp":"/jp/character/berry/","cn":"/cn/character/berry/"};
       var defaultPath = "/en/character/berry/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

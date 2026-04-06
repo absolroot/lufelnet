@@ -18,12 +18,12 @@ sitemap: false
       params.delete("lang");
       params.delete("name");
       params.delete("persona");
-      var languageTargets = {"kr":"/kr/persona/scathach/","en":"/en/persona/scathach/","jp":"/jp/persona/scathach/"};
+      var languageTargets = {"kr":"/kr/persona/scathach/","en":"/en/persona/scathach/","jp":"/jp/persona/scathach/","cn":"/cn/persona/scathach/"};
       var defaultPath = "/en/persona/scathach/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

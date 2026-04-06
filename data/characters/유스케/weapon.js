@@ -1,6 +1,8 @@
 window.WeaponData = window.WeaponData || {};
 window.enCharacterWeaponData = window.enCharacterWeaponData || {};
 window.jpCharacterWeaponData = window.jpCharacterWeaponData || {};
+window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
+
 window.WeaponData["유스케"] = {
   "name": "키타가와 유스케",
   "weapon4-1": {
@@ -20,6 +22,7 @@ window.WeaponData["유스케"] = {
     "description": "방어력이 45.0%/45.0%/59.0%/59.0%/73.0%/73.0%/87.0% 증가한다. 전투 시 반격 대미지가 30.0%/39.0%/39.0%/48.0%/48.0%/57.0%/57.0% 증가하고, 실드 효과 획득 시 『수호령』 1개를 획득하며, 『수호령』 1개당 반격 대미지가 2% 증가한다. 『수호령』 수량이 6에 도달하면 반격 대미지가 30.0%/40.0%/40.0%/50.0%/50.0%/60.0%/60.0% 증가하고, 효과는 해당 전투에서 영구적으로 유효하다."
   }
 };
+
 window.enCharacterWeaponData["유스케"] = {
   "name": "Yusuke Kitagawa",
   "weapon4-1": {
@@ -37,6 +40,7 @@ window.enCharacterWeaponData["유스케"] = {
     "description": "Increase Defense by 45.0%/45.0%/59.0%/59.0%/73.0%/73.0%/87.0%. At the start of battle, increase counterattack damage by 30.0%/39.0%/39.0%/48.0%/48.0%/57.0%/57.0%. After gaining a shield, gain 1 Blade Spirit stack. Increase counterattack damage by 2% per stack. At 6 stacks, increase counterattack damage by 30.0%/40.0%/40.0%/50.0%/50.0%/60.0%/60.0%. This effect is permanent."
   }
 };
+
 window.jpCharacterWeaponData["유스케"] = {
   "name": "喜多川 祐介",
   "weapon4-1": {
@@ -54,21 +58,24 @@ window.jpCharacterWeaponData["유스케"] = {
     "description": "防御力が45.0%/45.0%/59.0%/59.0%/73.0%/73.0%/87.0%上昇する。バトル開始時、反撃ダメージが30.0%/39.0%/39.0%/48.0%/48.0%/57.0%/57.0%上昇する。シールドが付与された時『剣気』を１つ獲得する。『剣気』は１つ毎に反撃ダメージが２%上昇し、６つになると反撃ダメージが30.0%/40.0%/40.0%/50.0%/50.0%/60.0%/60.0%まで上昇する。この効果は永続する。"
   }
 };
-window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
 
 window.cnCharacterWeaponData["유스케"] = {
-  "weapon5-1": {
-    "name": "金纹影切",
-    "health": 2457.7,
-    "attack": 541.75,
-    "defense": 528.55,
-    "description": "防御力提升45.0%/45.0%/59.0%/59.0%/73.0%/73.0%/87.0%。进入战斗反击伤害提升30.0%/39.0%/39.0%/48.0%/48.0%/57.0%/57.0%，获得护盾效果时获得『护灵』1个，每有1个『护灵』，反击伤害提升2%。若『护灵』数量到达了6，则反击伤害提升30.0%/40.0%/40.0%/50.0%/50.0%/60.0%/60.0%，本场战斗永久生效。"
-  },
+  "name": "喜多川祐介",
   "weapon4-1": {
     "name": "居合刀",
     "health": 1966.49,
     "attack": 433.75,
     "defense": 422.82,
+    "skill_name": "",
     "description": "防御力提升18.0%/18.0%/23.5%/23.5%/29.0%/29.0%/34.5%。每次触发反击，冰冻伤害提升7.4%/9.6%/9.6%/11.8%/11.8%/14.0%/14.0%，上限2层，效果持续2回合，持续时间独立计算。"
+  },
+  "weapon5-1": {
+    "name": "金纹影切",
+    "health": 2457.7,
+    "attack": 541.75,
+    "defense": 528.55,
+    "skill_name": "",
+    "description": "防御力提升45.0%/45.0%/59.0%/59.0%/73.0%/73.0%/87.0%。进入战斗反击伤害提升30.0%/39.0%/39.0%/48.0%/48.0%/57.0%/57.0%，获得护盾效果时获得『护灵』1个，每有1个『护灵』，反击伤害提升2%。若『护灵』数量到达了6，则反击伤害提升30.0%/40.0%/40.0%/50.0%/50.0%/60.0%/60.0%，本场战斗永久生效。"
   }
 };
+

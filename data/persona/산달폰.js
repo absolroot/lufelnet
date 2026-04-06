@@ -16,6 +16,7 @@ window.personaFiles["산달폰"] = {
   "tier_desc": "아군에게 실드를 부여함과 동시에 방어력을 크게 높이고, 대미지 보너스 동안 부여하여 전체적인 생존성과 대미지를 동시에 확보한다. 백업 출전에서도 버프가 일부 부여되기 때문에 2개의 페르소나만 활용할 경우 남은 1자리로서 고려할 수 있다.",
   "tier_desc_en": "It grants allies a shield, greatly raises Defense, and also provides a damage bonus, securing both survivability and damage at the same time. Because part of its buff also applies from backup deployment, it can be considered as the last slot when using only two Personas.",
   "tier_desc_jp": "味方にシールドを付与すると同時に防御力を大きく高め、さらにダメージボーナスも与えるため、生存力と火力を同時に確保できる。バックアップ出戦でも一部バフが付与されるので、ペルソナを2体だけ使う場合の残り1枠としても検討できる。",
+  "tier_desc_cn": "可在为队友赋予护盾的同时大幅提高防御力，并附加伤害加成，同时兼顾整体生存与伤害。由于部分增益在后台出战时也能生效，所以如果只使用两个人格面具，它也可以作为剩下那个位置的选择。",
   "comment": "백업 출전으로 10.5%의 방어력 보너스를 부여할 수 있다.",
   "comment_en": "Can provide 10.5% defense bonus through backup deployment.",
   "comment_jp": "バックアップ出戦で10.5%の防御力ボーナスを付与できる。",

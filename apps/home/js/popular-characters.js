@@ -2,35 +2,33 @@
     'use strict';
 
     const DEFAULT_MAX_COUNT = 10;
-    const RAW_LANGS = ['kr', 'en', 'jp', 'cn', 'tw', 'sea'];
-    const REGIONS = ['cn', 'tw', 'sea', 'kr', 'en', 'jp'];
 
-    const POPULAR_CHARACTERS_OVERRIDE = { kr: null, en: null };
+    const POPULAR_CHARACTERS_OVERRIDE = { kr: null, en: null, jp: null };
     const POPULAR_CHARACTERS_FIXED = {
         kr: [
-            { name: '모토하·청광', badge: 'NEW' },
-            { name: '아란', badge: 'NEW' },
-            { name: '아야카', badge: 'NEW' },
-            { name: '유스케', badge: 'NEW' },
+            { name: '나루미', badge: 'NEW' },
+            { name: '렌', badge: 'NEW' },
+            { name: '야오링·사자무', badge: 'NEW' },
+            { name: 'J&C', badge: 'HOT' },
             { name: '마나카', badge: 'HOT' },
             { name: '미나미·여름', badge: 'HOT' },
             { name: '리코·매화', badge: 'HOT' },
         ],
         en: [
-            { name: '카스미', badge: 'HOT' },
+            { name: 'J&C', badge: 'HOT' },
+            { name: '아야카', badge: 'HOT' },
             { name: '후타바', badge: 'HOT' },
-            { name: '아야카', badge: 'HOT' }
         ],
         jp: [
-            { name: '카스미', badge: 'HOT' },
+            { name: 'J&C', badge: 'HOT' },
+            { name: '아야카', badge: 'HOT' },
             { name: '후타바', badge: 'HOT' },
-            { name: '아야카', badge: 'HOT' }
         ],
     };
 
-    function getCharacterSetFromData(dataBox) {
+    function getAllowedCharacterSet() {
         try {
-            const list = dataBox && dataBox.characterList;
+            const list = window.characterList;
             if (!list) return null;
             const main = Array.isArray(list.mainParty) ? list.mainParty : [];
             const sup = Array.isArray(list.supportParty) ? list.supportParty : [];
@@ -40,35 +38,6 @@
         } catch (_) {
             return null;
         }
-    }
-
-    function isSpoilerEnabled() {
-        try {
-            if (window.SpoilerState && typeof window.SpoilerState.get === 'function') {
-                return !!window.SpoilerState.get();
-            }
-        } catch (_) { }
-        try {
-            return localStorage.getItem('spoilerToggle') === 'true';
-        } catch (_) {
-            return false;
-        }
-    }
-
-    function getAllowedCharacterSet(rawLang, krData, glbData) {
-        if (isSpoilerEnabled()) {
-            return getCharacterSetFromData(krData);
-        }
-
-        if (rawLang === 'kr' || rawLang === 'cn' || rawLang === 'tw') {
-            return getCharacterSetFromData(krData);
-        }
-
-        if (rawLang === 'en' || rawLang === 'jp' || rawLang === 'sea') {
-            return getCharacterSetFromData(glbData);
-        }
-
-        return getCharacterSetFromData(krData);
     }
 
     function bindMouseDragScroll(container) {
@@ -125,70 +94,35 @@
         }, true);
     }
 
-    function mapLangToRegion(lang) {
-        const normalized = String(lang || '').trim().toLowerCase();
-        return REGIONS.includes(normalized) ? normalized : null;
+    function isKrLikeLang(lang) {
+        try {
+            if (typeof window.isKrLikeLanguage === 'function') {
+                return !!window.isKrLikeLanguage(lang);
+            }
+        } catch (_) { }
+        return lang === 'kr' || lang === 'cn';
     }
 
-    function getCurrentRawLang() {
+    function getCurrentLang() {
+        try {
+            const urlLang = new URLSearchParams(window.location.search).get('lang');
+            if (urlLang && ['kr', 'en', 'jp', 'cn'].includes(urlLang)) return urlLang;
+        } catch (_) { }
         try {
             if (typeof LanguageRouter !== 'undefined' && LanguageRouter.getCurrentLanguage) {
-                const lr = String(LanguageRouter.getCurrentLanguage() || '').trim().toLowerCase();
-                if (RAW_LANGS.includes(lr)) return lr;
+                const lr = LanguageRouter.getCurrentLanguage();
+                if (lr && ['kr', 'en', 'jp', 'cn'].includes(lr)) return lr;
             }
         } catch (_) { }
         try {
-            const urlLang = String(new URLSearchParams(window.location.search).get('lang') || '').trim().toLowerCase();
-            if (RAW_LANGS.includes(urlLang)) return urlLang;
+            const saved = localStorage.getItem('preferredLanguage');
+            if (saved && ['kr', 'en', 'jp', 'cn'].includes(saved)) return saved;
         } catch (_) { }
         try {
-            const saved = String(localStorage.getItem('preferredLanguage') || '').trim().toLowerCase();
-            if (RAW_LANGS.includes(saved)) return saved;
-        } catch (_) { }
-        try {
-            const saved2 = String(localStorage.getItem('preferred_language') || '').trim().toLowerCase();
-            if (RAW_LANGS.includes(saved2)) return saved2;
+            const saved2 = localStorage.getItem('preferred_language');
+            if (saved2 && ['kr', 'en', 'jp', 'cn'].includes(saved2)) return saved2;
         } catch (_) { }
         return 'kr';
-    }
-
-    function getCurrentRegion() {
-        try {
-            const saved = String(localStorage.getItem('carousel_region') || '').trim().toLowerCase();
-            if (REGIONS.includes(saved)) return saved;
-        } catch (_) { }
-        try {
-            const candidates = [];
-            const urlLang = String(new URLSearchParams(window.location.search).get('lang') || '').trim().toLowerCase();
-            if (urlLang) candidates.push(urlLang);
-
-            const pathLang = String((window.location.pathname || '').split('/')[1] || '').trim().toLowerCase();
-            if (pathLang) candidates.push(pathLang);
-
-            if (typeof LanguageRouter !== 'undefined' && LanguageRouter.getCurrentLanguage) {
-                candidates.push(String(LanguageRouter.getCurrentLanguage() || '').trim().toLowerCase());
-            }
-
-            try {
-                const savedLang = String(localStorage.getItem('preferredLanguage') || '').trim().toLowerCase();
-                if (savedLang) candidates.push(savedLang);
-            } catch (_) { }
-
-            try {
-                const savedLangAlt = String(localStorage.getItem('preferred_language') || '').trim().toLowerCase();
-                if (savedLangAlt) candidates.push(savedLangAlt);
-            } catch (_) { }
-
-            for (let i = 0; i < candidates.length; i += 1) {
-                const region = mapLangToRegion(candidates[i]);
-                if (region) return region;
-            }
-        } catch (_) { }
-        return 'kr';
-    }
-
-    function mapRegionToPopularityBucket(region) {
-        return ['en', 'sea', 'jp'].includes(region) ? 'en' : 'kr';
     }
 
     function getMaxCountFromDom(popularRoot) {
@@ -228,38 +162,8 @@
         if (!kr) return characterKey;
         if (lang === 'en') return kr.codename || characterKey;
         if (lang === 'jp') return kr.name_jp || characterKey;
+        if (lang === 'cn') return kr.name_cn || kr.name || characterKey;
         return kr.name || characterKey;
-    }
-
-    function resolveCharacterSlug(characterKey) {
-        try {
-            const map = window.__CHARACTER_SLUG_MAP;
-            if (!map || typeof map !== 'object') return null;
-
-            const entry = map[characterKey];
-            if (entry && entry.slug) return entry.slug;
-
-            const keys = Object.keys(map);
-            for (let i = 0; i < keys.length; i += 1) {
-                const info = map[keys[i]];
-                if (!info || !info.slug || !Array.isArray(info.aliases)) continue;
-                if (info.aliases.includes(characterKey)) return info.slug;
-            }
-        } catch (_) {
-            // no-op
-        }
-        return null;
-    }
-
-    function buildCharacterHref(characterKey, lang) {
-        const slug = resolveCharacterSlug(characterKey);
-        if (slug) {
-            return `/${lang}/character/${slug}/`;
-        }
-
-        const url = new URL(`${window.BASE_URL || ''}/character.html`, window.location.origin);
-        url.searchParams.set('name', characterKey);
-        return url.pathname + url.search;
     }
 
     function buildReleaseOrderMap(langCharacterData) {
@@ -281,8 +185,9 @@
         });
     }
 
-    function resolvePopularCharacters(bucket, bucketCharacterData) {
-        const overrideItems = normalizeItems(POPULAR_CHARACTERS_OVERRIDE[bucket]);
+    function resolvePopularCharacters(lang, langCharacterData) {
+        const langKey = isKrLikeLang(lang) ? 'kr' : lang;
+        const overrideItems = normalizeItems(POPULAR_CHARACTERS_OVERRIDE[langKey]);
         if (overrideItems) {
             return {
                 orderedKeys: overrideItems.map(x => x.name),
@@ -290,11 +195,11 @@
             };
         }
 
-        const fixedItems = normalizeItems(POPULAR_CHARACTERS_FIXED[bucket]) || [];
+        const fixedItems = normalizeItems(POPULAR_CHARACTERS_FIXED[langKey]) || [];
         const fixedKeys = fixedItems.map(x => x.name);
         const fixedSet = new Set(fixedKeys);
 
-        const releaseOrderMap = buildReleaseOrderMap(bucketCharacterData);
+        const releaseOrderMap = buildReleaseOrderMap(langCharacterData);
         const orderedAuto = sortByReleaseOrderDesc(Object.keys(releaseOrderMap), releaseOrderMap);
 
         const topAuto = orderedAuto[0];
@@ -332,7 +237,15 @@
             if (badge === 'HOT') card.classList.add('hot');
 
             const link = document.createElement('a');
-            link.href = buildCharacterHref(characterKey, lang);
+            if (window.LanguageRouter && typeof window.LanguageRouter.buildCharacterDetailUrl === 'function') {
+                link.href = window.LanguageRouter.buildCharacterDetailUrl(characterKey, lang);
+            } else {
+                const url = new URL(`${window.BASE_URL || ''}/character.html`, window.location.origin);
+                url.searchParams.set('name', characterKey);
+                url.searchParams.set('lang', lang);
+                url.searchParams.set('v', window.APP_VERSION || Math.random().toString(36).substr(2, 5));
+                link.href = url.pathname + url.search;
+            }
             link.style.textDecoration = 'none';
             link.style.color = 'inherit';
 
@@ -341,11 +254,6 @@
             const img = document.createElement('img');
             img.src = `${window.BASE_URL || ''}/assets/img/tier/${encodeURIComponent(characterKey)}.webp`;
             img.alt = characterKey;
-            img.width = 98;
-            img.height = 140;
-            img.loading = 'lazy';
-            img.decoding = 'async';
-            img.setAttribute('fetchpriority', 'low');
             img.draggable = false;
             imgWrap.appendChild(img);
             link.appendChild(imgWrap);
@@ -369,22 +277,22 @@
 
         bindMouseDragScroll(container);
 
-        const rawLang = getCurrentRawLang();
-        const region = getCurrentRegion();
-        const popularityBucket = mapRegionToPopularityBucket(region);
+        const lang = getCurrentLang();
         const maxCount = getMaxCountFromDom(popularRoot);
         const v = window.APP_VERSION || Date.now();
 
         const kr = await fetchCharactersData(`${window.BASE_URL || ''}/data/character_info.js?v=${v}`);
-        const glb = await fetchCharactersData(`${window.BASE_URL || ''}/data/character_info_glb.js?v=${v}`);
-        const bucketData = popularityBucket === 'kr' ? kr : glb;
+        const lgDataPath = (lang === 'en' || lang === 'jp')
+            ? '/data/character_info_glb.js'
+            : `/data/${lang}/characters/characters.js`;
+        const lg = isKrLikeLang(lang) ? kr : await fetchCharactersData(`${window.BASE_URL || ''}${lgDataPath}?v=${v}`);
 
         const krCharacterData = (kr && kr.characterData) ? kr.characterData : {};
-        const bucketCharacterData = (bucketData && bucketData.characterData) ? bucketData.characterData : {};
+        const langCharacterData = (lg && lg.characterData) ? lg.characterData : {};
 
-        const resolved = resolvePopularCharacters(popularityBucket, bucketCharacterData);
+        const resolved = resolvePopularCharacters(lang, langCharacterData);
 
-        const allowedSet = getAllowedCharacterSet(rawLang, kr, glb);
+        const allowedSet = getAllowedCharacterSet();
         let orderedKeys = resolved.orderedKeys || [];
         let badgeMap = resolved.badgeMap || new Map();
         if (allowedSet) {
@@ -396,7 +304,7 @@
             badgeMap = filtered;
         }
 
-        renderPopularCards(container, rawLang, orderedKeys, badgeMap, maxCount, krCharacterData);
+        renderPopularCards(container, lang, orderedKeys, badgeMap, maxCount, krCharacterData);
     }
 
     document.addEventListener('DOMContentLoaded', () => {

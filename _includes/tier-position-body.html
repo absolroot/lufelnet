@@ -14,7 +14,7 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
     var pathLangMatch = lowerPath.match(/^\/(kr|en|jp|cn)(\/|$)/);
     var pathLang = pathLangMatch ? pathLangMatch[1] : '';
     var queryLang = String(params.get('lang') || '').toLowerCase();
-    var effectiveLang = pathLang || (['kr', 'en', 'jp'].indexOf(queryLang) !== -1 ? queryLang : '');
+    var effectiveLang = pathLang || (['kr', 'en', 'jp', 'cn'].indexOf(queryLang) !== -1 ? queryLang : '');
     var queryMode = (params.get('list') === 'false') ? 'maker' : 'list';
 
     var isLegacyTierRoot = /^\/tier\/position-tier\/?$/.test(lowerPath);
@@ -792,7 +792,7 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
             };
 
             // 2. 언어별 데이터 로딩 (한국어가 아닌 경우)
-            if (currentLang !== 'kr') {
+            if (!((window.isKrLikeLanguage && window.isKrLikeLanguage(currentLang)) || currentLang === 'kr')) {
                 try {
                     const langDataPath = (currentLang === 'en' || currentLang === 'jp')
                         ? '/data/character_info_glb.js'
@@ -884,7 +884,7 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
         const isListMode = isTierListMode();
 
         // KR 이거나 리스트 모드면 숨김
-        if (currentLang === 'kr' || isListMode) {
+        if (((window.isKrLikeLanguage && window.isKrLikeLanguage(currentLang)) || currentLang === 'kr') || isListMode) {
             container.style.display = 'none';
             return;
         }

@@ -18,12 +18,12 @@ sitemap: false
       params.delete("lang");
       params.delete("name");
       params.delete("persona");
-      var languageTargets = {"kr":"/kr/persona/janosik/","en":"/en/persona/janosik/","jp":"/jp/persona/janosik/"};
+      var languageTargets = {"kr":"/kr/persona/janosik/","en":"/en/persona/janosik/","jp":"/jp/persona/janosik/","cn":"/cn/persona/janosik/"};
       var defaultPath = "/en/persona/janosik/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

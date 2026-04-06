@@ -2,11 +2,11 @@
 function getCurrentLanguage() {
     const urlParams = new URLSearchParams(window.location.search);
     const urlLang = urlParams.get('lang');
-    if (urlLang && ['kr', 'en', 'jp'].includes(urlLang)) {
+    if (urlLang && ['kr', 'en', 'jp', 'cn'].includes(urlLang)) {
         return urlLang;
     }
     const savedLang = localStorage.getItem('preferredLanguage');
-    if (savedLang && ['kr', 'en', 'jp'].includes(savedLang)) {
+    if (savedLang && ['kr', 'en', 'jp', 'cn'].includes(savedLang)) {
         return savedLang;
     }
     if (typeof LanguageRouter !== 'undefined' && LanguageRouter.getCurrentLanguage) {
@@ -87,7 +87,7 @@ async function ensureCharacterDataLoaded() {
     const krCharacterData = kr.characterData || {};
     const krCharacterList = kr.characterList || { mainParty: [], supportParty: [] };
 
-    if (lang === 'kr') {
+    if (((window.isKrLikeLanguage && window.isKrLikeLanguage(lang)) || lang === 'kr')) {
         window.characterData = krCharacterData;
         window.characterList = krCharacterList;
         return true;
@@ -470,7 +470,7 @@ class TacticsViewer {
         }
 
         // 스포일러 체크: 스포일러가 꺼져있고 미출시 캐릭터가 포함된 택틱 숨김
-        if (this.currentLang !== 'kr' && !isSpoilerEnabled()) {
+        if (!((window.isKrLikeLanguage && window.isKrLikeLanguage(this.currentLang)) || this.currentLang === 'kr') && !isSpoilerEnabled()) {
             const originalList = window.originalLangCharacterList || [];
 
             filtered = filtered.filter(tactic => {
@@ -705,7 +705,7 @@ class TacticsViewer {
         });
 
         if (container) {
-            container.style.display = this.currentLang === 'kr' ? 'none' : 'flex';
+            container.style.display = ((window.isKrLikeLanguage && window.isKrLikeLanguage(this.currentLang)) || this.currentLang === 'kr') ? 'none' : 'flex';
         }
     }
 

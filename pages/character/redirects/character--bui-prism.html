@@ -17,12 +17,12 @@ sitemap: false
       var requestedLang = params.get("lang");
       params.delete("lang");
       params.delete("name");
-      var languageTargets = {"kr":"/kr/character/bui-prism/","en":"/en/character/bui-prism/","jp":"/jp/character/bui-prism/"};
+      var languageTargets = {"kr":"/kr/character/bui-prism/","en":"/en/character/bui-prism/","jp":"/jp/character/bui-prism/","cn":"/cn/character/bui-prism/"};
       var defaultPath = "/en/character/bui-prism/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

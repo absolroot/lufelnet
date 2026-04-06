@@ -1,0 +1,20 @@
+window.I18N_PAGE_ABOUT_CN = {
+    "siteTitle": "路菲尔网 lufel.net",
+    "contactTitle": "联系与反馈",
+    "thanksTitle": "鸣谢",
+    "recentUpdatesTitle": "最新更新",
+    "donateButton": "支持 | Support",
+    "supportersButton": "鸣谢名单",
+    "supportersModalTitle": "支持者名单",
+    "showMoreButton": "查看更多",
+    "copySuccessText": "已复制！",
+    "copyFailedText": "复制失败",
+    "languageNotice": "🌍 中文翻译正在持续完善，部分内容可能暂时保留韩语。",
+    "siteDescription": "路菲尔网是为《女神异闻录5: 夜幕魅影》玩家制作的非官方个人资讯站。<br>\n网站最初的出发点很简单，就是希望能让更多人更轻松地享受 P5X。",
+    "contactDescription": "如果你发现 bug、错误数据，或有任何反馈，欢迎通过 \n<a href=\"https://discord.gg/8S8pnv2MsH\" target=\"_blank\" class=\"discord-link\"><span class=\"discord-icon\"></span>Discord</a> 或 \n<a href=\"mailto:superphil722@gmail.com\" class=\"email-link\">superphil722@gmail.com</a> 联系。",
+    "donationMessage": "感谢你的支持。作为一名喜欢研究 P5X 的玩家，我会持续更新这个网站。<br>\n如果你愿意支持，这会成为推动网站继续完善的重要动力。<br>\n再次真诚感谢。",
+    "donateDescription": "路菲尔网仅依靠大家的支持运营。",
+    "donationInlineText": "感谢你的支持。作为一名喜欢研究 P5X 的玩家，我会持续更新这个网站。<br>\n如果你愿意支持，这会成为推动网站继续完善的重要动力。<br>\n再次真诚感谢。",
+    "seoTitle": "关于 - 女神异闻录5: 夜幕魅影 路菲尔网",
+    "seoDescription": "路菲尔网是面向《女神异闻录5: 夜幕魅影》玩家的非官方资讯站。在这里查看网站介绍与联系方式。"
+};

@@ -1,6 +1,8 @@
 window.characterSkillsData = window.characterSkillsData || {};
 window.enCharacterSkillsData = window.enCharacterSkillsData || {};
 window.jpCharacterSkillsData = window.jpCharacterSkillsData || {};
+window.cnCharacterSkillsData = window.cnCharacterSkillsData || {};
+
 window.characterSkillsData["렌"] = {
   "name": "아마미야 렌",
   "skill1": {
@@ -46,6 +48,7 @@ window.characterSkillsData["렌"] = {
     "cool": 0
   }
 };
+
 window.enCharacterSkillsData["렌"] = {
   "name": "Ren Amamiya",
   "skill1": {
@@ -93,6 +96,7 @@ window.enCharacterSkillsData["렌"] = {
     "cool": 0
   }
 };
+
 window.jpCharacterSkillsData["렌"] = {
   "name": "雨宮 蓮",
   "skill1": {
@@ -139,13 +143,13 @@ window.jpCharacterSkillsData["렌"] = {
     "cool": 0
   }
 };
-window.cnCharacterSkillsData = window.cnCharacterSkillsData || {};
 
 window.cnCharacterSkillsData["렌"] = {
   "name": "雨宫莲",
   "skill1": {
     "name": "无畏压制",
-    "element": "주원",
+    "element": "주원광역",
+    "type": "群体伤害",
     "sp": 19,
     "cool": 0,
     "description": "对所有敌人造成83.0%/91.5%/88.1%/96.6%攻击力的诅咒属性伤害，并有20%基础概率使其获得1层诅咒效果。并获得1个『煞气』。"
@@ -153,32 +157,37 @@ window.cnCharacterSkillsData["렌"] = {
   "skill2": {
     "name": "不祥的预兆",
     "element": "주원",
+    "type": "单体伤害",
     "sp": 19,
     "cool": 0,
     "description": "对1名敌人造成97.6%/107.6%/103.6%/113.6%攻击力的诅咒属性伤害。释放该技能时，若场上只有1名敌人，则为JOKER恢复2个『煞气』。"
   },
   "skill3": {
     "name": "厄运追击",
-    "element": "주원",
+    "element": "주원광역",
+    "type": "群体伤害",
     "sp": 22,
     "cool": 0,
     "description": "对所有敌人造成74.2%/81.8%/78.7%/86.3%攻击力的诅咒属性伤害，处于额外回合时，技能伤害提升25%。若目标身上具有任意减益效果，则该技能伤害额外提升25%。"
   },
+  "skill_highlight": {
+    "element": "주원광역",
+    "type": "群体伤害",
+    "description": "对所有敌人造成205.0%/226.0%/217.6%/238.6%攻击力的诅咒属性伤害，并获得一个『煞气』。",
+    "cool": 4,
+    "name": "HIGHLIGHT"
+  },
   "passive1": {
     "name": "复仇",
     "element": "패시브",
-    "cool": 0,
-    "description": "每持有1个『煞气』，就提升18.0%攻击力。"
+    "description": "每持有1个『煞气』，就提升18.0%攻击力。",
+    "cool": 0
   },
   "passive2": {
     "name": "吞噬",
     "element": "패시브",
-    "cool": 0,
-    "description": "处于额外回合时，造成的伤害提升72.0%。"
-  },
-  "skill_highlight": {
-    "element": "주원",
-    "cool": 4,
-    "description": "对所有敌人造成205.0%/226.0%/217.6%/238.6%攻击力的诅咒属性伤害，并获得一个『煞气』。"
+    "description": "处于额外回合时，造成的伤害提升72.0%。",
+    "cool": 0
   }
 };
+

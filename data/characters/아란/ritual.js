@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["아란"] = {
   "name": "히라노 아란",
   "r0": "수잔나의 거울",
@@ -54,21 +56,22 @@ window.jpCharacterRitualData["아란"] = {
   "r6": "エステルの反逆の王座",
   "r6_detail": "『罪』状態の異なる敵が同時にダメージ対象として選択された場合、伝導効果がさらに150%増幅される。『罪』状態の敵は、自身が受けたダウン値ダメージ、精神異常、および元素異常を『罪』状態の他の敵に伝導できるようになる。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.cnCharacterRitualData["아란"] = {
-  "name": "",
-  "r0": "",
-  "r0_detail": "",
-  "r1": "",
-  "r1_detail": "",
-  "r2": "",
-  "r2_detail": "",
-  "r3": "",
-  "r3_detail": "",
-  "r4": "",
-  "r4_detail": "",
-  "r5": "",
-  "r5_detail": "",
-  "r6": "",
-  "r6_detail": ""
+  "name": "平野亚兰",
+  "r0": "苏珊娜的窥镜",
+  "r0_detail": "亚兰可以为敌人施加特殊状态『罪』，且场上最多同时存在2个『罪』。\n『罪』：带有『罪』的敌人受到伤害的10%会复制给其他带有『罪』的敌人。\n『罪』的目标也可以是同一敌人，此时效果变为受到伤害的5%复制给自身。\n带有『罪』的敌人阵亡时，『罪』将会转移给敌方其他存活单位。\n『罪』的传导比例可以受到传导效果增幅影响。",
+  "r1": "朱迪斯的匕首",
+  "r1_detail": "每层『罪业』将额外施加受到伤害提升5%的效果。\n『复仇冥镜』的基础反伤比例提升至400%。",
+  "r2": "雅艾尔的钉痕",
+  "r2_detail": "『禁典蚀痕』和『复仇冥镜』施加『罪业』层数额外提升1层。\n『罪业』上限额外提升2层。",
+  "r3": "绘画女神的构图",
+  "r3_detail": "『禁典蚀痕』、『战斗技巧』的技能等级提升2级，至多提升至15级。",
+  "r4": "圣凯瑟琳轮刻",
+  "r4_detail": "HIGHLIGHT效果提升：返还15点HIGHLIGHT能量并使带有『罪』的敌人受到HIGHLIGHT攻击时该次伤害的攻击力提升25%，持续3回合，并将该效果复制给其他带有『罪』的敌人。",
+  "r5": "抹大拉的苦行",
+  "r5_detail": "『断罪之瞳』、『复仇冥镜』的技能等级提升2级，至多提升至15级。",
+  "r6": "以斯帖的叛逆王座",
+  "r6_detail": "当带有『罪』的不同敌人同时被选为伤害目标时，传导效果额外获得150%增幅。\n带有『罪』的敌人还能将受到的倒地值伤害、精神异常和元素异常传导给其他带有『罪』的敌人。"
 };
+

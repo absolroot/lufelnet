@@ -16,6 +16,7 @@ window.personaFiles["디오니소스"] = {
   "tier_desc": "출전율 1위로 실질적인 주인공의 메인 페르소나다.\n동료를 목표로 스킬을 사용할 경우 크리티컬 효과를 2턴간 30%라는 엄청난 버프를 부여한다. 어떠한 형태의 스킬이어도 아군을 대상으로만 하면 발동되기 때문에 새로운 버프류 스킬이 나왔다면 1순위는 디오니소스가 된다.",
   "tier_desc_en": "It has the highest fielding rate and is effectively the protagonist's main Persona.\nWhen you use a skill targeting an ally, it grants a huge 30% critical damage buff for 2 turns. It triggers as long as the skill targets an ally, regardless of skill type, so whenever a new support skill appears, Dionysus is usually the first choice.",
   "tier_desc_jp": "出場率1位で、実質的に主人公のメインペルソナと言える。\n味方を対象にスキルを使うと、2ターンの間クリティカルダメージ30%という非常に強力なバフを付与する。スキルの種類を問わず、味方対象でさえあれば発動するため、新しい支援系スキルが出るたびに最優先候補になる。",
+  "tier_desc_cn": "出场率第1，实际上已经是主角的主力人格面具。\n以同伴为目标释放技能时，可提供持续2回合、高达30%的暴击效果增益。无论是什么类型的技能，只要目标是我方就能触发，因此只要有新的辅助类技能出现，首选往往就是狄俄尼索斯。",
   "comment": "메디아라한을 통한 치료에도 본능 크리티컬 효과 30% 증가가 적용된다.\n본능을 통해 크리티컬 확률을 확보하고 해명 괴도를 통해 추가로 받으므로 다른 페르소나와 달리 리벨리온 스킬의 최대치 효율을 위한 별도 어드바이스 패시브가 필요하지 않다.",
   "comment_en": "The talent's 30% critical damage increase also applies to healing through Mediarahan.\nBecause it secures Crit Rate through its talent and gains more from the Elucidator, it does not need a separate Advice passive to fully capitalize on Rebellion, unlike other Personas.",
   "comment_jp": "メディアラハンによる回復にも、本能のクリティカルダメージ30%増加が適用される。\n本能でクリティカル率を確保し、さらに解明怪盗から追加で受け取れるため、他のペルソナと違って、リベリオンの最大効率のために別途アドバイス系パッシブを用意する必要がない。",

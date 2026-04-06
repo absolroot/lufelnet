@@ -18,12 +18,12 @@ sitemap: false
       params.delete("lang");
       params.delete("name");
       params.delete("persona");
-      var languageTargets = {"kr":"/kr/persona/phoenix/","en":"/en/persona/phoenix/","jp":"/jp/persona/phoenix/"};
+      var languageTargets = {"kr":"/kr/persona/phoenix/","en":"/en/persona/phoenix/","jp":"/jp/persona/phoenix/","cn":"/cn/persona/phoenix/"};
       var defaultPath = "/en/persona/phoenix/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["카요"] = {
   "name": "토미야마 카요",
   "r0": "자유♪를 향해",
@@ -18,6 +20,7 @@ window.ritualData["카요"] = {
   "r6": "뜨거운 음악♪앙코르",
   "r6_detail": "토미야마 카요가 『열렬한 가무』 시전 시 25%의 고정 확률로 『앙코르』가 발동되며, 『열렬한 가무』를 1회 추가 시전한다. 추가 시전한 『열렬한 가무』는 『앙코르』가 발동하지 않는다."
 };
+
 window.enCharacterRitualData["카요"] = {
   "name": "Kayo Tomiyama",
   "r0": "Fever Time",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["카요"] = {
   "r6": "Hey, DJ!",
   "r6_detail": "After activating Pulsating Rhythm, 25% chance to activate Encore, granting 1 additional Pulsating Rhythm.\nEncore will not activate consecutively."
 };
+
 window.jpCharacterRitualData["카요"] = {
   "name": "富山 佳代",
   "r0": "フィーバータイム",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["카요"] = {
   "r6": "Ｈｅｙ　ＤＪ！",
   "r6_detail": "『パーリィナイト』が発動した時、２５%の確率でアンコールが発生し、『パーリィナイト』を１つ付与する。\n※アンコールは連続で発動しない。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["카요"] = {
   "name": "富山佳代",
@@ -71,3 +74,4 @@ window.cnCharacterRitualData["카요"] = {
   "r6": "安可♪热烈回响",
   "r6_detail": "富山佳代释放『劲歌热舞』后，有25%的固定概率触发『安可』：额外释放1次『劲歌热舞』。额外释放的『劲歌热舞』无法再次触发『安可』。"
 };
+

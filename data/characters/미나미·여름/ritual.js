@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["미나미·여름"] = {
   "name": "미야시타 미나미·여름",
   "r0": "당신을 위해 붙잡은 시간",
@@ -18,6 +20,7 @@ window.ritualData["미나미·여름"] = {
   "r6": "말하지 못한 비밀",
   "r6_detail": "사용하는 약품이 실제로 소모되지 않는다. 모든 버프류 약품의 효과 지속 시간이 1턴 연장된다. 『추억의 처방』 상태에서 아군에게 약품을 사용하면, 메인 목표가 『빛에너지 강화』를 추가로 획득해 1턴 동안 총 대미지가 15% 증가한다."
 };
+
 window.enCharacterRitualData["미나미·여름"] = {
   "name": "Minami·Summer",
   "r0": "Stopping Time for You",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["미나미·여름"] = {
   "r6": "Hiding Untold Secrets",
   "r6_detail": "Minami no longer spends items when using any items. Extend all Buff Item effect by 1 turn. When Minami has [Memory Prescription] and uses an item on allies, grant the main target [Revitalization Boost]: Increase total damage amp by 15% for 1 turn."
 };
+
 window.jpCharacterRitualData["미나미·여름"] = {
   "name": "宮下 ミナミ・夏",
   "r0": "君のために止まった時間",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["미나미·여름"] = {
   "r6": "言えなかった秘密を抱く",
   "r6_detail": "全ての薬品が消費なしで使用可能となり、全ての強化薬の持続時間が1ターン延長される。\n『思い出の処方』状態で味方に薬品を使用すると、対象に『活力強化』を付与：総ダメージが15%増加、持続1ターン。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["미나미·여름"] = {
   "name": "宫下美波·夏日",
@@ -71,3 +74,4 @@ window.cnCharacterRitualData["미나미·여름"] = {
   "r6": "藏着未说完的秘密",
   "r6_detail": "使用任何药品不再产生实际消耗。所有增益类药品效果持续时间延长一回合。『回忆的处方』状态下对友方使用药品后，额外使主目标获得『焕能强化』：获得15%的总伤害增幅，持续1回合。"
 };
+

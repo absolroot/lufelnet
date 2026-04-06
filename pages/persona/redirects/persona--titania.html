@@ -18,12 +18,12 @@ sitemap: false
       params.delete("lang");
       params.delete("name");
       params.delete("persona");
-      var languageTargets = {"kr":"/kr/persona/titania/","en":"/en/persona/titania/","jp":"/jp/persona/titania/"};
+      var languageTargets = {"kr":"/kr/persona/titania/","en":"/en/persona/titania/","jp":"/jp/persona/titania/","cn":"/cn/persona/titania/"};
       var defaultPath = "/en/persona/titania/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

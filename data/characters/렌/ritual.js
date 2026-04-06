@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["렌"] = {
   "name": "아마미야 렌",
   "r0": "서막",
@@ -18,6 +20,7 @@ window.ritualData["렌"] = {
   "r6": "기묘한 결말",
   "r6_detail": "필드에 생명이 25% 미만인 적이 존재할 경우 바로 해당 적을 참살한다. 효과 상한은 조커의 공격력의 250%이다. 적마다 각 전투에서 최대 1회 발동할 수 있다. 추가 턴에서 페르소나 스킬 시전 후 전체 적에게 같은 공격을 1회 발동하고, 조커 공격력 50%의 주원 대미지를 준다."
 };
+
 window.enCharacterRitualData["렌"] = {
   "name": "Ren Amamiya",
   "r0": "Rebellion Resurgence",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["렌"] = {
   "r6": "Merciless Pursuit",
   "r6_detail": "After taking an extra action, if there are foes with below 25% HP, deal damage to those foes equal to up to 250% of Ren's Attack (once per enemy per battle).\nAfter using a skill on an extra action, deal Curse damage equal to 50% of Attack to all foes."
 };
+
 window.jpCharacterRitualData["렌"] = {
   "r0": "反逆の再動",
   "r0_detail": "自身の行動が終了した時、残りのＨＰが６０%未満の敵１体ごとに『反逆の意志』を１つ獲得し、最大５つまで累積する。\n『反逆の意志』の合計が３つ以上の時、追加行動ができるようになる。\nなお、追加行動中にさらに追加行動は発生しない。追加行動は、ターン制限のある効果のターン数に影響しない。\n追加行動終了後、『反逆の意志』を３つ消費する。\n※戦闘中、敵１体につき『反逆の意志』は１つしか獲得できない。",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["렌"] = {
   "r6_detail": "自身の行動後に残りのＨＰが２５%未満の敵がいる時、その敵に最大で自身の攻撃力２５０%のダメージを与える。（バトル中、同じ敵にこの効果は発動しない）\nさらに、追加行動でスキル使用後、敵全体に攻撃力５０%の呪怨属性ダメージを与える。",
   "name": "雨宮 蓮"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["렌"] = {
   "name": "雨宫莲",
@@ -71,3 +74,4 @@ window.cnCharacterRitualData["렌"] = {
   "r6": "奇妙秀终章",
   "r6_detail": "若场上存在生命值低于25%的敌人，则直接斩杀该敌人，效果上限为JOKER攻击力的250%。每名敌人每场战斗最多触发1次。额外回合释放人格面具技能后，对全体敌人触发一次相同的攻击，造成JOKER攻击力50%的诅咒伤害。"
 };
+

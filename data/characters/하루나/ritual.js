@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["하루나"] = {
   "name": "니시모리 하루나",
   "r0": "보물 찾기! 출발!",
@@ -18,6 +20,7 @@ window.ritualData["하루나"] = {
   "r6": "수수께끼! 풀기!",
   "r6_detail": "『동심』을 5회 획득할 때마다 『호기심 폭발』을 획득한다. 적을 목표로 페르소나 스킬 사용 시 주는 대미지가 75% 증가하고, 대미지를 준 후 사라진다."
 };
+
 window.enCharacterRitualData["하루나"] = {
   "name": "Haruna Nishimori",
   "r0": "Off to Treasure Hunt",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["하루나"] = {
   "r6": "Puzzle Solver",
   "r6_detail": "When Childish Heart reaches 5 stacks, gain Curiosity.\nCuriosity: When Haruna deals damage with a skill, increase damage by 75%. This effect ends after dealing skill damage to foes."
 };
+
 window.jpCharacterRitualData["하루나"] = {
   "name": "西森 陽菜",
   "r0": "宝探しへ出発！",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["하루나"] = {
   "r6": "謎解きしよ！",
   "r6_detail": "『子供心』を５つ獲得した時、『好奇心旺盛』状態になる。\n『好奇心旺盛』状態：陽菜がスキルでダメージを与えた時、ダメージが７５%上昇する。この状態は敵にスキルダメージを与えると終了する。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["하루나"] = {
   "name": "西森阳菜",
@@ -71,3 +74,4 @@ window.cnCharacterRitualData["하루나"] = {
   "r6": "谜题！解开！",
   "r6_detail": "每获得5个『童趣』，则获得『好奇心爆炸』：以敌人为目标释放人格面具技能时，造成的伤害提升75%，造成伤害后清除。"
 };
+

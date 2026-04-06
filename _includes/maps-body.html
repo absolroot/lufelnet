@@ -4,13 +4,13 @@
     var path = String(window.location.pathname || '/');
     var lowerPath = path.toLowerCase();
 
-    var pathLangMatch = lowerPath.match(/^\/(kr|en|jp)(\/|$)/);
+    var pathLangMatch = lowerPath.match(/^\/(kr|en|jp|cn)(\/|$)/);
     var pathLang = pathLangMatch ? pathLangMatch[1] : '';
     var queryLang = String(params.get('lang') || '').toLowerCase();
-    var effectiveLang = pathLang || (['kr', 'en', 'jp'].indexOf(queryLang) !== -1 ? queryLang : '');
+    var effectiveLang = pathLang || (['kr', 'en', 'jp', 'cn'].indexOf(queryLang) !== -1 ? queryLang : '');
 
     var isLegacyRoot = /^\/maps\/?$/.test(lowerPath);
-    var isCanonicalPath = /^\/(kr|en|jp)\/maps\/?$/.test(lowerPath);
+    var isCanonicalPath = /^\/(kr|en|jp|cn)\/maps\/?$/.test(lowerPath);
 
     if (isLegacyRoot && effectiveLang) {
         window.__SEO_PATH_LANG__ = effectiveLang;
@@ -122,6 +122,10 @@
                         <img src="" alt="jp" class="flag-icon">
                         <span data-lang-label="jp"></span>
                     </div>
+                    <div class="option" data-value="cn" role="button" tabindex="0">
+                        <img src="" alt="cn" class="flag-icon">
+                        <span data-lang-label="cn"></span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -189,6 +193,7 @@
 <script src="{{ site.baseurl }}/i18n/pages/maps/kr.js?v={{ site.time | date: '%s' }}"></script>
 <script src="{{ site.baseurl }}/i18n/pages/maps/en.js?v={{ site.time | date: '%s' }}"></script>
 <script src="{{ site.baseurl }}/i18n/pages/maps/jp.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/i18n/pages/maps/cn.js?v={{ site.time | date: '%s' }}"></script>
 <script src="{{ site.baseurl }}/apps/maps/maps-i18n.js?v={{ site.time | date: '%s' }}"></script>
 <script src="{{ site.baseurl }}/apps/maps/maps-debug.js?v={{ site.time | date: '%s' }}"></script>
 <script src="{{ site.baseurl }}/apps/maps/object-click-handler.js?v={{ site.time | date: '%s' }}"></script>

@@ -2,11 +2,11 @@
 function getCurrentLanguage() {
   const urlParams = new URLSearchParams(window.location.search);
   const urlLang = urlParams.get('lang');
-  if (urlLang && ['kr', 'en', 'jp'].includes(urlLang)) {
+  if (urlLang && ['kr', 'en', 'jp', 'cn'].includes(urlLang)) {
     return urlLang;
   }
   const savedLang = localStorage.getItem('preferredLanguage');
-  if (savedLang && ['kr', 'en', 'jp'].includes(savedLang)) {
+  if (savedLang && ['kr', 'en', 'jp', 'cn'].includes(savedLang)) {
     return savedLang;
   }
   return 'kr';
@@ -24,7 +24,7 @@ function getPartyI18nText(key, fallback = '') {
 
 function getCharacterDisplayName(charName) {
   const currentLang = getCurrentLanguage();
-  if (currentLang === 'kr' || !charName) {
+  if (((window.isKrLikeLanguage && window.isKrLikeLanguage(currentLang)) || currentLang === 'kr') || !charName) {
     return charName;
   }
   
@@ -56,7 +56,7 @@ window.getCharacterDisplayName = getCharacterDisplayName;
 
 function getRevelationDisplayName(revName) {
   const currentLang = getCurrentLanguage();
-  if (currentLang === 'kr' || !revName) {
+  if (((window.isKrLikeLanguage && window.isKrLikeLanguage(currentLang)) || currentLang === 'kr') || !revName) {
     return revName;
   }
   // 데이터 로딩 전일 수 있으므로 revelationData 자체는 확인하지 않음
@@ -78,7 +78,7 @@ let __translationsLoadingPromise = null;
 async function setupTranslations() {
   try {
     const lang = getCurrentLanguage();
-    if (lang === 'kr') return; // 한국어는 원본 사용
+    if (((window.isKrLikeLanguage && window.isKrLikeLanguage(lang)) || lang === 'kr')) return; // 한국어는 원본 사용
 
     // languageData 구조 준비
     if (!window.languageData) window.languageData = {};
@@ -128,7 +128,7 @@ async function setupTranslations() {
       // 2) 언어별 캐릭터 목록 로드 (dropdown용)
       try {
         if (!window.languageData[lang].characterList) {
-          const chUrl = (lang === 'kr')
+          const chUrl = (((window.isKrLikeLanguage && window.isKrLikeLanguage(lang)) || lang === 'kr'))
             ? `${base}/data/character_info.js${ver}`
             : ((lang === 'en' || lang === 'jp')
               ? `${base}/data/character_info_glb.js${ver}`
@@ -163,7 +163,7 @@ async function setupTranslations() {
 
 function translateSelectOptions(selectElement) {
   const currentLang = getCurrentLanguage();
-  if (currentLang === 'kr') {
+  if (((window.isKrLikeLanguage && window.isKrLikeLanguage(currentLang)) || currentLang === 'kr')) {
     const options = selectElement.options;
     for (let i = 0; i < options.length; i++) {
       const option = options[i];
@@ -187,7 +187,7 @@ async function setupPartySelection() {
   const currentLang = getCurrentLanguage();
   
   // window.characterData가 준비될 때까지 대기 (한국어가 아닐 때만)
-  if (currentLang !== 'kr') {
+  if (!((window.isKrLikeLanguage && window.isKrLikeLanguage(currentLang)) || currentLang === 'kr')) {
     let retryCount = 0;
     const maxRetries = 50; // 최대 5초 대기 (100ms * 50)
     while (!window.characterData && retryCount < maxRetries) {
@@ -431,7 +431,7 @@ async function setupPartySelection() {
       // 주 계시 옵션 추가 (언어별 A-Z 정렬)
       if (typeof revelationData !== 'undefined' && revelationData.main) {
         const lang = getCurrentLanguage();
-        const locale = lang === 'kr' ? 'ko-KR' : (lang === 'jp' ? 'ja-JP' : 'en');
+        const locale = ((window.isKrLikeLanguage && window.isKrLikeLanguage(lang)) || lang === 'kr') ? 'ko-KR' : (lang === 'jp' ? 'ja-JP' : 'en');
         let collator;
         try { collator = new Intl.Collator(locale, { usage: 'sort', sensitivity: 'base', numeric: true, ignorePunctuation: true }); }
         catch (_) { collator = { compare: (x, y) => String(x).localeCompare(String(y)) }; }
@@ -457,7 +457,7 @@ async function setupPartySelection() {
           // 일월성진 옵션 설정 (언어별 A-Z 정렬, 빈 값 유지)
           subRevSelect.innerHTML = '<option value="">-</option>';
           const lang = getCurrentLanguage();
-          const locale = lang === 'kr' ? 'ko-KR' : (lang === 'jp' ? 'ja-JP' : 'en');
+          const locale = ((window.isKrLikeLanguage && window.isKrLikeLanguage(lang)) || lang === 'kr') ? 'ko-KR' : (lang === 'jp' ? 'ja-JP' : 'en');
           let collator;
           try { collator = new Intl.Collator(locale, { usage: 'sort', sensitivity: 'base', numeric: true, ignorePunctuation: true }); }
           catch (_) { collator = { compare: (x, y) => String(x).localeCompare(String(y)) }; }
@@ -726,7 +726,7 @@ async function setupPartySelection() {
                 subRevSelect.disabled = false;
                 subRevSelect.innerHTML = '<option value="">-</option>';
                 const lang = getCurrentLanguage();
-                const locale = lang === 'kr' ? 'ko-KR' : (lang === 'jp' ? 'ja-JP' : 'en');
+                const locale = ((window.isKrLikeLanguage && window.isKrLikeLanguage(lang)) || lang === 'kr') ? 'ko-KR' : (lang === 'jp' ? 'ja-JP' : 'en');
                 let collator;
                 try { collator = new Intl.Collator(locale, { usage: 'sort', sensitivity: 'base', numeric: true, ignorePunctuation: true }); }
                 catch (_) { collator = { compare: (x, y) => String(x).localeCompare(String(y)) }; }
@@ -1239,7 +1239,7 @@ async function initializePartyTranslations() {
   const currentLang = getCurrentLanguage();
 
   // 한국어 모드일 경우, 번역 표시 제거 및 원본 값으로 복원
-  if (currentLang === 'kr') {
+  if (((window.isKrLikeLanguage && window.isKrLikeLanguage(currentLang)) || currentLang === 'kr')) {
     document.querySelectorAll('.input-container.show-translation').forEach(container => {
       container.classList.remove('show-translation');
     });

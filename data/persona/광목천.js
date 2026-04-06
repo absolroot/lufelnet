@@ -16,6 +16,7 @@ window.personaFiles["광목천"] = {
   "tier_desc": "아무런 스킬을 사용하지 않고도 본능 효과 하나로 3턴 간 공격력과 크리티컬 확률을 높이는 버프를 부여한다. 페르소나를 전환 하더라도 버프가 지속되기 때문에 초기 대미지가 중요한 콘텐츠에 자주 채용된다.",
   "tier_desc_en": "Even without using any skills, its talent alone grants a 3-turn buff that increases Attack and Crit Rate. Because the buff persists even after switching Personas, it is often used in content where early damage matters.",
   "tier_desc_jp": "スキルを使わなくても、本能効果だけで3ターンの間、攻撃力とクリティカル率を高めるバフを付与できる。ペルソナを切り替えてもバフが持続するため、初動火力が重要なコンテンツでよく採用される。",
+  "tier_desc_cn": "无需使用任何技能，仅靠本能效果就能提供持续3回合的攻击力与暴击率增益。即使切换人格面具后该增益依然会保留，因此常用于看重开局伤害的内容。",
   "comment": "전투 시작 시 가장 맨 앞에 배치해야 한다. ",
   "comment_en": "Must be placed in the front row at the start of battle.",
   "comment_jp": "戦闘開始時、1体目のペルソナにしておくべきである。",

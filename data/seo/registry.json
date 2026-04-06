@@ -3,11 +3,16 @@
   "domains": {
     "about": {
       "langs": [
+        "cn",
         "en",
         "jp",
         "kr"
       ],
       "meta": {
+        "cn": {
+          "description": "路菲尔网是面向《女神异闻录5: 夜幕魅影》玩家的非官方资讯站。在这里查看网站介绍与联系方式。",
+          "title": "关于 | 女神异闻录5: 夜幕魅影 路菲尔网"
+        },
         "en": {
           "description": "Lufelnet is an unofficial information site for Persona 5: The Phantom X players. Check site introduction and contact information.",
           "title": "About| Lufelnet Persona 5: The Phantom X"
@@ -74,11 +79,18 @@
     },
     "character": {
       "langs": [
+        "cn",
         "en",
         "jp",
         "kr"
       ],
       "meta": {
+        "cn": {
+          "description": "查看《女神异闻录5: 夜幕魅影》中 {name} 的养成攻略。推荐配置、技能、意识与专属武器信息一站查看。",
+          "list_description": "查看《女神异闻录5: 夜幕魅影》的怪盗养成攻略。推荐配置、技能、意识与专属武器信息一站查看。",
+          "list_title": "怪盗养成攻略 - 女神异闻录5: 夜幕魅影 路菲尔网",
+          "title": "{name} 养成攻略 | 女神异闻录5: 夜幕魅影 路菲尔网"
+        },
         "en": {
           "description": "P5X {name} character build guide. Recommended setup, skills, revelation, and exclusive weapon info.",
           "list_description": "Character development guide for Persona 5: The Phantom X. Check recommended setup, skills, awareness, and exclusive weapon info.",
@@ -114,11 +126,16 @@
     },
     "critical-calc": {
       "langs": [
+        "cn",
         "en",
         "jp",
         "kr"
       ],
       "meta": {
+        "cn": {
+          "description": "《女神异闻录5: 夜幕魅影》暴击率计算器。",
+          "title": "暴击率计算器 | 女神异闻录5: 夜幕魅影 路菲尔网"
+        },
         "en": {
           "description": "Persona 5: The Phantom X Critical Rate Calculator",
           "title": "Critical Rate Calculator | Lufelnet Persona 5: The Phantom X"
@@ -147,11 +164,16 @@
     },
     "defense-calc": {
       "langs": [
+        "cn",
         "en",
         "jp",
         "kr"
       ],
       "meta": {
+        "cn": {
+          "description": "《女神异闻录5: 夜幕魅影》防御力降低计算器。",
+          "title": "防御力降低计算器 | 女神异闻录5: 夜幕魅影 路菲尔网"
+        },
         "en": {
           "description": "Persona 5: The Phantom X Defense Reduction Calculator",
           "title": "Defense Reduction Calculator | Lufelnet Persona 5: The Phantom X"
@@ -180,11 +202,16 @@
     },
     "gallery": {
       "langs": [
+        "cn",
         "en",
         "jp",
         "kr"
       ],
       "meta": {
+        "cn": {
+          "description": "P5X 画廊。点击缩略图可查看原图大图。",
+          "title": "画廊 | 女神异闻录5: 夜幕魅影 路菲尔网"
+        },
         "en": {
           "description": "P5X Gallery. Click a thumbnail to view original image in a modal.",
           "title": "Gallery | Lufelnet Persona 5: The Phantom X"
@@ -213,11 +240,16 @@
     },
     "guides": {
       "langs": [
+        "cn",
         "en",
         "jp",
         "kr"
       ],
       "meta": {
+        "cn": {
+          "description": "페르소나5 더 팬텀 X 공략 가이드",
+          "title": "아티클 | 루페르넷 페르소나5 더 팬텀 X"
+        },
         "en": {
           "description": "Persona 5: The Phantom X Strategy Guides",
           "title": "Articles | Lufelnet Persona 5: The Phantom X"
@@ -247,11 +279,16 @@
     },
     "home": {
       "langs": [
+        "cn",
         "en",
         "jp",
         "kr"
       ],
       "meta": {
+        "cn": {
+          "description": "《女神异闻录5: 夜幕魅影》综合攻略站。怪盗养成、人格面具、启示与战术信息一站查看。",
+          "title": "路菲尔网 | 女神异闻录5: 夜幕魅影"
+        },
         "en": {
           "description": "Comprehensive guide for P5X. Wiki, Characters, Personas, skills, and strategy guides all in one place.",
           "title": "Lufelnet |  Persona 5: The Phantom X"
@@ -280,11 +317,16 @@
     },
     "login": {
       "langs": [
+        "cn",
         "en",
         "jp",
         "kr"
       ],
       "meta": {
+        "cn": {
+          "description": "路菲尔网账号登录页面。",
+          "title": "登录 | 女神异闻录5: 夜幕魅影 路菲尔网"
+        },
         "en": {
           "description": "Sign in to LufelNet.",
           "title": "Login | Lufelnet Persona 5: The Phantom X"
@@ -313,11 +355,22 @@
     },
     "maps": {
       "langs": [
+        "cn",
         "en",
         "jp",
         "kr"
       ],
       "meta": {
+        "cn": {
+          "detail": {
+            "description": "{path} 地图信息。查看 P5X 宫殿与印象空间的详细地图。",
+            "title": "{path} | 路菲尔网"
+          },
+          "list": {
+            "description": "P5X 地图查看器。查看宫殿与印象空间的全部地图。",
+            "title": "P5X 地图 | 路菲尔网"
+          }
+        },
         "en": {
           "detail": {
             "description": "{path} map info. Explore detailed maps of P5X Palaces and Mementos.",
@@ -369,11 +422,16 @@
     },
     "material-calc": {
       "langs": [
+        "cn",
         "en",
         "jp",
         "kr"
       ],
       "meta": {
+        "cn": {
+          "description": "《女神异闻录5: 夜幕魅影》角色养成材料计算器（等级/武器/技能/心象）。",
+          "title": "养成计算器 | 女神异闻录5: 夜幕魅影 路菲尔网"
+        },
         "en": {
           "description": "Persona 5: The Phantom X character progression material calculator (level/weapon/skill/mindscape)",
           "title": "Progression Calculator | Lufelnet Persona 5: The Phantom X"
@@ -402,11 +460,16 @@
     },
     "not-found": {
       "langs": [
+        "cn",
         "en",
         "jp",
         "kr"
       ],
       "meta": {
+        "cn": {
+          "description": "你请求的地址可能已更改或被删除。",
+          "title": "404 | 女神异闻录5: 夜幕魅影 路菲尔网"
+        },
         "en": {
           "description": "The page you requested may have moved or no longer exists.",
           "title": "404 | Lufelnet Persona 5: The Phantom X"
@@ -468,11 +531,18 @@
     },
     "persona": {
       "langs": [
+        "cn",
         "en",
         "jp",
         "kr"
       ],
       "meta": {
+        "cn": {
+          "description": "{name} 信息与技能 | 女神异闻录：夜幕魅影",
+          "list_description": "《女神异闻录：夜幕魅影》的主要人格面具信息。查看本能、固有技能与推荐技能。",
+          "list_title": "主要人格面具 - 女神异闻录：夜幕魅影",
+          "title": "人格面具 {name} | 女神异闻录：夜幕魅影 路菲尔网"
+        },
         "en": {
           "description": "{name} Info & Skills | Persona 5: The Phantom X",
           "list_description": "Persona Tiers, Skills, and Talent for Persona 5: The Phantom X.",
@@ -509,11 +579,16 @@
     },
     "pull-calc": {
       "langs": [
+        "cn",
         "en",
         "jp",
         "kr"
       ],
       "meta": {
+        "cn": {
+          "description": "《女神异闻录5: 夜幕魅影》抽卡计划模拟器。可根据后续角色上线时间，计算所需资源并制定契约计划。",
+          "title": "抽卡规划器 | 女神异闻录5: 夜幕魅影 路菲尔网"
+        },
         "en": {
           "description": "Pull planning simulator for Persona 5 The Phantom X. Calculate required resources and plan your pulls for upcoming character releases.",
           "title": "Pull Planner | Lufelnet Persona 5: The Phantom X"
@@ -542,11 +617,26 @@
     },
     "pull-tracker": {
       "langs": [
+        "cn",
         "en",
         "jp",
         "kr"
       ],
       "meta": {
+        "cn": {
+          "global": {
+            "description": "查看 P5X 契约全服统计与每日趋势。",
+            "title": "全服统计 | 女神异闻录5: 夜幕魅影 路菲尔网"
+          },
+          "guide": {
+            "description": "获取抽卡记录 URL 的方法说明。",
+            "title": "契约记录 URL 指南 | 女神异闻录5: 夜幕魅影 路菲尔网"
+          },
+          "individual": {
+            "description": "记录 P5X 契约抽取信息并查看统计数据。",
+            "title": "契约记录 | 女神异闻录5: 夜幕魅影 路菲尔网"
+          }
+        },
         "en": {
           "global": {
             "description": "View P5X global gacha statistics and daily trends.",
@@ -609,11 +699,16 @@
     },
     "revelation": {
       "langs": [
+        "cn",
         "en",
         "jp",
         "kr"
       ],
       "meta": {
+        "cn": {
+          "description": "查看《女神异闻录5: 夜幕魅影》的启示信息，包括套装效果与追加效果。",
+          "title": "启示 | 女神异闻录5: 夜幕魅影 路菲尔网"
+        },
         "en": {
           "description": "Revelation information for Persona 5: The Phantom X. Check set effects and additional effects.",
           "title": "Revelations Card Guide | Lufelnet Persona 5: The Phantom X"
@@ -642,11 +737,16 @@
     },
     "revelation-setting": {
       "langs": [
+        "cn",
         "en",
         "jp",
         "kr"
       ],
       "meta": {
+        "cn": {
+          "description": "设置怪盗的启示配置并生成分享图片。",
+          "title": "启示分享 - 女神异闻录5: 夜幕魅影 路菲尔网"
+        },
         "en": {
           "description": "Set your character revelation build and generate a share image.",
           "title": "Revelation Share | Lufelnet Persona 5: The Phantom X"
@@ -675,11 +775,16 @@
     },
     "schedule": {
       "langs": [
+        "cn",
         "en",
         "jp",
         "kr"
       ],
       "meta": {
+        "cn": {
+          "description": "《女神异闻录5: 夜幕魅影》角色上线日程。可追踪后续角色上线、当前卡池与补丁历史。",
+          "title": "上线日程 | 女神异闻录5: 夜幕魅影 路菲尔网"
+        },
         "en": {
           "description": "Release schedule for Persona 5 The Phantom X characters. Track upcoming character releases, current banners, and patch history.",
           "title": "Release Schedule | Lufelnet Persona 5: The Phantom X"
@@ -741,11 +846,18 @@
     },
     "synergy": {
       "langs": [
+        "cn",
         "en",
         "jp",
         "kr"
       ],
       "meta": {
+        "cn": {
+          "description": "P5X {name} 协同者攻略 | 好感度、选项、礼物",
+          "list_description": "P5X 协同者攻略 | 好感度、选项、礼物",
+          "list_title": "协同者攻略 | 女神异闻录5: 夜幕魅影 路菲尔网",
+          "title": "{name} 协同者攻略 | 女神异闻录5: 夜幕魅影 路菲尔网"
+        },
         "en": {
           "description": "P5X {name} synergy guide | Affinity, Choices, Gifts",
           "list_description": "P5X synergy guide | Affinity, Choices, Gifts",
@@ -781,11 +893,30 @@
     },
     "tactic": {
       "langs": [
+        "cn",
         "en",
         "jp",
         "kr"
       ],
       "meta": {
+        "cn": {
+          "maker": {
+            "description": "《女神异闻录5: 夜幕魅影》战术编辑器",
+            "title": "战术编辑器 - 女神异闻录5: 夜幕魅影 路菲尔网"
+          },
+          "share": {
+            "description": "自由分享《女神异闻录5: 夜幕魅影》的战术投稿。",
+            "title": "战术工坊 - 女神异闻录5: 夜幕魅影 路菲尔网"
+          },
+          "tactics": {
+            "description": "查看《女神异闻录5: 夜幕魅影》的战术投稿与攻略。",
+            "title": "战术库 - 女神异闻录5: 夜幕魅影 路菲尔网"
+          },
+          "upload": {
+            "description": "上传《女神异闻录5: 夜幕魅影》的战术。",
+            "title": "战术上传 - 女神异闻录5: 夜幕魅影 路菲尔网"
+          }
+        },
         "en": {
           "maker": {
             "description": "Persona 5: The Phantom X Tactic Maker",
@@ -861,11 +992,16 @@
     },
     "tactic-maker": {
       "langs": [
+        "cn",
         "en",
         "jp",
         "kr"
       ],
       "meta": {
+        "cn": {
+          "description": "《女神异闻录5: 夜幕魅影》战术编辑器。设置队伍与技能顺序后即可分享。",
+          "title": "战术编辑器 - 女神异闻录5: 夜幕魅影 路菲尔网"
+        },
         "en": {
           "description": "Persona 5: The Phantom X Tactic Maker. Set up your party and skill order to share.",
           "title": "Tactic Maker | Lufelnet Persona 5: The Phantom X"
@@ -894,11 +1030,16 @@
     },
     "tactic-share": {
       "langs": [
+        "cn",
         "en",
         "jp",
         "kr"
       ],
       "meta": {
+        "cn": {
+          "description": "自由分享《女神异闻录5: 夜幕魅影》的战术投稿。",
+          "title": "战术工坊 | 女神异闻录5: 夜幕魅影 路菲尔网"
+        },
         "en": {
           "description": "Freely share your Persona 5: The Phantom X tactics.",
           "title": "Tactic Forge | Lufelnet Persona 5: The Phantom X"
@@ -928,11 +1069,16 @@
     },
     "tactic-upload": {
       "langs": [
+        "cn",
         "en",
         "jp",
         "kr"
       ],
       "meta": {
+        "cn": {
+          "description": "上传《女神异闻录5: 夜幕魅影》的战术。",
+          "title": "战术上传 | 女神异闻录5: 夜幕魅影 路菲尔网"
+        },
         "en": {
           "description": "Upload your tactics for Persona 5: The Phantom X.",
           "title": "Upload Tactic | Lufelnet Persona 5: The Phantom X"
@@ -961,11 +1107,16 @@
     },
     "tactics": {
       "langs": [
+        "cn",
         "en",
         "jp",
         "kr"
       ],
       "meta": {
+        "cn": {
+          "description": "查看《女神异闻录5: 夜幕魅影》的战术投稿与攻略。",
+          "title": "战术库 | 女神异闻录5: 夜幕魅影 路菲尔网"
+        },
         "en": {
           "description": "Browse tactics for Persona 5: The Phantom X.",
           "title": "Tactic Library | Lufelnet Persona 5: The Phantom X"
@@ -995,11 +1146,18 @@
     },
     "tier": {
       "langs": [
+        "cn",
         "en",
         "jp",
         "kr"
       ],
       "meta": {
+        "cn": {
+          "description": "查看 P5X 各职业怪盗的梯级列表。",
+          "maker_description": "按职业制作你的 P5X 怪盗梯级列表。",
+          "maker_title": "梯级制作器 - 女神异闻录5: 夜幕魅影 路菲尔网",
+          "title": "梯级列表 - 女神异闻录5: 夜幕魅影 路菲尔网"
+        },
         "en": {
           "description": "Check P5X character tier list by position.",
           "maker_description": "Create your own P5X character tier list by position.",
@@ -1081,11 +1239,18 @@
     },
     "wonder-weapon": {
       "langs": [
+        "cn",
         "en",
         "jp",
         "kr"
       ],
       "meta": {
+        "cn": {
+          "description": "查看《女神异闻录5: 夜幕魅影》中 {name} 的 WONDER 武器信息，包括获取途径、效果与使用怪盗。",
+          "list_description": "查看《女神异闻录5: 夜幕魅影》的 WONDER 武器信息，包括获取途径、效果与使用怪盗。",
+          "list_title": "WONDER武器 - 女神异闻录5: 夜幕魅影 路菲尔网",
+          "title": "{name} WONDER武器 | 女神异闻录5: 夜幕魅影 路菲尔网"
+        },
         "en": {
           "description": "Wonder weapon information for {name} in Persona 5: The Phantom X. See source, effect, and characters.",
           "list_description": "Wonder weapon information for Persona 5: The Phantom X. See source, effect, and characters.",
@@ -1120,7 +1285,7 @@
       "type": "template"
     }
   },
-  "generatedAt": "2026-04-04T07:07:22.373Z",
+  "generatedAt": "2026-04-06T06:45:39.695Z",
   "localeMap": {
     "cn": "zh_CN",
     "en": "en_US",

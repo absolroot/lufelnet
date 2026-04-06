@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["유키 마코토"] = {
   "name": "유키 마코토",
   "r0": "위대한 결단",
@@ -18,6 +20,7 @@ window.ritualData["유키 마코토"] = {
   "r6": "맹세의 서약",
   "r6_detail": "유키 마코토가 임의 테우르기아 1종을 시전하면, 또 다른 테우르기아 효과 1종이 동시에 발동된다. 『홍련·맹화의 탐식』을 사용해 『특수 월상』을 소모하여 대미지를 줄 때 스킬 대미지가 20% 증가한다.\n유키 마코토가 처음 치명 대미지를 받으면 다음 턴 종료 전까지 자신의 생명이 1포인트 미만으로 하락하지 않고 빈사 상태에 진입하며, 자신은 다음 턴 종료 시 사망한다. 빈사 상태 기간에 자신의 생명이 최대 생명의 25% 이상 회복되면, 빈사 상태가 해제된다."
 };
+
 window.enCharacterRitualData["유키 마코토"] = {
   "name": "Makoto Yuki",
   "r0": "Great Guide",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["유키 마코토"] = {
   "r6": "The Promise",
   "r6_detail": "When Makoto uses any Theurgy, activate the other Theurgy. When spending [Special Moon Phase] to deal damage with [Scarlet: Devouring Blaze], increase the skill damage by 20%. \nWhen Makoto first receives fatal damage, his HP cannot drop below 1 until the end of his next turn, then enter near death, Makoto will faint when his next turn ends. If Makoto's HP is restored above 25% max HP during near death, remove near death."
 };
+
 window.jpCharacterRitualData["유키 마코토"] = {
   "name": "結城 理",
   "r0": "偉大なる決断",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["유키 마코토"] = {
   "r6": "誓いの盟約",
   "r6_detail": "結城理が任意のテウルギアを発動すると、もう一方のテウルギア効果も同時に発動する。『紅蓮・猛火の貪食』で『特別な月相』を消費してダメージを与える場合、スキルダメージが20%上昇する。\n結城理が初めて致命的ダメージを受けると、次のターン終了前までHPが1未満にならず、瀕死状態に入るが、次のターン終了時に死亡する。瀕死状態中にHPが最大HPの25%以上回復すると、瀕死状態が解除される。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["유키 마코토"] = {
   "name": "结城理",
@@ -71,3 +74,4 @@ window.cnCharacterRitualData["유키 마코토"] = {
   "r6": "约定的誓言",
   "r6_detail": "结城理释放任意一种神通法时，会同时触发另一种神通法的效果。使用『红莲·豪炎吞噬』消耗『特殊月相』造成伤害时，技能伤害提升20%。\n结城理首次受到致命伤害时，至自身下个回合结束前生命值不会低于1点，并进入濒死状态，自身下回合结束时死亡。濒死状态期间若自身生命值恢复至最大生命值的25%以上，则解除濒死状态。"
 };
+

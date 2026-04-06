@@ -17,12 +17,12 @@ sitemap: false
       var requestedLang = params.get("lang");
       params.delete("lang");
       params.delete("name");
-      var languageTargets = {"kr":"/kr/character/wind-tempest/","en":"/en/character/wind-tempest/","jp":"/jp/character/wind-tempest/"};
+      var languageTargets = {"kr":"/kr/character/wind-tempest/","en":"/en/character/wind-tempest/","jp":"/jp/character/wind-tempest/","cn":"/cn/character/wind-tempest/"};
       var defaultPath = "/en/character/wind-tempest/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

@@ -1,6 +1,8 @@
 window.characterSkillsData = window.characterSkillsData || {};
 window.enCharacterSkillsData = window.enCharacterSkillsData || {};
 window.jpCharacterSkillsData = window.jpCharacterSkillsData || {};
+window.cnCharacterSkillsData = window.cnCharacterSkillsData || {};
+
 window.characterSkillsData["유스케"] = {
   "name": "키타가와 유스케",
   "skill1": {
@@ -46,6 +48,7 @@ window.characterSkillsData["유스케"] = {
     "cool": 0
   }
 };
+
 window.enCharacterSkillsData["유스케"] = {
   "name": "Yusuke Kitagawa",
   "skill1": {
@@ -91,6 +94,7 @@ window.enCharacterSkillsData["유스케"] = {
     "cool": 0
   }
 };
+
 window.jpCharacterSkillsData["유스케"] = {
   "name": "喜多川 祐介",
   "skill1": {
@@ -136,20 +140,21 @@ window.jpCharacterSkillsData["유스케"] = {
     "cool": 0
   }
 };
-window.cnCharacterSkillsData = window.cnCharacterSkillsData || {};
 
 window.cnCharacterSkillsData["유스케"] = {
   "name": "喜多川祐介",
   "skill1": {
     "name": "寒气破击",
-    "element": "빙결",
+    "element": "빙결광역",
+    "type": "群体伤害",
     "sp": 20,
     "cool": 0,
     "description": "对所有敌人造成72.1%/79.5%/76.6%/84.0%防御力的冰冻属性伤害，有100%基础概率使主目标敌人陷入冻结状态，效果持续2回合。"
   },
   "skill2": {
     "name": "拟霜流连斩",
-    "element": "빙결",
+    "element": "빙결광역",
+    "type": "群体伤害",
     "sp": 20,
     "cool": 0,
     "description": "对随机敌人造成5次92.9%/102.4%/98.6%/108.1%防御力的冰冻属性伤害，优先攻击未受到该技能攻击的敌人。若自身处于护盾状态，则额外造成30%技能伤害。多次伤害命中同一目标伤害衰减60%，最低造成20%的伤害。"
@@ -157,25 +162,29 @@ window.cnCharacterSkillsData["유스케"] = {
   "skill3": {
     "name": "银华残心",
     "element": "버프",
+    "type": "反击强化",
     "sp": 24,
     "cool": 1,
     "description": "接下来1次『游龙展布』攻击强化为『墨见龙吟』。攻击触发概率提升至100%、技能倍率提升相当于祐介78.1%/86.1%/82.9%/90.9%的防御力并且以群体为目标攻击。若1回合内未触发『墨见龙吟』强化反击，则自动触发。\n此外自身获得19.5%/19.5%/20.7%/20.7%防御力+555/555/683/683的护盾，效果持续2回合。将自身弱点暂时变为默认耐性、免疫任何精神异常并嘲讽所有敌人，效果持续2回合。\n冷却时间：1回合。"
   },
+  "skill_highlight": {
+    "element": "빙결광역",
+    "type": "群体伤害",
+    "description": "对全体敌人造成178.1%/196.4%/189.1%/207.3%防御力的冰冻属性伤害，并使游龙展布触发概率提升35%，持续3回合。",
+    "cool": 4,
+    "name": "HIGHLIGHT"
+  },
   "passive1": {
     "name": "创造",
     "element": "패시브",
-    "cool": 0,
-    "description": "获得护盾时伤害提升7.5%，持续2回合，可叠6层。"
+    "description": "获得护盾时伤害提升7.5%，持续2回合，可叠6层。",
+    "cool": 0
   },
   "passive2": {
     "name": "雕琢",
     "element": "패시브",
-    "cool": 0,
-    "description": "使用技能提供护盾时，增加自身的穿透20.0%，持续1回合。"
-  },
-  "skill_highlight": {
-    "element": "빙결",
-    "cool": 4,
-    "description": "对全体敌人造成178.1%/196.4%/189.1%/207.3%防御力的冰冻属性伤害，并使游龙展布触发概率提升35%，持续3回合。"
+    "description": "使用技能提供护盾时，增加自身的穿透20.0%，持续1回合。",
+    "cool": 0
   }
 };
+

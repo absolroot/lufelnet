@@ -8,11 +8,11 @@
     function getCurrentLanguage() {
       const urlParams = new URLSearchParams(window.location.search);
       const urlLang = urlParams.get('lang');
-      if (urlLang && ['kr', 'en', 'jp'].includes(urlLang)) {
+      if (urlLang && ['kr', 'en', 'jp', 'cn'].includes(urlLang)) {
         return urlLang;
       }
       const savedLang = localStorage.getItem('preferredLanguage');
-      if (savedLang && ['kr', 'en', 'jp'].includes(savedLang)) {
+      if (savedLang && ['kr', 'en', 'jp', 'cn'].includes(savedLang)) {
         return savedLang;
       }
       return 'kr';
@@ -39,7 +39,7 @@
         return window.getCharacterDisplayName(charName);
       }
       const currentLang = getCurrentLanguage();
-      if (currentLang === 'kr' || !charName) {
+      if (((window.isKrLikeLanguage && window.isKrLikeLanguage(currentLang)) || currentLang === 'kr') || !charName) {
         return charName;
       }
       
@@ -207,11 +207,11 @@
         function getCurrentLanguage() {
           const urlParams = new URLSearchParams(window.location.search);
           const urlLang = urlParams.get('lang');
-          if (urlLang && ['kr', 'en', 'jp'].includes(urlLang)) {
+          if (urlLang && ['kr', 'en', 'jp', 'cn'].includes(urlLang)) {
             return urlLang;
           }
           const savedLang = localStorage.getItem('preferredLanguage');
-          if (savedLang && ['kr', 'en', 'jp'].includes(savedLang)) {
+          if (savedLang && ['kr', 'en', 'jp', 'cn'].includes(savedLang)) {
             return savedLang;
           }
           return 'kr';
@@ -231,7 +231,7 @@
         function getPersonaDisplayName(personaName) {
           const currentLang = getCurrentLanguage();
           const store = getPersonaStore() || {};
-          if (currentLang === 'kr' || !store[personaName]) {
+          if (((window.isKrLikeLanguage && window.isKrLikeLanguage(currentLang)) || currentLang === 'kr') || !store[personaName]) {
             return personaName;
           }
           

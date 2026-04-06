@@ -369,6 +369,15 @@ window.I18N_COMMON_EN = {
         }
     },
 
+    // CN beta notice
+    cnBetaNotice: {
+        title: 'Chinese Localization Beta',
+        bodyPrimary: 'Chinese pages are currently provided through translation, so some sentences may sound awkward and some game terms may be inaccurate.',
+        bodySecondary: 'Some pages or UI strings may also remain untranslated or still appear in Korean. Thank you for your understanding.',
+        dismissForever: 'Do not show again',
+        close: 'OK'
+    },
+
     // Labels
     labels: {
         total: 'Total',

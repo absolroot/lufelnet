@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["쇼키"] = {
   "name": "이케나미 쇼키",
   "r0": "덧없는 인생",
@@ -18,6 +20,7 @@ window.ritualData["쇼키"] = {
   "r6": "침묵 속에서 발견하는 또 다른 빛",
   "r6_detail": "『별들의 공연』을 사용해 『즉흥 공연』의 추가 효과 발동 시 효과 지속 시간이 4턴으로 연장된다."
 };
+
 window.enCharacterRitualData["쇼키"] = {
   "name": "Shoki Ikenami",
   "r0": "Four Acts of Life",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["쇼키"] = {
   "r6": "Discovering Another Light in Silence",
   "r6_detail": "When triggering the [Improv] from [Ensemble of Stars], extends the buff duration to 4 turns."
 };
+
 window.jpCharacterRitualData["쇼키"] = {
   "name": "池波 正輝",
   "r0": "儚き人生",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["쇼키"] = {
   "r6": "静寂の中で見つけたもう一つの光",
   "r6_detail": "『星々の公演』で『即興公演』の追加効果が発動した場合、その効果の持続時間が4ターンに延長される。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["쇼키"] = {
   "name": "池波星辉",
@@ -71,3 +74,4 @@ window.cnCharacterRitualData["쇼키"] = {
   "r6": "此外，沉默之余另有星光",
   "r6_detail": "使用『繁星共演』触发『即兴表演』的额外效果时，效果持续时间延长至4回合。"
 };
+

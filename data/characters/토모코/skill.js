@@ -1,6 +1,8 @@
 window.characterSkillsData = window.characterSkillsData || {};
 window.enCharacterSkillsData = window.enCharacterSkillsData || {};
 window.jpCharacterSkillsData = window.jpCharacterSkillsData || {};
+window.cnCharacterSkillsData = window.cnCharacterSkillsData || {};
+
 window.characterSkillsData["토모코"] = {
   "name": "노게 토모코",
   "skill1": {
@@ -46,6 +48,7 @@ window.characterSkillsData["토모코"] = {
     "cool": 0
   }
 };
+
 window.enCharacterSkillsData["토모코"] = {
   "name": "Tomoko Noge",
   "skill1": {
@@ -93,6 +96,7 @@ window.enCharacterSkillsData["토모코"] = {
     "cool": 0
   }
 };
+
 window.jpCharacterSkillsData["토모코"] = {
   "name": "野毛 朋子",
   "skill1": {
@@ -139,46 +143,51 @@ window.jpCharacterSkillsData["토모코"] = {
     "cool": 0
   }
 };
-window.cnCharacterSkillsData = window.cnCharacterSkillsData || {};
 
 window.cnCharacterSkillsData["토모코"] = {
   "name": "野毛朋子",
   "skill1": {
     "name": "念之旋律",
+    "element": "염동광역",
+    "type": "群体伤害",
     "sp": 20,
     "cool": 0,
-    "description": "对所有敌人造成91.5%/100.9%/95.3%/104.7%攻击力的念动属性伤害，并获得2个『青叶』。",
-    "element": "염동광역"
+    "description": "对所有敌人造成91.5%/100.9%/95.3%/104.7%攻击力的念动属性伤害，并获得2个『青叶』。"
   },
   "skill2": {
     "name": "叶笛赞歌",
+    "element": "버프",
+    "type": "增益",
     "sp": 22,
     "cool": 0,
-    "description": "使1名同伴获得『叶鸣小调』：使其攻击力提升30%，并且额外提升相当于朋子攻击力30%的攻击力（上限为1171/1291/1219/1339点攻击力），同时使其效果命中提升15%，持续2回合。该技能消耗2个『青叶』。",
-    "element": "버프"
+    "description": "使1名同伴获得『叶鸣小调』：使其攻击力提升30%，并且额外提升相当于朋子攻击力30%的攻击力（上限为1171/1291/1219/1339点攻击力），同时使其效果命中提升15%，持续2回合。该技能消耗2个『青叶』。"
   },
   "skill3": {
     "name": "晚安曲",
+    "element": "디버프",
+    "type": "控制",
     "sp": 24,
     "cool": 0,
-    "description": "有78.1%/86.1%/81.3%/89.3%基础概率使1名敌人陷入睡眠状态，效果持续1回合。若命中，则使敌人受到的下1次伤害提升29.3%/32.3%/30.5%/33.5%。若未命中，则提升14.6%/16.1%/15.2%/16.7%。该技能消耗2个『青叶』。",
-    "element": "디버프"
+    "description": "有78.1%/86.1%/81.3%/89.3%基础概率使1名敌人陷入睡眠状态，效果持续1回合。若命中，则使敌人受到的下1次伤害提升29.3%/32.3%/30.5%/33.5%。若未命中，则提升14.6%/16.1%/15.2%/16.7%。该技能消耗2个『青叶』。"
+  },
+  "skill_highlight": {
+    "element": "디버프",
+    "type": "控制",
+    "description": "使1名敌人有100%的基础概率陷入睡眠状态，效果持续1回合，并使其下1次受到的伤害提升32.8%/36.2%/34.1%/37.5%,效果持续1回合。",
+    "cool": 4,
+    "name": "HIGHLIGHT"
   },
   "passive1": {
     "name": "幻想",
     "element": "패시브",
-    "cool": 0,
-    "description": "以同伴为目标释放技能时，使其造成的伤害提升6.0%，效果持续2回合。"
+    "description": "以同伴为目标释放技能时，使其造成的伤害提升6.0%，效果持续2回合。",
+    "cool": 0
   },
   "passive2": {
     "name": "追寻",
     "element": "패시브",
-    "cool": 0,
-    "description": "使所有同伴对处于精神异常的敌人造成的伤害提升36.0%。"
-  },
-  "skill_highlight": {
-    "element": "디버프",
-    "cool": 4,
-    "description": "使1名敌人有100%的基础概率陷入睡眠状态，效果持续1回合，并使其下1次受到的伤害提升32.8%/36.2%/34.1%/37.5%,效果持续1回合。"
+    "description": "使所有同伴对处于精神异常的敌人造成的伤害提升36.0%。",
+    "cool": 0
   }
 };
+

@@ -17,12 +17,12 @@ sitemap: false
       var requestedLang = params.get("lang");
       params.delete("lang");
       params.delete("name");
-      var languageTargets = {"kr":"/kr/character/wind/","en":"/en/character/wind/","jp":"/jp/character/wind/"};
+      var languageTargets = {"kr":"/kr/character/wind/","en":"/en/character/wind/","jp":"/jp/character/wind/","cn":"/cn/character/wind/"};
       var defaultPath = "/en/character/wind/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

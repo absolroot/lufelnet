@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["토시야"] = {
   "name": "스미 토시야",
   "r0": "운명의 십사행시",
@@ -18,6 +20,7 @@ window.ritualData["토시야"] = {
   "r6": "불결로 구원한 신명",
   "r6_detail": "액티브 스킬 사용 후 다음 턴에 상응하는 『시』를 3회 추가 발동시킬 수 있다.\n『운명의 십사행시』 중에 최소 2종류의 특수 『시』가 있을 시 이번 『운명의 십사행시』 대미지가 67% 증가한다."
 };
+
 window.enCharacterRitualData["토시야"] = {
   "name": "Toshiya Sumi",
   "r0": "Sonnet of Fate",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["토시야"] = {
   "r6": "Life Advice",
   "r6_detail": "After using a skill, the Verse of Hate, Verse of Healing, or Verse of Passion gained activates 3 more times next turn.\nIf 2 or more different types of Verses are stacked, increase Sonnet of Fate damage by 67%."
 };
+
 window.jpCharacterRitualData["토시야"] = {
   "name": "須見 俊也",
   "r0": "運命の叙情詩",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["토시야"] = {
   "r6": "人生相談",
   "r6_detail": "自身がスキルを使用した時、獲得した『憎文』『癒文』『激文』の効果が次のターンに追加で3回発動する。\nさらに、『憎文』『癒文』『激文』の内２種類を獲得している時、『運命の叙情詩』の与ダメージが６７%上昇する。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["토시야"] = {
   "name": "须见俊也",
@@ -71,3 +74,4 @@ window.cnCharacterRitualData["토시야"] = {
   "r6": "以污秽救赎神明",
   "r6_detail": "使用主动技能后，相应特殊『诗句』可以在下一回合额外触发3次。\n当『命运的十四行诗』中有至少2种特殊『诗句』，本次『命运的十四行诗』伤害增加67%。"
 };
+

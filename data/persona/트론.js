@@ -16,6 +16,7 @@ window.personaFiles["트론"] = {
   "tier_desc": "버프 스킬을 사용할 때 보유하고 있는 중첩 수에 따라 추가적인 대미지 보너스 버프를 부여 가능하다.  스택 확보에는 원소 이상이 필요하지만 각 파티가 1, 2개씩은 적에게 원소 이상을 부여하는 경우가 대다수라 범용성을 지니며 페르소나 디오니소스가 없는 2번째 파티에 채용되는 경우가 잦다. 기본적으로 본능과 고유 스킬이 모두 화상을 부여하기 때문에 화상이 필수적인 캐릭터에게는 짝으로 붙어다닌다.",
   "tier_desc_en": "When you use a buff skill, it can grant an additional damage bonus buff based on the number of stacks it currently has. Building stacks requires elemental ailments, but most parties inflict one or two ailments anyway, so it remains broadly usable, and it is often chosen for a second party that does not have Dionysus. Because both its talent and unique skill naturally inflict Burn, it is commonly paired with characters that specifically require Burn.",
   "tier_desc_jp": "バフスキルを使う時、保有しているスタック数に応じて追加のダメージボーナスバフを付与できる。スタック確保には元素異常が必要だが、多くの編成では敵に1〜2種類の元素異常を付与するため汎用性は高く、ディオニュソスがいない2つ目のパーティで採用されることが多い。さらに本能と固有スキルの両方が火傷を付与できるため、火傷が必須のキャラとはセットになりやすい。",
+  "tier_desc_cn": "在使用增益技能时，可根据自身持有的层数额外提供伤害加成增益。虽然叠层需要元素异常，但大多数队伍本来就会给敌人附加 1 到 2 种元素异常，所以它依然很有泛用性，常被放进没有狄俄尼索斯的第二队。并且它的本能与固有技能都会附加燃烧，因此对必须依赖燃烧的角色来说几乎是固定搭配。",
   "comment": "",
   "comment_en": "※ When an ally uses a skill → When Wonder uses a skill to ally\n※ every 2 turns, inflict Burn → inflict Burn (even if in Sub-persona slot)",
   "comment_jp": "サブスロット編成時でも、バトル開始時に火傷付与の効果が発動する。",

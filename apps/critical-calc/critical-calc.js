@@ -135,19 +135,36 @@ class CriticalCalc {
     }
 
     normalizeCalcLang(rawLang) {
+        try {
+            if (typeof window.normalizeLanguage === 'function') {
+                return window.normalizeLanguage(rawLang);
+            }
+        } catch (_) {}
         const lang = String(rawLang || '').trim().toLowerCase();
         if (lang === 'kr' || lang === 'ko') return 'kr';
         if (lang === 'en') return 'en';
         if (lang === 'jp' || lang === 'ja') return 'jp';
-        if (lang === 'cn' || lang === 'tw' || lang === 'sea') return 'en';
+        if (lang === 'cn' || lang === 'zh') return 'cn';
+        if (lang === 'tw' || lang === 'sea') return 'en';
         return 'kr';
+    }
+
+    isKrLikeLanguage(rawLang = this.getCurrentLang()) {
+        try {
+            if (typeof window.isKrLikeLanguage === 'function') {
+                return !!window.isKrLikeLanguage(rawLang);
+            }
+        } catch (_) {}
+        const lang = this.normalizeCalcLang(rawLang);
+        return lang === 'kr' || lang === 'cn';
     }
 
     getCriticalPagePack(lang = this.getCurrentLang()) {
         const varMap = {
             kr: 'I18N_PAGE_CRITICAL_CALC_KR',
             en: 'I18N_PAGE_CRITICAL_CALC_EN',
-            jp: 'I18N_PAGE_CRITICAL_CALC_JP'
+            jp: 'I18N_PAGE_CRITICAL_CALC_JP',
+            cn: 'I18N_PAGE_CRITICAL_CALC_CN'
         };
         const fallbackVar = varMap.kr;
         const normalizedLang = this.normalizeCalcLang(lang);
@@ -157,7 +174,7 @@ class CriticalCalc {
 
     getCurrentLang() {
         try {
-            const pathMatch = String(window.location.pathname || '').match(/^\/(kr|en|jp)(\/|$)/i);
+            const pathMatch = String(window.location.pathname || '').match(/^\/(kr|en|jp|cn)(\/|$)/i);
             if (pathMatch && pathMatch[1]) {
                 return this.normalizeCalcLang(pathMatch[1]);
             }
@@ -211,6 +228,7 @@ class CriticalCalc {
             if (meta) {
                 if (lang === 'en') return meta.codename || groupName;
                 if (lang === 'jp') return meta.name_jp || groupName;
+                if (lang === 'cn') return meta.name_cn || groupName;
             }
         } catch(_) {}
         return groupName;
@@ -650,7 +668,9 @@ class CriticalCalc {
         // 목표 열
         const targetCell = document.createElement('td');
         targetCell.className = 'target-column';
-        targetCell.textContent = this.normalizeTextForLang(data.target || '');
+        const currentLang = this.getCurrentLang();
+        const targetText = (currentLang === 'cn' && data.target_cn) ? data.target_cn : this.normalizeTextForLang(data.target || '');
+        targetCell.textContent = targetText;
         targetCell.setAttribute('data-target', data.target || '');
         row.appendChild(targetCell);
         
@@ -679,22 +699,23 @@ class CriticalCalc {
         // 스킬 이름 열 (분류 + 이름 결합)
         const skillNameCell = document.createElement('td');
         skillNameCell.className = 'skill-name-column';
-        const currentLang = this.getCurrentLang();
         let localizedName = '';
         // 기본: 현지화된 이름 우선
         if (currentLang === 'en') {
             localizedName = (data.skillName_en && String(data.skillName_en).trim()) ? data.skillName_en : '';
         } else if (currentLang === 'jp') {
             localizedName = (data.skillName_jp && String(data.skillName_jp).trim()) ? data.skillName_jp : '';
+        } else if (currentLang === 'cn') {
+            localizedName = (data.skillName_cn && String(data.skillName_cn).trim()) ? data.skillName_cn : '';
         }
         // 폴백 규칙: EN/JP에서도 원더 그룹의 전용무기/페르소나/스킬만 KR 이름으로 폴백 허용
         if (!localizedName) {
             const isWonder = groupName === '원더';
             const typeStr = String(data.type || '');
             const isWonderDisplayType = isWonder && (typeStr === '전용무기' || typeStr === '페르소나' || typeStr === '스킬');
-            if (currentLang !== 'kr' && isWonderDisplayType) {
+            if (!this.isKrLikeLanguage(currentLang) && isWonderDisplayType) {
                 localizedName = data.skillName || '';
-            } else if (currentLang === 'kr') {
+            } else if (this.isKrLikeLanguage(currentLang)) {
                 localizedName = data.skillName || '';
             } else {
                 // 그 외 언어/그룹은 폴백하지 않음 → 타입만 표시
@@ -704,7 +725,9 @@ class CriticalCalc {
 
         const typeSpan = document.createElement('span');
         typeSpan.className = 'skill-type-label';
-        typeSpan.textContent = this.normalizeTextForLang(data.type || '');
+        typeSpan.textContent = (currentLang === 'cn' && data.type_cn)
+            ? data.type_cn
+            : this.normalizeTextForLang(data.type || '');
         
         const nameSpan = document.createElement('span');
         nameSpan.className = 'skill-name-text';
@@ -716,7 +739,7 @@ class CriticalCalc {
         const hasNameText = localizedName && localizedName.trim();
         const shouldHideTypeLabel = isMobile && (isWonder || isRevelation) && hasNameText;
         
-        if (currentLang === 'kr') {
+        if (this.isKrLikeLanguage(currentLang)) {
             // KR: 분류 + 이름 모두 표기
             nameSpan.textContent = localizedName;
             if (!shouldHideTypeLabel) {
@@ -765,14 +788,19 @@ class CriticalCalc {
         if (data.options && data.options.length > 0) {
             const select = document.createElement('select');
             select.setAttribute('data-id', data.id);
+            const baseOptions = data.options;
+            const labelOptions = (currentLang === 'cn' && Array.isArray(data.options_cn) && data.options_cn.length === baseOptions.length)
+                ? data.options_cn
+                : baseOptions;
 
             // 저장된 옵션 로드
             const savedOption = this.loadOptionSelection(data.id, isSelf);
 
-            data.options.forEach(opt => {
+            baseOptions.forEach((opt, index) => {
                 const el = document.createElement('option');
                 el.value = opt;
-                el.textContent = this.normalizeTextForLang(opt);
+                const label = labelOptions[index] !== undefined ? labelOptions[index] : opt;
+                el.textContent = currentLang === 'cn' ? label : this.normalizeTextForLang(label);
                 // 저장된 옵션이 있으면 우선 적용, 없으면 기본값
                 if (savedOption !== null && savedOption === opt) {
                     el.selected = true;
@@ -821,7 +849,9 @@ class CriticalCalc {
         
         const durationCell = document.createElement('td');
         durationCell.className = 'duration-column';
-        durationCell.textContent = this.normalizeTextForLang(data.duration || '');
+        durationCell.textContent = (currentLang === 'cn' && data.duration_cn)
+            ? data.duration_cn
+            : this.normalizeTextForLang(data.duration || '');
         row.appendChild(durationCell);
         
         // 비고 열
@@ -832,7 +862,8 @@ class CriticalCalc {
         const lang = this.getCurrentLang();
         if (lang === 'en' && data.note_en) noteText = data.note_en;
         else if (lang === 'jp' && data.note_jp) noteText = data.note_jp;
-        noteCell.textContent = this.normalizeTextForLang(noteText);
+        else if (lang === 'cn' && data.note_cn) noteText = data.note_cn;
+        noteCell.textContent = lang === 'cn' ? noteText : this.normalizeTextForLang(noteText);
         
         // note가 비어있으면 행에 클래스 추가 (모바일에서 3행 제거용)
         if (!noteText || !noteText.trim()) {

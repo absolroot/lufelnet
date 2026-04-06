@@ -18,12 +18,12 @@ sitemap: false
       params.delete("lang");
       params.delete("name");
       params.delete("persona");
-      var languageTargets = {"kr":"/kr/persona/sraosha/","en":"/en/persona/sraosha/","jp":"/jp/persona/sraosha/"};
+      var languageTargets = {"kr":"/kr/persona/sraosha/","en":"/en/persona/sraosha/","jp":"/jp/persona/sraosha/","cn":"/cn/persona/sraosha/"};
       var defaultPath = "/en/persona/sraosha/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

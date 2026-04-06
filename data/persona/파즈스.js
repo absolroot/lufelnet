@@ -16,6 +16,7 @@ window.personaFiles["파즈스"] = {
   "tier_desc": "주원 스택을 여러개 쌓는 로직을 지닌 캐릭터 토시야와 함께 활용할 때 사용한다. 아기다인을 통한 화상 효과 + 본능에 의한 주원 대미지 결산 형태로 운영된다.",
   "tier_desc_en": "Used alongside Toshiya, whose kit stacks multiple Curse stacks. It is played around Agidyne's Burn plus the talent's Curse damage settlement.",
   "tier_desc_jp": "呪怨スタックを複数重ねるロジックを持つ俊也と組ませる時に使われる。アギダインによる火傷と、本能による呪怨ダメージ精算を軸に運用する。",
+  "tier_desc_cn": "会在与须见俊也这类拥有多层诅咒叠加机制的角色配合时使用。通常以『亚基达因』附加的燃烧效果 + 本能带来的诅咒伤害结算为核心来运转。",
   "comment": "주원 효과 대미지는 만능 대미지에 영향을 받는다.",
   "comment_en": "Curse effect damage is affected by Almighty damage.",
   "comment_jp": "呪印ダメージは万能属性ダメージとして扱われる。",

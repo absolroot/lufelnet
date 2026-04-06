@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["미나미"] = {
   "name": "미야시타 미나미",
   "r0": "건강 체크",
@@ -18,6 +20,7 @@ window.ritualData["미나미"] = {
   "r6": "양심 부활",
   "r6_detail": "동료가 사망하면 즉시 부활시키고 미야시타 미나미의 최대 생명 40%+1,200의 생명을 회복시킨다. 전투마다 1회 발동된다."
 };
+
 window.enCharacterRitualData["미나미"] = {
   "name": "Minami Miyashita",
   "r0": "Nurse's Oath",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["미나미"] = {
   "r6": "Guardian of Life",
   "r6_detail": "Restore a KO'd ally's HP equal to 40% of Minami's max HP + 1200. This effect can be activated once per battle."
 };
+
 window.jpCharacterRitualData["미나미"] = {
   "name": "宮下 美波",
   "r0": "看護の誓詞",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["미나미"] = {
   "r6": "生命の守護者",
   "r6_detail": "戦闘不能になった味方を、美波の最大ＨＰ４０%＋１２００で回復する。この効果は１回のバトル中に１度だけ発動する。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["미나미"] = {
   "name": "宫下美波",
@@ -71,3 +74,4 @@ window.cnCharacterRitualData["미나미"] = {
   "r6": "心肺复苏",
   "r6_detail": "当同伴死亡时立即使其复活并恢复等同于宫下美波40%最大生命值+1200的生命值，每场战斗触发1次。"
 };
+

@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["YUI·스텔라"] = {
   "name": "YUI·스텔라",
   "r0": "두근두근 새싹 군단",
@@ -18,6 +20,7 @@ window.ritualData["YUI·스텔라"] = {
   "r6": "은하 축제",
   "r6_detail": "『<span style='background:linear-gradient(to right,rgb(184, 33, 214), #C7BE5A,rgb(254, 149, 244),rgb(11, 190, 11)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; color:transparent;'>스텔라 윙</span>』 상태를 추가로 해제한다. 괴도복이 스텔라 형태로 변경되며, 동시에 『<span style='color:rgb(184, 33, 214);'>보라 가지</span>』, 『<span style='color:#C7BE5A;'>노란 감자</span>』, 『<span style='color:rgb(254, 149, 244);'>분홍 버섯</span>』, 『<span style='color:rgb(11, 190, 11);'>초록 아스파라거스</span>』의 능력을 획득한다.\n전투 시작 시 『대난투』 상태에 진입한다(해당 전투에서 영구 적용).\n『대난투』 효과 조정: 모든 동료의 턴이 끝날 때마다 추가 효과 『베지나이츠·출격』을 발동한다. 액티브로 『베지나이츠·집합』 시전 시 감자 나이트를 1개 추가로 소환한다."
 };
+
 window.enCharacterRitualData["YUI·스텔라"] = {
   "name": "YUI·Prism",
   "r0": "Doki Doki Sprout Legion",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["YUI·스텔라"] = {
   "r6": "Galactic Celebration",
   "r6_detail": "Unlock [<span style='background:linear-gradient(to right,rgb(184, 33, 214), #C7BE5A,rgb(254, 149, 244),rgb(11, 190, 11)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; color:transparent;'>Prismatic Wings</span>] state, [<span style='background:linear-gradient(to right,rgb(184, 33, 214), #C7BE5A,rgb(254, 149, 244),rgb(11, 190, 11)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; color:transparent;'>Prismatic Wings</span>] has the ability of [<span style='color:rgb(184, 33, 214);'>Eggplant Purple</span>], [<span style='color:#C7BE5A;'>Potato Yellow</span>], [<span style='color:rgb(254, 149, 244);'>Mushroom Pink</span>], and [<span style='color:rgb(11, 190, 11);'>Asparagus Green</span>].\nAt the start of battle, [Smash] state is active. This effect is permanent.\nChange [Smash] effect to: At the end of all allies' turn, activate Resonance [Vegetable Knights: Strike].\nWhen YUI manually uses [Vegetable Knights: Assemble], summon 1 more [<span style='color:#C7BE5A;'>Potato Knight</span>]."
 };
+
 window.jpCharacterRitualData["YUI·스텔라"] = {
   "name": "YUI·プリズム",
   "r0": "ドキドキ芽キャベ団",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["YUI·스텔라"] = {
   "r6": "銀河祭開幕",
   "r6_detail": "『<span style='background:linear-gradient(to right,rgb(184, 33, 214), #C7BE5A,rgb(254, 149, 244),rgb(11, 190, 11)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; color:transparent;'>プリズムウィング</span>』フォーム解禁。怪盗服が虹色に変化し、4色すべての効果を得る。戦闘開始時、『乱闘』状態になり、戦闘中永続する。\n『乱闘』効果変更：味方のターン終了時ごとに『野菜騎士・出撃』を追加で発動。\n『野菜騎士・集合』使用時、ジャガイモ騎士を1体追加召喚。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["YUI·스텔라"] = {
   "name": "YUI·幻彩",
@@ -71,3 +74,4 @@ window.cnCharacterRitualData["YUI·스텔라"] = {
   "r6": "欢祝银河庆典",
   "r6_detail": "额外解锁『幻彩之羽』形态，怪盗服变幻为炫彩形态，同时获得『茄之紫』、『薯之黄』、『菇之粉』、『笋之绿』的能力。\n战斗开始时进入『大乱斗』状态，本场战斗永久生效。\n『大乱斗』效果调整为：所有同伴回合结束时，发动追加效果『蔬菜骑士·出击』。\n主动释放『蔬菜骑士·集合』时，额外召唤1个土豆骑士。"
 };
+

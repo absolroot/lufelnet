@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["미오"] = {
   "name": "나츠카와 미오",
   "r0": "억제되는 불의 파도",
@@ -18,6 +20,7 @@ window.ritualData["미오"] = {
   "r6": "소멸하는 에도의 꽃",
   "r6_detail": "나츠카와 미오의 턴이 시작될 시 임의의 화상 상태인 적이 있으면 즉시 해당 적을 메인 목표로 하여 『파도의 메아리』를 1회 시전한다(『타오르는 숨결』도 해당 효과 발동 가능).\n연속으로 『흐름의 폭발』/『폭발의 용오름』을 사용해 동일한 목표를 공격할 때, 1턴 동안 추가로 목표가 받는 대미지가 25% 증가한다.\n『익수』의 중첩 상한이 6회로 증가한다."
 };
+
 window.enCharacterRitualData["미오"] = {
   "name": "Mio Natsukawa",
   "r0": "Smothering Agony",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["미오"] = {
   "r6": "Firefighter's Soul",
   "r6_detail": "If foes have Burn or Scald on Natsukawa's action, activate Sub-Zero Torrent on that foe 1 time.\nAlso, when the same foe is attacked repeatedly with Extinguishing Guidance or Requiem Guidance, increase the target's damage taken by 25% more for 1 turn.\nThe maximum number of Damnation stacks becomes 6."
 };
+
 window.jpCharacterRitualData["미오"] = {
   "name": "夏川 澪",
   "r0": "苦悩の火消し",
@@ -52,12 +56,11 @@ window.jpCharacterRitualData["미오"] = {
   "r6": "魂の火消し",
   "r6_detail": "自身の行動時に炎上または『熱傷』状態の敵がいると、その敵に『零下の奔流』を１回発動する。\nさらに連続して同じ敵に『鎮火の水しるべ』か『鎮魂の水しるべ』で攻撃した時、１ターンの間、対象の被ダメージが追加で２５%上昇する。\n『責め苦』の累積最大数が６つになる。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["미오"] = {
   "name": "夏川澪",
   "r0": "焰潮遏止",
-  "r0_detail": "夏川澪的部分技能可以造成冰冻属性TECHNICAL。自身回合开始时，获得1层『熄炎之力』，最多可叠加4层。释放『断流瀑裂』时会消耗『熄炎之力』，每消耗1层『熄炎之力』为所有敌人添加1层『溺水』。\n『溺水』：受到伤害提升6%，持续2回合，最多可叠加4层。",
+  "r0_detail": "夏川澪的部分技能可以造成冰冻属性TECHNICAL。自身回合开始时，获得1层『熄炎之力』，最多可叠加4层。释放『断流瀑裂』时会消耗『熄炎之力』，每消耗1层『熄炎之力』为所有敌人添加1层『溺水』。\n『溺水』：受到伤害提升6%，持续2回合，最多可叠加4层。\n夏川澪造成冰冻伤害时忽视敌人的『耐』适应性。",
   "r1": "奉书火消",
   "r1_detail": "释放『迴波潮聚』时额外获得1层『熄炎之力』；消耗『熄炎之力』时额外使所有敌人受到的暴击效果提升30%，持续2回合。",
   "r2": "克炎守境",
@@ -65,9 +68,10 @@ window.cnCharacterRitualData["미오"] = {
   "r3": "断燃息烟",
   "r3_detail": "『断流瀑裂』、『战斗技巧』的技能等级提升3级，至多提升至15级。",
   "r4": "鸢以镇灼",
-  "r4_detail": "HIGHLIGHT效果提升：HIGHLIGHT造成的受到伤害提升效果持续时间延长1回合；HIGHLIGHT触发『冰封』时使冰封的基础概率提升至40%。",
+  "r4_detail": "HIGHLIGHT效果提升：HIGHLIGHT造成的受到伤害提升效果持续时间延长1回合；HIGHLIGHT触发『冰封』时使冰封的基础概率提升至44%。",
   "r5": "止燎七则",
   "r5_detail": "『迴波潮聚』、『浪里千缚』的技能等级提升3级，至多提升至15级。",
   "r6": "消弭江户之花",
   "r6_detail": "夏川澪回合开始时，若有敌人处于任意燃烧状态下，立刻以其作为主目标释放1次『迴波潮聚』（『焚炎将息』也可触发此效果）。\n连续使用『断流瀑裂』/『断流瀑裂·水龙卷』攻击同一目标时，额外使目标获得受到伤害提升25%的效果，持续1回合。\n『溺水』上限层数提升至6层。"
 };
+

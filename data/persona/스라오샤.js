@@ -16,6 +16,7 @@ window.personaFiles["스라오샤"] = {
   "tier_desc": "괴도 카스미 특화 페르소나로 카스미의 주요 딜링 타이밍인 3, 6턴에 고유 스킬을 사용한다.",
   "tier_desc_en": "A Persona specialized for Kasumi. Use its unique skill on turns 3 and 6, which are Kasumi's main damage turns.",
   "tier_desc_jp": "かすみ特化のペルソナで、かすみの主な火力ターンである3ターン目と6ターン目に固有スキルを使用する。",
+  "tier_desc_cn": "是面向怪盗芳泽霞的特化人格面具，通常会在芳泽霞的主要输出回合，也就是第 3、6 回合，使用它的固有技能。",
   "comment": "선봉이 아닌 파티에 속해있기만 해도 『신의 귀』중첩을 획득 가능하다.",
   "comment_en": "Can gain [God's Ear] stacks just by being in the party, not necessarily in the front line.",
   "comment_jp": "先鋒でなくてもパーティに属しているだけで『神の耳』重複を獲得可能である。",

@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Redirecting...</title>
+</head>
+<body>
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search || "");
+      params.set("lang", "cn");
+      var query = params.toString();
+      var target = {{ include.target | jsonify }};
+      var next = target + (query ? ("?" + query) : "");
+      window.location.replace(next);
+    })();
+  </script>
+  <noscript><meta http-equiv="refresh" content="0; url={{ include.target }}?lang=cn"></noscript>
+  <a href="{{ include.target }}?lang=cn">Continue</a>
+</body>
+</html>

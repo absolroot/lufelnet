@@ -18,12 +18,12 @@ sitemap: false
       params.delete("lang");
       params.delete("name");
       params.delete("persona");
-      var languageTargets = {"kr":"/kr/persona/zaou-gongen/","en":"/en/persona/zaou-gongen/","jp":"/jp/persona/zaou-gongen/"};
+      var languageTargets = {"kr":"/kr/persona/zaou-gongen/","en":"/en/persona/zaou-gongen/","jp":"/jp/persona/zaou-gongen/","cn":"/cn/persona/zaou-gongen/"};
       var defaultPath = "/en/persona/zaou-gongen/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

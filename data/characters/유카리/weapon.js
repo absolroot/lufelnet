@@ -1,6 +1,8 @@
 window.WeaponData = window.WeaponData || {};
 window.enCharacterWeaponData = window.enCharacterWeaponData || {};
 window.jpCharacterWeaponData = window.jpCharacterWeaponData || {};
+window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
+
 window.WeaponData["유카리"] = {
   "name": "타케바 유카리",
   "weapon4-1": {
@@ -20,6 +22,7 @@ window.WeaponData["유카리"] = {
     "description": "공격력이 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0% 증가한다.\n아군 동료가 『바람의 흔적』을 보유한 적을 공격해 생명 회복 시 치료량이 15.7%/20.3%/20.3%/24.9%/24.9%/29.5%/29.5% 추가 증가한다. 『리바이브 애로』 시전 시, 『바람의 언어』를 1중첩 소모할 때마다 2턴 동안 아군 전체의 주는 대미지가 10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0% 증가한다(2회 중첩 가능)."
   }
 };
+
 window.enCharacterWeaponData["유카리"] = {
   "name": "Yukari Takeba",
   "weapon4-1": {
@@ -39,6 +42,7 @@ window.enCharacterWeaponData["유카리"] = {
     "description": "Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%.\nWhen allies restore HP by attacking foes with [Wind Erosion], additionally increase healing by 15.7%/20.3%/20.3%/24.9%/24.9%/29.5%/29.5%. When using [Arrow of Rejuvenation], for every stack of [Wind Whisper] spent, increase the party's damage by 10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0% for 2 turns. Stacks up to 2 times."
   }
 };
+
 window.jpCharacterWeaponData["유카리"] = {
   "name": "岳羽 ゆかり",
   "weapon4-1": {
@@ -58,21 +62,24 @@ window.jpCharacterWeaponData["유카리"] = {
     "description": "攻撃力が30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%増加する。味方が『風の痕跡』を持つ敵を攻撃して回復を発動すると、回復量が15.7%/20.3%/20.3%/24.9%/24.9%/29.5%/29.5%追加で増加する。『リバイブアロー』発動時、『風の言語』1スタックを消費するごとに、味方全体の与えるダメージが2ターンの間10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0%増加する（最大2回重複可能）。"
   }
 };
-window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
 
 window.cnCharacterWeaponData["유카리"] = {
-  "weapon5-1": {
-    "name": "萨伦伽",
-    "health": 2279.27,
-    "attack": 706.91,
-    "defense": 409.62,
-    "description": "攻击力提升30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%。\n友方同伴通过攻击带有『风蚀』的敌人恢复生命值时，治疗量额外提升15.7%/20.3%/20.3%/24.9%/24.9%/29.5%/29.5%。释放『复苏之矢』时，每消耗1层『风语』，使所有同伴造成伤害提升10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0%，持续2回合，可叠加2层。"
-  },
+  "name": "岳羽由加莉",
   "weapon4-1": {
     "name": "鬼神之弓",
     "health": 1823.43,
     "attack": 565.81,
     "defense": 328.02,
+    "skill_name": "",
     "description": "攻击力提升12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%。\n释放『复苏之矢』时，治疗效果提升13.0%/16.9%/16.9%/20.9%/20.9%/24.8%/24.8%。"
+  },
+  "weapon5-1": {
+    "name": "萨伦伽",
+    "health": 2279.27,
+    "attack": 706.91,
+    "defense": 409.62,
+    "skill_name": "",
+    "description": "攻击力提升30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%。\n友方同伴通过攻击带有『风蚀』的敌人恢复生命值时，治疗量额外提升15.7%/20.3%/20.3%/24.9%/24.9%/29.5%/29.5%。释放『复苏之矢』时，每消耗1层『风语』，使所有同伴造成伤害提升10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0%，持续2回合，可叠加2层。"
   }
 };
+

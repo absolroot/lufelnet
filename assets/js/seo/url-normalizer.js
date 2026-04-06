@@ -9,7 +9,8 @@
 
   function normalizeDetailLang(raw) {
     var value = String(raw || '').toLowerCase();
-    if (value === 'cn' || value === 'tw' || value === 'sea') return 'en';
+    if (value === 'cn') return 'cn';
+    if (value === 'tw' || value === 'sea') return 'en';
     if (value === 'en' || value === 'jp' || value === 'kr') return value;
     return 'en';
   }
@@ -23,8 +24,10 @@
     return '';
   }
 
-  function removeCommonParams(params) {
-    params.delete('lang');
+  function removeCommonParams(params, context) {
+    if (!context || context.domain !== 'login') {
+      params.delete('lang');
+    }
     params.delete('v');
   }
 
@@ -75,6 +78,17 @@
     if (!id) return false;
     url.pathname = '/' + lang + '/article/' + encodeURIComponent(id) + '/';
     url.searchParams.delete('id');
+    return true;
+  }
+
+  function normalizeGuideLegacyDetail(url, lang) {
+    var legacyDetailMatch = String(url.pathname || '').match(/^\/article\/([^\/?#]+)\/?$/i);
+    if (!legacyDetailMatch) return false;
+
+    var guideId = String(legacyDetailMatch[1] || '').trim();
+    if (!guideId || guideId.toLowerCase() === 'view') return false;
+
+    url.pathname = '/' + lang + '/article/' + encodeURIComponent(guideId) + '/';
     return true;
   }
 
@@ -179,7 +193,7 @@
       return true;
     }
     if (domain === 'pay-calc' && /^\/pay-calc\/?$/i.test(url.pathname)) {
-      url.pathname = '/kr/pay-calc/';
+      url.pathname = '/' + (lang === 'cn' ? 'cn' : 'kr') + '/pay-calc/';
       return true;
     }
     if (domain === 'critical-calc' && /^\/critical-calc\/?$/i.test(url.pathname)) {
@@ -241,12 +255,13 @@
     changed = normalizePersona(url, detailLang) || changed;
     changed = normalizeWonderWeapon(url, detailLang) || changed;
     changed = normalizeGuideDetail(url, lang) || changed;
+    changed = normalizeGuideLegacyDetail(url, lang) || changed;
     changed = normalizeTier(url, lang) || changed;
     changed = normalizeVelvetTrial(url, lang) || changed;
     changed = normalizeHome(url, lang) || changed;
     changed = normalizeLegacyRoot(url, safeContext, lang) || changed;
 
-    removeCommonParams(url.searchParams);
+    removeCommonParams(url.searchParams, safeContext);
 
     var after = url.pathname + (url.searchParams.toString() ? ('?' + url.searchParams.toString()) : '');
     if (before !== after) changed = true;

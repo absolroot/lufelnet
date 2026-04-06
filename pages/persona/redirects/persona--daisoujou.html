@@ -18,12 +18,12 @@ sitemap: false
       params.delete("lang");
       params.delete("name");
       params.delete("persona");
-      var languageTargets = {"kr":"/kr/persona/daisoujou/","en":"/en/persona/daisoujou/","jp":"/jp/persona/daisoujou/"};
+      var languageTargets = {"kr":"/kr/persona/daisoujou/","en":"/en/persona/daisoujou/","jp":"/jp/persona/daisoujou/","cn":"/cn/persona/daisoujou/"};
       var defaultPath = "/en/persona/daisoujou/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

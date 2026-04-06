@@ -18,12 +18,12 @@ sitemap: false
       params.delete("lang");
       params.delete("name");
       params.delete("persona");
-      var languageTargets = {"kr":"/kr/persona/dakini/","en":"/en/persona/dakini/","jp":"/jp/persona/dakini/"};
+      var languageTargets = {"kr":"/kr/persona/dakini/","en":"/en/persona/dakini/","jp":"/jp/persona/dakini/","cn":"/cn/persona/dakini/"};
       var defaultPath = "/en/persona/dakini/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

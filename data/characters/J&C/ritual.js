@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["J&C"] = {
   "name": "쥐스틴&카롤린",
   "r0": "쌍둥이 간수",
@@ -18,6 +20,7 @@ window.ritualData["J&C"] = {
   "r6": "파멸에 맞서는 힘",
   "r6_detail": "의식 『파멸에 맞서는 힘』 해제 시 원더의 페르소나 스킬과 전투 기술 레벨이 1레벨 증가한다(쥐스틴&카롤린이 필드에 없어도 적용).\n쥐스틴&카롤린의 『페르소나 성능』이 20% 증가한다.\n전투 시작 시 『진실의 욕망』을 획득하고, 8턴마다 『진실의 욕망』을 1중첩 획득한다.\n턴 시작 시 『진실의 욕망』을 1중첩 소모하여 모든 페르소나의 힘을 융합해 다음 1회의 『둘이 하나 되는 페르소나』의 효과를 강화한다.\n강화 후: 『둘이 하나 되는 페르소나』의 모든 『모습』 조합의 효과를 발동하며, 스킬 목표에 추가로 공격력 40%의 대미지를 8회 준다(페르소나 성능 1포인트마다 상기 효과가 1%의 성능으로 발동, 적합성: 화염, 빙결, 전격, 질풍, 염동, 핵열, 축복, 주원)."
 };
+
 window.enCharacterRitualData["J&C"] = {
   "name": "Justine & Caroline",
   "r0": "Twin Wardens",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["J&C"] = {
   "r6": "Power to Resist Ruin",
   "r6_detail": "When this Awareness is unlocked, during battle, increase Wonder's skill and Thief Tactics levels by 1 (takes effect even when Justine & Caroline are not in battle). Also, increase Desire Level by 20%.\nAt the start of battle, gain True Desire. Afterwards, regain True Desire every 8 turns if it has been spent.\nDuring Justine & Caroline's turn, they can spend 1 True Desire stack to enhance the next activated Two Masks as One.\nEnhanced effect: Activate all Facade effects for Two Masks as One. Also, deal bonus damage to the main target equal to 40% of Attack (8 hits. Increase this skill's effect by 1% for every 1 point of Desire Level. These bonus hits deal 1 hit of Fire, Ice, Electric, Wind, Psychokinesis, Nuclear, Bless, and Curse damage each.)"
 };
+
 window.jpCharacterRitualData["J&C"] = {
   "name": "ジュスティーヌ＆カロリーヌ",
   "r0": "双子の看守",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["J&C"] = {
   "r6": "破滅に抗う力",
   "r6_detail": "この意識を解放すると、戦闘中、主人公のスキルと『怪盗戦技』のレベルがさらに１上昇する（自身が戦闘に参加していない場合でも有効）。さらに『デザイアレベル』が２０%上昇する。\n戦闘開始時、『真実の渇望』を獲得する。その後、８ターン経過するごとに『真実の渇望』を消費していた場合、再び獲得する。\n自身のターン中、『真実の渇望』を１つ消費して、次に発動する『二者合一の仮面』を強化することができる。\n強化効果：『二者合一の仮面』の全ての『相貌』効果を発動する。さらに選択した対象に攻撃力４０%のダメージを８回追加で与える（『デザイアレベル』１ごとに、この効果が１%上昇する。追加攻撃は火炎・氷結・電撃・疾風・念動・核熱・祝福・呪怨属性それぞれを１回ずつ与える）。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["J&C"] = {
   "name": "芮丝汀娜&卡萝莉娜",
@@ -71,3 +74,4 @@ window.cnCharacterRitualData["J&C"] = {
   "r6": "抵抗毁灭的力量",
   "r6_detail": "解锁意识『抵抗毁灭的力量』后，WONDER的人格面具技能和战斗技巧等级提升1级。（无论芮丝汀娜&卡萝莉娜是否在场）\n芮丝汀娜&卡萝莉娜的『面具强度』提升20%。\n战斗开始时获得『真实的欲望』，每隔8个回合获得1层『真实的欲望』。\n回合开始时，可以消耗1层『真实的欲望』融合所有面具的力量，强化下1次『二元合一的面具』的效果。\n强化后：触发『二元合一的面具』所有『相貌』组合下的效果，并额外对技能目标造成8次40%攻击力的伤害（每有1点面具强度会触发1%强度的上述效果，适应性分别为火焰、冰冻、电击、疾风、念动、核热、祝福、诅咒）。"
 };
+

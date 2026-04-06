@@ -4,13 +4,13 @@
     var path = String(window.location.pathname || '/');
     var lowerPath = path.toLowerCase();
 
-    var pathLangMatch = lowerPath.match(/^\/(kr|en|jp)(\/|$)/);
+    var pathLangMatch = lowerPath.match(/^\/(kr|en|jp|cn)(\/|$)/);
     var pathLang = pathLangMatch ? pathLangMatch[1] : '';
     var queryLang = String(params.get('lang') || '').toLowerCase();
-    var effectiveLang = pathLang || (['kr', 'en', 'jp'].indexOf(queryLang) !== -1 ? queryLang : '');
+    var effectiveLang = pathLang || (['kr', 'en', 'jp', 'cn'].indexOf(queryLang) !== -1 ? queryLang : '');
 
     var isLegacyRoot = /^\/material-calc\/?$/.test(lowerPath);
-    var isCanonicalPath = /^\/(kr|en|jp)\/material-calc\/?$/.test(lowerPath);
+    var isCanonicalPath = /^\/(kr|en|jp|cn)\/material-calc\/?$/.test(lowerPath);
 
     if (isLegacyRoot && effectiveLang) {
         window.__SEO_PATH_LANG__ = effectiveLang;
@@ -42,7 +42,7 @@
 </script>
 
 <link rel="stylesheet" href="/apps/material-calc/material-planner.css">
-<script src="/apps/material-calc/material-planner.js?v={{ site.time | date: '%s' }}"></script>
+<script src="/apps/material-calc/material-planner.js"></script>
 <script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
 
 {% if page.alternate_urls %}
@@ -54,16 +54,13 @@
 
 <div class="main-wrapper">
     <div class="navigation-path">
-        <script>document.write(`<a href="${BASE_URL}/"><span data-i18n="nav.home">-</span></a>`);</script>
+        <script>document.write(`<a href="${BASE_URL}/?v=${APP_VERSION}"><span data-i18n="navHome">-</span></a>`);</script>
         <span class="separator">/</span>
         <span class="current-page" data-i18n="navCurrent">-</span>
     </div>
 
     <div class="header-container">
-        <div class="header-title">
-            <h1 id="plannerTitle" data-i18n="pageTitle">-</h1>
-            <p class="page-description" id="page-description" data-i18n="pageDescription"></p>
-        </div>
+        <h1 id="plannerTitle" data-i18n="pageTitle">-</h1>
         <div class="planner-toolbar">
             <button id="resetBtn" class="primary-btn" style="padding: 8px 10px;" data-i18n="reset">-</button>
             <!-- Backup / Load buttons (hidden on <=768px) -->
@@ -84,13 +81,7 @@
             <h2 data-i18n="materialSummary">-</h2>
             <button id="collapseSummary" aria-expanded="true" class="icon-btn" title="-" data-i18n-aria="summaryToggleTitle">▾</button>
         </div>
-        <div id="summaryContent">
-            <div id="summaryGrid" class="material-grid"></div>
-            <details id="extraMaterialsSection" class="summary-extra" style="display:none;">
-                <summary data-i18n="extraMaterials">-</summary>
-                <div id="extraMaterialsGrid" class="material-grid"></div>
-            </details>
-        </div>
+        <div id="summaryGrid" class="material-grid"></div>
     </section>
 
     <!-- 필터/정렬 영역 (summary 아래) -->
@@ -640,22 +631,42 @@
     let materialCalcSeoHookBound = false;
 
     function getMaterialCalcLang() {
-        const pathMatch = window.location.pathname.match(/^\/(kr|en|jp)(\/|$)/i);
+        const pathMatch = window.location.pathname.match(/^\/(kr|en|jp|cn)(\/|$)/i);
         if (pathMatch) return pathMatch[1].toLowerCase();
 
         const params = new URLSearchParams(window.location.search || '');
         const queryLang = String(params.get('lang') || '').toLowerCase();
-        if (['kr', 'en', 'jp'].indexOf(queryLang) !== -1) return queryLang;
+        if (['kr', 'en', 'jp', 'cn'].indexOf(queryLang) !== -1) return queryLang;
 
         if (typeof window.getCurrentLang === 'function') {
             const lang = window.getCurrentLang();
-            if (['kr', 'en', 'jp'].indexOf(lang) !== -1) return lang;
+            if (['kr', 'en', 'jp', 'cn'].indexOf(lang) !== -1) return lang;
         }
         if (typeof window.getCurrentLanguage === 'function') {
             const lang = window.getCurrentLanguage();
-            if (['kr', 'en', 'jp'].indexOf(lang) !== -1) return lang;
+            if (['kr', 'en', 'jp', 'cn'].indexOf(lang) !== -1) return lang;
         }
         return 'kr';
+    }
+
+    function upsertMetaByName(name, content) {
+        let tag = document.querySelector(`meta[name="${name}"]`);
+        if (!tag) {
+            tag = document.createElement('meta');
+            tag.setAttribute('name', name);
+            document.head.appendChild(tag);
+        }
+        tag.setAttribute('content', content);
+    }
+
+    function upsertMetaByProperty(property, content) {
+        let tag = document.querySelector(`meta[property="${property}"]`);
+        if (!tag) {
+            tag = document.createElement('meta');
+            tag.setAttribute('property', property);
+            document.head.appendChild(tag);
+        }
+        tag.setAttribute('content', content);
     }
 
     function updateMaterialCalcSEOTags(lang = null) {
@@ -670,7 +681,31 @@
         }
         if (window.SeoEngine && typeof window.SeoEngine.run === 'function') {
             window.SeoEngine.run();
+            return;
         }
+        const effectiveLang = ['kr', 'en', 'jp', 'cn'].indexOf(currentLang) !== -1 ? currentLang : 'kr';
+        const baseUrl = 'https://lufel.net';
+        const isPathLang = /^\/(kr|en|jp|cn)(\/|$)/i.test(window.location.pathname);
+        const currentUrl = isPathLang
+            ? `${baseUrl}/${effectiveLang}/material-calc/`
+            : `${baseUrl}/material-calc/`;
+        const t = (key, fallback) => (typeof window.t === 'function' ? window.t(key, fallback) : fallback);
+
+        const seoTitle = t('seoTitle', '육성 계산기 - 페르소나5 더 팬텀 X 루페르넷');
+        const seoDescription = t('seoDescription', '페르소나5 더 팬텀 X 캐릭터 육성 재료 계산기 (레벨/무기/스킬/심상)');
+        const seoKeywords = t('seoKeywords', 'P5X, 페르소나5X, 육성 계산기, 재료 계산기, 캐릭터 육성');
+        const seoOgLocale = t('seoOgLocale', effectiveLang === 'jp' ? 'ja_JP' : effectiveLang === 'en' ? 'en_US' : effectiveLang === 'cn' ? 'zh_CN' : 'ko_KR');
+        const canonical = document.querySelector('link[rel="canonical"]');
+
+        document.title = seoTitle;
+        upsertMetaByName('description', seoDescription);
+        upsertMetaByName('keywords', seoKeywords);
+        upsertMetaByProperty('og:title', seoTitle);
+        upsertMetaByProperty('og:description', seoDescription);
+        upsertMetaByProperty('og:url', currentUrl);
+        upsertMetaByProperty('og:locale', seoOgLocale);
+        if (canonical) canonical.setAttribute('href', currentUrl);
+        document.documentElement.setAttribute('lang', effectiveLang === 'jp' ? 'ja' : effectiveLang === 'en' ? 'en' : effectiveLang === 'cn' ? 'zh' : 'ko');
     }
 </script>
 

@@ -17,12 +17,12 @@ sitemap: false
       var requestedLang = params.get("lang");
       params.delete("lang");
       params.delete("character");
-      var languageTargets = {"kr":"/kr/synergy/merope/","en":"/en/synergy/merope/","jp":"/jp/synergy/merope/"};
+      var languageTargets = {"kr":"/kr/synergy/merope/","en":"/en/synergy/merope/","jp":"/jp/synergy/merope/","cn":"/cn/synergy/merope/"};
       var defaultPath = "/en/synergy/merope/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

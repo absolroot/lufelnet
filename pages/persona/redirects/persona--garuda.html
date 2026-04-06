@@ -18,12 +18,12 @@ sitemap: false
       params.delete("lang");
       params.delete("name");
       params.delete("persona");
-      var languageTargets = {"kr":"/kr/persona/garuda/","en":"/en/persona/garuda/","jp":"/jp/persona/garuda/"};
+      var languageTargets = {"kr":"/kr/persona/garuda/","en":"/en/persona/garuda/","jp":"/jp/persona/garuda/","cn":"/cn/persona/garuda/"};
       var defaultPath = "/en/persona/garuda/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

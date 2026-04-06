@@ -1,6 +1,8 @@
 window.WeaponData = window.WeaponData || {};
 window.enCharacterWeaponData = window.enCharacterWeaponData || {};
 window.jpCharacterWeaponData = window.jpCharacterWeaponData || {};
+window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
+
 window.WeaponData["유키미"] = {
   "name": "후지카와 유키미",
   "weapon4-1": {
@@ -20,6 +22,7 @@ window.WeaponData["유키미"] = {
     "description": "방어력이 45.0%/45.0%/59.0%/59.0%/73.0%/73.0%/87.0% 증가한다. 『절대 심판』 스킬 사용 시 『에너지 충전』이 추가 1회 반영되며, 자신의 방어력에 따라 목표의 방어력을 13.0%/20.0%/20.0%/27.0%/27.0%/34.0%/34.0% 탈취한다(최대 520/800/800/1080/1080/1360/1360 방어력). 효과는 2턴 동안 지속된다."
   }
 };
+
 window.enCharacterWeaponData["유키미"] = {
   "name": "Yukimi Fujikawa",
   "weapon4-1": {
@@ -37,6 +40,7 @@ window.enCharacterWeaponData["유키미"] = {
     "description": "Increase Defense by 45.0%/45.0%/59.0%/59.0%/73.0%/73.0%/87.0%. When spending Gavel stacks with Absolute Judgment, add 1 to number of stacks spent. Also steal 13.0%/20.0%/20.0%/27.0%/27.0%/34.0%/34.0% of target's Defense for 2 turns based on own Defense (up to 520/800/800/1080/1080/1360/1360)."
   }
 };
+
 window.jpCharacterWeaponData["유키미"] = {
   "name": "藤川雪実",
   "weapon4-1": {
@@ -54,21 +58,24 @@ window.jpCharacterWeaponData["유키미"] = {
     "description": "防御力が45.0%/45.0%/59.0%/59.0%/73.0%/73.0%/87.0%上昇する。『絶対判決』で『ガベル』を消費する時、その消費数を１つ増加させる。さらに自身の防御力に応じて、２ターンの間、ターゲットの防御力を13.0%/20.0%/20.0%/27.0%/27.0%/34.0%/34.0%奪う（最大520/800/800/1080/1080/1360/1360）。"
   }
 };
-window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
 
 window.cnCharacterWeaponData["유키미"] = {
-  "weapon5-1": {
-    "name": "归净乐土",
-    "health": 2338.77,
-    "attack": 561.56,
-    "defense": 524.12,
-    "description": "防御力提升45.0%/45.0%/59.0%/59.0%/73.0%/73.0%/87.0%。\n使用『绝对审判』技能时额外计入1层『充能』并根据自身防御力偷取目标13.0%/20.0%/20.0%/27.0%/27.0%/34.0%/34.0%的防御力（最多520/800/800/1080/1080/1360/1360防御力），效果持续2回合。"
-  },
+  "name": "藤川雪实",
   "weapon4-1": {
     "name": "万宝重击",
     "health": 1870.83,
     "attack": 449.24,
     "defense": 419.47,
+    "skill_name": "",
     "description": "防御力提升18.0%/18.0%/23.5%/23.5%/29.0%/29.0%/34.5%。为生命值低于50%的同伴提供护盾时，护盾加成提升16.3%/21.2%/21.2%/26.1%/26.1%/31.0%/31.0%。"
+  },
+  "weapon5-1": {
+    "name": "归净乐土",
+    "health": 2338.77,
+    "attack": 561.56,
+    "defense": 524.12,
+    "skill_name": "",
+    "description": "防御力提升45.0%/45.0%/59.0%/59.0%/73.0%/73.0%/87.0%。\n使用『绝对审判』技能时额外计入1层『充能』并根据自身防御力偷取目标13.0%/20.0%/20.0%/27.0%/27.0%/34.0%/34.0%的防御力（最多520/800/800/1080/1080/1360/1360防御力），效果持续2回合。"
   }
 };
+

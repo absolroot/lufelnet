@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["치즈코"] = {
   "name": "나가오 치즈코",
   "r0": "하! 이 성질머리",
@@ -18,6 +20,7 @@ window.ritualData["치즈코"] = {
   "r6": "BOOM！BOOM！",
   "r6_detail": "동료가 『방사선』을 보유한 적 공격 시, 적이 보유한 원소 이상 수량에 따라 최대 아래 3개 효과를 활성화한다.\n수량이 1개 이상 시, 공격력 10% 증가,\n수량이 2개 이상 시, 핵열 대미지 10% 증가,\n수량이 3개 이상 시, 관통 8% 증가."
 };
+
 window.enCharacterRitualData["치즈코"] = {
   "name": "Chizuko Nagao",
   "r0": "Veteran Technique",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["치즈코"] = {
   "r6": "Unending",
   "r6_detail": "When an ally attacks a foe with Radiation, activate the following effects based on the number of unique elemental ailments on the foe. (Effects will stack.)\n1 or more: Increase Attack by 10%.\n2 or more: Increase Nuclear damage by 10%.\n3 or more: Increase pierce rate by 8%."
 };
+
 window.jpCharacterRitualData["치즈코"] = {
   "name": "長尾 チヅ子",
   "r0": "老練の技",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["치즈코"] = {
   "r6": "まだまだ終われない",
   "r6_detail": "味方が『極熱』状態の敵を攻撃する時、対象の異なる属性異常の数に応じて以下の効果が発動する。（それぞれの効果は、重複して発動する）\n１つ以上：攻撃力が１０%上昇する。\n２つ以上：核熱属性の与ダメージが１０%上昇する。\n３つ以上：貫通力が８%上昇する。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["치즈코"] = {
   "name": "长尾千津子",
@@ -71,3 +74,4 @@ window.cnCharacterRitualData["치즈코"] = {
   "r6": "BOOM！BOOM！",
   "r6_detail": "同伴攻击带有『辐射』的敌人时，根据敌人身上的元素异常数量，最多激活下列3个效果：\n大于等于1个时，攻击力提升10%；\n大于等于2个时，核热伤害提升10%；\n大于等于3个时，穿透提升8%。"
 };
+

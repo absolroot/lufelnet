@@ -1,6 +1,8 @@
 window.WeaponData = window.WeaponData || {};
 window.enCharacterWeaponData = window.enCharacterWeaponData || {};
 window.jpCharacterWeaponData = window.jpCharacterWeaponData || {};
+window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
+
 window.WeaponData["카요"] = {
   "name": "토미야마 카요",
   "weapon4-1": {
@@ -20,6 +22,7 @@ window.WeaponData["카요"] = {
     "description": "공격력이 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0% 증가한다. 토미야마 카요가 『열렬한 가무』 사용 시 41.0%/54.0%/54.0%/67.0%/67.0%/80.0%/80.0%의 고정 확률로 『리듬』 1개가 반환된다. 『열렬한 가무』가 제공하는 속성 증가 효과가 추가로 26.0%/34.0%/34.0%/42.0%/42.0%/50.0%/50.0% 증가한다."
   }
 };
+
 window.enCharacterWeaponData["카요"] = {
   "name": "Kayo Tomiyama",
   "weapon4-1": {
@@ -37,6 +40,7 @@ window.enCharacterWeaponData["카요"] = {
     "description": "Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. After granting Pulsating Rhythm, 41.0%/54.0%/54.0%/67.0%/67.0%/80.0%/80.0% chance to gain 1 Beat stack. Increase buffs from Pulsating Rhythm by 26.0%/34.0%/34.0%/42.0%/42.0%/50.0%/50.0% more."
   }
 };
+
 window.jpCharacterWeaponData["카요"] = {
   "name": "富山佳代",
   "weapon4-1": {
@@ -54,21 +58,24 @@ window.jpCharacterWeaponData["카요"] = {
     "description": "攻撃力が30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%上昇する。自身の『パーリィナイト』を付与した時、41.0%/54.0%/54.0%/67.0%/67.0%/80.0%/80.0%の確率で『ビートBOX』を１つ獲得する。『パーリィナイト』の強化効果がさらに26.0%/34.0%/34.0%/42.0%/42.0%/50.0%/50.0%上昇する。"
   }
 };
-window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
 
 window.cnCharacterWeaponData["카요"] = {
-  "weapon5-1": {
-    "name": "复古迪斯科:P",
-    "health": 2338.77,
-    "attack": 693.7,
-    "defense": 422.82,
-    "description": "攻击力提升30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%。富山佳代使用『劲歌热舞』后，有41.0%/54.0%/54.0%/67.0%/67.0%/80.0%/80.0%的固定概率返还1个『节拍』;『劲歌热舞』提供的属性提升效果额外提升26.0%/34.0%/34.0%/42.0%/42.0%/50.0%/50.0%。"
-  },
+  "name": "富山佳代",
   "weapon4-1": {
     "name": "荧色魅惑D4u",
     "health": 1870.83,
     "attack": 554.96,
     "defense": 338.09,
+    "skill_name": "",
     "description": "攻击力提升12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%。使用支援技能后，富山佳代有43.0%/56.0%/56.0%/69.0%/69.0%/82.0%/82.0%的固定概率额外获得1个『节拍』。"
+  },
+  "weapon5-1": {
+    "name": "复古迪斯科:P",
+    "health": 2338.77,
+    "attack": 693.7,
+    "defense": 422.82,
+    "skill_name": "",
+    "description": "攻击力提升30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%。富山佳代使用『劲歌热舞』后，有41.0%/54.0%/54.0%/67.0%/67.0%/80.0%/80.0%的固定概率返还1个『节拍』;『劲歌热舞』提供的属性提升效果额外提升26.0%/34.0%/34.0%/42.0%/42.0%/50.0%/50.0%。"
   }
 };
+

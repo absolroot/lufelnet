@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="kr" class="i18n-loading">
+<html lang="{% if page.language == 'kr' %}ko{% elsif page.language == 'jp' %}ja{% elsif page.language == 'cn' %}zh-CN{% else %}en{% endif %}" class="i18n-loading">
 
 <head>
   <meta charset="UTF-8">
@@ -264,6 +264,7 @@
     document.write('<script src="{{ site.baseurl }}/assets/js/character/character-data-utils.js?v=' + APP_VERSION + '"><\/script>');
     //document.write('<script src="{{ site.baseurl }}/assets/js/april-fools.js?v=' + APP_VERSION + '&af=20260331-7"><\/script>');
     document.write('<script src="{{ site.baseurl }}/assets/js/nav.js?v=' + APP_VERSION + '"><\/script>');
+    document.write('<script src="{{ site.baseurl }}/assets/js/cn-beta-notice.js?v=' + APP_VERSION + '"><\/script>');
     document.write('<script src="{{ site.baseurl }}/assets/js/top_button.js?v=' + APP_VERSION + '"><\/script>');
     document.write('<script src="{{ site.baseurl }}/assets/js/seo/context-resolver.js?v=' + APP_VERSION + '"><\/script>');
     document.write('<script src="{{ site.baseurl }}/assets/js/seo/url-normalizer.js?v=' + APP_VERSION + '"><\/script>');

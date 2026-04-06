@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["몽타뉴·백조"] = {
   "name": "코토네 몽타뉴·백조",
   "r0": "봄의 연못과 권태로운 백조",
@@ -18,6 +20,7 @@ window.ritualData["몽타뉴·백조"] = {
   "r6": "운명에 굴복하지 않는 영혼",
   "r6_detail": "『봄 형태』: 『봄의 결계』 종료 시 추가 효과가 발동하면, 『봄의 결계』는 1턴 동안 추가 지속되며 『아침 이슬 결정』 2개를 반환하고 상한을 돌파할 수 있는 특수 『아침 이슬 결정』을 2개 획득한다. 이후 추가 효과를 다시 발동할 수 있다. 『봄의 결계』 종료 시 『아침 이슬 결정』 1개당 관통이 4% 증가하는 추가 효과를 획득한다(최대 20% 증가).\n『겨울밤 형태』: 『겨울밤의 결계』 종료 시 추가 효과가 발동하면, 『겨울밤의 결계』는 1턴 동안 추가 지속되며 『겨울 서리 결정』 2개를 반환하고 상한을 돌파할 수 있는 특수 『겨울 서리 결정』을 2개 획득한다. 이후 추가 효과를 다시 발동할 수 있다. 『겨울밤의 결계』 종료 시 『겨울 서리 결정』 1개당 관통이 4% 증가하는 추가 효과를 획득한다(최대 20% 증가)."
 };
+
 window.enCharacterRitualData["몽타뉴·백조"] = {
   "name": "Frostgale Kotone",
   "r0": "Swan on the Ice",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["몽타뉴·백조"] = {
   "r6": "Dance of Love",
   "r6_detail": "Spring mode: After activating the Resonance when Spring's Edge ends, extend the duration of Spring's Edge by 1 turn. Regain up to 2 spent Spring's Vestige stacks, and regain up to 2 stacks that exceeded the maximum limit. Afterwards, the Resonance can be activated again (the duration cannot be extended again). Also increase Resonance pierce rate by 4% for each Spring's Vestige stack (up to 20%).\nWinter mode: After activating the Resonance when Winter's Edge ends, extend the duration of Winter's Edge by 1 turn. Regain up to 2 spent Winter's Vestige stacks, and regain up to 2 stacks that exceeded the maximum limit. Afterwards, the Resonance can be activated again (the duration cannot be extended again). Also increase Resonance pierce rate by 4% for each Winter's Vestige stack (up to 20%)."
 };
+
 window.jpCharacterRitualData["몽타뉴·백조"] = {
   "name": "琴音・アイスストーム",
   "r0": "水鏡の天鵝",
@@ -52,12 +56,11 @@ window.jpCharacterRitualData["몽타뉴·백조"] = {
   "r6": "これが私の愛の踊り",
   "r6_detail": "『旋風』状態：『旋風結界』終了時の意識奏功が発動後、『旋風結界』が１ターン延長される。また消費した『旋風の刻線』が２つまで返還され、上限を超えた追加獲得分も２つまで返還される。その後、再び意識奏功が発動できるようになる（延長と返還はされない）。さらに『旋風の刻線』１つごとに意識奏功の貫通力が４%上昇する（最大２０%まで）。\n『銀盤』状態：『銀盤結界』終了時の意識奏功が発動後、『銀盤結界』が１ターン延長される。また消費した『銀盤の刻線』が２つまで返還され、上限を超えた追加獲得分も２つまで返還される。その後、再び意識奏功が発動できるようになる（延長と返還はされない）。さらに『銀盤の刻線』１つごとに意識奏功の貫通力が４%上昇する（最大２０%まで）。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["몽타뉴·백조"] = {
   "name": "琴音 蒙塔涅·漫舞",
   "r0": "春池与倦怠的天鹅",
-  "r0_detail": "琴音 蒙塔涅·漫舞拥有两种形态：『仲春形态』和『冬夜形态』。战斗过程中在『仲春结界』/『冬夜结界』未展开时可自由切换形态。切换形态后，琴音 蒙塔涅·漫舞会获得对应属性的技能组。进入战斗时，默认处于『仲春形态』，但当队伍中的冰冻属性队友数量多于疾风属性队友数量时，会默认处于『冬夜形态』。",
+  "r0_detail": "琴音 蒙塔涅·漫舞拥有两种形态：『仲春形态』和『冬夜形态』。战斗过程中在『仲春结界』/『冬夜结界』未展开时可自由切换形态。切换形态后，琴音 蒙塔涅·漫舞会获得对应属性的技能组。进入战斗时，默认处于『仲春形态』，但当队伍中的冰冻属性队友数量多于疾风属性队友数量时，会默认处于『冬夜形态』。\n每次获得『朝露结晶』或『寒霜结晶』时攻击力永久提升5%，最多可叠加7层。",
   "r1": "在水中低吟的哀歌",
   "r1_detail": "『仲春形态』：每次进入『仲春结界』时，获得1颗『朝露结晶』；『仲春结界』结束时，每有1颗『朝露结晶』，造成的追加效果额外获得8%的伤害提升（最多提升40%）。\n『冬夜形态』：每次进入『冬夜结界』时，获得1颗『寒霜结晶』；『冬夜结界』结束时，每有1颗『寒霜结晶』，造成的追加效果额外获得8%的伤害提升（最多提升40%）。",
   "r2": "时光的诗与风的叹息",
@@ -65,9 +68,10 @@ window.cnCharacterRitualData["몽타뉴·백조"] = {
   "r3": "波光与羽翅共舞",
   "r3_detail": "『风卷残云/坠落雪原』、『春日将至/寒夜舞曲』的技能等级提升3级，至多提升至15级。",
   "r4": "如梦般轻盈旋转",
-  "r4_detail": "『仲春形态』：释放HIGHLIGHT时，若琴音 蒙塔涅·漫舞处在『仲春结界』内，额外获得1颗可突破数量上限的『朝露结晶』；否则，HIGHLIGHT技能伤害提升25%。\n『冬夜形态』：释放HIGHLIGHT时，若琴音 蒙塔涅·漫舞处在『冬夜结界』内，额外获得1颗可突破数量上限的『寒霜结晶』；否则，HIGHLIGHT技能伤害提升25%。",
+  "r4_detail": "『仲春形态』：释放HIGHLIGHT时，若琴音 蒙塔涅·漫舞处在『仲春结界』内，额外获得1颗可突破数量上限的『朝露结晶』；否则，HIGHLIGHT技能伤害提升35%。\n『冬夜形态』：释放HIGHLIGHT时，若琴音 蒙塔涅·漫舞处在『冬夜结界』内，额外获得1颗可突破数量上限的『寒霜结晶』；否则，HIGHLIGHT技能伤害提升35%。",
   "r5": "不止于生命的终章",
   "r5_detail": "『风雨前奏/沁冷寒风』、『战斗技巧』的技能等级提升3级，至多提升至15级。",
   "r6": "不屈于宿命的灵魂",
   "r6_detail": "『仲春形态』：『仲春结界』结束时的追加效果触发后，『仲春结界』额外持续1回合并返还2颗『朝露结晶』及2颗可突破数量上限的『朝露结晶』。之后可再次触发追加效果；『仲春结界』结束时，每有1颗『朝露结晶』，造成的追加效果额外获得4%的穿透提升（最多提升20%）。\n『冬夜形态』：『冬夜结界』结束时的追加效果触发后，『冬夜结界』额外持续1回合并返还2颗『寒霜结晶』及2颗可突破数量上限的『寒霜结晶』。之后可再次触发追加效果；『冬夜结界』结束时，每有1颗『寒霜结晶』，造成的追加效果额外获得4%的穿透提升（最多提升20%）。"
 };
+

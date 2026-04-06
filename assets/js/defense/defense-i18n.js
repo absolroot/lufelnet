@@ -7,15 +7,14 @@
             if (lang === 'kr' || lang === 'ko') return 'kr';
             if (lang === 'en') return 'en';
             if (lang === 'jp' || lang === 'ja') return 'jp';
-            // defense/critical 계산기는 현재 kr/en/jp 페이지만 제공되므로
-            // 그 외 지원 언어는 영어로 폴백한다.
-            if (lang === 'cn' || lang === 'tw' || lang === 'sea') return 'en';
+            if (lang === 'cn' || lang === 'zh') return 'cn';
+            if (lang === 'tw' || lang === 'sea') return 'en';
             return 'kr';
         },
 
         getLang(){
             try {
-                const pathMatch = String(window.location.pathname || '').match(/^\/(kr|en|jp)(\/|$)/i);
+                const pathMatch = String(window.location.pathname || '').match(/^\/(kr|en|jp|cn)(\/|$)/i);
                 if (pathMatch && pathMatch[1]) {
                     return this.normalizeLang(pathMatch[1]);
                 }
@@ -54,12 +53,14 @@
             const criticalVarMap = {
                 kr: 'I18N_PAGE_CRITICAL_CALC_KR',
                 en: 'I18N_PAGE_CRITICAL_CALC_EN',
-                jp: 'I18N_PAGE_CRITICAL_CALC_JP'
+                jp: 'I18N_PAGE_CRITICAL_CALC_JP',
+                cn: 'I18N_PAGE_CRITICAL_CALC_CN'
             };
             const defenseVarMap = {
                 kr: 'I18N_PAGE_DEFENSE_CALC_KR',
                 en: 'I18N_PAGE_DEFENSE_CALC_EN',
-                jp: 'I18N_PAGE_DEFENSE_CALC_JP'
+                jp: 'I18N_PAGE_DEFENSE_CALC_JP',
+                cn: 'I18N_PAGE_DEFENSE_CALC_CN'
             };
 
             const normalizedLang = this.normalizeLang(lang);

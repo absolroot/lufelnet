@@ -16,6 +16,7 @@ window.personaFiles["바포멧"] = {
   "tier_desc": "화상 상태인 적이 있을 때 1턴 간 높은 수치의 화염 대미지 증가 디버프를 부여할 수 있다. 화상이라는 선제 조건이 필요하지만 화상을 부여가능한 옵션이 다양해지면서 조건을 만족시키기 쉬워졌다.",
   "tier_desc_en": "If an enemy is already burned, it can inflict a powerful 1-turn debuff that increases Fire damage taken. It requires Burn as a precondition, but the growing number of ways to inflict Burn has made that condition easier to satisfy.",
   "tier_desc_jp": "火傷状態の敵がいる時、1ターンの間、高倍率の火炎属性被ダメージ増加デバフを付与できる。火傷という事前条件は必要だが、火傷を付与できる手段が増えたことで条件を満たしやすくなった。",
+  "tier_desc_cn": "当敌人处于燃烧状态时，可以附加 1 回合高数值的火焰伤害提升减益。虽然需要先满足燃烧这个前置条件，但随着能附加燃烧的手段变多，如今更容易达成了。",
   "comment": "이미 화상 상태인 적에게 [극열 : 화염 대미지 or 엘 지하드 : 감전 추가] 본능 효과를 발동한다.",
   "comment_en": "Triggers the talent effect on enemies already afflicted with Burn with [Red-Hot: Fire damage or Wild Thunder: inflict Shock].",
   "comment_jp": "すでに火傷状態の敵に対して、[『極熱』: 火炎ダメージ / 『エル・ジハード』: 感電追加]の本能効果を発動する。",

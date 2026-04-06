@@ -16,6 +16,7 @@ window.personaFiles["아메노우즈메"] = {
   "tier_desc": "감전에 의한 크리티컬 확률 증가(10%)에 이어 본능을 통한 10%로 총 20%의 크리티컬 확률 증가를 노릴 수 있다. 페르소나 서큐버스가 1턴에 집중한다면 아메노우즈메는 수치가 조금 낮으면서 2턴 동안 지속되기에 활용처가 다르다.",
   "tier_desc_en": "By combining the 10% Crit Rate increase from Shock with another 10% from its talent, it can provide a total of 20% Crit Rate. Succubus is more concentrated into a single turn, whereas Ame-no-Uzume offers a slightly lower amount that lasts 2 turns, so they serve different use cases.",
   "tier_desc_jp": "感電によるクリティカル率上昇10%に加え、本能による10%で合計20%のクリティカル率上昇を狙える。サキュバスが1ターンに集中した支援なら、アメノウズメは数値がやや低い代わりに2ターン持続するため、役割が異なる。",
+  "tier_desc_cn": "可通过触电带来的 10% 暴击率提升，再叠加本能提供的 10%，总计争取到 20% 暴击率提升。若说女梦魔是把加成集中在 1 回合，那么天钿女则是数值稍低但可持续 2 回合，两者用途不同。",
   "comment": "",
   "comment_en": "",
   "comment_jp": "",

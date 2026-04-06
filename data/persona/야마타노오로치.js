@@ -16,6 +16,7 @@ window.personaFiles["야마타노오로치"] = {
   "tier_desc": "3턴 동안 적이 받는 TECH 대미지를 25% 강화시킨다. 그러나 TECH 대미지를 활용하는 캐릭터가 적어 가능성은 높으나 실질적으로 활용되고 있지는 않다.",
   "tier_desc_en": "It increases TECH damage taken by enemies by 25% for 3 turns. However, few characters currently make practical use of TECH damage, so despite its potential it is not seeing real use.",
   "tier_desc_jp": "3ターンの間、敵が受けるTECHダメージを25%増加させる。ただし、現状TECHダメージを実戦的に活用するキャラが少ないため、可能性はあっても実際の採用例はほとんどない。",
+  "tier_desc_cn": "可使敌人受到的 TECH 伤害在 3 回合内提高 25%。不过目前能稳定利用 TECH 伤害的角色不多，因此虽然有潜力，实际上还没有太多出场空间。",
   "comment": "",
   "comment_en": "",
   "comment_jp": "",

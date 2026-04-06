@@ -1,6 +1,8 @@
 window.characterSkillsData = window.characterSkillsData || {};
 window.enCharacterSkillsData = window.enCharacterSkillsData || {};
 window.jpCharacterSkillsData = window.jpCharacterSkillsData || {};
+window.cnCharacterSkillsData = window.cnCharacterSkillsData || {};
+
 window.characterSkillsData["안"] = {
   "name": "타카마키 안",
   "skill1": {
@@ -46,6 +48,7 @@ window.characterSkillsData["안"] = {
     "cool": 0
   }
 };
+
 window.enCharacterSkillsData["안"] = {
   "name": "Ann Takamaki",
   "skill1": {
@@ -93,6 +96,7 @@ window.enCharacterSkillsData["안"] = {
     "cool": 0
   }
 };
+
 window.jpCharacterSkillsData["안"] = {
   "name": "高巻 杏",
   "skill1": {
@@ -139,13 +143,13 @@ window.jpCharacterSkillsData["안"] = {
     "cool": 0
   }
 };
-window.cnCharacterSkillsData = window.cnCharacterSkillsData || {};
 
 window.cnCharacterSkillsData["안"] = {
   "name": "高卷杏",
   "skill1": {
     "name": "繁花热烈",
-    "element": "화염",
+    "element": "화염광역",
+    "type": "群体伤害",
     "sp": 20,
     "cool": 0,
     "description": "对所有敌人造成94.8%/104.5%/100.6%/110.3%攻击力的火焰属性伤害，并且提升自身攻击力20%，效果持续2回合。『潜心』状态下，使敌人攻击力基于高卷杏的攻击力降低8%并使自身额外提升对应攻击力，效果持续2回合。"
@@ -153,32 +157,37 @@ window.cnCharacterSkillsData["안"] = {
   "skill2": {
     "name": "魅火术",
     "element": "화염",
+    "type": "单体伤害",
     "sp": 20,
     "cool": 0,
     "description": "对1名敌人造成134.2%/148.0%/142.5%/156.2%攻击力的火焰属性伤害，有75%基础概率使敌人陷入燃烧状态。『潜心』状态下，若敌人的生命值低于50%，则技能伤害提升30%。"
   },
   "skill3": {
     "name": "火炎侵蚀",
-    "element": "화염",
+    "element": "화염광역",
+    "type": "群体伤害",
     "sp": 22,
     "cool": 0,
     "description": "对所有敌人造成96.3%/106.2%/102.3%/112.1%攻击力的火焰属性伤害，有30%基础概率使敌人陷入燃烧状态。『潜心』状态下技能伤害提升30%。"
   },
+  "skill_highlight": {
+    "element": "화염광역",
+    "type": "群体伤害",
+    "description": "对所有敌人造成195.2%/215.2%/207.2%/227.2%攻击力的火焰属性伤害，并且使自身造成的火焰伤害提升78.1%/86.1%/82.9%/90.9%，效果持续1回合。",
+    "cool": 4,
+    "name": "HIGHLIGHT"
+  },
   "passive1": {
     "name": "热忱",
     "element": "패시브",
-    "cool": 0,
-    "description": "人格面具技能、HIGHLIGHT造成火焰属性TECHNICAL，触发爆燃时，造成伤害提升30.0%。"
+    "description": "人格面具技能、HIGHLIGHT造成火焰属性TECHNICAL，触发爆燃时，造成伤害提升30.0%。",
+    "cool": 0
   },
   "passive2": {
     "name": "慰藉",
     "element": "패시브",
-    "cool": 0,
-    "description": "『潜心』状态结束时，使生命值百分比最低的同伴恢复45.0%攻击力的生命值。"
-  },
-  "skill_highlight": {
-    "element": "화염",
-    "cool": 4,
-    "description": "对所有敌人造成195.2%/215.2%/207.2%/227.2%攻击力的火焰属性伤害，并且使自身造成的火焰伤害提升78.1%/86.1%/82.9%/90.9%，效果持续1回合。"
+    "description": "『潜心』状态结束时，使生命值百分比最低的同伴恢复45.0%攻击力的生命值。",
+    "cool": 0
   }
 };
+

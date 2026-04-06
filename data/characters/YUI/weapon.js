@@ -1,6 +1,8 @@
 window.WeaponData = window.WeaponData || {};
 window.enCharacterWeaponData = window.enCharacterWeaponData || {};
 window.jpCharacterWeaponData = window.jpCharacterWeaponData || {};
+window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
+
 window.WeaponData["YUI"] = {
   "weapon5-1": {
     "name": "버츄얼 디스럽터",
@@ -19,6 +21,7 @@ window.WeaponData["YUI"] = {
     "description": "크리티컬 확률이 7.3%/7.3%/9.5%/9.5%/11.7%/11.7%/13.9% 증가한다. 추격 부여 후 YUI가 주는 전격 속성 대미지가 9.7%/12.6%/12.6%/15.5%/15.5%/18.4%/18.4% 증가한다. 효과는 1턴 동안 지속된다(2회 중첩 가능)."
   }
 };
+
 window.enCharacterWeaponData["YUI"] = {
   "name": "YUI",
   "weapon4-1": {
@@ -36,6 +39,7 @@ window.enCharacterWeaponData["YUI"] = {
     "description": "Increase critical rate by 18.1%/18.1%/23.5%/23.5%/28.9%/28.9%/34.3%. Increase follow-up damage by 26.0%/34.0%/34.0%/42.0%/42.0%/50.0%/50.0%. When a follow-up attack is activated by an ally with Player 2, or by an ally dealing Electric damage with a skill, increase follow-up damage by 26.0%/34.0%/34.0%/42.0%/42.0%/50.0%/50.0% more."
   }
 };
+
 window.jpCharacterWeaponData["YUI"] = {
   "name": "YUI",
   "weapon4-1": {
@@ -53,7 +57,6 @@ window.jpCharacterWeaponData["YUI"] = {
     "description": "クリティカル率が18.1%/18.1%/23.5%/23.5%/28.9%/28.9%/34.3%上昇する。追撃ダメージが26.0%/34.0%/34.0%/42.0%/42.0%/50.0%/50.0%上昇する。『お友達』状態の味方が追撃を発動するか、味方が電撃属性スキルを使用して追撃が発生した場合、さらに追撃ダメージが26.0%/34.0%/34.0%/42.0%/42.0%/50.0%/50.0%上昇する。"
   }
 };
-window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
 
 window.cnCharacterWeaponData["YUI"] = {
   "weapon5-1": {
@@ -61,6 +64,7 @@ window.cnCharacterWeaponData["YUI"] = {
     "health": 2259.46,
     "attack": 759.73,
     "defense": 374.35,
+    "skill_name": "",
     "description": "暴击率提升18.1%/18.1%/23.5%/23.5%/28.9%/28.9%/34.3%。追击造成的伤害提升26.0%/34.0%/34.0%/42.0%/42.0%/50.0%/50.0%。若『玩伴』触发了追击或同伴释放了电击属性的技能触发了追击，则使得YUI追击造成的伤害额外提升26.0%/34.0%/34.0%/42.0%/42.0%/50.0%/50.0%。"
   },
   "weapon4-1": {
@@ -68,6 +72,9 @@ window.cnCharacterWeaponData["YUI"] = {
     "health": 1807.87,
     "attack": 607.79,
     "defense": 299.47,
+    "skill_name": "",
     "description": "暴击率提升7.3%/7.3%/9.5%/9.5%/11.7%/11.7%/13.9%。造成追击后，使YUI造成的电击属性伤害提升9.7%/12.6%/12.6%/15.5%/15.5%/18.4%/18.4%。效果持续1回合，可叠加2层。"
-  }
+  },
+  "name": "YUI"
 };
+

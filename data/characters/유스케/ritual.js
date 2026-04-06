@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["유스케"] = {
   "name": "키타가와 유스케",
   "r0": "유룡전포",
@@ -18,6 +20,7 @@ window.ritualData["유스케"] = {
   "r6": "생생한 붓놀림",
   "r6_detail": "『유룡전포』, 『용의 포효』 효과가 『극치·유룡전포』, 『극치·용의 포효』으로 진화한다——\n적에게 주는 반격 공격이 2회 연속 대미지로 진화하며, 매회 대미지는 기존의 90%이고, 반격 시 30%의 관통을 획득한다."
 };
+
 window.enCharacterRitualData["유스케"] = {
   "name": "Yusuke Kitagawa",
   "r0": "Inspiration",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["유스케"] = {
   "r6": "Finishing Touches",
   "r6_detail": "Evolve the effects of Inspiration and Imagination to Vision & Emotion and Creation.\nEach counterattack becomes 2 consecutive attacks, each dealing 90% of the original attack's damage. Also increase counterattack pierce rate by 30%."
 };
+
 window.jpCharacterRitualData["유스케"] = {
   "name": "喜多川 祐介",
   "r0": "インスピレーション",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["유스케"] = {
   "r6": "画竜点睛",
   "r6_detail": "『インスピレーション』『イマジネーション』の効果が、『ビジョン＆エモーション』『クリエーション』に変化する。\nそれぞれの反撃が、２回連続攻撃となり、各ダメージは元の攻撃の９０%になる。さらに、反撃の貫通力が３０%上昇する。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["유스케"] = {
   "name": "喜多川祐介",
@@ -71,3 +74,4 @@ window.cnCharacterRitualData["유스케"] = {
   "r6": "笔落如生",
   "r6_detail": "『游龙展布』、『墨见龙吟』效果进化为『痴绝·游龙展布』、『痴绝·墨见龙吟』——\n对敌人造成的反击攻击提升为连续的2次伤害，每次伤害为原本的90%，且反击时获得30%穿透。"
 };
+

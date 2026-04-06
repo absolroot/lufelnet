@@ -7,7 +7,7 @@ window.I18N_PAGE_HOME_KR = {
     language_name_kr: '한국어',
     language_name_en: 'English',
     language_name_jp: '日本語',
-    language_name_cn: '中文',
+    language_name_cn: '中文(Beta)',
 
 
     quick_character: '캐릭터',

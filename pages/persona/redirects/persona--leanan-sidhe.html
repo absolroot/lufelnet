@@ -18,12 +18,12 @@ sitemap: false
       params.delete("lang");
       params.delete("name");
       params.delete("persona");
-      var languageTargets = {"kr":"/kr/persona/leanan-sidhe/","en":"/en/persona/leanan-sidhe/","jp":"/jp/persona/leanan-sidhe/"};
+      var languageTargets = {"kr":"/kr/persona/leanan-sidhe/","en":"/en/persona/leanan-sidhe/","jp":"/jp/persona/leanan-sidhe/","cn":"/cn/persona/leanan-sidhe/"};
       var defaultPath = "/en/persona/leanan-sidhe/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

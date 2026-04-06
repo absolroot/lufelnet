@@ -18,12 +18,12 @@ sitemap: false
       params.delete("lang");
       params.delete("name");
       params.delete("persona");
-      var languageTargets = {"kr":"/kr/persona/makami/","en":"/en/persona/makami/","jp":"/jp/persona/makami/"};
+      var languageTargets = {"kr":"/kr/persona/makami/","en":"/en/persona/makami/","jp":"/jp/persona/makami/","cn":"/cn/persona/makami/"};
       var defaultPath = "/en/persona/makami/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

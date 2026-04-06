@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["레오"] = {
   "name": "카미야마 레오",
   "r0": "유기 개량사",
@@ -18,6 +20,7 @@ window.ritualData["레오"] = {
   "r6": "끝나지 않는 세상",
   "r6_detail": "동료를 목표로 페르소나 스킬 시전 시 생명이 60% 이하일 경우 1턴 동안 크리티컬 효과가 25% 증가한다."
 };
+
 window.enCharacterRitualData["레오"] = {
   "name": "Leo Kamiyama",
   "r0": "Hyper Hero Time!",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["레오"] = {
   "r6": "Turning the Tables",
   "r6_detail": "When using a skill on an ally with HP below 60%, increase critical damage by 25% for 1 turn."
 };
+
 window.jpCharacterRitualData["레오"] = {
   "name": "神山 嶺央",
   "r0": "ハイパーヒーロータイム！",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["레오"] = {
   "r6": "逆転のシナリオ",
   "r6_detail": "ＨＰが６０%以下の味方にスキルを使用した時、１ターンの間、クリティカルダメージを２５%上昇させる。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["레오"] = {
   "name": "神山岭央",
@@ -71,3 +74,4 @@ window.cnCharacterRitualData["레오"] = {
   "r6": "世界永不终结",
   "r6_detail": "以同伴为目标释放人格面具技能时，若其生命值不高于60%，则使其暴击效果提升25%，效果持续1回合。"
 };
+

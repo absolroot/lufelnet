@@ -16,6 +16,7 @@ window.personaFiles["노른"] = {
   "tier_desc": "적에게 풍습을 부여하고 방어력을 감소시키는 페르소나로 비슈누의 하위호환이다. 비슈누가 다른 파티에 사용됐지만 동일 메커니즘이 필요한 경우 채용한다.",
   "tier_desc_en": "A Persona that inflicts Windswept and reduces Defense, but is a weaker version of Vishnu. It is used when Vishnu is assigned to another party but the same mechanic is still needed.",
   "tier_desc_jp": "敵に風襲を付与し、防御力を低下させるペルソナだが、ヴィシュヌの下位互換にあたる。ヴィシュヌを別パーティで使っていても、同じメカニズムが必要な時に採用される。",
+  "tier_desc_cn": "能为敌人附加风袭并降低防御力的人格面具，是毗湿奴的下位替代。若毗湿奴已经被分配到其他队伍，但仍需要同样机制时就会采用。",
   "comment": "",
   "comment_en": "",
   "comment_jp": "",

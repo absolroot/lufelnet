@@ -1,6 +1,7 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.ritualData["나루미"] = {
   "name": "나시모토 나루미",
@@ -54,7 +55,7 @@ window.jpCharacterRitualData["나루미"] = {
   "r5_detail": "『糖度100%❤』、『戦闘技術』のスキルレベルが3上昇する。",
   "r6": "あなただけの笑顔",
   "r6_detail": "『スポットライト・全開』終了時、『ナルル♪ナルル♫』と『キラメキ』をクリアせず、続いて『約束・また会おうね』ターンに入りSPを15回復する。\n『約束・また会おうね』は『スポットライト・全開』として扱われ、終了時に『ナルル♪ナルル♫』と全ての『キラメキ』をクリアする。"
-};window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+};
 
 window.cnCharacterRitualData["나루미"] = {
   "name": "梨本成瑠海",
@@ -73,3 +74,4 @@ window.cnCharacterRitualData["나루미"] = {
   "r6": "独属于你的笑容",
   "r6_detail": "梨本成瑠海在『聚光灯·全开』回合结束后，不再清空『成瑠瑠♪成瑠瑠♫』和『闪耀值』，转而继续进入『约定·下次再会』回合并恢复15点精力值。\n『约定·下次再会』回合被视为『聚光灯·全开』回合且『约定·下次再会』回合结束时，清空『成瑠瑠♪成瑠瑠♫』和所有『闪耀值』。"
 };
+

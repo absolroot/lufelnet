@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["야오링"] = {
   "name": "리 야오링",
   "r0": "유유한 망천수",
@@ -18,6 +20,7 @@ window.ritualData["야오링"] = {
   "r6": "붉은 만주",
   "r6_detail": "스킬을 시전해 『맹파탕』을 소모한 후 1턴 동안 모든 동료의 주원 대미지가 20% 증가하며, 60%의 고정 확률로 『맹파탕』이 반환된다. 해당 효과의 쿨타임은 1턴이다."
 };
+
 window.enCharacterRitualData["야오링"] = {
   "name": "Yaoling Li",
   "r0": "Goddess of Oblivion",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["야오링"] = {
   "r6": "Wisps of Crimson",
   "r6_detail": "When spending Meng Po Soup, increase party's Curse damage by 20% for 1 turn. Also, 60% chance to gain 1 Meng Po Soup stack. This effect won't activate again on the next turn."
 };
+
 window.jpCharacterRitualData["야오링"] = {
   "name": "李 瑤鈴",
   "r0": "忘川の女神",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["야오링"] = {
   "r6": "曼珠沙華の紅",
   "r6_detail": "『孟婆湯』を消費した時、１ターンの間、味方の呪怨属性による与ダメージが２０%上昇する。また、６０%の確率で『孟婆湯』を１つ獲得する。この効果は発動した次のターンは発動しない。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["야오링"] = {
   "name": "李瑶铃",
@@ -71,3 +74,4 @@ window.cnCharacterRitualData["야오링"] = {
   "r6": "曼珠如烟红",
   "r6_detail": "释放技能消耗『孟婆汤』后，所有同伴诅咒伤害提升20%，持续1回合，并有60%固定概率返还『孟婆汤』，该效果有1回合冷却时间。"
 };
+

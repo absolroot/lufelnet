@@ -17,12 +17,12 @@ sitemap: false
       var requestedLang = params.get("lang");
       params.delete("lang");
       params.delete("character");
-      var languageTargets = {"kr":"/kr/synergy/berry/","en":"/en/synergy/berry/","jp":"/jp/synergy/berry/"};
+      var languageTargets = {"kr":"/kr/synergy/berry/","en":"/en/synergy/berry/","jp":"/jp/synergy/berry/","cn":"/cn/synergy/berry/"};
       var defaultPath = "/en/synergy/berry/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

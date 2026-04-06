@@ -40,9 +40,8 @@
   var path = window.location.pathname;
   if (!/^\/(kr|en|jp|cn)\//.test(path)) return;
   var params = new URLSearchParams(window.location.search);
-  if (!params.has('lang') && !params.has('v')) return;
+  if (!params.has('lang')) return;
   params.delete('lang');
-  params.delete('v');
   var remaining = params.toString();
   history.replaceState(null, '', path + (remaining ? '?' + remaining : ''));
 })();
@@ -62,9 +61,7 @@
 <script>
 // Skeleton: hide Korean text flash for non-KR languages (runs before first paint)
 (function(){
-    var pathMatch = String(window.location.pathname || '').match(/^\/(kr|en|jp|cn)(\/|$)/);
-    var pathLang = pathMatch ? pathMatch[1] : '';
-    var p = pathLang || new URLSearchParams(window.location.search).get('lang') || '';
+    var p = new URLSearchParams(window.location.search).get('lang');
     if (p && p !== 'kr') {
         document.documentElement.classList.add('skel');
         // Safety: remove skeleton after 3s even if DOMContentLoaded handler fails
@@ -72,6 +69,8 @@
     }
 })();
 </script>
+
+{% include supabase-config.html %}
 
 <script src="{{ site.baseurl }}/data/persona/order.js?v={{ site.time | date: '%s' }}"></script>
 <script src="{{ site.baseurl }}/assets/js/persona-loader.js?v={{ site.time | date: '%s' }}"></script>
@@ -93,16 +92,14 @@
                 <script>
                     // 현재 언어 확인
                     function getCurrentLanguage() {
-                        const path = window.location.pathname;
-                        if (/^\/kr(\/|$)/.test(path)) return 'kr';
-                        if (/^\/en(\/|$)/.test(path)) return 'en';
-                        if (/^\/jp(\/|$)/.test(path)) return 'jp';
-                        if (/^\/cn(\/|$)/.test(path)) return 'cn';
-
                         const urlParams = new URLSearchParams(window.location.search);
                         const langParam = urlParams.get('lang');
                         if (langParam) return langParam;
 
+                        const path = window.location.pathname;
+                        if (path.includes('/kr/')) return 'kr';
+                        if (path.includes('/en/')) return 'en';
+                        if (path.includes('/jp/')) return 'jp';
                         return 'kr';
                     }
 
@@ -769,9 +766,6 @@
 
 <!-- 스크립트 ----------------------------------------------------------------------->
 
-<link rel="stylesheet" href="{{ site.baseurl }}/apps/character/character-toc.css?v={{ site.time | date: '%s' }}">
-<script src="{{ site.baseurl }}/apps/character/character-toc.js?v={{ site.time | date: '%s' }}"></script>
-
 <script>
     function fetchWithRevalidate(url, options = {}) {
         return fetch(url, { cache: 'no-cache', ...options });
@@ -843,25 +837,6 @@
         }, 0);
     }
 
-    function scheduleCharacterTocRefresh() {
-        try {
-            if (window.CharacterDetailTOC && typeof window.CharacterDetailTOC.scheduleRefresh === 'function') {
-                window.CharacterDetailTOC.scheduleRefresh();
-            }
-        } catch (e) {
-            console.warn('[SAFE:scheduleCharacterTocRefresh]', e);
-        }
-    }
-
-    try {
-        if (window.CharacterDetailTOC && typeof window.CharacterDetailTOC.init === 'function') {
-            window.CharacterDetailTOC.init();
-        }
-    } catch (e) {
-        console.warn('[SAFE:CharacterDetailTOC:init]', e);
-    }
-
-    window.scheduleCharacterTocRefresh = scheduleCharacterTocRefresh;
     window.scheduleTranslate = scheduleTranslate;
 
     document.addEventListener('DOMContentLoaded', async function () {
@@ -888,14 +863,13 @@
         try {
             const homeLink = document.getElementById('character-home-link');
             const listLink = document.getElementById('character-list-link');
-            const navLang = getCurrentLanguage();
             if (homeLink) {
-                homeLink.href = `/${navLang}/`;
-                homeLink.textContent = getCharacterI18nText('nav.home', '홈');
+                homeLink.href = `../../?v=${APP_VERSION}`;
+                homeLink.textContent = getCharacterI18nText('navHome', '홈');
             }
             if (listLink) {
-                listLink.href = `/${navLang}/character/`;
-                listLink.textContent = getCharacterI18nText('nav.character', '괴도');
+                listLink.href = `/character/?v=${APP_VERSION}`;
+                listLink.textContent = getCharacterI18nText('navCurrent', '괴도');
             }
         } catch (e) { console.warn('[SAFE:nav-i18n]', e); }
 
@@ -1092,20 +1066,12 @@
             window.characterSkillsData = window.characterSkillsData || {};
             window.ritualData = window.ritualData || {};
             window.WeaponData = window.WeaponData || {};
-            window.cnCharacterSkillsData = window.cnCharacterSkillsData || {};
-            window.cnCharacterRitualData = window.cnCharacterRitualData || {};
-            window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
             // 심상 코어(innate) 데이터 전역 스텁
             window.innateData = window.innateData || {};
             // 캐릭터 세팅 데이터 전역 스텁
             window.characterSetting = window.characterSetting || {};
             // 리코·매화 전용 계산기 전역 스텁
             window.RikoCalc = window.RikoCalc || {};
-            // 코로마루 전용 계산기 전역 스텁
-            window.KoromaruCalc = window.KoromaruCalc || {};
-            window.FukaRevelationStatus = window.FukaRevelationStatus || {};
-            // 후타바 전용 코드네임 아이콘 전역 스텁
-            window.NaviIcons = window.NaviIcons || {};
         } catch (e) { console.warn('[SAFE:init-globals]', e); }
 
         async function loadCharacterDataAll(name) {
@@ -1127,11 +1093,6 @@
                 tasks.push(loadPerCharacterResource(name, { fileBase: 'JC_icons', globalVarName: 'JCIcons' }));
             }
 
-            // 후타바 전용 코드네임(NAVI / ORACLE) 안내 아이콘 스크립트
-            if (name === '후타바') {
-                tasks.push(loadPerCharacterResource(name, { fileBase: 'navi_icon', globalVarName: 'NaviIcons' }));
-            }
-
             // 몽타뉴·백조 전용 모드 선택 스크립트 로드
             if (name === '몽타뉴·백조' || name === '코토네 몽타뉴·백조') {
                 tasks.push(loadPerCharacterResource(name, { fileBase: 'MONT2_icons', globalVarName: 'MONT2Icons' }));
@@ -1140,15 +1101,6 @@
             // 리코·매화 전용 스탯 계산기 로드
             if (name === '리코·매화') {
                 tasks.push(loadPerCharacterResource(name, { fileBase: 'riko_calc', globalVarName: 'RikoCalc' }));
-            }
-
-            // 코로마루 전용 효과명중 계산기 로드
-            if (name === '코로마루') {
-                tasks.push(loadPerCharacterResource(name, { fileBase: 'koromaru_calc', globalVarName: 'KoromaruCalc' }));
-            }
-
-            if (name === '후카') {
-                tasks.push(loadPerCharacterResource(name, { fileBase: 'fuka_revelation_status', globalVarName: 'FukaRevelationStatus' }));
             }
 
             await Promise.all(tasks.map(t => safeAwait('loadPerCharacterResource', t)));
@@ -1192,97 +1144,7 @@
             }
         }
 
-        async function loadLanguageData() {
-            const currentLang = getCurrentLanguage();
-            if (currentLang === 'kr') return;
-
-            try {
-                if (window.CharacterDataUtils && typeof window.CharacterDataUtils.prepareCharacterData === 'function') {
-                    const prepared = await window.CharacterDataUtils.prepareCharacterData({
-                        lang: currentLang,
-                        spoilerEnabled: false,
-                        version: APP_VERSION
-                    });
-
-                    if (prepared && prepared.characterData) {
-                        window.characterData = prepared.characterData;
-                        window.__CHARACTER_DATA_READY__ = {
-                            lang: currentLang,
-                            characterName: characterName
-                        };
-                        try {
-                            window.dispatchEvent(new CustomEvent('characterDataReady', {
-                                detail: {
-                                    lang: currentLang,
-                                    characterName: characterName
-                                }
-                            }));
-                        } catch (_) {}
-                    }
-                }
-            } catch (e) {
-                console.warn('[SAFE:loadLanguageData]', e);
-            }
-        }
-
-        function syncCharacterLimitIcon() {
-            try {
-                if (!characterName || !characterData || !characterData[characterName]) return;
-
-                const currentCharacter = characterData[characterName];
-                const raritySection = document.querySelector('.rarity-section');
-                if (!raritySection) return;
-
-                let limitIcon = raritySection.querySelector('img.limit-icon');
-                if (!limitIcon && typeof window.fillSettingsInfo === 'function') {
-                    window.fillSettingsInfo(currentCharacter);
-                    limitIcon = raritySection.querySelector('img.limit-icon');
-                }
-                if (!limitIcon) return;
-
-                const iconName = currentCharacter.limit ? 'limit.png' : 'limit_non.png';
-                const expectedSrc = `{{ site.baseurl }}/assets/img/character-detail/${iconName}`;
-                const expectedAlt = currentCharacter.limit ? 'limit' : 'non_limit';
-                if (limitIcon.getAttribute('src') !== expectedSrc) {
-                    limitIcon.setAttribute('src', expectedSrc);
-                }
-                if (limitIcon.getAttribute('alt') !== expectedAlt) {
-                    limitIcon.setAttribute('alt', expectedAlt);
-                }
-            } catch (e) {
-                console.warn('[SAFE:syncCharacterLimitIcon]', e);
-            }
-        }
-
-        function ensureCharacterLimitIconObserver() {
-            try {
-                if (window.__characterLimitIconObserver) return;
-
-                const raritySection = document.querySelector('.rarity-section');
-                if (!raritySection || typeof MutationObserver === 'undefined') return;
-
-                const observer = new MutationObserver(() => {
-                    syncCharacterLimitIcon();
-                });
-
-                observer.observe(raritySection, {
-                    childList: true,
-                    subtree: true,
-                    attributes: true,
-                    attributeFilter: ['src', 'alt']
-                });
-
-                window.__characterLimitIconObserver = observer;
-            } catch (e) {
-                console.warn('[SAFE:ensureCharacterLimitIconObserver]', e);
-            }
-        }
-
-        function scheduleCharacterLimitIconSync() {
-            [0, 100, 500, 2500].forEach((delay) => {
-                setTimeout(syncCharacterLimitIcon, delay);
-            });
-        }
+        async function loadLanguageData() { return; }
 
         if (!characterName || !characterData[characterName]) {
             console.error('Character not found');
@@ -1298,7 +1160,7 @@
             const personaFile = `${characterName} - ${basicCharacter.persona}.webp`;
             const thiefSrc = `{{ site.baseurl }}/assets/img/character-detail/${thiefFile}`;
             const personaSrc = `{{ site.baseurl }}/assets/img/character-detail/${personaFile}`;
-            if (thiefEl) { thiefEl.setAttribute('src', thiefSrc); thiefEl.setAttribute('fetchpriority', 'high'); thiefEl.setAttribute('loading', 'eager'); thiefEl.setAttribute('data-character', characterName); }
+            if (thiefEl) { thiefEl.setAttribute('src', thiefSrc); thiefEl.setAttribute('fetchpriority', 'high'); thiefEl.setAttribute('loading', 'eager'); }
             if (personaEl) { personaEl.setAttribute('src', personaSrc); personaEl.setAttribute('fetchpriority', 'high'); personaEl.setAttribute('loading', 'eager'); }
             const preload1 = document.createElement('link');
             preload1.rel = 'preload';
@@ -1314,8 +1176,6 @@
 
         // 언어별 데이터 로드 후 캐릭터 정보 설정
         await safeAwait('loadLanguageData', loadLanguageData());
-        safeRun('ensureCharacterLimitIconObserver:post-language', ensureCharacterLimitIconObserver);
-        safeRun('scheduleCharacterLimitIconSync:post-language', scheduleCharacterLimitIconSync);
         // 계시 다국어 데이터도 먼저 로드 (EN/JP에서 최초 렌더부터 번역 적용)
         await safeAwait('loadRevelationDataByLanguage', loadRevelationDataByLanguage());
         safeRun('refreshRevelationDisplay', () => setTimeout(refreshRevelationDisplay, 100));
@@ -1337,8 +1197,6 @@
                 applySkillPriorityBadges();
             }
         });
-        safeRun('ensureCharacterLimitIconObserver:after-fill', ensureCharacterLimitIconObserver);
-        safeRun('scheduleCharacterLimitIconSync:after-fill', scheduleCharacterLimitIconSync);
         // 기본 스탯 렌더
         safeRun('fillBasicStats', () => fillBasicStats(characterName));
         // 운영 즉시 렌더 (함수 노출 이후 재호출 가능)
@@ -1359,7 +1217,7 @@
         let localizedRitual = null;
         let localizedWeapon = null;
 
-        if (currentLang !== 'kr') {
+        if (!((window.isKrLikeLanguage && window.isKrLikeLanguage(currentLang)) || currentLang === 'kr')) {
             // 언어별 데이터 파일 동적 로드
             try {
                 if (currentLang === 'en') {
@@ -1383,16 +1241,6 @@
                     }
                     if (window.jpCharacterWeaponData && window.jpCharacterWeaponData[characterName]) {
                         localizedWeapon = window.jpCharacterWeaponData[characterName];
-                    }
-                } else if (currentLang === 'cn') {
-                    if (window.cnCharacterSkillsData && window.cnCharacterSkillsData[characterName]) {
-                        localizedSkills = window.cnCharacterSkillsData[characterName];
-                    }
-                    if (window.cnCharacterRitualData && window.cnCharacterRitualData[characterName]) {
-                        localizedRitual = window.cnCharacterRitualData[characterName];
-                    }
-                    if (window.cnCharacterWeaponData && window.cnCharacterWeaponData[characterName]) {
-                        localizedWeapon = window.cnCharacterWeaponData[characterName];
                     }
                 }
 
@@ -1554,8 +1402,6 @@
                     });
                 } else if (currentLang === 'jp' && character.name_jp) {
                     nameElement.textContent = character.name_jp;
-                } else if (currentLang === 'cn' && character.name_cn) {
-                    nameElement.textContent = character.name_cn;
                 } else {
                     nameElement.textContent = character.name;
                 }
@@ -1571,21 +1417,15 @@
                     <span class="label">${codeNameLabel}</span><span class="value">${character.codename || ''}</span>
                 `;
             }
-            const personaLabel = `${getCharacterI18nText('gameTerms.persona', '페르소나')} `;
+            const personaLabel = `${getCharacterI18nText('characterDetailPersona', '페르소나')} `;
             const personaValue = currentLang === 'en' && character.persona_en ? character.persona_en :
                 currentLang === 'jp' && character.persona_jp ? character.persona_jp :
-                    currentLang === 'cn' && character.persona_cn ? character.persona_cn :
                     character.persona || '';
             const personaEl = document.querySelector('.persona-name');
             if (personaEl) {
                 personaEl.innerHTML = `
                     <span class="label">${personaLabel}</span><span class="value">${personaValue}</span>
                 `;
-            }
-
-            // 후타바 전용 코드네임(NAVI / ORACLE) + 툴팁 오버라이드
-            if (typeof window.applyNaviCodenameOverride === 'function') {
-                window.applyNaviCodenameOverride();
             }
         } catch (e) { console.warn('[SAFE:code-persona]', e); }
 
@@ -1747,72 +1587,6 @@
             }
         } catch (e) { console.warn('[SAFE:applyMONT2Filter]', e); }
 
-        function escapeRegExp(text) {
-            return String(text).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-        }
-
-        function normalizeBattlePlusText(rawText, lang) {
-            if (typeof rawText !== 'string' || !rawText.trim()) return rawText;
-
-            const localizedNaviPower = getCharacterI18nText(
-                'gameTerms.naviPower',
-                lang === 'en' ? 'Eludi. Stat Buff' : (lang === 'jp' ? 'ステータス強化' : '해명의힘')
-            );
-            const localizedLabor = getCharacterI18nText(
-                'gameTerms.labor',
-                lang === 'en' ? 'Labor' : (lang === 'jp' ? '職責' : '직책')
-            );
-            const localizedMyPalace = getCharacterI18nText(
-                'gameTerms.myPalace',
-                lang === 'en' ? 'Thieves Den' : (lang === 'jp' ? 'マイパレス' : '마이팰리스')
-            );
-            const localizedMyPalaceRating = getCharacterI18nText(
-                'gameTerms.myPalaceRating',
-                lang === 'en' ? 'Thieves Den Rating' : (lang === 'jp' ? 'マイパレス評価' : '마이팰리스 평점')
-            );
-
-            const replacements = [
-                {
-                    variants: ['해명의힘', '해명의 힘', 'Eludi. Stat Buff', 'ステータス強化', '解明の力'],
-                    translated: localizedNaviPower
-                },
-                {
-                    variants: ['직책', 'Labor', 'Card-Labor', '職責', '労働'],
-                    translated: localizedLabor
-                },
-                {
-                    variants: ['마이팰리스 평점', 'Thieves Den Rating', 'Thieves Den Point', 'マイパレス評価', 'マイパレス 評価'],
-                    translated: localizedMyPalaceRating
-                },
-                {
-                    variants: ['마이팰리스', 'Thieves Den', 'マイパレス'],
-                    translated: localizedMyPalace
-                }
-            ];
-
-            let normalized = rawText;
-            replacements.forEach(({ variants, translated }) => {
-                if (!translated) return;
-                const sortedVariants = variants.slice().sort((a, b) => b.length - a.length);
-                sortedVariants.forEach((variant) => {
-                    normalized = normalized.replace(new RegExp(escapeRegExp(variant), 'g'), translated);
-                });
-            });
-
-            // 공통 i18n 역매핑 사전도 적용해 battle_plus_stats 내 한국어 용어 누락을 보정한다.
-            if (lang !== 'kr' && window.I18nService && typeof window.I18nService.getStatTranslations === 'function') {
-                const dict = window.I18nService.getStatTranslations() || {};
-                const sortedKeys = Object.keys(dict).sort((a, b) => b.length - a.length);
-                sortedKeys.forEach((koreanTerm) => {
-                    const translated = dict[koreanTerm];
-                    if (!translated || translated === koreanTerm) return;
-                    normalized = normalized.replace(new RegExp(escapeRegExp(koreanTerm), 'g'), translated);
-                });
-            }
-
-            return normalized;
-        }
-
         // 전투 진입 시 요구 스탯 + 처리
         const battlePlusStats = document.querySelector('.battle-plus-stats');
         try {
@@ -1821,15 +1595,13 @@
             const setting = (characterName && window.characterSetting && window.characterSetting[characterName]) ? window.characterSetting[characterName] : {};
             const mergedCharacter = { ...character, ...setting };
             // 언어 별 battle-plus-stats
-            let battlePlusText = '';
             if (currentLang === 'en' && mergedCharacter.battle_plus_stats_en) {
-                battlePlusText = mergedCharacter.battle_plus_stats_en;
+                battlePlusStats.textContent = mergedCharacter.battle_plus_stats_en;
             } else if (currentLang === 'jp' && mergedCharacter.battle_plus_stats_jp) {
-                battlePlusText = mergedCharacter.battle_plus_stats_jp;
+                battlePlusStats.textContent = mergedCharacter.battle_plus_stats_jp;
             } else {
-                battlePlusText = mergedCharacter.battle_plus_stats;
+                battlePlusStats.textContent = mergedCharacter.battle_plus_stats;
             }
-            battlePlusStats.textContent = normalizeBattlePlusText(battlePlusText || '', currentLang);
         } catch (e) { console.warn('[SAFE:battlePlus-init]', e); }
 
         if (battlePlusStats && battlePlusStats.textContent && battlePlusStats.textContent !== 'nan') {
@@ -2248,7 +2020,7 @@
         await safeAwait('loadCharacterList', loadCharacterList());
         try {
             const currentLang = getCurrentLanguage();
-            if (characterName && currentLang !== 'kr') {
+            if (characterName && !((window.isKrLikeLanguage && window.isKrLikeLanguage(currentLang)) || currentLang === 'kr')) {
                 const selfReleased = await isCharacterReleased(characterName);
                 if (!selfReleased) spoilerDisabled = true;
             }
@@ -2258,7 +2030,6 @@
         runWhenIdle(() => {
             try { loadRecommendations(characterName); } catch (e) { console.warn('[SAFE:loadRecommendations]', e); }
             try { addTooltips(); } catch (e) { console.warn('[SAFE:addTooltips]', e); }
-            try { scheduleCharacterTocRefresh(); } catch (e) { console.warn('[SAFE:toc-after-recommendations-idle]', e); }
         });
 
         // 버튼 이벤트 리스너 추가
@@ -2280,39 +2051,60 @@
 
 
 
-        // SEO context update
+        // SEO 메타데이터 동적 업데이트
+        const baseUrl = 'https://lufel.net'; // 실제 도메인으로 변경 필요
+
+        // 언어별 캐릭터명 설정
         let characterDisplayName = character.name;
         if (currentLang === 'en' && character.name_en) {
             characterDisplayName = character.name_en;
         } else if (currentLang === 'jp' && character.name_jp) {
             characterDisplayName = character.name_jp;
-        } else if (currentLang === 'cn' && character.name_cn) {
-            characterDisplayName = character.name_cn;
         }
 
-        let characterEntityKey = '';
-        const slugMap = window.__CHARACTER_SLUG_MAP || null;
-        const slugEntry = slugMap ? slugMap[characterName] : null;
-        if (slugEntry && typeof slugEntry === 'object' && slugEntry.slug) {
-            characterEntityKey = String(slugEntry.slug);
-        } else if (typeof slugEntry === 'string') {
-            characterEntityKey = slugEntry;
-        } else if (character.codename) {
-            characterEntityKey = String(character.codename).toLowerCase();
-        } else {
-            characterEntityKey = characterName;
-        }
+        // 언어별 사이트 정보
+        const siteInfo = {
+            'kr': {
+                siteName: '육성 가이드 - 페르소나5 더 팬텀 X',
+                siteTitle: 'P5X 루페르넷',
+                description: '추천 세팅, 스킬, 의식, 전용무기 정보'
+            },
+            'en': {
+                siteName: 'Build & Guide - Persona 5: The Phantom X',
+                siteTitle: 'P5X LufelNet',
+                description: 'Recommended setup, skills, awareness, exclusive weapon info'
+            },
+            'jp': {
+                siteName: '攻略 - ペルソナ5 ザ・ファントム X',
+                siteTitle: 'P5X LufelNet',
+                description: 'おすすめ設定、スキル、意識、専用武器情報'
+            }
+        };
+
+        const currentSiteInfo = siteInfo[currentLang] || siteInfo['kr'];
+
+        // 타이틀 업데이트
+        try { document.title = `${characterDisplayName} ${currentSiteInfo.siteName}`; } catch (e) { console.warn('[SAFE:seo-title]', e); }
+
+        // 메타 태그 업데이트 (태그가 존재하는 경우에만)
+        const description = `${characterDisplayName}(${character.codename}) - ${currentSiteInfo.siteName} : ${currentSiteInfo.description}`;
+
+        const metaDescription = document.querySelector('meta[name="description"]');
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        const ogDescription = document.querySelector('meta[property="og:description"]');
+        const ogImage = document.querySelector('meta[property="og:image"]');
+        const ogUrl = document.querySelector('meta[property="og:url"]');
+        const canonicalLink = document.getElementById('canonical-link');
 
         try {
-            if (window.SeoEngine && typeof window.SeoEngine.setContextHint === 'function') {
-                window.SeoEngine.setContextHint({
-                    domain: 'character',
-                    mode: 'detail',
-                    entityKey: characterEntityKey,
-                    entityName: characterDisplayName
-                }, { rerun: true });
-            } else if (window.SeoEngine && typeof window.SeoEngine.run === 'function') {
-                window.SeoEngine.run();
+            if (metaDescription) metaDescription.setAttribute('content', description);
+            if (ogTitle) ogTitle.setAttribute('content', `${characterDisplayName} - ${currentSiteInfo.siteName}`);
+            if (ogDescription) ogDescription.setAttribute('content', description);
+            if (ogImage) ogImage.setAttribute('content', `${baseUrl}/img/character-detail/${characterName}.webp`);
+            if (ogUrl) ogUrl.setAttribute('content', `${baseUrl}/${currentLang}/character/character.html?name=${characterName}`);
+            if (canonicalLink) {
+                const canonicalUrl = `https://lufel.net/${currentLang}/character/character.html?name=${characterName}`;
+                canonicalLink.setAttribute('href', canonicalUrl);
             }
         } catch (e) { console.warn('[SAFE:seo-meta]', e); }
 
@@ -2357,15 +2149,14 @@
 
 
         try {
-            const hideTagByLanguage = (currentLang === 'en' || currentLang === 'jp');
-            const tagElement = document.querySelector('.chracter-tag');
-            if (tagElement) { tagElement.style.display = hideTagByLanguage ? 'none' : ''; }
+            const tagElements = document.querySelectorAll('.chracter-tag, .chracter-role');
+            tagElements.forEach(el => { if (el) el.style.display = ''; });
         } catch (e) { console.warn('[SAFE:tag-display]', e); }
 
         //role은 kr 아니면 숨기기
         try {
             const roleElement = document.querySelector('.chracter-role');
-            if (roleElement) { roleElement.style.display = currentLang === 'kr' ? '' : 'none'; }
+            if (!((window.isKrLikeLanguage && window.isKrLikeLanguage(currentLang)) || currentLang === 'kr') && roleElement) { roleElement.style.display = 'none'; }
         } catch (e) { console.warn('[SAFE:role-hide]', e); }
 
         try {
@@ -2382,12 +2173,9 @@
             }
         } catch (e) { console.warn('[SAFE:note-section]', e); }
 
-        safeRun('character-toc:refresh', () => scheduleCharacterTocRefresh());
-
       } finally {
         // Remove skeleton overlay now that i18n + data is applied (or handler errored/returned early)
         document.documentElement.classList.remove('skel');
-        try { scheduleCharacterTocRefresh(); } catch (e) { console.warn('[SAFE:toc-finally]', e); }
       }
     });
 
@@ -2400,7 +2188,6 @@
         );
         if (!shouldTranslate) return;
         scheduleTranslate(document.querySelector('.main-wrapper') || document);
-        scheduleCharacterTocRefresh();
     });
 
     // 관찰 시작
@@ -2446,6 +2233,18 @@
                     })
                     .catch(error => {
                         console.error('일본어 계시 데이터 로드 실패:', error);
+                        resolve(); // 실패해도 계속 진행
+                    });
+            } else if (currentLang === 'cn') {
+                fetchWithRevalidate(`${BASE_URL}/data/cn/revelations/revelations.js?v=${APP_VERSION}`)
+                    .then(response => response.text())
+                    .then(scriptContent => {
+                        const modifiedScript = scriptContent.replace('const cnRevelationData', 'window.cnRevelationData');
+                        eval(modifiedScript);
+                        resolve();
+                    })
+                    .catch(error => {
+                        console.error('중국어 계시 데이터 로드 실패:', error);
                         resolve(); // 실패해도 계속 진행
                     });
             } else {
@@ -2502,7 +2301,6 @@
             try { if (window.CharI18N && typeof CharI18N.applySectionLabels === 'function') { CharI18N.applySectionLabels(); } } catch (e) { console.warn('[CharI18N:applySectionLabels]', e); }
             try { if (typeof window.localizeCharacterStatsCard === 'function') { window.localizeCharacterStatsCard(); } } catch (e) { console.warn('[cha_stats:localizeCharacterStatsCard]', e); }
             scheduleTranslate(document.querySelector('.main-wrapper') || document);
-            scheduleCharacterTocRefresh();
         };
     } catch (e) { console.warn('[I18N:override-applyTranslations]', e); }
     // 추천 페르소나와 파티 로드 함수
@@ -2511,7 +2309,6 @@
         await ensureKrNameData();
         if (!characterName || !(window.recommendParty && window.recommendParty[characterName])) {
             document.getElementById('recommended-sections').style.display = 'none';
-            scheduleCharacterTocRefresh();
             return;
         }
 
@@ -2548,7 +2345,7 @@
 
             // 다국어 안내 노트 (비한국어) - 페르소나 카드가 표시될 때만 추가
             const currentLang = getCurrentLanguage();
-            if (currentLang !== 'kr' && !document.querySelector('.unreleased-note')) {
+            if (!((window.isKrLikeLanguage && window.isKrLikeLanguage(currentLang)) || currentLang === 'kr') && !document.querySelector('.unreleased-note')) {
                 const noteContainer = document.createElement('div');
                 noteContainer.className = 'unreleased-note';
                 noteContainer.style.fontSize = '0.9em';
@@ -2588,8 +2385,6 @@
             const container = document.getElementById('recommended-party-content');
             if (container) container.innerHTML = '';
         }
-
-        scheduleCharacterTocRefresh();
     }
 
     // 섹션 제목 다국어 지원
@@ -2615,8 +2410,6 @@
             return p.name_en;
         } else if (currentLang === 'jp' && p.name_jp) {
             return p.name_jp;
-        } else if (currentLang === 'cn' && p.name_cn) {
-            return p.name_cn;
         }
         return personaName;
     }
@@ -2681,13 +2474,13 @@
             return characterName;
         }
 
-        // 한국어: 객체 키(원래 캐릭터 이름)를 그대로 사용
         if (currentLang === 'cn') {
             if (c.name_cn) return c.name_cn;
             if (base.name_cn) return base.name_cn;
-            return base.name || characterName;
+            return characterName;
         }
 
+        // 한국어: 객체 키(원래 캐릭터 이름)를 그대로 사용
         if (currentLang === 'kr') {
             return characterName;
         }
@@ -2726,75 +2519,10 @@
         const safeName = characterName ? String(characterName).trim() : '';
         if (!safeName) return '#';
 
-        if (typeof LanguageRouter !== 'undefined'
-            && LanguageRouter
-            && typeof LanguageRouter.buildCharacterDetailUrl === 'function') {
-            return LanguageRouter.buildCharacterDetailUrl(safeName, lang);
-        }
-
         const slug = resolveCharacterSlug(safeName);
         if (slug) return `/${lang}/character/${slug}/`;
 
         return `/character.html?name=${encodeURIComponent(safeName)}&lang=${lang}`;
-    }
-
-    function buildPersonaDetailUrl(personaName) {
-        const lang = getCurrentLanguage();
-        const safeName = personaName ? String(personaName).trim() : '';
-        if (!safeName) return '#';
-        return `/${lang}/persona/?persona=${encodeURIComponent(safeName)}`;
-    }
-
-    function getWonderWeaponMap() {
-        if (window.matchWeapons && typeof window.matchWeapons === 'object') {
-            return window.matchWeapons;
-        }
-        if (typeof matchWeapons !== 'undefined' && matchWeapons && typeof matchWeapons === 'object') {
-            return matchWeapons;
-        }
-        return null;
-    }
-
-    function resolveWonderWeaponSlug(weaponName) {
-        const safeName = weaponName ? String(weaponName).trim() : '';
-        if (!safeName) return '';
-
-        const slugMap = (window.__WONDER_WEAPON_SLUG_MAP && typeof window.__WONDER_WEAPON_SLUG_MAP === 'object')
-            ? window.__WONDER_WEAPON_SLUG_MAP
-            : null;
-        if (!slugMap) return '';
-
-        const direct = slugMap[safeName];
-        if (direct && typeof direct === 'object' && direct.slug) {
-            return String(direct.slug).trim();
-        }
-        if (typeof direct === 'string') {
-            return direct.trim();
-        }
-
-        const keys = Object.keys(slugMap);
-        for (let i = 0; i < keys.length; i++) {
-            const key = keys[i];
-            const entry = slugMap[key];
-            if (!entry || typeof entry !== 'object' || !Array.isArray(entry.aliases)) continue;
-            if (entry.aliases.includes(safeName) && entry.slug) {
-                return String(entry.slug).trim();
-            }
-        }
-        return '';
-    }
-
-    function buildWonderWeaponDetailUrl(weaponName) {
-        const lang = getCurrentLanguage();
-        const safeName = weaponName ? String(weaponName).trim() : '';
-        if (!safeName) return `/${lang}/wonder-weapon/`;
-
-        const slug = resolveWonderWeaponSlug(safeName);
-        if (slug) {
-            return `/${lang}/wonder-weapon/${slug}/`;
-        }
-
-        return `/${lang}/wonder-weapon/?weapon=${encodeURIComponent(safeName)}`;
     }
 
     function loadRecommendedPersona(personaData) {
@@ -2818,7 +2546,6 @@
 
             const weaponList = document.createElement('div');
             weaponList.className = 'persona-list';
-            const wonderWeaponMap = getWonderWeaponMap();
 
             (window.recommendParty && window.recommendParty[characterName]?.weapon || []).forEach(weaponName => {
                 const weaponItem = document.createElement('div');
@@ -2841,11 +2568,13 @@
                 const name = document.createElement('span');
                 // Get localized weapon name from matchWeapons if available
                 let weaponNameText = weaponName;
-                if (wonderWeaponMap && wonderWeaponMap[weaponName]) {
-                    if (currentLang === 'en' && wonderWeaponMap[weaponName].name_en) {
-                        weaponNameText = wonderWeaponMap[weaponName].name_en;
-                    } else if (currentLang === 'jp' && wonderWeaponMap[weaponName].name_jp) {
-                        weaponNameText = wonderWeaponMap[weaponName].name_jp;
+                if (matchWeapons && matchWeapons[weaponName]) {
+                    if (currentLang === 'en' && matchWeapons[weaponName].name_en) {
+                        weaponNameText = matchWeapons[weaponName].name_en;
+                    } else if (currentLang === 'jp' && matchWeapons[weaponName].name_jp) {
+                        weaponNameText = matchWeapons[weaponName].name_jp;
+                    } else if (currentLang === 'cn' && matchWeapons[weaponName].name_cn) {
+                        weaponNameText = matchWeapons[weaponName].name_cn;
                     }
                 }
                 // 표시 텍스트에서는 ! 제거
@@ -2935,7 +2664,8 @@
                     personaLink.href = '#';
                     personaLink.onclick = function (e) {
                         e.preventDefault();
-                        const personaPageUrl = buildPersonaDetailUrl(personaName);
+                        // Open persona page in new tab with search parameter
+                        const personaPageUrl = `${window.location.origin}/persona/?persona=${encodeURIComponent(personaName)}`;
                         window.open(personaPageUrl, '_blank');
                     };
 
@@ -3008,7 +2738,6 @@
     try {
         window.addEventListener('resize', function () {
             try { adjustRecommendedPersonaLayout(); } catch (_) { }
-            try { scheduleCharacterTocRefresh(); } catch (_) { }
         });
     } catch (e) { console.warn('[SAFE:resize-listener]', e); }
 
@@ -3044,7 +2773,7 @@
 
     async function loadCharacterList() {
         const currentLang = getCurrentLanguage();
-        if (currentLang === 'kr') {
+        if ((window.isKrLikeLanguage && window.isKrLikeLanguage(currentLang)) || currentLang === 'kr') {
             characterListLoaded = true;
             return; // No need to load for Korean
         }
@@ -3089,7 +2818,7 @@
 
     async function isCharacterReleased(koreanName) {
         const currentLang = getCurrentLanguage();
-        if (currentLang === 'kr') return true; // Always show all characters in Korean
+        if ((window.isKrLikeLanguage && window.isKrLikeLanguage(currentLang)) || currentLang === 'kr') return true; // Always show all characters in KR-like languages
 
         // 현재 페이지가 미출시 캐릭터면 스포일러 기능 전체 비활성화
         if (spoilerDisabled) return true;
@@ -3518,8 +3247,6 @@
         const modalImage = document.getElementById('weapon-effect-image');
         const modalTitle = document.getElementById('weapon-effect-title');
         const modalDescription = document.getElementById('weapon-effect-description');
-        const currentLang = getCurrentLanguage();
-        const wonderWeaponMap = getWonderWeaponMap();
 
         // Set the weapon image and name
         modalImage.src = imageUrl;
@@ -3528,13 +3255,13 @@
 
         // Get the effect text based on current language
         let effectText = 'No effect information available.';
-        if (wonderWeaponMap && wonderWeaponMap[weaponId]) {
-            if (currentLang === 'en' && wonderWeaponMap[weaponId].effect_en) {
-                effectText = wonderWeaponMap[weaponId].effect_en;
-            } else if (currentLang === 'jp' && wonderWeaponMap[weaponId].effect_jp) {
-                effectText = wonderWeaponMap[weaponId].effect_jp;
-            } else if (wonderWeaponMap[weaponId].effect) {
-                effectText = wonderWeaponMap[weaponId].effect; // Default to Korean
+        if (matchWeapons && matchWeapons[weaponId]) {
+            if (currentLang === 'en' && matchWeapons[weaponId].effect_en) {
+                effectText = matchWeapons[weaponId].effect_en;
+            } else if (currentLang === 'jp' && matchWeapons[weaponId].effect_jp) {
+                effectText = matchWeapons[weaponId].effect_jp;
+            } else if (matchWeapons[weaponId].effect) {
+                effectText = matchWeapons[weaponId].effect; // Default to Korean
             }
         }
 
@@ -3547,10 +3274,9 @@
 
         // modalDescription에 아래 'Detail' 추가하고 링크 걸기 /wonder-weapon
         const detailLink = document.createElement('a');
-        detailLink.href = buildWonderWeaponDetailUrl(weaponId);
+        detailLink.href = `/wonder-weapon/`;
         detailLink.textContent = getCharacterI18nText('characterDetailLinkLabel', 'Detail →');
         detailLink.target = '_blank';
-        detailLink.rel = 'noopener noreferrer';
         modalDescription.appendChild(detailLink);
 
         // Show the modal

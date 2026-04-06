@@ -18,12 +18,12 @@ sitemap: false
       params.delete("lang");
       params.delete("name");
       params.delete("persona");
-      var languageTargets = {"kr":"/kr/persona/sahimochi-no-kami/","en":"/en/persona/sahimochi-no-kami/","jp":"/jp/persona/sahimochi-no-kami/"};
+      var languageTargets = {"kr":"/kr/persona/sahimochi-no-kami/","en":"/en/persona/sahimochi-no-kami/","jp":"/jp/persona/sahimochi-no-kami/","cn":"/cn/persona/sahimochi-no-kami/"};
       var defaultPath = "/en/persona/sahimochi-no-kami/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

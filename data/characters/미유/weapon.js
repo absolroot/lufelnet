@@ -1,6 +1,8 @@
 window.WeaponData = window.WeaponData || {};
 window.enCharacterWeaponData = window.enCharacterWeaponData || {};
 window.jpCharacterWeaponData = window.jpCharacterWeaponData || {};
+window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
+
 window.WeaponData["미유"] = {
   "name": "사하라 미유",
   "weapon4-1": {
@@ -20,6 +22,7 @@ window.WeaponData["미유"] = {
     "description": "방어력이 45.0%/45.0%/59.0%/59.0%/73.0%/73.0%/87.0% 증가한다. 사하라 미유가 스킬 시전 시 스킬의 메인 목표가 『바다의 수호』 1중첩을 추가로 획득한다. 스킬 목표의 『바다의 수호』 중첩수에 따라, 중첩마다 공격력이 3.0%/4.0%/4.0%/5.0%/5.0%/6.0%/6.0%, 방어력이 3.0%/4.0%/4.0%/5.0%/5.0%/6.0%/6.0% 증가하며 2턴 동안 지속된다."
   }
 };
+
 window.enCharacterWeaponData["미유"] = {
   "name": "Miyu Sahara",
   "weapon4-1": {
@@ -37,6 +40,7 @@ window.enCharacterWeaponData["미유"] = {
     "description": "Increase Defense by 45.0%/45.0%/59.0%/59.0%/73.0%/73.0%/87.0%. After using a skill, grant 1 Seashell stack to the main target. For every stack of Seashell granted, increase Attack by 3.0%/4.0%/4.0%/5.0%/5.0%/6.0%/6.0% and Defense by 3.0%/4.0%/4.0%/5.0%/5.0%/6.0%/6.0% for 2 turns."
   }
 };
+
 window.jpCharacterWeaponData["미유"] = {
   "name": "佐原海夕",
   "weapon4-1": {
@@ -54,21 +58,24 @@ window.jpCharacterWeaponData["미유"] = {
     "description": "防御力が45.0%/45.0%/59.0%/59.0%/73.0%/73.0%/87.0%上昇する。自身がスキルを使用した時、選択した対象に『ネレイスガード』を１つ付与する。付与されている『ネレイスガード』１つ毎に、２ターンの間、攻撃力が3.0%/4.0%/4.0%/5.0%/5.0%/6.0%/6.0%、防御力が3.0%/4.0%/4.0%/5.0%/5.0%/6.0%/6.0%上昇する。"
   }
 };
-window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
 
 window.cnCharacterWeaponData["미유"] = {
-  "weapon5-1": {
-    "name": "幻梦泡影",
-    "health": 2338.77,
-    "attack": 640.87,
-    "defense": 475.65,
-    "description": "防御力提高45.0%/45.0%/59.0%/59.0%/73.0%/73.0%/87.0%。佐原海夕释放技能时，使技能主目标额外获得1层『海之守护』；并根据技能目标的『海之守护』层数，每层使攻击力提高3.0%/4.0%/4.0%/5.0%/5.0%/6.0%/6.0%，防御力提高3.0%/4.0%/4.0%/5.0%/5.0%/6.0%/6.0%，效果持续2回合。"
-  },
+  "name": "佐原海夕",
   "weapon4-1": {
     "name": "海域声呐",
     "health": 1870.83,
     "attack": 512.99,
     "defense": 380.85,
+    "skill_name": "",
     "description": "护盾效果提升8.7%/8.7%/11.3%/11.3%/13.9%/13.9%/16.5%。处于护盾保护下的怪盗，防御力提高24.0%/31.0%/31.0%/38.0%/38.0%/45.0%/45.0%。"
+  },
+  "weapon5-1": {
+    "name": "幻梦泡影",
+    "health": 2338.77,
+    "attack": 640.87,
+    "defense": 475.65,
+    "skill_name": "",
+    "description": "防御力提高45.0%/45.0%/59.0%/59.0%/73.0%/73.0%/87.0%。佐原海夕释放技能时，使技能主目标额外获得1层『海之守护』；并根据技能目标的『海之守护』层数，每层使攻击力提高3.0%/4.0%/4.0%/5.0%/5.0%/6.0%/6.0%，防御力提高3.0%/4.0%/4.0%/5.0%/5.0%/6.0%/6.0%，效果持续2回合。"
   }
 };
+

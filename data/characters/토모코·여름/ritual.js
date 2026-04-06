@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["토모코·여름"] = {
   "name": "노게 토모코·여름",
   "r0": "화려한 불꽃",
@@ -18,6 +20,7 @@ window.ritualData["토모코·여름"] = {
   "r6": "사랑의 마음이 이어지길",
   "r6_detail": "『화려한 불꽃』 효과가 『찬란한 불꽃놀이』로 강화된다. 『찬란한 불꽃놀이』는 모든 스킬 중 『화려한 불꽃』과 관련한 효과를 발동할 수 있다.\n『찬란한 불꽃놀이』가 대미지를 줄 때 크리티컬 확률이 35% 증가한다. 적이 『찬란한 불꽃놀이』 효과를 1회 받을 때마다 받는 대미지가 영구적으로 5% 상승한다(3회 중첩 가능). 최대 중첩수에 도달하면 받는 크리티컬 효과가 추가로 20% 증가한다."
 };
+
 window.enCharacterRitualData["토모코·여름"] = {
   "name": "Seaside Tomoko",
   "r0": "Summer Reminiscence",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["토모코·여름"] = {
   "r6": "Heartfelt Days",
   "r6_detail": "Summer Reminiscence gains the following effects.\nWhen dealing damage with Summer Reminiscence, increase critical rate by 35%. Each time a foe takes a Summer Reminiscence effect, permanently increase damage taken by 5%. This effect stacks up to 3 times. At the maximum stack, increase critical damage taken by 20% more."
 };
+
 window.jpCharacterRitualData["토모코·여름"] = {
   "name": "朋子・ピーチサマー",
   "r0": "ひと夏の思い出",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["토모코·여름"] = {
   "r6": "胸に刻まれた日々",
   "r6_detail": "『ひと夏の思い出』に以下の効果が追加される。\n『ひと夏の思い出』でダメージを与える時、クリティカル率が３５%上昇する。敵が『ひと夏の思い出』の効果を１回受けるごとに、永続的に被ダメージを５%上昇させる。この効果は３つまで累積でき、上限に達すると、さらに被クリティカルダメージを２０%上昇させる。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["토모코·여름"] = {
   "name": "野毛朋子·夏日",
@@ -71,3 +74,4 @@ window.cnCharacterRitualData["토모코·여름"] = {
   "r6": "将爱恋的心事连结",
   "r6_detail": "『绚烂烟火』效果强化为『火树银花』。『火树银花』能触发所有技能中『绚烂烟火』相关的效果。\n『火树银花』造成伤害时暴击率提升35%。敌人每受到1次『火树银花』的效果时，受到伤害提升5%，永久生效，可叠加3层，叠加至上限时，受到暴击效果额外提升20%。"
 };
+

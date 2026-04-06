@@ -18,12 +18,12 @@ sitemap: false
       params.delete("lang");
       params.delete("name");
       params.delete("persona");
-      var languageTargets = {"kr":"/kr/persona/baphomet/","en":"/en/persona/baphomet/","jp":"/jp/persona/baphomet/"};
+      var languageTargets = {"kr":"/kr/persona/baphomet/","en":"/en/persona/baphomet/","jp":"/jp/persona/baphomet/","cn":"/cn/persona/baphomet/"};
       var defaultPath = "/en/persona/baphomet/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

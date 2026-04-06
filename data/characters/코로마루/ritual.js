@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["코로마루"] = {
   "name": "코로마루",
   "r0": "도시의 인기 스타",
@@ -18,6 +20,7 @@ window.ritualData["코로마루"] = {
   "r6": "용감한 전사",
   "r6_detail": "코로마루의 턴 시작 시 『저승의 판결』 효과가 자동으로 발동해, 필드에 있는 적 전체를 동시에 화염, 전격, 빙결 속성의 『적합성 저하』 상태에 빠뜨린다. 추가로 목표가 받는 화염, 전격, 빙결 약점 대미지를 20% 증가시키고, 받는 화염, 전격, 빙결 대미지를 20% 증가시킨다. 『충견의 포효』 효과 중첩 상한이 2회까지 증가한다."
 };
+
 window.enCharacterRitualData["코로마루"] = {
   "name": "Koromaru",
   "r0": "City's Top Dog",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["코로마루"] = {
   "r6": "Brave Warrior",
   "r6_detail": "At the start of Koromaru's turn, automatically activate [Judgment of Hades]: Inflict all foes with Fire Electric Ice [Attribute Downgrade], additionally increase target's Fire Electric Ice weakness damage taken by 20% and Fire Electric Ice damage taken by 20%.\nIncrease the maximum stacks of [Loyal Howl] to 2."
 };
+
 window.jpCharacterRitualData["코로마루"] = {
   "name": "コロマル",
   "r0": "街の人気者",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["코로마루"] = {
   "r6": "勇敢なる戦士",
   "r6_detail": "コロマルのターン開始時、自動で『冥府の裁決』効果を発動する：戦場の敵全体を同時に火炎・電撃・氷結属性の『適応性降級』状態にし、さらに対象が受ける火炎・電撃・氷結の弱点ダメージを20%上昇させ、受ける火炎・電撃・氷結ダメージを20%上昇させる。『忠犬の咆哮』の重複上限が2層に増加する。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["코로마루"] = {
   "name": "虎狼丸",
@@ -71,3 +74,4 @@ window.cnCharacterRitualData["코로마루"] = {
   "r6": "勇敢的战士",
   "r6_detail": "虎狼丸回合开始时，自动触发『冥府裁决』效果：使场上所有敌人同时陷入火焰、电击、冰冻属性的『适应性降级』状态，额外使目标受到的火焰、电击、冰冻弱点伤害提升20%，受到火焰、电击、冰冻伤害提升20%； 『忠犬的咆哮』效果叠加上限提升至2层。"
 };
+

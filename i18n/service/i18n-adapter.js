@@ -73,8 +73,8 @@
 
         if (!i18nService) {
             console.error('[i18n-adapter] I18nService not available');
-            window.I18N = { kr: {}, en: {}, jp: {} };
-            window.MUST_READ_CONTENT = { kr: '', en: '', jp: '' };
+            window.I18N = { kr: {}, en: {}, jp: {}, cn: {} };
+            window.MUST_READ_CONTENT = { kr: '', en: '', jp: '', cn: '' };
             // Fallback t function
             window.t = (key, defaultValue) => defaultValue || key;
             document.documentElement.classList.remove('i18n-loading');
@@ -89,7 +89,7 @@
         }
 
         // Initialize i18n service - Load all languages for compatibility
-        const languages = ['kr', 'en', 'jp'];
+        const languages = ['kr', 'en', 'jp', 'cn'];
         await Promise.all(languages.map(async (lang) => {
             // Load common translations
             await i18nService.loadCommonTranslations(lang);
@@ -104,14 +104,16 @@
         window.I18N = {
             kr: buildI18NObject(i18nService, 'kr', pageName),
             en: buildI18NObject(i18nService, 'en', pageName),
-            jp: buildI18NObject(i18nService, 'jp', pageName)
+            jp: buildI18NObject(i18nService, 'jp', pageName),
+            cn: buildI18NObject(i18nService, 'cn', pageName)
         };
 
         // Build MUST_READ_CONTENT
         window.MUST_READ_CONTENT = {
             kr: buildMustReadContent(i18nService, 'kr', pageName),
             en: buildMustReadContent(i18nService, 'en', pageName),
-            jp: buildMustReadContent(i18nService, 'jp', pageName)
+            jp: buildMustReadContent(i18nService, 'jp', pageName),
+            cn: buildMustReadContent(i18nService, 'cn', pageName)
         };
 
         // === 함수형 API (권장) ===
@@ -135,10 +137,12 @@
             window.I18N.kr = buildI18NObject(i18nService, 'kr', pageName);
             window.I18N.en = buildI18NObject(i18nService, 'en', pageName);
             window.I18N.jp = buildI18NObject(i18nService, 'jp', pageName);
+            window.I18N.cn = buildI18NObject(i18nService, 'cn', pageName);
 
             window.MUST_READ_CONTENT.kr = buildMustReadContent(i18nService, 'kr', pageName);
             window.MUST_READ_CONTENT.en = buildMustReadContent(i18nService, 'en', pageName);
             window.MUST_READ_CONTENT.jp = buildMustReadContent(i18nService, 'jp', pageName);
+            window.MUST_READ_CONTENT.cn = buildMustReadContent(i18nService, 'cn', pageName);
         };
 
         // Legacy helper functions (deprecated, use t() instead)

@@ -17,12 +17,12 @@ sitemap: false
       var requestedLang = params.get("lang");
       params.delete("lang");
       params.delete("name");
-      var languageTargets = {"kr":"/kr/character/moko-seaside/","en":"/en/character/moko-seaside/","jp":"/jp/character/moko-seaside/"};
+      var languageTargets = {"kr":"/kr/character/moko-seaside/","en":"/en/character/moko-seaside/","jp":"/jp/character/moko-seaside/","cn":"/cn/character/moko-seaside/"};
       var defaultPath = "/en/character/moko-seaside/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

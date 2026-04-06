@@ -18,12 +18,12 @@ sitemap: false
       params.delete("lang");
       params.delete("name");
       params.delete("persona");
-      var languageTargets = {"kr":"/kr/persona/mithras/","en":"/en/persona/mithras/","jp":"/jp/persona/mithras/"};
+      var languageTargets = {"kr":"/kr/persona/mithras/","en":"/en/persona/mithras/","jp":"/jp/persona/mithras/","cn":"/cn/persona/mithras/"};
       var defaultPath = "/en/persona/mithras/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

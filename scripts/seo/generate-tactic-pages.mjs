@@ -20,7 +20,7 @@ const __dirname = path.dirname(__filename);
 const ROOT = path.resolve(__dirname, '..', '..');
 
 const OUTPUT_DIR = path.join(ROOT, 'pages', 'tactic');
-const LANGS = ['kr', 'en', 'jp'];
+const LANGS = ['kr', 'en', 'jp', 'cn'];
 const IMAGE_PATH = '/assets/img/home/SEO.png';
 
 const PAGE_MODES = [
@@ -111,6 +111,7 @@ function renderPage({ lang, mode, title, description }) {
   const altKo = mode.permalink('kr');
   const altEn = mode.permalink('en');
   const altJp = mode.permalink('jp');
+  const altCn = mode.permalink('cn');
 
   return [
     '---',
@@ -128,6 +129,7 @@ function renderPage({ lang, mode, title, description }) {
     `  ko: ${altKo}`,
     `  en: ${altEn}`,
     `  jp: ${altJp}`,
+    `  'zh-CN': ${altCn}`,
     '---',
     `{% include ${mode.include} %}`,
     ''

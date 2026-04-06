@@ -16,6 +16,7 @@ window.personaFiles["체르노보그"] = {
   "tier_desc": "악몽 스택을 통해 물리 대미지 증가와 방어력 감소를 지닌 페르소나. 괴도 키라와 함께 활용되는 단짝으로 출시됐지만, 정작 키라가 부여하는 지속 대미지는 방어력 감소에 영향을 받지 않고 스킬 대미지를 주로 입히는 의식6 형태에서는 관통 수치를 최대로 높이기 때문에 효율이 크게 나지 않는다.",
   "tier_desc_en": "A Persona that increases Physical damage and reduces Defense through Nightmare stacks. It was released as a partner for Kira, but Kira's damage over time is not affected by Defense reduction, and in Awareness 6 setups focused on skill damage she usually maximizes Pierce instead, so the efficiency is not very high.",
   "tier_desc_jp": "『悪夢』スタックによって物理ダメージ増加と防御力減少を付与するペルソナ。怪盗キラと組ませる相方として実装されたが、キラが与える持続ダメージは防御力減少の影響を受けず、スキルダメージ主体の意識6運用では貫通を最大まで伸ばすため、実際の効率はあまり高くない。",
+  "tier_desc_cn": "是能通过『噩梦』层数提供物理伤害提升和防御力降低的人格面具。它原本是作为怪盗北里基良的配套人格面具推出的，但北里基良附加的持续伤害并不吃防御力降低，而在以意识 6 为核心、偏技能伤害的玩法里，她又会优先把穿透堆满，因此实际收益并不高。",
   "comment": "",
   "comment_en": "",
   "comment_jp": "",

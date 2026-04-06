@@ -2,7 +2,7 @@
     'use strict';
 
     const RAW_LANGS = ['kr', 'en', 'jp', 'cn', 'tw', 'sea'];
-    const UI_LANGS = ['kr', 'en', 'jp'];
+    const UI_LANGS = ['kr', 'en', 'jp', 'cn'];
 
     function normalizeLang(value) {
         return String(value || '').trim().toLowerCase();
@@ -49,6 +49,7 @@
 
     function resolveUiLang(rawLang) {
         const lang = normalizeLang(rawLang || detectRawLang());
+        if (lang === 'cn') return 'cn';
         if (lang === 'en') return 'en';
         if (lang === 'jp') return 'jp';
         return 'kr';

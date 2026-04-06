@@ -1,6 +1,8 @@
 window.characterSkillsData = window.characterSkillsData || {};
 window.enCharacterSkillsData = window.enCharacterSkillsData || {};
 window.jpCharacterSkillsData = window.jpCharacterSkillsData || {};
+window.cnCharacterSkillsData = window.cnCharacterSkillsData || {};
+
 window.characterSkillsData["카스미"] = {
   "name": "요시자와 카스미",
   "skill1": {
@@ -46,6 +48,7 @@ window.characterSkillsData["카스미"] = {
     "cool": 0
   }
 };
+
 window.enCharacterSkillsData["카스미"] = {
   "name": "Kasumi Yoshizawa",
   "skill1": {
@@ -92,6 +95,7 @@ window.enCharacterSkillsData["카스미"] = {
     "cool": 0
   }
 };
+
 window.jpCharacterSkillsData["카스미"] = {
   "name": "芳澤 かすみ",
   "skill1": {
@@ -138,46 +142,51 @@ window.jpCharacterSkillsData["카스미"] = {
     "cool": 0
   }
 };
-window.cnCharacterSkillsData = window.cnCharacterSkillsData || {};
 
 window.cnCharacterSkillsData["카스미"] = {
   "name": "芳泽霞",
   "skill1": {
     "name": "黑夜微光",
     "element": "축복",
+    "type": "单体伤害",
     "sp": 23,
     "cool": 0,
     "description": "主动使用该技能时，对1名敌人造成186.9%/206.1%/198.4%/217.5%攻击力的祝福属性伤害，自身获得舞姿『勇气步伐』，上限3层。舞伴触发该技能时，技能效果为对1名敌人造成121.6%/134.1%/129.1%/141.5%攻击力的祝福属性伤害，自身获得舞姿『勇气步伐』，上限3层。"
   },
   "skill2": {
     "name": "携手共舞",
+    "element": "버프",
+    "type": "增益",
     "sp": 22,
     "cool": 0,
-    "description": "选择1名同伴使其成为『舞伴』，持续1回合。自身和『舞伴』攻击力提升32.4%/35.7%/34.4%/37.7%，持续3回合。自身获得舞姿『灵巧步伐』，上限1层。『舞伴』使用人格面具技能后，自身立刻对随机敌方目标释放1次『黑夜微光』（若『舞伴』的技能目标为敌方，则改为对技能主目标释放1次『黑夜微光』）。同时只能存在一个『舞伴』。",
-    "element": "버프"
+    "description": "选择1名同伴使其成为『舞伴』，持续1回合。自身和『舞伴』攻击力提升32.4%/35.7%/34.4%/37.7%，持续3回合。自身获得舞姿『灵巧步伐』，上限1层。『舞伴』使用人格面具技能后，自身立刻对随机敌方目标释放1次『黑夜微光』（若『舞伴』的技能目标为敌方，则改为对技能主目标释放1次『黑夜微光』）。同时只能存在一个『舞伴』。"
   },
   "skill3": {
     "name": "心绪绽放",
     "element": "축복",
+    "type": "单体伤害",
     "sp": 27,
     "cool": 0,
-    "description": "对1名敌人造成214.7%/236.7%/227.9%/249.9%攻击力的祝福属性伤害。使用该技能时若自身处于『化装舞会』状态，则技能伤害提升30%、自身暴击效果提升29.3%/29.3%/31.1%/31.1%。"
+    "description": "对1名敌人造成249.1%/274.6%/264.4%/289.9%攻击力的祝福属性伤害。使用该技能时若自身处于『化装舞会』状态，则技能伤害提升30%、自身暴击效果提升29.3%/29.3%/31.1%/31.1%。"
+  },
+  "skill_highlight": {
+    "element": "축복",
+    "type": "单体伤害",
+    "description": "发动条件：自身处于『化装舞会』状态\n对1名敌人造成273.1%/301.0%/289.8%/317.8%攻击力的祝福属性伤害。自身拥有舞姿时，获得对应的增益效果。『勇气步伐』：每层提升HIGHLIGHT技能伤害15%。『灵巧步伐』：HIGHLIGHT提升10%暴击率、20%暴击效果。",
+    "cool": 0,
+    "name": "HIGHLIGHT"
   },
   "passive1": {
     "name": "信心",
     "element": "패시브",
-    "cool": 0,
-    "description": "自身每拥有一层舞姿，祝福属性伤害提升10.0%，上限30.0%。"
+    "description": "自身每拥有一层舞姿，祝福属性伤害提升15%，上限45.0%。",
+    "cool": 0
   },
   "passive2": {
     "name": "决意",
     "element": "패시브",
-    "cool": 0,
-    "description": "友方同伴发动HIGHLIGHT/神通法后，芳泽霞攻击力提升45.0%，持续2回合，可叠加2层。"
-  },
-  "skill_highlight": {
-    "element": "축복",
-    "cool": 0,
-    "description": "发动条件：自身处于『化装舞会』状态\n对1名敌人造成243.8%/268.8%/258.8%/283.8%攻击力的祝福属性伤害。自身拥有舞姿时，获得对应的增益效果。『勇气步伐』：每层提升HIGHLIGHT技能伤害15%。『灵巧步伐』：HIGHLIGHT提升10%暴击率、20%暴击效果。"
+    "description": "友方同伴发动HIGHLIGHT/神通法后，芳泽霞攻击力提升45.0%，持续2回合，可叠加2层。",
+    "cool": 0
   }
 };
+

@@ -1,6 +1,8 @@
 window.WeaponData = window.WeaponData || {};
 window.enCharacterWeaponData = window.enCharacterWeaponData || {};
 window.jpCharacterWeaponData = window.jpCharacterWeaponData || {};
+window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
+
 window.WeaponData["안"] = {
   "name": "타카마키 안",
   "weapon4-1": {
@@ -20,6 +22,7 @@ window.WeaponData["안"] = {
     "description": "화염 대미지가 24.2%/24.2%/31.5%/31.5%/38.8%/38.8%/46.1% 증가한다. 『몰두』 상태 시 임의의 적 1명이 화상 상태에 걸린다. 이때 화상 상태인 적의 수에 따라 화염 속성 대미지가 증가하고(인원수*25.5%/33.5%/33.5%/41.5%/41.5%/49.5%/49.5%), 최대 76%/100%/100%/124%/124%/148%/148% 증가한다."
   }
 };
+
 window.enCharacterWeaponData["안"] = {
   "name": "Ann Takamaki",
   "weapon4-1": {
@@ -37,6 +40,7 @@ window.enCharacterWeaponData["안"] = {
     "description": "Increase Fire damage by 24.2%/24.2%/31.5%/31.5%/38.8%/38.8%/46.1%. When La Vie En Rose is active, inflict Burn on 1 random foe. Increase Fire damage 25.5%/33.5%/33.5%/41.5%/41.5%/49.5%/49.5% for each Burning foe. Maximum of 76%/100%/100%/124%/124%/148%/148%."
   }
 };
+
 window.jpCharacterWeaponData["안"] = {
   "name": "高巻 杏",
   "weapon4-1": {
@@ -54,21 +58,24 @@ window.jpCharacterWeaponData["안"] = {
     "description": "火炎属性の与ダメージが24.2%/24.2%/31.5%/31.5%/38.8%/38.8%/46.1%上昇する。『ラビアンローズ』状態になった時、ランダムな敵１体を炎上状態にし、さらに炎上状態の敵の数に応じて、火炎属性の与ダメージが（対象×25.5%/33.5%/33.5%/41.5%/41.5%/49.5%/49.5%）上昇する。最大76%/100%/100%/124%/124%/148%/148%上昇する。"
   }
 };
-window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
 
 window.cnCharacterWeaponData["안"] = {
-  "weapon5-1": {
-    "name": "玫瑰之棘",
-    "health": 2140.53,
-    "attack": 799.42,
-    "defense": 409.62,
-    "description": "火焰伤害提升24.2%/24.2%/31.5%/31.5%/38.8%/38.8%/46.1%。进入『潜心』状态后，随机使1名敌人陷入燃烧状态，并根据此时处于燃烧状态下的敌人数量，提升（人数*25.5%/33.5%/33.5%/41.5%/41.5%/49.5%/49.5%）的火焰属性伤害，最高76%/100%/100%/124%/124%/148%/148%。"
-  },
+  "name": "高卷杏",
   "weapon4-1": {
     "name": "幻象鞭",
     "health": 1712.28,
     "attack": 639.7,
     "defense": 328.02,
+    "skill_name": "",
     "description": "攻击力提升12.0%/16.0%/16.0%/20.0%/20.0%/24.0%/24.0%。攻击处于燃烧状态下的敌人时，攻击力提升23.7%/23.7%/30.8%/30.8%/37.9%/37.9%/45.0%。"
+  },
+  "weapon5-1": {
+    "name": "玫瑰之棘",
+    "health": 2140.53,
+    "attack": 799.42,
+    "defense": 409.62,
+    "skill_name": "",
+    "description": "火焰伤害提升24.2%/24.2%/31.5%/31.5%/38.8%/38.8%/46.1%。进入『潜心』状态后，随机使1名敌人陷入燃烧状态，并根据此时处于燃烧状态下的敌人数量，提升（人数*25.5%/33.5%/33.5%/41.5%/41.5%/49.5%/49.5%）的火焰属性伤害，最高76%/100%/100%/124%/124%/148%/148%。"
   }
 };
+

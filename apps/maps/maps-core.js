@@ -21,25 +21,25 @@
 
     // 언어별 맵 데이터 경로 반환
     function getMapDataPath(lang) {
-        // lang: 'kr', 'en', 'jp'
-        return `${MAP_DATA_BASE_PATH}${lang}/`;
+        const dataLang = lang === 'cn' ? 'kr' : lang;
+        return `${MAP_DATA_BASE_PATH}${dataLang}/`;
     }
 
     // 현재 언어 감지
     function getCurrentLanguage() {
-        const pathMatch = window.location.pathname.match(/^\/(kr|en|jp)(\/|$)/i);
+        const pathMatch = window.location.pathname.match(/^\/(kr|en|jp|cn)(\/|$)/i);
         if (pathMatch) {
             return pathMatch[1].toLowerCase();
         }
 
         const urlParams = new URLSearchParams(window.location.search);
         const urlLang = urlParams.get('lang');
-        if (urlLang && ['kr', 'en', 'jp'].includes(urlLang)) {
+        if (urlLang && ['kr', 'en', 'jp', 'cn'].includes(urlLang)) {
             return urlLang;
         }
         try {
             const savedLang = localStorage.getItem('preferredLanguage');
-            if (savedLang && ['kr', 'en', 'jp'].includes(savedLang)) {
+            if (savedLang && ['kr', 'en', 'jp', 'cn'].includes(savedLang)) {
                 return savedLang;
             }
         } catch (e) { }

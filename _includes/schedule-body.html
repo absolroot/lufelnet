@@ -4,13 +4,13 @@
     var path = String(window.location.pathname || '/');
     var lowerPath = path.toLowerCase();
 
-    var pathLangMatch = lowerPath.match(/^\/(kr|en|jp)(\/|$)/);
+    var pathLangMatch = lowerPath.match(/^\/(kr|en|jp|cn)(\/|$)/);
     var pathLang = pathLangMatch ? pathLangMatch[1] : '';
     var queryLang = String(params.get('lang') || '').toLowerCase();
-    var effectiveLang = pathLang || (['kr', 'en', 'jp'].indexOf(queryLang) !== -1 ? queryLang : '');
+    var effectiveLang = pathLang || (['kr', 'en', 'jp', 'cn'].indexOf(queryLang) !== -1 ? queryLang : '');
 
     var isLegacyRoot = /^\/schedule\/?$/.test(lowerPath);
-    var isCanonicalPath = /^\/(kr|en|jp)\/schedule\/?$/.test(lowerPath);
+    var isCanonicalPath = /^\/(kr|en|jp|cn)\/schedule\/?$/.test(lowerPath);
 
     if (isLegacyRoot && effectiveLang) {
         window.__SEO_PATH_LANG__ = effectiveLang;
@@ -54,7 +54,7 @@
 <div class="main-wrapper schedule-page">
     <!-- Navigation path -->
     <div class="navigation-path">
-        <script>document.write(`<a href="../../" id="nav-home" data-i18n="nav.home">-</a>`);</script>
+        <script>document.write(`<a href="../../?v=${APP_VERSION}" id="nav-home" data-i18n="navHome">-</a>`);</script>
         <span class="separator">/</span>
         <span class="current-page" id="nav-current" data-i18n="navCurrent">-</span>
     </div>
@@ -62,7 +62,6 @@
     <!-- Header -->
     <div class="header-container">
         <h1 id="page-title" data-i18n="pageTitle">-</h1>
-        <p class="page-description" id="page-description" data-i18n="pageDescription"></p>
     </div>
 
     <!-- Notice Banner -->
@@ -70,7 +69,7 @@
         <p class="notice-text" id="notice-text" data-i18n-html="noticeHtml">
             Be careful with spoilers.<br>
             This schedule is for GLB/JP servers.<br>
-            On the Asia server, new characters previously released every 2 weeks until version 4.0 and every 3 weeks after that, but it is not confirmed whether GLB/JP will follow the same cadence.<br>
+            Until version 4.0, new characters release every 2 weeks; after 4.0, the interval changes to 3 weeks. <br>
             This schedule and character release order is based on previous Asia server releases, but may be subject to
             change at any time due to unexpected circumstances or events.<br>
             Character release order is not guaranteed to match Asia server or remain the same.<br>
@@ -129,25 +128,32 @@
 <script>
     (function () {
         function detectLang() {
-            const pathMatch = window.location.pathname.match(/^\/(kr|en|jp)(\/|$)/i);
+            const pathMatch = window.location.pathname.match(/^\/(kr|en|jp|cn)(\/|$)/i);
             if (pathMatch) {
                 return pathMatch[1].toLowerCase();
             }
 
             const urlParams = new URLSearchParams(window.location.search);
             const queryLang = String(urlParams.get('lang') || '').toLowerCase();
-            if (['kr', 'en', 'jp'].indexOf(queryLang) !== -1) {
+            if (['kr', 'en', 'jp', 'cn'].indexOf(queryLang) !== -1) {
                 return queryLang;
             }
 
             if (typeof getCurrentLang === 'function') {
                 const current = String(getCurrentLang() || '').toLowerCase();
-                if (['kr', 'en', 'jp'].indexOf(current) !== -1) {
+                if (['kr', 'en', 'jp', 'cn'].indexOf(current) !== -1) {
                     return current;
                 }
             }
 
             return 'en';
+        }
+
+        function getI18nText(key, fallback = '') {
+            if (typeof window.t === 'function') {
+                return window.t(key, fallback);
+            }
+            return fallback;
         }
 
         function updateSEOTags(lang) {
@@ -161,7 +167,86 @@
             }
             if (window.SeoEngine && typeof window.SeoEngine.run === 'function') {
                 window.SeoEngine.run();
+                return;
             }
+            const baseUrl = 'https://lufel.net';
+            const isPathLang = /^\/(kr|en|jp|cn)(\/|$)/i.test(window.location.pathname);
+            const currentUrl = isPathLang
+                ? `${baseUrl}/${lang}/schedule/`
+                : `${baseUrl}/schedule/`;
+            const seoTitle = getI18nText('seoTitle', document.title);
+            const seoDescription = getI18nText('seoDescription', '');
+            const seoKeywords = getI18nText('seoKeywords', '');
+            const seoOgLocale = getI18nText('seoOgLocale', lang === 'jp' ? 'ja_JP' : lang === 'cn' ? 'zh_CN' : lang === 'kr' ? 'ko_KR' : 'en_US');
+
+            // Update document title
+            if (seoTitle) {
+                document.title = seoTitle;
+            }
+
+            // Update meta description
+            let metaDesc = document.querySelector('meta[name="description"]');
+            if (!metaDesc) {
+                metaDesc = document.createElement('meta');
+                metaDesc.setAttribute('name', 'description');
+                document.head.appendChild(metaDesc);
+            }
+            metaDesc.setAttribute('content', seoDescription);
+
+            // Update meta keywords
+            let metaKeywords = document.querySelector('meta[name="keywords"]');
+            if (!metaKeywords) {
+                metaKeywords = document.createElement('meta');
+                metaKeywords.setAttribute('name', 'keywords');
+                document.head.appendChild(metaKeywords);
+            }
+            metaKeywords.setAttribute('content', seoKeywords);
+
+            // Update Open Graph tags
+            function updateOGTag(property, content) {
+                let tag = document.querySelector(`meta[property="${property}"]`);
+                if (!tag) {
+                    tag = document.createElement('meta');
+                    tag.setAttribute('property', property);
+                    document.head.appendChild(tag);
+                }
+                tag.setAttribute('content', content);
+            }
+
+            updateOGTag('og:title', seoTitle);
+            updateOGTag('og:description', seoDescription);
+            updateOGTag('og:url', currentUrl);
+            updateOGTag('og:locale', seoOgLocale);
+            updateOGTag('og:type', 'website');
+            updateOGTag('og:image', `${baseUrl}/assets/img/home/SEO.png`);
+
+            // Update Twitter Card tags
+            function updateTwitterTag(name, content) {
+                let tag = document.querySelector(`meta[name="${name}"]`);
+                if (!tag) {
+                    tag = document.createElement('meta');
+                    tag.setAttribute('name', name);
+                    document.head.appendChild(tag);
+                }
+                tag.setAttribute('content', content);
+            }
+
+            updateTwitterTag('twitter:card', 'summary_large_image');
+            updateTwitterTag('twitter:title', seoTitle);
+            updateTwitterTag('twitter:description', seoDescription);
+            updateTwitterTag('twitter:image', `${baseUrl}/assets/img/home/SEO.png`);
+
+            // Update canonical URL
+            let canonical = document.querySelector('link[rel="canonical"]');
+            if (!canonical) {
+                canonical = document.createElement('link');
+                canonical.setAttribute('rel', 'canonical');
+                document.head.appendChild(canonical);
+            }
+            canonical.setAttribute('href', currentUrl);
+
+            // Update HTML lang attribute
+            document.documentElement.setAttribute('lang', lang === 'jp' ? 'ja' : lang === 'cn' ? 'zh' : lang === 'kr' ? 'ko' : 'en');
         }
 
         // Initialize on DOM ready

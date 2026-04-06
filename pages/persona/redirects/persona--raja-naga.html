@@ -18,12 +18,12 @@ sitemap: false
       params.delete("lang");
       params.delete("name");
       params.delete("persona");
-      var languageTargets = {"kr":"/kr/persona/raja-naga/","en":"/en/persona/raja-naga/","jp":"/jp/persona/raja-naga/"};
+      var languageTargets = {"kr":"/kr/persona/raja-naga/","en":"/en/persona/raja-naga/","jp":"/jp/persona/raja-naga/","cn":"/cn/persona/raja-naga/"};
       var defaultPath = "/en/persona/raja-naga/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

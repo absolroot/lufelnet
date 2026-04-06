@@ -1,6 +1,8 @@
 window.characterSkillsData = window.characterSkillsData || {};
 window.enCharacterSkillsData = window.enCharacterSkillsData || {};
 window.jpCharacterSkillsData = window.jpCharacterSkillsData || {};
+window.cnCharacterSkillsData = window.cnCharacterSkillsData || {};
+
 window.characterSkillsData["미유"] = {
   "name": "사하라 미유",
   "skill1": {
@@ -43,6 +45,7 @@ window.characterSkillsData["미유"] = {
     "cool": 0
   }
 };
+
 window.enCharacterSkillsData["미유"] = {
   "name": "Miyu Sahara",
   "skill1": {
@@ -85,6 +88,7 @@ window.enCharacterSkillsData["미유"] = {
     "cool": 0
   }
 };
+
 window.jpCharacterSkillsData["미유"] = {
   "name": "佐原 海夕",
   "skill1": {
@@ -127,41 +131,47 @@ window.jpCharacterSkillsData["미유"] = {
     "cool": 0
   }
 };
-window.cnCharacterSkillsData = window.cnCharacterSkillsData || {};
 
 window.cnCharacterSkillsData["미유"] = {
   "name": "佐原海夕",
   "skill1": {
     "name": "无忧之歌",
-    "cool": 0,
-    "description": "准备时间：8次行动\n使所有同伴获得29.3%/29.3%/31.6%/31.6%防御力+1110/1330/1437/1657的护盾，效果持续2回合，并恢复4点精力值。护盾被击破时，使解明怪盗的准备时间减少1次行动。",
-    "element": "버프광역"
+    "element": "버프광역",
+    "type": "护盾",
+    "cool": 8,
+    "description": "准备时间：8次行动\n使所有同伴获得29.3%/29.3%/31.6%/31.6%防御力+1110/1330/1437/1657的护盾，效果持续2回合，并恢复4点精力值。护盾被击破时，使解明怪盗的准备时间减少1次行动。"
   },
   "skill2": {
     "name": "交汇之舞",
-    "cool": 0,
-    "description": "准备时间：8次行动\n使1名同伴获得67.2%/67.2%/72.6%/72.6%防御力+2542/3042/3290/3790的护盾，并使其受到弱点伤害降低20%/20%/20%/20%，效果持续2回合。技能目标立刻获得2点倒地值与2层『海之守护』。",
-    "element": "버프"
+    "element": "버프",
+    "type": "护盾",
+    "cool": 8,
+    "description": "准备时间：8次行动\n使1名同伴获得67.2%/67.2%/72.6%/72.6%防御力+2542/3042/3290/3790的护盾，并使其受到弱点伤害降低20%/20%/20%/20%，效果持续2回合。技能目标立刻获得2点倒地值与2层『海之守护』。"
   },
   "skill3": {
     "name": "黎明的泡沫",
-    "cool": 0,
-    "description": "准备时间：12次行动\n使所有同伴获得相当于33.2%/33.2%/35.9%/35.9%防御力+1259/1509/1629/1879+目标『海之守护』层数*（6.9%/6.9%/7.5%/7.5%防御力+260/260/336/336）的护盾，持续3回合；『海之守护』层数≥4时，每层『海之守护』会使同伴造成伤害提高2.0%/2.0%/2.2%/2.2%，持续3回合；护盾持续时间结束或被击破后。同伴身上的增伤效果消失，并失去2层『海之守护』。",
-    "element": "버프광역"
+    "element": "버프광역",
+    "type": "增益",
+    "cool": 12,
+    "description": "准备时间：12次行动\n使所有同伴获得相当于33.2%/33.2%/35.9%/35.9%防御力+1259/1509/1629/1879+目标『海之守护』层数*（6.9%/6.9%/7.5%/7.5%防御力+260/260/336/336）的护盾，持续3回合；『海之守护』层数≥4时，每层『海之守护』会使同伴造成伤害提高2.0%/2.0%/2.2%/2.2%，持续3回合；护盾持续时间结束或被击破后。同伴身上的增伤效果消失，并失去2层『海之守护』。"
+  },
+  "skill_highlight": {
+    "name": "属性提升",
+    "element": "패시브",
+    "type": "被动",
+    "description": "在场所有同伴的对应属性值提升，提升量相当于解明怪盗各属性的15%。"
   },
   "passive1": {
     "name": "牵绊",
     "element": "패시브",
-    "cool": 0,
-    "description": "海夕提供的护盾量提升，相当于（场上总『海之守护』层数）*1.0%。"
+    "description": "海夕提供的护盾量提升，相当于（场上总『海之守护』层数）*1.0%。",
+    "cool": 0
   },
   "passive2": {
     "name": "憧憬",
     "element": "패시브",
-    "cool": 0,
-    "description": "每层『海之守护』获得额外效果，使同伴的防御力提升3.6%。"
-  },
-  "skill_highlight": {
-    "element": "패시브"
+    "description": "每层『海之守护』获得额外效果，使同伴的防御力提升3.6%。",
+    "cool": 0
   }
 };
+

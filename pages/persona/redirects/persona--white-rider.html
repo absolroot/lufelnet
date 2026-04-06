@@ -18,12 +18,12 @@ sitemap: false
       params.delete("lang");
       params.delete("name");
       params.delete("persona");
-      var languageTargets = {"kr":"/kr/persona/white-rider/","en":"/en/persona/white-rider/","jp":"/jp/persona/white-rider/"};
+      var languageTargets = {"kr":"/kr/persona/white-rider/","en":"/en/persona/white-rider/","jp":"/jp/persona/white-rider/","cn":"/cn/persona/white-rider/"};
       var defaultPath = "/en/persona/white-rider/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

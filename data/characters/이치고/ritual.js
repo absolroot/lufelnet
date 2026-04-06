@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["이치고"] = {
   "name": "시카노 이치고",
   "r0": "중독된 사랑",
@@ -18,6 +20,7 @@ window.ritualData["이치고"] = {
   "r6": "또 다른 나라면",
   "r6_detail": "『원념』 중첩 상한이 15회까지 증가한다.\n『집착』이 지정 중첩 수에 도달하면 다음 효과를 획득한다.\n1중첩: 『진홍빛 나비』 시전 후 목표에게 『진홍빛 나비』를 1회 추가 시전한다(전투당 1회).\n2중첩: 『붉은 장미의 키스』 시전 후 목표에게 『붉은 장미의 키스』를 1회 추가 시전한다(전투당 1회).\n3중첩: 『쉿! 처형 시간』 시전 후 목표에게 『쉿! 처형 시간』를 1회 추가 시전한다(전투당 1회).\n4중첩: 자신의 턴에 지정 목표에게 『HIGHLIGHT』를 1회 시전한다(전투당 1회, HIGHLIGHT 에너지를 소모하지 않으며, HIGHLIGHT의 쿨타임에 영향을 주지 않음)."
 };
+
 window.enCharacterRitualData["이치고"] = {
   "name": "Ichigo Shikano",
   "r0": "If I Take the Poison of Love",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["이치고"] = {
   "r6": "If You Discovered My Other Self",
   "r6_detail": "Increase maximum [Resentment] stack to 15.\nWhen [Obsessive Love] reaches a certain stack, gain the following effects:\n1 stack: After using [Butterfly Beheadment], additionally use [Butterfly Beheadment] on the target (once per battle);\n2 stacks: After using [Blood Rose's Kiss], additionally use [Blood Rose's Kiss] on the target (once per battle);\n3 stacks: After using [Hush! It's Execution Time], additionally use [Hush! It's Execution Time] on the target (once per battle);\n4 stacks: Ichigo can use Highlight on her turn once (once per battle, do not spend Highlight Energy and affect Highlight cooldown)."
 };
+
 window.jpCharacterRitualData["이치고"] = {
   "name": "鹿野 イチゴ",
   "r0": "中毒の愛",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["이치고"] = {
   "r6": "もう一人の私なら",
   "r6_detail": "『怨念』の最大スタックが15まで増加する。\n· 『執着』が指定スタック数に達すると以下の効果を得る。\n· 1スタック: 『深紅の蝶』発動後、目標に『深紅の蝶』を1回追加発動する（戦闘ごとに1回）。\n· 2スタック: 『赤いバラのキス』発動後、目標に『赤いバラのキス』を1回追加発動する（戦闘ごとに1回）。\n· 3スタック: 『シーッ！処刑の時間』発動後、目標に『シーッ！処刑の時間』を1回追加発動する（戦闘ごとに1回）。\n· 4スタック: 自分のターンに指定目標へ『HIGHLIGHT』を1回発動する（戦闘ごとに1回、HIGHLIGHTエネルギーを消費せず、HIGHLIGHTのクールタイムに影響しない）。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["이치고"] = {
   "name": "鹿野莓",
@@ -71,3 +74,4 @@ window.cnCharacterRitualData["이치고"] = {
   "r6": "如果你发现了另一个我",
   "r6_detail": "『怨念』叠加上限提升至15层。\n『贪恋』达到指定层数时，获得如下效果：\n1层：可以在释放『红蝶断颈』后额外对目标释放1次『红蝶断颈』（每场战斗限1次）；\n2层：可以在释放『血蔷薇之吻』后额外对目标释放1次『血蔷薇之吻』（每场战斗限1次）；\n3层：可以在释放『嘘！行刑时间到』后额外对目标释放1次『嘘！行刑时间到』（每场战斗限1次）；\n4层：可以在自己回合对指定目标释放1次『HIGHLIGHT』（每场战斗限1次，不消耗HIGHLIGHT能量，不影响HIGHLIGHT的冷却时间）。"
 };
+

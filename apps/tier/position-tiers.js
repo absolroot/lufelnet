@@ -1527,7 +1527,10 @@ const loadTierDataFromFile = async (useKROverride = false) => {
   try {
     // 현재 언어에 따라 파일 선택
     const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
-    const fileName = (useKROverride || currentLang === 'kr') ? 'kr_tier.json' : 'global_tier.json';
+    const isKrLike = (typeof window !== 'undefined' && typeof window.isKrLikeLanguage === 'function')
+      ? window.isKrLikeLanguage(currentLang)
+      : (currentLang === 'kr' || currentLang === 'cn');
+    const fileName = (useKROverride || isKrLike) ? 'kr_tier.json' : 'global_tier.json';
     const filePath = `${BASE_URL}/apps/tier/${fileName}`;
 
     //console.log('Loading tier data from file:', filePath);

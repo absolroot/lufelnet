@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["유키미"] = {
   "name": "후지카와 유키미",
   "r0": "인간이 딛는 길",
@@ -18,6 +20,7 @@ window.ritualData["유키미"] = {
   "r6": "인의 용서",
   "r6_detail": "자신과 『맹세』 상태인 동료가 10%의 대미지 보너스를 획득한다. 서로의 전체 축복 중첩수에 따라, 매 중첩마다 속성 대미지 보너스 2%를 추가 획득하고, 최대 20%까지 획득할 수 있다."
 };
+
 window.enCharacterRitualData["유키미"] = {
   "name": "Yukimi Fujikawa",
   "r0": "Scales of Fairness",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["유키미"] = {
   "r6": "Extenuating Circumstances",
   "r6_detail": "Increase damage by 10% for Yukimi and allies with Oath. Increase Bless damage by 2% for each Blessing stack on Yukimi and allies with Oath (up to 20%)."
 };
+
 window.jpCharacterRitualData["유키미"] = {
   "name": "藤川 雪実",
   "r0": "公正なる秤",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["유키미"] = {
   "r6": "情状酌量",
   "r6_detail": "自身と『誓約』状態の味方の与ダメージが１０%上昇する。さらに、雪実自身を含む『誓約』状態の味方の『祝印』１つごとに与ダメージが２%上昇し、最大２０%まで上昇する。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["유키미"] = {
   "name": "藤川雪实",
@@ -71,3 +74,4 @@ window.cnCharacterRitualData["유키미"] = {
   "r6": "仁之容情",
   "r6_detail": "使自身与处于『誓约』的同伴，获得10%的伤害加成。根据双方总祝福层数额外获得每层2%的属性伤害加成，最多可获得20%的属性伤害加成。"
 };
+

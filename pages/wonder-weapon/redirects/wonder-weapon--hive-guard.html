@@ -17,12 +17,12 @@ sitemap: false
       var requestedLang = params.get("lang");
       params.delete("lang");
       params.delete("weapon");
-      var languageTargets = {"kr":"/kr/wonder-weapon/hive-guard/","en":"/en/wonder-weapon/hive-guard/","jp":"/jp/wonder-weapon/hive-guard/"};
+      var languageTargets = {"kr":"/kr/wonder-weapon/hive-guard/","en":"/en/wonder-weapon/hive-guard/","jp":"/jp/wonder-weapon/hive-guard/","cn":"/cn/wonder-weapon/hive-guard/"};
       var defaultPath = "/en/wonder-weapon/hive-guard/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

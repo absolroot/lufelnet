@@ -4,13 +4,13 @@
   var path = String(window.location.pathname || '/');
   var lowerPath = path.toLowerCase();
 
-  var pathLangMatch = lowerPath.match(/^\/(kr|en|jp)(\/|$)/);
+  var pathLangMatch = lowerPath.match(/^\/(kr|en|jp|cn)(\/|$)/);
   var pathLang = pathLangMatch ? pathLangMatch[1] : '';
   var queryLang = String(params.get('lang') || '').toLowerCase();
-  var effectiveLang = pathLang || (['kr', 'en', 'jp'].indexOf(queryLang) !== -1 ? queryLang : '');
+  var effectiveLang = pathLang || (['kr', 'en', 'jp', 'cn'].indexOf(queryLang) !== -1 ? queryLang : '');
 
   var isLegacyRoot = /^\/pull-tracker\/global-stats\/?$/.test(lowerPath);
-  var isCanonicalPath = /^\/(kr|en|jp)\/pull-tracker\/global-stats\/?$/.test(lowerPath);
+  var isCanonicalPath = /^\/(kr|en|jp|cn)\/pull-tracker\/global-stats\/?$/.test(lowerPath);
 
   if (isLegacyRoot && effectiveLang) {
     window.__SEO_PATH_LANG__ = effectiveLang;
@@ -51,19 +51,15 @@
 
 <div class="main-wrapper">
   <div class="navigation-path">
-    <script>document.write(`<a href="${BASE_URL}/"><span data-lang-key="home" id="navhome">홈</span></a>`);</script>
+    <script>document.write(`<a href="${BASE_URL}/?v=${APP_VERSION}"><span data-lang-key="home" id="navhome">홈</span></a>`);</script>
     <span class="separator">/</span>
     <span class="current-page" id="navCurrent">Global Stats</span>
   </div>
 
   <div class="header-container">
-    <h1 id="pageTitle">Global Stats</h1>
-    <div class="pull-tracker-header-tools">
-      <div id="pull-tracker-mode-tabs" class="pull-tracker-mode-tabs" role="tablist" aria-label="Pull tracker mode tabs">
-        <a id="pull-tracker-tab-individual" class="pull-tracker-mode-tab" role="tab" data-mode="individual" href="/pull-tracker/">Pull Tracker</a>
-        <a id="pull-tracker-tab-global" class="pull-tracker-mode-tab" role="tab" data-mode="global" href="/pull-tracker/global-stats/">Global Stats</a>
-      </div>
-      <select id="globalRegion" class="url-input pull-tracker-region-select">
+    <div style="display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
+      <h1 id="pageTitle">Global Stats</h1>
+      <select id="globalRegion" class="url-input" style="flex:0 0 140px; padding:8px 10px; font-size:13px;">
         <option value="EN">EN</option>
         <option value="JP">JP</option>
         <option value="SEA">SEA</option>
@@ -154,7 +150,6 @@
   })();
 
   (async function () {
-    try { window.BASE_URL = '{{ site.baseurl }}'; } catch (_) { }
     try { await (window.__pullI18nReady || Promise.resolve()); } catch (_) { }
 
     const tr = (key, fallback) => {
@@ -166,50 +161,35 @@
       return (fallback !== undefined) ? fallback : key;
     };
 
-    const getPullTrackerPathLanguage = () => {
-      const seoLang = String(window.__SEO_PATH_LANG__ || '').toLowerCase();
-      if (['kr', 'en', 'jp'].includes(seoLang)) return seoLang;
+    const setMeta = (selector, attrName, attrValue, content) => {
+      let el = document.querySelector(selector);
+      if (!el) {
+        el = document.createElement('meta');
+        el.setAttribute(attrName, attrValue);
+        document.head.appendChild(el);
+      }
+      el.setAttribute('content', content);
+    };
+
+    const detectPageLang = () => {
+      const pathMatch = window.location.pathname.match(/^\/(kr|en|jp|cn)(\/|$)/i);
+      if (pathMatch) return pathMatch[1].toLowerCase();
+
+      const params = new URLSearchParams(window.location.search || '');
+      const queryLang = String(params.get('lang') || '').toLowerCase();
+      if (['kr', 'en', 'jp', 'cn'].indexOf(queryLang) !== -1) return queryLang;
+
+      if (typeof getCurrentLang === 'function') {
+        const helperLang = String(getCurrentLang() || '').toLowerCase();
+        if (['kr', 'en', 'jp', 'cn'].indexOf(helperLang) !== -1) return helperLang;
+      }
 
       if (typeof LanguageRouter !== 'undefined' && typeof LanguageRouter.getCurrentLanguage === 'function') {
         const routerLang = String(LanguageRouter.getCurrentLanguage() || '').toLowerCase();
-        if (['kr', 'en', 'jp'].includes(routerLang)) return routerLang;
+        if (['kr', 'en', 'jp', 'cn'].indexOf(routerLang) !== -1) return routerLang;
       }
 
-      const pathMatch = String(window.location.pathname || '').match(/^\/(kr|en|jp)(\/|$)/i);
-      if (pathMatch && pathMatch[1]) return String(pathMatch[1]).toLowerCase();
       return 'kr';
-    };
-
-    const buildPullTrackerModeHref = (mode) => {
-      const lang = getPullTrackerPathLanguage();
-      const path = mode === 'global'
-        ? `/${lang}/pull-tracker/global-stats/`
-        : `/${lang}/pull-tracker/`;
-
-      const params = new URLSearchParams(window.location.search || '');
-      params.delete('lang');
-      params.delete('v');
-      const query = params.toString();
-      const hash = window.location.hash || '';
-      const base = String(window.BASE_URL || '').replace(/\/+$/, '');
-      return `${base}${path}${query ? `?${query}` : ''}${hash}`;
-    };
-
-    const updatePullTrackerModeTabs = (mode) => {
-      const individualTab = document.getElementById('pull-tracker-tab-individual');
-      const globalTab = document.getElementById('pull-tracker-tab-global');
-      if (!individualTab || !globalTab) return;
-
-      individualTab.textContent = tr('individual.nav.current', 'Pull Tracker');
-      globalTab.textContent = tr('global.nav.current', 'Global Stats');
-      individualTab.href = buildPullTrackerModeHref('individual');
-      globalTab.href = buildPullTrackerModeHref('global');
-
-      const isIndividual = mode !== 'global';
-      individualTab.classList.toggle('active', isIndividual);
-      globalTab.classList.toggle('active', !isIndividual);
-      individualTab.setAttribute('aria-current', isIndividual ? 'page' : 'false');
-      globalTab.setAttribute('aria-current', !isIndividual ? 'page' : 'false');
     };
 
     try {
@@ -218,13 +198,39 @@
           domain: 'pull-tracker',
           mode: 'global'
         }, { rerun: true });
-      } else if (window.SeoEngine && typeof window.SeoEngine.run === 'function') {
-        window.SeoEngine.run();
+        return;
       }
+      if (window.SeoEngine && typeof window.SeoEngine.run === 'function') {
+        window.SeoEngine.run();
+        return;
+      }
+      const seoTitle = tr('seo.global.title', document.title);
+      const descMeta = document.querySelector('meta[name="description"]');
+      const currentDesc = descMeta ? (descMeta.getAttribute('content') || '') : '';
+      const seoDesc = tr('seo.global.description', currentDesc);
+      const pageLang = detectPageLang();
+      const isPathLang = /^\/(kr|en|jp|cn)(\/|$)/i.test(window.location.pathname);
+      const baseUrl = 'https://lufel.net';
+      const currentUrl = isPathLang ? `${baseUrl}/${pageLang}/pull-tracker/global-stats/` : `${baseUrl}/pull-tracker/global-stats/`;
+      const seoLocale = tr('seo.global.ogLocale', pageLang === 'jp' ? 'ja_JP' : pageLang === 'en' ? 'en_US' : pageLang === 'cn' ? 'zh_CN' : 'ko_KR');
+      document.title = seoTitle;
+      setMeta('meta[name="description"]', 'name', 'description', seoDesc);
+      setMeta('meta[property="og:title"]', 'property', 'og:title', seoTitle);
+      setMeta('meta[property="og:description"]', 'property', 'og:description', seoDesc);
+      setMeta('meta[property="og:locale"]', 'property', 'og:locale', seoLocale);
+      setMeta('meta[property="og:url"]', 'property', 'og:url', currentUrl);
+
+      let canonical = document.querySelector('link[rel="canonical"]');
+      if (!canonical) {
+        canonical = document.createElement('link');
+        canonical.setAttribute('rel', 'canonical');
+        document.head.appendChild(canonical);
+      }
+      canonical.setAttribute('href', currentUrl);
+      document.documentElement.setAttribute('lang', pageLang === 'jp' ? 'ja' : pageLang === 'en' ? 'en' : pageLang === 'cn' ? 'zh' : 'ko');
     } catch (_) { }
 
     try {
-      updatePullTrackerModeTabs('global');
       const pageTitle = tr('global.pageTitle', 'Global Stats');
       const titleEl = document.getElementById('pageTitle');
       if (titleEl) titleEl.textContent = pageTitle;
@@ -239,7 +245,7 @@
 <script src="{{ site.baseurl }}/apps/pull-tracker/js/global-stats.js?v={{ site.time | date: '%s' }}"></script>
 <script>
   // Initialize navigation (guarded)
-  try { if (typeof Navigation !== 'undefined' && Navigation.load) { Navigation.load('pullTracker'); } } catch (_) { }
+  try { if (typeof Navigation !== 'undefined' && Navigation.load) { Navigation.load('pullTracker_global'); } } catch (_) { }
   try { if (typeof VersionChecker !== 'undefined' && VersionChecker.check) { VersionChecker.check(); } } catch (_) { }
 </script>
 </div>

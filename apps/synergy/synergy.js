@@ -14,6 +14,15 @@
     // 필터 변수는 synergy_search.js로 이동
     let hasKrFallback = false; // 한국어 폴백 사용 여부
 
+    function isKrLikeLanguage(lang) {
+        try {
+            if (typeof window.isKrLikeLanguage === 'function') {
+                return !!window.isKrLikeLanguage(lang);
+            }
+        } catch (_) { }
+        return lang === 'kr' || lang === 'cn';
+    }
+
     // characterList를 전역으로 노출 (synergy_search.js에서 사용)
     window.characterList = characterList;
 
@@ -21,7 +30,7 @@
     function getCurrentLanguage() {
         if (typeof LanguageRouter !== 'undefined' && LanguageRouter && typeof LanguageRouter.getCurrentLanguage === 'function') {
             const routedLang = LanguageRouter.getCurrentLanguage();
-            if (['kr', 'en', 'jp'].includes(routedLang)) {
+            if (['kr', 'en', 'jp', 'cn'].includes(routedLang)) {
                 return routedLang;
             }
         }
@@ -29,17 +38,18 @@
         const pathname = String(window.location.pathname || '').toLowerCase();
         if (pathname.startsWith('/en/')) return 'en';
         if (pathname.startsWith('/jp/')) return 'jp';
+        if (pathname.startsWith('/cn/')) return 'cn';
         if (pathname.startsWith('/kr/synergy/')) return 'kr';
         if (/^\/synergy\/[^/]+\/?$/.test(pathname)) return 'kr';
 
         const urlParams = new URLSearchParams(window.location.search);
         const urlLang = urlParams.get('lang');
-        if (urlLang && ['kr', 'en', 'jp'].includes(urlLang)) {
+        if (urlLang && ['kr', 'en', 'jp', 'cn'].includes(urlLang)) {
             return urlLang;
         }
         try {
             const savedLang = localStorage.getItem('preferredLanguage');
-            if (savedLang && ['kr', 'en', 'jp'].includes(savedLang)) {
+            if (savedLang && ['kr', 'en', 'jp', 'cn'].includes(savedLang)) {
                 return savedLang;
             }
         } catch (e) { }
@@ -131,7 +141,7 @@
 
     function getI18nValuesAllLanguages(key, fallback = []) {
         const values = new Set();
-        const langs = ['kr', 'en', 'jp'];
+        const langs = ['kr', 'en', 'jp', 'cn'];
 
         langs.forEach(lang => {
             const value = getTranslationByLang(lang, key);
@@ -332,7 +342,7 @@
         }
 
         try {
-            const lang = currentLanguage;
+            const lang = isKrLikeLanguage(currentLanguage) ? 'kr' : currentLanguage;
             const fileName = encodeURIComponent(characterName);
             let response = await fetch(`${BASE_URL}/apps/synergy/friends/${lang}/${fileName}.json?v=${APP_VERSION}`);
             let data = null;

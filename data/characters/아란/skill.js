@@ -46,7 +46,6 @@ window.characterSkillsData["아란"] = {
   }
 };
 
-
 window.enCharacterSkillsData["아란"] = {
   "name": "Aran Hirano",
   "skill1": {
@@ -72,8 +71,16 @@ window.enCharacterSkillsData["아란"] = {
     "type": "단일피해",
     "description": "Deal Curse damage to 1 foe equal to 361.8%/398.9%/376.6%/413.7% of Attack.\nIf foes have [Sin], increase their HIGHLIGHT damage taken by 14.6%/16.1%/15.2%/16.7%. Lasts for 3 turns. Copy this effect to other foes with [Sin]."
   },
-  "passive1": { "name": "Reverse Blade", "element": "패시브", "description": "When Aran is on the field, increase all allies' damage dealt to foes with [Sin] by 24.0%." },
-  "passive2": { "name": "Ritual Fire", "element": "패시브", "description": "When Aran is on the field, for each foe with [Sin], increase all allies' ATK by 18.0%." }
+  "passive1": {
+    "name": "Reverse Blade",
+    "element": "패시브",
+    "description": "When Aran is on the field, increase all allies' damage dealt to foes with [Sin] by 24.0%."
+  },
+  "passive2": {
+    "name": "Ritual Fire",
+    "element": "패시브",
+    "description": "When Aran is on the field, for each foe with [Sin], increase all allies' ATK by 18.0%."
+  }
 };
 
 window.jpCharacterSkillsData["아란"] = {
@@ -101,6 +108,59 @@ window.jpCharacterSkillsData["아란"] = {
     "type": "단일피해",
     "description": "敵単体に攻撃力361.8%/398.9%/376.6%/413.7%の呪怨属性ダメージを与える。対象が『罪』状態の場合、3ターンの間、対象の被HIGHLIGHTダメージを14.6%/16.1%/15.2%/16.7%上昇させ、その効果を『罪』状態の他の敵にコピーする."
   },
-  "passive1": { "name": "逆刃", "element": "패시브", "description": "平野亜蘭が戦場にいる時、味方全体が『罪』状態の敵に与えるダメージ가 24.0%上昇する。" },
-  "passive2": { "name": "祭炎", "element": "패시브", "description": "平野亜蘭が戦場にいる時、戦場に『罪』状態の敵が1体存在するごとに、味方全体の攻撃力が18.0%上昇する。" }
+  "passive1": {
+    "name": "逆刃",
+    "element": "패시브",
+    "description": "平野亜蘭が戦場にいる時、味方全体が『罪』状態の敵に与えるダメージ가 24.0%上昇する。"
+  },
+  "passive2": {
+    "name": "祭炎",
+    "element": "패시브",
+    "description": "平野亜蘭が戦場にいる時、戦場に『罪』状態の敵が1体存在するごとに、味方全体の攻撃力が18.0%上昇する。"
+  }
 };
+
+window.cnCharacterSkillsData["아란"] = {
+  "name": "平野亚兰",
+  "skill1": {
+    "name": "禁典蚀痕",
+    "element": "주원",
+    "type": "单体伤害",
+    "sp": 22,
+    "cool": 0,
+    "description": "对1名敌人造成153.7%/169.5%/160.0%/175.8%诅咒属性伤害。\n如果敌人带有『罪』则将施加2层『罪业』，并将敌人身上的『罪业』层数复制给其他带有『罪』的敌人。\n敌人身上带有『罪业』时本次伤害提高20%。\n『罪业』：防御降低3.9%/4.3%/4.1%/4.5%（且防御力额外降低效果将基于平野亚兰的效果命中，最多计入161.0%/177.5%/167.6%/184.1%效果命中，使防御力最多额外降低11.7%/12.9%/12.2%/13.4%），持续2回合，最多叠加至4层。"
+  },
+  "skill2": {
+    "name": "复仇冥镜",
+    "element": "버프",
+    "type": "增益",
+    "sp": 24,
+    "cool": 2,
+    "description": "使所有我方全适应性变成“反”并使反伤比例由20%提升至100%（且亚兰的效果命中还会使反伤比例提升,最多计入161.0%/177.5%/167.6%/184.1%效果命中使反伤比例最多额外提升97.6%/107.6%/101.6%/111.6%），持续2回合，平野亚兰下次行动或反弹1次技能的全部伤害后消失。\n反弹伤害时若敌方带有『罪』，还会为敌方施加2层『罪业』。\n该反弹效果对于部分伤害无法无效化其附带的负面效果。"
+  },
+  "skill3": {
+    "name": "断罪之瞳",
+    "element": "디버프",
+    "type": "减益",
+    "sp": 0,
+    "cool": 0,
+    "description": "亚兰选择2个敌方目标，分别为其施加『罪』，可重复选择同一目标。\n再次施放：重新选择『罪』的对象。\n该技能不占用回合，但每回合仅能施放1次。\n『罪』的传导效果获得19.5%/21.5%/20.3%/22.3%增幅（且额外传导效果增幅将基于平野亚兰的效果命中，最多计入161.0%/177.5%/167.6%/184.1%效果命中，使传导效果增幅最多额外提升78.1%/86.1%/81.3%/89.3%）。"
+  },
+  "skill_highlight": {
+    "element": "주원",
+    "type": "单体伤害",
+    "description": "对1名敌人造成361.8%/398.9%/376.6%/413.7%诅咒属性伤害。\n如果敌人身上带有『罪』则使其受HIGHLIGHT的伤害提升14.6%/16.1%/15.2%/16.7%，持续3回合，并将该效果复制给其他带有『罪』的敌人。",
+    "name": "HIGHLIGHT"
+  },
+  "passive1": {
+    "name": "逆刃",
+    "element": "패시브",
+    "description": "平野亚兰在场时，我方全体对带有『罪』的敌人造成伤害提升24.0%。"
+  },
+  "passive2": {
+    "name": "祭炎",
+    "element": "패시브",
+    "description": "平野亚兰在场时，场上每存在1个带有『罪』的敌人，我方全队就获得18.0%攻击力加成。"
+  }
+};
+

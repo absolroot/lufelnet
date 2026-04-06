@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["하루"] = {
   "name": "오쿠무라 하루",
   "r0": "애프터눈 티",
@@ -18,6 +20,7 @@ window.ritualData["하루"] = {
   "r6": "악몽의 랩소디",
   "r6_detail": "『개조』 수량이 2개 이상이면 오쿠무라 하루가 발사하는 유탄이 『이별 선물』로 진화하고, 모든 『개조』 효과를 발동할 수 있는 총격 효과를 1회 추가로 준다. 모든 대미지는 기존 대미지의 70%다.\n페르소나 스킬이 제공하는 『개조』 추가 효과 획득:\n『열에너지 개조』: 총격 스킬이 추가로 적의 효과 저항을 27% 감소시키며 2턴 동안 지속된다.\n『장갑제거 개조』: 총격 스킬 사용 시 오쿠무라 하루가 『조준점』을 보유하면 관통이 12% 증가한다.\n『확산 개조』: 총격 스킬 사용 시 오쿠무라 하루가 『조준점』을 보유하면 크리티컬 확률이 20% 증가하고 크리티컬 효과가 20% 증가한다."
 };
+
 window.enCharacterRitualData["하루"] = {
   "name": "Haru Okumura",
   "r0": "My Name Is Beauty Thief",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["하루"] = {
   "r6": "Heroine of Justice",
   "r6_detail": "When at 2+ Thoughtful Round stacks, evolve Haru's ranged attacks to Resonating Shots. Also, deal a ranged attack that activates all Thoughtful Round effects once. This additional attack's damage is 70% of the original attack.\nAt 2+ Thoughtful Round stacks, activate the following effects for Thoughtful Round gained from skills.\nFocused Round: When using a ranged attack, also decrease the foe's ailment resistance by 27% for 2 turns.\nPainpoint Round: When using a ranged attack and Haru has Target Audience, increase pierce rate by 12%.\nSpillover Round: When using a ranged attack and Haru has Target Audience, increase critical rate by 20% and critical damage by 20%."
 };
+
 window.jpCharacterRitualData["하루"] = {
   "name": "奥村 春",
   "r0": "美少女怪盗と申します",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["하루"] = {
   "r6": "正義のヒロイン",
   "r6_detail": "『想いの弾丸』が２つ以上の時、春の遠隔攻撃が『レゾネート弾』に強化され、追加で１回、全ての『想いの弾丸』効果が発動する遠隔攻撃を与える。この追加攻撃のダメージは元の７０%になる。\n『想いの弾丸』が２つ以上の時、スキルで獲得する『想いの弾丸』は以下の追加効果が発生する。\n『フォーカス弾』：遠隔攻撃は追加で２ターンの間、敵の状態異常抵抗を２７%低下させる。\n『ペインポイント弾』：遠隔攻撃時、自身が『標的層』を獲得している時、貫通力が１２%上昇する。\n『スピルオーバー弾』：遠隔攻撃時、自身が『標的層』を獲得している時、クリティカル率が２０%上昇し、クリティカルダメージが２０%上昇する。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["하루"] = {
   "name": "奥村春",
@@ -69,5 +72,6 @@ window.cnCharacterRitualData["하루"] = {
   "r5": "爆炸小蛋糕",
   "r5_detail": "『超荷改装』获得额外效果：枪械射击时的暴击效果提升30%。",
   "r6": "噩梦狂想曲",
-  "r6_detail": "『改装』数量不少于2个时，奥村春发射的榴弹进化为『临别赠礼』，额外造成1次可触发所有『改装』效果的枪械射击效果，所有伤害均为原伤害的50%；\n人格面具技能提供的『改装』获得额外效果：\n『热能改装』：枪械技能额外使敌人的效果抵抗降低27%，持续2回合；\n『卸甲改装』：使用枪械技能时，若奥村春拥有『准星』，穿透提升12%；\n『扩散改装』：使用枪械技能时，若奥村春拥有『准星』，暴击率提升20%、暴击效果提升20%。"
+  "r6_detail": "『改装』数量不少于2个时，奥村春发射的榴弹进化为『临别赠礼』，额外造成1次可触发所有『改装』效果的枪械射击效果，所有伤害均为原伤害的70%；\n人格面具技能提供的『改装』获得额外效果：\n『热能改装』：枪械技能额外使敌人的效果抵抗降低27%，持续2回合；\n『卸甲改装』：使用枪械技能时，若奥村春拥有『准星』，穿透提升12%；\n『扩散改装』：使用枪械技能时，若奥村春拥有『准星』，暴击率提升20%、暴击效果提升20%。"
 };
+

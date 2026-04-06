@@ -783,8 +783,9 @@ export class NeedStatCardUI {
         let typeName = this.normalizeTextForLang(item.type || '');
         if (lang === 'en' && item.type_en) typeName = item.type_en;
         if (lang === 'jp' && item.type_jp) typeName = item.type_jp;
+        if (lang === 'cn' && item.type_cn) typeName = item.type_cn;
 
-        const target = item.target || '';
+        const target = (lang === 'cn' && item.target_cn) ? item.target_cn : (item.target || '');
         let value = item.value || 0;
 
         // Apply saved persona performance for jc1 in critical section
@@ -822,7 +823,7 @@ export class NeedStatCardUI {
         // Build display name following critical-calc.js pattern
         let displayName = '';
         const isSpecialGroup = (groupName === '원더' || groupName === '계시');
-        if (lang === 'kr') {
+        if ((window.isKrLikeLanguage && window.isKrLikeLanguage(lang)) || lang === 'kr') {
             displayName = typeName + (skillName ? ' ' + skillName : '');
         } else {
             // EN/JP: show only name if available for non-special groups
@@ -918,8 +919,9 @@ export class NeedStatCardUI {
         let typeName = this.normalizeTextForLang(item.type || '');
         if (lang === 'en' && item.type_en) typeName = item.type_en;
         if (lang === 'jp' && item.type_jp) typeName = item.type_jp;
+        if (lang === 'cn' && item.type_cn) typeName = item.type_cn;
 
-        const target = item.target || '';
+        const target = (lang === 'cn' && item.target_cn) ? item.target_cn : (item.target || '');
         let value = item.value || 0;
 
         // Apply saved persona performance for jc1/jc2
@@ -964,7 +966,7 @@ export class NeedStatCardUI {
         // Build display name following defense-calc.js pattern
         let displayName = '';
         const isSpecialGroup = (groupName === '원더' || groupName === '계시');
-        if (lang === 'kr') {
+        if ((window.isKrLikeLanguage && window.isKrLikeLanguage(lang)) || lang === 'kr') {
             displayName = typeName + (skillName ? ' ' + skillName : '');
         } else {
             // EN/JP: show only name if available for non-special groups

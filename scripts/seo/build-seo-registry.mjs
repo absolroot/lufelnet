@@ -12,6 +12,7 @@ const I18N_PAGES_DIR = path.join(ROOT, 'i18n', 'pages');
 const OUTPUT_PATH = path.join(ROOT, 'data', 'seo', 'registry.json');
 
 const REQUIRED_LANGS = ['kr', 'en', 'jp'];
+const STRICT_OPTIONAL_LANGS = new Set(['cn']);
 const PLACEHOLDER_DOMAINS = new Set(['character', 'persona', 'synergy', 'wonder-weapon', 'velvet-trial']);
 const MODE_DOMAIN_KEYS = {
   maps: ['list', 'detail'],
@@ -211,7 +212,7 @@ function normalizeDomainMeta(domain, rawMeta) {
   for (const lang of langs) {
     const langMeta = rawMeta[lang];
     const isOptional = !REQUIRED_LANGS.includes(lang);
-    if (isOptional && isSkippableOptionalMeta({ type, domain, langMeta })) {
+    if (isOptional && !STRICT_OPTIONAL_LANGS.has(lang) && isSkippableOptionalMeta({ type, domain, langMeta })) {
       continue;
     }
     if (!langMeta || typeof langMeta !== 'object' || Array.isArray(langMeta)) {

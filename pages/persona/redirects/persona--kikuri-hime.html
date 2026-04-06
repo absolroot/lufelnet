@@ -18,12 +18,12 @@ sitemap: false
       params.delete("lang");
       params.delete("name");
       params.delete("persona");
-      var languageTargets = {"kr":"/kr/persona/kikuri-hime/","en":"/en/persona/kikuri-hime/","jp":"/jp/persona/kikuri-hime/"};
+      var languageTargets = {"kr":"/kr/persona/kikuri-hime/","en":"/en/persona/kikuri-hime/","jp":"/jp/persona/kikuri-hime/","cn":"/cn/persona/kikuri-hime/"};
       var defaultPath = "/en/persona/kikuri-hime/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

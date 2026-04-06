@@ -18,12 +18,12 @@ sitemap: false
       params.delete("lang");
       params.delete("name");
       params.delete("persona");
-      var languageTargets = {"kr":"/kr/persona/naga/","en":"/en/persona/naga/","jp":"/jp/persona/naga/"};
+      var languageTargets = {"kr":"/kr/persona/naga/","en":"/en/persona/naga/","jp":"/jp/persona/naga/","cn":"/cn/persona/naga/"};
       var defaultPath = "/en/persona/naga/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

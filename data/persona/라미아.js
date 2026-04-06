@@ -16,6 +16,7 @@ window.personaFiles["라미아"] = {
   "tier_desc": "화상 효과 부여에 특화된 페르소나이다. 이후에 상위 호환인 트론과 년수가 등장하며 우선 순위가 밀렸으나, 획득 난이도가 낮은 만큼 초기에 활용하기 충분하다.",
   "tier_desc_en": "A Persona specialized in inflicting Burn. It was pushed down in priority after higher-tier options like Throne and Nian appeared, but its low acquisition difficulty still makes it useful early on.",
   "tier_desc_jp": "火傷付与に特化したペルソナ。その後、上位互換となるソロネや年獣が登場して優先度は下がったが、入手難度が低いため序盤では十分活躍できる。",
+  "tier_desc_cn": "是专精于附加燃烧的人格面具。之后随着上位替代座天使和年兽登场，优先级被挤下去了，但胜在获取难度低，前期依然完全够用。",
   "comment": "",
   "comment_en": "",
   "comment_jp": "",

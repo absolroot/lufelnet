@@ -41,7 +41,7 @@
         constructor() {
             // URL에서 언어 감지
             this.currentLang = this._detectLanguageFromURL();
-            this.supportedLanguages = ['kr', 'en', 'jp'];
+            this.supportedLanguages = ['kr', 'en', 'jp', 'cn'];
             this.fallbackLanguage = 'kr';
 
             // 캐시: { lang: { common: {...}, pages: { pageName: {...} } } }
@@ -96,7 +96,7 @@
                 // 1. URL 쿼리 파라미터 확인 (?lang=en)
                 const urlParams = new URLSearchParams(window.location.search);
                 const langParam = urlParams.get('lang');
-                if (langParam && ['kr', 'en', 'jp'].includes(langParam)) {
+                if (langParam && ['kr', 'en', 'jp', 'cn'].includes(langParam)) {
                     return langParam;
                 }
 
@@ -104,10 +104,11 @@
                 const path = window.location.pathname;
                 if (path.includes('/en/')) return 'en';
                 if (path.includes('/jp/')) return 'jp';
+                if (path.includes('/cn/')) return 'cn';
 
                 // 3. localStorage 확인
                 const savedLang = localStorage.getItem('preferredLanguage');
-                if (savedLang && ['kr', 'en', 'jp'].includes(savedLang)) {
+                if (savedLang && ['kr', 'en', 'jp', 'cn'].includes(savedLang)) {
                     return savedLang;
                 }
             } catch (e) {
@@ -187,6 +188,7 @@
             if (browserLang.startsWith('ko')) return 'kr';
             if (browserLang.startsWith('ja')) return 'jp';
             if (browserLang.startsWith('en')) return 'en';
+            if (browserLang.startsWith('zh')) return 'cn';
 
             // 기본값
             return this.fallbackLanguage;

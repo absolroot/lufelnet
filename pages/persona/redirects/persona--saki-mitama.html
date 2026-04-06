@@ -18,12 +18,12 @@ sitemap: false
       params.delete("lang");
       params.delete("name");
       params.delete("persona");
-      var languageTargets = {"kr":"/kr/persona/saki-mitama/","en":"/en/persona/saki-mitama/","jp":"/jp/persona/saki-mitama/"};
+      var languageTargets = {"kr":"/kr/persona/saki-mitama/","en":"/en/persona/saki-mitama/","jp":"/jp/persona/saki-mitama/","cn":"/cn/persona/saki-mitama/"};
       var defaultPath = "/en/persona/saki-mitama/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

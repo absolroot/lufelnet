@@ -1,6 +1,8 @@
 window.WeaponData = window.WeaponData || {};
 window.enCharacterWeaponData = window.enCharacterWeaponData || {};
 window.jpCharacterWeaponData = window.jpCharacterWeaponData || {};
+window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
+
 window.WeaponData["미나미·여름"] = {
   "name": "미야시타 미나미·여름",
   "weapon4-1": {
@@ -21,6 +23,7 @@ window.WeaponData["미나미·여름"] = {
     "description": "약품 효과가 20.0%/20.0%/26.0%/26.0%/32.0%/32.0%/38.0% 증가한다. 아군을 목표로 약품 사용 시, 메인 목표의 크리티컬 효과가 15.3%/19.9%/19.9%/24.5%/24.5%/29.1%/29.1% 추가 증가하며 3턴 동안 지속된다. 아군을 목표로 페르소나 스킬 사용 시, 메인 목표의 공격력이 10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0% 추가 증가하며 2턴 동안 지속된다."
   }
 };
+
 window.enCharacterWeaponData["미나미·여름"] = {
   "name": "Minami·Summer",
   "weapon4-1": {
@@ -40,6 +43,7 @@ window.enCharacterWeaponData["미나미·여름"] = {
     "description": "Increase item effect by 20.0%/20.0%/26.0%/26.0%/32.0%/32.0%/38.0%. When using an item on allies, increase main target's critical damage by 15.3%/19.9%/19.9%/24.5%/24.5%/29.1%/29.1% more for 3 turns. When using a Persona skill on allies, increase main target's Attack by 10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0% more for 2 turns."
   }
 };
+
 window.jpCharacterWeaponData["미나미·여름"] = {
   "name": "宮下 美波 夏",
   "weapon4-1": {
@@ -59,21 +63,25 @@ window.jpCharacterWeaponData["미나미·여름"] = {
     "description": "薬品効果が20.0%/20.0%/26.0%/26.0%/32.0%/32.0%/38.0%増加する。味方を対象に薬品を使用すると、3ターンの間その対象のCRT倍率が15.3%/19.9%/19.9%/24.5%/24.5%/29.1%/29.1%増加する。味方を対象にペルソナスキルを使用すると、2ターンの間その対象の攻撃力が10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0%増加する。"
   }
 };
-window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
 
 window.cnCharacterWeaponData["미나미·여름"] = {
-  "weapon5-1": {
-    "name": "不凋之庭",
-    "health": 2655.87,
-    "attack": 594.58,
-    "defense": 400.84,
-    "description": "药品效果提升20.0%/20.0%/26.0%/26.0%/32.0%/32.0%/38.0%。以友方为目标使用药品时，额外使主目标的暴击效果提升15.3%/19.9%/19.9%/24.5%/24.5%/29.1%/29.1%，持续3回合。以友方为目标使用人格面具技能时，额外使主目标攻击力提升10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0%，持续2回合。"
-  },
+  "name": "宫下美波·夏日",
   "weapon4-1": {
     "name": "午后茶语",
     "health": 2125.04,
     "attack": 475.65,
     "defense": 320.45,
+    "skill_name": "",
     "description": "最大生命值提升12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%；以友方为目标使用人格面具技能时，自身暴击效果提升17.4%/22.6%/22.6%/27.8%/27.8%/33.0%/33.0%。"
+  },
+  "weapon5-1": {
+    "name": "不凋之庭",
+    "health": 2655.87,
+    "attack": 594.58,
+    "defense": 400.84,
+    "highlight": true,
+    "skill_name": "",
+    "description": "药品效果提升20.0%/20.0%/26.0%/26.0%/32.0%/32.0%/38.0%。以友方为目标使用药品时，额外使主目标的暴击效果提升15.3%/19.9%/19.9%/24.5%/24.5%/29.1%/29.1%，持续3回合。以友方为目标使用人格面具技能时，额外使主目标攻击力提升10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0%，持续2回合。"
   }
 };
+

@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["후타바"] = {
   "name": "사쿠라 후타바",
   "r0": "정보 수집",
@@ -18,6 +20,7 @@ window.ritualData["후타바"] = {
   "r6": "바이러스 침입",
   "r6_detail": "『불사조의 이름으로』를 사용 시 아군 전체 괴도에게 적용되며, 동시에 모든 적에게 아군 전체 괴도에 대응하는 『교란 바이러스』를 추가한다(동일한 적합성의 『교란 바이러스』는 동시에 한 종류만 존재). 『해킹 완료』의 지속 시간이 3턴까지 늘어나며, 아군의 약점 대미지가 10% 추가 증가하고 대미지가 25% 증가한다."
 };
+
 window.enCharacterRitualData["후타바"] = {
   "name": "Futaba Sakura",
   "r0": "Data Scan",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["후타바"] = {
   "r6": "Wizard-Level Hacker",
   "r6_detail": "When Futaba uses Data Link Established!, target all allies, and also inflict Virus on all foes corresponding to an ally's attribute (Viruses of the same attribute do not stack).\nIncrease the duration of Data Storm to 3 turns, and increase allies' weakness damage by 10%, and damage dealt by 25%."
 };
+
 window.jpCharacterRitualData["후타바"] = {
   "name": "佐倉 双葉",
   "r0": "データスキャン",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["후타바"] = {
   "r6": "ウィザード級ハッカー",
   "r6_detail": "双葉が『データリンク開始！』を使用する時、効果対象が味方全体になり、同時に敵全体に味方の属性に対応する『ウイルス』を付与する（同じ属性の『ウイルス』は重複して付与されない）。\nまた『データ掌握』の持続時間が３ターンになり、さらに味方の弱点ダメージが１０%上昇、与ダメージが２５%上昇する。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["후타바"] = {
   "name": "佐仓双叶",
@@ -71,3 +74,4 @@ window.cnCharacterRitualData["후타바"] = {
   "r6": "病毒入侵",
   "r6_detail": "使用『以不死鸟的名义』时会对我方全体怪盗释放，同时为所有敌人添加我方所有怪盗对应的『扰乱病毒』（同一适应性的『扰乱病毒』仅能同时存在1种）。『骇入完成』的持续时间延长至3回合，并额外提升我方10%弱点伤害、伤害提升25%。"
 };
+

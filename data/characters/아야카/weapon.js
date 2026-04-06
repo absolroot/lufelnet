@@ -1,6 +1,8 @@
 window.WeaponData = window.WeaponData || {};
 window.enCharacterWeaponData = window.enCharacterWeaponData || {};
 window.jpCharacterWeaponData = window.jpCharacterWeaponData || {};
+window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
+
 window.WeaponData["아야카"] = {
   "name": "사카이 아야카",
   "weapon4-1": {
@@ -21,6 +23,7 @@ window.WeaponData["아야카"] = {
     "description": "공격력이 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0% 증가한다. 전투 시작 시, 40.0%/52.0%/52.0%/64.0%/64.0%/76.0%/76.0%의 HIGHLIGHT 에너지를 즉시 획득한다. 『열성 관객』의 공격력이 15.0%/19.5%/19.5%/24.0%/24.0%/28.5%/28.5% 증가하며, 아군이 HIGHLIGHT/테우르기아를 사용할 때마다 『열성 관객』의 공격력이 5.0%/6.5%/6.5%/8.0%/8.0%/9.5%/9.5% 증가한다(3회 중첩 가능)."
   }
 };
+
 window.enCharacterWeaponData["아야카"] = {
   "name": "Ayaka Sakai",
   "weapon4-1": {
@@ -38,6 +41,7 @@ window.enCharacterWeaponData["아야카"] = {
     "description": "Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. At the start of battle, fill Highlight Gauge by 40.0%/52.0%/52.0%/64.0%/64.0%/76.0%/76.0%.\nIncrease Costar's Attack by 15.0%/19.5%/19.5%/24.0%/24.0%/28.5%/28.5%. Each time an ally uses a Highlight, increase Costar's Attack by 5.0%/6.5%/6.5%/8.0%/8.0%/9.5%/9.5%. Stacks up to 3 times."
   }
 };
+
 window.jpCharacterWeaponData["아야카"] = {
   "name": "坂井 綾香",
   "weapon4-1": {
@@ -55,21 +59,25 @@ window.jpCharacterWeaponData["아야카"] = {
     "description": "攻撃力が30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%上昇する。戦闘開始時、ハイライトゲージが40.0%/52.0%/52.0%/64.0%/64.0%/76.0%/76.0%増加する。\n『共演』状態の味方の攻撃力が15.0%/19.5%/19.5%/24.0%/24.0%/28.5%/28.5%上昇する。さらに味方がハイライトを使用するごとに、この効果が5.0%/6.5%/6.5%/8.0%/8.0%/9.5%/9.5%上昇し、３つまで累積できる。"
   }
 };
-window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
 
 window.cnCharacterWeaponData["아야카"] = {
-  "weapon5-1": {
-    "name": "万众瞩目之星",
-    "health": 2279.27,
-    "attack": 713.51,
-    "defense": 387.56,
-    "description": "攻击力提升30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%；战斗开始时候，立刻获得40.0%/52.0%/52.0%/64.0%/64.0%/76.0%/76.0%的HIGHLIGHT能量；『忠实听众』攻击力提升15.0%/19.5%/19.5%/24.0%/24.0%/28.5%/28.5%，友方同伴每次使用HIGHLIGHT/神通法，『忠实听众』的攻击力提升5.0%/6.5%/6.5%/8.0%/8.0%/9.5%/9.5%，可叠加3层。"
-  },
+  "name": "坂井绫香",
   "weapon4-1": {
     "name": "独唱摇滚",
     "health": 1823.43,
     "attack": 570.52,
     "defense": 310.39,
+    "skill_name": "",
     "description": "攻击力提升12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%，使用『终曲：音域全开』后，自身攻击力提升28.0%/36.0%/36.0%/44.0%/44.0%/52.0%/52.0%，持续2回合。"
+  },
+  "weapon5-1": {
+    "name": "万众瞩目之星",
+    "health": 2279.27,
+    "attack": 713.51,
+    "defense": 387.56,
+    "highlight": true,
+    "skill_name": "",
+    "description": "攻击力提升30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%；战斗开始时候，立刻获得40.0%/52.0%/52.0%/64.0%/64.0%/76.0%/76.0%的HIGHLIGHT能量；『忠实听众』攻击力提升15.0%/19.5%/19.5%/24.0%/24.0%/28.5%/28.5%，友方同伴每次使用HIGHLIGHT/神通法，『忠实听众』的攻击力提升5.0%/6.5%/6.5%/8.0%/8.0%/9.5%/9.5%，可叠加3层。"
   }
 };
+

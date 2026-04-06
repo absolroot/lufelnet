@@ -22,13 +22,51 @@
                 return window.MapsI18n.getCurrentLanguage();
             }
 
-            const pathMatch = window.location.pathname.match(/^\/(kr|en|jp)(\/|$)/i);
+            const pathMatch = window.location.pathname.match(/^\/(kr|en|jp|cn)(\/|$)/i);
             if (pathMatch) return pathMatch[1].toLowerCase();
 
             const urlParams = new URLSearchParams(window.location.search);
             const urlLang = String(urlParams.get('lang') || '').toLowerCase();
-            if (['kr', 'en', 'jp'].includes(urlLang)) return urlLang;
+            if (['kr', 'en', 'jp', 'cn'].includes(urlLang)) return urlLang;
             return 'kr';
+        },
+
+        syncDocumentMeta() {
+            const lang = this.getCurrentLang();
+            const locale = lang === 'jp' ? 'ja_JP' : lang === 'en' ? 'en_US' : lang === 'cn' ? 'zh_CN' : 'ko_KR';
+            const htmlLang = lang === 'jp' ? 'ja' : lang === 'en' ? 'en' : lang === 'cn' ? 'zh' : 'ko';
+            const currentUrl = new URL(window.location.href);
+            currentUrl.hash = '';
+            window.__SEO_PATH_LANG__ = lang;
+
+            document.documentElement.setAttribute('lang', htmlLang);
+
+            let canonical = document.querySelector('link[rel="canonical"]');
+            if (!canonical) {
+                canonical = document.createElement('link');
+                canonical.setAttribute('rel', 'canonical');
+                document.head.appendChild(canonical);
+            }
+            canonical.setAttribute('href', currentUrl.toString());
+
+            const upsertMeta = (selector, attr, value) => {
+                let el = document.querySelector(selector);
+                if (!el) {
+                    el = document.createElement('meta');
+                    el.setAttribute(attr, selector.includes('og:') ? selector.match(/og:[^"'\]]+/)[0] : selector.match(/twitter:[^"'\]]+/)[0]);
+                    document.head.appendChild(el);
+                }
+                el.setAttribute('content', value);
+            };
+
+            upsertMeta('meta[property="og:url"]', 'property', currentUrl.toString());
+            upsertMeta('meta[property="og:locale"]', 'property', locale);
+        },
+
+        scheduleDocumentMetaSync() {
+            this.syncDocumentMeta();
+            window.setTimeout(() => this.syncDocumentMeta(), 0);
+            window.setTimeout(() => this.syncDocumentMeta(), 200);
         },
 
         getMapIdFromURL() {
@@ -144,6 +182,7 @@
         },
 
         syncSeo(mapInfo, mapId) {
+            this.scheduleDocumentMetaSync();
             const path = this.buildPathString(mapInfo);
             if (path) {
                 applyMapsSeoHint({
@@ -151,6 +190,7 @@
                     entityKey: String(mapId || ''),
                     templateVars: { path: path }
                 });
+                this.scheduleDocumentMetaSync();
                 return;
             }
 
@@ -159,6 +199,7 @@
                 entityKey: '',
                 templateVars: null
             });
+            this.scheduleDocumentMetaSync();
         },
 
         onMapSelected(mapId, categoryId = null) {

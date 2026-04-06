@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["아케치"] = {
   "name": "아케치 고로",
   "r0": "안개 속을 걸어서",
@@ -18,6 +20,7 @@ window.ritualData["아케치"] = {
   "r6": "일단락",
   "r6_detail": "『황금 화살비·파멸』을 시전할 때 『정확한 화살』의 기록 대미지가 50% 증가한다. 아케치 고로가 모든 동료를 『탐정 동료』로 여긴다. 전투 중 아케치 고로가 추가로 크리티컬 확률, 크리티컬 효과 증가를 획득하고, 증가값은 모든 『탐정 동료』의 크리티컬 확률, 크리티컬 효과(100%를 초과하는 부분) 최곳값의 40%다(상한 20%, 40%)."
 };
+
 window.enCharacterRitualData["아케치"] = {
   "name": "Goro Akechi",
   "r0": "Walking in Fog",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["아케치"] = {
   "r6": "The Dust Settled",
   "r6_detail": "Increases [Arrow of Clarity] recorded DMG by 50% when using [Golden Arrow Rain - Annihilate]. Crow now sees all allies as [Detective Partners]. In battle, additionally gains CRIT Rate and CRIT DMG (that is over 100%) based on 40% of the highest CRIT Rate and CRIT DMG among [Detective Partners] (Up to 20% and 40%)."
 };
+
 window.jpCharacterRitualData["아케치"] = {
   "name": "明智 吾郎",
   "r0": "霧の中を歩いて",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["아케치"] = {
   "r6": "結末",
   "r6_detail": "『黄金の矢雨・破滅』を発動すると、『精密な矢』の記録ダメージが50%増加する。明智吾郎は全ての味方を『探偵の仲間』として扱う。戦闘中、明智吾郎は追加でクリティカル率、CRT倍率を獲得し、その増加値は全『探偵の仲間』のクリティカル率、CRT倍率（100%を超える部分）の最高値の40%となる（上限20%、40%）。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["아케치"] = {
   "name": "明智吾郎",
@@ -71,3 +74,4 @@ window.cnCharacterRitualData["아케치"] = {
   "r6": "尘埃落定",
   "r6_detail": "释放『黄金箭雨·湮灭』时『清晰之矢』的记录伤害提升50%。明智吾郎会视所有同伴为『侦探伙伴』。战斗中，明智吾郎会额外获得暴击率、暴击效果提升，提升值基于所有『侦探伙伴』中暴击率、暴击效果（超过100%的部分）最高值的40%(上限20%、40%）。"
 };
+

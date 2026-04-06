@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["유우미"] = {
   "name": "시이나 유우미",
   "r0": "바텐더",
@@ -18,6 +20,7 @@ window.ritualData["유우미"] = {
   "r6": "클래식 마티니",
   "r6_detail": "『칵테일』의 상한이 4잔으로 증가한다. 전투 시작 시, 시이나 유우미가 『믹스·DELUXE』를 1잔 획득한다. 시이나 유우미가 『칵테일』을 3잔 제조하면 『믹스·DELUXE』를 1잔 추가로 획득한다.\n시이나 유우미가 『믹스·DELUXE/믹스/러프』를 소모해 발동하는 모든 스킬 효과가 120%/100%/50%에서 135%/120%/75%로 증가한다(『매혹적인 향기』, 『향기로운 와인』, 『음주가무』 포함)."
 };
+
 window.enCharacterRitualData["유우미"] = {
   "name": "Yumi Shiina",
   "r0": "Expert Bartender",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["유우미"] = {
   "r6": "XYZ",
   "r6_detail": "The maximum number of Cocktail stacks increases to 4.\nAt the start of battle, gain 1 Tailor-Made Cocktail. After every 3 Cocktails gained, gain 1 more Tailor-Made Cocktail.\nWhen spending a Tailor-Made, Standard, or Basic Cocktail to activate a skill, increase the skill effect from 120%/100%/50% up to 135%/120%/75% (includes Tempting Build, Invigorating Blend, and Moonlit Banquet)."
 };
+
 window.jpCharacterRitualData["유우미"] = {
   "name": "椎名 悠美",
   "r0": "エースバーテンダー",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["유우미"] = {
   "r6": "ＸＹＺ",
   "r6_detail": "最大４つまで『カクテル』を累積できるようになる。\n戦闘開始時、自身が『オーダーメイド』を１つ獲得し、『カクテル』を３つ獲得するごとに、追加で『オーダーメイド』を１つ獲得するようになる。\n自身が『オーダーメイド』、『スタンダード』、『ベーシック』を消費して発動するスキル効果が１２０%／１００%／５０%から１３５%／１２０%／７５%に上昇する（『誘惑のビルド』『活力のシェイク」『月下の酒宴』を含む）。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["유우미"] = {
   "name": "椎名悠美",
@@ -71,3 +74,4 @@ window.cnCharacterRitualData["유우미"] = {
   "r6": "经典马天尼",
   "r6_detail": "『鸡尾酒』的上限提升至4。战斗开始时，椎名悠美获得1杯『精调·DELUXE』；椎名悠美每调制出3杯『鸡尾酒』时，额外获得1杯『精调·DELUXE』。\n椎名悠美消耗『精调·DELUXE/精调/粗调』触发的所有技能效果从120%/100%/50%提升至135%/120%/75%（包括『撩人的醉意』、『风味绝伦的美酒』、『酣歌醉舞』）。"
 };
+

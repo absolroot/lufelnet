@@ -16,6 +16,7 @@ window.personaFiles["릴리스"] = {
   "tier_desc": "원더 무기 메커니컬 심판자 등 만능 대미지 증가 형태로 사용되거나, 2개의 다른 속성 스킬이 필요할 때 외에는 채용되지 않는다.",
   "tier_desc_en": "It is only used for Almighty damage boosting setups such as Wonder's Ex Machina, or when you need two skills of different elements.",
   "tier_desc_jp": "ワンダー武器『Ex Machina』のように万能ダメージを伸ばす構成、あるいは異なる2属性のスキルが必要な場合を除けば、ほとんど採用されない。",
+  "tier_desc_cn": "除非是用于 WONDER 武器『机械处刑者』这类提升万能伤害的体系，或需要两种不同属性技能时，否则基本不会采用。",
   "comment": "고유 스킬 설명에는 만능 대미지 이후 주원 대미지라고 명시돼있지만, 주원 대미지를 준 이후 만능 대미지가 들어가게 된다.",
   "comment_en": "The unique skill description says it deals Curse damage after Almighty damage, but in practice the Curse damage is dealt first, followed by Almighty damage.",
   "comment_jp": "固有スキルの説明では万能ダメージの後に呪怨ダメージが入ると書かれているが、実際には呪怨ダメージが先に入り、その後に万能ダメージが発生する。",

@@ -18,12 +18,12 @@ sitemap: false
       params.delete("lang");
       params.delete("name");
       params.delete("persona");
-      var languageTargets = {"kr":"/kr/persona/mitra/","en":"/en/persona/mitra/","jp":"/jp/persona/mitra/"};
+      var languageTargets = {"kr":"/kr/persona/mitra/","en":"/en/persona/mitra/","jp":"/jp/persona/mitra/","cn":"/cn/persona/mitra/"};
       var defaultPath = "/en/persona/mitra/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

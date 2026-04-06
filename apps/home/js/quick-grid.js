@@ -225,15 +225,21 @@
         return url.pathname;
     };
 
+    const KR_LIKE_ITEMS = ['character', 'persona', 'revelations', 'synergy', 'wonderweapon', 'maps', 'astrolabe', 'velvetTrial', 'pullTracker', 'pullTracker_global', 'materialCalc', 'defenseCalc', 'criticalCalc', 'tacticLibrary', 'tacticMaker', 'guide', 'tier', 'gallery'];
+    const CN_ITEMS = KR_LIKE_ITEMS.filter((key) => !['guide', 'velvetTrial'].includes(key));
+    const GLOBAL_ITEMS = ['character', 'persona', 'revelations', 'synergy', 'wonderweapon', 'maps', 'astrolabe', 'velvetTrial', 'pullTracker', 'materialCalc', 'defenseCalc', 'criticalCalc', 'tacticLibrary', 'guide', 'tier', 'schedule', 'pullCalc', 'gallery'];
+
     const getItems = (lang) => {
         if (lang === 'kr') {
-            return ['character', 'persona', 'revelations', 'synergy', 'wonderweapon', 'maps', 'astrolabe', 'velvetTrial', 'pullTracker', 'pullTracker_global', 'materialCalc', 'defenseCalc', 'criticalCalc', 'tacticLibrary', 'tacticMaker', 'guide', 'tier', 'gallery'];
+            return KR_LIKE_ITEMS;
+        }
+        if (lang === 'cn') {
+            return CN_ITEMS;
         }
         if (lang === 'jp' || lang === 'en') {
-            return ['character', 'persona', 'revelations', 'synergy', 'wonderweapon', 'maps', 'astrolabe', 'velvetTrial', 'pullTracker', 'materialCalc', 'defenseCalc', 'criticalCalc', 'tacticLibrary', 'guide', 'tier', 'schedule', 'pullCalc', 'gallery'];
+            return GLOBAL_ITEMS;
         }
-        // default to KR set
-        return ['character', 'persona', 'revelations', 'synergy', 'wonderweapon', 'maps', 'astrolabe', 'velvetTrial', 'pullTracker', 'pullTracker_global', 'materialCalc', 'defenseCalc', 'criticalCalc', 'tacticLibrary', 'guide', 'tier', 'schedule', 'pullCalc', 'gallery'];
+        return KR_LIKE_ITEMS;
     };
 
     // New 배지를 표시할 아이템 목록

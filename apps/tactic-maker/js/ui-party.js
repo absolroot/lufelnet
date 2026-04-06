@@ -26,42 +26,13 @@ function getTacticMakerText(key, fallback = '') {
     return fallback || key;
 }
 
-function resolveCharacterSlug(characterName) {
+function isKrLikeLang(lang) {
     try {
-        const map = window.__CHARACTER_SLUG_MAP;
-        if (!map || typeof map !== 'object') return null;
-
-        const entry = map[characterName];
-        if (entry && entry.slug) return entry.slug;
-
-        const keys = Object.keys(map);
-        for (let i = 0; i < keys.length; i += 1) {
-            const info = map[keys[i]];
-            if (!info || !info.slug || !Array.isArray(info.aliases)) continue;
-            if (info.aliases.includes(characterName)) return info.slug;
+        if (typeof window.isKrLikeLanguage === 'function') {
+            return !!window.isKrLikeLanguage(lang);
         }
-    } catch (_) {
-        // no-op
-    }
-    return null;
-}
-
-function buildCharacterDetailHref(characterName, lang, baseUrl = '') {
-    const safeLang = ['kr', 'en', 'jp', 'cn'].includes(String(lang || '').toLowerCase())
-        ? String(lang).toLowerCase()
-        : 'kr';
-    const slug = resolveCharacterSlug(characterName);
-    const base = String(baseUrl || '').replace(/\/+$/, '');
-
-    if (slug) {
-        return `${base}/${safeLang}/character/${encodeURIComponent(slug)}/`;
-    }
-
-    const legacyPath = `${base || ''}/character.html`;
-    const url = new URL(legacyPath.startsWith('/') ? legacyPath : `/${legacyPath}`, window.location.origin);
-    url.searchParams.set('name', characterName);
-    url.searchParams.set('lang', safeLang);
-    return url.pathname + url.search;
+    } catch (_) { }
+    return lang === 'kr' || lang === 'cn';
 }
 
 /**
@@ -91,19 +62,19 @@ function getRevelationTooltip(revName, kind = 'sub', currentSubRev = '') {
         : 'kr';
     
     // DataLoader에서 로드된 매핑 사용 (한국어 키 -> 해당 언어 키)
-    const mapping = (lang !== 'kr' && DataLoader._revelationMapping) ? DataLoader._revelationMapping : {};
+    const mapping = (!isKrLikeLang(lang) && DataLoader._revelationMapping) ? DataLoader._revelationMapping : {};
     
     // 한국어 키를 해당 언어 키로 변환하는 함수
     const getLocalizedKey = (krKey) => {
-        if (lang === 'kr') return krKey;
+        if (isKrLikeLang(lang)) return krKey;
         return mapping[krKey] || krKey;
     };
     
     // 언어별 효과 데이터 가져오기 (영어/일본어면 DataLoader에서 로드된 데이터 사용)
-    const subEffects = (lang !== 'kr' && DataLoader._localizedSubEffects) 
+    const subEffects = (!isKrLikeLang(lang) && DataLoader._localizedSubEffects) 
         ? DataLoader._localizedSubEffects 
         : (revData.sub_effects || {});
-    const setEffects = (lang !== 'kr' && DataLoader._localizedSetEffects) 
+    const setEffects = (!isKrLikeLang(lang) && DataLoader._localizedSetEffects) 
         ? DataLoader._localizedSetEffects 
         : (revData.set_effects || {});
     
@@ -524,7 +495,7 @@ export class PartyUI {
         const currentLang = (window.I18nService && window.I18nService.getCurrentLanguage) 
             ? window.I18nService.getCurrentLanguage() 
             : 'kr';
-        const showSpoilerToggle = currentLang !== 'kr';
+        const showSpoilerToggle = !isKrLikeLang(currentLang);
         const spoilerLabelText = getTacticMakerText('showSpoilersLabel', 'Show Spoilers');
 
         bar.innerHTML = `
@@ -700,7 +671,7 @@ export class PartyUI {
         }
 
         // For non-KR languages without spoiler enabled, filter to only released characters
-        if (currentLang !== 'kr' && !spoilerEnabled && window.originalLangCharacterList) {
+        if (!isKrLikeLang(currentLang) && !spoilerEnabled && window.originalLangCharacterList) {
             const releasedSet = new Set(window.originalLangCharacterList);
             targetChars = targetChars.filter(name => releasedSet.has(name));
         }
@@ -736,8 +707,7 @@ export class PartyUI {
             if (activeElements.size > 0 && !activeElements.has(charData.element)) return;
             if (activePositions.size > 0 && !activePositions.has(charData.position)) return;
             if (q) {
-                const alias = (name === '후타바' || String(charData.codename || '').toLowerCase() === 'navi') ? 'oracle' : '';
-                const text = `${name} ${charData.name || ''} ${charData.codename || ''} ${alias}`.toLowerCase();
+                const text = `${name} ${charData.name || ''} ${charData.codename || ''}`.toLowerCase();
                 if (!text.includes(q)) return;
             }
 
@@ -754,10 +724,10 @@ export class PartyUI {
             };
             const lang = getCurrentLang();
             let displayName = charData.name || name;
-            if (lang !== 'kr') {
+            if (!isKrLikeLang(lang)) {
                 if (lang === 'en') displayName = charData.codename || charData.name_en || charData.name || name;
                 else if (lang === 'jp') displayName = charData.name_jp || charData.name || name;
-                else displayName = charData.name || name;
+                else displayName = charData.name_cn || charData.name || name;
             }
 
             // Logic copied from dmg-calc/roster.js
@@ -910,13 +880,12 @@ export class PartyUI {
         };
 
         const lang = getCurrentLang();
-        const characterHref = buildCharacterDetailHref(data.name, lang, this.baseUrl);
         // kr: use key name (아이템명). non-kr: prefer localized/full name if available.
         let displayName = data.name;
-        if (lang !== 'kr') {
+        if (!isKrLikeLang(lang)) {
             if (lang === 'en') displayName = charInfo.codename || charInfo.name_en || charInfo.name || data.name;
             else if (lang === 'jp') displayName = charInfo.name_jp || charInfo.name || data.name;
-            else displayName = charInfo.name || data.name;
+            else displayName = charInfo.name_cn || charInfo.name || data.name;
         }
         // Updated to use tier image as requested
         const imgPath = `${this.baseUrl}/assets/img/tier/${data.name}.webp`;
@@ -948,14 +917,14 @@ export class PartyUI {
 
         slotContent.innerHTML = `
             <div class="slot-char-info">
-                <a href="${characterHref}" target="_blank" class="slot-char-link">
+                <a href="${this.baseUrl}/character.html?name=${encodeURIComponent(data.name)}" target="_blank" class="slot-char-link">
                     <img src="${imgPath}" class="slot-char-img"
                          onerror="this.src='${this.baseUrl}/assets/img/tier/${data.name}.webp'">
-                    <span class="preset-icons slot-char-preset-icons"></span>
                 </a>
                 <div class="slot-char-details">
                     <div class="slot-char-name">
                         <span class="slot-name-text">${displayName}</span>
+                        <span class="preset-icons"></span>
                     </div>
                     <div class="slot-char-sub">
                         ${attrIcon ? `<img src="${attrIcon}" class="meta-icon" title="${DataLoader.getElementName(element)}" onerror="this.style.display='none'">` : ''}

@@ -1,6 +1,8 @@
 window.characterSkillsData = window.characterSkillsData || {};
 window.enCharacterSkillsData = window.enCharacterSkillsData || {};
 window.jpCharacterSkillsData = window.jpCharacterSkillsData || {};
+window.cnCharacterSkillsData = window.cnCharacterSkillsData || {};
+
 window.characterSkillsData["루페르"] = {
   "name": "루페르",
   "skill1": {
@@ -46,6 +48,7 @@ window.characterSkillsData["루페르"] = {
     "cool": 0
   }
 };
+
 window.enCharacterSkillsData["루페르"] = {
   "name": "Lufel",
   "skill1": {
@@ -93,6 +96,7 @@ window.enCharacterSkillsData["루페르"] = {
     "cool": 0
   }
 };
+
 window.jpCharacterSkillsData["루페르"] = {
   "name": "ルフェル",
   "skill1": {
@@ -139,46 +143,51 @@ window.jpCharacterSkillsData["루페르"] = {
     "cool": 0
   }
 };
-window.cnCharacterSkillsData = window.cnCharacterSkillsData || {};
 
 window.cnCharacterSkillsData["루페르"] = {
   "name": "路菲尔",
   "skill1": {
     "name": "雀跃火枭",
     "element": "화염",
+    "type": "单体伤害",
     "sp": 22,
     "cool": 0,
     "description": "对1名敌人造成113.2%/124.8%/117.9%/129.5%攻击力的火焰属性伤害，有100%基础概率使敌人陷入燃烧状态并使使敌人受到治疗效果降低30%，效果持续2回合。"
   },
   "skill2": {
     "name": "希望光束",
+    "element": "치료",
+    "type": "单体伤害",
     "sp": 24,
     "cool": 0,
-    "description": "使1名同伴恢复67.4%/67.4%/70.2%/70.2%攻击力+1920/2334/2209/2623的生命值。目标生命值低于50%时，治疗效果提升19%/19%/20%/20%。",
-    "element": "치료"
+    "description": "使1名同伴恢复67.4%/67.4%/70.2%/70.2%攻击力+1920/2334/2209/2623的生命值。目标生命值低于50%时，治疗效果提升19%/19%/20%/20%。"
   },
   "skill3": {
     "name": "天使的怜悯",
+    "element": "치료광역",
+    "type": "群体伤害",
     "sp": 31,
     "cool": 0,
-    "description": "使所有同伴恢复42.1%/42.1%/43.8%/43.8%攻击力+1197/1456/1378/1636的生命值，对主要目标同伴的治疗效果提升24%/24%/25%/25%。",
-    "element": "치료광역"
+    "description": "使所有同伴恢复42.1%/42.1%/43.8%/43.8%攻击力+1197/1456/1378/1636的生命值，对主要目标同伴的治疗效果提升24%/24%/25%/25%。"
+  },
+  "skill_highlight": {
+    "element": "치료광역",
+    "type": "群体治疗",
+    "description": "使所有同伴恢复59.7%/59.7%/62.2%/62.2%攻击力+1700/2067/1956/2323的生命值，并且使所有同伴的攻击力提升33.2%/33.2%/34.5%/34.5%，1回合。",
+    "cool": 4,
+    "name": "HIGHLIGHT"
   },
   "passive1": {
     "name": "光明",
     "element": "패시브",
-    "cool": 0,
-    "description": "使用人格面具技能攻击敌人时，使随机3个同伴获得『星之火』效果。"
+    "description": "使用人格面具技能攻击敌人时，使随机3个同伴获得『星之火』效果。",
+    "cool": 0
   },
   "passive2": {
     "name": "希望",
     "element": "패시브",
-    "cool": 0,
-    "description": "自身最大生命值转化为治疗效果，最多12000生命值可以使治疗效果提升42.0%。"
-  },
-  "skill_highlight": {
-    "cool": 4,
-    "description": "使所有同伴恢复59.7%/59.7%/62.2%/62.2%攻击力+1700/2067/1956/2323的生命值，并且使所有同伴的攻击力提升33.2%/33.2%/34.5%/34.5%，1回合。",
-    "element": "치료광역"
+    "description": "自身最大生命值转化为治疗效果，最多12000生命值可以使治疗效果提升42.0%。",
+    "cool": 0
   }
 };
+

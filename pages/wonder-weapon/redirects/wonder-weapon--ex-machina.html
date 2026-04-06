@@ -17,12 +17,12 @@ sitemap: false
       var requestedLang = params.get("lang");
       params.delete("lang");
       params.delete("weapon");
-      var languageTargets = {"kr":"/kr/wonder-weapon/ex-machina/","en":"/en/wonder-weapon/ex-machina/","jp":"/jp/wonder-weapon/ex-machina/"};
+      var languageTargets = {"kr":"/kr/wonder-weapon/ex-machina/","en":"/en/wonder-weapon/ex-machina/","jp":"/jp/wonder-weapon/ex-machina/","cn":"/cn/wonder-weapon/ex-machina/"};
       var defaultPath = "/en/wonder-weapon/ex-machina/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

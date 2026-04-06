@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["토모코"] = {
   "name": "노게 토모코",
   "r0": "밀림의 선물",
@@ -18,6 +20,7 @@ window.ritualData["토모코"] = {
   "r6": "꿈의 함정",
   "r6_detail": "『잎소리 단조』가 있는 동료의 주는 대미지가 20% 증가하며, 효과 명중은 15% 증가한다."
 };
+
 window.enCharacterRitualData["토모코"] = {
   "name": "Tomoko Noge",
   "r0": "Self-Renewal",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["토모코"] = {
   "r6": "Celebratory Tone",
   "r6_detail": "Cheer Song increases 1 ally's damage by 20%, and increases ailment accuracy by 15%."
 };
+
 window.jpCharacterRitualData["토모코"] = {
   "name": "野毛 朋子",
   "r0": "新たな自分探し",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["토모코"] = {
   "r6": "祝いの音色",
   "r6_detail": "『応歌』状態の味方の与ダメージが２０%、状態異常命中が１５%上昇する。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["토모코"] = {
   "name": "野毛朋子",
@@ -71,3 +74,4 @@ window.cnCharacterRitualData["토모코"] = {
   "r6": "梦境陷阱",
   "r6_detail": "持有『叶鸣小调』的同伴，造成的伤害提升20%，效果命中提升15%。"
 };
+

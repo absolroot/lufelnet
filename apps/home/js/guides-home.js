@@ -5,6 +5,16 @@
 
 const HOME_GUIDE_RAW_LANGS = ['kr', 'en', 'jp', 'cn', 'tw', 'sea'];
 
+function shouldShowHomeGuides(rawLang) {
+    return String(rawLang || '').toLowerCase() !== 'cn';
+}
+
+function syncHomeGuidesVisibility(rawLang) {
+    const guidesContainer = document.querySelector('.guides-container');
+    if (!guidesContainer) return;
+    guidesContainer.style.display = shouldShowHomeGuides(rawLang) ? 'block' : 'none';
+}
+
 function detectHomeGuideRawLang() {
     if (window.HomeI18n && typeof window.HomeI18n.detectRawLang === 'function') {
         const rawLang = window.HomeI18n.detectRawLang();
@@ -62,6 +72,12 @@ window.loadHomeGuides = async function (currentLang) {
     const rawLang = HOME_GUIDE_RAW_LANGS.includes(String(currentLang || '').toLowerCase())
         ? String(currentLang).toLowerCase()
         : detectHomeGuideRawLang();
+
+    syncHomeGuidesVisibility(rawLang);
+    if (!shouldShowHomeGuides(rawLang)) {
+        container.innerHTML = '';
+        return;
+    }
 
     // Show loading state
     container.innerHTML = `<div class="guides-loading" style="padding: 20px; text-align: center; color: #888;">${homeGuideT('guides_loading', 'Loading...', rawLang)}</div>`;
@@ -312,6 +328,7 @@ function getOptimizedThumbnail(url, width) {
 // Expose initialization function
 window.initHomeGuides = function () {
     const currentLang = detectHomeGuideRawLang();
+    syncHomeGuidesVisibility(currentLang);
     loadHomeGuides(currentLang);
 };
 

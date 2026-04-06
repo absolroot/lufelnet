@@ -17,12 +17,12 @@ sitemap: false
       var requestedLang = params.get("lang");
       params.delete("lang");
       params.delete("character");
-      var languageTargets = {"kr":"/kr/synergy/musubi/","en":"/en/synergy/musubi/","jp":"/jp/synergy/musubi/"};
+      var languageTargets = {"kr":"/kr/synergy/musubi/","en":"/en/synergy/musubi/","jp":"/jp/synergy/musubi/","cn":"/cn/synergy/musubi/"};
       var defaultPath = "/en/synergy/musubi/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

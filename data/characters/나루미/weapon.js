@@ -1,6 +1,7 @@
 window.WeaponData = window.WeaponData || {};
 window.enCharacterWeaponData = window.enCharacterWeaponData || {};
 window.jpCharacterWeaponData = window.jpCharacterWeaponData || {};
+window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
 
 window.WeaponData["나루미"] = {
   "name": "나시모토 나루미",
@@ -22,7 +23,6 @@ window.WeaponData["나루미"] = {
     "description": "크리티컬 확률이 18.1%/18.1%/23.5%/23.5%/28.9%/28.9%/34.3% 증가한다.\n나시모토 나루미가 『나루루♪ 나루루♫』 획득 시 2턴 동안 크리티컬 효과가 32.8%/42.8%/42.8%/52.8%/52.8%/62.8%/62.8% 증가한다. 나시모토 나루미는 『스포트라이트·온』 턴에 공격력이 42.5%/55.0%/55.0%/67.5%/67.5%/80.0%/80.0% 증가한다."
   }
 };
-
 
 window.enCharacterWeaponData["나루미"] = {
   "weapon5-1": {
@@ -60,21 +60,26 @@ window.jpCharacterWeaponData["나루미"] = {
     "skill_name": "",
     "description": "攻撃力が12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%上昇する。『キラメキ』獲得時、2ターンの間、与ダメージが8.8%/10.2%/10.2%/11.6%/11.6%/13.0%/13.0%上昇する（最大2回まで累積）。"
   }
-};window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
+};
 
 window.cnCharacterWeaponData["나루미"] = {
-  "weapon5-1": {
-    "name": "霜糖安可",
-    "health": 2219.84,
-    "attack": 779.61,
-    "defense": 405.19,
-    "description": "暴击率提升18.1%/18.1%/23.5%/23.5%/28.9%/28.9%/34.3%。\n梨本成瑠海获得『成瑠瑠♪成瑠瑠♫』时暴击效果提升32.8%/42.8%/42.8%/52.8%/52.8%/62.8%/62.8%，持续2回合。梨本成瑠海在『聚光灯·全开』回合攻击力提升42.5%/55.0%/55.0%/67.5%/67.5%/80.0%/80.0%。"
-  },
+  "name": "梨本成瑠海",
   "weapon4-1": {
     "name": "闪耀节奏",
     "health": 1776.03,
     "attack": 623.35,
     "defense": 323.88,
+    "skill_name": "",
     "description": "攻击力提升12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%。\n梨本成瑠海获得『闪耀值』时，伤害提升8.8%/11.6%/11.6%/14.4%/14.4%/17.2%/17.2%，持续2回合，最多叠加2层。"
+  },
+  "weapon5-1": {
+    "name": "霜糖安可",
+    "health": 2219.84,
+    "attack": 779.61,
+    "defense": 405.19,
+    "highlight": true,
+    "skill_name": "",
+    "description": "暴击率提升18.1%/18.1%/23.5%/23.5%/28.9%/28.9%/34.3%。\n梨本成瑠海获得『成瑠瑠♪成瑠瑠♫』时暴击效果提升32.8%/42.8%/42.8%/52.8%/52.8%/62.8%/62.8%，持续2回合。梨本成瑠海在『聚光灯·全开』回合攻击力提升42.5%/55.0%/55.0%/67.5%/67.5%/80.0%/80.0%。"
   }
 };
+

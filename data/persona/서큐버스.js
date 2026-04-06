@@ -16,6 +16,7 @@ window.personaFiles["서큐버스"] = {
   "tier_desc": "1턴 동안 동료의 크리티컬 확률을 크게 높인다. 크리티컬 확률이 부족한 딜러가 있다면 언제나 좋은 선택이 된다.",
   "tier_desc_en": "It greatly increases an ally's Crit Rate for 1 turn. If you have a DPS that lacks Crit Rate, it is always a strong choice.",
   "tier_desc_jp": "1ターンの間、味方のクリティカル率を大きく引き上げる。クリティカル率が不足しているアタッカーがいるなら、常に有力な選択肢になる。",
+  "tier_desc_cn": "可在 1 回合内大幅提高同伴的暴击率。只要队里有暴击率不足的输出，它始终都是不错的选择。",
   "comment": "리벨리온의 최대 효과를 위해 크리티컬 확률 패시브를 챙긴다. 설명은 10% 단위지만 0.1% 단위로도 효과가 적용된다.",
   "comment_en": "Take the Crit Rate passive to maximize Rebellion's effect. The description is written in 10% units, but the effect is actually applied in 0.1% units.",
   "comment_jp": "リベリオンの最大効果を得るために、クリティカル率パッシブを採用する。説明は10%単位だが、効果自体は0.1%単位で適用される。",

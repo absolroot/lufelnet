@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["모토하·여름"] = {
   "name": "아라이 모토하·여름",
   "r0": "햇빛과 푸른 바다",
@@ -18,6 +20,7 @@ window.ritualData["모토하·여름"] = {
   "r6": "손을 잡고 여름 산책",
   "r6_detail": "『활기찬 여름』 효과는 스킬 『파도 추격자』 사용 후 더는 소모되지 않는다.\n『한여름』 효과가 『여름날의 태양』으로 강화된다. 『여름날의 태양』 상태에서 『여름날 마법』이 추가 대미지를 3회 주며, 『여유로운 휴가』가 추가로 자신의 최대 생명 20%의 HP를 회복한다. 『파도 추격자』 스킬 배율이 50% 증가한다."
 };
+
 window.enCharacterRitualData["모토하·여름"] = {
   "name": "Tropical Motoha",
   "r0": "Summer Starts Here!",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["모토하·여름"] = {
   "r6": "Everlasting Summer!",
   "r6_detail": "Tropical Heart will not be spent after using Surf 'n' Shine.\nSummer Hype is enhanced to Summer Blowout. When Summer Blowout is active, the bonus damage of Blue Sunrise activates 3 times. Summer 'Splosion recovers 20% more of Tropical Motoha's max HP. Increase the skill multiplier of Surf 'n' Shine by 50%."
 };
+
 window.jpCharacterRitualData["모토하·여름"] = {
   "name": "素羽・トロピカル",
   "r0": "夏はこれから！",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["모토하·여름"] = {
   "r6": "夏は終わらない！",
   "r6_detail": "『トロピカル・ハート』が『サーフ＆シャイン』使用後に消費されなくなる。\n『真夏のテンション』が『真夏のハイテンション』に強化される。\n『真夏のハイテンション』状態の時、『ブルーサンライズ』の追加ダメージが３回発動する。『ハッピーサマーボム』使用時、追加で自身の最大ＨＰの２０%を回復する。また、『サーフ＆シャイン』のスキル倍率が５０%上昇する。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["모토하·여름"] = {
   "name": "新井素羽·夏日",
@@ -71,3 +74,4 @@ window.cnCharacterRitualData["모토하·여름"] = {
   "r6": "牵手在夏日漫步",
   "r6_detail": "『跃动一夏』效果在使用技能『海浪追逐者』后不再消耗。\n『盛夏』效果强化为『真夏艳阳』。『真夏艳阳』状态下，『夏日清凉魔法』的追加伤害会触发3次；『悠闲假期』额外恢复自身最大生命值的20%血量；『海浪追逐者』技能倍率提升50%。"
 };
+

@@ -17,12 +17,12 @@ sitemap: false
       var requestedLang = params.get("lang");
       params.delete("lang");
       params.delete("name");
-      var languageTargets = {"kr":"/kr/character/key/","en":"/en/character/key/","jp":"/jp/character/key/"};
+      var languageTargets = {"kr":"/kr/character/key/","en":"/en/character/key/","jp":"/jp/character/key/","cn":"/cn/character/key/"};
       var defaultPath = "/en/character/key/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

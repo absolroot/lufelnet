@@ -1,6 +1,8 @@
 window.WeaponData = window.WeaponData || {};
 window.enCharacterWeaponData = window.enCharacterWeaponData || {};
 window.jpCharacterWeaponData = window.jpCharacterWeaponData || {};
+window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
+
 window.WeaponData["몽타뉴"] = {
   "name": "코토네 몽타뉴",
   "weapon4-1": {
@@ -20,6 +22,7 @@ window.WeaponData["몽타뉴"] = {
     "description": "크리티컬 효과가 36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0% 증가한다. 『얼음 결정』이 8개가 되면 『칼끝의 댄서』를 시전할 수 있으며, 『칼끝의 댄서』가 주는 대미지가 46.0%/68.0%/68.0%/90.0%/90.0%/112.0%/112.0% 증가한다. 또한 『얼음 결정』 8개를 보유할 경우 『차가운 칼날』 스킬이 강화된다."
   }
 };
+
 window.enCharacterWeaponData["몽타뉴"] = {
   "name": "Montagne Kotone",
   "weapon4-1": {
@@ -39,6 +42,7 @@ window.enCharacterWeaponData["몽타뉴"] = {
     "description": "Increase critical damage by 36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%. Activate Blade Dancer at 8+ Ice Crystal stacks and increase its damage by 46.0%/68.0%/68.0%/90.0%/90.0%/112.0%/112.0%. Increase the power of Durandal of Ice at 8+ Ice Crystal stacks."
   }
 };
+
 window.jpCharacterWeaponData["몽타뉴"] = {
   "name": "コトネ・モンターニュ",
   "weapon4-1": {
@@ -56,21 +60,24 @@ window.jpCharacterWeaponData["몽타뉴"] = {
     "description": "クリティカルダメージが36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%上昇する。『氷晶』が８つ以上で『氷上の舞姫』が使用可能となり、『氷上の舞姫』の与ダメージが46.0%/68.0%/68.0%/90.0%/90.0%/112.0%/112.0%上昇する。同時に『氷晶』が８つ以上の時、『氷塊のデュランダル』が強化される。"
   }
 };
-window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
 
 window.cnCharacterWeaponData["몽타뉴"] = {
-  "weapon5-1": {
-    "name": "凛冬女王",
-    "health": 2160.41,
-    "attack": 759.73,
-    "defense": 409.62,
-    "description": "暴击效果提升36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%。自身的『冰晶』达到8颗时，就可以释放『刀尖上的舞者』；『刀尖上的舞者』造成的伤害提升46.0%/68.0%/68.0%/90.0%/90.0%/112.0%/112.0%。同时，当自身持有8颗『冰晶』时，『寒冰之刃』技能即可获得强化。"
-  },
+  "name": "琴音·蒙塔涅",
   "weapon4-1": {
     "name": "鸣空长歌",
     "health": 1728.63,
     "attack": 607.79,
     "defense": 328.02,
+    "skill_name": "",
     "description": "攻击力提升12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%。琴音每次获得『冰晶』时增加冰冻伤害2.4%/3.1%/3.1%/3.8%/3.8%/4.5%/4.5%，持续1回合，最多叠加10层。"
+  },
+  "weapon5-1": {
+    "name": "凛冬女王",
+    "health": 2160.41,
+    "attack": 759.73,
+    "defense": 409.62,
+    "skill_name": "",
+    "description": "暴击效果提升36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%。自身的『冰晶』达到8颗时，就可以释放『刀尖上的舞者』；『刀尖上的舞者』造成的伤害提升46.0%/68.0%/68.0%/90.0%/90.0%/112.0%/112.0%。同时，当自身持有8颗『冰晶』时，『寒冰之刃』技能即可获得强化。"
   }
 };
+

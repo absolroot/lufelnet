@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["마나카"] = {
   "name": "나가오 마나카",
   "r0": "다시 시작하려는 희망",
@@ -18,6 +20,7 @@ window.ritualData["마나카"] = {
   "r6": "영원한 빛의 성가",
   "r6_detail": "나가오 마나카는 초기에 『천계의 선율』을 1회 추가로 시전할 수 있다."
 };
+
 window.enCharacterRitualData["마나카"] = {
   "name": "Manaka Nagao",
   "r0": "Hope to Start Again",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["마나카"] = {
   "r6": "Eternal Angelic Voice",
   "r6_detail": "Manaka can initially use [Myriad Song] one bonus time."
 };
+
 window.jpCharacterRitualData["마나카"] = {
   "name": "長尾 マナカ",
   "r0": "再び始まる希望",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["마나카"] = {
   "r6": "永遠の光の聖歌",
   "r6_detail": "長尾マナカは初期に『天界の旋律』を1回追加で発動できる。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["마나카"] = {
   "name": "长尾爱歌",
@@ -71,3 +74,4 @@ window.cnCharacterRitualData["마나카"] = {
   "r6": "永恒的天使之声",
   "r6_detail": "长尾爱歌初始可额外释放一次『千籁重歌』。"
 };
+

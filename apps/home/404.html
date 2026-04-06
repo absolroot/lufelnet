@@ -212,14 +212,14 @@ layout: null
                 try {
                     var params = new URLSearchParams(window.location.search);
                     var fromParam = params.get('lang');
-                    if (fromParam && ['kr', 'en', 'jp'].indexOf(fromParam) !== -1) return fromParam;
+                    if (fromParam && ['kr', 'en', 'jp', 'cn'].indexOf(fromParam) !== -1) return fromParam;
 
                     var path = window.location.pathname || '';
-                    var match = path.match(/^\/(kr|en|jp)(\/|$)/);
+                    var match = path.match(/^\/(kr|en|jp|cn)(\/|$)/);
                     if (match && match[1]) return match[1];
 
                     var saved = localStorage.getItem('preferredLanguage');
-                    if (saved && ['kr', 'en', 'jp'].indexOf(saved) !== -1) return saved;
+                    if (saved && ['kr', 'en', 'jp', 'cn'].indexOf(saved) !== -1) return saved;
                 } catch (_) { }
                 return 'kr';
             }

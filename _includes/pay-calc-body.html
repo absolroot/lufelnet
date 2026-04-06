@@ -3,21 +3,25 @@
     var params = new URLSearchParams(window.location.search || "");
     var path = String(window.location.pathname || "/");
     var lowerPath = path.toLowerCase();
+    var pathLangMatch = lowerPath.match(/^\/(kr|cn)(\/|$)/);
+    var pathLang = pathLangMatch ? pathLangMatch[1] : "";
+    var queryLang = String(params.get("lang") || "").toLowerCase();
+    var effectiveLang = pathLang || (queryLang === "cn" ? "cn" : "kr");
 
     var isLegacyRoot = /^\/pay-calc\/?$/.test(lowerPath);
-    var isCanonicalPath = /^\/kr\/pay-calc\/?$/.test(lowerPath);
+    var isCanonicalPath = /^\/(kr|cn)\/pay-calc\/?$/.test(lowerPath);
 
     if (isLegacyRoot) {
-        window.__SEO_PATH_LANG__ = "kr";
+        window.__SEO_PATH_LANG__ = effectiveLang;
         params.delete("lang");
         params.delete("v");
         var remainingLegacy = params.toString();
-        history.replaceState(null, "", "/kr/pay-calc/" + (remainingLegacy ? "?" + remainingLegacy : ""));
+        history.replaceState(null, "", "/" + effectiveLang + "/pay-calc/" + (remainingLegacy ? "?" + remainingLegacy : ""));
         return;
     }
 
     if (isCanonicalPath) {
-        window.__SEO_PATH_LANG__ = "kr";
+        window.__SEO_PATH_LANG__ = pathLang || effectiveLang;
         var before = params.toString();
         params.delete("lang");
         params.delete("v");

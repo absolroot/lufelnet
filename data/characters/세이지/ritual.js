@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["세이지"] = {
   "name": "시라토리 세이지",
   "r0": "가드 수비",
@@ -18,6 +20,7 @@ window.ritualData["세이지"] = {
   "r6": "일격의 명중",
   "r6_detail": "『격려』를 획득할 초기 고정 확률이 20% 증가한다. 『격려』가 최고 중첩수에 도달하면 스킬 『바람의 속삭임』, 『우아한 풍파』, 『무영의 찌르기』의 대미지 횟수가 1회 증가한다."
 };
+
 window.enCharacterRitualData["세이지"] = {
   "name": "Seiji Shiratori",
   "r0": "Attaque au Fer",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["세이지"] = {
   "r6": "Clumsy Swordwielder",
   "r6_detail": "Increase chance to gain Right to Strike by 20%.\nWhen Seiji has 5 Right to Strike stacks, Blustering Épée, Graceful Gale, and Saber Surge deal 1 more hit."
 };
+
 window.jpCharacterRitualData["세이지"] = {
   "name": "白鳥 誠司",
   "r0": "アタック・オ・フェール",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["세이지"] = {
   "r6": "不器用な剣士",
   "r6_detail": "『アタック権』の獲得確率が２０%上昇する。\n自身が『アタック権』を５つ獲得している時、『突風のエペ』『優雅なる暴風』『吹き荒ぶサーブル』の攻撃回数が１回増加する。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["세이지"] = {
   "name": "白鸟诚司",
@@ -71,3 +74,4 @@ window.cnCharacterRitualData["세이지"] = {
   "r6": "一击而中",
   "r6_detail": "获得『激励』的初始固定概率提升20%，『激励』达到最高层数后，技能『风之呼啸』、『优雅暴风』以及『无影直刺』的伤害次数增加1次。"
 };
+

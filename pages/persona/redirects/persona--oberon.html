@@ -18,12 +18,12 @@ sitemap: false
       params.delete("lang");
       params.delete("name");
       params.delete("persona");
-      var languageTargets = {"kr":"/kr/persona/oberon/","en":"/en/persona/oberon/","jp":"/jp/persona/oberon/"};
+      var languageTargets = {"kr":"/kr/persona/oberon/","en":"/en/persona/oberon/","jp":"/jp/persona/oberon/","cn":"/cn/persona/oberon/"};
       var defaultPath = "/en/persona/oberon/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

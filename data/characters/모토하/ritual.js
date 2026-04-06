@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["모토하"] = {
   "name": "아라이 모토하",
   "r0": "진격의 나팔",
@@ -18,6 +20,7 @@ window.ritualData["모토하"] = {
   "r6": "승리의 결실",
   "r6_detail": "필드 내 감전 상태의 적이 받는 전격 속성 대미지가 20% 증가하고, 받는 전격 속성 크리티컬 대미지가 20% 증가한다."
 };
+
 window.enCharacterRitualData["모토하"] = {
   "name": "Motoha Arai",
   "r0": "Strike Zone",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["모토하"] = {
   "r6": "Key to Victory",
   "r6_detail": "Increase Shocked foes' Electric damage taken by 20%, and increase Electric critical damage taken by 20%."
 };
+
 window.jpCharacterRitualData["모토하"] = {
   "name": "新井 素羽",
   "r0": "稲妻リリーフ",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["모토하"] = {
   "r6": "勝利の鍵",
   "r6_detail": "感電状態の敵が受ける電撃属性ダメージが２０%上昇し、受ける電撃属性のクリティカルダメージが２０%上昇する。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["모토하"] = {
   "name": "新井素羽",
@@ -71,3 +74,4 @@ window.cnCharacterRitualData["모토하"] = {
   "r6": "胜利的果实",
   "r6_detail": "使场上处于触电状态的敌人受到的电击属性伤害提升20%、受到电击属性暴击伤害提升20%。"
 };
+

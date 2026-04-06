@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["키요시"] = {
   "name": "쿠로타니 키요시",
   "r0": "헌제의 결심",
@@ -18,6 +20,7 @@ window.ritualData["키요시"] = {
   "r6": "구원",
   "r6_detail": "『헌제자』를 10중첩 획득할 때마다 2턴 동안 모든 동료가 주는 화염 속성 대미지가 30% 증가한다."
 };
+
 window.enCharacterRitualData["키요시"] = {
   "name": "Kiyoshi Kurotani",
   "r0": "Make Sparks Fly",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["키요시"] = {
   "r6": "Contagious Passion",
   "r6_detail": "Increase the party's Fire damage by 30% for every 10 Chosen One stacks gained for 2 turns."
 };
+
 window.jpCharacterRitualData["키요시"] = {
   "name": "黒谷 清",
   "r0": "使命への決意",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["키요시"] = {
   "r6": "伝播する熱量",
   "r6_detail": "『選ばれし者』を１０回獲得するごとに、２ターンの間、味方全体の火炎属性の与ダメージが３０%上昇する。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["키요시"] = {
   "name": "黑谷清",
@@ -71,3 +74,4 @@ window.cnCharacterRitualData["키요시"] = {
   "r6": "救赎",
   "r6_detail": "每获得10层『献祭者』时，就会使所有同伴造成的火焰属性伤害提高30%，效果持续2回合。"
 };
+

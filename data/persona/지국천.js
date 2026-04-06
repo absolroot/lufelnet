@@ -16,6 +16,7 @@ window.personaFiles["지국천"] = {
   "tier_desc": "버프 스킬을 사용할 때 아군에게 추가적인 공격력 버프를 제공 가능하며, 페르소나 스킬에 국한돼있지 않고 HIGLIGHT를 통해서도 본능 효과 발동이 된다. 때문에 단순 HIGHLIGHT만을 위해서 채용되는 경우도 있다.",
   "tier_desc_en": "When you use a buff skill, it can provide an additional Attack buff to allies, and its talent is not limited to Persona skills; it also triggers through HIGHLIGHT. Because of that, it is sometimes taken just for HIGHLIGHT.",
   "tier_desc_jp": "バフスキルを使う時、味方に追加の攻撃力バフを付与できる。しかも本能効果はペルソナスキルに限られず、HIGHLIGHTでも発動するため、単にHIGHLIGHT目的で採用されることもある。",
+  "tier_desc_cn": "在使用增益技能时，可以额外给队友提供攻击力增益，而且本能效果不只限于人格面具技能，通过 HIGHLIGHT 也能触发。因此它有时甚至会单纯为了 HIGHLIGHT 而被带上。",
   "comment": "",
   "comment_en": "",
   "comment_jp": "",

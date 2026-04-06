@@ -18,12 +18,12 @@ sitemap: false
       params.delete("lang");
       params.delete("name");
       params.delete("persona");
-      var languageTargets = {"kr":"/kr/persona/okuninushi/","en":"/en/persona/okuninushi/","jp":"/jp/persona/okuninushi/"};
+      var languageTargets = {"kr":"/kr/persona/okuninushi/","en":"/en/persona/okuninushi/","jp":"/jp/persona/okuninushi/","cn":"/cn/persona/okuninushi/"};
       var defaultPath = "/en/persona/okuninushi/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

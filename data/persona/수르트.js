@@ -16,6 +16,7 @@ window.personaFiles["수르트"] = {
   "tier_desc": "마하라쿤다 스킬카드 외 유일한 마하라쿤다를 소유한 페르소나로 광역 방어력 감소를 적용할 수 있다.",
   "tier_desc_en": "The only Persona besides the Marakunda skill card that has Marakunda, allowing it to apply AoE Defense reduction.",
   "tier_desc_jp": "マハラクンダのスキルカード以外で、唯一マハラクンダを所持しているペルソナ。広域の防御力減少を付与できる。",
+  "tier_desc_cn": "作为除『玛哈拉昆达』技能卡之外唯一持有『玛哈拉昆达』的人格面具，它可以提供群体防御力降低。",
   "comment": "",
   "comment_en": "",
   "comment_jp": "",

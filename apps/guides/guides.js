@@ -67,7 +67,7 @@ const Guides = {
      * Get language from SEO path if present
      */
     getPathLang() {
-        const pathMatch = String(window.location.pathname || '').match(/^\/(kr|en|jp)(\/|$)/i);
+        const pathMatch = String(window.location.pathname || '').match(/^\/(kr|en|jp|cn)(\/|$)/i);
         return pathMatch ? pathMatch[1].toLowerCase() : '';
     },
 
@@ -87,7 +87,7 @@ const Guides = {
 
         const isLegacyView = /^\/article\/view\/?$/.test(lowerPath);
         const legacyDetailMatch = path.match(/^\/article\/([^\/?#]+)\/?$/i);
-        const canonicalDetailMatch = path.match(/^\/(kr|en|jp)\/article\/([^\/?#]+)\/?$/i);
+        const canonicalDetailMatch = path.match(/^\/(kr|en|jp|cn)\/article\/([^\/?#]+)\/?$/i);
 
         if (isLegacyView && effectiveLang) {
             const queryGuideId = sanitizeGuideId(params.get('id'));
@@ -97,7 +97,7 @@ const Guides = {
                 params.delete('lang');
                 params.delete('v');
                 const query = params.toString();
-                history.replaceState(null, '', `/${effectiveLang}/article/${queryGuideId}/${query ? `?${query}` : ''}`);
+                window.location.replace(`/${effectiveLang}/article/${queryGuideId}/${query ? `?${query}` : ''}`);
                 return;
             }
         }
@@ -109,7 +109,7 @@ const Guides = {
                 params.delete('lang');
                 params.delete('v');
                 const query = params.toString();
-                history.replaceState(null, '', `/${effectiveLang}/article/${legacyGuideId}/${query ? `?${query}` : ''}`);
+                window.location.replace(`/${effectiveLang}/article/${legacyGuideId}/${query ? `?${query}` : ''}`);
                 return;
             }
         }
@@ -809,7 +809,7 @@ const Guides = {
     getGuideIdFromUrl() {
         const path = String(window.location.pathname || '');
 
-        const canonicalMatch = path.match(/^\/(?:kr|en|jp)\/article\/([^\/?#]+)\/?$/i);
+        const canonicalMatch = path.match(/^\/(?:kr|en|jp|cn)\/article\/([^\/?#]+)\/?$/i);
         if (canonicalMatch && canonicalMatch[1]) {
             try {
                 return decodeURIComponent(canonicalMatch[1]);

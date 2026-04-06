@@ -1,6 +1,8 @@
 window.WeaponData = window.WeaponData || {};
 window.enCharacterWeaponData = window.enCharacterWeaponData || {};
 window.jpCharacterWeaponData = window.jpCharacterWeaponData || {};
+window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
+
 window.WeaponData["야오링"] = {
   "name": "리 야오링",
   "weapon4-1": {
@@ -20,6 +22,7 @@ window.WeaponData["야오링"] = {
     "description": "속도가 15.0/15.0/20.0/20.0/25.0/25.0/30.0 증가한다. 스킬을 시전해 적 공격 시 스킬의 메인 목표가 『망천수』를 획득한다. 자신의 속도 10포인트마다 목표가 받는 대미지가 1턴 동안 1.2%/1.6%/1.6%/2.0%/2.0%/2.4%/2.4% 증가하며, 2턴 동안 자신의 속도가 15 증가한다. 『맹파탕』 보유 시 스킬을 시전하면 해당 효과가 적 전체에 확산된다."
   }
 };
+
 window.enCharacterWeaponData["야오링"] = {
   "name": "Yaoling Li",
   "weapon4-1": {
@@ -37,6 +40,7 @@ window.enCharacterWeaponData["야오링"] = {
     "description": "Increase Speed by 15.0/15.0/20.0/20.0/25.0/25.0/30.0. After attacking a foe with a skill, inflict Waters of Oblivion on the main target. Waters of Oblivion: Increase foe's damage taken by 1.2%/1.6%/1.6%/2.0%/2.0%/2.4%/2.4% for every 10 of Yaoling's Speed for 1 turn. Increase Yaoling's Speed by 15 for 2 turns. After spending Meng Po Soup to use a skill on a foe, inflict this effect on all foes."
   }
 };
+
 window.jpCharacterWeaponData["야오링"] = {
   "name": "李 瑤鈴",
   "weapon4-1": {
@@ -54,21 +58,24 @@ window.jpCharacterWeaponData["야오링"] = {
     "description": "速さが15.0/15.0/20.0/20.0/25.0/25.0/30.0上昇する。スキルで敵を攻撃した時、選択した対象に『忘川水』を付与する：１ターンの間、自身の速さが１０ごとに敵の被ダメージが1.2%/1.6%/1.6%/2.0%/2.0%/2.4%/2.4%上昇する。また２ターンの間、自身の速さが１５上昇する。『孟婆湯』を消費して敵にスキルを使用した場合、この効果を敵全体に付与する。"
   }
 };
-window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
 
 window.cnCharacterWeaponData["야오링"] = {
-  "weapon5-1": {
-    "name": "八荒一念",
-    "health": 2100.91,
-    "attack": 720.11,
-    "defense": 418.4,
-    "description": "速度提升15.0/15.0/20.0/20.0/25.0/25.0/30.0。释放技能攻击敌人时，使技能主目标获得『忘川水』：自身每有10点速度，则使其受到的伤害提升1.2%/1.6%/1.6%/2.0%/2.0%/2.4%/2.4%，效果持续1回合，并使自身速度提升15，持续2回合。带有『孟婆汤』释放技能时，该效果扩散至全体敌人。"
-  },
+  "name": "李瑶铃",
   "weapon4-1": {
     "name": "四时万物",
     "health": 1680.44,
     "attack": 575.95,
     "defense": 334.73,
+    "skill_name": "",
     "description": "攻击力提升12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%。造成减益效果后，使自身速度提升8/11/11/14/14/17/17点，效果持续2回合，可叠加2层。战斗开始时，直接获得2层。"
+  },
+  "weapon5-1": {
+    "name": "八荒一念",
+    "health": 2100.91,
+    "attack": 720.11,
+    "defense": 418.4,
+    "skill_name": "",
+    "description": "速度提升15.0/15.0/20.0/20.0/25.0/25.0/30.0。释放技能攻击敌人时，使技能主目标获得『忘川水』：自身每有10点速度，则使其受到的伤害提升1.2%/1.6%/1.6%/2.0%/2.0%/2.4%/2.4%，效果持续1回合，并使自身速度提升15，持续2回合。带有『孟婆汤』释放技能时，该效果扩散至全体敌人。"
   }
 };
+

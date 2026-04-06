@@ -17,12 +17,12 @@ sitemap: false
       var requestedLang = params.get("lang");
       params.delete("lang");
       params.delete("name");
-      var languageTargets = {"kr":"/kr/character/mont/","en":"/en/character/mont/","jp":"/jp/character/mont/"};
+      var languageTargets = {"kr":"/kr/character/mont/","en":"/en/character/mont/","jp":"/jp/character/mont/","cn":"/cn/character/mont/"};
       var defaultPath = "/en/character/mont/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

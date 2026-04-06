@@ -15,7 +15,7 @@ sitemap: false
     (function () {
       var params = new URLSearchParams(window.location.search || '');
       var lang = String(params.get('lang') || '').toLowerCase();
-      var target = (lang === 'kr' || lang === 'en' || lang === 'jp')
+      var target = (lang === 'kr' || lang === 'en' || lang === 'jp' || lang === 'cn')
         ? ('/' + lang + '/tactic/library/')
         : '/tactic/library/';
 

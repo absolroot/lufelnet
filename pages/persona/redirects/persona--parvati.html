@@ -18,12 +18,12 @@ sitemap: false
       params.delete("lang");
       params.delete("name");
       params.delete("persona");
-      var languageTargets = {"kr":"/kr/persona/parvati/","en":"/en/persona/parvati/","jp":"/jp/persona/parvati/"};
+      var languageTargets = {"kr":"/kr/persona/parvati/","en":"/en/persona/parvati/","jp":"/jp/persona/parvati/","cn":"/cn/persona/parvati/"};
       var defaultPath = "/en/persona/parvati/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

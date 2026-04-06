@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["쇼키·암야"] = {
   "name": "이케나미 쇼키·암야",
   "r0": "어두운 밤의 별빛",
@@ -18,6 +20,7 @@ window.ritualData["쇼키·암야"] = {
   "r6": "어둠을 밝히는 생명의 의지",
   "r6_detail": "이케나미 쇼키·암야의 생명이 0이 되어도 사망하지 않고 마이너스 값으로 계속 감소한다. 최대 자신의 최대 생명의 100%까지 추가 감소할 수 있다. 생명이 마이너스가 되면 이케나미 쇼키가 『어두운 밤의 군주』 상태에 진입한다. 『어두운 밤의 군주』 상태: 주는 대미지가 30% 증가하고, 크리티컬 효과가 30% 증가한다. 『어두운 밤의 계약』으로 인한 『너에게 새기는 이름』의 스킬 대미지 증가 효과가 기존의 120%로 증가한다.\n『어두운 밤의 계약』 중첩 상한이 추가로 3중첩 증가한다. 전투 시작 시 이케나미 쇼키가 상한을 돌파할 수 있는 영구 『암야의 축복』을 추가로 5중첩 획득한다."
 };
+
 window.enCharacterRitualData["쇼키·암야"] = {
   "name": "Shoki·Notte",
   "r0": "Star in the Night",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["쇼키·암야"] = {
   "r6": "Illuminating Passion for Life",
   "r6_detail": "Shoki will not faint when his HP is below 0 and can decrease it to negative HP (up to 100% max HP); After Shoki's HP is negative, gain [Night's Monarch] state: Increase damage by 30% and critical damage by 30%. Increase [Night's Contract]'s skill damage increase to 120% of the the original effect.\n\t\tIncrease the maximum number of [Night's Contract] stacks by 3. At the start of battle, Shoki gains 5 bonus [NIght's Blessing] stacks above the maximum limit. This effect is permanent."
 };
+
 window.jpCharacterRitualData["쇼키·암야"] = {
   "r0": "黒夜に灯る星芒",
   "r0_detail": "池波ショウキ・アンヤは戦闘中、自身のHPを消費して能動的に『暗夜の契約』を獲得でき、『我が名を汝の身に刻まん』のスキルダメージを強化する。\n池波ショウキ・アンヤが祝福効果を獲得すると、特別な『暗夜の祝福』に変換される。『暗夜の祝福』は祝福効果として扱われ、ターン終了時に自身の最大HP2%分のシールドを獲得する。このシールドは2ターン持続し、『暗夜の祝福』は最大10スタックまで蓄積される。",
@@ -51,7 +55,6 @@ window.jpCharacterRitualData["쇼키·암야"] = {
   "r6": "黒夜を照らす生命の渇望",
   "r6_detail": "池波ショウキ・アンヤのHPが0になっても死亡せず、最大HPの追加100%分までHPがマイナス値に下がることができる。HPがマイナスになると『暗夜君王』状態に入り、与ダメージが30%上昇し、クリティカル効果が30%上昇し、『暗夜の契約』が『我が名を汝の身に刻まん』へ与えるダメージ増加効果が120%に強化される。\nさらに、『暗夜の契約』の上限が追加で3スタック増加する。戦闘開始時、上限突破可能な『暗夜の祝福』を5スタック獲得し、その持続時間は永続となる。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["쇼키·암야"] = {
   "name": "池波星辉·永夜",
@@ -70,3 +73,4 @@ window.cnCharacterRitualData["쇼키·암야"] = {
   "r6": "照亮黑夜的生命欲",
   "r6_detail": "池波星辉·永夜的生命值降低为0时不会死亡，且可以继续降低为负值，最多额外降低自身最大生命值的100%；生命值降低为负值后，池波星辉进入『暗夜君王』状态：造成伤害提升30%，暴击效果提升30%，『暗夜契约』对『以吾之名刻于汝身』的技能伤害提升效果提升至原本的120%。\n『暗夜契约』的可叠加上限额外提升3层。战斗开始时，池波星辉获得5层可突破上限的『暗夜祝福』，持续时间永久。"
 };
+

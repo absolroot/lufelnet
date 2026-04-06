@@ -1,6 +1,8 @@
 window.WeaponData = window.WeaponData || {};
 window.enCharacterWeaponData = window.enCharacterWeaponData || {};
 window.jpCharacterWeaponData = window.jpCharacterWeaponData || {};
+window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
+
 window.WeaponData["세이지"] = {
   "name": "시라토리 세이지",
   "weapon4-1": {
@@ -20,6 +22,7 @@ window.WeaponData["세이지"] = {
     "description": "크리티컬 확률이 18.0%/18.0%/23.5%/23.5%/29.0%/29.0%/34.5% 증가한다. 전투 시작 시 자신이 『격려』 1중첩을 획득하며 크리티컬 효과가 12% 증가한다. 『격려』를 획득할 때마다 주는 대미지가 (현재 『격려』 중첩수*7.5%/9.8%/9.8%/12.1%/12.1%/14.4%/14.4%)만큼 추가로 증가하며 1턴 동안 지속된다."
   }
 };
+
 window.enCharacterWeaponData["세이지"] = {
   "name": "Seiji Shiratori",
   "weapon4-1": {
@@ -37,6 +40,7 @@ window.enCharacterWeaponData["세이지"] = {
     "description": "Increase critical rate by 18.0%/18.0%/23.5%/23.5%/29.0%/29.0%/34.5%. At the start of battle, gain 1 Right to Strike stack, and increase critical damage by 12%. For each stack of Right to Strike, increase damage by (current number of stacks × 7.5%/9.8%/9.8%/12.1%/12.1%/14.4%/14.4%). Lasts for 1 turn."
   }
 };
+
 window.jpCharacterWeaponData["세이지"] = {
   "name": "白鳥 誠司",
   "weapon4-1": {
@@ -54,21 +58,24 @@ window.jpCharacterWeaponData["세이지"] = {
     "description": "クリティカル率が18.0%/18.0%/23.5%/23.5%/29.0%/29.0%/34.5%上昇する。戦闘開始時、『アタック権』を１つ付与し、クリティカルダメージが１２%上昇する。『アタック権』を付与するごとに、１ターンの間、与ダメージが上昇（現在の『アタック権』の数×7.5%/9.8%/9.8%/12.1%/12.1%/14.4%/14.4%）する。"
   }
 };
-window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
 
 window.cnCharacterWeaponData["세이지"] = {
-  "weapon5-1": {
-    "name": "启明之星",
-    "health": 2180.22,
-    "attack": 746.53,
-    "defense": 409.62,
-    "description": "暴击率提升18.0%/18.0%/23.5%/23.5%/29.0%/29.0%/34.5%。战斗开始时，使自身获得1层『激励』，暴击效果提升12%。每次获得『激励』时，造成的伤害额外提升（当前『激励』效果层数*7.5%/9.8%/9.8%/12.1%/12.1%/14.4%/14.4%），效果持续1回合。"
-  },
+  "name": "白鸟诚司",
   "weapon4-1": {
     "name": "授勋之证",
     "health": 1744.19,
     "attack": 596.93,
     "defense": 328.02,
+    "skill_name": "",
     "description": "攻击力提升12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%。对同一敌人连续造成伤害时，每段攻击有30%固定概率使自身对其伤害提升3.8%/4.9%/4.9%/6.0%/6.0%/7.1%/7.1%，最高19.0%/24.5%/24.5%/30.0%/30.0%/35.5%/35.5%。"
+  },
+  "weapon5-1": {
+    "name": "启明之星",
+    "health": 2180.22,
+    "attack": 746.53,
+    "defense": 409.62,
+    "skill_name": "",
+    "description": "暴击率提升18.0%/18.0%/23.5%/23.5%/29.0%/29.0%/34.5%。战斗开始时，使自身获得1层『激励』，暴击效果提升12%。每次获得『激励』时，造成的伤害额外提升（当前『激励』效果层数*7.5%/9.8%/9.8%/12.1%/12.1%/14.4%/14.4%），效果持续1回合。"
   }
 };
+

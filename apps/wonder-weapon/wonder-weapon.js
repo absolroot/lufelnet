@@ -329,10 +329,11 @@
     if (pathname.startsWith('/kr/')) return 'kr';
     if (pathname.startsWith('/en/')) return 'en';
     if (pathname.startsWith('/jp/')) return 'jp';
+    if (pathname.startsWith('/cn/')) return 'cn';
 
     const urlParams = new URLSearchParams(window.location.search);
     const langParam = String(urlParams.get('lang') || '').toLowerCase();
-    if (langParam === 'kr' || langParam === 'en' || langParam === 'jp') {
+    if (langParam === 'kr' || langParam === 'en' || langParam === 'jp' || langParam === 'cn') {
       return langParam;
     }
 
@@ -1519,4 +1520,3 @@
     }
   });
 })();
-

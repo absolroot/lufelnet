@@ -24,12 +24,28 @@
     }
 
     function normalizeLang(rawLang) {
+        try {
+            if (typeof window.normalizeLanguage === 'function') {
+                return window.normalizeLanguage(rawLang);
+            }
+        } catch (_) { }
         var lang = String(rawLang || '').trim().toLowerCase();
         if (!lang) return 'kr';
         if (lang === 'kr' || lang === 'ko') return 'kr';
         if (lang === 'en') return 'en';
         if (lang === 'jp' || lang === 'ja') return 'jp';
+        if (lang === 'cn' || lang === 'zh' || lang === 'zh-cn' || lang === 'zh-hans') return 'cn';
         return lang;
+    }
+
+    function isKrLikeLang(rawLang) {
+        try {
+            if (typeof window.isKrLikeLanguage === 'function') {
+                return !!window.isKrLikeLanguage(rawLang);
+            }
+        } catch (_) { }
+        var normalized = normalizeLang(rawLang);
+        return normalized === 'kr' || normalized === 'cn';
     }
 
     function detectCurrentLang() {
@@ -102,7 +118,7 @@
 
     function shouldShowControl(lang) {
         var resolved = lang ? normalizeLang(lang) : detectCurrentLang();
-        return resolved !== 'kr';
+        return !isKrLikeLang(resolved);
     }
 
     function resolveElement(ref) {

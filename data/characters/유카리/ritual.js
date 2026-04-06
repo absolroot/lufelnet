@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["유카리"] = {
   "name": "타케바 유카리",
   "r0": "마음에 새긴 약속",
@@ -18,6 +20,7 @@ window.ritualData["유카리"] = {
   "r6": "봄날의 만남",
   "r6_detail": "『리바이브 애로』로 회복되는 테우르기아 에너지 수치가 2배로 증가한다.\n*회복되는 테우르기아 에너지가 초과될 시, 초과된 회복량을 잠시 저장하며, 목표가 테우르기아를 시전한 후 반환된다. 목표의 테우르기아 에너지 상한까지 에너지 수치를 저장하며, 초과된 에너지 수치는 최대 2턴까지 저장된다."
 };
+
 window.enCharacterRitualData["유카리"] = {
   "name": "Yukari Takeba",
   "r0": "Etched in Memory",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["유카리"] = {
   "r6": "Spring Encounter",
   "r6_detail": "Double the Theurgy Energy restored by [Arrow of Rejuvenation].\n*When restoring Theurgy Energy, save the overflow Theurgy Energy then return it after the target used Theurgy, up to their Theurgy Energy cap. Lasts for 2 turns."
 };
+
 window.jpCharacterRitualData["유카리"] = {
   "name": "岳羽 ゆかり",
   "r0": "心に刻んだ約束",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["유카리"] = {
   "r6": "春の日の出会い",
   "r6_detail": "『リバイブアロー』で回復するテウルギアエネルギーが2倍になる。\n※回復が上限を超える場合、超過分を一時的に蓄積し、対象がテウルギアを発動した後に返還される。テウルギアエネルギー上限まで蓄積可能で、超過分は最大2ターンまで保持される。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["유카리"] = {
   "name": "岳羽由加莉",
@@ -71,3 +74,4 @@ window.cnCharacterRitualData["유카리"] = {
   "r6": "春日的邂逅",
   "r6_detail": "『复苏之矢』回复的神通法能量值翻倍。\n*回复的神通法能量溢出时会暂时缓存溢出的回复量，在目标释放神通法后返还，最多缓存相当于目标神通法能量上限的能量值，溢出的能量值最多缓存2回合。"
 };
+

@@ -16,6 +16,7 @@ window.personaFiles["도미니온"] = {
   "tier_desc": "1턴 동안 스킬 응집과 본능의 호령 스택을 통한 강력한 추가 버프를 부여할 수 있다. 지속 시간이 짧지만 강력하기 때문에 마지막 딜링 타이밍에 사용하여 대미지를 증가시키는 형태로 활용된다.",
   "tier_desc_en": "For 1 turn, it can provide powerful extra buffs through Cohesion and the talent's Commandment stacks. The duration is short, but the effect is strong enough that it is mainly used on a finishing damage turn.",
   "tier_desc_jp": "1ターンの間、『凝結』と本能の『号令』スタックを通じて強力な追加バフを付与できる。持続時間は短いが効果が非常に強いため、主に決定的な火力ターンで使われる。",
+  "tier_desc_cn": "可在1回合内通过技能『凝聚』和本能的『号令』层数提供强力的额外增益。虽然持续时间短，但爆发很强，通常会在最后的输出时机使用来抬高伤害。",
   "comment": "",
   "comment_en": "",
   "comment_jp": "",

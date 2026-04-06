@@ -4,13 +4,13 @@
     var path = String(window.location.pathname || '/');
     var lowerPath = path.toLowerCase();
 
-    var pathLangMatch = lowerPath.match(/^\/(kr|en|jp)(\/|$)/);
+    var pathLangMatch = lowerPath.match(/^\/(kr|en|jp|cn)(\/|$)/);
     var pathLang = pathLangMatch ? pathLangMatch[1] : '';
     var queryLang = String(params.get('lang') || '').toLowerCase();
-    var effectiveLang = pathLang || (['kr', 'en', 'jp'].indexOf(queryLang) !== -1 ? queryLang : '');
+    var effectiveLang = pathLang || (['kr', 'en', 'jp', 'cn'].indexOf(queryLang) !== -1 ? queryLang : '');
 
     var isLegacyRoot = /^\/pull-calc\/?$/.test(lowerPath);
-    var isCanonicalPath = /^\/(kr|en|jp)\/pull-calc\/?$/.test(lowerPath);
+    var isCanonicalPath = /^\/(kr|en|jp|cn)\/pull-calc\/?$/.test(lowerPath);
 
     if (isLegacyRoot && effectiveLang) {
         window.__SEO_PATH_LANG__ = effectiveLang;
@@ -480,9 +480,6 @@
 
 <!-- Chart.js CDN -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-
-<!-- Navigation -->
-<script src="{{ site.baseurl }}/assets/js/nav.js?v={{ site.time | date: '%s' }}"></script>
 
 <!-- Pull Calc JS -->
 <script type="module" src="{{ site.baseurl }}/i18n/service/i18n-service.js?v={{ site.time | date: '%s' }}"></script>

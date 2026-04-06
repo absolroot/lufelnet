@@ -1,6 +1,6 @@
 window.I18N_PAGE_ASTROLABE_CN = {
-    "title": "天域星盘",
-    "timeRemaining": "剩余时间",
+    "title": "星盘试炼",
+    "timeRemaining": "本期剩余时间",
     "ended": "已结束",
     "enemies": "敌人",
     "affix": "词缀",

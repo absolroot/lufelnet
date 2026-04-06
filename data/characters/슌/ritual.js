@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["슌"] = {
   "name": "카노 슌",
   "r0": "용감한 자의 게임",
@@ -18,6 +20,7 @@ window.ritualData["슌"] = {
   "r6": "승리자의 영광",
   "r6_detail": "카노 슌이 『황야의 구세주』 상태에서 적을 공격할 경우, 카노 슌의 최대 생명 10%에 해당하는 대미지를 추가로 주고 같은 양의 생명을 회복한다."
 };
+
 window.enCharacterRitualData["슌"] = {
   "name": "Shun Kano",
   "r0": "Wild Runner",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["슌"] = {
   "r6": "Robbing and Smuggling",
   "r6_detail": "When attacking a foe while Desperado is active, deal bonus damage equal to 10% of Shun's max HP, and restore HP equal to damage dealt."
 };
+
 window.jpCharacterRitualData["슌"] = {
   "name": "加納 駿",
   "r0": "荒野を駆ける者",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["슌"] = {
   "r6": "略奪と密輸",
   "r6_detail": "『タフガイ』状態で敵を攻撃した時、自身の最大ＨＰ１０%のダメージを追加で与え、そのダメージ分自身のＨＰを回復する。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["슌"] = {
   "name": "加纳骏",
@@ -71,3 +74,4 @@ window.cnCharacterRitualData["슌"] = {
   "r6": "胜利者荣光",
   "r6_detail": "加纳骏处于『荒野救星』状态下攻击敌人时，会额外附带基于加纳骏最大生命值10%的伤害并恢复等量生命值。"
 };
+

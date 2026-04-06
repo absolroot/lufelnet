@@ -34,18 +34,19 @@ window.matchWeapons = {
       {
         "desc": "교환 - 비밀의 장소 {item-huobi-46.png} 500",
         "desc_en": "Exchange - The Velvet Shop {item-huobi-46.png} 500",
-        "dsec_jp": "交換 - {item-huobi-46.png} 500"
+        "dsec_jp": "交換 - {item-huobi-46.png} 500",
+        "desc_cn": "兑换 - 心海秘所 {item-huobi-46.png} 500"
       },
       {
         "desc": "교환 - 낙원 백화 {item-huobi-50.png} 500",
         "desc_en": "Exchange - Companio Shop {item-huobi-50.png} 500",
-        "dsec_jp": "交換 - {item-huobi-50.png} 500"
+        "dsec_jp": "交換 - {item-huobi-50.png} 500",
+        "desc_cn": "兑换 - 乐园百货 {item-huobi-50.png} 500"
       }
     ],
     "name_cn": "混沌海克斯",
     "effect_cn": "攻击力提升28.0%/32.7%/37.3%/42.0%/46.7%/51.3%/56.0%。\nWONDER使用人格面具技能或枪械攻击后，获得持续1回合的『致命本能』。『致命本能』：回合开始时自动填满子弹且枪械攻击及射击属性人格面具技能必定暴击；伤害提升9.5%/11.1%/12.7%/14.2%/15.8%/17.4%/19.0%，枪械攻击造成伤害额外提升9.5%/11.1%/12.7%/14.2%/15.8%/17.4%/19.0%。\nWONDER拥有『致命本能』时，使所有同伴的攻击力提升11.0%/12.8%/14.7%/16.5%/18.3%/20.2%/22.0%、造成射击属性伤害时的暴击效果提升10.0%/11.7%/13.3%/15.0%/16.7%/18.3%/20.0%。"
   },
-
   "엔트로피·제로": {
     "element": "핵열",
     "name_en": "Entropy Zero",
@@ -60,7 +61,8 @@ window.matchWeapons = {
       {
         "desc": "교환 - 운명의 섬 {item-huobi-49.png} 800",
         "desc_en": "Exchange - Land of Fortune {item-huobi-49.png} 800",
-        "dsec_jp": "交換 - {item-huobi-49.png} 800"
+        "dsec_jp": "交換 - {item-huobi-49.png} 800",
+        "desc_cn": "兑换 - 气运驻场 {item-huobi-49.png} 800"
       }
     ],
     "name_cn": "熵灭·零式",
@@ -87,14 +89,17 @@ window.matchWeapons = {
         "effect": "빛의 고리 『성반만상』이 아군 전체의 공격력을 추가로 2.5%/5.0%/7.5%/10.0% 증가시킨다. 적이 대미지를 입을 때마다 원더가 『부연』을 추가로 1중첩 획득하며, 원더의 턴 종료 시 더 이상 『부연』 중첩을 소모하지 않는다.\n임의의 동료가 추가 턴을 획득할 때 해당 동료에게 2턴 동안 지속되는 『사유의 속도』를 부여한다.\n『사유의 속도』: 염동 속성 대미지가 4.0%/8.0%/12.0%/16.0% 증가하고, 염동 속성 대미지를 줄 때 크리티컬 효과가 2.5%/5.0%/7.5%/10.0% 증가한다.",
         "effect_en": "Aura [Universal Astrolabe] additionally increases the Attack of all allies by 2.5%/5.0%/7.5%/10.0%. Each time an enemy takes damage, WONDER gains 1 additional stack of [Guidance], and WONDER no longer consumes [Guidance] stacks at the end of their turn.\nWhen any ally enters an extra turn, grant them [Mind Overclock] for 2 turns.\n[Mind Overclock]: Psychokinesis damage +4.0%/8.0%/12.0%/16.0%. When dealing Psychokinesis damage, Critical Damage +2.5%/5.0%/7.5%/10.0%.",
         "effect_jp": "オーラ『万象の星盤』により、味方全体の攻撃力がさらに2.5%/5.0%/7.5%/10.0%上昇する。敵がダメージを受けるたびに、ワンダーは『導き』をさらに1スタック獲得し、自身のターン終了時に『導き』を消費しなくなる。\n味方が追加ターンを獲得した時、その味方に2ターン持続する『思考オーバークロック』を付与する。\n『思考オーバークロック』：念動属性ダメージが4.0%/8.0%/12.0%/16.0%上昇し、念動属性ダメージを与えた時のクリティカル倍率が2.5%/5.0%/7.5%/10.0%上昇する。",
-        "release": "나루미"
+        "release": "나루미",
+        "name_cn": "荧惑蚀心",
+        "effect_cn": "光环『星盘万象』额外使全体同伴攻击力提升2.5%/5.0%/7.5%/10.0%。每个敌人受到每次伤害，WONDER额外获得1层『推衍』。WONDER回合结束不再消耗『推衍』层数。\n任意同伴进入额外回合时，使该同伴获得持续2回合的『思维超频』。『思维超频』：念动属性伤害提升4.0%/8.0%/12.0%/16.0%；造成念动属性伤害时，暴击效果提升2.5%/5.0%/7.5%/10.0%。"
       }
     ],
     "shard": [
       {
         "desc": "교환 - 운명의 섬 {item-huobi-49.png} 800",
         "desc_en": "Exchange - Land of Fortune {item-huobi-49.png} 800",
-        "dsec_jp": "交換 - {item-huobi-49.png} 800"
+        "dsec_jp": "交換 - {item-huobi-49.png} 800",
+        "desc_cn": "兑换 - 气运驻场 {item-huobi-49.png} 800"
       }
     ],
     "name_cn": "天象星仪",
@@ -114,7 +119,8 @@ window.matchWeapons = {
       {
         "desc": "교환 - 운명의 섬 {item-huobi-49.png} 800",
         "desc_en": "Exchange - Land of Fortune {item-huobi-49.png} 800",
-        "dsec_jp": "交換 - {item-huobi-49.png} 800"
+        "dsec_jp": "交換 - {item-huobi-49.png} 800",
+        "desc_cn": "兑换 - 气运驻场 {item-huobi-49.png} 800"
       }
     ],
     "name_cn": "远古力场",
@@ -134,32 +140,38 @@ window.matchWeapons = {
       {
         "desc": "팰리스3 수처리장 탐색도 100%",
         "desc_en": "Palace 3-1 Progress 100%",
-        "desc_jp": "パレス 3-1 踏破率 100%"
+        "desc_jp": "パレス 3-1 踏破率 100%",
+        "desc_cn": "宫殿3 水处理厂探索度100%"
       },
       {
         "desc": "팰리스3 발전소 탐색도 50%",
         "desc_en": "Palace 3-2 Progress 50%",
-        "desc_jp": "パレス 3-2 踏破率 50%"
+        "desc_jp": "パレス 3-2 踏破率 50%",
+        "desc_cn": "宫殿3 发电厂探索度50%"
       },
       {
         "desc": "팰리스3 발전소 탐색도 100%",
         "desc_en": "Palace 3-2 Progress 100%",
-        "desc_jp": "パレス 3-2 踏破率 100%"
+        "desc_jp": "パレス 3-2 踏破率 100%",
+        "desc_cn": "宫殿3 发电厂探索度100%"
       },
       {
         "desc": "메멘토스3 - 절제를 잃은 길 탐색도 레벨 10",
         "desc_en": "Mementos 3 - Explorer LV 10",
-        "desc_jp": "メメントス 3 - Explorer LV 10"
+        "desc_jp": "メメントス 3 - Explorer LV 10",
+        "desc_cn": "印象空间3 - 节制剥夺之路探索度等级10"
       },
       {
         "desc": "교환 - 비밀의 장소 {item-huobi-46.png} 500",
         "desc_en": "Exchange - The Velvet Shop {item-huobi-46.png} 500",
-        "dsec_jp": "交換 - {item-huobi-46.png} 500"
+        "dsec_jp": "交換 - {item-huobi-46.png} 500",
+        "desc_cn": "兑换 - 心海秘所 {item-huobi-46.png} 500"
       },
       {
         "desc": "교환 - 낙원 백화 {item-huobi-50.png} 500",
         "desc_en": "Exchange - Companio Shop {item-huobi-50.png} 500",
-        "dsec_jp": "交換 - {item-huobi-50.png} 500"
+        "dsec_jp": "交換 - {item-huobi-50.png} 500",
+        "desc_cn": "兑换 - 乐园百货 {item-huobi-50.png} 500"
       }
     ],
     "name_cn": "机械处刑者",
@@ -179,7 +191,8 @@ window.matchWeapons = {
       {
         "desc": "교환 - 운명의 섬 {item-huobi-49.png} 800",
         "desc_en": "Exchange - Land of Fortune {item-huobi-49.png} 800",
-        "dsec_jp": "交換 - {item-huobi-49.png} 800"
+        "dsec_jp": "交換 - {item-huobi-49.png} 800",
+        "desc_cn": "兑换 - 气运驻场 {item-huobi-49.png} 800"
       }
     ],
     "name_cn": "灼热炼狱",
@@ -199,7 +212,8 @@ window.matchWeapons = {
       {
         "desc": "교환 - 운명의 섬 {item-huobi-49.png} 800",
         "desc_en": "Exchange - Land of Fortune {item-huobi-49.png} 800",
-        "dsec_jp": "交換 - {item-huobi-49.png} 800"
+        "dsec_jp": "交換 - {item-huobi-49.png} 800",
+        "desc_cn": "兑换 - 气运驻场 {item-huobi-49.png} 800"
       }
     ],
     "name_cn": "冰河永寂",
@@ -219,7 +233,8 @@ window.matchWeapons = {
       {
         "desc": "교환 - 운명의 섬 {item-huobi-49.png} 800",
         "desc_en": "Exchange - Land of Fortune {item-huobi-49.png} 800",
-        "dsec_jp": "交換 - {item-huobi-49.png} 800"
+        "dsec_jp": "交換 - {item-huobi-49.png} 800",
+        "desc_cn": "兑换 - 气运驻场 {item-huobi-49.png} 800"
       }
     ],
     "name_cn": "等离子歼星",
@@ -239,32 +254,38 @@ window.matchWeapons = {
       {
         "desc": "팰리스5 개미굴 탐색도 100%",
         "desc_en": "Palace 5-1 Progress 100%",
-        "desc_jp": "パレス 5-1 踏破率 100%"
+        "desc_jp": "パレス 5-1 踏破率 100%",
+        "desc_cn": "宫殿5 蚁穴探索度100%"
       },
       {
         "desc": "팰리스5 잡지사 탐색도 50%",
         "desc_en": "Palace 5-2 Progress 50%",
-        "desc_jp": "パレス 5-2 踏破率 50%"
+        "desc_jp": "パレス 5-2 踏破率 50%",
+        "desc_cn": "宫殿5 杂志社探索度50%"
       },
       {
         "desc": "팰리스5 잡지사 탐색도 100%",
         "desc_en": "Palace 5-2 Progress 100%",
-        "desc_jp": "パレス 5-2 踏破率 100%"
+        "desc_jp": "パレス 5-2 踏破率 100%",
+        "desc_cn": "宫殿5 杂志社探索度100%"
       },
       {
         "desc": "메멘토스4 - 미덕을 잃은 길 탐색도 레벨 10",
         "desc_en": "Mementos 4 - Explorer LV 10",
-        "desc_jp": "メメントス 4 - Explorer LV 10"
+        "desc_jp": "メメントス 4 - Explorer LV 10",
+        "desc_cn": "印象空间4 - 美德剥夺之路探索度等级10"
       },
       {
         "desc": "교환 - 비밀의 장소 {item-huobi-46.png} 500",
         "desc_en": "Exchange - The Velvet Shop {item-huobi-46.png} 500",
-        "dsec_jp": "交換 - {item-huobi-46.png} 500"
+        "dsec_jp": "交換 - {item-huobi-46.png} 500",
+        "desc_cn": "兑换 - 心海秘所 {item-huobi-46.png} 500"
       },
       {
         "desc": "교환 - 낙원 백화 {item-huobi-50.png} 500",
         "desc_en": "Exchange - Companio Shop {item-huobi-50.png} 500",
-        "dsec_jp": "交換 - {item-huobi-50.png} 500"
+        "dsec_jp": "交換 - {item-huobi-50.png} 500",
+        "desc_cn": "兑换 - 乐园百货 {item-huobi-50.png} 500"
       }
     ],
     "name_cn": "虫巢卫士",
@@ -284,32 +305,38 @@ window.matchWeapons = {
       {
         "desc": "팰리스4 컨트롤 센터 탐색도 100%",
         "desc_en": "Palace 4-1 Progress 100%",
-        "desc_jp": "パレス 4-1 踏破率 100%"
+        "desc_jp": "パレス 4-1 踏破率 100%",
+        "desc_cn": "宫殿4 控制中心探索度100%"
       },
       {
         "desc": "팰리스4 급수탑 탐색도 50%",
         "desc_en": "Palace 4-2 Progress 50%",
-        "desc_jp": "パレス 4-2 踏破率 50%"
+        "desc_jp": "パレス 4-2 踏破率 50%",
+        "desc_cn": "宫殿4 取水塔探索度50%"
       },
       {
         "desc": "팰리스4 급수탑 탐색도 100%",
         "desc_en": "Palace 4-2 Progress 100%",
-        "desc_jp": "パレス 4-2 踏破率 100%"
+        "desc_jp": "パレス 4-2 踏破率 100%",
+        "desc_cn": "宫殿4 取水塔探索度100%"
       },
       {
         "desc": "메멘토스3 - 절제를 잃은 길 탐색도 레벨 30",
         "desc_en": "Mementos 3 - Explorer LV 30",
-        "desc_jp": "メメントス 3 - Explorer LV 30"
+        "desc_jp": "メメントス 3 - Explorer LV 30",
+        "desc_cn": "印象空间3 - 节制剥夺之路探索度等级30"
       },
       {
         "desc": "교환 - 비밀의 장소 {item-huobi-46.png} 500 ",
         "desc_en": "Exchange - The Velvet Shop {item-huobi-46.png} 500",
-        "dsec_jp": "交換 - {item-huobi-46.png} 500"
+        "dsec_jp": "交換 - {item-huobi-46.png} 500",
+        "desc_cn": "兑换 - 心海秘所 {item-huobi-46.png} 500"
       },
       {
         "desc": "교환 - 낙원 백화 {item-huobi-50.png} 500",
         "desc_en": "Exchange - Companio Shop {item-huobi-50.png} 500",
-        "dsec_jp": "交換 - {item-huobi-50.png} 500"
+        "dsec_jp": "交換 - {item-huobi-50.png} 500",
+        "desc_cn": "兑换 - 乐园百货 {item-huobi-50.png} 500"
       }
     ],
     "name_cn": "凶兽之牙",
@@ -336,14 +363,17 @@ window.matchWeapons = {
         "effect": "임의 동료가 HP를 소모하여 스킬을 발동할 때, 해당 동료가 2턴 동안 지속되는 『오라클의 가호』를 획득한다. 『오라클의 가호』: 축복 속성 대미지가 4.0%/8.0%/12.0%/16.0% 증가한다. 축복 속성 대미지를 줄 때 크리티컬 효과가 2.5%/5.0%/7.5%/10.0% 증가한다.",
         "effect_en": "When an ally consumes HP to activate a skill, that ally gains Oracle’s Blessing for 2 turns.  Oracle’s Blessing: Bless damage is increased by 4.0% / 8.0% / 12.0% / 16.0%.  Critical Damage dealt with Bless attacks is increased by 2.5% / 5.0% / 7.5% / 10.0%.",
         "effect_jp": "味方がHPを消費してスキルを発動した時、その味方に2ターン持続する『オラクルの加護』を付与する。『オラクルの加護』：祝福属性ダメージが4.0% / 8.0% / 12.0% / 16.0%上昰。祝福属性ダメージのCRT倍率が2.5% / 5.0% / 7.5% / 10.0%上昰。",
-        "release": "쇼키·암야"
+        "release": "쇼키·암야",
+        "name_cn": "天命神威",
+        "effect_cn": "任意同伴消耗生命值释放技能时，使该同伴获得持续2回合的『神谕加护』。『神谕加护』：祝福属性伤害提升4.0%/8.0%/12.0%/16.0%；造成祝福属性伤害时，暴击效果提升2.5%/5.0%/7.5%/10.0%。"
       }
     ],
     "shard": [
       {
         "desc": "교환 - 운명의 섬 {item-huobi-49.png} 800",
         "desc_en": "Exchange - Land of Fortune {item-huobi-49.png} 800",
-        "dsec_jp": "交換 - {item-huobi-49.png} 800"
+        "dsec_jp": "交換 - {item-huobi-49.png} 800",
+        "desc_cn": "兑换 - 气运驻场 {item-huobi-49.png} 800"
       }
     ],
     "name_cn": "结晶遗藏",
@@ -359,7 +389,7 @@ window.matchWeapons = {
     "effect": "공격력이 28.0%/32.7%/37.3%/42.0%/46.7%/51.3%/56.0% 증가한다.\n전투 진입 시 자신의 크리티컬 확률이 9.5%/11.1%/12.7%/14.2%/15.8%/17.4%/19.0% 증가한다.\n전투 중 임의의 캐릭터가 페르소나 스킬을 사용해 전격 속성 대미지를 준 후, 모든 캐릭터에 2턴 동안 지속되는 『자력 플라즈마』 를 추가한다. 『자력 플라즈마』: 주는 대미지가 9.0%/10.5%/12.0%/13.5%/15.0%/16.5%/18.0% 증가하고, 전격 속성 대미지를 줄 때 크리티컬 효과가 9.0%/10.5%/12.0%/13.5%/15.0%/16.5%/18.0% 증가한다.",
     "effect_en": "Increase Attack by 28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/56.0%.\nAt battle start, increase user's Critical Rate by 9.5%/11.1%/12.7%/14.2%/15.8%/17.4%/19.0%.\nAfter any ally deals Electric damage with a Persona skill, grant all allies Magnetic Plasma for 2 turns: Damage dealt +9.0%/10.5%/12.0%/13.5%/15.0%/16.5%/18.0% and Electric Critical Damage +9.0%/10.5%/12.0%/13.5%/15.0%/16.5%/18.0%.",
     "effect_jp": "攻撃力が28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/56.0%上昇する。\n戦闘開始時、クリティカル率が9.5%/11.1%/12.7%/14.2%/15.8%/17.4%/19.0%上昇。\n戦闘中、誰かがペルソナスキルで電撃ダメージを与えると、全員に『磁力プラズマ』2ターン：与ダメ+9.0%/10.5%/12.0%/13.5%/15.0%/16.5%/18.0%、電撃CRT倍率+9.0%/10.5%/12.0%/13.5%/15.0%/16.5%/18.0%。",
-        "lightning_stamp": [
+    "lightning_stamp": [
       {
         "order": 3,
         "name": "펄스 전격",
@@ -367,19 +397,20 @@ window.matchWeapons = {
         "name_jp": "パルス電撃",
         "stamp_img": "item-datu-302936.png",
         "stamp_icon": "weaponEngraving-icon-4.png",
-          "effect": "임의의 동료가 스킬을 사용해 전격 속성 대미지를 줄 때, 해당 동료가 2턴 동안 『뇌문 격동』을 획득한다.\n『뇌문 격동』: HIGHLIGHT/테우르기아가 주는 대미지가 4.0%/8.0%/12.0%/16.0% 증가한다. HIGHLIGHT/테우르기아의 크리티컬 효과가 2.5%/5.0%/7.5%/10.0% 증가한다.",
-          "effect_en": "When any ally deals Electric damage with a skill, that ally gains [Thundercrest Surge] for 2 turns.\n[Thundercrest Surge]: Damage dealt by HIGHLIGHT/Theurgy is increased by 4.0%/8.0%/12.0%/16.0%. Critical Damage of HIGHLIGHT/Theurgy is increased by 2.5%/5.0%/7.5%/10.0%.",
-          "effect_jp": "味方の誰かがスキルで電撃属性ダメージを与えた時、その味方は2ターンの間『雷紋激蕩』を獲得する。\n『雷紋激蕩』：HIGHLIGHT/テウルギアによる与ダメージが4.0%/8.0%/12.0%/16.0%上昇する。HIGHLIGHT/テウルギアのクリティカル効果が2.5%/5.0%/7.5%/10.0%上昇する。",
-          "name_cn": "脉冲电击",
-          "desc_cn": "任意同伴使用技能造成电击属性伤害时，使该同伴获得持续2回合的『雷纹激荡』。『雷纹激荡』：HIGHLIGHT、神通法造成的伤害提升4.0%/8.0%/12.0%/16.0%；HIGHLIGHT、神通法的暴击效果提升2.5%/5.0%/7.5%/10.0%。",
-          "release": "모토하·청광"
-        }
+        "effect": "임의의 동료가 스킬을 사용해 전격 속성 대미지를 줄 때, 해당 동료가 2턴 동안 『뇌문 격동』을 획득한다.\n『뇌문 격동』: HIGHLIGHT/테우르기아가 주는 대미지가 4.0%/8.0%/12.0%/16.0% 증가한다. HIGHLIGHT/테우르기아의 크리티컬 효과가 2.5%/5.0%/7.5%/10.0% 증가한다.",
+        "effect_en": "When any ally deals Electric damage with a skill, that ally gains [Thundercrest Surge] for 2 turns.\n[Thundercrest Surge]: Damage dealt by HIGHLIGHT/Theurgy is increased by 4.0%/8.0%/12.0%/16.0%. Critical Damage of HIGHLIGHT/Theurgy is increased by 2.5%/5.0%/7.5%/10.0%.",
+        "effect_jp": "味方の誰かがスキルで電撃属性ダメージを与えた時、その味方は2ターンの間『雷紋激蕩』を獲得する。\n『雷紋激蕩』：HIGHLIGHT/テウルギアによる与ダメージが4.0%/8.0%/12.0%/16.0%上昇する。HIGHLIGHT/テウルギアのクリティカル効果が2.5%/5.0%/7.5%/10.0%上昇する。",
+        "name_cn": "脉冲电击",
+        "release": "모토하·청광",
+        "effect_cn": "任意同伴使用技能造成电击属性伤害时，使该同伴获得持续2回合的『雷纹激荡』。『雷纹激荡』：HIGHLIGHT、神通法造成的伤害提升4.0%/8.0%/12.0%/16.0%；HIGHLIGHT、神通法的暴击效果提升2.5%/5.0%/7.5%/10.0%。"
+      }
     ],
     "shard": [
       {
         "desc": "교환 - 운명의 섬 {item-huobi-49.png} 800",
         "desc_en": "Exchange - Land of Fortune {item-huobi-49.png} 800",
-        "dsec_jp": "交換 - {item-huobi-49.png} 800"
+        "dsec_jp": "交換 - {item-huobi-49.png} 800",
+        "desc_cn": "兑换 - 气运驻场 {item-huobi-49.png} 800"
       }
     ],
     "name_cn": "磁暴干扰者",
@@ -399,7 +430,8 @@ window.matchWeapons = {
       {
         "desc": "교환 - 운명의 섬 {item-huobi-49.png} 800",
         "desc_en": "Exchange - Land of Fortune {item-huobi-49.png} 800",
-        "dsec_jp": "交換 - {item-huobi-49.png} 800"
+        "dsec_jp": "交換 - {item-huobi-49.png} 800",
+        "desc_cn": "兑换 - 气运驻场 {item-huobi-49.png} 800"
       }
     ],
     "name_cn": "葬送之眼",
@@ -419,7 +451,8 @@ window.matchWeapons = {
       {
         "desc": "교환 - 운명의 섬 {item-huobi-49.png} 800",
         "desc_en": "Exchange - Land of Fortune {item-huobi-49.png} 800",
-        "dsec_jp": "交換 - {item-huobi-49.png} 800"
+        "dsec_jp": "交換 - {item-huobi-49.png} 800",
+        "desc_cn": "兑换 - 气运驻场 {item-huobi-49.png} 800"
       }
     ],
     "name_cn": "恶灵咒刃",
@@ -439,32 +472,38 @@ window.matchWeapons = {
       {
         "desc": "벨벳의 시련 - 장인의 작품 누적 별 획득 개수 35",
         "desc_en": "Velvet Trial - Technician: Total ★ Obtained 35",
-        "dsec_jp": "ベルベットの試練 - 技術者の試練 累計星獲得数 35"
+        "dsec_jp": "ベルベットの試練 - 技術者の試練 累計星獲得数 35",
+        "desc_cn": "天鹅绒试炼 - 巧匠之作累计星级35"
       },
       {
         "desc": "벨벳의 시련 - 장인의 작품 누적 별 획득 개수 50",
         "desc_en": "Velvet Trial - Technician: Total ★ Obtained 50",
-        "dsec_jp": "ベルベットの試練 - 技術者の試練 累計星獲得数 50"
+        "dsec_jp": "ベルベットの試練 - 技術者の試練 累計星獲得数 50",
+        "desc_cn": "天鹅绒试炼 - 巧匠之作累计星级50"
       },
       {
         "desc": "팰리스2 탐색도 100%",
         "desc_en": "Palace 2 Progress 100%",
-        "desc_jp": "パレス 2 踏破率 100%"
+        "desc_jp": "パレス 2 踏破率 100%",
+        "desc_cn": "宫殿2 探索度100%"
       },
       {
         "desc": "메멘토스2 - 조화를 잃은 길 탐색도 레벨 18",
         "desc_en": "Mementos 2 - Path of Aiyatsbus Explorer LV 18",
-        "desc_jp": "メメントス 2 - Explorer LV 18"
+        "desc_jp": "メメントス 2 - Explorer LV 18",
+        "desc_cn": "印象空间2 - 和谐剥夺之路探索度等级18"
       },
       {
         "desc": "교환 - 비밀의 장소 {item-huobi-46.png} 200",
         "desc_en": "Exchange - The Velvet Shop {item-huobi-46.png} 200",
-        "dsec_jp": "交換 - {item-huobi-46.png} 200"
+        "dsec_jp": "交換 - {item-huobi-46.png} 200",
+        "desc_cn": "兑换 - 心海秘所 {item-huobi-46.png} 200"
       },
       {
         "desc": "교환 - 낙원 백화 {item-huobi-50.png} 200",
         "desc_en": "Exchange - Companio Shop {item-huobi-50.png} 200",
-        "dsec_jp": "交換 - {item-huobi-50.png} 200"
+        "dsec_jp": "交換 - {item-huobi-50.png} 200",
+        "desc_cn": "兑换 - 乐园百货 {item-huobi-50.png} 200"
       }
     ],
     "name_cn": "涌动回响",
@@ -484,32 +523,38 @@ window.matchWeapons = {
       {
         "desc": "벨벳의 시련 - 장인의 작품 누적 별 획득 개수 30",
         "desc_en": "Velvet Trial - Technician: Total ★ Obtained 30",
-        "dsec_jp": "ベルベットの試練 - 技術者の試練 累計星獲得数 30"
+        "dsec_jp": "ベルベットの試練 - 技術者の試練 累計星獲得数 30",
+        "desc_cn": "天鹅绒试炼 - 巧匠之作累计星级30"
       },
       {
         "desc": "벨벳의 시련 - 장인의 작품 누적 별 획득 개수 45",
         "desc_en": "Velvet Trial - Technician: Total ★ Obtained 45",
-        "dsec_jp": "ベルベットの試練 - 技術者の試練 累計星獲得数 45"
+        "dsec_jp": "ベルベットの試練 - 技術者の試練 累計星獲得数 45",
+        "desc_cn": "天鹅绒试炼 - 巧匠之作累计星级45"
       },
       {
         "desc": "팰리스1 탐색도 100%",
         "desc_en": "Palace 1 Progress 100%",
-        "desc_jp": "パレス 1 踏破率 100%"
+        "desc_jp": "パレス 1 踏破率 100%",
+        "desc_cn": "宫殿1 探索度100%"
       },
       {
         "desc": "메멘토스1 - 사상을 잃은 길 탐색도 레벨 18",
         "desc_en": "Mementos 1 - Path of Qimranut Explorer LV 18",
-        "desc_jp": "メメントス 1 - Explorer LV 18"
+        "desc_jp": "メメントス 1 - Explorer LV 18",
+        "desc_cn": "印象空间1 - 思想剥夺之路探索度等级18"
       },
       {
         "desc": "교환 - 비밀의 장소 {item-huobi-46.png} 200",
         "desc_en": "Exchange - The Velvet Shop {item-huobi-46.png} 200",
-        "dsec_jp": "交換 - {item-huobi-46.png} 200"
+        "dsec_jp": "交換 - {item-huobi-46.png} 200",
+        "desc_cn": "兑换 - 心海秘所 {item-huobi-46.png} 200"
       },
       {
         "desc": "교환 - 낙원 백화 {item-huobi-50.png} 200",
         "desc_en": "Exchange - Companio Shop {item-huobi-50.png} 200",
-        "dsec_jp": "交換 - {item-huobi-50.png} 200"
+        "dsec_jp": "交換 - {item-huobi-50.png} 200",
+        "desc_cn": "兑换 - 乐园百货 {item-huobi-50.png} 200"
       }
     ],
     "name_cn": "七日之焰",

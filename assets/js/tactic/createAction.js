@@ -3,11 +3,11 @@
       function getCurrentLanguage() {
         const urlParams = new URLSearchParams(window.location.search);
         const urlLang = urlParams.get('lang');
-        if (urlLang && ['kr', 'en', 'jp'].includes(urlLang)) {
+        if (urlLang && ['kr', 'en', 'jp', 'cn'].includes(urlLang)) {
           return urlLang;
         }
         const savedLang = localStorage.getItem('preferredLanguage');
-        if (savedLang && ['kr', 'en', 'jp'].includes(savedLang)) {
+        if (savedLang && ['kr', 'en', 'jp', 'cn'].includes(savedLang)) {
           return savedLang;
         }
         return 'kr';
@@ -16,7 +16,7 @@
       // 캐릭터 이름 번역 함수 (동기 버전 - 즉시 반환)
       function getCharacterDisplayNameSync(charName) {
         const currentLang = getCurrentLanguage();
-        if (currentLang === 'kr' || !charName) {
+        if (((window.isKrLikeLanguage && window.isKrLikeLanguage(currentLang)) || currentLang === 'kr') || !charName) {
           return charName;
         }
         
@@ -70,7 +70,7 @@
       // 캐릭터 이름 번역 함수 (비동기 버전 - 데이터 준비 대기)
       async function getCharacterDisplayNameAsync(charName) {
         const currentLang = getCurrentLanguage();
-        if (currentLang === 'kr' || !charName) {
+        if (((window.isKrLikeLanguage && window.isKrLikeLanguage(currentLang)) || currentLang === 'kr') || !charName) {
           return charName;
         }
         
@@ -110,7 +110,7 @@
       function getPersonaDisplayName(personaName) {
         const currentLang = getCurrentLanguage();
         const store = getPersonaStore() || {};
-        if (currentLang === 'kr' || !store[personaName]) {
+        if (((window.isKrLikeLanguage && window.isKrLikeLanguage(currentLang)) || currentLang === 'kr') || !store[personaName]) {
           return personaName;
         }
         
@@ -126,7 +126,7 @@
       // 스킬 이름 번역 함수
       function getSkillDisplayName(skillName) {
         const currentLang = getCurrentLanguage();
-        if (currentLang === 'kr') {
+        if (((window.isKrLikeLanguage && window.isKrLikeLanguage(currentLang)) || currentLang === 'kr')) {
           return skillName;
         }
         
@@ -146,7 +146,7 @@
       // 액션(행동) 이름 번역 함수 (skillList 기반)
       function getActionDisplayName(actionName) {
         const currentLang = getCurrentLanguage();
-        if (currentLang === 'kr') {
+        if (((window.isKrLikeLanguage && window.isKrLikeLanguage(currentLang)) || currentLang === 'kr')) {
           return actionName;
         }
         
@@ -170,7 +170,7 @@
       function getUniqueSkillDisplayName(personaName, skillName) {
         const currentLang = getCurrentLanguage();
         const store = getPersonaStore() || {};
-        if (currentLang === 'kr' || !store[personaName]) {
+        if (((window.isKrLikeLanguage && window.isKrLikeLanguage(currentLang)) || currentLang === 'kr') || !store[personaName]) {
           return skillName;
         }
         

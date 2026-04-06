@@ -35,6 +35,15 @@ function getI18nText(key, fallback = '') {
 
 function getLang() {
   try {
+    const pathMatch = window.location.pathname.match(/^\/(kr|en|jp|cn)(\/|$)/i);
+    if (pathMatch) {
+      return String(pathMatch[1] || '').toLowerCase();
+    }
+    const params = new URLSearchParams(window.location.search);
+    const queryLang = String(params.get('lang') || '').toLowerCase();
+    if (['kr', 'en', 'jp', 'cn'].includes(queryLang)) {
+      return queryLang;
+    }
     if (typeof LanguageRouter !== 'undefined' && LanguageRouter.getCurrentLanguage) {
       return LanguageRouter.getCurrentLanguage();
     }
@@ -48,18 +57,54 @@ function getButtonLabelHTML(lang) {
   return `<img src="https://www.google.com/favicon.ico" alt="Google" width="20"> ${label}`;
 }
 
+function syncLoginSeoMeta(lang) {
+  const effectiveLang = String(lang || 'kr').toLowerCase();
+  const seoTitle = getI18nText('seoTitle', '로그인 - 페르소나5 더 팬텀 X 루페르넷');
+  const seoDescription = getI18nText('seoDescription', '루페르넷 계정 로그인 페이지입니다.');
+  const currentUrl = window.location.href;
+  const locale = effectiveLang === 'jp' ? 'ja_JP' : effectiveLang === 'en' ? 'en_US' : effectiveLang === 'cn' ? 'zh_CN' : 'ko_KR';
+  const htmlLang = effectiveLang === 'jp' ? 'ja' : effectiveLang === 'en' ? 'en' : effectiveLang === 'cn' ? 'zh' : 'ko';
+
+  document.title = seoTitle;
+  document.documentElement.setAttribute('lang', htmlLang);
+
+  const descriptionMeta = document.querySelector('meta[name="description"]');
+  if (descriptionMeta) descriptionMeta.setAttribute('content', seoDescription);
+
+  const canonical = document.querySelector('link[rel="canonical"]');
+  if (canonical) canonical.setAttribute('href', currentUrl);
+
+  const ogTitle = document.querySelector('meta[property="og:title"]');
+  if (ogTitle) ogTitle.setAttribute('content', seoTitle);
+
+  const ogDescription = document.querySelector('meta[property="og:description"]');
+  if (ogDescription) ogDescription.setAttribute('content', seoDescription);
+
+  const ogUrl = document.querySelector('meta[property="og:url"]');
+  if (ogUrl) ogUrl.setAttribute('content', currentUrl);
+
+  const ogLocale = document.querySelector('meta[property="og:locale"]');
+  if (ogLocale) ogLocale.setAttribute('content', locale);
+}
+
 function applyLoginTexts(lang) {
   const titleText = getI18nText('title', '로그인');
   const titleEl = document.querySelector('.auth-box h2');
   if (titleEl) titleEl.textContent = titleText;
+  syncLoginSeoMeta(lang);
 
   if (window.SeoEngine && typeof window.SeoEngine.setContextHint === 'function') {
-    window.SeoEngine.setContextHint({
+    Promise.resolve(window.SeoEngine.setContextHint({
       domain: 'login',
-      mode: 'list'
-    }, { rerun: true });
+      mode: 'list',
+      lang: lang
+    }, { rerun: true }))
+      .catch(() => {})
+      .finally(() => syncLoginSeoMeta(lang));
   } else if (window.SeoEngine && typeof window.SeoEngine.run === 'function') {
-    window.SeoEngine.run();
+    Promise.resolve(window.SeoEngine.run())
+      .catch(() => {})
+      .finally(() => syncLoginSeoMeta(lang));
   }
 
   const btn = document.getElementById('googleLogin');

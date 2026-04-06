@@ -1,6 +1,8 @@
 window.WeaponData = window.WeaponData || {};
 window.enCharacterWeaponData = window.enCharacterWeaponData || {};
 window.jpCharacterWeaponData = window.jpCharacterWeaponData || {};
+window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
+
 window.WeaponData["몽타뉴·백조"] = {
   "name": "코토네 몽타뉴·백조",
   "weapon4-1": {
@@ -21,6 +23,7 @@ window.WeaponData["몽타뉴·백조"] = {
     "description": "공격력이 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0% 증가한다. 『아침 이슬 결정』 또는 『겨울 서리 결정』을 획득할 때마다, 크리티컬 확률이 5.4%/7.0%/7.0%/8.6%/8.6%/10.2%/10.2% 증가하며 2턴 동안 지속된다(3회 중첩 가능). 『봄의 결계』/『겨울밤의 결계』를 펼칠 때마다, 2턴 동안 질풍 대미지/빙결 대미지가 27.0%/35.0%/35.0%/43.0%/43.0%/51.0%/51.0% 증가한다."
   }
 };
+
 window.enCharacterWeaponData["몽타뉴·백조"] = {
   "weapon5-1": {
     "name": "Lame de l'Amour",
@@ -39,6 +42,7 @@ window.enCharacterWeaponData["몽타뉴·백조"] = {
     "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. Each time Frostgale Kotone gains a Spring's Vestige or Winter's Vestige stack, permanently increase Attack by 1.8%/2.3%/2.3%/2.8%/2.8%/3.3%/3.3%. This effect can stack up to 10 times."
   }
 };
+
 window.jpCharacterWeaponData["몽타뉴·백조"] = {
   "weapon5-1": {
     "name": "ラムドゥラムール",
@@ -57,21 +61,25 @@ window.jpCharacterWeaponData["몽타뉴·백조"] = {
     "description": "攻撃力が12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%上昇する。『旋風の刻線』か『銀盤の刻線』を獲得するごとに、永続的に攻撃力が1.8%/2.3%/2.3%/2.8%/2.8%/3.3%/3.3%上昇する。この効果は最大１０個まで累積できる。"
   }
 };
-window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
 
 window.cnCharacterWeaponData["몽타뉴·백조"] = {
-  "weapon5-1": {
-    "name": "天鹅梦乡",
-    "health": 2299.15,
-    "attack": 759.73,
-    "defense": 374.35,
-    "description": "攻击力提升30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%。每次获得『朝露结晶』或『寒霜结晶』时，暴击率提升5.4%/7.0%/7.0%/8.6%/8.6%/10.2%/10.2%，持续2回合，最多可叠加3层。每次展开『仲春结界』/『冬夜结界』时，疾风伤害/冰冻伤害提升27.0%/35.0%/35.0%/43.0%/43.0%/51.0%/51.0%，持续2回合。"
-  },
+  "name": "琴音·蒙塔涅",
   "weapon4-1": {
     "name": "北风之女",
     "health": 1838.99,
     "attack": 607.79,
     "defense": 299.47,
+    "skill_name": "",
     "description": "攻击力提升12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%。每次获得『朝露结晶』或『寒霜结晶』时，攻击力提升1.8%/2.3%/2.3%/2.8%/2.8%/3.3%/3.3%，可叠加10层，本场战斗永久生效。"
+  },
+  "weapon5-1": {
+    "name": "天鹅梦乡",
+    "health": 2299.15,
+    "attack": 759.73,
+    "defense": 374.35,
+    "highlight": true,
+    "skill_name": "",
+    "description": "攻击力提升30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%。每次获得『朝露结晶』或『寒霜结晶』时，暴击率提升5.4%/7.0%/7.0%/8.6%/8.6%/10.2%/10.2%，持续2回合，最多可叠加3层。每次展开『仲春结界』/『冬夜结界』时，疾风伤害/冰冻伤害提升27.0%/35.0%/35.0%/43.0%/43.0%/51.0%/51.0%，持续2回合。"
   }
 };
+

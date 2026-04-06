@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["미유·여름"] = {
   "name": "사하라 미유·여름",
   "r0": "파도의 부름",
@@ -18,6 +20,7 @@ window.ritualData["미유·여름"] = {
   "r6": "그 푸른 꿈",
   "r6_detail": "사하라 미유·여름의 SP 상한이 250포인트 추가 증가한다. 전투 시작 시 SP가 최대치까지 회복하며 자동으로 『바다의 영역』을 전개한다. 『파도의 노래』의 중첩 상한이 2회 추가 증가한다.\n『해월의 꿈』 시전 시 회복하는 SP가 50% 증가한다.\n『푸른 협주』 시전 후 『바다의 영역』에서 나가지 않으며, 『파도의 노래』 제거 시점은 턴 종료 후로 바뀐다. 제거 후 추가로 SP가 최대치만큼 회복한다."
 };
+
 window.enCharacterRitualData["미유·여름"] = {
   "name": "Miyu·Summer",
   "r0": "Call of the Tide",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["미유·여름"] = {
   "r6": "That Azure Dream",
   "r6_detail": "Increase Miyu's max SP by 250. At the start of battle, fully restore SP then automatically open [Ocean's Domain]. Increase the maximum number of [Thousandfold Waves] stacks by 2.\nIncrease the SP restored by [Jellyfish Reverie] by 50%.\nMiyu will not exit [Ocean's Domain] when using [Cerulean Concerto]. Change the timing of [Thousandfold Waves] stack loss to the end of turn, fully restore SP after losing all stacks."
 };
+
 window.jpCharacterRitualData["미유·여름"] = {
   "name": "佐原 海夕 夏",
   "r0": "波の呼び声",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["미유·여름"] = {
   "r6": "その蒼き夢",
   "r6_detail": "佐原 海夕・夏の最大SPがさらに250増加し、戦闘開始時にSPが満タンになり、自動的に『海の領域』を展開する。\n『重なる波』の最大スタック数がさらに2増加する。\n『クラゲの夢』使用時のSP回復量が50%増加する。\n『蒼の協奏』使用後、『海の領域』は解除されず、『重なる波』はターン終了後にリセットされる。\nリセット後、SPを最大値まで回復する。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["미유·여름"] = {
   "name": "佐原海夕·夏日",
@@ -71,3 +74,4 @@ window.cnCharacterRitualData["미유·여름"] = {
   "r6": "那片蔚蓝的梦",
   "r6_detail": "佐原海夕·夏日的精力值上限额外提升250点，战斗开始时恢复满额精力值并自动展开『海之领域』，『千叠浪』的可叠加上限额外提升2层。\n释放『海月沉梦』恢复的精力值提升50%。\n释放『蔚蓝协奏』后不会退出『海之领域』，清空『千叠浪』的时机改为回合结束后，清空后额外恢复满额精力值。"
 };
+

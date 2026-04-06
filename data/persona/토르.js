@@ -16,6 +16,7 @@ window.personaFiles["토르"] = {
   "tier_desc": "전격 속성 특화 페르소나로 전격 속성 딜러가 파티에 있을 경우 자주 채용된다.",
   "tier_desc_en": "A Persona specialized for Electric damage, often used when the party has an Electric DPS.",
   "tier_desc_jp": "電撃属性に特化したペルソナで、パーティに電撃アタッカーがいる時によく採用される。",
+  "tier_desc_cn": "是电击属性特化人格面具，队伍里有电击输出时经常会采用。",
   "comment": "",
   "comment_en": "",
   "comment_jp": "",

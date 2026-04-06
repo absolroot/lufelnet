@@ -379,6 +379,15 @@ window.I18N_COMMON_KR = {
         }
     },
 
+    // CN 베타 안내
+    cnBetaNotice: {
+        title: '중국어 베타 안내',
+        bodyPrimary: '중국어 페이지는 번역을 통해 제공되고 있어 문장 표현이 어색하거나 일부 게임 용어가 정확하지 않을 수 있습니다.',
+        bodySecondary: '또한 일부 페이지나 문구는 아직 번역되지 않았거나 한국어로 남아 있을 수 있습니다. 양해 부탁드립니다.',
+        dismissForever: '다시 보지 않기',
+        close: '확인'
+    },
+
     // 레이블
     labels: {
         total: '전체',

@@ -21,6 +21,7 @@ wheels/
 *.egg
 .claude/
 .tmp/
+_config/
 config_db/
 _site/
 
@@ -101,4 +102,3 @@ apps/article-editor/**
 reports/
 scripts/reports/
 apps/patch-console/state/
-

@@ -16,6 +16,7 @@ window.personaFiles["오로바스"] = {
   "tier_desc": "화염 내성 제거 효과라는 고유 스킬을 가지고 있으며, 단일 화염 딜러를 적의 내성에 무관하게 채용할 수 있게 해주는 주요 페르소나로서 활용된다.",
   "tier_desc_en": "It has a unique skill that removes Fire resistance, making it a key Persona for enabling a single-target Fire attacker regardless of enemy resistance.",
   "tier_desc_jp": "火炎耐性を解除する固有スキルを持ち、敵の耐性に関係なく単体火炎アタッカーを運用できるようにする重要なペルソナとして使われる。",
+  "tier_desc_cn": "拥有“移除火焰耐性”这一独特技能，因此常作为关键人格面具，让单体火焰输出即使面对敌人耐性也能上场。",
   "comment": "",
   "comment_en": "",
   "comment_jp": "",

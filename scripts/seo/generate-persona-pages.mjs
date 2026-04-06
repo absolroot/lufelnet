@@ -23,9 +23,9 @@ const ROOT = path.resolve(__dirname, '..', '..');
 const OUTPUT_DIR = path.join(ROOT, 'pages', 'persona');
 const ROOT_STUB_DIR = path.join(OUTPUT_DIR, 'roots');
 
-const DETAIL_LANGS = ['kr', 'en', 'jp'];
-const LIST_PAGE_LANGS = ['kr', 'en', 'jp'];
-const ROOT_REDIRECT_LANGS = ['cn'];
+const DETAIL_LANGS = ['kr', 'en', 'jp', 'cn'];
+const LIST_PAGE_LANGS = ['kr', 'en', 'jp', 'cn'];
+const ROOT_REDIRECT_LANGS = [];
 
 const orderPath = path.join(ROOT, 'data', 'persona', 'order.js');
 const nonorderPath = path.join(ROOT, 'data', 'persona', 'nonorder.js');
@@ -204,6 +204,9 @@ function getDisplayName(krName, lang, entry) {
   if (lang === 'jp') {
     return normalizeName(entry?.name_jp) || normalizeName(entry?.name_en) || krName;
   }
+  if (lang === 'cn') {
+    return normalizeName(entry?.name_cn) || normalizeName(entry?.name) || krName;
+  }
   return krName;
 }
 
@@ -216,6 +219,7 @@ function renderPersonaPage({ lang, slug, personaKrName, title, description, imag
   const altKo = `/kr/persona/${slug}/`;
   const altEn = `/en/persona/${slug}/`;
   const altJp = `/jp/persona/${slug}/`;
+  const altCn = `/cn/persona/${slug}/`;
   return [
     '---',
     'layout: default',
@@ -233,6 +237,7 @@ function renderPersonaPage({ lang, slug, personaKrName, title, description, imag
     `  ko: ${altKo}`,
     `  en: ${altEn}`,
     `  jp: ${altJp}`,
+    `  'zh-CN': ${altCn}`,
     '---',
     '{% include persona-body.html %}',
     ''
@@ -256,6 +261,7 @@ function renderPersonaListPage({ lang, title, description }) {
     '  ko: /kr/persona/',
     '  en: /en/persona/',
     '  jp: /jp/persona/',
+    "  'zh-CN': /cn/persona/",
     '---',
     '{% include persona-body.html %}',
     ''
@@ -278,7 +284,8 @@ function buildDetailLangTargets(domain, slug) {
   return {
     kr: `/kr/${domain}/${slug}/`,
     en: `/en/${domain}/${slug}/`,
-    jp: `/jp/${domain}/${slug}/`
+    jp: `/jp/${domain}/${slug}/`,
+    cn: `/cn/${domain}/${slug}/`
   };
 }
 
@@ -313,8 +320,8 @@ function renderDetailRedirectStub({ fromPath, toPath, languageTargets = null }) 
     `      var defaultPath = ${JSON.stringify(fallbackPath)};`,
     '      function normalizeLang(raw) {',
     '        var value = String(raw || "").toLowerCase();',
-    '        if (value === "kr" || value === "en" || value === "jp") return value;',
-    '        if (value === "cn" || value === "tw" || value === "sea") return "en";',
+    '        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;',
+    '        if (value === "tw" || value === "sea") return "en";',
     '        return "";',
     '      }',
     '      function detectReferrerLang() {',

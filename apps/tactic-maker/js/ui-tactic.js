@@ -253,6 +253,7 @@ export class TacticUI {
         if (lang === 'kr') return '원더';
         if (lang === 'en') return 'WONDER';
         if (lang === 'jp') return 'ワンダー';
+        if (lang === 'cn') return 'WONDER';
         return '원더';
     }
 

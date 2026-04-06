@@ -26,11 +26,11 @@ function getPersonaStore() {
 function getCurrentLanguage() {
   const urlParams = new URLSearchParams(window.location.search);
   const urlLang = urlParams.get('lang');
-  if (urlLang && ['kr', 'en', 'jp'].includes(urlLang)) {
+  if (urlLang && ['kr', 'en', 'jp', 'cn'].includes(urlLang)) {
     return urlLang;
   }
   const savedLang = localStorage.getItem('preferredLanguage');
-  if (savedLang && ['kr', 'en', 'jp'].includes(savedLang)) {
+  if (savedLang && ['kr', 'en', 'jp', 'cn'].includes(savedLang)) {
     return savedLang;
   }
   return 'kr';
@@ -52,7 +52,7 @@ function getWonderI18nText(key, fallback = '') {
 // 페르소나 이름 번역 함수
 function getPersonaDisplayName(personaName) {
   const currentLang = getCurrentLanguage();
-  if (currentLang === 'kr' || !personaName) {
+  if (((window.isKrLikeLanguage && window.isKrLikeLanguage(currentLang)) || currentLang === 'kr') || !personaName) {
     return personaName;
   }
   
@@ -76,7 +76,7 @@ window.getPersonaDisplayName = getPersonaDisplayName;
 // 무기 이름 번역 함수
 function getWeaponDisplayName(weaponName) {
   const currentLang = getCurrentLanguage();
-  if (currentLang === 'kr' || !matchWeapons[weaponName]) {
+  if (((window.isKrLikeLanguage && window.isKrLikeLanguage(currentLang)) || currentLang === 'kr') || !matchWeapons[weaponName]) {
     return weaponName;
   }
 
@@ -92,7 +92,7 @@ function getWeaponDisplayName(weaponName) {
 // 스킬 이름 번역 함수
 function getSkillDisplayName(skillName) {
   const currentLang = getCurrentLanguage();
-  if (currentLang === 'kr') {
+  if (((window.isKrLikeLanguage && window.isKrLikeLanguage(currentLang)) || currentLang === 'kr')) {
     return skillName;
   }
   
@@ -136,7 +136,7 @@ function getPlaceholderText(type) {
 function getUniqueSkillDisplayName(personaName, skillName) {
   const currentLang = getCurrentLanguage();
   const personaStore = getPersonaStore() || {};
-  if (currentLang === 'kr' || !personaStore[personaName]) {
+  if (((window.isKrLikeLanguage && window.isKrLikeLanguage(currentLang)) || currentLang === 'kr') || !personaStore[personaName]) {
     return skillName;
   }
   
@@ -200,7 +200,7 @@ const createWeaponDropdownItems = (filter = "") => {
   // 언어별 표시 이름으로 정렬
   try {
     const lang = getCurrentLanguage();
-    const locale = lang === 'kr' ? 'ko-KR' : (lang === 'jp' ? 'ja-JP' : 'en');
+    const locale = ((window.isKrLikeLanguage && window.isKrLikeLanguage(lang)) || lang === 'kr') ? 'ko-KR' : (lang === 'jp' ? 'ja-JP' : 'en');
     filteredWeapons.sort((a, b) => getWeaponDisplayName(a).localeCompare(getWeaponDisplayName(b), locale, { sensitivity: 'base' }));
   } catch (_) { /* no-op */ }
   
@@ -571,7 +571,7 @@ function renderPortalList(filter) {
   const { type, input, personaIndex, skillSlot } = __globalDropdownCtx;
   // Locale-aware sorter (KR/EN/JP, with better JP collation)
   const __lang = (typeof getCurrentLanguage === 'function') ? getCurrentLanguage() : 'kr';
-  const __locale = __lang === 'kr' ? 'ko-KR' : (__lang === 'jp' ? 'ja-JP' : 'en');
+  const __locale = ((window.isKrLikeLanguage && window.isKrLikeLanguage(__lang)) || __lang === 'kr') ? 'ko-KR' : (__lang === 'jp' ? 'ja-JP' : 'en');
   let __collator;
   try {
     __collator = new Intl.Collator(__locale, { usage: 'sort', sensitivity: 'base', numeric: true, ignorePunctuation: true });
@@ -592,7 +592,7 @@ function renderPortalList(filter) {
     }
     try {
       const lang = getCurrentLanguage();
-      const locale = lang === 'kr' ? 'ko-KR' : (lang === 'jp' ? 'ja-JP' : 'en');
+      const locale = ((window.isKrLikeLanguage && window.isKrLikeLanguage(lang)) || lang === 'kr') ? 'ko-KR' : (lang === 'jp' ? 'ja-JP' : 'en');
       items.sort((a, b) => getPersonaDisplayName(a).localeCompare(getPersonaDisplayName(b), locale, { sensitivity: 'base' }));
     } catch(_){}
 
@@ -746,7 +746,7 @@ function renderPortalList(filter) {
     let forceKR = false;
     try { forceKR = localStorage.getItem('forceKRList') === 'true'; } catch(_) { forceKR = false; }
     const partyIndex = __globalDropdownCtx.partyIndex;
-    if (!forceKR && currentLang !== 'kr' && window.languageData && window.languageData[currentLang] && window.languageData[currentLang].characterList) {
+    if (!forceKR && !((window.isKrLikeLanguage && window.isKrLikeLanguage(currentLang)) || currentLang === 'kr') && window.languageData && window.languageData[currentLang] && window.languageData[currentLang].characterList) {
       items = partyIndex === 4 ? window.languageData[currentLang].characterList.supportParty : window.languageData[currentLang].characterList.mainParty;
     } else if (typeof characterList !== 'undefined') {
       items = partyIndex === 4 ? characterList.supportParty : characterList.mainParty;
@@ -1123,7 +1123,7 @@ function initializeTranslations() {
     if (input.value && store[input.value]) {
       const displayName = getPersonaDisplayName(input.value);
       input.setAttribute('data-display-value', displayName);
-      if (currentLang !== 'kr') {
+      if (!((window.isKrLikeLanguage && window.isKrLikeLanguage(currentLang)) || currentLang === 'kr')) {
         inputContainer.setAttribute('data-display-text', displayName);
         inputContainer.classList.add('show-translation');
       } else {
@@ -1145,7 +1145,7 @@ function initializeTranslations() {
       if (baseKey && personaSkillList[baseKey]) {
         const displayName = getSkillDisplayName(baseKey);
         input.setAttribute('data-display-value', displayName);
-        if (currentLang !== 'kr') {
+        if (!((window.isKrLikeLanguage && window.isKrLikeLanguage(currentLang)) || currentLang === 'kr')) {
           inputContainer.setAttribute('data-display-text', displayName);
           inputContainer.classList.add('show-translation');
         } else {
@@ -1192,7 +1192,7 @@ window.wonderApplySkillInputDecor = function() {
     // 번역 오버레이 적용은 비-KR만
     const container = input.closest('.input-container');
     if (!container) return;
-    if (!isUnique && baseKey && currentLang !== 'kr') {
+    if (!isUnique && baseKey && !((window.isKrLikeLanguage && window.isKrLikeLanguage(currentLang)) || currentLang === 'kr')) {
       const displayName = getSkillDisplayName(baseKey);
       container.setAttribute('data-display-text', displayName);
       container.classList.add('show-translation');

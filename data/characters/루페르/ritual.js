@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["루페르"] = {
   "name": "루페르",
   "r0": "뒤바뀐 밤낮",
@@ -18,6 +20,7 @@ window.ritualData["루페르"] = {
   "r6": "만선",
   "r6_detail": "『별의 불꽃II』 종료 시 목표에게 『별의 불꽃III』을 부여한다.\n『별의 불꽃III』: 1턴 동안 공격력이 루페르 공격력의 8%만큼 증가하고 화염 대미지는 20% 증가하며, 받는 치료 효과는 10% 증가한다."
 };
+
 window.enCharacterRitualData["루페르"] = {
   "name": "Lufel",
   "r0": "Redheaded Hero",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["루페르"] = {
   "r6": "Midnight Bonfire",
   "r6_detail": "After Starfire II ends, gain Starfire III for 1 turn.\nStarfire III: Increase Attack by 8% of Lufel's Attack, increase Fire damage by 20%, and increase healing received by 10%."
 };
+
 window.jpCharacterRitualData["루페르"] = {
   "name": "ルフェル",
   "r0": "赤毛の英雄",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["루페르"] = {
   "r6": "闇夜のかがり火",
   "r6_detail": "『星火Ⅱ』状態が終了した時、１ターンの間『星火Ⅲ』状態になる。\n『星火Ⅲ』状態：攻撃力がルフェルの攻撃力８%分、火炎属性の与ダメージを２０%、被ＨＰ回復量を１０%上昇する。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["루페르"] = {
   "name": "路菲尔",
@@ -71,3 +74,4 @@ window.cnCharacterRitualData["루페르"] = {
   "r6": "满载而归",
   "r6_detail": "『星之火II』结束时赋予目标『星之火III』。\n『星之火III』：攻击力提升，相当于路菲尔攻击力的8%，火焰伤害提升20%，受到治疗效果提升10%，效果持续1回合。"
 };
+

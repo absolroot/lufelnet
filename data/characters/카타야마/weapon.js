@@ -1,6 +1,8 @@
 window.WeaponData = window.WeaponData || {};
 window.enCharacterWeaponData = window.enCharacterWeaponData || {};
 window.jpCharacterWeaponData = window.jpCharacterWeaponData || {};
+window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
+
 window.WeaponData["카타야마"] = {
   "name": "카타야마 쿠미",
   "weapon3-1": {
@@ -28,6 +30,7 @@ window.WeaponData["카타야마"] = {
     "description": "속도가 15.0/15.0/20.0/20.0/25.0/25.0/30.0 증가한다.\n자신이 『오의·섬광 다리』를 시전하면 2턴 동안 크리티컬 확률이 9.0%/11.7%/11.7%/14.3%/14.3%/17.0%/17.0% 증가한다.\n카타야마 쿠미가 필드에 있을 때 임의의 적이 다운되면 1턴 동안 받는 크리티컬 효과가 30.6%/39.8%/39.8%/49.0%/49.0%/58.2%/58.2% 증가한다."
   }
 };
+
 window.enCharacterWeaponData["카타야마"] = {
   "name": "Kumi Katayama",
   "weapon3-1": {
@@ -55,6 +58,7 @@ window.enCharacterWeaponData["카타야마"] = {
     "description": "Increase Speed by 15/15/20/20/25/25/30. After user uses [Secret Art: Lightning Legs], increase critical rate by 9.0/11.7/11.7/14.3/14.3/17.0/17.0% for 2 turns.\nWhen a foe is knocked down while Katayama is on the field, increase target's critical damage taken by 30.6/39.8/39.8/49.0/49.0/58.2/58.2% for 1 turn."
   }
 };
+
 window.jpCharacterWeaponData["카타야마"] = {
   "name": "片山 久未",
   "weapon3-1": {
@@ -80,21 +84,32 @@ window.jpCharacterWeaponData["카타야마"] = {
     "description": "速さが15.0/15.0/20.0/20.0/25.0/25.0/30.0。『奥義・閃光脚』使用時、CRT発生率+9.0%/11.7%/11.7%/14.3%/14.3%/17.0%/17.0%（2ターン）。さらにフィールドにいる任意の敵がダウンすると、その敵が受けるCRT倍率が30.6%/39.8%/39.8%/49.0%/49.0%/58.2%/58.2%増加（1ターン）。"
   }
 };
-window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
 
 window.cnCharacterWeaponData["카타야마"] = {
-  "weapon5-1": {
-    "name": "铁誓狼骑",
-    "health": 2239.65,
-    "attack": 706.91,
-    "defense": 396.41,
-    "description": "速度提升15.0/15.0/20.0/20.0/25.0/25.0/30.0。\n自身使用『奥义·闪光腿』后，暴击率提升9.0%/11.7%/11.7%/14.3%/14.3%/17.0%/17.0%，持续2回合。\n片山久未在场时，任意敌人被击倒后，受到暴击效果提升30.6%/39.8%/39.8%/49.0%/49.0%/58.2%/58.2%，持续1回合。"
+  "name": "片山久未",
+  "weapon3-1": {
+    "name": "作战靴",
+    "health": 1343,
+    "attack": 424,
+    "defense": 237,
+    "skill_name": "",
+    "description": "自身拥有『超极限』时，速度提升7.4/8.5/9.6/10.7/11.8/12.9/14.0。"
   },
   "weapon4-1": {
     "name": "伏特赤心",
     "health": 1791.59,
     "attack": 565.81,
     "defense": 317.1,
+    "skill_name": "",
     "description": "攻击力提升12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%。\n自身击倒敌人时，每击倒1名敌人自身攻击力提升7.5%/9.8%/9.8%/12.0%/12.0%/14.2%/14.2%，持续1回合，最多提升22.5%/29.2%/29.2%/36.0%/36.0%/42.7%/42.7%。"
+  },
+  "weapon5-1": {
+    "name": "铁誓狼骑",
+    "health": 2239.65,
+    "attack": 706.91,
+    "defense": 396.41,
+    "skill_name": "",
+    "description": "速度提升15.0/15.0/20.0/20.0/25.0/25.0/30.0。\n自身使用『奥义·闪光腿』后，暴击率提升9.0%/11.7%/11.7%/14.3%/14.3%/17.0%/17.0%，持续2回合。\n片山久未在场时，任意敌人被击倒后，受到暴击效果提升30.6%/39.8%/39.8%/49.0%/49.0%/58.2%/58.2%，持续1回合。"
   }
 };
+

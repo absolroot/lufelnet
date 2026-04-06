@@ -16,6 +16,7 @@ window.personaFiles["시바"] = {
   "tier_desc": "염동 속성 특화 페르소나로 1중첩 효과만으로도 충분한 가치를 지니나 3중첩까지 모두 유용한 효과를 지니고 있다.",
   "tier_desc_en": "A Persona specialized for Psychokinesis damage. Even its 1-stack effect has enough value on its own, and all the way up to 3 stacks remains useful.",
   "tier_desc_jp": "念動属性に特化したペルソナで、1スタック効果だけでも十分に価値があり、3スタックまでどれも有用な効果を持っている。",
+  "tier_desc_cn": "是念动属性特化人格面具，仅靠 1 层效果就已经很有价值，而 3 层效果全部都很实用。",
   "comment": "",
   "comment_en": "",
   "comment_jp": "",

@@ -1,6 +1,8 @@
 window.characterSkillsData = window.characterSkillsData || {};
 window.enCharacterSkillsData = window.enCharacterSkillsData || {};
 window.jpCharacterSkillsData = window.jpCharacterSkillsData || {};
+window.cnCharacterSkillsData = window.cnCharacterSkillsData || {};
+
 window.characterSkillsData["카요"] = {
   "name": "토미야마 카요",
   "skill1": {
@@ -43,6 +45,7 @@ window.characterSkillsData["카요"] = {
     "cool": 0
   }
 };
+
 window.enCharacterSkillsData["카요"] = {
   "name": "Kayo Tomiyama",
   "skill1": {
@@ -85,6 +88,7 @@ window.enCharacterSkillsData["카요"] = {
     "cool": 0
   }
 };
+
 window.jpCharacterSkillsData["카요"] = {
   "name": "富山 佳代",
   "skill1": {
@@ -127,41 +131,47 @@ window.jpCharacterSkillsData["카요"] = {
     "cool": 0
   }
 };
-window.cnCharacterSkillsData = window.cnCharacterSkillsData || {};
 
 window.cnCharacterSkillsData["카요"] = {
   "name": "富山佳代",
   "skill1": {
     "name": "派对狂欢",
-    "cool": 0,
-    "description": "准备时间：4次行动\n基于自身攻击力的12%，提升所有同伴的攻击力（最多计入4500/4950/5400/5850点攻击力），并提升所有同伴35.0%/38.5%/37.8%/41.3%效果命中，效果持续1回合。获得1个『节拍』。",
-    "element": "버프광역"
+    "element": "버프광역",
+    "type": "增益",
+    "cool": 4,
+    "description": "准备时间：4次行动\n基于自身攻击力的12%，提升所有同伴的攻击力（最多计入4500/4950/5400/5850点攻击力），并提升所有同伴35.0%/38.5%/37.8%/41.3%效果命中，效果持续1回合。获得1个『节拍』。"
   },
   "skill2": {
     "name": "华丽摇摆",
-    "cool": 0,
-    "description": "准备时间：8次行动\n使所有同伴恢复22/27/26/31精力值。获得3个『节拍』。",
-    "element": "버프광역"
+    "element": "버프광역",
+    "type": "群体增益",
+    "cool": 8,
+    "description": "准备时间：8次行动\n使所有同伴恢复22/27/26/31精力值。获得3个『节拍』。"
   },
   "skill3": {
     "name": "热辣变奏曲",
-    "cool": 0,
-    "description": "准备时间：8次行动\n使所有同伴造成伤害提升10.0%/11.0%/10.8%/11.8%，效果持续3回合，每225点富山佳代的攻击力额外提供1%伤害提升（最多计入4500/4950/5400/5850点攻击力）。对处于元素异常状态的敌人造成伤害时，伤害加成效果提升至1.5倍。获得2个『节拍』。",
-    "element": "버프광역"
+    "element": "버프광역",
+    "type": "增益",
+    "cool": 8,
+    "description": "准备时间：8次行动\n使所有同伴造成伤害提升10.0%/11.0%/10.8%/11.8%，效果持续3回合，每225点富山佳代的攻击力额外提供1%伤害提升（最多计入4500/4950/5400/5850点攻击力）。对处于元素异常状态的敌人造成伤害时，伤害加成效果提升至1.5倍。获得2个『节拍』。"
+  },
+  "skill_highlight": {
+    "name": "属性提升",
+    "element": "패시브",
+    "type": "被动",
+    "description": "在场所有同伴的对应属性值提升，提升量相当于解明怪盗各属性的15%。"
   },
   "passive1": {
     "name": "活力",
     "element": "패시브",
-    "cool": 0,
-    "description": "每获得4个『节拍』，使当前生命值最高的敌人陷入随机1种元素异常效果。"
+    "description": "每获得4个『节拍』，使当前生命值最高的敌人陷入随机1种元素异常效果。",
+    "cool": 0
   },
   "passive2": {
     "name": "热忱",
     "element": "패시브",
-    "cool": 0,
-    "description": "任意同伴释放技能造成元素异常时，该同伴获得15%伤害加成，效果持续2回合，并且有21%的固定概率使自身获得1个『节拍』。"
-  },
-  "skill_highlight": {
-    "element": "패시브"
+    "description": "任意同伴释放技能造成元素异常时，该同伴获得15%伤害加成，效果持续2回合，并且有21%的固定概率使自身获得1个『节拍』。",
+    "cool": 0
   }
 };
+

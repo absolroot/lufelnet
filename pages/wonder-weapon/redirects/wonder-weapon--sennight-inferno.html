@@ -17,12 +17,12 @@ sitemap: false
       var requestedLang = params.get("lang");
       params.delete("lang");
       params.delete("weapon");
-      var languageTargets = {"kr":"/kr/wonder-weapon/sennight-inferno/","en":"/en/wonder-weapon/sennight-inferno/","jp":"/jp/wonder-weapon/sennight-inferno/"};
+      var languageTargets = {"kr":"/kr/wonder-weapon/sennight-inferno/","en":"/en/wonder-weapon/sennight-inferno/","jp":"/jp/wonder-weapon/sennight-inferno/","cn":"/cn/wonder-weapon/sennight-inferno/"};
       var defaultPath = "/en/wonder-weapon/sennight-inferno/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

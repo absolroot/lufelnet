@@ -26,12 +26,6 @@ redirect_from: []
 })();
 </script>
 
-{% if site.data.character_slugs %}
-<script>
-window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
-</script>
-{% endif %}
-
 <div class="main-wrapper">
     <!-- 언어 안내 메시지 -->
     <!--
@@ -40,13 +34,12 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
     </div>-->
 
     <div class="navigation-path">
-        <script>document.write(`<a href="../" id="nav-home">-</a>`);</script>
+        <script>document.write(`<a href="../?v=${APP_VERSION}" id="nav-home">-</a>`);</script>
         <span class="separator">/</span>
         <span class="current-page" id="nav-current">-</span> 
     </div>
     <div class="header-container">
         <h1 id="page-title">-</h1>
-        <p class="page-description" id="page-description"></p>
     </div>
     <!-- Filter section -->
     <div class="filter-section">
@@ -407,17 +400,13 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
         const searchInput = document.getElementById('characterSearch');
 
         if (navHome) {
-            navHome.textContent = getI18nText('nav.home', navHome.textContent || '');
+            navHome.textContent = getI18nText('navHome', navHome.textContent || '');
         }
         if (navCurrent) {
-            navCurrent.textContent = getI18nText('nav.character', navCurrent.textContent || '');
+            navCurrent.textContent = getI18nText('navCurrent', navCurrent.textContent || '');
         }
         if (pageTitle) {
             pageTitle.textContent = getI18nText('pageTitle', pageTitle.textContent || '');
-        }
-        const pageDesc = document.getElementById('page-description');
-        if (pageDesc) {
-            pageDesc.textContent = getI18nText('pageDescription', '');
         }
         if (searchInput) {
             searchInput.placeholder = getI18nText('searchPlaceholder', searchInput.placeholder || '');
@@ -442,18 +431,19 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
     }
 
     function updateSEOContent() {
-        if (window.SeoEngine && typeof window.SeoEngine.setContextHint === 'function') {
-            window.SeoEngine.setContextHint({
-                domain: 'character',
-                mode: 'list',
-                entityKey: null,
-                entityName: null
-            }, { rerun: true });
-            return;
-        }
-        if (window.SeoEngine && typeof window.SeoEngine.run === 'function') {
-            window.SeoEngine.run();
-        }
+        const metaDescription = document.querySelector('meta[name="description"]');
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        const ogDescription = document.querySelector('meta[property="og:description"]');
+
+        const fallbackTitle = document.title || 'Character Build Guide - Persona 5: The Phantom X LufelNet';
+        const fallbackDescription = (metaDescription && metaDescription.getAttribute('content')) || '';
+        const seoTitle = getI18nText('seoTitle', fallbackTitle);
+        const seoDescription = getI18nText('seoDescription', fallbackDescription);
+
+        document.title = seoTitle;
+        if (metaDescription) metaDescription.setAttribute('content', seoDescription);
+        if (ogTitle) ogTitle.setAttribute('content', seoTitle);
+        if (ogDescription) ogDescription.setAttribute('content', seoDescription);
     }
 
     // Initialize navigation on page load
@@ -514,31 +504,66 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
     // 언어별 캐릭터 데이터 로딩 및 병합
     async function loadCharacterData() {
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+        const isKrLike = (typeof window.isKrLikeLanguage === 'function')
+            ? window.isKrLikeLanguage(currentLang)
+            : (currentLang === 'kr' || currentLang === 'cn');
         const spoilerEnabled = isSpoilerEnabled();
 
+        // 스포일러 모드에서 미출시 캐릭터 감지를 위해 원본 언어별 캐릭터 리스트 저장
+        let originalLangCharacterList = null;
+
         try {
-            if (window.CharacterDataUtils && typeof window.CharacterDataUtils.prepareCharacterData === 'function') {
-                const prepared = await window.CharacterDataUtils.prepareCharacterData({
-                    lang: currentLang,
-                    spoilerEnabled,
-                    version: APP_VERSION
-                });
+            // 1) KR 원본 데이터는 매번 샌드박스 fetch로 고정 로드
+            // (window 전역 재사용 시 토글 전환에 따라 기준 목록이 섞이는 문제 방지)
+            const kr = await fetchCharactersData(`/data/character_info.js?v=${APP_VERSION}`);
+            if (!kr) {
+                throw new Error('Failed to load KR character data');
+            }
+            const krCharacterData = kr.characterData || {};
+            const krCharacterList = kr.characterList || { mainParty: [], supportParty: [] };
 
-                if (!prepared) {
-                    throw new Error('Failed to prepare character data');
+            // 2) 언어 데이터 로드 및 병합(샌드박스 평가로 전역 오염 방지)
+            if (!isKrLike) {
+                const langDataPath = (currentLang === 'en' || currentLang === 'jp')
+                    ? '/data/character_info_glb.js'
+                    : `/data/${currentLang}/characters/characters.js`;
+                const langUrl = `${langDataPath}?v=${APP_VERSION}`;
+                const lang = await fetchCharactersData(langUrl);
+                if (lang) {
+                    const langCharacterData = lang.characterData || {};
+                    const langCharacterList = lang.characterList || { mainParty: [], supportParty: [] };
+                    originalLangCharacterList = [...(langCharacterList.mainParty || []), ...(langCharacterList.supportParty || [])];
+                    if (!spoilerEnabled) {
+                        const mergedData = mergeCharacterData(krCharacterData, langCharacterData);
+                        window.characterData = mergedData;
+                        window.characterList = langCharacterList;
+                    } else {
+                        window.characterData = krCharacterData;
+                        window.characterList = krCharacterList;
+                    }
+                } else {
+                    // 언어별 데이터 로드 실패 시 KR 사용
+                    originalLangCharacterList = [...(krCharacterList?.mainParty || []), ...(krCharacterList?.supportParty || [])];
+                    window.characterData = krCharacterData;
+                    window.characterList = krCharacterList;
                 }
-
-                window.characterData = prepared.characterData || {};
-                window.characterList = prepared.characterList || { mainParty: [], supportParty: [] };
-                window.originalLangCharacterList = prepared.originalLangCharacterList || null;
-                return true;
+            } else if (currentLang === 'cn') {
+                const lang = await fetchCharactersData(`/data/${currentLang}/characters/characters.js?v=${APP_VERSION}`);
+                if (lang) {
+                    const langCharacterData = lang.characterData || {};
+                    window.characterData = mergeCharacterData(krCharacterData, langCharacterData);
+                } else {
+                    window.characterData = krCharacterData;
+                }
+                originalLangCharacterList = [...(krCharacterList.mainParty || []), ...(krCharacterList.supportParty || [])];
+                window.characterList = krCharacterList;
+            } else {
+                window.characterData = krCharacterData;
+                window.characterList = krCharacterList;
             }
 
-            const fallback = await fetchCharactersData(`/data/character_info.js?v=${APP_VERSION}`);
-            if (!fallback) throw new Error('Failed to load fallback KR character data');
-            window.characterData = fallback.characterData || {};
-            window.characterList = fallback.characterList || { mainParty: [], supportParty: [] };
-            window.originalLangCharacterList = [...(window.characterList.mainParty || []), ...(window.characterList.supportParty || [])];
+            // 스포일러 모드에서 미출시 캐릭터 감지를 위해 원본 리스트를 전역 변수에 저장
+            window.originalLangCharacterList = originalLangCharacterList;
 
             return true;
 
@@ -546,6 +571,118 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
             console.error('Failed to load character data:', error);
             return false;
         }
+    }
+
+    // 캐릭터 데이터 병합 함수 (하이브리드 방식)
+    function mergeCharacterData(krData, langData) {
+        const mergedData = {};
+        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+
+
+        // 샘플 데이터 확인
+        const firstKrKey = Object.keys(krData)[0];
+        const firstLangKey = Object.keys(langData)[0];
+
+        // 언어별 데이터에 있는 캐릭터만 포함 (langData 기준으로 필터링)
+        for (const characterKey in langData) {
+            //console.log('Merging character:', characterKey);
+
+            if (krData[characterKey]) {
+                //console.log(`✅ Found KR data for ${characterKey}`);
+                // 한국어 데이터를 기본으로 완전히 복사 (모든 속성 보존)
+                mergedData[characterKey] = { ...krData[characterKey] };
+
+                const langChar = langData[characterKey];
+                const krChar = krData[characterKey];
+
+                // name 처리: 현재 언어에 따라 적절한 이름 사용
+                if (currentLang === 'en') {
+                    if (krChar.name_en) {
+                        mergedData[characterKey].name = krChar.name_en;
+                    } else if (langChar.name && langChar.name !== '') {
+                        mergedData[characterKey].name = langChar.name;
+                    }
+                } else if (currentLang === 'jp') {
+                    if (krChar.name_jp) {
+                        mergedData[characterKey].name = krChar.name_jp;
+                    } else if (langChar.name && langChar.name !== '') {
+                        mergedData[characterKey].name = langChar.name;
+                    } else {
+                    }
+                } else if (currentLang === 'cn') {
+                    if (krChar.name_cn) {
+                        mergedData[characterKey].name = krChar.name_cn;
+                    } else if (langChar.name && langChar.name !== '') {
+                        mergedData[characterKey].name = langChar.name;
+                    }
+                } else {
+                    // KR 언어일 때는 기본 KR 이름 사용
+                }
+
+                // persona 처리: 현재 언어에 따라 적절한 페르소나 이름 사용
+                if (currentLang === 'en') {
+                    if (krChar.persona_en) {
+                        mergedData[characterKey].persona = krChar.persona_en;
+                    } else if (langChar.persona && langChar.persona !== '') {
+                        mergedData[characterKey].persona = langChar.persona;
+                    }
+                } else if (currentLang === 'jp') {
+                    if (krChar.persona_jp) {
+                        mergedData[characterKey].persona = krChar.persona_jp;
+                        //console.log(`Using KR JP persona for ${characterKey}: ${krChar.persona_jp}`);
+                    } else if (langChar.persona && langChar.persona !== '') {
+                        mergedData[characterKey].persona = langChar.persona;
+                        //console.log(`Using Lang JP persona for ${characterKey}: ${langChar.persona}`);
+                    }
+                } else if (currentLang === 'cn') {
+                    if (krChar.persona_cn) {
+                        mergedData[characterKey].persona = krChar.persona_cn;
+                    } else if (langChar.persona && langChar.persona !== '') {
+                        mergedData[characterKey].persona = langChar.persona;
+                    }
+                }
+
+                // 속성 번역 처리 (element 필드는 그대로 유지하되, 표시용 번역 추가)
+                if (currentLang !== 'kr') {
+                    const translatedElement = translateTermSafe(mergedData[characterKey].element);
+                    if (translatedElement && translatedElement !== mergedData[characterKey].element) {
+                        mergedData[characterKey].element_display = translatedElement;
+                    }
+
+                    const translatedPosition = translateTermSafe(mergedData[characterKey].position);
+                    if (translatedPosition && translatedPosition !== mergedData[characterKey].position) {
+                        mergedData[characterKey].position_display = translatedPosition;
+                    }
+                }
+
+                // 다른 필드들은 언어별 데이터에 값이 있고 빈 문자열이 아닐 때만 덮어쓰기
+                // 중요: element, position, rarity 등은 절대 덮어쓰지 않음 (한국어 데이터 유지)
+                // role은 characterSetting으로 이동했으므로 여기서는 처리하지 않음
+                if (langChar.tag && langChar.tag !== '') {
+                    mergedData[characterKey].tag = langChar.tag;
+                }
+                // release_order는 언어별 데이터에 있으면 무조건 사용 (0도 유효한 값)
+                if (langChar.release_order !== undefined) {
+                    mergedData[characterKey].release_order = langChar.release_order;
+                    //console.log(`Using Lang release_order for ${characterKey}: ${langChar.release_order}`);
+                }
+
+                // 중요한 속성들이 제대로 보존되었는지 확인
+                if (!mergedData[characterKey].element || !mergedData[characterKey].position || !mergedData[characterKey].rarity) {
+                    console.warn(`Missing critical data for ${characterKey}:`, {
+                        element: mergedData[characterKey].element,
+                        position: mergedData[characterKey].position,
+                        rarity: mergedData[characterKey].rarity
+                    });
+                }
+
+            } else {
+                console.warn(`❌ Character ${characterKey} not found in KR data`);
+                console.warn('Available KR characters:', Object.keys(krData).slice(0, 10), '... (showing first 10)');
+            }
+        }
+
+        return mergedData;
     }
 
     // P3 필터 표시 여부 확인
@@ -660,7 +797,10 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
         const fragment = document.createDocumentFragment();
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
         const spoilerEnabled = isSpoilerEnabled();
-        const originalCharacterList = (spoilerEnabled && currentLang !== 'kr') ? (window.originalLangCharacterList || []) : null;
+        const isKrLike = (typeof window.isKrLikeLanguage === 'function')
+            ? window.isKrLikeLanguage(currentLang)
+            : (currentLang === 'kr' || currentLang === 'cn');
+        const originalCharacterList = (spoilerEnabled && !isKrLike) ? (window.originalLangCharacterList || []) : null;
 
         sortedCharacters.forEach((characterName, index) => {
 
@@ -693,21 +833,7 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
 
             // Create link wrapper - 언어 파라미터 추가
             const link = document.createElement('a');
-            const safeLang = ['kr', 'en', 'jp', 'cn'].includes(currentLang) ? currentLang : 'kr';
-            const slugMap = window.__CHARACTER_SLUG_MAP || null;
-            const slugEntry = slugMap ? slugMap[characterName] : null;
-            const resolvedSlug = (slugEntry && typeof slugEntry === 'object' && slugEntry.slug)
-                ? String(slugEntry.slug)
-                : (typeof slugEntry === 'string' ? slugEntry : '');
-            if (resolvedSlug) {
-                link.href = `/${safeLang}/character/${resolvedSlug}/`;
-            } else {
-                const detailParams = new URLSearchParams({
-                    name: characterName,
-                    lang: safeLang
-                });
-                link.href = `/character.html?${detailParams.toString()}`;
-            }
+            link.href = `/character.html?name=${encodeURIComponent(characterName)}&lang=${currentLang}&v=${APP_VERSION}`;
             link.style.textDecoration = 'none';
             link.style.color = 'inherit';
 
@@ -724,14 +850,10 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
 
             // Character image (lazy loaded via IntersectionObserver)
             const img = document.createElement('img');
-            const defaultCharacterCardSrc = `{{ site.baseurl }}/assets/img/character-cards/${characterName}.webp`;
-            const aprilFoolsCharacterCardSrc = (window.LufelAprilFools && typeof window.LufelAprilFools.getCharacterCardSrc === 'function')
-                ? window.LufelAprilFools.getCharacterCardSrc(characterName, defaultCharacterCardSrc)
-                : defaultCharacterCardSrc;
             img.src = `{{ site.baseurl }}/assets/img/character-cards/card_skeleton.webp`;
             img.alt = characterName;
             img.className = 'character-img';
-            img.dataset.src = aprilFoolsCharacterCardSrc;
+            img.dataset.src = `{{ site.baseurl }}/assets/img/character-cards/${characterName}.webp`;
 
             // Element icon
             const elementIcon = document.createElement('img');
@@ -918,13 +1040,23 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
         });
 
         if (spoilerContainer) {
-            spoilerContainer.style.display = currentLang === 'kr' ? 'none' : 'block';
+            const isKrLike = (typeof window.isKrLikeLanguage === 'function')
+                ? window.isKrLikeLanguage(currentLang)
+                : (currentLang === 'kr' || currentLang === 'cn');
+            spoilerContainer.style.display = isKrLike ? 'none' : 'block';
         }
     }
 
     document.addEventListener('DOMContentLoaded', async () => {
         Navigation.load('character'); // nav active
         VersionChecker.check();
+
+        if (typeof LanguageRouter !== 'undefined' && !window.location.search.includes('lang=')
+            && !/^\/(kr|en|jp|cn)\//.test(window.location.pathname)) {
+            const currentUrl = new URL(window.location);
+            currentUrl.searchParams.set('lang', 'kr');
+            window.history.replaceState({}, '', currentUrl);
+        }
 
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
 
@@ -955,4 +1087,4 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
     });
 
 </script>
-<script src="{{ site.baseurl }}/apps/character/character-search.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/character/character-search.js?v=20240726"></script>

@@ -4,13 +4,13 @@
     var path = String(window.location.pathname || '/');
     var lowerPath = path.toLowerCase();
 
-    var pathLangMatch = lowerPath.match(/^\/(kr|en|jp)(\/|$)/);
+    var pathLangMatch = lowerPath.match(/^\/(kr|en|jp|cn)(\/|$)/);
     var pathLang = pathLangMatch ? pathLangMatch[1] : '';
     var queryLang = String(params.get('lang') || '').toLowerCase();
-    var effectiveLang = pathLang || (['kr', 'en', 'jp'].indexOf(queryLang) !== -1 ? queryLang : '');
+    var effectiveLang = pathLang || (['kr', 'en', 'jp', 'cn'].indexOf(queryLang) !== -1 ? queryLang : '');
 
     var isLegacyRoot = /^\/tactic\/?$/.test(lowerPath);
-    var isCanonicalPath = /^\/(kr|en|jp)\/tactic\/?$/.test(lowerPath);
+    var isCanonicalPath = /^\/(kr|en|jp|cn)\/tactic\/?$/.test(lowerPath);
 
     if (isLegacyRoot && effectiveLang) {
         window.__SEO_PATH_LANG__ = effectiveLang;
@@ -422,7 +422,7 @@
       function getCurrentLanguage() {
         if (typeof LanguageRouter !== 'undefined' && typeof LanguageRouter.getCurrentLanguage === 'function') {
           const routedLang = LanguageRouter.getCurrentLanguage();
-          if (routedLang && ['kr', 'en', 'jp'].includes(routedLang)) {
+          if (routedLang && ['kr', 'en', 'jp', 'cn'].includes(routedLang)) {
             return routedLang;
           }
         }
@@ -430,13 +430,13 @@
         // URL 파라미터 체크
         const urlParams = new URLSearchParams(window.location.search);
         const urlLang = urlParams.get('lang');
-        if (urlLang && ['kr', 'en', 'jp'].includes(urlLang)) {
+        if (urlLang && ['kr', 'en', 'jp', 'cn'].includes(urlLang)) {
           return urlLang;
         }
         
         // localStorage 체크
         const savedLang = localStorage.getItem('preferredLanguage');
-        if (savedLang && ['kr', 'en', 'jp'].includes(savedLang)) {
+        if (savedLang && ['kr', 'en', 'jp', 'cn'].includes(savedLang)) {
           return savedLang;
         }
         
@@ -513,7 +513,10 @@
             __ensureCharacterDataLoadedPromise = null;
             return false;
           }
-          if (lang === 'kr') {
+          const isKrLike = (typeof window.isKrLikeLanguage === 'function')
+            ? window.isKrLikeLanguage(lang)
+            : (lang === 'kr' || lang === 'cn');
+          if (isKrLike) {
             window.characterData = kr.characterData || {};
             window.characterList = kr.characterList || { mainParty: [], supportParty: [] };
             __ensureCharacterDataLoadedPromise = null;
@@ -702,7 +705,9 @@
           const mobileChk = document.getElementById('forceKRListToggleMobile');
 
           // Hide entirely when KR
-          const hideForKR = currentLang === 'kr';
+          const hideForKR = (typeof window.isKrLikeLanguage === 'function')
+            ? window.isKrLikeLanguage(currentLang)
+            : (currentLang === 'kr' || currentLang === 'cn');
           if (desktopWrap) desktopWrap.style.display = hideForKR ? 'none' : '';
           if (mobileWrap) mobileWrap.style.display = hideForKR ? 'none' : '';
 
@@ -1078,7 +1083,10 @@
               const renderAfterDataReady = () => {
                 const charData = window.characterData || (typeof characterData !== 'undefined' ? characterData : null);
                 const currentLang = (typeof getCurrentLanguage === 'function') ? getCurrentLanguage() : 'kr';
-                if (currentLang === 'kr' || (charData && (charData['원더'] || charData['렌'] || charData['레오']))) {
+                const isKrLike = (typeof window.isKrLikeLanguage === 'function')
+                  ? window.isKrLikeLanguage(currentLang)
+                  : (currentLang === 'kr' || currentLang === 'cn');
+                if (isKrLike || (charData && (charData['원더'] || charData['렌'] || charData['레오']))) {
                   updatePartyImages();
                   renderTurns();
                 } else {
@@ -1180,7 +1188,10 @@
           const renderAfterDataReady = () => {
             const charData = window.characterData || (typeof characterData !== 'undefined' ? characterData : null);
             const currentLang = (typeof getCurrentLanguage === 'function') ? getCurrentLanguage() : 'kr';
-            if (currentLang === 'kr' || (charData && (charData['원더'] || charData['렌'] || charData['레오']))) {
+            const isKrLike = (typeof window.isKrLikeLanguage === 'function')
+              ? window.isKrLikeLanguage(currentLang)
+              : (currentLang === 'kr' || currentLang === 'cn');
+            if (isKrLike || (charData && (charData['원더'] || charData['렌'] || charData['레오']))) {
               updatePartyImages();
               renderTurns();
             } else {

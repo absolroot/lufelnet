@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["미츠루"] = {
   "name": "키리조 미츠루",
   "r0": "부장의 직책",
@@ -18,6 +20,7 @@ window.ritualData["미츠루"] = {
   "r6": "불타오르는 투지",
   "r6_detail": "『서리 결정』 중첩 상한이 6회까지 증가한다. 자신의 테우르기아 에너지 기본 회복량이 2배가 된다. 테우르기아 시전 시, 2턴 내에 목표의 『혹한 결정』이 『극한 결정』으로 강화된다. 아군이 페르소나 스킬을 사용하여 『극한 결정』 상태의 적을 공격하면 기존 대미지의 200%의 해당하는 『냉혈의 칼날』이 1회 추가로 발동한다. 자신이 『극한 결정』 상태의 적을 공격할 시, 총 대미지가 15% 증폭된다."
 };
+
 window.enCharacterRitualData["미츠루"] = {
   "name": "키리조 미츠루",
   "r0": "President's Duty",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["미츠루"] = {
   "r6": "Burning Will",
   "r6_detail": "Increase the maximum number of [Frost] stacks to 6. Double Mitsuru's base Theurgy Energy recovery. When using Theurgy, Mitsuru can upgrade target's [Rime] to [Stasis]. When allies attack foes with [Stasis], additionally activate [Cruel Edge] at 200% of the original attack's damage. When Mitsuru attacks foes with [Stasis], gain 15% total damage amp."
 };
+
 window.jpCharacterRitualData["미츠루"] = {
   "name": "桐条 美鶴",
   "r0": "部長の責務",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["미츠루"] = {
   "r6": "闘志、燃え盛る",
   "r6_detail": "『霜結』の最大層数が6に増加する。自身の神通法エネルギーの基本回復量が2倍になる。神通法を発動すると、2ターンの間、対象の『寒霜結』をさらに『極寒霜結』に強化する。味方が『極寒霜結』状態の敵を攻撃した場合、元のダメージの200%に相当する『冷血の刃』を追加発動する。自身が『極寒霜結』状態の敵を攻撃した場合、与ダメージが15%上昇する。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["미츠루"] = {
   "name": "桐条美鹤",
@@ -71,3 +74,4 @@ window.cnCharacterRitualData["미츠루"] = {
   "r6": "斗志熊熊燃烧",
   "r6_detail": "『霜结』叠加上限提升至6层。自身神通法能量基础回复量翻倍。释放神通法时，可在2回合内将目标的『寒霜结』进一步强化为『极寒霜结』。友方同伴使用人格面具技能攻击处于『极寒霜结』状态下的敌人，可额外触发1次相当于原伤害200%的『冷血之刃』。自身攻击处于『极寒霜结』状态下的敌人时，获得15%的总伤害增幅。"
 };
+

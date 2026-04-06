@@ -8,15 +8,15 @@
     var path = String(window.location.pathname || '/');
     var lowerPath = path.toLowerCase();
 
-    var pathLangMatch = lowerPath.match(/^\/(kr|en|jp)(\/|$)/);
+    var pathLangMatch = lowerPath.match(/^\/(kr|en|jp|cn)(\/|$)/);
     var pathLang = pathLangMatch ? pathLangMatch[1] : '';
     var queryLang = String(params.get('lang') || '').toLowerCase();
-    var effectiveLang = pathLang || (['kr', 'en', 'jp'].indexOf(queryLang) !== -1 ? queryLang : '');
+    var effectiveLang = pathLang || (['kr', 'en', 'jp', 'cn'].indexOf(queryLang) !== -1 ? queryLang : '');
 
     var canonicalGuideId = sanitizeGuideId({{ page.guide_id | jsonify }});
     var isLegacyView = /^\/article\/view\/?$/.test(lowerPath);
     var legacyDetailMatch = path.match(/^\/article\/([^\/?#]+)\/?$/i);
-    var canonicalDetailMatch = path.match(/^\/(kr|en|jp)\/article\/([^\/?#]+)\/?$/i);
+    var canonicalDetailMatch = path.match(/^\/(kr|en|jp|cn)\/article\/([^\/?#]+)\/?$/i);
 
     if (isLegacyView && effectiveLang) {
         var queryGuideId = sanitizeGuideId(params.get('id'));
@@ -87,27 +87,27 @@
 <script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
 <script>
     function detectGuideArticleLang() {
-        const pathMatch = window.location.pathname.match(/^\/(kr|en|jp)(\/|$)/i);
+        const pathMatch = window.location.pathname.match(/^\/(kr|en|jp|cn)(\/|$)/i);
         if (pathMatch) {
             return pathMatch[1].toLowerCase();
         }
 
         const params = new URLSearchParams(window.location.search);
         const queryLang = String(params.get('lang') || '').toLowerCase();
-        if (['kr', 'en', 'jp'].indexOf(queryLang) !== -1) {
+        if (['kr', 'en', 'jp', 'cn'].indexOf(queryLang) !== -1) {
             return queryLang;
         }
 
         if (typeof getCurrentLang === 'function') {
             const helperLang = String(getCurrentLang() || '').toLowerCase();
-            if (['kr', 'en', 'jp'].indexOf(helperLang) !== -1) {
+            if (['kr', 'en', 'jp', 'cn'].indexOf(helperLang) !== -1) {
                 return helperLang;
             }
         }
 
         if (typeof LanguageRouter !== 'undefined' && typeof LanguageRouter.getCurrentLanguage === 'function') {
             const routerLang = String(LanguageRouter.getCurrentLanguage() || '').toLowerCase();
-            if (['kr', 'en', 'jp'].indexOf(routerLang) !== -1) {
+            if (['kr', 'en', 'jp', 'cn'].indexOf(routerLang) !== -1) {
                 return routerLang;
             }
         }

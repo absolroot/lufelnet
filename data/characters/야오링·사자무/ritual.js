@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["야오링·사자무"] = {
   "name": "리 야오링·사자무",
   "r0": "일사천리",
@@ -18,6 +20,7 @@ window.ritualData["야오링·사자무"] = {
   "r6": "새해를 맞이하는 일출",
   "r6_detail": "『철꽃의 춤』 상태의 지속 시간이 영구적으로 변하며, 『불꽃놀이 유성』이 『흐르는 별빛』으로 강화되어 주는 대미지가 80% 증가한다. 『흐르는 별빛』 사용 시 『철꽃의 춤』 상태는 계속 지속된다.\n『새해의 축복』의 『흐르는 별빛』에 대한 강화와 크리티컬 확률 증가의 지속 시간이 영구적으로 변하고, 『폭죽의 노래』의 『흐르는 별빛』에 대한 강화와 적이 보유한 화상 상태의 지속 시간이 1턴 연장한다."
 };
+
 window.enCharacterRitualData["야오링·사자무"] = {
   "name": "Firecracker Yaoling",
   "r0": "New Year's Blast",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["야오링·사자무"] = {
   "r6": "Sky Lantern Festival",
   "r6_detail": "Flaming Sword Dance becomes permanent. Yanhua Slash evolves to Liuxing Slash, increasing damage dealt by 80%. Flaming Sword Dance is not removed even after Liuxing Slash is activated.\nAlso, Scarlet Surprise permanently maintains the critical rate increase and enhanced effects on Liuxing Slash. The duration of Firework Finale's Burn and enhanced effects on Liuxing Slash are extended by 1 turn."
 };
+
 window.jpCharacterRitualData["야오링·사자무"] = {
   "name": "瑤鈴・新春",
   "r0": "新春の祝い",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["야오링·사자무"] = {
   "r6": "天灯の元宵節",
   "r6_detail": "『焔花刀舞』状態が永続になる。『焔花斬』が『焔花流光斬』へ強化され、与ダメージが８０%上昇する。また『焔花流光斬』発動後も『焔花刀舞』状態は解除されない。\nさらに『紅炎おとし玉』は『焔花流光斬』の強化状態とクリティカル率上昇を永続的に持続させ、『開歳爆竹』は『焔花流光斬』の強化状態と炎上の持続時間を１ターン延長させる。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["야오링·사자무"] = {
   "name": "李瑶铃·太平乐",
@@ -71,3 +74,4 @@ window.cnCharacterRitualData["야오링·사자무"] = {
   "r6": "天边霞染贺新年",
   "r6_detail": "『铁花舞』状态的持续时间变为永久，『铁火流星』强化为『焰流星火』，造成伤害提升80%。使用『焰流星火』不会退出『铁花舞』状态。\n『福满乾坤』对『焰流星火』的强化状态和暴击率提升状态的持续时间变为永久，『爆竹声声』对『焰流星火』的强化状态和使敌人陷入的燃烧状态的持续时间延长1回合。"
 };
+

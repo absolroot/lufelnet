@@ -15,6 +15,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 현재 언어 가져오기 함수
     function getCurrentLanguage() {
+        if (typeof LanguageRouter !== 'undefined' && LanguageRouter.getCurrentLanguage) {
+            const routedLang = LanguageRouter.getCurrentLanguage();
+            if (routedLang) return routedLang;
+        }
+
         // 먼저 쿼리 파라미터 확인
         const urlParams = new URLSearchParams(window.location.search);
         const langParam = urlParams.get('lang');
@@ -27,32 +32,16 @@ document.addEventListener('DOMContentLoaded', () => {
         if (path.includes('/en/')) return 'en';
         if (path.includes('/jp/')) return 'jp';
         if (path.includes('/cn/')) return 'cn';
-
-        // 라우터/페이지 i18n 서비스가 이미 감지한 언어를 우선 사용
-        try {
-            if (window.LanguageRouter && typeof window.LanguageRouter.getCurrentLanguage === 'function') {
-                const routedLang = window.LanguageRouter.getCurrentLanguage();
-                if (routedLang === 'kr' || routedLang === 'en' || routedLang === 'jp' || routedLang === 'cn') {
-                    return routedLang;
-                }
-            }
-        } catch (_) {}
-
-        try {
-            if (window.I18nService && typeof window.I18nService.getCurrentLanguageSafe === 'function') {
-                const i18nLang = window.I18nService.getCurrentLanguageSafe();
-                if (i18nLang === 'kr' || i18nLang === 'en' || i18nLang === 'jp' || i18nLang === 'cn') {
-                    return i18nLang;
-                }
-            }
-        } catch (_) {}
-
-        // 최후 수단으로 html lang 속성 참고
-        const htmlLang = String(document.documentElement.lang || '').toLowerCase();
-        if (htmlLang.startsWith('en')) return 'en';
-        if (htmlLang.startsWith('ja') || htmlLang.startsWith('jp')) return 'jp';
-        if (htmlLang.startsWith('zh') || htmlLang.startsWith('cn')) return 'cn';
         return 'kr';
+    }
+
+    function isKrLikeLanguage(lang) {
+        try {
+            if (typeof window.isKrLikeLanguage === 'function') {
+                return !!window.isKrLikeLanguage(lang);
+            }
+        } catch (_) { }
+        return lang === 'kr' || lang === 'cn';
     }
 
     function t(key, fallback) {
@@ -98,6 +87,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (data.mapping_jp && data.mapping_jp[koreanName]) {
                 return data.mapping_jp[koreanName];
             }
+        }
+
+        if (currentLang === 'cn' && window.I18nService && typeof window.I18nService.translateTerm === 'function') {
+            return window.I18nService.translateTerm(koreanName);
         }
 
         // 기본: 한국어 그대로
@@ -167,50 +160,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function localizeOptionValueArray(values) {
         if (!Array.isArray(values)) return [];
         return values.map((item) => localizeOptionValueText(item));
-    }
-
-    function renderRaritySection(character) {
-        const currentCharacterName = new URLSearchParams(window.location.search).get('name') || window.__CHARACTER_DEFAULT || '';
-        const latestCharacter = (currentCharacterName && typeof characterData !== 'undefined' && characterData && characterData[currentCharacterName])
-            ? characterData[currentCharacterName]
-            : null;
-        const renderCharacter = latestCharacter || character;
-        const raritySection = document.querySelector('.rarity-section');
-        if (!raritySection) return;
-
-        if (!renderCharacter || !renderCharacter.rarity) {
-            raritySection.innerHTML = '';
-            raritySection.style.display = 'none';
-            return;
-        }
-
-        raritySection.style.display = 'flex';
-        raritySection.style.gap = '2px';
-        raritySection.style.alignItems = 'center';
-
-        const starCount = renderCharacter.rarity;
-        const starType = renderCharacter.rarity === 4 ? 'star4.png' : 'star5.png';
-
-        raritySection.innerHTML = '';
-
-        for (let i = 0; i < starCount; i++) {
-            const star = document.createElement('img');
-            star.src = `${BASE_URL}/assets/img/character-detail/${starType}`;
-            star.alt = '★';
-            star.style.width = '20px';
-            star.style.height = '20px';
-            raritySection.appendChild(star);
-        }
-
-        try {
-            const limitImg = document.createElement('img');
-            limitImg.className = 'limit-icon';
-            limitImg.src = `${BASE_URL}/assets/img/character-detail/${renderCharacter.limit ? 'limit.png' : 'limit_non.png'}`;
-            limitImg.alt = renderCharacter.limit ? 'limit' : 'non_limit';
-            limitImg.style.width = '26px';
-            limitImg.style.margin = '4px 0 0 6px';
-            raritySection.appendChild(limitImg);
-        } catch (_) {}
     }
 
     // 세팅 정보 채우기
@@ -639,7 +588,44 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (_) {}
 
         // 레어도 섹션 설정
-        renderRaritySection(character);
+        const raritySection = document.querySelector('.rarity-section');
+        if (character.rarity) {
+            raritySection.style.display = 'flex';
+            raritySection.style.gap = '2px';
+            raritySection.style.alignItems = 'center'; // 세로 가운데 정렬
+
+            const starCount = character.rarity;
+            const starType = character.rarity === 4 ? 'star4.png' : 'star5.png';
+
+            // 기존 내용 제거
+            raritySection.innerHTML = '';
+
+            // 별 이미지 추가
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('img');
+                star.src = `${BASE_URL}/assets/img/character-detail/${starType}`;
+                star.alt = '★';
+                star.style.width = '20px';
+                star.style.height = '20px';
+                raritySection.appendChild(star);
+            }
+
+            // 한정 여부 아이콘을 rarity-section 내부(오른쪽)에 추가
+            try {
+                // 기존 아이콘 제거 (중복 방지)
+                const oldIcon = raritySection.querySelector('img.limit-icon');
+                if (oldIcon) oldIcon.remove();
+
+                const limitImg = document.createElement('img');
+                limitImg.className = 'limit-icon';
+                limitImg.src = `${BASE_URL}/assets/img/character-detail/${character.limit ? 'limit.png' : 'limit_non.png'}`;
+                limitImg.alt = character.limit ? 'limit' : 'non_limit';
+                limitImg.style.width = '26px';
+                limitImg.style.margin = '4px 0 0 6px';
+
+                raritySection.appendChild(limitImg);
+            } catch (_) { }
+        }
 
         // 속성 위치 계산
         function setElementPositions(elementType) {
@@ -750,12 +736,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (characterName && characterData[characterName]) {
         const character = characterData[characterName];
-        const getRenderableCharacter = () => {
-            if (typeof characterData !== 'undefined' && characterData && characterData[characterName]) {
-                return characterData[characterName];
-            }
-            return character;
-        };
 
         // 페르소나3 캐릭터 스타일/텍스트 적용 (안전 실행)
         safeRun('persona3-css-and-text', () => {
@@ -792,8 +772,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const lang = getCurrentLanguage();
 
             // 한국어는 바로 실행
-            if (lang === 'kr') {
-                fillSettingsInfo(getRenderableCharacter());
+            if (isKrLikeLanguage(lang)) {
+                fillSettingsInfo(character);
                 return;
             }
 
@@ -804,7 +784,7 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             if (isReady()) {
-                fillSettingsInfo(getRenderableCharacter());
+                fillSettingsInfo(character);
                 return;
             }
 
@@ -815,7 +795,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const tick = () => {
                 if (isReady() || attempts++ >= maxAttempts) {
                     // 준비되었거나 타임아웃이면 일단 렌더 (타임아웃이면 한국어 이름일 수 있음)
-                    fillSettingsInfo(getRenderableCharacter());
+                    fillSettingsInfo(character);
                 } else {
                     setTimeout(tick, 50);
                 }
@@ -840,6 +820,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (lang === 'jp') {
                 return c.name_jp || c.name_en || characterName || c.name || '';
             }
+            if (lang === 'cn') {
+                return c.name_cn || c.name || characterName || '';
+            }
             return c.name || characterName || '';
         };
 
@@ -851,7 +834,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const waitForLocalizedNameAndApply = () => {
             const lang = getCurrentLanguage();
-            if (lang === 'kr') {
+            if (isKrLikeLanguage(lang)) {
                 applyHeaderNames();
                 return;
             }
@@ -889,29 +872,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 waitForLocalizedNameAndApply();
             });
         });
-        safeRun('characterDataReady', () => {
-            const rerenderCharacterMeta = () => {
-                const updatedCharacter = (typeof characterData !== 'undefined' && characterData && characterData[characterName])
-                    ? characterData[characterName]
-                    : null;
-                if (!updatedCharacter) return;
-                fillSettingsInfo(updatedCharacter);
-                waitForLocalizedNameAndApply();
-                if (typeof window.fillRoleAndTag === 'function') {
-                    window.fillRoleAndTag();
-                }
-            };
-
-            window.addEventListener('characterDataReady', (event) => {
-                const detailName = event && event.detail ? event.detail.characterName : '';
-                if (detailName && detailName !== characterName) return;
-                rerenderCharacterMeta();
-            });
-
-            if (window.__CHARACTER_DATA_READY__ && (!window.__CHARACTER_DATA_READY__.characterName || window.__CHARACTER_DATA_READY__.characterName === characterName)) {
-                rerenderCharacterMeta();
-            }
-        });
 
         // role과 tag 정보 채우기 함수
         function fillRoleAndTag() {
@@ -920,7 +880,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!roleElement || !tagElement) return;
 
             const currentLang = getCurrentLanguage();
-            const shouldHideTag = currentLang === 'en' || currentLang === 'jp';
             const urlParams2 = new URLSearchParams(window.location.search);
             const characterName2 = urlParams2.get('name') || window.__CHARACTER_DEFAULT || '';
             if (!characterName2 || !characterData || !characterData[characterName2]) return;
@@ -936,7 +895,10 @@ document.addEventListener('DOMContentLoaded', () => {
             else if (currentLang === 'jp' && mergedCharacter2.role_jp) {
                 roleElement.textContent = mergedCharacter2.role_jp;
             }
-            else if (mergedCharacter2.role && currentLang === 'kr') {
+            else if (currentLang === 'cn' && mergedCharacter2.role_cn) {
+                roleElement.textContent = mergedCharacter2.role_cn;
+            }
+            else if (mergedCharacter2.role && isKrLikeLanguage(currentLang)) {
                 roleElement.textContent = mergedCharacter2.role;
             }
 
@@ -955,12 +917,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return hasAnyVideoId(mergedCharacter2.video);
             })();
 
-            if (shouldHideTag) {
-                tagElement.textContent = '';
-                tagElement.innerHTML = '';
-                tagElement.style.display = 'none';
-            } else if (!hasVideoForLang) {
-                tagElement.style.display = '';
+            if (!hasVideoForLang) {
                 tagElement.textContent = characterData2.tag;
 
                 if (currentLang === 'en' && characterData2.tag_en) {
@@ -968,6 +925,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 else if (currentLang === 'jp' && characterData2.tag_jp) {
                     tagElement.textContent = characterData2.tag_jp;
+                }
+                else if (currentLang === 'cn' && characterData2.tag_cn) {
+                    tagElement.textContent = characterData2.tag_cn;
                 }
                 
                 // tag 정보 채우기 (콤마로 분리하여 각각의 태그를 생성)
@@ -1209,7 +1169,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         //console.log('일본어 효과 데이터 없음:', japaneseKey);
                         //console.log('사용 가능한 키들:', Object.keys(translationData.sub_effects));
                     }
-                } else if (currentLang === 'kr'
+                } else if (isKrLikeLanguage(currentLang)
                     && typeof revelationData !== 'undefined'
                     && revelationData.sub_effects
                     && revelationData.sub_effects[revelation]) {
@@ -1228,7 +1188,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     const setTexts = {
                         kr: { set2: '2세트', set4: '4세트' },
                         en: { set2: '2-Set', set4: '4-Set' },
-                        jp: { set2: '2セット', set4: '4セット' }
+                        jp: { set2: '2セット', set4: '4セット' },
+                        cn: { set2: '2件套', set4: '4件套' }
                     };
                     const setText = setTexts[currentLang] || setTexts.kr;
 
@@ -1272,7 +1233,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (translationData.set_effects[japaneseMainKey]) {
                         setEffectsData = translationData.set_effects[japaneseMainKey];
                     }
-                } else if (currentLang === 'kr'
+                } else if (isKrLikeLanguage(currentLang)
                     && typeof revelationData !== 'undefined'
                     && revelationData.set_effects
                     && revelationData.set_effects[revelation]) {
@@ -1385,22 +1346,11 @@ document.addEventListener('DOMContentLoaded', () => {
     window.createRevelationValue = createRevelationValue;
     window.translateRevelationName = translateRevelationName;
 
-    function isJnCCharacter(characterName, characterInfo) {
-        return characterName === 'J&C' || (characterInfo && characterInfo.codename === 'J&C');
-    }
-
     // 스킬 정보 채우기 (전역 함수로 설정)
     window.fillSkillsInfo = function (characterName) {
         // console.log('fillSkillsInfo 호출됨:', characterName);
 
         const skillsGrid = document.querySelector('.skills-grid');
-        if (!skillsGrid) return;
-        const existingButtons = skillsGrid.parentElement
-            ? skillsGrid.parentElement.querySelector('.skill-level-buttons')
-            : null;
-        if (existingButtons) {
-            existingButtons.remove();
-        }
 
         // 현재 언어 확인
         const currentLang = getCurrentLanguage();
@@ -1414,8 +1364,6 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (currentLang === 'jp' && typeof window.jpCharacterSkillsData !== 'undefined' && window.jpCharacterSkillsData[characterName]) {
             character = window.jpCharacterSkillsData[characterName];
             // console.log('일본어 스킬 데이터 사용:', character);
-        } else if (currentLang === 'cn' && typeof window.cnCharacterSkillsData !== 'undefined' && window.cnCharacterSkillsData[characterName]) {
-            character = window.cnCharacterSkillsData[characterName];
         } else {
             character = characterSkillsData[characterName];
             // console.log('한국어 스킬 데이터 사용:', character);
@@ -1477,12 +1425,12 @@ document.addEventListener('DOMContentLoaded', () => {
         // 스킬 순서 정의
         let skillTypes = ['skill1', 'skill2', 'skill3', 'skill_highlight', 'passive1', 'passive2'];
 
-        if (isJnCCharacter(characterName, characterInfo)) {
+        if (characterInfo.name === "J&C" || characterInfo.name === "쥐스틴 & 카롤린" || characterInfo.name === "쥐스틴&카롤린") {
             skillTypes = ['skill1', 'skill2', 'skill3', 'skill4', 'skill5', 'skill_highlight', 'passive1', 'passive2'];
         }
 
         // 페르소나3 캐릭터인 경우 추가 스킬 포함
-        if (characterInfo.persona3 && characterInfo.codename === "MAKOTO") {
+        if (characterInfo.persona3 && characterInfo.name === "유키 마코토") {
             skillTypes = ['skill1', 'skill2', 'skill3', 'skill_highlight', 'skill_highlight2', 'skill_support', 'passive1', 'passive2'];
         }
 
@@ -1575,15 +1523,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 100);
         }
     };
-
-    safeRun('fillSkillsInfo:languageDetected', () => {
-        window.addEventListener('languageDetected', () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const characterName = urlParams.get('name') || window.__CHARACTER_DEFAULT || '';
-            if (!characterName || typeof window.fillSkillsInfo !== 'function') return;
-            window.fillSkillsInfo(characterName);
-        });
-    });
 
     // 심상 코어(innate) 정보 채우기
     window.fillInnateInfo = function (characterName) {
@@ -1774,8 +1713,6 @@ document.addEventListener('DOMContentLoaded', () => {
             character = window.enCharacterSkillsData[characterName];
         } else if (currentLang === 'jp' && typeof window.jpCharacterSkillsData !== 'undefined' && window.jpCharacterSkillsData[characterName]) {
             character = window.jpCharacterSkillsData[characterName];
-        } else if (currentLang === 'cn' && typeof window.cnCharacterSkillsData !== 'undefined' && window.cnCharacterSkillsData[characterName]) {
-            character = window.cnCharacterSkillsData[characterName];
         } else {
             character = (typeof window.characterSkillsData !== 'undefined' && window.characterSkillsData[characterName])
                 ? window.characterSkillsData[characterName]
@@ -1792,15 +1729,15 @@ document.addEventListener('DOMContentLoaded', () => {
         let skillTypes = ['skill1', 'skill2', 'skill3', 'skill_highlight', 'passive1', 'passive2'];
 
         // 쥐스틴 & 카롤린 (J&C) 전용: skill4, skill5 포함
-        if (isJnCCharacter(characterName, characterInfo)) {
+        if (characterInfo.name === "J&C" || characterInfo.name === "쥐스틴 & 카롤린" || characterInfo.name === "쥐스틴&카롤린") {
             skillTypes = ['skill1', 'skill2', 'skill3', 'skill4', 'skill5', 'skill_highlight', 'passive1', 'passive2'];
         }
 
         // 페르소나3 캐릭터인 경우 추가 스킬 포함
-        if (characterInfo.persona3 && characterInfo.codename === "MAKOTO") {
+        if (characterInfo.persona3 && characterInfo.name === "유키 마코토") {
             skillTypes = ['skill1', 'skill2', 'skill3', 'skill_highlight', 'skill_highlight2', 'skill_support', 'passive1', 'passive2'];
         }
-        else if (characterInfo.persona3 && characterInfo.codename === "FUKA") {
+        else if (characterInfo.persona3 && characterInfo.name === "야마기시 후카") {
             skillTypes = ['skill1', 'skill2', 'skill3', 'skill_highlight', 'passive1', 'passive2'];
         }
         else if (characterInfo.persona3) {

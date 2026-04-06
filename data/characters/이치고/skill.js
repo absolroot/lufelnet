@@ -1,6 +1,8 @@
 window.characterSkillsData = window.characterSkillsData || {};
 window.enCharacterSkillsData = window.enCharacterSkillsData || {};
 window.jpCharacterSkillsData = window.jpCharacterSkillsData || {};
+window.cnCharacterSkillsData = window.cnCharacterSkillsData || {};
+
 window.characterSkillsData["이치고"] = {
   "name": "시카노 이치고",
   "skill1": {
@@ -46,6 +48,7 @@ window.characterSkillsData["이치고"] = {
     "cool": 0
   }
 };
+
 window.enCharacterSkillsData["이치고"] = {
   "name": "Ichigo Shikano",
   "skill1": {
@@ -89,6 +92,7 @@ window.enCharacterSkillsData["이치고"] = {
     "description": "When Ichigo is on the field, increase party's Damage Over Time Effect by 15%."
   }
 };
+
 window.jpCharacterSkillsData["이치고"] = {
   "name": "鹿野 苺",
   "skill1": {
@@ -132,13 +136,13 @@ window.jpCharacterSkillsData["이치고"] = {
     "description": "鹿野 苺がフィールドにいる時、味方全体の持続ダメージ効果が15.0%増加する。"
   }
 };
-window.cnCharacterSkillsData = window.cnCharacterSkillsData || {};
 
 window.cnCharacterSkillsData["이치고"] = {
   "name": "鹿野莓",
   "skill1": {
     "name": "红蝶断颈",
     "element": "주원",
+    "type": "单体伤害",
     "sp": 20,
     "cool": 1,
     "description": "对1名敌人造成129.0%/142.2%/137.0%/150.2%攻击力的诅咒属性伤害，并对其添加2层『怨念』。当目标当前生命值高于70%时，技能伤害提升200%。若技能击杀了目标，则额外触发一次技能效果（可连续触发）。"
@@ -146,6 +150,7 @@ window.cnCharacterSkillsData["이치고"] = {
   "skill2": {
     "name": "血蔷薇之吻",
     "element": "주원",
+    "type": "单体伤害",
     "sp": 20,
     "cool": 0,
     "description": "对1名敌人造成92.9%/102.4%/98.6%/108.1%攻击力的诅咒属性伤害，并对其添加4层『怨念』。"
@@ -153,25 +158,29 @@ window.cnCharacterSkillsData["이치고"] = {
   "skill3": {
     "name": "嘘！行刑时间到",
     "element": "주원",
+    "type": "单体伤害",
     "sp": 22,
     "cool": 0,
     "description": "对1名敌人造成221.6%/244.3%/235.2%/257.9%+『怨念』层数*11.7%/12.9%/12.4%/13.6%攻击力的诅咒属性伤害，『怨念』层数达到10层时，额外造成103.3%/113.8%/109.6%/120.2%攻击力的诅咒属性伤害；同时刷新『怨念』的持续时间。"
   },
+  "skill_highlight": {
+    "element": "주원",
+    "type": "单体伤害",
+    "cool": 4,
+    "description": "对1名敌人造成457.1%/503.9%/485.2%/532.0%攻击力的诅咒属性伤害，使『怨念』可触发暴击，持续3回合。立即结算1次目标身上所有类型的持续伤害效果并额外结算2次『怨念』效果。",
+    "name": "HIGHLIGHT"
+  },
   "passive1": {
     "name": "执念",
     "element": "패시브",
-    "cool": 0,
-    "description": "每有1层『贪恋』，自身攻击力提升15.0%。"
+    "description": "每有1层『贪恋』，自身攻击力提升15.0%。",
+    "cool": 0
   },
   "passive2": {
     "name": "依恋",
     "element": "패시브",
-    "cool": 0,
-    "description": "鹿野莓在场时，所有友方的持续伤害效果提升15.0%。"
-  },
-  "skill_highlight": {
-    "element": "주원",
-    "cool": 4,
-    "description": "对1名敌人造成457.1%/503.9%/485.2%/532.0%攻击力的诅咒属性伤害，使『怨念』可触发暴击，持续3回合。立即结算1次目标身上所有类型的持续伤害效果并额外结算2次『怨念』效果。"
+    "description": "鹿野莓在场时，所有友方的持续伤害效果提升15.0%。",
+    "cool": 0
   }
 };
+

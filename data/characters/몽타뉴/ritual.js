@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["몽타뉴"] = {
   "name": "코토네 몽타뉴",
   "r0": "칼끝의 댄서",
@@ -18,6 +20,7 @@ window.ritualData["몽타뉴"] = {
   "r6": "시공간의 법칙",
   "r6_detail": "전투 시작 시 『얼음 결정』 4개를 획득하고, 『얼음 결정』은 최대 15개까지 획득 가능하다."
 };
+
 window.enCharacterRitualData["몽타뉴"] = {
   "name": "Kotone Montagne",
   "r0": "Blade Dancer",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["몽타뉴"] = {
   "r6": "Opening Ceremony",
   "r6_detail": "At the start of battle, gain 4 Ice Crystal stacks. Increase the maximum number of Ice Crystal stacks to 15."
 };
+
 window.jpCharacterRitualData["몽타뉴"] = {
   "name": "琴音・モンターニュ",
   "r0": "氷上の舞姫",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["몽타뉴"] = {
   "r6": "オープニングセレモニー",
   "r6_detail": "戦闘開始時、『氷晶』を４つ獲得する。『氷晶』が最大１５まで累積できるようになる。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["몽타뉴"] = {
   "name": "琴音·蒙塔涅",
@@ -71,3 +74,4 @@ window.cnCharacterRitualData["몽타뉴"] = {
   "r6": "时空定格",
   "r6_detail": "战斗开始时，获得『冰晶』4颗，『冰晶』最大数量提升至15。"
 };
+

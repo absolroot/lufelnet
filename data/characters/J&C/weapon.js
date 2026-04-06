@@ -1,6 +1,8 @@
 window.WeaponData = window.WeaponData || {};
 window.enCharacterWeaponData = window.enCharacterWeaponData || {};
 window.jpCharacterWeaponData = window.jpCharacterWeaponData || {};
+window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
+
 window.WeaponData["J&C"] = {
   "weapon4-1": {
     "name": "강인한 사자",
@@ -20,6 +22,7 @@ window.WeaponData["J&C"] = {
     "description": "공격력이 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0% 증가한다.\n『둘이 하나 되는 페르소나』 시전 시 자신의 『페르소나 성능』이 10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0% 증가한다.\n자신이 임의 『모습』 획득 후 2턴 동안 아군 전체의 크리티컬 효과가 13.0%/17.0%/17.0%/21.0%/21.0%/25.0%/25.0% 증가하고, 대미지가 13.0%/17.0%/17.0%/21.0%/21.0%/25.0%/25.0% 증가한다(2회 중첩 가능)."
   }
 };
+
 window.enCharacterWeaponData["J&C"] = {
   "weapon5-1": {
     "name": "Warden's Judgement",
@@ -38,6 +41,7 @@ window.enCharacterWeaponData["J&C"] = {
     "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.\nWhen Two Masks as One is activated, increase Attack by 22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0% for 2 turns."
   }
 };
+
 window.jpCharacterWeaponData["J&C"] = {
   "weapon5-1": {
     "name": "群青の審判",
@@ -56,21 +60,25 @@ window.jpCharacterWeaponData["J&C"] = {
     "description": "攻撃力が12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%上昇する。\n『二者合一の仮面』を発動した時、２ターンの間、自身の攻撃力が22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0%上昇する。"
   }
 };
-window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
 
 window.cnCharacterWeaponData["J&C"] = {
-  "weapon5-1": {
-    "name": "群青的审判",
-    "health": 2378.39,
-    "attack": 660.68,
-    "defense": 440.46,
-    "description": "攻击力提升30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%。\n释放『二元合一的面具』时，自身『面具强度』提升10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0%。\n自身获得任意『相貌』后，使友方全体暴击效果提升13.0%/17.0%/17.0%/21.0%/21.0%/25.0%/25.0%、伤害提升13.0%/17.0%/17.0%/21.0%/21.0%/25.0%/25.0%，持续2回合，上限2层。"
-  },
   "weapon4-1": {
     "name": "刚毅的使者",
-    "health": 1902.74,
     "attack": 528.55,
     "defense": 352.36,
+    "health": 1902.74,
+    "skill_name": "",
     "description": "攻击力提升12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%。\n自身释放『二元合一的面具』后，使自身攻击力提升22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0%，持续2回合。"
-  }
+  },
+  "weapon5-1": {
+    "name": "群青的审判",
+    "attack": 660.68,
+    "defense": 440.46,
+    "health": 2378.39,
+    "highlight": true,
+    "skill_name": "",
+    "description": "攻击力提升30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%。\n释放『二元合一的面具』时，自身『面具强度』提升10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0%。\n自身获得任意『相貌』后，使友方全体暴击效果提升13.0%/17.0%/17.0%/21.0%/21.0%/25.0%/25.0%、伤害提升13.0%/17.0%/17.0%/21.0%/21.0%/25.0%/25.0%，持续2回合，上限2层。"
+  },
+  "name": "芮丝汀娜&卡萝莉娜"
 };
+

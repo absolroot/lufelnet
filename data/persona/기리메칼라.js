@@ -16,6 +16,7 @@ window.personaFiles["기리메칼라"] = {
   "tier_desc": "받는 대미지 감소 효과가 필요할 때 채용한다. 전투를 수행하면 대부분 상대에게 어떤 형태로든 디버프가 들어가기 때문에 사실상 본능 효과는 상시 발동한다.",
   "tier_desc_en": "Used when damage reduction is needed. Since most battles end up inflicting some kind of debuff on enemies, its talent is effectively active at all times.",
   "tier_desc_jp": "被ダメージ減少効果が必要な時に採用する。実戦では大半の場合、敵に何らかのデバフが入るため、本能効果は実質常時発動に近い。",
+  "tier_desc_cn": "需要减伤效果时会选用。实战中敌人通常都会挂上某种减益，因此它的本能效果基本可以视为常驻生效。",
   "comment": "",
   "comment_en": "",
   "comment_jp": "",

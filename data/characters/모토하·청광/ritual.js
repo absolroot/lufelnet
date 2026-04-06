@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["모토하·청광"] = {
   "name": "아라이 모토하·청광",
   "r0": "어둠을 가르는 섬광",
@@ -54,7 +56,7 @@ window.jpCharacterRitualData["모토하·청광"] = {
   "r6": "運命を再構築する冠",
   "r6_detail": "『光影流転』の上限が9スタック追加され、戦闘開始時に『光影流転』を9スタック獲得する.\n『黄昏の余暉』を発動するたびに『重塑』を1つ獲得する. 『重塑』：『黄昏の余暉』のスキルダメージが5%上昇する（最大5スタック, 独立加算）."
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.cnCharacterRitualData["모토하·청광"] = {
   "name": "新井素羽·晴光",
   "r0": "划破黑暗的闪光",
@@ -72,3 +74,4 @@ window.cnCharacterRitualData["모토하·청광"] = {
   "r6": "重构命运的冠冕",
   "r6_detail": "『光影流转』的可叠加上限提升9层，战斗开始时，新井素羽·晴光获得9层『光影流转』。\n新井素羽·晴光每次释放『黄昏之余晖』时，获得一层『重塑』：『黄昏之余晖』的技能伤害提升5%，可叠加5层（此效果为独立加成）。"
 };
+

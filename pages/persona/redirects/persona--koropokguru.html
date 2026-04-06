@@ -18,12 +18,12 @@ sitemap: false
       params.delete("lang");
       params.delete("name");
       params.delete("persona");
-      var languageTargets = {"kr":"/kr/persona/koropokguru/","en":"/en/persona/koropokguru/","jp":"/jp/persona/koropokguru/"};
+      var languageTargets = {"kr":"/kr/persona/koropokguru/","en":"/en/persona/koropokguru/","jp":"/jp/persona/koropokguru/","cn":"/cn/persona/koropokguru/"};
       var defaultPath = "/en/persona/koropokguru/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

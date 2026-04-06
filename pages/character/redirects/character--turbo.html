@@ -17,12 +17,12 @@ sitemap: false
       var requestedLang = params.get("lang");
       params.delete("lang");
       params.delete("name");
-      var languageTargets = {"kr":"/kr/character/turbo/","en":"/en/character/turbo/","jp":"/jp/character/turbo/"};
+      var languageTargets = {"kr":"/kr/character/turbo/","en":"/en/character/turbo/","jp":"/jp/character/turbo/","cn":"/cn/character/turbo/"};
       var defaultPath = "/en/character/turbo/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

@@ -16,6 +16,7 @@ window.personaFiles["요시츠네"] = {
   "tier_desc": "원더를 메인 딜러로서 활용할 때 사용된다.",
   "tier_desc_en": "Adopt this persona when using WONDER as main dealer.",
   "tier_desc_jp": "WONDERをメインアタッカーとして利用する場合、このペルソナを採用する。",
+  "tier_desc_cn": "在把 WONDER 当作主输出使用时会采用。",
   "comment": "",
   "comment_en": "",
   "comment_jp": "",

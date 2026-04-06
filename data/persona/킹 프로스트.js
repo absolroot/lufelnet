@@ -16,6 +16,7 @@ window.personaFiles["킹 프로스트"] = {
   "tier_desc": "실드와 방어력 증가에 특화된 페르소나로 아군의 생존력을 높인다.",
   "tier_desc_en": "A Persona specialized in shields and Defense increase, improving the party's survivability.",
   "tier_desc_jp": "シールドと防御力上昇に特化したペルソナで、味方の生存力を高める。",
+  "tier_desc_cn": "是专精护盾与防御力提升的人格面具，能够提高队伍的生存能力。",
   "comment": "",
   "comment_en": "",
   "comment_jp": "",

@@ -22,9 +22,9 @@ const ROOT = path.resolve(__dirname, '..', '..');
 const OUTPUT_DIR = path.join(ROOT, 'pages', 'character');
 const ROOT_STUB_DIR = path.join(OUTPUT_DIR, 'roots');
 
-const DETAIL_LANGS = ['kr', 'en', 'jp'];
-const LIST_PAGE_LANGS = ['kr', 'en', 'jp'];
-const ROOT_REDIRECT_LANGS = ['cn'];
+const DETAIL_LANGS = ['kr', 'en', 'jp', 'cn'];
+const LIST_PAGE_LANGS = ['kr', 'en', 'jp', 'cn'];
+const ROOT_REDIRECT_LANGS = [];
 
 const characterInfoPath = path.join(ROOT, 'data', 'character_info.js');
 const seoMetaPath = path.join(ROOT, 'i18n', 'pages', 'character', 'seo-meta.json');
@@ -170,6 +170,9 @@ function getDisplayName(krName, lang, charEntry) {
   if (lang === 'jp') {
     return normalizeName(charEntry?.name_jp) || normalizeName(charEntry?.name_en) || normalizeName(charEntry?.codename) || krName;
   }
+  if (lang === 'cn') {
+    return normalizeName(charEntry?.name_cn) || normalizeName(charEntry?.name) || krName;
+  }
   return krName;
 }
 
@@ -182,6 +185,7 @@ function renderCharacterPage({ lang, slug, characterKrName, title, description, 
   const altKo = `/kr/character/${slug}/`;
   const altEn = `/en/character/${slug}/`;
   const altJp = `/jp/character/${slug}/`;
+  const altCn = `/cn/character/${slug}/`;
   return [
     '---',
     'layout: default',
@@ -201,6 +205,7 @@ function renderCharacterPage({ lang, slug, characterKrName, title, description, 
     `  ko: ${altKo}`,
     `  en: ${altEn}`,
     `  jp: ${altJp}`,
+    `  'zh-CN': ${altCn}`,
     '---',
     '{% include character-detail-body.html %}',
     ''
@@ -256,7 +261,8 @@ function buildDetailLangTargets(domain, slug) {
   return {
     kr: `/kr/${domain}/${slug}/`,
     en: `/en/${domain}/${slug}/`,
-    jp: `/jp/${domain}/${slug}/`
+    jp: `/jp/${domain}/${slug}/`,
+    cn: `/cn/${domain}/${slug}/`
   };
 }
 
@@ -290,8 +296,8 @@ function renderDetailRedirectStub({ fromPath, toPath, languageTargets = null }) 
     `      var defaultPath = ${JSON.stringify(fallbackPath)};`,
     '      function normalizeLang(raw) {',
     '        var value = String(raw || "").toLowerCase();',
-    '        if (value === "kr" || value === "en" || value === "jp") return value;',
-    '        if (value === "cn" || value === "tw" || value === "sea") return "en";',
+    '        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;',
+    '        if (value === "tw" || value === "sea") return "en";',
     '        return "";',
     '      }',
     '      function detectReferrerLang() {',

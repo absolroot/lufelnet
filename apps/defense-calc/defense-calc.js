@@ -78,18 +78,33 @@ class DefenseCalc {
     }
 
     normalizeCalcLang(rawLang) {
+        try {
+            if (typeof window.normalizeLanguage === 'function') {
+                return window.normalizeLanguage(rawLang);
+            }
+        } catch (_) {}
         const lang = String(rawLang || '').trim().toLowerCase();
         if (lang === 'kr' || lang === 'ko') return 'kr';
         if (lang === 'en') return 'en';
         if (lang === 'jp' || lang === 'ja') return 'jp';
-        // defense-calc 페이지팩은 kr/en/jp만 제공되므로 나머지는 en으로 폴백
-        if (lang === 'cn' || lang === 'tw' || lang === 'sea') return 'en';
+        if (lang === 'cn' || lang === 'zh') return 'cn';
+        if (lang === 'tw' || lang === 'sea') return 'en';
         return 'kr';
+    }
+
+    isKrLikeLanguage(rawLang = this.getCurrentLang()) {
+        try {
+            if (typeof window.isKrLikeLanguage === 'function') {
+                return !!window.isKrLikeLanguage(rawLang);
+            }
+        } catch (_) {}
+        const lang = this.normalizeCalcLang(rawLang);
+        return lang === 'kr' || lang === 'cn';
     }
 
     getCurrentLang() {
         try {
-            const pathMatch = String(window.location.pathname || '').match(/^\/(kr|en|jp)(\/|$)/i);
+            const pathMatch = String(window.location.pathname || '').match(/^\/(kr|en|jp|cn)(\/|$)/i);
             if (pathMatch && pathMatch[1]) {
                 return this.normalizeCalcLang(pathMatch[1]);
             }
@@ -270,6 +285,7 @@ class DefenseCalc {
             if (typeof characterData !== 'undefined' && characterData[groupName]) {
                 if (lang === 'en') return characterData[groupName].codename || groupName;
                 if (lang === 'jp') return characterData[groupName].name_jp || groupName;
+                if (lang === 'cn') return characterData[groupName].name_cn || groupName;
             }
         } catch (_) { }
         return groupName;
@@ -743,7 +759,9 @@ class DefenseCalc {
         // 목표 열
         const targetCell = document.createElement('td');
         targetCell.className = 'target-column';
-        targetCell.textContent = this.normalizeTextForLang(data.target);
+        const currentLang = this.getCurrentLang();
+        const targetText = (currentLang === 'cn' && data.target_cn) ? data.target_cn : this.normalizeTextForLang(data.target);
+        targetCell.textContent = targetText;
         targetCell.setAttribute('data-target', data.target);
         row.appendChild(targetCell);
 
@@ -774,22 +792,23 @@ class DefenseCalc {
         // 스킬 이름 열 (분류 + 이름 결합)
         const skillNameCell = document.createElement('td');
         skillNameCell.className = 'skill-name-column';
-        const currentLang = this.getCurrentLang();
         let localizedName = '';
         // 기본: 현지화된 이름 우선
         if (currentLang === 'en') {
             localizedName = (data.skillName_en && String(data.skillName_en).trim()) ? data.skillName_en : '';
         } else if (currentLang === 'jp') {
             localizedName = (data.skillName_jp && String(data.skillName_jp).trim()) ? data.skillName_jp : '';
+        } else if (currentLang === 'cn') {
+            localizedName = (data.skillName_cn && String(data.skillName_cn).trim()) ? data.skillName_cn : '';
         }
         // 폴백 규칙: EN/JP에서도 원더 그룹의 전용무기/페르소나/스킬만 KR 이름으로 폴백 허용
         if (!localizedName) {
             const isWonder = groupName === '원더';
             const typeStr = String(data.type || '');
             const isWonderDisplayType = isWonder && (typeStr === '전용무기' || typeStr === '페르소나' || typeStr === '스킬');
-            if (currentLang !== 'kr' && isWonderDisplayType) {
+            if (!this.isKrLikeLanguage(currentLang) && isWonderDisplayType) {
                 localizedName = data.skillName || '';
-            } else if (currentLang === 'kr') {
+            } else if (this.isKrLikeLanguage(currentLang)) {
                 localizedName = data.skillName || '';
             } else {
                 // 그 외 언어/그룹은 폴백하지 않음 → 타입만 표시
@@ -799,7 +818,9 @@ class DefenseCalc {
 
         const typeSpan = document.createElement('span');
         typeSpan.className = 'skill-type-label';
-        typeSpan.textContent = this.normalizeTextForLang(data.type);
+        typeSpan.textContent = (currentLang === 'cn' && data.type_cn)
+            ? data.type_cn
+            : this.normalizeTextForLang(data.type);
 
         const nameSpan = document.createElement('span');
         nameSpan.className = 'skill-name-text';
@@ -811,7 +832,7 @@ class DefenseCalc {
         const hasNameText = localizedName && localizedName.trim();
         const shouldHideTypeLabel = isMobile && (isWonder || isRevelation) && hasNameText;
 
-        if (currentLang === 'kr') {
+        if (this.isKrLikeLanguage(currentLang)) {
             // KR: 분류 + 이름 모두 표기
             nameSpan.textContent = localizedName;
             if (!shouldHideTypeLabel) {
@@ -856,6 +877,8 @@ class DefenseCalc {
                 labelOptions = data.options_en;
             } else if (lang === 'jp' && Array.isArray(data.options_jp) && data.options_jp.length === baseOptions.length) {
                 labelOptions = data.options_jp;
+            } else if (lang === 'cn' && Array.isArray(data.options_cn) && data.options_cn.length === baseOptions.length) {
+                labelOptions = data.options_cn;
             }
 
             // values 매핑: 언어 우선, 폴백 KR
@@ -878,7 +901,7 @@ class DefenseCalc {
                 // value는 표시되는 언어 라벨로 설정하고, KR 키는 data-base로 보관 (폴백용)
                 optionElement.value = label;
                 optionElement.setAttribute('data-base', baseOpt);
-                optionElement.textContent = this.normalizeTextForLang(label);
+                optionElement.textContent = lang === 'cn' ? label : this.normalizeTextForLang(label);
                 // 저장된 옵션이 있으면 우선 적용, 없으면 기본값
                 if (savedOption !== null && baseOpt === savedOption) {
                     optionElement.selected = true;
@@ -978,7 +1001,9 @@ class DefenseCalc {
         // 지속시간 열
         const durationCell = document.createElement('td');
         durationCell.className = 'duration-column';
-        durationCell.textContent = this.normalizeTextForLang(data.duration);
+        durationCell.textContent = (currentLang === 'cn' && data.duration_cn)
+            ? data.duration_cn
+            : this.normalizeTextForLang(data.duration);
         row.appendChild(durationCell);
 
         // 비고 열
@@ -989,7 +1014,8 @@ class DefenseCalc {
         const lang = this.getCurrentLang();
         if (lang === 'en' && data.note_en) noteText = data.note_en;
         else if (lang === 'jp' && data.note_jp) noteText = data.note_jp;
-        noteCell.textContent = this.normalizeTextForLang(noteText);
+        else if (lang === 'cn' && data.note_cn) noteText = data.note_cn;
+        noteCell.textContent = lang === 'cn' ? noteText : this.normalizeTextForLang(noteText);
 
         // note가 비어있으면 행에 클래스 추가 (모바일에서 3행 제거용)
         if (!noteText || !noteText.trim()) {

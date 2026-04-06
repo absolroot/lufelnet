@@ -16,6 +16,7 @@ window.personaFiles["이시스"] = {
   "tier_desc": "동료를 치료하고, 2턴 동안 추가로 치료 효과를 준다. 별도의 힐이기 때문에 일종의 오버힐로서 적용될 수 있으며 치료 횟수나 오버힐 횟수에 영향을 받는 캐릭터에게 유효하다.",
   "tier_desc_en": "It heals an ally and also provides additional healing for 2 turns. Because that follow-up heal is separate, it can function like a kind of overheal and is effective for characters that care about the number of heals or overheal triggers.",
   "tier_desc_jp": "味方を回復し、さらに2ターンの間追加回復を付与する。追撃の回復は別扱いなので、一種のオーバーヒールとして機能でき、回復回数やオーバーヒール回数を参照するキャラに有効だ。",
+  "tier_desc_cn": "能治疗同伴，并在之后 2 回合额外提供治疗效果。由于这是独立的治疗，因此可以像一种过量治疗来运作，对会受治疗次数或过量治疗次数影响的角色尤其有效。",
   "comment": "공격 강화는 치료 수치에 적용된다. (영향력이 높지 않아 우선순위는 낮다)",
   "comment_en": "Attack enhancement applies to healing values. (Low priority due to limited impact)",
   "comment_jp": "アタックブースタは治療数値に適用される。（影響力が高くないため優先順位は低い）",

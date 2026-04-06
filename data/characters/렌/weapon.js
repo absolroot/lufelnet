@@ -1,6 +1,8 @@
 window.WeaponData = window.WeaponData || {};
 window.enCharacterWeaponData = window.enCharacterWeaponData || {};
 window.jpCharacterWeaponData = window.jpCharacterWeaponData || {};
+window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
+
 window.WeaponData["렌"] = {
   "name": "아마미야 렌",
   "weapon4-1": {
@@ -21,6 +23,7 @@ window.WeaponData["렌"] = {
     "description": "공격력이 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0% 증가한다. 『반역의 의지』 획득 시 2턴 동안 자신이 주는 주원 대미지가 10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0% 증가한다(3회 중첩 가능). 『반역의 의지』 획득 및 3중첩 이상일 시, 자신이 다음에 공격으로 주는 대미지가 23.0%/30.0%/30.0%/37.0%/37.0%/44.0%/44.0% 증가한다."
   }
 };
+
 window.enCharacterWeaponData["렌"] = {
   "name": "Ren Amamiya",
   "weapon4-1": {
@@ -38,6 +41,7 @@ window.enCharacterWeaponData["렌"] = {
     "description": "Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. After gaining Will of Rebellion, increase Ren's Curse damage by 10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0% for 2 turns. Stacks up to 3 times. At 3 or more Will of Rebellion stacks, increase Ren's next damage by 23.0%/30.0%/30.0%/37.0%/37.0%/44.0%/44.0%."
   }
 };
+
 window.jpCharacterWeaponData["렌"] = {
   "name": "雨宮 蓮",
   "weapon4-1": {
@@ -55,21 +59,25 @@ window.jpCharacterWeaponData["렌"] = {
     "description": "攻撃力が30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%上昇する。『反逆の意志』を獲得した時、２ターンの間、自身の呪怨属性の与ダメージが10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0%上昇する。この効果は最大３つまで累積できる。『反逆の意志』が３つ以上になった時、自身の次の与ダメージが23.0%/30.0%/30.0%/37.0%/37.0%/44.0%/44.0%上昇する。"
   }
 };
-window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
 
 window.cnCharacterWeaponData["렌"] = {
-  "weapon5-1": {
-    "name": "不死鸟",
-    "health": 2160.41,
-    "attack": 779.61,
-    "defense": 370,
-    "description": "攻击力提升30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%。获得『煞气』时，提升自身造成的诅咒伤害10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0%，持续2回合，可叠加3层。若获得『煞气』且层数不少于3层，则使自身下1次攻击造成的伤害提升23.0%/30.0%/30.0%/37.0%/37.0%/44.0%/44.0%。"
-  },
+  "name": "雨宫莲",
   "weapon4-1": {
     "name": "开山刀",
     "health": 1728.63,
     "attack": 623.35,
     "defense": 296.11,
+    "skill_name": "",
     "description": "攻击力提升12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%。攻击身上带有异常状态的敌人时，攻击力提升19.1%/24.8%/24.8%/30.5%/30.5%/36.2%/36.2%。"
+  },
+  "weapon5-1": {
+    "name": "不死鸟",
+    "health": 2160.41,
+    "attack": 779.61,
+    "defense": 370,
+    "highlight": true,
+    "skill_name": "",
+    "description": "攻击力提升30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%。获得『煞气』时，提升自身造成的诅咒伤害10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0%，持续2回合，可叠加3层。若获得『煞气』且层数不少于3层，则使自身下1次攻击造成的伤害提升23.0%/30.0%/30.0%/37.0%/37.0%/44.0%/44.0%。"
   }
 };
+

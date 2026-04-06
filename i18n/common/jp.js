@@ -369,6 +369,15 @@ window.I18N_COMMON_JP = {
         }
     },
 
+    // CN ベータ案内
+    cnBetaNotice: {
+        title: '中国語ローカライズ Beta',
+        bodyPrimary: '中国語ページは翻訳ベースで提供されているため、一部の文章が不自然だったり、ゲーム用語が正確でない場合があります。',
+        bodySecondary: 'また、一部のページや文言は未翻訳のまま、または韓国語のまま表示される場合があります。ご了承ください。',
+        dismissForever: '今後表示しない',
+        close: '確認'
+    },
+
     // ラベル
     labels: {
         total: '全体',

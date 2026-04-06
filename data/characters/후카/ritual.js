@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["후카"] = {
   "name": "야마기시 후카",
   "r0": "믿음직한 서포터",
@@ -18,6 +20,7 @@ window.ritualData["후카"] = {
   "r6": "자아의 가치",
   "r6_detail": "『오라클 전환』 시전에 소모되는 『소망의 청취』가 3중첩으로 감소한다.\n『신성한 기도』 시전 시, 추가로 『소망의 청취』를 2중첩 획득한다."
 };
+
 window.enCharacterRitualData["후카"] = {
   "name": "야마기시 후카",
   "r0": "Steadfast Supporter",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["후카"] = {
   "r6": "Self-Worth",
   "r6_detail": "Decrease [Wish Listener] cost of [Oracle Shift] to 3 stacks.\nWhen using [Holy Prayer], gain 2 bonus [Wish Listener] stacks."
 };
+
 window.jpCharacterRitualData["후카"] = {
   "name": "山岸 風花",
   "r0": "信頼されるサポーター",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["후카"] = {
   "r6": "自己確信",
   "r6_detail": "『啓示転換』使用時に消費する『願いの傾聴』が3スタックに減少する。『聖なる祈り』使用時、『願いの傾聴』を2スタック追加獲得する。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["후카"] = {
   "name": "山岸风花",
@@ -71,3 +74,4 @@ window.cnCharacterRitualData["후카"] = {
   "r6": "自我的价值",
   "r6_detail": "释放『神谕转换』消耗的『愿望聆听』减少至3层。\n释放『神圣祈祷』时，额外获得2层『愿望聆听』。"
 };
+

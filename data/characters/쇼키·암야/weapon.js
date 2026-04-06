@@ -1,6 +1,8 @@
 window.WeaponData = window.WeaponData || {};
 window.enCharacterWeaponData = window.enCharacterWeaponData || {};
 window.jpCharacterWeaponData = window.jpCharacterWeaponData || {};
+window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
+
 window.WeaponData["쇼키·암야"] = {
   "weapon4-1": {
     "name": "제왕들의 의지",
@@ -20,6 +22,7 @@ window.WeaponData["쇼키·암야"] = {
     "description": "크리티컬 효과가 36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0% 증가한다. 『암야의 계약』 보유 시 공격력이 42.5%/55.0%/55.0%/67.5%/67.5%/80.0%/80.0% 증가한다. 스킬 시전으로 자신의 생명 소모 시 2턴 동안 자신의 크리티컬 확률이 16.4%/21.4%/21.4%/26.4%/26.4%/31.4%/31.4% 증가한다."
   }
 };
+
 window.enCharacterWeaponData["쇼키·암야"] = {
   "name": "Shoki·Notte",
   "weapon4-1": {
@@ -39,6 +42,7 @@ window.enCharacterWeaponData["쇼키·암야"] = {
     "description": "Increase critical damage by 36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%.When user has [Night's Contract], increase Attack by 42.5%/55.0%/55.0%/67.5%/67.5%/80.0%/80.0%.When spending HP to use skills, increase user's critical rate by 16.4%/21.4%/21.4%/26.4%/26.4%/31.4%/31.4% for 2 turns."
   }
 };
+
 window.jpCharacterWeaponData["쇼키·암야"] = {
   "name": "",
   "weapon4-1": {
@@ -58,21 +62,25 @@ window.jpCharacterWeaponData["쇼키·암야"] = {
     "description": "クリティカル効果が36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%上昇する。『暗夜の契約』を保有している場合、攻撃力が42.5%/55.0%/55.0%/67.5%/67.5%/80.0%/80.0%上昇する。\nスキル発動時に自身のHPを消費すると、クリティカル率が16.4%/21.4%/21.4%/26.4%/26.4%/31.4%/31.4%上昇し、2ターン持続する。"
   }
 };
-window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
 
 window.cnCharacterWeaponData["쇼키·암야"] = {
-  "weapon5-1": {
-    "name": "诸神王庭",
-    "health": 2398.2,
-    "attack": 753.13,
-    "defense": 378.78,
-    "description": "暴击效果提升36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%。拥有『暗夜契约』时，攻击力提升42.5%/55.0%/55.0%/67.5%/67.5%/80.0%/80.0%。释放技能消耗自身生命值时，使自身暴击率提升16.4%/21.4%/21.4%/26.4%/26.4%/31.4%/31.4%，持续2回合。"
-  },
   "weapon4-1": {
     "name": "众王之意志",
     "health": 1918.23,
     "attack": 602.36,
     "defense": 302.89,
+    "skill_name": "",
     "description": "攻击力提升12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%。获得『暗夜祝福』时，使自身造成伤害提升3.5%/4.5%/4.5%/5.5%/5.5%/6.5%/6.5%，可叠加5层，持续2回合。"
-  }
+  },
+  "weapon5-1": {
+    "name": "诸神王庭",
+    "health": 2398.2,
+    "attack": 753.13,
+    "defense": 378.78,
+    "skill_name": "",
+    "highlight": true,
+    "description": "暴击效果提升36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%。拥有『暗夜契约』时，攻击力提升42.5%/55.0%/55.0%/67.5%/67.5%/80.0%/80.0%。释放技能消耗自身生命值时，使自身暴击率提升16.4%/21.4%/21.4%/26.4%/26.4%/31.4%/31.4%，持续2回合。"
+  },
+  "name": "池波星辉"
 };
+

@@ -17,12 +17,12 @@ sitemap: false
       var requestedLang = params.get("lang");
       params.delete("lang");
       params.delete("character");
-      var languageTargets = {"kr":"/kr/synergy/ange/","en":"/en/synergy/ange/","jp":"/jp/synergy/ange/"};
+      var languageTargets = {"kr":"/kr/synergy/ange/","en":"/en/synergy/ange/","jp":"/jp/synergy/ange/","cn":"/cn/synergy/ange/"};
       var defaultPath = "/en/synergy/ange/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

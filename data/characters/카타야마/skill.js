@@ -1,6 +1,8 @@
 window.characterSkillsData = window.characterSkillsData || {};
 window.enCharacterSkillsData = window.enCharacterSkillsData || {};
 window.jpCharacterSkillsData = window.jpCharacterSkillsData || {};
+window.cnCharacterSkillsData = window.cnCharacterSkillsData || {};
+
 window.characterSkillsData["카타야마"] = {
   "name": "카타야마 쿠미",
   "skill1": {
@@ -48,6 +50,7 @@ window.characterSkillsData["카타야마"] = {
     "cool": 0
   }
 };
+
 window.enCharacterSkillsData["카타야마"] = {
   "name": "Kumi Katayama",
   "skill1": {
@@ -93,6 +96,7 @@ window.enCharacterSkillsData["카타야마"] = {
     "description": "During battle, when Katayama's Speed is above 100, increase Attack by 24 points for every point of Speed above 100, up to 1920."
   }
 };
+
 window.jpCharacterSkillsData["카타야마"] = {
   "name": "片山 久未",
   "skill1": {
@@ -138,46 +142,52 @@ window.jpCharacterSkillsData["카타야마"] = {
     "description": "戦闘中、自身のSPDが100を超える場合、100を超えるごとにATK+24（最大1920）。"
   }
 };
-window.cnCharacterSkillsData = window.cnCharacterSkillsData || {};
 
 window.cnCharacterSkillsData["카타야마"] = {
   "name": "片山久未",
   "skill1": {
     "name": "激情回旋刃",
-    "element": "전격",
+    "element": "전격광역",
+    "type": "群体伤害",
     "sp": 22,
     "cool": 0,
     "description": "对所有敌人造成101.7%/112.1%/108.0%/118.4%攻击力的电击属性伤害，使目标获得『重创』：防御力降低9.8%/10.8%/10.4%/11.4%+片山久未每有10点速度降低2.22%，上限39.0%/43.0%/41.4%/45.4%、受到伤害提升7.8%/8.6%/8.3%/9.1%+片山久未每有10点速度提升1.78%，上限31.2%/34.4%/33.2%/36.4%，持续3回合。\n若自身拥有『超极限』，则额外提升本次技能30%技能伤害。\n解锁技能『奥义·闪光腿』。"
   },
   "skill2": {
     "name": "裁决雷击",
-    "element": "전격",
+    "element": "전격광역",
+    "type": "群体伤害",
     "sp": 20,
     "cool": 0,
     "description": "对所有敌人造成135.5%/149.3%/143.8%/157.7%攻击力的电击属性伤害，若技能造成伤害则无视适应性削减目标1点倒地值，并使目标获得『重创』：防御力降低9.8%/10.8%/10.4%/11.4%+片山久未每有10点速度降低2.22%，上限39.0%/43.0%/41.4%/45.4%、受到伤害提升7.8%/8.6%/8.3%/9.1%+片山久未每有10点速度提升1.78%，上限31.2%/34.4%/33.2%/36.4%，持续1回合。\n若自身拥有『超极限』，则额外削减目标3点倒地值，并使目标获得『击破』：倒地易伤提升，片山久未每有10点速度提升0.56%，上限9.8%/10.8%/10.4%/11.4%、受到伤害提升5.9%/6.5%/6.2%/6.8%+片山久未每有10点速度提升1.33%，上限23.4%/25.8%/24.9%/27.3%，持续1回合。"
   },
   "skill3": {
     "name": "奥义·闪光腿",
-    "element": "전격",
+    "element": "전격광역",
+    "type": "群体伤害",
     "sp": 25,
     "cool": 0,
     "description": "对所有敌人造成141.9%/156.5%/150.6%/165.2%攻击力的电击属性伤害，若技能造成伤害则无视适应性削减目标5点倒地值，并使目标获得『击破』：倒地易伤提升，片山久未每有10点速度提升0.56%，上限9.8%/10.8%/10.4%/11.4%、受到伤害提升5.9%/6.5%/6.2%/6.8%+片山久未每有10点速度提升1.33%，上限23.4%/25.8%/24.9%/27.3%，持续1回合。\n若该技能击倒任意目标，则自身获得『超极限』，持续2回合。\n『超极限』：强化下一次『激情回旋刃』和下一次『裁决雷击』的技能效果。"
   },
+  "skill_highlight": {
+    "name": "HIGHLIGHT",
+    "element": "전격광역",
+    "type": "群体伤害",
+    "sp": 0,
+    "cool": 4,
+    "description": "对所有敌人造成317.6%/350.1%/337.1%/369.7%攻击力的电击属性伤害，有50%的基础概率使敌人陷入『眩晕』状态，持续1回合，使其防御力永久降低29.3%/32.3%/31.1%/34.1%，该效果不可叠加。并使其受到伤害提升19.5%/21.5%/20.7%/22.7%，持续3回合。"
+  },
   "passive1": {
     "name": "训诫",
     "element": "패시브",
-    "cool": 0,
-    "description": "友方同伴攻击处于倒地状态的敌人时攻击力提升30.0%。"
+    "description": "友方同伴攻击处于倒地状态的敌人时攻击力提升30.0%。",
+    "cool": 0
   },
   "passive2": {
     "name": "热血",
     "element": "패시브",
-    "cool": 0,
-    "description": "战斗中，若自身速度高于100点，则超过100点的每点速度使自身攻击力提升24点，上限1920。"
-  },
-  "skill_highlight": {
-    "element": "전격",
-    "cool": 4,
-    "description": "对所有敌人造成317.6%/350.1%/337.1%/369.7%攻击力的电击属性伤害，有50%的基础概率使敌人陷入『眩晕』状态，持续1回合，使其防御力永久降低29.3%/32.3%/31.1%/34.1%，该效果不可叠加。并使其受到伤害提升19.5%/21.5%/20.7%/22.7%，持续3回合。"
+    "description": "战斗中，若自身速度高于100点，则超过100点的每点速度使自身攻击力提升24点，上限1920。",
+    "cool": 0
   }
 };
+

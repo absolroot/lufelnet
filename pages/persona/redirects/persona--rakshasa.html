@@ -18,12 +18,12 @@ sitemap: false
       params.delete("lang");
       params.delete("name");
       params.delete("persona");
-      var languageTargets = {"kr":"/kr/persona/rakshasa/","en":"/en/persona/rakshasa/","jp":"/jp/persona/rakshasa/"};
+      var languageTargets = {"kr":"/kr/persona/rakshasa/","en":"/en/persona/rakshasa/","jp":"/jp/persona/rakshasa/","cn":"/cn/persona/rakshasa/"};
       var defaultPath = "/en/persona/rakshasa/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

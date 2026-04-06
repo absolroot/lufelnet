@@ -16,6 +16,7 @@ window.personaFiles["쿠시나다히메"] = {
   "tier_desc": "영구적인 공격력 버프를 존재하지만 쿠시나다히메가 필드에 존재하지 않으면 사라져버리는 한계점을 지니고 있어 사실상 3턴 동안 쿠시나다히메를 고정해서 사용해야하는 한계점을 지니고 있다.",
   "tier_desc_en": "It has a permanent Attack buff, but the buff disappears if Kushinada leaves the field, so in practice you are forced to keep Kushinada active for 3 turns.",
   "tier_desc_jp": "永続攻撃力バフを持っているが、クシナダヒメがフィールドにいなくなると消えてしまうため、実質的には3ターンの間クシナダヒメを固定して使う必要がある。",
+  "tier_desc_cn": "虽然拥有常驻攻击力增益，但只要奇稻田姬离场，这个增益就会消失，因此实际上存在必须连续 3 回合让奇稻田姬站场的限制。",
   "comment": "",
   "comment_en": "",
   "comment_jp": "",

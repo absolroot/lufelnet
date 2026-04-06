@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["안"] = {
   "name": "타카마키 안",
   "r0": "매력 육성",
@@ -18,6 +20,7 @@ window.ritualData["안"] = {
   "r6": "완벽한 끝",
   "r6_detail": "적 공격 시 60%의 확률로 『몰두』가 추가 카운트 1을 획득한다. 『몰두』 상태에서는 카운트가 1 추가될 때마다 화염 대미지가 11% 증가하고, 최대 110% 증가한다."
 };
+
 window.enCharacterRitualData["안"] = {
   "name": "Ann Takamaki",
   "r0": "Passion",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["안"] = {
   "r6": "Time for Punishment",
   "r6_detail": "When attacking foes with Fire skills, 60% chance to gain 1 Passion stack.\nWhen La Vie en Rose is active, increase Fire damage by 11% per Passion stack spent (up to 110%)."
 };
+
 window.jpCharacterRitualData["안"] = {
   "name": "高巻 杏",
   "r0": "激情の踊り子",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["안"] = {
   "r6": "オシオキの時間",
   "r6_detail": "敵を火炎属性のスキルで攻撃した時、６０%の確率で『パッション』を１つ獲得する。\n『ラビアンローズ』状態になる時、消費した『パッション』１つごとに火炎属性の与ダメージがさらに１１%上昇し、最大１１０%まで上昇する。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["안"] = {
   "name": "高卷杏",
@@ -71,3 +74,4 @@ window.cnCharacterRitualData["안"] = {
   "r6": "完美谢幕",
   "r6_detail": "攻击敌人时，有60%概率额外使『潜心』获得1次额外计数，『潜心』状态下，每有1层计数，则火焰伤害提升11%，最多提升110%。"
 };
+

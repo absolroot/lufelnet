@@ -1,6 +1,8 @@
 window.WeaponData = window.WeaponData || {};
 window.enCharacterWeaponData = window.enCharacterWeaponData || {};
 window.jpCharacterWeaponData = window.jpCharacterWeaponData || {};
+window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
+
 window.WeaponData["사나다"] = {
   "name": "사나다 아키히코",
   "weapon4-1": {
@@ -21,6 +23,7 @@ window.WeaponData["사나다"] = {
     "description": "크리티컬 효과가 36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0% 증가한다.\n자신이 집념을 획득하면 2턴 동안 크리티컬 확률이 8.2%/10.7%/10.7%/13.2%/13.2%/15.7%/15.7% 증가한다(2회 중첩 가능). 자신의 페르소나 스킬/테우르기아/추가 효과로 크리티컬을 줄 시, 대미지가 34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0% 추가로 증가한다."
   }
 };
+
 window.enCharacterWeaponData["사나다"] = {
   "name": "Akihiko Sanada",
   "weapon4-1": {
@@ -40,6 +43,7 @@ window.enCharacterWeaponData["사나다"] = {
     "description": "Increase critical damage by 36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%.\nWhen user gains [Obsession], increase critical rate by 8.2%/10.7%/10.7%/13.2%/13.2%/15.7%/15.7 for 2 turns. Stacks up to 2 times. When dealing critical damage with a Persona skill/Theurgy/Resonance, increase damage by 34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0%."
   }
 };
+
 window.jpCharacterWeaponData["사나다"] = {
   "name": "真田 明彦",
   "weapon4-1": {
@@ -59,21 +63,25 @@ window.jpCharacterWeaponData["사나다"] = {
     "description": "CRT倍率が36.3%/36.3%/47.2%/47.2%/58.0%/58.0%/68.8%増加する。『執念』を獲得すると2ターンの間、クリティカル率が8.2%/10.7%/10.7%/13.2%/13.2%/15.7%/15.7%増加する（最大2回重複可能）。ペルソナスキル/テウルギア/追加効果でクリティカルを与えると、ダメージが34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0%追加で増加する。"
   }
 };
-window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
 
 window.cnCharacterWeaponData["사나다"] = {
-  "weapon5-1": {
-    "name": "萨巴兹乌斯",
-    "health": 2279.27,
-    "attack": 773.01,
-    "defense": 391.98,
-    "description": "暴击效果提升36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%。\n自身获得『执念』时，暴击率提升8.2%/10.7%/10.7%/13.2%/13.2%/15.7%/15.7%，上限2层，持续2回合。自身人格面具技能/神通法/追加效果造成暴击时，伤害额外获得提升34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0%。"
-  },
+  "name": "真田明彦",
   "weapon4-1": {
     "name": "地狱棘拳套",
     "health": 1823.43,
     "attack": 618.71,
     "defense": 313.75,
+    "skill_name": "",
     "description": "攻击力提升12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%。\n自身拥有2层及以上『斗志』时，攻击力提升22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0%。"
+  },
+  "weapon5-1": {
+    "name": "萨巴兹乌斯",
+    "health": 2279.27,
+    "attack": 773.01,
+    "defense": 391.98,
+    "highlight": true,
+    "skill_name": "",
+    "description": "暴击效果提升36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%。\n自身获得『执念』时，暴击率提升8.2%/10.7%/10.7%/13.2%/13.2%/15.7%/15.7%，上限2层，持续2回合。自身人格面具技能/神通法/追加效果造成暴击时，伤害额外获得提升34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0%。"
   }
 };
+

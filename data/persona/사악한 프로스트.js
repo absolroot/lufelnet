@@ -16,6 +16,7 @@ window.personaFiles["사악한 프로스트"] = {
   "tier_desc": "적의 다운이 필요한 기믹의 경우 활용 가능하다.",
   "tier_desc_en": "Can be used in gimmicks that require knocking enemies down.",
   "tier_desc_jp": "敵をダウンさせるギミックが必要な場合に活用できる。",
+  "tier_desc_cn": "在需要击倒敌人的机制中可以使用。",
   "comment": "",
   "comment_en": "",
   "comment_jp": "",

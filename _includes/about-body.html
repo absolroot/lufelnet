@@ -4,13 +4,13 @@
     var path = String(window.location.pathname || '/');
     var lowerPath = path.toLowerCase();
 
-    var pathLangMatch = lowerPath.match(/^\/(kr|en|jp)(\/|$)/);
+    var pathLangMatch = lowerPath.match(/^\/(kr|en|jp|cn)(\/|$)/);
     var pathLang = pathLangMatch ? pathLangMatch[1] : '';
     var queryLang = String(params.get('lang') || '').toLowerCase();
-    var effectiveLang = pathLang || (['kr', 'en', 'jp'].indexOf(queryLang) !== -1 ? queryLang : '');
+    var effectiveLang = pathLang || (['kr', 'en', 'jp', 'cn'].indexOf(queryLang) !== -1 ? queryLang : '');
 
     var isLegacyRoot = /^\/about\/?$/.test(lowerPath);
-    var isCanonicalPath = /^\/(kr|en|jp)\/about\/?$/.test(lowerPath);
+    var isCanonicalPath = /^\/(kr|en|jp|cn)\/about\/?$/.test(lowerPath);
 
     if (isLegacyRoot && effectiveLang) {
         window.__SEO_PATH_LANG__ = effectiveLang;
@@ -188,7 +188,6 @@
                             <li style="color:#ffd34e; font-weight:700;">Alyda</li> <!--100$ 26/01/21-->
                             <li style="color:#fff8e1">시아</li> <!--99$ 25/07/10-->
                             <li style="color:#ad7326">SpoonceDaSpoon</li> <!--54$ 26/01/20-->
-                            <li>카이류</li> <!--50000 26/02/23-->
                             <li>Arthur</li> <!--30$ 25/08/10-->
                             <li>EMajorinc</li> <!--30$ 26/01/21-->
                             <li>안*현</li> <!--30000 25/09/10-->
@@ -199,16 +198,12 @@
                             <li>ue</li> <!--15$ 25/09/09-->
                             <li>rudytudysubs</li><!--15$ 26/01/18-->
                             <li>ZexVolts</li><!--15$ 26/02/01-->
-                            <li>Mistiry Shak</li><!--15$ 26/02/20-->
-                            <li>Ciladis</li><!--15$ 26/02/23-->
                             <li>Trishelle</li> <!--12$ 26/01/20-->
                             <li>skippy</li> <!--12$ 26/01/21-->
                             <li>Chron</li> <!--12$ 26/02/01-->
                             <li>Xylex(SEA)</li> <!--6$ 25/11--> <!--6$ 26/01/29-->
-                            <li>fan</li> <!--10$ 26/02/20-->
                             <li>kai</li> <!--9$ 25/08/22-->
                             <li>김*환</li> <!--9$ 25/07/18-->
-                            <li>Pips</li> <!--9$ 26/02/10-->
                             <li>임*훈</li><!--10000 25/07/06-->
                             <li>김*현</li> <!--10000 25/05/18-->
                             <li>카미유</li> <!--10000 25/07/18-->
@@ -222,9 +217,7 @@
                             <li>Odderpop</li> <!--6$ 26/01/21-->
                             <li>lpmafiota</li> <!--6$ 26/01/31-->
                             <li>Ieat coffe</li> <!--6$ 26/01/31-->
-                            <li>Ulape</li><!--6$ 26/02/23-->
                             <li>Dinjoralo</li> <!--5$ 26/01/31-->
-                            <li>Katsuna</li> <!--5$ 26/02/20-->
                             <li>Nova</li> <!--3$ 26/01/07-->
                             <li>Nerecky</li> <!--3$ 25/09/10-->
                             <li>Main</li> <!--3$ 25/10/18-->
@@ -235,9 +228,6 @@
                             <li>Dddock</li><!--3$ 26/02/03-->
                             <li>Ravengod</li><!--3$ 26/02/03-->
                             <li>Night Phoenix</li><!--3$ 26/02/01-->
-                            <li>Oil Sykes</li><!--3$ 26/02/20-->
-                            <li>Anon</li><!--3$ 26/02/20-->
-                            <li>Grijas</li><!--3$ 26/02/20-->
                             <li>Ian</li><!--3000 25/06/20-->
                         </ul>
                     </div>
@@ -458,27 +448,27 @@
 <script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
 <script>
     function detectAboutLang() {
-        const pathMatch = window.location.pathname.match(/^\/(kr|en|jp)(\/|$)/i);
+        const pathMatch = window.location.pathname.match(/^\/(kr|en|jp|cn)(\/|$)/i);
         if (pathMatch) {
             return pathMatch[1].toLowerCase();
         }
 
         const params = new URLSearchParams(window.location.search);
         const queryLang = String(params.get('lang') || '').toLowerCase();
-        if (['kr', 'en', 'jp'].indexOf(queryLang) !== -1) {
+        if (['kr', 'en', 'jp', 'cn'].indexOf(queryLang) !== -1) {
             return queryLang;
         }
 
         if (typeof getCurrentLang === 'function') {
             const helperLang = String(getCurrentLang() || '').toLowerCase();
-            if (['kr', 'en', 'jp'].indexOf(helperLang) !== -1) {
+            if (['kr', 'en', 'jp', 'cn'].indexOf(helperLang) !== -1) {
                 return helperLang;
             }
         }
 
         if (typeof LanguageRouter !== 'undefined' && typeof LanguageRouter.getCurrentLanguage === 'function') {
             const routerLang = String(LanguageRouter.getCurrentLanguage() || '').toLowerCase();
-            if (['kr', 'en', 'jp'].indexOf(routerLang) !== -1) {
+            if (['kr', 'en', 'jp', 'cn'].indexOf(routerLang) !== -1) {
                 return routerLang;
             }
         }
@@ -544,7 +534,7 @@
         japaneseContent.forEach(el => el.style.display = 'none');
 
         // 현재 언어 콘텐츠만 표시
-        if (currentLang === 'kr') {
+        if ((window.isKrLikeLanguage && window.isKrLikeLanguage(currentLang)) || currentLang === 'kr') {
             koreanContent.forEach(el => el.style.display = 'block');
         } else if (currentLang === 'en') {
             englishContent.forEach(el => el.style.display = 'block');
@@ -560,7 +550,7 @@
         const donateButtonSection = donateButton ? donateButton.closest('.about-section') : null;
         const fanboxContainer = document.getElementById('fanbox-inline-container');
 
-        if (currentLang !== 'kr') {
+        if (!((window.isKrLikeLanguage && window.isKrLikeLanguage(currentLang)) || currentLang === 'kr')) {
             if (exchangeCodeSection) {
                 exchangeCodeSection.style.display = 'none';
             }
@@ -594,7 +584,17 @@
     }
 
     // 언어별 SEO 설정 함수
-        function updateSEOContent() {
+    function updateSEOContent() {
+        const metaDescription = document.querySelector('meta[name="description"]');
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        const ogDescription = document.querySelector('meta[property="og:description"]');
+        const ogUrl = document.querySelector('meta[property="og:url"]');
+        const ogLocale = document.querySelector('meta[property="og:locale"]');
+        const canonical = document.querySelector('link[rel="canonical"]');
+        const fallbackTitle = document.title || 'About - 페르소나5 더 팬텀 X 루페르넷';
+        const fallbackDescription = (metaDescription && metaDescription.getAttribute('content')) || '';
+        const seoTitle = getI18nText('seoTitle', fallbackTitle);
+        const seoDescription = getI18nText('seoDescription', fallbackDescription);
         const currentLang = detectAboutLang();
         if (window.SeoEngine && typeof window.SeoEngine.setContextHint === 'function') {
             window.SeoEngine.setContextHint({
@@ -606,7 +606,23 @@
         }
         if (window.SeoEngine && typeof window.SeoEngine.run === 'function') {
             window.SeoEngine.run();
+            return;
         }
+        const baseUrl = 'https://lufel.net';
+        const isPathLang = /^\/(kr|en|jp|cn)(\/|$)/i.test(window.location.pathname);
+        const currentUrl = isPathLang
+            ? `${baseUrl}/${currentLang}/about/`
+            : `${baseUrl}/about/`;
+        const locale = currentLang === 'jp' ? 'ja_JP' : currentLang === 'en' ? 'en_US' : currentLang === 'cn' ? 'zh_CN' : 'ko_KR';
+
+        document.title = seoTitle;
+        if (metaDescription) metaDescription.setAttribute('content', seoDescription);
+        if (ogTitle) ogTitle.setAttribute('content', seoTitle);
+        if (ogDescription) ogDescription.setAttribute('content', seoDescription);
+        if (ogUrl) ogUrl.setAttribute('content', currentUrl);
+        if (ogLocale) ogLocale.setAttribute('content', locale);
+        if (canonical) canonical.setAttribute('href', currentUrl);
+        document.documentElement.setAttribute('lang', currentLang === 'jp' ? 'ja' : currentLang === 'en' ? 'en' : currentLang === 'cn' ? 'zh' : 'ko');
     }
 
     document.addEventListener('DOMContentLoaded', async () => {
@@ -730,7 +746,7 @@
 
         // 언어에 따라 후원 방식 분기
         const currentLang = detectAboutLang();
-        if (currentLang === 'kr') {
+        if ((window.isKrLikeLanguage && window.isKrLikeLanguage(currentLang)) || currentLang === 'kr') {
             if (donateBtn && donateModal) {
                 donateBtn.onclick = function () {
                     donateModal.style.display = 'block';
@@ -820,18 +836,7 @@
             if (!updateList || !showMoreBtn) return;
 
             try {
-                const configuredPath = (typeof window.APP_UPDATES_CSV_PATH === 'string')
-                    ? window.APP_UPDATES_CSV_PATH.trim()
-                    : '';
-                const updatesPath = configuredPath || '/assets/version/updates.csv';
-                const rawUpdatesUrl = /^https?:\/\//i.test(updatesPath)
-                    ? updatesPath
-                    : `${BASE_URL}${updatesPath.startsWith('/') ? updatesPath : `/${updatesPath}`}`;
-                const updatesUrl = (window.VersionRuntime && typeof window.VersionRuntime.assetUrl === 'function')
-                    ? window.VersionRuntime.assetUrl(rawUpdatesUrl)
-                    : `${rawUpdatesUrl}?v=${APP_VERSION}`;
-
-                const response = await fetch(updatesUrl);
+                const response = await fetch(`${BASE_URL}/data/kr/updates.csv?v=${APP_VERSION}`);
                 const data = await response.text();
                 allUpdates = data.split('\n')
                     .slice(1)

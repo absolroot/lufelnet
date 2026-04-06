@@ -22,9 +22,9 @@ const ROOT = path.resolve(__dirname, '..', '..');
 const OUTPUT_DIR = path.join(ROOT, 'pages', 'wonder-weapon');
 const ROOT_STUB_DIR = path.join(OUTPUT_DIR, 'roots');
 
-const DETAIL_LANGS = ['kr', 'en', 'jp'];
-const LIST_PAGE_LANGS = ['kr', 'en', 'jp'];
-const ROOT_REDIRECT_LANGS = ['cn'];
+const DETAIL_LANGS = ['kr', 'en', 'jp', 'cn'];
+const LIST_PAGE_LANGS = ['kr', 'en', 'jp', 'cn'];
+const ROOT_REDIRECT_LANGS = [];
 
 const wonderPath = path.join(ROOT, 'data', 'kr', 'wonder', 'weapons.js');
 const seoMetaPath = path.join(ROOT, 'i18n', 'pages', 'wonder-weapon', 'seo-meta.json');
@@ -176,6 +176,9 @@ function getDisplayName(krName, lang, weaponEntry) {
   if (lang === 'jp') {
     return normalizeName(weaponEntry?.name_jp) || normalizeName(weaponEntry?.name_en) || krName;
   }
+  if (lang === 'cn') {
+    return normalizeName(weaponEntry?.name_cn) || krName;
+  }
   return krName;
 }
 
@@ -190,6 +193,7 @@ function renderWeaponPage({ lang, slug, weaponKrName, title, description, imageP
   const altKo = `/kr/wonder-weapon/${slug}/`;
   const altEn = `/en/wonder-weapon/${slug}/`;
   const altJp = `/jp/wonder-weapon/${slug}/`;
+  const altCn = `/cn/wonder-weapon/${slug}/`;
   return [
     '---',
     'layout: default',
@@ -206,6 +210,7 @@ function renderWeaponPage({ lang, slug, weaponKrName, title, description, imageP
     `  ko: ${altKo}`,
     `  en: ${altEn}`,
     `  jp: ${altJp}`,
+    `  'zh-CN': ${altCn}`,
     '---',
     '{% include wonder-weapon-body.html %}',
     ''
@@ -228,6 +233,7 @@ function renderWeaponListPage({ lang, title, description }) {
     '  ko: /kr/wonder-weapon/',
     '  en: /en/wonder-weapon/',
     '  jp: /jp/wonder-weapon/',
+    "  'zh-CN': /cn/wonder-weapon/",
     '---',
     '{% include wonder-weapon-body.html %}',
     ''
@@ -250,7 +256,8 @@ function buildDetailLangTargets(domain, slug) {
   return {
     kr: `/kr/${domain}/${slug}/`,
     en: `/en/${domain}/${slug}/`,
-    jp: `/jp/${domain}/${slug}/`
+    jp: `/jp/${domain}/${slug}/`,
+    cn: `/cn/${domain}/${slug}/`
   };
 }
 
@@ -284,8 +291,8 @@ function renderDetailRedirectStub({ fromPath, toPath, languageTargets = null }) 
     `      var defaultPath = ${JSON.stringify(fallbackPath)};`,
     '      function normalizeLang(raw) {',
     '        var value = String(raw || "").toLowerCase();',
-    '        if (value === "kr" || value === "en" || value === "jp") return value;',
-    '        if (value === "cn" || value === "tw" || value === "sea") return "en";',
+    '        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;',
+    '        if (value === "tw" || value === "sea") return "en";',
     '        return "";',
     '      }',
     '      function detectReferrerLang() {',

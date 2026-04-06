@@ -1,6 +1,8 @@
 window.WeaponData = window.WeaponData || {};
 window.enCharacterWeaponData = window.enCharacterWeaponData || {};
 window.jpCharacterWeaponData = window.jpCharacterWeaponData || {};
+window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
+
 window.WeaponData["후타바"] = {
   "name": "사쿠라 후타바",
   "weapon4-1": {
@@ -21,6 +23,7 @@ window.WeaponData["후타바"] = {
     "description": "공격력이 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0% 증가한다. 아군 괴도가 약점 대미지를 줄 때 공격력이 10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0% 증가하며 2턴 동안 지속된다. 후타바가 스킬을 사용하여 적에게 디버프 효과를 추가하면 3턴 동안 적이 받는 크리티컬 효과가 7.6%/9.9%/9.9%/12.2%/12.2%/14.5%/14.5% 증가한다(2회 중첩 가능)."
   }
 };
+
 window.enCharacterWeaponData["후타바"] = {
   "name": "Futaba Sakura",
   "weapon4-1": {
@@ -40,6 +43,7 @@ window.enCharacterWeaponData["후타바"] = {
     "description": "Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%.\nWhen an ally deals weakness damage, increase the ally's Attack by 10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0% for 2 turns.\nAfter Futaba inflicts a debuff with a skill, increase the foe's critical damage taken by 7.6%/9.9%/9.9%/12.2%/12.2%/14.5%/14.5% for 3 turns. This effect can stack up to 2 times."
   }
 };
+
 window.jpCharacterWeaponData["후타바"] = {
   "name": "佐倉 双葉",
   "weapon4-1": {
@@ -59,21 +63,25 @@ window.jpCharacterWeaponData["후타바"] = {
     "description": "攻撃力が30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%上昇する。\n味方が弱点ダメージを与えた時、２ターンの間、その味方の攻撃力が10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0%上昇する。\n自身がスキルで弱体を付与した後、３ターンの間、その敵が受けるクリティカルダメージが7.6%/9.9%/9.9%/12.2%/12.2%/14.5%/14.5%上昇する。この効果は最大２つまで累積できる。"
   }
 };
-window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
 
 window.cnCharacterWeaponData["후타바"] = {
-  "weapon5-1": {
-    "name": "HACK专业型",
-    "health": 2239.65,
-    "attack": 753.13,
-    "defense": 396.41,
-    "description": "攻击力提升30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%。我方怪盗造成弱点伤害时，攻击力提高10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0%，持续2回合。双叶使用技能为敌人添加负面效果后，使其受暴击效果提高7.6%/9.9%/9.9%/12.2%/12.2%/14.5%/14.5%，持续3回合，可叠加2层。"
-  },
+  "name": "佐仓双叶",
   "weapon4-1": {
     "name": "C型号便携式",
     "health": 1791.59,
     "attack": 602.36,
     "defense": 317.1,
+    "skill_name": "",
     "description": "攻击力提升12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%。添加『扰乱病毒』后，使敌人受到伤害额外提升10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0%，持续2回合。"
+  },
+  "weapon5-1": {
+    "name": "HACK专业型",
+    "health": 2239.65,
+    "attack": 753.13,
+    "defense": 396.41,
+    "highlight": true,
+    "skill_name": "",
+    "description": "攻击力提升30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%。我方怪盗造成弱点伤害时，攻击力提高10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0%，持续2回合。双叶使用技能为敌人添加负面效果后，使其受暴击效果提高7.6%/9.9%/9.9%/12.2%/12.2%/14.5%/14.5%，持续3回合，可叠加2层。"
   }
 };
+

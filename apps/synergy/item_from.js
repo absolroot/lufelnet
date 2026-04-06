@@ -74,7 +74,7 @@
 
     function getI18nValuesAllLanguages(key, fallback = []) {
         const values = new Set();
-        const langs = ['kr', 'en', 'jp'];
+        const langs = ['kr', 'en', 'jp', 'cn'];
 
         langs.forEach(lang => {
             const value = getTranslationByLang(lang, key);
@@ -501,4 +501,3 @@
     window.calculateItemPrice = calculateItemPrice;
     window.buildItemTree = buildItemTree;
 })();
-

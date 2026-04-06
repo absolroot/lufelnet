@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["사나다"] = {
   "name": "사나다 아키히코",
   "r0": "전투의 이유",
@@ -18,6 +20,7 @@ window.ritualData["사나다"] = {
   "r6": "힘을 추구하는 자",
   "r6_detail": "사나다 아키히코 전투 진입 시 『집념』 6중첩을 추가로 획득하며, 『집념』의 상한이 18중첩으로 증가한다. 『투지』 상한이 4중첩으로 증가하고, 자신이 『투지』를 1중첩 보유할 때마다 대미지가 8% 증가한다.\n사나다 아키히코가 『스파크 피스트』 시전 후 『극·일격필살』을 1회 추가로 시전한다.\n『극·일격필살』: 이번 턴에 소모한 『투지』 중첩 수에 따라, 중첩당 적 전체에 공격력 13.5%의 『반드시 크리티컬 발동』 및 『방어를 무시』하는 전격 속성 대미지를 주며, 『투지』를 1중첩 획득한다. 해당 스킬은 추가 효과로 간주된다."
 };
+
 window.enCharacterRitualData["사나다"] = {
   "name": "Akihiko Sanada",
   "r0": "Reason to Fight",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["사나다"] = {
   "r6": "Power Seeker",
   "r6_detail": "At the start of battle, gain 6 bonus [Obsession] stacks, increase the maximum number of [Obsession] stacks to 18. Increase the maximum number of [Fighting Spirit] stacks to 4, increase damage by 8% based on the number of [Fighting Spirit] stacks.\nActivate the Resonance [Fatal Punch] after Akihiko uses [Electric Flash].\n[Fatal Punch]: Based on the spent [Fighting Spirit] stacks this turn, deal Elec damage to all foes equal to $5 of Attack, this skill is guaranteed to be a critical hit and ignore all Defense. Gain 1 [Fighting Spirit] stack; This counts as a Resonance."
 };
+
 window.jpCharacterRitualData["사나다"] = {
   "name": "真田 明彦",
   "r0": "戦う理由",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["사나다"] = {
   "r6": "力を追い求める者",
   "r6_detail": "戦闘開始時、真田明彦は追加で『執念』を6スタック獲得し、『執念』の上限が18スタックに増加する。『闘志』の上限が4スタックに増加し、『闘志』を1スタック保有するごとにダメージが8%上昇する。\n真田明彦が『スパークフィスト』使用後に『極・一撃必殺』を1回追加発動する。\n\n『極・一撃必殺』：このターンに消費した『闘志』スタック数に応じて、スタックごとに敵全体に攻撃力13.5%の『必ずクリティカル発動』および『防御無視』電撃属性ダメージを与え、『闘志』を1スタック獲得する。このスキルは追加効果として扱われる。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["사나다"] = {
   "name": "真田明彦",
@@ -71,3 +74,4 @@ window.cnCharacterRitualData["사나다"] = {
   "r6": "力量的追求者",
   "r6_detail": "真田明彦进入战斗时额外获得6层『执念』，『执念』上限提升至18层。『斗志』上限提升至4层，自身每拥有1层『斗志』伤害提升8%。\n真田明彦释放『雷拳一闪』后追加释放1次『绝杀破坏拳』。\n『绝杀破坏拳』：基于本回合消耗的『斗志』层数，每层对所有敌人造成13.5%攻击力的『必定暴击』且『无视防御』的电击属性伤害，并获得1层『斗志』；该技能视为追加效果。"
 };
+

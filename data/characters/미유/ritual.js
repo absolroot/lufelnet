@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["미유"] = {
   "name": "사하라 미유",
   "r0": "배후 준비",
@@ -18,6 +20,7 @@ window.ritualData["미유"] = {
   "r6": "커튼콜의 부재",
   "r6_detail": "『바다의 수호』의 최대 중첩수가 8회까지 증가하고, 8회에 도달하면 주는 대미지가 20% 증가하는 추가 효과를 획득한다."
 };
+
 window.enCharacterRitualData["미유"] = {
   "name": "Miyu Sahara",
   "r0": "Guardian of the Sea",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["미유"] = {
   "r6": "Runaway",
   "r6_detail": "Increase maximum number of Seashell stacks to 8.\nWhen Seashell reaches 8 stacks, increase damage by 20%."
 };
+
 window.jpCharacterRitualData["미유"] = {
   "name": "佐原 海夕",
   "r0": "海の娘の守護",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["미유"] = {
   "r6": "庇護への反発",
   "r6_detail": "『ネレイスガード』が最大８つまで累積できるようになる。\nさらに、『ネレイスガード』の累積が８つになると、与ダメージが２０%上昇するようになる。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["미유"] = {
   "name": "佐原海夕",
@@ -71,3 +74,4 @@ window.cnCharacterRitualData["미유"] = {
   "r6": "永不谢幕",
   "r6_detail": "『海之守护』的最大层数提升至8层，达到8层时获得额外效果：造成伤害提高20%。"
 };
+

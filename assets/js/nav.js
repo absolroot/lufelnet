@@ -1,4 +1,13 @@
 class Navigation {
+    static getLanguageSelectorLabel(lang) {
+        const safeLang = String(lang || '').toLowerCase();
+        if (safeLang === 'kr') return '한국어';
+        if (safeLang === 'en') return 'English';
+        if (safeLang === 'jp') return '日本語';
+        if (safeLang === 'cn') return '中文(Beta)';
+        return '한국어';
+    }
+
     static async load(activePage) {
         // 현재 언어 감지
         const currentLang = this.getCurrentLanguage();
@@ -119,31 +128,31 @@ class Navigation {
                 about: '紹介'
             },
             cn: {
-                sectionGuide: '指南',
+                sectionGuide: '攻略',
                 sectionTools: '工具',
                 sectionMeta: 'META/TRIAL',
                 sectionSite: '网站',
-                character: '角色',
-                persona: '面具',
-                revelationsInfo: '觉醒',
-                synergy: '协同',
-                wonderweapon: '奇迹武器',
+                character: '怪盗',
+                persona: '人格面具',
+                revelationsInfo: '启示',
+                synergy: '协同者',
+                wonderweapon: 'WONDER武器',
                 maps: '地图',
                 article: '攻略',
-                scheduleRelease: '发布日程',
-                pullPlanner: '抽卡规划',
-                materialCalc: '培养计算',
-                defenseCalc: '防御力计算',
-                criticalCalc: '暴击计算',
-                revelationSetting: '觉醒分享',
-                pullTrackerIndividual: '抽卡统计',
-                pullTrackerGlobal: '抽卡统计 (全服)',
-                payCalc: '充值计算',
-                tier: '梯队',
-                tacticLibrary: '战术图书馆',
-                tacticMaker: '战术制作',
-                astrolabe: '天域星盘',
-                velvetTrial: '벨벳 시련',
+                scheduleRelease: '上线日程',
+                pullPlanner: '抽卡规划器',
+                materialCalc: '养成计算器',
+                defenseCalc: '防御力降低计算器',
+                criticalCalc: '暴击率计算器',
+                revelationSetting: '启示分享',
+                pullTrackerIndividual: '契约记录',
+                pullTrackerGlobal: '全服统计',
+                payCalc: '充值计算器',
+                tier: '强度榜',
+                tacticLibrary: '战术库',
+                tacticMaker: '战术编辑器',
+                astrolabe: '星盘试炼',
+                velvetTrial: '天鹅绒试炼',
                 about: '关于'
             }
         };
@@ -151,13 +160,17 @@ class Navigation {
         // 현재 언어의 텍스트 가져오기
         const texts = i18n[currentLang] || i18n.kr;
 
+        const krLikeMenus = [
+            'character', 'persona', 'revelations-info', 'synergy', 'wonderweapon', 'maps', 'article',
+            'material-calc', 'defense-calc', 'critical-calc', 'revelation-setting', 'pullTracker', 'pay-calc',
+            'tier', 'tactic-library', 'tactic-maker', 'astrolabe', 'velvet-trial',
+            'about'
+        ];
+
+        const cnMenus = krLikeMenus.filter((key) => !['article', 'revelation-setting', 'pay-calc', 'velvet-trial'].includes(key));
+
         const availableMenus = {
-            kr: [
-                'character', 'persona', 'revelations-info', 'synergy', 'wonderweapon', 'maps', 'article',
-                'material-calc', 'defense-calc', 'critical-calc', 'revelation-setting', 'pullTracker', 'pay-calc',
-                'tier', 'tactic-library', 'tactic-maker', 'astrolabe', 'velvet-trial',
-                'about'
-            ],
+            kr: krLikeMenus,
             en: [
                 'character', 'persona', 'revelations-info', 'synergy', 'wonderweapon', 'maps', 'article',
                 'schedule-release', 'pull-calc', 'material-calc', 'defense-calc', 'critical-calc', 'revelation-setting', 'pullTracker',
@@ -170,7 +183,7 @@ class Navigation {
                 'tier', 'tactic-library', 'tactic-maker', 'astrolabe', 'velvet-trial',
                 'about'
             ],
-            cn: ['character', 'article', 'about']
+            cn: cnMenus
         };
 
         const currentMenus = availableMenus[currentLang] || availableMenus.kr;
@@ -270,7 +283,7 @@ class Navigation {
                     <div class="custom-select">
                         <div class="selected-option">
                             <img src="${BASE_URL}/assets/img/flags/${currentLang}.png" alt="${currentLang}" class="flag-icon">
-                            <span>${currentLang === 'kr' ? '한국어' : currentLang === 'en' ? 'English' : currentLang === 'jp' ? '日本語' : '中文'}</span>
+                            <span>${this.getLanguageSelectorLabel(currentLang)}</span>
                         </div>
                         <div class="options-container">
                             <div class="option ${currentLang === 'kr' ? 'selected' : ''}" data-value="kr" role="button" tabindex="0" onclick="return false;">
@@ -285,6 +298,10 @@ class Navigation {
                             <div class="option ${currentLang === 'jp' ? 'selected' : ''}" data-value="jp" role="button" tabindex="0" onclick="return false;">
                                 <img src="${BASE_URL}/assets/img/flags/jp.png" alt="jp" class="flag-icon">
                                 <span>日本語</span>
+                            </div>
+                            <div class="option ${currentLang === 'cn' ? 'selected' : ''}" data-value="cn" role="button" tabindex="0" onclick="return false;">
+                                <img src="${BASE_URL}/assets/img/flags/cn.png" alt="cn" class="flag-icon">
+                                <span>中文(Beta)</span>
                             </div>
                         </div>
                     </div>
@@ -723,6 +740,7 @@ class Navigation {
         }
 
         localStorage.setItem('preferredLanguage', safeLang);
+        localStorage.setItem('preferred_language', safeLang);
 
         const currentUrl = new URL(window.location.href);
         const currentPath = currentUrl.pathname;
@@ -809,6 +827,10 @@ class Navigation {
             jp: {
                 disclaimer: "※ ルフェルネットは個人が作成した非公式ペルソナ5X情報提供サイトで、ゲームのコンテンツと素材の商標と著作権はSEGA·ATLUS·Perfect World Gamesに帰属します。",
                 contact: `✉️ contact : superphil722@gmail.com　💬 <a href="https://discord.gg/8S8pnv2MsH" target="_blank" class="discord-link">Discord</a>　@AbsolRoot　<a href="/about/" target="_blank" class="discord-link">Support</a>　`
+            },
+            cn: {
+                disclaimer: "※ 路菲尔网是由个人制作的非官方《女神异闻录5X》信息站。游戏内容与素材的商标及版权归 SEGA·ATLUS·Perfect World Games 所有。",
+                contact: `✉️ contact : superphil722@gmail.com　💬 <a href="https://discord.gg/8S8pnv2MsH" target="_blank" class="discord-link">Discord</a>　@AbsolRoot　<a href="/cn/about/" target="_blank" class="discord-link">支持网站</a>　`
             }
         };
 

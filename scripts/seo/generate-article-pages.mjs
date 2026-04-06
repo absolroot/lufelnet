@@ -20,7 +20,7 @@ const __dirname = path.dirname(__filename);
 const ROOT = path.resolve(__dirname, '..', '..');
 
 const OUTPUT_DIR = path.join(ROOT, 'pages', 'article');
-const LANGS = ['kr', 'en', 'jp'];
+const LANGS = ['kr', 'en', 'jp', 'cn'];
 const IMAGE_PATH = '/assets/img/home/SEO.png';
 
 const seoMetaPath = path.join(ROOT, 'i18n', 'pages', 'guides', 'seo-meta.json');
@@ -28,7 +28,8 @@ const guidesListPath = path.join(ROOT, 'apps', 'guides', 'data', 'guides-list.js
 const guidesI18nPaths = {
   kr: path.join(ROOT, 'i18n', 'pages', 'guides', 'kr.js'),
   en: path.join(ROOT, 'i18n', 'pages', 'guides', 'en.js'),
-  jp: path.join(ROOT, 'i18n', 'pages', 'guides', 'jp.js')
+  jp: path.join(ROOT, 'i18n', 'pages', 'guides', 'jp.js'),
+  cn: path.join(ROOT, 'i18n', 'pages', 'guides', 'cn.js')
 };
 
 function normalizeNewline(text) {
@@ -157,6 +158,7 @@ function renderArticleListPage({ lang, title, description }) {
   const altKo = '/kr/article/';
   const altEn = '/en/article/';
   const altJp = '/jp/article/';
+  const altCn = '/cn/article/';
 
   return [
     '---',
@@ -173,6 +175,7 @@ function renderArticleListPage({ lang, title, description }) {
     `  ko: ${altKo}`,
     `  en: ${altEn}`,
     `  jp: ${altJp}`,
+    `  'zh-CN': ${altCn}`,
     '---',
     '{% include guides-body.html %}',
     ''
@@ -184,6 +187,7 @@ function renderArticleDetailPage({ lang, guideId, title, description, image }) {
   const altKo = `/kr/article/${guideId}/`;
   const altEn = `/en/article/${guideId}/`;
   const altJp = `/jp/article/${guideId}/`;
+  const altCn = `/cn/article/${guideId}/`;
 
   return [
     '---',
@@ -201,6 +205,7 @@ function renderArticleDetailPage({ lang, guideId, title, description, image }) {
     `  ko: ${altKo}`,
     `  en: ${altEn}`,
     `  jp: ${altJp}`,
+    `  'zh-CN': ${altCn}`,
     '---',
     '{% include guides-article-body.html %}',
     ''

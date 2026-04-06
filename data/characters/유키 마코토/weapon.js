@@ -1,6 +1,8 @@
 window.WeaponData = window.WeaponData || {};
 window.enCharacterWeaponData = window.enCharacterWeaponData || {};
 window.jpCharacterWeaponData = window.jpCharacterWeaponData || {};
+window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
+
 window.WeaponData["유키 마코토"] = {
   "name": "유키 마코토",
   "weapon4-1": {
@@ -21,6 +23,7 @@ window.WeaponData["유키 마코토"] = {
     "description": "공격력이 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0% 증가한다.\n자신이 『월상』 또는 『특수 월상』을 누적 3중첩 획득할 때마다 2턴 동안 크리티컬 확률이 16.3%/21.2%/21.2%/26.1%/26.1%/31.0%/31.0% 증가한다. 자신이 페르소나 스킬/테우르기아를 시전해 4회 이상 대미지를 줄 경우, 대미지가 34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0% 증가한다."
   }
 };
+
 window.enCharacterWeaponData["유키 마코토"] = {
   "name": "Makoto Yuki",
   "weapon4-1": {
@@ -40,6 +43,7 @@ window.enCharacterWeaponData["유키 마코토"] = {
     "description": "Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. \nWhen user gains 3 [Moon Phase] stacks or [Special Moon Phase], increase critical rate by 16.3%/21.2%/21.2%/26.1%/26.1%/31.0%/31.0% for 2 turns. When user deals 4 or more hits of damage with a Persona skill/Theurgy, increase damage 34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0%."
   }
 };
+
 window.jpCharacterWeaponData["유키 마코토"] = {
   "name": "結城 理",
   "weapon4-1": {
@@ -59,21 +63,25 @@ window.jpCharacterWeaponData["유키 마코토"] = {
     "description": "攻撃力が30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%増加する。『月相』または『特殊月相』が3スタックに達すると、2ターンの間クリティカル率が16.3%/21.2%/21.2%/26.1%/26.1%/31.0%/31.0%増加する。ペルソナスキル/テウルギアで4回以上ダメージを与えると、与えるダメージが34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0%増加する。"
   }
 };
-window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
 
 window.cnCharacterWeaponData["유키 마코토"] = {
-  "weapon5-1": {
-    "name": "神之剑",
-    "health": 2160.41,
-    "attack": 786.22,
-    "defense": 391.98,
-    "description": "攻击力提升30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%。\n自身每累计获得3层『月相』或『特殊月相』，暴击率提升16.3%/21.2%/21.2%/26.1%/26.1%/31.0%/31.0%，持续2回合。自身释放人格面具技能/神通法造成4次及以上伤害时，伤害提升34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0%。"
-  },
+  "name": "结城理",
   "weapon4-1": {
     "name": "名刀透彻",
     "health": 1728.63,
     "attack": 628.77,
     "defense": 313.75,
+    "skill_name": "",
     "description": "攻击力提升12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%。\n自身为友方同伴添加增益效果时，所有同伴伤害提升8.8%/11.6%/11.6%/14.4%/14.4%/17.2%/17.2%，自身伤害额外提升8.8%/11.6%/11.6%/14.4%/14.4%/17.2%/17.2%，持续2回合。"
+  },
+  "weapon5-1": {
+    "name": "神之剑",
+    "health": 2160.41,
+    "attack": 786.22,
+    "defense": 391.98,
+    "highlight": true,
+    "skill_name": "",
+    "description": "攻击力提升30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%。\n自身每累计获得3层『月相』或『特殊月相』，暴击率提升16.3%/21.2%/21.2%/26.1%/26.1%/31.0%/31.0%，持续2回合。自身释放人格面具技能/神通法造成4次及以上伤害时，伤害提升34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0%。"
   }
 };
+

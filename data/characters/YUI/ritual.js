@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["YUI"] = {
   "name": "YUI",
   "r0": "★프로젝트! 가동★",
@@ -18,6 +20,7 @@ window.ritualData["YUI"] = {
   "r6": "★즐거운 풍작★",
   "r6_detail": "필드에 적이 1명만 있을 시 YUI의 추격 기본 스킬 배율이 공격력의 110%까지 증가한다. YUI의 추격으로 다른 모든 적에게 25%의 스퍼터링 대미지를 준다. "
 };
+
 window.enCharacterRitualData["YUI"] = {
   "name": "Yui",
   "r0": "Jolly Cooperation",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["YUI"] = {
   "r6": "Humongously Huge Harvest",
   "r6_detail": "If only 1 foe is present, increase Yui's follow-up attack by 110% of Attack. Follow-up attack deals damage equal to 25% of Attack to all other foes."
 };
+
 window.jpCharacterRitualData["YUI"] = {
   "name": "ＹＵＩ",
   "r0": "プロジェクト『Ｂ』、ＳＴＡＲＴ！",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["YUI"] = {
   "r6": "大大大大大収穫祭！",
   "r6_detail": "敵が１体しかいない時、自身の追撃の攻撃力が１１０%に上昇する。また追撃時、選択した敵以外にも攻撃力２５%のダメージを与えるようになる。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["YUI"] = {
   "name": "YUI",
@@ -71,3 +74,4 @@ window.cnCharacterRitualData["YUI"] = {
   "r6": "★愉悦的丰收之时★",
   "r6_detail": "场上只有1个敌人时，YUI的追击基础技能倍率提升至110%攻击力；YUI的追击对其他所有敌人造成25%的溅射伤害。"
 };
+

@@ -42,9 +42,9 @@
             try {
                 const urlParams = new URLSearchParams(window.location.search);
                 const urlLang = urlParams.get('lang');
-                if (urlLang && ['kr', 'en', 'jp'].includes(urlLang)) return urlLang;
+                if (urlLang && ['kr', 'en', 'jp', 'cn'].includes(urlLang)) return urlLang;
                 const savedLang = localStorage.getItem('preferredLanguage');
-                if (savedLang && ['kr', 'en', 'jp'].includes(savedLang)) return savedLang;
+                if (savedLang && ['kr', 'en', 'jp', 'cn'].includes(savedLang)) return savedLang;
             } catch (_) { }
             return 'kr';
         },
@@ -52,9 +52,9 @@
         get statTranslations() {
             if (window.I18nService && _isReady) {
                 const dict = window.I18nService.getStatTranslations();
-                return { kr: {}, en: dict, jp: dict };
+                return { kr: {}, en: dict, jp: dict, cn: dict };
             }
-            return { kr: {}, en: {}, jp: {} };
+            return { kr: {}, en: {}, jp: {}, cn: {} };
         },
 
         translateStatTexts(root = document) {

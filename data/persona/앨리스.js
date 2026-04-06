@@ -16,6 +16,7 @@ window.personaFiles["앨리스"] = {
   "tier_desc": "필드에 존재하는 것만으로 적이 받는 주원 대미지를 증가시킬 수 있다. 고유 스킬의 즉사 효과는 이따금씩 적에게 즉사 효과 무시가 없는 경우 활용된다.",
   "tier_desc_en": "Just by being on the field, it can increase the Curse damage enemies take. The instant-kill effect on its unique skill is occasionally useful when enemies do not ignore instant death.",
   "tier_desc_jp": "フィールドにいるだけで、敵が受ける呪怨ダメージを増加させられる。固有スキルの即死効果は、敵が即死無効を持たない場面で時々役立つ。",
+  "tier_desc_cn": "只要在场，就能提升敌人所受的诅咒伤害。固有技能的即死效果，则会在敌人没有即死免疫时偶尔派上用场。",
   "comment": "기본 명중 80% + 명중 강화 IV 16.2% + 우중충한 하늘 16.9% + 본능 34.9% + 마이팰리스 2.3% = 150.3% 로 '죽어 줄래?' 상한 10%를 채울 수 있다. (우중충한 하늘 적용 여부 미확인)",
   "comment_en": "Base accuracy 80% + Accuracy Enhancement IV 16.2% + Gloomy Sky 16.9% + Talent 34.9% + My Palace 2.3% = 150.3%, which can reach the 'Die For Me!' upper limit of 10%. (Gloomy Sky application unconfirmed)",
   "comment_jp": "基本命中率80%+異常命中ブースタIV 16.2% + 浮かない空 16.9% + 再生の呪い 34.9% + マイパレス効果 2.3% = 150.3%で、『死んでくれる？』の最大効果10%を満たすことができる（浮かない空の適用可否は未確認）",

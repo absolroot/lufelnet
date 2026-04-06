@@ -18,12 +18,12 @@ sitemap: false
       params.delete("lang");
       params.delete("name");
       params.delete("persona");
-      var languageTargets = {"kr":"/kr/persona/rangda/","en":"/en/persona/rangda/","jp":"/jp/persona/rangda/"};
+      var languageTargets = {"kr":"/kr/persona/rangda/","en":"/en/persona/rangda/","jp":"/jp/persona/rangda/","cn":"/cn/persona/rangda/"};
       var defaultPath = "/en/persona/rangda/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

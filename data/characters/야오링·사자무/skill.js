@@ -1,6 +1,8 @@
 window.characterSkillsData = window.characterSkillsData || {};
 window.enCharacterSkillsData = window.enCharacterSkillsData || {};
 window.jpCharacterSkillsData = window.jpCharacterSkillsData || {};
+window.cnCharacterSkillsData = window.cnCharacterSkillsData || {};
+
 window.characterSkillsData["야오링·사자무"] = {
   "name": "리 야오링·사자무",
   "skill1": {
@@ -46,6 +48,7 @@ window.characterSkillsData["야오링·사자무"] = {
     "cool": 0
   }
 };
+
 window.enCharacterSkillsData["야오링·사자무"] = {
   "name": "Firecracker Yaoling",
   "skill1": {
@@ -91,6 +94,7 @@ window.enCharacterSkillsData["야오링·사자무"] = {
     "cool": 0
   }
 };
+
 window.jpCharacterSkillsData["야오링·사자무"] = {
   "name": "瑤鈴・新春",
   "skill1": {
@@ -136,46 +140,51 @@ window.jpCharacterSkillsData["야오링·사자무"] = {
     "cool": 0
   }
 };
-window.cnCharacterSkillsData = window.cnCharacterSkillsData || {};
 
 window.cnCharacterSkillsData["야오링·사자무"] = {
   "name": "李瑶铃·太平乐",
   "skill1": {
     "name": "福满乾坤",
-    "element": "화염",
+    "element": "화염광역",
+    "type": "群体伤害",
     "sp": 20,
     "cool": 0,
     "description": "对所有敌人造成120.4%/132.8%/127.8%/140.2%攻击力的火焰属性伤害，自身暴击率提升10%，效果持续2回合。\n使『铁火流星』获得强化：额外造成72.8%/80.3%/77.3%/84.7%攻击力的火焰属性伤害，强化状态持续1回合。"
   },
   "skill2": {
     "name": "爆竹声声",
-    "element": "화염",
+    "element": "화염광역",
+    "type": "群体伤害",
     "sp": 20,
     "cool": 0,
-    "description": "对所有敌人造成73.8%/81.3%/78.3%/85.9%攻击力的火焰属性伤害，有75%基础概率使目标陷入燃烧和『岁火』状态，持续2回合。\n使『铁火流星』获得强化：有75%基础概率使目标陷入『岁火』状态，强化状态持续1回合。\n『岁火』：每回合受到基于李瑶铃·太平乐63.4%/69.9%/67.3%/73.8%攻击力的火焰属性伤害，持续2回合，可叠加4层。"
+    "description": "对所有敌人造成73.8%/81.3%/78.3%/85.9%攻击力的火焰属性伤害，有90%基础概率使目标陷入燃烧和『岁火』状态，持续2回合。\n使『铁火流星』获得强化：有90%基础概率使目标陷入『岁火』状态，强化状态持续1回合。\n『岁火』：每回合受到基于李瑶铃·太平乐63.4%/69.9%/67.3%/73.8%攻击力的火焰属性伤害，持续2回合，可叠加4层。"
   },
   "skill3": {
     "name": "铁火流星迎春宵",
+    "element": "버프",
+    "type": "增益",
     "sp": 24,
     "cool": 1,
-    "description": "为苗刀附着火焰，自身进入『铁花舞』状态：造成伤害提升34.3%/37.8%/36.4%/39.9%，期间近战攻击强化为『铁火流星』，效果持续1回合或持续至释放『铁火流星』。\n『铁火流星』：对所有敌人造成127.4%/140.4%/135.2%/148.2%攻击力的火焰属性伤害并造成火焰属性TECHNICAL，触发爆燃时，TECHNICAL效果提升至20%。\n初始拥有1回合冷却时间，使用该技能后本回合仍可使用其他技能，该技能不视为人格面具技能。",
-    "element": "버프"
+    "description": "为苗刀附着火焰，自身进入『铁花舞』状态：造成伤害提升34.3%/37.8%/36.4%/39.9%，期间近战攻击强化为『铁火流星』，效果持续1回合或持续至释放『铁火流星』。\n『铁火流星』：对所有敌人造成127.4%/140.4%/135.2%/148.2%攻击力的火焰属性伤害并造成火焰属性TECHNICAL，触发爆燃时，TECHNICAL效果提升至20%。\n初始拥有1回合冷却时间，使用该技能后本回合仍可使用其他技能，该技能不视为人格面具技能。"
+  },
+  "skill_highlight": {
+    "element": "화염광역",
+    "type": "群体伤害",
+    "description": "对所有敌人造成226.5%/249.7%/240.5%/263.7%攻击力的火焰属性伤害，使自身的攻击力提升19.5%/21.5%/20.7%/22.7%，『铁火流星』造成伤害提升19.5%/21.5%/20.7%/22.7%，增益效果持续2回合。",
+    "cool": 4,
+    "name": "HIGHLIGHT"
   },
   "passive1": {
     "name": "吉祥",
     "element": "패시브",
-    "cool": 0,
-    "description": "对处于燃烧状态的敌人造成伤害提升36.0%。"
+    "description": "对处于燃烧状态的敌人造成伤害提升36.0%。",
+    "cool": 0
   },
   "passive2": {
     "name": "顺意",
     "element": "패시브",
-    "cool": 0,
-    "description": "战斗开始时，使自身攻击力提升30.0%，效果持续2回合；自身或同伴造成TECHNICAL时，刷新该效果的持续时间并使该效果值提升至45.0%。"
-  },
-  "skill_highlight": {
-    "element": "화염",
-    "cool": 4,
-    "description": "对所有敌人造成205.9%/227.0%/218.6%/239.7%攻击力的火焰属性伤害，使自身的攻击力提升19.5%/21.5%/20.7%/22.7%，『铁火流星』造成伤害提升19.5%/21.5%/20.7%/22.7%，增益效果持续2回合。"
+    "description": "战斗开始时，使自身攻击力提升42.0%，效果持续2回合；自身或同伴造成TECHNICAL时，刷新该效果的持续时间并使该效果值提升至51.0%。",
+    "cool": 0
   }
 };
+

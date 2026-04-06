@@ -348,6 +348,10 @@
             if (typeof jpRevelationData !== 'undefined') return jpRevelationData;
             if (window.jpRevelationData) return window.jpRevelationData;
         }
+        if (state.lang === 'cn') {
+            if (typeof cnRevelationData !== 'undefined') return cnRevelationData;
+            if (window.cnRevelationData) return window.cnRevelationData;
+        }
         return null;
     }
 
@@ -362,14 +366,16 @@
 
         state.revelationMapping = {};
 
-        if (state.lang === 'en' || state.lang === 'jp') {
+        if (state.lang === 'en' || state.lang === 'jp' || state.lang === 'cn') {
             await loadScript(`${state.baseUrl}/data/${state.lang}/revelations/revelations.js${state.version}`);
             const localized = getLocalizedRevelationData();
             if (localized) {
                 state.revelationDataLocalized = localized;
                 state.revelationMapping = (state.lang === 'en')
                     ? (localized.mapping_en || {})
-                    : (localized.mapping_jp || {});
+                    : (state.lang === 'jp')
+                        ? (localized.mapping_jp || {})
+                        : (localized.mapping_cn || {});
             }
         }
     }

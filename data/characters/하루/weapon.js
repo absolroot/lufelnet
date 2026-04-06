@@ -1,6 +1,8 @@
 window.WeaponData = window.WeaponData || {};
 window.enCharacterWeaponData = window.enCharacterWeaponData || {};
 window.jpCharacterWeaponData = window.jpCharacterWeaponData || {};
+window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
+
 window.WeaponData["하루"] = {
   "name": "오쿠무라 하루",
   "weapon4-1": {
@@ -21,6 +23,7 @@ window.WeaponData["하루"] = {
     "description": "효과 명중이 36.0%/36.0%/47.0%/47.0%/58.0%/58.0%/69.0% 증가한다. 자신이 『조준점』을 보유할 때 염동 속성 대미지가 24.0%/31.0%/31.0%/38.0%/38.0%/45.0%/45.0% 증가한다. 『개조』를 획득할 때마다 1턴 동안 공격력이 34.0%/43.0%/43.0%/52.0%/52.0%/61.0%/61.0% 증가한다."
   }
 };
+
 window.enCharacterWeaponData["하루"] = {
   "name": "Haru Okumura",
   "weapon4-1": {
@@ -40,6 +43,7 @@ window.enCharacterWeaponData["하루"] = {
     "description": "Increase ailment accuracy by 36.0%/36.0%/47.0%/47.0%/58.0%/58.0%/69.0%.\nWhen dealing Psychokinesis damage, if Haru has Target Audience, increase Psychokinesis damage by 24.0%/31.0%/31.0%/38.0%/38.0%/45.0%/45.0%. Also, for each Thoughtful Round gained, increase Attack by 34.0%/43.0%/43.0%/52.0%/52.0%/61.0%/61.0% for 1 turn."
   }
 };
+
 window.jpCharacterWeaponData["하루"] = {
   "name": "奥村 春",
   "weapon4-1": {
@@ -59,21 +63,25 @@ window.jpCharacterWeaponData["하루"] = {
     "description": "状態異常命中が36.0%/36.0%/47.0%/47.0%/58.0%/58.0%/69.0%上昇する。\n念動属性のダメージを与える時、自身が『標的層』を獲得している場合、ダメージが24.0%/31.0%/31.0%/38.0%/38.0%/45.0%/45.0%上昇する。さらに『想いの弾丸』を獲得するごとに、１ターンの間、攻撃力が34.0%/43.0%/43.0%/52.0%/52.0%/61.0%/61.0%上昇する。"
   }
 };
-window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
 
 window.cnCharacterWeaponData["하루"] = {
-  "weapon5-1": {
-    "name": "神圣战歌",
-    "health": 2140.53,
-    "attack": 759.73,
-    "defense": 427.25,
-    "description": "效果命中提升36.0%/36.0%/47.0%/47.0%/58.0%/58.0%/69.0%。自身拥有『准星』时念动属性伤害提升24.0%/31.0%/31.0%/38.0%/38.0%/45.0%/45.0%。每次获得『改装』时，攻击力提升34.0%/43.0%/43.0%/52.0%/52.0%/61.0%/61.0%，持续1回合。"
-  },
+  "name": "奥村春",
   "weapon4-1": {
     "name": "基加美修战斧",
     "health": 1712.28,
     "attack": 607.79,
     "defense": 341.44,
+    "skill_name": "",
     "description": "攻击力提升12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%。每有1名敌人处于异常状态，攻击力、效果命中提升3.3%/4.3%/4.3%/5.3%/5.3%/6.3%/6.3%，最多提升9.9%/12.9%/12.9%/15.9%/15.9%/18.9%/18.9%。"
+  },
+  "weapon5-1": {
+    "name": "神圣战歌",
+    "health": 2140.53,
+    "attack": 759.73,
+    "defense": 427.25,
+    "highlight": true,
+    "skill_name": "",
+    "description": "效果命中提升36.0%/36.0%/47.0%/47.0%/58.0%/58.0%/69.0%。自身拥有『准星』时念动属性伤害提升24.0%/31.0%/31.0%/38.0%/38.0%/45.0%/45.0%。每次获得『改装』时，攻击力提升34.0%/43.0%/43.0%/52.0%/52.0%/61.0%/61.0%，持续1回合。"
   }
 };
+

@@ -2,7 +2,7 @@
   'use strict';
 
   const PAGE_NAME = 'pull-tracker';
-  const SUPPORTED_LANGS = ['kr', 'en', 'jp'];
+  const SUPPORTED_LANGS = ['kr', 'en', 'jp', 'cn'];
   const DEBUG = (() => {
     try { return new URLSearchParams(window.location.search).get('i18nDebug') === '1'; } catch (_) { return false; }
   })();

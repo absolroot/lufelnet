@@ -1,6 +1,8 @@
 window.characterSkillsData = window.characterSkillsData || {};
 window.enCharacterSkillsData = window.enCharacterSkillsData || {};
 window.jpCharacterSkillsData = window.jpCharacterSkillsData || {};
+window.cnCharacterSkillsData = window.cnCharacterSkillsData || {};
+
 window.characterSkillsData["YUI"] = {
   "skill1": {
     "name": "타닥 깜짝상자",
@@ -45,6 +47,7 @@ window.characterSkillsData["YUI"] = {
   },
   "name": "YUI"
 };
+
 window.enCharacterSkillsData["YUI"] = {
   "name": "Yui",
   "skill1": {
@@ -90,6 +93,7 @@ window.enCharacterSkillsData["YUI"] = {
     "cool": 0
   }
 };
+
 window.jpCharacterSkillsData["YUI"] = {
   "name": "ＹＵＩ",
   "skill1": {
@@ -135,13 +139,12 @@ window.jpCharacterSkillsData["YUI"] = {
     "cool": 0
   }
 };
-window.cnCharacterSkillsData = window.cnCharacterSkillsData || {};
 
 window.cnCharacterSkillsData["YUI"] = {
-  "name": "YUI",
   "skill1": {
     "name": "噼啪惊奇箱",
     "element": "전격",
+    "type": "单体伤害",
     "sp": 20,
     "cool": 0,
     "description": "对1名敌人造成185.4%/204.4%/196.8%/215.8%攻击力的电击属性伤害。若敌人未处于触电状态，则有68.3%/68.3%/72.5%/72.5%的基础概率使其陷入触电状态，效果持续2回合。若敌人已处于触电状态，则技能伤害提升30%。"
@@ -149,16 +152,18 @@ window.cnCharacterSkillsData["YUI"] = {
   "skill2": {
     "name": "爆炸砖块",
     "element": "전격",
+    "type": "群体伤害",
     "sp": 20,
     "cool": 0,
     "description": "对所有敌人造成59.6%/65.7%/63.3%/69.4%攻击力的电击属性伤害，对技能主目标造成的技能伤害提升25%。"
   },
   "skill3": {
     "name": "超稀有奖励",
+    "element": "버프",
+    "type": "增益",
     "sp": 25,
     "cool": 1,
-    "description": "使自身的攻击力提升39.0%/43.0%/41.4%/45.4%。并选择1名同伴作为YUI的『玩伴』，『玩伴』对敌人释放人格面具技能造成伤害后，YUI立刻追击，并使得YUI下2次追击造成132.9%/146.6%/141.1%/154.7%攻击力的电击属性伤害，效果持续2回合。同时使『★大工程！启动★』触发的固定概率提升10%，持续2回合。",
-    "element": "버프"
+    "description": "使自身的攻击力提升39.0%/43.0%/41.4%/45.4%。并选择1名同伴作为YUI的『玩伴』，『玩伴』对敌人释放人格面具技能造成伤害后，YUI立刻追击，并使得YUI下2次追击造成132.9%/146.6%/141.1%/154.7%攻击力的电击属性伤害，效果持续2回合。同时使『★大工程！启动★』触发的固定概率提升10%，持续2回合。"
   },
   "passive1": {
     "name": "灵动",
@@ -175,6 +180,10 @@ window.cnCharacterSkillsData["YUI"] = {
   "skill_highlight": {
     "element": "버프",
     "cool": 4,
-    "description": "使YUI的攻击力提升34.2%/37.7%/36.3%/39.8%，追击造成的伤害提升相当于YUI攻击力的24.4%/26.9%/25.9%/28.4%，效果持续2回合。并使得任何同伴释放技能造成伤害后都会触发YUI的追击，效果持续2回合。"
-  }
+    "description": "使YUI的攻击力提升34.2%/37.7%/36.3%/39.8%，追击造成的伤害提升相当于YUI攻击力的24.4%/26.9%/25.9%/28.4%，效果持续2回合。并使得任何同伴释放技能造成伤害后都会触发YUI的追击，效果持续2回合。",
+    "name": "HIGHLIGHT",
+    "type": "增益"
+  },
+  "name": "YUI"
 };
+

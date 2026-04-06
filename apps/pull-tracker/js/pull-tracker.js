@@ -145,7 +145,7 @@
             if (gbtn) {
                 gbtn.addEventListener('click', () => {
                     const base = (typeof window.BASE_URL !== 'undefined') ? window.BASE_URL : '';
-                    const targetLang = ['kr', 'en', 'jp'].includes(lang) ? lang : 'kr';
+                    const targetLang = ['kr', 'en', 'jp', 'cn'].includes(lang) ? lang : 'kr';
                     location.href = `${base}/${targetLang}/pull-tracker/url-guide/`;
                 });
             }
@@ -1926,6 +1926,5 @@
         })();
     } catch (_) { }
 })();
-
 
 

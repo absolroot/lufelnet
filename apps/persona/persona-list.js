@@ -808,7 +808,7 @@ async function initializePageContent() {
     // Update Page Title & Meta Tags
     function updatePageSEO(originalName, localizedName, description) {
         const slugMap = window.__PERSONA_SLUG_MAP;
-        const pathMatch = window.location.pathname.match(/^\/(kr|en|jp)\/persona\//);
+        const pathMatch = window.location.pathname.match(/^\/(kr|en|jp|cn)\/persona\//);
         let entityKey = originalName;
 
         if (slugMap && slugMap[originalName] && pathMatch) {
@@ -849,7 +849,7 @@ async function initializePageContent() {
                     // 3. Update URL (SEO / Deep Linking)
                     const targetName = container.dataset.name;
                     const slugMap = window.__PERSONA_SLUG_MAP;
-                    const pathMatch = window.location.pathname.match(/^\/(kr|en|jp)\/persona\//);
+                    const pathMatch = window.location.pathname.match(/^\/(kr|en|jp|cn)\/persona\//);
                     if (slugMap && slugMap[targetName] && pathMatch) {
                         var lang = pathMatch[1];
                         var newPath = '/' + lang + '/persona/' + slugMap[targetName].slug + '/';

@@ -16,6 +16,7 @@ window.personaFiles["쿠 훌린"] = {
   "tier_desc": "원더를 단일 물리 딜러로 활용할 때 채용한다.",
   "tier_desc_en": "Used when Wonder is being run as a single-target Physical DPS.",
   "tier_desc_jp": "ワンダーを単体物理アタッカーとして運用する時に採用する。",
+  "tier_desc_cn": "在将 WONDER 作为单体物理输出使用时会采用。",
   "comment": "",
   "comment_en": "",
   "comment_jp": "",

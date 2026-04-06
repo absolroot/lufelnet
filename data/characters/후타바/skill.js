@@ -1,6 +1,8 @@
 window.characterSkillsData = window.characterSkillsData || {};
 window.enCharacterSkillsData = window.enCharacterSkillsData || {};
 window.jpCharacterSkillsData = window.jpCharacterSkillsData || {};
+window.cnCharacterSkillsData = window.cnCharacterSkillsData || {};
+
 window.characterSkillsData["후타바"] = {
   "name": "사쿠라 후타바",
   "skill1": {
@@ -43,6 +45,7 @@ window.characterSkillsData["후타바"] = {
     "cool": 0
   }
 };
+
 window.enCharacterSkillsData["후타바"] = {
   "name": "Futaba Sakura",
   "skill1": {
@@ -85,6 +88,7 @@ window.enCharacterSkillsData["후타바"] = {
     "cool": 0
   }
 };
+
 window.jpCharacterSkillsData["후타바"] = {
   "name": "佐倉 双葉",
   "skill1": {
@@ -127,41 +131,47 @@ window.jpCharacterSkillsData["후타바"] = {
     "cool": 0
   }
 };
-window.cnCharacterSkillsData = window.cnCharacterSkillsData || {};
 
 window.cnCharacterSkillsData["후타바"] = {
   "name": "佐仓双叶",
   "skill1": {
     "name": "无声侵袭",
+    "element": "버프광역",
+    "type": "增益",
     "cool": 0,
-    "description": "使所有敌人防御力降低6%+(佐仓双叶每有100点攻击力额外使防御力降低0.53%，最多计入4600/5060/5980/6440点攻击力)，持续3回合。效果持续期间，敌人受到弱点伤害时，使上述减防效果翻倍。若自身解析进度为100%，给予我方全体『骇入完成』，持续2回合。",
-    "element": "버프광역"
+    "description": "使所有敌人防御力降低6%+(佐仓双叶每有100点攻击力额外使防御力降低0.53%，最多计入4600/5060/5980/6440点攻击力)，持续3回合。效果持续期间，敌人受到弱点伤害时，使上述减防效果翻倍。若自身解析进度为100%，给予我方全体『骇入完成』，持续2回合。"
   },
   "skill2": {
     "name": "数据破解",
+    "element": "버프",
+    "type": "增益",
     "cool": 0,
-    "description": "使1名敌人受到伤害增加6%+(佐仓双叶每有100点攻击力额外使目标受到伤害增加0.57%，最多计入4600/5060/5980/6440点攻击力），持续3回合。效果持续期间，友方怪盗使用人格面具技能/追加效果/HIGHLIGHT/神通法对目标造成伤害后，佐仓双叶获得20%解析进度。若自身解析进度为100%，给予我方全体『骇入完成』，持续2回合。",
-    "element": "버프"
+    "description": "使1名敌人受到伤害增加6%+(佐仓双叶每有100点攻击力额外使目标受到伤害增加0.57%，最多计入4600/5060/5980/6440点攻击力），持续3回合。效果持续期间，友方怪盗使用人格面具技能/追加效果/HIGHLIGHT/神通法对目标造成伤害后，佐仓双叶获得20%解析进度。若自身解析进度为100%，给予我方全体『骇入完成』，持续2回合。"
   },
   "skill3": {
     "name": "以不死鸟的名义",
+    "element": "버프",
+    "type": "增益",
     "cool": 0,
-    "description": "解锁条件：我方角色拥有『骇入完成』\n使1名友方怪盗的攻击力提升270/297/302/329+(佐仓双叶每有100点攻击力，额外提升其21.7攻击力，最多计入4600/5060/5980/6440点攻击力)，持续2回合。为全体敌人添加上该名怪盗适应性的『扰乱病毒』，持续1回合。『扰乱病毒』：使目标对应属性的『适应性降级』：若为无效、反弹、吸收，则变为耐性；若为耐性则变为普通；若为普通则变为弱点。若为弱点，则提升其25%受到弱点伤害。",
-    "element": "버프"
+    "unlock": "我方角色拥有『骇入完成』",
+    "description": "解锁条件：我方角色拥有『骇入完成』\n使1名友方怪盗的攻击力提升270/297/302/329+(佐仓双叶每有100点攻击力，额外提升其21.7攻击力，最多计入4600/5060/5980/6440点攻击力)，持续2回合。为全体敌人添加上该名怪盗适应性的『扰乱病毒』，持续1回合。『扰乱病毒』：使目标对应属性的『适应性降级』：若为无效、反弹、吸收，则变为耐性；若为耐性则变为普通；若为普通则变为弱点。若为弱点，则提升其25%受到弱点伤害。"
+  },
+  "skill_highlight": {
+    "name": "属性提升",
+    "element": "패시브",
+    "description": "在场所有同伴的对应属性值提升，提升量相当于解明怪盗各属性的20%。"
   },
   "passive1": {
     "name": "玩心",
     "element": "패시브",
-    "cool": 0,
-    "description": "战斗开始时获得100%解析进度。"
+    "description": "战斗开始时获得100%解析进度。",
+    "cool": 0
   },
   "passive2": {
     "name": "善后",
     "element": "패시브",
-    "cool": 0,
-    "description": "『骇入完成』状态下，所有怪盗获得佐仓双叶攻击力的30.0%的护盾，持续3回合。"
-  },
-  "skill_highlight": {
-    "element": "패시브"
+    "description": "『骇入完成』状态下，所有怪盗获得佐仓双叶攻击力的30.0%的护盾，持续3回合。",
+    "cool": 0
   }
 };
+

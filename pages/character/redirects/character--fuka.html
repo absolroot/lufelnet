@@ -17,12 +17,12 @@ sitemap: false
       var requestedLang = params.get("lang");
       params.delete("lang");
       params.delete("name");
-      var languageTargets = {"kr":"/kr/character/fuka/","en":"/en/character/fuka/","jp":"/jp/character/fuka/"};
+      var languageTargets = {"kr":"/kr/character/fuka/","en":"/en/character/fuka/","jp":"/jp/character/fuka/","cn":"/cn/character/fuka/"};
       var defaultPath = "/en/character/fuka/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

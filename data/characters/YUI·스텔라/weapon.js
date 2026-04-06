@@ -1,6 +1,8 @@
 window.WeaponData = window.WeaponData || {};
 window.enCharacterWeaponData = window.enCharacterWeaponData || {};
 window.jpCharacterWeaponData = window.jpCharacterWeaponData || {};
+window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
+
 window.WeaponData["YUI·스텔라"] = {
   "weapon4-1": {
     "name": "포테이토 호",
@@ -20,6 +22,7 @@ window.WeaponData["YUI·스텔라"] = {
     "description": "크리티컬 확률이 18.1%/18.1%/23.5%/23.5%/28.9%/28.9%/34.3% 증가한다. 베지나이츠 소환 시 자신의 공격력이 10.7%/13.8%/13.8%/16.9%/16.9%/20.0%/20.0% 증가한다(4회 중첩 가능, 해당 전투에서 영구 적용). 『베지나이츠·총동원』 시전 시 크리티컬 효과가 32.8%/42.8%/42.8%/52.8%/52.8%/62.8%/62.8% 증가한다."
   }
 };
+
 window.enCharacterWeaponData["YUI·스텔라"] = {
   "name": "YUI·Prism",
   "weapon4-1": {
@@ -39,6 +42,7 @@ window.enCharacterWeaponData["YUI·스텔라"] = {
     "description": "Increase critical rate by 18.1%/18.1%/23.5%/23.5%/28.9%/28.9%/34.3%. When summoning Vegetable Knights, increase user's Attack by 10.7%/13.8%/13.8%/16.9%/16.9%/20.0%/20.0%. Stacks up to 4 times. This effect is permanent. When using [Vegetable Knights: Mobilize], increase critical damage by 32.8%/42.8%/42.8%/52.8%/52.8%/62.8%/62.8%."
   }
 };
+
 window.jpCharacterWeaponData["YUI·스텔라"] = {
   "name": "YUI·プリズム",
   "weapon4-1": {
@@ -58,21 +62,25 @@ window.jpCharacterWeaponData["YUI·스텔라"] = {
     "description": "クリティカル率が18.1%/18.1%/23.5%/23.5%/28.9%/28.9%/34.3%上昇する。野菜騎士を召喚するたびに、自身の攻撃力が10.7%/13.8%/13.8%/16.9%/16.9%/20.0%/20.0%上昇し、最大4重複まで可能で、この戦闘中永続する。『野菜騎士・総動員』使用時、クリティカル効果が32.8%/42.8%/42.8%/52.8%/52.8%/62.8%/62.8%上昇する。"
   }
 };
-window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
 
 window.cnCharacterWeaponData["YUI·스텔라"] = {
-  "weapon5-1": {
-    "name": "飞越深空之船",
-    "health": 2279.27,
-    "attack": 773.01,
-    "defense": 383.2,
-    "description": "暴击率提升18.1%/18.1%/23.5%/23.5%/28.9%/28.9%/34.3%。召唤蔬菜骑士时，使自身攻击力提升10.7%/13.8%/13.8%/16.9%/16.9%/20.0%/20.0%，可叠加4层，本场战斗永久生效。释放『蔬菜骑士·总动员』时，暴击效果提升32.8%/42.8%/42.8%/52.8%/52.8%/62.8%/62.8%。"
-  },
   "weapon4-1": {
     "name": "薯薯奇航",
     "health": 1823.43,
     "attack": 618.71,
     "defense": 306.25,
+    "skill_name": "",
     "description": "攻击力提升12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%。发动追加效果后，使释放『蔬菜骑士·总动员』时攻击力提升22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0%，持续2回合。"
-  }
+  },
+  "weapon5-1": {
+    "name": "飞越深空之船",
+    "health": 2279.27,
+    "attack": 773.01,
+    "defense": 383.2,
+    "skill_name": "",
+    "highlight": true,
+    "description": "暴击率提升18.1%/18.1%/23.5%/23.5%/28.9%/28.9%/34.3%。召唤蔬菜骑士时，使自身攻击力提升10.7%/13.8%/13.8%/16.9%/16.9%/20.0%/20.0%，可叠加4层，本场战斗永久生效。释放『蔬菜骑士·总动员』时，暴击效果提升32.8%/42.8%/42.8%/52.8%/52.8%/62.8%/62.8%。"
+  },
+  "name": "YUI·幻彩"
 };
+

@@ -18,6 +18,7 @@ window.I18N_PAGE_MAPS_EN = {
     languageNameKr: '한국어',
     languageNameEn: 'English',
     languageNameJp: '日本語',
+    languageNameCn: '中文(Beta)',
     dataManagement: 'Data Management',
     backup: 'Backup',
     restore: 'Restore',

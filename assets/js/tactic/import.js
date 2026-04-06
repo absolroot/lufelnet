@@ -301,7 +301,7 @@ window.applyImportedData = function(payload, options = {}) {
         const charData = window.characterData || (typeof characterData !== 'undefined' ? characterData : null);
         
         // characterData 준비 확인
-        if (currentLang !== 'kr' && (!charData || !charData['원더'] && !charData['렌'] && !charData['레오'])) {
+        if (!((window.isKrLikeLanguage && window.isKrLikeLanguage(currentLang)) || currentLang === 'kr') && (!charData || !charData['원더'] && !charData['렌'] && !charData['레오'])) {
           // 준비되지 않았으면 재시도 (최대 5초)
           if (!window.__importRetryCount__) window.__importRetryCount__ = 0;
           if (window.__importRetryCount__ < 50) {
@@ -320,7 +320,7 @@ window.applyImportedData = function(payload, options = {}) {
         // renderTurns는 characterData 준비 후 실행
         if (typeof renderTurns === 'function') renderTurns();
         
-        if (currentLang !== 'kr') {
+        if (!((window.isKrLikeLanguage && window.isKrLikeLanguage(currentLang)) || currentLang === 'kr')) {
           // 무기 표시 (입력값은 KR 유지, 표시 텍스트만 번역)
           const weaponInput = document.querySelector('.wonder-weapon-input');
           if (weaponInput && weaponInput.value && typeof matchWeapons !== 'undefined') {

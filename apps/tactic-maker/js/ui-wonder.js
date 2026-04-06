@@ -42,6 +42,7 @@ export class WonderUI extends EventEmitter {
         if (lang === 'kr') return '원더';
         if (lang === 'en') return 'WONDER';
         if (lang === 'jp') return 'ワンダー';
+        if (lang === 'cn') return 'WONDER';
         return '원더';
     }
 
@@ -57,6 +58,8 @@ export class WonderUI extends EventEmitter {
             effect = weaponData.effect_en;
         } else if (lang === 'jp' && weaponData.effect_jp) {
             effect = weaponData.effect_jp;
+        } else if (lang === 'cn' && weaponData.effect_cn) {
+            effect = weaponData.effect_cn;
         } else {
             effect = weaponData.effect || '';
         }
@@ -93,6 +96,8 @@ export class WonderUI extends EventEmitter {
             stampName = stamp.name_en;
         } else if (lang === 'jp' && stamp.name_jp) {
             stampName = stamp.name_jp;
+        } else if (lang === 'cn' && stamp.name_cn) {
+            stampName = stamp.name_cn;
         } else {
             stampName = stamp.name || '';
         }
@@ -101,6 +106,8 @@ export class WonderUI extends EventEmitter {
             stampEffect = stamp.effect_en;
         } else if (lang === 'jp' && stamp.effect_jp) {
             stampEffect = stamp.effect_jp;
+        } else if (lang === 'cn' && stamp.effect_cn) {
+            stampEffect = stamp.effect_cn;
         } else {
             stampEffect = stamp.effect || '';
         }
@@ -907,6 +914,7 @@ export class WonderUI extends EventEmitter {
             if (!data) return skillName;
             if (lang === 'en' && data.name_en) return data.name_en;
             if (lang === 'jp' && data.name_jp) return data.name_jp;
+            if (lang === 'cn' && data.name_cn) return data.name_cn;
             return skillName;
         };
 

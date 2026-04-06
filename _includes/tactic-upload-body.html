@@ -4,13 +4,13 @@
     var path = String(window.location.pathname || '/');
     var lowerPath = path.toLowerCase();
 
-    var pathLangMatch = lowerPath.match(/^\/(kr|en|jp)(\/|$)/);
+    var pathLangMatch = lowerPath.match(/^\/(kr|en|jp|cn)(\/|$)/);
     var pathLang = pathLangMatch ? pathLangMatch[1] : '';
     var queryLang = String(params.get('lang') || '').toLowerCase();
-    var effectiveLang = pathLang || (['kr', 'en', 'jp'].indexOf(queryLang) !== -1 ? queryLang : '');
+    var effectiveLang = pathLang || (['kr', 'en', 'jp', 'cn'].indexOf(queryLang) !== -1 ? queryLang : '');
 
     var isLegacyRoot = /^\/tactic\/tactic-upload(?:\.html)?\/?$/.test(lowerPath);
-    var isCanonicalPath = /^\/(kr|en|jp)\/tactic\/tactic-upload(?:\.html)?\/?$/.test(lowerPath);
+    var isCanonicalPath = /^\/(kr|en|jp|cn)\/tactic\/tactic-upload(?:\.html)?\/?$/.test(lowerPath);
 
     if (isLegacyRoot && effectiveLang) {
         window.__SEO_PATH_LANG__ = effectiveLang;
@@ -554,6 +554,19 @@ class TacticUploader {
         return 'kr';
     }
 
+    getTacticLibraryUrl() {
+        return `/${this.getCurrentLanguage()}/tactic/library/`;
+    }
+
+    getLoginUrl(redirectUrl) {
+        const url = new URL('/login/', window.location.origin);
+        url.searchParams.set('lang', this.getCurrentLanguage());
+        if (redirectUrl) {
+            url.searchParams.set('redirect', redirectUrl);
+        }
+        return url.pathname + url.search;
+    }
+
     i18n(key, fallback = '') {
         return getI18nText(key, fallback);
     }
@@ -732,7 +745,7 @@ class TacticUploader {
         try {
             const currentUrl = window.location.href;
             // 즉시 로그인 페이지로 리다이렉트 (사용자 상호작용 없이)
-            window.location.replace(`/login/?redirect=${encodeURIComponent(currentUrl)}`);
+            window.location.replace(this.getLoginUrl(currentUrl));
         } catch (e) {
             // 혹시 실패 시 기존 안내 UI 노출 (폴백)
             document.getElementById('loginRequired').style.display = 'block';
@@ -760,7 +773,7 @@ class TacticUploader {
         // 로그인 버튼
         document.getElementById('loginButton').addEventListener('click', () => {
             const currentUrl = window.location.href;
-            window.location.href = `/login/?redirect=${encodeURIComponent(currentUrl)}`;
+            window.location.href = this.getLoginUrl(currentUrl);
         });
 
         // 로그아웃 버튼
@@ -770,7 +783,7 @@ class TacticUploader {
                 try {
                     await supabase.auth.signOut();
                     // 로그아웃 후 리다이렉트
-                    window.location.replace(`/login/?redirect=${encodeURIComponent('/tactic/tactic-upload.html')}`);
+                    window.location.replace(this.getLoginUrl(window.location.pathname + window.location.search));
                 } catch (e) {
                     alert(this.i18n('error_logout_failed', '로그아웃에 실패했습니다.'));
                 }
@@ -825,12 +838,12 @@ class TacticUploader {
                 .maybeSingle();
             if (error || !data) {
                 alert(this.i18n('error_post_not_found', '게시물을 찾을 수 없습니다.'));
-                window.location.href = '/tactic/library/';
+                window.location.href = this.getTacticLibraryUrl();
                 return;
             }
             if (!this.currentUser || (data.user_id && data.user_id !== this.currentUser.id)) {
                 alert(this.i18n('error_no_edit_permission', '이 게시물을 수정할 권한이 없습니다.'));
-                window.location.href = '/tactic/library/';
+                window.location.href = this.getTacticLibraryUrl();
                 return;
             }
             this.editMode = true;
@@ -850,7 +863,7 @@ class TacticUploader {
             this.enableEditUI();
         } catch (e) {
             alert(this.i18n('error_load_post_failed', '게시물 불러오기에 실패했습니다.'));
-            window.location.href = '/tactic/library/';
+            window.location.href = this.getTacticLibraryUrl();
         }
     }
 
@@ -868,7 +881,7 @@ class TacticUploader {
             `;
             document.getElementById('saveButton').onclick = () => this.saveEdit();
             document.getElementById('deleteButton').onclick = () => this.deleteEdit();
-            document.getElementById('cancelButton').onclick = () => { window.location.href = '/tactic/library/'; };
+            document.getElementById('cancelButton').onclick = () => { window.location.href = this.getTacticLibraryUrl(); };
         }
     }
 
@@ -891,7 +904,7 @@ class TacticUploader {
                 .eq('user_id', this.currentUser.id);
             if (error) throw error;
             alert(this.i18n('alert_saved', '저장되었습니다.'));
-            window.location.href = '/tactic/library/';
+            window.location.href = this.getTacticLibraryUrl();
         } catch (e) {
             alert(this.i18n('alert_save_failed', '저장에 실패했습니다.'));
         } finally {
@@ -912,7 +925,7 @@ class TacticUploader {
                 .eq('user_id', this.currentUser.id);
             if (error) throw error;
             alert(this.i18n('alert_deleted', '삭제되었습니다.'));
-            window.location.href = '/tactic/library/';
+            window.location.href = this.getTacticLibraryUrl();
         } catch (e) {
             alert(this.i18n('alert_delete_failed', '삭제에 실패했습니다.'));
         } finally {
@@ -1220,7 +1233,7 @@ class TacticUploader {
             }
             if (goListBtnM) {
                 goListBtnM.textContent = this.i18n('success_go_list', '목록으로');
-                goListBtnM.onclick = () => { window.location.href = '/tactic/library/'; };
+                goListBtnM.onclick = () => { window.location.href = this.getTacticLibraryUrl(); };
             }
             document.querySelectorAll('.success-close').forEach(el => el.onclick = () => { modal.style.display = 'none'; });
             // 모달 표시 직전, 혹시 다른 처리에서 텍스트가 바뀌었을 수 있으므로 다시 한 번 보장

@@ -19,10 +19,10 @@
   var path = String(window.location.pathname || '/');
   var lowerPath = path.toLowerCase();
 
-  var pathLangMatch = lowerPath.match(/^\/(kr|en|jp)(\/|$)/);
+  var pathLangMatch = lowerPath.match(/^\/(kr|en|jp|cn)(\/|$)/);
   var pathLang = pathLangMatch ? pathLangMatch[1] : '';
   var queryLang = String(params.get('lang') || '').toLowerCase();
-  var effectiveLang = pathLang || (['kr', 'en', 'jp'].indexOf(queryLang) !== -1 ? queryLang : '');
+  var effectiveLang = pathLang || (['kr', 'en', 'jp', 'cn'].indexOf(queryLang) !== -1 ? queryLang : '');
 
   var map = window.__PERSONA_SLUG_MAP;
   var name = params.get('name') || params.get('persona');
@@ -44,8 +44,8 @@
   }
 
   var isLegacyRoot = /^\/persona\/?$/.test(lowerPath);
-  var isCanonicalListPath = /^\/(kr|en|jp)\/persona\/?$/.test(lowerPath);
-  var isCanonicalDetailPath = /^\/(kr|en|jp)\/persona\/[^/]+\/?$/.test(lowerPath);
+  var isCanonicalListPath = /^\/(kr|en|jp|cn)\/persona\/?$/.test(lowerPath);
+  var isCanonicalDetailPath = /^\/(kr|en|jp|cn)\/persona\/[^/]+\/?$/.test(lowerPath);
 
   if (isLegacyRoot && effectiveLang) {
     window.__SEO_PATH_LANG__ = effectiveLang;

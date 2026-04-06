@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["모르가나"] = {
   "name": "모르가나",
   "r0": "예민한 후각",
@@ -18,6 +20,7 @@ window.ritualData["모르가나"] = {
   "r6": "호기심쟁이",
   "r6_detail": "『젠틀 펀치』의 명중률이 더 낮아지지 않고, 크리티컬 공격 후 적에게 주는 대미지가 2턴 동안 15% 증가한다."
 };
+
 window.enCharacterRitualData["모르가나"] = {
   "name": "Morgana",
   "r0": "Morgana's Favor",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["모르가나"] = {
   "r6": "Look, Treasure!",
   "r6_detail": "Remove Gentle Fist's decreased accuracy effect. Increase target's damage taken by 15% for 2 turns."
 };
+
 window.jpCharacterRitualData["모르가나"] = {
   "name": "モルガナ",
   "r0": "モルガナサポート",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["모르가나"] = {
   "r6": "オタカラ見ーっけ！",
   "r6_detail": "『ジェントルパンチ』の命中率が下がる効果が無くなり、２ターンの間、対象の被ダメージが１５%上昇する。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["모르가나"] = {
   "name": "摩尔加纳",
@@ -71,3 +74,4 @@ window.cnCharacterRitualData["모르가나"] = {
   "r6": "好奇宝宝",
   "r6_detail": "『吾辈之拳』的命中率不再降低，并且造成暴击后使敌人受到伤害提升15%，2回合。"
 };
+

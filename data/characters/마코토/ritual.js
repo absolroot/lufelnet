@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["마코토"] = {
   "name": "니지마 마코토",
   "r0": "합기·수신",
@@ -18,6 +20,7 @@ window.ritualData["마코토"] = {
   "r6": "호흡·조화",
   "r6_detail": "『철의 의지』 상태에 진입 시 추가로 1턴을 획득한다(추가 턴 진입 시 캐릭터의 지속형 효과는 지속 턴 횟수를 차감하지 않는다). 『핵융합 과부하』의 SP 소모가 33% 감소한다."
 };
+
 window.enCharacterRitualData["마코토"] = {
   "name": "Makoto Niijima",
   "r0": "Enraged Usurper",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["마코토"] = {
   "r6": "Fist of Justice!",
   "r6_detail": "When Crash Out is active, Makoto can gain an extra action. (These extra actions do not affect the duration of effects with turn limits.)\nAlso decrease the SP cost of Thermonuclear Fury by 33%."
 };
+
 window.jpCharacterRitualData["마코토"] = {
   "name": "新島 真",
   "r0": "激昂の簒奪者",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["마코토"] = {
   "r6": "鉄・拳・制・裁！",
   "r6_detail": "『ブチ切れ』状態になったターンに、追加行動ができるようになる。この、追加行動は、ターン制限のある効果のターン数に影響しない。\nまた、『爆発する怒り』のＳＰ消費が３３%減少する。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["마코토"] = {
   "name": "新岛真",
@@ -71,3 +74,4 @@ window.cnCharacterRitualData["마코토"] = {
   "r6": "呼吸·调和",
   "r6_detail": "进入『铁血意志』状态时，获得1个额外回合（进入额外回合时，角色身上的持续型效果不会扣除持续回合数）。『超载聚变』的SP消耗减少33%。"
 };
+

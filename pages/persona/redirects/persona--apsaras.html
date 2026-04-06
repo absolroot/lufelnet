@@ -18,12 +18,12 @@ sitemap: false
       params.delete("lang");
       params.delete("name");
       params.delete("persona");
-      var languageTargets = {"kr":"/kr/persona/apsaras/","en":"/en/persona/apsaras/","jp":"/jp/persona/apsaras/"};
+      var languageTargets = {"kr":"/kr/persona/apsaras/","en":"/en/persona/apsaras/","jp":"/jp/persona/apsaras/","cn":"/cn/persona/apsaras/"};
       var defaultPath = "/en/persona/apsaras/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

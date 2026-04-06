@@ -18,6 +18,7 @@ window.I18N_PAGE_MAPS_KR = {
     languageNameKr: '한국어',
     languageNameEn: 'English',
     languageNameJp: '日本語',
+    languageNameCn: '中文(Beta)',
     dataManagement: '데이터 관리',
     backup: '백업',
     restore: '복원',

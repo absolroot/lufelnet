@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["리코·매화"] = {
   "name": "타네무라 리코·매화",
   "r0": "매화비",
@@ -18,6 +20,7 @@ window.ritualData["리코·매화"] = {
   "r6": "봄의 얼굴",
   "r6_detail": "『매화의 잔향』은 자신을 제외한 모든 동료에게 적용된다. 스킬 메인 목표가 페르소나 스킬 사용 후, 자신이 즉시 적 목표에게 『휘날리는 매화꽃』을 1회 시전한다. 해당 효과는 『매화의 잔향』 지속 기간 동안 1회만 발동 가능하다. 『휘날리는 매화꽃』의 『낙화』 상태 지속 시간이 1턴 연장된다.\n타네무라 리코·매화가 필드에 있는 경우, 모든 괴도가 대미지 줄 때 크리티컬 확률이 100%를 초과하면 초과한 1%마다 해당 대미지의 크리티컬 효과가 2% 추가 증가한다."
 };
+
 window.enCharacterRitualData["리코·매화"] = {
   "name": "Tempest Riko",
   "r0": "Fragrant Gale",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["리코·매화"] = {
   "r6": "Full Blossom",
   "r6_detail": "Blossoming Season now affects all allies besides Tempest Riko. When the main target uses a skill, immediately activate Storm of Petals 1 time on the target foe. This effect can only be activated 1 time for each use of Blossoming Season. Also, extend the duration of Falling Petals from Storm of Petals by 1 turn.\nWhile Riko is on the field, when any ally deals damage, for every 1% of their critical rate that exceeds 100%, increase the critical damage of that damage by 2%."
 };
+
 window.jpCharacterRitualData["리코·매화"] = {
   "name": "理子・生命欲の暴走",
   "r0": "満つる薫風",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["리코·매화"] = {
   "r6": "春や今、梅花繚乱",
   "r6_detail": "『時満ちて咲ふ梅が枝』が自身以外の味方全体に変化する。選択した対象がスキルを使用した時、即座に対象の敵へ『紅にほふ苑の春嵐』を１回発動する。この効果は１度の『時満ちて咲ふ梅が枝』発動中に１回のみ有効。さらに『紅にほふ苑の春嵐』の『散り初め』状態が１ターン延長される。\n自身が場にいる時、味方全体がダメージを与える時にＣＲＴ発生率が１００%を超えている場合、超過した１%ごとにそのダメージのクリティカルダメージが追加で２%上昇する。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["리코·매화"] = {
   "name": "多祢村理子·未央",
@@ -71,3 +74,4 @@ window.cnCharacterRitualData["리코·매화"] = {
   "r6": "待春颜",
   "r6_detail": "『梅自香，时过香浓』会对除自身以外的所有同伴生效，技能主目标使用人格面具技能后，自身立刻对敌方目标释放1次『花满枝，风过枝头』，该效果在单次『梅自香，时过香浓』持续时间内仅会触发一次。『花满枝，风过枝头』的『凋落』状态的持续时间延长1回合。\n多祢村理子·未央在场时，所有怪盗造成伤害时若暴击率超过100%，每超过1%使该伤害的暴击效果额外提升2%。"
 };
+

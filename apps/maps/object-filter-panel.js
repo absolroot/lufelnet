@@ -35,11 +35,13 @@
             const keyMap = {
                 kr: 'languageNameKr',
                 en: 'languageNameEn',
-                jp: 'languageNameJp'
+                jp: 'languageNameJp',
+                cn: 'languageNameCn'
             };
             const key = keyMap[langCode] || '';
             if (!key) return langCode || '';
-            return this.getMapsText(key, langCode);
+            const fallback = langCode === 'cn' ? '中文(Beta)' : langCode;
+            return this.getMapsText(key, fallback);
         },
 
         // 비대화형 아이콘인지 확인
@@ -610,6 +612,7 @@
             }
 
             localStorage.setItem('preferredLanguage', lang);
+            localStorage.setItem('preferred_language', lang);
 
             const currentUrl = new URL(window.location.href);
             const params = new URLSearchParams(currentUrl.search);

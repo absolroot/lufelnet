@@ -17,12 +17,12 @@ sitemap: false
       var requestedLang = params.get("lang");
       params.delete("lang");
       params.delete("name");
-      var languageTargets = {"kr":"/kr/character/closer-tropical/","en":"/en/character/closer-tropical/","jp":"/jp/character/closer-tropical/"};
+      var languageTargets = {"kr":"/kr/character/closer-tropical/","en":"/en/character/closer-tropical/","jp":"/jp/character/closer-tropical/","cn":"/cn/character/closer-tropical/"};
       var defaultPath = "/en/character/closer-tropical/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

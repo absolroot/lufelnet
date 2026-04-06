@@ -1,6 +1,8 @@
 window.characterSkillsData = window.characterSkillsData || {};
 window.enCharacterSkillsData = window.enCharacterSkillsData || {};
 window.jpCharacterSkillsData = window.jpCharacterSkillsData || {};
+window.cnCharacterSkillsData = window.cnCharacterSkillsData || {};
+
 window.characterSkillsData["류지"] = {
   "name": "사카모토 류지",
   "skill1": {
@@ -46,6 +48,7 @@ window.characterSkillsData["류지"] = {
     "cool": 0
   }
 };
+
 window.enCharacterSkillsData["류지"] = {
   "name": "Ryuji Sakamoto",
   "skill1": {
@@ -93,6 +96,7 @@ window.enCharacterSkillsData["류지"] = {
     "cool": 0
   }
 };
+
 window.jpCharacterSkillsData["류지"] = {
   "name": "坂本 竜司",
   "skill1": {
@@ -139,19 +143,21 @@ window.jpCharacterSkillsData["류지"] = {
     "cool": 0
   }
 };
-window.cnCharacterSkillsData = window.cnCharacterSkillsData || {};
 
 window.cnCharacterSkillsData["류지"] = {
   "name": "坂本龙司",
   "skill1": {
     "name": "爆裂撞击",
     "element": "물리",
+    "type": "单体伤害",
+    "hp": 8,
     "cool": 0,
     "description": "对1名敌人造成3次64.7%/71.3%/68.7%/75.3%攻击力的物理属性伤害，若自身没有『触底反弹』效果，则该技能额外消耗20%最大生命值，并使技能伤害提升30%，暴击率提升30%。"
   },
   "skill2": {
     "name": "电击惩戒",
-    "element": "전격",
+    "element": "전격광역",
+    "type": "群体伤害",
     "sp": 26,
     "cool": 0,
     "description": "对所有敌人造成67.1%/74.0%/71.3%/78.2%攻击力的电击属性伤害，有29.3%/29.3%/31.1%/31.1%的基础概率使敌人陷入触电状态，若自身有『触底反弹』效果，则概率提升至58.6%/58.6%/62.2%/62.2%。"
@@ -159,24 +165,29 @@ window.cnCharacterSkillsData["류지"] = {
   "skill3": {
     "name": "蓄力一击",
     "element": "물리",
+    "type": "单体伤害",
+    "hp": 20,
     "cool": 0,
     "description": "选择1名敌人进行蓄力，下一回合时自动出手，对目标造成341.6%/376.6%/362.6%/397.6%攻击力的物理属性伤害。若自身有『触底反弹』效果，则该技能必定暴击。若蓄力期间目标死亡，则随机选择另外1名敌人。若龙司处于无法行动的状态，则延后至可以行动时出手。"
+  },
+  "skill_highlight": {
+    "element": "물리",
+    "type": "单体伤害",
+    "description": "对1名敌方单位造成405.0%/446.5%/429.9%/471.4%攻击力的物理伤害，并使自己下一个技能的伤害提升58.6%/58.6%/62.2%/62.2%。",
+    "cool": 4,
+    "name": "HIGHLIGHT"
   },
   "passive1": {
     "name": "特攻",
     "element": "패시브",
-    "cool": 0,
-    "description": "攻击生命值百分比不低于自己的敌人时，攻击力提升45.0%。"
+    "description": "攻击生命值百分比不低于自己的敌人时，攻击力提升45.0%。",
+    "cool": 0
   },
   "passive2": {
     "name": "义气",
     "element": "패시브",
-    "cool": 0,
-    "description": "『触底反弹』效果触发后，恢复相当于自身30.0%攻击力的生命值。"
-  },
-  "skill_highlight": {
-    "element": "물리",
-    "cool": 4,
-    "description": "对1名敌方单位造成405.0%/446.5%/429.9%/471.4%攻击力的物理伤害，并使自己下一个技能的伤害提升58.6%/58.6%/62.2%/62.2%。"
+    "description": "『触底反弹』效果触发后，恢复相当于自身30.0%攻击力的生命值。",
+    "cool": 0
   }
 };
+

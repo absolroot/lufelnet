@@ -18,12 +18,12 @@ sitemap: false
       params.delete("lang");
       params.delete("name");
       params.delete("persona");
-      var languageTargets = {"kr":"/kr/persona/byakko/","en":"/en/persona/byakko/","jp":"/jp/persona/byakko/"};
+      var languageTargets = {"kr":"/kr/persona/byakko/","en":"/en/persona/byakko/","jp":"/jp/persona/byakko/","cn":"/cn/persona/byakko/"};
       var defaultPath = "/en/persona/byakko/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

@@ -17,12 +17,12 @@ sitemap: false
       var requestedLang = params.get("lang");
       params.delete("lang");
       params.delete("weapon");
-      var languageTargets = {"kr":"/kr/wonder-weapon/eye-of-obsequies/","en":"/en/wonder-weapon/eye-of-obsequies/","jp":"/jp/wonder-weapon/eye-of-obsequies/"};
+      var languageTargets = {"kr":"/kr/wonder-weapon/eye-of-obsequies/","en":"/en/wonder-weapon/eye-of-obsequies/","jp":"/jp/wonder-weapon/eye-of-obsequies/","cn":"/cn/wonder-weapon/eye-of-obsequies/"};
       var defaultPath = "/en/wonder-weapon/eye-of-obsequies/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

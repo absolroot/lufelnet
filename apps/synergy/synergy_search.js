@@ -18,7 +18,7 @@
         }
         const urlParams = new URLSearchParams(window.location.search);
         const urlLang = urlParams.get('lang');
-        if (urlLang && ['kr', 'en', 'jp'].includes(urlLang)) {
+        if (urlLang && ['kr', 'en', 'jp', 'cn'].includes(urlLang)) {
             return urlLang;
         }
         try {
@@ -27,6 +27,7 @@
                 if (htmlLang.startsWith('ko') || htmlLang.startsWith('kr')) return 'kr';
                 if (htmlLang.startsWith('en')) return 'en';
                 if (htmlLang.startsWith('ja') || htmlLang.startsWith('jp')) return 'jp';
+                if (htmlLang.startsWith('zh') || htmlLang.startsWith('cn')) return 'cn';
             }
         } catch (e) { }
         return 'kr';
@@ -117,7 +118,7 @@
 
     // 언어 파일 존재 여부 확인
     async function hasLanguageFile(characterName, lang) {
-        if (lang === 'kr') return true; // 한국어는 항상 true
+        if ((window.isKrLikeLanguage && window.isKrLikeLanguage(lang)) || lang === 'kr') return true; // KR-like languages always true
         try {
             const fileName = encodeURIComponent(characterName);
             const response = await fetch(`${BASE_URL}/apps/synergy/friends/${lang}/${fileName}.json?v=${APP_VERSION}`, { method: 'HEAD' });
@@ -130,7 +131,7 @@
     // 언어 필터링
     async function filterByLanguage(characterName) {
         const currentLanguage = getCurrentLanguage();
-        if (currentLanguage === 'kr') return true; // 한국어는 모든 캐릭터 표시
+        if ((window.isKrLikeLanguage && window.isKrLikeLanguage(currentLanguage)) || currentLanguage === 'kr') return true; // KR-like languages show all characters
         if (showSpoiler) return true; // spoiler 체크 시 모든 캐릭터 표시
         // 해당 언어 파일이 있는지 확인
         return await hasLanguageFile(characterName, currentLanguage);
@@ -231,4 +232,3 @@
         setShowSpoiler: (value) => { showSpoiler = value; }
     };
 })();
-

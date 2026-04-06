@@ -1,6 +1,8 @@
 window.characterSkillsData = window.characterSkillsData || {};
 window.enCharacterSkillsData = window.enCharacterSkillsData || {};
 window.jpCharacterSkillsData = window.jpCharacterSkillsData || {};
+window.cnCharacterSkillsData = window.cnCharacterSkillsData || {};
+
 window.characterSkillsData["미츠루"] = {
   "name": "키리조 미츠루",
   "skill1": {
@@ -52,6 +54,7 @@ window.characterSkillsData["미츠루"] = {
     "description": "키리조 미츠루가 필드에 있으면 모든 반항 또는 지배 캐릭터가 『서리 결정』을 보유한 적 공격 시 『서리 결정』 중첩 수*4.8%의 대미지 증가를 획득한다."
   }
 };
+
 window.enCharacterSkillsData["미츠루"] = {
   "name": "Mitsuru Kirijo",
   "skill1": {
@@ -100,6 +103,7 @@ window.enCharacterSkillsData["미츠루"] = {
     "description": "When Mitsuru is on the field, all Assassin/Sweeper increase damage by 4.8% per [Frost] stacks when attacking foes with [Frost]."
   }
 };
+
 window.jpCharacterSkillsData["미츠루"] = {
   "name": "桐条 美鶴",
   "skill1": {
@@ -149,20 +153,21 @@ window.jpCharacterSkillsData["미츠루"] = {
     "description": "桐条美鶴が戦場にいる時、反抗または支配タイプのキャラクターが『霜結』状態の敵を攻撃すると、『霜結』層数×4.8%分のダメージ増加効果を得る。"
   }
 };
-window.cnCharacterSkillsData = window.cnCharacterSkillsData || {};
 
 window.cnCharacterSkillsData["미츠루"] = {
   "name": "桐条美鹤",
   "skill1": {
     "name": "绚烂冰华",
     "element": "빙결",
+    "type": "单体伤害",
     "sp": 20,
     "cool": 0,
     "description": "对1名敌人造成211.2%/232.8%/224.2%/245.8%攻击力的冰冻属性伤害，额外为其添加3层『霜结』，并使其防御力降低（桐条美鹤每有300点攻击力，防御力降低1.2%*『霜结』层数，最多计入2928/3228/3108/3408点攻击力），持续2回合。"
   },
   "skill2": {
     "name": "极寒风暴",
-    "element": "버프",
+    "element": "디버프",
+    "type": "增益",
     "sp": 0,
     "cool": 0,
     "description": "使1名敌人陷入『女王凝视』状态，防御力降低7.8%/8.6%/8.3%/9.1%（桐条美鹤每有300点的攻击力，防御力额外降低3.2%，最多计入2928/3228/3108/3408点攻击力），受到伤害提升（桐条美鹤每有300点的攻击力，受到伤害提升2%，最多计入2928/3228/3108/3408点攻击力），本场战斗永久生效。『女王凝视』全场唯一，选择新目标释放时，会将『女王凝视』转移至新目标。若处于『女王凝视』状态的敌人死亡时，『女王凝视』会自动转移至当前场上生命值最高的敌人。『女王凝视』转移时，会同时转移桐条美鹤添加的所有异常状态。使用该技能后本回合仍可使用其他技能，该技能不视为人格面具技能。"
@@ -170,15 +175,24 @@ window.cnCharacterSkillsData["미츠루"] = {
   "skill3": {
     "name": "冰之舞刺击",
     "element": "빙결",
+    "type": "单体伤害",
     "sp": 24,
     "cool": 0,
     "description": "根据解明怪盗各属性的3%，提升在场的所有同伴的相应属性值，持续2回合。而后对1名敌人造成345.1%/380.5%/366.3%/401.7%攻击力的冰冻属性伤害，目标每有1层『霜结』，技能伤害提升10%，目标『霜结』达到5层时，技能额外获得15%的暴击率提升。"
+  },
+  "skill_highlight": {
+    "name": "暴雪利刃",
+    "element": "빙결",
+    "cool": 0,
+    "description": "释放条件：70点神通法能量\n对1名敌人造成362.3%/399.4%/384.6%/421.7%攻击力的冰冻属性伤害，在2回合内将目标的『霜结』强化为『寒霜结』。友方同伴使用人格面具技能攻击处于『寒霜结』状态下的敌人时，触发桐条美鹤的『冷血之刃』，对目标额外造成1次『霜结』层数*19.5%/21.5%/20.7%/22.7%攻击力的伤害。",
+    "type": "单体伤害"
   },
   "skill_support": {
     "name": "援助技能",
     "element": "버프",
     "cool": 0,
-    "description": "使1名敌人获得持续2回合的『能量标记』。每名S.E.E.S.成员首次攻击该名敌人时，自身回复35点神通法能量；每名非S.E.E.S.成员首次攻击该名敌人时，回复15%的HIGHLIGHT能量。"
+    "description": "使1名敌人获得持续2回合的『能量标记』。每名S.E.E.S.成员首次攻击该名敌人时，自身回复35点神通法能量；每名非S.E.E.S.成员首次攻击该名敌人时，回复15%的HIGHLIGHT能量。",
+    "type": "增益"
   },
   "passive1": {
     "name": "责任",
@@ -191,11 +205,6 @@ window.cnCharacterSkillsData["미츠루"] = {
     "element": "패시브",
     "cool": 0,
     "description": "桐条美鹤在场时，所有反抗或支配角色攻击拥有『霜结』的单位获得『霜结』层数*4.8%的伤害提升。"
-  },
-  "skill_highlight": {
-    "name": "暴雪利刃",
-    "element": "빙결",
-    "cool": 0,
-    "description": "释放条件：70点神通法能量\n对1名敌人造成362.3%/399.4%/384.6%/421.7%攻击力的冰冻属性伤害，在2回合内将目标的『霜结』强化为『寒霜结』。友方同伴使用人格面具技能攻击处于『寒霜结』状态下的敌人时，触发桐条美鹤的『冷血之刃』，对目标额外造成1次『霜结』层数*19.5%/21.5%/20.7%/22.7%攻击力的伤害。"
   }
 };
+

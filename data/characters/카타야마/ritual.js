@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["카타야마"] = {
   "name": "카타야마 쿠미",
   "r0": "효율적인 지도",
@@ -18,6 +20,7 @@ window.ritualData["카타야마"] = {
   "r6": "선생님의 열정",
   "r6_detail": "전투 시작 시 카타야마 쿠미가 『영혼 연소』를 2중첩 획득한다. 페르소나 스킬을 2회 시전할 때마다 『영혼 연소』를 1중첩 획득한다(3회 중첩 가능).\n카타야마 쿠미는 턴 시작 시 『영혼 연소』를 1회 소모하여 1턴 동안 자신을 대폭 강화할 수 있다. 효과 적용 기간 동안 자신의 공격력이 50%, 크리티컬 확률이 10%, 크리티컬 효과가 30% 증가하고, HIGHLIGHT 대미지가 크리티컬될 수 있으며, 『중상』을 보유한 목표의 받는 대미지가 추가로 30% 증가하고, 『격파』를 보유한 목표의 다운 허약이 추가로 20% 증가한다.\n카타야마 쿠미가 치명 대미지를 받을 때 자신이 『영혼 연소』를 보유한 경우, 『영혼 연소』를 1회 소모하여 이번 대미지 효과를 회피할 수 있다(해당 효과는 전투당 1회만 발동 가능, 일부 스킬에는 적용되지 않음)."
 };
+
 window.enCharacterRitualData["카타야마"] = {
   "name": "Kumi Katayama",
   "r0": "Guidance of the Efficient",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["카타야마"] = {
   "r6": "Undying Teacher's Soul",
   "r6_detail": "At the start of battle, Katayama gains 2 [Burning Soul] stacks. When using 2 Persona skills, gain 1 [Burning Soul] stack. Stacks up to 3 times.\nAt the start of turn, Katayama can spend 1 [Burning Soul] stack to heavily buff herself for 1 turn. When this is active, increase Attack by 50%, critical rate by 10%, critical damage by 30%, Highlight can deal critical, targets with [Devastation] increase damage taken by $30% more, targets with [Break] increase Downed Damage Taken by 20% more.\nWhen Katayama takes fatal damage, if she has [Burning Soul], spend 1 [Burning Soul] stack to evade this attack. (This effect can be activated once per battle, cannot work against certain skills)."
 };
+
 window.jpCharacterRitualData["카타야마"] = {
   "name": "片山 久未",
   "r0": "高効率指導",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["카타야마"] = {
   "r6": "不滅の教師魂",
   "r6_detail": "戦闘開始時、『燃魂』を2スタック獲得する。\nペルソナスキルを2回発動するごとに『燃魂』を1スタック獲得（最大3）。\nターン開始時に『燃魂』を1消費し、1ターン自身を強化：\n· 攻撃力+50%\n· CRT発生率+10%\n· CRT倍率+30%\nHIGHLIGHTはクリティカル可能。『重傷』の敵は被ダメージ+30%、『撃破』の敵はダウン特効+20%。\n致命的ダメージを受けると、『燃魂』を1消費して無効化する（戦闘中1回のみ）。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["카타야마"] = {
   "name": "片山久未",
@@ -71,3 +74,4 @@ window.cnCharacterRitualData["카타야마"] = {
   "r6": "不灭教师魂",
   "r6_detail": "战斗开始时，片山久未获得2层『燃魂』。每释放2次人格面具技能，获得1层『燃魂』，上限3层。\n片山久未回合开始时可以消耗1层『燃魂』大幅度强化自身，持续1回合。效果期间自身攻击力提升50%、暴击率提升10%、暴击效果提升30%，HIGHLIGHT伤害可以暴击，拥有『重创』的目标受到伤害额外提升30%，拥有『击破』的目标倒地易伤额外提升20%。\n片山久未受到致命伤害时，若自身拥有『燃魂』，则消耗1层『燃魂』闪避本次伤害效果。（该效果每场战斗仅能触发1次，对部分技能无效）。"
 };
+

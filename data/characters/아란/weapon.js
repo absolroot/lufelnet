@@ -1,6 +1,8 @@
 window.WeaponData = window.WeaponData || {};
 window.enCharacterWeaponData = window.enCharacterWeaponData || {};
 window.jpCharacterWeaponData = window.jpCharacterWeaponData || {};
+window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
+
 window.WeaponData["아란"] = {
   "name": "히라노 아란",
   "weapon4-1": {
@@ -59,23 +61,25 @@ window.jpCharacterWeaponData["아란"] = {
     "description": "状態異常命中が36.0%/36.0%/47.0%/47.0%/58.0%/58.0%/69.0%上昇する。『罪』の伝導効果が52.0%/68.0%/68.0%/84.0%/84.0%/100.0%/100.0%増幅される。味方全体が『罪』状態の敵に与えるクリティカル効果が13.6%/17.7%/17.7%/21.8%/21.8%/25.9%/25.9%上昇する。"
   }
 };
-window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
+
 window.cnCharacterWeaponData["아란"] = {
   "name": "平野亚兰",
   "weapon4-1": {
     "name": "最终清算",
-    "health": 1776.03,
-    "attack": 560.39,
-    "defense": 331.38,
+    "health": 1776,
+    "attack": 560,
+    "defense": 331,
     "skill_name": "",
     "description": "攻击力提升12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%。\n主动施加『罪业』状态时，自身诅咒属性伤害提升17.6%/23.2%/23.2%/28.8%/28.8%/34.4%/34.4%，持续2回合。"
   },
   "weapon5-1": {
     "name": "镜中双影",
-    "health": 2219.84,
-    "attack": 700.3,
-    "defense": 414.04,
+    "health": 2219,
+    "attack": 700,
+    "defense": 414,
+    "highlight": true,
     "skill_name": "",
     "description": "效果命中提升36.0%/36.0%/47.0%/47.0%/58.0%/58.0%/69.0%。\n『罪』的传导效果获得52.0%/68.0%/68.0%/84.0%/84.0%/100.0%/100.0%增幅。\n使所有同伴对带有『罪』的敌人造成的暴击效果提升13.6%/17.7%/17.7%/21.8%/21.8%/25.9%/25.9%。"
   }
 };
+

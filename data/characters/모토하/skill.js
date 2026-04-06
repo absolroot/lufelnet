@@ -1,6 +1,8 @@
 window.characterSkillsData = window.characterSkillsData || {};
 window.enCharacterSkillsData = window.enCharacterSkillsData || {};
 window.jpCharacterSkillsData = window.jpCharacterSkillsData || {};
+window.cnCharacterSkillsData = window.cnCharacterSkillsData || {};
+
 window.characterSkillsData["모토하"] = {
   "name": "아라이 모토하",
   "skill1": {
@@ -46,6 +48,7 @@ window.characterSkillsData["모토하"] = {
     "cool": 0
   }
 };
+
 window.enCharacterSkillsData["모토하"] = {
   "name": "Motoha Arai",
   "skill1": {
@@ -91,6 +94,7 @@ window.enCharacterSkillsData["모토하"] = {
     "cool": 0
   }
 };
+
 window.jpCharacterSkillsData["모토하"] = {
   "name": "新井 素羽",
   "skill1": {
@@ -136,13 +140,13 @@ window.jpCharacterSkillsData["모토하"] = {
     "cool": 0
   }
 };
-window.cnCharacterSkillsData = window.cnCharacterSkillsData || {};
 
 window.cnCharacterSkillsData["모토하"] = {
   "name": "新井素羽",
   "skill1": {
     "name": "雷霆之怒",
-    "element": "전격",
+    "element": "전격광역",
+    "type": "群体伤害",
     "sp": 20,
     "cool": 0,
     "description": "发射4道天雷，造成76.7%/84.6%/79.9%/87.7%攻击力的电击属性伤害，对技能主目标有100%的基础概率使其陷入触电状态。对同一目标的后续攻击只会造成10%的伤害，天雷会优先选择未攻击过的目标。"
@@ -150,32 +154,37 @@ window.cnCharacterSkillsData["모토하"] = {
   "skill2": {
     "name": "超速电击",
     "element": "전격",
+    "type": "单体伤害",
     "sp": 18,
     "cool": 0,
     "description": "对1名敌人造成157.1%/173.2%/163.6%/179.7%攻击力的电击属性伤害，并使所有同伴造成的电击属性伤害提升11.7%/11.7%/12.2%/12.2%，效果持续2回合。"
   },
   "skill3": {
     "name": "电鸣狂鲨",
-    "element": "전격",
+    "element": "전격광역",
+    "type": "群体伤害",
     "sp": 24,
     "cool": 0,
     "description": "对所有敌人造成79.3%/87.4%/82.5%/90.6%攻击力的电击属性伤害。若场上存在处于触电状态的敌人，则造成TECHNICAL，对所有敌人造成1次42.7%/47.1%/44.5%/48.9%攻击力的额外电击属性伤害。"
   },
+  "skill_highlight": {
+    "element": "전격",
+    "type": "群体伤害",
+    "description": "对所有敌人造成162.4%/179.0%/169.1%/185.7%攻击力的电击属性伤害，有100%的固定概率使技能主目标进入触电状态，效果持续2回合。并使其受到的电击属性伤害提升10%，效果持续2回合。",
+    "cool": 4,
+    "name": "HIGHLIGHT"
+  },
   "passive1": {
     "name": "力量",
     "element": "패시브",
-    "cool": 0,
-    "description": "造成触电效果时，有66.0%固定概率使该效果延长1回合。"
+    "description": "造成触电效果时，有66.0%固定概率使该效果延长1回合。",
+    "cool": 0
   },
   "passive2": {
     "name": "守护",
     "element": "패시브",
-    "cool": 0,
-    "description": "释放人格面具技能后，使技能主目标受到的电击属性伤害提升20.0%，效果持续2回合，可叠加2层。"
-  },
-  "skill_highlight": {
-    "element": "전격",
-    "cool": 4,
-    "description": "对所有敌人造成162.4%/179.0%/169.1%/185.7%攻击力的电击属性伤害，有100%的固定概率使技能主目标进入触电状态，效果持续2回合。并使其受到的电击属性伤害提升10%，效果持续2回合。"
+    "description": "释放人格面具技能后，使技能主目标受到的电击属性伤害提升20.0%，效果持续2回合，可叠加2层。",
+    "cool": 0
   }
 };
+

@@ -4,13 +4,13 @@
     var path = String(window.location.pathname || '/');
     var lowerPath = path.toLowerCase();
 
-    var pathLangMatch = lowerPath.match(/^\/(kr|en|jp)(\/|$)/);
+    var pathLangMatch = lowerPath.match(/^\/(kr|en|jp|cn)(\/|$)/);
     var pathLang = pathLangMatch ? pathLangMatch[1] : '';
     var queryLang = String(params.get('lang') || '').toLowerCase();
-    var effectiveLang = pathLang || (['kr', 'en', 'jp'].indexOf(queryLang) !== -1 ? queryLang : '');
+    var effectiveLang = pathLang || (['kr', 'en', 'jp', 'cn'].indexOf(queryLang) !== -1 ? queryLang : '');
 
     var isLegacyRoot = /^\/revelations\/?$/.test(lowerPath);
-    var isCanonicalPath = /^\/(kr|en|jp)\/revelations\/?$/.test(lowerPath);
+    var isCanonicalPath = /^\/(kr|en|jp|cn)\/revelations\/?$/.test(lowerPath);
 
     if (isLegacyRoot && effectiveLang) {
         window.__SEO_PATH_LANG__ = effectiveLang;
@@ -305,7 +305,8 @@
             const dataFiles = {
                 'kr': '/data/kr/revelations/revelations.js',
                 'en': '/data/en/revelations/revelations.js',
-                'jp': '/data/jp/revelations/revelations.js'
+                'jp': '/data/jp/revelations/revelations.js',
+                'cn': '/data/cn/revelations/revelations.js'
             };
 
             const scriptSrc = dataFiles[lang] || dataFiles['kr'];
@@ -333,6 +334,9 @@
                         } else if (lang === 'jp' && typeof jpRevelationData !== 'undefined') {
                             window.jpRevelationData = jpRevelationData;
                             //console.log('Japanese revelation data loaded:', jpRevelationData);
+                        } else if (lang === 'cn' && typeof cnRevelationData !== 'undefined') {
+                            window.cnRevelationData = cnRevelationData;
+                            //console.log('Chinese revelation data loaded:', cnRevelationData);
                         } else if (lang === 'kr' && typeof revelationData !== 'undefined') {
                             //console.log('Korean revelation data loaded:', revelationData);
                         } else {
@@ -695,6 +699,9 @@
             case 'jp':
                 data = window.jpRevelationData || (typeof jpRevelationData !== 'undefined' ? jpRevelationData : null);
                 break;
+            case 'cn':
+                data = window.cnRevelationData || (typeof cnRevelationData !== 'undefined' ? cnRevelationData : null);
+                break;
             default:
                 data = window.revelationData || (typeof revelationData !== 'undefined' ? revelationData : null);
         }
@@ -834,6 +841,11 @@
                         currentRevelationData.mapping_en[key] === revelation.name
                     );
                     if (koreanKey) koreanName = koreanKey;
+                } else if (currentLang === 'cn' && currentRevelationData.mapping_cn) {
+                    const koreanKey = Object.keys(currentRevelationData.mapping_cn).find(key =>
+                        currentRevelationData.mapping_cn[key] === revelation.name
+                    );
+                    if (koreanKey) koreanName = koreanKey;
                 }
             }
             // If Korean, koreanName is already correct (revelation.name)
@@ -963,6 +975,7 @@
                 if (!c) return koreanCharName;
                 if (lang === 'en' && c.codename) return c.codename;
                 if (lang === 'jp' && c.name_jp) return c.name_jp;
+                if (lang === 'cn' && c.name_cn) return c.name_cn;
                 return koreanCharName;
             }
             function buildCharacterDetailUrl(koreanCharName, lang) {

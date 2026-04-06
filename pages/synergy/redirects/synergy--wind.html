@@ -17,12 +17,12 @@ sitemap: false
       var requestedLang = params.get("lang");
       params.delete("lang");
       params.delete("character");
-      var languageTargets = {"kr":"/kr/synergy/wind/","en":"/en/synergy/wind/","jp":"/jp/synergy/wind/"};
+      var languageTargets = {"kr":"/kr/synergy/wind/","en":"/en/synergy/wind/","jp":"/jp/synergy/wind/","cn":"/cn/synergy/wind/"};
       var defaultPath = "/en/synergy/wind/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
-        if (value === "kr" || value === "en" || value === "jp") return value;
-        if (value === "cn" || value === "tw" || value === "sea") return "en";
+        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
+        if (value === "tw" || value === "sea") return "en";
         return "";
       }
       function detectReferrerLang() {

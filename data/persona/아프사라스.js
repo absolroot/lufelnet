@@ -16,6 +16,7 @@ window.personaFiles["아프사라스"] = {
   "tier_desc": "동료의 방어력을 증가시킬 수 있다. 페르소나 산달폰과 킹 프로스트가 없으면서 방어력 강화가 필요할 경우 고려될 수 있다.",
   "tier_desc_en": "It can increase allies' Defense. It can be considered if you need a Defense buff and do not have Sandalphon or King Frost.",
   "tier_desc_jp": "味方の防御力を上げられる。サンダルフォンやキングフロストがいない状態で、防御力強化が必要な時に検討できる。",
+  "tier_desc_cn": "可以提升同伴的防御力。若没有圣德芬和霜精之王，又需要防御强化时可以考虑。",
   "comment": "",
   "comment_en": "",
   "comment_jp": "",

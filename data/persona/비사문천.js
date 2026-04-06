@@ -16,6 +16,7 @@ window.personaFiles["비사문천"] = {
   "tier_desc": "핵열 속성 특화 페르소나로 핵열 속성 딜러가 파티에 있을 경우 자주 채용된다.",
   "tier_desc_en": "A Persona specialized for Nuclear damage, frequently used when the party has a Nuclear attacker.",
   "tier_desc_jp": "核熱属性に特化したペルソナで、パーティに核熱アタッカーがいる時によく採用される。",
+  "tier_desc_cn": "是核热属性特化人格面具，队伍里有核热输出时经常会采用。",
   "comment": "라쿤다를 사용해도 본능 효과가 적용된다.",
   "comment_en": "The talent effect is applied even when using Rakunda.",
   "comment_jp": "ラクンダを使用しても本能効果が適用される。",

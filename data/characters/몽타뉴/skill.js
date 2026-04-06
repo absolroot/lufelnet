@@ -1,6 +1,8 @@
 window.characterSkillsData = window.characterSkillsData || {};
 window.enCharacterSkillsData = window.enCharacterSkillsData || {};
 window.jpCharacterSkillsData = window.jpCharacterSkillsData || {};
+window.cnCharacterSkillsData = window.cnCharacterSkillsData || {};
+
 window.characterSkillsData["몽타뉴"] = {
   "name": "코토네 몽타뉴",
   "skill1": {
@@ -46,6 +48,7 @@ window.characterSkillsData["몽타뉴"] = {
     "cool": 0
   }
 };
+
 window.enCharacterSkillsData["몽타뉴"] = {
   "name": "Kotone Montagne",
   "skill1": {
@@ -93,6 +96,7 @@ window.enCharacterSkillsData["몽타뉴"] = {
     "cool": 0
   }
 };
+
 window.jpCharacterSkillsData["몽타뉴"] = {
   "name": "琴音・モンターニュ",
   "skill1": {
@@ -139,13 +143,13 @@ window.jpCharacterSkillsData["몽타뉴"] = {
     "cool": 0
   }
 };
-window.cnCharacterSkillsData = window.cnCharacterSkillsData || {};
 
 window.cnCharacterSkillsData["몽타뉴"] = {
   "name": "琴音·蒙塔涅",
   "skill1": {
     "name": "冰之绽放",
-    "element": "빙결",
+    "element": "빙결광역",
+    "type": "群体伤害",
     "sp": 20,
     "cool": 0,
     "description": "对所有敌人造成87.1%/96.0%/90.6%/99.5%攻击力的冰冻属性伤害，有29.3%/29.3%/30.5%/30.5%基础概率使敌人陷入冻结状态。"
@@ -153,6 +157,7 @@ window.cnCharacterSkillsData["몽타뉴"] = {
   "skill2": {
     "name": "凛冬撕裂",
     "element": "빙결",
+    "type": "单体伤害",
     "sp": 20,
     "cool": 0,
     "description": "对1名敌人造成160.4%/176.8%/166.9%/183.4%攻击力的冰冻属性伤害，并获得『冰晶』4颗。"
@@ -160,25 +165,29 @@ window.cnCharacterSkillsData["몽타뉴"] = {
   "skill3": {
     "name": "寒冰之刃",
     "element": "빙결",
+    "type": "单体伤害",
     "sp": 24,
     "cool": 0,
     "description": "对1名敌人造成179.7%/198.1%/187.0%/205.5%攻击力的冰冻属性伤害，如果此时『冰晶』数量为10或自身拥有『寒霜印记』则该技能获得额外伤害提升。敌人生命值越低，则伤害提升越高，最多提升29.3%/29.3%/30.5%/30.5%。\n被动：『刀尖上的舞者』获得额外伤害提升。敌人生命值越低，则伤害提升越高，最多提升29.3%/29.3%/30.5%/30.5%。"
   },
+  "skill_highlight": {
+    "element": "빙결",
+    "type": "单体伤害",
+    "description": "对1名敌人造成292.8%/322.8%/304.8%/334.8%攻击力的冰冻属性伤害。敌人的生命值越低，所受到的伤害越高，当敌人的生命值低于20%时，最高可获得30%的伤害加成。",
+    "cool": 4,
+    "name": "HIGHLIGHT"
+  },
   "passive1": {
     "name": "忘我",
     "element": "패시브",
-    "cool": 0,
-    "description": "『刀尖上的舞者』发动时，有100.0%基础概率使敌人陷入冻结状态。"
+    "description": "『刀尖上的舞者』发动时，有100.0%基础概率使敌人陷入冻结状态。",
+    "cool": 0
   },
   "passive2": {
     "name": "无境",
     "element": "패시브",
-    "cool": 0,
-    "description": "击败敌人时，获得『冰晶』4颗。"
-  },
-  "skill_highlight": {
-    "element": "빙결",
-    "cool": 4,
-    "description": "对1名敌人造成292.8%/322.8%/304.8%/334.8%攻击力的冰冻属性伤害。敌人的生命值越低，所受到的伤害越高，当敌人的生命值低于20%时，最高可获得30%的伤害加成。"
+    "description": "击败敌人时，获得『冰晶』4颗。",
+    "cool": 0
   }
 };
+

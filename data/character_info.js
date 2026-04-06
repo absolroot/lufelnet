@@ -42,10 +42,11 @@ Object.assign(window.characterData, {
         "persona": "팔라디온",
         "persona_en": "Palladion",
         "persona_jp": "パラディオン",
+        "persona_cn": "雅典娜神像",
         "name": "아이기스",
         "name_en": "Aigis",
         "name_jp": "アイギス",
-        "name_cn": "",
+        "name_cn": "埃癸斯",
         "name_tw": "",
         "codename": "AIGIS",
         "skill_item": 6
@@ -63,10 +64,11 @@ Object.assign(window.characterData, {
         "persona": "젠틸레스키",
         "persona_en": "Gentileschi",
         "persona_jp": "ジェンティレスキ",
+        "persona_cn": "真蒂莱斯基",
         "name": "히라노 아란",
         "name_en": "Aran Hirano",
         "name_jp": "平野亜蘭",
-        "name_cn": "",
+        "name_cn": "平野亚兰",
         "name_tw": "",
         "codename": "ANRI",
         "skill_item": 6
@@ -90,7 +92,8 @@ Object.assign(window.characterData, {
         "name_cn": "新井素羽·晴光",
         "name_tw": "",
         "codename": "CLOSER·Radiance",
-        "skill_item": 6
+        "skill_item": 6,
+        "persona_cn": "阿尔维达"
     },
     "코로마루": {
         "limit": true,
@@ -112,7 +115,8 @@ Object.assign(window.characterData, {
         "name_cn": "虎狼丸",
         "name_tw": "",
         "codename": "KOROMARU",
-        "skill_item": 6
+        "skill_item": 6,
+        "persona_cn": "克鲁贝洛斯"
     },
     "나루미": {
         "limit": true,
@@ -130,10 +134,11 @@ Object.assign(window.characterData, {
         "name": "나시모토 나루미",
         "name_en": "Narumi Nashimoto",
         "name_jp": "梨本成瑠海",
-        "name_cn": "",
+        "name_cn": "梨本成瑠海",
         "name_tw": "",
         "codename": "PINKY",
-        "skill_item": 6
+        "skill_item": 6,
+        "persona_cn": "阿斯忒洛珀"
     },
     "준페이": {
         "limit": true,
@@ -155,7 +160,8 @@ Object.assign(window.characterData, {
         "name_cn": "伊织顺平",
         "name_tw": "",
         "codename": "JUNPEI",
-        "skill_item": 6
+        "skill_item": 6,
+        "persona_cn": "赫耳墨斯"
     },
     "J&C": {
         "limit": true,
@@ -196,7 +202,9 @@ Object.assign(window.characterData, {
         "name_jp": "駿·生命欲の暴走",
         "name_tw": "加納駿·拓荒",
         "codename": "SOY·Pioneer",
-        "skill_item": 6
+        "skill_item": 6,
+        "name_cn": "加纳骏·拓荒",
+        "persona_cn": "芒德兰"
     },
     "쇼키·암야": {
         "limit": true,
@@ -218,7 +226,8 @@ Object.assign(window.characterData, {
         "name_jp": "星輝·生命欲の暴走",
         "name_cn": "池波星辉·永夜",
         "codename": "LUCE·Notte",
-        "skill_item": 6
+        "skill_item": 6,
+        "persona_cn": "金诺"
     },
     "후카": {
         "limit": true,
@@ -242,7 +251,8 @@ Object.assign(window.characterData, {
         "name_cn": "山岸风花",
         "codename": "FUKA",
         "skill_item": 5,
-        "name_tw": "山岸風花"
+        "name_tw": "山岸風花",
+        "persona_cn": "路济亚"
     },
     "미츠루": {
         "limit": true,
@@ -264,7 +274,8 @@ Object.assign(window.characterData, {
         "persona_en": "Penthesilea",
         "persona_jp": "ペンテシレア",
         "skill_item": 5,
-        "name_tw": "桐条美鶴"
+        "name_tw": "桐条美鶴",
+        "persona_cn": "彭忒西勒亚"
     },
     "YUI·스텔라": {
         "limit": true,
@@ -284,7 +295,8 @@ Object.assign(window.characterData, {
         "name_jp": "YUI·ステラ",
         "name_cn": "YUI·幻彩",
         "codename": "BUI·Prism",
-        "skill_item": 5
+        "skill_item": 5,
+        "persona_cn": "艾普苏黛丝"
     },
     "카타야마": {
         "limit": true,
@@ -303,7 +315,9 @@ Object.assign(window.characterData, {
         "name_en": "Kumi Katayama",
         "name_jp": "片山 久未",
         "codename": "BLITZ",
-        "skill_item": 5
+        "skill_item": 5,
+        "name_cn": "片山久未",
+        "persona_cn": "基斯基尔莉拉"
     },
     "미유·여름": {
         "limit": true,
@@ -324,7 +338,8 @@ Object.assign(window.characterData, {
         "name_cn": "佐原海夕·夏日",
         "name_tw": "佐原海夕·夏日",
         "codename": "PUPPET·Summer",
-        "skill_item": 5
+        "skill_item": 5,
+        "persona_cn": "涅墨耳忒斯"
     },
     "미나미·여름": {
         "limit": true,
@@ -344,7 +359,8 @@ Object.assign(window.characterData, {
         "name_jp": "宮下 美波·夏日",
         "name_cn": "宫下美波·夏日",
         "codename": "MARIAN·Summer",
-        "skill_item": 5
+        "skill_item": 5,
+        "persona_cn": "塔利亚"
     },
     "이치고": {
         "limit": true,
@@ -364,7 +380,8 @@ Object.assign(window.characterData, {
         "name_jp": "鹿野 莓",
         "name_cn": "鹿野莓",
         "codename": "BERRY",
-        "skill_item": 5
+        "skill_item": 5,
+        "persona_cn": "忒尔克西厄珀亚"
     },
     "사나다": {
         "limit": true,
@@ -383,10 +400,11 @@ Object.assign(window.characterData, {
         "name": "사나다 아키히코",
         "name_en": "Akihiko Sanada",
         "name_jp": "真田 明彦",
-        "name_cn": "真田明彥",
+        "name_cn": "真田明彦",
         "name_tw": "真田明彥",
         "codename": "AKIHIKO",
-        "skill_item": 4
+        "skill_item": 4,
+        "persona_cn": "波吕克斯"
     },
     "유카리": {
         "limit": true,
@@ -407,7 +425,8 @@ Object.assign(window.characterData, {
         "name_jp": "岳羽 ゆかり",
         "name_cn": "岳羽由加莉",
         "codename": "YUKARI",
-        "skill_item": 4
+        "skill_item": 4,
+        "persona_cn": "伊娥"
     },
     "유키 마코토": {
         "limit": true,
@@ -428,7 +447,8 @@ Object.assign(window.characterData, {
         "name_jp": "結城 理",
         "name_cn": "结城理",
         "codename": "MAKOTO",
-        "skill_item": 4
+        "skill_item": 4,
+        "persona_cn": "俄耳甫斯"
     },
     "마나카": {
         "limit": true,
@@ -448,7 +468,8 @@ Object.assign(window.characterData, {
         "name_jp": "長尾 愛歌",
         "name_cn": "长尾爱歌",
         "codename": "ANGE",
-        "skill_item": 4
+        "skill_item": 4,
+        "persona_cn": "欧忒耳珀"
     },
     "쇼키": {
         "limit": false,
@@ -467,7 +488,9 @@ Object.assign(window.characterData, {
         "name_en": "Shoki Ikenami",
         "name_jp": "池波 星輝",
         "codename": "LUCE",
-        "skill_item": 3
+        "skill_item": 3,
+        "name_cn": "池波星辉",
+        "persona_cn": "金诺"
     },
     "마유미": {
         "limit": false,
@@ -486,7 +509,9 @@ Object.assign(window.characterData, {
         "name_en": "Mayumi Hashimoto",
         "name_jp": "橋本 麻由美",
         "codename": "TURBO",
-        "skill_item": 3
+        "skill_item": 3,
+        "name_cn": "桥本麻由美",
+        "persona_cn": "庇堤斯"
     },
     "아케치": {
         "limit": true,
@@ -507,7 +532,8 @@ Object.assign(window.characterData, {
         "name_jp": "明智 吾郎",
         "name_cn": "明智吾郎",
         "codename": "CROW",
-        "skill_item": 4
+        "skill_item": 4,
+        "persona_cn": "罗宾汉"
     },
     "미오": {
         "limit": true,
@@ -527,7 +553,8 @@ Object.assign(window.characterData, {
         "name_jp": "夏川 澪",
         "name_cn": "夏川澪",
         "codename": "MATOI",
-        "skill_item": 4
+        "skill_item": 4,
+        "persona_cn": "敏特"
     },
     "야오링·사자무": {
         "limit": true,
@@ -546,7 +573,8 @@ Object.assign(window.characterData, {
         "name_cn": "李瑶铃·太平乐",
         "name_tw": "李瑤鈴·太平樂",
         "codename": "RIN·Firecracker",
-        "skill_item": 4
+        "skill_item": 4,
+        "persona_cn": "孟婆·禧逢春"
     },
     "리코·매화": {
         "limit": true,
@@ -565,7 +593,8 @@ Object.assign(window.characterData, {
         "name_cn": "多祢村理子·未央",
         "name_tw": "多禰村理子·未央",
         "codename": "WIND·Tempest",
-        "skill_item": 4
+        "skill_item": 4,
+        "persona_cn": "千代女"
     },
     "카스미": {
         "limit": true,
@@ -585,7 +614,8 @@ Object.assign(window.characterData, {
         "name_cn": "芳泽霞",
         "name_tw": "芳澤霞",
         "codename": "VIOLET",
-        "skill_item": 3
+        "skill_item": 3,
+        "persona_cn": "灰姑娘"
     },
     "루우나": {
         "limit": false,
@@ -604,7 +634,9 @@ Object.assign(window.characterData, {
         "name_en": "Runa Dogenzaka",
         "name_jp": "道玄坂 琉七",
         "codename": "HOWLER",
-        "skill_item": 2
+        "skill_item": 2,
+        "name_cn": "道玄坂琉七",
+        "persona_cn": "奥拉"
     },
     "몽타뉴·백조": {
         "limit": true,
@@ -622,7 +654,8 @@ Object.assign(window.characterData, {
         "name_jp": "琴音・アイスストーム",
         "name_cn": "琴音 蒙塔涅·漫舞",
         "codename": "MONT·Frostgale",
-        "skill_item": 3
+        "skill_item": 3,
+        "persona_cn": "忒耳普西科瑞"
     },
     "하루": {
         "limit": true,
@@ -642,7 +675,8 @@ Object.assign(window.characterData, {
         "name_cn": "奥村春",
         "codename": "NOIR",
         "skill_item": 3,
-        "name_tw": "奧村春"
+        "name_tw": "奧村春",
+        "persona_cn": "米莱迪"
     },
     "마사키": {
         "limit": false,
@@ -661,7 +695,8 @@ Object.assign(window.characterData, {
         "codename": "CHERISH",
         "skill_item": 2,
         "name_cn": "芦谷真咲",
-        "name_tw": "蘆谷真咲"
+        "name_tw": "蘆谷真咲",
+        "persona_cn": "阿玛耳忒亚"
     },
     "후타바": {
         "limit": true,
@@ -681,7 +716,8 @@ Object.assign(window.characterData, {
         "name_cn": "佐仓双叶",
         "codename": "NAVI",
         "skill_item": 3,
-        "name_tw": "佐倉雙葉"
+        "name_tw": "佐倉雙葉",
+        "persona_cn": "死灵之书"
     },
     "키라": {
         "limit": true,
@@ -700,7 +736,8 @@ Object.assign(window.characterData, {
         "codename": "MESSA",
         "skill_item": 3,
         "name_cn": "北里基良",
-        "name_tw": "北里基良"
+        "name_tw": "北里基良",
+        "persona_cn": "哈耳皮厄"
     },
     "토모코·여름": {
         "limit": true,
@@ -718,7 +755,8 @@ Object.assign(window.characterData, {
         "name_jp": "朋子·ピーチサマー",
         "name_cn": "野毛朋子·夏日",
         "codename": "MOKO·Seaside",
-        "skill_item": 2
+        "skill_item": 2,
+        "persona_cn": "普罗西姆纳"
     },
     "모토하·여름": {
         "limit": true,
@@ -736,7 +774,8 @@ Object.assign(window.characterData, {
         "name_jp": "素羽·トロピカル",
         "name_cn": "新井素羽·夏日",
         "codename": "CLOSER·Tropical",
-        "skill_item": 1
+        "skill_item": 1,
+        "persona_cn": "阿尔维达"
     },
     "아야카": {
         "limit": true,
@@ -762,7 +801,8 @@ Object.assign(window.characterData, {
             "LV12+5": false,
             "LV13": "공격력 5396",
             "LV13+5": "공격력 5917"
-        }
+        },
+        "persona_cn": "卡利俄佩"
     },
     "리코": {
         "limit": false,
@@ -781,7 +821,9 @@ Object.assign(window.characterData, {
         "name_en": "Riko Tanemura",
         "name_jp": "多祢村 理子",
         "codename": "WIND",
-        "skill_item": 2
+        "skill_item": 2,
+        "name_cn": "多祢村理子",
+        "persona_cn": "千代女"
     },
     "유우미": {
         "limit": false,
@@ -798,7 +840,9 @@ Object.assign(window.characterData, {
         "name_en": "Yumi Shiina",
         "name_jp": "椎名 悠美",
         "codename": "PHOEBE",
-        "skill_item": 2
+        "skill_item": 2,
+        "name_cn": "椎名悠美",
+        "persona_cn": "乌剌尼亚"
     },
     "마코토": {
         "limit": true,
@@ -817,7 +861,8 @@ Object.assign(window.characterData, {
         "name_jp": "新島 真",
         "name_cn": "新岛真",
         "codename": "QUEEN",
-        "skill_item": 2
+        "skill_item": 2,
+        "persona_cn": "琼安"
     },
     "치즈코": {
         "limit": false,
@@ -834,7 +879,9 @@ Object.assign(window.characterData, {
         "name_en": "Chizuko Nagao",
         "name_jp": "長尾 チヅ子",
         "codename": "VINO",
-        "skill_item": 2
+        "skill_item": 2,
+        "name_cn": "长尾千津子",
+        "persona_cn": "安珀罗丝"
     },
     "유스케": {
         "limit": false,
@@ -852,7 +899,9 @@ Object.assign(window.characterData, {
         "name_en": "Yusuke Kitagawa",
         "name_jp": "喜多川 祐介",
         "codename": "FOX",
-        "skill_item": 2
+        "skill_item": 2,
+        "name_cn": "喜多川祐介",
+        "persona_cn": "五右卫门"
     },
     "YUI": {
         "limit": false,
@@ -869,7 +918,9 @@ Object.assign(window.characterData, {
         "name_en": "YUI",
         "name_jp": "YUI",
         "codename": "BUI",
-        "skill_item": 2
+        "skill_item": 2,
+        "name_cn": "YUI",
+        "persona_cn": "艾普苏黛丝"
     },
     "미나미": {
         "limit": false,
@@ -886,7 +937,9 @@ Object.assign(window.characterData, {
         "name_en": "Minami Miyashita",
         "name_jp": "宮下 美波",
         "codename": "MARIAN",
-        "skill_item": 2
+        "skill_item": 2,
+        "name_cn": "宫下美波",
+        "persona_cn": "塔利亚"
     },
     "렌": {
         "limit": false,
@@ -906,7 +959,8 @@ Object.assign(window.characterData, {
         "name_en": "Ren Amamiya",
         "name_jp": "雨宮 蓮",
         "name_cn": "雨宫莲",
-        "codename": "JOKER"
+        "codename": "JOKER",
+        "persona_cn": "亚森"
     },
     "류지": {
         "limit": false,
@@ -925,7 +979,9 @@ Object.assign(window.characterData, {
         "name": "사카모토 류지",
         "name_en": "Ryuji Sakamoto",
         "name_jp": "坂本 竜司",
-        "codename": "SKULL"
+        "codename": "SKULL",
+        "name_cn": "坂本龙司",
+        "persona_cn": "基德船长"
     },
     "모르가나": {
         "limit": false,
@@ -942,7 +998,9 @@ Object.assign(window.characterData, {
         "name": "모르가나",
         "name_en": "Morgana",
         "name_jp": "モルガナ",
-        "codename": "MONA"
+        "codename": "MONA",
+        "name_cn": "摩尔加纳",
+        "persona_cn": "佐罗"
     },
     "안": {
         "limit": false,
@@ -959,7 +1017,9 @@ Object.assign(window.characterData, {
         "name": "타카마키 안",
         "name_en": "Ann Takamaki",
         "name_jp": "高巻 杏",
-        "codename": "PANTHER"
+        "codename": "PANTHER",
+        "name_cn": "高卷杏",
+        "persona_cn": "卡门"
     },
     "야오링": {
         "limit": false,
@@ -975,7 +1035,9 @@ Object.assign(window.characterData, {
         "name": "리 야오링",
         "name_en": "Yaoling Li",
         "name_jp": "李 瑤鈴",
-        "codename": "RIN"
+        "codename": "RIN",
+        "name_cn": "李瑶铃",
+        "persona_cn": "孟婆"
     },
     "레오": {
         "limit": false,
@@ -993,7 +1055,9 @@ Object.assign(window.characterData, {
         "name": "카미야마 레오",
         "name_en": "Leo Kamiyama",
         "name_jp": "神山 嶺央",
-        "codename": "LEON"
+        "codename": "LEON",
+        "name_cn": "神山岭央",
+        "persona_cn": "厄律忒亚"
     },
     "루페르": {
         "limit": false,
@@ -1011,7 +1075,9 @@ Object.assign(window.characterData, {
         "name": "루페르",
         "name_en": "Lufel",
         "name_jp": "ルフェル",
-        "codename": "CATTLE"
+        "codename": "CATTLE",
+        "name_cn": "路菲尔",
+        "persona_cn": "罗布罗伊"
     },
     "모토하": {
         "limit": false,
@@ -1027,7 +1093,9 @@ Object.assign(window.characterData, {
         "name": "아라이 모토하",
         "name_en": "Motoha Arai",
         "name_jp": "新井 素羽",
-        "codename": "CLOSER"
+        "codename": "CLOSER",
+        "name_cn": "新井素羽",
+        "persona_cn": "阿尔维达"
     },
     "몽타뉴": {
         "limit": false,
@@ -1043,7 +1111,9 @@ Object.assign(window.characterData, {
         "name": "코토네 몽타뉴",
         "name_en": "Montagne Kotone",
         "name_jp": "琴音・モンターニュ",
-        "codename": "MONT"
+        "codename": "MONT",
+        "name_cn": "琴音·蒙塔涅",
+        "persona_cn": "忒耳普西科瑞"
     },
     "미유": {
         "limit": false,
@@ -1059,7 +1129,9 @@ Object.assign(window.characterData, {
         "name": "사하라 미유",
         "name_en": "Miyu Sahara",
         "name_jp": "佐原 海夕",
-        "codename": "PUPPET"
+        "codename": "PUPPET",
+        "name_cn": "佐原海夕",
+        "persona_cn": "涅墨耳忒斯"
     },
     "세이지": {
         "limit": false,
@@ -1075,7 +1147,9 @@ Object.assign(window.characterData, {
         "name": "시라토리 세이지",
         "name_en": "Seiji Shiratori",
         "name_jp": "白鳥 誠司",
-        "codename": "FLEURET"
+        "codename": "FLEURET",
+        "name_cn": "白鸟诚司",
+        "persona_cn": "琉科忒亚"
     },
     "슌": {
         "limit": false,
@@ -1091,7 +1165,9 @@ Object.assign(window.characterData, {
         "name": "카노 슌",
         "name_en": "Shun Kano",
         "name_jp": "加納 駿",
-        "codename": "SOY"
+        "codename": "SOY",
+        "name_cn": "加纳骏",
+        "persona_cn": "芒德兰"
     },
     "원더": {
         "limit": true,
@@ -1115,7 +1191,9 @@ Object.assign(window.characterData, {
         "name": "후지카와 유키미",
         "name_en": "Yukimi Fujikawa",
         "name_jp": "藤川 雪実",
-        "codename": "YUKI"
+        "codename": "YUKI",
+        "name_cn": "藤川雪实",
+        "persona_cn": "斯堤克斯"
     },
     "카요": {
         "limit": false,
@@ -1131,7 +1209,9 @@ Object.assign(window.characterData, {
         "name": "토미야마 카요",
         "name_en": "Kayo Tomiyama",
         "name_jp": "富山 佳代",
-        "codename": "OKYANN"
+        "codename": "OKYANN",
+        "name_cn": "富山佳代",
+        "persona_cn": "克丽奥多拉"
     },
     "키요시": {
         "limit": false,
@@ -1147,7 +1227,9 @@ Object.assign(window.characterData, {
         "name": "쿠로타니 키요시",
         "name_en": "Kiyoshi Kurotani",
         "name_jp": "黒谷 清",
-        "codename": "KEY"
+        "codename": "KEY",
+        "name_cn": "黑谷清",
+        "persona_cn": "绪刻"
     },
     "토모코": {
         "limit": false,
@@ -1163,7 +1245,9 @@ Object.assign(window.characterData, {
         "name": "노게 토모코",
         "name_en": "Tomoko Noge",
         "name_jp": "野毛 朋子",
-        "codename": "MOKO"
+        "codename": "MOKO",
+        "name_cn": "野毛朋子",
+        "persona_cn": "普罗西姆纳"
     },
     "토시야": {
         "limit": false,
@@ -1179,7 +1263,9 @@ Object.assign(window.characterData, {
         "name": "스미 토시야",
         "name_en": "Toshiya Sumi",
         "name_jp": "須見 俊也",
-        "codename": "SEPIA"
+        "codename": "SEPIA",
+        "name_cn": "须见俊也",
+        "persona_cn": "戈尔究拉"
     },
     "하루나": {
         "limit": false,
@@ -1195,6 +1281,8 @@ Object.assign(window.characterData, {
         "name": "니시모리 하루나",
         "name_en": "Haruna Nishimori",
         "name_jp": "西森 陽菜",
-        "codename": "RIDDLE"
+        "codename": "RIDDLE",
+        "name_cn": "西森阳菜",
+        "persona_cn": "戴埃拉"
     }
 });

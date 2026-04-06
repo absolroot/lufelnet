@@ -1,6 +1,8 @@
 window.characterSkillsData = window.characterSkillsData || {};
 window.enCharacterSkillsData = window.enCharacterSkillsData || {};
 window.jpCharacterSkillsData = window.jpCharacterSkillsData || {};
+window.cnCharacterSkillsData = window.cnCharacterSkillsData || {};
+
 window.characterSkillsData["치즈코"] = {
   "name": "나가오 치즈코",
   "skill1": {
@@ -46,6 +48,7 @@ window.characterSkillsData["치즈코"] = {
     "cool": 0
   }
 };
+
 window.enCharacterSkillsData["치즈코"] = {
   "name": "Chizuko Nagao",
   "skill1": {
@@ -91,6 +94,7 @@ window.enCharacterSkillsData["치즈코"] = {
     "cool": 0
   }
 };
+
 window.jpCharacterSkillsData["치즈코"] = {
   "name": "長尾 チヅ子",
   "skill1": {
@@ -136,20 +140,21 @@ window.jpCharacterSkillsData["치즈코"] = {
     "cool": 0
   }
 };
-window.cnCharacterSkillsData = window.cnCharacterSkillsData || {};
 
 window.cnCharacterSkillsData["치즈코"] = {
   "name": "长尾千津子",
   "skill1": {
     "name": "标志炸弹",
     "element": "핵열",
+    "type": "单体伤害",
     "sp": 20,
     "cool": 0,
     "description": "对1名敌人造成170.8%/188.3%/177.8%/195.3%攻击力的核热属性伤害，降低目标的防御力，数值相当于自身效果命中的22.5%，最多降低37.3%/37.3%/38.8%/38.8%防御，持续2回合。并有100%基础概率使敌人陷入某种他身上没有的随机元素异常状态。"
   },
   "skill2": {
     "name": "地毯式轰炸",
-    "element": "핵열",
+    "element": "핵열광역",
+    "type": "群体伤害",
     "sp": 22,
     "cool": 0,
     "description": "对所有敌人造成91.5%/100.9%/95.2%/104.6%攻击力的核热属性伤害。有40%基础概率使敌人陷入某种他身上没有的随机元素异常状态。"
@@ -157,25 +162,29 @@ window.cnCharacterSkillsData["치즈코"] = {
   "skill3": {
     "name": "对地集中火力",
     "element": "핵열",
+    "type": "单体伤害",
     "sp": 24,
     "cool": 1,
     "description": "对1名敌人造成195.2%/215.2%/203.2%/223.2%攻击力的核热属性伤害。目标身上每有一种元素异常，给予目标1层受到伤害提升效果，数值相当于自身效果命中的11.3%，最多提升18.7%/20.7%/19.5%/21.4%受到伤害，持续2回合，上限3层。"
   },
+  "skill_highlight": {
+    "element": "핵열",
+    "type": "单体伤害",
+    "description": "对1名敌人造成324.5%/357.8%/337.8%/371.1%攻击力的核热属性伤害，使敌人有75%的基础概率陷入2种他身上没有的随机元素异常状态。",
+    "cool": 4,
+    "name": "HIGHLIGHT"
+  },
   "passive1": {
     "name": "歼灭",
     "element": "패시브",
-    "cool": 0,
-    "description": "拥有『辐射』的敌人受到的核热属性伤害提升15.0%。"
+    "description": "拥有『辐射』的敌人受到的核热属性伤害提升15.0%。",
+    "cool": 0
   },
   "passive2": {
     "name": "战术",
     "element": "패시브",
-    "cool": 0,
-    "description": "战斗中，自身获得等同于自身效果命中45.0%的攻击力加成。"
-  },
-  "skill_highlight": {
-    "element": "핵열",
-    "cool": 4,
-    "description": "对1名敌人造成324.5%/357.8%/337.8%/371.1%攻击力的核热属性伤害，使敌人有75%的基础概率陷入2种他身上没有的随机元素异常状态。"
+    "description": "战斗中，自身获得等同于自身效果命中45.0%的攻击力加成。",
+    "cool": 0
   }
 };
+

@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["아야카"] = {
   "name": "사카이 아야카",
   "r0": "♪나의 빛♪",
@@ -18,6 +20,7 @@ window.ritualData["아야카"] = {
   "r6": "♪내 운명의 그대♪",
   "r6_detail": "전투 진입 즉시 『피날레: 음역 가동』이 해제된다. 『피날레: 음역 가동』의 쿨타임이 1턴으로 고정되고, 쿨타임이 더는 증가하지 않는다. 『피날레: 음역 가동』 사용 시마다 모든 괴도 대미지가 20% 영구 증가한다(2회 중첩 가능)."
 };
+
 window.enCharacterRitualData["아야카"] = {
   "name": "Ayaka Sakai",
   "r0": "Opening Act",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["아야카"] = {
   "r6": "Spirit of Rock",
   "r6_detail": "At the start of battle, Catchy Hook can be used immediately. Cooldown time is permanently decreased to 1 turn and won't increase.\nEvery time Catchy Hook is used, increase the party's damage by 20% (up to 2 stacks)."
 };
+
 window.jpCharacterRitualData["아야카"] = {
   "name": "坂井 綾香",
   "r0": "オープニングアクト",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["아야카"] = {
   "r6": "ロックスピリット",
   "r6_detail": "戦闘開始時、即座に『エキサイトフレーズ』が使用できるようになる。またクールタイムが永続的に１ターンとなり、それ以上は増加しない。\nさらに『エキサイトフレーズ』を使用するごとに、味方全体の与ダメージが２０%上昇し、最大２つまで累積できる。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["아야카"] = {
   "name": "坂井绫香",
@@ -71,3 +74,4 @@ window.cnCharacterRitualData["아야카"] = {
   "r6": "♪我的天命先生♪",
   "r6_detail": "进入战斗立刻解锁『终曲：音域全开』。『终曲：音域全开』的冷却时间固定为1回合，冷却时间不再增加。每次使用『终曲：音域全开』后，使所有怪盗伤害提升20%，最多可叠加2层。"
 };
+

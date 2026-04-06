@@ -16,6 +16,7 @@ window.personaFiles["트럼페터"] = {
   "tier_desc": "정신 이상 특화 페르소나로 정신 이상 기믹이 필요할 때 채택한다.",
   "tier_desc_en": "A Persona specialized in mental ailments, chosen when a mental ailment gimmick is needed.",
   "tier_desc_jp": "精神異常に特化したペルソナで、精神異常ギミックが必要な時に採用される。",
+  "tier_desc_cn": "是精神异常特化人格面具，在需要精神异常机制时会采用。",
   "comment": "",
   "comment_en": "",
   "comment_jp": "",

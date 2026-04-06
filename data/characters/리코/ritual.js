@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["리코"] = {
   "name": "타네무라 리코",
   "r0": "반딧불이",
@@ -18,6 +20,7 @@ window.ritualData["리코"] = {
   "r6": "우수",
   "r6_detail": "『은은한 이슬비』 시전 후, 타네무라 리코의 속도가 100포인트 이상일 경우, 15포인트 초과할 때마다 해명 괴도의 준비 시간이 행동 1회씩 감소하며, 최대 4회 감소할 수 있다."
 };
+
 window.enCharacterRitualData["리코"] = {
   "name": "Riko Tanemura",
   "r0": "Snowfall Fragrance",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["리코"] = {
   "r6": "Majesty",
   "r6_detail": "If Riko's Speed is 100 or more, when using Verngale Petals, decrease cooldown time for every 15 points of Speed over 100, up to 4 actions."
 };
+
 window.jpCharacterRitualData["리코"] = {
   "name": "多祢村 理子",
   "r0": "雪裏清香",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["리코"] = {
   "r6": "威風凛々",
   "r6_detail": "自身の速さが１００以上の状態で『春風来りて梅が花咲く』を使用した時、１００を超えた分の速さ１５ごとにクールタイムが減少する（最大４行動分まで）。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["리코"] = {
   "name": "多祢村理子",
@@ -71,3 +74,4 @@ window.cnCharacterRitualData["리코"] = {
   "r6": "独秀",
   "r6_detail": "释放『暗香细语』后，若多祢村理子速度大于100点，每超过15点，解明怪盗的准备时间减少1次行动，最多可减少4次行动。"
 };
+

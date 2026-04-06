@@ -16,6 +16,7 @@ window.personaFiles["자타유"] = {
   "tier_desc": "질풍 내성 제거 효과가 필요할 때 채용한다.",
   "tier_desc_en": "Adopted when Wind Resistance Removal effects are needed.",
   "tier_desc_jp": "疾風属性耐性を解除する必要がある時採用する。",
+  "tier_desc_cn": "需要移除疾风耐性效果时会采用。",
   "comment": "",
   "comment_en": "",
   "comment_jp": "",

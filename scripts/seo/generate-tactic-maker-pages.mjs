@@ -19,7 +19,7 @@ const __dirname = path.dirname(__filename);
 const ROOT = path.resolve(__dirname, '..', '..');
 
 const OUTPUT_DIR = path.join(ROOT, 'pages', 'tactic-maker');
-const LANGS = ['kr', 'en', 'jp'];
+const LANGS = ['kr', 'en', 'jp', 'cn'];
 const IMAGE_PATH = '/assets/img/home/SEO.png';
 
 const seoMetaPath = path.join(ROOT, 'i18n', 'pages', 'tactic-maker', 'seo-meta.json');
@@ -61,6 +61,7 @@ function renderTacticMakerPage({ lang, title, description }) {
   const altKo = '/kr/tactic-maker/';
   const altEn = '/en/tactic-maker/';
   const altJp = '/jp/tactic-maker/';
+  const altCn = '/cn/tactic-maker/';
 
   return [
     '---',
@@ -77,6 +78,7 @@ function renderTacticMakerPage({ lang, title, description }) {
     `  ko: ${altKo}`,
     `  en: ${altEn}`,
     `  jp: ${altJp}`,
+    `  'zh-CN': ${altCn}`,
     '---',
     '{% include tactic-maker-body.html %}',
     ''

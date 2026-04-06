@@ -19,7 +19,7 @@ const __dirname = path.dirname(__filename);
 const ROOT = path.resolve(__dirname, '..', '..');
 
 const OUTPUT_DIR = path.join(ROOT, 'pages', 'tier');
-const LANGS = ['kr', 'en', 'jp'];
+const LANGS = ['kr', 'en', 'jp', 'cn'];
 const IMAGE_PATH = '/assets/img/logo/lufel.png';
 const MODES = ['list', 'maker'];
 
@@ -105,6 +105,7 @@ function renderTierPage({ lang, title, description, mode }) {
   const altKo = getPermalink('kr', mode);
   const altEn = getPermalink('en', mode);
   const altJp = getPermalink('jp', mode);
+  const altCn = getPermalink('cn', mode);
 
   return [
     '---',
@@ -122,6 +123,7 @@ function renderTierPage({ lang, title, description, mode }) {
     `  ko: ${altKo}`,
     `  en: ${altEn}`,
     `  jp: ${altJp}`,
+    `  'zh-CN': ${altCn}`,
     '---',
     '{% include tier-position-body.html %}',
     ''

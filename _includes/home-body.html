@@ -3,6 +3,11 @@
   var params = new URLSearchParams(window.location.search);
   var path = window.location.pathname;
   var lang = params.get('lang');
+  var isCnHome = (path === '/' && lang === 'cn') || /^\/cn(\/|$)/.test(path);
+
+  if (isCnHome) {
+    document.documentElement.setAttribute('data-home-cn', '1');
+  }
 
   // / 에서 /?lang=xx -> /{lang}/ 로 정규화 (+ v 숨김)
   if (path === '/' && ['kr', 'en', 'jp', 'cn'].indexOf(lang) !== -1) {
@@ -71,6 +76,9 @@
     }
 
     /* Quick Grid core styles are preloaded in /apps/home/home.css */
+    [data-home-cn="1"] .guides-container {
+        display: none !important;
+    }
 </style>
 
 
@@ -105,6 +113,11 @@
                         tabindex="0" onclick="return false;">
                         <img src="{{ site.baseurl }}/assets/img/flags/jp.png" alt="jp" class="flag-icon">
                         <span>日本語</span>
+                    </div>
+                    <div class="option ${currentLang === 'cn' ? 'selected' : ''}" data-value="cn" role="button"
+                        tabindex="0" onclick="return false;">
+                        <img src="{{ site.baseurl }}/assets/img/flags/cn.png" alt="cn" class="flag-icon">
+                        <span>中文(Beta)</span>
                     </div>
                 </div>
             </div>
@@ -563,7 +576,7 @@
             kr: homeT('language_name_kr', '한국어', rawLang),
             en: homeT('language_name_en', 'English', rawLang),
             jp: homeT('language_name_jp', '日本語', rawLang),
-            cn: homeT('language_name_cn', '中文', rawLang)
+            cn: homeT('language_name_cn', '中文(Beta)', rawLang)
         };
         return labels[rawLang] || labels.kr;
     }
@@ -634,7 +647,7 @@
                 middleContainer.style.display = 'grid';
             }
             if (guidesContainer) {
-                guidesContainer.style.display = 'block';
+                guidesContainer.style.display = currentLang === 'cn' ? 'none' : 'block';
             }
         }
     }
@@ -671,48 +684,49 @@
             //console.log('👋 첫 방문자 감지, IP 기반 언어 설정 시작...');
 
             try {
-                const apis = [
-                    'https://ipapi.co/json/',
-                    'https://ipinfo.io/json'
-                ];
-
                 let detectedLang = 'kr'; // 기본값
 
-                for (const api of apis) {
-                    try {
-                        const controller = new AbortController();
-                        const timeoutId = setTimeout(() => controller.abort(), 3000);
+                if (typeof LanguageRouter !== 'undefined' && LanguageRouter && typeof LanguageRouter.detectLanguageByIP === 'function') {
+                    detectedLang = await LanguageRouter.detectLanguageByIP();
+                } else {
+                    const apis = [
+                        'https://ipapi.co/json/',
+                        'https://ipinfo.io/json'
+                    ];
 
-                        const response = await fetch(api, { signal: controller.signal });
-                        clearTimeout(timeoutId);
+                    for (const api of apis) {
+                        try {
+                            const controller = new AbortController();
+                            const timeoutId = setTimeout(() => controller.abort(), 3000);
 
-                        if (response.ok) {
-                            const data = await response.json();
-                            const countryCode = data.country_code || data.country;
+                            const response = await fetch(api, { signal: controller.signal });
+                            clearTimeout(timeoutId);
 
-                            //console.log(`🌍 감지된 국가: ${countryCode}`);
+                            if (response.ok) {
+                                const data = await response.json();
+                                const countryCode = String(data.country_code || data.country || '').toUpperCase();
 
-                            if (countryCode === 'KR') {
-                                detectedLang = 'kr';
-                                //console.log('🇰🇷 한국 사용자 감지');
-                            } else if (countryCode === 'JP') {
-                                detectedLang = 'jp';
-                                //console.log('🇯🇵 일본 사용자 감지');
-                            } else {
-                                detectedLang = 'en';
-                                //console.log('🌎 해외 사용자 감지');
+                                if (countryCode === 'KR') {
+                                    detectedLang = 'kr';
+                                } else if (countryCode === 'JP') {
+                                    detectedLang = 'jp';
+                                } else if (countryCode === 'CN') {
+                                    detectedLang = 'cn';
+                                } else {
+                                    detectedLang = 'en';
+                                }
+
+                                break;
                             }
-
-                            break; // 첫 번째 성공한 API로 결정
+                        } catch (error) {
+                            continue;
                         }
-                    } catch (error) {
-                        //console.log(`❌ ${api} 실패:`, error.message);
-                        continue;
                     }
                 }
 
                 // 언어 설정 저장
                 localStorage.setItem('preferredLanguage', detectedLang);
+                localStorage.setItem('preferred_language', detectedLang);
                 localStorage.setItem('languageDetected', 'true');
 
                 //console.log(`✅ 감지된 언어: ${detectedLang}`);
@@ -736,11 +750,14 @@
 
                 if (browserLang.startsWith('ja')) {
                     fallbackLang = 'jp';
+                } else if (browserLang.startsWith('zh')) {
+                    fallbackLang = 'cn';
                 } else if (browserLang.startsWith('en')) {
                     fallbackLang = 'en';
                 }
 
                 localStorage.setItem('preferredLanguage', fallbackLang);
+                localStorage.setItem('preferred_language', fallbackLang);
                 localStorage.setItem('languageDetected', 'true');
 
                 if (fallbackLang !== 'kr') {

@@ -21,8 +21,8 @@ const ROOT = path.resolve(__dirname, '..', '..');
 const OUTPUT_DIR = path.join(ROOT, 'pages', 'synergy');
 const ROOT_STUB_DIR = path.join(OUTPUT_DIR, 'roots');
 
-const CHARACTER_LANGS = ['kr', 'en', 'jp'];
-const ROOT_REDIRECT_LANGS = ['kr', 'en', 'jp', 'cn'];
+const CHARACTER_LANGS = ['kr', 'en', 'jp', 'cn'];
+const ROOT_REDIRECT_LANGS = [];
 
 const friendNumPath = path.join(ROOT, 'apps', 'synergy', 'friends', 'friend_num.json');
 const charInfoPath = path.join(ROOT, 'data', 'character_info.js');
@@ -141,6 +141,15 @@ function getDisplayName(krName, lang, friendNum, characterData) {
     );
   }
 
+  if (lang === 'cn') {
+    return (
+      override?.name_cn ||
+      fnEntry?.name_cn ||
+      charEntry?.name_cn ||
+      krName
+    );
+  }
+
   return krName;
 }
 
@@ -164,6 +173,7 @@ function renderCharacterPage({ lang, codename, title, description, imagePath }) 
   const altKo = `/kr/synergy/${codename}/`;
   const altEn = `/en/synergy/${codename}/`;
   const altJp = `/jp/synergy/${codename}/`;
+  const altCn = `/cn/synergy/${codename}/`;
 
   return [
     '---',
@@ -178,6 +188,7 @@ function renderCharacterPage({ lang, codename, title, description, imagePath }) 
     `  ko: ${altKo}`,
     `  en: ${altEn}`,
     `  jp: ${altJp}`,
+    `  'zh-CN': ${altCn}`,
     '---',
     '{% include synergy-body.html %}',
     ''
@@ -232,7 +243,8 @@ function buildDetailLangTargets(domain, slug) {
   return {
     kr: `/kr/${domain}/${slug}/`,
     en: `/en/${domain}/${slug}/`,
-    jp: `/jp/${domain}/${slug}/`
+    jp: `/jp/${domain}/${slug}/`,
+    cn: `/cn/${domain}/${slug}/`
   };
 }
 
@@ -266,8 +278,8 @@ function renderDetailRedirectStub({ fromPath, toPath, languageTargets = null }) 
     `      var defaultPath = ${JSON.stringify(fallbackPath)};`,
     '      function normalizeLang(raw) {',
     '        var value = String(raw || "").toLowerCase();',
-    '        if (value === "kr" || value === "en" || value === "jp") return value;',
-    '        if (value === "cn" || value === "tw" || value === "sea") return "en";',
+    '        if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;',
+    '        if (value === "tw" || value === "sea") return "en";',
     '        return "";',
     '      }',
     '      function detectReferrerLang() {',

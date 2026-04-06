@@ -85,6 +85,7 @@
                 html = createSoulmateIndicator();
             }
             
+            if (!placeholder.isConnected || !placeholder.parentNode) continue;
             placeholder.outerHTML = html;
         }
     }
@@ -204,7 +205,7 @@
     function getCurrentLanguage() {
         const urlParams = new URLSearchParams(window.location.search);
         const urlLang = urlParams.get('lang');
-        if (urlLang && ['kr', 'en', 'jp'].includes(urlLang)) {
+        if (urlLang && ['kr', 'en', 'jp', 'cn'].includes(urlLang)) {
             return urlLang;
         }
         try {
@@ -213,6 +214,7 @@
                 if (htmlLang.startsWith('ko') || htmlLang.startsWith('kr')) return 'kr';
                 if (htmlLang.startsWith('en')) return 'en';
                 if (htmlLang.startsWith('ja') || htmlLang.startsWith('jp')) return 'jp';
+                if (htmlLang.startsWith('zh') || htmlLang.startsWith('cn')) return 'cn';
             }
         } catch (e) {}
         return 'kr';
@@ -249,4 +251,3 @@
     // 전역 함수로도 노출 (synergy.js에서 호출 가능하도록)
     window.addSoulmateIndicator = addSoulmateIndicator;
 })();
-

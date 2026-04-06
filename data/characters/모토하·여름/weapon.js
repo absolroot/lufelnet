@@ -1,6 +1,8 @@
 window.WeaponData = window.WeaponData || {};
 window.enCharacterWeaponData = window.enCharacterWeaponData || {};
 window.jpCharacterWeaponData = window.jpCharacterWeaponData || {};
+window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
+
 window.WeaponData["모토하·여름"] = {
   "name": "아라이 모토하·여름",
   "weapon4-1": {
@@ -20,6 +22,7 @@ window.WeaponData["모토하·여름"] = {
     "description": "축복 속성 대미지가 24.2%/24.2%/31.5%/31.5%/38.8%/38.8%/46.1% 증가한다. 『한여름』 상태일 경우 크리티컬 효과가 26.0%/34.0%/34.0%/42.0%/42.0%/50.0%/50.0% 추가로 증가한다. 자신이 여름 상태에 진입한 후 이번 스킬의 대미지가 34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0% 증가한다. 이후 햇빛을 1중첩 획득하고, 페르소나 스킬 또는 HIGHLIGHT 스킬 사용 시 햇빛을 1중첩 소모해 해당 스킬이 같은 대미지 증가 효과를 획득한다."
   }
 };
+
 window.enCharacterWeaponData["모토하·여름"] = {
   "name": "Tropical Motoha",
   "weapon4-1": {
@@ -39,6 +42,7 @@ window.enCharacterWeaponData["모토하·여름"] = {
     "description": "Increase Bless damage by 24.2%/24.2%/31.5%/31.5%/38.8%/38.8%/46.1%.\nWhen Summer Hype is active, increase critical damage by 26.0%/34.0%/34.0%/42.0%/42.0%/50.0%/50.0%.\nWhen using Surf 'n' Shine when Summer Hype is active, increase that skill's damage by 34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0% and gain 1 Sunlight stack.\nWhen using a skill or Highlight, spend 1 Sunlight stack to increase the skill's damage by the same amount.\nDamage increases from Summer Hype and Sunlight will not stack, even if activated at the same time."
   }
 };
+
 window.jpCharacterWeaponData["모토하·여름"] = {
   "name": "朋子·ピーチサマー",
   "weapon4-1": {
@@ -58,21 +62,24 @@ window.jpCharacterWeaponData["모토하·여름"] = {
     "description": "祝福属性ダメージが24.2%/24.2%/31.5%/31.5%/38.8%/38.8%/46.1%上昇する。\n『真夏のテンション』状態の時、クリティカルダメージが26.0%/34.0%/34.0%/42.0%/42.0%/50.0%/50.0%上昇する。\n『サーフ＆シャイン』を使用して『真夏のテンション』状態になった時、そのダメージが34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0%上昇し、『日差し』を１つ獲得する。\nその後、スキルまたはハイライトを使用する時、『日差し』を１つ消費して、同じダメージ上昇効果を与える。\nこの２つのダメージ上昇は、同時に発動しても効果は重複しない。"
   }
 };
-window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
 
 window.cnCharacterWeaponData["모토하·여름"] = {
-  "weapon5-1": {
-    "name": "缤纷海岸",
-    "health": 2616.25,
-    "attack": 706.91,
-    "defense": 361.15,
-    "description": "祝福属性伤害提升24.2%/24.2%/31.5%/31.5%/38.8%/38.8%/46.1%。『盛夏』状态下，暴击效果额外提高26.0%/34.0%/34.0%/42.0%/42.0%/50.0%/50.0%。自身进入盛夏状态后，使本次技能伤害提高34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0%；随后获得1层日光，使用人格面具技能或HIGHLIGHT技能时，消耗1层日光，使该技能获得相同的伤害提升效果。"
-  },
+  "name": "新井素羽",
   "weapon4-1": {
     "name": "嘟嘟星",
     "health": 2093.13,
     "attack": 565.81,
     "defense": 288.61,
+    "skill_name": "",
     "description": "攻击力提升12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%。『盛夏』状态下受到治疗时额外获得7.6%/9.9%/9.9%/12.2%/12.2%/14.5%/14.5%伤害提升，持续2回合，上限2层。"
+  },
+  "weapon5-1": {
+    "name": "缤纷海岸",
+    "health": 2616.25,
+    "attack": 706.91,
+    "defense": 361.15,
+    "skill_name": "",
+    "description": "祝福属性伤害提升24.2%/24.2%/31.5%/31.5%/38.8%/38.8%/46.1%。『盛夏』状态下，暴击效果额外提高26.0%/34.0%/34.0%/42.0%/42.0%/50.0%/50.0%。自身进入盛夏状态后，使本次技能伤害提高34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0%；随后获得1层日光，使用人格面具技能或HIGHLIGHT技能时，消耗1层日光，使该技能获得相同的伤害提升效果。"
   }
 };
+

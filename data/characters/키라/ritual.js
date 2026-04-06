@@ -1,6 +1,8 @@
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
+window.cnCharacterRitualData = window.cnCharacterRitualData || {};
+
 window.ritualData["키라"] = {
   "name": "키타자토 키라",
   "r0": "사신의 승리",
@@ -18,6 +20,7 @@ window.ritualData["키라"] = {
   "r6": "모두 꿇어라",
   "r6_detail": "『유혈』이 최대 13회까지 중첩 가능하며, 적의 『유혈』 중첩 횟수는 모두 3중첩 이상이다.\n『집행관』 상태에서 『죄악의 게임』을 사용하면 목표의 『유혈』 중첩수가 더 이상 제거되지 않는다. 『절개』 효과가 『잔살』로 강화되어, 『잔살』이 주는 대미지가 100% 증가하고, 기타 모든 적에게 50%의 스퍼터링 대미지를 준다. 『잔살』은 모든 스킬에 있는 『절개』 관련 효과를 발동할 수 있다."
 };
+
 window.enCharacterRitualData["키라"] = {
   "name": "Kira Kitazato",
   "r0": "Mortal Responsibility",
@@ -35,6 +38,7 @@ window.enCharacterRitualData["키라"] = {
   "r6": "Great Doctor",
   "r6_detail": "Increase the maximum stacks of Bleed to 13. Also, each foe will always be inflicted with 3 stacks of Bleed.\nWhen using Midnight Surgery in Ripper mode, do not remove the target's Bleed stacks. Also evolve Rending effects to Killing Frenzy, increase damage by 100%, and deal 50% damage to all other foes. Killing Frenzy can activate effects from Rending with all skills."
 };
+
 window.jpCharacterRitualData["키라"] = {
   "name": "北里 基良",
   "r0": "生死を握る医師",
@@ -52,7 +56,6 @@ window.jpCharacterRitualData["키라"] = {
   "r6": "スーパードクター",
   "r6_detail": "『出血』の累積上限が１３個に増加する。また、それぞれの敵は常に『出血』が３つ付与された状態になる。\n『バスター』状態で『闇夜処置』を使用した時、対象に付与されている『出血』が除去されなくなる。また『烈痛』の効果が『活殺自在』に強化され、ダメージが１００%上昇し、他の全ての敵にも５０%のダメージを与える。『活殺自在』は全てのスキルで『烈痛』による効果を発動できる。"
 };
-window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
 window.cnCharacterRitualData["키라"] = {
   "name": "北里基良",
@@ -71,3 +74,4 @@ window.cnCharacterRitualData["키라"] = {
   "r6": "全部都会倒下",
   "r6_detail": "『流血』的可叠加上限提升至13层，每个敌人的『流血』层数始终不低于3层。\n处于『行刑官』状态，使用『罪恶游戏』不再清除目标『流血』层数；『撕裂』效果强化为『残杀』，『残杀』造成伤害提升100%，对其他所有敌人造成50%的溅射伤害。『残杀』能触发所有技能中『撕裂』相关的效果。"
 };
+

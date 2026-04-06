@@ -16,6 +16,7 @@ window.personaFiles["바스키"] = {
   "tier_desc": "지속 대미지를 증가시키는 페르소나로, 본능에 명시된 지속 대미지 증가 효과는 별도 계수로서 작용해 곱연산된다.",
   "tier_desc_en": "A Persona that increases damage over time. The continuous damage increase listed in its talent functions as a separate multiplier and is multiplicative.",
   "tier_desc_jp": "持続ダメージを強化するペルソナで、本能に記載された持続ダメージ増加効果は別係数として働き、乗算で計算される。",
+  "tier_desc_cn": "是提升持续伤害的人格面具，本能中写明的持续伤害提升效果属于独立乘区，因此会按乘算生效。",
   "comment": "",
   "comment_en": "",
   "comment_jp": "",

@@ -130,6 +130,15 @@ export function getCurrentLang() {
     return 'kr';
 }
 
+function isKrLikeLang(lang) {
+    try {
+        if (typeof window.isKrLikeLanguage === 'function') {
+            return !!window.isKrLikeLanguage(lang);
+        }
+    } catch (_) { }
+    return lang === 'kr' || lang === 'cn';
+}
+
 export function translateNeedStat(key, fallback = '') {
     if (typeof window.t === 'function') {
         try {
@@ -160,127 +169,7 @@ export function formatTotalPair(total) {
 export function normalizeTextForLang(text) {
     const lang = getCurrentLang();
     if (!text || lang === 'kr') return text || '';
-    let result = String(text).replace(/의식\s*3/g, '의식2');
-    const localTypeMap = lang === 'en'
-        ? {
-            '심상 코어': 'Mindscape Core',
-            '심상코어': 'Mindscape Core',
-            '스킬': 'Skill',
-            '패시브': 'Passive',
-            '하이라이트': 'Highlight',
-            '전용무기': 'Weapon',
-            '페르소나': 'Persona',
-            '의식1': 'A1',
-            '의식2': 'A2',
-            '의식3': 'A3',
-            '의식4': 'A4',
-            '의식5': 'A5',
-            '의식6': 'A6',
-            '총기': 'Gun',
-            '총격': 'Gun',
-            '지원기술': 'Assist Skill',
-            '광역': 'AoE',
-            '단일': 'Single'
-        }
-        : lang === 'jp'
-            ? {
-                '심상 코어': 'イメジャリーコア',
-                '심상코어': 'イメジャリーコア',
-                '스킬': 'スキル',
-                '패시브': 'パッシブ',
-                '하이라이트': 'ハイライト',
-                '전용무기': '専用武器',
-                '페르소나': 'ペルソナ',
-                '의식1': '意識1',
-                '의식2': '意識2',
-                '의식3': '意識3',
-                '의식4': '意識4',
-                '의식5': '意識5',
-                '의식6': '意識6',
-                '총기': '銃撃',
-                '총격': '銃撃',
-                '지원기술': 'サポートスキル',
-                '광역': '広域',
-                '단일': '単体'
-            }
-            : null;
-
-    if (lang === 'en') {
-        result = result.replace(/(\d+)\s*중첩/g, '$1 Stack')
-                       .replace(/중첩/g, 'Stack');
-    } else if (lang === 'jp') {
-        result = result.replace(/(\d+)\s*중첩/g, '$1重')
-                       .replace(/중첩/g, '重');
-    }
-
-    try {
-        const dict = (typeof window.I18NUtils !== 'undefined' && window.I18NUtils.statTranslations && window.I18NUtils.statTranslations[lang])
-            ? window.I18NUtils.statTranslations[lang]
-            : null;
-        if (dict && typeof dict === 'object') {
-            const esc = (s) => String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-            Object.keys(dict).sort((a, b) => b.length - a.length).forEach((ko) => {
-                const tr = dict[ko];
-                if (!tr || tr === ko) return;
-                result = result.replace(new RegExp(esc(ko), 'g'), tr);
-            });
-        }
-    } catch (_) {
-        // Ignore dictionary fallback failures.
-    }
-
-    if (localTypeMap) {
-        const esc = (s) => String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-        Object.keys(localTypeMap).sort((a, b) => b.length - a.length).forEach((ko) => {
-            result = result.replace(new RegExp(esc(ko), 'g'), localTypeMap[ko]);
-        });
-    }
-
-    if (lang === 'en') {
-        result = result
-            .replace(/단일\/광역/g, 'Single/Multi')
-            .replace(/단일\/자신/g, 'Single/Self')
-            .replace(/광역\/자신/g, 'Multi/Self')
-            .replace(/자신/g, 'Self')
-            .replace(/단일/g, 'Single')
-            .replace(/광역/g, 'Multi')
-            .replace(/의식\s*([0-9]+)/g, 'A$1')
-            .replace(/(\d+)\s*턴/g, '$1T')
-            .replace(/턴/g, 'T')
-            .replace(/레벨/g, 'Lv')
-            .replace(/심상\s*코어/g, 'Mindscape Core')
-            .replace(/심상/g, 'MS')
-            .replace(/개조/g, 'R')
-            .replace(/원소\s*이상/g, 'Elemental Ailment')
-            .replace(/풍습/g, 'Windswept')
-            .replace(/추가\s*효과/g, 'Additional Effect')
-            .replace(/없음/g, 'None');
-    } else if (lang === 'jp') {
-        result = result
-            .replace(/단일\/광역/g, '単体/複数対象')
-            .replace(/단일\/자신/g, '単体/自分')
-            .replace(/광역\/자신/g, '複数対象/自分')
-            .replace(/자신/g, '自分')
-            .replace(/단일/g, '単体')
-            .replace(/광역/g, '複数対象')
-            .replace(/의식\s*([0-9]+)/g, '意識$1')
-            .replace(/(\d+)\s*턴/g, '$1ターン')
-            .replace(/턴/g, 'ターン')
-            .replace(/레벨/g, 'Lv')
-            .replace(/심상\s*코어/g, 'イメジャリーコア')
-            .replace(/심상/g, 'イメジャリー')
-            .replace(/개조/g, '改造')
-            .replace(/원소\s*이상/g, '元素異常')
-            .replace(/풍습/g, '風襲')
-            .replace(/추가\s*효과/g, '追加効果')
-            .replace(/없음/g, 'なし');
-    }
-
-    if (typeof window.DefenseI18N !== 'undefined' && typeof window.DefenseI18N.translateType === 'function') {
-        result = window.DefenseI18N.translateType(result);
-    }
-
-    return result;
+    return String(text).replace(/의식\s*3/g, '의식2');
 }
 
 /**
@@ -302,6 +191,7 @@ export function getSourceDisplayName(source, baseUrl) {
     if (charMeta) {
         if (lang === 'en') return charMeta.codename || source;
         if (lang === 'jp') return charMeta.name_jp || source;
+        if (lang === 'cn') return charMeta.name_cn || charMeta.name || source;
         return source;
     }
     return DataLoader.getCharacterDisplayName(source) || source;
@@ -322,7 +212,10 @@ export function getLocalizedSkillName(item, groupName = '') {
     if (lang === 'jp' && item.skillName_jp && String(item.skillName_jp).trim()) {
         return String(item.skillName_jp).trim();
     }
-    if (lang === 'kr' && item.skillName && String(item.skillName).trim()) {
+    if (lang === 'cn' && item.skillName_cn && String(item.skillName_cn).trim()) {
+        return String(item.skillName_cn).trim();
+    }
+    if (isKrLikeLang(lang) && item.skillName && String(item.skillName).trim()) {
         return String(item.skillName).trim();
     }
 
@@ -350,7 +243,7 @@ export function getLocalizedSkillName(item, groupName = '') {
 
     // 3) 마지막 폴백
     if (item.skillName && String(item.skillName).trim()) {
-        if (lang === 'kr') return String(item.skillName).trim();
+        if (isKrLikeLang(lang)) return String(item.skillName).trim();
         if (isWonder) return String(item.skillName).trim();
     }
     return '';
@@ -362,17 +255,20 @@ export function getLocalizedSkillName(item, groupName = '') {
 export function getLocalizedOptions(item) {
     const lang = getCurrentLang();
     const baseOptions = Array.isArray(item.options) ? item.options : [];
-    let labelOptions = baseOptions;
+
+    if (lang === 'cn' && Array.isArray(item.options_cn) && item.options_cn.length === baseOptions.length) {
+        return item.options_cn;
+    }
+    if (isKrLikeLang(lang)) return baseOptions;
 
     if (lang === 'en' && Array.isArray(item.options_en) && item.options_en.length === baseOptions.length) {
-        labelOptions = item.options_en;
-    } else if (lang === 'jp' && Array.isArray(item.options_jp) && item.options_jp.length === baseOptions.length) {
-        labelOptions = item.options_jp;
+        return item.options_en;
     }
-
-    // Match defense/critical calc behavior: even when localized option arrays are missing
-    // or still contain Korean tokens, normalize the display label for the active language.
-    return labelOptions.map(option => normalizeTextForLang(option));
+    if (lang === 'jp' && Array.isArray(item.options_jp) && item.options_jp.length === baseOptions.length) {
+        return item.options_jp;
+    }
+    
+    return baseOptions;
 }
 
 /**

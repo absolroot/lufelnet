@@ -3,7 +3,7 @@
 
     function normalizeLang(raw) {
         const value = String(raw || '').trim().toLowerCase();
-        if (value === 'kr' || value === 'en' || value === 'jp') return value;
+        if (value === 'kr' || value === 'en' || value === 'jp' || value === 'cn') return value;
         return 'kr';
     }
 
@@ -25,17 +25,20 @@
             .then((response) => response.json())
             .then((data) => {
                 const countryCode = String(data?.country_code || '').toUpperCase();
+                if (countryCode === 'CN') return 'cn';
                 if (countryCode === 'JP') return 'jp';
                 if (countryCode === 'US' || countryCode === 'GB' || countryCode === 'AU' || countryCode === 'CA') return 'en';
                 if (countryCode === 'KR') return 'kr';
 
                 const browserLang = String(navigator.language || navigator.userLanguage || '').toLowerCase();
+                if (browserLang.startsWith('zh')) return 'cn';
                 if (browserLang.startsWith('ja')) return 'jp';
                 if (browserLang.startsWith('en')) return 'en';
                 return 'kr';
             })
             .catch(function () {
                 const browserLang = String(navigator.language || navigator.userLanguage || '').toLowerCase();
+                if (browserLang.startsWith('zh')) return 'cn';
                 if (browserLang.startsWith('ja')) return 'jp';
                 if (browserLang.startsWith('en')) return 'en';
                 return 'kr';
@@ -47,8 +50,11 @@
         const urlLang = normalizeLang(urlParams.get('lang'));
         if (urlParams.get('lang')) return urlLang;
 
-        const savedLang = normalizeLang(localStorage.getItem('preferred_language'));
-        if (localStorage.getItem('preferred_language')) return savedLang;
+        const savedLang = normalizeLang(localStorage.getItem('preferredLanguage'));
+        if (localStorage.getItem('preferredLanguage')) return savedLang;
+
+        const savedLangLegacy = normalizeLang(localStorage.getItem('preferred_language'));
+        if (localStorage.getItem('preferred_language')) return savedLangLegacy;
 
         return normalizeLang(await detectRegionByIP());
     }
@@ -88,6 +94,7 @@
     async function updateMetaTags(lang) {
         const finalLang = normalizeLang(lang);
         window.currentLang = finalLang;
+        localStorage.setItem('preferredLanguage', finalLang);
         localStorage.setItem('preferred_language', finalLang);
 
         if (window.SeoEngine && typeof window.SeoEngine.setContextHint === 'function') {

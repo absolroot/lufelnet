@@ -16,6 +16,7 @@ window.personaFiles["아라하바키"] = {
   "tier_desc": "받는 대미지 감소 효과가 필요할 때 채용한다.",
   "tier_desc_en": "Adopted when damage reduction effects are needed.",
   "tier_desc_jp": "受けるダメージ減少効果が必要な時に採用する。",
+  "tier_desc_cn": "需要受到伤害降低效果时会采用。",
   "comment": "",
   "comment_en": "",
   "comment_jp": "",

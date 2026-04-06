@@ -62,7 +62,10 @@
 // Skeleton: hide Korean text flash for non-KR languages (runs before first paint)
 (function(){
     var p = new URLSearchParams(window.location.search).get('lang');
-    if (p && p !== 'kr') {
+    var path = window.location.pathname || '';
+    var pathLang = (/^\/(kr|en|jp|cn)\//.exec(path) || [])[1];
+    var lang = p || pathLang || 'kr';
+    if (lang !== 'kr') {
         document.documentElement.classList.add('skel');
         // Safety: remove skeleton after 3s even if DOMContentLoaded handler fails
         setTimeout(function(){ document.documentElement.classList.remove('skel'); }, 3000);
@@ -100,6 +103,7 @@
                         if (path.includes('/kr/')) return 'kr';
                         if (path.includes('/en/')) return 'en';
                         if (path.includes('/jp/')) return 'jp';
+                        if (path.includes('/cn/')) return 'cn';
                         return 'kr';
                     }
 
@@ -135,9 +139,9 @@
                     <div class="chracter-role"></div>
                 </div>
                 <div class="sub-info">
-                    <p class="code-name">코드네임: </p>
+                    <p class="code-name">{% if page.language == 'cn' %}代号: {% else %}코드네임: {% endif %}</p>
                     <p class="sees" style="font-weight: bold; display: none;">S.E.E.S</p>
-                    <p class="persona-name">페르소나: </p>
+                    <p class="persona-name">{% if page.language == 'cn' %}人格面具: {% else %}페르소나: {% endif %}</p>
                 </div>
             </div>
             <div class="basic-info">
@@ -186,7 +190,7 @@
 
     <!-- 리뷰 섹션 -->
     <div class="review-card card-style">
-        <h2>리뷰</h2>
+        <h2>{% if page.language == 'cn' %}怪盗评测{% else %}리뷰{% endif %}</h2>
         <div class="review-content" id="character-review">
             <!-- 리뷰 내용이 여기에 동적으로 로드됩니다 -->
         </div>
@@ -194,55 +198,55 @@
 
     <!-- 세팅 섹션 -->
     <div class="settings-card card-style">
-        <h2>추천 세팅</h2>
+        <h2>{% if page.language == 'cn' %}推荐配置{% else %}추천 세팅{% endif %}</h2>
         <div class="settings-content">
 
 
             <!-- 계시 섹션 -->
             <div class="setting-group revelation-settings">
                 <div class="setting-section">
-                    <h3>계시 <span class="help-icon" onclick="showHelpModal('revelation')">?</span></h3>
+                    <h3>{% if page.language == 'cn' %}启示{% else %}계시{% endif %} <span class="help-icon" onclick="showHelpModal('revelation')">?</span></h3>
                     <div class="revelation-set">
                         <div class="main-revelation">
-                            <span class="label">주
-                                <img src="{{ site.baseurl }}/assets/img/revelation/icon-주.png" alt="주"
+                            <span class="label">{% if page.language == 'cn' %}宙{% else %}주{% endif %}
+                                <img src="{{ site.baseurl }}/assets/img/revelation/icon-주.png" alt="{% if page.language == 'cn' %}宙{% else %}주{% endif %}"
                                     class="option-icon">
                             </span>
                             <span class="value"></span>
                         </div>
                         <div class="sub-revelation">
-                            <span class="label">일월성진</span>
+                            <span class="label">{% if page.language == 'cn' %}日月星辰{% else %}일월성진{% endif %}</span>
                             <span class="value"></span>
                         </div>
                     </div>
                 </div>
                 <div class="setting-section">
-                    <h3>주 옵션 <span class="help-icon" onclick="showHelpModal('main-option')">?</span></h3>
+                    <h3>{% if page.language == 'cn' %}主属性{% else %}주 옵션{% endif %} <span class="help-icon" onclick="showHelpModal('main-option')">?</span></h3>
                     <div class="main-options">
                         <div class="option-row">
                             <span class="label">
-                                일 <img src="{{ site.baseurl }}/assets/img/revelation/icon-일.png" alt="일"
+                                {% if page.language == 'cn' %}日{% else %}일{% endif %} <img src="{{ site.baseurl }}/assets/img/revelation/icon-일.png" alt="{% if page.language == 'cn' %}日{% else %}일{% endif %}"
                                     class="option-icon">
                             </span>
                             <span class="value">생명</span>
                         </div>
                         <div class="option-row">
                             <span class="label">
-                                월 <img src="{{ site.baseurl }}/assets/img/revelation/icon-월.png" alt="월"
+                                {% if page.language == 'cn' %}月{% else %}월{% endif %} <img src="{{ site.baseurl }}/assets/img/revelation/icon-월.png" alt="{% if page.language == 'cn' %}月{% else %}월{% endif %}"
                                     class="option-icon">
                             </span>
                             <span class="value"></span>
                         </div>
                         <div class="option-row">
                             <span class="label">
-                                성 <img src="{{ site.baseurl }}/assets/img/revelation/icon-성.png" alt="성"
+                                {% if page.language == 'cn' %}星{% else %}성{% endif %} <img src="{{ site.baseurl }}/assets/img/revelation/icon-성.png" alt="{% if page.language == 'cn' %}星{% else %}성{% endif %}"
                                     class="option-icon">
                             </span>
                             <span class="value"></span>
                         </div>
                         <div class="option-row">
                             <span class="label">
-                                진 <img src="{{ site.baseurl }}/assets/img/revelation/icon-진.png" alt="진"
+                                {% if page.language == 'cn' %}辰{% else %}진{% endif %} <img src="{{ site.baseurl }}/assets/img/revelation/icon-진.png" alt="{% if page.language == 'cn' %}辰{% else %}진{% endif %}"
                                     class="option-icon">
                             </span>
                             <span class="value"></span>
@@ -250,18 +254,18 @@
                     </div>
                 </div>
                 <div class="setting-section">
-                    <h3>부 옵션 <span class="help-icon" onclick="showHelpModal('sub-option')">?</span></h3>
+                    <h3>{% if page.language == 'cn' %}副属性{% else %}부 옵션{% endif %} <span class="help-icon" onclick="showHelpModal('sub-option')">?</span></h3>
                     <div class="sub-options">
                         <div class="option-row">
-                            <span class="priority">1순위</span>
+                            <span class="priority">{% if page.language == 'cn' %}优先级1{% else %}1순위{% endif %}</span>
                             <span class="value"></span>
                         </div>
                         <div class="option-row">
-                            <span class="priority">2순위</span>
+                            <span class="priority">{% if page.language == 'cn' %}优先级2{% else %}2순위{% endif %}</span>
                             <span class="value"></span>
                         </div>
                         <div class="option-row">
-                            <span class="priority">3순위</span>
+                            <span class="priority">{% if page.language == 'cn' %}优先级3{% else %}3순위{% endif %}</span>
                             <span class="value"></span>
                         </div>
                     </div>
@@ -271,7 +275,7 @@
             <!-- 스탯 요구사항 섹션 -->
             <div class="setting-group stats-requirements">
                 <div class="setting-section">
-                    <h3>권장 육성 스탯 <span class="help-icon" onclick="showHelpModal('recommended-stats')">?</span></h3>
+                    <h3>{% if page.language == 'cn' %}推荐养成属性{% else %}권장 육성 스탯{% endif %} <span class="help-icon" onclick="showHelpModal('recommended-stats')">?</span></h3>
                     <div class="stat-levels">
                         <div class="stat-level">
                             <span class="label">LV10</span>
@@ -296,7 +300,7 @@
                     </div>
                 </div>
                 <div class="setting-section">
-                    <h3>전투 진입 시 + <span class="help-icon" onclick="showHelpModal('battle-entry')">?</span></h3>
+                    <h3>{% if page.language == 'cn' %}战斗开始时 +{% else %}전투 진입 시 +{% endif %} <span class="help-icon" onclick="showHelpModal('battle-entry')">?</span></h3>
                     <p class="battle-plus-stats"></p>
                 </div>
             </div>
@@ -305,49 +309,49 @@
             <!-- 스킬&심상 섹션 -->
             <div class="setting-group skill-mind-settings">
                 <div class="setting-section">
-                    <h3>스킬 <span class="help-icon" onclick="showHelpModal('skill')">?</span></h3>
+                    <h3>{% if page.language == 'cn' %}技能{% else %}스킬{% endif %} <span class="help-icon" onclick="showHelpModal('skill')">?</span></h3>
                     <div class="skill-levels">
                         <div class="skill-level">
-                            <span class="label">스킬 1</span>
+                            <span class="label">{% if page.language == 'cn' %}技能1{% else %}스킬 1{% endif %}</span>
                             <span class="value"></span>
                         </div>
                         <div class="skill-level">
-                            <span class="label">스킬 2</span>
+                            <span class="label">{% if page.language == 'cn' %}技能2{% else %}스킬 2{% endif %}</span>
                             <span class="value"></span>
                         </div>
                         <div class="skill-level">
-                            <span class="label">스킬 3</span>
+                            <span class="label">{% if page.language == 'cn' %}技能3{% else %}스킬 3{% endif %}</span>
                             <span class="value"></span>
                         </div>
                         <div class="skill-level">
-                            <span class="label" data-text="highlight">하이라이트</span>
+                            <span class="label" data-text="highlight">{% if page.language == 'cn' %}战斗技巧{% else %}하이라이트{% endif %}</span>
                             <span class="value"></span>
                         </div>
                     </div>
                 </div>
                 <div class="setting-section">
-                    <h3>심상 (LV 5) <span class="help-icon" onclick="showHelpModal('mind-lv5')">?</span></h3>
+                    <h3>{% if page.language == 'cn' %}心象 (LV 5){% else %}심상 (LV 5){% endif %} <span class="help-icon" onclick="showHelpModal('mind-lv5')">?</span></h3>
                     <div class="mind-settings">
                         <div class="mind-stats">
                             <div class="stat-row">
-                                <span class="label">진급강화 1</span>
+                                <span class="label">{% if page.language == 'cn' %}进阶强化 1{% else %}진급강화 1{% endif %}</span>
                                 <span class="value"></span>
                                 <span class="skill-item"></span>
                             </div>
                             <div class="stat-row">
-                                <span class="label">진급강화 2</span>
+                                <span class="label">{% if page.language == 'cn' %}进阶强化 2{% else %}진급강화 2{% endif %}</span>
                                 <span class="value"></span>
                                 <span class="skill-item"></span>
                             </div>
                         </div>
                         <div class="mind-skills">
                             <div class="skill-row">
-                                <span class="label">스킬깨달음 1</span>
+                                <span class="label">{% if page.language == 'cn' %}技能领悟 1{% else %}스킬깨달음 1{% endif %}</span>
                                 <span class="value"></span>
                                 <span class="skill-item"></span>
                             </div>
                             <div class="skill-row">
-                                <span class="label">스킬깨달음 2</span>
+                                <span class="label">{% if page.language == 'cn' %}技能领悟 2{% else %}스킬깨달음 2{% endif %}</span>
                                 <span class="value"></span>
                                 <span class="skill-item"></span>
                             </div>
@@ -358,13 +362,13 @@
             <!-- 운영 섹션 -->
             <div class="setting-group operation-settings">
                 <div class="setting-section">
-                    <h3>추천 운영 <span class="help-icon" onclick="showHelpModal('recommended-operation')">?</span></h3>
+                    <h3>{% if page.language == 'cn' %}推荐操作{% else %}추천 운영{% endif %} <span class="help-icon" onclick="showHelpModal('recommended-operation')">?</span></h3>
                     <div class="operation-levels">
                         <!-- 운영 내용이 여기에 동적으로 추가됨 -->
                     </div>
                 </div>
                 <div class="setting-section">
-                    <h3>참고사항</h3>
+                    <h3>{% if page.language == 'cn' %}注意事项{% else %}참고사항{% endif %}</h3>
                     <div class="operation-notes">
                         <!-- 참고 사항 내용이 여기에 동적으로 추가됨 -->
                     </div>
@@ -399,7 +403,7 @@
 
     <!-- 스킬 섹션 -->
     <div class="skills-card card-style drag-me">
-        <h2>스킬</h2>
+        <h2>{% if page.language == 'cn' %}技能{% else %}스킬{% endif %}</h2>
         <div class="skills-grid">
         </div>
     </div>
@@ -407,7 +411,7 @@
     <!-- 의식 섹션 -->
     <div class="ritual-card card-style drag-me">
         <div class="ritual-header">
-            <h2>의식</h2>
+            <h2>{% if page.language == 'cn' %}意识{% else %}의식{% endif %}</h2>
         </div>
         <div class="ritual-grid">
             <div class="ritual-item" data-ritual="0">
@@ -514,7 +518,7 @@
 
     <!-- 무기 섹션 -->
     <div class="weapons-card card-style drag-me">
-        <h2>전용 무기</h2>
+        <h2>{% if page.language == 'cn' %}专属武器{% else %}전용 무기{% endif %}</h2>
         <div class="weapon-enhancement-buttons">
             <button class="enhancement-btn active" data-stage="mixed">5성 개조0 / 4성 개조6</button>
             <button class="enhancement-btn" data-stage="all">전체</button>
@@ -574,7 +578,7 @@
     <div id="recommended-sections" style="display: none;">
         <!-- 추천 페르소나 -->
         <div class="recommended-persona-card card-style">
-            <h2>추천 조합</h2>
+            <h2>{% if page.language == 'cn' %}推荐装配{% else %}추천 조합{% endif %}</h2>
             <div id="recommended-persona-content" class="recommended-persona-content">
                 <!-- 페르소나 내용이 여기에 동적으로 추가됨 -->
             </div>
@@ -582,7 +586,7 @@
 
         <!-- 추천 파티 -->
         <div class="recommended-party-card card-style">
-            <h2>추천 파티</h2>
+            <h2>{% if page.language == 'cn' %}推荐队伍示例{% else %}추천 파티{% endif %}</h2>
             <div id="recommended-party-content" class="recommended-party-content">
                 <!-- 파티 내용이 여기에 동적으로 추가됨 -->
             </div>
@@ -1217,7 +1221,7 @@
         let localizedRitual = null;
         let localizedWeapon = null;
 
-        if (!((window.isKrLikeLanguage && window.isKrLikeLanguage(currentLang)) || currentLang === 'kr')) {
+        if (currentLang !== 'kr') {
             // 언어별 데이터 파일 동적 로드
             try {
                 if (currentLang === 'en') {
@@ -1241,6 +1245,16 @@
                     }
                     if (window.jpCharacterWeaponData && window.jpCharacterWeaponData[characterName]) {
                         localizedWeapon = window.jpCharacterWeaponData[characterName];
+                    }
+                } else if (currentLang === 'cn') {
+                    if (window.cnCharacterSkillsData && window.cnCharacterSkillsData[characterName]) {
+                        localizedSkills = window.cnCharacterSkillsData[characterName];
+                    }
+                    if (window.cnCharacterRitualData && window.cnCharacterRitualData[characterName]) {
+                        localizedRitual = window.cnCharacterRitualData[characterName];
+                    }
+                    if (window.cnCharacterWeaponData && window.cnCharacterWeaponData[characterName]) {
+                        localizedWeapon = window.cnCharacterWeaponData[characterName];
                     }
                 }
 
@@ -1268,6 +1282,11 @@
                     return characterReviewData[`${baseKey}_en`];
                 } else if (currentLang === 'jp' && typeof characterReviewData[`${baseKey}_jp`] !== 'undefined') {
                     return characterReviewData[`${baseKey}_jp`];
+                } else if (currentLang === 'cn') {
+                    if (typeof characterReviewData[`${baseKey}_cn`] !== 'undefined') {
+                        return characterReviewData[`${baseKey}_cn`];
+                    }
+                    return '';
                 }
                 return characterReviewData[baseKey];
             };
@@ -1318,7 +1337,8 @@
             const labelMap = {
                 'kr': { pros: '장점', cons: '단점' },
                 'en': { pros: 'Pros', cons: 'Cons' },
-                'jp': { pros: '長所', cons: '短所' }
+                'jp': { pros: '長所', cons: '短所' },
+                'cn': { pros: '优点', cons: '缺点' }
             };
             const labels = labelMap[currentLang] || labelMap['kr'];
 
@@ -1402,6 +1422,8 @@
                     });
                 } else if (currentLang === 'jp' && character.name_jp) {
                     nameElement.textContent = character.name_jp;
+                } else if (currentLang === 'cn') {
+                    nameElement.textContent = character.name_cn || '';
                 } else {
                     nameElement.textContent = character.name;
                 }
@@ -1420,12 +1442,16 @@
             const personaLabel = `${getCharacterI18nText('characterDetailPersona', '페르소나')} `;
             const personaValue = currentLang === 'en' && character.persona_en ? character.persona_en :
                 currentLang === 'jp' && character.persona_jp ? character.persona_jp :
+                    currentLang === 'cn' ? (character.persona_cn || '') :
                     character.persona || '';
             const personaEl = document.querySelector('.persona-name');
             if (personaEl) {
                 personaEl.innerHTML = `
                     <span class="label">${personaLabel}</span><span class="value">${personaValue}</span>
                 `;
+                if (currentLang === 'cn' && !personaValue) {
+                    personaEl.style.display = 'none';
+                }
             }
         } catch (e) { console.warn('[SAFE:code-persona]', e); }
 
@@ -1553,9 +1579,22 @@
         // 의식 정보 설정
         const ritualItems = document.querySelectorAll('.ritual-item');
 
+        function getRitualDataForCurrentLanguage() {
+            if (currentLang === 'en') {
+                return (window.enCharacterRitualData && window.enCharacterRitualData[characterName]) || ritual || {};
+            }
+            if (currentLang === 'jp') {
+                return (window.jpCharacterRitualData && window.jpCharacterRitualData[characterName]) || ritual || {};
+            }
+            if (currentLang === 'cn') {
+                return (window.cnCharacterRitualData && window.cnCharacterRitualData[characterName]) || {};
+            }
+            return ritual || {};
+        }
+
         function updateAllRitualContent() {
             // 언어별 의식 데이터 우선 사용
-            const ritualToUse = localizedRitual || ritual;
+            const ritualToUse = getRitualDataForCurrentLanguage();
 
             ritualItems.forEach(item => {
                 const level = item.getAttribute('data-ritual');
@@ -1599,6 +1638,11 @@
                 battlePlusStats.textContent = mergedCharacter.battle_plus_stats_en;
             } else if (currentLang === 'jp' && mergedCharacter.battle_plus_stats_jp) {
                 battlePlusStats.textContent = mergedCharacter.battle_plus_stats_jp;
+            } else if (currentLang === 'cn' && mergedCharacter.battle_plus_stats_cn) {
+                battlePlusStats.textContent = mergedCharacter.battle_plus_stats_cn;
+            } else if (currentLang === 'cn' && typeof window.localizeCnLooseText === 'function') {
+                const localizedBattlePlus = window.localizeCnLooseText(mergedCharacter.battle_plus_stats || '');
+                battlePlusStats.textContent = /[가-힣]/.test(localizedBattlePlus) ? '' : localizedBattlePlus;
             } else {
                 battlePlusStats.textContent = mergedCharacter.battle_plus_stats;
             }
@@ -1621,7 +1665,8 @@
                 const ratingTexts = {
                     kr: '마이팰리스 평점',
                     en: 'Thieves Den Rating',
-                    jp: 'マイパレス評価'
+                    jp: 'マイパレス評価',
+                    cn: '怪盗评分'
                 };
                 const ratingText = ratingTexts[currentLang] || ratingTexts.kr;
 
@@ -1633,7 +1678,7 @@
                     // 마이팰리스 평점 텍스트가 있으면 버튼 추가 (섹션 스타일은 변경하지 않음)
                     let sectionWithBtn = finalSection;
                     if (finalSection.includes(ratingText)) {
-                        const btnHTML = `<button type="button" class="qevel-btn" onclick="if(typeof window.showQEVELModal==='function'){window.showQEVELModal();}else{console.warn('QEVEL.js not loaded');}" style="display: inline-block; width: 18px; height: 18px; padding: 0; margin-left: 6px; background: transparent; border: none; cursor: pointer; vertical-align: middle; line-height: 1; white-space: nowrap;" title="${currentLang === 'en' ? 'Open Qualia Lv Calculator' : (currentLang === 'jp' ? 'QEVEL計算機を開く' : 'QEVEL 계산기 열기')}"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1" fill="rgba(255,255,255,0.05)"></circle><path d="M5 9 L13 9 M9 5 L9 13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.3"></path></svg></button>`;
+                        const btnHTML = `<button type="button" class="qevel-btn" onclick="if(typeof window.showQEVELModal==='function'){window.showQEVELModal();}else{console.warn('QEVEL.js not loaded');}" style="display: inline-block; width: 18px; height: 18px; padding: 0; margin-left: 6px; background: transparent; border: none; cursor: pointer; vertical-align: middle; line-height: 1; white-space: nowrap;" title="${getCharacterI18nText('qevelOpenCalculatorTooltip', '打开 QEVEL 计算器')}"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1" fill="rgba(255,255,255,0.05)"></circle><path d="M5 9 L13 9 M9 5 L9 13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.3"></path></svg></button>`;
                         // ·와 텍스트를 함께 찾아서 span으로 감싸기 (뒤의 <br>는 제거)
                         const escapedRatingText = ratingText.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
                         // 패턴: <br>·Thieves Den Rating<br> 또는 <br>·Thieves Den Rating (끝)
@@ -1702,7 +1747,8 @@
                 const mindTexts = {
                     'kr': '심상5',
                     'en': 'Mindscape5',
-                    'jp': 'イメジャリー5'
+                    'jp': 'イメジャリー5',
+                    'cn': '心象5'
                 };
 
                 items.forEach((item, index) => {
@@ -1717,7 +1763,8 @@
                         const ratingTexts = {
                             kr: '마이팰리스 평점',
                             en: 'Thieves Den Rating',
-                            jp: 'マイパレス評価'
+                            jp: 'マイパレス評価',
+                            cn: '怪盗评分'
                         };
                         const ratingText = ratingTexts[currentLang] || ratingTexts.kr;
 
@@ -1752,7 +1799,7 @@
                             qevelBtn.type = 'button';
                             qevelBtn.className = 'qevel-btn';
                             qevelBtn.style.cssText = 'display: inline-block; width: 18px; height: 18px; padding: 0; margin-left: 6px; background: transparent; border: none; cursor: pointer; vertical-align: middle; line-height: 1; white-space: nowrap;';
-                            qevelBtn.title = currentLang === 'en' ? 'Open Qualia Lv Calculator' : (currentLang === 'jp' ? 'QEVEL計算機を開く' : 'QEVEL 계산기 열기');
+                            qevelBtn.title = getCharacterI18nText('qevelOpenCalculatorTooltip', '打开 QEVEL 计算器');
 
                             // SVG 생성
                             const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -1859,7 +1906,27 @@
             weaponsContainer.innerHTML = '';
 
             // 언어별 무기 데이터 우선 사용
-            const weaponDataToUse = localizedWeapon || (window.WeaponData && window.WeaponData[characterName]) || {};
+            const baseWeaponData = (window.WeaponData && window.WeaponData[characterName]) || {};
+            const weaponDataToUse = (() => {
+                if (currentLang !== 'cn') {
+                    return localizedWeapon || baseWeaponData || {};
+                }
+
+                const merged = {};
+                ['weapon5-1', 'weapon4-1', 'weapon4-2', 'weapon3-1'].forEach((key) => {
+                    const baseEntry = baseWeaponData[key] || null;
+                    const localizedEntry = localizedWeapon && localizedWeapon[key] ? localizedWeapon[key] : null;
+                    if (!baseEntry && !localizedEntry) return;
+                    merged[key] = {
+                        ...(baseEntry || {}),
+                        ...(localizedEntry || {})
+                    };
+                    merged[key].name = localizedEntry?.name || '';
+                    merged[key].skill_name = localizedEntry?.skill_name || '';
+                    merged[key].description = localizedEntry?.description || '';
+                });
+                return merged;
+            })();
             if (!weaponDataToUse) return;
 
             const characterWeapons = weaponDataToUse;
@@ -1895,7 +1962,7 @@
 
                 const weaponImage = document.createElement('img');
                 weaponImage.src = imagePath;
-                weaponImage.alt = weaponData.name || '무기 이미지';
+                weaponImage.alt = weaponData.name || '';
                 weaponImage.className = 'weapon-image';
                 // 이미지 로드 실패시 기본 이미지로 대체
                 /*
@@ -1914,7 +1981,7 @@
                 // 무기 이름과 스탯
                 const weaponName = document.createElement('span');
                 weaponName.className = `weapon-name${weapon.stars === 5 ? ' five-star' : ''}`;
-                weaponName.textContent = weaponData.name || '무기 이름';
+                weaponName.textContent = weaponData.name || '';
 
                 // 스탯 정보
                 const weaponStats = document.createElement('div');
@@ -2020,7 +2087,7 @@
         await safeAwait('loadCharacterList', loadCharacterList());
         try {
             const currentLang = getCurrentLanguage();
-            if (characterName && !((window.isKrLikeLanguage && window.isKrLikeLanguage(currentLang)) || currentLang === 'kr')) {
+            if (characterName && currentLang !== 'kr') {
                 const selfReleased = await isCharacterReleased(characterName);
                 if (!selfReleased) spoilerDisabled = true;
             }
@@ -2055,11 +2122,13 @@
         const baseUrl = 'https://lufel.net'; // 실제 도메인으로 변경 필요
 
         // 언어별 캐릭터명 설정
-        let characterDisplayName = character.name;
+        let characterDisplayName = currentLang === 'cn' ? (character.name_cn || '') : character.name;
         if (currentLang === 'en' && character.name_en) {
             characterDisplayName = character.name_en;
         } else if (currentLang === 'jp' && character.name_jp) {
             characterDisplayName = character.name_jp;
+        } else if (currentLang === 'cn') {
+            characterDisplayName = character.name_cn || '';
         }
 
         // 언어별 사이트 정보
@@ -2078,6 +2147,11 @@
                 siteName: '攻略 - ペルソナ5 ザ・ファントム X',
                 siteTitle: 'P5X LufelNet',
                 description: 'おすすめ設定、スキル、意識、専用武器情報'
+            },
+            'cn': {
+                siteName: '养成攻略 - 女神异闻录5: 夜幕魅影',
+                siteTitle: 'P5X 路菲尔网',
+                description: '推荐配置、技能、意识与专属武器信息'
             }
         };
 
@@ -2129,7 +2203,7 @@
 
         // 영어/일본어에서 주의 메시지 표시
         try {
-            if (currentLang === 'en' || currentLang === 'jp') {
+            if (currentLang === 'en' || currentLang === 'jp' || currentLang === 'cn') {
                 const warningMessage = getCharacterI18nText(
                     'characterDetailNoticeMessage',
                     'The recommended settings are based on future content. Some features may not be currently available (Revelations, Mindscape, etc.)'
@@ -2156,7 +2230,7 @@
         //role은 kr 아니면 숨기기
         try {
             const roleElement = document.querySelector('.chracter-role');
-            if (!((window.isKrLikeLanguage && window.isKrLikeLanguage(currentLang)) || currentLang === 'kr') && roleElement) { roleElement.style.display = 'none'; }
+            if (currentLang !== 'kr' && roleElement) { roleElement.style.display = 'none'; }
         } catch (e) { console.warn('[SAFE:role-hide]', e); }
 
         try {
@@ -2345,7 +2419,7 @@
 
             // 다국어 안내 노트 (비한국어) - 페르소나 카드가 표시될 때만 추가
             const currentLang = getCurrentLanguage();
-            if (!((window.isKrLikeLanguage && window.isKrLikeLanguage(currentLang)) || currentLang === 'kr') && !document.querySelector('.unreleased-note')) {
+            if (currentLang !== 'kr' && !document.querySelector('.unreleased-note')) {
                 const noteContainer = document.createElement('div');
                 noteContainer.className = 'unreleased-note';
                 noteContainer.style.fontSize = '0.9em';
@@ -2402,7 +2476,7 @@
             ? window.personaFiles
             : (typeof personaData !== 'undefined' ? personaData : (window.persona && window.persona.personaData) || {});
         if (!store || !store[personaName]) {
-            return personaName;
+            return currentLang === 'cn' ? '' : personaName;
         }
 
         const p = store[personaName];
@@ -2410,8 +2484,10 @@
             return p.name_en;
         } else if (currentLang === 'jp' && p.name_jp) {
             return p.name_jp;
+        } else if (currentLang === 'cn' && p.name_cn) {
+            return p.name_cn;
         }
-        return personaName;
+        return currentLang === 'cn' ? '' : personaName;
     }
 
     // KR 캐릭터 이름 메타 (추천 파티 이름용) - 비동기 로드 1회
@@ -2477,7 +2553,7 @@
         if (currentLang === 'cn') {
             if (c.name_cn) return c.name_cn;
             if (base.name_cn) return base.name_cn;
-            return characterName;
+            return '';
         }
 
         // 한국어: 객체 키(원래 캐릭터 이름)를 그대로 사용
@@ -2540,8 +2616,7 @@
             weaponSection.className = 'persona-attribute-section';
 
             const title = document.createElement('h3');
-            title.textContent = currentLang === 'en' ? 'WONDER WEAPONS' :
-                (currentLang === 'jp' ? 'ウェポン' : 'WONDER WEAPONS');
+            title.textContent = getCharacterI18nText('characterRecommendedWeaponTitle', 'WONDER WEAPONS');
             weaponSection.appendChild(title);
 
             const weaponList = document.createElement('div');
@@ -2567,7 +2642,7 @@
 
                 const name = document.createElement('span');
                 // Get localized weapon name from matchWeapons if available
-                let weaponNameText = weaponName;
+                let weaponNameText = currentLang === 'cn' ? '' : weaponName;
                 if (matchWeapons && matchWeapons[weaponName]) {
                     if (currentLang === 'en' && matchWeapons[weaponName].name_en) {
                         weaponNameText = matchWeapons[weaponName].name_en;
@@ -2597,14 +2672,14 @@
 
         // 속성 이름 다국어 처리
         const attributeTranslations = {
-            'BUFF': { 'en': 'BUFF', 'jp': 'バフ' },
-            'DEF': { 'en': 'DEF', 'jp': '防御' },
-            'ATK': { 'en': 'ATK', 'jp': '攻撃' },
-            'HEAL': { 'en': 'HEAL', 'jp': '回復' },
-            'DEBUFF': { 'en': 'DEBUFF', 'jp': 'デバフ' },
-            'SUPPORT': { 'en': 'SUPPORT', 'jp': 'サポート' },
-            'REDUCE DEF': { 'en': 'REDUCE DEF', 'jp': '防御低下' },
-            'CRITICAL': { 'en': 'CRITICAL', 'jp': 'クリティカル' }
+            'BUFF': { 'en': 'BUFF', 'jp': 'バフ', 'cn': '增益' },
+            'DEF': { 'en': 'DEF', 'jp': '防御', 'cn': '防御' },
+            'ATK': { 'en': 'ATK', 'jp': '攻撃', 'cn': '输出' },
+            'HEAL': { 'en': 'HEAL', 'jp': '回復', 'cn': '治疗' },
+            'DEBUFF': { 'en': 'DEBUFF', 'jp': 'デバフ', 'cn': '减益' },
+            'SUPPORT': { 'en': 'SUPPORT', 'jp': 'サポート', 'cn': '辅助' },
+            'REDUCE DEF': { 'en': 'REDUCE DEF', 'jp': '防御低下', 'cn': '防御力降低' },
+            'CRITICAL': { 'en': 'CRITICAL', 'jp': 'クリティカル', 'cn': '暴击' }
         };
 
         // personaData가 없거나 비어있으면 이후 렌더링 생략
@@ -2625,6 +2700,8 @@
                 title.textContent = attributeTranslations[attribute].en;
             } else if (currentLang === 'jp' && attributeTranslations[attribute]?.jp) {
                 title.textContent = attributeTranslations[attribute].jp;
+            } else if (currentLang === 'cn' && attributeTranslations[attribute]?.cn) {
+                title.textContent = attributeTranslations[attribute].cn;
             } else {
                 title.textContent = attribute;
             }
@@ -2634,7 +2711,7 @@
             const commentContainer = document.createElement('div');
             commentContainer.className = 'comment-container';
 
-            if (category.comment || category.comment_en || category.comment_jp) {
+            if (category.comment || category.comment_en || category.comment_jp || category.comment_cn) {
                 const commentEl = document.createElement('p');
                 commentEl.className = 'persona-comment';
 
@@ -2642,10 +2719,14 @@
                     commentEl.textContent = category.comment_en;
                 } else if (currentLang === 'jp' && category.comment_jp) {
                     commentEl.textContent = category.comment_jp;
+                } else if (currentLang === 'cn' && category.comment_cn) {
+                    commentEl.textContent = category.comment_cn;
                 } else {
-                    commentEl.textContent = category.comment;
+                    commentEl.textContent = currentLang === 'cn' ? '' : category.comment;
                 }
-                commentContainer.appendChild(commentEl);
+                if (commentEl.textContent) {
+                    commentContainer.appendChild(commentEl);
+                }
             }
 
             const personaList = document.createElement('div');
@@ -2665,7 +2746,7 @@
                     personaLink.onclick = function (e) {
                         e.preventDefault();
                         // Open persona page in new tab with search parameter
-                        const personaPageUrl = `${window.location.origin}/persona/?persona=${encodeURIComponent(personaName)}`;
+                        const personaPageUrl = `${window.location.origin}/${currentLang}/persona/?persona=${encodeURIComponent(personaName)}`;
                         window.open(personaPageUrl, '_blank');
                     };
 
@@ -2773,7 +2854,7 @@
 
     async function loadCharacterList() {
         const currentLang = getCurrentLanguage();
-        if ((window.isKrLikeLanguage && window.isKrLikeLanguage(currentLang)) || currentLang === 'kr') {
+        if (currentLang === 'kr') {
             characterListLoaded = true;
             return; // No need to load for Korean
         }
@@ -2818,7 +2899,7 @@
 
     async function isCharacterReleased(koreanName) {
         const currentLang = getCurrentLanguage();
-        if ((window.isKrLikeLanguage && window.isKrLikeLanguage(currentLang)) || currentLang === 'kr') return true; // Always show all characters in KR-like languages
+        if (currentLang === 'kr') return true; // Always show all characters in KR
 
         // 현재 페이지가 미출시 캐릭터면 스포일러 기능 전체 비활성화
         if (spoilerDisabled) return true;
@@ -2988,8 +3069,10 @@
                     commentText = friend.comment_en;
                 } else if (currentLang === 'jp' && friend.comment_jp) {
                     commentText = friend.comment_jp;
+                } else if (currentLang === 'cn' && friend.comment_cn) {
+                    commentText = friend.comment_cn;
                 } else if (friend.comment) {
-                    commentText = friend.comment;
+                    commentText = currentLang === 'cn' ? '' : friend.comment;
                 }
 
                 textWrap.appendChild(nameRow);
@@ -3092,7 +3175,7 @@
 
             // 파티 코멘트 컨테이너 생성 (나중에 추가하기 위해)
             let commentEl = null;
-            if (party.comment || party.comment_en || party.comment_jp) {
+            if (party.comment || party.comment_en || party.comment_jp || party.comment_cn) {
                 const currentLang = getCurrentLanguage();
                 commentEl = document.createElement('p');
                 commentEl.className = 'party-comment';
@@ -3101,9 +3184,12 @@
                     commentEl.textContent = party.comment_en;
                 } else if (currentLang === 'jp' && party.comment_jp) {
                     commentEl.textContent = party.comment_jp;
+                } else if (currentLang === 'cn' && party.comment_cn) {
+                    commentEl.textContent = party.comment_cn;
                 } else {
-                    commentEl.textContent = party.comment;
+                    commentEl.textContent = currentLang === 'cn' ? '' : party.comment;
                 }
+                if (!commentEl.textContent) commentEl = null;
             }
 
             const partyList = document.createElement('div');
@@ -3243,6 +3329,7 @@
 
     // Weapon Effect Modal Functions
     function showWeaponEffect(weaponId, imageUrl, weaponName) {
+        const currentLang = getCurrentLanguage();
         const modal = document.getElementById('weapon-effect-modal');
         const modalImage = document.getElementById('weapon-effect-image');
         const modalTitle = document.getElementById('weapon-effect-title');
@@ -3254,13 +3341,15 @@
         modalTitle.textContent = weaponName;
 
         // Get the effect text based on current language
-        let effectText = 'No effect information available.';
+        let effectText = getCharacterI18nText('characterWeaponNoEffect', '暂无效果信息。');
         if (matchWeapons && matchWeapons[weaponId]) {
             if (currentLang === 'en' && matchWeapons[weaponId].effect_en) {
                 effectText = matchWeapons[weaponId].effect_en;
             } else if (currentLang === 'jp' && matchWeapons[weaponId].effect_jp) {
                 effectText = matchWeapons[weaponId].effect_jp;
-            } else if (matchWeapons[weaponId].effect) {
+            } else if (currentLang === 'cn' && matchWeapons[weaponId].effect_cn) {
+                effectText = matchWeapons[weaponId].effect_cn;
+            } else if (currentLang !== 'cn' && matchWeapons[weaponId].effect) {
                 effectText = matchWeapons[weaponId].effect; // Default to Korean
             }
         }
@@ -3274,7 +3363,7 @@
 
         // modalDescription에 아래 'Detail' 추가하고 링크 걸기 /wonder-weapon
         const detailLink = document.createElement('a');
-        detailLink.href = `/wonder-weapon/`;
+        detailLink.href = `/${currentLang}/wonder-weapon/`;
         detailLink.textContent = getCharacterI18nText('characterDetailLinkLabel', 'Detail →');
         detailLink.target = '_blank';
         modalDescription.appendChild(detailLink);

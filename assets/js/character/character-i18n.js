@@ -32,12 +32,16 @@
         return map[lang] || map.kr;
     }
 
+    function txMap(key, map) {
+        return tx(key, fallbackByLang(map));
+    }
+
     const CharI18N = {
         applySectionLabels(){
-            const set = (sel, key, fallback, withHelp) => {
+            const set = (sel, key, map, withHelp) => {
                 const el = document.querySelector(sel);
                 if (!el) return;
-                const label = tx(key, fallback);
+                const label = txMap(key, map);
                 if (withHelp) {
                     el.innerHTML = label + ' ' + this.createHelpIcon(withHelp);
                 } else {
@@ -45,47 +49,47 @@
                 }
             };
 
-            set('.review-card h2', 'characterDetailReview', '캐릭터 리뷰');
-            set('.settings-card h2', 'characterDetailRecommendedSetup', '추천 세팅');
-            set('.skills-card h2', 'characterDetailSkills', '스킬');
-            set('.ritual-card h2', 'characterDetailRitual', '의식');
-            set('.weapons-card h2', 'characterDetailWeapon', '전용 무기');
-            set('.revelation-settings h3', 'gameTerms.revelation', '계시', 'revelation');
-            set('.revelation-settings .setting-section:nth-child(2) h3', 'characterDetailMainOption', '주 옵션', 'main-option');
-            set('.revelation-settings .setting-section:nth-child(3) h3', 'characterDetailSubOption', '부 옵션', 'sub-option');
-            set('.stats-requirements h3:first-child', 'characterDetailRecommendedStats', '권장 육성 스탯', 'recommended-stats');
-            set('.stats-requirements .setting-section:last-child h3', 'characterDetailBattleEntry', '전투 진입 시 +', 'battle-entry');
-            set('.skill-mind-settings .setting-section:first-child h3', 'characterDetailSkills', '스킬', 'skill');
-            set('.skill-mind-settings .setting-section:last-child h3', 'characterDetailMindLv5', '심상 (LV 5)', 'mind-lv5');
-            set('.operation-settings .setting-section:first-child h3', 'characterDetailRecommendedOperation', '추천 운영', 'recommended-operation');
-            set('.operation-settings .setting-section:last-child h3', 'characterDetailNotes', '참고사항');
+            set('.review-card h2', 'characterDetailReview', { kr: '캐릭터 리뷰', en: 'Character Review', jp: '怪盗レビュー', cn: '怪盗评测' });
+            set('.settings-card h2', 'characterDetailRecommendedSetup', { kr: '추천 세팅', en: 'Recommended Setup', jp: 'おすすめ設定', cn: '推荐配置' });
+            set('.skills-card h2', 'characterDetailSkills', { kr: '스킬', en: 'Skills', jp: 'スキル', cn: '技能' });
+            set('.ritual-card h2', 'characterDetailRitual', { kr: '의식', en: 'Awareness', jp: '意識', cn: '意识' });
+            set('.weapons-card h2', 'characterDetailWeapon', { kr: '전용 무기', en: 'Exclusive Weapon', jp: '専用武器', cn: '专属武器' });
+            set('.revelation-settings h3', 'gameTerms.revelation', { kr: '계시', en: 'Revelation', jp: '啓示', cn: '启示' }, 'revelation');
+            set('.revelation-settings .setting-section:nth-child(2) h3', 'characterDetailMainOption', { kr: '주 옵션', en: 'Main Option', jp: '主オプション', cn: '主属性' }, 'main-option');
+            set('.revelation-settings .setting-section:nth-child(3) h3', 'characterDetailSubOption', { kr: '부 옵션', en: 'Sub Option', jp: '副オプション', cn: '副属性' }, 'sub-option');
+            set('.stats-requirements h3:first-child', 'characterDetailRecommendedStats', { kr: '권장 육성 스탯', en: 'Recommended Stats', jp: '推奨育成ステータス', cn: '推荐养成属性' }, 'recommended-stats');
+            set('.stats-requirements .setting-section:last-child h3', 'characterDetailBattleEntry', { kr: '전투 진입 시 +', en: 'At Battle Start +', jp: '戦闘開始時 +', cn: '战斗开始时 +' }, 'battle-entry');
+            set('.skill-mind-settings .setting-section:first-child h3', 'characterDetailSkills', { kr: '스킬', en: 'Skills', jp: 'スキル', cn: '技能' }, 'skill');
+            set('.skill-mind-settings .setting-section:last-child h3', 'characterDetailMindLv5', { kr: '심상 (LV 5)', en: 'Mindscape (LV 5)', jp: 'イメジャリー (LV 5)', cn: '心象 (LV 5)' }, 'mind-lv5');
+            set('.operation-settings .setting-section:first-child h3', 'characterDetailRecommendedOperation', { kr: '추천 운영', en: 'Recommended Rotation', jp: '推奨運用', cn: '推荐操作' }, 'recommended-operation');
+            set('.operation-settings .setting-section:last-child h3', 'characterDetailNotes', { kr: '참고사항', en: 'Notes', jp: '注意事項', cn: '注意事项' });
 
             const skillLevels = [
-                tx('characterDetailSkill1', '스킬 1'),
-                tx('characterDetailSkill2', '스킬 2'),
-                tx('characterDetailSkill3', '스킬 3'),
-                tx('characterDetailSkillHighlight', '전투기술')
+                txMap('characterDetailSkill1', { kr: '스킬 1', en: 'Skill 1', jp: 'スキル 1', cn: '技能1' }),
+                txMap('characterDetailSkill2', { kr: '스킬 2', en: 'Skill 2', jp: 'スキル 2', cn: '技能2' }),
+                txMap('characterDetailSkill3', { kr: '스킬 3', en: 'Skill 3', jp: 'スキル 3', cn: '技能3' }),
+                txMap('characterDetailSkillHighlight', { kr: '하이라이트', en: 'HIGHLIGHT', jp: 'ハイライト', cn: '战斗技巧' })
             ];
             document.querySelectorAll('.skill-levels .skill-level .label').forEach((el, idx) => {
                 if (skillLevels[idx]) el.textContent = skillLevels[idx];
             });
 
             const priority = [
-                tx('characterDetailPriority1', '1순위'),
-                tx('characterDetailPriority2', '2순위'),
-                tx('characterDetailPriority3', '3순위')
+                txMap('characterDetailPriority1', { kr: '1순위', en: '1st', jp: '1位', cn: '优先级1' }),
+                txMap('characterDetailPriority2', { kr: '2순위', en: '2nd', jp: '2位', cn: '优先级2' }),
+                txMap('characterDetailPriority3', { kr: '3순위', en: '3rd', jp: '3位', cn: '优先级3' })
             ];
             document.querySelectorAll('.sub-options .option-row .priority').forEach((el, idx) => {
                 if (priority[idx]) el.textContent = priority[idx];
             });
 
             const mindStatLabels = [
-                tx('characterDetailMindStat1', fallbackByLang({ kr: '진급강화 1', en: 'Stats 1', jp: '進級強化 1' })),
-                tx('characterDetailMindStat2', fallbackByLang({ kr: '진급강화 2', en: 'Stats 2', jp: '進級強化 2' }))
+                txMap('characterDetailMindStat1', { kr: '진급강화 1', en: 'Stats 1', jp: '進級強化 1', cn: '进阶强化 1' }),
+                txMap('characterDetailMindStat2', { kr: '진급강화 2', en: 'Stats 2', jp: '進級強化 2', cn: '进阶强化 2' })
             ];
             const mindSkillLabels = [
-                tx('characterDetailMindSkill1', fallbackByLang({ kr: '스킬깨달음 1', en: 'Skill Enforce 1', jp: 'スキル覚醒 1' })),
-                tx('characterDetailMindSkill2', fallbackByLang({ kr: '스킬깨달음 2', en: 'Skill Enforce 2', jp: 'スキル覚醒 2' }))
+                txMap('characterDetailMindSkill1', { kr: '스킬깨달음 1', en: 'Skill Enforce 1', jp: 'スキル覚醒 1', cn: '技能领悟 1' }),
+                txMap('characterDetailMindSkill2', { kr: '스킬깨달음 2', en: 'Skill Enforce 2', jp: 'スキル覚醒 2', cn: '技能领悟 2' })
             ];
 
             document.querySelectorAll('.mind-stats .stat-row .label:not([data-glb-index])').forEach((el, idx) => {
@@ -112,18 +116,18 @@
             const mainLabelEl = document.querySelector('.main-revelation .label');
             if (mainLabelEl) {
                 const icon = mainLabelEl.querySelector('img');
-                mainLabelEl.innerHTML = `${tx('characterDetailMainLabel', '주')} `;
+                mainLabelEl.innerHTML = `${txMap('characterDetailMainLabel', { kr: '주', en: 'Main', jp: '主', cn: '宙' })} `;
                 if (icon) mainLabelEl.appendChild(icon);
             }
 
             const smsEl = document.querySelector('.sub-revelation .label');
-            if (smsEl) smsEl.textContent = tx('characterDetailSunMoonStarEarth', '일월성진');
+            if (smsEl) smsEl.textContent = txMap('characterDetailSunMoonStarEarth', { kr: '일월성진', en: 'Sun Moon Star Sky', jp: '日月星辰', cn: '日月星辰' });
 
             const sunMoonStar = [
-                tx('characterDetailSun', '일'),
-                tx('characterDetailMoon', '월'),
-                tx('characterDetailStar', '성'),
-                tx('characterDetailSky', '진')
+                txMap('characterDetailSun', { kr: '일', en: 'Sun', jp: '日', cn: '日' }),
+                txMap('characterDetailMoon', { kr: '월', en: 'Moon', jp: '月', cn: '月' }),
+                txMap('characterDetailStar', { kr: '성', en: 'Star', jp: '星', cn: '星' }),
+                txMap('characterDetailSky', { kr: '진', en: 'Sky', jp: '辰', cn: '辰' })
             ];
             document.querySelectorAll('.main-options .option-row .label').forEach((el, idx) => {
                 const icon = el.querySelector('img');
@@ -132,8 +136,8 @@
             });
 
             const enhancementMap = {
-                mixed: tx('characterDetailEnhancementMixed', '5성 개조0 / 4성 개조6'),
-                all: tx('characterDetailEnhancementAll', '전체'),
+                mixed: txMap('characterDetailEnhancementMixed', { kr: '5성 개조0 / 4성 개조6', en: '5★ Forge0 / 4★ Forge6', jp: '★5 改造0 / ★4 改造6', cn: '5星改造0 / 4星改造6' }),
+                all: txMap('characterDetailEnhancementAll', { kr: '전체', en: 'All', jp: '全体', cn: '全部' }),
                 '0': '0',
                 '1': '1',
                 '2': '2',
@@ -160,5 +164,3 @@
 
     window.CharI18N = CharI18N;
 })();
-
-

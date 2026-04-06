@@ -24,6 +24,7 @@
 
     function getAwarenessPattern(lang) {
       if (lang === 'en') return t('characterStatsAwarenessPatternEn', 'A{idx}');
+      if (lang === 'cn') return t('characterStatsAwarenessPatternCn', '意识 {idx}');
       if (lang === 'jp') return t('characterStatsAwarenessPatternJp', '意識{idx}');
       return t('characterStatsAwarenessPatternKr', '의식 {idx}');
     }
@@ -127,6 +128,7 @@
           const cd = window.characterData[k] || {};
           if (lang === 'en' && cd.name_en === name) return k;
           if (lang === 'jp' && cd.name_jp === name) return k;
+          if (lang === 'cn' && cd.name_cn === name) return k;
           // ?시 ?체 ?? ?름 ?드? 같? 경우
           if (cd.name === name) return k;
         }

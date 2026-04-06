@@ -36,12 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function isKrLikeLanguage(lang) {
-        try {
-            if (typeof window.isKrLikeLanguage === 'function') {
-                return !!window.isKrLikeLanguage(lang);
-            }
-        } catch (_) { }
-        return lang === 'kr' || lang === 'cn';
+        return String(lang || '').toLowerCase() === 'kr';
     }
 
     function t(key, fallback) {
@@ -55,6 +50,70 @@ document.addEventListener('DOMContentLoaded', () => {
             if (result && result !== key) return result;
         }
         return fallback;
+    }
+
+    function containsHangul(text) {
+        return /[가-힣]/.test(String(text || ''));
+    }
+
+    function getLocalizedRevelationStore(lang) {
+        if (lang === 'en') return window.enRevelationData || null;
+        if (lang === 'jp') return window.jpRevelationData || null;
+        if (lang === 'cn') return window.cnRevelationData || null;
+        return null;
+    }
+
+    function buildCnSkillDataset(characterName) {
+        const base = (typeof window.characterSkillsData !== 'undefined' && window.characterSkillsData)
+            ? window.characterSkillsData[characterName]
+            : null;
+        const localized = (window.cnCharacterSkillsData && window.cnCharacterSkillsData[characterName])
+            ? window.cnCharacterSkillsData[characterName]
+            : null;
+
+        if (!base && !localized) return null;
+
+        const result = { ...(base || {}), ...(localized || {}) };
+        const keys = new Set([
+            ...Object.keys(base || {}),
+            ...Object.keys(localized || {})
+        ]);
+
+        keys.forEach((key) => {
+            const baseEntry = base && typeof base[key] === 'object' && base[key] ? base[key] : null;
+            const localizedEntry = localized && typeof localized[key] === 'object' && localized[key] ? localized[key] : null;
+            if (!baseEntry && !localizedEntry) return;
+
+            result[key] = {
+                ...(baseEntry || {}),
+                ...(localizedEntry || {})
+            };
+
+            // CN 상세에서는 element만 KR 공용 표기를 유지하고,
+            // 이름/타입/설명은 CN 소스가 있을 때만 노출한다.
+            result[key].name = localizedEntry?.name || '';
+            result[key].type = localizedEntry?.type || '';
+            result[key].description = localizedEntry?.description || '';
+            result[key].element = baseEntry?.element || localizedEntry?.element || '';
+        });
+
+        result.name = localized?.name || '';
+        return result;
+    }
+
+    function getCharacterSkillDatasetByLang(lang, characterName) {
+        if (lang === 'en' && window.enCharacterSkillsData && window.enCharacterSkillsData[characterName]) {
+            return window.enCharacterSkillsData[characterName];
+        }
+        if (lang === 'jp' && window.jpCharacterSkillsData && window.jpCharacterSkillsData[characterName]) {
+            return window.jpCharacterSkillsData[characterName];
+        }
+        if (lang === 'cn') {
+            return buildCnSkillDataset(characterName);
+        }
+        return (typeof window.characterSkillsData !== 'undefined' && window.characterSkillsData[characterName])
+            ? window.characterSkillsData[characterName]
+            : null;
     }
 
     // 현재 언어별 계시 이름 번역 함수
@@ -89,6 +148,19 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
+        if (currentLang === 'cn' && typeof window.cnRevelationData !== 'undefined') {
+            const data = window.cnRevelationData;
+            if (isMainRevelation && data.mainTranslated && data.mainTranslated[koreanName]) {
+                return data.mainTranslated[koreanName];
+            }
+            if (!isMainRevelation && data.subTranslated && data.subTranslated[koreanName]) {
+                return data.subTranslated[koreanName];
+            }
+            if (data.mapping_cn && data.mapping_cn[koreanName]) {
+                return data.mapping_cn[koreanName];
+            }
+        }
+
         if (currentLang === 'cn' && window.I18nService && typeof window.I18nService.translateTerm === 'function') {
             return window.I18nService.translateTerm(koreanName);
         }
@@ -112,6 +184,127 @@ document.addEventListener('DOMContentLoaded', () => {
         return output;
     }
 
+    function getCnLooseTextMap() {
+        return {
+            '받는 대미지 증가': '受到伤害提升',
+            '대미지 축적': '伤害积累',
+            '대미지 보너스': '伤害加成',
+            '대미지보너스': '伤害加成',
+            '크리티컬 확률': '暴击率',
+            '크리티컬 효과': '暴击效果',
+            '효과 명중': '效果命中',
+            '효과명중': '效果命中',
+            '최대 생명 증가': '最大生命值提升',
+            '최대 생명': '最大生命值',
+            '공격받을 확률 증가': '受攻击概率提升',
+            '공격받을 확률': '受攻击概率提升',
+            '원더 페르소나 강화': 'WONDER人格面具强化',
+            '스킬 계수 증가': '技能倍率提升',
+            '테우르기아 충전': '神通法充能',
+            '추가 효과': '追加效果',
+            '추가효과': '追加效果',
+            '추가 턴': '额外回合',
+            '추가턴': '额外回合',
+            '원소 이상': '属性异常',
+            '원소이상': '属性异常',
+            '약점 변경': '弱点变更',
+            '약점 강화': '弱点强化',
+            '직업 선택': '职业选择',
+            '아군 교체': '同伴替换',
+            'HP 소모': 'HP消耗',
+            'SP 회복': '精力回复',
+            '스킬마스터': '技巧精通',
+            '실드': '护盾',
+            '반격': '反击',
+            '반사': '反射',
+            '도발': '嘲讽',
+            '부활': '复活',
+            '치료': '治疗',
+            '변신': '变身',
+            '폼 체인지': '形态切换',
+            '차지': '蓄力',
+            '총공격': '总攻击',
+            '총격': '射击',
+            '다운': '倒地',
+            '공격력': '攻击力',
+            '방어력': '防御力',
+            '생명': '生命值',
+            '관통': '穿透',
+            '공격력 감소': '攻击力降低',
+            '방어력 감소': '防御力降低',
+            '해명의 힘': '解明怪盗属性',
+            '해명의힘': '解明怪盗属性',
+            '직책': '职责',
+            '의식': '意识',
+            '심상': '心象',
+            '전용무기': '专属武器',
+            '계시': '启示',
+            '마이팰리스 평점': '怪盗评分',
+            '마이팰리스': '我的宫殿',
+            '테우르기아': '神通法',
+            '서브 딜러': '副输出',
+            '서브딜러': '副输出',
+            '서포터': '辅助',
+            '디버퍼': '减益辅助',
+            '버퍼': '增益辅助',
+            '힐러': '治疗',
+            '탱커': '防护',
+            '딜러': '输出',
+            '광역': '群体',
+            '단일': '单体',
+            '화염': '火焰',
+            '빙결': '冰冻',
+            '전격': '电击',
+            '질풍': '疾风',
+            '염동': '念动',
+            '핵열': '核热',
+            '축복': '祝福',
+            '주원': '诅咒',
+            '물리': '物理',
+            '만능': '万能',
+            '풍습': '风袭',
+            '화상': '燃烧',
+            '감전': '触电',
+            '동결': '冻结',
+            '수면': '睡眠',
+            '망각': '遗忘',
+            '해명': '解明'
+        };
+    }
+
+    function localizeCnLooseText(text) {
+        if (text == null) return text;
+        let output = String(text);
+        try {
+            if (window.I18nService && typeof window.I18nService.translateTerm === 'function') {
+                const translated = window.I18nService.translateTerm(output);
+                if (translated && translated !== output) {
+                    return translated;
+                }
+            }
+        } catch (_) {}
+
+        const dictionary = getCnLooseTextMap();
+        const keys = Object.keys(dictionary).sort((a, b) => b.length - a.length);
+        keys.forEach((key) => {
+            if (!output.includes(key)) return;
+            output = output.replace(new RegExp(escapeRegExp(key), 'g'), dictionary[key]);
+        });
+
+        try {
+            if (window.characterData && typeof window.characterData === 'object') {
+                Object.keys(window.characterData).forEach((key) => {
+                    const entry = window.characterData[key];
+                    if (!entry || !entry.name_cn || !output.includes(key)) return;
+                    output = output.replace(new RegExp(escapeRegExp(key), 'g'), entry.name_cn);
+                });
+            }
+        } catch (_) {}
+        return output;
+    }
+
+    window.localizeCnLooseText = localizeCnLooseText;
+
     function getEnOptionFallbackMap() {
         return {
             '공격력': 'Attack',
@@ -130,6 +323,34 @@ document.addEventListener('DOMContentLoaded', () => {
             '속도': 'Speed',
             'SP 회복': 'SP Recovery',
             'SP회복': 'SP Recovery'
+        };
+    }
+
+    function getCnOptionFallbackMap() {
+        return {
+            '공격력': t('characterStatsLabelAtk', '攻击力'),
+            '생명': t('characterStatsLabelHp', '生命值'),
+            '생명력': t('characterStatsLabelHp', '生命值'),
+            '치료효과': t('characterStatsAwakeHealingEffect', '治疗效果'),
+            '치료 효과': t('characterStatsAwakeHealingEffect', '治疗效果'),
+            '크리티컬 확률': t('characterStatsAwakeCritRate', '暴击率'),
+            '크리티컬 효과': t('characterStatsAwakeCritDamage', '暴击效果'),
+            '대미지 보너스': '伤害加成',
+            '대미지보너스': '伤害加成',
+            '데미지 보너스': '伤害加成',
+            '데미지보너스': '伤害加成',
+            '관통': t('characterStatsAwakePierceRate', '穿透'),
+            '효과 명중': t('characterStatsAwakeAilmentAccuracy', '效果命中'),
+            '효과명중': t('characterStatsAwakeAilmentAccuracy', '效果命中'),
+            '방어력': t('characterStatsLabelDef', '防御力'),
+            '속도': t('gameTerms.speed', '速度'),
+            'SP 회복': t('characterStatsAwakeSpRecovery', '精力回复'),
+            'SP회복': t('characterStatsAwakeSpRecovery', '精力回复'),
+            '기본 스탯': t('characterStatsBaseTitle', '基础属性'),
+            '전용무기': t('characterDetailWeapon', '专属武器'),
+            '패시브': '被动',
+            '해명의힘': '解明怪盗属性',
+            '해명의 힘': '解明怪盗属性'
         };
     }
 
@@ -152,6 +373,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // 2) Fallback map (for early race before dictionary is ready)
         if (currentLang === 'en') {
             return replaceOptionTerms(source, getEnOptionFallbackMap());
+        }
+
+        if (currentLang === 'cn') {
+            return replaceOptionTerms(source, getCnOptionFallbackMap());
         }
 
         return source;
@@ -232,13 +457,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     const mindTexts = {
                         'kr': '심상 5',
                         'en': 'Minds 5',
-                        'jp': 'イメジャリー 5'
+                        'jp': 'イメジャリー 5',
+                        'cn': '心象5'
                     };
                     level.querySelector('.label').textContent = levels[index].slice(0, -1) + (mindTexts[currentLang] || '심상 5');
                 }
                 const valueElement = level.querySelector('.value');
                 let statValue = mergedCharacter.minimum_stats && mergedCharacter.minimum_stats[levels[index]] ? mergedCharacter.minimum_stats[levels[index]] : '-';
-                if (mergedCharacter.minimum_stats_glb && currentLang != 'kr') {
+                if (mergedCharacter.minimum_stats_glb && (currentLang === 'en' || currentLang === 'jp')) {
                     statValue = mergedCharacter.minimum_stats_glb[levels[index]] || '-';
                 }
 
@@ -246,8 +472,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     // 콤마로 구분된 여러 스탯을 처리
                     const stats = statValue.split(',').map(stat => stat.trim());
                     const highlightedText = stats.map(stat => {
+                        let processed = currentLang === 'cn' ? localizeCnLooseText(stat) : stat;
+                        if (currentLang !== 'kr') {
+                            return processed;
+                        }
+
                         // 각 스탯 문자열에서 유효한 스탯을 찾아 강조
-                        let processed = stat;
                         validStats.forEach(validStat => {
                             const regex = new RegExp(`(${validStat})`, 'g');
                             processed = processed.replace(regex, '<span class="valid-stat">$1</span>');
@@ -436,7 +666,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     const rankText = {
                         'kr': `${rank}순위`,
                         'en': `${rank}${getOrdinalSuffix(rank)}`,
-                        'jp': `${rank}位`
+                        'jp': `${rank}位`,
+                        'cn': `优先级${rank}`
                     };
 
                     badge.textContent = rankText[currentLang] || `${rank}`;
@@ -477,7 +708,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // 텍스트 요소
                 const textSpan = document.createElement('span');
-                textSpan.textContent = processedValue;
+                textSpan.textContent = currentLang === 'cn' ? localizeCnLooseText(processedValue) : processedValue;
                 textSpan.style.color = '#d3bc8e';
 
                 // 마크 이미지
@@ -499,11 +730,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 processedValue = processedValue.slice(0, -1);
                 element.style.textDecoration = 'line-through';
                 element.style.color = '#777';
-                element.textContent = processedValue;
+                element.textContent = currentLang === 'cn' ? localizeCnLooseText(processedValue) : processedValue;
             }
             else {
                 element.style.color = ''; // 기본 색상으로 복원
-                element.textContent = processedValue;
+                element.textContent = currentLang === 'cn' ? localizeCnLooseText(processedValue) : processedValue;
             }
         };
 
@@ -771,8 +1002,7 @@ document.addEventListener('DOMContentLoaded', () => {
         safeRun('fillSettingsInfo', () => {
             const lang = getCurrentLanguage();
 
-            // 한국어는 바로 실행
-            if (isKrLikeLanguage(lang)) {
+            if (lang === 'kr') {
                 fillSettingsInfo(character);
                 return;
             }
@@ -780,6 +1010,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const isReady = () => {
                 if (lang === 'en') return typeof window.enRevelationData !== 'undefined';
                 if (lang === 'jp') return typeof window.jpRevelationData !== 'undefined';
+                if (lang === 'cn') return typeof window.cnRevelationData !== 'undefined';
                 return true;
             };
 
@@ -821,7 +1052,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return c.name_jp || c.name_en || characterName || c.name || '';
             }
             if (lang === 'cn') {
-                return c.name_cn || c.name || characterName || '';
+                return c.name_cn || '';
             }
             return c.name || characterName || '';
         };
@@ -898,6 +1129,15 @@ document.addEventListener('DOMContentLoaded', () => {
             else if (currentLang === 'cn' && mergedCharacter2.role_cn) {
                 roleElement.textContent = mergedCharacter2.role_cn;
             }
+            else if (currentLang === 'cn' && mergedCharacter2.role) {
+                const translatedRole = localizeCnLooseText(mergedCharacter2.role);
+                if (translatedRole && !containsHangul(translatedRole)) {
+                    roleElement.textContent = translatedRole;
+                } else {
+                    roleElement.textContent = '';
+                    roleElement.style.display = 'none';
+                }
+            }
             else if (mergedCharacter2.role && isKrLikeLanguage(currentLang)) {
                 roleElement.textContent = mergedCharacter2.role;
             }
@@ -928,6 +1168,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 else if (currentLang === 'cn' && characterData2.tag_cn) {
                     tagElement.textContent = characterData2.tag_cn;
+                }
+                else if (currentLang === 'cn' && characterData2.tag) {
+                    const translatedTag = localizeCnLooseText(characterData2.tag);
+                    if (translatedTag && !containsHangul(translatedTag)) {
+                        tagElement.textContent = translatedTag;
+                    } else {
+                        tagElement.textContent = '';
+                    }
                 }
                 
                 // tag 정보 채우기 (콤마로 분리하여 각각의 태그를 생성)
@@ -1125,12 +1373,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // 언어별 효과 데이터 사용
                 // 현재 언어에 맞는 번역 데이터 가져오기
-                let translationData = null;
-                if (currentLang === 'en' && window.enRevelationData) {
-                    translationData = window.enRevelationData;
-                } else if (currentLang === 'jp' && window.jpRevelationData) {
-                    translationData = window.jpRevelationData;
-                }
+                let translationData = getLocalizedRevelationStore(currentLang);
 
                 /* console.log('일월성진 효과 디버깅:', {
                     revelation: revelation,
@@ -1139,40 +1382,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     translationDataKeys: translationData ? Object.keys(translationData.sub_effects || {}) : []
                 });*/
 
-                if (currentLang === 'en' && translationData && translationData.sub_effects) {
-                    // 한국어 키를 영어 키로 변환
-                    const englishKey = translateRevelationName(revelation, false);
-                    // console.log('영어 키 변환:', revelation, '→', englishKey);
-
-                    if (translationData.sub_effects[englishKey]) {
-                        effectData = translationData.sub_effects[englishKey];
+                if (translationData && translationData.sub_effects) {
+                    const localizedKey = translateRevelationName(revelation, false);
+                    if (translationData.sub_effects[localizedKey]) {
+                        effectData = translationData.sub_effects[localizedKey];
                         set2Text = effectData.set2;
                         set4Text = effectData.set4;
                         setTypes = effectData.type;
-                        // console.log('영어 효과 데이터 사용:', effectData);
-                    } else {
-                        //console.log('영어 효과 데이터 없음:', englishKey);
-                        //console.log('사용 가능한 키들:', Object.keys(translationData.sub_effects));
-                    }
-                } else if (currentLang === 'jp' && translationData && translationData.sub_effects) {
-                    // 한국어 키를 일본어 키로 변환
-                    const japaneseKey = translateRevelationName(revelation, false);
-                    // console.log('일본어 키 변환:', revelation, '→', japaneseKey);
-
-                    if (translationData.sub_effects[japaneseKey]) {
-                        effectData = translationData.sub_effects[japaneseKey];
-                        set2Text = effectData.set2;
-                        set4Text = effectData.set4;
-                        setTypes = effectData.type;
-                        // console.log('일본어 효과 데이터 사용:', effectData);
-                    } else {
-                        //console.log('일본어 효과 데이터 없음:', japaneseKey);
-                        //console.log('사용 가능한 키들:', Object.keys(translationData.sub_effects));
                     }
                 } else if (isKrLikeLanguage(currentLang)
                     && typeof revelationData !== 'undefined'
                     && revelationData.sub_effects
-                    && revelationData.sub_effects[revelation]) {
+                    && revelationData.sub_effects[revelation]
+                    && currentLang !== 'cn') {
                     // 한국어 페이지에서만 기본 데이터셋 사용
                     effectData = revelationData.sub_effects[revelation];
                     set2Text = effectData.set2;
@@ -1203,6 +1425,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         else if (currentLang === 'jp') {
                             tooltipText += `\n\n#グローバルサーバーで未発表#`;
                         }
+                        else if (currentLang === 'cn') {
+                            tooltipText += `\n\n#国际服尚未上线#`;
+                        }
                     }
 
                     item.setAttribute('data-tooltip', tooltipText);
@@ -1213,30 +1438,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 let setEffectsData;
 
                 // 현재 언어에 맞는 번역 데이터 가져오기
-                let translationData = null;
-                if (currentLang === 'en' && window.enRevelationData) {
-                    translationData = window.enRevelationData;
-                } else if (currentLang === 'jp' && window.jpRevelationData) {
-                    translationData = window.jpRevelationData;
-                }
+                let translationData = getLocalizedRevelationStore(currentLang);
 
                 // 언어별 세트 효과 데이터 사용
-                if (currentLang === 'en' && translationData && translationData.set_effects) {
-                    // 한국어 키를 영어 키로 변환
-                    const englishMainKey = translateRevelationName(revelation, true);
-                    if (translationData.set_effects[englishMainKey]) {
-                        setEffectsData = translationData.set_effects[englishMainKey];
-                    }
-                } else if (currentLang === 'jp' && translationData && translationData.set_effects) {
-                    // 한국어 키를 일본어 키로 변환
-                    const japaneseMainKey = translateRevelationName(revelation, true);
-                    if (translationData.set_effects[japaneseMainKey]) {
-                        setEffectsData = translationData.set_effects[japaneseMainKey];
+                if (translationData && translationData.set_effects) {
+                    const localizedMainKey = translateRevelationName(revelation, true);
+                    if (translationData.set_effects[localizedMainKey]) {
+                        setEffectsData = translationData.set_effects[localizedMainKey];
                     }
                 } else if (isKrLikeLanguage(currentLang)
                     && typeof revelationData !== 'undefined'
                     && revelationData.set_effects
-                    && revelationData.set_effects[revelation]) {
+                    && revelationData.set_effects[revelation]
+                    && currentLang !== 'cn') {
                     // 한국어 페이지에서만 기본 데이터셋 사용
                     setEffectsData = revelationData.set_effects[revelation];
                 }
@@ -1258,15 +1472,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         let subRevKeys;
 
                         //console.log(subRevKeys);
-                        if (currentLang === 'en' && translationData) {
-                            // 영어 데이터 사용 시: 표시된 영어 이름을 영어 키로 직접 매칭
-                            subRevKeys = Object.keys(setEffectsData).filter(englishSubKey => {
-                                return currentSubRevs.includes(englishSubKey);
-                            });
-                        } else if (currentLang === 'jp' && translationData) {
-                            // 일본어 데이터 사용 시: 표시된 일본어 이름을 일본어 키로 직접 매칭
-                            subRevKeys = Object.keys(setEffectsData).filter(japaneseSubKey => {
-                                return currentSubRevs.includes(japaneseSubKey);
+                        if ((currentLang === 'en' || currentLang === 'jp' || currentLang === 'cn') && translationData) {
+                            subRevKeys = Object.keys(setEffectsData).filter((localizedSubKey) => {
+                                return currentSubRevs.includes(localizedSubKey);
                             });
                         } else {
                             // 한국어 데이터 사용 시: 표시된 한국어 이름을 한국어 키로 매칭
@@ -1280,11 +1488,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             const mainTitle = translateRevelationName(revelation, true);
 
                             let subTitle;
-                            if (currentLang === 'en' && translationData) {
-                                // 영어 키를 그대로 사용
-                                subTitle = subRevKey;
-                            } else if (currentLang === 'jp' && translationData) {
-                                // 일본어 키를 그대로 사용
+                            if ((currentLang === 'en' || currentLang === 'jp' || currentLang === 'cn') && translationData) {
                                 subTitle = subRevKey;
                             } else {
                                 // 한국어 키를 번역
@@ -1295,6 +1499,9 @@ document.addEventListener('DOMContentLoaded', () => {
                             }
                             else if (currentLang === 'jp' && subTitle == 'type') {
                                 return '#グローバルサーバーで未発表#';
+                            }
+                            else if (currentLang === 'cn' && subTitle == 'type') {
+                                return '#国际服尚未上线#';
                             }
 
                             return `[${mainTitle} - ${subTitle}]\n${effect}`;
@@ -1310,11 +1517,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const allEffectsText = Object.entries(setEffectsData)
                             .map(([subRevKey, effect]) => {
                                 let subTitle;
-                                if (currentLang === 'en' && translationData) {
-                                    // 영어 키를 그대로 사용
-                                    subTitle = subRevKey;
-                                } else if (currentLang === 'jp' && translationData) {
-                                    // 일본어 키를 그대로 사용
+                                if ((currentLang === 'en' || currentLang === 'jp' || currentLang === 'cn') && translationData) {
                                     subTitle = subRevKey;
                                 } else {
                                     // 한국어 키를 번역
@@ -1325,6 +1528,9 @@ document.addEventListener('DOMContentLoaded', () => {
                                 }
                                 else if (currentLang === 'jp' && subTitle == 'type') {
                                     return '#グローバルサーバーで未発表#';
+                                }
+                                else if (currentLang === 'cn' && subTitle == 'type') {
+                                    return '#国际服尚未上线#';
                                 }
                                 return `[${mainTitle} - ${subTitle}]\n${effect}`;
                             })
@@ -1357,17 +1563,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // console.log('현재 언어:', currentLang);
 
         // 언어별 데이터 사용
-        let character;
-        if (currentLang === 'en' && typeof window.enCharacterSkillsData !== 'undefined' && window.enCharacterSkillsData[characterName]) {
-            character = window.enCharacterSkillsData[characterName];
-            // console.log('영어 스킬 데이터 사용:', character);
-        } else if (currentLang === 'jp' && typeof window.jpCharacterSkillsData !== 'undefined' && window.jpCharacterSkillsData[characterName]) {
-            character = window.jpCharacterSkillsData[characterName];
-            // console.log('일본어 스킬 데이터 사용:', character);
-        } else {
-            character = characterSkillsData[characterName];
-            // console.log('한국어 스킬 데이터 사용:', character);
-        }
+        const character = getCharacterSkillDatasetByLang(currentLang, characterName);
 
         if (!character) return;
 
@@ -1407,6 +1603,10 @@ document.addEventListener('DOMContentLoaded', () => {
             jp: characterInfo.rarity === 4
                 ? ['全体', 'LV10', 'LV10+イメジャリー5', 'LV12', 'LV12+イメジャリー5']
                 : ['全体', 'LV10', 'LV10+イメジャリー5', 'LV13', 'LV13+イメジャリー5']
+            ,
+            cn: characterInfo.rarity === 4
+                ? ['全部', 'LV10', 'LV10+心象5', 'LV12', 'LV12+心象5']
+                : ['全部', 'LV10', 'LV10+心象5', 'LV13', 'LV13+心象5']
         };
 
         const levels = levelTexts[currentLang] || levelTexts.kr;
@@ -1562,12 +1762,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!entry) return '';
                 if (currentLang === 'en' && entry.desc_en) return entry.desc_en;
                 if (currentLang === 'jp' && entry.desc_jp) return entry.desc_jp;
+                if (currentLang === 'cn' && entry.desc_cn) return entry.desc_cn;
                 return entry.desc || '';
             };
             const pickName = (entry) => {
                 if (!entry) return '';
                 if (currentLang === 'en' && entry.name_en) return entry.name_en;
                 if (currentLang === 'jp' && entry.name_jp) return entry.name_jp;
+                if (currentLang === 'cn' && entry.name_cn) return entry.name_cn;
                 return entry.name || '';
             };
 
@@ -1661,7 +1863,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 card.style.display = '';
 
                 // EN/JP에서는 하단에 안내 문구 추가 (언어별 번역 포함)
-                if (currentLang === 'en' || currentLang === 'jp') {
+                if (currentLang === 'en' || currentLang === 'jp' || currentLang === 'cn') {
                     let note = card.querySelector('.innate-global-note');
                     const noteText = t('characterInnateGlobalNote', '※ KR V4.7에 출시된 기능입니다. LV100은 해당 기능을 해금해야 달성할 수 있습니다.');
 
@@ -1708,16 +1910,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentLang = getCurrentLanguage();
 
         // 언어별 데이터 사용
-        let character;
-        if (currentLang === 'en' && typeof window.enCharacterSkillsData !== 'undefined' && window.enCharacterSkillsData[characterName]) {
-            character = window.enCharacterSkillsData[characterName];
-        } else if (currentLang === 'jp' && typeof window.jpCharacterSkillsData !== 'undefined' && window.jpCharacterSkillsData[characterName]) {
-            character = window.jpCharacterSkillsData[characterName];
-        } else {
-            character = (typeof window.characterSkillsData !== 'undefined' && window.characterSkillsData[characterName])
-                ? window.characterSkillsData[characterName]
-                : null;
-        }
+        const character = getCharacterSkillDatasetByLang(currentLang, characterName);
 
         if (!character) return;
 
@@ -1819,6 +2012,8 @@ document.addEventListener('DOMContentLoaded', () => {
             basicArray = opData[characterName].basic_en;
         } else if (currentLang === 'jp' && opData[characterName].basic_jp) {
             basicArray = opData[characterName].basic_jp;
+        } else if (currentLang === 'cn') {
+            basicArray = opData[characterName].basic_cn || opData[characterName].basic || [];
         }
 
         // basic 배열이 비어있거나 모든 항목이 빈 값인 경우
@@ -1834,6 +2029,8 @@ document.addEventListener('DOMContentLoaded', () => {
             noteArray = opData[characterName].note_en;
         } else if (currentLang === 'jp' && opData[characterName].note_jp) {
             noteArray = opData[characterName].note_jp;
+        } else if (currentLang === 'cn') {
+            noteArray = opData[characterName].note_cn || [];
         }
 
         // note 배열이 비어있거나 모든 항목이 빈 값인 경우
@@ -1855,10 +2052,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     let translatedLabel = item.label;
                     const awarenessPrefixEn = t('characterOperationAwarenessPrefixEn', 'A');
                     const awarenessPrefixJp = t('characterOperationAwarenessPrefixJp', '意識');
+                    const awarenessPrefixCn = t('characterOperationAwarenessPrefixCn', '意识');
                     if (currentLang === 'en') {
                         translatedLabel = translatedLabel.replace(/의식\s*/g, awarenessPrefixEn);
                     } else if (currentLang === 'jp') {
                         translatedLabel = translatedLabel.replace(/의식\s*/g, awarenessPrefixJp);
+                    } else if (currentLang === 'cn') {
+                        translatedLabel = translatedLabel.replace(/의식\s*/g, awarenessPrefixCn);
                     }
 
                     return `

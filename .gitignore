@@ -21,6 +21,7 @@ wheels/
 *.egg
 .claude/
 .tmp/
+.bundle/
 _config/
 config_db/
 _site/

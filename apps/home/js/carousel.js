@@ -498,19 +498,23 @@
   function pickByLang(obj, baseKey, lang) {
     const v_en = obj[`${baseKey}_en`];
     const v_jp = obj[`${baseKey}_jp`];
+    const v_cn = obj[`${baseKey}_cn`];
     const v_kr = obj[baseKey];
     if (lang === 'en') return v_en || v_kr || v_jp || '';
     if (lang === 'jp') return v_jp || v_kr || v_en || '';
-    return v_kr || v_en || v_jp || '';
+    if (lang === 'cn') return v_cn || v_kr || v_en || v_jp || '';
+    return v_kr || v_en || v_jp || v_cn || '';
   }
 
   function pickLinkByLang(item, lang) {
     const l_en = item.link_en;
     const l_jp = item.link_jp;
+    const l_cn = item.link_cn;
     const l_kr = item.link;
     if (lang === 'en') return l_en || l_kr || l_jp || '';
     if (lang === 'jp') return l_jp || l_kr || l_en || '';
-    return l_kr || l_en || l_jp || '';
+    if (lang === 'cn') return l_cn || l_kr || l_en || l_jp || '';
+    return l_kr || l_en || l_jp || l_cn || '';
   }
 
   function isVisibleForLang(item, lang) {
@@ -523,8 +527,10 @@
       const show_kr = item.show_kr;
       const show_en = item.show_en;
       const show_jp = item.show_jp;
+      const show_cn = item.show_cn;
       if (lang === 'en' && typeof show_en === 'boolean') return show_en;
       if (lang === 'jp' && typeof show_jp === 'boolean') return show_jp;
+      if (lang === 'cn' && typeof show_cn === 'boolean') return show_cn;
       if (lang === 'kr' && typeof show_kr === 'boolean') return show_kr;
     } catch (_) { }
     return true; // default visible

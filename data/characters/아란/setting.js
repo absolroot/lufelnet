@@ -1,7 +1,7 @@
 window.characterSetting = window.characterSetting || {};
 window.characterSetting["아란"] = {
-    "role": "",
-    "video": [""],
+    "role": "2체 대미지 전도 디버퍼",
+    "video": ["efLOcb-vH2Y"],
     "video_en": [""],
     "video_jp": ["", ""],
     "main_revelation": ["예리","창조"],

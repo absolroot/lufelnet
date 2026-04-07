@@ -1090,6 +1090,10 @@
             window.characterSetting = window.characterSetting || {};
             // 리코·매화 전용 계산기 전역 스텁
             window.RikoCalc = window.RikoCalc || {};
+            // 코로마루 전용 계산기 전역 스텁
+            window.KoromaruCalc = window.KoromaruCalc || {};
+            // 아란 전용 계산기 전역 스텁
+            window.AranCalc = window.AranCalc || {};
         } catch (e) { console.warn('[SAFE:init-globals]', e); }
 
         async function loadCharacterDataAll(name) {
@@ -1119,6 +1123,16 @@
             // 리코·매화 전용 스탯 계산기 로드
             if (name === '리코·매화') {
                 tasks.push(loadPerCharacterResource(name, { fileBase: 'riko_calc', globalVarName: 'RikoCalc' }));
+            }
+
+            // 코로마루 전용 효과명중 계산기 로드
+            if (name === '코로마루') {
+                tasks.push(loadPerCharacterResource(name, { fileBase: 'koromaru_calc', globalVarName: 'KoromaruCalc' }));
+            }
+
+            // 아란 전용 효과명중 계산기 로드
+            if (name === '아란') {
+                tasks.push(loadPerCharacterResource(name, { fileBase: 'aran_calc', globalVarName: 'AranCalc' }));
             }
 
             await Promise.all(tasks.map(t => safeAwait('loadPerCharacterResource', t)));

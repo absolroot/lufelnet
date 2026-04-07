@@ -3,7 +3,7 @@ window.operationData["아란"] = {
     "basic": [
         {
             "label": "의식 0",
-            "value": "- › - › - › - › - › -"
+            "value": "3+1 › 1 › 1 › 1 › 1 › 1"
         }
     ],
     "note": [

@@ -10,7 +10,7 @@ window.basicStatsData["아란"] = {
         "speed": 105
     },
     "awake7": {
-        "attack_per": 0
+        "ailment_accuracy": 26.1
     },
     "a0_lv80": {
         "HP": 2520.0,

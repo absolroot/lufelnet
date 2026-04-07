@@ -1652,6 +1652,145 @@
             // console.log('Original battle_plus_stats:', character.battle_plus_stats);
 
             // <b> 태그의 수 확인
+            const getBattlePlusTranslationDict = () => {
+                if (currentLang === 'kr') return null;
+                const fallbackStaticDictByLang = {
+                    en: {
+                        '해명의힘': 'Eludi. Stat Buff',
+                        '해명의 힘': 'Eludi. Stat Buff',
+                        '직책': 'Labor',
+                        '마이팰리스 평점': 'Thieves Den Rating',
+                        '마이팰리스': 'Thieves Den',
+                        '전용무기': 'Exclusive Weapon',
+                        '기본 스탯': 'Base Stats',
+                        '공격력': 'Attack',
+                        '방어력': 'Defense',
+                        '생명': 'HP',
+                        '속도': 'Speed',
+                        '효과명중': 'Ailment Accuracy',
+                        '치료효과': 'Healing Effect',
+                        '관통': 'Pierce Rate',
+                        'SP회복': 'SP Recovery',
+                        '크리티컬 확률': 'Crit Rate',
+                        '크리티컬 효과': 'Crit Mult',
+                        '대미지 보너스': 'Damage Mult',
+                        '대미지감면': 'Damage Reduction'
+                    },
+                    jp: {
+                        '해명의힘': 'ステータス強化',
+                        '해명의 힘': 'ステータス強化',
+                        '직책': '職責',
+                        '마이팰리스 평점': 'マイパレス評価',
+                        '마이팰리스': 'マイパレス',
+                        '전용무기': '専用武器',
+                        '기본 스탯': '基礎ステータス',
+                        '공격력': '攻撃力',
+                        '방어력': '防御力',
+                        '생명': 'HP',
+                        '속도': '速度',
+                        '효과명중': '状態異常命中',
+                        '치료효과': 'HP回復効果',
+                        '관통': '貫通',
+                        'SP회복': 'SP回復',
+                        '크리티컬 확률': 'CRT発生率',
+                        '크리티컬 효과': 'CRT効果',
+                        '대미지 보너스': 'ダメージボーナス',
+                        '대미지감면': '被ダメージ減少'
+                    },
+                    cn: {
+                        '해명의힘': '解明怪盗属性',
+                        '해명의 힘': '解明怪盗属性',
+                        '직책': '职责',
+                        '마이팰리스 평점': '怪盗评分',
+                        '마이팰리스': '我的宫殿',
+                        '전용무기': '专属武器',
+                        '기본 스탯': '基础属性',
+                        '공격력': '攻击力',
+                        '방어력': '防御力',
+                        '생명': '生命值',
+                        '속도': '速度',
+                        '효과명중': '效果命中',
+                        '치료효과': '治疗效果',
+                        '관통': '穿透',
+                        'SP회복': 'SP恢复',
+                        '크리티컬 확률': '暴击率',
+                        '크리티컬 효과': '暴击效果',
+                        '대미지 보너스': '伤害加成',
+                        '대미지감면': '伤害减免'
+                    }
+                };
+                const fallbackStaticDict = fallbackStaticDictByLang[currentLang] || null;
+                if (window.__I18nService__ && typeof window.__I18nService__.getStatTranslations === 'function') {
+                    const serviceDict = window.__I18nService__.getStatTranslations();
+                    if (serviceDict && typeof serviceDict === 'object' && Object.keys(serviceDict).length > 0) {
+                        return { ...fallbackStaticDict, ...serviceDict };
+                    }
+                }
+                const fallbackTerms = window.I18N?.[currentLang]?.gameTerms;
+                const fallbackKrTerms = window.I18N?.kr?.gameTerms;
+                if (fallbackTerms && fallbackKrTerms && typeof fallbackTerms === 'object' && typeof fallbackKrTerms === 'object') {
+                    const dict = {};
+                    Object.keys(fallbackKrTerms).forEach((key) => {
+                        const krValue = fallbackKrTerms[key];
+                        const targetValue = fallbackTerms[key];
+                        if (typeof krValue === 'string' && typeof targetValue === 'string' && krValue !== targetValue) {
+                            dict[krValue] = targetValue;
+                        }
+                    });
+                    if (Object.keys(dict).length > 0) return { ...fallbackStaticDict, ...dict };
+                }
+                return fallbackStaticDict;
+            };
+
+            const translateBattlePlusText = (text) => {
+                if (!text || currentLang === 'kr') return text;
+                const dict = getBattlePlusTranslationDict();
+                if (!dict) return text;
+
+                const sortedKeys = Object.keys(dict).sort((a, b) => b.length - a.length);
+                let output = text;
+                for (const source of sortedKeys) {
+                    const target = dict[source];
+                    if (!source || !target || !output.includes(source)) continue;
+                    const escaped = source.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                    output = output.replace(new RegExp(escaped, 'g'), target);
+                }
+                return output;
+            };
+
+            const applyBattlePlusTranslationsToDom = () => {
+                if (!battlePlusStats || currentLang === 'kr') return false;
+                const dict = getBattlePlusTranslationDict();
+                if (!dict || Object.keys(dict).length === 0) return false;
+
+                const walker = document.createTreeWalker(battlePlusStats, NodeFilter.SHOW_TEXT);
+                let node;
+                let changed = false;
+                while ((node = walker.nextNode())) {
+                    const original = node.textContent || '';
+                    const translated = translateBattlePlusText(original);
+                    if (translated !== original) {
+                        node.textContent = translated;
+                        changed = true;
+                    }
+                }
+                return changed;
+            };
+
+            const scheduleBattlePlusTranslationRetry = () => {
+                if (currentLang === 'kr') return;
+                let attempts = 0;
+                const retry = () => {
+                    attempts += 1;
+                    const applied = applyBattlePlusTranslationsToDom();
+                    if (applied || attempts >= 40) return;
+                    setTimeout(retry, 100);
+                };
+                setTimeout(retry, 0);
+            };
+
+            battlePlusStats.textContent = translateBattlePlusText(battlePlusStats.textContent);
+
             const bTagCount = (battlePlusStats.textContent.match(/<b>/g) || []).length;
             //console.log('bTagCount:', bTagCount);
             //console.log('battlePlusStats.textContent:', battlePlusStats.textContent);
@@ -1673,7 +1812,7 @@
                 // <b> 태그로 분할하여 각 섹션을 div로 래핑
                 const sections = battlePlusStats.textContent.split(/<b>/).filter(Boolean);
                 battlePlusStats.innerHTML = sections.map(section => {
-                    const processedSection = section.trim().replace(/\s*\/\s*/g, '<br>·');
+                    const processedSection = translateBattlePlusText(section.trim()).replace(/\s*\/\s*/g, '<br>·');
                     const finalSection = processedSection.replace(/<<br>·b><br>/, '</b>');
                     // 마이팰리스 평점 텍스트가 있으면 버튼 추가 (섹션 스타일은 변경하지 않음)
                     let sectionWithBtn = finalSection;
@@ -1721,6 +1860,7 @@
                         }
                     });
                 }
+                scheduleBattlePlusTranslationRetry();
             } else {
                 // 기존 방식대로 한 열로 표시
                 let rawContent = battlePlusStats.textContent.trim();
@@ -1758,6 +1898,7 @@
                         // 심상 번역 처리
                         processedItem = processedItem.replace(/심상5/g, mindTexts[currentLang] || '심상5');
                         processedItem = processedItem.replace(/심상 5/g, mindTexts[currentLang] || '심상5');
+                        processedItem = translateBattlePlusText(processedItem);
 
                         // 마이팰리스 평점 텍스트 확인 및 버튼 추가
                         const ratingTexts = {
@@ -1869,6 +2010,7 @@
                         }
                     });
                 }
+                scheduleBattlePlusTranslationRetry();
             }
         } else if (battlePlusStats) {
             battlePlusStats.textContent = '-';
@@ -2732,7 +2874,7 @@
                 } else if (currentLang === 'cn' && category.comment_cn) {
                     commentEl.textContent = category.comment_cn;
                 } else {
-                    commentEl.textContent = currentLang === 'cn' ? '' : category.comment;
+                    commentEl.textContent = category.comment;
                 }
                 if (commentEl.textContent) {
                     commentContainer.appendChild(commentEl);
@@ -3082,7 +3224,7 @@
                 } else if (currentLang === 'cn' && friend.comment_cn) {
                     commentText = friend.comment_cn;
                 } else if (friend.comment) {
-                    commentText = currentLang === 'cn' ? '' : friend.comment;
+                    commentText = friend.comment;
                 }
 
                 textWrap.appendChild(nameRow);
@@ -3197,7 +3339,7 @@
                 } else if (currentLang === 'cn' && party.comment_cn) {
                     commentEl.textContent = party.comment_cn;
                 } else {
-                    commentEl.textContent = currentLang === 'cn' ? '' : party.comment;
+                    commentEl.textContent = party.comment;
                 }
                 if (!commentEl.textContent) commentEl = null;
             }

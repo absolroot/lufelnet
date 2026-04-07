@@ -81,18 +81,21 @@ window.recommendParty["사나다"] = {
             "comment": "마유미는 공격력, 대미지 보너스 등의 버프와 더불어 강력한 관통 버프를 제공한다.",
             "comment_en": "Provides ATK, Damage Mult. buffs, along with a powerful Penetration buff.",
             "comment_jp": "攻撃力や攻撃倍率+に加えて、強力な貫通バフを付与する。",
+            "comment_cn": "麻由美可提供攻击力、伤害加成等增益，以及强力的贯穿增益。"
         },
         {
             "name": "카타야마",
             "comment": "카타야마는 적의 약점을 무시하며 다운 수치를 대폭 삭감시킬 수 있고, 사나다의 의식2 효과에 있는 다운 적 대상 대미지 증폭 효과를 더욱 강화시킬 수 있다.",
             "comment_en": "Can ignore enemy weaknesses and greatly reduce Down, further amplifying Akihiko Sanada’s A2 effect that increases damage against Downed enemies.",
             "comment_jp": "敵の弱点を無視して大きくダウン値を削り、ダウン中の敵への与ダメージを強化する真田明彦の意識2効果をさらに伸ばすことができる。",
+            "comment_cn": "片山可以无视敌人弱点并大幅削减Down值，进一步强化真田意识2中针对Down敌人的伤害增幅效果。"
         },
         {
             "name": "코로마루",
             "comment": "코로마루는 적 전체의 전격 속성을 약점을 강화하고 감전을 부여하며 아군 전체의 대미지를 강화할 수 있다.",
             "comment_en": "Koromaru can enhance all enemies' Elec weakness, inflict Shock, and increase the entire party's damage.",
-            "comment_jp": "コロマルは敵全体の電撃属性の弱点を強化し、感電状態を付与し、味方全体のダメージを増加させることができる。"
+            "comment_jp": "コロマルは敵全体の電撃属性の弱点を強化し、感電状態を付与し、味方全体のダメージを増加させることができる。",
+            "comment_cn": "可强化全体敌人的电击属性弱点、施加感电，并提高全队伤害。"
         }
     ]
 };

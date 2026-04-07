@@ -20,13 +20,21 @@ However, due to the stat limitations and low multipliers typical of 4★ charact
 序盤の氷結弱点の敵を相手にするには十分なダメージを持っている。
 
 しかし、4★キャラ特有の低ステータスと倍率の低さにより、序盤以降は活躍の場が大きく減少する。`,
+        review_cn: `是推进主线过程中前期就能**稳定获得的冰冻单体输出角色**。
+
+她会积攒专属资源**『冰晶』**，当数量达到10颗以上时，便会通过追加效果发动必定暴击的攻击。
+
+在游戏前期攻略冰冻弱点敌人时，她的伤害并不算不足。
+
+不过受限于4星角色本身的属性与倍率，过了前期开荒阶段后，实用度就会明显下降。`,
         pros: ["일정 수준의 빙결 대미지를 보유하고 있다."],
         pros_en: ["Has a certain level of Ice damage."],
         pros_jp: ["氷結属性のダメージを持っている。"],
+        pros_cn: ["拥有一定水准的冰冻伤害。"],
         cons: ["4성 자체의 스탯의 한계가 존재한다."],
         cons_en: ["Has the inherent stat limitations of a 4★ character."],
         cons_jp: ["4★キャラ特有のステータス上の限界がある。"],
+        cons_cn: ["存在4星角色本身的属性上限。"],
     };
 })();
-
 

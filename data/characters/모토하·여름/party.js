@@ -56,12 +56,14 @@ window.recommendParty["모토하·여름"] = {
             "comment": "치유 효과와 축복 효과를 통해 스킬3 『파도 추격자』가 쿨타임 상태에 진입하지 않게 만든다.",
             "comment_en": "Prevents Skill 3 from entering cooldown through Healing and Bless effects.",
             "comment_jp": "治癒効果と祝福効果によって、スキル3がクール状態に入るのを防ぐ。",
+            "comment_cn": "可通过治疗效果和祝福效果让技能3『海浪追击者』不进入冷却状态。"
         },
         {
             "name": "토모코·여름",
             "comment": "치유 효과와 불꽃놀이를 통해 치유를 반복적으로 제공해 스킬3 『파도 추격자』가 쿨타임 상태에 진입하지 않게 만든다.",
             "comment_en": "Provides repeated Healing through Bless effects and Fireworks, preventing Skill 3 from entering cooldown.",
             "comment_jp": "祝福効果と「花火」によって継続的に治癒を供給し、スキル3がクール状態に入らないようにする。",
+            "comment_cn": "可通过治疗效果和烟花反复提供治疗，使技能3『海浪追击者』不进入冷却状态。"
         }
     ]
 };

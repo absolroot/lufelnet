@@ -893,9 +893,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const resistanceIcon = document.querySelector('.resistance-icon');
         const weaknessIcon = document.querySelector('.weakness-icon');
 
-        // 언어별 표시: KR은 기존 아이콘, EN/JP는 텍스트 배지로 표기
+        // 언어별 표시: KR은 기존 아이콘, EN/JP/CN은 텍스트 배지로 표기
         const langForEl = getCurrentLanguage();
-        const useTextBadge = (langForEl === 'en' || langForEl === 'jp');
+        const useTextBadge = (langForEl === 'en' || langForEl === 'jp' || langForEl === 'cn');
         const parentEl = (resistanceIcon && resistanceIcon.parentElement) || (weaknessIcon && weaknessIcon.parentElement) || null;
         if (useTextBadge) {
             ensureCharElementStyles();

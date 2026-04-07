@@ -13,13 +13,17 @@ By using her skills, she applies her unique buff, **Affection**, and when allies
 
 自身のスキルで固有バフの 『愛情』 を付与し、味方がダメージを与えると自身に 『子供心』 を獲得する。『子供心』が3スタック以上になるとスキル3を発動し、蓄積したスタックをすべて消費して味方の攻撃力と与ダメージを上昇させる。
 `,
+        review_cn: `是专精于提升攻击力的念动属性增益手。
+
+她会通过自身技能赋予专属增益『宠爱』，并在同伴造成伤害时为自己叠加『童趣』。当层数达到3层以上时，便可发动技能3，消耗累积的『童趣』来提升同伴的攻击力与造成的伤害。`,
         pros: ["아군의 공격력과 대미지를 올려준다."],
         pros_en: ["Can increase allies' Attack and damage."],
         pros_jp: ["味方の攻撃力とダメージを増加させる。"],
+        pros_cn: ["能够提升同伴的攻击力与伤害。"],
         cons: ["채용률이 낮다.", "버프를 활용하기 위해서는 예열과 조건이 필요하고, 수치 또한 극적이지 않다."],
         cons_en: ["Has a low usage rate.", "To use the buff, you need to preheat and meet conditions, and the numbers are not dramatic."],
         cons_jp: ["採用率が低い。", "バフを活用するにはオーブレットと条件が必要で、数値も極端ではありません。"],
+        cons_cn: ["上场率较低。", "想吃满增益需要预热与条件，数值提升也不算特别突出。"],
     };
 })();
-
 

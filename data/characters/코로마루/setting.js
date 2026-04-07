@@ -1,7 +1,7 @@
 window.characterSetting = window.characterSetting || {};
 window.characterSetting["코로마루"] = {
     "role": "화염/전격/빙결 약점강화 디버퍼",
-    "video": [""],
+    "video": ["g5i4NG_62Bo"],
     "video_en": [""],
     "video_jp": ["", ""],
     "main_revelation": ["예리","희망","창조"],

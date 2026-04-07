@@ -24,13 +24,21 @@ She can also provide Bless effects, a valuable resource used by many characters,
 
 さらに、多くの怪盗が有効活用するリソースである祝福効果も付与でき、万能性の高いヒーラーとして活躍している。
 `,
+        review_cn: `是兼具强力治疗与同伴减益解除能力的治疗角色。
+
+**她的被动不仅能提高全队最大生命值，除了直接治疗外，还会在同伴回合开始时提供额外恢复效果，大幅提高队伍稳定性。**
+
+作为常驻怪盗，只要提升到**意识1**以上，就能为同伴提供强力的**20%穿透**增益。
+
+此外，她还能赋予很多怪盗都能有效利用的祝福效果，因此是一名泛用性很高的全能治疗。`,
         pros: ["강력한 치유 효과를 보유하고 있다.", "아군의 디버프를 해제할 수 있다.", "관통 버프를 제공할 수 있다."],
         pros_en: ["Has strong healing performance.", "Can cleanse debuffs from allies.", "Can provide Pierce buff"],
         pros_jp: ["強力な回復性能を持っている。", "味方のデバフを解除できる。", "貫通バフを付与できる。"],
+        pros_cn: ["拥有强力的治疗能力。", "能够解除同伴减益。", "能够提供穿透增益。"],
         cons: ["SP 소모가 크다."],
         cons_en: ["High SP consumption."],
         cons_jp: ["SP消費が大きい。"],
+        cons_cn: ["精力值消耗较大。"],
     };
 })();
-
 

@@ -28,6 +28,13 @@ On the global server, he has received numerous buffs, so it is expected that he 
 
 グローバルサーバーでは多くのバフを受けているため、以前とは異なる姿を競争コンテンツで示すことができると期待されています。
 `,
+        review_cn: `是首位登场的5星防护怪盗，在常驻角色中也一直属于评价很高的一员。
+
+他能够为全队提供大量护盾，构筑出**几乎压倒性的稳定性**，因此在高难内容中有非常强的保底能力。
+
+不仅如此，他的被动会在施加护盾时进一步提高同伴防御力，技能本身也附带防御强化效果，因此很容易把队伍整体堆到非常坚固。
+
+由于他是常驻角色，随着时间推移也比较容易慢慢提高意识，而意识提升后带来的各类增益数值效率本身也相当优秀。`,
         pros: ["높은 실드 효과를 제공한다", "방어력과 대미지 보너스를 제공한다."],
         pros_en: [
             "Provides powerful shield effects.",
@@ -39,12 +46,13 @@ On the global server, he has received numerous buffs, so it is expected that he 
             "防御力とダメージボーナスを提供する。"
           ]
           ,
+        pros_cn: ["能够提供高额护盾效果。", "能够提供防御力与伤害加成。"],
         cons: ["안정성에 집중했기에 특정 케이스를 제외하면 경쟁 콘텐츠에서 빛을 보기 힘들다."],
         cons_en: [
             "Because of focusing on stability, it is difficult for him to shine in competitive content except for specific scenarios."
           ],          
         cons_jp: ["安定性に重点を置いたため、特定のケースを除けば、競争系コンテンツでは活躍しにくい。"],
+        cons_cn: ["因为更偏重稳定性，除特定场合外，在竞速类内容里不太容易成为核心。"],
     };
 })();
-
 

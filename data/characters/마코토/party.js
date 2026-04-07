@@ -62,25 +62,29 @@ window.recommendParty["마코토"] = {
             "name": "치즈코",
             "comment": "치즈코를 통해 방어력 감소와 필수적인 원소 이상을 부여한다.",
             "comment_en": "Can reduce DEF and inflict essential elemental ailments.",
-            "comment_jp": "チヅ子によりDEF減少と必須の元素異常を付与する。"
+            "comment_jp": "チヅ子によりDEF減少と必須の元素異常を付与する。",
+            "comment_cn": "可通过千津子施加防御力降低和必需的元素异常。"
         },
         {
             "name": "레오",
             "comment": "같은 핵열 속성으로 소나타를 활성화시키며, 크리티컬 효과와 공격력 버프를 제공한다.",
             "comment_en": "Can activate Sonata with the same Nuclear attribute and provide Critical DMG and ATK buffs.",
-            "comment_jp": "核熱属性を共通で使用するため、ソナタを発動でき、クリティカルと攻撃力バフを提供する。"
+            "comment_jp": "核熱属性を共通で使用するため、ソナタを発動でき、クリティカルと攻撃力バフを提供する。",
+            "comment_cn": "可用相同的核热属性激活奏鸣，并提供暴击效果与攻击力增益。"
         },
         {
             "name": "유우미",
             "comment": "치즈코와 함께 핵열 대미지를 적에게 공통적으로 주면서 핵열 칵테일을 만들기 쉽다.",
             "comment_en": "Can easily create Nuclear cocktails by inflicting Nuclear damage to enemies together with VINO.",
             "comment_jp": "チヅ子と共に敵に核熱ダメージを与えることで、核熱カクテルを簡単に作ることができる。",
+            "comment_cn": "可与千津子一起对敌人施加核热伤害，更容易调制出核热鸡尾酒。"
         },
         {
             "name": "아야카",
             "comment": "강력한 HIGHLIGHT를 자주 사용할 수 있게 한다.",
             "comment_en": "Allows powerful HIGHLIGHT to be used frequently.",
-            "comment_jp": "強力なHIGHLIGHTを頻繁に使用できるようにする。"
+            "comment_jp": "強力なHIGHLIGHTを頻繁に使用できるようにする。",
+            "comment_cn": "可让强力的HIGHLIGHT更频繁地使用。"
         }
     ]
 };

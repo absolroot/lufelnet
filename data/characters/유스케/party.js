@@ -56,30 +56,35 @@ window.recommendParty["유스케"] = {
             "comment": "실드와 방어력 증가 버프를 줄 수 있어 유스케의 대미지 메커니즘과 맞아 떨어진다.",
             "comment_en": "Provides Shield and DEF buffs that align well with Yusuke’s damage mechanism.",
             "comment_jp": "シールドと防御力上昇バフを付与でき、祐介のダメージメカニズムと噛み合う。",
+            "comment_cn": "可提供护盾和防御力提升增益，与佑介的伤害机制十分契合。"
         },
         {
             "name": "미유",
             "comment": "실드와 방어력 증가 버프를 줄 수 있어 유스케의 대미지 메커니즘과 맞아 떨어진다.",
             "comment_en": "Provides Shield and DEF buffs that align well with Yusuke’s damage mechanism.",
             "comment_jp": "シールドと防御力上昇バフを付与でき、祐介のダメージメカニズムと噛み合う。",
+            "comment_cn": "可提供护盾和防御力提升增益，与佑介的伤害机制十分契合。"
         },
         {
             "name": "야오링",
             "comment": "광역 방어력 감소 효과를 부여해 전체 대미지를 향상시킨다.",
             "comment_en": "Applies an AoE DEF reduction to increase overall team damage.",
             "comment_jp": "広範囲に防御力低下を付与し、全体の与ダメージを引き上げる。",
+            "comment_cn": "可施加范围防御力降低效果，提升全队总伤害。"
         },
         {
             "name": "아야카",
             "comment": "HIGHLIGHT를 발동시켜, 반격 확률을 100%로 올릴 수 있다.",
             "comment_en": "Activates HIGHLIGHT to raise Counter rate to 100%.",
             "comment_jp": "HIGHLIGHTを発動し、反撃確率を100%まで引き上げることができる。",
+            "comment_cn": "可发动HIGHLIGHT，将反击概率提高到100%。"
         },
         {
             "name": "마사키",
             "comment": "높은 수치의 실드와 방어력 증가 버프를 줄 수 있어 유스케의 대미지 메커니즘과 맞아 떨어진다.",
             "comment_en": "Provides strong Shield and DEF buffs that synergize with Yusuke’s damage mechanism.",
             "comment_jp": "高数値のシールドと防御力上昇バフを付与でき、祐介のダメージメカニズムとより強く噛み合う。",
+            "comment_cn": "可提供高数值护盾和防御力提升增益，与佑介的伤害机制十分契合。"
         }
     ]
 };

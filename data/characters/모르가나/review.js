@@ -25,6 +25,13 @@ Aside from the period immediately after his release, his usability dropped sharp
 
 実装直後を除けば、MARIANのような上位互換ヒーラーがすぐに登場したため、採用率は大きく低下した。
 `,
+        review_cn: `是当同伴生命值低于70%时，能够通过消耗层数来提供**自动群体治疗**的治疗角色。
+
+由于治疗本身也会发生暴击，所以他的基础治疗量并不算高，**提高暴击率会变得比较重要**。
+
+技能3属于物理属性，并且在暴击时可以削减DOWN值。
+
+除了刚实装后的阶段外，后续很快出现了更高位的治疗角色，因此他的实用度明显下降。`,
         pros: ["HIGHLIGHT를 통한 부활이 가능하다", "자동 광역 치료를 제공한다."],
         pros_en: [
             "Capable of reviving through HIGHLIGHT.",
@@ -34,6 +41,7 @@ Aside from the period immediately after his release, his usability dropped sharp
             "HIGHLIGHTによる復活が可能。",
             "自動で全体回復を行える。"
           ],
+        pros_cn: ["能够通过HIGHLIGHT复活同伴。", "能够提供自动群体治疗。"],
         cons: ["별도의 버프가 부족하다.", "디버프를 해제하지 못한다."],
         cons_en: [
             "Lacks additional buff utility.",
@@ -42,8 +50,8 @@ Aside from the period immediately after his release, his usability dropped sharp
         cons_jp: [
             "追加のバフが乏しい。",
             "デバフを解除できない。"
-          ]          
+          ],
+        cons_cn: ["额外增益能力较少。", "无法解除减益效果。"]          
     };
 })();
-
 

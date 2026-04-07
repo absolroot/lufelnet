@@ -54,18 +54,21 @@ window.recommendParty["토시야"] = {
             "comment": "카요는 효과 명중을 올려주는 버프를 부여할 수 있어 주원 효과 부여 확률을 높여준다.",
             "comment_en": "Provides an Ailment Accuracy buff, increasing the chance to inflict Curse effects.",
             "comment_jp": "状態異常命中バフを付与し、呪怨効果を付与する確率を高める。",
+            "comment_cn": "卡요可提供效果命中提升增益，提高咒怨效果的附加概率。"
         },
         {
             "name": "토모코·여름",
             "comment": "토모코·여름은 효과 명중을 올려주는 버프를 부여할 수 있어 주원 효과 부여 확률을 높여준다.",
             "comment_en": "Provides an Ailment Accuracy buff, increasing the chance to inflict Curse effects.",
             "comment_jp": "状態異常命中バフを付与し、呪怨効果を付与する確率を高める。",
+            "comment_cn": "夏日朋子可提供效果命中提升增益，提高咒怨效果的附加概率。"
         },
         {
             "name": "미나미·여름",
             "comment": "미나미는 아이템을 통해 독립 버킷의 지속 대미지 강화 버프를 줄 수 있다.",
             "comment_en": "Can grant an independent bucket DOT damage boost through item use.",
             "comment_jp": "アイテム使用によって、独立バケットの持続ダメージ強化効果を付与できる。",
+            "comment_cn": "南美可通过道具提供独立乘区的持续伤害提升增益。"
         }
     ]
 };

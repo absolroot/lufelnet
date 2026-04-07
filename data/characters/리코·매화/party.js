@@ -38,67 +38,78 @@ window.recommendParty["리코·매화"] = {
             "name": "렌",
             "comment": "리코는 높은 수치의 공격력와 크리티컬 효과 버프를 제공한다.",
             "comment_en": "Riko provides high ATK and CRIT Mult buffs.",
-            "comment_jp": "理子は高い攻撃力とクリティカル倍率バフを提供する。"
+            "comment_jp": "理子は高い攻撃力とクリティカル倍率バフを提供する。",
+            "comment_cn": "理子可提供高数值的攻击力与暴击效果增益。"
         },
         {
             "name": "마코토",
             "comment": "리코는 높은 수치의 공격력와 크리티컬 효과 버프를 제공한다.",
             "comment_en": "Riko provides high ATK and CRIT Mult buffs.",
-            "comment_jp": "理子は高い攻撃力とクリティカル倍率バフを提供する。"
+            "comment_jp": "理子は高い攻撃力とクリティカル倍率バフを提供する。",
+            "comment_cn": "理子可提供高数值的攻击力与暴击效果增益。"
         },
         {
             "name": "몽타뉴·백조",
             "comment": "리코는 높은 수치의 공격력와 크리티컬 효과 버프를 제공한다.",
             "comment_en": "Riko provides high ATK and CRIT Mult buffs.",
-            "comment_jp": "理子は高い攻撃力とクリティカル倍率バフを提供する。"
+            "comment_jp": "理子は高い攻撃力とクリティカル倍率バフを提供する。",
+            "comment_cn": "理子可提供高数值的攻击力与暴击效果增益。"
         },
         {
             "name": "카스미",
             "comment": "리코는 높은 수치의 공격력와 크리티컬 효과 버프를 제공한다.",
             "comment_en": "Riko provides high ATK and CRIT Mult buffs.",
-            "comment_jp": "理子は高い攻撃力とクリティカル倍率バフを提供する。"
+            "comment_jp": "理子は高い攻撃力とクリティカル倍率バフを提供する。",
+            "comment_cn": "理子可提供高数值的攻击力与暴击效果增益。"
         },
         {
             "name": "야오링·사자무",
             "comment": "리코는 높은 수치의 공격력와 크리티컬 효과 버프를 제공한다.",
             "comment_en": "Riko provides high ATK and CRIT Mult buffs.",
-            "comment_jp": "理子は高い攻撃力とクリティカル倍率バフを提供する。"
+            "comment_jp": "理子は高い攻撃力とクリティカル倍率バフを提供する。",
+            "comment_cn": "理子可提供高数值的攻击力与暴击效果增益。"
         },
         {
             "name": "유키 마코토",
             "comment": "리코는 높은 수치의 공격력와 크리티컬 효과 버프를 제공한다.",
             "comment_en": "Riko provides high ATK and CRIT Mult buffs.",
-            "comment_jp": "理子は高い攻撃力とクリティカル倍率バフを提供する。"
+            "comment_jp": "理子は高い攻撃力とクリティカル倍率バフを提供する。",
+            "comment_cn": "理子可提供高数值的攻击力与暴击效果增益。"
         },
         {
             "name": "사나다",
             "comment": "리코는 높은 수치의 공격력와 크리티컬 효과 버프를 제공한다.",
             "comment_en": "Riko provides high ATK and CRIT Mult buffs.",
-            "comment_jp": "理子は高い攻撃力とクリティカル倍率バフを提供する。"
+            "comment_jp": "理子は高い攻撃力とクリティカル倍率バフを提供する。",
+            "comment_cn": "理子可提供高数值的攻击力与暴击效果增益。"
         },
         {
             "name": "이치고",
             "comment": "리코는 높은 수치의 공격력와 크리티컬 효과 버프를 제공한다.",
             "comment_en": "Riko provides high ATK and CRIT Mult buffs.",
-            "comment_jp": "理子は高い攻撃力とクリティカル倍率バフを提供する。"
+            "comment_jp": "理子は高い攻撃力とクリティカル倍率バフを提供する。",
+            "comment_cn": "理子可提供高数值的攻击力与暴击效果增益。"
         },
         {
             "name": "미유·여름",
             "comment": "리코는 높은 수치의 공격력와 크리티컬 효과 버프를 제공한다.",
             "comment_en": "Riko provides high ATK and CRIT Mult buffs.",
-            "comment_jp": "理子は高い攻撃力とクリティカル倍率バフを提供する。"
+            "comment_jp": "理子は高い攻撃力とクリティカル倍率バフを提供する。",
+            "comment_cn": "理子可提供高数值的攻击力与暴击效果增益。"
         },
         {
             "name": "YUI·스텔라",
             "comment": "리코는 높은 수치의 공격력와 크리티컬 효과 버프를 제공한다.",
             "comment_en": "Riko provides high ATK and CRIT Mult buffs.",
-            "comment_jp": "理子は高い攻撃力とクリティカル倍率バフを提供する。"
+            "comment_jp": "理子は高い攻撃力とクリティカル倍率バフを提供する。",
+            "comment_cn": "理子可提供高数值的攻击力与暴击效果增益。"
         },
         {
             "name": "J&C",
             "comment": "리코는 높은 수치의 공격력와 크리티컬 효과 버프를 제공한다.",
             "comment_en": "Riko provides high ATK and CRIT Mult buffs.",
-            "comment_jp": "理子は高い攻撃力とクリティカル倍率バフを提供する。"
+            "comment_jp": "理子は高い攻撃力とクリティカル倍率バフを提供する。",
+            "comment_cn": "理子可提供高数值的攻击力与暴击效果增益。"
         },
     ]
 };

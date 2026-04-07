@@ -17,13 +17,19 @@ He can freely switch between four different performance modes. Each mode changes
 
 **4種類の公演バフの特性がすべて異なるため、さまざまなキャラクターと柔軟に組み合わせて運用できる。**
 `,
+        review_cn: `怪盗团成员之一，也是祝福属性的4星辅助，推进第4章剧情后即可确定获得1张角色卡。
+
+他可以自由切换4种不同的『即兴表演』模式，每种模式都会让技能1附带伤害增益与不同的内置异常状态效果（燃烧、冰冻、风袭、电击），同时也会改变技能3提供的追加增益。
+
+**由于这4种表演增益的定位各不相同，因此泛用性很高，能和多种角色灵活搭配。**`,
         pros: ["상황에 맞는 버프를 부여 가능하다.", "무료 획득이 가능하다."],
         pros_en: ["Can provide buffs tailored to the situation.", "Can be obtained for free."],
         pros_jp: ["状況に応じたバフを付与できる。", "無料で入手できる。"],
+        pros_cn: ["可以根据情况切换不同增益。", "能够免费获得。"],
         cons: ["버프 효과는 평범하다."],
         cons_en: ["Buff values are fairly average."],
         cons_jp: ["バフ効果は平凡。"],
+        cons_cn: ["增益数值本身比较普通。"],
     };
 })();
-
 

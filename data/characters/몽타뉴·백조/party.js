@@ -92,19 +92,22 @@ window.recommendParty["몽타뉴·백조"] = {
             "name": "아야카",
             "comment": "HL을 통해 수량 제한을 돌파할 수 있는 스택을 획득한다.",
             "comment_en": "Obtains stacks that can break the quantity limit through HL.",
-            "comment_jp": "HLを通じて数量制限を突破できるスタックを獲得する。"
+            "comment_jp": "HLを通じて数量制限を突破できるスタックを獲得する。",
+            "comment_cn": "可通过HL获得能突破数量上限的层数。"
         },
         {
             "name": "루우나",
             "comment": "몽타뉴의 스킬3이 주는 추가 효과를 강화하고 적의 방어력을 감소시킨다.",
             "comment_en": "Enhances the Resonance granted by Montagne’s Skill 3 while reducing enemy DEF.",
             "comment_jp": "モンターニュのスキル3が付与する意識奏功を強化し、敵の防御力を低下させる。",
+            "comment_cn": "可强化其技能3赋予的追加效果，并降低敌人的防御力。"
         },
         {
             "name": "리코·매화",
             "comment": "1스킬을 통해 질풍 대미지를 주고, 몽타뉴의 스킬은 여러 타수의 대미지를 주므로 리코의 패시브 버프를 쉽게 발동시킬 수 있다.",
             "comment_en": "Deals Wind damage with Skill 1, and Montagne’s multi-hit skills make it easy to trigger Riko’s passive buff.",
             "comment_jp": "スキル1で疾風ダメージを与えられ、モンターニュの多段ヒットスキルによって理子のパッシブバフを発動しやすい。",
+            "comment_cn": "可通过技能1造成疾风伤害，而其多段技能也能更容易触发理子的被动增益。"
         }
     ]
 };

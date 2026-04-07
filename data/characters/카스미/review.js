@@ -62,7 +62,7 @@ The main question is whether DEF reduction is sufficient; reducing the boss's de
 - Grants an additional 16.0% damage bonus and 27.0% Bless damage increase.
 - A consistently safe option that provides a high amount of damage bonus.
 `,
-        review_jp: `P5Rのオリジナルキャラクターで、HIGHLIGHT中心の祝福属性単体アタッカー。
+review_jp: `P5Rのオリジナルキャラクターで、HIGHLIGHT中心の祝福属性単体アタッカー。
 
 ギミックが複雑で、ダメージ構成がHIGHLIGHT依存のためパーティに坂井綾香の編成が必須級となるが、条件が揃えば **期待以上のダメージを発揮する。**
 
@@ -92,6 +92,21 @@ The main question is whether DEF reduction is sufficient; reducing the boss's de
 - 与ダメージ16.0%と祝福属性の与ダメージ27.0%を追加で獲得する。
 - 常に無難な選択肢で、高い数値のダメージボーナスを提供する。
 `,
+        review_cn: `是P5R原创角色，也是围绕HIGHLIGHT运转的祝福属性单体输出角色。
+
+她的机制比较复杂，而且伤害高度依赖HIGHLIGHT，因此队伍里几乎必须带上坂井绫香；但只要条件凑齐，**她能打出远超预期的爆发伤害。**
+
+核心目标是**用1次技能2和3次技能1凑满4层，然后发动强化后的HIGHLIGHT**。
+
+即使使用了技能2，只要队友行动，她的技能1仍会自动触发，因此某些情况下也能用技能2去替代技能1的手动循环。
+
+<br>
+
+从意识1开始，技能2的持续时间会多1回合，这样队友会自动触发她2次技能1，使她在第3回合就能稳定带着4层强化开出HIGHLIGHT，而不太受队友构成影响。
+
+此外，技能3本身倍率也很高，所以即使在意识0、第3回合的HIGHLIGHT只有3层时，有时直接先开技能3反而会让整体循环伤害更高。
+
+技能2还有一个特点，就是当队友在1个回合内发动2次以上人格面具技能时，她的技能1也会自动额外触发多次。`,
         pros: ["HIGHLIGHT 중심 높은 대미지 성능을 가지고 있다."],
         pros_en: [
             "Has high HIGHLIGHT-based damage potential."
@@ -101,6 +116,7 @@ The main question is whether DEF reduction is sufficient; reducing the boss's de
             "HIGHLIGHT中心の高いダメージ性能を持つ。"
           ]
           ,
+        pros_cn: ["拥有很高的HIGHLIGHT核心输出上限。"],
         cons: ["오토 플레이에서는 성능이 급감한다.", "아야카의 편성이 필수로 요구된다."],
         cons_en: [
             "Performs significantly worse in Auto mode.",
@@ -112,5 +128,6 @@ The main question is whether DEF reduction is sufficient; reducing the boss's de
             "坂井綾香の編成が必須となる。"
           ]
           ,
+        cons_cn: ["自动战斗时性能会明显下降。", "几乎必须绑定坂井绫香一起上场。"],
     };
 })();

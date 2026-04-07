@@ -13,12 +13,17 @@ This character's speed should always be positioned 3rd right before the Damage D
 
 大半のボスが精神異常耐性を持って出現するため、利用率が非常に低い。
         `,
+        review_cn: `是专精于睡眠异常的增益型角色。
+
+由于大多数首领都带有精神异常免疫，因此她的整体实用度相当低。`,
         pros: ["수면을 부여할 수 있다.", "효과 명중을 증가시킬 수 있다."],
         pros_en: ["Can inflict Sleep.", "Can increase Ailment accuracy for allies."],
         pros_jp: ["睡眠を付与できる。"],
+        pros_cn: ["能够赋予睡眠。", "能够提升效果命中。"],
         cons: ["채용률이 낮다.", "정신 이상 효과는 경쟁 콘텐츠에서 효율이 낮다.", "받는 대미지 증가 효과는 한 번의 대미지에만 적용된다."],
         cons_en: ["Has a low usage rate.", "Spiritual Ailments are less useful in scoring content.", "Damage Taken increases only last for a single instance of damage."],
         cons_jp: ["採用率が低い。", "精神異常は競技コンテンツで効率が低い。", "受けるダメージ増加効果は1回のダメージにのみ適用されます。"],
+        cons_cn: ["上场率较低。", "精神异常效果在竞速类内容中的效率较差。", "受到伤害提升效果只对1次伤害生效。"],
     };
 })();
 

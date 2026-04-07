@@ -69,6 +69,25 @@ For this reason, the unusual build of **A1R5** has become recognized as a highly
 
 この理由から、いわゆる**A1R5**という特殊な育成形態が、高効率のキャラクター強化として評価されている。
 `,
+    review_cn: `坂井绫香是一名专门围绕HIGHLIGHT运转的增益手。
+
+通常所有角色想再次使用HIGHLIGHT，都需要经历4次行动。以常见的6回合首领战为例，往往只能在第2回合和第6回合各用一次。
+
+但她的**技能3能够无视冷却，强制触发强化后的HIGHLIGHT**，直接打乱了原本的HIGHLIGHT循环机制。
+
+<br>
+
+通过技能2，她可以提高同伴的攻击力；若提升到意识1，还能额外提供15%暴击率增益，整体效率相当不错。
+
+她自己的HIGHLIGHT既能给全队提供增益，又能在一段时间内加快HIGHLIGHT充能，因此经常可以在维持原有循环的同时，再额外多开一次她自己的HIGHLIGHT。
+
+<br>
+
+她的专属武器拥有**开场直接提供HIGHLIGHT量表**的效果，因此能够非常快地开启HIGHLIGHT。
+
+如果**将武器强化到5阶**，可以直接获得76%的HIGHLIGHT能量；再配合能提供25%能量的启示套装，便能做到**一进战斗就立刻开HIGHLIGHT**。
+
+也正因为如此，**1意识5精炼**这种比较特殊的养成方式，反而被视作她非常高效的强化路线。`,
     pros: ["아군의 HIGHLIGHT를 추가로 사용할 수 있다.", "감전 효과를 부여할 수 있다.", "HIGHLIGHT가 발동될 경우 아군을 치유한다."],
     pros_en: [
       "Allows allies to gain additional HIGHLIGHT uses.",
@@ -80,9 +99,11 @@ For this reason, the unusual build of **A1R5** has become recognized as a highly
       "感電を付与できる。",
       "HIGHLIGHT発動時に回復効果を提供する。"
     ],
+    pros_cn: ["能够让同伴额外多用一次HIGHLIGHT。", "能够赋予触电效果。", "在HIGHLIGHT发动时还能为同伴提供治疗。"],
     cons: ["HIGHLIGHT 효과가 미비한 딜러와는 어울리지 않는다."],
     cons_en: ["Does not pair well with dealers who gain little benefit from HIGHLIGHT."],
     cons_jp: ["HIGHLIGHT効果の恩恵が少ないアタッカーとは相性が悪い。"],
+    cons_cn: ["和无法从HIGHLIGHT中获得明显收益的输出角色不太契合。"],
   };
 })();
 

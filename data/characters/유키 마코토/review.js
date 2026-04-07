@@ -30,6 +30,15 @@ The buff effects from Skill 1, Skill 2, and Theurgy are indicated as lasting 2 t
 
 スキル1、スキル2、そしてテウルギア能力によるバフ効果は、2ターンと表示されていますが、実際は2.1ターンのメカニズムに従います（獲得したターンが終了した時点では持続時間が減少しません）。
 `,
+        review_cn: `P3的原创角色兼主角，是一名火焰属性的单体输出。
+
+他会通过技能1、友方增益以及神通法不断叠加层数，**再把累积的层数一次性全部消耗，用技能3打出高额爆发伤害。**
+
+**即使是0意识也能打出非常高的伤害**，而且没有必须绑定的队友，因此适用范围很广。
+
+相较于通常只有1种神通法的角色，他因为原作中的野性资质，可以使用2种神通法。
+
+技能1、技能2和神通法带来的增益虽然文本上写着持续2回合，但实际上遵循2.1回合机制（获得该效果的那个回合结束时不会减少持续时间）。`,
         pros: ["명함부터 높은 대미지를 선보인다.", "필수 파티원이라는 제약이 없다.", "다양한 콘텐츠에 모두 활용된다."],
         pros_en: [
             "Shows high damage output even at A0.",
@@ -43,6 +52,7 @@ The buff effects from Skill 1, Skill 2, and Theurgy are indicated as lasting 2 t
             "多様なコンテンツで活用できる。"
           ]
           ,
+        pros_cn: ["0意识起点就有很高的伤害表现。", "没有必须绑定的队友。", "几乎所有内容都能投入使用。"],
         cons: ["의식6이 아닌 경우 2개의 테우르기아 중 1개만 사용하게 된다."],
         cons_en: [
             "If not at Awareness 6 (A6), he can use only one of his two Theurgies."
@@ -52,7 +62,7 @@ The buff effects from Skill 1, Skill 2, and Theurgy are indicated as lasting 2 t
             "凸6でなければ、2種類のテウルギアのうち1つしか使用できない。"
           ]
           ,
+        cons_cn: ["若未达到意识6，两种神通法里实际只能使用其中一种。"],
     };
 })();
-
 

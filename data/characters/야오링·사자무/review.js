@@ -22,13 +22,21 @@ As her Awareness increases, her rotation changes noticeably. Upon reaching Aware
 **TECHNICALを本格的に活用する最初のキャラクター**で、TECHNICAL効果を強化し、燃焼が必要な澪と組み合わせると相性が良い。
 
 凸段階が上がるにつれてサイクルが明確に変化し、凸6になると初ターンを除き、すべてのターンで強化近接攻撃を行える予熱不要の構造になる。`,
+        review_cn: `是能够打出火焰TECHNICAL伤害的群体火焰输出角色。
+
+她会先通过技能1强化自己，再通过技能3让刀刃附着火焰，随后依靠强化后的近战攻击进行输出。技能3本身只负责变身，不会消耗行动回合。
+
+作为**首个真正把TECHNICAL机制打完整的角色**，她本身能够强化TECHNICAL效果，同时也非常适合和需要燃烧状态的夏川澪一起搭配。
+
+随着意识阶段提升，她的循环变化会很明显；一旦到达意识6，除了第一个回合外，之后几乎每个回合都能稳定打出强化近战攻击，不再需要额外预热。`,
         pros: ["화염 속성 TECHINCAL 대미지를 줄 수 있다.", "사이클이 간단해 다채로운 콘텐츠에 활용할 수 있다."],
         pros_en: ["Can deal Fire TECHNICAL damage.", "Simple rotation that fits many types of content."],
         pros_jp: ["炎属性のTECHNICALダメージを与えられる。", "サイクルが簡単で多様なコンテンツで活用できる。"],
+        pros_cn: ["能够打出火焰属性TECHNICAL伤害。", "循环简单，能适配多种内容。"],
         cons: ["화상 유무에 따라 대미지 차이가 발생한다."],
         cons_en: ["Damage output varies depending on whether Burn is applied."],
         cons_jp: ["燃焼の有無によってダメージ差が生じる。"],
+        cons_cn: ["是否给敌人附加燃烧，会明显影响她的输出表现。"],
     };
 })();
-
 

@@ -25,13 +25,22 @@ She can still see use in short battles where enemy damage is too high to survive
 
 短期戦で敵のダメージが高すぎて耐えきれない場面では、依然として活躍の余地がある。
 `,
+        review_cn: `是**能够提供护盾并提高防御力的解明怪盗**。
+
+由于她以防御力为主属性，在提升全队整体稳定性方面表现不错，但**当前环境更偏向高伤害体系，因此上场率不高**。
+
+另外，如果把**喜多川祐介**作为主输出使用，他与护盾赋予和防御力强化都很契合，因此海夕会成为相当不错的解明搭档。
+
+如果是在短期战中，敌方伤害高到难以硬扛的场合，她依然还有发挥空间。
+`,
         pros: ["실드를 제공하고 방어력을 높여준다.", "아군의 DOWN 포인트를 증가시킬 수 있다."],
         pros_en: ["Provides sustain and survivability through Defense up and shields.", "Can increase Down Points for allies"],
         pros_jp: ["シールドを付与し、防御力を上昇させる。", "アライアンスのDOWNポイントを増やすことができる。"],
+        pros_cn: ["能够提供护盾并提高防御力。", "可以提升同伴的倒地值。"],
         cons: ["아군의 대미지 증가 효과가 낮다.", "스킬의 쿨다운이 길다."],
         cons_en: ["Allies receive low offensive buffs.", "Skill cooldowns are longer."],
         cons_jp: ["味方への火力支援が乏しい。", "スキルのクールダウンが長い。"],
+        cons_cn: ["对同伴的伤害增益效果偏低。", "技能冷却时间较长。"],
     };
 })();
-
 

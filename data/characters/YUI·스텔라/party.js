@@ -57,6 +57,7 @@ window.recommendParty["YUI·스텔라"] = {
             "comment": "미나미는 아이템을 통해 독립 버킷의 총공격 대미지 강화 버프를 줄 수 있다.",
             "comment_en": "Can grant an independent bucket All-Out Attack damage boost through item use.",
             "comment_jp": "アイテム使用によって、独立バケットの総攻撃ダメージ強化効果を付与できる。",
+            "comment_cn": "南美可通过道具提供独立乘区的总攻击伤害提升增益。"
         },
         {
             "name": "카타야마",
@@ -64,12 +65,14 @@ window.recommendParty["YUI·스텔라"] = {
             "comment": "YUI의 의식6는 턴이 끝날 때마다 공격하면서 다운 수치를 감소시키기 때문에 카타야마의 다운 감소 사이클과 맞물린다.",
             "comment_en": "YUI’s A6 attacks at the end of each turn and reduces Down, aligning with Katayama’s Down reduction cycle.",
             "comment_jp": "YUIの意識6はターン終了時に攻撃してダウン値を減少させるため、片山のダウン減少サイクルと噛み合う。",
+            "comment_cn": "YUI的意识6会在每回合结束时攻击并减少Down值，因此能和片山的Down削减循环形成联动。"
         },
         {
             "name": "미츠루",
             "comment": "미츠루는 높은 수치의 방어력 감소와 추가적인 대미지를 부여할 수 있다.",
             "comment_en": "Provides high DEF reduction and additional damage.",
             "comment_jp": "高い防御力低下と追加ダメージを付与できる。",
+            "comment_cn": "美鹤可提供高额防御力降低和额外伤害。"
         }
     ]
 };

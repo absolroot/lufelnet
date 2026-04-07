@@ -97,25 +97,29 @@ window.recommendParty["렌"] = {
             "name": "레오",
             "comment": "높은 공격력과 크리티컬 효과를 부여할 수 있다.",
             "comment_en": "Provides high ATK and CRIT Mult buffs.",
-            "comment_jp": "高い攻撃力とクリティカル倍率バフを提供する。"
+            "comment_jp": "高い攻撃力とクリティカル倍率バフを提供する。",
+            "comment_cn": "可提供高额攻击力与暴击效果增益。"
         },
         {
             "name": "야오링",
             "comment": "주원 속성 소나타를 활성화시키고, 광역 방어력 감소 효과를 부여해 전체 대미지를 향상시킨다.",
             "comment_en": "Activates Curse Sonata and applies an AoE DEF reduction to increase overall team damage.",
             "comment_jp": "呪いソナタを発動し、広範囲に防御力低下を付与し、全体の与ダメージを引き上げる。",
+            "comment_cn": "可激活咒怨属性奏鸣，并施加范围防御力降低效果，提升全队总伤害。"
         },
         {
             "name": "아야카",
             "comment": "HIGHLIGHT를 발동시켜 『반역의 의지』를 획득한다.",
             "comment_en": "Activates HIGHLIGHT to gain 『Will of Rebellion』.",
             "comment_jp": "HIGHLIGHTを発動し、『反逆の意志』を獲得する。",
+            "comment_cn": "可发动HIGHLIGHT，获得『反逆的意志』。"
         },
         {
             "name": "리코·매화",
             "comment": "리코는 높은 크리티컬 효과 버프를 제공한다. 리코의 패시브 효과를 최대로 얻기 위해서는 2턴 동안 5번 이상의 타격이 필요하므로 렌에게 [여정]+[주권] 세트를 착용해 타수를 늘리는 형태가 있다.",
             "comment_en": "Riko provides a strong CRIT DMG buff. Since Riko’s passive requires landing 5 or more hits within 2 turns to activate, one approach is to equip Ren with the [Departure] + [Control] sets to increase his total number of hits.",
             "comment_jp": "理子は高いCRT倍率バフを提供する。理子のパッシブ効果を発動させるには2ターン以内に5回以上の攻撃が必要なため、蓮には[旅立]＋[支配]セットを装備させてヒット数を増やす構成が考えられる。",
+            "comment_cn": "理子可提供高额暴击效果增益。要最大化理子的被动效果，需要在2回合内打出5次以上攻击，因此可以给莲装备[旅程]+[主权]套装来增加打击次数。"
         }
     ]
 };

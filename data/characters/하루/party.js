@@ -83,18 +83,21 @@ window.recommendParty["하루"] = {
             "comment": "하루의 효과명중 수치를 올리면서 광역 디버프를 부여한다.",
             "comment_en": "Increases Haru’s Ailment Accuracy while applying a wide-area debuff.",
             "comment_jp": "春の状態異常命中を上げつつ、広範囲にデバフを付与する。",
+            "comment_cn": "在提高春的效果命中的同时施加范围减益。"
         },
         {
             "name": "후타바",
             "comment": "하루의 스킬 사이클과 동일한 3턴마다 강력한 디버프를 부여한다.",
             "comment_en": "Applies a powerful debuff every 3 turns, matching Haru’s skill cycle.",
             "comment_jp": "春のスキルサイクルと同じく、3ターンごとに強力なデバフを付与する。",
+            "comment_cn": "可按照与春的技能循环一致的3回合节奏施加强力减益。"
         },
         {
             "name": "마나카",
             "comment": "턴 회귀를 통해 강화 스택을 중첩한 상황에서 한 번 더 총격을 가할 수 있다.",
             "comment_en": "Can unleash an additional Gun Shot when Enhancement stacks have been accumulated through turn rewind.",
             "comment_jp": "ターン回帰で強化スタックを重ねた状態なら、もう一度銃撃を行うことができる。",
+            "comment_cn": "可通过回合回溯在强化层数叠起来后再追加一次枪击。"
         }
     ]
 };

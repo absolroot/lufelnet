@@ -19,13 +19,19 @@ To maximize the skill's **Defense Reduction effect**, it is recommended to **rai
 
 スキルの**防御力低下効果**を最大限に活かすためには、**効果命中を推奨値まで上げる**ことをお勧めする。
 `,
+        review_cn: `是能够强化火焰、冰冻、电击、疾风属性伤害，或是强化追加效果伤害的**减益手**。
+
+她的机制是先通过技能1去辅助群体属性输出，或者通过技能2去辅助单体追加效果输出，之后再解锁技能3。
+
+如果想把她技能里的**防御力降低效果**吃满，最好还是把**效果命中堆到推荐区间**。`,
         pros: ["높은 방어력 감소 효과를 지니고 있다.", "회복량 감소 효과를 지니고 있다."],
         pros_en: ["Possesses a strong Defense Reduction debuff.", "Applies a healing reduction debuff."],
         pros_jp: ["高い防御力ダウン効果を持っている。",  "回復量ダウン効果も付与できる。"],
+        pros_cn: ["拥有高额防御力降低效果。", "还附带恢复量降低效果。"],
         cons: ["화염 속성과 추가 효과에 대미지 보너스가 한정된다.", "얼마 안 가 상위 호환의 디버퍼가 출시됐다."],
         cons_en: ["Damage bonuses apply only to elemental(fire, ice, electric, wind) and Resonance attacks."],
         cons_jp: ["火炎・氷結・電撃・疾風属性と意識奏功に対するダメージボーナスが限定的である。"],
+        cons_cn: ["伤害加成主要局限在火焰、冰冻、电击、疾风和追加效果体系内。", "没过多久就出现了更上位的减益手。"],
     };
 })();
-
 

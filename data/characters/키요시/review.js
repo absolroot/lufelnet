@@ -24,6 +24,13 @@ A unique detail is that his firearm is a flamethrower, meaning his Gun attack is
 
 特記事項として、銃撃が火炎放射器となっており、銃撃属性ではなく火炎属性として扱われる。
 `,
+        review_cn: `是会对敌人施加燃烧相关减益的火焰属性减益手。
+
+由于技能2的持续伤害比其他技能更有意义，因此技能1和技能3实际上很少会使用。
+
+意识1可以让他以一定概率赋予敌人燃烧，意识6则能进一步强化火焰属性伤害，因此推荐与其他火焰输出角色搭配使用。
+
+比较特别的是，他的枪械是火焰喷射器，因此并非枪击属性，而是火焰属性。`,
         pros: ["화상을 부여할 수 있다.", "아군의 화염 속성 대미지를 강화할 수 있다."],
         pros_en: [
             "Can inflict Burn.",
@@ -34,10 +41,11 @@ A unique detail is that his firearm is a flamethrower, meaning his Gun attack is
             "味方の火炎属性ダメージを強化できる。"
           ]
           ,
+        pros_cn: ["能够赋予燃烧。", "能够强化同伴的火焰属性伤害。"],
         cons: ["채용률이 낮다."],
         cons_en: ["Has a low usage rate."],
         cons_jp: ["採用率が低い。"],
+        cons_cn: ["上场率较低。"],
     };
 })();
-
 

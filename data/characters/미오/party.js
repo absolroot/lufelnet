@@ -46,14 +46,16 @@ window.recommendParty["미오"] = {
             "name": "야오링·사자무",
             "comment": "미오는 TECHINCAL 효과를 강화하고 화상 상태인 적이 필요한 메커니즘을 공유한다.",
             "comment_en": "Mio enhances TECHNICAL effects and shares the mechanism that requires Burned enemies.",
-            "comment_jp": "澪はTECHNICAL効果を強化し、火傷状態の敵が必要なメカニズムを共有する。"
+            "comment_jp": "澪はTECHNICAL効果を強化し、火傷状態の敵が必要なメカニズムを共有する。",
+            "comment_cn": "澪可强化TECHNICAL效果，并共享需要敌人处于燃烧状态的机制。"
         },
         {
             "name": "YUI",
             "A": 6,
             "comment": "미오가 의식6인 경우 1턴에 페르소나 스킬로 대미지를 2회 줄 수 있어 YUI의 추격을 더 자주 발동시킬 수 있다.",
             "comment_en": "If Mio is in A6, she can deal damage twice in one turn using Persona skills, allowing YUI's Follow-up to be triggered more frequently.",
-            "comment_jp": "澪がA6の場合、1ターンでペルソナスキルで2回ダメージを与えることができるため、YUIのフォローアップをより頻繁に発動させることができる。"
+            "comment_jp": "澪がA6の場合、1ターンでペルソナスキルで2回ダメージを与えることができるため、YUIのフォローアップをより頻繁に発動させることができる。",
+            "comment_cn": "若澪为意识6，可在1回合内通过人格面具技能造成2次伤害，从而更频繁地触发YUI的追击。"
         }
     ]
 };

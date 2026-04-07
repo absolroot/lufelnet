@@ -72,36 +72,42 @@ window.recommendParty["마유미"] = {
             "comment": "마유미는 높은 수치의 관통, 공격력, 대미지 보너스 버프를 제공하며 추가 턴을 활용한 다채로운 택틱 구성을 가능하게 한다.",
             "comment_en": "Provides high Penetration, ATK, and Damage Mult. buffs, enabling flexible tactics through additional turns.",
             "comment_jp": "高い貫通・攻撃力・攻撃倍率+バフを付与し、追加ターンを活かした多彩な戦術構築を可能にする。",
+            "comment_cn": "麻由美可提供高额贯穿、攻击力与伤害加成增益，并能利用追加回合构筑更灵活的战术。"
         },
         {
             "name": "하루",
             "comment": "마유미는 높은 수치의 관통, 공격력, 대미지 보너스 버프를 제공하며 추가 턴을 활용한 다채로운 택틱 구성을 가능하게 한다.",
             "comment_en": "Provides high Penetration, ATK, and Damage Mult. buffs, enabling flexible tactics through additional turns.",
             "comment_jp": "高い貫通・攻撃力・攻撃倍率+バフを付与し、追加ターンを活かした多彩な戦術構築を可能にする。",
+            "comment_cn": "麻由美可提供高额贯穿、攻击力与伤害加成增益，并能利用追加回合构筑更灵活的战术。"
         },
         {
             "name": "유키 마코토",
             "comment": "마유미는 높은 수치의 관통, 공격력, 대미지 보너스 버프를 제공하며 추가 턴을 활용한 다채로운 택틱 구성을 가능하게 한다.",
             "comment_en": "Provides high Penetration, ATK, and Damage Mult. buffs, enabling flexible tactics through additional turns.",
             "comment_jp": "高い貫通・攻撃力・攻撃倍率+バフを付与し、追加ターンを活かした多彩な戦術構築を可能にする。",
+            "comment_cn": "麻由美可提供高额贯穿、攻击力与伤害加成增益，并能利用追加回合构筑更灵活的战术。"
         },
         {
             "name": "사나다",
             "comment": "마유미는 높은 수치의 관통, 공격력, 대미지 보너스 버프를 제공하며 추가 턴을 활용한 다채로운 택틱 구성을 가능하게 한다.",
             "comment_en": "Provides high Penetration, ATK, and Damage Mult. buffs, enabling flexible tactics through additional turns.",
             "comment_jp": "高い貫通・攻撃力・攻撃倍率+バフを付与し、追加ターンを活かした多彩な戦術構築を可能にする。",
+            "comment_cn": "麻由美可提供高额贯穿、攻击力与伤害加成增益，并能利用追加回合构筑更灵活的战术。"
         },
         {
             "name": "미유·여름",
             "comment": "마유미는 높은 수치의 관통, 공격력, 대미지 보너스 버프를 제공하며 추가 턴을 활용한 다채로운 택틱 구성을 가능하게 한다.",
             "comment_en": "Provides high Penetration, ATK, and Damage Mult. buffs, enabling flexible tactics through additional turns.",
             "comment_jp": "高い貫通・攻撃力・攻撃倍率+バフを付与し、追加ターンを活かした多彩な戦術構築を可能にする。",
+            "comment_cn": "麻由美可提供高额贯穿、攻击力与伤害加成增益，并能利用追加回合构筑更灵活的战术。"
         },
         {
             "name": "YUI·스텔라",
             "comment": "마유미는 높은 수치의 관통, 공격력, 대미지 보너스 버프를 제공하며 추가 턴을 활용한 다채로운 택틱 구성을 가능하게 한다.",
             "comment_en": "Provides high Penetration, ATK, and Damage Mult. buffs, enabling flexible tactics through additional turns.",
             "comment_jp": "高い貫通・攻撃力・攻撃倍率+バフを付与し、追加ターンを活かした多彩な戦術構築を可能にする。",
+            "comment_cn": "麻由美可提供高额贯穿、攻击力与伤害加成增益，并能利用追加回合构筑更灵活的战术。"
         }
     ]
 };

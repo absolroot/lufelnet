@@ -44,6 +44,7 @@ window.recommendParty["유키미"] = {
             "comment": "실드와 방어력 증가 버프를 줄 수 있어 유스케의 대미지 메커니즘과 맞아 떨어진다.",
             "comment_en": "Provides Shield and DEF buffs that align well with Yusuke’s damage mechanism.",
             "comment_jp": "シールドと防御力上昇バフを付与でき、祐介のダメージメカニズムと噛み合う。",
+            "comment_cn": "可提供护盾和防御力提升增益，与佑介的伤害机制十分契合。"
         },
     ]
 };

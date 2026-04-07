@@ -18,13 +18,19 @@ For this reason, he pairs extremely well with LEON, who can grant shields while 
 
 1ターンかけてHPを消費しつつチャージしてから攻撃するメカニクスのため、その間は敵の攻撃に対して非常に脆くなる。
 そのため、HPを減らしながらシールドを付与できるLEONとの相性がとても良い。`,
+        review_cn: `是随游戏开服一同登场的P5系物理单体输出角色。
+
+他的核心是通过压低自身生命值来提高火力的**玻璃大炮型机制**。他会消耗降低生命值后获得的『触底反弹』来强化技能，并对敌人打出强力的一击。
+
+由于他的机制需要先花1个回合消耗生命并完成蓄力后再出手，因此这段期间会更容易被敌人的攻击压制。正因如此，和能够在削减生命值的同时提供护盾的角色搭配时会有不错的相性。`,
         pros: ["차지를 통해 강력한 한 방을 낼 수 있다.", "리바운드를 통해 스킬3의 확정 크리티컬이 가능하다."],
         pros_en: ["You can deal a powerful one-hit through the Charge.","You can guarantee a critical with the Skill 3 through the Rebound."],
         pros_jp: ["チャージを通して強力な一撃を与えることができます。","反発を通してスキル3の確定クリティカルを達成できます。"],
+        pros_cn: ["能够通过蓄力打出强力爆发。", "可以借助『触底反弹』让技能3稳定暴击。"],
         cons: ["리바운드 효과를 얻기 위해서는 공격을 받거나 추가로 체력을 소모해야한다.", "1턴은 항상 대기하기 때문에 일상 콘텐츠에는 부적합하다."],
         cons_en: ["To get the Rebound effect, you need to take damage or consume additional HP.","Since 1 turn is always waiting, it is not suitable for daily content."],
         cons_jp: ["反発効果を得るには、ダメージを受けるか、さらにHPを消費する必要があります。","1ターンは常に待機するため、日常コンテンツには不適切です。"],
+        cons_cn: ["想获得『触底反弹』，需要先挨打或额外消耗生命值。", "因为几乎必然要空过1个回合，所以不适合日常速刷内容。"],
     };
 })();
-
 

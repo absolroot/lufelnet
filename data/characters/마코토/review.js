@@ -26,12 +26,22 @@ Since she only needs to activate Skill 3 to deal damage after excluding elementa
 TECHNICALを所持していますが、後から追加された数値であるSKILL MASTER効果の影響は現時点では受けていません。
 
 属性異常を除外した後はスキル3を発動するだけでダメージを与えられるため、運用が非常にシンプルです。`,
+        review_cn: `
+是强力的单体输出角色，而核热属性本身又是从P5开始才加入的属性，因此她在属性层面也具备一定优势。
+
+由于她的输出会明显受到元素异常影响，**和长尾千津子组队会比较高效**。
+
+虽然她本身拥有TECHNICAL，但目前还不会受到后续追加的SKILL MASTER效果影响。
+
+抛开元素异常部分不看，她的输出循环基本上只要不断启动技能3即可，因此操作起来相当简单。`,
         pros: ["강력한 단일 대미지를 반복해서 줄 수 있다."],
         pros_en: ["Can deal powerful single-target damage repeatedly."],
         pros_jp: ["強力な単体ターゲットダメージを繰り返し与えられます。"],
+        pros_cn: ["能够持续打出强力的单体伤害。"],
         cons: ["원소 이상을 지속적으로 부여해야 한다."],
         cons_en: ["Need to continuously apply elemental ailments."],
         cons_jp: ["属性異常を継続的に適用する必要があります。"],
+        cons_cn: ["需要持续给敌人附加元素异常。"],
     };
 })();
 

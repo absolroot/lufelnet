@@ -12,9 +12,11 @@
             const langParam = urlParams.get('lang');
             if (langParam === 'en') return 'en';
             if (langParam === 'jp') return 'jp';
+            if (langParam === 'cn') return 'cn';
             const path = window.location.pathname;
             if (path.includes('/en/')) return 'en';
             if (path.includes('/jp/')) return 'jp';
+            if (path.includes('/cn/')) return 'cn';
             return 'kr';
         } catch(_) {
             return 'kr';
@@ -322,6 +324,11 @@
                 '억압의 공간': '調伏の領域',
                 '마음의 바다 시련': '心の海の試練',
                 '흉몽의 문': '閼兇夢の扉'
+            },
+            cn: {
+                '억압의 공간': '压制空间',
+                '마음의 바다 시련': '心海试炼',
+                '흉몽의 문': '凶梦之门'
             }
         };
 
@@ -329,8 +336,8 @@
         const contentOrder = ['억압의 공간', '흉몽의 문', '마음의 바다 시련'];
         contentOrder.forEach(content => {
             if (buffs.contentDmg[content] && buffs.contentDmg[content] > 0) {
-                const label = contentLabels[currentLang][content] || content;
-                const dmgText = currentLang === 'en' ? 'damage' : (currentLang === 'jp' ? 'ダメージ' : '대미지');
+                const label = (contentLabels[currentLang] && contentLabels[currentLang][content]) || content;
+                const dmgText = currentLang === 'en' ? 'damage' : (currentLang === 'jp' ? 'ダメージ' : (currentLang === 'cn' ? '伤害' : '대미지'));
                 const icon = createIcon(`${base}/assets/img/stat-icon/대미지 보너스.png`, label);
                 lines.push(`${icon}[${label}] ${dmgText} +${buffs.contentDmg[content].toFixed(1)}%`);
             }
@@ -361,13 +368,21 @@
                 'ailment_accuracy': '状態異常命中',
                 'speed': '速さ',
                 'healing_effect': 'HP回復量'
+            },
+            cn: {
+                'attack': '攻击力',
+                'defense': '防御力',
+                'HP': '生命',
+                'ailment_accuracy': '效果命中',
+                'speed': '速度',
+                'healing_effect': '治疗效果'
             }
         };
 
         const statOrder = ['attack', 'defense', 'HP', 'ailment_accuracy', 'speed', 'healing_effect'];
         statOrder.forEach(stat => {
             if (buffs.stats[stat] && buffs.stats[stat] > 0) {
-                const label = statLabels[currentLang][stat] || stat;
+                const label = (statLabels[currentLang] && statLabels[currentLang][stat]) || stat;
                 let valueText = '';
                 if (stat === 'speed') {
                     valueText = `+${buffs.stats[stat].toFixed(1)}`;
@@ -389,16 +404,16 @@
 
         // 페르소나 대미지
         if (buffs.personaDmg > 0) {
-            const label = currentLang === 'en' ? 'Persona' : (currentLang === 'jp' ? 'ペルソナ' : '페르소나');
-            const dmgText = currentLang === 'en' ? 'damage' : (currentLang === 'jp' ? 'ダメージ' : '대미지');
+            const label = currentLang === 'en' ? 'Persona' : (currentLang === 'jp' ? 'ペルソナ' : (currentLang === 'cn' ? '人格面具' : '페르소나'));
+            const dmgText = currentLang === 'en' ? 'damage' : (currentLang === 'jp' ? 'ダメージ' : (currentLang === 'cn' ? '伤害' : '대미지'));
             const icon = createIcon(`${base}/assets/img/stat-icon/대미지 보너스.png`, label);
             lines.push(`${icon}${label} ${dmgText} +${buffs.personaDmg.toFixed(1)}%`);
         }
 
         // 주인공 대미지
         if (buffs.protagonistDmg > 0) {
-            const label = currentLang === 'en' ? 'Protagonist' : (currentLang === 'jp' ? '主人公' : '주인공');
-            const dmgText = currentLang === 'en' ? 'damage' : (currentLang === 'jp' ? 'ダメージ' : '대미지');
+            const label = currentLang === 'en' ? 'Protagonist' : (currentLang === 'jp' ? '主人公' : (currentLang === 'cn' ? '主角' : '주인공'));
+            const dmgText = currentLang === 'en' ? 'damage' : (currentLang === 'jp' ? 'ダメージ' : (currentLang === 'cn' ? '伤害' : '대미지'));
             const icon = createIcon(`${base}/assets/img/stat-icon/대미지 보너스.png`, label);
             lines.push(`${icon}${label} ${dmgText} +${buffs.protagonistDmg.toFixed(1)}%`);
         }
@@ -440,13 +455,25 @@
                 '축복': '祝福',
                 '질풍': '疾風',
                 '주원': '呪怨'
+            },
+            cn: {
+                '물리': '物理',
+                '총격': '枪击',
+                '화염': '火焰',
+                '염동': '念动',
+                '빙결': '冰冻',
+                '핵열': '核热',
+                '전격': '电击',
+                '축복': '祝福',
+                '질풍': '疾风',
+                '주원': '咒怨'
             }
         };
 
         Object.entries(buffs.elementDmg).forEach(([element, value]) => {
             if (value > 0) {
-                const label = elementLabels[currentLang][element] || element;
-                const dmgText = currentLang === 'en' ? 'damage' : (currentLang === 'jp' ? 'ダメージ' : '대미지');
+                const label = (elementLabels[currentLang] && elementLabels[currentLang][element]) || element;
+                const dmgText = currentLang === 'en' ? 'damage' : (currentLang === 'jp' ? 'ダメージ' : (currentLang === 'cn' ? '伤害' : '대미지'));
                 const icon = createIcon(`${base}/assets/img/skill-element/${element}.png`, label, true);
                 lines.push(`${icon}${label} ${dmgText} +${value.toFixed(1)}%`);
             }
@@ -457,7 +484,8 @@
             const expText = {
                 kr: `마이 팰리스 레벨 경험치 ${Math.floor(buffs.exp)} 증가`,
                 en: `Increases Thieves Den level experience by ${Math.floor(buffs.exp)}`,
-                jp: `マイパレスレベル経験値${Math.floor(buffs.exp)}増加`
+                jp: `マイパレスレベル経験値${Math.floor(buffs.exp)}増加`,
+                cn: `怪盗秘巢等级经验增加${Math.floor(buffs.exp)}`
             };
             lines.push(expText[currentLang] || expText.kr);
         }
@@ -467,15 +495,16 @@
             const staminaText = {
                 kr: `매일 첫 접속 시 체력 ${Math.floor(buffs.stamina)}포인트 추가 획득`,
                 en: `Restores ${Math.floor(buffs.stamina)} stamina after the first login of each day`,
-                jp: `毎日初回ログイン時にスタミナ${Math.floor(buffs.stamina)}ポイント追加獲得`
+                jp: `毎日初回ログイン時にスタミナ${Math.floor(buffs.stamina)}ポイント追加獲得`,
+                cn: `每日首次登录时额外获得${Math.floor(buffs.stamina)}点体力`
             };
             lines.push(staminaText[currentLang] || staminaText.kr);
         }
 
         // 특수 버프 (영혼석 등) - 아이콘 없음
         if (buffs.special[3]) {
-            const label = currentLang === 'en' ? 'Konpaku Gems' : (currentLang === 'jp' ? '魂魄石' : '영혼석');
-            const prefixText = currentLang === 'en' ? '[Pursuit of Treasure]' : (currentLang === 'jp' ? '[財宝追加]' : '[재물 추가]');
+            const label = currentLang === 'en' ? 'Konpaku Gems' : (currentLang === 'jp' ? '魂魄石' : (currentLang === 'cn' ? '魂魄玉' : '영혼석'));
+            const prefixText = currentLang === 'en' ? '[Pursuit of Treasure]' : (currentLang === 'jp' ? '[財宝追加]' : (currentLang === 'cn' ? '[财宝追击]' : '[재물 추가]'));
             lines.push(`${prefixText} ${label} +${Math.floor(buffs.special[3])}`);
         }
 

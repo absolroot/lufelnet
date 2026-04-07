@@ -71,13 +71,15 @@ window.recommendParty["이치고"] = {
             "name": "아야카",
             "comment": "이치고는 HIGHLIGHT를 최대한 빨리 3회 사용해야 의식0의 효과를 모두 얻을 수 있고, 아야카는 이치고의 HIGHLIGHT를 자주 사용할 수 있게 한다.",
             "comment_en": "Ichigo needs to use HIGHLIGHT as soon as possible to get all the effects of A0, and Ayaka allows Ichigo's HIGHLIGHT to be used frequently.",
-            "comment_jp": "苺はHIGHLIGHTをできるだけ早く3回使用してA0の効果をすべて得る必要があり、綾香は苺のHIGHLIGHTを頻繁に使用できるようにする。"
+            "comment_jp": "苺はHIGHLIGHTをできるだけ早く3回使用してA0の効果をすべて得る必要があり、綾香は苺のHIGHLIGHTを頻繁に使用できるようにする。",
+            "comment_cn": "一五需要尽快使用3次HIGHLIGHT才能吃满意识0的全部效果，而绫香能让一五更频繁地使用HIGHLIGHT。"
         },
         {
             "name": "미나미·여름",
             "comment": "미나미는 아이템을 통해 독립 버킷의 지속 대미지 강화 버프를 줄 수 있다.",
             "comment_en": "Can grant an independent bucket DOT damage boost through item use.",
             "comment_jp": "アイテム使用によって、独立バケットの持続ダメージ強化効果を付与できる。",
+            "comment_cn": "南美可通过道具提供独立乘区的持续伤害提升增益。"
         }
     ]
 };

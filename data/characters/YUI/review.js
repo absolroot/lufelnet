@@ -23,13 +23,21 @@ Since Wonder must attack to trigger Yui’s Follow-up, he can't use the usual su
 
 ワンダーは攻撃を行わなければユイの追撃を発動させることができないため、一般的に使用されるサポート系ペルソナを使えない。
 そのため、攻撃しながらデバフやバフを付与できるペルソナを選択することが実質的に必須となる。`,
+        review_cn: `是当同伴怪盗使用技能造成伤害时，**有一定概率发动不消耗资源的追加攻击**的电击单体输出角色。
+
+除去通过技能2指定『玩伴』，或者HIGHLIGHT生效中的情况以外，她的追击本质上还是概率触发，因此多少需要一点运气。
+
+这种概率机制有时会让人觉得不稳定，但反过来说，如果所有攻击都能顺利触发追加攻击，她的上限会非常高。
+
+对于Wonder来说，只有主动出手攻击时才有机会触发YUI的追击，因此无法像平时那样自由使用纯辅助型人格面具。换句话说，Wonder基本会被绑定到那些能够通过攻击顺带提供减益或增益的人格面具上。`,
         pros: ["놀이 친구의 행동 횟수가 많은 경우 추격 횟수가 증가하여 대미지를 증가시킬 수 있다.", "적을 감전시키고 놀이 친구의 크리티컬 확률을 높일 수 있다."],
         pros_en: ["If the number of times the Player 2's action is high, the number of Resonance increases and the damage increases.","Can shock enemies and increase the critical rate of Player 2."],
         pros_jp: ["お友達の行動回数が多い場合、チェイス回数が増加してダメージが増加します。","敵を電撃させて、お友達のクリティカル率を上げることができます。"],
+        pros_cn: ["『玩伴』行动次数越多，追击次数也越多，能进一步提高伤害。", "能够赋予敌人触电，并提高『玩伴』的暴击率。"],
         cons: ["확률적 요소가 있어 최고점을 위해서는 재시도가 필요할 수 있다.","아군이 대미지를 주어야만 추격이 발동되는 구조이기 때문에 행동을 제약시킨다."],
         cons_en: ["There is a probabilistic element, so it may be necessary to retry for the highest score.","Since the structure requires that the ally must deal damage for the Resonance to trigger, it constrains the ally's action."],
         cons_jp: ["確率行動要素があるため、最高点を目指すために再挑戦が必要な場合があります。","味方がダメージを与えた時にしか追撃が発動しないため、味方の行動が制限されます。"],
+        cons_cn: ["存在概率因素，想打到最高上限时可能需要反复重试。", "只有同伴先造成伤害才能触发追击，因此会限制队伍行动结构。"],
     };
 })();
-
 

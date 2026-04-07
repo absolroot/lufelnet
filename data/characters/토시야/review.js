@@ -35,12 +35,25 @@ By repeating Skill 1 to inflict as many Curse Effects as possible, and using Per
 
 スキル1を繰り返してできるだけ多くの敵に呪怨効果を付与し、ペルソナ**パズズ**のパッシブでこれを清算することで、大きなダメージを与えることができます。
 `,
+        review_cn: `
+是以诅咒效果为核心，对敌人造成百分比伤害的输出角色。
+
+**诅咒效果造成的是基于敌方生命值的伤害，受万能属性伤害影响，而不是受诅咒属性伤害影响。**
+
+因此，配队时要么搭配能够提升万能属性伤害的Wonder武器，要么围绕**提高伤害加成**来构建增益。
+
+技能1赋予的『憎恨诗句』有30%的概率给敌人附加诅咒效果，而这30%还可以根据效果命中数值进一步提高。
+
+通过反复使用技能1，尽可能给敌人叠加更多诅咒效果，再借助人格面具**帕祖祖**的被动进行结算，就能打出可观的伤害。
+`,
         pros: ["주원 효과의 체력 비례 대미지를 통해 대량의 대미지를 줄 수 있다."],
         pros_en: ["It can deal a large amount of damage through HP-scaling damage from Curse Effects."],
         pros_jp: ["呪怨効果によるHP割合ダメージを活用して大きなダメージを与えることができます。"],
+        pros_cn: ["能够通过诅咒效果的生命值比例伤害打出高额输出。"],
         cons: ["절대 다수의 보스가 체력 비례 대미지 감소 효과를 가지고 있어 토시야의 도트 대미지의 효율이 급감한다.", "주원 부여 확률이 생각보다 낮다.", "운명의 십사행시 발동을 위해선 여러 타수를 공격하는 팀 구성이 필요하다."],
         cons_en: ["Most bosses have HP-scaling damage reduction effects, which drastically decreases the effectiveness of Toshiya's Bleed damage.", "The probability of applying Curse is lower than expected.", "Sonnet of Fate requires team compositions that facilitate multi-hits."],
         cons_jp: ["大多数のボスはHP割合ダメージ軽減効果を持っており、そのためトシヤの持続ダメージ（ドット）効率は大幅に低下します。", "呪怨効果付与確率は想像より低いです。", "。"],
+        cons_cn: ["绝大多数首领都带有生命值比例伤害减免效果，导致他的持续伤害效率会明显下降。", "附加诅咒效果的概率比预想中更低。", "想稳定触发『命运的十四行诗』，需要多段攻击较多的队伍配置。"],
     };
 })();
 

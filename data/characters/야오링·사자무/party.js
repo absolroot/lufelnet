@@ -93,25 +93,29 @@ window.recommendParty["야오링·사자무"] = {
             "name": "미오",
             "comment": "TECHINCAL 효과를 강화하고 적 전체의 방어력을 감소시키며 화상 상태인 적이 필요한 메커니즘을 공유한다.",
             "comment_en": "Enhances TECHNICAL effects and reduces DEF of all enemies, and shares the mechanism that requires Burned enemies.",
-            "comment_jp": "TECHNICAL効果を強化し、全敵のDEFを低下させ、火傷状態の敵が必要なメカニズムを共有する。"
+            "comment_jp": "TECHNICAL効果を強化し、全敵のDEFを低下させ、火傷状態の敵が必要なメカニズムを共有する。",
+            "comment_cn": "可强化TECHNICAL效果，降低全体敌人的防御力，并共享需要敌人处于燃烧状态的机制。"
         },
         {
             "name": "루우나",
             "comment": "광역 방어력 감소와 더불어 적을 화상 상태에 빠뜨리고, 받는 화염 속성 대미지를 증가시킨다.",
             "comment_en": "Applies an AoE DEF reduction, inflicts Burn, and increases enemies’ Fire damage taken.",
             "comment_jp": "広範囲に防御力を低下させ、敵を炎上状態にし、受ける火炎ダメージを増加させる。",
+            "comment_cn": "可施加范围防御力降低、让敌人陷入燃烧状态，并提高其受到的火焰属性伤害。"
         },
         {
             "name": "준페이",
             "comment": "화염 속성 딜러가 존재할 때 준페이의 가치가 크게 증가한다. 또한 준페이는 적에게 스킬3을 통해 화상을 부여할 수 있다.",
             "comment_en": "Junpei Iori’s value increases significantly when a Fire attribute DPS is present. Additionally, Junpei Iori can inflict Burn on enemies by using Skill 3.",
-            "comment_jp": "火炎属性ダメージデュースがいる場合、伊織順平の価値が大幅に増加します。また、伊織順平はスキル3を使用して敵に火傷を与えることができます。"
+            "comment_jp": "火炎属性ダメージデュースがいる場合、伊織順平の価値が大幅に増加します。また、伊織順平はスキル3を使用して敵に火傷を与えることができます。",
+            "comment_cn": "当队伍中存在火焰属性主C时，顺平的价值会大幅提升。此外，顺平还能通过技能3对敌人施加燃烧。"
         },
         {
             "name": "코로마루",
             "comment": "코로마루는 적 전체의 화염 속성을 약점을 강화하고 화상을 부여하며 아군 전체의 대미지를 강화할 수 있다.",
             "comment_en": "Koromaru can enhance all enemies' Fire weakness, inflict Burn, and increase the entire party's damage.",
-            "comment_jp": "コロマルは敵全体の火炎属性の弱点を強化し、炎上状態を付与し、味方全体のダメージを増加させることができる。"
+            "comment_jp": "コロマルは敵全体の火炎属性の弱点を強化し、炎上状態を付与し、味方全体のダメージを増加させることができる。",
+            "comment_cn": "可强化全体敌人的火焰属性弱点、施加燃烧，并提高全队伤害。"
         }
     ]
 };

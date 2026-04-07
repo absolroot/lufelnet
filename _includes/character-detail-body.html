@@ -8,6 +8,7 @@
   window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
 </script>
 {% endif %}
+<script src="{{ site.baseurl }}/assets/js/character/character-calc-base.js?v={{ site.time | date: '%s' }}"></script>
 
 <!-- URL rewrite: /character.html?name=X&lang=Y → /{lang}/character/{slug}/ -->
 <script>
@@ -1094,6 +1095,8 @@
             window.KoromaruCalc = window.KoromaruCalc || {};
             // 아란 전용 계산기 전역 스텁
             window.AranCalc = window.AranCalc || {};
+            // 마유미 전용 계산기 전역 스텁
+            window.MayumiCalc = window.MayumiCalc || {};
         } catch (e) { console.warn('[SAFE:init-globals]', e); }
 
         async function loadCharacterDataAll(name) {
@@ -1133,6 +1136,11 @@
             // 아란 전용 효과명중 계산기 로드
             if (name === '아란') {
                 tasks.push(loadPerCharacterResource(name, { fileBase: 'aran_calc', globalVarName: 'AranCalc' }));
+            }
+
+            // 마유미 전용 속도 계산기 로드
+            if (name === '마유미') {
+                tasks.push(loadPerCharacterResource(name, { fileBase: 'mayumi_calc', globalVarName: 'MayumiCalc' }));
             }
 
             await Promise.all(tasks.map(t => safeAwait('loadPerCharacterResource', t)));

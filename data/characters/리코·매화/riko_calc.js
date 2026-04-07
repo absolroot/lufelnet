@@ -4,6 +4,8 @@
   window.RikoCalc = window.RikoCalc || {};
   window.RikoCalc['리코·매화'] = true;
 
+  var CalcBase = window.CharacterCalcBase || null;
+
   /* ── i18n ────────────────────────────────────────── */
   function getCurrentLanguage() {
     try {
@@ -393,6 +395,16 @@
   }
 
   function makeRevIcon(suffix) {
+    if (CalcBase && typeof CalcBase.makeRevelationIcon === 'function') {
+      return CalcBase.makeRevelationIcon(
+        suffix === '주' ? 'space' :
+        suffix === '일' ? 'sun' :
+        suffix === '월' ? 'moon' :
+        suffix === '성' ? 'star' :
+        suffix === '진' ? 'sky' : '',
+        'riko-rev-icon'
+      );
+    }
     var img = document.createElement('img');
     img.src = BASE + '/assets/img/revelation/icon-' + suffix + '.png';
     img.alt = suffix;
@@ -401,6 +413,9 @@
   }
 
   function makeStatIcon(name) {
+    if (CalcBase && typeof CalcBase.makeStatIcon === 'function') {
+      return CalcBase.makeStatIcon(name, 'riko-stat-icon');
+    }
     var img = document.createElement('img');
     img.src = BASE + '/assets/img/stat-icon/' + name + '.png';
     img.alt = name;
@@ -717,25 +732,40 @@
 
   /* ── Init ───────────────────────────────────────── */
   function init() {
-    var name = '';
-    try {
-      var params = new URLSearchParams(window.location.search);
-      name = params.get('name') || window.__CHARACTER_DEFAULT || '';
-    } catch (_) {
-      name = window.__CHARACTER_DEFAULT || '';
+    var name = CalcBase && typeof CalcBase.getCurrentCharacterName === 'function'
+      ? CalcBase.getCurrentCharacterName()
+      : '';
+    if (!name) {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        name = params.get('name') || window.__CHARACTER_DEFAULT || '';
+      } catch (_) {
+        name = window.__CHARACTER_DEFAULT || '';
+      }
     }
     if (name !== '리코·매화') return;
 
     loadState();
     ensureStyles();
 
-    if (document.querySelector('.riko-calc-card')) return;
-
-    var skillsCard = document.querySelector('.skills-card.card-style');
-    if (!skillsCard) return;
-
     var card = buildCard();
-    skillsCard.parentNode.insertBefore(card, skillsCard);
+    if (CalcBase && typeof CalcBase.mountCardWhenReady === 'function') {
+      CalcBase.mountCardWhenReady({ card: card, cardClass: 'riko-calc-card' }, function () {
+        updateWeaponVisibility();
+        recalculate();
+      });
+      return;
+    }
+
+    if (CalcBase && typeof CalcBase.mountCard === 'function') {
+      if (!CalcBase.mountCard({ card: card, cardClass: 'riko-calc-card' })) return;
+    } else {
+      if (document.querySelector('.riko-calc-card')) return;
+
+      var skillsCard = document.querySelector('.skills-card.card-style');
+      if (!skillsCard) return;
+      skillsCard.parentNode.insertBefore(card, skillsCard);
+    }
 
     updateWeaponVisibility();
     recalculate();

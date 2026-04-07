@@ -805,6 +805,74 @@ input, select, textarea, button {
   top: calc(var(--header-h) + 16px);
 }
 
+.iant-compare-panel {
+  margin-top: 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: linear-gradient(180deg, var(--bg-surface), var(--bg-elevated));
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.iant-compare-title {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.modal-dialog {
+  width: min(420px, calc(100vw - 24px));
+  border: 0;
+  padding: 0;
+  border-radius: 16px;
+  background: transparent;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.25);
+}
+
+.modal-dialog::backdrop {
+  background: rgba(15, 23, 42, 0.46);
+  backdrop-filter: blur(4px);
+}
+
+.modal-card {
+  margin: 0;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--bg-base);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.modal-head h2 {
+  margin: 2px 0 0;
+  font-size: 1.05rem;
+  line-height: 1.2;
+}
+
+.modal-actions {
+  justify-content: flex-end;
+}
+
+.report-source-status {
+  margin: 10px 0 0;
+}
+
+.error-text {
+  color: var(--red);
+}
+
 /* ── Table ──────────────────────────────────────────────────── */
 .table-wrap {
   border: 1px solid var(--border);

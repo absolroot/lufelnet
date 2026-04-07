@@ -16,9 +16,9 @@ Skill 3 can be used once per turn without consuming a turn, making it very relia
 
 Skill 1 stacks [Sinful Karma] on enemies marked with [Sin] and copies it to other enemies carrying [Sin], while Skill 2 functions as a unique defensive tool that turns the party's affinity into Repel.
 
-As a result, he plays more like a hybrid support who simultaneously provides **Defense Down, increased HIGHLIGHT damage taken, Attack buffs, and reflect-based utility**.
+As a result, she plays more like a hybrid support who simultaneously provides **Defense Down, increased HIGHLIGHT damage taken, Attack buffs, and reflect-based utility**.
 
-He also pairs especially well with Motoha·Astra, who naturally targets 2 enemies and can make strong use of [Sin] propagation.`,
+She also pairs especially well with Motoha·Astra, who naturally targets 2 enemies and can make strong use of [Sin] propagation.`,
         review_jp: `4★呪怨デバッファーで、敵2体に『罪』を指定し、その対象を起点に『罪業』と各種弱体効果を広げていく構造を持つ。
 
 スキル3はターンを消費せず毎ターン1回使用できるため、戦闘中を通して2体対象ベースのデバフ運用を非常に安定して維持できる。
@@ -34,7 +34,7 @@ He also pairs especially well with Motoha·Astra, who naturally targets 2 enemie
 
 技能1会给带有『罪』的敌人叠加『罪业』，并把该层数复制给其他同样带有『罪』的敌人；技能2则是非常特别的防御技能，可以把我方全体适应性改成反弹。
 
-因此他本质上更接近一名复合型辅助，能够同时提供**防御力降低、HIGHLIGHT受伤提升、全队攻击力加成，以及反弹型生存支援**。
+因此她本质上更接近一名复合型辅助，能够同时提供**防御力降低、HIGHLIGHT受伤提升、全队攻击力加成，以及反弹型生存支援**。
 
 尤其是与同期登场、默认就会瞄准2名敌人的新井素羽·晴光搭配时，『罪』的扩散效率会非常高。`,
         pros: [
@@ -61,7 +61,7 @@ He also pairs especially well with Motoha·Astra, who naturally targets 2 enemie
           "죄 전파 효율을 살리려면 2체 타겟 환경이 중요하다."
         ],
         cons_en: [
-          "His debuff spread is much better in 2-target focused fights."
+          "Her debuff spread is much better in 2-target focused fights."
         ],
         cons_jp: [
           "『罪』の伝播効率を活かすには、2体対象の戦闘環境が重要。"

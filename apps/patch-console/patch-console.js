@@ -9,6 +9,12 @@ const state = {
   selectedDiffKeys: new Set(),
   selectedIgnoredKeys: new Set(),
   ignoredSearch: '',
+  reportSource: { type: 'external', server: null, isProdValue: '' },
+  reportSourceLocalLangs: [],
+  reportSourceStatus: '현재 비교 소스: external',
+  reportSourceError: '',
+  iantServer: 'kr',
+  iantIsProdValue: '',
   ignoredFilters: {
     index: '',
     lang: '',
@@ -117,7 +123,7 @@ const FALLBACK_CAPABILITIES = [
   { id: 'revelation', label: 'Revelation', enabled: true, features: ['list', 'report', 'patch', 'create'], parts: DOMAIN_PARTS.revelation }
 ];
 
-const APP_VERSION = 'patch-console v0.15.0';
+const APP_VERSION = 'patch-console v0.15.2';
 const VIEW_KEY = 'patch-console.activeView';
 const DATA_EDITOR_MODE_KEY = 'patch-console.dataEditorMode';
 const VALID_VIEWS = new Set(['work', 'ignored', 'editor', 'seo-admin', 'revelation-admin']);
@@ -226,6 +232,18 @@ const dom = {
   btnLoadDataFile: document.getElementById('btn-load-data-file'),
   btnSaveDataFile: document.getElementById('btn-save-data-file'),
   ignoredList: document.getElementById('ignored-list'),
+  iantComparePanel: document.getElementById('iant-compare-panel'),
+  iantSelectedCharacter: document.getElementById('iant-selected-character'),
+  iantServer: document.getElementById('iant-server'),
+  btnRunIantCompare: document.getElementById('btn-run-iant-compare'),
+  iantIsProdDialog: document.getElementById('iant-is-prod-dialog'),
+  iantIsProdForm: document.getElementById('iant-is-prod-form'),
+  iantIsProdInput: document.getElementById('iant-is-prod-input'),
+  iantIsProdError: document.getElementById('iant-is-prod-error'),
+  btnIantIsProdCancel: document.getElementById('btn-iant-is-prod-cancel'),
+  btnIantIsProdSubmit: document.getElementById('btn-iant-is-prod-submit'),
+  reportSourceLabel: document.getElementById('report-source-label'),
+  reportSourceStatus: document.getElementById('report-source-status'),
   btnUnignoreSelected: document.getElementById('btn-unignore-selected'),
   newApi: document.getElementById('new-api'),
   newLocal: document.getElementById('new-local'),
@@ -485,6 +503,156 @@ function parseCsv(value) {
   return String(value || '').split(',').map((x) => x.trim()).filter(Boolean);
 }
 
+function cloneSource(source) {
+  const type = String(source?.type || 'external').trim().toLowerCase() === 'iant' ? 'iant' : 'external';
+  const legacyIsProd = source && Object.prototype.hasOwnProperty.call(source, 'isProd')
+    ? source.isProd
+    : null;
+  const rawIsProdValue = source && Object.prototype.hasOwnProperty.call(source, 'isProdValue')
+    ? source.isProdValue
+    : legacyIsProd;
+  return {
+    type,
+    server: type === 'iant' && source?.server ? String(source.server).trim().toLowerCase() : null,
+    isProdValue: type === 'iant' && rawIsProdValue != null ? String(rawIsProdValue).trim() : ''
+  };
+}
+
+function externalSource() {
+  return { type: 'external', server: null, isProdValue: '' };
+}
+
+function localLangForIantServer(server) {
+  const normalized = String(server || '').trim().toLowerCase();
+  if (normalized === 'tw') return 'cn';
+  if (normalized === 'sea') return 'en';
+  return normalized || 'kr';
+}
+
+function sourceKey(source) {
+  const normalized = cloneSource(source);
+  return JSON.stringify(normalized);
+}
+
+function diffSourceKey(source) {
+  const normalized = cloneSource(source);
+  if (normalized.type !== 'iant') return '';
+  return `|src:iant:${normalized.server || ''}:${encodeURIComponent(normalized.isProdValue || '')}`;
+}
+
+function reportSourceLabelText(source = state.reportSource, localLangs = state.reportSourceLocalLangs) {
+  const normalized = cloneSource(source);
+  if (normalized.type !== 'iant') return 'external';
+  const langs = Array.isArray(localLangs) ? localLangs.filter(Boolean) : [];
+  const langText = langs.length > 0 ? ` -> ${langs.join(',')}` : '';
+  return `iant:${normalized.server}${langText}`;
+}
+
+function reportSourceStatusText(source = state.reportSource, localLangs = state.reportSourceLocalLangs) {
+  const normalized = cloneSource(source);
+  if (normalized.type !== 'iant') return '현재 비교 소스: external';
+  const langs = Array.isArray(localLangs) ? localLangs.filter(Boolean) : [];
+  const target = langs.length > 0 ? ` / local ${langs.join(',')}` : '';
+  return `현재 비교 소스: iant ${normalized.server}${target}`;
+}
+
+function setReportSourceState(source, { localLangs = [], status = '', error = '' } = {}) {
+  state.reportSource = cloneSource(source);
+  state.reportSourceLocalLangs = [...new Set((Array.isArray(localLangs) ? localLangs : []).map((lang) => String(lang || '').trim().toLowerCase()).filter(Boolean))];
+  state.reportSourceError = String(error || '').trim();
+  state.reportSourceStatus = String(status || '').trim() || reportSourceStatusText(state.reportSource, state.reportSourceLocalLangs);
+}
+
+function selectedListRow() {
+  return state.listRows.find((row) => Number(row.index) === Number(state.activeListIndex)) || null;
+}
+
+function iantSourceFromUi(isProdValue = state.iantIsProdValue) {
+  const server = String(dom.iantServer?.value || state.iantServer || 'kr').trim().toLowerCase();
+  return {
+    type: 'iant',
+    server,
+    isProdValue: String(isProdValue || '').trim()
+  };
+}
+
+function describeRequestError(error) {
+  const stderr = String(error?.payload?.stderr || '').trim();
+  if (stderr) return stderr;
+  const stdout = String(error?.payload?.stdout || '').trim();
+  if (stdout) return stdout;
+  return String(error?.message || 'Unknown error');
+}
+
+function hideIantIsProdError() {
+  if (!dom.iantIsProdError) return;
+  dom.iantIsProdError.textContent = '값을 입력하세요.';
+  dom.iantIsProdError.classList.add('hidden');
+}
+
+function showIantIsProdError(message) {
+  if (!dom.iantIsProdError) return;
+  dom.iantIsProdError.textContent = String(message || '값을 입력하세요.');
+  dom.iantIsProdError.classList.remove('hidden');
+}
+
+function promptIantIsProdValue(initialValue = state.iantIsProdValue) {
+  if (!dom.iantIsProdDialog || !dom.iantIsProdForm || !dom.iantIsProdInput) {
+    const fallback = window.prompt('is_prod 값을 입력하세요.', initialValue || '');
+    if (fallback == null) return Promise.resolve(null);
+    return Promise.resolve(String(fallback || '').trim());
+  }
+
+  const dialog = dom.iantIsProdDialog;
+  const form = dom.iantIsProdForm;
+  const input = dom.iantIsProdInput;
+  const cancelButton = dom.btnIantIsProdCancel;
+
+  return new Promise((resolve) => {
+    const cleanup = () => {
+      form.removeEventListener('submit', handleSubmit);
+      dialog.removeEventListener('close', handleClose);
+      cancelButton?.removeEventListener('click', handleCancel);
+    };
+
+    const handleClose = () => {
+      const submitted = dialog.returnValue === 'submit';
+      const value = submitted ? String(input.value || '').trim() : null;
+      cleanup();
+      hideIantIsProdError();
+      resolve(value);
+    };
+
+    const handleCancel = () => {
+      dialog.returnValue = 'cancel';
+      dialog.close('cancel');
+    };
+
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      const value = String(input.value || '').trim();
+      if (!value) {
+        showIantIsProdError('비교에 사용할 값을 입력하세요.');
+        input.focus();
+        return;
+      }
+      dialog.returnValue = 'submit';
+      dialog.close('submit');
+    };
+
+    input.value = String(initialValue || '').trim();
+    hideIantIsProdError();
+    form.addEventListener('submit', handleSubmit);
+    dialog.addEventListener('close', handleClose);
+    cancelButton?.addEventListener('click', handleCancel);
+    dialog.showModal();
+    window.requestAnimationFrame(() => {
+      input.focus();
+      input.select();
+    });
+  });
+}
+
 function defaultLangsForDomain(domain = state.domain) {
   const key = String(domain || '').trim();
   return DOMAIN_DEFAULT_LANGS[key] || DOMAIN_DEFAULT_LANGS.character;
@@ -546,13 +714,25 @@ function updatePartsToggleLabel() {
   dom.partsToggle.textContent = parts.length === ordered.length ? '전체 파트' : parts.join(', ');
 }
 
-function readFilterForm() {
+function readFilterForm(overrides = {}) {
+  const source = cloneSource(overrides.source || state.reportSource || externalSource());
+  const langs = (() => {
+    if (overrides.langs) return overrides.langs;
+    if (source.type === 'iant') {
+      if (Array.isArray(state.reportSourceLocalLangs) && state.reportSourceLocalLangs.length > 0) {
+        return asCsv(state.reportSourceLocalLangs);
+      }
+      return localLangForIantServer(source.server);
+    }
+    return asCsv(parseCsv(dom.langsInput?.value || '')) || defaultLangsForDomain(state.domain);
+  })();
   return {
-    domain: state.domain,
-    langs: asCsv(parseCsv(dom.langsInput?.value || '')) || defaultLangsForDomain(state.domain),
-    parts: selectedPartsCsv(),
-    scopeMode: dom.scopeMode?.value || 'all',
-    scopeValue: String(dom.scopeValue?.value || '').trim()
+    domain: overrides.domain || state.domain,
+    langs,
+    parts: overrides.parts || selectedPartsCsv(),
+    scopeMode: overrides.scopeMode || dom.scopeMode?.value || 'all',
+    scopeValue: overrides.scopeValue != null ? String(overrides.scopeValue).trim() : String(dom.scopeValue?.value || '').trim(),
+    source
   };
 }
 
@@ -617,9 +797,11 @@ function setPending(button, pending) {
   if (!button) return;
   if (pending) {
     button.dataset.prev = button.textContent;
+    button.dataset.pending = '1';
     button.textContent = '진행 중...';
     button.disabled = true;
   } else {
+    delete button.dataset.pending;
     button.textContent = button.dataset.prev || button.textContent;
     button.disabled = false;
   }
@@ -644,7 +826,16 @@ async function refreshPatchWorkspace({ logSuccess = false } = {}) {
       await step.run();
     } catch (error) {
       hasError = true;
-      appendLog(`[${state.domain}] ${step.label} 실패: ${error.message}`);
+      const detail = describeRequestError(error);
+      if (step.run === generateReport) {
+        setReportSourceState(state.reportSource, {
+          localLangs: state.reportSourceLocalLangs,
+          status: state.reportSourceStatus,
+          error: `리포트 갱신 실패: ${detail}`
+        });
+        renderCounts();
+      }
+      appendLog(`[${state.domain}] ${step.label} 실패: ${detail}`);
     }
   }
 
@@ -731,6 +922,44 @@ function renderCounts() {
 
   const ignoreSortLabel = document.getElementById('ignored-sort-label');
   if (ignoreSortLabel) ignoreSortLabel.textContent = String(state.ignoredSort || 'created_desc');
+  renderReportSourceSummary();
+  renderIantControls();
+}
+
+function renderReportSourceSummary() {
+  if (dom.reportSourceLabel) {
+    dom.reportSourceLabel.textContent = reportSourceLabelText();
+  }
+  if (dom.reportSourceStatus) {
+    dom.reportSourceStatus.textContent = state.reportSourceError || state.reportSourceStatus || reportSourceStatusText();
+    dom.reportSourceStatus.classList.toggle('error-text', Boolean(state.reportSourceError));
+  }
+}
+
+function renderIantControls() {
+  if (dom.iantComparePanel) {
+    dom.iantComparePanel.classList.toggle('hidden', state.domain !== 'character');
+  }
+  if (dom.iantServer && dom.iantServer.value !== state.iantServer) {
+    dom.iantServer.value = state.iantServer;
+  }
+
+  const row = selectedListRow();
+  if (dom.iantSelectedCharacter) {
+    if (state.domain !== 'character') {
+      dom.iantSelectedCharacter.textContent = 'character 도메인에서만 사용할 수 있습니다.';
+    } else if (!row) {
+      dom.iantSelectedCharacter.textContent = '대상 캐릭터를 목록에서 선택하세요.';
+    } else {
+      const mappedLang = localLangForIantServer(state.iantServer);
+      dom.iantSelectedCharacter.textContent = `#${row.index} ${row.api} / ${row.local} / ${row.key} / local=${mappedLang}`;
+    }
+  }
+  if (dom.btnRunIantCompare) {
+    dom.btnRunIantCompare.disabled = dom.btnRunIantCompare.dataset.pending === '1'
+      ? true
+      : (state.domain !== 'character' || !row);
+  }
 }
 
 function seoStateRef() {
@@ -2215,6 +2444,7 @@ function updateDomainDependentUi() {
   if (dom.addRevelationGroup) {
     dom.addRevelationGroup.classList.toggle('hidden', state.domain !== 'revelation');
   }
+  renderIantControls();
 }
 
 function renderDomainTabs() {
@@ -2561,8 +2791,8 @@ function renderDiffColumns(beforeValue, afterValue) {
   };
 }
 
-function makeDiffKey({ index, lang, part, path }) {
-  return `${state.domain}|${Number(index)}|${String(lang || '').trim().toLowerCase()}|${String(part || '').trim()}|${String(path || '').trim()}`;
+function makeDiffKey({ index, lang, part, path, source }) {
+  return `${state.domain}|${Number(index)}|${String(lang || '').trim().toLowerCase()}|${String(part || '').trim()}|${String(path || '').trim()}${diffSourceKey(source)}`;
 }
 
 function normalizeDiffEntry(entry) {
@@ -2591,6 +2821,7 @@ function collectRowDiffEntries(row) {
         api: row.api,
         local: row.local,
         key: row.key,
+        source: cloneSource(row.source),
         part: part.part,
         path: entry.path,
         before: entry.before,
@@ -2861,7 +3092,8 @@ function renderDetail() {
             index: row.index,
             lang: row.lang,
             part: part.part,
-            path: entry.path
+            path: entry.path,
+            source: row.source
           });
           const checked = state.selectedDiffKeys.has(diffKey) ? 'checked' : '';
           const meta = entry.sampleOnly ? '<p class="muted small">샘플 경로만 있습니다. 상세 before/after는 report-json 필요</p>' : '';
@@ -3065,7 +3297,7 @@ async function loadIgnoredList() {
   renderIgnoredList();
 }
 
-async function generateReport() {
+async function generateReport(options = {}) {
   if (!domainSupports('report')) {
     state.reportRows = [];
     renderReportTable();
@@ -3073,33 +3305,48 @@ async function generateReport() {
     return;
   }
 
-  const filter = readFilterForm();
-  appendLog(`[${state.domain}] 리포트 생성: scope=${filter.scopeMode}(${filter.scopeValue || '-'}) langs=${filter.langs} parts=${filter.parts || 'all'}`);
+  const requestedSource = cloneSource(options.source || state.reportSource || externalSource());
+  const filter = readFilterForm({
+    langs: options.langs,
+    scopeMode: options.scopeMode,
+    scopeValue: options.scopeValue,
+    source: requestedSource
+  });
+  appendLog(`[${state.domain}] 리포트 생성: scope=${filter.scopeMode}(${filter.scopeValue || '-'}) langs=${filter.langs} parts=${filter.parts || 'all'} source=${reportSourceLabelText(requestedSource, parseCsv(filter.langs))}`);
   const result = await requestJson('/api/report', { method: 'POST', body: filter });
+  const resultSource = cloneSource(result.source || filter.source || requestedSource);
+  const nextLocalLangs = [...new Set((Array.isArray(result.rows) ? result.rows : []).map((row) => String(row.lang || '').trim().toLowerCase()).filter(Boolean))];
 
   const prevActive = state.activeRowId;
   const prevSelectedRows = new Set(state.selectedIds);
   const prevSelectedDiffs = new Set(state.selectedDiffKeys);
+  const sourceChanged = sourceKey(state.reportSource) !== sourceKey(resultSource);
 
   state.reportRows = Array.isArray(result.rows) ? result.rows : [];
   state.reportRows = state.reportRows.map((row) => ({
     ...row,
+    source: cloneSource(row.source || resultSource),
     rowId: row.rowId || `${row.index}:${row.lang}:${row.api}`,
     partsText: row.partsText || (row.partDiffs || []).map((part) => `${part.part}(${part.diffCount ?? '-'})`).join(', '),
     diffSample: row.diffSample || ''
   }));
 
   const rowIdSet = new Set(state.reportRows.map((row) => rowId(row)));
-  state.selectedIds = new Set([...prevSelectedRows].filter((id) => rowIdSet.has(id)));
+  state.selectedIds = sourceChanged ? new Set() : new Set([...prevSelectedRows].filter((id) => rowIdSet.has(id)));
 
   const diffMap = collectAllDiffEntryMap(state.reportRows);
-  state.selectedDiffKeys = new Set([...prevSelectedDiffs].filter((key) => diffMap.has(key)));
+  state.selectedDiffKeys = sourceChanged ? new Set() : new Set([...prevSelectedDiffs].filter((key) => diffMap.has(key)));
 
-  const restoredFromPrev = prevActive && rowIdSet.has(prevActive) ? prevActive : null;
+  const restoredFromPrev = sourceChanged ? null : (prevActive && rowIdSet.has(prevActive) ? prevActive : null);
   state.activeRowId = restoredFromPrev || null;
 
   if (dom.reportFile) dom.reportFile.textContent = result.reportFile || '-';
   state.ignoredCount = Number(result.ignoredCount || 0);
+  setReportSourceState(resultSource, {
+    localLangs: nextLocalLangs.length > 0 ? nextLocalLangs : parseCsv(filter.langs),
+    status: reportSourceStatusText(resultSource, nextLocalLangs.length > 0 ? nextLocalLangs : parseCsv(filter.langs)),
+    error: ''
+  });
   renderReportTable();
   renderCounts();
   if (Number(result.autoPatchedCount || 0) > 0) {
@@ -3128,13 +3375,14 @@ async function runPatchForRows(rows) {
     return;
   }
 
-  const filter = readFilterForm();
+  const filter = readFilterForm({ source: state.reportSource });
   const result = await requestJson('/api/patch', {
     method: 'POST',
     body: {
       domain: state.domain,
       rows,
-      parts: filter.parts
+      parts: filter.parts,
+      source: cloneSource(state.reportSource)
     }
   });
 
@@ -3209,6 +3457,7 @@ async function runApplySelectedDiffs() {
     method: 'POST',
     body: {
       domain: state.domain,
+      source: cloneSource(state.reportSource),
       diffs: diffs.map((diff) => ({
         index: diff.index,
         lang: diff.lang,
@@ -3241,12 +3490,14 @@ async function runIgnoreDiffEntries(diffs, { emptyMessage = '무시할 Diff가 �
     body: {
       domain: state.domain,
       overwrite: true,
+      source: cloneSource(state.reportSource),
       diffs: targetDiffs.map((diff) => ({
         index: diff.index,
         lang: diff.lang,
         api: diff.api,
         local: diff.local,
         key: diff.key,
+        source: cloneSource(diff.source || state.reportSource),
         part: diff.part,
         path: diff.path,
         before: diff.before,
@@ -4210,6 +4461,7 @@ function bindDomainEvents() {
     state.activeRowId = null;
     state.activeListIndex = null;
     state.ignoredCount = 0;
+    setReportSourceState(externalSource(), { localLangs: [], status: reportSourceStatusText(externalSource()), error: '' });
     setRevelationAdminCreateOpen(false);
     clearIgnoredFilterInputs();
     resetSelectedParts(state.domain);
@@ -4449,7 +4701,7 @@ function bindEvents() {
       setHeaderRefreshPending(true);
       await refreshPatchWorkspace({ logSuccess: true });
     } catch (error) {
-      appendLog(`통합 새로고침 실패: ${error.message}`);
+      appendLog(`통합 새로고침 실패: ${describeRequestError(error)}`);
     } finally {
       setHeaderRefreshPending(false);
     }
@@ -4457,6 +4709,62 @@ function bindEvents() {
 
   dom.btnSelectAll?.addEventListener('click', () => setVisibleSelection(true));
   dom.btnClearSelect?.addEventListener('click', () => setVisibleSelection(false));
+  dom.iantServer?.addEventListener('change', () => {
+    state.iantServer = String(dom.iantServer.value || 'kr').trim().toLowerCase() || 'kr';
+    renderIantControls();
+  });
+  dom.btnRunIantCompare?.addEventListener('click', async () => {
+    const row = selectedListRow();
+    if (state.domain !== 'character') {
+      appendLog('[character] IANT 비교는 character 도메인에서만 사용할 수 있습니다.');
+      return;
+    }
+    if (!row) {
+      appendLog('[character] IANT 비교 대상이 선택되지 않았습니다. 왼쪽 목록에서 캐릭터를 먼저 선택하세요.');
+      renderIantControls();
+      return;
+    }
+
+    const isProdValue = await promptIantIsProdValue(state.iantIsProdValue);
+    if (isProdValue == null) {
+      appendLog('[character] IANT 비교가 취소되었습니다.');
+      return;
+    }
+
+    state.iantIsProdValue = isProdValue;
+    const source = iantSourceFromUi(isProdValue);
+    const localLang = localLangForIantServer(source.server);
+    if (dom.scopeMode) dom.scopeMode.value = 'nums';
+    if (dom.scopeValue) dom.scopeValue.value = String(row.index);
+
+    try {
+      setPending(dom.btnRunIantCompare, true);
+      appendLog(`[${state.domain}] IANT 비교 시작: #${row.index} ${row.api} server=${source.server} local=${localLang}`);
+      await generateReport({
+        source,
+        langs: localLang,
+        scopeMode: 'nums',
+        scopeValue: String(row.index)
+      });
+      if (!state.activeRowId && state.reportRows.length > 0) {
+        const matched = state.reportRows.find((item) => Number(item.index) === Number(row.index)) || state.reportRows[0];
+        state.activeRowId = matched ? rowId(matched) : null;
+        renderReportTable();
+      }
+      focusDetailPanel();
+    } catch (error) {
+      const detail = describeRequestError(error);
+      setReportSourceState(state.reportSource, {
+        localLangs: state.reportSourceLocalLangs,
+        status: state.reportSourceStatus,
+        error: `IANT 비교 실패: ${detail}`
+      });
+      renderCounts();
+      appendLog(`[${state.domain}] IANT 비교 실패: ${detail}`);
+    } finally {
+      setPending(dom.btnRunIantCompare, false);
+    }
+  });
 
   document.addEventListener('keydown', (event) => {
     const key = String(event.key || '').toLowerCase();
@@ -4730,7 +5038,7 @@ function bindEvents() {
 
     try {
       setHeaderRefreshPending(true);
-      await generateReport();
+      await generateReport({ source: externalSource() });
       if (!state.activeRowId && state.reportRows.length > 0) {
         const byCurrentIndex = state.reportRows.find((row) => Number(row.index) === index) || state.reportRows[0];
         state.activeRowId = byCurrentIndex ? rowId(byCurrentIndex) : null;
@@ -4738,7 +5046,7 @@ function bindEvents() {
       }
       focusDetailPanel();
     } catch (error) {
-      appendLog(`목록 클릭 리포트 실패: ${error.message}`);
+      appendLog(`목록 클릭 리포트 실패: ${describeRequestError(error)}`);
     } finally {
       setHeaderRefreshPending(false);
     }

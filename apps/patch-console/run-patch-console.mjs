@@ -222,6 +222,52 @@ function defaultLangCsvForDomain(domain) {
   return 'kr,en,jp';
 }
 
+function normalizeSourcePayload(sourceRaw) {
+  const rawType = String(sourceRaw?.type || 'external').trim().toLowerCase();
+  const type = rawType === 'iant' ? 'iant' : 'external';
+  const server = type === 'iant'
+    ? String(sourceRaw?.server || '').trim().toLowerCase()
+    : '';
+  const rawIsProdValue = sourceRaw && Object.prototype.hasOwnProperty.call(sourceRaw, 'isProdValue')
+    ? sourceRaw.isProdValue
+    : (sourceRaw && Object.prototype.hasOwnProperty.call(sourceRaw, 'isProd') ? sourceRaw.isProd : '');
+  return {
+    type,
+    server: server || null,
+    isProdValue: type === 'iant' ? String(rawIsProdValue || '').trim() : ''
+  };
+}
+
+function sourceSignature(sourceRaw) {
+  const source = normalizeSourcePayload(sourceRaw);
+  if (source.type !== 'iant') return 'external';
+  return `iant:${source.server || ''}:${encodeURIComponent(source.isProdValue || '')}`;
+}
+
+function ignoredItemSource(item) {
+  if (!item || typeof item !== 'object') return null;
+  if (isPlainObject(item.source)) {
+    return normalizeSourcePayload(item.source);
+  }
+  if (hasOwn(item, 'sourceType') || hasOwn(item, 'sourceServer') || hasOwn(item, 'sourceIsProd')) {
+    return normalizeSourcePayload({
+      type: item.sourceType,
+      server: item.sourceServer,
+      isProdValue: hasOwn(item, 'sourceIsProdValue') ? item.sourceIsProdValue : item.sourceIsProd
+    });
+  }
+  return null;
+}
+
+function ignoredSourceMatches(item, targetSourceRaw) {
+  const targetSignature = sourceSignature(targetSourceRaw);
+  const itemSource = ignoredItemSource(item);
+  if (!itemSource) {
+    return targetSignature === 'external';
+  }
+  return sourceSignature(itemSource) === targetSignature;
+}
+
 function makeDiffKey(domain, diff, options = {}) {
   const legacy = Boolean(options.legacy);
   const d = normalizeDomain(domain);
@@ -229,7 +275,9 @@ function makeDiffKey(domain, diff, options = {}) {
   const lang = String(diff?.lang || '').trim().toLowerCase();
   const part = String(diff?.part || '').trim();
   const pathText = String(diff?.path || '').trim();
-  const base = `${d}|${index}|${lang}|${part}|${pathText}`;
+  const source = normalizeSourcePayload(diff?.source || options.source);
+  const sourceText = source.type === 'iant' ? `|src:${sourceSignature(source)}` : '';
+  const base = `${d}|${index}|${lang}|${part}|${pathText}${sourceText}`;
   if (legacy) return base;
 
   const hasBefore = hasOwn(diff, 'before');
@@ -403,7 +451,8 @@ function isIgnoredByStoreItem(domain, row, partName, entry) {
     index: Number(row.index),
     lang: String(row.lang || '').trim().toLowerCase(),
     part: String(partName || '').trim(),
-    path: String(entry.path || '').trim()
+    path: String(entry.path || '').trim(),
+    source: normalizeSourcePayload(row.source)
   };
   const valueSigBefore = valueSignature(entry.before);
   const valueSigAfter = valueSignature(entry.after);
@@ -414,6 +463,7 @@ function isIgnoredByStoreItem(domain, row, partName, entry) {
     if (String(item.lang || '').trim().toLowerCase() !== target.lang) continue;
     if (String(item.part || '').trim() !== target.part) continue;
     if (String(item.path || '').trim() !== target.path) continue;
+    if (!ignoredSourceMatches(item, target.source)) continue;
 
     if (item.matcher === 'value') {
       if (item.beforeSig || item.afterSig) {
@@ -466,6 +516,7 @@ function addIgnoredDiffsWithOptions(domain, diffs, options = {}) {
   const d = normalizeDomain(domain);
   const store = loadIgnoredStore();
   const overwrite = Boolean(options.overwrite);
+  const fallbackSource = normalizeSourcePayload(options.source);
   const map = new Map();
   for (const item of store.items) {
     map.set(String(item.key), item);
@@ -473,12 +524,11 @@ function addIgnoredDiffsWithOptions(domain, diffs, options = {}) {
   let added = 0;
   let updated = 0;
   for (const diff of diffs) {
+    const source = normalizeSourcePayload(diff?.source || fallbackSource);
     const hasBefore = hasOwn(diff, 'before');
     const hasAfter = hasOwn(diff, 'after');
     const matcher = hasBefore || hasAfter ? 'value' : 'path';
-    const key = matcher === 'value'
-      ? makeDiffKey(d, diff)
-      : makeDiffKey(d, diff, { legacy: true });
+    const key = makeDiffKey(d, { ...diff, source });
     if (map.has(key)) {
       if (!overwrite) continue;
       const before = map.get(key) || {};
@@ -498,6 +548,12 @@ function addIgnoredDiffsWithOptions(domain, diffs, options = {}) {
         matcher,
         beforeSig: matcher === 'value' ? valueSignature(diff.before) : null,
         afterSig: matcher === 'value' ? valueSignature(diff.after) : null,
+        source,
+        sourceType: source.type,
+        sourceServer: source.server,
+        sourceIsProdValue: source.isProdValue,
+        sourceIsProd: source.isProdValue,
+        sourceMode: source.type === 'iant' ? 'iant_api' : 'external_cache',
         createdAt: new Date().toISOString()
       };
       map.set(key, nextItem);
@@ -519,6 +575,12 @@ function addIgnoredDiffsWithOptions(domain, diffs, options = {}) {
       matcher,
       beforeSig: matcher === 'value' ? valueSignature(diff.before) : null,
       afterSig: matcher === 'value' ? valueSignature(diff.after) : null,
+      source,
+      sourceType: source.type,
+      sourceServer: source.server,
+      sourceIsProdValue: source.isProdValue,
+      sourceIsProd: source.isProdValue,
+      sourceMode: source.type === 'iant' ? 'iant_api' : 'external_cache',
       createdAt: new Date().toISOString()
     };
     map.set(key, nextItem);
@@ -565,15 +627,11 @@ function normalizeIgnoredUpdatePayload(payload = {}) {
 function updateIgnoredDiffs(domain, payload = {}) {
   const d = normalizeDomain(domain);
   const { keys, hasNote, note, hasIsHidden, isHidden } = normalizeIgnoredUpdatePayload(payload);
+  const source = normalizeSourcePayload(payload.source);
   const normalizedKeys = [...keys];
   if (normalizedKeys.length === 0 && Array.isArray(payload.diffs)) {
     for (const diff of payload.diffs) {
-      const hasBefore = hasOwn(diff, 'before');
-      const hasAfter = hasOwn(diff, 'after');
-      const matcher = hasBefore || hasAfter ? 'value' : 'path';
-      const key = matcher === 'value'
-        ? makeDiffKey(d, diff)
-        : makeDiffKey(d, diff, { legacy: true });
+      const key = makeDiffKey(d, { ...diff, source: diff?.source || source });
       if (key) normalizedKeys.push(key);
     }
   }
@@ -1375,6 +1433,15 @@ function buildScopeArgs({ scopeMode, scopeValue }) {
   return ['--local', value];
 }
 
+function buildSourceArgs(sourceRaw) {
+  const source = normalizeSourcePayload(sourceRaw);
+  if (source.type !== 'iant') return [];
+  const args = ['--source-type', 'iant'];
+  if (source.server) args.push('--source-server', source.server);
+  if (source.isProdValue) args.push('--source-is-prod', source.isProdValue);
+  return args;
+}
+
 function buildTierIconIndex() {
   if (tierIconIndexCache) return tierIconIndexCache;
   const map = new Map();
@@ -1728,6 +1795,7 @@ function buildPatchArgsFromFilter(payload, dryRun) {
     throw new Error('Patch by filter requires nums/api/local scope');
   }
 
+  args.push(...buildSourceArgs(payload.source));
   args.push('--no-report');
   if (dryRun) args.push('--dry-run');
   return args;
@@ -1858,6 +1926,7 @@ async function handleReport(res, payload) {
   if (!gate.ok) return;
   const langs = parseCsv(payload.langs);
   const parts = parseCsv(payload.parts);
+  const source = normalizeSourcePayload(payload.source);
   const reportPath = safeReportPath(payload.reportFile);
   const jsonRel = reportPath.rel.endsWith('.json')
     ? reportPath.rel
@@ -1871,6 +1940,7 @@ async function handleReport(res, payload) {
   if (parts.length > 0) {
     args.push('--parts', parts.join(','));
   }
+  args.push(...buildSourceArgs(source));
   args.push('--json-file', jsonPath.rel);
 
   const run = await runNodeScript(args);
@@ -1878,6 +1948,7 @@ async function handleReport(res, payload) {
     sendJson(res, 500, {
       ok: false,
       error: 'report_failed',
+      source,
       args,
       stdout: run.stdout,
       stderr: run.stderr
@@ -1910,6 +1981,7 @@ async function handleReport(res, payload) {
     }
     return parsedRows.map((row) => ({
       ...row,
+      source: row.source || source,
       rowId: row.rowId || `${row.index}:${row.lang}:${row.api}`,
       icon: row.icon || resolveRowIcon(row, gate.domain),
       partDiffs: Array.isArray(row.partDiffs)
@@ -1927,7 +1999,7 @@ async function handleReport(res, payload) {
   let autoPatchResult = null;
   const autoPatchDiffs = collectAutoPatchDiffs(rows, gate.domain);
   if (autoPatchDiffs.length > 0) {
-    autoPatchResult = await executeApplyDiffs(autoPatchDiffs, { dryRun: false, domain: gate.domain });
+    autoPatchResult = await executeApplyDiffs(autoPatchDiffs, { dryRun: false, domain: gate.domain, source });
     if (autoPatchResult.ok) {
       autoPatchedCount = autoPatchDiffs.length;
       const rerun = await runNodeScript(args);
@@ -1943,6 +2015,7 @@ async function handleReport(res, payload) {
 
   rows = rows.map((row) => ({
     ...row,
+    source: row.source || source,
     rowId: row.rowId || `${row.index}:${row.lang}:${row.api}`,
     icon: row.icon || resolveRowIcon(row, gate.domain),
     partDiffs: Array.isArray(row.partDiffs)
@@ -1959,6 +2032,7 @@ async function handleReport(res, payload) {
     ok: true,
     domain: gate.domain,
     args,
+    source,
     reportFile: jsonPath.rel,
     rowCount: rows.length,
     ignoredCount: filtered.ignoredCount,
@@ -2020,7 +2094,7 @@ function buildApplyDiffTasks(diffs) {
   return [...tasksMap.values()];
 }
 
-async function executeApplyDiffs(diffs, { dryRun = false, domain = DEFAULT_DOMAIN } = {}) {
+async function executeApplyDiffs(diffs, { dryRun = false, domain = DEFAULT_DOMAIN, source = null } = {}) {
   const tasks = buildApplyDiffTasks(diffs);
   if (tasks.length === 0) {
     return {
@@ -2041,10 +2115,11 @@ async function executeApplyDiffs(diffs, { dryRun = false, domain = DEFAULT_DOMAI
     `apply-diff-request-${Date.now()}.json`
   );
   ensureDir(path.dirname(reqFile));
-  fs.writeFileSync(reqFile, `${JSON.stringify({ tasks }, null, 2)}\n`, 'utf8');
+  fs.writeFileSync(reqFile, `${JSON.stringify({ tasks, source: normalizeSourcePayload(source) }, null, 2)}\n`, 'utf8');
 
   const scriptRel = getPatchScriptForDomain(domain);
   const args = [scriptRel, 'apply-diff-json', '--input-file', path.relative(PROJECT_ROOT, reqFile)];
+  args.push(...buildSourceArgs(source));
   if (dryRun) args.push('--dry-run');
   const run = await runNodeScript(args);
   try {
@@ -2067,12 +2142,13 @@ async function handleApplyDiffs(res, payload) {
   if (!gate.ok) return;
   const dryRun = Boolean(payload.dryRun);
   const diffs = Array.isArray(payload.diffs) ? payload.diffs : [];
+  const source = normalizeSourcePayload(payload.source);
   if (diffs.length === 0) {
     sendJson(res, 400, { ok: false, error: 'No diffs provided.' });
     return;
   }
 
-  const run = await executeApplyDiffs(diffs, { dryRun, domain: gate.domain });
+  const run = await executeApplyDiffs(diffs, { dryRun, domain: gate.domain, source });
   if (!run.args || run.args.length === 0) {
     sendJson(res, 400, { ok: false, error: run.error || 'No valid diff entries.' });
     return;
@@ -2082,6 +2158,7 @@ async function handleApplyDiffs(res, payload) {
     ok: run.code === 0,
     domain: gate.domain,
     dryRun,
+    source,
     description: dryRun
       ? 'Dry Run: selected diff paths executed without file writes.'
       : 'Patch Run: selected diff paths were applied.',
@@ -2572,7 +2649,8 @@ async function handleIgnoreDiffs(res, payload) {
   const domain = normalizeDomain(payload.domain);
   const diffs = Array.isArray(payload.diffs) ? payload.diffs : [];
   const overwrite = Boolean(payload.overwrite);
-  const { added, updated } = addIgnoredDiffsWithOptions(domain, diffs, { overwrite });
+  const source = normalizeSourcePayload(payload.source);
+  const { added, updated } = addIgnoredDiffsWithOptions(domain, diffs, { overwrite, source });
   sendJson(res, 200, {
     ok: true,
     domain,
@@ -2600,16 +2678,10 @@ async function handleUpdateIgnoredDiffs(res, payload) {
 
 async function handleUnignoreDiffs(res, payload) {
   const domain = normalizeDomain(payload.domain);
+  const source = normalizeSourcePayload(payload.source);
   let keys = Array.isArray(payload.keys) ? payload.keys : [];
   if (keys.length === 0 && Array.isArray(payload.diffs)) {
-    keys = payload.diffs.map((diff) => {
-      const hasBefore = hasOwn(diff, 'before');
-      const hasAfter = hasOwn(diff, 'after');
-      const matcher = hasBefore || hasAfter ? 'value' : 'path';
-      return matcher === 'value'
-        ? makeDiffKey(domain, diff)
-        : makeDiffKey(domain, diff, { legacy: true });
-    });
+    keys = payload.diffs.map((diff) => makeDiffKey(domain, { ...diff, source: diff?.source || source }));
   }
   const removed = removeIgnoredDiffs(domain, keys);
   sendJson(res, 200, {
@@ -2625,6 +2697,7 @@ async function handlePatch(res, payload) {
   if (!gate.ok) return;
   const dryRun = Boolean(payload.dryRun);
   const parts = parseCsv(payload.parts);
+  const source = normalizeSourcePayload(payload.source);
   const outputs = [];
   const scriptRel = getPatchScriptForDomain(gate.domain);
 
@@ -2635,6 +2708,7 @@ async function handlePatch(res, payload) {
       if (indexes.length === 0) continue;
       const args = [scriptRel, 'patch', '--nums', indexes.join(','), '--langs', lang, '--no-report'];
       if (parts.length > 0) args.push('--parts', parts.join(','));
+      args.push(...buildSourceArgs(source));
       if (dryRun) args.push('--dry-run');
       const run = await runNodeScript(args);
       outputs.push({
@@ -2671,6 +2745,7 @@ async function handlePatch(res, payload) {
     ok: allOk,
     domain: gate.domain,
     dryRun,
+    source,
     description: dryRun
       ? 'Dry Run: same patch logic, but files are not written.'
       : 'Patch Run: files may be modified.',

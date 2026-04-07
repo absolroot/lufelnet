@@ -35,9 +35,20 @@ const SOURCE_POLICY_FILE = path.join(PROJECT_ROOT, 'data', 'external', 'source-p
 const KR_CHARACTER_META_FILE = path.join(PROJECT_ROOT, 'data', 'character_info.js');
 
 const SUPPORTED_PATCH_LANGS = new Set(['kr', 'en', 'jp', 'cn']);
+const SUPPORTED_SOURCE_TYPES = new Set(['external', 'iant']);
+const IANT_SOURCE_SERVERS = new Set(['kr', 'en', 'jp', 'cn', 'tw', 'sea']);
 const ALL_EXTERNAL_LANGS = ['kr', 'en', 'jp', 'cn', 'tw', 'sea'];
 const DEFAULT_REPORT_FILE = path.join(PROJECT_ROOT, 'scripts', 'reports', 'character-patch-diff.md');
 const DEFAULT_REPORT_JSON_FILE = path.join(PROJECT_ROOT, 'scripts', 'reports', 'character-patch-diff.json');
+const IANT_BASE_URL = 'https://iant.kr:5000';
+const IANT_SERVER_TO_LOCAL_LANG = {
+  kr: 'kr',
+  en: 'en',
+  jp: 'jp',
+  cn: 'cn',
+  tw: 'cn',
+  sea: 'en'
+};
 
 const WINDOW_NAME_MAP = {
   ritual: {
@@ -130,19 +141,23 @@ function usage() {
   node apps/patch-console/patch-characters.mjs list [--langs kr,en,jp,cn,tw,sea]
   node apps/patch-console/patch-characters.mjs patch --langs kr,en,jp,cn [--all | --api api1,api2 | --local local1,local2 | --nums 1,3-5]
                                        [--parts ritual,skill,weapon,base_stats]
+                                       [--source-type external|iant] [--source-server kr|en|jp|cn|tw|sea] [--source-is-prod <value>]
                                        [--dry-run] [--no-bootstrap]
                                        [--report-file scripts/reports/character-patch-diff.md] [--no-report]
   node apps/patch-console/patch-characters.mjs report --langs kr,en,jp,cn
                                        [--api ... | --local ... | --nums ... | --all]
                                        [--exclude-api ... | --exclude-local ... | --exclude-nums ...]
                                        [--parts ritual,skill,weapon,base_stats]
+                                       [--source-type external|iant] [--source-server kr|en|jp|cn|tw|sea] [--source-is-prod <value>]
                                        [--report-file scripts/reports/character-patch-diff.md]
   node apps/patch-console/patch-characters.mjs report-json --langs kr,en,jp,cn
                                        [--api ... | --local ... | --nums ... | --all]
                                        [--exclude-api ... | --exclude-local ... | --exclude-nums ...]
                                        [--parts ritual,skill,weapon,base_stats]
+                                       [--source-type external|iant] [--source-server kr|en|jp|cn|tw|sea] [--source-is-prod <value>]
                                        [--json-file scripts/reports/character-patch-diff.json]
   node apps/patch-console/patch-characters.mjs apply-diff-json --input-file scripts/reports/apply-diff-request.json
+                                       [--source-type external|iant] [--source-server kr|en|jp|cn|tw|sea] [--source-is-prod <value>]
                                        [--dry-run]
 `);
 }
@@ -188,6 +203,67 @@ function parseLangs(value, fallback, mode) {
     }
   }
   return [...new Set(langs)];
+}
+
+function normalizeIantIsProdValue(value, fallback = 'false') {
+  if (value === undefined || value === null) return String(fallback || 'false').trim();
+  const normalized = String(value).trim();
+  return normalized || String(fallback || 'false').trim();
+}
+
+function normalizeSourceType(value) {
+  const normalized = String(value || 'external').trim().toLowerCase();
+  if (!SUPPORTED_SOURCE_TYPES.has(normalized)) {
+    throw new Error(`Unsupported source type '${value}'. Allowed: ${[...SUPPORTED_SOURCE_TYPES].join(', ')}`);
+  }
+  return normalized;
+}
+
+function parseSourceConfig(args = {}) {
+  const type = normalizeSourceType(args['source-type'] || 'external');
+  if (type === 'external') {
+    return {
+      type: 'external',
+      server: null,
+      isProdValue: ''
+    };
+  }
+
+  const server = String(args['source-server'] || '').trim().toLowerCase();
+  if (!IANT_SOURCE_SERVERS.has(server)) {
+    throw new Error(`source-server is required for iant source. Allowed: ${[...IANT_SOURCE_SERVERS].join(', ')}`);
+  }
+
+  return {
+    type: 'iant',
+    server,
+    isProdValue: normalizeIantIsProdValue(args['source-is-prod'], 'false')
+  };
+}
+
+function getSourceLocalLang(sourceConfig, fallbackLang) {
+  if (!sourceConfig || sourceConfig.type !== 'iant') return fallbackLang;
+  return IANT_SERVER_TO_LOCAL_LANG[sourceConfig.server] || fallbackLang;
+}
+
+function cloneSourceConfig(sourceConfig, overrides = {}) {
+  const legacyIsProd = sourceConfig && Object.prototype.hasOwnProperty.call(sourceConfig, 'isProd')
+    ? sourceConfig.isProd
+    : null;
+  const rawIsProdValue = sourceConfig && Object.prototype.hasOwnProperty.call(sourceConfig, 'isProdValue')
+    ? sourceConfig.isProdValue
+    : legacyIsProd;
+  return {
+    type: sourceConfig?.type || 'external',
+    server: sourceConfig?.server || null,
+    isProdValue: sourceConfig?.type === 'iant' ? normalizeIantIsProdValue(rawIsProdValue, 'false') : '',
+    ...overrides
+  };
+}
+
+function serializeSourceConfig(sourceConfig, localLang = null) {
+  const normalized = cloneSourceConfig(sourceConfig, localLang ? { localLang } : {});
+  return stableStringify(normalized);
 }
 
 function parseParts(value, langs, mode) {
@@ -484,6 +560,7 @@ function resolveCharacterKey(entry, characterKeyMap) {
 
 const externalFileCache = new Map();
 const sourcePolicyCache = new Map();
+const iantResponseCache = new Map();
 let sourcePolicyRawCache = null;
 
 function loadSourcePolicyRaw() {
@@ -649,6 +726,109 @@ function readExternalJson(kind, lang, localCode) {
     return { ok: true, reason: 'ok', filePath, json };
   } catch (error) {
     return { ok: false, reason: `parse_error:${error.message}`, filePath, json: null };
+  }
+}
+
+function ensureFetchAvailable() {
+  if (typeof fetch !== 'function') {
+    throw new Error('Global fetch is not available in this Node runtime.');
+  }
+}
+
+function buildIantUrl(kind, server, apiCode, isProdValue) {
+  const endpoint = kind === 'weapon' ? 'weapon' : 'character';
+  const url = new URL(`${IANT_BASE_URL}/data/${endpoint}/${server}/${encodeURIComponent(apiCode)}`);
+  url.searchParams.set('is_prod', normalizeIantIsProdValue(isProdValue, 'false'));
+  return url.toString();
+}
+
+async function readIantJson(kind, server, apiCode, isProdValue) {
+  const normalizedIsProdValue = normalizeIantIsProdValue(isProdValue, 'false');
+  const cacheKey = `${kind}:${server}:${apiCode}:${normalizedIsProdValue}`;
+  if (iantResponseCache.has(cacheKey)) return iantResponseCache.get(cacheKey);
+
+  ensureFetchAvailable();
+  const url = buildIantUrl(kind, server, apiCode, normalizedIsProdValue);
+  let response;
+  try {
+    response = await fetch(url, {
+      headers: {
+        Accept: 'application/json'
+      }
+    });
+  } catch (error) {
+    const payload = {
+      ok: false,
+      reason: `network_error:${error.message}`,
+      filePath: url,
+      json: null,
+      statusCode: 0
+    };
+    iantResponseCache.set(cacheKey, payload);
+    return payload;
+  }
+
+  let raw = '';
+  try {
+    raw = await response.text();
+  } catch (error) {
+    const payload = {
+      ok: false,
+      reason: `read_error:${error.message}`,
+      filePath: url,
+      json: null,
+      statusCode: response.status
+    };
+    iantResponseCache.set(cacheKey, payload);
+    return payload;
+  }
+
+  if (!response.ok) {
+    const payload = {
+      ok: false,
+      reason: `http_${response.status}`,
+      filePath: url,
+      json: null,
+      statusCode: response.status,
+      raw
+    };
+    iantResponseCache.set(cacheKey, payload);
+    return payload;
+  }
+
+  try {
+    const json = JSON.parse(raw);
+    if (!json || json.status !== 0 || !json.data) {
+      const payload = {
+        ok: false,
+        reason: 'invalid_payload',
+        filePath: url,
+        json,
+        statusCode: response.status
+      };
+      iantResponseCache.set(cacheKey, payload);
+      return payload;
+    }
+    const payload = {
+      ok: true,
+      reason: 'ok',
+      filePath: url,
+      json,
+      statusCode: response.status
+    };
+    iantResponseCache.set(cacheKey, payload);
+    return payload;
+  } catch (error) {
+    const payload = {
+      ok: false,
+      reason: `parse_error:${error.message}`,
+      filePath: url,
+      json: null,
+      statusCode: response.status,
+      raw
+    };
+    iantResponseCache.set(cacheKey, payload);
+    return payload;
   }
 }
 
@@ -989,18 +1169,77 @@ function createPatchPayload(part, lang, sources, existing) {
   return {};
 }
 
-function loadSources(localCode, lang) {
+function requiredSourceKindsForParts(parts) {
+  const needed = new Set();
+  for (const part of Array.isArray(parts) ? parts : []) {
+    if (part === 'weapon') {
+      needed.add('weapon');
+    } else if (['ritual', 'skill', 'base_stats'].includes(part)) {
+      needed.add('character');
+    }
+  }
+  return needed;
+}
+
+function describeSourceMeta(meta, sourceConfig) {
+  const target = meta?.filePath || `${sourceConfig?.type || 'external'} source`;
+  return `${target} (${meta?.reason || 'unknown'})`;
+}
+
+async function loadSources(entry, lang, sourceConfig) {
+  if (sourceConfig?.type === 'iant') {
+    const characterMeta = await readIantJson('character', sourceConfig.server, entry.api, sourceConfig.isProdValue);
+    const weaponMeta = await readIantJson('weapon', sourceConfig.server, entry.api, sourceConfig.isProdValue);
+    return {
+      character: characterMeta.json,
+      characterMeta,
+      weapon: weaponMeta.json,
+      weaponMeta
+    };
+  }
+
   return {
-    character: readExternalJson('character', lang, localCode).json,
-    characterMeta: readExternalJson('character', lang, localCode),
-    weapon: readExternalJson('weapon', lang, localCode).json,
-    weaponMeta: readExternalJson('weapon', lang, localCode)
+    character: readExternalJson('character', lang, entry.local).json,
+    characterMeta: readExternalJson('character', lang, entry.local),
+    weapon: readExternalJson('weapon', lang, entry.local).json,
+    weaponMeta: readExternalJson('weapon', lang, entry.local)
   };
 }
-function runPatch(options) {
+
+async function validateIantSources({ entries, langs, parts, sourceConfig }) {
+  if (sourceConfig?.type !== 'iant') return;
+  const requiredKinds = requiredSourceKindsForParts(parts);
+  if (requiredKinds.size === 0) return;
+
+  const issues = [];
+  for (const entry of entries) {
+    for (const lang of langs) {
+      const localLang = getSourceLocalLang(sourceConfig, lang);
+      const sources = await loadSources(entry, localLang, sourceConfig);
+      if (requiredKinds.has('character') && !sources.characterMeta.ok) {
+        issues.push(`#${entry.index} ${entry.api} ${sourceConfig.server}->${localLang} character: ${describeSourceMeta(sources.characterMeta, sourceConfig)}`);
+      }
+      if (requiredKinds.has('weapon') && !sources.weaponMeta.ok) {
+        issues.push(`#${entry.index} ${entry.api} ${sourceConfig.server}->${localLang} weapon: ${describeSourceMeta(sources.weaponMeta, sourceConfig)}`);
+      }
+    }
+  }
+
+  if (issues.length > 0) {
+    fail([
+      `IANT source fetch failed for server='${sourceConfig.server}'.`,
+      ...issues.map((item) => `- ${item}`)
+    ].join('\n'));
+  }
+}
+
+async function runPatch(options) {
   const codenameEntries = loadCodenameEntries();
   const langs = parseLangs(options.args.langs, 'kr', 'patch');
-  auditExternalSources({ codenameEntries, langs });
+  const sourceConfig = parseSourceConfig(options.args);
+  if (sourceConfig.type === 'external') {
+    auditExternalSources({ codenameEntries, langs });
+  }
 
   const selectors = getSelectors(options.args);
   const includeAll = Boolean(options.args.all);
@@ -1015,6 +1254,10 @@ function runPatch(options) {
   const characterKeyMap = loadCharacterKeyMapFromKr();
   const bootstrap = options.args['no-bootstrap'] ? false : true;
   const dryRun = Boolean(options.args['dry-run']);
+
+  if (sourceConfig.type === 'iant') {
+    await validateIantSources({ entries: selected, langs, parts, sourceConfig });
+  }
 
   const patchedTargets = new Set();
   const resultRows = [];
@@ -1032,24 +1275,26 @@ function runPatch(options) {
     }
 
     for (const lang of langs) {
-      const sources = loadSources(entry.local, lang);
+      const sourceLocalLang = getSourceLocalLang(sourceConfig, lang);
+      const sources = await loadSources(entry, sourceLocalLang, sourceConfig);
       const row = {
         index: entry.index,
         api: entry.api,
         local: entry.local,
         key: characterKey,
-        lang,
+        lang: sourceLocalLang,
+        source: cloneSourceConfig(sourceConfig, { localLang: sourceLocalLang }),
         changedParts: [],
         skippedParts: []
       };
 
       for (const part of parts) {
-        if (part === 'base_stats' && lang !== 'kr') {
+        if (part === 'base_stats' && sourceLocalLang !== 'kr') {
           row.skippedParts.push(`${part}:not_kr`);
           continue;
         }
 
-        const windowName = resolveWindowName(part, lang);
+        const windowName = resolveWindowName(part, sourceLocalLang);
         if (!windowName) {
           row.skippedParts.push(`${part}:unsupported_lang`);
           continue;
@@ -1079,17 +1324,17 @@ function runPatch(options) {
         }
 
         const existing = readWindowEntry(filePath, windowName, characterKey);
-        const payload = createPatchPayload(part, lang, sources, existing);
+        const payload = createPatchPayload(part, sourceLocalLang, sources, existing);
         if (!payload || Object.keys(payload).length === 0) {
           row.skippedParts.push(`${part}:empty_payload`);
           continue;
         }
         const mergedValue = deepMerge(existing, payload);
         const policyValue = applyPartPatchPolicy(part, existing, mergedValue);
-        const krSkillValue = (part === 'skill' && lang === 'cn')
+        const krSkillValue = (part === 'skill' && sourceLocalLang === 'cn')
           ? readWindowEntry(filePath, WINDOW_NAME_MAP.skill.kr, characterKey)
           : null;
-        const nextValue = applyCnSkillElementFallback(part, lang, policyValue, krSkillValue);
+        const nextValue = applyCnSkillElementFallback(part, sourceLocalLang, policyValue, krSkillValue);
         if (equals(existing, nextValue)) {
           row.skippedParts.push(`${part}:no_change`);
           continue;
@@ -1104,7 +1349,7 @@ function runPatch(options) {
 
       resultRows.push(row);
       if (row.changedParts.length > 0) {
-        patchedTargets.add(`${lang}|${normalizeCodeName(entry.local)}`);
+        patchedTargets.add(`${sourceLocalLang}|${normalizeCodeName(entry.local)}`);
       }
     }
   }
@@ -1118,18 +1363,19 @@ function runPatch(options) {
   if (!options.args['no-report']) {
     const reportFile = options.args['report-file'] || DEFAULT_REPORT_FILE;
     const reportLangs = langs;
-    writePendingReport({
+    await writePendingReport({
       codenameEntries,
       characterKeyMap,
       langs: reportLangs,
       parts: parseParts(options.args.parts, reportLangs, 'report'),
       excludeTargets: patchedTargets,
-      reportFile
+      reportFile,
+      sourceConfig
     });
   }
 }
 
-function buildDiffRecord(entry, characterKey, lang, part, sources) {
+function buildDiffRecord(entry, characterKey, lang, part, sources, sourceConfig) {
   const windowName = resolveWindowName(part, lang);
   if (!windowName) return null;
   const filePath = getTargetFilePath(characterKey, part);
@@ -1172,11 +1418,12 @@ function buildDiffRecord(entry, characterKey, lang, part, sources) {
     part,
     diffCount: paths.length,
     samplePaths,
-    valueDiffs
+    valueDiffs,
+    source: cloneSourceConfig(sourceConfig, { localLang: lang })
   };
 }
 
-function collectPendingRows({ codenameEntries, characterKeyMap, langs, parts, excludeTargets }) {
+async function collectPendingRows({ codenameEntries, characterKeyMap, langs, parts, excludeTargets, sourceConfig }) {
   const rows = [];
 
   for (const entry of codenameEntries) {
@@ -1185,14 +1432,15 @@ function collectPendingRows({ codenameEntries, characterKeyMap, langs, parts, ex
     if (!characterKey) continue;
 
     for (const lang of langs) {
-      const excludeKey = `${lang}|${localNorm}`;
+      const sourceLocalLang = getSourceLocalLang(sourceConfig, lang);
+      const excludeKey = `${sourceLocalLang}|${localNorm}`;
       if (excludeTargets.has(excludeKey)) continue;
 
-      const sources = loadSources(entry.local, lang);
+      const sources = await loadSources(entry, sourceLocalLang, sourceConfig);
       const partDiffs = [];
       for (const part of parts) {
-        if (part === 'base_stats' && lang !== 'kr') continue;
-        const diff = buildDiffRecord(entry, characterKey, lang, part, sources);
+        if (part === 'base_stats' && sourceLocalLang !== 'kr') continue;
+        const diff = buildDiffRecord(entry, characterKey, sourceLocalLang, part, sources, sourceConfig);
         if (diff) partDiffs.push(diff);
       }
       if (partDiffs.length === 0) continue;
@@ -1202,7 +1450,8 @@ function collectPendingRows({ codenameEntries, characterKeyMap, langs, parts, ex
         api: entry.api,
         local: entry.local,
         key: characterKey,
-        lang,
+        lang: sourceLocalLang,
+        source: cloneSourceConfig(sourceConfig, { localLang: sourceLocalLang }),
         partDiffs
       });
     }
@@ -1215,13 +1464,14 @@ function collectPendingRows({ codenameEntries, characterKeyMap, langs, parts, ex
   return rows;
 }
 
-function writePendingReport({ codenameEntries, characterKeyMap, langs, parts, excludeTargets, reportFile }) {
-  const rows = collectPendingRows({
+async function writePendingReport({ codenameEntries, characterKeyMap, langs, parts, excludeTargets, reportFile, sourceConfig }) {
+  const rows = await collectPendingRows({
     codenameEntries,
     characterKeyMap,
     langs,
     parts,
-    excludeTargets
+    excludeTargets,
+    sourceConfig
   });
 
   const lines = [];
@@ -1229,6 +1479,7 @@ function writePendingReport({ codenameEntries, characterKeyMap, langs, parts, ex
   lines.push('');
   lines.push(`- Generated: ${new Date().toISOString()}`);
   lines.push(`- Languages: ${langs.join(', ')}`);
+  lines.push(`- Source: ${serializeSourceConfig(sourceConfig)}`);
   lines.push(`- Pending rows: ${rows.length}`);
   lines.push('');
   lines.push('## Rows');
@@ -1249,21 +1500,29 @@ function writePendingReport({ codenameEntries, characterKeyMap, langs, parts, ex
   log(`[report] wrote: ${path.relative(PROJECT_ROOT, reportFile)} (${rows.length} rows)`);
 }
 
-function runReport(options) {
+async function runReport(options) {
   const langs = parseLangs(options.args.langs, 'kr,en,jp', 'report');
-  auditExternalSources({ langs });
+  const sourceConfig = parseSourceConfig(options.args);
+  if (sourceConfig.type === 'external') {
+    auditExternalSources({ langs });
+  }
   const finalEntries = resolveReportTargets(options);
   const characterKeyMap = loadCharacterKeyMapFromKr();
   const parts = parseParts(options.args.parts, langs, 'report');
   const reportFile = options.args['report-file'] || DEFAULT_REPORT_FILE;
 
-  writePendingReport({
+  if (sourceConfig.type === 'iant') {
+    await validateIantSources({ entries: finalEntries, langs, parts, sourceConfig });
+  }
+
+  await writePendingReport({
     codenameEntries: finalEntries,
     characterKeyMap,
     langs,
     parts,
     excludeTargets: new Set(),
-    reportFile
+    reportFile,
+    sourceConfig
   });
 }
 
@@ -1289,23 +1548,31 @@ function resolveReportTargets(options) {
   return filteredEntries.filter((x) => !excludeSet.has(x.index));
 }
 
-function runReportJson(options) {
+async function runReportJson(options) {
   const langs = parseLangs(options.args.langs, 'kr,en,jp', 'report');
-  auditExternalSources({ langs });
+  const sourceConfig = parseSourceConfig(options.args);
+  if (sourceConfig.type === 'external') {
+    auditExternalSources({ langs });
+  }
   const finalEntries = resolveReportTargets(options);
   const characterKeyMap = loadCharacterKeyMapFromKr();
   const parts = parseParts(options.args.parts, langs, 'report');
   const jsonFile = options.args['json-file'] || DEFAULT_REPORT_JSON_FILE;
-  const rows = collectPendingRows({
+  if (sourceConfig.type === 'iant') {
+    await validateIantSources({ entries: finalEntries, langs, parts, sourceConfig });
+  }
+  const rows = await collectPendingRows({
     codenameEntries: finalEntries,
     characterKeyMap,
     langs,
     parts,
-    excludeTargets: new Set()
+    excludeTargets: new Set(),
+    sourceConfig
   });
   const payload = {
     generatedAt: new Date().toISOString(),
     languages: langs,
+    source: cloneSourceConfig(sourceConfig),
     rowCount: rows.length,
     rows
   };
@@ -1314,7 +1581,7 @@ function runReportJson(options) {
   log(`[report-json] wrote: ${path.relative(PROJECT_ROOT, jsonFile)} (${rows.length} rows)`);
 }
 
-function runApplyDiffJson(options) {
+async function runApplyDiffJson(options) {
   const inputFileRaw = String(options.args['input-file'] || '').trim();
   if (!inputFileRaw) {
     fail("apply-diff-json requires '--input-file'");
@@ -1340,6 +1607,13 @@ function runApplyDiffJson(options) {
   if (tasks.length === 0) {
     fail(`No tasks in input-file: ${inputFileRaw}`);
   }
+  const sourceConfig = parsedInput?.source
+    ? parseSourceConfig({
+        'source-type': parsedInput.source.type,
+        'source-server': parsedInput.source.server,
+        'source-is-prod': parsedInput.source.isProdValue ?? parsedInput.source.isProd
+      })
+    : parseSourceConfig(options.args);
 
   const codenameEntries = loadCodenameEntries();
   const byIndex = new Map(codenameEntries.map((entry) => [entry.index, entry]));
@@ -1380,11 +1654,12 @@ function runApplyDiffJson(options) {
       local: entry.local,
       key: characterKey,
       lang,
+      source: cloneSourceConfig(sourceConfig, { localLang: lang }),
       changedParts: [],
       skippedParts: []
     };
 
-    const sources = loadSources(entry.local, lang);
+    const sources = await loadSources(entry, lang, sourceConfig);
     const parts = Array.isArray(task?.parts) ? task.parts : [];
     for (const partTask of parts) {
       const part = String(partTask?.part || '').trim().toLowerCase();
@@ -1509,7 +1784,7 @@ function runList(options) {
   }
 }
 
-function main() {
+async function main() {
   let parsed;
   try {
     parsed = parseArgs(process.argv);
@@ -1530,19 +1805,19 @@ function main() {
       return;
     }
     if (options.command === 'patch') {
-      runPatch(options);
+      await runPatch(options);
       return;
     }
     if (options.command === 'report') {
-      runReport(options);
+      await runReport(options);
       return;
     }
     if (options.command === 'report-json') {
-      runReportJson(options);
+      await runReportJson(options);
       return;
     }
     if (options.command === 'apply-diff-json') {
-      runApplyDiffJson(options);
+      await runApplyDiffJson(options);
       return;
     }
     usage();
@@ -1551,4 +1826,6 @@ function main() {
   }
 }
 
-main();
+main().catch((error) => {
+  fail(error?.message || String(error));
+});

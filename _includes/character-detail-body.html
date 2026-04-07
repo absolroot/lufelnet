@@ -891,6 +891,20 @@
 
             const wireImage = (imgEl) => {
                 if (!imgEl) return;
+                try {
+                    if (imgEl.classList.contains('thief-image') && characterName) {
+                        imgEl.setAttribute('data-character', characterName);
+                        imgEl.setAttribute('data-image-file', `${characterName}.webp`);
+                    }
+                    if (imgEl.classList.contains('persona-image') && characterName) {
+                        const personaName = (characterData && characterData[characterName] && characterData[characterName].persona) ? characterData[characterName].persona : '';
+                        if (personaName) {
+                            imgEl.setAttribute('data-character', characterName);
+                            imgEl.setAttribute('data-persona', personaName);
+                            imgEl.setAttribute('data-image-file', `${characterName} - ${personaName}.webp`);
+                        }
+                    }
+                } catch (_) { }
                 // 로딩 우선순위 및 디코딩 힌트
                 try { imgEl.setAttribute('loading', 'eager'); } catch (_) { }
                 try { imgEl.setAttribute('decoding', 'sync'); } catch (_) { }
@@ -1164,8 +1178,21 @@
             const personaFile = `${characterName} - ${basicCharacter.persona}.webp`;
             const thiefSrc = `{{ site.baseurl }}/assets/img/character-detail/${thiefFile}`;
             const personaSrc = `{{ site.baseurl }}/assets/img/character-detail/${personaFile}`;
-            if (thiefEl) { thiefEl.setAttribute('src', thiefSrc); thiefEl.setAttribute('fetchpriority', 'high'); thiefEl.setAttribute('loading', 'eager'); }
-            if (personaEl) { personaEl.setAttribute('src', personaSrc); personaEl.setAttribute('fetchpriority', 'high'); personaEl.setAttribute('loading', 'eager'); }
+            if (thiefEl) {
+                thiefEl.setAttribute('src', thiefSrc);
+                thiefEl.setAttribute('fetchpriority', 'high');
+                thiefEl.setAttribute('loading', 'eager');
+                thiefEl.setAttribute('data-character', characterName);
+                thiefEl.setAttribute('data-image-file', thiefFile);
+            }
+            if (personaEl) {
+                personaEl.setAttribute('src', personaSrc);
+                personaEl.setAttribute('fetchpriority', 'high');
+                personaEl.setAttribute('loading', 'eager');
+                personaEl.setAttribute('data-character', characterName);
+                personaEl.setAttribute('data-persona', basicCharacter.persona);
+                personaEl.setAttribute('data-image-file', personaFile);
+            }
             const preload1 = document.createElement('link');
             preload1.rel = 'preload';
             preload1.as = 'image';

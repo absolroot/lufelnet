@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 
 import fs from 'fs';
 import path from 'path';
@@ -34,6 +34,9 @@ const SUPPORTED_LANGS = ['kr', 'en', 'jp', 'cn'];
 const SUPPORTED_PARTS = ['profile', 'innate_skill', 'passive_skill', 'uniqueSkill', 'highlight'];
 const EXCLUDED_PERSONA_KEYS = new Set(['가짜 랑다', '???']);
 const EXCLUDED_TEST_MARKERS = ['AAAAAA=='];
+const IANT_BASE_URL = 'https://iant.kr:5000';
+const IANT_SOURCE_SERVERS = new Set(['kr', 'en', 'jp', 'cn', 'tw', 'sea']);
+const personaSourceCache = new Map();
 
 function log(message) {
   process.stdout.write(`${message}\n`);
@@ -51,9 +54,9 @@ function fail(message) {
 function usage() {
   log(`Usage:
   node apps/patch-console/patch-persona.mjs list [--langs kr,en,jp,cn] [--nums 101,120-130] [--api TEXT] [--local ordered|nonorder|missing]
-  node apps/patch-console/patch-persona.mjs report-json [--langs kr,en,jp,cn] [--all|--nums ...|--api ...|--local ...] [--parts profile,innate_skill] [--json-file scripts/reports/persona-patch-diff.json]
-  node apps/patch-console/patch-persona.mjs patch [--langs kr,en,jp,cn] [--all|--nums ...|--api ...|--local ...] [--parts ...] [--dry-run] [--no-report]
-  node apps/patch-console/patch-persona.mjs apply-diff-json --input-file scripts/reports/apply-diff-request.json [--dry-run]
+  node apps/patch-console/patch-persona.mjs report-json [--langs kr,en,jp,cn] [--all|--nums ...|--api ...|--local ...] [--parts profile,innate_skill] [--source-type external|iant] [--source-server kr|en|jp|cn|tw|sea] [--source-is-prod <value>] [--json-file scripts/reports/persona-patch-diff.json]
+  node apps/patch-console/patch-persona.mjs patch [--langs kr,en,jp,cn] [--all|--nums ...|--api ...|--local ...] [--parts ...] [--source-type external|iant] [--source-server kr|en|jp|cn|tw|sea] [--source-is-prod <value>] [--dry-run] [--no-report]
+  node apps/patch-console/patch-persona.mjs apply-diff-json --input-file scripts/reports/apply-diff-request.json [--source-type external|iant] [--source-server kr|en|jp|cn|tw|sea] [--source-is-prod <value>] [--dry-run]
   node apps/patch-console/patch-persona.mjs help
 `);
 }
@@ -119,6 +122,57 @@ function parseScope(args) {
   if (args.api) return { mode: 'api', value: String(args.api) };
   if (args.local) return { mode: 'local', value: String(args.local) };
   return { mode: 'all', value: '' };
+}
+
+function normalizeSourceType(value) {
+  return String(value || 'external').trim().toLowerCase() === 'iant' ? 'iant' : 'external';
+}
+
+function normalizeIantIsProdValue(value, fallback = 'false') {
+  const text = String(value ?? '').trim();
+  return text || fallback;
+}
+
+function parseSourceConfig(args = {}) {
+  const type = normalizeSourceType(args['source-type'] || 'external');
+  if (type === 'external') {
+    return { type: 'external', server: null, isProdValue: '' };
+  }
+
+  const server = String(args['source-server'] || '').trim().toLowerCase();
+  if (!IANT_SOURCE_SERVERS.has(server)) {
+    throw new Error(`source-server is required for iant source. Allowed: ${[...IANT_SOURCE_SERVERS].join(', ')}`);
+  }
+
+  return {
+    type: 'iant',
+    server,
+    isProdValue: normalizeIantIsProdValue(args['source-is-prod'], 'false')
+  };
+}
+
+function cloneSourceConfig(source = {}, overrides = {}) {
+  const type = normalizeSourceType(overrides.type ?? source.type);
+  if (type !== 'iant') {
+    return { type: 'external', server: null, isProdValue: '' };
+  }
+  return {
+    type: 'iant',
+    server: String(overrides.server ?? source.server ?? '').trim().toLowerCase(),
+    isProdValue: normalizeIantIsProdValue(overrides.isProdValue ?? source.isProdValue ?? source.isProd, 'false')
+  };
+}
+
+function ensureFetchAvailable() {
+  if (typeof fetch !== 'function') {
+    throw new Error('Global fetch is not available in this Node runtime.');
+  }
+}
+
+function buildIantPersonaUrl(server, index, isProdValue) {
+  const url = new URL(`${IANT_BASE_URL}/data/persona/${server}/${encodeURIComponent(String(index))}`);
+  url.searchParams.set('is_prod', normalizeIantIsProdValue(isProdValue, 'false'));
+  return url.toString();
 }
 
 function loadJson(filePath) {
@@ -196,6 +250,133 @@ function loadExternalPersonaByLang(index) {
     out[lang] = loadJson(filePath);
   }
   return out;
+}
+
+function loadExternalPersona(index, lang) {
+  const filePath = path.join(EXTERNAL_PERSONA_DIR, lang, `${index}.json`);
+  const json = loadJson(filePath);
+  return {
+    ok: Boolean(json),
+    reason: json ? 'ok' : 'missing_or_invalid',
+    filePath,
+    json
+  };
+}
+
+async function readIantPersona(index, server, isProdValue) {
+  const normalized = normalizeIantIsProdValue(isProdValue, 'false');
+  const cacheKey = `persona:${server}:${index}:${normalized}`;
+  if (personaSourceCache.has(cacheKey)) return personaSourceCache.get(cacheKey);
+
+  ensureFetchAvailable();
+  const url = buildIantPersonaUrl(server, index, normalized);
+  let response;
+  try {
+    response = await fetch(url, { headers: { Accept: 'application/json' } });
+  } catch (error) {
+    const payload = {
+      ok: false,
+      reason: `network_error:${error.message}`,
+      filePath: url,
+      json: null,
+      statusCode: 0
+    };
+    personaSourceCache.set(cacheKey, payload);
+    return payload;
+  }
+
+  let raw = '';
+  try {
+    raw = await response.text();
+  } catch (error) {
+    const payload = {
+      ok: false,
+      reason: `read_error:${error.message}`,
+      filePath: url,
+      json: null,
+      statusCode: response.status
+    };
+    personaSourceCache.set(cacheKey, payload);
+    return payload;
+  }
+
+  if (!response.ok) {
+    const payload = {
+      ok: false,
+      reason: `http_${response.status}`,
+      filePath: url,
+      json: null,
+      statusCode: response.status,
+      raw
+    };
+    personaSourceCache.set(cacheKey, payload);
+    return payload;
+  }
+
+  try {
+    const parsed = JSON.parse(raw);
+    const normalizedJson = parsed && typeof parsed === 'object' && !Array.isArray(parsed)
+      ? ((parsed.status === 0 && parsed.data) ? parsed : { status: 0, data: parsed })
+      : null;
+    if (!normalizedJson?.data) {
+      const payload = {
+        ok: false,
+        reason: 'invalid_payload',
+        filePath: url,
+        json: parsed,
+        statusCode: response.status
+      };
+      personaSourceCache.set(cacheKey, payload);
+      return payload;
+    }
+    const payload = {
+      ok: true,
+      reason: 'ok',
+      filePath: url,
+      json: normalizedJson,
+      statusCode: response.status
+    };
+    personaSourceCache.set(cacheKey, payload);
+    return payload;
+  } catch (error) {
+    const payload = {
+      ok: false,
+      reason: `parse_error:${error.message}`,
+      filePath: url,
+      json: null,
+      statusCode: response.status,
+      raw
+    };
+    personaSourceCache.set(cacheKey, payload);
+    return payload;
+  }
+}
+
+async function loadSourcePersona(index, lang, sourceConfig) {
+  const normalized = cloneSourceConfig(sourceConfig);
+  if (normalized.type === 'iant') {
+    const meta = await readIantPersona(index, normalized.server, normalized.isProdValue);
+    return {
+      ext: {
+        [lang]: meta.json?.data || null
+      },
+      meta
+    };
+  }
+
+  const meta = loadExternalPersona(index, lang);
+  return {
+    ext: {
+      [lang]: meta.json
+    },
+    meta
+  };
+}
+
+function describeSourceMeta(meta) {
+  if (!meta) return 'unknown';
+  if (meta.ok) return meta.filePath || 'ok';
+  return `${meta.filePath || '(unknown)'} (${meta.reason || 'unknown'})`;
 }
 
 function hasExcludedTestMarker(value) {
@@ -493,16 +674,17 @@ function buildPartDiff({ part, patchValue, localData }) {
   };
 }
 
-function collectReportRows({ rows, langs, parts, scope }) {
+async function collectReportRows({ rows, langs, parts, scope, sourceConfig }) {
   const reportRows = [];
   for (const row of rows) {
     if (!matchesScope(row, scope)) continue;
 
     const entry = loadPersonaEntry(row.localPath);
     const localData = entry?.data || {};
-    const ext = loadExternalPersonaByLang(row.index);
 
     for (const lang of langs) {
+      const loaded = await loadSourcePersona(row.index, lang, sourceConfig);
+      const ext = loaded.ext;
       if (!ext[lang]) continue;
       if (hasExcludedTestMarker(localData) || hasExcludedTestMarker(ext[lang])) continue;
       const partDiffs = [];
@@ -531,6 +713,7 @@ function collectReportRows({ rows, langs, parts, scope }) {
         local: row.local,
         key: row.key,
         lang,
+        source: cloneSourceConfig(sourceConfig),
         partDiffs
       });
     }
@@ -624,30 +807,55 @@ function runList(args) {
   }
 }
 
-function runReportJson(args) {
+async function validateIantSources({ rows, langs, scope, sourceConfig }) {
+  if (sourceConfig?.type !== 'iant') return;
+  const issues = [];
+  for (const row of rows) {
+    if (!matchesScope(row, scope)) continue;
+    for (const lang of langs) {
+      const loaded = await loadSourcePersona(row.index, lang, sourceConfig);
+      if (!loaded.meta?.ok) {
+        issues.push(`#${row.index} ${row.api} ${sourceConfig.server}->${lang}: ${describeSourceMeta(loaded.meta)}`);
+      }
+    }
+  }
+  if (issues.length > 0) {
+    fail([
+      `IANT source fetch failed for server='${sourceConfig.server}'.`,
+      ...issues.map((line) => `- ${line}`)
+    ].join('\n'));
+  }
+}
+
+async function runReportJson(args) {
   const rows = loadRows();
   const langs = parseLangs(args.langs);
   const parts = parseParts(args.parts);
   const scope = parseScope(args);
-  const reportRows = collectReportRows({
+  const sourceConfig = parseSourceConfig(args);
+  await validateIantSources({ rows, langs, scope, sourceConfig });
+  const reportRows = await collectReportRows({
     rows,
     langs,
     parts,
-    scope
+    scope,
+    sourceConfig
   });
 
   const jsonFile = path.resolve(PROJECT_ROOT, String(args['json-file'] || DEFAULT_REPORT_JSON_FILE));
   ensureDir(path.dirname(jsonFile));
-  fs.writeFileSync(jsonFile, `${JSON.stringify({ rows: reportRows }, null, 2)}\n`, 'utf8');
+  fs.writeFileSync(jsonFile, `${JSON.stringify({ rows: reportRows, source: cloneSourceConfig(sourceConfig) }, null, 2)}\n`, 'utf8');
   log(`[report-json] wrote: ${path.relative(PROJECT_ROOT, jsonFile)} (${reportRows.length} rows)`);
 }
 
-function runPatch(args) {
+async function runPatch(args) {
   const rows = loadRows();
   const langs = parseLangs(args.langs);
   const parts = parseParts(args.parts);
   const scope = parseScope(args);
   const dryRun = Boolean(args['dry-run']);
+  const sourceConfig = parseSourceConfig(args);
+  await validateIantSources({ rows, langs, scope, sourceConfig });
 
   const targetRows = rows.filter((row) => matchesScope(row, scope));
   let changedRows = 0;
@@ -666,12 +874,13 @@ function runPatch(args) {
       continue;
     }
 
-    const ext = loadExternalPersonaByLang(row.index);
     let workingData = entry.data;
 
     for (const lang of langs) {
+      const loaded = await loadSourcePersona(row.index, lang, sourceConfig);
+      const ext = loaded.ext;
       if (!ext[lang]) {
-        warn(`[patch] skip #${row.index} ${row.api}/${row.local} (${row.key}) lang=${lang}: external not found`);
+        warn(`[patch] skip #${row.index} ${row.api}/${row.local} (${row.key}) lang=${lang}: source not found`);
         continue;
       }
       if (hasExcludedTestMarker(workingData) || hasExcludedTestMarker(ext[lang])) {
@@ -707,7 +916,7 @@ function runPatch(args) {
   log(`[patch] summary: rows=${changedRows} changed_parts=${changedPartsTotal} changed_paths=${changedPathsTotal} dry_run=${dryRun ? 'Y' : 'N'}`);
 }
 
-function runApplyDiffJson(args) {
+async function runApplyDiffJson(args) {
   const inputRel = String(args['input-file'] || '').trim();
   if (!inputRel) {
     fail("apply-diff-json requires '--input-file'");
@@ -722,6 +931,13 @@ function runApplyDiffJson(args) {
   if (!payload || !Array.isArray(payload.tasks)) {
     fail(`invalid input json format: ${inputRel}`);
   }
+  const sourceConfig = payload?.source
+    ? parseSourceConfig({
+        'source-type': payload.source.type,
+        'source-server': payload.source.server,
+        'source-is-prod': payload.source.isProdValue ?? payload.source.isProd
+      })
+    : parseSourceConfig(args);
 
   const rows = loadRows();
   const byIndex = new Map(rows.map((row) => [Number(row.index), row]));
@@ -753,9 +969,10 @@ function runApplyDiffJson(args) {
       continue;
     }
 
-    const ext = loadExternalPersonaByLang(index);
+    const loaded = await loadSourcePersona(index, lang, sourceConfig);
+    const ext = loaded.ext;
     if (!ext[lang]) {
-      warn(`[apply-diff-json] skip #${index} ${row.api}/${row.local} (${row.key}) lang=${lang}: external not found`);
+      warn(`[apply-diff-json] skip #${index} ${row.api}/${row.local} (${row.key}) lang=${lang}: source not found`);
       continue;
     }
     if (hasExcludedTestMarker(entry.data) || hasExcludedTestMarker(ext[lang])) {
@@ -812,7 +1029,7 @@ function runApplyDiffJson(args) {
   log(`[apply-diff-json] summary: rows=${resultRows} changed_parts=${changedPartsTotal} changed_paths=${changedPathsTotal} dry_run=${dryRun ? 'Y' : 'N'}`);
 }
 
-function main() {
+async function main() {
   const options = parseCli(process.argv);
   const command = options.command;
 
@@ -830,16 +1047,18 @@ function main() {
     return;
   }
   if (command === 'report-json') {
-    runReportJson(options.args);
+    await runReportJson(options.args);
     return;
   }
   if (command === 'patch') {
-    runPatch(options.args);
+    await runPatch(options.args);
     return;
   }
   if (command === 'apply-diff-json') {
-    runApplyDiffJson(options.args);
+    await runApplyDiffJson(options.args);
   }
 }
 
-main();
+main().catch((error) => {
+  fail(error?.message || String(error));
+});

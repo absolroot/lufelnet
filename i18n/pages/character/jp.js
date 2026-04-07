@@ -110,7 +110,7 @@ window.I18N_PAGE_CHARACTER_JP = {
     mayumiCalcGoalLv10M: 'LV10+イメジャリー5',
     mayumiCalcGoalLv13: 'LV13',
     mayumiCalcGoalLv13M: 'LV13+イメジャリー5',
-    mayumiCalcGoalLv10Note: '180推奨',
+    mayumiCalcGoalLv10Note: '180 (専用武器)',
     aranCalcSectionCharacter: 'キャラクターページ',
     aranCalcBaseStatLv80: '基本ステータス (LV80)',
     aranCalcWeaponEnhance: '改造',

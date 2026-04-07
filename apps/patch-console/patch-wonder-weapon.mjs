@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 
 import fs from 'fs';
 import path from 'path';
@@ -29,6 +29,9 @@ const EFFECT_FIELD_BY_LANG = {
   jp: 'effect_jp',
   cn: 'effect_cn'
 };
+const IANT_BASE_URL = 'https://iant.kr:5000';
+const IANT_SOURCE_SERVERS = new Set(['kr', 'en', 'jp', 'cn', 'tw', 'sea']);
+const wonderSourceCache = new Map();
 
 function log(message) {
   process.stdout.write(`${message}\n`);
@@ -46,9 +49,9 @@ function fail(message) {
 function usage() {
   log(`Usage:
   node apps/patch-console/patch-wonder-weapon.mjs list [--langs kr,en,jp,cn] [--nums 1,3-5] [--api text] [--local text]
-  node apps/patch-console/patch-wonder-weapon.mjs report-json [--langs kr,en,jp,cn] [--all|--nums ...|--api ...|--local ...] [--parts name,effect] [--json-file scripts/reports/wonder-weapon-patch-diff.json]
-  node apps/patch-console/patch-wonder-weapon.mjs patch [--langs kr,en,jp,cn] [--all|--nums ...|--api ...|--local ...] [--parts name,effect] [--dry-run] [--no-report]
-  node apps/patch-console/patch-wonder-weapon.mjs apply-diff-json --input-file scripts/reports/apply-diff-request.json [--dry-run]
+  node apps/patch-console/patch-wonder-weapon.mjs report-json [--langs kr,en,jp,cn] [--all|--nums ...|--api ...|--local ...] [--parts name,effect] [--source-type external|iant] [--source-server kr|en|jp|cn|tw|sea] [--source-is-prod <value>] [--json-file scripts/reports/wonder-weapon-patch-diff.json]
+  node apps/patch-console/patch-wonder-weapon.mjs patch [--langs kr,en,jp,cn] [--all|--nums ...|--api ...|--local ...] [--parts name,effect] [--source-type external|iant] [--source-server kr|en|jp|cn|tw|sea] [--source-is-prod <value>] [--dry-run] [--no-report]
+  node apps/patch-console/patch-wonder-weapon.mjs apply-diff-json --input-file scripts/reports/apply-diff-request.json [--source-type external|iant] [--source-server kr|en|jp|cn|tw|sea] [--source-is-prod <value>] [--dry-run]
   node apps/patch-console/patch-wonder-weapon.mjs help
 `);
 }
@@ -89,6 +92,55 @@ function parseScope(args) {
   if (args.api) return { mode: 'api', value: String(args.api) };
   if (args.local) return { mode: 'local', value: String(args.local) };
   return { mode: 'all', value: '' };
+}
+
+function normalizeSourceType(value) {
+  return String(value || 'external').trim().toLowerCase() === 'iant' ? 'iant' : 'external';
+}
+
+function normalizeIantIsProdValue(value, fallback = 'false') {
+  const text = String(value ?? '').trim();
+  return text || fallback;
+}
+
+function parseSourceConfig(args = {}) {
+  const type = normalizeSourceType(args['source-type'] || 'external');
+  if (type === 'external') {
+    return { type: 'external', server: null, isProdValue: '' };
+  }
+  const server = String(args['source-server'] || '').trim().toLowerCase();
+  if (!IANT_SOURCE_SERVERS.has(server)) {
+    throw new Error(`source-server is required for iant source. Allowed: ${[...IANT_SOURCE_SERVERS].join(', ')}`);
+  }
+  return {
+    type: 'iant',
+    server,
+    isProdValue: normalizeIantIsProdValue(args['source-is-prod'], 'false')
+  };
+}
+
+function cloneSourceConfig(source = {}, overrides = {}) {
+  const type = normalizeSourceType(overrides.type ?? source.type);
+  if (type !== 'iant') {
+    return { type: 'external', server: null, isProdValue: '' };
+  }
+  return {
+    type: 'iant',
+    server: String(overrides.server ?? source.server ?? '').trim().toLowerCase(),
+    isProdValue: normalizeIantIsProdValue(overrides.isProdValue ?? source.isProdValue ?? source.isProd, 'false')
+  };
+}
+
+function ensureFetchAvailable() {
+  if (typeof fetch !== 'function') {
+    throw new Error('Global fetch is not available in this Node runtime.');
+  }
+}
+
+function buildIantWonderUrl(server, isProdValue) {
+  const url = new URL(`${IANT_BASE_URL}/data/weapon/${server}/wonder`);
+  url.searchParams.set('is_prod', normalizeIantIsProdValue(isProdValue, 'false'));
+  return url.toString();
 }
 
 function normalizeName(value) {
@@ -166,6 +218,153 @@ function loadExternalByLang() {
     };
   }
   return out;
+}
+
+function loadExternalWonderByLang(lang) {
+  const filePath = path.join(EXTERNAL_WEAPON_ROOT, lang, 'wonder.json');
+  const json = readJson(filePath);
+  if (!json) {
+    return {
+      ok: false,
+      reason: 'missing_or_invalid',
+      filePath,
+      entries: [],
+      byTier: { fiveStar: [] }
+    };
+  }
+  const entries = flattenWonderEntries(json);
+  return {
+    ok: entries.length > 0,
+    reason: entries.length > 0 ? 'ok' : 'empty',
+    filePath,
+    entries,
+    byTier: {
+      fiveStar: entries.filter((item) => item.tier === 'fiveStar')
+    }
+  };
+}
+
+async function readIantWonder(server, isProdValue) {
+  const normalized = normalizeIantIsProdValue(isProdValue, 'false');
+  const cacheKey = `wonder:${server}:${normalized}`;
+  if (wonderSourceCache.has(cacheKey)) return wonderSourceCache.get(cacheKey);
+
+  ensureFetchAvailable();
+  const url = buildIantWonderUrl(server, normalized);
+  let response;
+  try {
+    response = await fetch(url, { headers: { Accept: 'application/json' } });
+  } catch (error) {
+    const payload = {
+      ok: false,
+      reason: `network_error:${error.message}`,
+      filePath: url,
+      entries: [],
+      byTier: { fiveStar: [] },
+      json: null,
+      statusCode: 0
+    };
+    wonderSourceCache.set(cacheKey, payload);
+    return payload;
+  }
+
+  let raw = '';
+  try {
+    raw = await response.text();
+  } catch (error) {
+    const payload = {
+      ok: false,
+      reason: `read_error:${error.message}`,
+      filePath: url,
+      entries: [],
+      byTier: { fiveStar: [] },
+      json: null,
+      statusCode: response.status
+    };
+    wonderSourceCache.set(cacheKey, payload);
+    return payload;
+  }
+
+  if (!response.ok) {
+    const payload = {
+      ok: false,
+      reason: `http_${response.status}`,
+      filePath: url,
+      entries: [],
+      byTier: { fiveStar: [] },
+      json: null,
+      statusCode: response.status,
+      raw
+    };
+    wonderSourceCache.set(cacheKey, payload);
+    return payload;
+  }
+
+  try {
+    const parsed = JSON.parse(raw);
+    const normalizedJson = parsed && typeof parsed === 'object' && !Array.isArray(parsed)
+      ? ((parsed.status === 0 && parsed.data) ? parsed : { status: 0, data: parsed })
+      : null;
+    if (!normalizedJson?.data) {
+      const payload = {
+        ok: false,
+        reason: 'invalid_payload',
+        filePath: url,
+        entries: [],
+        byTier: { fiveStar: [] },
+        json: parsed,
+        statusCode: response.status
+      };
+      wonderSourceCache.set(cacheKey, payload);
+      return payload;
+    }
+    const entries = flattenWonderEntries(normalizedJson);
+    const payload = {
+      ok: entries.length > 0,
+      reason: entries.length > 0 ? 'ok' : 'empty',
+      filePath: url,
+      json: normalizedJson,
+      statusCode: response.status,
+      entries,
+      byTier: {
+        fiveStar: entries.filter((item) => item.tier === 'fiveStar')
+      }
+    };
+    wonderSourceCache.set(cacheKey, payload);
+    return payload;
+  } catch (error) {
+    const payload = {
+      ok: false,
+      reason: `parse_error:${error.message}`,
+      filePath: url,
+      entries: [],
+      byTier: { fiveStar: [] },
+      json: null,
+      statusCode: response.status,
+      raw
+    };
+    wonderSourceCache.set(cacheKey, payload);
+    return payload;
+  }
+}
+
+async function loadCompareSourceByLang(sourceConfig, langs) {
+  const out = {};
+  const normalized = cloneSourceConfig(sourceConfig);
+  for (const lang of langs) {
+    if (normalized.type === 'iant') {
+      out[lang] = await readIantWonder(normalized.server, normalized.isProdValue);
+    } else {
+      out[lang] = loadExternalWonderByLang(lang);
+    }
+  }
+  return out;
+}
+
+function describeSourceMeta(meta) {
+  if (!meta) return 'unknown';
+  if (meta.ok) return meta.filePath || 'ok';
+  return `${meta.filePath || '(unknown)'} (${meta.reason || 'unknown'})`;
 }
 
 function loadLocalWonderData() {
@@ -271,10 +470,11 @@ function matchesScope(row, scope) {
   return true;
 }
 
-function buildPartDiff({ row, lang, part, localData }) {
-  const external = row.externalByLang?.[lang];
+function buildPartDiff({ row, lang, part, localData, compareByLang }) {
+  const sourceMeta = compareByLang?.[lang];
+  const external = sourceMeta?.byTier?.[row.tier]?.[Math.max(Number(row.tierIndex || 1) - 1, 0)] || null;
   if (!external) {
-    return { part, reason: 'external_missing', diffCount: 0, samplePaths: [], valueDiffs: [] };
+    return { part, reason: 'source_missing', diffCount: 0, samplePaths: [], valueDiffs: [] };
   }
 
   const localKey = row.localKey || row.anchorKrName;
@@ -328,14 +528,14 @@ function buildPartDiff({ row, lang, part, localData }) {
   };
 }
 
-function collectReportRows({ rows, langs, parts, scope, localData }) {
+function collectReportRows({ rows, langs, parts, scope, localData, compareByLang, sourceConfig }) {
   const out = [];
   for (const row of rows) {
     if (!matchesScope(row, scope)) continue;
     for (const lang of langs) {
       const partDiffs = [];
       for (const part of parts) {
-        const diff = buildPartDiff({ row, lang, part, localData });
+        const diff = buildPartDiff({ row, lang, part, localData, compareByLang });
         if (Array.isArray(diff.valueDiffs) && diff.valueDiffs.length > 0) {
           partDiffs.push({
             part: diff.part,
@@ -352,6 +552,7 @@ function collectReportRows({ rows, langs, parts, scope, localData }) {
         local: row.local,
         key: row.localKey || row.anchorKrName || row.key,
         lang,
+        source: cloneSourceConfig(sourceConfig),
         partDiffs
       });
     }
@@ -374,13 +575,13 @@ function ensureWonderEntry(localData, keyName) {
   return localData.matchWeapons[keyName];
 }
 
-function applyPartsToRowLang({ row, lang, parts, localData, selectedPathsByPart = null }) {
+function applyPartsToRowLang({ row, lang, parts, localData, compareByLang, selectedPathsByPart = null }) {
   const changedParts = [];
   const skippedParts = [];
   let changedPaths = 0;
 
   for (const part of parts) {
-    const diff = buildPartDiff({ row, lang, part, localData });
+    const diff = buildPartDiff({ row, lang, part, localData, compareByLang });
     if (!Array.isArray(diff.valueDiffs) || diff.valueDiffs.length === 0) {
       skippedParts.push(`${part}:${diff.reason || 'no_change'}`);
       continue;
@@ -483,31 +684,57 @@ function runList(args) {
   }
 }
 
-function runReportJson(args) {
+async function validateIantSources({ langs, sourceConfig }) {
+  if (sourceConfig?.type !== 'iant') return;
+  const compareByLang = await loadCompareSourceByLang(sourceConfig, langs);
+  const issues = [];
+  for (const lang of langs) {
+    const meta = compareByLang[lang];
+    if (!meta?.ok) {
+      issues.push(`${sourceConfig.server}->${lang}: ${describeSourceMeta(meta)}`);
+    }
+  }
+  if (issues.length > 0) {
+    fail([
+      `IANT source fetch failed for server='${sourceConfig.server}'.`,
+      ...issues.map((line) => `- ${line}`)
+    ].join('\n'));
+  }
+}
+
+async function runReportJson(args) {
   const { localData, rows } = loadContext();
   const langs = parseLangs(args.langs);
   const parts = parseParts(args.parts);
   const scope = parseScope(args);
+  const sourceConfig = parseSourceConfig(args);
+  await validateIantSources({ langs, sourceConfig });
+  const compareByLang = await loadCompareSourceByLang(sourceConfig, langs);
   const reportRows = collectReportRows({
     rows,
     langs,
     parts,
     scope,
-    localData
+    localData,
+    compareByLang,
+    sourceConfig
   });
 
   const jsonFile = path.resolve(PROJECT_ROOT, String(args['json-file'] || DEFAULT_REPORT_JSON_FILE));
   ensureDir(path.dirname(jsonFile));
-  fs.writeFileSync(jsonFile, `${JSON.stringify({ rows: reportRows }, null, 2)}\n`, 'utf8');
+  fs.writeFileSync(jsonFile, `${JSON.stringify({ rows: reportRows, source: cloneSourceConfig(sourceConfig) }, null, 2)}\n`, 'utf8');
   log(`[report-json] wrote: ${path.relative(PROJECT_ROOT, jsonFile)} (${reportRows.length} rows)`);
 }
 
-function runPatch(args) {
+async function runPatch(args) {
   const { localData, rows } = loadContext();
   const langs = parseLangs(args.langs);
   const parts = parseParts(args.parts);
   const scope = parseScope(args);
   const dryRun = Boolean(args['dry-run']);
+  const sourceConfig = parseSourceConfig(args);
+  await validateIantSources({ langs, sourceConfig });
+  const compareByLang = await loadCompareSourceByLang(sourceConfig, langs);
 
   const targets = rows.filter((row) => matchesScope(row, scope));
   let changedRows = 0;
@@ -520,7 +747,8 @@ function runPatch(args) {
         row,
         lang,
         parts,
-        localData
+        localData,
+        compareByLang
       });
 
       if (applied.changedPaths === 0) {
@@ -543,7 +771,7 @@ function runPatch(args) {
   log(`[patch] summary: rows=${changedRows} changed_parts=${changedPartsTotal} changed_paths=${changedPathsTotal} dry_run=${dryRun ? 'Y' : 'N'}`);
 }
 
-function runApplyDiffJson(args) {
+async function runApplyDiffJson(args) {
   const inputRel = String(args['input-file'] || '').trim();
   if (!inputRel) fail("apply-diff-json requires '--input-file'");
 
@@ -557,6 +785,20 @@ function runApplyDiffJson(args) {
 
   const dryRun = Boolean(args['dry-run']);
   const { localData, rows } = loadContext();
+  const sourceConfig = input?.source
+    ? parseSourceConfig({
+        'source-type': input.source.type,
+        'source-server': input.source.server,
+        'source-is-prod': input.source.isProdValue ?? input.source.isProd
+      })
+    : parseSourceConfig(args);
+  const langs = [...new Set(
+    input.tasks
+      .map((task) => String(task?.lang || '').trim().toLowerCase())
+      .filter((lang) => SUPPORTED_LANGS.includes(lang))
+  )];
+  await validateIantSources({ langs, sourceConfig });
+  const compareByLang = await loadCompareSourceByLang(sourceConfig, langs);
   const byIndex = new Map(rows.map((row) => [Number(row.index), row]));
 
   let changedRows = 0;
@@ -598,6 +840,7 @@ function runApplyDiffJson(args) {
       lang,
       parts,
       localData,
+      compareByLang,
       selectedPathsByPart
     });
 
@@ -621,7 +864,7 @@ function runApplyDiffJson(args) {
   log(`[apply-diff-json] summary: rows=${changedRows} changed_parts=${changedPartsTotal} changed_paths=${changedPathsTotal} dry_run=${dryRun ? 'Y' : 'N'}`);
 }
 
-function main() {
+async function main() {
   const options = parseCli(process.argv);
   const command = options.command;
 
@@ -641,19 +884,21 @@ function main() {
       return;
     }
     if (command === 'report-json') {
-      runReportJson(options.args);
+      await runReportJson(options.args);
       return;
     }
     if (command === 'patch') {
-      runPatch(options.args);
+      await runPatch(options.args);
       return;
     }
     if (command === 'apply-diff-json') {
-      runApplyDiffJson(options.args);
+      await runApplyDiffJson(options.args);
     }
   } catch (error) {
     fail(error?.message || String(error));
   }
 }
 
-main();
+main().catch((error) => {
+  fail(error?.message || String(error));
+});

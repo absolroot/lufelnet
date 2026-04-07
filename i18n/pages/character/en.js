@@ -110,7 +110,7 @@ window.I18N_PAGE_CHARACTER_EN = {
     mayumiCalcGoalLv10M: 'LV10+Mind5',
     mayumiCalcGoalLv13: 'LV13',
     mayumiCalcGoalLv13M: 'LV13+Mind5',
-    mayumiCalcGoalLv10Note: '180 Recommended',
+    mayumiCalcGoalLv10Note: '180 (Exclusive Weapon)',
     aranCalcSectionCharacter: 'Character Page',
     aranCalcBaseStatLv80: 'Base Stat (LV80)',
     aranCalcWeaponEnhance: 'Forge',

@@ -110,7 +110,7 @@ window.I18N_PAGE_CHARACTER_KR = {
     mayumiCalcGoalLv10M: 'LV10+심상5',
     mayumiCalcGoalLv13: 'LV13',
     mayumiCalcGoalLv13M: 'LV13+심상5',
-    mayumiCalcGoalLv10Note: '180 권장',
+    mayumiCalcGoalLv10Note: '180 (전용무기)',
     aranCalcSectionCharacter: '캐릭터 페이지',
     aranCalcBaseStatLv80: '기본 스탯 (LV80)',
     aranCalcWeaponEnhance: '개조',

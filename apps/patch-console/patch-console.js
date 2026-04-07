@@ -15,6 +15,7 @@ const state = {
   reportSourceError: '',
   iantServer: 'kr',
   iantIsProdValue: '',
+  iantPersonaNumber: '',
   ignoredFilters: {
     index: '',
     lang: '',
@@ -123,7 +124,7 @@ const FALLBACK_CAPABILITIES = [
   { id: 'revelation', label: 'Revelation', enabled: true, features: ['list', 'report', 'patch', 'create'], parts: DOMAIN_PARTS.revelation }
 ];
 
-const APP_VERSION = 'patch-console v0.15.2';
+const APP_VERSION = 'patch-console v0.15.3';
 const VIEW_KEY = 'patch-console.activeView';
 const DATA_EDITOR_MODE_KEY = 'patch-console.dataEditorMode';
 const VALID_VIEWS = new Set(['work', 'ignored', 'editor', 'seo-admin', 'revelation-admin']);
@@ -233,9 +234,13 @@ const dom = {
   btnSaveDataFile: document.getElementById('btn-save-data-file'),
   ignoredList: document.getElementById('ignored-list'),
   iantComparePanel: document.getElementById('iant-compare-panel'),
+  iantCompareTitle: document.getElementById('iant-compare-title'),
   iantSelectedCharacter: document.getElementById('iant-selected-character'),
   iantServer: document.getElementById('iant-server'),
+  iantPersonaNumberField: document.getElementById('iant-persona-number-field'),
+  iantPersonaNumberInput: document.getElementById('iant-persona-number-input'),
   btnRunIantCompare: document.getElementById('btn-run-iant-compare'),
+  iantCompareHelp: document.getElementById('iant-compare-help'),
   iantIsProdDialog: document.getElementById('iant-is-prod-dialog'),
   iantIsProdForm: document.getElementById('iant-is-prod-form'),
   iantIsProdInput: document.getElementById('iant-is-prod-input'),
@@ -527,6 +532,71 @@ function localLangForIantServer(server) {
   if (normalized === 'tw') return 'cn';
   if (normalized === 'sea') return 'en';
   return normalized || 'kr';
+}
+
+function domainSupportsIantCompare(domain = state.domain) {
+  return ['character', 'persona', 'wonder_weapon'].includes(String(domain || '').trim().toLowerCase());
+}
+
+function iantTargetLabel(domain = state.domain) {
+  const normalized = String(domain || '').trim().toLowerCase();
+  if (normalized === 'character') return '캐릭터';
+  if (normalized === 'persona') return '페르소나';
+  if (normalized === 'wonder_weapon') return 'Wonder Weapon';
+  return '대상';
+}
+
+function normalizeIantPersonaNumber(value) {
+  const text = String(value || '').trim();
+  if (!text) return '';
+  return /^\d+$/.test(text) ? text : '';
+}
+
+function selectedPersonaNumber() {
+  const manual = normalizeIantPersonaNumber(dom.iantPersonaNumberInput?.value || state.iantPersonaNumber);
+  if (manual) return manual;
+  const row = selectedListRow();
+  if (!row) return '';
+  const index = Number(row.index);
+  return Number.isInteger(index) ? String(index) : '';
+}
+
+function resolveIantTarget() {
+  const row = selectedListRow();
+  const domain = String(state.domain || '').trim().toLowerCase();
+  if (domain === 'persona') {
+    const manual = normalizeIantPersonaNumber(dom.iantPersonaNumberInput?.value || state.iantPersonaNumber);
+    if (manual) {
+      return {
+        row,
+        scopeValue: manual,
+        label: `#${manual}`,
+        source: 'manual',
+        ok: true
+      };
+    }
+    if (!row) {
+      return { row: null, scopeValue: '', label: '', source: 'list', ok: false };
+    }
+    return {
+      row,
+      scopeValue: String(row.index),
+      label: `#${row.index} ${row.api}`,
+      source: 'list',
+      ok: true
+    };
+  }
+
+  if (!row) {
+    return { row: null, scopeValue: '', label: '', source: 'list', ok: false };
+  }
+  return {
+    row,
+    scopeValue: String(row.index),
+    label: `#${row.index} ${row.api}`,
+    source: 'list',
+    ok: true
+  };
 }
 
 function sourceKey(source) {
@@ -938,27 +1008,54 @@ function renderReportSourceSummary() {
 
 function renderIantControls() {
   if (dom.iantComparePanel) {
-    dom.iantComparePanel.classList.toggle('hidden', state.domain !== 'character');
+    dom.iantComparePanel.classList.toggle('hidden', !domainSupportsIantCompare());
   }
   if (dom.iantServer && dom.iantServer.value !== state.iantServer) {
     dom.iantServer.value = state.iantServer;
   }
+  if (dom.iantPersonaNumberField) {
+    dom.iantPersonaNumberField.classList.toggle('hidden', state.domain !== 'persona');
+  }
+  if (dom.iantPersonaNumberInput && dom.iantPersonaNumberInput.value !== state.iantPersonaNumber) {
+    dom.iantPersonaNumberInput.value = state.iantPersonaNumber;
+  }
 
-  const row = selectedListRow();
+  const targetLabel = iantTargetLabel();
+  const target = resolveIantTarget();
+  const row = target.row;
+  const mappedLang = localLangForIantServer(state.iantServer);
+  if (dom.iantCompareTitle) {
+    dom.iantCompareTitle.textContent = `${targetLabel} IANT 비교`;
+  }
   if (dom.iantSelectedCharacter) {
-    if (state.domain !== 'character') {
-      dom.iantSelectedCharacter.textContent = 'character 도메인에서만 사용할 수 있습니다.';
+    if (!domainSupportsIantCompare()) {
+      dom.iantSelectedCharacter.textContent = '이 도메인에서는 IANT 비교를 사용할 수 없습니다.';
+    } else if (state.domain === 'persona') {
+      if (target.source === 'manual' && target.ok) {
+        const suffix = row && Number(row.index) === Number(target.scopeValue)
+          ? ` / 선택 매칭 #${row.index} ${row.api}`
+          : '';
+        dom.iantSelectedCharacter.textContent = `수동 번호 ${target.scopeValue}${suffix} / local=${mappedLang}`;
+      } else if (row) {
+        dom.iantSelectedCharacter.textContent = `#${row.index} ${row.api} / ${row.local} / ${row.key} / local=${mappedLang}`;
+      } else {
+        dom.iantSelectedCharacter.textContent = '대상 페르소나를 목록에서 선택하거나 번호를 입력하세요.';
+      }
     } else if (!row) {
-      dom.iantSelectedCharacter.textContent = '대상 캐릭터를 목록에서 선택하세요.';
+      dom.iantSelectedCharacter.textContent = `대상 ${targetLabel}을 목록에서 선택하세요.`;
     } else {
-      const mappedLang = localLangForIantServer(state.iantServer);
       dom.iantSelectedCharacter.textContent = `#${row.index} ${row.api} / ${row.local} / ${row.key} / local=${mappedLang}`;
     }
+  }
+  if (dom.iantCompareHelp) {
+    dom.iantCompareHelp.textContent = state.domain === 'persona'
+      ? '비교 시작 시 옵션 값을 입력한 뒤 선택 페르소나 1건 또는 수동 번호 1건만 다시 비교합니다.'
+      : '비교 시작 시 옵션 값을 입력한 뒤 선택 대상 1건만 다시 비교합니다.';
   }
   if (dom.btnRunIantCompare) {
     dom.btnRunIantCompare.disabled = dom.btnRunIantCompare.dataset.pending === '1'
       ? true
-      : (state.domain !== 'character' || !row);
+      : (!domainSupportsIantCompare() || !target.ok);
   }
 }
 
@@ -4461,6 +4558,7 @@ function bindDomainEvents() {
     state.activeRowId = null;
     state.activeListIndex = null;
     state.ignoredCount = 0;
+    state.iantPersonaNumber = '';
     setReportSourceState(externalSource(), { localLangs: [], status: reportSourceStatusText(externalSource()), error: '' });
     setRevelationAdminCreateOpen(false);
     clearIgnoredFilterInputs();
@@ -4713,14 +4811,24 @@ function bindEvents() {
     state.iantServer = String(dom.iantServer.value || 'kr').trim().toLowerCase() || 'kr';
     renderIantControls();
   });
+  dom.iantPersonaNumberInput?.addEventListener('input', () => {
+    state.iantPersonaNumber = String(dom.iantPersonaNumberInput.value || '').trim();
+    renderIantControls();
+  });
   dom.btnRunIantCompare?.addEventListener('click', async () => {
-    const row = selectedListRow();
-    if (state.domain !== 'character') {
-      appendLog('[character] IANT 비교는 character 도메인에서만 사용할 수 있습니다.');
+    const domainLabel = iantTargetLabel();
+    const target = resolveIantTarget();
+    const row = target.row;
+    if (!domainSupportsIantCompare()) {
+      appendLog(`[${state.domain}] IANT 비교는 이 도메인에서 사용할 수 없습니다.`);
       return;
     }
-    if (!row) {
-      appendLog('[character] IANT 비교 대상이 선택되지 않았습니다. 왼쪽 목록에서 캐릭터를 먼저 선택하세요.');
+    if (!target.ok) {
+      if (state.domain === 'persona') {
+        appendLog('[persona] IANT 비교 대상이 없습니다. 왼쪽 목록에서 페르소나를 선택하거나 번호를 입력하세요.');
+      } else {
+        appendLog(`[${state.domain}] IANT 비교 대상이 선택되지 않았습니다. 왼쪽 목록에서 ${domainLabel}을 먼저 선택하세요.`);
+      }
       renderIantControls();
       return;
     }
@@ -4732,22 +4840,27 @@ function bindEvents() {
     }
 
     state.iantIsProdValue = isProdValue;
+    if (state.domain === 'persona') {
+      state.iantPersonaNumber = normalizeIantPersonaNumber(dom.iantPersonaNumberInput?.value || state.iantPersonaNumber);
+    }
     const source = iantSourceFromUi(isProdValue);
     const localLang = localLangForIantServer(source.server);
     if (dom.scopeMode) dom.scopeMode.value = 'nums';
-    if (dom.scopeValue) dom.scopeValue.value = String(row.index);
+    if (dom.scopeValue) dom.scopeValue.value = target.scopeValue;
+    if (row) state.activeListIndex = Number(row.index);
+    renderCharList();
 
     try {
       setPending(dom.btnRunIantCompare, true);
-      appendLog(`[${state.domain}] IANT 비교 시작: #${row.index} ${row.api} server=${source.server} local=${localLang}`);
+      appendLog(`[${state.domain}] IANT 비교 시작: ${target.label} server=${source.server} local=${localLang}`);
       await generateReport({
         source,
         langs: localLang,
         scopeMode: 'nums',
-        scopeValue: String(row.index)
+        scopeValue: target.scopeValue
       });
       if (!state.activeRowId && state.reportRows.length > 0) {
-        const matched = state.reportRows.find((item) => Number(item.index) === Number(row.index)) || state.reportRows[0];
+        const matched = state.reportRows.find((item) => Number(item.index) === Number(target.scopeValue)) || state.reportRows[0];
         state.activeRowId = matched ? rowId(matched) : null;
         renderReportTable();
       }

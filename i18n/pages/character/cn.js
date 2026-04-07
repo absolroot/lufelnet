@@ -116,7 +116,7 @@ window.I18N_PAGE_CHARACTER_CN = {
     "mayumiCalcGoalLv10M": "LV10+心象5",
     "mayumiCalcGoalLv13": "LV13",
     "mayumiCalcGoalLv13M": "LV13+心象5",
-    "mayumiCalcGoalLv10Note": "180推荐",
+    "mayumiCalcGoalLv10Note": "180 (专属武器)",
     "aranCalcSectionCharacter": "怪盗页面",
     "aranCalcBaseStatLv80": "基础属性 (LV 80)",
     "aranCalcWeaponEnhance": "改造",

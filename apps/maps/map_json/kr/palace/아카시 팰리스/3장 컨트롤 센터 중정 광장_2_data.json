@@ -1,19 +1,5 @@
 {
-    "tiles": [
-        {
-            "image": "map_sb_ZTGC_3F.png",
-            "position": [
-                0,
-                0
-            ],
-            "ratio": 1,
-            "rotate": 0,
-            "rotate_pivot": [
-                0.5,
-                0.49996904
-            ]
-        }
-    ],
+    "tiles": [],
     "objects": [
         {
             "sn": 8535033,
@@ -52,7 +38,7 @@
                 196,
                 600
             ],
-            "ratio": 0.7777777777777778,
+            "ratio": 0.7368421052631579,
             "rotate": 0.0,
             "rotate_pivot": [
                 0.5,
@@ -67,7 +53,7 @@
                 523,
                 616
             ],
-            "ratio": 0.7777777777777778,
+            "ratio": 0.7368421052631579,
             "rotate": 0.0,
             "rotate_pivot": [
                 0.5,
@@ -82,37 +68,7 @@
                 196,
                 883
             ],
-            "ratio": 0.7777777777777778,
-            "rotate": 0.0,
-            "rotate_pivot": [
-                0.5,
-                0.5
-            ],
-            "enemy_data": null
-        },
-        {
-            "sn": 9009999,
-            "image": "yishijie-icon-box-hexin-new.png",
-            "position": [
-                130,
-                530
-            ],
-            "ratio": 0.7777777777777778,
-            "rotate": 0.0,
-            "rotate_pivot": [
-                0.5,
-                0.5
-            ],
-            "enemy_data": null
-        },
-        {
-            "sn": 8009999,
-            "image": "yishijie-icon-box-hexin-new.png",
-            "position": [
-                610,
-                500
-            ],
-            "ratio": 0.7777777777777778,
+            "ratio": 0.7368421052631579,
             "rotate": 0.0,
             "rotate_pivot": [
                 0.5,
@@ -122,9 +78,5 @@
         }
     ],
     "enemies": [],
-    "rotate": 0.0,
-    "map_size": [
-        712,
-        1228
-    ]
+    "rotate": 0.0
 }

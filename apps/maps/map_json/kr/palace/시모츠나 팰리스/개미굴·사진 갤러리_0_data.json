@@ -15,7 +15,38 @@
         }
     ],
     "objects": [],
-    "enemies": [],
+    "enemies": [
+        {
+            "sn": 8645001,
+            "image": "yishijie-icon-jiantou-up_small.png",
+            "position": [
+                95,
+                11
+            ],
+            "ratio": 0.6511627906976745,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8645002,
+            "image": "yishijie-icon-jiantou-down_small.png",
+            "position": [
+                95,
+                963
+            ],
+            "ratio": 0.6511627906976745,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        }
+    ],
     "rotate": 0.0,
     "map_size": [
         196,

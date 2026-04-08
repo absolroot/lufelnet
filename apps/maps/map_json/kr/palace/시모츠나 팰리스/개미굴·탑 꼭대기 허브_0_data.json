@@ -22,7 +22,7 @@
                 138,
                 654
             ],
-            "ratio": 0.7567567567567568,
+            "ratio": 0.7,
             "rotate": 0.0,
             "rotate_pivot": [
                 0.5,
@@ -37,7 +37,7 @@
                 145,
                 196
             ],
-            "ratio": 0.7567567567567568,
+            "ratio": 0.7,
             "rotate": 0.0,
             "rotate_pivot": [
                 0.5,
@@ -52,7 +52,7 @@
                 874,
                 218
             ],
-            "ratio": 0.7567567567567568,
+            "ratio": 0.7,
             "rotate": 0.0,
             "rotate_pivot": [
                 0.5,
@@ -67,7 +67,7 @@
                 874,
                 649
             ],
-            "ratio": 0.7567567567567568,
+            "ratio": 0.7,
             "rotate": 0.0,
             "rotate_pivot": [
                 0.5,
@@ -76,7 +76,38 @@
             "enemy_data": null
         }
     ],
-    "enemies": [],
+    "enemies": [
+        {
+            "sn": 8644001,
+            "image": "yishijie-icon-jiantou-up_small.png",
+            "position": [
+                505,
+                58
+            ],
+            "ratio": 0.6511627906976745,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8644002,
+            "image": "yishijie-icon-jiantou-down_small.png",
+            "position": [
+                500,
+                805
+            ],
+            "ratio": 0.6511627906976745,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        }
+    ],
     "rotate": 0.0,
     "map_size": [
         1008,

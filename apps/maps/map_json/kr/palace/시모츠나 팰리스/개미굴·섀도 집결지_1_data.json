@@ -74,7 +74,7 @@
                 1951,
                 1018
             ],
-            "ratio": 1.9444444444444444,
+            "ratio": 1.4583333333333333,
             "rotate": 0.0,
             "rotate_pivot": [
                 0.5,
@@ -89,7 +89,7 @@
                 1816,
                 1015
             ],
-            "ratio": 0.9722222222222222,
+            "ratio": 0.875,
             "rotate": 0.0,
             "rotate_pivot": [
                 0.5,
@@ -113,7 +113,23 @@
             "enemy_data": null
         }
     ],
-    "enemies": [],
+    "enemies": [
+        {
+            "sn": 8611503,
+            "image": "yishijie-icon-jiantou-left_small.png",
+            "position": [
+                1700,
+                1250
+            ],
+            "ratio": 1.7073170731707317,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        }
+    ],
     "rotate": 0.0,
     "map_size": [
         3188,

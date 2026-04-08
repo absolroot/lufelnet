@@ -1,0 +1,115 @@
+{
+    "tiles": [
+        {
+            "image": "map_tsg_huilang2.png",
+            "position": [
+                0,
+                0
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "objects": [
+        {
+            "sn": 8717001,
+            "image": "gongdian-lightdoor-B1.png",
+            "position": [
+                145,
+                582
+            ],
+            "ratio": 0.7,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8717002,
+            "image": "gongdian-lightdoor-B2.png",
+            "position": [
+                57,
+                330
+            ],
+            "ratio": 0.7,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8717003,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                267,
+                320
+            ],
+            "ratio": 0.7,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8717004,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                447,
+                24
+            ],
+            "ratio": 0.7,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8717101,
+            "image": "breakable.png",
+            "position": [
+                268,
+                402
+            ],
+            "ratio": 0.7,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8717102,
+            "image": "breakable.png",
+            "position": [
+                661,
+                353
+            ],
+            "ratio": 0.7,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        }
+    ],
+    "enemies": [],
+    "rotate": 0.0,
+    "map_size": [
+        687,
+        644
+    ]
+}

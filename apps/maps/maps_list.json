@@ -1498,6 +1498,164 @@
               ]
             }
           ]
+        },
+        {
+          "id": "library",
+          "name": "히라노 아란 팰리스",
+          "name_en": "",
+          "name_jp": "",
+          "icon": "yishijie-icon-gongdian-yalan.png",
+          "submaps": [
+            {
+              "id": "library_entrance",
+              "name": "입구 로비",
+              "name_en": "",
+              "name_jp": "",
+              "file": [
+                "palace/히라노 아란 팰리스/아란 도서관·입구 로비_0_data.json"
+              ],
+              "file_en": [
+              ],
+              "file_jp": [
+              ],
+              "description": "",
+              "description_en": "",
+              "description_jp": ""
+            },
+            {
+              "id": "library_staircase_to_basement",
+              "name": "지하로 통하는 계단",
+              "name_en": "",
+              "name_jp": "",
+              "file": [],
+              "description": "",
+              "description_en": "",
+              "description_jp": "",
+              "submaps": [
+                {
+                  "id": "circle_staircase_1",
+                  "name": "회전 계단 1",
+                  "name_en": "",
+                  "name_jp": "",
+                  "file": [
+                    "palace/히라노 아란 팰리스/아란 도서관·지하로 통하는 계단 1_0_data.json"
+                  ],
+                  "file_en": [
+
+                  ],
+                  "file_jp": [
+
+                  ],
+                  "description": "",
+                  "description_en": "",
+                  "description_jp": ""
+                },
+                {
+                  "id": "circle_staircase_2",
+                  "name": "회전 계단 2",
+                  "name_en": "",
+                  "name_jp": "",
+                  "file": [
+                    "palace/히라노 아란 팰리스/아란 도서관·지하로 통하는 계단 2_0_data.json"
+                  ],
+                  "file_en": [
+
+                  ],
+                  "file_jp": [
+
+                  ],
+                  "description": "",
+                  "description_en": "",
+                  "description_jp": ""
+                },
+                {
+                  "id": "circle_staircase_3",
+                  "name": "회전 계단 3",
+                  "name_en": "",
+                  "name_jp": "",
+                  "file": [
+                    "palace/히라노 아란 팰리스/아란 도서관·지하로 통하는 계단 3_0_data.json",
+                    "palace/히라노 아란 팰리스/아란 도서관·지하로 통하는 계단 3_1_data.json"
+                  ],
+                  "file_en": [
+
+                  ],
+                  "file_jp": [
+
+                  ],
+                  "description": "",
+                  "description_en": "",
+                  "description_jp": ""
+                }
+              ]
+            },
+            {
+              "id": "library_children_section",
+              "name": "어린이 구역",
+              "name_en": "",
+              "name_jp": "",
+              "file": [
+                "palace/히라노 아란 팰리스/아란 도서관·B1 어린이 구역_0_data.json"
+              ],
+              "file_en": [
+              ],
+              "file_jp": [
+              ],
+              "description": "",
+              "description_en": "",
+              "description_jp": ""
+            },
+            {
+              "id": "library_large_section",
+              "name": "대형 서고",
+              "name_en": "",
+              "name_jp": "",
+              "file": [
+                "palace/히라노 아란 팰리스/아란 도서관·B2 대형 서고_0_data.json",
+                "palace/히라노 아란 팰리스/아란 도서관·B2 대형 서고_1_data.json",
+                "palace/히라노 아란 팰리스/아란 도서관·B2 대형 서고_2_data.json"
+              ],
+              "file_en": [
+              ],
+              "file_jp": [
+              ],
+              "description": "",
+              "description_en": "",
+              "description_jp": ""
+            },
+            {
+              "id": "library_dark_section",
+              "name": "어두운 골목",
+              "name_en": "",
+              "name_jp": "",
+              "file": [
+                "palace/히라노 아란 팰리스/아란 도서관·B3 어두운 골목_0_data.json"
+              ],
+              "file_en": [
+              ],
+              "file_jp": [
+              ],
+              "description": "",
+              "description_en": "",
+              "description_jp": ""
+            },
+            {
+              "id": "library_forbidden_section",
+              "name": "금서고",
+              "name_en": "",
+              "name_jp": "",
+              "file": [
+                "palace/히라노 아란 팰리스/아란 도서관·B4 금서고_0_data.json"
+              ],
+              "file_en": [
+              ],
+              "file_jp": [
+              ],
+              "description": "",
+              "description_en": "",
+              "description_jp": ""
+            }
+          ]
         }
       ]
     },
@@ -1846,6 +2004,31 @@
               "name_jp": "",
               "file": [
                 "mementos/미덕을 잃은 길/미덕을 잃은 길 에어리어 6_data.json"
+              ],
+              "description": "",
+              "description_en": "",
+              "description_jp": ""
+            }
+          ]
+        },
+        {
+          "id": "lost_mercy",
+          "name": "자비를 잃은 길",
+          "name_en": "",
+          "name_jp": "",
+          "icon": "yinxiangkongjian-ditu-5.png",
+          "submaps": [
+            {
+              "id": "area1",
+              "name": "에어리어1",
+              "name_en": "Area 1",
+              "name_jp": "エリア1",
+              "file": [
+                "mementos/자비를 잃은 길/자비를 잃은 길 에어리어 1_data.json"
+              ],
+              "file_en": [
+              ],
+              "file_jp": [
               ],
               "description": "",
               "description_en": "",

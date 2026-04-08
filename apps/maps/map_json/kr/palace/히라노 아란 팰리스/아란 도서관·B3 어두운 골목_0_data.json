@@ -1,0 +1,441 @@
+{
+    "tiles": [
+        {
+            "image": "tsg_ax01_00.png",
+            "position": [
+                1648,
+                526
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "tsg_ax01_01.png",
+            "position": [
+                991,
+                804
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "tsg_ax01_02.png",
+            "position": [
+                1956,
+                1377
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "tsg_ax01_03.png",
+            "position": [
+                2046,
+                1549
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "tsg_ax01_04.png",
+            "position": [
+                60,
+                64
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "tsg_ax01_05.png",
+            "position": [
+                1110,
+                512
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "tsg_ax01_06.png",
+            "position": [
+                1102,
+                346
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "tsg_ax01_07.png",
+            "position": [
+                1787,
+                1304
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "tsg_ax01_08.png",
+            "position": [
+                1856,
+                300
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "tsg_ax01_09.png",
+            "position": [
+                1330,
+                1696
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "tsg_ax01_10.png",
+            "position": [
+                1399,
+                804
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "objects": [
+        {
+            "sn": 8713005,
+            "image": "gongdian-lightdoor-B4.png",
+            "position": [
+                1906,
+                429
+            ],
+            "ratio": 1.025,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8713101,
+            "image": "gongdian-lightdoor-02.png",
+            "position": [
+                2263,
+                1022
+            ],
+            "ratio": 1.025,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8713102,
+            "image": "gongdian-sketchbook-pic2.png",
+            "position": [
+                2019,
+                1185
+            ],
+            "ratio": 1.025,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8713103,
+            "image": "gongdian-lightdoor-03.png",
+            "position": [
+                1669,
+                778
+            ],
+            "ratio": 1.025,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8713104,
+            "image": "gongdian-lightdoor-05.png",
+            "position": [
+                1941,
+                662
+            ],
+            "ratio": 1.025,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8713105,
+            "image": "gongdian-sketchbook-pic7-1.png",
+            "position": [
+                1922,
+                471
+            ],
+            "ratio": 1.025,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8713107,
+            "image": "gongdian-lightdoor-B2.png",
+            "position": [
+                1838,
+                1367
+            ],
+            "ratio": 1.025,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8713201,
+            "image": "gongdian-lightdoor-01.png",
+            "position": [
+                1383,
+                1795
+            ],
+            "ratio": 1.025,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8713202,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                1616,
+                1459
+            ],
+            "ratio": 1.025,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8713301,
+            "image": "gongdian-lightdoor-01.png",
+            "position": [
+                2141,
+                1414
+            ],
+            "ratio": 1.025,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8713403,
+            "image": "gongdian-lightdoor-02.png",
+            "position": [
+                2142,
+                1708
+            ],
+            "ratio": 1.025,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8713501,
+            "image": "gongdian-lightdoor-04.png",
+            "position": [
+                679,
+                693
+            ],
+            "ratio": 1.025,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8713502,
+            "image": "gongdian-lightdoor-05.png",
+            "position": [
+                367,
+                323
+            ],
+            "ratio": 1.025,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8713601,
+            "image": "gongdian-lightdoor-03.png",
+            "position": [
+                1201,
+                671
+            ],
+            "ratio": 1.025,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8713604,
+            "image": "gongdian-sketchbook-pic7-1.png",
+            "position": [
+                1260,
+                541
+            ],
+            "ratio": 1.025,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8713605,
+            "image": "gongdian-lightdoor-04.png",
+            "position": [
+                1123,
+                601
+            ],
+            "ratio": 1.025,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8713703,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                1199,
+                445
+            ],
+            "ratio": 1.025,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        }
+    ],
+    "enemies": [
+        {
+            "sn": 8713001,
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                2065,
+                1484
+            ],
+            "ratio": 0.45555555555555555,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8713002,
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                1275,
+                597
+            ],
+            "ratio": 0.45555555555555555,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        }
+    ],
+    "rotate": 0.0,
+    "map_size": [
+        2336,
+        1852
+    ]
+}

@@ -1,0 +1,76 @@
+{
+    "tiles": [
+        {
+            "image": "map_tsg_dashuku03_ditu.png",
+            "position": [
+                0,
+                0
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "tsg_dsk01_22.png",
+            "position": [
+                2289,
+                2000
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "tsg_dsk01_32.png",
+            "position": [
+                27,
+                1826
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "tsg_dsk01_33.png",
+            "position": [
+                36,
+                1515
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "tsg_dsk01_34.png",
+            "position": [
+                48,
+                1210
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "objects": [],
+    "enemies": [],
+    "rotate": 0.0,
+    "map_size": [
+        3148,
+        2880
+    ]
+}

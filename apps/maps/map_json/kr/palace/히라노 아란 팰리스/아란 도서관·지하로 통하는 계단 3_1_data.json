@@ -1,0 +1,70 @@
+{
+    "tiles": [
+        {
+            "image": "map_tsg_huilang3-2.png",
+            "position": [
+                0,
+                0
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "objects": [
+        {
+            "sn": 8718001,
+            "image": "gongdian-lightdoor-B2.png",
+            "position": [
+                333,
+                605
+            ],
+            "ratio": 0.7,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8718012,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                405,
+                45
+            ],
+            "ratio": 0.7,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8718101,
+            "image": "breakable.png",
+            "position": [
+                23,
+                21
+            ],
+            "ratio": 0.7,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        }
+    ],
+    "enemies": [],
+    "rotate": 0.0,
+    "map_size": [
+        426,
+        674
+    ]
+}

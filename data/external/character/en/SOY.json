@@ -137,6 +137,10 @@
       "HP": "0.2"
     },
     "innate_awake_skill": [],
+    "innate_skill_type": [
+      "S1/S2",
+      "S3/HL"
+    ],
     "name": "Shun Kano",
     "normal_skill": [
       {

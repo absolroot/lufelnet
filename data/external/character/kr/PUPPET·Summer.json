@@ -137,6 +137,10 @@
       "Crit Rate": "0.12"
     },
     "innate_awake_skill": [],
+    "innate_skill_type": [
+      "S1/S2",
+      "S3/HL"
+    ],
     "name": "사하라 미유·여름",
     "normal_skill": [
       {

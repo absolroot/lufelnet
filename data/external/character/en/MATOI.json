@@ -137,6 +137,10 @@
       "Damage Mult.": "0.16"
     },
     "innate_awake_skill": [],
+    "innate_skill_type": [
+      "S1/S2",
+      "S3/HL"
+    ],
     "name": "Mio Natsukawa",
     "normal_skill": [
       {

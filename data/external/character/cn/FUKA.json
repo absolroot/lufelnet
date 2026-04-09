@@ -122,6 +122,10 @@
       "Crit Mult.": "0.24"
     },
     "innate_awake_skill": [],
+    "innate_skill_type": [
+      "S1",
+      "S2/S3"
+    ],
     "name": "山岸风花",
     "normal_skill": [
       {

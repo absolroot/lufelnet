@@ -137,6 +137,10 @@
       "Damage Down": "0.16"
     },
     "innate_awake_skill": [],
+    "innate_skill_type": [
+      "S2/S1",
+      "S3/HL"
+    ],
     "name": "路菲尔",
     "normal_skill": [
       {

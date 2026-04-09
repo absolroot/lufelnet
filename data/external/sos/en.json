@@ -1,5 +1,66 @@
 {
-  "data": null,
-  "msg": "SOS not found.",
-  "status": 100
+  "data": {
+    "boss": [
+      {
+        "bonusRule": "All ally Bless attack Score x 3",
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Fire",
+                "Wind",
+                "Curse"
+              ],
+              "Weak": [
+                "Bless"
+              ]
+            },
+            "image": "B-guaiwutouxiang-set.png",
+            "level": "89",
+            "name": "Seth",
+            "skill": "1101,1103",
+            "sn": "524101",
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 2.0,
+        "sn": "268401"
+      },
+      {
+        "bonusRule": "All ally Psychokinesis attack Score x 3",
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Wind",
+                "Bless"
+              ],
+              "Weak": [
+                "Psychokinesis"
+              ]
+            },
+            "image": "B-guaiwutouxiang-quetzalcoatl.png",
+            "level": "89",
+            "name": "Quetzalcoatl",
+            "skill": "406,403",
+            "sn": "524111",
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 1.0,
+        "sn": "268402"
+      }
+    ],
+    "buff": "Ritual Artifacts: When an ally besides Wonder deals Physical or Psychokinesis damage with skills, other allies gain Furious Impulse.\nFurious Impulse: Increase final damage by 40% for 2 turns.",
+    "endTime": "2026-04-16 10:30:00",
+    "startTime": "2026-04-09 11:30:00"
+  },
+  "msg": "OK",
+  "status": 0
 }

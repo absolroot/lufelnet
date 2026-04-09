@@ -1,0 +1,280 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "아란은 적에게 특수 상태 『죄』를 추가할 수 있으며, 필드에는 『죄』를 보유한 목표가 동시에 최대 2개까지 존재할 수 있다.\n『죄』: 『죄』를 보유한 적은 받은 대미지의 10%를 『죄』를 보유한 다른 적에게 복제한다.\n『죄』의 목표 역시 같은 적일 수 있으며, 이때 효과는 받은 대미지의 5%를 자신에게 복제한다.\n『죄』를 보유한 적이 사망하면 『죄』는 적의 다른 생존 유닛에게 전이된다.\n『죄』의 전도 비율은 전도 효과의 증폭 영향을 받을 수 있다.",
+        "name": "수산나의 시선",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 124140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『죄업』 1중첩마다 추가로 받는 대미지 5% 증가 효과를 부여한다.\n『복수의 거울』의 기본 반사 비율이 400%까지 증가한다.",
+        "name": "유디트의 단도",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 124141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『금단의 부식』과 『복수의 거울』이 『죄업』 중첩을 추가로 1중첩 증가시킨다.\n『죄업』 상한이 추가로 2중첩 증가한다.",
+        "name": "야엘의 못 자국",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 124142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『금단의 부식』, 『전투 기술』의 스킬 레벨이 2레벨 증가하고, 최대 15레벨까지 증가한다.",
+        "name": "그림의 여신의 구도",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 124143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "HIGHLIGHT 효과 증가: HIGHLIGHT 에너지를 15포인트 반환하고, 3턴 동안 『죄』를 보유한 적이 HIGHLIGHT 공격을 받을 때 해당 회차 대미지의 공격력이 25% 증가한다. 또한 해당 효과를 『죄』를 보유한 다른 적에게 복제한다.",
+        "name": "성 카타리나의 바퀴",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 124144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『단죄의 눈동자』, 『복수의 거울』의 스킬 레벨이 2레벨 증가하고, 최대 15레벨까지 증가한다.",
+        "name": "막달라의 고행",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 124145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『죄』를 보유한 다른 적이 동시에 대미지 목표로 선택되면, 전도 효과가 추가로 150% 증폭된다.\n『죄』를 보유한 적은 받은 다운 수치 대미지, 정신 이상 및 원소 이상을 다른 『죄』를 보유한 적에게 전도할 수 있다.",
+        "name": "에스더의 반역 왕좌",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 124146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "Default",
+      "cooldown": 4,
+      "cost": "",
+      "desc": "1명의 적에게 361.8%/398.9%/376.6%/413.7%의 주원 속성 대미지를 준다.\n만약 적이 『죄』를 보유한 경우, 3턴 동안 해당 적이 받는 HIGHLIGHT 대미지가 14.6%/16.1%/15.2%/16.7% 증가한다. 또한 해당 효과를 『죄』를 보유한 다른 적에게 복제한다.",
+      "name": "HIGHLIGHT",
+      "nature": "Curse",
+      "skill_lv": "10/10/12/12",
+      "sn": 124152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": 1
+    },
+    "innate": {
+      "Ailment Acc.": "0.24",
+      "Attack": "0.2"
+    },
+    "innate_awake_skill": [],
+    "name": "히라노 아란",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 22",
+        "desc": "1명의 적에게 153.7%/169.5%/160.0%/175.8%의 주원 속성 대미지를 준다.\n적이 『죄』를 보유한 경우 『죄업』을 2중첩 추가하고, 적에게 있는 『죄업』 중첩 수를 『죄』를 보유한 다른 적에게 복제한다.\n적이 『죄업』을 보유한 경우 이번 대미지를 20% 증가시킨다.\n『죄업』: 2턴 동안 방어력이 3.9%/4.3%/4.1%/4.5% 감소한다(또한 방어력 추가 감소 효과가 히라노 아란의 효과 명중을 기반으로 하며, 최대 161.0%/177.5%/167.6%/184.1% 효과 명중까지 계산되고, 방어력은 최대 11.7%/12.9%/12.2%/13.4%까지 감소). 최대 4회 중첩까지 중첩된다.",
+        "name": "금단의 부식",
+        "nature": "Curse",
+        "skill_lv": "10/10/12/12",
+        "sn": 124111,
+        "tags": [
+          "액티브",
+          "디버프"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 2,
+        "cost": "SP 24",
+        "desc": "아군 전체의 모든 적합성을 ‘반’으로 변경하고 2턴 동안 반사 비율이 20%에서 100%까지 증가한다(아란의 효과 명중은 반사 비율을 증가시키며, 최대 161.0%/177.5%/167.6%/184.1% 효과 명중까지 계산되고, 반사 비율은 최대 97.6%/107.6%/101.6%/111.6%까지 추가로 증가한다). 히라노 아란의 다음 행동 또는 스킬의 전체 대미지를 1회 반사한 뒤 사라진다.\n대미지 반사 시 적이 『죄』를 보유한 경우, 적에게 『죄업』을 2중첩 부여한다.\n해당 반사 효과는 일부 대미지에 포함된 디버프 효과를 무효화할 수 없다.",
+        "name": "복수의 거울",
+        "nature": null,
+        "skill_lv": "10/10/12/12",
+        "sn": 124112,
+        "tags": [
+          "액티브",
+          "버프"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 0",
+        "desc": "아란이 적 목표를 2명 선택하고 각각 『죄』를 추가한다. 같은 목표를 중복으로 선택할 수 있다.\n다시 시전: 『죄』의 대상을 다시 선택한다.\n해당 스킬은 턴을 소모하지 않으며, 턴마다 1회만 시전할 수 있다.\n『죄』의 전도 효과가 19.5%/21.5%/20.3%/22.3% 증폭을 획득한다(추가 전도 효과 증폭은 히라노 아란의 효과 명중을 기반으로 하며, 최대 161.0%/177.5%/167.6%/184.1% 효과 명중까지 계산되고, 전도 효과 증폭이 최대 78.1%/86.1%/81.3%/89.3%까지 증가).",
+        "name": "단죄의 눈동자 ",
+        "nature": "Support",
+        "skill_lv": "10/10/12/12",
+        "sn": 124113,
+        "tags": [
+          "액티브",
+          "디버프"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "히라노 아란이 필드에 있을 때, 전체 아군이 『죄』를 보유한 적에게 주는 대미지가 24.0% 증가한다.",
+        "name": "역날",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 124131,
+        "tags": [
+          "잠재력"
+        ],
+        "target": "All Allies",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "히라노 아란이 필드에 있을 때, 필드에 『죄』를 보유한 적이 1명 존재할 때마다 아군 전체가 18.0%의 공격력 보너스를 획득한다.",
+        "name": "제사의 불꽃",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 124132,
+        "tags": [
+          "잠재력"
+        ],
+        "target": "Ally excluding myself",
+        "target_count": "All"
+      }
+    ],
+    "rating": {
+      "Ailment Acc.": 1.4,
+      "Attack": 3470.0,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "26.0% / 26.0% / 26.0% / 26.0% / 26.0% / 26.0% / 26.0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "795.37 / 804.17 / 813.77 / 822.57 / 832.17 / 840.97 / 850.57",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "470.01 / 475.61 / 481.21 / 486.01 / 491.61 / 497.21 / 502.81",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "2520.0 / 2548.8 / 2578.4 / 2607.2 / 2636.0 / 2665.6 / 2694.4",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "105.0 / 105.0 / 105.0 / 105.0 / 105.0 / 105.0 / 105.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

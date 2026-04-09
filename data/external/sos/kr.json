@@ -10,21 +10,46 @@
               "Nullify": [],
               "Reflect": [],
               "Resistant": [
-                "Fire"
+                "Ice",
+                "Nuclear",
+                "Curse"
               ],
               "Weak": [
-                "Ice"
+                "Electric"
               ]
             },
-            "image": "B-guaiwutouxiang-surtr.png",
+            "image": "B-guaiwutouxiang-scathach.png",
             "level": "89",
-            "name": "조종당하는 수르트",
-            "skill": "108,103,1008",
-            "sn": 543101,
+            "name": "조종당하는 스카아하",
+            "skill": "1016,1404,257",
+            "sn": 544101,
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Phys",
+                "Gun",
+                "Wind",
+                "Nuclear",
+                "Bless"
+              ],
+              "Weak": [
+                "Electric"
+              ]
+            },
+            "image": "B-guaiwutouxiang-cuchulainn.png",
+            "level": "89",
+            "name": "조종당하는 쿠 훌린",
+            "skill": "1023,1154",
+            "sn": 544102,
             "stat": {}
           }
         ],
-        "scoreRatio": 1.0,
+        "scoreRatio": 2.0,
         "sn": 78401
       },
       {
@@ -49,7 +74,7 @@
             "level": "89",
             "name": "조종당하는 가네샤",
             "skill": "1013,1022",
-            "sn": 543111,
+            "sn": 544111,
             "stat": {}
           }
         ],
@@ -57,9 +82,9 @@
         "sn": 78402
       }
     ],
-    "buff": "암석화 유적: 『적합성 저하』 상태 추가 시 아군 전체에 『신비한 룬』을 추가한다. 추가 턴 획득 시 자신이 『신비한 룬』을 획득한다. 『신비한 룬』: 2턴 동안 최종 대미지가 1턴 동안 40% 증가한다.",
-    "endTime": "2026-04-09 07:30:00",
-    "startTime": "2026-03-12 08:30:00"
+    "buff": "고압 산소: 전투 진입 시 아군 전체가 『열광의 의지』를 획득한다. 『열광의 의지』: 스킬을 사용해 대미지를 주면, 메인 목표 1개 선택 시마다 최종 대미지가 20% 증가한다. 추가 턴 시작 시 최종 대미지가 추가로 20% 증가한다. 최종 대미지가 최대 40% 증가한다.",
+    "endTime": "2026-04-30 07:30:00",
+    "startTime": "2026-04-09 08:30:00"
   },
   "msg": "OK",
   "status": 0

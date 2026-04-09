@@ -1,6 +1,6 @@
 function getWonderWeaponOptions() {
   return [
-    "카오스 헥스",
+    "혼돈의 해커스",
     "엔트로피·제로",
     "천상의 별",
     "태고의 역장",
@@ -20,7 +20,7 @@ function getWonderWeaponOptions() {
 }
 
 window.matchWeapons = {
-  "카오스 헥스": {
+  "혼돈의 해커스": {
     "element": "총격",
     "name_en": "Chaos Hex",
     "name_jp": "カオスヘックス",

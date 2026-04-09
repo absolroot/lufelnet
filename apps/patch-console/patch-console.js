@@ -94,7 +94,7 @@ const state = {
 };
 
 const DOMAIN_PARTS = {
-  character: ['ritual', 'skill', 'weapon', 'base_stats'],
+  character: ['ritual', 'skill', 'weapon', 'innate', 'base_stats'],
   persona: ['profile', 'innate_skill', 'passive_skill', 'uniqueSkill', 'highlight'],
   wonder_weapon: ['name', 'effect'],
   revelation: ['name', 'relation', 'effect', 'unreleased']
@@ -104,6 +104,7 @@ const CHARACTER_PART_FILES = {
   ritual: 'ritual.js',
   skill: 'skill.js',
   weapon: 'weapon.js',
+  innate: 'innate.js',
   base_stats: 'base_stats.js'
 };
 const PERSONA_DATA_ROOT_ID = 'persona';
@@ -731,6 +732,11 @@ function defaultLangsForDomain(domain = state.domain) {
 function setLangInputForDomain(domain = state.domain) {
   if (!dom.langsInput) return;
   dom.langsInput.value = defaultLangsForDomain(domain);
+}
+
+function resetScopeInputs({ mode = 'all', value = '' } = {}) {
+  if (dom.scopeMode) dom.scopeMode.value = String(mode || 'all');
+  if (dom.scopeValue) dom.scopeValue.value = String(value || '');
 }
 
 function domainInfoById(domain) {
@@ -4564,6 +4570,7 @@ function bindDomainEvents() {
     clearIgnoredFilterInputs();
     resetSelectedParts(state.domain);
     setLangInputForDomain(state.domain);
+    resetScopeInputs();
     state.dataDomain = state.domain;
     state.dataRoot = '';
 

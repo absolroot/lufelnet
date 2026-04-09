@@ -3,6 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import process from 'process';
 import { execSync } from 'child_process';
+import { buildCharacterInnatePayload } from '../shared/character-innate.mjs';
 
 // ---------- recast / parser (for character key 탐색) ----------
 let recast = null;
@@ -518,13 +519,6 @@ async function main() {
     process.exit(2);
   }
 
-  const data = ext.data || {};
-  const finalInnateExt = Array.isArray(data.final_innate) ? data.final_innate : [];
-  const innateAwakeExt =
-    data.skill && Array.isArray(data.skill.innate_awake_skill)
-      ? data.skill.innate_awake_skill
-      : [];
-
   // character.js에서 실제 캐릭터 key 찾기 (없으면 local을 fallback으로 사용)
   let charKey = null;
   // 우선 KR characters.js 기준으로 키를 찾는다 (실제 per-character 디렉토리 키와 일치)
@@ -558,23 +552,20 @@ async function main() {
 
   // 기존 innate.js 읽기 (없으면 빈 객체에서 시작)
   const current = readInnateFile(innatePath, charKey);
-  const next = current && typeof current === 'object' ? { ...current } : {};
+  const payload = buildCharacterInnatePayload({
+    existing: current,
+    external: ext,
+    lang,
+    element
+  });
+  const next = current && typeof current === 'object'
+    ? { ...current, ...payload }
+    : { ...payload };
 
-  // 1) final_innate
-  //    - 우선순위: 기존 innate.js 의 final_innate 를 먼저 사용
-  //      (이미 수동으로 수정해둔 값이 있으면 그것을 우선 유지)
-  //      없을 때만 외부 데이터(finalInnateExt)를 사용
-  //    - 그리고 desc/desc_en/desc_jp/desc_cn 필드를 모두 보정하고,
-  //      type 은 캐릭터 element 로 자동 설정, 템플릿으로 비어 있는 desc* 는 자동 채움
-  const existingFinal = Array.isArray(current.final_innate) ? current.final_innate : [];
-  const baseFinal =
-    Array.isArray(existingFinal) && existingFinal.length > 0
-      ? existingFinal
-      : (Array.isArray(finalInnateExt) && finalInnateExt.length > 0 ? finalInnateExt : []);
-  next.final_innate = normalizeFinalInnate(baseFinal, element);
-
-  // 2) innate_awake_skill 은 언어별 name/desc만 덮어쓰기
-  next.innate_awake_skill = updateInnateAwake(next.innate_awake_skill, innateAwakeExt, lang);
+  if (Object.keys(next).length === 0) {
+    console.log(`syncInnate skipped for ${lang}:${local} (charKey='${charKey}', no innate payload)`);
+    return;
+  }
 
   writeInnateFile(innatePath, charKey, next);
 

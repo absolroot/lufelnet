@@ -20,7 +20,7 @@ window.personaFiles["야노식"] = {
   "comment": "",
   "comment_en": "※ IV Enhancement was released in KR v4.7",
   "comment_jp": "※ IV Enhancement was released in KR v4.7",
-    "comment_cn": "",
+  "comment_cn": "",
   "added": "",
   "cost": null,
   "combination": null,
@@ -173,14 +173,14 @@ window.personaFiles["야노식"] = {
     "name": "궁지 반격",
     "name_en": "Tatra Shot",
     "name_jp": "タトラショット",
-    "desc": "1명의 적에게 공격력 203.3%/221.6%/239.9%의 총격 속성 대미지를 주고, 75%의 고정 확률로 적이 『조준』을 획득한다. 『조준』: 2턴 동안 적의 방어력이 29.6%/32.3%/34.9% 감소한다.",
+    "desc": "1명의 적에게 공격력 203.3%/221.6%/239.9%의 총격 속성 대미지를 주고, 100%의 고정 확률로 적이 『조준』을 획득한다. 『조준』: 2턴 동안 적의 방어력이 29.6%/32.3%/34.9% 감소한다.",
     "desc_en": "Deal Gun damage to 1 foe equal to 203.3%/221.6%/239.9% of Attack. 75% chance to inflict Marked for 2 turns.\nMarked: Decrease Defense by 29.6%/32.3%/34.9%.",
     "desc_jp": "敵単体に攻撃力203.3%/221.6%/239.9%の銃撃属性ダメージを与える。７５%の確率で敵を２ターンの間、『標的』状態にする。\n『標的』状態：防御力が29.6%/32.3%/34.9%低下する。",
     "priority": 0,
     "icon": "총격",
     "icon_gl": "",
     "name_cn": "绝地反击",
-    "desc_cn": "对1名敌人造成203.3%/221.6%/239.9%攻击力的射击属性伤害，有75%的固定概率使敌人获得『瞄准』:使敌人的防御力降低29.6%/32.3%/34.9%，效果持续2回合。"
+    "desc_cn": "对1名敌人造成203.3%/221.6%/239.9%攻击力的射击属性伤害，有100%的固定概率使敌人获得『瞄准』:使敌人的防御力降低29.6%/32.3%/34.9%，效果持续2回合。"
   },
   "highlight": {
     "name": "HIGHLIGHT",

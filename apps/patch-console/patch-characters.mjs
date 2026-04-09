@@ -20,6 +20,7 @@ import {
   stableStringify,
   tokenizeDiffPath
 } from './lib/patch-console-shared.mjs';
+import { buildCharacterInnatePayload } from '../../scripts/shared/character-innate.mjs';
 
 const recast = recastImport.default || recastImport;
 const b = recast.types.builders;
@@ -49,6 +50,11 @@ const IANT_SERVER_TO_LOCAL_LANG = {
   tw: 'cn',
   sea: 'en'
 };
+const CHARACTER_PATCH_LANG_EXCEPTIONS = new Map([
+  // "makoto" points to different characters across server groups.
+  // Skip GLB-localized compare/patch for Yuki Makoto until a stable GLB mapping exists.
+  ['MAKOTO', new Set(['en', 'jp'])]
+]);
 
 const WINDOW_NAME_MAP = {
   ritual: {
@@ -69,6 +75,12 @@ const WINDOW_NAME_MAP = {
     jp: 'jpCharacterWeaponData',
     cn: 'cnCharacterWeaponData'
   },
+  innate: {
+    kr: 'innateData',
+    en: 'innateData',
+    jp: 'innateData',
+    cn: 'innateData'
+  },
   base_stats: {
     kr: 'basicStatsData'
   }
@@ -78,6 +90,7 @@ const FILE_NAME_MAP = {
   ritual: 'ritual.js',
   skill: 'skill.js',
   weapon: 'weapon.js',
+  innate: 'innate.js',
   base_stats: 'base_stats.js'
 };
 
@@ -140,20 +153,20 @@ function usage() {
   log(`Usage:
   node apps/patch-console/patch-characters.mjs list [--langs kr,en,jp,cn,tw,sea]
   node apps/patch-console/patch-characters.mjs patch --langs kr,en,jp,cn [--all | --api api1,api2 | --local local1,local2 | --nums 1,3-5]
-                                       [--parts ritual,skill,weapon,base_stats]
+                                       [--parts ritual,skill,weapon,innate,base_stats]
                                        [--source-type external|iant] [--source-server kr|en|jp|cn|tw|sea] [--source-is-prod <value>]
                                        [--dry-run] [--no-bootstrap]
                                        [--report-file scripts/reports/character-patch-diff.md] [--no-report]
   node apps/patch-console/patch-characters.mjs report --langs kr,en,jp,cn
                                        [--api ... | --local ... | --nums ... | --all]
                                        [--exclude-api ... | --exclude-local ... | --exclude-nums ...]
-                                       [--parts ritual,skill,weapon,base_stats]
+                                       [--parts ritual,skill,weapon,innate,base_stats]
                                        [--source-type external|iant] [--source-server kr|en|jp|cn|tw|sea] [--source-is-prod <value>]
                                        [--report-file scripts/reports/character-patch-diff.md]
   node apps/patch-console/patch-characters.mjs report-json --langs kr,en,jp,cn
                                        [--api ... | --local ... | --nums ... | --all]
                                        [--exclude-api ... | --exclude-local ... | --exclude-nums ...]
-                                       [--parts ritual,skill,weapon,base_stats]
+                                       [--parts ritual,skill,weapon,innate,base_stats]
                                        [--source-type external|iant] [--source-server kr|en|jp|cn|tw|sea] [--source-is-prod <value>]
                                        [--json-file scripts/reports/character-patch-diff.json]
   node apps/patch-console/patch-characters.mjs apply-diff-json --input-file scripts/reports/apply-diff-request.json
@@ -268,9 +281,9 @@ function serializeSourceConfig(sourceConfig, localLang = null) {
 
 function parseParts(value, langs, mode) {
   const defaultParts = (() => {
-    if (mode === 'report') return ['ritual', 'skill', 'weapon', 'base_stats'];
-    if (langs.length === 1 && langs[0] === 'kr') return ['ritual', 'skill', 'weapon', 'base_stats'];
-    return ['ritual', 'skill', 'weapon'];
+    if (mode === 'report') return ['ritual', 'skill', 'weapon', 'innate', 'base_stats'];
+    if (langs.length === 1 && langs[0] === 'kr') return ['ritual', 'skill', 'weapon', 'innate', 'base_stats'];
+    return ['ritual', 'skill', 'weapon', 'innate'];
   })();
 
   const parts = value
@@ -280,10 +293,10 @@ function parseParts(value, langs, mode) {
   const normalized = [];
   for (const part of parts) {
     if (part === 'all') {
-      normalized.push('ritual', 'skill', 'weapon', 'base_stats');
+      normalized.push('ritual', 'skill', 'weapon', 'innate', 'base_stats');
       continue;
     }
-    if (!['ritual', 'skill', 'weapon', 'base_stats'].includes(part)) {
+    if (!['ritual', 'skill', 'weapon', 'innate', 'base_stats'].includes(part)) {
       throw new Error(`Unsupported part '${part}'`);
     }
     normalized.push(part);
@@ -372,8 +385,15 @@ function hasWindowInit(ast, windowName) {
   });
   return found;
 }
-function upsertWindowEntry(filePath, windowName, charKey, nextValue, { dryRun = false } = {}) {
-  const original = fs.readFileSync(filePath, 'utf8');
+function upsertWindowEntry(filePath, windowName, charKey, nextValue, { dryRun = false, allowCreate = false } = {}) {
+  const fileExists = fs.existsSync(filePath);
+  if (!fileExists && !allowCreate) {
+    throw new Error(`File not found: ${filePath}`);
+  }
+
+  const original = fileExists
+    ? fs.readFileSync(filePath, 'utf8')
+    : `window.${windowName} = window.${windowName} || {};\n`;
   const ast = parseAst(original);
   const nextExpr = parseExpressionFromValue(nextValue);
 
@@ -408,6 +428,7 @@ function upsertWindowEntry(filePath, windowName, charKey, nextValue, { dryRun = 
   const nextCode = recast.print(ast).code;
   const changed = nextCode !== original;
   if (changed && !dryRun) {
+    ensureDir(path.dirname(filePath));
     fs.writeFileSync(filePath, nextCode, 'utf8');
   }
   return changed;
@@ -520,6 +541,13 @@ function normalizeCodeName(value) {
     .toUpperCase();
 }
 
+function shouldSkipCharacterForLocalLang(entry, localLang) {
+  const localCode = normalizeCodeName(entry?.local);
+  const blockedLangs = CHARACTER_PATCH_LANG_EXCEPTIONS.get(localCode);
+  if (!blockedLangs) return false;
+  return blockedLangs.has(String(localLang || '').trim().toLowerCase());
+}
+
 function loadCodenameEntries() {
   if (!fs.existsSync(CODENAME_FILE)) {
     throw new Error(`Missing codename file: ${CODENAME_FILE}`);
@@ -537,11 +565,7 @@ function loadCodenameEntries() {
 }
 
 function loadCharacterKeyMapFromKr() {
-  if (!fs.existsSync(KR_CHARACTER_META_FILE)) {
-    throw new Error(`Missing KR character metadata: ${KR_CHARACTER_META_FILE}`);
-  }
-  const win = loadWindowObject(KR_CHARACTER_META_FILE);
-  const data = win.characterData || {};
+  const data = loadCharacterMetaFromKr();
   const map = new Map();
   for (const [characterKey, value] of Object.entries(data)) {
     const codename = value?.codename;
@@ -562,6 +586,7 @@ const externalFileCache = new Map();
 const sourcePolicyCache = new Map();
 const iantResponseCache = new Map();
 let sourcePolicyRawCache = null;
+let characterMetaCache = null;
 
 function loadSourcePolicyRaw() {
   if (sourcePolicyRawCache !== null) return sourcePolicyRawCache;
@@ -580,6 +605,36 @@ function loadSourcePolicyRaw() {
 
   sourcePolicyRawCache = isPlainObject(parsed) ? parsed : {};
   return sourcePolicyRawCache;
+}
+
+function loadCharacterMetaFromKr() {
+  if (characterMetaCache !== null) return characterMetaCache;
+  if (!fs.existsSync(KR_CHARACTER_META_FILE)) {
+    throw new Error(`Missing KR character metadata: ${KR_CHARACTER_META_FILE}`);
+  }
+  const win = loadWindowObject(KR_CHARACTER_META_FILE);
+  characterMetaCache = win.characterData || {};
+  return characterMetaCache;
+}
+
+function getCharacterPosition(characterKey) {
+  const data = loadCharacterMetaFromKr();
+  const position = data?.[characterKey]?.position;
+  return typeof position === 'string' ? position.trim() : '';
+}
+
+function getCharacterElement(characterKey) {
+  const data = loadCharacterMetaFromKr();
+  const element = data?.[characterKey]?.element;
+  return typeof element === 'string' && element.trim() ? element.trim() : null;
+}
+
+function isElucidationPhantomThief(characterKey) {
+  return getCharacterPosition(characterKey) === '\uD574\uBA85';
+}
+
+function isCooldownDiffPath(pathText) {
+  return /\.cool$/i.test(String(pathText || '').trim());
 }
 
 function normalizeStemSet(values) {
@@ -1033,6 +1088,15 @@ function buildWeaponPayload(externalWeapon) {
   return payload;
 }
 
+function buildInnatePayload(external, lang, existing, characterKey) {
+  return buildCharacterInnatePayload({
+    existing,
+    external,
+    lang,
+    element: getCharacterElement(characterKey)
+  });
+}
+
 function buildBaseStatsPayload(external, existing) {
   const out = isPlainObject(existing) ? clone(existing) : {};
   const data = external?.data || {};
@@ -1165,6 +1229,7 @@ function createPatchPayload(part, lang, sources, existing) {
   if (part === 'skill') return buildSkillPayload(sources.character);
   if (part === 'ritual') return buildRitualPayload(sources.character);
   if (part === 'weapon') return buildWeaponPayload(sources.weapon);
+  if (part === 'innate') return buildInnatePayload(sources.character, lang, existing, sources.characterKey);
   if (part === 'base_stats') return buildBaseStatsPayload(sources.character, existing);
   return {};
 }
@@ -1174,7 +1239,7 @@ function requiredSourceKindsForParts(parts) {
   for (const part of Array.isArray(parts) ? parts : []) {
     if (part === 'weapon') {
       needed.add('weapon');
-    } else if (['ritual', 'skill', 'base_stats'].includes(part)) {
+    } else if (['ritual', 'skill', 'innate', 'base_stats'].includes(part)) {
       needed.add('character');
     }
   }
@@ -1215,6 +1280,7 @@ async function validateIantSources({ entries, langs, parts, sourceConfig }) {
   for (const entry of entries) {
     for (const lang of langs) {
       const localLang = getSourceLocalLang(sourceConfig, lang);
+      if (shouldSkipCharacterForLocalLang(entry, localLang)) continue;
       const sources = await loadSources(entry, localLang, sourceConfig);
       if (requiredKinds.has('character') && !sources.characterMeta.ok) {
         issues.push(`#${entry.index} ${entry.api} ${sourceConfig.server}->${localLang} character: ${describeSourceMeta(sources.characterMeta, sourceConfig)}`);
@@ -1276,7 +1342,21 @@ async function runPatch(options) {
 
     for (const lang of langs) {
       const sourceLocalLang = getSourceLocalLang(sourceConfig, lang);
+      if (shouldSkipCharacterForLocalLang(entry, sourceLocalLang)) {
+        resultRows.push({
+          index: entry.index,
+          api: entry.api,
+          local: entry.local,
+          key: characterKey,
+          lang: sourceLocalLang,
+          source: cloneSourceConfig(sourceConfig, { localLang: sourceLocalLang }),
+          changedParts: [],
+          skippedParts: ['entry:lang_exception']
+        });
+        continue;
+      }
       const sources = await loadSources(entry, sourceLocalLang, sourceConfig);
+      sources.characterKey = characterKey;
       const row = {
         index: entry.index,
         api: entry.api,
@@ -1306,7 +1386,7 @@ async function runPatch(options) {
             bootstrapCharacterFiles(characterKey, { dryRun });
           }
         }
-        if (!fs.existsSync(filePath)) {
+        if (!fs.existsSync(filePath) && part !== 'innate') {
           row.skippedParts.push(`${part}:file_missing`);
           continue;
         }
@@ -1339,7 +1419,10 @@ async function runPatch(options) {
           row.skippedParts.push(`${part}:no_change`);
           continue;
         }
-        const changed = upsertWindowEntry(filePath, windowName, characterKey, nextValue, { dryRun });
+        const changed = upsertWindowEntry(filePath, windowName, characterKey, nextValue, {
+          dryRun,
+          allowCreate: part === 'innate'
+        });
         if (changed) {
           row.changedParts.push(part);
         } else {
@@ -1379,7 +1462,7 @@ function buildDiffRecord(entry, characterKey, lang, part, sources, sourceConfig)
   const windowName = resolveWindowName(part, lang);
   if (!windowName) return null;
   const filePath = getTargetFilePath(characterKey, part);
-  if (!fs.existsSync(filePath)) {
+  if (!fs.existsSync(filePath) && part !== 'innate') {
     return {
       part,
       diffCount: 1,
@@ -1394,6 +1477,7 @@ function buildDiffRecord(entry, characterKey, lang, part, sources, sourceConfig)
   }
 
   const current = readWindowEntry(filePath, windowName, characterKey);
+  sources.characterKey = characterKey;
   const payload = createPatchPayload(part, lang, sources, current);
   if (!payload || Object.keys(payload).length === 0) return null;
   const mergedValue = deepMerge(current, payload);
@@ -1403,7 +1487,11 @@ function buildDiffRecord(entry, characterKey, lang, part, sources, sourceConfig)
     : null;
   const nextValue = applyCnSkillElementFallback(part, lang, policyValue, krSkillValue);
   if (equals(current, nextValue)) return null;
-  const paths = diffPaths(current, nextValue).filter(Boolean);
+  const hideCooldownDiff = isElucidationPhantomThief(characterKey);
+  const paths = diffPaths(current, nextValue)
+    .filter(Boolean)
+    .filter((pathText) => !(hideCooldownDiff && isCooldownDiffPath(pathText)));
+  if (paths.length === 0) return null;
   const samplePaths = paths;
   const valueDiffs = samplePaths.map((pathText) => {
     const beforeRaw = getValueAtDiffPath(current, pathText);
@@ -1433,6 +1521,7 @@ async function collectPendingRows({ codenameEntries, characterKeyMap, langs, par
 
     for (const lang of langs) {
       const sourceLocalLang = getSourceLocalLang(sourceConfig, lang);
+      if (shouldSkipCharacterForLocalLang(entry, sourceLocalLang)) continue;
       const excludeKey = `${sourceLocalLang}|${localNorm}`;
       if (excludeTargets.has(excludeKey)) continue;
 
@@ -1659,11 +1748,18 @@ async function runApplyDiffJson(options) {
       skippedParts: []
     };
 
+    if (shouldSkipCharacterForLocalLang(entry, lang)) {
+      row.skippedParts.push('entry:lang_exception');
+      resultRows.push(row);
+      continue;
+    }
+
     const sources = await loadSources(entry, lang, sourceConfig);
+    sources.characterKey = characterKey;
     const parts = Array.isArray(task?.parts) ? task.parts : [];
     for (const partTask of parts) {
       const part = String(partTask?.part || '').trim().toLowerCase();
-      if (!['ritual', 'skill', 'weapon', 'base_stats'].includes(part)) {
+      if (!['ritual', 'skill', 'weapon', 'innate', 'base_stats'].includes(part)) {
         row.skippedParts.push(`${part || '(empty)'}:invalid_part`);
         continue;
       }
@@ -1689,7 +1785,7 @@ async function runApplyDiffJson(options) {
       }
 
       const filePath = getTargetFilePath(characterKey, part);
-      if (!fs.existsSync(filePath)) {
+      if (!fs.existsSync(filePath) && part !== 'innate') {
         row.skippedParts.push(`${part}:file_missing`);
         continue;
       }
@@ -1741,7 +1837,10 @@ async function runApplyDiffJson(options) {
         continue;
       }
 
-      const changed = upsertWindowEntry(filePath, windowName, characterKey, selectedValue, { dryRun });
+      const changed = upsertWindowEntry(filePath, windowName, characterKey, selectedValue, {
+        dryRun,
+        allowCreate: part === 'innate'
+      });
       if (changed) {
         row.changedParts.push(`${part}(${changedPaths})`);
         changedPartsTotal += 1;

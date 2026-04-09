@@ -66,7 +66,7 @@ const DOMAIN_CAPABILITIES = [
     label: 'Character',
     enabled: true,
     features: ['list', 'report', 'patch', 'create'],
-    parts: ['ritual', 'skill', 'weapon', 'base_stats']
+    parts: ['ritual', 'skill', 'weapon', 'innate', 'base_stats']
   },
   {
     id: 'persona',

@@ -1,0 +1,35 @@
+window.characterSetting = window.characterSetting || {};
+window.characterSetting["아이기스"] = {
+    "role": "",
+    "video": [""],
+    "video_en": [""],
+    "video_jp": [""],
+    "main_revelation": ["창조"],
+    "sub_revelation": ["강인"],
+    "sub_revel2": [""],
+    "sub_revel3": [""],
+    "sub_revel4": [""],
+    "sub_option1": [""],
+    "sub_option2": [""],
+    "sub_option3": [],
+    "minimum_stats": {
+        "LV10": false,
+        "LV10+5": false,
+        "LV12": false,
+        "LV12+5": false,
+        "LV13": false,
+        "LV13+5": false
+    },
+    "battle_plus_stats": "",
+    "element_weakness": "",
+    "element_resistance": "",
+    "skill1_lv": "",
+    "skill2_lv": "",
+    "skill3_lv": "",
+    "skill4_lv": "",
+    "skill_priority": "",
+    "mind_stats1": "",
+    "mind_stats2": "",
+    "mind_skill1": "",
+    "mind_skill2": ""
+};

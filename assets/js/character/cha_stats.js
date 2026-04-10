@@ -191,7 +191,7 @@
       const rightH3 = document.querySelector(rightH3Sel);
       if (leftH3) {
         leftH3.innerHTML = `${h3Left}
-          <span class="help-icon" onclick="showHelpModal('base-stats')">
+          <span class="help-icon tooltip-text" data-help-type="base-stats" tabindex="0">
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1" fill="rgba(255,255,255,0.05)"></circle>
               <path d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.3"></path>
@@ -200,13 +200,18 @@
       }
       if (rightH3) {
         rightH3.innerHTML = `${h3Right}
-          <span class="help-icon" onclick="showHelpModal('awake7')">
+          <span class="help-icon tooltip-text" data-help-type="awake7" tabindex="0">
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1" fill="rgba(255,255,255,0.05)"></circle>
               <path d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.3"></path>
             </svg>
           </span>`;
       }
+      try {
+        if (typeof window.setupHelpTooltips === 'function') {
+          window.setupHelpTooltips();
+        }
+      } catch (_) {}
     }
 
 

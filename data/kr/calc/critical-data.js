@@ -1830,52 +1830,10 @@ const criticalSelfData = {
         "4중첩"
       ],
       "values": {
-        "1중첩": 3,
-        "2중첩": 6,
-        "3중첩": 9,
-        "4중첩": 12
-      },
-      "defaultOption": "4중첩",
-      "value": 12,
-      "duration": "-",
-      "note": "『춤사위』",
-      "note_en": " ",
-      "note_jp": " ",
-      "skillName_cn": "十二点的钟声",
-      "note_cn": "『舞姿』",
-      "type_cn": "意识0",
-      "target_cn": "自身",
-      "duration_cn": "-",
-      "options_cn": [
-        "1层",
-        "2层",
-        "3层",
-        "4层"
-      ]
-    },
-    {
-      "id": "kasmi1-glb",
-      "type": "의식0",
-      "type_en": "A0",
-      "type_jp": "意識0",
-      "target": "자신",
-      "target_en": "Self",
-      "target_jp": "自分",
-      "skillIcon": "/assets/img/character-detail/ritual0.png",
-      "skillName": "12시의 종소리(GLB)",
-      "skillName_en": "A0 (GLB only)",
-      "skillName_jp": "意識0 (JPのみ)",
-      "options": [
-        "1중첩",
-        "2중첩",
-        "3중첩",
-        "4중첩"
-      ],
-      "values": {
-        "1중첩": 4,
-        "2중첩": 8,
-        "3중첩": 12,
-        "4중첩": 16
+        "1\uC911\uCCA9": 4,
+        "2\uC911\uCCA9": 8,
+        "3\uC911\uCCA9": 12,
+        "4\uC911\uCCA9": 16
       },
       "defaultOption": "4중첩",
       "value": 16,
@@ -1883,7 +1841,7 @@ const criticalSelfData = {
       "note": "『춤사위』",
       "note_en": " ",
       "note_jp": " ",
-      "skillName_cn": "十二点的钟声 (GLB)",
+      "skillName_cn": "十二点的钟声",
       "note_cn": "『舞姿』",
       "type_cn": "意识0",
       "target_cn": "自身",

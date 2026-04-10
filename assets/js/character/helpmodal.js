@@ -22,13 +22,8 @@
         return fallback;
     }
 
-    function showHelpModal(helpType) {
-        const modal = document.getElementById('help-modal');
-        const modalTitle = document.getElementById('help-modal-title');
-        const modalDescription = document.getElementById('help-modal-description');
+    function getHelpContent(helpType) {
         const currentLang = getLangSafe();
-        const safeLang = ['kr', 'en', 'jp'].includes(currentLang) ? currentLang : 'kr';
-        const revelationOptionsLink = `<a href="/${safeLang}/article/Revelation-Options/" target="_blank">lufel.net/${safeLang}/article/Revelation-Options/</a>`;
 
         const helpConfig = {
             'revelation': {
@@ -47,7 +42,7 @@
                 titleKey: 'characterDetailSubOption',
                 titleFallback: '부 옵션',
                 contentKey: 'helpSubOptionContent',
-                contentFallback: '캐릭터별 계시에서 우선하는 부 옵션입니다. 부 옵션 범위는 {link}를 참고하세요. 의식, 무기, 파티 구성에 따라 우선순위가 달라질 수 있습니다.'
+                contentFallback: '캐릭터별 계시에서 우선하는 부 옵션입니다. 부 옵션 범위는 관련 아티클 가이드를 참고하세요. 의식, 무기, 파티 구성에 따라 우선순위가 달라질 수 있습니다.'
             },
             'recommended-stats': {
                 titleKey: 'characterDetailRecommendedStats',
@@ -94,14 +89,38 @@
         };
 
         const config = helpConfig[helpType];
-        if (config) {
-            const title = t(config.titleKey, config.titleFallback);
-            const fallbackContent = String(config.contentFallback || '').replace('{link}', revelationOptionsLink);
-            const translatedContent = t(config.contentKey, fallbackContent);
-            const content = String(translatedContent || fallbackContent).replace('{link}', revelationOptionsLink);
-            if (modalTitle) modalTitle.textContent = title;
-            if (modalDescription) modalDescription.innerHTML = content;
-        }
+        if (!config) return { title: '', content: '' };
+
+        const title = t(config.titleKey, config.titleFallback);
+        const content = String(t(config.contentKey, config.contentFallback) || config.contentFallback);
+        return { title, content };
+    }
+
+    function setupHelpTooltips() {
+        document.querySelectorAll('.help-icon[data-help-type]').forEach((el) => {
+            const helpType = el.getAttribute('data-help-type');
+            if (!helpType) return;
+            const help = getHelpContent(helpType);
+            const tooltip = help.content || help.title || '';
+            el.classList.add('tooltip-text');
+            el.setAttribute('data-tooltip', tooltip);
+            el.setAttribute('aria-label', tooltip);
+            if (typeof window.bindTooltipElement === 'function') {
+                window.bindTooltipElement(el);
+            } else if (typeof bindTooltipElement === 'function') {
+                bindTooltipElement(el);
+            }
+        });
+    }
+
+    function showHelpModal(helpType) {
+        const modal = document.getElementById('help-modal');
+        const modalTitle = document.getElementById('help-modal-title');
+        const modalDescription = document.getElementById('help-modal-description');
+        const help = getHelpContent(helpType);
+
+        if (modalTitle) modalTitle.textContent = help.title;
+        if (modalDescription) modalDescription.textContent = help.content;
         if (modal) {
             modal.classList.add('show');
             document.body.style.overflow = 'hidden';
@@ -132,6 +151,10 @@
         }
     });
 
+    document.addEventListener('DOMContentLoaded', setupHelpTooltips);
+
+    window.getCharacterHelpContent = getHelpContent;
+    window.setupHelpTooltips = setupHelpTooltips;
     window.showHelpModal = showHelpModal;
     window.closeHelpModal = closeHelpModal;
 })();

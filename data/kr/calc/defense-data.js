@@ -380,7 +380,7 @@ const penetrateData = {
       "skillIcon": "/assets/img/character-detail/ritual1.png",
       "skillName": "적을 두려워하지 마라",
       "options": [],
-      "value": 15,
+      "value": 20,
       "duration": "-",
       "note": "",
       "skillName_cn": "所经之战，莫畏强敌",
@@ -390,25 +390,6 @@ const penetrateData = {
       "duration_cn": "-",
       "options_cn": []
     },
-    {
-      "id": "masaki2",
-      "type": "의식1",
-      "target": "광역",
-      "skillIcon": "/assets/img/character-detail/ritual1.png",
-      "skillName": "적을 두려워하지 마라(GLB)",
-      "skillName_en": "(GLB only)",
-      "skillName_jp": "(JPのみ)",
-      "options": [],
-      "value": 20,
-      "duration": "-",
-      "note": "",
-      "skillName_cn": "所经之战，莫畏强敌 (GLB)",
-      "note_cn": "",
-      "type_cn": "意识1",
-      "target_cn": "群体",
-      "duration_cn": "-",
-      "options_cn": []
-    }
   ],
   "유우미": [
     {

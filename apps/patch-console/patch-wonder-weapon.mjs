@@ -424,6 +424,7 @@ function buildRowsFromContext(localData, externalByLang) {
       anchorKrName: krName,
       localKey,
       tier: krEntry.tier,
+      tierIndex,
       externalByLang: {
         kr: krEntry,
         en: enEntry,

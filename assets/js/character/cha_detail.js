@@ -186,6 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function getCnLooseTextMap() {
         return {
+            '(이상)': '（及以上）',
             '받는 대미지 증가': '受到伤害提升',
             '대미지 축적': '伤害积累',
             '대미지 보너스': '伤害加成',
@@ -686,15 +687,74 @@ document.addEventListener('DOMContentLoaded', () => {
         const mindFields = [
             { element: '.mind-stats .stat-row:nth-child(1) .value', value: mergedCharacter.mind_stats1, label: '진급강화 1' },
             { element: '.mind-stats .stat-row:nth-child(2) .value', value: mergedCharacter.mind_stats2, label: '진급강화 2' },
-            { element: '.mind-skills .skill-row:nth-child(1) .value', value: mergedCharacter.mind_skill1, label: '스킬깨달음 1' },
-            { element: '.mind-skills .skill-row:nth-child(2) .value', value: mergedCharacter.mind_skill2, label: '스킬깨달음 2' }
+            { element: '.mind-skills .skill-row:nth-child(1) .value', value: mergedCharacter.mind_skill1, label: '스킬깨달음 1', isMindSkill: true },
+            { element: '.mind-skills .skill-row:nth-child(2) .value', value: mergedCharacter.mind_skill2, label: '스킬깨달음 2', isMindSkill: true }
         ];
 
+        const formatMindSkillValue = (value) => {
+            if (!value || value === '-') return value || '-';
+
+            const tokenMapByLang = {
+                kr: {
+                    S1: '스킬1',
+                    S2: '스킬2',
+                    S3: '스킬3',
+                    HL: 'HIGHLIGHT',
+                    TH: '테우르기아',
+                    추격: '추격'
+                },
+                en: {
+                    S1: 'Skill1',
+                    S2: 'Skill2',
+                    S3: 'Skill3',
+                    HL: 'HIGHLIGHT',
+                    TH: 'Theurgy',
+                    추격: 'Follow-Up'
+                },
+                jp: {
+                    S1: 'スキル1',
+                    S2: 'スキル2',
+                    S3: 'スキル3',
+                    HL: 'HIGHLIGHT',
+                    TH: 'テウルギア',
+                    추격: '追撃'
+                },
+                cn: {
+                    S1: '技能1',
+                    S2: '技能2',
+                    S3: '技能3',
+                    HL: 'HIGHLIGHT',
+                    TH: '神通法',
+                    추격: '追加效果'
+                }
+            };
+
+            const langTokenMap = tokenMapByLang[currentLang] || tokenMapByLang.kr;
+            let suffix = '';
+            let baseValue = String(value);
+
+            if (baseValue.endsWith('!') || baseValue.endsWith('×')) {
+                suffix = baseValue.slice(-1);
+                baseValue = baseValue.slice(0, -1);
+            }
+
+            const expanded = baseValue
+                .split('/')
+                .map(token => token.trim())
+                .filter(Boolean)
+                .map(token => langTokenMap[token] || token)
+                .join(' / ');
+
+            return expanded + suffix;
+        };
+
         // 값 설정 헬퍼 함수
-        const setValueWithFormatting = (element, value) => {
+        const setValueWithFormatting = (element, value, options = {}) => {
             if (!element) return;
             
-            let processedValue = value || '-';
+            let processedValue = options.isMindSkill ? formatMindSkillValue(value) : (value || '-');
+            element.style.textDecoration = '';
+            element.style.color = '';
 
             if (processedValue.endsWith('!')) {
                 processedValue = processedValue.slice(0, -1);
@@ -733,7 +793,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 element.textContent = currentLang === 'cn' ? localizeCnLooseText(processedValue) : processedValue;
             }
             else {
-                element.style.color = ''; // 기본 색상으로 복원
                 element.textContent = currentLang === 'cn' ? localizeCnLooseText(processedValue) : processedValue;
             }
         };
@@ -741,7 +800,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // 기본 필드 처리
         mindFields.forEach(field => {
             const element = document.querySelector(field.element);
-            setValueWithFormatting(element, field.value);
+            setValueWithFormatting(element, field.value, { isMindSkill: !!field.isMindSkill });
         });
 
         // GLB 버전 처리 - 기존 GLB 행 제거 후 추가
@@ -762,13 +821,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 container: '.mind-skills', 
                 value: mergedCharacter.mind_skill1_glb, 
                 baseIndex: 2, // 스킬깨달음 1
-                rowClass: 'skill-row'
+                rowClass: 'skill-row',
+                isMindSkill: true
             },
             { 
                 container: '.mind-skills', 
                 value: mergedCharacter.mind_skill2_glb, 
                 baseIndex: 3, // 스킬깨달음 2
-                rowClass: 'skill-row'
+                rowClass: 'skill-row',
+                isMindSkill: true
             }
         ];
 
@@ -808,7 +869,7 @@ document.addEventListener('DOMContentLoaded', () => {
             container.appendChild(newRow);
 
             // 값 설정
-            setValueWithFormatting(valueSpan, field.value);
+            setValueWithFormatting(valueSpan, field.value, { isMindSkill: !!field.isMindSkill });
         });
 
         // GLB 행이 동적으로 추가된 뒤 라벨 인덱스를 다시 맞춘다.

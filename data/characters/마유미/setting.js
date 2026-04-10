@@ -22,7 +22,7 @@ window.characterSetting["마유미"] = {
         "LV13": "속도 189",
         "LV13+5": "속도 207"
     },
-    "battle_plus_stats": "· 마이팰리스 1 / 마이팰리스 평점",
+    "battle_plus_stats": "· 마이팰리스 1 (이상) / 마이팰리스 평점",
     "element_weakness": "총격",
     "element_resistance": "물리",
     "skill1_lv": "MAX!",

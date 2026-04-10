@@ -20,9 +20,9 @@ window.characterSetting["아란"] = {
         "LV13": false,
         "LV13+5": false
     },
-    "battle_plus_stats": "· 전용무기 : 효과명중 / 마이팰리스 2.3% / 마이팰리스 평점 / 계시 20%",
-    "element_weakness": "",
-    "element_resistance": "",
+    "battle_plus_stats": "· 전용무기 : 효과명중 / 마이팰리스 2.3% (이상) / 마이팰리스 평점 / 계시 20%",
+    "element_weakness": "전격",
+    "element_resistance": "주원",
     "skill1_lv": "MAX!",
     "skill2_lv": "8",
     "skill3_lv": "MAX!",

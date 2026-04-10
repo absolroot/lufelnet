@@ -20,7 +20,7 @@ window.characterSetting["카타야마"] = {
         "LV13": "속도 187.3",
         "LV13+5": "속도 205.3"
     },
-    "battle_plus_stats": "· 마이팰리스 1 / 마이팰리스 평점",
+    "battle_plus_stats": "· 마이팰리스 1 (이상) / 마이팰리스 평점",
     "element_weakness": "빙결",
     "element_resistance": "전격",
     "skill1_lv": "MAX!",

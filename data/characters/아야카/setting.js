@@ -20,7 +20,7 @@ window.characterSetting["아야카"] = {
         "LV13": "공격력 4317",
         "LV13+5": "공격력 4733"
     },
-    "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 50LV 65 / 마이팰리스 70LV 110  / 마이팰리스 평점 ",
+    "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 50LV 65 / 마이팰리스 70LV 110 (이상) / 마이팰리스 평점 ",
     "element_weakness": "빙결",
     "element_resistance": "전격",
     "skill1_lv": "MAX",

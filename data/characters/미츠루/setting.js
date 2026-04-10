@@ -20,7 +20,7 @@ window.characterSetting["미츠루"] = {
         "LV13": "공격력 3108",
         "LV13+5": "공격력 3408"
     },
-    "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 50LV 65 / 마이팰리스 70LV 110 / 마이팰리스 평점",
+    "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 50LV 65 / 마이팰리스 70LV 110 (이상) / 마이팰리스 평점",
     "element_weakness": "화염",
     "element_resistance": "빙결",
     "skill1_lv": "MAX!",

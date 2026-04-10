@@ -1,7 +1,7 @@
 window.recommendParty = window.recommendParty || {};
 window.recommendParty["아이기스"] = {
     "weapon": [
-        ""
+        "혼돈의 해커스!"
     ],
     "persona": [
         {

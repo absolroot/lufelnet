@@ -1691,7 +1691,8 @@
                 battlePlusStats.textContent = mergedCharacter.battle_plus_stats_cn;
             } else if (currentLang === 'cn' && typeof window.localizeCnLooseText === 'function') {
                 const localizedBattlePlus = window.localizeCnLooseText(mergedCharacter.battle_plus_stats || '');
-                battlePlusStats.textContent = /[가-힣]/.test(localizedBattlePlus) ? '' : localizedBattlePlus;
+                // CN fallback is best-effort; keep partially translated text visible instead of hiding the section.
+                battlePlusStats.textContent = localizedBattlePlus || (mergedCharacter.battle_plus_stats || '');
             } else {
                 battlePlusStats.textContent = mergedCharacter.battle_plus_stats;
             }
@@ -1705,6 +1706,7 @@
                 if (currentLang === 'kr') return null;
                 const fallbackStaticDictByLang = {
                     en: {
+                        '(이상)': '(or higher)',
                         '해명의힘': 'Eludi. Stat Buff',
                         '해명의 힘': 'Eludi. Stat Buff',
                         '직책': 'Labor',
@@ -1726,6 +1728,7 @@
                         '대미지감면': 'Damage Reduction'
                     },
                     jp: {
+                        '(이상)': '（以上）',
                         '해명의힘': 'ステータス強化',
                         '해명의 힘': 'ステータス強化',
                         '직책': '職責',
@@ -1747,6 +1750,7 @@
                         '대미지감면': '被ダメージ減少'
                     },
                     cn: {
+                        '(이상)': '（及以上）',
                         '해명의힘': '解明怪盗属性',
                         '해명의 힘': '解明怪盗属性',
                         '직책': '职责',

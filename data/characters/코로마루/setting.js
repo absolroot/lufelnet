@@ -20,7 +20,7 @@ window.characterSetting["코로마루"] = {
         "LV13": "효과명중 181.3%",
         "LV13+5": "효과명중 198.8%"
     },
-    "battle_plus_stats": "· 전용무기 : 효과명중 / 마이팰리스 2.3% / 마이팰리스 평점 / 계시 20%",
+    "battle_plus_stats": "· 전용무기 : 효과명중 / 마이팰리스 2.3% (이상) / 마이팰리스 평점 / 계시 20%",
     "element_weakness": "축복",
     "element_resistance": "주원",
     "skill1_lv": "MAX",

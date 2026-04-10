@@ -68,6 +68,13 @@ function pickText(...values) {
   return '';
 }
 
+function pickLastSlashText(...values) {
+  const text = pickText(...values);
+  if (!text) return '';
+  const parts = text.split('/').map((part) => part.trim()).filter(Boolean);
+  return parts.length > 0 ? parts[parts.length - 1] : text.trim();
+}
+
 function normalizeTextKeys(target, keys) {
   for (const key of keys) {
     if (!hasText(target[key])) target[key] = '';
@@ -191,13 +198,13 @@ function normalizeAwakeEntry(localEntry, externalEntry, lang) {
   const merged = { ...local };
   const langFields = LANG_TEXT_FIELDS[lang] || LANG_TEXT_FIELDS.kr;
 
-  merged.ascend = pickText(external.ascend, local.ascend) || '0';
+  merged.ascend = pickLastSlashText(external.ascend, local.ascend) || '0';
   merged.autoSelect = pickText(external.autoSelect, external.auto_select, local.autoSelect) || 'Default';
   merged.cooldown = typeof pickDefined(external.cooldown, local.cooldown) === 'number'
     ? pickDefined(external.cooldown, local.cooldown)
     : Number(pickDefined(external.cooldown, local.cooldown, 0)) || 0;
   merged.cost = pickText(external.cost, local.cost);
-  merged.level = pickText(external.level, external.skill_lv, local.level);
+  merged.level = pickLastSlashText(external.level, external.skill_lv, local.level);
   merged.nature = pickDefined(external.nature, local.nature, null);
   merged.type = pickText(external.type, local.type) || DEFAULT_AWAKE_TYPE;
 

@@ -20,9 +20,9 @@ window.characterSetting["미오"] = {
         "LV13": "효과명중 182%",
         "LV13+5": "효과명중 200%"
     },
-    "battle_plus_stats": "· 마이팰리스 2.3% / 마이팰리스 평점 / 헛수고 : 2턴 동안 30% 효과명중 증가",
-    "battle_plus_stats_en": "Thieves Den 2.3% / Thieves Den Rating / Futility : 2 turns of 30% Ailment Accuracy increase",
-    "battle_plus_stats_jp": "マイパレス 2.3% / マイパレス評価 / 徒労 : 2ターン分 30% 状態異常命中増加",
+    "battle_plus_stats": "· 마이팰리스 2.3% (이상) / 마이팰리스 평점 / 헛수고 : 2턴 동안 30% 효과명중 증가",
+    "battle_plus_stats_en": "Thieves Den 2.3% (or higher) / Thieves Den Rating / Futility : 2 turns of 30% Ailment Accuracy increase",
+    "battle_plus_stats_jp": "マイパレス 2.3% （以上） / マイパレス評価 / 徒労 : 2ターン分 30% 状態異常命中増加",
     "element_weakness": "축복",
     "element_resistance": "빙결",
     "skill1_lv": "MAX!",

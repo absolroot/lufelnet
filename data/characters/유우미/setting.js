@@ -28,7 +28,7 @@ window.characterSetting["유우미"] = {
         "LV13": "공격력 5980",
         "LV13+5": "공격력 6440"
     },
-    "battle_plus_stats": "· 마이팰리스 50LV 65 / 마이팰리스 70LV 110 / 마이팰리스 평점",
+    "battle_plus_stats": "· 마이팰리스 50LV 65 / 마이팰리스 70LV 110 (이상) / 마이팰리스 평점",
     "element_weakness": "",
     "element_resistance": "",
     "skill1_lv": "MAX!",

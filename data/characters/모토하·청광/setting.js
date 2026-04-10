@@ -21,8 +21,8 @@ window.characterSetting["모토하·청광"] = {
         "LV13+5": false
     },
     "battle_plus_stats": "nan",
-    "element_weakness": "",
-    "element_resistance": "",
+    "element_weakness": "질풍",
+    "element_resistance": "전격",
     "skill1_lv": "MAX",
     "skill2_lv": "8",
     "skill3_lv": "MAX!",

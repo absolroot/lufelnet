@@ -20,9 +20,9 @@ window.characterSetting["슌·프론티어"] = {
         "LV13": "생명 20720",
         "LV13+5": "생명 22720"
     },
-    "battle_plus_stats": "해명의힘 / 직책 8% / 마이팰리스 LV50 260 / 마이팰리스 LV70 560 / 마이팰리스 평점",
-    "battle_plus_stats_en": "Eludi. Stat Buff / Card-Labor 8% / Thieves Den 260 / 마이팰리스 평점",
-    "battle_plus_stats_jp": "解明の力 / 職責 8% / マイパレス 260 / 마이팰리스 평점",
+    "battle_plus_stats": "해명의힘 / 직책 8% / 마이팰리스 LV50 260 / 마이팰리스 LV70 560 (이상) / 마이팰리스 평점",
+    "battle_plus_stats_en": "Eludi. Stat Buff / Labor 8% / Thieves Den LV50 260 / Thieves Den LV70 560 (or higher) / Thieves Den Rating",
+    "battle_plus_stats_jp": "ステータス強化 / 職責 8% / マイパレス LV50 260 / マイパレス LV70 560 （以上） / マイパレス評価",
     "element_weakness": "축복",
     "element_resistance": "총격",
     "skill1_lv": "MAX",

@@ -20,7 +20,7 @@ window.personaFiles["쿠시나다히메"] = {
   "comment": "",
   "comment_en": "",
   "comment_jp": "",
-    "comment_cn": "",
+  "comment_cn": "",
   "added": "",
   "cost": null,
   "combination": null,
@@ -44,31 +44,31 @@ window.personaFiles["쿠시나다히메"] = {
       "name": "다정한 보살핌",
       "name_en": "Beloved Princess",
       "name_jp": "愛されし姫",
-      "desc": "효과 명중이 21.2% 증가한다. 버프 스킬을 1개 시전할 때마다 모든 괴도의 공격력이 6.7% 영구 증가한다. 최대 3회 중첩된다.",
+      "desc": "효과 명중이 21.2% 증가한다. 버프 스킬을 1개 시전할 때마다 아군 전체의 공격력이 6.7% 영구 증가한다(전방일 시 적용, 3회 중첩 가능).",
       "desc_en": "Increase ailment accuracy by 21.2%. Whenever using a buff skill, permanently increase party's Attack by 6.7%. Stacks up to 3 times.",
       "desc_jp": "状態異常命中が２１.２%上昇する。強化スキルを１つ使用するごとに、味方全体の攻撃力が永続的に６.７%上昇する。最大３つまで累積できる。",
       "name_cn": "亲昵的爱护",
-      "desc_cn": "效果命中提升21.2%。每释放1个增益技能，则使所有怪盗攻击力永久提升6.7%,上限3层。"
+      "desc_cn": "效果命中提升21.2%。每释放1个增益技能，则使所有同伴攻击力永久提升6.7%（处于前台时生效），上限3层。"
     },
     {
       "name": "다정한 보살핌Ⅰ",
       "name_en": "Beloved Princess I",
       "name_jp": "愛されし姫Ⅰ",
-      "desc": "효과 명중이 21.2% 증가한다. 버프 스킬을 1개 시전할 때마다 모든 괴도의 공격력이 7.6% 영구 증가한다. 최대 3회 중첩된다.",
+      "desc": "효과 명중이 21.2% 증가한다. 버프 스킬을 1개 시전할 때마다 아군 전체의 공격력이 7.6% 영구 증가한다(전방일 시 적용, 3회 중첩 가능).",
       "desc_en": "Increase ailment accuracy by 21.2%. Whenever using a buff skill, permanently increase party's Attack by 7.6%. Stacks up to 3 times.",
       "desc_jp": "状態異常命中が２１.２%上昇する。強化スキルを１つ使用するごとに、味方全体の攻撃力が永続的に７.６%上昇する。最大３つまで累積できる。",
       "name_cn": "亲昵的爱护Ⅰ",
-      "desc_cn": "效果命中提升21.2%。每释放1个增益技能，则使所有怪盗攻击力永久提升7.6%,上限3层。"
+      "desc_cn": "效果命中提升21.2%。每释放1个增益技能，则使所有同伴攻击力永久提升7.6%（处于前台时生效），上限3层。"
     },
     {
       "name": "다정한 보살핌Ⅱ",
       "name_en": "Beloved Princess II",
       "name_jp": "愛されし姫Ⅱ",
-      "desc": "효과 명중이 21.2% 증가한다. 버프 스킬을 1개 시전할 때마다 모든 괴도의 공격력이 8.5% 영구 증가한다. 최대 3회 중첩된다.",
+      "desc": "효과 명중이 21.2% 증가한다. 버프 스킬을 1개 시전할 때마다 아군 전체의 공격력이 8.5% 영구 증가한다(전방일 시 적용, 3회 중첩 가능).",
       "desc_en": "Increase ailment accuracy by 21.2%. Whenever using a buff skill, permanently increase party's Attack by 8.5%. Stacks up to 3 times.",
       "desc_jp": "状態異常命中が２１.２%上昇する。強化スキルを１つ使用するごとに、味方全体の攻撃力が永続的に８.５%上昇する。最大３つまで累積できる。",
       "name_cn": "亲昵的爱护Ⅱ",
-      "desc_cn": "效果命中提升21.2%。每释放1个增益技能，则使所有怪盗攻击力永久提升8.5%,上限3层。"
+      "desc_cn": "效果命中提升21.2%。每释放1个增益技能，则使所有同伴攻击力永久提升8.5%（处于前台时生效），上限3层。"
     }
   ],
   "uniqueSkill": {

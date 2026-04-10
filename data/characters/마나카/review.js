@@ -9,7 +9,7 @@
 
 때문에 **여러 스택을 중첩해 한 번에 터뜨리는 캐릭터와 궁합이 매우 좋다**.
 
-회귀 과정에서 HL 및 테우르기아 게이지는 별도로 추가되기 때문에 HIGHLIGHT 및 테우르기아를 추가로 사용할 수 있게 되는 경우도 발생한다.
+회귀 과정에서도 HL 및 테우르기아 게이지는 별도로 누적된다. 다만 이는 추가 행동을 하는 캐릭터의 HIGHLIGHT 및 테우르기아 사용 가능 상태가 즉시 갱신된다는 뜻은 아니며, 게이지를 더 빨리 채워 이후 턴에 더 빨리 다시 사용할 수 있게 되는 경우가 있다.
 
 <br>
 
@@ -23,7 +23,7 @@ When performed after concentrating all buffs onto a character, the revert restor
 
 Because of this, she has excellent synergy with **characters who build multiple stacks and unleash them in a single burst.**
 
-During the revert process, both HL and Theurgy gauges are gained separately, making it possible to activate additional HIGHLIGHT or Theurgy skills.
+During Turn Revert, HL and Theurgy gauges continue to charge separately. This does not immediately refresh HIGHLIGHT or Theurgy for the character taking the repeated action, but it can fill those gauges faster and make them available sooner on later turns.
 
 <br>
 
@@ -37,7 +37,7 @@ When Manaka has **Awakening 1 or higher**, she can use Skill 3 on turn 1 and Ski
 
 そのため、**複数のスタックを溜めて一気に爆発させるタイプのキャラと非常に相性が良い。**
 
-回帰の過程ではHLゲージとテウルギアゲージが個別に加算されるため、追加でHIGHLIGHTやテウルギアを発動できる場合もある。
+ターン回帰の過程でも、HLゲージとテウルギアゲージは個別に加算される。 ただし、これは追加行動を行うキャラのHIGHLIGHTやテウルギアの使用可能状態が即座に更新されるという意味ではなく、ゲージが早く溜まることで後続のターンでより早く再使用できる場合がある。
 
 <br>
 
@@ -51,7 +51,7 @@ When Manaka has **Awakening 1 or higher**, she can use Skill 3 on turn 1 and Ski
 
 因此她和**需要叠加多层资源后一次性引爆的角色**相性非常好。
 
-回归过程中，HL和神通法能量会分别重新获取，所以也有机会额外再开一次HIGHLIGHT或神通法。
+回归过程中，HL与神通法量表仍会分别累积。 但这并不代表进行追加行动的角色会立刻刷新HIGHLIGHT或神通法的使用次数，而是会让量表充得更快，从而有机会在后续回合更早再次使用。
 
 <br>
 
@@ -76,4 +76,3 @@ When Manaka has **Awakening 1 or higher**, she can use Skill 3 on turn 1 and Ski
         cons_cn: ["语音音量相当大。"],
     };
 })();
-

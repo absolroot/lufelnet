@@ -20,7 +20,7 @@ window.characterSetting["리코"] = {
         "LV13": false,
         "LV13+5": false
     },
-    "battle_plus_stats": "· 마이팰리스 1 / 마이팰리스 평점",
+    "battle_plus_stats": "· 마이팰리스 1 (이상) / 마이팰리스 평점",
     "element_weakness": "",
     "element_resistance": "",
     "skill1_lv": "MAX!",

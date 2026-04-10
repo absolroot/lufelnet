@@ -20,7 +20,7 @@ window.characterSetting["루우나"] = {
         "LV13": "효과명중 181.9%",
         "LV13+5": "효과명중 199.4%"
     },
-    "battle_plus_stats": "· 전용무기 : 효과명중 / 마이팰리스 2.3% / 마이팰리스 평점 ",
+    "battle_plus_stats": "· 전용무기 : 효과명중 / 마이팰리스 2.3% (이상) / 마이팰리스 평점 ",
     "element_weakness": "질풍",
     "element_resistance": "화염",
     "skill1_lv": "MAX!",

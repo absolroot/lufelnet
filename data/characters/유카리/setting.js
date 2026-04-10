@@ -20,7 +20,7 @@ window.characterSetting["유카리"] = {
         "LV13": "공격력 4667",
         "LV13+5": "공격력 5084"
     },
-    "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 50LV 65 / 마이팰리스 70LV 110 / 마이팰리스 평점",
+    "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 50LV 65 / 마이팰리스 70LV 110 (이상) / 마이팰리스 평점",
     "element_weakness": "전격",
     "element_resistance": "질풍",
     "skill1_lv": "MAX",

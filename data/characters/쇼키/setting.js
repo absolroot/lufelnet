@@ -20,7 +20,7 @@ window.characterSetting["쇼키"] = {
         "LV13": false,
         "LV13+5": false
     },
-    "battle_plus_stats": "· 마이팰리스 공격력 65 / 마이팰리스 효과명중 2.3% / 마이팰리스 평점 / 4성 무기 : 효과 명중 40% / 해명의 힘",
+    "battle_plus_stats": "· 마이팰리스 공격력 65 (이상) / 마이팰리스 효과명중 2.3% (이상) / 마이팰리스 평점 / 4성 무기 : 효과 명중 40% / 해명의 힘",
     "element_weakness": "핵열",
     "element_resistance": "축복",
     "skill1_lv": "MAX!",

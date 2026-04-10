@@ -20,7 +20,7 @@ window.characterSetting["야오링"] = {
         "LV13": "속도 180",
         "LV13+5": "속도 200"
     },
-    "battle_plus_stats": "· 마이팰리스 1 / 마이팰리스 평점 / 전용무기",
+    "battle_plus_stats": "· 마이팰리스 1 (이상) / 마이팰리스 평점 / 전용무기",
     "element_weakness": "전격",
     "element_resistance": "주원",
     "skill1_lv": "MAX!",

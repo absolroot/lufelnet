@@ -1,10 +1,10 @@
 window.basicStatsData = window.basicStatsData || {};
 window.basicStatsData["아란"] = {
     "a0_lv1": {
-        "HP": 0,
+        "HP": 225,
         "SP": 100,
-        "attack": 0,
-        "defense": 0,
+        "attack": 70,
+        "defense": 41,
         "crit_rate": 5,
         "crit_mult": 150,
         "speed": 105

@@ -20,7 +20,7 @@ window.characterSetting["슌"] = {
         "LV13": false,
         "LV13+5": false
     },
-    "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 LV50 260 / 마이팰리스 LV70 560 / 마이팰리스 평점",
+    "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 LV50 260 / 마이팰리스 LV70 560 (이상) / 마이팰리스 평점",
     "element_weakness": "축복",
     "element_resistance": "빙결",
     "skill1_lv": "8",

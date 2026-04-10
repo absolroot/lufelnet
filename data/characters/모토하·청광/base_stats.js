@@ -1,10 +1,10 @@
 window.basicStatsData = window.basicStatsData || {};
 window.basicStatsData["모토하·청광"] = {
     "a0_lv1": {
-        "HP": 0,
+        "HP": 294,
         "SP": 100,
-        "attack": 0,
-        "defense": 0,
+        "attack": 104,
+        "defense":55,
         "crit_rate": 5,
         "crit_mult": 150,
         "speed": 96

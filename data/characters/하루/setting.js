@@ -20,7 +20,7 @@ window.characterSetting["하루"] = {
         "LV13": "효과명중 150%",
         "LV13+5": "효과명중 150%"
     },
-    "battle_plus_stats": "· 마이팰리스 2.3% / 마이팰리스 평점",
+    "battle_plus_stats": "· 마이팰리스 2.3% (이상) / 마이팰리스 평점",
     "element_weakness": "핵열",
     "element_resistance": "염동",
     "skill1_lv": "MAX!",

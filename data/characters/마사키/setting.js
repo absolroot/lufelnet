@@ -20,7 +20,7 @@ window.characterSetting["마사키"] = {
         "LV13": "방어력 6475",
         "LV13+5": "방어력 7100"
     },
-    "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 50 / 마이팰리스 평점  / 패시브 24% ",
+    "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 50 (이상) / 마이팰리스 평점  / 패시브 24% ",
     "element_weakness": "축복",
     "element_resistance": "빙결",
     "skill1_lv": "8",

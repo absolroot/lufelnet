@@ -20,7 +20,7 @@ window.characterSetting["유키미"] = {
         "LV13": false,
         "LV13+5": false
     },
-    "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 50LV 50 / 마이팰리스 70LV 95 / 마이팰리스 평점 / 전용무기 ",
+    "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 50LV 50 / 마이팰리스 70LV 95 (이상) / 마이팰리스 평점 / 전용무기 ",
     "element_weakness": "핵열",
     "element_resistance": "축복",
     "skill1_lv": "8",

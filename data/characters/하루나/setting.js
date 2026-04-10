@@ -20,7 +20,7 @@ window.characterSetting["하루나"] = {
         "LV13": "공격력 5180",
         "LV13+5": "공격력 5680"
     },
-    "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 50LV 65 / 마이팰리스 70LV 110 / 마이팰리스 평점 / 의식1 / 전용무기",
+    "battle_plus_stats": "· 해명의힘 / 직책 8% / 마이팰리스 50LV 65 / 마이팰리스 70LV 110 (이상) / 마이팰리스 평점 / 의식1 / 전용무기",
     "element_weakness": "주원",
     "element_resistance": "염동",
     "skill1_lv": "8",

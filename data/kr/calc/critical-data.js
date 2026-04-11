@@ -506,7 +506,7 @@ const criticalBuffData = {
       "options": [],
       "values": {},
       "value": 15,
-      "duration": "2턴",
+      "duration": "3턴",
       "note": "『열성 관객』",
       "note_en": "Skill2",
       "note_jp": "スキル2",
@@ -514,7 +514,7 @@ const criticalBuffData = {
       "note_cn": "『忠实听众』",
       "type_cn": "意识1",
       "target_cn": "单体",
-      "duration_cn": "2回合",
+      "duration_cn": "3回合",
       "options_cn": []
     }
   ],

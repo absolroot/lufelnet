@@ -879,6 +879,12 @@
       "details": "I need to think things over, and talk to Lufel once I've made a decision.",
       "name": "Traces of Dreams"
     },
+    "unlock_notes": [
+      {
+        "type": "story",
+        "text": "Available after progressing through Chapter 1"
+      }
+    ],
     "visit_dialog": [
       {
         "destination": "Shibuya",

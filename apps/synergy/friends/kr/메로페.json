@@ -1365,6 +1365,12 @@
       "details": "생각을 가다듬고 결정한 후 다시 루페르와 대화를 나누자.",
       "name": "책임자의 대결"
     },
+    "unlock_notes": [
+      {
+        "type": "story",
+        "text": "1장 진행 이후 개방"
+      }
+    ],
     "visit_dialog": [
       {
         "destination": "시부야",

@@ -1251,6 +1251,12 @@
       "details": "어떤 방에서 한 남자가 아케시에게 전화를 걸었다.",
       "name": "폭식자의 피날레"
     },
+    "unlock_notes": [
+      {
+        "type": "story",
+        "text": "3장 엔딩 이후 개방"
+      }
+    ],
     "visit_dialog": [
       {
         "destination": "시부야",

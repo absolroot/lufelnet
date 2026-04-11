@@ -37,6 +37,7 @@ const AUTO_MIN_SCAN_END = 33;
 const REQUEST_TIMEOUT_MS = 15000;
 const REQUEST_RETRIES = 1;
 const REQUEST_DELAY_MS = 600;
+const LOCAL_ONLY_DATA_KEYS = ['unlock_notes'];
 
 function log(message) {
   console.log(message);
@@ -223,13 +224,53 @@ function computeTextVolume(value) {
   return 0;
 }
 
+function omitLocalOnlyDataKeys(json) {
+  if (!json || typeof json !== 'object') return json;
+
+  const clone = JSON.parse(JSON.stringify(json));
+  const data = clone && typeof clone === 'object' && clone.data && typeof clone.data === 'object'
+    ? clone.data
+    : clone;
+
+  if (data && typeof data === 'object') {
+    for (const key of LOCAL_ONLY_DATA_KEYS) {
+      delete data[key];
+    }
+  }
+
+  return clone;
+}
+
+function mergeLocalOnlyData(previousJson, nextJson) {
+  if (!previousJson || !nextJson || typeof previousJson !== 'object' || typeof nextJson !== 'object') {
+    return nextJson;
+  }
+
+  const merged = JSON.parse(JSON.stringify(nextJson));
+  const previousData = previousJson.data && typeof previousJson.data === 'object' ? previousJson.data : previousJson;
+  const nextData = merged.data && typeof merged.data === 'object' ? merged.data : merged;
+
+  if (!previousData || typeof previousData !== 'object' || !nextData || typeof nextData !== 'object') {
+    return merged;
+  }
+
+  for (const key of LOCAL_ONLY_DATA_KEYS) {
+    if (Object.prototype.hasOwnProperty.call(previousData, key) && !Object.prototype.hasOwnProperty.call(nextData, key)) {
+      nextData[key] = JSON.parse(JSON.stringify(previousData[key]));
+    }
+  }
+
+  return merged;
+}
+
 function writeJson(filePath, json) {
   ensureDir(path.dirname(filePath));
   fs.writeFileSync(filePath, JSON.stringify(json, null, 2), 'utf8');
 }
 
 function saveIfTextIncreased(filePath, nextJson) {
-  const nextTextVolume = computeTextVolume(nextJson);
+  const nextComparableJson = omitLocalOnlyDataKeys(nextJson);
+  const nextTextVolume = computeTextVolume(nextComparableJson);
   if (nextTextVolume <= 0) {
     return { saved: false, reason: 'empty_new', previousTextVolume: 0, nextTextVolume };
   }
@@ -244,9 +285,11 @@ function saveIfTextIncreased(filePath, nextJson) {
     return { saved: false, reason: 'invalid_existing', previousTextVolume: 0, nextTextVolume };
   }
 
-  const previousTextVolume = computeTextVolume(previousJson);
+  const previousComparableJson = omitLocalOnlyDataKeys(previousJson);
+  const previousTextVolume = computeTextVolume(previousComparableJson);
   if (nextTextVolume > previousTextVolume) {
-    writeJson(filePath, nextJson);
+    const mergedJson = mergeLocalOnlyData(previousJson, nextJson);
+    writeJson(filePath, mergedJson);
     return { saved: true, mode: 'updated', previousTextVolume, nextTextVolume };
   }
 

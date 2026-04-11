@@ -1229,6 +1229,12 @@
       "details": "进入游戏『丸得虚拟世界』。",
       "name": "电子世界中的邂逅"
     },
+    "unlock_notes": [
+      {
+        "type": "summary",
+        "text": "YUI协同者解锁后开放"
+      }
+    ],
     "visit_dialog": [
       {
         "destination": "涩谷",

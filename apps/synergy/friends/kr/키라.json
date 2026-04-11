@@ -1088,6 +1088,12 @@
       "details": "이상한 변화가 일어난 지점이 앞에 있다. 가서 조사하자.",
       "name": "과거의 인지 공간"
     },
+    "unlock_notes": [
+      {
+        "type": "story",
+        "text": "2장 진행 이후 개방"
+      }
+    ],
     "visit_dialog": [
       {
         "destination": "칸다",

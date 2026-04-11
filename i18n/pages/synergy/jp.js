@@ -43,6 +43,10 @@ window.I18N_PAGE_SYNERGY_JP = {
     dialogFriendship: '好感度',
 
     labelUnlockQuest: '事前クエスト',
+    labelUnlockNotes: '解放参考',
+    labelUnlockSummary: '解放概要',
+    labelUnlockHidden: '隠し条件',
+    labelUnlockStoryProgress: 'ストーリー進行',
     labelQuestUnlockNotice: 'このクエストをクリアするとイベントクエストが解禁されます。',
     labelSpecialAward: '協力報酬',
     labelAdvanceDialog: '協力イベント',

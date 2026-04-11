@@ -1347,6 +1347,12 @@
       "details": "回卧室准备睡觉吧。",
       "name": "负重之人的对决"
     },
+    "unlock_notes": [
+      {
+        "type": "story",
+        "text": "第1章推进后开放"
+      }
+    ],
     "visit_dialog": [
       {
         "destination": "神田",

@@ -794,6 +794,12 @@
       "details": "新しい一日が始まった。\n学校に行こう。",
       "name": "誇りの行方"
     },
+    "unlock_notes": [
+      {
+        "type": "story",
+        "text": "2章進行後に開放"
+      }
+    ],
     "visit_dialog": [
       {
         "destination": "渋谷",

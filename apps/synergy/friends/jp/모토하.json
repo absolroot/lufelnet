@@ -797,6 +797,12 @@
       "details": "素羽は何か用事があるようだ。\n２ーＣの教室に行ってみよう。",
       "name": "白球が弧を描く日"
     },
+    "unlock_notes": [
+      {
+        "type": "story",
+        "text": "2章進行後に開放"
+      }
+    ],
     "visit_dialog": [
       {
         "destination": "井の頭公園",

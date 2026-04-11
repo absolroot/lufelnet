@@ -1204,6 +1204,15 @@
         // 번역 함수
         const t = (key) => window.t ? window.t(key) : key;
 
+        function escapeHtml(value) {
+            return String(value == null ? '' : value)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
         // unlock_cond에 아이콘 추가하는 함수 (텍스트를 아이콘으로 치환)
         function processUnlockCond(unlockCond) {
             if (!unlockCond) return '';
@@ -1235,6 +1244,42 @@
             return processedText;
         }
 
+        function getUnlockNoteLabel(type) {
+            if (type === 'hidden') {
+                return t('labelUnlockHidden');
+            }
+            if (type === 'story') {
+                return t('labelUnlockStoryProgress');
+            }
+            return t('labelUnlockSummary');
+        }
+
+        function renderUnlockNotes(notes) {
+            if (!Array.isArray(notes) || notes.length === 0) {
+                return '';
+            }
+
+            const validNotes = notes.filter(note => note && typeof note.text === 'string' && note.text.trim());
+            if (validNotes.length === 0) {
+                return '';
+            }
+
+            const itemsHtml = validNotes.map(note => `
+                <li style="margin: 0; line-height: 1.6; font-size: 12px; color: rgba(255, 255, 255, 0.68);">
+                    <span style="font-weight: 600; color: rgba(255, 245, 181, 0.78);">${escapeHtml(getUnlockNoteLabel(note.type))}</span>
+                    <span style="margin-left: 6px;">${escapeHtml(note.text)}</span>
+                </li>
+            `).join('');
+
+            return `
+                <div class="unlock-notes-inline" style="margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(255, 255, 255, 0.08);">
+                    <ul style="margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 6px;">
+                        ${itemsHtml}
+                    </ul>
+                </div>
+            `;
+        }
+
         // 섹션 chevron SVG
         const chevronSvg = `<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="section-chevron"><path d="M4 2L8 6L4 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 
@@ -1257,6 +1302,7 @@
                                 <div class="unlock-quest-details" style="color: rgba(255, 255, 255, 0.8); font-size: 13px; line-height: 1.6;">${data.unlock_quest.details || ''}</div>
                             </div>
                             <div style="font-size: 12px; color: rgba(255, 255, 255, 0.6); font-style: italic;">${t('labelQuestUnlockNotice')}</div>
+                            ${renderUnlockNotes(data.unlock_notes)}
                         </div>
                     </div>
                 </div>

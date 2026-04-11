@@ -1214,6 +1214,12 @@
       "details": "리코 선배도 페르소나가 각성할 줄은 몰랐어. 시부야에 데려다주고 나서 얘기하자.",
       "name": "룰 브레이커를 위한 협주곡"
     },
+    "unlock_notes": [
+      {
+        "type": "story",
+        "text": "3장 진행 이후 개방"
+      }
+    ],
     "visit_dialog": [
       {
         "destination": "아키하바라",

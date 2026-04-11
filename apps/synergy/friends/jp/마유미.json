@@ -813,6 +813,12 @@
       "details": "秋葉原に戻り、琉七に会いに行こう。",
       "name": "秋葉原ミステリーマップ"
     },
+    "unlock_notes": [
+      {
+        "type": "summary",
+        "text": "秋葉原旅行サブクエスト解放後に開放"
+      }
+    ],
     "visit_dialog": [
       {
         "destination": "渋谷",

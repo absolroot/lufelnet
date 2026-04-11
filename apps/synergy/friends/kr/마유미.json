@@ -1299,6 +1299,12 @@
       "details": "일이 해결되면 아키하바라로 돌아가서 루우나를 찾아보자.",
       "name": "아키하바라 이벤트 도전"
     },
+    "unlock_notes": [
+      {
+        "type": "summary",
+        "text": "아키하바라 여행 서브 퀘스트 해금 이후 개방"
+      }
+    ],
     "visit_dialog": [
       {
         "destination": "시부야",

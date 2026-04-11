@@ -43,6 +43,10 @@ window.I18N_PAGE_SYNERGY_EN = {
     dialogFriendship: 'Friendship',
 
     labelUnlockQuest: 'Prerequisite Quest',
+    labelUnlockNotes: 'Unlock Notes',
+    labelUnlockSummary: 'Summary',
+    labelUnlockHidden: 'Hidden Condition',
+    labelUnlockStoryProgress: 'Story Progress',
     labelQuestUnlockNotice: 'Event quests will be unlocked after clearing this quest.',
     labelSpecialAward: 'Cooperation Reward',
     labelAdvanceDialog: 'Cooperation Event',

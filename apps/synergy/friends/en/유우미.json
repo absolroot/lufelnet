@@ -840,6 +840,12 @@
       "details": "Something strange is happening up ahead.\nWe should go check it out.",
       "name": "Chamber of Recollections"
     },
+    "unlock_notes": [
+      {
+        "type": "story",
+        "text": "Available after progressing through Chapter 2"
+      }
+    ],
     "visit_dialog": [
       {
         "destination": "Shibuya",

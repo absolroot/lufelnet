@@ -813,6 +813,12 @@
       "details": "I should head back to Akihabara and find Runa.",
       "name": "Akihabara Mystery Map"
     },
+    "unlock_notes": [
+      {
+        "type": "summary",
+        "text": "Available after unlocking the Akihabara Travel side quest"
+      }
+    ],
     "visit_dialog": [
       {
         "destination": "Shibuya",

@@ -794,6 +794,12 @@
       "details": "前方に異変が発生している場所がある。\n調査しに行こう。",
       "name": "在りし日の認知の間"
     },
+    "unlock_notes": [
+      {
+        "type": "story",
+        "text": "2章進行後に開放"
+      }
+    ],
     "visit_dialog": [
       {
         "destination": "下北沢",

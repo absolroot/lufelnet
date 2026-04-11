@@ -861,6 +861,12 @@
       "details": "It's been an exhausting day.\nI should head to my room and get some sleep.",
       "name": "Traces of Dreams"
     },
+    "unlock_notes": [
+      {
+        "type": "story",
+        "text": "Available after progressing through Chapter 1"
+      }
+    ],
     "visit_dialog": [
       {
         "destination": "Kanda",

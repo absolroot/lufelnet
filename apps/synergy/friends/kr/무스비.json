@@ -1229,6 +1229,12 @@
       "details": "『마루토쿠 가상 세계』 게임에 입장하자.",
       "name": "전자 세계에서의 만남"
     },
+    "unlock_notes": [
+      {
+        "type": "summary",
+        "text": "YUI 협력자 개방 이후 개방 가능"
+      }
+    ],
     "visit_dialog": [
       {
         "destination": "시부야",

@@ -797,6 +797,12 @@
       "details": "Looks like Motoha wants to talk about something.\nI should go and meet her in classroom 2-C.",
       "name": "The Day the Pearl Flies"
     },
+    "unlock_notes": [
+      {
+        "type": "story",
+        "text": "Available after progressing through Chapter 2"
+      }
+    ],
     "visit_dialog": [
       {
         "destination": "Inokashira Park",

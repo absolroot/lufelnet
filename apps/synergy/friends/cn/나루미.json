@@ -1246,6 +1246,12 @@
       "details": "结束了秋叶原的短暂旅途，这是一段难忘的回忆。",
       "name": "漫游秋叶原"
     },
+    "unlock_notes": [
+      {
+        "type": "hidden",
+        "text": "梅洛普协同者等级达到15"
+      }
+    ],
     "visit_dialog": [
       {
         "destination": "月岛",

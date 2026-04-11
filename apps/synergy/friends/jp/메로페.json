@@ -879,6 +879,12 @@
       "details": "考えを整理し、決断してから再びルフェルと話をしよう。",
       "name": "夢の跡"
     },
+    "unlock_notes": [
+      {
+        "type": "story",
+        "text": "1章進行後に開放"
+      }
+    ],
     "visit_dialog": [
       {
         "destination": "渋谷",

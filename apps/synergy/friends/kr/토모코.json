@@ -1262,6 +1262,12 @@
       "details": "새로운 하루가 시작됐다. 학교로 가자.",
       "name": "꿈의 맛을 위한 대결"
     },
+    "unlock_notes": [
+      {
+        "type": "story",
+        "text": "2장 진행 이후 개방"
+      }
+    ],
     "visit_dialog": [
       {
         "destination": "시부야",

@@ -1198,6 +1198,16 @@
       "details": "방금 새로운 능력을 획득했으니 전방의 섀도에게 시험해 보자.",
       "name": "책임자의 대결"
     },
+    "unlock_notes": [
+      {
+        "type": "summary",
+        "text": "아키하바라 여행 서브 퀘스트 해금 이후 개방"
+      },
+      {
+        "type": "story",
+        "text": "1장 진행 이후 개방"
+      }
+    ],
     "visit_dialog": [
       {
         "destination": "시부야",

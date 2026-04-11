@@ -1313,6 +1313,12 @@
       "details": "기치조지에 도착했으니 리코 선배한테 연락하자.",
       "name": "룰 브레이커를 위한 협주곡"
     },
+    "unlock_notes": [
+      {
+        "type": "story",
+        "text": "3장 진행 이후 개방"
+      }
+    ],
     "visit_dialog": [
       {
         "destination": "신주쿠",

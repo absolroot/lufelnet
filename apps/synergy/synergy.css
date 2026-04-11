@@ -1234,7 +1234,8 @@ tr:hover .item-source-icon svg {
 }
 
 .unlock-quest-content.spoiler .unlock-quest-name,
-.unlock-quest-content.spoiler .unlock-quest-details {
+.unlock-quest-content.spoiler .unlock-quest-details,
+.unlock-quest-content.spoiler .unlock-notes-inline {
     filter: blur(4px);
     user-select: none;
     -webkit-user-select: none;

@@ -1347,6 +1347,12 @@
       "details": "침실로 가서 취침할 준비를 하자.",
       "name": "책임자의 대결"
     },
+    "unlock_notes": [
+      {
+        "type": "story",
+        "text": "1장 진행 이후 개방"
+      }
+    ],
     "visit_dialog": [
       {
         "destination": "칸다",

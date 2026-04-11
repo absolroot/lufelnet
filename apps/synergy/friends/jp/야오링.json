@@ -861,6 +861,12 @@
       "details": "疲れる一日だった。\n早く部屋に戻って寝よう。",
       "name": "夢の跡"
     },
+    "unlock_notes": [
+      {
+        "type": "story",
+        "text": "1章進行後に開放"
+      }
+    ],
     "visit_dialog": [
       {
         "destination": "神田",

@@ -723,6 +723,12 @@
       "details": "Let's do a thorough search of Miyazawa's Palace.",
       "name": "Outcome of Pride"
     },
+    "unlock_notes": [
+      {
+        "type": "story",
+        "text": "Available after progressing through Chapter 2"
+      }
+    ],
     "visit_dialog": [
       {
         "destination": "Shibuya",

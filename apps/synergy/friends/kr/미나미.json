@@ -1204,6 +1204,12 @@
       "details": "학교 갈 시간이다. 빨리 나가자.",
       "name": "룰 브레이커를 위한 협주곡"
     },
+    "unlock_notes": [
+      {
+        "type": "story",
+        "text": "3장 진행 이후 개방"
+      }
+    ],
     "visit_dialog": [
       {
         "destination": "아키하바라",

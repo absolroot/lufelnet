@@ -1079,6 +1079,12 @@
       "details": "조심스럽게 미야자와 히로무 팰리스를 조사해 보자.",
       "name": "꿈의 맛을 위한 대결"
     },
+    "unlock_notes": [
+      {
+        "type": "story",
+        "text": "2장 진행 이후 개방"
+      }
+    ],
     "visit_dialog": [
       {
         "destination": "시부야",

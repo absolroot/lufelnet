@@ -746,6 +746,12 @@
       "details": "Let's carefully explore Kiuchi's Palace to ensure the plan goes off without a hitch.",
       "name": "Traces of Dreams"
     },
+    "unlock_notes": [
+      {
+        "type": "story",
+        "text": "Available after progressing through Chapter 1"
+      }
+    ],
     "visit_dialog": [
       {
         "destination": "Wilderness",

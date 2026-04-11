@@ -827,6 +827,12 @@
       "details": "We arrived at Kichijoji.\nLet's get in touch with Riko-senpai.",
       "name": "Unconditional Love"
     },
+    "unlock_notes": [
+      {
+        "type": "story",
+        "text": "Available after progressing through Chapter 3"
+      }
+    ],
     "visit_dialog": [
       {
         "destination": "Shinjuku",

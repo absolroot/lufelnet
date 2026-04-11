@@ -738,6 +738,12 @@
       "details": "Miyazawa delivered a sincere public apology.\nHis heart has truly changed...",
       "name": "Outcome of Pride"
     },
+    "unlock_notes": [
+      {
+        "type": "story",
+        "text": "Available after progressing through Chapter 2"
+      }
+    ],
     "visit_dialog": [
       {
         "destination": "Shibuya",

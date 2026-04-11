@@ -1232,6 +1232,12 @@
       "details": "원활한 작전을 위해 팰리스 내부를 조심스럽게 살펴보자.",
       "name": "책임자의 대결"
     },
+    "unlock_notes": [
+      {
+        "type": "story",
+        "text": "1장 진행 이후 개방"
+      }
+    ],
     "visit_dialog": [
       {
         "destination": "밭",

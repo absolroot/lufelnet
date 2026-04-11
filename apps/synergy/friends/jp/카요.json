@@ -705,6 +705,12 @@
       "details": "ミヤザワ・パレスを慎重に探索しよう。",
       "name": "誇りの行方"
     },
+    "unlock_notes": [
+      {
+        "type": "story",
+        "text": "2章進行後に開放"
+      }
+    ],
     "visit_dialog": [
       {
         "destination": "池袋",

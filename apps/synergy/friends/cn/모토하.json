@@ -1283,6 +1283,12 @@
       "details": "素羽似乎有事找你，去2-C教室找她吧。",
       "name": "重新开始的意志"
     },
+    "unlock_notes": [
+      {
+        "type": "story",
+        "text": "第2章推进后开放"
+      }
+    ],
     "visit_dialog": [
       {
         "destination": "井之头公园",

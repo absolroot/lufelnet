@@ -827,6 +827,12 @@
       "details": "吉祥寺に到着した。\n理子先輩に連絡しよう。",
       "name": "無償の愛"
     },
+    "unlock_notes": [
+      {
+        "type": "story",
+        "text": "3章進行後に開放"
+      }
+    ],
     "visit_dialog": [
       {
         "destination": "新宿",

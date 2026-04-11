@@ -1204,6 +1204,12 @@
       "details": "到上学的时间了，赶紧出门吧。",
       "name": "规则破坏者的协奏曲"
     },
+    "unlock_notes": [
+      {
+        "type": "story",
+        "text": "第3章推进后开放"
+      }
+    ],
     "visit_dialog": [
       {
         "destination": "秋叶原",

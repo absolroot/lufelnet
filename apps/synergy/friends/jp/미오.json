@@ -1,837 +1,843 @@
 {
-    "data": {
-        "advance_dialog": [
+  "data": {
+    "advance_dialog": [
+      {
+        "good_answers": [
+          [
             {
-                "good_answers": [
-                    [
-                        {
-                            "content": "そんなことが…",
-                            "reward": 40
-                        },
-                        {
-                            "content": "嫌なことを聞いてごめん",
-                            "reward": 50
-                        },
-                        {
-                            "content": "夏川さんは立派な消防士だ",
-                            "reward": 60
-                        }
-                    ]
-                ],
-                "rank_up": {
-                    "from": 2,
-                    "to": 3
-                },
-                "unlock_cond": "度胸 Lv.3"
+              "content": "そんなことが…",
+              "reward": 40
             },
             {
-                "good_answers": [
-                    [
-                        {
-                            "content": "親戚だから",
-                            "reward": 40
-                        },
-                        {
-                            "content": "イトコだから",
-                            "reward": 50
-                        },
-                        {
-                            "content": "弟みたいなものだから",
-                            "reward": 60
-                        }
-                    ]
-                ],
-                "rank_up": {
-                    "from": 4,
-                    "to": 5
-                },
-                "unlock_cond": "度胸 Lv.5"
+              "content": "嫌なことを聞いてごめん",
+              "reward": 50
             },
             {
-                "good_answers": [
-                    [
-                        {
-                            "content": "気持ちはわかるけど…",
-                            "reward": 40
-                        },
-                        {
-                            "content": "気負いすぎている",
-                            "reward": 50
-                        },
-                        {
-                            "content": "もっと自分を大事に",
-                            "reward": 60
-                        }
-                    ]
-                ],
-                "rank_up": {
-                    "from": 6,
-                    "to": 7
-                },
-                "unlock_cond": "度胸 Lv.6"
-            },
-            {
-                "good_answers": [
-                    [
-                        {
-                            "content": "ここまで来たら一蓮托生だ",
-                            "reward": 50
-                        },
-                        {
-                            "content": "納得できない",
-                            "reward": 40
-                        },
-                        {
-                            "content": "夏川さんが無茶しないか心配",
-                            "reward": 60
-                        }
-                    ]
-                ],
-                "rank_up": {
-                    "from": 8,
-                    "to": 9
-                },
-                "unlock_cond": "度胸 Lv.8"
-            },
-            {
-                "good_answers": [
-                    [
-                        {
-                            "content": "心配した",
-                            "reward": 50
-                        },
-                        {
-                            "content": "危なっかしすぎる",
-                            "reward": 40
-                        },
-                        {
-                            "content": "あんな無茶必要なかった",
-                            "reward": 60
-                        }
-                    ]
-                ],
-                "rank_up": {
-                    "from": 10,
-                    "to": 11
-                },
-                "unlock_cond": "度胸 Lv.10"
-            },
-            {
-                "good_answers": [
-                    [
-                        {
-                            "content": "まさか自分のせい？",
-                            "reward": 50
-                        },
-                        {
-                            "content": "ただの偶然",
-                            "reward": 40
-                        },
-                        {
-                            "content": "結果オーライだ",
-                            "reward": 60
-                        }
-                    ]
-                ],
-                "rank_up": {
-                    "from": 12,
-                    "to": 13
-                },
-                "unlock_cond": "度胸 Lv.11"
-            },
-            {
-                "good_answers": [
-                    [
-                        {
-                            "content": "だから死ぬな",
-                            "reward": 40
-                        },
-                        {
-                            "content": "笑えない冗談だ",
-                            "reward": 50
-                        },
-                        {
-                            "content": "死んでも死なせない",
-                            "reward": 60
-                        }
-                    ]
-                ],
-                "rank_up": {
-                    "from": 14,
-                    "to": 15
-                },
-                "unlock_cond": "度胸 Lv.13"
-            },
-            {
-                "good_answers": [
-                    [
-                        {
-                            "content": "待ってる",
-                            "reward": 50
-                        },
-                        {
-                            "content": "長くは待てない",
-                            "reward": 40
-                        },
-                        {
-                            "content": "照れてる？",
-                            "reward": 60
-                        }
-                    ]
-                ],
-                "rank_up": {
-                    "from": 16,
-                    "to": 17
-                },
-                "unlock_cond": "度胸 Lv.15"
-            },
-            {
-                "good_answers": [
-                    [
-                        {
-                            "content": "丸く収まって良かった",
-                            "reward": 40
-                        },
-                        {
-                            "content": "自分も心配してた",
-                            "reward": 60
-                        },
-                        {
-                            "content": "家族っていいな",
-                            "reward": 50
-                        }
-                    ]
-                ],
-                "rank_up": {
-                    "from": 19,
-                    "to": 20
-                },
-                "unlock_cond": "度胸 Lv.17"
+              "content": "夏川さんは立派な消防士だ",
+              "reward": 60
             }
+          ]
         ],
-        "can_romance": true,
-        "friend_lover_dialog": [
-            {
-                "content": "弟みたいなものだから",
-                "is_romance": false
-            },
-            {
-                "content": "夏川さんが特別だから",
-                "is_romance": true
-            }
-        ],
-        "item": [
-            {
-                "bonus_synergy": 7,
-                "compound": [],
-                "image": "item-303064.png",
-                "name": "運動用プロテクター",
-                "new_gift_synergy": 14,
-                "seed": [],
-                "shop": [
-                    {
-                        "discountPrice": 2660,
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 3,
-                        "moneyName": "所持金",
-                        "price": 2800,
-                        "reducePriceCond": "道玄坂琉七 LV.1",
-                        "resetType": "주간",
-                        "shopName": "トリプルセブン"
-                    },
-                    {
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 1,
-                        "moneyName": "サッカー部バッジ",
-                        "price": 60,
-                        "resetType": "주간",
-                        "shopName": "サッカー部ポイント交換"
-                    }
-                ],
-                "source": [
-                    "shop"
-                ],
-                "synergy": 7
-            },
-            {
-                "bonus_synergy": 4,
-                "compound": [],
-                "image": "item-303221.png",
-                "name": "卓上用ミニサボテン",
-                "new_gift_synergy": 8,
-                "seed": [],
-                "shop": [
-                    {
-                        "discountPrice": 1430,
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 1,
-                        "moneyName": "所持金",
-                        "price": 1500,
-                        "reducePriceCond": "道玄坂琉七 LV.1",
-                        "resetType": "주간",
-                        "shopName": "ラフレシ屋"
-                    }
-                ],
-                "source": [
-                    "shop"
-                ],
-                "synergy": 4
-            },
-            {
-                "bonus_synergy": 18,
-                "compound": [],
-                "image": "item-303235.png",
-                "name": "超爆音目覚まし時計",
-                "new_gift_synergy": 36,
-                "seed": [],
-                "shop": [
-                    {
-                        "discountPrice": 6650,
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 1,
-                        "moneyName": "所持金",
-                        "price": 7000,
-                        "reducePriceCond": "道玄坂琉七 LV.1",
-                        "resetType": "주간",
-                        "shopName": "ロシナンテ"
-                    }
-                ],
-                "source": [
-                    "shop"
-                ],
-                "synergy": 18
-            },
-            {
-                "bonus_synergy": 20,
-                "compound": [],
-                "image": "item-303238.png",
-                "name": "バーガークッション",
-                "new_gift_synergy": 40,
-                "seed": [],
-                "shop": [
-                    {
-                        "discountPrice": 7600,
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 1,
-                        "moneyName": "所持金",
-                        "price": 8000,
-                        "reducePriceCond": "道玄坂琉七 LV.1",
-                        "resetType": "주간",
-                        "shopName": "トリプルセブン"
-                    },
-                    {
-                        "discountPrice": 7600,
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 1,
-                        "moneyName": "所持金",
-                        "price": 8000,
-                        "reducePriceCond": "道玄坂琉七 LV.5",
-                        "resetType": "주간",
-                        "shopName": "トコブシ屋"
-                    },
-                    {
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": -1,
-                        "moneyName": "ゲームセンター引換券",
-                        "price": 1600,
-                        "resetType": "없음",
-                        "shopName": "AAAAAA=="
-                    }
-                ],
-                "source": [
-                    "shop"
-                ],
-                "synergy": 20
-            },
-            {
-                "bonus_synergy": 8,
-                "compound": [],
-                "image": "item-303282.png",
-                "name": "限定版キーホルダー",
-                "new_gift_synergy": 16,
-                "seed": [],
-                "shop": [
-                    {
-                        "discountPrice": 2850,
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 3,
-                        "moneyName": "所持金",
-                        "price": 3000,
-                        "reducePriceCond": "道玄坂琉七 LV.13",
-                        "resetType": "주간",
-                        "shopName": "パワーストーン専門店"
-                    },
-                    {
-                        "discountPrice": 2850,
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 3,
-                        "moneyName": "所持金",
-                        "price": 3000,
-                        "reducePriceCond": "道玄坂琉七 LV.5",
-                        "resetType": "주간",
-                        "shopName": "トコブシ屋"
-                    }
-                ],
-                "source": [
-                    "shop"
-                ],
-                "synergy": 8
-            },
-            {
-                "bonus_synergy": 8,
-                "compound": [],
-                "image": "item-303283.png",
-                "name": "お菓子袋詰めセット",
-                "new_gift_synergy": 16,
-                "seed": [],
-                "shop": [
-                    {
-                        "discountPrice": 2850,
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 3,
-                        "moneyName": "所持金",
-                        "price": 3000,
-                        "reducePriceCond": "道玄坂琉七 LV.9",
-                        "resetType": "주간",
-                        "shopName": "スーパームラマサ"
-                    }
-                ],
-                "source": [
-                    "shop"
-                ],
-                "synergy": 8
-            },
-            {
-                "bonus_synergy": 19,
-                "compound": [],
-                "image": "item-303284.png",
-                "name": "エッセンシャルオイル",
-                "new_gift_synergy": 38,
-                "seed": [],
-                "shop": [
-                    {
-                        "discountPrice": 7320,
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 2,
-                        "moneyName": "所持金",
-                        "price": 7700,
-                        "reducePriceCond": "道玄坂琉七 LV.1",
-                        "resetType": "주간",
-                        "shopName": "ボディチョップ"
-                    }
-                ],
-                "source": [
-                    "shop"
-                ],
-                "synergy": 19
-            },
-            {
-                "bonus_synergy": 15,
-                "compound": [],
-                "image": "item-303285.png",
-                "name": "モンブラン",
-                "new_gift_synergy": 30,
-                "seed": [],
-                "shop": [
-                    {
-                        "discountPrice": 5700,
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 3,
-                        "moneyName": "所持金",
-                        "price": 6000,
-                        "reducePriceCond": "道玄坂琉七 LV.1",
-                        "resetType": "주간",
-                        "shopName": "大正屋"
-                    }
-                ],
-                "source": [
-                    "shop"
-                ],
-                "synergy": 15
-            },
-            {
-                "bonus_synergy": 24,
-                "compound": [],
-                "image": "item-303286.png",
-                "name": "スノードーム",
-                "new_gift_synergy": 48,
-                "seed": [],
-                "shop": [
-                    {
-                        "discountPrice": 9500,
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 1,
-                        "moneyName": "所持金",
-                        "price": 10000,
-                        "reducePriceCond": "道玄坂琉七 LV.13",
-                        "resetType": "주간",
-                        "shopName": "文房具屋"
-                    }
-                ],
-                "source": [
-                    "shop"
-                ],
-                "synergy": 24
-            },
-            {
-                "bonus_synergy": 28,
-                "compound": [],
-                "image": "item-303287.png",
-                "name": "アロマディフューザー",
-                "new_gift_synergy": 56,
-                "seed": [],
-                "shop": [
-                    {
-                        "discountPrice": 11400,
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 1,
-                        "moneyName": "所持金",
-                        "price": 12000,
-                        "reducePriceCond": "道玄坂琉七 LV.1",
-                        "resetType": "주간",
-                        "shopName": "ボディチョップ"
-                    }
-                ],
-                "source": [
-                    "shop"
-                ],
-                "synergy": 28
-            },
-            {
-                "bonus_synergy": 24,
-                "compound": [],
-                "image": "item-303291.png",
-                "name": "サボテン３Ｄパズル",
-                "new_gift_synergy": 48,
-                "seed": [],
-                "shop": [
-                    {
-                        "discountPrice": 9500,
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 2,
-                        "moneyName": "所持金",
-                        "price": 10000,
-                        "reducePriceCond": "道玄坂琉七 LV.1",
-                        "resetType": "주간",
-                        "shopName": "ハイセンス"
-                    }
-                ],
-                "source": [
-                    "shop"
-                ],
-                "synergy": 24
-            },
-            {
-                "bonus_synergy": 61,
-                "compound": [],
-                "image": "item-303297.png",
-                "name": "高級スポーツウォッチ",
-                "new_gift_synergy": 122,
-                "seed": [],
-                "shop": [
-                    {
-                        "discountPrice": 35800,
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 1,
-                        "moneyName": "所持金",
-                        "price": 36800,
-                        "reducePriceCond": "道玄坂琉七 LV.13",
-                        "resetType": "주간",
-                        "shopName": "パワーストーン専門店"
-                    },
-                    {
-                        "discountPrice": 35800,
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 1,
-                        "moneyName": "所持金",
-                        "price": 36800,
-                        "reducePriceCond": "道玄坂琉七 LV.5",
-                        "resetType": "주간",
-                        "shopName": "あきんどお～"
-                    }
-                ],
-                "source": [
-                    "shop"
-                ],
-                "synergy": 61
-            },
-            {
-                "bonus_synergy": 7,
-                "compound": [],
-                "image": "item-317009.png",
-                "name": "火傷用品セット",
-                "new_gift_synergy": 14,
-                "seed": [],
-                "shop": [
-                    {
-                        "discountPrice": 2660,
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 3,
-                        "moneyName": "所持金",
-                        "price": 2800,
-                        "reducePriceCond": "道玄坂琉七 LV.1",
-                        "resetType": "주간",
-                        "shopName": "ＡＯＨＩＧＥ"
-                    }
-                ],
-                "source": [
-                    "shop"
-                ],
-                "synergy": 7
-            },
-            {
-                "bonus_synergy": 17,
-                "compound": [],
-                "image": "item-317010.png",
-                "name": "絶縁クランプ",
-                "new_gift_synergy": 34,
-                "seed": [],
-                "shop": [
-                    {
-                        "discountPrice": 6460,
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 2,
-                        "moneyName": "所持金",
-                        "price": 6800,
-                        "reducePriceCond": "道玄坂琉七 LV.5",
-                        "resetType": "주간",
-                        "shopName": "あきんどお～"
-                    }
-                ],
-                "source": [
-                    "shop"
-                ],
-                "synergy": 17
-            },
-            {
-                "bonus_synergy": 31,
-                "compound": [],
-                "image": "item-317011.png",
-                "name": "消防車のフィギュア",
-                "new_gift_synergy": 62,
-                "seed": [],
-                "shop": [
-                    {
-                        "discountPrice": 13300,
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 1,
-                        "moneyName": "所持金",
-                        "price": 14000,
-                        "reducePriceCond": "道玄坂琉七 LV.5",
-                        "resetType": "주간",
-                        "shopName": "トコブシ屋"
-                    }
-                ],
-                "source": [
-                    "shop"
-                ],
-                "synergy": 31
-            },
-            {
-                "bonus_synergy": 39,
-                "compound": [],
-                "image": "item-317012.png",
-                "name": "大クラゲのぬいぐるみ",
-                "new_gift_synergy": 78,
-                "seed": [],
-                "shop": [
-                    {
-                        "discountPrice": 18620,
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 1,
-                        "moneyName": "所持金",
-                        "price": 19600,
-                        "reducePriceCond": "道玄坂琉七 LV.7",
-                        "resetType": "주간",
-                        "shopName": "トリプルセブン"
-                    }
-                ],
-                "source": [
-                    "shop"
-                ],
-                "synergy": 39
-            },
-            {
-                "bonus_synergy": 1000,
-                "compound": [],
-                "image": "item-305976.png",
-                "name": "永遠の愛",
-                "new_gift_synergy": 0,
-                "seed": [],
-                "shop": [],
-                "source": [],
-                "synergy": 999
-            }
-        ],
-        "name": "夏川澪",
-        "romance_dialog": [
-            {
-                "good_answers": [
-                    [
-                        {
-                            "content": "ありがたい",
-                            "reward": 40
-                        },
-                        {
-                            "content": "普通に遊びに来れば？",
-                            "reward": 40
-                        }
-                    ],
-                    [
-                        {
-                            "content": "甘えてくれていい",
-                            "reward": 50
-                        },
-                        {
-                            "content": "自分も甘えたい",
-                            "reward": 60
-                        }
-                    ]
-                ]
-            }
-        ],
-        "special_award": [
-            {
-                "description": "『闇ネット』機能を使用できる。\n『闇ネット』で『渋谷』エリアの商品を購入できる。",
-                "icon": "xielizhe-icon-matoi-01.png",
-                "name": "闇ネット",
-                "rank": 1
-            },
-            {
-                "description": "『闇ネット』で『雑司ヶ谷』エリアの商品を購入できる。",
-                "icon": "xielizhe-icon-matoi-01.png",
-                "name": "どこでも雑司ヶ谷",
-                "rank": 5
-            },
-            {
-                "description": "『闇ネット』で『四軒茶屋』エリアの商品を購入できる。",
-                "icon": "xielizhe-icon-matoi-01.png",
-                "name": "どこでも四軒茶屋",
-                "rank": 7
-            },
-            {
-                "description": "『闇ネット』で『吉祥寺』エリアの商品を購入できる。",
-                "icon": "xielizhe-icon-matoi-01.png",
-                "name": "どこでも吉祥寺",
-                "rank": 11
-            },
-            {
-                "description": "『闇ネット』で『新宿』エリアの商品を購入できる。",
-                "icon": "xielizhe-icon-matoi-01.png",
-                "name": "どこでも新宿",
-                "rank": 13
-            },
-            {
-                "description": "『闇ネット』で『秋葉原』エリアの商品を購入できる。",
-                "icon": "xielizhe-icon-matoi-01.png",
-                "name": "どこでも秋葉原",
-                "rank": 17
-            }
-        ],
-        "time": "夕方",
-        "unlock_quest": {
-            "details": "ミッションの『追跡』ボタンで時間を進めるか、都市生活を行い時間を進めよう。",
-            "name": "無償の愛"
+        "rank_up": {
+          "from": 2,
+          "to": 3
         },
-        "visit_dialog": [
+        "unlock_cond": "度胸 Lv.3"
+      },
+      {
+        "good_answers": [
+          [
             {
-                "destination": "渋谷",
-                "good_answers": [
-                    [
-                        {
-                            "content": "ショッピングとかしないの？",
-                            "reward": 50
-                        },
-                        {
-                            "content": "映画でも観ない？",
-                            "reward": 60
-                        }
-                    ]
-                ]
+              "content": "親戚だから",
+              "reward": 40
             },
             {
-                "destination": "秋葉原",
-                "good_answers": [
-                    [
-                        {
-                            "content": "電気は売ってない",
-                            "reward": 50
-                        },
-                        {
-                            "content": "知識が偏ってない？",
-                            "reward": 60
-                        }
-                    ]
-                ]
+              "content": "イトコだから",
+              "reward": 50
             },
             {
-                "destination": "浅草",
-                "good_answers": [
-                    [
-                        {
-                            "content": "あげまんじゅうが気になる",
-                            "reward": 60
-                        },
-                        {
-                            "content": "土産物が気になる",
-                            "reward": 50
-                        }
-                    ]
-                ]
-            },
-            {
-                "destination": "元町・中華街",
-                "good_answers": [
-                    [
-                        {
-                            "content": "立派だ",
-                            "reward": 50
-                        },
-                        {
-                            "content": "自分でも入れる？",
-                            "reward": 60
-                        }
-                    ]
-                ]
-            },
-            {
-                "destination": "四軒茶屋",
-                "good_answers": [
-                    [
-                        {
-                            "content": "たまには仕事を忘れよう",
-                            "reward": 50
-                        },
-                        {
-                            "content": "バッティングで勝負だ！",
-                            "reward": 60
-                        }
-                    ]
-                ]
+              "content": "弟みたいなものだから",
+              "reward": 60
             }
+          ]
+        ],
+        "rank_up": {
+          "from": 4,
+          "to": 5
+        },
+        "unlock_cond": "度胸 Lv.5"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "気持ちはわかるけど…",
+              "reward": 40
+            },
+            {
+              "content": "気負いすぎている",
+              "reward": 50
+            },
+            {
+              "content": "もっと自分を大事に",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 6,
+          "to": 7
+        },
+        "unlock_cond": "度胸 Lv.6"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "ここまで来たら一蓮托生だ",
+              "reward": 50
+            },
+            {
+              "content": "納得できない",
+              "reward": 40
+            },
+            {
+              "content": "夏川さんが無茶しないか心配",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 8,
+          "to": 9
+        },
+        "unlock_cond": "度胸 Lv.8"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "心配した",
+              "reward": 50
+            },
+            {
+              "content": "危なっかしすぎる",
+              "reward": 40
+            },
+            {
+              "content": "あんな無茶必要なかった",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 10,
+          "to": 11
+        },
+        "unlock_cond": "度胸 Lv.10"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "まさか自分のせい？",
+              "reward": 50
+            },
+            {
+              "content": "ただの偶然",
+              "reward": 40
+            },
+            {
+              "content": "結果オーライだ",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 12,
+          "to": 13
+        },
+        "unlock_cond": "度胸 Lv.11"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "だから死ぬな",
+              "reward": 40
+            },
+            {
+              "content": "笑えない冗談だ",
+              "reward": 50
+            },
+            {
+              "content": "死んでも死なせない",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 14,
+          "to": 15
+        },
+        "unlock_cond": "度胸 Lv.13"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "待ってる",
+              "reward": 50
+            },
+            {
+              "content": "長くは待てない",
+              "reward": 40
+            },
+            {
+              "content": "照れてる？",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 16,
+          "to": 17
+        },
+        "unlock_cond": "度胸 Lv.15"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "丸く収まって良かった",
+              "reward": 40
+            },
+            {
+              "content": "自分も心配してた",
+              "reward": 60
+            },
+            {
+              "content": "家族っていいな",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 19,
+          "to": 20
+        },
+        "unlock_cond": "度胸 Lv.17"
+      }
+    ],
+    "can_romance": true,
+    "friend_lover_dialog": [
+      {
+        "content": "弟みたいなものだから",
+        "is_romance": false
+      },
+      {
+        "content": "夏川さんが特別だから",
+        "is_romance": true
+      }
+    ],
+    "item": [
+      {
+        "bonus_synergy": 7,
+        "compound": [],
+        "image": "item-303064.png",
+        "name": "運動用プロテクター",
+        "new_gift_synergy": 14,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 2660,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 2800,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "トリプルセブン"
+          },
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "サッカー部バッジ",
+            "price": 60,
+            "resetType": "주간",
+            "shopName": "サッカー部ポイント交換"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 7
+      },
+      {
+        "bonus_synergy": 4,
+        "compound": [],
+        "image": "item-303221.png",
+        "name": "卓上用ミニサボテン",
+        "new_gift_synergy": 8,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 1430,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 1500,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "ラフレシ屋"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 4
+      },
+      {
+        "bonus_synergy": 18,
+        "compound": [],
+        "image": "item-303235.png",
+        "name": "超爆音目覚まし時計",
+        "new_gift_synergy": 36,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 6650,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 7000,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "ロシナンテ"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 18
+      },
+      {
+        "bonus_synergy": 20,
+        "compound": [],
+        "image": "item-303238.png",
+        "name": "バーガークッション",
+        "new_gift_synergy": 40,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 7600,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 8000,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "トリプルセブン"
+          },
+          {
+            "discountPrice": 7600,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 8000,
+            "reducePriceCond": "道玄坂琉七 LV.5",
+            "resetType": "주간",
+            "shopName": "トコブシ屋"
+          },
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": -1,
+            "moneyName": "ゲームセンター引換券",
+            "price": 1600,
+            "resetType": "없음",
+            "shopName": "AAAAAA=="
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 20
+      },
+      {
+        "bonus_synergy": 8,
+        "compound": [],
+        "image": "item-303282.png",
+        "name": "限定版キーホルダー",
+        "new_gift_synergy": 16,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 2850,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 3000,
+            "reducePriceCond": "道玄坂琉七 LV.13",
+            "resetType": "주간",
+            "shopName": "パワーストーン専門店"
+          },
+          {
+            "discountPrice": 2850,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 3000,
+            "reducePriceCond": "道玄坂琉七 LV.5",
+            "resetType": "주간",
+            "shopName": "トコブシ屋"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 8,
+        "compound": [],
+        "image": "item-303283.png",
+        "name": "お菓子袋詰めセット",
+        "new_gift_synergy": 16,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 2850,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 3000,
+            "reducePriceCond": "道玄坂琉七 LV.9",
+            "resetType": "주간",
+            "shopName": "スーパームラマサ"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 19,
+        "compound": [],
+        "image": "item-303284.png",
+        "name": "エッセンシャルオイル",
+        "new_gift_synergy": 38,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 7320,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "所持金",
+            "price": 7700,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "ボディチョップ"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 19
+      },
+      {
+        "bonus_synergy": 15,
+        "compound": [],
+        "image": "item-303285.png",
+        "name": "モンブラン",
+        "new_gift_synergy": 30,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 5700,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 6000,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "大正屋"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 15
+      },
+      {
+        "bonus_synergy": 24,
+        "compound": [],
+        "image": "item-303286.png",
+        "name": "スノードーム",
+        "new_gift_synergy": 48,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 9500,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 10000,
+            "reducePriceCond": "道玄坂琉七 LV.13",
+            "resetType": "주간",
+            "shopName": "文房具屋"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 24
+      },
+      {
+        "bonus_synergy": 28,
+        "compound": [],
+        "image": "item-303287.png",
+        "name": "アロマディフューザー",
+        "new_gift_synergy": 56,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 11400,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 12000,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "ボディチョップ"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 28
+      },
+      {
+        "bonus_synergy": 24,
+        "compound": [],
+        "image": "item-303291.png",
+        "name": "サボテン３Ｄパズル",
+        "new_gift_synergy": 48,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 9500,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "所持金",
+            "price": 10000,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "ハイセンス"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 24
+      },
+      {
+        "bonus_synergy": 61,
+        "compound": [],
+        "image": "item-303297.png",
+        "name": "高級スポーツウォッチ",
+        "new_gift_synergy": 122,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 35800,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 36800,
+            "reducePriceCond": "道玄坂琉七 LV.13",
+            "resetType": "주간",
+            "shopName": "パワーストーン専門店"
+          },
+          {
+            "discountPrice": 35800,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 36800,
+            "reducePriceCond": "道玄坂琉七 LV.5",
+            "resetType": "주간",
+            "shopName": "あきんどお～"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 61
+      },
+      {
+        "bonus_synergy": 7,
+        "compound": [],
+        "image": "item-317009.png",
+        "name": "火傷用品セット",
+        "new_gift_synergy": 14,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 2660,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 2800,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "ＡＯＨＩＧＥ"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 7
+      },
+      {
+        "bonus_synergy": 17,
+        "compound": [],
+        "image": "item-317010.png",
+        "name": "絶縁クランプ",
+        "new_gift_synergy": 34,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 6460,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "所持金",
+            "price": 6800,
+            "reducePriceCond": "道玄坂琉七 LV.5",
+            "resetType": "주간",
+            "shopName": "あきんどお～"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 17
+      },
+      {
+        "bonus_synergy": 31,
+        "compound": [],
+        "image": "item-317011.png",
+        "name": "消防車のフィギュア",
+        "new_gift_synergy": 62,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 13300,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 14000,
+            "reducePriceCond": "道玄坂琉七 LV.5",
+            "resetType": "주간",
+            "shopName": "トコブシ屋"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 31
+      },
+      {
+        "bonus_synergy": 39,
+        "compound": [],
+        "image": "item-317012.png",
+        "name": "大クラゲのぬいぐるみ",
+        "new_gift_synergy": 78,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 18620,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 19600,
+            "reducePriceCond": "道玄坂琉七 LV.7",
+            "resetType": "주간",
+            "shopName": "トリプルセブン"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 39
+      },
+      {
+        "bonus_synergy": 1000,
+        "compound": [],
+        "image": "item-305976.png",
+        "name": "永遠の愛",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [],
+        "source": [],
+        "synergy": 999
+      }
+    ],
+    "name": "夏川澪",
+    "romance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "ありがたい",
+              "reward": 40
+            },
+            {
+              "content": "普通に遊びに来れば？",
+              "reward": 40
+            }
+          ],
+          [
+            {
+              "content": "甘えてくれていい",
+              "reward": 50
+            },
+            {
+              "content": "自分も甘えたい",
+              "reward": 60
+            }
+          ]
         ]
+      }
+    ],
+    "special_award": [
+      {
+        "description": "『闇ネット』機能を使用できる。\n『闇ネット』で『渋谷』エリアの商品を購入できる。",
+        "icon": "xielizhe-icon-matoi-01.png",
+        "name": "闇ネット",
+        "rank": 1
+      },
+      {
+        "description": "『闇ネット』で『雑司ヶ谷』エリアの商品を購入できる。",
+        "icon": "xielizhe-icon-matoi-01.png",
+        "name": "どこでも雑司ヶ谷",
+        "rank": 5
+      },
+      {
+        "description": "『闇ネット』で『四軒茶屋』エリアの商品を購入できる。",
+        "icon": "xielizhe-icon-matoi-01.png",
+        "name": "どこでも四軒茶屋",
+        "rank": 7
+      },
+      {
+        "description": "『闇ネット』で『吉祥寺』エリアの商品を購入できる。",
+        "icon": "xielizhe-icon-matoi-01.png",
+        "name": "どこでも吉祥寺",
+        "rank": 11
+      },
+      {
+        "description": "『闇ネット』で『新宿』エリアの商品を購入できる。",
+        "icon": "xielizhe-icon-matoi-01.png",
+        "name": "どこでも新宿",
+        "rank": 13
+      },
+      {
+        "description": "『闇ネット』で『秋葉原』エリアの商品を購入できる。",
+        "icon": "xielizhe-icon-matoi-01.png",
+        "name": "どこでも秋葉原",
+        "rank": 17
+      }
+    ],
+    "time": "夕方",
+    "unlock_quest": {
+      "details": "ミッションの『追跡』ボタンで時間を進めるか、都市生活を行い時間を進めよう。",
+      "name": "無償の愛"
     },
-    "msg": "OK",
-    "status": 0
+    "unlock_notes": [
+      {
+        "type": "story",
+        "text": "3章進行後に開放"
+      }
+    ],
+    "visit_dialog": [
+      {
+        "destination": "渋谷",
+        "good_answers": [
+          [
+            {
+              "content": "ショッピングとかしないの？",
+              "reward": 50
+            },
+            {
+              "content": "映画でも観ない？",
+              "reward": 60
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "秋葉原",
+        "good_answers": [
+          [
+            {
+              "content": "電気は売ってない",
+              "reward": 50
+            },
+            {
+              "content": "知識が偏ってない？",
+              "reward": 60
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "浅草",
+        "good_answers": [
+          [
+            {
+              "content": "あげまんじゅうが気になる",
+              "reward": 60
+            },
+            {
+              "content": "土産物が気になる",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "元町・中華街",
+        "good_answers": [
+          [
+            {
+              "content": "立派だ",
+              "reward": 50
+            },
+            {
+              "content": "自分でも入れる？",
+              "reward": 60
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "四軒茶屋",
+        "good_answers": [
+          [
+            {
+              "content": "たまには仕事を忘れよう",
+              "reward": 50
+            },
+            {
+              "content": "バッティングで勝負だ！",
+              "reward": 60
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "msg": "OK",
+  "status": 0
 }

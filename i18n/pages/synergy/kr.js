@@ -43,6 +43,10 @@ window.I18N_PAGE_SYNERGY_KR = {
     dialogFriendship: '호감도',
 
     labelUnlockQuest: '사전 퀘스트',
+    labelUnlockNotes: '개방 참고',
+    labelUnlockSummary: '개방 요약',
+    labelUnlockHidden: '히든 조건',
+    labelUnlockStoryProgress: '스토리 진행',
     labelQuestUnlockNotice: '해당 퀘스트 클리어 이후 이벤트 퀘스트가 해금됩니다.',
     labelSpecialAward: '협력 보상',
     labelAdvanceDialog: '협력 이벤트',

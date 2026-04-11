@@ -1,837 +1,843 @@
 {
-    "data": {
-        "advance_dialog": [
+  "data": {
+    "advance_dialog": [
+      {
+        "good_answers": [
+          [
             {
-                "good_answers": [
-                    [
-                        {
-                            "content": "That's not true...",
-                            "reward": 40
-                        },
-                        {
-                            "content": "Sorry for bringing it up.",
-                            "reward": 50
-                        },
-                        {
-                            "content": "I think you're great.",
-                            "reward": 60
-                        }
-                    ]
-                ],
-                "rank_up": {
-                    "from": 2,
-                    "to": 3
-                },
-                "unlock_cond": "Guts Lv.3"
+              "content": "That's not true...",
+              "reward": 40
             },
             {
-                "good_answers": [
-                    [
-                        {
-                            "content": "We're family, after all.",
-                            "reward": 40
-                        },
-                        {
-                            "content": "That's what cousins do.",
-                            "reward": 50
-                        },
-                        {
-                            "content": "Because I'm like a brother to you?",
-                            "reward": 60
-                        }
-                    ]
-                ],
-                "rank_up": {
-                    "from": 4,
-                    "to": 5
-                },
-                "unlock_cond": "Guts Lv.5"
+              "content": "Sorry for bringing it up.",
+              "reward": 50
             },
             {
-                "good_answers": [
-                    [
-                        {
-                            "content": "I get how you feel, but...",
-                            "reward": 40
-                        },
-                        {
-                            "content": "That's a lot of pressure on yourself.",
-                            "reward": 50
-                        },
-                        {
-                            "content": "Think of your own safety, too.",
-                            "reward": 60
-                        }
-                    ]
-                ],
-                "rank_up": {
-                    "from": 6,
-                    "to": 7
-                },
-                "unlock_cond": "Guts Lv.6"
-            },
-            {
-                "good_answers": [
-                    [
-                        {
-                            "content": "We've made it this far together.",
-                            "reward": 50
-                        },
-                        {
-                            "content": "I can't agree to that.",
-                            "reward": 40
-                        },
-                        {
-                            "content": "I'm worried you'll be reckless.",
-                            "reward": 60
-                        }
-                    ]
-                ],
-                "rank_up": {
-                    "from": 8,
-                    "to": 9
-                },
-                "unlock_cond": "Guts Lv.8"
-            },
-            {
-                "good_answers": [
-                    [
-                        {
-                            "content": "You made me worry.",
-                            "reward": 50
-                        },
-                        {
-                            "content": "That was too close of a call.",
-                            "reward": 40
-                        },
-                        {
-                            "content": "You shouldn't be so reckless.",
-                            "reward": 60
-                        }
-                    ]
-                ],
-                "rank_up": {
-                    "from": 10,
-                    "to": 11
-                },
-                "unlock_cond": "Guts Lv.10"
-            },
-            {
-                "good_answers": [
-                    [
-                        {
-                            "content": "Could it be my fault?",
-                            "reward": 50
-                        },
-                        {
-                            "content": "Just a coincidence.",
-                            "reward": 40
-                        },
-                        {
-                            "content": "Everything turned out fine.",
-                            "reward": 60
-                        }
-                    ]
-                ],
-                "rank_up": {
-                    "from": 12,
-                    "to": 13
-                },
-                "unlock_cond": "Guts Lv.11"
-            },
-            {
-                "good_answers": [
-                    [
-                        {
-                            "content": "You can't die!",
-                            "reward": 40
-                        },
-                        {
-                            "content": "If that's a joke, I'm not laughing.",
-                            "reward": 50
-                        },
-                        {
-                            "content": "I won't let you die.",
-                            "reward": 60
-                        }
-                    ]
-                ],
-                "rank_up": {
-                    "from": 14,
-                    "to": 15
-                },
-                "unlock_cond": "Guts Lv.13"
-            },
-            {
-                "good_answers": [
-                    [
-                        {
-                            "content": "I'll be there.",
-                            "reward": 50
-                        },
-                        {
-                            "content": "Don't make me wait too long.",
-                            "reward": 40
-                        },
-                        {
-                            "content": "Are you blushing?",
-                            "reward": 60
-                        }
-                    ]
-                ],
-                "rank_up": {
-                    "from": 16,
-                    "to": 17
-                },
-                "unlock_cond": "Guts Lv.15"
-            },
-            {
-                "good_answers": [
-                    [
-                        {
-                            "content": "I'm glad it all worked out.",
-                            "reward": 40
-                        },
-                        {
-                            "content": "I was worried for you, too.",
-                            "reward": 60
-                        },
-                        {
-                            "content": "It's nice to have family sometimes.",
-                            "reward": 50
-                        }
-                    ]
-                ],
-                "rank_up": {
-                    "from": 19,
-                    "to": 20
-                },
-                "unlock_cond": "Guts Lv.17"
+              "content": "I think you're great.",
+              "reward": 60
             }
+          ]
         ],
-        "can_romance": true,
-        "friend_lover_dialog": [
-            {
-                "content": "You're like a big sister to me.",
-                "is_romance": false
-            },
-            {
-                "content": "You're very special to me.",
-                "is_romance": true
-            }
-        ],
-        "item": [
-            {
-                "bonus_synergy": 7,
-                "compound": [],
-                "image": "item-303064.png",
-                "name": "Protective Sports Gear",
-                "new_gift_synergy": 14,
-                "seed": [],
-                "shop": [
-                    {
-                        "discountPrice": 2660,
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 3,
-                        "moneyName": "Money",
-                        "price": 2800,
-                        "reducePriceCond": "Runa Dogenzaka LV.1",
-                        "resetType": "주간",
-                        "shopName": "Triple Seven"
-                    },
-                    {
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 1,
-                        "moneyName": "Soccer Badge",
-                        "price": 60,
-                        "resetType": "주간",
-                        "shopName": "Soccer Point Exchange"
-                    }
-                ],
-                "source": [
-                    "shop"
-                ],
-                "synergy": 7
-            },
-            {
-                "bonus_synergy": 4,
-                "compound": [],
-                "image": "item-303221.png",
-                "name": "Mini Cactus",
-                "new_gift_synergy": 8,
-                "seed": [],
-                "shop": [
-                    {
-                        "discountPrice": 1430,
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 1,
-                        "moneyName": "Money",
-                        "price": 1500,
-                        "reducePriceCond": "Runa Dogenzaka LV.1",
-                        "resetType": "주간",
-                        "shopName": "Rafflesia"
-                    }
-                ],
-                "source": [
-                    "shop"
-                ],
-                "synergy": 4
-            },
-            {
-                "bonus_synergy": 18,
-                "compound": [],
-                "image": "item-303235.png",
-                "name": "Super Loud Alarm Clock",
-                "new_gift_synergy": 36,
-                "seed": [],
-                "shop": [
-                    {
-                        "discountPrice": 6650,
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 1,
-                        "moneyName": "Money",
-                        "price": 7000,
-                        "reducePriceCond": "Runa Dogenzaka LV.1",
-                        "resetType": "주간",
-                        "shopName": "Rocinante"
-                    }
-                ],
-                "source": [
-                    "shop"
-                ],
-                "synergy": 18
-            },
-            {
-                "bonus_synergy": 20,
-                "compound": [],
-                "image": "item-303238.png",
-                "name": "Burger Cushion",
-                "new_gift_synergy": 40,
-                "seed": [],
-                "shop": [
-                    {
-                        "discountPrice": 7600,
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 1,
-                        "moneyName": "Money",
-                        "price": 8000,
-                        "reducePriceCond": "Runa Dogenzaka LV.1",
-                        "resetType": "주간",
-                        "shopName": "Triple Seven"
-                    },
-                    {
-                        "discountPrice": 7600,
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 1,
-                        "moneyName": "Money",
-                        "price": 8000,
-                        "reducePriceCond": "Runa Dogenzaka LV.5",
-                        "resetType": "주간",
-                        "shopName": "Tokobushiya"
-                    },
-                    {
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": -1,
-                        "moneyName": "Arcade Exchange Voucher",
-                        "price": 1600,
-                        "resetType": "없음",
-                        "shopName": "AAAAAA=="
-                    }
-                ],
-                "source": [
-                    "shop"
-                ],
-                "synergy": 20
-            },
-            {
-                "bonus_synergy": 8,
-                "compound": [],
-                "image": "item-303282.png",
-                "name": "Limited-Edition Keychain",
-                "new_gift_synergy": 16,
-                "seed": [],
-                "shop": [
-                    {
-                        "discountPrice": 2850,
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 3,
-                        "moneyName": "Money",
-                        "price": 3000,
-                        "reducePriceCond": "Runa Dogenzaka LV.13",
-                        "resetType": "주간",
-                        "shopName": "Crystal Healing"
-                    },
-                    {
-                        "discountPrice": 2850,
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 3,
-                        "moneyName": "Money",
-                        "price": 3000,
-                        "reducePriceCond": "Runa Dogenzaka LV.5",
-                        "resetType": "주간",
-                        "shopName": "Tokobushiya"
-                    }
-                ],
-                "source": [
-                    "shop"
-                ],
-                "synergy": 8
-            },
-            {
-                "bonus_synergy": 8,
-                "compound": [],
-                "image": "item-303283.png",
-                "name": "Candy Set",
-                "new_gift_synergy": 16,
-                "seed": [],
-                "shop": [
-                    {
-                        "discountPrice": 2850,
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 3,
-                        "moneyName": "Money",
-                        "price": 3000,
-                        "reducePriceCond": "Runa Dogenzaka LV.9",
-                        "resetType": "주간",
-                        "shopName": "Super Muramasa"
-                    }
-                ],
-                "source": [
-                    "shop"
-                ],
-                "synergy": 8
-            },
-            {
-                "bonus_synergy": 19,
-                "compound": [],
-                "image": "item-303284.png",
-                "name": "Essential Oils",
-                "new_gift_synergy": 38,
-                "seed": [],
-                "shop": [
-                    {
-                        "discountPrice": 7320,
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 2,
-                        "moneyName": "Money",
-                        "price": 7700,
-                        "reducePriceCond": "Runa Dogenzaka LV.1",
-                        "resetType": "주간",
-                        "shopName": "The Body Store"
-                    }
-                ],
-                "source": [
-                    "shop"
-                ],
-                "synergy": 19
-            },
-            {
-                "bonus_synergy": 15,
-                "compound": [],
-                "image": "item-303285.png",
-                "name": "Mont Blanc",
-                "new_gift_synergy": 30,
-                "seed": [],
-                "shop": [
-                    {
-                        "discountPrice": 5700,
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 3,
-                        "moneyName": "Money",
-                        "price": 6000,
-                        "reducePriceCond": "Runa Dogenzaka LV.1",
-                        "resetType": "주간",
-                        "shopName": "Taisho Store"
-                    }
-                ],
-                "source": [
-                    "shop"
-                ],
-                "synergy": 15
-            },
-            {
-                "bonus_synergy": 24,
-                "compound": [],
-                "image": "item-303286.png",
-                "name": "Snow Globe",
-                "new_gift_synergy": 48,
-                "seed": [],
-                "shop": [
-                    {
-                        "discountPrice": 9500,
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 1,
-                        "moneyName": "Money",
-                        "price": 10000,
-                        "reducePriceCond": "Runa Dogenzaka LV.13",
-                        "resetType": "주간",
-                        "shopName": "Stationery Store"
-                    }
-                ],
-                "source": [
-                    "shop"
-                ],
-                "synergy": 24
-            },
-            {
-                "bonus_synergy": 28,
-                "compound": [],
-                "image": "item-303287.png",
-                "name": "Aroma Diffuser",
-                "new_gift_synergy": 56,
-                "seed": [],
-                "shop": [
-                    {
-                        "discountPrice": 11400,
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 1,
-                        "moneyName": "Money",
-                        "price": 12000,
-                        "reducePriceCond": "Runa Dogenzaka LV.1",
-                        "resetType": "주간",
-                        "shopName": "The Body Store"
-                    }
-                ],
-                "source": [
-                    "shop"
-                ],
-                "synergy": 28
-            },
-            {
-                "bonus_synergy": 24,
-                "compound": [],
-                "image": "item-303291.png",
-                "name": "3D Cactus Puzzle",
-                "new_gift_synergy": 48,
-                "seed": [],
-                "shop": [
-                    {
-                        "discountPrice": 9500,
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 2,
-                        "moneyName": "Money",
-                        "price": 10000,
-                        "reducePriceCond": "Runa Dogenzaka LV.1",
-                        "resetType": "주간",
-                        "shopName": "High Sense"
-                    }
-                ],
-                "source": [
-                    "shop"
-                ],
-                "synergy": 24
-            },
-            {
-                "bonus_synergy": 61,
-                "compound": [],
-                "image": "item-303297.png",
-                "name": "Luxury Sports Watch",
-                "new_gift_synergy": 122,
-                "seed": [],
-                "shop": [
-                    {
-                        "discountPrice": 35800,
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 1,
-                        "moneyName": "Money",
-                        "price": 36800,
-                        "reducePriceCond": "Runa Dogenzaka LV.13",
-                        "resetType": "주간",
-                        "shopName": "Crystal Healing"
-                    },
-                    {
-                        "discountPrice": 35800,
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 1,
-                        "moneyName": "Money",
-                        "price": 36800,
-                        "reducePriceCond": "Runa Dogenzaka LV.5",
-                        "resetType": "주간",
-                        "shopName": "Akindo"
-                    }
-                ],
-                "source": [
-                    "shop"
-                ],
-                "synergy": 61
-            },
-            {
-                "bonus_synergy": 7,
-                "compound": [],
-                "image": "item-317009.png",
-                "name": "Burn Aid Kit",
-                "new_gift_synergy": 14,
-                "seed": [],
-                "shop": [
-                    {
-                        "discountPrice": 2660,
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 3,
-                        "moneyName": "Money",
-                        "price": 2800,
-                        "reducePriceCond": "Runa Dogenzaka LV.1",
-                        "resetType": "주간",
-                        "shopName": "Aohige"
-                    }
-                ],
-                "source": [
-                    "shop"
-                ],
-                "synergy": 7
-            },
-            {
-                "bonus_synergy": 17,
-                "compound": [],
-                "image": "item-317010.png",
-                "name": "Insulation Clamp",
-                "new_gift_synergy": 34,
-                "seed": [],
-                "shop": [
-                    {
-                        "discountPrice": 6460,
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 2,
-                        "moneyName": "Money",
-                        "price": 6800,
-                        "reducePriceCond": "Runa Dogenzaka LV.5",
-                        "resetType": "주간",
-                        "shopName": "Akindo"
-                    }
-                ],
-                "source": [
-                    "shop"
-                ],
-                "synergy": 17
-            },
-            {
-                "bonus_synergy": 31,
-                "compound": [],
-                "image": "item-317011.png",
-                "name": "Fire Truck Figurine",
-                "new_gift_synergy": 62,
-                "seed": [],
-                "shop": [
-                    {
-                        "discountPrice": 13300,
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 1,
-                        "moneyName": "Money",
-                        "price": 14000,
-                        "reducePriceCond": "Runa Dogenzaka LV.5",
-                        "resetType": "주간",
-                        "shopName": "Tokobushiya"
-                    }
-                ],
-                "source": [
-                    "shop"
-                ],
-                "synergy": 31
-            },
-            {
-                "bonus_synergy": 39,
-                "compound": [],
-                "image": "item-317012.png",
-                "name": "Big Jellyfish Plushie",
-                "new_gift_synergy": 78,
-                "seed": [],
-                "shop": [
-                    {
-                        "discountPrice": 18620,
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 1,
-                        "moneyName": "Money",
-                        "price": 19600,
-                        "reducePriceCond": "Runa Dogenzaka LV.7",
-                        "resetType": "주간",
-                        "shopName": "Triple Seven"
-                    }
-                ],
-                "source": [
-                    "shop"
-                ],
-                "synergy": 39
-            },
-            {
-                "bonus_synergy": 1000,
-                "compound": [],
-                "image": "item-305976.png",
-                "name": "Eternal Love",
-                "new_gift_synergy": 0,
-                "seed": [],
-                "shop": [],
-                "source": [],
-                "synergy": 999
-            }
-        ],
-        "name": "Mio Natsukawa",
-        "romance_dialog": [
-            {
-                "good_answers": [
-                    [
-                        {
-                            "content": "I appreciate it.",
-                            "reward": 40
-                        },
-                        {
-                            "content": "This will be a regular thing?",
-                            "reward": 40
-                        }
-                    ],
-                    [
-                        {
-                            "content": "It's okay to depend on me.",
-                            "reward": 50
-                        },
-                        {
-                            "content": "I'd like to depend on you, too.",
-                            "reward": 60
-                        }
-                    ]
-                ]
-            }
-        ],
-        "special_award": [
-            {
-                "description": "Unlock the use of Shady Commodities.\nUnlock the ability to purchase products from Shibuya using Shady Commodities.",
-                "icon": "xielizhe-icon-matoi-01.png",
-                "name": "Shady Commodities",
-                "rank": 1
-            },
-            {
-                "description": "Unlock the ability to purchase products from Zoshigaya using Shady Commodities.",
-                "icon": "xielizhe-icon-matoi-01.png",
-                "name": "Zoshigaya Anywhere",
-                "rank": 5
-            },
-            {
-                "description": "Unlock the ability to purchase products from Yongenjaya using Shady Commodities.",
-                "icon": "xielizhe-icon-matoi-01.png",
-                "name": "Yongen-Jaya Anywhere",
-                "rank": 7
-            },
-            {
-                "description": "Unlock the ability to purchase products from Kichijoji using Shady Commodities.",
-                "icon": "xielizhe-icon-matoi-01.png",
-                "name": "Kichijoji Anywhere",
-                "rank": 11
-            },
-            {
-                "description": "Unlock the ability to purchase products from Shinjuku using Shady Commodities.",
-                "icon": "xielizhe-icon-matoi-01.png",
-                "name": "Shinjuku Anywhere",
-                "rank": 13
-            },
-            {
-                "description": "Unlock the ability to purchase products from Akihabara using Shady Commodities.",
-                "icon": "xielizhe-icon-matoi-01.png",
-                "name": "Akihabara Anywhere",
-                "rank": 17
-            }
-        ],
-        "time": "Evening",
-        "unlock_quest": {
-            "details": "I can advance the current time by selecting Track, or engaging in City Life.",
-            "name": "Unconditional Love"
+        "rank_up": {
+          "from": 2,
+          "to": 3
         },
-        "visit_dialog": [
+        "unlock_cond": "Guts Lv.3"
+      },
+      {
+        "good_answers": [
+          [
             {
-                "destination": "Shibuya",
-                "good_answers": [
-                    [
-                        {
-                            "content": "What if we just go shopping?",
-                            "reward": 50
-                        },
-                        {
-                            "content": "How about a movie?",
-                            "reward": 60
-                        }
-                    ]
-                ]
+              "content": "We're family, after all.",
+              "reward": 40
             },
             {
-                "destination": "Akihabara",
-                "good_answers": [
-                    [
-                        {
-                            "content": "They don't sell electricity...",
-                            "reward": 50
-                        },
-                        {
-                            "content": "Where'd you get your info?",
-                            "reward": 60
-                        }
-                    ]
-                ]
+              "content": "That's what cousins do.",
+              "reward": 50
             },
             {
-                "destination": "Asakusa",
-                "good_answers": [
-                    [
-                        {
-                            "content": "I could go for some fried manju.",
-                            "reward": 60
-                        },
-                        {
-                            "content": "There's some neat souvenirs.",
-                            "reward": 50
-                        }
-                    ]
-                ]
-            },
-            {
-                "destination": "Motomachi Chinatown",
-                "good_answers": [
-                    [
-                        {
-                            "content": "They sound great.",
-                            "reward": 50
-                        },
-                        {
-                            "content": "Could I join?",
-                            "reward": 60
-                        }
-                    ]
-                ]
-            },
-            {
-                "destination": "Yongen-Jaya",
-                "good_answers": [
-                    [
-                        {
-                            "content": "Forget about work for a while.",
-                            "reward": 50
-                        },
-                        {
-                            "content": "Let's have a contest!",
-                            "reward": 60
-                        }
-                    ]
-                ]
+              "content": "Because I'm like a brother to you?",
+              "reward": 60
             }
+          ]
+        ],
+        "rank_up": {
+          "from": 4,
+          "to": 5
+        },
+        "unlock_cond": "Guts Lv.5"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "I get how you feel, but...",
+              "reward": 40
+            },
+            {
+              "content": "That's a lot of pressure on yourself.",
+              "reward": 50
+            },
+            {
+              "content": "Think of your own safety, too.",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 6,
+          "to": 7
+        },
+        "unlock_cond": "Guts Lv.6"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "We've made it this far together.",
+              "reward": 50
+            },
+            {
+              "content": "I can't agree to that.",
+              "reward": 40
+            },
+            {
+              "content": "I'm worried you'll be reckless.",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 8,
+          "to": 9
+        },
+        "unlock_cond": "Guts Lv.8"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "You made me worry.",
+              "reward": 50
+            },
+            {
+              "content": "That was too close of a call.",
+              "reward": 40
+            },
+            {
+              "content": "You shouldn't be so reckless.",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 10,
+          "to": 11
+        },
+        "unlock_cond": "Guts Lv.10"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Could it be my fault?",
+              "reward": 50
+            },
+            {
+              "content": "Just a coincidence.",
+              "reward": 40
+            },
+            {
+              "content": "Everything turned out fine.",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 12,
+          "to": 13
+        },
+        "unlock_cond": "Guts Lv.11"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "You can't die!",
+              "reward": 40
+            },
+            {
+              "content": "If that's a joke, I'm not laughing.",
+              "reward": 50
+            },
+            {
+              "content": "I won't let you die.",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 14,
+          "to": 15
+        },
+        "unlock_cond": "Guts Lv.13"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "I'll be there.",
+              "reward": 50
+            },
+            {
+              "content": "Don't make me wait too long.",
+              "reward": 40
+            },
+            {
+              "content": "Are you blushing?",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 16,
+          "to": 17
+        },
+        "unlock_cond": "Guts Lv.15"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "I'm glad it all worked out.",
+              "reward": 40
+            },
+            {
+              "content": "I was worried for you, too.",
+              "reward": 60
+            },
+            {
+              "content": "It's nice to have family sometimes.",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 19,
+          "to": 20
+        },
+        "unlock_cond": "Guts Lv.17"
+      }
+    ],
+    "can_romance": true,
+    "friend_lover_dialog": [
+      {
+        "content": "You're like a big sister to me.",
+        "is_romance": false
+      },
+      {
+        "content": "You're very special to me.",
+        "is_romance": true
+      }
+    ],
+    "item": [
+      {
+        "bonus_synergy": 7,
+        "compound": [],
+        "image": "item-303064.png",
+        "name": "Protective Sports Gear",
+        "new_gift_synergy": 14,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 2660,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 2800,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "Triple Seven"
+          },
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Soccer Badge",
+            "price": 60,
+            "resetType": "주간",
+            "shopName": "Soccer Point Exchange"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 7
+      },
+      {
+        "bonus_synergy": 4,
+        "compound": [],
+        "image": "item-303221.png",
+        "name": "Mini Cactus",
+        "new_gift_synergy": 8,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 1430,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 1500,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "Rafflesia"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 4
+      },
+      {
+        "bonus_synergy": 18,
+        "compound": [],
+        "image": "item-303235.png",
+        "name": "Super Loud Alarm Clock",
+        "new_gift_synergy": 36,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 6650,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 7000,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "Rocinante"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 18
+      },
+      {
+        "bonus_synergy": 20,
+        "compound": [],
+        "image": "item-303238.png",
+        "name": "Burger Cushion",
+        "new_gift_synergy": 40,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 7600,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 8000,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "Triple Seven"
+          },
+          {
+            "discountPrice": 7600,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 8000,
+            "reducePriceCond": "Runa Dogenzaka LV.5",
+            "resetType": "주간",
+            "shopName": "Tokobushiya"
+          },
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": -1,
+            "moneyName": "Arcade Exchange Voucher",
+            "price": 1600,
+            "resetType": "없음",
+            "shopName": "AAAAAA=="
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 20
+      },
+      {
+        "bonus_synergy": 8,
+        "compound": [],
+        "image": "item-303282.png",
+        "name": "Limited-Edition Keychain",
+        "new_gift_synergy": 16,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 2850,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 3000,
+            "reducePriceCond": "Runa Dogenzaka LV.13",
+            "resetType": "주간",
+            "shopName": "Crystal Healing"
+          },
+          {
+            "discountPrice": 2850,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 3000,
+            "reducePriceCond": "Runa Dogenzaka LV.5",
+            "resetType": "주간",
+            "shopName": "Tokobushiya"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 8,
+        "compound": [],
+        "image": "item-303283.png",
+        "name": "Candy Set",
+        "new_gift_synergy": 16,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 2850,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 3000,
+            "reducePriceCond": "Runa Dogenzaka LV.9",
+            "resetType": "주간",
+            "shopName": "Super Muramasa"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 19,
+        "compound": [],
+        "image": "item-303284.png",
+        "name": "Essential Oils",
+        "new_gift_synergy": 38,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 7320,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "Money",
+            "price": 7700,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "The Body Store"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 19
+      },
+      {
+        "bonus_synergy": 15,
+        "compound": [],
+        "image": "item-303285.png",
+        "name": "Mont Blanc",
+        "new_gift_synergy": 30,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 5700,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 6000,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "Taisho Store"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 15
+      },
+      {
+        "bonus_synergy": 24,
+        "compound": [],
+        "image": "item-303286.png",
+        "name": "Snow Globe",
+        "new_gift_synergy": 48,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 9500,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 10000,
+            "reducePriceCond": "Runa Dogenzaka LV.13",
+            "resetType": "주간",
+            "shopName": "Stationery Store"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 24
+      },
+      {
+        "bonus_synergy": 28,
+        "compound": [],
+        "image": "item-303287.png",
+        "name": "Aroma Diffuser",
+        "new_gift_synergy": 56,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 11400,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 12000,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "The Body Store"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 28
+      },
+      {
+        "bonus_synergy": 24,
+        "compound": [],
+        "image": "item-303291.png",
+        "name": "3D Cactus Puzzle",
+        "new_gift_synergy": 48,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 9500,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "Money",
+            "price": 10000,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "High Sense"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 24
+      },
+      {
+        "bonus_synergy": 61,
+        "compound": [],
+        "image": "item-303297.png",
+        "name": "Luxury Sports Watch",
+        "new_gift_synergy": 122,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 35800,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 36800,
+            "reducePriceCond": "Runa Dogenzaka LV.13",
+            "resetType": "주간",
+            "shopName": "Crystal Healing"
+          },
+          {
+            "discountPrice": 35800,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 36800,
+            "reducePriceCond": "Runa Dogenzaka LV.5",
+            "resetType": "주간",
+            "shopName": "Akindo"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 61
+      },
+      {
+        "bonus_synergy": 7,
+        "compound": [],
+        "image": "item-317009.png",
+        "name": "Burn Aid Kit",
+        "new_gift_synergy": 14,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 2660,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 2800,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "Aohige"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 7
+      },
+      {
+        "bonus_synergy": 17,
+        "compound": [],
+        "image": "item-317010.png",
+        "name": "Insulation Clamp",
+        "new_gift_synergy": 34,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 6460,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "Money",
+            "price": 6800,
+            "reducePriceCond": "Runa Dogenzaka LV.5",
+            "resetType": "주간",
+            "shopName": "Akindo"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 17
+      },
+      {
+        "bonus_synergy": 31,
+        "compound": [],
+        "image": "item-317011.png",
+        "name": "Fire Truck Figurine",
+        "new_gift_synergy": 62,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 13300,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 14000,
+            "reducePriceCond": "Runa Dogenzaka LV.5",
+            "resetType": "주간",
+            "shopName": "Tokobushiya"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 31
+      },
+      {
+        "bonus_synergy": 39,
+        "compound": [],
+        "image": "item-317012.png",
+        "name": "Big Jellyfish Plushie",
+        "new_gift_synergy": 78,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 18620,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 19600,
+            "reducePriceCond": "Runa Dogenzaka LV.7",
+            "resetType": "주간",
+            "shopName": "Triple Seven"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 39
+      },
+      {
+        "bonus_synergy": 1000,
+        "compound": [],
+        "image": "item-305976.png",
+        "name": "Eternal Love",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [],
+        "source": [],
+        "synergy": 999
+      }
+    ],
+    "name": "Mio Natsukawa",
+    "romance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "I appreciate it.",
+              "reward": 40
+            },
+            {
+              "content": "This will be a regular thing?",
+              "reward": 40
+            }
+          ],
+          [
+            {
+              "content": "It's okay to depend on me.",
+              "reward": 50
+            },
+            {
+              "content": "I'd like to depend on you, too.",
+              "reward": 60
+            }
+          ]
         ]
+      }
+    ],
+    "special_award": [
+      {
+        "description": "Unlock the use of Shady Commodities.\nUnlock the ability to purchase products from Shibuya using Shady Commodities.",
+        "icon": "xielizhe-icon-matoi-01.png",
+        "name": "Shady Commodities",
+        "rank": 1
+      },
+      {
+        "description": "Unlock the ability to purchase products from Zoshigaya using Shady Commodities.",
+        "icon": "xielizhe-icon-matoi-01.png",
+        "name": "Zoshigaya Anywhere",
+        "rank": 5
+      },
+      {
+        "description": "Unlock the ability to purchase products from Yongenjaya using Shady Commodities.",
+        "icon": "xielizhe-icon-matoi-01.png",
+        "name": "Yongen-Jaya Anywhere",
+        "rank": 7
+      },
+      {
+        "description": "Unlock the ability to purchase products from Kichijoji using Shady Commodities.",
+        "icon": "xielizhe-icon-matoi-01.png",
+        "name": "Kichijoji Anywhere",
+        "rank": 11
+      },
+      {
+        "description": "Unlock the ability to purchase products from Shinjuku using Shady Commodities.",
+        "icon": "xielizhe-icon-matoi-01.png",
+        "name": "Shinjuku Anywhere",
+        "rank": 13
+      },
+      {
+        "description": "Unlock the ability to purchase products from Akihabara using Shady Commodities.",
+        "icon": "xielizhe-icon-matoi-01.png",
+        "name": "Akihabara Anywhere",
+        "rank": 17
+      }
+    ],
+    "time": "Evening",
+    "unlock_quest": {
+      "details": "I can advance the current time by selecting Track, or engaging in City Life.",
+      "name": "Unconditional Love"
     },
-    "msg": "OK",
-    "status": 0
+    "unlock_notes": [
+      {
+        "type": "story",
+        "text": "Available after progressing through Chapter 3"
+      }
+    ],
+    "visit_dialog": [
+      {
+        "destination": "Shibuya",
+        "good_answers": [
+          [
+            {
+              "content": "What if we just go shopping?",
+              "reward": 50
+            },
+            {
+              "content": "How about a movie?",
+              "reward": 60
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Akihabara",
+        "good_answers": [
+          [
+            {
+              "content": "They don't sell electricity...",
+              "reward": 50
+            },
+            {
+              "content": "Where'd you get your info?",
+              "reward": 60
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Asakusa",
+        "good_answers": [
+          [
+            {
+              "content": "I could go for some fried manju.",
+              "reward": 60
+            },
+            {
+              "content": "There's some neat souvenirs.",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Motomachi Chinatown",
+        "good_answers": [
+          [
+            {
+              "content": "They sound great.",
+              "reward": 50
+            },
+            {
+              "content": "Could I join?",
+              "reward": 60
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Yongen-Jaya",
+        "good_answers": [
+          [
+            {
+              "content": "Forget about work for a while.",
+              "reward": 50
+            },
+            {
+              "content": "Let's have a contest!",
+              "reward": 60
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "msg": "OK",
+  "status": 0
 }

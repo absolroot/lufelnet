@@ -746,6 +746,12 @@
       "details": "作戦がうまくいくように、キウチ・パレス内部を慎重に探ろう。",
       "name": "夢の跡"
     },
+    "unlock_notes": [
+      {
+        "type": "story",
+        "text": "1章進行後に開放"
+      }
+    ],
     "visit_dialog": [
       {
         "destination": "荒野",

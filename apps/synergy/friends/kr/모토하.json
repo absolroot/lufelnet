@@ -1283,6 +1283,12 @@
       "details": "모토하가 용건이 있는 듯하다.\n2-C 교실로 가서 그녀를 찾자.",
       "name": "다시 시작하려는 의지"
     },
+    "unlock_notes": [
+      {
+        "type": "story",
+        "text": "2장 진행 이후 개방"
+      }
+    ],
     "visit_dialog": [
       {
         "destination": "이노카시라 공원",

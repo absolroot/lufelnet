@@ -1225,14 +1225,14 @@
       }
     ],
     "time": "夜晚",
-    "unlock_quest": {
-      "details": "进入游戏『丸得虚拟世界』。",
-      "name": "电子世界中的邂逅"
-    },
-    "unlock_notes": [
+    "unlock_quest": [
       {
-        "type": "summary",
-        "text": "YUI协同者解锁后开放"
+        "details": "宫泽在发布会上公开道歉了，这就是改心吗……",
+        "name": "梦想的味道之争"
+      },
+      {
+        "details": "进入游戏『丸得虚拟世界』。",
+        "name": "电子世界中的邂逅"
       }
     ],
     "visit_dialog": [
@@ -1295,6 +1295,12 @@
             }
           ]
         ]
+      }
+    ],
+    "unlock_notes": [
+      {
+        "type": "summary",
+        "text": "YUI协同者解锁后开放"
       }
     ]
   },

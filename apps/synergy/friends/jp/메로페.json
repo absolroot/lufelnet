@@ -875,14 +875,14 @@
       }
     ],
     "time": "夕方",
-    "unlock_quest": {
-      "details": "考えを整理し、決断してから再びルフェルと話をしよう。",
-      "name": "夢の跡"
-    },
-    "unlock_notes": [
+    "unlock_quest": [
       {
-        "type": "story",
-        "text": "1章進行後に開放"
+        "details": "自分の使命を理解し、メメントスに入ることを決意した",
+        "name": "夢の跡"
+      },
+      {
+        "details": "考えを整理し、決断してから再びルフェルと話をしよう。",
+        "name": "夢の跡"
       }
     ],
     "visit_dialog": [
@@ -960,6 +960,12 @@
             }
           ]
         ]
+      }
+    ],
+    "unlock_notes": [
+      {
+        "type": "story",
+        "text": "1章進行後に開放"
       }
     ]
   },

@@ -1225,14 +1225,14 @@
       }
     ],
     "time": "밤",
-    "unlock_quest": {
-      "details": "『마루토쿠 가상 세계』 게임에 입장하자.",
-      "name": "전자 세계에서의 만남"
-    },
-    "unlock_notes": [
+    "unlock_quest": [
       {
-        "type": "summary",
-        "text": "YUI 협력자 개방 이후 개방 가능"
+        "details": "미야자와가 기자회견을 통해 공식 사과했다. 개심한 것일까...",
+        "name": "꿈의 맛을 위한 대결"
+      },
+      {
+        "details": "『마루토쿠 가상 세계』 게임에 입장하자.",
+        "name": "전자 세계에서의 만남"
       }
     ],
     "visit_dialog": [
@@ -1295,6 +1295,12 @@
             }
           ]
         ]
+      }
+    ],
+    "unlock_notes": [
+      {
+        "type": "summary",
+        "text": "YUI 협력자 개방 이후 개방 가능"
       }
     ]
   },

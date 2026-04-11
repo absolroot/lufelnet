@@ -1361,14 +1361,14 @@
       }
     ],
     "time": "傍晚",
-    "unlock_quest": {
-      "details": "理清思绪，做出决定后再次与路菲尔交谈。",
-      "name": "负重之人的对决"
-    },
-    "unlock_notes": [
+    "unlock_quest": [
       {
-        "type": "story",
-        "text": "第1章推进后开放"
+        "details": "在清楚自己的使命后，决定进入印象空间",
+        "name": "负重之人的对决"
+      },
+      {
+        "details": "理清思绪，做出决定后再次与路菲尔交谈。",
+        "name": "负重之人的对决"
       }
     ],
     "visit_dialog": [
@@ -1446,6 +1446,12 @@
             }
           ]
         ]
+      }
+    ],
+    "unlock_notes": [
+      {
+        "type": "story",
+        "text": "第1章推进后开放"
       }
     ]
   },

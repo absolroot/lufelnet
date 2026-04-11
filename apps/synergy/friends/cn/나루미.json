@@ -1242,14 +1242,14 @@
       }
     ],
     "time": "傍晚",
-    "unlock_quest": {
-      "details": "结束了秋叶原的短暂旅途，这是一段难忘的回忆。",
-      "name": "漫游秋叶原"
-    },
-    "unlock_notes": [
+    "unlock_quest": [
       {
-        "type": "hidden",
-        "text": "梅洛普协同者等级达到15"
+        "details": "成功将缺德P改心，去见证它接下来的行动吧。",
+        "name": "拯救我推作战"
+      },
+      {
+        "details": "结束了秋叶原的短暂旅途，这是一段难忘的回忆。",
+        "name": "漫游秋叶原"
       }
     ],
     "visit_dialog": [
@@ -1327,6 +1327,12 @@
             }
           ]
         ]
+      }
+    ],
+    "unlock_notes": [
+      {
+        "type": "hidden",
+        "text": "梅洛普协同者等级达到15"
       }
     ]
   },

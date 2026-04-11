@@ -875,14 +875,14 @@
       }
     ],
     "time": "Evening",
-    "unlock_quest": {
-      "details": "I need to think things over, and talk to Lufel once I've made a decision.",
-      "name": "Traces of Dreams"
-    },
-    "unlock_notes": [
+    "unlock_quest": [
       {
-        "type": "story",
-        "text": "Available after progressing through Chapter 1"
+        "details": "Now that I understand the mission, I've decided to enter Mementos.",
+        "name": "Traces of Dreams"
+      },
+      {
+        "details": "I need to think things over, and talk to Lufel once I've made a decision.",
+        "name": "Traces of Dreams"
       }
     ],
     "visit_dialog": [
@@ -960,6 +960,12 @@
             }
           ]
         ]
+      }
+    ],
+    "unlock_notes": [
+      {
+        "type": "story",
+        "text": "Available after progressing through Chapter 1"
       }
     ]
   },

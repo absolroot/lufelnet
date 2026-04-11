@@ -1280,15 +1280,46 @@
             `;
         }
 
+        function normalizeUnlockQuestList(unlockQuest) {
+            if (Array.isArray(unlockQuest)) {
+                return unlockQuest.filter(quest => quest && (quest.name || quest.details));
+            }
+
+            if (unlockQuest && typeof unlockQuest === 'object' && (unlockQuest.name || unlockQuest.details)) {
+                return [unlockQuest];
+            }
+
+            return [];
+        }
+
+        function formatUnlockQuestText(value) {
+            return escapeHtml(value).replace(/\n/g, '<br>');
+        }
+
         // 섹션 chevron SVG
         const chevronSvg = `<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="section-chevron"><path d="M4 2L8 6L4 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 
         // 0. 사전 퀘스트 (Unlock Quest) - 협력 보상 위에 표시
-        if (data.unlock_quest) {
+        const unlockQuestList = normalizeUnlockQuestList(data.unlock_quest);
+        if (unlockQuestList.length > 0) {
             // localStorage에서 스포일러 해제 여부 확인
             const spoilerKey = `unlockQuestSpoiler_${characterName}`;
             const isSpoilerRevealed = localStorage.getItem(spoilerKey) === '1';
             const spoilerClass = isSpoilerRevealed ? '' : 'spoiler';
+            const unlockQuestItemsHtml = unlockQuestList.map((quest, index) => {
+                const dividerStyle = index > 0
+                    ? 'border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 10px;'
+                    : '';
+
+                return `
+                            <div class="unlock-quest-entry" style="display: flex; flex-direction: column; gap: 6px; ${dividerStyle}">
+                                <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                                    <div class="unlock-quest-name" style="font-weight: 600; color: rgb(255 245 181 / 95%); font-size:14px;">${formatUnlockQuestText(quest.name || '')}</div>
+                                    <div class="unlock-quest-details" style="color: rgba(255, 255, 255, 0.8); font-size: 13px; line-height: 1.6;">${formatUnlockQuestText(quest.details || '')}</div>
+                                </div>
+                            </div>
+                        `;
+            }).join('');
 
             html += `
                 <div class="detail-section">
@@ -1297,10 +1328,7 @@
                     </h3>
                     <div class="section-content">
                         <div class="unlock-quest-content ${spoilerClass}" data-character="${characterName}" style="display: flex; flex-direction: column; gap: 8px; padding: 12px 16px; background: rgba(0, 0, 0, 0.2); border-radius: 4px; margin-bottom: 12px; position: relative; cursor: pointer;">
-                            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-                                <div class="unlock-quest-name" style="font-weight: 600; color: rgb(255 245 181 / 95%); font-size:14px;">${data.unlock_quest.name || ''}</div>
-                                <div class="unlock-quest-details" style="color: rgba(255, 255, 255, 0.8); font-size: 13px; line-height: 1.6;">${data.unlock_quest.details || ''}</div>
-                            </div>
+                            ${unlockQuestItemsHtml}
                             <div style="font-size: 12px; color: rgba(255, 255, 255, 0.6); font-style: italic;">${t('labelQuestUnlockNotice')}</div>
                             ${renderUnlockNotes(data.unlock_notes)}
                         </div>

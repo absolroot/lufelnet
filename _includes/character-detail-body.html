@@ -868,12 +868,16 @@
         try {
             const homeLink = document.getElementById('character-home-link');
             const listLink = document.getElementById('character-list-link');
+            const pathLangMatch = (window.location.pathname || '').match(/^\/(kr|en|jp|cn)\//);
+            const langPrefix = pathLangMatch
+                ? `/${pathLangMatch[1]}`
+                : (pageLang && pageLang !== 'kr' ? `/${pageLang}` : '');
             if (homeLink) {
-                homeLink.href = `../../?v=${APP_VERSION}`;
+                homeLink.href = `${langPrefix || ''}/?v=${APP_VERSION}`;
                 homeLink.textContent = getCharacterI18nText('navHome', '홈');
             }
             if (listLink) {
-                listLink.href = `/character/?v=${APP_VERSION}`;
+                listLink.href = `${langPrefix || ''}/character/?v=${APP_VERSION}`;
                 listLink.textContent = getCharacterI18nText('navCurrent', '괴도');
             }
         } catch (e) { console.warn('[SAFE:nav-i18n]', e); }
@@ -1184,7 +1188,45 @@
             }
         }
 
-        async function loadLanguageData() { return; }
+        async function loadLanguageData() {
+            const currentLang = getCurrentLanguage();
+            if (currentLang !== 'en' && currentLang !== 'jp') return;
+
+            try {
+                const base = (typeof BASE_URL !== 'undefined') ? BASE_URL : '';
+                const langUrl = `${base}/data/character_info_glb.js?v=${APP_VERSION}`;
+                const response = await fetchWithRevalidate(langUrl);
+                if (!response.ok) return;
+
+                const langScriptText = await response.text();
+                const { characterData: langCharacterData } = extractDataFromScript(langScriptText);
+                if (!langCharacterData || typeof langCharacterData !== 'object') return;
+
+                const applyGlbOverrides = (target, source) => {
+                    if (!target || !source) return;
+                    if (source.limit !== undefined) target.limit = source.limit;
+                    if (source.release_order !== undefined) target.release_order = source.release_order;
+                    if (source.tag) target.tag = source.tag;
+                    if (source.role) target.role = source.role;
+                };
+
+                window.characterData = window.characterData || {};
+
+                Object.keys(langCharacterData).forEach((characterKey) => {
+                    const baseEntry = window.characterData[characterKey];
+                    const langEntry = langCharacterData[characterKey];
+                    if (!baseEntry || !langEntry) return;
+
+                    applyGlbOverrides(baseEntry, langEntry);
+
+                    if (typeof characterData !== 'undefined' && characterData && characterData[characterKey] && characterData[characterKey] !== baseEntry) {
+                        applyGlbOverrides(characterData[characterKey], langEntry);
+                    }
+                });
+            } catch (error) {
+                console.warn('[SAFE:loadLanguageData]', error);
+            }
+        }
 
         if (!characterName || !characterData[characterName]) {
             console.error('Character not found');

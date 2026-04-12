@@ -433,6 +433,24 @@
     opacity: 1;
 }
 
+.item-recipe-hint {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.item-recipe-hint-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.5);
+    flex-shrink: 0;
+}
+
 .detail-section.collapsed .section-content {
     max-height: 0;
     opacity: 0;
@@ -580,9 +598,9 @@
 }
 
 .dialog-rank-header.no-choices {
-    margin-bottom: 0;
-    border-bottom: none;
-    padding-bottom: 0;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #333;
 }
 
 .dialog-rank {
@@ -637,6 +655,15 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
+}
+
+.dialog-empty-state {
+    padding: 10px 12px;
+    background: #0f0f0f;
+    border-radius: 6px;
+    color: #999;
+    font-size: 13px;
+    line-height: 1.5;
 }
 
 .dialog-choice-group {
@@ -987,11 +1014,13 @@
     vertical-align: middle;
     margin-left: 4px;
     opacity: 0.6;
+    color: rgba(255, 255, 255, 0.5);
     transition: opacity 0.2s, filter 0.2s;
 }
 
 .item-source-icon:hover {
     opacity: 1;
+    color: #ffd700;
 }
 
 .item-source-text-clickable:hover {
@@ -1001,11 +1030,7 @@
 .item-source-icon svg {
     width: 14px;
     height: 14px;
-    transition: stroke 0.2s;
-}
-
-.item-source-icon:hover svg {
-    stroke: #ffd700;
+    transition: color 0.2s;
 }
 
 /* 행 호버 시 조합식 텍스트와 아이콘 하이라이트 */
@@ -1015,10 +1040,7 @@ tr:hover .item-source-text-clickable {
 
 tr:hover .item-source-icon {
     opacity: 1;
-}
-
-tr:hover .item-source-icon svg {
-    stroke: #ffd700;
+    color: #ffd700;
 }
 
 .item-efficiency {
@@ -1228,6 +1250,10 @@ tr:hover .item-source-icon svg {
 }
 
 /* Unlock Quest Spoiler Styling */
+.unlock-quest-details {
+    white-space: normal;
+}
+
 .unlock-quest-content.spoiler {
     position: relative;
     cursor: pointer;

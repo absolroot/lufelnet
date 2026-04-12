@@ -42,6 +42,14 @@ window.personaFiles["트론"] = {
       "priority": 2
     },
     {
+      "name": "역동적인 힘",
+      "priority": 2
+    },
+    {
+      "name": "세계수의 진화",
+      "priority": 2
+    },
+    {
       "name": "응집",
       "priority": 2
     }

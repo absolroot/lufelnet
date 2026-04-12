@@ -1296,7 +1296,29 @@
             return escapeHtml(value).replace(/\n/g, '<br>');
         }
 
+        function formatUnlockQuestDetailsText(value) {
+            return escapeHtml(value);
+        }
+
+        function getRenderableChoiceGroups(goodAnswers) {
+            if (!Array.isArray(goodAnswers)) {
+                return [];
+            }
+
+            return goodAnswers.filter(choiceGroup => Array.isArray(choiceGroup) && choiceGroup.length > 0);
+        }
+
         // 섹션 chevron SVG
+        const recipeDetailSvg = `
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="2.25" y="1.75" width="8.5" height="10.5" rx="1.5" stroke="currentColor" stroke-width="1.2"/>
+                <path d="M4.5 4.5H8.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                <path d="M4.5 6.75H8.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                <path d="M4.5 9H7.25" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                <path d="M10 3.25L12 5.25" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                <path d="M9.25 4L11.25 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+        `;
         const chevronSvg = `<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="section-chevron"><path d="M4 2L8 6L4 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 
         // 0. 사전 퀘스트 (Unlock Quest) - 협력 보상 위에 표시
@@ -1315,7 +1337,7 @@
                             <div class="unlock-quest-entry" style="display: flex; flex-direction: column; gap: 6px; ${dividerStyle}">
                                 <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
                                     <div class="unlock-quest-name" style="font-weight: 600; color: rgb(255 245 181 / 95%); font-size:14px;">${formatUnlockQuestText(quest.name || '')}</div>
-                                    <div class="unlock-quest-details" style="color: rgba(255, 255, 255, 0.8); font-size: 13px; line-height: 1.6;">${formatUnlockQuestText(quest.details || '')}</div>
+                                    <div class="unlock-quest-details" style="color: rgba(255, 255, 255, 0.8); font-size: 13px; line-height: 1.6;">${formatUnlockQuestDetailsText(quest.details || '')}</div>
                                 </div>
                             </div>
                         `;
@@ -1416,7 +1438,8 @@
                 const chevronSvg = `<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="rank-chevron"><path d="M4 2L8 6L4 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
                 const rankText = rankFrom > 0 && rankTo > 0 ? `<span class="rank-label">Rank ${rankFrom}</span>${chevronSvg}<span class="rank-target">${rankTo}</span>` : '';
                 const unlockCond = dialog.unlock_cond ? `<div class="dialog-unlock">${t('labelUnlock')} ${processUnlockCond(dialog.unlock_cond)}</div>` : '';
-                const hasChoices = dialog.good_answers && Array.isArray(dialog.good_answers) && dialog.good_answers.length > 0;
+                const choiceGroups = getRenderableChoiceGroups(dialog.good_answers);
+                const hasChoices = choiceGroups.length > 0;
                 const noChoicesClass = !hasChoices ? 'no-choices' : '';
                 html += `
                     <div class="dialog-event">
@@ -1427,7 +1450,7 @@
                         <div class="dialog-choices">
                 `;
                 if (hasChoices) {
-                    dialog.good_answers.forEach((choiceGroup, groupIndex) => {
+                    choiceGroups.forEach((choiceGroup, groupIndex) => {
                         // 해당 그룹의 최대 reward 값 찾기
                         const rewards = choiceGroup.map(choice => choice.reward || 0);
                         const maxReward = Math.max(...rewards);
@@ -1436,7 +1459,7 @@
                         const maxRewardCount = rewards.filter(r => r === maxReward).length;
                         const hasUniqueMax = maxRewardCount === 1 && choiceGroup.length > 1;
 
-                        if (dialog.good_answers.length > 1) {
+                        if (choiceGroups.length > 1) {
                             html += `<div class="dialog-choice-group" style="margin-bottom: 8px;">`;
                             html += `<div style="font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 4px;">${t('labelSelect')} ${groupIndex + 1}</div>`;
                         }
@@ -1453,10 +1476,12 @@
                                 </div>
                             `;
                         });
-                        if (dialog.good_answers.length > 1) {
+                        if (choiceGroups.length > 1) {
                             html += `</div>`;
                         }
                     });
+                } else {
+                    html += `<div class="dialog-empty-state">${t('labelNoChoices')}</div>`;
                 }
 
                 // RANK 14→15이고 can_romance가 true인 경우 소울 메이트/절친 표시 추가 (메로페 제외)
@@ -1490,6 +1515,8 @@
                 const destinationImage = getMapImage(visit.destination);
                 const destinationImageHtml = destinationImage ?
                     `<img src="${destinationImage}" alt="${destinationText}" class="visit-destination-image" onerror="this.onerror=null; this.style.display='none';">` : '';
+                const choiceGroups = getRenderableChoiceGroups(visit.good_answers);
+                const hasChoices = choiceGroups.length > 0;
 
                 html += `
                     <div class="visit-dialog">
@@ -1499,8 +1526,8 @@
                         </div>
                         <div class="dialog-choices">
                 `;
-                if (visit.good_answers && Array.isArray(visit.good_answers)) {
-                    visit.good_answers.forEach(choiceGroup => {
+                if (hasChoices) {
+                    choiceGroups.forEach(choiceGroup => {
                         // 해당 그룹의 최대 reward 값 찾기
                         const rewards = choiceGroup.map(choice => choice.reward || 0);
                         const maxReward = Math.max(...rewards);
@@ -1523,6 +1550,8 @@
                             `;
                         });
                     });
+                } else {
+                    html += `<div class="dialog-empty-state">${t('labelNoChoices')}</div>`;
                 }
                 html += `
                         </div>
@@ -1544,12 +1573,14 @@
                         <div class="dialog-events-container">
             `;
             data.romance_dialog.forEach(dialog => {
+                const choiceGroups = getRenderableChoiceGroups(dialog.good_answers);
+                const hasChoices = choiceGroups.length > 0;
                 html += `
                     <div class="dialog-event">
                         <div class="dialog-choices">
                 `;
-                if (dialog.good_answers && Array.isArray(dialog.good_answers)) {
-                    dialog.good_answers.forEach((choiceGroup, groupIndex) => {
+                if (hasChoices) {
+                    choiceGroups.forEach((choiceGroup, groupIndex) => {
                         // 해당 그룹의 최대 reward 값 찾기
                         const rewards = choiceGroup.map(choice => choice.reward || 0);
                         const maxReward = Math.max(...rewards);
@@ -1558,7 +1589,7 @@
                         const maxRewardCount = rewards.filter(r => r === maxReward).length;
                         const hasUniqueMax = maxRewardCount === 1 && choiceGroup.length > 1;
 
-                        if (dialog.good_answers.length > 1) {
+                        if (choiceGroups.length > 1) {
                             html += `<div class="dialog-choice-group" style="margin-bottom: 8px;">`;
                             html += `<div style="font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 4px;">${t('labelSelect')} ${groupIndex + 1}</div>`;
                         }
@@ -1575,10 +1606,12 @@
                                 </div>
                             `;
                         });
-                        if (dialog.good_answers.length > 1) {
+                        if (choiceGroups.length > 1) {
                             html += `</div>`;
                         }
                     });
+                } else {
+                    html += `<div class="dialog-empty-state">${t('labelNoChoices')}</div>`;
                 }
                 html += `
                         </div>
@@ -1773,6 +1806,10 @@
                         ${chevronSvg}
                     </h3>
                     <div class="section-content">
+                        <div class="item-recipe-hint">
+                            <span class="item-recipe-hint-icon">${recipeDetailSvg}</span>
+                            <span>${t('labelItemRecipeHint')}</span>
+                        </div>
                         <table class="item-table">
                         <thead>
                             <tr>
@@ -1900,9 +1937,7 @@
                             const itemDataAttr = JSON.stringify(item).replace(/'/g, '&#39;');
                             sourceIconHtml = `
                                 <span class="item-source-icon" data-item-source='${itemDataAttr}'>
-                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M7 1L9 5L13 6L9 7L7 11L5 7L1 6L5 5L7 1Z" stroke="rgba(255, 255, 255, 0.5)" stroke-width="1.2" fill="none"/>
-                                    </svg>
+                                    ${recipeDetailSvg}
                                 </span>
                             `;
                             // 조합식 텍스트도 클릭 가능하게 설정

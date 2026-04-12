@@ -1,4 +1,6 @@
 window.I18N_PAGE_CHARACTER_EN = {
+    navHome: 'Home',
+    navCurrent: 'Characters',
     pageTitle: 'Character Build',
     pageDescription: 'Recommended builds, personas, revelations, and rotation guides for each character.',
     filteredCount: 'Total',

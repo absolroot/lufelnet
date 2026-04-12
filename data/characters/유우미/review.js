@@ -16,6 +16,14 @@
 최초의 5성 해명 괴도로서 기존 15%씩 스탯을 아군에게 나눠주던 4성과 달리, **아군에게 스탯의 20%를 나눠줌으로서 해명 괴도의 스탯을 보다 신경써주면 좋다.**
 
 칵테일에 의존하는 캐릭터로 의식6에 칵테일의 상한이 3잔에서 4잔으로 늘어나는 영향도가 높다.
+
+---
+
+LV100 확장은 같은 속성 캐릭터로 구성할수록 효과가 증대되는 형태로 캐릭터의 정체성을 더 강화했다. 원더를 제외한 모든 캐릭터가 같은 속성으로 시작할 경우 관통이 20% 증가한다.
+
+그러나 전원을 같은 속성으로 맞춘 편성이 흔한 편은 아니고, 해당 버프만으로 이후 출시된 다른 해명 괴도의 메커니즘을 넘어설 정도는 아니다.
+
+**심상 강화를 통한 다른 해명 괴도의 공격력과 크리티컬 효과 증가는 해명의 힘에도 영향을 주는 만큼 우선시할 가치가 있다.**
 `,
     review_en: `
 Phoebe is an Elucidator Phantom Thief who provides a powerful elemental damage bonus, making her more valuable the more allies share her element.  
@@ -30,7 +38,15 @@ Her exclusive weapon not only increases ATK but also has an effect that can alte
 
 As the first 5★ Elucidator Phantom Thief, unlike 4★ units who shared 15% of their stats with allies, **she shares 20% of her stats with allies, making her own stats even more important**.  
 
-Being a cocktail-dependent character, at Awareness 6, the cocktail limit increases from 3 to 4 glasses, which has a significant impact.`,
+Being a cocktail-dependent character, at Awareness 6, the cocktail limit increases from 3 to 4 glasses, which has a significant impact.
+
+---
+
+The LV100 expansion reinforces her identity by rewarding parties that are built around matching elements. If every character other than Wonder starts the battle with the same element, the team gains 20% Pierce.
+
+That said, fully matching every party member's element is not especially common, and this buff alone is not enough to overtake the mechanics of newer Elucidator Phantom Thieves released afterward.
+
+**The Attack and Critical Damage boosts for other Elucidators granted through Mindscape Amplification are worth prioritizing, because they also improve the stat-scaling support she provides.**`,
     review_jp: `
 椎名 悠美（PHOEBE）は強力な属性攻撃倍率+を付与する解明怪盗で、同属性の味方が多いほど価値が高まる。  
 
@@ -44,7 +60,15 @@ Being a cocktail-dependent character, at Awareness 6, the cocktail limit increas
 
 初の★5解明怪盗として、従来の★4が味方にステータスを15%分配していたのに対し、**味方にステータスの20%を分配するため、自身のステータスをより重視する必要がある**。  
 
-カクテルに依存する怪盗であり、意識6ではカクテルの上限が3杯から4杯に増えるため、その影響は大きい。  `,
+カクテルに依存する怪盗であり、意識6ではカクテルの上限が3杯から4杯に増えるため、その影響は大きい。  
+
+---
+
+LV100拡張によって、同属性キャラで編成するほど効果が伸びる形となり、キャラの個性がさらに強化された。WONDERを除く全てのキャラが同じ属性で戦闘を開始した場合、貫通が20%上昇する。
+
+ただし、編成全体を同じ属性で揃えるケースはそこまで多くなく、このバフだけで後発の他の解明怪盗のメカニズムを上回れるほどではない。
+
+**心象強化によって他の解明怪盗へ付与される攻撃力とCRT倍率上昇は、悠美が味方へ配る属性値にも影響するため、優先する価値が高い。**  `,
     review_cn: `
 椎名悠美（PHOEBE）是能够提供强力属性伤害加成的解明怪盗，队伍里同属性同伴越多，她的价值就越高。
 
@@ -59,6 +83,14 @@ Being a cocktail-dependent character, at Awareness 6, the cocktail limit increas
 作为首位5星解明怪盗，与过去只会把15%属性分给同伴的4星角色不同，**她能把自身20%的属性分给队友，因此自身面板会更加重要。**
 
 她本质上是非常依赖鸡尾酒机制的角色，而在意识6时鸡尾酒上限会从3杯提升到4杯，因此这一阶段的提升非常明显。
+
+---
+
+LV100扩展进一步强化了她“越是同属性队伍越强”的角色定位。若除WONDER以外的所有角色在战斗开始时都是同一属性，则可获得20%穿透提升。
+
+不过，全队统一属性的编成本来就不算常见，而且光靠这部分增益，也还不足以压过后续登场的其他解明怪盗机制。
+
+**通过心象强化提供给其他解明怪盗的攻击力与暴击效果提升，也会影响她为队伍提供的属性加成，因此很值得优先考虑。**
 `,
     pros: ["매우 높은 수치의 대미지 보너스를 제공한다.", "본인 스탯에 비례해 파티원의 스탯을 올려준다.", "체력 흡수 효과나 SP 회복 등 부가적인 버프를 제공한다."],
     pros_en: [

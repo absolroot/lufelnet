@@ -47,6 +47,10 @@ window.personaFiles["디오니소스"] = {
       "priority": 3
     },
     {
+      "name": "세계수의 진화",
+      "priority": 3
+    },
+    {
       "name": "라쿠카쟈",
       "priority": 1
     },

@@ -1,7 +1,7 @@
 window.characterSetting = window.characterSetting || {};
 window.characterSetting["유스케"] = {
     "role": "빙결 광역 딜러",
-    "video": ["dBUktg0nRuw"],
+    "video": ["NOaCy0s48kE","dBUktg0nRuw"],
     "video_en": ["dBUktg0nRuw"],
     "video_jp": ["07QIr42Krzk", "dBUktg0nRuw"],
     "main_revelation": ["전념"],

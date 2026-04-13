@@ -3,7 +3,7 @@
 
   function normalizeLang(raw) {
     const value = String(raw || '').toLowerCase();
-    if (value === 'kr' || value === 'en' || value === 'jp') return value;
+    if (value === 'kr' || value === 'en' || value === 'jp' || value === 'cn') return value;
     return 'kr';
   }
 
@@ -15,7 +15,7 @@
   }
 
   function getPathLang(pathname) {
-    const match = String(pathname || '').toLowerCase().match(/^\/(kr|en|jp)(\/|$)/);
+    const match = String(pathname || '').toLowerCase().match(/^\/(kr|en|jp|cn)(\/|$)/);
     return match ? normalizeLang(match[1]) : '';
   }
 
@@ -23,7 +23,7 @@
     const path = String(window.location.pathname || '/').toLowerCase();
     const params = new URLSearchParams(window.location.search || '');
 
-    const detailPathMatch = path.match(/^\/(?:kr|en|jp)\/velvet-trial\/chapter-(\d+)\/stage-(\d+)\/?$/);
+    const detailPathMatch = path.match(/^\/(?:kr|en|jp|cn)\/velvet-trial\/chapter-(\d+)\/stage-(\d+)\/?$/);
     if (detailPathMatch) {
       return {
         chapterSn: toPositiveInt(detailPathMatch[1]),

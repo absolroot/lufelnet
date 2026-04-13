@@ -11,7 +11,7 @@
       "effect": {
         "sn": 4001,
         "name": "해명 특화",
-        "desc": "해명 괴도의 필드에 있는 캐릭터에 대한 속성 증가 효과 25%까지 증가"
+        "desc": "해명 괴도의 필드에 있는 캐릭터에 대한 <color=#FFFC40>속성 증가</color> 효과 25%까지 증가"
       },
       "images": {
         "chapterNameRes": "shilian-wenzi05-i18n.png",
@@ -5906,7 +5906,7 @@
       "effect": {
         "sn": 4004,
         "name": "용암 환경",
-        "desc": "모든 캐릭터의 화염/염동 속성 대미지 20% 증가"
+        "desc": "모든 캐릭터의 <color=#ff381d>화염</color>/<color=#ff63ff>염동</color> 속성 대미지 20% 증가"
       },
       "images": {
         "chapterNameRes": "shilian-zhuoremiyu02-i18n.png",
@@ -8411,7 +8411,7 @@
       "effect": {
         "sn": 4005,
         "name": "양자 빙상장",
-        "desc": "모든 캐릭터의 빙결/핵열 속성 대미지 20% 증가"
+        "desc": "모든 캐릭터의 <color=#00aeff>빙결</color>/<color=#00fcff>핵열</color> 속성 대미지 20% 증가"
       },
       "images": {
         "chapterNameRes": "shilian-shuhanjidi02-i18n.png",
@@ -10801,7 +10801,7 @@
       "effect": {
         "sn": 4006,
         "name": "뇌광 성소",
-        "desc": "모든 캐릭터의 전격/축복 속성 대미지 20% 증가"
+        "desc": "모든 캐릭터의 <color=#fbff37>전격</color>/<color=#fffea0>축복</color> 속성 대미지 20% 증가"
       },
       "images": {
         "chapterNameRes": "shilian-leitingqijing02-i18n.png",
@@ -13216,7 +13216,7 @@
       "effect": {
         "sn": 4007,
         "name": "액운의 감옥",
-        "desc": "모든 캐릭터의 질풍/주원 속성 대미지 20% 증가"
+        "desc": "모든 캐릭터의 <color=#81ea2c>질풍</color>/<color=#ff0036>주원</color> 속성 대미지 20% 증가"
       },
       "images": {
         "chapterNameRes": "shilian-zuzhouxuanwo02-i18n.png",

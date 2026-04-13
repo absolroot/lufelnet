@@ -10,9 +10,10 @@ const __dirname = path.dirname(__filename);
 const ROOT = path.resolve(__dirname, '..', '..');
 
 const LANG_CONFIGS = [
-  { lang: 'kr', sourceRoot: 'KR_Config' },
-  { lang: 'en', sourceRoot: 'EN_Config' },
-  { lang: 'jp', sourceRoot: 'JP_Config' }
+  { lang: 'kr', sourceRoot: 'KR_Config', baseDir: path.join(ROOT, 'config_db', 'KR_Config') },
+  { lang: 'en', sourceRoot: 'EN_Config', baseDir: path.join(ROOT, 'config_db', 'EN_Config') },
+  { lang: 'jp', sourceRoot: 'JP_Config', baseDir: path.join(ROOT, 'config_db', 'JP_Config') },
+  { lang: 'cn', sourceRoot: 'Config_CN', baseDir: path.join(ROOT, '_config', 'Config_CN') }
 ];
 
 const ELEMENT_BY_ID = {
@@ -357,8 +358,7 @@ function loadTranslationTables(baseDir, lang) {
   };
 }
 
-function buildLanguageData({ lang, sourceRoot }, ctx) {
-  const baseDir = path.join(ROOT, 'config_db', sourceRoot);
+function buildLanguageData({ lang, sourceRoot, baseDir }, ctx) {
   const read = (relativePath) => readJson(path.join(baseDir, relativePath));
 
   const confTrial = read('default/ConfVelvetTrial.json');
@@ -562,7 +562,7 @@ function buildExpectedOutput() {
   const generatedAtBySource = {};
   for (const langConfig of LANG_CONFIGS) {
     const sourceRoot = langConfig.sourceRoot;
-    const baseDir = path.join(ROOT, 'config_db', sourceRoot);
+    const baseDir = langConfig.baseDir;
     let maxMtime = 0;
     for (const relativeFile of sourceInputFiles) {
       const fullPath = path.join(baseDir, relativeFile);

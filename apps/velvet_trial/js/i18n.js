@@ -1,9 +1,10 @@
 const VelvetTrialI18n = (function () {
-  const SUPPORTED = ['kr', 'en', 'jp'];
+  const SUPPORTED = ['kr', 'en', 'jp', 'cn'];
   const PACKS = {
     kr: 'I18N_PAGE_VELVET_TRIAL_KR',
     en: 'I18N_PAGE_VELVET_TRIAL_EN',
-    jp: 'I18N_PAGE_VELVET_TRIAL_JP'
+    jp: 'I18N_PAGE_VELVET_TRIAL_JP',
+    cn: 'I18N_PAGE_VELVET_TRIAL_CN'
   };
 
   let currentLang = 'kr';
@@ -15,6 +16,7 @@ const VelvetTrialI18n = (function () {
     if (base === 'ko') return 'kr';
     if (base === 'ja') return 'jp';
     if (base === 'en') return 'en';
+    if (base === 'zh' || base === 'cn') return 'cn';
     return 'kr';
   }
 
@@ -27,7 +29,7 @@ const VelvetTrialI18n = (function () {
   function detectLang() {
     try {
       const path = String(window.location.pathname || '').toLowerCase();
-      const match = path.match(/^\/(kr|en|jp)(\/|$)/);
+      const match = path.match(/^\/(kr|en|jp|cn)(\/|$)/);
       if (match && match[1]) return normalizeLang(match[1]);
     } catch (_) {}
 

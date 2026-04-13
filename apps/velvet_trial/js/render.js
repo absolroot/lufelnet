@@ -1187,6 +1187,9 @@ const VelvetTrialRenderer = (function () {
     if (lang === 'jp') {
       return pickName(sourceEntry.name_jp, sourceEntry.nameJp, sourceEntry.name, item?.name, item?.lookupName);
     }
+    if (lang === 'cn') {
+      return pickName(sourceEntry.name_cn, sourceEntry.nameCn, sourceEntry.name, item?.name, item?.lookupName);
+    }
     return pickName(sourceEntry.name, item?.name, item?.lookupName);
   }
 

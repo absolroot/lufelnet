@@ -19,12 +19,13 @@ const __dirname = path.dirname(__filename);
 const ROOT = path.resolve(__dirname, '..', '..');
 
 const OUTPUT_DIR = path.join(ROOT, 'pages', 'velvet-trial');
-const LANGS = ['kr', 'en', 'jp'];
+const LANGS = ['kr', 'en', 'jp', 'cn'];
 const IMAGE_PATH = '/assets/img/home/SEO.png';
 const DETAIL_STAGE_LABEL = {
   kr: '\uC2A4\uD14C\uC774\uC9C0',
   en: 'Stage',
-  jp: '\u30B9\u30C6\u30FC\u30B8'
+  jp: '\u30B9\u30C6\u30FC\u30B8',
+  cn: '\u5173\u5361'
 };
 
 const seoMetaPath = path.join(ROOT, 'i18n', 'pages', 'velvet-trial', 'seo-meta.json');
@@ -77,6 +78,15 @@ function applyTemplate(value, vars) {
 
 function stagePath(lang, chapterSn, stageNum) {
   return `/${lang}/velvet-trial/chapter-${chapterSn}/stage-${stageNum}/`;
+}
+
+function buildEntityName(lang, entry) {
+  if (lang === 'cn') {
+    return `${entry.chapterName} \u7b2c${entry.stageNum}\u5173`;
+  }
+
+  const stageLabel = DETAIL_STAGE_LABEL[lang] || 'Stage';
+  return `${entry.chapterName} ${stageLabel} ${entry.stageNum}`;
 }
 
 function readTrialEntries(lang) {
@@ -150,6 +160,7 @@ function renderRootPage({ lang, title, description }) {
     '  ko: /kr/velvet-trial/',
     '  en: /en/velvet-trial/',
     '  jp: /jp/velvet-trial/',
+    "  'zh-CN': /cn/velvet-trial/",
     '---',
     '{% include velvet-trial-body.html %}',
     ''
@@ -188,6 +199,7 @@ function renderDetailPage({
     `  ko: ${alternateUrls.ko}`,
     `  en: ${alternateUrls.en}`,
     `  jp: ${alternateUrls.jp}`,
+    `  'zh-CN': ${alternateUrls['zh-CN']}`,
     '---',
     '{% include velvet-trial-body.html %}',
     ''
@@ -216,21 +228,22 @@ function buildExpectedFiles(seoMeta) {
 
   for (const lang of LANGS) {
     const langMeta = seoMeta[lang];
-    const stageLabel = DETAIL_STAGE_LABEL[lang] || 'Stage';
 
     for (const entry of entriesByLang[lang]) {
-      const entityName = `${entry.chapterName} ${stageLabel} ${entry.stageNum}`;
+      const entityName = buildEntityName(lang, entry);
       const entityKey = `chapter-${entry.chapterSn}/stage-${entry.stageNum}`;
       const key = entry.key;
 
       const krAlt = entryMapsByLang.kr.get(key);
       const enAlt = entryMapsByLang.en.get(key);
       const jpAlt = entryMapsByLang.jp.get(key);
+      const cnAlt = entryMapsByLang.cn.get(key);
 
       const alternateUrls = {
         ko: krAlt ? stagePath('kr', krAlt.chapterSn, krAlt.stageNum) : '/kr/velvet-trial/',
         en: enAlt ? stagePath('en', enAlt.chapterSn, enAlt.stageNum) : '/en/velvet-trial/',
-        jp: jpAlt ? stagePath('jp', jpAlt.chapterSn, jpAlt.stageNum) : '/jp/velvet-trial/'
+        jp: jpAlt ? stagePath('jp', jpAlt.chapterSn, jpAlt.stageNum) : '/jp/velvet-trial/',
+        'zh-CN': cnAlt ? stagePath('cn', cnAlt.chapterSn, cnAlt.stageNum) : '/cn/velvet-trial/'
       };
 
       const title = applyTemplate(langMeta.title, { name: entityName });

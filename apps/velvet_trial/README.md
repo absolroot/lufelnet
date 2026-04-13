@@ -10,10 +10,12 @@ This document is a handoff guide for the Velvet Trial page.
   - `/kr/velvet-trial/`
   - `/en/velvet-trial/`
   - `/jp/velvet-trial/`
+  - `/cn/velvet-trial/`
 - Canonical detail URLs:
   - `/kr/velvet-trial/chapter-{chapterSn}/stage-{stageNum}/`
   - `/en/velvet-trial/chapter-{chapterSn}/stage-{stageNum}/`
   - `/jp/velvet-trial/chapter-{chapterSn}/stage-{stageNum}/`
+  - `/cn/velvet-trial/chapter-{chapterSn}/stage-{stageNum}/`
 
 ## 2) File Map
 
@@ -29,6 +31,7 @@ Core app:
 - `apps/velvet_trial/data/kr.json`
 - `apps/velvet_trial/data/en.json`
 - `apps/velvet_trial/data/jp.json`
+- `apps/velvet_trial/data/cn.json`
 - `apps/velvet_trial/data/recommendations/chapter-1/round-{levelSn}-{phase}.json`
 - `apps/velvet_trial/data/recommendations/chapter-2/round-{levelSn}-{phase}.json`
 - `apps/velvet_trial/data/recommendations/chapter-3/round-{levelSn}-{phase}.json`
@@ -40,6 +43,7 @@ Page include / SEO pages:
 - `pages/velvet-trial/kr/index.html`
 - `pages/velvet-trial/en/index.html`
 - `pages/velvet-trial/jp/index.html`
+- `pages/velvet-trial/cn/index.html`
 - `pages/velvet-trial/{lang}/chapter-{chapterSn}/stage-{stageNum}.html`
 
 Data + SEO scripts:
@@ -51,6 +55,7 @@ I18n packs:
 - `i18n/pages/velvet-trial/kr.js`
 - `i18n/pages/velvet-trial/en.js`
 - `i18n/pages/velvet-trial/jp.js`
+- `i18n/pages/velvet-trial/cn.js`
 - `i18n/pages/velvet-trial/seo-meta.json`
 
 ## 3) Runtime Architecture
@@ -76,6 +81,7 @@ Velvet trial core data source roots:
 - `config_db/KR_Config`
 - `config_db/EN_Config`
 - `config_db/JP_Config`
+- `_config/Config_CN`
 
 Generator:
 - `scripts/velvet-trial/generate-velvet-trial-data.mjs`
@@ -84,6 +90,7 @@ Output:
 - `apps/velvet_trial/data/kr.json`
 - `apps/velvet_trial/data/en.json`
 - `apps/velvet_trial/data/jp.json`
+- `apps/velvet_trial/data/cn.json`
 
 Dataset snapshot:
 - chapters: `5`
@@ -165,6 +172,5 @@ When changing UI:
 
 ## 9) Constraints
 
-- Supported page languages: `kr`, `en`, `jp`
-- CN route is out of scope for this page currently
+- Supported page languages: `kr`, `en`, `jp`, `cn`
 - Save edited files as UTF-8 without BOM

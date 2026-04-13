@@ -1,9 +1,9 @@
 {
   "kr": {
     "title": "{name} | 벨벳 시련 | 루페르넷 페르소나5 더 팬텀 X",
-    "description": "{name} | 페르소나5 더 팬텀 X 벨벳 시련 단계별 조건 및 보스 정보",
+    "description": "{name} | 페르소나5 더 팬텀 X 벨벳 시련 스테이지 조건 및 보스 정보",
     "list_title": "벨벳 시련 | 루페르넷 페르소나5 더 팬텀 X",
-    "list_description": "페르소나5 더 팬텀 X 벨벳 시련 단계별 조건 및 보스 정보"
+    "list_description": "페르소나5 더 팬텀 X 벨벳 시련 스테이지 조건 및 보스 정보"
   },
   "en": {
     "title": "{name} | Velvet Trial | Lufelnet Persona 5: The Phantom X",
@@ -13,8 +13,14 @@
   },
   "jp": {
     "title": "{name} | ベルベット試練 | Lufelnet ペルソナ5: The Phantom X",
-    "description": "{name} | ペルソナ5 The Phantom X ベルベット試練の段階条件とボス情報",
+    "description": "{name} | ペルソナ5 The Phantom X ベルベット試練のステージ条件とボス情報",
     "list_title": "ベルベット試練 | Lufelnet ペルソナ5: The Phantom X",
-    "list_description": "ペルソナ5 The Phantom X ベルベット試練の段階条件とボス情報"
+    "list_description": "ペルソナ5 The Phantom X ベルベット試練のステージ条件とボス情報"
+  },
+  "cn": {
+    "title": "{name} | 天鹅绒试炼 | 路菲尔网 女神异闻录5：夜幕魅影",
+    "description": "{name} | 查看《女神异闻录5：夜幕魅影》天鹅绒试炼的关卡条件与首领信息",
+    "list_title": "天鹅绒试炼 | 路菲尔网 女神异闻录5：夜幕魅影",
+    "list_description": "查看《女神异闻录5：夜幕魅影》天鹅绒试炼的关卡条件与首领信息"
   }
 }

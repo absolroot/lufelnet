@@ -126,6 +126,7 @@ const VelvetTrialDataLoader = (function () {
       const kr = sanitizeName(row?.name) || id;
       const en = sanitizeName(row?.codename) || sanitizeName(row?.name_en) || kr;
       const jp = sanitizeName(row?.name_jp) || kr;
+      const cn = sanitizeName(row?.name_cn) || kr;
 
       output.push({
         id,
@@ -137,7 +138,7 @@ const VelvetTrialDataLoader = (function () {
         imageType: 'character',
         imageFile: `${id}.webp`,
         imageMissing: false,
-        names: { kr, en, jp }
+        names: { kr, en, jp, cn }
       });
     });
 

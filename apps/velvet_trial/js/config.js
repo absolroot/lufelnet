@@ -5,7 +5,7 @@ const VelvetTrialConfig = (function () {
   return {
     BASE,
     APP_VER,
-    SUPPORTED_LANGS: ['kr', 'en', 'jp'],
+    SUPPORTED_LANGS: ['kr', 'en', 'jp', 'cn'],
 
     getDataUrl(lang) {
       return `${BASE}/apps/velvet_trial/data/${lang}.json${APP_VER ? `?v=${APP_VER}` : ''}`;

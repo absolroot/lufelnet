@@ -11,7 +11,7 @@
       "effect": {
         "sn": 4001,
         "name": "해명 특화",
-        "desc": "『解明』ロールの味方のステータス上昇効果が２５%上昇する。"
+        "desc": "『解明』ロールの味方の<color=#FFFC40>ステータス上昇</color>効果が２５%上昇する。"
       },
       "images": {
         "chapterNameRes": "shilian-wenzi05-i18n.png",
@@ -5930,13 +5930,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                3,
-                7
-              ],
-              "multiplier": 5,
-              "raw": "12,3:7,5"
+              "type": "raw",
+              "raw": "14,5"
             },
             "rule2": {
               "type": "turn_limit",
@@ -6057,13 +6052,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                3,
-                7
-              ],
-              "multiplier": 5,
-              "raw": "12,3:7,5"
+              "type": "raw",
+              "raw": "14,5"
             },
             "rule2": {
               "type": "turn_limit",
@@ -6184,13 +6174,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                3,
-                7
-              ],
-              "multiplier": 5,
-              "raw": "12,3:7,5"
+              "type": "raw",
+              "raw": "14,5"
             },
             "rule2": {
               "type": "turn_limit",
@@ -6336,13 +6321,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                3,
-                7
-              ],
-              "multiplier": 5,
-              "raw": "12,3:7,5"
+              "type": "raw",
+              "raw": "14,5"
             },
             "rule2": {
               "type": "turn_limit",
@@ -6442,13 +6422,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                3,
-                7
-              ],
-              "multiplier": 5,
-              "raw": "12,3:7,5"
+              "type": "raw",
+              "raw": "14,5"
             },
             "rule2": {
               "type": "turn_limit",
@@ -6556,13 +6531,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                3,
-                7
-              ],
-              "multiplier": 5,
-              "raw": "12,3:7,5"
+              "type": "raw",
+              "raw": "14,5"
             },
             "rule2": {
               "type": "turn_limit",
@@ -6641,13 +6611,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                3,
-                7
-              ],
-              "multiplier": 5,
-              "raw": "12,3:7,5"
+              "type": "raw",
+              "raw": "14,5"
             },
             "rule2": {
               "type": "turn_limit",
@@ -6725,13 +6690,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                3,
-                7
-              ],
-              "multiplier": 5,
-              "raw": "12,3:7,5"
+              "type": "raw",
+              "raw": "14,5"
             },
             "rule2": {
               "type": "turn_limit",
@@ -6835,13 +6795,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                3,
-                7
-              ],
-              "multiplier": 5,
-              "raw": "12,3:7,5"
+              "type": "raw",
+              "raw": "14,5"
             },
             "rule2": {
               "type": "turn_limit",
@@ -6920,13 +6875,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                3,
-                7
-              ],
-              "multiplier": 5,
-              "raw": "12,3:7,5"
+              "type": "raw",
+              "raw": "14,5"
             },
             "rule2": {
               "type": "turn_limit",
@@ -7027,13 +6977,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                3,
-                7
-              ],
-              "multiplier": 6,
-              "raw": "12,3:7,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -7094,13 +7039,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                3,
-                7
-              ],
-              "multiplier": 6,
-              "raw": "12,3:7,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -7179,13 +7119,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                3,
-                7
-              ],
-              "multiplier": 6,
-              "raw": "12,3:7,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -7265,13 +7200,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                3,
-                7
-              ],
-              "multiplier": 6,
-              "raw": "12,3:7,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -7369,13 +7299,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                3,
-                7
-              ],
-              "multiplier": 6,
-              "raw": "12,3:7,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -7436,13 +7361,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                3,
-                7
-              ],
-              "multiplier": 6,
-              "raw": "12,3:7,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -7524,13 +7444,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                3,
-                7
-              ],
-              "multiplier": 6,
-              "raw": "12,3:7,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -7589,13 +7504,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                3,
-                7
-              ],
-              "multiplier": 6,
-              "raw": "12,3:7,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -7676,13 +7586,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                3,
-                7
-              ],
-              "multiplier": 6,
-              "raw": "12,3:7,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -7821,13 +7726,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                3,
-                7
-              ],
-              "multiplier": 6,
-              "raw": "12,3:7,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -7906,13 +7806,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                3,
-                7
-              ],
-              "multiplier": 6,
-              "raw": "12,3:7,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -7971,13 +7866,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                3,
-                7
-              ],
-              "multiplier": 6,
-              "raw": "12,3:7,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -8057,13 +7947,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                3,
-                7
-              ],
-              "multiplier": 6,
-              "raw": "12,3:7,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -8164,13 +8049,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                3,
-                7
-              ],
-              "multiplier": 6,
-              "raw": "12,3:7,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -8297,13 +8177,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                3,
-                7
-              ],
-              "multiplier": 6,
-              "raw": "12,3:7,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -8405,13 +8280,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                4,
-                8
-              ],
-              "multiplier": 5,
-              "raw": "12,4:8,5"
+              "type": "raw",
+              "raw": "14,5"
             },
             "rule2": {
               "type": "turn_limit",
@@ -8553,13 +8423,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                4,
-                8
-              ],
-              "multiplier": 5,
-              "raw": "12,4:8,5"
+              "type": "raw",
+              "raw": "14,5"
             },
             "rule2": {
               "type": "turn_limit",
@@ -8682,13 +8547,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                4,
-                8
-              ],
-              "multiplier": 5,
-              "raw": "12,4:8,5"
+              "type": "raw",
+              "raw": "14,5"
             },
             "rule2": {
               "type": "turn_limit",
@@ -8771,13 +8631,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                4,
-                8
-              ],
-              "multiplier": 5,
-              "raw": "12,4:8,5"
+              "type": "raw",
+              "raw": "14,5"
             },
             "rule2": {
               "type": "turn_limit",
@@ -8881,13 +8736,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                4,
-                8
-              ],
-              "multiplier": 5,
-              "raw": "12,4:8,5"
+              "type": "raw",
+              "raw": "14,5"
             },
             "rule2": {
               "type": "turn_limit",
@@ -8970,13 +8820,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                4,
-                8
-              ],
-              "multiplier": 5,
-              "raw": "12,4:8,5"
+              "type": "raw",
+              "raw": "14,5"
             },
             "rule2": {
               "type": "turn_limit",
@@ -9057,13 +8902,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                4,
-                8
-              ],
-              "multiplier": 5,
-              "raw": "12,4:8,5"
+              "type": "raw",
+              "raw": "14,5"
             },
             "rule2": {
               "type": "turn_limit",
@@ -9159,13 +8999,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                4,
-                8
-              ],
-              "multiplier": 5,
-              "raw": "12,4:8,5"
+              "type": "raw",
+              "raw": "14,5"
             },
             "rule2": {
               "type": "turn_limit",
@@ -9247,13 +9082,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                4,
-                8
-              ],
-              "multiplier": 5,
-              "raw": "12,4:8,5"
+              "type": "raw",
+              "raw": "14,5"
             },
             "rule2": {
               "type": "turn_limit",
@@ -9356,13 +9186,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                4,
-                8
-              ],
-              "multiplier": 5,
-              "raw": "12,4:8,5"
+              "type": "raw",
+              "raw": "14,5"
             },
             "rule2": {
               "type": "turn_limit",
@@ -9424,13 +9249,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                4,
-                8
-              ],
-              "multiplier": 6,
-              "raw": "12,4:8,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -9508,13 +9328,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                4,
-                8
-              ],
-              "multiplier": 6,
-              "raw": "12,4:8,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -9614,13 +9429,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                4,
-                8
-              ],
-              "multiplier": 6,
-              "raw": "12,4:8,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -9700,13 +9510,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                4,
-                8
-              ],
-              "multiplier": 6,
-              "raw": "12,4:8,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -9782,13 +9587,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                4,
-                8
-              ],
-              "multiplier": 6,
-              "raw": "12,4:8,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -9866,13 +9666,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                4,
-                8
-              ],
-              "multiplier": 6,
-              "raw": "12,4:8,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -9993,13 +9788,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                4,
-                8
-              ],
-              "multiplier": 6,
-              "raw": "12,4:8,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -10124,13 +9914,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                4,
-                8
-              ],
-              "multiplier": 6,
-              "raw": "12,4:8,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -10210,13 +9995,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                4,
-                8
-              ],
-              "multiplier": 6,
-              "raw": "12,4:8,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -10280,13 +10060,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                4,
-                8
-              ],
-              "multiplier": 6,
-              "raw": "12,4:8,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -10367,13 +10142,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                4,
-                8
-              ],
-              "multiplier": 6,
-              "raw": "12,4:8,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -10430,13 +10200,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                4,
-                8
-              ],
-              "multiplier": 6,
-              "raw": "12,4:8,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -10517,13 +10282,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                4,
-                8
-              ],
-              "multiplier": 6,
-              "raw": "12,4:8,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -10620,13 +10380,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                4,
-                8
-              ],
-              "multiplier": 6,
-              "raw": "12,4:8,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -10685,13 +10440,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                4,
-                8
-              ],
-              "multiplier": 6,
-              "raw": "12,4:8,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -10769,13 +10519,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                5,
-                9
-              ],
-              "multiplier": 5,
-              "raw": "12,5:9,5"
+              "type": "raw",
+              "raw": "14,5"
             },
             "rule2": {
               "type": "turn_limit",
@@ -10896,13 +10641,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                5,
-                9
-              ],
-              "multiplier": 5,
-              "raw": "12,5:9,5"
+              "type": "raw",
+              "raw": "14,5"
             },
             "rule2": {
               "type": "turn_limit",
@@ -10982,13 +10722,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                5,
-                9
-              ],
-              "multiplier": 5,
-              "raw": "12,5:9,5"
+              "type": "raw",
+              "raw": "14,5"
             },
             "rule2": {
               "type": "turn_limit",
@@ -11136,13 +10871,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                5,
-                9
-              ],
-              "multiplier": 5,
-              "raw": "12,5:9,5"
+              "type": "raw",
+              "raw": "14,5"
             },
             "rule2": {
               "type": "turn_limit",
@@ -11223,13 +10953,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                5,
-                9
-              ],
-              "multiplier": 5,
-              "raw": "12,5:9,5"
+              "type": "raw",
+              "raw": "14,5"
             },
             "rule2": {
               "type": "turn_limit",
@@ -11331,13 +11056,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                5,
-                9
-              ],
-              "multiplier": 5,
-              "raw": "12,5:9,5"
+              "type": "raw",
+              "raw": "14,5"
             },
             "rule2": {
               "type": "turn_limit",
@@ -11449,13 +11169,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                5,
-                9
-              ],
-              "multiplier": 5,
-              "raw": "12,5:9,5"
+              "type": "raw",
+              "raw": "14,5"
             },
             "rule2": {
               "type": "turn_limit",
@@ -11576,13 +11291,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                5,
-                9
-              ],
-              "multiplier": 5,
-              "raw": "12,5:9,5"
+              "type": "raw",
+              "raw": "14,5"
             },
             "rule2": {
               "type": "turn_limit",
@@ -11662,13 +11372,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                5,
-                9
-              ],
-              "multiplier": 5,
-              "raw": "12,5:9,5"
+              "type": "raw",
+              "raw": "14,5"
             },
             "rule2": {
               "type": "turn_limit",
@@ -11747,13 +11452,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                5,
-                9
-              ],
-              "multiplier": 5,
-              "raw": "12,5:9,5"
+              "type": "raw",
+              "raw": "14,5"
             },
             "rule2": {
               "type": "turn_limit",
@@ -11832,13 +11532,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                5,
-                9
-              ],
-              "multiplier": 6,
-              "raw": "12,5:9,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -11920,13 +11615,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                5,
-                9
-              ],
-              "multiplier": 6,
-              "raw": "12,5:9,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -12024,13 +11714,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                5,
-                9
-              ],
-              "multiplier": 6,
-              "raw": "12,5:9,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -12112,13 +11797,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                5,
-                9
-              ],
-              "multiplier": 6,
-              "raw": "12,5:9,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -12241,13 +11921,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                5,
-                9
-              ],
-              "multiplier": 6,
-              "raw": "12,5:9,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -12306,13 +11981,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                5,
-                9
-              ],
-              "multiplier": 6,
-              "raw": "12,5:9,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -12395,13 +12065,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                5,
-                9
-              ],
-              "multiplier": 6,
-              "raw": "12,5:9,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -12500,13 +12165,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                5,
-                9
-              ],
-              "multiplier": 6,
-              "raw": "12,5:9,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -12567,13 +12227,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                5,
-                9
-              ],
-              "multiplier": 6,
-              "raw": "12,5:9,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -12654,13 +12309,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                5,
-                9
-              ],
-              "multiplier": 6,
-              "raw": "12,5:9,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -12722,13 +12372,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                5,
-                9
-              ],
-              "multiplier": 6,
-              "raw": "12,5:9,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -12807,13 +12452,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                5,
-                9
-              ],
-              "multiplier": 6,
-              "raw": "12,5:9,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -12873,13 +12513,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                5,
-                9
-              ],
-              "multiplier": 6,
-              "raw": "12,5:9,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -12960,13 +12595,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                5,
-                9
-              ],
-              "multiplier": 6,
-              "raw": "12,5:9,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -13073,13 +12703,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                5,
-                9
-              ],
-              "multiplier": 6,
-              "raw": "12,5:9,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -13159,13 +12784,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                6,
-                10
-              ],
-              "multiplier": 5,
-              "raw": "12,6:10,5"
+              "type": "raw",
+              "raw": "14,5"
             },
             "rule2": {
               "type": "turn_limit",
@@ -13309,13 +12929,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                6,
-                10
-              ],
-              "multiplier": 5,
-              "raw": "12,6:10,5"
+              "type": "raw",
+              "raw": "14,5"
             },
             "rule2": {
               "type": "turn_limit",
@@ -13460,13 +13075,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                6,
-                10
-              ],
-              "multiplier": 5,
-              "raw": "12,6:10,5"
+              "type": "raw",
+              "raw": "14,5"
             },
             "rule2": {
               "type": "turn_limit",
@@ -13587,13 +13197,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                6,
-                10
-              ],
-              "multiplier": 5,
-              "raw": "12,6:10,5"
+              "type": "raw",
+              "raw": "14,5"
             },
             "rule2": {
               "type": "turn_limit",
@@ -13674,13 +13279,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                6,
-                10
-              ],
-              "multiplier": 5,
-              "raw": "12,6:10,5"
+              "type": "raw",
+              "raw": "14,5"
             },
             "rule2": {
               "type": "turn_limit",
@@ -13822,13 +13422,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                6,
-                10
-              ],
-              "multiplier": 5,
-              "raw": "12,6:10,5"
+              "type": "raw",
+              "raw": "14,5"
             },
             "rule2": {
               "type": "turn_limit",
@@ -13886,13 +13481,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                6,
-                10
-              ],
-              "multiplier": 5,
-              "raw": "12,6:10,5"
+              "type": "raw",
+              "raw": "14,5"
             },
             "rule2": {
               "type": "turn_limit",
@@ -13972,13 +13562,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                6,
-                10
-              ],
-              "multiplier": 5,
-              "raw": "12,6:10,5"
+              "type": "raw",
+              "raw": "14,5"
             },
             "rule2": {
               "type": "turn_limit",
@@ -14080,13 +13665,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                6,
-                10
-              ],
-              "multiplier": 5,
-              "raw": "12,6:10,5"
+              "type": "raw",
+              "raw": "14,5"
             },
             "rule2": {
               "type": "turn_limit",
@@ -14171,13 +13751,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                6,
-                10
-              ],
-              "multiplier": 5,
-              "raw": "12,6:10,5"
+              "type": "raw",
+              "raw": "14,5"
             },
             "rule2": {
               "type": "turn_limit",
@@ -14236,13 +13811,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                6,
-                10
-              ],
-              "multiplier": 6,
-              "raw": "12,6:10,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -14322,13 +13892,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                6,
-                10
-              ],
-              "multiplier": 6,
-              "raw": "12,6:10,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -14407,13 +13972,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                6,
-                10
-              ],
-              "multiplier": 6,
-              "raw": "12,6:10,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -14473,13 +14033,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                6,
-                10
-              ],
-              "multiplier": 6,
-              "raw": "12,6:10,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -14559,13 +14114,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                6,
-                10
-              ],
-              "multiplier": 6,
-              "raw": "12,6:10,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -14648,13 +14198,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                6,
-                10
-              ],
-              "multiplier": 6,
-              "raw": "12,6:10,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -14733,13 +14278,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                6,
-                10
-              ],
-              "multiplier": 6,
-              "raw": "12,6:10,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -14798,13 +14338,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                6,
-                10
-              ],
-              "multiplier": 6,
-              "raw": "12,6:10,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -14956,13 +14491,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                6,
-                10
-              ],
-              "multiplier": 6,
-              "raw": "12,6:10,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -15039,13 +14569,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                6,
-                10
-              ],
-              "multiplier": 6,
-              "raw": "12,6:10,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -15105,13 +14630,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                6,
-                10
-              ],
-              "multiplier": 6,
-              "raw": "12,6:10,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -15190,13 +14710,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                6,
-                10
-              ],
-              "multiplier": 6,
-              "raw": "12,6:10,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -15256,13 +14771,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                6,
-                10
-              ],
-              "multiplier": 6,
-              "raw": "12,6:10,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -15361,13 +14871,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                6,
-                10
-              ],
-              "multiplier": 6,
-              "raw": "12,6:10,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",
@@ -15448,13 +14953,8 @@
           ],
           "conditions": {
             "rule1": {
-              "type": "element_score",
-              "elements": [
-                6,
-                10
-              ],
-              "multiplier": 6,
-              "raw": "12,6:10,6"
+              "type": "raw",
+              "raw": "14,6"
             },
             "rule2": {
               "type": "turn_limit",

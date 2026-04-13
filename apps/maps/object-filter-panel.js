@@ -61,6 +61,53 @@
             return false;
         },
 
+        normalizeObjectType(imageName) {
+            if (!imageName) return '';
+
+            let type = imageName;
+            if (type.startsWith('yishijie-icon-')) {
+                type = type.replace('yishijie-icon-', '');
+            }
+            if (type.startsWith('yishijie-')) {
+                type = type.replace('yishijie-', '');
+            }
+            if (type.endsWith('.png')) {
+                type = type.replace('.png', '');
+            }
+
+            // 특수 케이스: jinzhi2를 jinzhi로 통일 (같은 이미지)
+            if (type === 'jinzhi2') {
+                type = 'jinzhi';
+            }
+
+            return type;
+        },
+
+        buildFilterIconCandidates(type, imageName, iconPath) {
+            const candidates = [];
+            const seen = new Set();
+
+            const addCandidate = (fileName) => {
+                if (!fileName) return;
+                const candidate = `${iconPath}${fileName}`;
+                if (!seen.has(candidate)) {
+                    seen.add(candidate);
+                    candidates.push(candidate);
+                }
+            };
+
+            // 기존 규칙을 우선 유지하고, 실패할 때만 원본 파일명으로 fallback
+            if (type) {
+                addCandidate(`yishijie-icon-${type}.png`);
+                addCandidate(`yishijie-${type}.png`);
+            }
+            if (imageName) {
+                addCandidate(imageName);
+            }
+
+            return candidates;
+        },
+
         // 필터 UI 업데이트
         updateFilterUI(objects) {
             const container = document.getElementById('filter-container');
@@ -75,6 +122,7 @@
             
             // 타입별 오브젝트 수집 (비대화형 아이콘도 포함)
             const objectsByType = {};
+            const representativeImages = {};
             const nonInteractiveTypes = new Set(); // 비대화형 타입 추적
 
             validObjects.forEach(obj => {
@@ -85,25 +133,14 @@
                 const isCountable = this.isCountableIcon(obj.image);
 
                 // 오브젝트 타입 추출
-                let type = obj.image;
-                if (type.startsWith('yishijie-icon-')) {
-                    type = type.replace('yishijie-icon-', '');
-                }
-                if (type.startsWith('yishijie-')) {
-                    type = type.replace('yishijie-', '');
-                }
-                if (type.endsWith('.png')) {
-                    type = type.replace('.png', '');
-                }
-                
-                // 특수 케이스: jinzhi2를 jinzhi로 통일 (같은 이미지)
-                if (type === 'jinzhi2') {
-                    type = 'jinzhi';
-                }
+                const type = this.normalizeObjectType(obj.image);
 
                 if (type) {
                     if (!objectsByType[type]) {
                         objectsByType[type] = [];
+                    }
+                    if (!representativeImages[type]) {
+                        representativeImages[type] = obj.image;
                     }
                     // sn이 있고 카운트해야 할 아이콘인 경우에만 저장 (화이트리스트 방식)
                     if (obj.sn && !isNonInteractive && isCountable) {
@@ -128,30 +165,8 @@
                 const isNonInteractive = nonInteractiveTypes.has(type);
 
                 // 카운트해야 할 아이콘인지 확인 (화이트리스트 방식)
-                let isCountable = false;
-                // 해당 타입의 첫 번째 유효한 오브젝트 이미지로 확인
-                const firstObj = objects.find(obj => {
-                    if (!obj || !obj.image) return false;
-                    let objType = obj.image;
-                    if (objType.startsWith('yishijie-icon-')) {
-                        objType = objType.replace('yishijie-icon-', '');
-                    }
-                    if (objType.startsWith('yishijie-')) {
-                        objType = objType.replace('yishijie-', '');
-                    }
-                    if (objType.endsWith('.png')) {
-                        objType = objType.replace('.png', '');
-                    }
-                    // 특수 케이스: jinzhi2를 jinzhi로 통일
-                    if (objType === 'jinzhi2') {
-                        objType = 'jinzhi';
-                    }
-                    return objType === type;
-                });
-
-                if (firstObj) {
-                    isCountable = this.isCountableIcon(firstObj.image);
-                }
+                const representativeImage = representativeImages[type] || '';
+                const isCountable = representativeImage ? this.isCountableIcon(representativeImage) : false;
 
                 // 비대화형이 아니고 카운트해야 할 아이콘인 경우에만 클릭 상태 계산
                 let clicked = 0;
@@ -241,14 +256,19 @@
                     // 아이콘 이미지 (yishijie-icon- 또는 yishijie- 접두사 시도)
                     const icon = document.createElement('img');
                     icon.className = 'filter-icon';
-                    icon.src = `${ICON_PATH}yishijie-icon-${type}.png`;
-                    icon.onerror = () => {
-                        // yishijie-icon- 실패 시 yishijie- 시도
-                        icon.src = `${ICON_PATH}yishijie-${type}.png`;
-                        icon.onerror = () => {
+                    const representativeImage = representativeImages[type] || '';
+                    const iconCandidates = this.buildFilterIconCandidates(type, representativeImage, ICON_PATH);
+                    let iconCandidateIndex = 0;
+
+                    const tryNextIcon = () => {
+                        if (iconCandidateIndex >= iconCandidates.length) {
                             icon.style.display = 'none';
-                        };
+                            return;
+                        }
+                        icon.src = iconCandidates[iconCandidateIndex++];
                     };
+                    icon.onerror = tryNextIcon;
+                    tryNextIcon();
 
                     // 체크 표시 SVG (우측 상단 라벨 형식)
                     const checkMark = document.createElementNS('http://www.w3.org/2000/svg', 'svg');

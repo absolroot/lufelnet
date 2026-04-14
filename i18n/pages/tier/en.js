@@ -29,13 +29,14 @@ window.I18N_PAGE_TIER_EN = {
     tierLabel: 'Tier label',
 
     // Help message
-    helpMessage: '* Double-click the character to set the Awareness.',
+    helpMessage: '* Double-click the character to set Awareness and weapon refinement.',
 
     // Ritual modal
     ritualModalTitle: 'Character Enhancement',
     ritualCoreTitle: 'Mindscape Core',
     ritualCoreActivate: 'Activate Core',
     ritualAwarenessTitle: 'Awareness',
+    ritualWeaponTitle: 'Weapon Refinement',
     ritualCopy: 'Copy Character',
 
     // Toolbar buttons

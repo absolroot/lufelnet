@@ -29,13 +29,14 @@ window.I18N_PAGE_TIER_JP = {
     tierLabel: 'ティアラベル',
 
     // Help message
-    helpMessage: '* 怪盗をダブルクリックして意識を設定してください。',
+    helpMessage: '* 怪盗をダブルクリックして意識と専用武器改造を設定してください。',
 
     // Ritual modal
     ritualModalTitle: 'キャラクター強化要素',
     ritualCoreTitle: 'イメジャリー・コア',
     ritualCoreActivate: 'コア活性化',
-    ritualAwarenessTitle: 'Awareness',
+    ritualAwarenessTitle: '意識',
+    ritualWeaponTitle: '専用武器改造',
     ritualCopy: 'キャラクターをコピー',
 
     // Toolbar buttons

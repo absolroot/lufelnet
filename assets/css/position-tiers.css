@@ -1057,10 +1057,6 @@ button {
   background: rgba(74, 222, 128, 0.2);
 }
 
-.ritual-option:first-child {
-  grid-column: 1 / -1;
-}
-
 .ritual-none {
   font-weight: bold;
   color: white;
@@ -1141,25 +1137,37 @@ button {
   font-weight: 500;
 }
 
-/* Ritual icon on character card (right bottom) */
-.character-ritual-icon {
+/* Enhancement icon group on character card (right bottom) */
+.character-enhancement-icons {
   position: absolute !important;
   bottom: 2px !important;
   right: 2px !important;
-  width: 30px !important;
-  height: 30px !important;
-  object-fit: contain;
+  display: flex;
+  align-items: center;
+  gap: 0;
   z-index: 100 !important;
   pointer-events: none;
+}
+
+.character-enhancement-icons > * + * {
+  margin-left: -2px;
+}
+
+.character-awareness-icon,
+.character-weapon-refinement-icon {
+  object-fit: contain;
   display: block !important;
   filter: drop-shadow(1px 0 0 #ffffff) drop-shadow(-1px 0 0 #ffffff) drop-shadow(0 1px 0 #ffffff) drop-shadow(0 -1px 0 #ffffff);
 }
 
-@media (max-width: 1200px) {
-  .character-ritual-icon {
-    width: 24px !important;
-    height: 24px !important;
-  }
+.character-awareness-icon {
+  width: 28px !important;
+  height: 28px !important;
+}
+
+.character-weapon-refinement-icon {
+  width: 24px !important;
+  height: 24px !important;
 }
 
 /* Core icon on character card (left bottom) */
@@ -1192,7 +1200,7 @@ button {
   flex-shrink: 0;
 }
 
-.character-wrapper img:first-child {
+.character-wrapper .character-img {
   display: block;
   position: relative;
   z-index: 1;

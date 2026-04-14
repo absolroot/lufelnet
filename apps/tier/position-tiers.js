@@ -102,13 +102,151 @@ const buildCharacterDetailHref = (characterName, lang) => {
 };
 
 const getNewTierLabel = () => getTierI18nText('newTierLabel', 'New');
+const PRIMARY_CHARACTER_SELECTOR = 'img.character-img';
+const CHARACTER_DATASET_KEYS = ['element', 'position', 'rarity', 'tags', 'ritual', 'core', 'weaponRefinement'];
+
+const isCharacterOverlayIcon = (img) => {
+  if (!img || !img.classList) return false;
+  return img.classList.contains('character-awareness-icon') ||
+    img.classList.contains('character-ritual-icon') ||
+    img.classList.contains('character-weapon-refinement-icon') ||
+    img.classList.contains('character-core-icon');
+};
+
+const normalizeAwarenessType = (value) => {
+  if (value === undefined || value === null || value === '' || value === 'none') {
+    return 'none';
+  }
+
+  const normalized = String(value).trim().toLowerCase();
+  if (/^a[0-6]$/.test(normalized)) {
+    return normalized;
+  }
+
+  const legacyNumberMatch = normalized.match(/^num([1-6])$/);
+  if (legacyNumberMatch) {
+    return `a${legacyNumberMatch[1]}`;
+  }
+
+  const awarenessMatch = normalized.match(/^awareness\s*(\d)$/);
+  if (awarenessMatch && Number(awarenessMatch[1]) >= 0 && Number(awarenessMatch[1]) <= 6) {
+    return `a${awarenessMatch[1]}`;
+  }
+
+  if (/^[0-6]$/.test(normalized)) {
+    return `a${normalized}`;
+  }
+
+  return 'none';
+};
+
+const normalizeWeaponRefinement = (value) => {
+  if (value === undefined || value === null || value === '' || value === 'none') {
+    return 'none';
+  }
+
+  const normalized = String(value).trim().toLowerCase();
+  if (/^r[0-6]$/.test(normalized)) {
+    return normalized;
+  }
+
+  if (/^[0-6]$/.test(normalized)) {
+    return `r${normalized}`;
+  }
+
+  return 'none';
+};
+
+const syncWrapperDatasetFromImage = (img, wrapper) => {
+  if (!img || !wrapper) return;
+  wrapper.alt = img.alt || '';
+  CHARACTER_DATASET_KEYS.forEach((key) => {
+    if (img.dataset[key] !== undefined) {
+      wrapper.dataset[key] = img.dataset[key];
+    } else {
+      delete wrapper.dataset[key];
+    }
+  });
+};
+
+const buildEnhancementIcon = ({ src, className, alt }) => {
+  const icon = document.createElement('img');
+  icon.src = src;
+  icon.className = className;
+  icon.alt = alt;
+  return icon;
+};
+
+const renderCharacterEnhancementIcons = (img) => {
+  if (!img) return null;
+
+  const awarenessType = normalizeAwarenessType(img.dataset.ritual);
+  const weaponRefinement = normalizeWeaponRefinement(img.dataset.weaponRefinement);
+  const hasCore = img.dataset.core === 'true';
+
+  img.dataset.ritual = awarenessType;
+  img.dataset.weaponRefinement = weaponRefinement;
+  img.dataset.core = hasCore ? 'true' : 'false';
+
+  const wrapper = wrapCharacterImage(img);
+  if (!wrapper || wrapper === img) return wrapper;
+
+  syncWrapperDatasetFromImage(img, wrapper);
+  wrapper.dataset.ritual = awarenessType;
+  wrapper.dataset.weaponRefinement = weaponRefinement;
+  wrapper.dataset.core = hasCore ? 'true' : 'false';
+
+  const existingEnhancementGroup = wrapper.querySelector('.character-enhancement-icons');
+  if (existingEnhancementGroup) {
+    existingEnhancementGroup.remove();
+  }
+
+  const existingCoreIcon = wrapper.querySelector('.character-core-icon');
+  if (existingCoreIcon) {
+    existingCoreIcon.remove();
+  }
+
+  const enhancementIcons = [];
+  if (awarenessType !== 'none') {
+    enhancementIcons.push(buildEnhancementIcon({
+      src: `${BASE_URL}/assets/img/ritual/${awarenessType}.png`,
+      className: 'character-awareness-icon',
+      alt: `Awareness ${awarenessType.toUpperCase()}`
+    }));
+  }
+
+  if (weaponRefinement !== 'none') {
+    enhancementIcons.push(buildEnhancementIcon({
+      src: `${BASE_URL}/assets/img/character-weapon/${weaponRefinement}.png`,
+      className: 'character-weapon-refinement-icon',
+      alt: `Refinement ${weaponRefinement.toUpperCase()}`
+    }));
+  }
+
+  if (enhancementIcons.length > 0) {
+    const enhancementGroup = document.createElement('div');
+    enhancementGroup.className = 'character-enhancement-icons';
+    enhancementIcons.forEach((icon) => enhancementGroup.appendChild(icon));
+    wrapper.appendChild(enhancementGroup);
+  }
+
+  if (hasCore) {
+    const coreIcon = document.createElement('img');
+    coreIcon.src = `${BASE_URL}/assets/img/character-detail/innate/core.png`;
+    coreIcon.className = 'character-core-icon';
+    coreIcon.alt = 'Core';
+    wrapper.appendChild(coreIcon);
+  }
+
+  return wrapper;
+};
 
 // 필터링된 캐릭터들의 원래 위치를 저장하는 맵 (parent와 nextSibling 정보 포함)
 const originalPositions = new Map();
 
 // 이미지와 wrapper에 클래스를 설정하는 공통 함수
 const applyCharacterClasses = (img, wrapper = null) => {
-  if (!img || img.classList.contains('character-ritual-icon') || img.classList.contains('character-core-icon')) return;
+  if (!img || isCharacterOverlayIcon(img)) return;
 
   // 이미지에 character-img 클래스 추가
   img.classList.add('character-img');
@@ -136,20 +274,18 @@ const applyCharacterClasses = (img, wrapper = null) => {
 };
 
 const wrapCharacterImage = (img) => {
-  if (!img || img.classList.contains('character-ritual-icon') || img.classList.contains('character-core-icon')) return img;
+  if (!img || isCharacterOverlayIcon(img)) return img;
   const existingWrapper = img.closest('.character-wrapper');
-  if (existingWrapper) return existingWrapper;
+  if (existingWrapper) {
+    syncWrapperDatasetFromImage(img, existingWrapper);
+    return existingWrapper;
+  }
 
   const wrapper = document.createElement('div');
   wrapper.className = 'character-wrapper';
   wrapper.draggable = true;
 
-  wrapper.alt = img.alt || '';
-  ['element', 'position', 'rarity', 'tags', 'ritual', 'core'].forEach((key) => {
-    if (img.dataset[key] !== undefined) {
-      wrapper.dataset[key] = img.dataset[key];
-    }
-  });
+  syncWrapperDatasetFromImage(img, wrapper);
 
   // 공통 함수로 클래스 적용
   applyCharacterClasses(img, wrapper);
@@ -169,16 +305,30 @@ const getCharacterContainer = (img) => {
   return img.closest('.character-wrapper') || img;
 };
 
+const getCharacterItems = (container) => {
+  if (!container) return [];
+  return Array.from(container.querySelectorAll(`.character-wrapper, ${PRIMARY_CHARACTER_SELECTOR}`))
+    .filter(item => item.classList.contains('character-wrapper') || !item.closest('.character-wrapper'));
+};
+
+const moveCharacterItemsToCards = (container) => {
+  getCharacterItems(container).forEach((item) => {
+    if (item.classList.contains('character-wrapper')) {
+      cardsContainer.appendChild(item);
+      return;
+    }
+    cardsContainer.appendChild(wrapCharacterImage(item));
+  });
+};
+
 const TIER_CHARACTER_DETAIL_ANCHOR_CLASS = 'character-detail-anchor';
 
 const getPrimaryCharacterImage = (element) => {
   if (!element) return null;
-  if (element.tagName === 'IMG' &&
-    !element.classList.contains('character-ritual-icon') &&
-    !element.classList.contains('character-core-icon')) {
+  if (element.tagName === 'IMG' && element.matches(PRIMARY_CHARACTER_SELECTOR)) {
     return element;
   }
-  return element.querySelector('img:not(.character-ritual-icon):not(.character-core-icon)');
+  return element.querySelector(PRIMARY_CHARACTER_SELECTOR);
 };
 
 const removeCharacterDetailAnchor = (img) => {
@@ -233,9 +383,8 @@ const positions = [
 ];
 
 const resetTierImages = (tierRow) => {
-  const images = tierRow.querySelectorAll(".position-cell img");
-  images.forEach((img) => {
-    cardsContainer.appendChild(img);
+  tierRow.querySelectorAll(".position-cell").forEach((positionCell) => {
+    moveCharacterItemsToCards(positionCell);
   });
 };
 
@@ -248,8 +397,7 @@ const handleDeleteTier = () => {
       const mobileContainer = activeTier.closest('.tier-mobile-container');
       if (mobileContainer) {
         // Move all images back to cards container
-        const images = mobileContainer.querySelectorAll('img');
-        images.forEach(img => cardsContainer.appendChild(img));
+        moveCharacterItemsToCards(mobileContainer);
 
         // Remove the entire mobile container
         mobileContainer.remove();
@@ -275,8 +423,7 @@ const handleDeleteTier = () => {
         // Move all images from position cells back to cards container
         tierRowElements.forEach(element => {
           if (element && element.classList.contains('position-cell')) {
-            const images = element.querySelectorAll('img');
-            images.forEach(img => cardsContainer.appendChild(img));
+            moveCharacterItemsToCards(element);
           }
         });
 
@@ -302,8 +449,7 @@ const handleClearTier = () => {
     let nextElement = tierLabelCell.nextElementSibling;
     while (nextElement && !nextElement.classList.contains('tier-label-cell')) {
       if (nextElement.classList.contains('position-cell')) {
-        const images = nextElement.querySelectorAll('img');
-        images.forEach(img => cardsContainer.appendChild(img));
+        moveCharacterItemsToCards(nextElement);
       }
       nextElement = nextElement.nextElementSibling;
     }
@@ -646,10 +792,12 @@ const handleResponsiveLayout = () => {
 
         if (positionCell) {
           const characters = [];
-          const images = positionCell.querySelectorAll('img');
-          images.forEach(img => {
+          const items = getCharacterItems(positionCell);
+          items.forEach(item => {
+            const img = getPrimaryCharacterImage(item);
+            if (!img) return;
             characters.push({
-              element: img,
+              element: item,
               name: img.alt,
               position: img.dataset.position
             });
@@ -994,12 +1142,12 @@ const initColorOptions = () => {
 };
 
 const dedupeCharacterPool = () => {
-  const poolItems = Array.from(cardsContainer.querySelectorAll('.character-wrapper, img:not(.character-ritual-icon):not(.character-core-icon)'))
+  const poolItems = Array.from(cardsContainer.querySelectorAll(`.character-wrapper, ${PRIMARY_CHARACTER_SELECTOR}`))
     .filter(item => item.classList.contains('character-wrapper') || !item.closest('.character-wrapper'));
   const seen = new Set();
 
   poolItems.forEach(item => {
-    const img = item.tagName === 'IMG' ? item : item.querySelector('img:not(.character-ritual-icon):not(.character-core-icon)');
+    const img = item.tagName === 'IMG' ? item : item.querySelector(PRIMARY_CHARACTER_SELECTOR);
     if (!img) return;
     const rawSrc = img.getAttribute('src') || '';
     const key = `${(img.alt || '').trim()}|${rawSrc.trim()}`;
@@ -1021,7 +1169,7 @@ const loadCharacterImages = () => {
 
   // 기존 카드 풀에 이미 존재하는 캐릭터 이름 (중복 append 방지)
   const existingPoolNames = new Set(
-    Array.from(cardsContainer.querySelectorAll('img:not(.character-ritual-icon):not(.character-core-icon)'))
+    Array.from(cardsContainer.querySelectorAll(PRIMARY_CHARACTER_SELECTOR))
       .map(img => img.alt)
       .filter(Boolean)
   );
@@ -1099,7 +1247,7 @@ window.reloadPositionTierCharacterPool = async function (useKROverride) {
 // 주어진 캐릭터 이름들이 DOM에 없으면 카드 풀에 보강 생성
 const ensurePoolHasCharacters = (characterNames) => {
   if (!Array.isArray(characterNames) || characterNames.length === 0) return;
-  const allImgs = Array.from(document.querySelectorAll('img'));
+  const allImgs = Array.from(document.querySelectorAll(PRIMARY_CHARACTER_SELECTOR));
   characterNames.forEach(name => {
     try {
       const exists = allImgs.some(img => img.alt === name);
@@ -1270,13 +1418,13 @@ const attachDragListeners = (element, force = false) => {
 const initDraggables = () => {
   // 캐릭터 풀의 wrapper/이미지들
   const poolWrappers = Array.from(cardsContainer.querySelectorAll('.character-wrapper'));
-  const poolImages = Array.from(cardsContainer.querySelectorAll('img:not(.character-ritual-icon):not(.character-core-icon)'))
+  const poolImages = Array.from(cardsContainer.querySelectorAll(PRIMARY_CHARACTER_SELECTOR))
     .filter(img => !img.closest('.character-wrapper'));
   poolWrappers.concat(poolImages).forEach(el => attachDragListeners(el));
 
   // 티어에 배치된 wrapper/이미지들
   const tierWrappers = Array.from(document.querySelectorAll('.position-cell .character-wrapper'));
-  const tierImages = Array.from(document.querySelectorAll('.position-cell img:not(.character-ritual-icon):not(.character-core-icon)'))
+  const tierImages = Array.from(document.querySelectorAll(`.position-cell ${PRIMARY_CHARACTER_SELECTOR}`))
     .filter(img => !img.closest('.character-wrapper'));
   tierWrappers.concat(tierImages).forEach(el => attachDragListeners(el));
 
@@ -1292,7 +1440,7 @@ const refreshDragListeners = () => {
 // 모든 캐릭터의 드래그 리스너를 모드에 맞게 업데이트
 const updateAllDragListenersForMode = () => {
   // 모든 캐릭터 이미지와 wrapper 찾기
-  const allCharacters = document.querySelectorAll('.main-wrapper img, .character-wrapper');
+  const allCharacters = document.querySelectorAll(`.main-wrapper ${PRIMARY_CHARACTER_SELECTOR}, .character-wrapper`);
 
   allCharacters.forEach(element => {
     // 이미 드래그 리스너가 있는 요소만 업데이트 (강제 업데이트)
@@ -1375,7 +1523,7 @@ const applyFilters = () => {
     originalPositions.clear();
 
     // 캐릭터 풀의 모든 이미지 표시
-    const poolImages = cardsContainer.querySelectorAll('img');
+    const poolImages = cardsContainer.querySelectorAll(PRIMARY_CHARACTER_SELECTOR);
     poolImages.forEach(img => {
       img.style.display = 'block';
     });
@@ -1383,11 +1531,11 @@ const applyFilters = () => {
   }
 
   // 캐릭터 풀의 이미지들 필터링
-  const poolItems = Array.from(cardsContainer.querySelectorAll('.character-wrapper, img:not(.character-ritual-icon):not(.character-core-icon)'))
+  const poolItems = Array.from(cardsContainer.querySelectorAll(`.character-wrapper, ${PRIMARY_CHARACTER_SELECTOR}`))
     .filter(item => item.classList.contains('character-wrapper') || !item.closest('.character-wrapper'));
   poolItems.forEach(item => {
     if (!item.closest('.cards') || item.closest('.cards') !== cardsContainer) return;
-    const img = item.tagName === 'IMG' ? item : item.querySelector('img');
+    const img = item.tagName === 'IMG' ? item : item.querySelector(PRIMARY_CHARACTER_SELECTOR);
     if (!img) return;
 
     const element = img.dataset.element;
@@ -1437,10 +1585,10 @@ const applyFilters = () => {
   });
 
   // 티어에 배치된 캐릭터들도 필터링
-  const tierItems = Array.from(document.querySelectorAll('.position-cell .character-wrapper, .position-cell img:not(.character-ritual-icon):not(.character-core-icon)'))
+  const tierItems = Array.from(document.querySelectorAll(`.position-cell .character-wrapper, .position-cell ${PRIMARY_CHARACTER_SELECTOR}`))
     .filter(item => item.classList.contains('character-wrapper') || !item.closest('.character-wrapper'));
   tierItems.forEach(item => {
-    const img = item.tagName === 'IMG' ? item : item.querySelector('img');
+    const img = item.tagName === 'IMG' ? item : item.querySelector(PRIMARY_CHARACTER_SELECTOR);
     if (!img) return;
     const element = img.dataset.element;
     const position = img.dataset.position;
@@ -1684,19 +1832,20 @@ const loadTierDataFromURL = (tierData) => {
             // 캐릭터 데이터가 문자열인지 객체인지 확인 (하위 호환성)
             const charName = typeof charData === 'string' ? charData : charData.name;
             let ritualType = 'none';
+            let weaponRefinement = 'none';
             let hasCore = false;
 
             if (typeof charData === 'object') {
-              // 새로운 JSON 형식: { "name": "...", "Awareness": 1, "core": true }
-              if (charData.Awareness) {
-                ritualType = `num${charData.Awareness}`;
+              // 새로운 JSON 형식: { "name": "...", "Awareness": 1, "weaponRefinement": 3, "core": true }
+              if (Object.prototype.hasOwnProperty.call(charData, 'Awareness')) {
+                ritualType = normalizeAwarenessType(charData.Awareness);
               }
               // 이전 형식 호환성: { "name": "...", "ritual": "Awareness 1" }
               else if (charData.ritual && charData.ritual !== 'none') {
-                const match = charData.ritual.match(/Awareness (\d+)/);
-                if (match) {
-                  ritualType = `num${match[1]}`;
-                }
+                ritualType = normalizeAwarenessType(charData.ritual);
+              }
+              if (Object.prototype.hasOwnProperty.call(charData, 'weaponRefinement')) {
+                weaponRefinement = normalizeWeaponRefinement(charData.weaponRefinement);
               }
               // Core 속성 처리
               if (charData.core === true) {
@@ -1713,39 +1862,18 @@ const loadTierDataFromURL = (tierData) => {
 
             // 1) 카드 풀에 남아있는 동일 이름 이미지 우선 사용
             // 특수문자가 포함된 이름을 안전하게 찾기 위해 모든 이미지를 순회
-            const allImages = Array.from(document.querySelectorAll('img:not(.character-ritual-icon):not(.character-core-icon)'));
+            const allImages = Array.from(document.querySelectorAll(PRIMARY_CHARACTER_SELECTOR));
             const fromPool = allImages.find(img => {
               return img.alt === charName && img.closest('.cards') === cardsContainer;
             });
 
             if (fromPool) {
-              // fromPool이 wrapper인지 이미지인지 확인
-              if (fromPool.tagName === 'IMG') {
-                // 이미지인 경우
-                charImage = fromPool;
-              } else {
-                // wrapper인 경우, 내부 이미지를 찾음
-                const innerImg = fromPool.querySelector('img:not(.character-ritual-icon):not(.character-core-icon)');
-                if (innerImg) {
-                  charImage = innerImg;
-                  // wrapper에서 이미지를 제거 (나중에 새로운 위치에 배치하기 위해)
-                  innerImg.remove();
-                } else {
-                  // wrapper 안에 이미지가 없으면 새로 생성
-                  charImage = null;
-                }
-              }
+              charImage = fromPool;
             } else {
               // 2) 이미 배치된 것이 있다면 첫 번째 것을 복제
               const existingImage = allImages.find(img => img.alt === charName);
               if (existingImage) {
-                // 복제할 때 wrapper 안의 이미지인지 확인
-                const actualImage = existingImage.tagName === 'IMG' ? existingImage : existingImage.querySelector('img:not(.character-ritual-icon):not(.character-core-icon)');
-                if (actualImage) {
-                  charImage = actualImage.cloneNode(true);
-                } else {
-                  charImage = existingImage.cloneNode(true);
-                }
+                charImage = existingImage.cloneNode(true);
                 attachDragListeners(charImage, true);
               } else if (window.characterData && window.characterData[charName]) {
                 // 3) 전혀 없는 경우 새로 생성
@@ -1790,10 +1918,6 @@ const loadTierDataFromURL = (tierData) => {
             let existingWrapper = null;
             if (charImage.tagName === 'IMG') {
               existingWrapper = charImage.closest('.character-wrapper');
-              // 기존 wrapper가 있으면 제거 (새로운 위치에 배치하기 위해)
-              if (existingWrapper && existingWrapper.parentElement === cardsContainer) {
-                existingWrapper.remove();
-              }
             }
 
             // rarity 정보가 없으면 characterData에서 가져오기
@@ -1814,64 +1938,18 @@ const loadTierDataFromURL = (tierData) => {
               existingWrapper.style.position = 'relative';
             }
 
-            // ritual 및 core 데이터 설정
+            // awareness / weapon refinement / core 데이터 설정
             charImage.dataset.ritual = ritualType;
+            charImage.dataset.weaponRefinement = weaponRefinement;
             charImage.dataset.core = hasCore ? 'true' : 'false';
 
-            if ((ritualType && ritualType !== 'none') || hasCore) {
-              // ritual이나 core가 있으면 wrapper 생성하여 배치
-              const wrapper = document.createElement('div');
-              wrapper.className = 'character-wrapper';
-              wrapper.draggable = true;
-              // ::after 가상 요소가 작동하려면 position: relative가 필요
-              wrapper.style.position = 'relative';
-              // 이미지의 데이터셋을 wrapper에도 복사
-              wrapper.alt = charImage.alt;
-              wrapper.dataset.element = charImage.dataset.element;
-              wrapper.dataset.position = charImage.dataset.position;
-              wrapper.dataset.rarity = charImage.dataset.rarity;
-              wrapper.dataset.tags = charImage.dataset.tags;
-              wrapper.dataset.ritual = ritualType;
-              wrapper.dataset.core = hasCore ? 'true' : 'false';
-
-              // 공통 함수로 클래스 적용 (list=false일 때와 동일한 방식)
-              applyCharacterClasses(charImage, wrapper);
-
-              // 이미지에도 position: relative 설정
-              charImage.style.position = 'relative';
-
-              // wrapper로 드래그 위임
-              charImage.draggable = false;
-
-              // 최종 배치
-              positionCell.appendChild(wrapper);
+            const wrapper = existingWrapper || wrapCharacterImage(charImage);
+            positionCell.appendChild(wrapper);
+            if (wrapper.contains(charImage) === false) {
               wrapper.appendChild(charImage);
-
-              // ritual 아이콘 추가 (우측 하단)
-              if (ritualType && ritualType !== 'none') {
-                const ritualIcon = document.createElement('img');
-                ritualIcon.src = `${BASE_URL}/assets/img/ritual/${ritualType}.png`;
-                ritualIcon.className = 'character-ritual-icon';
-                ritualIcon.alt = `Ritual ${ritualType}`;
-                wrapper.appendChild(ritualIcon);
-              }
-
-              // core 아이콘 추가 (좌측 하단)
-              if (hasCore) {
-                const coreIcon = document.createElement('img');
-                coreIcon.src = `${BASE_URL}/assets/img/character-detail/innate/core.png`;
-                coreIcon.className = 'character-core-icon';
-                coreIcon.alt = 'Core';
-                wrapper.appendChild(coreIcon);
-              }
-
-              // 드래그 리스너는 wrapper에
-              attachDragListeners(wrapper);
-            } else {
-              const wrapper = wrapCharacterImage(charImage);
-              positionCell.appendChild(wrapper);
-              attachDragListeners(wrapper);
             }
+            renderCharacterEnhancementIcons(charImage);
+            attachDragListeners(wrapper);
           });
         }
       });
@@ -2047,18 +2125,11 @@ cardsContainer.addEventListener("dragleave", (event) => {
 
 // 리추얼 데이터를 JSON 형식으로 변환하는 함수
 const convertRitualToJSON = (ritualType) => {
-  if (!ritualType || ritualType === 'none') {
+  const normalizedRitualType = normalizeAwarenessType(ritualType);
+  if (normalizedRitualType === 'none') {
     return null;
   }
-  const ritualMap = {
-    'num1': { "Awareness": 1 },
-    'num2': { "Awareness": 2 },
-    'num3': { "Awareness": 3 },
-    'num4': { "Awareness": 4 },
-    'num5': { "Awareness": 5 },
-    'num6': { "Awareness": 6 }
-  };
-  return ritualMap[ritualType] || null;
+  return { "Awareness": Number(normalizedRitualType.replace('a', '')) };
 };
 
 // 리추얼 JSON 데이터를 내부 형식으로 역변환하는 함수 (import용)
@@ -2066,10 +2137,40 @@ const convertRitualFromJSON = (ritualData) => {
   if (!ritualData || typeof ritualData !== 'object') {
     return 'none';
   }
-  if (ritualData.Awareness) {
-    return `num${ritualData.Awareness}`;
+  if (Object.prototype.hasOwnProperty.call(ritualData, 'Awareness')) {
+    return normalizeAwarenessType(ritualData.Awareness);
   }
   return 'none';
+};
+
+const convertWeaponRefinementToJSON = (weaponRefinement) => {
+  const normalizedWeaponRefinement = normalizeWeaponRefinement(weaponRefinement);
+  if (normalizedWeaponRefinement === 'none') {
+    return null;
+  }
+  return { weaponRefinement: Number(normalizedWeaponRefinement.replace('r', '')) };
+};
+
+const buildCharacterExportData = (img, ritualType, hasCore, weaponRefinement) => {
+  const characterData = {
+    name: img.alt
+  };
+
+  const ritualData = convertRitualToJSON(ritualType);
+  if (ritualData) {
+    Object.assign(characterData, ritualData);
+  }
+
+  const weaponRefinementData = convertWeaponRefinementToJSON(weaponRefinement);
+  if (weaponRefinementData) {
+    Object.assign(characterData, weaponRefinementData);
+  }
+
+  if (hasCore) {
+    characterData.core = true;
+  }
+
+  return characterData;
 };
 
 // 티어 리스트 결과를 JSON으로 내보내는 함수 (인코딩 없이)
@@ -2105,10 +2206,6 @@ const exportTierListAsJSON = () => {
           const positionId = nextElement.dataset.position;
           const characters = [];
 
-          // 해당 셀의 모든 캐릭터 이미지 수집 (이름만 저장)
-          const wrappers = nextElement.querySelectorAll('.character-wrapper');
-          const images = nextElement.querySelectorAll('img:not(.character-ritual-icon):not(.character-core-icon)');
-
           // DOM 순서대로 모든 캐릭터 수집 (wrapper와 일반 이미지 순서 유지)
           const allElements = Array.from(nextElement.children);
 
@@ -2116,31 +2213,24 @@ const exportTierListAsJSON = () => {
             let img = null;
             let ritualType = 'none';
             let hasCore = false;
+            let weaponRefinement = 'none';
 
             if (element.classList.contains('character-wrapper')) {
               // wrapper 안의 이미지 처리
-              img = element.querySelector('img:not(.character-ritual-icon):not(.character-core-icon)');
-              ritualType = element.dataset.ritual || 'none';
+              img = element.querySelector(PRIMARY_CHARACTER_SELECTOR);
+              ritualType = normalizeAwarenessType(element.dataset.ritual);
               hasCore = element.dataset.core === 'true';
-            } else if (element.tagName === 'IMG' && !element.classList.contains('character-ritual-icon') && !element.classList.contains('character-core-icon')) {
+              weaponRefinement = normalizeWeaponRefinement(element.dataset.weaponRefinement);
+            } else if (element.tagName === 'IMG' && element.matches(PRIMARY_CHARACTER_SELECTOR)) {
               // 일반 이미지 처리
               img = element;
-              ritualType = element.dataset.ritual || 'none';
+              ritualType = normalizeAwarenessType(element.dataset.ritual);
               hasCore = element.dataset.core === 'true';
+              weaponRefinement = normalizeWeaponRefinement(element.dataset.weaponRefinement);
             }
 
             if (img) {
-              const characterData = {
-                name: img.alt
-              };
-              const ritualData = convertRitualToJSON(ritualType);
-              if (ritualData) {
-                Object.assign(characterData, ritualData);
-              }
-              if (hasCore) {
-                characterData.core = true;
-              }
-              characters.push(characterData);
+              characters.push(buildCharacterExportData(img, ritualType, hasCore, weaponRefinement));
             }
           });
 
@@ -2179,10 +2269,6 @@ const exportTierListAsJSON = () => {
           const positionId = nextElement.dataset.position;
           const characters = [];
 
-          // 해당 셀의 모든 캐릭터 이미지 수집 (이름만 저장)
-          const wrappers = nextElement.querySelectorAll('.character-wrapper');
-          const images = nextElement.querySelectorAll('img:not(.character-ritual-icon):not(.character-core-icon)');
-
           // DOM 순서대로 모든 캐릭터 수집 (wrapper와 일반 이미지 순서 유지)
           const allElements = Array.from(nextElement.children);
 
@@ -2190,31 +2276,24 @@ const exportTierListAsJSON = () => {
             let img = null;
             let ritualType = 'none';
             let hasCore = false;
+            let weaponRefinement = 'none';
 
             if (element.classList.contains('character-wrapper')) {
               // wrapper 안의 이미지 처리
-              img = element.querySelector('img:not(.character-ritual-icon):not(.character-core-icon)');
-              ritualType = element.dataset.ritual || 'none';
+              img = element.querySelector(PRIMARY_CHARACTER_SELECTOR);
+              ritualType = normalizeAwarenessType(element.dataset.ritual);
               hasCore = element.dataset.core === 'true';
-            } else if (element.tagName === 'IMG' && !element.classList.contains('character-ritual-icon') && !element.classList.contains('character-core-icon')) {
+              weaponRefinement = normalizeWeaponRefinement(element.dataset.weaponRefinement);
+            } else if (element.tagName === 'IMG' && element.matches(PRIMARY_CHARACTER_SELECTOR)) {
               // 일반 이미지 처리
               img = element;
-              ritualType = element.dataset.ritual || 'none';
+              ritualType = normalizeAwarenessType(element.dataset.ritual);
               hasCore = element.dataset.core === 'true';
+              weaponRefinement = normalizeWeaponRefinement(element.dataset.weaponRefinement);
             }
 
             if (img) {
-              const characterData = {
-                name: img.alt
-              };
-              const ritualData = convertRitualToJSON(ritualType);
-              if (ritualData) {
-                Object.assign(characterData, ritualData);
-              }
-              if (hasCore) {
-                characterData.core = true;
-              }
-              characters.push(characterData);
+              characters.push(buildCharacterExportData(img, ritualType, hasCore, weaponRefinement));
             }
           });
 
@@ -2270,108 +2349,65 @@ const handleShareClick = () => {
 let currentRitualImage = null;
 function getRitualModal() { return document.querySelector('.ritual-modal'); }
 
+function refreshRitualModalState() {
+  const modal = getRitualModal();
+  if (!modal || !currentRitualImage) return;
+
+  const currentRitual = normalizeAwarenessType(currentRitualImage.dataset.ritual);
+  modal.querySelectorAll('[data-awareness]').forEach((option) => {
+    option.classList.toggle('selected', option.dataset.awareness === currentRitual);
+  });
+
+  const currentWeaponRefinement = normalizeWeaponRefinement(currentRitualImage.dataset.weaponRefinement);
+  modal.querySelectorAll('[data-weapon-refinement]').forEach((option) => {
+    option.classList.toggle('selected', option.dataset.weaponRefinement === currentWeaponRefinement);
+  });
+
+  const currentCore = currentRitualImage.dataset.core === 'true';
+  const coreToggle = document.getElementById('core-toggle');
+  if (coreToggle) {
+    coreToggle.classList.toggle('active', currentCore);
+  }
+}
+
+function syncCurrentRitualImageState({ ritualType, weaponRefinement, hasCore } = {}) {
+  if (!currentRitualImage) return;
+
+  currentRitualImage.dataset.ritual = ritualType !== undefined
+    ? normalizeAwarenessType(ritualType)
+    : normalizeAwarenessType(currentRitualImage.dataset.ritual);
+  currentRitualImage.dataset.weaponRefinement = weaponRefinement !== undefined
+    ? normalizeWeaponRefinement(weaponRefinement)
+    : normalizeWeaponRefinement(currentRitualImage.dataset.weaponRefinement);
+  currentRitualImage.dataset.core = hasCore !== undefined
+    ? (hasCore ? 'true' : 'false')
+    : (currentRitualImage.dataset.core === 'true' ? 'true' : 'false');
+
+  const wrapper = renderCharacterEnhancementIcons(currentRitualImage);
+  if (wrapper && wrapper.dataset.dragListenersAttached !== 'true') {
+    const updatedWrapper = attachDragListeners(wrapper);
+    currentRitualImage = getPrimaryCharacterImage(updatedWrapper) || currentRitualImage;
+  }
+
+  refreshRitualModalState();
+}
+
 // Core toggle functionality
 function setCharacterCore(hasCore) {
   if (!currentRitualImage) return;
-
-  // Check if image is already in a wrapper
-  let existingWrapper = currentRitualImage.closest('.character-wrapper');
-
-  if (existingWrapper) {
-    // Remove existing core icon from wrapper
-    const existingIcon = existingWrapper.querySelector('.character-core-icon');
-    if (existingIcon) {
-      existingIcon.remove();
-    }
-
-    // Update wrapper core data
-    existingWrapper.dataset.core = hasCore ? 'true' : 'false';
-    currentRitualImage.dataset.core = hasCore ? 'true' : 'false';
-
-    // Add new core icon if enabled
-    if (hasCore) {
-      const coreIcon = document.createElement('img');
-      coreIcon.src = `${BASE_URL}/assets/img/character-detail/innate/core.png`;
-      coreIcon.className = 'character-core-icon';
-      coreIcon.alt = 'Core';
-      existingWrapper.appendChild(coreIcon);
-    }
-  } else {
-    // Set core data on image
-    currentRitualImage.dataset.core = hasCore ? 'true' : 'false';
-
-    // Add core icon if enabled
-    if (hasCore) {
-      const coreIcon = document.createElement('img');
-      coreIcon.src = `${BASE_URL}/assets/img/character-detail/innate/core.png`;
-      coreIcon.className = 'character-core-icon';
-      coreIcon.alt = 'Core';
-
-      // Create a wrapper for proper positioning
-      const parent = currentRitualImage.parentElement;
-      const wrapper = document.createElement('div');
-      wrapper.className = 'character-wrapper';
-      wrapper.draggable = true;
-
-      // Copy all attributes from image to wrapper for drag functionality
-      wrapper.alt = currentRitualImage.alt;
-      wrapper.dataset.element = currentRitualImage.dataset.element;
-      wrapper.dataset.position = currentRitualImage.dataset.position;
-      wrapper.dataset.rarity = currentRitualImage.dataset.rarity;
-      wrapper.dataset.tags = currentRitualImage.dataset.tags;
-      wrapper.dataset.ritual = currentRitualImage.dataset.ritual || 'none';
-      wrapper.dataset.core = 'true';
-
-      // Remove draggable from image since wrapper will handle it
-      currentRitualImage.draggable = false;
-
-      // Insert wrapper and move image into it
-      parent.insertBefore(wrapper, currentRitualImage);
-      wrapper.appendChild(currentRitualImage);
-      wrapper.appendChild(coreIcon);
-
-      // Attach drag listeners to wrapper instead of image
-      attachDragListeners(wrapper);
-    }
-  }
-
-  // Update toggle button state in modal
-  const coreToggle = document.getElementById('core-toggle');
-  if (coreToggle) {
-    if (hasCore) {
-      coreToggle.classList.add('active');
-    } else {
-      coreToggle.classList.remove('active');
-    }
-  }
+  syncCurrentRitualImageState({ hasCore });
 }
 
 // Open ritual modal for character image
 function openRitualModal(img) {
   currentRitualImage = img;
-
-  // Show current ritual selection
-  const currentRitual = img.dataset.ritual || 'none';
   const modal = getRitualModal();
   if (!modal) return;
-  const ritualOptions = modal.querySelectorAll('.ritual-option');
-  ritualOptions.forEach(option => {
-    option.classList.remove('selected');
-    if (option.dataset.ritual === currentRitual) {
-      option.classList.add('selected');
-    }
-  });
+  currentRitualImage.dataset.ritual = normalizeAwarenessType(currentRitualImage.dataset.ritual);
+  currentRitualImage.dataset.weaponRefinement = normalizeWeaponRefinement(currentRitualImage.dataset.weaponRefinement);
+  currentRitualImage.dataset.core = currentRitualImage.dataset.core === 'true' ? 'true' : 'false';
 
-  // Show current core state
-  const currentCore = img.dataset.core === 'true';
-  const coreToggle = document.getElementById('core-toggle');
-  if (coreToggle) {
-    if (currentCore) {
-      coreToggle.classList.add('active');
-    } else {
-      coreToggle.classList.remove('active');
-    }
-  }
+  refreshRitualModalState();
 
   modal.showModal();
 }
@@ -2386,71 +2422,12 @@ function closeRitualModal() {
 // Set ritual for character
 function setCharacterRitual(ritualType) {
   if (!currentRitualImage) return;
+  syncCurrentRitualImageState({ ritualType });
+}
 
-  // Check if image is already in a wrapper
-  const existingWrapper = currentRitualImage.closest('.character-wrapper');
-
-  if (existingWrapper) {
-    // Remove existing ritual icon from wrapper
-    const existingIcon = existingWrapper.querySelector('.character-ritual-icon');
-    if (existingIcon) {
-      existingIcon.remove();
-    }
-
-    // Update wrapper ritual data
-    existingWrapper.dataset.ritual = ritualType;
-    currentRitualImage.dataset.ritual = ritualType;
-
-    // Add new ritual icon if not 'none'
-    if (ritualType !== 'none') {
-      const ritualIcon = document.createElement('img');
-      ritualIcon.src = `${BASE_URL}/assets/img/ritual/${ritualType}.png`;
-      ritualIcon.className = 'character-ritual-icon';
-      ritualIcon.alt = `Ritual ${ritualType}`;
-      existingWrapper.appendChild(ritualIcon);
-    }
-  } else {
-    // wrapper가 없는 경우는 해당 이미지와 연결된 리추얼 아이콘이 없으므로 제거할 필요 없음
-    // 다른 캐릭터의 리추얼 아이콘을 제거하지 않도록 주의
-
-    // Set ritual data on image
-    currentRitualImage.dataset.ritual = ritualType;
-
-    // Add ritual icon if not 'none'
-    if (ritualType !== 'none') {
-      const ritualIcon = document.createElement('img');
-      ritualIcon.src = `${BASE_URL}/assets/img/ritual/${ritualType}.png`;
-      ritualIcon.className = 'character-ritual-icon';
-      ritualIcon.alt = `Ritual ${ritualType}`;
-
-      // Create a wrapper for proper positioning
-      const parent = currentRitualImage.parentElement;
-      const wrapper = document.createElement('div');
-      wrapper.className = 'character-wrapper';
-      wrapper.draggable = true;
-
-      // Copy all attributes from image to wrapper for drag functionality
-      wrapper.alt = currentRitualImage.alt;
-      wrapper.dataset.element = currentRitualImage.dataset.element;
-      wrapper.dataset.position = currentRitualImage.dataset.position;
-      wrapper.dataset.rarity = currentRitualImage.dataset.rarity;
-      wrapper.dataset.tags = currentRitualImage.dataset.tags;
-      wrapper.dataset.ritual = ritualType;
-
-      // Remove draggable from image since wrapper will handle it
-      currentRitualImage.draggable = false;
-
-      // Insert wrapper and move image into it
-      parent.insertBefore(wrapper, currentRitualImage);
-      wrapper.appendChild(currentRitualImage);
-      wrapper.appendChild(ritualIcon);
-
-      // Attach drag listeners to wrapper instead of image
-      attachDragListeners(wrapper);
-    }
-  }
-
-  closeRitualModal();
+function setCharacterWeaponRefinement(weaponRefinement) {
+  if (!currentRitualImage) return;
+  syncCurrentRitualImageState({ weaponRefinement });
 }
 
 // Initialize ritual modal event listeners
@@ -2473,12 +2450,21 @@ function initRitualModal() {
     });
   }
 
-  // Ritual option clicks
-  const ritualOptions = ritualModal.querySelectorAll('.ritual-option');
-  ritualOptions.forEach(option => {
+  // Awareness option clicks
+  const awarenessOptions = ritualModal.querySelectorAll('[data-awareness]');
+  awarenessOptions.forEach(option => {
     option.addEventListener('click', () => {
-      const ritualType = option.dataset.ritual;
+      const ritualType = option.dataset.awareness;
       setCharacterRitual(ritualType);
+    });
+  });
+
+  // Weapon refinement option clicks
+  const weaponRefinementOptions = ritualModal.querySelectorAll('[data-weapon-refinement]');
+  weaponRefinementOptions.forEach(option => {
+    option.addEventListener('click', () => {
+      const weaponRefinement = option.dataset.weaponRefinement;
+      setCharacterWeaponRefinement(weaponRefinement);
     });
   });
 
@@ -2490,25 +2476,19 @@ function initRitualModal() {
 
       // 현재 선택된 이미지 기준으로 복제 생성
       const sourceImg = currentRitualImage;
-      const clone = document.createElement('img');
-      clone.src = sourceImg.src;
-      clone.alt = sourceImg.alt || '';
+      const clone = sourceImg.cloneNode(true);
       clone.draggable = true;
+      delete clone.dataset.dragListenersAttached;
 
       // 데이터셋 복사
-      ['element', 'position', 'rarity', 'tags', 'ritual'].forEach(key => {
+      CHARACTER_DATASET_KEYS.forEach(key => {
         if (sourceImg.dataset[key] !== undefined) {
           clone.dataset[key] = sourceImg.dataset[key];
         }
       });
 
-      // 등급별 클래스 유지
-      const rarity = parseInt(clone.dataset.rarity);
-      if (rarity === 4) clone.classList.add('star4');
-      else if (rarity === 5) clone.classList.add('star5');
-
       // 하단 카드 풀에 추가 후 드래그 리스너 연결
-      const wrapper = wrapCharacterImage(clone);
+      const wrapper = renderCharacterEnhancementIcons(clone) || wrapCharacterImage(clone);
       cardsContainer.appendChild(wrapper);
       attachDragListeners(wrapper);
     });

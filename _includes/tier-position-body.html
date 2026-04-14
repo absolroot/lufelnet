@@ -332,7 +332,7 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
 
     <!-- Help Text -->
     <div class="help-text">
-        <p id="help-message" data-i18n="helpMessage">* 캐릭터 이동이 안될 경우 캐릭터를 더블 클릭해서 아래 리스트로 이동한 뒤 일정 시간 뒤 다시 시도해주세요.</p>
+        <p id="help-message" data-i18n="helpMessage">* 캐릭터를 더블클릭하면 의식과 무기 개조를 설정할 수 있습니다.</p>
     </div>
 
     <!-- Settings Modal -->
@@ -367,26 +367,59 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
             <div class="ritual-section">
                 <h4 class="ritual-section-title" data-i18n="ritualAwarenessTitle">Awareness</h4>
                 <div class="ritual-options">
-                    <div class="ritual-option" data-ritual="none">
+                    <div class="ritual-option" data-awareness="none">
                         <div class="ritual-none">NONE</div>
                     </div>
-                    <div class="ritual-option" data-ritual="num1">
-                        <img src="{{ site.baseurl }}/assets/img/ritual/num1.png" alt="Ritual 1">
+                    <div class="ritual-option" data-awareness="a0">
+                        <img src="{{ site.baseurl }}/assets/img/ritual/a0.png" alt="Awareness A0">
                     </div>
-                    <div class="ritual-option" data-ritual="num2">
-                        <img src="{{ site.baseurl }}/assets/img/ritual/num2.png" alt="Ritual 2">
+                    <div class="ritual-option" data-awareness="a1">
+                        <img src="{{ site.baseurl }}/assets/img/ritual/a1.png" alt="Awareness A1">
                     </div>
-                    <div class="ritual-option" data-ritual="num3">
-                        <img src="{{ site.baseurl }}/assets/img/ritual/num3.png" alt="Ritual 3">
+                    <div class="ritual-option" data-awareness="a2">
+                        <img src="{{ site.baseurl }}/assets/img/ritual/a2.png" alt="Awareness A2">
                     </div>
-                    <div class="ritual-option" data-ritual="num4">
-                        <img src="{{ site.baseurl }}/assets/img/ritual/num4.png" alt="Ritual 4">
+                    <div class="ritual-option" data-awareness="a3">
+                        <img src="{{ site.baseurl }}/assets/img/ritual/a3.png" alt="Awareness A3">
                     </div>
-                    <div class="ritual-option" data-ritual="num5">
-                        <img src="{{ site.baseurl }}/assets/img/ritual/num5.png" alt="Ritual 5">
+                    <div class="ritual-option" data-awareness="a4">
+                        <img src="{{ site.baseurl }}/assets/img/ritual/a4.png" alt="Awareness A4">
                     </div>
-                    <div class="ritual-option" data-ritual="num6">
-                        <img src="{{ site.baseurl }}/assets/img/ritual/num6.png" alt="Ritual 6">
+                    <div class="ritual-option" data-awareness="a5">
+                        <img src="{{ site.baseurl }}/assets/img/ritual/a5.png" alt="Awareness A5">
+                    </div>
+                    <div class="ritual-option" data-awareness="a6">
+                        <img src="{{ site.baseurl }}/assets/img/ritual/a6.png" alt="Awareness A6">
+                    </div>
+                </div>
+            </div>
+            <div class="ritual-separator" style="margin: 12px 0; border-top: 1px solid rgba(255,255,255,0.1);"></div>
+            <div class="ritual-section">
+                <h4 class="ritual-section-title" data-i18n="ritualWeaponTitle">Weapon Refinement</h4>
+                <div class="ritual-options">
+                    <div class="ritual-option" data-weapon-refinement="none">
+                        <div class="ritual-none">NONE</div>
+                    </div>
+                    <div class="ritual-option" data-weapon-refinement="r0">
+                        <img src="{{ site.baseurl }}/assets/img/character-weapon/r0.png" alt="Refinement R0">
+                    </div>
+                    <div class="ritual-option" data-weapon-refinement="r1">
+                        <img src="{{ site.baseurl }}/assets/img/character-weapon/r1.png" alt="Refinement R1">
+                    </div>
+                    <div class="ritual-option" data-weapon-refinement="r2">
+                        <img src="{{ site.baseurl }}/assets/img/character-weapon/r2.png" alt="Refinement R2">
+                    </div>
+                    <div class="ritual-option" data-weapon-refinement="r3">
+                        <img src="{{ site.baseurl }}/assets/img/character-weapon/r3.png" alt="Refinement R3">
+                    </div>
+                    <div class="ritual-option" data-weapon-refinement="r4">
+                        <img src="{{ site.baseurl }}/assets/img/character-weapon/r4.png" alt="Refinement R4">
+                    </div>
+                    <div class="ritual-option" data-weapon-refinement="r5">
+                        <img src="{{ site.baseurl }}/assets/img/character-weapon/r5.png" alt="Refinement R5">
+                    </div>
+                    <div class="ritual-option" data-weapon-refinement="r6">
+                        <img src="{{ site.baseurl }}/assets/img/character-weapon/r6.png" alt="Refinement R6">
                     </div>
                 </div>
             </div>

@@ -29,13 +29,14 @@ window.I18N_PAGE_TIER_KR = {
     tierLabel: '티어 라벨',
 
     // Help message
-    helpMessage: '* 캐릭터를 더블클릭하면 의식을 설정할 수 있습니다.',
+    helpMessage: '* 캐릭터를 더블클릭하면 의식과 무기 개조를 설정할 수 있습니다.',
 
     // Ritual modal
     ritualModalTitle: '캐릭터 강화 요소',
     ritualCoreTitle: '심상 코어',
     ritualCoreActivate: '코어 활성화',
-    ritualAwarenessTitle: 'Awareness',
+    ritualAwarenessTitle: '의식',
+    ritualWeaponTitle: '무기 개조',
     ritualCopy: '캐릭터 복사',
 
     // Toolbar buttons

@@ -358,7 +358,8 @@ const VelvetTrialRenderer = (function () {
     if (effectDesc && effectDesc !== 'AAAAAA==') {
       const effect = document.createElement('p');
       effect.className = 'vt-level-effect';
-      effect.textContent = `${tSafe('chapter_effect_label', null, 'Chapter Effect')}: ${effectDesc}`;
+      effect.appendChild(document.createTextNode(`${tSafe('chapter_effect_label', null, 'Chapter Effect')}: `));
+      effect.appendChild(buildColorTaggedTextFragment(effectDesc));
       header.appendChild(effect);
     }
 
@@ -2200,6 +2201,41 @@ const VelvetTrialRenderer = (function () {
       return tSafe('condition_rule3_death_limit', { maxDeaths: rule.maxDeaths }, 'Deaths: {maxDeaths} or less');
     }
     return '';
+  }
+
+  function buildColorTaggedTextFragment(text) {
+    const fragment = document.createDocumentFragment();
+    const source = String(text || '');
+    const colorTagPattern = /<color=(["']?)(#[0-9a-f]{3,8})\1>([\s\S]*?)<\/color>/gi;
+
+    let lastIndex = 0;
+    let match = colorTagPattern.exec(source);
+
+    while (match) {
+      appendPlainTaggedText(fragment, source.slice(lastIndex, match.index));
+
+      const span = document.createElement('span');
+      span.style.color = match[2];
+      span.textContent = stripColorTags(match[3]);
+      fragment.appendChild(span);
+
+      lastIndex = colorTagPattern.lastIndex;
+      match = colorTagPattern.exec(source);
+    }
+
+    appendPlainTaggedText(fragment, source.slice(lastIndex));
+    return fragment;
+  }
+
+  function appendPlainTaggedText(fragment, text) {
+    const cleanText = stripColorTags(text);
+    if (cleanText) {
+      fragment.appendChild(document.createTextNode(cleanText));
+    }
+  }
+
+  function stripColorTags(text) {
+    return String(text || '').replace(/<\/?color(?:=[^>]+)?>/gi, '');
   }
 
   function tSafe(key, vars, fallbackText) {

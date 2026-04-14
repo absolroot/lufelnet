@@ -94,7 +94,7 @@
     const cardsContainer = document.querySelector('.cards');
     positionCells.forEach(cell => {
       const wrappers = cell.querySelectorAll('.character-wrapper');
-      const images = cell.querySelectorAll('img:not(.character-ritual-icon):not(.character-core-icon)');
+      const images = cell.querySelectorAll('img.character-img');
       wrappers.forEach(w => {
         if (cardsContainer) cardsContainer.appendChild(w);
       });

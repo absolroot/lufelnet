@@ -29,9 +29,9 @@ Aside from the period immediately after his release, his usability dropped sharp
 
 由于治疗本身也会发生暴击，所以他的基础治疗量并不算高，**提高暴击率会变得比较重要**。
 
-技能3属于物理属性，并且在暴击时可以削减DOWN值。
+技能3属于物理属性，并且在暴击时可以削减倒地值。
 
-除了刚实装后的阶段外，后续很快出现了更高位的治疗角色，因此他的实用度明显下降。`,
+除了刚实装后的阶段外，像MARIAN这样的上位治疗角色很快就陆续出现，因此他的实用度明显下降。`,
         pros: ["HIGHLIGHT를 통한 부활이 가능하다", "자동 광역 치료를 제공한다."],
         pros_en: [
             "Capable of reviving through HIGHLIGHT.",
@@ -54,4 +54,3 @@ Aside from the period immediately after his release, his usability dropped sharp
         cons_cn: ["额外增益能力较少。", "无法解除减益效果。"]          
     };
 })();
-

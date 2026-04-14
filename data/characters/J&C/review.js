@@ -47,7 +47,7 @@ Because their base ATK is relatively low compared to other 5★ characters, thei
 
 技能3的持续时间为2回合，而专属武器的增益层数在释放技能3当下并不会立刻结算，因此从意识1开始，整套效果才能比较顺畅地完整维持。
 
-『面具强度』是决定双子全部技能威力的核心数值，数值越高，所有技能的输出与效果都会一起提升。
+『面具强度』是决定双子全部技能威力的核心数值，这项数值越高，她们的所有技能威力也会一起提高。
 
 基础值为25，只要满足一定属性条件（可参考推荐养成面板），开场就能直接达到100；此外还可以通过卡组效果、专属武器以及意识6继续追加。
 
@@ -65,7 +65,7 @@ Because their base ATK is relatively low compared to other 5★ characters, thei
           "ウォンダーのペルソナスキルを強化しますが、戦闘に参加しなくても発動します。"
         ],
         pros_cn: [
-          "可以在战斗开始前自由选择想承担的定位。",
+          "可以在战斗开始前从6种定位中自由选择其一。",
           "即使不直接上场，也能强化WONDER的人格面具技能。"
         ],
         cons: [
@@ -86,5 +86,4 @@ Because their base ATK is relatively low compared to other 5★ characters, thei
         ],
     };
 })();
-
 

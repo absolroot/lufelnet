@@ -52,7 +52,7 @@ Since Wonder can continuously deal Wind damage while reducing DEF, use a DEF cal
 
 启示的选择要根据具体情况来定。
 
-当你在意识2以上已经能拿到防御力降低效果，或者本身就有较高穿透，同时队伍中还有强力减防角色时，某些偏穿透的套装收益就会下降，这时更适合改用偏纯输出的套装。
+**专注+奢华**套装适用于意识2以上已经能获得防御力降低效果，或者本身就持有较高穿透数值，同时队伍中还有像HOWLER这样具备强力减防效果的角色，以至于**自由+凯旋**套装提供的穿透收益会变得没有意义的情况。
 
 由于Wonder本身也能持续造成疾风伤害并附带减防，所以最好结合防御力计算器，根据你当前的队伍和面板来决定最终配置。`,
 
@@ -67,4 +67,3 @@ Since Wonder can continuously deal Wind damage while reducing DEF, use a DEF cal
         cons_cn: ["会强制要求队友的属性构成。"],
     };
 })();
-

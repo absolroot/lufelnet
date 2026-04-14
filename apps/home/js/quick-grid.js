@@ -226,7 +226,7 @@
     };
 
     const KR_LIKE_ITEMS = ['character', 'persona', 'revelations', 'synergy', 'wonderweapon', 'maps', 'astrolabe', 'velvetTrial', 'pullTracker', 'pullTracker_global', 'materialCalc', 'defenseCalc', 'criticalCalc', 'tacticLibrary', 'tacticMaker', 'guide', 'tier', 'gallery'];
-    const CN_ITEMS = KR_LIKE_ITEMS.filter((key) => !['guide', 'velvetTrial'].includes(key));
+    const CN_ITEMS = KR_LIKE_ITEMS.filter((key) => key !== 'velvetTrial');
     const GLOBAL_ITEMS = ['character', 'persona', 'revelations', 'synergy', 'wonderweapon', 'maps', 'astrolabe', 'velvetTrial', 'pullTracker', 'materialCalc', 'defenseCalc', 'criticalCalc', 'tacticLibrary', 'guide', 'tier', 'schedule', 'pullCalc', 'gallery'];
 
     const getItems = (lang) => {

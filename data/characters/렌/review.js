@@ -24,13 +24,13 @@ Since Extra Actions also generate HIGHLIGHT gauge and reduce the cooldown of his
 
 追加行動でもHIGHLIGHTゲージが溜まり、さらに解明怪盗スキルのクールタイムも短縮されるため、状況に応じて多彩な戦術ループを構築することができる。
 `,
-        review_cn: `是《女神异闻录5》的主角，也是一名以初始人格面具为核心作战的**群体诅咒输出角色**。
+        review_cn: `是《女神异闻录5》的主角，也是一名与初始人格面具『亚森』并肩作战的**群体诅咒输出角色**。
 
 通过技能与被动获得的**『煞气』累计到3个后，能在回合结束时立刻获得额外回合**，同时还会得到伤害提升。
 
 技能1、技能2以及HIGHLIGHT都能帮助他叠加『煞气』。其中技能1更偏向对群，技能2则是应对单体敌人的手段。
 
-额外回合期间同样会继续积累HIGHLIGHT量表，并减少解明怪盗技能的冷却时间，因此可以根据战况构筑出相当灵活的战术循环。`,
+额外回合期间同样会继续积累HIGHLIGHT能量，并减少解明怪盗技能的冷却时间，因此可以根据战况构筑出相当灵活的战术循环。`,
         pros: ["추가 턴을 확보해 다양한 택틱을 수행할 수 있다.", "적정 수준의 단일 공격 스킬을 가지고 있어 적에게 유연하게 대응할 수 있다."],
         pros_en: ["You can secure an additional turn to perform various tactics.","It has a moderate single-target skill to flexibly respond to enemies."],
         pros_jp: ["追加ターンを確保して、様々な戦術を実行できます。","敵に対して柔軟に対応できる適度な単体攻撃スキルを持っています。"],
@@ -41,4 +41,3 @@ Since Extra Actions also generate HIGHLIGHT gauge and reduce the cooldown of his
         cons_cn: ["在敌人生命值不会下降的模式里，较难稳定获取『煞气』。", "想通过HIGHLIGHT一次性拿到更多『煞气』，需要更高阶段的意识支撑。"],
     };
 })();
-

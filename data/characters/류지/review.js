@@ -22,7 +22,7 @@ For this reason, he pairs extremely well with LEON, who can grant shields while 
 
 他的核心是通过压低自身生命值来提高火力的**玻璃大炮型机制**。他会消耗降低生命值后获得的『触底反弹』来强化技能，并对敌人打出强力的一击。
 
-由于他的机制需要先花1个回合消耗生命并完成蓄力后再出手，因此这段期间会更容易被敌人的攻击压制。正因如此，和能够在削减生命值的同时提供护盾的角色搭配时会有不错的相性。`,
+由于他的机制需要先花1个回合消耗生命并完成蓄力后再出手，因此这段期间会更容易被敌人的攻击压制。正因如此，他和能在削减生命值的同时提供护盾的神山岭央相性很好。`,
         pros: ["차지를 통해 강력한 한 방을 낼 수 있다.", "리바운드를 통해 스킬3의 확정 크리티컬이 가능하다."],
         pros_en: ["You can deal a powerful one-hit through the Charge.","You can guarantee a critical with the Skill 3 through the Rebound."],
         pros_jp: ["チャージを通して強力な一撃を与えることができます。","反発を通してスキル3の確定クリティカルを達成できます。"],
@@ -33,4 +33,3 @@ For this reason, he pairs extremely well with LEON, who can grant shields while 
         cons_cn: ["想获得『触底反弹』，需要先挨打或额外消耗生命值。", "因为几乎必然要空过1个回合，所以不适合日常速刷内容。"],
     };
 })();
-

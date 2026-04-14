@@ -30,7 +30,7 @@ On the global server, he has received numerous buffs, so it is expected that he 
 `,
         review_cn: `是首位登场的5星防护怪盗，在常驻角色中也一直属于评价很高的一员。
 
-他能够为全队提供大量护盾，构筑出**几乎压倒性的稳定性**，因此在高难内容中有非常强的保底能力。
+他能够为全队提供大量护盾，构筑出**极强的稳定性**，因此对攻克高难内容帮助很大。
 
 不仅如此，他的被动会在施加护盾时进一步提高同伴防御力，技能本身也附带防御强化效果，因此很容易把队伍整体堆到非常坚固。
 
@@ -55,4 +55,3 @@ On the global server, he has received numerous buffs, so it is expected that he 
         cons_cn: ["因为更偏重稳定性，除特定场合外，在竞速类内容里不太容易成为核心。"],
     };
 })();
-

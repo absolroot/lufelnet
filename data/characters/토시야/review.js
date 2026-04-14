@@ -40,7 +40,7 @@ By repeating Skill 1 to inflict as many Curse Effects as possible, and using Per
 
 **诅咒效果造成的是基于敌方生命值的伤害，受万能属性伤害影响，而不是受诅咒属性伤害影响。**
 
-因此，配队时要么搭配能够提升万能属性伤害的Wonder武器，要么围绕**提高伤害加成**来构建增益。
+因此，配队时要么搭配能够提升万能属性伤害的WONDER武器『机械处刑者』，要么围绕**提高伤害加成**来构建增益。
 
 技能1赋予的『憎恨诗句』有30%的概率给敌人附加诅咒效果，而这30%还可以根据效果命中数值进一步提高。
 
@@ -56,5 +56,4 @@ By repeating Skill 1 to inflict as many Curse Effects as possible, and using Per
         cons_cn: ["绝大多数首领都带有生命值比例伤害减免效果，导致他的持续伤害效率会明显下降。", "附加诅咒效果的概率比预想中更低。", "想稳定触发『命运的十四行诗』，需要多段攻击较多的队伍配置。"],
     };
 })();
-
 

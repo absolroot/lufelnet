@@ -167,7 +167,7 @@ class Navigation {
             'about'
         ];
 
-        const cnMenus = krLikeMenus.filter((key) => !['article', 'revelation-setting', 'pay-calc'].includes(key));
+        const cnMenus = krLikeMenus.filter((key) => !['revelation-setting', 'pay-calc'].includes(key));
 
         const availableMenus = {
             kr: krLikeMenus,

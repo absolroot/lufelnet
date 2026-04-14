@@ -4,6 +4,7 @@
         review: ``,
         review_en: ``,
         review_jp: ``,
+        review_cn: ``,
         pros: [
           ""
         ],
@@ -13,6 +14,9 @@
         pros_jp: [
           ""
         ],
+        pros_cn: [
+          ""
+        ],
         cons: [
           ""
         ],
@@ -20,6 +24,9 @@
           ""
         ],
         cons_jp: [
+          ""
+        ],
+        cons_cn: [
           ""
         ],
     };

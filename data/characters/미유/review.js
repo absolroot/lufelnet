@@ -29,7 +29,7 @@ She can still see use in short battles where enemy damage is too high to survive
 
 由于她以防御力为主属性，在提升全队整体稳定性方面表现不错，但**当前环境更偏向高伤害体系，因此上场率不高**。
 
-另外，如果把**喜多川祐介**作为主输出使用，他与护盾赋予和防御力强化都很契合，因此海夕会成为相当不错的解明搭档。
+另外，如果把**喜多川祐介**作为主输出使用，他与护盾赋予和防御力强化都很契合，因此佐原海夕会是很合适的解明怪盗选择。
 
 如果是在短期战中，敌方伤害高到难以硬扛的场合，她依然还有发挥空间。
 `,
@@ -43,4 +43,3 @@ She can still see use in short battles where enemy damage is too high to survive
         cons_cn: ["对同伴的伤害增益效果偏低。", "技能冷却时间较长。"],
     };
 })();
-

@@ -61,6 +61,7 @@ class Navigation {
                 defenseCalc: '방어력 감소 계산기',
                 criticalCalc: '크리티컬 계산기',
                 revelationSetting: '계시 공유',
+                shareHub: '\uD604\uD669 \uACF5\uC720',
                 pullTrackerIndividual: '계약 통계',
                 pullTrackerGlobal: '계약 통계 (전체)',
                 payCalc: '과금 계산기',
@@ -89,6 +90,7 @@ class Navigation {
                 defenseCalc: 'Defense Reduction',
                 criticalCalc: 'Critical Rate',
                 revelationSetting: 'Revelation Share',
+                shareHub: 'Share',
                 pullTrackerIndividual: 'Pull Stats',
                 pullTrackerGlobal: 'Pull Stats (Global)',
                 payCalc: 'Payment Calculator',
@@ -117,6 +119,7 @@ class Navigation {
                 defenseCalc: '防御力減少',
                 criticalCalc: 'クリティカル',
                 revelationSetting: '啓示共有',
+                shareHub: '\u5171\u6709',
                 pullTrackerIndividual: '個人統計',
                 pullTrackerGlobal: '全体統計',
                 payCalc: '課金',
@@ -145,6 +148,7 @@ class Navigation {
                 defenseCalc: '防御力降低计算器',
                 criticalCalc: '暴击率计算器',
                 revelationSetting: '启示分享',
+                shareHub: '\u5206\u4EAB',
                 pullTrackerIndividual: '契约记录',
                 pullTrackerGlobal: '全服统计',
                 payCalc: '充值计算器',
@@ -162,24 +166,24 @@ class Navigation {
 
         const krLikeMenus = [
             'character', 'persona', 'revelations-info', 'synergy', 'wonderweapon', 'maps', 'article',
-            'material-calc', 'defense-calc', 'critical-calc', 'revelation-setting', 'pullTracker', 'pay-calc',
+            'material-calc', 'defense-calc', 'critical-calc', 'share', 'pullTracker', 'pay-calc',
             'tier', 'tactic-library', 'tactic-maker', 'astrolabe', 'velvet-trial',
             'about'
         ];
 
-        const cnMenus = krLikeMenus.filter((key) => !['revelation-setting', 'pay-calc'].includes(key));
+        const cnMenus = krLikeMenus.filter((key) => !['pay-calc'].includes(key));
 
         const availableMenus = {
             kr: krLikeMenus,
             en: [
                 'character', 'persona', 'revelations-info', 'synergy', 'wonderweapon', 'maps', 'article',
-                'schedule-release', 'pull-calc', 'material-calc', 'defense-calc', 'critical-calc', 'revelation-setting', 'pullTracker',
+                'schedule-release', 'pull-calc', 'material-calc', 'defense-calc', 'critical-calc', 'share', 'pullTracker',
                 'tier', 'tactic-library', 'tactic-maker', 'astrolabe', 'velvet-trial',
                 'about'
             ],
             jp: [
                 'character', 'persona', 'revelations-info', 'synergy', 'wonderweapon', 'maps', 'article',
-                'schedule-release', 'pull-calc', 'material-calc', 'defense-calc', 'critical-calc', 'revelation-setting', 'pullTracker',
+                'schedule-release', 'pull-calc', 'material-calc', 'defense-calc', 'critical-calc', 'share', 'pullTracker',
                 'tier', 'tactic-library', 'tactic-maker', 'astrolabe', 'velvet-trial',
                 'about'
             ],
@@ -212,7 +216,7 @@ class Navigation {
                     { key: 'material-calc', textKey: 'materialCalc', icon: 'material.png', url: `/${currentLang}/material-calc/` },
                     { key: 'defense-calc', textKey: 'defenseCalc', icon: 'defense-calc.png', url: `/${currentLang}/defense-calc/` },
                     { key: 'critical-calc', textKey: 'criticalCalc', icon: 'critical.png', url: `/${currentLang}/critical-calc/` },
-                    { key: 'revelation-setting', textKey: 'revelationSetting', icon: 'qishi2.png', url: `/${currentLang}/revelation-setting/` },
+                    { key: 'share', textKey: 'shareHub', icon: 'shouji-shemei01.png', url: `/${currentLang}/share/` },
                     { key: 'pullTracker', textKey: 'pullTracker', icon: 'pull.png', url: `/${currentLang}/pull-tracker/` },
                     { key: 'pay-calc', textKey: 'payCalc', icon: 'calculator.png', url: `/${currentLang}/pay-calc/` }
                 ]
@@ -428,6 +432,9 @@ class Navigation {
                 'pullTracker': 'pullTracker',
                 'pullTracker_individual': 'pullTracker',
                 'pullTracker_global': 'pullTracker',
+                'share': 'share',
+                'share-character': 'share',
+                'revelation-setting': 'share',
                 'tier-list': 'tier',
                 'tier-maker': 'tier',
                 'home': null,

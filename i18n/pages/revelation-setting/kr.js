@@ -1,6 +1,9 @@
 window.I18N_PAGE_REVELATION_SETTING_KR = {
     nav_home: '홈',
-    nav_current: '계시 공유',
+    nav_current: '\uD604\uD669 \uACF5\uC720',
+    nav_share_character: '\uCE90\uB9AD\uD130',
+    nav_share_revelation: '\uACC4\uC2DC',
+    share_tab_unavailable: '\uC900\uBE44\uC911',
     page_title: '계시 공유',
     page_description: '캐릭터별 계시 세팅을 입력하고 다른 사람들에게 공유해보세요.',
 
@@ -100,6 +103,7 @@ window.I18N_PAGE_REVELATION_SETTING_KR = {
     msg_share_success: '링크가 클립보드에 복사되었습니다!',
     msg_share_failed: '공유에 실패했습니다.',
     msg_share_load_failed: '공유 링크 불러오기에 실패했습니다.',
+    msg_share_revelation_unavailable: '\uD604\uC7AC \uC5B8\uC5B4\uC5D0\uC11C\uB294 \uACC4\uC2DC \uACF5\uC720\uB97C \uC9C0\uC6D0\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4.',
     msg_preset_limit_reached: '캐릭터당 프리셋은 최대 20개까지 추가할 수 있습니다.',
     msg_preset_name_empty: '프리셋 이름을 입력해주세요.',
     msg_preset_delete_confirm: '"{name}" 프리셋을 삭제하시겠습니까?',

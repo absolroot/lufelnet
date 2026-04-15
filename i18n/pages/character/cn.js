@@ -3,6 +3,7 @@ window.I18N_PAGE_CHARACTER_CN = {
     "navCurrent": "怪盗",
     "pageTitle": "怪盗养成",
     "pageDescription": "整理了各怪盗的推荐配置、人格面具、启示与操作顺序。",
+    "rosterShareCta": "角色持有分享",
     "filteredCount": "全部",
     "countUnit": "名",
     "searchPlaceholder": "搜索怪盗...",

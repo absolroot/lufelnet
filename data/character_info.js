@@ -165,6 +165,7 @@ Object.assign(window.characterData, {
     },
     "J&C": {
         "limit": true,
+        "has_innate": true,
         "tag": "직업 선택, 원더 페르소나 강화, 공격력, 대미지 보너스, 크리티컬 효과, 관통, 방어력 감소, 치료, 실드, 감전, 풍습, 축복, 주원",
         "tag_en": "Job Selection, Wonder Enhancement, 공격력, 대미지 보너스, 크리티컬 효과, 관통, 방어력 감소, 치료, 실드, 감전, 풍습, 축복, 주원",
         "tag_jp": "ウォンダー ペルソナ 強化, 공격력, 대미지 보너스, 크리티컬 효과, 관통, 방어력 감소, 치료, 실드, 감전, 풍습, 축복, 주원",
@@ -558,6 +559,7 @@ Object.assign(window.characterData, {
     },
     "야오링·사자무": {
         "limit": true,
+        "has_innate": true,
         "tag": "변신, 화염 속성 TECHNICAL, 화상, 지속 대미지",
         "color": "#ff4500",
         "element": "화염",
@@ -741,6 +743,7 @@ Object.assign(window.characterData, {
     },
     "토모코·여름": {
         "limit": true,
+        "has_innate": true,
         "tag": "공격력, 효과 명중, 받는 대미지 증가, 최대 생명 증가, 방어력 감소, 추가 효과",
         "color": "#cc5995",
         "element": "염동",
@@ -779,6 +782,7 @@ Object.assign(window.characterData, {
     },
     "아야카": {
         "limit": true,
+        "has_innate": true,
         "tag": "HIGHLIGHT, 공격력, 대미지보너스, 크리티컬 확률, 치료",
         "color": "#f3e966",
         "element": "전격",
@@ -827,6 +831,7 @@ Object.assign(window.characterData, {
     },
     "유우미": {
         "limit": false,
+        "has_innate": true,
         "tag": "공격력, 대미지보너스, 크리티컬 확률",
         "color": "#9370db",
         "element": "버프",
@@ -885,6 +890,7 @@ Object.assign(window.characterData, {
     },
     "유스케": {
         "limit": false,
+        "has_innate": true,
         "persona5": true,
         "tag": "반격, 추가 효과, 방어력, 관통",
         "color": "#00bfff",
@@ -905,6 +911,7 @@ Object.assign(window.characterData, {
     },
     "YUI": {
         "limit": false,
+        "has_innate": true,
         "tag": "추가 효과, 감전, 크리티컬 확률",
         "color": "#60f7de",
         "element": "전격",
@@ -943,6 +950,7 @@ Object.assign(window.characterData, {
     },
     "렌": {
         "limit": false,
+        "has_innate": true,
         "persona5": true,
         "role_en": "Curse AOE Dealer",
         "role_jp": "呪い範囲ディーラー",

@@ -1,0 +1,35 @@
+<script src="{{ site.baseurl }}/assets/js/share/share-hub.js?v={{ site.time | date: '%s' }}"></script>
+<script>
+(function () {
+    var helper = window.ShareHub;
+    if (!helper) return;
+
+    var params = new URLSearchParams(window.location.search || '');
+    var pageLang = '{{ page.language | default: "" }}';
+    var requestedTab = '{{ page.share_requested_tab | default: "" }}';
+    var useLastTab = '{{ page.share_use_last_tab | default: false }}' === 'true';
+    var noticeOnFallback = '{{ page.share_notice_on_fallback | default: "" }}';
+    var fallbackNoticeValue = noticeOnFallback || helper.NOTICE_REVELATION_UNAVAILABLE;
+
+    var effectiveLang = helper.normalizeLang(pageLang || helper.detectPreferredLanguage());
+    var resolved = helper.resolveShareTarget(effectiveLang, useLastTab ? helper.getLastShareTab() : requestedTab);
+
+    params.delete('lang');
+    params.delete('v');
+
+    if (!resolved.available && noticeOnFallback) {
+        params.set(helper.NOTICE_PARAM, fallbackNoticeValue);
+    } else {
+        params.delete(helper.NOTICE_PARAM);
+    }
+
+    var targetUrl = helper.appendParams(resolved.url, params);
+    var currentUrl = window.location.pathname + window.location.search;
+    if (currentUrl !== targetUrl) {
+        window.location.replace(targetUrl);
+    }
+})();
+</script>
+<noscript>
+    <meta http-equiv="refresh" content="0; url={{ site.baseurl }}/kr/share/character/" />
+</noscript>

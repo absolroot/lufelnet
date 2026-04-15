@@ -3140,9 +3140,27 @@
 
     function initNavigation() {
         if (window.Navigation && typeof window.Navigation.load === 'function') {
-            window.Navigation.load('revelation-setting');
+            window.Navigation.load('share');
         } else if (typeof Navigation !== 'undefined' && Navigation && typeof Navigation.load === 'function') {
-            Navigation.load('revelation-setting');
+            Navigation.load('share');
+        }
+    }
+
+    function applyShareTabs() {
+        if (!window.ShareHub) return;
+        if (dom.shareCharacterTab) {
+            dom.shareCharacterTab.href = `${state.baseUrl}${window.ShareHub.buildShareUrl(state.lang, 'character')}`;
+            dom.shareCharacterTab.onclick = () => window.ShareHub.setLastShareTab('character');
+        }
+        if (dom.shareRevelationTab) {
+            dom.shareRevelationTab.href = `${state.baseUrl}${window.ShareHub.buildShareUrl(state.lang, 'revelation')}`;
+            dom.shareRevelationTab.classList.remove('is-disabled');
+            dom.shareRevelationTab.setAttribute('aria-disabled', 'false');
+            dom.shareRevelationTab.onclick = () => window.ShareHub.setLastShareTab('revelation');
+        }
+        if (dom.shareRevelationTabNote) {
+            dom.shareRevelationTabNote.textContent = '';
+            dom.shareRevelationTabNote.hidden = true;
         }
     }
 
@@ -3154,10 +3172,16 @@
             }
         }
         state.lang = getCurrentLang();
+        if (window.ShareHub && typeof window.ShareHub.setLastShareTab === 'function') {
+            window.ShareHub.setLastShareTab('revelation');
+        }
     }
 
     function bindDom() {
         dom.configLayout = document.querySelector('.rs-config-layout');
+        dom.shareCharacterTab = document.getElementById('rsShareCharacterTab');
+        dom.shareRevelationTab = document.getElementById('rsShareRevelationTab');
+        dom.shareRevelationTabNote = document.getElementById('rsShareRevelationTabNote');
         dom.characterField = document.querySelector('.rs-character-field');
         dom.characterPill = document.getElementById('rsCharacterPill');
         dom.selectedCharacterName = document.getElementById('rsSelectedCharacterName');
@@ -3221,6 +3245,7 @@
             }
 
             await initI18n();
+            applyShareTabs();
             await initSeo();
 
             await loadStatsData();

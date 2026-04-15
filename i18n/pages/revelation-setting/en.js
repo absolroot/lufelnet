@@ -1,6 +1,9 @@
 window.I18N_PAGE_REVELATION_SETTING_EN = {
     nav_home: 'Home',
-    nav_current: 'Revelation Share',
+    nav_current: 'Share',
+    nav_share_character: 'Character',
+    nav_share_revelation: 'Revelation',
+    share_tab_unavailable: 'Soon',
     page_title: 'Revelation Share',
     page_description: 'Set your character revelation build and share it with others.',
 
@@ -106,6 +109,7 @@ window.I18N_PAGE_REVELATION_SETTING_EN = {
     msg_share_success: 'Link copied to clipboard!',
     msg_share_failed: 'Failed to share.',
     msg_share_load_failed: 'Failed to load shared link.',
+    msg_share_revelation_unavailable: 'Revelation Share is not available in this language.',
     msg_preset_limit_reached: 'You can add up to 20 presets per character.',
     msg_preset_name_empty: 'Preset name cannot be empty.',
     msg_preset_delete_confirm: 'Are you sure you want to delete "{name}" preset?',

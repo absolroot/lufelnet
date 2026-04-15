@@ -38,8 +38,10 @@ redirect_from: []
         <span class="separator">/</span>
         <span class="current-page" id="nav-current">-</span> 
     </div>
-    <div class="header-container">
-        <h1 id="page-title">-</h1>
+    <div class="header-container character-list-header">
+        <div class="header-title">
+            <h1 id="page-title">-</h1>
+        </div>
     </div>
     <!-- Filter section -->
     <div class="filter-section">
@@ -393,10 +395,19 @@ redirect_from: []
 
     async function updateLanguageContent() {
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+        const tabLabels = {
+            kr: { list: '캐릭터', share: '현황 공유' },
+            en: { list: 'Characters', share: 'Roster Share' },
+            jp: { list: 'キャラ', share: '所持共有' },
+            cn: { list: '角色', share: '持有分享' }
+        };
+        const resolvedTabLabels = tabLabels[currentLang] || tabLabels.kr;
 
         const navHome = document.getElementById('nav-home');
         const navCurrent = document.getElementById('nav-current');
         const pageTitle = document.getElementById('page-title');
+        const characterListTab = document.getElementById('character-list-tab');
+        const rosterShareCta = document.getElementById('roster-share-cta');
         const searchInput = document.getElementById('characterSearch');
 
         if (navHome) {
@@ -407,6 +418,14 @@ redirect_from: []
         }
         if (pageTitle) {
             pageTitle.textContent = getI18nText('pageTitle', pageTitle.textContent || '');
+        }
+        if (characterListTab) {
+            characterListTab.textContent = resolvedTabLabels.list;
+            characterListTab.href = `${BASE_URL}/${currentLang}/character/`;
+        }
+        if (rosterShareCta) {
+            rosterShareCta.textContent = resolvedTabLabels.share;
+            rosterShareCta.href = `${BASE_URL}/${currentLang}/share/character/`;
         }
         if (searchInput) {
             searchInput.placeholder = getI18nText('searchPlaceholder', searchInput.placeholder || '');

@@ -4,6 +4,7 @@
  * generate-revelation-setting-pages.mjs
  *
  * Generates static SEO pages for the revelation-setting app in each supported language.
+ * Also emits legacy redirect pages for /{lang}/revelation-setting/ and the CN fallback route.
  *
  * Usage:
  *   node scripts/seo/generate-revelation-setting-pages.mjs
@@ -19,7 +20,8 @@ const __dirname = path.dirname(__filename);
 const ROOT = path.resolve(__dirname, '..', '..');
 
 const OUTPUT_DIR = path.join(ROOT, 'pages', 'revelation-setting');
-const LANGS = ['kr', 'en', 'jp'];
+const CANONICAL_LANGS = ['kr', 'en', 'jp'];
+const LEGACY_LANGS = ['kr', 'en', 'jp', 'cn'];
 const IMAGE_PATH = '/assets/img/home/SEO.png';
 
 const seoMetaPath = path.join(ROOT, 'i18n', 'pages', 'revelation-setting', 'seo-meta.json');
@@ -42,7 +44,7 @@ function readJson(filePath) {
 }
 
 function ensureSeoMetaShape(meta) {
-  for (const lang of LANGS) {
+  for (const lang of CANONICAL_LANGS) {
     const langMeta = meta?.[lang];
     if (!langMeta || typeof langMeta !== 'object') {
       throw new Error(`Missing seo meta language entry: ${lang}`);
@@ -57,15 +59,15 @@ function ensureSeoMetaShape(meta) {
 }
 
 function renderPage({ lang, title, description }) {
-  const permalink = `/${lang}/revelation-setting/`;
-  const altKo = '/kr/revelation-setting/';
-  const altEn = '/en/revelation-setting/';
-  const altJp = '/jp/revelation-setting/';
+  const permalink = `/${lang}/share/revelation/`;
+  const altKo = '/kr/share/revelation/';
+  const altEn = '/en/share/revelation/';
+  const altJp = '/jp/share/revelation/';
 
   return [
     '---',
     'layout: default',
-    'custom_css: []',
+    'custom_css: [character]',
     'custom_js: [character/spoiler-state, character/character-list]',
     'custom_data: [/data/character_info.js]',
     `title: ${yamlQuote(title)}`,
@@ -83,19 +85,53 @@ function renderPage({ lang, title, description }) {
   ].join('\n');
 }
 
+function renderRedirectPage({ permalink, language, requestedTab, noticeOnFallback }) {
+  return [
+    '---',
+    'layout: default',
+    `language: ${language}`,
+    `permalink: ${permalink}`,
+    `share_requested_tab: ${requestedTab}`,
+    `share_notice_on_fallback: ${noticeOnFallback || ''}`,
+    '---',
+    '{% include share-redirect-body.html %}',
+    ''
+  ].join('\n');
+}
+
 function buildExpectedFiles(seoMeta) {
   const expected = new Map();
 
-  for (const lang of LANGS) {
+  for (const lang of CANONICAL_LANGS) {
     const title = seoMeta[lang].title;
     const description = seoMeta[lang].description;
 
-    const fileRel = toPosix(path.relative(ROOT, path.join(OUTPUT_DIR, lang, 'index.html')));
+    const fileRel = toPosix(path.relative(ROOT, path.join(OUTPUT_DIR, 'canonical', lang, 'index.html')));
     const content = normalizeNewline(
       renderPage({ lang, title, description })
     );
     expected.set(fileRel, content);
   }
+
+  for (const lang of LEGACY_LANGS) {
+    const fileRel = toPosix(path.relative(ROOT, path.join(OUTPUT_DIR, 'legacy', lang, 'index.html')));
+    expected.set(fileRel, normalizeNewline(renderRedirectPage({
+      language: lang,
+      permalink: `/${lang}/revelation-setting/`,
+      requestedTab: 'revelation',
+      noticeOnFallback: 'revelation-unavailable'
+    })));
+  }
+
+  expected.set(
+    toPosix(path.relative(ROOT, path.join(OUTPUT_DIR, 'cn-share', 'index.html'))),
+    normalizeNewline(renderRedirectPage({
+      language: 'cn',
+      permalink: '/cn/share/revelation/',
+      requestedTab: 'revelation',
+      noticeOnFallback: 'revelation-unavailable'
+    }))
+  );
 
   return expected;
 }

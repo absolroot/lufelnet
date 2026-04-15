@@ -29,12 +29,30 @@
     margin-bottom: 0px;
 }
 
-.rs-description-row {
+.rs-header {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
-    gap: 12px;
-    margin-top: 0px;
+    gap: 24px;
+}
+
+.rs-header-copy {
+    min-width: 0;
+}
+
+.rs-header-copy h1 {
+    margin-bottom: 8px;
+}
+
+.rs-header-side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.revelation-setting-page .character-page-tabs {
+    align-self: flex-end;
 }
 
 .rs-page-description {
@@ -42,11 +60,14 @@
     color: var(--rs-text-sub);
     font-size: 14px;
     line-height: 1.5;
+    max-width: 720px;
 }
 
 .rs-capture-btns {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
+    justify-content: flex-end;
     gap: 6px;
     flex-shrink: 0;
 }
@@ -2372,6 +2393,10 @@
         margin-bottom: 10px;
     }
 
+    .rs-header {
+        align-items: flex-start;
+    }
+
     .rs-config-layout {
         gap: 12px;
         margin-bottom: 16px;
@@ -2381,6 +2406,25 @@
 /* ===== Responsive: Mobile ===== */
 
 @media (max-width: 768px) {
+    .rs-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+    }
+
+    .rs-header-side {
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .revelation-setting-page .character-page-tabs {
+        align-self: stretch;
+    }
+
+    .rs-capture-btns {
+        justify-content: flex-start;
+    }
+
     .rs-side-panel,
     .rs-top-effects-panel,
     .rs-editor-panel,

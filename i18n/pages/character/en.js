@@ -3,6 +3,7 @@ window.I18N_PAGE_CHARACTER_EN = {
     navCurrent: 'Characters',
     pageTitle: 'Character Build',
     pageDescription: 'Recommended builds, personas, revelations, and rotation guides for each character.',
+    rosterShareCta: 'Roster Share',
     filteredCount: 'Total',
     countUnit: '',
     searchPlaceholder: 'Search characters...',

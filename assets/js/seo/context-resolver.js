@@ -56,6 +56,11 @@
     if (first === 'schedule') return { domain: 'schedule', mode: 'list' };
     if (first === '2nd-anniversary') return { domain: 'second-anniversary', mode: 'list' };
     if (first === 'revelations') return { domain: 'revelation', mode: 'list' };
+    if (first === 'share') {
+      if (second === 'character') return { domain: 'share-character', mode: 'list' };
+      if (second === 'revelation') return { domain: 'revelation-setting', mode: 'list' };
+      return { domain: 'share', mode: 'list' };
+    }
     if (first === 'revelation-setting') return { domain: 'revelation-setting', mode: 'list' };
     if (first === 'material-calc') return { domain: 'material-calc', mode: 'list' };
     if (first === 'pay-calc') return { domain: 'pay-calc', mode: 'list' };

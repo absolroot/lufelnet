@@ -110,3 +110,7 @@
     transform: translateY(-58%) scale(1.72) !important;
   }
 }
+
+.char-img.single-banner[src*="%EB%A7%88%EC%82%AC%ED%82%A4"] {
+  top: 95%;
+}

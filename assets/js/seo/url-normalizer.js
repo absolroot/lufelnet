@@ -184,8 +184,30 @@
       url.pathname = '/' + lang + '/revelations/';
       return true;
     }
+    if (domain === 'share' && /^\/share\/?$/i.test(url.pathname)) {
+      url.pathname = '/' + lang + '/share/';
+      return true;
+    }
+    if (domain === 'share-character' && /^\/share\/character\/?$/i.test(url.pathname)) {
+      url.pathname = '/' + lang + '/share/character/';
+      return true;
+    }
     if (domain === 'revelation-setting' && /^\/revelation-setting\/?$/i.test(url.pathname)) {
-      url.pathname = '/' + lang + '/revelation-setting/';
+      if (lang === 'cn') {
+        url.pathname = '/cn/share/character/';
+        url.searchParams.set('share_notice', 'revelation-unavailable');
+      } else {
+        url.pathname = '/' + lang + '/share/revelation/';
+      }
+      return true;
+    }
+    if (domain === 'revelation-setting' && /^\/share\/revelation\/?$/i.test(url.pathname)) {
+      if (lang === 'cn') {
+        url.pathname = '/cn/share/character/';
+        url.searchParams.set('share_notice', 'revelation-unavailable');
+      } else {
+        url.pathname = '/' + lang + '/share/revelation/';
+      }
       return true;
     }
     if (domain === 'material-calc' && /^\/material-calc\/?$/i.test(url.pathname)) {

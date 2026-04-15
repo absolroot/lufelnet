@@ -1,0 +1,328 @@
+<script>
+(function () {
+    var params = new URLSearchParams(window.location.search || '');
+    var path = String(window.location.pathname || '/');
+    var lowerPath = path.toLowerCase();
+
+    var pathLangMatch = lowerPath.match(/^\/(kr|en|jp|cn)(\/|$)/);
+    var pathLang = pathLangMatch ? pathLangMatch[1] : '';
+    var queryLang = String(params.get('lang') || '').toLowerCase();
+    var preferredLang = '';
+
+    if (pathLang) {
+        preferredLang = pathLang;
+    } else if (['kr', 'en', 'jp', 'cn'].indexOf(queryLang) !== -1) {
+        preferredLang = queryLang;
+    } else {
+        try {
+            preferredLang = String(localStorage.getItem('preferredLanguage') || '').toLowerCase();
+        } catch (_) {
+            preferredLang = '';
+        }
+        if (['kr', 'en', 'jp', 'cn'].indexOf(preferredLang) === -1) {
+            preferredLang = 'kr';
+        }
+    }
+
+    var isLegacyRoot = /^\/share\/character\/?$/.test(lowerPath);
+    var isCanonicalPath = /^\/(kr|en|jp|cn)\/share\/character\/?$/.test(lowerPath);
+
+    if (isLegacyRoot) {
+        window.__SEO_PATH_LANG__ = preferredLang;
+        params.delete('lang');
+        params.delete('v');
+        var legacyRemaining = params.toString();
+        history.replaceState(null, '', '/' + preferredLang + '/share/character/' + (legacyRemaining ? '?' + legacyRemaining : ''));
+        return;
+    }
+
+    if (isCanonicalPath) {
+        window.__SEO_PATH_LANG__ = pathLang;
+        var before = params.toString();
+        params.delete('lang');
+        params.delete('v');
+        var canonicalRemaining = params.toString();
+        var canonicalPath = '/' + pathLang + '/share/character/';
+        if (path !== canonicalPath || before !== canonicalRemaining) {
+            history.replaceState(null, '', canonicalPath + (canonicalRemaining ? '?' + canonicalRemaining : ''));
+        }
+    }
+})();
+</script>
+{% if page.alternate_urls %}
+{% for alt in page.alternate_urls %}
+<link rel="alternate" hreflang="{{ alt[0] }}" href="{{ site.url }}{{ alt[1] }}" />
+{% endfor %}
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.alternate_urls['ko'] | default: page.alternate_urls.first[1] }}" />
+{% endif %}
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/character.css?v={{ site.time | date: '%s' }}">
+<link rel="stylesheet" href="{{ site.baseurl }}/apps/share-character/share-character.css?v={{ site.time | date: '%s' }}">
+
+<div class="main-wrapper sc-page">
+    <div class="navigation-path">
+        <script>document.write(`<a href="${BASE_URL}/" data-i18n="nav_home">Home</a>`);</script>
+        <span class="separator">/</span>
+        <span class="current-page" data-i18n="nav_current">Share</span>
+    </div>
+
+    <div class="header-container sc-header">
+        <div class="sc-header-copy">
+            <h1 data-i18n="page_title">Roster Share</h1>
+            <p class="sc-page-description" data-i18n="page_description">Share your character roster with awareness and weapon progress.</p>
+        </div>
+        <div class="sc-header-side">
+            <div class="character-page-tabs" role="tablist" aria-label="Share tabs">
+                <a id="scShareCharacterTab" class="character-page-tab active" role="tab" data-i18n="nav_share_character" href="/share/character/">Character</a>
+                <a id="scShareRevelationTab" class="character-page-tab" role="tab" data-i18n="nav_share_revelation" href="/share/revelation/">Revelation <span id="scShareRevelationTabNote" class="character-page-tab-note" hidden></span></a>
+            </div>
+            <div class="sc-actions">
+                <div class="sc-capture-btns">
+                <div class="sc-action-popover" id="scPresetWrap">
+                    <button id="scPresetBtn" type="button" class="sc-icon-action-btn sc-btn-icon-hover sc-preset-btn" aria-label="Presets" data-tooltip="Presets" aria-haspopup="menu" aria-expanded="false" aria-controls="scPresetMenu">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <rect x="4" y="4" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="2"/>
+                            <rect x="14" y="4" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="2"/>
+                            <rect x="4" y="14" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="2"/>
+                            <rect x="14" y="14" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </button>
+                    <div id="scPresetMenu" class="sc-preset-menu" role="menu" hidden>
+                        <button type="button" class="sc-preset-item" role="menuitem" data-preset-id="all-a0">
+                            <span class="sc-preset-item-label" data-i18n="preset_all_a0">All Awareness 0</span>
+                        </button>
+                        <button type="button" class="sc-preset-item" role="menuitem" data-preset-id="all-a0-r0">
+                            <span class="sc-preset-item-label" data-i18n="preset_all_a0_r0">All Awareness 0 / Weapon 0</span>
+                        </button>
+                        <button type="button" class="sc-preset-item" role="menuitem" data-preset-id="rarity5-a6-r6">
+                            <span class="sc-preset-item-label" data-i18n="preset_rarity5_a6_r6">All 5★ Awareness 6 / Weapon 6</span>
+                        </button>
+                        <button type="button" class="sc-preset-item" role="menuitem" data-preset-id="all-a6-r6">
+                            <span class="sc-preset-item-label" data-i18n="preset_all_a6_r6">All Awareness 6 / Weapon 6</span>
+                        </button>
+                    </div>
+                </div>
+                <button id="scResetBtn" type="button" class="sc-icon-action-btn sc-btn-icon-hover sc-reset-btn" aria-label="Reset" data-tooltip="Reset">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M20 7v5h-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M4 17v-5h5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M20 12a8 8 0 0 0-13.66-5.66L4 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M4 12a8 8 0 0 0 13.66 5.66L20 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <button id="scCopyBtn" type="button" class="sc-icon-action-btn sc-btn-icon-hover" aria-label="Copy Image" data-tooltip="Copy Image">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
+                        <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </button>
+                <button id="scCaptureBtn" type="button" class="sc-icon-action-btn sc-btn-icon-hover" aria-label="Capture Image" data-tooltip="Capture Image">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M12 15a3 3 0 100-6 3 3 0 000 6z"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M8.293 5.293A1 1 0 019 5h6a1 1 0 01.707.293l1.414 1.414A1 1 0 0017.828 7H20a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V9a2 2 0 012-2h2.172a1 1 0 00.707-.293l1.414-1.414zM12 17a5 5 0 100-10 5 5 0 000 10z"/>
+                    </svg>
+                </button>
+                <button id="scShareBtn" type="button" class="sc-icon-action-btn sc-btn-icon-hover" aria-label="Share URL" data-tooltip="Share URL">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <circle cx="18" cy="5" r="3" stroke="currentColor" stroke-width="2"></circle>
+                        <circle cx="6" cy="12" r="3" stroke="currentColor" stroke-width="2"></circle>
+                        <circle cx="18" cy="19" r="3" stroke="currentColor" stroke-width="2"></circle>
+                        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" stroke="currentColor" stroke-width="2"></line>
+                        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" stroke="currentColor" stroke-width="2"></line>
+                    </svg>
+                </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="filter-section">
+        <div class="filter-header">
+            <button class="filter-toggle-btn" id="scFilterToggleBtn">
+                <img src="{{ site.baseurl }}/assets/img/character-cards/filter.png" alt="Filter" style="width: 20px; height: 20px;" />
+                <span data-i18n="filter_toggle">Filter</span>
+            </button>
+            <button class="filter-reset-btn" id="scFilterResetBtn" style="display: none;">
+                <img src="{{ site.baseurl }}/assets/img/character-cards/reset.png" alt="Reset" style="height: 24px; object-fit: contain;" />
+            </button>
+        </div>
+        <div class="filter-content" id="scFilterContent">
+            <!-- Element filter -->
+            <div class="filter-group">
+                <h3 data-i18n="filter_element">속성</h3>
+                <div class="filter-options">
+                    <label>
+                        <input type="checkbox" name="element" value="물리">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_물리.png" alt="물리">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="총격">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_총격.png" alt="총격">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="화염">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_화염.png" alt="화염">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="빙결">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_빙결.png" alt="빙결">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="전격">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_전격.png" alt="전격">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="질풍">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_질풍.png" alt="질풍">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="염동">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_염동.png" alt="염동">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="핵열">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_핵열.png" alt="핵열">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="축복">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_축복.png" alt="축복">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="주원">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_주원.png" alt="주원">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="만능">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_만능.png" alt="만능">
+                        <span></span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Position filter -->
+            <div class="filter-group">
+                <h3 data-i18n="filter_position">직업</h3>
+                <div class="filter-options">
+                    <label>
+                        <input type="checkbox" name="position" value="지배">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/직업_지배.png" alt="지배">
+                    </label>
+                    <label>
+                        <input type="checkbox" name="position" value="반항">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/직업_반항.png" alt="반항">
+                    </label>
+                    <label>
+                        <input type="checkbox" name="position" value="우월">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/직업_우월.png" alt="우월">
+                    </label>
+                    <label>
+                        <input type="checkbox" name="position" value="굴복">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/직업_굴복.png" alt="굴복">
+                    </label>
+                    <label>
+                        <input type="checkbox" name="position" value="방위">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/직업_방위.png" alt="방위">
+                    </label>
+                    <label>
+                        <input type="checkbox" name="position" value="구원">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/직업_구원.png" alt="구원">
+                    </label>
+                    <label>
+                        <input type="checkbox" name="position" value="해명">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/직업_해명.png" alt="해명">
+                    </label>
+                    <label>
+                        <input type="checkbox" name="position" value="자율">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/직업_자율.png" alt="자율">
+                    </label>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <h3 data-i18n="filter_rarity">희귀도</h3>
+                <div class="filter-options tag-options">
+                    <label>
+                        <input type="checkbox" name="rarity" value="5" hidden>
+                        <div class="star-container">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star5.png" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star5.png" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star5.png" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star5.png" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star5.png" alt="★">
+                        </div>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="rarity" value="4" hidden>
+                        <div class="star-container">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star4.png" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star4.png" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star4.png" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star4.png" alt="★">
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Ownership filter -->
+            <div class="filter-group">
+                <h3 data-i18n="filter_ownership">보유</h3>
+                <div class="filter-options tag-options">
+                    <label style="padding: 0 12px;"><input type="radio" name="ownership" value="all" checked style="display:none;"><span data-i18n="filter_ownership_all">전체</span></label>
+                    <label style="padding: 0 12px;"><input type="radio" name="ownership" value="owned" style="display:none;"><span data-i18n="filter_owned_only">보유</span></label>
+                    <label style="padding: 0 12px;"><input type="radio" name="ownership" value="unowned" style="display:none;"><span data-i18n="filter_unowned_only">미보유</span></label>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="separator-line"></div>
+
+    <div class="search-section">
+        <div class="search-container">
+            <div class="search-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5c0-3.59-2.91-6.5-6.5-6.5S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.27v.79L19 20.49 20.49 19 15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="rgba(255, 255, 255, 0.6)" />
+                </svg>
+            </div>
+            <input type="text" id="characterSearch" placeholder="Search characters..." autocomplete="off">
+            <div id="searchDropdown" class="search-dropdown"></div>
+        </div>
+        <div class="search-count"></div>
+        <div class="spoiler-toggle-container" id="scSpoilerToggleWrap">
+            <label class="spoiler-toggle-label">
+                <input type="checkbox" id="spoilerToggle" class="spoiler-toggle-checkbox">
+                <span class="spoiler-toggle-text" id="spoilerToggleText">Show Spoilers</span>
+            </label>
+        </div>
+    </div>
+
+    <div id="scModalContainer" aria-live="polite"></div>
+
+    <section class="sc-grid-section">
+        <div id="scCardGrid" class="sc-card-grid" aria-live="polite"></div>
+        <div id="scEmptyState" class="sc-empty-state" hidden>
+            <h2 data-i18n="empty_selection_title">Select a character</h2>
+            <p data-i18n="empty_list">No characters match the current filters.</p>
+        </div>
+    </section>
+
+    <section id="scCaptureFrame" class="sc-capture-frame" aria-hidden="true"></section>
+</div>
+
+<div id="scToastHost" class="sc-toast-host" aria-live="polite" aria-atomic="true"></div>
+
+<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/assets/js/share/share-hub.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/share-character/js/share-character-capture.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/share-character/js/share-character-share-backup.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/share-character/share-character.js?v={{ site.time | date: '%s' }}"></script>

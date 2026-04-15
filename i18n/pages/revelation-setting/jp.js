@@ -1,6 +1,9 @@
 window.I18N_PAGE_REVELATION_SETTING_JP = {
     nav_home: 'ホーム',
-    nav_current: '啓示共有',
+    nav_current: '\u5171\u6709',
+    nav_share_character: '\u30AD\u30E3\u30E9',
+    nav_share_revelation: '\u5553\u793A',
+    share_tab_unavailable: '\u6E96\u5099\u4E2D',
     page_title: '啓示共有',
     page_description: 'キャラクターごとの啓示設定を入力して他の人と共有しましょう。',
 
@@ -100,6 +103,7 @@ window.I18N_PAGE_REVELATION_SETTING_JP = {
     msg_share_success: 'リンクをクリップボードにコピーしました！',
     msg_share_failed: '共有に失敗しました。',
     msg_share_load_failed: '共有リンクの読み込みに失敗しました。',
+    msg_share_revelation_unavailable: '\u73FE\u5728\u306E\u8A00\u8A9E\u3067\u306F\u5553\u793A\u5171\u6709\u3092\u5229\u7528\u3067\u304D\u307E\u305B\u3093\u3002',
     msg_preset_limit_reached: 'キャラクターごとにプリセットは最大20個まで追加できます。',
     msg_preset_name_empty: 'プリセット名を入力してください。',
     msg_preset_delete_confirm: '「{name}」プリセットを削除しますか？',

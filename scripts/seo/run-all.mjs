@@ -27,6 +27,8 @@ const SCRIPT_TARGETS = [
   'pull-tracker',
   'revelations',
   'revelation-setting',
+  'share',
+  'share-character',
   'schedule',
   'second-anniversary',
   'synergy',

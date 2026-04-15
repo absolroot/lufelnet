@@ -247,8 +247,8 @@
       ],
       "meta": {
         "cn": {
-          "description": "페르소나5 더 팬텀 X 공략 가이드",
-          "title": "아티클 | 루페르넷 페르소나5 더 팬텀 X"
+          "description": "《女神异闻录5: 夜幕魅影》攻略指南",
+          "title": "攻略 - 女神异闻录5: 夜幕魅影 路菲尔网"
         },
         "en": {
           "description": "Persona 5: The Phantom X Strategy Guides",
@@ -849,6 +849,82 @@
       "source": "i18n/pages/second-anniversary/seo-meta.json",
       "type": "simple"
     },
+    "share": {
+      "langs": [
+        "cn",
+        "en",
+        "jp",
+        "kr"
+      ],
+      "meta": {
+        "cn": {
+          "description": "从统一入口快速前往角色现况分享与启示分享。",
+          "title": "分享 | Lufelnet 女神异闻录：夜幕魅影"
+        },
+        "en": {
+          "description": "Jump between Character Share and Revelation Share from one hub.",
+          "title": "Share | Lufelnet Persona 5: The Phantom X"
+        },
+        "jp": {
+          "description": "キャラ共有と啓示共有へすばやく移動できます。",
+          "title": "共有 | Lufelnet ペルソナ5: The Phantom X"
+        },
+        "kr": {
+          "description": "캐릭터 현황 공유와 계시 공유 페이지로 빠르게 이동하세요.",
+          "title": "현황 공유 | 루페르넷 페르소나5 더 팬텀 X"
+        }
+      },
+      "modeKeys": [],
+      "paramPolicy": {
+        "detailParam": null,
+        "modeParam": null,
+        "remove": [
+          "lang",
+          "v"
+        ]
+      },
+      "placeholder": null,
+      "source": "i18n/pages/share/seo-meta.json",
+      "type": "simple"
+    },
+    "share-character": {
+      "langs": [
+        "cn",
+        "en",
+        "jp",
+        "kr"
+      ],
+      "meta": {
+        "cn": {
+          "description": "将角色持有情况、意识与专属武器阶段整理成一张列表并分享。",
+          "title": "角色持有分享 | Lufelnet 女神异闻录：夜幕魅影"
+        },
+        "en": {
+          "description": "Share your character ownership, awareness, level, and exclusive weapon progress in one board.",
+          "title": "Roster Share | Lufelnet Persona 5: The Phantom X"
+        },
+        "jp": {
+          "description": "キャラの所持状況、意識、専用武器段階を1枚のボードでまとめて共有します。",
+          "title": "キャラ所持共有 | Lufelnet ペルソナ5: The Phantom X"
+        },
+        "kr": {
+          "description": "캐릭터 현황, 의식, 전용무기 단계를 한 장의 보드로 정리해 공유하세요.",
+          "title": "캐릭터 현황 공유 | 루페르넷 페르소나5 더 팬텀 X"
+        }
+      },
+      "modeKeys": [],
+      "paramPolicy": {
+        "detailParam": null,
+        "modeParam": null,
+        "remove": [
+          "lang",
+          "v"
+        ]
+      },
+      "placeholder": null,
+      "source": "i18n/pages/share-character/seo-meta.json",
+      "type": "simple"
+    },
     "synergy": {
       "langs": [
         "cn",
@@ -1297,7 +1373,7 @@
       "type": "template"
     }
   },
-  "generatedAt": "2026-04-13T16:20:12.770Z",
+  "generatedAt": "2026-04-15T08:58:27.700Z",
   "localeMap": {
     "cn": "zh_CN",
     "en": "en_US",

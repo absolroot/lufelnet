@@ -3,23 +3,9 @@
     var params = new URLSearchParams(window.location.search || '');
     var path = String(window.location.pathname || '/');
     var lowerPath = path.toLowerCase();
-
     var pathLangMatch = lowerPath.match(/^\/(kr|en|jp)(\/|$)/);
     var pathLang = pathLangMatch ? pathLangMatch[1] : '';
-    var queryLang = String(params.get('lang') || '').toLowerCase();
-    var effectiveLang = pathLang || (['kr', 'en', 'jp'].indexOf(queryLang) !== -1 ? queryLang : '');
-
-    var isLegacyRoot = /^\/revelation-setting\/?$/.test(lowerPath);
-    var isCanonicalPath = /^\/(kr|en|jp)\/revelation-setting\/?$/.test(lowerPath);
-
-    if (isLegacyRoot && effectiveLang) {
-        window.__SEO_PATH_LANG__ = effectiveLang;
-        params.delete('lang');
-        params.delete('v');
-        var remainingLegacy = params.toString();
-        history.replaceState(null, '', '/' + effectiveLang + '/revelation-setting/' + (remainingLegacy ? '?' + remainingLegacy : ''));
-        return;
-    }
+    var isCanonicalPath = /^\/(kr|en|jp)\/share\/revelation\/?$/.test(lowerPath);
 
     if (isCanonicalPath) {
         window.__SEO_PATH_LANG__ = pathLang;
@@ -27,17 +13,10 @@
         params.delete('lang');
         params.delete('v');
         var remainingCanonical = params.toString();
-        var canonicalPath = '/' + pathLang + '/revelation-setting/';
+        var canonicalPath = '/' + pathLang + '/share/revelation/';
         if (path !== canonicalPath || before !== remainingCanonical) {
             history.replaceState(null, '', canonicalPath + (remainingCanonical ? '?' + remainingCanonical : ''));
         }
-        return;
-    }
-
-    if (isLegacyRoot && params.has('v')) {
-        params.delete('v');
-        var remainingRoot = params.toString();
-        history.replaceState(null, '', '/revelation-setting/' + (remainingRoot ? '?' + remainingRoot : ''));
     }
 })();
 </script>
@@ -47,19 +26,26 @@
 {% endfor %}
 <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.alternate_urls['ko'] | default: page.alternate_urls.first[1] }}" />
 {% endif %}
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/character.css?v={{ site.time | date: '%s' }}">
 <link rel="stylesheet" href="{{ site.baseurl }}/apps/revelation-setting/revelation-setting.css?v={{ site.time | date: '%s' }}">
 
 <div class="main-wrapper revelation-setting-page">
     <div class="navigation-path">
         <script>document.write(`<a href="${BASE_URL}/" data-i18n="nav_home">-</a>`);</script>
         <span class="separator">/</span>
-        <span class="current-page" data-i18n="nav_current">-</span>
+        <span class="current-page" data-i18n="nav_current">Share</span>
     </div>
 
-    <div class="header-container">
-        <h1 data-i18n="page_title">-</h1>
-        <div class="rs-description-row">
+    <div class="header-container rs-header">
+        <div class="rs-header-copy">
+            <h1 data-i18n="page_title">-</h1>
             <p class="rs-page-description" data-i18n="page_description">-</p>
+        </div>
+        <div class="rs-header-side">
+            <div class="character-page-tabs" role="tablist" aria-label="Share tabs">
+                <a id="rsShareCharacterTab" class="character-page-tab" role="tab" data-i18n="nav_share_character" href="/share/character/">Character</a>
+                <a id="rsShareRevelationTab" class="character-page-tab active" role="tab" data-i18n="nav_share_revelation" href="/share/revelation/">Revelation <span id="rsShareRevelationTabNote" class="character-page-tab-note" hidden></span></a>
+            </div>
             <div class="rs-capture-btns">
                 <button id="rsBackupBtn" type="button" class="rs-download-icon-btn rs-btn-icon-hover" aria-label="Backup" data-tooltip="Backup">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -170,6 +156,7 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.min.js"></script>
+<script src="{{ site.baseurl }}/assets/js/share/share-hub.js?v={{ site.time | date: '%s' }}"></script>
 <script src="{{ site.baseurl }}/apps/revelation-setting/js/revelation-setting-modified-store.js?v={{ site.time | date: '%s' }}"></script>
 <script src="{{ site.baseurl }}/apps/revelation-setting/js/revelation-setting-storage-utils.js?v={{ site.time | date: '%s' }}"></script>
 <script src="{{ site.baseurl }}/apps/revelation-setting/js/revelation-setting-global-presets.js?v={{ site.time | date: '%s' }}"></script>

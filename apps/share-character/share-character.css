@@ -642,6 +642,11 @@
     filter: brightness(1.06);
 }
 
+/* Firefox fails to paint the card image when the inherited .card::before overlay exists. */
+.sc-share-card::before {
+    display: none;
+}
+
 .sc-share-card.is-selected {
     z-index: 5;
 }

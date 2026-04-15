@@ -48,7 +48,7 @@ SP recovery naturally restores 10 at the start of each turn, and SP Recovery is 
 
 Considering that Skill 1 and Skill 2 each additionally restore 16 SP, **you need 450.1% SP Recovery to restore 200 SP within 2 turns.**
 
-> **Required SP Recovery for Revelation sub-stats (excluding My Palace): 31.2%**
+> **Required SP Recovery for Revelation sub-stats (excluding Thieves Den): 31.2%**
 
 > ※ Base stats/188.5% + Awareness 0/60% + Revelation main stat/90.4% + Revelation set bonus/80% = 418.9%
 

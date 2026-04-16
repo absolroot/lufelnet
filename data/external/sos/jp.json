@@ -2,7 +2,7 @@
   "data": {
     "boss": [
       {
-        "bonusRule": "All ally Bless attack Score x 3",
+        "bonusRule": "All ally Almighty attack Score x 3",
         "enemy": [
           {
             "adapt": {
@@ -10,54 +10,54 @@
               "Nullify": [],
               "Reflect": [],
               "Resistant": [
-                "Fire",
-                "Wind",
+                "Ice",
+                "Bless",
                 "Curse"
               ],
               "Weak": [
-                "Bless"
+                "Fire"
               ]
             },
-            "image": "B-guaiwutouxiang-set.png",
+            "image": "B-guaiwutouxiang-vishnu.png",
             "level": "89",
-            "name": "セト",
-            "skill": "1101,1103",
-            "sn": "524101",
-            "stat": {}
-          }
-        ],
-        "scoreRatio": 2.0,
-        "sn": "268401"
-      },
-      {
-        "bonusRule": "All ally Psychokinesis attack Score x 3",
-        "enemy": [
-          {
-            "adapt": {
-              "Absorb": [],
-              "Nullify": [],
-              "Reflect": [],
-              "Resistant": [
-                "Wind",
-                "Bless"
-              ],
-              "Weak": [
-                "Psychokinesis"
-              ]
-            },
-            "image": "B-guaiwutouxiang-quetzalcoatl.png",
-            "level": "89",
-            "name": "ケツアルカトル",
-            "skill": "406,403",
-            "sn": "524111",
+            "name": "ヴィシュヌ",
+            "skill": "407,905,408,1104",
+            "sn": "526101",
             "stat": {}
           }
         ],
         "scoreRatio": 1.0,
-        "sn": "268402"
+        "sn": "288401"
+      },
+      {
+        "bonusRule": "All ally Curse attack Score x 3",
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Electric",
+                "Bless"
+              ],
+              "Weak": [
+                "Curse"
+              ]
+            },
+            "image": "B-guaiwutouxiang-sraosha.png",
+            "level": "89",
+            "name": "スラオシャ",
+            "skill": "1021,1003,1019",
+            "sn": "526111",
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 1.0,
+        "sn": "288402"
       }
     ],
-    "buff": "太古の祭具: 主人公以外の味方がスキルで物理／念動属性ダメージを与えた時、他の味方に『狂乱の衝動』を付与する。\n『狂乱の衝動』：２ターンの間、最終ダメージが４０%上昇する。",
+    "buff": "結晶の呼応: 主人公以外の味方がスキルで物理／万能属性ダメージを与えた時、味方全体に『細胞晶化』を付与する。\n『細胞晶化』：２ターンの間、最終ダメージが４０%上昇する。",
     "endTime": "2026-04-23 10:30:00",
     "startTime": "2026-04-16 11:30:00"
   },

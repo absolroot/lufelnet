@@ -48,7 +48,7 @@
       {
         "name": "Glimmer",
         "quality": 5,
-        "skill": "Increase Attack by 28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/56.0%. Increase Bless damage and healing by 11.0%/14.7%/14.7%/18.3%/18.3%/22.0%/22.0%. At the start of the turn, grant Blessing to 1 ally and increase their damage by 8.0%/10.7%/10.7%/13.3%/13.3%/16.0%/16.0%. If the target's attribute is Bless, increase Bless damage by 8.0%/10.7%/10.7%/13.3%/13.3%/16.0%/16.0% more. Effect reactivates every 2 turns.",
+        "skill": "Increase Attack by 28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/56.0%. Increase Bless damage and healing by 11.0%/14.7%/14.7%/18.3%/18.3%/22.0%/22.0%. At the start of the turn, grant Blessing to 1 ally and increase their damage by 8.0%/10.7%/10.7%/13.3%/13.3%/16.0%/16.0%. If the target's attribute is Bless, increase Bless damage by 13.5%/18.0%/18.0%/22.5%/22.5%/27.0%/27.0% more. Effect reactivates every 2 turns.",
         "stat": {
           "attack": 654.08,
           "defense": 396.41,
@@ -70,7 +70,7 @@
       {
         "name": "Starry Compass",
         "quality": 5,
-        "skill": "Increase Attack by 28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/56.0%.\nUniversal Astrolabe (Aura): Gain the following effects based on the number of Guidance stacks.\n5 stacks: Decrease all foes' Defense by 11.0%/14.7%/14.7%/18.3%/18.3%/22.0%/22.0%.\n10 stacks: Increase all allies' ailment accuracy by 9.0%/12.0%/12.0%/15.0%/15.0%/18.0%/18.0%.\n15 stacks: Increase all allies' Psychokinesis damage by 6.0%/8.0%/8.0%/10.0%/10.0%/12.0%/12.0%.\nAt the start of battle, gain 10 stacks of Guidance, for a maximum of 20 stacks. Gain 1 stack of Guidance whenever an ally deals damage to a foe. At the end of the user's turn, lose 5 Guidance stacks.",
+        "skill": "Increase Attack by 28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/56.0%.\nUniversal Astrolabe (Aura): Gain the following effects based on the number of Guidance stacks.\n5 stacks: Decrease all foes' Defense by 11.0%/14.7%/14.7%/18.3%/18.3%/22.0%/22.0%.\n10 stacks: Increase all allies' ailment accuracy by 9.0%/12.0%/12.0%/15.0%/15.0%/18.0%/18.0%.\n15 stacks: Increase all allies' Psychokinesis damage by 11.0%/14.7%/14.7%/18.3%/18.3%/22.0%/22.0%.\nAt the start of battle, gain 10 stacks of Guidance, for a maximum of 20 stacks. Gain 1 stack of Guidance whenever an ally deals damage to a foe. At the end of the user's turn, lose 5 Guidance stacks.",
         "stat": {
           "attack": 654.08,
           "defense": 356.79,
@@ -103,7 +103,7 @@
       {
         "name": "Plasma Blade",
         "quality": 5,
-        "skill": "Increase Attack by 28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/60.7%.\nAt the start of battle, or when an ally deals damage with an Almighty skill, activate Harmonic Element for 2 turns.\nHarmonic Element: Based on the number of Flames of Desire effects active on the current party, activate the following effects.\n1 or more: Increase user's Attack by 15.0%/20.0%/20.0%/25.0%/25.0%/30.0%/30.0% and Almighty damage by 6.0%/8.0%/8.0%/10.0%/10.0%/12.0%/12.0%. Grant 50% of these effects to other allies.\n2 or more: Increase party's critical damage by 9.0%/12.0%/12.0%/15.0%/15.0%/18.0%/18.0%.",
+        "skill": "Increase Attack by 28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/60.7%.\nAt the start of battle, or when an ally deals damage with an Almighty skill, activate Harmonic Element for 2 turns.\nHarmonic Element: Based on the number of Flames of Desire effects active on the current party, activate the following effects.\n1 or more: Increase user's Attack by 15.0%/20.0%/20.0%/25.0%/25.0%/30.0%/30.0% and Almighty damage by 9.0%/12.0%/12.0%/15.0%/15.0%/18.0%/18.0%. Grant 50% of these effects to other allies.\n2 or more: Increase party's critical damage by 9.0%/12.0%/12.0%/15.0%/15.0%/18.0%/18.0%.",
         "stat": {
           "attack": 654.08,
           "defense": 356.79,

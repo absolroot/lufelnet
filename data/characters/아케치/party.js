@@ -11,8 +11,9 @@ window.recommendParty["아케치"] = {
                 "지국천"
             ],
             "comment": "아케치는 2가지 속성의 공격을 하기에 황룡의 패시브를 발동시키기에 용이하다.",
-            "comment_en": "Akechi can attack with two attributes, making it easier to trigger the passive of the Yellow Dragon.",
-            "comment_jp": "明智は2つの属性の攻撃を行うため、ヨドロウのパッシブを発動しやすい。"
+            "comment_en": "Akechi can attack with two attributes, making it easier to trigger Kohryu's passive.",
+            "comment_jp": "明智は2つの属性で攻撃できるため、コウリュウのパッシブを発動しやすい。",
+            "comment_cn": "明智可以使用2种属性攻击，因此更容易触发黄龙的被动。"
         },
         {
             "type": "CRITICAL",

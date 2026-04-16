@@ -19,6 +19,7 @@
   const BASE = (typeof window !== 'undefined' && (window.BASE_URL || window.SITE_BASEURL)) || '';
   const APP_VER = (typeof window !== 'undefined' && (window.APP_VERSION || '')) || '';
   const GLB_PRIORITY_LANGS = new Set(['en', 'jp', 'sea']);
+  const GLB_RELEASE_ORDER_REGIONS = new Set(['en', 'jp', 'sea']);
 
   // State
   let state = {
@@ -30,6 +31,8 @@
     countdownTimer: null,
     slideTimeout: null,
   };
+  let releaseOrderCharacterData = null;
+  let releaseOrderDataSource = null;
 
   // Utilities
   function clamp(n, min, max) { return Math.max(min, Math.min(max, n)); }
@@ -91,6 +94,36 @@
       merged[key] = { ...(baseData && baseData[key] ? baseData[key] : {}), ...(priorityData[key] || {}) };
     });
     return merged;
+  }
+
+  function shouldUseGlbReleaseOrder(region) {
+    return GLB_RELEASE_ORDER_REGIONS.has(String(region || '').toLowerCase());
+  }
+
+  async function ensureReleaseOrderCharacterDataLoaded(region) {
+    const source = shouldUseGlbReleaseOrder(region) ? 'glb' : 'base';
+    if (releaseOrderDataSource === source && releaseOrderCharacterData) return;
+
+    const version = APP_VER || Date.now();
+    const suffix = version ? `?v=${version}` : '';
+    const basePath = `${BASE}/data/character_info.js${suffix}`;
+    const glbPath = `${BASE}/data/character_info_glb.js${suffix}`;
+
+    let dataBox = null;
+    if (source === 'glb') {
+      dataBox = await fetchCharactersData(glbPath);
+      if (!dataBox || !dataBox.characterData || Object.keys(dataBox.characterData).length === 0) {
+        dataBox = await fetchCharactersData(basePath);
+        releaseOrderDataSource = 'base';
+      } else {
+        releaseOrderDataSource = 'glb';
+      }
+    } else {
+      dataBox = await fetchCharactersData(basePath);
+      releaseOrderDataSource = 'base';
+    }
+
+    releaseOrderCharacterData = (dataBox && dataBox.characterData) ? dataBox.characterData : {};
   }
 
   async function ensureHomeCharacterDataLoaded(rawLang) {
@@ -392,7 +425,7 @@
     const topKey = getCharacterTopKey(name);
     if (!topKey) return Number.NEGATIVE_INFINITY;
     try {
-      const data = (typeof characterData !== 'undefined') ? characterData : (window.characterData || {});
+      const data = releaseOrderCharacterData || ((typeof characterData !== 'undefined') ? characterData : (window.characterData || {}));
       const item = (data || {})[topKey];
       const order = Number(item && item.release_order);
       return Number.isFinite(order) ? order : Number.NEGATIVE_INFINITY;
@@ -1364,6 +1397,7 @@
 
     const rawLang = detectLang();
     await ensureHomeCharacterDataLoaded(rawLang);
+    await ensureReleaseOrderCharacterDataLoaded(state.region);
 
     // Rebuild character index to ensure we have latest characterData
     characterIndex = buildCharacterReverseIndex();

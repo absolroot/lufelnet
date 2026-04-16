@@ -2,6 +2,8 @@
     'use strict';
 
     const DEFAULT_MAX_COUNT = 10;
+    const REGIONS = ['cn', 'tw', 'sea', 'kr', 'en', 'jp'];
+    const GLB_RELEASE_ORDER_REGIONS = new Set(['en', 'jp', 'sea']);
 
     const POPULAR_CHARACTERS_OVERRIDE = { kr: null, en: null, jp: null };
     const POPULAR_CHARACTERS_FIXED = {
@@ -103,6 +105,45 @@
         return lang === 'kr' || lang === 'cn';
     }
 
+    function mapLangToRegion(lang) {
+        if (!lang) return null;
+        const value = String(lang).toLowerCase();
+        return REGIONS.includes(value) ? value : null;
+    }
+
+    function loadRegion() {
+        try {
+            const saved = localStorage.getItem('carousel_region');
+            if (saved && REGIONS.includes(saved)) return saved;
+        } catch (_) { }
+        try {
+            const candidates = [];
+            const urlLang = new URLSearchParams(window.location.search).get('lang');
+            if (urlLang) candidates.push(urlLang);
+            if (typeof LanguageRouter !== 'undefined' && LanguageRouter.getCurrentLanguage) {
+                candidates.push((LanguageRouter.getCurrentLanguage() || '').toLowerCase());
+            }
+            try {
+                const savedLang = localStorage.getItem('preferredLanguage');
+                if (savedLang) candidates.push(savedLang);
+            } catch (_) { }
+            try {
+                const legacyLang = localStorage.getItem('preferred_language');
+                if (legacyLang) candidates.push(legacyLang);
+            } catch (_) { }
+
+            for (const candidate of candidates) {
+                const region = mapLangToRegion(candidate);
+                if (region) return region;
+            }
+        } catch (_) { }
+        return 'kr';
+    }
+
+    function shouldUseGlbReleaseOrder(region) {
+        return GLB_RELEASE_ORDER_REGIONS.has(String(region || '').toLowerCase());
+    }
+
     function getCurrentLang() {
         try {
             const urlLang = new URLSearchParams(window.location.search).get('lang');
@@ -170,10 +211,10 @@
         return kr.name || characterKey;
     }
 
-    function buildReleaseOrderMap(langCharacterData) {
+    function buildReleaseOrderMap(releaseOrderCharacterData) {
         const map = {};
-        Object.keys(langCharacterData || {}).forEach(key => {
-            const v = langCharacterData[key];
+        Object.keys(releaseOrderCharacterData || {}).forEach(key => {
+            const v = releaseOrderCharacterData[key];
             if (v && typeof v.release_order !== 'undefined') {
                 map[key] = v.release_order;
             }
@@ -189,7 +230,7 @@
         });
     }
 
-    function resolvePopularCharacters(lang, langCharacterData) {
+    function resolvePopularCharacters(lang, releaseOrderCharacterData) {
         const langKey = isKrLikeLang(lang) ? 'kr' : lang;
         const overrideItems = normalizeItems(POPULAR_CHARACTERS_OVERRIDE[langKey]);
         if (overrideItems) {
@@ -203,7 +244,7 @@
         const fixedKeys = fixedItems.map(x => x.name);
         const fixedSet = new Set(fixedKeys);
 
-        const releaseOrderMap = buildReleaseOrderMap(langCharacterData);
+        const releaseOrderMap = buildReleaseOrderMap(releaseOrderCharacterData);
         const orderedAuto = sortByReleaseOrderDesc(Object.keys(releaseOrderMap), releaseOrderMap);
 
         const topAuto = orderedAuto[0];
@@ -282,19 +323,23 @@
         bindMouseDragScroll(container);
 
         const lang = getCurrentLang();
+        const selectedRegion = loadRegion();
         const maxCount = getMaxCountFromDom(popularRoot);
         const v = window.APP_VERSION || Date.now();
 
-        const kr = await fetchCharactersData(`${window.BASE_URL || ''}/data/character_info.js?v=${v}`);
-        const lgDataPath = (lang === 'en' || lang === 'jp')
-            ? '/data/character_info_glb.js'
-            : `/data/${lang}/characters/characters.js`;
-        const lg = isKrLikeLang(lang) ? kr : await fetchCharactersData(`${window.BASE_URL || ''}${lgDataPath}?v=${v}`);
+        const [kr, glb] = await Promise.all([
+            fetchCharactersData(`${window.BASE_URL || ''}/data/character_info.js?v=${v}`),
+            shouldUseGlbReleaseOrder(selectedRegion)
+                ? fetchCharactersData(`${window.BASE_URL || ''}/data/character_info_glb.js?v=${v}`)
+                : Promise.resolve(null)
+        ]);
 
         const krCharacterData = (kr && kr.characterData) ? kr.characterData : {};
-        const langCharacterData = (lg && lg.characterData) ? lg.characterData : {};
+        const releaseOrderCharacterData = shouldUseGlbReleaseOrder(selectedRegion) && glb && glb.characterData
+            ? glb.characterData
+            : krCharacterData;
 
-        const resolved = resolvePopularCharacters(lang, langCharacterData);
+        const resolved = resolvePopularCharacters(lang, releaseOrderCharacterData);
 
         const allowedSet = getAllowedCharacterSet();
         let orderedKeys = resolved.orderedKeys || [];

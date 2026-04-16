@@ -56,7 +56,7 @@
     const UI_TEXT = {
         kr: {
             headerLead: '2주년 출시 캐릭터 모토하 청광을 획득하고, 이외는 범용적으로 사용 가능한 버퍼와 서포트 괴도들을 획득을 목표로 하는 방법.\n아니면 리세마라를 패스하고 1명의 좋은 딜러를 선택하는 형태로 시작할 수 있습니다.',
-            dayRule: '첫날 80 + 10일 누적 80개 = <strong>한정 선택권 2장</strong>',
+            dayRule: '첫날 80 + 14일 누적 80개 = <strong>한정 선택권 2장</strong>',
             mailRule: '우편 수령 = <strong>한정 선택권 1장 + 통상 선택권 1장</strong>',
             slotTitles: { reroll: '리세마라 (선택)', event1: '이벤트 선택권 1', event2: '이벤트 선택권 2', katayama: '이벤트 선택권 3', standard: '통상 선택권 1', qa: '뉴비 Q&A' },
             metaRange: '범위',
@@ -74,7 +74,7 @@
         },
         en: {
             headerLead: 'The default route aims to secure Radiance Motoha first, then spend the remaining picks on flexible buffers and support thieves.\nYou can also skip rerolling and start with one strong standalone damage dealer.',
-            dayRule: 'Day 1: 80 + next 10 days: 80 = <strong>2 event selectors</strong>',
+            dayRule: 'Day 1: 80 + next 14 days: 80 = <strong>2 event selectors</strong>',
             mailRule: 'Mailbox rewards = <strong>1 event selector + 1 standard selector</strong>',
             slotTitles: { reroll: 'Reroll', event1: 'Event Selector 1', event2: 'Event Selector 2', katayama: 'Event Selector 3', standard: 'Standard Selector 1', qa: 'New Player Q&A' },
             metaRange: 'Pool',
@@ -110,7 +110,7 @@
         },
         cn: {
             headerLead: '默认路线是先拿到新井素羽·晴光，剩下的自选优先补泛用辅助和支援怪盗。\n如果不想刷初始，也可以直接围绕一名强力主力输出开局。',
-            dayRule: '首日80 + 10日累计80 = <strong>2张活动自选券</strong>',
+            dayRule: '首日80 + 14日累计80 = <strong>2张活动自选券</strong>',
             mailRule: '邮件领取 = <strong>1张活动自选券 + 1张常驻自选券</strong>',
             slotTitles: { reroll: '刷初始', event1: '活动自选券1', event2: '活动自选券2', katayama: '活动自选券3', standard: '常驻自选券1', qa: '新手 Q&A' },
             metaRange: '范围',

@@ -14,6 +14,8 @@ Rather than dealing damage on his own, he **borrows a portion of the main DPS’
 
 His core mechanic is choosing one ally as a partner at the start of battle, gaining a portion of that ally’s Attack, and **recording part of the partner’s damage dealt, which he later settles through Skill 3**.
 
+A self-selection option has also been added through his buffs, increasing Skill 3's total damage instead. This lowers his reliance on other DPS units and lets him function as an Almighty Sweeper DPS.
+
 The recorded damage cannot crit and is calculated purely by fixed ratios. He is useful in battles where multiple DPS units benefit from shared buffs.
 `,
         review_jp: `P5Rのオリジナルキャラクターであり、初の万能属性サブアタッカー兼バッファーとして実装された怪盗。
@@ -21,6 +23,8 @@ The recorded damage cannot crit and is calculated purely by fixed ratios. He is 
 自身で大きなダメージを出すというより、**メインアタッカーのダメージの一部を引き継ぎ、チーム全体の火力を底上げする役割**を持つ。
 
 戦闘開始時に味方1人をパートナーとして選択し、その味方の攻撃力の一部を得て、**パートナーが与えたダメージの一部を記録し、スキル3で精算する**というメカニズムが特徴。
+
+さらに、バフを通して自身を選択し、その代わりにスキル3全体のダメージを引き上げる形が追加された。ほかのアタッカーへの依存度を下げつつ、万能属性の支配アタッカーとして運用できる。
 
 記録されるダメージはクリティカルが発生せず、純粋に割合のみで計算される。複数アタッカーが存在し、バフを共有する戦闘で特に有用。
 `,

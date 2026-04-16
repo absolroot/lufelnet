@@ -72,6 +72,8 @@
     "seo-registry:check": "npm run seo:registry:check",
     "seo:check-writers": "node scripts/seo/check-seo-writers.mjs",
     "check-seo-writers": "npm run seo:check-writers",
+    "i18n:text-escapes:report": "node scripts/i18n/check-text-escapes.mjs",
+    "i18n:text-escapes:check": "node scripts/i18n/check-text-escapes.mjs --check",
     "seo:all:generate": "npm run seo:registry:generate && node scripts/seo/run-all.mjs",
     "seo:all:check": "node scripts/seo/run-all.mjs --check",
     "seo:sitemap:check": "node scripts/seo/check-sitemaps.mjs",

@@ -1,6 +1,8 @@
 (function () {
     'use strict';
 
+    const captureImageCache = new Map();
+
     function sanitizeFileToken(value) {
         return String(value || '')
             .trim()
@@ -44,6 +46,239 @@
         });
     }
 
+    async function loadImageCached(src) {
+        const key = String(src || '').trim();
+        if (!key) return null;
+        if (!captureImageCache.has(key)) {
+            captureImageCache.set(key, loadImage(key).catch(() => null));
+        }
+        return captureImageCache.get(key);
+    }
+
+    function shouldOverlayCaptureImages() {
+        if (typeof window !== 'undefined' && window.__SC_FORCE_IMAGE_OVERLAY__ === true) {
+            return true;
+        }
+        if (typeof navigator === 'undefined') return false;
+        const ua = String(navigator.userAgent || '');
+        const platform = String(navigator.platform || '');
+        const maxTouchPoints = Number(navigator.maxTouchPoints || 0);
+        return /iPad|iPhone|iPod/i.test(ua) || (platform === 'MacIntel' && maxTouchPoints > 1);
+    }
+
+    function addRoundedRectPath(ctx, x, y, width, height, radius) {
+        const r = Math.max(0, Math.min(radius, width / 2, height / 2));
+        ctx.beginPath();
+        ctx.moveTo(x + r, y);
+        ctx.arcTo(x + width, y, x + width, y + height, r);
+        ctx.arcTo(x + width, y + height, x, y + height, r);
+        ctx.arcTo(x, y + height, x, y, r);
+        ctx.arcTo(x, y, x + width, y, r);
+        ctx.closePath();
+    }
+
+    function parseFilterValue(filterText, name) {
+        const text = String(filterText || '');
+        const match = text.match(new RegExp(`${name}\\(([^)]+)\\)`, 'i'));
+        if (!match) return null;
+        const raw = String(match[1] || '').trim();
+        if (!raw) return null;
+        const parsed = raw.endsWith('%')
+            ? Number.parseFloat(raw) / 100
+            : Number.parseFloat(raw);
+        return Number.isFinite(parsed) ? parsed : null;
+    }
+
+    function computeImagePlacement(sourceWidth, sourceHeight, x, y, width, height, objectFit) {
+        const safeSourceWidth = Math.max(1, Number(sourceWidth) || 1);
+        const safeSourceHeight = Math.max(1, Number(sourceHeight) || 1);
+        const fit = String(objectFit || 'fill').toLowerCase();
+
+        if (fit === 'contain' || fit === 'cover') {
+            const scale = fit === 'contain'
+                ? Math.min(width / safeSourceWidth, height / safeSourceHeight)
+                : Math.max(width / safeSourceWidth, height / safeSourceHeight);
+            const drawWidth = safeSourceWidth * scale;
+            const drawHeight = safeSourceHeight * scale;
+            return {
+                x: x + (width - drawWidth) / 2,
+                y: y + (height - drawHeight) / 2,
+                width: drawWidth,
+                height: drawHeight
+            };
+        }
+
+        return { x, y, width, height };
+    }
+
+    function applyImageAdjustments(sourceImage, width, height, adjustments) {
+        const needsProcessing = adjustments
+            && (
+                Math.abs((adjustments.grayscale || 0)) > 0.001
+                || Math.abs((adjustments.saturate || 1) - 1) > 0.001
+            );
+
+        if (!needsProcessing) return sourceImage;
+
+        const tempCanvas = document.createElement('canvas');
+        tempCanvas.width = Math.max(1, Math.round(width));
+        tempCanvas.height = Math.max(1, Math.round(height));
+        const tempCtx = tempCanvas.getContext('2d');
+        if (!tempCtx) return sourceImage;
+        tempCtx.imageSmoothingEnabled = true;
+        tempCtx.imageSmoothingQuality = 'high';
+
+        tempCtx.drawImage(sourceImage, 0, 0, tempCanvas.width, tempCanvas.height);
+
+        try {
+            const imageData = tempCtx.getImageData(0, 0, tempCanvas.width, tempCanvas.height);
+            const data = imageData.data;
+            const grayscale = Math.max(0, Math.min(1, adjustments.grayscale || 0));
+            const saturate = Math.max(0, adjustments.saturate || 0);
+
+            for (let i = 0; i < data.length; i += 4) {
+                let r = data[i];
+                let g = data[i + 1];
+                let b = data[i + 2];
+
+                const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+                r = r * (1 - grayscale) + luminance * grayscale;
+                g = g * (1 - grayscale) + luminance * grayscale;
+                b = b * (1 - grayscale) + luminance * grayscale;
+
+                const avg = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+                r = avg + (r - avg) * saturate;
+                g = avg + (g - avg) * saturate;
+                b = avg + (b - avg) * saturate;
+
+                data[i] = Math.max(0, Math.min(255, Math.round(r)));
+                data[i + 1] = Math.max(0, Math.min(255, Math.round(g)));
+                data[i + 2] = Math.max(0, Math.min(255, Math.round(b)));
+            }
+
+            tempCtx.putImageData(imageData, 0, 0);
+            return tempCanvas;
+        } catch (_) {
+            return sourceImage;
+        }
+    }
+
+    async function paintCaptureImagesToCanvas(ctx, node, captureImage, pad, options) {
+        if (!ctx || !node || !captureImage) return;
+
+        const rootRect = node.getBoundingClientRect();
+        const rootWidth = Math.max(1, rootRect.width || captureImage.width);
+        const rootHeight = Math.max(1, rootRect.height || captureImage.height);
+        const scaleX = captureImage.width / rootWidth;
+        const scaleY = captureImage.height / rootHeight;
+        const opts = (options && typeof options === 'object') ? options : {};
+        const overlaySelectors = Array.isArray(opts.selectors) ? opts.selectors : [];
+        const clipCharacterToStatus = opts.clipCharacterToStatus !== false;
+
+        for (let index = 0; index < overlaySelectors.length; index += 1) {
+            const elements = Array.from(node.querySelectorAll(overlaySelectors[index]));
+            for (let i = 0; i < elements.length; i += 1) {
+                const imgEl = elements[i];
+                if (!(imgEl instanceof HTMLImageElement)) continue;
+
+                const rect = imgEl.getBoundingClientRect();
+                if (!rect || rect.width <= 0 || rect.height <= 0) continue;
+
+                const src = String(imgEl.currentSrc || imgEl.src || '').trim();
+                if (!src) continue;
+
+                const sourceImage = await loadImageCached(src);
+                if (!sourceImage) continue;
+
+                const style = getComputedStyle(imgEl);
+                const x = pad + (rect.left - rootRect.left) * scaleX;
+                const y = pad + (rect.top - rootRect.top) * scaleY;
+                const width = rect.width * scaleX;
+                const drawHeight = rect.height * scaleY;
+                let clipHeight = drawHeight;
+                const radius = Math.max(
+                    parseFloat(style.borderTopLeftRadius) || 0,
+                    parseFloat(style.borderTopRightRadius) || 0,
+                    parseFloat(style.borderBottomRightRadius) || 0,
+                    parseFloat(style.borderBottomLeftRadius) || 0
+                ) * Math.min(scaleX, scaleY);
+                const grayscale = parseFilterValue(style.filter, 'grayscale') || 0;
+                const saturate = parseFilterValue(style.filter, 'saturate');
+                const filterOpacity = parseFilterValue(style.filter, 'opacity');
+
+                if (clipCharacterToStatus && imgEl.classList.contains('character-img')) {
+                    const card = imgEl.closest('.sc-share-card');
+                    const status = card ? card.querySelector('.sc-card-status') : null;
+                    const nameText = card ? card.querySelector('.name-text') : null;
+                    let foregroundTop = Number.POSITIVE_INFINITY;
+
+                    if (status) {
+                        const statusRect = status.getBoundingClientRect();
+                        foregroundTop = Math.min(foregroundTop, statusRect.top);
+                    }
+
+                    if (nameText) {
+                        const nameTextRect = nameText.getBoundingClientRect();
+                        foregroundTop = Math.min(foregroundTop, nameTextRect.top);
+                    }
+
+                    if (Number.isFinite(foregroundTop)) {
+                        const visibleHeight = (foregroundTop - rect.top) * scaleY;
+                        if (Number.isFinite(visibleHeight) && visibleHeight > 0) {
+                            clipHeight = Math.min(drawHeight, visibleHeight);
+                        }
+                    }
+                }
+
+                if (clipHeight <= 0 || drawHeight <= 0) continue;
+
+                ctx.save();
+
+                const opacity = filterOpacity != null
+                    ? filterOpacity
+                    : Number.parseFloat(style.opacity || '1');
+                if (Number.isFinite(opacity)) {
+                    ctx.globalAlpha = opacity;
+                }
+
+                if (!grayscale && (saturate == null || Math.abs(saturate - 1) < 0.001) && style.filter && style.filter !== 'none') {
+                    try {
+                        ctx.filter = style.filter;
+                    } catch (_) { }
+                }
+
+                if (radius > 0.01) {
+                    addRoundedRectPath(ctx, x, y, width, drawHeight, Math.min(radius, drawHeight / 2));
+                    ctx.clip();
+                }
+
+                if (clipHeight < drawHeight - 0.01) {
+                    ctx.beginPath();
+                    ctx.rect(x, y, width, clipHeight);
+                    ctx.clip();
+                }
+
+                const placement = computeImagePlacement(
+                    sourceImage.naturalWidth || sourceImage.width,
+                    sourceImage.naturalHeight || sourceImage.height,
+                    x,
+                    y,
+                    width,
+                    drawHeight,
+                    style.objectFit || 'fill'
+                );
+
+                const drawSource = applyImageAdjustments(sourceImage, placement.width, placement.height, {
+                    grayscale,
+                    saturate: saturate == null ? 1 : saturate
+                });
+
+                ctx.drawImage(drawSource, placement.x, placement.y, placement.width, placement.height);
+                ctx.restore();
+            }
+        }
+    }
+
     function getCapturePixelRatio(node) {
         const rect = node && typeof node.getBoundingClientRect === 'function'
             ? node.getBoundingClientRect()
@@ -51,10 +286,10 @@
         const width = Math.max(1, Math.round(rect.width || 1280));
         const height = Math.max(1, Math.round(rect.height || 720));
 
-        const targetWidth = 1600;
-        const maxRatio = 1.35;
+        const targetWidth = 1920;
+        const maxRatio = 1.6;
         const minRatio = 1;
-        const maxPixels = 10_000_000;
+        const maxPixels = 12_000_000;
 
         const widthRatio = targetWidth / width;
         const pixelCapRatio = Math.sqrt(maxPixels / (width * height));
@@ -214,9 +449,23 @@
             canvas.height = captureImage.height + pad * 2 + watermarkHeight;
 
             const ctx = canvas.getContext('2d');
+            ctx.imageSmoothingEnabled = true;
+            ctx.imageSmoothingQuality = 'high';
             ctx.fillStyle = bodyBg;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
+
             ctx.drawImage(captureImage, pad, pad);
+
+            if (shouldOverlayCaptureImages()) {
+                await paintCaptureImagesToCanvas(ctx, node, captureImage, pad, {
+                    selectors: ['.character-img'],
+                    clipCharacterToStatus: true
+                });
+                await paintCaptureImagesToCanvas(ctx, node, captureImage, pad, {
+                    selectors: ['.position-icon', '.element-icon', '.sc-enhancement-icon'],
+                    clipCharacterToStatus: false
+                });
+            }
 
             const baseUrl = resolveBaseUrl(d.state.baseUrl);
             const logo = await loadImage(`${baseUrl}/assets/img/logo/lufel.webp`);

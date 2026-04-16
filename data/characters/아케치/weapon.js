@@ -26,40 +26,40 @@ window.WeaponData["아케치"] = {
 window.enCharacterWeaponData["아케치"] = {
   "name": "Goro Akechi",
   "weapon4-1": {
-    "name": "Quasar Saber",
-    "health": 1870,
-    "attack": 592,
-    "defense": 328,
+    "name": "Victory Beam",
+    "health": 1870.83,
+    "attack": 592.3,
+    "defense": 328.02,
     "skill_name": "Planar Cohesion",
-    "description": "Almighty DMG is increased by 9.6%/9.6%/12.8%/12.8%/16.0%/16.0%/19.2%. When under [Truth], increase ATK by 22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0%."
+    "description": "Increase Almighty damage by 9.6%/9.6%/12.8%/12.8%/16.0%/16.0%/19.2%.\nWhen gaining Suspicion, increase Attack by 22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0%."
   },
   "weapon5-1": {
-    "name": "Seraph’s Heart",
-    "health": 2338,
-    "attack": 739,
-    "defense": 409,
+    "name": "Gordian Kopis",
+    "health": 2338.77,
+    "attack": 739.92,
+    "defense": 409.62,
     "skill_name": "Divine Blessing",
-    "description": "ATK is increased by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. After obtaining [Clarity] or [Chaos], increase all allies' ATK by 21.0%/27.3%/27.3%/33.7%/33.7%/40.0%/40.0% for 2 turns. When [Detective Partner] casts a Persona Skill/HIGHLIGHT/Theurgy/Follow-Up Action, increase Crow's CRIT DMG by 15.0%/19.5%/19.5%/24.0%/24.0%/28.5%/28.5% for 2 turns and up to 2 stacks."
+    "description": "Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%.\nWhen Deduction or Stratagem are active, increase party's Attack by 21.0%/27.3%/27.3%/33.7%/33.7%/40.0%/40.0% for 2 turns.\nAlso, when an ally with Mastermind activates a skill, Highlight, or Resonance, increase Akechi's critical damage by 15.0%/19.5%/19.5%/24.0%/24.0%/28.5%/28.5% for 2 turns. Stacks up to 2 times."
   }
 };
 
 window.jpCharacterWeaponData["아케치"] = {
   "name": "明智 吾郎",
   "weapon4-1": {
-    "name": "青沼ビームセイバー",
-    "health": 1870,
-    "attack": 592,
-    "defense": 328,
+    "name": "ビクトリービーム",
+    "health": 1870.83,
+    "attack": 592.3,
+    "defense": 328.02,
     "skill_name": "位相融合",
-    "description": "万能属性ダメージが9.6%/9.6%/12.8%/12.8%/16.0%/16.0%/19.2%増加する。\n『真実』状態のとき攻撃力が22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0%増加する。"
+    "description": "万能属性ダメージが9.6%/9.6%/12.8%/12.8%/16.0%/16.0%/19.2%上昇する。\n『糸口』を獲得している時、攻撃力が22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0%上昇する。"
   },
   "weapon5-1": {
-    "name": "神の審判",
-    "health": 2338,
-    "attack": 739,
-    "defense": 409,
+    "name": "ゴルディアスカッター",
+    "health": 2338.77,
+    "attack": 739.92,
+    "defense": 409.62,
     "skill_name": "神の祝福",
-    "description": "攻撃力が30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%増加する。\n『精確』または『混沌』状態になると、2ターンの間味方全員の攻撃力が21.0%/21.0%/27.3%/27.3%/33.7%/33.7%/40.0%増加する。探偵仲間がペルソナスキル/HIGHLIGHT/追加スキルを発動すると、2ターンの間明智吾郎のCRT倍率が15.0%/19.5%/19.5%/24.0%/24.0%/28.5%/28.5%増加する（最大2回まで累積可能）。"
+    "description": "攻撃力が30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%上昇する。\n自身が『推理』または『謀略』状態になった時、２ターンの間、味方全体の攻撃力が21.0%/27.3%/27.3%/33.7%/33.7%/40.0%/40.0%上昇する。\nさらに『狂言回し』状態の味方がスキル／ハイライト／意識奏功を発動した時、２ターンの間、自身のクリティカルダメージが15.0%/19.5%/19.5%/24.0%/24.0%/28.5%/28.5%上昇する。最大２つまで累積できる。"
   }
 };
 

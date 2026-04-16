@@ -56,6 +56,8 @@
         '공격력%': '공격력',
         'Attack': '공격력',
         'Attack %': '공격력',
+        '攻击力': '공격력',
+        '攻击力 %': '공격력',
         '\uACF5\uACA9\uB825 %': '\uACF5\uACA9\uB825',
         '\uACF5\uACA9\uB825%': '\uACF5\uACA9\uB825',
         '攻撃力': '공격력',
@@ -65,6 +67,8 @@
         '방어력%': '방어력',
         'Defense': '방어력',
         'Defense %': '방어력',
+        '防御力': '방어력',
+        '防御力 %': '방어력',
         '\uBC29\uC5B4\uB825 %': '\uBC29\uC5B4\uB825',
         '\uBC29\uC5B4\uB825%': '\uBC29\uC5B4\uB825',
         '防御力': '방어력',
@@ -75,36 +79,45 @@
         '생명%': '생명',
         'HP': '생명',
         'HP %': '생명',
+        '生命值': '생명',
+        '生命值 %': '생명',
 
         '대미지 보너스': '대미지 보너스',
         'Attack Mult.': '대미지 보너스',
         '攻撃倍率+': '대미지 보너스',
+        '伤害加成': '대미지 보너스',
 
         '치료 효과': '치료 효과',
         'Healing Effect': '치료 효과',
         'HP回復量': '치료 효과',
+        '治疗效果': '치료 효과',
 
         '크리티컬 확률': '크리티컬 확률',
         'Crit Rate': '크리티컬 확률',
         'CRT発生率': '크리티컬 확률',
+        '暴击率': '크리티컬 확률',
 
         '크리티컬 효과': '크리티컬 효과',
         'Crit Mult.': '크리티컬 효과',
         'CRT倍率': '크리티컬 효과',
+        '暴击效果': '크리티컬 효과',
 
         '효과 명중': '효과 명중',
         '효과명중': '효과 명중',
         'Ailment Accuracy': '효과 명중',
         '状態異常命中': '효과 명중',
+        '效果命中': '효과 명중',
 
         'SP 회복': 'SP 회복',
         'SP회복': 'SP 회복',
         'SP Recovery': 'SP 회복',
         'SP回復': 'SP 회복',
+        '精力回复': 'SP 회복',
 
         '속도': '속도',
         'Speed': '속도',
         '速さ': '속도',
+        '速度': '속도',
 
         '관통': '관통',
         'Pierce Rate': '관통',
@@ -390,6 +403,9 @@
         if (state.lang === 'jp') {
             return data.name_jp || data.name || krName;
         }
+        if (state.lang === 'cn') {
+            return data.name_cn || data.name || krName;
+        }
         return krName;
     }
 
@@ -639,11 +655,13 @@
         const enMain = mainStats.en || {};
         const krMain = mainStats.kr || {};
         const jpMain = mainStats.jp || {};
+        const cnMain = mainStats.cn || {};
 
         ['uni', 'sun', 'moon', 'star', 'sky'].forEach((slotId) => {
             const enRows = enMain[slotId] || [];
             const krRows = krMain[slotId] || [];
             const jpRows = jpMain[slotId] || [];
+            const cnRows = cnMain[slotId] || [];
 
             enRows.forEach((row, index) => {
                 const canonical = String((row && row[0]) || '').trim();
@@ -652,6 +670,7 @@
                 register(canonical, canonical);
                 register(krRows[index] && krRows[index][0], canonical);
                 register(jpRows[index] && jpRows[index][0], canonical);
+                register(cnRows[index] && cnRows[index][0], canonical);
             });
         });
 

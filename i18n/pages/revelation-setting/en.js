@@ -4,6 +4,7 @@ window.I18N_PAGE_REVELATION_SETTING_EN = {
     nav_share_character: 'Character',
     nav_share_revelation: 'Revelation',
     share_tab_unavailable: 'Soon',
+    aria_share_tabs: 'Share tabs',
     page_title: 'Revelation Share',
     page_description: 'Set your character revelation build and share it with others.',
 

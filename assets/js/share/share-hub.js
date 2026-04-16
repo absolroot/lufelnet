@@ -60,7 +60,7 @@
   }
 
   function isShareTabAvailable(lang, tab) {
-    return !(normalizeLang(lang) === 'cn' && normalizeTab(tab) === 'revelation');
+    return true;
   }
 
   function buildShareUrl(lang, tab) {

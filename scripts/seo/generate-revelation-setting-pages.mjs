@@ -4,7 +4,7 @@
  * generate-revelation-setting-pages.mjs
  *
  * Generates static SEO pages for the revelation-setting app in each supported language.
- * Also emits legacy redirect pages for /{lang}/revelation-setting/ and the CN fallback route.
+ * Also emits legacy redirect pages for /{lang}/revelation-setting/.
  *
  * Usage:
  *   node scripts/seo/generate-revelation-setting-pages.mjs
@@ -20,7 +20,7 @@ const __dirname = path.dirname(__filename);
 const ROOT = path.resolve(__dirname, '..', '..');
 
 const OUTPUT_DIR = path.join(ROOT, 'pages', 'revelation-setting');
-const CANONICAL_LANGS = ['kr', 'en', 'jp'];
+const CANONICAL_LANGS = ['kr', 'en', 'jp', 'cn'];
 const LEGACY_LANGS = ['kr', 'en', 'jp', 'cn'];
 const IMAGE_PATH = '/assets/img/home/SEO.png';
 
@@ -63,6 +63,7 @@ function renderPage({ lang, title, description }) {
   const altKo = '/kr/share/revelation/';
   const altEn = '/en/share/revelation/';
   const altJp = '/jp/share/revelation/';
+  const altCn = '/cn/share/revelation/';
 
   return [
     '---',
@@ -79,6 +80,7 @@ function renderPage({ lang, title, description }) {
     `  ko: ${altKo}`,
     `  en: ${altEn}`,
     `  jp: ${altJp}`,
+    `  cn: ${altCn}`,
     '---',
     '{% include revelation-setting-body.html %}',
     ''
@@ -122,16 +124,6 @@ function buildExpectedFiles(seoMeta) {
       noticeOnFallback: 'revelation-unavailable'
     })));
   }
-
-  expected.set(
-    toPosix(path.relative(ROOT, path.join(OUTPUT_DIR, 'cn-share', 'index.html'))),
-    normalizeNewline(renderRedirectPage({
-      language: 'cn',
-      permalink: '/cn/share/revelation/',
-      requestedTab: 'revelation',
-      noticeOnFallback: 'revelation-unavailable'
-    }))
-  );
 
   return expected;
 }

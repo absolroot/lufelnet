@@ -43,6 +43,15 @@ window.recommendParty["코로마루"] = {
             "comment": "",
             "comment_en": "",
             "comment_jp": ""
+        },
+        {
+            "members": [
+                "J&C",
+                "아야카",
+                "모토하·청광",
+                "후카",
+                "코로마루"
+            ]
         }
     ],
     "friends": [

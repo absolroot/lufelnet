@@ -35,6 +35,61 @@
 
     const dom = {};
 
+    function ensureModalContainer() {
+        let container = document.getElementById('scModalContainer');
+        if (!container) {
+            container = document.createElement('div');
+            container.id = 'scModalContainer';
+            container.setAttribute('aria-live', 'polite');
+        }
+        if (container.parentElement !== document.body) {
+            document.body.appendChild(container);
+        }
+        dom.modalContainer = container;
+        return container;
+    }
+
+    function setModalScrollLock(isLocked) {
+        const value = isLocked ? 'hidden' : '';
+        document.body.style.overflow = value;
+        document.body.style.paddingRight = isLocked ? '8px' : '';
+        document.documentElement.style.overflow = value;
+    }
+
+    function getVisibleMobileHeaderHeight() {
+        const header = document.querySelector('.mobile-header');
+        if (!header) return 0;
+        if (header.classList.contains('hide')) return 0;
+
+        const style = window.getComputedStyle(header);
+        if (style.display === 'none' || style.visibility === 'hidden') {
+            return 0;
+        }
+
+        const rect = header.getBoundingClientRect();
+        const viewportHeight = window.innerHeight || document.documentElement.clientHeight || 0;
+        const visibleTop = Math.max(rect.top, 0);
+        const visibleBottom = Math.min(rect.bottom, viewportHeight);
+        const visibleHeight = visibleBottom - visibleTop;
+        return visibleHeight > 0 ? Math.round(visibleHeight) : 0;
+    }
+
+    function syncModalViewportMetrics() {
+        const container = dom.modalContainer || ensureModalContainer();
+        if (!container) return;
+
+        const top = getVisibleMobileHeaderHeight();
+        const viewportHeight = window.innerHeight || document.documentElement.clientHeight || 0;
+        const height = Math.max(0, viewportHeight - top);
+
+        container.style.setProperty('--sc-modal-top', `${top}px`);
+        if (height > 0) {
+            container.style.setProperty('--sc-modal-height', `${height}px`);
+        } else {
+            container.style.removeProperty('--sc-modal-height');
+        }
+    }
+
     function cacheDom() {
         dom.presetWrap = document.getElementById('scPresetWrap');
         dom.presetBtn = document.getElementById('scPresetBtn');
@@ -60,6 +115,8 @@
         dom.emptyState = document.getElementById('scEmptyState');
         dom.captureFrame = document.getElementById('scCaptureFrame');
         dom.toastHost = document.getElementById('scToastHost');
+        ensureModalContainer();
+        syncModalViewportMetrics();
     }
 
     function normalizeLang(rawLang) {
@@ -727,18 +784,16 @@
 
     function renderEditorPanel() {
         const character = state.characterMap[state.selectedCharacter];
-        const modalContainer = document.getElementById('scModalContainer');
+        const modalContainer = dom.modalContainer || ensureModalContainer();
         if (!modalContainer) return;
         if (!character) {
             modalContainer.innerHTML = '';
-            // Remove scroll lock from body if closed
-            document.body.style.overflow = '';
-            document.body.style.paddingRight = '';
+            setModalScrollLock(false);
+            syncModalViewportMetrics();
             return;
         }
-        // Lock scroll on body when modal is open
-        document.body.style.overflow = 'hidden';
-        document.body.style.paddingRight = '8px'; // Prevent scrollbar jump
+        setModalScrollLock(true);
+        syncModalViewportMetrics();
 
         const entry = getRosterEntry(character.key);
         const owned = !!entry;
@@ -863,6 +918,8 @@
             levelInput.addEventListener('change', commit);
             levelInput.addEventListener('blur', commit);
         }
+
+        requestAnimationFrame(syncModalViewportMetrics);
     }
 
     function renderGrid() {
@@ -1154,6 +1211,8 @@
 
     async function init() {
         cacheDom();
+        window.addEventListener('resize', syncModalViewportMetrics);
+        window.addEventListener('scroll', syncModalViewportMetrics, { passive: true });
         ensureNavigationLoaded();
         state.lang = detectCurrentLang();
         try {

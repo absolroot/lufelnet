@@ -23,38 +23,38 @@ window.ritualData["아케치"] = {
 
 window.enCharacterRitualData["아케치"] = {
   "name": "Goro Akechi",
-  "r0": "Walking in Fog",
-  "r0_detail": "At the start of battle, give the ally with the highest ATK [Detective Partner] (Prioritizing Dominate or Rebel Thief). Crow can manually choose a [Detective Partner] at the start of his turn (There can only be 1 [Detective Partner] at any given time). Crow gains 25% of the [Detective Partner]'s ATK, up to 500/750/1000 (at level 1, 50, 70). When [Detective Partner] deal DMG with a Persona skill/ HIGHLIGHT/ Follow Up, record their average DMG Dealt to all enemies (If it was a single target skill, then record 40% of the DMG). At the start of Crow's turn, gain 1 stack of [Arrow of Clarity] based on the total recorded DMG then clear the record. [Arrow of Clarity] lasts for 2 turns.",
-  "r1": "Suspect Investigation",
-  "r1_detail": "Gains [Clarity] at the start of battle, extends [Clarity] and [Chaos] to 4 turns. Increases CRIT Rate by 16% and DMG Dealt for Crow and [Detective Partner] by 25% when you have both [Clarity] and [Chaos].",
-  "r2": "Trial of Clues",
-  "r2_detail": "After dealing DMG with a Persona skill, increases Crow's and [Detective Partner]'s ATK by 25% and CRIT DMG by 30% for 1 turn if that attack's element is different than the last skill.",
-  "r3": "Shadow Pursuit",
-  "r3_detail": "[Golden Rain - Annihilate] Lv. +3, up to a maximum of Lv. 15. [Combat Skills] Lv. +3, up to a maximum of Lv. 15.",
-  "r4": "Truth and Falsehood",
-  "r4_detail": "HIGHLIGHT Effect Boost: Additionally increases [Arrow of Chaos]'s DMG by 10% for 4 turns.",
-  "r5": "Temporary Alliance",
-  "r5_detail": "[Vow of Justice] Lv. +3, up to a maximum of Lv. 15. [Unjust Hunting Grounds] Lv. +3, up to a maximum of Lv. 15.",
-  "r6": "The Dust Settled",
-  "r6_detail": "Increases [Arrow of Clarity] recorded DMG by 50% when using [Golden Arrow Rain - Annihilate]. Crow now sees all allies as [Detective Partners]. In battle, additionally gains CRIT Rate and CRIT DMG (that is over 100%) based on 40% of the highest CRIT Rate and CRIT DMG among [Detective Partners] (Up to 20% and 40%)."
+  "r0": "High School Detective",
+  "r0_detail": "At the start of battle, grant Mastermind to the ally with the highest Attack (prioritizing Sweepers or Assassins, select Akechi if no target found). At the start of each turn, can manually reselect a target to grant Mastermind. Only 1 ally can have Mastermind at one time (reselecting has a cooldown of 1 turn).\nAlso, increase Akechi's Attack by 25% of the Mastermind ally's Attack (up to a maximum of 500/750/1000, at level 1/50/70, respectively).\nWhen an ally besides Akechi has Mastermind and deals damage to all foes with an attack skill, Highlight, or Resonance, record the average damage dealt to all foes (if targeting 1 foe, record 40% of the damage dealt). At the start of Akechi's turn, gain 1 Arrow of Truth stack based on the amount of damage recorded, and reset the recorded damage. Arrow of Truth can be held for 2 turns.\nWhen Akechi has Mastermind, the effect of Rain of Justice changes, and Arrow of Truth deals Almighty damage based on the skill multiplier or Arrow of Perjury.",
+  "r1": "Detective Profile",
+  "r1_detail": "At the start of battle, gain Deduction, and the durations of Deduction and Stratagem are extended to 4 turns.\nAlso, when Deduction and Stratagem are both active, increase Akechi's critical rate by 16%, and increase the damage dealt by Akechi and allies with Mastermind by 25%.",
+  "r2": "Detective Advice",
+  "r2_detail": "When dealing damage with a skill, if the attribute of the last skill used was different, increase the Attack of Akechi and allies with Mastermind by 25%, and their critical damage by 30%. Lasts for 1 turn.",
+  "r3": "Detective Style",
+  "r3_detail": "Increase the skill levels of Rain of Justice and Thief Tactics by 3.",
+  "r4": "Detective Trick",
+  "r4_detail": "Highlight Enhanced: Increase the damage of Arrow of Perjury by 30% more for 4 turns.",
+  "r5": "Detective Logic",
+  "r5_detail": "Increase the skill levels of Flash of Intuition and Decisive Scheme by 3.",
+  "r6": "Masked Detective",
+  "r6_detail": "When using Rain of Justice, increase the effect of Arrow of Truth by 50%.\nAkechi and all allies are considered to have the Mastermind effect (the Attack increase from High School Detective is based on the ally with the highest Attack). During battle, increase Akechi's critical rate and critical damage more. This additional increase is equal to 40% of the critical rate of the Mastermind ally with the highest critical rate, and 40% of the highest critical multiplier exceeding 100% (up to a maximum of 20% and 40%, respectively)."
 };
 
 window.jpCharacterRitualData["아케치"] = {
   "name": "明智 吾郎",
-  "r0": "霧の中を歩いて",
-  "r0_detail": "戦闘開始時、攻撃力が最も高い味方が『探偵の仲間』となる（支配または反抗怪盗が優先）。ターン開始時に『探偵の仲間』を再指定できる（『探偵の仲間』は同時に1人のみ存在可能、再指定後はクールタイム1ターン）。\n明智吾郎は『探偵の仲間』の攻撃力の25%を獲得する（上限1,000）。『探偵の仲間』が全体ペルソナスキル/HL/追加効果でダメージを与えると、その平均ダメージが記録される（単体スキルの場合、メインターゲットへのダメージの40%を記録）。明智吾郎のターン開始時、記録された総ダメージに応じて『精密な矢』を1スタック獲得し、記録されたダメージはリセットされる。『精密な矢』は2ターン持続する。",
-  "r1": "容疑調査",
-  "r1_detail": "戦闘開始時に『精確』状態を獲得し、『精確』状態と『混沌』状態の持続時間が4ターンに延長される。『精確』状態と『混沌』状態が共存している場合、自身のクリティカル率が16%増加し、自身と『探偵の仲間』のダメージが25%増加する。",
-  "r2": "手掛かり",
-  "r2_detail": "ペルソナスキルでダメージを与えた後、前回のスキルと属性が異なる場合、1ターンの間、自身と『探偵の仲間』の攻撃力が25%、CRT倍率が30%増加する。",
-  "r3": "影の追跡",
-  "r3_detail": "『黄金の矢雨・破滅』、『戦闘技術』のスキルレベルが3レベル上昇し、最大15レベルまで上昇する。",
-  "r4": "真実と虚構",
-  "r4_detail": "HIGHLIGHT効果強化：4ターンの間、自身の『混沌の矢』ダメージがさらに10%増加する。",
-  "r5": "異国の同行者",
-  "r5_detail": "『正義の約束』、『傾いた狩猟場』のスキルレベルが3レベル上昇し、最大15レベルまで上昇する。",
-  "r6": "結末",
-  "r6_detail": "『黄金の矢雨・破滅』を発動すると、『精密な矢』の記録ダメージが50%増加する。明智吾郎は全ての味方を『探偵の仲間』として扱う。戦闘中、明智吾郎は追加でクリティカル率、CRT倍率を獲得し、その増加値は全『探偵の仲間』のクリティカル率、CRT倍率（100%を超える部分）の最高値の40%となる（上限20%、40%）。"
+  "r0": "現役高校生探偵",
+  "r0_detail": "戦闘開始時、攻撃力が最も高い味方を『狂言回し』状態にする（支配／反抗ロールを優先し、対象がいない場合は自身を選択する）。ターン開始時、『狂言回し』の対象を再選択できる。複数の味方を同時に『狂言回し』状態に選択することはできない（再選択のクールタイムは１ターン）。\nさらに『狂言回し』状態の味方の攻撃力の２５%分、自身の攻撃力が上昇する（最大５００／７５０／１０００まで、レベル１／５０／７０で変化）。\n自身以外の『狂言回し』状態の味方は、全体対象の攻撃スキル／ハイライト／意識奏功でダメージを与えた時、敵全体に与えた平均ダメージを蓄積する（単体対象の場合、与ダメージの４０%を蓄積）。自身のターン開始時、蓄積したダメージに応じた効果量の『真実の矢』を１つ獲得し、蓄積したダメージをリセットする。『真実の矢』は２ターン持続する。\n自身が『狂言回し』状態の場合、『正義の矢の雨』の効果が変化し、『真実の矢』は『偽証の矢』のスキル倍率に基づいた追加の万能属性ダメージを与える。",
+  "r1": "探偵のプロファイル",
+  "r1_detail": "戦闘開始時に『推理』状態となり、『推理』と『謀略』状態の持続時間が４ターンに延長される。\nさらに『推理』かつ『謀略』状態の時、自身のクリティカル率が１６%上昇し、自身と『狂言回し』状態の味方の与ダメージが２５%上昇する。",
+  "r2": "探偵のアドバイス",
+  "r2_detail": "スキルでダメージを与えた時、前回使用したスキルの属性と異なる場合、１ターンの間、自身と『狂言回し』状態の味方の攻撃力が２５%上昇し、クリティカルダメージが３０%上昇する。",
+  "r3": "探偵のスタイル",
+  "r3_detail": "『正義の矢の雨』／『怪盗戦技』のスキルレベルが３上昇する。",
+  "r4": "探偵のトリック",
+  "r4_detail": "ハイライト能力追加：４ターンの間、追加で『偽証の矢』のダメージが３０%上昇する。",
+  "r5": "探偵のロジック",
+  "r5_detail": "『推理の閃き』／『謀略の一手』のスキルレベルが３上昇する。",
+  "r6": "怪盗服の名探偵",
+  "r6_detail": "『正義の矢の雨』を使用する時、『真実の矢』の効果量が５０%上昇する。\n自身を含む味方全体を『狂言回し』状態として扱う（『現役高校生探偵』の攻撃力上昇は、攻撃力が最も高い味方を参照）。戦闘中、追加で自身のクリティカル率とクリティカルダメージが上昇する。この上昇量はすべての『狂言回し』状態の味方の中でＣＲＴ発生率と、ＣＲＴ倍率１００%超過分の最も高い数値の４０%に相当する（それぞれ最大２０%、４０%まで）。"
 };
 
 window.cnCharacterRitualData["아케치"] = {

@@ -52,86 +52,92 @@ window.characterSkillsData["아케치"] = {
 window.enCharacterSkillsData["아케치"] = {
   "name": "Goro Akechi",
   "skill1": {
-    "name": "Vow of Justice",
+    "name": "Flash of Intuition",
     "element": "축복광역",
     "type": "광역피해",
     "sp": 20,
     "cool": 0,
-    "description": "Deals 93.2%/102.8%/98.9%/108.5% ATK as Bless DMG to all enemies, and restore 1561/1561/1657/1657 HP to all allies, then gives all allies 1 stack of Blessing. Crow gains [Truth], then gain [Clarity] for 2 turns. Under [Clarity], increase all allies' DMG Dealt by 19.5%/21.5%/20.7%/22.7%."
+    "description": "Deal Bless damage to all foes equal to 93.2%/102.8%/98.9%/108.5% of Attack. Also, restore all allies' HP by 1561/1561/1657/1657 and grant 1 Blessing stack.\nAlso, gain Suspicion, and gain Deduction for 2 turns. With Deduction, increase party's damage by 19.5%/21.5%/20.7%/22.7%."
   },
   "skill2": {
-    "name": "Unjust Hunting Ground",
+    "name": "Decisive Scheme",
     "element": "주원광역",
     "type": "광역피해",
     "sp": 20,
     "cool": 0,
-    "description": "Deals 116.5%/128.5%/123.7%/135.6% ATK as Curse DMG to all enemies, Crow gains [Truth], then gain [Chaos] for 2 turns. Under [Chaos], decrease all enemies' DEF by 25.4%/28.0%/26.9%/29.5%, adds 1 more shot to [Arrow of Chaos] and increase its DMG Dealt by 19.5%/21.5%/20.7%/22.7%."
+    "description": "Deal Curse damage to all foes equal to 116.5%/128.5%/123.7%/135.6% of Attack.\nAlso, gain Suspicion, and gain Stratagem for 2 turns. With Stratagem, decrease all foes' Defense by 25.4%/28.0%/26.9%/29.5%. Also increase Arrow of Perjury's number of hits by 1, and increase damage dealt by 19.5%/21.5%/20.7%/22.7%."
   },
   "skill3": {
-    "name": "Golden Arrow Rain - Annihilate",
+    "name": "Rain of Justice",
     "element": "만능광역",
     "type": "광역피해",
     "sp": 24,
     "cool": 0,
-    "description": "Unlock condition: When Crow has [Truth].\nConsumes all [Arrow of Clarity], deals 19.5%/21.5%/20.7%/22.7% of the recorded damage from [Arrow of Clarity] as fixed Almighty DMG (can't CRIT) to all enemies. Then randomly shoots 4 [Arrow of Chaos], each dealing 77.4%/85.3%/82.2%/90.1% ATK as Almighty DMG, prioritizing enemies that have not been attacked yet. Crow will only deal 15% DMG to the same target."
+    "description": "Usable with Suspicion.\nSpend all Arrow of Truth stacks, deal a fixed amount of Almighty damage to all foes equal to 19.5%/21.5%/20.7%/22.7% of the damage recorded by each Arrow of Truth stack, and lose Suspicion.\nThen, activate Arrow of Perjury on random foes, dealing Almighty damage equal to 77.4%/85.3%/82.2%/90.1% (4 hits). From the second hit, prioritize new targets, and decrease damage to 15% for hits on the same target.\nIf Akechi has Mastermind, Arrow of Truth gains 240% of the Almighty damage of Arrow of Perjury."
   },
   "skill_highlight": {
     "element": "만능",
     "type": "광역피해",
-    "description": "Deals 103.5%/114.1%/109.8%/120.4% ATK as Bless DMG and 103.5%/114.1%/109.8%/120.4% ATK as Curse DMG to all enemies, adds 2 more shots to [Arrow of Chaos] for 4 turns."
+    "description": "Deal Bless damage to all foes equal to 124.1%/136.9%/131.8%/144.5% of Attack, and Curse damage equal to 124.1%/136.9%/131.8%/144.5% of Attack (1 hit each).\nAlso, for 4 turns, increase Arrow of Perjury's number of hits by 2.",
+    "cool": 4
   },
   "passive1": {
-    "name": "Law",
+    "name": "Rival's Pride",
     "element": "패시브",
-    "description": "When Crow is in the team, he can trigger Desire Sonata for any element. At the start of battle, increase DMG Dealt by 15.0% for every triggered Desire Sonata."
+    "description": "Can activate Flames of Desire effects with all allies in the party. At the start of battle, for each Flames of Desire effect activated, increase Akechi's damage by 15.0%.",
+    "cool": 0
   },
   "passive2": {
-    "name": "Desire",
+    "name": "Rending Arrow",
     "element": "패시브",
-    "description": "When dealing Almighty DMG, for every 1% DEF Down on the target, increase DMG Dealt by 0.5%. (Up to 120.0%)"
+    "description": "When dealing Almighty damage, for every 1% of the target's decreased Defense, increase Akechi's damage dealt by 0.5% (up to a maximum of 120.0%).",
+    "cool": 0
   }
 };
 
 window.jpCharacterSkillsData["아케치"] = {
   "name": "明智 吾郎",
   "skill1": {
-    "name": "正義の誓い",
+    "name": "推理の閃き",
     "element": "축복광역",
     "type": "광역피해",
     "sp": 20,
     "cool": 0,
-    "description": "全ての敵に攻撃力の93.2%/102.8%/98.9%/108.5%の祝福属性ダメージを与え、味方全体のHPを1561/1561/1657/1657ポイント回復し、味方全体に祝福を1スタック付与する。自身が『真実』を獲得し、2ターンの間『正確』状態になる。『正確』状態では味方全体の与ダメージが19.5%/21.5%/20.7%/22.7%上昇する。"
+    "description": "敵全体に攻撃力93.2%/102.8%/98.9%/108.5%の祝福属性ダメージを与える。また、味方全体のＨＰを1561/1561/1657/1657回復し、祝印を１つ付与する。\nさらに『糸口』を獲得し、２ターンの間、『推理』状態になる。『推理』状態では、味方全体の与ダメージが19.5%/21.5%/20.7%/22.7%上昇する。"
   },
   "skill2": {
-    "name": "傾いた狩場",
+    "name": "謀略の一手",
     "element": "주원광역",
     "type": "광역피해",
     "sp": 20,
     "cool": 0,
-    "description": "全ての敵に攻撃力の116.5%/128.5%/123.7%/135.6%の呪怨属性ダメージを与える。自身が『真実』を獲得し、2ターンの間『混沌』状態になる。『混沌』状態では全ての敵の防御が25.4%/28.0%/26.9%/29.5%減少し、自身の『混沌の矢』発動回数が1回増加し、与ダメージが19.5%/21.5%/20.7%/22.7%上昇する。"
+    "description": "敵全体に攻撃力116.5%/128.5%/123.7%/135.6%の呪怨属性ダメージを与える。\nさらに『糸口』を獲得し、２ターンの間、『謀略』状態になる。『謀略』状態では、敵全体の防御力が25.4%/28.0%/26.9%/29.5%低下する。また『偽証の矢』の攻撃回数が１回増加し、与ダメージが19.5%/21.5%/20.7%/22.7%上昇する。"
   },
   "skill3": {
-    "name": "黄金の矢雨・破滅",
+    "name": "正義の矢の雨",
     "element": "万능広域",
     "type": "광역피해",
     "sp": 24,
     "cool": 0,
-    "description": "発動条件：自身が『真実』を保有\n全ての『正確な矢』を消費して、全ての敵に『正確な矢』記録ダメージ19.5%/21.5%/20.7%/22.7%の万能固定ダメージを与える。その後、ランダムな敵に『混沌の矢』を4回発射し、1回ごとに攻撃力の77.4%/85.3%/82.2%/90.1%の万能属性ダメージを与える。この攻撃は未被弾の敵を優先し、同一ターゲットに複数回命中した場合、2回目以降は15%のダメージのみを与える。"
+    "description": "『糸口』を獲得している時に使用可能になる。\n『真実の矢』を全て消費し、敵全体に『真実の矢』に蓄積した効果量19.5%/21.5%/20.7%/22.7%の万能属性固定ダメージを与え、『糸口』は消失する。\nその後、ランダムな敵に『偽証の矢』を放ち、攻撃力77.4%/85.3%/82.2%/90.1%の万能属性ダメージを４回与える。２回目以降の攻撃は新たな対象が優先され、同一の対象に命中した時、与ダメージが１５%になる。\n自身が『狂言回し』状態の場合、『真実の矢』は『偽証の矢』の２４０%分の万能属性ダメージを与える。"
   },
   "skill_highlight": {
     "element": "万능",
     "type": "광역피해",
-    "description": "全ての敵に攻撃力の103.5%/114.1%/109.8%/120.4%の祝福属性ダメージを1回、呪怨属性ダメージを1回与える。自身の『混沌の矢』発動回数が2回増加し、4ターン持続する。"
+    "description": "敵全体に攻撃力124.1%/136.9%/131.8%/144.5%の祝福属性ダメージと、攻撃力124.1%/136.9%/131.8%/144.5%の呪怨属性ダメージをそれぞれ１回ずつ与える。\nさらに４ターンの間、『偽証の矢』の攻撃回数が２回増加する。",
+    "cool": 4
   },
   "passive1": {
-    "name": "法度",
+    "name": "ライバルの矜持",
     "element": "패시브",
-    "description": "明智 吾郎がチームにいるとき、任意の属性の欲望ソナタを発動できる。戦闘開始時に欲望ソナタを1種発動するごとに、自身の与ダメージが15.0%上昇する。"
+    "description": "パーティに編成している全ての味方の属性で『欲望の共鳴』を発動できる。戦闘開始時、『欲望の共鳴』が１つ発動するごとに、自身の与ダメージが15.0%上昇する。",
+    "cool": 0
   },
   "passive2": {
-    "name": "渇望",
+    "name": "綻び射貫く矢",
     "element": "패시브",
-    "description": "万能ダメージを与える際、ターゲットが1%の防御減少効果を持つごとに、自身のダメージが0.5%上昇する（上限120.0%）。"
+    "description": "万能属性ダメージを与える時、対象の防御力低下１%につき、自身の与ダメージが0.5%上昇する（最大120.0%まで）。",
+    "cool": 0
   }
 };
 

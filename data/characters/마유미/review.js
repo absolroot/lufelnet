@@ -17,7 +17,11 @@
 
 또한 스킬1의 크리티컬을 통해 DOWN 수치를 감소시키는 효과를 활용하려면 크리티컬 확률 또한 신경써주는 것이 중요하다.
 
-특이사항으로 하이라이트는 3턴으로 명시돼있지만 실질적으로는 3.1턴 지속시간으로, HL을 사용하는 시점에 행동을 대기하던 캐릭터는 해당 턴을 포함 총 4턴간 버프가 지속된다.`,
+특이사항으로, 하이라이트는 기본 2턴 지속이며 의식 4 이상(A4+)에서는 3턴 지속이지만 마유미는 좀 다른 메커니즘을 지닌다. 
+
+커뮤니티에서는 편의상 이를 각각 2.1턴, 3.1턴이라고도 표현한다. 이는 실제로 0.1턴이 추가로 존재한다는 뜻은 아니다.
+
+아군이 행동하기 직전에 HL을 부여하면 해당 행동 후에도 버프 지속 턴 수가 줄지 않기 때문에, 메인 딜러의 행동 직전에 사용하면 사실상 1턴을 더 활용하는 것처럼 운용할 수 있다.`,
         review_en: `A Physical-support buffer specialized in Pierce. She gains Velocity stacks whenever any Phantom Thief finishes their action.
 
 When enough Velocity stacks are accumulated, she enters an Extra Action. After entering an Extra Action, her buffs become enhanced: Skill 1 gains guaranteed Critical hits, Skill 2 grants a shield, and Skill 3 provides amplified Piercing effects.
@@ -32,7 +36,11 @@ To make full use of her kit, **her Speed stat must be raised significantly**, wh
 
 Additionally, to utilize the effect of reducing DOWN values through Skill 1's Critical, it is important to pay attention to Critical Rate as well.
 
-As a special note, the Highlight effect is specified as lasting 3 turns, but its actual duration is 3.1 turns. Characters who were waiting to act when the Highlight was used will have the buff last for a total of 4 turns, including that turn.
+As a special note, Mayumi's Highlight lasts 2 turns, or 3 turns at Awareness 4+ (A4+), but it has a slightly unusual interaction. 
+
+For convenience, the community sometimes refers to this as "2.1 turns" or "3.1 turns." This does not mean there is literally an extra 0.1 turn.
+
+If Highlight is applied immediately before an ally takes an action, the buff's remaining duration will not decrease after that action, so using it right before your main attacker acts lets you effectively play it as if it had 1 extra turn of value.
 `,
         review_jp: `貫通属性に特化した物理属性のサポートバッファー。怪盗が行動を終えるたびに「時速」スタックを獲得する。
 
@@ -48,7 +56,11 @@ As a special note, the Highlight effect is specified as lasting 3 turns, but its
 
 また、スキル1のクリティカルによるDOWN値減少効果を活用するには、クリティカル率にも注意を払う必要がある。
 
-特徴的には、ハイライトは3ターンと明示されていますが、実際は3.1ターンの持続時間で、ハイライトを使用したターンに行動を待機していたキャラクターは、そのターンを含めて合計4ターン間、バフが継続されます。
+特記事項として、ハイライトの持続は基本2ターンで、意識4以上（A4+）では3ターンだが、麻由美はやや特殊なメカニズムを持つ。
+
+コミュニティでは便宜上これをそれぞれ「2.1ターン」「3.1ターン」と表現する。これは実際に0.1ターンが追加で存在するわけではない。
+
+味方が行動する直前にHLを付与すると、その行動後もバフの残りターン数は減少しないため、メインアタッカーの行動直前に使えば、実質的に1ターン多く活用するような運用ができる。
 `,
         review_cn: `是专精穿透增益的物理辅助角色。每当有怪盗结束行动时，她都会获得1层『时速』。
 
@@ -66,7 +78,11 @@ As a special note, the Highlight effect is specified as lasting 3 turns, but its
 
 此外，如果想利用技能1通过暴击来削减倒地值，也需要额外兼顾暴击率。
 
-比较特别的一点是，她的HIGHLIGHT虽然写着持续3回合，但实际更接近3.1回合，因此在HIGHLIGHT发动当回合还没行动的角色，实际会把这个增益带满4个行动回合。`,
+另外，麻由美的HIGHLIGHT基础持续时间为2回合，意识4及以上（A4+）时为3回合，但她有一个稍微特殊的机制。社区里为了方便，
+
+有时会把它分别称作“2.1回合”和“3.1回合”。但这并不代表真的多出了0.1回合。
+
+若在某名同伴行动前一刻施放HL，那么该同伴行动后增益的剩余回合数也不会减少。因此，若在主力输出行动前使用，实战中可以近似看作多利用了1回合。`,
         pros: ["높은 수치의 관통 효과를 제공한다.", "추가 턴 진입이 가능하다."],
         pros_en: [
             "Provides high Pierce values.",

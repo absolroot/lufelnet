@@ -3,9 +3,9 @@
     var params = new URLSearchParams(window.location.search || '');
     var path = String(window.location.pathname || '/');
     var lowerPath = path.toLowerCase();
-    var pathLangMatch = lowerPath.match(/^\/(kr|en|jp)(\/|$)/);
+    var pathLangMatch = lowerPath.match(/^\/(kr|en|jp|cn)(\/|$)/);
     var pathLang = pathLangMatch ? pathLangMatch[1] : '';
-    var isCanonicalPath = /^\/(kr|en|jp)\/share\/revelation\/?$/.test(lowerPath);
+    var isCanonicalPath = /^\/(kr|en|jp|cn)\/share\/revelation\/?$/.test(lowerPath);
 
     if (isCanonicalPath) {
         window.__SEO_PATH_LANG__ = pathLang;
@@ -42,7 +42,7 @@
             <p class="rs-page-description" data-i18n="page_description">-</p>
         </div>
         <div class="rs-header-side">
-            <div class="character-page-tabs" role="tablist" aria-label="Share tabs">
+            <div class="character-page-tabs" role="tablist" aria-label="Share tabs" data-i18n-aria="aria_share_tabs">
                 <a id="rsShareCharacterTab" class="character-page-tab" role="tab" data-i18n="nav_share_character" href="/share/character/">Character</a>
                 <a id="rsShareRevelationTab" class="character-page-tab active" role="tab" data-i18n="nav_share_revelation" href="/share/revelation/">Revelation <span id="rsShareRevelationTabNote" class="character-page-tab-note" hidden></span></a>
             </div>
@@ -138,7 +138,7 @@
             <div id="rsCharacterPanel" class="rs-character-panel" hidden>
                 <div class="rs-character-panel-head">
                     <h2 class="rs-section-title" data-i18n="label_character">Character</h2>
-                    <button id="rsCharacterPanelClose" type="button" class="rs-character-panel-close" aria-label="Close">x</button>
+                    <button id="rsCharacterPanelClose" type="button" class="rs-character-panel-close" aria-label="Close" data-i18n-aria="common.close">x</button>
                 </div>
                 <div class="rs-character-filter-bar">
                     <input id="rsCharacterSearch" type="text" class="rs-character-search-input" data-i18n-placeholder="placeholder_character_search" placeholder="Search characters...">

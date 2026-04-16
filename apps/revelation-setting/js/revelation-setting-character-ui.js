@@ -271,6 +271,7 @@
                     meta.name || '',
                     meta.name_en || '',
                     meta.name_jp || '',
+                    meta.name_cn || '',
                     meta.codename || '',
                     (name === '후타바' || String(meta.codename || '').toLowerCase() === 'navi') ? 'oracle' : ''
                 ].join(' ').toLowerCase();

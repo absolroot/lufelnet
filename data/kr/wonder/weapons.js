@@ -67,7 +67,6 @@ window.matchWeapons = {
         "desc_jp": "パレス 6 踏破率 100%",
         "desc_cn": "宫殿5 探索度100%"
       }
-
     ],
     "name_cn": "混沌海克斯",
     "effect_cn": "攻击力提升28.0%/32.7%/37.3%/42.0%/46.7%/51.3%/56.0%。\nWONDER使用人格面具技能或枪械攻击后，获得持续1回合的『致命本能』。『致命本能』：回合开始时自动填满子弹且枪械攻击及射击属性人格面具技能必定暴击；伤害提升9.5%/11.1%/12.7%/14.2%/15.8%/17.4%/19.0%，枪械攻击造成伤害额外提升9.5%/11.1%/12.7%/14.2%/15.8%/17.4%/19.0%。\nWONDER拥有『致命本能』时，使所有同伴的攻击力提升11.0%/12.8%/14.7%/16.5%/18.3%/20.2%/22.0%、造成射击属性伤害时的暴击效果提升10.0%/11.7%/13.3%/15.0%/16.7%/18.3%/20.0%。"
@@ -101,8 +100,8 @@ window.matchWeapons = {
     "release": "마사키",
     "order": "7",
     "effect": "공격력이 28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/56.0% 증가한다.\n빛의 고리 『성반만상』: 원더의 『부연』 중첩 수에 따라 다음 효과가 활성화된다.\n5중첩: 모든 적 방어력 11.0%/14.7%/14.7%/18.3%/18.3%/22.0%/22.0% 감소\n10중첩: 모든 괴도 효과 명중 9.0%/12.0%/12.0%/15.0%/15.0%/18.0%/18.0% 증가\n15중첩: 모든 괴도 염동 대미지 11.0%/14.7%/14.7%/18.3%/18.3%/22.0%/22.0% 증가\n전투가 시작되면 『부연』 10중첩을 획득하고, 적에게 대미지를 줄 때마다 원더가 『부연』을 1중첩 획득한다. 원더 턴 종료 시 『부연』 5중첩을 소모한다.",
-    "effect_en": "Increase Attack by 28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/56.0%.\nUniversal Astrolabe (Aura): Gain the following effects based on the number of Guidance stacks.\n5 stacks: Decrease all foes' Defense by 11.0%/14.7%/14.7%/18.3%/18.3%/22.0%/22.0%.\n10 stacks: Increase all allies' ailment accuracy by 9.0%/12.0%/12.0%/15.0%/15.0%/18.0%/18.0%.\n15 stacks: Increase all allies' Psychokinesis damage by 6.0%/8.0%/8.0%/10.0%/10.0%/12.0%/12.0%.\nAt the start of battle, gain 10 stacks of Guidance, for a maximum of 20 stacks. Gain 1 stack of Guidance whenever an ally deals damage to a foe. At the end of the user's turn, lose 5 Guidance stacks.",
-    "effect_jp": "攻撃力が28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/56.0%上昇する。\nオーラ『万象の星盤』：『導き』の数に応じて以下の効果を付与する。\n「５：敵全体の防御力を11.0%/14.7%/14.7%/18.3%/18.3%/22.0%/22.0%低下」\n「１０：味方全体の状態異常命中が9.0%/12.0%/12.0%/15.0%/15.0%/18.0%/18.0%上昇」\n「１５：味方全体の念動属性の与ダメージが6.0%/8.0%/8.0%/10.0%/10.0%/12.0%/12.0%上昇」\n戦闘開始時、『導き』を１０個獲得し、最大２０個まで累積できる。味方が敵にダメージを与えるごとに『導き』を１つ獲得する。自身のターン終了時に『導き』を５つ消費する。",
+    "effect_en": "Increase Attack by 28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/56.0%.\nUniversal Astrolabe (Aura): Gain the following effects based on the number of Guidance stacks.\n5 stacks: Decrease all foes' Defense by 11.0%/14.7%/14.7%/18.3%/18.3%/22.0%/22.0%.\n10 stacks: Increase all allies' ailment accuracy by 9.0%/12.0%/12.0%/15.0%/15.0%/18.0%/18.0%.\n15 stacks: Increase all allies' Psychokinesis damage by 11.0%/14.7%/14.7%/18.3%/18.3%/22.0%/22.0%.\nAt the start of battle, gain 10 stacks of Guidance, for a maximum of 20 stacks. Gain 1 stack of Guidance whenever an ally deals damage to a foe. At the end of the user's turn, lose 5 Guidance stacks.",
+    "effect_jp": "攻撃力が28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/56.0%上昇する。\nオーラ『万象の星盤』：『導き』の数に応じて以下の効果を付与する。\n「５：敵全体の防御力を11.0%/14.7%/14.7%/18.3%/18.3%/22.0%/22.0%低下」\n「１０：味方全体の状態異常命中が9.0%/12.0%/12.0%/15.0%/15.0%/18.0%/18.0%上昇」\n「１５：味方全体の念動属性の与ダメージが11.0%/14.7%/14.7%/18.3%/18.3%/22.0%/22.0%上昇」\n戦闘開始時、『導き』を１０個獲得し、最大２０個まで累積できる。味方が敵にダメージを与えるごとに『導き』を１つ獲得する。自身のターン終了時に『導き』を５つ消費する。",
     "lightning_stamp": [
       {
         "order": 2,
@@ -252,8 +251,8 @@ window.matchWeapons = {
     "release": "미오",
     "order": "10",
     "effect": "공격력이 28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/60.7% 증가한다.\n전투가 시작할 때 혹은 임의 캐릭터가 페르소나 스킬을 사용해 만능 속성 대미지를 준 후 『공명』 효과가 발동되며 2턴 동안 지속된다.\n『공명』: 현재 라인업이 활성화한 소나타 효과 수량에 따라 다음 효과가 발동된다.\n소나타 최소 1개: 자신의 공격력이 15.0%/20.0%/20.0%/25.0%/25.0%/30.0%/30.0% 증가하고, 만능 속성 대미지가 9.0%/12.0%/12.0%/15.0%/15.0%/18.0%/18.0% 증가하며, 모든 괴도가 효과의 50%를 획득한다.\n소나타 최소 2개: 모든 괴도의 크리티컬 효과가 9.0%/12.0%/12.0%/15.0%/15.0%/18.0%/18.0% 증가한다.",
-    "effect_en": "Increase Attack by 28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/60.7%.\nAt the start of battle, or when an ally deals damage with an Almighty skill, activate Harmonic Element for 2 turns.\nHarmonic Element: Based on the number of Flames of Desire effects active on the current party, activate the following effects.\n1 or more: Increase user's Attack by 15.0%/20.0%/20.0%/25.0%/25.0%/30.0%/30.0% and Almighty damage by 6.0%/8.0%/8.0%/10.0%/10.0%/12.0%/12.0%. Grant 50% of these effects to other allies.\n2 or more: Increase party's critical damage by 9.0%/12.0%/12.0%/15.0%/15.0%/18.0%/18.0%.",
-    "effect_jp": "攻撃力が28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/60.7%上昇する。\n戦闘開始時、または味方がスキルで万能属性ダメージを与えた時、２ターンの間、『共鳴素子』を発動する。\n『共鳴素子』：現在のパーティで発動している『欲望の共鳴』の数に応じて、以下の効果が発動する。\n「１以上：自身の攻撃力が15.0%/20.0%/20.0%/25.0%/25.0%/30.0%/30.0%上昇、万能属性ダメージが6.0%/8.0%/8.0%/10.0%/10.0%/12.0%/12.0%上昇。他の味方はこれらの効果量の５０%が上昇」\n「２以上：味方全体のクリティカルダメージが9.0%/12.0%/12.0%/15.0%/15.0%/18.0%/18.0%上昇」",
+    "effect_en": "Increase Attack by 28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/60.7%.\nAt the start of battle, or when an ally deals damage with an Almighty skill, activate Harmonic Element for 2 turns.\nHarmonic Element: Based on the number of Flames of Desire effects active on the current party, activate the following effects.\n1 or more: Increase user's Attack by 15.0%/20.0%/20.0%/25.0%/25.0%/30.0%/30.0% and Almighty damage by 9.0%/12.0%/12.0%/15.0%/15.0%/18.0%/18.0%. Grant 50% of these effects to other allies.\n2 or more: Increase party's critical damage by 9.0%/12.0%/12.0%/15.0%/15.0%/18.0%/18.0%.",
+    "effect_jp": "攻撃力が28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/60.7%上昇する。\n戦闘開始時、または味方がスキルで万能属性ダメージを与えた時、２ターンの間、『共鳴素子』を発動する。\n『共鳴素子』：現在のパーティで発動している『欲望の共鳴』の数に応じて、以下の効果が発動する。\n「１以上：自身の攻撃力が15.0%/20.0%/20.0%/25.0%/25.0%/30.0%/30.0%上昇、万能属性ダメージが9.0%/12.0%/12.0%/15.0%/15.0%/18.0%/18.0%上昇。他の味方はこれらの効果量の５０%が上昇」\n「２以上：味方全体のクリティカルダメージが9.0%/12.0%/12.0%/15.0%/15.0%/18.0%/18.0%上昇」",
     "shard": [
       {
         "desc": "교환 - 운명의 섬 {item-huobi-49.png} 800",
@@ -375,8 +374,8 @@ window.matchWeapons = {
     "order": "5",
     "release": "아야카",
     "effect": "공격력이 28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/56.0% 증가한다.\n축복 속성 대미지 및 치료 효과가 11.0%/14.7%/14.7%/18.3%/18.3%/22.0%/22.0% 증가한다.\n턴 시작 시 1명의 괴도에게 축복 효과를 제공하며, 해당 괴도에게 8.0%/10.7%/10.7%/13.3%/13.3%/16.0%/16.0%의 대미지 보너스를 제공한다. 만약 이 괴도가 축복 속성 괴도일 경우, 13.5%/18.0%/18.0%/22.5%/22.5%/27.0%/27.0%의 축복 대미지 보너스를 추가로 획득한다.\n이후 2턴마다 같은 효과가 1회 발동한다.",
-    "effect_en": "Increase Attack by 28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/56.0%. Increase Bless damage and healing by 11.0%/14.7%/14.7%/18.3%/18.3%/22.0%/22.0%. At the start of the turn, grant Blessing to 1 ally and increase their damage by 8.0%/10.7%/10.7%/13.3%/13.3%/16.0%/16.0%. If the target's attribute is Bless, increase Bless damage by 8.0%/10.7%/10.7%/13.3%/13.3%/16.0%/16.0% more. Effect reactivates every 2 turns.",
-    "effect_jp": "攻撃力が28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/56.0%上昇する。祝福属性の与ダメージと回復量が11.0%/14.7%/14.7%/18.3%/18.3%/22.0%/22.0%上昇する。\nターン開始時、味方単体に祝印を付与し、与ダメージを8.0%/10.7%/10.7%/13.3%/13.3%/16.0%/16.0%を上昇させる。対象が祝福属性の場合、祝福属性の与ダメージを8.0%/10.7%/10.7%/13.3%/13.3%/16.0%/16.0%を上昇させる。その後、２ターンごとに同じ効果が発動する。",
+    "effect_en": "Increase Attack by 28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/56.0%. Increase Bless damage and healing by 11.0%/14.7%/14.7%/18.3%/18.3%/22.0%/22.0%. At the start of the turn, grant Blessing to 1 ally and increase their damage by 8.0%/10.7%/10.7%/13.3%/13.3%/16.0%/16.0%. If the target's attribute is Bless, increase Bless damage by 13.5%/18.0%/18.0%/22.5%/22.5%/27.0%/27.0% more. Effect reactivates every 2 turns.",
+    "effect_jp": "攻撃力が28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/56.0%上昇する。祝福属性の与ダメージと回復量が11.0%/14.7%/14.7%/18.3%/18.3%/22.0%/22.0%上昇する。\nターン開始時、味方単体に祝印を付与し、与ダメージを8.0%/10.7%/10.7%/13.3%/13.3%/16.0%/16.0%を上昇させる。対象が祝福属性の場合、祝福属性の与ダメージを13.5%/18.0%/18.0%/22.5%/22.5%/27.0%/27.0%を上昇させる。その後、２ターンごとに同じ効果が発動する。",
     "lightning_stamp": [
       {
         "order": 1,

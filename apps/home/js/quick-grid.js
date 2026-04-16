@@ -243,7 +243,7 @@
     };
 
     // New 배지를 표시할 아이템 목록
-    const newItems = ['character', 'revelations', 'wonderweapon', 'schedule', 'gallery', 'defenseCalc', 'criticalCalc'];
+    const newItems = ['character'];
 
     const render = () => {
         const root = document.getElementById('quick-grid');

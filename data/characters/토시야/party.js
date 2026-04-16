@@ -20,8 +20,9 @@ window.recommendParty["토시야"] = {
                 "아누비스"
             ],
             "comment": "적에게 주원 효과를 부여하고 파즈스의 패시브를 통해 주원 효과를 정산한다. 주원은 체력 대비 % 대미지로 들어가게 된다.",
-            "comment_en": "Apply the curse effect to the enemy and cancel the curse effect using Pazzus's passive. Curse damage is calculated as a % of the enemy's HP.",
-            "comment_jp": "敵に呪いを加え、パズスのパッシブで呪いを打ち消す。呪いダメージは敵のHPの%で計算される。"
+            "comment_en": "Apply Curse to the enemy, then resolve it through Pazuzu's passive. Curse damage is dealt as a percentage of the enemy's HP.",
+            "comment_jp": "敵に呪いを付与し、パズスのパッシブで呪い効果を精算する。呪いダメージは敵HPに対する割合で発生する。",
+            "comment_cn": "对敌人施加诅咒效果后，可通过帕祖祖的被动结算诅咒效果。诅咒伤害会按敌人生命值的一定比例造成。"
         }
     ],
     "party": [

@@ -13,8 +13,9 @@ window.recommendParty["이치고"] = {
                 "앨리스"
             ],
             "comment": "바스키의 지속 대미지 증가는 대미지 보너스가 아닌 별도 곱 계산이다.",
-            "comment_en": "The DOT damage increase of VASUKI is not a damage bonus but a separate multiplication calculation.",
-            "comment_jp": "VASUKIの持続ダメージ増加は攻撃倍率+ではなく別々の乗算計算です。"
+            "comment_en": "Vasuki's DOT damage increase is not a damage bonus, but a separate multiplicative modifier.",
+            "comment_jp": "ヴァスキの持続ダメージ増加はダメージボーナスではなく、別乗算で計算される。",
+            "comment_cn": "婆苏吉的持续伤害提升并非伤害加成，而是单独的乘区计算。"
         },
         {
             "type": "CRITICAL",

@@ -327,6 +327,29 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     }
 
+    function getJpOptionFallbackMap() {
+        return {
+            '공격력': '攻撃力',
+            '생명': 'HP',
+            '생명력': 'HP',
+            '치료효과': 'HP回復効果',
+            '치료 효과': 'HP回復効果',
+            '크리티컬 확률': 'CRT確率',
+            '크리티컬 효과': 'CRT効果',
+            '대미지 보너스': 'ダメージボーナス',
+            '대미지보너스': 'ダメージボーナス',
+            '데미지 보너스': 'ダメージボーナス',
+            '데미지보너스': 'ダメージボーナス',
+            '관통': '貫通',
+            '효과 명중': '状態異常命中',
+            '효과명중': '状態異常命中',
+            '방어력': '防御力',
+            '속도': '速度',
+            'SP 회복': 'SP回復',
+            'SP회복': 'SP回復'
+        };
+    }
+
     function getCnOptionFallbackMap() {
         return {
             '공격력': t('characterStatsLabelAtk', '攻击力'),
@@ -374,6 +397,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // 2) Fallback map (for early race before dictionary is ready)
         if (currentLang === 'en') {
             return replaceOptionTerms(source, getEnOptionFallbackMap());
+        }
+
+        if (currentLang === 'jp') {
+            return replaceOptionTerms(source, getJpOptionFallbackMap());
         }
 
         if (currentLang === 'cn') {
@@ -473,16 +500,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     // 콤마로 구분된 여러 스탯을 처리
                     const stats = statValue.split(',').map(stat => stat.trim());
                     const highlightedText = stats.map(stat => {
-                        let processed = currentLang === 'cn' ? localizeCnLooseText(stat) : stat;
-                        if (currentLang !== 'kr') {
-                            return processed;
-                        }
+                        let processed = currentLang === 'cn'
+                            ? localizeCnLooseText(stat)
+                            : localizeOptionValueText(stat);
 
                         // 각 스탯 문자열에서 유효한 스탯을 찾아 강조
-                        validStats.forEach(validStat => {
-                            const regex = new RegExp(`(${validStat})`, 'g');
-                            processed = processed.replace(regex, '<span class="valid-stat">$1</span>');
-                        });
+                        if (currentLang === 'kr') {
+                            validStats.forEach(validStat => {
+                                const regex = new RegExp(`(${validStat})`, 'g');
+                                processed = processed.replace(regex, '<span class="valid-stat">$1</span>');
+                            });
+                        }
                         return processed;
                     }).join('<br>');
 

@@ -1,0 +1,33 @@
+{
+  "data": {
+    "fiveStar": [
+      {
+        "name": "Gordian Kopis",
+        "quality": 5,
+        "skill": "Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%.\nWhen Deduction or Stratagem are active, increase party's Attack by 21.0%/27.3%/27.3%/33.7%/33.7%/40.0%/40.0% for 2 turns.\nAlso, when an ally with Mastermind activates a skill, Highlight, or Resonance, increase Akechi's critical damage by 15.0%/19.5%/19.5%/24.0%/24.0%/28.5%/28.5% for 2 turns. Stacks up to 2 times.",
+        "stat": {
+          "attack": 739.92,
+          "defense": 409.62,
+          "hp": 2338.77
+        },
+        "user": "Akechi"
+      }
+    ],
+    "fourStar": [
+      {
+        "name": "Victory Beam",
+        "quality": 4,
+        "skill": "Increase Almighty damage by 9.6%/9.6%/12.8%/12.8%/16.0%/16.0%/19.2%.\nWhen gaining Suspicion, increase Attack by 22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0%.",
+        "stat": {
+          "attack": 592.3,
+          "defense": 328.02,
+          "hp": 1870.83
+        },
+        "user": "Akechi"
+      }
+    ],
+    "name": "Akechi"
+  },
+  "msg": "OK",
+  "status": 0
+}

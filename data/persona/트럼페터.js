@@ -95,7 +95,7 @@ window.personaFiles["트럼페터"] = {
     "name_en": "Highlight",
     "name_jp": "ハイライト",
     "desc": "모든 적에게 공격력 45.0%/48.2%/51.3%의 만능 속성 대미지를 주며, 적이 받는 대미지가 19.6%/21.0%/22.3% 증가한다. 효과는 2턴 동안 지속된다.",
-    "desc_en": "Deals 45.0%/48.2%/51.3% ATK Allmighty dmg to all foes and increase their dmg taken by 19.6%/21.0%/22.3% for 2 turns.",
+    "desc_en": "Deals 45.0%/48.2%/51.3% ATK Almighty dmg to all foes and increase their dmg taken by 19.6%/21.0%/22.3% for 2 turns.",
     "desc_jp": "全ての敵に45.0%/48.2%/51.3% ATKの万能属性ダメージを与え、敵が受けるダメージが19.6%/21.0%/22.3%増加する。効果は2ターンの間持続する。",
     "priority": 1,
     "name_cn": "HIGHLIGHT",

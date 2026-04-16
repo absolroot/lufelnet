@@ -110,5 +110,9 @@
     {
         "description" : "Party's Highlight damage is increased by 50%.",
         "name": "Highlight +"
+    },
+    {
+        "description": "When the party has 2 or more Sweeper or Assassin allies, all allies' final damage is increased by 20%.",
+        "name": "Nexus of Dreams"
     }
 ]

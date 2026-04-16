@@ -14,7 +14,7 @@ window.recommendParty["키라"] = {
                 "도미니온"
             ],
             "comment": "만능 속성을 선봉에 두고 원더 무기를 통한 속성 대미지 증가 효과를 통해 DOT 대미지 증가",
-            "comment_en": "Increase DOT damage by placing the Allmighty attribute at the front and enhancing elemental damage through the Wonder weapon",
+            "comment_en": "Increase DOT damage by placing the Almighty attribute at the front and enhancing elemental damage through the Wonder weapon",
             "comment_jp": "万能属性を先頭に配置し、ワンダー武器による属性ダメージ増加効果でDOTダメージを強化する。"
         },
         {

@@ -704,7 +704,7 @@ const criticalSelfData = {
       "value": 12,
       "duration": "-",
       "note": "만능 속성 한정",
-      "note_en": "Only Allmighty",
+      "note_en": "Only Almighty",
       "note_jp": "万能属性",
       "skillName_cn": "自由-失望",
       "note_cn": "万能属性限定",

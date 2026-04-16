@@ -4,7 +4,7 @@ window.innateData["J&C"] = {
     [
       {
         "attr": "Attack",
-        "nature": "Allmighty",
+        "nature": "Almighty",
         "value": "0.1",
         "desc": "모든 만능 속성 아군의 공격력 증가",
         "desc_en": "All Almighty Attribute Allies' Attack Increase",
@@ -16,7 +16,7 @@ window.innateData["J&C"] = {
     [
       {
         "attr": "Crit Mult",
-        "nature": "Allmighty",
+        "nature": "Almighty",
         "value": "0.12",
         "desc": "모든 만능 속성 아군의 크리티컬 효과 증가",
         "desc_en": "All Almighty Attribute Allies' Crit Mult Increase",

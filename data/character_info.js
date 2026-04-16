@@ -517,7 +517,7 @@ Object.assign(window.characterData, {
     "아케치": {
         "limit": true,
         "persona5": true,
-        "role_en": "Allmighty AOE Dealer (Sub)",
+        "role_en": "Almighty AOE Dealer (Sub)",
         "role_jp": "万能範囲ディーラー(サブ)",
         "tag": "대미지 축적, 대미지보너스, 방어력 감소, 공격력, 크리티컬 효과, 축복",
         "color": "#c7312c",

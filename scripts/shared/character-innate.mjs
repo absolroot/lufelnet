@@ -39,6 +39,7 @@ const NATURE_TO_ELEMENT_KR = {
   Physical: '물리',
   Gun: '총격',
   Almighty: '만능',
+  // Legacy typo compatibility for older data inputs.
   Allmighty: '만능'
 };
 

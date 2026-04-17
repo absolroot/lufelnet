@@ -1,5 +1,4 @@
 window.I18N_PAGE_TACTIC_CN = {
-    "navHome": "首页",
     "navCurrent": "战术 / 战术编辑器",
     "pageTitle": "P5X 战术编辑器",
     "buttonExport": "导出",

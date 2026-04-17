@@ -1,7 +1,6 @@
 window.I18N_PAGE_GALLERY_CN = {
     "pageTitle": "画廊",
     "pageDescription": "查看游戏内插画、过场与各类图片。",
-    "navHome": "首页",
     "navCurrent": "画廊",
     "filterAll": "全部",
     "filterAllGroups": "全部分组",

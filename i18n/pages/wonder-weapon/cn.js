@@ -1,5 +1,4 @@
 window.I18N_PAGE_WONDER_WEAPON_CN = {
-    "navHome": "首页",
     "navCurrent": "WONDER武器",
     "pageTitle": "WONDER武器",
     "pageDescription": "查看 WONDER 专属武器的效果、获取途径与改造阶段信息。",

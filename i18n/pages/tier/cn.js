@@ -1,5 +1,4 @@
 window.I18N_PAGE_TIER_CN = {
-    "navHome": "首页",
     "navCurrent": "梯级制作器",
     "pageTitle": "梯级制作器",
     "pageDescription": "提供面向竞争内容的职业分组强度榜，也可以自行制作专属梯级表。",

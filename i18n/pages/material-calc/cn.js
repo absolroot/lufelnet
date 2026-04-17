@@ -1,5 +1,4 @@
 window.I18N_PAGE_MATERIAL_CALC_CN = {
-    "navHome": "首页",
     "navCurrent": "养成计算器",
     "pageTitle": "养成计算器",
     "pageDescription": "计算怪盗升级、武器强化与技能养成所需的材料数量。",

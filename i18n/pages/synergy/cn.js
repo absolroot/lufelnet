@@ -1,6 +1,5 @@
 window.I18N_PAGE_SYNERGY_CN = {
     "pageTitle": "协同者",
-    "navHome": "首页",
     "navCurrent": "协同者",
     "pageDescription": "查看各协同者的选项答案、偏好礼物与等级效果。",
     "filterAll": "全部",

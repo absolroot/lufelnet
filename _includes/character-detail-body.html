@@ -874,7 +874,7 @@
                 : (pageLang && pageLang !== 'kr' ? `/${pageLang}` : '');
             if (homeLink) {
                 homeLink.href = `${langPrefix || ''}/?v=${APP_VERSION}`;
-                homeLink.textContent = getCharacterI18nText('navHome', '홈');
+                homeLink.textContent = getCharacterI18nText('nav.home', '홈');
             }
             if (listLink) {
                 listLink.href = `${langPrefix || ''}/character/?v=${APP_VERSION}`;
@@ -1101,6 +1101,8 @@
             window.AranCalc = window.AranCalc || {};
             // 마유미 전용 계산기 전역 스텁
             window.MayumiCalc = window.MayumiCalc || {};
+            // 카타야마 전용 계산기 전역 스텁
+            window.KatayamaCalc = window.KatayamaCalc || {};
         } catch (e) { console.warn('[SAFE:init-globals]', e); }
 
         async function loadCharacterDataAll(name) {
@@ -1145,6 +1147,11 @@
             // 마유미 전용 속도 계산기 로드
             if (name === '마유미') {
                 tasks.push(loadPerCharacterResource(name, { fileBase: 'mayumi_calc', globalVarName: 'MayumiCalc' }));
+            }
+
+            // 카타야마 전용 속도 계산기 로드
+            if (name === '카타야마') {
+                tasks.push(loadPerCharacterResource(name, { fileBase: 'katayama_calc', globalVarName: 'KatayamaCalc' }));
             }
 
             await Promise.all(tasks.map(t => safeAwait('loadPerCharacterResource', t)));

@@ -282,19 +282,26 @@
                 left: 0;
                 width: 100%;
                 height: 100%;
+                align-items: center;
+                justify-content: center;
+                padding: 24px;
+                overflow-y: auto;
                 background-color: rgba(0, 0, 0, 0.7);
                 z-index: 1000;
+                box-sizing: border-box;
             }
 
             .modal-content {
                 position: relative;
                 background-color: #2a2a2a;
-                margin: 15% auto;
+                margin: 0;
                 padding: 20px;
-                width: 80%;
-                max-width: 600px;
+                width: min(80%, 600px);
+                max-height: calc(100vh - 48px);
+                overflow-y: auto;
                 border-radius: 8px;
                 color: #fff;
+                box-sizing: border-box;
             }
 
             .close-modal {
@@ -361,9 +368,13 @@
             }
 
             @media (max-width: 1200px) {
+                .modal {
+                    padding: 16px;
+                }
+
                 .modal-content {
-                    margin: 20% auto;
                     width: 90%;
+                    max-height: calc(100vh - 32px);
                     padding: 15px;
                 }
             }
@@ -372,7 +383,7 @@
         <script>
             function showSupporters() {
                 const modal = document.getElementById('supporters-modal');
-                modal.style.display = 'block';
+                modal.style.display = 'flex';
 
                 // i18n 키로 모달 타이틀 갱신
                 const title = document.getElementById('supporters-title');
@@ -814,7 +825,7 @@
         if ((window.isKrLikeLanguage && window.isKrLikeLanguage(currentLang)) || currentLang === 'kr') {
             if (donateBtn && donateModal) {
                 donateBtn.onclick = function () {
-                    donateModal.style.display = 'block';
+                    donateModal.style.display = 'flex';
                 }
             }
         } else {
@@ -837,7 +848,7 @@
         if (kakaoPayBtn && donateModal && kakaoPayModal) {
             kakaoPayBtn.onclick = function () {
                 donateModal.style.display = 'none';
-                kakaoPayModal.style.display = 'block';
+                kakaoPayModal.style.display = 'flex';
             }
         }
 
@@ -849,7 +860,7 @@
 
         if (exchangeCodeBtn && exchangeCodeModal) {
             exchangeCodeBtn.onclick = function () {
-                exchangeCodeModal.style.display = 'block';
+                exchangeCodeModal.style.display = 'flex';
                 generateExchangeCodes();
                 if (!isCodeHandlerSetup) {
                     setupCodeClickHandler();

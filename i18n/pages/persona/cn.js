@@ -1,5 +1,4 @@
 window.I18N_PAGE_PERSONA_CN = {
-    "navHome": "首页",
     "navCurrent": "人格面具",
     "pageTitle": "人格面具",
     "pageDescription": "查看人格面具强度、推荐养成技能与技能获取途径。",

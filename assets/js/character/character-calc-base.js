@@ -295,7 +295,8 @@
       targetNote: null,
       total: null,
       diff: null,
-      dynamicValues: {}
+      dynamicValues: {},
+      checkboxes: {}
     };
 
     function hasGoal(goalId) {
@@ -398,6 +399,46 @@
       rowEl.classList.toggle('is-disabled', !enabled);
     }
 
+    function applyMutuallyExclusiveGroup(row, currentCheckKey) {
+      if (!row || !row.mutuallyExclusiveGroup || !state.checks[currentCheckKey]) return;
+
+      for (var rowIndex = 0; rowIndex < rows.length; rowIndex++) {
+        var candidate = rows[rowIndex];
+        var candidateCheckKey = candidate.checkKey || candidate.key;
+        if (!candidateCheckKey || candidateCheckKey === currentCheckKey) continue;
+        if (candidate.mutuallyExclusiveGroup !== row.mutuallyExclusiveGroup) continue;
+
+        state.checks[candidateCheckKey] = false;
+
+        if (refs.checkboxes[candidateCheckKey]) {
+          refs.checkboxes[candidateCheckKey].checked = false;
+        }
+
+        if (refs.checkboxes[candidateCheckKey] && refs.checkboxes[candidateCheckKey].__rowEl) {
+          setRowEnabled(refs.checkboxes[candidateCheckKey].__rowEl, false);
+        }
+      }
+    }
+
+    function normalizeMutuallyExclusiveState() {
+      var seenGroups = {};
+
+      for (var rowIndex = 0; rowIndex < rows.length; rowIndex++) {
+        var row = rows[rowIndex];
+        if (!row || !row.mutuallyExclusiveGroup) continue;
+
+        var checkKey = row.checkKey || row.key;
+        if (!checkKey || !state.checks[checkKey]) continue;
+
+        if (seenGroups[row.mutuallyExclusiveGroup]) {
+          state.checks[checkKey] = false;
+          continue;
+        }
+
+        seenGroups[row.mutuallyExclusiveGroup] = checkKey;
+      }
+    }
+
     function createCheckLabel(row, rowEl) {
       var wrap = el('label', 'character-calc-check-wrap');
       var checkKey = row.checkKey || row.key;
@@ -405,8 +446,11 @@
       checkbox.type = 'checkbox';
       checkbox.className = 'character-calc-check';
       checkbox.checked = !!state.checks[checkKey];
+      checkbox.__rowEl = rowEl;
+      refs.checkboxes[checkKey] = checkbox;
       checkbox.addEventListener('change', function () {
         state.checks[checkKey] = checkbox.checked;
+        applyMutuallyExclusiveGroup(row, checkKey);
         setRowEnabled(rowEl, checkbox.checked);
         saveState();
         recalculate();
@@ -592,6 +636,7 @@
     }
 
     loadState();
+    normalizeMutuallyExclusiveState();
     if (!hasGoal(state.selectedGoal)) state.selectedGoal = config.goals[0].id;
     var card = buildCard();
     mountCardWhenReady({ card: card, cardClass: config.cardClass, anchorSelector: config.anchorSelector }, recalculate);

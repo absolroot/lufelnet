@@ -1,6 +1,5 @@
 window.I18N_PAGE_PULL_CALC_CN = {
     "pageTitle": "抽卡规划器",
-    "navHome": "首页",
     "navCurrent": "抽卡规划器",
     "pageDescription": "基于预测上线日程，计算获取目标角色所需资源并规划契约方案。",
     "seoTitle": "抽卡规划器 - 女神异闻录5: 夜幕魅影 路菲尔网",

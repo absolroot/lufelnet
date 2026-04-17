@@ -11,8 +11,8 @@
 .donate-button:hover { background-color: #ffdcdc; transform: translateY(-2px); }
 
 /* 모달 스타일 */
-.modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.7); backdrop-filter: blur(3px); }
-.modal-content { background-color: var(--card-background); margin: 10% auto; padding: 30px; border: 1px solid var(--label-red); width: 80%; max-width: 600px; border-radius: 8px; color: #fff; position: relative; }
+.modal { display: none; position: fixed; z-index: 1000; inset: 0; align-items: center; justify-content: center; padding: 24px; overflow-y: auto; background-color: rgba(0, 0, 0, 0.7); backdrop-filter: blur(3px); box-sizing: border-box; }
+.modal-content { background-color: var(--card-background); margin: 0; padding: 30px; border: 1px solid var(--label-red); width: min(80%, 600px); max-height: calc(100vh - 48px); overflow-y: auto; border-radius: 8px; color: #fff; position: relative; box-sizing: border-box; }
 .close-button { color: var(--label-red); position: absolute; right: 20px; top: 15px; font-size: 28px; font-weight: bold; cursor: pointer; }
 .close-button:hover { color: #fff; }
 .modal-content h2 { color: var(--label-red); margin-bottom: 20px; text-align: center; font-size: 24px; border-bottom: 1px solid rgba(211, 142, 142, 0.3); padding-bottom: 10px; }
@@ -71,7 +71,8 @@
 /* 반응형 스타일 */
 @media screen and (max-width: 1200px) { 
     .about-content { padding: 10px; }
-    .modal-content { width: 90%; margin: 20% auto; padding: 20px; }
+    .modal { padding: 16px; }
+    .modal-content { width: 90%; max-height: calc(100vh - 32px); padding: 20px; }
     .donation-methods { flex-direction: column; }
     .exchange-codes { grid-template-columns: 1fr; max-height: 300px; }
     .code-item { font-size: 12px; }

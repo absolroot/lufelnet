@@ -1,5 +1,4 @@
 window.I18N_PAGE_GUIDES_CN = {
-    "navHome": "首页",
     "navCurrent": "攻略",
     "pageTitle": "攻略",
     "pageDescription": "提供游戏内不会详细说明的攻略信息与技巧。",

@@ -32,6 +32,7 @@ window.I18N_PAGE_DEFENSE_CALC_JP = {
         "revelation_penetrate": "啓示 貫通合計",
         "revelation_sum": "啓示 合計",
         "explanation_power": "ステータス強化",
+        "skill_effect_amp": "スキル効果増幅",
         "other_reduce": "その他 防御力減少",
         "th_select": "選択",
         "th_thief": "怪盗",

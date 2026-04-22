@@ -152,7 +152,9 @@ window.I18N_COMMON_KR = {
         taunt: '공격받을 확률 증가',
         down: '다운',
         theurgy: '테우르기아',
+        theurgia: '테우르기아',
         theurgyCharge: '테우르기아 충전',
+        theurgiaCharge: '테우르기아 충전',
         dmgTaken: '받는 대미지 증가',
         hpCost: 'HP 소모',
 
@@ -188,6 +190,7 @@ window.I18N_COMMON_KR = {
         revelation: '계시',
         wonder: '원더',
         common: '공통',
+        blackWings: '블랙윙즈',
 
         // 범위
         aoe: '광역',

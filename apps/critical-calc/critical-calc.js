@@ -9,6 +9,7 @@ class CriticalCalc {
         
         this.selectedBuffItems = new Set();
         this.selectedSelfItems = new Set();
+        this.skillEffectAmpState = this.loadSkillEffectAmpState();
 
         this.buildDatasets();
         
@@ -214,6 +215,96 @@ class CriticalCalc {
         return null;
     }
 
+    getDefaultSkillEffectAmpState() {
+        return { enabled: false, value: 17 };
+    }
+
+    normalizeSkillEffectAmpState(rawState) {
+        const fallback = this.getDefaultSkillEffectAmpState();
+        const parsedValue = parseFloat(rawState && rawState.value);
+
+        return {
+            enabled: !!(rawState && rawState.enabled),
+            value: isFinite(parsedValue) ? Math.max(0, parsedValue) : fallback.value
+        };
+    }
+
+    loadSkillEffectAmpState() {
+        try {
+            const saved = JSON.parse(localStorage.getItem('calcSkillEffectAmpStateV1') || 'null');
+            return this.normalizeSkillEffectAmpState(saved);
+        } catch (_) {
+            return this.getDefaultSkillEffectAmpState();
+        }
+    }
+
+    saveSkillEffectAmpState() {
+        try {
+            localStorage.setItem('calcSkillEffectAmpStateV1', JSON.stringify(this.normalizeSkillEffectAmpState(this.skillEffectAmpState)));
+        } catch (_) {}
+    }
+
+    setItemBaseValue(item, value) {
+        if (!item) return 0;
+        const safeValue = isFinite(Number(value)) ? Number(value) : 0;
+        item.__baseValue = safeValue;
+        item.value = safeValue;
+        return safeValue;
+    }
+
+    getBaseItemValue(item) {
+        if (!item) return 0;
+
+        const baseValue = Number(item.__baseValue);
+        if (isFinite(baseValue)) return baseValue;
+
+        const rawValue = Number(item.value);
+        return isFinite(rawValue) ? rawValue : 0;
+    }
+
+    getSkillEffectAmpMultiplier(item) {
+        if (!this.skillEffectAmpState || !this.skillEffectAmpState.enabled) return 1;
+        if (!item || item.skillEffectAmpAffected !== true) return 1;
+        return 1 + (this.skillEffectAmpState.value / 100);
+    }
+
+    getEffectiveItemValue(item) {
+        return this.getBaseItemValue(item) * this.getSkillEffectAmpMultiplier(item);
+    }
+
+    formatDisplayValue(value) {
+        const safeValue = isFinite(Number(value)) ? Number(value) : 0;
+        return `${safeValue.toFixed(2).replace(/\.00$/, '').replace(/(\.\d)0$/, '$1')}%`;
+    }
+
+    renderItemValue(item, valueCell = item && item.__valueCell) {
+        if (!item || !valueCell) return;
+        item.__valueCell = valueCell;
+        valueCell.textContent = this.formatDisplayValue(this.getEffectiveItemValue(item));
+    }
+
+    refreshDisplayedValues() {
+        [...this.buffFlat, ...this.selfFlat].forEach(item => {
+            if (item && item.__valueCell) {
+                this.renderItemValue(item, item.__valueCell);
+            }
+        });
+    }
+
+    syncSkillEffectAmpControls() {
+        if (this.skillEffectAmpToggle) {
+            this.skillEffectAmpToggle.checked = !!this.skillEffectAmpState.enabled;
+        }
+
+        if (this.skillEffectAmpInput) {
+            this.skillEffectAmpInput.value = String(this.skillEffectAmpState.value);
+        }
+
+        document.querySelectorAll('.skill-effect-amp-checkbox-icon').forEach(icon => {
+            icon.src = `${BASE_URL}/assets/img/ui/check-${this.skillEffectAmpState.enabled ? 'on' : 'off'}.png`;
+        });
+    }
+
     getGroupDisplayName(groupName) {
         const lang = this.getCurrentLang();
         try {
@@ -402,6 +493,7 @@ class CriticalCalc {
                 const list = groupsObj[group] || [];
                 list.forEach(item => {
                     if (!item) return;
+                    this.setItemBaseValue(item, item.value || 0);
                     flat.push(item);
                     if (item.id !== undefined) idMap.set(item.id, item);
                 });
@@ -415,8 +507,36 @@ class CriticalCalc {
     initializeInputs() {
         this.revelationInput = document.getElementById('revelationCritical');
         this.explanationInput = document.getElementById('explanationPower');
+        this.skillEffectAmpToggle = document.getElementById('skillEffectAmpToggle');
+        this.skillEffectAmpInput = document.getElementById('skillEffectAmpValue');
         if (this.revelationInput) this.revelationInput.addEventListener('input', () => this.updateTotal());
         if (this.explanationInput) this.explanationInput.addEventListener('input', () => this.updateTotal());
+        this.initializeSkillEffectAmpInputs();
+    }
+
+    initializeSkillEffectAmpInputs() {
+        this.syncSkillEffectAmpControls();
+
+        if (this.skillEffectAmpToggle) {
+            this.skillEffectAmpToggle.addEventListener('change', () => {
+                this.skillEffectAmpState.enabled = !!this.skillEffectAmpToggle.checked;
+                this.syncSkillEffectAmpControls();
+                this.saveSkillEffectAmpState();
+                this.refreshDisplayedValues();
+                this.updateTotal();
+            });
+        }
+
+        if (this.skillEffectAmpInput) {
+            this.skillEffectAmpInput.addEventListener('input', () => {
+                const nextValue = parseFloat(this.skillEffectAmpInput.value);
+                this.skillEffectAmpState.value = isFinite(nextValue) ? Math.max(0, nextValue) : 0;
+                this.syncSkillEffectAmpControls();
+                this.saveSkillEffectAmpState();
+                this.refreshDisplayedValues();
+                this.updateTotal();
+            });
+        }
     }
 
     initializeTabs() {
@@ -781,6 +901,7 @@ class CriticalCalc {
         // 값 표시 셀 생성
         const valueCell = document.createElement('td');
         valueCell.className = 'value-column';
+        data.__valueCell = valueCell;
 
         const optionCell = document.createElement('td');
         optionCell.className = 'option-column';
@@ -812,7 +933,7 @@ class CriticalCalc {
 
             // 저장된 옵션이 있으면 data.value도 업데이트
             if (savedOption !== null && data.values && data.values[savedOption] !== undefined) {
-                data.value = data.values[savedOption];
+                this.setItemBaseValue(data, data.values[savedOption]);
             }
 
             select.onchange = () => {
@@ -822,15 +943,15 @@ class CriticalCalc {
                 this.saveOptionSelection(data.id, selectedOption, isSelf);
 
                 if (data.values && data.values[selectedOption] != null) {
-                    data.value = data.values[selectedOption];
+                    this.setItemBaseValue(data, data.values[selectedOption]);
 
                     const isJC = groupName === 'J&C' && typeof JCCalc !== 'undefined' && JCCalc.onOptionChanged;
                     if (isJC && data.id !== 'jc2') {
-                        JCCalc.onOptionChanged(data, valueCell, false, this);
+                        JCCalc.onOptionChanged(data, valueCell, 'crit', this);
                         return;
                     }
 
-                    valueCell.textContent = `${data.value}%`;
+                    this.renderItemValue(data, valueCell);
                     const set = isSelf ? this.selectedSelfItems : this.selectedBuffItems;
                     if (set.has(data.id)) this.updateTotal();
                 }
@@ -843,7 +964,7 @@ class CriticalCalc {
         if (isJCRegistered && data.id !== 'jc2') {
             JCCalc.registerItem(data, valueCell, 'crit', this);
         } else {
-            valueCell.textContent = `${data.value}%`;
+            this.renderItemValue(data, valueCell);
         }
         row.appendChild(valueCell);
         
@@ -887,7 +1008,7 @@ class CriticalCalc {
         return Array.from(listOfIds)
             .map(id => idToItem.get(id))
             .filter(Boolean)
-            .reduce((sum, item) => sum + (item.value || 0), 0);
+            .reduce((sum, item) => sum + this.getEffectiveItemValue(item), 0);
     }
 
     updateTotal() {

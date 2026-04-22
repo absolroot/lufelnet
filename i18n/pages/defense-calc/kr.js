@@ -32,6 +32,7 @@ window.I18N_PAGE_DEFENSE_CALC_KR = {
         "revelation_penetrate": "계시 관통 합계",
         "revelation_sum": "계시 합계",
         "explanation_power": "해명의 힘",
+        "skill_effect_amp": "스킬 효과 증폭",
         "other_reduce": "기타 방어력 감소",
         "th_select": "선택",
         "th_thief": "괴도",

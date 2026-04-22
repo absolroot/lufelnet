@@ -5,10 +5,59 @@ window.recommendParty["후카"] = {
     "party": [
         {
             "members": [
-                "",
-                "",
-                "",
-                ""
+                "나루미",
+                "J&C",
+                "미츠루",
+                "후카",
+                "카타야마"
+            ],
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
+        },
+        {
+            "members": [
+                "모토하·청광",
+                "아야카",
+                "J&C",
+                "후카",
+                "코로마루"
+            ],
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
+        },
+        {
+            "members": [
+                "아란",
+                "모토하·청광",
+                "아야카",
+                "후카",
+                "코로마루"
+            ],
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
+        },
+        {
+            "members": [
+                "유스케",
+                "J&C",
+                "미나미·여름",
+                "후카",
+                "코로마루"
+            ],
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
+        },
+        {
+            "members": [
+                "유키 마코토",
+                "미츠루",
+                "준페이",
+                "후카",
+                "코로마루"
             ],
             "comment": "",
             "comment_en": "",

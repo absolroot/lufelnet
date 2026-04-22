@@ -152,7 +152,9 @@ window.I18N_COMMON_EN = {
         taunt: 'Taunt',
         down: 'Down',
         theurgy: 'Theurgy',
+        theurgia: 'Theurgy',
         theurgyCharge: 'Theurgy Charge',
+        theurgiaCharge: 'Theurgy Charge',
         dmgTaken: 'Damage Taken',
         hpCost: 'HP Cost',
 
@@ -188,6 +190,7 @@ window.I18N_COMMON_EN = {
         revelation: 'Revelation',
         wonder: 'Wonder',
         common: 'Common',
+        blackWings: 'Black Wings',
 
         // Range
         aoe: 'AOE',

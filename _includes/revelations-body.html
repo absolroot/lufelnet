@@ -1335,14 +1335,25 @@
             );
         }
 
-        function getRelatedMainRevelations(filteredSubRevelations) {
+        function getRelatedMainRevelations(filteredSubRevelations, selectedEffects) {
             const relatedMainRevelations = new Set();
             if (!currentRevelationData.main) {
                 return relatedMainRevelations;
             }
 
+            const excludedMainRevelations = new Set();
+            const effectExclusions = currentRevelationData.filter_exclusions && currentRevelationData.filter_exclusions.effect;
+            if (effectExclusions && Array.isArray(selectedEffects)) {
+                selectedEffects.forEach((effect) => {
+                    const excludedNames = effectExclusions[effect];
+                    if (Array.isArray(excludedNames)) {
+                        excludedNames.forEach((name) => excludedMainRevelations.add(name));
+                    }
+                });
+            }
+
             Object.entries(currentRevelationData.main).forEach(([mainName, subNames]) => {
-                if (Array.isArray(subNames) && subNames.some(subName => filteredSubRevelations.has(subName))) {
+                if (!excludedMainRevelations.has(mainName) && Array.isArray(subNames) && subNames.some(subName => filteredSubRevelations.has(subName))) {
                     relatedMainRevelations.add(mainName);
                 }
             });
@@ -1377,7 +1388,7 @@
             const filteredSubRevelations = getFilteredSubRevelations(selectedElements, selectedEffects);
 
             // Find main revelations related to filtered sub revelations
-            const relatedMainRevelations = getRelatedMainRevelations(filteredSubRevelations);
+            const relatedMainRevelations = getRelatedMainRevelations(filteredSubRevelations, selectedEffects);
 
             cards.forEach(card => {
                 const type = card.dataset.type;
@@ -1463,7 +1474,7 @@
                 relatedRevelations = currentRevelationData.main[name] || [];
                 relatedRevelations.push(name);
             } else if (type === 'sub' && currentRevelationData.main) {
-                // For sub revelations, find all main revelations that include this sub revelation
+                // For sub revelations, keep the clicked sub visible and show only main revelations that contain it
                 Object.entries(currentRevelationData.main).forEach(([mainName, subNames]) => {
                     if (Array.isArray(subNames) && subNames.includes(name)) {
                         relatedRevelations.push(mainName);

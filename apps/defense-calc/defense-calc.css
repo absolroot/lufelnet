@@ -1459,6 +1459,85 @@ select:-moz-focusring {
 }
 
 /* 관통 입력 필드 스타일 */
+.shared-calc-input-container {
+    padding: 10px 0 20px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    flex-wrap: wrap;
+    display: flex;
+    column-gap: 40px;
+}
+
+.shared-calc-input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.shared-calc-input-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: auto;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.shared-calc-input-group input[type="number"] {
+    width: 50px;
+    margin-left: 10px;
+    padding: 5px 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    color: #d8b86b;
+    font-size: 14px;
+    text-align: right;
+}
+
+.shared-calc-input-group input[type="number"]:focus {
+    outline: none;
+    border-color: #d8b86b;
+}
+
+.shared-calc-input-group > .input-unit {
+    margin-left: 5px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+}
+
+.skill-effect-amp-group .skill-effect-amp-toggle-wrap span {
+    margin-left: 0;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.skill-effect-amp-group .skill-effect-amp-toggle-wrap {
+    position: relative;
+}
+
+.skill-effect-amp-group input[type="checkbox"] {
+    display: none;
+}
+
+.skill-effect-amp-checkbox-frame {
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.skill-effect-amp-checkbox-icon {
+    padding-left: 0 !important;
+    transform: none !important;
+}
+
+.skill-effect-amp-group input[type="checkbox"]:checked + .skill-effect-amp-checkbox-frame .skill-effect-amp-checkbox-icon {
+    width: 20px;
+    height: 20px;
+}
+
 .penetrate-input-container {
     padding: 10px 0px 20px 0px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
@@ -1488,7 +1567,7 @@ select:-moz-focusring {
     object-fit: contain;
 }
 
-.penetrate-input-group input {
+.penetrate-input-group input[type="number"] {
     width: 50px;
     margin-left: 10px;
     padding: 5px 10px;
@@ -1500,7 +1579,7 @@ select:-moz-focusring {
     text-align: right;
 }
 
-.penetrate-input-group input:focus {
+.penetrate-input-group input[type="number"]:focus {
     outline: none;
     border-color: #5384d8;
 }
@@ -1513,6 +1592,20 @@ select:-moz-focusring {
 
 /* 모바일 대응 */
 @media (max-width: 1200px) {
+    .shared-calc-input-container {
+        padding: 10px;
+    }
+
+    .shared-calc-input-group label {
+        width: 160px;
+        font-size: 13px;
+    }
+
+    .shared-calc-input-group input[type="number"] {
+        width: 80px;
+        font-size: 13px;
+    }
+
     .penetrate-input-container {
         padding: 10px;
     }
@@ -1522,7 +1615,7 @@ select:-moz-focusring {
         font-size: 13px;
     }
 
-    .penetrate-input-group input {
+    .penetrate-input-group input[type="number"] {
         width: 80px;
         font-size: 13px;
     }
@@ -1552,7 +1645,7 @@ select:-moz-focusring {
     gap: 6px;
 }
 
-.reduce-input-group input {
+.reduce-input-group input[type="number"] {
     width: 50px;
     margin-left: 10px;
     padding: 5px 10px;
@@ -1564,7 +1657,7 @@ select:-moz-focusring {
     text-align: right;
 }
 
-.reduce-input-group input:focus {
+.reduce-input-group input[type="number"]:focus {
     outline: none;
     border-color: #dd8484;
 }
@@ -1626,7 +1719,7 @@ select:-moz-focusring {
         font-size: 13px;
     }
 
-    .reduce-input-group input {
+    .reduce-input-group input[type="number"] {
         width: 80px;
         font-size: 13px;
     }

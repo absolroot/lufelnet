@@ -100,7 +100,7 @@ window.JCCalc = (function () {
         const effective = base * factor;
 
         item.value = effective;
-        valueCell.textContent = formatValue(effective);
+        return effective;
     }
 
     function recalcAll() {
@@ -108,7 +108,15 @@ window.JCCalc = (function () {
         registrations.forEach(reg => {
             if (document.body.contains(reg.valueCell)) {
                 // 저장된 reg.type을 사용하여 재계산
-                applyMultiplierToItemInternal(reg.item, reg.valueCell, reg.type);
+                const effective = applyMultiplierToItemInternal(reg.item, reg.valueCell, reg.type);
+                if (reg.calc && typeof reg.calc.setItemBaseValue === 'function') {
+                    reg.calc.setItemBaseValue(reg.item, effective);
+                }
+                if (reg.calc && typeof reg.calc.renderItemValue === 'function') {
+                    reg.calc.renderItemValue(reg.item, reg.valueCell);
+                } else {
+                    reg.valueCell.textContent = formatValue(effective);
+                }
                 if (reg.calc && !seenCalc.has(reg.calc)) {
                     seenCalc.add(reg.calc);
                 }
@@ -380,7 +388,15 @@ window.JCCalc = (function () {
                 item.__jcRegIndex = index;
             }
 
-            applyMultiplierToItemInternal(item, valueCell, targetType);
+            const effective = applyMultiplierToItemInternal(item, valueCell, targetType);
+            if (calcInstance && typeof calcInstance.setItemBaseValue === 'function') {
+                calcInstance.setItemBaseValue(item, effective);
+            }
+            if (calcInstance && typeof calcInstance.renderItemValue === 'function') {
+                calcInstance.renderItemValue(item, valueCell);
+            } else {
+                valueCell.textContent = formatValue(effective);
+            }
         },
 
         // 옵션 변경 시 호출
@@ -395,7 +411,15 @@ window.JCCalc = (function () {
             else if (typeOrIsPenetrate === 'jc1_penetrate') targetType = TYPES.JC1_PENETRATE;
             else if (typeOrIsPenetrate === 'jc2_def') targetType = TYPES.JC2_DEF;
 
-            applyMultiplierToItemInternal(item, valueCell, targetType);
+            const effective = applyMultiplierToItemInternal(item, valueCell, targetType);
+            if (calcInstance && typeof calcInstance.setItemBaseValue === 'function') {
+                calcInstance.setItemBaseValue(item, effective);
+            }
+            if (calcInstance && typeof calcInstance.renderItemValue === 'function') {
+                calcInstance.renderItemValue(item, valueCell);
+            } else if (valueCell) {
+                valueCell.textContent = formatValue(effective);
+            }
 
             // 합계 업데이트 (각 타입에 맞는 합계 함수 호출)
             try {

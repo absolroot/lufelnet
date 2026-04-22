@@ -2,6 +2,9 @@
 (function () {
     'use strict';
 
+    // New 배지를 표시할 아이템 목록
+    const newItems = ['character'];
+
     const HOME_RAW_LANGS = ['kr', 'en', 'jp', 'cn', 'tw', 'sea'];
     const LABEL_KEY_MAP = {
         character: 'quick_character',
@@ -241,9 +244,6 @@
         }
         return KR_LIKE_ITEMS;
     };
-
-    // New 배지를 표시할 아이템 목록
-    const newItems = ['character'];
 
     const render = () => {
         const root = document.getElementById('quick-grid');

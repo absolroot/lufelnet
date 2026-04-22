@@ -152,7 +152,9 @@ window.I18N_COMMON_JP = {
         taunt: '挑発',
         down: 'ダウン',
         theurgy: 'テウルギア',
+        theurgia: 'テウルギア',
         theurgyCharge: 'テウルギアチャージ',
+        theurgiaCharge: 'テウルギアチャージ',
         dmgTaken: 'ダメージ受け',
         hpCost: 'HP 消費',
 
@@ -188,6 +190,7 @@ window.I18N_COMMON_JP = {
         revelation: '啓示',
         wonder: 'ワンダー',
         common: '共通',
+        blackWings: 'ブラックウィングズ',
 
         // 範囲
         aoe: '全体',

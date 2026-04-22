@@ -275,12 +275,12 @@ const enRevelationData = {
         "Prudence": { // 신중
             "set2": "Decrease SPD by 3, Increase ATK by 18%.",
             "set4": "Increase DMG Dealt by 16%.",
-            "type": ["버프", "미출시"]
+            "type": ["미출시"]
         },
         "Fixation": { // 고집
             "set2": "Increase ATK by 12%.",
             "set4": "Increase ATK by 25% for 3 turns; Gain this effect again when you use Theurgy.",
-            "type": ["버프", "미출시"]
+            "type": ["미출시"]
         },
         "Transformation": { // 변화
             "set2": "Electric damage increased by 10%.",
@@ -408,6 +408,11 @@ const enRevelationData = {
             "Depravity": "Gain 1 stack of [Devotion] for each different Persona skill cast. ATK increases by 10% for 2 turns, stacking up to 3 times. At 3 stacks, own Critical Effect increases by an additional 12%. The duration of [Devotion] from different Persona skills is calculated independently.",
             "Transformation": "When using HIGHLIGHT, increases ATK by 30% and DMG Dealt by 25%.",
             "type": ["미출시"]
+        }
+    },
+    "filter_exclusions": {
+        "effect": {
+            "버프": ["Nativity", "Growth", "Resolve"]
         }
     }
 };

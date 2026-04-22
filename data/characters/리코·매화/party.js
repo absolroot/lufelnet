@@ -23,10 +23,43 @@ window.recommendParty["리코·매화"] = {
     "party": [
         {
             "members": [
-                "",
-                "",
-                "",
-                ""
+                "리코·매화",
+                "몽타뉴·백조",
+                "루우나",
+                "후타바"
+            ],
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
+        },
+        {
+            "members": [
+                "리코·매화",
+                "유키 마코토",
+                "미츠루",
+                "마나카"
+            ],
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
+        },
+        {
+            "members": [
+                "리코·매화",
+                "미유·여름",
+                "마유미",
+                "마나카"
+            ],
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
+        },
+        {
+            "members": [
+                "리코·매화",
+                "이치고",
+                "아야카",
+                "마나카"
             ],
             "comment": "",
             "comment_en": "",

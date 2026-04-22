@@ -850,9 +850,13 @@ redirect_from: []
             card.dataset.limit = charData.limit ? 'true' : 'false';
             card.dataset.tags = charData.tag || '';
 
-            // Create link wrapper - 언어 파라미터 추가
+            // Create link wrapper - prefer slug-based detail URLs when available
             const link = document.createElement('a');
-            link.href = `/character.html?name=${encodeURIComponent(characterName)}&lang=${currentLang}&v=${APP_VERSION}`;
+            if (typeof LanguageRouter !== 'undefined' && typeof LanguageRouter.buildCharacterDetailUrl === 'function') {
+                link.href = LanguageRouter.buildCharacterDetailUrl(characterName, currentLang);
+            } else {
+                link.href = `/character.html?name=${encodeURIComponent(characterName)}&lang=${currentLang}&v=${APP_VERSION}`;
+            }
             link.style.textDecoration = 'none';
             link.style.color = 'inherit';
 

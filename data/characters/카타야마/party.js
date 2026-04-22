@@ -23,10 +23,44 @@ window.recommendParty["카타야마"] = {
     "party": [
         {
             "members": [
-                "",
-                "",
-                "",
-                ""
+                "카타야마",
+                "사나다",
+                "리코·매화",
+                "마나카"
+            ],
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
+        },
+        {
+            "members": [
+                "카타야마",
+                "YUI·스텔라",
+                "미나미·여름",
+                "마나카"
+            ],
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
+        },
+        {
+            "members": [
+                "카타야마",
+                "쇼키·암야",
+                "미나미·여름",
+                "마나카"
+            ],
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
+        },
+        {
+            "members": [
+                "카타야마",
+                "나루미",
+                "J&C",
+                "미츠루",
+                "후카"
             ],
             "comment": "",
             "comment_en": "",

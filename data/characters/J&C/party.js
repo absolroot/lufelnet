@@ -22,10 +22,68 @@ window.recommendParty["J&C"] = {
     "party": [
         {
             "members": [
-                "",
-                "",
-                "",
-                ""
+                "J&C",
+                "몽타뉴·백조",
+                "아야카",
+                "후타바"
+            ],
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
+        },
+        {
+            "members": [
+                "J&C",
+                "야오링·사자무",
+                "미오",
+                "후타바"
+            ],
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
+        },
+        {
+            "members": [
+                "J&C",
+                "카스미",
+                "아야카",
+                "후타바"
+            ],
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
+        },
+        {
+            "members": [
+                "J&C",
+                "나루미",
+                "미츠루",
+                "후카",
+                "카타야마"
+            ],
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
+        },
+        {
+            "members": [
+                "J&C",
+                "모토하·청광",
+                "아야카",
+                "후카",
+                "코로마루"
+            ],
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
+        },
+        {
+            "members": [
+                "J&C",
+                "유스케",
+                "미나미·여름",
+                "후카",
+                "코로마루"
             ],
             "comment": "",
             "comment_en": "",

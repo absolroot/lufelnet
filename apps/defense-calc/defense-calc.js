@@ -51,6 +51,7 @@ class DefenseCalc {
         this.pierceSecondLine = document.getElementById('pierceSecondLine');
         this.pierceSecondSum = document.getElementById('pierceSecondSum');
         this.pierceSecondTarget = document.getElementById('pierceSecondTarget');
+        this.skillEffectAmpState = this.loadSkillEffectAmpState();
         // order-switch 제거됨
         this.isPierceFirst = true; // 기본 순서: 관통 -> 방어력 감소 (계산용으로만 사용)
         this.reduceTotal = 0;
@@ -184,6 +185,96 @@ class DefenseCalc {
             return saved[itemId] || null;
         } catch (_) { }
         return null;
+    }
+
+    getDefaultSkillEffectAmpState() {
+        return { enabled: false, value: 17 };
+    }
+
+    normalizeSkillEffectAmpState(rawState) {
+        const fallback = this.getDefaultSkillEffectAmpState();
+        const parsedValue = parseFloat(rawState && rawState.value);
+
+        return {
+            enabled: !!(rawState && rawState.enabled),
+            value: isFinite(parsedValue) ? Math.max(0, parsedValue) : fallback.value
+        };
+    }
+
+    loadSkillEffectAmpState() {
+        try {
+            const saved = JSON.parse(localStorage.getItem('calcSkillEffectAmpStateV1') || 'null');
+            return this.normalizeSkillEffectAmpState(saved);
+        } catch (_) {
+            return this.getDefaultSkillEffectAmpState();
+        }
+    }
+
+    saveSkillEffectAmpState() {
+        try {
+            localStorage.setItem('calcSkillEffectAmpStateV1', JSON.stringify(this.normalizeSkillEffectAmpState(this.skillEffectAmpState)));
+        } catch (_) { }
+    }
+
+    setItemBaseValue(item, value) {
+        if (!item) return 0;
+        const safeValue = isFinite(Number(value)) ? Number(value) : 0;
+        item.__baseValue = safeValue;
+        item.value = safeValue;
+        return safeValue;
+    }
+
+    getBaseItemValue(item) {
+        if (!item) return 0;
+
+        const baseValue = Number(item.__baseValue);
+        if (isFinite(baseValue)) return baseValue;
+
+        const rawValue = Number(item.value);
+        return isFinite(rawValue) ? rawValue : 0;
+    }
+
+    getSkillEffectAmpMultiplier(item) {
+        if (!this.skillEffectAmpState || !this.skillEffectAmpState.enabled) return 1;
+        if (!item || item.skillEffectAmpAffected !== true) return 1;
+        return 1 + (this.skillEffectAmpState.value / 100);
+    }
+
+    getEffectiveItemValue(item) {
+        return this.getBaseItemValue(item) * this.getSkillEffectAmpMultiplier(item);
+    }
+
+    formatDisplayValue(value) {
+        const safeValue = isFinite(Number(value)) ? Number(value) : 0;
+        return `${safeValue.toFixed(2).replace(/\.00$/, '').replace(/(\.\d)0$/, '$1')}%`;
+    }
+
+    renderItemValue(item, valueCell = item && item.__valueCell) {
+        if (!item || !valueCell) return;
+        item.__valueCell = valueCell;
+        valueCell.textContent = this.formatDisplayValue(this.getEffectiveItemValue(item));
+    }
+
+    refreshDisplayedValues() {
+        [...this.penetrateFlat, ...this.reduceFlat].forEach(item => {
+            if (item && item.__valueCell) {
+                this.renderItemValue(item, item.__valueCell);
+            }
+        });
+    }
+
+    syncSkillEffectAmpControls() {
+        this.skillEffectAmpToggles.forEach(toggle => {
+            toggle.checked = !!this.skillEffectAmpState.enabled;
+        });
+
+        this.skillEffectAmpInputs.forEach(input => {
+            input.value = String(this.skillEffectAmpState.value);
+        });
+
+        document.querySelectorAll('.skill-effect-amp-checkbox-icon').forEach(icon => {
+            icon.src = `${BASE_URL}/assets/img/ui/check-${this.skillEffectAmpState.enabled ? 'on' : 'off'}.png`;
+        });
     }
 
     getMutuallyExclusiveRules() {
@@ -551,6 +642,7 @@ class DefenseCalc {
                     // 주입: 그룹명 보관(행 렌더링/이미지 추론용)
                     // if (!item.charName) item.charName = groupName !== '계시' && groupName !== '원더' ? groupName : '';
                     if (!item.charImage && item.charName) item.charImage = `${item.charName}.webp`;
+                    this.setItemBaseValue(item, item.value || 0);
                     flat.push(item);
                     if (item.id !== undefined) {
                         if (idMap.has(item.id)) {
@@ -946,6 +1038,9 @@ class DefenseCalc {
         // 옵션 열
         const optionCell = document.createElement('td');
         optionCell.className = 'option-column';
+        const valueCell = document.createElement('td');
+        valueCell.className = 'value-column';
+        data.__valueCell = valueCell;
         if (data.options && data.options.length > 0) {
             const select = document.createElement('select');
 
@@ -993,7 +1088,7 @@ class DefenseCalc {
 
             // 저장된 옵션이 있으면 data.value도 업데이트
             if (savedOption !== null && valuesBase && valuesBase[savedOption] !== undefined) {
-                data.value = valuesBase[savedOption];
+                this.setItemBaseValue(data, valuesBase[savedOption]);
             }
 
             // 옵션 변경 시 수치 업데이트
@@ -1014,11 +1109,11 @@ class DefenseCalc {
                     // J&C 전용: 기본값을 갱신한 뒤 Desire 보정 적용
                     // 예외 아이템은 Desire 보정 제외
                     const isExcluded = (String(data.id) === 'jc3');
+                    this.setItemBaseValue(data, nextValue);
 
                     if (!isExcluded && groupName === 'J&C' && typeof JCCalc !== 'undefined' && JCCalc.onOptionChanged) {
                         try {
                             data.__jcBaseValue = nextValue;
-                            data.value = nextValue;
                             // jc1과 jc2에 각각 별도 타입 사용
                             let jcType;
                             if (String(data.id) === 'jc1') {
@@ -1032,8 +1127,7 @@ class DefenseCalc {
                             return;
                         } catch (_) { }
                     }
-                    data.value = nextValue;
-                    valueCell.textContent = `${data.value}%`;
+                    this.renderItemValue(data, valueCell);
                     if (isPenetrate) {
                         this.updatePenetrateTotal();
                     } else {
@@ -1046,10 +1140,6 @@ class DefenseCalc {
             optionCell.appendChild(select);
         }
         row.appendChild(optionCell);
-
-        // 수치 열
-        const valueCell = document.createElement('td');
-        valueCell.className = 'value-column';
 
         // J&C 전용 페르소나 성능 보정
         // id가 'jc3' 인 경우는 보정 제외 
@@ -1071,10 +1161,10 @@ class DefenseCalc {
                 }
                 JCCalc.registerItem(data, valueCell, type, this);
             } catch (_) {
-                valueCell.textContent = `${data.value}%`;
+                this.renderItemValue(data, valueCell);
             }
         } else {
-            valueCell.textContent = `${data.value}%`;
+            this.renderItemValue(data, valueCell);
         }
         row.appendChild(valueCell);
 
@@ -1150,7 +1240,7 @@ class DefenseCalc {
         const total = Array.from(this.selectedItems)
             .map(id => this.idToReduceItem.get(id))
             .filter(Boolean)
-            .reduce((sum, item) => sum + (item.value || 0), 0);
+            .reduce((sum, item) => sum + this.getEffectiveItemValue(item), 0);
         const extra = parseFloat(this.otherReduceInput && this.otherReduceInput.value) || 0;
         this.reduceTotal = Math.max(0, total + Math.max(0, extra));
         this.updateDamageCalculation();
@@ -1161,7 +1251,7 @@ class DefenseCalc {
         const tableTotal = Array.from(this.selectedPenetrateItems)
             .map(id => this.idToPenetrateItem.get(id))
             .filter(Boolean)
-            .reduce((sum, item) => sum + (item.value || 0), 0);
+            .reduce((sum, item) => sum + this.getEffectiveItemValue(item), 0);
 
         // 입력 필드의 값 (숫자가 아닌 경우 0으로 처리)
         const revelationValue = parseFloat(this.revelationPenetrateInput.value) || 0;
@@ -1696,6 +1786,36 @@ class DefenseCalc {
         this.explanationPowerInput.addEventListener('input', () => this.updatePenetrateTotal());
         if (this.otherReduceInput) this.otherReduceInput.addEventListener('input', () => this.updateTotal());
         if (this.windsweptCheckbox) this.windsweptCheckbox.addEventListener('change', () => this.updateDamageCalculation());
+        this.initializeSkillEffectAmpInputs();
+    }
+
+    initializeSkillEffectAmpInputs() {
+        this.skillEffectAmpToggles = Array.from(document.querySelectorAll('[data-skill-effect-amp-toggle]'));
+        this.skillEffectAmpInputs = Array.from(document.querySelectorAll('[data-skill-effect-amp-value]'));
+        this.syncSkillEffectAmpControls();
+
+        this.skillEffectAmpToggles.forEach(toggle => {
+            toggle.addEventListener('change', () => {
+                this.skillEffectAmpState.enabled = !!toggle.checked;
+                this.syncSkillEffectAmpControls();
+                this.saveSkillEffectAmpState();
+                this.refreshDisplayedValues();
+                this.updatePenetrateTotal();
+                this.updateTotal();
+            });
+        });
+
+        this.skillEffectAmpInputs.forEach(input => {
+            input.addEventListener('input', () => {
+                const nextValue = parseFloat(input.value);
+                this.skillEffectAmpState.value = isFinite(nextValue) ? Math.max(0, nextValue) : 0;
+                this.syncSkillEffectAmpControls();
+                this.saveSkillEffectAmpState();
+                this.refreshDisplayedValues();
+                this.updatePenetrateTotal();
+                this.updateTotal();
+            });
+        });
     }
 
     applyOrderUI() {

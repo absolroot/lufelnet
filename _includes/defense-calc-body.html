@@ -278,6 +278,17 @@
                     <input type="number" id="explanationPower" min="0" step="0.1" value="0">
                     <span>%</span>
                 </div>
+                <div class="penetrate-input-group skill-effect-amp-group">
+                    <label class="skill-effect-amp-toggle-wrap" for="skillEffectAmpToggle">
+                        <input type="checkbox" id="skillEffectAmpToggle" data-skill-effect-amp-toggle>
+                        <span class="skill-effect-amp-checkbox-frame" aria-hidden="true">
+                            <img class="skill-effect-amp-checkbox-icon" src="{{ site.baseurl }}/assets/img/ui/check-off.png" alt="">
+                        </span>
+                        <span id="skillEffectAmpLabel" class="skill-effect-amp-label">스킬 효과 증폭</span>
+                    </label>
+                    <input type="number" id="skillEffectAmpValue" data-skill-effect-amp-value min="0" step="0.1" value="17">
+                    <span class="input-unit">%</span>
+                </div>
             </div>
             <div class="penetrate-table-container">
                 <table class="defense-table">
@@ -323,6 +334,17 @@
                             </svg>
                         </span>
                     </label>
+                </div>
+                <div class="reduce-input-group skill-effect-amp-group">
+                    <label class="skill-effect-amp-toggle-wrap" for="skillEffectAmpToggleMirror">
+                        <input type="checkbox" id="skillEffectAmpToggleMirror" data-skill-effect-amp-toggle>
+                        <span class="skill-effect-amp-checkbox-frame" aria-hidden="true">
+                            <img class="skill-effect-amp-checkbox-icon" src="{{ site.baseurl }}/assets/img/ui/check-off.png" alt="">
+                        </span>
+                        <span id="skillEffectAmpLabelMirror" class="skill-effect-amp-label">스킬 효과 증폭</span>
+                    </label>
+                    <input type="number" id="skillEffectAmpValueMirror" data-skill-effect-amp-value min="0" step="0.1" value="17">
+                    <span class="input-unit">%</span>
                 </div>
             </div>
             <div class="defense-table-container">

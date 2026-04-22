@@ -426,6 +426,7 @@
             const revelationPenetrateLabel = document.getElementById('revelationPenetrateLabel');
             const revelationSumLabel = document.getElementById('revelationSumLabel');
             const explanationPowerLabel = document.getElementById('explanationPowerLabel');
+            const skillEffectAmpLabels = Array.from(document.querySelectorAll('.skill-effect-amp-label'));
             const otherReduceLabel = document.getElementById('otherReduceLabel');
             const windsweptText = document.getElementById('windsweptText');
             const windsweptTooltip = document.getElementById('windsweptTooltip');
@@ -537,6 +538,9 @@
                     otherReduceLabel.textContent = text;
                 }
             }
+            skillEffectAmpLabels.forEach(label => {
+                label.textContent = tx('skill_effect_amp', '스킬 효과 증폭');
+            });
             if (windsweptText && tx('windswept')) windsweptText.textContent = tx('windswept');
             if (windsweptTooltip && tx('windswept_tip')) windsweptTooltip.setAttribute('data-tooltip', tx('windswept_tip'));
 

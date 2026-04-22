@@ -34,6 +34,7 @@ window.I18N_PAGE_DEFENSE_CALC_CN = {
         "revelation_penetrate": "启示穿透合计",
         "revelation_sum": "启示合计",
         "explanation_power": "解明怪盗属性",
+        "skill_effect_amp": "技能效果增幅",
         "other_reduce": "其他防御力降低",
         "th_select": "选择",
         "th_thief": "怪盗",

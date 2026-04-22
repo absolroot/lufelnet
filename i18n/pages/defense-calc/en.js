@@ -32,6 +32,7 @@ window.I18N_PAGE_DEFENSE_CALC_EN = {
         "revelation_penetrate": "Revelation Pierce Total",
         "revelation_sum": "Revelation Sum",
         "explanation_power": "Eludi. Stat Buff",
+        "skill_effect_amp": "Skill Amplification",
         "other_reduce": "Other Def. Reduction",
         "th_select": "Select",
         "th_thief": "Thief",

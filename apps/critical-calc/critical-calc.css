@@ -414,7 +414,7 @@ select:-moz-focusring {
     object-fit: contain;
 }
 
-.critical-input-group input {
+.critical-input-group input[type="number"] {
     width: 50px;
     padding: 5px 10px;
     background-color: rgba(255, 255, 255, 0.1);
@@ -425,7 +425,7 @@ select:-moz-focusring {
     text-align: right;
 }
 
-.critical-input-group input:focus {
+.critical-input-group input[type="number"]:focus {
     outline: none;
     border-color: #dd8484;
 }
@@ -434,6 +434,54 @@ select:-moz-focusring {
     margin-left: 5px;
     color: rgba(255, 255, 255, 0.6);
     font-size: 14px;
+}
+
+.skill-effect-amp-group .skill-effect-amp-toggle-wrap {
+    min-width: 160px;
+    gap: 8px;
+    cursor: pointer;
+    position: relative;
+}
+
+.skill-effect-amp-group .skill-effect-amp-toggle-wrap span {
+    margin-left: 0;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.skill-effect-amp-group input[type="checkbox"] {
+    display: none;
+}
+
+.skill-effect-amp-checkbox-frame {
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.skill-effect-amp-checkbox-icon {
+    padding-left: 0 !important;
+    transform: none !important;
+}
+
+.skill-effect-amp-group input[type="checkbox"]:checked + .skill-effect-amp-checkbox-frame .skill-effect-amp-checkbox-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.skill-effect-amp-group input[type="number"] {
+    color: #d8b86b;
+}
+
+.skill-effect-amp-group input[type="number"]:focus {
+    border-color: #d8b86b;
+}
+
+.skill-effect-amp-group > .input-unit {
+    margin-left: 5px;
+    color: rgba(255, 255, 255, 0.6);
 }
 
 /* 탭 스타일 */

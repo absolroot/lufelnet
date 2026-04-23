@@ -61,12 +61,12 @@ window.characterSkillsData["아이기스"] = {
 window.enCharacterSkillsData["아이기스"] = {
   "name": "Aigis",
   "skill1": {
-    "name": "Machine Gun Barrage",
+    "name": "Wild Barrage",
     "element": "총격광역",
     "type": "Area Damage",
     "hp": 5,
     "cool": 0,
-    "description": "Deal Gun damage to all foes equal to 41.7%/45.9%/44.2%/48.5% of Attack. Increase the damage of Aigis's next [Flash Strike] by 10%, then load 1 [Power Ammo] for 2 turns. Stacks up to 3 times."
+    "description": "Deal Gun damage to all foes equal to 41.7%/45.9%/44.2%/48.5% of Attack. Increase the next [Flash Strike]'s Skill Damage by 10%. Aigis gains 1 [Powerful Rounds]. Lasts for 2 turns. Stacks up to 3 times."
   },
   "skill2": {
     "name": "Flash Strike",
@@ -74,41 +74,41 @@ window.enCharacterSkillsData["아이기스"] = {
     "type": "Area Damage",
     "hp": 5,
     "cool": 0,
-    "description": "Deal Gun damage to all foes equal to 41.7%/45.9%/44.2%/48.5% of Attack. Increase the damage of Aigis's next [Machine Gun Barrage] by 10%, then load 1 [Power Ammo] for 2 turns. Stacks up to 3 times."
+    "description": "Deal Gun damage to all foes equal to 41.7%/45.9%/44.2%/48.5% of Attack. Increase the next [Wild Barrage]'s Skill Damage by 10%. Aigis gains 1 [Powerful Rounds]. Lasts for 2 turns. Stacks up to 3 times."
   },
   "skill3": {
-    "name": "Gear Enhancement",
+    "name": "Gear Boost",
     "element": "버프",
     "type": "Buff",
     "sp": 25,
     "cool": 0,
-    "description": "Gain 35 Theurgy Energy, then immediately use [Orgia Mode Activation] once without spending Theurgy Energy. Gain 1 [High-Explosive Ammo], and this skill becomes [Suppressive Smash].\nIncrease Attack by 39.0%/43.0%/41.4%/45.4% and pierce rate by 14.6%/16.1%/15.5%/17.0% for 2 turns.\n[Suppressive Smash]:\nUse condition: While in [Orgia Mode]\nDeal Gun damage to all foes equal to 193.3%/213.2%/205.2%/225.0% of Attack. Spend all Theurgy Energy, including temporarily stored Theurgy Energy. For every 10 Theurgy Energy spent, increase the skill multiplier by 10.2%/11.2%/10.8%/11.8%.\nSpend all [Power Ammo] and [High-Explosive Ammo]. For every [Power Ammo] spent, increase skill damage by 10%. For every [High-Explosive Ammo] spent, increase critical damage by 29.3%/32.3%/31.1%/34.1%."
+    "description": "Aigis gains 35 Theurgy Energy, then immediately use [Activate Orgia Mode], this does not spend Theurgy Energy. Aigis gains 1 [Explosive Rounds], change this skill to [Suppressive Onslaught]. \nIncrease Aigis's Attack by 39.0%/43.0%/41.4%/45.4% and Pierce by pierce rate by 14.6%/16.1%/15.5%/17.0%. Lasts for 2 turns.\n[Suppressive Onslaught]\nUse condition: When [Orgia Mode] is active\nDeal Gun damage to all foes equal to 193.3%/213.2%/205.2%/225.0% of Attack. Spend all Theurgy Energy (including saved Theurgy Energy), for every 10 Theurgy Energy spent, increase the skill multiplier by 10.2%/11.2%/10.8%/11.8%.\nSpend all [Powerful Rounds] and [Explosive Rounds]. For every 1 [Powerful Rounds] spent, increase Skill Damage by 10%. For every 1 [Explosive Rounds] spent, increase Aigis's critical damage by 29.3%/32.3%/31.1%/34.1%."
   },
   "skill_highlight": {
-    "name": "Orgia Mode Activation",
+    "name": "Activate Orgia Mode",
     "element": "총격광역",
     "type": "Area Damage",
     "sp": 0,
     "cool": 0,
-    "description": "Use condition: 70 Theurgy Energy\nDeal Gun damage to all foes equal to 248.4%/273.8%/263.7%/289.1% of Attack. This damage can crit. Enter [Orgia Mode].\n[Orgia Mode]: Aigis cannot be controlled. After every 2 non-extra ally turns, Aigis alternates between using [Machine Gun Barrage] or [Flash Strike]. All skills used in [Orgia Mode] are treated as Theurgy skills and can crit.\nWhile [Orgia Mode] is active, at the start of Aigis's turn, if [Suppressive Smash] is available, Aigis automatically uses [Suppressive Smash], ends her turn, and exits [Orgia Mode]. Otherwise, Aigis automatically uses [Machine Gun Barrage], ends her turn, and exits [Orgia Mode]. When exiting [Orgia Mode], [Suppressive Smash] reverts to [Gear Enhancement]."
+    "description": "Use condition: When Aigis has 70 Theurgy Energy\nDeal Gun damage to all foes equal to 248.4%/273.8%/263.7%/289.1% of Attack, this damage can deal critical hits. Aigis enters [Orgia Mode].\n[Orgia Mode]: Aigis becomes uncontrollable, after every 2 allies' non-Extra Action actions, alternate between using [Wild Barrage] or [Flash Strike]. When [Orgia Mode] is active, all skills count as Theurgy skills, and can deal critical hits.\nWhen [Orgia Mode] is active, at the start of Aigis's turn, if she can use [Suppressive Onslaught], automatically use [Suppressive Onslaught], end Aigis's turn, and exit [Orgia Mode]. If Aigis cannot use [Suppressive Onslaught], automatically use [Wild Barrage], end Aigis's turn, and exit [Orgia Mode]. Revert [Suppressive Onslaught] to [Gear Boost]."
   },
   "skill_support": {
     "name": "Assist Skill",
     "element": "버프",
     "type": "Buff",
-    "description": "Deal Gun damage to all foes equal to 30% of Attack. Permanently increase all allied S.E.E.S. members' Attack by 10%.",
+    "description": "Deal Gun damage to all foes equal to 30% of Attack. Permanently increase all S.E.E.S. members' Attack by 10%.",
     "cool": 0
   },
   "passive1": {
-    "name": "Eternity",
+    "name": "Aeon",
     "element": "패시브",
-    "description": "After any ally other than Aigis uses Theurgy or HIGHLIGHT, increase Aigis's Attack by 42.0% for 2 turns.",
+    "description": "After other allies use a Theurgy/HIGHLIGHT, increase Aigis's Attack by 42.0% for 2 turns.",
     "cool": 0
   },
   "passive2": {
     "name": "Proof",
     "element": "패시브",
-    "description": "After using a Theurgy skill, increase Aigis's damage by 12.0% for 2 turns. Stacks up to 3 times.",
+    "description": "After Aigis uses a Theurgy skill, increase Aigis's damage by 12.0% for 2 turns. Stacks up to 3 times.",
     "cool": 0
   }
 };

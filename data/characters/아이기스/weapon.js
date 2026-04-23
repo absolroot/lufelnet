@@ -26,20 +26,21 @@ window.WeaponData["아이기스"] = {
 window.enCharacterWeaponData["아이기스"] = {
   "name": "Aigis",
   "weapon4-1": {
-    "name": "Free Radical Rifle",
+    "name": "Nucleus Rifle",
     "health": 1823.43,
     "attack": 628.77,
     "defense": 313.75,
-    "skill_name": "",
-    "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.\nAfter using [Machine Gun Barrage] or [Flash Strike], increase Aigis's damage by 8.8%/11.6%/11.6%/14.4%/14.4%/17.2%/17.2% for 2 turns. Stacks up to 2 times."
+    "skill_name": "Strike Matrix",
+    "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.\nAfter user uses [Wild Barrage] or [Flash Strike], increase user's damage by 8.8%/11.6%/11.6%/14.4%/14.4%/17.2%/17.2% for 2 turns. Stacks up to 2 times."
   },
   "weapon5-1": {
-    "name": "Myriad Demon Gun",
+    "name": "Pandemonium",
     "health": 2279.27,
     "attack": 786.22,
     "defense": 391.98,
-    "skill_name": "",
-    "description": "Increase Theurgy Damage Amp by 12.0%/12.0%/15.6%/15.6%/19.2%/19.2%/22.8%.\nAfter dealing Theurgy damage, increase Aigis's critical damage by 8.2%/10.7%/10.7%/13.2%/13.2%/15.7%/15.7% for 2 turns. Stacks up to 4 times.\nWhile in [Orgia Mode], increase critical rate by 18.1%/23.5%/23.5%/28.9%/28.9%/34.3%/34.3%."
+    "skill_name": "Destructive Command",
+    "description": "Increase Theurgy Damage Amplification by 12.0%/12.0%/15.6%/15.6%/19.2%/19.2%/22.8%.\nAfter user deals Theurgy damage, increase user's critical damage by 8.2%/10.7%/10.7%/13.2%/13.2%/15.7%/15.7% for 2 turns. Stacks up to 4 times.\nWhen [Orgia Mode] is active, increase critical rate by 18.1%/23.5%/23.5%/28.9%/28.9%/34.3%/34.3%."
+
   }
 };
 window.jpCharacterWeaponData["아이기스"] = {

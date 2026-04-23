@@ -22,20 +22,20 @@ window.ritualData["아이기스"] = {
 };
 window.enCharacterRitualData["아이기스"] = {
   "name": "Aigis",
-  "r0": "Anti-Shadow Special Suppression Weapon No. 7",
-  "r0_detail": "Increase Aigis's Theurgy Energy cap to 140. Aigis can enter [Orgia Mode] through the Theurgy skill [Orgia Mode Activation] to strengthen herself and automatically use skills on all foes.\nWhen attacking shielded foes, ignore their shields when dealing damage, and deal additional shield-only damage equal to 20% of that damage to the shield.",
-  "r1": "What She Treasures Most",
-  "r1_detail": "While in [Orgia Mode], at the end of each non-extra turn of every ally other than Aigis, alternate between using [Machine Gun Barrage] or [Flash Strike].\nAfter using [Gear Enhancement], permanently increase critical rate by 15%.",
-  "r2": "All Guns Blazing!",
-  "r2_detail": "Increase Aigis's Theurgy Energy cap to 210. After using [Machine Gun Barrage] or [Flash Strike], gain 35 Theurgy Energy.\nWhile in [Orgia Mode], further increase critical damage by 30%.",
-  "r3": "Mechanical Maiden",
-  "r3_detail": "Increase the skill levels of [Machine Gun Barrage] and [Gear Enhancement] by 3, up to a maximum of level 15.",
-  "r4": "The Mission Bestowed",
-  "r4_detail": "After using a Theurgy skill, increase Aigis's damage by 10% for 2 turns. Stacks up to 3 times.",
-  "r5": "Bonds with Humanity",
-  "r5_detail": "Increase the skill levels of [Flash Strike] and [Thief Tactics] by 3, up to a maximum of level 15.",
-  "r6": "Heart of the Butterfly",
-  "r6_detail": "Extend the buff duration of [Gear Enhancement] to 5 turns. While [Gear Enhancement] is active, using [Suppressive Smash] no longer ends [Orgia Mode]. After using [Suppressive Smash], gain 70 Theurgy Energy and 1 [High-Explosive Ammo]."
+  "r0": "7th Generation Anti-Shadow Suppression Weapon",
+  "r0_detail": "Aigis's Theurgy Energy cap is at 140. She can use Theurgy skill [Activate Orgia Mode] and enter [Orgia Mode], enhancing herself then automatically use skills on foes.\nWhen Aigis attacks foes with Shield, ignore foes' Shield, then deal bonus damage equal to 20% of damage dealt to their Shield.",
+  "r1": "Her Precious",
+  "r1_detail": "When [Orgia Mode] is active, after every other allies' non-Extra Action actions, alternate between using [Wild Barrage] or [Flash Strike].\nAfter using [Gear Boost], permanently increase Aigis's critical rate by 15%.",
+  "r2": "Full Power!",
+  "r2_detail": "Increase Aigis's Theurgy Energy cap to 210. After using [Wild Barrage] or [Flash Strike], gain 35 Theurgy Energy.\nWhen [Orgia Mode] is active, increase critical damage by 30%.",
+  "r3": "Robotic Girl",
+  "r3_detail": "Increase the skill levels of [Wild Barrage] and [Gear Boost] by 3.",
+  "r4": "Assigned Duty",
+  "r4_detail": "After Aigis uses a Theurgy skill, increase Aigis's damage by 10% for 2 turns. Stacks up to 3 times.",
+  "r5": "Bonds with Others",
+  "r5_detail": "Increase the skill levels of [Flash Strike] and [Thief Tactics] by 3.",
+  "r6": "Papillon Heart",
+  "r6_detail": "The enhanced effects on [Gear Boost] are extended to 5 turns.\nWhen [Gear Boost] is active, Aigis will not exit [Orgia Mode] after using [Suppressive Onslaught]. After using [Suppressive Onslaught], gain 70 Theurgy Energy and 1 [Explosive Rounds]."
 };
 window.jpCharacterRitualData["아이기스"] = {
   "name": "アイギス",

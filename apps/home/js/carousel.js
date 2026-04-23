@@ -128,28 +128,38 @@
 
   async function ensureHomeCharacterDataLoaded(rawLang) {
     if (!GLB_PRIORITY_LANGS.has(rawLang)) return;
+    if (!window.__HOME_CAROUSEL_BASE_CHARACTER_DATA__) {
+      window.__HOME_CAROUSEL_BASE_CHARACTER_DATA__ = window.characterData || {};
+    }
+    const version = APP_VER || Date.now();
 
     if (window.CharacterDataUtils && typeof window.CharacterDataUtils.prepareCharacterData === 'function') {
       const prepared = await window.CharacterDataUtils.prepareCharacterData({
         lang: rawLang,
         spoilerEnabled: false,
-        version: APP_VER || Date.now()
+        version
       });
 
       if (prepared && prepared.characterData) {
+        if (!Object.keys(window.__HOME_CAROUSEL_BASE_CHARACTER_DATA__ || {}).length) {
+          const baseData = await fetchCharactersData(`${BASE}/data/character_info.js${version ? `?v=${version}` : ''}`);
+          if (baseData && baseData.characterData) {
+            window.__HOME_CAROUSEL_BASE_CHARACTER_DATA__ = baseData.characterData;
+          }
+        }
         window.characterData = prepared.characterData;
         window.characterList = prepared.characterList || window.characterList;
         return;
       }
     }
 
-    const version = APP_VER || Date.now();
     const [kr, glb] = await Promise.all([
       fetchCharactersData(`${BASE}/data/character_info.js${version ? `?v=${version}` : ''}`),
       fetchCharactersData(`${BASE}/data/character_info_glb.js${version ? `?v=${version}` : ''}`),
     ]);
 
     const krCharacterData = (kr && kr.characterData) ? kr.characterData : (window.characterData || {});
+    window.__HOME_CAROUSEL_BASE_CHARACTER_DATA__ = krCharacterData;
     const glbCharacterData = (glb && glb.characterData) ? glb.characterData : null;
     if (!glbCharacterData) return;
 
@@ -225,9 +235,25 @@
     const index = new Map();
     let data;
     try { data = (typeof characterData !== 'undefined') ? characterData : (window.characterData || {}); } catch (_) { data = window.characterData || {}; }
+    const baseCharacterData = window.__HOME_CAROUSEL_BASE_CHARACTER_DATA__ || {};
     Object.keys(data || {}).forEach(topKey => {
       const item = data[topKey] || {};
-      const aliases = [topKey, item.name, item.name_en, item.name_jp, item.name_cn, item.name_tw, item.codename];
+      const baseItem = baseCharacterData[topKey] || {};
+      const aliases = [
+        topKey,
+        item.name,
+        item.name_en,
+        item.name_jp,
+        item.name_cn,
+        item.name_tw,
+        item.codename,
+        baseItem.name,
+        baseItem.name_en,
+        baseItem.name_jp,
+        baseItem.name_cn,
+        baseItem.name_tw,
+        baseItem.codename,
+      ];
       aliases.forEach(alias => {
         if (!alias) return;
         index.set(normalizeName(alias), topKey);
@@ -240,23 +266,42 @@
 
   function getCharacterImageUrl(name) {
     let key = characterIndex.get(normalizeName(name));
+    const baseCharacterData = window.__HOME_CAROUSEL_BASE_CHARACTER_DATA__ || {};
+    let shortenedName = null;
+    if (!key && typeof name === 'string' && name.includes(' ')) {
+      shortenedName = name.replace(/^[^\s]+\s+/, '');
+      key = characterIndex.get(normalizeName(shortenedName));
+    }
     // Fallback: search characterData directly if index lookup fails
-    if (!key && window.characterData) {
+    if (!key && (window.characterData || baseCharacterData)) {
       const normalized = normalizeName(name);
-      for (const [k, v] of Object.entries(window.characterData)) {
-        if (normalizeName(k) === normalized ||
-          normalizeName(v.name) === normalized ||
-          normalizeName(v.name_en) === normalized ||
-          normalizeName(v.name_jp) === normalized ||
-          normalizeName(v.name_cn) === normalized ||
-          normalizeName(v.name_tw) === normalized ||
-          normalizeName(v.codename) === normalized) {
+      const mergedEntries = new Map();
+      Object.entries(baseCharacterData).forEach(([k, v]) => {
+        mergedEntries.set(k, { ...(v || {}) });
+      });
+      Object.entries(window.characterData || {}).forEach(([k, v]) => {
+        mergedEntries.set(k, { ...(mergedEntries.get(k) || {}), ...(v || {}) });
+      });
+      for (const [k, v] of mergedEntries.entries()) {
+        const keyName = normalizeName(k);
+        const candidateNames = [
+          keyName,
+          normalizeName(v.name),
+          normalizeName(v.name_en),
+          normalizeName(v.name_jp),
+          normalizeName(v.name_cn),
+          normalizeName(v.name_tw),
+          normalizeName(v.codename),
+        ].filter(Boolean);
+        if (candidateNames.includes(normalized) ||
+          (keyName && normalized.endsWith(keyName))) {
           key = k;
           break;
         }
       }
     }
     if (key) return `${BASE}/assets/img/character-detail/${encodeURIComponent(key)}.webp`;
+    if (shortenedName) return `${BASE}/assets/img/character-detail/${encodeURIComponent(shortenedName)}.webp`;
     // No match: hide by returning null
     return null;
   }

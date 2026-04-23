@@ -3,7 +3,14 @@
  * Handles data compatibility with legacy tactic maker format
  */
 
-import { setGlobalItemOptions, setGlobalSharedChecks, getGlobalItemOptions, getGlobalSharedChecks } from './need-stat-state.js';
+import {
+    setGlobalItemOptions,
+    setGlobalSharedChecks,
+    getGlobalItemOptions,
+    getGlobalSharedChecks,
+    getDefaultGlobalSkillEffectAmpState,
+    setGlobalSkillEffectAmpState
+} from './need-stat-state.js';
 
 const GAS_URL = 'https://script.google.com/macros/s/AKfycbzxSnf6_09q_LDRKIkmBvE2oTtQaLnK22M9ozrHMUAV0JnND9sc6CTILlnBS7_T8FIe/exec';
 
@@ -252,6 +259,7 @@ export class ImportExport {
         // This ensures imported data doesn't inherit local browser's saved options
         setGlobalItemOptions({});
         setGlobalSharedChecks({ defense: [], pierceBuffAoe: [], criticalBuffAoe: [] });
+        setGlobalSkillEffectAmpState(getDefaultGlobalSkillEffectAmpState(), { silent: true });
 
         // Load data into store
         this.store.loadData(internalState);
@@ -270,6 +278,9 @@ export class ImportExport {
             // Merge shared checks from all slots (for legacy data compatibility)
             this.mergeSharedChecksFromSlots(internalState.needStatSelections || {});
         }
+
+        const globalSkillEffectAmp = internalState.needStatSelections?.globalSkillEffectAmp;
+        setGlobalSkillEffectAmpState(globalSkillEffectAmp || getDefaultGlobalSkillEffectAmpState(), { silent: true });
 
         // Update title input
         const titleInput = document.getElementById('tacticTitle');
@@ -301,7 +312,7 @@ export class ImportExport {
 
         // Merge defense items from all slots
         Object.keys(needStatSelections).forEach(key => {
-            if (key === 'globalItemOptions' || key === 'globalSharedChecks') return;
+            if (key === 'globalItemOptions' || key === 'globalSharedChecks' || key === 'globalSkillEffectAmp') return;
             const slotData = needStatSelections[key];
             if (slotData?.defense && Array.isArray(slotData.defense)) {
                 slotData.defense.forEach(id => {

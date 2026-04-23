@@ -21,8 +21,8 @@ window.characterSetting["아이기스"] = {
         "LV13+5": false
     },
     "battle_plus_stats": "",
-    "element_weakness": "",
-    "element_resistance": "",
+    "element_weakness": "전격",
+    "element_resistance": "총격",
     "skill1_lv": "MAX",
     "skill2_lv": "MAX",
     "skill3_lv": "MAX!",

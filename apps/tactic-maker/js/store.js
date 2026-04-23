@@ -36,7 +36,7 @@ export class TacticStore {
             })),
             
             // Need Stat Selections (캐릭터별 체크된 요소)
-            // { slotIndex: { critical: [...itemIds], pierce: [...itemIds], defense: [...itemIds], revSumCritical, revSumPierce, extraSumCritical, extraSumPierce, extraDefenseReduce } }
+            // { slotIndex: { critical: [...itemIds], pierce: [...itemIds], defense: [...itemIds], revSumCritical, revSumPierce, extraSumCritical, extraSumPierce, extraDefenseReduce }, globalItemOptions, globalSharedChecks, globalSkillEffectAmp }
             needStatSelections: {}
         };
 

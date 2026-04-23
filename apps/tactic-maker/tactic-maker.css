@@ -2388,11 +2388,25 @@ body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
 .need-stat-rev-sum-row {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
+    row-gap: 8px;
     margin-bottom: 12px;
     padding: 8px 10px;
     background: rgba(255, 255, 255, 0.03);
     border-radius: 6px;
+}
+
+.need-stat-rev-sum-field {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: nowrap;
+    min-width: 0;
+}
+
+.need-stat-rev-sum-field-skill-effect-amp {
+    max-width: 100%;
 }
 
 .need-stat-rev-sum-label {
@@ -2402,7 +2416,7 @@ body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
 }
 
 .need-stat-rev-sum-input {
-    width: 70px;
+    width: 32px;
     padding: 4px 8px;
     background: rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.15);
@@ -2422,7 +2436,7 @@ body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
 }
 
 .need-stat-extra-sum-input {
-    width: 60px;
+    width: 32px;
     padding: 4px 6px;
     background: rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.15);
@@ -2438,7 +2452,7 @@ body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
 }
 
 .need-stat-extra-defense-input {
-    width: 60px;
+    width: 32px;
     padding: 4px 6px;
     background: rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.15);
@@ -2451,6 +2465,68 @@ body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
 .need-stat-extra-defense-input:focus {
     outline: none;
     border-color: var(--accent-color);
+}
+
+.need-stat-skill-effect-amp-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: nowrap;
+}
+
+.need-stat-skill-effect-amp-group .skill-effect-amp-toggle-wrap {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    min-width: 0;
+}
+
+.need-stat-skill-effect-amp-group input[type="checkbox"] {
+    display: none;
+}
+
+.need-stat-skill-effect-amp-group .skill-effect-amp-checkbox-frame {
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    min-height: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 16px;
+}
+
+.need-stat-skill-effect-amp-group .skill-effect-amp-checkbox-icon {
+    width: 16px;
+    height: 16px;
+    display: block;
+    object-fit: contain;
+}
+
+.need-stat-skill-effect-amp-group .skill-effect-amp-label {
+    white-space: nowrap;
+}
+
+.need-stat-skill-effect-amp-input {
+    width: 32px;
+    padding: 4px 6px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+    color: #fff;
+    font-size: 11px;
+    text-align: center;
+}
+
+.need-stat-skill-effect-amp-input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+.need-stat-skill-effect-amp-unit {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 11px;
 }
 
 /* Two-column layout: Critical (left) / Pierce (right) */

@@ -33,7 +33,10 @@ import {
     getGlobalSharedChecksForExport,
     setGlobalSharedChecks,
     setGlobalSharedCheck,
-    isGlobalSharedChecked
+    isGlobalSharedChecked,
+    getDefaultGlobalSkillEffectAmpState,
+    getGlobalSkillEffectAmpState,
+    setGlobalSkillEffectAmpState
 } from './need-stat-state.js';
 
 // Data and events modules are available for future use
@@ -74,6 +77,10 @@ export class NeedStatCardUI {
         this.slotCharData = null;
         this.isElucidator = false;
         this.currentSlotIndex = null;
+        this.currentPanelContainer = null;
+        this.currentCriticalItems = [];
+        this.currentPierceItems = [];
+        this.currentDefenseItems = [];
 
         // Shared rule table from data/kr/calc/defense-mutually-exclusive-rules.js
         this.mutuallyExclusiveRules = this.getSharedMutuallyExclusiveRules();
@@ -284,6 +291,9 @@ export class NeedStatCardUI {
         // Save global shared checks (synced across all slots)
         this.store.state.needStatSelections.globalSharedChecks = getGlobalSharedChecksForExport();
 
+        // Save global skill effect amp state (shared across all slots)
+        this.store.state.needStatSelections.globalSkillEffectAmp = getGlobalSkillEffectAmpState();
+
         // Trigger auto-save
         this.store.notify('needStatChange', { slotIndex });
     }
@@ -305,6 +315,9 @@ export class NeedStatCardUI {
         if (globalChecks) {
             setGlobalSharedChecks(globalChecks);
         }
+
+        const globalSkillEffectAmp = this.store.state.needStatSelections?.globalSkillEffectAmp;
+        setGlobalSkillEffectAmpState(globalSkillEffectAmp || getDefaultGlobalSkillEffectAmpState(), { silent: true });
 
         const saved = this.store.state.needStatSelections?.[slotIndex];
         if (!saved) return false;
@@ -393,6 +406,225 @@ export class NeedStatCardUI {
         document
             .querySelectorAll(`.need-stat-trigger-row[data-stat-type="${statType}"] .need-stat-needed[data-slot-index="${slotIndex}"]`)
             .forEach(el => { el.textContent = neededText; });
+    }
+
+    setItemBaseValue(item, value) {
+        if (!item) return 0;
+        const safeValue = isFinite(Number(value)) ? Number(value) : 0;
+        item.__baseValue = safeValue;
+        item.value = safeValue;
+        return safeValue;
+    }
+
+    getBaseItemValue(item) {
+        if (!item) return 0;
+
+        const baseValue = Number(item.__baseValue);
+        if (isFinite(baseValue)) return baseValue;
+
+        const rawValue = Number(item.value);
+        return isFinite(rawValue) ? rawValue : 0;
+    }
+
+    setItemFormulaSourceValue(item, value) {
+        if (!item) return 0;
+        const safeValue = isFinite(Number(value)) ? Number(value) : 0;
+        item.__formulaSourceValue = safeValue;
+        return safeValue;
+    }
+
+    getItemFormulaSourceValue(item) {
+        if (!item) return 0;
+
+        const formulaValue = Number(item.__formulaSourceValue);
+        if (isFinite(formulaValue)) return formulaValue;
+
+        return this.getBaseItemValue(item);
+    }
+
+    hasJandCInParty() {
+        const party = this.store?.state?.party || [];
+        return party.some(member => {
+            const name = member?.name;
+            return name === 'J&C' || name === 'J&amp;C' || String(name || '').toLowerCase() === 'j&c';
+        });
+    }
+
+    getSkillEffectAmpMultiplier(item) {
+        if (!this.hasJandCInParty()) return 1;
+        const state = getGlobalSkillEffectAmpState();
+        if (!state.enabled) return 1;
+        if (!item || item.skillEffectAmpAffected !== true) return 1;
+        return 1 + (state.value / 100);
+    }
+
+    getEffectiveItemValue(item) {
+        return this.getBaseItemValue(item) * this.getSkillEffectAmpMultiplier(item);
+    }
+
+    formatDisplayValue(value) {
+        const safeValue = isFinite(Number(value)) ? Number(value) : 0;
+        return `${safeValue.toFixed(2).replace(/\.00$/, '').replace(/(\.\d)0$/, '$1')}%`;
+    }
+
+    getItemRowSelector(itemId, category = null) {
+        const selector = `.need-stat-row[data-item-id="${itemId}"]`;
+        return category ? `${selector}[data-category="${category}"]` : `${selector}:not([data-category])`;
+    }
+
+    getItemValueCell(container, itemId, category = null) {
+        const row = container?.querySelector(this.getItemRowSelector(itemId, category));
+        return row ? row.querySelector('.need-stat-value') : null;
+    }
+
+    renderItemValue(item, valueCell = item && item.__valueCell) {
+        if (!item || !valueCell) return;
+        item.__valueCell = valueCell;
+        valueCell.textContent = this.formatDisplayValue(this.getEffectiveItemValue(item));
+    }
+
+    refreshDisplayedValues(container = this.currentPanelContainer) {
+        if (!container) return;
+
+        [
+            { items: this.currentCriticalItems, category: null },
+            { items: this.currentPierceItems, category: 'pierce' },
+            { items: this.currentDefenseItems, category: 'defense' }
+        ].forEach(group => {
+            group.items.forEach(item => {
+                const itemId = String(item.id || `${item.source}_${item.skillName}`);
+                const valueCell = this.getItemValueCell(container, itemId, group.category);
+                if (valueCell) {
+                    this.renderItemValue(item, valueCell);
+                }
+            });
+        });
+    }
+
+    getItemsByCategory(category) {
+        if (category === 'critical') return this.currentCriticalItems;
+        if (category === 'pierce') return this.currentPierceItems;
+        if (category === 'defense') return this.currentDefenseItems;
+        return [];
+    }
+
+    findItemById(itemId, category) {
+        return this.getItemsByCategory(category).find(item => String(item.id || `${item.source}_${item.skillName}`) === String(itemId)) || null;
+    }
+
+    applyPersonaPerformanceValue(baseValue, personaValue) {
+        const safeBaseValue = isFinite(Number(baseValue)) ? Number(baseValue) : 0;
+        const safePersonaValue = isFinite(Number(personaValue)) ? Number(personaValue) : 100;
+        return safeBaseValue * (50 + safePersonaValue / 2) / 100;
+    }
+
+    applyPersonaPerformanceToItem(item, personaValue) {
+        const rawBaseValue = this.getItemFormulaSourceValue(item);
+        const nextValue = this.applyPersonaPerformanceValue(rawBaseValue, personaValue);
+        this.setItemBaseValue(item, nextValue);
+        return nextValue;
+    }
+
+    syncPersonaPerformanceInputs(container, itemId, personaValue) {
+        if (!container) return;
+
+        container.querySelectorAll(`.need-stat-persona-input[data-item-id="${itemId}"]`).forEach(input => {
+            if (input.value !== String(personaValue)) {
+                input.value = String(personaValue);
+            }
+        });
+    }
+
+    renderSkillEffectAmpControls() {
+        if (!this.hasJandCInParty()) return '';
+        const { labelSkillEffectAmp } = this.getLabels();
+        const state = getGlobalSkillEffectAmpState();
+
+        return `
+            <div class="need-stat-skill-effect-amp-group">
+                <label class="skill-effect-amp-toggle-wrap">
+                    <input type="checkbox" data-skill-effect-amp-toggle ${state.enabled ? 'checked' : ''}>
+                    <span class="skill-effect-amp-checkbox-frame" aria-hidden="true">
+                        <img class="skill-effect-amp-checkbox-icon" src="${this.baseUrl}/assets/img/ui/check-${state.enabled ? 'on' : 'off'}.png" alt="">
+                    </span>
+                    <span class="need-stat-rev-sum-label skill-effect-amp-label">${labelSkillEffectAmp}</span>
+                </label>
+                <input type="number" class="need-stat-skill-effect-amp-input" data-skill-effect-amp-value value="${state.value}" min="0" step="0.1">
+                <span class="need-stat-skill-effect-amp-unit">%</span>
+            </div>
+        `;
+    }
+
+    syncSkillEffectAmpControls(container = this.currentPanelContainer) {
+        if (!container) return;
+
+        const state = getGlobalSkillEffectAmpState();
+        container.querySelectorAll('[data-skill-effect-amp-toggle]').forEach(toggle => {
+            toggle.checked = !!state.enabled;
+        });
+        container.querySelectorAll('[data-skill-effect-amp-value]').forEach(input => {
+            input.value = String(state.value);
+        });
+        container.querySelectorAll('.skill-effect-amp-checkbox-icon').forEach(icon => {
+            icon.src = `${this.baseUrl}/assets/img/ui/check-${state.enabled ? 'on' : 'off'}.png`;
+        });
+    }
+
+    getCriticalTotal(buffItems, selfItems) {
+        return this.calculateTotal(buffItems, selfItems) + this.revelationSumCritical + this.extraSumCritical + getGlobalElucidatorCritical();
+    }
+
+    getPierceSummary(penetrateSelfItems, penetrateBuffItems, defenseReduceItems) {
+        const penetrateFromItems = this.calculatePierceTotal(penetrateSelfItems, penetrateBuffItems);
+        const defenseReduceFromItems = this.calculateDefenseReduceTotal(defenseReduceItems);
+        const totalDefenseReduce = defenseReduceFromItems + this.extraDefenseReduce;
+        const pierceTotal = penetrateFromItems + this.revelationSumPierce + this.extraSumPierce + getGlobalElucidatorPierce();
+        const defenseStats = this.calculateDefenseStats(pierceTotal, totalDefenseReduce);
+
+        return {
+            penetrateFromItems,
+            defenseReduceFromItems,
+            totalDefenseReduce,
+            pierceTotal,
+            remainingDefense: parseFloat(defenseStats.remainingDefense) || 0,
+            pierceTarget: parseFloat(defenseStats.pierceTarget) || 0,
+            pierceNeeded: parseFloat(defenseStats.pierceNeeded) || 0
+        };
+    }
+
+    updatePierceDisplays(container, slotIndex, penetrateSelfItems, penetrateBuffItems, defenseReduceItems) {
+        const summary = this.getPierceSummary(penetrateSelfItems, penetrateBuffItems, defenseReduceItems);
+
+        const pierceTargetEl = container.querySelector('.need-stat-column-pierce .need-stat-target');
+        const pierceCurrentEl = container.querySelector('.need-stat-column-pierce .need-stat-current');
+        const pierceNeededEl = container.querySelector('.need-stat-column-pierce .need-stat-needed');
+        if (pierceTargetEl) pierceTargetEl.textContent = `${summary.pierceTarget.toFixed(1)}%`;
+        if (pierceCurrentEl) pierceCurrentEl.textContent = `${summary.pierceTotal.toFixed(1)}%`;
+        if (pierceNeededEl) pierceNeededEl.textContent = `${summary.pierceNeeded.toFixed(1)}%`;
+
+        const defenseValueEl = container.querySelector('.need-stat-defense-value');
+        const defenseRequiredEl = container.querySelector('.need-stat-defense-required');
+        if (defenseValueEl) defenseValueEl.textContent = `${summary.remainingDefense.toFixed(1)}%`;
+        if (defenseRequiredEl) defenseRequiredEl.textContent = `${summary.pierceTarget.toFixed(1)}%`;
+
+        const triggerEl = document.querySelector(`.need-stat-trigger[data-slot-index="${slotIndex}"]`);
+        const triggerTable = triggerEl?.querySelector('.need-stat-trigger-table');
+        if (triggerTable) {
+            const triggerPierceTargetEl = triggerTable.querySelector('.need-stat-trigger-row[data-stat-type="pierce"] .need-stat-target');
+            const triggerPierceCurrentEl = triggerTable.querySelector('.need-stat-trigger-row[data-stat-type="pierce"] .need-stat-current');
+            const triggerPierceNeededEl = triggerTable.querySelector('.need-stat-trigger-row[data-stat-type="pierce"] .need-stat-needed');
+            if (triggerPierceTargetEl) triggerPierceTargetEl.textContent = `${summary.pierceTarget.toFixed(1)}%`;
+            if (triggerPierceCurrentEl) triggerPierceCurrentEl.textContent = `${summary.pierceTotal.toFixed(1)}%`;
+            if (triggerPierceNeededEl) triggerPierceNeededEl.textContent = `${summary.pierceNeeded.toFixed(1)}%`;
+        }
+
+        return summary;
+    }
+
+    refreshCurrentPanelDisplays(container, slotIndex, buffItems, selfItems, penetrateSelfItems, penetrateBuffItems, defenseReduceItems) {
+        this.refreshDisplayedValues(container);
+        this.updateTotalPairDisplays(slotIndex, this.getCriticalTotal(buffItems, selfItems), 'critical');
+        this.updatePierceDisplays(container, slotIndex, penetrateSelfItems, penetrateBuffItems, defenseReduceItems);
     }
 
     getCurrentLang() {
@@ -786,19 +1018,7 @@ export class NeedStatCardUI {
         if (lang === 'cn' && item.type_cn) typeName = item.type_cn;
 
         const target = (lang === 'cn' && item.target_cn) ? item.target_cn : (item.target || '');
-        let value = item.value || 0;
-
-        // Apply saved persona performance for jc1 in critical section
-        if (String(item.id) === 'jc1') {
-            const savedKey = `critical_${itemId}`;
-            const savedN = this.savedPersonaPerformance?.[savedKey];
-            if (savedN !== undefined) {
-                const baseValue = item.__baseValue !== undefined ? item.__baseValue : value;
-                item.__baseValue = baseValue;
-                value = baseValue * (50 + savedN / 2) / 100;
-                item.value = value;
-            }
-        }
+        let rawBaseValue = Number(item.value) || 0;
 
         const skillIcon = item.skillIcon ? `${this.baseUrl}${item.skillIcon}` : '';
 
@@ -838,28 +1058,15 @@ export class NeedStatCardUI {
             }
         }
 
-        // Options dropdown if item has options - use localized options
         let optionsHtml = '';
         if (item.options && item.options.length > 0) {
             const baseOptions = item.options;
             const labelOptions = this.getLocalizedOptions(item);
-            // Priority: saved global option > item._selectedOption > defaultOption > first option
             const savedOption = getGlobalItemOption(itemId);
             const selectedOpt = savedOption || item._selectedOption || item.defaultOption || baseOptions[0];
-            // Apply saved option to item for value calculation
-            if (savedOption && item.values && item.values[savedOption] !== undefined) {
-                item._selectedOption = savedOption;
-                const newBaseValue = item.values[savedOption];
-                // For jc1, apply persona performance formula
-                if (String(item.id) === 'jc1') {
-                    item.__baseValue = newBaseValue;
-                    const savedKey = `critical_${itemId}`;
-                    const savedN = this.savedPersonaPerformance?.[savedKey] ?? 100;
-                    value = newBaseValue * (50 + savedN / 2) / 100;
-                } else {
-                    value = newBaseValue;
-                }
-                item.value = value;
+            item._selectedOption = selectedOpt;
+            if (item.values && item.values[selectedOpt] !== undefined) {
+                rawBaseValue = Number(item.values[selectedOpt]) || 0;
             }
             optionsHtml = `
                 <select class="need-stat-select" data-item-id="${itemId}">
@@ -876,12 +1083,15 @@ export class NeedStatCardUI {
         // 관통 섹션의 jc1과 동일한 공식 및 값 공유
         let personaPerformanceHtml = '';
         const isJC1Critical = (String(item.id) === 'jc1');
+        let finalBaseValue = rawBaseValue;
 
         if (isJC1Critical) {
             const savedKey = `critical_${itemId}`;
             const savedValue = this.savedPersonaPerformance?.[savedKey];
             const defaultValue = savedValue !== undefined ? savedValue : 100;
             const label = this.getLabels().labelPersonaPerformance;
+            this.setItemFormulaSourceValue(item, rawBaseValue);
+            finalBaseValue = this.applyPersonaPerformanceValue(rawBaseValue, defaultValue);
             personaPerformanceHtml = `
                 <span class="need-stat-persona-performance">
                     <label class="need-stat-persona-label">${label}</label>
@@ -889,6 +1099,9 @@ export class NeedStatCardUI {
                 </span>
             `;
         }
+
+        this.setItemBaseValue(item, finalBaseValue);
+        const displayValue = this.formatDisplayValue(this.getEffectiveItemValue(item));
 
         // Display: [check] [target] [icon] [source] name [persona-performance] [options] value%
         const checkClass = isChecked ? '' : 'check-off';
@@ -901,7 +1114,7 @@ export class NeedStatCardUI {
                 <span class="need-stat-name">${displayName}</span>
                 ${personaPerformanceHtml}
                 ${optionsHtml}
-                <span class="need-stat-value">${typeof value === 'number' ? value.toFixed(2) : value}%</span>
+                <span class="need-stat-value">${displayValue}</span>
             </div>
         `;
     }
@@ -922,25 +1135,7 @@ export class NeedStatCardUI {
         if (lang === 'cn' && item.type_cn) typeName = item.type_cn;
 
         const target = (lang === 'cn' && item.target_cn) ? item.target_cn : (item.target || '');
-        let value = item.value || 0;
-
-        // Apply saved persona performance for jc1/jc2
-        const isJC1Pierce = (String(item.id) === 'jc1' && category === 'pierce');
-        const isJC2Defense = (String(item.id) === 'jc2' && category === 'defense');
-        if (isJC1Pierce || isJC2Defense) {
-            const savedKey = `${category}_${itemId}`;
-            const savedN = this.savedPersonaPerformance?.[savedKey];
-            if (savedN !== undefined) {
-                const baseValue = item.__baseValue !== undefined ? item.__baseValue : value;
-                item.__baseValue = baseValue;
-                if (isJC1Pierce) {
-                    value = baseValue * (50 + savedN / 2) / 100;
-                } else if (isJC2Defense) {
-                    value = baseValue * (50 + savedN / 2) / 100;
-                }
-                item.value = value;
-            }
-        }
+        let rawBaseValue = Number(item.value) || 0;
 
         const skillIcon = item.skillIcon || '';
         const selectedSet = category === 'pierce' ? this.selectedPierceItems : this.selectedDefenseItems;
@@ -981,35 +1176,16 @@ export class NeedStatCardUI {
             }
         }
 
-        // Options dropdown - use localized options
         let optionsHtml = '';
         if (item.options && item.options.length > 0) {
             const baseOptions = item.options;
             const labelOptions = this.getLocalizedOptions(item);
-            // Priority: saved global option > item._selectedOption > defaultOption > first option
             const optionKey = `${category}_${itemId}`;
             const savedOption = getGlobalItemOption(optionKey);
             const selectedOpt = savedOption || item._selectedOption || item.defaultOption || baseOptions[0];
-            // Apply saved option to item for value calculation
-            if (savedOption && item.values && item.values[savedOption] !== undefined) {
-                item._selectedOption = savedOption;
-                const newBaseValue = item.values[savedOption];
-                // For J&C items, apply persona performance formula
-                const isJC1 = (String(item.id) === 'jc1' && category === 'pierce');
-                const isJC2 = (String(item.id) === 'jc2' && category === 'defense');
-                if (isJC1 || isJC2) {
-                    item.__baseValue = newBaseValue;
-                    const savedKey = `${category}_${itemId}`;
-                    const savedN = this.savedPersonaPerformance?.[savedKey] ?? 100;
-                    if (isJC1) {
-                        value = newBaseValue * (50 + savedN / 2) / 100;
-                    } else {
-                        value = newBaseValue * (50 + savedN / 2) / 100;
-                    }
-                } else {
-                    value = newBaseValue;
-                }
-                item.value = value;
+            item._selectedOption = selectedOpt;
+            if (item.values && item.values[selectedOpt] !== undefined) {
+                rawBaseValue = Number(item.values[selectedOpt]) || 0;
             }
             optionsHtml = `
                 <select class="need-stat-options" data-item-id="${itemId}" data-category="${category}">
@@ -1027,6 +1203,7 @@ export class NeedStatCardUI {
         let personaPerformanceHtml = '';
         const isJC1 = (String(item.id) === 'jc1' && category === 'pierce');
         const isJC2 = (String(item.id) === 'jc2' && category === 'defense');
+        let finalBaseValue = rawBaseValue;
 
         if (isJC1 || isJC2) {
             const savedKey = `${category}_${itemId}`;
@@ -1035,6 +1212,8 @@ export class NeedStatCardUI {
             const label = this.getLabels().labelPersonaPerformance;
             // jc1은 크리티컬 섹션과 값 동기화를 위해 need-stat-jc1-sync 클래스 추가
             const syncClass = isJC1 ? 'need-stat-jc1-sync' : '';
+            this.setItemFormulaSourceValue(item, rawBaseValue);
+            finalBaseValue = this.applyPersonaPerformanceValue(rawBaseValue, defaultValue);
             personaPerformanceHtml = `
                 <span class="need-stat-persona-performance">
                     <label class="need-stat-persona-label">${label}</label>
@@ -1042,6 +1221,9 @@ export class NeedStatCardUI {
                 </span>
             `;
         }
+
+        this.setItemBaseValue(item, finalBaseValue);
+        const displayValue = this.formatDisplayValue(this.getEffectiveItemValue(item));
 
         return `
             <div class="need-stat-row ${isChecked ? 'checked' : ''}" data-item-id="${itemId}" data-item-type="${item.type || ''}" data-category="${category}">
@@ -1052,7 +1234,7 @@ export class NeedStatCardUI {
                 <span class="need-stat-name">${displayName}</span>
                 ${personaPerformanceHtml}
                 ${optionsHtml}
-                <span class="need-stat-value">${typeof value === 'number' ? value.toFixed(2) : value}%</span>
+                <span class="need-stat-value">${displayValue}</span>
             </div>
         `;
     }
@@ -1066,7 +1248,7 @@ export class NeedStatCardUI {
         allItems.forEach(item => {
             const itemId = String(item.id || `${item.source}_${item.skillName}`);
             if (this.selectedItems.has(itemId)) {
-                total += item.value || 0;
+                total += this.getEffectiveItemValue(item);
             }
         });
         return total;
@@ -1081,7 +1263,7 @@ export class NeedStatCardUI {
         allItems.forEach(item => {
             const itemId = String(item.id || `${item.source}_${item.skillName}`);
             if (this.selectedPierceItems.has(itemId)) {
-                total += item.value || 0;
+                total += this.getEffectiveItemValue(item);
             }
         });
         return total;
@@ -1095,7 +1277,7 @@ export class NeedStatCardUI {
         defenseReduceItems.forEach(item => {
             const itemId = String(item.id || `${item.source}_${item.skillName}`);
             if (this.selectedDefenseItems.has(itemId)) {
-                total += item.value || 0;
+                total += this.getEffectiveItemValue(item);
             }
         });
         return total;
@@ -1673,20 +1855,17 @@ export class NeedStatCardUI {
         }
 
         const { labelExtraPierce, labelExtraDefenseReduce, labelPenetrateSelf, labelPenetrateBuff, labelDefenseReduce, labelRemainingDefense, labelRequiredPierce } = labels;
+        this.currentPanelContainer = container;
+        this.currentCriticalItems = [...buffItems, ...selfItems];
+        this.currentPierceItems = [...penetrateSelfItems, ...penetrateBuffItems];
+        this.currentDefenseItems = [...defenseReduceItems];
 
-        const critTotal = this.calculateTotal(buffItems, selfItems) + this.revelationSumCritical + this.extraSumCritical + getGlobalElucidatorCritical();
-
-        // Calculate pierce totals
-        const penetrateFromItems = this.calculatePierceTotal(penetrateSelfItems, penetrateBuffItems);
-        const defenseReduceFromItems = this.calculateDefenseReduceTotal(defenseReduceItems);
-        const totalDefenseReduce = defenseReduceFromItems + this.extraDefenseReduce;
-        const pierceTotal = penetrateFromItems + this.revelationSumPierce + this.extraSumPierce + getGlobalElucidatorPierce();
-
-        // Calculate remaining defense and pierce target/needed
-        const defenseStats = this.calculateDefenseStats(pierceTotal, totalDefenseReduce);
-        const remainingDefense = defenseStats.remainingDefense;
-        const pierceTarget = parseFloat(defenseStats.pierceTarget);
-        const pierceNeeded = parseFloat(defenseStats.pierceNeeded);
+        const critTotal = this.getCriticalTotal(buffItems, selfItems);
+        const pierceSummary = this.getPierceSummary(penetrateSelfItems, penetrateBuffItems, defenseReduceItems);
+        const remainingDefense = pierceSummary.remainingDefense.toFixed(1);
+        const pierceTarget = pierceSummary.pierceTarget;
+        const pierceNeeded = pierceSummary.pierceNeeded;
+        const pierceTotal = pierceSummary.pierceTotal;
 
         container.innerHTML = `
             <div class="need-stat-columns">
@@ -1696,10 +1875,17 @@ export class NeedStatCardUI {
                         ${this.renderTotalPairHtml(slotIndex, critTotal, 'critical')}
                     </div>
                     <div class="need-stat-rev-sum-row">
-                        <label class="need-stat-rev-sum-label"><img src="${this.baseUrl}/assets/img/nav/qishi.png" alt="" class="need-stat-rev-icon">${labelRevSum}</label>
-                        <input type="number" class="need-stat-rev-sum-input" data-stat="critical" value="${this.revelationSumCritical}" min="0" max="100" step="0.1">
-                        <label class="need-stat-rev-sum-label need-stat-extra-label">${labelExtraSum}</label>
-                        <input type="number" class="need-stat-extra-sum-input" data-stat="critical" value="${this.extraSumCritical}" min="0" max="100" step="0.1">
+                        <div class="need-stat-rev-sum-field">
+                            <label class="need-stat-rev-sum-label"><img src="${this.baseUrl}/assets/img/nav/qishi.png" alt="" class="need-stat-rev-icon">${labelRevSum}</label>
+                            <input type="number" class="need-stat-rev-sum-input" data-stat="critical" value="${this.revelationSumCritical}" min="0" max="100" step="0.1">
+                        </div>
+                        <div class="need-stat-rev-sum-field">
+                            <label class="need-stat-rev-sum-label">${labelExtraSum}</label>
+                            <input type="number" class="need-stat-extra-sum-input" data-stat="critical" value="${this.extraSumCritical}" min="0" max="100" step="0.1">
+                        </div>
+                        <div class="need-stat-rev-sum-field need-stat-rev-sum-field-skill-effect-amp">
+                            ${this.renderSkillEffectAmpControls()}
+                        </div>
                     </div>
                     <div class="need-stat-body open">
                         ${selfItems.length > 0 ? `
@@ -1729,12 +1915,21 @@ export class NeedStatCardUI {
                         </span>
                     </div>
                     <div class="need-stat-rev-sum-row">
-                        <label class="need-stat-rev-sum-label"><img src="${this.baseUrl}/assets/img/nav/qishi.png" alt="" class="need-stat-rev-icon">${labelRevSum}</label>
-                        <input type="number" class="need-stat-rev-sum-input" data-stat="pierce" value="${this.revelationSumPierce}" min="0" max="100" step="0.1">
-                        <label class="need-stat-rev-sum-label need-stat-extra-label">${labelExtraPierce}</label>
-                        <input type="number" class="need-stat-extra-sum-input" data-stat="pierce" value="${this.extraSumPierce}" min="0" max="100" step="0.1">
-                        <label class="need-stat-rev-sum-label need-stat-extra-label">${labelExtraDefenseReduce}</label>
-                        <input type="number" class="need-stat-extra-defense-input" value="${this.extraDefenseReduce}" min="0" max="100" step="0.1">
+                        <div class="need-stat-rev-sum-field">
+                            <label class="need-stat-rev-sum-label"><img src="${this.baseUrl}/assets/img/nav/qishi.png" alt="" class="need-stat-rev-icon">${labelRevSum}</label>
+                            <input type="number" class="need-stat-rev-sum-input" data-stat="pierce" value="${this.revelationSumPierce}" min="0" max="100" step="0.1">
+                        </div>
+                        <div class="need-stat-rev-sum-field">
+                            <label class="need-stat-rev-sum-label">${labelExtraPierce}</label>
+                            <input type="number" class="need-stat-extra-sum-input" data-stat="pierce" value="${this.extraSumPierce}" min="0" max="100" step="0.1">
+                        </div>
+                        <div class="need-stat-rev-sum-field">
+                            <label class="need-stat-rev-sum-label">${labelExtraDefenseReduce}</label>
+                            <input type="number" class="need-stat-extra-defense-input" value="${this.extraDefenseReduce}" min="0" max="100" step="0.1">
+                        </div>
+                        <div class="need-stat-rev-sum-field need-stat-rev-sum-field-skill-effect-amp">
+                            ${this.renderSkillEffectAmpControls()}
+                        </div>
                     </div>
                     ${this.renderBossSettingsRow()}
                     <div class="need-stat-body open">
@@ -1760,6 +1955,9 @@ export class NeedStatCardUI {
                 </div>
             </div>
         `;
+
+        this.syncSkillEffectAmpControls(container);
+        this.refreshDisplayedValues(container);
 
         this.bindEvents(container, buffItems, selfItems, slotIndex);
         this.bindPierceEvents(container, penetrateSelfItems, penetrateBuffItems, defenseReduceItems, slotIndex);
@@ -2125,6 +2323,35 @@ export class NeedStatCardUI {
         // Bind boss settings events
         this.bindBossEvents(container);
 
+        const updateCriticalDisplays = () => {
+            this.updateTotalPairDisplays(slotIndex, this.getCriticalTotal(buffItems, selfItems), 'critical');
+        };
+
+        const updatePierceDisplays = () => {
+            this.updatePierceDisplays(container, slotIndex, this.currentPierceItems, [], this.currentDefenseItems);
+        };
+
+        const applySkillEffectAmpState = (partialState) => {
+            const currentState = getGlobalSkillEffectAmpState();
+            const nextState = {
+                enabled: partialState.enabled !== undefined ? !!partialState.enabled : currentState.enabled,
+                value: partialState.value !== undefined ? partialState.value : currentState.value
+            };
+
+            setGlobalSkillEffectAmpState(nextState, { silent: true });
+            this.syncSkillEffectAmpControls(container);
+            this.refreshDisplayedValues(container);
+            updateCriticalDisplays();
+            updatePierceDisplays();
+            this.saveSelectionsToStore(slotIndex);
+
+            try {
+                window.dispatchEvent(new CustomEvent('need-stat-skill-effect-amp-changed', {
+                    detail: getGlobalSkillEffectAmpState()
+                }));
+            } catch (_) { }
+        };
+
         // Revelation Sum inputs (one per column)
         container.querySelectorAll('.need-stat-rev-sum-input').forEach(revSumInput => {
             revSumInput.addEventListener('input', (e) => {
@@ -2134,42 +2361,11 @@ export class NeedStatCardUI {
 
                 if (statType === 'critical') {
                     this.revelationSumCritical = val;
-                    const total = this.calculateTotal(buffItems, selfItems) + this.revelationSumCritical + this.extraSumCritical + getGlobalElucidatorCritical();
-                    this.updateTotalPairDisplays(slotIndex, total, 'critical');
+                    updateCriticalDisplays();
                     this.saveSelectionsToStore(slotIndex);
                 } else if (statType === 'pierce') {
                     this.revelationSumPierce = val;
-                    // Recalculate pierce total including items
-                    const { selfItems: penetrateSelfItems, buffItems: penetrateBuffItems } = this.getApplicablePenetrateItems(this.slotCharData);
-                    const penetrateFromItems = this.calculatePierceTotal(penetrateSelfItems, penetrateBuffItems);
-                    const total = penetrateFromItems + this.revelationSumPierce + this.extraSumPierce + getGlobalElucidatorPierce();
-                    this.updateTotalPairDisplays(slotIndex, total, 'pierce');
-
-                    // Update defense info display
-                    const defenseReduceItems = this.getApplicableDefenseReduceItems(this.slotCharData);
-                    const defenseReduceFromItems = this.calculateDefenseReduceTotal(defenseReduceItems);
-                    const { remainingDefense, pierceTarget } = this.calculateDefenseStats(total, defenseReduceFromItems);
-                    const neededPierce = Math.max(0, parseFloat(pierceTarget) - total);
-
-                    // Update header displays
-                    const defenseValueEl = container.querySelector('.need-stat-defense-value');
-                    const defenseRequiredEl = container.querySelector('.need-stat-defense-required');
-                    const currentEl = container.querySelector('.need-stat-total-inline[data-stat-type="pierce"] .need-stat-current');
-                    if (defenseValueEl) defenseValueEl.textContent = `${remainingDefense}%`;
-                    if (defenseRequiredEl) defenseRequiredEl.textContent = `${pierceTarget}%`;
-                    if (currentEl) currentEl.textContent = `${total.toFixed(1)}%`;
-
-                    // Update trigger table
-                    const triggerEl = document.querySelector(`.need-stat-trigger[data-slot-index="${slotIndex}"]`);
-                    const triggerTable = triggerEl?.querySelector('.need-stat-trigger-table');
-                    if (triggerTable) {
-                        const triggerPierceTargetEl = triggerTable.querySelector('.need-stat-trigger-row[data-stat-type="pierce"] .need-stat-target');
-                        const triggerPierceCurrentEl = triggerTable.querySelector('.need-stat-trigger-row[data-stat-type="pierce"] .need-stat-current');
-                        const triggerPierceNeededEl = triggerTable.querySelector('.need-stat-trigger-row[data-stat-type="pierce"] .need-stat-needed');
-                        if (triggerPierceTargetEl) triggerPierceTargetEl.textContent = `${pierceTarget}%`;
-                        if (triggerPierceCurrentEl) triggerPierceCurrentEl.textContent = `${total.toFixed(1)}%`;
-                        if (triggerPierceNeededEl) triggerPierceNeededEl.textContent = `${neededPierce.toFixed(1)}%`;
-                    }
+                    updatePierceDisplays();
                     this.saveSelectionsToStore(slotIndex);
                 }
             });
@@ -2185,45 +2381,32 @@ export class NeedStatCardUI {
 
                 if (statType === 'critical') {
                     this.extraSumCritical = val;
-                    const total = this.calculateTotal(buffItems, selfItems) + this.revelationSumCritical + this.extraSumCritical + getGlobalElucidatorCritical();
-                    this.updateTotalPairDisplays(slotIndex, total, 'critical');
+                    updateCriticalDisplays();
                     this.saveSelectionsToStore(slotIndex);
                 } else if (statType === 'pierce') {
                     this.extraSumPierce = val;
-                    // Recalculate pierce total including items
-                    const { selfItems: penetrateSelfItems, buffItems: penetrateBuffItems } = this.getApplicablePenetrateItems(this.slotCharData);
-                    const penetrateFromItems = this.calculatePierceTotal(penetrateSelfItems, penetrateBuffItems);
-                    const total = penetrateFromItems + this.revelationSumPierce + this.extraSumPierce + getGlobalElucidatorPierce();
-                    this.updateTotalPairDisplays(slotIndex, total, 'pierce');
-
-                    // Update defense info display
-                    const defenseReduceItems = this.getApplicableDefenseReduceItems(this.slotCharData);
-                    const defenseReduceFromItems = this.calculateDefenseReduceTotal(defenseReduceItems);
-                    const { remainingDefense, pierceTarget: extraPierceTarget } = this.calculateDefenseStats(total, defenseReduceFromItems);
-                    const neededPierce = Math.max(0, parseFloat(extraPierceTarget) - total);
-
-                    // Update header displays
-                    const defenseValueEl = container.querySelector('.need-stat-defense-value');
-                    const defenseRequiredEl = container.querySelector('.need-stat-defense-required');
-                    const currentEl = container.querySelector('.need-stat-total-inline[data-stat-type="pierce"] .need-stat-current');
-                    if (defenseValueEl) defenseValueEl.textContent = `${remainingDefense}%`;
-                    if (defenseRequiredEl) defenseRequiredEl.textContent = `${extraPierceTarget}%`;
-                    if (currentEl) currentEl.textContent = `${total.toFixed(1)}%`;
-
-                    // Update trigger table
-                    const triggerEl = document.querySelector(`.need-stat-trigger[data-slot-index="${slotIndex}"]`);
-                    const triggerTable = triggerEl?.querySelector('.need-stat-trigger-table');
-                    if (triggerTable) {
-                        const triggerPierceTargetEl = triggerTable.querySelector('.need-stat-trigger-row[data-stat-type="pierce"] .need-stat-target');
-                        const triggerPierceCurrentEl = triggerTable.querySelector('.need-stat-trigger-row[data-stat-type="pierce"] .need-stat-current');
-                        const triggerPierceNeededEl = triggerTable.querySelector('.need-stat-trigger-row[data-stat-type="pierce"] .need-stat-needed');
-                        if (triggerPierceTargetEl) triggerPierceTargetEl.textContent = `${extraPierceTarget}%`;
-                        if (triggerPierceCurrentEl) triggerPierceCurrentEl.textContent = `${total.toFixed(1)}%`;
-                        if (triggerPierceNeededEl) triggerPierceNeededEl.textContent = `${neededPierce.toFixed(1)}%`;
-                    }
+                    updatePierceDisplays();
+                    this.saveSelectionsToStore(slotIndex);
                 }
             });
             extraSumInput.addEventListener('click', (e) => e.stopPropagation());
+        });
+
+        container.querySelectorAll('[data-skill-effect-amp-toggle]').forEach(toggle => {
+            toggle.addEventListener('change', (e) => {
+                e.stopPropagation();
+                applySkillEffectAmpState({ enabled: !!toggle.checked });
+            });
+            toggle.addEventListener('click', (e) => e.stopPropagation());
+        });
+
+        container.querySelectorAll('[data-skill-effect-amp-value]').forEach(input => {
+            input.addEventListener('input', (e) => {
+                e.stopPropagation();
+                const nextValue = parseFloat(input.value);
+                applySkillEffectAmpState({ value: isFinite(nextValue) ? Math.max(0, nextValue) : 0 });
+            });
+            input.addEventListener('click', (e) => e.stopPropagation());
         });
 
         // Item row click (whole row toggles check) - ONLY for critical items (no data-category)
@@ -2259,8 +2442,7 @@ export class NeedStatCardUI {
                     }
                 }
 
-                const total = this.calculateTotal(buffItems, selfItems) + this.revelationSumCritical + this.extraSumCritical + getGlobalElucidatorCritical();
-                this.updateTotalPairDisplays(slotIndex, total, 'critical');
+                updateCriticalDisplays();
 
                 // 선택 상태 저장
                 this.saveSelectionsToStore(slotIndex);
@@ -2280,11 +2462,10 @@ export class NeedStatCardUI {
                 const row = select.closest('.need-stat-row');
                 const valueEl = row ? row.querySelector('.need-stat-value') : null;
 
-                const allItems = [...buffItems, ...selfItems];
-                const item = allItems.find(i => String(i.id || `${i.source}_${i.skillName}`) === itemId);
+                const item = this.findItemById(itemId, 'critical');
 
                 if (item && item.values && item.values[selectedOption] !== undefined) {
-                    const newBaseValue = item.values[selectedOption];
+                    const newBaseValue = Number(item.values[selectedOption]) || 0;
                     item._selectedOption = selectedOption;
 
                     // Save to global state for persistence
@@ -2292,19 +2473,16 @@ export class NeedStatCardUI {
 
                     // J&C jc1인 경우 페르소나 성능 적용
                     if (String(itemId) === 'jc1') {
-                        item.__baseValue = newBaseValue;
+                        this.setItemFormulaSourceValue(item, newBaseValue);
                         const personaInput = row ? row.querySelector('.need-stat-persona-input') : null;
                         const N = personaInput ? (parseFloat(personaInput.value) || 100) : 100;
-                        const calculatedValue = newBaseValue * (50 + N / 2) / 100;
-                        item.value = calculatedValue;
-                        if (valueEl) valueEl.textContent = `${calculatedValue.toFixed(2)}%`;
+                        this.setItemBaseValue(item, this.applyPersonaPerformanceValue(newBaseValue, N));
                     } else {
-                        item.value = newBaseValue;
-                        if (valueEl) valueEl.textContent = `${item.value}%`;
+                        this.setItemBaseValue(item, newBaseValue);
                     }
 
-                    const total = this.calculateTotal(buffItems, selfItems) + this.revelationSumCritical + this.extraSumCritical + getGlobalElucidatorCritical();
-                    this.updateTotalPairDisplays(slotIndex, total, 'critical');
+                    if (valueEl) this.renderItemValue(item, valueEl);
+                    updateCriticalDisplays();
 
                     // Save selections to store
                     this.saveSelectionsToStore(slotIndex);
@@ -2322,10 +2500,26 @@ export class NeedStatCardUI {
                 const row = personaInput.closest('.need-stat-row');
                 const valueEl = row ? row.querySelector('.need-stat-value') : null;
 
-                const allItems = [...buffItems, ...selfItems];
-                const item = allItems.find(i => String(i.id || `${i.source}_${i.skillName}`) === itemId);
+                const item = this.findItemById(itemId, 'critical');
 
                 if (item) {
+                    this.syncPersonaPerformanceInputs(container, itemId, N);
+                    this.applyPersonaPerformanceToItem(item, N);
+                    if (valueEl) this.renderItemValue(item, valueEl);
+
+                    const syncedPierceItem = this.findItemById(itemId, 'pierce');
+                    if (syncedPierceItem) {
+                        this.applyPersonaPerformanceToItem(syncedPierceItem, N);
+                        const syncedPierceValueEl = this.getItemValueCell(container, itemId, 'pierce');
+                        if (syncedPierceValueEl) {
+                            this.renderItemValue(syncedPierceItem, syncedPierceValueEl);
+                        }
+                    }
+
+                    updateCriticalDisplays();
+                    updatePierceDisplays();
+                    this.saveSelectionsToStore(this.currentSlotIndex);
+                    return;
                     // 기본값 저장 (처음 한 번만)
                     if (item.__baseValue === undefined) {
                         item.__baseValue = item.value || 0;
@@ -2372,6 +2566,9 @@ export class NeedStatCardUI {
     bindPierceEvents(container, penetrateSelfItems, penetrateBuffItems, defenseReduceItems, slotIndex) {
         const allPierceItems = [...penetrateSelfItems, ...penetrateBuffItems];
         const allDefenseItems = defenseReduceItems;
+        const updateCriticalDisplays = () => {
+            this.updateTotalPairDisplays(slotIndex, this.getCriticalTotal(this.currentCriticalItems, []), 'critical');
+        };
 
         // Helper to update pierce displays (target/current/needed)
         const updatePierceDisplays = () => {
@@ -2494,7 +2691,7 @@ export class NeedStatCardUI {
                 const item = allItems.find(i => String(i.id || `${i.source}_${i.skillName}`) === itemId);
 
                 if (item && item.values && item.values[selectedOption] !== undefined) {
-                    const newBaseValue = item.values[selectedOption];
+                    const newBaseValue = Number(item.values[selectedOption]) || 0;
                     item._selectedOption = selectedOption;
 
                     // Save to global state for persistence (with category prefix)
@@ -2504,24 +2701,15 @@ export class NeedStatCardUI {
                     // J&C 아이템인 경우 페르소나 성능 적용
                     const isJC = (String(itemId) === 'jc1' || String(itemId) === 'jc2');
                     if (isJC) {
-                        item.__baseValue = newBaseValue;
+                        this.setItemFormulaSourceValue(item, newBaseValue);
                         const personaInput = row ? row.querySelector('.need-stat-persona-input') : null;
                         const N = personaInput ? (parseFloat(personaInput.value) || 100) : 100;
-
-                        let calculatedValue = newBaseValue;
-                        if (String(itemId) === 'jc1') {
-                            calculatedValue = newBaseValue * (50 + N / 2) / 100;
-                        } else if (String(itemId) === 'jc2') {
-                            calculatedValue = newBaseValue * (50 + N / 2) / 100;
-                        }
-
-                        item.value = calculatedValue;
-                        if (valueEl) valueEl.textContent = `${calculatedValue.toFixed(2)}%`;
+                        this.setItemBaseValue(item, this.applyPersonaPerformanceValue(newBaseValue, N));
                     } else {
-                        item.value = newBaseValue;
-                        if (valueEl) valueEl.textContent = `${item.value}%`;
+                        this.setItemBaseValue(item, newBaseValue);
                     }
 
+                    if (valueEl) this.renderItemValue(item, valueEl);
                     updatePierceDisplays();
 
                     // Save selections to store
@@ -2557,6 +2745,25 @@ export class NeedStatCardUI {
                 const item = allItems.find(i => String(i.id || `${i.source}_${i.skillName}`) === itemId);
 
                 if (item) {
+                    this.syncPersonaPerformanceInputs(container, itemId, N);
+                    this.applyPersonaPerformanceToItem(item, N);
+                    if (valueEl) this.renderItemValue(item, valueEl);
+
+                    if (String(itemId) === 'jc1' && category === 'pierce') {
+                        const syncedCriticalItem = this.findItemById(itemId, 'critical');
+                        if (syncedCriticalItem) {
+                            this.applyPersonaPerformanceToItem(syncedCriticalItem, N);
+                            const syncedCriticalValueEl = this.getItemValueCell(container, itemId, null);
+                            if (syncedCriticalValueEl) {
+                                this.renderItemValue(syncedCriticalItem, syncedCriticalValueEl);
+                            }
+                        }
+                        updateCriticalDisplays();
+                    }
+
+                    updatePierceDisplays();
+                    this.saveSelectionsToStore(this.currentSlotIndex);
+                    return;
                     // 기본값 저장 (처음 한 번만)
                     if (item.__baseValue === undefined) {
                         item.__baseValue = item.value || 0;

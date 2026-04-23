@@ -133,6 +133,7 @@ window.I18N_PAGE_TACTIC_MAKER_EN = {
     extraSum: "Extra",
     extraPierce: "Extra Pierce",
     extraDefenseReduce: "Extra Def Reduce",
+    needStatSkillEffectAmp: "Skill Amplification",
     needStatCurrent: "current",
     needStatNeeded: "needed",
     needStatPenetrateSelf: "Pierce - Self",

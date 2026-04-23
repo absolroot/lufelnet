@@ -300,6 +300,7 @@ window.I18N_PAGE_TACTIC_MAKER_JP = {
     extraSum: "別途",
     extraPierce: "別途貫通",
     extraDefenseReduce: "別途防御減少",
+    needStatSkillEffectAmp: "スキル効果増幅",
     needStatCurrent: "現在",
     needStatNeeded: "必要",
     needStatPenetrateSelf: "貫通 - 自分",

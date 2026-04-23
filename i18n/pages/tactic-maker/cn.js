@@ -146,6 +146,7 @@ window.I18N_PAGE_TACTIC_MAKER_CN = {
     "extraSum": "额外数值",
     "extraPierce": "额外穿透数值",
     "extraDefenseReduce": "额外防御力降低",
+    "needStatSkillEffectAmp": "技能效果增幅",
     "needStatCurrent": "当前",
     "needStatNeeded": "所需",
     "needStatPenetrateSelf": "穿透 - 自身",

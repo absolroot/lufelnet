@@ -164,6 +164,7 @@ window.I18N_PAGE_TACTIC_MAKER_KR = {
     extraSum: "별도 수치",
     extraPierce: "별도 관통 수치",
     extraDefenseReduce: "별도 방어력 감소",
+    needStatSkillEffectAmp: "스킬 효과 증폭",
     needStatCurrent: "현재",
     needStatNeeded: "필요",
     needStatPenetrateSelf: "관통 - 자신",

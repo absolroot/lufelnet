@@ -181,6 +181,10 @@ export class PartyUI {
             this.updateAllSlotTriggers();
         });
 
+        window.addEventListener('need-stat-skill-effect-amp-changed', () => {
+            this.updateAllSlotTriggersOnly();
+        });
+
         // Explicitly render initial state to ensure UI is ready
         this.store.state.party.forEach((p, i) => this.renderSlot(i, p));
     }
@@ -208,6 +212,20 @@ export class PartyUI {
                 this.refreshOpenNeedStatPanel(this.openNeedStatSlotIndex, charData);
             }
         }
+    }
+
+    updateAllSlotTriggersOnly() {
+        this.store.state.party.forEach((charData, index) => {
+            if (index === 3) return;
+            if (!charData || !charData.name) return;
+
+            const slotEl = this.getSlotElement(index);
+            if (slotEl) {
+                this.renderNeedStatTrigger(slotEl, charData, index).catch(err => {
+                    console.error('[PartyUI] Failed to update slot trigger:', err);
+                });
+            }
+        });
     }
 
     /**

@@ -35,6 +35,12 @@ let globalSharedChecks = {
     criticalBuffAoe: new Set()
 };
 
+// Global skill effect amp state (shared across all slots)
+let globalSkillEffectAmpState = {
+    enabled: false,
+    value: 17
+};
+
 // ============================================================================
 // State Getters/Setters
 // ============================================================================
@@ -117,6 +123,40 @@ export function setGlobalSharedCheck(category, itemId, checked) {
 
 export function isGlobalSharedChecked(category, itemId) {
     return globalSharedChecks[category]?.has(String(itemId)) || false;
+}
+
+export function getDefaultGlobalSkillEffectAmpState() {
+    return { enabled: false, value: 17 };
+}
+
+export function normalizeGlobalSkillEffectAmpState(raw) {
+    const fallback = getDefaultGlobalSkillEffectAmpState();
+    const parsedValue = parseFloat(raw && raw.value);
+
+    return {
+        enabled: !!(raw && raw.enabled),
+        value: isFinite(parsedValue) ? Math.max(0, parsedValue) : fallback.value
+    };
+}
+
+export function getGlobalSkillEffectAmpState() {
+    return { ...globalSkillEffectAmpState };
+}
+
+export function setGlobalSkillEffectAmpState(raw, options = {}) {
+    globalSkillEffectAmpState = normalizeGlobalSkillEffectAmpState(raw);
+
+    if (options && options.silent) {
+        return getGlobalSkillEffectAmpState();
+    }
+
+    try {
+        window.dispatchEvent(new CustomEvent('need-stat-skill-effect-amp-changed', {
+            detail: getGlobalSkillEffectAmpState()
+        }));
+    } catch (_) { }
+
+    return getGlobalSkillEffectAmpState();
 }
 
 // ============================================================================
@@ -292,6 +332,7 @@ export function getLabels() {
         labelExtraSum: translateNeedStat('extraSum', '별도 수치'),
         labelExtraPierce: translateNeedStat('extraPierce', '별도 관통 수치'),
         labelExtraDefenseReduce: translateNeedStat('extraDefenseReduce', '별도 방어력 감소'),
+        labelSkillEffectAmp: translateNeedStat('needStatSkillEffectAmp', '스킬 효과 증폭'),
         labelPending: translateNeedStat('pending', '준비중'),
         labelCurrent: translateNeedStat('needStatCurrent', '현재'),
         labelNeeded: translateNeedStat('needStatNeeded', '필요'),

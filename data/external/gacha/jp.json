@@ -54,7 +54,7 @@
         "type": "PICKUP怪ドル契約・CHANCE"
       },
       {
-        "endTime": "2026-04-30 10:59:59",
+        "endTime": "2026-04-30 06:59:59",
         "fiveStar": [
           {
             "name": "橋本 麻由美",
@@ -80,7 +80,7 @@
         "type": "PICKUP怪ドル契約・TARGET"
       },
       {
-        "endTime": "2026-04-30 10:59:59",
+        "endTime": "2026-04-30 06:59:59",
         "fiveStar": [
           {
             "name": "橋本 麻由美",
@@ -106,7 +106,7 @@
         "type": "PICKUP怪ドル契約・CHANCE"
       },
       {
-        "endTime": "2026-04-30 10:59:59",
+        "endTime": "2026-04-30 06:59:59",
         "fiveStar": [
           {
             "name": "琴音・アイスストーム",
@@ -132,7 +132,7 @@
         "type": "PICKUP怪ドル契約・CHANCE"
       },
       {
-        "endTime": "2026-04-30 10:59:59",
+        "endTime": "2026-04-30 06:59:59",
         "fiveStar": [
           {
             "name": "琴音・アイスストーム",
@@ -155,58 +155,6 @@
         ],
         "name": "キス・アンド・クライ",
         "startTime": "2026-04-16 11:30:00",
-        "type": "PICKUP怪ドル契約・TARGET"
-      },
-      {
-        "endTime": "2026-04-23 10:59:59",
-        "fiveStar": [
-          {
-            "name": "芦谷 真咲",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "富山 佳代",
-            "type": "thief"
-          },
-          {
-            "name": "藤川 雪実",
-            "type": "thief"
-          },
-          {
-            "name": "琴音・モンターニュ",
-            "type": "thief"
-          }
-        ],
-        "name": "咲き誇る友情",
-        "startTime": "2026-04-09 11:30:00",
-        "type": "PICKUP怪ドル契約・CHANCE"
-      },
-      {
-        "endTime": "2026-04-23 10:59:59",
-        "fiveStar": [
-          {
-            "name": "芦谷 真咲",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "富山 佳代",
-            "type": "thief"
-          },
-          {
-            "name": "藤川 雪実",
-            "type": "thief"
-          },
-          {
-            "name": "琴音・モンターニュ",
-            "type": "thief"
-          }
-        ],
-        "name": "咲き誇る友情",
-        "startTime": "2026-04-09 11:30:00",
         "type": "PICKUP怪ドル契約・TARGET"
       }
     ],
@@ -247,7 +195,7 @@
         "type": "武器補給"
       },
       {
-        "endTime": "2026-04-30 10:59:59",
+        "endTime": "2026-04-30 06:59:59",
         "fiveStar": [
           {
             "name": "ヴァルキリーペノン",
@@ -282,7 +230,7 @@
         "type": "武器補給"
       },
       {
-        "endTime": "2026-04-30 10:59:59",
+        "endTime": "2026-04-30 06:59:59",
         "fiveStar": [
           {
             "name": "ラムドゥラムール",
@@ -314,41 +262,6 @@
         ],
         "name": "無音の硝煙",
         "startTime": "2026-04-16 11:30:00",
-        "type": "武器補給"
-      },
-      {
-        "endTime": "2026-04-23 10:59:59",
-        "fiveStar": [
-          {
-            "name": "スピナサクラメンティ",
-            "type": "weapon",
-            "user": "芦谷"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "エメラルドチャーム",
-            "type": "weapon",
-            "user": "富山"
-          },
-          {
-            "name": "ヘビーメタルペイン",
-            "type": "weapon",
-            "user": "雪実"
-          },
-          {
-            "name": "エーデルワイス",
-            "type": "weapon",
-            "user": "琴音"
-          },
-          {
-            "name": "スピナカリタティス",
-            "type": "weapon",
-            "user": "芦谷"
-          }
-        ],
-        "name": "無音の硝煙",
-        "startTime": "2026-04-09 11:30:00",
         "type": "武器補給"
       }
     ]

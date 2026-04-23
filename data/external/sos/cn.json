@@ -10,6 +10,34 @@
               "Nullify": [],
               "Reflect": [],
               "Resistant": [
+                "Fire",
+                "Nuclear",
+                "Bless"
+              ],
+              "Weak": [
+                "Gun"
+              ]
+            },
+            "image": "B-guaiwutouxiang-uriel.png",
+            "level": "89",
+            "name": "被操控的尤利尔",
+            "skill": "1026,1016,1090",
+            "sn": 545101,
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 1.0,
+        "sn": 78401
+      },
+      {
+        "bonusRule": null,
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
                 "Ice",
                 "Nuclear",
                 "Curse"
@@ -22,7 +50,7 @@
             "level": "89",
             "name": "被操控的斯卡哈",
             "skill": "1016,1404,257",
-            "sn": 544101,
+            "sn": 545111,
             "stat": {}
           },
           {
@@ -45,36 +73,7 @@
             "level": "89",
             "name": "被操控的库夫林",
             "skill": "1023,1154",
-            "sn": 544102,
-            "stat": {}
-          }
-        ],
-        "scoreRatio": 2.0,
-        "sn": 78401
-      },
-      {
-        "bonusRule": null,
-        "enemy": [
-          {
-            "adapt": {
-              "Absorb": [],
-              "Nullify": [],
-              "Reflect": [],
-              "Resistant": [
-                "Phys",
-                "Fire",
-                "Wind",
-                "Nuclear"
-              ],
-              "Weak": [
-                "Psychokinesis"
-              ]
-            },
-            "image": "B-guaiwutouxiang-ganesha.png",
-            "level": "89",
-            "name": "被操控的葛内舍",
-            "skill": "1013,1022",
-            "sn": 544111,
+            "sn": 545112,
             "stat": {}
           }
         ],
@@ -82,9 +81,9 @@
         "sn": 78402
       }
     ],
-    "buff": "高压富氧: 进入战斗时，所有友方获得『狂热意志』。『狂热意志』：使用技能造成伤害时，每选择一个主目标，造成最终伤害提升20%；处在额外回合时，造成最终伤害额外提升20%；最多提升40%的最终伤害。",
-    "endTime": "2026-04-23 06:30:00",
-    "startTime": "2026-04-02 07:30:00"
+    "buff": "共生苔原: 进入战斗时，所有友方获得『极寒幼芽』。『极寒幼芽』：HIGHLIGHT、神通法造成的最终伤害提升40%。",
+    "endTime": "2026-05-14 06:30:00",
+    "startTime": "2026-04-23 07:30:00"
   },
   "msg": "OK",
   "status": 0

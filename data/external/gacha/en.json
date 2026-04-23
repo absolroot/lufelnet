@@ -54,7 +54,7 @@
         "type": "Chance Most Wanted Idol Contracts"
       },
       {
-        "endTime": "2026-04-30 10:59:59",
+        "endTime": "2026-04-30 06:59:59",
         "fiveStar": [
           {
             "name": "Mayumi Hashimoto",
@@ -80,7 +80,7 @@
         "type": "Targeted Most Wanted Idol Contracts"
       },
       {
-        "endTime": "2026-04-30 10:59:59",
+        "endTime": "2026-04-30 06:59:59",
         "fiveStar": [
           {
             "name": "Mayumi Hashimoto",
@@ -106,7 +106,7 @@
         "type": "Chance Most Wanted Idol Contracts"
       },
       {
-        "endTime": "2026-04-30 10:59:59",
+        "endTime": "2026-04-30 06:59:59",
         "fiveStar": [
           {
             "name": "Frostgale Kotone",
@@ -132,7 +132,7 @@
         "type": "Chance Most Wanted Idol Contracts"
       },
       {
-        "endTime": "2026-04-30 10:59:59",
+        "endTime": "2026-04-30 06:59:59",
         "fiveStar": [
           {
             "name": "Frostgale Kotone",
@@ -155,58 +155,6 @@
         ],
         "name": "Ice Princess",
         "startTime": "2026-04-16 11:30:00",
-        "type": "Targeted Most Wanted Idol Contracts"
-      },
-      {
-        "endTime": "2026-04-23 10:59:59",
-        "fiveStar": [
-          {
-            "name": "Masaki Ashiya",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Kayo Tomiyama",
-            "type": "thief"
-          },
-          {
-            "name": "Yukimi Fujikawa",
-            "type": "thief"
-          },
-          {
-            "name": "Kotone Montagne",
-            "type": "thief"
-          }
-        ],
-        "name": "Swords and Roses",
-        "startTime": "2026-04-09 11:30:00",
-        "type": "Chance Most Wanted Idol Contracts"
-      },
-      {
-        "endTime": "2026-04-23 10:59:59",
-        "fiveStar": [
-          {
-            "name": "Masaki Ashiya",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Kayo Tomiyama",
-            "type": "thief"
-          },
-          {
-            "name": "Yukimi Fujikawa",
-            "type": "thief"
-          },
-          {
-            "name": "Kotone Montagne",
-            "type": "thief"
-          }
-        ],
-        "name": "Swords and Roses",
-        "startTime": "2026-04-09 11:30:00",
         "type": "Targeted Most Wanted Idol Contracts"
       }
     ],
@@ -247,7 +195,7 @@
         "type": "Arms Deals"
       },
       {
-        "endTime": "2026-04-30 10:59:59",
+        "endTime": "2026-04-30 06:59:59",
         "fiveStar": [
           {
             "name": "Nebula Pennant",
@@ -282,7 +230,7 @@
         "type": "Arms Deals"
       },
       {
-        "endTime": "2026-04-30 10:59:59",
+        "endTime": "2026-04-30 06:59:59",
         "fiveStar": [
           {
             "name": "Lame de l'Amour",
@@ -314,41 +262,6 @@
         ],
         "name": "Silent Pistol",
         "startTime": "2026-04-16 11:30:00",
-        "type": "Arms Deals"
-      },
-      {
-        "endTime": "2026-04-23 10:59:59",
-        "fiveStar": [
-          {
-            "name": "Spina Sacramenti",
-            "type": "weapon",
-            "user": "Ashiya"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Emerald Charmer",
-            "type": "weapon",
-            "user": "Tomiyama"
-          },
-          {
-            "name": "Heavy Metal Pain",
-            "type": "weapon",
-            "user": "Yukimi"
-          },
-          {
-            "name": "Edelweiss",
-            "type": "weapon",
-            "user": "Kotone"
-          },
-          {
-            "name": "Spina Caritatis",
-            "type": "weapon",
-            "user": "Ashiya"
-          }
-        ],
-        "name": "Silent Pistol",
-        "startTime": "2026-04-09 11:30:00",
         "type": "Arms Deals"
       }
     ]

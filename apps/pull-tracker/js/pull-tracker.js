@@ -1751,7 +1751,7 @@
     // 캐릭터 매칭 후보 이름들(다국어/코드네임 포함)
     function candidateNames(info) {
         if (!info) return [];
-        const base = [info.name, info.name_en, info.name_jp, info.name_cn, info.codename]
+        const base = [info.name, info.name_en, info.name_jp, info.name_cn, info.codename, info.codename_en]
             .map(v => (v == null ? '' : String(v).trim()))
             .filter(Boolean);
         if (lang === 'jp') {
@@ -1769,7 +1769,7 @@
 
     function charNameByLang(info) {
         if (!info) return '';
-        if (lang === 'en') return String(info.codename || info.name_en || info.name || '').trim();
+        if (lang === 'en') return String(info.codename_en || info.codename || info.name_en || info.name || '').trim();
         if (lang === 'jp') return String(info.name_jp || info.name || '').trim();
         if (lang === 'cn') return String(info.name_cn || info.name || '').trim();
         return String(info.name || '').trim();

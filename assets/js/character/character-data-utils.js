@@ -92,6 +92,18 @@
         }
     }
 
+    function getDisplayCodename(character, lang) {
+        if (!character || typeof character !== 'object') return '';
+        const normalized = normalizeLang(lang || detectCurrentLanguage());
+        if (normalized === 'en' && character.codename_en) {
+            return String(character.codename_en).trim();
+        }
+        if (character.codename) {
+            return String(character.codename).trim();
+        }
+        return '';
+    }
+
     function applyLocalizedDisplayFields(character, lang) {
         if (!character || lang === 'kr') return;
 
@@ -242,6 +254,7 @@
         parseCharacterScriptData,
         fetchCharacterScriptData,
         getCharacterDataPath,
+        getDisplayCodename,
         mergeCharacterData,
         prepareCharacterData
     };

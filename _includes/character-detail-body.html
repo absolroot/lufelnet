@@ -1534,7 +1534,7 @@
             const codeEl = document.querySelector('.code-name');
             if (codeEl) {
                 codeEl.innerHTML = `
-                    <span class="label">${codeNameLabel}</span><span class="value">${character.codename || ''}</span>
+                    <span class="label">${codeNameLabel}</span><span class="value">${(window.CharacterDataUtils && typeof window.CharacterDataUtils.getDisplayCodename === 'function') ? window.CharacterDataUtils.getDisplayCodename(character, currentLang) : ((currentLang === 'en' && character.codename_en) ? character.codename_en : (character.codename || ''))}</span>
                 `;
             }
             const personaLabel = `${getCharacterI18nText('characterDetailPersona', '페르소나')} `;
@@ -2415,7 +2415,10 @@
         }
 
         // 메타 태그 업데이트 (태그가 존재하는 경우에만)
-        const description = `${characterDisplayName}(${character.codename}) - ${currentSiteInfo.siteName} : ${currentSiteInfo.description}`;
+        const displayCodename = (window.CharacterDataUtils && typeof window.CharacterDataUtils.getDisplayCodename === 'function')
+            ? window.CharacterDataUtils.getDisplayCodename(character, currentLang)
+            : ((currentLang === 'en' && character.codename_en) ? character.codename_en : (character.codename || ''));
+        const description = `${characterDisplayName}(${displayCodename}) - ${currentSiteInfo.siteName} : ${currentSiteInfo.description}`;
 
         const metaDescription = document.querySelector('meta[name="description"]');
         const ogTitle = document.querySelector('meta[property="og:title"]');
@@ -2788,8 +2791,10 @@
 
         // 영어: 우선 코드네임, 없으면 영어 이름, 그래도 없으면 원본
         if (currentLang === 'en') {
+            if (c.codename_en) return c.codename_en;
             if (c.codename) return c.codename;
             if (c.name_en) return c.name_en;
+            if (base.codename_en) return base.codename_en;
             if (base.codename) return base.codename;
             if (base.name_en) return base.name_en;
             return characterName;

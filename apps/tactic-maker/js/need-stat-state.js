@@ -189,7 +189,12 @@ export function getSourceDisplayName(source, baseUrl) {
     // Character name - use characterData for proper display
     const charMeta = (window.characterData || {})[source];
     if (charMeta) {
-        if (lang === 'en') return charMeta.codename || source;
+        if (lang === 'en') {
+            const displayCodename = (window.CharacterDataUtils && typeof window.CharacterDataUtils.getDisplayCodename === 'function')
+                ? window.CharacterDataUtils.getDisplayCodename(charMeta, 'en')
+                : (charMeta.codename_en || charMeta.codename || '');
+            return displayCodename || source;
+        }
         if (lang === 'jp') return charMeta.name_jp || source;
         if (lang === 'cn') return charMeta.name_cn || charMeta.name || source;
         return source;

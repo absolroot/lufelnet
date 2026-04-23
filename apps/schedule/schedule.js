@@ -985,7 +985,9 @@
         }
 
         const displayName = getCharacterName(charName);
-        const codename = charData.codename || '';
+        const codename = (window.CharacterDataUtils && typeof window.CharacterDataUtils.getDisplayCodename === 'function')
+            ? window.CharacterDataUtils.getDisplayCodename(charData, getCurrentLang())
+            : ((getCurrentLang() === 'en' && charData.codename_en) ? charData.codename_en : (charData.codename || ''));
         const rarity = charData.rarity || 5;
         const isLimit = charData.limit || false;
         const position = charData.position;

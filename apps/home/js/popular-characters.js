@@ -201,7 +201,7 @@
     function buildNameForLang(characterKey, lang, krCharacterData) {
         const kr = (krCharacterData && krCharacterData[characterKey]) ? krCharacterData[characterKey] : null;
         if (!kr) return characterKey;
-        if (lang === 'en') return kr.codename || characterKey;
+        if (lang === 'en') return kr.codename_en || kr.codename || characterKey;
         if (lang === 'jp') return kr.name_jp || characterKey;
         if (lang === 'cn') return kr.name_cn || kr.name || characterKey;
         return kr.name || characterKey;

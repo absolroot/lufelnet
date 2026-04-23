@@ -122,10 +122,10 @@
     });
     return __weaponManifestPromise;
   }
-  function charNameByLang(info){ if(!info) return ''; if(lang==='en') return String(info.codename||info.name_en||info.name||'').trim(); if(lang==='jp') return String(info.name_jp||info.name||'').trim(); if(lang==='cn') return String(info.name_cn||info.name||'').trim(); return String(info.name||'').trim(); }
+  function charNameByLang(info){ if(!info) return ''; if(lang==='en') return String(info.codename_en||info.codename||info.name_en||info.name||'').trim(); if(lang==='jp') return String(info.name_jp||info.name||'').trim(); if(lang==='cn') return String(info.name_cn||info.name||'').trim(); return String(info.name||'').trim(); }
   function candidateNames(info){
     if (!info) return [];
-    const base=[info.name,info.name_en,info.name_jp,info.name_cn,info.codename].map(v=>v?String(v).trim():'').filter(Boolean);
+    const base=[info.name,info.name_en,info.name_jp,info.name_cn,info.codename,info.codename_en].map(v=>v?String(v).trim():'').filter(Boolean);
     if (lang==='jp'){
       const extra=[]; for (const s of base){ try{ const no=String(s).replace(/[\s\u3000]+/g,''); if(no && no!==s) extra.push(no);}catch(_){} }
       return Array.from(new Set(base.concat(extra)));

@@ -129,7 +129,7 @@
             for (const [key, info] of Object.entries(data)) {
                 if (!info) continue;
                 if (info.name === name) {
-                    if (l === 'en') return info.name_en || info.codename || name;
+                    if (l === 'en') return info.name_en || info.codename_en || info.codename || name;
                     if (l === 'jp') return info.name_jp || name;
                     if (l === 'cn') return info.name_cn || name;
                 }
@@ -148,7 +148,7 @@
             if (grade === 5 && rarity !== 5) continue;
             if (grade === 4 && rarity !== 4) continue;
             const l = lang();
-            const displayName = (l === 'en') ? (info.name_en || info.codename || info.name || key)
+            const displayName = (l === 'en') ? (info.name_en || info.codename_en || info.codename || info.name || key)
                 : (l === 'jp') ? (info.name_jp || info.name || key)
                     : (l === 'cn') ? (info.name_cn || info.name || key)
                     : (info.name || key);
@@ -177,7 +177,7 @@
             if (!ownerKey) return '';
             const charInfo = charData[ownerKey];
             if (!charInfo) return ownerKey; // 캐릭터 데이터가 없으면 키 그대로
-            if (l === 'en') return charInfo.name_en || charInfo.codename || charInfo.name || ownerKey;
+            if (l === 'en') return charInfo.name_en || charInfo.codename_en || charInfo.codename || charInfo.name || ownerKey;
             if (l === 'jp') return charInfo.name_jp || charInfo.name || ownerKey;
             if (l === 'cn') return charInfo.name_cn || charInfo.name || ownerKey;
             return charInfo.name || ownerKey;

@@ -386,12 +386,22 @@
         return lang === 'en' || lang === 'jp';
     }
 
+    function getDisplayCodename(meta, lang) {
+        if (!meta) return '';
+        if (window.CharacterDataUtils && typeof window.CharacterDataUtils.getDisplayCodename === 'function') {
+            return window.CharacterDataUtils.getDisplayCodename(meta, lang);
+        }
+        if (lang === 'en' && meta.codename_en) return String(meta.codename_en || '');
+        return String(meta.codename || '');
+    }
+
     function buildCharacterMeta(characterKey, meta) {
         if (!characterKey || !meta || typeof meta !== 'object') return null;
         return {
             key: characterKey,
             name: String(meta.name || characterKey),
             codename: String(meta.codename || ''),
+            codename_en: String(meta.codename_en || ''),
             rarity: Number(meta.rarity || 0),
             rawElement: String(meta.element || ''),
             rawPosition: String(meta.position || ''),
@@ -582,7 +592,7 @@
             if (state.filters.position && state.filters.position.length > 0 && !state.filters.position.includes(character.rawPosition)) return false;
             if (state.filters.rarity && state.filters.rarity.length > 0 && !state.filters.rarity.includes(String(character.rarity))) return false;
             if (!query) return true;
-            const haystack = [character.name, character.key, character.codename].join(' ').toLowerCase();
+            const haystack = [character.name, character.key, character.codename, character.codename_en].join(' ').toLowerCase();
             return haystack.includes(query);
         });
     }
@@ -611,8 +621,9 @@
 
     function getCardDisplayName(character) {
         if (!character) return '';
-        if (state.lang === 'en' && character.codename) {
-            return character.codename;
+        const displayCodename = getDisplayCodename(character, state.lang);
+        if (state.lang === 'en' && displayCodename) {
+            return displayCodename;
         }
         return character.name;
     }
@@ -648,6 +659,7 @@
                 character.name,
                 character.key,
                 character.codename,
+                character.codename_en,
                 getCardDisplayName(character)
             ].join(' ').toLowerCase();
             return queries.some((query) => indexed.includes(query));
@@ -816,7 +828,7 @@
                                 <p class="sc-editor-kicker">${escapeHtml(t('label_selected_character', 'Selected Character'))}</p>
                                 <h2 id="scModalTitle">${escapeHtml(character.name)}</h2>
                                 <div class="sc-editor-meta">
-                                    <span>${escapeHtml(t('label_codename', 'Codename'))}: ${escapeHtml(character.codename || '-')}</span>
+                                    <span>${escapeHtml(t('label_codename', 'Codename'))}: ${escapeHtml(getDisplayCodename(character, state.lang) || '-')}</span>
                                     <span>${escapeHtml(t('label_rarity', 'Rarity'))}: ${escapeHtml(`${character.rarity}★`)}</span>
                                     <span>${escapeHtml(t('label_level_cap', 'Level Cap'))}: Lv${escapeHtml(character.levelCap)}</span>
                                 </div>

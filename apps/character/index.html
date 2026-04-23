@@ -888,8 +888,11 @@ redirect_from: []
             // Add name
             const nameText = document.createElement('span');
             // 스포일러 모드와 언어에 따른 이름 표시 로직
-            if (currentLang === 'en' && charData.codename) {
-                nameText.textContent = charData.codename;
+            const displayCodename = (window.CharacterDataUtils && typeof window.CharacterDataUtils.getDisplayCodename === 'function')
+                ? window.CharacterDataUtils.getDisplayCodename(charData, currentLang)
+                : ((currentLang === 'en' && charData.codename_en) ? charData.codename_en : charData.codename);
+            if (currentLang === 'en' && displayCodename) {
+                nameText.textContent = displayCodename;
             } else if (currentLang === 'jp' && spoilerEnabled && charData.name_jp) {
                 // 스포일러 모드에서 일본어 이름 사용
                 nameText.textContent = charData.name_jp;

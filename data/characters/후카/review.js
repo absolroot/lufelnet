@@ -1,6 +1,6 @@
 (function () {
     window.characterReview = window.characterReview || {};
-    window.characterReview["후카"] = { name_en: "Fuka Yamagishi", name_jp: "山岸 風花", codename: "FUKA",
+    window.characterReview["후카"] = { name_en: "Fuka Yamagishi", name_jp: "山岸 風花", codename: "FUKA", codename_en: "FUUKA",
         review: `
 야마기시 후카는 『오라클 전환』을 통해 아군과 교대할 수 있는 고유 능력을 지닌 해명 괴도다.
 

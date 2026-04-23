@@ -256,6 +256,7 @@
             if (String(meta.name_en || '').toLowerCase() === lower) return kr;
             if (String(meta.name_jp || '').toLowerCase() === lower) return kr;
             if (String(meta.codename || '').toLowerCase() === lower) return kr;
+            if (String(meta.codename_en || '').toLowerCase() === lower) return kr;
         }
         return name;
     }
@@ -292,7 +293,8 @@
                 const en = (meta.name_en || '').toLowerCase();
                 const jp = (meta.name_jp || '').toLowerCase();
                 const code = (meta.codename || '').toLowerCase();
-                return n.toLowerCase().includes(q) || en.includes(q) || jp.includes(q) || code.includes(q);
+                const codeEn = (meta.codename_en || '').toLowerCase();
+                return n.toLowerCase().includes(q) || en.includes(q) || jp.includes(q) || code.includes(q) || codeEn.includes(q);
             });
         }
         const seen = new Set();

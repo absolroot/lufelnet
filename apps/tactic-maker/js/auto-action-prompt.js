@@ -274,8 +274,11 @@ export class AutoActionPrompt {
         let displayName = elucidator.name;
         if (window.I18nService) {
             const lang = window.I18nService.currentLang || 'kr';
-            if (lang === 'en' && charData.codename) {
-                displayName = charData.codename;
+            if (lang === 'en') {
+                const displayCodename = (window.CharacterDataUtils && typeof window.CharacterDataUtils.getDisplayCodename === 'function')
+                    ? window.CharacterDataUtils.getDisplayCodename(charData, 'en')
+                    : (charData.codename_en || charData.codename || '');
+                if (displayCodename) displayName = displayCodename;
             } else if (lang === 'jp' && charData.name_jp) {
                 displayName = charData.name_jp;
             } else if (lang === 'cn' && charData.name_cn) {

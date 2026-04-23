@@ -454,7 +454,12 @@ class DefenseCalc {
         if (excluded) return groupName; // 사전에 없으면 원문 유지
         try {
             if (typeof characterData !== 'undefined' && characterData[groupName]) {
-                if (lang === 'en') return characterData[groupName].codename || groupName;
+                if (lang === 'en') {
+                    const displayCodename = (window.CharacterDataUtils && typeof window.CharacterDataUtils.getDisplayCodename === 'function')
+                        ? window.CharacterDataUtils.getDisplayCodename(characterData[groupName], 'en')
+                        : (characterData[groupName].codename_en || characterData[groupName].codename || '');
+                    return displayCodename || groupName;
+                }
                 if (lang === 'jp') return characterData[groupName].name_jp || groupName;
                 if (lang === 'cn') return characterData[groupName].name_cn || groupName;
             }

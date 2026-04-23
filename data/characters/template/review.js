@@ -1,6 +1,6 @@
 (function () {
     window.characterReview = window.characterReview || {};
-    window.characterReview[""] = { name_en: "", name_jp: "", codename: "",
+    window.characterReview[""] = { name_en: "", name_jp: "", codename: "", codename_en: "",
         review: ``,
         review_en: ``,
         review_jp: ``,

@@ -317,7 +317,12 @@ class CriticalCalc {
         try {
             const meta = this.getCharacterMeta(groupName);
             if (meta) {
-                if (lang === 'en') return meta.codename || groupName;
+                if (lang === 'en') {
+                    const displayCodename = (window.CharacterDataUtils && typeof window.CharacterDataUtils.getDisplayCodename === 'function')
+                        ? window.CharacterDataUtils.getDisplayCodename(meta, 'en')
+                        : (meta.codename_en || meta.codename || '');
+                    return displayCodename || groupName;
+                }
                 if (lang === 'jp') return meta.name_jp || groupName;
                 if (lang === 'cn') return meta.name_cn || groupName;
             }

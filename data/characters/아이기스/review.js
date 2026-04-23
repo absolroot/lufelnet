@@ -1,6 +1,6 @@
 (function () {
     window.characterReview = window.characterReview || {};
-    window.characterReview["아이기스"] = { name_en: "Aigis", name_jp: "アイギス", codename: "AIGIS",
+    window.characterReview["아이기스"] = { name_en: "Aigis", name_jp: "アイギス", codename: "AEGIS", codename_en: "AIGIS",
         review: `
 P3R 콜라보레이션으로 출시된 **총격 속성 지배 딜러**로, 설명은 복잡하지만 실제 운용은 역대 가장 단순한 딜러다.
 

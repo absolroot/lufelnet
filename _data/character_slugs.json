@@ -29,7 +29,7 @@
   "세이지": { "slug": "fleuret", "aliases": [] },
   "안": { "slug": "panther", "aliases": [] },
   "아야카": { "slug": "chord", "aliases": [] },
-  "아이기스": { "slug": "aigis", "aliases": [] },
+  "아이기스": { "slug": "aegis", "aliases": ["aigis"] },
   "아케치": { "slug": "crow", "aliases": [] },
   "야오링": { "slug": "rin", "aliases": [] },
   "야오링·사자무": { "slug": "rin-firecracker", "aliases": ["rin-lion-dance"] },
@@ -58,6 +58,6 @@
   "마나카": { "slug": "ange", "aliases": [] },
   "유우미": { "slug": "phoebe", "aliases": [] },
   "카요": { "slug": "okyann", "aliases": [] },
-  "후타바": { "slug": "navi", "aliases": [] },
-  "후카": { "slug": "fuka", "aliases": [] }
+  "후타바": { "slug": "navi", "aliases": ["oracle"] },
+  "후카": { "slug": "fuka", "aliases": ["fuuka"] }
 }

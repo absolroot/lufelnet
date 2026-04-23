@@ -521,7 +521,12 @@
   function getCharacterLabel(koreanCharName, lang) {
     const c = (typeof characterData !== 'undefined') ? characterData[koreanCharName] : null;
     if (!c) return koreanCharName;
-    if (lang === 'en' && c.codename) return c.codename;
+    if (lang === 'en') {
+      const displayCodename = (window.CharacterDataUtils && typeof window.CharacterDataUtils.getDisplayCodename === 'function')
+        ? window.CharacterDataUtils.getDisplayCodename(c, 'en')
+        : (c.codename_en || c.codename || '');
+      if (displayCodename) return displayCodename;
+    }
     if (lang === 'jp' && c.name_jp) return c.name_jp;
     if (lang === 'cn' && c.name_cn) return c.name_cn;
     return koreanCharName; // default KR label

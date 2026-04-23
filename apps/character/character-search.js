@@ -236,12 +236,21 @@
         return Array.from(new Set(queries));
     }
 
+    function getDisplayCodename(charData, lang) {
+        if (!charData) return '';
+        if (window.CharacterDataUtils && typeof window.CharacterDataUtils.getDisplayCodename === 'function') {
+            return window.CharacterDataUtils.getDisplayCodename(charData, lang);
+        }
+        if (lang === 'en' && charData.codename_en) return charData.codename_en;
+        return charData.codename || '';
+    }
+
     function getDisplayName(characterName) {
         const charData = (window.characterData && window.characterData[characterName]) || {};
         const lang = getCurrentLang();
 
         if (lang === 'en') {
-            return charData.codename || charData.name_en || charData.name || characterName;
+            return getDisplayCodename(charData, lang) || charData.name_en || charData.name || characterName;
         }
         if (lang === 'jp') {
             return charData.name_jp || charData.name || characterName;
@@ -273,6 +282,7 @@
                 char.name_cn,
                 char.name_tw,
                 char.codename,
+                char.codename_en,
                 char.persona,
                 char.persona_en,
                 char.persona_jp,
@@ -457,10 +467,11 @@
 
             const displayName = String(getDisplayName(characterName)).toLowerCase();
             const codename = String(charData.codename || '').toLowerCase();
+            const codenameEn = String(charData.codename_en || '').toLowerCase();
             const key = String(characterName || '').toLowerCase();
             const indexed = String(state.searchIndex[characterName] || '');
             const queryMatch = queries.some((q) => {
-                return displayName.includes(q) || codename.includes(q) || key.includes(q) || indexed.includes(q);
+                return displayName.includes(q) || codename.includes(q) || codenameEn.includes(q) || key.includes(q) || indexed.includes(q);
             });
             const nicknameMatch = nicknameEntries.some(([nickname, realName]) => {
                 const nick = nickname.toLowerCase();

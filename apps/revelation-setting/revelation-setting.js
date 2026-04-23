@@ -398,7 +398,10 @@
         if (!data) return krName;
 
         if (state.lang === 'en') {
-            return data.codename || data.name_en || data.name || krName;
+            const displayCodename = (window.CharacterDataUtils && typeof window.CharacterDataUtils.getDisplayCodename === 'function')
+                ? window.CharacterDataUtils.getDisplayCodename(data, 'en')
+                : (data.codename_en || data.codename || '');
+            return displayCodename || data.name_en || data.name || krName;
         }
         if (state.lang === 'jp') {
             return data.name_jp || data.name || krName;

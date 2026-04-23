@@ -120,6 +120,18 @@ function getCodename(krName, friendNum, characterData) {
   );
 }
 
+function getCodenameAliases(krName, characterData, canonicalCodename) {
+  const charEntry = characterData[krName];
+  const aliases = [];
+  const seen = new Set();
+  const codenameEnSlug = slugify(String(charEntry?.codename_en || '').trim());
+  if (codenameEnSlug && codenameEnSlug !== canonicalCodename && !seen.has(codenameEnSlug)) {
+    seen.add(codenameEnSlug);
+    aliases.push(codenameEnSlug);
+  }
+  return aliases;
+}
+
 function getDisplayName(krName, lang, friendNum, characterData) {
   if (lang === 'kr') return krName;
 
@@ -405,11 +417,21 @@ function buildExpectedFiles(friendNum, characterData, seoMeta) {
 
   for (const krName of activeKrNames) {
     const codename = getCodename(krName, friendNum, characterData);
+    const aliasSlugs = getCodenameAliases(krName, characterData, codename);
+
     const previousOwner = codenameOwner.get(codename);
     if (previousOwner && previousOwner !== krName) {
       throw new Error(`Codename collision: "${codename}" is used by "${previousOwner}" and "${krName}".`);
     }
     codenameOwner.set(codename, krName);
+
+    for (const alias of aliasSlugs) {
+      const aliasOwner = codenameOwner.get(alias);
+      if (aliasOwner && aliasOwner !== krName) {
+        throw new Error(`Codename alias collision: "${alias}" is used by "${aliasOwner}" and "${krName}".`);
+      }
+      codenameOwner.set(alias, krName);
+    }
 
     const imagePath = getImagePath(krName, friendNum);
 
@@ -436,6 +458,13 @@ function buildExpectedFiles(friendNum, characterData, seoMeta) {
 
     const canonicalKoPath = `/kr/synergy/${codename}/`;
     addRedirectStub(`/synergy/${codename}/`, canonicalKoPath, buildDetailLangTargets('synergy', codename));
+    for (const alias of aliasSlugs) {
+      addRedirectStub(`/synergy/${alias}/`, canonicalKoPath, buildDetailLangTargets('synergy', codename));
+      addRedirectStub(`/kr/synergy/${alias}/`, canonicalKoPath);
+      addRedirectStub(`/en/synergy/${alias}/`, `/en/synergy/${codename}/`);
+      addRedirectStub(`/jp/synergy/${alias}/`, `/jp/synergy/${codename}/`);
+      addRedirectStub(`/cn/synergy/${alias}/`, `/cn/synergy/${codename}/`);
+    }
   }
 
   for (const lang of LIST_PAGE_LANGS) {

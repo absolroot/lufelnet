@@ -1,6 +1,6 @@
 (function () {
     window.characterReview = window.characterReview || {};
-    window.characterReview["후타바"] = { name_en: "Futaba Sakura", name_jp: "佐倉 双葉", codename: "NAVI",
+    window.characterReview["후타바"] = { name_en: "Futaba Sakura", name_jp: "佐倉 双葉", codename: "NAVI", codename_en: "ORACLE",
         review: `P5 오리지널 캐릭터이자 적의 약점 속성을 조정하는 최초의 5성 한정 괴도다.
 
 **스킬3으로 속성 내성(0.5배)인 경우 일반(1.0배)으로, 일반인 경우 약점(1.2배)으로, 약점인 경우에는 약점 강화(1.45배)로 변환하는 근간을 뒤흔드는 메커니즘을 가지고 있다.**
@@ -59,4 +59,3 @@ Because **Skill 1 applies a high-value DEF reduction**, it is recommended to use
         cons_cn: ["技能3启动前需要较长铺垫时间。", "敌人死亡并替换后，原有减益效果会一起消失。"],
     };
 })();
-

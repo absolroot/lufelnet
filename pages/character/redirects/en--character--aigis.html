@@ -1,6 +1,6 @@
 ---
 layout: null
-permalink: /character/aigis/
+permalink: /en/character/aigis/
 sitemap: false
 ---
 <!doctype html>
@@ -17,7 +17,7 @@ sitemap: false
       var requestedLang = params.get("lang");
       params.delete("lang");
       params.delete("name");
-      var languageTargets = {"kr":"/kr/character/aegis/","en":"/en/character/aegis/","jp":"/jp/character/aegis/","cn":"/cn/character/aegis/"};
+      var languageTargets = null;
       var defaultPath = "/en/character/aegis/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();

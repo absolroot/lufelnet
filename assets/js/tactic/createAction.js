@@ -13,6 +13,15 @@
         return 'kr';
       }
 
+      function getCharacterDisplayCodename(char, lang) {
+        if (!char) return '';
+        if (window.CharacterDataUtils && typeof window.CharacterDataUtils.getDisplayCodename === 'function') {
+          return window.CharacterDataUtils.getDisplayCodename(char, lang);
+        }
+        if (lang === 'en' && char.codename_en) return char.codename_en;
+        return char.codename || '';
+      }
+
       // 캐릭터 이름 번역 함수 (동기 버전 - 즉시 반환)
       function getCharacterDisplayNameSync(charName) {
         const currentLang = getCurrentLanguage();
@@ -34,7 +43,7 @@
         
         // 폴백: name 필드가 없거나 원본과 같으면 name_en/name_jp 확인
         if (currentLang === 'en' && char.name_en) {
-          const result = char.codename || char.name_en;
+          const result = getCharacterDisplayCodename(char, currentLang) || char.name_en;
           console.warn('[DEBUG createAction] getCharacterDisplayNameSync - name_en 폴백', { 
             charName, 
             result, 

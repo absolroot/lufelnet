@@ -373,7 +373,10 @@ export class DataLoader {
 
         const lang = this.getCurrentLang();
         if (lang === 'en') {
-            return charData.codename || charData.name_en || charData.name || charName;
+            const displayCodename = (window.CharacterDataUtils && typeof window.CharacterDataUtils.getDisplayCodename === 'function')
+                ? window.CharacterDataUtils.getDisplayCodename(charData, 'en')
+                : (charData.codename_en || charData.codename || '');
+            return displayCodename || charData.name_en || charData.name || charName;
         } else if (lang === 'jp') {
             return charData.name_en || charData.name || charName;
         } else if (lang === 'cn') {

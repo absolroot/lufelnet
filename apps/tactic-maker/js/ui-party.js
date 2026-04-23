@@ -37,7 +37,12 @@ function isKrLikeLang(lang) {
 
 function getLocalizedCharacterName(charData, name, lang) {
     if (!charData) return name;
-    if (lang === 'en') return charData.codename || charData.name_en || charData.name || name;
+    if (lang === 'en') {
+        const displayCodename = (window.CharacterDataUtils && typeof window.CharacterDataUtils.getDisplayCodename === 'function')
+            ? window.CharacterDataUtils.getDisplayCodename(charData, 'en')
+            : (charData.codename_en || charData.codename || '');
+        return displayCodename || charData.name_en || charData.name || name;
+    }
     if (lang === 'jp') return charData.name_jp || charData.name || name;
     if (lang === 'cn') return charData.name_cn || charData.name || name;
     return charData.name || name;
@@ -715,7 +720,7 @@ export class PartyUI {
             if (activeElements.size > 0 && !activeElements.has(charData.element)) return;
             if (activePositions.size > 0 && !activePositions.has(charData.position)) return;
             if (q) {
-                const text = `${name} ${charData.name || ''} ${charData.codename || ''}`.toLowerCase();
+                const text = `${name} ${charData.name || ''} ${charData.name_en || ''} ${charData.name_jp || ''} ${charData.name_cn || ''} ${charData.codename || ''} ${charData.codename_en || ''}`.toLowerCase();
                 if (!text.includes(q)) return;
             }
 

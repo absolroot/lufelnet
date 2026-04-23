@@ -22,7 +22,8 @@ window.characterList = window.characterList || {
     rarity : 4성/5성 
     position : 지배/굴복/구원/반항/우월/해명
     release_order : 캐릭터 출시 순서
-    codename : 코드네임
+    codename : canonical/shared 코드네임
+    codename_en : EN display-only 코드네임 override
     persona : 페르소나 이름
     name : 캐릭터 이름
 */
@@ -31,7 +32,7 @@ window.characterData = window.characterData || {};
 Object.assign(window.characterData, {
     "아이기스": {
         "limit": true,
-        "tag": "테우르기아",
+        "tag": "테우르기아, HP 소모, 실드 관통",
         "tag_en": "",
         "tag_jp": "",
         "color": "#fff7cf",
@@ -49,7 +50,8 @@ Object.assign(window.characterData, {
         "name_jp": "アイギス",
         "name_cn": "埃癸斯",
         "name_tw": "",
-        "codename": "AIGIS",
+        "codename": "AEGIS",
+        "codename_en": "AIGIS",
         "skill_item": 6
     },
     "아란": {
@@ -252,6 +254,7 @@ Object.assign(window.characterData, {
         "name_jp": "山岸 風花",
         "name_cn": "山岸风花",
         "codename": "FUKA",
+        "codename_en": "FUUKA",
         "skill_item": 5,
         "name_tw": "山岸風花",
         "persona_cn": "路济亚"
@@ -718,6 +721,7 @@ Object.assign(window.characterData, {
         "name_jp": "佐倉 双葉",
         "name_cn": "佐仓双叶",
         "codename": "NAVI",
+        "codename_en": "ORACLE",
         "skill_item": 3,
         "name_tw": "佐倉雙葉",
         "persona_cn": "死灵之书"

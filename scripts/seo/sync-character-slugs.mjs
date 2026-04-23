@@ -125,6 +125,12 @@ function buildSyncedSlugMap(allCharacters, characterData, mapRaw) {
       aliases.push(alias);
     }
 
+    const codenameEnSlug = slugify(String(charEntry.codename_en || '').trim());
+    if (codenameEnSlug && codenameEnSlug !== slug && !aliasSeen.has(codenameEnSlug)) {
+      aliasSeen.add(codenameEnSlug);
+      aliases.push(codenameEnSlug);
+    }
+
     nextMap[krName] = { slug, aliases };
   }
 

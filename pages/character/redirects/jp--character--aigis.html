@@ -1,6 +1,6 @@
 ---
 layout: null
-permalink: /character/aigis/
+permalink: /jp/character/aigis/
 sitemap: false
 ---
 <!doctype html>
@@ -17,8 +17,8 @@ sitemap: false
       var requestedLang = params.get("lang");
       params.delete("lang");
       params.delete("name");
-      var languageTargets = {"kr":"/kr/character/aegis/","en":"/en/character/aegis/","jp":"/jp/character/aegis/","cn":"/cn/character/aegis/"};
-      var defaultPath = "/en/character/aegis/";
+      var languageTargets = null;
+      var defaultPath = "/jp/character/aegis/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
         if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
@@ -64,7 +64,7 @@ sitemap: false
       window.location.replace(next);
     })();
   </script>
-  <noscript><meta http-equiv="refresh" content="0; url=/en/character/aegis/"></noscript>
-  <a href="/en/character/aegis/">Continue</a>
+  <noscript><meta http-equiv="refresh" content="0; url=/jp/character/aegis/"></noscript>
+  <a href="/jp/character/aegis/">Continue</a>
 </body>
 </html>

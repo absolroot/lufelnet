@@ -36,6 +36,15 @@ function getCurrentLanguage() {
   return 'kr';
 }
 
+function getCharacterDisplayCodename(char, lang) {
+  if (!char) return '';
+  if (window.CharacterDataUtils && typeof window.CharacterDataUtils.getDisplayCodename === 'function') {
+    return window.CharacterDataUtils.getDisplayCodename(char, lang);
+  }
+  if (lang === 'en' && char.codename_en) return char.codename_en;
+  return char.codename || '';
+}
+
 function getWonderI18nText(key, fallback = '') {
   if (typeof window.t === 'function') {
     return window.t(key, fallback);
@@ -761,6 +770,7 @@ function renderPortalList(filter) {
         const names = [
           String(char || '').toLowerCase(), // KR 키(코드키)
           ch && ch.codename ? String(ch.codename).toLowerCase() : '', // codename
+          ch && ch.codename_en ? String(ch.codename_en).toLowerCase() : '',
           ch && ch.name ? String(ch.name).toLowerCase() : '', // KR 이름
           ch && ch.name_kr ? String(ch.name_kr).toLowerCase() : '',
           ch && ch.name_en ? String(ch.name_en).toLowerCase() : '',
@@ -774,7 +784,7 @@ function renderPortalList(filter) {
         const lang = getCurrentLanguage();
         if (!characterData[c]) return c;
         const ch = characterData[c];
-        if (lang === 'en') return ch.codename || ch.name_en || c;
+        if (lang === 'en') return getCharacterDisplayCodename(ch, lang) || ch.name_en || c;
         if (lang === 'jp') return ch.name_jp || c;
         return c; // KR은 KR 키(표시용)
       })(a);
@@ -782,7 +792,7 @@ function renderPortalList(filter) {
         const lang = getCurrentLanguage();
         if (!characterData[c]) return c;
         const ch = characterData[c];
-        if (lang === 'en') return ch.codename || ch.name_en || c;
+        if (lang === 'en') return getCharacterDisplayCodename(ch, lang) || ch.name_en || c;
         if (lang === 'jp') return ch.name_jp || c;
         return c;
       })(b);
@@ -819,7 +829,7 @@ function renderPortalList(filter) {
         const lang = getCurrentLanguage();
         if (!characterData[c]) return c;
         const ch = characterData[c];
-        if (lang === 'en') return ch.codename || ch.name_en || c;
+        if (lang === 'en') return getCharacterDisplayCodename(ch, lang) || ch.name_en || c;
         if (lang === 'jp') return ch.name_jp || c;
         return c; // KR은 KR 키 표시
       })(char);

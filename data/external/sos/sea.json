@@ -1,5 +1,66 @@
 {
-  "data": null,
-  "msg": "SOS not found.",
-  "status": 100
+  "data": {
+    "boss": [
+      {
+        "bonusRule": "All ally Almighty attack Score x 3",
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Ice",
+                "Bless",
+                "Curse"
+              ],
+              "Weak": [
+                "Fire"
+              ]
+            },
+            "image": "B-guaiwutouxiang-vishnu.png",
+            "level": "89",
+            "name": "Vishnu",
+            "skill": "407,905,408,1104",
+            "sn": "526101",
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 1.0,
+        "sn": "288401"
+      },
+      {
+        "bonusRule": "All ally Curse attack Score x 3",
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Electric",
+                "Bless"
+              ],
+              "Weak": [
+                "Curse"
+              ]
+            },
+            "image": "B-guaiwutouxiang-sraosha.png",
+            "level": "89",
+            "name": "Sraosha",
+            "skill": "1021,1003,1019",
+            "sn": "526111",
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 1.0,
+        "sn": "288402"
+      }
+    ],
+    "buff": "Crystal Chorus: When allies other than Wonder deal Physical or Almighty damage with skills, all allies gain Cellular Crystallization.\nCellular Crystallization: Increase final damage by 40% for 2 turns.",
+    "endTime": "2026-05-01 09:30:00",
+    "startTime": "2026-04-24 10:30:00"
+  },
+  "msg": "OK",
+  "status": 0
 }

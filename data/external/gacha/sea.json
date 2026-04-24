@@ -2,55 +2,55 @@
   "data": {
     "thief": [
       {
-        "endTime": "2026-04-24 09:59:59",
+        "endTime": "2026-05-22 09:59:59",
         "fiveStar": [
           {
-            "name": "Kasumi Yoshizawa",
+            "name": "Goro Akechi",
             "type": "thief"
           }
         ],
         "fourStar": [
           {
-            "name": "Motoha Arai",
+            "name": "Leo Kamiyama",
             "type": "thief"
           },
           {
-            "name": "Tomoko Noge",
+            "name": "Seiji Shiratori",
             "type": "thief"
           },
           {
-            "name": "Kiyoshi Kurotani",
+            "name": "Miyu Sahara",
             "type": "thief"
           }
         ],
-        "name": "Faith Held Close",
-        "startTime": "2026-03-27 10:30:00",
+        "name": "The Detective Prince",
+        "startTime": "2026-04-24 10:30:00",
         "type": "Targeted Most Wanted Idol Contracts"
       },
       {
-        "endTime": "2026-04-24 09:59:59",
+        "endTime": "2026-05-22 09:59:59",
         "fiveStar": [
           {
-            "name": "Kasumi Yoshizawa",
+            "name": "Goro Akechi",
             "type": "thief"
           }
         ],
         "fourStar": [
           {
-            "name": "Motoha Arai",
+            "name": "Leo Kamiyama",
             "type": "thief"
           },
           {
-            "name": "Tomoko Noge",
+            "name": "Seiji Shiratori",
             "type": "thief"
           },
           {
-            "name": "Kiyoshi Kurotani",
+            "name": "Miyu Sahara",
             "type": "thief"
           }
         ],
-        "name": "Faith Held Close",
-        "startTime": "2026-03-27 10:30:00",
+        "name": "The Detective Prince",
+        "startTime": "2026-04-24 10:30:00",
         "type": "Chance Most Wanted Idol Contracts"
       },
       {
@@ -104,6 +104,58 @@
         "name": "Full Throttle",
         "startTime": "2026-04-10 10:30:00",
         "type": "Chance Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-05-08 09:59:59",
+        "fiveStar": [
+          {
+            "name": "Frostgale Kotone",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Leo Kamiyama",
+            "type": "thief"
+          },
+          {
+            "name": "Seiji Shiratori",
+            "type": "thief"
+          },
+          {
+            "name": "Miyu Sahara",
+            "type": "thief"
+          }
+        ],
+        "name": "Ice Princess",
+        "startTime": "2026-04-24 10:30:00",
+        "type": "Chance Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-05-08 09:59:59",
+        "fiveStar": [
+          {
+            "name": "Frostgale Kotone",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Leo Kamiyama",
+            "type": "thief"
+          },
+          {
+            "name": "Seiji Shiratori",
+            "type": "thief"
+          },
+          {
+            "name": "Miyu Sahara",
+            "type": "thief"
+          }
+        ],
+        "name": "Ice Princess",
+        "startTime": "2026-04-24 10:30:00",
+        "type": "Targeted Most Wanted Idol Contracts"
       },
       {
         "endTime": "2026-05-01 09:59:59",
@@ -160,38 +212,38 @@
     ],
     "weapon": [
       {
-        "endTime": "2026-04-24 09:59:59",
+        "endTime": "2026-05-22 09:59:59",
         "fiveStar": [
           {
-            "name": "Royal Étoile",
+            "name": "Gordian Kopis",
             "type": "weapon",
-            "user": "Kasumi"
+            "user": "Akechi"
           }
         ],
         "fourStar": [
           {
-            "name": "Crime and Punishment",
+            "name": "Justice Lance",
             "type": "weapon",
-            "user": "Motoha"
+            "user": "Kamiyama"
           },
           {
-            "name": "Shadow Crowns",
+            "name": "Knight's Reward",
             "type": "weapon",
-            "user": "Tomoko"
+            "user": "Shiratori"
           },
           {
-            "name": "Death Stinger",
+            "name": "Victory Beam",
             "type": "weapon",
-            "user": "Kurotani"
+            "user": "Akechi"
           },
           {
-            "name": "Divine Sword of Sinai",
+            "name": "Submarine Sonar",
             "type": "weapon",
-            "user": "Kasumi"
+            "user": "Miyu"
           }
         ],
         "name": "Silent Pistol",
-        "startTime": "2026-03-27 10:30:00",
+        "startTime": "2026-04-24 10:30:00",
         "type": "Arms Deals"
       },
       {
@@ -227,6 +279,41 @@
         ],
         "name": "Silent Pistol",
         "startTime": "2026-04-10 10:30:00",
+        "type": "Arms Deals"
+      },
+      {
+        "endTime": "2026-05-08 09:59:59",
+        "fiveStar": [
+          {
+            "name": "Lame de l'Amour",
+            "type": "weapon",
+            "user": "Kotone"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Justice Lance",
+            "type": "weapon",
+            "user": "Kamiyama"
+          },
+          {
+            "name": "Knight's Reward",
+            "type": "weapon",
+            "user": "Shiratori"
+          },
+          {
+            "name": "Lame de l'Aube",
+            "type": "weapon",
+            "user": "Kotone"
+          },
+          {
+            "name": "Submarine Sonar",
+            "type": "weapon",
+            "user": "Miyu"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2026-04-24 10:30:00",
         "type": "Arms Deals"
       },
       {

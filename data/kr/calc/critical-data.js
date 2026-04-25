@@ -407,9 +407,9 @@ const criticalBuffData = {
       "duration_cn": "3回合",
       "options_cn": [
         "LV10",
-        "LV10+意识5",
+        "LV10+心象5",
         "LV13",
-        "LV13+意识5"
+        "LV13+心象5"
       ]
     }
   ],
@@ -476,9 +476,9 @@ const criticalBuffData = {
       "duration_cn": "2回合",
       "options_cn": [
         "LV10",
-        "LV10+意识5",
+        "LV10+心象5",
         "LV13",
-        "LV13+意识5"
+        "LV13+心象5"
       ]
     }
   ],
@@ -939,9 +939,9 @@ const criticalSelfData = {
       "duration_cn": "2回合",
       "options_cn": [
         "LV10",
-        "LV10+意识5",
+        "LV10+心象5",
         "LV13",
-        "LV13+意识5"
+        "LV13+心象5"
       ]
     },
     {
@@ -1023,9 +1023,9 @@ const criticalSelfData = {
       "duration_cn": "3回合",
       "options_cn": [
         "LV10",
-        "LV10+意识5",
+        "LV10+心象5",
         "LV13",
-        "LV13+意识5"
+        "LV13+心象5"
       ]
     },
     {
@@ -1226,9 +1226,9 @@ const criticalSelfData = {
       "duration_cn": "2回合",
       "options_cn": [
         "LV10",
-        "LV10+意识5",
+        "LV10+心象5",
         "LV13",
-        "LV13+意识5"
+        "LV13+心象5"
       ]
     },
     {
@@ -1356,7 +1356,7 @@ const criticalSelfData = {
       "note_jp": "",
       "skillName_cn": "进阶强化",
       "note_cn": "",
-      "type_cn": "意识",
+      "type_cn": "心象",
       "target_cn": "自身",
       "duration_cn": "-",
       "options_cn": []
@@ -1448,7 +1448,7 @@ const criticalSelfData = {
       "note": "",
       "skillName_cn": "进阶强化",
       "note_cn": "",
-      "type_cn": "意识",
+      "type_cn": "心象",
       "target_cn": "自身",
       "duration_cn": "-",
       "options_cn": []
@@ -1724,7 +1724,7 @@ const criticalSelfData = {
       "note": "",
       "skillName_cn": "进阶强化",
       "note_cn": "",
-      "type_cn": "意识",
+      "type_cn": "心象",
       "target_cn": "自身",
       "duration_cn": "-",
       "options_cn": []
@@ -1798,7 +1798,7 @@ const criticalSelfData = {
       "note": "",
       "skillName_cn": "进阶强化",
       "note_cn": "",
-      "type_cn": "意识",
+      "type_cn": "心象",
       "target_cn": "自身",
       "duration_cn": "-",
       "options_cn": []
@@ -2000,7 +2000,7 @@ const criticalSelfData = {
       "note": "",
       "skillName_cn": "进阶强化",
       "note_cn": "",
-      "type_cn": "意识",
+      "type_cn": "心象",
       "target_cn": "自身",
       "duration_cn": "-",
       "options_cn": []
@@ -2067,7 +2067,7 @@ const criticalSelfData = {
       "note": "",
       "skillName_cn": "进阶强化",
       "note_cn": "",
-      "type_cn": "意识",
+      "type_cn": "心象",
       "target_cn": "自身",
       "duration_cn": "-",
       "options_cn": []
@@ -2335,7 +2335,7 @@ const criticalSelfData = {
       "note": "",
       "skillName_cn": "进阶强化",
       "note_cn": "",
-      "type_cn": "意识",
+      "type_cn": "心象",
       "target_cn": "自身",
       "duration_cn": "-",
       "options_cn": []
@@ -2359,7 +2359,7 @@ const criticalSelfData = {
       "note": "",
       "skillName_cn": "进阶强化",
       "note_cn": "",
-      "type_cn": "意识",
+      "type_cn": "心象",
       "target_cn": "自身",
       "duration_cn": "-",
       "options_cn": []
@@ -2549,7 +2549,7 @@ const criticalSelfData = {
       "note": "",
       "skillName_cn": "进阶强化",
       "note_cn": "",
-      "type_cn": "意识",
+      "type_cn": "心象",
       "target_cn": "自身",
       "duration_cn": "-",
       "options_cn": []
@@ -2729,7 +2729,7 @@ const criticalSelfData = {
       "note": "",
       "skillName_cn": "进阶强化",
       "note_cn": "",
-      "type_cn": "意识",
+      "type_cn": "心象",
       "target_cn": "自身",
       "duration_cn": "-",
       "options_cn": []
@@ -2958,7 +2958,7 @@ const criticalSelfData = {
       "note": "",
       "skillName_cn": "进阶强化",
       "note_cn": "",
-      "type_cn": "意识",
+      "type_cn": "心象",
       "target_cn": "自身",
       "duration_cn": "-",
       "options_cn": []

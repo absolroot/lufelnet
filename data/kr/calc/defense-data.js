@@ -76,9 +76,9 @@ const penetrateData = {
       "duration_cn": "3回合",
       "options_cn": [
         "LV10",
-        "LV10+意识5",
+        "LV10+心象5",
         "LV13",
-        "LV13+意识5"
+        "LV13+心象5"
       ]
     },
     {
@@ -105,7 +105,7 @@ const penetrateData = {
       "note_en": "Medic/Defense",
       "note_jp": "救済/防御",
       "skillName_cn": "执行",
-      "note_cn": "意识核心 - 救援/防护",
+      "note_cn": "心象核心 - 救援/防护",
       "type_cn": "被动",
       "target_cn": "群体",
       "duration_cn": "-",
@@ -150,11 +150,11 @@ const penetrateData = {
       "duration_cn": "2回合",
       "options_cn": [
         "LV10",
-        "LV10+意识5",
+        "LV10+心象5",
         "LV13",
-        "LV13+意识5",
+        "LV13+心象5",
         "LV13(14层)",
-        "LV13+意识5(14层)"
+        "LV13+心象5(14层)"
       ]
     },
     {
@@ -229,9 +229,9 @@ const penetrateData = {
       "duration_cn": "2回合",
       "options_cn": [
         "LV10",
-        "LV10+意识5",
+        "LV10+心象5",
         "LV13",
-        "LV13+意识5"
+        "LV13+心象5"
       ]
     },
     {
@@ -266,9 +266,9 @@ const penetrateData = {
       "duration_cn": "1回合",
       "options_cn": [
         "LV10",
-        "LV10+意识5",
+        "LV10+心象5",
         "LV13",
-        "LV13+意识5"
+        "LV13+心象5"
       ]
     },
     {
@@ -357,9 +357,9 @@ const penetrateData = {
       "duration_cn": "2回合",
       "options_cn": [
         "LV10",
-        "LV10+意识5",
+        "LV10+心象5",
         "LV12",
-        "LV12+意识5"
+        "LV12+心象5"
       ]
     }
   ],
@@ -435,7 +435,7 @@ const penetrateData = {
       "note": "",
       "skillName_cn": "兑和",
       "note_cn": "",
-      "type_cn": "意识核心",
+      "type_cn": "心象核心",
       "target_cn": "群体",
       "duration_cn": "-",
       "options_cn": [
@@ -507,9 +507,9 @@ const penetrateData = {
       "duration_cn": "2回合",
       "options_cn": [
         "LV10",
-        "LV10+意识5",
+        "LV10+心象5",
         "LV13",
-        "LV13+意识5"
+        "LV13+心象5"
       ]
     }
   ],
@@ -571,7 +571,7 @@ const penetrateData = {
       "note": "",
       "skillName_cn": "进阶强化",
       "note_cn": "",
-      "type_cn": "意识",
+      "type_cn": "心象",
       "target_cn": "自身",
       "duration_cn": "-",
       "options_cn": []
@@ -643,9 +643,9 @@ const penetrateData = {
       "duration_cn": "-",
       "options_cn": [
         "LV10",
-        "LV10+意识5",
+        "LV10+心象5",
         "LV13",
-        "LV13+意识5"
+        "LV13+心象5"
       ]
     },
     {
@@ -671,7 +671,7 @@ const penetrateData = {
     {
       "id": "yukimakoto3",
       "type": "의식1",
-      "target": "자신",
+      "target": "광역",
       "skillIcon": "/assets/img/character-detail/ritual1.png",
       "skillName": "우연한 인연",
       "options": [],
@@ -699,7 +699,7 @@ const penetrateData = {
       "note": "",
       "skillName_cn": "进阶强化",
       "note_cn": "",
-      "type_cn": "意识",
+      "type_cn": "心象",
       "target_cn": "自身",
       "duration_cn": "-",
       "options_cn": []
@@ -739,7 +739,7 @@ const penetrateData = {
       "note": "",
       "skillName_cn": "进阶强化",
       "note_cn": "",
-      "type_cn": "意识",
+      "type_cn": "心象",
       "target_cn": "自身",
       "duration_cn": "-",
       "options_cn": []
@@ -1499,9 +1499,9 @@ const defenseCalcData = {
       "duration_cn": "2回合",
       "options_cn": [
         "LV10",
-        "LV10+意识5",
+        "LV10+心象5",
         "LV13",
-        "LV13+意识5"
+        "LV13+心象5"
       ]
     },
     {
@@ -1558,9 +1558,9 @@ const defenseCalcData = {
       "duration_cn": "2回合",
       "options_cn": [
         "LV10",
-        "LV10+意识5",
+        "LV10+心象5",
         "LV13",
-        "LV13+意识5"
+        "LV13+心象5"
       ]
     },
     {
@@ -1595,9 +1595,9 @@ const defenseCalcData = {
       "duration_cn": "2回合",
       "options_cn": [
         "LV10",
-        "LV10+意识5",
+        "LV10+心象5",
         "LV13",
-        "LV13+意识5"
+        "LV13+心象5"
       ]
     }
   ],
@@ -1634,9 +1634,9 @@ const defenseCalcData = {
       "duration_cn": "2回合",
       "options_cn": [
         "LV10",
-        "LV10+意识5",
+        "LV10+心象5",
         "LV13",
-        "LV13+意识5"
+        "LV13+心象5"
       ]
     }
   ],
@@ -1744,10 +1744,10 @@ const defenseCalcData = {
       "duration_cn": "-",
       "options_cn": [
         "LV10",
-        "LV10+意识5",
-        "LV10+意识5(意识1)",
-        "LV13+意识5",
-        "LV13+意识5(意识6)"
+        "LV10+心象5",
+        "LV10+心象5(意识1)",
+        "LV13+心象5",
+        "LV13+心象5(意识6)"
       ]
     },
     {
@@ -1783,10 +1783,10 @@ const defenseCalcData = {
       "duration_cn": "-",
       "options_cn": [
         "LV10",
-        "LV10+意识5",
-        "LV10+意识5(意识1)",
-        "LV13+意识5",
-        "LV13+意识5(意识6)"
+        "LV10+心象5",
+        "LV10+心象5(意识1)",
+        "LV13+心象5",
+        "LV13+心象5(意识6)"
       ]
     }
   ],
@@ -1823,9 +1823,9 @@ const defenseCalcData = {
       "duration_cn": "3回合",
       "options_cn": [
         "LV10",
-        "LV10+意识5",
+        "LV10+心象5",
         "LV13",
-        "LV13+意识5"
+        "LV13+心象5"
       ]
     },
     {
@@ -1860,9 +1860,9 @@ const defenseCalcData = {
       "duration_cn": "1回合",
       "options_cn": [
         "LV10",
-        "LV10+意识5",
+        "LV10+心象5",
         "LV13",
-        "LV13+意识5"
+        "LV13+心象5"
       ]
     },
     {
@@ -1897,9 +1897,9 @@ const defenseCalcData = {
       "duration_cn": "-",
       "options_cn": [
         "LV10",
-        "LV10+意识5",
+        "LV10+心象5",
         "LV13",
-        "LV13+意识5"
+        "LV13+心象5"
       ]
     },
     {
@@ -2009,9 +2009,9 @@ const defenseCalcData = {
       "duration_cn": "3回合",
       "options_cn": [
         "LV10",
-        "LV10+意识5",
+        "LV10+心象5",
         "LV13",
-        "LV13+意识5"
+        "LV13+心象5"
       ]
     },
     {
@@ -2046,9 +2046,9 @@ const defenseCalcData = {
       "duration_cn": "2回合",
       "options_cn": [
         "LV10",
-        "LV10+意识5",
+        "LV10+心象5",
         "LV13",
-        "LV13+意识5"
+        "LV13+心象5"
       ]
     },
     {
@@ -2081,9 +2081,9 @@ const defenseCalcData = {
       "duration_cn": "2回合",
       "options_cn": [
         "LV10",
-        "LV10+意识5",
+        "LV10+心象5",
         "LV13",
-        "LV13+意识5"
+        "LV13+心象5"
       ]
     },
     {
@@ -2193,11 +2193,11 @@ const defenseCalcData = {
       "duration_cn": "3回合",
       "options_cn": [
         "LV10",
-        "LV10+意识5",
+        "LV10+心象5",
         "LV13",
-        "LV13+意识5",
+        "LV13+心象5",
         "LV13(意识5)",
-        "LV13(意识5)+意识5"
+        "LV13(意识5)+心象5"
       ]
     },
     {
@@ -2270,11 +2270,11 @@ const defenseCalcData = {
       "duration_cn": "3回合",
       "options_cn": [
         "LV10",
-        "LV10+意识5",
+        "LV10+心象5",
         "LV13",
-        "LV13+意识5",
+        "LV13+心象5",
         "LV13(意识5)",
-        "LV13(意识5)+意识5"
+        "LV13(意识5)+心象5"
       ]
     }
   ],
@@ -2309,9 +2309,9 @@ const defenseCalcData = {
       "duration_cn": "2回合/4回合",
       "options_cn": [
         "LV10",
-        "LV10+意识5",
+        "LV10+心象5",
         "LV13",
-        "LV13+意识5"
+        "LV13+心象5"
       ]
     }
   ],
@@ -2521,9 +2521,9 @@ const defenseCalcData = {
       "duration_cn": "2回合",
       "options_cn": [
         "LV10",
-        "LV10+意识5",
+        "LV10+心象5",
         "LV13",
-        "LV13+意识5"
+        "LV13+心象5"
       ]
     },
     {
@@ -2557,9 +2557,9 @@ const defenseCalcData = {
       "duration_cn": "2回合",
       "options_cn": [
         "LV10",
-        "LV10+意识5",
+        "LV10+心象5",
         "LV13",
-        "LV13+意识5"
+        "LV13+心象5"
       ]
     },
     {
@@ -2593,9 +2593,9 @@ const defenseCalcData = {
       "duration_cn": "2回合",
       "options_cn": [
         "LV10",
-        "LV10+意识5",
+        "LV10+心象5",
         "LV13",
-        "LV13+意识5"
+        "LV13+心象5"
       ]
     }
   ],
@@ -2702,9 +2702,9 @@ const defenseCalcData = {
       "duration_cn": "2回合",
       "options_cn": [
         "LV10",
-        "LV10+意识5",
+        "LV10+心象5",
         "LV12",
-        "LV12+意识5"
+        "LV12+心象5"
       ]
     }
   ],
@@ -2739,9 +2739,9 @@ const defenseCalcData = {
       "duration_cn": "2回合",
       "options_cn": [
         "LV10",
-        "LV10+意识5",
+        "LV10+心象5",
         "LV12",
-        "LV12+意识5"
+        "LV12+心象5"
       ]
     }
   ],
@@ -2776,9 +2776,9 @@ const defenseCalcData = {
       "duration_cn": "2回合",
       "options_cn": [
         "LV10",
-        "LV10+意识5",
+        "LV10+心象5",
         "LV13",
-        "LV13+意识5"
+        "LV13+心象5"
       ]
     }
   ],

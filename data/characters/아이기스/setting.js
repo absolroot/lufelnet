@@ -1,7 +1,7 @@
 window.characterSetting = window.characterSetting || {};
 window.characterSetting["아이기스"] = {
     "role": "자동 테우르기아 딜러",
-    "video": [""],
+    "video": ["B6zPSCIoPmw"],
     "video_en": [""],
     "video_jp": [""],
     "main_revelation": ["창조"],

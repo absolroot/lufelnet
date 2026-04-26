@@ -4,7 +4,9 @@
     const STORAGE_KEY = 'share-character:v1:roster';
     const SHARE_PAYLOAD_VERSION = 1;
     const SHARE_QUERY_KEY = 'bin';
-    const GAS_URL = 'https://script.google.com/macros/s/AKfycbzxSnf6_09q_LDRKIkmBvE2oTtQaLnK22M9ozrHMUAV0JnND9sc6CTILlnBS7_T8FIe/exec';
+    const SHARE_TYPE_QUERY_KEY = 'shareType';
+    const SHARE_TYPE = 'character';
+    const GAS_URL = 'https://script.google.com/macros/s/AKfycbx6PjXsslrfZTN599BQp69teGi8FCz8bo8O1ZvGu3PK75IY4_P79EJttHbP0893wnv8/exec';
     const ELEMENT_ORDER = ['물리', '총격', '화염', '빙결', '전격', '질풍', '염동', '핵열', '축복', '주원', '만능'];
     const POSITION_ORDER = ['지배', '반항', '우월', '굴복', '방위', '구원', '해명', '자율'];
     const RARITY_ORDER = [5, 4];
@@ -1196,6 +1198,8 @@
                 applySharedPayload,
                 gasUrl: GAS_URL,
                 shareQueryKey: SHARE_QUERY_KEY,
+                shareTypeQueryKey: SHARE_TYPE_QUERY_KEY,
+                shareType: SHARE_TYPE,
                 sharePayloadVersion: SHARE_PAYLOAD_VERSION
             });
         }

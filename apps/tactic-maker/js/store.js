@@ -79,10 +79,11 @@ export class TacticStore {
      */
     _clearShareUrlParams() {
         const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.has('bin') || urlParams.has('library') || urlParams.has('data')) {
+        if (urlParams.has('bin') || urlParams.has('library') || urlParams.has('data') || urlParams.has('shareType')) {
             urlParams.delete('bin');
             urlParams.delete('library');
             urlParams.delete('data');
+            urlParams.delete('shareType');
             const newUrl = urlParams.toString() 
                 ? `${window.location.pathname}?${urlParams.toString()}`
                 : window.location.pathname;

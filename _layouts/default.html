@@ -507,6 +507,14 @@
 
       // Service Worker 업데이트 확인
       navigator.serviceWorker.addEventListener('controllerchange', () => {
+        const shouldSuppressReload = !!window.__DISABLE_SW_AUTO_RELOAD__
+          || !!document.querySelector('.tactic-maker-page');
+
+        if (shouldSuppressReload) {
+          console.log('[PWA] controllerchange detected, auto-reload suppressed for active editor page');
+          return;
+        }
+
         window.location.reload();
       });
 

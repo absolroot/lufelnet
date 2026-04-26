@@ -12,7 +12,10 @@ import {
     setGlobalSkillEffectAmpState
 } from './need-stat-state.js';
 
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbzxSnf6_09q_LDRKIkmBvE2oTtQaLnK22M9ozrHMUAV0JnND9sc6CTILlnBS7_T8FIe/exec';
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbx6PjXsslrfZTN599BQp69teGi8FCz8bo8O1ZvGu3PK75IY4_P79EJttHbP0893wnv8/exec';
+const GAS_SHARE_TYPE_QUERY_KEY = 'shareType';
+const GAS_SHARE_TYPE = 'tactic';
+const GAS_SAVED_TYPE = 'saved';
 
 export class ImportExport {
     constructor(store) {
@@ -80,6 +83,7 @@ export class ImportExport {
         const sharedData = urlParams.get('data');
         const binId = urlParams.get('bin');
         const libraryCode = urlParams.get('library');
+        const shareType = urlParams.get(GAS_SHARE_TYPE_QUERY_KEY);
 
         // Mark as shared data load if any share param exists
         if (libraryCode || binId || sharedData) {
@@ -89,7 +93,7 @@ export class ImportExport {
         if (libraryCode) {
             this.fetchFromLibrary(libraryCode);
         } else if (binId) {
-            this.fetchFromBin(binId);
+            this.fetchFromBin(binId, shareType);
         } else if (sharedData) {
             try {
                 // Attempt LZString decompression if available
@@ -1003,7 +1007,68 @@ export class ImportExport {
         document.body.removeChild(a);
         URL.revokeObjectURL(url);
 
+        void this.saveExportSnapshot(data);
+
         console.log('[ImportExport] Data exported successfully');
+    }
+
+    encodeDataForGas(data) {
+        let jsonString = JSON.stringify(data);
+
+        if (typeof LZString !== 'undefined') {
+            jsonString = LZString.compressToEncodedURIComponent(jsonString);
+        }
+
+        return jsonString;
+    }
+
+    buildPartyMetaForGas(data) {
+        const party = Array.isArray(data?.party) ? data.party : [];
+        const slotIndexes = [0, 1, 2, 3, 4];
+        const meta = {};
+
+        slotIndexes.forEach((slotIndex, idx) => {
+            const slotNumber = idx + 1;
+            const member = party[slotIndex] && typeof party[slotIndex] === 'object'
+                ? party[slotIndex]
+                : null;
+
+            meta[`character${slotNumber}`] = member?.name ? String(member.name) : '';
+            meta[`ritual${slotNumber}`] = member?.ritual != null ? String(member.ritual) : '';
+        });
+
+        return meta;
+    }
+
+    async saveDataToGas(data, shareType) {
+        const response = await fetch(GAS_URL, {
+            method: 'POST',
+            body: JSON.stringify({
+                data: this.encodeDataForGas(data),
+                shareType,
+                meta: this.buildPartyMetaForGas(data)
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error(`Network response was not ok (${response.status})`);
+        }
+
+        const result = await response.json();
+        if (!result || !result.id) {
+            throw new Error('No ID returned');
+        }
+
+        return result;
+    }
+
+    async saveExportSnapshot(data) {
+        try {
+            const result = await this.saveDataToGas(data, GAS_SAVED_TYPE);
+            console.log('[ImportExport] Export snapshot saved to GAS:', result.id);
+        } catch (error) {
+            console.error('[ImportExport] Failed to save export snapshot:', error);
+        }
     }
 
     /**
@@ -1078,31 +1143,18 @@ export class ImportExport {
             this.btnShare.style.opacity = '0.6';
 
             const data = this.generateExportData();
-            let jsonString = JSON.stringify(data);
-
-            if (typeof LZString !== 'undefined') {
-                jsonString = LZString.compressToEncodedURIComponent(jsonString);
-            }
-
-            const response = await fetch(GAS_URL, {
-                method: 'POST',
-                body: JSON.stringify({ data: jsonString })
+            const result = await this.saveDataToGas(data, GAS_SHARE_TYPE);
+            const baseUrl = window.location.origin + window.location.pathname;
+            const shareParams = new URLSearchParams({
+                bin: String(result.id),
+                [GAS_SHARE_TYPE_QUERY_KEY]: GAS_SHARE_TYPE
             });
+            const shareUrl = `${baseUrl}?${shareParams.toString()}`;
 
-            if (!response.ok) throw new Error('Network response was not ok');
-
-            const result = await response.json();
-            if (result.id) {
-                const baseUrl = window.location.origin + window.location.pathname;
-                const shareUrl = `${baseUrl}?bin=${result.id}`;
-
-                // Copy to clipboard
-                await navigator.clipboard.writeText(shareUrl);
-                this.hideShareLoadingModal();
-                alert(t('shareSuccess'));
-            } else {
-                throw new Error('No ID returned');
-            }
+            // Copy to clipboard
+            await navigator.clipboard.writeText(shareUrl);
+            this.hideShareLoadingModal();
+            alert(t('shareSuccess'));
 
             // Restore button
             this.btnShare.disabled = false;
@@ -1201,12 +1253,17 @@ export class ImportExport {
     /**
      * Fetch data from GAS bin
      */
-    async fetchFromBin(binId) {
+    async fetchFromBin(binId, shareType) {
         try {
             // Show a simple loading state if possible, but for now just console
             console.log('[ImportExport] Fetching from bin:', binId);
 
-            const response = await fetch(`${GAS_URL}?id=${binId}`);
+            const params = new URLSearchParams({ id: String(binId) });
+            if (shareType) {
+                params.set(GAS_SHARE_TYPE_QUERY_KEY, String(shareType));
+            }
+
+            const response = await fetch(`${GAS_URL}?${params.toString()}`);
             if (!response.ok) throw new Error('Failed to fetch from GAS');
 
             const result = await response.json();

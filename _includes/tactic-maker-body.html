@@ -1,5 +1,10 @@
 <script>
 (function () {
+    window.__DISABLE_SW_AUTO_RELOAD__ = true;
+})();
+</script>
+<script>
+(function () {
     var params = new URLSearchParams(window.location.search || '');
     var path = String(window.location.pathname || '/');
     var lowerPath = path.toLowerCase();

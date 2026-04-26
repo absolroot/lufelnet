@@ -45,6 +45,8 @@
             defaultPresetId: String(raw.defaultPresetId || 'default'),
             sharePayloadVersion: Number.isFinite(Number(raw.sharePayloadVersion)) ? Number(raw.sharePayloadVersion) : 1,
             shareQueryKey: String(raw.shareQueryKey || 'bin'),
+            shareTypeQueryKey: String(raw.shareTypeQueryKey || 'shareType'),
+            shareType: String(raw.shareType || ''),
             gasUrl: String(raw.gasUrl || '')
         };
     }
@@ -150,9 +152,11 @@
 
         async function tryLoadSharedFromUrl() {
             let binId = '';
+            let shareType = '';
             try {
                 const params = new URLSearchParams(window.location.search || '');
                 binId = String(params.get(d.shareQueryKey) || '').trim();
+                shareType = String(params.get(d.shareTypeQueryKey) || '').trim();
             } catch (_) {
                 return false;
             }
@@ -161,7 +165,11 @@
             showSharedLoadModal();
 
             try {
-                const response = await fetch(`${d.gasUrl}?id=${encodeURIComponent(binId)}`);
+                const requestParams = new URLSearchParams({ id: binId });
+                if (shareType) {
+                    requestParams.set(d.shareTypeQueryKey, shareType);
+                }
+                const response = await fetch(`${d.gasUrl}?${requestParams.toString()}`);
                 if (!response.ok) {
                     throw new Error(`Failed to fetch shared payload: ${response.status}`);
                 }
@@ -352,7 +360,10 @@
 
                 const response = await fetch(d.gasUrl, {
                     method: 'POST',
-                    body: JSON.stringify({ data: jsonString })
+                    body: JSON.stringify({
+                        data: jsonString,
+                        shareType: d.shareType
+                    })
                 });
                 if (!response.ok) {
                     throw new Error(`Failed to share payload: ${response.status}`);
@@ -364,7 +375,13 @@
                     throw new Error('No bin id returned from GAS');
                 }
 
-                const shareUrl = `${window.location.origin}${window.location.pathname}?${d.shareQueryKey}=${encodeURIComponent(binId)}`;
+                const shareParams = new URLSearchParams({
+                    [d.shareQueryKey]: binId
+                });
+                if (d.shareType) {
+                    shareParams.set(d.shareTypeQueryKey, d.shareType);
+                }
+                const shareUrl = `${window.location.origin}${window.location.pathname}?${shareParams.toString()}`;
                 await navigator.clipboard.writeText(shareUrl);
                 d.showToast(d.t('msg_share_success', 'Link copied to clipboard!'));
             } catch (error) {

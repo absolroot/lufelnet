@@ -143,7 +143,9 @@
     const PRESET_NAME_MAX_LENGTH = 24;
     const SHARE_PAYLOAD_VERSION = 1;
     const SHARE_QUERY_KEY = 'bin';
-    const GAS_URL = 'https://script.google.com/macros/s/AKfycbzxSnf6_09q_LDRKIkmBvE2oTtQaLnK22M9ozrHMUAV0JnND9sc6CTILlnBS7_T8FIe/exec';
+    const SHARE_TYPE_QUERY_KEY = 'shareType';
+    const SHARE_TYPE = 'revelation';
+    const GAS_URL = 'https://script.google.com/macros/s/AKfycbx6PjXsslrfZTN599BQp69teGi8FCz8bo8O1ZvGu3PK75IY4_P79EJttHbP0893wnv8/exec';
 
     function resolveBaseUrl() {
         const fromWindow = (typeof window !== 'undefined' && typeof window.BASE_URL !== 'undefined')
@@ -2986,6 +2988,8 @@
             defaultPresetId: DEFAULT_PRESET_ID,
             sharePayloadVersion: SHARE_PAYLOAD_VERSION,
             shareQueryKey: SHARE_QUERY_KEY,
+            shareTypeQueryKey: SHARE_TYPE_QUERY_KEY,
+            shareType: SHARE_TYPE,
             gasUrl: GAS_URL
         }) || {};
 

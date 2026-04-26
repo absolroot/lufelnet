@@ -263,12 +263,21 @@ class DefenseCalc {
         });
     }
 
-    syncSkillEffectAmpControls() {
+    syncSkillEffectAmpControls(options = {}) {
+        const preserveInput = options && options.preserveInput ? options.preserveInput : null;
+        const rawValue = options && Object.prototype.hasOwnProperty.call(options, 'rawValue')
+            ? String(options.rawValue)
+            : String(this.skillEffectAmpState.value);
+
         this.skillEffectAmpToggles.forEach(toggle => {
             toggle.checked = !!this.skillEffectAmpState.enabled;
         });
 
         this.skillEffectAmpInputs.forEach(input => {
+            if (input === preserveInput) {
+                if (input.value !== rawValue) input.value = rawValue;
+                return;
+            }
             input.value = String(this.skillEffectAmpState.value);
         });
 
@@ -1812,13 +1821,17 @@ class DefenseCalc {
 
         this.skillEffectAmpInputs.forEach(input => {
             input.addEventListener('input', () => {
-                const nextValue = parseFloat(input.value);
+                const rawValue = input.value;
+                const nextValue = parseFloat(rawValue);
                 this.skillEffectAmpState.value = isFinite(nextValue) ? Math.max(0, nextValue) : 0;
-                this.syncSkillEffectAmpControls();
+                this.syncSkillEffectAmpControls({ preserveInput: input, rawValue });
                 this.saveSkillEffectAmpState();
                 this.refreshDisplayedValues();
                 this.updatePenetrateTotal();
                 this.updateTotal();
+            });
+            input.addEventListener('blur', () => {
+                this.syncSkillEffectAmpControls();
             });
         });
     }

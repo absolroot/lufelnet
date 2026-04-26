@@ -291,13 +291,20 @@ class CriticalCalc {
         });
     }
 
-    syncSkillEffectAmpControls() {
+    syncSkillEffectAmpControls(options = {}) {
+        const preserveInput = options && options.preserveInput ? options.preserveInput : null;
+        const rawValue = options && Object.prototype.hasOwnProperty.call(options, 'rawValue')
+            ? String(options.rawValue)
+            : String(this.skillEffectAmpState.value);
+
         if (this.skillEffectAmpToggle) {
             this.skillEffectAmpToggle.checked = !!this.skillEffectAmpState.enabled;
         }
 
-        if (this.skillEffectAmpInput) {
+        if (this.skillEffectAmpInput && this.skillEffectAmpInput !== preserveInput) {
             this.skillEffectAmpInput.value = String(this.skillEffectAmpState.value);
+        } else if (preserveInput && this.skillEffectAmpInput === preserveInput && this.skillEffectAmpInput.value !== rawValue) {
+            this.skillEffectAmpInput.value = rawValue;
         }
 
         document.querySelectorAll('.skill-effect-amp-checkbox-icon').forEach(icon => {
@@ -534,12 +541,16 @@ class CriticalCalc {
 
         if (this.skillEffectAmpInput) {
             this.skillEffectAmpInput.addEventListener('input', () => {
-                const nextValue = parseFloat(this.skillEffectAmpInput.value);
+                const rawValue = this.skillEffectAmpInput.value;
+                const nextValue = parseFloat(rawValue);
                 this.skillEffectAmpState.value = isFinite(nextValue) ? Math.max(0, nextValue) : 0;
-                this.syncSkillEffectAmpControls();
+                this.syncSkillEffectAmpControls({ preserveInput: this.skillEffectAmpInput, rawValue });
                 this.saveSkillEffectAmpState();
                 this.refreshDisplayedValues();
                 this.updateTotal();
+            });
+            this.skillEffectAmpInput.addEventListener('blur', () => {
+                this.syncSkillEffectAmpControls();
             });
         }
     }

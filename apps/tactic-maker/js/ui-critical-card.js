@@ -555,14 +555,22 @@ export class NeedStatCardUI {
         `;
     }
 
-    syncSkillEffectAmpControls(container = this.currentPanelContainer) {
+    syncSkillEffectAmpControls(container = this.currentPanelContainer, options = {}) {
         if (!container) return;
 
         const state = getGlobalSkillEffectAmpState();
+        const preserveInput = options && options.preserveInput ? options.preserveInput : null;
+        const rawValue = options && Object.prototype.hasOwnProperty.call(options, 'rawValue')
+            ? String(options.rawValue)
+            : String(state.value);
         container.querySelectorAll('[data-skill-effect-amp-toggle]').forEach(toggle => {
             toggle.checked = !!state.enabled;
         });
         container.querySelectorAll('[data-skill-effect-amp-value]').forEach(input => {
+            if (input === preserveInput) {
+                if (input.value !== rawValue) input.value = rawValue;
+                return;
+            }
             input.value = String(state.value);
         });
         container.querySelectorAll('.skill-effect-amp-checkbox-icon').forEach(icon => {
@@ -2331,7 +2339,7 @@ export class NeedStatCardUI {
             this.updatePierceDisplays(container, slotIndex, this.currentPierceItems, [], this.currentDefenseItems);
         };
 
-        const applySkillEffectAmpState = (partialState) => {
+        const applySkillEffectAmpState = (partialState, options = {}) => {
             const currentState = getGlobalSkillEffectAmpState();
             const nextState = {
                 enabled: partialState.enabled !== undefined ? !!partialState.enabled : currentState.enabled,
@@ -2339,7 +2347,7 @@ export class NeedStatCardUI {
             };
 
             setGlobalSkillEffectAmpState(nextState, { silent: true });
-            this.syncSkillEffectAmpControls(container);
+            this.syncSkillEffectAmpControls(container, options);
             this.refreshDisplayedValues(container);
             updateCriticalDisplays();
             updatePierceDisplays();
@@ -2403,10 +2411,17 @@ export class NeedStatCardUI {
         container.querySelectorAll('[data-skill-effect-amp-value]').forEach(input => {
             input.addEventListener('input', (e) => {
                 e.stopPropagation();
-                const nextValue = parseFloat(input.value);
-                applySkillEffectAmpState({ value: isFinite(nextValue) ? Math.max(0, nextValue) : 0 });
+                const rawValue = input.value;
+                const nextValue = parseFloat(rawValue);
+                applySkillEffectAmpState(
+                    { value: isFinite(nextValue) ? Math.max(0, nextValue) : 0 },
+                    { preserveInput: input, rawValue }
+                );
             });
             input.addEventListener('click', (e) => e.stopPropagation());
+            input.addEventListener('blur', () => {
+                this.syncSkillEffectAmpControls(container);
+            });
         });
 
         // Item row click (whole row toggles check) - ONLY for critical items (no data-category)

@@ -266,14 +266,14 @@ window.matchWeapons = {
   },
   "하이브 가드": {
     "element": "디버프",
-    "name_en": "Hive Guard",
-    "name_jp": "ハイブガード",
+    "name_en": "Pheromone Sting",
+    "name_jp": "ベノムファング",
     "where_to_get": "Palace 5",
     "release": "Palace 5",
     "order": "11",
     "effect": "효과 명중이 34.0%/39.7%/45.3%/51.0%/56.7%/62.3%/68.0% 증가한다.\n자신이 주는 원소 이상/정신 이상의 부여율이 12.5%/14.6%/16.7%/18.8%/20.8%/22.9%/25.0% 증가하고, 적이 임의의 이상 상태에 빠지면 해당 적을 추가로 『기생 감염』에 빠지게 해 3턴 동안 받는 대미지가 10.0%/11.7%/13.3%/15.0%/16.7%/18.3%/20.0% 증가한다.\n필드에 『기생 감염』 상태에 빠진 적이 있으면 자신의 효과 명중이 4.0%/4.7%/5.3%/6.0%/6.7%/7.3%/8.0% 증가하고, 공격력이 7.0%/8.2%/9.3%/10.5%/11.7%/12.8%/14.0% 증가한다.",
-    "effect_en": "Increase Ailment Accuracy Rate by 68.0%.\nIncrease user's elemental/mental ailment infliction rate by 12.5%/14.6%/16.7%/18.8%/20.8%/22.9%/25.0%. When a foe is afflicted with any debuff, also inflict Parasitic Infection, making them take 10.0%/11.7%/13.3%/15.0%/16.7%/18.3%/20.0% more damage for 3 turns.\nIf a foe with Parasitic Infection is on the field, increase user's Ailment Accuracy Rate by 4.0%/4.7%/5.3%/6.0%/6.7%/7.3%/8.0% and Attack by 7.0%/8.2%/9.3%/10.5%/11.7%/12.8%/14.0%.",
-    "effect_jp": "状態異常命中が68.0%上昇する。\n自身の属性・精神異常付与率が12.5%/14.6%/16.7%/18.8%/20.8%/22.9%/25.0%上昇。敵が異常状態になると『寄生感染』を付与し、3ターンの間受けるダメージが10.0%/11.7%/13.3%/15.0%/16.7%/18.3%/20.0%増加。\n『寄生感染』状態の敵がいる時、自身の状態異常命中が4.0%/4.7%/5.3%/6.0%/6.7%/7.3%/8.0%、攻撃力が7.0%/8.2%/9.3%/10.5%/11.7%/12.8%/14.0%上昇する。",
+    "effect_en": "Increase ailment accuracy by 34.0%/39.7%/45.3%/51.0%/56.7%/62.3%/68.0%, and increase the user's chance of inflicting elemental or spiritual ailments on foes by 12.5%/14.6%/16.7%/18.8%/20.8%/22.9%/25.0%.\nAlso, when a foe is inflicted with any elemental or spiritual ailment, also inflict Infestation, and increase the target's damage taken by 10.0%/11.7%/13.3%/15.0%/16.7%/18.3%/20.0% for 3 turns.\nWhen a foe with Infestation is present, increase ailment accuracy by 4.0%/4.7%/5.3%/6.0%/6.7%/7.3%/8.0% and Attack by 7.0%/8.2%/9.3%/10.5%/11.7%/12.8%/14.0%.",
+    "effect_jp": "状態異常命中が34.0%/39.7%/45.3%/51.0%/56.7%/62.3%/68.0%上昇し、自身が敵を属性異常／行動異常にする確率が12.5%/14.6%/16.7%/18.8%/20.8%/22.9%/25.0%上昇する。\nさらに敵をいずれかの属性異常／行動異常にした時、追加で『侵襲』状態にし、３ターンの間、対象の被ダメージが10.0%/11.7%/13.3%/15.0%/16.7%/18.3%/20.0%上昇する。\nまた『侵襲』状態の敵が場にいる時、状態異常命中が4.0%/4.7%/5.3%/6.0%/6.7%/7.3%/8.0%上昇し、攻撃力が7.0%/8.2%/9.3%/10.5%/11.7%/12.8%/14.0%上昇する。",
     "shard": [
       {
         "desc": "팰리스5 개미굴 탐색도 100%",

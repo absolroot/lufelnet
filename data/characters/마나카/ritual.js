@@ -23,38 +23,38 @@ window.ritualData["마나카"] = {
 
 window.enCharacterRitualData["마나카"] = {
   "name": "Manaka Nagao",
-  "r0": "Hope to Start Again",
-  "r0_detail": "At the start of each ally's action, Manaka gains 1 [Holy Song] stack. Stacks up to 12 times. Manaka can use [Myriad Song] before any ally's action. [Myriad Song] can only be used once at the start of battle. After using [Myriad Song], restore 1 [Myriad Song] usage after 7 Wonder's non Extra Action. This effect can be activated once per battle. \n[Myriad Song]: Cure 1 debuff from 1 ally, and make them enter a special Extra Action [Myriad Song] after their turn. When entering [Myriad Song], that character's status will rewind to their last turn before using a skill. Rewind content includes: Persona skill cooldown, current status, current HP, current SP.",
-  "r1": "Prelude to a Wish",
-  "r1_detail": "At the start of battle, Manaka gains max stacks of [Holy Song], then decrease her cooldown time by 4 actions. \nWhen using [Wheel of Time], increase party's critical rate by 12% for 2 turns.",
-  "r2": "Journey of Aspiration",
-  "r2_detail": "Allies during [Myriad Song] gain 12% total damage amp. \nRestore a KO'd ally's HP equal to 20% of Manaka's ATK + 2000. This effect can be activated once per battle.",
-  "r3": "Fluttering Dance",
-  "r3_detail": "Increase the skill levels of Poem of Radiance and Wheel of Time by 3.",
-  "r4": "Ripples of Silence",
-  "r4_detail": "After any ally uses HIGHLIGHT/Theurgy and at the start of battle, Manaka gains 2 [Holy Song] stacks that can exceed the cap. Stacks up to 2 times.",
-  "r5": "Echo of Vigil",
-  "r5_detail": "Increase the skill levels of Choir of Doves by 3.",
-  "r6": "Eternal Angelic Voice",
-  "r6_detail": "Manaka can initially use [Myriad Song] one bonus time."
+  "r0": "Andante",
+  "r0_detail": "On each ally's action, gain 1 Musical Note stack, up to a maximum of 12 stacks.\nBefore any ally's action, Manaka can activate Da Capo (the initial use count in each battle is 1). After activating Da Capo, when Wonder takes 7 actions other than additional actions, restore the use count by 1 (this effect activates only 1 time per battle).\nDa Capo: Remove 1 debuff effect from 1 ally. At the end of the target's next action, grant a special additional action. When in this state, the target's HP, SP, buff/debuff effects, and skill cooldowns are reset to their state at the start of the previous action.",
+  "r1": "Allegro",
+  "r1_detail": "At the start of battle, gain the maximum number of Musical Note stacks, and reduce the first cooldown time by 4 actions.\nAlso, when using Melody of Steps, also increase party's critical rate by 12% for 2 turns.",
+  "r2": "Fortissimo",
+  "r2_detail": "Increase final damage amplification of allies with extra actions from Da Capo by 12%.\nWhen an ally is KO'd, restore their HP equal to 20% of Manaka's Attack + 2000. This effect can be activated once per battle.",
+  "r3": "Vibrato",
+  "r3_detail": "Increase the skill levels of Prayer Refrain and Melody of Steps by 3.",
+  "r4": "Symphonia",
+  "r4_detail": "At the start of battle, or when an ally activates a Highlight, gain 2 Musical Note stacks. Stacks gained from this effect can exceed the maximum limit up to 2 times.",
+  "r5": "Molto Vivace",
+  "r5_detail": "Increase the skill level of Winged Canon by 3.",
+  "r6": "Con Anima",
+  "r6_detail": "Increase the initial use count of Da Capo by 1."
 };
 
 window.jpCharacterRitualData["마나카"] = {
-  "name": "長尾 マナカ",
-  "r0": "再び始まる希望",
-  "r0_detail": "各怪盗のターン開始時に長尾マナカは『聖歌』を1スタック獲得する（最大12スタック）。\n長尾マナカは任意の怪盗の行動前に『天界の旋律』を発動でき、各戦闘の初期では『天界の旋律』を1回のみ発動可能。『天界の旋律』を使用した後、ワンダーが追加ターンではなく通常ターンを7回行うと、『天界の旋律』の使用回数が1回回復する。この効果は戦闘中1回のみ発動する。\n\n『天界の旋律』：味方1人のデバフを1種類解除し、その味方はターン終了時に特別な追加ターン『天界の旋律』に入る。『天界の旋律』に入ると、その味方の状態は前ターンでスキルを使用する前の状態に戻る。戻る内容：ペルソナスキルのクールタイム、現在の状態、現在のHP、現在のSP。",
-  "r1": "始まりのメロディ",
-  "r1_detail": "戦闘開始時、長尾マナカは『聖歌』を最大スタックまで獲得し、解明怪盗の初期準備時間が4行動分短縮される。\n『時空の輪廻』を発動すると、2ターンの間、味方全体のクリティカル率が追加で12%上昇する。",
-  "r2": "夢見る出航",
-  "r2_detail": "『天界の旋律』状態の味方は総ダメージ増幅が12%増加する。\n味方が戦闘不能になると即座に復活し、長尾マナカの攻撃力の20%＋2,000のHPを回復する。この効果は戦闘ごとに1回のみ発動する。",
-  "r3": "ときめきの舞踏",
-  "r3_detail": "『癒しの光の歌』、『時空の輪廻』のスキルレベルが3レベル上昇し、最大15レベルまで上昇する。",
-  "r4": "静かな波紋",
-  "r4_detail": "任意の怪盗がHIGHLIGHTを発動、または戦闘開始時に長尾マナカは上限を突破できる『聖歌』を2スタック獲得する（最大2回スタック可能）。",
-  "r5": "守護のこだま",
-  "r5_detail": "『天空の歌』のスキルレベルが3レベル上昇し、最大15レベルまで上昇する。",
-  "r6": "永遠の光の聖歌",
-  "r6_detail": "長尾マナカは初期に『天界の旋律』を1回追加で発動できる。"
+  "name": "長尾 愛歌",
+  "r0": "アンダンテ",
+  "r0_detail": "味方の各行動時、『音符』を１つ獲得し、最大１２個まで累積できる。\n愛歌は任意の味方の行動前に『ダ・カーポ』を発動できる（戦闘ごとの初期使用回数は１回）。『ダ・カーポ』を発動した後、主人公が追加行動以外で７回行動すると、使用回数が１回分回復する（この効果は戦闘中に一度だけ発動する）。\n『ダ・カーポ』：味方単体の弱体効果を１つ打ち消す。対象は次の行動終了時に特殊な追加行動状態になる。この状態になった時、対象のＨＰ・ＳＰ・強化／弱体効果・スキルのクールタイムが、直前の行動前の状態に巻き戻る。",
+  "r1": "アレグロ",
+  "r1_detail": "戦闘開始時、『音符』を最大まで獲得し、初期クールタイムが４行動分減少する。\nさらに『歩みの旋律』を使用した時、２ターンの間、追加で味方全体のクリティカル率が１２%上昇する。",
+  "r2": "フォルティシモ",
+  "r2_detail": "『ダ・カーポ』による追加行動状態の味方の最終ダメージ増幅が１２%上昇する。\n戦闘不能になった味方を、愛歌の攻撃力２０%＋２０００で回復する。この効果は戦闘中に一度だけ発動する。",
+  "r3": "ビブラート",
+  "r3_detail": "『祈りのリフレイン』／『歩みの旋律』のスキルレベルが３上昇する。",
+  "r4": "シンフォニア",
+  "r4_detail": "戦闘開始時、または味方がハイライトを発動した時、『音符』を２つ獲得する。この効果による獲得分は上限を超えて所持することができ、最大２つまで累積できる。",
+  "r5": "モルトヴィヴァーチェ",
+  "r5_detail": "『翼のカノン』のスキルレベルが３上昇する。",
+  "r6": "コン・アニマ",
+  "r6_detail": "『ダ・カーポ』の初期使用回数が１回追加される。"
 };
 
 window.cnCharacterRitualData["마나카"] = {

@@ -52,86 +52,92 @@ window.characterSkillsData["쇼키"] = {
 window.enCharacterSkillsData["쇼키"] = {
   "name": "Shoki Ikenami",
   "skill1": {
-    "name": "Spotlight Soliloquy",
+    "name": "Followspot",
     "element": "축복",
     "type": "단일피해",
     "sp": 20,
     "cool": 0,
-    "description": "Deals 151.8%/161.1%/158.0%/167.3% ATK as Bless DMG to 1 enemy, gives all allies 2 stacks of Blessing, and increases all allies' DMG Dealt (For every 100 ATK, increases DMG Dealt by 0.8%, up to 35.1%/37.2%/36.6%/38.7%) for 2 turns."
+    "description": "Deal Bless damage to 1 foe equal to 151.8%/167.3%/158.0%/173.5% of Attack.\nAlso, grant 2 Blessing stacks to all allies, and for 2 turns, increase damage by 0.8% for every 100 points of Shoki's Attack (up to a maximum of 35.1%/38.7%/36.6%/40.2%)."
   },
   "skill2": {
-    "name": "Brechtian Divide",
+    "name": "Adlib",
     "element": "버프",
     "type": "버프",
     "sp": 24,
     "cool": 2,
-    "description": "Increases 1 other ally's DEF (For every 100 ATK, increases DEF by 0.83%, up to 36.6%/38.9%/38.1%/40.4%), and gives them immunity to certain Mental Ailments (Dizzy, Sleep, Confuse, Forget) for 2 turns."
+    "description": "Increase Defense of 1 ally except Shoki by 0.83% for every 100 points of Shoki's Attack (up to a maximum of 36.6%/40.4%/38.1%/41.8%), and nullify Dizzy, Sleep, Confuse, and Forget. Lasts for 2 turns.\nCooldown: 2 turns."
   },
   "skill3": {
-    "name": "Ensemble of Stars",
+    "name": "Improvise",
     "element": "버프광역",
     "type": "버프",
     "sp": 24,
     "cool": 0,
-    "description": "Increases all allies' ATK (Based on 15% own ATK, up to 569/617/592/650) for 2 turns.\nBased on your current [Improv], gives the main target additional effects:\n- [Improv·Osmosis]: Increases the main target's DoT DMG Effect by 14.0%/15.5%/14.5%/16.0% and EHR by 30% for 2 turns.\n- [Improv·Subversion]: Increases the main target's TECHNICAL Mastery by 655/722/682/749 and ATK when dealing TECHNICAL by 20% for 2 turns.\n- [Improv·Empathy]: Increases the main target's CRIT DMG by 24.4%/26.9%/25.4%/27.9% for 2 turns.\n- [Improv·Resonance]: Increases the main target's PEN by 12.0%/13.2%/12.5%/13.7% for 2 turns."
+    "description": "Increase party's Attack by 15% of Shoki's Attack (up to a maximum of 569/627/592/650) for 2 turns.\nAlso, based on Shoki's Improv state, grant the following additional effect to the main target.\nBlazing Passion: Increase the main target's continuous damage effect by 14.0%/15.4%/14.5%/16.0%, and increase ailment accuracy by 30% for 2 turns.\nChilling Intensity: Increase the main target's Technical Precision by 655/723/682/749 for 2 turns. Also, when activating a technical, increase Attack by 20%.\nElectrifying Performance: Increase the main target's critical damage by 24.4%/26.9%/25.4%/27.9% for 2 turns.\nTempestuous Drama: Increase the main target's pierce rate by 12.0%/13.2%/12.5%/13.7% for 2 turns."
   },
   "skill_highlight": {
     "element": "버프광역",
     "type": "버프",
-    "description": "Increases all allies' ATK (Based on 6.5% of own ATK, up to 284/302/296/314) and Effect RES by 82.0%/87.1%/85.3%/90.4% for 2 turns, then gives all allies 1 stack of Blessing."
+    "description": "Increase party's Attack by 6.5% of Shoki's Attack (up to a maximum of 284/314/296/325), and increase ailment resistance by 82.0%/90.4%/85.3%/93.7% for 2 turns.\nAlso, grant 1 Blessing stack.",
+    "cool": 4
   },
   "passive1": {
-    "name": "Nature",
+    "name": "Supporting Role",
     "element": "패시브",
-    "description": "For each stack of Blessing on an ally, increase their DMG Dealt by 5%, up to 25.0%."
+    "description": "When allies gain a Blessing, increase damage by 5% for each Blessing stack (up to a maximum of 25.0%).",
+    "cool": 0
   },
   "passive2": {
-    "name": "Reverse",
+    "name": "Method Acting",
     "element": "패시브",
-    "description": "For every 1% EHR, increase ATK by 0.72%, up to 72.0%."
+    "description": "Increase Attack by 0.72% for every 1% of Shoki's ailment accuracy (up to a maximum of 72.0%).",
+    "cool": 0
   }
 };
 
 window.jpCharacterSkillsData["쇼키"] = {
   "name": "池波 星輝",
   "skill1": {
-    "name": "輝くモノローグ",
+    "name": "ピンスポットライト",
     "element": "축복",
     "type": "단일피해",
     "sp": 20,
     "cool": 0,
-    "description": "敵1体に攻撃力151.8%/161.1%/158.0%/167.3%の祝福属性ダメージを与え、味方全体が祝福効果を2スタック獲得する。さらに、味方全体の与ダメージが上昇する（池波 星輝の攻撃力100ごとに0.8%上昇、最大35.1%/37.2%/36.6%/38.7%）、効果は2ターン持続。"
+    "description": "敵単体に攻撃力151.8%/167.3%/158.0%/173.5%の祝福属性ダメージを与える。\nさらに味方全体に祝印を２つ付与し、２ターンの間、与ダメージが星輝の攻撃力１００ごとに０.８%になるように（最大35.1%/38.7%/36.6%/40.2%まで）上昇する。"
   },
   "skill2": {
-    "name": "見知らぬ空間",
+    "name": "アドリブフォロー",
     "element": "버프",
     "type": "버프",
     "sp": 24,
     "cool": 2,
-    "description": "自分以外の味方1体の防御力を上昇させる（池波 星輝の攻撃力100ごとに0.83%上昇、最大36.6%/38.9%/38.1%/40.4%）、さらに対象は一部の精神異常（目眩、睡眠、混乱、忘却）に2ターンの間免疫を得る。"
+    "description": "２ターンの間、自身以外の味方単体の防御力を星輝の攻撃力１００ごと０.８３%になるように（最大36.6%/40.4%/38.1%/41.8%まで）上昇させ、目眩・睡眠・混乱・忘却を無効化する。\nクールタイム：２ターン"
   },
   "skill3": {
-    "name": "星々の公演",
+    "name": "インプロヴァイズ",
     "element": "버프광역",
     "type": "버프",
     "sp": 24,
     "cool": 0,
-    "description": "味方全体の攻撃力が上昇する（上昇値は自身の攻撃力の15%、上限569/617/592/650）、効果は2ターン持続。\n現在の『即興公演』状態に応じてスキルメイン対象が追加効果を得る。\n『即興・浸透』：2ターンの間、スキルメイン対象の持続ダメージ効果が14.0%/15.5%/14.5%/16.0%増加し、状態異常命中が30%上昇する。\n『即興・転覆』：2ターンの間、スキルメイン対象のスキルマスターが655/722/682/749上昇し、TECHNICALを与える際に攻撃力が20%上昇する。\n『即興・共感』：2ターンの間、スキルメイン対象のCRT倍率が24.4%/26.9%/25.4%/27.9%上昇する。\n『即興・交感』：2ターンの間、スキルメイン対象の貫通が12.0%/13.2%/12.5%/13.7%上昇する。"
+    "description": "２ターンの間、味方全体の攻撃力が星輝の攻撃力の１５%分（最大569/627/592/650まで）上昇する。\nさらに自身の『即興劇』状態に応じて、選択した対象に追加効果を付与する。\n『紅蓮の熱演』：２ターンの間、選択した対象の持続ダメージ効果が14.0%/15.4%/14.5%/16.0%上昇し、状態異常命中が３０%上昇する。\n『冴氷の静演』：２ターンの間、選択した対象のテクニカル精度が655/723/682/749上昇する。さらにテクニカルが発生する時、攻撃力が２０%上昇する。\n『稲妻の烈演』：２ターンの間、選択した対象のクリティカルダメージが24.4%/26.9%/25.4%/27.9%上昇する。\n『晴嵐の快演』：２ターンの間、選択した対象の貫通が12.0%/13.2%/12.5%/13.7%上昇する。"
   },
   "skill_highlight": {
     "element": "버프광역",
     "type": "버프",
-    "description": "味方全体の攻撃力が上昇する（上昇値は自身の攻撃力の6.5%、上限284/302/296/314）、効果耐性が82.0%/87.1%/85.3%/90.4%増加する。効果は2ターン持続。また、味方全体が祝福効果を1スタック獲得する。"
+    "description": "２ターンの間、味方全体の攻撃力が星輝の攻撃力の６.５%（最大284/314/296/325まで）上昇し、状態異常抵抗が82.0%/90.4%/85.3%/93.7%上昇する。\nさらに祝印を１つ付与する。",
+    "cool": 4
   },
   "passive1": {
-    "name": "本色",
+    "name": "舞台共演",
     "element": "패시브",
-    "description": "祝福効果を持つ味方は、祝福スタックごとに与ダメージが5%増加し、上限は25.0%。"
+    "description": "祝印を獲得している味方は、祝印１つごとに与ダメージが５%（最大25.0%まで）上昇する。",
+    "cool": 0
   },
   "passive2": {
-    "name": "反転",
+    "name": "迫真の演技",
     "element": "패시브",
-    "description": "状態異常命中1%ごとに攻撃力が0.72%上昇し、上限は72.0%。"
+    "description": "自身の状態異常命中１%ごとに、攻撃力が０.７２%になるように（最大72.0%まで）上昇する。",
+    "cool": 0
   }
 };
 

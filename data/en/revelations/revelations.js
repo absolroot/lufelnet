@@ -23,7 +23,7 @@ const mapping_en = {
     "슬픔": "Sorrow",
     "변화": "Transformation",
     "신중": "Prudence",
-    "고집": "Fixation",
+    "고집": "Ruin",
     "헛수고": "Futility",
     "실망": "Disappointment",
     "우려": "Worry",
@@ -81,7 +81,7 @@ const enRevelationData = {
         "슬픔": "Sorrow",
         "변화": "Transformation",
         "신중": "Prudence",
-        "고집": "Fixation",
+        "고집": "Ruin",
         "헛수고": "Futility",
         "실망": "Disappointment",
         "우려": "Worry",
@@ -114,9 +114,9 @@ const enRevelationData = {
         "Nativity": ["Power"], // 탄생
         "Agility": ["Satiety", "Hindrance"], // 예리
         "Perseverance": ["Sorrow", "Transformation", "Obtain"], //돌파
-        "Hope": ["Labor", "Fixation", "Transformation"], // 희망
+        "Hope": ["Labor", "Ruin", "Transformation"], // 희망
         "Creation": ["Worry", "Reconcilation","Tenacity"], // 창조 
-        "Integrity": ["Pleasure", "Labor", "Fixation"], // 진정성
+        "Integrity": ["Pleasure", "Labor", "Ruin"], // 진정성
         "Resolve": ["Virtue", "Labor", "Prudence"], // 결심
         "Awareness": ["Truth", "Control", "Hindrance"], // 깨달음
         "Departure": ["Control", "Prosperity", "Hindrance"], // 여정
@@ -137,7 +137,7 @@ const enRevelationData = {
         "Sorrow": ["Perseverance"], // 슬픔
         "Transformation": ["Perseverance", "Hope", "Purity"], // 변화
         "Prudence": ["Resolve"], // 신중
-        "Fixation": ["Integrity", "Hope"], // 고집
+        "Ruin": ["Integrity", "Hope"], // 고집
         "Futility": ["Faith"], // 헛수고
         "Disappointment": ["Freedom"], // 실망
         "Triumph": ["Freedom"], // 개선
@@ -273,14 +273,14 @@ const enRevelationData = {
             "type": ["만능"]
         },
         "Prudence": { // 신중
-            "set2": "Decrease SPD by 3, Increase ATK by 18%.",
-            "set4": "Increase DMG Dealt by 16%.",
-            "type": ["미출시"]
+            "set2": "Decrease Speed by 3, but increase Attack by 18%.",
+            "set4": "Increase damage by 16%.",
+            "type": []
         },
-        "Fixation": { // 고집
-            "set2": "Increase ATK by 12%.",
-            "set4": "Increase ATK by 25% for 3 turns; Gain this effect again when you use Theurgy.",
-            "type": ["미출시"]
+        "Ruin": { // 고집
+            "set2": "Increase Attack by 12%.",
+            "set4": "Increase Attack by 25% for 3 turns. After using a Theurgy, gain the same effect again.",
+            "type": []
         },
         "Transformation": { // 변화
             "set2": "Electric damage increased by 10%.",
@@ -321,8 +321,8 @@ const enRevelationData = {
             "type": ["미출시"]
         },
         "Hope": {
-            "Labor": "When equipped by Elucidate Thieves: When using a skill on allies, increase the skill target's PEN by 5% for 1 turn.",
-            "Fixation": "When dealing 1 hit of skill damage, increase own Fire DMG by 3% for 3 turns, up to 8 stacks; When reaching 8 stacks, additionally increase own CRIT Rate by 6%.",
+            "Labor": "When equipped by an Elucidator Phantom Thief: When granting buffs to allies with a skill, increase the main target's pierce rate by 5% for 1 turn.",
+            "Ruin": "Each time damage is dealt with a skill, increase the user's Fire damage by 3%. This effect lasts 3 turns and stacks up to 8 times. When at 8 stacks, also increase user's critical rate by 6%.",
             "Transformation": "Increase the DMG Dealt to enemies with Down status by 12%, doesn't stack.",
             "type": ["미출시"]
         },
@@ -360,7 +360,7 @@ const enRevelationData = {
         "Integrity": { // 진정성
             "Labor": "When equipped by Navigator Thieves: Increase all allies' HP, ATK and DEF by an additional 2% with each ally with the same element.",
             "Pleasure": "Increase DMG Bonus up to 30% based on 80% of your Healing Bonus.",
-            "Fixation": "After using Theurgy, increase all Thieves' DMG Dealt by 10% for 3 turns.",
+            "Ruin": "After using a Theurgy, increase party's damage by 10% for 3 turns.",
             //"type": ["미출시"]
         },
         "Resolve": { // 결심 

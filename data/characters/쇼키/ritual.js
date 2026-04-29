@@ -23,38 +23,38 @@ window.ritualData["쇼키"] = {
 
 window.enCharacterRitualData["쇼키"] = {
   "name": "Shoki Ikenami",
-  "r0": "Four Acts of Life",
-  "r0_detail": "Luce has 4 types of Improvs: [Improv·Osmosis], [Improv·Subversion],[Improv·Empathy], [Improv·Resonance], and he can freely change during his turn. \nWhen dealing damage with a Persona skill, there is a 75% base chance to inflict all enemies with the current [Improv] corresponding Elemental Ailment (In order of Burn, Freeze, Shock, Winded).",
-  "r1": "Adieu! Adieu! Remember Me!",
-  "r1_detail": "After using a Persona skill on allies, increases the target's DMG Dealt by 3% if they have Blessing for 2 turns, up to 15%.",
-  "r2": "The Slings and Arrows of Outrageous Fortune",
-  "r2_detail": "When using [Brechtian Divide], additionally increases the targets' Final DMG RES by 35% when taking the next skill DMG for 1 turn.",
-  "r3": "To Take Arms Against a Sea of Troubles",
-  "r3_detail": "[Spotlight Soliloquy] Lv. +2, up to a maximum of Lv. 15. [Brechtian Divide] Lv. +2, up to a maximum of Lv. 15.",
-  "r4": "Even the Humblest Straw May Strive with Passion",
-  "r4_detail": "[HIGHLIGHT] Effect Boost: Increases the main target's ATK by 10%, and additionally gives all allies 2 stacks of Blessing.",
-  "r5": "There Is Special Providence in the Fall of a Sparrow",
-  "r5_detail": "The skill levels of 『Performance of the Stars』 and 『Combat Technique』 increase by 2",
-  "r6": "Discovering Another Light in Silence",
-  "r6_detail": "When triggering the [Improv] from [Ensemble of Stars], extends the buff duration to 4 turns."
+  "r0": "High School Heartthrob",
+  "r0_detail": "Shoki has 4 types of Improv states: Blazing Passion, Chilling Intensity, Electrifying Performance, and Tempestuous Drama. During battle, he can switch between states at the start of each turn.\nWhen dealing damage with a skill, there is a 75% chance to inflict all foes with an elemental ailment based on his current Improv state (Burn, Freeze, Shock, or Windswept).",
+  "r1": "In the Limelight",
+  "r1_detail": "When using a skill on an ally, for each Blessing stack on the target, increase the target's damage dealt by 3% (up to a maximum of 15%) for 2 turns.",
+  "r2": "Flawless Performance",
+  "r2_detail": "When using Adlib, also grant an additional effect: When the target next takes skill damage, decrease their final damage taken by 35% for 1 turn.",
+  "r3": "Heroic Climax",
+  "r3_detail": "Increase the skill levels of Followspot and Adlib by 2.",
+  "r4": "Standing Ovation",
+  "r4_detail": "Highlight Enhanced: Increase the main target's Attack by 10% for 2 turns, and grant 2 more Blessing stacks to all allies.",
+  "r5": "Flowers on the Stage",
+  "r5_detail": "Increase the skill levels of Improvise and Thief Tactics by 2.",
+  "r6": "Bright Future",
+  "r6_detail": "When the additional effects of Improvise are activated based on Improv state, extend the duration of the additional effects to 4 turns."
 };
 
 window.jpCharacterRitualData["쇼키"] = {
-  "name": "池波 正輝",
-  "r0": "儚き人生",
-  "r0_detail": "『即興・侵入』、『即興・転覆』、『即興・共感』、『即興・交感』、計4種類の『即興公演』状態を所持し、ターン開始時に切り替えることができる。ペルソナスキルでダメージを与えると、75%の基本確率で現在の『即興公演』状態に対応する属性異常効果（順に火炎、凍結、感電、風習）を敵全体に付与する。",
-  "r1": "また会おう！私を覚えていて",
-  "r1_detail": "味方にペルソナスキルを使用した後、対象が祝福効果を保有している場合、祝福スタックごとにダメージが3%増加し、上限は15%。効果は2ターン持続する。",
-  "r2": "残酷な運命の矢",
-  "r2_detail": "『見知らぬ空間』を使用すると、対象が次に受けるスキルダメージに対し追加で35%の最終ダメージ軽減を得て、1ターン持続する。",
-  "r3": "終わりなき苦難との戦い",
-  "r3_detail": "『輝く独白』、『見知らぬ空間』のスキルレベルが2レベル上昇し、最大15レベルまで上昇する。",
-  "r4": "か弱くても折れない意志",
-  "r4_detail": "HIGHLIGHT効果強化：スキルメイン対象の攻撃力が10%上昇し、味方全体が祝福効果を2スタック追加で獲得する。",
-  "r5": "雀の生死を分ける運命",
-  "r5_detail": "『星々の公演』、『戦闘技術』のスキルレベルが2レベル上昇し、最大15レベルまで上昇する。",
-  "r6": "静寂の中で見つけたもう一つの光",
-  "r6_detail": "『星々の公演』で『即興公演』の追加効果が発動した場合、その効果の持続時間が4ターンに延長される。"
+  "name": "池波 星輝",
+  "r0": "二枚目高校生俳優",
+  "r0_detail": "星輝は『紅蓮の熱演』／『冴氷の静演』／『稲妻の烈演』／『晴嵐の快演』の４つの『即興劇』状態を持つ。戦闘中、自身のターン開始時に状態を切り替えることができる。\n自身がスキルでダメージを与えた時、７５%の確率で敵全体に現在の『即興劇』状態に対応する属性異常（炎上／凍結／感電／風襲）を付与する。",
+  "r1": "名演の脚光",
+  "r1_detail": "味方にスキルを使用した時、対象の祝印１つごとに、２ターンの間、対象の与ダメージが３%（最大１５%まで）上昇する。",
+  "r2": "破綻なき一幕",
+  "r2_detail": "『アドリブフォロー』を使用した時に追加で、１ターンの間、対象が次にスキルダメージを受ける時、最終被ダメージを３５%低下させる効果を付与する。",
+  "r3": "主演の大立回り",
+  "r3_detail": "『ピンスポットライト』『アドリブフォロー』のスキルレベルが２上昇する。",
+  "r4": "喝采を呼ぶ演技",
+  "r4_detail": "ハイライト能力追加：２ターンの間、選択した対象の攻撃力を１０%上昇させ、味方全体に祝印を追加で２つ付与する。",
+  "r5": "ステージに咲く華",
+  "r5_detail": "『インプロヴァイズ』『怪盗戦技』のスキルレベルが２上昇する。",
+  "r6": "未来照らす舞台",
+  "r6_detail": "『インプロヴァイズ』で『即興劇』状態に応じた追加効果が発動した時、追加効果の持続時間が４ターンに延長される。"
 };
 
 window.cnCharacterRitualData["쇼키"] = {

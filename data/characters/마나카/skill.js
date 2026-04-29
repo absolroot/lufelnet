@@ -48,25 +48,25 @@ window.characterSkillsData["마나카"] = {
 window.enCharacterSkillsData["마나카"] = {
   "name": "Manaka Nagao",
   "skill1": {
-    "name": "Choir of Doves",
+    "name": "Winged Canon",
     "element": "버프광역",
     "type": "버프",
-    "cool": 4,
-    "description": "Increase party's damage by 7.0%/7.7%/7.8%/8.5% + 1% for every 164 points of Manaka's Attack, up to 28.0%/31.8%/31.4%/34.2%. Lasts for 2 turn. Manaka gains 4 [Holy Song] stacks."
+    "cool": 0,
+    "description": "Increase party's damage by 7.0%/7.7%/7.8%/8.5% for 2 turns (for every 164 points of Manaka's Attack, increase by 1% more, up to a maximum of 28.0%/30.8%/31.4%/34.2%).\nAlso, gain 4 Musical Note stacks.\nCooldown Time: 4 ally actions"
   },
   "skill2": {
-    "name": "Poem of Radiance",
+    "name": "Prayer Refrain",
     "element": "치료광역",
     "type": "치료",
-    "cool": 8,
-    "description": "Restore party's HP by 10.0%/10.0%/11.2%/11.2% of Manaka's Attack + 681/816/989/1124, and cure 1 debuff. When Manaka has [Holy Song], spend 1 [Holy Song] stack to decrease skill cooldown by 1 action, up to 4 actions. When Manaka manually uses this skill, increase healing by 50%. \nPassive: After Manaka gained 12 [Holy Song] stacks, automatically activate the healing from this skill once."
+    "cool": 0,
+    "description": "Restore HP to party equal to 10.0%/10.0%/11.2%/11.2% of Manaka's Attack + 681/816/989/1124, and remove 1 debuff.\nWhen Manaka has Musical Note, spend 1 Musical Note stack, and reduce skill cooldown by 1 action. (this effect can reduce cooldowns by up to 4 actions).\nIf this skill is selected and used, increase healing by 50%.\nCooldown Time: 8 ally actions\nAutomatic Effect: For every 12 Musical Note stacks gained during battle, activate this skill's healing effect 1 time."
   },
   "skill3": {
-    "name": "Wheel of Time",
+    "name": "Melody of Steps",
     "element": "버프광역",
     "type": "버프",
-    "cool": 4,
-    "description": "Increase party's Attack by 11% + 128/141/143/156 of Manaka's Attack. Spend all [Holy Song], for each [Holy Song] stack spent, increase party's pierce rate by 0.1% for every 460 points of Manaka's Attack, and Attack by 0.2% for every 460 points of Manaka's Attack. Lasts for 2 turns. (Up to 4600/5060/5980/6440 points of Attack)"
+    "cool": 0,
+    "description": "Increase party's Attack by 11% of Manaka's Attack + 128/140/143/156 for 2 turns.\nSpend all Musical Note stacks, and for each stack spent, increase party's pierce rate by 0.1% for every 460 points of Manaka's Attack, and increase party's Attack by 0.1% for every 460 points of Manaka's Attack. Lasts for 2 turns.\nThis skill applies up to 4600/5060/5980/6440 of Manaka's Attack.\nCooldown Time: 4 ally actions"
   },
   "skill_highlight": {
     "name": "Stat Buff",
@@ -74,39 +74,41 @@ window.enCharacterSkillsData["마나카"] = {
     "description": "Increase party's stats by 20% of Manaka's stats."
   },
   "passive1": {
-    "name": "Grace",
+    "name": "Crescendo",
     "element": "패시브",
-    "description": "Increase ATK for allies during [Myriad Song] by 37.5%."
+    "description": "Increase Attack of allies with Da Capo by 37.5%.",
+    "cool": 0
   },
   "passive2": {
-    "name": "Resilience",
+    "name": "Heavenly Voice",
     "element": "패시브",
-    "description": "Based on gained [Holy Song] stacks, increase party's pierce rate by 1.0%. Stacks up to 12 times."
+    "description": "Based on the total number of Musical Note stacks gained, increase party's pierce rate by 1.0% for each stack. Counts up to 12 stacks.",
+    "cool": 0
   }
 };
 
 window.jpCharacterSkillsData["마나카"] = {
   "name": "長尾 愛歌",
   "skill1": {
-    "name": "天空の歌",
+    "name": "翼のカノン",
     "element": "버프광역",
     "type": "버프",
-    "cool": 4,
-    "description": "味方全体の与ダメージが7.0%/7.7%/7.8%/8.5%上昇し、さらに長尾 愛歌の攻撃力164ごとに1%の追加攻撃倍率+（最大28.0%/31.8%/31.4%/34.2%）を得る。効果は2ターン持続。『聖歌』を4スタック獲得する。"
+    "cool": 0,
+    "description": "２ターンの間、味方全体の与ダメージが7.0%/7.7%/7.8%/8.5%上昇し、追加で愛歌の攻撃力１６４ごとに１%になるように上昇（追加上昇分は最大28.0%/30.8%/31.4%/34.2%まで）する。\nさらに『音符』を４つ獲得する。\nクールタイム：味方の行動４回"
   },
   "skill2": {
-    "name": "癒しの光の歌",
+    "name": "祈りのリフレイン",
     "element": "치료광역",
     "type": "치료",
-    "cool": 8,
-    "description": "味方全体のHPを攻撃力10.0%/10.0%/11.2%/11.2%+681/816/989/1124回復し、味方全体のデバフ1種類を解除する。『聖歌』がある場合、『聖歌』を1スタック消費して、このスキルの準備時間を1行動分短縮する。この方法で最大4行動分まで短縮可能。スキルを直接発動すると回復量が50%増加する。\nパッシブ：戦闘中、長尾 愛歌が『聖歌』を12スタック獲得すると、この回復効果が自動で1回発動する。"
+    "cool": 0,
+    "description": "味方全体のＨＰを愛歌の攻撃力10.0%/10.0%/11.2%/11.2%＋681/816/989/1124回復し、さらに弱体を１つ打ち消す。\n『音符』を獲得している時、『音符』を１つ消費して、スキル使用後のクールタイムを１行動分減少させる（この効果で減少できるのは最大４行動まで）。\nこのスキルを選択して使用した場合は回復量が５０%上昇する。\nクールタイム：味方の行動８回\n自動効果：戦闘中『音符』を１２個獲得するごとに、このスキルの回復効果が１回発動する。"
   },
   "skill3": {
-    "name": "時空の輪廻",
+    "name": "歩みの旋律",
     "element": "버프광역",
     "type": "버프",
-    "cool": 4,
-    "description": "味方全体の攻撃力が長尾 愛歌の攻撃力11%+128/141/143/156上昇する。すべての『聖歌』を消費し、消費した『聖歌』1スタックごとに味方全体の貫通が上昇（長尾 愛歌の攻撃力460ごとに0.1%）、攻撃力も上昇する（長尾 愛歌の攻撃力460ごとに0.1%）。このスキルは最大で長尾 愛歌の攻撃力4600/5060/5980/6440まで計算される。"
+    "cool": 0,
+    "description": "２ターンの間、味方全体の攻撃力が愛歌の攻撃力１１%＋128/140/143/156上昇する。\n『音符』を全て消費して、２ターンの間、消費した『音符』１つごとに、味方全体の貫通が愛歌の攻撃力４６０ごとに０.１%になるように上昇し、攻撃力が愛歌の攻撃力４６０ごとに０.１%になるように上昇する。\nこのスキルが参照する愛歌の攻撃力は最大4600/5060/5980/6440まで。\nクールタイム：味方の行動４回"
   },
   "skill_highlight": {
     "name": "ステータス強化",
@@ -114,14 +116,16 @@ window.jpCharacterSkillsData["마나카"] = {
     "description": "長尾のステータスの20%分、味方全体のステータスを上昇させる。"
   },
   "passive1": {
-    "name": "羽ばたき",
+    "name": "クレッシェンド",
     "element": "패시브",
-    "description": "『天界の旋律』状態の味方の攻撃力が37.5%上昇する。"
+    "description": "『ダ・カーポ』状態の味方の攻撃力が37.5%上昇する。",
+    "cool": 0
   },
   "passive2": {
-    "name": "決意",
+    "name": "天まで届く声",
     "element": "패시브",
-    "description": "累積獲得した『聖歌』のスタック数に応じて、1スタックごとに味方全体の貫通が1.0%上昇する（最大12スタック適用）。"
+    "description": "獲得した『音符』の総数に応じて、１つごとに味方全体の貫通が1.0%上昇する。最大１２個まで適用される。",
+    "cool": 0
   }
 };
 

@@ -34,56 +34,56 @@ window.WeaponData["쇼키"] = {
 window.enCharacterWeaponData["쇼키"] = {
   "name": "Shoki Ikenami",
   "weapon4-1": {
-    "name": "Vowed Coronation",
-    "health": 1823,
-    "attack": 539,
-    "defense": 349,
+    "name": "Mattatóre",
+    "health": 1823.43,
+    "attack": 539.4,
+    "defense": 349.01,
     "skill_name": "Fated Enthroning",
-    "description": "ATK is increased by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. After granting a Blessing effect, increase ATK and EHR by 3.3%/4.3%/4.3%/5.3%/5.3%/6.3%/6.3% for 2 turns and up to 3 stacks."
+    "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When Shoki grants Blessing stacks, increase his Attack by 3.3%/4.3%/4.3%/5.3%/5.3%/6.3%/6.3% and ailment accuracy by 3.3%/4.3%/4.3%/5.3%/5.3%/6.3%/6.3% for 2 turns. Stacks up to 3 times."
   },
   "weapon4-2": {
-    "name": "Illusion Fostering",
-    "health": 2497,
-    "attack": 594,
-    "defense": 449,
+    "name": "Sipario",
+    "health": 2497.32,
+    "attack": 594.58,
+    "defense": 449.24,
     "skill_name": "Innumerable Stages",
-    "description": "ATK is increased by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. After casting a Persona skill to an ally, increase EHR by 22.0%/28.0%/28.0%/34.0%/34.0%/40.0%/40.0% for 2 turns, the skill target would gain 60% of the effect."
+    "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.\nWhen using a skill on an ally, increase Shoki's ailment accuracy by 22.0%/28.0%/28.0%/34.0%/34.0%/40.0%/40.0% and grant 60% of this effect to all allies besides Shoki for 2 turns."
   },
   "weapon5-1": {
-    "name": "Midnight Sun, Starlit Prophecies",
-    "health": 2279,
-    "attack": 673,
-    "defense": 436,
+    "name": "Ribalta",
+    "health": 2279.27,
+    "attack": 673.89,
+    "defense": 436.03,
     "skill_name": "Starstruck Throne",
-    "description": "ATK is increased by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. When casting a Persona skill on allies, if the target has Blessing on them, increase their DMG Dealt by 11.0%/14.0%/14.0%/17.0%/17.0%/20.0%/20.0% for 2 turns.  When casting a Persona Skill under different [Improvs], increase ATK permanently by 14.0%/18.0%/18.0%/22.0%/22.0%/26.0%/26.0%, up to 3 stacks, and all allies would gain 50% of the effect."
+    "description": "Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%.\nWhen using a skill on an ally, if the target has Blessing stacks, increase damage by 11.0%/14.0%/14.0%/17.0%/17.0%/20.0%/20.0% for 2 turns.\nEach time Followspot or Improvise is activated with a different Improv state, permanently increase Shoki's Attack by 14.0%/18.0%/18.0%/22.0%/22.0%/26.0%/26.0%. This effect stacks up to 3 times. Also, allies besides Shoki gain 50% of this effect."
   }
 };
 
 window.jpCharacterWeaponData["쇼키"] = {
   "name": "池波 星輝",
   "weapon4-1": {
-    "name": "誓いの聖剣",
-    "health": 1823,
-    "attack": 539,
-    "defense": 349,
+    "name": "マッタトーレ",
+    "health": 1823.43,
+    "attack": 539.4,
+    "defense": 349.01,
     "skill_name": "神託の棺",
-    "description": "攻撃力が12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%増加する。自身に祝福効果が付与されると、2ターンの間攻撃力が3.3%/4.3%/4.3%/5.3%/5.3%/6.3%/6.3%増加し、状態異常命中が3.3%/4.3%/4.3%/5.3%/5.3%/6.3%/6.3%増加する（最大3回まで重複可能）。"
+    "description": "攻撃力が12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%上昇する。自身が祝印を付与した時、２ターンの間、自身の攻撃力が3.3%/4.3%/4.3%/5.3%/5.3%/6.3%/6.3%上昇し、状態異常命中が3.3%/4.3%/4.3%/5.3%/5.3%/6.3%/6.3%上昇する。最大３つまで累積できる。"
   },
   "weapon4-2": {
-    "name": "幻影のシルエット",
-    "health": 2497,
-    "attack": 594,
-    "defense": 449,
+    "name": "シパーリオ",
+    "health": 2497.32,
+    "attack": 594.58,
+    "defense": 449.24,
     "skill_name": "幕中の幕",
-    "description": "攻撃力が12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%増加する。味方にペルソナスキルを使用すると、2ターンの間自身の状態異常命中が22.0%/28.0%/28.0%/34.0%/34.0%/40.0%/40.0%増加し、スキル対象はその60%の効果を得る。"
+    "description": "攻撃力が12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%上昇する。\n自身が味方にスキルを使用した時、２ターンの間、自身の状態異常命中が22.0%/28.0%/28.0%/34.0%/34.0%/40.0%/40.0%上昇し、自身以外の味方全体はこの効果の６０%を得る。"
   },
   "weapon5-1": {
-    "name": "白夜の聖痕",
-    "health": 2279,
-    "attack": 673,
-    "defense": 436,
+    "name": "リバルタ",
+    "health": 2279.27,
+    "attack": 673.89,
+    "defense": 436.03,
     "skill_name": "星の落宮",
-    "description": "攻撃力が30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%増加する。味方にペルソナスキルを使用した際、対象が祝福効果を持つ場合、2ターンの間その対象の与えるダメージが11.0%/14.0%/14.0%/17.0%/17.0%/20.0%/20.0%増加する。異なる『即興公演』状態でペルソナスキルを使用すると、自身の攻撃力が14.0%/18.0%/18.0%/22.0%/22.0%/26.0%/26.0%永久に増加し（最大3回まで重複）、味方全体はその50%の効果を得る。"
+    "description": "攻撃力が30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%上昇する。\n味方にスキルを使用する時、対象が祝印を獲得していると、２ターンの間、与ダメージが11.0%/14.0%/14.0%/17.0%/17.0%/20.0%/20.0%上昇する。\n異なる『即興劇』状態で『ピンスポットライト』または『インプロヴァイズ』を発動するごとに、自身の攻撃力が永続的に14.0%/18.0%/18.0%/22.0%/22.0%/26.0%/26.0%上昇する。この効果は最大３つまで累積できる。また、自身以外の味方もこの効果の５０%を得る。"
   }
 };
 

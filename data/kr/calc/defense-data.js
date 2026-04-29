@@ -1276,33 +1276,19 @@ const defenseCalcData = {
       "target": "단일",
       "skillIcon": "/assets/img/tactic-persona/체르노보그.webp",
       "skillName": "체르노보그 - 고유스킬",
-      "options": [
-        "1중첩",
-        "2중첩",
-        "3중첩"
-      ],
-      "values": {
-        "1중첩": 10,
-        "2중첩": 20,
-        "3중첩": 30
-      },
-      "defaultOption": "3중첩",
-      "value": 30,
+      "options": [],
+      "value": 10,
       "skillEffectAmpAffected": false,
       "duration": "2턴",
-      "note": "악몽 1중첩 당",
-      "note_en": "Nightmare per stack",
-      "note_jp": "悪夢 1重ごと",
+      "note": "",
+      "note_en": "",
+      "note_jp": "",
       "skillName_cn": "切尔诺伯格 - 固有技能",
-      "note_cn": "每1层『梦魇』",
+      "note_cn": "",
       "type_cn": "人格面具",
       "target_cn": "单体",
       "duration_cn": "2回合",
-      "options_cn": [
-        "1层",
-        "2层",
-        "3层"
-      ]
+      "options_cn": []
     },
     {
       "id": 11,

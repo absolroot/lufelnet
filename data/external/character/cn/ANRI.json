@@ -1,0 +1,284 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "亚兰可以为敌人施加特殊状态『罪』，且场上最多同时存在2个『罪』。\n『罪』：带有『罪』的敌人受到伤害的10%会复制给其他带有『罪』的敌人。\n『罪』的目标也可以是同一敌人，此时效果变为受到伤害的5%复制给自身。\n带有『罪』的敌人阵亡时，『罪』将会转移给敌方其他存活单位。\n『罪』的传导比例可以受到传导效果增幅影响。",
+        "name": "苏珊娜的窥镜",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 124140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "每层『罪业』将额外施加受到伤害提升5%的效果。\n『复仇冥镜』的基础反伤比例提升至400%。",
+        "name": "朱迪斯的匕首",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 124141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『禁典蚀痕』和『复仇冥镜』施加『罪业』层数额外提升1层。\n『罪业』上限额外提升2层。",
+        "name": "雅艾尔的钉痕",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 124142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『禁典蚀痕』、『战斗技巧』的技能等级提升2级，至多提升至15级。",
+        "name": "绘画女神的构图",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 124143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "HIGHLIGHT效果提升：返还15点HIGHLIGHT能量并使带有『罪』的敌人受到HIGHLIGHT攻击时该次伤害的攻击力提升25%，持续3回合，并将该效果复制给其他带有『罪』的敌人。",
+        "name": "圣凯瑟琳轮刻",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 124144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『断罪之瞳』、『复仇冥镜』的技能等级提升2级，至多提升至15级。",
+        "name": "抹大拉的苦行",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 124145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "当带有『罪』的不同敌人同时被选为伤害目标时，传导效果额外获得150%增幅。\n带有『罪』的敌人还能将受到的倒地值伤害、精神异常和元素异常传导给其他带有『罪』的敌人。",
+        "name": "以斯帖的叛逆王座",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 124146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "Default",
+      "cooldown": 4,
+      "cost": "",
+      "desc": "对1名敌人造成361.8%/398.9%/376.6%/413.7%诅咒属性伤害。\n如果敌人身上带有『罪』则使其受HIGHLIGHT的伤害提升14.6%/16.1%/15.2%/16.7%，持续3回合，并将该效果复制给其他带有『罪』的敌人。",
+      "name": "HIGHLIGHT",
+      "nature": "Curse",
+      "skill_lv": "10/10/12/12",
+      "sn": 124152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": 1
+    },
+    "innate": {
+      "Ailment Acc.": "0.24",
+      "Attack": "0.2"
+    },
+    "innate_awake_skill": [],
+    "innate_skill_type": [
+      "S1/HL",
+      "S2/S3"
+    ],
+    "name": "平野亚兰",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 22",
+        "desc": "对1名敌人造成153.7%/169.5%/160.0%/175.8%诅咒属性伤害。\n如果敌人带有『罪』则将施加2层『罪业』，并将敌人身上的『罪业』层数复制给其他带有『罪』的敌人。\n敌人身上带有『罪业』时本次伤害提高20%。\n『罪业』：防御降低3.9%/4.3%/4.1%/4.5%（且防御力额外降低效果将基于平野亚兰的效果命中，最多计入161.0%/177.5%/167.6%/184.1%效果命中，使防御力最多额外降低11.7%/12.9%/12.2%/13.4%），持续2回合，最多叠加至4层。",
+        "name": "禁典蚀痕",
+        "nature": "Curse",
+        "skill_lv": "10/10/12/12",
+        "sn": 124111,
+        "tags": [
+          "主动",
+          "减益"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 2,
+        "cost": "SP 24",
+        "desc": "使所有我方全适应性变成“反”并使反伤比例由20%提升至100%（且亚兰的效果命中还会使反伤比例提升,最多计入161.0%/177.5%/167.6%/184.1%效果命中使反伤比例最多额外提升97.6%/107.6%/101.6%/111.6%），持续2回合，平野亚兰下次行动或反弹1次技能的全部伤害后消失。\n反弹伤害时若敌方带有『罪』，还会为敌方施加2层『罪业』。\n该反弹效果对于部分伤害无法无效化其附带的负面效果。",
+        "name": "复仇冥镜",
+        "nature": null,
+        "skill_lv": "10/10/12/12",
+        "sn": 124112,
+        "tags": [
+          "主动",
+          "增益"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 0",
+        "desc": "亚兰选择2个敌方目标，分别为其施加『罪』，可重复选择同一目标。\n再次施放：重新选择『罪』的对象。\n该技能不占用回合，但每回合仅能施放1次。\n『罪』的传导效果获得19.5%/21.5%/20.3%/22.3%增幅（且额外传导效果增幅将基于平野亚兰的效果命中，最多计入161.0%/177.5%/167.6%/184.1%效果命中，使传导效果增幅最多额外提升78.1%/86.1%/81.3%/89.3%）。",
+        "name": "断罪之瞳",
+        "nature": "Support",
+        "skill_lv": "10/10/12/12",
+        "sn": 124113,
+        "tags": [
+          "主动",
+          "减益"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "平野亚兰在场时，我方全体对带有『罪』的敌人造成伤害提升24.0%。",
+        "name": "逆刃",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 124131,
+        "tags": [
+          "潜能"
+        ],
+        "target": "All Allies",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "平野亚兰在场时，场上每存在1个带有『罪』的敌人，我方全队就获得18.0%攻击力加成。",
+        "name": "祭炎",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 124132,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Ally excluding myself",
+        "target_count": "All"
+      }
+    ],
+    "rating": {
+      "Ailment Acc.": 1.4,
+      "Attack": 3470.0,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "26.0% / 26.0% / 26.0% / 26.0% / 26.0% / 26.0% / 26.0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "795.37 / 804.17 / 813.77 / 822.57 / 832.17 / 840.97 / 850.57",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "470.01 / 475.61 / 481.21 / 486.01 / 491.61 / 497.21 / 502.81",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "2520.0 / 2548.8 / 2578.4 / 2607.2 / 2636.0 / 2665.6 / 2694.4",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "105.0 / 105.0 / 105.0 / 105.0 / 105.0 / 105.0 / 105.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

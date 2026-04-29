@@ -1,0 +1,305 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身神通法能量上限为140点。自身可以通过神通法技能『启动狂宴模式』进入『狂宴模式』，强化自身并对所有敌人自动释放技能。\n自身攻击带有护盾的敌人时，无视敌方护盾造成伤害，并对护盾额外造成本次伤害的20%（此伤害只能对护盾造成伤害）。",
+        "name": "反阴影特别压制兵装第七式",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 150140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『狂宴模式』下，在每个自身以外的同伴的非额外回合结束时，都会交替发动『机铳·乱击』或『闪光击』。\n释放『齿轮强化』后，使自身暴击率永久提升15%。",
+        "name": "她最珍视的",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 150141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身神通法上限提升至210点，释放『机铳·乱击』或『闪光击』后会获得35点神通法能量。\n自身处于『狂宴模式』时，暴击效果额外提升30%。",
+        "name": "火力全开！",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 150142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『机铳·乱击』、『齿轮强化』的技能等级提升3级，至多提升至15级。",
+        "name": "机械少女",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 150143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身释放神通法技能后，使自身伤害提升10%，持续2回合，上限3层。",
+        "name": "被赋予的使命",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 150144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『闪光击』、『战斗技巧』的技能等级提升3级，至多提升至15级。",
+        "name": "与人的联系",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 150145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『齿轮强化』的增益效果延长至5回合，并且在『齿轮强化』持续期间，自身释放『压制猛击』后不会退出『狂宴模式』，释放『压制猛击』后会获得70点神通法能量并获得1枚『高爆弹药』。",
+        "name": "蝶之心",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 150146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "对所有敌人造成30%攻击力的射击属性伤害，友方全体S.E.E.S.成员攻击力永久提升10%。",
+        "name": "援助技能",
+        "nature": "Gun",
+        "skill_lv": "10/10/13/13",
+        "sn": 150171,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    ],
+    "final_innate": [],
+    "highlight_skill": null,
+    "innate": {
+      "Crit Mult.": "0.24",
+      "Damage Mult.": "0.16"
+    },
+    "innate_awake_skill": [],
+    "innate_skill_type": [
+      "S1/S2",
+      "S3/HL"
+    ],
+    "name": "埃癸斯",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "체력 5.0%",
+        "desc": "对所有敌人造成41.7%/45.9%/44.2%/48.5%攻击力的射击属性伤害，使自身下一次『闪光击』的技能伤害提升10%，自身装填1枚『威力弹药』，持续2回合，上限3层。",
+        "name": "机铳·乱击",
+        "nature": "Gun",
+        "skill_lv": "10/10/13/13",
+        "sn": 150111,
+        "tags": [
+          "主动",
+          "群伤"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "체력 5.0%",
+        "desc": "对所有敌人造成41.7%/45.9%/44.2%/48.5%攻击力的射击属性伤害，使自身下一次『机铳·乱击』的技能伤害提升10%，自身装填1枚『威力弹药』，持续2回合，上限3层。",
+        "name": "闪光击",
+        "nature": "Gun",
+        "skill_lv": "10/10/13/13",
+        "sn": 150112,
+        "tags": [
+          "主动",
+          "群伤"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 25",
+        "desc": "自身获得35点神通法能量，并立刻释放1次不消耗神通法能量的『启动狂宴模式』，自身获得1枚『高爆弹药』，该技能替换为『压制猛击』。\n并使自身的攻击力提升39.0%/43.0%/41.4%/45.4%、穿透提升14.6%/16.1%/15.5%/17.0%，持续2回合。\n压制猛击:\n释放条件：自身处于『狂宴模式』\n对所有敌人造成193.3%/213.2%/205.2%/225.0%攻击力的射击属性伤害。消耗所有神通法能量（包含暂时缓存的神通法能量），每有10点神通法能量使技能倍率提升10.2%/11.2%/10.8%/11.8%。\n消耗所有『威力弹药』和『高爆弹药』，每消耗1枚『威力弹药』使技能伤害提升10%，每消耗1枚『高爆弹药』使自身暴击效果提升29.3%/32.3%/31.1%/34.1%。",
+        "name": "齿轮强化",
+        "nature": "Heal",
+        "skill_lv": "10/10/13/13",
+        "sn": 150113,
+        "tags": [
+          "主动",
+          "增益"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身以外的同伴释放神通法或HIGHLIGHT后，自身攻击力提升42.0%，持续2回合。",
+        "name": "永劫",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 150131,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身释放神通法技能后，自身伤害提升12.0%，持续2回合，上限3层。",
+        "name": "证明",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 150132,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 2970.0,
+      "Crit Mult.": 2.15,
+      "Crit Rate": 0.37,
+      "Damage Mult.": 0.18
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1190.0 / 1211.6 / 1233.2 / 1254.0 / 1275.6 / 1297.2 / 1318.8",
+      "Attack Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "593.32 / 603.72 / 614.92 / 625.32 / 635.72 / 646.92 / 657.32",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3419.97 / 3481.57 / 3543.17 / 3604.77 / 3666.37 / 3727.97 / 3789.57",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "95.0 / 95.0 / 95.0 / 95.0 / 95.0 / 95.0 / 95.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "AICondition (Based on AAAAAA==)",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "释放条件：70点神通法能量\n对所有敌人造成248.4%/273.8%/263.7%/289.1%攻击力的射击属性伤害，该伤害可以暴击。自身进入『狂宴模式』。\n『狂宴模式』：埃癸斯无法操控，每经过2个同伴的非额外回合会交替发动『机铳·乱击』或『闪光击』。『狂宴模式』下释放的所有技能都视为神通法技能，且可以发生暴击。\n『狂宴模式』持续期间，自身回合开始时，若『压制猛击』处于可用状态，则会自动释放『压制猛击』结束自身回合并退出『狂宴模式』，否则会自动释放『机铳·乱击』结束自身回合并退出『狂宴模式』。退出『狂宴模式』时，『压制猛击』还原为『齿轮强化』。",
+        "name": "启动狂宴模式",
+        "nature": "Gun",
+        "skill_lv": "10/10/13/13",
+        "sn": 150152,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    ]
+  },
+  "msg": "OK",
+  "status": 0
+}

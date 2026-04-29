@@ -69,6 +69,10 @@ fetch_and_write() {
   fi
 
   jq -S . "$tmp_clean" > "${tmp_clean}.sorted"
+  if [ ! -s "${tmp_clean}.sorted" ]; then
+    log "  Empty normalized JSON. Skip update."
+    return
+  fi
   mkdir -p "$(dirname "$out")" "$backup_dir"
 
   if [ -f "$out" ]; then
@@ -131,6 +135,10 @@ fetch_and_write_character() {
   fi
 
   jq -S . "$tmp_clean" > "${tmp_clean}.sorted"
+  if [ ! -s "${tmp_clean}.sorted" ]; then
+    log "  Empty normalized JSON. Skip character/${region}/${local_codename}."
+    return
+  fi
   mkdir -p "$(dirname "$out")" "$backup_dir"
 
   if [ -f "$out" ]; then
@@ -189,6 +197,10 @@ fetch_and_write_weapon() {
   fi
 
   jq -S . "$tmp_clean" > "${tmp_clean}.sorted"
+  if [ ! -s "${tmp_clean}.sorted" ]; then
+    log "  Empty normalized JSON. Skip weapon/${region}/${local_codename}."
+    return
+  fi
   mkdir -p "$(dirname "$out")" "$backup_dir"
 
   if [ -f "$out" ]; then
@@ -254,6 +266,10 @@ fetch_and_write_wonder_weapon() {
   fi
 
   jq -S . "$tmp_clean" > "${tmp_clean}.sorted"
+  if [ ! -s "${tmp_clean}.sorted" ]; then
+    log "  Empty normalized JSON. Skip weapon/${region}/wonder.json."
+    return
+  fi
   mkdir -p "$(dirname "$out")" "$backup_dir"
 
   if [ -f "$out" ]; then

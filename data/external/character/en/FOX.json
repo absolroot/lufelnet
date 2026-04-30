@@ -180,7 +180,7 @@
         "auto_select": "Default",
         "cooldown": 1,
         "cost": "SP 24",
-        "desc": "Evolve the next activated Inspiration to Imagination. \nImagination: Increase chance of counterattack to 100%, increase damage by 78.1%/86.1%/82.9%/90.9% of Defense, and change target to all foes. If the effect is not activated by the start of Yusuke's next action, automatically activate it.\nFor 2 turns, gain a shield equal to 19.5%/19.5%/20.7%/20.7% of Yusuke's Defense + 555/555/683/683, increase Fire resistance, and nullify spiritual ailments.\nAlso inflict Taunt on all foes for 2 turns.\nCooldown Time: 1 turn.",
+        "desc": "Evolve the next activated Inspiration to Imagination. \nImagination: Increase chance of counterattack to 100%, increase damage by 78.1%/86.1%/82.9%/90.9% of Defense, and change target to all foes. If the effect is not activated by Yusuke's next action, automatically activate it.\nFor 2 turns, gain a shield equal to 19.5%/19.5%/20.7%/20.7% of Yusuke's Defense + 555/555/683/683, increase Fire resistance, and nullify spiritual ailments.\nAlso inflict Taunt on all foes for 2 turns.\nCooldown Time: 1 turn.",
         "name": "Keen Eye",
         "nature": "Support",
         "skill_lv": "10/10/13/13",

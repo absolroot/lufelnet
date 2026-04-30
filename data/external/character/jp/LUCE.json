@@ -1,0 +1,280 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "星輝は『紅蓮の熱演』／『冴氷の静演』／『稲妻の烈演』／『晴嵐の快演』の４つの『即興劇』状態を持つ。戦闘中、自身のターン開始時に状態を切り替えることができる。\n自身がスキルでダメージを与えた時、７５%の確率で敵全体に現在の『即興劇』状態に対応する属性異常（炎上／凍結／感電／風襲）を付与する。",
+        "name": "二枚目高校生俳優",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 122140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "味方にスキルを使用した時、対象の祝印１つごとに、２ターンの間、対象の与ダメージが３%（最大１５%まで）上昇する。",
+        "name": "名演の脚光",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 122141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『アドリブフォロー』を使用した時に追加で、１ターンの間、対象が次にスキルダメージを受ける時、最終被ダメージを３５%低下させる効果を付与する。",
+        "name": "破綻なき一幕",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 122142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『ピンスポットライト』『アドリブフォロー』のスキルレベルが２上昇する。",
+        "name": "主演の大立回り",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 122143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "ハイライト能力追加：２ターンの間、選択した対象の攻撃力を１０%上昇させ、味方全体に祝印を追加で２つ付与する。",
+        "name": "喝采を呼ぶ演技",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 122144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『インプロヴァイズ』『怪盗戦技』のスキルレベルが２上昇する。",
+        "name": "ステージに咲く華",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 122145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『インプロヴァイズ』で『即興劇』状態に応じた追加効果が発動した時、追加効果の持続時間が４ターンに延長される。",
+        "name": "未来照らす舞台",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 122146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "Weak",
+      "cooldown": 4,
+      "cost": "",
+      "desc": "２ターンの間、味方全体の攻撃力が星輝の攻撃力の６.５%（最大284/314/296/325まで）上昇し、状態異常抵抗が82.0%/90.4%/85.3%/93.7%上昇する。\nさらに祝印を１つ付与する。",
+      "name": "ハイライト",
+      "nature": "Heal",
+      "skill_lv": "10/10/12/12",
+      "sn": 122152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Ally",
+      "target_count": "All"
+    },
+    "innate": {
+      "Ailment Acc.": "0.24",
+      "Attack": "0.2"
+    },
+    "innate_awake_skill": [],
+    "innate_skill_type": [
+      "S1/S2",
+      "S3/HL"
+    ],
+    "name": "池波 星輝",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 20",
+        "desc": "敵単体に攻撃力151.8%/167.3%/158.0%/173.5%の祝福属性ダメージを与える。\nさらに味方全体に祝印を２つ付与し、２ターンの間、与ダメージが星輝の攻撃力１００ごとに０.８%になるように（最大35.1%/38.7%/36.6%/40.2%まで）上昇する。",
+        "name": "ピンスポットライト",
+        "nature": "Bless",
+        "skill_lv": "10/10/12/12",
+        "sn": 122111,
+        "tags": [
+          "単体攻撃"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 2,
+        "cost": "SP 24",
+        "desc": "２ターンの間、自身以外の味方単体の防御力を星輝の攻撃力１００ごと０.８３%になるように（最大36.6%/40.4%/38.1%/41.8%まで）上昇させ、目眩・睡眠・混乱・忘却を無効化する。\nクールタイム：２ターン",
+        "name": "アドリブフォロー",
+        "nature": "Heal",
+        "skill_lv": "10/10/12/12",
+        "sn": 122112,
+        "tags": [
+          "強化"
+        ],
+        "target": "Ally excluding myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 24",
+        "desc": "２ターンの間、味方全体の攻撃力が星輝の攻撃力の１５%分（最大569/627/592/650まで）上昇する。\nさらに自身の『即興劇』状態に応じて、選択した対象に追加効果を付与する。\n『紅蓮の熱演』：２ターンの間、選択した対象の持続ダメージ効果が14.0%/15.4%/14.5%/16.0%上昇し、状態異常命中が３０%上昇する。\n『冴氷の静演』：２ターンの間、選択した対象のテクニカル精度が655/723/682/749上昇する。さらにテクニカルが発生する時、攻撃力が２０%上昇する。\n『稲妻の烈演』：２ターンの間、選択した対象のクリティカルダメージが24.4%/26.9%/25.4%/27.9%上昇する。\n『晴嵐の快演』：２ターンの間、選択した対象の貫通が12.0%/13.2%/12.5%/13.7%上昇する。",
+        "name": "インプロヴァイズ",
+        "nature": "Heal",
+        "skill_lv": "10/10/12/12",
+        "sn": 122113,
+        "tags": [
+          "強化"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "祝印を獲得している味方は、祝印１つごとに与ダメージが５%（最大25.0%まで）上昇する。",
+        "name": "舞台共演",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 122131,
+        "tags": [
+          "潜在能力"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身の状態異常命中１%ごとに、攻撃力が０.７２%になるように（最大72.0%まで）上昇する。",
+        "name": "迫真の演技",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 122132,
+        "tags": [
+          "潜在能力"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Ailment Acc.": 1.0,
+      "Attack": 4500.0,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "26.0% / 26.0% / 26.0% / 26.0% / 26.0% / 26.0% / 26.0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "765.42 / 774.22 / 783.02 / 791.82 / 800.62 / 809.42 / 818.22",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "495.38 / 500.98 / 506.58 / 512.18 / 518.58 / 524.18 / 529.78",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "2587.71 / 2617.31 / 2647.71 / 2677.31 / 2706.91 / 2737.31 / 2766.91",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "104.0 / 104.0 / 104.0 / 104.0 / 104.0 / 104.0 / 104.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

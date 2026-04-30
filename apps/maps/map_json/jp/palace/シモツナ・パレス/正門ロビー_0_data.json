@@ -1,0 +1,20 @@
+{
+    "tiles": [
+        {
+            "image": "map_yx_gdn_1Fdating.png",
+            "position": [
+                0,
+                0
+            ],
+            "ratio": 1,
+            "rotate": 0
+        }
+    ],
+    "objects": [],
+    "enemies": [],
+    "rotate": 180.0,
+    "map_size": [
+        1568,
+        780
+    ]
+}

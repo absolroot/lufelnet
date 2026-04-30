@@ -2838,6 +2838,36 @@
             "enemy_data": null
         },
         {
+            "sn": "5504124",
+            "image": "yishijie-icon-jiantou-right.png",
+            "position": [
+                1263,
+                5512
+            ],
+            "ratio": 1.0235294117647058,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": "5504125",
+            "image": "yishijie-icon-jiantou-up.png",
+            "position": [
+                1263,
+                5512
+            ],
+            "ratio": 1.0875,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
             "sn": "5504126",
             "image": "yishijie-icon-jinzhi.png",
             "position": [
@@ -3189,7 +3219,7 @@
                 "tutorial": {
                     "sn": 808211,
                     "title": "Unique Shadow Abilities",
-                    "content": "1. When Decarabia takes <color=#FF423F>weakness damage</color>, it will permanently gain 1 <color=#FF423F>Weakness</color> stack.\nEach stack increases Decarabia's damage taken.\n2. When Decarabia takes damage from an attribute other than its weakness, it will immediately use <color=#FF423F>Agilao</color> against the attacker."
+                    "content": "1. When Decarabia takes <color=#FF423F>weakness damage</color>, it will permanently gain 1 <color=#FF423F>Weakness</color> stack.\nEach Weakness stack increases Decarabia's damage taken.\n2. When Decarabia takes damage from an attribute other than its weakness, it will immediately use <color=#FF423F>Agilao</color> on the attacker."
                 }
             }
         },
@@ -3288,7 +3318,7 @@
                 "tutorial": {
                     "sn": 808221,
                     "title": "Unique Shadow Abilities",
-                    "content": "1. When Decarabia takes <color=#FF423F>weak point damage</color>, it will permanently gain 1 <color=#FF423F>weakness</color>.\nEach weakness increases Decarabia's damage taken.\n2. When Decarabia takes damage from an attribute other than its weaknesses, it will immediately use <color=#FF423F>Agilao</color> on the attacker."
+                    "content": "1. When Decarabia takes <color=#FF423F>weakness damage</color>, it will permanently gain 1 <color=#FF423F>Weakness</color> stack.\nEach Weakness stack increases Decarabia's damage taken.\n2. When Decarabia takes damage from an attribute other than its weakness, it will immediately use <color=#FF423F>Agilao</color> on the attacker."
                 }
             }
         },

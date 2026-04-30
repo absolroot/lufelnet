@@ -27,7 +27,7 @@ window.characterSkillsData["유스케"] = {
     "type": "반격강화",
     "sp": 24,
     "cool": 1,
-    "description": "다음 1회 『유룡전포』 공격이 『용의 포효』으로 강화된다. 공격 발동 확률이 100%로 상승하고, 스킬 배율이 유스케 방어력의 78.1%/86.1%/82.9%/90.9%만큼 상승하며, 광역 공격을 한다. 1턴 내에 『용의 포효』의 강화 반격이 발동하지 않을 경우 자동으로 발동한다.\n2턴 동안 방어력 19.5%/19.5%/20.7%/20.7%+555/555/683/683의 실드를 획득한다. 2턴 동안 자신의 약점을 일시적으로 기본 내성으로 바꾸고, 모든 정신 이상에 면역되며, 적 전체가 조롱 상태를 획득한다.\n쿨타임: 1턴."
+    "description": "다음 1회 『유룡전포』 공격이 『묵견룡음』으로 강화된다. 공격 발동 확률이 100%로 상승하고, 스킬 배율이 유스케 방어력의 78.1%/86.1%/82.9%/90.9%만큼 상승하며, 광역 공격을 한다. 1턴 내에 『묵견룡음』의 강화 반격이 발동하지 않을 경우 자동으로 발동한다.\n2턴 동안 방어력 19.5%/19.5%/20.7%/20.7%+555/555/683/683의 실드를 획득한다. 2턴 동안 자신의 약점을 일시적으로 기본 내성으로 바꾸고, 모든 정신 이상에 면역되며, 적 전체가 조롱 상태를 획득한다.\n쿨타임: 1턴."
   },
   "skill_highlight": {
     "element": "빙결광역",
@@ -73,7 +73,7 @@ window.enCharacterSkillsData["유스케"] = {
     "type": "버프",
     "sp": 24,
     "cool": 1,
-    "description": "Evolve the next activated Inspiration to Imagination. \nImagination: Increase chance of counterattack to 100%, increase damage by 78.1%/86.1%/82.9%/90.9% of Defense, and change target to all foes. If the effect is not activated by the start of Yusuke's next action, automatically activate it.\nFor 2 turns, gain a shield equal to 19.5%/19.5%/20.7%/20.7% of Yusuke's Defense + 555/555/683/683, increase Fire resistance, and nullify spiritual ailments.\nAlso inflict Taunt on all foes for 2 turns.\nCooldown Time: 1 turn."
+    "description": "Evolve the next activated Inspiration to Imagination. \nImagination: Increase chance of counterattack to 100%, increase damage by 78.1%/86.1%/82.9%/90.9% of Defense, and change target to all foes. If the effect is not activated by Yusuke's next action, automatically activate it.\nFor 2 turns, gain a shield equal to 19.5%/19.5%/20.7%/20.7% of Yusuke's Defense + 555/555/683/683, increase Fire resistance, and nullify spiritual ailments.\nAlso inflict Taunt on all foes for 2 turns.\nCooldown Time: 1 turn."
   },
   "skill_highlight": {
     "element": "빙결광역",
@@ -119,7 +119,7 @@ window.jpCharacterSkillsData["유스케"] = {
     "type": "버프",
     "sp": 24,
     "cool": 1,
-    "description": "次に発動する『インスピレーション』の効果が、『イマジネーション』に変化する。\n『イマジネーション』状態：反撃が１００%発生し、与ダメージが防御力78.1%/86.1%/82.9%/90.9%上昇し、全体攻撃になる。次の自身の行動開始までに効果が発動しなかった場合、自動的に発動する。\nさらに２ターンの間、自身に防御力19.5%/19.5%/20.7%/20.7%＋555/555/683/683のシールドを付与し、火炎属性の耐性が上昇し、行動異常を無効化する。\n加えて、敵全体を２ターンの間、挑発状態にする。\nクールタイム：１ターン"
+    "description": "次に発動する『インスピレーション』の効果が、『イマジネーション』に変化する。\n『イマジネーション』状態：反撃が１００%発生し、与ダメージが防御力78.1%/86.1%/82.9%/90.9%上昇し、全体攻撃になる。次の自身の行動までに効果が発動しなかった場合、自動的に発動する。\nさらに２ターンの間、自身に防御力19.5%/19.5%/20.7%/20.7%＋555/555/683/683のシールドを付与し、火炎属性の耐性が上昇し、行動異常を無効化する。\n加えて、敵全体を２ターンの間、挑発状態にする。\nクールタイム：１ターン"
   },
   "skill_highlight": {
     "element": "빙결광역",

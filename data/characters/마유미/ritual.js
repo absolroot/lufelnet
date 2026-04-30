@@ -24,9 +24,9 @@ window.ritualData["마유미"] = {
 window.enCharacterRitualData["마유미"] = {
   "name": "Mayumi Hashimoto",
   "r0": "Racing Game Lover",
-  "r0_detail": "At the start of battle, Mayumi gains 90 Velocity stacks. At the end of each ally's action, gain 4 Velocity stacks (if Mayumi's Speed is over 100, gain 1 more Velocity stack for every 10 points of Speed over 100; up to 6 stacks).\nAt the start of Mayumi's turn, if Velocity is over 120 stacks, can spend Velocity to gain an extra action at the end of her current action (cooldown: 1 turn). When total Velocity stacks gained during battle reach 100/220/350 stacks, activate level 1/2/3 of Torque Boost.\nTorque Boost: Increase party's pierce rate by 5%/10%/15%.",
+  "r0_detail": "At the start of battle, Mayumi gains 90 Velocity stacks. At the end of each action by an ally, gain 4 Velocity stacks (if Mayumi's Speed is over 100, gain 1 more Velocity stack for every 10 points of Speed over 100; up to 6 stacks).\nAt the start of Mayumi's turn, if Velocity is over 120 stacks, can spend Velocity to gain an extra action at the end of her current action (cooldown: 1 turn). When total Velocity stacks gained during battle reach 100/220/350 stacks, activate level 1/2/3 of Torque Boost.\nTorque Boost: Increase party's pierce rate by 5%/10%/15%.",
   "r1": "Tire Change",
-  "r1_detail": "At the end of each ally's action, gain 10 more Velocity stacks.\nOn an extra action, when using a skill different from the one used immediately before, activate the following additional effects.\nShockwave: When activating a skill, increase critical damage by 50%.\nAero Setup: Increase shield by 30%. Also, increase party's Defense by 30% more.\nPower Setup: Increase main target's pierce rate by 10% more.",
+  "r1_detail": "At the end of each action by an ally, gain 10 more Velocity stacks.\nOn an extra action, when using a skill different from the one used immediately before, activate the following additional effects.\nShockwave: When activating a skill, increase critical damage by 50%.\nAero Setup: Increase shield by 30%. Also, increase party's Defense by 30% more.\nPower Setup: Increase main target's pierce rate by 10% more.",
   "r2": "High-Spec Engine",
   "r2_detail": "When activating Torque Boost, activate the following additional effects.\nLevel 1: Increase party's critical damage by 20%.\nLevel 2: Increase party's damage by 20%.\nLevel 3: Increase party's Attack by 30%.",
   "r3": "Output Control",
@@ -42,9 +42,9 @@ window.enCharacterRitualData["마유미"] = {
 window.jpCharacterRitualData["마유미"] = {
   "name": "橋本 麻由美",
   "r0": "レースゲームラヴァー",
-  "r0_detail": "戦闘開始時、麻由美は『エンジン出力』を９０獲得する。各味方の行動終了時、『エンジン出力』を４獲得する（自身の速さが１００以上の時、１００を超えた分の速さ１０ごとに、『エンジン出力』を追加で１獲得する。最大６まで）。\n自身のターン開始時、『エンジン出力』が１２０以上の場合、それを消費してターン終了後に追加行動を獲得することができる（クールタイム：１ターン）。戦闘中に獲得した『エンジン出力』の総数が１００／２２０／３５０に達した時、レベル１／２／３の『トルクブースト』が発動する。\n『トルクブースト』：味方全体の貫通が５%／１０%／１５%上昇する。",
+  "r0_detail": "戦闘開始時、麻由美は『エンジン出力』を９０獲得する。味方の各行動終了時、『エンジン出力』を４獲得する（自身の速さが１００以上の時、１００を超えた分の速さ１０ごとに、『エンジン出力』を追加で１獲得する。最大６まで）。\n自身のターン開始時、『エンジン出力』が１２０以上の場合、それを消費してターン終了後に追加行動を獲得することができる（クールタイム：１ターン）。戦闘中に獲得した『エンジン出力』の総数が１００／２２０／３５０に達した時、レベル１／２／３の『トルクブースト』が発動する。\n『トルクブースト』：味方全体の貫通が５%／１０%／１５%上昇する。",
   "r1": "タイヤチェンジ",
-  "r1_detail": "各味方の行動終了時、追加で『エンジン出力』を１０獲得する。\n追加行動で直前に使用したスキルと異なるスキルを発動する時、以下の追加効果が発生する。\n『ショックウェイク』：スキル発動時のクリティカルダメージが５０%上昇する。\n『エアロ・セットアップ』：シールド量が３０%上昇する。さらに味方全体の防御力が追加で３０%上昇する。\n『パワー・セットアップ』：選択した対象の貫通が追加で１０%上昇する。",
+  "r1_detail": "味方の各行動終了時、追加で『エンジン出力』を１０獲得する。\n追加行動で直前に使用したスキルと異なるスキルを発動する時、以下の追加効果が発生する。\n『ショックウェイク』：スキル発動時のクリティカルダメージが５０%上昇する。\n『エアロ・セットアップ』：シールド量が３０%上昇する。さらに味方全体の防御力が追加で３０%上昇する。\n『パワー・セットアップ』：選択した対象の貫通が追加で１０%上昇する。",
   "r2": "ハイスペックエンジン",
   "r2_detail": "『トルクブースト』を発動した時、以下の追加効果が発生する。\nレベル１：味方全体のクリティカルダメージが２０%上昇する。\nレベル２：味方全体の与ダメージが２０%上昇する。\nレベル３：味方全体の攻撃力が３０%上昇する。",
   "r3": "出力制御",

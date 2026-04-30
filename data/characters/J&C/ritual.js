@@ -26,7 +26,7 @@ window.enCharacterRitualData["J&C"] = {
   "r0": "Twin Wardens",
   "r0_detail": "After obtaining Justine & Caroline, during battle, increase Wonder's skill and Thief Tactics levels by 1 (takes effect even when Justine & Caroline are not in battle).\nBefore entering battle, Justine & Caroline can select 2 of their 4 sets of Personas, and their Skill 1 and Skill 2 will change accordingly. During battle, Justine & Caroline will receive the following role effect based on the selected sets:\nMask of Mischief & Innocence + Mask of Service & Admonition: Medic\nMask of Mischief & Innocence + Mask of Absurdity & Nonsense: Strategist\nMask of Mischief & Innocence + Mask of Luck & Loss: Sweeper\nMask of Service & Admonition + Mask of Absurdity & Nonsense: Guardian\nMask of Service & Admonition + Mask of Luck & Loss: Saboteur\nMask of Absurdity & Nonsense + Mask of Luck & Loss: Assassin\nSkill effects are affected by Desire Level. At the start of battle, increase Desire Level by 25.",
   "r1": "Strict Tolerance",
-  "r1_detail": "At the start of battle, depending on the selected Personas, gain 2 types of Facade.\nAt the start or end of Justine & Caroline's turn, if they have 2 types of Facade, automatically activate Two Masks as One on a random target 1 time (prioritizing the target of the previous skill attack used).",
+  "r1_detail": "At the start of battle, depending on the selected Personas, gain 2 types of Facade.\nAt the start of Justine & Caroline's turn or end of their action, if they have 2 types of Facade, automatically activate Two Masks as One on a random target 1 time (prioritizing the target of the previous skill attack used).",
   "r2": "Callous Kindness",
   "r2_detail": "When a Facade is gained, gain the following buff based on the type of Facade:\nFacade of Mischief & Innocence: Increase party's Attack by 30% for 2 turns.\nFacade of Service & Admonition: Decrease party's damage taken by 20% for 2 turns.\nFacade of Absurdity & Nonsense: Increase critical damage of the Assassin or Sweeper ally with the highest Attack by 20% for 2 turns.\nFacade of Luck & Loss: Increase Justine & Caroline's skill damage by 10% for 2 turns.",
   "r3": "Punitive Mercy",
@@ -36,7 +36,7 @@ window.enCharacterRitualData["J&C"] = {
   "r5": "Humane Prison",
   "r5_detail": "Increase the skill levels of Selected Skill 2 and Thief Tactics by 3.",
   "r6": "Power to Resist Ruin",
-  "r6_detail": "When this Awareness is unlocked, during battle, increase Wonder's skill and Thief Tactics levels by 1 (takes effect even when Justine & Caroline are not in battle). Also, increase Desire Level by 20%.\nAt the start of battle, gain True Desire. Afterwards, regain True Desire every 8 turns if it has been spent.\nDuring Justine & Caroline's turn, they can spend 1 True Desire stack to enhance the next activated Two Masks as One.\nEnhanced effect: Activate all Facade effects for Two Masks as One. Also, deal bonus damage to the main target equal to 40% of Attack (8 hits. Increase this skill's effect by 1% for every 1 point of Desire Level. These bonus hits deal 1 hit of Fire, Ice, Electric, Wind, Psychokinesis, Nuclear, Bless, and Curse damage each.)"
+  "r6_detail": "When this Awareness is unlocked, during battle, increase Wonder's skill and Thief Tactics levels by 1 (takes effect even when Justine & Caroline are not in battle). Also, increase Desire Level by 20%.\nAt the start of battle, gain True Desire. Afterwards, regain True Desire every 8 actions if it has been spent.\nAt the start of Justine & Caroline's turn, they can spend 1 True Desire stack to enhance the next activated Two Masks as One.\nEnhanced effect: Activate all Facade effects for Two Masks as One. Also, deal bonus damage to the main target equal to 40% of Attack (8 hits. Increase this skill's effect by 1% for every 1 point of Desire Level. These bonus hits deal 1 hit of Fire, Ice, Electric, Wind, Psychokinesis, Nuclear, Bless, and Curse damage each.)"
 };
 
 window.jpCharacterRitualData["J&C"] = {
@@ -44,7 +44,7 @@ window.jpCharacterRitualData["J&C"] = {
   "r0": "双子の看守",
   "r0_detail": "ジュスティーヌ＆カロリーヌを獲得すると、戦闘中、主人公のスキルと『怪盗戦技』のレベルが１上昇する。（自身が戦闘に参加していない場合でも有効）\nジュスティーヌ＆カロリーヌは戦闘開始前に４組のペルソナから２組を選択し、それぞれに対応したスキルを自身のスキル１・スキル２とする。戦闘中は選択した組み合わせに対応するロール効果を受けることができる。\n『悪戯と無邪気の仮面』＋『奉仕と警告の仮面』：救援\n『悪戯と無邪気の仮面』＋『不条理と非合理の仮面』：優越\n『悪戯と無邪気の仮面』＋『福果と禍因の仮面』：支配\n『奉仕と警告の仮面』＋『不条理と非合理の仮面』：防衛\n『奉仕と警告の仮面』＋『福果と禍因の仮面』：屈従\n『不条理と非合理の仮面』＋『福果と禍因の仮面』：反抗\nスキル効果は『デザイアレベル』の影響を受け、戦闘開始時に『デザイアレベル』を２５獲得する。",
   "r1": "狭量な寛容",
-  "r1_detail": "戦闘開始時、選択したペルソナに対応する２種類の『相貌』を獲得する。\n自身のターン開始時または終了時、２種類の『相貌』を所持していると、自動でランダムな対象に『二者合一の仮面』を１回発動し、前回スキル攻撃を行った対象を優先的に選択する。",
+  "r1_detail": "戦闘開始時、選択したペルソナに対応する２種類の『相貌』を獲得する。\n自身のターン開始時または行動終了時、２種類の『相貌』を所持していると、自動でランダムな対象に『二者合一の仮面』を１回発動し、前回スキル攻撃を行った対象を優先的に選択する。",
   "r2": "冷酷な温情",
   "r2_detail": "『相貌』を獲得した時、その『相貌』に応じて以下の効果を獲得する。\n『相貌・悪戯と無邪気』：２ターンの間、味方全体の攻撃力が３０%上昇する。\n『相貌・奉仕と警告』：２ターンの間、味方全体の被ダメージが２０%低下する。\n『相貌・不条理と非合理』：２ターンの間、攻撃力が最も高い支配または反抗ロールの味方のクリティカルダメージが２０%上昇する。\n『相貌・福果と禍因』：２ターンの間、自身のスキルダメージが１０%上昇する。",
   "r3": "懲罰的赦免",
@@ -54,7 +54,7 @@ window.jpCharacterRitualData["J&C"] = {
   "r5": "慈悲深き牢獄",
   "r5_detail": "『選択されているスキル２』／『怪盗戦技』のスキルレベルが３上昇する。",
   "r6": "破滅に抗う力",
-  "r6_detail": "この意識を解放すると、戦闘中、主人公のスキルと『怪盗戦技』のレベルがさらに１上昇する（自身が戦闘に参加していない場合でも有効）。さらに『デザイアレベル』が２０%上昇する。\n戦闘開始時、『真実の渇望』を獲得する。その後、８ターン経過するごとに『真実の渇望』を消費していた場合、再び獲得する。\n自身のターン中、『真実の渇望』を１つ消費して、次に発動する『二者合一の仮面』を強化することができる。\n強化効果：『二者合一の仮面』の全ての『相貌』効果を発動する。さらに選択した対象に攻撃力４０%のダメージを８回追加で与える（『デザイアレベル』１ごとに、この効果が１%上昇する。追加攻撃は火炎・氷結・電撃・疾風・念動・核熱・祝福・呪怨属性それぞれを１回ずつ与える）。"
+  "r6_detail": "この意識を解放すると、戦闘中、主人公のスキルと『怪盗戦技』のレベルがさらに１上昇する（自身が戦闘に参加していない場合でも有効）。さらに『デザイアレベル』が２０%上昇する。\n戦闘開始時、『真実の渇望』を獲得する。その後、８回行動するごとに『真実の渇望』を消費していた場合、再び獲得する。\n自身のターン開始時、『真実の渇望』を１つ消費して、次に発動する『二者合一の仮面』を強化することができる。\n強化効果：『二者合一の仮面』の全ての『相貌』効果を発動する。さらに選択した対象に攻撃力４０%のダメージを８回追加で与える（『デザイアレベル』１ごとに、この効果が１%上昇する。追加攻撃は火炎・氷結・電撃・疾風・念動・核熱・祝福・呪怨属性それぞれを１回ずつ与える）。"
 };
 
 window.cnCharacterRitualData["J&C"] = {

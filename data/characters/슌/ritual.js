@@ -24,7 +24,7 @@ window.ritualData["슌"] = {
 window.enCharacterRitualData["슌"] = {
   "name": "Shun Kano",
   "r0": "Wild Runner",
-  "r0_detail": "Increase chance of being targeted by attacks, and when attacked, activate Desperado.\nAt the end of Shun's action, Desperado ends, and he restores 30% HP.",
+  "r0_detail": "Increase chance of being targeted by attacks, and when attacked, activate Desperado.\nAt the end of Shun's turn, Desperado ends, and he restores 30% HP.",
   "r1": "Steely Endurance",
   "r1_detail": "When Desperado is active, decrease damage taken by 8%.",
   "r2": "Bloodspray",
@@ -42,7 +42,7 @@ window.enCharacterRitualData["슌"] = {
 window.jpCharacterRitualData["슌"] = {
   "name": "加納 駿",
   "r0": "荒野を駆ける者",
-  "r0_detail": "自身が攻撃を受ける確率が上昇し、攻撃を受けた時、『タフガイ』状態になる。\n自身の行動が終了した時、『タフガイ』状態も終了し、減っているＨＰの３０%を回復する。",
+  "r0_detail": "自身が攻撃を受ける確率が上昇し、攻撃を受けた時、『タフガイ』状態になる。\n自身のターン終了時、『タフガイ』状態も終了し、減っているＨＰの３０%を回復する。",
   "r1": "鋼の忍耐力",
   "r1_detail": "『タフガイ』状態の時、自身の被ダメージが８%減少する。",
   "r2": "血煙の最中",

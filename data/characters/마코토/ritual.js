@@ -24,7 +24,7 @@ window.ritualData["마코토"] = {
 window.enCharacterRitualData["마코토"] = {
   "name": "Makoto Niijima",
   "r0": "Enraged Usurper",
-  "r0_detail": "When attacking a foe with a skill, gain 1 Tenacity stack. If Crash Out is not active, at the end of the turn, gain more Tenacity stacks based on the number of elemental ailments inflicted on foes (including foes defeated during the turn).\nIf Makoto has 5 Tenacity stacks at the start of her turn, she can activate Crash Out, increasing Attack by 40% and Defense by 20%, and evolving Nuclear Fury to Thermonuclear Fury for 2 turns. When Crash Out ends, lose all Tenacity stacks.",
+  "r0_detail": "When attacking a foe with a skill, gain 1 Tenacity stack. If Crash Out is not active, at the end of the action, gain more Tenacity stacks based on the number of elemental ailments inflicted on foes (including foes defeated during the turn).\nIf Makoto has 5 Tenacity stacks at the start of her turn, she can activate Crash Out, increasing Attack by 40% and Defense by 20%, and evolving Nuclear Fury to Thermonuclear Fury for 2 turns. When Crash Out ends, lose all Tenacity stacks.",
   "r1": "Execution of Justice",
   "r1_detail": "At the start of battle, gain 5 Tenacity stacks, allowing Makoto to activate Crash Out.\nWhen Crash Out is active, increase Attack by 50% more and damage by 35%.",
   "r2": "Hot and Cold",
@@ -42,7 +42,7 @@ window.enCharacterRitualData["마코토"] = {
 window.jpCharacterRitualData["마코토"] = {
   "name": "新島 真",
   "r0": "激昂の簒奪者",
-  "r0_detail": "スキルで敵を攻撃した時、『我慢』を１つ獲得する。また『ブチ切れ』状態でなければ、ターン終了時、敵に付与されている属性異常の数に応じて追加で『我慢』を獲得する（ターン中に倒された敵も対象となる）。\nターン開始時に『我慢』が５つあれば『ブチ切れ』状態になることができ、２ターンの間、攻撃力が４０%上昇、防御力が２０%上昇、『沸き立つ怒り』が『爆発する怒り』に変化する。『ブチ切れ』状態が終了すると、全ての『我慢』が消失する。",
+  "r0_detail": "スキルで敵を攻撃した時、『我慢』を１つ獲得する。また『ブチ切れ』状態でなければ、行動終了時、敵に付与されている属性異常の数に応じて追加で『我慢』を獲得する（ターン中に倒された敵も対象となる）。\nターン開始時に『我慢』が５つあれば『ブチ切れ』状態になることができ、２ターンの間、攻撃力が４０%上昇、防御力が２０%上昇、『沸き立つ怒り』が『爆発する怒り』に変化する。『ブチ切れ』状態が終了すると、全ての『我慢』が消失する。",
   "r1": "正義執行",
   "r1_detail": "戦闘開始時に『我慢』を５つ獲得し、自身の行動時『ブチ切れ』状態になることができる。\n『ブチ切れ』状態時は、追加で攻撃力が５０%上昇し、与ダメージが３５％上昇する。",
   "r2": "心は熱く頭は冷静に",

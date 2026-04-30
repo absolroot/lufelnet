@@ -24,7 +24,7 @@ window.ritualData["안"] = {
 window.enCharacterRitualData["안"] = {
   "name": "Ann Takamaki",
   "r0": "Passion",
-  "r0_detail": "When dealing Fire damage to a foe with a skill, gain 1 Passion. Gain up to 4 stacks of Passion with 1 skill.\nIf Passion is at 4 or more stacks at the start of the user's turn, spend all Passion stacks to gain La Vie en Rose for 1 turn.\nLa Vie en Rose: Increase user's Attack by 30%/40%/50% (effect changes at level 1/50/70).\n*Cannot gain La Vie en Rose consecutively on the user's next action.",
+  "r0_detail": "When dealing Fire damage to a foe with a skill, gain 1 Passion. Gain up to 4 stacks of Passion with 1 skill.\nIf Passion is at 4 or more stacks on Ann's action, spend all Passion stacks to gain La Vie en Rose for 1 turn.\nLa Vie en Rose: Increase Ann's Attack by 30%/40%/50% (effect changes at level 1/50/70).\n*Cannot gain La Vie en Rose consecutively on Ann's next action.",
   "r1": "Seguidilla",
   "r1_detail": "When La Vie en Rose is active, increase the party's Attack by 25% for 1 turn.",
   "r2": "Marriage of Flames",
@@ -42,7 +42,7 @@ window.enCharacterRitualData["안"] = {
 window.jpCharacterRitualData["안"] = {
   "name": "高巻 杏",
   "r0": "激情の踊り子",
-  "r0_detail": "敵に火炎属性のスキルでダメージを与えると『パッション』を１つ獲得する。１回のスキル使用で最大４つ『パッション』を獲得できる。\n自身のターン開始時、『パッション』を４つ以上獲得している場合、『パッション』を全て消費して、１ターンの間、『ラビアンローズ』状態になる。\n『ラビアンローズ』状態：自身の攻撃力が３０%／４０%／５０%（自身のレベルが、１／５０／７０以上の時）上昇する。\n※次の自身のターンに連続して『ラビアンローズ』状態にはなれない。",
+  "r0_detail": "敵に火炎属性のスキルでダメージを与えると『パッション』を１つ獲得する。１回のスキル使用で最大４つ『パッション』を獲得できる。\n自身の行動時、『パッション』を４つ以上獲得している場合、『パッション』を全て消費して、１ターンの間、『ラビアンローズ』状態になる。\n『ラビアンローズ』状態：自身の攻撃力が３０%／４０%／５０%（自身のレベルが、１／５０／７０以上の時）上昇する。\n※次の自身のターンに連続して『ラビアンローズ』状態にはなれない。",
   "r1": "紅豹の叱咤激励",
   "r1_detail": "『ラビアンローズ』状態になった時、１ターンの間、味方全体の攻撃力を２５%上昇させる。",
   "r2": "炎のマリアージュ",

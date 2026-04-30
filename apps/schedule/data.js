@@ -76,7 +76,7 @@ window.ReleaseScheduleData = {
         { version: "3.6", characters: ["아케치"],  weapon: ["플라스마 섬멸자"], days: 14 },
         // 4.0 이후 (3주 간격) - isThreeWeekStart 표시
         { version: "4.0", characters: ["마나카", "쇼키"], "main-story": "5-1", weapon: ["하이브 가드"], revelation: ["희망", "신중", "고집"], days: 21 },
-        { version: "4.1.1", characters: ["유키 마코토"], persona: ["자오우곤겐"], days: 21 },
+        { version: "4.1.1", characters: ["유키 마코토"], persona: ["자오우곤겐"], days: 14 },
         { version: "4.1.2", characters: ["유카리"], weapon: ["마그네틱 스톰"], days: 21 },
         { version: "4.1.3", characters: ["사나다"], revelation: ["돌파", "슬픔", "변화"], days: 21 },
         { version: "4.2", characters: ["이치고"], "main-story": "5-2", persona: ["트럼페터", "바스키"], weapon: ["망령의 저주"], days: 21 },

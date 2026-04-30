@@ -1,0 +1,33 @@
+{
+  "data": {
+    "fiveStar": [
+      {
+        "name": "Angel's Hymn",
+        "quality": 5,
+        "skill": "Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%.\nFor each Musical Note gained, grant 1 Angelic Chorus stack to all allies.\nAngelic Chorus: Permanently increase damage by 0.7%/0.9%/0.9%/1.1%/1.1%/1.3%/1.3%. Stacks up to 12 times. At 12 stacks, increase critical damage by 15.3%/19.9%/19.9%/24.5%/24.5%/29.1%/29.1%.",
+        "stat": {
+          "attack": 759.73,
+          "defense": 396.41,
+          "hp": 2219.84
+        },
+        "user": "Manaka"
+      }
+    ],
+    "fourStar": [
+      {
+        "name": "Divine Muse",
+        "quality": 4,
+        "skill": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.\nAfter using a skill, permanently increase Manaka's Attack by 11.0%/14.5%/14.5%/18.0%/18.0%/21.5%/21.5%. Stacks up to 2 times.",
+        "stat": {
+          "attack": 607.79,
+          "defense": 317.1,
+          "hp": 1776.03
+        },
+        "user": "Manaka"
+      }
+    ],
+    "name": "Manaka"
+  },
+  "msg": "OK",
+  "status": 0
+}

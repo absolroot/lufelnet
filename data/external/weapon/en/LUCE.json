@@ -1,0 +1,44 @@
+{
+  "data": {
+    "fiveStar": [
+      {
+        "name": "Ribalta",
+        "quality": 5,
+        "skill": "Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%.\nWhen using a skill on an ally, if the target has Blessing stacks, increase damage by 11.0%/14.0%/14.0%/17.0%/17.0%/20.0%/20.0% for 2 turns.\nEach time Followspot or Improvise is activated with a different Improv state, permanently increase Shoki's Attack by 14.0%/18.0%/18.0%/22.0%/22.0%/26.0%/26.0%. This effect stacks up to 3 times. Also, allies besides Shoki gain 50% of this effect.",
+        "stat": {
+          "attack": 673.89,
+          "defense": 436.03,
+          "hp": 2279.27
+        },
+        "user": "Shoki"
+      }
+    ],
+    "fourStar": [
+      {
+        "name": "Mattatóre",
+        "quality": 4,
+        "skill": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When Shoki grants Blessing stacks, increase his Attack by 3.3%/4.3%/4.3%/5.3%/5.3%/6.3%/6.3% and ailment accuracy by 3.3%/4.3%/4.3%/5.3%/5.3%/6.3%/6.3% for 2 turns. Stacks up to 3 times.",
+        "stat": {
+          "attack": 539.4,
+          "defense": 349.01,
+          "hp": 1823.43
+        },
+        "user": "Shoki"
+      },
+      {
+        "name": "Sipario",
+        "quality": 4,
+        "skill": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.\nWhen using a skill on an ally, increase Shoki's ailment accuracy by 22.0%/28.0%/28.0%/34.0%/34.0%/40.0%/40.0% and grant 60% of this effect to all allies besides Shoki for 2 turns.",
+        "stat": {
+          "attack": 594.58,
+          "defense": 449.24,
+          "hp": 2497.32
+        },
+        "user": "Shoki"
+      }
+    ],
+    "name": "Shoki"
+  },
+  "msg": "OK",
+  "status": 0
+}

@@ -3,7 +3,7 @@
     'use strict';
 
     // New 배지를 표시할 아이템 목록
-    const newItems = ['character'];
+    const newItems = ['character','maps'];
 
     const HOME_RAW_LANGS = ['kr', 'en', 'jp', 'cn', 'tw', 'sea'];
     const LABEL_KEY_MAP = {

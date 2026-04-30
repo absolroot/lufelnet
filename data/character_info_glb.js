@@ -9,7 +9,7 @@ window.characterList = window.characterList || {
         // P3R 캐릭터 제외: "사나다", "유카리", "유키 마코토"
     ],
     supportParty: [
-        "유우미", "리코", "미유", "카요", "후타바"
+        "유우미", "리코", "마나카", "미유", "카요", "후타바"
         // P3R 서포트 캐릭터 제외: "마나카" (P3R 관련)
     ]
 };
@@ -22,6 +22,9 @@ Object.assign(window.characterData, {
         "tag": "",
         "persona": "",
         "release_order": 0
+    },
+    "마나카": {
+        "release_order": 25
     },
     "아케치": {
         "release_order": 24

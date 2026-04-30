@@ -16,8 +16,8 @@
         {
             "image": "xdt_ysc_tsg2F_b6_zhu_02.png",
             "position": [
-                924,
-                1093
+                922,
+                1096
             ],
             "ratio": 1,
             "rotate": 0,
@@ -82,7 +82,7 @@
             "image": "xdt_ysc_tsg2F_a5_zhu_07.png",
             "position": [
                 874,
-                901
+                902
             ],
             "ratio": 1,
             "rotate": 0,
@@ -107,7 +107,7 @@
         {
             "image": "xdt_ysc_tsg2F_b1_zhu_09.png",
             "position": [
-                864,
+                866,
                 729
             ],
             "ratio": 1,
@@ -133,7 +133,7 @@
         {
             "image": "xdt_ysc_tsg2F_b3_zhu_11.png",
             "position": [
-                789,
+                790,
                 667
             ],
             "ratio": 1,
@@ -159,8 +159,8 @@
         {
             "image": "xdt_ysc_tsg2F_zhu_b5_13.png",
             "position": [
-                882,
-                582
+                879,
+                580
             ],
             "ratio": 1,
             "rotate": 0,
@@ -173,7 +173,7 @@
             "image": "xdt_ysc_tsg2F_b9_zhu_14.png",
             "position": [
                 952,
-                583
+                584
             ],
             "ratio": 1,
             "rotate": 0,
@@ -186,7 +186,7 @@
             "image": "xdt_ysc_tsg2F_a3_zhu_15.png",
             "position": [
                 1040,
-                563
+                564
             ],
             "ratio": 1,
             "rotate": 0,
@@ -484,7 +484,7 @@
         {
             "image": "xdt_ysc_tsg2F_b9_zhu_38.png",
             "position": [
-                1381,
+                1380,
                 1082
             ],
             "ratio": 1,
@@ -692,7 +692,7 @@
         {
             "image": "xdt_ysc_tsg2F_zhi01_b5_010.png",
             "position": [
-                677,
+                678,
                 561
             ],
             "ratio": 1,
@@ -732,7 +732,7 @@
             "image": "xdt_ysc_tsg2F_zhi01_b2_03.png",
             "position": [
                 469,
-                562
+                564
             ],
             "ratio": 1,
             "rotate": 0,
@@ -888,7 +888,7 @@
             "image": "xdt_ysc_tsg2F_zhi01_a3_04.png",
             "position": [
                 121,
-                674
+                675
             ],
             "ratio": 1,
             "rotate": 0,
@@ -1004,7 +1004,7 @@
         {
             "image": "xdt_ysc_tsg2F_zhi01_b2_01.png",
             "position": [
-                387,
+                386,
                 346
             ],
             "ratio": 1,
@@ -1278,7 +1278,7 @@
             "image": "xdt_ysc_tsg2F_zhi02_b2_01.png",
             "position": [
                 688,
-                1329
+                1330
             ],
             "ratio": 1,
             "rotate": 0,
@@ -1408,7 +1408,7 @@
             "image": "xdt_ysc_tsg2F_zhi02_b5_03.png",
             "position": [
                 675,
-                1149
+                1150
             ],
             "ratio": 1,
             "rotate": 0,
@@ -1525,7 +1525,7 @@
             "image": "xdt_ysc_tsg2F_zhi02_b4_03.png",
             "position": [
                 511,
-                949
+                948
             ],
             "ratio": 1,
             "rotate": 0,
@@ -1784,8 +1784,8 @@
         {
             "image": "xdt_ysc_tsg2F_zhi02_b5_06.png",
             "position": [
-                627,
-                1312
+                626,
+                1313
             ],
             "ratio": 1,
             "rotate": 0,
@@ -4714,7 +4714,7 @@
                 "tutorial": {
                     "sn": 218161,
                     "title": "Unique Shadow Abilities",
-                    "content": "1. Zouchouten has <color=#FF423F>Growth of All Things</color>, which grants Growth to 2 random Shadows each turn.\nEach stack of Growth increases Attack by 30%.\n2. Zouchouten will absorb Growth from the Shadows every 3 turns. When it reaches 4 stacks of Growth, it will unleash a powerful attack.\n3. When a Shadow with Growth is defeated, its stack of Growth disappears."
+                    "content": "1. Zouchouten has <color=#FF423F>Growth of All Things</color>, which grants Growth to 2 random Shadows each turn.\nEach Growth stack increases Attack by 30%.\n2. Zouchouten will absorb Growth from the Shadows every 3 turns. When it reaches 4 Growth stacks, it will unleash a powerful attack.\n3. When a Shadow with Growth is defeated, its Growth stacks disappears."
                 }
             }
         },

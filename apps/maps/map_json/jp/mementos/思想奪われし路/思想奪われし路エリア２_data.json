@@ -2838,6 +2838,36 @@
             "enemy_data": null
         },
         {
+            "sn": "5504124",
+            "image": "yishijie-icon-jiantou-right.png",
+            "position": [
+                1263,
+                5512
+            ],
+            "ratio": 1.0235294117647058,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": "5504125",
+            "image": "yishijie-icon-jiantou-up.png",
+            "position": [
+                1263,
+                5512
+            ],
+            "ratio": 1.0875,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
             "sn": "5504126",
             "image": "yishijie-icon-jinzhi.png",
             "position": [

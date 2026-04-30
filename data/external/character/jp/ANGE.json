@@ -1,0 +1,267 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "味方の各行動時、『音符』を１つ獲得し、最大１２個まで累積できる。\n愛歌は任意の味方の行動前に『ダ・カーポ』を発動できる（戦闘ごとの初期使用回数は１回）。『ダ・カーポ』を発動した後、主人公が追加行動以外で７回行動すると、使用回数が１回分回復する（この効果は戦闘中に一度だけ発動する）。\n『ダ・カーポ』：味方単体の弱体効果を１つ打ち消す。対象は次の行動終了時に特殊な追加行動状態になる。この状態になった時、対象のＨＰ・ＳＰ・強化／弱体効果・スキルのクールタイムが、直前の行動前の状態に巻き戻る。",
+        "name": "アンダンテ",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 138140,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "戦闘開始時、『音符』を最大まで獲得し、初期クールタイムが４行動分減少する。\nさらに『歩みの旋律』を使用した時、２ターンの間、追加で味方全体のクリティカル率が１２%上昇する。",
+        "name": "アレグロ",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 138141,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『ダ・カーポ』による追加行動状態の味方の最終ダメージ増幅が１２%上昇する。\n戦闘不能になった味方を、愛歌の攻撃力２０%＋２０００で回復する。この効果は戦闘中に一度だけ発動する。",
+        "name": "フォルティシモ",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 138142,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『祈りのリフレイン』／『歩みの旋律』のスキルレベルが３上昇する。",
+        "name": "ビブラート",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 138143,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "戦闘開始時、または味方がハイライトを発動した時、『音符』を２つ獲得する。この効果による獲得分は上限を超えて所持することができ、最大２つまで累積できる。",
+        "name": "シンフォニア",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 138144,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『翼のカノン』のスキルレベルが３上昇する。",
+        "name": "モルトヴィヴァーチェ",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 138145,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『ダ・カーポ』の初期使用回数が１回追加される。",
+        "name": "コン・アニマ",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 138146,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": null,
+    "innate": {
+      "Attack": "0.2",
+      "HP": "0.2"
+    },
+    "innate_awake_skill": [],
+    "innate_skill_type": [
+      "S1/S2",
+      "S3"
+    ],
+    "name": "長尾 愛歌",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "２ターンの間、味方全体の与ダメージが7.0%/7.7%/7.8%/8.5%上昇し、追加で愛歌の攻撃力１６４ごとに１%になるように上昇（追加上昇分は最大28.0%/30.8%/31.4%/34.2%まで）する。\nさらに『音符』を４つ獲得する。\nクールタイム：味方の行動４回",
+        "name": "翼のカノン",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 138111,
+        "tags": [
+          "強化"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "AICondition",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "味方全体のＨＰを愛歌の攻撃力10.0%/10.0%/11.2%/11.2%＋681/816/989/1124回復し、さらに弱体を１つ打ち消す。\n『音符』を獲得している時、『音符』を１つ消費して、スキル使用後のクールタイムを１行動分減少させる（この効果で減少できるのは最大４行動まで）。\nこのスキルを選択して使用した場合は回復量が５０%上昇する。\nクールタイム：味方の行動８回\n自動効果：戦闘中『音符』を１２個獲得するごとに、このスキルの回復効果が１回発動する。",
+        "name": "祈りのリフレイン",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 138112,
+        "tags": [
+          "回復治療"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "２ターンの間、味方全体の攻撃力が愛歌の攻撃力１１%＋128/140/143/156上昇する。\n『音符』を全て消費して、２ターンの間、消費した『音符』１つごとに、味方全体の貫通が愛歌の攻撃力４６０ごとに０.１%になるように上昇し、攻撃力が愛歌の攻撃力４６０ごとに０.１%になるように上昇する。\nこのスキルが参照する愛歌の攻撃力は最大4600/5060/5980/6440まで。\nクールタイム：味方の行動４回",
+        "name": "歩みの旋律",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 138113,
+        "tags": [
+          "強化"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『ダ・カーポ』状態の味方の攻撃力が37.5%上昇する。",
+        "name": "クレッシェンド",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 138131,
+        "tags": [
+          "潜在能力"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "獲得した『音符』の総数に応じて、１つごとに味方全体の貫通が1.0%上昇する。最大１２個まで適用される。",
+        "name": "天まで届く声",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 138132,
+        "tags": [
+          "潜在能力"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "rating": {
+      "Attack": 4600.0,
+      "Defense": 1000.0,
+      "HP": 6160.0,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1147.99 / 1168.79 / 1189.59 / 1210.39 / 1231.19 / 1251.19 / 1271.99",
+      "Attack Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0%",
+      "Crit Rate": "0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "599.98 / 611.18 / 621.58 / 632.78 / 643.18 / 654.38 / 664.78",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3366.02 / 3426.82 / 3486.82 / 3547.62 / 3607.62 / 3668.42 / 3729.22",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

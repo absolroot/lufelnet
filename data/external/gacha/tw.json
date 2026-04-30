@@ -2,635 +2,127 @@
   "data": {
     "thief": [
       {
-        "endTime": "2026-04-30 08:00:00",
+        "endTime": "2026-05-28 08:00:00",
         "fiveStar": [
           {
-            "name": "新井素羽·晴光",
+            "name": "埃癸斯",
             "type": "thief"
           }
         ],
         "fourStar": [
           {
-            "name": "野毛朋子",
+            "name": "多禰村理子",
             "type": "thief"
           },
           {
-            "name": "琴音·蒙塔涅",
+            "name": "藤川雪實",
             "type": "thief"
           },
           {
-            "name": "平野亞蘭",
+            "name": "池波星輝",
             "type": "thief"
           }
         ],
-        "name": "永不凋零的電光",
-        "startTime": "2026-04-09 08:00:00",
+        "name": "反陰影特別鎮壓武器",
+        "startTime": "2026-04-30 08:00:00",
         "type": "角色活動契約·精準"
       },
       {
-        "endTime": "2026-04-30 08:00:00",
+        "endTime": "2026-05-28 08:00:00",
         "fiveStar": [
           {
-            "name": "新井素羽·晴光",
+            "name": "埃癸斯",
             "type": "thief"
           }
         ],
         "fourStar": [
           {
-            "name": "野毛朋子",
+            "name": "多禰村理子",
             "type": "thief"
           },
           {
-            "name": "琴音·蒙塔涅",
+            "name": "藤川雪實",
             "type": "thief"
           },
           {
-            "name": "平野亞蘭",
+            "name": "池波星輝",
             "type": "thief"
           }
         ],
-        "name": "永不凋零的電光",
-        "startTime": "2026-04-09 08:00:00",
-        "type": "角色活動契約·隨機"
-      },
-      {
-        "endTime": "2026-04-30 08:00:00",
-        "fiveStar": [
-          {
-            "name": "山岸風花",
-            "type": "thief"
-          },
-          {
-            "name": "桐条美鶴",
-            "type": "thief"
-          },
-          {
-            "name": "YUI·幻彩",
-            "type": "thief"
-          },
-          {
-            "name": "片山久未",
-            "type": "thief"
-          },
-          {
-            "name": "佐原海夕·夏日",
-            "type": "thief"
-          },
-          {
-            "name": "宮下美波·夏日",
-            "type": "thief"
-          },
-          {
-            "name": "鹿野莓",
-            "type": "thief"
-          },
-          {
-            "name": "真田明彥",
-            "type": "thief"
-          },
-          {
-            "name": "岳羽由加莉",
-            "type": "thief"
-          },
-          {
-            "name": "結城理",
-            "type": "thief"
-          },
-          {
-            "name": "長尾愛歌",
-            "type": "thief"
-          },
-          {
-            "name": "明智吾郎",
-            "type": "thief"
-          },
-          {
-            "name": "夏川澪",
-            "type": "thief"
-          },
-          {
-            "name": "李瑤鈴·太平樂",
-            "type": "thief"
-          },
-          {
-            "name": "多禰村理子·未央",
-            "type": "thief"
-          },
-          {
-            "name": "芳澤霞",
-            "type": "thief"
-          },
-          {
-            "name": "琴音 蒙塔涅·漫舞",
-            "type": "thief"
-          },
-          {
-            "name": "奧村春",
-            "type": "thief"
-          },
-          {
-            "name": "佐倉雙葉",
-            "type": "thief"
-          },
-          {
-            "name": "北里基良",
-            "type": "thief"
-          },
-          {
-            "name": "野毛朋子·夏日",
-            "type": "thief"
-          },
-          {
-            "name": "新井素羽·夏日",
-            "type": "thief"
-          },
-          {
-            "name": "坂井綾香",
-            "type": "thief"
-          },
-          {
-            "name": "新島真",
-            "type": "thief"
-          }
-        ],
-        "name": "緣結之契·精準",
-        "startTime": "2026-04-09 08:00:00",
-        "type": "角色活動契約·精準"
-      },
-      {
-        "endTime": "2026-04-30 08:00:00",
-        "fiveStar": [
-          {
-            "name": "山岸風花",
-            "type": "thief"
-          },
-          {
-            "name": "桐条美鶴",
-            "type": "thief"
-          },
-          {
-            "name": "YUI·幻彩",
-            "type": "thief"
-          },
-          {
-            "name": "片山久未",
-            "type": "thief"
-          },
-          {
-            "name": "佐原海夕·夏日",
-            "type": "thief"
-          },
-          {
-            "name": "宮下美波·夏日",
-            "type": "thief"
-          },
-          {
-            "name": "鹿野莓",
-            "type": "thief"
-          },
-          {
-            "name": "真田明彥",
-            "type": "thief"
-          },
-          {
-            "name": "岳羽由加莉",
-            "type": "thief"
-          },
-          {
-            "name": "結城理",
-            "type": "thief"
-          },
-          {
-            "name": "長尾愛歌",
-            "type": "thief"
-          },
-          {
-            "name": "明智吾郎",
-            "type": "thief"
-          },
-          {
-            "name": "夏川澪",
-            "type": "thief"
-          },
-          {
-            "name": "李瑤鈴·太平樂",
-            "type": "thief"
-          },
-          {
-            "name": "多禰村理子·未央",
-            "type": "thief"
-          },
-          {
-            "name": "芳澤霞",
-            "type": "thief"
-          },
-          {
-            "name": "琴音 蒙塔涅·漫舞",
-            "type": "thief"
-          },
-          {
-            "name": "奧村春",
-            "type": "thief"
-          },
-          {
-            "name": "佐倉雙葉",
-            "type": "thief"
-          },
-          {
-            "name": "北里基良",
-            "type": "thief"
-          },
-          {
-            "name": "野毛朋子·夏日",
-            "type": "thief"
-          },
-          {
-            "name": "新井素羽·夏日",
-            "type": "thief"
-          },
-          {
-            "name": "坂井綾香",
-            "type": "thief"
-          },
-          {
-            "name": "新島真",
-            "type": "thief"
-          }
-        ],
-        "name": "緣結之契·隨機",
-        "startTime": "2026-04-09 08:00:00",
+        "name": "反陰影特別鎮壓武器",
+        "startTime": "2026-04-30 08:00:00",
         "type": "角色活動契約·隨機"
       }
     ],
     "weapon": [
       {
-        "endTime": "2026-04-30 08:00:00",
+        "endTime": "2026-05-28 08:00:00",
         "fiveStar": [
           {
-            "name": "遠征的先驅者號",
+            "name": "萬魔槍",
             "type": "weapon",
-            "user": "新井素羽·晴光"
+            "user": "埃癸斯"
           }
         ],
         "fourStar": [
           {
-            "name": "日輪統治者",
-            "type": "weapon",
-            "user": "新井素羽·晴光"
-          },
-          {
-            "name": "影舞雙冠",
-            "type": "weapon",
-            "user": "野毛朋子"
-          },
-          {
-            "name": "鳴空長歌",
-            "type": "weapon",
-            "user": "琴音·蒙塔涅"
-          },
-          {
-            "name": "最終清算",
-            "type": "weapon",
-            "user": "平野亞蘭"
-          }
-        ],
-        "name": "無聲硝煙·精準",
-        "startTime": "2026-04-09 08:00:00",
-        "type": "武器活動補給·精準"
-      },
-      {
-        "endTime": "2026-04-30 08:00:00",
-        "fiveStar": [
-          {
-            "name": "遠征的先驅者號",
-            "type": "weapon",
-            "user": "新井素羽·晴光"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "日輪統治者",
-            "type": "weapon",
-            "user": "新井素羽·晴光"
-          },
-          {
-            "name": "影舞雙冠",
-            "type": "weapon",
-            "user": "野毛朋子"
-          },
-          {
-            "name": "鳴空長歌",
-            "type": "weapon",
-            "user": "琴音·蒙塔涅"
-          },
-          {
-            "name": "最終清算",
-            "type": "weapon",
-            "user": "平野亞蘭"
-          }
-        ],
-        "name": "無聲硝煙·隨機",
-        "startTime": "2026-04-09 08:00:00",
-        "type": "武器活動補給·隨機"
-      },
-      {
-        "endTime": "2026-04-30 08:00:00",
-        "fiveStar": [
-          {
-            "name": "虹音傳導器",
-            "type": "weapon",
-            "user": "山岸風花"
-          },
-          {
-            "name": "聖槍朗基努斯",
-            "type": "weapon",
-            "user": "桐条美鶴"
-          },
-          {
-            "name": "飛越深空之船",
-            "type": "weapon",
-            "user": "YUI·幻彩"
-          },
-          {
-            "name": "鐵誓狼騎",
-            "type": "weapon",
-            "user": "片山久未"
-          },
-          {
-            "name": "遊夢人魚",
-            "type": "weapon",
-            "user": "佐原海夕·夏日"
-          },
-          {
-            "name": "不凋之庭",
-            "type": "weapon",
-            "user": "宮下美波·夏日"
-          },
-          {
-            "name": "咒言魔偶",
-            "type": "weapon",
-            "user": "鹿野莓"
-          },
-          {
-            "name": "薩巴茲烏斯",
-            "type": "weapon",
-            "user": "真田明彥"
-          },
-          {
-            "name": "薩倫伽",
-            "type": "weapon",
-            "user": "岳羽由加莉"
-          },
-          {
-            "name": "神之劍",
-            "type": "weapon",
-            "user": "結城理"
-          },
-          {
-            "name": "天籟輕吟",
-            "type": "weapon",
-            "user": "長尾愛歌"
-          },
-          {
-            "name": "天熾神心",
-            "type": "weapon",
-            "user": "明智吾郎"
-          },
-          {
-            "name": "鎮炎璃叉",
-            "type": "weapon",
-            "user": "夏川澪"
-          },
-          {
-            "name": "灼灼春暉",
-            "type": "weapon",
-            "user": "李瑤鈴"
-          },
-          {
-            "name": "浮香·鶴舞凌冬",
+            "name": "霽月銀勾",
             "type": "weapon",
             "user": "多禰村理子"
           },
           {
-            "name": "金色晨曦",
+            "name": "萬寶重擊",
             "type": "weapon",
-            "user": "芳澤霞"
+            "user": "藤川雪實"
           },
           {
-            "name": "天鵝夢鄉",
+            "name": "聖誓加冕",
             "type": "weapon",
-            "user": "琴音·蒙塔涅"
+            "user": "池波星輝"
           },
           {
-            "name": "神聖戰歌",
+            "name": "自由基步槍",
             "type": "weapon",
-            "user": "奧村春"
-          },
+            "user": "埃癸斯"
+          }
+        ],
+        "name": "無聲硝煙·精準",
+        "startTime": "2026-04-30 08:00:00",
+        "type": "武器活動補給·精準"
+      },
+      {
+        "endTime": "2026-05-28 08:00:00",
+        "fiveStar": [
           {
-            "name": "HACK專業型",
+            "name": "萬魔槍",
             "type": "weapon",
-            "user": "佐倉雙葉"
-          },
-          {
-            "name": "血色編織",
-            "type": "weapon",
-            "user": "北里基良"
-          },
-          {
-            "name": "波子寶貝",
-            "type": "weapon",
-            "user": "野毛朋子"
-          },
-          {
-            "name": "繽紛海岸",
-            "type": "weapon",
-            "user": "新井素羽"
-          },
-          {
-            "name": "萬眾矚目之星",
-            "type": "weapon",
-            "user": "坂井綾香"
-          },
-          {
-            "name": "核熱終結",
-            "type": "weapon",
-            "user": "新島真"
+            "user": "埃癸斯"
           }
         ],
         "fourStar": [
           {
-            "name": "D型通訊裝置",
-            "type": "weapon",
-            "user": "山岸風花"
-          },
-          {
-            "name": "玫瑰焰形劍",
-            "type": "weapon",
-            "user": "桐条美鶴"
-          },
-          {
-            "name": "薯薯奇航",
-            "type": "weapon",
-            "user": "YUI·幻彩"
-          },
-          {
-            "name": "伏特赤心",
-            "type": "weapon",
-            "user": "片山久未"
-          }
-        ],
-        "name": "無聲硝煙·精準",
-        "startTime": "2026-04-09 08:00:00",
-        "type": "武器活動補給·精準"
-      },
-      {
-        "endTime": "2026-04-30 08:00:00",
-        "fiveStar": [
-          {
-            "name": "虹音傳導器",
-            "type": "weapon",
-            "user": "山岸風花"
-          },
-          {
-            "name": "聖槍朗基努斯",
-            "type": "weapon",
-            "user": "桐条美鶴"
-          },
-          {
-            "name": "飛越深空之船",
-            "type": "weapon",
-            "user": "YUI·幻彩"
-          },
-          {
-            "name": "鐵誓狼騎",
-            "type": "weapon",
-            "user": "片山久未"
-          },
-          {
-            "name": "遊夢人魚",
-            "type": "weapon",
-            "user": "佐原海夕·夏日"
-          },
-          {
-            "name": "不凋之庭",
-            "type": "weapon",
-            "user": "宮下美波·夏日"
-          },
-          {
-            "name": "咒言魔偶",
-            "type": "weapon",
-            "user": "鹿野莓"
-          },
-          {
-            "name": "薩巴茲烏斯",
-            "type": "weapon",
-            "user": "真田明彥"
-          },
-          {
-            "name": "薩倫伽",
-            "type": "weapon",
-            "user": "岳羽由加莉"
-          },
-          {
-            "name": "神之劍",
-            "type": "weapon",
-            "user": "結城理"
-          },
-          {
-            "name": "天籟輕吟",
-            "type": "weapon",
-            "user": "長尾愛歌"
-          },
-          {
-            "name": "天熾神心",
-            "type": "weapon",
-            "user": "明智吾郎"
-          },
-          {
-            "name": "鎮炎璃叉",
-            "type": "weapon",
-            "user": "夏川澪"
-          },
-          {
-            "name": "灼灼春暉",
-            "type": "weapon",
-            "user": "李瑤鈴"
-          },
-          {
-            "name": "浮香·鶴舞凌冬",
+            "name": "霽月銀勾",
             "type": "weapon",
             "user": "多禰村理子"
           },
           {
-            "name": "金色晨曦",
+            "name": "萬寶重擊",
             "type": "weapon",
-            "user": "芳澤霞"
+            "user": "藤川雪實"
           },
           {
-            "name": "天鵝夢鄉",
+            "name": "聖誓加冕",
             "type": "weapon",
-            "user": "琴音·蒙塔涅"
+            "user": "池波星輝"
           },
           {
-            "name": "神聖戰歌",
+            "name": "自由基步槍",
             "type": "weapon",
-            "user": "奧村春"
-          },
-          {
-            "name": "HACK專業型",
-            "type": "weapon",
-            "user": "佐倉雙葉"
-          },
-          {
-            "name": "血色編織",
-            "type": "weapon",
-            "user": "北里基良"
-          },
-          {
-            "name": "波子寶貝",
-            "type": "weapon",
-            "user": "野毛朋子"
-          },
-          {
-            "name": "繽紛海岸",
-            "type": "weapon",
-            "user": "新井素羽"
-          },
-          {
-            "name": "萬眾矚目之星",
-            "type": "weapon",
-            "user": "坂井綾香"
-          },
-          {
-            "name": "核熱終結",
-            "type": "weapon",
-            "user": "新島真"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "D型通訊裝置",
-            "type": "weapon",
-            "user": "山岸風花"
-          },
-          {
-            "name": "玫瑰焰形劍",
-            "type": "weapon",
-            "user": "桐条美鶴"
-          },
-          {
-            "name": "薯薯奇航",
-            "type": "weapon",
-            "user": "YUI·幻彩"
-          },
-          {
-            "name": "伏特赤心",
-            "type": "weapon",
-            "user": "片山久未"
+            "user": "埃癸斯"
           }
         ],
         "name": "無聲硝煙·隨機",
-        "startTime": "2026-04-09 08:00:00",
+        "startTime": "2026-04-30 08:00:00",
         "type": "武器活動補給·隨機"
       }
     ]

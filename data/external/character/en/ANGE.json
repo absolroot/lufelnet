@@ -1,0 +1,267 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "On each ally's action, gain 1 Musical Note stack, up to a maximum of 12 stacks.\nBefore any ally's action, Manaka can activate Da Capo (the initial use count in each battle is 1). After activating Da Capo, when Wonder takes 7 actions other than additional actions, restore the use count by 1 (this effect activates only 1 time per battle).\nDa Capo: Remove 1 debuff effect from 1 ally. At the end of the target's next action, grant a special additional action. When in this state, the target's HP, SP, buff/debuff effects, and skill cooldowns are reset to their state at the start of the previous action.",
+        "name": "Andante",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 138140,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "At the start of battle, gain the maximum number of Musical Note stacks, and reduce the first cooldown time by 4 actions.\nAlso, when using Melody of Steps, also increase party's critical rate by 12% for 2 turns.",
+        "name": "Allegro",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 138141,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase final damage amplification of allies with extra actions from Da Capo by 12%.\nWhen an ally is KO'd, restore their HP equal to 20% of Manaka's Attack + 2000. This effect can be activated once per battle.",
+        "name": "Fortissimo",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 138142,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase the skill levels of Prayer Refrain and Melody of Steps by 3.",
+        "name": "Vibrato",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 138143,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "At the start of battle, or when an ally activates a Highlight, gain 2 Musical Note stacks. Stacks gained from this effect can exceed the maximum limit up to 2 times.",
+        "name": "Symphonia",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 138144,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase the skill level of Winged Canon by 3.",
+        "name": "Molto Vivace",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 138145,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase the initial use count of Da Capo by 1.",
+        "name": "Con Anima",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 138146,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": null,
+    "innate": {
+      "Attack": "0.2",
+      "HP": "0.2"
+    },
+    "innate_awake_skill": [],
+    "innate_skill_type": [
+      "S1/S2",
+      "S3"
+    ],
+    "name": "Manaka Nagao",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase party's damage by 7.0%/7.7%/7.8%/8.5% for 2 turns (for every 164 points of Manaka's Attack, increase by 1% more, up to a maximum of 28.0%/30.8%/31.4%/34.2%).\nAlso, gain 4 Musical Note stacks.\nCooldown Time: 4 ally actions",
+        "name": "Winged Canon",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 138111,
+        "tags": [
+          "Buff"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "AICondition",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Restore HP to party equal to 10.0%/10.0%/11.2%/11.2% of Manaka's Attack + 681/816/989/1124, and remove 1 debuff.\nWhen Manaka has Musical Note, spend 1 Musical Note stack, and reduce skill cooldown by 1 action. (this effect can reduce cooldowns by up to 4 actions).\nIf this skill is selected and used, increase healing by 50%.\nCooldown Time: 8 ally actions\nAutomatic Effect: For every 12 Musical Note stacks gained during battle, activate this skill's healing effect 1 time.",
+        "name": "Prayer Refrain",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 138112,
+        "tags": [
+          "Healing"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase party's Attack by 11% of Manaka's Attack + 128/140/143/156 for 2 turns.\nSpend all Musical Note stacks, and for each stack spent, increase party's pierce rate by 0.1% for every 460 points of Manaka's Attack, and increase party's Attack by 0.1% for every 460 points of Manaka's Attack. Lasts for 2 turns.\nThis skill applies up to 4600/5060/5980/6440 of Manaka's Attack.\nCooldown Time: 4 ally actions",
+        "name": "Melody of Steps",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 138113,
+        "tags": [
+          "Buff"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase Attack of allies with Da Capo by 37.5%.",
+        "name": "Crescendo",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 138131,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Based on the total number of Musical Note stacks gained, increase party's pierce rate by 1.0% for each stack. Counts up to 12 stacks.",
+        "name": "Heavenly Voice",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 138132,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "rating": {
+      "Attack": 4600.0,
+      "Defense": 1000.0,
+      "HP": 6160.0,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1147.99 / 1168.79 / 1189.59 / 1210.39 / 1231.19 / 1251.19 / 1271.99",
+      "Attack Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0%",
+      "Crit Rate": "0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "599.98 / 611.18 / 621.58 / 632.78 / 643.18 / 654.38 / 664.78",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3366.02 / 3426.82 / 3486.82 / 3547.62 / 3607.62 / 3668.42 / 3729.22",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

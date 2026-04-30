@@ -6,7 +6,7 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "When dealing Fire damage to a foe with a skill, gain 1 Passion. Gain up to 4 stacks of Passion with 1 skill.\nIf Passion is at 4 or more stacks at the start of the user's turn, spend all Passion stacks to gain La Vie en Rose for 1 turn.\nLa Vie en Rose: Increase user's Attack by 30%/40%/50% (effect changes at level 1/50/70).\n*Cannot gain La Vie en Rose consecutively on the user's next action.",
+        "desc": "When dealing Fire damage to a foe with a skill, gain 1 Passion. Gain up to 4 stacks of Passion with 1 skill.\nIf Passion is at 4 or more stacks on Ann's action, spend all Passion stacks to gain La Vie en Rose for 1 turn.\nLa Vie en Rose: Increase Ann's Attack by 30%/40%/50% (effect changes at level 1/50/70).\n*Cannot gain La Vie en Rose consecutively on Ann's next action.",
         "name": "Passion",
         "nature": null,
         "skill_lv": "3",

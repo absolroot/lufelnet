@@ -9870,7 +9870,7 @@
                 "tutorial": {
                     "sn": 829761,
                     "title": "Unique Shadow Abilities",
-                    "content": "1. Seiryu will inflict weakness to a target. If Seiryu is present when a target is downed, all Shadows gain 1 <color=#FF423F>Azure Storm</color> stack.\nAzure Storm: Increases damage. Stackable.\n2. Byakko will use <color=#FF423F>Byakko's Claw</color> and <color=#FF423F>Byakko's Fang</color>.\nByakko's Claw: Deals damage to 1 target and inflicts <color=#FF423F>Deep Wounds</color>. This effect deals damage over time.\nByakko's Fang: Deals damage to all targets and inflicts <color=#FF423F>Bite Marks</color>. This effect increases damage taken.\nIf both Deep Wounds and Bite Marks have been inflicted, Byakko will activate <color=#FF423F>Prey</color>, dealing heavy damage and inflicting <color=#FF423F>Despair</color> on the target.\n3. Suzaku will use <color=#FF423F>Suzaku's Pyre</color> and <color=#FF423F>Suzaku's Feathers</color>.\nSuzaku's Pyre: Inflicts all targets with Pyre, dealing continuous damage.\nSuzaku's Feathers: Makes 1 Shadow untargetable.\n4. Genbu will continuously grant stacks of <color=#FF423F>Black Tortoiseshell</color> to all Shadows.\nBlack Tortoiseshell: Decreases final damage taken. Stackable, but lowering Genbu's Down Points will remove 1 stack.\n5. When a Shadow is summoned, its corresponding Might is granted to all Shadows on the field. When a Shadow is defeated, the Shadows lose that Might and it is granted to all Phantom Thieves instead.\nSeiryu's Might: Increases weakness damage.\nByakko's Might: All-Out Attack power.\nSuzaku's Might: Increases final damage.\nGenbu's Might: Decreases final damage taken."
+                    "content": "1. Seiryu will inflict weakness to a target. If Seiryu is present when a target is downed, all Shadows gain 1 <color=#FF423F>Azure Storm</color> stack.\nAzure Storm: Increases damage. Stackable.\n2. Byakko will use <color=#FF423F>Byakko's Claw</color> and <color=#FF423F>Byakko's Fang</color>.\nByakko's Claw: Deals damage to 1 target and inflicts <color=#FF423F>Deep Wounds</color>. This effect deals damage over time.\nByakko's Fang: Deals damage to all targets and inflicts <color=#FF423F>Bite Marks</color>. This effect increases damage taken.\nIf both Deep Wounds and Bite Marks have been inflicted, Byakko will activate <color=#FF423F>Prey</color>, dealing heavy damage and inflicting <color=#FF423F>Despair</color> on the target.\n3. Suzaku will use <color=#FF423F>Suzaku's Pyre</color> and <color=#FF423F>Suzaku's Feathers</color>.\nSuzaku's Pyre: Inflicts all targets with Pyre, dealing continuous damage.\nSuzaku's Feathers: Makes 1 Shadow untargetable.\n4. When Genbu appears, it will grant 3 stacks of <color=#FF423F>Black Tortoiseshell</color> to all Shadows. At the end of every turn, Genbu grants an additional stack of Black Tortoiseshell to all Shadows.\nBlack Tortoiseshell: Decreases final damage taken. Stackable, but lowering Genbu's Down Points will remove 1 stack.\n5. When a Shadow is summoned, its corresponding Might is granted to all Shadows on the field. When a Shadow is defeated, the Shadows lose that Might and it is granted to all Phantom Thieves instead.\nSeiryu's Might: Increases weakness damage.\nByakko's Might: All-Out Attack power.\nSuzaku's Might: Increases final damage.\nGenbu's Might: Decreases final damage taken."
                 }
             }
         },
@@ -10744,6 +10744,51 @@
                     "content": "Shadows have different weaknesses and resistances than normal.\n1. Phantom Thieves will be inflicted with 2 <color=#FF423F>Chill</color> stacks when they do not deal damage during a turn. Dealing damage removes 1 Chill stack.\n2. On even-numbered turns, King Frost will summon a Jack Frost if there are less than 3 Jack Frosts present. Jack Frost's attacks inflict Chill.\n3. Damage from King Frost's skills increases based on Chill stacks inflicted. Phantom Thieves with 3 or more stacks will also be inflicted with <color=#FF423F>Weakness</color> for 1 turn."
                 }
             }
+        },
+        {
+            "sn": "5525046",
+            "image": "yishijie-icon-jiantou-left.png",
+            "position": [
+                2258,
+                5601
+            ],
+            "ratio": 1.6,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": "5525047",
+            "image": "yishijie-icon-jiantou-right.png",
+            "position": [
+                2258,
+                5601
+            ],
+            "ratio": 1.6,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": "5525048",
+            "image": "yishijie-icon-jiantou-left.png",
+            "position": [
+                2258,
+                5601
+            ],
+            "ratio": 1.6,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
         },
         {
             "sn": "5525049",

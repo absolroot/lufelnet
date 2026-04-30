@@ -773,13 +773,13 @@
                 {
                   "id": "spirit_tower_top",
                   "name": "정신탑 최상층",
-                  "name_en": "Upper Level",
+                  "name_en": "Upper Mental Energy Area",
                   "name_jp": "精神エネルギー上層",
                   "file": [
                     "palace/아카시 팰리스/댐·정신 에너지탑 최상층_0_data.json"
                   ],
                   "file_en": [
-                    "palace/Akashi's Palace/Mental Energy Water Tower_Upper Level_0_data.json"
+                    "palace/Akashi's Palace/Mental Energy Water Tower_Upper Mental Energy Area_0_data.json"
                   ],
                   "file_jp": [
                     "palace/アカシ・パレス/精神エネルギー上層_0_data.json"
@@ -791,15 +791,15 @@
                 {
                   "id": "spirit_tower_lower",
                   "name": "정신탑 하층",
-                  "name_en": "Lower Level",
+                  "name_en": "Lower Mental Energy Area",
                   "name_jp": "精神エネルギー下層",
                   "file": [
                     "palace/아카시 팰리스/댐·정신 에너지탑 하층_0_data.json",
                     "palace/아카시 팰리스/댐·정신 에너지탑 하층_1_data.json"
                   ],
                   "file_en": [
-                    "palace/Akashi's Palace/Mental Energy Water Tower_Lower Level_0_data.json",
-                    "palace/Akashi's Palace/Mental Energy Water Tower_Lower Level_1_data.json"
+                    "palace/Akashi's Palace/Mental Energy Water Tower_Lower Mental Energy Area_0_data.json",
+                    "palace/Akashi's Palace/Mental Energy Water Tower_Lower Mental Energy Area_1_data.json"
                   ],
                   "file_jp": [
                     "palace/アカシ・パレス/精神エネルギー下層_0_data.json",
@@ -812,15 +812,15 @@
                 {
                   "id": "spirit_tower_middle",
                   "name": "정신탑 중층",
-                  "name_en": "Mid Level",
+                  "name_en": "Central Mental Energy Area",
                   "name_jp": "精神エネルギー中層",
                   "file": [
                     "palace/아카시 팰리스/댐·정신 에너지탑 중층_0_data.json",
                     "palace/아카시 팰리스/댐·정신 에너지탑 중층_1_data.json"
                   ],
                   "file_en": [
-                    "palace/Akashi's Palace/Mental Energy Water Tower_Mid Level_0_data.json",
-                    "palace/Akashi's Palace/Mental Energy Water Tower_Mid Level_1_data.json"
+                    "palace/Akashi's Palace/Mental Energy Water Tower_Central Mental Energy Area_0_data.json",
+                    "palace/Akashi's Palace/Mental Energy Water Tower_Central Mental Energy Area_1_data.json"
                   ],
                   "file_jp": [
                     "palace/アカシ・パレス/精神エネルギー中層_0_data.json",
@@ -833,7 +833,7 @@
                 {
                   "id": "spirit_tower_blocked",
                   "name": "정신탑 봉쇄구역",
-                  "name_en": "Blockade Area",
+                  "name_en": "Mental Energy Blockade Area",
                   "name_jp": "精神エネルギー封鎖エリア",
                   "file": [
                     "palace/아카시 팰리스/3장 컨트롤 센터 ____1층_data.json",
@@ -841,9 +841,9 @@
                     "palace/아카시 팰리스/3장 컨트롤 센터 ____3층_data.json"
                   ],
                   "file_en": [
-                    "palace/Akashi's Palace/Intake Tower_Blockade Area_1F_data.json",
-                    "palace/Akashi's Palace/Intake Tower_Blockade Area_2F_data.json",
-                    "palace/Akashi's Palace/Intake Tower_Blockade Area_3F_data.json"
+                    "palace/Akashi's Palace/Intake Tower_Mental Energy Blockade Area_1F_data.json",
+                    "palace/Akashi's Palace/Intake Tower_Mental Energy Blockade Area_2F_data.json",
+                    "palace/Akashi's Palace/Intake Tower_Mental Energy Blockade Area_3F_data.json"
                   ],
                   "file_jp": [
                     "palace/アカシ・パレス/精神エネルギー封鎖エリア_1F_data.json",
@@ -869,13 +869,13 @@
                 {
                   "id": "heat_tower_blocked",
                   "name": "열에너지탑 구역",
-                  "name_en": "Blockade Area",
+                  "name_en": "Thermal Energy Blockade Area",
                   "name_jp": "熱エネルギー封鎖エリア",
                   "file": [
                     "palace/아카시 팰리스/댐·수처리장____0_data.json"
                   ],
                   "file_en": [
-                    "palace/Akashi's Palace/Thermal Energy Water Tower_Blockade Area_0_data.json"
+                    "palace/Akashi's Palace/Thermal Energy Water Tower_Thermal Energy Blockade Area_0_data.json"
                   ],
                   "file_jp": [
                     "palace/アカシ・パレス/熱エネルギー封鎖エリア_0_data.json"
@@ -887,15 +887,15 @@
                 {
                   "id": "heat_tower_lower",
                   "name": "열에너지탑 하층",
-                  "name_en": "Lower Level",
+                  "name_en": "Lower Thermal Energy Area",
                   "name_jp": "熱エネルギー下層",
                   "file": [
                     "palace/아카시 팰리스/댐·열에너지탑 하층_0_data.json",
                     "palace/아카시 팰리스/댐·열에너지탑 하층_1_data.json"
                   ],
                   "file_en": [
-                    "palace/Akashi's Palace/Thermal Energy Water Tower_Lower Level_0_data.json",
-                    "palace/Akashi's Palace/Thermal Energy Water Tower_Lower Level_1_data.json"
+                    "palace/Akashi's Palace/Thermal Energy Water Tower_Lower Thermal Energy Area_0_data.json",
+                    "palace/Akashi's Palace/Thermal Energy Water Tower_Lower Thermal Energy Area_1_data.json"
                   ],
                   "file_jp": [
                     "palace/アカシ・パレス/熱エネルギー下層_0_data.json",
@@ -908,15 +908,15 @@
                 {
                   "id": "heat_tower_middle",
                   "name": "열에너지탑 중층",
-                  "name_en": "Mid Level",
+                  "name_en": "Central Thermal Energy Area",
                   "name_jp": "熱エネルギー中層",
                   "file": [
                     "palace/아카시 팰리스/댐·열에너지탑 중층_0_data.json",
                     "palace/아카시 팰리스/댐·열에너지탑 중층_1_data.json"
                   ],
                   "file_en": [
-                    "palace/Akashi's Palace/Thermal Energy Water Tower_Mid Level_0_data.json",
-                    "palace/Akashi's Palace/Thermal Energy Water Tower_Mid Level_1_data.json"
+                    "palace/Akashi's Palace/Thermal Energy Water Tower_Central Thermal Energy Area_0_data.json",
+                    "palace/Akashi's Palace/Thermal Energy Water Tower_Central Thermal Energy Area_1_data.json"
                   ],  
                   "file_jp": [
                     "palace/アカシ・パレス/熱エネルギー中層_0_data.json",
@@ -929,15 +929,15 @@
                 {
                   "id": "heat_tower_top",
                   "name": "열에너지탑 최상층",
-                  "name_en": "Upper Level",
+                  "name_en": "Upper Thermal Energy Area",
                   "name_jp": "熱エネルギー上層",
                   "file": [
                     "palace/아카시 팰리스/댐·열에너지탑 최상층_0_data.json",
                     "palace/아카시 팰리스/댐·열에너지탑 최상층_1_data.json"
                   ],
                   "file_en": [
-                    "palace/Akashi's Palace/Thermal Energy Water Tower_Upper Level_0_data.json",
-                    "palace/Akashi's Palace/Thermal Energy Water Tower_Upper Level_1_data.json"
+                    "palace/Akashi's Palace/Thermal Energy Water Tower_Upper Thermal Energy Area_0_data.json",
+                    "palace/Akashi's Palace/Thermal Energy Water Tower_Upper Thermal Energy Area_1_data.json"
                   ],
                   "file_jp": [
                     "palace/アカシ・パレス/熱エネルギー上層_0_data.json",
@@ -962,13 +962,13 @@
                 {
                   "id": "electric_tower_top",
                   "name": "전기 에너지탑 최상층",
-                  "name_en": "Upper Level",
+                  "name_en": "Upper Blockade Area",
                   "name_jp": "封鎖エリア上層",
                   "file": [
                     "palace/아카시 팰리스/댐·전기 에너지탑 최상층_0_data.json"
                   ],
                   "file_en": [
-                    "palace/Akashi's Palace/Electrical Energy Water Tower_Upper Level_0_data.json"
+                    "palace/Akashi's Palace/Electrical Energy Water Tower_Upper Blockade Area_0_data.json"
                   ],
                   "file_jp": [
                     "palace/アカシ・パレス/封鎖エリア上層_0_data.json"
@@ -980,13 +980,13 @@
                 {
                   "id": "electric_tower_lower",
                   "name": "전기 에너지탑 하층",
-                  "name_en": "Lower Level",
+                  "name_en": "Lower Blockade Area",
                   "name_jp": "封鎖エリア下層",
                   "file": [
                     "palace/아카시 팰리스/댐·전기 에너지탑 하층_0_data.json"
                   ],
                   "file_en": [
-                    "palace/Akashi's Palace/Electrical Energy Water Tower_Lower Level_0_data.json"
+                    "palace/Akashi's Palace/Electrical Energy Water Tower_Lower Blockade Area_0_data.json"
                   ],
                   "file_jp": [
                     "palace/アカシ・パレス/封鎖エリア下層_0_data.json"
@@ -998,13 +998,13 @@
                 {
                   "id": "electric_tower_high",
                   "name": "전기 에너지탑 상",
-                  "name_en": "Upper Blockade Area",
+                  "name_en": "Upper Blockade Tower",
                   "name_jp": "封鎖エリア上",
                   "file": [
                     "palace/아카시 팰리스/댐·급수탑 전기탑 1_0_data.json"
                   ],
                   "file_en": [
-                    "palace/Akashi's Palace/Upper Blockade Area_0_data.json"
+                    "palace/Akashi's Palace/Upper Blockade Tower_0_data.json"
                   ],
                   "file_jp": [
                     "palace/アカシ・パレス/封鎖エリア上_0_data.json"
@@ -1016,13 +1016,13 @@
                 {
                   "id": "electric_tower_low",
                   "name": "전기 에너지탑 하",
-                  "name_en": "Lower Blockade Area",
+                  "name_en": "Lower Blockade Tower",
                   "name_jp": "封鎖エリア下",
                   "file": [
                     "palace/아카시 팰리스/댐·급수탑 전기탑 2_0_data.json"
                   ],
                   "file_en": [
-                    "palace/Akashi's Palace/Lower Blockade Area_0_data.json"
+                    "palace/Akashi's Palace/Lower Blockade Tower_0_data.json"
                   ],
                   "file_jp": [
                     "palace/アカシ・パレス/封鎖エリア下_0_data.json"
@@ -1034,15 +1034,15 @@
                 {
                   "id": "electric_tower_middle",
                   "name": "전기 에너지탑 중층",
-                  "name_en": "Mid Level",
+                  "name_en": "Central Blockade Tower",
                   "name_jp": "封鎖エリア中層",
                   "file": [
                     "palace/아카시 팰리스/댐·전기 에너지탑 중층_0_data.json",
                     "palace/아카시 팰리스/댐·전기 에너지탑 중층_1_data.json"
                   ],
                   "file_en": [
-                    "palace/Akashi's Palace/Electrical Energy Water Tower_Mid Level_0_data.json",
-                    "palace/Akashi's Palace/Electrical Energy Water Tower_Mid Level_1_data.json"
+                    "palace/Akashi's Palace/Electrical Energy Water Tower_Central Blockade Tower_0_data.json",
+                    "palace/Akashi's Palace/Electrical Energy Water Tower_Central Blockade Tower_1_data.json"
                   ],
                   "file_jp": [
                     "palace/アカシ・パレス/封鎖エリア中層_0_data.json",
@@ -1077,15 +1077,15 @@
         {
           "id": "ant_cave",
           "name": "시모츠나 팰리스",
-          "name_en": "",
-          "name_jp": "",
+          "name_en": "Shimotsuna's Palace",
+          "name_jp": "シモツナ・パレス",
           "icon": "yishijie-icon-xiajin.png",
           "submaps": [
             {
               "id": "ant_cave_lower",
               "name": "개미굴·저층",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Anthill",
+              "name_jp": "蟻塚",
               "file": [],
               "description": "",
               "description_en": "",
@@ -1094,16 +1094,16 @@
                 {
                   "id": "shadow_gathering",
                   "name": "섀도 집결지",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "Shadow Swarm Area",
+                  "name_jp": "シャドウ密集地",
                   "file": [
                     "palace/시모츠나 팰리스/개미굴·섀도 집결지_0_data.json"
                   ],
                   "file_en": [
-
+                    "palace/Shimotsuna's Palace/Shadow Swarm Area_0_data.json"
                   ],
                   "file_jp": [
-
+                    "palace/シモツナ・パレス/シャドウ密集地_0_data.json"
                   ],
                   "description": "",
                   "description_en": "",
@@ -1114,8 +1114,8 @@
             {
               "id": "slum",
               "name": "빈민굴",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Anthill",
+              "name_jp": "蟻塚",
               "file": [],
               "description": "",
               "description_en": "",
@@ -1124,16 +1124,16 @@
                 {
                   "id": "slum_enterance",
                   "name": "빈민굴 입구",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "The Underground Entrance",
+                  "name_jp": "スラム入口",
                   "file": [
                     "palace/시모츠나 팰리스/개미굴·빈민굴 입구_0_data.json"
                   ],
                   "file_en": [
-
+                    "palace/Shimotsuna's Palace/The Underground Entrance_0_data.json"
                   ],
                   "file_jp": [
-
+                    "palace/シモツナ・パレス/スラム入口_0_data.json"
                   ],
                   "description": "",
                   "description_en": "",
@@ -1142,16 +1142,16 @@
                 {
                   "id": "slum_b1",
                   "name": "빈민굴 B1",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "The Underground B1",
+                  "name_jp": "スラム地下１階",
                   "file": [
                     "palace/시모츠나 팰리스/개미굴·빈민굴 B1_0_data.json"
                   ],
                   "file_en": [
-
+                    "palace/Shimotsuna's Palace/The Underground B1_0_data.json"
                   ],
                   "file_jp": [
-
+                    "palace/シモツナ・パレス/スラム地下１階_0_data.json"
                   ],
                   "description": "",
                   "description_en": "",
@@ -1160,17 +1160,19 @@
                 {
                   "id": "slum_b2",
                   "name": "빈민굴 B2",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "The Underground B2",
+                  "name_jp": "スラム地下２階",
                   "file": [
                     "palace/시모츠나 팰리스/개미굴·빈민굴 B2_0_data.json",
                     "palace/시모츠나 팰리스/개미굴·빈민굴 B2_1_data.json"
                   ],
                   "file_en": [
-
+                    "palace/Shimotsuna's Palace/The Underground B2_0_data.json",
+                    "palace/Shimotsuna's Palace/The Underground B2_1_data.json"
                   ],
                   "file_jp": [
-
+                    "palace/シモツナ・パレス/スラム地下２階_0_data.json",
+                    "palace/シモツナ・パレス/スラム地下２階_1_data.json"
                   ],
                   "description": "",
                   "description_en": "",
@@ -1933,17 +1935,23 @@
         {
           "id": "lost_virtue",
           "name": "미덕을 잃은길",
-          "name_en": "",
-          "name_jp": "",
+          "name_en": "Path of Kaitul",
+          "name_jp": "美徳奪われし路",
           "icon": "yinxiangkongjian-ditu-4.png",
           "submaps": [
             {
               "id": "area1",
               "name": "에어리어1",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Area 1",
+              "name_jp": "エリア1",
               "file": [
                 "mementos/미덕을 잃은 길/미덕을 잃은 길 에어리어 1_data.json"
+              ],
+              "file_en": [
+                "mementos/Path of Kaitul/Path Of Kaitul Area 1_data.json"
+              ],
+              "file_jp": [
+                "mementos/美徳奪われし路/美徳奪われし路エリア１_data.json"
               ],
               "description": "",
               "description_en": "",
@@ -1952,10 +1960,16 @@
             {
               "id": "area2",
               "name": "에어리어2",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Area 2",
+              "name_jp": "エリア2",
               "file": [
                 "mementos/미덕을 잃은 길/미덕을 잃은 길 에어리어 2_data.json"
+              ],
+              "file_en": [
+                "mementos/Path of Kaitul/Path Of Kaitul Area 2_data.json"
+              ],
+              "file_jp": [
+                "mementos/美徳奪われし路/美徳奪われし路エリア２_data.json"
               ],
               "description": "",
               "description_en": "",

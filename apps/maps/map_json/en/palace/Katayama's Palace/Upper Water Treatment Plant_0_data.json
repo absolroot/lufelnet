@@ -2183,7 +2183,7 @@
                 "tutorial": {
                     "sn": 228081,
                     "title": "Unique Shadow Abilities",
-                    "content": "1. Every turn, Kumbhanda will attack Phantom Thieves who have a <color=#FF423F>Grudge</color> stack.\nIf no Phantom Thieves have a Grudge, it will attack all Phantom Thieves.\n2. Whenever Kumbhanda attacks, it reduces the target's SP by 20%, and restores 10 SP to 1 random Agathion.\n3. When Agathion is hit by an attack, the attacker is inflicted with 1 Grudge stack for 1 turn.\n4. If an Agathion's SP is less than 40% at the start of its turn, it transforms into Kumbhanda.\nIf it is defeated, it restores the SP of all Shadows by 40%."
+                    "content": "1. Every turn, Kumbhanda will attack Phantom Thieves who have a <color=#FF423F>Grudge</color> stack.\nIf no Phantom Thieves have a Grudge, it will attack all Phantom Thieves.\n2. Whenever Kumbhanda attacks, it reduces the target's SP by 20, and restores 10 SP to 1 random Agathion.\n3. When Agathion is hit by an attack, the attacker is inflicted with 1 Grudge stack for 1 turn.\n4. If an Agathion's SP is less than 40 at the start of its turn, it transforms into Kumbhanda.\nIf it is defeated, it restores the SP of all Shadows by 20."
                 }
             }
         },

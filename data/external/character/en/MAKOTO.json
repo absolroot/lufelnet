@@ -6,7 +6,7 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "When attacking a foe with a skill, gain 1 Tenacity stack. If Crash Out is not active, at the end of the turn, gain more Tenacity stacks based on the number of elemental ailments inflicted on foes (including foes defeated during the turn).\nIf Makoto has 5 Tenacity stacks at the start of her turn, she can activate Crash Out, increasing Attack by 40% and Defense by 20%, and evolving Nuclear Fury to Thermonuclear Fury for 2 turns. When Crash Out ends, lose all Tenacity stacks.",
+        "desc": "When attacking a foe with a skill, gain 1 Tenacity stack. If Crash Out is not active, at the end of the action, gain more Tenacity stacks based on the number of elemental ailments inflicted on foes (including foes defeated during the turn).\nIf Makoto has 5 Tenacity stacks at the start of her turn, she can activate Crash Out, increasing Attack by 40% and Defense by 20%, and evolving Nuclear Fury to Thermonuclear Fury for 2 turns. When Crash Out ends, lose all Tenacity stacks.",
         "name": "Enraged Usurper",
         "nature": null,
         "skill_lv": "3",

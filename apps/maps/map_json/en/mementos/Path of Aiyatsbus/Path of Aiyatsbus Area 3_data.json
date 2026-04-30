@@ -6500,6 +6500,51 @@
             "enemy_data": null
         },
         {
+            "sn": "5514020",
+            "image": "yishijie-icon-jiantou-up.png",
+            "position": [
+                4461,
+                7063
+            ],
+            "ratio": 1.975,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": "5514021",
+            "image": "yishijie-icon-jiantou-up.png",
+            "position": [
+                4461,
+                7063
+            ],
+            "ratio": 1.975,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": "5514022",
+            "image": "yishijie-icon-jiantou-up.png",
+            "position": [
+                4461,
+                7063
+            ],
+            "ratio": 1.975,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
             "sn": "5514024",
             "image": "yishijie-icon-jinzhi.png",
             "position": [
@@ -6769,7 +6814,7 @@
                 "tutorial": {
                     "sn": 819131,
                     "title": "Unique Shadow Abilities",
-                    "content": "Koumokuten can activate <color=#FF423F>Eye of Heaven</color>.\nEye of Heaven: Selects 1 Phantom Thief. Increases their damage taken and has Shadows focus attacks on them next turn.\n2. After activating Eye of Heaven, Koumokuten will summon 1 Makami."
+                    "content": "1. Koumokuten can activate <color=#FF423F>Eye of Heaven</color>.\nEye of Heaven: Selects 1 Phantom Thief. Increases their damage taken and has Shadows focus attacks on them next turn.\n2. Before activating Eye of Heaven, Koumokuten will summon 1 Makami."
                 }
             }
         },

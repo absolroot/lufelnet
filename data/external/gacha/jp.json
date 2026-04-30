@@ -54,108 +54,56 @@
         "type": "PICKUP怪ドル契約・CHANCE"
       },
       {
-        "endTime": "2026-04-30 06:59:59",
+        "endTime": "2026-06-04 10:59:59",
         "fiveStar": [
           {
-            "name": "橋本 麻由美",
+            "name": "長尾 愛歌",
             "type": "thief"
           }
         ],
         "fourStar": [
           {
-            "name": "富山 佳代",
+            "name": "ルフェル",
             "type": "thief"
           },
           {
-            "name": "藤川 雪実",
+            "name": "池波 星輝",
             "type": "thief"
           },
           {
-            "name": "琴音・モンターニュ",
+            "name": "長尾 チヅ子",
             "type": "thief"
           }
         ],
-        "name": "サーキットガール",
-        "startTime": "2026-04-02 11:30:00",
+        "name": "羽ばたく愛の歌",
+        "startTime": "2026-04-30 07:30:00",
         "type": "PICKUP怪ドル契約・TARGET"
       },
       {
-        "endTime": "2026-04-30 06:59:59",
+        "endTime": "2026-06-04 10:59:59",
         "fiveStar": [
           {
-            "name": "橋本 麻由美",
+            "name": "長尾 愛歌",
             "type": "thief"
           }
         ],
         "fourStar": [
           {
-            "name": "富山 佳代",
+            "name": "ルフェル",
             "type": "thief"
           },
           {
-            "name": "藤川 雪実",
+            "name": "池波 星輝",
             "type": "thief"
           },
           {
-            "name": "琴音・モンターニュ",
+            "name": "長尾 チヅ子",
             "type": "thief"
           }
         ],
-        "name": "サーキットガール",
-        "startTime": "2026-04-02 11:30:00",
+        "name": "羽ばたく愛の歌",
+        "startTime": "2026-04-30 07:30:00",
         "type": "PICKUP怪ドル契約・CHANCE"
-      },
-      {
-        "endTime": "2026-04-30 06:59:59",
-        "fiveStar": [
-          {
-            "name": "琴音・アイスストーム",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "神山 嶺央",
-            "type": "thief"
-          },
-          {
-            "name": "白鳥 誠司",
-            "type": "thief"
-          },
-          {
-            "name": "佐原 海夕",
-            "type": "thief"
-          }
-        ],
-        "name": "キス・アンド・クライ",
-        "startTime": "2026-04-16 11:30:00",
-        "type": "PICKUP怪ドル契約・CHANCE"
-      },
-      {
-        "endTime": "2026-04-30 06:59:59",
-        "fiveStar": [
-          {
-            "name": "琴音・アイスストーム",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "神山 嶺央",
-            "type": "thief"
-          },
-          {
-            "name": "白鳥 誠司",
-            "type": "thief"
-          },
-          {
-            "name": "佐原 海夕",
-            "type": "thief"
-          }
-        ],
-        "name": "キス・アンド・クライ",
-        "startTime": "2026-04-16 11:30:00",
-        "type": "PICKUP怪ドル契約・TARGET"
       }
     ],
     "weapon": [
@@ -195,73 +143,38 @@
         "type": "武器補給"
       },
       {
-        "endTime": "2026-04-30 06:59:59",
+        "endTime": "2026-06-04 10:59:59",
         "fiveStar": [
           {
-            "name": "ヴァルキリーペノン",
+            "name": "リヴオンライヴ",
             "type": "weapon",
-            "user": "麻由美"
+            "user": "愛歌"
           }
         ],
         "fourStar": [
           {
-            "name": "エメラルドチャーム",
+            "name": "ラヴァ・フレイム",
             "type": "weapon",
-            "user": "富山"
+            "user": "ルフェル"
           },
           {
-            "name": "ヘビーメタルペイン",
+            "name": "マッタトーレ",
             "type": "weapon",
-            "user": "雪実"
+            "user": "星輝"
           },
           {
-            "name": "エーデルワイス",
+            "name": "グラビティフォース",
             "type": "weapon",
-            "user": "琴音"
+            "user": "チヅ子"
           },
           {
-            "name": "フォーミュラペノン",
+            "name": "ミリオンミューズ",
             "type": "weapon",
-            "user": "麻由美"
+            "user": "愛歌"
           }
         ],
         "name": "無音の硝煙",
-        "startTime": "2026-04-02 11:30:00",
-        "type": "武器補給"
-      },
-      {
-        "endTime": "2026-04-30 06:59:59",
-        "fiveStar": [
-          {
-            "name": "ラムドゥラムール",
-            "type": "weapon",
-            "user": "琴音"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "ジャスティスランサー",
-            "type": "weapon",
-            "user": "神山"
-          },
-          {
-            "name": "ナイトアワード",
-            "type": "weapon",
-            "user": "白鳥"
-          },
-          {
-            "name": "ラムドゥルーベ",
-            "type": "weapon",
-            "user": "琴音"
-          },
-          {
-            "name": "サブマリンソナー",
-            "type": "weapon",
-            "user": "海夕"
-          }
-        ],
-        "name": "無音の硝煙",
-        "startTime": "2026-04-16 11:30:00",
+        "startTime": "2026-04-30 07:30:00",
         "type": "武器補給"
       }
     ]

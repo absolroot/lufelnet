@@ -1,0 +1,280 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Shoki has 4 types of Improv states: Blazing Passion, Chilling Intensity, Electrifying Performance, and Tempestuous Drama. During battle, he can switch between states at the start of each turn.\nWhen dealing damage with a skill, there is a 75% chance to inflict all foes with an elemental ailment based on his current Improv state (Burn, Freeze, Shock, or Windswept).",
+        "name": "High School Heartthrob",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 122140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "When using a skill on an ally, for each Blessing stack on the target, increase the target's damage dealt by 3% (up to a maximum of 15%) for 2 turns.",
+        "name": "In the Limelight",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 122141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "When using Adlib, also grant an additional effect: When the target next takes skill damage, decrease their final damage taken by 35% for 1 turn.",
+        "name": "Flawless Performance",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 122142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase the skill levels of Followspot and Adlib by 2.",
+        "name": "Heroic Climax",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 122143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Highlight Enhanced: Increase the main target's Attack by 10% for 2 turns, and grant 2 more Blessing stacks to all allies.",
+        "name": "Standing Ovation",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 122144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase the skill levels of Improvise and Thief Tactics by 2.",
+        "name": "Flowers on the Stage",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 122145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "When the additional effects of Improvise are activated based on Improv state, extend the duration of the additional effects to 4 turns.",
+        "name": "Bright Future",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 122146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "Weak",
+      "cooldown": 4,
+      "cost": "",
+      "desc": "Increase party's Attack by 6.5% of Shoki's Attack (up to a maximum of 284/314/296/325), and increase ailment resistance by 82.0%/90.4%/85.3%/93.7% for 2 turns.\nAlso, grant 1 Blessing stack.",
+      "name": "Highlight",
+      "nature": "Heal",
+      "skill_lv": "10/10/12/12",
+      "sn": 122152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Ally",
+      "target_count": "All"
+    },
+    "innate": {
+      "Ailment Acc.": "0.24",
+      "Attack": "0.2"
+    },
+    "innate_awake_skill": [],
+    "innate_skill_type": [
+      "S1/S2",
+      "S3/HL"
+    ],
+    "name": "Shoki Ikenami",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 20",
+        "desc": "Deal Bless damage to 1 foe equal to 151.8%/167.3%/158.0%/173.5% of Attack.\nAlso, grant 2 Blessing stacks to all allies, and for 2 turns, increase damage by 0.8% for every 100 points of Shoki's Attack (up to a maximum of 35.1%/38.7%/36.6%/40.2%).",
+        "name": "Followspot",
+        "nature": "Bless",
+        "skill_lv": "10/10/12/12",
+        "sn": 122111,
+        "tags": [
+          "Single-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 2,
+        "cost": "SP 24",
+        "desc": "Increase Defense of 1 ally except Shoki by 0.83% for every 100 points of Shoki's Attack (up to a maximum of 36.6%/40.4%/38.1%/41.8%), and nullify Dizzy, Sleep, Confuse, and Forget. Lasts for 2 turns.\nCooldown: 2 turns.",
+        "name": "Adlib",
+        "nature": "Heal",
+        "skill_lv": "10/10/12/12",
+        "sn": 122112,
+        "tags": [
+          "Buff"
+        ],
+        "target": "Ally excluding myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 24",
+        "desc": "Increase party's Attack by 15% of Shoki's Attack (up to a maximum of 569/627/592/650) for 2 turns.\nAlso, based on Shoki's Improv state, grant the following additional effect to the main target.\nBlazing Passion: Increase the main target's continuous damage effect by 14.0%/15.4%/14.5%/16.0%, and increase ailment accuracy by 30% for 2 turns.\nChilling Intensity: Increase the main target's Technical Precision by 655/723/682/749 for 2 turns. Also, when activating a technical, increase Attack by 20%.\nElectrifying Performance: Increase the main target's critical damage by 24.4%/26.9%/25.4%/27.9% for 2 turns.\nTempestuous Drama: Increase the main target's pierce rate by 12.0%/13.2%/12.5%/13.7% for 2 turns.",
+        "name": "Improvise",
+        "nature": "Heal",
+        "skill_lv": "10/10/12/12",
+        "sn": 122113,
+        "tags": [
+          "Buff"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "When allies gain a Blessing, increase damage by 5% for each Blessing stack (up to a maximum of 25.0%).",
+        "name": "Supporting Role",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 122131,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase Attack by 0.72% for every 1% of Shoki's ailment accuracy (up to a maximum of 72.0%).",
+        "name": "Method Acting",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 122132,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Ailment Acc.": 1.0,
+      "Attack": 4500.0,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "26.0% / 26.0% / 26.0% / 26.0% / 26.0% / 26.0% / 26.0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "765.42 / 774.22 / 783.02 / 791.82 / 800.62 / 809.42 / 818.22",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "495.38 / 500.98 / 506.58 / 512.18 / 518.58 / 524.18 / 529.78",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "2587.71 / 2617.31 / 2647.71 / 2677.31 / 2706.91 / 2737.31 / 2766.91",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "104.0 / 104.0 / 104.0 / 104.0 / 104.0 / 104.0 / 104.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

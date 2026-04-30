@@ -10,6 +10,34 @@
               "Nullify": [],
               "Reflect": [],
               "Resistant": [
+                "Fire",
+                "Nuclear",
+                "Bless"
+              ],
+              "Weak": [
+                "Gun"
+              ]
+            },
+            "image": "B-guaiwutouxiang-uriel.png",
+            "level": "89",
+            "name": "조종당하는 우리엘",
+            "skill": "1026,1016,1090",
+            "sn": 545101,
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 1.0,
+        "sn": 78401
+      },
+      {
+        "bonusRule": null,
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
                 "Ice",
                 "Nuclear",
                 "Curse"
@@ -22,7 +50,7 @@
             "level": "89",
             "name": "조종당하는 스카아하",
             "skill": "1016,1404,257",
-            "sn": 544101,
+            "sn": 545111,
             "stat": {}
           },
           {
@@ -45,36 +73,7 @@
             "level": "89",
             "name": "조종당하는 쿠 훌린",
             "skill": "1023,1154",
-            "sn": 544102,
-            "stat": {}
-          }
-        ],
-        "scoreRatio": 2.0,
-        "sn": 78401
-      },
-      {
-        "bonusRule": null,
-        "enemy": [
-          {
-            "adapt": {
-              "Absorb": [],
-              "Nullify": [],
-              "Reflect": [],
-              "Resistant": [
-                "Phys",
-                "Fire",
-                "Wind",
-                "Nuclear"
-              ],
-              "Weak": [
-                "Psychokinesis"
-              ]
-            },
-            "image": "B-guaiwutouxiang-ganesha.png",
-            "level": "89",
-            "name": "조종당하는 가네샤",
-            "skill": "1013,1022",
-            "sn": 544111,
+            "sn": 545112,
             "stat": {}
           }
         ],
@@ -82,9 +81,9 @@
         "sn": 78402
       }
     ],
-    "buff": "고압 산소: 전투 진입 시 아군 전체가 『열광의 의지』를 획득한다. 『열광의 의지』: 스킬을 사용해 대미지를 주면, 메인 목표 1개 선택 시마다 최종 대미지가 20% 증가한다. 추가 턴 시작 시 최종 대미지가 추가로 20% 증가한다. 최종 대미지가 최대 40% 증가한다.",
-    "endTime": "2026-04-30 07:30:00",
-    "startTime": "2026-04-09 08:30:00"
+    "buff": "공생의 툰드라: 전투 진입 시 아군 전체가 『극한의 새싹』을 획득한다. 『극한의 새싹』: HIGHLIGHT, 테우르기아로 주는 대미지가 40% 증가한다.",
+    "endTime": "2026-05-21 07:30:00",
+    "startTime": "2026-04-30 08:30:00"
   },
   "msg": "OK",
   "status": 0

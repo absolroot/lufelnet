@@ -10,6 +10,7 @@ window.I18N_PAGE_CHARACTER_EN = {
     filterPosition: 'Position',
     filterType: 'Type',
     filterTag: 'Tag',
+    characterFilterMindscapeCore: 'Mindscape Core',
     showSpoilers: 'Show Spoilers',
     notReleased: 'Not Released',
     characterDetailReview: 'Character Review',

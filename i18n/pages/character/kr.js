@@ -10,6 +10,7 @@ window.I18N_PAGE_CHARACTER_KR = {
     filterPosition: '직업',
     filterType: '유형',
     filterTag: '태그',
+    characterFilterMindscapeCore: '심상 코어',
     showSpoilers: 'Show Spoilers',
     notReleased: '미출시',
     characterDetailReview: '캐릭터 리뷰',

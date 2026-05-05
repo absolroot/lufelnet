@@ -620,6 +620,7 @@ body:not(.tactic-edit-mode) .ritual-mod-wrapper {
     align-items: center;
     justify-content: space-between;
     gap: 8px;
+    min-width: 0;
 }
 
 .slot-option-group .revelation-dropdown {
@@ -638,7 +639,10 @@ body:not(.tactic-edit-mode) .ritual-mod-wrapper {
 .slot-option-group>label {
     margin-bottom: 0 !important;
     white-space: nowrap;
-    flex: 0 0 auto;
+    flex: 0 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /*

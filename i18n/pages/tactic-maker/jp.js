@@ -42,9 +42,9 @@ window.I18N_PAGE_TACTIC_MAKER_JP = {
 
     addTurn: "ターン追加",
 
-    order: "行動順",
+    order: "順序",
 
-    orderLabel: "行動順",
+    orderLabel: "順序",
 
     weapon: "武器",
 
@@ -70,7 +70,7 @@ window.I18N_PAGE_TACTIC_MAKER_JP = {
 
     noTurns: "ターンがありません。「+ ターン追加」ボタンを押してください。",
 
-    orderLabel: "行動順",
+    orderLabel: "順序",
 
     weaponLabel: "武器",
 

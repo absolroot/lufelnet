@@ -929,11 +929,11 @@ export class PartyUI {
         const orderImgSrc = orderNum ? `${this.baseUrl}/assets/img/ui/num${orderNum}.png` : '';
 
         // Determine grid columns for ritual-mod-wrapper
-        let gridCols = '1fr 1fr 1fr'; // Default: order, ritual, mod
+        let gridCols = 'minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr)'; // Default: order, ritual, mod
         if (isElucidator || index === 4) {
-            gridCols = '1fr 1fr'; // No order for elucidator
+            gridCols = 'minmax(0, 1fr) minmax(0, 1fr)'; // No order for elucidator
         } else if (isWonder) {
-            gridCols = '1fr'; // Only order for Wonder
+            gridCols = 'minmax(0, 1fr)'; // Only order for Wonder
         }
 
         slotContent.innerHTML = `
@@ -974,7 +974,7 @@ export class PartyUI {
             <div class="slot-options-grid" style="display: grid;">
 
                 <!-- Row 1: Order, Ritual, Modification -->
-                <div class="ritual-mod-wrapper" style="display: grid; grid-template-columns: ${gridCols}; gap: 20px;">
+                <div class="ritual-mod-wrapper" style="display: grid; grid-template-columns: ${gridCols}; gap: 12px;">
                      ${isElucidator || index === 4 ? '' : `
                      <div class="slot-option-group">
                         <label style="font-size: 11px; opacity: 0.7; margin-bottom: 2px; display: block;">${window.I18nService ? window.I18nService.t('orderLabel') : '순서'}</label>

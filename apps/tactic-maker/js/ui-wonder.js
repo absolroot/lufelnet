@@ -418,7 +418,7 @@ export class WonderUI extends EventEmitter {
                     ${orderImgSrc ? `<img class="order-img" src="${orderImgSrc}" alt="${window.I18nService ? window.I18nService.t('orderLabel') : '순서'} ${currentOrder}">` : ''}
                 </div>
                 <div class="ws-details">
-                    <div class="ritual-mod-wrapper" style="display: grid; grid-template-columns: ${hasLightningStamp ? '1fr 1fr 1fr' : '1fr 1fr'}; gap: 12px;">
+                    <div class="ritual-mod-wrapper" style="display: grid; grid-template-columns: ${hasLightningStamp ? 'minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr)' : 'minmax(0, 1fr) minmax(0, 1fr)'}; gap: 12px;">
                         <div class="slot-option-group">
                             <label style="font-size: 11px; opacity: 0.7; margin-bottom: 2px; display: block;">${window.I18nService ? window.I18nService.t('orderLabel') : '순서'}</label>
                             <select class="styled-select order-select ws-order-select">

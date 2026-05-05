@@ -10,6 +10,7 @@ window.I18N_PAGE_CHARACTER_JP = {
     filterPosition: '職業',
     filterType: 'タイプ',
     filterTag: 'タグ',
+    characterFilterMindscapeCore: 'イメジャリー・コア',
     showSpoilers: 'ネタバレ表示',
     notReleased: '未実装',
     characterDetailReview: 'キャラクター レビュー',

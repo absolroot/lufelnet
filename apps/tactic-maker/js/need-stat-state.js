@@ -164,6 +164,16 @@ export function setGlobalSkillEffectAmpState(raw, options = {}) {
 // ============================================================================
 
 export function getCurrentLang() {
+    const pathMatch = String(window.location?.pathname || '').match(/(?:^|\/)(kr|en|jp|cn)(?:\/|$)/i);
+    if (pathMatch) return pathMatch[1].toLowerCase();
+    if (window.LanguageRouter && typeof window.LanguageRouter.getCurrentLanguage === 'function') {
+        const routedLang = window.LanguageRouter.getCurrentLanguage();
+        if (routedLang) return routedLang;
+    }
+    if (typeof window.getCurrentLanguage === 'function') {
+        const routedLang = window.getCurrentLanguage();
+        if (routedLang) return routedLang;
+    }
     if (window.I18nService && typeof window.I18nService.getCurrentLanguage === 'function') {
         return window.I18nService.getCurrentLanguage();
     }
@@ -298,22 +308,79 @@ export function getLocalizedSkillName(item, groupName = '') {
  * Get localized options following defense-calc.js pattern
  */
 export function getLocalizedOptions(item) {
+    return getLocalizedOptionData(item).labels;
+}
+
+export function localizeOptionLabel(option, lang = getCurrentLang()) {
+    if (option === undefined || option === null) return '';
+
+    let result = String(option);
+    if (lang === 'kr' || lang === 'cn') return result;
+
+    if (lang === 'en') {
+        return result
+            .replace(/레벨/g, 'LV')
+            .replace(/의식\s*([0-9]+)/g, 'A$1')
+            .replace(/심상\s*([0-9]+)/g, 'Mindscape$1')
+            .replace(/([0-9]+)\s*심상/g, '$1 Mindscape')
+            .replace(/심상/g, 'Mindscape')
+            .replace(/([0-9]+)\s*중첩/g, '$1 Stack');
+    }
+
+    if (lang === 'jp') {
+        return result
+            .replace(/레벨/g, 'LV')
+            .replace(/의식\s*([0-9]+)/g, '意識$1')
+            .replace(/심상\s*([0-9]+)/g, 'イメジャリー$1')
+            .replace(/([0-9]+)\s*심상/g, '$1イメジャリー')
+            .replace(/심상/g, 'イメジャリー')
+            .replace(/([0-9]+)\s*중첩/g, '$1スタック');
+    }
+
+    return result;
+}
+
+export function getLocalizedOptionData(item) {
     const lang = getCurrentLang();
     const baseOptions = Array.isArray(item.options) ? item.options : [];
+    let options = baseOptions;
+    let values = item.values || {};
+    let defaultOption = item.defaultOption;
 
     if (lang === 'cn' && Array.isArray(item.options_cn) && item.options_cn.length === baseOptions.length) {
-        return item.options_cn;
+        return {
+            options: item.options_cn,
+            labels: item.options_cn,
+            values: item.values_cn || values,
+            defaultOption: item.defaultOption_cn || defaultOption
+        };
     }
-    if (isKrLikeLang(lang)) return baseOptions;
+    if (isKrLikeLang(lang)) {
+        return {
+            options,
+            labels: options,
+            values,
+            defaultOption
+        };
+    }
 
     if (lang === 'en' && Array.isArray(item.options_en) && item.options_en.length === baseOptions.length) {
-        return item.options_en;
+        options = item.options_en;
+        values = item.values_en || values;
+        defaultOption = item.defaultOption_en || defaultOption;
     }
     if (lang === 'jp' && Array.isArray(item.options_jp) && item.options_jp.length === baseOptions.length) {
-        return item.options_jp;
+        options = item.options_jp;
+        values = item.values_jp || values;
+        defaultOption = item.defaultOption_jp || defaultOption;
     }
-    
-    return baseOptions;
+
+    return {
+        options,
+        labels: options.map(opt => localizeOptionLabel(opt, lang)),
+        values,
+        defaultOption
+    };
 }
 
 /**

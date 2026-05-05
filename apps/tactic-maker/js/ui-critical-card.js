@@ -22,6 +22,7 @@ import {
     getSourceDisplayName,
     getLocalizedSkillName,
     getLocalizedOptions,
+    getLocalizedOptionData,
     getLabels,
     translateNeedStat,
     sortItemsByCurrentChar,
@@ -294,6 +295,9 @@ export class NeedStatCardUI {
         // Save global skill effect amp state (shared across all slots)
         this.store.state.needStatSelections.globalSkillEffectAmp = getGlobalSkillEffectAmpState();
 
+        // Save global boss settings (shared across all slots)
+        this.store.state.needStatSelections.globalBossSettings = _getGlobalBossSettings();
+
         // Trigger auto-save
         this.store.notify('needStatChange', { slotIndex });
     }
@@ -318,6 +322,11 @@ export class NeedStatCardUI {
 
         const globalSkillEffectAmp = this.store.state.needStatSelections?.globalSkillEffectAmp;
         setGlobalSkillEffectAmpState(globalSkillEffectAmp || getDefaultGlobalSkillEffectAmpState(), { silent: true });
+
+        const globalBossSettings = this.store.state.needStatSelections?.globalBossSettings;
+        if (globalBossSettings) {
+            _setGlobalBossSettings(globalBossSettings);
+        }
 
         const saved = this.store.state.needStatSelections?.[slotIndex];
         if (!saved) return false;
@@ -613,7 +622,7 @@ export class NeedStatCardUI {
         const defenseValueEl = container.querySelector('.need-stat-defense-value');
         const defenseRequiredEl = container.querySelector('.need-stat-defense-required');
         if (defenseValueEl) defenseValueEl.textContent = `${summary.remainingDefense.toFixed(1)}%`;
-        if (defenseRequiredEl) defenseRequiredEl.textContent = `${summary.pierceTarget.toFixed(1)}%`;
+        if (defenseRequiredEl) defenseRequiredEl.textContent = `${summary.pierceNeeded.toFixed(1)}%`;
 
         const triggerEl = document.querySelector(`.need-stat-trigger[data-slot-index="${slotIndex}"]`);
         const triggerTable = triggerEl?.querySelector('.need-stat-trigger-table');
@@ -636,10 +645,7 @@ export class NeedStatCardUI {
     }
 
     getCurrentLang() {
-        if (window.I18nService && typeof window.I18nService.getCurrentLanguage === 'function') {
-            return window.I18nService.getCurrentLanguage();
-        }
-        return 'kr';
+        return getCurrentLang();
     }
 
     /**
@@ -1003,6 +1009,10 @@ export class NeedStatCardUI {
         return getLocalizedOptions(item);
     }
 
+    getLocalizedOptionData(item) {
+        return getLocalizedOptionData(item);
+    }
+
     /**
      * Normalize text for language (e.g., 의식3 -> 의식2 for non-KR)
      */
@@ -1068,13 +1078,16 @@ export class NeedStatCardUI {
 
         let optionsHtml = '';
         if (item.options && item.options.length > 0) {
-            const baseOptions = item.options;
-            const labelOptions = this.getLocalizedOptions(item);
+            const optionData = this.getLocalizedOptionData(item);
+            const baseOptions = optionData.options;
+            const labelOptions = optionData.labels;
             const savedOption = getGlobalItemOption(itemId);
-            const selectedOpt = savedOption || item._selectedOption || item.defaultOption || baseOptions[0];
+            const selectedOpt = (savedOption && optionData.values && optionData.values[savedOption] !== undefined)
+                ? savedOption
+                : (item._selectedOption || optionData.defaultOption || baseOptions[0]);
             item._selectedOption = selectedOpt;
-            if (item.values && item.values[selectedOpt] !== undefined) {
-                rawBaseValue = Number(item.values[selectedOpt]) || 0;
+            if (optionData.values && optionData.values[selectedOpt] !== undefined) {
+                rawBaseValue = Number(optionData.values[selectedOpt]) || 0;
             }
             optionsHtml = `
                 <select class="need-stat-select" data-item-id="${itemId}">
@@ -1186,14 +1199,17 @@ export class NeedStatCardUI {
 
         let optionsHtml = '';
         if (item.options && item.options.length > 0) {
-            const baseOptions = item.options;
-            const labelOptions = this.getLocalizedOptions(item);
+            const optionData = this.getLocalizedOptionData(item);
+            const baseOptions = optionData.options;
+            const labelOptions = optionData.labels;
             const optionKey = `${category}_${itemId}`;
             const savedOption = getGlobalItemOption(optionKey);
-            const selectedOpt = savedOption || item._selectedOption || item.defaultOption || baseOptions[0];
+            const selectedOpt = (savedOption && optionData.values && optionData.values[savedOption] !== undefined)
+                ? savedOption
+                : (item._selectedOption || optionData.defaultOption || baseOptions[0]);
             item._selectedOption = selectedOpt;
-            if (item.values && item.values[selectedOpt] !== undefined) {
-                rawBaseValue = Number(item.values[selectedOpt]) || 0;
+            if (optionData.values && optionData.values[selectedOpt] !== undefined) {
+                rawBaseValue = Number(optionData.values[selectedOpt]) || 0;
             }
             optionsHtml = `
                 <select class="need-stat-options" data-item-id="${itemId}" data-category="${category}">
@@ -1292,23 +1308,18 @@ export class NeedStatCardUI {
     }
 
     /**
-     * Calculate remaining defense coefficient and target pierce rate
-     * Formula:
-     * - 방어력 감소만 적용하여 남은 방어력 계산 (관통은 별도로 표시)
-     * - 남은 방어 계수 = 방어 계수 - 방어력 감소%
-     * - 관통 목표 = 남은 방어 계수 / (최초 방어 계수 / 100)
-     * - 필요 관통 = 목표 - 현재
+     * Calculate remaining defense coefficient and target/needed pierce.
      */
     calculateDefenseStats(penetrateTotal, defenseReduceTotal) {
         const { defenseCoef } = _getGlobalBossSettings();
 
-        // 방어력 감소만 적용 (관통은 적용하지 않음)
-        const remainingDefenseCoef = Math.max(0, defenseCoef - defenseReduceTotal);
+        const afterPierceCoef = penetrateTotal >= 100 ? 0 : defenseCoef * (100 - penetrateTotal) / 100;
+        const remainingDefenseCoef = Math.max(0, afterPierceCoef - defenseReduceTotal);
 
-        // 관통 목표 = 남은 방어 계수 / (최초 방어 계수 / 100)
-        const pierceTarget = defenseCoef > 0 ? (remainingDefenseCoef / (defenseCoef / 100)) : 0;
+        const pierceTarget = defenseCoef > 0
+            ? Math.max(0, Math.min(100, 100 - (defenseReduceTotal / defenseCoef) * 100))
+            : 0;
 
-        // 필요 관통 = 목표 - 현재
         const pierceNeeded = Math.max(0, pierceTarget - penetrateTotal);
 
         return {
@@ -1916,7 +1927,7 @@ export class NeedStatCardUI {
                             <span class="need-stat-defense-value" data-slot-index="${slotIndex}">${remainingDefense}%</span>
                             <span class="need-stat-defense-sep">/</span>
                             <span class="need-stat-defense-label">${labelRequiredPierce}</span>
-                            <span class="need-stat-defense-required">${pierceTarget.toFixed(1)}%</span>
+                            <span class="need-stat-defense-required">${pierceNeeded.toFixed(1)}%</span>
                         </span>
                         <span class="need-stat-total need-stat-total-inline" data-slot-index="${slotIndex}" data-stat-type="pierce">
                             <span class="need-stat-current">${pierceTotal.toFixed(1)}%</span>
@@ -2180,7 +2191,7 @@ export class NeedStatCardUI {
     /**
      * Bind boss settings events
      */
-    bindBossEvents(container) {
+    bindBossEvents(container, slotIndex = this.currentSlotIndex) {
         // Boss type tabs
         container.querySelectorAll('.need-stat-boss-tab').forEach(tab => {
             tab.addEventListener('click', (e) => {
@@ -2194,6 +2205,7 @@ export class NeedStatCardUI {
 
                 // Re-render boss list
                 this.updateBossDropdownList(container);
+                this.saveSelectionsToStore(slotIndex);
             });
         });
 
@@ -2221,6 +2233,7 @@ export class NeedStatCardUI {
                 const bossId = parseInt(option.dataset.bossId);
                 this.selectBoss(bossId, container);
                 bossDropdown?.classList.remove('open');
+                this.saveSelectionsToStore(slotIndex);
             });
         });
 
@@ -2238,6 +2251,7 @@ export class NeedStatCardUI {
                         detail: { [statName]: val }
                     }));
                 }
+                this.saveSelectionsToStore(slotIndex);
             });
             input.addEventListener('click', (e) => e.stopPropagation());
         });
@@ -2254,10 +2268,15 @@ export class NeedStatCardUI {
         const currentType = _getGlobalBossSettings().bossType;
         const filteredBosses = bossData.filter(b => currentType === 'sea' ? !!b.isSea : !b.isSea);
 
-        // Auto-select first boss of the new type
-        if (filteredBosses.length > 0) {
+        const currentBoss = bossData.find(b => b.id === _getGlobalBossSettings().bossId);
+        const currentBossInvalid = !currentBoss || (currentType === 'sea' ? !currentBoss.isSea : currentBoss.isSea);
+
+        if (currentBossInvalid && filteredBosses.length > 0) {
             const firstBoss = filteredBosses[0];
             this.selectBoss(firstBoss.id, container);
+        } else if (currentBoss) {
+            const nameEl = container.querySelector('.need-stat-boss-name');
+            if (nameEl) nameEl.textContent = this.getBossDisplayName(currentBoss);
         }
 
         bossMenu.innerHTML = filteredBosses.map(boss => `
@@ -2277,6 +2296,7 @@ export class NeedStatCardUI {
                 const bossId = parseInt(option.dataset.bossId);
                 this.selectBoss(bossId, container);
                 container.querySelector('.need-stat-boss-dropdown')?.classList.remove('open');
+                this.saveSelectionsToStore(this.currentSlotIndex);
             });
         });
     }
@@ -2322,6 +2342,14 @@ export class NeedStatCardUI {
         container.querySelectorAll('.need-stat-boss-option').forEach(opt => {
             opt.classList.toggle('selected', parseInt(opt.dataset.bossId) === bossId);
         });
+
+        try {
+            window.dispatchEvent(new CustomEvent('boss-settings-changed', {
+                detail: _getGlobalBossSettings()
+            }));
+        } catch (_) { }
+
+        this.saveSelectionsToStore(this.currentSlotIndex);
     }
 
     /**
@@ -2329,7 +2357,7 @@ export class NeedStatCardUI {
      */
     bindEvents(container, buffItems, selfItems, slotIndex) {
         // Bind boss settings events
-        this.bindBossEvents(container);
+        this.bindBossEvents(container, slotIndex);
 
         const updateCriticalDisplays = () => {
             this.updateTotalPairDisplays(slotIndex, this.getCriticalTotal(buffItems, selfItems), 'critical');
@@ -2479,8 +2507,10 @@ export class NeedStatCardUI {
 
                 const item = this.findItemById(itemId, 'critical');
 
-                if (item && item.values && item.values[selectedOption] !== undefined) {
-                    const newBaseValue = Number(item.values[selectedOption]) || 0;
+                const optionData = item ? this.getLocalizedOptionData(item) : null;
+
+                if (item && optionData && optionData.values && optionData.values[selectedOption] !== undefined) {
+                    const newBaseValue = Number(optionData.values[selectedOption]) || 0;
                     item._selectedOption = selectedOption;
 
                     // Save to global state for persistence
@@ -2609,7 +2639,7 @@ export class NeedStatCardUI {
             const defenseValueEl = container.querySelector('.need-stat-defense-value');
             const defenseRequiredEl = container.querySelector('.need-stat-defense-required');
             if (defenseValueEl) defenseValueEl.textContent = `${remainingDefense}%`;
-            if (defenseRequiredEl) defenseRequiredEl.textContent = `${pierceTarget.toFixed(1)}%`;
+            if (defenseRequiredEl) defenseRequiredEl.textContent = `${pierceNeeded.toFixed(1)}%`;
 
             // Update pierce in need-stat-trigger-table (target/current/needed)
             // Trigger is rendered separately, so search globally by slotIndex
@@ -2705,8 +2735,10 @@ export class NeedStatCardUI {
                 const allItems = category === 'pierce' ? allPierceItems : allDefenseItems;
                 const item = allItems.find(i => String(i.id || `${i.source}_${i.skillName}`) === itemId);
 
-                if (item && item.values && item.values[selectedOption] !== undefined) {
-                    const newBaseValue = Number(item.values[selectedOption]) || 0;
+                const optionData = item ? this.getLocalizedOptionData(item) : null;
+
+                if (item && optionData && optionData.values && optionData.values[selectedOption] !== undefined) {
+                    const newBaseValue = Number(optionData.values[selectedOption]) || 0;
                     item._selectedOption = selectedOption;
 
                     // Save to global state for persistence (with category prefix)

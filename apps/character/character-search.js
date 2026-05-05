@@ -339,7 +339,7 @@
         return tagsRaw.includes('원소 이상') && !tagsRaw.includes('원소 이상 제거');
     }
 
-    function hasTag(characterTags, wantedTag, isPersona3, isPersona5, isLimited) {
+    function hasTag(characterTags, wantedTag, isPersona3, isPersona5, isLimited, hasMindscapeCore) {
         const wantedNorm = normalizeToken(wantedTag);
         const tagsRaw = String(characterTags || '');
 
@@ -347,6 +347,7 @@
         if (wantedNorm === 'persona3' || wantedNorm === '페르소나3') return isPersona3;
         if (wantedNorm === '한정' || wantedNorm === 'limited') return isLimited;
         if (wantedNorm === '통상' || wantedNorm === 'normal') return !isLimited;
+        if (wantedNorm === 'mindscapecore' || wantedNorm === '심상코어') return hasMindscapeCore;
 
         switch (wantedNorm) {
             case 'technical':
@@ -400,6 +401,7 @@
             const isPersona5 = card.dataset.persona5 === 'true';
             const isPersona3 = card.dataset.persona3 === 'true';
             const isLimited = card.dataset.limit === 'true';
+            const hasMindscapeCore = card.dataset.mindscapeCore === 'true';
             const characterTags = card.dataset.tags || '';
 
             const elementMatch = noElementFilter
@@ -407,7 +409,7 @@
                 || (element === '질풍빙결' && (selectedElements.includes('질풍') || selectedElements.includes('빙결')));
             const positionMatch = noPositionFilter || selectedPositions.includes(position);
             const rarityMatch = noRarityFilter || selectedRarities.includes(rarity);
-            const tagMatch = noTagFilter || selectedTags.every((tag) => hasTag(characterTags, tag, isPersona3, isPersona5, isLimited));
+            const tagMatch = noTagFilter || selectedTags.every((tag) => hasTag(characterTags, tag, isPersona3, isPersona5, isLimited, hasMindscapeCore));
 
             const shouldHide = !(elementMatch && positionMatch && rarityMatch && tagMatch) || card.classList.contains('hidden-by-search');
             card.classList.toggle('hidden-by-filter', shouldHide);

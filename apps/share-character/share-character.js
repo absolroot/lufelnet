@@ -397,11 +397,20 @@
         return String(meta.codename || '');
     }
 
+    function getLocalizedCharacterName(characterKey, meta, lang) {
+        if (!meta || typeof meta !== 'object') return String(characterKey || '');
+        const normalized = normalizeLang(lang);
+        if (normalized === 'en' && meta.name_en) return String(meta.name_en || '');
+        if (normalized === 'jp' && meta.name_jp) return String(meta.name_jp || '');
+        if (normalized === 'cn' && meta.name_cn) return String(meta.name_cn || '');
+        return String(meta.name || characterKey || '');
+    }
+
     function buildCharacterMeta(characterKey, meta) {
         if (!characterKey || !meta || typeof meta !== 'object') return null;
         return {
             key: characterKey,
-            name: String(meta.name || characterKey),
+            name: getLocalizedCharacterName(characterKey, meta, state.lang),
             codename: String(meta.codename || ''),
             codename_en: String(meta.codename_en || ''),
             rarity: Number(meta.rarity || 0),

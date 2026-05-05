@@ -10,6 +10,7 @@ window.I18N_PAGE_CHARACTER_CN = {
     "filterPosition": "职业",
     "filterType": "类别",
     "filterTag": "标签",
+    "characterFilterMindscapeCore": "心象核心",
     "showSpoilers": "显示剧透",
     "notReleased": "未上线",
     "characterDetailReview": "怪盗评测",

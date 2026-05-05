@@ -386,8 +386,9 @@ export function calculateDefenseReduceTotal(defenseReduceItems, selectedDefenseI
 export function calculateDefenseStats(penetrateTotal, defenseReduceTotal) {
     const { defenseCoef } = getGlobalBossSettings();
     
-    const remainingDefenseCoef = Math.max(0, defenseCoef - defenseReduceTotal);
-    const pierceTarget = defenseCoef > 0 ? (remainingDefenseCoef / (defenseCoef / 100)) : 0;
+    const afterPierceCoef = penetrateTotal >= 100 ? 0 : defenseCoef * (100 - penetrateTotal) / 100;
+    const remainingDefenseCoef = Math.max(0, afterPierceCoef - defenseReduceTotal);
+    const pierceTarget = defenseCoef > 0 ? Math.max(0, Math.min(100, 100 - (defenseReduceTotal / defenseCoef) * 100)) : 0;
     const pierceNeeded = Math.max(0, pierceTarget - penetrateTotal);
     
     return {

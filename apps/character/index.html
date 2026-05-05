@@ -205,6 +205,7 @@ redirect_from: []
                     <label><input type="checkbox" name="tag" value="감전"><span>감전</span></label>
                     <label><input type="checkbox" name="tag" value="동결"><span>동결</span></label>
                     <label><input type="checkbox" name="tag" value="HP 소모"><span>HP 소모</span></label>
+                    <label><input type="checkbox" name="tag" value="mindscapeCore"><span data-i18n="characterFilterMindscapeCore">심상 코어</span></label>
                 </div>
             </div>
         </div>
@@ -849,6 +850,7 @@ redirect_from: []
             card.dataset.persona3 = charData.persona3 ? 'true' : 'false';
             card.dataset.limit = charData.limit ? 'true' : 'false';
             card.dataset.tags = charData.tag || '';
+            card.dataset.mindscapeCore = charData.has_innate === true ? 'true' : 'false';
 
             // Create link wrapper - prefer slug-based detail URLs when available
             const link = document.createElement('a');

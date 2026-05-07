@@ -2187,6 +2187,11 @@ const exportTierListAsJSON = () => {
     const tierLabelCell = Array.from(document.querySelectorAll('.tier-label-cell'))
       .find(cell => cell.querySelector('span').textContent.trim() === tierLabel);
 
+    // Deleted default rows should stay deleted in exported JSON.
+    if (!tierLabelCell) {
+      return;
+    }
+
     let tierColor = getTierColor(tierLabel); // 기본 색상
     const positionData = {};
 

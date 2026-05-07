@@ -21,6 +21,7 @@ wheels/
 *.egg
 .claude/
 .codex/
+/.codex-temp/
 .tmp/
 .bundle/
 _config/

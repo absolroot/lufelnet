@@ -2,7 +2,7 @@
   "data": {
     "boss": [
       {
-        "bonusRule": "All ally Almighty attack Score x 3",
+        "bonusRule": "All ally Wind attack Score x 3",
         "enemy": [
           {
             "adapt": {
@@ -10,7 +10,36 @@
               "Nullify": [],
               "Reflect": [],
               "Resistant": [
-                "Ice",
+                "Phys",
+                "Psychokinesis",
+                "Nuclear",
+                "Bless",
+                "Curse"
+              ],
+              "Weak": [
+                "Wind"
+              ]
+            },
+            "image": "B-guaiwutouxiang-melchizedek.png",
+            "level": "89",
+            "name": "Melchizedek",
+            "skill": "706,1004",
+            "sn": "527101",
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 2.0,
+        "sn": "298401"
+      },
+      {
+        "bonusRule": "All ally Fire, Almighty attack Score x 3",
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
                 "Bless",
                 "Curse"
               ],
@@ -18,48 +47,21 @@
                 "Fire"
               ]
             },
-            "image": "B-guaiwutouxiang-vishnu.png",
+            "image": "B-guaiwutouxiang-lilith.png",
             "level": "89",
-            "name": "Vishnu",
-            "skill": "407,905,408,1104",
-            "sn": "526101",
+            "name": "Lilith",
+            "skill": "207,607,603",
+            "sn": "527111",
             "stat": {}
           }
         ],
         "scoreRatio": 1.0,
-        "sn": "288401"
-      },
-      {
-        "bonusRule": "All ally Curse attack Score x 3",
-        "enemy": [
-          {
-            "adapt": {
-              "Absorb": [],
-              "Nullify": [],
-              "Reflect": [],
-              "Resistant": [
-                "Electric",
-                "Bless"
-              ],
-              "Weak": [
-                "Curse"
-              ]
-            },
-            "image": "B-guaiwutouxiang-sraosha.png",
-            "level": "89",
-            "name": "Sraosha",
-            "skill": "1021,1003,1019",
-            "sn": "526111",
-            "stat": {}
-          }
-        ],
-        "scoreRatio": 1.0,
-        "sn": "288402"
+        "sn": "298402"
       }
     ],
-    "buff": "Crystal Chorus: When allies other than Wonder deal Physical or Almighty damage with skills, all allies gain Cellular Crystallization.\nCellular Crystallization: Increase final damage by 40% for 2 turns.",
-    "endTime": "2026-05-08 09:30:00",
-    "startTime": "2026-05-01 10:30:00"
+    "buff": "Subterranean Deluge: During battle, gain Stable Domain. When dealing weakness damage, grant Pursuing Maelstrom to all allies.",
+    "endTime": "2026-05-29 09:30:00",
+    "startTime": "2026-05-08 10:30:00"
   },
   "msg": "OK",
   "status": 0

@@ -2,6 +2,58 @@
   "data": {
     "thief": [
       {
+        "endTime": "2026-05-28 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Runa Dogenzaka",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Lufel",
+            "type": "thief"
+          },
+          {
+            "name": "Shoki Ikenami",
+            "type": "thief"
+          },
+          {
+            "name": "Chizuko Nagao",
+            "type": "thief"
+          }
+        ],
+        "name": "Howdy Hey!",
+        "startTime": "2026-05-11 11:30:00",
+        "type": "Targeted Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-05-28 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Runa Dogenzaka",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Lufel",
+            "type": "thief"
+          },
+          {
+            "name": "Shoki Ikenami",
+            "type": "thief"
+          },
+          {
+            "name": "Chizuko Nagao",
+            "type": "thief"
+          }
+        ],
+        "name": "Howdy Hey!",
+        "startTime": "2026-05-11 11:30:00",
+        "type": "Chance Most Wanted Idol Contracts"
+      },
+      {
         "endTime": "2026-05-21 10:59:59",
         "fiveStar": [
           {
@@ -103,10 +155,97 @@
         ],
         "name": "Wings of a Love Song",
         "startTime": "2026-04-30 07:30:00",
+        "type": "Chance Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-05-28 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Justine & Caroline",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Lufel",
+            "type": "thief"
+          },
+          {
+            "name": "Shoki Ikenami",
+            "type": "thief"
+          },
+          {
+            "name": "Chizuko Nagao",
+            "type": "thief"
+          }
+        ],
+        "name": "Road to Rehabilitation",
+        "startTime": "2026-05-11 11:30:00",
+        "type": "Targeted Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-05-28 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Justine & Caroline",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Lufel",
+            "type": "thief"
+          },
+          {
+            "name": "Shoki Ikenami",
+            "type": "thief"
+          },
+          {
+            "name": "Chizuko Nagao",
+            "type": "thief"
+          }
+        ],
+        "name": "Road to Rehabilitation",
+        "startTime": "2026-05-11 11:30:00",
         "type": "Chance Most Wanted Idol Contracts"
       }
     ],
     "weapon": [
+      {
+        "endTime": "2026-05-28 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Cerberus Claws",
+            "type": "weapon",
+            "user": "Runa"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Lava Flame",
+            "type": "weapon",
+            "user": "Lufel"
+          },
+          {
+            "name": "Mattatóre",
+            "type": "weapon",
+            "user": "Shoki"
+          },
+          {
+            "name": "Hunting Hound Claws",
+            "type": "weapon",
+            "user": "Runa"
+          },
+          {
+            "name": "Gravitational Force",
+            "type": "weapon",
+            "user": "Chizuko"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2026-05-11 11:30:00",
+        "type": "Arms Deals"
+      },
       {
         "endTime": "2026-05-21 10:59:59",
         "fiveStar": [
@@ -175,6 +314,41 @@
         ],
         "name": "Silent Pistol",
         "startTime": "2026-04-30 07:30:00",
+        "type": "Arms Deals"
+      },
+      {
+        "endTime": "2026-05-28 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Warden's Judgement",
+            "type": "weapon",
+            "user": "Justine & Caroline"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Lava Flame",
+            "type": "weapon",
+            "user": "Lufel"
+          },
+          {
+            "name": "Mattatóre",
+            "type": "weapon",
+            "user": "Shoki"
+          },
+          {
+            "name": "Deliverance of Strength",
+            "type": "weapon",
+            "user": "Justine & Caroline"
+          },
+          {
+            "name": "Gravitational Force",
+            "type": "weapon",
+            "user": "Chizuko"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2026-05-11 11:30:00",
         "type": "Arms Deals"
       }
     ]

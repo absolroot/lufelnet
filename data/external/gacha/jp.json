@@ -2,6 +2,58 @@
   "data": {
     "thief": [
       {
+        "endTime": "2026-05-28 10:59:59",
+        "fiveStar": [
+          {
+            "name": "道玄坂 琉七",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "ルフェル",
+            "type": "thief"
+          },
+          {
+            "name": "池波 星輝",
+            "type": "thief"
+          },
+          {
+            "name": "長尾 チヅ子",
+            "type": "thief"
+          }
+        ],
+        "name": "わんわんるーな！",
+        "startTime": "2026-05-11 11:30:00",
+        "type": "PICKUP怪ドル契約・TARGET"
+      },
+      {
+        "endTime": "2026-05-28 10:59:59",
+        "fiveStar": [
+          {
+            "name": "道玄坂 琉七",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "ルフェル",
+            "type": "thief"
+          },
+          {
+            "name": "池波 星輝",
+            "type": "thief"
+          },
+          {
+            "name": "長尾 チヅ子",
+            "type": "thief"
+          }
+        ],
+        "name": "わんわんるーな！",
+        "startTime": "2026-05-11 11:30:00",
+        "type": "PICKUP怪ドル契約・CHANCE"
+      },
+      {
         "endTime": "2026-05-21 10:59:59",
         "fiveStar": [
           {
@@ -103,10 +155,97 @@
         ],
         "name": "羽ばたく愛の歌",
         "startTime": "2026-04-30 07:30:00",
+        "type": "PICKUP怪ドル契約・CHANCE"
+      },
+      {
+        "endTime": "2026-05-28 10:59:59",
+        "fiveStar": [
+          {
+            "name": "ジュスティーヌ＆カロリーヌ",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "ルフェル",
+            "type": "thief"
+          },
+          {
+            "name": "池波 星輝",
+            "type": "thief"
+          },
+          {
+            "name": "長尾 チヅ子",
+            "type": "thief"
+          }
+        ],
+        "name": "更生への道のり",
+        "startTime": "2026-05-11 11:30:00",
+        "type": "PICKUP怪ドル契約・TARGET"
+      },
+      {
+        "endTime": "2026-05-28 10:59:59",
+        "fiveStar": [
+          {
+            "name": "ジュスティーヌ＆カロリーヌ",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "ルフェル",
+            "type": "thief"
+          },
+          {
+            "name": "池波 星輝",
+            "type": "thief"
+          },
+          {
+            "name": "長尾 チヅ子",
+            "type": "thief"
+          }
+        ],
+        "name": "更生への道のり",
+        "startTime": "2026-05-11 11:30:00",
         "type": "PICKUP怪ドル契約・CHANCE"
       }
     ],
     "weapon": [
+      {
+        "endTime": "2026-05-28 10:59:59",
+        "fiveStar": [
+          {
+            "name": "サーベラスクロー",
+            "type": "weapon",
+            "user": "琉七"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "ラヴァ・フレイム",
+            "type": "weapon",
+            "user": "ルフェル"
+          },
+          {
+            "name": "マッタトーレ",
+            "type": "weapon",
+            "user": "星輝"
+          },
+          {
+            "name": "ハウンドクロー",
+            "type": "weapon",
+            "user": "琉七"
+          },
+          {
+            "name": "グラビティフォース",
+            "type": "weapon",
+            "user": "チヅ子"
+          }
+        ],
+        "name": "無音の硝煙",
+        "startTime": "2026-05-11 11:30:00",
+        "type": "武器補給"
+      },
       {
         "endTime": "2026-05-21 10:59:59",
         "fiveStar": [
@@ -175,6 +314,41 @@
         ],
         "name": "無音の硝煙",
         "startTime": "2026-04-30 07:30:00",
+        "type": "武器補給"
+      },
+      {
+        "endTime": "2026-05-28 10:59:59",
+        "fiveStar": [
+          {
+            "name": "群青の審判",
+            "type": "weapon",
+            "user": "Ｊ＆Ｃ"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "ラヴァ・フレイム",
+            "type": "weapon",
+            "user": "ルフェル"
+          },
+          {
+            "name": "マッタトーレ",
+            "type": "weapon",
+            "user": "星輝"
+          },
+          {
+            "name": "剛毅の御使い",
+            "type": "weapon",
+            "user": "Ｊ＆Ｃ"
+          },
+          {
+            "name": "グラビティフォース",
+            "type": "weapon",
+            "user": "チヅ子"
+          }
+        ],
+        "name": "無音の硝煙",
+        "startTime": "2026-05-11 11:30:00",
         "type": "武器補給"
       }
     ]

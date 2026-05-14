@@ -115,7 +115,42 @@
       }
     ],
     "assist_skill": [],
-    "final_innate": [],
+    "final_innate": [
+      [
+        {
+          "attr": "Final Damage Mult.",
+          "nature": "Wind",
+          "value": "0.02,4"
+        },
+        {
+          "attr": "Final Damage Mult.",
+          "nature": "Wind",
+          "value": "0.02"
+        }
+      ],
+      [
+        {
+          "attr": "Wind Boost",
+          "nature": "Wind",
+          "value": "0.08"
+        },
+        {
+          "attr": "Wind Damage Taken",
+          "nature": "Wind",
+          "value": "-0.1,4"
+        },
+        {
+          "attr": "Ice Boost",
+          "nature": "Wind",
+          "value": "0.08"
+        },
+        {
+          "attr": "Ice Damage Taken",
+          "nature": "Wind",
+          "value": "-0.1"
+        }
+      ]
+    ],
     "highlight_skill": {
       "ascend": "0/5/0/5",
       "auto_select": "AICondition (Based on AAAAAA==)",
@@ -136,7 +171,40 @@
       "Attack": "0.2",
       "Crit Rate": "0.12"
     },
-    "innate_awake_skill": [],
+    "innate_awake_skill": [
+      {
+        "ascend": "0/0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身使用『春日将至』/『寒夜舞曲』后，立刻获得2颗『朝露结晶』/『寒霜结晶』。\n自身以外的疾风/冰冻同伴释放人格面具技能/HIGHLIGHT/神通法后，自身获得2颗可以突破上限的『朝露结晶』/『寒霜结晶』，通过这种方式最多获得6颗。\n自身处于『仲春结界』/『冬夜结界』时，穿透提升5.0%/7.5%/10.0%。",
+        "name": "澄净",
+        "nature": null,
+        "skill_lv": "1/2/3",
+        "sn": 121271,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身消耗『朝露结晶』/『寒霜结晶』时，每消耗1颗额外使追击的技能伤害提升1.2%/1.9%/2.5%+意识等级*6%（上限12.5%/18.8%/25.0%+意识等级*60%）。\n自身精力值消耗减少15%。",
+        "name": "纯粹",
+        "nature": null,
+        "skill_lv": "1/2/3",
+        "sn": 121272,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
     "innate_skill_type": [
       "S1/HL",
       "S2/S3"
@@ -277,7 +345,48 @@
       "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
     },
-    "stat_100": null,
+    "stat_100": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1422.74 / 1448.74 / 1474.74 / 1500.74 / 1526.74 / 1551.74 / 1577.74",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "195.0% / 195.0% / 195.0% / 195.0% / 195.0% / 195.0% / 195.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "701.04 / 714.04 / 727.04 / 739.04 / 752.04 / 765.04 / 778.04",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "4305.27 / 4383.27 / 4462.27 / 4540.27 / 4618.27 / 4697.27 / 4775.27",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "98.0 / 98.0 / 98.0 / 98.0 / 98.0 / 98.0 / 98.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
     "theurgia_skill": []
   },
   "msg": "OK",

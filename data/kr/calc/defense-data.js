@@ -902,6 +902,42 @@ const penetrateData = {
         "4层",
         "5层"
       ]
+    },
+    {
+      "id": "mont_swan_clarity_penetrate",
+      "type": "심상코어",
+      "target": "자신",
+      "skillIcon": "/assets/img/character-detail/innate/core.png",
+      "skillName": "청정",
+      "skillName_en": "Clarity",
+      "skillName_jp": "澄浄",
+      "options": [
+        "LV1",
+        "LV2",
+        "LV3"
+      ],
+      "values": {
+        "LV1": 5,
+        "LV2": 7.5,
+        "LV3": 10
+      },
+      "defaultOption": "LV3",
+      "value": 10,
+      "skillEffectAmpAffected": false,
+      "duration": "-",
+      "note": "결계 상태",
+      "note_en": "Edge active",
+      "note_jp": "結界状態",
+      "skillName_cn": "澄净",
+      "note_cn": "结界状态",
+      "type_cn": "心象核心",
+      "target_cn": "自身",
+      "duration_cn": "-",
+      "options_cn": [
+        "LV1",
+        "LV2",
+        "LV3"
+      ]
     }
   ],
   "류지": [

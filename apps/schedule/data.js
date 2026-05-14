@@ -78,6 +78,7 @@ window.ReleaseScheduleData = {
         { version: "4.0", characters: ["마나카", "쇼키"], "main-story": "5-1", weapon: ["하이브 가드"], revelation: ["희망", "신중", "고집"], days: 21 },
         { version: "4.1.1", characters: ["유키 마코토"], persona: ["자오우곤겐"], days: 14 },
         { version: "4.1.2", characters: ["유카리"], weapon: ["마그네틱 스톰"], days: 21 },
+        { version: "???", characters: ["???"], days: 21 },
         { version: "4.1.3", characters: ["사나다"], revelation: ["돌파", "슬픔", "변화"], days: 21 },
         { version: "4.2", characters: ["이치고"], "main-story": "5-2", persona: ["트럼페터", "바스키"], weapon: ["망령의 저주"], days: 21 },
         { version: "4.3.1", characters: ["미나미·여름"], "summer": true, days: 21 },
@@ -92,7 +93,9 @@ window.ReleaseScheduleData = {
         { version: "4.8.1", characters: ["나루미"], mindscape_core: ["렌", "야오링·사자무"], revelation: ["순수", "타락", "강인"], weapon_stamp: ["천상의 별"], days: 21 },
         { version: "4.8.2", characters: ["코로마루"], days: 21  },
         { version: "5.0.1", characters: ["모토하·청광","아란"], mindscape_core: ["유스케", "아야카"], weapon_stamp: ["마그네틱 스톰"], weapon: ["혼돈의 해커스"], limitTransitions: [{ from: true, to: false, characters: ["렌", "유스케", "YUI"] }], days: 21 },
-        { version: "5.0.2", characters: ["아이기스"], days: 21}
+        { version: "5.0.2", characters: ["아이기스"], days: 21},
+        { version: "5.1.1", characters: ["렌·스타 나이트"], days: 21},
+        { version: "5.1.2", characters: ["모르가나·스타 나이트"], days: 21}
 
         // 이후 캐릭터들은 release_order 기반으로 자동 추가됨
     ]

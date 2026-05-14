@@ -71,7 +71,8 @@
         'After School': 'filterAfterSchool',
         'Evening': 'filterEvening',
         'Night': 'filterNight',
-        'Afternoon': 'filterAfternoon'
+        'Afternoon': 'filterAfternoon',
+        'Cyber': 'filterCyber'
     };
 
     function addStringToSet(set, value) {
@@ -106,6 +107,13 @@
     }
 
     function getTranslationByLang(lang, key) {
+        const globalPageVarName = `I18N_PAGE_SYNERGY_${String(lang || '').toUpperCase()}`;
+        const globalPageValue = getNestedValue(window[globalPageVarName], key);
+        if (globalPageValue !== undefined) return globalPageValue;
+
+        const globalI18nValue = getNestedValue(window.I18N?.[lang], key);
+        if (globalI18nValue !== undefined) return globalI18nValue;
+
         const service = getI18nServiceInstance();
         if (!service || !service.cache || !lang) return undefined;
 
@@ -137,6 +145,17 @@
         const fallbackKr = getTranslationByLang('kr', key);
         if (fallbackKr !== undefined) return fallbackKr;
         return fallback !== undefined ? fallback : key;
+    }
+
+    function getCyberTimeFallback() {
+        const lang = currentLanguage || getCurrentLanguage();
+        const labels = {
+            kr: '사이버',
+            en: 'Cyber',
+            jp: 'サイバー',
+            cn: '赛博'
+        };
+        return labels[lang] || labels.en;
     }
 
     function getI18nValuesAllLanguages(key, fallback = []) {
@@ -205,7 +224,7 @@
         const normalized = normalizeTimeValue(timeValue);
         const key = TIME_FILTER_KEY_BY_CANONICAL[normalized];
         if (!key) return timeValue;
-        return getI18nText(key, timeValue);
+        return getI18nText(key, normalized === 'Cyber' ? getCyberTimeFallback() : timeValue);
     }
 
     function isArcadeCurrency(moneyName) {
@@ -249,6 +268,20 @@
             const response = await fetch(`${BASE_URL}/apps/synergy/friends/friend_num.json?v=${APP_VERSION}`);
             if (!response.ok) throw new Error('Failed to load character list');
             characterList = await response.json();
+            try {
+                const cyberResponse = await fetch(`${BASE_URL}/apps/synergy/friends/cyber_freind_num.json?v=${APP_VERSION}`);
+                if (cyberResponse.ok) {
+                    const cyberCharacterList = await cyberResponse.json();
+                    Object.entries(cyberCharacterList).forEach(([name, value]) => {
+                        characterList[name] = {
+                            ...value,
+                            cybercoop: true
+                        };
+                    });
+                }
+            } catch (cyberError) {
+                console.warn('Cybercoop character list not loaded:', cyberError);
+            }
             // 전역으로 업데이트 (synergy_search.js에서 사용)
             window.characterList = characterList;
             return true;
@@ -345,6 +378,8 @@
             // CN pages should prefer CN synergy data and only fall back to KR when missing.
             const lang = currentLanguage;
             const fileName = encodeURIComponent(characterName);
+            const charMeta = characterList[characterName] || {};
+            const fallbackLang = charMeta.cybercoop ? 'cn' : 'kr';
             let response = await fetch(`${BASE_URL}/apps/synergy/friends/${lang}/${fileName}.json?v=${APP_VERSION}`);
             let data = null;
             let krData = null;
@@ -356,7 +391,7 @@
 
             // mapName이 없으면 kr 데이터를 폴백으로 로드
             if (lang !== 'kr' && (!data || !hasMapName(data))) {
-                const krResponse = await fetch(`${BASE_URL}/apps/synergy/friends/kr/${fileName}.json?v=${APP_VERSION}`);
+                const krResponse = await fetch(`${BASE_URL}/apps/synergy/friends/${fallbackLang}/${fileName}.json?v=${APP_VERSION}`);
                 if (krResponse.ok) {
                     const krJsonData = await krResponse.json();
                     krData = krJsonData.data || krJsonData;
@@ -372,8 +407,8 @@
 
             if (!data) {
                 // 언어별 파일이 없으면 kr로 폴백
-                if (lang !== 'kr') {
-                    const krResponse = await fetch(`${BASE_URL}/apps/synergy/friends/kr/${fileName}.json?v=${APP_VERSION}`);
+                if (lang !== fallbackLang) {
+                    const krResponse = await fetch(`${BASE_URL}/apps/synergy/friends/${fallbackLang}/${fileName}.json?v=${APP_VERSION}`);
                     if (krResponse.ok) {
                         const krJsonData = await krResponse.json();
                         data = krJsonData.data || krJsonData;
@@ -386,7 +421,7 @@
             // en/jp인 경우 kr 데이터를 로드하여 병합
             if (lang !== 'kr' && data) {
                 if (!krData) {
-                    const krResponse = await fetch(`${BASE_URL}/apps/synergy/friends/kr/${fileName}.json?v=${APP_VERSION}`);
+                    const krResponse = await fetch(`${BASE_URL}/apps/synergy/friends/${fallbackLang}/${fileName}.json?v=${APP_VERSION}`);
                     if (krResponse.ok) {
                         const krJsonData = await krResponse.json();
                         krData = krJsonData.data || krJsonData;
@@ -399,6 +434,7 @@
                 }
             }
 
+            normalizeCybercoopData(data);
             characterData[cacheKey] = data;
             return characterData[cacheKey];
         } catch (error) {
@@ -408,6 +444,23 @@
     }
 
     // item에 mapName이 있는지 확인
+    function normalizeCybercoopData(data) {
+        if (!data || !Array.isArray(data.special_award)) return;
+
+        data.special_award = data.special_award.map((award) => {
+            if (!award || !award.skill || (!award.skill.name && !award.skill.description && !award.skill.icon)) {
+                return award;
+            }
+
+            return {
+                ...award,
+                name: award.name || award.skill.name || '-',
+                description: award.description || award.skill.description || '-',
+                icon: award.icon || award.skill.icon || null
+            };
+        }).filter((award) => award && (award.name || award.description || award.icon));
+    }
+
     function hasMapName(data) {
         if (!data || !data.item) return false;
         return data.item.some(item => item.shop && item.shop.mapName);
@@ -638,7 +691,7 @@
             }
 
             // 캐릭터 JSON 파일의 time이 없으면 friend_num.json의 time/appear로 폴백
-            characterTimeMap[characterName] = characterTime || char.time || char.appear || null;
+            characterTimeMap[characterName] = char.cybercoop ? 'Cyber' : (characterTime || char.time || char.appear || null);
         });
 
         await Promise.all(timePromises);
@@ -706,9 +759,9 @@
         });
 
         const sortedCharacters = allCharacters.sort((a, b) => {
-            // num 기준 내림차순, 같으면 이름순
-            const numA = characterList[a].num || 0;
-            const numB = characterList[b].num || 0;
+            // sort_order가 있으면 API num 대신 전역 표시 순서로 사용
+            const numA = Number.isFinite(characterList[a].sort_order) ? characterList[a].sort_order : (characterList[a].num || 0);
+            const numB = Number.isFinite(characterList[b].sort_order) ? characterList[b].sort_order : (characterList[b].num || 0);
             if (numB !== numA) return numB - numA;
             return a.localeCompare(b);
         });
@@ -826,7 +879,7 @@
             tab.dataset.character = characterName;
 
             // 필터링용 데이터 속성 추가
-            const timeValue = characterTime || char.time || char.appear || '';
+            const timeValue = char.cybercoop ? 'Cyber' : (characterTime || char.time || char.appear || '');
             tab.dataset.characterTime = timeValue;
             tab.dataset.characterNameKr = characterName;
             // characterNamesMap에서 이름 정보 가져오기
@@ -1118,7 +1171,7 @@
         const imgSrc = `${BASE_URL}/assets/img/synergy/${imgPath}/${imgFileName}`;
 
         // time 필드 사용 (캐릭터 JSON 파일의 time 우선, 없으면 friend_num.json의 time/appear로 폴백)
-        const timeValue = data.time || char.time || char.appear || '';
+        const timeValue = char.cybercoop ? 'Cyber' : (data.time || char.time || char.appear || '');
         const timeLabel = getTimeLabel(timeValue);
 
         // can_romance 아이콘
@@ -2402,6 +2455,9 @@
         // translateUI();
         if (window.I18nService && window.I18nService.updateDOM) {
             window.I18nService.updateDOM();
+            document.querySelectorAll('[data-i18n="filterCyber"]').forEach((el) => {
+                el.textContent = getI18nText('filterCyber', getCyberTimeFallback());
+            });
         }
 
         // URL 경로 또는 파라미터에서 캐릭터 읽기 (코드네임으로 찾기)

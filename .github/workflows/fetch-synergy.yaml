@@ -38,6 +38,17 @@ jobs:
             node scripts/fetch-synergy.mjs
           }
 
+      - name: Fetch & update cybercoop data
+        env:
+          BASE_URL: https://iant.kr:5000/data
+        run: |
+          set -euo pipefail
+          node scripts/fetch-synergy.mjs cybercoop || {
+            echo "First cybercoop fetch failed. Retry in 45s..."
+            sleep 45
+            node scripts/fetch-synergy.mjs cybercoop
+          }
+
       - name: Generate synergy SEO pages
         run: npm run seo:synergy:generate
 

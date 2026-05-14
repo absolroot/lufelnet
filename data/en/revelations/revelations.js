@@ -47,6 +47,8 @@ const mapping_en = {
     "개선": "Triumph",
     "좌절": "Defeat",
     "풍족": "Satiety",
+    "번영": "Flourishing",
+    "결단": "Determination",
     "획득": "Obtain",
     "타락": "Depravity",
     "강인": "Tenacity",
@@ -105,6 +107,8 @@ const enRevelationData = {
         "개선": "Triumph",
         "좌절": "Defeat",
         "풍족": "Satiety",
+        "번영": "Flourishing",
+        "결단": "Determination",
         "획득": "Obtain",
         "타락": "Depravity",
         "강인": "Tenacity",
@@ -112,7 +116,7 @@ const enRevelationData = {
     "main": {
         "Purity": ["Depravity", "Transformation"], // 순수
         "Nativity": ["Power"], // 탄생
-        "Agility": ["Satiety", "Hindrance"], // 예리
+        "Agility": ["Flourishing", "Satiety", "Hindrance"], // 예리
         "Perseverance": ["Sorrow", "Transformation", "Obtain"], //돌파
         "Hope": ["Labor", "Ruin", "Transformation"], // 희망
         "Creation": ["Worry", "Reconcilation","Tenacity"], // 창조 
@@ -130,6 +134,8 @@ const enRevelationData = {
         "Freedom": ["Triumph", "Defeat", "Disappointment"], // 자유
     },
     "sub": {
+        "Flourishing": ["Agility"], // 번영
+        "Determination": [], // 결단
         "Depravity": ["Purity"], // 타락
         "Tenacity": ["Creation"], // 강인
         "Satiety": ["Agility"], // 풍족
@@ -162,6 +168,17 @@ const enRevelationData = {
         "Prosperity": ["Departure", "Trust"], // 풍요
     },
     "sub_effects": {
+        "Flourishing": { // 번영
+            "set2": "Increase Attack by 12%.",
+            // KR/CN patched: triggers once per battle and can stack up to 2 times. EN/JP runtime text pending.
+            "set4": "Increase DMG Dealt by 16%. After the user gains 2 [Rhapsody Beat], grants half of this buff effect to other allies.",
+            "type": ["버프", "미출시"]
+        },
+        "Determination": { // 결단
+            "set2": "Increase DMG Dealt by 10%.",
+            "set4": "Increase Attack by 15%. When the user spends [Rhapsody Beat], gain an additional 20% Critical Effect for 2 turns.",
+            "type": ["크리티컬 효과", "미출시"]
+        },
         "Control": { // 주권
             "set2": "HP increased by 12%.",
             "set4": "When using skills to attack an enemy, it will cause additional damage of 8% of its own health to the main target.",
@@ -381,6 +398,7 @@ const enRevelationData = {
         },
         "Freedom": { // 자유
             "Defeat": "Increases all allies' DMG Dealt to enemies with debuffs by 8%, doesn't stack.",
+            // KR/CN patched: Freedom + Triumph now grants Glory-based Critical Effect instead of Follow Up PEN. EN/JP runtime text pending.
             "Triumph": "Gain 1 [Glory] when using a persona skill, up to 2 stacks. When triggering a Follow Up, consumes all [Glory] to increase that Follow Up's PEN by 8% per stack.",
             "Disappointment": "When dealing Almighty damage, increase Attack by 35% and critical rate by 12%.",
             //"type": ["미출시"]
@@ -397,6 +415,7 @@ const enRevelationData = {
             // "type": ["미출시"]
         },
         "Agility": {
+            "Flourishing": "Increase All-Out Attack DMG by 10%. After dealing All-Out Attack DMG, increase the entire party's Attack by 15%.",
             "Satiety": "Increase All-Out Attack DMG by 16%.",
             "Hindrance": "During combat, increase Ailment Accuracy by 20%, and grant all allies a DMG Bonus equal to 10% of the user's Ailment Accuracy (up to 10% DMG Bonus).",
             "type": ["미출시"]

@@ -12,6 +12,7 @@ window.I18N_PAGE_SYNERGY_EN = {
     filterEvening: 'Evening',
     filterNight: 'Night',
     filterAfternoon: 'Afternoon',
+    filterCyber: 'Cyber',
 
     // Search & UI
     searchPlaceholder: 'Search character...',

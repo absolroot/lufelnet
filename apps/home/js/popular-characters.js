@@ -8,6 +8,9 @@
     const POPULAR_CHARACTERS_OVERRIDE = { kr: null, en: null, jp: null };
     const POPULAR_CHARACTERS_FIXED = {
         kr: [
+            { name: '렌·스타 나이트', badge: 'NEW' },
+            { name: '유카리', badge: 'NEW' },
+            { name: '몽타뉴·백조', badge: 'NEW' },
             { name: '마나카', badge: 'HOT' },
             { name: 'J&C', badge: 'HOT' },
             { name: '후카', badge: 'HOT' },
@@ -26,9 +29,9 @@
         ],
     };
 
-    function getAllowedCharacterSet() {
+    function getAllowedCharacterSet(characterList) {
         try {
-            const list = window.characterList;
+            const list = characterList || null;
             if (!list) return null;
             const main = Array.isArray(list.mainParty) ? list.mainParty : [];
             const sup = Array.isArray(list.supportParty) ? list.supportParty : [];
@@ -94,15 +97,6 @@
         }, true);
     }
 
-    function isKrLikeLang(lang) {
-        try {
-            if (typeof window.isKrLikeLanguage === 'function') {
-                return !!window.isKrLikeLanguage(lang);
-            }
-        } catch (_) { }
-        return lang === 'kr' || lang === 'cn';
-    }
-
     function mapLangToRegion(lang) {
         if (!lang) return null;
         const value = String(lang).toLowerCase();
@@ -140,6 +134,13 @@
 
     function shouldUseGlbReleaseOrder(region) {
         return GLB_RELEASE_ORDER_REGIONS.has(String(region || '').toLowerCase());
+    }
+
+    function getPopularListKey(region) {
+        const value = String(region || '').toLowerCase();
+        if (value === 'kr' || value === 'cn' || value === 'tw') return 'kr';
+        if (value === 'jp') return 'jp';
+        return 'en';
     }
 
     function getCurrentLang() {
@@ -228,8 +229,8 @@
         });
     }
 
-    function resolvePopularCharacters(lang, releaseOrderCharacterData) {
-        const langKey = isKrLikeLang(lang) ? 'kr' : lang;
+    function resolvePopularCharacters(listKey, releaseOrderCharacterData) {
+        const langKey = POPULAR_CHARACTERS_FIXED[listKey] ? listKey : 'en';
         const overrideItems = normalizeItems(POPULAR_CHARACTERS_OVERRIDE[langKey]);
         if (overrideItems) {
             return {
@@ -333,13 +334,15 @@
         ]);
 
         const krCharacterData = (kr && kr.characterData) ? kr.characterData : {};
-        const releaseOrderCharacterData = shouldUseGlbReleaseOrder(selectedRegion) && glb && glb.characterData
-            ? glb.characterData
-            : krCharacterData;
+        const useGlbReleaseOrder = shouldUseGlbReleaseOrder(selectedRegion) && glb && glb.characterData;
+        const releaseOrderCharacterData = useGlbReleaseOrder ? glb.characterData : krCharacterData;
+        const releaseOrderCharacterList = useGlbReleaseOrder && glb && glb.characterList
+            ? glb.characterList
+            : ((kr && kr.characterList) ? kr.characterList : null);
 
-        const resolved = resolvePopularCharacters(lang, releaseOrderCharacterData);
+        const resolved = resolvePopularCharacters(getPopularListKey(selectedRegion), releaseOrderCharacterData);
 
-        const allowedSet = getAllowedCharacterSet();
+        const allowedSet = getAllowedCharacterSet(releaseOrderCharacterList);
         let orderedKeys = resolved.orderedKeys || [];
         let badgeMap = resolved.badgeMap || new Map();
         if (allowedSet) {

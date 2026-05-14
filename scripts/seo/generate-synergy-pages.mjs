@@ -26,6 +26,7 @@ const LIST_PAGE_LANGS = ['kr', 'en', 'jp', 'cn'];
 const ROOT_REDIRECT_LANGS = [];
 
 const friendNumPath = path.join(ROOT, 'apps', 'synergy', 'friends', 'friend_num.json');
+const cyberFriendNumPath = path.join(ROOT, 'apps', 'synergy', 'friends', 'cyber_freind_num.json');
 const charInfoPath = path.join(ROOT, 'data', 'character_info.js');
 const seoMetaPath = path.join(ROOT, 'i18n', 'pages', 'synergy', 'seo-meta.json');
 
@@ -53,6 +54,24 @@ function sortByCodePoint(values) {
 function readJson(filePath) {
   const raw = fs.readFileSync(filePath, 'utf8');
   return JSON.parse(raw);
+}
+
+function readJsonIfExists(filePath) {
+  if (!fs.existsSync(filePath)) return {};
+  return readJson(filePath);
+}
+
+function mergeFriendNum(...sources) {
+  const merged = {};
+  for (const source of sources) {
+    for (const [name, entry] of Object.entries(source || {})) {
+      merged[name] = {
+        ...(merged[name] || {}),
+        ...(entry || {})
+      };
+    }
+  }
+  return merged;
 }
 
 function parseCharacterData(src) {
@@ -578,12 +597,14 @@ function main() {
   const mode = parseMode();
 
   const friendNum = readJson(friendNumPath);
+  const cyberFriendNum = readJsonIfExists(cyberFriendNumPath);
+  const mergedFriendNum = mergeFriendNum(friendNum, cyberFriendNum);
   const charInfoSrc = fs.readFileSync(charInfoPath, 'utf8');
   const characterData = parseCharacterData(charInfoSrc);
   const seoMeta = readJson(seoMetaPath);
   ensureSeoMetaShape(seoMeta);
 
-  const expectedFiles = buildExpectedFiles(friendNum, characterData, seoMeta);
+  const expectedFiles = buildExpectedFiles(mergedFriendNum, characterData, seoMeta);
 
   if (mode.check) {
     runCheck(expectedFiles);

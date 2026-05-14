@@ -12,6 +12,7 @@ window.I18N_PAGE_SYNERGY_JP = {
     filterEvening: '夕方',
     filterNight: '夜',
     filterAfternoon: '昼間',
+    filterCyber: 'サイバー',
 
     // Search & UI
     searchPlaceholder: 'キャラクター検索...',

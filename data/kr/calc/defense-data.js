@@ -20,28 +20,6 @@ const penetrateData = {
       "duration_cn": "1回合",
       "options_cn": []
     },
-    {
-      "id": 2,
-      "type": "계시",
-      "target": "자신",
-      "skillIcon": "/assets/img/revelation/자유.webp",
-      "skillName": "자유 + 개선",
-      "skillName_en": "Freedom + Triumph",
-      "skillName_jp": "自由 + 改善",
-      "options": [],
-      "value": 16,
-      "skillEffectAmpAffected": false,
-      "duration": "-",
-      "note": "영광 2중첩 추가효과 발동 시",
-      "note_en": "2중첩 추가효과",
-      "note_jp": "2중첩 추가효과",
-      "skillName_cn": "自由 + 凯旋",
-      "note_cn": "荣耀 2层 追加效果 发动时",
-      "type_cn": "启示",
-      "target_cn": "自身",
-      "duration_cn": "-",
-      "options_cn": []
-    }
   ],
   "J&C": [
     {
@@ -479,8 +457,8 @@ const penetrateData = {
       "target_jp": "自分",
       "skillIcon": "/assets/img/skill-element/버프.png",
       "skillName": "기어 강화",
-      "skillName_en": "Skill 3",
-      "skillName_jp": "スキル3",
+      "skillName_en": "",
+      "skillName_jp": "",
       "options": [
         "LV10",
         "LV10+심상5",
@@ -1401,6 +1379,94 @@ const defenseCalcData = {
       "target_cn": "单体",
       "duration_cn": "2回合",
       "options_cn": []
+    }
+  ],
+  "렌·스타 나이트": [
+    {
+      "id": "ren-starlight-s2-defense",
+      "type": "스킬2",
+      "type_en": "Skill 2",
+      "type_jp": "スキル2",
+      "target": "광역",
+      "target_en": "Multi",
+      "target_jp": "複数対象",
+      "skillIcon": "/assets/img/skill-element/디버프광역.png",
+      "skillName": "싱코페이션 노트",
+      "skillName_en": "",
+      "skillName_jp": "",
+      "options": [
+        "LV10",
+        "LV10+심상5",
+        "LV13",
+        "LV13+심상5"
+      ],
+      "values": {
+        "LV10": 48.8,
+        "LV10+심상5": 53.8,
+        "LV13": 51.8,
+        "LV13+심상5": 56.8
+      },
+      "defaultOption": "LV13+심상5",
+      "value": 56.8,
+      "skillEffectAmpAffected": true,
+      "duration": "2턴",
+      "note": "",
+      "note_en": "",
+      "note_jp": "",
+      "skillName_cn": "切分音符",
+      "note_cn": "",
+      "type_cn": "技能2",
+      "target_cn": "群体",
+      "duration_cn": "2回合",
+      "options_cn": [
+        "LV10",
+        "LV10+心象5",
+        "LV13",
+        "LV13+心象5"
+      ]
+    },
+    {
+      "id": "ren-starlight-s2-enhanced-defense",
+      "type": "스킬2",
+      "type_en": "Skill 2",
+      "type_jp": "スキル2",
+      "target": "광역",
+      "target_en": "Multi",
+      "target_jp": "複数対象",
+      "skillIcon": "/assets/img/skill-element/디버프광역.png",
+      "skillName": "싱코페이션 노트 (강화)",
+      "skillName_en": "",
+      "skillName_jp": "",
+      "options": [
+        "LV10",
+        "LV10+심상5",
+        "LV13",
+        "LV13+심상5"
+      ],
+      "values": {
+        "LV10": 97.6,
+        "LV10+심상5": 107.6,
+        "LV13": 103.6,
+        "LV13+심상5": 113.6
+      },
+      "defaultOption": "LV13+심상5",
+      "value": 113.6,
+      "skillEffectAmpAffected": true,
+      "duration": "2턴",
+      "note": "강화",
+      "note_en": "Enhanced",
+      "note_jp": "強化",
+      "skillName_cn": "切分音符（强化）",
+      "note_cn": "强化",
+      "type_cn": "技能2",
+      "target_cn": "群体",
+      "duration_cn": "2回合",
+      "options_cn": [
+        "LV10",
+        "LV10+心象5",
+        "LV13",
+        "LV13+心象5"
+      ]
     }
   ],
   "아란": [

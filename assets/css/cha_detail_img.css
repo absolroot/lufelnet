@@ -9,6 +9,14 @@
     z-index: 0;
 }
 
+.character-images .thief-image[data-character="렌·스타 나이트"][data-image-file="렌·스타 나이트.webp"] {
+    --char-scale: 1.12;
+}
+
+.character-images .persona-image[data-character="렌·스타 나이트"][data-persona="라울"][data-image-file="렌·스타 나이트 - 라울.webp"] {
+    --char-scale: 1.3;
+}
+
 /* specific attribute icons are displayed larger */
 .character-images img[data-image-file*="키라 - 하르피이아.webp"],
 .character-images img[data-image-file*="리코·매화 - 치요메.webp"],

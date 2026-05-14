@@ -12,6 +12,7 @@ window.I18N_PAGE_SYNERGY_KR = {
     filterEvening: '저녁',
     filterNight: '밤',
     filterAfternoon: '오후',
+    filterCyber: '사이버',
 
     // Search & UI
     searchPlaceholder: '캐릭터 검색...',

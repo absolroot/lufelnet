@@ -318,6 +318,91 @@ const criticalBuffData = {
         "LV7",
         "LV8"
       ]
+    },
+    {
+      "id": "raphael-unique-crit-rate",
+      "type": "페르소나",
+      "type_en": "Persona",
+      "type_jp": "ペルソナ",
+      "target": "단일",
+      "target_en": "Single",
+      "target_jp": "単体",
+      "skillIcon": "/assets/img/enemy/B-guaiwutouxiang-raphael.png",
+      "skillName": "라파엘 - 고유 스킬",
+      "skillName_en": "Raphael - Unique Skill",
+      "skillName_jp": "ラファエル - 特殊スキル",
+      "options": [
+        "LV6",
+        "LV7",
+        "LV8"
+      ],
+      "values": {
+        "LV6": 12,
+        "LV7": 12.6,
+        "LV8": 13.2
+      },
+      "defaultOption": "LV8",
+      "value": 13.2,
+      "skillEffectAmpAffected": true,
+      "duration": "3턴",
+      "note": "소나타 효과 발동",
+      "note_en": "Attribute Harmony activated",
+      "note_jp": "欲望の共鳴効果発動",
+      "skillName_cn": "拉斐尔 - 固有技能",
+      "note_cn": "奏鸣效果触发",
+      "type_cn": "人格面具",
+      "target_cn": "单体",
+      "duration_cn": "3回合",
+      "options_cn": [
+        "LV6",
+        "LV7",
+        "LV8"
+      ]
+    }
+  ],
+  "렌·스타 나이트": [
+    {
+      "id": "ren-starlight-s1-enhanced-crit-rate",
+      "type": "스킬1",
+      "type_en": "Skill 1",
+      "type_jp": "スキル1",
+      "target": "광역",
+      "target_en": "Multi",
+      "target_jp": "複数対象",
+      "skillIcon": "/assets/img/skill-element/버프광역.png",
+      "skillName": "시작의 악장",
+      "skillName_en": "",
+      "skillName_jp": "",
+      "options": [
+        "LV10",
+        "LV10+심상5",
+        "LV13",
+        "LV13+심상5"
+      ],
+      "values": {
+        "LV10": 15.6,
+        "LV10+심상5": 17.2,
+        "LV13": 16.6,
+        "LV13+심상5": 18.2
+      },
+      "defaultOption": "LV13+심상5",
+      "value": 18.2,
+      "skillEffectAmpAffected": true,
+      "duration": "2턴",
+      "note": "강화",
+      "note_en": "Enhanced",
+      "note_jp": "強化",
+      "skillName_cn": "初始乐章",
+      "note_cn": "强化",
+      "type_cn": "技能1",
+      "target_cn": "群体",
+      "duration_cn": "2回合",
+      "options_cn": [
+        "LV10",
+        "LV10+心象5",
+        "LV13",
+        "LV13+心象5"
+      ]
     }
   ],
   "후카": [
@@ -738,6 +823,50 @@ const criticalSelfData = {
       "duration_cn": "-",
       "options_cn": []
     },
+    // KR/CN patch only: EN/JP official calculator text pending.
+    {
+      "id": "자유-개선",
+      "type": "계시",
+      "type_en": "Revelation",
+      "type_jp": "啓示",
+      "target": "자신",
+      "target_en": "Self",
+      "target_jp": "自分",
+      "skillIcon": "/assets/img/revelation/자유.webp",
+      "skillName": "자유 + 개선",
+      "skillName_en": "Freedom + Triumph",
+      "skillName_jp": "自由 + 改善",
+      "options": [
+        "1중첩",
+        "2중첩",
+        "빙결/질풍 1중첩",
+        "빙결/질풍 2중첩"
+      ],
+      "values": {
+        "1중첩": 10,
+        "2중첩": 20,
+        "빙결/질풍 1중첩": 20,
+        "빙결/질풍 2중첩": 40
+      },
+      "defaultOption": "2중첩",
+      "value": 20,
+      "skillEffectAmpAffected": false,
+      "duration": "2턴",
+      "note": "영광 중첩",
+      "note_en": "",
+      "note_jp": "",
+      "skillName_cn": "自由 + 凯旋",
+      "note_cn": "荣耀层数",
+      "type_cn": "启示",
+      "target_cn": "自身",
+      "duration_cn": "2回合",
+      "options_cn": [
+        "1层",
+        "2层",
+        "冰冻/疾风 1层",
+        "冰冻/疾风 2层"
+      ]
+    },
     {
       "id": "희망",
       "type": "계시",
@@ -762,6 +891,103 @@ const criticalSelfData = {
       "type_cn": "启示",
       "target_cn": "自身",
       "duration_cn": "3回合",
+      "options_cn": []
+    }
+  ],
+  "렌·스타 나이트": [
+    {
+      "id": "ren-starlight-r1-crit-rate",
+      "type": "의식1",
+      "type_en": "Awareness 1",
+      "type_jp": "意識1",
+      "target": "자신",
+      "target_en": "Self",
+      "target_jp": "自分",
+      "skillIcon": "/assets/img/character-detail/ritual1.png",
+      "skillName": "괴도 신사",
+      "skillName_en": "Gentleman Thief",
+      "skillName_jp": "怪盗紳士",
+      "options": [],
+      "value": 20,
+      "skillEffectAmpAffected": false,
+      "duration": "2턴",
+      "note": "Fever Time 후",
+      "note_en": "After Fever Time",
+      "note_jp": "Fever Time後",
+      "skillName_cn": "怪盗绅士",
+      "note_cn": "Fever Time后",
+      "type_cn": "意识1",
+      "target_cn": "自身",
+      "duration_cn": "2回合",
+      "options_cn": []
+    },
+    {
+      "id": "ren-starlight-weapon5-crit-rate",
+      "type": "전용무기",
+      "type_en": "Exclusive Weapon",
+      "type_jp": "専用武器",
+      "target": "자신",
+      "target_en": "Self",
+      "target_jp": "自分",
+      "skillIcon": "/assets/img/character-weapon/렌·스타 나이트-5-01.png",
+      "skillName": "재즈 블레이드",
+      "skillName_en": "",
+      "skillName_jp": "",
+      "options": [
+        "개조0",
+        "개조1&2",
+        "개조3&4",
+        "개조5&6"
+      ],
+      "values": {
+        "개조0": 18.1,
+        "개조1&2": 23.5,
+        "개조3&4": 28.9,
+        "개조5&6": 34.3
+      },
+      "defaultOption": "개조5&6",
+      "value": 34.3,
+      "skillEffectAmpAffected": false,
+      "duration": "-",
+      "note": "",
+      "note_en": "",
+      "note_jp": "",
+      "skillName_cn": "爵士锋刃",
+      "note_cn": "",
+      "type_cn": "专属武器",
+      "target_cn": "自身",
+      "duration_cn": "-",
+      "options_cn": [
+        "改造0",
+        "改造1&2",
+        "改造3&4",
+        "改造5&6"
+      ]
+    },
+    {
+      "id": "ren-starlight-mind-crit-rate",
+      "type": "심상",
+      "type_en": "Mindscape",
+      "type_jp": "イメジャリー",
+      "target": "자신",
+      "target_en": "Self",
+      "target_jp": "自分",
+      "skillIcon": "/assets/img/character-detail/item-mind_stat2.png",
+      "skillName": "진급강화",
+      "skillName_en": "",
+      "skillName_jp": "",
+      "options": [],
+      "value": 12,
+      "skillEffectAmpAffected": false,
+      "duration": "-",
+      "note": "",
+      "note_en": "",
+      "note_jp": "",
+      "skillName_cn": "进阶强化",
+      "note_cn": "",
+      "type_cn": "心象",
+      "target_cn": "自身",
+      "duration_cn": "-",
       "options_cn": []
     }
   ],
@@ -1959,10 +2185,10 @@ const criticalSelfData = {
         "4중첩"
       ],
       "values": {
-        "1\uC911\uCCA9": 4,
-        "2\uC911\uCCA9": 8,
-        "3\uC911\uCCA9": 12,
-        "4\uC911\uCCA9": 16
+        "1중첩": 4,
+        "2중첩": 8,
+        "3중첩": 12,
+        "4중첩": 16
       },
       "defaultOption": "4중첩",
       "value": 16,

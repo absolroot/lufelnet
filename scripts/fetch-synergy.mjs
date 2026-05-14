@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Fetch synergy (coop) data from iant API and write files to:
+ * Fetch synergy (coop/cybercoop) data from iant API and write files to:
  *   apps/synergy/friends/<lang>/<characterName>.json
  *
  * Default behavior:
@@ -11,7 +11,8 @@
  *   - auto mode scans at least 1..33, then increases numbers and stops on KR not-found
  *
  * Manual range:
- *   node scripts/fetch-synergy.mjs [lang] [startNum] [endNum]
+ *   node scripts/fetch-synergy.mjs [dataset] [lang] [startNum] [endNum]
+ *   - dataset: synergy | cybercoop (default: synergy)
  *   - lang: kr | en | jp | cn | all (default: all)
  *   - startNum: default 1
  *   - endNum: optional; if omitted, auto-stop mode is used
@@ -30,6 +31,7 @@ const BASE_URL = process.env.BASE_URL || 'https://iant.kr:5000/data';
 const SOURCE = process.env.SYNERGY_SOURCE || 'mydiscord';
 
 const FRIEND_NUM_FILE = path.join(PROJECT_ROOT, 'apps', 'synergy', 'friends', 'friend_num.json');
+const CYBER_FRIEND_NUM_FILE = path.join(PROJECT_ROOT, 'apps', 'synergy', 'friends', 'cyber_freind_num.json');
 const SYNERGY_DIR = path.join(PROJECT_ROOT, 'apps', 'synergy', 'friends');
 
 const LANGUAGES = ['kr', 'en', 'jp', 'cn'];
@@ -38,6 +40,24 @@ const REQUEST_TIMEOUT_MS = 15000;
 const REQUEST_RETRIES = 1;
 const REQUEST_DELAY_MS = 600;
 const LOCAL_ONLY_DATA_KEYS = ['unlock_notes'];
+const DATASET_CONFIGS = {
+  synergy: {
+    label: 'synergy',
+    endpoint: 'coop',
+    mappingFile: FRIEND_NUM_FILE,
+    outputDir: SYNERGY_DIR,
+    source: SOURCE,
+    autoMinScanEnd: AUTO_MIN_SCAN_END
+  },
+  cybercoop: {
+    label: 'cybercoop',
+    endpoint: 'cybercoop',
+    mappingFile: CYBER_FRIEND_NUM_FILE,
+    outputDir: SYNERGY_DIR,
+    source: process.env.CYBERCOOP_SOURCE || SOURCE,
+    autoMinScanEnd: 1
+  }
+};
 
 function log(message) {
   console.log(message);
@@ -46,14 +66,20 @@ function log(message) {
 function usage() {
   console.log(
     `Usage:
-  node scripts/fetch-synergy.mjs [lang] [startNum] [endNum]
+  node scripts/fetch-synergy.mjs [dataset] [lang] [startNum] [endNum]
 
 Examples:
   # default (kr,en,jp,cn, start=1, auto-stop)
   node scripts/fetch-synergy.mjs
 
+  # cybercoop default (kr,en,jp,cn, start=1, auto-stop)
+  node scripts/fetch-synergy.mjs cybercoop
+
   # kr only, start=1, auto-stop
   node scripts/fetch-synergy.mjs kr
+
+  # cybercoop cn only, range 1..1
+  node scripts/fetch-synergy.mjs cybercoop cn 1 1
 
   # kr only, range 1..33
   node scripts/fetch-synergy.mjs kr 1 33
@@ -67,9 +93,23 @@ Examples:
 
 function parseArgs() {
   const raw = process.argv.slice(2);
-  const lang = raw[0] || 'all';
-  const startNum = raw[1] ? Number(raw[1]) : 1;
-  const endNum = raw[2] ? Number(raw[2]) : null;
+  const datasetFromEnv = process.env.SYNERGY_DATASET || 'synergy';
+  let dataset = datasetFromEnv;
+  let offset = 0;
+
+  if (raw[0] && DATASET_CONFIGS[raw[0]]) {
+    dataset = raw[0];
+    offset = 1;
+  }
+
+  if (!DATASET_CONFIGS[dataset]) {
+    console.error(`Invalid dataset '${dataset}'. Must be one of: ${Object.keys(DATASET_CONFIGS).join(', ')}`);
+    usage();
+  }
+
+  const lang = raw[offset] || 'all';
+  const startNum = raw[offset + 1] ? Number(raw[offset + 1]) : 1;
+  const endNum = raw[offset + 2] ? Number(raw[offset + 2]) : null;
 
   if (lang !== 'all' && !LANGUAGES.includes(lang)) {
     console.error(`Invalid language '${lang}'. Must be one of: ${LANGUAGES.join(', ')}, all`);
@@ -87,7 +127,7 @@ function parseArgs() {
   }
 
   const targetLangs = lang === 'all' ? LANGUAGES : [lang];
-  return { targetLangs, startNum, endNum };
+  return { config: DATASET_CONFIGS[dataset], targetLangs, startNum, endNum };
 }
 
 function sleep(ms) {
@@ -108,14 +148,14 @@ function readJsonIfExists(filePath) {
   }
 }
 
-function loadFriendNumMapping() {
-  if (!fs.existsSync(FRIEND_NUM_FILE)) {
-    throw new Error(`friend_num.json not found: ${FRIEND_NUM_FILE}`);
+function loadFriendNumMapping(config) {
+  if (!fs.existsSync(config.mappingFile)) {
+    throw new Error(`mapping file not found: ${config.mappingFile}`);
   }
 
-  const mapping = readJsonIfExists(FRIEND_NUM_FILE);
+  const mapping = readJsonIfExists(config.mappingFile);
   if (!mapping || typeof mapping !== 'object' || Array.isArray(mapping)) {
-    throw new Error('Invalid friend_num.json format');
+    throw new Error(`Invalid mapping file format: ${config.mappingFile}`);
   }
 
   const numToName = {};
@@ -126,7 +166,7 @@ function loadFriendNumMapping() {
     if (!Number.isInteger(num) || num <= 0) continue;
 
     if (numToName[num] && numToName[num] !== characterName) {
-      log(`Warning: duplicate num=${num} in friend_num.json (${numToName[num]}, ${characterName}).`);
+      log(`Warning: duplicate num=${num} in ${path.basename(config.mappingFile)} (${numToName[num]}, ${characterName}).`);
       continue;
     }
 
@@ -149,11 +189,6 @@ function fetchJson(url) {
   return new Promise((resolve, reject) => {
     const req = https.get(url, (res) => {
       const { statusCode } = res;
-      if (statusCode && statusCode >= 400) {
-        res.resume();
-        reject(new Error(`Request failed. Status: ${statusCode} URL=${url}`));
-        return;
-      }
 
       let body = '';
       res.setEncoding('utf8');
@@ -165,6 +200,10 @@ function fetchJson(url) {
           const cleanBody = cleanJsonString(body);
           resolve(JSON.parse(cleanBody));
         } catch (error) {
+          if (statusCode && statusCode >= 400) {
+            reject(new Error(`Request failed. Status: ${statusCode} URL=${url}`));
+            return;
+          }
           reject(new Error(`Invalid JSON from ${url}: ${error.message}`));
         }
       });
@@ -185,8 +224,8 @@ function isUsablePayload(json) {
   return Boolean(json && typeof json === 'object' && !isNotFoundPayload(json));
 }
 
-async function fetchSynergyOnce({ lang, num }) {
-  const url = `${BASE_URL}/coop/${lang}/${num}?source=${encodeURIComponent(SOURCE)}`;
+async function fetchSynergyOnce({ config, lang, num }) {
+  const url = `${BASE_URL}/${config.endpoint}/${lang}/${num}?source=${encodeURIComponent(config.source)}`;
   let lastError = null;
 
   for (let attempt = 1; attempt <= REQUEST_RETRIES + 1; attempt += 1) {
@@ -297,12 +336,15 @@ function saveIfTextIncreased(filePath, nextJson) {
 }
 
 async function run() {
-  const { targetLangs, startNum, endNum } = parseArgs();
-  const { numToName, maxMappedNum } = loadFriendNumMapping();
+  const { config, targetLangs, startNum, endNum } = parseArgs();
+  const { numToName, maxMappedNum } = loadFriendNumMapping(config);
   const manualRange = Number.isInteger(endNum);
-  const autoGuaranteedEnd = Math.max(AUTO_MIN_SCAN_END, maxMappedNum);
+  const autoGuaranteedEnd = Math.max(config.autoMinScanEnd, maxMappedNum);
 
-  log(`Start fetch-synergy`);
+  log(`Start fetch-synergy (${config.label})`);
+  log(`- endpoint : ${config.endpoint}`);
+  log(`- mapping  : ${path.relative(PROJECT_ROOT, config.mappingFile)}`);
+  log(`- output   : ${path.relative(PROJECT_ROOT, config.outputDir)}`);
   log(`- languages: ${targetLangs.join(', ')}`);
   log(`- startNum : ${startNum}`);
   log(
@@ -336,7 +378,7 @@ async function run() {
       // 1) Always scan up to AUTO_MIN_SCAN_END (33) even if there are gaps.
       // 2) After guaranteed range, probe KR and stop on first not-found.
       // eslint-disable-next-line no-await-in-loop
-      krProbe = await fetchSynergyOnce({ lang: 'kr', num });
+      krProbe = await fetchSynergyOnce({ config, lang: 'kr', num });
 
       if (shouldAutoStopProbe) {
         if (krProbe.state === 'not_found') {
@@ -370,7 +412,7 @@ async function run() {
       // eslint-disable-next-line no-await-in-loop
       const result = lang === 'kr' && krProbe?.state === 'ok'
         ? krProbe
-        : await fetchSynergyOnce({ lang, num });
+        : await fetchSynergyOnce({ config, lang, num });
 
       if (result.state === 'not_found') {
         log(`Skip not found: lang=${lang}, num=${num}`);
@@ -383,7 +425,7 @@ async function run() {
         continue;
       }
 
-      const outPath = path.join(SYNERGY_DIR, lang, `${characterName}.json`);
+      const outPath = path.join(config.outputDir, lang, `${characterName}.json`);
       const saveResult = saveIfTextIncreased(outPath, result.json);
 
       if (saveResult.saved) {

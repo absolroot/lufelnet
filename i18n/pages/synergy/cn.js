@@ -7,6 +7,7 @@ window.I18N_PAGE_SYNERGY_CN = {
     "filterEvening": "傍晚",
     "filterNight": "夜晚",
     "filterAfternoon": "下午",
+    "filterCyber": "赛博",
     "searchPlaceholder": "搜索怪盗...",
     "labelShowSpoiler": "显示剧透",
     "noResults": "没有搜索结果",

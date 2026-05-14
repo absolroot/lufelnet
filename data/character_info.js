@@ -2,7 +2,7 @@
 // 캐릭터 목록 데이터
 window.characterList = window.characterList || {
     mainParty: [
-        "나루미", "렌", "루우나", "루페르", "레오", "류지",
+        "나루미", "렌", "렌·스타 나이트", "루우나", "루페르", "레오", "류지",
         "리코·매화", "마사키", "마유미", "마코토", "미나미", "미나미·여름", "미유·여름", "모르가나",
         "모토하", "모토하·여름", "모토하·청광", "아란", "몽타뉴", "몽타뉴·백조", "미오", "미츠루", "사나다", "쇼키", "쇼키·암야", "슌", "슌·프론티어",
         "세이지", "안", "아야카", "아이기스", "아케치", "야오링", "야오링·사자무",
@@ -30,6 +30,48 @@ window.characterList = window.characterList || {
 
 window.characterData = window.characterData || {};
 Object.assign(window.characterData, {
+    "모르가나·스타 나이트": {
+        "limit": true,
+        "tag": "",
+        "tag_en": "",
+        "tag_jp": "",
+        "color": "#3daf00",
+        "element": "질풍",
+        "rarity": 5,
+        "position": "굴복",
+        "release_order": 48,
+        "persona": "조로",
+        "persona_en": "Zorro",
+        "persona_jp": "ゾロ",
+        "name": "모르가나·스타 나이트",
+        "name_en": "Morgana·Starlight",
+        "name_jp": "モルガナ・スターナイト",
+        "name_cn": "摩尔加纳星舞",
+        "persona_cn": "佐罗",
+        "codename": "MONA·Starlight",
+        "skill_item": 6
+    },
+    "렌·스타 나이트": {
+        "limit": true,
+        "tag": "총공격, 크리티컬 효과, 공격력, 방어력 감소, 다운 허약",
+        "tag_en": "All-Out Attack, Critical Effect, Attack, Defense Down, Downed Damage Taken",
+        "tag_jp": "総攻撃、クリティカル効果、攻撃力、防御力低下、ダウン脆弱",
+        "color": "#292121",
+        "element": "주원",
+        "rarity": 5,
+        "position": "자율",
+        "release_order": 47,
+        "persona": "라울",
+        "persona_en": "Raoul",
+        "persona_jp": "ラウール",
+        "persona_cn": "拉乌尔",
+        "name": "아마미야 렌·스타 나이트",
+        "name_en": "Ren Amamiya·Starlight",
+        "name_jp": "雨宮 蓮・スターナイト",
+        "name_cn": "雨宫莲·星舞",
+        "codename": "JOKER·Starlight",
+        "skill_item": 6
+    },
     "아이기스": {
         "limit": true,
         "tag": "테우르기아, HP 소모, 실드 관통",
@@ -413,6 +455,7 @@ Object.assign(window.characterData, {
     },
     "유카리": {
         "limit": true,
+        "has_innate": true,
         "persona3": true,
         "role_en": "Theurgy Charge Buffer",
         "role_jp": "テウルギアチャージバッファー",
@@ -646,6 +689,7 @@ Object.assign(window.characterData, {
     },
     "몽타뉴·백조": {
         "limit": true,
+        "has_innate": true,
         "tag": "폼 체인지, 추가 효과, 풍습, 동결, 관통",
         "color": "#483d8b",
         "element": "질풍빙결",
